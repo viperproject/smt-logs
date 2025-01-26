@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:44
+// Date:         2025-01-26 21:42:59
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0378a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0378a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_20: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_20, f_17] }
-  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_17], $allocated]
+axiom (forall o_54: Ref, f_24: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_54, f_24] }
+  Heap[o_54, $allocated] ==> Heap[Heap[o_54, f_24], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref, f_24: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, f_24] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_27, f_24) ==> Heap[o_27, f_24] == ExhaleHeap[o_27, f_24]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref, f_54: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, f_54] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_55, f_54) ==> Heap[o_55, f_54] == ExhaleHeap[o_55, f_54]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9), ExhaleHeap[null, PredicateMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> Heap[null, PredicateMaskField(pm_f_9)] == ExhaleHeap[null, PredicateMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32), ExhaleHeap[null, PredicateMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> Heap[null, PredicateMaskField(pm_f_32)] == ExhaleHeap[null, PredicateMaskField(pm_f_32)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, PredicateMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, PredicateMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9), ExhaleHeap[null, WandMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> Heap[null, WandMaskField(pm_f_9)] == ExhaleHeap[null, WandMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32), ExhaleHeap[null, WandMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> Heap[null, WandMaskField(pm_f_32)] == ExhaleHeap[null, WandMaskField(pm_f_32)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, WandMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, WandMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_27, $allocated] ==> ExhaleHeap[o_27, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_55, $allocated] ==> ExhaleHeap[o_55, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_31: (Field A B), v: B ::
-  { Heap[o_20, f_31:=v] }
-  succHeap(Heap, Heap[o_20, f_31:=v])
+axiom (forall <A, B> Heap: HeapType, o_54: Ref, f_8: (Field A B), v: B ::
+  { Heap[o_54, f_8:=v] }
+  succHeap(Heap, Heap[o_54, f_8:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,7 +145,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(x_1: int): bool;
-function  neverTriggered2(x_4: int): bool;
+function  neverTriggered2(x_4_2: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -202,47 +202,47 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type ArrayDomainType;
 
 // Translation of domain function loc
-function  loc(a_3: ArrayDomainType, i_79: int): Ref;
+function  loc(a_3: ArrayDomainType, i_6: int): Ref;
 
 // Translation of domain function len
-function  len_1(a_3: ArrayDomainType): int;
+function  len(a_3: ArrayDomainType): int;
 
 // Translation of domain function first
-function  first(r_3: Ref): ArrayDomainType;
+function  first_1(r_4: Ref): ArrayDomainType;
 
 // Translation of domain function second
-function  second(r_3: Ref): int;
+function  second_1(r_4: Ref): int;
 
 // Translation of domain axiom all_diff
 axiom (forall a_2: ArrayDomainType, i: int ::
   { (loc(a_2, i): Ref) }
-  (first((loc(a_2, i): Ref)): ArrayDomainType) == a_2 && (second((loc(a_2, i): Ref)): int) == i
+  (first_1((loc(a_2, i): Ref)): ArrayDomainType) == a_2 && (second_1((loc(a_2, i): Ref)): int) == i
 );
 
 // Translation of domain axiom length_non_neg
 axiom (forall a_2: ArrayDomainType ::
-  { (len_1(a_2): int) }
-  (len_1(a_2): int) >= 0
+  { (len(a_2): int) }
+  (len(a_2): int) >= 0
 );
 
 // ==================================================
 // Translation of all fields
 // ==================================================
 
-const unique elements_1: Field NormalField ArrayDomainType;
-axiom !IsPredicateField(elements_1);
-axiom !IsWandField(elements_1);
+const unique elements: Field NormalField ArrayDomainType;
+axiom !IsPredicateField(elements);
+axiom !IsWandField(elements);
 
 // ==================================================
 // Translation of function foo
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo_2(Heap: HeapType, self: Ref): bool;
+function  foo_1(Heap: HeapType, self: Ref): bool;
 function  foo'(Heap: HeapType, self: Ref): bool;
 axiom (forall Heap: HeapType, self: Ref ::
-  { foo_2(Heap, self) }
-  foo_2(Heap, self) == foo'(Heap, self) && dummyFunction(foo#triggerStateless(self))
+  { foo_1(Heap, self) }
+  foo_1(Heap, self) == foo'(Heap, self) && dummyFunction(foo#triggerStateless(self))
 );
 axiom (forall Heap: HeapType, self: Ref ::
   { foo'(Heap, self) }
@@ -251,10 +251,10 @@ axiom (forall Heap: HeapType, self: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, self: Ref ::
-  { state(Heap, Mask), foo_2(Heap, self) } { state(Heap, Mask), foo#triggerStateless(self), P#trigger(Heap, P(self)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_2(Heap, self) == (forall i: int ::
-    { (loc(Heap[self, elements_1], i): Ref) }
-    0 <= i && i < (len_1(Heap[self, elements_1]): int) ==> foo'(Heap, (loc(Heap[self, elements_1], i): Ref))
+  { state(Heap, Mask), foo_1(Heap, self) } { state(Heap, Mask), foo#triggerStateless(self), P#trigger(Heap, P(self)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_1(Heap, self) == (forall i: int ::
+    { (loc(Heap[self, elements], i): Ref) }
+    0 <= i && i < (len(Heap[self, elements]): int) ==> foo'(Heap, (loc(Heap[self, elements], i): Ref))
   )
 );
 
@@ -266,7 +266,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, self: Ref ::
 );
 
 // Trigger function (controlling recursive postconditions)
-function  foo#trigger(frame: FrameType, self: Ref): bool;
+function  foo#trigger_1(frame: FrameType, self: Ref): bool;
 
 // State-independent trigger function
 function  foo#triggerStateless(self: Ref): bool;
@@ -279,10 +279,10 @@ procedure foo#definedness(self: Ref) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
-  var i_14: int;
+  var i_18: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -305,75 +305,75 @@ procedure foo#definedness(self: Ref) returns (Result: bool)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(self));
-      assume UnfoldingHeap[null, P(self)] == CombineFrames(FrameFragment(UnfoldingHeap[self, elements_1]), FrameFragment(P#condqp1(UnfoldingHeap, self)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
+      assume UnfoldingHeap[null, P(self)] == CombineFrames(FrameFragment(UnfoldingHeap[self, elements]), FrameFragment(P#condqp1(UnfoldingHeap, self)));
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(self) (0378a.vpr@36.1--44.2) [206661]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(self) (0378a.vpr@36.1--44.2) [79033]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(self)];
       assume self != null;
       havoc wildcard;
       perm := wildcard;
       assume self != null;
-      UnfoldingMask := UnfoldingMask[self, elements_1:=UnfoldingMask[self, elements_1] + perm];
+      UnfoldingMask := UnfoldingMask[self, elements:=UnfoldingMask[self, elements] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume (forall x: int ::
-        { (loc(UnfoldingHeap[self, elements_1], x): Ref) }
-        0 <= x && x < (len_1(UnfoldingHeap[self, elements_1]): int) ==> (loc(UnfoldingHeap[self, elements_1], x): Ref) != null
+        { (loc(UnfoldingHeap[self, elements], x): Ref) }
+        0 <= x && x < (len(UnfoldingHeap[self, elements]): int) ==> (loc(UnfoldingHeap[self, elements], x): Ref) != null
       );
       havoc QPMask;
       havoc wildcard;
       
       // -- check if receiver acc(P(loc(self.elements, x)), wildcard) is injective
-        assert {:msg "  Function might not be well-formed. Quantified resource P(loc(self.elements, x)) might not be injective. (0378a.vpr@36.1--44.2) [206662]"}
+        assert {:msg "  Function might not be well-formed. Quantified resource P(loc(self.elements, x)) might not be injective. (0378a.vpr@36.1--44.2) [79034]"}
           (forall x_1: int, x_1_1: int ::
           { neverTriggered1(x_1), neverTriggered1(x_1_1) }
-          (((x_1 != x_1_1 && (0 <= x_1 && x_1 < (len_1(UnfoldingHeap[self, elements_1]): int))) && (0 <= x_1_1 && x_1_1 < (len_1(UnfoldingHeap[self, elements_1]): int))) && NoPerm < wildcard) && NoPerm < wildcard ==> (loc(UnfoldingHeap[self, elements_1], x_1): Ref) != (loc(UnfoldingHeap[self, elements_1], x_1_1): Ref)
+          (((x_1 != x_1_1 && (0 <= x_1 && x_1 < (len(UnfoldingHeap[self, elements]): int))) && (0 <= x_1_1 && x_1_1 < (len(UnfoldingHeap[self, elements]): int))) && NoPerm < wildcard) && NoPerm < wildcard ==> (loc(UnfoldingHeap[self, elements], x_1): Ref) != (loc(UnfoldingHeap[self, elements], x_1_1): Ref)
         );
       
       // -- Define Inverse Function
         assume (forall x_1: int ::
-          { UnfoldingHeap[null, P((loc(UnfoldingHeap[self, elements_1], x_1): Ref))] } { UnfoldingMask[null, P((loc(UnfoldingHeap[self, elements_1], x_1): Ref))] } { (loc(UnfoldingHeap[self, elements_1], x_1): Ref) }
-          (0 <= x_1 && x_1 < (len_1(UnfoldingHeap[self, elements_1]): int)) && NoPerm < wildcard ==> invRecv1((loc(UnfoldingHeap[self, elements_1], x_1): Ref)) == x_1 && qpRange1((loc(UnfoldingHeap[self, elements_1], x_1): Ref))
+          { UnfoldingHeap[null, P((loc(UnfoldingHeap[self, elements], x_1): Ref))] } { UnfoldingMask[null, P((loc(UnfoldingHeap[self, elements], x_1): Ref))] } { (loc(UnfoldingHeap[self, elements], x_1): Ref) }
+          (0 <= x_1 && x_1 < (len(UnfoldingHeap[self, elements]): int)) && NoPerm < wildcard ==> invRecv1((loc(UnfoldingHeap[self, elements], x_1): Ref)) == x_1 && qpRange1((loc(UnfoldingHeap[self, elements], x_1): Ref))
         );
         assume (forall self_3_1: Ref ::
           { invRecv1(self_3_1) }
-          ((0 <= invRecv1(self_3_1) && invRecv1(self_3_1) < (len_1(UnfoldingHeap[self, elements_1]): int)) && NoPerm < wildcard) && qpRange1(self_3_1) ==> (loc(UnfoldingHeap[self, elements_1], invRecv1(self_3_1)): Ref) == self_3_1
+          ((0 <= invRecv1(self_3_1) && invRecv1(self_3_1) < (len(UnfoldingHeap[self, elements]): int)) && NoPerm < wildcard) && qpRange1(self_3_1) ==> (loc(UnfoldingHeap[self, elements], invRecv1(self_3_1)): Ref) == self_3_1
         );
       
       // -- Define updated permissions
         assume (forall self_3_1: Ref ::
           { QPMask[null, P(self_3_1)] }
-          ((0 <= invRecv1(self_3_1) && invRecv1(self_3_1) < (len_1(UnfoldingHeap[self, elements_1]): int)) && NoPerm < wildcard) && qpRange1(self_3_1) ==> (NoPerm < wildcard ==> (loc(UnfoldingHeap[self, elements_1], invRecv1(self_3_1)): Ref) == self_3_1) && QPMask[null, P(self_3_1)] == UnfoldingMask[null, P(self_3_1)] + wildcard
+          ((0 <= invRecv1(self_3_1) && invRecv1(self_3_1) < (len(UnfoldingHeap[self, elements]): int)) && NoPerm < wildcard) && qpRange1(self_3_1) ==> (NoPerm < wildcard ==> (loc(UnfoldingHeap[self, elements], invRecv1(self_3_1)): Ref) == self_3_1) && QPMask[null, P(self_3_1)] == UnfoldingMask[null, P(self_3_1)] + wildcard
         );
       
       // -- Define independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
         assume (forall self_3_1: Ref ::
           { QPMask[null, P(self_3_1)] }
-          !(((0 <= invRecv1(self_3_1) && invRecv1(self_3_1) < (len_1(UnfoldingHeap[self, elements_1]): int)) && NoPerm < wildcard) && qpRange1(self_3_1)) ==> QPMask[null, P(self_3_1)] == UnfoldingMask[null, P(self_3_1)]
+          !(((0 <= invRecv1(self_3_1) && invRecv1(self_3_1) < (len(UnfoldingHeap[self, elements]): int)) && NoPerm < wildcard) && qpRange1(self_3_1)) ==> QPMask[null, P(self_3_1)] == UnfoldingMask[null, P(self_3_1)]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
-        if (0 <= i_14) {
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@36.1--44.2) [206663]"}
-            HasDirectPerm(UnfoldingMask, self, elements_1);
+        if (0 <= i_18) {
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@36.1--44.2) [79035]"}
+            HasDirectPerm(UnfoldingMask, self, elements);
         }
-        if (0 <= i_14 && i_14 < (len_1(UnfoldingHeap[self, elements_1]): int)) {
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@36.1--44.2) [206664]"}
-            HasDirectPerm(UnfoldingMask, self, elements_1);
+        if (0 <= i_18 && i_18 < (len(UnfoldingHeap[self, elements]): int)) {
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@36.1--44.2) [79036]"}
+            HasDirectPerm(UnfoldingMask, self, elements);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access P(loc(self.elements, i)) (0378a.vpr@42.17--42.43) [206665]"}
-              NoPerm < perm ==> NoPerm < UnfoldingMask[null, P((loc(UnfoldingHeap[self, elements_1], i_14): Ref))];
+            assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access P(loc(self.elements, i)) (0378a.vpr@42.17--42.43) [79037]"}
+              NoPerm < perm ==> NoPerm < UnfoldingMask[null, P((loc(UnfoldingHeap[self, elements], i_18): Ref))];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(UnfoldingHeap, ExhaleHeap, UnfoldingMask);
@@ -382,20 +382,20 @@ procedure foo#definedness(self: Ref) returns (Result: bool)
             assume false;
           } else {
             // Enable postcondition for recursive call
-            assume foo#trigger(UnfoldingHeap[null, P((loc(UnfoldingHeap[self, elements_1], i_14): Ref))], (loc(UnfoldingHeap[self, elements_1], i_14): Ref));
+            assume foo#trigger_1(UnfoldingHeap[null, P((loc(UnfoldingHeap[self, elements], i_18): Ref))], (loc(UnfoldingHeap[self, elements], i_18): Ref));
           }
         }
         assume false;
       }
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(self):=Heap[null, P#sm(self)][self, elements_1:=true]];
+        Heap := Heap[null, P#sm(self):=Heap[null, P#sm(self)][self, elements:=true]];
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := (forall i_2_1: int ::
-      { (loc(Heap[self, elements_1], i_2_1): Ref) }
-      0 <= i_2_1 && i_2_1 < (len_1(Heap[self, elements_1]): int) ==> foo_2(Heap, (loc(Heap[self, elements_1], i_2_1): Ref))
+    Result := (forall i_2: int ::
+      { (loc(Heap[self, elements], i_2): Ref) }
+      0 <= i_2 && i_2 < (len(Heap[self, elements]): int) ==> foo_1(Heap, (loc(Heap[self, elements], i_2): Ref))
     );
 }
 
@@ -442,15 +442,15 @@ function  P#condqp1(Heap: HeapType, self_2_1: Ref): int;
 function  sk_P#condqp1(fnAppH1: int, fnAppH2: int): int;
 axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, self: Ref ::
   { P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self), succHeapTrans(Heap2Heap, Heap1Heap) }
-  ((0 <= sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) && sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) < (len_1(Heap2Heap[self, elements_1]): int)) && NoPerm < FullPerm <==> (0 <= sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) && sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) < (len_1(Heap1Heap[self, elements_1]): int)) && NoPerm < FullPerm) && ((0 <= sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) && sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) < (len_1(Heap2Heap[self, elements_1]): int)) && NoPerm < FullPerm ==> Heap2Heap[null, P((loc(Heap2Heap[self, elements_1], sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self))): Ref))] == Heap1Heap[null, P((loc(Heap1Heap[self, elements_1], sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self))): Ref))]) ==> P#condqp1(Heap2Heap, self) == P#condqp1(Heap1Heap, self)
+  ((0 <= sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) && sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) < (len(Heap2Heap[self, elements]): int)) && NoPerm < FullPerm <==> (0 <= sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) && sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) < (len(Heap1Heap[self, elements]): int)) && NoPerm < FullPerm) && ((0 <= sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) && sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self)) < (len(Heap2Heap[self, elements]): int)) && NoPerm < FullPerm ==> Heap2Heap[null, P((loc(Heap2Heap[self, elements], sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self))): Ref))] == Heap1Heap[null, P((loc(Heap1Heap[self, elements], sk_P#condqp1(P#condqp1(Heap2Heap, self), P#condqp1(Heap1Heap, self))): Ref))]) ==> P#condqp1(Heap2Heap, self) == P#condqp1(Heap1Heap, self)
 );
 
 procedure P#definedness(self: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var x_10: int;
-  var x_31: int;
+  var x_2: int;
+  var x_27: int;
   var QPMask: MaskType;
   
   // -- Check definedness of predicate body of P
@@ -464,71 +464,71 @@ procedure P#definedness(self: Ref) returns ()
     assume self != null;
     perm := FullPerm;
     assume self != null;
-    Mask := Mask[self, elements_1:=Mask[self, elements_1] + perm];
+    Mask := Mask[self, elements:=Mask[self, elements] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall x: Int :: { loc(self.elements, x) } 0 <= x && x < len(self.elements) ==> loc(self.elements, x) != null)
       if (*) {
-        if (0 <= x_10) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@25.1--34.2) [206666]"}
-            HasDirectPerm(Mask, self, elements_1);
+        if (0 <= x_2) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@25.1--34.2) [79038]"}
+            HasDirectPerm(Mask, self, elements);
         }
-        if (0 <= x_10 && x_10 < (len_1(Heap[self, elements_1]): int)) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@25.1--34.2) [206667]"}
-            HasDirectPerm(Mask, self, elements_1);
+        if (0 <= x_2 && x_2 < (len(Heap[self, elements]): int)) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@25.1--34.2) [79039]"}
+            HasDirectPerm(Mask, self, elements);
         }
         assume false;
       }
     assume (forall x_2_2: int ::
-      { (loc(Heap[self, elements_1], x_2_2): Ref) }
-      0 <= x_2_2 && x_2_2 < (len_1(Heap[self, elements_1]): int) ==> (loc(Heap[self, elements_1], x_2_2): Ref) != null
+      { (loc(Heap[self, elements], x_2_2): Ref) }
+      0 <= x_2_2 && x_2_2 < (len(Heap[self, elements]): int) ==> (loc(Heap[self, elements], x_2_2): Ref) != null
     );
     
     // -- Check definedness of (forall x: Int :: { loc(self.elements, x) } 0 <= x && x < len(self.elements) ==> acc(P(loc(self.elements, x)), write))
       if (*) {
-        if (0 <= x_31) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@25.1--34.2) [206668]"}
-            HasDirectPerm(Mask, self, elements_1);
+        if (0 <= x_27) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@25.1--34.2) [79040]"}
+            HasDirectPerm(Mask, self, elements);
         }
-        if (0 <= x_31 && x_31 < (len_1(Heap[self, elements_1]): int)) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@25.1--34.2) [206669]"}
-            HasDirectPerm(Mask, self, elements_1);
+        if (0 <= x_27 && x_27 < (len(Heap[self, elements]): int)) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.elements (0378a.vpr@25.1--34.2) [79041]"}
+            HasDirectPerm(Mask, self, elements);
         }
         assume false;
       }
     havoc QPMask;
     
     // -- check if receiver acc(P(loc(self.elements, x)), write) is injective
-      assert {:msg "  Predicate might not be well-formed. Quantified resource P(loc(self.elements, x)) might not be injective. (0378a.vpr@25.1--34.2) [206670]"}
-        (forall x_4: int, x_4_1: int ::
-        { neverTriggered2(x_4), neverTriggered2(x_4_1) }
-        (((x_4 != x_4_1 && (0 <= x_4 && x_4 < (len_1(Heap[self, elements_1]): int))) && (0 <= x_4_1 && x_4_1 < (len_1(Heap[self, elements_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[self, elements_1], x_4): Ref) != (loc(Heap[self, elements_1], x_4_1): Ref)
+      assert {:msg "  Predicate might not be well-formed. Quantified resource P(loc(self.elements, x)) might not be injective. (0378a.vpr@25.1--34.2) [79042]"}
+        (forall x_4_2: int, x_4_3: int ::
+        { neverTriggered2(x_4_2), neverTriggered2(x_4_3) }
+        (((x_4_2 != x_4_3 && (0 <= x_4_2 && x_4_2 < (len(Heap[self, elements]): int))) && (0 <= x_4_3 && x_4_3 < (len(Heap[self, elements]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[self, elements], x_4_2): Ref) != (loc(Heap[self, elements], x_4_3): Ref)
       );
     
     // -- Define Inverse Function
-      assume (forall x_4: int ::
-        { Heap[null, P((loc(Heap[self, elements_1], x_4): Ref))] } { Mask[null, P((loc(Heap[self, elements_1], x_4): Ref))] } { (loc(Heap[self, elements_1], x_4): Ref) }
-        (0 <= x_4 && x_4 < (len_1(Heap[self, elements_1]): int)) && NoPerm < FullPerm ==> invRecv2((loc(Heap[self, elements_1], x_4): Ref)) == x_4 && qpRange2((loc(Heap[self, elements_1], x_4): Ref))
+      assume (forall x_4_2: int ::
+        { Heap[null, P((loc(Heap[self, elements], x_4_2): Ref))] } { Mask[null, P((loc(Heap[self, elements], x_4_2): Ref))] } { (loc(Heap[self, elements], x_4_2): Ref) }
+        (0 <= x_4_2 && x_4_2 < (len(Heap[self, elements]): int)) && NoPerm < FullPerm ==> invRecv2((loc(Heap[self, elements], x_4_2): Ref)) == x_4_2 && qpRange2((loc(Heap[self, elements], x_4_2): Ref))
       );
       assume (forall self_1_1: Ref ::
         { invRecv2(self_1_1) }
-        ((0 <= invRecv2(self_1_1) && invRecv2(self_1_1) < (len_1(Heap[self, elements_1]): int)) && NoPerm < FullPerm) && qpRange2(self_1_1) ==> (loc(Heap[self, elements_1], invRecv2(self_1_1)): Ref) == self_1_1
+        ((0 <= invRecv2(self_1_1) && invRecv2(self_1_1) < (len(Heap[self, elements]): int)) && NoPerm < FullPerm) && qpRange2(self_1_1) ==> (loc(Heap[self, elements], invRecv2(self_1_1)): Ref) == self_1_1
       );
     
     // -- Define updated permissions
       assume (forall self_1_1: Ref ::
         { QPMask[null, P(self_1_1)] }
-        ((0 <= invRecv2(self_1_1) && invRecv2(self_1_1) < (len_1(Heap[self, elements_1]): int)) && NoPerm < FullPerm) && qpRange2(self_1_1) ==> (NoPerm < FullPerm ==> (loc(Heap[self, elements_1], invRecv2(self_1_1)): Ref) == self_1_1) && QPMask[null, P(self_1_1)] == Mask[null, P(self_1_1)] + FullPerm
+        ((0 <= invRecv2(self_1_1) && invRecv2(self_1_1) < (len(Heap[self, elements]): int)) && NoPerm < FullPerm) && qpRange2(self_1_1) ==> (NoPerm < FullPerm ==> (loc(Heap[self, elements], invRecv2(self_1_1)): Ref) == self_1_1) && QPMask[null, P(self_1_1)] == Mask[null, P(self_1_1)] + FullPerm
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall self_1_1: Ref ::
         { QPMask[null, P(self_1_1)] }
-        !(((0 <= invRecv2(self_1_1) && invRecv2(self_1_1) < (len_1(Heap[self, elements_1]): int)) && NoPerm < FullPerm) && qpRange2(self_1_1)) ==> QPMask[null, P(self_1_1)] == Mask[null, P(self_1_1)]
+        !(((0 <= invRecv2(self_1_1) && invRecv2(self_1_1) < (len(Heap[self, elements]): int)) && NoPerm < FullPerm) && qpRange2(self_1_1)) ==> QPMask[null, P(self_1_1)] == Mask[null, P(self_1_1)]
       );
     Mask := QPMask;
     assume state(Heap, Mask);

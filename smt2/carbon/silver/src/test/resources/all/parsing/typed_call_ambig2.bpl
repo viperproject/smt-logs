@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:31
+// Date:         2025-01-26 21:43:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/parsing/typed_call_ambig2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/parsing/typed_call_ambig2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -218,7 +218,7 @@ axiom (forall arg1: Ref, arg2: Perm, arg3: Ref, arg4: Perm, arg1_2: Ref, arg2_2:
 type huhDomainType;
 
 // Translation of domain function myfun
-function  myfun(b_102: bool): bool;
+function  myfun(b_33: bool): bool;
 
 // ==================================================
 // Translation of all fields
@@ -232,7 +232,7 @@ axiom !IsWandField(f_7);
 // Translation of method m
 // ==================================================
 
-procedure m() returns ()
+procedure m_17() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -320,7 +320,7 @@ procedure m() returns ()
         ExhaleWellDef1Heap := ApplyingHeap;
         ExhaleWellDef1Mask := ApplyingMask;
         // permLe
-        assert {:msg "  Assert might fail. Magic wand instance not found. (typed_call_ambig2.vpr@13.10--13.71) [222439]"}
+        assert {:msg "  Assert might fail. Magic wand instance not found. (typed_call_ambig2.vpr@13.10--13.71) [93247]"}
           FullPerm <= ApplyingMask[null, wand(x, FullPerm, y, FullPerm)];
         ApplyingMask := ApplyingMask[null, wand(x, FullPerm, y, FullPerm):=ApplyingMask[null, wand(x, FullPerm, y, FullPerm)] - FullPerm];
       assume state(ApplyingHeap, ApplyingMask);
@@ -330,7 +330,7 @@ procedure m() returns ()
         ExhaleWellDef1Mask := ApplyingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (typed_call_ambig2.vpr@13.10--13.71) [222440]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (typed_call_ambig2.vpr@13.10--13.71) [93248]"}
             perm <= ApplyingMask[x, f_7];
         }
         ApplyingMask := ApplyingMask[x, f_7:=ApplyingMask[x, f_7] - perm];
@@ -369,7 +369,7 @@ procedure m() returns ()
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume false;
       }
-      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (typed_call_ambig2.vpr@13.10--13.71) [222441]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (typed_call_ambig2.vpr@13.10--13.71) [93249]"}
         HasDirectPerm(ExhaleWellDef0Mask, y, f_7);
     assume state(Heap, Mask);
 }

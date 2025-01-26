@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:51
+// Date:         2025-01-26 21:44:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/nestedRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/nestedRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -41,45 +41,45 @@ function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 function  SumHeap(Heap: HeapType, Heap1: HeapType, mask1: MaskType, Heap2: HeapType, mask2: MaskType): bool;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -102,46 +102,46 @@ axiom (forall Heap0: HeapType, Heap1: HeapType, Heap2: HeapType ::
   succHeapTrans(Heap0, Heap1) && succHeap(Heap1, Heap2) ==> succHeapTrans(Heap0, Heap2)
 );
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref, f_37: (Field A B) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, f_37] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_46, f_37) ==> Heap[o_46, f_37] == ExhaleHeap[o_46, f_37]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_53: (Field A B) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_53] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_53) ==> Heap[o_41, f_53] == ExhaleHeap[o_41, f_53]
 );
 // Frame all predicate mask locations of predicates with direct permission. But don't propagate information  of locations that are not known-folded to allow for equating with multiple different (but compatible) heaps
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> ExhaleHeap[null, PredicateMaskField(pm_f_22)][o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> ExhaleHeap[null, PredicateMaskField(pm_f_20)][o2_20, f_53]
   )
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // Frame all wand mask locations of wands with direct permission (but don't propagate information about locations that are not known-folded)
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[null, WandMaskField(pm_f_22)][o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> ExhaleHeap[null, WandMaskField(pm_f_22)][o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[null, WandMaskField(pm_f_20)][o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> ExhaleHeap[null, WandMaskField(pm_f_20)][o2_20, f_53]
   )
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, $allocated] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> Heap[o_46, $allocated] ==> ExhaleHeap[o_46, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
 );
 // ==================================================
 // Sum of heaps
@@ -241,26 +241,26 @@ procedure main() returns ()
   var skiploop2_lblGuard: bool;
   var loop2_lblGuard: bool;
   var loop1_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
-  var j_9: bool;
-  var ExhaleWellDef0Mask: MaskType;
+  var j: bool;
   var ExhaleWellDef0Heap: HeapType;
-  var Labelloop1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labelloop1Heap: HeapType;
+  var Labelloop1Mask: MaskType;
   var frameMask6: MaskType;
   var frameHeap6: HeapType;
-  var Labelloop2Mask: MaskType;
   var Labelloop2Heap: HeapType;
+  var Labelloop2Mask: MaskType;
   var frameMask10: MaskType;
   var frameHeap10: HeapType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var Labelskiploop2Mask: MaskType;
   var Labelskiploop2Heap: HeapType;
-  var Labelskiploop1Mask: MaskType;
+  var Labelskiploop2Mask: MaskType;
   var Labelskiploop1Heap: HeapType;
+  var Labelskiploop1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -274,8 +274,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // i := 1 -- nestedRef.vpr@6.5--6.19
@@ -284,14 +284,14 @@ procedure main() returns ()
   
   // -- Translating statement: // id = 2
   // j := true -- nestedRef.vpr@7.5--7.23
-    j_9 := true;
+    j := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 3
   // assert i <= 5 -- nestedRef.vpr@9.5--9.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@9.12--9.18) [92336]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@9.12--9.18) [198973]"}
       i <= 5;
     assume state(Heap, Mask);
   
@@ -317,15 +317,15 @@ procedure main() returns ()
   // label loop1
   //   invariant true -- nestedRef.vpr@14.5--14.31
     loop1:
-    Labelloop1Mask := Mask;
     Labelloop1Heap := Heap;
+    Labelloop1Mask := Mask;
     loop1_lblGuard := true;
     
     // -- Before loop head6
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
       
       // -- Store frame in mask associated with loop
         frameMask6 := Mask;
@@ -334,7 +334,7 @@ procedure main() returns ()
     // -- Code for loop head 6
       
       // -- Havoc loop written variables (except locals)
-        havoc i, j_9;
+        havoc j, i;
       
       // -- Check definedness of invariant
         if (*) {
@@ -352,14 +352,14 @@ procedure main() returns ()
   
   // -- Translating statement: // id = 7
   // assert i <= 5 -- nestedRef.vpr@16.9--16.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@16.16--16.22) [92337]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@16.16--16.22) [198974]"}
       i <= 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: if (!j) -- nestedRef.vpr@17.9--19.10
-    if (!j_9) {
+    if (!j) {
       
       // -- Translating statement: // id = 8
   // goto skiploop2 -- nestedRef.vpr@18.13--18.27
@@ -380,15 +380,15 @@ procedure main() returns ()
   // label loop2
   //   invariant true -- nestedRef.vpr@21.9--21.35
     loop2:
-    Labelloop2Mask := Mask;
     Labelloop2Heap := Heap;
+    Labelloop2Mask := Mask;
     loop2_lblGuard := true;
     
     // -- Before loop head10
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
       
       // -- Store frame in mask associated with loop
         frameMask10 := Mask;
@@ -397,7 +397,7 @@ procedure main() returns ()
     // -- Code for loop head 10
       
       // -- Havoc loop written variables (except locals)
-        havoc j_9;
+        havoc j;
       
       // -- Check definedness of invariant
         if (*) {
@@ -415,20 +415,20 @@ procedure main() returns ()
   
   // -- Translating statement: // id = 11
   // j := false -- nestedRef.vpr@23.13--23.23
-    j_9 := false;
+    j := false;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 12
   // // LoopInfo(None,Set(6, 10))
   // assert i <= 5 -- nestedRef.vpr@24.13--24.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@24.20--24.26) [92338]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@24.20--24.26) [198975]"}
       i <= 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: if (j) -- nestedRef.vpr@25.13--27.14
-    if (j_9) {
+    if (j) {
       
       // -- Translating statement: // id = 13
   // goto loop2 -- nestedRef.vpr@26.17--26.27
@@ -441,8 +441,8 @@ procedure main() returns ()
               assume false;
             }
           // Exhale invariant
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           // Terminate execution
           assume false;
         assume state(Heap, Mask);
@@ -469,8 +469,8 @@ procedure main() returns ()
   // label skiploop2
   //   invariant true -- nestedRef.vpr@29.9--29.39
     skiploop2:
-    Labelskiploop2Mask := Mask;
     Labelskiploop2Heap := Heap;
+    Labelskiploop2Mask := Mask;
     skiploop2_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -482,9 +482,9 @@ procedure main() returns ()
   // -- Translating statement: // id = 17
   // // LoopInfo(None,Set(6))
   // assert i <= 5 -- nestedRef.vpr@32.9--32.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@32.16--32.22) [92339]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@32.16--32.22) [198976]"}
       i <= 5;
     assume state(Heap, Mask);
   
@@ -502,8 +502,8 @@ procedure main() returns ()
               assume false;
             }
           // Exhale invariant
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           // Terminate execution
           assume false;
         assume state(Heap, Mask);
@@ -530,16 +530,16 @@ procedure main() returns ()
   // label skiploop1
   //   invariant true -- nestedRef.vpr@36.5--36.35
     skiploop1:
-    Labelskiploop1Mask := Mask;
     Labelskiploop1Heap := Heap;
+    Labelskiploop1Mask := Mask;
     skiploop1_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 21
   // assert i == 5 -- nestedRef.vpr@38.5--38.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion i == 5 might not hold. (nestedRef.vpr@38.12--38.18) [92340]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion i == 5 might not hold. (nestedRef.vpr@38.12--38.18) [198977]"}
       i == 5;
     assume state(Heap, Mask);
 }

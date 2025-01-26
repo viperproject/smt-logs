@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:03:46
+// Date:         2025-01-26 21:44:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/tree_delete_min.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/tree_delete_min-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_28: Ref, f_32: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_28, f_32] }
-  Heap[o_28, $allocated] ==> Heap[Heap[o_28, f_32], $allocated]
+axiom (forall o_11: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_11, f_17] }
+  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_17], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_29: Ref, f_33: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_29, f_33] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_29, f_33) ==> Heap[o_29, f_33] == ExhaleHeap[o_29, f_33]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_43: Ref, f_56: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_43, f_56] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_43, f_56) ==> Heap[o_43, f_56] == ExhaleHeap[o_43, f_56]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10), ExhaleHeap[null, PredicateMaskField(pm_f_10)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> Heap[null, PredicateMaskField(pm_f_10)] == ExhaleHeap[null, PredicateMaskField(pm_f_10)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_21), ExhaleHeap[null, PredicateMaskField(pm_f_21)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsPredicateField(pm_f_21) ==> Heap[null, PredicateMaskField(pm_f_21)] == ExhaleHeap[null, PredicateMaskField(pm_f_21)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_33: (Field A B) ::
-    { ExhaleHeap[o2_10, f_33] }
-    Heap[null, PredicateMaskField(pm_f_10)][o2_10, f_33] ==> Heap[o2_10, f_33] == ExhaleHeap[o2_10, f_33]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_21) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsPredicateField(pm_f_21) ==> (forall <A, B> o2_21: Ref, f_56: (Field A B) ::
+    { ExhaleHeap[o2_21, f_56] }
+    Heap[null, PredicateMaskField(pm_f_21)][o2_21, f_56] ==> Heap[o2_21, f_56] == ExhaleHeap[o2_21, f_56]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10), ExhaleHeap[null, WandMaskField(pm_f_10)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> Heap[null, WandMaskField(pm_f_10)] == ExhaleHeap[null, WandMaskField(pm_f_10)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_21), ExhaleHeap[null, WandMaskField(pm_f_21)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsWandField(pm_f_21) ==> Heap[null, WandMaskField(pm_f_21)] == ExhaleHeap[null, WandMaskField(pm_f_21)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_33: (Field A B) ::
-    { ExhaleHeap[o2_10, f_33] }
-    Heap[null, WandMaskField(pm_f_10)][o2_10, f_33] ==> Heap[o2_10, f_33] == ExhaleHeap[o2_10, f_33]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_21) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsWandField(pm_f_21) ==> (forall <A, B> o2_21: Ref, f_56: (Field A B) ::
+    { ExhaleHeap[o2_21, f_56] }
+    Heap[null, WandMaskField(pm_f_21)][o2_21, f_56] ==> Heap[o2_21, f_56] == ExhaleHeap[o2_21, f_56]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_29: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_29, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_29, $allocated] ==> ExhaleHeap[o_29, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_43: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_43, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_43, $allocated] ==> ExhaleHeap[o_43, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_28: Ref, f_34: (Field A B), v: B ::
-  { Heap[o_28, f_34:=v] }
-  succHeap(Heap, Heap[o_28, f_34:=v])
+axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_57: (Field A B), v: B ::
+  { Heap[o_11, f_57:=v] }
+  succHeap(Heap, Heap[o_11, f_57:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -582,26 +582,26 @@ axiom (forall arg1: Ref, arg2: Perm, arg3: Ref, arg4: Ref, arg5: (Seq int), arg6
 // Translation of all fields
 // ==================================================
 
-const unique v_36: Field NormalField int;
-axiom !IsPredicateField(v_36);
-axiom !IsWandField(v_36);
-const unique l_8: Field NormalField Ref;
-axiom !IsPredicateField(l_8);
-axiom !IsWandField(l_8);
-const unique r_6: Field NormalField Ref;
-axiom !IsPredicateField(r_6);
-axiom !IsWandField(r_6);
+const unique v_35: Field NormalField int;
+axiom !IsPredicateField(v_35);
+axiom !IsWandField(v_35);
+const unique l: Field NormalField Ref;
+axiom !IsPredicateField(l);
+axiom !IsWandField(l);
+const unique r_11: Field NormalField Ref;
+axiom !IsPredicateField(r_11);
+axiom !IsWandField(r_11);
 
 // ==================================================
 // Translation of function val
 // ==================================================
 
 // Uninterpreted function definitions
-function  val_2(Heap: HeapType, x: Ref): int;
+function  val_3(Heap: HeapType, x: Ref): int;
 function  val'(Heap: HeapType, x: Ref): int;
 axiom (forall Heap: HeapType, x: Ref ::
-  { val_2(Heap, x) }
-  val_2(Heap, x) == val'(Heap, x) && dummyFunction(val#triggerStateless(x))
+  { val_3(Heap, x) }
+  val_3(Heap, x) == val'(Heap, x) && dummyFunction(val#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { val'(Heap, x) }
@@ -610,8 +610,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), val_2(Heap, x) } { state(Heap, Mask), val#triggerStateless(x), Tree#trigger(Heap, Tree(x)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> x != null ==> val_2(Heap, x) == Heap[x, v_36]
+  { state(Heap, Mask), val_3(Heap, x) } { state(Heap, Mask), val#triggerStateless(x), Tree#trigger(Heap, Tree(x)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> x != null ==> val_3(Heap, x) == Heap[x, v_35]
 );
 
 // Framing axioms
@@ -658,66 +658,66 @@ procedure val#definedness(x: Ref) returns (Result: int)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume Tree#trigger(UnfoldingHeap, Tree(x));
-      assume UnfoldingHeap[null, Tree(x)] == FrameFragment((if x == null then EmptyFrame else CombineFrames(FrameFragment(UnfoldingHeap[x, v_36]), CombineFrames(FrameFragment(UnfoldingHeap[x, l_8]), CombineFrames(UnfoldingHeap[null, Tree(UnfoldingHeap[x, l_8])], CombineFrames(FrameFragment(UnfoldingHeap[x, r_6]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_6])]))))));
+      assume UnfoldingHeap[null, Tree(x)] == FrameFragment((if x == null then EmptyFrame else CombineFrames(FrameFragment(UnfoldingHeap[x, v_35]), CombineFrames(FrameFragment(UnfoldingHeap[x, l]), CombineFrames(UnfoldingHeap[null, Tree(UnfoldingHeap[x, l])], CombineFrames(FrameFragment(UnfoldingHeap[x, r_11]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_11])]))))));
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@28.1--30.34) [120677]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@28.1--30.34) [205904]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree(x)];
       if (x == null) {
       } else {
         perm := FullPerm;
         assume x != null;
-        UnfoldingMask := UnfoldingMask[x, v_36:=UnfoldingMask[x, v_36] + perm];
+        UnfoldingMask := UnfoldingMask[x, v_35:=UnfoldingMask[x, v_35] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
         assume x != null;
-        UnfoldingMask := UnfoldingMask[x, l_8:=UnfoldingMask[x, l_8] + perm];
+        UnfoldingMask := UnfoldingMask[x, l:=UnfoldingMask[x, l] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[x, l_8]):=UnfoldingMask[null, Tree(UnfoldingHeap[x, l_8])] + perm];
+        UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[x, l]):=UnfoldingMask[null, Tree(UnfoldingHeap[x, l])] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(Tree(x), UnfoldingHeap[null, Tree(x)], Tree(UnfoldingHeap[x, l_8]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, l_8])]);
+          assume InsidePredicate(Tree(x), UnfoldingHeap[null, Tree(x)], Tree(UnfoldingHeap[x, l]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, l])]);
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
         assume x != null;
-        UnfoldingMask := UnfoldingMask[x, r_6:=UnfoldingMask[x, r_6] + perm];
+        UnfoldingMask := UnfoldingMask[x, r_11:=UnfoldingMask[x, r_11] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[x, r_6]):=UnfoldingMask[null, Tree(UnfoldingHeap[x, r_6])] + perm];
+        UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[x, r_11]):=UnfoldingMask[null, Tree(UnfoldingHeap[x, r_11])] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(Tree(x), UnfoldingHeap[null, Tree(x)], Tree(UnfoldingHeap[x, r_6]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_6])]);
+          assume InsidePredicate(Tree(x), UnfoldingHeap[null, Tree(x)], Tree(UnfoldingHeap[x, r_11]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_11])]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.v (tree_delete_min.vpr@28.1--30.34) [120678]"}
-        HasDirectPerm(UnfoldingMask, x, v_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.v (tree_delete_min.vpr@28.1--30.34) [205905]"}
+        HasDirectPerm(UnfoldingMask, x, v_35);
       
       // -- Free assumptions (exp module)
         if (x == null) {
         } else {
-          Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, v_36:=true]];
-          Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, l_8:=true]];
+          Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, v_35:=true]];
+          Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, l:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, Tree#sm(x)][o_15, f_20] || Heap[null, Tree#sm(Heap[x, l_8])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, Tree#sm(x)][o_5, f_11] || Heap[null, Tree#sm(Heap[x, l])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, Tree#sm(x):=newPMask];
-          Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, r_6:=true]];
+          Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, r_11:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-            { newPMask[o_16, f_21] }
-            Heap[null, Tree#sm(x)][o_16, f_21] || Heap[null, Tree#sm(Heap[x, r_6])][o_16, f_21] ==> newPMask[o_16, f_21]
+          assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+            { newPMask[o_6, f_12] }
+            Heap[null, Tree#sm(x)][o_6, f_12] || Heap[null, Tree#sm(Heap[x, r_11])][o_6, f_12] ==> newPMask[o_6, f_12]
           );
           Heap := Heap[null, Tree#sm(x):=newPMask];
         }
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := Heap[x, v_36];
+    Result := Heap[x, v_35];
 }
 
 // ==================================================
@@ -725,11 +725,11 @@ procedure val#definedness(x: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  vals(Heap: HeapType, x: Ref): Seq int;
+function  vals_1(Heap: HeapType, x: Ref): Seq int;
 function  vals'(Heap: HeapType, x: Ref): Seq int;
 axiom (forall Heap: HeapType, x: Ref ::
-  { vals(Heap, x) }
-  vals(Heap, x) == vals'(Heap, x) && dummyFunction(vals#triggerStateless(x))
+  { vals_1(Heap, x) }
+  vals_1(Heap, x) == vals'(Heap, x) && dummyFunction(vals#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { vals'(Heap, x) }
@@ -738,8 +738,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), vals(Heap, x) } { state(Heap, Mask), vals#triggerStateless(x), Tree#trigger(Heap, Tree(x)), Tree#trigger(Heap, Tree(x)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> vals(Heap, x) == (if x == null then (Seq#Empty(): Seq int) else Seq#Append(Seq#Append(vals'(Heap, Heap[x, l_8]), Seq#Singleton(Heap[x, v_36])), vals'(Heap, Heap[x, r_6])))
+  { state(Heap, Mask), vals_1(Heap, x) } { state(Heap, Mask), vals#triggerStateless(x), Tree#trigger(Heap, Tree(x)), Tree#trigger(Heap, Tree(x)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> vals_1(Heap, x) == (if x == null then (Seq#Empty(): Seq int) else Seq#Append(Seq#Append(vals'(Heap, Heap[x, l]), Seq#Singleton(Heap[x, v_35])), vals'(Heap, Heap[x, r_11])))
 );
 
 // Framing axioms
@@ -788,49 +788,49 @@ procedure vals#definedness(x: Ref) returns (Result: (Seq int))
         UnfoldingHeap := Heap;
         UnfoldingMask := Mask;
         assume Tree#trigger(UnfoldingHeap, Tree(x));
-        assume UnfoldingHeap[null, Tree(x)] == FrameFragment((if x == null then EmptyFrame else CombineFrames(FrameFragment(UnfoldingHeap[x, v_36]), CombineFrames(FrameFragment(UnfoldingHeap[x, l_8]), CombineFrames(UnfoldingHeap[null, Tree(UnfoldingHeap[x, l_8])], CombineFrames(FrameFragment(UnfoldingHeap[x, r_6]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_6])]))))));
+        assume UnfoldingHeap[null, Tree(x)] == FrameFragment((if x == null then EmptyFrame else CombineFrames(FrameFragment(UnfoldingHeap[x, v_35]), CombineFrames(FrameFragment(UnfoldingHeap[x, l]), CombineFrames(UnfoldingHeap[null, Tree(UnfoldingHeap[x, l])], CombineFrames(FrameFragment(UnfoldingHeap[x, r_11]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_11])]))))));
         ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@32.1--34.90) [120679]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@32.1--34.90) [205906]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree(x)];
         if (x == null) {
         } else {
           perm := FullPerm;
           assume x != null;
-          UnfoldingMask := UnfoldingMask[x, v_36:=UnfoldingMask[x, v_36] + perm];
+          UnfoldingMask := UnfoldingMask[x, v_35:=UnfoldingMask[x, v_35] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := FullPerm;
           assume x != null;
-          UnfoldingMask := UnfoldingMask[x, l_8:=UnfoldingMask[x, l_8] + perm];
+          UnfoldingMask := UnfoldingMask[x, l:=UnfoldingMask[x, l] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := FullPerm;
-          UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[x, l_8]):=UnfoldingMask[null, Tree(UnfoldingHeap[x, l_8])] + perm];
+          UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[x, l]):=UnfoldingMask[null, Tree(UnfoldingHeap[x, l])] + perm];
           
           // -- Extra unfolding of predicate
-            assume InsidePredicate(Tree(x), UnfoldingHeap[null, Tree(x)], Tree(UnfoldingHeap[x, l_8]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, l_8])]);
+            assume InsidePredicate(Tree(x), UnfoldingHeap[null, Tree(x)], Tree(UnfoldingHeap[x, l]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, l])]);
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := FullPerm;
           assume x != null;
-          UnfoldingMask := UnfoldingMask[x, r_6:=UnfoldingMask[x, r_6] + perm];
+          UnfoldingMask := UnfoldingMask[x, r_11:=UnfoldingMask[x, r_11] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := FullPerm;
-          UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[x, r_6]):=UnfoldingMask[null, Tree(UnfoldingHeap[x, r_6])] + perm];
+          UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[x, r_11]):=UnfoldingMask[null, Tree(UnfoldingHeap[x, r_11])] + perm];
           
           // -- Extra unfolding of predicate
-            assume InsidePredicate(Tree(x), UnfoldingHeap[null, Tree(x)], Tree(UnfoldingHeap[x, r_6]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_6])]);
+            assume InsidePredicate(Tree(x), UnfoldingHeap[null, Tree(x)], Tree(UnfoldingHeap[x, r_11]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_11])]);
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.l (tree_delete_min.vpr@32.1--34.90) [120680]"}
-          HasDirectPerm(UnfoldingMask, x, l_8);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.l (tree_delete_min.vpr@32.1--34.90) [205907]"}
+          HasDirectPerm(UnfoldingMask, x, l);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x.l) (tree_delete_min.vpr@34.54--34.63) [120681]"}
-            NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree(UnfoldingHeap[x, l_8])];
+          assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x.l) (tree_delete_min.vpr@34.54--34.63) [205908]"}
+            NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree(UnfoldingHeap[x, l])];
           // Finish exhale
           havoc ExhaleHeap;
           assume IdenticalOnKnownLocations(UnfoldingHeap, ExhaleHeap, UnfoldingMask);
@@ -839,19 +839,19 @@ procedure vals#definedness(x: Ref) returns (Result: (Seq int))
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume vals#trigger(UnfoldingHeap[null, Tree(UnfoldingHeap[x, l_8])], UnfoldingHeap[x, l_8]);
+          assume vals#trigger(UnfoldingHeap[null, Tree(UnfoldingHeap[x, l])], UnfoldingHeap[x, l]);
         }
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.v (tree_delete_min.vpr@32.1--34.90) [120682]"}
-          HasDirectPerm(UnfoldingMask, x, v_36);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.r (tree_delete_min.vpr@32.1--34.90) [120683]"}
-          HasDirectPerm(UnfoldingMask, x, r_6);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.v (tree_delete_min.vpr@32.1--34.90) [205909]"}
+          HasDirectPerm(UnfoldingMask, x, v_35);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.r (tree_delete_min.vpr@32.1--34.90) [205910]"}
+          HasDirectPerm(UnfoldingMask, x, r_11);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x.r) (tree_delete_min.vpr@34.79--34.88) [120684]"}
-            NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree(UnfoldingHeap[x, r_6])];
+          assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x.r) (tree_delete_min.vpr@34.79--34.88) [205911]"}
+            NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree(UnfoldingHeap[x, r_11])];
           // Finish exhale
           havoc ExhaleHeap;
           assume IdenticalOnKnownLocations(UnfoldingHeap, ExhaleHeap, UnfoldingMask);
@@ -860,25 +860,25 @@ procedure vals#definedness(x: Ref) returns (Result: (Seq int))
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume vals#trigger(UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_6])], UnfoldingHeap[x, r_6]);
+          assume vals#trigger(UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_11])], UnfoldingHeap[x, r_11]);
         }
         
         // -- Free assumptions (exp module)
           if (x == null) {
           } else {
-            Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, v_36:=true]];
-            Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, l_8:=true]];
+            Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, v_35:=true]];
+            Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, l:=true]];
             havoc newPMask;
-            assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-              { newPMask[o_52, f_55] }
-              Heap[null, Tree#sm(x)][o_52, f_55] || Heap[null, Tree#sm(Heap[x, l_8])][o_52, f_55] ==> newPMask[o_52, f_55]
+            assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+              { newPMask[o_40, f_52] }
+              Heap[null, Tree#sm(x)][o_40, f_52] || Heap[null, Tree#sm(Heap[x, l])][o_40, f_52] ==> newPMask[o_40, f_52]
             );
             Heap := Heap[null, Tree#sm(x):=newPMask];
-            Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, r_6:=true]];
+            Heap := Heap[null, Tree#sm(x):=Heap[null, Tree#sm(x)][x, r_11:=true]];
             havoc newPMask;
-            assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-              { newPMask[o_53, f_56] }
-              Heap[null, Tree#sm(x)][o_53, f_56] || Heap[null, Tree#sm(Heap[x, r_6])][o_53, f_56] ==> newPMask[o_53, f_56]
+            assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+              { newPMask[o_42, f_55] }
+              Heap[null, Tree#sm(x)][o_42, f_55] || Heap[null, Tree#sm(Heap[x, r_11])][o_42, f_55] ==> newPMask[o_42, f_55]
             );
             Heap := Heap[null, Tree#sm(x):=newPMask];
           }
@@ -886,7 +886,7 @@ procedure vals#definedness(x: Ref) returns (Result: (Seq int))
       }
   
   // -- Translate function body
-    Result := (if x == null then (Seq#Empty(): Seq int) else Seq#Append(Seq#Append(vals(Heap, Heap[x, l_8]), Seq#Singleton(Heap[x, v_36])), vals(Heap, Heap[x, r_6])));
+    Result := (if x == null then (Seq#Empty(): Seq int) else Seq#Append(Seq#Append(vals_1(Heap, Heap[x, l]), Seq#Singleton(Heap[x, v_35])), vals_1(Heap, Heap[x, r_11])));
 }
 
 // ==================================================
@@ -941,29 +941,29 @@ procedure Tree#definedness(x: Ref) returns ()
     } else {
       perm := FullPerm;
       assume x != null;
-      Mask := Mask[x, v_36:=Mask[x, v_36] + perm];
+      Mask := Mask[x, v_35:=Mask[x, v_35] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume x != null;
-      Mask := Mask[x, l_8:=Mask[x, l_8] + perm];
+      Mask := Mask[x, l:=Mask[x, l] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(Tree(x.l), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.l (tree_delete_min.vpr@20.1--26.2) [120685]"}
-          HasDirectPerm(Mask, x, l_8);
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.l (tree_delete_min.vpr@20.1--26.2) [205912]"}
+          HasDirectPerm(Mask, x, l);
       perm := FullPerm;
-      Mask := Mask[null, Tree(Heap[x, l_8]):=Mask[null, Tree(Heap[x, l_8])] + perm];
+      Mask := Mask[null, Tree(Heap[x, l]):=Mask[null, Tree(Heap[x, l])] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume x != null;
-      Mask := Mask[x, r_6:=Mask[x, r_6] + perm];
+      Mask := Mask[x, r_11:=Mask[x, r_11] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(Tree(x.r), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.r (tree_delete_min.vpr@20.1--26.2) [120686]"}
-          HasDirectPerm(Mask, x, r_6);
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.r (tree_delete_min.vpr@20.1--26.2) [205913]"}
+          HasDirectPerm(Mask, x, r_11);
       perm := FullPerm;
-      Mask := Mask[null, Tree(Heap[x, r_6]):=Mask[null, Tree(Heap[x, r_6])] + perm];
+      Mask := Mask[null, Tree(Heap[x, r_11]):=Mask[null, Tree(Heap[x, r_11])] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1013,7 +1013,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   var b_4: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var arg_1: Ref;
+  var arg: Ref;
   var TempMask: MaskType;
   var newPMask: PMaskType;
   var b_5: bool;
@@ -1022,7 +1022,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   var b_6: bool;
   var Result_3Heap: HeapType;
   var Result_3Mask: MaskType;
-  var arg_1_1: Ref;
+  var arg_1_13: Ref;
   var b_7: bool;
   var Result_4Heap: HeapType;
   var Result_4Mask: MaskType;
@@ -1033,7 +1033,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_9: bool;
-  var arg_2: Ref;
+  var arg_2_13: Ref;
   var b_10: bool;
   var Result_6Heap: HeapType;
   var Result_6Mask: MaskType;
@@ -1067,14 +1067,14 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   var b_15: bool;
   var Result_8Heap: HeapType;
   var Result_8Mask: MaskType;
-  var arg_3: Ref;
+  var arg_3_13: Ref;
   var b_16: bool;
   var Result_9Heap: HeapType;
   var Result_9Mask: MaskType;
   var b_17: bool;
   var Result_10Heap: HeapType;
   var Result_10Mask: MaskType;
-  var arg_4: Ref;
+  var arg_4_13: Ref;
   var b_18: bool;
   var Result_11Heap: HeapType;
   var Result_11Mask: MaskType;
@@ -1095,15 +1095,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   var b_23: bool;
   var Result_14Heap: HeapType;
   var Result_14Mask: MaskType;
-  var arg_5: Ref;
+  var arg_5_12: Ref;
   var b_24_1: bool;
   var Result_15Heap: HeapType;
   var Result_15Mask: MaskType;
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
-  var b_25: bool;
-  var arg_6: Ref;
-  var b_26: bool;
+  var b_25_1: bool;
+  var arg_6_12: Ref;
+  var b_26_1: bool;
   var Result_16Heap: HeapType;
   var Result_16Mask: MaskType;
   
@@ -1145,7 +1145,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(z) (tree_delete_min.vpr@43.11--43.18) [120687]"}
+        assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(z) (tree_delete_min.vpr@43.11--43.18) [205914]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Tree(z)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1159,13 +1159,13 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@43.26--43.33) [120688]"}
+        assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@43.26--43.33) [205915]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Tree(x)];
         // Finish exhale
         // Stop execution
         assume false;
       }
-    assume Seq#Equal(vals(PostHeap, z), Seq#Drop(vals(oldHeap, x), 1));
+    assume Seq#Equal(vals_1(PostHeap, z), Seq#Drop(vals_1(oldHeap, x), 1));
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -1180,12 +1180,12 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   
   // -- Translating statement: unfold acc(Tree(p), write) -- tree_delete_min.vpr@51.3--51.22
     assume Tree#trigger(Heap, Tree(p_1));
-    assume Heap[null, Tree(p_1)] == FrameFragment((if p_1 == null then EmptyFrame else CombineFrames(FrameFragment(Heap[p_1, v_36]), CombineFrames(FrameFragment(Heap[p_1, l_8]), CombineFrames(Heap[null, Tree(Heap[p_1, l_8])], CombineFrames(FrameFragment(Heap[p_1, r_6]), Heap[null, Tree(Heap[p_1, r_6])]))))));
+    assume Heap[null, Tree(p_1)] == FrameFragment((if p_1 == null then EmptyFrame else CombineFrames(FrameFragment(Heap[p_1, v_35]), CombineFrames(FrameFragment(Heap[p_1, l]), CombineFrames(Heap[null, Tree(Heap[p_1, l])], CombineFrames(FrameFragment(Heap[p_1, r_11]), Heap[null, Tree(Heap[p_1, r_11])]))))));
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Tree(p) might fail. There might be insufficient permission to access Tree(p) (tree_delete_min.vpr@51.3--51.22) [120691]"}
+      assert {:msg "  Unfolding Tree(p) might fail. There might be insufficient permission to access Tree(p) (tree_delete_min.vpr@51.3--51.22) [205918]"}
         perm <= Mask[null, Tree(p_1)];
     }
     Mask := Mask[null, Tree(p_1):=Mask[null, Tree(p_1)] - perm];
@@ -1199,27 +1199,27 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
     } else {
       perm := FullPerm;
       assume p_1 != null;
-      Mask := Mask[p_1, v_36:=Mask[p_1, v_36] + perm];
+      Mask := Mask[p_1, v_35:=Mask[p_1, v_35] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume p_1 != null;
-      Mask := Mask[p_1, l_8:=Mask[p_1, l_8] + perm];
+      Mask := Mask[p_1, l:=Mask[p_1, l] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      Mask := Mask[null, Tree(Heap[p_1, l_8]):=Mask[null, Tree(Heap[p_1, l_8])] + perm];
+      Mask := Mask[null, Tree(Heap[p_1, l]):=Mask[null, Tree(Heap[p_1, l])] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(Tree(p_1), Heap[null, Tree(p_1)], Tree(Heap[p_1, l_8]), Heap[null, Tree(Heap[p_1, l_8])]);
+        assume InsidePredicate(Tree(p_1), Heap[null, Tree(p_1)], Tree(Heap[p_1, l]), Heap[null, Tree(Heap[p_1, l])]);
       assume state(Heap, Mask);
       perm := FullPerm;
       assume p_1 != null;
-      Mask := Mask[p_1, r_6:=Mask[p_1, r_6] + perm];
+      Mask := Mask[p_1, r_11:=Mask[p_1, r_11] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      Mask := Mask[null, Tree(Heap[p_1, r_6]):=Mask[null, Tree(Heap[p_1, r_6])] + perm];
+      Mask := Mask[null, Tree(Heap[p_1, r_11]):=Mask[null, Tree(Heap[p_1, r_11])] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(Tree(p_1), Heap[null, Tree(p_1)], Tree(Heap[p_1, r_6]), Heap[null, Tree(Heap[p_1, r_6])]);
+        assume InsidePredicate(Tree(p_1), Heap[null, Tree(p_1)], Tree(Heap[p_1, r_11]), Heap[null, Tree(Heap[p_1, r_11])]);
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1228,15 +1228,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   // -- Translating statement: plvs := vals(p.l) -- tree_delete_min.vpr@52.3--52.20
     
     // -- Check definedness of vals(p.l)
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@52.3--52.20) [120697]"}
-        HasDirectPerm(Mask, p_1, l_8);
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@52.3--52.20) [205924]"}
+        HasDirectPerm(Mask, p_1, l);
       if (*) {
         // Exhale precondition of function application
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@52.11--52.20) [120698]"}
-          NoPerm < perm ==> NoPerm < Mask[null, Tree(Heap[p_1, l_8])];
+        assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@52.11--52.20) [205925]"}
+          NoPerm < perm ==> NoPerm < Mask[null, Tree(Heap[p_1, l])];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1244,22 +1244,22 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         // Stop execution
         assume false;
       }
-    plvs := vals(Heap, Heap[p_1, l_8]);
+    plvs := vals_1(Heap, Heap[p_1, l]);
     assume state(Heap, Mask);
   
   // -- Translating statement: if (p.l == null) -- tree_delete_min.vpr@54.3--90.4
     
     // -- Check definedness of p.l == null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@54.7--54.18) [120699]"}
-        HasDirectPerm(Mask, p_1, l_8);
-    if (Heap[p_1, l_8] == null) {
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@54.7--54.18) [205926]"}
+        HasDirectPerm(Mask, p_1, l);
+    if (Heap[p_1, l] == null) {
       
       // -- Translating statement: z := p.r -- tree_delete_min.vpr@55.5--55.13
         
         // -- Check definedness of p.r
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access p.r (tree_delete_min.vpr@55.5--55.13) [120700]"}
-            HasDirectPerm(Mask, p_1, r_6);
-        z := Heap[p_1, r_6];
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access p.r (tree_delete_min.vpr@55.5--55.13) [205927]"}
+            HasDirectPerm(Mask, p_1, r_11);
+        z := Heap[p_1, r_11];
         assume state(Heap, Mask);
       
       // -- Translating statement: assert vals(x.l) == Seq[Int]() -- tree_delete_min.vpr@57.5--57.35
@@ -1267,15 +1267,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of vals(x.l) == Seq[Int]()
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.l (tree_delete_min.vpr@57.12--57.35) [120701]"}
-            HasDirectPerm(ExhaleWellDef0Mask, x, l_8);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.l (tree_delete_min.vpr@57.12--57.35) [205928]"}
+            HasDirectPerm(ExhaleWellDef0Mask, x, l);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x.l) (tree_delete_min.vpr@57.12--57.21) [120702]"}
-              NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree(ExhaleWellDef0Heap[x, l_8])];
+            assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x.l) (tree_delete_min.vpr@57.12--57.21) [205929]"}
+              NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree(ExhaleWellDef0Heap[x, l])];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1283,8 +1283,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion vals(x.l) == Seq[Int]() might not hold. (tree_delete_min.vpr@57.12--57.35) [120703]"}
-          Seq#Equal(vals(Heap, Heap[x, l_8]), (Seq#Empty(): Seq int));
+        assert {:msg "  Assert might fail. Assertion vals(x.l) == Seq[Int]() might not hold. (tree_delete_min.vpr@57.12--57.35) [205930]"}
+          Seq#Equal(vals_1(Heap, Heap[x, l]), (Seq#Empty(): Seq int));
         assume state(Heap, Mask);
     } else {
       
@@ -1304,7 +1304,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
           if (b_1_1) {
             perm := FullPerm;
             b_1_1 := b_1_1 && p_1 != null;
-            Ops_1Mask := Ops_1Mask[p_1, l_8:=Ops_1Mask[p_1, l_8] + perm];
+            Ops_1Mask := Ops_1Mask[p_1, l:=Ops_1Mask[p_1, l] + perm];
             b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
           }
           if (b_1_1) {
@@ -1312,12 +1312,12 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
               if (b_1_1) {
                 
                 // -- Check definedness of acc(Tree(p.l), write)
-                  assert {:msg "  Packaging wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@59.5--61.6) [120704]"}
-                    HasDirectPerm(Ops_1Mask, p_1, l_8);
+                  assert {:msg "  Packaging wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@59.5--61.6) [205931]"}
+                    HasDirectPerm(Ops_1Mask, p_1, l);
               }
               perm := FullPerm;
               b_1_1 := b_1_1;
-              Ops_1Mask := Ops_1Mask[null, Tree(Ops_1Heap[p_1, l_8]):=Ops_1Mask[null, Tree(Ops_1Heap[p_1, l_8])] + perm];
+              Ops_1Mask := Ops_1Mask[null, Tree(Ops_1Heap[p_1, l]):=Ops_1Mask[null, Tree(Ops_1Heap[p_1, l])] + perm];
               b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
             }
             if (b_1_1) {
@@ -1325,15 +1325,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
               if (b_1_1) {
                 
                 // -- Check definedness of vals(p.l) == plvs[1..]
-                  assert {:msg "  Packaging wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@59.5--61.6) [120705]"}
-                    HasDirectPerm(Ops_1Mask, p_1, l_8);
+                  assert {:msg "  Packaging wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@59.5--61.6) [205932]"}
+                    HasDirectPerm(Ops_1Mask, p_1, l);
                   if (*) {
                     // Exhale precondition of function application
                     ExhaleWellDef0Mask := Ops_1Mask;
                     ExhaleWellDef0Heap := Ops_1Heap;
                     perm := FullPerm;
-                    assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@59.14--59.15) [120706]"}
-                      NoPerm < perm ==> NoPerm < Ops_1Mask[null, Tree(Ops_1Heap[p_1, l_8])];
+                    assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@59.14--59.15) [205933]"}
+                      NoPerm < perm ==> NoPerm < Ops_1Mask[null, Tree(Ops_1Heap[p_1, l])];
                     // Finish exhale
                     havoc ExhaleHeap;
                     b_1_1 := b_1_1 && IdenticalOnKnownLocations(Ops_1Heap, ExhaleHeap, Ops_1Mask);
@@ -1342,7 +1342,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     b_1_1 := false;
                   }
               }
-              b_1_1 := b_1_1 && Seq#Equal(vals(Ops_1Heap, Ops_1Heap[p_1, l_8]), Seq#Drop(plvs, 1));
+              b_1_1 := b_1_1 && Seq#Equal(vals_1(Ops_1Heap, Ops_1Heap[p_1, l]), Seq#Drop(plvs, 1));
             }
           }
         }
@@ -1371,8 +1371,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 // -- Transfer of acc(p.v, write)
                   rcvLocal := p_1;
                   neededTransfer := FullPerm;
-                  initNeededTransfer := Used_1Mask[rcvLocal, v_36] + neededTransfer;
-                  assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.v, write) might be negative. (tree_delete_min.vpr@60.9--60.26) [120709]"}
+                  initNeededTransfer := Used_1Mask[rcvLocal, v_35] + neededTransfer;
+                  assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.v, write) might be negative. (tree_delete_min.vpr@60.9--60.26) [205936]"}
                     neededTransfer >= 0.000000000;
                   
                   // -- transfer code for top state of stack
@@ -1380,7 +1380,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
                     if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Ops_1Mask[rcvLocal, v_36];
+                      maskTransfer := Ops_1Mask[rcvLocal, v_35];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -1388,10 +1388,10 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_1Mask := Used_1Mask[rcvLocal, v_36:=Used_1Mask[rcvLocal, v_36] + takeTransfer];
+                        Used_1Mask := Used_1Mask[rcvLocal, v_35:=Used_1Mask[rcvLocal, v_35] + takeTransfer];
                         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                        b_2_1 := b_2_1 && Ops_1Heap[rcvLocal, v_36] == Used_1Heap[rcvLocal, v_36];
-                        Ops_1Mask := Ops_1Mask[rcvLocal, v_36:=Ops_1Mask[rcvLocal, v_36] - takeTransfer];
+                        b_2_1 := b_2_1 && Ops_1Heap[rcvLocal, v_35] == Used_1Heap[rcvLocal, v_35];
+                        Ops_1Mask := Ops_1Mask[rcvLocal, v_35:=Ops_1Mask[rcvLocal, v_35] - takeTransfer];
                       }
                     }
                   
@@ -1400,7 +1400,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
                     if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Mask[rcvLocal, v_36];
+                      maskTransfer := Mask[rcvLocal, v_35];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -1408,15 +1408,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_1Mask := Used_1Mask[rcvLocal, v_36:=Used_1Mask[rcvLocal, v_36] + takeTransfer];
+                        Used_1Mask := Used_1Mask[rcvLocal, v_35:=Used_1Mask[rcvLocal, v_35] + takeTransfer];
                         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                        b_2_1 := b_2_1 && Heap[rcvLocal, v_36] == Used_1Heap[rcvLocal, v_36];
-                        Mask := Mask[rcvLocal, v_36:=Mask[rcvLocal, v_36] - takeTransfer];
-                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][p_1, v_36:=true]];
+                        b_2_1 := b_2_1 && Heap[rcvLocal, v_35] == Used_1Heap[rcvLocal, v_35];
+                        Mask := Mask[rcvLocal, v_35:=Mask[rcvLocal, v_35] - takeTransfer];
+                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][p_1, v_35:=true]];
                       }
                     }
-                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.v (tree_delete_min.vpr@60.9--60.26) [120710]"}
-                    b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, v_36] == initNeededTransfer;
+                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.v (tree_delete_min.vpr@60.9--60.26) [205937]"}
+                    b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, v_35] == initNeededTransfer;
                   
                   // -- Creating state which is the sum of the two previously built up states
                     b_3 := b_1_1 && b_2_1;
@@ -1431,8 +1431,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 // -- Transfer of acc(p.l, write)
                   rcvLocal := p_1;
                   neededTransfer := FullPerm;
-                  initNeededTransfer := Used_1Mask[rcvLocal, l_8] + neededTransfer;
-                  assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.l, write) might be negative. (tree_delete_min.vpr@60.9--60.26) [120711]"}
+                  initNeededTransfer := Used_1Mask[rcvLocal, l] + neededTransfer;
+                  assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.l, write) might be negative. (tree_delete_min.vpr@60.9--60.26) [205938]"}
                     neededTransfer >= 0.000000000;
                   
                   // -- transfer code for top state of stack
@@ -1440,7 +1440,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
                     if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Ops_1Mask[rcvLocal, l_8];
+                      maskTransfer := Ops_1Mask[rcvLocal, l];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -1448,10 +1448,10 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_1Mask := Used_1Mask[rcvLocal, l_8:=Used_1Mask[rcvLocal, l_8] + takeTransfer];
+                        Used_1Mask := Used_1Mask[rcvLocal, l:=Used_1Mask[rcvLocal, l] + takeTransfer];
                         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                        b_2_1 := b_2_1 && Ops_1Heap[rcvLocal, l_8] == Used_1Heap[rcvLocal, l_8];
-                        Ops_1Mask := Ops_1Mask[rcvLocal, l_8:=Ops_1Mask[rcvLocal, l_8] - takeTransfer];
+                        b_2_1 := b_2_1 && Ops_1Heap[rcvLocal, l] == Used_1Heap[rcvLocal, l];
+                        Ops_1Mask := Ops_1Mask[rcvLocal, l:=Ops_1Mask[rcvLocal, l] - takeTransfer];
                       }
                     }
                   
@@ -1460,7 +1460,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
                     if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Mask[rcvLocal, l_8];
+                      maskTransfer := Mask[rcvLocal, l];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -1468,15 +1468,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_1Mask := Used_1Mask[rcvLocal, l_8:=Used_1Mask[rcvLocal, l_8] + takeTransfer];
+                        Used_1Mask := Used_1Mask[rcvLocal, l:=Used_1Mask[rcvLocal, l] + takeTransfer];
                         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                        b_2_1 := b_2_1 && Heap[rcvLocal, l_8] == Used_1Heap[rcvLocal, l_8];
-                        Mask := Mask[rcvLocal, l_8:=Mask[rcvLocal, l_8] - takeTransfer];
-                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][p_1, l_8:=true]];
+                        b_2_1 := b_2_1 && Heap[rcvLocal, l] == Used_1Heap[rcvLocal, l];
+                        Mask := Mask[rcvLocal, l:=Mask[rcvLocal, l] - takeTransfer];
+                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][p_1, l:=true]];
                       }
                     }
-                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@60.9--60.26) [120712]"}
-                    b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, l_8] == initNeededTransfer;
+                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@60.9--60.26) [205939]"}
+                    b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, l] == initNeededTransfer;
                   
                   // -- Creating state which is the sum of the two previously built up states
                     b_4 := b_1_1 && b_2_1;
@@ -1495,14 +1495,14 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       if (b_1_1) {
                         
                         // -- Check definedness of acc(Tree(p.l), write)
-                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@60.9--60.26) [120713]"}
-                            HasDirectPerm(Result_1Mask, p_1, l_8);
+                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@60.9--60.26) [205940]"}
+                            HasDirectPerm(Result_1Mask, p_1, l);
                       }
                     }
-                  arg_1 := Result_1Heap[p_1, l_8];
+                  arg := Result_1Heap[p_1, l];
                   neededTransfer := FullPerm;
-                  initNeededTransfer := Used_1Mask[null, Tree(arg_1)] + neededTransfer;
-                  assert {:msg "  Folding Tree(p) might fail. Fraction acc(Tree(p.l), write) might be negative. (tree_delete_min.vpr@60.9--60.26) [120714]"}
+                  initNeededTransfer := Used_1Mask[null, Tree(arg)] + neededTransfer;
+                  assert {:msg "  Folding Tree(p) might fail. Fraction acc(Tree(p.l), write) might be negative. (tree_delete_min.vpr@60.9--60.26) [205941]"}
                     neededTransfer >= 0.000000000;
                   
                   // -- transfer code for top state of stack
@@ -1510,7 +1510,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
                     if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Ops_1Mask[null, Tree(arg_1)];
+                      maskTransfer := Ops_1Mask[null, Tree(arg)];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -1518,11 +1518,11 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_1Mask := Used_1Mask[null, Tree(arg_1):=Used_1Mask[null, Tree(arg_1)] + takeTransfer];
+                        Used_1Mask := Used_1Mask[null, Tree(arg):=Used_1Mask[null, Tree(arg)] + takeTransfer];
                         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                        TempMask := ZeroMask[null, Tree(arg_1):=FullPerm];
+                        TempMask := ZeroMask[null, Tree(arg):=FullPerm];
                         b_2_1 := b_2_1 && IdenticalOnKnownLocations(Ops_1Heap, Used_1Heap, TempMask);
-                        Ops_1Mask := Ops_1Mask[null, Tree(arg_1):=Ops_1Mask[null, Tree(arg_1)] - takeTransfer];
+                        Ops_1Mask := Ops_1Mask[null, Tree(arg):=Ops_1Mask[null, Tree(arg)] - takeTransfer];
                       }
                     }
                   
@@ -1531,7 +1531,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
                     if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Mask[null, Tree(arg_1)];
+                      maskTransfer := Mask[null, Tree(arg)];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -1539,21 +1539,21 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_1Mask := Used_1Mask[null, Tree(arg_1):=Used_1Mask[null, Tree(arg_1)] + takeTransfer];
+                        Used_1Mask := Used_1Mask[null, Tree(arg):=Used_1Mask[null, Tree(arg)] + takeTransfer];
                         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                        TempMask := ZeroMask[null, Tree(arg_1):=FullPerm];
+                        TempMask := ZeroMask[null, Tree(arg):=FullPerm];
                         b_2_1 := b_2_1 && IdenticalOnKnownLocations(Heap, Used_1Heap, TempMask);
-                        Mask := Mask[null, Tree(arg_1):=Mask[null, Tree(arg_1)] - takeTransfer];
+                        Mask := Mask[null, Tree(arg):=Mask[null, Tree(arg)] - takeTransfer];
                         havoc newPMask;
-                        assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-                          { newPMask[o_26, f_29] }
-                          Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][o_26, f_29] || Heap[null, Tree#sm(Heap[p_1, l_8])][o_26, f_29] ==> newPMask[o_26, f_29]
+                        assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+                          { newPMask[o_46, f_60] }
+                          Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][o_46, f_60] || Heap[null, Tree#sm(Heap[p_1, l])][o_46, f_60] ==> newPMask[o_46, f_60]
                         );
-                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=newPMask];
+                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=newPMask];
                       }
                     }
-                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@60.9--60.26) [120715]"}
-                    b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, Tree(arg_1)] == initNeededTransfer;
+                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@60.9--60.26) [205942]"}
+                    b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, Tree(arg)] == initNeededTransfer;
                   
                   // -- Creating state which is the sum of the two previously built up states
                     b_5 := b_1_1 && b_2_1;
@@ -1568,8 +1568,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 // -- Transfer of acc(p.r, write)
                   rcvLocal := p_1;
                   neededTransfer := FullPerm;
-                  initNeededTransfer := Used_1Mask[rcvLocal, r_6] + neededTransfer;
-                  assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.r, write) might be negative. (tree_delete_min.vpr@60.9--60.26) [120716]"}
+                  initNeededTransfer := Used_1Mask[rcvLocal, r_11] + neededTransfer;
+                  assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.r, write) might be negative. (tree_delete_min.vpr@60.9--60.26) [205943]"}
                     neededTransfer >= 0.000000000;
                   
                   // -- transfer code for top state of stack
@@ -1577,7 +1577,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
                     if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Ops_1Mask[rcvLocal, r_6];
+                      maskTransfer := Ops_1Mask[rcvLocal, r_11];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -1585,10 +1585,10 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_1Mask := Used_1Mask[rcvLocal, r_6:=Used_1Mask[rcvLocal, r_6] + takeTransfer];
+                        Used_1Mask := Used_1Mask[rcvLocal, r_11:=Used_1Mask[rcvLocal, r_11] + takeTransfer];
                         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                        b_2_1 := b_2_1 && Ops_1Heap[rcvLocal, r_6] == Used_1Heap[rcvLocal, r_6];
-                        Ops_1Mask := Ops_1Mask[rcvLocal, r_6:=Ops_1Mask[rcvLocal, r_6] - takeTransfer];
+                        b_2_1 := b_2_1 && Ops_1Heap[rcvLocal, r_11] == Used_1Heap[rcvLocal, r_11];
+                        Ops_1Mask := Ops_1Mask[rcvLocal, r_11:=Ops_1Mask[rcvLocal, r_11] - takeTransfer];
                       }
                     }
                   
@@ -1597,7 +1597,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
                     if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Mask[rcvLocal, r_6];
+                      maskTransfer := Mask[rcvLocal, r_11];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -1605,15 +1605,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_1Mask := Used_1Mask[rcvLocal, r_6:=Used_1Mask[rcvLocal, r_6] + takeTransfer];
+                        Used_1Mask := Used_1Mask[rcvLocal, r_11:=Used_1Mask[rcvLocal, r_11] + takeTransfer];
                         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                        b_2_1 := b_2_1 && Heap[rcvLocal, r_6] == Used_1Heap[rcvLocal, r_6];
-                        Mask := Mask[rcvLocal, r_6:=Mask[rcvLocal, r_6] - takeTransfer];
-                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][p_1, r_6:=true]];
+                        b_2_1 := b_2_1 && Heap[rcvLocal, r_11] == Used_1Heap[rcvLocal, r_11];
+                        Mask := Mask[rcvLocal, r_11:=Mask[rcvLocal, r_11] - takeTransfer];
+                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][p_1, r_11:=true]];
                       }
                     }
-                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.r (tree_delete_min.vpr@60.9--60.26) [120717]"}
-                    b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, r_6] == initNeededTransfer;
+                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.r (tree_delete_min.vpr@60.9--60.26) [205944]"}
+                    b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, r_11] == initNeededTransfer;
                   
                   // -- Creating state which is the sum of the two previously built up states
                     b_6 := b_1_1 && b_2_1;
@@ -1632,14 +1632,14 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       if (b_1_1) {
                         
                         // -- Check definedness of acc(Tree(p.r), write)
-                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.r (tree_delete_min.vpr@60.9--60.26) [120718]"}
-                            HasDirectPerm(Result_3Mask, p_1, r_6);
+                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.r (tree_delete_min.vpr@60.9--60.26) [205945]"}
+                            HasDirectPerm(Result_3Mask, p_1, r_11);
                       }
                     }
-                  arg_1_1 := Result_3Heap[p_1, r_6];
+                  arg_1_13 := Result_3Heap[p_1, r_11];
                   neededTransfer := FullPerm;
-                  initNeededTransfer := Used_1Mask[null, Tree(arg_1_1)] + neededTransfer;
-                  assert {:msg "  Folding Tree(p) might fail. Fraction acc(Tree(p.r), write) might be negative. (tree_delete_min.vpr@60.9--60.26) [120719]"}
+                  initNeededTransfer := Used_1Mask[null, Tree(arg_1_13)] + neededTransfer;
+                  assert {:msg "  Folding Tree(p) might fail. Fraction acc(Tree(p.r), write) might be negative. (tree_delete_min.vpr@60.9--60.26) [205946]"}
                     neededTransfer >= 0.000000000;
                   
                   // -- transfer code for top state of stack
@@ -1647,7 +1647,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
                     if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Ops_1Mask[null, Tree(arg_1_1)];
+                      maskTransfer := Ops_1Mask[null, Tree(arg_1_13)];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -1655,11 +1655,11 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_1Mask := Used_1Mask[null, Tree(arg_1_1):=Used_1Mask[null, Tree(arg_1_1)] + takeTransfer];
+                        Used_1Mask := Used_1Mask[null, Tree(arg_1_13):=Used_1Mask[null, Tree(arg_1_13)] + takeTransfer];
                         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                        TempMask := ZeroMask[null, Tree(arg_1_1):=FullPerm];
+                        TempMask := ZeroMask[null, Tree(arg_1_13):=FullPerm];
                         b_2_1 := b_2_1 && IdenticalOnKnownLocations(Ops_1Heap, Used_1Heap, TempMask);
-                        Ops_1Mask := Ops_1Mask[null, Tree(arg_1_1):=Ops_1Mask[null, Tree(arg_1_1)] - takeTransfer];
+                        Ops_1Mask := Ops_1Mask[null, Tree(arg_1_13):=Ops_1Mask[null, Tree(arg_1_13)] - takeTransfer];
                       }
                     }
                   
@@ -1668,7 +1668,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
                     if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Mask[null, Tree(arg_1_1)];
+                      maskTransfer := Mask[null, Tree(arg_1_13)];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -1676,21 +1676,21 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_1Mask := Used_1Mask[null, Tree(arg_1_1):=Used_1Mask[null, Tree(arg_1_1)] + takeTransfer];
+                        Used_1Mask := Used_1Mask[null, Tree(arg_1_13):=Used_1Mask[null, Tree(arg_1_13)] + takeTransfer];
                         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                        TempMask := ZeroMask[null, Tree(arg_1_1):=FullPerm];
+                        TempMask := ZeroMask[null, Tree(arg_1_13):=FullPerm];
                         b_2_1 := b_2_1 && IdenticalOnKnownLocations(Heap, Used_1Heap, TempMask);
-                        Mask := Mask[null, Tree(arg_1_1):=Mask[null, Tree(arg_1_1)] - takeTransfer];
+                        Mask := Mask[null, Tree(arg_1_13):=Mask[null, Tree(arg_1_13)] - takeTransfer];
                         havoc newPMask;
-                        assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-                          { newPMask[o, f_85] }
-                          Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][o, f_85] || Heap[null, Tree#sm(Heap[p_1, r_6])][o, f_85] ==> newPMask[o, f_85]
+                        assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+                          { newPMask[o, f_61] }
+                          Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][o, f_61] || Heap[null, Tree#sm(Heap[p_1, r_11])][o, f_61] ==> newPMask[o, f_61]
                         );
-                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=newPMask];
+                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=newPMask];
                       }
                     }
-                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access Tree(p.r) (tree_delete_min.vpr@60.9--60.26) [120720]"}
-                    b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, Tree(arg_1_1)] == initNeededTransfer;
+                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access Tree(p.r) (tree_delete_min.vpr@60.9--60.26) [205947]"}
+                    b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, Tree(arg_1_13)] == initNeededTransfer;
                   
                   // -- Creating state which is the sum of the two previously built up states
                     b_7 := b_1_1 && b_2_1;
@@ -1717,7 +1717,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
             b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
             assume Tree#trigger(Ops_1Heap, Tree(p_1));
-            assume Ops_1Heap[null, Tree(p_1)] == FrameFragment((if p_1 == null then EmptyFrame else CombineFrames(FrameFragment(Ops_1Heap[p_1, v_36]), CombineFrames(FrameFragment(Ops_1Heap[p_1, l_8]), CombineFrames(Ops_1Heap[null, Tree(Ops_1Heap[p_1, l_8])], CombineFrames(FrameFragment(Ops_1Heap[p_1, r_6]), Ops_1Heap[null, Tree(Ops_1Heap[p_1, r_6])]))))));
+            assume Ops_1Heap[null, Tree(p_1)] == FrameFragment((if p_1 == null then EmptyFrame else CombineFrames(FrameFragment(Ops_1Heap[p_1, v_35]), CombineFrames(FrameFragment(Ops_1Heap[p_1, l]), CombineFrames(Ops_1Heap[null, Tree(Ops_1Heap[p_1, l])], CombineFrames(FrameFragment(Ops_1Heap[p_1, r_11]), Ops_1Heap[null, Tree(Ops_1Heap[p_1, r_11])]))))));
             if (!HasDirectPerm(Ops_1Mask, null, Tree(p_1))) {
               Ops_1Heap := Ops_1Heap[null, Tree#sm(p_1):=ZeroPMask];
               havoc freshVersion;
@@ -1725,19 +1725,19 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             }
             if (p_1 == null) {
             } else {
-              Ops_1Heap := Ops_1Heap[null, Tree#sm(p_1):=Ops_1Heap[null, Tree#sm(p_1)][p_1, v_36:=true]];
-              Ops_1Heap := Ops_1Heap[null, Tree#sm(p_1):=Ops_1Heap[null, Tree#sm(p_1)][p_1, l_8:=true]];
+              Ops_1Heap := Ops_1Heap[null, Tree#sm(p_1):=Ops_1Heap[null, Tree#sm(p_1)][p_1, v_35:=true]];
+              Ops_1Heap := Ops_1Heap[null, Tree#sm(p_1):=Ops_1Heap[null, Tree#sm(p_1)][p_1, l:=true]];
               havoc newPMask;
-              assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-                { newPMask[o_11, f_3] }
-                Ops_1Heap[null, Tree#sm(p_1)][o_11, f_3] || Ops_1Heap[null, Tree#sm(Ops_1Heap[p_1, l_8])][o_11, f_3] ==> newPMask[o_11, f_3]
+              assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+                { newPMask[o_14, f_3] }
+                Ops_1Heap[null, Tree#sm(p_1)][o_14, f_3] || Ops_1Heap[null, Tree#sm(Ops_1Heap[p_1, l])][o_14, f_3] ==> newPMask[o_14, f_3]
               );
               Ops_1Heap := Ops_1Heap[null, Tree#sm(p_1):=newPMask];
-              Ops_1Heap := Ops_1Heap[null, Tree#sm(p_1):=Ops_1Heap[null, Tree#sm(p_1)][p_1, r_6:=true]];
+              Ops_1Heap := Ops_1Heap[null, Tree#sm(p_1):=Ops_1Heap[null, Tree#sm(p_1)][p_1, r_11:=true]];
               havoc newPMask;
-              assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-                { newPMask[o_35, f_17] }
-                Ops_1Heap[null, Tree#sm(p_1)][o_35, f_17] || Ops_1Heap[null, Tree#sm(Ops_1Heap[p_1, r_6])][o_35, f_17] ==> newPMask[o_35, f_17]
+              assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+                { newPMask[o_3, f_24] }
+                Ops_1Heap[null, Tree#sm(p_1)][o_3, f_24] || Ops_1Heap[null, Tree#sm(Ops_1Heap[p_1, r_11])][o_3, f_24] ==> newPMask[o_3, f_24]
               );
               Ops_1Heap := Ops_1Heap[null, Tree#sm(p_1):=newPMask];
             }
@@ -1750,10 +1750,10 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         b_9 := b_9 && state(Used_2Heap, Used_2Mask);
         
         // -- Transfer of acc(Tree(x), write)
-          arg_2 := x;
+          arg_2_13 := x;
           neededTransfer := FullPerm;
-          initNeededTransfer := Used_2Mask[null, Tree(arg_2)] + neededTransfer;
-          assert {:msg "  Packaging wand might fail. Fraction acc(Tree(x), write) might be negative. (tree_delete_min.vpr@59.5--61.6) [120722]"}
+          initNeededTransfer := Used_2Mask[null, Tree(arg_2_13)] + neededTransfer;
+          assert {:msg "  Packaging wand might fail. Fraction acc(Tree(x), write) might be negative. (tree_delete_min.vpr@59.5--61.6) [205949]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -1761,7 +1761,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             accVar2 := true;
             // actual code for the transfer from current state on stack
             if ((((b_1_1 && b_1_1) && b_9) && accVar2) && neededTransfer > 0.000000000) {
-              maskTransfer := Ops_1Mask[null, Tree(arg_2)];
+              maskTransfer := Ops_1Mask[null, Tree(arg_2_13)];
               if (neededTransfer <= maskTransfer) {
                 takeTransfer := neededTransfer;
               } else {
@@ -1769,11 +1769,11 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
               }
               if (takeTransfer > 0.000000000) {
                 neededTransfer := neededTransfer - takeTransfer;
-                Used_2Mask := Used_2Mask[null, Tree(arg_2):=Used_2Mask[null, Tree(arg_2)] + takeTransfer];
+                Used_2Mask := Used_2Mask[null, Tree(arg_2_13):=Used_2Mask[null, Tree(arg_2_13)] + takeTransfer];
                 b_9 := b_9 && state(Used_2Heap, Used_2Mask);
-                TempMask := ZeroMask[null, Tree(arg_2):=FullPerm];
+                TempMask := ZeroMask[null, Tree(arg_2_13):=FullPerm];
                 b_9 := b_9 && IdenticalOnKnownLocations(Ops_1Heap, Used_2Heap, TempMask);
-                Ops_1Mask := Ops_1Mask[null, Tree(arg_2):=Ops_1Mask[null, Tree(arg_2)] - takeTransfer];
+                Ops_1Mask := Ops_1Mask[null, Tree(arg_2_13):=Ops_1Mask[null, Tree(arg_2_13)] - takeTransfer];
               }
             }
           
@@ -1782,7 +1782,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             accVar2 := true;
             // actual code for the transfer from current state on stack
             if ((((b_1_1 && b_1_1) && b_9) && accVar2) && neededTransfer > 0.000000000) {
-              maskTransfer := Mask[null, Tree(arg_2)];
+              maskTransfer := Mask[null, Tree(arg_2_13)];
               if (neededTransfer <= maskTransfer) {
                 takeTransfer := neededTransfer;
               } else {
@@ -1790,21 +1790,21 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
               }
               if (takeTransfer > 0.000000000) {
                 neededTransfer := neededTransfer - takeTransfer;
-                Used_2Mask := Used_2Mask[null, Tree(arg_2):=Used_2Mask[null, Tree(arg_2)] + takeTransfer];
+                Used_2Mask := Used_2Mask[null, Tree(arg_2_13):=Used_2Mask[null, Tree(arg_2_13)] + takeTransfer];
                 b_9 := b_9 && state(Used_2Heap, Used_2Mask);
-                TempMask := ZeroMask[null, Tree(arg_2):=FullPerm];
+                TempMask := ZeroMask[null, Tree(arg_2_13):=FullPerm];
                 b_9 := b_9 && IdenticalOnKnownLocations(Heap, Used_2Heap, TempMask);
-                Mask := Mask[null, Tree(arg_2):=Mask[null, Tree(arg_2)] - takeTransfer];
+                Mask := Mask[null, Tree(arg_2_13):=Mask[null, Tree(arg_2_13)] - takeTransfer];
                 havoc newPMask;
-                assume (forall <A, B> o_1: Ref, f_11: (Field A B) ::
-                  { newPMask[o_1, f_11] }
-                  Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][o_1, f_11] || Heap[null, Tree#sm(x)][o_1, f_11] ==> newPMask[o_1, f_11]
+                assume (forall <A, B> o_1: Ref, f_10: (Field A B) ::
+                  { newPMask[o_1, f_10] }
+                  Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][o_1, f_10] || Heap[null, Tree#sm(x)][o_1, f_10] ==> newPMask[o_1, f_10]
                 );
-                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=newPMask];
+                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=newPMask];
               }
             }
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@59.5--61.6) [120723]"}
-            (b_1_1 && b_1_1) && b_9 ==> neededTransfer == 0.000000000 && Used_2Mask[null, Tree(arg_2)] == initNeededTransfer;
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@59.5--61.6) [205950]"}
+            (b_1_1 && b_1_1) && b_9 ==> neededTransfer == 0.000000000 && Used_2Mask[null, Tree(arg_2_13)] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
             b_10 := b_1_1 && b_9;
@@ -1822,7 +1822,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 ExhaleWellDef0Mask := Result_6Mask;
                 ExhaleWellDef0Heap := Result_6Heap;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@59.21--59.22) [120724]"}
+                assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@59.21--59.22) [205951]"}
                   NoPerm < perm ==> NoPerm < Result_6Mask[null, Tree(x)];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -1836,7 +1836,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@59.21--59.22) [120725]"}
+                assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@59.21--59.22) [205952]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, Tree(x)];
                 // Finish exhale
                 // Stop execution
@@ -1844,10 +1844,10 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
               }
           }
         }
-        assert {:msg "  Packaging wand might fail. Assertion vals(x) == old(vals(x))[1..] might not hold. (tree_delete_min.vpr@59.5--61.6) [120726]"}
-          (b_1_1 && b_1_1) && b_9 ==> Seq#Equal(vals(Result_6Heap, x), Seq#Drop(vals(oldHeap, x), 1));
+        assert {:msg "  Packaging wand might fail. Assertion vals(x) == old(vals(x))[1..] might not hold. (tree_delete_min.vpr@59.5--61.6) [205953]"}
+          (b_1_1 && b_1_1) && b_9 ==> Seq#Equal(vals_1(Result_6Heap, x), Seq#Drop(vals_1(oldHeap, x), 1));
         assume state(Heap, Mask);
-        Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] + FullPerm];
+        Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] + FullPerm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1859,28 +1859,28 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
           // -- Exhale loop invariant before loop
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not hold on entry. Assertion p != null might not hold. (tree_delete_min.vpr@64.17--64.71) [120727]"}
+            assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not hold on entry. Assertion p != null might not hold. (tree_delete_min.vpr@64.17--64.71) [205954]"}
               p_1 != null;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not hold on entry. There might be insufficient permission to access p.l (tree_delete_min.vpr@64.17--64.71) [120728]"}
-                perm <= Mask[p_1, l_8];
+              assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not hold on entry. There might be insufficient permission to access p.l (tree_delete_min.vpr@64.17--64.71) [205955]"}
+                perm <= Mask[p_1, l];
             }
-            Mask := Mask[p_1, l_8:=Mask[p_1, l_8] - perm];
+            Mask := Mask[p_1, l:=Mask[p_1, l] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not hold on entry. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@64.17--64.71) [120729]"}
-                perm <= Mask[null, Tree(Heap[p_1, l_8])];
+              assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not hold on entry. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@64.17--64.71) [205956]"}
+                perm <= Mask[null, Tree(Heap[p_1, l])];
             }
-            Mask := Mask[null, Tree(Heap[p_1, l_8]):=Mask[null, Tree(Heap[p_1, l_8])] - perm];
-            assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not hold on entry. Assertion p.l != null might not hold. (tree_delete_min.vpr@64.17--64.71) [120730]"}
-              Heap[p_1, l_8] != null;
-            assert {:msg "  Loop invariant plvs == vals(p.l) might not hold on entry. Assertion plvs == vals(p.l) might not hold. (tree_delete_min.vpr@65.17--65.34) [120731]"}
-              Seq#Equal(plvs, vals(Heap, Heap[p_1, l_8]));
+            Mask := Mask[null, Tree(Heap[p_1, l]):=Mask[null, Tree(Heap[p_1, l])] - perm];
+            assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not hold on entry. Assertion p.l != null might not hold. (tree_delete_min.vpr@64.17--64.71) [205957]"}
+              Heap[p_1, l] != null;
+            assert {:msg "  Loop invariant plvs == vals(p.l) might not hold on entry. Assertion plvs == vals(p.l) might not hold. (tree_delete_min.vpr@65.17--65.34) [205958]"}
+              Seq#Equal(plvs, vals_1(Heap, Heap[p_1, l]));
             // permLe
-            assert {:msg "  Loop invariant acc(p.l, write) && (acc(Tree(p.l), write) && vals(p.l) == plvs[1..]) --* acc(Tree(x), write) && vals(x) == old(vals(x))[1..] might not hold on entry. Magic wand instance not found. (tree_delete_min.vpr@66.17--66.24) [120732]"}
-              FullPerm <= Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))];
-            Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] - FullPerm];
+            assert {:msg "  Loop invariant acc(p.l, write) && (acc(Tree(p.l), write) && vals(p.l) == plvs[1..]) --* acc(Tree(x), write) && vals(x) == old(vals(x))[1..] might not hold on entry. Magic wand instance not found. (tree_delete_min.vpr@66.17--66.24) [205959]"}
+              FullPerm <= Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))];
+            Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] - FullPerm];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1895,33 +1895,33 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             assume p_1 != null;
             perm := FullPerm;
             assume p_1 != null;
-            Mask := Mask[p_1, l_8:=Mask[p_1, l_8] + perm];
+            Mask := Mask[p_1, l:=Mask[p_1, l] + perm];
             assume state(Heap, Mask);
             
             // -- Check definedness of acc(Tree(p.l), write)
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.l (tree_delete_min.vpr@64.17--64.71) [120733]"}
-                HasDirectPerm(Mask, p_1, l_8);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.l (tree_delete_min.vpr@64.17--64.71) [205960]"}
+                HasDirectPerm(Mask, p_1, l);
             perm := FullPerm;
-            Mask := Mask[null, Tree(Heap[p_1, l_8]):=Mask[null, Tree(Heap[p_1, l_8])] + perm];
+            Mask := Mask[null, Tree(Heap[p_1, l]):=Mask[null, Tree(Heap[p_1, l])] + perm];
             assume state(Heap, Mask);
             
             // -- Check definedness of p.l != null
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.l (tree_delete_min.vpr@64.17--64.71) [120734]"}
-                HasDirectPerm(Mask, p_1, l_8);
-            assume Heap[p_1, l_8] != null;
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.l (tree_delete_min.vpr@64.17--64.71) [205961]"}
+                HasDirectPerm(Mask, p_1, l);
+            assume Heap[p_1, l] != null;
             assume state(Heap, Mask);
             assume state(Heap, Mask);
             
             // -- Check definedness of plvs == vals(p.l)
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.l (tree_delete_min.vpr@65.17--65.34) [120735]"}
-                HasDirectPerm(Mask, p_1, l_8);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.l (tree_delete_min.vpr@65.17--65.34) [205962]"}
+                HasDirectPerm(Mask, p_1, l);
               if (*) {
                 // Exhale precondition of function application
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@65.25--65.34) [120736]"}
-                  NoPerm < perm ==> NoPerm < Mask[null, Tree(Heap[p_1, l_8])];
+                assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@65.25--65.34) [205963]"}
+                  NoPerm < perm ==> NoPerm < Mask[null, Tree(Heap[p_1, l])];
                 // Finish exhale
                 havoc ExhaleHeap;
                 assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1929,7 +1929,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 // Stop execution
                 assume false;
               }
-            assume Seq#Equal(plvs, vals(Heap, Heap[p_1, l_8]));
+            assume Seq#Equal(plvs, vals_1(Heap, Heap[p_1, l]));
             assume state(Heap, Mask);
             assume state(Heap, Mask);
             
@@ -1939,27 +1939,27 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 WandDefLHSMask := ZeroMask;
                 perm := FullPerm;
                 assume p_1 != null;
-                WandDefLHSMask := WandDefLHSMask[p_1, l_8:=WandDefLHSMask[p_1, l_8] + perm];
+                WandDefLHSMask := WandDefLHSMask[p_1, l:=WandDefLHSMask[p_1, l] + perm];
                 assume state(WandDefLHSHeap, WandDefLHSMask);
                 
                 // -- Check definedness of acc(Tree(p.l), write)
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.l (tree_delete_min.vpr@66.17--66.24) [120737]"}
-                    HasDirectPerm(WandDefLHSMask, p_1, l_8);
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.l (tree_delete_min.vpr@66.17--66.24) [205964]"}
+                    HasDirectPerm(WandDefLHSMask, p_1, l);
                 perm := FullPerm;
-                WandDefLHSMask := WandDefLHSMask[null, Tree(WandDefLHSHeap[p_1, l_8]):=WandDefLHSMask[null, Tree(WandDefLHSHeap[p_1, l_8])] + perm];
+                WandDefLHSMask := WandDefLHSMask[null, Tree(WandDefLHSHeap[p_1, l]):=WandDefLHSMask[null, Tree(WandDefLHSHeap[p_1, l])] + perm];
                 assume state(WandDefLHSHeap, WandDefLHSMask);
                 assume state(WandDefLHSHeap, WandDefLHSMask);
                 
                 // -- Check definedness of vals(p.l) == plvs[1..]
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.l (tree_delete_min.vpr@66.17--66.24) [120738]"}
-                    HasDirectPerm(WandDefLHSMask, p_1, l_8);
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.l (tree_delete_min.vpr@66.17--66.24) [205965]"}
+                    HasDirectPerm(WandDefLHSMask, p_1, l);
                   if (*) {
                     // Exhale precondition of function application
                     ExhaleWellDef0Mask := WandDefLHSMask;
                     ExhaleWellDef0Heap := WandDefLHSHeap;
                     perm := FullPerm;
-                    assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@66.17--66.18) [120739]"}
-                      NoPerm < perm ==> NoPerm < WandDefLHSMask[null, Tree(WandDefLHSHeap[p_1, l_8])];
+                    assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@66.17--66.18) [205966]"}
+                      NoPerm < perm ==> NoPerm < WandDefLHSMask[null, Tree(WandDefLHSHeap[p_1, l])];
                     // Finish exhale
                     havoc ExhaleHeap;
                     assume IdenticalOnKnownLocations(WandDefLHSHeap, ExhaleHeap, WandDefLHSMask);
@@ -1967,7 +1967,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     // Stop execution
                     assume false;
                   }
-                assume Seq#Equal(vals(WandDefLHSHeap, WandDefLHSHeap[p_1, l_8]), Seq#Drop(plvs, 1));
+                assume Seq#Equal(vals_1(WandDefLHSHeap, WandDefLHSHeap[p_1, l]), Seq#Drop(plvs, 1));
                 assume state(WandDefLHSHeap, WandDefLHSMask);
                 
                 // -- Translating statement: label lhs3 -- tree_delete_min.vpr@66.17--66.24
@@ -1988,7 +1988,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     ExhaleWellDef0Mask := WandDefRHSMask;
                     ExhaleWellDef0Heap := WandDefRHSHeap;
                     perm := FullPerm;
-                    assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@66.23--66.24) [120740]"}
+                    assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@66.23--66.24) [205967]"}
                       NoPerm < perm ==> NoPerm < WandDefRHSMask[null, Tree(x)];
                     // Finish exhale
                     havoc ExhaleHeap;
@@ -2002,17 +2002,17 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     ExhaleWellDef0Mask := oldMask;
                     ExhaleWellDef0Heap := oldHeap;
                     perm := FullPerm;
-                    assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@66.23--66.24) [120741]"}
+                    assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@66.23--66.24) [205968]"}
                       NoPerm < perm ==> NoPerm < oldMask[null, Tree(x)];
                     // Finish exhale
                     // Stop execution
                     assume false;
                   }
-                assume Seq#Equal(vals(WandDefRHSHeap, x), Seq#Drop(vals(oldHeap, x), 1));
+                assume Seq#Equal(vals_1(WandDefRHSHeap, x), Seq#Drop(vals_1(oldHeap, x), 1));
                 assume state(WandDefRHSHeap, WandDefRHSMask);
                 assume false;
               }
-            Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] + FullPerm];
+            Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] + FullPerm];
             assume state(Heap, Mask);
             assume state(Heap, Mask);
             assume false;
@@ -2029,16 +2029,16 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             assume p_1 != null;
             perm := FullPerm;
             assume p_1 != null;
-            Mask := Mask[p_1, l_8:=Mask[p_1, l_8] + perm];
+            Mask := Mask[p_1, l:=Mask[p_1, l] + perm];
             assume state(Heap, Mask);
             perm := FullPerm;
-            Mask := Mask[null, Tree(Heap[p_1, l_8]):=Mask[null, Tree(Heap[p_1, l_8])] + perm];
+            Mask := Mask[null, Tree(Heap[p_1, l]):=Mask[null, Tree(Heap[p_1, l])] + perm];
             assume state(Heap, Mask);
-            assume Heap[p_1, l_8] != null;
+            assume Heap[p_1, l] != null;
             assume state(Heap, Mask);
-            assume Seq#Equal(plvs, vals(Heap, Heap[p_1, l_8]));
+            assume Seq#Equal(plvs, vals_1(Heap, Heap[p_1, l]));
             assume state(Heap, Mask);
-            Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] + FullPerm];
+            Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] + FullPerm];
             assume state(Heap, Mask);
             assume state(Heap, Mask);
             // Check and assume guard
@@ -2046,72 +2046,72 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             // -- Check definedness of (unfolding acc(Tree(p.l), write) in p.l.l != null)
               UnfoldingHeap := Heap;
               UnfoldingMask := Mask;
-              assume Tree#trigger(UnfoldingHeap, Tree(UnfoldingHeap[p_1, l_8]));
-              assume UnfoldingHeap[null, Tree(UnfoldingHeap[p_1, l_8])] == FrameFragment((if UnfoldingHeap[p_1, l_8] == null then EmptyFrame else CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[p_1, l_8], v_36]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[p_1, l_8], l_8]), CombineFrames(UnfoldingHeap[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], l_8])], CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[p_1, l_8], r_6]), UnfoldingHeap[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], r_6])]))))));
+              assume Tree#trigger(UnfoldingHeap, Tree(UnfoldingHeap[p_1, l]));
+              assume UnfoldingHeap[null, Tree(UnfoldingHeap[p_1, l])] == FrameFragment((if UnfoldingHeap[p_1, l] == null then EmptyFrame else CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[p_1, l], v_35]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[p_1, l], l]), CombineFrames(UnfoldingHeap[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l], l])], CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[p_1, l], r_11]), UnfoldingHeap[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l], r_11])]))))));
               ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  While statement might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@63.12--63.53) [120742]"}
-                  perm <= UnfoldingMask[null, Tree(UnfoldingHeap[p_1, l_8])];
+                assert {:msg "  While statement might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@63.12--63.53) [205969]"}
+                  perm <= UnfoldingMask[null, Tree(UnfoldingHeap[p_1, l])];
               }
-              UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[p_1, l_8]):=UnfoldingMask[null, Tree(UnfoldingHeap[p_1, l_8])] - perm];
-              if (UnfoldingHeap[p_1, l_8] == null) {
+              UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[p_1, l]):=UnfoldingMask[null, Tree(UnfoldingHeap[p_1, l])] - perm];
+              if (UnfoldingHeap[p_1, l] == null) {
               } else {
                 perm := FullPerm;
-                assume UnfoldingHeap[p_1, l_8] != null;
-                UnfoldingMask := UnfoldingMask[UnfoldingHeap[p_1, l_8], v_36:=UnfoldingMask[UnfoldingHeap[p_1, l_8], v_36] + perm];
+                assume UnfoldingHeap[p_1, l] != null;
+                UnfoldingMask := UnfoldingMask[UnfoldingHeap[p_1, l], v_35:=UnfoldingMask[UnfoldingHeap[p_1, l], v_35] + perm];
                 assume state(UnfoldingHeap, UnfoldingMask);
                 perm := FullPerm;
-                assume UnfoldingHeap[p_1, l_8] != null;
-                UnfoldingMask := UnfoldingMask[UnfoldingHeap[p_1, l_8], l_8:=UnfoldingMask[UnfoldingHeap[p_1, l_8], l_8] + perm];
+                assume UnfoldingHeap[p_1, l] != null;
+                UnfoldingMask := UnfoldingMask[UnfoldingHeap[p_1, l], l:=UnfoldingMask[UnfoldingHeap[p_1, l], l] + perm];
                 assume state(UnfoldingHeap, UnfoldingMask);
                 perm := FullPerm;
-                UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], l_8]):=UnfoldingMask[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], l_8])] + perm];
+                UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l], l]):=UnfoldingMask[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l], l])] + perm];
                 
                 // -- Extra unfolding of predicate
-                  assume InsidePredicate(Tree(UnfoldingHeap[p_1, l_8]), UnfoldingHeap[null, Tree(UnfoldingHeap[p_1, l_8])], Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], l_8]), UnfoldingHeap[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], l_8])]);
+                  assume InsidePredicate(Tree(UnfoldingHeap[p_1, l]), UnfoldingHeap[null, Tree(UnfoldingHeap[p_1, l])], Tree(UnfoldingHeap[UnfoldingHeap[p_1, l], l]), UnfoldingHeap[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l], l])]);
                 assume state(UnfoldingHeap, UnfoldingMask);
                 perm := FullPerm;
-                assume UnfoldingHeap[p_1, l_8] != null;
-                UnfoldingMask := UnfoldingMask[UnfoldingHeap[p_1, l_8], r_6:=UnfoldingMask[UnfoldingHeap[p_1, l_8], r_6] + perm];
+                assume UnfoldingHeap[p_1, l] != null;
+                UnfoldingMask := UnfoldingMask[UnfoldingHeap[p_1, l], r_11:=UnfoldingMask[UnfoldingHeap[p_1, l], r_11] + perm];
                 assume state(UnfoldingHeap, UnfoldingMask);
                 perm := FullPerm;
-                UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], r_6]):=UnfoldingMask[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], r_6])] + perm];
+                UnfoldingMask := UnfoldingMask[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l], r_11]):=UnfoldingMask[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l], r_11])] + perm];
                 
                 // -- Extra unfolding of predicate
-                  assume InsidePredicate(Tree(UnfoldingHeap[p_1, l_8]), UnfoldingHeap[null, Tree(UnfoldingHeap[p_1, l_8])], Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], r_6]), UnfoldingHeap[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], r_6])]);
+                  assume InsidePredicate(Tree(UnfoldingHeap[p_1, l]), UnfoldingHeap[null, Tree(UnfoldingHeap[p_1, l])], Tree(UnfoldingHeap[UnfoldingHeap[p_1, l], r_11]), UnfoldingHeap[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l], r_11])]);
                 assume state(UnfoldingHeap, UnfoldingMask);
               }
               assume state(UnfoldingHeap, UnfoldingMask);
-              assert {:msg "  While statement might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@63.12--63.53) [120743]"}
-                HasDirectPerm(UnfoldingMask, p_1, l_8);
-              assert {:msg "  While statement might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@63.12--63.53) [120744]"}
-                HasDirectPerm(UnfoldingMask, p_1, l_8);
-              assert {:msg "  While statement might fail. There might be insufficient permission to access p.l.l (tree_delete_min.vpr@63.12--63.53) [120745]"}
-                HasDirectPerm(UnfoldingMask, UnfoldingHeap[p_1, l_8], l_8);
+              assert {:msg "  While statement might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@63.12--63.53) [205970]"}
+                HasDirectPerm(UnfoldingMask, p_1, l);
+              assert {:msg "  While statement might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@63.12--63.53) [205971]"}
+                HasDirectPerm(UnfoldingMask, p_1, l);
+              assert {:msg "  While statement might fail. There might be insufficient permission to access p.l.l (tree_delete_min.vpr@63.12--63.53) [205972]"}
+                HasDirectPerm(UnfoldingMask, UnfoldingHeap[p_1, l], l);
               
               // -- Free assumptions (exp module)
-                if (Heap[p_1, l_8] == null) {
+                if (Heap[p_1, l] == null) {
                 } else {
-                  Heap := Heap[null, Tree#sm(Heap[p_1, l_8]):=Heap[null, Tree#sm(Heap[p_1, l_8])][Heap[p_1, l_8], v_36:=true]];
-                  Heap := Heap[null, Tree#sm(Heap[p_1, l_8]):=Heap[null, Tree#sm(Heap[p_1, l_8])][Heap[p_1, l_8], l_8:=true]];
+                  Heap := Heap[null, Tree#sm(Heap[p_1, l]):=Heap[null, Tree#sm(Heap[p_1, l])][Heap[p_1, l], v_35:=true]];
+                  Heap := Heap[null, Tree#sm(Heap[p_1, l]):=Heap[null, Tree#sm(Heap[p_1, l])][Heap[p_1, l], l:=true]];
                   havoc newPMask;
-                  assume (forall <A, B> o_12: Ref, f_9: (Field A B) ::
-                    { newPMask[o_12, f_9] }
-                    Heap[null, Tree#sm(Heap[p_1, l_8])][o_12, f_9] || Heap[null, Tree#sm(Heap[Heap[p_1, l_8], l_8])][o_12, f_9] ==> newPMask[o_12, f_9]
+                  assume (forall <A, B> o_15: Ref, f_51: (Field A B) ::
+                    { newPMask[o_15, f_51] }
+                    Heap[null, Tree#sm(Heap[p_1, l])][o_15, f_51] || Heap[null, Tree#sm(Heap[Heap[p_1, l], l])][o_15, f_51] ==> newPMask[o_15, f_51]
                   );
-                  Heap := Heap[null, Tree#sm(Heap[p_1, l_8]):=newPMask];
-                  Heap := Heap[null, Tree#sm(Heap[p_1, l_8]):=Heap[null, Tree#sm(Heap[p_1, l_8])][Heap[p_1, l_8], r_6:=true]];
+                  Heap := Heap[null, Tree#sm(Heap[p_1, l]):=newPMask];
+                  Heap := Heap[null, Tree#sm(Heap[p_1, l]):=Heap[null, Tree#sm(Heap[p_1, l])][Heap[p_1, l], r_11:=true]];
                   havoc newPMask;
-                  assume (forall <A, B> o_22: Ref, f_24: (Field A B) ::
-                    { newPMask[o_22, f_24] }
-                    Heap[null, Tree#sm(Heap[p_1, l_8])][o_22, f_24] || Heap[null, Tree#sm(Heap[Heap[p_1, l_8], r_6])][o_22, f_24] ==> newPMask[o_22, f_24]
+                  assume (forall <A, B> o_4: Ref, f_54: (Field A B) ::
+                    { newPMask[o_4, f_54] }
+                    Heap[null, Tree#sm(Heap[p_1, l])][o_4, f_54] || Heap[null, Tree#sm(Heap[Heap[p_1, l], r_11])][o_4, f_54] ==> newPMask[o_4, f_54]
                   );
-                  Heap := Heap[null, Tree#sm(Heap[p_1, l_8]):=newPMask];
+                  Heap := Heap[null, Tree#sm(Heap[p_1, l]):=newPMask];
                 }
                 assume state(Heap, Mask);
-            assume Heap[Heap[p_1, l_8], l_8] != null;
+            assume Heap[Heap[p_1, l], l] != null;
             assume state(Heap, Mask);
             
             // -- Translate loop body
@@ -2130,49 +2130,49 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
               // -- Translating statement: unfold acc(Tree(p.l), write) -- tree_delete_min.vpr@71.7--71.28
                 
                 // -- Check definedness of acc(Tree(p.l), write)
-                  assert {:msg "  Unfolding Tree(p.l) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@71.7--71.28) [120746]"}
-                    HasDirectPerm(Mask, p_1, l_8);
-                assume Tree#trigger(Heap, Tree(Heap[p_1, l_8]));
-                assume Heap[null, Tree(Heap[p_1, l_8])] == FrameFragment((if Heap[p_1, l_8] == null then EmptyFrame else CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], v_36]), CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], l_8]), CombineFrames(Heap[null, Tree(Heap[Heap[p_1, l_8], l_8])], CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], r_6]), Heap[null, Tree(Heap[Heap[p_1, l_8], r_6])]))))));
+                  assert {:msg "  Unfolding Tree(p.l) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@71.7--71.28) [205973]"}
+                    HasDirectPerm(Mask, p_1, l);
+                assume Tree#trigger(Heap, Tree(Heap[p_1, l]));
+                assume Heap[null, Tree(Heap[p_1, l])] == FrameFragment((if Heap[p_1, l] == null then EmptyFrame else CombineFrames(FrameFragment(Heap[Heap[p_1, l], v_35]), CombineFrames(FrameFragment(Heap[Heap[p_1, l], l]), CombineFrames(Heap[null, Tree(Heap[Heap[p_1, l], l])], CombineFrames(FrameFragment(Heap[Heap[p_1, l], r_11]), Heap[null, Tree(Heap[Heap[p_1, l], r_11])]))))));
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 if (perm != NoPerm) {
-                  assert {:msg "  Unfolding Tree(p.l) might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@71.7--71.28) [120747]"}
-                    perm <= Mask[null, Tree(Heap[p_1, l_8])];
+                  assert {:msg "  Unfolding Tree(p.l) might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@71.7--71.28) [205974]"}
+                    perm <= Mask[null, Tree(Heap[p_1, l])];
                 }
-                Mask := Mask[null, Tree(Heap[p_1, l_8]):=Mask[null, Tree(Heap[p_1, l_8])] - perm];
+                Mask := Mask[null, Tree(Heap[p_1, l]):=Mask[null, Tree(Heap[p_1, l])] - perm];
                 
                 // -- Update version of predicate
-                  if (!HasDirectPerm(Mask, null, Tree(Heap[p_1, l_8]))) {
+                  if (!HasDirectPerm(Mask, null, Tree(Heap[p_1, l]))) {
                     havoc newVersion;
-                    Heap := Heap[null, Tree(Heap[p_1, l_8]):=newVersion];
+                    Heap := Heap[null, Tree(Heap[p_1, l]):=newVersion];
                   }
-                if (Heap[p_1, l_8] == null) {
+                if (Heap[p_1, l] == null) {
                 } else {
                   perm := FullPerm;
-                  assume Heap[p_1, l_8] != null;
-                  Mask := Mask[Heap[p_1, l_8], v_36:=Mask[Heap[p_1, l_8], v_36] + perm];
+                  assume Heap[p_1, l] != null;
+                  Mask := Mask[Heap[p_1, l], v_35:=Mask[Heap[p_1, l], v_35] + perm];
                   assume state(Heap, Mask);
                   perm := FullPerm;
-                  assume Heap[p_1, l_8] != null;
-                  Mask := Mask[Heap[p_1, l_8], l_8:=Mask[Heap[p_1, l_8], l_8] + perm];
+                  assume Heap[p_1, l] != null;
+                  Mask := Mask[Heap[p_1, l], l:=Mask[Heap[p_1, l], l] + perm];
                   assume state(Heap, Mask);
                   perm := FullPerm;
-                  Mask := Mask[null, Tree(Heap[Heap[p_1, l_8], l_8]):=Mask[null, Tree(Heap[Heap[p_1, l_8], l_8])] + perm];
+                  Mask := Mask[null, Tree(Heap[Heap[p_1, l], l]):=Mask[null, Tree(Heap[Heap[p_1, l], l])] + perm];
                   
                   // -- Extra unfolding of predicate
-                    assume InsidePredicate(Tree(Heap[p_1, l_8]), Heap[null, Tree(Heap[p_1, l_8])], Tree(Heap[Heap[p_1, l_8], l_8]), Heap[null, Tree(Heap[Heap[p_1, l_8], l_8])]);
+                    assume InsidePredicate(Tree(Heap[p_1, l]), Heap[null, Tree(Heap[p_1, l])], Tree(Heap[Heap[p_1, l], l]), Heap[null, Tree(Heap[Heap[p_1, l], l])]);
                   assume state(Heap, Mask);
                   perm := FullPerm;
-                  assume Heap[p_1, l_8] != null;
-                  Mask := Mask[Heap[p_1, l_8], r_6:=Mask[Heap[p_1, l_8], r_6] + perm];
+                  assume Heap[p_1, l] != null;
+                  Mask := Mask[Heap[p_1, l], r_11:=Mask[Heap[p_1, l], r_11] + perm];
                   assume state(Heap, Mask);
                   perm := FullPerm;
-                  Mask := Mask[null, Tree(Heap[Heap[p_1, l_8], r_6]):=Mask[null, Tree(Heap[Heap[p_1, l_8], r_6])] + perm];
+                  Mask := Mask[null, Tree(Heap[Heap[p_1, l], r_11]):=Mask[null, Tree(Heap[Heap[p_1, l], r_11])] + perm];
                   
                   // -- Extra unfolding of predicate
-                    assume InsidePredicate(Tree(Heap[p_1, l_8]), Heap[null, Tree(Heap[p_1, l_8])], Tree(Heap[Heap[p_1, l_8], r_6]), Heap[null, Tree(Heap[Heap[p_1, l_8], r_6])]);
+                    assume InsidePredicate(Tree(Heap[p_1, l]), Heap[null, Tree(Heap[p_1, l])], Tree(Heap[Heap[p_1, l], r_11]), Heap[null, Tree(Heap[Heap[p_1, l], r_11])]);
                   assume state(Heap, Mask);
                 }
                 assume state(Heap, Mask);
@@ -2181,23 +2181,23 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
               // -- Translating statement: p := p.l -- tree_delete_min.vpr@72.7--72.15
                 
                 // -- Check definedness of p.l
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@72.7--72.15) [120748]"}
-                    HasDirectPerm(Mask, p_1, l_8);
-                p_1 := Heap[p_1, l_8];
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@72.7--72.15) [205975]"}
+                    HasDirectPerm(Mask, p_1, l);
+                p_1 := Heap[p_1, l];
                 assume state(Heap, Mask);
               
               // -- Translating statement: plvs := vals(p.l) -- tree_delete_min.vpr@73.7--73.24
                 
                 // -- Check definedness of vals(p.l)
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@73.7--73.24) [120749]"}
-                    HasDirectPerm(Mask, p_1, l_8);
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@73.7--73.24) [205976]"}
+                    HasDirectPerm(Mask, p_1, l);
                   if (*) {
                     // Exhale precondition of function application
                     ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
                     perm := FullPerm;
-                    assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@73.15--73.24) [120750]"}
-                      NoPerm < perm ==> NoPerm < Mask[null, Tree(Heap[p_1, l_8])];
+                    assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@73.15--73.24) [205977]"}
+                      NoPerm < perm ==> NoPerm < Mask[null, Tree(Heap[p_1, l])];
                     // Finish exhale
                     havoc ExhaleHeap;
                     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -2205,7 +2205,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     // Stop execution
                     assume false;
                   }
-                plvs := vals(Heap, Heap[p_1, l_8]);
+                plvs := vals_1(Heap, Heap[p_1, l]);
                 assume state(Heap, Mask);
               
               // -- Translating statement: package acc(p.l, write) &&
@@ -2227,7 +2227,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                   if (b_12) {
                     perm := FullPerm;
                     b_12 := b_12 && p_1 != null;
-                    Ops_3Mask := Ops_3Mask[p_1, l_8:=Ops_3Mask[p_1, l_8] + perm];
+                    Ops_3Mask := Ops_3Mask[p_1, l:=Ops_3Mask[p_1, l] + perm];
                     b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
                   }
                   if (b_12) {
@@ -2235,12 +2235,12 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       if (b_12) {
                         
                         // -- Check definedness of acc(Tree(p.l), write)
-                          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@75.7--79.8) [120751]"}
-                            HasDirectPerm(Ops_3Mask, p_1, l_8);
+                          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@75.7--79.8) [205978]"}
+                            HasDirectPerm(Ops_3Mask, p_1, l);
                       }
                       perm := FullPerm;
                       b_12 := b_12;
-                      Ops_3Mask := Ops_3Mask[null, Tree(Ops_3Heap[p_1, l_8]):=Ops_3Mask[null, Tree(Ops_3Heap[p_1, l_8])] + perm];
+                      Ops_3Mask := Ops_3Mask[null, Tree(Ops_3Heap[p_1, l]):=Ops_3Mask[null, Tree(Ops_3Heap[p_1, l])] + perm];
                       b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
                     }
                     if (b_12) {
@@ -2248,15 +2248,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       if (b_12) {
                         
                         // -- Check definedness of vals(p.l) == plvs[1..]
-                          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@75.7--79.8) [120752]"}
-                            HasDirectPerm(Ops_3Mask, p_1, l_8);
+                          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@75.7--79.8) [205979]"}
+                            HasDirectPerm(Ops_3Mask, p_1, l);
                           if (*) {
                             // Exhale precondition of function application
                             ExhaleWellDef0Mask := Ops_3Mask;
                             ExhaleWellDef0Heap := Ops_3Heap;
                             perm := FullPerm;
-                            assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@75.16--75.17) [120753]"}
-                              NoPerm < perm ==> NoPerm < Ops_3Mask[null, Tree(Ops_3Heap[p_1, l_8])];
+                            assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@75.16--75.17) [205980]"}
+                              NoPerm < perm ==> NoPerm < Ops_3Mask[null, Tree(Ops_3Heap[p_1, l])];
                             // Finish exhale
                             havoc ExhaleHeap;
                             b_12 := b_12 && IdenticalOnKnownLocations(Ops_3Heap, ExhaleHeap, Ops_3Mask);
@@ -2265,7 +2265,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             b_12 := false;
                           }
                       }
-                      b_12 := b_12 && Seq#Equal(vals(Ops_3Heap, Ops_3Heap[p_1, l_8]), Seq#Drop(plvs, 1));
+                      b_12 := b_12 && Seq#Equal(vals_1(Ops_3Heap, Ops_3Heap[p_1, l]), Seq#Drop(plvs, 1));
                     }
                   }
                 }
@@ -2294,8 +2294,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                         // -- Transfer of acc(p.v, write)
                           rcvLocal := p_1;
                           neededTransfer := FullPerm;
-                          initNeededTransfer := Used_4Mask[rcvLocal, v_36] + neededTransfer;
-                          assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.v, write) might be negative. (tree_delete_min.vpr@76.11--76.23) [120754]"}
+                          initNeededTransfer := Used_4Mask[rcvLocal, v_35] + neededTransfer;
+                          assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.v, write) might be negative. (tree_delete_min.vpr@76.11--76.23) [205981]"}
                             neededTransfer >= 0.000000000;
                           
                           // -- transfer code for top state of stack
@@ -2303,7 +2303,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             accVar2 := true;
                             // actual code for the transfer from current state on stack
                             if (((b_12 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                              maskTransfer := Ops_3Mask[rcvLocal, v_36];
+                              maskTransfer := Ops_3Mask[rcvLocal, v_35];
                               if (neededTransfer <= maskTransfer) {
                                 takeTransfer := neededTransfer;
                               } else {
@@ -2311,10 +2311,10 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               }
                               if (takeTransfer > 0.000000000) {
                                 neededTransfer := neededTransfer - takeTransfer;
-                                Used_4Mask := Used_4Mask[rcvLocal, v_36:=Used_4Mask[rcvLocal, v_36] + takeTransfer];
+                                Used_4Mask := Used_4Mask[rcvLocal, v_35:=Used_4Mask[rcvLocal, v_35] + takeTransfer];
                                 b_13 := b_13 && state(Used_4Heap, Used_4Mask);
-                                b_13 := b_13 && Ops_3Heap[rcvLocal, v_36] == Used_4Heap[rcvLocal, v_36];
-                                Ops_3Mask := Ops_3Mask[rcvLocal, v_36:=Ops_3Mask[rcvLocal, v_36] - takeTransfer];
+                                b_13 := b_13 && Ops_3Heap[rcvLocal, v_35] == Used_4Heap[rcvLocal, v_35];
+                                Ops_3Mask := Ops_3Mask[rcvLocal, v_35:=Ops_3Mask[rcvLocal, v_35] - takeTransfer];
                               }
                             }
                           
@@ -2323,7 +2323,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             accVar2 := true;
                             // actual code for the transfer from current state on stack
                             if (((b_12 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                              maskTransfer := Mask[rcvLocal, v_36];
+                              maskTransfer := Mask[rcvLocal, v_35];
                               if (neededTransfer <= maskTransfer) {
                                 takeTransfer := neededTransfer;
                               } else {
@@ -2331,15 +2331,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               }
                               if (takeTransfer > 0.000000000) {
                                 neededTransfer := neededTransfer - takeTransfer;
-                                Used_4Mask := Used_4Mask[rcvLocal, v_36:=Used_4Mask[rcvLocal, v_36] + takeTransfer];
+                                Used_4Mask := Used_4Mask[rcvLocal, v_35:=Used_4Mask[rcvLocal, v_35] + takeTransfer];
                                 b_13 := b_13 && state(Used_4Heap, Used_4Mask);
-                                b_13 := b_13 && Heap[rcvLocal, v_36] == Used_4Heap[rcvLocal, v_36];
-                                Mask := Mask[rcvLocal, v_36:=Mask[rcvLocal, v_36] - takeTransfer];
-                                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][p_1, v_36:=true]];
+                                b_13 := b_13 && Heap[rcvLocal, v_35] == Used_4Heap[rcvLocal, v_35];
+                                Mask := Mask[rcvLocal, v_35:=Mask[rcvLocal, v_35] - takeTransfer];
+                                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][p_1, v_35:=true]];
                               }
                             }
-                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.v (tree_delete_min.vpr@76.11--76.23) [120755]"}
-                            b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_4Mask[rcvLocal, v_36] == initNeededTransfer;
+                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.v (tree_delete_min.vpr@76.11--76.23) [205982]"}
+                            b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_4Mask[rcvLocal, v_35] == initNeededTransfer;
                           
                           // -- Creating state which is the sum of the two previously built up states
                             b_14 := b_12 && b_13;
@@ -2354,8 +2354,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                         // -- Transfer of acc(p.l, write)
                           rcvLocal := p_1;
                           neededTransfer := FullPerm;
-                          initNeededTransfer := Used_4Mask[rcvLocal, l_8] + neededTransfer;
-                          assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.l, write) might be negative. (tree_delete_min.vpr@76.11--76.23) [120756]"}
+                          initNeededTransfer := Used_4Mask[rcvLocal, l] + neededTransfer;
+                          assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.l, write) might be negative. (tree_delete_min.vpr@76.11--76.23) [205983]"}
                             neededTransfer >= 0.000000000;
                           
                           // -- transfer code for top state of stack
@@ -2363,7 +2363,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             accVar2 := true;
                             // actual code for the transfer from current state on stack
                             if (((b_12 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                              maskTransfer := Ops_3Mask[rcvLocal, l_8];
+                              maskTransfer := Ops_3Mask[rcvLocal, l];
                               if (neededTransfer <= maskTransfer) {
                                 takeTransfer := neededTransfer;
                               } else {
@@ -2371,10 +2371,10 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               }
                               if (takeTransfer > 0.000000000) {
                                 neededTransfer := neededTransfer - takeTransfer;
-                                Used_4Mask := Used_4Mask[rcvLocal, l_8:=Used_4Mask[rcvLocal, l_8] + takeTransfer];
+                                Used_4Mask := Used_4Mask[rcvLocal, l:=Used_4Mask[rcvLocal, l] + takeTransfer];
                                 b_13 := b_13 && state(Used_4Heap, Used_4Mask);
-                                b_13 := b_13 && Ops_3Heap[rcvLocal, l_8] == Used_4Heap[rcvLocal, l_8];
-                                Ops_3Mask := Ops_3Mask[rcvLocal, l_8:=Ops_3Mask[rcvLocal, l_8] - takeTransfer];
+                                b_13 := b_13 && Ops_3Heap[rcvLocal, l] == Used_4Heap[rcvLocal, l];
+                                Ops_3Mask := Ops_3Mask[rcvLocal, l:=Ops_3Mask[rcvLocal, l] - takeTransfer];
                               }
                             }
                           
@@ -2383,7 +2383,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             accVar2 := true;
                             // actual code for the transfer from current state on stack
                             if (((b_12 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                              maskTransfer := Mask[rcvLocal, l_8];
+                              maskTransfer := Mask[rcvLocal, l];
                               if (neededTransfer <= maskTransfer) {
                                 takeTransfer := neededTransfer;
                               } else {
@@ -2391,15 +2391,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               }
                               if (takeTransfer > 0.000000000) {
                                 neededTransfer := neededTransfer - takeTransfer;
-                                Used_4Mask := Used_4Mask[rcvLocal, l_8:=Used_4Mask[rcvLocal, l_8] + takeTransfer];
+                                Used_4Mask := Used_4Mask[rcvLocal, l:=Used_4Mask[rcvLocal, l] + takeTransfer];
                                 b_13 := b_13 && state(Used_4Heap, Used_4Mask);
-                                b_13 := b_13 && Heap[rcvLocal, l_8] == Used_4Heap[rcvLocal, l_8];
-                                Mask := Mask[rcvLocal, l_8:=Mask[rcvLocal, l_8] - takeTransfer];
-                                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][p_1, l_8:=true]];
+                                b_13 := b_13 && Heap[rcvLocal, l] == Used_4Heap[rcvLocal, l];
+                                Mask := Mask[rcvLocal, l:=Mask[rcvLocal, l] - takeTransfer];
+                                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][p_1, l:=true]];
                               }
                             }
-                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@76.11--76.23) [120757]"}
-                            b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_4Mask[rcvLocal, l_8] == initNeededTransfer;
+                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@76.11--76.23) [205984]"}
+                            b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_4Mask[rcvLocal, l] == initNeededTransfer;
                           
                           // -- Creating state which is the sum of the two previously built up states
                             b_15 := b_12 && b_13;
@@ -2418,14 +2418,14 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               if (b_12) {
                                 
                                 // -- Check definedness of acc(Tree(p.l), write)
-                                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@76.11--76.23) [120758]"}
-                                    HasDirectPerm(Result_8Mask, p_1, l_8);
+                                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@76.11--76.23) [205985]"}
+                                    HasDirectPerm(Result_8Mask, p_1, l);
                               }
                             }
-                          arg_3 := Result_8Heap[p_1, l_8];
+                          arg_3_13 := Result_8Heap[p_1, l];
                           neededTransfer := FullPerm;
-                          initNeededTransfer := Used_4Mask[null, Tree(arg_3)] + neededTransfer;
-                          assert {:msg "  Folding Tree(p) might fail. Fraction acc(Tree(p.l), write) might be negative. (tree_delete_min.vpr@76.11--76.23) [120759]"}
+                          initNeededTransfer := Used_4Mask[null, Tree(arg_3_13)] + neededTransfer;
+                          assert {:msg "  Folding Tree(p) might fail. Fraction acc(Tree(p.l), write) might be negative. (tree_delete_min.vpr@76.11--76.23) [205986]"}
                             neededTransfer >= 0.000000000;
                           
                           // -- transfer code for top state of stack
@@ -2433,7 +2433,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             accVar2 := true;
                             // actual code for the transfer from current state on stack
                             if (((b_12 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                              maskTransfer := Ops_3Mask[null, Tree(arg_3)];
+                              maskTransfer := Ops_3Mask[null, Tree(arg_3_13)];
                               if (neededTransfer <= maskTransfer) {
                                 takeTransfer := neededTransfer;
                               } else {
@@ -2441,11 +2441,11 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               }
                               if (takeTransfer > 0.000000000) {
                                 neededTransfer := neededTransfer - takeTransfer;
-                                Used_4Mask := Used_4Mask[null, Tree(arg_3):=Used_4Mask[null, Tree(arg_3)] + takeTransfer];
+                                Used_4Mask := Used_4Mask[null, Tree(arg_3_13):=Used_4Mask[null, Tree(arg_3_13)] + takeTransfer];
                                 b_13 := b_13 && state(Used_4Heap, Used_4Mask);
-                                TempMask := ZeroMask[null, Tree(arg_3):=FullPerm];
+                                TempMask := ZeroMask[null, Tree(arg_3_13):=FullPerm];
                                 b_13 := b_13 && IdenticalOnKnownLocations(Ops_3Heap, Used_4Heap, TempMask);
-                                Ops_3Mask := Ops_3Mask[null, Tree(arg_3):=Ops_3Mask[null, Tree(arg_3)] - takeTransfer];
+                                Ops_3Mask := Ops_3Mask[null, Tree(arg_3_13):=Ops_3Mask[null, Tree(arg_3_13)] - takeTransfer];
                               }
                             }
                           
@@ -2454,7 +2454,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             accVar2 := true;
                             // actual code for the transfer from current state on stack
                             if (((b_12 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                              maskTransfer := Mask[null, Tree(arg_3)];
+                              maskTransfer := Mask[null, Tree(arg_3_13)];
                               if (neededTransfer <= maskTransfer) {
                                 takeTransfer := neededTransfer;
                               } else {
@@ -2462,21 +2462,21 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               }
                               if (takeTransfer > 0.000000000) {
                                 neededTransfer := neededTransfer - takeTransfer;
-                                Used_4Mask := Used_4Mask[null, Tree(arg_3):=Used_4Mask[null, Tree(arg_3)] + takeTransfer];
+                                Used_4Mask := Used_4Mask[null, Tree(arg_3_13):=Used_4Mask[null, Tree(arg_3_13)] + takeTransfer];
                                 b_13 := b_13 && state(Used_4Heap, Used_4Mask);
-                                TempMask := ZeroMask[null, Tree(arg_3):=FullPerm];
+                                TempMask := ZeroMask[null, Tree(arg_3_13):=FullPerm];
                                 b_13 := b_13 && IdenticalOnKnownLocations(Heap, Used_4Heap, TempMask);
-                                Mask := Mask[null, Tree(arg_3):=Mask[null, Tree(arg_3)] - takeTransfer];
+                                Mask := Mask[null, Tree(arg_3_13):=Mask[null, Tree(arg_3_13)] - takeTransfer];
                                 havoc newPMask;
-                                assume (forall <A, B> o_3: Ref, f_12: (Field A B) ::
-                                  { newPMask[o_3, f_12] }
-                                  Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][o_3, f_12] || Heap[null, Tree#sm(Heap[p_1, l_8])][o_3, f_12] ==> newPMask[o_3, f_12]
+                                assume (forall <A, B> o_12: Ref, f_25: (Field A B) ::
+                                  { newPMask[o_12, f_25] }
+                                  Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][o_12, f_25] || Heap[null, Tree#sm(Heap[p_1, l])][o_12, f_25] ==> newPMask[o_12, f_25]
                                 );
-                                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=newPMask];
+                                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=newPMask];
                               }
                             }
-                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@76.11--76.23) [120760]"}
-                            b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_4Mask[null, Tree(arg_3)] == initNeededTransfer;
+                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@76.11--76.23) [205987]"}
+                            b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_4Mask[null, Tree(arg_3_13)] == initNeededTransfer;
                           
                           // -- Creating state which is the sum of the two previously built up states
                             b_16 := b_12 && b_13;
@@ -2491,8 +2491,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                         // -- Transfer of acc(p.r, write)
                           rcvLocal := p_1;
                           neededTransfer := FullPerm;
-                          initNeededTransfer := Used_4Mask[rcvLocal, r_6] + neededTransfer;
-                          assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.r, write) might be negative. (tree_delete_min.vpr@76.11--76.23) [120761]"}
+                          initNeededTransfer := Used_4Mask[rcvLocal, r_11] + neededTransfer;
+                          assert {:msg "  Folding Tree(p) might fail. Fraction acc(p.r, write) might be negative. (tree_delete_min.vpr@76.11--76.23) [205988]"}
                             neededTransfer >= 0.000000000;
                           
                           // -- transfer code for top state of stack
@@ -2500,7 +2500,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             accVar2 := true;
                             // actual code for the transfer from current state on stack
                             if (((b_12 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                              maskTransfer := Ops_3Mask[rcvLocal, r_6];
+                              maskTransfer := Ops_3Mask[rcvLocal, r_11];
                               if (neededTransfer <= maskTransfer) {
                                 takeTransfer := neededTransfer;
                               } else {
@@ -2508,10 +2508,10 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               }
                               if (takeTransfer > 0.000000000) {
                                 neededTransfer := neededTransfer - takeTransfer;
-                                Used_4Mask := Used_4Mask[rcvLocal, r_6:=Used_4Mask[rcvLocal, r_6] + takeTransfer];
+                                Used_4Mask := Used_4Mask[rcvLocal, r_11:=Used_4Mask[rcvLocal, r_11] + takeTransfer];
                                 b_13 := b_13 && state(Used_4Heap, Used_4Mask);
-                                b_13 := b_13 && Ops_3Heap[rcvLocal, r_6] == Used_4Heap[rcvLocal, r_6];
-                                Ops_3Mask := Ops_3Mask[rcvLocal, r_6:=Ops_3Mask[rcvLocal, r_6] - takeTransfer];
+                                b_13 := b_13 && Ops_3Heap[rcvLocal, r_11] == Used_4Heap[rcvLocal, r_11];
+                                Ops_3Mask := Ops_3Mask[rcvLocal, r_11:=Ops_3Mask[rcvLocal, r_11] - takeTransfer];
                               }
                             }
                           
@@ -2520,7 +2520,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             accVar2 := true;
                             // actual code for the transfer from current state on stack
                             if (((b_12 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                              maskTransfer := Mask[rcvLocal, r_6];
+                              maskTransfer := Mask[rcvLocal, r_11];
                               if (neededTransfer <= maskTransfer) {
                                 takeTransfer := neededTransfer;
                               } else {
@@ -2528,15 +2528,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               }
                               if (takeTransfer > 0.000000000) {
                                 neededTransfer := neededTransfer - takeTransfer;
-                                Used_4Mask := Used_4Mask[rcvLocal, r_6:=Used_4Mask[rcvLocal, r_6] + takeTransfer];
+                                Used_4Mask := Used_4Mask[rcvLocal, r_11:=Used_4Mask[rcvLocal, r_11] + takeTransfer];
                                 b_13 := b_13 && state(Used_4Heap, Used_4Mask);
-                                b_13 := b_13 && Heap[rcvLocal, r_6] == Used_4Heap[rcvLocal, r_6];
-                                Mask := Mask[rcvLocal, r_6:=Mask[rcvLocal, r_6] - takeTransfer];
-                                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][p_1, r_6:=true]];
+                                b_13 := b_13 && Heap[rcvLocal, r_11] == Used_4Heap[rcvLocal, r_11];
+                                Mask := Mask[rcvLocal, r_11:=Mask[rcvLocal, r_11] - takeTransfer];
+                                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][p_1, r_11:=true]];
                               }
                             }
-                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.r (tree_delete_min.vpr@76.11--76.23) [120762]"}
-                            b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_4Mask[rcvLocal, r_6] == initNeededTransfer;
+                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.r (tree_delete_min.vpr@76.11--76.23) [205989]"}
+                            b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_4Mask[rcvLocal, r_11] == initNeededTransfer;
                           
                           // -- Creating state which is the sum of the two previously built up states
                             b_17 := b_12 && b_13;
@@ -2555,14 +2555,14 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               if (b_12) {
                                 
                                 // -- Check definedness of acc(Tree(p.r), write)
-                                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.r (tree_delete_min.vpr@76.11--76.23) [120763]"}
-                                    HasDirectPerm(Result_10Mask, p_1, r_6);
+                                  assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access p.r (tree_delete_min.vpr@76.11--76.23) [205990]"}
+                                    HasDirectPerm(Result_10Mask, p_1, r_11);
                               }
                             }
-                          arg_4 := Result_10Heap[p_1, r_6];
+                          arg_4_13 := Result_10Heap[p_1, r_11];
                           neededTransfer := FullPerm;
-                          initNeededTransfer := Used_4Mask[null, Tree(arg_4)] + neededTransfer;
-                          assert {:msg "  Folding Tree(p) might fail. Fraction acc(Tree(p.r), write) might be negative. (tree_delete_min.vpr@76.11--76.23) [120764]"}
+                          initNeededTransfer := Used_4Mask[null, Tree(arg_4_13)] + neededTransfer;
+                          assert {:msg "  Folding Tree(p) might fail. Fraction acc(Tree(p.r), write) might be negative. (tree_delete_min.vpr@76.11--76.23) [205991]"}
                             neededTransfer >= 0.000000000;
                           
                           // -- transfer code for top state of stack
@@ -2570,7 +2570,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             accVar2 := true;
                             // actual code for the transfer from current state on stack
                             if (((b_12 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                              maskTransfer := Ops_3Mask[null, Tree(arg_4)];
+                              maskTransfer := Ops_3Mask[null, Tree(arg_4_13)];
                               if (neededTransfer <= maskTransfer) {
                                 takeTransfer := neededTransfer;
                               } else {
@@ -2578,11 +2578,11 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               }
                               if (takeTransfer > 0.000000000) {
                                 neededTransfer := neededTransfer - takeTransfer;
-                                Used_4Mask := Used_4Mask[null, Tree(arg_4):=Used_4Mask[null, Tree(arg_4)] + takeTransfer];
+                                Used_4Mask := Used_4Mask[null, Tree(arg_4_13):=Used_4Mask[null, Tree(arg_4_13)] + takeTransfer];
                                 b_13 := b_13 && state(Used_4Heap, Used_4Mask);
-                                TempMask := ZeroMask[null, Tree(arg_4):=FullPerm];
+                                TempMask := ZeroMask[null, Tree(arg_4_13):=FullPerm];
                                 b_13 := b_13 && IdenticalOnKnownLocations(Ops_3Heap, Used_4Heap, TempMask);
-                                Ops_3Mask := Ops_3Mask[null, Tree(arg_4):=Ops_3Mask[null, Tree(arg_4)] - takeTransfer];
+                                Ops_3Mask := Ops_3Mask[null, Tree(arg_4_13):=Ops_3Mask[null, Tree(arg_4_13)] - takeTransfer];
                               }
                             }
                           
@@ -2591,7 +2591,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             accVar2 := true;
                             // actual code for the transfer from current state on stack
                             if (((b_12 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                              maskTransfer := Mask[null, Tree(arg_4)];
+                              maskTransfer := Mask[null, Tree(arg_4_13)];
                               if (neededTransfer <= maskTransfer) {
                                 takeTransfer := neededTransfer;
                               } else {
@@ -2599,21 +2599,21 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               }
                               if (takeTransfer > 0.000000000) {
                                 neededTransfer := neededTransfer - takeTransfer;
-                                Used_4Mask := Used_4Mask[null, Tree(arg_4):=Used_4Mask[null, Tree(arg_4)] + takeTransfer];
+                                Used_4Mask := Used_4Mask[null, Tree(arg_4_13):=Used_4Mask[null, Tree(arg_4_13)] + takeTransfer];
                                 b_13 := b_13 && state(Used_4Heap, Used_4Mask);
-                                TempMask := ZeroMask[null, Tree(arg_4):=FullPerm];
+                                TempMask := ZeroMask[null, Tree(arg_4_13):=FullPerm];
                                 b_13 := b_13 && IdenticalOnKnownLocations(Heap, Used_4Heap, TempMask);
-                                Mask := Mask[null, Tree(arg_4):=Mask[null, Tree(arg_4)] - takeTransfer];
+                                Mask := Mask[null, Tree(arg_4_13):=Mask[null, Tree(arg_4_13)] - takeTransfer];
                                 havoc newPMask;
-                                assume (forall <A, B> o_46: Ref, f_35: (Field A B) ::
-                                  { newPMask[o_46, f_35] }
-                                  Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][o_46, f_35] || Heap[null, Tree#sm(Heap[p_1, r_6])][o_46, f_35] ==> newPMask[o_46, f_35]
+                                assume (forall <A, B> o_41: Ref, f_21: (Field A B) ::
+                                  { newPMask[o_41, f_21] }
+                                  Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][o_41, f_21] || Heap[null, Tree#sm(Heap[p_1, r_11])][o_41, f_21] ==> newPMask[o_41, f_21]
                                 );
-                                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=newPMask];
+                                Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=newPMask];
                               }
                             }
-                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access Tree(p.r) (tree_delete_min.vpr@76.11--76.23) [120765]"}
-                            b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_4Mask[null, Tree(arg_4)] == initNeededTransfer;
+                          assert {:msg "  Folding Tree(p) might fail. There might be insufficient permission to access Tree(p.r) (tree_delete_min.vpr@76.11--76.23) [205992]"}
+                            b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_4Mask[null, Tree(arg_4_13)] == initNeededTransfer;
                           
                           // -- Creating state which is the sum of the two previously built up states
                             b_18 := b_12 && b_13;
@@ -2640,7 +2640,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
                     b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
                     assume Tree#trigger(Ops_3Heap, Tree(p_1));
-                    assume Ops_3Heap[null, Tree(p_1)] == FrameFragment((if p_1 == null then EmptyFrame else CombineFrames(FrameFragment(Ops_3Heap[p_1, v_36]), CombineFrames(FrameFragment(Ops_3Heap[p_1, l_8]), CombineFrames(Ops_3Heap[null, Tree(Ops_3Heap[p_1, l_8])], CombineFrames(FrameFragment(Ops_3Heap[p_1, r_6]), Ops_3Heap[null, Tree(Ops_3Heap[p_1, r_6])]))))));
+                    assume Ops_3Heap[null, Tree(p_1)] == FrameFragment((if p_1 == null then EmptyFrame else CombineFrames(FrameFragment(Ops_3Heap[p_1, v_35]), CombineFrames(FrameFragment(Ops_3Heap[p_1, l]), CombineFrames(Ops_3Heap[null, Tree(Ops_3Heap[p_1, l])], CombineFrames(FrameFragment(Ops_3Heap[p_1, r_11]), Ops_3Heap[null, Tree(Ops_3Heap[p_1, r_11])]))))));
                     if (!HasDirectPerm(Ops_3Mask, null, Tree(p_1))) {
                       Ops_3Heap := Ops_3Heap[null, Tree#sm(p_1):=ZeroPMask];
                       havoc freshVersion;
@@ -2648,19 +2648,19 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     }
                     if (p_1 == null) {
                     } else {
-                      Ops_3Heap := Ops_3Heap[null, Tree#sm(p_1):=Ops_3Heap[null, Tree#sm(p_1)][p_1, v_36:=true]];
-                      Ops_3Heap := Ops_3Heap[null, Tree#sm(p_1):=Ops_3Heap[null, Tree#sm(p_1)][p_1, l_8:=true]];
+                      Ops_3Heap := Ops_3Heap[null, Tree#sm(p_1):=Ops_3Heap[null, Tree#sm(p_1)][p_1, v_35:=true]];
+                      Ops_3Heap := Ops_3Heap[null, Tree#sm(p_1):=Ops_3Heap[null, Tree#sm(p_1)][p_1, l:=true]];
                       havoc newPMask;
-                      assume (forall <A, B> o_41: Ref, f_25: (Field A B) ::
-                        { newPMask[o_41, f_25] }
-                        Ops_3Heap[null, Tree#sm(p_1)][o_41, f_25] || Ops_3Heap[null, Tree#sm(Ops_3Heap[p_1, l_8])][o_41, f_25] ==> newPMask[o_41, f_25]
+                      assume (forall <A, B> o_23: Ref, f_13: (Field A B) ::
+                        { newPMask[o_23, f_13] }
+                        Ops_3Heap[null, Tree#sm(p_1)][o_23, f_13] || Ops_3Heap[null, Tree#sm(Ops_3Heap[p_1, l])][o_23, f_13] ==> newPMask[o_23, f_13]
                       );
                       Ops_3Heap := Ops_3Heap[null, Tree#sm(p_1):=newPMask];
-                      Ops_3Heap := Ops_3Heap[null, Tree#sm(p_1):=Ops_3Heap[null, Tree#sm(p_1)][p_1, r_6:=true]];
+                      Ops_3Heap := Ops_3Heap[null, Tree#sm(p_1):=Ops_3Heap[null, Tree#sm(p_1)][p_1, r_11:=true]];
                       havoc newPMask;
-                      assume (forall <A, B> o_34: Ref, f_44: (Field A B) ::
-                        { newPMask[o_34, f_44] }
-                        Ops_3Heap[null, Tree#sm(p_1)][o_34, f_44] || Ops_3Heap[null, Tree#sm(Ops_3Heap[p_1, r_6])][o_34, f_44] ==> newPMask[o_34, f_44]
+                      assume (forall <A, B> o_13: Ref, f_65: (Field A B) ::
+                        { newPMask[o_13, f_65] }
+                        Ops_3Heap[null, Tree#sm(p_1)][o_13, f_65] || Ops_3Heap[null, Tree#sm(Ops_3Heap[p_1, r_11])][o_13, f_65] ==> newPMask[o_13, f_65]
                       );
                       Ops_3Heap := Ops_3Heap[null, Tree#sm(p_1):=newPMask];
                     }
@@ -2692,27 +2692,27 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                                   WandDefLHSMask := ZeroMask;
                                   perm := FullPerm;
                                   assume oldP != null;
-                                  WandDefLHSMask := WandDefLHSMask[oldP, l_8:=WandDefLHSMask[oldP, l_8] + perm];
+                                  WandDefLHSMask := WandDefLHSMask[oldP, l:=WandDefLHSMask[oldP, l] + perm];
                                   assume state(WandDefLHSHeap, WandDefLHSMask);
                                   
                                   // -- Check definedness of acc(Tree(oldP.l), write)
-                                    assert {:msg "  Applying wand might fail. There might be insufficient permission to access oldP.l (tree_delete_min.vpr@77.11--78.55) [120766]"}
-                                      HasDirectPerm(WandDefLHSMask, oldP, l_8);
+                                    assert {:msg "  Applying wand might fail. There might be insufficient permission to access oldP.l (tree_delete_min.vpr@77.11--78.55) [205993]"}
+                                      HasDirectPerm(WandDefLHSMask, oldP, l);
                                   perm := FullPerm;
-                                  WandDefLHSMask := WandDefLHSMask[null, Tree(WandDefLHSHeap[oldP, l_8]):=WandDefLHSMask[null, Tree(WandDefLHSHeap[oldP, l_8])] + perm];
+                                  WandDefLHSMask := WandDefLHSMask[null, Tree(WandDefLHSHeap[oldP, l]):=WandDefLHSMask[null, Tree(WandDefLHSHeap[oldP, l])] + perm];
                                   assume state(WandDefLHSHeap, WandDefLHSMask);
                                   assume state(WandDefLHSHeap, WandDefLHSMask);
                                   
                                   // -- Check definedness of vals(oldP.l) == oldPlvs[1..]
-                                    assert {:msg "  Applying wand might fail. There might be insufficient permission to access oldP.l (tree_delete_min.vpr@77.11--78.55) [120767]"}
-                                      HasDirectPerm(WandDefLHSMask, oldP, l_8);
+                                    assert {:msg "  Applying wand might fail. There might be insufficient permission to access oldP.l (tree_delete_min.vpr@77.11--78.55) [205994]"}
+                                      HasDirectPerm(WandDefLHSMask, oldP, l);
                                     if (*) {
                                       // Exhale precondition of function application
                                       ExhaleWellDef1Mask := WandDefLHSMask;
                                       ExhaleWellDef1Heap := WandDefLHSHeap;
                                       perm := FullPerm;
-                                      assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(oldP.l) (tree_delete_min.vpr@77.53--77.65) [120768]"}
-                                        NoPerm < perm ==> NoPerm < WandDefLHSMask[null, Tree(WandDefLHSHeap[oldP, l_8])];
+                                      assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(oldP.l) (tree_delete_min.vpr@77.53--77.65) [205995]"}
+                                        NoPerm < perm ==> NoPerm < WandDefLHSMask[null, Tree(WandDefLHSHeap[oldP, l])];
                                       // Finish exhale
                                       havoc ExhaleHeap;
                                       assume IdenticalOnKnownLocations(WandDefLHSHeap, ExhaleHeap, WandDefLHSMask);
@@ -2720,7 +2720,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                                       // Stop execution
                                       assume false;
                                     }
-                                  assume Seq#Equal(vals(WandDefLHSHeap, WandDefLHSHeap[oldP, l_8]), Seq#Drop(oldPlvs, 1));
+                                  assume Seq#Equal(vals_1(WandDefLHSHeap, WandDefLHSHeap[oldP, l]), Seq#Drop(oldPlvs, 1));
                                   assume state(WandDefLHSHeap, WandDefLHSMask);
                                   
                                   // -- Translating statement: label lhs7 -- tree_delete_min.vpr@77.17--78.55
@@ -2741,7 +2741,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                                       ExhaleWellDef1Mask := WandDefRHSMask;
                                       ExhaleWellDef1Heap := WandDefRHSHeap;
                                       perm := FullPerm;
-                                      assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@78.27--78.34) [120769]"}
+                                      assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@78.27--78.34) [205996]"}
                                         NoPerm < perm ==> NoPerm < WandDefRHSMask[null, Tree(x)];
                                       // Finish exhale
                                       havoc ExhaleHeap;
@@ -2755,21 +2755,21 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                                       ExhaleWellDef1Mask := oldMask;
                                       ExhaleWellDef1Heap := oldHeap;
                                       perm := FullPerm;
-                                      assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@78.42--78.49) [120770]"}
+                                      assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@78.42--78.49) [205997]"}
                                         NoPerm < perm ==> NoPerm < oldMask[null, Tree(x)];
                                       // Finish exhale
                                       // Stop execution
                                       assume false;
                                     }
-                                  assume Seq#Equal(vals(WandDefRHSHeap, x), Seq#Drop(vals(oldHeap, x), 1));
+                                  assume Seq#Equal(vals_1(WandDefRHSHeap, x), Seq#Drop(vals_1(oldHeap, x), 1));
                                   assume state(WandDefRHSHeap, WandDefRHSMask);
                                   assume false;
                                 }
                             }
                           }
                         neededTransfer := 1.000000000;
-                        initNeededTransfer := Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] + neededTransfer;
-                        assert {:msg "  Applying wand might fail. Fraction acc(oldP.l, write) && (acc(Tree(oldP.l), write) && vals(oldP.l) == oldPlvs[1..]) --* acc(Tree(x), write) && vals(x) == old(vals(x))[1..] might be negative. (tree_delete_min.vpr@77.11--78.55) [120771]"}
+                        initNeededTransfer := Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] + neededTransfer;
+                        assert {:msg "  Applying wand might fail. Fraction acc(oldP.l, write) && (acc(Tree(oldP.l), write) && vals(oldP.l) == oldPlvs[1..]) --* acc(Tree(x), write) && vals(x) == old(vals(x))[1..] might be negative. (tree_delete_min.vpr@77.11--78.55) [205998]"}
                           neededTransfer >= 0.000000000;
                         
                         // -- transfer code for top state of stack
@@ -2777,7 +2777,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                           accVar2 := true;
                           // actual code for the transfer from current state on stack
                           if (((b_12 && b_20) && accVar2) && neededTransfer > 0.000000000) {
-                            maskTransfer := Ops_3Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))];
+                            maskTransfer := Ops_3Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))];
                             if (neededTransfer <= maskTransfer) {
                               takeTransfer := neededTransfer;
                             } else {
@@ -2785,9 +2785,9 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             }
                             if (takeTransfer > 0.000000000) {
                               neededTransfer := neededTransfer - takeTransfer;
-                              Used_5Mask := Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] + takeTransfer];
+                              Used_5Mask := Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] + takeTransfer];
                               b_20 := b_20 && state(Used_5Heap, Used_5Mask);
-                              Ops_3Mask := Ops_3Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Ops_3Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] - takeTransfer];
+                              Ops_3Mask := Ops_3Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Ops_3Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] - takeTransfer];
                             }
                           }
                         
@@ -2796,7 +2796,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                           accVar2 := true;
                           // actual code for the transfer from current state on stack
                           if (((b_12 && b_20) && accVar2) && neededTransfer > 0.000000000) {
-                            maskTransfer := Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))];
+                            maskTransfer := Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))];
                             if (neededTransfer <= maskTransfer) {
                               takeTransfer := neededTransfer;
                             } else {
@@ -2804,13 +2804,13 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             }
                             if (takeTransfer > 0.000000000) {
                               neededTransfer := neededTransfer - takeTransfer;
-                              Used_5Mask := Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] + takeTransfer];
+                              Used_5Mask := Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] + takeTransfer];
                               b_20 := b_20 && state(Used_5Heap, Used_5Mask);
-                              Mask := Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] - takeTransfer];
+                              Mask := Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] - takeTransfer];
                             }
                           }
-                        assert {:msg "  Applying wand might fail. Magic wand instance not found. (tree_delete_min.vpr@77.11--78.55) [120772]"}
-                          b_12 && b_20 ==> neededTransfer == 0.000000000 && Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] == initNeededTransfer;
+                        assert {:msg "  Applying wand might fail. Magic wand instance not found. (tree_delete_min.vpr@77.11--78.55) [205999]"}
+                          b_12 && b_20 ==> neededTransfer == 0.000000000 && Used_5Mask[null, wand(oldP, FullPerm, oldP, oldP, Seq#Drop(oldPlvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] == initNeededTransfer;
                         
                         // -- Creating state which is the sum of the two previously built up states
                           b_21 := b_12 && b_20;
@@ -2833,8 +2833,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       // -- Transfer of acc(oldP.l, write)
                         rcvLocal := oldP;
                         neededTransfer := FullPerm;
-                        initNeededTransfer := Used_6Mask[rcvLocal, l_8] + neededTransfer;
-                        assert {:msg "  Applying wand might fail. Fraction acc(oldP.l, write) might be negative. (tree_delete_min.vpr@77.11--78.55) [120773]"}
+                        initNeededTransfer := Used_6Mask[rcvLocal, l] + neededTransfer;
+                        assert {:msg "  Applying wand might fail. Fraction acc(oldP.l, write) might be negative. (tree_delete_min.vpr@77.11--78.55) [206000]"}
                           neededTransfer >= 0.000000000;
                         
                         // -- transfer code for top state of stack
@@ -2842,7 +2842,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                           accVar2 := true;
                           // actual code for the transfer from current state on stack
                           if (((b_12 && b_22) && accVar2) && neededTransfer > 0.000000000) {
-                            maskTransfer := Ops_3Mask[rcvLocal, l_8];
+                            maskTransfer := Ops_3Mask[rcvLocal, l];
                             if (neededTransfer <= maskTransfer) {
                               takeTransfer := neededTransfer;
                             } else {
@@ -2850,10 +2850,10 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             }
                             if (takeTransfer > 0.000000000) {
                               neededTransfer := neededTransfer - takeTransfer;
-                              Used_6Mask := Used_6Mask[rcvLocal, l_8:=Used_6Mask[rcvLocal, l_8] + takeTransfer];
+                              Used_6Mask := Used_6Mask[rcvLocal, l:=Used_6Mask[rcvLocal, l] + takeTransfer];
                               b_22 := b_22 && state(Used_6Heap, Used_6Mask);
-                              b_22 := b_22 && Ops_3Heap[rcvLocal, l_8] == Used_6Heap[rcvLocal, l_8];
-                              Ops_3Mask := Ops_3Mask[rcvLocal, l_8:=Ops_3Mask[rcvLocal, l_8] - takeTransfer];
+                              b_22 := b_22 && Ops_3Heap[rcvLocal, l] == Used_6Heap[rcvLocal, l];
+                              Ops_3Mask := Ops_3Mask[rcvLocal, l:=Ops_3Mask[rcvLocal, l] - takeTransfer];
                             }
                           }
                         
@@ -2862,7 +2862,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                           accVar2 := true;
                           // actual code for the transfer from current state on stack
                           if (((b_12 && b_22) && accVar2) && neededTransfer > 0.000000000) {
-                            maskTransfer := Mask[rcvLocal, l_8];
+                            maskTransfer := Mask[rcvLocal, l];
                             if (neededTransfer <= maskTransfer) {
                               takeTransfer := neededTransfer;
                             } else {
@@ -2870,15 +2870,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             }
                             if (takeTransfer > 0.000000000) {
                               neededTransfer := neededTransfer - takeTransfer;
-                              Used_6Mask := Used_6Mask[rcvLocal, l_8:=Used_6Mask[rcvLocal, l_8] + takeTransfer];
+                              Used_6Mask := Used_6Mask[rcvLocal, l:=Used_6Mask[rcvLocal, l] + takeTransfer];
                               b_22 := b_22 && state(Used_6Heap, Used_6Mask);
-                              b_22 := b_22 && Heap[rcvLocal, l_8] == Used_6Heap[rcvLocal, l_8];
-                              Mask := Mask[rcvLocal, l_8:=Mask[rcvLocal, l_8] - takeTransfer];
-                              Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][oldP, l_8:=true]];
+                              b_22 := b_22 && Heap[rcvLocal, l] == Used_6Heap[rcvLocal, l];
+                              Mask := Mask[rcvLocal, l:=Mask[rcvLocal, l] - takeTransfer];
+                              Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][oldP, l:=true]];
                             }
                           }
-                        assert {:msg "  Applying wand might fail. There might be insufficient permission to access oldP.l (tree_delete_min.vpr@77.11--78.55) [120774]"}
-                          b_12 && b_22 ==> neededTransfer == 0.000000000 && Used_6Mask[rcvLocal, l_8] == initNeededTransfer;
+                        assert {:msg "  Applying wand might fail. There might be insufficient permission to access oldP.l (tree_delete_min.vpr@77.11--78.55) [206001]"}
+                          b_12 && b_22 ==> neededTransfer == 0.000000000 && Used_6Mask[rcvLocal, l] == initNeededTransfer;
                         
                         // -- Creating state which is the sum of the two previously built up states
                           b_23 := b_12 && b_22;
@@ -2897,14 +2897,14 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             if (b_12) {
                               
                               // -- Check definedness of acc(Tree(oldP.l), write)
-                                assert {:msg "  Applying wand might fail. There might be insufficient permission to access oldP.l (tree_delete_min.vpr@77.11--78.55) [120775]"}
-                                  HasDirectPerm(Result_14Mask, oldP, l_8);
+                                assert {:msg "  Applying wand might fail. There might be insufficient permission to access oldP.l (tree_delete_min.vpr@77.11--78.55) [206002]"}
+                                  HasDirectPerm(Result_14Mask, oldP, l);
                             }
                           }
-                        arg_5 := Result_14Heap[oldP, l_8];
+                        arg_5_12 := Result_14Heap[oldP, l];
                         neededTransfer := FullPerm;
-                        initNeededTransfer := Used_6Mask[null, Tree(arg_5)] + neededTransfer;
-                        assert {:msg "  Applying wand might fail. Fraction acc(Tree(oldP.l), write) might be negative. (tree_delete_min.vpr@77.11--78.55) [120776]"}
+                        initNeededTransfer := Used_6Mask[null, Tree(arg_5_12)] + neededTransfer;
+                        assert {:msg "  Applying wand might fail. Fraction acc(Tree(oldP.l), write) might be negative. (tree_delete_min.vpr@77.11--78.55) [206003]"}
                           neededTransfer >= 0.000000000;
                         
                         // -- transfer code for top state of stack
@@ -2912,7 +2912,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                           accVar2 := true;
                           // actual code for the transfer from current state on stack
                           if (((b_12 && b_22) && accVar2) && neededTransfer > 0.000000000) {
-                            maskTransfer := Ops_3Mask[null, Tree(arg_5)];
+                            maskTransfer := Ops_3Mask[null, Tree(arg_5_12)];
                             if (neededTransfer <= maskTransfer) {
                               takeTransfer := neededTransfer;
                             } else {
@@ -2920,11 +2920,11 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             }
                             if (takeTransfer > 0.000000000) {
                               neededTransfer := neededTransfer - takeTransfer;
-                              Used_6Mask := Used_6Mask[null, Tree(arg_5):=Used_6Mask[null, Tree(arg_5)] + takeTransfer];
+                              Used_6Mask := Used_6Mask[null, Tree(arg_5_12):=Used_6Mask[null, Tree(arg_5_12)] + takeTransfer];
                               b_22 := b_22 && state(Used_6Heap, Used_6Mask);
-                              TempMask := ZeroMask[null, Tree(arg_5):=FullPerm];
+                              TempMask := ZeroMask[null, Tree(arg_5_12):=FullPerm];
                               b_22 := b_22 && IdenticalOnKnownLocations(Ops_3Heap, Used_6Heap, TempMask);
-                              Ops_3Mask := Ops_3Mask[null, Tree(arg_5):=Ops_3Mask[null, Tree(arg_5)] - takeTransfer];
+                              Ops_3Mask := Ops_3Mask[null, Tree(arg_5_12):=Ops_3Mask[null, Tree(arg_5_12)] - takeTransfer];
                             }
                           }
                         
@@ -2933,7 +2933,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                           accVar2 := true;
                           // actual code for the transfer from current state on stack
                           if (((b_12 && b_22) && accVar2) && neededTransfer > 0.000000000) {
-                            maskTransfer := Mask[null, Tree(arg_5)];
+                            maskTransfer := Mask[null, Tree(arg_5_12)];
                             if (neededTransfer <= maskTransfer) {
                               takeTransfer := neededTransfer;
                             } else {
@@ -2941,21 +2941,21 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             }
                             if (takeTransfer > 0.000000000) {
                               neededTransfer := neededTransfer - takeTransfer;
-                              Used_6Mask := Used_6Mask[null, Tree(arg_5):=Used_6Mask[null, Tree(arg_5)] + takeTransfer];
+                              Used_6Mask := Used_6Mask[null, Tree(arg_5_12):=Used_6Mask[null, Tree(arg_5_12)] + takeTransfer];
                               b_22 := b_22 && state(Used_6Heap, Used_6Mask);
-                              TempMask := ZeroMask[null, Tree(arg_5):=FullPerm];
+                              TempMask := ZeroMask[null, Tree(arg_5_12):=FullPerm];
                               b_22 := b_22 && IdenticalOnKnownLocations(Heap, Used_6Heap, TempMask);
-                              Mask := Mask[null, Tree(arg_5):=Mask[null, Tree(arg_5)] - takeTransfer];
+                              Mask := Mask[null, Tree(arg_5_12):=Mask[null, Tree(arg_5_12)] - takeTransfer];
                               havoc newPMask;
-                              assume (forall <A, B> o_55: Ref, f_36: (Field A B) ::
-                                { newPMask[o_55, f_36] }
-                                Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][o_55, f_36] || Heap[null, Tree#sm(Heap[oldP, l_8])][o_55, f_36] ==> newPMask[o_55, f_36]
+                              assume (forall <A, B> o_51: Ref, f_66: (Field A B) ::
+                                { newPMask[o_51, f_66] }
+                                Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][o_51, f_66] || Heap[null, Tree#sm(Heap[oldP, l])][o_51, f_66] ==> newPMask[o_51, f_66]
                               );
-                              Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=newPMask];
+                              Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=newPMask];
                             }
                           }
-                        assert {:msg "  Applying wand might fail. There might be insufficient permission to access Tree(oldP.l) (tree_delete_min.vpr@77.11--78.55) [120777]"}
-                          b_12 && b_22 ==> neededTransfer == 0.000000000 && Used_6Mask[null, Tree(arg_5)] == initNeededTransfer;
+                        assert {:msg "  Applying wand might fail. There might be insufficient permission to access Tree(oldP.l) (tree_delete_min.vpr@77.11--78.55) [206004]"}
+                          b_12 && b_22 ==> neededTransfer == 0.000000000 && Used_6Mask[null, Tree(arg_5_12)] == initNeededTransfer;
                         
                         // -- Creating state which is the sum of the two previously built up states
                           b_24_1 := b_12 && b_22;
@@ -2970,15 +2970,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                         if (b_12) {
                           
                           // -- Check definedness of vals(oldP.l) == oldPlvs[1..]
-                            assert {:msg "  Applying wand might fail. There might be insufficient permission to access oldP.l (tree_delete_min.vpr@77.11--78.55) [120778]"}
-                              HasDirectPerm(Result_15Mask, oldP, l_8);
+                            assert {:msg "  Applying wand might fail. There might be insufficient permission to access oldP.l (tree_delete_min.vpr@77.11--78.55) [206005]"}
+                              HasDirectPerm(Result_15Mask, oldP, l);
                             if (*) {
                               // Exhale precondition of function application
                               ExhaleWellDef1Mask := Result_15Mask;
                               ExhaleWellDef1Heap := Result_15Heap;
                               perm := FullPerm;
-                              assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(oldP.l) (tree_delete_min.vpr@77.53--77.65) [120779]"}
-                                NoPerm < perm ==> NoPerm < Result_15Mask[null, Tree(Result_15Heap[oldP, l_8])];
+                              assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(oldP.l) (tree_delete_min.vpr@77.53--77.65) [206006]"}
+                                NoPerm < perm ==> NoPerm < Result_15Mask[null, Tree(Result_15Heap[oldP, l])];
                               // Finish exhale
                               havoc ExhaleHeap;
                               assume IdenticalOnKnownLocations(Result_15Heap, ExhaleHeap, Result_15Mask);
@@ -2988,8 +2988,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             }
                         }
                       }
-                      assert {:msg "  Applying wand might fail. Assertion vals(oldP.l) == oldPlvs[1..] might not hold. (tree_delete_min.vpr@77.11--78.55) [120780]"}
-                        b_12 && b_22 ==> Seq#Equal(vals(Result_15Heap, Result_15Heap[oldP, l_8]), Seq#Drop(oldPlvs, 1));
+                      assert {:msg "  Applying wand might fail. Assertion vals(oldP.l) == oldPlvs[1..] might not hold. (tree_delete_min.vpr@77.11--78.55) [206007]"}
+                        b_12 && b_22 ==> Seq#Equal(vals_1(Result_15Heap, Result_15Heap[oldP, l]), Seq#Drop(oldPlvs, 1));
                       b_12 := b_12 && b_22;
                       b_12 := b_12 && Used_6Heap == Ops_3Heap;
                     b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
@@ -3000,7 +3000,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       Ops_3Mask := Ops_3Mask[null, Tree(x):=Ops_3Mask[null, Tree(x)] + perm];
                       b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
                       b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
-                      b_12 := b_12 && Seq#Equal(vals(Ops_3Heap, x), Seq#Drop(vals(oldHeap, x), 1));
+                      b_12 := b_12 && Seq#Equal(vals_1(Ops_3Heap, x), Seq#Drop(vals_1(oldHeap, x), 1));
                       b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
                     havoc ExhaleHeap;
                     assume IdenticalOnKnownLocations(Ops_3Heap, ExhaleHeap, Ops_3Mask);
@@ -3011,21 +3011,21 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 // Translating exec of non-ghost operationacc(Tree(x), write) && vals(x) == old(vals(x))[1..]
                 havoc Used_7Heap;
                 Used_7Mask := ZeroMask;
-                b_25 := b_25 && state(Used_7Heap, Used_7Mask);
+                b_25_1 := b_25_1 && state(Used_7Heap, Used_7Mask);
                 
                 // -- Transfer of acc(Tree(x), write)
-                  arg_6 := x;
+                  arg_6_12 := x;
                   neededTransfer := FullPerm;
-                  initNeededTransfer := Used_7Mask[null, Tree(arg_6)] + neededTransfer;
-                  assert {:msg "  Packaging wand might fail. Fraction acc(Tree(x), write) might be negative. (tree_delete_min.vpr@75.7--79.8) [120781]"}
+                  initNeededTransfer := Used_7Mask[null, Tree(arg_6_12)] + neededTransfer;
+                  assert {:msg "  Packaging wand might fail. Fraction acc(Tree(x), write) might be negative. (tree_delete_min.vpr@75.7--79.8) [206008]"}
                     neededTransfer >= 0.000000000;
                   
                   // -- transfer code for top state of stack
                     // accumulate constraints which need to be satisfied for transfer to occur
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
-                    if ((((b_12 && b_12) && b_25) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Ops_3Mask[null, Tree(arg_6)];
+                    if ((((b_12 && b_12) && b_25_1) && accVar2) && neededTransfer > 0.000000000) {
+                      maskTransfer := Ops_3Mask[null, Tree(arg_6_12)];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -3033,11 +3033,11 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_7Mask := Used_7Mask[null, Tree(arg_6):=Used_7Mask[null, Tree(arg_6)] + takeTransfer];
-                        b_25 := b_25 && state(Used_7Heap, Used_7Mask);
-                        TempMask := ZeroMask[null, Tree(arg_6):=FullPerm];
-                        b_25 := b_25 && IdenticalOnKnownLocations(Ops_3Heap, Used_7Heap, TempMask);
-                        Ops_3Mask := Ops_3Mask[null, Tree(arg_6):=Ops_3Mask[null, Tree(arg_6)] - takeTransfer];
+                        Used_7Mask := Used_7Mask[null, Tree(arg_6_12):=Used_7Mask[null, Tree(arg_6_12)] + takeTransfer];
+                        b_25_1 := b_25_1 && state(Used_7Heap, Used_7Mask);
+                        TempMask := ZeroMask[null, Tree(arg_6_12):=FullPerm];
+                        b_25_1 := b_25_1 && IdenticalOnKnownLocations(Ops_3Heap, Used_7Heap, TempMask);
+                        Ops_3Mask := Ops_3Mask[null, Tree(arg_6_12):=Ops_3Mask[null, Tree(arg_6_12)] - takeTransfer];
                       }
                     }
                   
@@ -3045,8 +3045,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     // accumulate constraints which need to be satisfied for transfer to occur
                     accVar2 := true;
                     // actual code for the transfer from current state on stack
-                    if ((((b_12 && b_12) && b_25) && accVar2) && neededTransfer > 0.000000000) {
-                      maskTransfer := Mask[null, Tree(arg_6)];
+                    if ((((b_12 && b_12) && b_25_1) && accVar2) && neededTransfer > 0.000000000) {
+                      maskTransfer := Mask[null, Tree(arg_6_12)];
                       if (neededTransfer <= maskTransfer) {
                         takeTransfer := neededTransfer;
                       } else {
@@ -3054,30 +3054,30 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (takeTransfer > 0.000000000) {
                         neededTransfer := neededTransfer - takeTransfer;
-                        Used_7Mask := Used_7Mask[null, Tree(arg_6):=Used_7Mask[null, Tree(arg_6)] + takeTransfer];
-                        b_25 := b_25 && state(Used_7Heap, Used_7Mask);
-                        TempMask := ZeroMask[null, Tree(arg_6):=FullPerm];
-                        b_25 := b_25 && IdenticalOnKnownLocations(Heap, Used_7Heap, TempMask);
-                        Mask := Mask[null, Tree(arg_6):=Mask[null, Tree(arg_6)] - takeTransfer];
+                        Used_7Mask := Used_7Mask[null, Tree(arg_6_12):=Used_7Mask[null, Tree(arg_6_12)] + takeTransfer];
+                        b_25_1 := b_25_1 && state(Used_7Heap, Used_7Mask);
+                        TempMask := ZeroMask[null, Tree(arg_6_12):=FullPerm];
+                        b_25_1 := b_25_1 && IdenticalOnKnownLocations(Heap, Used_7Heap, TempMask);
+                        Mask := Mask[null, Tree(arg_6_12):=Mask[null, Tree(arg_6_12)] - takeTransfer];
                         havoc newPMask;
-                        assume (forall <A, B> o_42: Ref, f_26: (Field A B) ::
-                          { newPMask[o_42, f_26] }
-                          Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))][o_42, f_26] || Heap[null, Tree#sm(x)][o_42, f_26] ==> newPMask[o_42, f_26]
+                        assume (forall <A, B> o_52: Ref, f_14: (Field A B) ::
+                          { newPMask[o_52, f_14] }
+                          Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))][o_52, f_14] || Heap[null, Tree#sm(x)][o_52, f_14] ==> newPMask[o_52, f_14]
                         );
-                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=newPMask];
+                        Heap := Heap[null, wand#sm(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=newPMask];
                       }
                     }
-                  assert {:msg "  Packaging wand might fail. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@75.7--79.8) [120782]"}
-                    (b_12 && b_12) && b_25 ==> neededTransfer == 0.000000000 && Used_7Mask[null, Tree(arg_6)] == initNeededTransfer;
+                  assert {:msg "  Packaging wand might fail. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@75.7--79.8) [206009]"}
+                    (b_12 && b_12) && b_25_1 ==> neededTransfer == 0.000000000 && Used_7Mask[null, Tree(arg_6_12)] == initNeededTransfer;
                   
                   // -- Creating state which is the sum of the two previously built up states
-                    b_26 := b_12 && b_25;
-                    b_26 := b_26 && state(Result_16Heap, Result_16Mask);
-                    b_26 := b_26 && sumMask(Result_16Mask, Ops_3Mask, Used_7Mask);
-                    b_26 := (b_26 && IdenticalOnKnownLocations(Ops_3Heap, Result_16Heap, Ops_3Mask)) && IdenticalOnKnownLocations(Used_7Heap, Result_16Heap, Used_7Mask);
-                    b_26 := b_26 && state(Result_16Heap, Result_16Mask);
-                  b_12 := b_12 && b_26;
-                if ((b_12 && b_12) && b_25) {
+                    b_26_1 := b_12 && b_25_1;
+                    b_26_1 := b_26_1 && state(Result_16Heap, Result_16Mask);
+                    b_26_1 := b_26_1 && sumMask(Result_16Mask, Ops_3Mask, Used_7Mask);
+                    b_26_1 := (b_26_1 && IdenticalOnKnownLocations(Ops_3Heap, Result_16Heap, Ops_3Mask)) && IdenticalOnKnownLocations(Used_7Heap, Result_16Heap, Used_7Mask);
+                    b_26_1 := b_26_1 && state(Result_16Heap, Result_16Mask);
+                  b_12 := b_12 && b_26_1;
+                if ((b_12 && b_12) && b_25_1) {
                   if (b_12) {
                     
                     // -- Check definedness of vals(x) == old(vals(x))[1..]
@@ -3086,7 +3086,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                         ExhaleWellDef0Mask := Result_16Mask;
                         ExhaleWellDef0Heap := Result_16Heap;
                         perm := FullPerm;
-                        assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@75.23--75.24) [120783]"}
+                        assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@75.23--75.24) [206010]"}
                           NoPerm < perm ==> NoPerm < Result_16Mask[null, Tree(x)];
                         // Finish exhale
                         havoc ExhaleHeap;
@@ -3100,7 +3100,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                         ExhaleWellDef0Mask := oldMask;
                         ExhaleWellDef0Heap := oldHeap;
                         perm := FullPerm;
-                        assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@75.23--75.24) [120784]"}
+                        assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@75.23--75.24) [206011]"}
                           NoPerm < perm ==> NoPerm < oldMask[null, Tree(x)];
                         // Finish exhale
                         // Stop execution
@@ -3108,38 +3108,38 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                   }
                 }
-                assert {:msg "  Packaging wand might fail. Assertion vals(x) == old(vals(x))[1..] might not hold. (tree_delete_min.vpr@75.7--79.8) [120785]"}
-                  (b_12 && b_12) && b_25 ==> Seq#Equal(vals(Result_16Heap, x), Seq#Drop(vals(oldHeap, x), 1));
+                assert {:msg "  Packaging wand might fail. Assertion vals(x) == old(vals(x))[1..] might not hold. (tree_delete_min.vpr@75.7--79.8) [206012]"}
+                  (b_12 && b_12) && b_25_1 ==> Seq#Equal(vals_1(Result_16Heap, x), Seq#Drop(vals_1(oldHeap, x), 1));
                 assume state(Heap, Mask);
-                Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] + FullPerm];
+                Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] + FullPerm];
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
             // Exhale invariant
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not be preserved. Assertion p != null might not hold. (tree_delete_min.vpr@64.17--64.71) [120786]"}
+            assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not be preserved. Assertion p != null might not hold. (tree_delete_min.vpr@64.17--64.71) [206013]"}
               p_1 != null;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not be preserved. There might be insufficient permission to access p.l (tree_delete_min.vpr@64.17--64.71) [120787]"}
-                perm <= Mask[p_1, l_8];
+              assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not be preserved. There might be insufficient permission to access p.l (tree_delete_min.vpr@64.17--64.71) [206014]"}
+                perm <= Mask[p_1, l];
             }
-            Mask := Mask[p_1, l_8:=Mask[p_1, l_8] - perm];
+            Mask := Mask[p_1, l:=Mask[p_1, l] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not be preserved. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@64.17--64.71) [120788]"}
-                perm <= Mask[null, Tree(Heap[p_1, l_8])];
+              assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not be preserved. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@64.17--64.71) [206015]"}
+                perm <= Mask[null, Tree(Heap[p_1, l])];
             }
-            Mask := Mask[null, Tree(Heap[p_1, l_8]):=Mask[null, Tree(Heap[p_1, l_8])] - perm];
-            assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not be preserved. Assertion p.l != null might not hold. (tree_delete_min.vpr@64.17--64.71) [120789]"}
-              Heap[p_1, l_8] != null;
-            assert {:msg "  Loop invariant plvs == vals(p.l) might not be preserved. Assertion plvs == vals(p.l) might not hold. (tree_delete_min.vpr@65.17--65.34) [120790]"}
-              Seq#Equal(plvs, vals(Heap, Heap[p_1, l_8]));
+            Mask := Mask[null, Tree(Heap[p_1, l]):=Mask[null, Tree(Heap[p_1, l])] - perm];
+            assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not be preserved. Assertion p.l != null might not hold. (tree_delete_min.vpr@64.17--64.71) [206016]"}
+              Heap[p_1, l] != null;
+            assert {:msg "  Loop invariant plvs == vals(p.l) might not be preserved. Assertion plvs == vals(p.l) might not hold. (tree_delete_min.vpr@65.17--65.34) [206017]"}
+              Seq#Equal(plvs, vals_1(Heap, Heap[p_1, l]));
             // permLe
-            assert {:msg "  Loop invariant acc(p.l, write) && (acc(Tree(p.l), write) && vals(p.l) == plvs[1..]) --* acc(Tree(x), write) && vals(x) == old(vals(x))[1..] might not be preserved. Magic wand instance not found. (tree_delete_min.vpr@66.17--66.24) [120791]"}
-              FullPerm <= Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))];
-            Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] - FullPerm];
+            assert {:msg "  Loop invariant acc(p.l, write) && (acc(Tree(p.l), write) && vals(p.l) == plvs[1..]) --* acc(Tree(x), write) && vals(x) == old(vals(x))[1..] might not be preserved. Magic wand instance not found. (tree_delete_min.vpr@66.17--66.24) [206018]"}
+              FullPerm <= Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))];
+            Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] - FullPerm];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -3149,21 +3149,21 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
           }
         
         // -- Inhale loop invariant after loop, and assume guard
-          assume !(Heap[Heap[p_1, l_8], l_8] != null);
+          assume !(Heap[Heap[p_1, l], l] != null);
           assume state(Heap, Mask);
           assume p_1 != null;
           perm := FullPerm;
           assume p_1 != null;
-          Mask := Mask[p_1, l_8:=Mask[p_1, l_8] + perm];
+          Mask := Mask[p_1, l:=Mask[p_1, l] + perm];
           assume state(Heap, Mask);
           perm := FullPerm;
-          Mask := Mask[null, Tree(Heap[p_1, l_8]):=Mask[null, Tree(Heap[p_1, l_8])] + perm];
+          Mask := Mask[null, Tree(Heap[p_1, l]):=Mask[null, Tree(Heap[p_1, l])] + perm];
           assume state(Heap, Mask);
-          assume Heap[p_1, l_8] != null;
+          assume Heap[p_1, l] != null;
           assume state(Heap, Mask);
-          assume Seq#Equal(plvs, vals(Heap, Heap[p_1, l_8]));
+          assume Seq#Equal(plvs, vals_1(Heap, Heap[p_1, l]));
           assume state(Heap, Mask);
-          Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] + FullPerm];
+          Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] + FullPerm];
           assume state(Heap, Mask);
           assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -3171,49 +3171,49 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
       // -- Translating statement: unfold acc(Tree(p.l), write) -- tree_delete_min.vpr@82.5--82.26
         
         // -- Check definedness of acc(Tree(p.l), write)
-          assert {:msg "  Unfolding Tree(p.l) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@82.5--82.26) [120792]"}
-            HasDirectPerm(Mask, p_1, l_8);
-        assume Tree#trigger(Heap, Tree(Heap[p_1, l_8]));
-        assume Heap[null, Tree(Heap[p_1, l_8])] == FrameFragment((if Heap[p_1, l_8] == null then EmptyFrame else CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], v_36]), CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], l_8]), CombineFrames(Heap[null, Tree(Heap[Heap[p_1, l_8], l_8])], CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], r_6]), Heap[null, Tree(Heap[Heap[p_1, l_8], r_6])]))))));
+          assert {:msg "  Unfolding Tree(p.l) might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@82.5--82.26) [206019]"}
+            HasDirectPerm(Mask, p_1, l);
+        assume Tree#trigger(Heap, Tree(Heap[p_1, l]));
+        assume Heap[null, Tree(Heap[p_1, l])] == FrameFragment((if Heap[p_1, l] == null then EmptyFrame else CombineFrames(FrameFragment(Heap[Heap[p_1, l], v_35]), CombineFrames(FrameFragment(Heap[Heap[p_1, l], l]), CombineFrames(Heap[null, Tree(Heap[Heap[p_1, l], l])], CombineFrames(FrameFragment(Heap[Heap[p_1, l], r_11]), Heap[null, Tree(Heap[Heap[p_1, l], r_11])]))))));
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Unfolding Tree(p.l) might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@82.5--82.26) [120795]"}
-            perm <= Mask[null, Tree(Heap[p_1, l_8])];
+          assert {:msg "  Unfolding Tree(p.l) might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@82.5--82.26) [206022]"}
+            perm <= Mask[null, Tree(Heap[p_1, l])];
         }
-        Mask := Mask[null, Tree(Heap[p_1, l_8]):=Mask[null, Tree(Heap[p_1, l_8])] - perm];
+        Mask := Mask[null, Tree(Heap[p_1, l]):=Mask[null, Tree(Heap[p_1, l])] - perm];
         
         // -- Update version of predicate
-          if (!HasDirectPerm(Mask, null, Tree(Heap[p_1, l_8]))) {
+          if (!HasDirectPerm(Mask, null, Tree(Heap[p_1, l]))) {
             havoc newVersion;
-            Heap := Heap[null, Tree(Heap[p_1, l_8]):=newVersion];
+            Heap := Heap[null, Tree(Heap[p_1, l]):=newVersion];
           }
-        if (Heap[p_1, l_8] == null) {
+        if (Heap[p_1, l] == null) {
         } else {
           perm := FullPerm;
-          assume Heap[p_1, l_8] != null;
-          Mask := Mask[Heap[p_1, l_8], v_36:=Mask[Heap[p_1, l_8], v_36] + perm];
+          assume Heap[p_1, l] != null;
+          Mask := Mask[Heap[p_1, l], v_35:=Mask[Heap[p_1, l], v_35] + perm];
           assume state(Heap, Mask);
           perm := FullPerm;
-          assume Heap[p_1, l_8] != null;
-          Mask := Mask[Heap[p_1, l_8], l_8:=Mask[Heap[p_1, l_8], l_8] + perm];
+          assume Heap[p_1, l] != null;
+          Mask := Mask[Heap[p_1, l], l:=Mask[Heap[p_1, l], l] + perm];
           assume state(Heap, Mask);
           perm := FullPerm;
-          Mask := Mask[null, Tree(Heap[Heap[p_1, l_8], l_8]):=Mask[null, Tree(Heap[Heap[p_1, l_8], l_8])] + perm];
+          Mask := Mask[null, Tree(Heap[Heap[p_1, l], l]):=Mask[null, Tree(Heap[Heap[p_1, l], l])] + perm];
           
           // -- Extra unfolding of predicate
-            assume InsidePredicate(Tree(Heap[p_1, l_8]), Heap[null, Tree(Heap[p_1, l_8])], Tree(Heap[Heap[p_1, l_8], l_8]), Heap[null, Tree(Heap[Heap[p_1, l_8], l_8])]);
+            assume InsidePredicate(Tree(Heap[p_1, l]), Heap[null, Tree(Heap[p_1, l])], Tree(Heap[Heap[p_1, l], l]), Heap[null, Tree(Heap[Heap[p_1, l], l])]);
           assume state(Heap, Mask);
           perm := FullPerm;
-          assume Heap[p_1, l_8] != null;
-          Mask := Mask[Heap[p_1, l_8], r_6:=Mask[Heap[p_1, l_8], r_6] + perm];
+          assume Heap[p_1, l] != null;
+          Mask := Mask[Heap[p_1, l], r_11:=Mask[Heap[p_1, l], r_11] + perm];
           assume state(Heap, Mask);
           perm := FullPerm;
-          Mask := Mask[null, Tree(Heap[Heap[p_1, l_8], r_6]):=Mask[null, Tree(Heap[Heap[p_1, l_8], r_6])] + perm];
+          Mask := Mask[null, Tree(Heap[Heap[p_1, l], r_11]):=Mask[null, Tree(Heap[Heap[p_1, l], r_11])] + perm];
           
           // -- Extra unfolding of predicate
-            assume InsidePredicate(Tree(Heap[p_1, l_8]), Heap[null, Tree(Heap[p_1, l_8])], Tree(Heap[Heap[p_1, l_8], r_6]), Heap[null, Tree(Heap[Heap[p_1, l_8], r_6])]);
+            assume InsidePredicate(Tree(Heap[p_1, l]), Heap[null, Tree(Heap[p_1, l])], Tree(Heap[Heap[p_1, l], r_11]), Heap[null, Tree(Heap[Heap[p_1, l], r_11])]);
           assume state(Heap, Mask);
         }
         assume state(Heap, Mask);
@@ -3224,17 +3224,17 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of vals(p.l.l) == Seq[Int]()
-          assert {:msg "  Assert might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@83.12--83.37) [120801]"}
-            HasDirectPerm(ExhaleWellDef0Mask, p_1, l_8);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access p.l.l (tree_delete_min.vpr@83.12--83.37) [120802]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Heap[p_1, l_8], l_8);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@83.12--83.37) [206028]"}
+            HasDirectPerm(ExhaleWellDef0Mask, p_1, l);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access p.l.l (tree_delete_min.vpr@83.12--83.37) [206029]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Heap[p_1, l], l);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l.l) (tree_delete_min.vpr@83.12--83.23) [120803]"}
-              NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree(ExhaleWellDef0Heap[ExhaleWellDef0Heap[p_1, l_8], l_8])];
+            assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l.l) (tree_delete_min.vpr@83.12--83.23) [206030]"}
+              NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree(ExhaleWellDef0Heap[ExhaleWellDef0Heap[p_1, l], l])];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -3242,20 +3242,20 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion vals(p.l.l) == Seq[Int]() might not hold. (tree_delete_min.vpr@83.12--83.37) [120804]"}
-          Seq#Equal(vals(Heap, Heap[Heap[p_1, l_8], l_8]), (Seq#Empty(): Seq int));
+        assert {:msg "  Assert might fail. Assertion vals(p.l.l) == Seq[Int]() might not hold. (tree_delete_min.vpr@83.12--83.37) [206031]"}
+          Seq#Equal(vals_1(Heap, Heap[Heap[p_1, l], l]), (Seq#Empty(): Seq int));
         assume state(Heap, Mask);
       
       // -- Translating statement: p.l := p.l.r -- tree_delete_min.vpr@85.5--85.17
         
         // -- Check definedness of p.l.r
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@85.5--85.17) [120805]"}
-            HasDirectPerm(Mask, p_1, l_8);
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l.r (tree_delete_min.vpr@85.5--85.17) [120806]"}
-            HasDirectPerm(Mask, Heap[p_1, l_8], r_6);
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@85.5--85.17) [120807]"}
-          FullPerm == Mask[p_1, l_8];
-        Heap := Heap[p_1, l_8:=Heap[Heap[p_1, l_8], r_6]];
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@85.5--85.17) [206032]"}
+            HasDirectPerm(Mask, p_1, l);
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l.r (tree_delete_min.vpr@85.5--85.17) [206033]"}
+            HasDirectPerm(Mask, Heap[p_1, l], r_11);
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@85.5--85.17) [206034]"}
+          FullPerm == Mask[p_1, l];
+        Heap := Heap[p_1, l:=Heap[Heap[p_1, l], r_11]];
         assume state(Heap, Mask);
       
       // -- Translating statement: apply acc(p.l, write) && (acc(Tree(p.l), write) && vals(p.l) == plvs[1..]) --*
@@ -3265,9 +3265,9 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
           // permLe
-          assert {:msg "  Applying wand might fail. Magic wand instance not found. (tree_delete_min.vpr@87.5--87.18) [120808]"}
-            FullPerm <= Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))];
-          Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))] - FullPerm];
+          assert {:msg "  Applying wand might fail. Magic wand instance not found. (tree_delete_min.vpr@87.5--87.18) [206035]"}
+            FullPerm <= Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))];
+          Mask := Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1)):=Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals_1(oldHeap, x), 1))] - FullPerm];
         assume state(Heap, Mask);
         
         // -- check if LHS holds and remove permissions 
@@ -3275,18 +3275,18 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
           ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Applying wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@87.5--87.18) [120810]"}
-              perm <= Mask[p_1, l_8];
+            assert {:msg "  Applying wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@87.5--87.18) [206037]"}
+              perm <= Mask[p_1, l];
           }
-          Mask := Mask[p_1, l_8:=Mask[p_1, l_8] - perm];
+          Mask := Mask[p_1, l:=Mask[p_1, l] - perm];
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Applying wand might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@87.5--87.18) [120812]"}
-              perm <= Mask[null, Tree(Heap[p_1, l_8])];
+            assert {:msg "  Applying wand might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@87.5--87.18) [206039]"}
+              perm <= Mask[null, Tree(Heap[p_1, l])];
           }
-          Mask := Mask[null, Tree(Heap[p_1, l_8]):=Mask[null, Tree(Heap[p_1, l_8])] - perm];
-          assert {:msg "  Applying wand might fail. Assertion vals(p.l) == plvs[1..] might not hold. (tree_delete_min.vpr@87.5--87.18) [120813]"}
-            Seq#Equal(vals(Heap, Heap[p_1, l_8]), Seq#Drop(plvs, 1));
+          Mask := Mask[null, Tree(Heap[p_1, l]):=Mask[null, Tree(Heap[p_1, l])] - perm];
+          assert {:msg "  Applying wand might fail. Assertion vals(p.l) == plvs[1..] might not hold. (tree_delete_min.vpr@87.5--87.18) [206040]"}
+            Seq#Equal(vals_1(Heap, Heap[p_1, l]), Seq#Drop(plvs, 1));
         assume state(Heap, Mask);
         
         // -- inhale the RHS of the wand
@@ -3294,7 +3294,7 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
           Mask := Mask[null, Tree(x):=Mask[null, Tree(x)] + perm];
           assume state(Heap, Mask);
           assume state(Heap, Mask);
-          assume Seq#Equal(vals(Heap, x), Seq#Drop(vals(oldHeap, x), 1));
+          assume Seq#Equal(vals_1(Heap, x), Seq#Drop(vals_1(oldHeap, x), 1));
           assume state(Heap, Mask);
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -3313,12 +3313,12 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of tree_delete_min might not hold. There might be insufficient permission to access Tree(z) (tree_delete_min.vpr@42.11--42.23) [120815]"}
+      assert {:msg "  Postcondition of tree_delete_min might not hold. There might be insufficient permission to access Tree(z) (tree_delete_min.vpr@42.11--42.23) [206042]"}
         perm <= Mask[null, Tree(z)];
     }
     Mask := Mask[null, Tree(z):=Mask[null, Tree(z)] - perm];
-    assert {:msg "  Postcondition of tree_delete_min might not hold. Assertion vals(z) == old(vals(x))[1..] might not hold. (tree_delete_min.vpr@43.11--43.39) [120816]"}
-      Seq#Equal(vals(Heap, z), Seq#Drop(vals(oldHeap, x), 1));
+    assert {:msg "  Postcondition of tree_delete_min might not hold. Assertion vals(z) == old(vals(x))[1..] might not hold. (tree_delete_min.vpr@43.11--43.39) [206043]"}
+      Seq#Equal(vals_1(Heap, z), Seq#Drop(vals_1(oldHeap, x), 1));
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

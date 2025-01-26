@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:07:15
+// Date:         2025-01-26 21:45:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/PackageStateConsolidation.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/PackageStateConsolidation-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -295,7 +295,7 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- PackageStateConsolidation.vpr@8.3--8.23
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@8.10--8.23) [127372]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@8.10--8.23) [214056]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -305,7 +305,7 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
   
   // -- Translating statement: inhale acc(y.f, 1 / 2) -- PackageStateConsolidation.vpr@9.3--9.23
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@9.10--9.23) [127373]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@9.10--9.23) [214057]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> y != null;
     Mask := Mask[y, f_7:=Mask[y, f_7] + perm];
@@ -361,7 +361,7 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-        assert {:msg "  Assert might fail. Assertion z != x might not hold. (PackageStateConsolidation.vpr@14.12--14.18) [127375]"}
+        assert {:msg "  Assert might fail. Assertion z != x might not hold. (PackageStateConsolidation.vpr@14.12--14.18) [214059]"}
           b_1_1 && b_2_1 ==> z != x;
         b_1_1 := b_1_1 && b_2_1;
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
@@ -379,7 +379,7 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_2Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Exhale might fail. Fraction acc(x.f, write) might be negative. (PackageStateConsolidation.vpr@15.12--15.20) [127376]"}
+          assert {:msg "  Exhale might fail. Fraction acc(x.f, write) might be negative. (PackageStateConsolidation.vpr@15.12--15.20) [214060]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -422,7 +422,7 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
                 Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (PackageStateConsolidation.vpr@15.12--15.20) [127377]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (PackageStateConsolidation.vpr@15.12--15.20) [214061]"}
             b_1_1 && b_3 ==> neededTransfer == 0.000000000 && Used_2Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -444,7 +444,7 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
       // -- Translating statement: inhale acc(x.f, 1 / 2) -- PackageStateConsolidation.vpr@16.5--16.25
         if (b_1_1) {
           perm := 1 / 2;
-          assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@16.12--16.25) [127378]"}
+          assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@16.12--16.25) [214062]"}
             perm >= NoPerm;
           b_1_1 := b_1_1 && (perm > NoPerm ==> x != null);
           Ops_1Mask := Ops_1Mask[x, f_7:=Ops_1Mask[x, f_7] + perm];
@@ -458,7 +458,7 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
       // -- Translating statement: inhale acc(y.f, 1 / 2) -- PackageStateConsolidation.vpr@17.5--17.25
         if (b_1_1) {
           perm := 1 / 2;
-          assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@17.12--17.25) [127379]"}
+          assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@17.12--17.25) [214063]"}
             perm >= NoPerm;
           b_1_1 := b_1_1 && (perm > NoPerm ==> y != null);
           Ops_1Mask := Ops_1Mask[y, f_7:=Ops_1Mask[y, f_7] + perm];
@@ -503,7 +503,7 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
               rcvLocal := y;
               neededTransfer := FullPerm;
               initNeededTransfer := Used_4Mask[rcvLocal, f_7] + neededTransfer;
-              assert {:msg "  Exhale might fail. Fraction acc(y.f, write) might be negative. (PackageStateConsolidation.vpr@19.14--19.22) [127380]"}
+              assert {:msg "  Exhale might fail. Fraction acc(y.f, write) might be negative. (PackageStateConsolidation.vpr@19.14--19.22) [214064]"}
                 neededTransfer >= 0.000000000;
               
               // -- transfer code for top state of stack
@@ -567,7 +567,7 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
                     Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][y, f_7:=true]];
                   }
                 }
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (PackageStateConsolidation.vpr@19.14--19.22) [127381]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (PackageStateConsolidation.vpr@19.14--19.22) [214065]"}
                 b_6 && b_7 ==> neededTransfer == 0.000000000 && Used_4Mask[rcvLocal, f_7] == initNeededTransfer;
               
               // -- Creating state which is the sum of the two previously built up states
@@ -658,7 +658,7 @@ procedure test02(x: Ref, z: Ref) returns ()
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- PackageStateConsolidation.vpr@26.3--26.23
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@26.10--26.23) [127384]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@26.10--26.23) [214068]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -669,7 +669,7 @@ procedure test02(x: Ref, z: Ref) returns ()
   // -- Translating statement: inhale x != z ==> acc(x.f, 1 / 2) -- PackageStateConsolidation.vpr@27.3--27.34
     if (x != z) {
       perm := 1 / 2;
-      assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@27.10--27.34) [127385]"}
+      assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@27.10--27.34) [214069]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> x != null;
       Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -725,7 +725,7 @@ procedure test02(x: Ref, z: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_8Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Exhale might fail. Fraction acc(x.f, write) might be negative. (PackageStateConsolidation.vpr@30.12--30.20) [127387]"}
+          assert {:msg "  Exhale might fail. Fraction acc(x.f, write) might be negative. (PackageStateConsolidation.vpr@30.12--30.20) [214071]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -768,7 +768,7 @@ procedure test02(x: Ref, z: Ref) returns ()
                 Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (PackageStateConsolidation.vpr@30.12--30.20) [127388]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (PackageStateConsolidation.vpr@30.12--30.20) [214072]"}
             b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_8Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -861,7 +861,7 @@ procedure test03(x: Ref) returns ()
   
   // -- Translating statement: inhale acc(x.f, 1 / 3) -- PackageStateConsolidation.vpr@36.3--36.23
     perm := 1 / 3;
-    assert {:msg "  Inhale might fail. Fraction 1 / 3 might be negative. (PackageStateConsolidation.vpr@36.10--36.23) [127390]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 3 might be negative. (PackageStateConsolidation.vpr@36.10--36.23) [214074]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -899,7 +899,7 @@ procedure test03(x: Ref) returns ()
       // -- Translating statement: inhale acc(x.f, 1 / 3) -- PackageStateConsolidation.vpr@38.5--38.25
         if (b_17) {
           perm := 1 / 3;
-          assert {:msg "  Inhale might fail. Fraction 1 / 3 might be negative. (PackageStateConsolidation.vpr@38.12--38.25) [127391]"}
+          assert {:msg "  Inhale might fail. Fraction 1 / 3 might be negative. (PackageStateConsolidation.vpr@38.12--38.25) [214075]"}
             perm >= NoPerm;
           b_17 := b_17 && (perm > NoPerm ==> x != null);
           Ops_7Mask := Ops_7Mask[x, f_7:=Ops_7Mask[x, f_7] + perm];
@@ -937,7 +937,7 @@ procedure test03(x: Ref) returns ()
           // -- Translating statement: inhale acc(x.f, 1 / 3) -- PackageStateConsolidation.vpr@40.7--40.27
             if (b_19) {
               perm := 1 / 3;
-              assert {:msg "  Inhale might fail. Fraction 1 / 3 might be negative. (PackageStateConsolidation.vpr@40.14--40.27) [127392]"}
+              assert {:msg "  Inhale might fail. Fraction 1 / 3 might be negative. (PackageStateConsolidation.vpr@40.14--40.27) [214076]"}
                 perm >= NoPerm;
               b_19 := b_19 && (perm > NoPerm ==> x != null);
               Ops_9Mask := Ops_9Mask[x, f_7:=Ops_9Mask[x, f_7] + perm];
@@ -959,7 +959,7 @@ procedure test03(x: Ref) returns ()
               rcvLocal := x;
               neededTransfer := FullPerm;
               initNeededTransfer := Used_12Mask[rcvLocal, f_7] + neededTransfer;
-              assert {:msg "  Exhale might fail. Fraction acc(x.f, write) might be negative. (PackageStateConsolidation.vpr@41.14--41.22) [127393]"}
+              assert {:msg "  Exhale might fail. Fraction acc(x.f, write) might be negative. (PackageStateConsolidation.vpr@41.14--41.22) [214077]"}
                 neededTransfer >= 0.000000000;
               
               // -- transfer code for top state of stack
@@ -1023,7 +1023,7 @@ procedure test03(x: Ref) returns ()
                     Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][x, f_7:=true]];
                   }
                 }
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (PackageStateConsolidation.vpr@41.14--41.22) [127394]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (PackageStateConsolidation.vpr@41.14--41.22) [214078]"}
                 b_19 && b_20 ==> neededTransfer == 0.000000000 && Used_12Mask[rcvLocal, f_7] == initNeededTransfer;
               
               // -- Creating state which is the sum of the two previously built up states
@@ -1070,7 +1070,7 @@ procedure test04(x: Ref, y: Ref) returns ()
   var oldMask: MaskType;
   var Ops_11Heap: HeapType;
   var Ops_11Mask: MaskType;
-  var b_25: bool;
+  var b_25_1: bool;
   var Used_15Heap: HeapType;
   var Used_15Mask: MaskType;
   var b_24_1: bool;
@@ -1082,10 +1082,10 @@ procedure test04(x: Ref, y: Ref) returns ()
   var ExhaleWellDef0Mask: MaskType;
   var Used_16Heap: HeapType;
   var Used_16Mask: MaskType;
-  var b_26: bool;
+  var b_26_1: bool;
   var Used_17Heap: HeapType;
   var Used_17Mask: MaskType;
-  var b_27: bool;
+  var b_27_1: bool;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1109,63 +1109,63 @@ procedure test04(x: Ref, y: Ref) returns ()
   // } -- PackageStateConsolidation.vpr@48.3--52.4
     havoc Ops_11Heap;
     Ops_11Mask := ZeroMask;
-    b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
+    b_25_1 := b_25_1 && state(Ops_11Heap, Ops_11Mask);
     havoc Used_15Heap;
     Used_15Mask := ZeroMask;
     b_24_1 := b_24_1 && state(Used_15Heap, Used_15Mask);
     // Inhaling left hand side of current wand into hypothetical state
-    if (b_25) {
-      b_25 := b_25;
+    if (b_25_1) {
+      b_25_1 := b_25_1;
     }
-    b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
+    b_25_1 := b_25_1 && state(Ops_11Heap, Ops_11Mask);
     
     // -- Translating statement: label lhs11 -- PackageStateConsolidation.vpr@48.11--48.24
       lhs11:
       Labellhs11Heap := Ops_11Heap;
       Labellhs11Mask := Ops_11Mask;
-      b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
+      b_25_1 := b_25_1 && state(Ops_11Heap, Ops_11Mask);
     boolCur_5 := true;
-    if (b_25) {
+    if (b_25_1) {
       
       // -- Translating statement: inhale acc(x.f, write) -- PackageStateConsolidation.vpr@49.5--49.20
-        if (b_25) {
+        if (b_25_1) {
           perm := FullPerm;
-          b_25 := b_25 && x != null;
+          b_25_1 := b_25_1 && x != null;
           Ops_11Mask := Ops_11Mask[x, f_7:=Ops_11Mask[x, f_7] + perm];
-          b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
+          b_25_1 := b_25_1 && state(Ops_11Heap, Ops_11Mask);
         }
         assume state(Ops_11Heap, Ops_11Mask);
-        b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
+        b_25_1 := b_25_1 && state(Ops_11Heap, Ops_11Mask);
     }
-    if (b_25) {
+    if (b_25_1) {
       
       // -- Translating statement: inhale acc(y.f, write) -- PackageStateConsolidation.vpr@50.5--50.20
-        if (b_25) {
+        if (b_25_1) {
           perm := FullPerm;
-          b_25 := b_25 && y != null;
+          b_25_1 := b_25_1 && y != null;
           Ops_11Mask := Ops_11Mask[y, f_7:=Ops_11Mask[y, f_7] + perm];
-          b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
+          b_25_1 := b_25_1 && state(Ops_11Heap, Ops_11Mask);
         }
         assume state(Ops_11Heap, Ops_11Mask);
-        b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
+        b_25_1 := b_25_1 && state(Ops_11Heap, Ops_11Mask);
     }
-    if (b_25) {
+    if (b_25_1) {
       
       // -- Translating statement: assert x != y -- PackageStateConsolidation.vpr@51.5--51.18
         ExhaleWellDef0Heap := Ops_11Heap;
         ExhaleWellDef0Mask := Ops_11Mask;
         havoc Used_16Heap;
         Used_16Mask := ZeroMask;
-        b_26 := b_26 && state(Used_16Heap, Used_16Mask);
-        assert {:msg "  Assert might fail. Assertion x != y might not hold. (PackageStateConsolidation.vpr@51.12--51.18) [127399]"}
-          b_25 && b_26 ==> x != y;
-        b_25 := b_25 && b_26;
-        b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
+        b_26_1 := b_26_1 && state(Used_16Heap, Used_16Mask);
+        assert {:msg "  Assert might fail. Assertion x != y might not hold. (PackageStateConsolidation.vpr@51.12--51.18) [214083]"}
+          b_25_1 && b_26_1 ==> x != y;
+        b_25_1 := b_25_1 && b_26_1;
+        b_25_1 := b_25_1 && state(Ops_11Heap, Ops_11Mask);
     }
     // Translating exec of non-ghost operationtrue
     havoc Used_17Heap;
     Used_17Mask := ZeroMask;
-    b_27 := b_27 && state(Used_17Heap, Used_17Mask);
+    b_27_1 := b_27_1 && state(Used_17Heap, Used_17Mask);
     Mask := Mask[null, wand(true, true):=Mask[null, wand(true, true)] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1183,10 +1183,10 @@ procedure test05(x: Ref, y: Ref) returns ()
   var oldMask: MaskType;
   var Ops_13Heap: HeapType;
   var Ops_13Mask: MaskType;
-  var b_29: bool;
+  var b_29_1: bool;
   var Used_18Heap: HeapType;
   var Used_18Mask: MaskType;
-  var b_28: bool;
+  var b_28_1: bool;
   var Labellhs13Heap: HeapType;
   var Labellhs13Mask: MaskType;
   var boolCur_6: bool;
@@ -1195,10 +1195,10 @@ procedure test05(x: Ref, y: Ref) returns ()
   var ExhaleWellDef0Mask: MaskType;
   var Used_19Heap: HeapType;
   var Used_19Mask: MaskType;
-  var b_30: bool;
+  var b_30_1: bool;
   var Used_20Heap: HeapType;
   var Used_20Mask: MaskType;
-  var b_31: bool;
+  var b_31_1: bool;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1224,95 +1224,95 @@ procedure test05(x: Ref, y: Ref) returns ()
   // } -- PackageStateConsolidation.vpr@57.3--62.4
     havoc Ops_13Heap;
     Ops_13Mask := ZeroMask;
-    b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
+    b_29_1 := b_29_1 && state(Ops_13Heap, Ops_13Mask);
     havoc Used_18Heap;
     Used_18Mask := ZeroMask;
-    b_28 := b_28 && state(Used_18Heap, Used_18Mask);
+    b_28_1 := b_28_1 && state(Used_18Heap, Used_18Mask);
     // Inhaling left hand side of current wand into hypothetical state
-    if (b_29) {
-      b_29 := b_29;
+    if (b_29_1) {
+      b_29_1 := b_29_1;
     }
-    b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
+    b_29_1 := b_29_1 && state(Ops_13Heap, Ops_13Mask);
     
     // -- Translating statement: label lhs13 -- PackageStateConsolidation.vpr@57.11--57.24
       lhs13:
       Labellhs13Heap := Ops_13Heap;
       Labellhs13Mask := Ops_13Mask;
-      b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
+      b_29_1 := b_29_1 && state(Ops_13Heap, Ops_13Mask);
     boolCur_6 := true;
-    if (b_29) {
+    if (b_29_1) {
       
       // -- Translating statement: inhale acc(x.f, 1 / 2) -- PackageStateConsolidation.vpr@58.5--58.25
-        if (b_29) {
+        if (b_29_1) {
           perm := 1 / 2;
-          assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@58.12--58.25) [127401]"}
+          assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@58.12--58.25) [214085]"}
             perm >= NoPerm;
-          b_29 := b_29 && (perm > NoPerm ==> x != null);
+          b_29_1 := b_29_1 && (perm > NoPerm ==> x != null);
           Ops_13Mask := Ops_13Mask[x, f_7:=Ops_13Mask[x, f_7] + perm];
-          b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
+          b_29_1 := b_29_1 && state(Ops_13Heap, Ops_13Mask);
         }
         assume state(Ops_13Heap, Ops_13Mask);
-        b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
+        b_29_1 := b_29_1 && state(Ops_13Heap, Ops_13Mask);
     }
-    if (b_29) {
+    if (b_29_1) {
       
       // -- Translating statement: inhale acc(y.f, 1 / 2) -- PackageStateConsolidation.vpr@59.5--59.25
-        if (b_29) {
+        if (b_29_1) {
           perm := 1 / 2;
-          assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@59.12--59.25) [127402]"}
+          assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (PackageStateConsolidation.vpr@59.12--59.25) [214086]"}
             perm >= NoPerm;
-          b_29 := b_29 && (perm > NoPerm ==> y != null);
+          b_29_1 := b_29_1 && (perm > NoPerm ==> y != null);
           Ops_13Mask := Ops_13Mask[y, f_7:=Ops_13Mask[y, f_7] + perm];
-          b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
+          b_29_1 := b_29_1 && state(Ops_13Heap, Ops_13Mask);
         }
         assume state(Ops_13Heap, Ops_13Mask);
-        b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
+        b_29_1 := b_29_1 && state(Ops_13Heap, Ops_13Mask);
     }
-    if (b_29) {
+    if (b_29_1) {
       
       // -- Translating statement: inhale x.f == 4 -- PackageStateConsolidation.vpr@60.12--60.20
-        if (b_29) {
-          if (b_29) {
+        if (b_29_1) {
+          if (b_29_1) {
             
             // -- Check definedness of x.f == 4
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (PackageStateConsolidation.vpr@60.12--60.20) [127403]"}
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (PackageStateConsolidation.vpr@60.12--60.20) [214087]"}
                 HasDirectPerm(Ops_13Mask, x, f_7);
           }
-          b_29 := b_29 && Ops_13Heap[x, f_7] == 4;
+          b_29_1 := b_29_1 && Ops_13Heap[x, f_7] == 4;
         }
         assume state(Ops_13Heap, Ops_13Mask);
-        b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
+        b_29_1 := b_29_1 && state(Ops_13Heap, Ops_13Mask);
       
       // -- Translating statement: inhale y.f == 5 -- PackageStateConsolidation.vpr@60.24--60.32
-        if (b_29) {
-          if (b_29) {
+        if (b_29_1) {
+          if (b_29_1) {
             
             // -- Check definedness of y.f == 5
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access y.f (PackageStateConsolidation.vpr@60.24--60.32) [127404]"}
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access y.f (PackageStateConsolidation.vpr@60.24--60.32) [214088]"}
                 HasDirectPerm(Ops_13Mask, y, f_7);
           }
-          b_29 := b_29 && Ops_13Heap[y, f_7] == 5;
+          b_29_1 := b_29_1 && Ops_13Heap[y, f_7] == 5;
         }
         assume state(Ops_13Heap, Ops_13Mask);
-        b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
+        b_29_1 := b_29_1 && state(Ops_13Heap, Ops_13Mask);
     }
-    if (b_29) {
+    if (b_29_1) {
       
       // -- Translating statement: assert x != y -- PackageStateConsolidation.vpr@61.5--61.18
         ExhaleWellDef0Heap := Ops_13Heap;
         ExhaleWellDef0Mask := Ops_13Mask;
         havoc Used_19Heap;
         Used_19Mask := ZeroMask;
-        b_30 := b_30 && state(Used_19Heap, Used_19Mask);
-        assert {:msg "  Assert might fail. Assertion x != y might not hold. (PackageStateConsolidation.vpr@61.12--61.18) [127405]"}
-          b_29 && b_30 ==> x != y;
-        b_29 := b_29 && b_30;
-        b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
+        b_30_1 := b_30_1 && state(Used_19Heap, Used_19Mask);
+        assert {:msg "  Assert might fail. Assertion x != y might not hold. (PackageStateConsolidation.vpr@61.12--61.18) [214089]"}
+          b_29_1 && b_30_1 ==> x != y;
+        b_29_1 := b_29_1 && b_30_1;
+        b_29_1 := b_29_1 && state(Ops_13Heap, Ops_13Mask);
     }
     // Translating exec of non-ghost operationtrue
     havoc Used_20Heap;
     Used_20Mask := ZeroMask;
-    b_31 := b_31 && state(Used_20Heap, Used_20Mask);
+    b_31_1 := b_31_1 && state(Used_20Heap, Used_20Mask);
     Mask := Mask[null, wand(true, true):=Mask[null, wand(true, true)] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);

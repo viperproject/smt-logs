@@ -7160,1874 +7160,346 @@ FStar.Pervasives.CNoInline)))
 ; End Externals for interface FStar.Pervasives
 
 
-; Externals for interface FStar.Set
+; Externals for interface FStar.Ghost
 
 
-; <Skipped #set-options "--initial_fuel 0 --max_fuel 0 --initial_ifuel 0 --max_ifuel 0"/>
+; <Start encoding val FStar.Ghost.erased>
+
+(declare-fun FStar.Ghost.erased (Term) Term)
+
+(declare-fun FStar.Ghost.erased@tok () Term)
+
+; </end encoding val FStar.Ghost.erased>
 
 
-; <Start encoding val FStar.Set.set>
+; <Start encoding val FStar.Ghost.reveal>
 
-(declare-fun FStar.Set.set (Term) Term)
+(declare-fun FStar.Ghost.reveal (Term Term) Term)
+(declare-fun Tm_ghost_arrow_e2f4c1991753137c5a80c115428d0cef () Term)
+(declare-fun FStar.Ghost.reveal@tok () Term)
 
-(declare-fun FStar.Set.set@tok () Term)
-
-; </end encoding val FStar.Set.set>
-
-
-; <Start encoding val FStar.Set.equal>
-
-(declare-fun FStar.Set.equal (Term Term Term) Term)
-(declare-fun Tm_arrow_3c4f6e4cf547bd34ec8e06fa6c99957f () Term)
-(declare-fun FStar.Set.equal@tok () Term)
-
-; </end encoding val FStar.Set.equal>
+; </end encoding val FStar.Ghost.reveal>
 
 
-; <Start encoding val FStar.Set.mem>
+; <Start encoding val FStar.Ghost.hide>
 
-(declare-fun FStar.Set.mem (Term Term Term) Term)
-(declare-fun Tm_arrow_3622740f6f31d7fd022d9da9e7023a5e () Term)
-(declare-fun FStar.Set.mem@tok () Term)
+(declare-fun FStar.Ghost.hide (Term Term) Term)
+(declare-fun Tm_arrow_643f1030585ddc96db34fbedd5533726 () Term)
+(declare-fun FStar.Ghost.hide@tok () Term)
 
-; </end encoding val FStar.Set.mem>
-
-
-; <Start encoding val FStar.Set.empty>
-
-(declare-fun FStar.Set.empty (Term) Term)
-(declare-fun Tm_arrow_8126140804a823c0abf765b538511539 () Term)
-(declare-fun FStar.Set.empty@tok () Term)
-
-; </end encoding val FStar.Set.empty>
+; </end encoding val FStar.Ghost.hide>
 
 
-; <Start encoding val FStar.Set.singleton>
-
-(declare-fun FStar.Set.singleton (Term Term) Term)
-(declare-fun Tm_arrow_764304f899737575fb0645eff5d55885 () Term)
-(declare-fun FStar.Set.singleton@tok () Term)
-
-; </end encoding val FStar.Set.singleton>
-
-
-; <Start encoding val FStar.Set.union>
-
-(declare-fun FStar.Set.union (Term Term Term) Term)
-(declare-fun Tm_arrow_7571f855c31e3c10cb35bbdc0f3ae878 () Term)
-(declare-fun FStar.Set.union@tok () Term)
-
-; </end encoding val FStar.Set.union>
-
-
-; <Start encoding val FStar.Set.intersect>
-
-(declare-fun FStar.Set.intersect (Term Term Term) Term)
-
-(declare-fun FStar.Set.intersect@tok () Term)
-
-; </end encoding val FStar.Set.intersect>
-
-
-; <Start encoding val FStar.Set.complement>
-
-(declare-fun FStar.Set.complement (Term Term) Term)
-(declare-fun Tm_arrow_4a14af1f2d9ff62069ebb44d0d1980f6 () Term)
-(declare-fun FStar.Set.complement@tok () Term)
-
-; </end encoding val FStar.Set.complement>
-
-
-; <Start encoding val FStar.Set.intension>
-
-(declare-fun Tm_arrow_84543425b818e2d10a976186b8e8c250 (Term) Term)
-(declare-fun FStar.Set.intension (Term Term) Term)
-
-(declare-fun Tm_ghost_arrow_04e42a5c0c55c36964ab6333a076e29e () Term)
-(declare-fun FStar.Set.intension@tok () Term)
-
-; </end encoding val FStar.Set.intension>
-
-
-; <Start encoding let disjoint>
-
-(declare-fun FStar.Set.disjoint (Term Term Term) Term)
-
-(declare-fun FStar.Set.disjoint@tok () Term)
-
-; </end encoding let disjoint>
-
-
-; <Start encoding let subset>
-
-(declare-fun FStar.Set.subset (Term Term Term) Term)
-(declare-fun Tm_arrow_9a1bfd7a415bf0250a3dd161144f27fa () Term)
-(declare-fun FStar.Set.subset@tok () Term)
-
-; </end encoding let subset>
-
-
-; <Start encoding let add>
-
-(declare-fun FStar.Set.add (Term Term Term) Term)
-(declare-fun Tm_arrow_3e561cbcf9b0a4b95f6e5d77760b40db () Term)
-(declare-fun FStar.Set.add@tok () Term)
-
-; </end encoding let add>
-
-
-; <Start encoding let remove>
-
-(declare-fun FStar.Set.remove (Term Term Term) Term)
-
-(declare-fun FStar.Set.remove@tok () Term)
-
-; </end encoding let remove>
-
-
-; <Start encoding val FStar.Set.mem_empty>
+; <Start encoding val FStar.Ghost.hide_reveal>
 
 ;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.mem_empty (Term Term) Term)
+(declare-fun FStar.Ghost.hide_reveal (Term Term) Term)
 ;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.mem_empty@tok () Term)
+(declare-fun FStar.Ghost.hide_reveal@tok () Term)
 
-; </end encoding val FStar.Set.mem_empty>
+; </end encoding val FStar.Ghost.hide_reveal>
 
 
-; <Start encoding val FStar.Set.mem_singleton>
+; <Start encoding val FStar.Ghost.reveal_hide>
 
 ;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.mem_singleton (Term Term Term) Term)
+(declare-fun FStar.Ghost.reveal_hide (Term Term) Term)
 ;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.mem_singleton@tok () Term)
+(declare-fun FStar.Ghost.reveal_hide@tok () Term)
 
-; </end encoding val FStar.Set.mem_singleton>
+; </end encoding val FStar.Ghost.reveal_hide>
 
 
-; <Start encoding val FStar.Set.mem_union>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.mem_union (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.mem_union@tok () Term)
-
-; </end encoding val FStar.Set.mem_union>
-
-
-; <Start encoding val FStar.Set.mem_intersect>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.mem_intersect (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.mem_intersect@tok () Term)
-
-; </end encoding val FStar.Set.mem_intersect>
-
-
-; <Start encoding val FStar.Set.mem_complement>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.mem_complement (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.mem_complement@tok () Term)
-
-; </end encoding val FStar.Set.mem_complement>
-
-
-; <Start encoding val FStar.Set.mem_intension>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.mem_intension (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.mem_intension@tok () Term)
-
-; </end encoding val FStar.Set.mem_intension>
-
-
-; <Start encoding val FStar.Set.mem_subset>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.mem_subset (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.mem_subset@tok () Term)
-
-; </end encoding val FStar.Set.mem_subset>
-
-
-; <Start encoding val FStar.Set.subset_mem>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.subset_mem (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.subset_mem@tok () Term)
-
-; </end encoding val FStar.Set.subset_mem>
-
-
-; <Start encoding val FStar.Set.lemma_equal_intro>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.lemma_equal_intro (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.lemma_equal_intro@tok () Term)
-
-; </end encoding val FStar.Set.lemma_equal_intro>
-
-
-; <Start encoding val FStar.Set.lemma_equal_elim>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.lemma_equal_elim (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.lemma_equal_elim@tok () Term)
-
-; </end encoding val FStar.Set.lemma_equal_elim>
-
-
-; <Start encoding val FStar.Set.lemma_equal_refl>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.lemma_equal_refl (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.lemma_equal_refl@tok () Term)
-
-; </end encoding val FStar.Set.lemma_equal_refl>
-
-
-; <Start encoding val FStar.Set.disjoint_not_in_both>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.disjoint_not_in_both (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.disjoint_not_in_both@tok () Term)
-
-; </end encoding val FStar.Set.disjoint_not_in_both>
-
-
-; <Skipped #reset-options/>
-
-
-; <Start encoding let rec as_set'>
-
-;;;;;;;;;;;;;;;;Fuel-instrumented function name
-(declare-fun FStar.Set.as_set_.fuel_instrumented (Fuel Term Term) Term)
-;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
-(declare-fun FStar.Set.as_set_.fuel_instrumented_token () Term)
-(declare-fun FStar.Set.as_set_ (Term Term) Term)
-(declare-fun FStar.Set.as_set_@tok () Term)
-(declare-fun Tm_arrow_37c32948884378803a50151abdb3cb09 () Term)
-
-; </end encoding let rec as_set'>
-
-
-; <Start encoding let as_set>
-
-(declare-fun FStar.Set.as_set (Term Term) Term)
-
-(declare-fun FStar.Set.as_set@tok () Term)
-
-; </end encoding let as_set>
-
-
-; <Start encoding let lemma_disjoint_subset>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Set.lemma_disjoint_subset (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Set.lemma_disjoint_subset@tok () Term)
-
-; </end encoding let lemma_disjoint_subset>
-
-
-; End Externals for interface FStar.Set
-
-
-; Externals for module FStar.Preorder
-
-
-; <Start encoding let relation>
-
-(declare-fun FStar.Preorder.relation (Term) Term)
-
-(declare-fun FStar.Preorder.relation@tok () Term)
-(declare-fun Tm_arrow_a19f9d49348d4e0038f0ded87d87802f (Term) Term)
-
-; </end encoding let relation>
-
-
-; <Start encoding let predicate>
-
-(declare-fun FStar.Preorder.predicate (Term) Term)
-
-(declare-fun FStar.Preorder.predicate@tok () Term)
-
-
-; </end encoding let predicate>
-
-
-; <Start encoding let reflexive>
-
-(declare-fun FStar.Preorder.reflexive (Term Term) Term)
-(declare-fun Tm_arrow_8e677a33afbeb812aa3779b7bdd0131c () Term)
-(declare-fun FStar.Preorder.reflexive@tok () Term)
-
-; </end encoding let reflexive>
-
-
-; <Start encoding let transitive>
-
-(declare-fun FStar.Preorder.transitive (Term Term) Term)
-
-(declare-fun FStar.Preorder.transitive@tok () Term)
-
-; </end encoding let transitive>
-
-
-; <Start encoding let preorder_rel>
-
-(declare-fun FStar.Preorder.preorder_rel (Term Term) Term)
-
-(declare-fun FStar.Preorder.preorder_rel@tok () Term)
-
-; </end encoding let preorder_rel>
-
-
-; <Start encoding let preorder>
-
-(declare-fun FStar.Preorder.preorder (Term) Term)
-
-(declare-fun FStar.Preorder.preorder@tok () Term)
-(declare-fun Tm_refine_bd10f09297e0e7dc08314f7d9211801c (Term) Term)
-
-; </end encoding let preorder>
-
-
-; <Start encoding let stable>
-
-
-(declare-fun FStar.Preorder.stable (Term Term Term) Term)
-
-(declare-fun Tm_arrow_88036d0811eee3361efd6229bae2556d () Term)
-(declare-fun FStar.Preorder.stable@tok () Term)
-
-
-; </end encoding let stable>
-
-
-; End Externals for module FStar.Preorder
-
-
-; Externals for interface FStar.TSet
-
-
-; <Skipped #set-options "--initial_fuel 0 --max_fuel 0 --initial_ifuel 0 --max_ifuel 0"/>
-
-
-; <Start encoding val FStar.TSet.set>
-
-(declare-fun FStar.TSet.set (Term) Term)
-
-(declare-fun FStar.TSet.set@tok () Term)
-
-; </end encoding val FStar.TSet.set>
-
-
-; <Start encoding val FStar.TSet.equal>
-
-(declare-fun FStar.TSet.equal (Term Term Term) Term)
-(declare-fun Tm_arrow_461adcd665973ea611b925a11158df2c () Term)
-(declare-fun FStar.TSet.equal@tok () Term)
-
-; </end encoding val FStar.TSet.equal>
-
-
-; <Start encoding val FStar.TSet.mem>
-
-(declare-fun FStar.TSet.mem (Term Term Term) Term)
-(declare-fun Tm_arrow_6bd40494c735add94090089fc1560f3a () Term)
-(declare-fun FStar.TSet.mem@tok () Term)
-
-; </end encoding val FStar.TSet.mem>
-
-
-; <Start encoding val FStar.TSet.empty>
-
-(declare-fun FStar.TSet.empty (Term) Term)
-(declare-fun Tm_arrow_7479bde908a771f633d91cf1e6159164 () Term)
-(declare-fun FStar.TSet.empty@tok () Term)
-
-; </end encoding val FStar.TSet.empty>
-
-
-; <Start encoding val FStar.TSet.singleton>
-
-(declare-fun FStar.TSet.singleton (Term Term) Term)
-(declare-fun Tm_arrow_efd4130c737a1c63982cd396443713d5 () Term)
-(declare-fun FStar.TSet.singleton@tok () Term)
-
-; </end encoding val FStar.TSet.singleton>
-
-
-; <Start encoding val FStar.TSet.union>
-
-(declare-fun FStar.TSet.union (Term Term Term) Term)
-(declare-fun Tm_arrow_3de58fd829d33d9d3ee6c709e8528481 () Term)
-(declare-fun FStar.TSet.union@tok () Term)
-
-; </end encoding val FStar.TSet.union>
-
-
-; <Start encoding val FStar.TSet.intersect>
-
-(declare-fun FStar.TSet.intersect (Term Term Term) Term)
-
-(declare-fun FStar.TSet.intersect@tok () Term)
-
-; </end encoding val FStar.TSet.intersect>
-
-
-; <Start encoding val FStar.TSet.complement>
-
-(declare-fun FStar.TSet.complement (Term Term) Term)
-(declare-fun Tm_arrow_0bfcc001675666a8c38e138bf5ac4ee8 () Term)
-(declare-fun FStar.TSet.complement@tok () Term)
-
-; </end encoding val FStar.TSet.complement>
-
-
-; <Start encoding val FStar.TSet.intension>
-
-(declare-fun Tm_arrow_81e65de2755319ee661cc1adc7d951e3 (Term) Term)
-(declare-fun FStar.TSet.intension (Term Term) Term)
-
-(declare-fun Tm_arrow_43deeb1307894e15ad1446f8a75a5811 () Term)
-(declare-fun FStar.TSet.intension@tok () Term)
-
-; </end encoding val FStar.TSet.intension>
-
-
-; <Start encoding let subset>
-
-(declare-fun FStar.TSet.subset (Term Term Term) Term)
-(declare-fun Tm_arrow_a884d17a435ad7c4eff639e843c2e915 () Term)
-(declare-fun FStar.TSet.subset@tok () Term)
-
-; </end encoding let subset>
-
-
-; <Start encoding val FStar.TSet.mem_empty>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.mem_empty (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.mem_empty@tok () Term)
-
-; </end encoding val FStar.TSet.mem_empty>
-
-
-; <Start encoding val FStar.TSet.mem_singleton>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.mem_singleton (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.mem_singleton@tok () Term)
-
-; </end encoding val FStar.TSet.mem_singleton>
-
-
-; <Start encoding val FStar.TSet.mem_union>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.mem_union (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.mem_union@tok () Term)
-
-; </end encoding val FStar.TSet.mem_union>
-
-
-; <Start encoding val FStar.TSet.mem_intersect>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.mem_intersect (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.mem_intersect@tok () Term)
-
-; </end encoding val FStar.TSet.mem_intersect>
-
-
-; <Start encoding val FStar.TSet.mem_complement>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.mem_complement (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.mem_complement@tok () Term)
-
-; </end encoding val FStar.TSet.mem_complement>
-
-
-; <Start encoding val FStar.TSet.mem_subset>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.mem_subset (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.mem_subset@tok () Term)
-
-; </end encoding val FStar.TSet.mem_subset>
-
-
-; <Start encoding val FStar.TSet.subset_mem>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.subset_mem (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.subset_mem@tok () Term)
-
-; </end encoding val FStar.TSet.subset_mem>
-
-
-; <Start encoding val FStar.TSet.mem_intension>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.mem_intension (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.mem_intension@tok () Term)
-
-
-; </end encoding val FStar.TSet.mem_intension>
-
-
-; <Start encoding val FStar.TSet.lemma_equal_intro>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.lemma_equal_intro (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.lemma_equal_intro@tok () Term)
-
-; </end encoding val FStar.TSet.lemma_equal_intro>
-
-
-; <Start encoding val FStar.TSet.lemma_equal_elim>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.lemma_equal_elim (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.lemma_equal_elim@tok () Term)
-
-; </end encoding val FStar.TSet.lemma_equal_elim>
-
-
-; <Start encoding val FStar.TSet.lemma_equal_refl>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.lemma_equal_refl (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.lemma_equal_refl@tok () Term)
-
-; </end encoding val FStar.TSet.lemma_equal_refl>
-
-
-; <Start encoding val FStar.TSet.tset_of_set>
-
-(declare-fun FStar.TSet.tset_of_set (Term Term) Term)
-(declare-fun Tm_arrow_3cbed28ab0f3b752d3656db155a3e9f3 () Term)
-(declare-fun FStar.TSet.tset_of_set@tok () Term)
-
-; </end encoding val FStar.TSet.tset_of_set>
-
-
-; <Start encoding val FStar.TSet.lemma_mem_tset_of_set>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.lemma_mem_tset_of_set (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.lemma_mem_tset_of_set@tok () Term)
-
-; </end encoding val FStar.TSet.lemma_mem_tset_of_set>
-
-
-; <Start encoding val FStar.TSet.filter>
-
-
-(declare-fun FStar.TSet.filter (Term Term Term) Term)
-
-(declare-fun Tm_arrow_1a001071ad6106aec2470a87b194954c () Term)
-(declare-fun FStar.TSet.filter@tok () Term)
-
-; </end encoding val FStar.TSet.filter>
-
-
-; <Start encoding val FStar.TSet.lemma_mem_filter>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.lemma_mem_filter (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.lemma_mem_filter@tok () Term)
-
-
-; </end encoding val FStar.TSet.lemma_mem_filter>
-
-
-; <Start encoding val FStar.TSet.map>
+; <Start encoding let tot_to_gtot>
 
 (declare-fun Tm_arrow_6980332764c4493a7b0df5c02f7aefbe (Term Term) Term)
-(declare-fun FStar.TSet.map (Term Term Term Term) Term)
+(declare-fun FStar.Ghost.tot_to_gtot (Term Term Term Term) Term)
 
-(declare-fun Tm_arrow_8af532fc458491b78200f8bcb1361e90 () Term)
-(declare-fun FStar.TSet.map@tok () Term)
+(declare-fun Tm_ghost_arrow_c9fd3b742fd348c1f0aa2b7131578f3e () Term)
+(declare-fun FStar.Ghost.tot_to_gtot@tok () Term)
 
-; </end encoding val FStar.TSet.map>
 
+; </end encoding let tot_to_gtot>
 
-; <Start encoding val FStar.TSet.lemma_mem_map>
 
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.TSet.lemma_mem_map (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.TSet.lemma_mem_map@tok () Term)
+; <Start encoding let return>
 
+(declare-fun FStar.Ghost.return (Term Term) Term)
 
-; </end encoding val FStar.TSet.lemma_mem_map>
+(declare-fun FStar.Ghost.return@tok () Term)
 
+; </end encoding let return>
 
-; <Skipped #reset-options/>
 
+; <Start encoding let bind>
 
-; <Start encoding let rec as_set'>
+(declare-fun Tm_arrow_5716b68879f92aa07a25325dea2a598d (Term Term) Term)
+(declare-fun FStar.Ghost.bind (Term Term Term Term) Term)
 
-;;;;;;;;;;;;;;;;Fuel-instrumented function name
-(declare-fun FStar.TSet.as_set_.fuel_instrumented (Fuel Term Term) Term)
-;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
-(declare-fun FStar.TSet.as_set_.fuel_instrumented_token () Term)
-(declare-fun FStar.TSet.as_set_ (Term Term) Term)
-(declare-fun FStar.TSet.as_set_@tok () Term)
-(declare-fun Tm_arrow_b205d25f357c7c6022ebceb6497753f3 () Term)
+(declare-fun Tm_arrow_744e10832c82c923706888158b99b0fe () Term)
+(declare-fun FStar.Ghost.bind@tok () Term)
 
-; </end encoding let rec as_set'>
 
+; </end encoding let bind>
 
-; End Externals for interface FStar.TSet
 
+; <Start encoding let op_let_At>
 
-; Externals for interface FStar.Monotonic.Heap
 
+(declare-fun FStar.Ghost.op_let_At (Term Term Term Term) Term)
 
-; <Start encoding let set>
 
-(declare-fun FStar.Monotonic.Heap.set (Term) Term)
+(declare-fun FStar.Ghost.op_let_At@tok () Term)
 
-(declare-fun FStar.Monotonic.Heap.set@tok () Term)
 
-; </end encoding let set>
+; </end encoding let op_let_At>
 
 
-; <Start encoding let tset>
+; <Start encoding let elift1>
 
-(declare-fun FStar.Monotonic.Heap.tset (Term) Term)
 
-(declare-fun FStar.Monotonic.Heap.tset@tok () Term)
+(declare-fun FStar.Ghost.elift1 (Term Term Term Term) Term)
 
-; </end encoding let tset>
+(declare-fun Tm_refine_785b445c1ccb59eaa8c666ff5bddec28 (Term Term Term Term) Term)
+(declare-fun Tm_arrow_da89250ece049a2244626f93975cd557 () Term)
+(declare-fun FStar.Ghost.elift1@tok () Term)
 
 
-; <Start encoding val FStar.Monotonic.Heap.heap>
+; </end encoding let elift1>
 
-(declare-fun FStar.Monotonic.Heap.heap () Term)
 
-; </end encoding val FStar.Monotonic.Heap.heap>
+; <Start encoding let elift2>
 
+(declare-fun Tm_ghost_arrow_44164f5e759c8937bc211b53dca29861 (Term Term Term) Term)
+(declare-fun FStar.Ghost.elift2 (Term Term Term Term Term Term) Term)
 
-; <Start encoding val FStar.Monotonic.Heap.equal>
+(declare-fun Tm_refine_65079789b5ee069d4dcb71b5d5562419 (Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_3bc5977a48f4c4aa4cd3ebcf331fe3f9 () Term)
+(declare-fun FStar.Ghost.elift2@tok () Term)
 
-(declare-fun FStar.Monotonic.Heap.equal (Term Term) Term)
-(declare-fun Tm_arrow_22ea7bfd67f4919a6b048e3792f6aac6 () Term)
-(declare-fun FStar.Monotonic.Heap.equal@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.equal>
+; </end encoding let elift2>
 
 
-; <Start encoding val FStar.Monotonic.Heap.equal_extensional>
+; <Start encoding let elift3>
 
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.equal_extensional (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.equal_extensional@tok () Term)
+(declare-fun Tm_ghost_arrow_c3cf725ad58bf27e304b88d311d2ef4d (Term Term Term Term) Term)
+(declare-fun FStar.Ghost.elift3 (Term Term Term Term Term Term Term Term) Term)
 
-; </end encoding val FStar.Monotonic.Heap.equal_extensional>
+(declare-fun Tm_refine_f701336f04214efabf1dc8fb653177ef (Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_d597747eb30e55a029a57bb56ae3576b () Term)
+(declare-fun FStar.Ghost.elift3@tok () Term)
 
 
-; <Start encoding val FStar.Monotonic.Heap.emp>
+; </end encoding let elift3>
 
-(declare-fun FStar.Monotonic.Heap.emp (Dummy_sort) Term)
 
-; </end encoding val FStar.Monotonic.Heap.emp>
+; <Start encoding let push_refinement>
 
 
-; <Start encoding val FStar.Monotonic.Heap.next_addr>
+(declare-fun Tm_refine_4861ff30b18822886452f698558931e8 (Term Term) Term)
+(declare-fun FStar.Ghost.push_refinement (Term Term Term) Term)
 
-(declare-fun FStar.Monotonic.Heap.next_addr (Term) Term)
-(declare-fun Tm_ghost_arrow_5f9b7d66eebaf7d00b1d1c8781e1bd33 () Term)
-(declare-fun FStar.Monotonic.Heap.next_addr@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.next_addr>
+(declare-fun Tm_refine_36af295866c873249daf08f8d623a269 (Term Term Term) Term)
+(declare-fun Tm_arrow_08d120582cc4dfdc7e90cb9038e8f6b8 () Term)
+(declare-fun FStar.Ghost.push_refinement@tok () Term)
 
 
-; <Start encoding val FStar.Monotonic.Heap.core_mref>
 
-(declare-fun FStar.Monotonic.Heap.core_mref (Term) Term)
 
-(declare-fun FStar.Monotonic.Heap.core_mref@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.core_mref>
+; </end encoding let push_refinement>
 
 
-; <Start encoding let mref>
+; <Start encoding let elift1_p>
 
-(declare-fun FStar.Monotonic.Heap.mref (Term Term) Term)
-(declare-fun Tm_arrow_5bf0606d629ecb30adc0c556c248cd8a () Term)
-(declare-fun FStar.Monotonic.Heap.mref@tok () Term)
 
-; </end encoding let mref>
+(declare-fun Tm_refine_9f8cb5a84b67f50c9d5f87a914037545 (Term Term) Term)
+(declare-fun Tm_ghost_arrow_8f538917cb02d75c44bfd86ed6834262 (Term Term Term) Term)
 
+(declare-fun FStar.Ghost.elift1_p (Term Term Term Term Term) Term)
 
-; <Start encoding val FStar.Monotonic.Heap.addr_of>
 
-(declare-fun FStar.Monotonic.Heap.addr_of (Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_3e3805ca9fb6a056cde481ca6e6b2666 () Term)
-(declare-fun FStar.Monotonic.Heap.addr_of@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.addr_of>
 
 
-; <Start encoding val FStar.Monotonic.Heap.is_mm>
+(declare-fun Tm_arrow_2f2f081c9c2a272e83f647cd86440766 () Term)
+(declare-fun FStar.Ghost.elift1_p@tok () Term)
 
-(declare-fun FStar.Monotonic.Heap.is_mm (Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_8181c56eb62b6f09010fd19362ec557f () Term)
-(declare-fun FStar.Monotonic.Heap.is_mm@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.is_mm>
+; </end encoding let elift1_p>
 
 
-; <Start encoding let compare_addrs>
+; <Start encoding let elift2_p>
 
-(declare-fun FStar.Monotonic.Heap.compare_addrs (Term Term Term Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_d9620af24825960ed2af7182687876b1 () Term)
-(declare-fun FStar.Monotonic.Heap.compare_addrs@tok () Term)
 
-; </end encoding let compare_addrs>
+(declare-fun Tm_refine_08698b4b6e166624b5bf789ac071b4cf (Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_4f9eac2d0622ae1c34d05baa5f6854c6 (Term Term Term Term) Term)
+(declare-fun Tm_refine_50e552dc638ed7dac9f2492d99576667 (Term Term Term Term) Term)
+(declare-fun FStar.Ghost.elift2_p (Term Term Term Term Term Term Term) Term)
 
 
-; <Start encoding val FStar.Monotonic.Heap.contains>
 
-(declare-fun FStar.Monotonic.Heap.contains (Term Term Term Term) Term)
-(declare-fun Tm_arrow_78eae2771402d9ca8cd20442a69b19a1 () Term)
-(declare-fun FStar.Monotonic.Heap.contains@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.contains>
 
+(declare-fun Tm_arrow_4243a3f87827ef2e8c38dd30c5e8518d () Term)
+(declare-fun FStar.Ghost.elift2_p@tok () Term)
 
-; <Start encoding val FStar.Monotonic.Heap.addr_unused_in>
 
-(declare-fun FStar.Monotonic.Heap.addr_unused_in (Term Term) Term)
-(declare-fun Tm_arrow_5e652491869ddd6d9add00477fe250d4 () Term)
-(declare-fun FStar.Monotonic.Heap.addr_unused_in@tok () Term)
+; </end encoding let elift2_p>
 
-; </end encoding val FStar.Monotonic.Heap.addr_unused_in>
 
+; <Start encoding let elift1_pq>
 
-; <Start encoding val FStar.Monotonic.Heap.not_addr_unused_in_nullptr>
 
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.not_addr_unused_in_nullptr (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.not_addr_unused_in_nullptr@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.not_addr_unused_in_nullptr>
+(declare-fun Tm_arrow_b9b0980b05721a41304c20e612f3108f (Term Term Term) Term)
 
 
-; <Start encoding val FStar.Monotonic.Heap.unused_in>
+(declare-fun Tm_ghost_arrow_3f0c334c27896d01c2e72f45e6fcb67c (Term Term Term Term) Term)
 
-(declare-fun FStar.Monotonic.Heap.unused_in (Term Term Term Term) Term)
-(declare-fun Tm_arrow_63db68eb9811874d358b39a3a3a594c0 () Term)
-(declare-fun FStar.Monotonic.Heap.unused_in@tok () Term)
+(declare-fun FStar.Ghost.elift1_pq (Term Term Term Term Term Term) Term)
 
-; </end encoding val FStar.Monotonic.Heap.unused_in>
 
 
-; <Start encoding let fresh>
 
-(declare-fun FStar.Monotonic.Heap.fresh (Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_516fb5369267798913835a1aff4b7fe3 () Term)
-(declare-fun FStar.Monotonic.Heap.fresh@tok () Term)
 
-; </end encoding let fresh>
 
 
-; <Start encoding let only_t>
 
-(declare-fun FStar.Monotonic.Heap.only_t (Term Term Term) Term)
-(declare-fun Tm_arrow_97d9b8894eec5cc757ee6368627567ce () Term)
-(declare-fun FStar.Monotonic.Heap.only_t@tok () Term)
+(declare-fun Tm_arrow_b8eadba0211443ca5c59668f6aa4b6c9 () Term)
+(declare-fun FStar.Ghost.elift1_pq@tok () Term)
 
-; </end encoding let only_t>
 
+; </end encoding let elift1_pq>
 
-; <Start encoding let only>
 
-(declare-fun FStar.Monotonic.Heap.only (Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_fe5c1d63e245bf0ffcacbc885af17fc3 () Term)
-(declare-fun FStar.Monotonic.Heap.only@tok () Term)
+; <Start encoding let elift2_pq>
 
-; </end encoding let only>
 
 
-; <Start encoding let op_Hat_Plus_Plus>
+(declare-fun Tm_arrow_747965e95d1386c22f52f977256a903b (Term Term Term Term) Term)
 
-(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Plus (Term Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_21e6803beb51b9a6b0e4cc69a41b426b () Term)
-(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Plus@tok () Term)
+(declare-fun Tm_refine_f9e3dab5c1ea39d2741639e0fe40e216 (Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_00838c3d276d7476d6679b97a2aa247c (Term Term Term Term Term) Term)
 
-; </end encoding let op_Hat_Plus_Plus>
+(declare-fun FStar.Ghost.elift2_pq (Term Term Term Term Term Term Term Term) Term)
 
 
-; <Start encoding let op_Plus_Plus_Hat>
 
-(declare-fun FStar.Monotonic.Heap.op_Plus_Plus_Hat (Term Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_155b4e9b4b7e1cd02500a5483fe79417 () Term)
-(declare-fun FStar.Monotonic.Heap.op_Plus_Plus_Hat@tok () Term)
 
-; </end encoding let op_Plus_Plus_Hat>
 
 
-; <Start encoding let op_Hat_Plus_Hat>
 
-(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Hat (Term Term Term Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_a3f887bc1beedc82ccf25ac24af9a106 () Term)
-(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Hat@tok () Term)
 
-; </end encoding let op_Hat_Plus_Hat>
+(declare-fun Tm_arrow_b7e390954ec59dc663763c956d66957b () Term)
+(declare-fun FStar.Ghost.elift2_pq@tok () Term)
 
 
-; <Start encoding val FStar.Monotonic.Heap.sel_tot>
+; </end encoding let elift2_pq>
 
-(declare-fun Tm_refine_60a89cd0c268e7ce38a2aab467325fd8 (Term Term Term) Term)
-(declare-fun FStar.Monotonic.Heap.sel_tot (Term Term Term Term) Term)
 
-(declare-fun Tm_arrow_b9c7abd21015083a18544d8f5e4bfa5f () Term)
-(declare-fun FStar.Monotonic.Heap.sel_tot@tok () Term)
+; End Externals for interface FStar.Ghost
 
-; </end encoding val FStar.Monotonic.Heap.sel_tot>
 
+; Externals for interface FStar.IndefiniteDescription
 
-; <Start encoding val FStar.Monotonic.Heap.sel>
 
-(declare-fun FStar.Monotonic.Heap.sel (Term Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_ffe8429ce0118fe92246c624b0f48cb8 () Term)
-(declare-fun FStar.Monotonic.Heap.sel@tok () Term)
+; <Start encoding val FStar.IndefiniteDescription.elim_squash>
 
-; </end encoding val FStar.Monotonic.Heap.sel>
+(declare-fun FStar.IndefiniteDescription.elim_squash (Term Term) Term)
+(declare-fun Tm_ghost_arrow_c6842219f247b61822e21d8f892190b3 () Term)
+(declare-fun FStar.IndefiniteDescription.elim_squash@tok () Term)
 
+; </end encoding val FStar.IndefiniteDescription.elim_squash>
 
-; <Start encoding val FStar.Monotonic.Heap.upd_tot>
 
+; <Start encoding val FStar.IndefiniteDescription.indefinite_description_ghost>
 
-(declare-fun FStar.Monotonic.Heap.upd_tot (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_81e65de2755319ee661cc1adc7d951e3 (Term) Term)
+(declare-fun Tm_refine_4cc89ae73e7128e43010e5aba0ff060c (Term) Term)
+(declare-fun FStar.IndefiniteDescription.indefinite_description_ghost (Term Term) Term)
 
-(declare-fun Tm_arrow_bc62c38ea3e82ecfe3b8b2ec42ad37db () Term)
-(declare-fun FStar.Monotonic.Heap.upd_tot@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.upd_tot>
 
+(declare-fun Tm_ghost_arrow_feddccf07264e14202821ef1d50468a8 () Term)
+(declare-fun FStar.IndefiniteDescription.indefinite_description_ghost@tok () Term)
 
-; <Start encoding val FStar.Monotonic.Heap.upd>
 
-(declare-fun FStar.Monotonic.Heap.upd (Term Term Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_34a9169877528f6cc19628f2fc55c538 () Term)
-(declare-fun FStar.Monotonic.Heap.upd@tok () Term)
+; </end encoding val FStar.IndefiniteDescription.indefinite_description_ghost>
 
-; </end encoding val FStar.Monotonic.Heap.upd>
 
+; <Start encoding val FStar.IndefiniteDescription.indefinite_description_tot>
 
-; <Start encoding val FStar.Monotonic.Heap.alloc>
 
-(declare-fun FStar.Monotonic.Heap.alloc (Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_1c0aac8fe904b4d396ec54b136d2ffe7 () Term)
-(declare-fun FStar.Monotonic.Heap.alloc@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.alloc>
+(declare-fun FStar.IndefiniteDescription.indefinite_description_tot (Term Term) Term)
 
 
-; <Start encoding val FStar.Monotonic.Heap.free_mm>
 
-(declare-fun Tm_refine_5015146880b2d88cf7d4492a6a4488b3 (Term Term Term) Term)
-(declare-fun FStar.Monotonic.Heap.free_mm (Term Term Term Term) Term)
+(declare-fun Tm_arrow_913328739865ec1d7344ba2324047e94 () Term)
+(declare-fun FStar.IndefiniteDescription.indefinite_description_tot@tok () Term)
 
-(declare-fun Tm_arrow_6ecb62093891266f94b1f3f1a90a448e () Term)
-(declare-fun FStar.Monotonic.Heap.free_mm@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.free_mm>
+; </end encoding val FStar.IndefiniteDescription.indefinite_description_tot>
 
 
-; <Start encoding let modifies_t>
+; <Start encoding val FStar.IndefiniteDescription.strong_excluded_middle>
 
-(declare-fun FStar.Monotonic.Heap.modifies_t (Term Term Term) Term)
-(declare-fun Tm_arrow_a4fe7207a94d4c1647746618fee3b728 () Term)
-(declare-fun FStar.Monotonic.Heap.modifies_t@tok () Term)
+(declare-fun FStar.IndefiniteDescription.strong_excluded_middle (Term) Term)
+(declare-fun Tm_refine_2c7ecebd8a41d0890aab4251b61d6458 (Term) Term)
+(declare-fun Tm_ghost_arrow_13b822d9f45311e725609e40f68f39a1 () Term)
+(declare-fun FStar.IndefiniteDescription.strong_excluded_middle@tok () Term)
 
-; </end encoding let modifies_t>
 
+; </end encoding val FStar.IndefiniteDescription.strong_excluded_middle>
 
-; <Start encoding let modifies>
 
-(declare-fun FStar.Monotonic.Heap.modifies (Term Term Term) Term)
-(declare-fun Tm_arrow_46ebd76bd348c127a0b9b24dfad446fc () Term)
-(declare-fun FStar.Monotonic.Heap.modifies@tok () Term)
+; <Start encoding val FStar.IndefiniteDescription.stronger_markovs_principle>
 
-; </end encoding let modifies>
+(declare-fun Tm_ghost_arrow_eaf0e881316979a10a835f9aef894ea3 () Term)
+(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle (Term) Term)
 
+(declare-fun Tm_refine_ce62cc380d030e5cd8dfd1cf0ea19b01 (Term) Term)
+(declare-fun Tm_ghost_arrow_0ecc4bb7783229ca7ca7edd38b0bab8d () Term)
+(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle@tok () Term)
 
-; <Start encoding let equal_dom>
 
-(declare-fun FStar.Monotonic.Heap.equal_dom (Term Term) Term)
+; </end encoding val FStar.IndefiniteDescription.stronger_markovs_principle>
 
-(declare-fun FStar.Monotonic.Heap.equal_dom@tok () Term)
 
-; </end encoding let equal_dom>
+; <Start encoding val FStar.IndefiniteDescription.stronger_markovs_principle_prop>
 
+(declare-fun Tm_arrow_1742ee5bbc9c9e74913cc041d85062b6 () Term)
+(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle_prop (Term) Term)
 
-; <Start encoding val FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused>
+(declare-fun Tm_refine_e76bd1e3fcd1369d7232ec3854a8c984 (Term) Term)
+(declare-fun Tm_ghost_arrow_c21c60a4b8d9409191eea9e22a1b37db () Term)
+(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle_prop@tok () Term)
 
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused>
+; </end encoding val FStar.IndefiniteDescription.stronger_markovs_principle_prop>
 
 
-; <Start encoding val FStar.Monotonic.Heap.lemma_contains_implies_used>
+; End Externals for interface FStar.IndefiniteDescription
 
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_contains_implies_used (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_contains_implies_used@tok () Term)
 
-; </end encoding val FStar.Monotonic.Heap.lemma_contains_implies_used>
+; Externals for module FStar.StrongExcludedMiddle
 
 
-; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types>
+; <Start encoding let strong_excluded_middle>
 
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types (Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types@tok () Term)
+(declare-fun FStar.StrongExcludedMiddle.strong_excluded_middle (Term) Term)
 
-; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types>
 
+(declare-fun FStar.StrongExcludedMiddle.strong_excluded_middle@tok () Term)
 
-; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders>
 
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders@tok () Term)
+; </end encoding let strong_excluded_middle>
 
-; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders>
 
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_unused>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_unused (Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_unused@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_unused>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_alloc>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_alloc (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_alloc@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_alloc>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_free_mm_sel>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_free_mm_sel (Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_free_mm_sel@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.Heap.lemma_free_mm_sel>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_free_mm_contains>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_free_mm_contains (Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_free_mm_contains@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.Heap.lemma_free_mm_contains>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_free_mm_unused>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_free_mm_unused (Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_free_mm_unused@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.Heap.lemma_free_mm_unused>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_free_addr_unused_in>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_free_addr_unused_in (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_free_addr_unused_in@tok () Term)
-
-(declare-fun Tm_refine_b197fcc3fe1a6a8a07bfa2aebd77a80a () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_free_addr_unused_in>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_sel_same_addr>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_sel_same_addr (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_sel_same_addr@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_sel_same_addr>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_sel_upd1>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_sel_upd1 (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_sel_upd1@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_sel_upd1>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_sel_upd2>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_sel_upd2 (Term Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_sel_upd2@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_sel_upd2>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_mref_injectivity>
-
-(declare-fun FStar.Monotonic.Heap.lemma_mref_injectivity () Term)
-(declare-fun Tm_refine_e1adf49e5e772ddffa19181e1a812a81 () Term)
-
-
-; </end encoding val FStar.Monotonic.Heap.lemma_mref_injectivity>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_in_dom_emp>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_in_dom_emp (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_in_dom_emp@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_in_dom_emp>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_upd_contains>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_upd_contains (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_upd_contains@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_upd_contains>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_well_typed_upd_contains>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_well_typed_upd_contains (Term Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_well_typed_upd_contains@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_well_typed_upd_contains>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_unused_upd_contains>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_contains (Term Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_contains@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_unused_upd_contains>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_upd_contains_different_addr>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_upd_contains_different_addr (Term Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_upd_contains_different_addr@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_upd_contains_different_addr>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_upd_unused>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_upd_unused (Term Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_upd_unused@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_upd_unused>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_contains_upd_modifies>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_contains_upd_modifies (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_contains_upd_modifies@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_contains_upd_modifies>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_unused_upd_modifies>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_modifies (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_modifies@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_unused_upd_modifies>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds (Term Term Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_upd_tot>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd_tot (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd_tot@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_upd_tot>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_upd>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_upd>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_alloc>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_next_addr_alloc (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_next_addr_alloc@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_alloc>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_free_mm>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_next_addr_free_mm (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_next_addr_free_mm@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_free_mm>
-
-
-; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr>
-
-
-; <Start encoding val FStar.Monotonic.Heap.aref>
-
-(declare-fun FStar.Monotonic.Heap.aref () Term)
-
-; </end encoding val FStar.Monotonic.Heap.aref>
-
-
-; <Start encoding val FStar.Monotonic.Heap.dummy_aref>
-
-(declare-fun FStar.Monotonic.Heap.dummy_aref (Dummy_sort) Term)
-
-; </end encoding val FStar.Monotonic.Heap.dummy_aref>
-
-
-; <Start encoding val FStar.Monotonic.Heap.aref_equal>
-
-(declare-fun FStar.Monotonic.Heap.aref_equal (Term Term) Term)
-(declare-fun Tm_refine_82707a6e3d48caa257bb4bddb01d7d73 (Term Term) Term)
-(declare-fun Tm_ghost_arrow_15fb16496d887138d488803245c89d64 () Term)
-(declare-fun FStar.Monotonic.Heap.aref_equal@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.Heap.aref_equal>
-
-
-; <Start encoding val FStar.Monotonic.Heap.aref_of>
-
-(declare-fun FStar.Monotonic.Heap.aref_of (Term Term Term) Term)
-(declare-fun Tm_arrow_52adf65c8447500d70e5098f6c041a65 () Term)
-(declare-fun FStar.Monotonic.Heap.aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.aref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.addr_of_aref>
-
-(declare-fun FStar.Monotonic.Heap.addr_of_aref (Term) Term)
-(declare-fun Tm_refine_afd51579b90d50ea23e03b743a1fa001 () Term)
-(declare-fun Tm_ghost_arrow_168094509145e28b296ce766eea04736 () Term)
-(declare-fun FStar.Monotonic.Heap.addr_of_aref@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.Heap.addr_of_aref>
-
-
-; <Start encoding val FStar.Monotonic.Heap.addr_of_aref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.addr_of_aref_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.addr_of_aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.addr_of_aref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.aref_is_mm>
-
-(declare-fun FStar.Monotonic.Heap.aref_is_mm (Term) Term)
-(declare-fun Tm_ghost_arrow_86fca776032c40cedacef7de5d660572 () Term)
-(declare-fun FStar.Monotonic.Heap.aref_is_mm@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.aref_is_mm>
-
-
-; <Start encoding val FStar.Monotonic.Heap.is_mm_aref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.is_mm_aref_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.is_mm_aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.is_mm_aref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.aref_unused_in>
-
-(declare-fun FStar.Monotonic.Heap.aref_unused_in (Term Term) Term)
-(declare-fun Tm_arrow_8227ceb756b15f6c9348698ae3bb9b5e () Term)
-(declare-fun FStar.Monotonic.Heap.aref_unused_in@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.aref_unused_in>
-
-
-; <Start encoding val FStar.Monotonic.Heap.unused_in_aref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.unused_in_aref_of (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.unused_in_aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.unused_in_aref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.contains_aref_unused_in>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.contains_aref_unused_in (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.contains_aref_unused_in@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.contains_aref_unused_in>
-
-
-; <Start encoding val FStar.Monotonic.Heap.aref_live_at>
-
-(declare-fun FStar.Monotonic.Heap.aref_live_at (Term Term Term Term) Term)
-(declare-fun Tm_arrow_9c4830390b5ceaaec5e76b4f367d6c11 () Term)
-(declare-fun FStar.Monotonic.Heap.aref_live_at@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.aref_live_at>
-
-
-; <Start encoding val FStar.Monotonic.Heap.gref_of>
-
-(declare-fun FStar.Monotonic.Heap.gref_of (Term Term Term) Term)
-(declare-fun Tm_refine_f871b1cec1676516ecbdd8b1fdf16da7 (Term Term) Term)
-(declare-fun Tm_ghost_arrow_b090c641b42392b5ed08e8774610283a () Term)
-(declare-fun FStar.Monotonic.Heap.gref_of@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.Heap.gref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.ref_of>
-
-(declare-fun FStar.Monotonic.Heap.ref_of (Term Term Term Term) Term)
-(declare-fun Tm_refine_e9f69f18eb8d91697e49057991573e9f (Term Term Term Term) Term)
-(declare-fun Tm_arrow_593ebdf0a0f4ac12ef03a2bedce8e97b () Term)
-(declare-fun FStar.Monotonic.Heap.ref_of@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.Heap.ref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.aref_live_at_aref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.aref_live_at_aref_of (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.aref_live_at_aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.aref_live_at_aref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.contains_gref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.contains_gref_of (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.contains_gref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.contains_gref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.aref_of_gref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.aref_of_gref_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.aref_of_gref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.aref_of_gref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.addr_of_gref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.addr_of_gref_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.addr_of_gref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.addr_of_gref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.is_mm_gref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.is_mm_gref_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.is_mm_gref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.is_mm_gref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.unused_in_gref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.unused_in_gref_of (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.unused_in_gref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.unused_in_gref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.sel_ref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.sel_ref_of (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.sel_ref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.sel_ref_of>
-
-
-; <Start encoding val FStar.Monotonic.Heap.upd_ref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.Heap.upd_ref_of (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.Heap.upd_ref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.Heap.upd_ref_of>
-
-
-; End Externals for interface FStar.Monotonic.Heap
-
-
-; Externals for module FStar.Heap
-
-
-; <Start encoding let trivial_rel>
-
-(declare-fun FStar.Heap.trivial_rel (Term) Term)
-(declare-fun Tm_arrow_5e933b4711265943ba4bba734363561b () Term)
-(declare-fun FStar.Heap.trivial_rel@tok () Term)
-
-(declare-fun Tm_abs_568747eb5009c1dec504311dee989dc2 (Term) Term)
-
-; </end encoding let trivial_rel>
-
-
-; <Start encoding let trivial_preorder>
-
-(declare-fun FStar.Heap.trivial_preorder (Term) Term)
-(declare-fun Tm_arrow_1a6db055683d4a5b8a00786676e339b5 () Term)
-(declare-fun FStar.Heap.trivial_preorder@tok () Term)
-
-; </end encoding let trivial_preorder>
-
-
-; <Start encoding let ref>
-
-(declare-fun FStar.Heap.ref (Term) Term)
-
-(declare-fun FStar.Heap.ref@tok () Term)
-
-; </end encoding let ref>
-
-
-; End Externals for module FStar.Heap
-
-
-; Externals for interface FStar.Map
-
-
-; <Start encoding val FStar.Map.t>
-
-(declare-fun FStar.Map.t (Term Term) Term)
-(declare-fun Tm_arrow_2b8b9bde9fdc9f797e5827d0c154aeeb () Term)
-(declare-fun FStar.Map.t@tok () Term)
-
-; </end encoding val FStar.Map.t>
-
-
-; <Start encoding val FStar.Map.sel>
-
-(declare-fun FStar.Map.sel (Term Term Term Term) Term)
-(declare-fun Tm_arrow_28a168f8d4c6d78564a214862be72b08 () Term)
-(declare-fun FStar.Map.sel@tok () Term)
-
-; </end encoding val FStar.Map.sel>
-
-
-; <Start encoding val FStar.Map.upd>
-
-(declare-fun FStar.Map.upd (Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_b19283e90b47034162373413c6a19933 () Term)
-(declare-fun FStar.Map.upd@tok () Term)
-
-; </end encoding val FStar.Map.upd>
-
-
-; <Start encoding val FStar.Map.const>
-
-(declare-fun FStar.Map.const (Term Term Term) Term)
-(declare-fun Tm_arrow_867ad7c8cdd01bd87f415b1f9e0b39ac () Term)
-(declare-fun FStar.Map.const@tok () Term)
-
-; </end encoding val FStar.Map.const>
-
-
-; <Start encoding val FStar.Map.domain>
-
-(declare-fun FStar.Map.domain (Term Term Term) Term)
-(declare-fun Tm_arrow_6e8371e4f424600b54c69f2eb03b48d8 () Term)
-(declare-fun FStar.Map.domain@tok () Term)
-
-; </end encoding val FStar.Map.domain>
-
-
-; <Start encoding val FStar.Map.contains>
-
-(declare-fun FStar.Map.contains (Term Term Term Term) Term)
-(declare-fun Tm_arrow_32b461b2324f01c7a6bc6b577725566d () Term)
-(declare-fun FStar.Map.contains@tok () Term)
-
-; </end encoding val FStar.Map.contains>
-
-
-; <Start encoding val FStar.Map.concat>
-
-(declare-fun FStar.Map.concat (Term Term Term Term) Term)
-(declare-fun Tm_arrow_b137090ab92fa6ffe958df8f30b9f54e () Term)
-(declare-fun FStar.Map.concat@tok () Term)
-
-; </end encoding val FStar.Map.concat>
-
-
-; <Start encoding val FStar.Map.map_val>
-
-
-(declare-fun FStar.Map.map_val (Term Term Term Term Term) Term)
-
-(declare-fun Tm_arrow_9123217b92d7c89a4449fe44590b9f47 () Term)
-(declare-fun FStar.Map.map_val@tok () Term)
-
-; </end encoding val FStar.Map.map_val>
-
-
-; <Start encoding val FStar.Map.restrict>
-
-(declare-fun FStar.Map.restrict (Term Term Term Term) Term)
-(declare-fun Tm_arrow_e8f96ed4bf330326d457be2f8416d734 () Term)
-(declare-fun FStar.Map.restrict@tok () Term)
-
-; </end encoding val FStar.Map.restrict>
-
-
-; <Start encoding let const_on>
-
-(declare-fun FStar.Map.const_on (Term Term Term Term) Term)
-(declare-fun Tm_arrow_f99b4e662f3e4a97cdb11f6ede73601e () Term)
-(declare-fun FStar.Map.const_on@tok () Term)
-
-; </end encoding let const_on>
-
-
-; <Start encoding val FStar.Map.map_literal>
-
-
-(declare-fun FStar.Map.map_literal (Term Term Term) Term)
-
-(declare-fun Tm_arrow_fb1dd96195814b8107d05d25a2bbb566 () Term)
-(declare-fun FStar.Map.map_literal@tok () Term)
-
-; </end encoding val FStar.Map.map_literal>
-
-
-; <Start encoding let disjoint_dom>
-
-(declare-fun FStar.Map.disjoint_dom (Term Term Term Term) Term)
-(declare-fun Tm_arrow_556fc2b76256aeb4c51415a912920e4f () Term)
-(declare-fun FStar.Map.disjoint_dom@tok () Term)
-
-; </end encoding let disjoint_dom>
-
-
-; <Start encoding let has_dom>
-
-(declare-fun FStar.Map.has_dom (Term Term Term Term) Term)
-(declare-fun Tm_arrow_978eafbacd55316f8accb3c830570c46 () Term)
-(declare-fun FStar.Map.has_dom@tok () Term)
-
-; </end encoding let has_dom>
-
-
-; <Start encoding val FStar.Map.lemma_SelUpd1>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_SelUpd1 (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_SelUpd1@tok () Term)
-
-; </end encoding val FStar.Map.lemma_SelUpd1>
-
-
-; <Start encoding val FStar.Map.lemma_SelUpd2>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_SelUpd2 (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_SelUpd2@tok () Term)
-
-; </end encoding val FStar.Map.lemma_SelUpd2>
-
-
-; <Start encoding val FStar.Map.lemma_SelConst>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_SelConst (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_SelConst@tok () Term)
-
-; </end encoding val FStar.Map.lemma_SelConst>
-
-
-; <Start encoding val FStar.Map.lemma_SelRestrict>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_SelRestrict (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_SelRestrict@tok () Term)
-
-; </end encoding val FStar.Map.lemma_SelRestrict>
-
-
-; <Start encoding val FStar.Map.lemma_SelConcat1>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_SelConcat1 (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_SelConcat1@tok () Term)
-
-; </end encoding val FStar.Map.lemma_SelConcat1>
-
-
-; <Start encoding val FStar.Map.lemma_SelConcat2>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_SelConcat2 (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_SelConcat2@tok () Term)
-
-; </end encoding val FStar.Map.lemma_SelConcat2>
-
-
-; <Start encoding val FStar.Map.lemma_SelMapVal>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_SelMapVal (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_SelMapVal@tok () Term)
-
-
-; </end encoding val FStar.Map.lemma_SelMapVal>
-
-
-; <Start encoding val FStar.Map.lemma_InDomUpd1>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_InDomUpd1 (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_InDomUpd1@tok () Term)
-
-; </end encoding val FStar.Map.lemma_InDomUpd1>
-
-
-; <Start encoding val FStar.Map.lemma_InDomUpd2>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_InDomUpd2 (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_InDomUpd2@tok () Term)
-
-; </end encoding val FStar.Map.lemma_InDomUpd2>
-
-
-; <Start encoding val FStar.Map.lemma_InDomConstMap>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_InDomConstMap (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_InDomConstMap@tok () Term)
-
-; </end encoding val FStar.Map.lemma_InDomConstMap>
-
-
-; <Start encoding val FStar.Map.lemma_InDomConcat>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_InDomConcat (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_InDomConcat@tok () Term)
-
-; </end encoding val FStar.Map.lemma_InDomConcat>
-
-
-; <Start encoding val FStar.Map.lemma_InMapVal>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_InMapVal (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_InMapVal@tok () Term)
-
-
-; </end encoding val FStar.Map.lemma_InMapVal>
-
-
-; <Start encoding val FStar.Map.lemma_InDomRestrict>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_InDomRestrict (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_InDomRestrict@tok () Term)
-
-; </end encoding val FStar.Map.lemma_InDomRestrict>
-
-
-; <Start encoding val FStar.Map.lemma_ContainsDom>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_ContainsDom (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_ContainsDom@tok () Term)
-
-; </end encoding val FStar.Map.lemma_ContainsDom>
-
-
-; <Start encoding val FStar.Map.lemma_UpdDomain>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_UpdDomain (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_UpdDomain@tok () Term)
-
-; </end encoding val FStar.Map.lemma_UpdDomain>
-
-
-; <Start encoding val FStar.Map.lemma_map_literal>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_map_literal (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_map_literal@tok () Term)
-
-
-; </end encoding val FStar.Map.lemma_map_literal>
-
-
-; <Start encoding val FStar.Map.equal>
-
-(declare-fun FStar.Map.equal (Term Term Term Term) Term)
-(declare-fun Tm_arrow_8d5e09121919a406639e2201d1f5d3dd () Term)
-(declare-fun FStar.Map.equal@tok () Term)
-
-; </end encoding val FStar.Map.equal>
-
-
-; <Start encoding val FStar.Map.lemma_equal_intro>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_equal_intro (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_equal_intro@tok () Term)
-
-; </end encoding val FStar.Map.lemma_equal_intro>
-
-
-; <Start encoding val FStar.Map.lemma_equal_elim>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_equal_elim (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_equal_elim@tok () Term)
-
-; </end encoding val FStar.Map.lemma_equal_elim>
-
-
-; <Start encoding val FStar.Map.lemma_equal_refl>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Map.lemma_equal_refl (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Map.lemma_equal_refl@tok () Term)
-
-; </end encoding val FStar.Map.lemma_equal_refl>
-
-
-; End Externals for interface FStar.Map
+; End Externals for module FStar.StrongExcludedMiddle
 
 
 ; Externals for interface FStar.Classical.Sugar
@@ -9670,7 +8142,7 @@ FStar.Pervasives.CNoInline)))
 (declare-fun FStar.List.Tot.Base.existsb.fuel_instrumented_token () Term)
 (declare-fun FStar.List.Tot.Base.existsb (Term Term Term) Term)
 (declare-fun FStar.List.Tot.Base.existsb@tok () Term)
-
+(declare-fun Tm_arrow_84543425b818e2d10a976186b8e8c250 (Term) Term)
 
 
 (declare-fun Tm_arrow_98dbecc64760e6a41f037a6881cd5df8 () Term)
@@ -10137,7 +8609,7 @@ FStar.Pervasives.CNoInline)))
 (declare-fun FStar.List.Tot.Base.list_unref (Term Term Term) Term)
 (declare-fun FStar.List.Tot.Base.list_unref@tok () Term)
 
-(declare-fun Tm_refine_9f8cb5a84b67f50c9d5f87a914037545 (Term Term) Term)
+
 
 
 
@@ -10232,3319 +8704,6 @@ FStar.Pervasives.CNoInline)))
 
 
 ; End Externals for module FStar.List.Tot.Base
-
-
-; Externals for interface FStar.Ghost
-
-
-; <Start encoding val FStar.Ghost.erased>
-
-(declare-fun FStar.Ghost.erased (Term) Term)
-
-(declare-fun FStar.Ghost.erased@tok () Term)
-
-; </end encoding val FStar.Ghost.erased>
-
-
-; <Start encoding val FStar.Ghost.reveal>
-
-(declare-fun FStar.Ghost.reveal (Term Term) Term)
-(declare-fun Tm_ghost_arrow_e2f4c1991753137c5a80c115428d0cef () Term)
-(declare-fun FStar.Ghost.reveal@tok () Term)
-
-; </end encoding val FStar.Ghost.reveal>
-
-
-; <Start encoding val FStar.Ghost.hide>
-
-(declare-fun FStar.Ghost.hide (Term Term) Term)
-(declare-fun Tm_arrow_643f1030585ddc96db34fbedd5533726 () Term)
-(declare-fun FStar.Ghost.hide@tok () Term)
-
-; </end encoding val FStar.Ghost.hide>
-
-
-; <Start encoding val FStar.Ghost.hide_reveal>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Ghost.hide_reveal (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Ghost.hide_reveal@tok () Term)
-
-; </end encoding val FStar.Ghost.hide_reveal>
-
-
-; <Start encoding val FStar.Ghost.reveal_hide>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Ghost.reveal_hide (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Ghost.reveal_hide@tok () Term)
-
-; </end encoding val FStar.Ghost.reveal_hide>
-
-
-; <Start encoding let tot_to_gtot>
-
-
-(declare-fun FStar.Ghost.tot_to_gtot (Term Term Term Term) Term)
-
-(declare-fun Tm_ghost_arrow_c9fd3b742fd348c1f0aa2b7131578f3e () Term)
-(declare-fun FStar.Ghost.tot_to_gtot@tok () Term)
-
-
-; </end encoding let tot_to_gtot>
-
-
-; <Start encoding let return>
-
-(declare-fun FStar.Ghost.return (Term Term) Term)
-
-(declare-fun FStar.Ghost.return@tok () Term)
-
-; </end encoding let return>
-
-
-; <Start encoding let bind>
-
-(declare-fun Tm_arrow_5716b68879f92aa07a25325dea2a598d (Term Term) Term)
-(declare-fun FStar.Ghost.bind (Term Term Term Term) Term)
-
-(declare-fun Tm_arrow_744e10832c82c923706888158b99b0fe () Term)
-(declare-fun FStar.Ghost.bind@tok () Term)
-
-
-; </end encoding let bind>
-
-
-; <Start encoding let op_let_At>
-
-
-(declare-fun FStar.Ghost.op_let_At (Term Term Term Term) Term)
-
-
-(declare-fun FStar.Ghost.op_let_At@tok () Term)
-
-
-; </end encoding let op_let_At>
-
-
-; <Start encoding let elift1>
-
-
-(declare-fun FStar.Ghost.elift1 (Term Term Term Term) Term)
-
-(declare-fun Tm_refine_785b445c1ccb59eaa8c666ff5bddec28 (Term Term Term Term) Term)
-(declare-fun Tm_arrow_da89250ece049a2244626f93975cd557 () Term)
-(declare-fun FStar.Ghost.elift1@tok () Term)
-
-
-; </end encoding let elift1>
-
-
-; <Start encoding let elift2>
-
-(declare-fun Tm_ghost_arrow_44164f5e759c8937bc211b53dca29861 (Term Term Term) Term)
-(declare-fun FStar.Ghost.elift2 (Term Term Term Term Term Term) Term)
-
-(declare-fun Tm_refine_65079789b5ee069d4dcb71b5d5562419 (Term Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_3bc5977a48f4c4aa4cd3ebcf331fe3f9 () Term)
-(declare-fun FStar.Ghost.elift2@tok () Term)
-
-
-; </end encoding let elift2>
-
-
-; <Start encoding let elift3>
-
-(declare-fun Tm_ghost_arrow_c3cf725ad58bf27e304b88d311d2ef4d (Term Term Term Term) Term)
-(declare-fun FStar.Ghost.elift3 (Term Term Term Term Term Term Term Term) Term)
-
-(declare-fun Tm_refine_f701336f04214efabf1dc8fb653177ef (Term Term Term Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_d597747eb30e55a029a57bb56ae3576b () Term)
-(declare-fun FStar.Ghost.elift3@tok () Term)
-
-
-; </end encoding let elift3>
-
-
-; <Start encoding let push_refinement>
-
-
-(declare-fun Tm_refine_4861ff30b18822886452f698558931e8 (Term Term) Term)
-(declare-fun FStar.Ghost.push_refinement (Term Term Term) Term)
-
-
-(declare-fun Tm_refine_36af295866c873249daf08f8d623a269 (Term Term Term) Term)
-(declare-fun Tm_arrow_08d120582cc4dfdc7e90cb9038e8f6b8 () Term)
-(declare-fun FStar.Ghost.push_refinement@tok () Term)
-
-
-
-
-
-; </end encoding let push_refinement>
-
-
-; <Start encoding let elift1_p>
-
-
-
-(declare-fun Tm_ghost_arrow_8f538917cb02d75c44bfd86ed6834262 (Term Term Term) Term)
-
-(declare-fun FStar.Ghost.elift1_p (Term Term Term Term Term) Term)
-
-
-
-
-
-(declare-fun Tm_arrow_2f2f081c9c2a272e83f647cd86440766 () Term)
-(declare-fun FStar.Ghost.elift1_p@tok () Term)
-
-
-; </end encoding let elift1_p>
-
-
-; <Start encoding let elift2_p>
-
-
-(declare-fun Tm_refine_08698b4b6e166624b5bf789ac071b4cf (Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_4f9eac2d0622ae1c34d05baa5f6854c6 (Term Term Term Term) Term)
-(declare-fun Tm_refine_50e552dc638ed7dac9f2492d99576667 (Term Term Term Term) Term)
-(declare-fun FStar.Ghost.elift2_p (Term Term Term Term Term Term Term) Term)
-
-
-
-
-
-(declare-fun Tm_arrow_4243a3f87827ef2e8c38dd30c5e8518d () Term)
-(declare-fun FStar.Ghost.elift2_p@tok () Term)
-
-
-; </end encoding let elift2_p>
-
-
-; <Start encoding let elift1_pq>
-
-
-
-(declare-fun Tm_arrow_b9b0980b05721a41304c20e612f3108f (Term Term Term) Term)
-
-
-(declare-fun Tm_ghost_arrow_3f0c334c27896d01c2e72f45e6fcb67c (Term Term Term Term) Term)
-
-(declare-fun FStar.Ghost.elift1_pq (Term Term Term Term Term Term) Term)
-
-
-
-
-
-
-
-
-(declare-fun Tm_arrow_b8eadba0211443ca5c59668f6aa4b6c9 () Term)
-(declare-fun FStar.Ghost.elift1_pq@tok () Term)
-
-
-; </end encoding let elift1_pq>
-
-
-; <Start encoding let elift2_pq>
-
-
-
-(declare-fun Tm_arrow_747965e95d1386c22f52f977256a903b (Term Term Term Term) Term)
-
-(declare-fun Tm_refine_f9e3dab5c1ea39d2741639e0fe40e216 (Term Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_00838c3d276d7476d6679b97a2aa247c (Term Term Term Term Term) Term)
-
-(declare-fun FStar.Ghost.elift2_pq (Term Term Term Term Term Term Term Term) Term)
-
-
-
-
-
-
-
-
-(declare-fun Tm_arrow_b7e390954ec59dc663763c956d66957b () Term)
-(declare-fun FStar.Ghost.elift2_pq@tok () Term)
-
-
-; </end encoding let elift2_pq>
-
-
-; End Externals for interface FStar.Ghost
-
-
-; Externals for interface FStar.Monotonic.HyperHeap
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.rid>
-
-(declare-fun FStar.Monotonic.HyperHeap.rid (Dummy_sort) Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.rid>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.reveal>
-
-(declare-fun FStar.Monotonic.HyperHeap.reveal (Term) Term)
-(declare-fun Tm_ghost_arrow_4673cc3ebcc5d201b12f33a0db25b7d9 () Term)
-(declare-fun FStar.Monotonic.HyperHeap.reveal@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.reveal>
-
-
-; <Start encoding let rid_last_component>
-
-(declare-fun FStar.Monotonic.HyperHeap.rid_last_component (Term) Term)
-(declare-fun Tm_ghost_arrow_db06a4e46dfe5d9c1d2168d929927fce () Term)
-(declare-fun FStar.Monotonic.HyperHeap.rid_last_component@tok () Term)
-
-; </end encoding let rid_last_component>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.color>
-
-(declare-fun FStar.Monotonic.HyperHeap.color (Term) Term)
-
-(declare-fun FStar.Monotonic.HyperHeap.color@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.color>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.rid_freeable>
-
-(declare-fun FStar.Monotonic.HyperHeap.rid_freeable (Term) Term)
-(declare-fun Tm_ghost_arrow_cb09c5a76ccfcd8944f649d96b8525c0 () Term)
-(declare-fun FStar.Monotonic.HyperHeap.rid_freeable@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.rid_freeable>
-
-
-; <Start encoding let hmap>
-
-(declare-fun FStar.Monotonic.HyperHeap.hmap () Term)
-
-; </end encoding let hmap>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.root>
-
-(declare-fun FStar.Monotonic.HyperHeap.root (Dummy_sort) Term)
-(declare-fun Tm_refine_365abba901205a01d0ef28ebf2198c47 () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperHeap.root>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.root_last_component>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.root_last_component (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.root_last_component@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.root_last_component>
-
-
-; <Start encoding let root_has_color_zero>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.root_has_color_zero (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.root_has_color_zero@tok () Term)
-
-; </end encoding let root_has_color_zero>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.root_is_not_freeable>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.root_is_not_freeable (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.root_is_not_freeable@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.root_is_not_freeable>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.rid_length>
-
-(declare-fun FStar.Monotonic.HyperHeap.rid_length (Term) Term)
-(declare-fun Tm_ghost_arrow_3280ec491839a78d1ca91ef641a03728 () Term)
-(declare-fun FStar.Monotonic.HyperHeap.rid_length@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.rid_length>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.rid_tail>
-
-(declare-fun Tm_refine_085b55aa6b726cf07dbab52057ffb51c () Term)
-(declare-fun FStar.Monotonic.HyperHeap.rid_tail (Term) Term)
-
-(declare-fun Tm_arrow_78520bace6740fd696ae7592e1f50b8a () Term)
-(declare-fun FStar.Monotonic.HyperHeap.rid_tail@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.rid_tail>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.includes>
-
-(declare-fun FStar.Monotonic.HyperHeap.includes (Term Term) Term)
-(declare-fun Tm_ghost_arrow_0974bd70c0e6dc8c5552c9a9b244a827 () Term)
-(declare-fun FStar.Monotonic.HyperHeap.includes@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.includes>
-
-
-; <Start encoding let disjoint>
-
-(declare-fun FStar.Monotonic.HyperHeap.disjoint (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperHeap.disjoint@tok () Term)
-
-; </end encoding let disjoint>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_disjoint_includes>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_disjoint_includes (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_disjoint_includes@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_disjoint_includes>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.extends>
-
-(declare-fun FStar.Monotonic.HyperHeap.extends (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperHeap.extends@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.extends>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.parent>
-
-(declare-fun Tm_refine_1cc6c9f8558dddb337b6c1187115cd6a () Term)
-(declare-fun FStar.Monotonic.HyperHeap.parent (Term) Term)
-
-(declare-fun Tm_arrow_4c28f85cf3e2175be134547031d19bee () Term)
-(declare-fun FStar.Monotonic.HyperHeap.parent@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.parent>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_includes_refl>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_refl (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_refl@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_includes_refl>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_extends_includes>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_includes (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_includes@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_extends_includes>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_includes_anti_symmetric>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_anti_symmetric (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_anti_symmetric@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_includes_anti_symmetric>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_extends_disjoint>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_disjoint (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_disjoint@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_extends_disjoint>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_extends_parent>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_parent (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_parent@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_extends_parent>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_extends_not_root>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_not_root (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_not_root@tok () Term)
-(declare-fun Tm_refine_cbd24d5334c6bfffa6fd8a84fb787f7a (Term) Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_extends_not_root>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_extends_only_parent>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_only_parent (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_only_parent@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_extends_only_parent>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.mod_set>
-
-(declare-fun FStar.Monotonic.HyperHeap.mod_set (Term) Term)
-(declare-fun Tm_arrow_1ce44d9d7b660b1a3d7844e49869d710 () Term)
-(declare-fun FStar.Monotonic.HyperHeap.mod_set@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.mod_set>
-
-
-; <Start encoding assume FStar.Monotonic.HyperHeap.Mod_set_def>
-
-
-; </end encoding assume FStar.Monotonic.HyperHeap.Mod_set_def>
-
-
-; <Start encoding let modifies>
-
-(declare-fun FStar.Monotonic.HyperHeap.modifies (Term Term Term) Term)
-(declare-fun Tm_arrow_20bc1d7024c63b2383675e1d2233de49 () Term)
-(declare-fun FStar.Monotonic.HyperHeap.modifies@tok () Term)
-
-; </end encoding let modifies>
-
-
-; <Start encoding let modifies_just>
-
-(declare-fun FStar.Monotonic.HyperHeap.modifies_just (Term Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperHeap.modifies_just@tok () Term)
-
-; </end encoding let modifies_just>
-
-
-; <Start encoding let modifies_one>
-
-(declare-fun FStar.Monotonic.HyperHeap.modifies_one (Term Term Term) Term)
-(declare-fun Tm_arrow_c9e8de76549becacc029ffdd2af0ff97 () Term)
-(declare-fun FStar.Monotonic.HyperHeap.modifies_one@tok () Term)
-
-; </end encoding let modifies_one>
-
-
-; <Start encoding let equal_on>
-
-(declare-fun FStar.Monotonic.HyperHeap.equal_on (Term Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperHeap.equal_on@tok () Term)
-
-; </end encoding let equal_on>
-
-
-; <Start encoding let lemma_modifies_just_trans>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_just_trans (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_just_trans@tok () Term)
-
-; </end encoding let lemma_modifies_just_trans>
-
-
-; <Start encoding let lemma_modifies_trans>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_trans (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_trans@tok () Term)
-
-; </end encoding let lemma_modifies_trans>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_includes_trans>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_trans (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_trans@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_includes_trans>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_modset>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_modset (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_modset@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_modset>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_modifies_includes>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_includes (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_includes@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_modifies_includes>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_modifies_includes2>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_includes2 (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_includes2@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_modifies_includes2>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_disjoint_parents>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_disjoint_parents (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_disjoint_parents@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_disjoint_parents>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.lemma_include_cons>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_include_cons (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.lemma_include_cons@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.lemma_include_cons>
-
-
-; <Start encoding let disjoint_regions>
-
-(declare-fun FStar.Monotonic.HyperHeap.disjoint_regions (Term Term) Term)
-(declare-fun Tm_arrow_00688474232f98821d9c04b9dffe8c61 () Term)
-(declare-fun FStar.Monotonic.HyperHeap.disjoint_regions@tok () Term)
-
-; </end encoding let disjoint_regions>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.extends_parent>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.extends_parent (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.extends_parent@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperHeap.extends_parent>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.includes_child>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.includes_child (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.includes_child@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperHeap.includes_child>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.root_is_root>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperHeap.root_is_root (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperHeap.root_is_root@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperHeap.root_is_root>
-
-
-; <Start encoding let extend_post>
-
-(declare-fun FStar.Monotonic.HyperHeap.extend_post (Term Term Term Term) Term)
-(declare-fun Tm_arrow_3c2f82ed0ed8ea7e1d6a83dc75ecda59 () Term)
-(declare-fun FStar.Monotonic.HyperHeap.extend_post@tok () Term)
-(declare-fun Tm_arrow_48888a65ae59c26b88d40b27e2460933 () Term)
-(declare-fun Tm_abs_269a5936c29d9b6613e0ba9061d6b37b (Term Term Term Term) Term)
-
-; </end encoding let extend_post>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.extend>
-
-(declare-fun FStar.Monotonic.HyperHeap.extend (Term Term Term) Term)
-(declare-fun Tm_refine_a699e8f550698e7794f1eae9aa746fed (Term Term Term) Term)
-(declare-fun Tm_arrow_5c350fc581e8c646c3484bcf6b3091da () Term)
-(declare-fun FStar.Monotonic.HyperHeap.extend@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperHeap.extend>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.extend_monochrome_freeable>
-
-(declare-fun FStar.Monotonic.HyperHeap.extend_monochrome_freeable (Term Term Term) Term)
-(declare-fun Tm_refine_85be5bcd183ae84c32835fc8fb01e69e (Term Term Term) Term)
-(declare-fun Tm_arrow_ec150d711f5fcd84355d77209a0f4d6b () Term)
-(declare-fun FStar.Monotonic.HyperHeap.extend_monochrome_freeable@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperHeap.extend_monochrome_freeable>
-
-
-; <Start encoding val FStar.Monotonic.HyperHeap.extend_monochrome>
-
-(declare-fun FStar.Monotonic.HyperHeap.extend_monochrome (Term Term) Term)
-(declare-fun Tm_refine_895293590f5cae5325f393b7019bf751 (Term Term) Term)
-(declare-fun Tm_arrow_07bc2034787bd7b8346c79efc7152f5e () Term)
-(declare-fun FStar.Monotonic.HyperHeap.extend_monochrome@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperHeap.extend_monochrome>
-
-
-; End Externals for interface FStar.Monotonic.HyperHeap
-
-
-; Externals for interface FStar.Monotonic.HyperStack
-
-
-; <Start encoding let is_in>
-
-(declare-fun FStar.Monotonic.HyperStack.is_in (Term Term) Term)
-(declare-fun Tm_arrow_98472382c4039c4fb6e189014e134e46 () Term)
-(declare-fun FStar.Monotonic.HyperStack.is_in@tok () Term)
-
-; </end encoding let is_in>
-
-
-; <Start encoding let is_stack_region>
-
-(declare-fun FStar.Monotonic.HyperStack.is_stack_region (Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.is_stack_region@tok () Term)
-
-; </end encoding let is_stack_region>
-
-
-; <Start encoding let is_heap_color>
-
-(declare-fun FStar.Monotonic.HyperStack.is_heap_color (Term) Term)
-(declare-fun Tm_arrow_2b00b574e3c859da902fc1b8ce85c0f1 () Term)
-(declare-fun FStar.Monotonic.HyperStack.is_heap_color@tok () Term)
-
-; </end encoding let is_heap_color>
-
-
-; <Start encoding let is_eternal_region>
-
-(declare-fun FStar.Monotonic.HyperStack.is_eternal_region (Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.is_eternal_region@tok () Term)
-
-; </end encoding let is_eternal_region>
-
-
-; <Start encoding let is_eternal_region_hs>
-
-(declare-fun FStar.Monotonic.HyperStack.is_eternal_region_hs (Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.is_eternal_region_hs@tok () Term)
-
-; </end encoding let is_eternal_region_hs>
-
-
-; <Start encoding let sid>
-
-(declare-fun FStar.Monotonic.HyperStack.sid () Term)
-(declare-fun Tm_refine_c1ce603279aac7a7c378033ea416a653 () Term)
-
-; </end encoding let sid>
-
-
-; <Start encoding let is_above>
-
-(declare-fun FStar.Monotonic.HyperStack.is_above (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.is_above@tok () Term)
-
-; </end encoding let is_above>
-
-
-; <Start encoding let is_just_below>
-
-(declare-fun FStar.Monotonic.HyperStack.is_just_below (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.is_just_below@tok () Term)
-
-; </end encoding let is_just_below>
-
-
-; <Start encoding let is_below>
-
-(declare-fun FStar.Monotonic.HyperStack.is_below (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.is_below@tok () Term)
-
-; </end encoding let is_below>
-
-
-; <Start encoding let is_strictly_below>
-
-(declare-fun FStar.Monotonic.HyperStack.is_strictly_below (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.is_strictly_below@tok () Term)
-
-; </end encoding let is_strictly_below>
-
-
-; <Start encoding let is_strictly_above>
-
-(declare-fun FStar.Monotonic.HyperStack.is_strictly_above (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.is_strictly_above@tok () Term)
-
-; </end encoding let is_strictly_above>
-
-
-; <Start encoding let map_invariant_predicate>
-
-(declare-fun FStar.Monotonic.HyperStack.map_invariant_predicate (Term) Term)
-(declare-fun Tm_arrow_997df7a914ebeafc2ba149725a334c28 () Term)
-(declare-fun FStar.Monotonic.HyperStack.map_invariant_predicate@tok () Term)
-
-; </end encoding let map_invariant_predicate>
-
-
-; <Start encoding let downward_closed_predicate>
-
-(declare-fun FStar.Monotonic.HyperStack.downward_closed_predicate (Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.downward_closed_predicate@tok () Term)
-
-; </end encoding let downward_closed_predicate>
-
-
-; <Start encoding let tip_top_predicate>
-
-(declare-fun FStar.Monotonic.HyperStack.tip_top_predicate (Term Term) Term)
-(declare-fun Tm_arrow_7df774c88c8cef87d5338082c4add0dc () Term)
-(declare-fun FStar.Monotonic.HyperStack.tip_top_predicate@tok () Term)
-
-; </end encoding let tip_top_predicate>
-
-
-; <Start encoding let rid_ctr_pred_predicate>
-
-(declare-fun FStar.Monotonic.HyperStack.rid_ctr_pred_predicate (Term Term) Term)
-(declare-fun Tm_arrow_7285a9d9213dc0d0f9fb806920c1c44d () Term)
-(declare-fun FStar.Monotonic.HyperStack.rid_ctr_pred_predicate@tok () Term)
-
-; </end encoding let rid_ctr_pred_predicate>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.map_invariant>
-
-(declare-fun FStar.Monotonic.HyperStack.map_invariant (Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.map_invariant@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.map_invariant>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.downward_closed>
-
-(declare-fun FStar.Monotonic.HyperStack.downward_closed (Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.downward_closed@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.downward_closed>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.tip_top>
-
-(declare-fun FStar.Monotonic.HyperStack.tip_top (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.tip_top@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.tip_top>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.rid_ctr_pred>
-
-(declare-fun FStar.Monotonic.HyperStack.rid_ctr_pred (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.rid_ctr_pred@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.rid_ctr_pred>
-
-
-; <Start encoding let is_tip>
-
-(declare-fun FStar.Monotonic.HyperStack.is_tip (Term Term) Term)
-(declare-fun Tm_arrow_827d51b58b1f545009480b9357ddb55c () Term)
-(declare-fun FStar.Monotonic.HyperStack.is_tip@tok () Term)
-
-; </end encoding let is_tip>
-
-
-; <Start encoding let is_wf_with_ctr_and_tip>
-
-(declare-fun FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip (Term Term Term) Term)
-(declare-fun Tm_arrow_b82a248445c0b0e4174cee49920de04b () Term)
-(declare-fun FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip@tok () Term)
-
-; </end encoding let is_wf_with_ctr_and_tip>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.mem'>
-
-(declare-fun FStar.Monotonic.HyperStack.mem_ () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.mem'>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.mk_mem>
-
-(declare-fun FStar.Monotonic.HyperStack.mk_mem (Term Term Term) Term)
-(declare-fun Tm_arrow_1bee5bc877c09107d0db9346176d4356 () Term)
-(declare-fun FStar.Monotonic.HyperStack.mk_mem@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.mk_mem>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.get_hmap>
-
-(declare-fun FStar.Monotonic.HyperStack.get_hmap (Term) Term)
-(declare-fun Tm_arrow_5b2077c44231589180b4ae3aea09ba98 () Term)
-(declare-fun FStar.Monotonic.HyperStack.get_hmap@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.get_hmap>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.get_rid_ctr>
-
-(declare-fun FStar.Monotonic.HyperStack.get_rid_ctr (Term) Term)
-(declare-fun Tm_arrow_de204c147a8a221f2b09accedd4ec026 () Term)
-(declare-fun FStar.Monotonic.HyperStack.get_rid_ctr@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.get_rid_ctr>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.get_tip>
-
-(declare-fun FStar.Monotonic.HyperStack.get_tip (Term) Term)
-(declare-fun Tm_arrow_27d5d52a8bf4afa759c5b5b1800059d7 () Term)
-(declare-fun FStar.Monotonic.HyperStack.get_tip@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.get_tip>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_mk_mem'_projectors>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_mk_mem__projectors (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_mk_mem__projectors@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_mk_mem'_projectors>
-
-
-; <Start encoding let mem>
-
-(declare-fun FStar.Monotonic.HyperStack.mem () Term)
-(declare-fun Tm_refine_05e15190c946858f68c69156f585f95a () Term)
-
-; </end encoding let mem>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_mem_projectors_are_in_wf_relation>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_mem_projectors_are_in_wf_relation (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_mem_projectors_are_in_wf_relation@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_mem_projectors_are_in_wf_relation>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_intro>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_intro (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_intro@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_intro>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_elim>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_elim (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_elim@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_elim>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_map_invariant>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_map_invariant (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_map_invariant@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_map_invariant>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_downward_closed>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_downward_closed (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_downward_closed@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_downward_closed>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_tip_top>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_tip_top (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_tip_top@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_tip_top>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_tip_top_smt>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_tip_top_smt (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_tip_top_smt@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_tip_top_smt>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_rid_ctr_pred>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_rid_ctr_pred (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_rid_ctr_pred@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_rid_ctr_pred>
-
-
-; <Start encoding let empty_mem>
-
-(declare-fun FStar.Monotonic.HyperStack.empty_mem (Dummy_sort) Term)
-
-; </end encoding let empty_mem>
-
-
-; <Start encoding let heap_region_does_not_overlap_with_tip>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.heap_region_does_not_overlap_with_tip (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.heap_region_does_not_overlap_with_tip@tok () Term)
-
-; </end encoding let heap_region_does_not_overlap_with_tip>
-
-
-; <Start encoding let poppable>
-
-(declare-fun FStar.Monotonic.HyperStack.poppable (Term) Term)
-(declare-fun Tm_arrow_546cd6d8513ee5ac624826e72053296e () Term)
-(declare-fun FStar.Monotonic.HyperStack.poppable@tok () Term)
-
-; </end encoding let poppable>
-
-
-; <Start encoding let remove_elt>
-
-(declare-fun FStar.Monotonic.HyperStack.remove_elt (Term Term Term) Term)
-(declare-fun Tm_arrow_c7267a504a18289d327360e384c4260d () Term)
-(declare-fun FStar.Monotonic.HyperStack.remove_elt@tok () Term)
-
-; </end encoding let remove_elt>
-
-
-; <Start encoding let popped>
-
-(declare-fun FStar.Monotonic.HyperStack.popped (Term Term) Term)
-(declare-fun Tm_arrow_9b982241dc761f1777c4e1f2e5ee9f6f () Term)
-(declare-fun FStar.Monotonic.HyperStack.popped@tok () Term)
-
-; </end encoding let popped>
-
-
-; <Start encoding let pop>
-
-(declare-fun Tm_refine_4a9f5a632ccb67c4adcfd65a1dab0c7c () Term)
-(declare-fun FStar.Monotonic.HyperStack.pop (Term) Term)
-
-(declare-fun Tm_arrow_f07cd46dd1f36155af4f12fa7aab3efe () Term)
-(declare-fun FStar.Monotonic.HyperStack.pop@tok () Term)
-
-
-; </end encoding let pop>
-
-
-; <Start encoding type FStar.Monotonic.HyperStack.mreference'>
-
-;;;;;;;;;;;;;;;;Constructor
-(declare-fun FStar.Monotonic.HyperStack.mreference_ (Term Term) Term)
-;;;;;;;;;;;;;;;;token
-(declare-fun FStar.Monotonic.HyperStack.mreference_@tok () Term)
-;;;;;;;;;;;;;;;;Constructor
-(declare-fun FStar.Monotonic.HyperStack.MkRef (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Projector
-(declare-fun FStar.Monotonic.HyperStack.MkRef_a (Term) Term)
-;;;;;;;;;;;;;;;;Projector
-(declare-fun FStar.Monotonic.HyperStack.MkRef_rel (Term) Term)
-;;;;;;;;;;;;;;;;Projector
-(declare-fun FStar.Monotonic.HyperStack.MkRef_frame (Term) Term)
-;;;;;;;;;;;;;;;;Projector
-(declare-fun FStar.Monotonic.HyperStack.MkRef_ref (Term) Term)
-;;;;;;;;;;;;;;;;data constructor proxy: FStar.Monotonic.HyperStack.MkRef
-(declare-fun FStar.Monotonic.HyperStack.MkRef@tok () Term)
-(declare-fun Tm_arrow_48f85f15527c9a2301806ab1cde0f498 () Term)
-
-; <start constructor FStar.Monotonic.HyperStack.mreference_>
-
-;;;;;;;;;;;;;;;;Discriminator definition
-(define-fun is-FStar.Monotonic.HyperStack.mreference_ ((__@x0 Term)) Bool
- (and (= (Term_constr_id __@x0)
-163)
-(exists ((@x0 Term) (@x1 Term))
- (! (= __@x0
-(FStar.Monotonic.HyperStack.mreference_ @x0
-@x1))
- 
-;;no pats
-:qid is-FStar.Monotonic.HyperStack.mreference_))))
-
-; </end constructor FStar.Monotonic.HyperStack.mreference_>
-
-
-; <start constructor FStar.Monotonic.HyperStack.MkRef>
-
-;;;;;;;;;;;;;;;;Discriminator definition
-(define-fun is-FStar.Monotonic.HyperStack.MkRef ((__@x0 Term)) Bool
- (and (= (Term_constr_id __@x0)
-170)
-(= __@x0
-(FStar.Monotonic.HyperStack.MkRef (FStar.Monotonic.HyperStack.MkRef_a __@x0)
-(FStar.Monotonic.HyperStack.MkRef_rel __@x0)
-(FStar.Monotonic.HyperStack.MkRef_frame __@x0)
-(FStar.Monotonic.HyperStack.MkRef_ref __@x0)))))
-
-; </end constructor FStar.Monotonic.HyperStack.MkRef>
-
-
-; </end encoding type FStar.Monotonic.HyperStack.mreference'>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.uu___is_MkRef>
-
-(declare-fun FStar.Monotonic.HyperStack.uu___is_MkRef (Term Term Term) Term)
-(declare-fun Tm_arrow_bf852805425ee7a1dd5e7d5557fca875 () Term)
-(declare-fun FStar.Monotonic.HyperStack.uu___is_MkRef@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.uu___is_MkRef>
-
-
-; <Skipped let uu___is_MkRef/>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.__proj__MkRef__item__frame>
-
-(declare-fun FStar.Monotonic.HyperStack.__proj__MkRef__item__frame (Term Term Term) Term)
-(declare-fun Tm_arrow_414898075afacec684feebc9e5ad18f0 () Term)
-(declare-fun FStar.Monotonic.HyperStack.__proj__MkRef__item__frame@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.__proj__MkRef__item__frame>
-
-
-; <Skipped let __proj__MkRef__item__frame/>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.__proj__MkRef__item__ref>
-
-(declare-fun FStar.Monotonic.HyperStack.__proj__MkRef__item__ref (Term Term Term) Term)
-(declare-fun Tm_arrow_4782baeaa5dd029fe41ef743f5cecc90 () Term)
-(declare-fun FStar.Monotonic.HyperStack.__proj__MkRef__item__ref@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.__proj__MkRef__item__ref>
-
-
-; <Skipped let __proj__MkRef__item__ref/>
-
-
-; <Start encoding let mreference>
-
-(declare-fun FStar.Monotonic.HyperStack.mreference (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.mreference@tok () Term)
-
-; </end encoding let mreference>
-
-
-; <Start encoding let frameOf>
-
-(declare-fun FStar.Monotonic.HyperStack.frameOf (Term Term Term) Term)
-(declare-fun Tm_arrow_4d3c3931a5ae4ceb417aa66c3de41479 () Term)
-(declare-fun FStar.Monotonic.HyperStack.frameOf@tok () Term)
-
-; </end encoding let frameOf>
-
-
-; <Start encoding let mk_mreference>
-
-(declare-fun FStar.Monotonic.HyperStack.mk_mreference (Term Term Term Term) Term)
-(declare-fun Tm_arrow_193191bb86dc919dc9d7148212c0a3e8 () Term)
-(declare-fun FStar.Monotonic.HyperStack.mk_mreference@tok () Term)
-
-; </end encoding let mk_mreference>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.as_ref>
-
-(declare-fun FStar.Monotonic.HyperStack.as_ref (Term Term Term) Term)
-(declare-fun Tm_arrow_f2aea05e253bbf925cf94ff24c2876cd () Term)
-(declare-fun FStar.Monotonic.HyperStack.as_ref@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.as_ref>
-
-
-; <Start encoding let as_addr>
-
-(declare-fun FStar.Monotonic.HyperStack.as_addr (Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_5b1cb5d82f88103d247469c73aa33921 () Term)
-(declare-fun FStar.Monotonic.HyperStack.as_addr@tok () Term)
-
-; </end encoding let as_addr>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_as_ref_inj>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_as_ref_inj (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_as_ref_inj@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_as_ref_inj>
-
-
-; <Start encoding let is_mm>
-
-(declare-fun FStar.Monotonic.HyperStack.is_mm (Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_104da30ccab2258bce7d07b8b0d0c618 () Term)
-(declare-fun FStar.Monotonic.HyperStack.is_mm@tok () Term)
-
-; </end encoding let is_mm>
-
-
-; <Start encoding let mstackref>
-
-(declare-fun FStar.Monotonic.HyperStack.mstackref (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.mstackref@tok () Term)
-(declare-fun Tm_refine_3415ed6c7abc7d0c55726285f3ae5f3f (Term Term) Term)
-
-; </end encoding let mstackref>
-
-
-; <Start encoding let mref>
-
-(declare-fun FStar.Monotonic.HyperStack.mref (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.mref@tok () Term)
-(declare-fun Tm_refine_4deaad73cd92bc948bb28924e869c4ab (Term Term) Term)
-
-; </end encoding let mref>
-
-
-; <Start encoding let mmmstackref>
-
-(declare-fun FStar.Monotonic.HyperStack.mmmstackref (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.mmmstackref@tok () Term)
-(declare-fun Tm_refine_077942947f03017592acbd4457f123a1 (Term Term) Term)
-
-; </end encoding let mmmstackref>
-
-
-; <Start encoding let mmmref>
-
-(declare-fun FStar.Monotonic.HyperStack.mmmref (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.mmmref@tok () Term)
-(declare-fun Tm_refine_433a6ba0587d1ca6a1ced9d7f162c4b1 (Term Term) Term)
-
-; </end encoding let mmmref>
-
-
-; <Start encoding let s_mref>
-
-(declare-fun FStar.Monotonic.HyperStack.s_mref (Term Term Term) Term)
-(declare-fun Tm_arrow_0955d13bb7bafe0ab120f4ece342f3f3 () Term)
-(declare-fun FStar.Monotonic.HyperStack.s_mref@tok () Term)
-(declare-fun Tm_refine_4c99049ff36722c69a2742a31dbda2b0 (Term Term Term) Term)
-
-; </end encoding let s_mref>
-
-
-; <Start encoding let live_region>
-
-(declare-fun FStar.Monotonic.HyperStack.live_region (Term Term) Term)
-(declare-fun Tm_arrow_6938252efeb34531b3379f5c2f722a73 () Term)
-(declare-fun FStar.Monotonic.HyperStack.live_region@tok () Term)
-
-; </end encoding let live_region>
-
-
-; <Start encoding let contains>
-
-(declare-fun FStar.Monotonic.HyperStack.contains (Term Term Term Term) Term)
-(declare-fun Tm_arrow_2ce4a038953d56734647c4bcc81f0778 () Term)
-(declare-fun FStar.Monotonic.HyperStack.contains@tok () Term)
-
-; </end encoding let contains>
-
-
-; <Start encoding let unused_in>
-
-(declare-fun FStar.Monotonic.HyperStack.unused_in (Term Term Term Term) Term)
-(declare-fun Tm_arrow_9bdaed72900d49bb4988c0c01c469742 () Term)
-(declare-fun FStar.Monotonic.HyperStack.unused_in@tok () Term)
-
-; </end encoding let unused_in>
-
-
-; <Start encoding let contains_ref_in_its_region>
-
-(declare-fun FStar.Monotonic.HyperStack.contains_ref_in_its_region (Term Term Term Term) Term)
-(declare-fun Tm_arrow_7096958e2403010b9fdc37d79fd4e3e2 () Term)
-(declare-fun FStar.Monotonic.HyperStack.contains_ref_in_its_region@tok () Term)
-
-; </end encoding let contains_ref_in_its_region>
-
-
-; <Start encoding let fresh_ref>
-
-(declare-fun FStar.Monotonic.HyperStack.fresh_ref (Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_df8b559c9576d8497a24dd7eb23c85dc () Term)
-(declare-fun FStar.Monotonic.HyperStack.fresh_ref@tok () Term)
-
-; </end encoding let fresh_ref>
-
-
-; <Start encoding let fresh_region>
-
-(declare-fun FStar.Monotonic.HyperStack.fresh_region (Term Term Term) Term)
-(declare-fun Tm_arrow_1711726a7704833722825b5a56be830f () Term)
-(declare-fun FStar.Monotonic.HyperStack.fresh_region@tok () Term)
-
-; </end encoding let fresh_region>
-
-
-; <Start encoding let sel>
-
-(declare-fun FStar.Monotonic.HyperStack.sel (Term Term Term Term) Term)
-(declare-fun Tm_ghost_arrow_da3a3381b5b1ab77954e6bff14854feb () Term)
-(declare-fun FStar.Monotonic.HyperStack.sel@tok () Term)
-
-; </end encoding let sel>
-
-
-; <Start encoding let upd>
-
-(declare-fun Tm_refine_d58d7e3b4b6ce757231e9089061120a0 (Term Term Term) Term)
-(declare-fun FStar.Monotonic.HyperStack.upd (Term Term Term Term Term) Term)
-
-(declare-fun Tm_ghost_arrow_c996fa8dd1022ef46a081fe8a2b75eb9 () Term)
-(declare-fun FStar.Monotonic.HyperStack.upd@tok () Term)
-
-
-; </end encoding let upd>
-
-
-; <Start encoding let alloc>
-
-(declare-fun Tm_refine_ad20a5ca24eede13005e3284b6c2d373 (Term) Term)
-(declare-fun FStar.Monotonic.HyperStack.alloc (Term Term Term Term Term Term) Term)
-
-(declare-fun Tm_refine_6d70f3cfce1bc3bbf4818c3b445e0424 (Term Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_9753433918dfe0ffcaec5aef968e8747 () Term)
-(declare-fun FStar.Monotonic.HyperStack.alloc@tok () Term)
-
-
-
-; </end encoding let alloc>
-
-
-; <Start encoding let free>
-
-(declare-fun Tm_refine_2d11d4ede243934a578949d9aa1c906a (Term Term) Term)
-(declare-fun Tm_refine_548ef817ca26695e20678a9213795842 (Term Term Term) Term)
-(declare-fun FStar.Monotonic.HyperStack.free (Term Term Term Term) Term)
-
-
-(declare-fun Tm_arrow_958328828628bea6229f5e623dac51fc () Term)
-(declare-fun FStar.Monotonic.HyperStack.free@tok () Term)
-
-
-
-; </end encoding let free>
-
-
-; <Start encoding let upd_tot>
-
-(declare-fun Tm_refine_778b19525c5cb6c7b65c06252db153f7 (Term Term Term) Term)
-(declare-fun FStar.Monotonic.HyperStack.upd_tot (Term Term Term Term Term) Term)
-
-(declare-fun Tm_arrow_206c46c9a18dd03e5ac7c9b5c279ac76 () Term)
-(declare-fun FStar.Monotonic.HyperStack.upd_tot@tok () Term)
-
-
-; </end encoding let upd_tot>
-
-
-; <Start encoding let sel_tot>
-
-
-(declare-fun FStar.Monotonic.HyperStack.sel_tot (Term Term Term Term) Term)
-
-(declare-fun Tm_arrow_2bb505300860292e7879c7f06bf5c252 () Term)
-(declare-fun FStar.Monotonic.HyperStack.sel_tot@tok () Term)
-
-
-; </end encoding let sel_tot>
-
-
-; <Start encoding let fresh_frame>
-
-(declare-fun FStar.Monotonic.HyperStack.fresh_frame (Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.fresh_frame@tok () Term)
-
-; </end encoding let fresh_frame>
-
-
-; <Start encoding let hs_push_frame>
-
-(declare-fun FStar.Monotonic.HyperStack.hs_push_frame (Term) Term)
-(declare-fun Tm_refine_b7d1addc48193ac698e1fc2904742dbd (Term) Term)
-(declare-fun Tm_arrow_c3285374add210f4c5225f85b0d6b6af () Term)
-(declare-fun FStar.Monotonic.HyperStack.hs_push_frame@tok () Term)
-
-
-; </end encoding let hs_push_frame>
-
-
-; <Start encoding let new_eternal_region>
-
-(declare-fun Tm_refine_70adfa3d90da23bbd361e2fc8530de01 (Term) Term)
-(declare-fun Tm_refine_e033ceacea9c846f5627c822e84f9414 () Term)
-(declare-fun FStar.Monotonic.HyperStack.new_eternal_region (Term Term Term) Term)
-
-
-(declare-fun Tm_refine_a88d6b2bc46617f49b283f0ff73bd7cf (Term) Term)
-(declare-fun Tm_arrow_5ed1a2f68d410b8de569b249f8f9c797 () Term)
-(declare-fun FStar.Monotonic.HyperStack.new_eternal_region@tok () Term)
-
-
-
-
-; </end encoding let new_eternal_region>
-
-
-; <Start encoding let new_freeable_heap_region>
-
-
-(declare-fun FStar.Monotonic.HyperStack.new_freeable_heap_region (Term Term) Term)
-
-(declare-fun Tm_refine_1edb6214e12e1252d3e7d5e5b21608ca (Term) Term)
-(declare-fun Tm_arrow_f5c071f6f5e62653a5f8832c220731b1 () Term)
-(declare-fun FStar.Monotonic.HyperStack.new_freeable_heap_region@tok () Term)
-
-
-
-; </end encoding let new_freeable_heap_region>
-
-
-; <Start encoding let free_heap_region>
-
-(declare-fun Tm_refine_4c7fb9b4fa48e3fdc90fc02ede2b941d (Term) Term)
-(declare-fun FStar.Monotonic.HyperStack.free_heap_region (Term Term) Term)
-
-(declare-fun Tm_arrow_7759e3626bb9975b5dac006d882496ed () Term)
-(declare-fun FStar.Monotonic.HyperStack.free_heap_region@tok () Term)
-
-
-; </end encoding let free_heap_region>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_sel_same_addr>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_sel_same_addr (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_sel_same_addr@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_sel_same_addr>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_upd_same_addr>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_upd_same_addr (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_upd_same_addr@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_upd_same_addr>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.mreference_distinct_sel_disjoint>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.mreference_distinct_sel_disjoint (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.mreference_distinct_sel_disjoint@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.mreference_distinct_sel_disjoint>
-
-
-; <Start encoding let modifies>
-
-(declare-fun FStar.Monotonic.HyperStack.modifies (Term Term Term) Term)
-(declare-fun Tm_arrow_35b560eb432f9cf5e43231bfa666bd38 () Term)
-(declare-fun FStar.Monotonic.HyperStack.modifies@tok () Term)
-
-; </end encoding let modifies>
-
-
-; <Start encoding let modifies_transitively>
-
-(declare-fun FStar.Monotonic.HyperStack.modifies_transitively (Term Term Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.modifies_transitively@tok () Term)
-
-; </end encoding let modifies_transitively>
-
-
-; <Start encoding let heap_only>
-
-(declare-fun FStar.Monotonic.HyperStack.heap_only (Term) Term)
-
-(declare-fun FStar.Monotonic.HyperStack.heap_only@tok () Term)
-
-; </end encoding let heap_only>
-
-
-; <Start encoding let top_frame>
-
-(declare-fun FStar.Monotonic.HyperStack.top_frame (Term) Term)
-(declare-fun Tm_arrow_ba8e2bc5d986e5ef6f22c693f8393d6c () Term)
-(declare-fun FStar.Monotonic.HyperStack.top_frame@tok () Term)
-
-; </end encoding let top_frame>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.modifies_drop_tip>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.modifies_drop_tip (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.modifies_drop_tip@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.modifies_drop_tip>
-
-
-; <Start encoding let modifies_one>
-
-(declare-fun FStar.Monotonic.HyperStack.modifies_one (Term Term Term) Term)
-(declare-fun Tm_arrow_e64e59d46e201be37bd9843047c52a93 () Term)
-(declare-fun FStar.Monotonic.HyperStack.modifies_one@tok () Term)
-
-; </end encoding let modifies_one>
-
-
-; <Start encoding let modifies_ref>
-
-(declare-fun FStar.Monotonic.HyperStack.modifies_ref (Term Term Term Term) Term)
-(declare-fun Tm_arrow_a9c0264064751299d8ce645e9e1ce7c7 () Term)
-(declare-fun FStar.Monotonic.HyperStack.modifies_ref@tok () Term)
-
-; </end encoding let modifies_ref>
-
-
-; <Start encoding type FStar.Monotonic.HyperStack.some_ref>
-
-;;;;;;;;;;;;;;;;Constructor
-(declare-fun FStar.Monotonic.HyperStack.some_ref () Term)
-;;;;;;;;;;;;;;;;Constructor
-(declare-fun FStar.Monotonic.HyperStack.Ref (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Projector
-(declare-fun FStar.Monotonic.HyperStack.Ref_a (Term) Term)
-;;;;;;;;;;;;;;;;Projector
-(declare-fun FStar.Monotonic.HyperStack.Ref_rel (Term) Term)
-;;;;;;;;;;;;;;;;Projector
-(declare-fun FStar.Monotonic.HyperStack.Ref__2 (Term) Term)
-;;;;;;;;;;;;;;;;data constructor proxy: FStar.Monotonic.HyperStack.Ref
-(declare-fun FStar.Monotonic.HyperStack.Ref@tok () Term)
-(declare-fun Tm_arrow_dda32a8506aa63db1ac535b1ad92afc8 () Term)
-
-; <start constructor FStar.Monotonic.HyperStack.some_ref>
-
-;;;;;;;;;;;;;;;;Discriminator definition
-(define-fun is-FStar.Monotonic.HyperStack.some_ref ((__@x0 Term)) Bool
- (and (= (Term_constr_id __@x0)
-291)
-(= __@x0
-FStar.Monotonic.HyperStack.some_ref)))
-
-; </end constructor FStar.Monotonic.HyperStack.some_ref>
-
-
-; <start constructor FStar.Monotonic.HyperStack.Ref>
-
-;;;;;;;;;;;;;;;;Discriminator definition
-(define-fun is-FStar.Monotonic.HyperStack.Ref ((__@x0 Term)) Bool
- (and (= (Term_constr_id __@x0)
-297)
-(= __@x0
-(FStar.Monotonic.HyperStack.Ref (FStar.Monotonic.HyperStack.Ref_a __@x0)
-(FStar.Monotonic.HyperStack.Ref_rel __@x0)
-(FStar.Monotonic.HyperStack.Ref__2 __@x0)))))
-
-; </end constructor FStar.Monotonic.HyperStack.Ref>
-
-
-; </end encoding type FStar.Monotonic.HyperStack.some_ref>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.uu___is_Ref>
-
-(declare-fun FStar.Monotonic.HyperStack.uu___is_Ref (Term) Term)
-(declare-fun Tm_arrow_4c678f39425ad52a920c838c6688a697 () Term)
-(declare-fun FStar.Monotonic.HyperStack.uu___is_Ref@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.uu___is_Ref>
-
-
-; <Skipped let uu___is_Ref/>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.__proj__Ref__item__a>
-
-(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item__a (Term) Term)
-(declare-fun Tm_arrow_5270374555e0647452398f9b50180555 () Term)
-(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item__a@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.__proj__Ref__item__a>
-
-
-; <Skipped let __proj__Ref__item__a/>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.__proj__Ref__item__rel>
-
-(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item__rel (Term) Term)
-(declare-fun Tm_arrow_718f36c619c7630e2fb45c52cce2366c () Term)
-(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item__rel@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.__proj__Ref__item__rel>
-
-
-; <Skipped let __proj__Ref__item__rel/>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.__proj__Ref__item___2>
-
-(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item___2 (Term) Term)
-(declare-fun Tm_arrow_806c24414e6bd3319b784690cfbd8f7f () Term)
-(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item___2@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.__proj__Ref__item___2>
-
-
-; <Skipped let __proj__Ref__item___2/>
-
-
-; <Start encoding let some_refs>
-
-(declare-fun FStar.Monotonic.HyperStack.some_refs () Term)
-
-; </end encoding let some_refs>
-
-
-; <Start encoding let rec regions_of_some_refs>
-
-(declare-fun FStar.Monotonic.HyperStack.regions_of_some_refs (Term) Term)
-(declare-fun Tm_arrow_1a301db6553c90fa6448f04e0d6c188c () Term)
-(declare-fun FStar.Monotonic.HyperStack.regions_of_some_refs@tok () Term)
-
-; </end encoding let rec regions_of_some_refs>
-
-
-; <Start encoding let rec refs_in_region>
-
-(declare-fun FStar.Monotonic.HyperStack.refs_in_region (Term Term) Term)
-(declare-fun Tm_ghost_arrow_27428d2e2ba695b61412787724fcb6d3 () Term)
-(declare-fun FStar.Monotonic.HyperStack.refs_in_region@tok () Term)
-
-; </end encoding let rec refs_in_region>
-
-
-; <Start encoding let rec modifies_some_refs>
-
-(declare-fun FStar.Monotonic.HyperStack.modifies_some_refs (Term Term Term Term) Term)
-(declare-fun Tm_arrow_81fbd36f40f87c76dcb4bfdd205c8713 () Term)
-(declare-fun FStar.Monotonic.HyperStack.modifies_some_refs@tok () Term)
-
-; </end encoding let rec modifies_some_refs>
-
-
-; <Start encoding let norm_steps>
-
-(declare-fun FStar.Monotonic.HyperStack.norm_steps (Dummy_sort) Term)
-
-; </end encoding let norm_steps>
-
-
-; <Start encoding let mods>
-
-(declare-fun FStar.Monotonic.HyperStack.mods (Term Term Term) Term)
-(declare-fun Tm_arrow_4696b6dec38e96b0ff2cc0f77b9b9d25 () Term)
-(declare-fun FStar.Monotonic.HyperStack.mods@tok () Term)
-
-; </end encoding let mods>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.eternal_disjoint_from_tip>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.eternal_disjoint_from_tip (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.eternal_disjoint_from_tip@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.eternal_disjoint_from_tip>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.above_tip_is_live>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.above_tip_is_live (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.above_tip_is_live@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.above_tip_is_live>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_cancel_same_mref_upd>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_cancel_same_mref_upd (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_cancel_same_mref_upd@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_cancel_same_mref_upd>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_upd_with_sel>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_upd_with_sel (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_upd_with_sel@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_upd_with_sel>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_commute_distinct_upds>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_commute_distinct_upds (Term Term Term Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_commute_distinct_upds@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_commute_distinct_upds>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.lemma_next_addr_contained_refs_addr>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_next_addr_contained_refs_addr (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.lemma_next_addr_contained_refs_addr@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.lemma_next_addr_contained_refs_addr>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.aref>
-
-(declare-fun FStar.Monotonic.HyperStack.aref () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.aref>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.dummy_aref>
-
-(declare-fun FStar.Monotonic.HyperStack.dummy_aref (Dummy_sort) Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.dummy_aref>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.aref_equal>
-
-(declare-fun FStar.Monotonic.HyperStack.aref_equal (Term Term) Term)
-
-(declare-fun Tm_ghost_arrow_1b7cb1169620f43f85e290e3d858a7a8 () Term)
-(declare-fun FStar.Monotonic.HyperStack.aref_equal@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperStack.aref_equal>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.aref_of>
-
-(declare-fun FStar.Monotonic.HyperStack.aref_of (Term Term Term) Term)
-(declare-fun Tm_arrow_48d0e5201edd70ed900a8b3081c63c84 () Term)
-(declare-fun FStar.Monotonic.HyperStack.aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.aref_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.frameOf_aref>
-
-(declare-fun FStar.Monotonic.HyperStack.frameOf_aref (Term) Term)
-(declare-fun Tm_ghost_arrow_079ff324706806c18345a3a03ce4f48a () Term)
-(declare-fun FStar.Monotonic.HyperStack.frameOf_aref@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.frameOf_aref>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.frameOf_aref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.frameOf_aref_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.frameOf_aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.frameOf_aref_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.aref_as_addr>
-
-(declare-fun FStar.Monotonic.HyperStack.aref_as_addr (Term) Term)
-(declare-fun Tm_ghost_arrow_c2454872dc1e352c00eef3d9c96bf5f9 () Term)
-(declare-fun FStar.Monotonic.HyperStack.aref_as_addr@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.aref_as_addr>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.aref_as_addr_aref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.aref_as_addr_aref_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.aref_as_addr_aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.aref_as_addr_aref_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.aref_is_mm>
-
-(declare-fun FStar.Monotonic.HyperStack.aref_is_mm (Term) Term)
-(declare-fun Tm_ghost_arrow_2982c7f39800aa50cc8a5de0eb014a42 () Term)
-(declare-fun FStar.Monotonic.HyperStack.aref_is_mm@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.aref_is_mm>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.is_mm_aref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.is_mm_aref_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.is_mm_aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.is_mm_aref_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.aref_unused_in>
-
-(declare-fun FStar.Monotonic.HyperStack.aref_unused_in (Term Term) Term)
-(declare-fun Tm_arrow_ccdb2c897f7a240c3ca4f0401e676755 () Term)
-(declare-fun FStar.Monotonic.HyperStack.aref_unused_in@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.aref_unused_in>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.unused_in_aref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.unused_in_aref_of (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.unused_in_aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.unused_in_aref_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.contains_aref_unused_in>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.contains_aref_unused_in (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.contains_aref_unused_in@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.contains_aref_unused_in>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.aref_live_at>
-
-(declare-fun FStar.Monotonic.HyperStack.aref_live_at (Term Term Term Term) Term)
-(declare-fun Tm_arrow_2d9f5b6f0186d850e2a4bf1e4711933d () Term)
-(declare-fun FStar.Monotonic.HyperStack.aref_live_at@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.aref_live_at>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.greference_of>
-
-(declare-fun FStar.Monotonic.HyperStack.greference_of (Term Term Term) Term)
-(declare-fun Tm_refine_1d7f81705c35971e00b909e37163cd25 (Term Term) Term)
-(declare-fun Tm_ghost_arrow_d63b397d1230bc96e740496df9065379 () Term)
-(declare-fun FStar.Monotonic.HyperStack.greference_of@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperStack.greference_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.reference_of>
-
-(declare-fun FStar.Monotonic.HyperStack.reference_of (Term Term Term Term) Term)
-(declare-fun Tm_refine_81a0d54c78434fc678ec7202c4b9fc09 (Term Term Term Term) Term)
-(declare-fun Tm_arrow_ef3959e407cf35b6478a97065b8b015b () Term)
-(declare-fun FStar.Monotonic.HyperStack.reference_of@tok () Term)
-
-
-; </end encoding val FStar.Monotonic.HyperStack.reference_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.aref_live_at_aref_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.aref_live_at_aref_of (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.aref_live_at_aref_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.aref_live_at_aref_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.contains_greference_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.contains_greference_of (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.contains_greference_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.contains_greference_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.aref_of_greference_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.aref_of_greference_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.aref_of_greference_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.aref_of_greference_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.frameOf_greference_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.frameOf_greference_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.frameOf_greference_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.frameOf_greference_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.as_addr_greference_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.as_addr_greference_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.as_addr_greference_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.as_addr_greference_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.is_mm_greference_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.is_mm_greference_of (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.is_mm_greference_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.is_mm_greference_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.unused_in_greference_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.unused_in_greference_of (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.unused_in_greference_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.unused_in_greference_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.sel_reference_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.sel_reference_of (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.sel_reference_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.sel_reference_of>
-
-
-; <Start encoding val FStar.Monotonic.HyperStack.upd_reference_of>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.Monotonic.HyperStack.upd_reference_of (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.Monotonic.HyperStack.upd_reference_of@tok () Term)
-
-; </end encoding val FStar.Monotonic.HyperStack.upd_reference_of>
-
-
-; End Externals for interface FStar.Monotonic.HyperStack
-
-
-; Externals for module FStar.HyperStack
-
-
-; <Start encoding let reference>
-
-(declare-fun FStar.HyperStack.reference (Term) Term)
-
-(declare-fun FStar.HyperStack.reference@tok () Term)
-
-; </end encoding let reference>
-
-
-; <Start encoding let stackref>
-
-(declare-fun FStar.HyperStack.stackref (Term) Term)
-
-(declare-fun FStar.HyperStack.stackref@tok () Term)
-
-; </end encoding let stackref>
-
-
-; <Start encoding let ref>
-
-(declare-fun FStar.HyperStack.ref (Term) Term)
-
-(declare-fun FStar.HyperStack.ref@tok () Term)
-
-; </end encoding let ref>
-
-
-; <Start encoding let mmstackref>
-
-(declare-fun FStar.HyperStack.mmstackref (Term) Term)
-
-(declare-fun FStar.HyperStack.mmstackref@tok () Term)
-
-; </end encoding let mmstackref>
-
-
-; <Start encoding let mmref>
-
-(declare-fun FStar.HyperStack.mmref (Term) Term)
-
-(declare-fun FStar.HyperStack.mmref@tok () Term)
-
-; </end encoding let mmref>
-
-
-; <Start encoding let s_ref>
-
-(declare-fun FStar.HyperStack.s_ref (Term Term) Term)
-(declare-fun Tm_arrow_d7b8ad4343351a3e17e61a17b9118e67 () Term)
-(declare-fun FStar.HyperStack.s_ref@tok () Term)
-
-; </end encoding let s_ref>
-
-
-; <Start encoding let reference_distinct_sel_disjoint>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.reference_distinct_sel_disjoint (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.reference_distinct_sel_disjoint@tok () Term)
-
-; </end encoding let reference_distinct_sel_disjoint>
-
-
-; End Externals for module FStar.HyperStack
-
-
-; Externals for interface FStar.HyperStack.ST
-
-
-; <Start encoding let contains_region>
-
-(declare-fun FStar.HyperStack.ST.contains_region (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.contains_region@tok () Term)
-
-; </end encoding let contains_region>
-
-
-; <Start encoding val FStar.HyperStack.ST.mem_rel>
-
-(declare-fun FStar.HyperStack.ST.mem_rel (Dummy_sort) Term)
-
-; </end encoding val FStar.HyperStack.ST.mem_rel>
-
-
-; <Start encoding let mem_predicate>
-
-(declare-fun FStar.HyperStack.ST.mem_predicate () Term)
-(declare-fun Tm_arrow_870e61e1362ee02b904fb2aa631e959a () Term)
-
-; </end encoding let mem_predicate>
-
-
-; <Start encoding val FStar.HyperStack.ST.region_contains_pred>
-
-(declare-fun FStar.HyperStack.ST.region_contains_pred (Term) Term)
-(declare-fun Tm_arrow_321b3a56183945c533045886533882ee () Term)
-(declare-fun FStar.HyperStack.ST.region_contains_pred@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.region_contains_pred>
-
-
-; <Start encoding val FStar.HyperStack.ST.ref_contains_pred>
-
-(declare-fun FStar.HyperStack.ST.ref_contains_pred (Term Term Term) Term)
-(declare-fun Tm_arrow_f19d850412523c9b0808b11aefb2bb9b () Term)
-(declare-fun FStar.HyperStack.ST.ref_contains_pred@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.ref_contains_pred>
-
-
-; <Skipped new_effect { GST ... }/>
-
-
-; <Start encoding let gst_pre>
-
-(declare-fun FStar.HyperStack.ST.gst_pre () Term)
-
-; </end encoding let gst_pre>
-
-
-; <Start encoding let gst_post'>
-
-(declare-fun FStar.HyperStack.ST.gst_post_ (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.gst_post_@tok () Term)
-
-; </end encoding let gst_post'>
-
-
-; <Start encoding let gst_post>
-
-(declare-fun FStar.HyperStack.ST.gst_post (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.gst_post@tok () Term)
-
-; </end encoding let gst_post>
-
-
-; <Start encoding let gst_wp>
-
-(declare-fun FStar.HyperStack.ST.gst_wp (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.gst_wp@tok () Term)
-
-; </end encoding let gst_wp>
-
-
-; <Start encoding let lift_div_gst>
-
-(declare-fun FStar.HyperStack.ST.lift_div_gst (Term Term Term Term) Term)
-(declare-fun Tm_arrow_701cc1858e659c48169fa96e4d3335d0 () Term)
-(declare-fun FStar.HyperStack.ST.lift_div_gst@tok () Term)
-
-
-
-; </end encoding let lift_div_gst>
-
-
-; <Skipped sub_effect DIV ~> GST/>
-
-
-; <Start encoding val FStar.HyperStack.ST.stable>
-
-(declare-fun FStar.HyperStack.ST.stable (Term) Term)
-(declare-fun Tm_arrow_ef6a03d8b9fa78220b5247ff6c2eebff () Term)
-(declare-fun FStar.HyperStack.ST.stable@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.stable>
-
-
-; <Start encoding val FStar.HyperStack.ST.witnessed>
-
-(declare-fun FStar.HyperStack.ST.witnessed (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.witnessed@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.witnessed>
-
-
-; <Start encoding val FStar.HyperStack.ST.gst_get>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.gst_get (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.gst_get@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.gst_get>
-
-
-; <Start encoding val FStar.HyperStack.ST.gst_put>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.gst_put (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.gst_put@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.gst_put>
-
-
-; <Start encoding val FStar.HyperStack.ST.gst_witness>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.gst_witness (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.gst_witness@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.gst_witness>
-
-
-; <Start encoding val FStar.HyperStack.ST.gst_recall>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.gst_recall (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.gst_recall@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.gst_recall>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_functoriality>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_functoriality (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_functoriality@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_functoriality>
-
-
-; <Start encoding let st_pre>
-
-(declare-fun FStar.HyperStack.ST.st_pre () Term)
-
-; </end encoding let st_pre>
-
-
-; <Start encoding let st_post'>
-
-(declare-fun FStar.HyperStack.ST.st_post_ (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.st_post_@tok () Term)
-
-; </end encoding let st_post'>
-
-
-; <Start encoding let st_post>
-
-(declare-fun FStar.HyperStack.ST.st_post (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.st_post@tok () Term)
-
-; </end encoding let st_post>
-
-
-; <Start encoding let st_wp>
-
-(declare-fun FStar.HyperStack.ST.st_wp (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.st_wp@tok () Term)
-
-; </end encoding let st_wp>
-
-
-; <Skipped new_effect { STATE ... }/>
-
-
-; <Start encoding let lift_gst_state>
-
-(declare-fun FStar.HyperStack.ST.lift_gst_state (Term Term) Term)
-(declare-fun Tm_arrow_273f1333c42f0daf404e533f2c864fb4 () Term)
-(declare-fun FStar.HyperStack.ST.lift_gst_state@tok () Term)
-
-; </end encoding let lift_gst_state>
-
-
-; <Skipped sub_effect GST ~> STATE/>
-
-
-; <Skipped effect Unsafe a pre post = FStar.HyperStack.ST.STATE a/>
-
-
-; <Start encoding let equal_heap_dom>
-
-(declare-fun FStar.HyperStack.ST.equal_heap_dom (Term Term Term) Term)
-(declare-fun Tm_arrow_6d5672c833f519a7d072251969e31b4a () Term)
-(declare-fun FStar.HyperStack.ST.equal_heap_dom@tok () Term)
-
-; </end encoding let equal_heap_dom>
-
-
-; <Start encoding let contained_region>
-
-(declare-fun FStar.HyperStack.ST.contained_region (Term Term Term) Term)
-(declare-fun Tm_arrow_f9931d1436e2abb4a4a9e4018d23e252 () Term)
-(declare-fun FStar.HyperStack.ST.contained_region@tok () Term)
-
-; </end encoding let contained_region>
-
-
-; <Start encoding let contained_stack_region>
-
-(declare-fun FStar.HyperStack.ST.contained_stack_region (Term Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.contained_stack_region@tok () Term)
-
-; </end encoding let contained_stack_region>
-
-
-; <Start encoding let contained_non_tip_region>
-
-(declare-fun FStar.HyperStack.ST.contained_non_tip_region (Term Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.contained_non_tip_region@tok () Term)
-
-; </end encoding let contained_non_tip_region>
-
-
-; <Start encoding let contained_non_tip_stack_region>
-
-(declare-fun FStar.HyperStack.ST.contained_non_tip_stack_region (Term Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.contained_non_tip_stack_region@tok () Term)
-
-; </end encoding let contained_non_tip_stack_region>
-
-
-; <Start encoding let same_refs_common>
-
-
-(declare-fun FStar.HyperStack.ST.same_refs_common (Term Term Term) Term)
-
-(declare-fun Tm_arrow_5e054144859029cb726d08f541917b32 () Term)
-(declare-fun FStar.HyperStack.ST.same_refs_common@tok () Term)
-
-; </end encoding let same_refs_common>
-
-
-; <Start encoding val FStar.HyperStack.ST.same_refs_in_all_regions>
-
-(declare-fun FStar.HyperStack.ST.same_refs_in_all_regions (Term Term) Term)
-(declare-fun Tm_arrow_1cc02cd7154a75e36e508db4b24abd50 () Term)
-(declare-fun FStar.HyperStack.ST.same_refs_in_all_regions@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.same_refs_in_all_regions>
-
-
-; <Start encoding val FStar.HyperStack.ST.same_refs_in_stack_regions>
-
-(declare-fun FStar.HyperStack.ST.same_refs_in_stack_regions (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.same_refs_in_stack_regions@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.same_refs_in_stack_regions>
-
-
-; <Start encoding val FStar.HyperStack.ST.same_refs_in_non_tip_regions>
-
-(declare-fun FStar.HyperStack.ST.same_refs_in_non_tip_regions (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.same_refs_in_non_tip_regions@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.same_refs_in_non_tip_regions>
-
-
-; <Start encoding val FStar.HyperStack.ST.same_refs_in_non_tip_stack_regions>
-
-(declare-fun FStar.HyperStack.ST.same_refs_in_non_tip_stack_regions (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.same_refs_in_non_tip_stack_regions@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.same_refs_in_non_tip_stack_regions>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_all_regions_intro>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_all_regions_intro (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_all_regions_intro@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_all_regions_intro>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_all_regions_elim>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_all_regions_elim (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_all_regions_elim@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_all_regions_elim>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_intro>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_intro (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_intro@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_intro>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_elim>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_elim (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_elim@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_elim>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_intro>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_intro (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_intro@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_intro>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_elim>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_elim (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_elim@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_elim>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_intro>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_intro (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_intro@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_intro>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_elim>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_elim (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_elim@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_elim>
-
-
-; <Start encoding let equal_domains>
-
-(declare-fun FStar.HyperStack.ST.equal_domains (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.equal_domains@tok () Term)
-
-; </end encoding let equal_domains>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_equal_domains_trans>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_equal_domains_trans (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_equal_domains_trans@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_equal_domains_trans>
-
-
-; <Skipped effect Stack a pre post = FStar.HyperStack.ST.STATE a/>
-
-
-; <Skipped effect Heap a pre post = FStar.HyperStack.ST.STATE a/>
-
-
-; <Start encoding let equal_stack_domains>
-
-(declare-fun FStar.HyperStack.ST.equal_stack_domains (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.equal_stack_domains@tok () Term)
-
-; </end encoding let equal_stack_domains>
-
-
-; <Skipped effect ST a pre post = FStar.HyperStack.ST.STATE a/>
-
-
-; <Skipped effect St a = FStar.HyperStack.ST.ST a/>
-
-
-; <Start encoding let inline_stack_inv>
-
-
-
-(declare-fun FStar.HyperStack.ST.inline_stack_inv (Term Term) Term)
-
-
-(declare-fun Tm_arrow_e8f67696ee59fc5cb7ae84b16aecb1a2 () Term)
-(declare-fun FStar.HyperStack.ST.inline_stack_inv@tok () Term)
-
-
-
-; </end encoding let inline_stack_inv>
-
-
-; <Skipped effect StackInline a pre post = FStar.HyperStack.ST.STATE a/>
-
-
-; <Start encoding let inline_inv>
-
-
-
-(declare-fun FStar.HyperStack.ST.inline_inv (Term Term) Term)
-
-
-
-(declare-fun FStar.HyperStack.ST.inline_inv@tok () Term)
-
-
-
-; </end encoding let inline_inv>
-
-
-; <Skipped effect Inline a pre post = FStar.HyperStack.ST.STATE a/>
-
-
-; <Skipped effect STL a pre post = FStar.HyperStack.ST.Stack a/>
-
-
-; <Skipped sub_effect DIV ~> STATE/>
-
-
-; <Start encoding let mreference>
-
-(declare-fun FStar.HyperStack.ST.mreference (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.mreference@tok () Term)
-(declare-fun Tm_refine_003cbb363565c5358e7ed8a8d7dba6d4 (Term Term) Term)
-
-; </end encoding let mreference>
-
-
-; <Start encoding let mstackref>
-
-(declare-fun FStar.HyperStack.ST.mstackref (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.mstackref@tok () Term)
-(declare-fun Tm_refine_3107a49075513d87f81f8b8614ef7aa0 (Term Term) Term)
-
-; </end encoding let mstackref>
-
-
-; <Start encoding let mref>
-
-(declare-fun FStar.HyperStack.ST.mref (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.mref@tok () Term)
-(declare-fun Tm_refine_1a1278f1aecd37594ba20d888b7fd230 (Term Term) Term)
-
-; </end encoding let mref>
-
-
-; <Start encoding let mmmstackref>
-
-(declare-fun FStar.HyperStack.ST.mmmstackref (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.mmmstackref@tok () Term)
-(declare-fun Tm_refine_1fe4ea9449b44f071a0ba69c564508a4 (Term Term) Term)
-
-; </end encoding let mmmstackref>
-
-
-; <Start encoding let mmmref>
-
-(declare-fun FStar.HyperStack.ST.mmmref (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.mmmref@tok () Term)
-(declare-fun Tm_refine_38378a752eceb5d6a72bc0c44cfdc7c2 (Term Term) Term)
-
-; </end encoding let mmmref>
-
-
-; <Start encoding let s_mref>
-
-(declare-fun FStar.HyperStack.ST.s_mref (Term Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.s_mref@tok () Term)
-(declare-fun Tm_refine_dacb5562bc5e314a9813ca622c89b3c4 (Term Term Term) Term)
-
-; </end encoding let s_mref>
-
-
-; <Start encoding let reference>
-
-(declare-fun FStar.HyperStack.ST.reference (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.reference@tok () Term)
-
-; </end encoding let reference>
-
-
-; <Start encoding let stackref>
-
-(declare-fun FStar.HyperStack.ST.stackref (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.stackref@tok () Term)
-
-; </end encoding let stackref>
-
-
-; <Start encoding let ref>
-
-(declare-fun FStar.HyperStack.ST.ref (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.ref@tok () Term)
-
-; </end encoding let ref>
-
-
-; <Start encoding let mmstackref>
-
-(declare-fun FStar.HyperStack.ST.mmstackref (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.mmstackref@tok () Term)
-
-; </end encoding let mmstackref>
-
-
-; <Start encoding let mmref>
-
-(declare-fun FStar.HyperStack.ST.mmref (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.mmref@tok () Term)
-
-; </end encoding let mmref>
-
-
-; <Start encoding let s_ref>
-
-(declare-fun FStar.HyperStack.ST.s_ref (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.s_ref@tok () Term)
-
-; </end encoding let s_ref>
-
-
-; <Start encoding let is_eternal_region>
-
-(declare-fun FStar.HyperStack.ST.is_eternal_region (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.is_eternal_region@tok () Term)
-
-; </end encoding let is_eternal_region>
-
-
-; <Start encoding val FStar.HyperStack.ST.push_frame>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.push_frame (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.push_frame@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.push_frame>
-
-
-; <Start encoding val FStar.HyperStack.ST.pop_frame>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.pop_frame (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.pop_frame@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.pop_frame>
-
-
-; <Skipped #push-options "--z3rlimit 40"/>
-
-
-; <Start encoding let salloc_post>
-
-(declare-fun Tm_refine_2bdd80b2320af9c61ccb8754d0f9f879 (Term Term) Term)
-(declare-fun FStar.HyperStack.ST.salloc_post (Term Term Term Term Term Term) Term)
-
-(declare-fun Tm_arrow_595aa15661468d8f0f5ddf046029a7d0 () Term)
-(declare-fun FStar.HyperStack.ST.salloc_post@tok () Term)
-
-
-; </end encoding let salloc_post>
-
-
-; <Skipped #pop-options/>
-
-
-; <Start encoding val FStar.HyperStack.ST.salloc>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.salloc (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.salloc@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.salloc>
-
-
-; <Start encoding val FStar.HyperStack.ST.salloc_mm>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.salloc_mm (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.salloc_mm@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.salloc_mm>
-
-
-; <Start encoding val FStar.HyperStack.ST.sfree>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.sfree (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.sfree@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.sfree>
-
-
-; <Start encoding let new_region_post_common>
-
-(declare-fun FStar.HyperStack.ST.new_region_post_common (Term Term Term Term) Term)
-(declare-fun Tm_arrow_d31d7cded6ad26852e51d81de5480738 () Term)
-(declare-fun FStar.HyperStack.ST.new_region_post_common@tok () Term)
-
-; </end encoding let new_region_post_common>
-
-
-; <Start encoding val FStar.HyperStack.ST.new_region>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.new_region (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.new_region@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.new_region>
-
-
-; <Start encoding val FStar.HyperStack.ST.new_colored_region>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.new_colored_region (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.new_colored_region@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.new_colored_region>
-
-
-; <Start encoding let ralloc_post>
-
-(declare-fun FStar.HyperStack.ST.ralloc_post (Term Term Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_f09793193db5aed5286c32417f6982ec () Term)
-(declare-fun FStar.HyperStack.ST.ralloc_post@tok () Term)
-
-; </end encoding let ralloc_post>
-
-
-; <Start encoding val FStar.HyperStack.ST.ralloc>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.ralloc (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.ralloc@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.ralloc>
-
-
-; <Start encoding val FStar.HyperStack.ST.ralloc_mm>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.ralloc_mm (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.ralloc_mm@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.ralloc_mm>
-
-
-; <Start encoding let is_live_for_rw_in>
-
-(declare-fun FStar.HyperStack.ST.is_live_for_rw_in (Term Term Term Term) Term)
-(declare-fun Tm_arrow_62dec7a98718083f01f5648f99bb645b () Term)
-(declare-fun FStar.HyperStack.ST.is_live_for_rw_in@tok () Term)
-
-; </end encoding let is_live_for_rw_in>
-
-
-; <Start encoding val FStar.HyperStack.ST.rfree>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.rfree (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.rfree@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.rfree>
-
-
-; <Start encoding let assign_post>
-
-(declare-fun FStar.HyperStack.ST.assign_post (Term Term Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_a97f9152aeaae701e69a9ba6f661afa6 () Term)
-(declare-fun FStar.HyperStack.ST.assign_post@tok () Term)
-
-; </end encoding let assign_post>
-
-
-; <Start encoding val FStar.HyperStack.ST.op_Colon_Equals>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.op_Colon_Equals (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.op_Colon_Equals@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.op_Colon_Equals>
-
-
-; <Start encoding let deref_post>
-
-(declare-fun FStar.HyperStack.ST.deref_post (Term Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_d97176a542ccf4ce0745db22eea4c8f6 () Term)
-(declare-fun FStar.HyperStack.ST.deref_post@tok () Term)
-
-; </end encoding let deref_post>
-
-
-; <Start encoding val FStar.HyperStack.ST.op_Bang>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.op_Bang (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.op_Bang@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.op_Bang>
-
-
-; <Start encoding let modifies_none>
-
-(declare-fun FStar.HyperStack.ST.modifies_none (Term Term) Term)
-
-(declare-fun FStar.HyperStack.ST.modifies_none@tok () Term)
-
-; </end encoding let modifies_none>
-
-
-; <Start encoding val FStar.HyperStack.ST.get>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.get (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.get@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.get>
-
-
-; <Start encoding val FStar.HyperStack.ST.recall>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.recall (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.recall@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.recall>
-
-
-; <Start encoding val FStar.HyperStack.ST.recall_region>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.recall_region (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.recall_region@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.recall_region>
-
-
-; <Start encoding val FStar.HyperStack.ST.witness_region>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.witness_region (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.witness_region@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.witness_region>
-
-
-; <Start encoding val FStar.HyperStack.ST.witness_hsref>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.witness_hsref (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.witness_hsref@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.witness_hsref>
-
-
-; <Start encoding let erid>
-
-(declare-fun FStar.HyperStack.ST.erid () Term)
-(declare-fun Tm_refine_6c5072d4c9562dd38fd2703ecfb013df () Term)
-
-; </end encoding let erid>
-
-
-; <Start encoding let m_rref>
-
-(declare-fun FStar.HyperStack.ST.m_rref (Term Term Term) Term)
-(declare-fun Tm_arrow_f946e1a0cb5443984177a7ea6d40bfde () Term)
-(declare-fun FStar.HyperStack.ST.m_rref@tok () Term)
-(declare-fun Tm_refine_f596a1e23d65ebe54b463345ece4e00f (Term Term Term) Term)
-
-; </end encoding let m_rref>
-
-
-; <Start encoding let stable_on>
-
-(declare-fun FStar.HyperStack.ST.stable_on (Term Term Term Term) Term)
-(declare-fun Tm_arrow_36c80cd5e76a950725cd81ef88c4c3ca () Term)
-(declare-fun FStar.HyperStack.ST.stable_on@tok () Term)
-
-; </end encoding let stable_on>
-
-
-; <Start encoding let stable_on_t>
-
-(declare-fun FStar.HyperStack.ST.stable_on_t (Term Term Term Term Term) Term)
-(declare-fun Tm_arrow_f0eb74832c5ea94cfa4fef315871598d () Term)
-(declare-fun FStar.HyperStack.ST.stable_on_t@tok () Term)
-
-; </end encoding let stable_on_t>
-
-
-; <Start encoding val FStar.HyperStack.ST.mr_witness>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.mr_witness (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.mr_witness@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.mr_witness>
-
-
-; <Start encoding val FStar.HyperStack.ST.weaken_witness>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.weaken_witness (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.weaken_witness@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.weaken_witness>
-
-
-; <Start encoding val FStar.HyperStack.ST.testify>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.testify (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.testify@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.testify>
-
-
-; <Start encoding val FStar.HyperStack.ST.testify_forall>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.testify_forall (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.testify_forall@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.testify_forall>
-
-
-; <Start encoding val FStar.HyperStack.ST.testify_forall_region_contains_pred>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.testify_forall_region_contains_pred (Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.testify_forall_region_contains_pred@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.testify_forall_region_contains_pred>
-
-
-; <Start encoding val FStar.HyperStack.ST.token_p>
-
-(declare-fun FStar.HyperStack.ST.token_p (Term Term Term Term) Term)
-(declare-fun Tm_arrow_f318dfb6ba2e4e6287ddbd0e8eadad87 () Term)
-(declare-fun FStar.HyperStack.ST.token_p@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.token_p>
-
-
-; <Start encoding val FStar.HyperStack.ST.witness_p>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.witness_p (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.witness_p@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.witness_p>
-
-
-; <Start encoding val FStar.HyperStack.ST.recall_p>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.recall_p (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.recall_p@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.recall_p>
-
-
-; <Start encoding val FStar.HyperStack.ST.token_functoriality>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.token_functoriality (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.token_functoriality@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.token_functoriality>
-
-
-; <Start encoding let ex_rid>
-
-(declare-fun FStar.HyperStack.ST.ex_rid () Term)
-
-; </end encoding let ex_rid>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_constant>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_constant (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_constant@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_witnessed_constant>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_nested>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_nested (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_nested@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_witnessed_nested>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_and>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_and (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_and@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_witnessed_and>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_or>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_or (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_or@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_witnessed_or>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_impl>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_impl (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_impl@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_witnessed_impl>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_forall>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_forall (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_forall@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_witnessed_forall>
-
-
-; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_exists>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_exists (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.lemma_witnessed_exists@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.lemma_witnessed_exists>
-
-
-; <Start encoding let is_freeable_heap_region>
-
-(declare-fun FStar.HyperStack.ST.is_freeable_heap_region (Term) Term)
-
-(declare-fun FStar.HyperStack.ST.is_freeable_heap_region@tok () Term)
-
-; </end encoding let is_freeable_heap_region>
-
-
-; <Start encoding let d_hrid>
-
-(declare-fun FStar.HyperStack.ST.d_hrid () Term)
-(declare-fun Tm_refine_a6918a83312e51579e26340a47646253 () Term)
-
-; </end encoding let d_hrid>
-
-
-; <Start encoding val FStar.HyperStack.ST.drgn>
-
-(declare-fun FStar.HyperStack.ST.drgn () Term)
-
-; </end encoding val FStar.HyperStack.ST.drgn>
-
-
-; <Start encoding val FStar.HyperStack.ST.rid_of_drgn>
-
-(declare-fun FStar.HyperStack.ST.rid_of_drgn (Term) Term)
-(declare-fun Tm_arrow_8c9ac69e15a63496af078943001e86c3 () Term)
-(declare-fun FStar.HyperStack.ST.rid_of_drgn@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.rid_of_drgn>
-
-
-; <Start encoding val FStar.HyperStack.ST.new_drgn>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.new_drgn (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.new_drgn@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.new_drgn>
-
-
-; <Start encoding val FStar.HyperStack.ST.free_drgn>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.free_drgn (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.free_drgn@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.free_drgn>
-
-
-; <Start encoding val FStar.HyperStack.ST.ralloc_drgn>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.ralloc_drgn (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.ralloc_drgn@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.ralloc_drgn>
-
-
-; <Start encoding val FStar.HyperStack.ST.ralloc_drgn_mm>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.ralloc_drgn_mm (Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.ralloc_drgn_mm@tok () Term)
-
-; </end encoding val FStar.HyperStack.ST.ralloc_drgn_mm>
-
-
-; <Start encoding let break_vc>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun FStar.HyperStack.ST.break_vc (Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun FStar.HyperStack.ST.break_vc@tok () Term)
-
-; </end encoding let break_vc>
-
-
-; End Externals for interface FStar.HyperStack.ST
-
-
-; Externals for interface FStar.IndefiniteDescription
-
-
-; <Start encoding val FStar.IndefiniteDescription.elim_squash>
-
-(declare-fun FStar.IndefiniteDescription.elim_squash (Term Term) Term)
-(declare-fun Tm_ghost_arrow_c6842219f247b61822e21d8f892190b3 () Term)
-(declare-fun FStar.IndefiniteDescription.elim_squash@tok () Term)
-
-; </end encoding val FStar.IndefiniteDescription.elim_squash>
-
-
-; <Start encoding val FStar.IndefiniteDescription.indefinite_description_ghost>
-
-
-(declare-fun Tm_refine_4cc89ae73e7128e43010e5aba0ff060c (Term) Term)
-(declare-fun FStar.IndefiniteDescription.indefinite_description_ghost (Term Term) Term)
-
-
-
-(declare-fun Tm_ghost_arrow_feddccf07264e14202821ef1d50468a8 () Term)
-(declare-fun FStar.IndefiniteDescription.indefinite_description_ghost@tok () Term)
-
-
-; </end encoding val FStar.IndefiniteDescription.indefinite_description_ghost>
-
-
-; <Start encoding val FStar.IndefiniteDescription.indefinite_description_tot>
-
-
-
-(declare-fun FStar.IndefiniteDescription.indefinite_description_tot (Term Term) Term)
-
-
-
-(declare-fun Tm_arrow_913328739865ec1d7344ba2324047e94 () Term)
-(declare-fun FStar.IndefiniteDescription.indefinite_description_tot@tok () Term)
-
-
-; </end encoding val FStar.IndefiniteDescription.indefinite_description_tot>
-
-
-; <Start encoding val FStar.IndefiniteDescription.strong_excluded_middle>
-
-(declare-fun FStar.IndefiniteDescription.strong_excluded_middle (Term) Term)
-(declare-fun Tm_refine_2c7ecebd8a41d0890aab4251b61d6458 (Term) Term)
-(declare-fun Tm_ghost_arrow_13b822d9f45311e725609e40f68f39a1 () Term)
-(declare-fun FStar.IndefiniteDescription.strong_excluded_middle@tok () Term)
-
-
-; </end encoding val FStar.IndefiniteDescription.strong_excluded_middle>
-
-
-; <Start encoding val FStar.IndefiniteDescription.stronger_markovs_principle>
-
-(declare-fun Tm_ghost_arrow_eaf0e881316979a10a835f9aef894ea3 () Term)
-(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle (Term) Term)
-
-(declare-fun Tm_refine_ce62cc380d030e5cd8dfd1cf0ea19b01 (Term) Term)
-(declare-fun Tm_ghost_arrow_0ecc4bb7783229ca7ca7edd38b0bab8d () Term)
-(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle@tok () Term)
-
-
-; </end encoding val FStar.IndefiniteDescription.stronger_markovs_principle>
-
-
-; <Start encoding val FStar.IndefiniteDescription.stronger_markovs_principle_prop>
-
-(declare-fun Tm_arrow_1742ee5bbc9c9e74913cc041d85062b6 () Term)
-(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle_prop (Term) Term)
-
-(declare-fun Tm_refine_e76bd1e3fcd1369d7232ec3854a8c984 (Term) Term)
-(declare-fun Tm_ghost_arrow_c21c60a4b8d9409191eea9e22a1b37db () Term)
-(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle_prop@tok () Term)
-
-
-; </end encoding val FStar.IndefiniteDescription.stronger_markovs_principle_prop>
-
-
-; End Externals for interface FStar.IndefiniteDescription
-
-
-; Externals for module FStar.StrongExcludedMiddle
-
-
-; <Start encoding let strong_excluded_middle>
-
-(declare-fun FStar.StrongExcludedMiddle.strong_excluded_middle (Term) Term)
-
-
-(declare-fun FStar.StrongExcludedMiddle.strong_excluded_middle@tok () Term)
-
-
-; </end encoding let strong_excluded_middle>
-
-
-; End Externals for module FStar.StrongExcludedMiddle
 
 
 ; Externals for interface FStar.List.Tot.Properties
@@ -20517,6 +15676,4847 @@ FStar.Monotonic.HyperStack.some_ref)))
 
 
 ; End Externals for interface FStar.UInt32
+
+
+; Externals for interface FStar.Set
+
+
+; <Skipped #set-options "--initial_fuel 0 --max_fuel 0 --initial_ifuel 0 --max_ifuel 0"/>
+
+
+; <Start encoding val FStar.Set.set>
+
+(declare-fun FStar.Set.set (Term) Term)
+
+(declare-fun FStar.Set.set@tok () Term)
+
+; </end encoding val FStar.Set.set>
+
+
+; <Start encoding val FStar.Set.equal>
+
+(declare-fun FStar.Set.equal (Term Term Term) Term)
+(declare-fun Tm_arrow_3c4f6e4cf547bd34ec8e06fa6c99957f () Term)
+(declare-fun FStar.Set.equal@tok () Term)
+
+; </end encoding val FStar.Set.equal>
+
+
+; <Start encoding val FStar.Set.mem>
+
+(declare-fun FStar.Set.mem (Term Term Term) Term)
+(declare-fun Tm_arrow_3622740f6f31d7fd022d9da9e7023a5e () Term)
+(declare-fun FStar.Set.mem@tok () Term)
+
+; </end encoding val FStar.Set.mem>
+
+
+; <Start encoding val FStar.Set.empty>
+
+(declare-fun FStar.Set.empty (Term) Term)
+(declare-fun Tm_arrow_8126140804a823c0abf765b538511539 () Term)
+(declare-fun FStar.Set.empty@tok () Term)
+
+; </end encoding val FStar.Set.empty>
+
+
+; <Start encoding val FStar.Set.singleton>
+
+(declare-fun FStar.Set.singleton (Term Term) Term)
+(declare-fun Tm_arrow_764304f899737575fb0645eff5d55885 () Term)
+(declare-fun FStar.Set.singleton@tok () Term)
+
+; </end encoding val FStar.Set.singleton>
+
+
+; <Start encoding val FStar.Set.union>
+
+(declare-fun FStar.Set.union (Term Term Term) Term)
+(declare-fun Tm_arrow_7571f855c31e3c10cb35bbdc0f3ae878 () Term)
+(declare-fun FStar.Set.union@tok () Term)
+
+; </end encoding val FStar.Set.union>
+
+
+; <Start encoding val FStar.Set.intersect>
+
+(declare-fun FStar.Set.intersect (Term Term Term) Term)
+
+(declare-fun FStar.Set.intersect@tok () Term)
+
+; </end encoding val FStar.Set.intersect>
+
+
+; <Start encoding val FStar.Set.complement>
+
+(declare-fun FStar.Set.complement (Term Term) Term)
+(declare-fun Tm_arrow_4a14af1f2d9ff62069ebb44d0d1980f6 () Term)
+(declare-fun FStar.Set.complement@tok () Term)
+
+; </end encoding val FStar.Set.complement>
+
+
+; <Start encoding val FStar.Set.intension>
+
+
+(declare-fun FStar.Set.intension (Term Term) Term)
+
+(declare-fun Tm_ghost_arrow_04e42a5c0c55c36964ab6333a076e29e () Term)
+(declare-fun FStar.Set.intension@tok () Term)
+
+; </end encoding val FStar.Set.intension>
+
+
+; <Start encoding let disjoint>
+
+(declare-fun FStar.Set.disjoint (Term Term Term) Term)
+
+(declare-fun FStar.Set.disjoint@tok () Term)
+
+; </end encoding let disjoint>
+
+
+; <Start encoding let subset>
+
+(declare-fun FStar.Set.subset (Term Term Term) Term)
+(declare-fun Tm_arrow_9a1bfd7a415bf0250a3dd161144f27fa () Term)
+(declare-fun FStar.Set.subset@tok () Term)
+
+; </end encoding let subset>
+
+
+; <Start encoding let add>
+
+(declare-fun FStar.Set.add (Term Term Term) Term)
+(declare-fun Tm_arrow_3e561cbcf9b0a4b95f6e5d77760b40db () Term)
+(declare-fun FStar.Set.add@tok () Term)
+
+; </end encoding let add>
+
+
+; <Start encoding let remove>
+
+(declare-fun FStar.Set.remove (Term Term Term) Term)
+
+(declare-fun FStar.Set.remove@tok () Term)
+
+; </end encoding let remove>
+
+
+; <Start encoding val FStar.Set.mem_empty>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_empty (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_empty@tok () Term)
+
+; </end encoding val FStar.Set.mem_empty>
+
+
+; <Start encoding val FStar.Set.mem_singleton>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_singleton (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_singleton@tok () Term)
+
+; </end encoding val FStar.Set.mem_singleton>
+
+
+; <Start encoding val FStar.Set.mem_union>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_union (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_union@tok () Term)
+
+; </end encoding val FStar.Set.mem_union>
+
+
+; <Start encoding val FStar.Set.mem_intersect>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_intersect (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_intersect@tok () Term)
+
+; </end encoding val FStar.Set.mem_intersect>
+
+
+; <Start encoding val FStar.Set.mem_complement>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_complement (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_complement@tok () Term)
+
+; </end encoding val FStar.Set.mem_complement>
+
+
+; <Start encoding val FStar.Set.mem_intension>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_intension (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_intension@tok () Term)
+
+; </end encoding val FStar.Set.mem_intension>
+
+
+; <Start encoding val FStar.Set.mem_subset>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_subset (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_subset@tok () Term)
+
+; </end encoding val FStar.Set.mem_subset>
+
+
+; <Start encoding val FStar.Set.subset_mem>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.subset_mem (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.subset_mem@tok () Term)
+
+; </end encoding val FStar.Set.subset_mem>
+
+
+; <Start encoding val FStar.Set.lemma_equal_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.lemma_equal_intro (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.lemma_equal_intro@tok () Term)
+
+; </end encoding val FStar.Set.lemma_equal_intro>
+
+
+; <Start encoding val FStar.Set.lemma_equal_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.lemma_equal_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.lemma_equal_elim@tok () Term)
+
+; </end encoding val FStar.Set.lemma_equal_elim>
+
+
+; <Start encoding val FStar.Set.lemma_equal_refl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.lemma_equal_refl (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.lemma_equal_refl@tok () Term)
+
+; </end encoding val FStar.Set.lemma_equal_refl>
+
+
+; <Start encoding val FStar.Set.disjoint_not_in_both>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.disjoint_not_in_both (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.disjoint_not_in_both@tok () Term)
+
+; </end encoding val FStar.Set.disjoint_not_in_both>
+
+
+; <Skipped #reset-options/>
+
+
+; <Start encoding let rec as_set'>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.Set.as_set_.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.Set.as_set_.fuel_instrumented_token () Term)
+(declare-fun FStar.Set.as_set_ (Term Term) Term)
+(declare-fun FStar.Set.as_set_@tok () Term)
+(declare-fun Tm_arrow_37c32948884378803a50151abdb3cb09 () Term)
+
+; </end encoding let rec as_set'>
+
+
+; <Start encoding let as_set>
+
+(declare-fun FStar.Set.as_set (Term Term) Term)
+
+(declare-fun FStar.Set.as_set@tok () Term)
+
+; </end encoding let as_set>
+
+
+; <Start encoding let lemma_disjoint_subset>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.lemma_disjoint_subset (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.lemma_disjoint_subset@tok () Term)
+
+; </end encoding let lemma_disjoint_subset>
+
+
+; End Externals for interface FStar.Set
+
+
+; Externals for module FStar.Preorder
+
+
+; <Start encoding let relation>
+
+(declare-fun FStar.Preorder.relation (Term) Term)
+
+(declare-fun FStar.Preorder.relation@tok () Term)
+(declare-fun Tm_arrow_a19f9d49348d4e0038f0ded87d87802f (Term) Term)
+
+; </end encoding let relation>
+
+
+; <Start encoding let predicate>
+
+(declare-fun FStar.Preorder.predicate (Term) Term)
+
+(declare-fun FStar.Preorder.predicate@tok () Term)
+
+
+; </end encoding let predicate>
+
+
+; <Start encoding let reflexive>
+
+(declare-fun FStar.Preorder.reflexive (Term Term) Term)
+(declare-fun Tm_arrow_8e677a33afbeb812aa3779b7bdd0131c () Term)
+(declare-fun FStar.Preorder.reflexive@tok () Term)
+
+; </end encoding let reflexive>
+
+
+; <Start encoding let transitive>
+
+(declare-fun FStar.Preorder.transitive (Term Term) Term)
+
+(declare-fun FStar.Preorder.transitive@tok () Term)
+
+; </end encoding let transitive>
+
+
+; <Start encoding let preorder_rel>
+
+(declare-fun FStar.Preorder.preorder_rel (Term Term) Term)
+
+(declare-fun FStar.Preorder.preorder_rel@tok () Term)
+
+; </end encoding let preorder_rel>
+
+
+; <Start encoding let preorder>
+
+(declare-fun FStar.Preorder.preorder (Term) Term)
+
+(declare-fun FStar.Preorder.preorder@tok () Term)
+(declare-fun Tm_refine_bd10f09297e0e7dc08314f7d9211801c (Term) Term)
+
+; </end encoding let preorder>
+
+
+; <Start encoding let stable>
+
+
+(declare-fun FStar.Preorder.stable (Term Term Term) Term)
+
+(declare-fun Tm_arrow_88036d0811eee3361efd6229bae2556d () Term)
+(declare-fun FStar.Preorder.stable@tok () Term)
+
+
+; </end encoding let stable>
+
+
+; End Externals for module FStar.Preorder
+
+
+; Externals for interface FStar.TSet
+
+
+; <Skipped #set-options "--initial_fuel 0 --max_fuel 0 --initial_ifuel 0 --max_ifuel 0"/>
+
+
+; <Start encoding val FStar.TSet.set>
+
+(declare-fun FStar.TSet.set (Term) Term)
+
+(declare-fun FStar.TSet.set@tok () Term)
+
+; </end encoding val FStar.TSet.set>
+
+
+; <Start encoding val FStar.TSet.equal>
+
+(declare-fun FStar.TSet.equal (Term Term Term) Term)
+(declare-fun Tm_arrow_461adcd665973ea611b925a11158df2c () Term)
+(declare-fun FStar.TSet.equal@tok () Term)
+
+; </end encoding val FStar.TSet.equal>
+
+
+; <Start encoding val FStar.TSet.mem>
+
+(declare-fun FStar.TSet.mem (Term Term Term) Term)
+(declare-fun Tm_arrow_6bd40494c735add94090089fc1560f3a () Term)
+(declare-fun FStar.TSet.mem@tok () Term)
+
+; </end encoding val FStar.TSet.mem>
+
+
+; <Start encoding val FStar.TSet.empty>
+
+(declare-fun FStar.TSet.empty (Term) Term)
+(declare-fun Tm_arrow_7479bde908a771f633d91cf1e6159164 () Term)
+(declare-fun FStar.TSet.empty@tok () Term)
+
+; </end encoding val FStar.TSet.empty>
+
+
+; <Start encoding val FStar.TSet.singleton>
+
+(declare-fun FStar.TSet.singleton (Term Term) Term)
+(declare-fun Tm_arrow_efd4130c737a1c63982cd396443713d5 () Term)
+(declare-fun FStar.TSet.singleton@tok () Term)
+
+; </end encoding val FStar.TSet.singleton>
+
+
+; <Start encoding val FStar.TSet.union>
+
+(declare-fun FStar.TSet.union (Term Term Term) Term)
+(declare-fun Tm_arrow_3de58fd829d33d9d3ee6c709e8528481 () Term)
+(declare-fun FStar.TSet.union@tok () Term)
+
+; </end encoding val FStar.TSet.union>
+
+
+; <Start encoding val FStar.TSet.intersect>
+
+(declare-fun FStar.TSet.intersect (Term Term Term) Term)
+
+(declare-fun FStar.TSet.intersect@tok () Term)
+
+; </end encoding val FStar.TSet.intersect>
+
+
+; <Start encoding val FStar.TSet.complement>
+
+(declare-fun FStar.TSet.complement (Term Term) Term)
+(declare-fun Tm_arrow_0bfcc001675666a8c38e138bf5ac4ee8 () Term)
+(declare-fun FStar.TSet.complement@tok () Term)
+
+; </end encoding val FStar.TSet.complement>
+
+
+; <Start encoding val FStar.TSet.intension>
+
+
+(declare-fun FStar.TSet.intension (Term Term) Term)
+
+(declare-fun Tm_arrow_43deeb1307894e15ad1446f8a75a5811 () Term)
+(declare-fun FStar.TSet.intension@tok () Term)
+
+; </end encoding val FStar.TSet.intension>
+
+
+; <Start encoding let subset>
+
+(declare-fun FStar.TSet.subset (Term Term Term) Term)
+(declare-fun Tm_arrow_a884d17a435ad7c4eff639e843c2e915 () Term)
+(declare-fun FStar.TSet.subset@tok () Term)
+
+; </end encoding let subset>
+
+
+; <Start encoding val FStar.TSet.mem_empty>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_empty (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_empty@tok () Term)
+
+; </end encoding val FStar.TSet.mem_empty>
+
+
+; <Start encoding val FStar.TSet.mem_singleton>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_singleton (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_singleton@tok () Term)
+
+; </end encoding val FStar.TSet.mem_singleton>
+
+
+; <Start encoding val FStar.TSet.mem_union>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_union (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_union@tok () Term)
+
+; </end encoding val FStar.TSet.mem_union>
+
+
+; <Start encoding val FStar.TSet.mem_intersect>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_intersect (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_intersect@tok () Term)
+
+; </end encoding val FStar.TSet.mem_intersect>
+
+
+; <Start encoding val FStar.TSet.mem_complement>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_complement (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_complement@tok () Term)
+
+; </end encoding val FStar.TSet.mem_complement>
+
+
+; <Start encoding val FStar.TSet.mem_subset>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_subset (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_subset@tok () Term)
+
+; </end encoding val FStar.TSet.mem_subset>
+
+
+; <Start encoding val FStar.TSet.subset_mem>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.subset_mem (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.subset_mem@tok () Term)
+
+; </end encoding val FStar.TSet.subset_mem>
+
+
+; <Start encoding val FStar.TSet.mem_intension>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_intension (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_intension@tok () Term)
+
+
+; </end encoding val FStar.TSet.mem_intension>
+
+
+; <Start encoding val FStar.TSet.lemma_equal_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_equal_intro (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_equal_intro@tok () Term)
+
+; </end encoding val FStar.TSet.lemma_equal_intro>
+
+
+; <Start encoding val FStar.TSet.lemma_equal_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_equal_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_equal_elim@tok () Term)
+
+; </end encoding val FStar.TSet.lemma_equal_elim>
+
+
+; <Start encoding val FStar.TSet.lemma_equal_refl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_equal_refl (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_equal_refl@tok () Term)
+
+; </end encoding val FStar.TSet.lemma_equal_refl>
+
+
+; <Start encoding val FStar.TSet.tset_of_set>
+
+(declare-fun FStar.TSet.tset_of_set (Term Term) Term)
+(declare-fun Tm_arrow_3cbed28ab0f3b752d3656db155a3e9f3 () Term)
+(declare-fun FStar.TSet.tset_of_set@tok () Term)
+
+; </end encoding val FStar.TSet.tset_of_set>
+
+
+; <Start encoding val FStar.TSet.lemma_mem_tset_of_set>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_mem_tset_of_set (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_mem_tset_of_set@tok () Term)
+
+; </end encoding val FStar.TSet.lemma_mem_tset_of_set>
+
+
+; <Start encoding val FStar.TSet.filter>
+
+
+(declare-fun FStar.TSet.filter (Term Term Term) Term)
+
+(declare-fun Tm_arrow_1a001071ad6106aec2470a87b194954c () Term)
+(declare-fun FStar.TSet.filter@tok () Term)
+
+; </end encoding val FStar.TSet.filter>
+
+
+; <Start encoding val FStar.TSet.lemma_mem_filter>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_mem_filter (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_mem_filter@tok () Term)
+
+
+; </end encoding val FStar.TSet.lemma_mem_filter>
+
+
+; <Start encoding val FStar.TSet.map>
+
+
+(declare-fun FStar.TSet.map (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_8af532fc458491b78200f8bcb1361e90 () Term)
+(declare-fun FStar.TSet.map@tok () Term)
+
+; </end encoding val FStar.TSet.map>
+
+
+; <Start encoding val FStar.TSet.lemma_mem_map>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_mem_map (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_mem_map@tok () Term)
+
+
+; </end encoding val FStar.TSet.lemma_mem_map>
+
+
+; <Skipped #reset-options/>
+
+
+; <Start encoding let rec as_set'>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.TSet.as_set_.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.TSet.as_set_.fuel_instrumented_token () Term)
+(declare-fun FStar.TSet.as_set_ (Term Term) Term)
+(declare-fun FStar.TSet.as_set_@tok () Term)
+(declare-fun Tm_arrow_b205d25f357c7c6022ebceb6497753f3 () Term)
+
+; </end encoding let rec as_set'>
+
+
+; End Externals for interface FStar.TSet
+
+
+; Externals for interface FStar.Monotonic.Heap
+
+
+; <Start encoding let set>
+
+(declare-fun FStar.Monotonic.Heap.set (Term) Term)
+
+(declare-fun FStar.Monotonic.Heap.set@tok () Term)
+
+; </end encoding let set>
+
+
+; <Start encoding let tset>
+
+(declare-fun FStar.Monotonic.Heap.tset (Term) Term)
+
+(declare-fun FStar.Monotonic.Heap.tset@tok () Term)
+
+; </end encoding let tset>
+
+
+; <Start encoding val FStar.Monotonic.Heap.heap>
+
+(declare-fun FStar.Monotonic.Heap.heap () Term)
+
+; </end encoding val FStar.Monotonic.Heap.heap>
+
+
+; <Start encoding val FStar.Monotonic.Heap.equal>
+
+(declare-fun FStar.Monotonic.Heap.equal (Term Term) Term)
+(declare-fun Tm_arrow_22ea7bfd67f4919a6b048e3792f6aac6 () Term)
+(declare-fun FStar.Monotonic.Heap.equal@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.equal>
+
+
+; <Start encoding val FStar.Monotonic.Heap.equal_extensional>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.equal_extensional (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.equal_extensional@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.equal_extensional>
+
+
+; <Start encoding val FStar.Monotonic.Heap.emp>
+
+(declare-fun FStar.Monotonic.Heap.emp (Dummy_sort) Term)
+
+; </end encoding val FStar.Monotonic.Heap.emp>
+
+
+; <Start encoding val FStar.Monotonic.Heap.next_addr>
+
+(declare-fun FStar.Monotonic.Heap.next_addr (Term) Term)
+(declare-fun Tm_ghost_arrow_5f9b7d66eebaf7d00b1d1c8781e1bd33 () Term)
+(declare-fun FStar.Monotonic.Heap.next_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.next_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.core_mref>
+
+(declare-fun FStar.Monotonic.Heap.core_mref (Term) Term)
+
+(declare-fun FStar.Monotonic.Heap.core_mref@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.core_mref>
+
+
+; <Start encoding let mref>
+
+(declare-fun FStar.Monotonic.Heap.mref (Term Term) Term)
+(declare-fun Tm_arrow_5bf0606d629ecb30adc0c556c248cd8a () Term)
+(declare-fun FStar.Monotonic.Heap.mref@tok () Term)
+
+; </end encoding let mref>
+
+
+; <Start encoding val FStar.Monotonic.Heap.addr_of>
+
+(declare-fun FStar.Monotonic.Heap.addr_of (Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_3e3805ca9fb6a056cde481ca6e6b2666 () Term)
+(declare-fun FStar.Monotonic.Heap.addr_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.addr_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.is_mm>
+
+(declare-fun FStar.Monotonic.Heap.is_mm (Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_8181c56eb62b6f09010fd19362ec557f () Term)
+(declare-fun FStar.Monotonic.Heap.is_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.is_mm>
+
+
+; <Start encoding let compare_addrs>
+
+(declare-fun FStar.Monotonic.Heap.compare_addrs (Term Term Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_d9620af24825960ed2af7182687876b1 () Term)
+(declare-fun FStar.Monotonic.Heap.compare_addrs@tok () Term)
+
+; </end encoding let compare_addrs>
+
+
+; <Start encoding val FStar.Monotonic.Heap.contains>
+
+(declare-fun FStar.Monotonic.Heap.contains (Term Term Term Term) Term)
+(declare-fun Tm_arrow_78eae2771402d9ca8cd20442a69b19a1 () Term)
+(declare-fun FStar.Monotonic.Heap.contains@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.contains>
+
+
+; <Start encoding val FStar.Monotonic.Heap.addr_unused_in>
+
+(declare-fun FStar.Monotonic.Heap.addr_unused_in (Term Term) Term)
+(declare-fun Tm_arrow_5e652491869ddd6d9add00477fe250d4 () Term)
+(declare-fun FStar.Monotonic.Heap.addr_unused_in@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.addr_unused_in>
+
+
+; <Start encoding val FStar.Monotonic.Heap.not_addr_unused_in_nullptr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.not_addr_unused_in_nullptr (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.not_addr_unused_in_nullptr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.not_addr_unused_in_nullptr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.unused_in>
+
+(declare-fun FStar.Monotonic.Heap.unused_in (Term Term Term Term) Term)
+(declare-fun Tm_arrow_63db68eb9811874d358b39a3a3a594c0 () Term)
+(declare-fun FStar.Monotonic.Heap.unused_in@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.unused_in>
+
+
+; <Start encoding let fresh>
+
+(declare-fun FStar.Monotonic.Heap.fresh (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_516fb5369267798913835a1aff4b7fe3 () Term)
+(declare-fun FStar.Monotonic.Heap.fresh@tok () Term)
+
+; </end encoding let fresh>
+
+
+; <Start encoding let only_t>
+
+(declare-fun FStar.Monotonic.Heap.only_t (Term Term Term) Term)
+(declare-fun Tm_arrow_97d9b8894eec5cc757ee6368627567ce () Term)
+(declare-fun FStar.Monotonic.Heap.only_t@tok () Term)
+
+; </end encoding let only_t>
+
+
+; <Start encoding let only>
+
+(declare-fun FStar.Monotonic.Heap.only (Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_fe5c1d63e245bf0ffcacbc885af17fc3 () Term)
+(declare-fun FStar.Monotonic.Heap.only@tok () Term)
+
+; </end encoding let only>
+
+
+; <Start encoding let op_Hat_Plus_Plus>
+
+(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Plus (Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_21e6803beb51b9a6b0e4cc69a41b426b () Term)
+(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Plus@tok () Term)
+
+; </end encoding let op_Hat_Plus_Plus>
+
+
+; <Start encoding let op_Plus_Plus_Hat>
+
+(declare-fun FStar.Monotonic.Heap.op_Plus_Plus_Hat (Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_155b4e9b4b7e1cd02500a5483fe79417 () Term)
+(declare-fun FStar.Monotonic.Heap.op_Plus_Plus_Hat@tok () Term)
+
+; </end encoding let op_Plus_Plus_Hat>
+
+
+; <Start encoding let op_Hat_Plus_Hat>
+
+(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Hat (Term Term Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_a3f887bc1beedc82ccf25ac24af9a106 () Term)
+(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Hat@tok () Term)
+
+; </end encoding let op_Hat_Plus_Hat>
+
+
+; <Start encoding val FStar.Monotonic.Heap.sel_tot>
+
+(declare-fun Tm_refine_60a89cd0c268e7ce38a2aab467325fd8 (Term Term Term) Term)
+(declare-fun FStar.Monotonic.Heap.sel_tot (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_b9c7abd21015083a18544d8f5e4bfa5f () Term)
+(declare-fun FStar.Monotonic.Heap.sel_tot@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.sel_tot>
+
+
+; <Start encoding val FStar.Monotonic.Heap.sel>
+
+(declare-fun FStar.Monotonic.Heap.sel (Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_ffe8429ce0118fe92246c624b0f48cb8 () Term)
+(declare-fun FStar.Monotonic.Heap.sel@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.sel>
+
+
+; <Start encoding val FStar.Monotonic.Heap.upd_tot>
+
+
+(declare-fun FStar.Monotonic.Heap.upd_tot (Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_bc62c38ea3e82ecfe3b8b2ec42ad37db () Term)
+(declare-fun FStar.Monotonic.Heap.upd_tot@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.upd_tot>
+
+
+; <Start encoding val FStar.Monotonic.Heap.upd>
+
+(declare-fun FStar.Monotonic.Heap.upd (Term Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_34a9169877528f6cc19628f2fc55c538 () Term)
+(declare-fun FStar.Monotonic.Heap.upd@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.upd>
+
+
+; <Start encoding val FStar.Monotonic.Heap.alloc>
+
+(declare-fun FStar.Monotonic.Heap.alloc (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_1c0aac8fe904b4d396ec54b136d2ffe7 () Term)
+(declare-fun FStar.Monotonic.Heap.alloc@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.alloc>
+
+
+; <Start encoding val FStar.Monotonic.Heap.free_mm>
+
+(declare-fun Tm_refine_5015146880b2d88cf7d4492a6a4488b3 (Term Term Term) Term)
+(declare-fun FStar.Monotonic.Heap.free_mm (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_6ecb62093891266f94b1f3f1a90a448e () Term)
+(declare-fun FStar.Monotonic.Heap.free_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.free_mm>
+
+
+; <Start encoding let modifies_t>
+
+(declare-fun FStar.Monotonic.Heap.modifies_t (Term Term Term) Term)
+(declare-fun Tm_arrow_a4fe7207a94d4c1647746618fee3b728 () Term)
+(declare-fun FStar.Monotonic.Heap.modifies_t@tok () Term)
+
+; </end encoding let modifies_t>
+
+
+; <Start encoding let modifies>
+
+(declare-fun FStar.Monotonic.Heap.modifies (Term Term Term) Term)
+(declare-fun Tm_arrow_46ebd76bd348c127a0b9b24dfad446fc () Term)
+(declare-fun FStar.Monotonic.Heap.modifies@tok () Term)
+
+; </end encoding let modifies>
+
+
+; <Start encoding let equal_dom>
+
+(declare-fun FStar.Monotonic.Heap.equal_dom (Term Term) Term)
+
+(declare-fun FStar.Monotonic.Heap.equal_dom@tok () Term)
+
+; </end encoding let equal_dom>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_contains_implies_used>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_contains_implies_used (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_contains_implies_used@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_contains_implies_used>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_unused>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_unused (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_unused@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_unused>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_alloc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_alloc (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_alloc@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_alloc>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_free_mm_sel>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_sel (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_sel@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.lemma_free_mm_sel>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_free_mm_contains>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_contains (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_contains@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.lemma_free_mm_contains>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_free_mm_unused>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_unused (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_unused@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.lemma_free_mm_unused>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_free_addr_unused_in>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_addr_unused_in (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_addr_unused_in@tok () Term)
+
+(declare-fun Tm_refine_b197fcc3fe1a6a8a07bfa2aebd77a80a () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_free_addr_unused_in>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_sel_same_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_same_addr (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_same_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_sel_same_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_sel_upd1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_upd1 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_upd1@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_sel_upd1>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_sel_upd2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_upd2 (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_upd2@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_sel_upd2>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_mref_injectivity>
+
+(declare-fun FStar.Monotonic.Heap.lemma_mref_injectivity () Term)
+(declare-fun Tm_refine_e1adf49e5e772ddffa19181e1a812a81 () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.lemma_mref_injectivity>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_in_dom_emp>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_in_dom_emp (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_in_dom_emp@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_in_dom_emp>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_upd_contains>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_contains (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_contains@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_upd_contains>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_well_typed_upd_contains>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_well_typed_upd_contains (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_well_typed_upd_contains@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_well_typed_upd_contains>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_unused_upd_contains>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_contains (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_contains@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_unused_upd_contains>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_upd_contains_different_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_contains_different_addr (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_contains_different_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_upd_contains_different_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_upd_unused>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_unused (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_unused@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_upd_unused>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_contains_upd_modifies>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_contains_upd_modifies (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_contains_upd_modifies@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_contains_upd_modifies>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_unused_upd_modifies>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_modifies (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_modifies@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_unused_upd_modifies>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds (Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_upd_tot>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd_tot (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd_tot@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_upd_tot>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_upd>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_upd>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_alloc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_alloc (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_alloc@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_alloc>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_free_mm>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_free_mm (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_free_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_free_mm>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref>
+
+(declare-fun FStar.Monotonic.Heap.aref () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref>
+
+
+; <Start encoding val FStar.Monotonic.Heap.dummy_aref>
+
+(declare-fun FStar.Monotonic.Heap.dummy_aref (Dummy_sort) Term)
+
+; </end encoding val FStar.Monotonic.Heap.dummy_aref>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_equal>
+
+(declare-fun FStar.Monotonic.Heap.aref_equal (Term Term) Term)
+(declare-fun Tm_refine_82707a6e3d48caa257bb4bddb01d7d73 (Term Term) Term)
+(declare-fun Tm_ghost_arrow_15fb16496d887138d488803245c89d64 () Term)
+(declare-fun FStar.Monotonic.Heap.aref_equal@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.aref_equal>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_of>
+
+(declare-fun FStar.Monotonic.Heap.aref_of (Term Term Term) Term)
+(declare-fun Tm_arrow_52adf65c8447500d70e5098f6c041a65 () Term)
+(declare-fun FStar.Monotonic.Heap.aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.addr_of_aref>
+
+(declare-fun FStar.Monotonic.Heap.addr_of_aref (Term) Term)
+(declare-fun Tm_refine_afd51579b90d50ea23e03b743a1fa001 () Term)
+(declare-fun Tm_ghost_arrow_168094509145e28b296ce766eea04736 () Term)
+(declare-fun FStar.Monotonic.Heap.addr_of_aref@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.addr_of_aref>
+
+
+; <Start encoding val FStar.Monotonic.Heap.addr_of_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.addr_of_aref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.addr_of_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.addr_of_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_is_mm>
+
+(declare-fun FStar.Monotonic.Heap.aref_is_mm (Term) Term)
+(declare-fun Tm_ghost_arrow_86fca776032c40cedacef7de5d660572 () Term)
+(declare-fun FStar.Monotonic.Heap.aref_is_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_is_mm>
+
+
+; <Start encoding val FStar.Monotonic.Heap.is_mm_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.is_mm_aref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.is_mm_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.is_mm_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_unused_in>
+
+(declare-fun FStar.Monotonic.Heap.aref_unused_in (Term Term) Term)
+(declare-fun Tm_arrow_8227ceb756b15f6c9348698ae3bb9b5e () Term)
+(declare-fun FStar.Monotonic.Heap.aref_unused_in@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_unused_in>
+
+
+; <Start encoding val FStar.Monotonic.Heap.unused_in_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.unused_in_aref_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.unused_in_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.unused_in_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.contains_aref_unused_in>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.contains_aref_unused_in (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.contains_aref_unused_in@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.contains_aref_unused_in>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_live_at>
+
+(declare-fun FStar.Monotonic.Heap.aref_live_at (Term Term Term Term) Term)
+(declare-fun Tm_arrow_9c4830390b5ceaaec5e76b4f367d6c11 () Term)
+(declare-fun FStar.Monotonic.Heap.aref_live_at@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_live_at>
+
+
+; <Start encoding val FStar.Monotonic.Heap.gref_of>
+
+(declare-fun FStar.Monotonic.Heap.gref_of (Term Term Term) Term)
+(declare-fun Tm_refine_f871b1cec1676516ecbdd8b1fdf16da7 (Term Term) Term)
+(declare-fun Tm_ghost_arrow_b090c641b42392b5ed08e8774610283a () Term)
+(declare-fun FStar.Monotonic.Heap.gref_of@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.ref_of>
+
+(declare-fun FStar.Monotonic.Heap.ref_of (Term Term Term Term) Term)
+(declare-fun Tm_refine_e9f69f18eb8d91697e49057991573e9f (Term Term Term Term) Term)
+(declare-fun Tm_arrow_593ebdf0a0f4ac12ef03a2bedce8e97b () Term)
+(declare-fun FStar.Monotonic.Heap.ref_of@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.ref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_live_at_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.aref_live_at_aref_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.aref_live_at_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_live_at_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.contains_gref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.contains_gref_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.contains_gref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.contains_gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_of_gref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.aref_of_gref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.aref_of_gref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_of_gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.addr_of_gref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.addr_of_gref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.addr_of_gref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.addr_of_gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.is_mm_gref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.is_mm_gref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.is_mm_gref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.is_mm_gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.unused_in_gref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.unused_in_gref_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.unused_in_gref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.unused_in_gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.sel_ref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.sel_ref_of (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.sel_ref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.sel_ref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.upd_ref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.upd_ref_of (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.upd_ref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.upd_ref_of>
+
+
+; End Externals for interface FStar.Monotonic.Heap
+
+
+; Externals for module FStar.Heap
+
+
+; <Start encoding let trivial_rel>
+
+(declare-fun FStar.Heap.trivial_rel (Term) Term)
+(declare-fun Tm_arrow_5e933b4711265943ba4bba734363561b () Term)
+(declare-fun FStar.Heap.trivial_rel@tok () Term)
+
+(declare-fun Tm_abs_568747eb5009c1dec504311dee989dc2 (Term) Term)
+
+; </end encoding let trivial_rel>
+
+
+; <Start encoding let trivial_preorder>
+
+(declare-fun FStar.Heap.trivial_preorder (Term) Term)
+(declare-fun Tm_arrow_1a6db055683d4a5b8a00786676e339b5 () Term)
+(declare-fun FStar.Heap.trivial_preorder@tok () Term)
+
+; </end encoding let trivial_preorder>
+
+
+; <Start encoding let ref>
+
+(declare-fun FStar.Heap.ref (Term) Term)
+
+(declare-fun FStar.Heap.ref@tok () Term)
+
+; </end encoding let ref>
+
+
+; End Externals for module FStar.Heap
+
+
+; Externals for interface FStar.Map
+
+
+; <Start encoding val FStar.Map.t>
+
+(declare-fun FStar.Map.t (Term Term) Term)
+(declare-fun Tm_arrow_2b8b9bde9fdc9f797e5827d0c154aeeb () Term)
+(declare-fun FStar.Map.t@tok () Term)
+
+; </end encoding val FStar.Map.t>
+
+
+; <Start encoding val FStar.Map.sel>
+
+(declare-fun FStar.Map.sel (Term Term Term Term) Term)
+(declare-fun Tm_arrow_28a168f8d4c6d78564a214862be72b08 () Term)
+(declare-fun FStar.Map.sel@tok () Term)
+
+; </end encoding val FStar.Map.sel>
+
+
+; <Start encoding val FStar.Map.upd>
+
+(declare-fun FStar.Map.upd (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_b19283e90b47034162373413c6a19933 () Term)
+(declare-fun FStar.Map.upd@tok () Term)
+
+; </end encoding val FStar.Map.upd>
+
+
+; <Start encoding val FStar.Map.const>
+
+(declare-fun FStar.Map.const (Term Term Term) Term)
+(declare-fun Tm_arrow_867ad7c8cdd01bd87f415b1f9e0b39ac () Term)
+(declare-fun FStar.Map.const@tok () Term)
+
+; </end encoding val FStar.Map.const>
+
+
+; <Start encoding val FStar.Map.domain>
+
+(declare-fun FStar.Map.domain (Term Term Term) Term)
+(declare-fun Tm_arrow_6e8371e4f424600b54c69f2eb03b48d8 () Term)
+(declare-fun FStar.Map.domain@tok () Term)
+
+; </end encoding val FStar.Map.domain>
+
+
+; <Start encoding val FStar.Map.contains>
+
+(declare-fun FStar.Map.contains (Term Term Term Term) Term)
+(declare-fun Tm_arrow_32b461b2324f01c7a6bc6b577725566d () Term)
+(declare-fun FStar.Map.contains@tok () Term)
+
+; </end encoding val FStar.Map.contains>
+
+
+; <Start encoding val FStar.Map.concat>
+
+(declare-fun FStar.Map.concat (Term Term Term Term) Term)
+(declare-fun Tm_arrow_b137090ab92fa6ffe958df8f30b9f54e () Term)
+(declare-fun FStar.Map.concat@tok () Term)
+
+; </end encoding val FStar.Map.concat>
+
+
+; <Start encoding val FStar.Map.map_val>
+
+
+(declare-fun FStar.Map.map_val (Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_9123217b92d7c89a4449fe44590b9f47 () Term)
+(declare-fun FStar.Map.map_val@tok () Term)
+
+; </end encoding val FStar.Map.map_val>
+
+
+; <Start encoding val FStar.Map.restrict>
+
+(declare-fun FStar.Map.restrict (Term Term Term Term) Term)
+(declare-fun Tm_arrow_e8f96ed4bf330326d457be2f8416d734 () Term)
+(declare-fun FStar.Map.restrict@tok () Term)
+
+; </end encoding val FStar.Map.restrict>
+
+
+; <Start encoding let const_on>
+
+(declare-fun FStar.Map.const_on (Term Term Term Term) Term)
+(declare-fun Tm_arrow_f99b4e662f3e4a97cdb11f6ede73601e () Term)
+(declare-fun FStar.Map.const_on@tok () Term)
+
+; </end encoding let const_on>
+
+
+; <Start encoding val FStar.Map.map_literal>
+
+
+(declare-fun FStar.Map.map_literal (Term Term Term) Term)
+
+(declare-fun Tm_arrow_fb1dd96195814b8107d05d25a2bbb566 () Term)
+(declare-fun FStar.Map.map_literal@tok () Term)
+
+; </end encoding val FStar.Map.map_literal>
+
+
+; <Start encoding let disjoint_dom>
+
+(declare-fun FStar.Map.disjoint_dom (Term Term Term Term) Term)
+(declare-fun Tm_arrow_556fc2b76256aeb4c51415a912920e4f () Term)
+(declare-fun FStar.Map.disjoint_dom@tok () Term)
+
+; </end encoding let disjoint_dom>
+
+
+; <Start encoding let has_dom>
+
+(declare-fun FStar.Map.has_dom (Term Term Term Term) Term)
+(declare-fun Tm_arrow_978eafbacd55316f8accb3c830570c46 () Term)
+(declare-fun FStar.Map.has_dom@tok () Term)
+
+; </end encoding let has_dom>
+
+
+; <Start encoding val FStar.Map.lemma_SelUpd1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelUpd1 (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelUpd1@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelUpd1>
+
+
+; <Start encoding val FStar.Map.lemma_SelUpd2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelUpd2 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelUpd2@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelUpd2>
+
+
+; <Start encoding val FStar.Map.lemma_SelConst>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelConst (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelConst@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelConst>
+
+
+; <Start encoding val FStar.Map.lemma_SelRestrict>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelRestrict (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelRestrict@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelRestrict>
+
+
+; <Start encoding val FStar.Map.lemma_SelConcat1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelConcat1 (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelConcat1@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelConcat1>
+
+
+; <Start encoding val FStar.Map.lemma_SelConcat2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelConcat2 (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelConcat2@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelConcat2>
+
+
+; <Start encoding val FStar.Map.lemma_SelMapVal>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelMapVal (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelMapVal@tok () Term)
+
+
+; </end encoding val FStar.Map.lemma_SelMapVal>
+
+
+; <Start encoding val FStar.Map.lemma_InDomUpd1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InDomUpd1 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InDomUpd1@tok () Term)
+
+; </end encoding val FStar.Map.lemma_InDomUpd1>
+
+
+; <Start encoding val FStar.Map.lemma_InDomUpd2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InDomUpd2 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InDomUpd2@tok () Term)
+
+; </end encoding val FStar.Map.lemma_InDomUpd2>
+
+
+; <Start encoding val FStar.Map.lemma_InDomConstMap>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InDomConstMap (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InDomConstMap@tok () Term)
+
+; </end encoding val FStar.Map.lemma_InDomConstMap>
+
+
+; <Start encoding val FStar.Map.lemma_InDomConcat>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InDomConcat (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InDomConcat@tok () Term)
+
+; </end encoding val FStar.Map.lemma_InDomConcat>
+
+
+; <Start encoding val FStar.Map.lemma_InMapVal>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InMapVal (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InMapVal@tok () Term)
+
+
+; </end encoding val FStar.Map.lemma_InMapVal>
+
+
+; <Start encoding val FStar.Map.lemma_InDomRestrict>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InDomRestrict (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InDomRestrict@tok () Term)
+
+; </end encoding val FStar.Map.lemma_InDomRestrict>
+
+
+; <Start encoding val FStar.Map.lemma_ContainsDom>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_ContainsDom (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_ContainsDom@tok () Term)
+
+; </end encoding val FStar.Map.lemma_ContainsDom>
+
+
+; <Start encoding val FStar.Map.lemma_UpdDomain>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_UpdDomain (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_UpdDomain@tok () Term)
+
+; </end encoding val FStar.Map.lemma_UpdDomain>
+
+
+; <Start encoding val FStar.Map.lemma_map_literal>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_map_literal (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_map_literal@tok () Term)
+
+
+; </end encoding val FStar.Map.lemma_map_literal>
+
+
+; <Start encoding val FStar.Map.equal>
+
+(declare-fun FStar.Map.equal (Term Term Term Term) Term)
+(declare-fun Tm_arrow_8d5e09121919a406639e2201d1f5d3dd () Term)
+(declare-fun FStar.Map.equal@tok () Term)
+
+; </end encoding val FStar.Map.equal>
+
+
+; <Start encoding val FStar.Map.lemma_equal_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_equal_intro (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_equal_intro@tok () Term)
+
+; </end encoding val FStar.Map.lemma_equal_intro>
+
+
+; <Start encoding val FStar.Map.lemma_equal_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_equal_elim (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_equal_elim@tok () Term)
+
+; </end encoding val FStar.Map.lemma_equal_elim>
+
+
+; <Start encoding val FStar.Map.lemma_equal_refl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_equal_refl (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_equal_refl@tok () Term)
+
+; </end encoding val FStar.Map.lemma_equal_refl>
+
+
+; End Externals for interface FStar.Map
+
+
+; Externals for interface FStar.Monotonic.HyperHeap
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.rid>
+
+(declare-fun FStar.Monotonic.HyperHeap.rid (Dummy_sort) Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.rid>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.reveal>
+
+(declare-fun FStar.Monotonic.HyperHeap.reveal (Term) Term)
+(declare-fun Tm_ghost_arrow_4673cc3ebcc5d201b12f33a0db25b7d9 () Term)
+(declare-fun FStar.Monotonic.HyperHeap.reveal@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.reveal>
+
+
+; <Start encoding let rid_last_component>
+
+(declare-fun FStar.Monotonic.HyperHeap.rid_last_component (Term) Term)
+(declare-fun Tm_ghost_arrow_db06a4e46dfe5d9c1d2168d929927fce () Term)
+(declare-fun FStar.Monotonic.HyperHeap.rid_last_component@tok () Term)
+
+; </end encoding let rid_last_component>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.color>
+
+(declare-fun FStar.Monotonic.HyperHeap.color (Term) Term)
+
+(declare-fun FStar.Monotonic.HyperHeap.color@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.color>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.rid_freeable>
+
+(declare-fun FStar.Monotonic.HyperHeap.rid_freeable (Term) Term)
+(declare-fun Tm_ghost_arrow_cb09c5a76ccfcd8944f649d96b8525c0 () Term)
+(declare-fun FStar.Monotonic.HyperHeap.rid_freeable@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.rid_freeable>
+
+
+; <Start encoding let hmap>
+
+(declare-fun FStar.Monotonic.HyperHeap.hmap () Term)
+
+; </end encoding let hmap>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.root>
+
+(declare-fun FStar.Monotonic.HyperHeap.root (Dummy_sort) Term)
+(declare-fun Tm_refine_365abba901205a01d0ef28ebf2198c47 () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperHeap.root>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.root_last_component>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.root_last_component (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.root_last_component@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.root_last_component>
+
+
+; <Start encoding let root_has_color_zero>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.root_has_color_zero (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.root_has_color_zero@tok () Term)
+
+; </end encoding let root_has_color_zero>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.root_is_not_freeable>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.root_is_not_freeable (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.root_is_not_freeable@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.root_is_not_freeable>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.rid_length>
+
+(declare-fun FStar.Monotonic.HyperHeap.rid_length (Term) Term)
+(declare-fun Tm_ghost_arrow_3280ec491839a78d1ca91ef641a03728 () Term)
+(declare-fun FStar.Monotonic.HyperHeap.rid_length@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.rid_length>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.rid_tail>
+
+(declare-fun Tm_refine_085b55aa6b726cf07dbab52057ffb51c () Term)
+(declare-fun FStar.Monotonic.HyperHeap.rid_tail (Term) Term)
+
+(declare-fun Tm_arrow_78520bace6740fd696ae7592e1f50b8a () Term)
+(declare-fun FStar.Monotonic.HyperHeap.rid_tail@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.rid_tail>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.includes>
+
+(declare-fun FStar.Monotonic.HyperHeap.includes (Term Term) Term)
+(declare-fun Tm_ghost_arrow_0974bd70c0e6dc8c5552c9a9b244a827 () Term)
+(declare-fun FStar.Monotonic.HyperHeap.includes@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.includes>
+
+
+; <Start encoding let disjoint>
+
+(declare-fun FStar.Monotonic.HyperHeap.disjoint (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperHeap.disjoint@tok () Term)
+
+; </end encoding let disjoint>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_disjoint_includes>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_disjoint_includes (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_disjoint_includes@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_disjoint_includes>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.extends>
+
+(declare-fun FStar.Monotonic.HyperHeap.extends (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperHeap.extends@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.extends>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.parent>
+
+(declare-fun Tm_refine_1cc6c9f8558dddb337b6c1187115cd6a () Term)
+(declare-fun FStar.Monotonic.HyperHeap.parent (Term) Term)
+
+(declare-fun Tm_arrow_4c28f85cf3e2175be134547031d19bee () Term)
+(declare-fun FStar.Monotonic.HyperHeap.parent@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.parent>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_includes_refl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_refl (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_refl@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_includes_refl>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_extends_includes>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_includes (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_includes@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_extends_includes>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_includes_anti_symmetric>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_anti_symmetric (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_anti_symmetric@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_includes_anti_symmetric>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_extends_disjoint>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_disjoint (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_disjoint@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_extends_disjoint>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_extends_parent>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_parent (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_parent@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_extends_parent>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_extends_not_root>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_not_root (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_not_root@tok () Term)
+(declare-fun Tm_refine_cbd24d5334c6bfffa6fd8a84fb787f7a (Term) Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_extends_not_root>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_extends_only_parent>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_only_parent (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_extends_only_parent@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_extends_only_parent>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.mod_set>
+
+(declare-fun FStar.Monotonic.HyperHeap.mod_set (Term) Term)
+(declare-fun Tm_arrow_1ce44d9d7b660b1a3d7844e49869d710 () Term)
+(declare-fun FStar.Monotonic.HyperHeap.mod_set@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.mod_set>
+
+
+; <Start encoding assume FStar.Monotonic.HyperHeap.Mod_set_def>
+
+
+; </end encoding assume FStar.Monotonic.HyperHeap.Mod_set_def>
+
+
+; <Start encoding let modifies>
+
+(declare-fun FStar.Monotonic.HyperHeap.modifies (Term Term Term) Term)
+(declare-fun Tm_arrow_20bc1d7024c63b2383675e1d2233de49 () Term)
+(declare-fun FStar.Monotonic.HyperHeap.modifies@tok () Term)
+
+; </end encoding let modifies>
+
+
+; <Start encoding let modifies_just>
+
+(declare-fun FStar.Monotonic.HyperHeap.modifies_just (Term Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperHeap.modifies_just@tok () Term)
+
+; </end encoding let modifies_just>
+
+
+; <Start encoding let modifies_one>
+
+(declare-fun FStar.Monotonic.HyperHeap.modifies_one (Term Term Term) Term)
+(declare-fun Tm_arrow_c9e8de76549becacc029ffdd2af0ff97 () Term)
+(declare-fun FStar.Monotonic.HyperHeap.modifies_one@tok () Term)
+
+; </end encoding let modifies_one>
+
+
+; <Start encoding let equal_on>
+
+(declare-fun FStar.Monotonic.HyperHeap.equal_on (Term Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperHeap.equal_on@tok () Term)
+
+; </end encoding let equal_on>
+
+
+; <Start encoding let lemma_modifies_just_trans>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_just_trans (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_just_trans@tok () Term)
+
+; </end encoding let lemma_modifies_just_trans>
+
+
+; <Start encoding let lemma_modifies_trans>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_trans (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_trans@tok () Term)
+
+; </end encoding let lemma_modifies_trans>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_includes_trans>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_trans (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_includes_trans@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_includes_trans>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_modset>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_modset (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_modset@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_modset>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_modifies_includes>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_includes (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_includes@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_modifies_includes>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_modifies_includes2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_includes2 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_modifies_includes2@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_modifies_includes2>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_disjoint_parents>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_disjoint_parents (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_disjoint_parents@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_disjoint_parents>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.lemma_include_cons>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_include_cons (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.lemma_include_cons@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.lemma_include_cons>
+
+
+; <Start encoding let disjoint_regions>
+
+(declare-fun FStar.Monotonic.HyperHeap.disjoint_regions (Term Term) Term)
+(declare-fun Tm_arrow_00688474232f98821d9c04b9dffe8c61 () Term)
+(declare-fun FStar.Monotonic.HyperHeap.disjoint_regions@tok () Term)
+
+; </end encoding let disjoint_regions>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.extends_parent>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.extends_parent (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.extends_parent@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperHeap.extends_parent>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.includes_child>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.includes_child (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.includes_child@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperHeap.includes_child>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.root_is_root>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperHeap.root_is_root (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperHeap.root_is_root@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperHeap.root_is_root>
+
+
+; <Start encoding let extend_post>
+
+(declare-fun FStar.Monotonic.HyperHeap.extend_post (Term Term Term Term) Term)
+(declare-fun Tm_arrow_3c2f82ed0ed8ea7e1d6a83dc75ecda59 () Term)
+(declare-fun FStar.Monotonic.HyperHeap.extend_post@tok () Term)
+(declare-fun Tm_arrow_48888a65ae59c26b88d40b27e2460933 () Term)
+(declare-fun Tm_abs_269a5936c29d9b6613e0ba9061d6b37b (Term Term Term Term) Term)
+
+; </end encoding let extend_post>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.extend>
+
+(declare-fun FStar.Monotonic.HyperHeap.extend (Term Term Term) Term)
+(declare-fun Tm_refine_a699e8f550698e7794f1eae9aa746fed (Term Term Term) Term)
+(declare-fun Tm_arrow_5c350fc581e8c646c3484bcf6b3091da () Term)
+(declare-fun FStar.Monotonic.HyperHeap.extend@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperHeap.extend>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.extend_monochrome_freeable>
+
+(declare-fun FStar.Monotonic.HyperHeap.extend_monochrome_freeable (Term Term Term) Term)
+(declare-fun Tm_refine_85be5bcd183ae84c32835fc8fb01e69e (Term Term Term) Term)
+(declare-fun Tm_arrow_ec150d711f5fcd84355d77209a0f4d6b () Term)
+(declare-fun FStar.Monotonic.HyperHeap.extend_monochrome_freeable@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperHeap.extend_monochrome_freeable>
+
+
+; <Start encoding val FStar.Monotonic.HyperHeap.extend_monochrome>
+
+(declare-fun FStar.Monotonic.HyperHeap.extend_monochrome (Term Term) Term)
+(declare-fun Tm_refine_895293590f5cae5325f393b7019bf751 (Term Term) Term)
+(declare-fun Tm_arrow_07bc2034787bd7b8346c79efc7152f5e () Term)
+(declare-fun FStar.Monotonic.HyperHeap.extend_monochrome@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperHeap.extend_monochrome>
+
+
+; End Externals for interface FStar.Monotonic.HyperHeap
+
+
+; Externals for interface FStar.Monotonic.HyperStack
+
+
+; <Start encoding let is_in>
+
+(declare-fun FStar.Monotonic.HyperStack.is_in (Term Term) Term)
+(declare-fun Tm_arrow_98472382c4039c4fb6e189014e134e46 () Term)
+(declare-fun FStar.Monotonic.HyperStack.is_in@tok () Term)
+
+; </end encoding let is_in>
+
+
+; <Start encoding let is_stack_region>
+
+(declare-fun FStar.Monotonic.HyperStack.is_stack_region (Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.is_stack_region@tok () Term)
+
+; </end encoding let is_stack_region>
+
+
+; <Start encoding let is_heap_color>
+
+(declare-fun FStar.Monotonic.HyperStack.is_heap_color (Term) Term)
+(declare-fun Tm_arrow_2b00b574e3c859da902fc1b8ce85c0f1 () Term)
+(declare-fun FStar.Monotonic.HyperStack.is_heap_color@tok () Term)
+
+; </end encoding let is_heap_color>
+
+
+; <Start encoding let is_eternal_region>
+
+(declare-fun FStar.Monotonic.HyperStack.is_eternal_region (Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.is_eternal_region@tok () Term)
+
+; </end encoding let is_eternal_region>
+
+
+; <Start encoding let is_eternal_region_hs>
+
+(declare-fun FStar.Monotonic.HyperStack.is_eternal_region_hs (Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.is_eternal_region_hs@tok () Term)
+
+; </end encoding let is_eternal_region_hs>
+
+
+; <Start encoding let sid>
+
+(declare-fun FStar.Monotonic.HyperStack.sid () Term)
+(declare-fun Tm_refine_c1ce603279aac7a7c378033ea416a653 () Term)
+
+; </end encoding let sid>
+
+
+; <Start encoding let is_above>
+
+(declare-fun FStar.Monotonic.HyperStack.is_above (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.is_above@tok () Term)
+
+; </end encoding let is_above>
+
+
+; <Start encoding let is_just_below>
+
+(declare-fun FStar.Monotonic.HyperStack.is_just_below (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.is_just_below@tok () Term)
+
+; </end encoding let is_just_below>
+
+
+; <Start encoding let is_below>
+
+(declare-fun FStar.Monotonic.HyperStack.is_below (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.is_below@tok () Term)
+
+; </end encoding let is_below>
+
+
+; <Start encoding let is_strictly_below>
+
+(declare-fun FStar.Monotonic.HyperStack.is_strictly_below (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.is_strictly_below@tok () Term)
+
+; </end encoding let is_strictly_below>
+
+
+; <Start encoding let is_strictly_above>
+
+(declare-fun FStar.Monotonic.HyperStack.is_strictly_above (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.is_strictly_above@tok () Term)
+
+; </end encoding let is_strictly_above>
+
+
+; <Start encoding let map_invariant_predicate>
+
+(declare-fun FStar.Monotonic.HyperStack.map_invariant_predicate (Term) Term)
+(declare-fun Tm_arrow_997df7a914ebeafc2ba149725a334c28 () Term)
+(declare-fun FStar.Monotonic.HyperStack.map_invariant_predicate@tok () Term)
+
+; </end encoding let map_invariant_predicate>
+
+
+; <Start encoding let downward_closed_predicate>
+
+(declare-fun FStar.Monotonic.HyperStack.downward_closed_predicate (Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.downward_closed_predicate@tok () Term)
+
+; </end encoding let downward_closed_predicate>
+
+
+; <Start encoding let tip_top_predicate>
+
+(declare-fun FStar.Monotonic.HyperStack.tip_top_predicate (Term Term) Term)
+(declare-fun Tm_arrow_7df774c88c8cef87d5338082c4add0dc () Term)
+(declare-fun FStar.Monotonic.HyperStack.tip_top_predicate@tok () Term)
+
+; </end encoding let tip_top_predicate>
+
+
+; <Start encoding let rid_ctr_pred_predicate>
+
+(declare-fun FStar.Monotonic.HyperStack.rid_ctr_pred_predicate (Term Term) Term)
+(declare-fun Tm_arrow_7285a9d9213dc0d0f9fb806920c1c44d () Term)
+(declare-fun FStar.Monotonic.HyperStack.rid_ctr_pred_predicate@tok () Term)
+
+; </end encoding let rid_ctr_pred_predicate>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.map_invariant>
+
+(declare-fun FStar.Monotonic.HyperStack.map_invariant (Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.map_invariant@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.map_invariant>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.downward_closed>
+
+(declare-fun FStar.Monotonic.HyperStack.downward_closed (Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.downward_closed@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.downward_closed>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.tip_top>
+
+(declare-fun FStar.Monotonic.HyperStack.tip_top (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.tip_top@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.tip_top>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.rid_ctr_pred>
+
+(declare-fun FStar.Monotonic.HyperStack.rid_ctr_pred (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.rid_ctr_pred@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.rid_ctr_pred>
+
+
+; <Start encoding let is_tip>
+
+(declare-fun FStar.Monotonic.HyperStack.is_tip (Term Term) Term)
+(declare-fun Tm_arrow_827d51b58b1f545009480b9357ddb55c () Term)
+(declare-fun FStar.Monotonic.HyperStack.is_tip@tok () Term)
+
+; </end encoding let is_tip>
+
+
+; <Start encoding let is_wf_with_ctr_and_tip>
+
+(declare-fun FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip (Term Term Term) Term)
+(declare-fun Tm_arrow_b82a248445c0b0e4174cee49920de04b () Term)
+(declare-fun FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip@tok () Term)
+
+; </end encoding let is_wf_with_ctr_and_tip>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.mem'>
+
+(declare-fun FStar.Monotonic.HyperStack.mem_ () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.mem'>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.mk_mem>
+
+(declare-fun FStar.Monotonic.HyperStack.mk_mem (Term Term Term) Term)
+(declare-fun Tm_arrow_1bee5bc877c09107d0db9346176d4356 () Term)
+(declare-fun FStar.Monotonic.HyperStack.mk_mem@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.mk_mem>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.get_hmap>
+
+(declare-fun FStar.Monotonic.HyperStack.get_hmap (Term) Term)
+(declare-fun Tm_arrow_5b2077c44231589180b4ae3aea09ba98 () Term)
+(declare-fun FStar.Monotonic.HyperStack.get_hmap@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.get_hmap>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.get_rid_ctr>
+
+(declare-fun FStar.Monotonic.HyperStack.get_rid_ctr (Term) Term)
+(declare-fun Tm_arrow_de204c147a8a221f2b09accedd4ec026 () Term)
+(declare-fun FStar.Monotonic.HyperStack.get_rid_ctr@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.get_rid_ctr>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.get_tip>
+
+(declare-fun FStar.Monotonic.HyperStack.get_tip (Term) Term)
+(declare-fun Tm_arrow_27d5d52a8bf4afa759c5b5b1800059d7 () Term)
+(declare-fun FStar.Monotonic.HyperStack.get_tip@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.get_tip>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_mk_mem'_projectors>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_mk_mem__projectors (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_mk_mem__projectors@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_mk_mem'_projectors>
+
+
+; <Start encoding let mem>
+
+(declare-fun FStar.Monotonic.HyperStack.mem () Term)
+(declare-fun Tm_refine_05e15190c946858f68c69156f585f95a () Term)
+
+; </end encoding let mem>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_mem_projectors_are_in_wf_relation>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_mem_projectors_are_in_wf_relation (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_mem_projectors_are_in_wf_relation@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_mem_projectors_are_in_wf_relation>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_intro (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_intro@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_intro>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_elim (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_elim@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_is_wf_ctr_and_tip_elim>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_map_invariant>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_map_invariant (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_map_invariant@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_map_invariant>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_downward_closed>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_downward_closed (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_downward_closed@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_downward_closed>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_tip_top>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_tip_top (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_tip_top@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_tip_top>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_tip_top_smt>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_tip_top_smt (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_tip_top_smt@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_tip_top_smt>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_rid_ctr_pred>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_rid_ctr_pred (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_rid_ctr_pred@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_rid_ctr_pred>
+
+
+; <Start encoding let empty_mem>
+
+(declare-fun FStar.Monotonic.HyperStack.empty_mem (Dummy_sort) Term)
+
+; </end encoding let empty_mem>
+
+
+; <Start encoding let heap_region_does_not_overlap_with_tip>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.heap_region_does_not_overlap_with_tip (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.heap_region_does_not_overlap_with_tip@tok () Term)
+
+; </end encoding let heap_region_does_not_overlap_with_tip>
+
+
+; <Start encoding let poppable>
+
+(declare-fun FStar.Monotonic.HyperStack.poppable (Term) Term)
+(declare-fun Tm_arrow_546cd6d8513ee5ac624826e72053296e () Term)
+(declare-fun FStar.Monotonic.HyperStack.poppable@tok () Term)
+
+; </end encoding let poppable>
+
+
+; <Start encoding let remove_elt>
+
+(declare-fun FStar.Monotonic.HyperStack.remove_elt (Term Term Term) Term)
+(declare-fun Tm_arrow_c7267a504a18289d327360e384c4260d () Term)
+(declare-fun FStar.Monotonic.HyperStack.remove_elt@tok () Term)
+
+; </end encoding let remove_elt>
+
+
+; <Start encoding let popped>
+
+(declare-fun FStar.Monotonic.HyperStack.popped (Term Term) Term)
+(declare-fun Tm_arrow_9b982241dc761f1777c4e1f2e5ee9f6f () Term)
+(declare-fun FStar.Monotonic.HyperStack.popped@tok () Term)
+
+; </end encoding let popped>
+
+
+; <Start encoding let pop>
+
+(declare-fun Tm_refine_4a9f5a632ccb67c4adcfd65a1dab0c7c () Term)
+(declare-fun FStar.Monotonic.HyperStack.pop (Term) Term)
+
+(declare-fun Tm_arrow_f07cd46dd1f36155af4f12fa7aab3efe () Term)
+(declare-fun FStar.Monotonic.HyperStack.pop@tok () Term)
+
+
+; </end encoding let pop>
+
+
+; <Start encoding type FStar.Monotonic.HyperStack.mreference'>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Monotonic.HyperStack.mreference_ (Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Monotonic.HyperStack.mreference_@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Monotonic.HyperStack.MkRef (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Monotonic.HyperStack.MkRef_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Monotonic.HyperStack.MkRef_rel (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Monotonic.HyperStack.MkRef_frame (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Monotonic.HyperStack.MkRef_ref (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Monotonic.HyperStack.MkRef
+(declare-fun FStar.Monotonic.HyperStack.MkRef@tok () Term)
+(declare-fun Tm_arrow_48f85f15527c9a2301806ab1cde0f498 () Term)
+
+; <start constructor FStar.Monotonic.HyperStack.mreference_>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Monotonic.HyperStack.mreference_ ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+163)
+(exists ((@x0 Term) (@x1 Term))
+ (! (= __@x0
+(FStar.Monotonic.HyperStack.mreference_ @x0
+@x1))
+ 
+;;no pats
+:qid is-FStar.Monotonic.HyperStack.mreference_))))
+
+; </end constructor FStar.Monotonic.HyperStack.mreference_>
+
+
+; <start constructor FStar.Monotonic.HyperStack.MkRef>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Monotonic.HyperStack.MkRef ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+170)
+(= __@x0
+(FStar.Monotonic.HyperStack.MkRef (FStar.Monotonic.HyperStack.MkRef_a __@x0)
+(FStar.Monotonic.HyperStack.MkRef_rel __@x0)
+(FStar.Monotonic.HyperStack.MkRef_frame __@x0)
+(FStar.Monotonic.HyperStack.MkRef_ref __@x0)))))
+
+; </end constructor FStar.Monotonic.HyperStack.MkRef>
+
+
+; </end encoding type FStar.Monotonic.HyperStack.mreference'>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.uu___is_MkRef>
+
+(declare-fun FStar.Monotonic.HyperStack.uu___is_MkRef (Term Term Term) Term)
+(declare-fun Tm_arrow_bf852805425ee7a1dd5e7d5557fca875 () Term)
+(declare-fun FStar.Monotonic.HyperStack.uu___is_MkRef@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.uu___is_MkRef>
+
+
+; <Skipped let uu___is_MkRef/>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.__proj__MkRef__item__frame>
+
+(declare-fun FStar.Monotonic.HyperStack.__proj__MkRef__item__frame (Term Term Term) Term)
+(declare-fun Tm_arrow_414898075afacec684feebc9e5ad18f0 () Term)
+(declare-fun FStar.Monotonic.HyperStack.__proj__MkRef__item__frame@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.__proj__MkRef__item__frame>
+
+
+; <Skipped let __proj__MkRef__item__frame/>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.__proj__MkRef__item__ref>
+
+(declare-fun FStar.Monotonic.HyperStack.__proj__MkRef__item__ref (Term Term Term) Term)
+(declare-fun Tm_arrow_4782baeaa5dd029fe41ef743f5cecc90 () Term)
+(declare-fun FStar.Monotonic.HyperStack.__proj__MkRef__item__ref@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.__proj__MkRef__item__ref>
+
+
+; <Skipped let __proj__MkRef__item__ref/>
+
+
+; <Start encoding let mreference>
+
+(declare-fun FStar.Monotonic.HyperStack.mreference (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.mreference@tok () Term)
+
+; </end encoding let mreference>
+
+
+; <Start encoding let frameOf>
+
+(declare-fun FStar.Monotonic.HyperStack.frameOf (Term Term Term) Term)
+(declare-fun Tm_arrow_4d3c3931a5ae4ceb417aa66c3de41479 () Term)
+(declare-fun FStar.Monotonic.HyperStack.frameOf@tok () Term)
+
+; </end encoding let frameOf>
+
+
+; <Start encoding let mk_mreference>
+
+(declare-fun FStar.Monotonic.HyperStack.mk_mreference (Term Term Term Term) Term)
+(declare-fun Tm_arrow_193191bb86dc919dc9d7148212c0a3e8 () Term)
+(declare-fun FStar.Monotonic.HyperStack.mk_mreference@tok () Term)
+
+; </end encoding let mk_mreference>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.as_ref>
+
+(declare-fun FStar.Monotonic.HyperStack.as_ref (Term Term Term) Term)
+(declare-fun Tm_arrow_f2aea05e253bbf925cf94ff24c2876cd () Term)
+(declare-fun FStar.Monotonic.HyperStack.as_ref@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.as_ref>
+
+
+; <Start encoding let as_addr>
+
+(declare-fun FStar.Monotonic.HyperStack.as_addr (Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_5b1cb5d82f88103d247469c73aa33921 () Term)
+(declare-fun FStar.Monotonic.HyperStack.as_addr@tok () Term)
+
+; </end encoding let as_addr>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_as_ref_inj>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_as_ref_inj (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_as_ref_inj@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_as_ref_inj>
+
+
+; <Start encoding let is_mm>
+
+(declare-fun FStar.Monotonic.HyperStack.is_mm (Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_104da30ccab2258bce7d07b8b0d0c618 () Term)
+(declare-fun FStar.Monotonic.HyperStack.is_mm@tok () Term)
+
+; </end encoding let is_mm>
+
+
+; <Start encoding let mstackref>
+
+(declare-fun FStar.Monotonic.HyperStack.mstackref (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.mstackref@tok () Term)
+(declare-fun Tm_refine_3415ed6c7abc7d0c55726285f3ae5f3f (Term Term) Term)
+
+; </end encoding let mstackref>
+
+
+; <Start encoding let mref>
+
+(declare-fun FStar.Monotonic.HyperStack.mref (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.mref@tok () Term)
+(declare-fun Tm_refine_4deaad73cd92bc948bb28924e869c4ab (Term Term) Term)
+
+; </end encoding let mref>
+
+
+; <Start encoding let mmmstackref>
+
+(declare-fun FStar.Monotonic.HyperStack.mmmstackref (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.mmmstackref@tok () Term)
+(declare-fun Tm_refine_077942947f03017592acbd4457f123a1 (Term Term) Term)
+
+; </end encoding let mmmstackref>
+
+
+; <Start encoding let mmmref>
+
+(declare-fun FStar.Monotonic.HyperStack.mmmref (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.mmmref@tok () Term)
+(declare-fun Tm_refine_433a6ba0587d1ca6a1ced9d7f162c4b1 (Term Term) Term)
+
+; </end encoding let mmmref>
+
+
+; <Start encoding let s_mref>
+
+(declare-fun FStar.Monotonic.HyperStack.s_mref (Term Term Term) Term)
+(declare-fun Tm_arrow_0955d13bb7bafe0ab120f4ece342f3f3 () Term)
+(declare-fun FStar.Monotonic.HyperStack.s_mref@tok () Term)
+(declare-fun Tm_refine_4c99049ff36722c69a2742a31dbda2b0 (Term Term Term) Term)
+
+; </end encoding let s_mref>
+
+
+; <Start encoding let live_region>
+
+(declare-fun FStar.Monotonic.HyperStack.live_region (Term Term) Term)
+(declare-fun Tm_arrow_6938252efeb34531b3379f5c2f722a73 () Term)
+(declare-fun FStar.Monotonic.HyperStack.live_region@tok () Term)
+
+; </end encoding let live_region>
+
+
+; <Start encoding let contains>
+
+(declare-fun FStar.Monotonic.HyperStack.contains (Term Term Term Term) Term)
+(declare-fun Tm_arrow_2ce4a038953d56734647c4bcc81f0778 () Term)
+(declare-fun FStar.Monotonic.HyperStack.contains@tok () Term)
+
+; </end encoding let contains>
+
+
+; <Start encoding let unused_in>
+
+(declare-fun FStar.Monotonic.HyperStack.unused_in (Term Term Term Term) Term)
+(declare-fun Tm_arrow_9bdaed72900d49bb4988c0c01c469742 () Term)
+(declare-fun FStar.Monotonic.HyperStack.unused_in@tok () Term)
+
+; </end encoding let unused_in>
+
+
+; <Start encoding let contains_ref_in_its_region>
+
+(declare-fun FStar.Monotonic.HyperStack.contains_ref_in_its_region (Term Term Term Term) Term)
+(declare-fun Tm_arrow_7096958e2403010b9fdc37d79fd4e3e2 () Term)
+(declare-fun FStar.Monotonic.HyperStack.contains_ref_in_its_region@tok () Term)
+
+; </end encoding let contains_ref_in_its_region>
+
+
+; <Start encoding let fresh_ref>
+
+(declare-fun FStar.Monotonic.HyperStack.fresh_ref (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_df8b559c9576d8497a24dd7eb23c85dc () Term)
+(declare-fun FStar.Monotonic.HyperStack.fresh_ref@tok () Term)
+
+; </end encoding let fresh_ref>
+
+
+; <Start encoding let fresh_region>
+
+(declare-fun FStar.Monotonic.HyperStack.fresh_region (Term Term Term) Term)
+(declare-fun Tm_arrow_1711726a7704833722825b5a56be830f () Term)
+(declare-fun FStar.Monotonic.HyperStack.fresh_region@tok () Term)
+
+; </end encoding let fresh_region>
+
+
+; <Start encoding let sel>
+
+(declare-fun FStar.Monotonic.HyperStack.sel (Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_da3a3381b5b1ab77954e6bff14854feb () Term)
+(declare-fun FStar.Monotonic.HyperStack.sel@tok () Term)
+
+; </end encoding let sel>
+
+
+; <Start encoding let upd>
+
+(declare-fun Tm_refine_d58d7e3b4b6ce757231e9089061120a0 (Term Term Term) Term)
+(declare-fun FStar.Monotonic.HyperStack.upd (Term Term Term Term Term) Term)
+
+(declare-fun Tm_ghost_arrow_c996fa8dd1022ef46a081fe8a2b75eb9 () Term)
+(declare-fun FStar.Monotonic.HyperStack.upd@tok () Term)
+
+
+; </end encoding let upd>
+
+
+; <Start encoding let alloc>
+
+(declare-fun Tm_refine_ad20a5ca24eede13005e3284b6c2d373 (Term) Term)
+(declare-fun FStar.Monotonic.HyperStack.alloc (Term Term Term Term Term Term) Term)
+
+(declare-fun Tm_refine_6d70f3cfce1bc3bbf4818c3b445e0424 (Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_9753433918dfe0ffcaec5aef968e8747 () Term)
+(declare-fun FStar.Monotonic.HyperStack.alloc@tok () Term)
+
+
+
+; </end encoding let alloc>
+
+
+; <Start encoding let free>
+
+(declare-fun Tm_refine_2d11d4ede243934a578949d9aa1c906a (Term Term) Term)
+(declare-fun Tm_refine_548ef817ca26695e20678a9213795842 (Term Term Term) Term)
+(declare-fun FStar.Monotonic.HyperStack.free (Term Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_958328828628bea6229f5e623dac51fc () Term)
+(declare-fun FStar.Monotonic.HyperStack.free@tok () Term)
+
+
+
+; </end encoding let free>
+
+
+; <Start encoding let upd_tot>
+
+(declare-fun Tm_refine_778b19525c5cb6c7b65c06252db153f7 (Term Term Term) Term)
+(declare-fun FStar.Monotonic.HyperStack.upd_tot (Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_206c46c9a18dd03e5ac7c9b5c279ac76 () Term)
+(declare-fun FStar.Monotonic.HyperStack.upd_tot@tok () Term)
+
+
+; </end encoding let upd_tot>
+
+
+; <Start encoding let sel_tot>
+
+
+(declare-fun FStar.Monotonic.HyperStack.sel_tot (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_2bb505300860292e7879c7f06bf5c252 () Term)
+(declare-fun FStar.Monotonic.HyperStack.sel_tot@tok () Term)
+
+
+; </end encoding let sel_tot>
+
+
+; <Start encoding let fresh_frame>
+
+(declare-fun FStar.Monotonic.HyperStack.fresh_frame (Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.fresh_frame@tok () Term)
+
+; </end encoding let fresh_frame>
+
+
+; <Start encoding let hs_push_frame>
+
+(declare-fun FStar.Monotonic.HyperStack.hs_push_frame (Term) Term)
+(declare-fun Tm_refine_b7d1addc48193ac698e1fc2904742dbd (Term) Term)
+(declare-fun Tm_arrow_c3285374add210f4c5225f85b0d6b6af () Term)
+(declare-fun FStar.Monotonic.HyperStack.hs_push_frame@tok () Term)
+
+
+; </end encoding let hs_push_frame>
+
+
+; <Start encoding let new_eternal_region>
+
+(declare-fun Tm_refine_70adfa3d90da23bbd361e2fc8530de01 (Term) Term)
+(declare-fun Tm_refine_e033ceacea9c846f5627c822e84f9414 () Term)
+(declare-fun FStar.Monotonic.HyperStack.new_eternal_region (Term Term Term) Term)
+
+
+(declare-fun Tm_refine_a88d6b2bc46617f49b283f0ff73bd7cf (Term) Term)
+(declare-fun Tm_arrow_5ed1a2f68d410b8de569b249f8f9c797 () Term)
+(declare-fun FStar.Monotonic.HyperStack.new_eternal_region@tok () Term)
+
+
+
+
+; </end encoding let new_eternal_region>
+
+
+; <Start encoding let new_freeable_heap_region>
+
+
+(declare-fun FStar.Monotonic.HyperStack.new_freeable_heap_region (Term Term) Term)
+
+(declare-fun Tm_refine_1edb6214e12e1252d3e7d5e5b21608ca (Term) Term)
+(declare-fun Tm_arrow_f5c071f6f5e62653a5f8832c220731b1 () Term)
+(declare-fun FStar.Monotonic.HyperStack.new_freeable_heap_region@tok () Term)
+
+
+
+; </end encoding let new_freeable_heap_region>
+
+
+; <Start encoding let free_heap_region>
+
+(declare-fun Tm_refine_4c7fb9b4fa48e3fdc90fc02ede2b941d (Term) Term)
+(declare-fun FStar.Monotonic.HyperStack.free_heap_region (Term Term) Term)
+
+(declare-fun Tm_arrow_7759e3626bb9975b5dac006d882496ed () Term)
+(declare-fun FStar.Monotonic.HyperStack.free_heap_region@tok () Term)
+
+
+; </end encoding let free_heap_region>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_sel_same_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_sel_same_addr (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_sel_same_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_sel_same_addr>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_upd_same_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_upd_same_addr (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_upd_same_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_upd_same_addr>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.mreference_distinct_sel_disjoint>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.mreference_distinct_sel_disjoint (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.mreference_distinct_sel_disjoint@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.mreference_distinct_sel_disjoint>
+
+
+; <Start encoding let modifies>
+
+(declare-fun FStar.Monotonic.HyperStack.modifies (Term Term Term) Term)
+(declare-fun Tm_arrow_35b560eb432f9cf5e43231bfa666bd38 () Term)
+(declare-fun FStar.Monotonic.HyperStack.modifies@tok () Term)
+
+; </end encoding let modifies>
+
+
+; <Start encoding let modifies_transitively>
+
+(declare-fun FStar.Monotonic.HyperStack.modifies_transitively (Term Term Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.modifies_transitively@tok () Term)
+
+; </end encoding let modifies_transitively>
+
+
+; <Start encoding let heap_only>
+
+(declare-fun FStar.Monotonic.HyperStack.heap_only (Term) Term)
+
+(declare-fun FStar.Monotonic.HyperStack.heap_only@tok () Term)
+
+; </end encoding let heap_only>
+
+
+; <Start encoding let top_frame>
+
+(declare-fun FStar.Monotonic.HyperStack.top_frame (Term) Term)
+(declare-fun Tm_arrow_ba8e2bc5d986e5ef6f22c693f8393d6c () Term)
+(declare-fun FStar.Monotonic.HyperStack.top_frame@tok () Term)
+
+; </end encoding let top_frame>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.modifies_drop_tip>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.modifies_drop_tip (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.modifies_drop_tip@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.modifies_drop_tip>
+
+
+; <Start encoding let modifies_one>
+
+(declare-fun FStar.Monotonic.HyperStack.modifies_one (Term Term Term) Term)
+(declare-fun Tm_arrow_e64e59d46e201be37bd9843047c52a93 () Term)
+(declare-fun FStar.Monotonic.HyperStack.modifies_one@tok () Term)
+
+; </end encoding let modifies_one>
+
+
+; <Start encoding let modifies_ref>
+
+(declare-fun FStar.Monotonic.HyperStack.modifies_ref (Term Term Term Term) Term)
+(declare-fun Tm_arrow_a9c0264064751299d8ce645e9e1ce7c7 () Term)
+(declare-fun FStar.Monotonic.HyperStack.modifies_ref@tok () Term)
+
+; </end encoding let modifies_ref>
+
+
+; <Start encoding type FStar.Monotonic.HyperStack.some_ref>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Monotonic.HyperStack.some_ref () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Monotonic.HyperStack.Ref (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Monotonic.HyperStack.Ref_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Monotonic.HyperStack.Ref_rel (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Monotonic.HyperStack.Ref__2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Monotonic.HyperStack.Ref
+(declare-fun FStar.Monotonic.HyperStack.Ref@tok () Term)
+(declare-fun Tm_arrow_dda32a8506aa63db1ac535b1ad92afc8 () Term)
+
+; <start constructor FStar.Monotonic.HyperStack.some_ref>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Monotonic.HyperStack.some_ref ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+291)
+(= __@x0
+FStar.Monotonic.HyperStack.some_ref)))
+
+; </end constructor FStar.Monotonic.HyperStack.some_ref>
+
+
+; <start constructor FStar.Monotonic.HyperStack.Ref>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Monotonic.HyperStack.Ref ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+297)
+(= __@x0
+(FStar.Monotonic.HyperStack.Ref (FStar.Monotonic.HyperStack.Ref_a __@x0)
+(FStar.Monotonic.HyperStack.Ref_rel __@x0)
+(FStar.Monotonic.HyperStack.Ref__2 __@x0)))))
+
+; </end constructor FStar.Monotonic.HyperStack.Ref>
+
+
+; </end encoding type FStar.Monotonic.HyperStack.some_ref>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.uu___is_Ref>
+
+(declare-fun FStar.Monotonic.HyperStack.uu___is_Ref (Term) Term)
+(declare-fun Tm_arrow_4c678f39425ad52a920c838c6688a697 () Term)
+(declare-fun FStar.Monotonic.HyperStack.uu___is_Ref@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.uu___is_Ref>
+
+
+; <Skipped let uu___is_Ref/>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.__proj__Ref__item__a>
+
+(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item__a (Term) Term)
+(declare-fun Tm_arrow_5270374555e0647452398f9b50180555 () Term)
+(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item__a@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.__proj__Ref__item__a>
+
+
+; <Skipped let __proj__Ref__item__a/>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.__proj__Ref__item__rel>
+
+(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item__rel (Term) Term)
+(declare-fun Tm_arrow_718f36c619c7630e2fb45c52cce2366c () Term)
+(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item__rel@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.__proj__Ref__item__rel>
+
+
+; <Skipped let __proj__Ref__item__rel/>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.__proj__Ref__item___2>
+
+(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item___2 (Term) Term)
+(declare-fun Tm_arrow_806c24414e6bd3319b784690cfbd8f7f () Term)
+(declare-fun FStar.Monotonic.HyperStack.__proj__Ref__item___2@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.__proj__Ref__item___2>
+
+
+; <Skipped let __proj__Ref__item___2/>
+
+
+; <Start encoding let some_refs>
+
+(declare-fun FStar.Monotonic.HyperStack.some_refs () Term)
+
+; </end encoding let some_refs>
+
+
+; <Start encoding let rec regions_of_some_refs>
+
+(declare-fun FStar.Monotonic.HyperStack.regions_of_some_refs (Term) Term)
+(declare-fun Tm_arrow_1a301db6553c90fa6448f04e0d6c188c () Term)
+(declare-fun FStar.Monotonic.HyperStack.regions_of_some_refs@tok () Term)
+
+; </end encoding let rec regions_of_some_refs>
+
+
+; <Start encoding let rec refs_in_region>
+
+(declare-fun FStar.Monotonic.HyperStack.refs_in_region (Term Term) Term)
+(declare-fun Tm_ghost_arrow_27428d2e2ba695b61412787724fcb6d3 () Term)
+(declare-fun FStar.Monotonic.HyperStack.refs_in_region@tok () Term)
+
+; </end encoding let rec refs_in_region>
+
+
+; <Start encoding let rec modifies_some_refs>
+
+(declare-fun FStar.Monotonic.HyperStack.modifies_some_refs (Term Term Term Term) Term)
+(declare-fun Tm_arrow_81fbd36f40f87c76dcb4bfdd205c8713 () Term)
+(declare-fun FStar.Monotonic.HyperStack.modifies_some_refs@tok () Term)
+
+; </end encoding let rec modifies_some_refs>
+
+
+; <Start encoding let norm_steps>
+
+(declare-fun FStar.Monotonic.HyperStack.norm_steps (Dummy_sort) Term)
+
+; </end encoding let norm_steps>
+
+
+; <Start encoding let mods>
+
+(declare-fun FStar.Monotonic.HyperStack.mods (Term Term Term) Term)
+(declare-fun Tm_arrow_4696b6dec38e96b0ff2cc0f77b9b9d25 () Term)
+(declare-fun FStar.Monotonic.HyperStack.mods@tok () Term)
+
+; </end encoding let mods>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.eternal_disjoint_from_tip>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.eternal_disjoint_from_tip (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.eternal_disjoint_from_tip@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.eternal_disjoint_from_tip>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.above_tip_is_live>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.above_tip_is_live (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.above_tip_is_live@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.above_tip_is_live>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_cancel_same_mref_upd>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_cancel_same_mref_upd (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_cancel_same_mref_upd@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_cancel_same_mref_upd>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_upd_with_sel>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_upd_with_sel (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_upd_with_sel@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_upd_with_sel>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_commute_distinct_upds>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_commute_distinct_upds (Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_heap_equality_commute_distinct_upds@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_heap_equality_commute_distinct_upds>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.lemma_next_addr_contained_refs_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_next_addr_contained_refs_addr (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.lemma_next_addr_contained_refs_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.lemma_next_addr_contained_refs_addr>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.aref>
+
+(declare-fun FStar.Monotonic.HyperStack.aref () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.aref>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.dummy_aref>
+
+(declare-fun FStar.Monotonic.HyperStack.dummy_aref (Dummy_sort) Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.dummy_aref>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.aref_equal>
+
+(declare-fun FStar.Monotonic.HyperStack.aref_equal (Term Term) Term)
+
+(declare-fun Tm_ghost_arrow_1b7cb1169620f43f85e290e3d858a7a8 () Term)
+(declare-fun FStar.Monotonic.HyperStack.aref_equal@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperStack.aref_equal>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.aref_of>
+
+(declare-fun FStar.Monotonic.HyperStack.aref_of (Term Term Term) Term)
+(declare-fun Tm_arrow_48d0e5201edd70ed900a8b3081c63c84 () Term)
+(declare-fun FStar.Monotonic.HyperStack.aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.aref_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.frameOf_aref>
+
+(declare-fun FStar.Monotonic.HyperStack.frameOf_aref (Term) Term)
+(declare-fun Tm_ghost_arrow_079ff324706806c18345a3a03ce4f48a () Term)
+(declare-fun FStar.Monotonic.HyperStack.frameOf_aref@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.frameOf_aref>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.frameOf_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.frameOf_aref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.frameOf_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.frameOf_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.aref_as_addr>
+
+(declare-fun FStar.Monotonic.HyperStack.aref_as_addr (Term) Term)
+(declare-fun Tm_ghost_arrow_c2454872dc1e352c00eef3d9c96bf5f9 () Term)
+(declare-fun FStar.Monotonic.HyperStack.aref_as_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.aref_as_addr>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.aref_as_addr_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.aref_as_addr_aref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.aref_as_addr_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.aref_as_addr_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.aref_is_mm>
+
+(declare-fun FStar.Monotonic.HyperStack.aref_is_mm (Term) Term)
+(declare-fun Tm_ghost_arrow_2982c7f39800aa50cc8a5de0eb014a42 () Term)
+(declare-fun FStar.Monotonic.HyperStack.aref_is_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.aref_is_mm>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.is_mm_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.is_mm_aref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.is_mm_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.is_mm_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.aref_unused_in>
+
+(declare-fun FStar.Monotonic.HyperStack.aref_unused_in (Term Term) Term)
+(declare-fun Tm_arrow_ccdb2c897f7a240c3ca4f0401e676755 () Term)
+(declare-fun FStar.Monotonic.HyperStack.aref_unused_in@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.aref_unused_in>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.unused_in_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.unused_in_aref_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.unused_in_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.unused_in_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.contains_aref_unused_in>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.contains_aref_unused_in (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.contains_aref_unused_in@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.contains_aref_unused_in>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.aref_live_at>
+
+(declare-fun FStar.Monotonic.HyperStack.aref_live_at (Term Term Term Term) Term)
+(declare-fun Tm_arrow_2d9f5b6f0186d850e2a4bf1e4711933d () Term)
+(declare-fun FStar.Monotonic.HyperStack.aref_live_at@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.aref_live_at>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.greference_of>
+
+(declare-fun FStar.Monotonic.HyperStack.greference_of (Term Term Term) Term)
+(declare-fun Tm_refine_1d7f81705c35971e00b909e37163cd25 (Term Term) Term)
+(declare-fun Tm_ghost_arrow_d63b397d1230bc96e740496df9065379 () Term)
+(declare-fun FStar.Monotonic.HyperStack.greference_of@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperStack.greference_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.reference_of>
+
+(declare-fun FStar.Monotonic.HyperStack.reference_of (Term Term Term Term) Term)
+(declare-fun Tm_refine_81a0d54c78434fc678ec7202c4b9fc09 (Term Term Term Term) Term)
+(declare-fun Tm_arrow_ef3959e407cf35b6478a97065b8b015b () Term)
+(declare-fun FStar.Monotonic.HyperStack.reference_of@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.HyperStack.reference_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.aref_live_at_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.aref_live_at_aref_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.aref_live_at_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.aref_live_at_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.contains_greference_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.contains_greference_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.contains_greference_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.contains_greference_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.aref_of_greference_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.aref_of_greference_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.aref_of_greference_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.aref_of_greference_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.frameOf_greference_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.frameOf_greference_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.frameOf_greference_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.frameOf_greference_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.as_addr_greference_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.as_addr_greference_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.as_addr_greference_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.as_addr_greference_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.is_mm_greference_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.is_mm_greference_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.is_mm_greference_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.is_mm_greference_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.unused_in_greference_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.unused_in_greference_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.unused_in_greference_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.unused_in_greference_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.sel_reference_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.sel_reference_of (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.sel_reference_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.sel_reference_of>
+
+
+; <Start encoding val FStar.Monotonic.HyperStack.upd_reference_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.HyperStack.upd_reference_of (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.HyperStack.upd_reference_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.HyperStack.upd_reference_of>
+
+
+; End Externals for interface FStar.Monotonic.HyperStack
+
+
+; Externals for module FStar.HyperStack
+
+
+; <Start encoding let reference>
+
+(declare-fun FStar.HyperStack.reference (Term) Term)
+
+(declare-fun FStar.HyperStack.reference@tok () Term)
+
+; </end encoding let reference>
+
+
+; <Start encoding let stackref>
+
+(declare-fun FStar.HyperStack.stackref (Term) Term)
+
+(declare-fun FStar.HyperStack.stackref@tok () Term)
+
+; </end encoding let stackref>
+
+
+; <Start encoding let ref>
+
+(declare-fun FStar.HyperStack.ref (Term) Term)
+
+(declare-fun FStar.HyperStack.ref@tok () Term)
+
+; </end encoding let ref>
+
+
+; <Start encoding let mmstackref>
+
+(declare-fun FStar.HyperStack.mmstackref (Term) Term)
+
+(declare-fun FStar.HyperStack.mmstackref@tok () Term)
+
+; </end encoding let mmstackref>
+
+
+; <Start encoding let mmref>
+
+(declare-fun FStar.HyperStack.mmref (Term) Term)
+
+(declare-fun FStar.HyperStack.mmref@tok () Term)
+
+; </end encoding let mmref>
+
+
+; <Start encoding let s_ref>
+
+(declare-fun FStar.HyperStack.s_ref (Term Term) Term)
+(declare-fun Tm_arrow_d7b8ad4343351a3e17e61a17b9118e67 () Term)
+(declare-fun FStar.HyperStack.s_ref@tok () Term)
+
+; </end encoding let s_ref>
+
+
+; <Start encoding let reference_distinct_sel_disjoint>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.reference_distinct_sel_disjoint (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.reference_distinct_sel_disjoint@tok () Term)
+
+; </end encoding let reference_distinct_sel_disjoint>
+
+
+; End Externals for module FStar.HyperStack
+
+
+; Externals for interface FStar.HyperStack.ST
+
+
+; <Start encoding let contains_region>
+
+(declare-fun FStar.HyperStack.ST.contains_region (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.contains_region@tok () Term)
+
+; </end encoding let contains_region>
+
+
+; <Start encoding val FStar.HyperStack.ST.mem_rel>
+
+(declare-fun FStar.HyperStack.ST.mem_rel (Dummy_sort) Term)
+
+; </end encoding val FStar.HyperStack.ST.mem_rel>
+
+
+; <Start encoding let mem_predicate>
+
+(declare-fun FStar.HyperStack.ST.mem_predicate () Term)
+(declare-fun Tm_arrow_870e61e1362ee02b904fb2aa631e959a () Term)
+
+; </end encoding let mem_predicate>
+
+
+; <Start encoding val FStar.HyperStack.ST.region_contains_pred>
+
+(declare-fun FStar.HyperStack.ST.region_contains_pred (Term) Term)
+(declare-fun Tm_arrow_321b3a56183945c533045886533882ee () Term)
+(declare-fun FStar.HyperStack.ST.region_contains_pred@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.region_contains_pred>
+
+
+; <Start encoding val FStar.HyperStack.ST.ref_contains_pred>
+
+(declare-fun FStar.HyperStack.ST.ref_contains_pred (Term Term Term) Term)
+(declare-fun Tm_arrow_f19d850412523c9b0808b11aefb2bb9b () Term)
+(declare-fun FStar.HyperStack.ST.ref_contains_pred@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.ref_contains_pred>
+
+
+; <Skipped new_effect { GST ... }/>
+
+
+; <Start encoding let gst_pre>
+
+(declare-fun FStar.HyperStack.ST.gst_pre () Term)
+
+; </end encoding let gst_pre>
+
+
+; <Start encoding let gst_post'>
+
+(declare-fun FStar.HyperStack.ST.gst_post_ (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.gst_post_@tok () Term)
+
+; </end encoding let gst_post'>
+
+
+; <Start encoding let gst_post>
+
+(declare-fun FStar.HyperStack.ST.gst_post (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.gst_post@tok () Term)
+
+; </end encoding let gst_post>
+
+
+; <Start encoding let gst_wp>
+
+(declare-fun FStar.HyperStack.ST.gst_wp (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.gst_wp@tok () Term)
+
+; </end encoding let gst_wp>
+
+
+; <Start encoding let lift_div_gst>
+
+(declare-fun FStar.HyperStack.ST.lift_div_gst (Term Term Term Term) Term)
+(declare-fun Tm_arrow_701cc1858e659c48169fa96e4d3335d0 () Term)
+(declare-fun FStar.HyperStack.ST.lift_div_gst@tok () Term)
+
+
+
+; </end encoding let lift_div_gst>
+
+
+; <Skipped sub_effect DIV ~> GST/>
+
+
+; <Start encoding val FStar.HyperStack.ST.stable>
+
+(declare-fun FStar.HyperStack.ST.stable (Term) Term)
+(declare-fun Tm_arrow_ef6a03d8b9fa78220b5247ff6c2eebff () Term)
+(declare-fun FStar.HyperStack.ST.stable@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.stable>
+
+
+; <Start encoding val FStar.HyperStack.ST.witnessed>
+
+(declare-fun FStar.HyperStack.ST.witnessed (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.witnessed@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.witnessed>
+
+
+; <Start encoding val FStar.HyperStack.ST.gst_get>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.gst_get (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.gst_get@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.gst_get>
+
+
+; <Start encoding val FStar.HyperStack.ST.gst_put>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.gst_put (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.gst_put@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.gst_put>
+
+
+; <Start encoding val FStar.HyperStack.ST.gst_witness>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.gst_witness (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.gst_witness@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.gst_witness>
+
+
+; <Start encoding val FStar.HyperStack.ST.gst_recall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.gst_recall (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.gst_recall@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.gst_recall>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_functoriality>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_functoriality (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_functoriality@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_functoriality>
+
+
+; <Start encoding let st_pre>
+
+(declare-fun FStar.HyperStack.ST.st_pre () Term)
+
+; </end encoding let st_pre>
+
+
+; <Start encoding let st_post'>
+
+(declare-fun FStar.HyperStack.ST.st_post_ (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.st_post_@tok () Term)
+
+; </end encoding let st_post'>
+
+
+; <Start encoding let st_post>
+
+(declare-fun FStar.HyperStack.ST.st_post (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.st_post@tok () Term)
+
+; </end encoding let st_post>
+
+
+; <Start encoding let st_wp>
+
+(declare-fun FStar.HyperStack.ST.st_wp (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.st_wp@tok () Term)
+
+; </end encoding let st_wp>
+
+
+; <Skipped new_effect { STATE ... }/>
+
+
+; <Start encoding let lift_gst_state>
+
+(declare-fun FStar.HyperStack.ST.lift_gst_state (Term Term) Term)
+(declare-fun Tm_arrow_273f1333c42f0daf404e533f2c864fb4 () Term)
+(declare-fun FStar.HyperStack.ST.lift_gst_state@tok () Term)
+
+; </end encoding let lift_gst_state>
+
+
+; <Skipped sub_effect GST ~> STATE/>
+
+
+; <Skipped effect Unsafe a pre post = FStar.HyperStack.ST.STATE a/>
+
+
+; <Start encoding let equal_heap_dom>
+
+(declare-fun FStar.HyperStack.ST.equal_heap_dom (Term Term Term) Term)
+(declare-fun Tm_arrow_6d5672c833f519a7d072251969e31b4a () Term)
+(declare-fun FStar.HyperStack.ST.equal_heap_dom@tok () Term)
+
+; </end encoding let equal_heap_dom>
+
+
+; <Start encoding let contained_region>
+
+(declare-fun FStar.HyperStack.ST.contained_region (Term Term Term) Term)
+(declare-fun Tm_arrow_f9931d1436e2abb4a4a9e4018d23e252 () Term)
+(declare-fun FStar.HyperStack.ST.contained_region@tok () Term)
+
+; </end encoding let contained_region>
+
+
+; <Start encoding let contained_stack_region>
+
+(declare-fun FStar.HyperStack.ST.contained_stack_region (Term Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.contained_stack_region@tok () Term)
+
+; </end encoding let contained_stack_region>
+
+
+; <Start encoding let contained_non_tip_region>
+
+(declare-fun FStar.HyperStack.ST.contained_non_tip_region (Term Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.contained_non_tip_region@tok () Term)
+
+; </end encoding let contained_non_tip_region>
+
+
+; <Start encoding let contained_non_tip_stack_region>
+
+(declare-fun FStar.HyperStack.ST.contained_non_tip_stack_region (Term Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.contained_non_tip_stack_region@tok () Term)
+
+; </end encoding let contained_non_tip_stack_region>
+
+
+; <Start encoding let same_refs_common>
+
+
+(declare-fun FStar.HyperStack.ST.same_refs_common (Term Term Term) Term)
+
+(declare-fun Tm_arrow_5e054144859029cb726d08f541917b32 () Term)
+(declare-fun FStar.HyperStack.ST.same_refs_common@tok () Term)
+
+; </end encoding let same_refs_common>
+
+
+; <Start encoding val FStar.HyperStack.ST.same_refs_in_all_regions>
+
+(declare-fun FStar.HyperStack.ST.same_refs_in_all_regions (Term Term) Term)
+(declare-fun Tm_arrow_1cc02cd7154a75e36e508db4b24abd50 () Term)
+(declare-fun FStar.HyperStack.ST.same_refs_in_all_regions@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.same_refs_in_all_regions>
+
+
+; <Start encoding val FStar.HyperStack.ST.same_refs_in_stack_regions>
+
+(declare-fun FStar.HyperStack.ST.same_refs_in_stack_regions (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.same_refs_in_stack_regions@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.same_refs_in_stack_regions>
+
+
+; <Start encoding val FStar.HyperStack.ST.same_refs_in_non_tip_regions>
+
+(declare-fun FStar.HyperStack.ST.same_refs_in_non_tip_regions (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.same_refs_in_non_tip_regions@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.same_refs_in_non_tip_regions>
+
+
+; <Start encoding val FStar.HyperStack.ST.same_refs_in_non_tip_stack_regions>
+
+(declare-fun FStar.HyperStack.ST.same_refs_in_non_tip_stack_regions (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.same_refs_in_non_tip_stack_regions@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.same_refs_in_non_tip_stack_regions>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_all_regions_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_all_regions_intro (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_all_regions_intro@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_all_regions_intro>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_all_regions_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_all_regions_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_all_regions_elim@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_all_regions_elim>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_intro (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_intro@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_intro>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_elim@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_stack_regions_elim>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_intro (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_intro@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_intro>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_elim@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_elim>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_intro (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_intro@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_intro>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_elim@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_same_refs_in_non_tip_stack_regions_elim>
+
+
+; <Start encoding let equal_domains>
+
+(declare-fun FStar.HyperStack.ST.equal_domains (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.equal_domains@tok () Term)
+
+; </end encoding let equal_domains>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_equal_domains_trans>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_equal_domains_trans (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_equal_domains_trans@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_equal_domains_trans>
+
+
+; <Skipped effect Stack a pre post = FStar.HyperStack.ST.STATE a/>
+
+
+; <Skipped effect Heap a pre post = FStar.HyperStack.ST.STATE a/>
+
+
+; <Start encoding let equal_stack_domains>
+
+(declare-fun FStar.HyperStack.ST.equal_stack_domains (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.equal_stack_domains@tok () Term)
+
+; </end encoding let equal_stack_domains>
+
+
+; <Skipped effect ST a pre post = FStar.HyperStack.ST.STATE a/>
+
+
+; <Skipped effect St a = FStar.HyperStack.ST.ST a/>
+
+
+; <Start encoding let inline_stack_inv>
+
+
+
+(declare-fun FStar.HyperStack.ST.inline_stack_inv (Term Term) Term)
+
+
+(declare-fun Tm_arrow_e8f67696ee59fc5cb7ae84b16aecb1a2 () Term)
+(declare-fun FStar.HyperStack.ST.inline_stack_inv@tok () Term)
+
+
+
+; </end encoding let inline_stack_inv>
+
+
+; <Skipped effect StackInline a pre post = FStar.HyperStack.ST.STATE a/>
+
+
+; <Start encoding let inline_inv>
+
+
+
+(declare-fun FStar.HyperStack.ST.inline_inv (Term Term) Term)
+
+
+
+(declare-fun FStar.HyperStack.ST.inline_inv@tok () Term)
+
+
+
+; </end encoding let inline_inv>
+
+
+; <Skipped effect Inline a pre post = FStar.HyperStack.ST.STATE a/>
+
+
+; <Skipped effect STL a pre post = FStar.HyperStack.ST.Stack a/>
+
+
+; <Skipped sub_effect DIV ~> STATE/>
+
+
+; <Start encoding let mreference>
+
+(declare-fun FStar.HyperStack.ST.mreference (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.mreference@tok () Term)
+(declare-fun Tm_refine_003cbb363565c5358e7ed8a8d7dba6d4 (Term Term) Term)
+
+; </end encoding let mreference>
+
+
+; <Start encoding let mstackref>
+
+(declare-fun FStar.HyperStack.ST.mstackref (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.mstackref@tok () Term)
+(declare-fun Tm_refine_3107a49075513d87f81f8b8614ef7aa0 (Term Term) Term)
+
+; </end encoding let mstackref>
+
+
+; <Start encoding let mref>
+
+(declare-fun FStar.HyperStack.ST.mref (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.mref@tok () Term)
+(declare-fun Tm_refine_1a1278f1aecd37594ba20d888b7fd230 (Term Term) Term)
+
+; </end encoding let mref>
+
+
+; <Start encoding let mmmstackref>
+
+(declare-fun FStar.HyperStack.ST.mmmstackref (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.mmmstackref@tok () Term)
+(declare-fun Tm_refine_1fe4ea9449b44f071a0ba69c564508a4 (Term Term) Term)
+
+; </end encoding let mmmstackref>
+
+
+; <Start encoding let mmmref>
+
+(declare-fun FStar.HyperStack.ST.mmmref (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.mmmref@tok () Term)
+(declare-fun Tm_refine_38378a752eceb5d6a72bc0c44cfdc7c2 (Term Term) Term)
+
+; </end encoding let mmmref>
+
+
+; <Start encoding let s_mref>
+
+(declare-fun FStar.HyperStack.ST.s_mref (Term Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.s_mref@tok () Term)
+(declare-fun Tm_refine_dacb5562bc5e314a9813ca622c89b3c4 (Term Term Term) Term)
+
+; </end encoding let s_mref>
+
+
+; <Start encoding let reference>
+
+(declare-fun FStar.HyperStack.ST.reference (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.reference@tok () Term)
+
+; </end encoding let reference>
+
+
+; <Start encoding let stackref>
+
+(declare-fun FStar.HyperStack.ST.stackref (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.stackref@tok () Term)
+
+; </end encoding let stackref>
+
+
+; <Start encoding let ref>
+
+(declare-fun FStar.HyperStack.ST.ref (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.ref@tok () Term)
+
+; </end encoding let ref>
+
+
+; <Start encoding let mmstackref>
+
+(declare-fun FStar.HyperStack.ST.mmstackref (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.mmstackref@tok () Term)
+
+; </end encoding let mmstackref>
+
+
+; <Start encoding let mmref>
+
+(declare-fun FStar.HyperStack.ST.mmref (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.mmref@tok () Term)
+
+; </end encoding let mmref>
+
+
+; <Start encoding let s_ref>
+
+(declare-fun FStar.HyperStack.ST.s_ref (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.s_ref@tok () Term)
+
+; </end encoding let s_ref>
+
+
+; <Start encoding let is_eternal_region>
+
+(declare-fun FStar.HyperStack.ST.is_eternal_region (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.is_eternal_region@tok () Term)
+
+; </end encoding let is_eternal_region>
+
+
+; <Start encoding val FStar.HyperStack.ST.push_frame>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.push_frame (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.push_frame@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.push_frame>
+
+
+; <Start encoding val FStar.HyperStack.ST.pop_frame>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.pop_frame (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.pop_frame@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.pop_frame>
+
+
+; <Skipped #push-options "--z3rlimit 40"/>
+
+
+; <Start encoding let salloc_post>
+
+(declare-fun Tm_refine_2bdd80b2320af9c61ccb8754d0f9f879 (Term Term) Term)
+(declare-fun FStar.HyperStack.ST.salloc_post (Term Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_595aa15661468d8f0f5ddf046029a7d0 () Term)
+(declare-fun FStar.HyperStack.ST.salloc_post@tok () Term)
+
+
+; </end encoding let salloc_post>
+
+
+; <Skipped #pop-options/>
+
+
+; <Start encoding val FStar.HyperStack.ST.salloc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.salloc (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.salloc@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.salloc>
+
+
+; <Start encoding val FStar.HyperStack.ST.salloc_mm>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.salloc_mm (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.salloc_mm@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.salloc_mm>
+
+
+; <Start encoding val FStar.HyperStack.ST.sfree>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.sfree (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.sfree@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.sfree>
+
+
+; <Start encoding let new_region_post_common>
+
+(declare-fun FStar.HyperStack.ST.new_region_post_common (Term Term Term Term) Term)
+(declare-fun Tm_arrow_d31d7cded6ad26852e51d81de5480738 () Term)
+(declare-fun FStar.HyperStack.ST.new_region_post_common@tok () Term)
+
+; </end encoding let new_region_post_common>
+
+
+; <Start encoding val FStar.HyperStack.ST.new_region>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.new_region (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.new_region@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.new_region>
+
+
+; <Start encoding val FStar.HyperStack.ST.new_colored_region>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.new_colored_region (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.new_colored_region@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.new_colored_region>
+
+
+; <Start encoding let ralloc_post>
+
+(declare-fun FStar.HyperStack.ST.ralloc_post (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_f09793193db5aed5286c32417f6982ec () Term)
+(declare-fun FStar.HyperStack.ST.ralloc_post@tok () Term)
+
+; </end encoding let ralloc_post>
+
+
+; <Start encoding val FStar.HyperStack.ST.ralloc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.ralloc (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.ralloc@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.ralloc>
+
+
+; <Start encoding val FStar.HyperStack.ST.ralloc_mm>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.ralloc_mm (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.ralloc_mm@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.ralloc_mm>
+
+
+; <Start encoding let is_live_for_rw_in>
+
+(declare-fun FStar.HyperStack.ST.is_live_for_rw_in (Term Term Term Term) Term)
+(declare-fun Tm_arrow_62dec7a98718083f01f5648f99bb645b () Term)
+(declare-fun FStar.HyperStack.ST.is_live_for_rw_in@tok () Term)
+
+; </end encoding let is_live_for_rw_in>
+
+
+; <Start encoding val FStar.HyperStack.ST.rfree>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.rfree (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.rfree@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.rfree>
+
+
+; <Start encoding let assign_post>
+
+(declare-fun FStar.HyperStack.ST.assign_post (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_a97f9152aeaae701e69a9ba6f661afa6 () Term)
+(declare-fun FStar.HyperStack.ST.assign_post@tok () Term)
+
+; </end encoding let assign_post>
+
+
+; <Start encoding val FStar.HyperStack.ST.op_Colon_Equals>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.op_Colon_Equals (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.op_Colon_Equals@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.op_Colon_Equals>
+
+
+; <Start encoding let deref_post>
+
+(declare-fun FStar.HyperStack.ST.deref_post (Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_d97176a542ccf4ce0745db22eea4c8f6 () Term)
+(declare-fun FStar.HyperStack.ST.deref_post@tok () Term)
+
+; </end encoding let deref_post>
+
+
+; <Start encoding val FStar.HyperStack.ST.op_Bang>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.op_Bang (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.op_Bang@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.op_Bang>
+
+
+; <Start encoding let modifies_none>
+
+(declare-fun FStar.HyperStack.ST.modifies_none (Term Term) Term)
+
+(declare-fun FStar.HyperStack.ST.modifies_none@tok () Term)
+
+; </end encoding let modifies_none>
+
+
+; <Start encoding val FStar.HyperStack.ST.get>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.get (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.get@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.get>
+
+
+; <Start encoding val FStar.HyperStack.ST.recall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.recall (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.recall@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.recall>
+
+
+; <Start encoding val FStar.HyperStack.ST.recall_region>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.recall_region (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.recall_region@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.recall_region>
+
+
+; <Start encoding val FStar.HyperStack.ST.witness_region>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.witness_region (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.witness_region@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.witness_region>
+
+
+; <Start encoding val FStar.HyperStack.ST.witness_hsref>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.witness_hsref (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.witness_hsref@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.witness_hsref>
+
+
+; <Start encoding let erid>
+
+(declare-fun FStar.HyperStack.ST.erid () Term)
+(declare-fun Tm_refine_6c5072d4c9562dd38fd2703ecfb013df () Term)
+
+; </end encoding let erid>
+
+
+; <Start encoding let m_rref>
+
+(declare-fun FStar.HyperStack.ST.m_rref (Term Term Term) Term)
+(declare-fun Tm_arrow_f946e1a0cb5443984177a7ea6d40bfde () Term)
+(declare-fun FStar.HyperStack.ST.m_rref@tok () Term)
+(declare-fun Tm_refine_f596a1e23d65ebe54b463345ece4e00f (Term Term Term) Term)
+
+; </end encoding let m_rref>
+
+
+; <Start encoding let stable_on>
+
+(declare-fun FStar.HyperStack.ST.stable_on (Term Term Term Term) Term)
+(declare-fun Tm_arrow_36c80cd5e76a950725cd81ef88c4c3ca () Term)
+(declare-fun FStar.HyperStack.ST.stable_on@tok () Term)
+
+; </end encoding let stable_on>
+
+
+; <Start encoding let stable_on_t>
+
+(declare-fun FStar.HyperStack.ST.stable_on_t (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_f0eb74832c5ea94cfa4fef315871598d () Term)
+(declare-fun FStar.HyperStack.ST.stable_on_t@tok () Term)
+
+; </end encoding let stable_on_t>
+
+
+; <Start encoding val FStar.HyperStack.ST.mr_witness>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.mr_witness (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.mr_witness@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.mr_witness>
+
+
+; <Start encoding val FStar.HyperStack.ST.weaken_witness>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.weaken_witness (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.weaken_witness@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.weaken_witness>
+
+
+; <Start encoding val FStar.HyperStack.ST.testify>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.testify (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.testify@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.testify>
+
+
+; <Start encoding val FStar.HyperStack.ST.testify_forall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.testify_forall (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.testify_forall@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.testify_forall>
+
+
+; <Start encoding val FStar.HyperStack.ST.testify_forall_region_contains_pred>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.testify_forall_region_contains_pred (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.testify_forall_region_contains_pred@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.testify_forall_region_contains_pred>
+
+
+; <Start encoding val FStar.HyperStack.ST.token_p>
+
+(declare-fun FStar.HyperStack.ST.token_p (Term Term Term Term) Term)
+(declare-fun Tm_arrow_f318dfb6ba2e4e6287ddbd0e8eadad87 () Term)
+(declare-fun FStar.HyperStack.ST.token_p@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.token_p>
+
+
+; <Start encoding val FStar.HyperStack.ST.witness_p>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.witness_p (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.witness_p@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.witness_p>
+
+
+; <Start encoding val FStar.HyperStack.ST.recall_p>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.recall_p (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.recall_p@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.recall_p>
+
+
+; <Start encoding val FStar.HyperStack.ST.token_functoriality>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.token_functoriality (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.token_functoriality@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.token_functoriality>
+
+
+; <Start encoding let ex_rid>
+
+(declare-fun FStar.HyperStack.ST.ex_rid () Term)
+
+; </end encoding let ex_rid>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_constant>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_constant (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_constant@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_witnessed_constant>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_nested>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_nested (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_nested@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_witnessed_nested>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_and>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_and (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_and@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_witnessed_and>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_or>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_or (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_or@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_witnessed_or>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_impl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_impl (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_impl@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_witnessed_impl>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_forall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_forall (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_forall@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_witnessed_forall>
+
+
+; <Start encoding val FStar.HyperStack.ST.lemma_witnessed_exists>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_exists (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.lemma_witnessed_exists@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.lemma_witnessed_exists>
+
+
+; <Start encoding let is_freeable_heap_region>
+
+(declare-fun FStar.HyperStack.ST.is_freeable_heap_region (Term) Term)
+
+(declare-fun FStar.HyperStack.ST.is_freeable_heap_region@tok () Term)
+
+; </end encoding let is_freeable_heap_region>
+
+
+; <Start encoding let d_hrid>
+
+(declare-fun FStar.HyperStack.ST.d_hrid () Term)
+(declare-fun Tm_refine_a6918a83312e51579e26340a47646253 () Term)
+
+; </end encoding let d_hrid>
+
+
+; <Start encoding val FStar.HyperStack.ST.drgn>
+
+(declare-fun FStar.HyperStack.ST.drgn () Term)
+
+; </end encoding val FStar.HyperStack.ST.drgn>
+
+
+; <Start encoding val FStar.HyperStack.ST.rid_of_drgn>
+
+(declare-fun FStar.HyperStack.ST.rid_of_drgn (Term) Term)
+(declare-fun Tm_arrow_8c9ac69e15a63496af078943001e86c3 () Term)
+(declare-fun FStar.HyperStack.ST.rid_of_drgn@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.rid_of_drgn>
+
+
+; <Start encoding val FStar.HyperStack.ST.new_drgn>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.new_drgn (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.new_drgn@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.new_drgn>
+
+
+; <Start encoding val FStar.HyperStack.ST.free_drgn>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.free_drgn (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.free_drgn@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.free_drgn>
+
+
+; <Start encoding val FStar.HyperStack.ST.ralloc_drgn>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.ralloc_drgn (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.ralloc_drgn@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.ralloc_drgn>
+
+
+; <Start encoding val FStar.HyperStack.ST.ralloc_drgn_mm>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.ralloc_drgn_mm (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.ralloc_drgn_mm@tok () Term)
+
+; </end encoding val FStar.HyperStack.ST.ralloc_drgn_mm>
+
+
+; <Start encoding let break_vc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.HyperStack.ST.break_vc (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.HyperStack.ST.break_vc@tok () Term)
+
+; </end encoding let break_vc>
+
+
+; End Externals for interface FStar.HyperStack.ST
 
 
 ; Externals for interface FStar.ModifiesGen
@@ -33028,6 +33028,12 @@ FStar.Pointer.Base.struct_typ)))
 
 ; Internals for Test
 
+
+; encoding sigelt #set-options "--initial_fuel 3"
+
+
+; <Skipped #set-options "--initial_fuel 3"/>
+
 ;;;;;;;;;;;;;;;;function token typing
 ;;; Fact-ids: Name Prims.__cache_version_number__; Namespace Prims
 (assert (! (HasType Prims.__cache_version_number__
@@ -35883,9 +35889,9 @@ Tm_type))
 
 :named kinding_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f))
 ;;;;;;;;;;;;;;;;kinding_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe
-;;; Fact-ids: Name FStar.TSet.map; Namespace FStar.TSet
+;;; Fact-ids: Name FStar.Ghost.tot_to_gtot; Namespace FStar.Ghost
 (assert (! 
-;; def=FStar.TSet.fsti(117,10-117,21); use=FStar.TSet.fsti(117,31-117,41)
+;; def=FStar.Ghost.fsti(69,31-69,42); use=FStar.Ghost.fsti(69,21-69,33)
 (forall ((@x0 Term) (@x1 Term))
  (! (HasType (Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x0
 @x1)
@@ -38351,56 +38357,6 @@ Prims.int))
 
 :named FStar.UInt32_pretyping_2ab3c8ba2d08b0172817fc70b5994868))
 ;;;;;;;;;;;;;;;;pre-typing for functions
-;;; Fact-ids: Name FStar.TSet.map; Namespace FStar.TSet
-(assert (! 
-;; def=FStar.TSet.fsti(117,10-117,21); use=FStar.TSet.fsti(117,31-117,41)
-(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
- (! (implies (HasTypeFuel @u0
-@x1
-(Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x2
-@x3))
-(is-Tm_arrow (PreType @x1)))
- 
-
-:pattern ((HasTypeFuel @u0
-@x1
-(Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x2
-@x3)))
-:qid FStar.TSet_pre_typing_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe))
-
-:named FStar.TSet_pre_typing_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe
-;;; Fact-ids: Name FStar.TSet.map; Namespace FStar.TSet
-(assert (! 
-;; def=FStar.TSet.fsti(117,10-117,21); use=FStar.TSet.fsti(117,31-117,41)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term))
- (! (iff (HasTypeZ @x0
-(Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x1
-@x2))
-(and 
-;; def=FStar.TSet.fsti(117,10-117,21); use=FStar.TSet.fsti(117,31-117,41)
-(forall ((@x3 Term))
- (! (implies (HasType @x3
-@x2)
-(HasType (ApplyTT @x0
-@x3)
-@x1))
- 
-
-:pattern ((ApplyTT @x0
-@x3))
-:qid FStar.TSet_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe.1))
-
-(IsTotFun @x0)))
- 
-
-:pattern ((HasTypeZ @x0
-(Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x1
-@x2)))
-:qid FStar.TSet_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe))
-
-:named FStar.TSet_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe))
-;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: Name FStar.Preorder.relation; Namespace FStar.Preorder
 (assert (! 
 ;; def=FStar.Preorder.fst(20,15-20,40); use=FStar.Preorder.fst(20,25-20,40)
@@ -38641,6 +38597,56 @@ Tm_arrow_b8cce376a4a678a51298a0f3945f25ce))
 :qid FStar.Monotonic.Heap_pretyping_67b0ade1260a0985dfe99d32b2574a59))
 
 :named FStar.Monotonic.Heap_pretyping_67b0ade1260a0985dfe99d32b2574a59))
+;;;;;;;;;;;;;;;;pre-typing for functions
+;;; Fact-ids: Name FStar.Ghost.tot_to_gtot; Namespace FStar.Ghost
+(assert (! 
+;; def=FStar.Ghost.fsti(69,31-69,42); use=FStar.Ghost.fsti(69,21-69,33)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+(Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x2
+@x3))
+(is-Tm_arrow (PreType @x1)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x2
+@x3)))
+:qid FStar.Ghost_pre_typing_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe))
+
+:named FStar.Ghost_pre_typing_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe
+;;; Fact-ids: Name FStar.Ghost.tot_to_gtot; Namespace FStar.Ghost
+(assert (! 
+;; def=FStar.Ghost.fsti(69,31-69,42); use=FStar.Ghost.fsti(69,21-69,33)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (iff (HasTypeZ @x0
+(Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x1
+@x2))
+(and 
+;; def=FStar.Ghost.fsti(69,31-69,42); use=FStar.Ghost.fsti(69,21-69,33)
+(forall ((@x3 Term))
+ (! (implies (HasType @x3
+@x2)
+(HasType (ApplyTT @x0
+@x3)
+@x1))
+ 
+
+:pattern ((ApplyTT @x0
+@x3))
+:qid FStar.Ghost_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe.1))
+
+(IsTotFun @x0)))
+ 
+
+:pattern ((HasTypeZ @x0
+(Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x1
+@x2)))
+:qid FStar.Ghost_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe))
+
+:named FStar.Ghost_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe))
 ;;;;;;;;;;;;;;;;kick_partial_app
 ;;; Fact-ids: Name FStar.Pointer.Base.typ; Namespace FStar.Pointer.Base; Name FStar.Pointer.Base.TBase; Namespace FStar.Pointer.Base; Name FStar.Pointer.Base.TStruct; Namespace FStar.Pointer.Base; Name FStar.Pointer.Base.TUnion; Namespace FStar.Pointer.Base; Name FStar.Pointer.Base.TArray; Namespace FStar.Pointer.Base; Name FStar.Pointer.Base.TPointer; Namespace FStar.Pointer.Base; Name FStar.Pointer.Base.TNPointer; Namespace FStar.Pointer.Base; Name FStar.Pointer.Base.TBuffer; Namespace FStar.Pointer.Base; Name FStar.Pointer.Base.struct_typ; Namespace FStar.Pointer.Base; Name FStar.Pointer.Base.Mkstruct_typ; Namespace FStar.Pointer.Base
 (assert (! (Valid (ApplyTT __uu__PartialApp
@@ -38823,7 +38829,7 @@ FStar.Pervasives.Native.fst@tok))
 :named @fuel_correspondence_FStar.List.Tot.Base.map.fuel_instrumented))
 (push) ;; push{2
 
-; Starting query at Test.fst(21,0-27,1)
+; Starting query at Test.fst(23,0-29,1)
 
 (declare-fun label_2 () Bool)
 (declare-fun label_1 () Bool)
@@ -38846,11 +38852,11 @@ FStar.Pervasives.Native.fst@tok))
 
 (push) ;; push{0
 
-; <fuel='2' ifuel='1'>
+; <fuel='3' ifuel='1'>
 
 ;;; Fact-ids: 
 (assert (! (= MaxFuel
-(SFuel (SFuel ZFuel)))
+(SFuel (SFuel (SFuel ZFuel))))
 :named @MaxFuel_assumption))
 ;;; Fact-ids: 
 (assert (! (= MaxIFuel
@@ -38859,12 +38865,12 @@ FStar.Pervasives.Native.fst@tok))
 ;;;;;;;;;;;;;;;;query
 ;;; Fact-ids: 
 (assert (! (not 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-70,41); use=Test.fst(23,13-26,3)
+;; def=legacy/FStar.Pointer.Base.fsti(69,2-70,41); use=Test.fst(25,13-28,3)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(23,13-26,3)
+;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(25,13-28,3)
 (or label_1
 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(23,13-26,3)
+;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(25,13-28,3)
 (BoxBool_proj_0 (Prims.uu___is_Cons (FStar.Pervasives.Native.tuple2 Prims.string
 FStar.Pointer.Base.typ)
 (Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
@@ -38884,200 +38890,10 @@ FStar.Pointer.Base.typ))))))
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(23,13-26,3)
+;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(25,13-28,3)
 (or label_2
 
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(23,13-26,3)
-(BoxBool_proj_0 (FStar.List.Tot.Base.noRepeats Prims.string
-(FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-Prims.string
-(ApplyTT (ApplyTT FStar.Pervasives.Native.fst@tok
-Prims.string)
-FStar.Pointer.Base.typ)
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 0))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TInt@tok))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 1))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TBool@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)))))))
-)
-)
-)
-:named @query))
-(set-option :rlimit 2723280)
-(echo "<result>")
-(check-sat)
-(echo "</result>")
-(set-option :rlimit 0)
-(echo "<reason-unknown>")
-(get-info :reason-unknown)
-(echo "</reason-unknown>")
-(echo "<unsat-core>")
-(get-unsat-core)
-(echo "</unsat-core>")
-(echo "<labels>")
-(echo "label_2")
-(eval label_2)
-(echo "label_1")
-(eval label_1)
-(echo "</labels>")
-(echo "Done!")
-(pop) ;; 0}pop
-; QUERY ID: (Test.struct, 1)
-; STATUS: unknown because (incomplete quantifiers)
-
-; Z3 invocation started by F*
-; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
-; Z3 version (according to F*): 4.12.1
-
-(push) ;; push{0
-
-; <fuel='2' ifuel='2'>
-
-;;; Fact-ids: 
-(assert (! (= MaxFuel
-(SFuel (SFuel ZFuel)))
-:named @MaxFuel_assumption))
-;;; Fact-ids: 
-(assert (! (= MaxIFuel
-(SFuel (SFuel ZFuel)))
-:named @MaxIFuel_assumption))
-;;;;;;;;;;;;;;;;query
-;;; Fact-ids: 
-(assert (! (not 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-70,41); use=Test.fst(23,13-26,3)
-(and 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(23,13-26,3)
-(or label_1
-
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(23,13-26,3)
-(BoxBool_proj_0 (Prims.uu___is_Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 0))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TInt@tok))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 1))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TBool@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ))))))
-)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(23,13-26,3)
-(or label_2
-
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(23,13-26,3)
-(BoxBool_proj_0 (FStar.List.Tot.Base.noRepeats Prims.string
-(FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-Prims.string
-(ApplyTT (ApplyTT FStar.Pervasives.Native.fst@tok
-Prims.string)
-FStar.Pointer.Base.typ)
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 0))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TInt@tok))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 1))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TBool@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)))))))
-)
-)
-)
-:named @query))
-(set-option :rlimit 2723280)
-(echo "<result>")
-(check-sat)
-(echo "</result>")
-(set-option :rlimit 0)
-(echo "<reason-unknown>")
-(get-info :reason-unknown)
-(echo "</reason-unknown>")
-(echo "<unsat-core>")
-(get-unsat-core)
-(echo "</unsat-core>")
-(echo "<labels>")
-(echo "label_2")
-(eval label_2)
-(echo "label_1")
-(eval label_1)
-(echo "</labels>")
-(echo "Done!")
-(pop) ;; 0}pop
-; QUERY ID: (Test.struct, 1)
-; STATUS: unknown because (incomplete quantifiers)
-
-; Z3 invocation started by F*
-; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
-; Z3 version (according to F*): 4.12.1
-
-(push) ;; push{0
-
-; <fuel='4' ifuel='2'>
-
-;;; Fact-ids: 
-(assert (! (= MaxFuel
-(SFuel (SFuel (SFuel (SFuel ZFuel)))))
-:named @MaxFuel_assumption))
-;;; Fact-ids: 
-(assert (! (= MaxIFuel
-(SFuel (SFuel ZFuel)))
-:named @MaxIFuel_assumption))
-;;;;;;;;;;;;;;;;query
-;;; Fact-ids: 
-(assert (! (not 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-70,41); use=Test.fst(23,13-26,3)
-(and 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(23,13-26,3)
-(or label_1
-
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(23,13-26,3)
-(BoxBool_proj_0 (Prims.uu___is_Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 0))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TInt@tok))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 1))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TBool@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ))))))
-)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(23,13-26,3)
-(or label_2
-
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(23,13-26,3)
+;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(25,13-28,3)
 (BoxBool_proj_0 (FStar.List.Tot.Base.noRepeats Prims.string
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
 FStar.Pointer.Base.typ)
@@ -39124,7 +38940,7 @@ FStar.Pointer.Base.typ)))))))
 (pop) ;; 0}pop
 ; QUERY ID: (Test.struct, 1)
 ; STATUS: unsat
-; UNSAT CORE GENERATED: @MaxFuel_assumption, @MaxIFuel_assumption, @fuel_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.mem.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.noRepeats.fuel_instrumented, @query, FStar.Pervasives.Native_interpretation_Tm_arrow_b8cce376a4a678a51298a0f3945f25ce, FStar.TSet_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe, bool_inversion, constructor_distinct_Prims.Cons, constructor_distinct_Prims.Nil, data_typing_intro_FStar.Pervasives.Native.Mktuple2@tok, data_typing_intro_FStar.Pointer.Base.TBase@tok, data_typing_intro_Prims.Cons@tok, data_typing_intro_Prims.Nil@tok, disc_equation_Prims.Cons, equality_tok_FStar.Pointer.Base.TBool@tok, equality_tok_FStar.Pointer.Base.TInt@tok, equation_FStar.Pervasives.Native.fst, equation_Prims.eqtype, equation_with_fuel_FStar.List.Tot.Base.map.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.mem.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.noRepeats.fuel_instrumented, function_token_typing_FStar.Pervasives.Native.fst, kinding_FStar.Pervasives.Native.tuple2@tok, kinding_FStar.Pointer.Base.typ@tok, primitive_Prims.op_AmpAmp, primitive_Prims.op_Equality, primitive_Prims.op_Negation, proj_equation_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_BoxBool_proj_0, projection_inverse_BoxString_proj_0, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FString_const_proj_0, projection_inverse_Prims.Cons_a, projection_inverse_Prims.Cons_hd, projection_inverse_Prims.Cons_tl, projection_inverse_Prims.Nil_a, refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f, string_typing, token_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, token_correspondence_FStar.List.Tot.Base.mem.fuel_instrumented, token_correspondence_FStar.Pervasives.Native.fst, typing_FStar.List.Tot.Base.map, typing_FStar.List.Tot.Base.noRepeats, typing_Prims.string, typing_tok_FStar.Pointer.Base.TBool@tok, typing_tok_FStar.Pointer.Base.TInt@tok
+; UNSAT CORE GENERATED: @MaxFuel_assumption, @MaxIFuel_assumption, @fuel_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.mem.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.noRepeats.fuel_instrumented, @query, FStar.Ghost_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe, FStar.Pervasives.Native_interpretation_Tm_arrow_b8cce376a4a678a51298a0f3945f25ce, FStar.Pointer.Base_pretyping_c187978e0b47d492be4f7ef67953e027, bool_inversion, constructor_distinct_Prims.Cons, constructor_distinct_Prims.Nil, data_elim_Prims.Cons, data_typing_intro_FStar.Pervasives.Native.Mktuple2@tok, data_typing_intro_FStar.Pointer.Base.TBase@tok, data_typing_intro_Prims.Cons@tok, data_typing_intro_Prims.Nil@tok, disc_equation_Prims.Cons, equality_tok_FStar.Pointer.Base.TBool@tok, equality_tok_FStar.Pointer.Base.TInt@tok, equation_FStar.Pervasives.Native.fst, equation_Prims.eqtype, equation_with_fuel_FStar.List.Tot.Base.map.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.mem.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.noRepeats.fuel_instrumented, fuel_guarded_inversion_Prims.list, function_token_typing_FStar.Pervasives.Native.fst, kinding_FStar.Pervasives.Native.tuple2@tok, kinding_FStar.Pointer.Base.typ@tok, primitive_Prims.op_AmpAmp, primitive_Prims.op_Equality, primitive_Prims.op_Negation, proj_equation_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_BoxBool_proj_0, projection_inverse_BoxString_proj_0, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FString_const_proj_0, projection_inverse_Prims.Cons_a, projection_inverse_Prims.Cons_hd, projection_inverse_Prims.Cons_tl, projection_inverse_Prims.Nil_a, refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f, string_inversion, string_typing, token_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, token_correspondence_FStar.Pervasives.Native.fst, typing_FStar.List.Tot.Base.map, typing_FStar.List.Tot.Base.mem, typing_FStar.List.Tot.Base.noRepeats, typing_Prims.string, typing_tok_FStar.Pointer.Base.TBool@tok, typing_tok_FStar.Pointer.Base.TInt@tok
 
 ; Z3 invocation started by F*
 ; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
@@ -39140,6 +38956,12 @@ FStar.Pointer.Base.typ)))))))
 (declare-fun Test.struct (Dummy_sort) Term)
 
 ; </end encoding let struct>
+
+
+; encoding sigelt #reset-options "--initial_fuel 2"
+
+
+; <Skipped #reset-options "--initial_fuel 2"/>
 
 
 ; encoding sigelt let struct_t
@@ -39182,7 +39004,7 @@ Prims.trivial)
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Test.struct_t; Namespace Test
 (assert (! 
-;; def=Test.fst(29,4-29,12); use=Test.fst(29,4-29,12)
+;; def=Test.fst(33,4-33,12); use=Test.fst(33,4-33,12)
 (forall ((@u0 Dummy_sort))
  (! (HasType (Test.struct_t @u0)
 FStar.Pointer.Base.typ)
@@ -39195,7 +39017,7 @@ FStar.Pointer.Base.typ)
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Test.struct; Namespace Test
 (assert (! 
-;; def=Test.fst(21,4-21,10); use=Test.fst(21,4-21,10)
+;; def=Test.fst(23,4-23,10); use=Test.fst(23,4-23,10)
 (forall ((@u0 Dummy_sort))
  (! (HasType (Test.struct @u0)
 FStar.Pointer.Base.struct_typ)
@@ -46539,17 +46361,17 @@ Tm_unit)))))
 ;;;;;;;;;;;;;;;;Equation for Test.struct_t
 ;;; Fact-ids: Name Test.struct_t; Namespace Test
 (assert (! 
-;; def=Test.fst(29,4-29,12); use=Test.fst(29,4-29,12)
+;; def=Test.fst(33,4-33,12); use=Test.fst(33,4-33,12)
 (forall ((@u0 Dummy_sort))
  (! (= 
-;; def=Test.fst(29,4-29,12); use=Test.fst(29,4-29,12)
+;; def=Test.fst(33,4-33,12); use=Test.fst(33,4-33,12)
 (Test.struct_t @u0)
 
 (FStar.Pointer.Base.TStruct (Test.struct Dummy_value)))
  
 
 :pattern (
-;; def=Test.fst(29,4-29,12); use=Test.fst(29,4-29,12)
+;; def=Test.fst(33,4-33,12); use=Test.fst(33,4-33,12)
 (Test.struct_t @u0)
 )
 :qid equation_Test.struct_t))
@@ -46558,10 +46380,10 @@ Tm_unit)))))
 ;;;;;;;;;;;;;;;;Equation for Test.struct
 ;;; Fact-ids: Name Test.struct; Namespace Test
 (assert (! 
-;; def=Test.fst(21,4-21,10); use=Test.fst(21,4-21,10)
+;; def=Test.fst(23,4-23,10); use=Test.fst(23,4-23,10)
 (forall ((@u0 Dummy_sort))
  (! (= 
-;; def=Test.fst(21,4-21,10); use=Test.fst(21,4-21,10)
+;; def=Test.fst(23,4-23,10); use=Test.fst(23,4-23,10)
 (Test.struct @u0)
 
 (FStar.Pointer.Base.Mkstruct_typ (BoxString (FString_const 2))
@@ -46582,7 +46404,7 @@ FStar.Pointer.Base.typ))))))
  
 
 :pattern (
-;; def=Test.fst(21,4-21,10); use=Test.fst(21,4-21,10)
+;; def=Test.fst(23,4-23,10); use=Test.fst(23,4-23,10)
 (Test.struct @u0)
 )
 :qid equation_Test.struct))
@@ -48567,7 +48389,7 @@ FStar.Pointer.Base.type_of_struct_field@tok))
 :named @fuel_correspondence_FStar.List.Tot.Base.assoc.fuel_instrumented))
 (push) ;; push{2
 
-; Starting query at Test.fst(44,2-45,28)
+; Starting query at Test.fst(48,2-49,28)
 
 (declare-fun label_38 () Bool)
 (declare-fun label_37 () Bool)
@@ -48611,7 +48433,7 @@ FStar.Pointer.Base.type_of_struct_field@tok))
 ;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.Pervasives.fsti(442,41-442,53); use=Test.fst(44,2-45,28)
+;; def=FStar.Pervasives.fsti(442,41-442,53); use=Test.fst(48,2-49,28)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term))
  (! (HasType (Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90 @x0
 @x1
@@ -48629,7 +48451,7 @@ Tm_type))
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.Pervasives.fsti(442,41-442,53); use=Test.fst(44,2-45,28)
+;; def=FStar.Pervasives.fsti(442,41-442,53); use=Test.fst(48,2-49,28)
 (forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
  (! (iff (HasTypeFuel @u0
 @x1
@@ -48640,27 +48462,27 @@ Tm_type))
 @x1
 FStar.Monotonic.HyperStack.mem)
 
-;; def=Test.fst(36,22-36,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,22-40,40); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(36,22-36,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,22-40,40); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.readable (Test.struct_t Dummy_value)
 @x2
 @x3)
 )
 
 
-;; def=Test.fst(36,44-36,56); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,44-40,56); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(36,44-36,56); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,44-40,56); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x2
 @x4)
 )
 
 
-;; def=Test.fst(36,60-36,116); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,60-40,116); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(36,60-36,116); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,60-40,116); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
 @x3)
 (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
@@ -48680,7 +48502,7 @@ FStar.Monotonic.HyperStack.mem)
 ;;;;;;;;;;;;;;;;haseq for Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.Pervasives.fsti(442,41-442,53); use=Test.fst(44,2-45,28)
+;; def=FStar.Pervasives.fsti(442,41-442,53); use=Test.fst(48,2-49,28)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term))
  (! (iff (Valid (Prims.hasEq (Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90 @x0
 @x1
@@ -48704,7 +48526,7 @@ Tm_type)
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: 
 (assert (! 
-;; def=legacy/FStar.Pointer.Base.fsti(112,6-112,23); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(112,6-112,23); use=Test.fst(48,2-49,28)
 (forall ((@u0 Fuel) (@x1 Term))
  (! (iff (HasTypeFuel @u0
 @x1
@@ -48713,9 +48535,9 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 @x1
 FStar.Pointer.Base.typ)
 
-;; def=legacy/FStar.Pointer.Base.fsti(112,15-112,21); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(112,15-112,21); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(112,15-112,21); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(112,15-112,21); use=Test.fst(48,2-49,28)
 (Prims.precedes FStar.Pointer.Base.typ
 FStar.Pointer.Base.struct_typ
 @x1
@@ -48755,7 +48577,7 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7))
 ;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(44,13-44,18)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(48,13-48,18)
 (forall ((@x0 Term) (@x1 Term))
  (! (HasType (Tm_refine_1360bd8e2b05bb50fc6c2301cf49db21 @x0
 @x1)
@@ -48771,7 +48593,7 @@ Tm_type))
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(44,13-44,18)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(48,13-48,18)
 (forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (iff (HasTypeFuel @u0
 @x1
@@ -48781,9 +48603,9 @@ Tm_type))
 @x1
 FStar.Monotonic.HyperStack.mem)
 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,13-48,18)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,13-48,18)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.TStruct (Test.struct Dummy_value))
 @x2
 @x3)
@@ -48801,7 +48623,7 @@ FStar.Monotonic.HyperStack.mem)
 ;;;;;;;;;;;;;;;;haseq for Tm_refine_1360bd8e2b05bb50fc6c2301cf49db21
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(44,13-44,18)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(48,13-48,18)
 (forall ((@x0 Term) (@x1 Term))
  (! (iff (Valid (Prims.hasEq (Tm_refine_1360bd8e2b05bb50fc6c2301cf49db21 @x0
 @x1)))
@@ -48824,7 +48646,7 @@ FStar.Monotonic.HyperStack.mem)
 ;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(44,31-44,35)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(48,31-48,35)
 (forall ((@x0 Term) (@x1 Term))
  (! (HasType (Tm_refine_da3bceca4b222dd412c8a0d781ebb345 @x0
 @x1)
@@ -48840,7 +48662,7 @@ Tm_type))
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(44,31-44,35)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(48,31-48,35)
 (forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (iff (HasTypeFuel @u0
 @x1
@@ -48850,9 +48672,9 @@ Tm_type))
 @x1
 FStar.Monotonic.HyperStack.mem)
 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(48,31-48,35)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(48,31-48,35)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x2
@@ -48871,7 +48693,7 @@ FStar.Monotonic.HyperStack.mem)
 ;;;;;;;;;;;;;;;;haseq for Tm_refine_da3bceca4b222dd412c8a0d781ebb345
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(44,31-44,35)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(48,31-48,35)
 (forall ((@x0 Term) (@x1 Term))
  (! (iff (Valid (Prims.hasEq (Tm_refine_da3bceca4b222dd412c8a0d781ebb345 @x0
 @x1)))
@@ -48890,7 +48712,7 @@ FStar.Monotonic.HyperStack.mem)
 ;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(44,4-44,9)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(48,4-48,9)
 (forall ((@x0 Term) (@x1 Term))
  (! (HasType (Tm_refine_8ecc6be99d45a2144a7acc54c52b51b8 @x0
 @x1)
@@ -48906,7 +48728,7 @@ Tm_type))
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(44,4-44,9)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(48,4-48,9)
 (forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (iff (HasTypeFuel @u0
 @x1
@@ -48916,9 +48738,9 @@ Tm_type))
 @x1
 FStar.Monotonic.HyperStack.mem)
 
-;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(48,4-48,9)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(48,4-48,9)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x2
@@ -48937,7 +48759,7 @@ FStar.Monotonic.HyperStack.mem)
 ;;;;;;;;;;;;;;;;haseq for Tm_refine_8ecc6be99d45a2144a7acc54c52b51b8
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(44,4-44,9)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(48,4-48,9)
 (forall ((@x0 Term) (@x1 Term))
  (! (iff (Valid (Prims.hasEq (Tm_refine_8ecc6be99d45a2144a7acc54c52b51b8 @x0
 @x1)))
@@ -49238,7 +49060,7 @@ Test.obj))
 
 ;; def=FStar.Pervasives.fsti(484,2-484,63); use=FStar.Pervasives.fsti(503,15-503,26)
 (and 
-;; def=dummy(0,0-0,0); use=Test.fst(44,2-45,28)
+;; def=dummy(0,0-0,0); use=Test.fst(48,2-49,28)
 (forall ((@x2 Term) (@x3 Term) (@x4 Term))
  (! (implies (and (HasType @x2
 FStar.Monotonic.HyperStack.mem)
@@ -49249,40 +49071,40 @@ Prims.int)
 @x0
 @x1)))
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and (implies 
-;; def=Test.fst(38,4-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-43,36); use=Test.fst(48,2-49,28)
 (and 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x2
 @x0)
 )
 
 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x2
 @x1)
 )
 
 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x4
 @x0)
 )
 
 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x4
 @x1)
@@ -49290,12 +49112,12 @@ Prims.int)
 )
 
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(40,20-40,26)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,20-44,26)
 (or label_1
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,2-49,28)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -49308,48 +49130,48 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x5 Term))
  (! (implies (and (HasType @x5
 Prims.string)
 
-;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(48,2-49,28)
 (= (BoxString (FString_const 0))
 @x5)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x6 Term))
  (! (implies (and (HasType @x6
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=legacy/FStar.Pointer.Base.fsti(112,6-502,42); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(112,6-502,42); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x6)
 )
 
-;; def=Prims.fst(356,2-356,58); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,2-356,58); use=Test.fst(48,2-49,28)
 (forall ((@x7 Term))
  (! (implies (and (HasType @x7
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=Prims.fst(356,26-356,41); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,26-356,41); use=Test.fst(48,2-49,28)
 (= @x7
 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0))))
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(502,16-2068,18); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(502,16-2068,18); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x7)
 )
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(40,31-40,34)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,31-44,34)
 (or label_2
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,2-49,28)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -49375,47 +49197,47 @@ FStar.Pointer.Base.typ)
 )
 )
 (implies 
-;; def=Test.fst(38,4-40,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-44,40); use=Test.fst(48,2-49,28)
 (and 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x2
 @x0)
 )
 
 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x2
 @x1)
 )
 
 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x4
 @x0)
 )
 
 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x4
 @x1)
 )
 
 
-;; def=Test.fst(40,4-40,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(44,4-44,40); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(40,4-40,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(44,4-44,40); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.modifies_1 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 (FStar.Pointer.Base.gfield (Test.struct Dummy_value)
@@ -49427,12 +49249,12 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(41,21-41,27)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(45,21-45,27)
 (or label_3
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,2-49,28)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -49445,48 +49267,48 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x5 Term))
  (! (implies (and (HasType @x5
 Prims.string)
 
-;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(48,2-49,28)
 (= (BoxString (FString_const 0))
 @x5)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x6 Term))
  (! (implies (and (HasType @x6
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=legacy/FStar.Pointer.Base.fsti(112,6-502,42); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(112,6-502,42); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x6)
 )
 
-;; def=Prims.fst(356,2-356,58); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,2-356,58); use=Test.fst(48,2-49,28)
 (forall ((@x7 Term))
  (! (implies (and (HasType @x7
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=Prims.fst(356,26-356,41); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,26-356,41); use=Test.fst(48,2-49,28)
 (= @x7
 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0))))
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(502,16-753,5); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(502,16-753,5); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x7)
 )
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(41,32-41,35)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(45,32-45,35)
 (or label_4
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,2-49,28)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -49512,47 +49334,47 @@ FStar.Pointer.Base.typ)
 )
 )
 (implies 
-;; def=Test.fst(38,4-41,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-45,36); use=Test.fst(48,2-49,28)
 (and 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x2
 @x0)
 )
 
 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x2
 @x1)
 )
 
 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x4
 @x0)
 )
 
 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x4
 @x1)
 )
 
 
-;; def=Test.fst(40,4-40,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(44,4-44,40); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(40,4-40,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(44,4-44,40); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.modifies_1 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 (FStar.Pointer.Base.gfield (Test.struct Dummy_value)
@@ -49563,9 +49385,9 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Test.fst(41,4-41,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(45,4-45,36); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(41,4-41,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(45,4-45,36); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x4
@@ -49576,12 +49398,12 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(42,17-42,23)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(46,17-46,23)
 (or label_5
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,2-49,28)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -49594,48 +49416,48 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x5 Term))
  (! (implies (and (HasType @x5
 Prims.string)
 
-;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(48,2-49,28)
 (= (BoxString (FString_const 0))
 @x5)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x6 Term))
  (! (implies (and (HasType @x6
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=legacy/FStar.Pointer.Base.fsti(112,6-502,42); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(112,6-502,42); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x6)
 )
 
-;; def=Prims.fst(356,2-356,58); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,2-356,58); use=Test.fst(48,2-49,28)
 (forall ((@x7 Term))
  (! (implies (and (HasType @x7
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=Prims.fst(356,26-356,41); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,26-356,41); use=Test.fst(48,2-49,28)
 (= @x7
 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0))))
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(433,4-502,42); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(433,4-502,42); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x7)
 )
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(42,30-42,33)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(46,30-46,33)
 (or label_6
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,2-49,28)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -49661,47 +49483,47 @@ FStar.Pointer.Base.typ)
 )
 )
 (implies 
-;; def=Test.fst(38,4-42,39); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-46,39); use=Test.fst(48,2-49,28)
 (and 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x2
 @x0)
 )
 
 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x2
 @x1)
 )
 
 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x4
 @x0)
 )
 
 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x4
 @x1)
 )
 
 
-;; def=Test.fst(40,4-40,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(44,4-44,40); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(40,4-40,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(44,4-44,40); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.modifies_1 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 (FStar.Pointer.Base.gfield (Test.struct Dummy_value)
@@ -49712,9 +49534,9 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Test.fst(41,4-41,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(45,4-45,36); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(41,4-41,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(45,4-45,36); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x4
@@ -49724,7 +49546,7 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Test.fst(42,4-42,39); use=Test.fst(44,2-45,28)
+;; def=Test.fst(46,4-46,39); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.gread (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x2
@@ -49735,12 +49557,12 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(43,18-43,24)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(47,18-47,24)
 (or label_7
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,2-49,28)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -49753,48 +49575,48 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x5 Term))
  (! (implies (and (HasType @x5
 Prims.string)
 
-;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(48,2-49,28)
 (= (BoxString (FString_const 0))
 @x5)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x6 Term))
  (! (implies (and (HasType @x6
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=legacy/FStar.Pointer.Base.fsti(112,6-502,42); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(112,6-502,42); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x6)
 )
 
-;; def=Prims.fst(356,2-356,58); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,2-356,58); use=Test.fst(48,2-49,28)
 (forall ((@x7 Term))
  (! (implies (and (HasType @x7
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=Prims.fst(356,26-356,41); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,26-356,41); use=Test.fst(48,2-49,28)
 (= @x7
 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0))))
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(433,4-502,42); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(433,4-502,42); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x7)
 )
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(43,29-43,32)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(47,29-47,32)
 (or label_8
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,2-49,28)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -49833,27 +49655,27 @@ Prims.int))
 (HasType @x3
 FStar.Monotonic.HyperStack.mem)
 
-;; def=Test.fst(36,22-36,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,22-40,40); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(36,22-36,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,22-40,40); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.readable (Test.struct_t Dummy_value)
 @x3
 @x0)
 )
 
 
-;; def=Test.fst(36,44-36,56); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,44-40,56); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(36,44-36,56); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,44-40,56); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x3
 @x1)
 )
 
 
-;; def=Test.fst(36,60-36,116); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,60-40,116); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(36,60-36,116); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,60-40,116); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
 @x0)
 (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
@@ -49861,7 +49683,7 @@ FStar.Monotonic.HyperStack.mem)
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(44,2-45,28)
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(48,2-49,28)
 (forall ((@x4 Term) (@x5 Term))
  (! (implies (and (or label_9
 (HasType @x4
@@ -49872,12 +49694,12 @@ Prims.int))
 @x0
 @x1)))
 
-;; def=Test.fst(36,22-36,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,22-40,40); use=Test.fst(48,2-49,28)
 (or label_11
 
-;; def=Test.fst(36,22-36,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,22-40,40); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(36,22-36,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,22-40,40); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.readable (Test.struct_t Dummy_value)
 @x3
 @x0)
@@ -49885,12 +49707,12 @@ Prims.int))
 )
 
 
-;; def=Test.fst(36,44-36,56); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,44-40,56); use=Test.fst(48,2-49,28)
 (or label_12
 
-;; def=Test.fst(36,44-36,56); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,44-40,56); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(36,44-36,56); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,44-40,56); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x3
 @x1)
@@ -49898,12 +49720,12 @@ Prims.int))
 )
 
 
-;; def=Test.fst(36,60-36,116); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,60-40,116); use=Test.fst(48,2-49,28)
 (or label_13
 
-;; def=Test.fst(36,60-36,116); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,60-40,116); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(36,60-36,116); use=Test.fst(44,2-45,28)
+;; def=Test.fst(40,60-40,116); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
 @x0)
 (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
@@ -49912,12 +49734,12 @@ Prims.int))
 )
 
 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (or label_14
 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(38,4-38,18); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,4-42,18); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x3
 @x0)
@@ -49925,12 +49747,12 @@ Prims.int))
 )
 
 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (or label_15
 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(38,22-38,34); use=Test.fst(44,2-45,28)
+;; def=Test.fst(42,22-42,34); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x3
 @x1)
@@ -49938,12 +49760,12 @@ Prims.int))
 )
 
 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (or label_16
 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(39,4-39,19); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,4-43,19); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x5
 @x0)
@@ -49951,12 +49773,12 @@ Prims.int))
 )
 
 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (or label_17
 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(39,23-39,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(43,23-43,36); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x5
 @x1)
@@ -49964,12 +49786,12 @@ Prims.int))
 )
 
 
-;; def=Test.fst(40,4-40,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(44,4-44,40); use=Test.fst(48,2-49,28)
 (or label_18
 
-;; def=Test.fst(40,4-40,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(44,4-44,40); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(40,4-40,40); use=Test.fst(44,2-45,28)
+;; def=Test.fst(44,4-44,40); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.modifies_1 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 (FStar.Pointer.Base.gfield (Test.struct Dummy_value)
@@ -49981,12 +49803,12 @@ Prims.int))
 )
 
 
-;; def=Test.fst(41,4-41,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(45,4-45,36); use=Test.fst(48,2-49,28)
 (or label_19
 
-;; def=Test.fst(41,4-41,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(45,4-45,36); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=Test.fst(41,4-41,36); use=Test.fst(44,2-45,28)
+;; def=Test.fst(45,4-45,36); use=Test.fst(48,2-49,28)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x5
@@ -49997,10 +49819,10 @@ Prims.int))
 )
 
 
-;; def=Test.fst(42,4-42,39); use=Test.fst(44,2-45,28)
+;; def=Test.fst(46,4-46,39); use=Test.fst(48,2-49,28)
 (or label_20
 
-;; def=Test.fst(42,4-42,39); use=Test.fst(44,2-45,28)
+;; def=Test.fst(46,4-46,39); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.gread (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x3
@@ -50011,10 +49833,10 @@ Prims.int))
 )
 
 
-;; def=Test.fst(43,4-43,42); use=Test.fst(44,2-45,28)
+;; def=Test.fst(47,4-47,42); use=Test.fst(48,2-49,28)
 (or label_21
 
-;; def=Test.fst(43,4-43,42); use=Test.fst(44,2-45,28)
+;; def=Test.fst(47,4-47,42); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.gread (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x5
@@ -50026,21 +49848,21 @@ Prims.int))
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,2-45,28)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,2-49,28)
 (or label_22
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,2-45,28)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,2-45,28)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,2-49,28)
 (FStar.HyperStack.ST.equal_domains @x3
 @x5)
 )
 )
 )
 
-;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(44,2-45,28)
+;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(44,2-45,28)
+;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(48,2-49,28)
 (ApplyTT (ApplyTT @x2
 @x4)
 @x5)
@@ -50049,9 +49871,9 @@ Prims.int))
  
 
 :pattern (
-;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(44,2-45,28)
+;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(48,2-49,28)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(44,2-45,28)
+;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(48,2-49,28)
 (ApplyTT (ApplyTT @x2
 @x4)
 @x5)
@@ -50060,12 +49882,12 @@ Prims.int))
 :qid @query.15))
 )
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,4-48,9)
 (or label_23
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,4-48,9)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -50078,10 +49900,10 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,23-44,26)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,23-48,26)
 (or label_24
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,23-44,26)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,23-48,26)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -50094,24 +49916,24 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x4 Term))
  (! (implies (and (HasType @x4
 Prims.string)
 
-;; def=legacy/FStar.Pointer.Base.fsti(2112,2-2112,4); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(2112,2-2112,4); use=Test.fst(48,2-49,28)
 (= (BoxString (FString_const 0))
 @x4)
 )
 
-;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(44,13-44,18)
+;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(48,13-48,18)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,13-48,18)
 (or label_25
 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,13-48,18)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,13-48,18)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.TStruct (Test.struct Dummy_value))
 @x3
 @x1)
@@ -50119,7 +49941,7 @@ Prims.string)
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(44,13-44,18)
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(48,13-48,18)
 (forall ((@x5 Term) (@x6 Term))
  (! (implies (and (HasType @x5
 (FStar.Pointer.Base.pointer (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
@@ -50128,41 +49950,41 @@ Prims.string)
 (Tm_refine_1360bd8e2b05bb50fc6c2301cf49db21 @x3
 @x1))
 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,13-48,18)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,13-48,18)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.TStruct (Test.struct Dummy_value))
 @x3
 @x1)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2115,28-2115,36); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(2115,28-2115,36); use=Test.fst(48,13-48,18)
 (= @x3
 @x6)
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2115,40-2115,57); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(2115,40-2115,57); use=Test.fst(48,13-48,18)
 (= @x5
 (FStar.Pointer.Base.gfield (Test.struct Dummy_value)
 @x1
 (BoxString (FString_const 0))))
 
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,13-44,18)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,13-48,18)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,13-44,18)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,13-48,18)
 (FStar.HyperStack.ST.equal_domains @x3
 @x6)
 )
 )
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,4-48,9)
 (or label_26
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,4-48,9)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -50175,10 +49997,10 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,31-48,35)
 (or label_27
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,31-48,35)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -50191,10 +50013,10 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,51-44,54)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,51-48,54)
 (or label_28
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,51-44,54)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,51-48,54)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -50207,24 +50029,24 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x7 Term))
  (! (implies (and (HasType @x7
 Prims.string)
 
-;; def=legacy/FStar.Pointer.Base.fsti(2112,2-2112,4); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(2112,2-2112,4); use=Test.fst(48,2-49,28)
 (= (BoxString (FString_const 0))
 @x7)
 )
 
-;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(44,39-44,44)
+;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(48,39-48,44)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,39-44,44)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,39-48,44)
 (or label_29
 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,39-44,44)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,39-48,44)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,39-44,44)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,39-48,44)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.TStruct (Test.struct Dummy_value))
 @x6
 @x0)
@@ -50232,7 +50054,7 @@ Prims.string)
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(44,39-44,44)
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(48,39-48,44)
 (forall ((@x8 Term) (@x9 Term))
  (! (implies (and (HasType @x8
 (FStar.Pointer.Base.pointer (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
@@ -50241,41 +50063,41 @@ Prims.string)
 (Tm_refine_1360bd8e2b05bb50fc6c2301cf49db21 @x6
 @x0))
 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,39-44,44)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,39-48,44)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(44,39-44,44)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(48,39-48,44)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.TStruct (Test.struct Dummy_value))
 @x6
 @x0)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2115,28-2115,36); use=Test.fst(44,39-44,44)
+;; def=legacy/FStar.Pointer.Base.fsti(2115,28-2115,36); use=Test.fst(48,39-48,44)
 (= @x6
 @x9)
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2115,40-2115,57); use=Test.fst(44,39-44,44)
+;; def=legacy/FStar.Pointer.Base.fsti(2115,40-2115,57); use=Test.fst(48,39-48,44)
 (= @x8
 (FStar.Pointer.Base.gfield (Test.struct Dummy_value)
 @x0
 (BoxString (FString_const 0))))
 
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,39-44,44)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,39-48,44)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,39-44,44)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,39-48,44)
 (FStar.HyperStack.ST.equal_domains @x6
 @x9)
 )
 )
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,39-44,44)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,39-48,44)
 (or label_30
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,39-44,44)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,39-48,44)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -50288,52 +50110,52 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x10 Term))
  (! (implies (and (HasType @x10
 Prims.string)
 
-;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(48,2-49,28)
 (= (BoxString (FString_const 0))
 @x10)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x11 Term))
  (! (implies (and (HasType @x11
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=legacy/FStar.Pointer.Base.fsti(112,6-2113,47); use=Test.fst(44,39-44,44)
+;; def=legacy/FStar.Pointer.Base.fsti(112,6-2113,47); use=Test.fst(48,39-48,44)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x11)
 )
 
-;; def=Prims.fst(356,2-356,58); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,2-356,58); use=Test.fst(48,2-49,28)
 (forall ((@x12 Term))
  (! (implies (and (HasType @x12
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=Prims.fst(356,26-356,41); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,26-356,41); use=Test.fst(48,2-49,28)
 (= @x12
 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0))))
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2113,21-2135,8); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(2113,21-2135,8); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x12)
 )
 
-;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(44,31-44,35)
+;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(48,31-48,35)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(48,31-48,35)
 (or label_31
 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(48,31-48,35)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(48,31-48,35)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x9
@@ -50342,7 +50164,7 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(44,31-44,35)
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(48,31-48,35)
 (forall ((@x13 Term) (@x14 Term))
  (! (implies (and (HasType @x13
 (FStar.Pointer.Base.type_of_typ (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
@@ -50351,9 +50173,9 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 (Tm_refine_da3bceca4b222dd412c8a0d781ebb345 @x9
 @x8))
 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(48,31-48,35)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(48,31-48,35)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x9
@@ -50361,9 +50183,9 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2139,27-2139,40); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2139,27-2139,40); use=Test.fst(48,31-48,35)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2139,27-2139,40); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2139,27-2139,40); use=Test.fst(48,31-48,35)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x9
@@ -50371,12 +50193,12 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2139,44-2139,52); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2139,44-2139,52); use=Test.fst(48,31-48,35)
 (= @x9
 @x14)
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2139,56-2139,71); use=Test.fst(44,31-44,35)
+;; def=legacy/FStar.Pointer.Base.fsti(2139,56-2139,71); use=Test.fst(48,31-48,35)
 (= @x13
 (FStar.Pointer.Base.gread (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
@@ -50384,20 +50206,20 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 @x8))
 
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,31-44,35)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,31-48,35)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,31-44,35)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,31-48,35)
 (FStar.HyperStack.ST.equal_domains @x9
 @x14)
 )
 )
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,13-48,18)
 (or label_32
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(48,13-48,18)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -50410,52 +50232,52 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x15 Term))
  (! (implies (and (HasType @x15
 Prims.string)
 
-;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(48,2-49,28)
 (= (BoxString (FString_const 0))
 @x15)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x16 Term))
  (! (implies (and (HasType @x16
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=legacy/FStar.Pointer.Base.fsti(112,6-2113,47); use=Test.fst(44,13-44,18)
+;; def=legacy/FStar.Pointer.Base.fsti(112,6-2113,47); use=Test.fst(48,13-48,18)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x16)
 )
 
-;; def=Prims.fst(356,2-356,58); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,2-356,58); use=Test.fst(48,2-49,28)
 (forall ((@x17 Term))
  (! (implies (and (HasType @x17
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=Prims.fst(356,26-356,41); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,26-356,41); use=Test.fst(48,2-49,28)
 (= @x17
 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0))))
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2113,21-2148,13); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(2113,21-2148,13); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x17)
 )
 
-;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(44,4-44,9)
+;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(48,4-48,9)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(48,4-48,9)
 (or label_33
 
-;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(48,4-48,9)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(48,4-48,9)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x14
@@ -50464,7 +50286,7 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(44,4-44,9)
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(48,4-48,9)
 (forall ((@x18 Term) (@x19 Term))
  (! (implies (and (HasType @x18
 Prims.unit)
@@ -50472,9 +50294,9 @@ Prims.unit)
 (Tm_refine_8ecc6be99d45a2144a7acc54c52b51b8 @x14
 @x5))
 
-;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(48,4-48,9)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2149,22-2149,30); use=Test.fst(48,4-48,9)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x14
@@ -50482,9 +50304,9 @@ Prims.unit)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2150,27-2150,36); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2150,27-2150,36); use=Test.fst(48,4-48,9)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2150,27-2150,36); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2150,27-2150,36); use=Test.fst(48,4-48,9)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x14
@@ -50492,9 +50314,9 @@ Prims.unit)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2150,40-2150,49); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2150,40-2150,49); use=Test.fst(48,4-48,9)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2150,40-2150,49); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2150,40-2150,49); use=Test.fst(48,4-48,9)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x19
@@ -50502,9 +50324,9 @@ Prims.unit)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2151,7-2151,25); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2151,7-2151,25); use=Test.fst(48,4-48,9)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2151,7-2151,25); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2151,7-2151,25); use=Test.fst(48,4-48,9)
 (FStar.Pointer.Base.modifies_1 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x5
@@ -50513,9 +50335,9 @@ Prims.unit)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2152,7-2152,20); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2152,7-2152,20); use=Test.fst(48,4-48,9)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2152,7-2152,20); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2152,7-2152,20); use=Test.fst(48,4-48,9)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x19
@@ -50523,7 +50345,7 @@ Prims.unit)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2153,7-2153,22); use=Test.fst(44,4-44,9)
+;; def=legacy/FStar.Pointer.Base.fsti(2153,7-2153,22); use=Test.fst(48,4-48,9)
 (= (FStar.Pointer.Base.gread (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x19
@@ -50532,20 +50354,20 @@ Prims.unit)
 (BoxInt 1)))
 
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,4-44,9)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,4-48,9)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(44,4-44,9)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(48,4-48,9)
 (FStar.HyperStack.ST.equal_domains @x14
 @x19)
 )
 )
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(49,4-49,8)
 (or label_34
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(49,4-49,8)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -50558,10 +50380,10 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(45,24-45,27)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(49,24-49,27)
 (or label_35
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(45,24-45,27)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(49,24-49,27)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -50574,24 +50396,24 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x20 Term))
  (! (implies (and (HasType @x20
 Prims.string)
 
-;; def=legacy/FStar.Pointer.Base.fsti(2112,2-2112,4); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(2112,2-2112,4); use=Test.fst(48,2-49,28)
 (= (BoxString (FString_const 0))
 @x20)
 )
 
-;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(45,12-45,17)
+;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(49,12-49,17)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(45,12-45,17)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(49,12-49,17)
 (or label_36
 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(45,12-45,17)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(49,12-49,17)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(45,12-45,17)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(49,12-49,17)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.TStruct (Test.struct Dummy_value))
 @x19
 @x0)
@@ -50599,7 +50421,7 @@ Prims.string)
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(45,12-45,17)
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(49,12-49,17)
 (forall ((@x21 Term) (@x22 Term))
  (! (implies (and (HasType @x21
 (FStar.Pointer.Base.pointer (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
@@ -50608,41 +50430,41 @@ Prims.string)
 (Tm_refine_1360bd8e2b05bb50fc6c2301cf49db21 @x19
 @x0))
 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(45,12-45,17)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(49,12-49,17)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(45,12-45,17)
+;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(49,12-49,17)
 (FStar.Pointer.Base.live (FStar.Pointer.Base.TStruct (Test.struct Dummy_value))
 @x19
 @x0)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2115,28-2115,36); use=Test.fst(45,12-45,17)
+;; def=legacy/FStar.Pointer.Base.fsti(2115,28-2115,36); use=Test.fst(49,12-49,17)
 (= @x19
 @x22)
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2115,40-2115,57); use=Test.fst(45,12-45,17)
+;; def=legacy/FStar.Pointer.Base.fsti(2115,40-2115,57); use=Test.fst(49,12-49,17)
 (= @x21
 (FStar.Pointer.Base.gfield (Test.struct Dummy_value)
 @x0
 (BoxString (FString_const 0))))
 
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(45,12-45,17)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(49,12-49,17)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(45,12-45,17)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(49,12-49,17)
 (FStar.HyperStack.ST.equal_domains @x19
 @x22)
 )
 )
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(48,2-49,28)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(45,12-45,17)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(49,12-49,17)
 (or label_37
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(45,12-45,17)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(49,12-49,17)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -50655,52 +50477,52 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x23 Term))
  (! (implies (and (HasType @x23
 Prims.string)
 
-;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(111,3-111,4); use=Test.fst(48,2-49,28)
 (= (BoxString (FString_const 0))
 @x23)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(48,2-49,28)
 (forall ((@x24 Term))
  (! (implies (and (HasType @x24
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=legacy/FStar.Pointer.Base.fsti(112,6-2113,47); use=Test.fst(45,12-45,17)
+;; def=legacy/FStar.Pointer.Base.fsti(112,6-2113,47); use=Test.fst(49,12-49,17)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x24)
 )
 
-;; def=Prims.fst(356,2-356,58); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,2-356,58); use=Test.fst(48,2-49,28)
 (forall ((@x25 Term))
  (! (implies (and (HasType @x25
 Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 
-;; def=Prims.fst(356,26-356,41); use=Test.fst(44,2-45,28)
+;; def=Prims.fst(356,26-356,41); use=Test.fst(48,2-49,28)
 (= @x25
 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0))))
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2113,21-2135,8); use=Test.fst(44,2-45,28)
+;; def=legacy/FStar.Pointer.Base.fsti(2113,21-2135,8); use=Test.fst(48,2-49,28)
 (= (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x25)
 )
 
-;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(45,4-45,8)
+;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(49,4-49,8)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(49,4-49,8)
 (or label_38
 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(49,4-49,8)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(49,4-49,8)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x22
@@ -50709,7 +50531,7 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(45,4-45,8)
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(49,4-49,8)
 (forall ((@x26 Term) (@x27 Term))
  (! (implies (and (HasType @x26
 (FStar.Pointer.Base.type_of_typ (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
@@ -50718,9 +50540,9 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 (Tm_refine_da3bceca4b222dd412c8a0d781ebb345 @x22
 @x21))
 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(49,4-49,8)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(2138,22-2138,34); use=Test.fst(49,4-49,8)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x22
@@ -50728,9 +50550,9 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2139,27-2139,40); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(2139,27-2139,40); use=Test.fst(49,4-49,8)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2139,27-2139,40); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(2139,27-2139,40); use=Test.fst(49,4-49,8)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 @x22
@@ -50738,12 +50560,12 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2139,44-2139,52); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(2139,44-2139,52); use=Test.fst(49,4-49,8)
 (= @x22
 @x27)
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2139,56-2139,71); use=Test.fst(45,4-45,8)
+;; def=legacy/FStar.Pointer.Base.fsti(2139,56-2139,71); use=Test.fst(49,4-49,8)
 (= @x26
 (FStar.Pointer.Base.gread (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
@@ -50751,17 +50573,17 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 @x21))
 
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(45,4-45,8)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(49,4-49,8)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(45,4-45,8)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(49,4-49,8)
 (FStar.HyperStack.ST.equal_domains @x22
 @x27)
 )
 )
 
-;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(45,4-45,8)
+;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(49,4-49,8)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(45,4-45,8)
+;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(49,4-49,8)
 (ApplyTT (ApplyTT @x2
 @x26)
 @x27)
@@ -50953,7 +50775,7 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 (pop) ;; 0}pop
 ; QUERY ID: (Test.callee, 1)
 ; STATUS: unsat
-; UNSAT CORE GENERATED: @MaxFuel_assumption, @MaxIFuel_assumption, @fuel_correspondence_FStar.List.Tot.Base.assoc.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.mem.fuel_instrumented, @fuel_correspondence_FStar.Pointer.Base.type_of_typ.fuel_instrumented, @query, FStar.Pervasives.Native_interpretation_Tm_arrow_b8cce376a4a678a51298a0f3945f25ce, FStar.TSet_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe, bool_inversion, constructor_distinct_FStar.Pointer.Base.TBase, constructor_distinct_FStar.Pointer.Base.TInt, constructor_distinct_Prims.Cons, disc_equation_Prims.Cons, equality_tok_FStar.Pointer.Base.TInt@tok, equation_FStar.Monotonic.HyperStack.live_region, equation_FStar.Pervasives.Native.fst, equation_FStar.Pointer.Base.equal_values, equation_FStar.Pointer.Base.modifies_1, equation_FStar.Pointer.Base.struct_field, equation_FStar.Pointer.Base.struct_field_, equation_FStar.Pointer.Base.typ_of_struct_field, equation_FStar.Pointer.Base.typ_of_struct_field_, equation_FStar.Pointer.Base.type_of_base_typ, equation_Prims.eqtype, equation_Test.obj, equation_Test.struct, equation_Test.struct_t, equation_with_fuel_FStar.List.Tot.Base.assoc.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.map.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.mem.fuel_instrumented, equation_with_fuel_FStar.Pointer.Base.type_of_typ.fuel_instrumented, function_token_typing_FStar.Pervasives.Native.fst, kinding_FStar.Pervasives.Native.tuple2@tok, kinding_FStar.Pointer.Base.typ@tok, lemma_FStar.Pointer.Base.gread_gfield, lemma_FStar.Pointer.Base.live_gfield, lemma_FStar.Pointer.Base.live_region_frameOf, lemma_FStar.Pointer.Base.modifies_pointer_elim, lemma_FStar.Pointer.Base.readable_gfield, lemma_FStar.Pointer.Base.readable_live, lemma_FStar.Pointer.Derived1.loc_disjoint_gfield_r, primitive_Prims.op_Equality, proj_equation_FStar.Pervasives.Native.Mktuple2__1, proj_equation_FStar.Pervasives.Native.Some_v, proj_equation_FStar.Pointer.Base.Mkstruct_typ_fields, projection_inverse_BoxBool_proj_0, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FStar.Pervasives.Native.Mktuple2__2, projection_inverse_FStar.Pervasives.Native.Some_v, projection_inverse_FStar.Pointer.Base.Mkstruct_typ_fields, projection_inverse_FStar.Pointer.Base.TBase_b, projection_inverse_Prims.Cons_a, projection_inverse_Prims.Cons_hd, projection_inverse_Prims.Cons_tl, refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f, refinement_interpretation_Tm_refine_8ecc6be99d45a2144a7acc54c52b51b8, refinement_interpretation_Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90, refinement_interpretation_Tm_refine_c6dda526ae22ec011a2853adf9fa6a29, refinement_interpretation_Tm_refine_d0289c880ab990123baa443e94dd3ce7, refinement_interpretation_Tm_refine_eda496a665ec0c486d3c3de30bfc4462, string_typing, token_correspondence_FStar.Pervasives.Native.fst, typing_FStar.List.Tot.Base.map, typing_FStar.List.Tot.Base.mem, typing_FStar.Monotonic.HyperStack.live_region, typing_FStar.Pointer.Base.__proj__Mkstruct_typ__item__fields, typing_FStar.Pointer.Base.frameOf, typing_FStar.Pointer.Base.loc_pointer, typing_Prims.string, typing_Test.struct, typing_Test.struct_t
+; UNSAT CORE GENERATED: @MaxFuel_assumption, @MaxIFuel_assumption, @fuel_correspondence_FStar.List.Tot.Base.assoc.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.mem.fuel_instrumented, @fuel_correspondence_FStar.Pointer.Base.type_of_typ.fuel_instrumented, @query, FStar.Ghost_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe, FStar.Pervasives.Native_interpretation_Tm_arrow_b8cce376a4a678a51298a0f3945f25ce, bool_inversion, constructor_distinct_FStar.Pointer.Base.TBase, constructor_distinct_FStar.Pointer.Base.TInt, constructor_distinct_Prims.Cons, disc_equation_Prims.Cons, equality_tok_FStar.Pointer.Base.TInt@tok, equation_FStar.Monotonic.HyperStack.live_region, equation_FStar.Pervasives.Native.fst, equation_FStar.Pointer.Base.equal_values, equation_FStar.Pointer.Base.modifies_1, equation_FStar.Pointer.Base.struct_field, equation_FStar.Pointer.Base.struct_field_, equation_FStar.Pointer.Base.typ_of_struct_field, equation_FStar.Pointer.Base.typ_of_struct_field_, equation_FStar.Pointer.Base.type_of_base_typ, equation_Prims.eqtype, equation_Test.obj, equation_Test.struct, equation_Test.struct_t, equation_with_fuel_FStar.List.Tot.Base.assoc.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.map.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.mem.fuel_instrumented, equation_with_fuel_FStar.Pointer.Base.type_of_typ.fuel_instrumented, function_token_typing_FStar.Pervasives.Native.fst, kinding_FStar.Pervasives.Native.tuple2@tok, kinding_FStar.Pointer.Base.typ@tok, lemma_FStar.Pointer.Base.gread_gfield, lemma_FStar.Pointer.Base.live_gfield, lemma_FStar.Pointer.Base.live_region_frameOf, lemma_FStar.Pointer.Base.modifies_pointer_elim, lemma_FStar.Pointer.Base.readable_gfield, lemma_FStar.Pointer.Base.readable_live, lemma_FStar.Pointer.Derived1.loc_disjoint_gfield_r, primitive_Prims.op_Equality, proj_equation_FStar.Pervasives.Native.Mktuple2__1, proj_equation_FStar.Pervasives.Native.Some_v, proj_equation_FStar.Pointer.Base.Mkstruct_typ_fields, projection_inverse_BoxBool_proj_0, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FStar.Pervasives.Native.Mktuple2__2, projection_inverse_FStar.Pervasives.Native.Some_v, projection_inverse_FStar.Pointer.Base.Mkstruct_typ_fields, projection_inverse_FStar.Pointer.Base.TBase_b, projection_inverse_Prims.Cons_a, projection_inverse_Prims.Cons_hd, projection_inverse_Prims.Cons_tl, refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f, refinement_interpretation_Tm_refine_8ecc6be99d45a2144a7acc54c52b51b8, refinement_interpretation_Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90, refinement_interpretation_Tm_refine_c6dda526ae22ec011a2853adf9fa6a29, refinement_interpretation_Tm_refine_d0289c880ab990123baa443e94dd3ce7, refinement_interpretation_Tm_refine_eda496a665ec0c486d3c3de30bfc4462, string_typing, token_correspondence_FStar.Pervasives.Native.fst, typing_FStar.List.Tot.Base.map, typing_FStar.List.Tot.Base.mem, typing_FStar.Monotonic.HyperStack.live_region, typing_FStar.Pointer.Base.__proj__Mkstruct_typ__item__fields, typing_FStar.Pointer.Base.frameOf, typing_FStar.Pointer.Base.loc_pointer, typing_Prims.string, typing_Test.struct, typing_Test.struct_t
 
 ; Z3 invocation started by F*
 ; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
@@ -50972,346 +50794,6 @@ Tm_refine_d0289c880ab990123baa443e94dd3ce7)
 (declare-fun Test.callee@tok () Term)
 
 ; </end encoding let callee>
-
-(push) ;; push{2
-
-; Starting query at Test.fst(47,0-53,1)
-
-(declare-fun label_2 () Bool)
-(declare-fun label_1 () Bool)
-
-
-; Encoding query formula : Cons? ["Less", Test.struct_t; "ThisMore", FStar.Pointer.Base.TBase FStar.Pointer.Base.TUnit] /\
-; FStar.List.Tot.Base.noRepeats (FStar.List.Tot.Base.map FStar.Pervasives.Native.fst
-;       ["Less", Test.struct_t; "ThisMore", FStar.Pointer.Base.TBase FStar.Pointer.Base.TUnit])
-
-
-; Context: While encoding a query
-; While checking for top-level effects
-; While typechecking the top-level declaration `let more_struct`
-
-(push) ;; push{0
-
-; <fuel='2' ifuel='1'>
-
-;;; Fact-ids: 
-(assert (! (= MaxFuel
-(SFuel (SFuel ZFuel)))
-:named @MaxFuel_assumption))
-;;; Fact-ids: 
-(assert (! (= MaxIFuel
-(SFuel ZFuel))
-:named @MaxIFuel_assumption))
-;;;;;;;;;;;;;;;;query
-;;; Fact-ids: 
-(assert (! (not 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-70,41); use=Test.fst(49,13-52,3)
-(and 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(49,13-52,3)
-(or label_1
-
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(49,13-52,3)
-(BoxBool_proj_0 (Prims.uu___is_Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 3))
-(Test.struct_t Dummy_value))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 4))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TUnit@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ))))))
-)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(49,13-52,3)
-(or label_2
-
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(49,13-52,3)
-(BoxBool_proj_0 (FStar.List.Tot.Base.noRepeats Prims.string
-(FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-Prims.string
-(ApplyTT (ApplyTT FStar.Pervasives.Native.fst@tok
-Prims.string)
-FStar.Pointer.Base.typ)
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 3))
-(Test.struct_t Dummy_value))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 4))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TUnit@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)))))))
-)
-)
-)
-:named @query))
-(set-option :rlimit 2723280)
-(echo "<result>")
-(check-sat)
-(echo "</result>")
-(set-option :rlimit 0)
-(echo "<reason-unknown>")
-(get-info :reason-unknown)
-(echo "</reason-unknown>")
-(echo "<unsat-core>")
-(get-unsat-core)
-(echo "</unsat-core>")
-(echo "<labels>")
-(echo "label_2")
-(eval label_2)
-(echo "label_1")
-(eval label_1)
-(echo "</labels>")
-(echo "Done!")
-(pop) ;; 0}pop
-; QUERY ID: (Test.more_struct, 1)
-; STATUS: unknown because (incomplete quantifiers)
-
-; Z3 invocation started by F*
-; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
-; Z3 version (according to F*): 4.12.1
-
-(push) ;; push{0
-
-; <fuel='2' ifuel='2'>
-
-;;; Fact-ids: 
-(assert (! (= MaxFuel
-(SFuel (SFuel ZFuel)))
-:named @MaxFuel_assumption))
-;;; Fact-ids: 
-(assert (! (= MaxIFuel
-(SFuel (SFuel ZFuel)))
-:named @MaxIFuel_assumption))
-;;;;;;;;;;;;;;;;query
-;;; Fact-ids: 
-(assert (! (not 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-70,41); use=Test.fst(49,13-52,3)
-(and 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(49,13-52,3)
-(or label_1
-
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(49,13-52,3)
-(BoxBool_proj_0 (Prims.uu___is_Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 3))
-(Test.struct_t Dummy_value))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 4))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TUnit@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ))))))
-)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(49,13-52,3)
-(or label_2
-
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(49,13-52,3)
-(BoxBool_proj_0 (FStar.List.Tot.Base.noRepeats Prims.string
-(FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-Prims.string
-(ApplyTT (ApplyTT FStar.Pervasives.Native.fst@tok
-Prims.string)
-FStar.Pointer.Base.typ)
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 3))
-(Test.struct_t Dummy_value))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 4))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TUnit@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)))))))
-)
-)
-)
-:named @query))
-(set-option :rlimit 2723280)
-(echo "<result>")
-(check-sat)
-(echo "</result>")
-(set-option :rlimit 0)
-(echo "<reason-unknown>")
-(get-info :reason-unknown)
-(echo "</reason-unknown>")
-(echo "<unsat-core>")
-(get-unsat-core)
-(echo "</unsat-core>")
-(echo "<labels>")
-(echo "label_2")
-(eval label_2)
-(echo "label_1")
-(eval label_1)
-(echo "</labels>")
-(echo "Done!")
-(pop) ;; 0}pop
-; QUERY ID: (Test.more_struct, 1)
-; STATUS: unknown because (incomplete quantifiers)
-
-; Z3 invocation started by F*
-; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
-; Z3 version (according to F*): 4.12.1
-
-(push) ;; push{0
-
-; <fuel='4' ifuel='2'>
-
-;;; Fact-ids: 
-(assert (! (= MaxFuel
-(SFuel (SFuel (SFuel (SFuel ZFuel)))))
-:named @MaxFuel_assumption))
-;;; Fact-ids: 
-(assert (! (= MaxIFuel
-(SFuel (SFuel ZFuel)))
-:named @MaxIFuel_assumption))
-;;;;;;;;;;;;;;;;query
-;;; Fact-ids: 
-(assert (! (not 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-70,41); use=Test.fst(49,13-52,3)
-(and 
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(49,13-52,3)
-(or label_1
-
-;; def=legacy/FStar.Pointer.Base.fsti(69,2-69,9); use=Test.fst(49,13-52,3)
-(BoxBool_proj_0 (Prims.uu___is_Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 3))
-(Test.struct_t Dummy_value))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 4))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TUnit@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ))))))
-)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(49,13-52,3)
-(or label_2
-
-;; def=legacy/FStar.Pointer.Base.fsti(70,2-70,41); use=Test.fst(49,13-52,3)
-(BoxBool_proj_0 (FStar.List.Tot.Base.noRepeats Prims.string
-(FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-Prims.string
-(ApplyTT (ApplyTT FStar.Pervasives.Native.fst@tok
-Prims.string)
-FStar.Pointer.Base.typ)
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 3))
-(Test.struct_t Dummy_value))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 4))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TUnit@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)))))))
-)
-)
-)
-:named @query))
-(set-option :rlimit 2723280)
-(echo "<result>")
-(check-sat)
-(echo "</result>")
-(set-option :rlimit 0)
-(echo "<reason-unknown>")
-(get-info :reason-unknown)
-(echo "</reason-unknown>")
-(echo "<unsat-core>")
-(get-unsat-core)
-(echo "</unsat-core>")
-(echo "<labels>")
-(echo "label_2")
-(eval label_2)
-(echo "label_1")
-(eval label_1)
-(echo "</labels>")
-(echo "Done!")
-(pop) ;; 0}pop
-; QUERY ID: (Test.more_struct, 1)
-; STATUS: unsat
-; UNSAT CORE GENERATED: @MaxFuel_assumption, @MaxIFuel_assumption, @fuel_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.mem.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.noRepeats.fuel_instrumented, @fuel_irrelevance_FStar.List.Tot.Base.noRepeats.fuel_instrumented, @query, FStar.Pervasives.Native_interpretation_Tm_arrow_b8cce376a4a678a51298a0f3945f25ce, FStar.TSet_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe, bool_inversion, constructor_distinct_Prims.Cons, constructor_distinct_Prims.Nil, data_elim_FStar.Pointer.Base.Mkstruct_typ, data_elim_Prims.Cons, data_typing_intro_FStar.Pervasives.Native.Mktuple2@tok, data_typing_intro_FStar.Pointer.Base.TBase@tok, data_typing_intro_FStar.Pointer.Base.TUnit@tok, data_typing_intro_Prims.Cons@tok, data_typing_intro_Prims.Nil@tok, disc_equation_Prims.Cons, equality_tok_FStar.Pointer.Base.TUnit@tok, equation_FStar.Pervasives.Native.fst, equation_Prims.eqtype, equation_Test.struct, equation_Test.struct_t, equation_with_fuel_FStar.List.Tot.Base.map.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.mem.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.noRepeats.fuel_instrumented, fuel_guarded_inversion_Prims.list, function_token_typing_FStar.Pervasives.Native.fst, kinding_FStar.Pervasives.Native.tuple2@tok, kinding_FStar.Pointer.Base.typ@tok, primitive_Prims.op_AmpAmp, primitive_Prims.op_Equality, primitive_Prims.op_Negation, proj_equation_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_BoxBool_proj_0, projection_inverse_BoxString_proj_0, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FString_const_proj_0, projection_inverse_Prims.Cons_a, projection_inverse_Prims.Cons_hd, projection_inverse_Prims.Cons_tl, projection_inverse_Prims.Nil_a, refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f, refinement_interpretation_Tm_refine_eda496a665ec0c486d3c3de30bfc4462, string_typing, token_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, token_correspondence_FStar.List.Tot.Base.noRepeats.fuel_instrumented, token_correspondence_FStar.Pervasives.Native.fst, typing_FStar.List.Tot.Base.map, typing_FStar.List.Tot.Base.mem, typing_FStar.List.Tot.Base.noRepeats, typing_Prims.string, typing_Test.struct, typing_Test.struct_t
-
-; Z3 invocation started by F*
-; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
-; Z3 version (according to F*): 4.12.1
-
-(pop) ;; 2}pop
-
-; encoding sigelt let more_struct
-
-
-; <Start encoding let more_struct>
-
-(declare-fun Test.more_struct (Dummy_sort) Term)
-
-; </end encoding let more_struct>
-
-
-; encoding sigelt let more_struct_t
-
-
-; <Start encoding let more_struct_t>
-
-(declare-fun Test.more_struct_t (Dummy_sort) Term)
-
-; </end encoding let more_struct_t>
-
-
-; encoding sigelt let more_obj
-
-
-; <Start encoding let more_obj>
-
-(declare-fun Test.more_obj () Term)
-
-; </end encoding let more_obj>
-
-
-; encoding sigelt #reset-options "--z3rlimit 16"
-
-
-; <Skipped #reset-options "--z3rlimit 16"/>
 
 
 ; encoding sigelt let mk_struct_literal
@@ -51357,35 +50839,9 @@ FStar.Pointer.Base.typ)))))))
 
 :named typing_Tm_abs_2373aec163852d9339944ec67b8394ad))
 ;;;;;;;;;;;;;;;;free var typing
-;;; Fact-ids: Name Test.more_struct_t; Namespace Test
-(assert (! 
-;; def=Test.fst(55,4-55,17); use=Test.fst(55,4-55,17)
-(forall ((@u0 Dummy_sort))
- (! (HasType (Test.more_struct_t @u0)
-FStar.Pointer.Base.typ)
- 
-
-:pattern ((Test.more_struct_t @u0))
-:qid typing_Test.more_struct_t))
-
-:named typing_Test.more_struct_t))
-;;;;;;;;;;;;;;;;free var typing
-;;; Fact-ids: Name Test.more_struct; Namespace Test
-(assert (! 
-;; def=Test.fst(47,4-47,15); use=Test.fst(47,4-47,15)
-(forall ((@u0 Dummy_sort))
- (! (HasType (Test.more_struct @u0)
-FStar.Pointer.Base.struct_typ)
- 
-
-:pattern ((Test.more_struct @u0))
-:qid typing_Test.more_struct))
-
-:named typing_Test.more_struct))
-;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Test.mk_struct_literal; Namespace Test
 (assert (! 
-;; def=Test.fst(65,4-65,21); use=Test.fst(65,4-65,21)
+;; def=Test.fst(62,4-62,21); use=Test.fst(62,4-62,21)
 (forall ((@x0 Term) (@x1 Term))
  (! (implies (and (HasType @x0
 FStar.Pointer.Base.struct_typ)
@@ -51547,6 +51003,53 @@ Prims.eqtype)
 :qid typing_FStar.Set.complement))
 
 :named typing_FStar.Set.complement))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Seq.Base.index; Namespace FStar.Seq.Base
+(assert (! 
+;; def=FStar.Seq.Base.fsti(32,4-32,9); use=FStar.Seq.Base.fsti(32,4-32,9)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+(FStar.Seq.Base.seq @x0))
+(HasType @x2
+(Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55 @x0
+@x1)))
+(HasType (FStar.Seq.Base.index @x0
+@x1
+@x2)
+@x0))
+ 
+
+:pattern ((FStar.Seq.Base.index @x0
+@x1
+@x2))
+:qid typing_FStar.Seq.Base.index))
+
+:named typing_FStar.Seq.Base.index))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Seq.Base.create; Namespace FStar.Seq.Base
+(assert (! 
+;; def=FStar.Seq.Base.fsti(34,4-34,10); use=FStar.Seq.Base.fsti(34,4-34,10)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+Prims.nat)
+(HasType @x2
+@x0))
+(HasType (FStar.Seq.Base.create @x0
+@x1
+@x2)
+(FStar.Seq.Base.seq @x0)))
+ 
+
+:pattern ((FStar.Seq.Base.create @x0
+@x1
+@x2))
+:qid typing_FStar.Seq.Base.create))
+
+:named typing_FStar.Seq.Base.create))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name FStar.Pointer.Base.struct_literal; Namespace FStar.Pointer.Base
 (assert (! 
@@ -51722,6 +51225,111 @@ FStar.Pointer.Base.loc)
 
 :named typing_FStar.Pointer.Base.loc_none))
 ;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Pointer.Base.loc_buffer; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(1553,4-1553,14); use=legacy/FStar.Pointer.Base.fsti(1553,4-1553,14)
+(forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0)))
+(HasType (FStar.Pointer.Base.loc_buffer @x0
+@x1)
+FStar.Pointer.Base.loc))
+ 
+
+:pattern ((FStar.Pointer.Base.loc_buffer @x0
+@x1))
+:qid typing_FStar.Pointer.Base.loc_buffer))
+
+:named typing_FStar.Pointer.Base.loc_buffer))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Pointer.Base.gpointer_of_buffer_cell; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(1279,4-1279,27); use=legacy/FStar.Pointer.Base.fsti(1279,4-1279,27)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and 
+;; def=legacy/FStar.Pointer.Base.fsti(1284,12-1284,53); use=legacy/FStar.Pointer.Base.fsti(1284,12-1284,53)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x2))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x1))))
+
+(HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x2
+(FStar.UInt32.t Dummy_value)))
+(HasType (FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x1
+@x2)
+(Tm_refine_4d0dd697db2857c49f85536bd0dded47 @x0)))
+ 
+
+:pattern ((FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x1
+@x2))
+:qid typing_FStar.Pointer.Base.gpointer_of_buffer_cell))
+
+:named typing_FStar.Pointer.Base.gpointer_of_buffer_cell))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Pointer.Base.gcell; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(627,4-627,9); use=legacy/FStar.Pointer.Base.fsti(627,4-627,9)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and 
+;; def=legacy/FStar.Pointer.Base.fsti(633,12-633,42); use=legacy/FStar.Pointer.Base.fsti(633,12-633,42)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+(HasType @x0
+FStar.Pointer.Base.array_length_t)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x0
+@x1)))
+(HasType @x3
+(FStar.UInt32.t Dummy_value)))
+(HasType (FStar.Pointer.Base.gcell @x0
+@x1
+@x2
+@x3)
+(Tm_refine_4d0dd697db2857c49f85536bd0dded47 @x1)))
+ 
+
+:pattern ((FStar.Pointer.Base.gcell @x0
+@x1
+@x2
+@x3))
+:qid typing_FStar.Pointer.Base.gcell))
+
+:named typing_FStar.Pointer.Base.gcell))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Pointer.Base.gbuffer_of_array_pointer; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(969,4-969,28); use=legacy/FStar.Pointer.Base.fsti(969,4-969,28)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Pointer.Base.array_length_t)
+(HasType @x2
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x1
+@x0))))
+(HasType (FStar.Pointer.Base.gbuffer_of_array_pointer @x0
+@x1
+@x2)
+(FStar.Pointer.Base.buffer @x0)))
+ 
+
+:pattern ((FStar.Pointer.Base.gbuffer_of_array_pointer @x0
+@x1
+@x2))
+:qid typing_FStar.Pointer.Base.gbuffer_of_array_pointer))
+
+:named typing_FStar.Pointer.Base.gbuffer_of_array_pointer))
+;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name FStar.Pointer.Base.fun_of_list; Namespace FStar.Pointer.Base
 (assert (! 
 ;; def=legacy/FStar.Pointer.Base.fsti(309,4-309,15); use=legacy/FStar.Pointer.Base.fsti(309,4-309,15)
@@ -51820,6 +51428,25 @@ FStar.Pointer.Base.struct_typ)
 
 :named typing_FStar.Pointer.Base.fun_of_list))
 ;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Pointer.Base.frameOf_buffer; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(1061,4-1061,18); use=legacy/FStar.Pointer.Base.fsti(1061,4-1061,18)
+(forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0)))
+(HasType (FStar.Pointer.Base.frameOf_buffer @x0
+@x1)
+(FStar.Monotonic.HyperHeap.rid Dummy_value)))
+ 
+
+:pattern ((FStar.Pointer.Base.frameOf_buffer @x0
+@x1))
+:qid typing_FStar.Pointer.Base.frameOf_buffer))
+
+:named typing_FStar.Pointer.Base.frameOf_buffer))
+;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name FStar.Pointer.Base.dfst_struct_field; Namespace FStar.Pointer.Base
 (assert (! 
 ;; def=legacy/FStar.Pointer.Base.fsti(294,4-294,21); use=legacy/FStar.Pointer.Base.fsti(294,4-294,21)
@@ -51839,6 +51466,117 @@ Prims.string))
 :qid typing_FStar.Pointer.Base.dfst_struct_field))
 
 :named typing_FStar.Pointer.Base.dfst_struct_field))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_readable; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(1443,4-1443,19); use=legacy/FStar.Pointer.Base.fsti(1443,4-1443,19)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Monotonic.HyperStack.mem)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0)))
+(HasType (FStar.Pointer.Base.buffer_readable @x0
+@x1
+@x2)
+Tm_type))
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_readable @x0
+@x1
+@x2))
+:qid typing_FStar.Pointer.Base.buffer_readable))
+
+:named typing_FStar.Pointer.Base.buffer_readable))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_live; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(1005,4-1005,15); use=legacy/FStar.Pointer.Base.fsti(1005,4-1005,15)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Monotonic.HyperStack.mem)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0)))
+(HasType (FStar.Pointer.Base.buffer_live @x0
+@x1
+@x2)
+Tm_type))
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_live @x0
+@x1
+@x2))
+:qid typing_FStar.Pointer.Base.buffer_live))
+
+:named typing_FStar.Pointer.Base.buffer_live))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_length; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(983,4-983,17); use=legacy/FStar.Pointer.Base.fsti(983,4-983,17)
+(forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0)))
+(HasType (FStar.Pointer.Base.buffer_length @x0
+@x1)
+(FStar.UInt32.t Dummy_value)))
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_length @x0
+@x1))
+:qid typing_FStar.Pointer.Base.buffer_length))
+
+:named typing_FStar.Pointer.Base.buffer_length))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_includes; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(2385,4-2385,19); use=legacy/FStar.Pointer.Base.fsti(2385,4-2385,19)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0)))
+(HasType (FStar.Pointer.Base.buffer_includes @x0
+@x1
+@x2)
+Tm_type))
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_includes @x0
+@x1
+@x2))
+:qid typing_FStar.Pointer.Base.buffer_includes))
+
+:named typing_FStar.Pointer.Base.buffer_includes))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_as_seq; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(1234,4-1234,17); use=legacy/FStar.Pointer.Base.fsti(1234,4-1234,17)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Monotonic.HyperStack.mem)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0)))
+(HasType (FStar.Pointer.Base.buffer_as_seq @x0
+@x1
+@x2)
+(FStar.Seq.Base.seq (FStar.Pointer.Base.type_of_typ @x0))))
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_as_seq @x0
+@x1
+@x2))
+:qid typing_FStar.Pointer.Base.buffer_as_seq))
+
+:named typing_FStar.Pointer.Base.buffer_as_seq))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name FStar.Pervasives.false_elim; Namespace FStar.Pervasives
 (assert (! 
@@ -52531,6 +52269,22 @@ Prims.lex_t
 
 :named subterm_ordering_Prims.Mkdtuple2))
 ;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name FStar.Seq.Base.index; Namespace FStar.Seq.Base
+(assert (! 
+;; def=FStar.Seq.Base.fsti(32,34-32,53); use=FStar.Seq.Base.fsti(32,34-32,53)
+(forall ((@x0 Term) (@x1 Term))
+ (! (HasType (Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55 @x0
+@x1)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55 @x0
+@x1)
+Tm_type))
+:qid refinement_kinding_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55))
+
+:named refinement_kinding_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55))
+;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: Name FStar.Monotonic.HyperHeap.lemma_extends_not_root; Namespace FStar.Monotonic.HyperHeap
 (assert (! 
 ;; def=FStar.Monotonic.HyperHeap.fsti(98,35-98,55); use=FStar.Monotonic.HyperHeap.fsti(98,35-98,55)
@@ -52545,6 +52299,20 @@ Tm_type))
 
 :named refinement_kinding_Tm_refine_cbd24d5334c6bfffa6fd8a84fb787f7a))
 ;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name FStar.Seq.Base.init_aux; Namespace FStar.Seq.Base
+(assert (! 
+;; def=FStar.Seq.Base.fsti(36,41-36,57); use=FStar.Seq.Base.fsti(36,41-36,57)
+(forall ((@x0 Term))
+ (! (HasType (Tm_refine_c1424615841f28cac7fc34e92b7ff33c @x0)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_refine_c1424615841f28cac7fc34e92b7ff33c @x0)
+Tm_type))
+:qid refinement_kinding_Tm_refine_c1424615841f28cac7fc34e92b7ff33c))
+
+:named refinement_kinding_Tm_refine_c1424615841f28cac7fc34e92b7ff33c))
+;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: Name FStar.Pointer.Base.struct_create; Namespace FStar.Pointer.Base
 (assert (! 
 ;; def=legacy/FStar.Pointer.Base.fsti(339,7-339,17); use=legacy/FStar.Pointer.Base.fsti(339,7-339,17)
@@ -52558,6 +52326,20 @@ Tm_type))
 :qid refinement_kinding_Tm_refine_8c12f3f9c2698fbe8f22a846eccf4184))
 
 :named refinement_kinding_Tm_refine_8c12f3f9c2698fbe8f22a846eccf4184))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name FStar.Pointer.Base.gcell; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(632,8-632,23); use=legacy/FStar.Pointer.Base.fsti(632,8-632,23)
+(forall ((@x0 Term))
+ (! (HasType (Tm_refine_4d0dd697db2857c49f85536bd0dded47 @x0)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_refine_4d0dd697db2857c49f85536bd0dded47 @x0)
+Tm_type))
+:qid refinement_kinding_Tm_refine_4d0dd697db2857c49f85536bd0dded47))
+
+:named refinement_kinding_Tm_refine_4d0dd697db2857c49f85536bd0dded47))
 ;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: Name FStar.List.Tot.Base.find; Namespace FStar.List.Tot.Base
 (assert (! 
@@ -52577,7 +52359,7 @@ Tm_type))
 ;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: Name Test.mk_struct_literal; Namespace Test
 (assert (! 
-;; def=Test.fst(65,53-65,74); use=Test.fst(65,53-65,74)
+;; def=Test.fst(62,53-62,74); use=Test.fst(62,53-62,74)
 (forall ((@x0 Term))
  (! (HasType (Tm_refine_2ed27bbc9f3f72a358633140c93f57bb @x0)
 Tm_type)
@@ -52605,6 +52387,33 @@ Tm_type))
 
 :named refinement_kinding_Tm_refine_0ac192743de52a9c212800a3bfc27c72))
 ;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name FStar.Seq.Base.index; Namespace FStar.Seq.Base
+(assert (! 
+;; def=FStar.Seq.Base.fsti(32,34-32,53); use=FStar.Seq.Base.fsti(32,34-32,53)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+(Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55 @x2
+@x3))
+(and (HasTypeFuel @u0
+@x1
+Prims.nat)
+
+;; def=FStar.Seq.Base.fsti(32,40-32,52); use=FStar.Seq.Base.fsti(32,40-32,52)
+(< (BoxInt_proj_0 @x1)
+(BoxInt_proj_0 (FStar.Seq.Base.length @x2
+@x3)))
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55 @x2
+@x3)))
+:qid refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55))
+
+:named refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55))
+;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: Name FStar.Monotonic.HyperHeap.lemma_extends_not_root; Namespace FStar.Monotonic.HyperHeap
 (assert (! 
 ;; def=FStar.Monotonic.HyperHeap.fsti(98,35-98,55); use=FStar.Monotonic.HyperHeap.fsti(98,35-98,55)
@@ -52629,6 +52438,30 @@ Tm_type))
 
 :named refinement_interpretation_Tm_refine_cbd24d5334c6bfffa6fd8a84fb787f7a))
 ;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name FStar.Seq.Base.init_aux; Namespace FStar.Seq.Base
+(assert (! 
+;; def=FStar.Seq.Base.fsti(36,41-36,57); use=FStar.Seq.Base.fsti(36,41-36,57)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+(Tm_refine_c1424615841f28cac7fc34e92b7ff33c @x2))
+(and (HasTypeFuel @u0
+@x1
+Prims.nat)
+
+;; def=FStar.Seq.Base.fsti(36,48-36,55); use=FStar.Seq.Base.fsti(36,48-36,55)
+(< (BoxInt_proj_0 @x1)
+(BoxInt_proj_0 @x2))
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_refine_c1424615841f28cac7fc34e92b7ff33c @x2)))
+:qid refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c))
+
+:named refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c))
+;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: Name FStar.Pointer.Base.struct_create; Namespace FStar.Pointer.Base
 (assert (! 
 ;; def=legacy/FStar.Pointer.Base.fsti(339,7-339,17); use=legacy/FStar.Pointer.Base.fsti(339,7-339,17)
@@ -52647,6 +52480,25 @@ Tm_type))
 :qid refinement_interpretation_Tm_refine_8c12f3f9c2698fbe8f22a846eccf4184))
 
 :named refinement_interpretation_Tm_refine_8c12f3f9c2698fbe8f22a846eccf4184))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name FStar.Pointer.Base.gcell; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(632,8-632,23); use=legacy/FStar.Pointer.Base.fsti(632,8-632,23)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+(Tm_refine_4d0dd697db2857c49f85536bd0dded47 @x2))
+(HasTypeFuel @u0
+@x1
+(FStar.Pointer.Base.pointer @x2)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_refine_4d0dd697db2857c49f85536bd0dded47 @x2)))
+:qid refinement_interpretation_Tm_refine_4d0dd697db2857c49f85536bd0dded47))
+
+:named refinement_interpretation_Tm_refine_4d0dd697db2857c49f85536bd0dded47))
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: Name FStar.List.Tot.Base.find; Namespace FStar.List.Tot.Base
 (assert (! 
@@ -52676,7 +52528,7 @@ Tm_type))
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: Name Test.mk_struct_literal; Namespace Test
 (assert (! 
-;; def=Test.fst(65,53-65,74); use=Test.fst(65,53-65,74)
+;; def=Test.fst(62,53-62,74); use=Test.fst(62,53-62,74)
 (forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
  (! (iff (HasTypeFuel @u0
 @x1
@@ -53056,6 +52908,60 @@ Prims.eqtype)
 @x2)))
 :qid lemma_FStar.Set.mem_complement))
 :named lemma_FStar.Set.mem_complement))
+;;;;;;;;;;;;;;;;Lemma: FStar.Seq.Base.lemma_index_create
+;;; Fact-ids: Name FStar.Seq.Base.lemma_index_create; Namespace FStar.Seq.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+Prims.nat)
+(HasType @x2
+@x0)
+(HasType @x3
+(Tm_refine_c1424615841f28cac7fc34e92b7ff33c @x1)))
+
+;; def=FStar.Seq.Base.fsti(135,11-135,38); use=FStar.Seq.Base.fsti(135,11-135,38)
+(= (FStar.Seq.Base.index @x0
+(FStar.Seq.Base.create @x0
+@x1
+@x2)
+@x3)
+@x2)
+)
+ 
+
+:pattern ((FStar.Seq.Base.index @x0
+(FStar.Seq.Base.create @x0
+@x1
+@x2)
+@x3))
+:qid lemma_FStar.Seq.Base.lemma_index_create))
+:named lemma_FStar.Seq.Base.lemma_index_create))
+;;;;;;;;;;;;;;;;Lemma: FStar.Seq.Base.lemma_create_len
+;;; Fact-ids: Name FStar.Seq.Base.lemma_create_len; Namespace FStar.Seq.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+Prims.nat)
+(HasType @x2
+@x0))
+
+;; def=FStar.Seq.Base.fsti(94,11-94,36); use=FStar.Seq.Base.fsti(94,11-94,36)
+(= (FStar.Seq.Base.length @x0
+(FStar.Seq.Base.create @x0
+@x1
+@x2))
+@x1)
+)
+ 
+
+:pattern ((FStar.Seq.Base.length @x0
+(FStar.Seq.Base.create @x0
+@x1
+@x2)))
+:qid lemma_FStar.Seq.Base.lemma_create_len))
+:named lemma_FStar.Seq.Base.lemma_create_len))
 ;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Derived1.loc_includes_region_union_r
 ;;; Fact-ids: Name FStar.Pointer.Derived1.loc_includes_region_union_r; Namespace FStar.Pointer.Derived1
 (assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
@@ -53152,6 +53058,482 @@ FStar.Pointer.Base.loc)
 @x0))
 :qid lemma_FStar.Pointer.Derived1.loc_disjoint_none_l))
 :named lemma_FStar.Pointer.Derived1.loc_disjoint_none_l))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Derived1.loc_disjoint_gpointer_of_buffer_cell_r
+;;; Fact-ids: Name FStar.Pointer.Derived1.loc_disjoint_gpointer_of_buffer_cell_r; Namespace FStar.Pointer.Derived1
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.loc)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x1))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(220,13-220,52); use=legacy/FStar.Pointer.Derived1.fsti(220,13-220,52)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x1
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(220,56-220,85); use=legacy/FStar.Pointer.Derived1.fsti(220,56-220,85)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(220,56-220,85); use=legacy/FStar.Pointer.Derived1.fsti(220,56-220,85)
+(FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_buffer @x1
+@x2))
+)
+)
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(221,11-221,114); use=legacy/FStar.Pointer.Derived1.fsti(221,11-221,114)
+(and 
+;; def=legacy/FStar.Pointer.Derived1.fsti(221,12-221,51); use=legacy/FStar.Pointer.Derived1.fsti(221,12-221,51)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x1
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(221,55-221,113); use=legacy/FStar.Pointer.Derived1.fsti(221,55-221,113)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(221,55-221,113); use=legacy/FStar.Pointer.Derived1.fsti(221,55-221,113)
+(FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+@x2
+@x3)))
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+@x2
+@x3))))
+:qid lemma_FStar.Pointer.Derived1.loc_disjoint_gpointer_of_buffer_cell_r))
+:named lemma_FStar.Pointer.Derived1.loc_disjoint_gpointer_of_buffer_cell_r))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Derived1.loc_disjoint_gpointer_of_buffer_cell_l
+;;; Fact-ids: Name FStar.Pointer.Derived1.loc_disjoint_gpointer_of_buffer_cell_l; Namespace FStar.Pointer.Derived1
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.loc)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x1))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(230,13-230,52); use=legacy/FStar.Pointer.Derived1.fsti(230,13-230,52)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x1
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(230,56-230,85); use=legacy/FStar.Pointer.Derived1.fsti(230,56-230,85)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(230,56-230,85); use=legacy/FStar.Pointer.Derived1.fsti(230,56-230,85)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_buffer @x1
+@x2)
+@x0)
+)
+)
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(231,11-231,114); use=legacy/FStar.Pointer.Derived1.fsti(231,11-231,114)
+(and 
+;; def=legacy/FStar.Pointer.Derived1.fsti(231,12-231,51); use=legacy/FStar.Pointer.Derived1.fsti(231,12-231,51)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x1
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(231,55-231,113); use=legacy/FStar.Pointer.Derived1.fsti(231,55-231,113)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(231,55-231,113); use=legacy/FStar.Pointer.Derived1.fsti(231,55-231,113)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+@x2
+@x3))
+@x0)
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+@x2
+@x3))
+@x0))
+:qid lemma_FStar.Pointer.Derived1.loc_disjoint_gpointer_of_buffer_cell_l))
+:named lemma_FStar.Pointer.Derived1.loc_disjoint_gpointer_of_buffer_cell_l))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Derived1.loc_disjoint_gcell_r
+;;; Fact-ids: Name FStar.Pointer.Derived1.loc_disjoint_gcell_r; Namespace FStar.Pointer.Derived1
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.loc)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Pointer.Base.array_length_t)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x2
+@x1)))
+(HasType @x4
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(161,13-161,38); use=legacy/FStar.Pointer.Derived1.fsti(161,13-161,38)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x2)))
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(161,42-161,72); use=legacy/FStar.Pointer.Derived1.fsti(161,42-161,72)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(161,42-161,72); use=legacy/FStar.Pointer.Derived1.fsti(161,42-161,72)
+(FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_pointer (FStar.Pointer.Base.TArray @x2
+@x1)
+@x3))
+)
+)
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(162,11-162,82); use=legacy/FStar.Pointer.Derived1.fsti(162,11-162,82)
+(and 
+;; def=legacy/FStar.Pointer.Derived1.fsti(162,12-162,37); use=legacy/FStar.Pointer.Derived1.fsti(162,12-162,37)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x2)))
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(162,41-162,81); use=legacy/FStar.Pointer.Derived1.fsti(162,41-162,81)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(162,41-162,81); use=legacy/FStar.Pointer.Derived1.fsti(162,41-162,81)
+(FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gcell @x2
+@x1
+@x3
+@x4)))
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gcell @x2
+@x1
+@x3
+@x4))))
+:qid lemma_FStar.Pointer.Derived1.loc_disjoint_gcell_r))
+:named lemma_FStar.Pointer.Derived1.loc_disjoint_gcell_r))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Derived1.loc_disjoint_gcell_l
+;;; Fact-ids: Name FStar.Pointer.Derived1.loc_disjoint_gcell_l; Namespace FStar.Pointer.Derived1
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.loc)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Pointer.Base.array_length_t)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x2
+@x1)))
+(HasType @x4
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(172,13-172,38); use=legacy/FStar.Pointer.Derived1.fsti(172,13-172,38)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x2)))
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(172,42-172,72); use=legacy/FStar.Pointer.Derived1.fsti(172,42-172,72)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(172,42-172,72); use=legacy/FStar.Pointer.Derived1.fsti(172,42-172,72)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer (FStar.Pointer.Base.TArray @x2
+@x1)
+@x3)
+@x0)
+)
+)
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(173,11-173,82); use=legacy/FStar.Pointer.Derived1.fsti(173,11-173,82)
+(and 
+;; def=legacy/FStar.Pointer.Derived1.fsti(173,12-173,37); use=legacy/FStar.Pointer.Derived1.fsti(173,12-173,37)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x2)))
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(173,41-173,81); use=legacy/FStar.Pointer.Derived1.fsti(173,41-173,81)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(173,41-173,81); use=legacy/FStar.Pointer.Derived1.fsti(173,41-173,81)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gcell @x2
+@x1
+@x3
+@x4))
+@x0)
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gcell @x2
+@x1
+@x3
+@x4))
+@x0))
+:qid lemma_FStar.Pointer.Derived1.loc_disjoint_gcell_l))
+:named lemma_FStar.Pointer.Derived1.loc_disjoint_gcell_l))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Derived1.loc_disjoint_gbuffer_of_array_pointer_r
+;;; Fact-ids: Name FStar.Pointer.Derived1.loc_disjoint_gbuffer_of_array_pointer_r; Namespace FStar.Pointer.Derived1
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.loc)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Pointer.Base.array_length_t)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x2
+@x1)))
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(200,12-200,44); use=legacy/FStar.Pointer.Derived1.fsti(200,12-200,44)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(200,12-200,44); use=legacy/FStar.Pointer.Derived1.fsti(200,12-200,44)
+(FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_pointer (FStar.Pointer.Base.TArray @x2
+@x1)
+@x3))
+)
+)
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(201,11-201,69); use=legacy/FStar.Pointer.Derived1.fsti(201,11-201,69)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(201,11-201,69); use=legacy/FStar.Pointer.Derived1.fsti(201,11-201,69)
+(FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_buffer @x1
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x1
+@x2
+@x3)))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_buffer @x1
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x1
+@x2
+@x3))))
+:qid lemma_FStar.Pointer.Derived1.loc_disjoint_gbuffer_of_array_pointer_r))
+:named lemma_FStar.Pointer.Derived1.loc_disjoint_gbuffer_of_array_pointer_r))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Derived1.loc_disjoint_gbuffer_of_array_pointer_l
+;;; Fact-ids: Name FStar.Pointer.Derived1.loc_disjoint_gbuffer_of_array_pointer_l; Namespace FStar.Pointer.Derived1
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.loc)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Pointer.Base.array_length_t)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x2
+@x1)))
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(210,12-210,44); use=legacy/FStar.Pointer.Derived1.fsti(210,12-210,44)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(210,12-210,44); use=legacy/FStar.Pointer.Derived1.fsti(210,12-210,44)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer (FStar.Pointer.Base.TArray @x2
+@x1)
+@x3)
+@x0)
+)
+)
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(211,11-211,69); use=legacy/FStar.Pointer.Derived1.fsti(211,11-211,69)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(211,11-211,69); use=legacy/FStar.Pointer.Derived1.fsti(211,11-211,69)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_buffer @x1
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x1
+@x2
+@x3))
+@x0)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_buffer @x1
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x1
+@x2
+@x3))
+@x0))
+:qid lemma_FStar.Pointer.Derived1.loc_disjoint_gbuffer_of_array_pointer_l))
+:named lemma_FStar.Pointer.Derived1.loc_disjoint_gbuffer_of_array_pointer_l))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Derived1.includes_gcell_gen
+;;; Fact-ids: Name FStar.Pointer.Derived1.includes_gcell_gen; Namespace FStar.Pointer.Derived1
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.pointer @x0))
+(HasType @x2
+FStar.Pointer.Base.array_length_t)
+(HasType @x3
+FStar.Pointer.Base.typ)
+(HasType @x4
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x2
+@x3)))
+(HasType @x5
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(53,13-53,25); use=legacy/FStar.Pointer.Derived1.fsti(53,13-53,25)
+(BoxBool_proj_0 (FStar.Pointer.Base.includes @x0
+(FStar.Pointer.Base.TArray @x2
+@x3)
+@x1
+@x4))
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(53,29-53,57); use=legacy/FStar.Pointer.Derived1.fsti(53,29-53,57)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x5))
+(BoxInt_proj_0 (FStar.UInt32.v @x2)))
+)
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(54,11-54,67); use=legacy/FStar.Pointer.Derived1.fsti(54,11-54,67)
+(and 
+;; def=legacy/FStar.Pointer.Derived1.fsti(54,12-54,40); use=legacy/FStar.Pointer.Derived1.fsti(54,12-54,40)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x5))
+(BoxInt_proj_0 (FStar.UInt32.v @x2)))
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(54,44-54,66); use=legacy/FStar.Pointer.Derived1.fsti(54,44-54,66)
+(BoxBool_proj_0 (FStar.Pointer.Base.includes @x0
+@x3
+@x1
+(FStar.Pointer.Base.gcell @x2
+@x3
+@x4
+@x5)))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.includes @x0
+@x3
+@x1
+(FStar.Pointer.Base.gcell @x2
+@x3
+@x4
+@x5)))
+:qid lemma_FStar.Pointer.Derived1.includes_gcell_gen))
+:named lemma_FStar.Pointer.Derived1.includes_gcell_gen))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Derived1.buffer_readable_intro_empty
+;;; Fact-ids: Name FStar.Pointer.Derived1.buffer_readable_intro_empty; Namespace FStar.Pointer.Derived1
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Monotonic.HyperStack.mem)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0))
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(378,4-378,19); use=legacy/FStar.Pointer.Derived1.fsti(378,4-378,19)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(378,4-378,19); use=legacy/FStar.Pointer.Derived1.fsti(378,4-378,19)
+(FStar.Pointer.Base.buffer_live @x0
+@x1
+@x2)
+)
+
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(379,4-379,35); use=legacy/FStar.Pointer.Derived1.fsti(379,4-379,35)
+(= (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x2))
+(BoxInt 0))
+)
+
+;; def=legacy/FStar.Pointer.Derived1.fsti(381,11-381,32); use=legacy/FStar.Pointer.Derived1.fsti(381,11-381,32)
+(Valid 
+;; def=legacy/FStar.Pointer.Derived1.fsti(381,11-381,32); use=legacy/FStar.Pointer.Derived1.fsti(381,11-381,32)
+(FStar.Pointer.Base.buffer_readable @x0
+@x1
+@x2)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_readable @x0
+@x1
+@x2))
+
+:pattern ((FStar.Pointer.Base.buffer_live @x0
+@x1
+@x2))
+:qid lemma_FStar.Pointer.Derived1.buffer_readable_intro_empty))
+:named lemma_FStar.Pointer.Derived1.buffer_readable_intro_empty))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.unused_in_gcell
+;;; Fact-ids: Name FStar.Pointer.Base.unused_in_gcell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.array_length_t)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Monotonic.HyperStack.mem)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x0
+@x1)))
+(HasType @x4
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(653,12-653,42); use=legacy/FStar.Pointer.Base.fsti(653,12-653,42)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(654,11-654,89); use=legacy/FStar.Pointer.Base.fsti(654,11-654,89)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(654,12-654,40); use=legacy/FStar.Pointer.Base.fsti(654,12-654,40)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(654,44-654,88); use=legacy/FStar.Pointer.Base.fsti(654,44-654,88)
+(iff 
+;; def=legacy/FStar.Pointer.Base.fsti(654,45-654,68); use=legacy/FStar.Pointer.Base.fsti(654,45-654,68)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(654,45-654,68); use=legacy/FStar.Pointer.Base.fsti(654,45-654,68)
+(FStar.Pointer.Base.unused_in @x1
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x3
+@x4)
+@x2)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(654,74-654,87); use=legacy/FStar.Pointer.Base.fsti(654,74-654,87)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(654,74-654,87); use=legacy/FStar.Pointer.Base.fsti(654,74-654,87)
+(FStar.Pointer.Base.unused_in (FStar.Pointer.Base.TArray @x0
+@x1)
+@x3
+@x2)
+)
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.unused_in @x1
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x3
+@x4)
+@x2))
+:qid lemma_FStar.Pointer.Base.unused_in_gcell))
+:named lemma_FStar.Pointer.Base.unused_in_gcell))
 ;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.struct_sel_struct_create_fun
 ;;; Fact-ids: Name FStar.Pointer.Base.struct_sel_struct_create_fun; Namespace FStar.Pointer.Base
 (assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
@@ -53178,6 +53560,120 @@ FStar.Pointer.Base.struct_typ)
 @x2))
 :qid lemma_FStar.Pointer.Base.struct_sel_struct_create_fun))
 :named lemma_FStar.Pointer.Base.struct_sel_struct_create_fun))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.readable_gpointer_of_buffer_cell
+;;; Fact-ids: Name FStar.Pointer.Base.readable_gpointer_of_buffer_cell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Monotonic.HyperStack.mem)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1496,13-1496,52); use=legacy/FStar.Pointer.Base.fsti(1496,13-1496,52)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1496,56-1496,75); use=legacy/FStar.Pointer.Base.fsti(1496,56-1496,75)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1496,56-1496,75); use=legacy/FStar.Pointer.Base.fsti(1496,56-1496,75)
+(FStar.Pointer.Base.buffer_readable @x0
+@x1
+@x2)
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1497,11-1497,96); use=legacy/FStar.Pointer.Base.fsti(1497,11-1497,96)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1497,12-1497,51); use=legacy/FStar.Pointer.Base.fsti(1497,12-1497,51)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1497,55-1497,95); use=legacy/FStar.Pointer.Base.fsti(1497,55-1497,95)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1497,55-1497,95); use=legacy/FStar.Pointer.Base.fsti(1497,55-1497,95)
+(FStar.Pointer.Base.readable @x0
+@x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x2
+@x3))
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.readable @x0
+@x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x2
+@x3)))
+:qid lemma_FStar.Pointer.Base.readable_gpointer_of_buffer_cell))
+:named lemma_FStar.Pointer.Base.readable_gpointer_of_buffer_cell))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.readable_gcell
+;;; Fact-ids: Name FStar.Pointer.Base.readable_gcell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.array_length_t)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Monotonic.HyperStack.mem)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x0
+@x1)))
+(HasType @x4
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(845,13-845,41); use=legacy/FStar.Pointer.Base.fsti(845,13-845,41)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(845,45-845,57); use=legacy/FStar.Pointer.Base.fsti(845,45-845,57)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(845,45-845,57); use=legacy/FStar.Pointer.Base.fsti(845,45-845,57)
+(FStar.Pointer.Base.readable (FStar.Pointer.Base.TArray @x0
+@x1)
+@x2
+@x3)
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(846,11-846,67); use=legacy/FStar.Pointer.Base.fsti(846,11-846,67)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(846,12-846,40); use=legacy/FStar.Pointer.Base.fsti(846,12-846,40)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(846,44-846,66); use=legacy/FStar.Pointer.Base.fsti(846,44-846,66)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(846,44-846,66); use=legacy/FStar.Pointer.Base.fsti(846,44-846,66)
+(FStar.Pointer.Base.readable @x1
+@x2
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x3
+@x4))
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.readable @x1
+@x2
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x3
+@x4)))
+:qid lemma_FStar.Pointer.Base.readable_gcell))
+:named lemma_FStar.Pointer.Base.readable_gcell))
 ;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.modifies_fresh_frame_popped
 ;;; Fact-ids: Name FStar.Pointer.Base.modifies_fresh_frame_popped; Namespace FStar.Pointer.Base
 (assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
@@ -53249,6 +53745,260 @@ FStar.Monotonic.HyperStack.mem)
 @x4))
 :qid lemma_FStar.Pointer.Base.modifies_fresh_frame_popped))
 :named lemma_FStar.Pointer.Base.modifies_fresh_frame_popped))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.modifies_buffer_elim
+;;; Fact-ids: Name FStar.Pointer.Base.modifies_buffer_elim; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x2
+FStar.Pointer.Base.loc)
+(HasType @x3
+FStar.Monotonic.HyperStack.mem)
+(HasType @x4
+FStar.Monotonic.HyperStack.mem)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1997,4-1997,33); use=legacy/FStar.Pointer.Base.fsti(1997,4-1997,33)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1997,4-1997,33); use=legacy/FStar.Pointer.Base.fsti(1997,4-1997,33)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_buffer @x0
+@x1)
+@x2)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1998,4-1998,19); use=legacy/FStar.Pointer.Base.fsti(1998,4-1998,19)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1998,4-1998,19); use=legacy/FStar.Pointer.Base.fsti(1998,4-1998,19)
+(FStar.Pointer.Base.buffer_live @x0
+@x3
+@x1)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1999,4-1999,58); use=legacy/FStar.Pointer.Base.fsti(1999,4-1999,58)
+(implies 
+;; def=legacy/FStar.Pointer.Base.fsti(1999,5-1999,36); use=legacy/FStar.Pointer.Base.fsti(1999,5-1999,36)
+(= (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x1))
+(BoxInt 0))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1999,41-1999,57); use=legacy/FStar.Pointer.Base.fsti(1999,41-1999,57)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1999,41-1999,57); use=legacy/FStar.Pointer.Base.fsti(1999,41-1999,57)
+(FStar.Pointer.Base.buffer_live @x0
+@x4
+@x1)
+)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(2000,4-2000,19); use=legacy/FStar.Pointer.Base.fsti(2000,4-2000,19)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2000,4-2000,19); use=legacy/FStar.Pointer.Base.fsti(2000,4-2000,19)
+(FStar.Pointer.Base.modifies @x2
+@x3
+@x4)
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(2002,11-2007,5); use=legacy/FStar.Pointer.Base.fsti(2002,11-2007,5)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(2003,4-2003,20); use=legacy/FStar.Pointer.Base.fsti(2003,4-2003,20)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2003,4-2003,20); use=legacy/FStar.Pointer.Base.fsti(2003,4-2003,20)
+(FStar.Pointer.Base.buffer_live @x0
+@x4
+@x1)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(2003,24-2007,4); use=legacy/FStar.Pointer.Base.fsti(2003,24-2007,4)
+(implies 
+;; def=legacy/FStar.Pointer.Base.fsti(2004,6-2004,25); use=legacy/FStar.Pointer.Base.fsti(2004,6-2004,25)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2004,6-2004,25); use=legacy/FStar.Pointer.Base.fsti(2004,6-2004,25)
+(FStar.Pointer.Base.buffer_readable @x0
+@x3
+@x1)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(2004,30-2007,3); use=legacy/FStar.Pointer.Base.fsti(2004,30-2007,3)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(2005,1-2005,21); use=legacy/FStar.Pointer.Base.fsti(2005,1-2005,21)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2005,1-2005,21); use=legacy/FStar.Pointer.Base.fsti(2005,1-2005,21)
+(FStar.Pointer.Base.buffer_readable @x0
+@x4
+@x1)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(2006,1-2006,40); use=legacy/FStar.Pointer.Base.fsti(2006,1-2006,40)
+(= (FStar.Pointer.Base.buffer_as_seq @x0
+@x3
+@x1)
+(FStar.Pointer.Base.buffer_as_seq @x0
+@x4
+@x1))
+)
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.modifies @x2
+@x3
+@x4) (FStar.Pointer.Base.buffer_as_seq @x0
+@x3
+@x1))
+
+:pattern ((FStar.Pointer.Base.modifies @x2
+@x3
+@x4) (FStar.Pointer.Base.buffer_readable @x0
+@x3
+@x1))
+
+:pattern ((FStar.Pointer.Base.modifies @x2
+@x3
+@x4) (FStar.Pointer.Base.buffer_live @x0
+@x3
+@x1))
+
+:pattern ((FStar.Pointer.Base.modifies @x2
+@x3
+@x4) (FStar.Pointer.Base.buffer_as_seq @x0
+@x4
+@x1))
+
+:pattern ((FStar.Pointer.Base.modifies @x2
+@x3
+@x4) (FStar.Pointer.Base.buffer_readable @x0
+@x4
+@x1))
+
+:pattern ((FStar.Pointer.Base.modifies @x2
+@x3
+@x4) (FStar.Pointer.Base.buffer_live @x0
+@x4
+@x1))
+:qid lemma_FStar.Pointer.Base.modifies_buffer_elim))
+:named lemma_FStar.Pointer.Base.modifies_buffer_elim))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.modifies_1_readable_array
+;;; Fact-ids: Name FStar.Pointer.Base.modifies_1_readable_array; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Pointer.Base.array_length_t)
+(HasType @x2
+(FStar.UInt32.t Dummy_value))
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x1
+@x0)))
+(HasType @x4
+FStar.Monotonic.HyperStack.mem)
+(HasType @x5
+FStar.Monotonic.HyperStack.mem)
+
+;; def=legacy/FStar.Pointer.Base.fsti(2238,13-2238,38); use=legacy/FStar.Pointer.Base.fsti(2238,13-2238,38)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x2))
+(BoxInt_proj_0 (FStar.UInt32.v @x1)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(2238,42-2238,54); use=legacy/FStar.Pointer.Base.fsti(2238,42-2238,54)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2238,42-2238,54); use=legacy/FStar.Pointer.Base.fsti(2238,42-2238,54)
+(FStar.Pointer.Base.readable (FStar.Pointer.Base.TArray @x1
+@x0)
+@x4
+@x3)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(2238,58-2238,85); use=legacy/FStar.Pointer.Base.fsti(2238,58-2238,85)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2238,58-2238,85); use=legacy/FStar.Pointer.Base.fsti(2238,58-2238,85)
+(FStar.Pointer.Base.modifies_1 @x0
+(FStar.Pointer.Base.gcell @x1
+@x0
+@x3
+@x2)
+@x4
+@x5)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(2238,89-2238,112); use=legacy/FStar.Pointer.Base.fsti(2238,89-2238,112)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2238,89-2238,112); use=legacy/FStar.Pointer.Base.fsti(2238,89-2238,112)
+(FStar.Pointer.Base.readable @x0
+@x5
+(FStar.Pointer.Base.gcell @x1
+@x0
+@x3
+@x2))
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(2239,11-2239,26); use=legacy/FStar.Pointer.Base.fsti(2239,11-2239,26)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2239,11-2239,26); use=legacy/FStar.Pointer.Base.fsti(2239,11-2239,26)
+(FStar.Pointer.Base.readable (FStar.Pointer.Base.TArray @x1
+@x0)
+@x5
+@x3)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.modifies_1 @x0
+(FStar.Pointer.Base.gcell @x1
+@x0
+@x3
+@x2)
+@x4
+@x5) (FStar.Pointer.Base.readable (FStar.Pointer.Base.TArray @x1
+@x0)
+@x4
+@x3))
+
+:pattern ((FStar.Pointer.Base.modifies_1 @x0
+(FStar.Pointer.Base.gcell @x1
+@x0
+@x3
+@x2)
+@x4
+@x5) (FStar.Pointer.Base.readable (FStar.Pointer.Base.TArray @x1
+@x0)
+@x5
+@x3))
+
+:pattern ((FStar.Pointer.Base.readable (FStar.Pointer.Base.TArray @x1
+@x0)
+@x4
+@x3) (FStar.Pointer.Base.readable @x0
+@x5
+(FStar.Pointer.Base.gcell @x1
+@x0
+@x3
+@x2)))
+
+:pattern ((FStar.Pointer.Base.readable (FStar.Pointer.Base.TArray @x1
+@x0)
+@x4
+@x3) (FStar.Pointer.Base.readable (FStar.Pointer.Base.TArray @x1
+@x0)
+@x5
+@x3) (FStar.Pointer.Base.gcell @x1
+@x0
+@x3
+@x2))
+:qid lemma_FStar.Pointer.Base.modifies_1_readable_array))
+:named lemma_FStar.Pointer.Base.modifies_1_readable_array))
 ;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.loc_includes_region_union_l
 ;;; Fact-ids: Name FStar.Pointer.Base.loc_includes_region_union_l; Namespace FStar.Pointer.Base
 (assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
@@ -53347,6 +54097,38 @@ FStar.Pointer.Base.typ)
 @x2)))
 :qid lemma_FStar.Pointer.Base.loc_includes_region_pointer))
 :named lemma_FStar.Pointer.Base.loc_includes_region_pointer))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.loc_includes_region_buffer
+;;; Fact-ids: Name FStar.Pointer.Base.loc_includes_region_buffer; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Set.set (FStar.Monotonic.HyperHeap.rid Dummy_value)))
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1701,12-1701,42); use=legacy/FStar.Pointer.Base.fsti(1701,12-1701,42)
+(BoxBool_proj_0 (FStar.Set.mem (FStar.Monotonic.HyperHeap.rid Dummy_value)
+(FStar.Pointer.Base.frameOf_buffer @x0
+@x2)
+@x1))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1702,11-1702,56); use=legacy/FStar.Pointer.Base.fsti(1702,11-1702,56)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1702,11-1702,56); use=legacy/FStar.Pointer.Base.fsti(1702,11-1702,56)
+(FStar.Pointer.Base.loc_includes (FStar.Pointer.Base.loc_regions @x1)
+(FStar.Pointer.Base.loc_buffer @x0
+@x2))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_includes (FStar.Pointer.Base.loc_regions @x1)
+(FStar.Pointer.Base.loc_buffer @x0
+@x2)))
+:qid lemma_FStar.Pointer.Base.loc_includes_region_buffer))
+:named lemma_FStar.Pointer.Base.loc_includes_region_buffer))
 ;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.loc_includes_none
 ;;; Fact-ids: Name FStar.Pointer.Base.loc_includes_none; Namespace FStar.Pointer.Base
 (assert (! (forall ((@x0 Term))
@@ -53366,6 +54148,103 @@ FStar.Pointer.Base.loc)
 (FStar.Pointer.Base.loc_none Dummy_value)))
 :qid lemma_FStar.Pointer.Base.loc_includes_none))
 :named lemma_FStar.Pointer.Base.loc_includes_none))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.loc_includes_gpointer_of_array_cell
+;;; Fact-ids: Name FStar.Pointer.Base.loc_includes_gpointer_of_array_cell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.loc)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x1))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1640,13-1640,52); use=legacy/FStar.Pointer.Base.fsti(1640,13-1640,52)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x1
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1640,56-1640,85); use=legacy/FStar.Pointer.Base.fsti(1640,56-1640,85)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1640,56-1640,85); use=legacy/FStar.Pointer.Base.fsti(1640,56-1640,85)
+(FStar.Pointer.Base.loc_includes @x0
+(FStar.Pointer.Base.loc_buffer @x1
+@x2))
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1641,11-1641,114); use=legacy/FStar.Pointer.Base.fsti(1641,11-1641,114)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1641,12-1641,51); use=legacy/FStar.Pointer.Base.fsti(1641,12-1641,51)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x1
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1641,55-1641,113); use=legacy/FStar.Pointer.Base.fsti(1641,55-1641,113)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1641,55-1641,113); use=legacy/FStar.Pointer.Base.fsti(1641,55-1641,113)
+(FStar.Pointer.Base.loc_includes @x0
+(FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+@x2
+@x3)))
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_includes @x0
+(FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+@x2
+@x3))))
+:qid lemma_FStar.Pointer.Base.loc_includes_gpointer_of_array_cell))
+:named lemma_FStar.Pointer.Base.loc_includes_gpointer_of_array_cell))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.loc_includes_gbuffer_of_array_pointer
+;;; Fact-ids: Name FStar.Pointer.Base.loc_includes_gbuffer_of_array_pointer; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.loc)
+(HasType @x1
+FStar.Pointer.Base.array_length_t)
+(HasType @x2
+FStar.Pointer.Base.typ)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x1
+@x2)))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1630,12-1630,44); use=legacy/FStar.Pointer.Base.fsti(1630,12-1630,44)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1630,12-1630,44); use=legacy/FStar.Pointer.Base.fsti(1630,12-1630,44)
+(FStar.Pointer.Base.loc_includes @x0
+(FStar.Pointer.Base.loc_pointer (FStar.Pointer.Base.TArray @x1
+@x2)
+@x3))
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1631,11-1631,69); use=legacy/FStar.Pointer.Base.fsti(1631,11-1631,69)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1631,11-1631,69); use=legacy/FStar.Pointer.Base.fsti(1631,11-1631,69)
+(FStar.Pointer.Base.loc_includes @x0
+(FStar.Pointer.Base.loc_buffer @x2
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x2
+@x1
+@x3)))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_includes @x0
+(FStar.Pointer.Base.loc_buffer @x2
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x2
+@x1
+@x3))))
+:qid lemma_FStar.Pointer.Base.loc_includes_gbuffer_of_array_pointer))
+:named lemma_FStar.Pointer.Base.loc_includes_gbuffer_of_array_pointer))
 ;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.loc_disjoint_regions
 ;;; Fact-ids: Name FStar.Pointer.Base.loc_disjoint_regions; Namespace FStar.Pointer.Base
 (assert (! (forall ((@x0 Term) (@x1 Term))
@@ -53417,6 +54296,1052 @@ FStar.Pointer.Base.loc)
 (FStar.Pointer.Base.loc_none Dummy_value)))
 :qid lemma_FStar.Pointer.Base.loc_disjoint_none_r))
 :named lemma_FStar.Pointer.Base.loc_disjoint_none_r))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell_r
+;;; Fact-ids: Name FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell_r; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.loc)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x1))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1902,13-1902,52); use=legacy/FStar.Pointer.Base.fsti(1902,13-1902,52)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x1
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1902,56-1902,85); use=legacy/FStar.Pointer.Base.fsti(1902,56-1902,85)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1902,56-1902,85); use=legacy/FStar.Pointer.Base.fsti(1902,56-1902,85)
+(FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_buffer @x1
+@x2))
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1903,11-1903,114); use=legacy/FStar.Pointer.Base.fsti(1903,11-1903,114)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1903,12-1903,51); use=legacy/FStar.Pointer.Base.fsti(1903,12-1903,51)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x1
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1903,55-1903,113); use=legacy/FStar.Pointer.Base.fsti(1903,55-1903,113)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1903,55-1903,113); use=legacy/FStar.Pointer.Base.fsti(1903,55-1903,113)
+(FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+@x2
+@x3)))
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_disjoint @x0
+(FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+@x2
+@x3))))
+:qid lemma_FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell_r))
+:named lemma_FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell_r))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell_l
+;;; Fact-ids: Name FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell_l; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.loc)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x1))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1913,13-1913,52); use=legacy/FStar.Pointer.Base.fsti(1913,13-1913,52)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x1
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1913,56-1913,85); use=legacy/FStar.Pointer.Base.fsti(1913,56-1913,85)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1913,56-1913,85); use=legacy/FStar.Pointer.Base.fsti(1913,56-1913,85)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_buffer @x1
+@x2)
+@x0)
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1914,11-1914,114); use=legacy/FStar.Pointer.Base.fsti(1914,11-1914,114)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1914,12-1914,51); use=legacy/FStar.Pointer.Base.fsti(1914,12-1914,51)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x1
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1914,55-1914,113); use=legacy/FStar.Pointer.Base.fsti(1914,55-1914,113)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1914,55-1914,113); use=legacy/FStar.Pointer.Base.fsti(1914,55-1914,113)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+@x2
+@x3))
+@x0)
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+@x2
+@x3))
+@x0))
+:qid lemma_FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell_l))
+:named lemma_FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell_l))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell
+;;; Fact-ids: Name FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x2
+(FStar.UInt32.t Dummy_value))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1885,4-1885,44); use=legacy/FStar.Pointer.Base.fsti(1885,4-1885,44)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x2))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x1))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1886,4-1886,44); use=legacy/FStar.Pointer.Base.fsti(1886,4-1886,44)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x1))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1886,48-1888,3); use=legacy/FStar.Pointer.Base.fsti(1886,48-1888,3)
+(not (= (FStar.UInt32.v @x2)
+(FStar.UInt32.v @x3)))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1889,11-1893,3); use=legacy/FStar.Pointer.Base.fsti(1889,11-1893,3)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1890,4-1890,44); use=legacy/FStar.Pointer.Base.fsti(1890,4-1890,44)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x2))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x1))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1891,4-1891,44); use=legacy/FStar.Pointer.Base.fsti(1891,4-1891,44)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x1))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1892,4-1892,106); use=legacy/FStar.Pointer.Base.fsti(1892,4-1892,106)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1892,4-1892,106); use=legacy/FStar.Pointer.Base.fsti(1892,4-1892,106)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer @x0
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x1
+@x2))
+(FStar.Pointer.Base.loc_pointer @x0
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x1
+@x3)))
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer @x0
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x1
+@x2))
+(FStar.Pointer.Base.loc_pointer @x0
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x1
+@x3))))
+:qid lemma_FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell))
+:named lemma_FStar.Pointer.Base.loc_disjoint_gpointer_of_buffer_cell))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.loc_disjoint_gcell
+;;; Fact-ids: Name FStar.Pointer.Base.loc_disjoint_gcell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.array_length_t)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x0
+@x1)))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+(HasType @x4
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1782,4-1782,33); use=legacy/FStar.Pointer.Base.fsti(1782,4-1782,33)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1783,4-1783,33); use=legacy/FStar.Pointer.Base.fsti(1783,4-1783,33)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1784,4-1784,30); use=legacy/FStar.Pointer.Base.fsti(1784,4-1784,30)
+(not (= (FStar.UInt32.v @x3)
+(FStar.UInt32.v @x4)))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1786,11-1790,3); use=legacy/FStar.Pointer.Base.fsti(1786,11-1790,3)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1787,4-1787,33); use=legacy/FStar.Pointer.Base.fsti(1787,4-1787,33)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1788,4-1788,33); use=legacy/FStar.Pointer.Base.fsti(1788,4-1788,33)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1789,4-1789,70); use=legacy/FStar.Pointer.Base.fsti(1789,4-1789,70)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1789,4-1789,70); use=legacy/FStar.Pointer.Base.fsti(1789,4-1789,70)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x2
+@x3))
+(FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x2
+@x4)))
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x2
+@x3))
+(FStar.Pointer.Base.loc_pointer @x1
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x2
+@x4))))
+:qid lemma_FStar.Pointer.Base.loc_disjoint_gcell))
+:named lemma_FStar.Pointer.Base.loc_disjoint_gcell))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.live_region_frameOf_buffer
+;;; Fact-ids: Name FStar.Pointer.Base.live_region_frameOf_buffer; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Monotonic.HyperStack.mem)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1086,12-1086,29); use=legacy/FStar.Pointer.Base.fsti(1086,12-1086,29)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1086,12-1086,29); use=legacy/FStar.Pointer.Base.fsti(1086,12-1086,29)
+(FStar.Pointer.Base.buffer_live @x0
+@x1
+@x2)
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1087,11-1087,48); use=legacy/FStar.Pointer.Base.fsti(1087,11-1087,48)
+(BoxBool_proj_0 (FStar.Monotonic.HyperStack.live_region @x1
+(FStar.Pointer.Base.frameOf_buffer @x0
+@x2)))
+)
+ 
+
+:pattern ((FStar.Monotonic.HyperStack.live_region @x1
+(FStar.Pointer.Base.frameOf_buffer @x0
+@x2)))
+
+:pattern ((FStar.Pointer.Base.buffer_live @x0
+@x1
+@x2))
+:qid lemma_FStar.Pointer.Base.live_region_frameOf_buffer))
+:named lemma_FStar.Pointer.Base.live_region_frameOf_buffer))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.live_gpointer_of_buffer_cell
+;;; Fact-ids: Name FStar.Pointer.Base.live_gpointer_of_buffer_cell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x2
+(FStar.UInt32.t Dummy_value))
+(HasType @x3
+FStar.Monotonic.HyperStack.mem)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1337,12-1339,3); use=legacy/FStar.Pointer.Base.fsti(1337,12-1339,3)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x2))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x1))))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1340,11-1343,3); use=legacy/FStar.Pointer.Base.fsti(1340,11-1343,3)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1341,4-1341,43); use=legacy/FStar.Pointer.Base.fsti(1341,4-1341,43)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x2))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x1))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1342,4-1342,63); use=legacy/FStar.Pointer.Base.fsti(1342,4-1342,63)
+(iff 
+;; def=legacy/FStar.Pointer.Base.fsti(1342,5-1342,41); use=legacy/FStar.Pointer.Base.fsti(1342,5-1342,41)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1342,5-1342,41); use=legacy/FStar.Pointer.Base.fsti(1342,5-1342,41)
+(FStar.Pointer.Base.live @x0
+@x3
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x1
+@x2))
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1342,47-1342,62); use=legacy/FStar.Pointer.Base.fsti(1342,47-1342,62)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1342,47-1342,62); use=legacy/FStar.Pointer.Base.fsti(1342,47-1342,62)
+(FStar.Pointer.Base.buffer_live @x0
+@x3
+@x1)
+)
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.live @x0
+@x3
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x1
+@x2)))
+:qid lemma_FStar.Pointer.Base.live_gpointer_of_buffer_cell))
+:named lemma_FStar.Pointer.Base.live_gpointer_of_buffer_cell))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.live_gcell
+;;; Fact-ids: Name FStar.Pointer.Base.live_gcell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.array_length_t)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Monotonic.HyperStack.mem)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x0
+@x1)))
+(HasType @x4
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(664,12-664,42); use=legacy/FStar.Pointer.Base.fsti(664,12-664,42)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(665,11-665,79); use=legacy/FStar.Pointer.Base.fsti(665,11-665,79)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(665,12-665,40); use=legacy/FStar.Pointer.Base.fsti(665,12-665,40)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(665,44-665,78); use=legacy/FStar.Pointer.Base.fsti(665,44-665,78)
+(iff 
+;; def=legacy/FStar.Pointer.Base.fsti(665,45-665,63); use=legacy/FStar.Pointer.Base.fsti(665,45-665,63)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(665,45-665,63); use=legacy/FStar.Pointer.Base.fsti(665,45-665,63)
+(FStar.Pointer.Base.live @x1
+@x2
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x3
+@x4))
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(665,69-665,77); use=legacy/FStar.Pointer.Base.fsti(665,69-665,77)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(665,69-665,77); use=legacy/FStar.Pointer.Base.fsti(665,69-665,77)
+(FStar.Pointer.Base.live (FStar.Pointer.Base.TArray @x0
+@x1)
+@x2
+@x3)
+)
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.live @x1
+@x2
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x3
+@x4)))
+:qid lemma_FStar.Pointer.Base.live_gcell))
+:named lemma_FStar.Pointer.Base.live_gcell))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.index_buffer_as_seq
+;;; Fact-ids: Name FStar.Pointer.Base.index_buffer_as_seq; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Monotonic.HyperStack.mem)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x3
+Prims.nat)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1408,12-1408,44); use=legacy/FStar.Pointer.Base.fsti(1408,12-1408,44)
+(< (BoxInt_proj_0 @x3)
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x2))))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1409,11-1409,138); use=legacy/FStar.Pointer.Base.fsti(1409,11-1409,138)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1409,12-1409,42); use=legacy/FStar.Pointer.Base.fsti(1409,12-1409,42)
+(< (BoxInt_proj_0 @x3)
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1409,46-1409,137); use=legacy/FStar.Pointer.Base.fsti(1409,46-1409,137)
+(= (FStar.Seq.Base.index (FStar.Pointer.Base.type_of_typ.fuel_instrumented ZFuel
+@x0)
+(FStar.Pointer.Base.buffer_as_seq @x0
+@x1
+@x2)
+@x3)
+(FStar.Pointer.Base.gread @x0
+@x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x2
+(FStar.UInt32.uint_to_t @x3))))
+)
+)
+ 
+
+:pattern ((FStar.Seq.Base.index (FStar.Pointer.Base.type_of_typ.fuel_instrumented ZFuel
+@x0)
+(FStar.Pointer.Base.buffer_as_seq @x0
+@x1
+@x2)
+@x3))
+:qid lemma_FStar.Pointer.Base.index_buffer_as_seq))
+:named lemma_FStar.Pointer.Base.index_buffer_as_seq))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.gread_gpointer_of_buffer_cell
+;;; Fact-ids: Name FStar.Pointer.Base.gread_gpointer_of_buffer_cell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Monotonic.HyperStack.mem)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1389,12-1389,53); use=legacy/FStar.Pointer.Base.fsti(1389,12-1389,53)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x2))))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1390,11-1390,139); use=legacy/FStar.Pointer.Base.fsti(1390,11-1390,139)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1390,12-1390,51); use=legacy/FStar.Pointer.Base.fsti(1390,12-1390,51)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1390,55-1390,138); use=legacy/FStar.Pointer.Base.fsti(1390,55-1390,138)
+(= (FStar.Pointer.Base.gread @x0
+@x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x2
+@x3))
+(FStar.Seq.Base.index (FStar.Pointer.Base.type_of_typ.fuel_instrumented ZFuel
+@x0)
+(FStar.Pointer.Base.buffer_as_seq @x0
+@x1
+@x2)
+(FStar.UInt32.v @x3)))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.gread @x0
+@x1
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x2
+@x3)))
+:qid lemma_FStar.Pointer.Base.gread_gpointer_of_buffer_cell))
+:named lemma_FStar.Pointer.Base.gread_gpointer_of_buffer_cell))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.gread_gcell
+;;; Fact-ids: Name FStar.Pointer.Base.gread_gcell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.array_length_t)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Monotonic.HyperStack.mem)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x0
+@x1)))
+(HasType @x4
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(675,12-675,42); use=legacy/FStar.Pointer.Base.fsti(675,12-675,42)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(676,11-676,102); use=legacy/FStar.Pointer.Base.fsti(676,11-676,102)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(676,12-676,40); use=legacy/FStar.Pointer.Base.fsti(676,12-676,40)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x4))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(676,44-676,101); use=legacy/FStar.Pointer.Base.fsti(676,44-676,101)
+(= (FStar.Pointer.Base.gread @x1
+@x2
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x3
+@x4))
+(FStar.Seq.Base.index (FStar.Pointer.Base.type_of_typ.fuel_instrumented ZFuel
+@x1)
+(FStar.Pointer.Base.gread (FStar.Pointer.Base.TArray @x0
+@x1)
+@x2
+@x3)
+(FStar.UInt32.v @x4)))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.gread @x1
+@x2
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x3
+@x4)))
+:qid lemma_FStar.Pointer.Base.gread_gcell))
+:named lemma_FStar.Pointer.Base.gread_gcell))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.gpointer_of_buffer_cell_gbuffer_of_array_pointer
+;;; Fact-ids: Name FStar.Pointer.Base.gpointer_of_buffer_cell_gbuffer_of_array_pointer; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.array_length_t)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x0
+@x1)))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1361,12-1361,42); use=legacy/FStar.Pointer.Base.fsti(1361,12-1361,42)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1362,11-1362,112); use=legacy/FStar.Pointer.Base.fsti(1362,11-1362,112)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1362,12-1362,40); use=legacy/FStar.Pointer.Base.fsti(1362,12-1362,40)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1362,44-1362,111); use=legacy/FStar.Pointer.Base.fsti(1362,44-1362,111)
+(= (FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x1
+@x0
+@x2)
+@x3)
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x2
+@x3))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.gpointer_of_buffer_cell @x1
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x1
+@x0
+@x2)
+@x3))
+:qid lemma_FStar.Pointer.Base.gpointer_of_buffer_cell_gbuffer_of_array_pointer))
+:named lemma_FStar.Pointer.Base.gpointer_of_buffer_cell_gbuffer_of_array_pointer))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.frameOf_gpointer_of_buffer_cell
+;;; Fact-ids: Name FStar.Pointer.Base.frameOf_gpointer_of_buffer_cell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x2
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1370,12-1370,53); use=legacy/FStar.Pointer.Base.fsti(1370,12-1370,53)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x2))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x1))))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1371,11-1371,113); use=legacy/FStar.Pointer.Base.fsti(1371,11-1371,113)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1371,12-1371,51); use=legacy/FStar.Pointer.Base.fsti(1371,12-1371,51)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x2))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x1))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1371,55-1371,112); use=legacy/FStar.Pointer.Base.fsti(1371,55-1371,112)
+(= (FStar.Pointer.Base.frameOf @x0
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x1
+@x2))
+(FStar.Pointer.Base.frameOf_buffer @x0
+@x1))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.frameOf @x0
+(FStar.Pointer.Base.gpointer_of_buffer_cell @x0
+@x1
+@x2)))
+:qid lemma_FStar.Pointer.Base.frameOf_gpointer_of_buffer_cell))
+:named lemma_FStar.Pointer.Base.frameOf_gpointer_of_buffer_cell))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.frameOf_gcell
+;;; Fact-ids: Name FStar.Pointer.Base.frameOf_gcell; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.array_length_t)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x0
+@x1)))
+(HasType @x3
+(FStar.UInt32.t Dummy_value))
+
+;; def=legacy/FStar.Pointer.Base.fsti(685,12-685,42); use=legacy/FStar.Pointer.Base.fsti(685,12-685,42)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(686,11-686,77); use=legacy/FStar.Pointer.Base.fsti(686,11-686,77)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(686,12-686,40); use=legacy/FStar.Pointer.Base.fsti(686,12-686,40)
+(< (BoxInt_proj_0 (FStar.UInt32.v @x3))
+(BoxInt_proj_0 (FStar.UInt32.v @x0)))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(686,44-686,76); use=legacy/FStar.Pointer.Base.fsti(686,44-686,76)
+(= (FStar.Pointer.Base.frameOf @x1
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x2
+@x3))
+(FStar.Pointer.Base.frameOf (FStar.Pointer.Base.TArray @x0
+@x1)
+@x2))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.frameOf @x1
+(FStar.Pointer.Base.gcell @x0
+@x1
+@x2
+@x3)))
+:qid lemma_FStar.Pointer.Base.frameOf_gcell))
+:named lemma_FStar.Pointer.Base.frameOf_gcell))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.frameOf_buffer_gbuffer_of_array_pointer
+;;; Fact-ids: Name FStar.Pointer.Base.frameOf_buffer_gbuffer_of_array_pointer; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Pointer.Base.array_length_t)
+(HasType @x2
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x1
+@x0))))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1078,11-1078,69); use=legacy/FStar.Pointer.Base.fsti(1078,11-1078,69)
+(= (FStar.Pointer.Base.frameOf_buffer @x0
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x0
+@x1
+@x2))
+(FStar.Pointer.Base.frameOf (FStar.Pointer.Base.TArray @x1
+@x0)
+@x2))
+)
+ 
+
+:pattern ((FStar.Pointer.Base.frameOf_buffer @x0
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x0
+@x1
+@x2)))
+:qid lemma_FStar.Pointer.Base.frameOf_buffer_gbuffer_of_array_pointer))
+:named lemma_FStar.Pointer.Base.frameOf_buffer_gbuffer_of_array_pointer))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.buffer_readable_gbuffer_of_array_pointer
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_readable_gbuffer_of_array_pointer; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.array_length_t)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Monotonic.HyperStack.mem)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x0
+@x1))))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1476,11-1476,77); use=legacy/FStar.Pointer.Base.fsti(1476,11-1476,77)
+(iff 
+;; def=legacy/FStar.Pointer.Base.fsti(1476,12-1476,58); use=legacy/FStar.Pointer.Base.fsti(1476,12-1476,58)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1476,12-1476,58); use=legacy/FStar.Pointer.Base.fsti(1476,12-1476,58)
+(FStar.Pointer.Base.buffer_readable @x1
+@x2
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x1
+@x0
+@x3))
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1476,64-1476,76); use=legacy/FStar.Pointer.Base.fsti(1476,64-1476,76)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1476,64-1476,76); use=legacy/FStar.Pointer.Base.fsti(1476,64-1476,76)
+(FStar.Pointer.Base.readable (FStar.Pointer.Base.TArray @x0
+@x1)
+@x2
+@x3)
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_readable @x1
+@x2
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x1
+@x0
+@x3)))
+:qid lemma_FStar.Pointer.Base.buffer_readable_gbuffer_of_array_pointer))
+:named lemma_FStar.Pointer.Base.buffer_readable_gbuffer_of_array_pointer))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.buffer_readable_buffer_live
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_readable_buffer_live; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Monotonic.HyperStack.mem)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1454,12-1454,33); use=legacy/FStar.Pointer.Base.fsti(1454,12-1454,33)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1454,12-1454,33); use=legacy/FStar.Pointer.Base.fsti(1454,12-1454,33)
+(FStar.Pointer.Base.buffer_readable @x0
+@x1
+@x2)
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1455,11-1455,28); use=legacy/FStar.Pointer.Base.fsti(1455,11-1455,28)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1455,11-1455,28); use=legacy/FStar.Pointer.Base.fsti(1455,11-1455,28)
+(FStar.Pointer.Base.buffer_live @x0
+@x1
+@x2)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_readable @x0
+@x1
+@x2))
+
+:pattern ((FStar.Pointer.Base.buffer_live @x0
+@x1
+@x2))
+:qid lemma_FStar.Pointer.Base.buffer_readable_buffer_live))
+:named lemma_FStar.Pointer.Base.buffer_readable_buffer_live))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.buffer_live_pointer_unused_in_disjoint
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_live_pointer_unused_in_disjoint; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Monotonic.HyperStack.mem)
+(HasType @x3
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x4
+(FStar.Pointer.Base.pointer @x1))
+
+;; def=legacy/FStar.Pointer.Base.fsti(2303,13-2303,29); use=legacy/FStar.Pointer.Base.fsti(2303,13-2303,29)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2303,13-2303,29); use=legacy/FStar.Pointer.Base.fsti(2303,13-2303,29)
+(FStar.Pointer.Base.buffer_live @x0
+@x2
+@x3)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(2303,33-2303,47); use=legacy/FStar.Pointer.Base.fsti(2303,33-2303,47)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2303,33-2303,47); use=legacy/FStar.Pointer.Base.fsti(2303,33-2303,47)
+(FStar.Pointer.Base.unused_in @x1
+@x4
+@x2)
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(2304,11-2304,58); use=legacy/FStar.Pointer.Base.fsti(2304,11-2304,58)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2304,11-2304,58); use=legacy/FStar.Pointer.Base.fsti(2304,11-2304,58)
+(FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_buffer @x0
+@x3)
+(FStar.Pointer.Base.loc_pointer @x1
+@x4))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_live @x0
+@x2
+@x3) (FStar.Pointer.Base.unused_in @x1
+@x4
+@x2))
+:qid lemma_FStar.Pointer.Base.buffer_live_pointer_unused_in_disjoint))
+:named lemma_FStar.Pointer.Base.buffer_live_pointer_unused_in_disjoint))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.buffer_live_gbuffer_of_array_pointer
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_live_gbuffer_of_array_pointer; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Pointer.Base.array_length_t)
+(HasType @x2
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x1
+@x0)))
+(HasType @x3
+FStar.Monotonic.HyperStack.mem))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1026,11-1026,69); use=legacy/FStar.Pointer.Base.fsti(1026,11-1026,69)
+(iff 
+;; def=legacy/FStar.Pointer.Base.fsti(1026,12-1026,54); use=legacy/FStar.Pointer.Base.fsti(1026,12-1026,54)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1026,12-1026,54); use=legacy/FStar.Pointer.Base.fsti(1026,12-1026,54)
+(FStar.Pointer.Base.buffer_live @x0
+@x3
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x0
+@x1
+@x2))
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1026,60-1026,68); use=legacy/FStar.Pointer.Base.fsti(1026,60-1026,68)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1026,60-1026,68); use=legacy/FStar.Pointer.Base.fsti(1026,60-1026,68)
+(FStar.Pointer.Base.live (FStar.Pointer.Base.TArray @x1
+@x0)
+@x3
+@x2)
+)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_live @x0
+@x3
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x0
+@x1
+@x2)))
+:qid lemma_FStar.Pointer.Base.buffer_live_gbuffer_of_array_pointer))
+:named lemma_FStar.Pointer.Base.buffer_live_gbuffer_of_array_pointer))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.buffer_length_gbuffer_of_array_pointer
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_length_gbuffer_of_array_pointer; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Pointer.Base.array_length_t)
+(HasType @x2
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x1
+@x0))))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1002,11-1002,62); use=legacy/FStar.Pointer.Base.fsti(1002,11-1002,62)
+(= (FStar.Pointer.Base.buffer_length @x0
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x0
+@x1
+@x2))
+@x1)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_length @x0
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x0
+@x1
+@x2)))
+:qid lemma_FStar.Pointer.Base.buffer_length_gbuffer_of_array_pointer))
+:named lemma_FStar.Pointer.Base.buffer_length_gbuffer_of_array_pointer))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.buffer_length_buffer_as_seq
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_length_buffer_as_seq; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+FStar.Monotonic.HyperStack.mem)
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0)))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1246,11-1246,73); use=legacy/FStar.Pointer.Base.fsti(1246,11-1246,73)
+(= (FStar.Seq.Base.length (FStar.Pointer.Base.type_of_typ.fuel_instrumented ZFuel
+@x0)
+(FStar.Pointer.Base.buffer_as_seq @x0
+@x1
+@x2))
+(FStar.UInt32.v (FStar.Pointer.Base.buffer_length @x0
+@x2)))
+)
+ 
+
+:pattern ((FStar.Seq.Base.length (FStar.Pointer.Base.type_of_typ.fuel_instrumented ZFuel
+@x0)
+(FStar.Pointer.Base.buffer_as_seq @x0
+@x1
+@x2)))
+:qid lemma_FStar.Pointer.Base.buffer_length_buffer_as_seq))
+:named lemma_FStar.Pointer.Base.buffer_length_buffer_as_seq))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.buffer_includes_refl
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_includes_refl; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0)))
+
+;; def=legacy/FStar.Pointer.Base.fsti(2394,2-2394,23); use=legacy/FStar.Pointer.Base.fsti(2394,2-2394,23)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2394,2-2394,23); use=legacy/FStar.Pointer.Base.fsti(2394,2-2394,23)
+(FStar.Pointer.Base.buffer_includes @x0
+@x1
+@x1)
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_includes @x0
+@x1
+@x1))
+:qid lemma_FStar.Pointer.Base.buffer_includes_refl))
+:named lemma_FStar.Pointer.Base.buffer_includes_refl))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.buffer_includes_loc_includes
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_includes_loc_includes; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.typ)
+(HasType @x1
+(FStar.Pointer.Base.buffer @x0))
+(HasType @x2
+(FStar.Pointer.Base.buffer @x0))
+
+;; def=legacy/FStar.Pointer.Base.fsti(2455,12-2455,35); use=legacy/FStar.Pointer.Base.fsti(2455,12-2455,35)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2455,12-2455,35); use=legacy/FStar.Pointer.Base.fsti(2455,12-2455,35)
+(FStar.Pointer.Base.buffer_includes @x0
+@x1
+@x2)
+)
+)
+
+;; def=legacy/FStar.Pointer.Base.fsti(2456,11-2456,57); use=legacy/FStar.Pointer.Base.fsti(2456,11-2456,57)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(2456,11-2456,57); use=legacy/FStar.Pointer.Base.fsti(2456,11-2456,57)
+(FStar.Pointer.Base.loc_includes (FStar.Pointer.Base.loc_buffer @x0
+@x1)
+(FStar.Pointer.Base.loc_buffer @x0
+@x2))
+)
+)
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_includes @x0
+@x1
+@x2))
+
+:pattern ((FStar.Pointer.Base.loc_includes (FStar.Pointer.Base.loc_buffer @x0
+@x1)
+(FStar.Pointer.Base.loc_buffer @x0
+@x2)))
+:qid lemma_FStar.Pointer.Base.buffer_includes_loc_includes))
+:named lemma_FStar.Pointer.Base.buffer_includes_loc_includes))
+;;;;;;;;;;;;;;;;Lemma: FStar.Pointer.Base.buffer_as_seq_gbuffer_of_array_pointer
+;;; Fact-ids: Name FStar.Pointer.Base.buffer_as_seq_gbuffer_of_array_pointer; Namespace FStar.Pointer.Base
+(assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+FStar.Pointer.Base.array_length_t)
+(HasType @x1
+FStar.Pointer.Base.typ)
+(HasType @x2
+FStar.Monotonic.HyperStack.mem)
+(HasType @x3
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray @x0
+@x1))))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1265,11-1265,70); use=legacy/FStar.Pointer.Base.fsti(1265,11-1265,70)
+(= (FStar.Pointer.Base.buffer_as_seq @x1
+@x2
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x1
+@x0
+@x3))
+(FStar.Pointer.Base.gread (FStar.Pointer.Base.TArray @x0
+@x1)
+@x2
+@x3))
+)
+ 
+
+:pattern ((FStar.Pointer.Base.buffer_as_seq @x1
+@x2
+(FStar.Pointer.Base.gbuffer_of_array_pointer @x1
+@x0
+@x3)))
+:qid lemma_FStar.Pointer.Base.buffer_as_seq_gbuffer_of_array_pointer))
+:named lemma_FStar.Pointer.Base.buffer_as_seq_gbuffer_of_array_pointer))
 ;;;;;;;;;;;;;;;;Lemma: FStar.Monotonic.HyperStack.lemma_mk_mem'_projectors
 ;;; Fact-ids: Name FStar.Monotonic.HyperStack.lemma_mk_mem'_projectors; Namespace FStar.Monotonic.HyperStack
 (assert (! (forall ((@x0 Term) (@x1 Term) (@x2 Term))
@@ -54354,9 +56279,9 @@ Tm_type))
 
 :named kinding_Tm_arrow_9877f854fbaabbcfda94f6c19b32ae3f))
 ;;;;;;;;;;;;;;;;kinding_Tm_arrow_84543425b818e2d10a976186b8e8c250
-;;; Fact-ids: Name FStar.Set.intension; Namespace FStar.Set
+;;; Fact-ids: Name FStar.List.Tot.Base.existsb; Namespace FStar.List.Tot.Base
 (assert (! 
-;; def=FStar.Set.fsti(43,18-43,44); use=FStar.Set.fsti(43,31-43,44)
+;; def=FStar.List.Tot.Base.fst(253,22-256,18); use=FStar.List.Tot.Base.fst(256,8-256,18)
 (forall ((@x0 Term))
  (! (HasType (Tm_arrow_84543425b818e2d10a976186b8e8c250 @x0)
 Tm_type)
@@ -54477,6 +56402,21 @@ Tm_type))
 :qid interpretation_Tm_abs_2373aec163852d9339944ec67b8394ad))
 
 :named interpretation_Tm_abs_2373aec163852d9339944ec67b8394ad))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55
+;;; Fact-ids: Name FStar.Seq.Base.index; Namespace FStar.Seq.Base
+(assert (! 
+;; def=FStar.Seq.Base.fsti(32,34-32,53); use=FStar.Seq.Base.fsti(32,34-32,53)
+(forall ((@x0 Term) (@x1 Term))
+ (! (iff (Valid (Prims.hasEq (Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55 @x0
+@x1)))
+(Valid (Prims.hasEq Prims.nat)))
+ 
+
+:pattern ((Valid (Prims.hasEq (Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55 @x0
+@x1))))
+:qid haseqTm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55))
+
+:named haseqTm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55))
 ;;;;;;;;;;;;;;;;haseq for Tm_refine_cbd24d5334c6bfffa6fd8a84fb787f7a
 ;;; Fact-ids: Name FStar.Monotonic.HyperHeap.lemma_extends_not_root; Namespace FStar.Monotonic.HyperHeap
 (assert (! 
@@ -54490,6 +56430,19 @@ Tm_type))
 :qid haseqTm_refine_cbd24d5334c6bfffa6fd8a84fb787f7a))
 
 :named haseqTm_refine_cbd24d5334c6bfffa6fd8a84fb787f7a))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_c1424615841f28cac7fc34e92b7ff33c
+;;; Fact-ids: Name FStar.Seq.Base.init_aux; Namespace FStar.Seq.Base
+(assert (! 
+;; def=FStar.Seq.Base.fsti(36,41-36,57); use=FStar.Seq.Base.fsti(36,41-36,57)
+(forall ((@x0 Term))
+ (! (iff (Valid (Prims.hasEq (Tm_refine_c1424615841f28cac7fc34e92b7ff33c @x0)))
+(Valid (Prims.hasEq Prims.nat)))
+ 
+
+:pattern ((Valid (Prims.hasEq (Tm_refine_c1424615841f28cac7fc34e92b7ff33c @x0))))
+:qid haseqTm_refine_c1424615841f28cac7fc34e92b7ff33c))
+
+:named haseqTm_refine_c1424615841f28cac7fc34e92b7ff33c))
 ;;;;;;;;;;;;;;;;haseq for Tm_refine_8c12f3f9c2698fbe8f22a846eccf4184
 ;;; Fact-ids: Name FStar.Pointer.Base.struct_create; Namespace FStar.Pointer.Base
 (assert (! 
@@ -54503,6 +56456,19 @@ Tm_type))
 :qid haseqTm_refine_8c12f3f9c2698fbe8f22a846eccf4184))
 
 :named haseqTm_refine_8c12f3f9c2698fbe8f22a846eccf4184))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_4d0dd697db2857c49f85536bd0dded47
+;;; Fact-ids: Name FStar.Pointer.Base.gcell; Namespace FStar.Pointer.Base
+(assert (! 
+;; def=legacy/FStar.Pointer.Base.fsti(632,8-632,23); use=legacy/FStar.Pointer.Base.fsti(632,8-632,23)
+(forall ((@x0 Term))
+ (! (iff (Valid (Prims.hasEq (Tm_refine_4d0dd697db2857c49f85536bd0dded47 @x0)))
+(Valid (Prims.hasEq (FStar.Pointer.Base.pointer @x0))))
+ 
+
+:pattern ((Valid (Prims.hasEq (Tm_refine_4d0dd697db2857c49f85536bd0dded47 @x0))))
+:qid haseqTm_refine_4d0dd697db2857c49f85536bd0dded47))
+
+:named haseqTm_refine_4d0dd697db2857c49f85536bd0dded47))
 ;;;;;;;;;;;;;;;;haseq for Tm_refine_3b1cb9ec3355fed185c658f53954b3fa
 ;;; Fact-ids: Name FStar.List.Tot.Base.find; Namespace FStar.List.Tot.Base
 (assert (! 
@@ -54521,7 +56487,7 @@ Tm_type))
 ;;;;;;;;;;;;;;;;haseq for Tm_refine_2ed27bbc9f3f72a358633140c93f57bb
 ;;; Fact-ids: Name Test.mk_struct_literal; Namespace Test
 (assert (! 
-;; def=Test.fst(65,53-65,74); use=Test.fst(65,53-65,74)
+;; def=Test.fst(62,53-62,74); use=Test.fst(62,53-62,74)
 (forall ((@x0 Term))
  (! (iff (Valid (Prims.hasEq (Tm_refine_2ed27bbc9f3f72a358633140c93f57bb @x0)))
 (Valid (Prims.hasEq (FStar.Pointer.Base.struct_literal @x0))))
@@ -54884,62 +56850,10 @@ Tm_unit)))))
 :qid equation_with_fuel_FStar.List.Tot.Base.append.fuel_instrumented))
 
 :named equation_with_fuel_FStar.List.Tot.Base.append.fuel_instrumented))
-;;;;;;;;;;;;;;;;Equation for Test.more_struct_t
-;;; Fact-ids: Name Test.more_struct_t; Namespace Test
-(assert (! 
-;; def=Test.fst(55,4-55,17); use=Test.fst(55,4-55,17)
-(forall ((@u0 Dummy_sort))
- (! (= 
-;; def=Test.fst(55,4-55,17); use=Test.fst(55,4-55,17)
-(Test.more_struct_t @u0)
-
-(FStar.Pointer.Base.TStruct (Test.more_struct Dummy_value)))
- 
-
-:pattern (
-;; def=Test.fst(55,4-55,17); use=Test.fst(55,4-55,17)
-(Test.more_struct_t @u0)
-)
-:qid equation_Test.more_struct_t))
-
-:named equation_Test.more_struct_t))
-;;;;;;;;;;;;;;;;Equation for Test.more_struct
-;;; Fact-ids: Name Test.more_struct; Namespace Test
-(assert (! 
-;; def=Test.fst(47,4-47,15); use=Test.fst(47,4-47,15)
-(forall ((@u0 Dummy_sort))
- (! (= 
-;; def=Test.fst(47,4-47,15); use=Test.fst(47,4-47,15)
-(Test.more_struct @u0)
-
-(FStar.Pointer.Base.Mkstruct_typ (BoxString (FString_const 5))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 3))
-(Test.struct_t Dummy_value))
-(Prims.Cons (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-(FStar.Pervasives.Native.Mktuple2 Prims.string
-FStar.Pointer.Base.typ
-(BoxString (FString_const 4))
-(FStar.Pointer.Base.TBase FStar.Pointer.Base.TUnit@tok))
-(Prims.Nil (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ))))))
- 
-
-:pattern (
-;; def=Test.fst(47,4-47,15); use=Test.fst(47,4-47,15)
-(Test.more_struct @u0)
-)
-:qid equation_Test.more_struct))
-
-:named equation_Test.more_struct))
 ;;;;;;;;;;;;;;;;Equation for Test.mk_struct_literal
 ;;; Fact-ids: Name Test.mk_struct_literal; Namespace Test
 (assert (! 
-;; def=Test.fst(65,4-65,21); use=Test.fst(65,4-65,21)
+;; def=Test.fst(62,4-62,21); use=Test.fst(62,4-62,21)
 (forall ((@x0 Term) (@x1 Term))
  (! (= (Test.mk_struct_literal @x0
 @x1)
@@ -55698,52 +57612,6 @@ Tm_arrow_77650534d172f9f4bbf4f147268736a3))
 
 :named FStar.String_interpretation_Tm_arrow_77650534d172f9f4bbf4f147268736a3))
 ;;;;;;;;;;;;;;;;pre-typing for functions
-;;; Fact-ids: Name FStar.Set.intension; Namespace FStar.Set
-(assert (! 
-;; def=FStar.Set.fsti(43,18-43,44); use=FStar.Set.fsti(43,31-43,44)
-(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
- (! (implies (HasTypeFuel @u0
-@x1
-(Tm_arrow_84543425b818e2d10a976186b8e8c250 @x2))
-(is-Tm_arrow (PreType @x1)))
- 
-
-:pattern ((HasTypeFuel @u0
-@x1
-(Tm_arrow_84543425b818e2d10a976186b8e8c250 @x2)))
-:qid FStar.Set_pre_typing_Tm_arrow_84543425b818e2d10a976186b8e8c250))
-
-:named FStar.Set_pre_typing_Tm_arrow_84543425b818e2d10a976186b8e8c250))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_84543425b818e2d10a976186b8e8c250
-;;; Fact-ids: Name FStar.Set.intension; Namespace FStar.Set
-(assert (! 
-;; def=FStar.Set.fsti(43,18-43,44); use=FStar.Set.fsti(43,31-43,44)
-(forall ((@x0 Term) (@x1 Term))
- (! (iff (HasTypeZ @x0
-(Tm_arrow_84543425b818e2d10a976186b8e8c250 @x1))
-(and 
-;; def=FStar.Set.fsti(43,18-43,44); use=FStar.Set.fsti(43,31-43,44)
-(forall ((@x2 Term))
- (! (implies (HasType @x2
-@x1)
-(HasType (ApplyTT @x0
-@x2)
-Prims.bool))
- 
-
-:pattern ((ApplyTT @x0
-@x2))
-:qid FStar.Set_interpretation_Tm_arrow_84543425b818e2d10a976186b8e8c250.1))
-
-(IsTotFun @x0)))
- 
-
-:pattern ((HasTypeZ @x0
-(Tm_arrow_84543425b818e2d10a976186b8e8c250 @x1)))
-:qid FStar.Set_interpretation_Tm_arrow_84543425b818e2d10a976186b8e8c250))
-
-:named FStar.Set_interpretation_Tm_arrow_84543425b818e2d10a976186b8e8c250))
-;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: Name FStar.Pointer.Base.fun_of_list; Namespace FStar.Pointer.Base
 (assert (! 
 ;; def=legacy/FStar.Pointer.Base.fsti(318,14-318,72); use=legacy/FStar.Pointer.Base.fsti(318,14-318,72)
@@ -56095,6 +57963,23 @@ Tm_arrow_a2f219461d35e20b7bc771538ca96429))
 :qid FStar.List.Tot.Base_pre_typing_Tm_arrow_9877f854fbaabbcfda94f6c19b32ae3f))
 
 :named FStar.List.Tot.Base_pre_typing_Tm_arrow_9877f854fbaabbcfda94f6c19b32ae3f))
+;;;;;;;;;;;;;;;;pre-typing for functions
+;;; Fact-ids: Name FStar.List.Tot.Base.existsb; Namespace FStar.List.Tot.Base
+(assert (! 
+;; def=FStar.List.Tot.Base.fst(253,22-256,18); use=FStar.List.Tot.Base.fst(256,8-256,18)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+(Tm_arrow_84543425b818e2d10a976186b8e8c250 @x2))
+(is-Tm_arrow (PreType @x1)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_arrow_84543425b818e2d10a976186b8e8c250 @x2)))
+:qid FStar.List.Tot.Base_pre_typing_Tm_arrow_84543425b818e2d10a976186b8e8c250))
+
+:named FStar.List.Tot.Base_pre_typing_Tm_arrow_84543425b818e2d10a976186b8e8c250))
 ;;;;;;;;;;;;;;;;interpretation_Tm_arrow_a2f219461d35e20b7bc771538ca96429
 ;;; Fact-ids: Name FStar.List.Tot.Base.bool_of_compare; Namespace FStar.List.Tot.Base
 (assert (! 
@@ -56233,6 +58118,35 @@ Prims.int))
 :qid FStar.List.Tot.Base_interpretation_Tm_arrow_9877f854fbaabbcfda94f6c19b32ae3f))
 
 :named FStar.List.Tot.Base_interpretation_Tm_arrow_9877f854fbaabbcfda94f6c19b32ae3f))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_84543425b818e2d10a976186b8e8c250
+;;; Fact-ids: Name FStar.List.Tot.Base.existsb; Namespace FStar.List.Tot.Base
+(assert (! 
+;; def=FStar.List.Tot.Base.fst(253,22-256,18); use=FStar.List.Tot.Base.fst(256,8-256,18)
+(forall ((@x0 Term) (@x1 Term))
+ (! (iff (HasTypeZ @x0
+(Tm_arrow_84543425b818e2d10a976186b8e8c250 @x1))
+(and 
+;; def=FStar.List.Tot.Base.fst(253,22-256,18); use=FStar.List.Tot.Base.fst(256,8-256,18)
+(forall ((@x2 Term))
+ (! (implies (HasType @x2
+@x1)
+(HasType (ApplyTT @x0
+@x2)
+Prims.bool))
+ 
+
+:pattern ((ApplyTT @x0
+@x2))
+:qid FStar.List.Tot.Base_interpretation_Tm_arrow_84543425b818e2d10a976186b8e8c250.1))
+
+(IsTotFun @x0)))
+ 
+
+:pattern ((HasTypeZ @x0
+(Tm_arrow_84543425b818e2d10a976186b8e8c250 @x1)))
+:qid FStar.List.Tot.Base_interpretation_Tm_arrow_84543425b818e2d10a976186b8e8c250))
+
+:named FStar.List.Tot.Base_interpretation_Tm_arrow_84543425b818e2d10a976186b8e8c250))
 ;;;;;;;;;;;;;;;;kick_partial_app
 ;;; Fact-ids: Name FStar.Pointer.Base.struct_literal_wf; Namespace FStar.Pointer.Base
 (assert (! (Valid (ApplyTT __uu__PartialApp
@@ -56423,8 +58337,9 @@ FStar.Pointer.Base.fun_of_list@tok))
 :named @fuel_correspondence_FStar.List.Tot.Base.append.fuel_instrumented))
 (push) ;; push{2
 
-; Starting query at Test.fst(74,2-82,3)
+; Starting query at Test.fst(70,2-78,3)
 
+(declare-fun label_19 () Bool)
 (declare-fun label_18 () Bool)
 (declare-fun label_17 () Bool)
 (declare-fun label_16 () Bool)
@@ -56455,7 +58370,7 @@ Tm_type)
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: 
 (assert (! 
-;; def=legacy/FStar.Pointer.Base.fsti(302,58-302,72); use=Test.fst(74,2-82,3)
+;; def=legacy/FStar.Pointer.Base.fsti(302,58-302,72); use=Test.fst(70,2-78,3)
 (forall ((@u0 Fuel) (@x1 Term))
  (! (implies (HasTypeFuel @u0
 @x1
@@ -56472,12 +58387,12 @@ Tm_arrow_676d5a9570a8c41b07e5ada249da8abf))
 ;;;;;;;;;;;;;;;;interpretation_Tm_arrow_676d5a9570a8c41b07e5ada249da8abf
 ;;; Fact-ids: 
 (assert (! 
-;; def=legacy/FStar.Pointer.Base.fsti(302,58-302,72); use=Test.fst(74,2-82,3)
+;; def=legacy/FStar.Pointer.Base.fsti(302,58-302,72); use=Test.fst(70,2-78,3)
 (forall ((@x0 Term))
  (! (iff (HasTypeZ @x0
 Tm_arrow_676d5a9570a8c41b07e5ada249da8abf)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(302,58-302,72); use=Test.fst(74,2-82,3)
+;; def=legacy/FStar.Pointer.Base.fsti(302,58-302,72); use=Test.fst(70,2-78,3)
 (forall ((@x1 Term))
  (! (implies (HasType @x1
 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value)))
@@ -56507,7 +58422,7 @@ Tm_arrow_676d5a9570a8c41b07e5ada249da8abf)
 ;;;;;;;;;;;;;;;;interpretation_Tm_abs_1eb746a198bdf4f241ea433175d8396d
 ;;; Fact-ids: 
 (assert (! 
-;; def=legacy/FStar.Pointer.Base.fsti(302,75-302,99); use=Test.fst(74,2-82,3)
+;; def=legacy/FStar.Pointer.Base.fsti(302,75-302,99); use=Test.fst(70,2-78,3)
 (forall ((@x0 Term))
  (! (= (ApplyTT Tm_abs_1eb746a198bdf4f241ea433175d8396d
 @x0)
@@ -56531,6 +58446,21 @@ Tm_arrow_676d5a9570a8c41b07e5ada249da8abf)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (declare-fun Tm_refine_f63e058f9631c11993f3ef0430296051 () Term)
 ;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: 
@@ -56540,7 +58470,7 @@ Tm_type)
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.Monotonic.HyperStack.fsti(112,17-112,87); use=Test.fst(76,22-76,29)
+;; def=FStar.Monotonic.HyperStack.fsti(112,17-112,87); use=Test.fst(73,39-73,46)
 (forall ((@u0 Fuel) (@x1 Term))
  (! (iff (HasTypeFuel @u0
 @x1
@@ -56549,18 +58479,18 @@ Tm_refine_f63e058f9631c11993f3ef0430296051)
 @x1
 FStar.Monotonic.HyperStack.mem_)
 
-;; def=FStar.Monotonic.HyperStack.fsti(112,24-112,87); use=Test.fst(76,22-76,29)
+;; def=FStar.Monotonic.HyperStack.fsti(112,24-112,87); use=Test.fst(73,39-73,46)
 (Valid 
-;; def=FStar.Monotonic.HyperStack.fsti(112,24-112,87); use=Test.fst(76,22-76,29)
+;; def=FStar.Monotonic.HyperStack.fsti(112,24-112,87); use=Test.fst(73,39-73,46)
 (FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip (FStar.Monotonic.HyperStack.get_hmap @x1)
 (FStar.Monotonic.HyperStack.get_rid_ctr @x1)
 (FStar.Monotonic.HyperStack.get_tip @x1))
 )
 
 
-;; def=FStar.Monotonic.HyperStack.fsti(112,24-112,87); use=Test.fst(76,22-76,29)
+;; def=FStar.Monotonic.HyperStack.fsti(112,24-112,87); use=Test.fst(73,39-73,46)
 (Valid 
-;; def=FStar.Monotonic.HyperStack.fsti(112,24-112,87); use=Test.fst(76,22-76,29)
+;; def=FStar.Monotonic.HyperStack.fsti(112,24-112,87); use=Test.fst(73,39-73,46)
 (FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip (FStar.Monotonic.HyperStack.get_hmap @x1)
 (FStar.Monotonic.HyperStack.get_rid_ctr @x1)
 (FStar.Monotonic.HyperStack.get_tip @x1))
@@ -56579,144 +58509,41 @@ Tm_refine_f63e058f9631c11993f3ef0430296051))
 (assert (! (iff (Valid (Prims.hasEq Tm_refine_f63e058f9631c11993f3ef0430296051))
 (Valid (Prims.hasEq FStar.Monotonic.HyperStack.mem_)))
 :named haseqTm_refine_f63e058f9631c11993f3ef0430296051))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;;;;;;;;;;;;;;;;x: FStar.Pointer.Base.struct_field more_struct -> Prims.GTot Type
-(declare-fun Tm_arrow_6c253a9db38d1391302655345a25a96f () Term)
-;;;;;;;;;;;;;;;;kinding_Tm_arrow_6c253a9db38d1391302655345a25a96f
-;;; Fact-ids: 
-(assert (! (HasType Tm_arrow_6c253a9db38d1391302655345a25a96f
-Tm_type)
-:named kinding_Tm_arrow_6c253a9db38d1391302655345a25a96f))
-;;;;;;;;;;;;;;;;pre-typing for functions
-;;; Fact-ids: 
-(assert (! 
-;; def=legacy/FStar.Pointer.Base.fsti(302,58-302,72); use=Test.fst(74,2-82,3)
-(forall ((@u0 Fuel) (@x1 Term))
- (! (implies (HasTypeFuel @u0
-@x1
-Tm_arrow_6c253a9db38d1391302655345a25a96f)
-(is-Tm_arrow (PreType @x1)))
- 
-
-:pattern ((HasTypeFuel @u0
-@x1
-Tm_arrow_6c253a9db38d1391302655345a25a96f))
-:qid Test_pre_typing_Tm_arrow_6c253a9db38d1391302655345a25a96f))
-
-:named Test_pre_typing_Tm_arrow_6c253a9db38d1391302655345a25a96f))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_6c253a9db38d1391302655345a25a96f
-;;; Fact-ids: 
-(assert (! 
-;; def=legacy/FStar.Pointer.Base.fsti(302,58-302,72); use=Test.fst(74,2-82,3)
-(forall ((@x0 Term))
- (! (iff (HasTypeZ @x0
-Tm_arrow_6c253a9db38d1391302655345a25a96f)
-(and 
-;; def=legacy/FStar.Pointer.Base.fsti(302,58-302,72); use=Test.fst(74,2-82,3)
-(forall ((@x1 Term))
- (! (implies (HasType @x1
-(FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value)))
-(HasType (ApplyTT @x0
-@x1)
-Tm_type))
- 
-
-:pattern ((ApplyTT @x0
-@x1))
-:qid Test_interpretation_Tm_arrow_6c253a9db38d1391302655345a25a96f.1))
-
-(IsTotFun @x0)))
- 
-
-:pattern ((HasTypeZ @x0
-Tm_arrow_6c253a9db38d1391302655345a25a96f))
-:qid Test_interpretation_Tm_arrow_6c253a9db38d1391302655345a25a96f))
-
-:named Test_interpretation_Tm_arrow_6c253a9db38d1391302655345a25a96f))
-(declare-fun Tm_abs_9d870b54ad90e828fbfe606464930797 () Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_9d870b54ad90e828fbfe606464930797
-;;; Fact-ids: 
-(assert (! (HasType Tm_abs_9d870b54ad90e828fbfe606464930797
-Tm_arrow_6c253a9db38d1391302655345a25a96f)
-:named typing_Tm_abs_9d870b54ad90e828fbfe606464930797))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_9d870b54ad90e828fbfe606464930797
-;;; Fact-ids: 
-(assert (! 
-;; def=legacy/FStar.Pointer.Base.fsti(302,75-302,99); use=Test.fst(74,2-82,3)
-(forall ((@x0 Term))
- (! (= (ApplyTT Tm_abs_9d870b54ad90e828fbfe606464930797
-@x0)
-(ApplyTT (ApplyTT FStar.Pointer.Base.type_of_struct_field@tok
-(Test.more_struct Dummy_value))
-@x0))
- 
-
-:pattern ((ApplyTT Tm_abs_9d870b54ad90e828fbfe606464930797
-@x0))
-:qid interpretation_Tm_abs_9d870b54ad90e828fbfe606464930797))
-
-:named interpretation_Tm_abs_9d870b54ad90e828fbfe606464930797))
-
-
-
-
-
-
-
-
-
-
-
-
-(declare-fun Tm_refine_83d1bf25f81d108af096d9e2128c8350 (Term Term) Term)
+(declare-fun Tm_refine_d6d97f5639ae0826ad88392a6b4daa34 (Term Term) Term)
 ;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(79,20-79,25)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(73,12-73,35)
 (forall ((@x0 Term) (@x1 Term))
- (! (HasType (Tm_refine_83d1bf25f81d108af096d9e2128c8350 @x0
+ (! (HasType (Tm_refine_d6d97f5639ae0826ad88392a6b4daa34 @x0
 @x1)
 Tm_type)
  
 
-:pattern ((HasType (Tm_refine_83d1bf25f81d108af096d9e2128c8350 @x0
+:pattern ((HasType (Tm_refine_d6d97f5639ae0826ad88392a6b4daa34 @x0
 @x1)
 Tm_type))
-:qid refinement_kinding_Tm_refine_83d1bf25f81d108af096d9e2128c8350))
+:qid refinement_kinding_Tm_refine_d6d97f5639ae0826ad88392a6b4daa34))
 
-:named refinement_kinding_Tm_refine_83d1bf25f81d108af096d9e2128c8350))
+:named refinement_kinding_Tm_refine_d6d97f5639ae0826ad88392a6b4daa34))
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(79,20-79,25)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(73,12-73,35)
 (forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (iff (HasTypeFuel @u0
 @x1
-(Tm_refine_83d1bf25f81d108af096d9e2128c8350 @x2
+(Tm_refine_d6d97f5639ae0826ad88392a6b4daa34 @x2
 @x3))
 (and (HasTypeFuel @u0
 @x1
 FStar.Monotonic.HyperStack.mem)
 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(79,20-79,25)
+;; def=legacy/FStar.Pointer.Base.fsti(980,22-980,30); use=Test.fst(73,12-73,35)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(79,20-79,25)
-(FStar.Pointer.Base.live (FStar.Pointer.Base.TStruct (Test.more_struct Dummy_value))
+;; def=legacy/FStar.Pointer.Base.fsti(980,22-980,30); use=Test.fst(73,12-73,35)
+(FStar.Pointer.Base.live (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))
 @x2
 @x3)
 )
@@ -56725,31 +58552,167 @@ FStar.Monotonic.HyperStack.mem)
 
 :pattern ((HasTypeFuel @u0
 @x1
-(Tm_refine_83d1bf25f81d108af096d9e2128c8350 @x2
+(Tm_refine_d6d97f5639ae0826ad88392a6b4daa34 @x2
 @x3)))
-:qid refinement_interpretation_Tm_refine_83d1bf25f81d108af096d9e2128c8350))
+:qid refinement_interpretation_Tm_refine_d6d97f5639ae0826ad88392a6b4daa34))
 
-:named refinement_interpretation_Tm_refine_83d1bf25f81d108af096d9e2128c8350))
-;;;;;;;;;;;;;;;;haseq for Tm_refine_83d1bf25f81d108af096d9e2128c8350
+:named refinement_interpretation_Tm_refine_d6d97f5639ae0826ad88392a6b4daa34))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_d6d97f5639ae0826ad88392a6b4daa34
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(79,20-79,25)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(73,12-73,35)
 (forall ((@x0 Term) (@x1 Term))
- (! (iff (Valid (Prims.hasEq (Tm_refine_83d1bf25f81d108af096d9e2128c8350 @x0
+ (! (iff (Valid (Prims.hasEq (Tm_refine_d6d97f5639ae0826ad88392a6b4daa34 @x0
 @x1)))
 (Valid (Prims.hasEq FStar.Monotonic.HyperStack.mem)))
  
 
-:pattern ((Valid (Prims.hasEq (Tm_refine_83d1bf25f81d108af096d9e2128c8350 @x0
+:pattern ((Valid (Prims.hasEq (Tm_refine_d6d97f5639ae0826ad88392a6b4daa34 @x0
 @x1))))
-:qid haseqTm_refine_83d1bf25f81d108af096d9e2128c8350))
+:qid haseqTm_refine_d6d97f5639ae0826ad88392a6b4daa34))
 
-:named haseqTm_refine_83d1bf25f81d108af096d9e2128c8350))
+:named haseqTm_refine_d6d97f5639ae0826ad88392a6b4daa34))
+(declare-fun Tm_refine_1161a389224bc463940bfd9cc661f94c (Term Term) Term)
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: 
+(assert (! 
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(74,22-74,44)
+(forall ((@x0 Term) (@x1 Term))
+ (! (HasType (Tm_refine_1161a389224bc463940bfd9cc661f94c @x0
+@x1)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_refine_1161a389224bc463940bfd9cc661f94c @x0
+@x1)
+Tm_type))
+:qid refinement_kinding_Tm_refine_1161a389224bc463940bfd9cc661f94c))
+
+:named refinement_kinding_Tm_refine_1161a389224bc463940bfd9cc661f94c))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: 
+(assert (! 
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(74,22-74,44)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+(Tm_refine_1161a389224bc463940bfd9cc661f94c @x2
+@x3))
+(and (HasTypeFuel @u0
+@x1
+FStar.Monotonic.HyperStack.mem)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1292,22-1292,61); use=Test.fst(74,22-74,44)
+(< (BoxInt_proj_0 (BoxInt 0))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length (Test.struct_t Dummy_value)
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(74,22-74,44)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(74,22-74,44)
+(FStar.Pointer.Base.buffer_live (Test.struct_t Dummy_value)
+@x3
+@x2)
+)
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_refine_1161a389224bc463940bfd9cc661f94c @x2
+@x3)))
+:qid refinement_interpretation_Tm_refine_1161a389224bc463940bfd9cc661f94c))
+
+:named refinement_interpretation_Tm_refine_1161a389224bc463940bfd9cc661f94c))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_1161a389224bc463940bfd9cc661f94c
+;;; Fact-ids: 
+(assert (! 
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(74,22-74,44)
+(forall ((@x0 Term) (@x1 Term))
+ (! (iff (Valid (Prims.hasEq (Tm_refine_1161a389224bc463940bfd9cc661f94c @x0
+@x1)))
+(Valid (Prims.hasEq FStar.Monotonic.HyperStack.mem)))
+ 
+
+:pattern ((Valid (Prims.hasEq (Tm_refine_1161a389224bc463940bfd9cc661f94c @x0
+@x1))))
+:qid haseqTm_refine_1161a389224bc463940bfd9cc661f94c))
+
+:named haseqTm_refine_1161a389224bc463940bfd9cc661f94c))
+(declare-fun Tm_refine_5e0634fd635cc520f6f1b80e2520bad2 (Term Term) Term)
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: 
+(assert (! 
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(75,20-75,42)
+(forall ((@x0 Term) (@x1 Term))
+ (! (HasType (Tm_refine_5e0634fd635cc520f6f1b80e2520bad2 @x0
+@x1)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_refine_5e0634fd635cc520f6f1b80e2520bad2 @x0
+@x1)
+Tm_type))
+:qid refinement_kinding_Tm_refine_5e0634fd635cc520f6f1b80e2520bad2))
+
+:named refinement_kinding_Tm_refine_5e0634fd635cc520f6f1b80e2520bad2))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: 
+(assert (! 
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(75,20-75,42)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+(Tm_refine_5e0634fd635cc520f6f1b80e2520bad2 @x2
+@x3))
+(and (HasTypeFuel @u0
+@x1
+FStar.Monotonic.HyperStack.mem)
+
+;; def=legacy/FStar.Pointer.Base.fsti(1292,22-1292,61); use=Test.fst(75,20-75,42)
+(< (BoxInt_proj_0 (BoxInt 1))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length (Test.struct_t Dummy_value)
+@x2))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(75,20-75,42)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(75,20-75,42)
+(FStar.Pointer.Base.buffer_live (Test.struct_t Dummy_value)
+@x3
+@x2)
+)
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_refine_5e0634fd635cc520f6f1b80e2520bad2 @x2
+@x3)))
+:qid refinement_interpretation_Tm_refine_5e0634fd635cc520f6f1b80e2520bad2))
+
+:named refinement_interpretation_Tm_refine_5e0634fd635cc520f6f1b80e2520bad2))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_5e0634fd635cc520f6f1b80e2520bad2
+;;; Fact-ids: 
+(assert (! 
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(75,20-75,42)
+(forall ((@x0 Term) (@x1 Term))
+ (! (iff (Valid (Prims.hasEq (Tm_refine_5e0634fd635cc520f6f1b80e2520bad2 @x0
+@x1)))
+(Valid (Prims.hasEq FStar.Monotonic.HyperStack.mem)))
+ 
+
+:pattern ((Valid (Prims.hasEq (Tm_refine_5e0634fd635cc520f6f1b80e2520bad2 @x0
+@x1))))
+:qid haseqTm_refine_5e0634fd635cc520f6f1b80e2520bad2))
+
+:named haseqTm_refine_5e0634fd635cc520f6f1b80e2520bad2))
 (declare-fun Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90 (Term Term Term) Term)
 ;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(80,10-80,16)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(76,10-76,16)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term))
  (! (HasType (Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90 @x0
 @x1
@@ -56767,7 +58730,7 @@ Tm_type))
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(80,10-80,16)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(76,10-76,16)
 (forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
  (! (iff (HasTypeFuel @u0
 @x1
@@ -56778,27 +58741,27 @@ Tm_type))
 @x1
 FStar.Monotonic.HyperStack.mem)
 
-;; def=Test.fst(36,22-36,40); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,22-40,40); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(36,22-36,40); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,22-40,40); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.readable (Test.struct_t Dummy_value)
 @x2
 @x3)
 )
 
 
-;; def=Test.fst(36,44-36,56); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,44-40,56); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(36,44-36,56); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,44-40,56); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
 @x2
 @x4)
 )
 
 
-;; def=Test.fst(36,60-36,116); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,60-40,116); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(36,60-36,116); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,60-40,116); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
 @x3)
 (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
@@ -56818,7 +58781,7 @@ FStar.Monotonic.HyperStack.mem)
 ;;;;;;;;;;;;;;;;haseq for Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(80,10-80,16)
+;; def=FStar.HyperStack.ST.fsti(201,69-201,77); use=Test.fst(76,10-76,16)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term))
  (! (iff (Valid (Prims.hasEq (Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90 @x0
 @x1
@@ -56836,7 +58799,7 @@ FStar.Monotonic.HyperStack.mem)
 ;;;;;;;;;;;;;;;;refinement kinding
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(96,70-96,78); use=Test.fst(81,6-81,15)
+;; def=FStar.HyperStack.ST.fsti(96,70-96,78); use=Test.fst(77,6-77,15)
 (forall ((@x0 Term))
  (! (HasType (Tm_refine_156c49afb7e1e070fbb2e47dc0e3d4b2 @x0)
 Tm_type)
@@ -56850,7 +58813,7 @@ Tm_type))
 ;;;;;;;;;;;;;;;;refinement_interpretation
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(96,70-96,78); use=Test.fst(81,6-81,15)
+;; def=FStar.HyperStack.ST.fsti(96,70-96,78); use=Test.fst(77,6-77,15)
 (forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
  (! (iff (HasTypeFuel @u0
 @x1
@@ -56859,9 +58822,9 @@ Tm_type))
 @x1
 FStar.Monotonic.HyperStack.mem)
 
-;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(81,6-81,15)
+;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(77,6-77,15)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(81,6-81,15)
+;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(77,6-77,15)
 (FStar.Monotonic.HyperStack.poppable @x2)
 )
 ))
@@ -56876,7 +58839,7 @@ FStar.Monotonic.HyperStack.mem)
 ;;;;;;;;;;;;;;;;haseq for Tm_refine_156c49afb7e1e070fbb2e47dc0e3d4b2
 ;;; Fact-ids: 
 (assert (! 
-;; def=FStar.HyperStack.ST.fsti(96,70-96,78); use=Test.fst(81,6-81,15)
+;; def=FStar.HyperStack.ST.fsti(96,70-96,78); use=Test.fst(77,6-77,15)
 (forall ((@x0 Term))
  (! (iff (Valid (Prims.hasEq (Tm_refine_156c49afb7e1e070fbb2e47dc0e3d4b2 @x0)))
 (Valid (Prims.hasEq FStar.Monotonic.HyperStack.mem)))
@@ -56886,186 +58849,6 @@ FStar.Monotonic.HyperStack.mem)
 :qid haseqTm_refine_156c49afb7e1e070fbb2e47dc0e3d4b2))
 
 :named haseqTm_refine_156c49afb7e1e070fbb2e47dc0e3d4b2))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -57209,632 +58992,461 @@ FStar.Monotonic.HyperStack.mem)
 ;                                   .
 ;                                     Test.mk_struct_literal [(| "I", 18 |); (| "B", true |)] ==
 ;                                     pure_result ==>
-;                                     (forall (pure_result:
-;                                         FStar.Pointer.Base.type_of_typ Test.struct_t).
+;                                     (forall (pure_result: FStar.Pointer.Base.struct Test.struct).
 ;                                         FStar.Pointer.Base.struct_create Test.struct
 ;                                           (Test.mk_struct_literal [(| "I", 18 |); (| "B", true |)]) ==
 ;                                         pure_result ==>
-;                                         (forall (any_result:
-;                                             FStar.Pervasives.Native.option (FStar.Pointer.Base.type_of_typ
-;                                                   Test.struct_t)).
-;                                             FStar.Pervasives.Native.Some
-;                                             (FStar.Pointer.Base.struct_create Test.struct
-;                                                 (Test.mk_struct_literal [
-;                                                       (| "I", 18 |);
-;                                                       (| "B", true |)
-;                                                     ])) ==
-;                                             any_result ==>
-;                                             FStar.Monotonic.HyperStack.is_stack_region (FStar.Monotonic.HyperStack.get_tip
-;                                                   h1) /\
-;                                             (forall (a: FStar.Pointer.Base.pointer Test.struct_t)
-;                                                 (h1:
-;                                                 m:
-;                                                 FStar.Monotonic.HyperStack.mem'
-;                                                   { FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip
-;                                                       (FStar.Monotonic.HyperStack.get_hmap m)
-;                                                       (FStar.Monotonic.HyperStack.get_rid_ctr m)
-;                                                       (FStar.Monotonic.HyperStack.get_tip m) /\
-;                                                     FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip
-;                                                       (FStar.Monotonic.HyperStack.get_hmap m)
-;                                                       (FStar.Monotonic.HyperStack.get_rid_ctr m)
-;                                                       (FStar.Monotonic.HyperStack.get_tip m) }).
-;                                                 FStar.Pointer.Base.unused_in a h1 /\
-;                                                 FStar.Pointer.Base.live h1 a /\
-;                                                 FStar.Pointer.Base.frameOf a =
-;                                                 FStar.Monotonic.HyperStack.get_tip h1 /\
-;                                                 FStar.Pointer.Base.modifies_0 h1 h1 /\
-;                                                 FStar.Pointer.Base.readable h1 a /\
-;                                                 (FStar.Pointer.Base.gread h1 a ==
-;                                                   FStar.Pointer.Base.struct_create Test.struct
-;                                                     (Test.mk_struct_literal [
-;                                                           (| "I", 18 |);
-;                                                           (| "B", true |)
-;                                                         ])) /\
-;                                                 FStar.HyperStack.ST.inline_stack_inv h1 h1 ==>
-;                                                 FStar.List.Tot.Base.mem "Less"
-;                                                   (FStar.List.Tot.Base.map FStar.Pervasives.Native.fst
-;                                                       Test.more_struct.fields) /\
-;                                                 (forall (any_result: Prims.string).
-;                                                     "Less" == any_result ==>
-;                                                     FStar.List.Tot.Base.mem "I"
-;                                                       (FStar.List.Tot.Base.map FStar.Pervasives.Native.fst
-;                                                           Test.struct.fields) /\
-;                                                     (forall (any_result: Prims.string).
-;                                                         "I" == any_result ==>
-;                                                         (forall (any_result:
-;                                                             x:
-;                                                             FStar.Pointer.Base.struct_field Test.struct
-;                                                              &
-;                                                             FStar.Pointer.Base.type_of_struct_field Test.struct
-;                                                               x).
-;                                                             (| "I", 1729 |) == any_result ==>
-;                                                             FStar.List.Tot.Base.mem "B"
-;                                                               (FStar.List.Tot.Base.map FStar.Pervasives.Native.fst
-;                                                                   Test.struct.fields) /\
-;                                                             (forall (any_result: Prims.string).
-;                                                                 "B" == any_result ==>
+;                                         (forall (return_val: FStar.Pointer.Base.array_length_t).
+;                                             return_val == 2ul ==>
+;                                             (forall (any_result: FStar.Pointer.Base.typ).
+;                                                 FStar.Pointer.Base.TArray (2ul <: FStar.UInt32.t)
+;                                                   Test.struct_t ==
+;                                                 any_result ==>
+;                                                 (forall (return_val:
+;                                                     FStar.Pointer.Base.array_length_t).
+;                                                     return_val == 2ul ==>
+;                                                     (forall (any_result: FStar.Pointer.Base.typ).
+;                                                         FStar.Pointer.Base.TArray
+;                                                           (2ul <: FStar.UInt32.t) Test.struct_t ==
+;                                                         any_result ==>
+;                                                         (forall (any_result: Type0).
+;                                                             FStar.Pointer.Base.type_of_typ (FStar.Pointer.Base.TArray
+;                                                                   (2ul <: FStar.UInt32.t)
+;                                                                   Test.struct_t) ==
+;                                                             any_result ==>
+;                                                             FStar.Seq.Base.length (FStar.Seq.Base.create
+;                                                                   2
+;                                                                   (FStar.Pointer.Base.struct_create Test.struct
+;                                                                       (Test.mk_struct_literal [
+;                                                                             (| "I", 18 |);
+;                                                                             (| "B", true |)
+;                                                                           ]))) ==
+;                                                             2 /\
+;                                                             (forall (return_val:
+;                                                                 FStar.Pointer.Base.type_of_typ (FStar.Pointer.Base.TArray
+;                                                                       (2ul <: FStar.UInt32.t)
+;                                                                       Test.struct_t)).
+;                                                                 return_val ==
+;                                                                 FStar.Seq.Base.create 2
+;                                                                   (FStar.Pointer.Base.struct_create Test.struct
+;                                                                       (Test.mk_struct_literal [
+;                                                                             (| "I", 18 |);
+;                                                                             (| "B", true |)
+;                                                                           ])) ==>
 ;                                                                 (forall (any_result:
-;                                                                     x:
-;                                                                     FStar.Pointer.Base.struct_field Test.struct
-;                                                                      &
-;                                                                     FStar.Pointer.Base.type_of_struct_field
-;                                                                       Test.struct
-;                                                                       x).
-;                                                                     (| "B", false |) == any_result ==>
-;                                                                     (forall (any_result:
-;                                                                         Prims.list (x:
-;                                                                             FStar.Pointer.Base.struct_field
-;                                                                               Test.struct &
-;                                                                             FStar.Pointer.Base.type_of_struct_field
-;                                                                               Test.struct
-;                                                                               x)).
-;                                                                         [(| "B", false |)] ==
-;                                                                         any_result ==>
-;                                                                         (forall (any_result:
-;                                                                             Prims.list (x:
-;                                                                                 FStar.Pointer.Base.struct_field
-;                                                                                   Test.struct &
-;                                                                                 FStar.Pointer.Base.type_of_struct_field
-;                                                                                   Test.struct
-;                                                                                   x)).
-;                                                                             [
-;                                                                               (| "I", 1729 |);
-;                                                                               (| "B", false |)
-;                                                                             ] ==
-;                                                                             any_result ==>
-;                                                                             (forall (pure_result:
-;                                                                                 FStar.Pointer.Base.struct
-;                                                                                   Test.struct).
-;                                                                                 FStar.Pointer.Base.struct_create
-;                                                                                   Test.struct
-;                                                                                   [
-;                                                                                     (| "I", 1729 |);
-;                                                                                     (| "B", false |)
-;                                                                                   ] ==
-;                                                                                 pure_result ==>
+;                                                                     FStar.Pervasives.Native.option (FStar.Pointer.Base.type_of_typ
+;                                                                           (FStar.Pointer.Base.TArray
+;                                                                               (2ul <: FStar.UInt32.t
+;                                                                               ) Test.struct_t))).
+;                                                                     FStar.Pervasives.Native.Some
+;                                                                     (FStar.Seq.Base.create 2
+;                                                                         (FStar.Pointer.Base.struct_create
+;                                                                             Test.struct
+;                                                                             (Test.mk_struct_literal [
+;                                                                                   (| "I", 18 |);
+;                                                                                   (| "B", true |)
+;                                                                                 ]))) ==
+;                                                                     any_result ==>
+;                                                                     FStar.Monotonic.HyperStack.is_stack_region
+;                                                                       (FStar.Monotonic.HyperStack.get_tip
+;                                                                           h1) /\
+;                                                                     (forall (a:
+;                                                                         FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray
+;                                                                               (2ul <: FStar.UInt32.t
+;                                                                               ) Test.struct_t))
+;                                                                         (h1:
+;                                                                         m:
+;                                                                         FStar.Monotonic.HyperStack.mem'
+;                                                                           { FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip
+;                                                                               (FStar.Monotonic.HyperStack.get_hmap
+;                                                                                   m)
+;                                                                               (FStar.Monotonic.HyperStack.get_rid_ctr
+;                                                                                   m)
+;                                                                               (FStar.Monotonic.HyperStack.get_tip
+;                                                                                   m) /\
+;                                                                             FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip
+;                                                                               (FStar.Monotonic.HyperStack.get_hmap
+;                                                                                   m)
+;                                                                               (FStar.Monotonic.HyperStack.get_rid_ctr
+;                                                                                   m)
+;                                                                               (FStar.Monotonic.HyperStack.get_tip
+;                                                                                   m) }).
+;                                                                         FStar.Pointer.Base.unused_in
+;                                                                           a
+;                                                                           h1 /\
+;                                                                         FStar.Pointer.Base.live h1 a /\
+;                                                                         FStar.Pointer.Base.frameOf a =
+;                                                                         FStar.Monotonic.HyperStack.get_tip
+;                                                                           h1 /\
+;                                                                         FStar.Pointer.Base.modifies_0
+;                                                                           h1
+;                                                                           h1 /\
+;                                                                         FStar.Pointer.Base.readable h1
+;                                                                           a /\
+;                                                                         (FStar.Pointer.Base.gread h1
+;                                                                             a ==
+;                                                                           FStar.Seq.Base.create 2
+;                                                                             (FStar.Pointer.Base.struct_create
+;                                                                                 Test.struct
+;                                                                                 (Test.mk_struct_literal
+;                                                                                     [
+;                                                                                       (| "I", 18 |);
+;                                                                                       (|
+;                                                                                         "B",
+;                                                                                         true
+;                                                                                       |)
+;                                                                                     ]))) /\
+;                                                                         FStar.HyperStack.ST.inline_stack_inv
+;                                                                           h1
+;                                                                           h1 ==>
+;                                                                         (forall (return_val:
+;                                                                             FStar.Pointer.Base.array_length_t)
+;                                                                           .
+;                                                                             return_val == 2ul ==>
+;                                                                             FStar.Pointer.Base.live h1
+;                                                                               a /\
+;                                                                             (forall (a:
+;                                                                                 FStar.Pointer.Base.buffer
+;                                                                                   Test.struct_t)
+;                                                                                 (h1:
+;                                                                                 _:
+;                                                                                 FStar.Monotonic.HyperStack.mem
+;                                                                                   { FStar.Pointer.Base.live
+;                                                                                       h1
+;                                                                                       a }).
+;                                                                                 FStar.Pointer.Base.live
+;                                                                                   h1
+;                                                                                   a /\
+;                                                                                 (h1 == h1) /\
+;                                                                                 (a ==
+;                                                                                   FStar.Pointer.Base.gbuffer_of_array_pointer
+;                                                                                     a) /\
+;                                                                                 FStar.HyperStack.ST.equal_domains
+;                                                                                   h1
+;                                                                                   h1 ==>
+;                                                                                 Prims.auto_squash (FStar.UInt.size
+;                                                                                       0
+;                                                                                       32) /\
 ;                                                                                 (forall (any_result:
-;                                                                                     x:
-;                                                                                     FStar.Pointer.Base.struct_field
-;                                                                                       Test.more_struct
-;                                                                                      &
-;                                                                                     FStar.Pointer.Base.type_of_struct_field
-;                                                                                       Test.more_struct
-;                                                                                       x).
-;                                                                                     (|
-;                                                                                       "Less",
-;                                                                                       FStar.Pointer.Base.struct_create
-;                                                                                         Test.struct
-;                                                                                         [
-;                                                                                           (|
-;                                                                                             "I",
-;                                                                                             1729
-;                                                                                           |);
-;                                                                                           (|
-;                                                                                             "B",
-;                                                                                             false
-;                                                                                           |)
-;                                                                                         ]
-;                                                                                     |) ==
-;                                                                                     any_result ==>
-;                                                                                     FStar.List.Tot.Base.mem
-;                                                                                       "ThisMore"
-;                                                                                       (FStar.List.Tot.Base.map
-;                                                                                           FStar.Pervasives.Native.fst
-;                                                                                           Test.more_struct
-;                                                                                             .fields) /\
-;                                                                                     (forall (any_result:
-;                                                                                         Prims.string)
+;                                                                                     Prims.int).
+;                                                                                     0 == any_result ==>
+;                                                                                     (forall (pure_result:
+;                                                                                         FStar.UInt32.t)
 ;                                                                                       .
-;                                                                                         "ThisMore" ==
-;                                                                                         any_result ==>
-;                                                                                         (forall (any_result:
-;                                                                                             x:
-;                                                                                             FStar.Pointer.Base.struct_field
-;                                                                                               Test.more_struct
-;                                                                                              &
-;                                                                                             FStar.Pointer.Base.type_of_struct_field
-;                                                                                               Test.more_struct
-;                                                                                               x).
-;                                                                                             (|
-;                                                                                               "ThisMore",
-;                                                                                               ()
-;                                                                                             |) ==
-;                                                                                             any_result ==>
-;                                                                                             (forall (any_result:
-;                                                                                                 Prims.list
-;                                                                                                   (x:
-;                                                                                                     FStar.Pointer.Base.struct_field
-;                                                                                                       Test.more_struct
-;                                                                                                      &
-;                                                                                                     FStar.Pointer.Base.type_of_struct_field
-;                                                                                                       Test.more_struct
-;                                                                                                       x
+;                                                                                         FStar.UInt32.v
+;                                                                                           pure_result
+;                                                                                          =
+;                                                                                         0 ==>
+;                                                                                         0ul ==
+;                                                                                         pure_result ==>
+;                                                                                         0 <
+;                                                                                         FStar.UInt32.v
+;                                                                                           (FStar.Pointer.Base.buffer_length
+;                                                                                               a) /\
+;                                                                                         FStar.Pointer.Base.buffer_live
+;                                                                                           h1
+;                                                                                           a /\
+;                                                                                         (forall (a:
+;                                                                                             FStar.Pointer.Base.pointer
+;                                                                                               Test.struct_t
+;                                                                                             )
+;                                                                                             (h1:
+;                                                                                             _:
+;                                                                                             FStar.Monotonic.HyperStack.mem
+;                                                                                               { 0 <
+;                                                                                                 FStar.UInt32.v
+;                                                                                                   (FStar.Pointer.Base.buffer_length
+;                                                                                                       a
 ; 
-;                                                                                                   ))
+;                                                                                                   ) /\
+;                                                                                                 FStar.Pointer.Base.buffer_live
+;                                                                                                   h1
+;                                                                                                   a
+;                                                                                               }).
+;                                                                                             0 <
+;                                                                                             FStar.UInt32.v
+;                                                                                               (FStar.Pointer.Base.buffer_length
+;                                                                                                   a) /\
+;                                                                                             FStar.Pointer.Base.buffer_live
+;                                                                                               h1
+;                                                                                               a /\
+;                                                                                             (0 <
+;                                                                                               FStar.UInt32.v
+;                                                                                                 (FStar.Pointer.Base.buffer_length
+;                                                                                                     a
+;                                                                                                   )) /\
+;                                                                                             (h1 ==
+;                                                                                               h1) /\
+;                                                                                             (a ==
+;                                                                                               FStar.Pointer.Base.gpointer_of_buffer_cell
+;                                                                                                 a
+;                                                                                                 0ul) /\
+;                                                                                             FStar.HyperStack.ST.equal_domains
+;                                                                                               h1
+;                                                                                               h1 ==>
+;                                                                                             Prims.auto_squash
+;                                                                                               (FStar.UInt.size
+;                                                                                                   1
+;                                                                                                   32
+;                                                                                               ) /\
+;                                                                                             (forall (any_result:
+;                                                                                                 Prims.int)
 ;                                                                                               .
-;                                                                                                 [
-;                                                                                                   (|
-;                                                                                                     "ThisMore",
-;                                                                                                     ()
-;                                                                                                   |)
-;                                                                                                 ] ==
+;                                                                                                 1 ==
 ;                                                                                                 any_result ==>
 ;                                                                                                 (forall
-;                                                                                                     (any_result:
-;                                                                                                     Prims.list
+;                                                                                                     (pure_result:
+;                                                                                                     FStar.UInt32.t)
+;                                                                                                   .
+;                                                                                                     FStar.UInt32.v
+;                                                                                                       pure_result
+;                                                                                                      =
+;                                                                                                     1 ==>
+;                                                                                                     1ul ==
+;                                                                                                     pure_result ==>
+;                                                                                                     1 <
+;                                                                                                     FStar.UInt32.v
 ;                                                                                                       (
-;                                                                                                         x:
-;                                                                                                         FStar.Pointer.Base.struct_field
-;                                                                                                           Test.more_struct
-;                                                                                                          &
-;                                                                                                         FStar.Pointer.Base.type_of_struct_field
-;                                                                                                           Test.more_struct
-;                                                                                                           x
+;                                                                                                         FStar.Pointer.Base.buffer_length
+;                                                                                                           a
 ; 
 ;                                                                                                       )
-;                                                                                                     )
-;                                                                                                   .
-;                                                                                                     [
-;                                                                                                       (|
-;                                                                                                         "Less",
-;                                                                                                         FStar.Pointer.Base.struct_create
-;                                                                                                           Test.struct
-;                                                                                                           [
-;                                                                                                             (|
-;                                                                                                               "I",
-;                                                                                                               1729
-;                                                                                                             |);
-;                                                                                                             (|
-;                                                                                                               "B",
-;                                                                                                               false
-;                                                                                                             |)
-;                                                                                                           ]
-; 
-;                                                                                                       |);
-;                                                                                                       (|
-;                                                                                                         "ThisMore",
-;                                                                                                         ()
-;                                                                                                       |)
-;                                                                                                     ] ==
-;                                                                                                     any_result ==>
+;                                                                                                      /\
+;                                                                                                     FStar.Pointer.Base.buffer_live
+;                                                                                                       h1
+;                                                                                                       a
+;                                                                                                      /\
 ;                                                                                                     (
 ;                                                                                                       forall
-;                                                                                                         (pure_result:
-;                                                                                                         FStar.Pointer.Base.struct
-;                                                                                                           Test.more_struct
+;                                                                                                         (a:
+;                                                                                                         FStar.Pointer.Base.pointer
+;                                                                                                           Test.struct_t
 ;                                                                                                         )
-;                                                                                                       .
-;                                                                                                         FStar.Pointer.Base.struct_create
-;                                                                                                           Test.more_struct
-;                                                                                                           [
-;                                                                                                             (|
-;                                                                                                               "Less",
-;                                                                                                               FStar.Pointer.Base.struct_create
-;                                                                                                                 Test.struct
-;                                                                                                                 [
-;                                                                                                                   (|
-;                                                                                                                     "I",
-;                                                                                                                     1729
-;                                                                                                                   |);
-;                                                                                                                   (|
-;                                                                                                                     "B",
-;                                                                                                                     false
-;                                                                                                                   |)
-;                                                                                                                 ]
-; 
-;                                                                                                             |);
-;                                                                                                             (|
-;                                                                                                               "ThisMore",
-;                                                                                                               ()
-;                                                                                                             |)
-;                                                                                                           ]
-;                                                                                                          ==
-;                                                                                                         pure_result ==>
-;                                                                                                         (
-;                                                                                                           forall
-;                                                                                                             (any_result:
-;                                                                                                             FStar.Pervasives.Native.option
+;                                                                                                         (h1:
+;                                                                                                         _:
+;                                                                                                         FStar.Monotonic.HyperStack.mem
+;                                                                                                           {
+;                                                                                                             1 <
+;                                                                                                             FStar.UInt32.v
 ;                                                                                                               (
-;                                                                                                                 FStar.Pointer.Base.type_of_typ
-;                                                                                                                   Test.more_struct_t
-; 
-;                                                                                                               )
-;                                                                                                             )
-;                                                                                                           .
-;                                                                                                             FStar.Pervasives.Native.Some
-;                                                                                                             (
-;                                                                                                               FStar.Pointer.Base.struct_create
-;                                                                                                                 Test.more_struct
-;                                                                                                                 [
-;                                                                                                                   (|
-;                                                                                                                     "Less",
-;                                                                                                                     FStar.Pointer.Base.struct_create
-;                                                                                                                       Test.struct
-;                                                                                                                       [
-;                                                                                                                         (|
-;                                                                                                                           "I",
-;                                                                                                                           1729
-;                                                                                                                         |);
-;                                                                                                                         (|
-;                                                                                                                           "B",
-;                                                                                                                           false
-;                                                                                                                         |)
-;                                                                                                                       ]
-; 
-;                                                                                                                   |);
-;                                                                                                                   (|
-;                                                                                                                     "ThisMore",
-;                                                                                                                     ()
-;                                                                                                                   |)
-;                                                                                                                 ]
-; 
-;                                                                                                             ) ==
-;                                                                                                             any_result ==>
-;                                                                                                             FStar.Monotonic.HyperStack.is_stack_region
-;                                                                                                               (
-;                                                                                                                 FStar.Monotonic.HyperStack.get_tip
-;                                                                                                                   h1
+;                                                                                                                 FStar.Pointer.Base.buffer_length
+;                                                                                                                   a
 ; 
 ;                                                                                                               )
 ;                                                                                                              /\
+;                                                                                                             FStar.Pointer.Base.buffer_live
+;                                                                                                               h1
+;                                                                                                               a
+; 
+;                                                                                                           })
+;                                                                                                       .
+;                                                                                                         1 <
+;                                                                                                         FStar.UInt32.v
+;                                                                                                           (
+;                                                                                                             FStar.Pointer.Base.buffer_length
+;                                                                                                               a
+; 
+;                                                                                                           )
+;                                                                                                          /\
+;                                                                                                         FStar.Pointer.Base.buffer_live
+;                                                                                                           h1
+;                                                                                                           a
+;                                                                                                          /\
+;                                                                                                         (
+;                                                                                                           1 <
+;                                                                                                           FStar.UInt32.v
 ;                                                                                                             (
-;                                                                                                               forall
-;                                                                                                                 (a:
-;                                                                                                                 FStar.Pointer.Base.pointer
-;                                                                                                                   Test.more_struct_t
-;                                                                                                                 )
-;                                                                                                                 (h1:
-;                                                                                                                 m:
-;                                                                                                                 FStar.Monotonic.HyperStack.mem'
-;                                                                                                                   {
-;                                                                                                                     FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip
-;                                                                                                                       (
-;                                                                                                                         FStar.Monotonic.HyperStack.get_hmap
-;                                                                                                                           m
+;                                                                                                               FStar.Pointer.Base.buffer_length
+;                                                                                                                 a
 ; 
-;                                                                                                                       )
-;                                                                                                                       (
-;                                                                                                                         FStar.Monotonic.HyperStack.get_rid_ctr
-;                                                                                                                           m
+;                                                                                                             )
 ; 
-;                                                                                                                       )
-;                                                                                                                       (
-;                                                                                                                         FStar.Monotonic.HyperStack.get_tip
-;                                                                                                                           m
+;                                                                                                         ) /\
+;                                                                                                         (
+;                                                                                                           h1 ==
+;                                                                                                           h1
+;                                                                                                         ) /\
+;                                                                                                         (
+;                                                                                                           a ==
+;                                                                                                           FStar.Pointer.Base.gpointer_of_buffer_cell
+;                                                                                                             a
+;                                                                                                             1ul
 ; 
-;                                                                                                                       )
-;                                                                                                                      /\
-;                                                                                                                     FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip
-;                                                                                                                       (
-;                                                                                                                         FStar.Monotonic.HyperStack.get_hmap
-;                                                                                                                           m
+;                                                                                                         ) /\
+;                                                                                                         FStar.HyperStack.ST.equal_domains
+;                                                                                                           h1
+;                                                                                                           h1
+;                                                                                                          ==>
+;                                                                                                         FStar.Pointer.Base.readable
+;                                                                                                           h1
+;                                                                                                           a
+;                                                                                                          /\
+;                                                                                                         FStar.Pointer.Base.live
+;                                                                                                           h1
+;                                                                                                           a
+;                                                                                                          /\
+;                                                                                                         FStar.Pointer.Base.loc_disjoint
+;                                                                                                           (
+;                                                                                                             FStar.Pointer.Base.loc_pointer
+;                                                                                                               a
 ; 
-;                                                                                                                       )
-;                                                                                                                       (
-;                                                                                                                         FStar.Monotonic.HyperStack.get_rid_ctr
-;                                                                                                                           m
+;                                                                                                           )
+;                                                                                                           (
+;                                                                                                             FStar.Pointer.Base.loc_pointer
+;                                                                                                               a
 ; 
-;                                                                                                                       )
-;                                                                                                                       (
-;                                                                                                                         FStar.Monotonic.HyperStack.get_tip
-;                                                                                                                           m
-; 
-;                                                                                                                       )
-; 
-;                                                                                                                   })
-;                                                                                                               .
-;                                                                                                                 FStar.Pointer.Base.unused_in
-;                                                                                                                   a
+;                                                                                                           )
+;                                                                                                          /\
+;                                                                                                         (
+;                                                                                                           forall
+;                                                                                                             (a:
+;                                                                                                             Prims.int)
+;                                                                                                             (h1:
+;                                                                                                             _:
+;                                                                                                             FStar.Monotonic.HyperStack.mem
+;                                                                                                               {
+;                                                                                                                 FStar.Pointer.Base.readable
 ;                                                                                                                   h1
+;                                                                                                                   a
 ;                                                                                                                  /\
 ;                                                                                                                 FStar.Pointer.Base.live
 ;                                                                                                                   h1
 ;                                                                                                                   a
 ;                                                                                                                  /\
-;                                                                                                                 FStar.Pointer.Base.frameOf
+;                                                                                                                 FStar.Pointer.Base.loc_disjoint
+;                                                                                                                   (
+;                                                                                                                     FStar.Pointer.Base.loc_pointer
+;                                                                                                                       a
+; 
+;                                                                                                                   )
+;                                                                                                                   (
+;                                                                                                                     FStar.Pointer.Base.loc_pointer
+;                                                                                                                       a
+; 
+;                                                                                                                   )
+; 
+;                                                                                                               })
+;                                                                                                           .
+;                                                                                                             FStar.Pointer.Base.readable
+;                                                                                                               h1
+;                                                                                                               a
+;                                                                                                              /\
+;                                                                                                             FStar.Pointer.Base.live
+;                                                                                                               h1
+;                                                                                                               a
+;                                                                                                              /\
+;                                                                                                             FStar.Pointer.Base.loc_disjoint
+;                                                                                                               (
+;                                                                                                                 FStar.Pointer.Base.loc_pointer
 ;                                                                                                                   a
-;                                                                                                                  =
-;                                                                                                                 FStar.Monotonic.HyperStack.get_tip
+; 
+;                                                                                                               )
+;                                                                                                               (
+;                                                                                                                 FStar.Pointer.Base.loc_pointer
+;                                                                                                                   a
+; 
+;                                                                                                               )
+;                                                                                                              /\
+;                                                                                                             FStar.Pointer.Base.live
+;                                                                                                               h1
+;                                                                                                               a
+;                                                                                                              /\
+;                                                                                                             FStar.Pointer.Base.live
+;                                                                                                               h1
+;                                                                                                               a
+;                                                                                                              /\
+;                                                                                                             FStar.Pointer.Base.live
+;                                                                                                               h1
+;                                                                                                               a
+;                                                                                                              /\
+;                                                                                                             FStar.Pointer.Base.live
+;                                                                                                               h1
+;                                                                                                               a
+;                                                                                                              /\
+;                                                                                                             FStar.Pointer.Base.modifies_1
+;                                                                                                               (
+;                                                                                                                 FStar.Pointer.Base.gfield
+;                                                                                                                   a
+;                                                                                                                   "I"
+; 
+;                                                                                                               )
+;                                                                                                               h1
+;                                                                                                               h1
+;                                                                                                              /\
+;                                                                                                             FStar.Pointer.Base.readable
+;                                                                                                               h1
+;                                                                                                               (
+;                                                                                                                 FStar.Pointer.Base.gfield
+;                                                                                                                   a
+;                                                                                                                   "I"
+; 
+;                                                                                                               )
+;                                                                                                              /\
+;                                                                                                             (
+;                                                                                                               FStar.Pointer.Base.gread
+;                                                                                                                 h1
+;                                                                                                                 (
+;                                                                                                                   FStar.Pointer.Base.gfield
+;                                                                                                                     a
+;                                                                                                                     "I"
+; 
+;                                                                                                                 )
+;                                                                                                                ==
+;                                                                                                               a
+;                                                                                                             ) /\
+;                                                                                                             (
+;                                                                                                               FStar.Pointer.Base.gread
+;                                                                                                                 h1
+;                                                                                                                 (
+;                                                                                                                   FStar.Pointer.Base.gfield
+;                                                                                                                     a
+;                                                                                                                     "I"
+; 
+;                                                                                                                 )
+;                                                                                                                ==
+;                                                                                                               a +
+;                                                                                                               1
+;                                                                                                             ) /\
+;                                                                                                             FStar.HyperStack.ST.equal_domains
+;                                                                                                               h1
+;                                                                                                               h1
+;                                                                                                              ==>
+;                                                                                                             FStar.Monotonic.HyperStack.poppable
+;                                                                                                               h1
+;                                                                                                              /\
+;                                                                                                             (
+;                                                                                                               forall
+;                                                                                                                 (a:
+;                                                                                                                 Prims.unit)
+;                                                                                                                 (h1:
+;                                                                                                                 _:
+;                                                                                                                 FStar.Monotonic.HyperStack.mem
+;                                                                                                                   {
+;                                                                                                                     FStar.Monotonic.HyperStack.poppable
+;                                                                                                                       h1
+; 
+;                                                                                                                   })
+;                                                                                                               .
+;                                                                                                                 FStar.Monotonic.HyperStack.poppable
 ;                                                                                                                   h1
 ;                                                                                                                  /\
-;                                                                                                                 FStar.Pointer.Base.modifies_0
+;                                                                                                                 FStar.Monotonic.HyperStack.poppable
 ;                                                                                                                   h1
-;                                                                                                                   h1
-;                                                                                                                  /\
-;                                                                                                                 FStar.Pointer.Base.readable
-;                                                                                                                   h1
-;                                                                                                                   a
 ;                                                                                                                  /\
 ;                                                                                                                 (
-;                                                                                                                   FStar.Pointer.Base.gread
+;                                                                                                                   h1 ==
+;                                                                                                                   FStar.Monotonic.HyperStack.pop
 ;                                                                                                                     h1
-;                                                                                                                     a
-;                                                                                                                    ==
-;                                                                                                                   FStar.Pointer.Base.struct_create
-;                                                                                                                     Test.more_struct
-;                                                                                                                     [
-;                                                                                                                       (|
-;                                                                                                                         "Less",
-;                                                                                                                         FStar.Pointer.Base.struct_create
-;                                                                                                                           Test.struct
-;                                                                                                                           [
-;                                                                                                                             (|
-;                                                                                                                               "I",
-;                                                                                                                               1729
-;                                                                                                                             |);
-;                                                                                                                             (|
-;                                                                                                                               "B",
-;                                                                                                                               false
-;                                                                                                                             |)
-;                                                                                                                           ]
-; 
-;                                                                                                                       |);
-;                                                                                                                       (|
-;                                                                                                                         "ThisMore",
-;                                                                                                                         ()
-;                                                                                                                       |)
-;                                                                                                                     ]
 ; 
 ;                                                                                                                 ) /\
-;                                                                                                                 FStar.HyperStack.ST.inline_stack_inv
+;                                                                                                                 FStar.Monotonic.HyperStack.popped
 ;                                                                                                                   h1
 ;                                                                                                                   h1
 ;                                                                                                                  ==>
-;                                                                                                                 FStar.List.Tot.Base.mem
-;                                                                                                                   "Less"
-;                                                                                                                   (
-;                                                                                                                     FStar.List.Tot.Base.map
-;                                                                                                                       FStar.Pervasives.Native.fst
-;                                                                                                                       Test.more_struct
-;                                                                                                                         .fields
+;                                                                                                                 p
+;                                                                                                                   a
+;                                                                                                                   h1
 ; 
-;                                                                                                                   )
-;                                                                                                                  /\
-;                                                                                                                 (
-;                                                                                                                   forall
-;                                                                                                                     (any_result:
-;                                                                                                                     Prims.string)
-;                                                                                                                   .
-;                                                                                                                     "Less" ==
-;                                                                                                                     any_result ==>
-;                                                                                                                     FStar.Pointer.Base.live
-;                                                                                                                       h1
-;                                                                                                                       a
-;                                                                                                                      /\
-;                                                                                                                     (
-;                                                                                                                       forall
-;                                                                                                                         (a:
-;                                                                                                                         FStar.Pointer.Base.pointer
-;                                                                                                                           (
-;                                                                                                                             FStar.Pointer.Base.typ_of_struct_field
-;                                                                                                                               Test.more_struct
-;                                                                                                                               "Less"
-; 
-;                                                                                                                           )
-;                                                                                                                         )
-;                                                                                                                         (h1:
-;                                                                                                                         _:
-;                                                                                                                         FStar.Monotonic.HyperStack.mem
-;                                                                                                                           {
-;                                                                                                                             FStar.Pointer.Base.live
-;                                                                                                                               h1
-;                                                                                                                               a
-; 
-;                                                                                                                           })
-;                                                                                                                       .
-;                                                                                                                         FStar.Pointer.Base.live
-;                                                                                                                           h1
-;                                                                                                                           a
-;                                                                                                                          /\
-;                                                                                                                         (
-;                                                                                                                           h1 ==
-;                                                                                                                           h1
-;                                                                                                                         ) /\
-;                                                                                                                         (
-;                                                                                                                           a ==
-;                                                                                                                           FStar.Pointer.Base.gfield
-;                                                                                                                             a
-;                                                                                                                             "Less"
-; 
-;                                                                                                                         ) /\
-;                                                                                                                         FStar.HyperStack.ST.equal_domains
-;                                                                                                                           h1
-;                                                                                                                           h1
-;                                                                                                                          ==>
-;                                                                                                                         FStar.Pointer.Base.readable
-;                                                                                                                           h1
-;                                                                                                                           a
-;                                                                                                                          /\
-;                                                                                                                         FStar.Pointer.Base.live
-;                                                                                                                           h1
-;                                                                                                                           a
-;                                                                                                                          /\
-;                                                                                                                         FStar.Pointer.Base.loc_disjoint
-;                                                                                                                           (
-;                                                                                                                             FStar.Pointer.Base.loc_pointer
-;                                                                                                                               a
-; 
-;                                                                                                                           )
-;                                                                                                                           (
-;                                                                                                                             FStar.Pointer.Base.loc_pointer
-;                                                                                                                               a
-; 
-;                                                                                                                           )
-;                                                                                                                          /\
-;                                                                                                                         (
-;                                                                                                                           forall
-;                                                                                                                             (a:
-;                                                                                                                             Prims.int)
-;                                                                                                                             (h1:
-;                                                                                                                             _:
-;                                                                                                                             FStar.Monotonic.HyperStack.mem
-;                                                                                                                               {
-;                                                                                                                                 FStar.Pointer.Base.readable
-;                                                                                                                                   h1
-;                                                                                                                                   a
-;                                                                                                                                  /\
-;                                                                                                                                 FStar.Pointer.Base.live
-;                                                                                                                                   h1
-;                                                                                                                                   a
-;                                                                                                                                  /\
-;                                                                                                                                 FStar.Pointer.Base.loc_disjoint
-;                                                                                                                                   (
-;                                                                                                                                     FStar.Pointer.Base.loc_pointer
-;                                                                                                                                       a
-; 
-;                                                                                                                                   )
-;                                                                                                                                   (
-;                                                                                                                                     FStar.Pointer.Base.loc_pointer
-;                                                                                                                                       a
-; 
-;                                                                                                                                   )
-; 
-;                                                                                                                               })
-;                                                                                                                           .
-;                                                                                                                             FStar.Pointer.Base.readable
-;                                                                                                                               h1
-;                                                                                                                               a
-;                                                                                                                              /\
-;                                                                                                                             FStar.Pointer.Base.live
-;                                                                                                                               h1
-;                                                                                                                               a
-;                                                                                                                              /\
-;                                                                                                                             FStar.Pointer.Base.loc_disjoint
-;                                                                                                                               (
-;                                                                                                                                 FStar.Pointer.Base.loc_pointer
-;                                                                                                                                   a
-; 
-;                                                                                                                               )
-;                                                                                                                               (
-;                                                                                                                                 FStar.Pointer.Base.loc_pointer
-;                                                                                                                                   a
-; 
-;                                                                                                                               )
-;                                                                                                                              /\
-;                                                                                                                             FStar.Pointer.Base.live
-;                                                                                                                               h1
-;                                                                                                                               a
-;                                                                                                                              /\
-;                                                                                                                             FStar.Pointer.Base.live
-;                                                                                                                               h1
-;                                                                                                                               a
-;                                                                                                                              /\
-;                                                                                                                             FStar.Pointer.Base.live
-;                                                                                                                               h1
-;                                                                                                                               a
-;                                                                                                                              /\
-;                                                                                                                             FStar.Pointer.Base.live
-;                                                                                                                               h1
-;                                                                                                                               a
-;                                                                                                                              /\
-;                                                                                                                             FStar.Pointer.Base.modifies_1
-;                                                                                                                               (
-;                                                                                                                                 FStar.Pointer.Base.gfield
-;                                                                                                                                   a
-;                                                                                                                                   "I"
-; 
-;                                                                                                                               )
-;                                                                                                                               h1
-;                                                                                                                               h1
-;                                                                                                                              /\
-;                                                                                                                             FStar.Pointer.Base.readable
-;                                                                                                                               h1
-;                                                                                                                               (
-;                                                                                                                                 FStar.Pointer.Base.gfield
-;                                                                                                                                   a
-;                                                                                                                                   "I"
-; 
-;                                                                                                                               )
-;                                                                                                                              /\
-;                                                                                                                             (
-;                                                                                                                               FStar.Pointer.Base.gread
-;                                                                                                                                 h1
-;                                                                                                                                 (
-;                                                                                                                                   FStar.Pointer.Base.gfield
-;                                                                                                                                     a
-;                                                                                                                                     "I"
-; 
-;                                                                                                                                 )
-;                                                                                                                                ==
-;                                                                                                                               a
-;                                                                                                                             ) /\
-;                                                                                                                             (
-;                                                                                                                               FStar.Pointer.Base.gread
-;                                                                                                                                 h1
-;                                                                                                                                 (
-;                                                                                                                                   FStar.Pointer.Base.gfield
-;                                                                                                                                     a
-;                                                                                                                                     "I"
-; 
-;                                                                                                                                 )
-;                                                                                                                                ==
-;                                                                                                                               a +
-;                                                                                                                               1
-;                                                                                                                             ) /\
-;                                                                                                                             FStar.HyperStack.ST.equal_domains
-;                                                                                                                               h1
-;                                                                                                                               h1
-;                                                                                                                              ==>
-;                                                                                                                             FStar.Monotonic.HyperStack.poppable
-;                                                                                                                               h1
-;                                                                                                                              /\
-;                                                                                                                             (
-;                                                                                                                               forall
-;                                                                                                                                 (a:
-;                                                                                                                                 Prims.unit)
-;                                                                                                                                 (h1:
-;                                                                                                                                 _:
-;                                                                                                                                 FStar.Monotonic.HyperStack.mem
-;                                                                                                                                   {
-;                                                                                                                                     FStar.Monotonic.HyperStack.poppable
-;                                                                                                                                       h1
-; 
-;                                                                                                                                   })
-;                                                                                                                               .
-;                                                                                                                                 FStar.Monotonic.HyperStack.poppable
-;                                                                                                                                   h1
-;                                                                                                                                  /\
-;                                                                                                                                 FStar.Monotonic.HyperStack.poppable
-;                                                                                                                                   h1
-;                                                                                                                                  /\
-;                                                                                                                                 (
-;                                                                                                                                   h1 ==
-;                                                                                                                                   FStar.Monotonic.HyperStack.pop
-;                                                                                                                                     h1
-; 
-;                                                                                                                                 ) /\
-;                                                                                                                                 FStar.Monotonic.HyperStack.popped
-;                                                                                                                                   h1
-;                                                                                                                                   h1
-;                                                                                                                                  ==>
-;                                                                                                                                 p
-;                                                                                                                                   a
-;                                                                                                                                   h1
-; 
-;                                                                                                                             )
-;                                                                                                                         )
-;                                                                                                                     )
-;                                                                                                                 )
 ;                                                                                                             )
 ;                                                                                                         )
 ;                                                                                                     )
@@ -57871,7 +59483,7 @@ Prims.int))
 (HasType @x2
 FStar.Monotonic.HyperStack.mem)
 
-;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(74,2-82,3)
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(70,2-78,3)
 (forall ((@x3 Term) (@x4 Term))
  (! (implies (and (or label_1
 (HasType @x3
@@ -57880,30 +59492,30 @@ Prims.int))
 (HasType @x4
 FStar.Monotonic.HyperStack.mem))
 
-;; def=Test.fst(73,25-73,32); use=Test.fst(74,2-82,3)
+;; def=Test.fst(69,25-69,32); use=Test.fst(70,2-78,3)
 (or label_3
 
-;; def=Test.fst(73,25-73,32); use=Test.fst(74,2-82,3)
+;; def=Test.fst(69,25-69,32); use=Test.fst(70,2-78,3)
 (= @x3
 (BoxInt 18))
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(74,2-82,3)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(70,2-78,3)
 (or label_4
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(74,2-82,3)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(70,2-78,3)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(74,2-82,3)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(70,2-78,3)
 (FStar.HyperStack.ST.equal_domains @x2
 @x4)
 )
 )
 )
 
-;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(74,2-82,3)
+;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(70,2-78,3)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(74,2-82,3)
+;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(70,2-78,3)
 (ApplyTT (ApplyTT @x1
 @x3)
 @x4)
@@ -57912,9 +59524,9 @@ FStar.Monotonic.HyperStack.mem))
  
 
 :pattern (
-;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(74,2-82,3)
+;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(70,2-78,3)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(74,2-82,3)
+;; def=FStar.HyperStack.ST.fsti(203,115-203,121); use=Test.fst(70,2-78,3)
 (ApplyTT (ApplyTT @x1
 @x3)
 @x4)
@@ -57923,27 +59535,27 @@ FStar.Monotonic.HyperStack.mem))
 :qid @query.2))
 )
 
-;; def=FStar.HyperStack.ST.fsti(98,52-98,98); use=Test.fst(74,6-74,16)
+;; def=FStar.HyperStack.ST.fsti(98,52-98,98); use=Test.fst(70,6-70,16)
 (forall ((@x3 Term) (@x4 Term))
  (! (implies (and (HasType @x3
 Prims.unit)
 (HasType @x4
 FStar.Monotonic.HyperStack.mem)
 
-;; def=FStar.HyperStack.ST.fsti(317,101-317,118); use=Test.fst(74,6-74,16)
+;; def=FStar.HyperStack.ST.fsti(317,101-317,118); use=Test.fst(70,6-70,16)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(317,101-317,118); use=Test.fst(74,6-74,16)
+;; def=FStar.HyperStack.ST.fsti(317,101-317,118); use=Test.fst(70,6-70,16)
 (FStar.Monotonic.HyperStack.fresh_frame @x2
 @x4)
 )
 )
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(70,2-78,3)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(75,57-75,60)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(71,57-71,60)
 (or label_5
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(75,57-75,60)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(71,57-71,60)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 0))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -57956,23 +59568,23 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
 (forall ((@x5 Term))
  (! (implies (and (HasType @x5
 Prims.string)
 
-;; def=Prims.fst(504,16-504,18); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(504,16-504,18); use=Test.fst(70,2-78,3)
 (= (BoxString (FString_const 0))
 @x5)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
 (forall ((@x6 Term))
  (! (implies (and (HasType @x6
 (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
 Tm_abs_1eb746a198bdf4f241ea433175d8396d))
 
-;; def=Prims.fst(616,11-616,13); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(616,11-616,13); use=Test.fst(70,2-78,3)
 (= (Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
 Tm_abs_1eb746a198bdf4f241ea433175d8396d
 (BoxString (FString_const 0))
@@ -57980,12 +59592,12 @@ Tm_abs_1eb746a198bdf4f241ea433175d8396d
 @x6)
 )
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(70,2-78,3)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(75,71-75,74)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(71,71-71,74)
 (or label_6
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(75,71-75,74)
+;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(71,71-71,74)
 (BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
 (BoxString (FString_const 1))
 (FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
@@ -57998,23 +59610,23 @@ FStar.Pointer.Base.typ)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
 (forall ((@x7 Term))
  (! (implies (and (HasType @x7
 Prims.string)
 
-;; def=Prims.fst(504,16-504,18); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(504,16-504,18); use=Test.fst(70,2-78,3)
 (= (BoxString (FString_const 1))
 @x7)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
 (forall ((@x8 Term))
  (! (implies (and (HasType @x8
 (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
 Tm_abs_1eb746a198bdf4f241ea433175d8396d))
 
-;; def=Prims.fst(616,11-616,13); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(616,11-616,13); use=Test.fst(70,2-78,3)
 (= (Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
 Tm_abs_1eb746a198bdf4f241ea433175d8396d
 (BoxString (FString_const 1))
@@ -58022,13 +59634,13 @@ Tm_abs_1eb746a198bdf4f241ea433175d8396d
 @x8)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
 (forall ((@x9 Term))
  (! (implies (and (HasType @x9
 (Prims.list (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
 Tm_abs_1eb746a198bdf4f241ea433175d8396d)))
 
-;; def=Prims.fst(616,20-616,22); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(616,20-616,22); use=Test.fst(70,2-78,3)
 (= (Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
 Tm_abs_1eb746a198bdf4f241ea433175d8396d)
 (Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
@@ -58040,13 +59652,13 @@ Tm_abs_1eb746a198bdf4f241ea433175d8396d)))
 @x9)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
 (forall ((@x10 Term))
  (! (implies (and (HasType @x10
 (Prims.list (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
 Tm_abs_1eb746a198bdf4f241ea433175d8396d)))
 
-;; def=Test.fst(65,23-75,84); use=Test.fst(74,2-82,3)
+;; def=Test.fst(62,23-71,84); use=Test.fst(70,2-78,3)
 (= (Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
 Tm_abs_1eb746a198bdf4f241ea433175d8396d)
 (Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
@@ -58064,12 +59676,12 @@ Tm_abs_1eb746a198bdf4f241ea433175d8396d))))
 @x10)
 )
 
-;; def=Prims.fst(441,36-441,97); use=Test.fst(75,36-75,53)
+;; def=Prims.fst(441,36-441,97); use=Test.fst(71,36-71,53)
 (forall ((@x11 Term))
  (! (implies (and (HasType @x11
 (FStar.Pointer.Base.struct_literal (Test.struct Dummy_value)))
 
-;; def=Test.fst(75,6-75,84); use=Test.fst(75,6-75,84)
+;; def=Test.fst(71,6-71,84); use=Test.fst(71,6-71,84)
 (= (Test.mk_struct_literal (Test.struct Dummy_value)
 (Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
 Tm_abs_1eb746a198bdf4f241ea433175d8396d)
@@ -58088,12 +59700,12 @@ Tm_abs_1eb746a198bdf4f241ea433175d8396d)))))
 @x11)
 )
 
-;; def=Prims.fst(441,36-441,97); use=Test.fst(76,41-76,54)
+;; def=Prims.fst(441,36-441,97); use=Test.fst(72,31-72,44)
 (forall ((@x12 Term))
  (! (implies (and (HasType @x12
-(FStar.Pointer.Base.type_of_typ (Test.struct_t Dummy_value)))
+(FStar.Pointer.Base.struct (Test.struct Dummy_value)))
 
-;; def=FStar.Pervasives.Native.fst(33,11-33,12); use=Test.fst(74,2-82,3)
+;; def=Test.fst(72,6-72,53); use=Test.fst(72,6-72,53)
 (= (FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
 (Test.mk_struct_literal (Test.struct Dummy_value)
 (Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
@@ -58113,13 +59725,68 @@ Tm_abs_1eb746a198bdf4f241ea433175d8396d))))))
 @x12)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(356,2-356,58); use=Test.fst(70,2-78,3)
 (forall ((@x13 Term))
  (! (implies (and (HasType @x13
-(FStar.Pervasives.Native.option (FStar.Pointer.Base.type_of_typ (Test.struct_t Dummy_value))))
+FStar.Pointer.Base.array_length_t)
 
-;; def=legacy/FStar.Pointer.Base.fsti(2075,3-2075,4); use=Test.fst(74,2-82,3)
-(= (FStar.Pervasives.Native.Some (FStar.Pointer.Base.type_of_typ (Test.struct_t Dummy_value))
+;; def=Prims.fst(356,26-356,41); use=Test.fst(70,2-78,3)
+(= @x13
+(FStar.UInt32.uint_to_t (BoxInt 2)))
+)
+
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
+(forall ((@x14 Term))
+ (! (implies (and (HasType @x14
+FStar.Pointer.Base.typ)
+
+;; def=legacy/FStar.Pointer.Base.fsti(2074,3-2074,8); use=Test.fst(70,2-78,3)
+(= (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))
+@x14)
+)
+
+;; def=Prims.fst(356,2-356,58); use=Test.fst(70,2-78,3)
+(forall ((@x15 Term))
+ (! (implies (and (HasType @x15
+FStar.Pointer.Base.array_length_t)
+
+;; def=Prims.fst(356,26-356,41); use=Test.fst(70,2-78,3)
+(= @x15
+(FStar.UInt32.uint_to_t (BoxInt 2)))
+)
+
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
+(forall ((@x16 Term))
+ (! (implies (and (HasType @x16
+FStar.Pointer.Base.typ)
+
+;; def=legacy/FStar.Pointer.Base.fsti(247,3-247,4); use=Test.fst(70,2-78,3)
+(= (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))
+@x16)
+)
+
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
+(forall ((@x17 Term))
+ (! (implies (and (HasType @x17
+Tm_type)
+
+;; def=FStar.Pervasives.Native.fst(31,13-31,14); use=Test.fst(70,2-78,3)
+(= (FStar.Pointer.Base.type_of_typ (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value)))
+@x17)
+)
+
+;; def=Prims.fst(459,77-459,89); use=Test.fst(70,2-78,3)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(216,63-216,94); use=Test.fst(73,77-73,94)
+(or label_7
+
+;; def=legacy/FStar.Pointer.Base.fsti(216,63-216,94); use=Test.fst(73,77-73,94)
+(= (FStar.Seq.Base.length (FStar.Pointer.Base.type_of_typ (Test.struct_t Dummy_value))
+(FStar.Seq.Base.create (FStar.Pointer.Base.type_of_typ (Test.struct_t Dummy_value))
+(BoxInt 2)
 (FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
 (Test.mk_struct_literal (Test.struct Dummy_value)
 (Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
@@ -58135,72 +59802,139 @@ Tm_abs_1eb746a198bdf4f241ea433175d8396d
 (BoxString (FString_const 1))
 (BoxBool true))
 (Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)))))))
-@x13)
+Tm_abs_1eb746a198bdf4f241ea433175d8396d))))))))
+(BoxInt 2))
 )
 
-;; def=FStar.HyperStack.ST.fsti(247,43-247,156); use=Test.fst(76,22-76,29)
-(and 
-;; def=FStar.HyperStack.ST.fsti(247,52-247,79); use=Test.fst(76,22-76,29)
-(or label_7
 
-;; def=FStar.HyperStack.ST.fsti(247,52-247,79); use=Test.fst(76,22-76,29)
+;; def=Prims.fst(356,2-356,58); use=Test.fst(70,2-78,3)
+(forall ((@x18 Term))
+ (! (implies (and (HasType @x18
+(FStar.Pointer.Base.type_of_typ (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))))
+
+;; def=Prims.fst(356,26-356,41); use=Test.fst(70,2-78,3)
+(= @x18
+(FStar.Seq.Base.create (FStar.Pointer.Base.type_of_typ (Test.struct_t Dummy_value))
+(BoxInt 2)
+(FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
+(Test.mk_struct_literal (Test.struct Dummy_value)
+(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d)
+(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d
+(BoxString (FString_const 0))
+(BoxInt 18))
+(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d)
+(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d
+(BoxString (FString_const 1))
+(BoxBool true))
+(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d))))))))
+)
+
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
+(forall ((@x19 Term))
+ (! (implies (and (HasType @x19
+(FStar.Pervasives.Native.option (FStar.Pointer.Base.type_of_typ (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value)))))
+
+;; def=legacy/FStar.Pointer.Base.fsti(2075,3-2075,4); use=Test.fst(70,2-78,3)
+(= (FStar.Pervasives.Native.Some (FStar.Pointer.Base.type_of_typ (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value)))
+(FStar.Seq.Base.create (FStar.Pointer.Base.type_of_typ (Test.struct_t Dummy_value))
+(BoxInt 2)
+(FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
+(Test.mk_struct_literal (Test.struct Dummy_value)
+(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d)
+(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d
+(BoxString (FString_const 0))
+(BoxInt 18))
+(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d)
+(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d
+(BoxString (FString_const 1))
+(BoxBool true))
+(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d))))))))
+@x19)
+)
+
+;; def=FStar.HyperStack.ST.fsti(247,43-247,156); use=Test.fst(73,39-73,46)
+(and 
+;; def=FStar.HyperStack.ST.fsti(247,52-247,79); use=Test.fst(73,39-73,46)
+(or label_8
+
+;; def=FStar.HyperStack.ST.fsti(247,52-247,79); use=Test.fst(73,39-73,46)
 (BoxBool_proj_0 (FStar.Monotonic.HyperStack.is_stack_region (FStar.Monotonic.HyperStack.get_tip @x4)))
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(247,83-247,156); use=Test.fst(76,22-76,29)
-(forall ((@x14 Term) (@x15 Term))
- (! (implies (and (HasType @x14
-(FStar.Pointer.Base.pointer (Test.struct_t Dummy_value)))
-(HasType @x15
+;; def=FStar.HyperStack.ST.fsti(247,83-247,156); use=Test.fst(73,39-73,46)
+(forall ((@x20 Term) (@x21 Term))
+ (! (implies (and (HasType @x20
+(FStar.Pointer.Base.pointer (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))))
+(HasType @x21
 Tm_refine_f63e058f9631c11993f3ef0430296051)
 
-;; def=legacy/FStar.Pointer.Base.fsti(2079,7-2079,21); use=Test.fst(76,22-76,29)
+;; def=legacy/FStar.Pointer.Base.fsti(2079,7-2079,21); use=Test.fst(73,39-73,46)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2079,7-2079,21); use=Test.fst(76,22-76,29)
-(FStar.Pointer.Base.unused_in (Test.struct_t Dummy_value)
-@x14
+;; def=legacy/FStar.Pointer.Base.fsti(2079,7-2079,21); use=Test.fst(73,39-73,46)
+(FStar.Pointer.Base.unused_in (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))
+@x20
 @x4)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2080,8-2080,17); use=Test.fst(76,22-76,29)
+;; def=legacy/FStar.Pointer.Base.fsti(2080,8-2080,17); use=Test.fst(73,39-73,46)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2080,8-2080,17); use=Test.fst(76,22-76,29)
-(FStar.Pointer.Base.live (Test.struct_t Dummy_value)
-@x15
-@x14)
+;; def=legacy/FStar.Pointer.Base.fsti(2080,8-2080,17); use=Test.fst(73,39-73,46)
+(FStar.Pointer.Base.live (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))
+@x21
+@x20)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2081,8-2081,33); use=Test.fst(76,22-76,29)
-(= (FStar.Pointer.Base.frameOf (Test.struct_t Dummy_value)
-@x14)
+;; def=legacy/FStar.Pointer.Base.fsti(2081,8-2081,33); use=Test.fst(73,39-73,46)
+(= (FStar.Pointer.Base.frameOf (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))
+@x20)
 (FStar.Monotonic.HyperStack.get_tip @x4))
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2082,8-2082,24); use=Test.fst(76,22-76,29)
+;; def=legacy/FStar.Pointer.Base.fsti(2082,8-2082,24); use=Test.fst(73,39-73,46)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2082,8-2082,24); use=Test.fst(76,22-76,29)
+;; def=legacy/FStar.Pointer.Base.fsti(2082,8-2082,24); use=Test.fst(73,39-73,46)
 (FStar.Pointer.Base.modifies_0 @x4
-@x15)
+@x21)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2085,2-2085,15); use=Test.fst(76,22-76,29)
+;; def=legacy/FStar.Pointer.Base.fsti(2085,2-2085,15); use=Test.fst(73,39-73,46)
 (Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2085,2-2085,15); use=Test.fst(76,22-76,29)
-(FStar.Pointer.Base.readable (Test.struct_t Dummy_value)
-@x15
-@x14)
+;; def=legacy/FStar.Pointer.Base.fsti(2085,2-2085,15); use=Test.fst(73,39-73,46)
+(FStar.Pointer.Base.readable (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))
+@x21
+@x20)
 )
 
 
-;; def=legacy/FStar.Pointer.Base.fsti(2086,2-2086,18); use=Test.fst(76,22-76,29)
-(= (FStar.Pointer.Base.gread (Test.struct_t Dummy_value)
-@x15
-@x14)
+;; def=legacy/FStar.Pointer.Base.fsti(2086,2-2086,18); use=Test.fst(73,39-73,46)
+(= (FStar.Pointer.Base.gread (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))
+@x21
+@x20)
+(FStar.Seq.Base.create (FStar.Pointer.Base.type_of_typ (Test.struct_t Dummy_value))
+(BoxInt 2)
 (FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
 (Test.mk_struct_literal (Test.struct Dummy_value)
 (Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
@@ -58216,822 +59950,529 @@ Tm_abs_1eb746a198bdf4f241ea433175d8396d
 (BoxString (FString_const 1))
 (BoxBool true))
 (Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)))))))
+Tm_abs_1eb746a198bdf4f241ea433175d8396d))))))))
 
 
-;; def=FStar.HyperStack.ST.fsti(247,122-247,143); use=Test.fst(76,22-76,29)
+;; def=FStar.HyperStack.ST.fsti(247,122-247,143); use=Test.fst(73,39-73,46)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(247,122-247,143); use=Test.fst(76,22-76,29)
+;; def=FStar.HyperStack.ST.fsti(247,122-247,143); use=Test.fst(73,39-73,46)
 (FStar.HyperStack.ST.inline_stack_inv @x4
-@x15)
+@x21)
 )
 )
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(356,2-356,58); use=Test.fst(70,2-78,3)
+(forall ((@x22 Term))
+ (! (implies (and (HasType @x22
+FStar.Pointer.Base.array_length_t)
+
+;; def=Prims.fst(356,26-356,41); use=Test.fst(70,2-78,3)
+(= @x22
+(FStar.UInt32.uint_to_t (BoxInt 2)))
+)
+
+;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(73,12-73,35)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(77,74-77,80)
-(or label_8
-
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(77,74-77,80)
-(BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
-(BoxString (FString_const 3))
-(FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-Prims.string
-(ApplyTT (ApplyTT FStar.Pervasives.Native.fst@tok
-Prims.string)
-FStar.Pointer.Base.typ)
-(FStar.Pointer.Base.__proj__Mkstruct_typ__item__fields (Test.more_struct Dummy_value)))))
-)
-
-
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x16 Term))
- (! (implies (and (HasType @x16
-Prims.string)
-
-;; def=Prims.fst(504,16-504,18); use=Test.fst(74,2-82,3)
-(= (BoxString (FString_const 3))
-@x16)
-)
-
-;; def=Prims.fst(459,77-459,89); use=Test.fst(74,2-82,3)
-(and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(77,107-77,110)
+;; def=legacy/FStar.Pointer.Base.fsti(980,22-980,30); use=Test.fst(73,12-73,35)
 (or label_9
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(77,107-77,110)
-(BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
-(BoxString (FString_const 0))
-(FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-Prims.string
-(ApplyTT (ApplyTT FStar.Pervasives.Native.fst@tok
-Prims.string)
-FStar.Pointer.Base.typ)
-(FStar.Pointer.Base.__proj__Mkstruct_typ__item__fields (Test.struct Dummy_value)))))
+;; def=legacy/FStar.Pointer.Base.fsti(980,22-980,30); use=Test.fst(73,12-73,35)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(980,22-980,30); use=Test.fst(73,12-73,35)
+(FStar.Pointer.Base.live (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))
+@x21
+@x20)
+)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x17 Term))
- (! (implies (and (HasType @x17
-Prims.string)
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(73,12-73,35)
+(forall ((@x23 Term) (@x24 Term))
+ (! (implies (and (HasType @x23
+(FStar.Pointer.Base.buffer (Test.struct_t Dummy_value)))
+(HasType @x24
+(Tm_refine_d6d97f5639ae0826ad88392a6b4daa34 @x21
+@x20))
 
-;; def=Prims.fst(504,16-504,18); use=Test.fst(74,2-82,3)
-(= (BoxString (FString_const 0))
-@x17)
-)
-
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x18 Term))
- (! (implies (and (HasType @x18
-(Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d))
-
-;; def=Prims.fst(616,11-616,13); use=Test.fst(74,2-82,3)
-(= (Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 0))
-(BoxInt 1729))
-@x18)
-)
-
-;; def=Prims.fst(459,77-459,89); use=Test.fst(74,2-82,3)
-(and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(77,121-77,124)
-(or label_10
-
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(77,121-77,124)
-(BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
-(BoxString (FString_const 1))
-(FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-Prims.string
-(ApplyTT (ApplyTT FStar.Pervasives.Native.fst@tok
-Prims.string)
-FStar.Pointer.Base.typ)
-(FStar.Pointer.Base.__proj__Mkstruct_typ__item__fields (Test.struct Dummy_value)))))
-)
-
-
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x19 Term))
- (! (implies (and (HasType @x19
-Prims.string)
-
-;; def=Prims.fst(504,16-504,18); use=Test.fst(74,2-82,3)
-(= (BoxString (FString_const 1))
-@x19)
-)
-
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x20 Term))
- (! (implies (and (HasType @x20
-(Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d))
-
-;; def=Prims.fst(616,11-616,13); use=Test.fst(74,2-82,3)
-(= (Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 1))
-(BoxBool false))
+;; def=legacy/FStar.Pointer.Base.fsti(980,22-980,30); use=Test.fst(73,12-73,35)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(980,22-980,30); use=Test.fst(73,12-73,35)
+(FStar.Pointer.Base.live (FStar.Pointer.Base.TArray (FStar.UInt32.uint_to_t (BoxInt 2))
+(Test.struct_t Dummy_value))
+@x21
 @x20)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x21 Term))
- (! (implies (and (HasType @x21
-(Prims.list (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)))
 
-;; def=Prims.fst(616,20-616,22); use=Test.fst(74,2-82,3)
-(= (Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 1))
-(BoxBool false))
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)))
+;; def=legacy/FStar.Pointer.Base.fsti(981,26-981,33); use=Test.fst(73,12-73,35)
+(= @x24
 @x21)
-)
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x22 Term))
- (! (implies (and (HasType @x22
-(Prims.list (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)))
 
-;; def=legacy/FStar.Pointer.Base.fsti(338,3-338,4); use=Test.fst(74,2-82,3)
-(= (Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 0))
-(BoxInt 1729))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 1))
-(BoxBool false))
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d))))
-@x22)
-)
+;; def=legacy/FStar.Pointer.Base.fsti(981,37-981,68); use=Test.fst(73,12-73,35)
+(= @x23
+(FStar.Pointer.Base.gbuffer_of_array_pointer (Test.struct_t Dummy_value)
+(FStar.UInt32.uint_to_t (BoxInt 2))
+@x20))
 
-;; def=Prims.fst(441,36-441,97); use=Test.fst(77,83-77,96)
-(forall ((@x23 Term))
- (! (implies (and (HasType @x23
-(FStar.Pointer.Base.struct (Test.struct Dummy_value)))
 
-;; def=Prims.fst(504,25-504,27); use=Test.fst(74,2-82,3)
-(= (FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 0))
-(BoxInt 1729))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 1))
-(BoxBool false))
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)))))
-@x23)
-)
-
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x24 Term))
- (! (implies (and (HasType @x24
-(Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797))
-
-;; def=Prims.fst(616,11-616,13); use=Test.fst(74,2-82,3)
-(= (Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 3))
-(FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 0))
-(BoxInt 1729))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 1))
-(BoxBool false))
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d))))))
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(73,12-73,35)
+(Valid 
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(73,12-73,35)
+(FStar.HyperStack.ST.equal_domains @x21
 @x24)
 )
+)
 
-;; def=Prims.fst(459,77-459,89); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(70,2-78,3)
 (and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(77,139-77,149)
-(or label_11
+;; def=FStar.UInt.fsti(54,28-54,36); use=Test.fst(74,65-74,66)
+(or label_10
 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(77,139-77,149)
-(BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
-(BoxString (FString_const 4))
-(FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-Prims.string
-(ApplyTT (ApplyTT FStar.Pervasives.Native.fst@tok
-Prims.string)
-FStar.Pointer.Base.typ)
-(FStar.Pointer.Base.__proj__Mkstruct_typ__item__fields (Test.more_struct Dummy_value)))))
+;; def=FStar.UInt.fsti(54,28-54,36); use=Test.fst(74,65-74,66)
+(Valid 
+;; def=FStar.UInt.fsti(54,28-54,36); use=Test.fst(74,65-74,66)
+(FStar.UInt.size (BoxInt 0)
+(BoxInt 32))
+)
 )
 
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
 (forall ((@x25 Term))
  (! (implies (and (HasType @x25
-Prims.string)
+Prims.int)
 
-;; def=Prims.fst(504,16-504,18); use=Test.fst(74,2-82,3)
-(= (BoxString (FString_const 4))
+;; def=FStar.UInt32.fsti(58,15-58,16); use=Test.fst(70,2-78,3)
+(= (BoxInt 0)
 @x25)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(441,36-441,97); use=Test.fst(74,55-74,64)
 (forall ((@x26 Term))
  (! (implies (and (HasType @x26
-(Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797))
+(FStar.UInt32.t Dummy_value))
 
-;; def=Prims.fst(616,11-616,13); use=Test.fst(74,2-82,3)
-(= (Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 4))
-Tm_unit)
+;; def=FStar.UInt32.fsti(60,21-60,28); use=Test.fst(74,55-74,64)
+(= (FStar.UInt32.v @x26)
+(BoxInt 0))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1290,3-1290,4); use=Test.fst(70,2-78,3)
+(= (FStar.UInt32.uint_to_t (BoxInt 0))
 @x26)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x27 Term))
- (! (implies (and (HasType @x27
-(Prims.list (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)))
+;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(74,22-74,44)
+(and 
+;; def=legacy/FStar.Pointer.Base.fsti(1292,22-1292,61); use=Test.fst(74,22-74,44)
+(or label_11
 
-;; def=Prims.fst(616,20-616,22); use=Test.fst(74,2-82,3)
-(= (Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 4))
-Tm_unit)
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)))
-@x27)
+;; def=legacy/FStar.Pointer.Base.fsti(1292,22-1292,61); use=Test.fst(74,22-74,44)
+(< (BoxInt_proj_0 (BoxInt 0))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length (Test.struct_t Dummy_value)
+@x23))))
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x28 Term))
- (! (implies (and (HasType @x28
-(Prims.list (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)))
 
-;; def=legacy/FStar.Pointer.Base.fsti(338,3-338,4); use=Test.fst(74,2-82,3)
-(= (Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 3))
-(FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 0))
-(BoxInt 1729))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 1))
-(BoxBool false))
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d))))))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 4))
-Tm_unit)
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797))))
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(74,22-74,44)
+(or label_12
+
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(74,22-74,44)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(74,22-74,44)
+(FStar.Pointer.Base.buffer_live (Test.struct_t Dummy_value)
+@x24
+@x23)
+)
+)
+
+
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(74,22-74,44)
+(forall ((@x27 Term) (@x28 Term))
+ (! (implies (and (HasType @x27
+(FStar.Pointer.Base.pointer (Test.struct_t Dummy_value)))
+(HasType @x28
+(Tm_refine_1161a389224bc463940bfd9cc661f94c @x23
+@x24))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1292,22-1292,61); use=Test.fst(74,22-74,44)
+(< (BoxInt_proj_0 (BoxInt 0))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length (Test.struct_t Dummy_value)
+@x23))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(74,22-74,44)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(74,22-74,44)
+(FStar.Pointer.Base.buffer_live (Test.struct_t Dummy_value)
+@x24
+@x23)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1293,26-1293,65); use=Test.fst(74,22-74,44)
+(< (BoxInt_proj_0 (BoxInt 0))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length (Test.struct_t Dummy_value)
+@x23))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1293,69-1293,76); use=Test.fst(74,22-74,44)
+(= @x28
+@x24)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1293,80-1293,112); use=Test.fst(74,22-74,44)
+(= @x27
+(FStar.Pointer.Base.gpointer_of_buffer_cell (Test.struct_t Dummy_value)
+@x23
+(FStar.UInt32.uint_to_t (BoxInt 0))))
+
+
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(74,22-74,44)
+(Valid 
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(74,22-74,44)
+(FStar.HyperStack.ST.equal_domains @x24
 @x28)
 )
+)
 
-;; def=Prims.fst(441,36-441,97); use=Test.fst(77,45-77,58)
+;; def=Prims.fst(459,77-459,89); use=Test.fst(70,2-78,3)
+(and 
+;; def=FStar.UInt.fsti(54,28-54,36); use=Test.fst(75,63-75,64)
+(or label_13
+
+;; def=FStar.UInt.fsti(54,28-54,36); use=Test.fst(75,63-75,64)
+(Valid 
+;; def=FStar.UInt.fsti(54,28-54,36); use=Test.fst(75,63-75,64)
+(FStar.UInt.size (BoxInt 1)
+(BoxInt 32))
+)
+)
+
+
+;; def=Prims.fst(451,66-451,102); use=Test.fst(70,2-78,3)
 (forall ((@x29 Term))
  (! (implies (and (HasType @x29
-(FStar.Pointer.Base.struct (Test.more_struct Dummy_value)))
+Prims.int)
 
-;; def=FStar.Pervasives.Native.fst(33,11-33,12); use=Test.fst(74,2-82,3)
-(= (FStar.Pointer.Base.struct_create (Test.more_struct Dummy_value)
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 3))
-(FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 0))
-(BoxInt 1729))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 1))
-(BoxBool false))
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d))))))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 4))
-Tm_unit)
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)))))
+;; def=FStar.UInt32.fsti(58,15-58,16); use=Test.fst(70,2-78,3)
+(= (BoxInt 1)
 @x29)
 )
 
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
+;; def=Prims.fst(441,36-441,97); use=Test.fst(75,53-75,62)
 (forall ((@x30 Term))
  (! (implies (and (HasType @x30
-(FStar.Pervasives.Native.option (FStar.Pointer.Base.type_of_typ (Test.more_struct_t Dummy_value))))
+(FStar.UInt32.t Dummy_value))
 
-;; def=legacy/FStar.Pointer.Base.fsti(2075,3-2075,4); use=Test.fst(74,2-82,3)
-(= (FStar.Pervasives.Native.Some (FStar.Pointer.Base.type_of_typ (Test.more_struct_t Dummy_value))
-(FStar.Pointer.Base.struct_create (Test.more_struct Dummy_value)
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 3))
-(FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 0))
-(BoxInt 1729))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 1))
-(BoxBool false))
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d))))))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 4))
-Tm_unit)
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797))))))
+;; def=FStar.UInt32.fsti(60,21-60,28); use=Test.fst(75,53-75,62)
+(= (FStar.UInt32.v @x30)
+(BoxInt 1))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1290,3-1290,4); use=Test.fst(70,2-78,3)
+(= (FStar.UInt32.uint_to_t (BoxInt 1))
 @x30)
 )
 
-;; def=FStar.HyperStack.ST.fsti(247,43-247,156); use=Test.fst(77,26-77,33)
+;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(75,20-75,42)
 (and 
-;; def=FStar.HyperStack.ST.fsti(247,52-247,79); use=Test.fst(77,26-77,33)
-(or label_12
-
-;; def=FStar.HyperStack.ST.fsti(247,52-247,79); use=Test.fst(77,26-77,33)
-(BoxBool_proj_0 (FStar.Monotonic.HyperStack.is_stack_region (FStar.Monotonic.HyperStack.get_tip @x15)))
-)
-
-
-;; def=FStar.HyperStack.ST.fsti(247,83-247,156); use=Test.fst(77,26-77,33)
-(forall ((@x31 Term) (@x32 Term))
- (! (implies (and (HasType @x31
-(FStar.Pointer.Base.pointer (Test.more_struct_t Dummy_value)))
-(HasType @x32
-Tm_refine_f63e058f9631c11993f3ef0430296051)
-
-;; def=legacy/FStar.Pointer.Base.fsti(2079,7-2079,21); use=Test.fst(77,26-77,33)
-(Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2079,7-2079,21); use=Test.fst(77,26-77,33)
-(FStar.Pointer.Base.unused_in (Test.more_struct_t Dummy_value)
-@x31
-@x15)
-)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(2080,8-2080,17); use=Test.fst(77,26-77,33)
-(Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2080,8-2080,17); use=Test.fst(77,26-77,33)
-(FStar.Pointer.Base.live (Test.more_struct_t Dummy_value)
-@x32
-@x31)
-)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(2081,8-2081,33); use=Test.fst(77,26-77,33)
-(= (FStar.Pointer.Base.frameOf (Test.more_struct_t Dummy_value)
-@x31)
-(FStar.Monotonic.HyperStack.get_tip @x15))
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(2082,8-2082,24); use=Test.fst(77,26-77,33)
-(Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2082,8-2082,24); use=Test.fst(77,26-77,33)
-(FStar.Pointer.Base.modifies_0 @x15
-@x32)
-)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(2085,2-2085,15); use=Test.fst(77,26-77,33)
-(Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2085,2-2085,15); use=Test.fst(77,26-77,33)
-(FStar.Pointer.Base.readable (Test.more_struct_t Dummy_value)
-@x32
-@x31)
-)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(2086,2-2086,18); use=Test.fst(77,26-77,33)
-(= (FStar.Pointer.Base.gread (Test.more_struct_t Dummy_value)
-@x32
-@x31)
-(FStar.Pointer.Base.struct_create (Test.more_struct Dummy_value)
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 3))
-(FStar.Pointer.Base.struct_create (Test.struct Dummy_value)
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 0))
-(BoxInt 1729))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d
-(BoxString (FString_const 1))
-(BoxBool false))
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.struct Dummy_value))
-Tm_abs_1eb746a198bdf4f241ea433175d8396d))))))
-(Prims.Cons (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797)
-(Prims.Mkdtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797
-(BoxString (FString_const 4))
-Tm_unit)
-(Prims.Nil (Prims.dtuple2 (FStar.Pointer.Base.struct_field (Test.more_struct Dummy_value))
-Tm_abs_9d870b54ad90e828fbfe606464930797))))))
-
-
-;; def=FStar.HyperStack.ST.fsti(247,122-247,143); use=Test.fst(77,26-77,33)
-(Valid 
-;; def=FStar.HyperStack.ST.fsti(247,122-247,143); use=Test.fst(77,26-77,33)
-(FStar.HyperStack.ST.inline_stack_inv @x15
-@x32)
-)
-)
-
-;; def=Prims.fst(459,77-459,89); use=Test.fst(74,2-82,3)
-(and 
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(79,31-79,37)
-(or label_13
-
-;; def=legacy/FStar.Pointer.Base.fsti(84,15-84,50); use=Test.fst(79,31-79,37)
-(BoxBool_proj_0 (FStar.List.Tot.Base.mem Prims.string
-(BoxString (FString_const 3))
-(FStar.List.Tot.Base.map (FStar.Pervasives.Native.tuple2 Prims.string
-FStar.Pointer.Base.typ)
-Prims.string
-(ApplyTT (ApplyTT FStar.Pervasives.Native.fst@tok
-Prims.string)
-FStar.Pointer.Base.typ)
-(FStar.Pointer.Base.__proj__Mkstruct_typ__item__fields (Test.more_struct Dummy_value)))))
-)
-
-
-;; def=Prims.fst(451,66-451,102); use=Test.fst(74,2-82,3)
-(forall ((@x33 Term))
- (! (implies (and (HasType @x33
-Prims.string)
-
-;; def=legacy/FStar.Pointer.Base.fsti(2112,2-2112,4); use=Test.fst(74,2-82,3)
-(= (BoxString (FString_const 3))
-@x33)
-)
-
-;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(79,20-79,25)
-(and 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(79,20-79,25)
+;; def=legacy/FStar.Pointer.Base.fsti(1292,22-1292,61); use=Test.fst(75,20-75,42)
 (or label_14
 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(79,20-79,25)
-(Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(79,20-79,25)
-(FStar.Pointer.Base.live (FStar.Pointer.Base.TStruct (Test.more_struct Dummy_value))
-@x32
-@x31)
-)
+;; def=legacy/FStar.Pointer.Base.fsti(1292,22-1292,61); use=Test.fst(75,20-75,42)
+(< (BoxInt_proj_0 (BoxInt 1))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length (Test.struct_t Dummy_value)
+@x23))))
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(79,20-79,25)
-(forall ((@x34 Term) (@x35 Term))
- (! (implies (and (HasType @x34
-(FStar.Pointer.Base.pointer (FStar.Pointer.Base.typ_of_struct_field (Test.more_struct Dummy_value)
-(BoxString (FString_const 3)))))
-(HasType @x35
-(Tm_refine_83d1bf25f81d108af096d9e2128c8350 @x32
-@x31))
-
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(79,20-79,25)
-(Valid 
-;; def=legacy/FStar.Pointer.Base.fsti(2114,22-2114,30); use=Test.fst(79,20-79,25)
-(FStar.Pointer.Base.live (FStar.Pointer.Base.TStruct (Test.more_struct Dummy_value))
-@x32
-@x31)
-)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(2115,28-2115,36); use=Test.fst(79,20-79,25)
-(= @x32
-@x35)
-
-
-;; def=legacy/FStar.Pointer.Base.fsti(2115,40-2115,57); use=Test.fst(79,20-79,25)
-(= @x34
-(FStar.Pointer.Base.gfield (Test.more_struct Dummy_value)
-@x31
-(BoxString (FString_const 3))))
-
-
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(79,20-79,25)
-(Valid 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(79,20-79,25)
-(FStar.HyperStack.ST.equal_domains @x32
-@x35)
-)
-)
-
-;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(80,10-80,16)
-(and 
-;; def=Test.fst(36,22-36,40); use=Test.fst(80,10-80,16)
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(75,20-75,42)
 (or label_15
 
-;; def=Test.fst(36,22-36,40); use=Test.fst(80,10-80,16)
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(75,20-75,42)
 (Valid 
-;; def=Test.fst(36,22-36,40); use=Test.fst(80,10-80,16)
-(FStar.Pointer.Base.readable (Test.struct_t Dummy_value)
-@x35
-@x14)
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(75,20-75,42)
+(FStar.Pointer.Base.buffer_live (Test.struct_t Dummy_value)
+@x28
+@x23)
 )
 )
 
 
-;; def=Test.fst(36,44-36,56); use=Test.fst(80,10-80,16)
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(75,20-75,42)
+(forall ((@x31 Term) (@x32 Term))
+ (! (implies (and (HasType @x31
+(FStar.Pointer.Base.pointer (Test.struct_t Dummy_value)))
+(HasType @x32
+(Tm_refine_5e0634fd635cc520f6f1b80e2520bad2 @x23
+@x28))
+
+;; def=legacy/FStar.Pointer.Base.fsti(1292,22-1292,61); use=Test.fst(75,20-75,42)
+(< (BoxInt_proj_0 (BoxInt 1))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length (Test.struct_t Dummy_value)
+@x23))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(75,20-75,42)
+(Valid 
+;; def=legacy/FStar.Pointer.Base.fsti(1292,65-1292,80); use=Test.fst(75,20-75,42)
+(FStar.Pointer.Base.buffer_live (Test.struct_t Dummy_value)
+@x28
+@x23)
+)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1293,26-1293,65); use=Test.fst(75,20-75,42)
+(< (BoxInt_proj_0 (BoxInt 1))
+(BoxInt_proj_0 (FStar.UInt32.v (FStar.Pointer.Base.buffer_length (Test.struct_t Dummy_value)
+@x23))))
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1293,69-1293,76); use=Test.fst(75,20-75,42)
+(= @x32
+@x28)
+
+
+;; def=legacy/FStar.Pointer.Base.fsti(1293,80-1293,112); use=Test.fst(75,20-75,42)
+(= @x31
+(FStar.Pointer.Base.gpointer_of_buffer_cell (Test.struct_t Dummy_value)
+@x23
+(FStar.UInt32.uint_to_t (BoxInt 1))))
+
+
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(75,20-75,42)
+(Valid 
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(75,20-75,42)
+(FStar.HyperStack.ST.equal_domains @x28
+@x32)
+)
+)
+
+;; def=FStar.HyperStack.ST.fsti(203,43-203,122); use=Test.fst(76,10-76,16)
+(and 
+;; def=Test.fst(40,22-40,40); use=Test.fst(76,10-76,16)
 (or label_16
 
-;; def=Test.fst(36,44-36,56); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,22-40,40); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(36,44-36,56); use=Test.fst(80,10-80,16)
-(FStar.Pointer.Base.live (Test.struct_t Dummy_value)
-@x35
-@x34)
+;; def=Test.fst(40,22-40,40); use=Test.fst(76,10-76,16)
+(FStar.Pointer.Base.readable (Test.struct_t Dummy_value)
+@x32
+@x27)
 )
 )
 
 
-;; def=Test.fst(36,60-36,116); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,44-40,56); use=Test.fst(76,10-76,16)
 (or label_17
 
-;; def=Test.fst(36,60-36,116); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,44-40,56); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(36,60-36,116); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,44-40,56); use=Test.fst(76,10-76,16)
+(FStar.Pointer.Base.live (Test.struct_t Dummy_value)
+@x32
+@x31)
+)
+)
+
+
+;; def=Test.fst(40,60-40,116); use=Test.fst(76,10-76,16)
+(or label_18
+
+;; def=Test.fst(40,60-40,116); use=Test.fst(76,10-76,16)
+(Valid 
+;; def=Test.fst(40,60-40,116); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
-@x14)
+@x27)
 (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
-@x34))
+@x31))
 )
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(80,10-80,16)
-(forall ((@x36 Term) (@x37 Term))
- (! (implies (and (HasType @x36
+;; def=FStar.HyperStack.ST.fsti(203,52-203,122); use=Test.fst(76,10-76,16)
+(forall ((@x33 Term) (@x34 Term))
+ (! (implies (and (HasType @x33
 Prims.int)
-(HasType @x37
-(Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90 @x35
-@x14
-@x34))
+(HasType @x34
+(Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90 @x32
+@x27
+@x31))
 
-;; def=Test.fst(36,22-36,40); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,22-40,40); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(36,22-36,40); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,22-40,40); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.readable (Test.struct_t Dummy_value)
-@x35
-@x14)
+@x32
+@x27)
 )
 
 
-;; def=Test.fst(36,44-36,56); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,44-40,56); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(36,44-36,56); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,44-40,56); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
-@x35
-@x34)
+@x32
+@x31)
 )
 
 
-;; def=Test.fst(36,60-36,116); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,60-40,116); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(36,60-36,116); use=Test.fst(80,10-80,16)
+;; def=Test.fst(40,60-40,116); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.loc_disjoint (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
-@x14)
+@x27)
 (FStar.Pointer.Base.loc_pointer (Test.struct_t Dummy_value)
-@x34))
+@x31))
 )
 
 
-;; def=Test.fst(38,4-38,18); use=Test.fst(80,10-80,16)
+;; def=Test.fst(42,4-42,18); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(38,4-38,18); use=Test.fst(80,10-80,16)
+;; def=Test.fst(42,4-42,18); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
-@x35
-@x14)
+@x32
+@x27)
 )
 
 
-;; def=Test.fst(38,22-38,34); use=Test.fst(80,10-80,16)
+;; def=Test.fst(42,22-42,34); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(38,22-38,34); use=Test.fst(80,10-80,16)
+;; def=Test.fst(42,22-42,34); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
-@x35
-@x34)
+@x32
+@x31)
 )
 
 
-;; def=Test.fst(39,4-39,19); use=Test.fst(80,10-80,16)
+;; def=Test.fst(43,4-43,19); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(39,4-39,19); use=Test.fst(80,10-80,16)
+;; def=Test.fst(43,4-43,19); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
-@x37
-@x14)
+@x34
+@x27)
 )
 
 
-;; def=Test.fst(39,23-39,36); use=Test.fst(80,10-80,16)
+;; def=Test.fst(43,23-43,36); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(39,23-39,36); use=Test.fst(80,10-80,16)
+;; def=Test.fst(43,23-43,36); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.live (Test.struct_t Dummy_value)
-@x37
-@x34)
+@x34
+@x31)
 )
 
 
-;; def=Test.fst(40,4-40,40); use=Test.fst(80,10-80,16)
+;; def=Test.fst(44,4-44,40); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(40,4-40,40); use=Test.fst(80,10-80,16)
+;; def=Test.fst(44,4-44,40); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.modifies_1 (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
 (FStar.Pointer.Base.gfield (Test.struct Dummy_value)
-@x34
+@x31
 (BoxString (FString_const 0)))
-@x35
-@x37)
+@x32
+@x34)
 )
 
 
-;; def=Test.fst(41,4-41,36); use=Test.fst(80,10-80,16)
+;; def=Test.fst(45,4-45,36); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=Test.fst(41,4-41,36); use=Test.fst(80,10-80,16)
+;; def=Test.fst(45,4-45,36); use=Test.fst(76,10-76,16)
 (FStar.Pointer.Base.readable (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
-@x37
-(FStar.Pointer.Base.gfield (Test.struct Dummy_value)
 @x34
+(FStar.Pointer.Base.gfield (Test.struct Dummy_value)
+@x31
 (BoxString (FString_const 0))))
 )
 
 
-;; def=Test.fst(42,4-42,39); use=Test.fst(80,10-80,16)
+;; def=Test.fst(46,4-46,39); use=Test.fst(76,10-76,16)
 (= (FStar.Pointer.Base.gread (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
-@x35
+@x32
 (FStar.Pointer.Base.gfield (Test.struct Dummy_value)
-@x14
+@x27
 (BoxString (FString_const 0))))
-@x36)
+@x33)
 
 
-;; def=Test.fst(43,4-43,42); use=Test.fst(80,10-80,16)
+;; def=Test.fst(47,4-47,42); use=Test.fst(76,10-76,16)
 (= (FStar.Pointer.Base.gread (FStar.Pointer.Base.typ_of_struct_field (Test.struct Dummy_value)
 (BoxString (FString_const 0)))
-@x37
-(FStar.Pointer.Base.gfield (Test.struct Dummy_value)
 @x34
+(FStar.Pointer.Base.gfield (Test.struct Dummy_value)
+@x31
 (BoxString (FString_const 0))))
-(Prims.op_Addition @x36
+(Prims.op_Addition @x33
 (BoxInt 1)))
 
 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(80,10-80,16)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(76,10-76,16)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(80,10-80,16)
-(FStar.HyperStack.ST.equal_domains @x35
-@x37)
+;; def=FStar.HyperStack.ST.fsti(203,91-203,109); use=Test.fst(76,10-76,16)
+(FStar.HyperStack.ST.equal_domains @x32
+@x34)
 )
 )
 
-;; def=FStar.HyperStack.ST.fsti(98,43-98,98); use=Test.fst(81,6-81,15)
+;; def=FStar.HyperStack.ST.fsti(98,43-98,98); use=Test.fst(77,6-77,15)
 (and 
-;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(81,6-81,15)
-(or label_18
+;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(77,6-77,15)
+(or label_19
 
-;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(81,6-81,15)
+;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(77,6-77,15)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(81,6-81,15)
-(FStar.Monotonic.HyperStack.poppable @x37)
+;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(77,6-77,15)
+(FStar.Monotonic.HyperStack.poppable @x34)
 )
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(98,52-98,98); use=Test.fst(81,6-81,15)
-(forall ((@x38 Term) (@x39 Term))
- (! (implies (and (HasType @x38
+;; def=FStar.HyperStack.ST.fsti(98,52-98,98); use=Test.fst(77,6-77,15)
+(forall ((@x35 Term) (@x36 Term))
+ (! (implies (and (HasType @x35
 Prims.unit)
-(HasType @x39
-(Tm_refine_156c49afb7e1e070fbb2e47dc0e3d4b2 @x37))
+(HasType @x36
+(Tm_refine_156c49afb7e1e070fbb2e47dc0e3d4b2 @x34))
 
-;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(81,6-81,15)
+;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(77,6-77,15)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(81,6-81,15)
-(FStar.Monotonic.HyperStack.poppable @x37)
+;; def=FStar.HyperStack.ST.fsti(321,35-321,45); use=Test.fst(77,6-77,15)
+(FStar.Monotonic.HyperStack.poppable @x34)
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(322,52-322,63); use=Test.fst(81,6-81,15)
+;; def=FStar.HyperStack.ST.fsti(322,52-322,63); use=Test.fst(77,6-77,15)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(322,52-322,63); use=Test.fst(81,6-81,15)
-(FStar.Monotonic.HyperStack.poppable @x37)
+;; def=FStar.HyperStack.ST.fsti(322,52-322,63); use=Test.fst(77,6-77,15)
+(FStar.Monotonic.HyperStack.poppable @x34)
 )
 
 
-;; def=FStar.HyperStack.ST.fsti(322,67-322,79); use=Test.fst(81,6-81,15)
-(= @x39
-(FStar.Monotonic.HyperStack.pop @x37))
+;; def=FStar.HyperStack.ST.fsti(322,67-322,79); use=Test.fst(77,6-77,15)
+(= @x36
+(FStar.Monotonic.HyperStack.pop @x34))
 
 
-;; def=FStar.HyperStack.ST.fsti(322,83-322,95); use=Test.fst(81,6-81,15)
+;; def=FStar.HyperStack.ST.fsti(322,83-322,95); use=Test.fst(77,6-77,15)
 (Valid 
-;; def=FStar.HyperStack.ST.fsti(322,83-322,95); use=Test.fst(81,6-81,15)
-(FStar.Monotonic.HyperStack.popped @x37
-@x39)
-)
-)
-
-;; def=FStar.Pervasives.fsti(463,24-463,34); use=Test.fst(74,2-82,3)
-(Valid 
-;; def=FStar.Pervasives.fsti(463,24-463,34); use=Test.fst(74,2-82,3)
-(ApplyTT (ApplyTT @x1
+;; def=FStar.HyperStack.ST.fsti(322,83-322,95); use=Test.fst(77,6-77,15)
+(FStar.Monotonic.HyperStack.popped @x34
 @x36)
-@x39)
 )
 )
- 
-;;no pats
-:qid @query.33))
-)
-)
- 
-;;no pats
-:qid @query.32))
-)
-)
- 
-;;no pats
-:qid @query.31))
-)
-)
- 
-;;no pats
-:qid @query.30))
+
+;; def=FStar.Pervasives.fsti(463,24-463,34); use=Test.fst(70,2-78,3)
+(Valid 
+;; def=FStar.Pervasives.fsti(463,24-463,34); use=Test.fst(70,2-78,3)
+(ApplyTT (ApplyTT @x1
+@x33)
+@x36)
 )
 )
  
@@ -59043,9 +60484,11 @@ Prims.unit)
 ;;no pats
 :qid @query.28))
 )
+)
  
 ;;no pats
 :qid @query.27))
+)
 )
  
 ;;no pats
@@ -59055,22 +60498,25 @@ Prims.unit)
 ;;no pats
 :qid @query.25))
 )
+)
  
 ;;no pats
 :qid @query.24))
+)
 )
  
 ;;no pats
 :qid @query.23))
 )
-)
  
 ;;no pats
 :qid @query.22))
 )
+)
  
 ;;no pats
 :qid @query.21))
+)
 )
  
 ;;no pats
@@ -59079,6 +60525,7 @@ Prims.unit)
  
 ;;no pats
 :qid @query.19))
+)
 )
  
 ;;no pats
@@ -59097,16 +60544,13 @@ Prims.unit)
 ;;no pats
 :qid @query.15))
 )
-)
  
 ;;no pats
 :qid @query.14))
 )
-)
  
 ;;no pats
 :qid @query.13))
-)
 )
  
 ;;no pats
@@ -59158,7 +60602,7 @@ Prims.unit)
 ;;no pats
 :qid @query)))
 :named @query))
-(set-option :rlimit 8714496)
+(set-option :rlimit 2723280)
 (echo "<result>")
 (check-sat)
 (echo "</result>")
@@ -59170,6 +60614,8 @@ Prims.unit)
 (get-unsat-core)
 (echo "</unsat-core>")
 (echo "<labels>")
+(echo "label_19")
+(eval label_19)
 (echo "label_18")
 (eval label_18)
 (echo "label_17")
@@ -59211,4 +60657,4 @@ Prims.unit)
 (pop) ;; 0}pop
 ; QUERY ID: (Test.caller, 1)
 ; STATUS: unsat
-; UNSAT CORE GENERATED: @MaxFuel_assumption, @MaxIFuel_assumption, @fuel_correspondence_FStar.List.Tot.Base.assoc.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.find.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.mem.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.noRepeats.fuel_instrumented, @fuel_irrelevance_FStar.List.Tot.Base.map.fuel_instrumented, @query, FStar.Pervasives.Native_interpretation_Tm_arrow_b8cce376a4a678a51298a0f3945f25ce, FStar.Pointer.Base_interpretation_Tm_arrow_28e00c6cddbebec863cfb4ba46afe386, FStar.Pointer.Base_interpretation_Tm_arrow_3039342fd2e0851a3664dcc7db386d3a, FStar.Pointer.Base_interpretation_Tm_arrow_6fc799a790a74ce5209418d25bd87e6d, FStar.Pointer.Base_interpretation_Tm_arrow_dc341725e79c77ee2826c69229248156, FStar.Set_interpretation_Tm_arrow_84543425b818e2d10a976186b8e8c250, FStar.TSet_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe, bool_inversion, bool_typing, constructor_distinct_FStar.Pervasives.Native.Some, constructor_distinct_Prims.Cons, constructor_distinct_Prims.Nil, data_elim_FStar.Pointer.Base.Mkstruct_typ, data_elim_Prims.Cons, data_elim_Prims.Mkdtuple2, data_typing_intro_Prims.Nil@tok, equation_FStar.HyperStack.ST.equal_domains, equation_FStar.HyperStack.ST.inline_stack_inv, equation_FStar.Monotonic.Heap.equal_dom, equation_FStar.Monotonic.HyperHeap.hmap, equation_FStar.Monotonic.HyperStack.fresh_frame, equation_FStar.Monotonic.HyperStack.is_stack_region, equation_FStar.Monotonic.HyperStack.is_tip, equation_FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip, equation_FStar.Monotonic.HyperStack.mem, equation_FStar.Monotonic.HyperStack.pop, equation_FStar.Monotonic.HyperStack.poppable, equation_FStar.Monotonic.HyperStack.popped, equation_FStar.Monotonic.HyperStack.remove_elt, equation_FStar.Pervasives.Native.fst, equation_FStar.Pointer.Base.dfst_struct_field, equation_FStar.Pointer.Base.equal_values, equation_FStar.Pointer.Base.fun_of_list, equation_FStar.Pointer.Base.modifies_0, equation_FStar.Pointer.Base.struct_create, equation_FStar.Pointer.Base.struct_field, equation_FStar.Pointer.Base.struct_literal, equation_FStar.Pointer.Base.struct_typ_, equation_FStar.Pointer.Base.typ_of_struct_field, equation_FStar.Pointer.Base.typ_of_struct_field_, equation_Prims.eqtype, equation_Test.mk_struct_literal, equation_Test.more_struct, equation_Test.more_struct_t, equation_Test.struct, equation_Test.struct_t, equation_with_fuel_FStar.List.Tot.Base.assoc.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.find.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.map.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.mem.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.noRepeats.fuel_instrumented, fuel_guarded_inversion_FStar.Pervasives.Native.option, fuel_guarded_inversion_Prims.list, function_token_typing_FStar.Pervasives.Native.fst, function_token_typing_FStar.Pointer.Base.dfst_struct_field, function_token_typing_FStar.Pointer.Base.fun_of_list, int_inversion, interpretation_Tm_abs_38d4bb2034e4c433acd11631b66192dd, kinding_FStar.Pervasives.Native.tuple2@tok, kinding_FStar.Pointer.Base.typ@tok, kinding_Prims.dtuple2@tok, lemma_FStar.HyperStack.ST.lemma_same_refs_in_all_regions_elim, lemma_FStar.HyperStack.ST.lemma_same_refs_in_all_regions_intro, lemma_FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_elim, lemma_FStar.Map.lemma_ContainsDom, lemma_FStar.Map.lemma_InDomRestrict, lemma_FStar.Map.lemma_InDomUpd2, lemma_FStar.Map.lemma_SelRestrict, lemma_FStar.Map.lemma_SelUpd2, lemma_FStar.Map.lemma_UpdDomain, lemma_FStar.Monotonic.HyperStack.lemma_mk_mem__projectors, lemma_FStar.Pointer.Base.gread_gfield, lemma_FStar.Pointer.Base.live_gfield, lemma_FStar.Pointer.Base.live_unused_in_disjoint, lemma_FStar.Pointer.Base.loc_disjoint_none_r, lemma_FStar.Pointer.Base.modifies_pointer_elim, lemma_FStar.Pointer.Base.struct_sel_struct_create_fun, lemma_FStar.Pointer.Base.unused_in_gfield, lemma_FStar.Set.lemma_equal_elim, lemma_FStar.Set.lemma_equal_intro, lemma_FStar.Set.mem_complement, lemma_FStar.Set.mem_intersect, lemma_FStar.Set.mem_singleton, lemma_FStar.Set.mem_union, primitive_Prims.op_AmpAmp, primitive_Prims.op_Equality, primitive_Prims.op_Negation, proj_equation_FStar.Pervasives.Native.Mktuple2__1, proj_equation_FStar.Pervasives.Native.Some_v, proj_equation_FStar.Pointer.Base.Mkstruct_typ_fields, projection_inverse_BoxBool_proj_0, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FStar.Pervasives.Native.Mktuple2__2, projection_inverse_FStar.Pervasives.Native.Some_v, projection_inverse_FStar.Pointer.Base.Mkstruct_typ_fields, projection_inverse_Prims.Cons_a, projection_inverse_Prims.Cons_hd, projection_inverse_Prims.Cons_tl, projection_inverse_Prims.Mkdtuple2__1, projection_inverse_Prims.Mkdtuple2__2, projection_inverse_Prims.Nil_a, refinement_interpretation_Tm_refine_05e15190c946858f68c69156f585f95a, refinement_interpretation_Tm_refine_0ac192743de52a9c212800a3bfc27c72, refinement_interpretation_Tm_refine_156c49afb7e1e070fbb2e47dc0e3d4b2, refinement_interpretation_Tm_refine_365abba901205a01d0ef28ebf2198c47, refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f, refinement_interpretation_Tm_refine_83d1bf25f81d108af096d9e2128c8350, refinement_interpretation_Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90, refinement_interpretation_Tm_refine_be42cbabfbefe51746a09e590ec29119, refinement_interpretation_Tm_refine_eda496a665ec0c486d3c3de30bfc4462, refinement_interpretation_Tm_refine_f63e058f9631c11993f3ef0430296051, string_typing, token_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, token_correspondence_FStar.Pervasives.Native.fst, token_correspondence_FStar.Pointer.Base.dfst_struct_field, token_correspondence_FStar.Pointer.Base.fun_of_list, typing_FStar.List.Tot.Base.find, typing_FStar.List.Tot.Base.map, typing_FStar.List.Tot.Base.mem, typing_FStar.List.Tot.Base.noRepeats, typing_FStar.Map.contains, typing_FStar.Map.domain, typing_FStar.Map.restrict, typing_FStar.Monotonic.Heap.emp, typing_FStar.Monotonic.Heap.heap, typing_FStar.Monotonic.HyperHeap.rid, typing_FStar.Monotonic.HyperHeap.root, typing_FStar.Monotonic.HyperStack.get_hmap, typing_FStar.Monotonic.HyperStack.get_rid_ctr, typing_FStar.Monotonic.HyperStack.get_tip, typing_FStar.Monotonic.HyperStack.is_stack_region, typing_FStar.Monotonic.HyperStack.remove_elt, typing_FStar.Pointer.Base.__proj__Mkstruct_typ__item__fields, typing_FStar.Pointer.Base.loc_none, typing_FStar.Pointer.Base.loc_pointer, typing_FStar.Pointer.Base.struct_field, typing_FStar.Pointer.Base.typ_of_struct_field_, typing_FStar.Set.complement, typing_FStar.Set.mem, typing_FStar.Set.singleton, typing_FStar.Set.union, typing_Prims.string, typing_Test.more_struct, typing_Test.struct, typing_Test.struct_t, typing_Tm_abs_38d4bb2034e4c433acd11631b66192dd
+; UNSAT CORE GENERATED: @MaxFuel_assumption, @MaxIFuel_assumption, @fuel_correspondence_FStar.List.Tot.Base.find.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.mem.fuel_instrumented, @fuel_correspondence_FStar.List.Tot.Base.noRepeats.fuel_instrumented, @fuel_correspondence_FStar.Pointer.Base.type_of_typ.fuel_instrumented, @fuel_irrelevance_FStar.List.Tot.Base.map.fuel_instrumented, @fuel_irrelevance_FStar.List.Tot.Base.noRepeats.fuel_instrumented, @fuel_irrelevance_FStar.Pointer.Base.type_of_typ.fuel_instrumented, @query, FStar.Ghost_interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe, FStar.List.Tot.Base_interpretation_Tm_arrow_84543425b818e2d10a976186b8e8c250, FStar.Pervasives.Native_interpretation_Tm_arrow_b8cce376a4a678a51298a0f3945f25ce, FStar.Pointer.Base_interpretation_Tm_arrow_28e00c6cddbebec863cfb4ba46afe386, FStar.Pointer.Base_interpretation_Tm_arrow_3039342fd2e0851a3664dcc7db386d3a, FStar.Pointer.Base_interpretation_Tm_arrow_6fc799a790a74ce5209418d25bd87e6d, FStar.Pointer.Base_interpretation_Tm_arrow_dc341725e79c77ee2826c69229248156, b2t_def, bool_inversion, bool_typing, constructor_distinct_FStar.Pervasives.Native.Some, constructor_distinct_Prims.Cons, constructor_distinct_Prims.Nil, data_elim_FStar.Pointer.Base.Mkstruct_typ, data_elim_Prims.Cons, data_elim_Prims.Mkdtuple2, data_typing_intro_Prims.Nil@tok, equation_FStar.HyperStack.ST.equal_domains, equation_FStar.HyperStack.ST.inline_stack_inv, equation_FStar.Monotonic.Heap.equal_dom, equation_FStar.Monotonic.HyperHeap.hmap, equation_FStar.Monotonic.HyperStack.fresh_frame, equation_FStar.Monotonic.HyperStack.is_tip, equation_FStar.Monotonic.HyperStack.is_wf_with_ctr_and_tip, equation_FStar.Monotonic.HyperStack.mem, equation_FStar.Monotonic.HyperStack.pop, equation_FStar.Monotonic.HyperStack.poppable, equation_FStar.Monotonic.HyperStack.popped, equation_FStar.Monotonic.HyperStack.remove_elt, equation_FStar.Pervasives.Native.fst, equation_FStar.Pointer.Base.array, equation_FStar.Pointer.Base.array_length_t, equation_FStar.Pointer.Base.dfst_struct_field, equation_FStar.Pointer.Base.fun_of_list, equation_FStar.Pointer.Base.struct_create, equation_FStar.Pointer.Base.struct_field, equation_FStar.Pointer.Base.struct_field_, equation_FStar.Pointer.Base.struct_literal, equation_FStar.UInt.fits, equation_FStar.UInt.max_int, equation_FStar.UInt.min_int, equation_FStar.UInt.size, equation_FStar.UInt.uint_t, equation_Prims.eqtype, equation_Prims.nat, equation_Test.mk_struct_literal, equation_Test.struct, equation_Test.struct_t, equation_with_fuel_FStar.List.Tot.Base.find.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.map.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.mem.fuel_instrumented, equation_with_fuel_FStar.List.Tot.Base.noRepeats.fuel_instrumented, fuel_guarded_inversion_FStar.Pervasives.Native.option, fuel_guarded_inversion_Prims.list, function_token_typing_FStar.Pervasives.Native.fst, function_token_typing_FStar.Pointer.Base.dfst_struct_field, function_token_typing_FStar.Pointer.Base.fun_of_list, int_inversion, int_typing, interpretation_Tm_abs_38d4bb2034e4c433acd11631b66192dd, kinding_FStar.Pervasives.Native.tuple2@tok, kinding_FStar.Pointer.Base.typ@tok, kinding_Prims.dtuple2@tok, lemma_FStar.HyperStack.ST.lemma_same_refs_in_all_regions_elim, lemma_FStar.HyperStack.ST.lemma_same_refs_in_all_regions_intro, lemma_FStar.HyperStack.ST.lemma_same_refs_in_non_tip_regions_elim, lemma_FStar.Map.lemma_ContainsDom, lemma_FStar.Map.lemma_InDomRestrict, lemma_FStar.Map.lemma_InDomUpd2, lemma_FStar.Map.lemma_SelRestrict, lemma_FStar.Map.lemma_SelUpd2, lemma_FStar.Map.lemma_UpdDomain, lemma_FStar.Map.lemma_equal_elim, lemma_FStar.Pointer.Base.buffer_length_gbuffer_of_array_pointer, lemma_FStar.Pointer.Base.buffer_live_gbuffer_of_array_pointer, lemma_FStar.Pointer.Base.gpointer_of_buffer_cell_gbuffer_of_array_pointer, lemma_FStar.Pointer.Base.gread_gcell, lemma_FStar.Pointer.Base.gread_gfield, lemma_FStar.Pointer.Base.live_gcell, lemma_FStar.Pointer.Base.loc_disjoint_gcell, lemma_FStar.Pointer.Base.readable_gcell, lemma_FStar.Pointer.Base.struct_sel_struct_create_fun, lemma_FStar.Pointer.Base.type_of_typ_array, lemma_FStar.Pointer.Base.type_of_typ_struct, lemma_FStar.Seq.Base.lemma_create_len, lemma_FStar.Seq.Base.lemma_index_create, lemma_FStar.Set.lemma_equal_elim, lemma_FStar.Set.lemma_equal_intro, lemma_FStar.Set.mem_complement, lemma_FStar.Set.mem_intersect, lemma_FStar.Set.mem_singleton, lemma_FStar.Set.mem_union, primitive_Prims.op_AmpAmp, primitive_Prims.op_Equality, primitive_Prims.op_LessThanOrEqual, primitive_Prims.op_Negation, proj_equation_FStar.Pervasives.Native.Mktuple2__1, proj_equation_FStar.Pointer.Base.Mkstruct_typ_fields, projection_inverse_BoxBool_proj_0, projection_inverse_BoxInt_proj_0, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FStar.Pervasives.Native.Some_v, projection_inverse_FStar.Pointer.Base.Mkstruct_typ_fields, projection_inverse_Prims.Cons_a, projection_inverse_Prims.Cons_hd, projection_inverse_Prims.Cons_tl, projection_inverse_Prims.Mkdtuple2__1, projection_inverse_Prims.Mkdtuple2__2, projection_inverse_Prims.Nil_a, refinement_interpretation_Tm_refine_05e15190c946858f68c69156f585f95a, refinement_interpretation_Tm_refine_0ac192743de52a9c212800a3bfc27c72, refinement_interpretation_Tm_refine_156c49afb7e1e070fbb2e47dc0e3d4b2, refinement_interpretation_Tm_refine_365abba901205a01d0ef28ebf2198c47, refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f, refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2, refinement_interpretation_Tm_refine_9e7f68c38e43484e77069094f4fd88d3, refinement_interpretation_Tm_refine_a37a3c8ca4dcf11aa431310e3dd5ee90, refinement_interpretation_Tm_refine_ba20691c598b7aba0d11d91ead0d6da1, refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c, refinement_interpretation_Tm_refine_c6dda526ae22ec011a2853adf9fa6a29, refinement_interpretation_Tm_refine_d6d97f5639ae0826ad88392a6b4daa34, refinement_interpretation_Tm_refine_eda496a665ec0c486d3c3de30bfc4462, refinement_interpretation_Tm_refine_f13070840248fced9d9d60d77bdae3ec, refinement_interpretation_Tm_refine_f63e058f9631c11993f3ef0430296051, string_inversion, string_typing, token_correspondence_FStar.List.Tot.Base.map.fuel_instrumented, token_correspondence_FStar.List.Tot.Base.noRepeats.fuel_instrumented, token_correspondence_FStar.Pervasives.Native.fst, token_correspondence_FStar.Pointer.Base.dfst_struct_field, token_correspondence_FStar.Pointer.Base.fun_of_list, typing_FStar.List.Tot.Base.find, typing_FStar.List.Tot.Base.map, typing_FStar.List.Tot.Base.mem, typing_FStar.List.Tot.Base.noRepeats, typing_FStar.Map.contains, typing_FStar.Map.domain, typing_FStar.Map.restrict, typing_FStar.Monotonic.Heap.emp, typing_FStar.Monotonic.Heap.heap, typing_FStar.Monotonic.HyperHeap.rid, typing_FStar.Monotonic.HyperHeap.root, typing_FStar.Monotonic.HyperStack.get_hmap, typing_FStar.Monotonic.HyperStack.get_tip, typing_FStar.Monotonic.HyperStack.remove_elt, typing_FStar.Pointer.Base.__proj__Mkstruct_typ__item__fields, typing_FStar.Pointer.Base.struct, typing_FStar.Pointer.Base.struct_field, typing_FStar.Pointer.Base.type_of_typ, typing_FStar.Set.complement, typing_FStar.Set.intersect, typing_FStar.Set.mem, typing_FStar.Set.singleton, typing_FStar.Set.union, typing_FStar.UInt32.v, typing_Prims.string, typing_Test.struct, typing_Test.struct_t, typing_Tm_abs_38d4bb2034e4c433acd11631b66192dd

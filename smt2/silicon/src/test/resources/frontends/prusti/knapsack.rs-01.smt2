@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:28:05
+; Started: 2025-01-26 21:21:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1090,83 +1090,83 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-47|)))
+  :qid |quant-u-369|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-48|)))
+  :qid |quant-u-370|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-71|)))
+  :qid |quant-u-393|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-72|)))
+  :qid |quant-u-394|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-73|)))
+  :qid |quant-u-395|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (=
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@1@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@1@00))
-  :qid |quant-u-49|)))
+  :qid |quant-u-371|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@1@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-50|)))
+  :qid |quant-u-372|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@1@00)
     (and (>= result@2@00 0) (<= 0 result@2@00))))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-74|)))
+  :qid |quant-u-396|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-75|)))
+  :qid |quant-u-397|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-76|)))
+  :qid |quant-u-398|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref) (_pure_2@4@00 Int)) (!
   (=
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@3@00 _pure_2@4@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-51|)))
+  :qid |quant-u-373|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref) (_pure_2@4@00 Int)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%stateless _pure_1@3@00 _pure_2@4@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-52|)))
+  :qid |quant-u-374|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref) (_pure_2@4@00 Int)) (!
   (let ((result@5@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition s@$ _pure_1@3@00 _pure_2@4@00)
     (and (>= result@5@00 0) (<= 0 result@5@00))))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-77|)))
+  :qid |quant-u-399|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref) (_pure_2@4@00 Int)) (!
   (let ((result@5@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-78|)))
+  :qid |quant-u-400|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref) (_pure_2@4@00 Int)) (!
   (let ((result@5@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-79|)))
+  :qid |quant-u-401|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (=
     (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00)
     (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-53|)))
+  :qid |quant-u-375|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%stateless _pure_1@6@00 _pure_2@7@00)
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-54|)))
+  :qid |quant-u-376|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (let ((result@8@00 (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))) (=>
     (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%precondition s@$ _pure_1@6@00 _pure_2@7@00)
@@ -1176,19 +1176,19 @@
         result@8@00
         (mirror$m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$__$TY$__$int$$$int$$$int$<Int> _pure_1@6@00 _pure_2@7@00)))))
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-80|)))
+  :qid |quant-u-402|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (let ((result@8@00 (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))) true)
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-81|)))
+  :qid |quant-u-403|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (let ((result@8@00 (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))) true)
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-82|)))
+  :qid |quant-u-404|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (let ((result@8@00 (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))) true)
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-83|)))
+  :qid |quant-u-405|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (=>
     (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%precondition s@$ _pure_1@6@00 _pure_2@7@00)
@@ -1196,59 +1196,59 @@
       (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00)
       (ite (not (< _pure_1@6@00 _pure_2@7@00)) _pure_1@6@00 _pure_2@7@00)))
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-84|)))
+  :qid |quant-u-406|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   true
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-85|)))
+  :qid |quant-u-407|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref) (_pure_2@10@00 Int)) (!
   (=
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@9@00 _pure_2@10@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@9@00 _pure_2@10@00))
-  :qid |quant-u-55|)))
+  :qid |quant-u-377|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref) (_pure_2@10@00 Int)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%stateless _pure_1@9@00 _pure_2@10@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))
-  :qid |quant-u-56|)))
+  :qid |quant-u-378|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref) (_pure_2@10@00 Int)) (!
   (let ((result@11@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition s@$ _pure_1@9@00 _pure_2@10@00)
     (and (> result@11@00 0) (<= 0 result@11@00))))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))
-  :qid |quant-u-86|)))
+  :qid |quant-u-408|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref) (_pure_2@10@00 Int)) (!
   (let ((result@11@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))
-  :qid |quant-u-87|)))
+  :qid |quant-u-409|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref) (_pure_2@10@00 Int)) (!
   (let ((result@11@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))
-  :qid |quant-u-88|)))
+  :qid |quant-u-410|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   (=
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@12@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@12@00))
-  :qid |quant-u-57|)))
+  :qid |quant-u-379|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@12@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))
-  :qid |quant-u-58|)))
+  :qid |quant-u-380|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   (let ((result@13@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@12@00)
     (<= 0 result@13@00)))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))
-  :qid |quant-u-89|)))
+  :qid |quant-u-411|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   (let ((result@13@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))
-  :qid |quant-u-90|)))
+  :qid |quant-u-412|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   (let ((result@13@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))
-  :qid |quant-u-91|)))
+  :qid |quant-u-413|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@12@00)
@@ -1256,35 +1256,35 @@
       (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@12@00)
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$)))))))))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@12@00))
-  :qid |quant-u-92|)))
+  :qid |quant-u-414|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   true
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@12@00))
-  :qid |quant-u-93|)))
+  :qid |quant-u-415|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   (=
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@14@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@14@00))
-  :qid |quant-u-59|)))
+  :qid |quant-u-381|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@14@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))
-  :qid |quant-u-60|)))
+  :qid |quant-u-382|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   (let ((result@15@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@14@00)
     (<= 0 result@15@00)))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))
-  :qid |quant-u-94|)))
+  :qid |quant-u-416|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   (let ((result@15@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))
-  :qid |quant-u-95|)))
+  :qid |quant-u-417|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   (let ((result@15@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))
-  :qid |quant-u-96|)))
+  :qid |quant-u-418|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@14@00)
@@ -1292,55 +1292,55 @@
       (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@14@00)
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first ($Snap.second ($Snap.first s@$)))))))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@14@00))
-  :qid |quant-u-97|)))
+  :qid |quant-u-419|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   true
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@14@00))
-  :qid |quant-u-98|)))
+  :qid |quant-u-420|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (builtin$undef_int__$TY$__$int$%limited s@$)
     (builtin$undef_int__$TY$__$int$ s@$))
   :pattern ((builtin$undef_int__$TY$__$int$ s@$))
-  :qid |quant-u-61|)))
+  :qid |quant-u-383|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$undef_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$undef_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-62|)))
+  :qid |quant-u-384|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-63|)))
+  :qid |quant-u-385|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-64|)))
+  :qid |quant-u-386|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (=
     (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00)
     (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-65|)))
+  :qid |quant-u-387|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%stateless _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00)
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-66|)))
+  :qid |quant-u-388|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (let ((result@22@00 (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))) (=>
     (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00)
     (<= 0 result@22@00)))
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-99|)))
+  :qid |quant-u-421|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (let ((result@22@00 (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))) true)
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-100|)))
+  :qid |quant-u-422|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (let ((result@22@00 (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))) true)
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-101|)))
+  :qid |quant-u-423|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (=>
     (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00)
@@ -1417,7 +1417,7 @@
             _pure_2@19@00
             1) _pure_3@20@00 _pure_4@21@00)))))
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-102|)))
+  :qid |quant-u-424|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (=>
     (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00)
@@ -1553,41 +1553,41 @@
             _pure_2@19@00
             1) _pure_3@20@00 _pure_4@21@00)))))
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-103|)))
+  :qid |quant-u-425|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (builtin$unreach_int__$TY$__$int$%limited s@$)
     (builtin$unreach_int__$TY$__$int$ s@$))
   :pattern ((builtin$unreach_int__$TY$__$int$ s@$))
-  :qid |quant-u-67|)))
+  :qid |quant-u-389|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$unreach_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-68|)))
+  :qid |quant-u-390|)))
 (assert (forall ((s@$ $Snap) (_pure_1@24@00 $Ref) (_pure_2@25@00 Int) (_pure_3@26@00 Int)) (!
   (=
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
-  :qid |quant-u-69|)))
+  :qid |quant-u-391|)))
 (assert (forall ((s@$ $Snap) (_pure_1@24@00 $Ref) (_pure_2@25@00 Int) (_pure_3@26@00 Int)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%stateless _pure_1@24@00 _pure_2@25@00 _pure_3@26@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
-  :qid |quant-u-70|)))
+  :qid |quant-u-392|)))
 (assert (forall ((s@$ $Snap) (_pure_1@24@00 $Ref) (_pure_2@25@00 Int) (_pure_3@26@00 Int)) (!
   (let ((result@27@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00)
     (<= 0 result@27@00)))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
-  :qid |quant-u-104|)))
+  :qid |quant-u-426|)))
 (assert (forall ((s@$ $Snap) (_pure_1@24@00 $Ref) (_pure_2@25@00 Int) (_pure_3@26@00 Int)) (!
   (let ((result@27@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
-  :qid |quant-u-105|)))
+  :qid |quant-u-427|)))
 (assert (forall ((s@$ $Snap) (_pure_1@24@00 $Ref) (_pure_2@25@00 Int) (_pure_3@26@00 Int)) (!
   (let ((result@27@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
-  :qid |quant-u-106|)))
+  :qid |quant-u-428|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- m_knapsack$$main$opensqu$0$closesqu$ ----------
@@ -24948,9 +24948,9 @@
 ;               ii, wi, _2) ==
 ;               m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3,
 ;               ii, wi)) &&
-;             ((forall wi: Int, fresh__1: Int ::
+;             ((forall wi: Int, fresh__11: Int ::
 ;               { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3,
-;               fresh__1, wi) }
+;               fresh__11, wi) }
 ;               0 <= wi && wi < _51.val_int ==>
 ;               m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref,
 ;               _11.val_int + 1, wi, _2) ==
@@ -24967,7 +24967,7 @@
 ;               0)))))))))))))))))))
 (declare-const $t@457@01 $Snap)
 (assert (= $t@457@01 $Snap.unit))
-; [eval] (unfolding acc(usize(_51), write) in (unfolding acc(m_knapsack$$Item$opensqu$0$closesqu$$_beg_$_end_(_48.val_ref), read$()) in (unfolding acc(usize(_48.val_ref.f$weight), read$()) in (unfolding acc(usize(_48.val_ref.f$value), read$()) in (unfolding acc(usize(_11), write) in _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__1: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__1, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0)))))))))))))))))))
+; [eval] (unfolding acc(usize(_51), write) in (unfolding acc(m_knapsack$$Item$opensqu$0$closesqu$$_beg_$_end_(_48.val_ref), read$()) in (unfolding acc(usize(_48.val_ref.f$weight), read$()) in (unfolding acc(usize(_48.val_ref.f$value), read$()) in (unfolding acc(usize(_11), write) in _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__11: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__11, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0)))))))))))))))))))
 (set-option :timeout 0)
 (push) ; 7
 (assert (usize%trigger ($Snap.first $t@452@01) ret@444@01))
@@ -24980,7 +24980,7 @@
 (assert (= ($Snap.second ($Snap.first $t@452@01)) $Snap.unit))
 ; [eval] 0 <= self.val_int
 (assert (<= 0 ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first $t@452@01)))))
-; [eval] (unfolding acc(m_knapsack$$Item$opensqu$0$closesqu$$_beg_$_end_(_48.val_ref), read$()) in (unfolding acc(usize(_48.val_ref.f$weight), read$()) in (unfolding acc(usize(_48.val_ref.f$value), read$()) in (unfolding acc(usize(_11), write) in _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__1: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__1, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0))))))))))))))))))
+; [eval] (unfolding acc(m_knapsack$$Item$opensqu$0$closesqu$$_beg_$_end_(_48.val_ref), read$()) in (unfolding acc(usize(_48.val_ref.f$weight), read$()) in (unfolding acc(usize(_48.val_ref.f$value), read$()) in (unfolding acc(usize(_11), write) in _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__11: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__11, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0))))))))))))))))))
 (push) ; 8
 (set-option :timeout 10)
 (assert (not (<
@@ -25140,7 +25140,7 @@
 (pop) ; 9
 ; 0.00s
 ; (get-info :all-statistics)
-; [eval] (unfolding acc(usize(_48.val_ref.f$weight), read$()) in (unfolding acc(usize(_48.val_ref.f$value), read$()) in (unfolding acc(usize(_11), write) in _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__1: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__1, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0)))))))))))))))))
+; [eval] (unfolding acc(usize(_48.val_ref.f$weight), read$()) in (unfolding acc(usize(_48.val_ref.f$value), read$()) in (unfolding acc(usize(_11), write) in _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__11: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__11, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0)))))))))))))))))
 (set-option :timeout 0)
 (push) ; 9
 (set-option :timeout 10)
@@ -25238,7 +25238,7 @@
 (pop) ; 10
 ; 0.00s
 ; (get-info :all-statistics)
-; [eval] (unfolding acc(usize(_48.val_ref.f$value), read$()) in (unfolding acc(usize(_11), write) in _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__1: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__1, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0))))))))))))))))
+; [eval] (unfolding acc(usize(_48.val_ref.f$value), read$()) in (unfolding acc(usize(_11), write) in _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__11: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__11, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0))))))))))))))))
 (set-option :timeout 0)
 (push) ; 10
 (set-option :timeout 10)
@@ -25347,7 +25347,7 @@
 (pop) ; 11
 ; 0.00s
 ; (get-info :all-statistics)
-; [eval] (unfolding acc(usize(_11), write) in _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__1: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__1, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0)))))))))))))))
+; [eval] (unfolding acc(usize(_11), write) in _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__11: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__11, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0)))))))))))))))
 (set-option :timeout 0)
 (push) ; 11
 (push) ; 12
@@ -25429,7 +25429,7 @@
 (assert (= ($Snap.second $t@454@01) $Snap.unit))
 ; [eval] 0 <= self.val_int
 (assert (<= 0 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))
-; [eval] _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__1: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__1, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0))))))))))))))
+; [eval] _51.val_int <= _2 && (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (_2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _51.val_int && (_51.val_int <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= _11.val_int && (_11.val_int < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) && (2 <= _2 && (_2 < 18446744073709551615 && (_48.val_ref.f$value.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && (_48.val_ref.f$weight.val_int == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int) && ((forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0) && ((forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)) && ((forall wi: Int, fresh__11: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__11, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)) && (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0))))))))))))))
 ; [eval] _51.val_int <= _2
 (set-option :timeout 0)
 (push) ; 12
@@ -27867,9 +27867,9 @@
           $Snap.unit
           ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|)))
-; [eval] (forall wi: Int, fresh__1: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__1, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi))
+; [eval] (forall wi: Int, fresh__11: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__11, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi))
 (declare-const wi@462@01 Int)
-(declare-const fresh__1@463@01 Int)
+(declare-const fresh__11@463@01 Int)
 (push) ; 38
 ; [eval] 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _11.val_int + 1, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _11.val_int + 1, wi)
 ; [eval] 0 <= wi && wi < _51.val_int
@@ -28393,7 +28393,7 @@
     (<
       wi@462@01
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first $t@452@01)))))))
-; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__1, wi)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, fresh__11, wi)
 (push) ; 39
 ; [eval] read$()
 (push) ; 40
@@ -28417,7 +28417,7 @@
 ; [eval] 0 <= _pure_2
 (set-option :timeout 0)
 (push) ; 40
-(assert (not (<= 0 fresh__1@463@01)))
+(assert (not (<= 0 fresh__11@463@01)))
 (check-sat)
 ; unknown
 (pop) ; 40
@@ -29529,7 +29529,7 @@
 ; [eval] 0 <= _pure_2
 (set-option :timeout 0)
 (push) ; 40
-(assert (not (<= 0 fresh__1@463@01)))
+(assert (not (<= 0 fresh__11@463@01)))
 (check-sat)
 ; unknown
 (pop) ; 40
@@ -30625,7 +30625,7 @@
 ; [eval] 0 <= _pure_2
 (set-option :timeout 0)
 (push) ; 40
-(assert (not (<= 0 fresh__1@463@01)))
+(assert (not (<= 0 fresh__11@463@01)))
 (check-sat)
 ; unknown
 (pop) ; 40
@@ -31721,7 +31721,7 @@
 ; [eval] 0 <= _pure_2
 (set-option :timeout 0)
 (push) ; 40
-(assert (not (<= 0 fresh__1@463@01)))
+(assert (not (<= 0 fresh__11@463@01)))
 (check-sat)
 ; unknown
 (pop) ; 40
@@ -31731,7 +31731,7 @@
 (pop) ; 38
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+(assert (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
   (and
     (or (<= 0 wi@462@01) (not (<= 0 wi@462@01)))
     (=>
@@ -31804,12 +31804,12 @@
   
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|)))
 (push) ; 38
-; [then-branch: 75 | !(QA wi@462@01,fresh__1@463@01 :: 0 <= wi@462@01 && wi@462@01 < First:(First:($t@452@01)) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(($t@363@01, (_, (_, (_, (_, (_, (_, _))))))), $t@453@01, First:($t@454@01) + 1, wi@462@01, _2@101@01) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$((First:(Second:($t@452@01)), (_, (_, (_, (_, (_, _)))))), ret@230@01, First:($t@454@01) + 1, wi@462@01)) | live]
-; [else-branch: 75 | QA wi@462@01,fresh__1@463@01 :: 0 <= wi@462@01 && wi@462@01 < First:(First:($t@452@01)) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(($t@363@01, (_, (_, (_, (_, (_, (_, _))))))), $t@453@01, First:($t@454@01) + 1, wi@462@01, _2@101@01) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$((First:(Second:($t@452@01)), (_, (_, (_, (_, (_, _)))))), ret@230@01, First:($t@454@01) + 1, wi@462@01) | live]
+; [then-branch: 75 | !(QA wi@462@01,fresh__11@463@01 :: 0 <= wi@462@01 && wi@462@01 < First:(First:($t@452@01)) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(($t@363@01, (_, (_, (_, (_, (_, (_, _))))))), $t@453@01, First:($t@454@01) + 1, wi@462@01, _2@101@01) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$((First:(Second:($t@452@01)), (_, (_, (_, (_, (_, _)))))), ret@230@01, First:($t@454@01) + 1, wi@462@01)) | live]
+; [else-branch: 75 | QA wi@462@01,fresh__11@463@01 :: 0 <= wi@462@01 && wi@462@01 < First:(First:($t@452@01)) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(($t@363@01, (_, (_, (_, (_, (_, (_, _))))))), $t@453@01, First:($t@454@01) + 1, wi@462@01, _2@101@01) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$((First:(Second:($t@452@01)), (_, (_, (_, (_, (_, _)))))), ret@230@01, First:($t@454@01) + 1, wi@462@01) | live]
 (push) ; 39
-; [then-branch: 75 | !(QA wi@462@01,fresh__1@463@01 :: 0 <= wi@462@01 && wi@462@01 < First:(First:($t@452@01)) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(($t@363@01, (_, (_, (_, (_, (_, (_, _))))))), $t@453@01, First:($t@454@01) + 1, wi@462@01, _2@101@01) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$((First:(Second:($t@452@01)), (_, (_, (_, (_, (_, _)))))), ret@230@01, First:($t@454@01) + 1, wi@462@01))]
+; [then-branch: 75 | !(QA wi@462@01,fresh__11@463@01 :: 0 <= wi@462@01 && wi@462@01 < First:(First:($t@452@01)) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(($t@363@01, (_, (_, (_, (_, (_, (_, _))))))), $t@453@01, First:($t@454@01) + 1, wi@462@01, _2@101@01) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$((First:(Second:($t@452@01)), (_, (_, (_, (_, (_, _)))))), ret@230@01, First:($t@454@01) + 1, wi@462@01))]
 (assert (not
-  (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+  (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
     (=>
       (and
         (<= 0 wi@462@01)
@@ -31847,8 +31847,8 @@
     :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))))
 (pop) ; 39
 (push) ; 39
-; [else-branch: 75 | QA wi@462@01,fresh__1@463@01 :: 0 <= wi@462@01 && wi@462@01 < First:(First:($t@452@01)) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(($t@363@01, (_, (_, (_, (_, (_, (_, _))))))), $t@453@01, First:($t@454@01) + 1, wi@462@01, _2@101@01) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$((First:(Second:($t@452@01)), (_, (_, (_, (_, (_, _)))))), ret@230@01, First:($t@454@01) + 1, wi@462@01)]
-(assert (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+; [else-branch: 75 | QA wi@462@01,fresh__11@463@01 :: 0 <= wi@462@01 && wi@462@01 < First:(First:($t@452@01)) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(($t@363@01, (_, (_, (_, (_, (_, (_, _))))))), $t@453@01, First:($t@454@01) + 1, wi@462@01, _2@101@01) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$((First:(Second:($t@452@01)), (_, (_, (_, (_, (_, _)))))), ret@230@01, First:($t@454@01) + 1, wi@462@01)]
+(assert (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
   (=>
     (and
       (<= 0 wi@462@01)
@@ -32185,7 +32185,7 @@
 ; Joined path conditions
 ; Joined path conditions
 (assert (=>
-  (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+  (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
     (=>
       (and
         (<= 0 wi@462@01)
@@ -32222,7 +32222,7 @@
     
     :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
   (and
-    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
       (=>
         (and
           (<= 0 wi@462@01)
@@ -32321,7 +32321,7 @@
               ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@464@01 0))
       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|)))))
 (assert (or
-  (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+  (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
     (=>
       (and
         (<= 0 wi@462@01)
@@ -32358,7 +32358,7 @@
     
     :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
   (not
-    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
       (=>
         (and
           (<= 0 wi@462@01)
@@ -32518,7 +32518,7 @@
               $Snap.unit
               ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
       (and
         (or (<= 0 wi@462@01) (not (<= 0 wi@462@01)))
         (=>
@@ -32593,7 +32593,7 @@
       
       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
     (=>
-      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
         (=>
           (and
             (<= 0 wi@462@01)
@@ -32632,7 +32632,7 @@
         
         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
       (and
-        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
           (=>
             (and
               (<= 0 wi@462@01)
@@ -32733,7 +32733,7 @@
                     ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@464@01 0))
           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
     (or
-      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
         (=>
           (and
             (<= 0 wi@462@01)
@@ -32772,7 +32772,7 @@
         
         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
       (not
-        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
           (=>
             (and
               (<= 0 wi@462@01)
@@ -33354,7 +33354,7 @@
                     $Snap.unit
                     ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
           (and
             (or (<= 0 wi@462@01) (not (<= 0 wi@462@01)))
             (=>
@@ -33429,7 +33429,7 @@
           
           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
         (=>
-          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
             (=>
               (and
                 (<= 0 wi@462@01)
@@ -33468,7 +33468,7 @@
             
             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
           (and
-            (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+            (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
               (=>
                 (and
                   (<= 0 wi@462@01)
@@ -33569,7 +33569,7 @@
                         ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@464@01 0))
               :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
         (or
-          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
             (=>
               (and
                 (<= 0 wi@462@01)
@@ -33608,7 +33608,7 @@
             
             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
           (not
-            (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+            (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
               (=>
                 (and
                   (<= 0 wi@462@01)
@@ -34446,7 +34446,7 @@
                         $Snap.unit
                         ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
               :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-            (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+            (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
               (and
                 (or (<= 0 wi@462@01) (not (<= 0 wi@462@01)))
                 (=>
@@ -34523,7 +34523,7 @@
               
               :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
             (=>
-              (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+              (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                 (=>
                   (and
                     (<= 0 wi@462@01)
@@ -34562,7 +34562,7 @@
                 
                 :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
               (and
-                (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                   (=>
                     (and
                       (<= 0 wi@462@01)
@@ -34663,7 +34663,7 @@
                             ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@464@01 0))
                   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
             (or
-              (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+              (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                 (=>
                   (and
                     (<= 0 wi@462@01)
@@ -34702,7 +34702,7 @@
                 
                 :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
               (not
-                (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                   (=>
                     (and
                       (<= 0 wi@462@01)
@@ -35585,7 +35585,7 @@
                             $Snap.unit
                             ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                   (and
                     (or (<= 0 wi@462@01) (not (<= 0 wi@462@01)))
                     (=>
@@ -35668,7 +35668,7 @@
                   
                   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                 (=>
-                  (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                  (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                     (=>
                       (and
                         (<= 0 wi@462@01)
@@ -35707,7 +35707,7 @@
                     
                     :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                   (and
-                    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                       (=>
                         (and
                           (<= 0 wi@462@01)
@@ -35808,7 +35808,7 @@
                                 ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@464@01 0))
                       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                 (or
-                  (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                  (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                     (=>
                       (and
                         (<= 0 wi@462@01)
@@ -35847,7 +35847,7 @@
                     
                     :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                   (not
-                    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                       (=>
                         (and
                           (<= 0 wi@462@01)
@@ -36750,7 +36750,7 @@
                                 $Snap.unit
                                 ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                       (and
                         (or (<= 0 wi@462@01) (not (<= 0 wi@462@01)))
                         (=>
@@ -36833,7 +36833,7 @@
                       
                       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                     (=>
-                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                         (=>
                           (and
                             (<= 0 wi@462@01)
@@ -36872,7 +36872,7 @@
                         
                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                       (and
-                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                           (=>
                             (and
                               (<= 0 wi@462@01)
@@ -36973,7 +36973,7 @@
                                     ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@464@01 0))
                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                     (or
-                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                         (=>
                           (and
                             (<= 0 wi@462@01)
@@ -37012,7 +37012,7 @@
                         
                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                       (not
-                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                           (=>
                             (and
                               (<= 0 wi@462@01)
@@ -37923,7 +37923,7 @@
                                     $Snap.unit
                                     ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                           (and
                             (or (<= 0 wi@462@01) (not (<= 0 wi@462@01)))
                             (=>
@@ -38006,7 +38006,7 @@
                           
                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                         (=>
-                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                             (=>
                               (and
                                 (<= 0 wi@462@01)
@@ -38045,7 +38045,7 @@
                             
                             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                           (and
-                            (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                            (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                               (=>
                                 (and
                                   (<= 0 wi@462@01)
@@ -38150,7 +38150,7 @@
                                         ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@464@01 0))
                               :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                         (or
-                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                             (=>
                               (and
                                 (<= 0 wi@462@01)
@@ -38189,7 +38189,7 @@
                             
                             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                           (not
-                            (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                            (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                               (=>
                                 (and
                                   (<= 0 wi@462@01)
@@ -39129,7 +39129,7 @@
                                         $Snap.unit
                                         ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                               :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                            (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                            (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                               (and
                                 (or (<= 0 wi@462@01) (not (<= 0 wi@462@01)))
                                 (=>
@@ -39216,7 +39216,7 @@
                               
                               :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                             (=>
-                              (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                              (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                 (=>
                                   (and
                                     (<= 0 wi@462@01)
@@ -39259,7 +39259,7 @@
                                 
                                 :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                               (and
-                                (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                   (=>
                                     (and
                                       (<= 0 wi@462@01)
@@ -39366,7 +39366,7 @@
                                             ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                             (or
-                              (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                              (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                 (=>
                                   (and
                                     (<= 0 wi@462@01)
@@ -39409,7 +39409,7 @@
                                 
                                 :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                               (not
-                                (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                   (=>
                                     (and
                                       (<= 0 wi@462@01)
@@ -40394,7 +40394,7 @@
                                             $Snap.unit
                                             ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                   (and
                                     (or (<= 0 wi@462@01) (not (<= 0 wi@462@01)))
                                     (=>
@@ -40481,7 +40481,7 @@
                                   
                                   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                 (=>
-                                  (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                  (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                     (=>
                                       (and
                                         (<= 0 wi@462@01)
@@ -40524,7 +40524,7 @@
                                     
                                     :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                   (and
-                                    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                       (=>
                                         (and
                                           (<= 0 wi@462@01)
@@ -40635,7 +40635,7 @@
                                                   $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                 (or
-                                  (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                  (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                     (=>
                                       (and
                                         (<= 0 wi@462@01)
@@ -40678,7 +40678,7 @@
                                     
                                     :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                   (not
-                                    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                       (=>
                                         (and
                                           (<= 0 wi@462@01)
@@ -41702,7 +41702,7 @@
                                                   $Snap.unit
                                                   $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                       (and
                                         (or
                                           (<= 0 wi@462@01)
@@ -41791,7 +41791,7 @@
                                       
                                       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                     (=>
-                                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                         (=>
                                           (and
                                             (<= 0 wi@462@01)
@@ -41834,7 +41834,7 @@
                                         
                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                       (and
-                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                           (=>
                                             (and
                                               (<= 0 wi@462@01)
@@ -41945,7 +41945,7 @@
                                                       $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                     (or
-                                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                         (=>
                                           (and
                                             (<= 0 wi@462@01)
@@ -41988,7 +41988,7 @@
                                         
                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                       (not
-                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                           (=>
                                             (and
                                               (<= 0 wi@462@01)
@@ -43047,7 +43047,7 @@
                                                       $Snap.unit
                                                       $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                           (and
                                             (or
                                               (<= 0 wi@462@01)
@@ -43136,7 +43136,7 @@
                                           
                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                         (=>
-                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                             (=>
                                               (and
                                                 (<= 0 wi@462@01)
@@ -43179,7 +43179,7 @@
                                             
                                             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                           (and
-                                            (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                            (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                               (=>
                                                 (and
                                                   (<= 0 wi@462@01)
@@ -43290,7 +43290,7 @@
                                                           $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                               :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                         (or
-                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                             (=>
                                               (and
                                                 (<= 0 wi@462@01)
@@ -43333,7 +43333,7 @@
                                             
                                             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                           (not
-                                            (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                            (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                               (=>
                                                 (and
                                                   (<= 0 wi@462@01)
@@ -44415,7 +44415,7 @@
                                                           $Snap.unit
                                                           $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                               :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                            (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                            (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                               (and
                                                 (or
                                                   (<= 0 wi@462@01)
@@ -44504,7 +44504,7 @@
                                               
                                               :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                             (=>
-                                              (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                              (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                 (=>
                                                   (and
                                                     (<= 0 wi@462@01)
@@ -44547,7 +44547,7 @@
                                                 
                                                 :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                               (and
-                                                (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                   (=>
                                                     (and
                                                       (<= 0 wi@462@01)
@@ -44658,7 +44658,7 @@
                                                               $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                                   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                             (or
-                                              (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                              (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                 (=>
                                                   (and
                                                     (<= 0 wi@462@01)
@@ -44701,7 +44701,7 @@
                                                 
                                                 :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                               (not
-                                                (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                   (=>
                                                     (and
                                                       (<= 0 wi@462@01)
@@ -45821,7 +45821,7 @@
                                                               $Snap.unit
                                                               $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                                   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                                (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                   (and
                                                     (or
                                                       (<= 0 wi@462@01)
@@ -45910,7 +45910,7 @@
                                                   
                                                   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                                 (=>
-                                                  (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                  (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                     (=>
                                                       (and
                                                         (<= 0 wi@462@01)
@@ -45953,7 +45953,7 @@
                                                     
                                                     :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                   (and
-                                                    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                       (=>
                                                         (and
                                                           (<= 0 wi@462@01)
@@ -46064,7 +46064,7 @@
                                                                   $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                                       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                                 (or
-                                                  (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                  (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                     (=>
                                                       (and
                                                         (<= 0 wi@462@01)
@@ -46107,7 +46107,7 @@
                                                     
                                                     :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                   (not
-                                                    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                       (=>
                                                         (and
                                                           (<= 0 wi@462@01)
@@ -47271,7 +47271,7 @@
                                                                   $Snap.unit
                                                                   $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                                       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                                    (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                    (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                       (and
                                                         (or
                                                           (<= 0 wi@462@01)
@@ -47362,7 +47362,7 @@
                                                       
                                                       :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                                     (=>
-                                                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                         (=>
                                                           (and
                                                             (<= 0 wi@462@01)
@@ -47405,7 +47405,7 @@
                                                         
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                       (and
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -47519,7 +47519,7 @@
                                                                       $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                                     (or
-                                                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                         (=>
                                                           (and
                                                             (<= 0 wi@462@01)
@@ -47562,7 +47562,7 @@
                                                         
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                       (not
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -48757,7 +48757,7 @@
                                                                     $Snap.unit
                                                                     $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                         (and
                                                           (or
                                                             (<= 0 wi@462@01)
@@ -48849,7 +48849,7 @@
                                                         
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                                       (=>
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -48892,7 +48892,7 @@
                                                           
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                         (and
-                                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                             (=>
                                                               (and
                                                                 (<= 0 wi@462@01)
@@ -49014,7 +49014,7 @@
                                                                         $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                                             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                                       (or
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -49057,7 +49057,7 @@
                                                           
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                         (not
-                                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                             (=>
                                                               (and
                                                                 (<= 0 wi@462@01)
@@ -50258,7 +50258,7 @@
                                                                     $Snap.unit
                                                                     $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                         (and
                                                           (or
                                                             (<= 0 wi@462@01)
@@ -50350,7 +50350,7 @@
                                                         
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                                       (=>
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -50393,7 +50393,7 @@
                                                           
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                         (and
-                                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                             (=>
                                                               (and
                                                                 (<= 0 wi@462@01)
@@ -50515,7 +50515,7 @@
                                                                         $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                                             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                                       (or
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -50558,7 +50558,7 @@
                                                           
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                         (not
-                                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                             (=>
                                                               (and
                                                                 (<= 0 wi@462@01)
@@ -51759,7 +51759,7 @@
                                                                     $Snap.unit
                                                                     $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                         (and
                                                           (or
                                                             (<= 0 wi@462@01)
@@ -51851,7 +51851,7 @@
                                                         
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                                       (=>
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -51894,7 +51894,7 @@
                                                           
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                         (and
-                                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                             (=>
                                                               (and
                                                                 (<= 0 wi@462@01)
@@ -52016,7 +52016,7 @@
                                                                         $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                                             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                                       (or
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -52059,7 +52059,7 @@
                                                           
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                         (not
-                                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                             (=>
                                                               (and
                                                                 (<= 0 wi@462@01)
@@ -53262,7 +53262,7 @@
                                                                     $Snap.unit
                                                                     $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                         (and
                                                           (or
                                                             (<= 0 wi@462@01)
@@ -53354,7 +53354,7 @@
                                                         
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                                       (=>
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -53397,7 +53397,7 @@
                                                           
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                         (and
-                                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                             (=>
                                                               (and
                                                                 (<= 0 wi@462@01)
@@ -53519,7 +53519,7 @@
                                                                         $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                                             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                                       (or
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -53562,7 +53562,7 @@
                                                           
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                         (not
-                                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                             (=>
                                                               (and
                                                                 (<= 0 wi@462@01)
@@ -54774,7 +54774,7 @@
                                                                     $Snap.unit
                                                                     $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
-                                                      (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                      (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                         (and
                                                           (or
                                                             (<= 0 wi@462@01)
@@ -54866,7 +54866,7 @@
                                                         
                                                         :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463-aux|))
                                                       (=>
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -54909,7 +54909,7 @@
                                                           
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                         (and
-                                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                             (=>
                                                               (and
                                                                 (<= 0 wi@462@01)
@@ -55031,7 +55031,7 @@
                                                                         $Snap.unit)))))) ret@230@01 ii@464@01 0))
                                                             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3469@3440@3882-aux|))))
                                                       (or
-                                                        (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                        (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                           (=>
                                                             (and
                                                               (<= 0 wi@462@01)
@@ -55074,7 +55074,7 @@
                                                           
                                                           :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@3051@3440@3463|))
                                                         (not
-                                                          (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                                                          (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                                                             (=>
                                                               (and
                                                                 (<= 0 wi@462@01)
@@ -55644,7 +55644,7 @@
                                       ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@460@01 wi@461@01))
                             :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@3440@2446@3440@3044|))
                           (and
-                            (forall ((wi@462@01 Int) (fresh__1@463@01 Int)) (!
+                            (forall ((wi@462@01 Int) (fresh__11@463@01 Int)) (!
                               (=>
                                 (and
                                   (<= 0 wi@462@01)
@@ -57258,7 +57258,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57276,7 +57276,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57287,7 +57287,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [exec]
 ; label l32
@@ -57298,7 +57298,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 79 | True | live]
 ; [else-branch: 79 | False | dead]
@@ -57374,7 +57374,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57404,7 +57404,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57524,7 +57524,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57533,7 +57533,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57542,7 +57542,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57575,7 +57575,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57586,7 +57586,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57595,7 +57595,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57604,7 +57604,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57613,7 +57613,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57622,7 +57622,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57631,7 +57631,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57640,7 +57640,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57649,7 +57649,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57658,7 +57658,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57676,7 +57676,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57703,7 +57703,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57712,7 +57712,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57721,7 +57721,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57748,7 +57748,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57775,7 +57775,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57793,7 +57793,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57807,7 +57807,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57821,7 +57821,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58283,7 +58283,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58306,7 +58306,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58396,7 +58396,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58411,7 +58411,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58455,7 +58455,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58464,7 +58464,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58473,7 +58473,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58496,7 +58496,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58511,7 +58511,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58605,7 +58605,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -65670,4 +65670,8214 @@
 (push) ; 11
 (set-option :timeout 10)
 (assert (not (= $t@210@01 ret@538@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= $t@508@01 ret@538@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(assert (not (= ret@538@01 $Ref.null)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; _53.val_bool := _54 <= _55
+; [eval] _54 <= _55
+(declare-const val_bool@540@01 Bool)
+(assert (= val_bool@540@01 (<= val_int@530@01 _2@101@01)))
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= $t@528@01 ret@538@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= ret@473@01 ret@538@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= ret@379@01 ret@538@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= ret@253@01 ret@538@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= $t@225@01 ret@538@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= $t@210@01 ret@538@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= $t@508@01 ret@538@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+; [exec]
+; __t63 := _53.val_bool
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (not val_bool@540@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not val_bool@540@01))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 90 | val_bool@540@01 | live]
+; [else-branch: 90 | !(val_bool@540@01) | live]
+(set-option :timeout 0)
+(push) ; 11
+; [then-branch: 90 | val_bool@540@01]
+(assert val_bool@540@01)
+; [exec]
+; label l63
+; [exec]
+; label loop9_group3_loop17_group5_bb19
+; [exec]
+; __t12 := true
+; [exec]
+; __t64 := false
+; [exec]
+; label loop9_group3_loop17_end_body
+; [exec]
+; fold acc(usize(_51), write)
+; [eval] 0 <= self.val_int
+(push) ; 12
+(assert (not (<= 0 val_int@530@01)))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(assert (<= 0 val_int@530@01))
+(assert (usize%trigger ($Snap.combine
+  ($SortWrappers.IntTo$Snap val_int@530@01)
+  $Snap.unit) $t@526@01))
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second $t@369@01))) $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@516@01)) $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+; [exec]
+; assert _2 >= 0
+; [eval] _2 >= 0
+; [exec]
+; fold acc(usize(_11), write)
+; [eval] 0 <= self.val_int
+(assert (usize%trigger ($Snap.combine ($Snap.first $t@454@01) $Snap.unit) ret@289@01))
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (= $t@526@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second $t@369@01))) ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@516@01)) ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+; [exec]
+; assert (unfolding acc(usize(_51), write) in _51.val_int) <= _2 &&
+;   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) +
+;   1 ==
+;   m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) &&
+;   (_2 + 1 ==
+;   m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) &&
+;   (0 <= (unfolding acc(usize(_51), write) in _51.val_int) &&
+;   ((unfolding acc(usize(_51), write) in _51.val_int) <=
+;   m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) &&
+;   (0 <= (unfolding acc(usize(_11), write) in _11.val_int) &&
+;   ((unfolding acc(usize(_11), write) in _11.val_int) <
+;   m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) &&
+;   (2 <= _2 &&
+;   (_2 < 18446744073709551615 &&
+;   (_48.val_ref.f$value.val_int ==
+;   (unfolding acc(usize(_11), write) in
+;     m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref,
+;     _11.val_int)) &&
+;   (_48.val_ref.f$weight.val_int ==
+;   (unfolding acc(usize(_11), write) in
+;     m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref,
+;     _11.val_int)) &&
+;   ((forall ii: Int, wi: Int ::
+;     { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3,
+;     ii, wi) }
+;     0 <= ii &&
+;     (ii <
+;     m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) &&
+;     (0 <= wi &&
+;     wi <
+;     m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==>
+;     m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3,
+;     ii, wi) >=
+;     0) &&
+;   ((unfolding acc(usize(_11), write) in
+;     (forall ii: Int, wi: Int ::
+;       { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref,
+;       ii, wi, _2) }
+;       { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3,
+;       ii, wi) }
+;       0 <= ii &&
+;       (ii <= _11.val_int &&
+;       (0 <= wi &&
+;       wi <
+;       m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==>
+;       m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref,
+;       ii, wi, _2) ==
+;       m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3,
+;       ii, wi))) &&
+;   ((unfolding acc(usize(_11), write) in
+;     (unfolding acc(usize(_51), write) in
+;       (let _LET_0 ==
+;         (_11.val_int + 1) in
+;         (forall wi: Int ::
+;           { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref,
+;           _LET_0, wi, _2) }
+;           { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3,
+;           _LET_0, wi) }
+;           0 <= wi && wi < _51.val_int ==>
+;           m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref,
+;           _LET_0, wi, _2) ==
+;           m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3,
+;           _LET_0, wi))))) &&
+;   (forall ii: Int ::
+;     { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3,
+;     ii, 0) }
+;     0 <= ii &&
+;     ii <
+;     m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==>
+;     m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3,
+;     ii, 0) ==
+;     0))))))))))))))
+; [eval] (unfolding acc(usize(_51), write) in _51.val_int) <= _2
+; [eval] (unfolding acc(usize(_51), write) in _51.val_int)
+(set-option :timeout 0)
+(push) ; 12
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@444@01 $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+(pop) ; 12
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 12
+(assert (not (<= val_int@530@01 _2@101@01)))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(assert (<= val_int@530@01 _2@101@01))
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref) + 1
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (-
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+; [eval] read$()
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+(push) ; 13
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@453@01)))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(assert (not (=>
+  (< $Perm.No (read$ $Snap.unit))
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition ($Snap.combine
+  $t@363@01
+  $Snap.unit) $t@453@01))
+(pop) ; 12
+; Joined path conditions
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition ($Snap.combine
+  $t@363@01
+  $Snap.unit) $t@453@01))
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+(set-option :timeout 0)
+(push) ; 12
+; [eval] read$()
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+(push) ; 13
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 12
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 12
+(assert (not (=
+  (+
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      $t@363@01
+      $Snap.unit) $t@453@01)
+    1)
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(assert (=
+  (+
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      $t@363@01
+      $Snap.unit) $t@453@01)
+    1)
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01)))
+; [eval] _2 + 1 == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+; [eval] _2 + 1
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+(push) ; 12
+; [eval] read$()
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+(push) ; 13
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 12
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 12
+(assert (not (=
+  (+ _2@101@01 1)
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(assert (=
+  (+ _2@101@01 1)
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01)))
+; [eval] 0 <= (unfolding acc(usize(_51), write) in _51.val_int)
+; [eval] (unfolding acc(usize(_51), write) in _51.val_int)
+(push) ; 12
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@444@01 $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+(pop) ; 12
+; Joined path conditions
+; [eval] (unfolding acc(usize(_51), write) in _51.val_int) <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+; [eval] (unfolding acc(usize(_51), write) in _51.val_int)
+(set-option :timeout 0)
+(push) ; 12
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@444@01 $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+(pop) ; 12
+; Joined path conditions
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+(set-option :timeout 0)
+(push) ; 12
+; [eval] read$()
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+(push) ; 13
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 12
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 12
+(assert (not (<=
+  val_int@530@01
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(assert (<=
+  val_int@530@01
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01)))
+; [eval] 0 <= (unfolding acc(usize(_11), write) in _11.val_int)
+; [eval] (unfolding acc(usize(_11), write) in _11.val_int)
+(push) ; 12
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@444@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+(pop) ; 12
+; Joined path conditions
+; [eval] (unfolding acc(usize(_11), write) in _11.val_int) < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref)
+; [eval] (unfolding acc(usize(_11), write) in _11.val_int)
+(set-option :timeout 0)
+(push) ; 12
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@444@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+(pop) ; 12
+; Joined path conditions
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_1.val_ref)
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (-
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+; [eval] read$()
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+(push) ; 13
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@453@01)))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(assert (not (=>
+  (< $Perm.No (read$ $Snap.unit))
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 12
+; Joined path conditions
+; [eval] 2 <= _2
+; [eval] _2 < 18446744073709551615
+; [eval] _48.val_ref.f$value.val_int == (unfolding acc(usize(_11), write) in m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int))
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [eval] (unfolding acc(usize(_11), write) in m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int))
+(set-option :timeout 0)
+(push) ; 12
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@444@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (-
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+; [eval] read$()
+(push) ; 14
+(pop) ; 14
+; Joined path conditions
+(push) ; 14
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@453@01)))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 14
+(assert (not (=>
+  (< $Perm.No (read$ $Snap.unit))
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))))))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+; [eval] 0 <= _pure_2
+; [eval] _pure_2 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(set-option :timeout 0)
+(push) ; 14
+; [eval] read$()
+(push) ; 15
+(pop) ; 15
+; Joined path conditions
+(push) ; 15
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 15
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 15
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@453@01)))
+(check-sat)
+; unsat
+(pop) ; 15
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 15
+(assert (not (=>
+  (< $Perm.No (read$ $Snap.unit))
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))))))
+(check-sat)
+; unsat
+(pop) ; 15
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 15
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 15
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 14
+; Joined path conditions
+; [eval] 0 <= _pure_2
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition ($Snap.combine
+  $t@363@01
+  ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))) $t@453@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))
+(pop) ; 13
+; Joined path conditions
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition ($Snap.combine
+  $t@363@01
+  ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))) $t@453@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))
+(pop) ; 12
+; Joined path conditions
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition ($Snap.combine
+  $t@363@01
+  ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))) $t@453@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))
+; [eval] _48.val_ref.f$weight.val_int == (unfolding acc(usize(_11), write) in m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int))
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [eval] (unfolding acc(usize(_11), write) in m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int))
+(set-option :timeout 0)
+(push) ; 12
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@444@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$(_1.val_ref, _11.val_int)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (-
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+; [eval] read$()
+(push) ; 14
+(pop) ; 14
+; Joined path conditions
+(push) ; 14
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@453@01)))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 14
+(assert (not (=>
+  (< $Perm.No (read$ $Snap.unit))
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))))))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+; [eval] 0 <= _pure_2
+; [eval] _pure_2 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(set-option :timeout 0)
+(push) ; 14
+; [eval] read$()
+(push) ; 15
+(pop) ; 15
+; Joined path conditions
+(push) ; 15
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 15
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 15
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@453@01)))
+(check-sat)
+; unsat
+(pop) ; 15
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 15
+(assert (not (=>
+  (< $Perm.No (read$ $Snap.unit))
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))))))
+(check-sat)
+; unsat
+(pop) ; 15
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 15
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 15
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 14
+; Joined path conditions
+; [eval] 0 <= _pure_2
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition ($Snap.combine
+  $t@363@01
+  ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))) $t@453@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))
+(pop) ; 13
+; Joined path conditions
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition ($Snap.combine
+  $t@363@01
+  ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))) $t@453@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))
+(pop) ; 12
+; Joined path conditions
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition ($Snap.combine
+  $t@363@01
+  ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))) $t@453@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))
+; [eval] (forall ii: Int, wi: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0)
+(declare-const ii@541@01 Int)
+(declare-const wi@542@01 Int)
+(set-option :timeout 0)
+(push) ; 12
+; [eval] 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0
+; [eval] 0 <= ii && (ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)))
+; [eval] 0 <= ii
+(push) ; 13
+; [then-branch: 91 | !(0 <= ii@541@01) | live]
+; [else-branch: 91 | 0 <= ii@541@01 | live]
+(push) ; 14
+; [then-branch: 91 | !(0 <= ii@541@01)]
+(assert (not (<= 0 ii@541@01)))
+(pop) ; 14
+(push) ; 14
+; [else-branch: 91 | 0 <= ii@541@01]
+(assert (<= 0 ii@541@01))
+; [eval] ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+(push) ; 15
+; [eval] read$()
+(push) ; 16
+(pop) ; 16
+; Joined path conditions
+(push) ; 16
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 16
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 15
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 15
+; [then-branch: 92 | !(ii@541@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01)) | live]
+; [else-branch: 92 | ii@541@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01) | live]
+(push) ; 16
+; [then-branch: 92 | !(ii@541@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01))]
+(assert (not
+  (<
+    ii@541@01
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      $Snap.unit) ret@230@01))))
+(pop) ; 16
+(push) ; 16
+; [else-branch: 92 | ii@541@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01)]
+(assert (<
+  ii@541@01
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01)))
+; [eval] 0 <= wi
+(push) ; 17
+; [then-branch: 93 | !(0 <= wi@542@01) | live]
+; [else-branch: 93 | 0 <= wi@542@01 | live]
+(push) ; 18
+; [then-branch: 93 | !(0 <= wi@542@01)]
+(assert (not (<= 0 wi@542@01)))
+(pop) ; 18
+(push) ; 18
+; [else-branch: 93 | 0 <= wi@542@01]
+(assert (<= 0 wi@542@01))
+; [eval] wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+(push) ; 19
+; [eval] read$()
+(push) ; 20
+(pop) ; 20
+; Joined path conditions
+(push) ; 20
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 20
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 20
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 20
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 19
+; Joined path conditions
+(pop) ; 18
+(pop) ; 17
+; Joined path conditions
+; Joined path conditions
+(assert (or (<= 0 wi@542@01) (not (<= 0 wi@542@01))))
+(pop) ; 16
+(pop) ; 15
+; Joined path conditions
+; Joined path conditions
+(assert (=>
+  (<
+    ii@541@01
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      $Snap.unit) ret@230@01))
+  (and
+    (<
+      ii@541@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (or (<= 0 wi@542@01) (not (<= 0 wi@542@01))))))
+(assert (or
+  (<
+    ii@541@01
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      $Snap.unit) ret@230@01))
+  (not
+    (<
+      ii@541@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01)))))
+(pop) ; 14
+(pop) ; 13
+; Joined path conditions
+; Joined path conditions
+(assert (=>
+  (<= 0 ii@541@01)
+  (and
+    (<= 0 ii@541@01)
+    (=>
+      (<
+        ii@541@01
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          $Snap.unit) ret@230@01))
+      (and
+        (<
+          ii@541@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (or (<= 0 wi@542@01) (not (<= 0 wi@542@01)))))
+    (or
+      (<
+        ii@541@01
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          $Snap.unit) ret@230@01))
+      (not
+        (<
+          ii@541@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01)))))))
+(assert (or (<= 0 ii@541@01) (not (<= 0 ii@541@01))))
+(set-option :timeout 0)
+(push) ; 13
+; [then-branch: 94 | 0 <= ii@541@01 && ii@541@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01) && 0 <= wi@542@01 && wi@542@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01) | live]
+; [else-branch: 94 | !(0 <= ii@541@01 && ii@541@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01) && 0 <= wi@542@01 && wi@542@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01)) | live]
+(push) ; 14
+; [then-branch: 94 | 0 <= ii@541@01 && ii@541@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01) && 0 <= wi@542@01 && wi@542@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01)]
+(assert (and
+  (<= 0 ii@541@01)
+  (and
+    (<
+      ii@541@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (and
+      (<= 0 wi@542@01)
+      (<
+        wi@542@01
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          $Snap.unit) ret@230@01))))))
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) >= 0
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)
+(push) ; 15
+; [eval] read$()
+(push) ; 16
+(pop) ; 16
+; Joined path conditions
+(push) ; 16
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 16
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+; [eval] 0 <= _pure_2
+; [eval] _pure_2 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(set-option :timeout 0)
+(push) ; 16
+; [eval] read$()
+(push) ; 17
+(pop) ; 17
+; Joined path conditions
+(push) ; 17
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 16
+; Joined path conditions
+; [eval] 0 <= _pure_3
+; [eval] _pure_3 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(set-option :timeout 0)
+(push) ; 16
+; [eval] read$()
+(push) ; 17
+(pop) ; 17
+; Joined path conditions
+(push) ; 17
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 16
+; Joined path conditions
+; [eval] 0 <= _pure_2
+; [eval] 0 <= _pure_3
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+    $t@522@01
+    ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+  ($Snap.combine
+    $Snap.unit
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01))
+(pop) ; 15
+; Joined path conditions
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+    $t@522@01
+    ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+  ($Snap.combine
+    $Snap.unit
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01))
+(pop) ; 14
+(set-option :timeout 0)
+(push) ; 14
+; [else-branch: 94 | !(0 <= ii@541@01 && ii@541@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01) && 0 <= wi@542@01 && wi@542@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01))]
+(assert (not
+  (and
+    (<= 0 ii@541@01)
+    (and
+      (<
+        ii@541@01
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          $Snap.unit) ret@230@01))
+      (and
+        (<= 0 wi@542@01)
+        (<
+          wi@542@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01)))))))
+(pop) ; 14
+(pop) ; 13
+; Joined path conditions
+(assert (=>
+  (and
+    (<= 0 ii@541@01)
+    (and
+      (<
+        ii@541@01
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          $Snap.unit) ret@230@01))
+      (and
+        (<= 0 wi@542@01)
+        (<
+          wi@542@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01)))))
+  (and
+    (<= 0 ii@541@01)
+    (<
+      ii@541@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (<= 0 wi@542@01)
+    (<
+      wi@542@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01))))
+; Joined path conditions
+(assert (or
+  (not
+    (and
+      (<= 0 ii@541@01)
+      (and
+        (<
+          ii@541@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (and
+          (<= 0 wi@542@01)
+          (<
+            wi@542@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))))))
+  (and
+    (<= 0 ii@541@01)
+    (and
+      (<
+        ii@541@01
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          $Snap.unit) ret@230@01))
+      (and
+        (<= 0 wi@542@01)
+        (<
+          wi@542@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01)))))))
+(pop) ; 12
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((ii@541@01 Int) (wi@542@01 Int)) (!
+  (and
+    (=>
+      (<= 0 ii@541@01)
+      (and
+        (<= 0 ii@541@01)
+        (=>
+          (<
+            ii@541@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (and
+            (<
+              ii@541@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01))
+            (or (<= 0 wi@542@01) (not (<= 0 wi@542@01)))))
+        (or
+          (<
+            ii@541@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (not
+            (<
+              ii@541@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01))))))
+    (or (<= 0 ii@541@01) (not (<= 0 ii@541@01)))
+    (=>
+      (and
+        (<= 0 ii@541@01)
+        (and
+          (<
+            ii@541@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (and
+            (<= 0 wi@542@01)
+            (<
+              wi@542@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01)))))
+      (and
+        (<= 0 ii@541@01)
+        (<
+          ii@541@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (<= 0 wi@542@01)
+        (<
+          wi@542@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01)))
+    (or
+      (not
+        (and
+          (<= 0 ii@541@01)
+          (and
+            (<
+              ii@541@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01))
+            (and
+              (<= 0 wi@542@01)
+              (<
+                wi@542@01
+                (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                    $t@522@01
+                    ($Snap.combine
+                      ($SortWrappers.IntTo$Snap val_int@493@01)
+                      $Snap.unit))))
+                  $Snap.unit) ret@230@01))))))
+      (and
+        (<= 0 ii@541@01)
+        (and
+          (<
+            ii@541@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (and
+            (<= 0 wi@542@01)
+            (<
+              wi@542@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01)))))))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@1805@2742@2430-aux|)))
+(assert (forall ((ii@541@01 Int) (wi@542@01 Int)) (!
+  (and
+    (=>
+      (<= 0 ii@541@01)
+      (and
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          $Snap.unit) ret@230@01)
+        (=>
+          (and
+            (<
+              ii@541@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01))
+            (<= 0 wi@542@01))
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))))
+    (=>
+      (and
+        (<= 0 ii@541@01)
+        (and
+          (<
+            ii@541@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (and
+            (<= 0 wi@542@01)
+            (<
+              wi@542@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01)))))
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01)))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@1805@2742@2430_precondition|)))
+(push) ; 12
+(assert (not (forall ((ii@541@01 Int) (wi@542@01 Int)) (!
+  (=>
+    (and
+      (and
+        (=>
+          (<= 0 ii@541@01)
+          (and
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01)
+            (=>
+              (and
+                (<
+                  ii@541@01
+                  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                      $t@522@01
+                      ($Snap.combine
+                        ($SortWrappers.IntTo$Snap val_int@493@01)
+                        $Snap.unit))))
+                    $Snap.unit) ret@230@01))
+                (<= 0 wi@542@01))
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01))))
+        (=>
+          (and
+            (<= 0 ii@541@01)
+            (and
+              (<
+                ii@541@01
+                (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                    $t@522@01
+                    ($Snap.combine
+                      ($SortWrappers.IntTo$Snap val_int@493@01)
+                      $Snap.unit))))
+                  $Snap.unit) ret@230@01))
+              (and
+                (<= 0 wi@542@01)
+                (<
+                  wi@542@01
+                  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                      $t@522@01
+                      ($Snap.combine
+                        ($SortWrappers.IntTo$Snap val_int@493@01)
+                        $Snap.unit))))
+                    $Snap.unit) ret@230@01)))))
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01)))
+      (and
+        (<= 0 ii@541@01)
+        (and
+          (<
+            ii@541@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (and
+            (<= 0 wi@542@01)
+            (<
+              wi@542@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01))))))
+    (>=
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01)
+      0))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@1805@2742@2430|))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(assert (forall ((ii@541@01 Int) (wi@542@01 Int)) (!
+  (=>
+    (and
+      (<= 0 ii@541@01)
+      (and
+        (<
+          ii@541@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (and
+          (<= 0 wi@542@01)
+          (<
+            wi@542@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01)))))
+    (>=
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01)
+      0))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@541@01 wi@542@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@1805@2742@2430|)))
+; [eval] (unfolding acc(usize(_11), write) in (forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)))
+(push) ; 12
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@444@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+; [eval] (forall ii: Int, wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi) } 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi))
+(declare-const ii@543@01 Int)
+(declare-const wi@544@01 Int)
+(set-option :timeout 0)
+(push) ; 13
+; [eval] 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3))) ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)
+; [eval] 0 <= ii && (ii <= _11.val_int && (0 <= wi && wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)))
+; [eval] 0 <= ii
+(push) ; 14
+; [then-branch: 95 | !(0 <= ii@543@01) | live]
+; [else-branch: 95 | 0 <= ii@543@01 | live]
+(push) ; 15
+; [then-branch: 95 | !(0 <= ii@543@01)]
+(assert (not (<= 0 ii@543@01)))
+(pop) ; 15
+(push) ; 15
+; [else-branch: 95 | 0 <= ii@543@01]
+(assert (<= 0 ii@543@01))
+; [eval] ii <= _11.val_int
+(push) ; 16
+; [then-branch: 96 | !(ii@543@01 <= First:($t@454@01)) | live]
+; [else-branch: 96 | ii@543@01 <= First:($t@454@01) | live]
+(push) ; 17
+; [then-branch: 96 | !(ii@543@01 <= First:($t@454@01))]
+(assert (not (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))))
+(pop) ; 17
+(push) ; 17
+; [else-branch: 96 | ii@543@01 <= First:($t@454@01)]
+(assert (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))
+; [eval] 0 <= wi
+(push) ; 18
+; [then-branch: 97 | !(0 <= wi@544@01) | live]
+; [else-branch: 97 | 0 <= wi@544@01 | live]
+(push) ; 19
+; [then-branch: 97 | !(0 <= wi@544@01)]
+(assert (not (<= 0 wi@544@01)))
+(pop) ; 19
+(push) ; 19
+; [else-branch: 97 | 0 <= wi@544@01]
+(assert (<= 0 wi@544@01))
+; [eval] wi < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+(push) ; 20
+; [eval] read$()
+(push) ; 21
+(pop) ; 21
+; Joined path conditions
+(push) ; 21
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 21
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 21
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 21
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 20
+; Joined path conditions
+(pop) ; 19
+(pop) ; 18
+; Joined path conditions
+; Joined path conditions
+(assert (or (<= 0 wi@544@01) (not (<= 0 wi@544@01))))
+(pop) ; 17
+(pop) ; 16
+; Joined path conditions
+; Joined path conditions
+(assert (=>
+  (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+  (and
+    (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+    (or (<= 0 wi@544@01) (not (<= 0 wi@544@01))))))
+(assert (or
+  (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+  (not (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))))
+(pop) ; 15
+(pop) ; 14
+; Joined path conditions
+; Joined path conditions
+(assert (=>
+  (<= 0 ii@543@01)
+  (and
+    (<= 0 ii@543@01)
+    (=>
+      (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+      (and
+        (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+        (or (<= 0 wi@544@01) (not (<= 0 wi@544@01)))))
+    (or
+      (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+      (not (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))))))
+(assert (or (<= 0 ii@543@01) (not (<= 0 ii@543@01))))
+(set-option :timeout 0)
+(push) ; 14
+; [then-branch: 98 | 0 <= ii@543@01 && ii@543@01 <= First:($t@454@01) && 0 <= wi@544@01 && wi@544@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01) | live]
+; [else-branch: 98 | !(0 <= ii@543@01 && ii@543@01 <= First:($t@454@01) && 0 <= wi@544@01 && wi@544@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01)) | live]
+(push) ; 15
+; [then-branch: 98 | 0 <= ii@543@01 && ii@543@01 <= First:($t@454@01) && 0 <= wi@544@01 && wi@544@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01)]
+(assert (and
+  (<= 0 ii@543@01)
+  (and
+    (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+    (and
+      (<= 0 wi@544@01)
+      (<
+        wi@544@01
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          $Snap.unit) ret@230@01))))))
+; [eval] m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)
+; [eval] m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, ii, wi, _2)
+(push) ; 16
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (-
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 16
+; [eval] read$()
+(push) ; 17
+(pop) ; 17
+; Joined path conditions
+(push) ; 17
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@453@01)))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 17
+(assert (not (=>
+  (< $Perm.No (read$ $Snap.unit))
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+; [eval] 0 <= _pure_2
+; [eval] _pure_2 <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(set-option :timeout 0)
+(push) ; 17
+; [eval] read$()
+(push) ; 18
+(pop) ; 18
+; Joined path conditions
+(push) ; 18
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 18
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@453@01)))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 18
+(assert (not (=>
+  (< $Perm.No (read$ $Snap.unit))
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 18
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 17
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 17
+(assert (not (<=
+  ii@543@01
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    $t@363@01
+    $Snap.unit) $t@453@01))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(assert (<=
+  ii@543@01
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    $t@363@01
+    $Snap.unit) $t@453@01)))
+; [eval] 0 <= _pure_3
+; [eval] _pure_3 <= _pure_4
+(push) ; 17
+(assert (not (<= wi@544@01 _2@101@01)))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(assert (<= wi@544@01 _2@101@01))
+; [eval] 0 <= _pure_2
+; [eval] 0 <= _pure_3
+; [eval] 0 <= _pure_4
+(push) ; 17
+(assert (not (<= 0 _2@101@01)))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(assert (<= 0 _2@101@01))
+(assert (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+  $t@363@01
+  ($Snap.combine
+    $Snap.unit
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01))
+(pop) ; 16
+; Joined path conditions
+(assert (and
+  (<=
+    ii@543@01
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      $t@363@01
+      $Snap.unit) $t@453@01))
+  (<= wi@544@01 _2@101@01)
+  (<= 0 _2@101@01)
+  (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+    $t@363@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01)))
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, wi)
+(push) ; 16
+; [eval] read$()
+(push) ; 17
+(pop) ; 17
+; Joined path conditions
+(push) ; 17
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+; [eval] 0 <= _pure_2
+; [eval] _pure_2 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(set-option :timeout 0)
+(push) ; 17
+; [eval] read$()
+(push) ; 18
+(pop) ; 18
+; Joined path conditions
+(push) ; 18
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 18
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 17
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 17
+(assert (not (<
+  ii@543@01
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(assert (<
+  ii@543@01
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01)))
+; [eval] 0 <= _pure_3
+; [eval] _pure_3 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(push) ; 17
+; [eval] read$()
+(push) ; 18
+(pop) ; 18
+; Joined path conditions
+(push) ; 18
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 18
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 17
+; Joined path conditions
+; [eval] 0 <= _pure_2
+; [eval] 0 <= _pure_3
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+    $t@522@01
+    ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+  ($Snap.combine
+    $Snap.unit
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01))
+(pop) ; 16
+; Joined path conditions
+(assert (and
+  (<
+    ii@543@01
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      $Snap.unit) ret@230@01))
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01)))
+(pop) ; 15
+(set-option :timeout 0)
+(push) ; 15
+; [else-branch: 98 | !(0 <= ii@543@01 && ii@543@01 <= First:($t@454@01) && 0 <= wi@544@01 && wi@544@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01))]
+(assert (not
+  (and
+    (<= 0 ii@543@01)
+    (and
+      (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+      (and
+        (<= 0 wi@544@01)
+        (<
+          wi@544@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01)))))))
+(pop) ; 15
+(pop) ; 14
+; Joined path conditions
+(assert (=>
+  (and
+    (<= 0 ii@543@01)
+    (and
+      (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+      (and
+        (<= 0 wi@544@01)
+        (<
+          wi@544@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01)))))
+  (and
+    (<= 0 ii@543@01)
+    (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+    (<= 0 wi@544@01)
+    (<
+      wi@544@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (<=
+      ii@543@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        $t@363@01
+        $Snap.unit) $t@453@01))
+    (<= wi@544@01 _2@101@01)
+    (<= 0 _2@101@01)
+    (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+      $t@363@01
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01)
+    (<
+      ii@543@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01))))
+; Joined path conditions
+(assert (or
+  (not
+    (and
+      (<= 0 ii@543@01)
+      (and
+        (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+        (and
+          (<= 0 wi@544@01)
+          (<
+            wi@544@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))))))
+  (and
+    (<= 0 ii@543@01)
+    (and
+      (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+      (and
+        (<= 0 wi@544@01)
+        (<
+          wi@544@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01)))))))
+(pop) ; 13
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((ii@543@01 Int) (wi@544@01 Int)) (!
+  (and
+    (=>
+      (<= 0 ii@543@01)
+      (and
+        (<= 0 ii@543@01)
+        (=>
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (and
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (or (<= 0 wi@544@01) (not (<= 0 wi@544@01)))))
+        (or
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (not (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))))))
+    (or (<= 0 ii@543@01) (not (<= 0 ii@543@01)))
+    (=>
+      (and
+        (<= 0 ii@543@01)
+        (and
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (and
+            (<= 0 wi@544@01)
+            (<
+              wi@544@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01)))))
+      (and
+        (<= 0 ii@543@01)
+        (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+        (<= 0 wi@544@01)
+        (<
+          wi@544@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (<=
+          ii@543@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            $t@363@01
+            $Snap.unit) $t@453@01))
+        (<= wi@544@01 _2@101@01)
+        (<= 0 _2@101@01)
+        (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+          $t@363@01
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01)
+        (<
+          ii@543@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01)))
+    (or
+      (not
+        (and
+          (<= 0 ii@543@01)
+          (and
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (and
+              (<= 0 wi@544@01)
+              (<
+                wi@544@01
+                (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                    $t@522@01
+                    ($Snap.combine
+                      ($SortWrappers.IntTo$Snap val_int@493@01)
+                      $Snap.unit))))
+                  $Snap.unit) ret@230@01))))))
+      (and
+        (<= 0 ii@543@01)
+        (and
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (and
+            (<= 0 wi@544@01)
+            (<
+              wi@544@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01)))))))
+  :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+    $t@363@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@2474@2742@3072-aux|)))
+(assert (forall ((ii@543@01 Int) (wi@544@01 Int)) (!
+  (and
+    (=>
+      (<= 0 ii@543@01)
+      (and
+        (<= 0 ii@543@01)
+        (=>
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (and
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (or (<= 0 wi@544@01) (not (<= 0 wi@544@01)))))
+        (or
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (not (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))))))
+    (or (<= 0 ii@543@01) (not (<= 0 ii@543@01)))
+    (=>
+      (and
+        (<= 0 ii@543@01)
+        (and
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (and
+            (<= 0 wi@544@01)
+            (<
+              wi@544@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01)))))
+      (and
+        (<= 0 ii@543@01)
+        (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+        (<= 0 wi@544@01)
+        (<
+          wi@544@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (<=
+          ii@543@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            $t@363@01
+            $Snap.unit) $t@453@01))
+        (<= wi@544@01 _2@101@01)
+        (<= 0 _2@101@01)
+        (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+          $t@363@01
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01)
+        (<
+          ii@543@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01)))
+    (or
+      (not
+        (and
+          (<= 0 ii@543@01)
+          (and
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (and
+              (<= 0 wi@544@01)
+              (<
+                wi@544@01
+                (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                    $t@522@01
+                    ($Snap.combine
+                      ($SortWrappers.IntTo$Snap val_int@493@01)
+                      $Snap.unit))))
+                  $Snap.unit) ret@230@01))))))
+      (and
+        (<= 0 ii@543@01)
+        (and
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (and
+            (<= 0 wi@544@01)
+            (<
+              wi@544@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01)))))))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@2474@2742@3072-aux|)))
+(pop) ; 12
+; Joined path conditions
+(assert (and
+  (forall ((ii@543@01 Int) (wi@544@01 Int)) (!
+    (and
+      (=>
+        (<= 0 ii@543@01)
+        (and
+          (<= 0 ii@543@01)
+          (=>
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (and
+              (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+              (or (<= 0 wi@544@01) (not (<= 0 wi@544@01)))))
+          (or
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (not
+              (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))))))
+      (or (<= 0 ii@543@01) (not (<= 0 ii@543@01)))
+      (=>
+        (and
+          (<= 0 ii@543@01)
+          (and
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (and
+              (<= 0 wi@544@01)
+              (<
+                wi@544@01
+                (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                    $t@522@01
+                    ($Snap.combine
+                      ($SortWrappers.IntTo$Snap val_int@493@01)
+                      $Snap.unit))))
+                  $Snap.unit) ret@230@01)))))
+        (and
+          (<= 0 ii@543@01)
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (<= 0 wi@544@01)
+          (<
+            wi@544@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (<=
+            ii@543@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              $t@363@01
+              $Snap.unit) $t@453@01))
+          (<= wi@544@01 _2@101@01)
+          (<= 0 _2@101@01)
+          (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+            $t@363@01
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine
+                      $Snap.unit
+                      ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01)
+          (<
+            ii@543@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01)))
+      (or
+        (not
+          (and
+            (<= 0 ii@543@01)
+            (and
+              (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+              (and
+                (<= 0 wi@544@01)
+                (<
+                  wi@544@01
+                  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                      $t@522@01
+                      ($Snap.combine
+                        ($SortWrappers.IntTo$Snap val_int@493@01)
+                        $Snap.unit))))
+                    $Snap.unit) ret@230@01))))))
+        (and
+          (<= 0 ii@543@01)
+          (and
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (and
+              (<= 0 wi@544@01)
+              (<
+                wi@544@01
+                (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                    $t@522@01
+                    ($Snap.combine
+                      ($SortWrappers.IntTo$Snap val_int@493@01)
+                      $Snap.unit))))
+                  $Snap.unit) ret@230@01)))))))
+    :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+      $t@363@01
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@2474@2742@3072-aux|))
+  (forall ((ii@543@01 Int) (wi@544@01 Int)) (!
+    (and
+      (=>
+        (<= 0 ii@543@01)
+        (and
+          (<= 0 ii@543@01)
+          (=>
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (and
+              (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+              (or (<= 0 wi@544@01) (not (<= 0 wi@544@01)))))
+          (or
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (not
+              (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))))))
+      (or (<= 0 ii@543@01) (not (<= 0 ii@543@01)))
+      (=>
+        (and
+          (<= 0 ii@543@01)
+          (and
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (and
+              (<= 0 wi@544@01)
+              (<
+                wi@544@01
+                (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                    $t@522@01
+                    ($Snap.combine
+                      ($SortWrappers.IntTo$Snap val_int@493@01)
+                      $Snap.unit))))
+                  $Snap.unit) ret@230@01)))))
+        (and
+          (<= 0 ii@543@01)
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (<= 0 wi@544@01)
+          (<
+            wi@544@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (<=
+            ii@543@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              $t@363@01
+              $Snap.unit) $t@453@01))
+          (<= wi@544@01 _2@101@01)
+          (<= 0 _2@101@01)
+          (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+            $t@363@01
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine
+                      $Snap.unit
+                      ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01)
+          (<
+            ii@543@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01)))
+      (or
+        (not
+          (and
+            (<= 0 ii@543@01)
+            (and
+              (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+              (and
+                (<= 0 wi@544@01)
+                (<
+                  wi@544@01
+                  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                      $t@522@01
+                      ($Snap.combine
+                        ($SortWrappers.IntTo$Snap val_int@493@01)
+                        $Snap.unit))))
+                    $Snap.unit) ret@230@01))))))
+        (and
+          (<= 0 ii@543@01)
+          (and
+            (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+            (and
+              (<= 0 wi@544@01)
+              (<
+                wi@544@01
+                (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                    $t@522@01
+                    ($Snap.combine
+                      ($SortWrappers.IntTo$Snap val_int@493@01)
+                      $Snap.unit))))
+                  $Snap.unit) ret@230@01)))))))
+    :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@2474@2742@3072-aux|))))
+(assert (forall ((ii@543@01 Int) (wi@544@01 Int)) (!
+  (and
+    (=>
+      (and
+        (<= 0 ii@543@01)
+        (and
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (<= 0 wi@544@01)))
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (=>
+      (and
+        (<= 0 ii@543@01)
+        (and
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (and
+            (<= 0 wi@544@01)
+            (<
+              wi@544@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01)))))
+      (and
+        (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+          $t@363@01
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01)
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01))))
+  :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+    $t@363@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@2474@2742@3072_precondition|)))
+(push) ; 12
+(assert (not (forall ((ii@543@01 Int) (wi@544@01 Int)) (!
+  (=>
+    (and
+      (and
+        (=>
+          (and
+            (<= 0 ii@543@01)
+            (and
+              (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+              (<= 0 wi@544@01)))
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (=>
+          (and
+            (<= 0 ii@543@01)
+            (and
+              (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+              (and
+                (<= 0 wi@544@01)
+                (<
+                  wi@544@01
+                  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                      $t@522@01
+                      ($Snap.combine
+                        ($SortWrappers.IntTo$Snap val_int@493@01)
+                        $Snap.unit))))
+                    $Snap.unit) ret@230@01)))))
+          (and
+            (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+              $t@363@01
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine
+                      $Snap.unit
+                      ($Snap.combine
+                        $Snap.unit
+                        ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01)
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine
+                      $Snap.unit
+                      ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01))))
+      (and
+        (<= 0 ii@543@01)
+        (and
+          (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+          (and
+            (<= 0 wi@544@01)
+            (<
+              wi@544@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01))))))
+    (=
+      (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ ($Snap.combine
+        $t@363@01
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01)
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01)))
+  :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+    $t@363@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@2474@2742@3072|))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.02s
+; (get-info :all-statistics)
+(assert (forall ((ii@543@01 Int) (wi@544@01 Int)) (!
+  (=>
+    (and
+      (<= 0 ii@543@01)
+      (and
+        (<= ii@543@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)))
+        (and
+          (<= 0 wi@544@01)
+          (<
+            wi@544@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01)))))
+    (=
+      (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ ($Snap.combine
+        $t@363@01
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01)
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01)))
+  :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+    $t@363@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 ii@543@01 wi@544@01 _2@101@01))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@543@01 wi@544@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@2474@2742@3072|)))
+; [eval] (unfolding acc(usize(_11), write) in (unfolding acc(usize(_51), write) in (let _LET_0 == (_11.val_int + 1) in (forall wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi)))))
+(push) ; 12
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@444@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+; [eval] (unfolding acc(usize(_51), write) in (let _LET_0 == (_11.val_int + 1) in (forall wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi))))
+(set-option :timeout 0)
+(push) ; 13
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (= ret@289@01 $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 14
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (= ret@491@01 $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 14
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (= ret@444@01 $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 14
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 14
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  $t@526@01)))
+(check-sat)
+; unknown
+(pop) ; 14
+; 0.01s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+; [eval] (let _LET_0 == (_11.val_int + 1) in (forall wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi)))
+; [eval] _11.val_int + 1
+(declare-const letvar@545@01 Int)
+(assert (=
+  (as letvar@545@01  Int)
+  (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)))
+; [eval] (forall wi: Int :: { m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2) } { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi) } 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi))
+(declare-const wi@546@01 Int)
+(set-option :timeout 0)
+(push) ; 14
+; [eval] 0 <= wi && wi < _51.val_int ==> m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi)
+; [eval] 0 <= wi && wi < _51.val_int
+; [eval] 0 <= wi
+(push) ; 15
+; [then-branch: 99 | !(0 <= wi@546@01) | live]
+; [else-branch: 99 | 0 <= wi@546@01 | live]
+(push) ; 16
+; [then-branch: 99 | !(0 <= wi@546@01)]
+(assert (not (<= 0 wi@546@01)))
+(pop) ; 16
+(push) ; 16
+; [else-branch: 99 | 0 <= wi@546@01]
+(assert (<= 0 wi@546@01))
+; [eval] wi < _51.val_int
+(pop) ; 16
+(pop) ; 15
+; Joined path conditions
+; Joined path conditions
+(assert (or (<= 0 wi@546@01) (not (<= 0 wi@546@01))))
+(push) ; 15
+; [then-branch: 100 | 0 <= wi@546@01 && wi@546@01 < val_int@530@01 | live]
+; [else-branch: 100 | !(0 <= wi@546@01 && wi@546@01 < val_int@530@01) | live]
+(push) ; 16
+; [then-branch: 100 | 0 <= wi@546@01 && wi@546@01 < val_int@530@01]
+(assert (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01)))
+; [eval] m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2) == m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi)
+; [eval] m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$(_1.val_ref, _LET_0, wi, _2)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (-
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 17
+; [eval] read$()
+(push) ; 18
+(pop) ; 18
+; Joined path conditions
+(push) ; 18
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 18
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@453@01)))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 18
+(assert (not (=>
+  (< $Perm.No (read$ $Snap.unit))
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 18
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+; [eval] 0 <= _pure_2
+(set-option :timeout 0)
+(push) ; 18
+(assert (not (<= 0 (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(assert (<= 0 (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)))
+; [eval] _pure_2 <= m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(push) ; 18
+; [eval] read$()
+(push) ; 19
+(pop) ; 19
+; Joined path conditions
+(push) ; 19
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 19
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@453@01)))
+(check-sat)
+; unsat
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 19
+(assert (not (=>
+  (< $Perm.No (read$ $Snap.unit))
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))))))
+(check-sat)
+; unsat
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 19
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 18
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 18
+(assert (not (<=
+  (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    $t@363@01
+    $Snap.unit) $t@453@01))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(assert (<=
+  (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    $t@363@01
+    $Snap.unit) $t@453@01)))
+; [eval] 0 <= _pure_3
+; [eval] _pure_3 <= _pure_4
+(push) ; 18
+(assert (not (<= wi@546@01 _2@101@01)))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(assert (<= wi@546@01 _2@101@01))
+; [eval] 0 <= _pure_2
+; [eval] 0 <= _pure_3
+; [eval] 0 <= _pure_4
+(push) ; 18
+(assert (not (<= 0 _2@101@01)))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(assert (<= 0 _2@101@01))
+(assert (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+  $t@363@01
+  ($Snap.combine
+    $Snap.unit
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+  ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+  1) wi@546@01 _2@101@01))
+(pop) ; 17
+; Joined path conditions
+(assert (and
+  (<= 0 (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))
+  (<=
+    (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      $t@363@01
+      $Snap.unit) $t@453@01))
+  (<= wi@546@01 _2@101@01)
+  (<= 0 _2@101@01)
+  (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+    $t@363@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    1) wi@546@01 _2@101@01)))
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, _LET_0, wi)
+(push) ; 17
+; [eval] read$()
+(push) ; 18
+(pop) ; 18
+; Joined path conditions
+(push) ; 18
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 18
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+; [eval] 0 <= _pure_2
+; [eval] _pure_2 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(set-option :timeout 0)
+(push) ; 18
+; [eval] read$()
+(push) ; 19
+(pop) ; 19
+; Joined path conditions
+(push) ; 19
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 19
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 18
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 18
+(assert (not (<
+  (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(assert (<
+  (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01)))
+; [eval] 0 <= _pure_3
+; [eval] _pure_3 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(push) ; 18
+; [eval] read$()
+(push) ; 19
+(pop) ; 19
+; Joined path conditions
+(push) ; 19
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 19
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 18
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 18
+(assert (not (<
+  wi@546@01
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(assert (<
+  wi@546@01
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01)))
+; [eval] 0 <= _pure_2
+; [eval] 0 <= _pure_3
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+    $t@522@01
+    ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+  ($Snap.combine
+    $Snap.unit
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+  ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+  1) wi@546@01))
+(pop) ; 17
+; Joined path conditions
+(assert (and
+  (<
+    (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      $Snap.unit) ret@230@01))
+  (<
+    wi@546@01
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      $Snap.unit) ret@230@01))
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    1) wi@546@01)))
+(pop) ; 16
+(push) ; 16
+; [else-branch: 100 | !(0 <= wi@546@01 && wi@546@01 < val_int@530@01)]
+(assert (not (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))))
+(pop) ; 16
+(pop) ; 15
+; Joined path conditions
+(assert (=>
+  (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))
+  (and
+    (<= 0 wi@546@01)
+    (< wi@546@01 val_int@530@01)
+    (<= 0 (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))
+    (<=
+      (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        $t@363@01
+        $Snap.unit) $t@453@01))
+    (<= wi@546@01 _2@101@01)
+    (<= 0 _2@101@01)
+    (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+      $t@363@01
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+      ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+      1) wi@546@01 _2@101@01)
+    (<
+      (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (<
+      wi@546@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+      ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+      1) wi@546@01))))
+; Joined path conditions
+(assert (or
+  (not (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01)))
+  (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))))
+(pop) ; 14
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((wi@546@01 Int)) (!
+  (and
+    (or (<= 0 wi@546@01) (not (<= 0 wi@546@01)))
+    (=>
+      (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))
+      (and
+        (<= 0 wi@546@01)
+        (< wi@546@01 val_int@530@01)
+        (<= 0 (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))
+        (<=
+          (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            $t@363@01
+            $Snap.unit) $t@453@01))
+        (<= wi@546@01 _2@101@01)
+        (<= 0 _2@101@01)
+        (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+          $t@363@01
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+          ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+          1) wi@546@01 _2@101@01)
+        (<
+          (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (<
+          wi@546@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+          ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+          1) wi@546@01)))
+    (or
+      (not (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01)))
+      (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))))
+  :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+    $t@363@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    1) wi@546@01 _2@101@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3190@2742@3584-aux|)))
+(assert (forall ((wi@546@01 Int)) (!
+  (and
+    (or (<= 0 wi@546@01) (not (<= 0 wi@546@01)))
+    (=>
+      (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))
+      (and
+        (<= 0 wi@546@01)
+        (< wi@546@01 val_int@530@01)
+        (<= 0 (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))
+        (<=
+          (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            $t@363@01
+            $Snap.unit) $t@453@01))
+        (<= wi@546@01 _2@101@01)
+        (<= 0 _2@101@01)
+        (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+          $t@363@01
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+          ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+          1) wi@546@01 _2@101@01)
+        (<
+          (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (<
+          wi@546@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+          ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+          1) wi@546@01)))
+    (or
+      (not (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01)))
+      (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    1) wi@546@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3190@2742@3584-aux|)))
+(pop) ; 13
+; Joined path conditions
+(assert (and
+  (=
+    (as letvar@545@01  Int)
+    (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))
+  (forall ((wi@546@01 Int)) (!
+    (and
+      (or (<= 0 wi@546@01) (not (<= 0 wi@546@01)))
+      (=>
+        (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))
+        (and
+          (<= 0 wi@546@01)
+          (< wi@546@01 val_int@530@01)
+          (<= 0 (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))
+          (<=
+            (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              $t@363@01
+              $Snap.unit) $t@453@01))
+          (<= wi@546@01 _2@101@01)
+          (<= 0 _2@101@01)
+          (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+            $t@363@01
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine
+                      $Snap.unit
+                      ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+            ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+            1) wi@546@01 _2@101@01)
+          (<
+            (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (<
+            wi@546@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+            ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+            1) wi@546@01)))
+      (or
+        (not (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01)))
+        (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))))
+    :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+      $t@363@01
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+      ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+      1) wi@546@01 _2@101@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3190@2742@3584-aux|))
+  (forall ((wi@546@01 Int)) (!
+    (and
+      (or (<= 0 wi@546@01) (not (<= 0 wi@546@01)))
+      (=>
+        (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))
+        (and
+          (<= 0 wi@546@01)
+          (< wi@546@01 val_int@530@01)
+          (<= 0 (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))
+          (<=
+            (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              $t@363@01
+              $Snap.unit) $t@453@01))
+          (<= wi@546@01 _2@101@01)
+          (<= 0 _2@101@01)
+          (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+            $t@363@01
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine
+                      $Snap.unit
+                      ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+            ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+            1) wi@546@01 _2@101@01)
+          (<
+            (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (<
+            wi@546@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+            ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+            1) wi@546@01)))
+      (or
+        (not (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01)))
+        (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))))
+    :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+      ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+      1) wi@546@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3190@2742@3584-aux|))))
+(pop) ; 12
+; Joined path conditions
+(assert (and
+  (=
+    (as letvar@545@01  Int)
+    (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))
+  (forall ((wi@546@01 Int)) (!
+    (and
+      (or (<= 0 wi@546@01) (not (<= 0 wi@546@01)))
+      (=>
+        (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))
+        (and
+          (<= 0 wi@546@01)
+          (< wi@546@01 val_int@530@01)
+          (<= 0 (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))
+          (<=
+            (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              $t@363@01
+              $Snap.unit) $t@453@01))
+          (<= wi@546@01 _2@101@01)
+          (<= 0 _2@101@01)
+          (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+            $t@363@01
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine
+                      $Snap.unit
+                      ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+            ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+            1) wi@546@01 _2@101@01)
+          (<
+            (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (<
+            wi@546@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+            ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+            1) wi@546@01)))
+      (or
+        (not (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01)))
+        (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))))
+    :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+      $t@363@01
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+      ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+      1) wi@546@01 _2@101@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3190@2742@3584-aux|))
+  (forall ((wi@546@01 Int)) (!
+    (and
+      (or (<= 0 wi@546@01) (not (<= 0 wi@546@01)))
+      (=>
+        (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))
+        (and
+          (<= 0 wi@546@01)
+          (< wi@546@01 val_int@530@01)
+          (<= 0 (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1))
+          (<=
+            (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              $t@363@01
+              $Snap.unit) $t@453@01))
+          (<= wi@546@01 _2@101@01)
+          (<= 0 _2@101@01)
+          (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+            $t@363@01
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine
+                      $Snap.unit
+                      ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+            ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+            1) wi@546@01 _2@101@01)
+          (<
+            (+ ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) 1)
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (<
+            wi@546@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+            ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+            1) wi@546@01)))
+      (or
+        (not (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01)))
+        (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))))
+    :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+      ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+      1) wi@546@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3190@2742@3584-aux|))))
+(assert (forall ((wi@546@01 Int)) (!
+  (=>
+    (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))
+    (and
+      (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+        $t@363@01
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+        ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+        1) wi@546@01 _2@101@01)
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+        ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+        1) wi@546@01)))
+  :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+    $t@363@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    1) wi@546@01 _2@101@01))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    1) wi@546@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3190@2742@3584_precondition|)))
+(push) ; 12
+(assert (not (forall ((wi@546@01 Int)) (!
+  (=>
+    (and
+      (=>
+        (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))
+        (and
+          (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition ($Snap.combine
+            $t@363@01
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine
+                      $Snap.unit
+                      ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+            ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+            1) wi@546@01 _2@101@01)
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+            ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+            1) wi@546@01)))
+      (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01)))
+    (=
+      (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ ($Snap.combine
+        $t@363@01
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+        ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+        1) wi@546@01 _2@101@01)
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+        ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+        1) wi@546@01)))
+  :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+    $t@363@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    1) wi@546@01 _2@101@01))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    1) wi@546@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3190@2742@3584|))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.08s
+; (get-info :all-statistics)
+(assert (forall ((wi@546@01 Int)) (!
+  (=>
+    (and (<= 0 wi@546@01) (< wi@546@01 val_int@530@01))
+    (=
+      (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ ($Snap.combine
+        $t@363@01
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+        ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+        1) wi@546@01 _2@101@01)
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+        ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+        1) wi@546@01)))
+  :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited ($Snap.combine
+    $t@363@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) $t@453@01 (+
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    1) wi@546@01 _2@101@01))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 (+
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    1) wi@546@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3190@2742@3584|)))
+; [eval] (forall ii: Int :: { m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) } 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0)
+(declare-const ii@547@01 Int)
+(push) ; 12
+; [eval] 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3) ==> m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0
+; [eval] 0 <= ii && ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+; [eval] 0 <= ii
+(push) ; 13
+; [then-branch: 101 | !(0 <= ii@547@01) | live]
+; [else-branch: 101 | 0 <= ii@547@01 | live]
+(push) ; 14
+; [then-branch: 101 | !(0 <= ii@547@01)]
+(assert (not (<= 0 ii@547@01)))
+(pop) ; 14
+(push) ; 14
+; [else-branch: 101 | 0 <= ii@547@01]
+(assert (<= 0 ii@547@01))
+; [eval] ii < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_3)
+(push) ; 15
+; [eval] read$()
+(push) ; 16
+(pop) ; 16
+; Joined path conditions
+(push) ; 16
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 16
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 15
+; Joined path conditions
+(pop) ; 14
+(pop) ; 13
+; Joined path conditions
+; Joined path conditions
+(assert (or (<= 0 ii@547@01) (not (<= 0 ii@547@01))))
+(set-option :timeout 0)
+(push) ; 13
+; [then-branch: 102 | 0 <= ii@547@01 && ii@547@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01) | live]
+; [else-branch: 102 | !(0 <= ii@547@01 && ii@547@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01)) | live]
+(push) ; 14
+; [then-branch: 102 | 0 <= ii@547@01 && ii@547@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01)]
+(assert (and
+  (<= 0 ii@547@01)
+  (<
+    ii@547@01
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      $Snap.unit) ret@230@01))))
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0) == 0
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$(_3, ii, 0)
+(push) ; 15
+; [eval] read$()
+(push) ; 16
+(pop) ; 16
+; Joined path conditions
+(push) ; 16
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 16
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+; [eval] 0 <= _pure_2
+; [eval] _pure_2 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(set-option :timeout 0)
+(push) ; 16
+; [eval] read$()
+(push) ; 17
+(pop) ; 17
+; Joined path conditions
+(push) ; 17
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 16
+; Joined path conditions
+; [eval] 0 <= _pure_3
+; [eval] _pure_3 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+; [eval] m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$(_pure_1)
+(set-option :timeout 0)
+(push) ; 16
+; [eval] read$()
+(push) ; 17
+(pop) ; 17
+; Joined path conditions
+(push) ; 17
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 16
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 16
+(assert (not (<
+  0
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+(assert (<
+  0
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    $Snap.unit) ret@230@01)))
+; [eval] 0 <= _pure_2
+; [eval] 0 <= _pure_3
+(assert (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+  ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+    $t@522@01
+    ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+  ($Snap.combine
+    $Snap.unit
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0))
+(pop) ; 15
+; Joined path conditions
+(assert (and
+  (<
+    0
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      $Snap.unit) ret@230@01))
+  (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0)))
+(pop) ; 14
+(push) ; 14
+; [else-branch: 102 | !(0 <= ii@547@01 && ii@547@01 < m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$((First:($t@521@01[($t@522@01, (val_int@493@01, _))]), _), ret@230@01))]
+(assert (not
+  (and
+    (<= 0 ii@547@01)
+    (<
+      ii@547@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01)))))
+(pop) ; 14
+(pop) ; 13
+; Joined path conditions
+(assert (=>
+  (and
+    (<= 0 ii@547@01)
+    (<
+      ii@547@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01)))
+  (and
+    (<= 0 ii@547@01)
+    (<
+      ii@547@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (<
+      0
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+      ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+        $t@522@01
+        ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0))))
+; Joined path conditions
+(assert (or
+  (not
+    (and
+      (<= 0 ii@547@01)
+      (<
+        ii@547@01
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          $Snap.unit) ret@230@01))))
+  (and
+    (<= 0 ii@547@01)
+    (<
+      ii@547@01
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01)))))
+(pop) ; 12
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((ii@547@01 Int)) (!
+  (and
+    (or (<= 0 ii@547@01) (not (<= 0 ii@547@01)))
+    (=>
+      (and
+        (<= 0 ii@547@01)
+        (<
+          ii@547@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01)))
+      (and
+        (<= 0 ii@547@01)
+        (<
+          ii@547@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (<
+          0
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0)))
+    (or
+      (not
+        (and
+          (<= 0 ii@547@01)
+          (<
+            ii@547@01
+            (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+              ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                $t@522@01
+                ($Snap.combine
+                  ($SortWrappers.IntTo$Snap val_int@493@01)
+                  $Snap.unit))))
+              $Snap.unit) ret@230@01))))
+      (and
+        (<= 0 ii@547@01)
+        (<
+          ii@547@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01)))))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3593@2742@4006-aux|)))
+(assert (forall ((ii@547@01 Int)) (!
+  (and
+    (=>
+      (<= 0 ii@547@01)
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        $Snap.unit) ret@230@01))
+    (=>
+      (and
+        (<= 0 ii@547@01)
+        (<
+          ii@547@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01)))
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0)))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3593@2742@4006_precondition|)))
+(push) ; 12
+(assert (not (forall ((ii@547@01 Int)) (!
+  (=>
+    (and
+      (and
+        (=>
+          (<= 0 ii@547@01)
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))
+        (=>
+          (and
+            (<= 0 ii@547@01)
+            (<
+              ii@547@01
+              (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+                ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+                  $t@522@01
+                  ($Snap.combine
+                    ($SortWrappers.IntTo$Snap val_int@493@01)
+                    $Snap.unit))))
+                $Snap.unit) ret@230@01)))
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine
+                $Snap.unit
+                ($Snap.combine
+                  $Snap.unit
+                  ($Snap.combine
+                    $Snap.unit
+                    ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0)))
+      (and
+        (<= 0 ii@547@01)
+        (<
+          ii@547@01
+          (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+            ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+              $t@522@01
+              ($Snap.combine
+                ($SortWrappers.IntTo$Snap val_int@493@01)
+                $Snap.unit))))
+            $Snap.unit) ret@230@01))))
+    (=
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0)
+      0))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3593@2742@4006|))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(assert (forall ((ii@547@01 Int)) (!
+  (=>
+    (and
+      (<= 0 ii@547@01)
+      (<
+        ii@547@01
+        (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ ($Snap.combine
+          ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+            $t@522@01
+            ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+          $Snap.unit) ret@230@01)))
+    (=
+      (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ ($Snap.combine
+        ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+          $t@522@01
+          ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine
+              $Snap.unit
+              ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0)
+      0))
+  :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.first (MWSF_apply $t@521@01 ($Snap.combine
+      $t@522@01
+      ($Snap.combine ($SortWrappers.IntTo$Snap val_int@493@01) $Snap.unit))))
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))))) ret@230@01 ii@547@01 0))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/knapsack.rs.vpr@2742@3593@2742@4006|)))
+; [exec]
+; assert _preserve$1 == _1.val_ref && _preserve$2 == _48.val_ref
+; [eval] _preserve$1 == _1.val_ref
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (-
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [eval] _preserve$2 == _48.val_ref
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [exec]
+; exhale acc(usize(_51), write) &&
+;   (acc(m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_(_3), write) &&
+;   (_2 >= 0 &&
+;   (acc(_1.val_ref, read$()) &&
+;   (acc(usize(_11), read$()) && acc(_48.val_ref, read$())))))
+; [eval] _2 >= 0
+; [eval] read$()
+(set-option :timeout 0)
+(push) ; 12
+(pop) ; 12
+; Joined path conditions
+(push) ; 12
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (=
+  (-
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    ($Perm.min
+      (+
+        (-
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      (read$ $Snap.unit)))
+  $Perm.No)))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+(assert (<=
+  $Perm.No
+  (-
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    ($Perm.min
+      (+
+        (-
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      (read$ $Snap.unit)))))
+(assert (<=
+  (-
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    ($Perm.min
+      (+
+        (-
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      (read$ $Snap.unit)))
+  $Perm.Write))
+(assert (=>
+  (<
+    $Perm.No
+    (-
+      (+
+        (-
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit))))
+  (not (= _1@100@01 $Ref.null))))
+(set-option :timeout 0)
+(push) ; 12
+(assert (not (or
+  (=
+    (-
+      (read$ $Snap.unit)
+      ($Perm.min
+        (+
+          (-
+            (+
+              (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    $Perm.No)
+  (<
+    (-
+      (read$ $Snap.unit)
+      ($Perm.min
+        (+
+          (-
+            (+
+              (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    $Perm.No))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [eval] read$()
+(push) ; 12
+(pop) ; 12
+; Joined path conditions
+(push) ; 12
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (= (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit))) $Perm.No)))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+(assert (not (or
+  (= (- (read$ $Snap.unit) ($Perm.min $Perm.Write (read$ $Snap.unit))) $Perm.No)
+  (< (- (read$ $Snap.unit) ($Perm.min $Perm.Write (read$ $Snap.unit))) $Perm.No))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [eval] read$()
+(push) ; 12
+(pop) ; 12
+; Joined path conditions
+(push) ; 12
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (=
+  (-
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    ($Perm.min
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      (read$ $Snap.unit)))
+  $Perm.No)))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+(assert (=>
+  (<
+    $Perm.No
+    (-
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit))))
+  (not (= ret@367@01 $Ref.null))))
+(set-option :timeout 0)
+(push) ; 12
+(assert (not (or
+  (=
+    (-
+      (read$ $Snap.unit)
+      ($Perm.min
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    $Perm.No)
+  (<
+    (-
+      (read$ $Snap.unit)
+      ($Perm.min
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    $Perm.No))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [exec]
+; inhale false
+(pop) ; 11
+(push) ; 11
+; [else-branch: 90 | !(val_bool@540@01)]
+(assert (not val_bool@540@01))
+(pop) ; 11
+; [eval] !__t63
+(push) ; 11
+(set-option :timeout 10)
+(assert (not val_bool@540@01))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (not val_bool@540@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 103 | !(val_bool@540@01) | live]
+; [else-branch: 103 | val_bool@540@01 | live]
+(set-option :timeout 0)
+(push) ; 11
+; [then-branch: 103 | !(val_bool@540@01)]
+(assert (not val_bool@540@01))
+; [exec]
+; label l62
+(push) ; 12
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 104 | True | live]
+; [else-branch: 104 | False | dead]
+(set-option :timeout 0)
+(push) ; 12
+; [then-branch: 104 | True]
+; [exec]
+; _old$l18$0 := _48.val_ref
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.No
+  (+
+    (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+    (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+; [exec]
+; inhale acc(DeadBorrowToken$(76), write) &&
+;   acc(m_knapsack$$Item$opensqu$0$closesqu$$_beg_$_end_(_old$l18$0), read$()) --*
+;   acc(m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_(old[l17](_49.val_ref)), read$())
+(declare-const $t@548@01 $MWSF)
+; [eval] read$()
+(set-option :timeout 0)
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+; [eval] old[l17](_49.val_ref)
+; [eval] read$()
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; fold acc(usize(_old$l18$0.f$weight), read$())
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+; [eval] read$()
+(set-option :timeout 0)
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+(push) ; 13
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(assert (usize%trigger ($Snap.combine
+  ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))
+  $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second $t@369@01)))
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first $t@516@01))
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [exec]
+; fold acc(usize(_old$l18$0.f$value), read$())
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+; [eval] read$()
+(set-option :timeout 0)
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+(push) ; 13
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+; [eval] 0 <= self.val_int
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(assert (usize%trigger ($Snap.combine
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+  $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))))
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second $t@369@01)))
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first $t@516@01))
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+; [exec]
+; fold acc(m_knapsack$$Item$opensqu$0$closesqu$$_beg_$_end_(_old$l18$0), read$())
+; [eval] read$()
+(set-option :timeout 0)
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+(push) ; 13
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(assert (m_knapsack$$Item$opensqu$0$closesqu$$_beg_$_end_%trigger ($Snap.combine
+  ($Snap.first ($Snap.second $t@369@01))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second $t@369@01)))
+    ($Snap.combine
+      ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01))))
+      ($Snap.combine
+        ($Snap.combine
+          ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))
+          $Snap.unit)
+        ($Snap.combine
+          ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))
+          ($Snap.combine
+            ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+            $Snap.unit)))))) $t@455@01))
+; [exec]
+; inhale acc(DeadBorrowToken$(76), write)
+(declare-const $t@549@01 $Snap)
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; apply acc(DeadBorrowToken$(76), write) &&
+;   acc(m_knapsack$$Item$opensqu$0$closesqu$$_beg_$_end_(_old$l18$0), read$()) --*
+;   acc(m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_(old[l17](_49.val_ref)), read$())
+; [eval] read$()
+(set-option :timeout 0)
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+; [eval] old[l17](_49.val_ref)
+; [eval] read$()
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+; [eval] read$()
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+(push) ; 13
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (< $Perm.No (read$ $Snap.unit))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+; [eval] old[l17](_49.val_ref)
+; [eval] read$()
+(set-option :timeout 0)
+(push) ; 13
+(pop) ; 13
+; Joined path conditions
+(push) ; 13
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@200@01)) $t@350@01)))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(declare-const $t@550@01 $Snap)
+(assert (and
+  (=>
+    (<
+      $Perm.No
+      (-
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (-
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              ($Perm.min
+                (+
+                  (-
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    ($Perm.min
+                      (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                      (read$ $Snap.unit)))
+                  (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit))))
+    (= $t@550@01 $t@363@01))
+  (=>
+    (< $Perm.No (read$ $Snap.unit))
+    (=
+      $t@550@01
+      (MWSF_apply $t@548@01 ($Snap.combine
+        $t@549@01
+        ($Snap.combine
+          ($Snap.first ($Snap.second $t@369@01))
+          ($Snap.combine
+            ($Snap.first ($Snap.second ($Snap.second $t@369@01)))
+            ($Snap.combine
+              ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01))))
+              ($Snap.combine
+                ($Snap.combine
+                  ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))
+                  $Snap.unit)
+                ($Snap.combine
+                  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))
+                  ($Snap.combine
+                    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+                    $Snap.unit))))))))))))
+(assert (<=
+  $Perm.No
+  (+
+    (-
+      (+
+        (-
+          (+
+            (-
+              (+ (read$ $Snap.unit) (read$ $Snap.unit))
+              ($Perm.min
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))
+      ($Perm.min
+        (+
+          (-
+            (+
+              (-
+                (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                ($Perm.min
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            ($Perm.min
+              (+
+                (-
+                  (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                  ($Perm.min
+                    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+                    (read$ $Snap.unit)))
+                (read$ $Snap.unit))
+              (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        (read$ $Snap.unit)))
+    (read$ $Snap.unit))))
+; [state consolidation]
+; State saturation: before repetition
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@538@01 $t@528@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@526@01 ret@491@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@526@01 ret@289@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@528@01 ret@473@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@538@01 ret@473@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@289@01 ret@444@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@491@01 ret@444@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@526@01 ret@444@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@531@01 ret@465@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@486@01 ret@367@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@367@01 _1@100@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@486@01 _1@100@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@473@01 ret@379@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@528@01 ret@379@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@538@01 ret@379@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@465@01 ret@358@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@531@01 ret@358@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@379@01 ret@253@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@473@01 ret@253@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@528@01 ret@253@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@538@01 ret@253@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= _1@100@01 ret@241@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@367@01 ret@241@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@486@01 ret@241@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@253@01 $t@225@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@379@01 $t@225@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@473@01 $t@225@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@528@01 $t@225@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@538@01 $t@225@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@525@01 ret@222@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@525@01 ret@222@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@241@01 ret@213@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= _1@100@01 ret@213@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@367@01 ret@213@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@486@01 ret@213@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@225@01 $t@210@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@253@01 $t@210@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@379@01 $t@210@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@473@01 $t@210@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@528@01 $t@210@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@538@01 $t@210@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@222@01 ret@207@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@525@01 ret@207@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@222@01 ret@207@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@525@01 ret@207@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@207@01 ret@505@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@222@01 ret@505@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@525@01 ret@505@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@207@01 ret@505@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@222@01 ret@505@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@525@01 ret@505@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@210@01 $t@508@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@225@01 $t@508@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@253@01 $t@508@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@379@01 $t@508@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@473@01 $t@508@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= $t@528@01 $t@508@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@538@01 $t@508@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@213@01 ret@514@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@241@01 ret@514@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= _1@100@01 ret@514@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@367@01 ret@514@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (= ret@486@01 ret@514@01)))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@359@01 $t@466@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@359@01 $t@532@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@466@01 $t@359@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@466@01 $t@532@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@532@01 $t@359@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@532@01 $t@466@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    $Perm.Write
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    $Perm.Write
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    $Perm.Write
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    $Perm.Write
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    $Perm.Write
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    $Perm.Write
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    $Perm.Write))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    $Perm.Write))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    $Perm.Write))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    $Perm.Write))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    $Perm.Write))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    $Perm.Write))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    $Perm.Write))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))
+    $Perm.Write))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    $Perm.Write
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (<
+  $Perm.Write
+  (+
+    $Perm.Write
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@508@01 $t@528@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@210@01 $t@528@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@225@01 $t@528@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@528@01 $t@508@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@528@01 $t@210@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@528@01 $t@225@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= ret@519@01 val_ref@215@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= ret@519@01 val_ref@243@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= ret@519@01 $t@453@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= ret@519@01 $t@455@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= ret@519@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@488@01))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_ref@215@01 ret@519@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_ref@215@01 val_ref@243@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= val_ref@215@01 $t@453@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= val_ref@215@01 $t@455@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_ref@215@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@488@01))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_ref@243@01 ret@519@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_ref@243@01 val_ref@215@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= val_ref@243@01 $t@453@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= val_ref@243@01 $t@455@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_ref@243@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@488@01))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= $t@453@01 ret@519@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= $t@453@01 val_ref@215@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= $t@453@01 val_ref@243@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (and
+    (<
+      $Perm.No
+      (+
+        (-
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit)))
+    (<
+      $Perm.No
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit))))
+  (not (= $t@453@01 $t@455@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= $t@453@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@488@01)))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= $t@455@01 ret@519@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= $t@455@01 val_ref@215@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= $t@455@01 val_ref@243@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (and
+    (<
+      $Perm.No
+      (+
+        (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+        (read$ $Snap.unit)))
+    (<
+      $Perm.No
+      (+
+        (-
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          ($Perm.min
+            (+
+              (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+              (read$ $Snap.unit))
+            (read$ $Snap.unit)))
+        (read$ $Snap.unit))))
+  (not (= $t@455@01 $t@453@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= $t@455@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@488@01)))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@488@01)) ret@519@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@488@01)) val_ref@215@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@488@01)) val_ref@243@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (-
+        (+
+          (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+          (read$ $Snap.unit))
+        ($Perm.min
+          (+
+            (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+            (read$ $Snap.unit))
+          (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@488@01)) $t@453@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<
+    $Perm.No
+    (+
+      (- $Perm.Write ($Perm.min $Perm.Write (read$ $Snap.unit)))
+      (read$ $Snap.unit)))
+  (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@488@01)) $t@455@01)))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not
+  (=
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first $t@452@01)))
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not
+  (=
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first $t@452@01)))
+    val_int@493@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not
+  (=
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first $t@452@01)))
+    val_int@530@01))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not
+  (=
+    ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first $t@452@01)))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) val_int@493@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= ($SortWrappers.$SnapToInt ($Snap.first $t@454@01)) val_int@530@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not
+  (=
+    val_int@493@01
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first $t@452@01)))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_int@493@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_int@493@01 val_int@530@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not
+  (=
+    val_int@530@01
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first $t@452@01)))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_int@530@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_int@530@01 val_int@493@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@506@01 $t@208@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@506@01 $t@223@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@506@01 $t@526@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@208@01 $t@506@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@208@01 $t@223@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@208@01 $t@526@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@223@01 $t@506@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@223@01 $t@208@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@223@01 $t@526@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@526@01 $t@506@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@526@01 $t@208@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@526@01 $t@223@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= false val_bool@252@01))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= false val_bool@381@01))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= false val_bool@475@01))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= false val_bool@540@01))))
 (check-sat)

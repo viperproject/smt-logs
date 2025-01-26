@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:05
+// Date:         2025-01-26 21:42:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0157.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0157-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -198,10 +198,10 @@ procedure test04(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -218,12 +218,12 @@ procedure test04(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@8.12--8.58) [201108]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@8.12--8.58) [75934]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] != null;
     
     // -- Check definedness of acc(x.f.g, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@8.12--8.58) [201109]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@8.12--8.58) [75935]"}
         HasDirectPerm(Mask, x, f_7);
     perm := FullPerm;
     assume Heap[x, f_7] != null;
@@ -231,9 +231,9 @@ procedure test04(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f.g
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@8.12--8.58) [201110]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@8.12--8.58) [75936]"}
         HasDirectPerm(Mask, x, f_7);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f.g (0157.vpr@8.12--8.58) [201111]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f.g (0157.vpr@8.12--8.58) [75937]"}
         HasDirectPerm(Mask, Heap[x, f_7], g);
     assume Heap[Heap[x, f_7], g];
     assume state(Heap, Mask);
@@ -241,13 +241,13 @@ procedure test04(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert false -- 0157.vpr@11.3--11.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@11.10--11.15) [201112]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@11.10--11.15) [75938]"}
       false;
     assume state(Heap, Mask);
 }
@@ -260,10 +260,10 @@ procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -280,7 +280,7 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@15.12--15.35) [201113]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@15.12--15.35) [75939]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] != null;
     assume state(Heap, Mask);
@@ -288,13 +288,13 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert false -- 0157.vpr@18.3--18.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@18.10--18.15) [201114]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@18.10--18.15) [75940]"}
       false;
     assume state(Heap, Mask);
 }
@@ -307,10 +307,10 @@ procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -322,18 +322,18 @@ procedure test02(x: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0157.vpr@22.12--22.57) [201115]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0157.vpr@22.12--22.57) [75941]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@22.12--22.57) [201116]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@22.12--22.57) [75942]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] != null;
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0157.vpr@22.12--22.57) [201117]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0157.vpr@22.12--22.57) [75943]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -343,13 +343,13 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert false -- 0157.vpr@25.3--25.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@25.10--25.15) [201118]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@25.10--25.15) [75944]"}
       false;
     assume state(Heap, Mask);
 }
@@ -362,10 +362,10 @@ procedure test03(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -382,12 +382,12 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@29.12--29.49) [201119]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@29.12--29.49) [75945]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] != null;
     
     // -- Check definedness of acc(x.f.g, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@29.12--29.49) [201120]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@29.12--29.49) [75946]"}
         HasDirectPerm(Mask, x, f_7);
     perm := FullPerm;
     assume Heap[x, f_7] != null;
@@ -398,13 +398,13 @@ procedure test03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert false -- 0157.vpr@32.3--32.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@32.10--32.15) [201121]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@32.10--32.15) [75947]"}
       false;
     assume state(Heap, Mask);
 }
@@ -417,10 +417,10 @@ procedure test05(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -437,7 +437,7 @@ procedure test05(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.f.g, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@36.12--36.43) [201122]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@36.12--36.43) [75948]"}
         HasDirectPerm(Mask, x, f_7);
     perm := FullPerm;
     assume Heap[x, f_7] != null;
@@ -445,9 +445,9 @@ procedure test05(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f.g
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@36.12--36.43) [201123]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@36.12--36.43) [75949]"}
         HasDirectPerm(Mask, x, f_7);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f.g (0157.vpr@36.12--36.43) [201124]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f.g (0157.vpr@36.12--36.43) [75950]"}
         HasDirectPerm(Mask, Heap[x, f_7], g);
     assume Heap[Heap[x, f_7], g];
     assume state(Heap, Mask);
@@ -455,24 +455,24 @@ procedure test05(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert x.f != null -- 0157.vpr@38.3--38.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f != null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0157.vpr@38.10--38.21) [201125]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0157.vpr@38.10--38.21) [75951]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f != null might not hold. (0157.vpr@38.10--38.21) [201126]"}
+    assert {:msg "  Assert might fail. Assertion x.f != null might not hold. (0157.vpr@38.10--38.21) [75952]"}
       Heap[x, f_7] != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0157.vpr@41.3--41.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@41.10--41.15) [201127]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@41.10--41.15) [75953]"}
       false;
     assume state(Heap, Mask);
 }
@@ -485,10 +485,10 @@ procedure test06(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -505,13 +505,13 @@ procedure test06(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@45.12--45.35) [201128]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@45.12--45.35) [75954]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] != null;
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.f.g, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@46.12--46.31) [201129]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@46.12--46.31) [75955]"}
         HasDirectPerm(Mask, x, f_7);
     perm := FullPerm;
     assume Heap[x, f_7] != null;
@@ -519,9 +519,9 @@ procedure test06(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f.g
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@46.12--46.31) [201130]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0157.vpr@46.12--46.31) [75956]"}
         HasDirectPerm(Mask, x, f_7);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f.g (0157.vpr@46.12--46.31) [201131]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f.g (0157.vpr@46.12--46.31) [75957]"}
         HasDirectPerm(Mask, Heap[x, f_7], g);
     assume Heap[Heap[x, f_7], g];
     assume state(Heap, Mask);
@@ -529,13 +529,13 @@ procedure test06(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert false -- 0157.vpr@49.3--49.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@49.10--49.15) [201132]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@49.10--49.15) [75958]"}
       false;
     assume state(Heap, Mask);
 }
@@ -548,10 +548,10 @@ procedure TestBug(this: Ref, k$_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -568,12 +568,12 @@ procedure TestBug(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Testtk != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@59.12--59.120) [201133]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@59.12--59.120) [75959]"}
         HasDirectPerm(Mask, this, Testtk);
     assume Heap[this, Testtk] != null;
     
     // -- Check definedness of acc(this.Testtk.joinable, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@59.12--59.120) [201134]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@59.12--59.120) [75960]"}
         HasDirectPerm(Mask, this, Testtk);
     perm := FullPerm;
     assume Heap[this, Testtk] != null;
@@ -581,9 +581,9 @@ procedure TestBug(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Testtk.joinable
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@59.12--59.120) [201135]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@59.12--59.120) [75961]"}
         HasDirectPerm(Mask, this, Testtk);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk.joinable (0157.vpr@59.12--59.120) [201136]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk.joinable (0157.vpr@59.12--59.120) [75962]"}
         HasDirectPerm(Mask, Heap[this, Testtk], joinable);
     assume Heap[Heap[this, Testtk], joinable];
     assume state(Heap, Mask);
@@ -591,13 +591,13 @@ procedure TestBug(this: Ref, k$_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert false -- 0157.vpr@62.3--62.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@62.10--62.15) [201137]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@62.10--62.15) [75963]"}
       false;
     assume state(Heap, Mask);
 }
@@ -610,10 +610,10 @@ procedure TestBug1(this: Ref, k$_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -630,13 +630,13 @@ procedure TestBug1(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Testtk != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@66.12--66.60) [201138]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@66.12--66.60) [75964]"}
         HasDirectPerm(Mask, this, Testtk);
     assume Heap[this, Testtk] != null;
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(this.Testtk.joinable, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@67.12--67.68) [201139]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@67.12--67.68) [75965]"}
         HasDirectPerm(Mask, this, Testtk);
     perm := FullPerm;
     assume Heap[this, Testtk] != null;
@@ -644,9 +644,9 @@ procedure TestBug1(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Testtk.joinable
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@67.12--67.68) [201140]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk (0157.vpr@67.12--67.68) [75966]"}
         HasDirectPerm(Mask, this, Testtk);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk.joinable (0157.vpr@67.12--67.68) [201141]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk.joinable (0157.vpr@67.12--67.68) [75967]"}
         HasDirectPerm(Mask, Heap[this, Testtk], joinable);
     assume Heap[Heap[this, Testtk], joinable];
     assume state(Heap, Mask);
@@ -654,13 +654,13 @@ procedure TestBug1(this: Ref, k$_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert false -- 0157.vpr@70.3--70.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@70.10--70.15) [201142]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0157.vpr@70.10--70.15) [75968]"}
       false;
     assume state(Heap, Mask);
 }

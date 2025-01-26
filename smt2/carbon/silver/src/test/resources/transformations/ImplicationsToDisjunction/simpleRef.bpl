@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:59
+// Date:         2025-01-26 21:44:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/ImplicationsToDisjunction/simpleRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/ImplicationsToDisjunction/simpleRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -183,7 +183,7 @@ procedure main() returns ()
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var i: bool;
-  var j_9: bool;
+  var j: bool;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   
@@ -203,13 +203,13 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: j := false -- simpleRef.vpr@7.4--7.24
-    j_9 := false;
+    j := false;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !j || i -- simpleRef.vpr@9.4--9.19
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion !j || i might not hold. (simpleRef.vpr@9.11--9.18) [92368]"}
-      !j_9 || i;
+    assert {:msg "  Assert might fail. Assertion !j || i might not hold. (simpleRef.vpr@9.11--9.18) [198655]"}
+      !j || i;
     assume state(Heap, Mask);
 }

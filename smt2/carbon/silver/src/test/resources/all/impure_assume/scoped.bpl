@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:58
+// Date:         2025-01-26 21:41:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/scoped.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/scoped-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,7 +181,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type __ns__impure_assume_rewriterDomainType;
 
 // Translation of domain function __iar__assume_helper_1
-function  __iar__assume_helper_1(c_1_2: bool, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_1(c_1_2: bool, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain axiom __iar__assume_helper_1_axiom
 axiom (forall c_1: bool, p_1_1: Perm, p_0_1: Perm ::
@@ -193,15 +193,15 @@ axiom (forall c_1: bool, p_1_1: Perm, p_0_1: Perm ::
 // Translation of all fields
 // ==================================================
 
-const unique p_14: Field NormalField Perm;
-axiom !IsPredicateField(p_14);
-axiom !IsWandField(p_14);
+const unique p_2: Field NormalField Perm;
+axiom !IsPredicateField(p_2);
+axiom !IsWandField(p_2);
 const unique f_7: Field NormalField int;
 axiom !IsPredicateField(f_7);
 axiom !IsWandField(f_7);
-const unique r_6: Field NormalField Ref;
-axiom !IsPredicateField(r_6);
-axiom !IsWandField(r_6);
+const unique r_11: Field NormalField Ref;
+axiom !IsPredicateField(r_11);
+axiom !IsWandField(r_11);
 
 // ==================================================
 // Translation of predicate P
@@ -252,13 +252,13 @@ procedure P#definedness(x: Ref) returns ()
       assume Heap[x, $allocated];
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, p_14:=Mask[x, p_14] + perm];
+    Mask := Mask[x, p_2:=Mask[x, p_2] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of none < x.p
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.p (scoped.vpr@5.1--7.2) [149985]"}
-        HasDirectPerm(Mask, x, p_14);
-    assume NoPerm < Heap[x, p_14];
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.p (scoped.vpr@5.1--7.2) [20731]"}
+        HasDirectPerm(Mask, x, p_2);
+    assume NoPerm < Heap[x, p_2];
     assume state(Heap, Mask);
 }
 
@@ -316,55 +316,55 @@ procedure test01a(x: Ref, y: Ref, z: Ref) returns ()
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
-      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, p_14]);
+      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, p_2]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access P(x) (scoped.vpr@12.10--12.58) [149988]"}
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access P(x) (scoped.vpr@12.10--12.58) [20734]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
       perm := FullPerm;
       assume x != null;
-      UnfoldingMask := UnfoldingMask[x, p_14:=UnfoldingMask[x, p_14] + perm];
+      UnfoldingMask := UnfoldingMask[x, p_2:=UnfoldingMask[x, p_2] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume NoPerm < UnfoldingHeap[x, p_14];
+      assume NoPerm < UnfoldingHeap[x, p_2];
       assume state(UnfoldingHeap, UnfoldingMask);
       if (1 / 2 <= UnfoldingMask[y, f_7]) {
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access x.p (scoped.vpr@12.10--12.58) [149989]"}
-          HasDirectPerm(UnfoldingMask, x, p_14);
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access x.p (scoped.vpr@12.10--12.58) [20735]"}
+          HasDirectPerm(UnfoldingMask, x, p_2);
       }
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, p_14:=true]];
+        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, p_2:=true]];
         assume state(Heap, Mask);
     
     // -- Execute unfolding (for extra information)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
-      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, p_14]);
+      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, p_2]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
       perm := FullPerm;
       assume x != null;
-      UnfoldingMask := UnfoldingMask[x, p_14:=UnfoldingMask[x, p_14] + perm];
+      UnfoldingMask := UnfoldingMask[x, p_2:=UnfoldingMask[x, p_2] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume NoPerm < UnfoldingHeap[x, p_14];
+      assume NoPerm < UnfoldingHeap[x, p_2];
       assume state(UnfoldingHeap, UnfoldingMask);
-    assume 1 / 2 <= Mask[y, f_7] && (__iar__assume_helper_1(y == z, 1 / 2, Heap[x, p_14]): Perm) <= Mask[z, f_7];
+    assume 1 / 2 <= Mask[y, f_7] && (__iar__assume_helper_1(y == z, 1 / 2, Heap[x, p_2]): Perm) <= Mask[z, f_7];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x == y && y == z -- scoped.vpr@13.3--13.26
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x == y might not hold. (scoped.vpr@13.10--13.26) [149990]"}
+    assert {:msg "  Assert might fail. Assertion x == y might not hold. (scoped.vpr@13.10--13.26) [20736]"}
       x == y;
-    assert {:msg "  Assert might fail. Assertion y == z might not hold. (scoped.vpr@13.10--13.26) [149991]"}
+    assert {:msg "  Assert might fail. Assertion y == z might not hold. (scoped.vpr@13.10--13.26) [20737]"}
       y == z;
     assume state(Heap, Mask);
 }
@@ -423,53 +423,53 @@ procedure test01b(x: Ref, y: Ref, z: Ref) returns ()
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
-      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, p_14]);
+      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, p_2]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access P(x) (scoped.vpr@19.10--19.58) [149994]"}
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access P(x) (scoped.vpr@19.10--19.58) [20740]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
       perm := FullPerm;
       assume x != null;
-      UnfoldingMask := UnfoldingMask[x, p_14:=UnfoldingMask[x, p_14] + perm];
+      UnfoldingMask := UnfoldingMask[x, p_2:=UnfoldingMask[x, p_2] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume NoPerm < UnfoldingHeap[x, p_14];
+      assume NoPerm < UnfoldingHeap[x, p_2];
       assume state(UnfoldingHeap, UnfoldingMask);
       if (1 / 2 <= UnfoldingMask[y, f_7]) {
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access x.p (scoped.vpr@19.10--19.58) [149995]"}
-          HasDirectPerm(UnfoldingMask, x, p_14);
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access x.p (scoped.vpr@19.10--19.58) [20741]"}
+          HasDirectPerm(UnfoldingMask, x, p_2);
       }
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, p_14:=true]];
+        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, p_2:=true]];
         assume state(Heap, Mask);
     
     // -- Execute unfolding (for extra information)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
-      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, p_14]);
+      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, p_2]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
       perm := FullPerm;
       assume x != null;
-      UnfoldingMask := UnfoldingMask[x, p_14:=UnfoldingMask[x, p_14] + perm];
+      UnfoldingMask := UnfoldingMask[x, p_2:=UnfoldingMask[x, p_2] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume NoPerm < UnfoldingHeap[x, p_14];
+      assume NoPerm < UnfoldingHeap[x, p_2];
       assume state(UnfoldingHeap, UnfoldingMask);
-    assume 1 / 2 <= Mask[y, f_7] && (__iar__assume_helper_1(y == z, 1 / 2, Heap[x, p_14]): Perm) <= Mask[z, f_7];
+    assume 1 / 2 <= Mask[y, f_7] && (__iar__assume_helper_1(y == z, 1 / 2, Heap[x, p_2]): Perm) <= Mask[z, f_7];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- scoped.vpr@21.3--21.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (scoped.vpr@21.10--21.15) [149996]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (scoped.vpr@21.10--21.15) [20742]"}
       false;
     assume state(Heap, Mask);
 }
@@ -504,10 +504,10 @@ procedure test02a(x: Ref) returns ()
   
   // -- Translating statement: inhale acc(x.r, 1 / 2) -- scoped.vpr@25.3--25.23
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (scoped.vpr@25.10--25.23) [149997]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (scoped.vpr@25.10--25.23) [20743]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, r_6:=Mask[x, r_6] + perm];
+    Mask := Mask[x, r_11:=Mask[x, r_11] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -517,17 +517,17 @@ procedure test02a(x: Ref) returns ()
   //     perm(y.r) >= 1 / 2) -- scoped.vpr@26.10--26.41
     
     // -- Check definedness of x.r
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.r (scoped.vpr@26.10--26.41) [149998]"}
-        HasDirectPerm(Mask, x, r_6);
-    y := Heap[x, r_6];
-    assume 1 / 2 <= Mask[y, r_6];
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.r (scoped.vpr@26.10--26.41) [20744]"}
+        HasDirectPerm(Mask, x, r_11);
+    y := Heap[x, r_11];
+    assume 1 / 2 <= Mask[y, r_11];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- scoped.vpr@28.3--28.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (scoped.vpr@28.10--28.15) [149999]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (scoped.vpr@28.10--28.15) [20745]"}
       false;
     assume state(Heap, Mask);
 }
@@ -562,10 +562,10 @@ procedure test02b(x: Ref) returns ()
   
   // -- Translating statement: inhale acc(x.r, 1 / 2) -- scoped.vpr@32.3--32.23
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (scoped.vpr@32.10--32.23) [150000]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (scoped.vpr@32.10--32.23) [20746]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, r_6:=Mask[x, r_6] + perm];
+    Mask := Mask[x, r_11:=Mask[x, r_11] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -575,17 +575,17 @@ procedure test02b(x: Ref) returns ()
   //     perm(y.r) >= 2 / 3) -- scoped.vpr@33.10--33.41
     
     // -- Check definedness of x.r
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.r (scoped.vpr@33.10--33.41) [150001]"}
-        HasDirectPerm(Mask, x, r_6);
-    y := Heap[x, r_6];
-    assume 2 / 3 <= Mask[y, r_6];
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.r (scoped.vpr@33.10--33.41) [20747]"}
+        HasDirectPerm(Mask, x, r_11);
+    y := Heap[x, r_11];
+    assume 2 / 3 <= Mask[y, r_11];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- scoped.vpr@34.3--34.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (scoped.vpr@34.10--34.15) [150002]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (scoped.vpr@34.10--34.15) [20748]"}
       false;
     assume state(Heap, Mask);
 }

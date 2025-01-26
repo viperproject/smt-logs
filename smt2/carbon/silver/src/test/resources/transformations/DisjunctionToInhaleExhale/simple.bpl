@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:59:28
+// Date:         2025-01-26 21:44:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/DisjunctionToInhaleExhale/simple.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/DisjunctionToInhaleExhale/simple-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,12 +180,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: bool;
-  var m_17: bool;
-  var ExhaleWellDef0Mask: MaskType;
+  var m_18: bool;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -195,21 +195,21 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := true -- simple.vpr@6.4--6.23
     i := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: m := false -- simple.vpr@7.4--7.24
-    m_17 := false;
+    m_18 := false;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i || m -- simple.vpr@9.4--9.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion i || m might not hold. (simple.vpr@9.11--9.17) [92869]"}
-      i || m_17;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion i || m might not hold. (simple.vpr@9.11--9.17) [189382]"}
+      i || m_18;
     assume state(Heap, Mask);
 }

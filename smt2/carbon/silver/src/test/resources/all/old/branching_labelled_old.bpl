@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:17:06
+// Date:         2025-01-26 21:41:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/old/branching_labelled_old.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/old/branching_labelled_old-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,14 +189,14 @@ procedure main(i: int) returns ()
   modifies Heap, Mask;
 {
   var initial_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var m_17: Ref;
+  var oldMask: MaskType;
+  var m_18: Ref;
   var freshObj: Ref;
-  var LabelinitialMask: MaskType;
   var LabelinitialHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var LabelinitialMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -207,71 +207,71 @@ procedure main(i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
-    assume Heap[m_17, $allocated];
+    assume Heap[m_18, $allocated];
   
   // -- Translating statement: m := new(f) -- branching_labelled_old.vpr@8.3--8.14
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    m_17 := freshObj;
-    Mask := Mask[m_17, f_7:=Mask[m_17, f_7] + FullPerm];
+    m_18 := freshObj;
+    Mask := Mask[m_18, f_7:=Mask[m_18, f_7] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: m.f := i -- branching_labelled_old.vpr@9.3--9.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@9.3--9.11) [157279]"}
-      FullPerm == Mask[m_17, f_7];
-    Heap := Heap[m_17, f_7:=i];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@9.3--9.11) [47230]"}
+      FullPerm == Mask[m_18, f_7];
+    Heap := Heap[m_18, f_7:=i];
     assume state(Heap, Mask);
   
   // -- Translating statement: if (m.f != 15) -- branching_labelled_old.vpr@11.3--14.4
     
     // -- Check definedness of m.f != 15
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@11.6--11.15) [157280]"}
-        HasDirectPerm(Mask, m_17, f_7);
-    if (Heap[m_17, f_7] != 15) {
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@11.6--11.15) [47231]"}
+        HasDirectPerm(Mask, m_18, f_7);
+    if (Heap[m_18, f_7] != 15) {
       
       // -- Translating statement: m.f := 15 -- branching_labelled_old.vpr@12.5--12.14
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@12.5--12.14) [157281]"}
-          FullPerm == Mask[m_17, f_7];
-        Heap := Heap[m_17, f_7:=15];
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@12.5--12.14) [47232]"}
+          FullPerm == Mask[m_18, f_7];
+        Heap := Heap[m_18, f_7:=15];
         assume state(Heap, Mask);
       
       // -- Translating statement: label initial -- branching_labelled_old.vpr@13.1--13.14
         initial:
-        LabelinitialMask := Mask;
         LabelinitialHeap := Heap;
+        LabelinitialMask := Mask;
         initial_lblGuard := true;
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
   
   // -- Translating statement: m.f := 3 -- branching_labelled_old.vpr@16.3--16.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@16.3--16.11) [157282]"}
-      FullPerm == Mask[m_17, f_7];
-    Heap := Heap[m_17, f_7:=3];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@16.3--16.11) [47233]"}
+      FullPerm == Mask[m_18, f_7];
+    Heap := Heap[m_18, f_7:=3];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m.f == 3 && old[initial](m.f) == 15 -- branching_labelled_old.vpr@20.3--20.45
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of m.f == 3
-      assert {:msg "  Assert might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@20.10--20.45) [157283]"}
-        HasDirectPerm(ExhaleWellDef0Mask, m_17, f_7);
-    assert {:msg "  Assert might fail. Assertion m.f == 3 might not hold. (branching_labelled_old.vpr@20.10--20.45) [157284]"}
-      Heap[m_17, f_7] == 3;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@20.10--20.45) [47234]"}
+        HasDirectPerm(ExhaleWellDef0Mask, m_18, f_7);
+    assert {:msg "  Assert might fail. Assertion m.f == 3 might not hold. (branching_labelled_old.vpr@20.10--20.45) [47235]"}
+      Heap[m_18, f_7] == 3;
     
     // -- Check definedness of old[initial](m.f) == 15
-      assert {:msg "  Assert might fail. Did not reach labelled state initial required to evaluate old[initial](m.f). (branching_labelled_old.vpr@20.10--20.45) [157285]"}
+      assert {:msg "  Assert might fail. Did not reach labelled state initial required to evaluate old[initial](m.f). (branching_labelled_old.vpr@20.10--20.45) [47236]"}
         initial_lblGuard;
-      assert {:msg "  Assert might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@20.10--20.45) [157286]"}
-        HasDirectPerm(LabelinitialMask, m_17, f_7);
-    assert {:msg "  Assert might fail. Assertion old[initial](m.f) == 15 might not hold. (branching_labelled_old.vpr@20.10--20.45) [157287]"}
-      LabelinitialHeap[m_17, f_7] == 15;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@20.10--20.45) [47237]"}
+        HasDirectPerm(LabelinitialMask, m_18, f_7);
+    assert {:msg "  Assert might fail. Assertion old[initial](m.f) == 15 might not hold. (branching_labelled_old.vpr@20.10--20.45) [47238]"}
+      LabelinitialHeap[m_18, f_7] == 15;
     assume state(Heap, Mask);
 }
 
@@ -283,18 +283,18 @@ procedure main3() returns ()
   modifies Heap, Mask;
 {
   var initial_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var m_17: Ref;
+  var oldMask: MaskType;
+  var m_18: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var LabelinitialMask: MaskType;
   var LabelinitialHeap: HeapType;
+  var LabelinitialMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -305,24 +305,24 @@ procedure main3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
-    assume Heap[m_17, $allocated];
+    assume Heap[m_18, $allocated];
   
   // -- Translating statement: m := new(f) -- branching_labelled_old.vpr@25.3--25.14
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    m_17 := freshObj;
-    Mask := Mask[m_17, f_7:=Mask[m_17, f_7] + FullPerm];
+    m_18 := freshObj;
+    Mask := Mask[m_18, f_7:=Mask[m_18, f_7] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: m.f := 15 -- branching_labelled_old.vpr@27.3--27.12
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@27.3--27.12) [157288]"}
-      FullPerm == Mask[m_17, f_7];
-    Heap := Heap[m_17, f_7:=15];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@27.3--27.12) [47239]"}
+      FullPerm == Mask[m_18, f_7];
+    Heap := Heap[m_18, f_7:=15];
     assume state(Heap, Mask);
   
   // -- Translating statement: while (m.f != 3) -- branching_labelled_old.vpr@30.3--35.4
@@ -330,14 +330,14 @@ procedure main3() returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(m.f, write) might not hold on entry. There might be insufficient permission to access m.f (branching_labelled_old.vpr@31.15--31.23) [157289]"}
-            perm <= Mask[m_17, f_7];
+          assert {:msg "  Loop invariant acc(m.f, write) might not hold on entry. There might be insufficient permission to access m.f (branching_labelled_old.vpr@31.15--31.23) [47240]"}
+            perm <= Mask[m_18, f_7];
         }
-        Mask := Mask[m_17, f_7:=Mask[m_17, f_7] - perm];
+        Mask := Mask[m_18, f_7:=Mask[m_18, f_7] - perm];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -346,8 +346,8 @@ procedure main3() returns ()
     // -- Check definedness of invariant
       if (*) {
         perm := FullPerm;
-        assume m_17 != null;
-        Mask := Mask[m_17, f_7:=Mask[m_17, f_7] + perm];
+        assume m_18 != null;
+        Mask := Mask[m_18, f_7:=Mask[m_18, f_7] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume false;
@@ -362,45 +362,45 @@ procedure main3() returns ()
         assume state(Heap, Mask);
         // Inhale invariant
         perm := FullPerm;
-        assume m_17 != null;
-        Mask := Mask[m_17, f_7:=Mask[m_17, f_7] + perm];
+        assume m_18 != null;
+        Mask := Mask[m_18, f_7:=Mask[m_18, f_7] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         // Check and assume guard
         
         // -- Check definedness of m.f != 3
-          assert {:msg "  While statement might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@30.9--30.17) [157290]"}
-            HasDirectPerm(Mask, m_17, f_7);
-        assume Heap[m_17, f_7] != 3;
+          assert {:msg "  While statement might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@30.9--30.17) [47241]"}
+            HasDirectPerm(Mask, m_18, f_7);
+        assume Heap[m_18, f_7] != 3;
         assume state(Heap, Mask);
         
         // -- Translate loop body
           
           // -- Translating statement: label initial -- branching_labelled_old.vpr@33.1--33.14
             initial:
-            LabelinitialMask := Mask;
             LabelinitialHeap := Heap;
+            LabelinitialMask := Mask;
             initial_lblGuard := true;
             assume state(Heap, Mask);
           
           // -- Translating statement: m.f := m.f - 1 -- branching_labelled_old.vpr@34.5--34.19
             
             // -- Check definedness of m.f - 1
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@34.5--34.19) [157291]"}
-                HasDirectPerm(Mask, m_17, f_7);
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@34.5--34.19) [157292]"}
-              FullPerm == Mask[m_17, f_7];
-            Heap := Heap[m_17, f_7:=Heap[m_17, f_7] - 1];
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@34.5--34.19) [47242]"}
+                HasDirectPerm(Mask, m_18, f_7);
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@34.5--34.19) [47243]"}
+              FullPerm == Mask[m_18, f_7];
+            Heap := Heap[m_18, f_7:=Heap[m_18, f_7] - 1];
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(m.f, write) might not be preserved. There might be insufficient permission to access m.f (branching_labelled_old.vpr@31.15--31.23) [157293]"}
-            perm <= Mask[m_17, f_7];
+          assert {:msg "  Loop invariant acc(m.f, write) might not be preserved. There might be insufficient permission to access m.f (branching_labelled_old.vpr@31.15--31.23) [47244]"}
+            perm <= Mask[m_18, f_7];
         }
-        Mask := Mask[m_17, f_7:=Mask[m_17, f_7] - perm];
+        Mask := Mask[m_18, f_7:=Mask[m_18, f_7] - perm];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -410,31 +410,31 @@ procedure main3() returns ()
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(Heap[m_17, f_7] != 3);
+      assume !(Heap[m_18, f_7] != 3);
       assume state(Heap, Mask);
       perm := FullPerm;
-      assume m_17 != null;
-      Mask := Mask[m_17, f_7:=Mask[m_17, f_7] + perm];
+      assume m_18 != null;
+      Mask := Mask[m_18, f_7:=Mask[m_18, f_7] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m.f == 3 && old[initial](m.f) == 15 -- branching_labelled_old.vpr@38.3--38.45
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of m.f == 3
-      assert {:msg "  Assert might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@38.10--38.45) [157294]"}
-        HasDirectPerm(ExhaleWellDef0Mask, m_17, f_7);
-    assert {:msg "  Assert might fail. Assertion m.f == 3 might not hold. (branching_labelled_old.vpr@38.10--38.45) [157295]"}
-      Heap[m_17, f_7] == 3;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@38.10--38.45) [47245]"}
+        HasDirectPerm(ExhaleWellDef0Mask, m_18, f_7);
+    assert {:msg "  Assert might fail. Assertion m.f == 3 might not hold. (branching_labelled_old.vpr@38.10--38.45) [47246]"}
+      Heap[m_18, f_7] == 3;
     
     // -- Check definedness of old[initial](m.f) == 15
-      assert {:msg "  Assert might fail. Did not reach labelled state initial required to evaluate old[initial](m.f). (branching_labelled_old.vpr@38.10--38.45) [157296]"}
+      assert {:msg "  Assert might fail. Did not reach labelled state initial required to evaluate old[initial](m.f). (branching_labelled_old.vpr@38.10--38.45) [47247]"}
         initial_lblGuard;
-      assert {:msg "  Assert might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@38.10--38.45) [157297]"}
-        HasDirectPerm(LabelinitialMask, m_17, f_7);
-    assert {:msg "  Assert might fail. Assertion old[initial](m.f) == 15 might not hold. (branching_labelled_old.vpr@38.10--38.45) [157298]"}
-      LabelinitialHeap[m_17, f_7] == 15;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access m.f (branching_labelled_old.vpr@38.10--38.45) [47248]"}
+        HasDirectPerm(LabelinitialMask, m_18, f_7);
+    assert {:msg "  Assert might fail. Assertion old[initial](m.f) == 15 might not hold. (branching_labelled_old.vpr@38.10--38.45) [47249]"}
+      LabelinitialHeap[m_18, f_7] == 15;
     assume state(Heap, Mask);
 }

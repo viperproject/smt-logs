@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:07
+// Date:         2025-01-26 21:43:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/equality_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/equality_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -187,24 +187,24 @@ function  Nil<T>(): ListDomainType T;
 function  Cons<T>(value_2: T, tail: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function get_List_value
-function  get_List_value<T>(t_9: (ListDomainType T)): T;
+function  get_List_value<T>(t_3: (ListDomainType T)): T;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<T>(t_9: (ListDomainType T)): ListDomainType T;
+function  get_List_tail<T>(t_3: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function List_tag
-function  List_tag<T>(t_9: (ListDomainType T)): int;
+function  List_tag<T>(t_3: (ListDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType T)): T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType T)): ListDomainType T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType T)): ListDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -214,9 +214,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType T)): int) == 0
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (List_tag((Cons(value, tail_1): ListDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -232,10 +232,10 @@ axiom (forall <T> t_2: (ListDomainType T) ::
 procedure equality_2a() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -245,22 +245,22 @@ procedure equality_2a() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (Cons(1, (Nil(): List[Int])): List[Int]) ==
   //   (Cons(1, (Nil(): List[Int])): List[Int]) -- equality_2.vpr@9.5--9.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Cons(1, (Nil(): List[Int])): List[Int]) == (Cons(1, (Nil(): List[Int])): List[Int]) might not hold. (equality_2.vpr@9.12--9.44) [222734]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (Cons(1, (Nil(): List[Int])): List[Int]) == (Cons(1, (Nil(): List[Int])): List[Int]) might not hold. (equality_2.vpr@9.12--9.44) [103658]"}
       (Cons(1, (Nil(): ListDomainType int)): ListDomainType int) == (Cons(1, (Nil(): ListDomainType int)): ListDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (get_List_tail((Cons(1, (Cons(1, (Nil(): List[Int])): List[Int])): List[Int])): List[Int]) ==
   //   (Cons(1, (Nil(): List[Int])): List[Int]) -- equality_2.vpr@11.5--11.58
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (get_List_tail((Cons(1, (Cons(1, (Nil(): List[Int])): List[Int])): List[Int])): List[Int]) == (Cons(1, (Nil(): List[Int])): List[Int]) might not hold. (equality_2.vpr@11.12--11.58) [222735]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (get_List_tail((Cons(1, (Cons(1, (Nil(): List[Int])): List[Int])): List[Int])): List[Int]) == (Cons(1, (Nil(): List[Int])): List[Int]) might not hold. (equality_2.vpr@11.12--11.58) [103659]"}
       (get_List_tail((Cons(1, (Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): ListDomainType int)): ListDomainType int) == (Cons(1, (Nil(): ListDomainType int)): ListDomainType int);
     assume state(Heap, Mask);
 }
@@ -272,10 +272,10 @@ procedure equality_2a() returns ()
 procedure equality_2b() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var list1: (ListDomainType int);
   var list2_1: (ListDomainType int);
   
@@ -287,13 +287,13 @@ procedure equality_2b() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert list1 == list2 -- equality_2.vpr@20.5--20.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion list1 == list2 might not hold. (equality_2.vpr@20.12--20.26) [222736]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion list1 == list2 might not hold. (equality_2.vpr@20.12--20.26) [103660]"}
       list1 == list2_1;
     assume state(Heap, Mask);
 }
@@ -305,12 +305,12 @@ procedure equality_2b() returns ()
 procedure equality_2c() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var list1: (ListDomainType int);
   var list2_1: (ListDomainType int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -320,8 +320,8 @@ procedure equality_2c() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: list1 := (Nil(): List[Int]) -- equality_2.vpr@27.5--27.19
     list1 := (Nil(): ListDomainType int);
@@ -332,9 +332,9 @@ procedure equality_2c() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert list1 == list2 -- equality_2.vpr@31.5--31.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion list1 == list2 might not hold. (equality_2.vpr@31.12--31.26) [222737]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion list1 == list2 might not hold. (equality_2.vpr@31.12--31.26) [103661]"}
       list1 == list2_1;
     assume state(Heap, Mask);
 }

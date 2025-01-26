@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:44:12
+; Started: 2025-01-26 21:31:15
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -462,9 +462,9 @@
 ; diz := new()
 (declare-const diz@73@01 $Ref)
 (assert (not (= diz@73@01 $Ref.null)))
+(assert (not (= diz@73@01 sys__result@69@01)))
 (assert (not (= diz@73@01 sys__thrown@68@01)))
 (assert (not (= diz@73@01 diz@72@01)))
-(assert (not (= diz@73@01 sys__result@69@01)))
 ; [exec]
 ; inhale type_of(diz) == class_Thread()
 (declare-const $t@74@01 $Snap)
@@ -1232,9 +1232,9 @@
 (assert (not (= diz@244@01 $Ref.null)))
 (declare-const Worker__input@245@01 Int)
 (declare-const Worker__output@246@01 Int)
+(assert (not (= diz@244@01 sys__thrown@236@01)))
 (assert (not (= diz@244@01 sys__result@237@01)))
 (assert (not (= diz@244@01 diz@241@01)))
-(assert (not (= diz@244@01 sys__thrown@236@01)))
 ; [exec]
 ; inhale type_of(diz) == class_Worker()
 (declare-const $t@247@01 $Snap)
@@ -1719,8 +1719,8 @@
 (declare-const diz@289@01 $Ref)
 (assert (not (= diz@289@01 $Ref.null)))
 (assert (not (= diz@289@01 sys__thrown@284@01)))
-(assert (not (= diz@289@01 diz@288@01)))
 (assert (not (= diz@289@01 sys__result@285@01)))
+(assert (not (= diz@289@01 diz@288@01)))
 ; [exec]
 ; inhale type_of(diz) == class_Main()
 (declare-const $t@290@01 $Snap)

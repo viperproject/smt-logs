@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:50
+// Date:         2025-01-26 21:42:32
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0144.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0144-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -207,7 +207,7 @@ procedure callee(x: int) returns (r_1: int)
     // Checked inhaling of postcondition to check definedness
     
     // -- Check definedness of r == 1 \ x
-      assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0144.vpr@7.11--7.19) [218679]"}
+      assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0144.vpr@7.11--7.19) [61193]"}
         x != 0;
     assume r_1 == 1 div x;
     assume state(PostHeap, PostMask);
@@ -218,7 +218,7 @@ procedure callee(x: int) returns (r_1: int)
   // -- Translating statement: r := 1 \ x -- 0144.vpr@11.3--11.11
     
     // -- Check definedness of 1 \ x
-      assert {:msg "  Assignment might fail. Divisor x might be zero. (0144.vpr@11.3--11.11) [218680]"}
+      assert {:msg "  Assignment might fail. Divisor x might be zero. (0144.vpr@11.3--11.11) [61194]"}
         x != 0;
     r_1 := 1 div x;
     assume state(Heap, Mask);
@@ -226,7 +226,7 @@ procedure callee(x: int) returns (r_1: int)
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of callee might not hold. Assertion r == 1 \ x might not hold. (0144.vpr@7.11--7.19) [218681]"}
+    assert {:msg "  Postcondition of callee might not hold. Assertion r == 1 \ x might not hold. (0144.vpr@7.11--7.19) [61195]"}
       r_1 == 1 div x;
 }
 
@@ -262,7 +262,7 @@ procedure test01(x: int) returns ()
     PreCallMask := Mask;
     
     // -- Check definedness of 1 \ x
-      assert {:msg "  Method call might fail. Divisor x might be zero. (0144.vpr@17.3--17.19) [218682]"}
+      assert {:msg "  Method call might fail. Divisor x might be zero. (0144.vpr@17.3--17.19) [61196]"}
         x != 0;
     arg_x := 1 div x;
     

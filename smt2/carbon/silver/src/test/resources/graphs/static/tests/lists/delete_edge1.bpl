@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:57:56
+// Date:         2025-01-26 21:41:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/graphs/static/tests/lists/delete_edge1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/graphs/static/tests/lists/delete_edge1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_68: Ref, f_73: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_68, f_73] }
-  Heap[o_68, $allocated] ==> Heap[Heap[o_68, f_73], $allocated]
+axiom (forall o_30: Ref, f_42: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_30, f_42] }
+  Heap[o_30, $allocated] ==> Heap[Heap[o_30, f_42], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_69: Ref, f_74: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_69, f_74] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_69, f_74) ==> Heap[o_69, f_74] == ExhaleHeap[o_69, f_74]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_31: Ref, f_43: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_31, f_43] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_31, f_43) ==> Heap[o_31, f_43] == ExhaleHeap[o_31, f_43]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_37), ExhaleHeap[null, PredicateMaskField(pm_f_37)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsPredicateField(pm_f_37) ==> Heap[null, PredicateMaskField(pm_f_37)] == ExhaleHeap[null, PredicateMaskField(pm_f_37)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_14: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_14), ExhaleHeap[null, PredicateMaskField(pm_f_14)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_14) && IsPredicateField(pm_f_14) ==> Heap[null, PredicateMaskField(pm_f_14)] == ExhaleHeap[null, PredicateMaskField(pm_f_14)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_37) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsPredicateField(pm_f_37) ==> (forall <A, B> o2_37: Ref, f_74: (Field A B) ::
-    { ExhaleHeap[o2_37, f_74] }
-    Heap[null, PredicateMaskField(pm_f_37)][o2_37, f_74] ==> Heap[o2_37, f_74] == ExhaleHeap[o2_37, f_74]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_14: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_14) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_14) && IsPredicateField(pm_f_14) ==> (forall <A, B> o2_14: Ref, f_43: (Field A B) ::
+    { ExhaleHeap[o2_14, f_43] }
+    Heap[null, PredicateMaskField(pm_f_14)][o2_14, f_43] ==> Heap[o2_14, f_43] == ExhaleHeap[o2_14, f_43]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_37), ExhaleHeap[null, WandMaskField(pm_f_37)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsWandField(pm_f_37) ==> Heap[null, WandMaskField(pm_f_37)] == ExhaleHeap[null, WandMaskField(pm_f_37)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_14: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_14), ExhaleHeap[null, WandMaskField(pm_f_14)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_14) && IsWandField(pm_f_14) ==> Heap[null, WandMaskField(pm_f_14)] == ExhaleHeap[null, WandMaskField(pm_f_14)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_37) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsWandField(pm_f_37) ==> (forall <A, B> o2_37: Ref, f_74: (Field A B) ::
-    { ExhaleHeap[o2_37, f_74] }
-    Heap[null, WandMaskField(pm_f_37)][o2_37, f_74] ==> Heap[o2_37, f_74] == ExhaleHeap[o2_37, f_74]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_14: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_14) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_14) && IsWandField(pm_f_14) ==> (forall <A, B> o2_14: Ref, f_43: (Field A B) ::
+    { ExhaleHeap[o2_14, f_43] }
+    Heap[null, WandMaskField(pm_f_14)][o2_14, f_43] ==> Heap[o2_14, f_43] == ExhaleHeap[o2_14, f_43]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_69: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_69, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_69, $allocated] ==> ExhaleHeap[o_69, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_31: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_31, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_31, $allocated] ==> ExhaleHeap[o_31, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_68: Ref, f_71: (Field A B), v: B ::
-  { Heap[o_68, f_71:=v] }
-  succHeap(Heap, Heap[o_68, f_71:=v])
+axiom (forall <A, B> Heap: HeapType, o_30: Ref, f_36: (Field A B), v: B ::
+  { Heap[o_30, f_36:=v] }
+  succHeap(Heap, Heap[o_30, f_36:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -150,16 +150,16 @@ function  neverTriggered3(n_7: Ref): bool;
 function  neverTriggered4(n_8: Ref): bool;
 function  neverTriggered5(n_9: Ref): bool;
 function  neverTriggered6(n_10_1: Ref): bool;
-function  neverTriggered7(n_11_1: Ref): bool;
-function  neverTriggered8(n_12_1: Ref): bool;
-function  neverTriggered9(n_13: Ref): bool;
-function  neverTriggered10(n_14: Ref): bool;
+function  neverTriggered7(n_11_2: Ref): bool;
+function  neverTriggered8(n_12: Ref): bool;
+function  neverTriggered9(n_13_2: Ref): bool;
+function  neverTriggered10(n_14_1: Ref): bool;
 function  neverTriggered11(n_15: Ref): bool;
 function  neverTriggered12(n_1: Ref): bool;
 function  neverTriggered13(n$1_1: Ref): bool;
 function  neverTriggered14(n_2: Ref): bool;
 function  neverTriggered15(n_3: Ref): bool;
-function  neverTriggered16(n_4_1: Ref): bool;
+function  neverTriggered16(n_4: Ref): bool;
 function  neverTriggered17(n_5: Ref): bool;
 function  neverTriggered18(n_6: Ref): bool;
 function  neverTriggered19(n_7: Ref): bool;
@@ -170,7 +170,7 @@ function  neverTriggered23(n_1: Ref): bool;
 function  neverTriggered24(n$1_1: Ref): bool;
 function  neverTriggered25(n_2: Ref): bool;
 function  neverTriggered26(n_3: Ref): bool;
-function  neverTriggered27(n_4_1: Ref): bool;
+function  neverTriggered27(n_4: Ref): bool;
 function  neverTriggered28(n_5: Ref): bool;
 function  neverTriggered29(n_6: Ref): bool;
 function  neverTriggered30(n_7: Ref): bool;
@@ -180,59 +180,59 @@ function  neverTriggered33(n$1_2: Ref): bool;
 function  neverTriggered34(n_1: Ref): bool;
 function  neverTriggered35(n_2: Ref): bool;
 function  neverTriggered36(n_3: Ref): bool;
-function  neverTriggered37(n$0_2_1: Ref): bool;
-function  neverTriggered38(n$0_3_2: Ref): bool;
+function  neverTriggered37(n$0_2: Ref): bool;
+function  neverTriggered38(n$0_3: Ref): bool;
 function  neverTriggered39(n_8: Ref): bool;
 function  neverTriggered40(n_9: Ref): bool;
 function  neverTriggered41(n_10_1: Ref): bool;
-function  neverTriggered42(n$3_1_2: Ref): bool;
+function  neverTriggered42(n$3_1: Ref): bool;
 function  neverTriggered43(n$5_1: Ref): bool;
-function  neverTriggered44(n_11_1: Ref): bool;
+function  neverTriggered44(n_11_2: Ref): bool;
 function  neverTriggered45(n$3_2: Ref): bool;
 function  neverTriggered46(n$5_2: Ref): bool;
-function  neverTriggered47(n_12_1: Ref): bool;
-function  neverTriggered48(n_13: Ref): bool;
-function  neverTriggered49(n_14: Ref): bool;
+function  neverTriggered47(n_12: Ref): bool;
+function  neverTriggered48(n_13_2: Ref): bool;
+function  neverTriggered49(n_14_1: Ref): bool;
 function  neverTriggered50(n$1_2: Ref): bool;
 function  neverTriggered51(n_15: Ref): bool;
-function  neverTriggered52(n_16: Ref): bool;
+function  neverTriggered52(n_16_1: Ref): bool;
 function  neverTriggered53(n_1: Ref): bool;
 function  neverTriggered54(n$1_1: Ref): bool;
-function  neverTriggered55(n_4_1: Ref): bool;
+function  neverTriggered55(n_4: Ref): bool;
 function  neverTriggered56(n_5: Ref): bool;
 function  neverTriggered57(n_6: Ref): bool;
 function  neverTriggered58(n_7: Ref): bool;
 function  neverTriggered59(n_8: Ref): bool;
-function  neverTriggered60(n$0_2_1: Ref): bool;
-function  neverTriggered61(n$0_3_2: Ref): bool;
+function  neverTriggered60(n$0_2: Ref): bool;
+function  neverTriggered61(n$0_3: Ref): bool;
 function  neverTriggered62(n$0_4: Ref): bool;
 function  neverTriggered63(n$0_5: Ref): bool;
 function  neverTriggered64(n$0_6: Ref): bool;
 function  neverTriggered65(n$0_7: Ref): bool;
 function  neverTriggered66(n$0_8: Ref): bool;
 function  neverTriggered67(n$0_9: Ref): bool;
-function  neverTriggered68(n_13: Ref): bool;
-function  neverTriggered69(n_14: Ref): bool;
+function  neverTriggered68(n_13_2: Ref): bool;
+function  neverTriggered69(n_14_1: Ref): bool;
 function  neverTriggered70(n_15: Ref): bool;
-function  neverTriggered71(n_16: Ref): bool;
+function  neverTriggered71(n_16_1: Ref): bool;
 function  neverTriggered72(n_17: Ref): bool;
 function  neverTriggered73(n$1_2: Ref): bool;
 function  neverTriggered74(n_1: Ref): bool;
 function  neverTriggered75(n_2: Ref): bool;
 function  neverTriggered76(n_3: Ref): bool;
-function  neverTriggered77(n$0_2_1: Ref): bool;
-function  neverTriggered78(n$0_3_2: Ref): bool;
+function  neverTriggered77(n$0_2: Ref): bool;
+function  neverTriggered78(n$0_3: Ref): bool;
 function  neverTriggered79(n_8: Ref): bool;
-function  neverTriggered80(n$3_1_2: Ref): bool;
+function  neverTriggered80(n$3_1: Ref): bool;
 function  neverTriggered81(n$5_1: Ref): bool;
 function  neverTriggered82(n_9: Ref): bool;
 function  neverTriggered83(n_10_1: Ref): bool;
-function  neverTriggered84(n_11_1: Ref): bool;
+function  neverTriggered84(n_11_2: Ref): bool;
 function  neverTriggered85(n$3_2: Ref): bool;
 function  neverTriggered86(n$5_2: Ref): bool;
-function  neverTriggered87(n_12_1: Ref): bool;
-function  neverTriggered88(n_13: Ref): bool;
-function  neverTriggered89(n_14: Ref): bool;
+function  neverTriggered87(n_12: Ref): bool;
+function  neverTriggered88(n_13_2: Ref): bool;
+function  neverTriggered89(n_14_1: Ref): bool;
 function  neverTriggered90(n$1_2: Ref): bool;
 function  neverTriggered91(n_18: Ref): bool;
 function  neverTriggered92(n_19: Ref): bool;
@@ -670,15 +670,15 @@ function  edge_pred(e: EdgeDomainType): Ref;
 function  edge_succ(e: EdgeDomainType): Ref;
 
 // Translation of domain function create_edge
-function  create_edge(p_16: Ref, s_17: Ref): EdgeDomainType;
+function  create_edge(p_3: Ref, s: Ref): EdgeDomainType;
 
 // Translation of domain function create_edge_
-function  create_edge_(p_16: Ref, s_17: Ref): EdgeDomainType;
+function  create_edge_(p_3: Ref, s: Ref): EdgeDomainType;
 
 // Translation of domain axiom edge_injectivity
-axiom (forall p_1: Ref, s_2: Ref ::
-  { (create_edge(p_1, s_2): EdgeDomainType) }
-  (edge_pred((create_edge(p_1, s_2): EdgeDomainType)): Ref) == p_1 && (edge_succ((create_edge(p_1, s_2): EdgeDomainType)): Ref) == s_2
+axiom (forall p_1: Ref, s_1: Ref ::
+  { (create_edge(p_1, s_1): EdgeDomainType) }
+  (edge_pred((create_edge(p_1, s_1): EdgeDomainType)): Ref) == p_1 && (edge_succ((create_edge(p_1, s_1): EdgeDomainType)): Ref) == s_1
 );
 
 // ==================================================
@@ -689,19 +689,19 @@ axiom (forall p_1: Ref, s_2: Ref ::
 type TrCloDomainType;
 
 // Translation of domain function exists_path
-function  exists_path(EG: (Set EdgeDomainType), start_1: Ref, end_1: Ref): bool;
+function  exists_path(EG: (Set EdgeDomainType), start: Ref, end: Ref): bool;
 
 // Translation of domain function exists_path_
-function  exists_path_(EG: (Set EdgeDomainType), start_1: Ref, end_1: Ref): bool;
+function  exists_path_(EG: (Set EdgeDomainType), start: Ref, end: Ref): bool;
 
 // Translation of domain function exists_spath
-function  exists_spath(EG: (Set EdgeDomainType), from_1: (Set Ref), to_1: Ref): bool;
+function  exists_spath(EG: (Set EdgeDomainType), from: (Set Ref), to: Ref): bool;
 
 // Translation of domain function apply_noExit
-function  apply_noExit(EG: (Set EdgeDomainType), U: (Set Ref), M_1: (Set Ref)): bool;
+function  apply_noExit(EG: (Set EdgeDomainType), U: (Set Ref), M: (Set Ref)): bool;
 
 // Translation of domain function inst_uReach
-function  inst_uReach(EG: (Set EdgeDomainType), x_8: Ref): Set Ref;
+function  inst_uReach(EG: (Set EdgeDomainType), x_37: Ref): Set Ref;
 
 // Translation of domain function acyclic_graph
 function  acyclic_graph(EG: (Set EdgeDomainType)): bool;
@@ -713,32 +713,32 @@ function  unshared_graph(EG: (Set EdgeDomainType)): bool;
 function  func_graph(EG: (Set EdgeDomainType)): bool;
 
 // Translation of domain function edge
-function  edge(EG: (Set EdgeDomainType), p_16: Ref, s_17: Ref): bool;
+function  edge(EG: (Set EdgeDomainType), p_3: Ref, s: Ref): bool;
 
 // Translation of domain function edge_
-function  edge_(EG: (Set EdgeDomainType), p_16: Ref, s_17: Ref): bool;
+function  edge_(EG: (Set EdgeDomainType), p_3: Ref, s: Ref): bool;
 
 // Translation of domain axiom ax_EdgeSynonim
-axiom (forall EG_1: (Set EdgeDomainType), p_1: Ref, s_2: Ref ::
-  { (edge(EG_1, p_1, s_2): bool) }
-  (edge(EG_1, p_1, s_2): bool) == (edge_(EG_1, p_1, s_2): bool)
+axiom (forall EG_1: (Set EdgeDomainType), p_1: Ref, s_1: Ref ::
+  { (edge(EG_1, p_1, s_1): bool) }
+  (edge(EG_1, p_1, s_1): bool) == (edge_(EG_1, p_1, s_1): bool)
 );
 
 // Translation of domain axiom ax_Edge
-axiom (forall EG_1: (Set EdgeDomainType), p_1: Ref, s_2: Ref ::
-  { EG_1[(create_edge(p_1, s_2): EdgeDomainType)] } { (edge(EG_1, p_1, s_2): bool) }
-  (edge_(EG_1, p_1, s_2): bool) == EG_1[(create_edge(p_1, s_2): EdgeDomainType)]
+axiom (forall EG_1: (Set EdgeDomainType), p_1: Ref, s_1: Ref ::
+  { EG_1[(create_edge(p_1, s_1): EdgeDomainType)] } { (edge(EG_1, p_1, s_1): bool) }
+  (edge_(EG_1, p_1, s_1): bool) == EG_1[(create_edge(p_1, s_1): EdgeDomainType)]
 );
 
 // Translation of domain axiom ax_NoExit
-axiom (forall EG_1: (Set EdgeDomainType), U_1: (Set Ref), M: (Set Ref) ::
-  { (apply_noExit(EG_1, U_1, M): bool) }
-  (apply_noExit(EG_1, U_1, M): bool) ==> (forall u_3: Ref, v_2: Ref ::
-    { (edge(EG_1, u_3, v_2): bool) } { M[u_3], M[v_2] }
-    M[u_3] && (U_1[v_2] && !M[v_2]) ==> !(edge(EG_1, u_3, v_2): bool)
-  ) ==> (forall u_1: Ref, v_1_1: Ref ::
-    { (exists_path(EG_1, u_1, v_1_1): bool) } { M[u_1], M[v_1_1] }
-    M[u_1] && (U_1[v_1_1] && !M[v_1_1]) ==> !(exists_path(EG_1, u_1, v_1_1): bool)
+axiom (forall EG_1: (Set EdgeDomainType), U_1: (Set Ref), M_1: (Set Ref) ::
+  { (apply_noExit(EG_1, U_1, M_1): bool) }
+  (apply_noExit(EG_1, U_1, M_1): bool) ==> (forall u_1: Ref, v_2: Ref ::
+    { (edge(EG_1, u_1, v_2): bool) } { M_1[u_1], M_1[v_2] }
+    M_1[u_1] && (U_1[v_2] && !M_1[v_2]) ==> !(edge(EG_1, u_1, v_2): bool)
+  ) ==> (forall u_1_1: Ref, v_1_1: Ref ::
+    { (exists_path(EG_1, u_1_1, v_1_1): bool) } { M_1[u_1_1], M_1[v_1_1] }
+    M_1[u_1_1] && (U_1[v_1_1] && !M_1[v_1_1]) ==> !(exists_path(EG_1, u_1_1, v_1_1): bool)
   )
 );
 
@@ -749,24 +749,24 @@ axiom (forall EG_1: (Set EdgeDomainType), x: Ref, v_2: Ref ::
 );
 
 // Translation of domain axiom ax_Alias
-axiom (forall EG_1: (Set EdgeDomainType), start: Ref, end: Ref ::
-  { (exists_path(EG_1, start, end): bool) }
-  (exists_path(EG_1, start, end): bool) == (exists_path_(EG_1, start, end): bool)
+axiom (forall EG_1: (Set EdgeDomainType), start_1: Ref, end_1: Ref ::
+  { (exists_path(EG_1, start_1, end_1): bool) }
+  (exists_path(EG_1, start_1, end_1): bool) == (exists_path_(EG_1, start_1, end_1): bool)
 );
 
 // Translation of domain axiom ax_ExistsPath
-axiom (forall EG_1: (Set EdgeDomainType), start: Ref, end: Ref ::
-  { (exists_path(EG_1, start, end): bool) } { (edge(EG_1, start, end): bool) }
-  (exists_path_(EG_1, start, end): bool) == (start == end || (exists w_2: Ref ::
-    { (edge(EG_1, start, w_2): bool) } { (exists_path_(EG_1, w_2, end): bool) }
-    (edge(EG_1, start, w_2): bool) && (exists_path_(EG_1, w_2, end): bool)
+axiom (forall EG_1: (Set EdgeDomainType), start_1: Ref, end_1: Ref ::
+  { (exists_path(EG_1, start_1, end_1): bool) } { (edge(EG_1, start_1, end_1): bool) }
+  (exists_path_(EG_1, start_1, end_1): bool) == (start_1 == end_1 || (exists w_2: Ref ::
+    { (edge(EG_1, start_1, w_2): bool) } { (exists_path_(EG_1, w_2, end_1): bool) }
+    (edge(EG_1, start_1, w_2): bool) && (exists_path_(EG_1, w_2, end_1): bool)
   ))
 );
 
 // Translation of domain axiom ax_ExistsPathTrans
-axiom (forall EG_1: (Set EdgeDomainType), u_3: Ref, v_2: Ref, w_2: Ref ::
-  { (exists_path(EG_1, u_3, w_2): bool), (exists_path(EG_1, w_2, v_2): bool) }
-  (exists_path_(EG_1, u_3, w_2): bool) && (exists_path_(EG_1, w_2, v_2): bool) ==> (exists_path_(EG_1, u_3, v_2): bool)
+axiom (forall EG_1: (Set EdgeDomainType), u_1: Ref, v_2: Ref, w_2: Ref ::
+  { (exists_path(EG_1, u_1, w_2): bool), (exists_path(EG_1, w_2, v_2): bool) }
+  (exists_path_(EG_1, u_1, w_2): bool) && (exists_path_(EG_1, w_2, v_2): bool) ==> (exists_path_(EG_1, u_1, v_2): bool)
 );
 
 // Translation of domain axiom ax_AcyclicGraph
@@ -847,16 +847,16 @@ axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, refs: (Set Ref) ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, refs: (Set Ref) ::
   { state(Heap, Mask), $$'(Heap, refs) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || $$#trigger(FrameFragment($$#condqp1(Heap, refs)), refs)) ==> (forall p_1: Ref, s_2: Ref ::
-    { (create_edge(p_1, s_2): EdgeDomainType) }
-    (refs[p_1] && (refs[s_2] && Heap[p_1, next] == s_2)) == $$'(Heap, refs)[(create_edge(p_1, s_2): EdgeDomainType)]
+  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || $$#trigger(FrameFragment($$#condqp1(Heap, refs)), refs)) ==> (forall p_1: Ref, s_1: Ref ::
+    { (create_edge(p_1, s_1): EdgeDomainType) }
+    (refs[p_1] && (refs[s_1] && Heap[p_1, next] == s_1)) == $$'(Heap, refs)[(create_edge(p_1, s_1): EdgeDomainType)]
   )
 );
 axiom (forall Heap: HeapType, Mask: MaskType, refs: (Set Ref) ::
   { state(Heap, Mask), $$'(Heap, refs) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || $$#trigger(FrameFragment($$#condqp1(Heap, refs)), refs)) ==> (forall p_1_1: Ref, s_1: Ref ::
-    { refs[p_1_1], refs[s_1], (exists_path($$'(Heap, refs), p_1_1, s_1): bool) }
-    refs[p_1_1] && (exists_path($$'(Heap, refs), p_1_1, s_1): bool) ==> refs[s_1]
+  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || $$#trigger(FrameFragment($$#condqp1(Heap, refs)), refs)) ==> (forall p_1_1: Ref, s_1_1: Ref ::
+    { refs[p_1_1], refs[s_1_1], (exists_path($$'(Heap, refs), p_1_1, s_1_1): bool) }
+    refs[p_1_1] && (exists_path($$'(Heap, refs), p_1_1, s_1_1): bool) ==> refs[s_1_1]
   )
 );
 axiom (forall Heap: HeapType, Mask: MaskType, refs: (Set Ref) ::
@@ -878,8 +878,8 @@ procedure $$#definedness(refs: (Set Ref)) returns (Result: (Set EdgeDomainType))
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var p_9: Ref;
-  var s_5: Ref;
+  var p_4: Ref;
+  var s_2: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -894,7 +894,7 @@ procedure $$#definedness(refs: (Set Ref)) returns (Result: (Set EdgeDomainType))
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@186.14--186.69) [83615]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@186.14--186.69) [8827]"}
       (forall n_3: Ref, n_3_1: Ref ::
       
       (((n_3 != n_3_1 && refs[n_3]) && refs[n_3_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_3 != n_3_1
@@ -905,12 +905,12 @@ procedure $$#definedness(refs: (Set Ref)) returns (Result: (Set EdgeDomainType))
         { Heap[n_3, next] } { QPMask[n_3, next] } { Heap[n_3, next] }
         refs[n_3] && NoPerm < 1 / 2 ==> qpRange1(n_3) && invRecv1(n_3) == n_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (refs[invRecv1(o_4)] && NoPerm < 1 / 2) && qpRange1(o_4) ==> invRecv1(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (refs[invRecv1(o_9)] && NoPerm < 1 / 2) && qpRange1(o_9) ==> invRecv1(o_9) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (delete_edge1.vpr@186.14--186.69) [83616]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (delete_edge1.vpr@186.14--186.69) [8828]"}
       (forall n_3: Ref ::
       { Heap[n_3, next] } { QPMask[n_3, next] } { Heap[n_3, next] }
       refs[n_3] ==> 1 / 2 >= NoPerm
@@ -923,13 +923,13 @@ procedure $$#definedness(refs: (Set Ref)) returns (Result: (Set EdgeDomainType))
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((refs[invRecv1(o_4)] && NoPerm < 1 / 2) && qpRange1(o_4) ==> (NoPerm < 1 / 2 ==> invRecv1(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + 1 / 2) && (!((refs[invRecv1(o_4)] && NoPerm < 1 / 2) && qpRange1(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((refs[invRecv1(o_9)] && NoPerm < 1 / 2) && qpRange1(o_9) ==> (NoPerm < 1 / 2 ==> invRecv1(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + 1 / 2) && (!((refs[invRecv1(o_9)] && NoPerm < 1 / 2) && qpRange1(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -939,17 +939,17 @@ procedure $$#definedness(refs: (Set Ref)) returns (Result: (Set EdgeDomainType))
     
     // -- Check definedness of (forall p: Ref, s: Ref :: { create_edge(p, s) } ((p in refs) && ((s in refs) && p.next == s)) == (create_edge(p, s) in result))
       if (*) {
-        if (refs[p_9]) {
-          if (refs[s_5]) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.next (delete_edge1.vpr@188.13--192.44) [83617]"}
-              HasDirectPerm(Mask, p_9, next);
+        if (refs[p_4]) {
+          if (refs[s_2]) {
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p.next (delete_edge1.vpr@188.13--192.44) [8829]"}
+              HasDirectPerm(Mask, p_4, next);
           }
         }
         assume false;
       }
-    assume (forall p_4_1: Ref, s_4_1: Ref ::
-      { (create_edge(p_4_1, s_4_1): EdgeDomainType) }
-      (refs[p_4_1] && (refs[s_4_1] && Heap[p_4_1, next] == s_4_1)) == Result[(create_edge(p_4_1, s_4_1): EdgeDomainType)]
+    assume (forall p_4_1: Ref, s_4: Ref ::
+      { (create_edge(p_4_1, s_4): EdgeDomainType) }
+      (refs[p_4_1] && (refs[s_4] && Heap[p_4_1, next] == s_4)) == Result[(create_edge(p_4_1, s_4): EdgeDomainType)]
     );
     assume state(Heap, Mask);
     
@@ -957,9 +957,9 @@ procedure $$#definedness(refs: (Set Ref)) returns (Result: (Set EdgeDomainType))
       if (*) {
         assume false;
       }
-    assume (forall p_6_1: Ref, s_6_1: Ref ::
-      { refs[p_6_1], refs[s_6_1], (exists_path(Result, p_6_1, s_6_1): bool) }
-      refs[p_6_1] && (exists_path(Result, p_6_1, s_6_1): bool) ==> refs[s_6_1]
+    assume (forall p_6: Ref, s_6: Ref ::
+      { refs[p_6], refs[s_6], (exists_path(Result, p_6, s_6): bool) }
+      refs[p_6] && (exists_path(Result, p_6, s_6): bool) ==> refs[s_6]
     );
     assume state(Heap, Mask);
     
@@ -967,9 +967,9 @@ procedure $$#definedness(refs: (Set Ref)) returns (Result: (Set EdgeDomainType))
       if (*) {
         assume false;
       }
-    assume (forall p_8: Ref, s_8_1: Ref ::
-      { refs[p_8], refs[s_8_1], (exists_path(Result, p_8, s_8_1): bool) }
-      refs[s_8_1] && (exists_path(Result, p_8, s_8_1): bool) ==> refs[p_8]
+    assume (forall p_8: Ref, s_8: Ref ::
+      { refs[p_8], refs[s_8], (exists_path(Result, p_8, s_8): bool) }
+      refs[s_8] && (exists_path(Result, p_8, s_8): bool) ==> refs[p_8]
     );
     assume state(Heap, Mask);
 }
@@ -1024,23 +1024,23 @@ axiom (forall Heap: HeapType, Mask: MaskType, g0: (Set Ref), g1: (Set Ref) ::
 );
 axiom (forall Heap: HeapType, Mask: MaskType, g0: (Set Ref), g1: (Set Ref) ::
   { state(Heap, Mask), apply_TCFraming'(Heap, g0, g1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || apply_TCFraming#trigger(CombineFrames(FrameFragment(apply_TCFraming#condqp2(Heap, g0, g1)), FrameFragment(apply_TCFraming#condqp3(Heap, g0, g1))), g0, g1)) ==> Set#Equal(Set#Intersection(g1, g0), (Set#Empty(): Set Ref)) ==> (forall u_3: Ref, v_2: Ref ::
-    { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g0)), g0), u_3, v_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g0, g1))), Set#Union(g0, g1)), u_3, v_2): bool) }
-    g0[u_3] && (g0[v_2] && (exists_path($$(Heap, g0), u_3, v_2): bool)) ==> (exists_path($$(Heap, Set#Union(g0, g1)), u_3, v_2): bool)
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || apply_TCFraming#trigger(CombineFrames(FrameFragment(apply_TCFraming#condqp2(Heap, g0, g1)), FrameFragment(apply_TCFraming#condqp3(Heap, g0, g1))), g0, g1)) ==> Set#Equal(Set#Intersection(g1, g0), (Set#Empty(): Set Ref)) ==> (forall u_1: Ref, v_2: Ref ::
+    { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g0)), g0), u_1, v_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g0, g1))), Set#Union(g0, g1)), u_1, v_2): bool) }
+    g0[u_1] && (g0[v_2] && (exists_path($$(Heap, g0), u_1, v_2): bool)) ==> (exists_path($$(Heap, Set#Union(g0, g1)), u_1, v_2): bool)
   )
 );
 axiom (forall Heap: HeapType, Mask: MaskType, g0: (Set Ref), g1: (Set Ref) ::
   { state(Heap, Mask), apply_TCFraming'(Heap, g0, g1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || apply_TCFraming#trigger(CombineFrames(FrameFragment(apply_TCFraming#condqp2(Heap, g0, g1)), FrameFragment(apply_TCFraming#condqp3(Heap, g0, g1))), g0, g1)) ==> Set#Equal(Set#Intersection(g1, g0), (Set#Empty(): Set Ref)) ==> (forall u_1: Ref, v_1_1: Ref ::
-    { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), u_1, v_1_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g1, g0))), Set#Union(g1, g0)), u_1, v_1_1): bool) }
-    g1[u_1] && (g1[v_1_1] && (exists_path($$(Heap, g1), u_1, v_1_1): bool)) ==> (exists_path($$(Heap, Set#Union(g1, g0)), u_1, v_1_1): bool)
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || apply_TCFraming#trigger(CombineFrames(FrameFragment(apply_TCFraming#condqp2(Heap, g0, g1)), FrameFragment(apply_TCFraming#condqp3(Heap, g0, g1))), g0, g1)) ==> Set#Equal(Set#Intersection(g1, g0), (Set#Empty(): Set Ref)) ==> (forall u_1_1: Ref, v_1_1: Ref ::
+    { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), u_1_1, v_1_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g1, g0))), Set#Union(g1, g0)), u_1_1, v_1_1): bool) }
+    g1[u_1_1] && (g1[v_1_1] && (exists_path($$(Heap, g1), u_1_1, v_1_1): bool)) ==> (exists_path($$(Heap, Set#Union(g1, g0)), u_1_1, v_1_1): bool)
   )
 );
 axiom (forall Heap: HeapType, Mask: MaskType, g0: (Set Ref), g1: (Set Ref) ::
   { state(Heap, Mask), apply_TCFraming'(Heap, g0, g1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || apply_TCFraming#trigger(CombineFrames(FrameFragment(apply_TCFraming#condqp2(Heap, g0, g1)), FrameFragment(apply_TCFraming#condqp3(Heap, g0, g1))), g0, g1)) ==> Set#Equal(Set#Intersection(g1, g0), (Set#Empty(): Set Ref)) ==> (forall u_2_1: Ref, v_2_1: Ref ::
-    { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g0)), g0), u_2_1, v_2_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g0, g1))), Set#Union(g0, g1)), u_2_1, v_2_1): bool) }
-    g0[u_2_1] && (g0[v_2_1] && !(exists_path($$(Heap, g0), u_2_1, v_2_1): bool)) ==> !(exists_path($$(Heap, Set#Union(g0, g1)), u_2_1, v_2_1): bool)
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || apply_TCFraming#trigger(CombineFrames(FrameFragment(apply_TCFraming#condqp2(Heap, g0, g1)), FrameFragment(apply_TCFraming#condqp3(Heap, g0, g1))), g0, g1)) ==> Set#Equal(Set#Intersection(g1, g0), (Set#Empty(): Set Ref)) ==> (forall u_2_2: Ref, v_2_2: Ref ::
+    { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g0)), g0), u_2_2, v_2_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g0, g1))), Set#Union(g0, g1)), u_2_2, v_2_2): bool) }
+    g0[u_2_2] && (g0[v_2_2] && !(exists_path($$(Heap, g0), u_2_2, v_2_2): bool)) ==> !(exists_path($$(Heap, Set#Union(g0, g1)), u_2_2, v_2_2): bool)
   )
 );
 axiom (forall Heap: HeapType, Mask: MaskType, g0: (Set Ref), g1: (Set Ref) ::
@@ -1062,17 +1062,17 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var u_4: Ref;
-  var v_5: Ref;
-  var ExhaleWellDef0Heap: HeapType;
+  var u_21: Ref;
+  var v_21: Ref;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var u_6: Ref;
-  var v_6: Ref;
-  var u_8: Ref;
-  var v_8: Ref;
-  var u_10: Ref;
-  var v_10: Ref;
+  var u_22: Ref;
+  var v_22: Ref;
+  var u_23: Ref;
+  var v_23: Ref;
+  var u_24: Ref;
+  var v_24: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1087,7 +1087,7 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@231.14--231.62) [83618]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@231.14--231.62) [8830]"}
       (forall n_5: Ref, n_5_1: Ref ::
       
       (((n_5 != n_5_1 && g0[n_5]) && g0[n_5_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_5 != n_5_1
@@ -1098,9 +1098,9 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
         { Heap[n_5, next] } { QPMask[n_5, next] } { Heap[n_5, next] }
         g0[n_5] && NoPerm < FullPerm ==> qpRange2(n_5) && invRecv2(n_5) == n_5
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        (g0[invRecv2(o_4)] && NoPerm < FullPerm) && qpRange2(o_4) ==> invRecv2(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        (g0[invRecv2(o_9)] && NoPerm < FullPerm) && qpRange2(o_9) ==> invRecv2(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1110,13 +1110,13 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g0[invRecv2(o_4)] && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> invRecv2(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!((g0[invRecv2(o_4)] && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g0[invRecv2(o_9)] && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> invRecv2(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!((g0[invRecv2(o_9)] && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1127,7 +1127,7 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@232.14--232.62) [83619]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@232.14--232.62) [8831]"}
       (forall n_7: Ref, n_7_1: Ref ::
       
       (((n_7 != n_7_1 && g1[n_7]) && g1[n_7_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_7 != n_7_1
@@ -1138,9 +1138,9 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
         { Heap[n_7, next] } { QPMask[n_7, next] } { Heap[n_7, next] }
         g1[n_7] && NoPerm < FullPerm ==> qpRange3(n_7) && invRecv3(n_7) == n_7
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (g1[invRecv3(o_4)] && NoPerm < FullPerm) && qpRange3(o_4) ==> invRecv3(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (g1[invRecv3(o_9)] && NoPerm < FullPerm) && qpRange3(o_9) ==> invRecv3(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1150,13 +1150,13 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g1[invRecv3(o_4)] && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> invRecv3(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!((g1[invRecv3(o_4)] && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g1[invRecv3(o_9)] && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> invRecv3(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!((g1[invRecv3(o_9)] && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1171,30 +1171,30 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
     
     // -- Check definedness of (forall u: Ref, v: Ref :: { exists_path($$(g0), u, v) } { exists_path($$((g0 union g1)), u, v) } (u in g0) && ((v in g0) && exists_path($$(g0), u, v)) ==> exists_path($$((g0 union g1)), u, v))
       if (*) {
-        if (g0[u_4]) {
-          if (g0[v_5]) {
+        if (g0[u_21]) {
+          if (g0[v_21]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
-                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@240.134--240.140) [83620]"}
+                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@240.134--240.140) [8832]"}
                   (forall n_8: Ref ::
                   { Heap[n_8, next] } { QPMask[n_8, next] } { Heap[n_8, next] }
                   g0[n_8] && dummyFunction(Heap[n_8, next]) ==> 1 / 2 >= NoPerm
                 );
               
               // -- check if receiver n is injective
-                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@240.134--240.140) [83621]"}
+                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@240.134--240.140) [8833]"}
                   (forall n_8: Ref, n_8_1: Ref ::
                   { neverTriggered4(n_8), neverTriggered4(n_8_1) }
                   (((n_8 != n_8_1 && g0[n_8]) && g0[n_8_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_8 != n_8_1
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@240.134--240.140) [83622]"}
+                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@240.134--240.140) [8834]"}
                   (forall n_8: Ref ::
                   { Heap[n_8, next] } { QPMask[n_8, next] } { Heap[n_8, next] }
                   g0[n_8] ==> 1 / 2 > NoPerm ==> Mask[n_8, next] > NoPerm
@@ -1205,9 +1205,9 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
                   { Heap[n_8, next] } { QPMask[n_8, next] } { Heap[n_8, next] }
                   g0[n_8] && NoPerm < 1 / 2 ==> qpRange4(n_8) && invRecv4(n_8) == n_8
                 );
-                assume (forall o_4: Ref ::
-                  { invRecv4(o_4) }
-                  g0[invRecv4(o_4)] && (NoPerm < 1 / 2 && qpRange4(o_4)) ==> invRecv4(o_4) == o_4
+                assume (forall o_9: Ref ::
+                  { invRecv4(o_9) }
+                  g0[invRecv4(o_9)] && (NoPerm < 1 / 2 && qpRange4(o_9)) ==> invRecv4(o_9) == o_9
                 );
               // Finish exhale
               havoc ExhaleHeap;
@@ -1218,29 +1218,29 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
             }
           }
         }
-        if (g0[u_4] && (g0[v_5] && (exists_path($$(Heap, g0), u_4, v_5): bool))) {
+        if (g0[u_21] && (g0[v_21] && (exists_path($$(Heap, g0), u_21, v_21): bool))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@240.162--240.177) [83623]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@240.162--240.177) [8835]"}
                 (forall n_9: Ref ::
                 { Heap[n_9, next] } { QPMask[n_9, next] } { Heap[n_9, next] }
                 Set#Union(g0, g1)[n_9] && dummyFunction(Heap[n_9, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@240.162--240.177) [83624]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@240.162--240.177) [8836]"}
                 (forall n_9: Ref, n_9_1: Ref ::
                 { neverTriggered5(n_9), neverTriggered5(n_9_1) }
                 (((n_9 != n_9_1 && Set#Union(g0, g1)[n_9]) && Set#Union(g0, g1)[n_9_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_9 != n_9_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@240.162--240.177) [83625]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@240.162--240.177) [8837]"}
                 (forall n_9: Ref ::
                 { Heap[n_9, next] } { QPMask[n_9, next] } { Heap[n_9, next] }
                 Set#Union(g0, g1)[n_9] ==> 1 / 2 > NoPerm ==> Mask[n_9, next] > NoPerm
@@ -1251,9 +1251,9 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
                 { Heap[n_9, next] } { QPMask[n_9, next] } { Heap[n_9, next] }
                 Set#Union(g0, g1)[n_9] && NoPerm < 1 / 2 ==> qpRange5(n_9) && invRecv5(n_9) == n_9
               );
-              assume (forall o_4: Ref ::
-                { invRecv5(o_4) }
-                Set#Union(g0, g1)[invRecv5(o_4)] && (NoPerm < 1 / 2 && qpRange5(o_4)) ==> invRecv5(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv5(o_9) }
+                Set#Union(g0, g1)[invRecv5(o_9)] && (NoPerm < 1 / 2 && qpRange5(o_9)) ==> invRecv5(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -1265,39 +1265,39 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
         }
         assume false;
       }
-    assume (forall u_5: Ref, v_5_1: Ref ::
-      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g0)), g0), u_5, v_5_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g0, g1))), Set#Union(g0, g1)), u_5, v_5_1): bool) }
-      g0[u_5] && (g0[v_5_1] && (exists_path($$(Heap, g0), u_5, v_5_1): bool)) ==> (exists_path($$(Heap, Set#Union(g0, g1)), u_5, v_5_1): bool)
+    assume (forall u_5_2: Ref, v_5_2: Ref ::
+      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g0)), g0), u_5_2, v_5_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g0, g1))), Set#Union(g0, g1)), u_5_2, v_5_2): bool) }
+      g0[u_5_2] && (g0[v_5_2] && (exists_path($$(Heap, g0), u_5_2, v_5_2): bool)) ==> (exists_path($$(Heap, Set#Union(g0, g1)), u_5_2, v_5_2): bool)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall u: Ref, v: Ref :: { exists_path($$(g1), u, v) } { exists_path($$((g1 union g0)), u, v) } (u in g1) && ((v in g1) && exists_path($$(g1), u, v)) ==> exists_path($$((g1 union g0)), u, v))
       if (*) {
-        if (g1[u_6]) {
-          if (g1[v_6]) {
+        if (g1[u_22]) {
+          if (g1[v_22]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
-                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@241.134--241.140) [83626]"}
+                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@241.134--241.140) [8838]"}
                   (forall n_10_1: Ref ::
                   { Heap[n_10_1, next] } { QPMask[n_10_1, next] } { Heap[n_10_1, next] }
                   g1[n_10_1] && dummyFunction(Heap[n_10_1, next]) ==> 1 / 2 >= NoPerm
                 );
               
               // -- check if receiver n is injective
-                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@241.134--241.140) [83627]"}
+                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@241.134--241.140) [8839]"}
                   (forall n_10_1: Ref, n_10_2: Ref ::
                   { neverTriggered6(n_10_1), neverTriggered6(n_10_2) }
                   (((n_10_1 != n_10_2 && g1[n_10_1]) && g1[n_10_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_10_1 != n_10_2
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@241.134--241.140) [83628]"}
+                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@241.134--241.140) [8840]"}
                   (forall n_10_1: Ref ::
                   { Heap[n_10_1, next] } { QPMask[n_10_1, next] } { Heap[n_10_1, next] }
                   g1[n_10_1] ==> 1 / 2 > NoPerm ==> Mask[n_10_1, next] > NoPerm
@@ -1308,9 +1308,9 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
                   { Heap[n_10_1, next] } { QPMask[n_10_1, next] } { Heap[n_10_1, next] }
                   g1[n_10_1] && NoPerm < 1 / 2 ==> qpRange6(n_10_1) && invRecv6(n_10_1) == n_10_1
                 );
-                assume (forall o_4: Ref ::
-                  { invRecv6(o_4) }
-                  g1[invRecv6(o_4)] && (NoPerm < 1 / 2 && qpRange6(o_4)) ==> invRecv6(o_4) == o_4
+                assume (forall o_9: Ref ::
+                  { invRecv6(o_9) }
+                  g1[invRecv6(o_9)] && (NoPerm < 1 / 2 && qpRange6(o_9)) ==> invRecv6(o_9) == o_9
                 );
               // Finish exhale
               havoc ExhaleHeap;
@@ -1321,42 +1321,42 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
             }
           }
         }
-        if (g1[u_6] && (g1[v_6] && (exists_path($$(Heap, g1), u_6, v_6): bool))) {
+        if (g1[u_22] && (g1[v_22] && (exists_path($$(Heap, g1), u_22, v_22): bool))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@241.162--241.177) [83629]"}
-                (forall n_11_1: Ref ::
-                { Heap[n_11_1, next] } { QPMask[n_11_1, next] } { Heap[n_11_1, next] }
-                Set#Union(g1, g0)[n_11_1] && dummyFunction(Heap[n_11_1, next]) ==> 1 / 2 >= NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@241.162--241.177) [8841]"}
+                (forall n_11_2: Ref ::
+                { Heap[n_11_2, next] } { QPMask[n_11_2, next] } { Heap[n_11_2, next] }
+                Set#Union(g1, g0)[n_11_2] && dummyFunction(Heap[n_11_2, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@241.162--241.177) [83630]"}
-                (forall n_11_1: Ref, n_11_2: Ref ::
-                { neverTriggered7(n_11_1), neverTriggered7(n_11_2) }
-                (((n_11_1 != n_11_2 && Set#Union(g1, g0)[n_11_1]) && Set#Union(g1, g0)[n_11_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_11_1 != n_11_2
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@241.162--241.177) [8842]"}
+                (forall n_11_2: Ref, n_11_3: Ref ::
+                { neverTriggered7(n_11_2), neverTriggered7(n_11_3) }
+                (((n_11_2 != n_11_3 && Set#Union(g1, g0)[n_11_2]) && Set#Union(g1, g0)[n_11_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_11_2 != n_11_3
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@241.162--241.177) [83631]"}
-                (forall n_11_1: Ref ::
-                { Heap[n_11_1, next] } { QPMask[n_11_1, next] } { Heap[n_11_1, next] }
-                Set#Union(g1, g0)[n_11_1] ==> 1 / 2 > NoPerm ==> Mask[n_11_1, next] > NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@241.162--241.177) [8843]"}
+                (forall n_11_2: Ref ::
+                { Heap[n_11_2, next] } { QPMask[n_11_2, next] } { Heap[n_11_2, next] }
+                Set#Union(g1, g0)[n_11_2] ==> 1 / 2 > NoPerm ==> Mask[n_11_2, next] > NoPerm
               );
             
             // -- assumptions for inverse of receiver n
-              assume (forall n_11_1: Ref ::
-                { Heap[n_11_1, next] } { QPMask[n_11_1, next] } { Heap[n_11_1, next] }
-                Set#Union(g1, g0)[n_11_1] && NoPerm < 1 / 2 ==> qpRange7(n_11_1) && invRecv7(n_11_1) == n_11_1
+              assume (forall n_11_2: Ref ::
+                { Heap[n_11_2, next] } { QPMask[n_11_2, next] } { Heap[n_11_2, next] }
+                Set#Union(g1, g0)[n_11_2] && NoPerm < 1 / 2 ==> qpRange7(n_11_2) && invRecv7(n_11_2) == n_11_2
               );
-              assume (forall o_4: Ref ::
-                { invRecv7(o_4) }
-                Set#Union(g1, g0)[invRecv7(o_4)] && (NoPerm < 1 / 2 && qpRange7(o_4)) ==> invRecv7(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv7(o_9) }
+                Set#Union(g1, g0)[invRecv7(o_9)] && (NoPerm < 1 / 2 && qpRange7(o_9)) ==> invRecv7(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -1377,43 +1377,43 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
     
     // -- Check definedness of (forall u: Ref, v: Ref :: { exists_path($$(g0), u, v) } { exists_path($$((g0 union g1)), u, v) } (u in g0) && ((v in g0) && !exists_path($$(g0), u, v)) ==> !exists_path($$((g0 union g1)), u, v))
       if (*) {
-        if (g0[u_8]) {
-          if (g0[v_8]) {
+        if (g0[u_23]) {
+          if (g0[v_23]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
-                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@242.135--242.141) [83632]"}
-                  (forall n_12_1: Ref ::
-                  { Heap[n_12_1, next] } { QPMask[n_12_1, next] } { Heap[n_12_1, next] }
-                  g0[n_12_1] && dummyFunction(Heap[n_12_1, next]) ==> 1 / 2 >= NoPerm
+                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@242.135--242.141) [8844]"}
+                  (forall n_12: Ref ::
+                  { Heap[n_12, next] } { QPMask[n_12, next] } { Heap[n_12, next] }
+                  g0[n_12] && dummyFunction(Heap[n_12, next]) ==> 1 / 2 >= NoPerm
                 );
               
               // -- check if receiver n is injective
-                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@242.135--242.141) [83633]"}
-                  (forall n_12_1: Ref, n_12_2: Ref ::
-                  { neverTriggered8(n_12_1), neverTriggered8(n_12_2) }
-                  (((n_12_1 != n_12_2 && g0[n_12_1]) && g0[n_12_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_12_1 != n_12_2
+                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@242.135--242.141) [8845]"}
+                  (forall n_12: Ref, n_12_1: Ref ::
+                  { neverTriggered8(n_12), neverTriggered8(n_12_1) }
+                  (((n_12 != n_12_1 && g0[n_12]) && g0[n_12_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_12 != n_12_1
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@242.135--242.141) [83634]"}
-                  (forall n_12_1: Ref ::
-                  { Heap[n_12_1, next] } { QPMask[n_12_1, next] } { Heap[n_12_1, next] }
-                  g0[n_12_1] ==> 1 / 2 > NoPerm ==> Mask[n_12_1, next] > NoPerm
+                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@242.135--242.141) [8846]"}
+                  (forall n_12: Ref ::
+                  { Heap[n_12, next] } { QPMask[n_12, next] } { Heap[n_12, next] }
+                  g0[n_12] ==> 1 / 2 > NoPerm ==> Mask[n_12, next] > NoPerm
                 );
               
               // -- assumptions for inverse of receiver n
-                assume (forall n_12_1: Ref ::
-                  { Heap[n_12_1, next] } { QPMask[n_12_1, next] } { Heap[n_12_1, next] }
-                  g0[n_12_1] && NoPerm < 1 / 2 ==> qpRange8(n_12_1) && invRecv8(n_12_1) == n_12_1
+                assume (forall n_12: Ref ::
+                  { Heap[n_12, next] } { QPMask[n_12, next] } { Heap[n_12, next] }
+                  g0[n_12] && NoPerm < 1 / 2 ==> qpRange8(n_12) && invRecv8(n_12) == n_12
                 );
-                assume (forall o_4: Ref ::
-                  { invRecv8(o_4) }
-                  g0[invRecv8(o_4)] && (NoPerm < 1 / 2 && qpRange8(o_4)) ==> invRecv8(o_4) == o_4
+                assume (forall o_9: Ref ::
+                  { invRecv8(o_9) }
+                  g0[invRecv8(o_9)] && (NoPerm < 1 / 2 && qpRange8(o_9)) ==> invRecv8(o_9) == o_9
                 );
               // Finish exhale
               havoc ExhaleHeap;
@@ -1424,42 +1424,42 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
             }
           }
         }
-        if (g0[u_8] && (g0[v_8] && !(exists_path($$(Heap, g0), u_8, v_8): bool))) {
+        if (g0[u_23] && (g0[v_23] && !(exists_path($$(Heap, g0), u_23, v_23): bool))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@242.164--242.179) [83635]"}
-                (forall n_13: Ref ::
-                { Heap[n_13, next] } { QPMask[n_13, next] } { Heap[n_13, next] }
-                Set#Union(g0, g1)[n_13] && dummyFunction(Heap[n_13, next]) ==> 1 / 2 >= NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@242.164--242.179) [8847]"}
+                (forall n_13_2: Ref ::
+                { Heap[n_13_2, next] } { QPMask[n_13_2, next] } { Heap[n_13_2, next] }
+                Set#Union(g0, g1)[n_13_2] && dummyFunction(Heap[n_13_2, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@242.164--242.179) [83636]"}
-                (forall n_13: Ref, n_13_1: Ref ::
-                { neverTriggered9(n_13), neverTriggered9(n_13_1) }
-                (((n_13 != n_13_1 && Set#Union(g0, g1)[n_13]) && Set#Union(g0, g1)[n_13_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_13 != n_13_1
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@242.164--242.179) [8848]"}
+                (forall n_13_2: Ref, n_13_3: Ref ::
+                { neverTriggered9(n_13_2), neverTriggered9(n_13_3) }
+                (((n_13_2 != n_13_3 && Set#Union(g0, g1)[n_13_2]) && Set#Union(g0, g1)[n_13_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_13_2 != n_13_3
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@242.164--242.179) [83637]"}
-                (forall n_13: Ref ::
-                { Heap[n_13, next] } { QPMask[n_13, next] } { Heap[n_13, next] }
-                Set#Union(g0, g1)[n_13] ==> 1 / 2 > NoPerm ==> Mask[n_13, next] > NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@242.164--242.179) [8849]"}
+                (forall n_13_2: Ref ::
+                { Heap[n_13_2, next] } { QPMask[n_13_2, next] } { Heap[n_13_2, next] }
+                Set#Union(g0, g1)[n_13_2] ==> 1 / 2 > NoPerm ==> Mask[n_13_2, next] > NoPerm
               );
             
             // -- assumptions for inverse of receiver n
-              assume (forall n_13: Ref ::
-                { Heap[n_13, next] } { QPMask[n_13, next] } { Heap[n_13, next] }
-                Set#Union(g0, g1)[n_13] && NoPerm < 1 / 2 ==> qpRange9(n_13) && invRecv9(n_13) == n_13
+              assume (forall n_13_2: Ref ::
+                { Heap[n_13_2, next] } { QPMask[n_13_2, next] } { Heap[n_13_2, next] }
+                Set#Union(g0, g1)[n_13_2] && NoPerm < 1 / 2 ==> qpRange9(n_13_2) && invRecv9(n_13_2) == n_13_2
               );
-              assume (forall o_4: Ref ::
-                { invRecv9(o_4) }
-                Set#Union(g0, g1)[invRecv9(o_4)] && (NoPerm < 1 / 2 && qpRange9(o_4)) ==> invRecv9(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv9(o_9) }
+                Set#Union(g0, g1)[invRecv9(o_9)] && (NoPerm < 1 / 2 && qpRange9(o_9)) ==> invRecv9(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -1471,52 +1471,52 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
         }
         assume false;
       }
-    assume (forall u_9: Ref, v_9: Ref ::
-      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g0)), g0), u_9, v_9): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g0, g1))), Set#Union(g0, g1)), u_9, v_9): bool) }
-      g0[u_9] && (g0[v_9] && !(exists_path($$(Heap, g0), u_9, v_9): bool)) ==> !(exists_path($$(Heap, Set#Union(g0, g1)), u_9, v_9): bool)
+    assume (forall u_9_2: Ref, v_9_2: Ref ::
+      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g0)), g0), u_9_2, v_9_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g0, g1))), Set#Union(g0, g1)), u_9_2, v_9_2): bool) }
+      g0[u_9_2] && (g0[v_9_2] && !(exists_path($$(Heap, g0), u_9_2, v_9_2): bool)) ==> !(exists_path($$(Heap, Set#Union(g0, g1)), u_9_2, v_9_2): bool)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall u: Ref, v: Ref :: { exists_path($$(g1), u, v) } { exists_path($$((g0 union g1)), u, v) } (u in g1) && ((v in g1) && !exists_path($$(g1), u, v)) ==> !exists_path($$((g1 union g0)), u, v))
       if (*) {
-        if (g1[u_10]) {
-          if (g1[v_10]) {
+        if (g1[u_24]) {
+          if (g1[v_24]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
-                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@243.135--243.141) [83638]"}
-                  (forall n_14: Ref ::
-                  { Heap[n_14, next] } { QPMask[n_14, next] } { Heap[n_14, next] }
-                  g1[n_14] && dummyFunction(Heap[n_14, next]) ==> 1 / 2 >= NoPerm
+                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@243.135--243.141) [8850]"}
+                  (forall n_14_1: Ref ::
+                  { Heap[n_14_1, next] } { QPMask[n_14_1, next] } { Heap[n_14_1, next] }
+                  g1[n_14_1] && dummyFunction(Heap[n_14_1, next]) ==> 1 / 2 >= NoPerm
                 );
               
               // -- check if receiver n is injective
-                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@243.135--243.141) [83639]"}
-                  (forall n_14: Ref, n_14_1: Ref ::
-                  { neverTriggered10(n_14), neverTriggered10(n_14_1) }
-                  (((n_14 != n_14_1 && g1[n_14]) && g1[n_14_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_14 != n_14_1
+                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@243.135--243.141) [8851]"}
+                  (forall n_14_1: Ref, n_14_2: Ref ::
+                  { neverTriggered10(n_14_1), neverTriggered10(n_14_2) }
+                  (((n_14_1 != n_14_2 && g1[n_14_1]) && g1[n_14_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_14_1 != n_14_2
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@243.135--243.141) [83640]"}
-                  (forall n_14: Ref ::
-                  { Heap[n_14, next] } { QPMask[n_14, next] } { Heap[n_14, next] }
-                  g1[n_14] ==> 1 / 2 > NoPerm ==> Mask[n_14, next] > NoPerm
+                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@243.135--243.141) [8852]"}
+                  (forall n_14_1: Ref ::
+                  { Heap[n_14_1, next] } { QPMask[n_14_1, next] } { Heap[n_14_1, next] }
+                  g1[n_14_1] ==> 1 / 2 > NoPerm ==> Mask[n_14_1, next] > NoPerm
                 );
               
               // -- assumptions for inverse of receiver n
-                assume (forall n_14: Ref ::
-                  { Heap[n_14, next] } { QPMask[n_14, next] } { Heap[n_14, next] }
-                  g1[n_14] && NoPerm < 1 / 2 ==> qpRange10(n_14) && invRecv10(n_14) == n_14
+                assume (forall n_14_1: Ref ::
+                  { Heap[n_14_1, next] } { QPMask[n_14_1, next] } { Heap[n_14_1, next] }
+                  g1[n_14_1] && NoPerm < 1 / 2 ==> qpRange10(n_14_1) && invRecv10(n_14_1) == n_14_1
                 );
-                assume (forall o_4: Ref ::
-                  { invRecv10(o_4) }
-                  g1[invRecv10(o_4)] && (NoPerm < 1 / 2 && qpRange10(o_4)) ==> invRecv10(o_4) == o_4
+                assume (forall o_9: Ref ::
+                  { invRecv10(o_9) }
+                  g1[invRecv10(o_9)] && (NoPerm < 1 / 2 && qpRange10(o_9)) ==> invRecv10(o_9) == o_9
                 );
               // Finish exhale
               havoc ExhaleHeap;
@@ -1527,29 +1527,29 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
             }
           }
         }
-        if (g1[u_10] && (g1[v_10] && !(exists_path($$(Heap, g1), u_10, v_10): bool))) {
+        if (g1[u_24] && (g1[v_24] && !(exists_path($$(Heap, g1), u_24, v_24): bool))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@243.164--243.179) [83641]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@243.164--243.179) [8853]"}
                 (forall n_15: Ref ::
                 { Heap[n_15, next] } { QPMask[n_15, next] } { Heap[n_15, next] }
                 Set#Union(g1, g0)[n_15] && dummyFunction(Heap[n_15, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@243.164--243.179) [83642]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@243.164--243.179) [8854]"}
                 (forall n_15: Ref, n_15_1: Ref ::
                 { neverTriggered11(n_15), neverTriggered11(n_15_1) }
                 (((n_15 != n_15_1 && Set#Union(g1, g0)[n_15]) && Set#Union(g1, g0)[n_15_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_15 != n_15_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@243.164--243.179) [83643]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@243.164--243.179) [8855]"}
                 (forall n_15: Ref ::
                 { Heap[n_15, next] } { QPMask[n_15, next] } { Heap[n_15, next] }
                 Set#Union(g1, g0)[n_15] ==> 1 / 2 > NoPerm ==> Mask[n_15, next] > NoPerm
@@ -1560,9 +1560,9 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
                 { Heap[n_15, next] } { QPMask[n_15, next] } { Heap[n_15, next] }
                 Set#Union(g1, g0)[n_15] && NoPerm < 1 / 2 ==> qpRange11(n_15) && invRecv11(n_15) == n_15
               );
-              assume (forall o_4: Ref ::
-                { invRecv11(o_4) }
-                Set#Union(g1, g0)[invRecv11(o_4)] && (NoPerm < 1 / 2 && qpRange11(o_4)) ==> invRecv11(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv11(o_9) }
+                Set#Union(g1, g0)[invRecv11(o_9)] && (NoPerm < 1 / 2 && qpRange11(o_9)) ==> invRecv11(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -1574,9 +1574,9 @@ procedure apply_TCFraming#definedness(g0: (Set Ref), g1: (Set Ref)) returns (Res
         }
         assume false;
       }
-    assume (forall u_11: Ref, v_11: Ref ::
-      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), u_11, v_11): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g0, g1))), Set#Union(g0, g1)), u_11, v_11): bool) }
-      g1[u_11] && (g1[v_11] && !(exists_path($$(Heap, g1), u_11, v_11): bool)) ==> !(exists_path($$(Heap, Set#Union(g1, g0)), u_11, v_11): bool)
+    assume (forall u_11_2: Ref, v_11_2: Ref ::
+      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), u_11_2, v_11_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, Set#Union(g0, g1))), Set#Union(g0, g1)), u_11_2, v_11_2): bool) }
+      g1[u_11_2] && (g1[v_11_2] && !(exists_path($$(Heap, g1), u_11_2, v_11_2): bool)) ==> !(exists_path($$(Heap, Set#Union(g1, g0)), u_11_2, v_11_2): bool)
     );
     assume state(Heap, Mask);
 }
@@ -1590,17 +1590,17 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var n$0: Ref;
-  var oldHeap: HeapType;
+  var n$0_28: Ref;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var n$2_1: Ref;
-  var ExhaleWellDef0Heap: HeapType;
+  var n$2_21: Ref;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var v1_2: Ref;
-  var v2_2: Ref;
+  var v1_5: Ref;
+  var v2_5: Ref;
   var n$2_2: Ref;
   var v1_4: Ref;
   var v2_4: Ref;
@@ -1636,7 +1636,7 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@276.14--276.34) [83644]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@276.14--276.34) [8856]"}
       (forall n_1: Ref, n_1_1: Ref ::
       
       (((n_1 != n_1_1 && (g_1[n_1] && n_1 != x)) && (g_1[n_1_1] && n_1_1 != x)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_1 != n_1_1
@@ -1647,12 +1647,12 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
         { Heap[n_1, next] } { QPMask[n_1, next] } { Heap[n_1, next] }
         (g_1[n_1] && n_1 != x) && NoPerm < 1 / 2 ==> qpRange12(n_1) && invRecv12(n_1) == n_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv12(o_4) }
-        ((g_1[invRecv12(o_4)] && invRecv12(o_4) != x) && NoPerm < 1 / 2) && qpRange12(o_4) ==> invRecv12(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv12(o_9) }
+        ((g_1[invRecv12(o_9)] && invRecv12(o_9) != x) && NoPerm < 1 / 2) && qpRange12(o_9) ==> invRecv12(o_9) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (delete_edge1.vpr@276.14--276.34) [83645]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (delete_edge1.vpr@276.14--276.34) [8857]"}
       (forall n_1: Ref ::
       { Heap[n_1, next] } { QPMask[n_1, next] } { Heap[n_1, next] }
       g_1[n_1] && n_1 != x ==> 1 / 2 >= NoPerm
@@ -1665,26 +1665,26 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (((g_1[invRecv12(o_4)] && invRecv12(o_4) != x) && NoPerm < 1 / 2) && qpRange12(o_4) ==> (NoPerm < 1 / 2 ==> invRecv12(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + 1 / 2) && (!(((g_1[invRecv12(o_4)] && invRecv12(o_4) != x) && NoPerm < 1 / 2) && qpRange12(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (((g_1[invRecv12(o_9)] && invRecv12(o_9) != x) && NoPerm < 1 / 2) && qpRange12(o_9) ==> (NoPerm < 1 / 2 ==> invRecv12(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + 1 / 2) && (!(((g_1[invRecv12(o_9)] && invRecv12(o_9) != x) && NoPerm < 1 / 2) && qpRange12(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n$0: Ref :: { (n$0.next in g) } { (n$0 in g), n$0.next } (n$0 in g) && n$0.next != null ==> (n$0.next in g))
       if (*) {
-        if (g_1[n$0]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@276.14--276.34) [83646]"}
-            HasDirectPerm(Mask, n$0, next);
+        if (g_1[n$0_28]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@276.14--276.34) [8858]"}
+            HasDirectPerm(Mask, n$0_28, next);
         }
-        if (g_1[n$0] && Heap[n$0, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@276.14--276.34) [83647]"}
-            HasDirectPerm(Mask, n$0, next);
+        if (g_1[n$0_28] && Heap[n$0_28, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@276.14--276.34) [8859]"}
+            HasDirectPerm(Mask, n$0_28, next);
         }
         assume false;
       }
@@ -1695,7 +1695,7 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.next == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@277.14--277.28) [83648]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@277.14--277.28) [8860]"}
         HasDirectPerm(Mask, x, next);
     assume Heap[x, next] == null;
     assume state(Heap, Mask);
@@ -1703,8 +1703,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1722,7 +1722,7 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@278.13--278.33) [83649]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@278.13--278.33) [8861]"}
       (forall n$1_1: Ref, n$1_1_1: Ref ::
       
       (((n$1_1 != n$1_1_1 && (g_1[n$1_1] && n$1_1 != x)) && (g_1[n$1_1_1] && n$1_1_1 != x)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$1_1 != n$1_1_1
@@ -1733,12 +1733,12 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
         { PostHeap[n$1_1, next] } { QPMask[n$1_1, next] } { PostHeap[n$1_1, next] }
         (g_1[n$1_1] && n$1_1 != x) && NoPerm < 1 / 2 ==> qpRange13(n$1_1) && invRecv13(n$1_1) == n$1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv13(o_4) }
-        ((g_1[invRecv13(o_4)] && invRecv13(o_4) != x) && NoPerm < 1 / 2) && qpRange13(o_4) ==> invRecv13(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv13(o_9) }
+        ((g_1[invRecv13(o_9)] && invRecv13(o_9) != x) && NoPerm < 1 / 2) && qpRange13(o_9) ==> invRecv13(o_9) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (delete_edge1.vpr@278.13--278.33) [83650]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (delete_edge1.vpr@278.13--278.33) [8862]"}
       (forall n$1_1: Ref ::
       { PostHeap[n$1_1, next] } { QPMask[n$1_1, next] } { PostHeap[n$1_1, next] }
       g_1[n$1_1] && n$1_1 != x ==> 1 / 2 >= NoPerm
@@ -1751,37 +1751,37 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (((g_1[invRecv13(o_4)] && invRecv13(o_4) != x) && NoPerm < 1 / 2) && qpRange13(o_4) ==> (NoPerm < 1 / 2 ==> invRecv13(o_4) == o_4) && QPMask[o_4, next] == PostMask[o_4, next] + 1 / 2) && (!(((g_1[invRecv13(o_4)] && invRecv13(o_4) != x) && NoPerm < 1 / 2) && qpRange13(o_4)) ==> QPMask[o_4, next] == PostMask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (((g_1[invRecv13(o_9)] && invRecv13(o_9) != x) && NoPerm < 1 / 2) && qpRange13(o_9) ==> (NoPerm < 1 / 2 ==> invRecv13(o_9) == o_9) && QPMask[o_9, next] == PostMask[o_9, next] + 1 / 2) && (!(((g_1[invRecv13(o_9)] && invRecv13(o_9) != x) && NoPerm < 1 / 2) && qpRange13(o_9)) ==> QPMask[o_9, next] == PostMask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall n$2: Ref :: { (n$2.next in g) } { (n$2 in g), n$2.next } (n$2 in g) && n$2.next != null ==> (n$2.next in g))
       if (*) {
-        if (g_1[n$2_1]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@278.13--278.33) [83651]"}
-            HasDirectPerm(PostMask, n$2_1, next);
+        if (g_1[n$2_21]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@278.13--278.33) [8863]"}
+            HasDirectPerm(PostMask, n$2_21, next);
         }
-        if (g_1[n$2_1] && PostHeap[n$2_1, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@278.13--278.33) [83652]"}
-            HasDirectPerm(PostMask, n$2_1, next);
+        if (g_1[n$2_21] && PostHeap[n$2_21, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@278.13--278.33) [8864]"}
+            HasDirectPerm(PostMask, n$2_21, next);
         }
         assume false;
       }
-    assume (forall n$2_1_1: Ref ::
-      { g_1[PostHeap[n$2_1_1, next]] } { g_1[n$2_1_1], PostHeap[n$2_1_1, next] }
-      g_1[n$2_1_1] && PostHeap[n$2_1_1, next] != null ==> g_1[PostHeap[n$2_1_1, next]]
+    assume (forall n$2_1: Ref ::
+      { g_1[PostHeap[n$2_1, next]] } { g_1[n$2_1], PostHeap[n$2_1, next] }
+      g_1[n$2_1] && PostHeap[n$2_1, next] != null ==> g_1[PostHeap[n$2_1, next]]
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.next == y
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@279.13--279.24) [83653]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@279.13--279.24) [8865]"}
         HasDirectPerm(PostMask, x, next);
     assume PostHeap[x, next] == y;
     assume state(PostHeap, PostMask);
@@ -1791,26 +1791,26 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
       // -- Check definedness of $$(g) == old($$(g))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@280.27--280.32) [83654]"}
+            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@280.27--280.32) [8866]"}
               (forall n_2: Ref ::
               { PostHeap[n_2, next] } { QPMask[n_2, next] } { PostHeap[n_2, next] }
               g_1[n_2] && dummyFunction(PostHeap[n_2, next]) ==> 1 / 2 >= NoPerm
             );
           
           // -- check if receiver n is injective
-            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@280.27--280.32) [83655]"}
+            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@280.27--280.32) [8867]"}
               (forall n_2: Ref, n_2_1: Ref ::
               { neverTriggered14(n_2), neverTriggered14(n_2_1) }
               (((n_2 != n_2_1 && g_1[n_2]) && g_1[n_2_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_2 != n_2_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@280.27--280.32) [83656]"}
+            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@280.27--280.32) [8868]"}
               (forall n_2: Ref ::
               { PostHeap[n_2, next] } { QPMask[n_2, next] } { PostHeap[n_2, next] }
               g_1[n_2] ==> 1 / 2 > NoPerm ==> PostMask[n_2, next] > NoPerm
@@ -1821,9 +1821,9 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
               { PostHeap[n_2, next] } { QPMask[n_2, next] } { PostHeap[n_2, next] }
               g_1[n_2] && NoPerm < 1 / 2 ==> qpRange14(n_2) && invRecv14(n_2) == n_2
             );
-            assume (forall o_4: Ref ::
-              { invRecv14(o_4) }
-              g_1[invRecv14(o_4)] && (NoPerm < 1 / 2 && qpRange14(o_4)) ==> invRecv14(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv14(o_9) }
+              g_1[invRecv14(o_9)] && (NoPerm < 1 / 2 && qpRange14(o_9)) ==> invRecv14(o_9) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -1834,26 +1834,26 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := oldHeap;
           ExhaleWellDef0Mask := oldMask;
+          ExhaleWellDef0Heap := oldHeap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@280.40--280.45) [83657]"}
+            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@280.40--280.45) [8869]"}
               (forall n_3: Ref ::
               { oldHeap[n_3, next] } { QPMask[n_3, next] } { oldHeap[n_3, next] }
               g_1[n_3] && dummyFunction(oldHeap[n_3, next]) ==> 1 / 2 >= NoPerm
             );
           
           // -- check if receiver n is injective
-            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@280.40--280.45) [83658]"}
+            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@280.40--280.45) [8870]"}
               (forall n_3: Ref, n_3_1: Ref ::
               { neverTriggered15(n_3), neverTriggered15(n_3_1) }
               (((n_3 != n_3_1 && g_1[n_3]) && g_1[n_3_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_3 != n_3_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@280.40--280.45) [83659]"}
+            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@280.40--280.45) [8871]"}
               (forall n_3: Ref ::
               { oldHeap[n_3, next] } { QPMask[n_3, next] } { oldHeap[n_3, next] }
               g_1[n_3] ==> 1 / 2 > NoPerm ==> oldMask[n_3, next] > NoPerm
@@ -1864,9 +1864,9 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
               { oldHeap[n_3, next] } { QPMask[n_3, next] } { oldHeap[n_3, next] }
               g_1[n_3] && NoPerm < 1 / 2 ==> qpRange15(n_3) && invRecv15(n_3) == n_3
             );
-            assume (forall o_4: Ref ::
-              { invRecv15(o_4) }
-              g_1[invRecv15(o_4)] && (NoPerm < 1 / 2 && qpRange15(o_4)) ==> invRecv15(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv15(o_9) }
+              g_1[invRecv15(o_9)] && (NoPerm < 1 / 2 && qpRange15(o_9)) ==> invRecv15(o_9) == o_9
             );
           // Finish exhale
           // Stop execution
@@ -1882,39 +1882,39 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
         if (*) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@283.18--283.23) [83660]"}
-                (forall n_4_1: Ref ::
-                { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-                g_1[n_4_1] && dummyFunction(PostHeap[n_4_1, next]) ==> 1 / 2 >= NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@283.18--283.23) [8872]"}
+                (forall n_4: Ref ::
+                { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+                g_1[n_4] && dummyFunction(PostHeap[n_4, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@283.18--283.23) [83661]"}
-                (forall n_4_1: Ref, n_4_2: Ref ::
-                { neverTriggered16(n_4_1), neverTriggered16(n_4_2) }
-                (((n_4_1 != n_4_2 && g_1[n_4_1]) && g_1[n_4_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_4_1 != n_4_2
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@283.18--283.23) [8873]"}
+                (forall n_4: Ref, n_4_1: Ref ::
+                { neverTriggered16(n_4), neverTriggered16(n_4_1) }
+                (((n_4 != n_4_1 && g_1[n_4]) && g_1[n_4_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_4 != n_4_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@283.18--283.23) [83662]"}
-                (forall n_4_1: Ref ::
-                { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-                g_1[n_4_1] ==> 1 / 2 > NoPerm ==> PostMask[n_4_1, next] > NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@283.18--283.23) [8874]"}
+                (forall n_4: Ref ::
+                { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+                g_1[n_4] ==> 1 / 2 > NoPerm ==> PostMask[n_4, next] > NoPerm
               );
             
             // -- assumptions for inverse of receiver n
-              assume (forall n_4_1: Ref ::
-                { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-                g_1[n_4_1] && NoPerm < 1 / 2 ==> qpRange16(n_4_1) && invRecv16(n_4_1) == n_4_1
+              assume (forall n_4: Ref ::
+                { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+                g_1[n_4] && NoPerm < 1 / 2 ==> qpRange16(n_4) && invRecv16(n_4) == n_4
               );
-              assume (forall o_4: Ref ::
-                { invRecv16(o_4) }
-                g_1[invRecv16(o_4)] && (NoPerm < 1 / 2 && qpRange16(o_4)) ==> invRecv16(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv16(o_9) }
+                g_1[invRecv16(o_9)] && (NoPerm < 1 / 2 && qpRange16(o_9)) ==> invRecv16(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -1925,26 +1925,26 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@283.45--283.50) [83663]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@283.45--283.50) [8875]"}
                 (forall n_5: Ref ::
                 { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
                 g_1[n_5] && dummyFunction(oldHeap[n_5, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@283.45--283.50) [83664]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@283.45--283.50) [8876]"}
                 (forall n_5: Ref, n_5_1: Ref ::
                 { neverTriggered17(n_5), neverTriggered17(n_5_1) }
                 (((n_5 != n_5_1 && g_1[n_5]) && g_1[n_5_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_5 != n_5_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@283.45--283.50) [83665]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@283.45--283.50) [8877]"}
                 (forall n_5: Ref ::
                 { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
                 g_1[n_5] ==> 1 / 2 > NoPerm ==> oldMask[n_5, next] > NoPerm
@@ -1955,9 +1955,9 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
                 { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
                 g_1[n_5] && NoPerm < 1 / 2 ==> qpRange17(n_5) && invRecv17(n_5) == n_5
               );
-              assume (forall o_4: Ref ::
-                { invRecv17(o_4) }
-                g_1[invRecv17(o_4)] && (NoPerm < 1 / 2 && qpRange17(o_4)) ==> invRecv17(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv17(o_9) }
+                g_1[invRecv17(o_9)] && (NoPerm < 1 / 2 && qpRange17(o_9)) ==> invRecv17(o_9) == o_9
               );
             // Finish exhale
             // Stop execution
@@ -1976,29 +1976,29 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
       
       // -- Check definedness of (forall v1: Ref, v2: Ref :: { exists_path($$(g), v1, v2) } v1 != v2 ==> exists_path($$(g), v1, v2) == (exists_path(old($$(g)), v1, v2) || exists_path(old($$(g)), v1, x) && exists_path(old($$(g)), y, v2)))
         if (*) {
-          if (v1_2 != v2_2) {
+          if (v1_5 != v2_5) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := PostHeap;
               ExhaleWellDef0Mask := PostMask;
+              ExhaleWellDef0Heap := PostHeap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
-                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@287.29--287.34) [83666]"}
+                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@287.29--287.34) [8878]"}
                   (forall n_6: Ref ::
                   { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
                   g_1[n_6] && dummyFunction(PostHeap[n_6, next]) ==> 1 / 2 >= NoPerm
                 );
               
               // -- check if receiver n is injective
-                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@287.29--287.34) [83667]"}
+                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@287.29--287.34) [8879]"}
                   (forall n_6: Ref, n_6_1: Ref ::
                   { neverTriggered18(n_6), neverTriggered18(n_6_1) }
                   (((n_6 != n_6_1 && g_1[n_6]) && g_1[n_6_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_6 != n_6_1
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@287.29--287.34) [83668]"}
+                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@287.29--287.34) [8880]"}
                   (forall n_6: Ref ::
                   { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
                   g_1[n_6] ==> 1 / 2 > NoPerm ==> PostMask[n_6, next] > NoPerm
@@ -2009,9 +2009,9 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
                   { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
                   g_1[n_6] && NoPerm < 1 / 2 ==> qpRange18(n_6) && invRecv18(n_6) == n_6
                 );
-                assume (forall o_4: Ref ::
-                  { invRecv18(o_4) }
-                  g_1[invRecv18(o_4)] && (NoPerm < 1 / 2 && qpRange18(o_4)) ==> invRecv18(o_4) == o_4
+                assume (forall o_9: Ref ::
+                  { invRecv18(o_9) }
+                  g_1[invRecv18(o_9)] && (NoPerm < 1 / 2 && qpRange18(o_9)) ==> invRecv18(o_9) == o_9
                 );
               // Finish exhale
               havoc ExhaleHeap;
@@ -2022,26 +2022,26 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
-                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@288.37--288.42) [83669]"}
+                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@288.37--288.42) [8881]"}
                   (forall n_7: Ref ::
                   { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
                   g_1[n_7] && dummyFunction(oldHeap[n_7, next]) ==> 1 / 2 >= NoPerm
                 );
               
               // -- check if receiver n is injective
-                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@288.37--288.42) [83670]"}
+                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@288.37--288.42) [8882]"}
                   (forall n_7: Ref, n_7_1: Ref ::
                   { neverTriggered19(n_7), neverTriggered19(n_7_1) }
                   (((n_7 != n_7_1 && g_1[n_7]) && g_1[n_7_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_7 != n_7_1
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@288.37--288.42) [83671]"}
+                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@288.37--288.42) [8883]"}
                   (forall n_7: Ref ::
                   { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
                   g_1[n_7] ==> 1 / 2 > NoPerm ==> oldMask[n_7, next] > NoPerm
@@ -2052,37 +2052,37 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
                   { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
                   g_1[n_7] && NoPerm < 1 / 2 ==> qpRange19(n_7) && invRecv19(n_7) == n_7
                 );
-                assume (forall o_4: Ref ::
-                  { invRecv19(o_4) }
-                  g_1[invRecv19(o_4)] && (NoPerm < 1 / 2 && qpRange19(o_4)) ==> invRecv19(o_4) == o_4
+                assume (forall o_9: Ref ::
+                  { invRecv19(o_9) }
+                  g_1[invRecv19(o_9)] && (NoPerm < 1 / 2 && qpRange19(o_9)) ==> invRecv19(o_9) == o_9
                 );
               // Finish exhale
               // Stop execution
               assume false;
             }
-            if (!(exists_path($$(oldHeap, g_1), v1_2, v2_2): bool)) {
+            if (!(exists_path($$(oldHeap, g_1), v1_5, v2_5): bool)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
-                  assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@288.71--288.76) [83672]"}
+                  assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@288.71--288.76) [8884]"}
                     (forall n_8: Ref ::
                     { oldHeap[n_8, next] } { QPMask[n_8, next] } { oldHeap[n_8, next] }
                     g_1[n_8] && dummyFunction(oldHeap[n_8, next]) ==> 1 / 2 >= NoPerm
                   );
                 
                 // -- check if receiver n is injective
-                  assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@288.71--288.76) [83673]"}
+                  assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@288.71--288.76) [8885]"}
                     (forall n_8: Ref, n_8_1: Ref ::
                     { neverTriggered20(n_8), neverTriggered20(n_8_1) }
                     (((n_8 != n_8_1 && g_1[n_8]) && g_1[n_8_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_8 != n_8_1
                   );
                 
                 // -- check if sufficient permission is held
-                  assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@288.71--288.76) [83674]"}
+                  assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@288.71--288.76) [8886]"}
                     (forall n_8: Ref ::
                     { oldHeap[n_8, next] } { QPMask[n_8, next] } { oldHeap[n_8, next] }
                     g_1[n_8] ==> 1 / 2 > NoPerm ==> oldMask[n_8, next] > NoPerm
@@ -2093,37 +2093,37 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
                     { oldHeap[n_8, next] } { QPMask[n_8, next] } { oldHeap[n_8, next] }
                     g_1[n_8] && NoPerm < 1 / 2 ==> qpRange20(n_8) && invRecv20(n_8) == n_8
                   );
-                  assume (forall o_4: Ref ::
-                    { invRecv20(o_4) }
-                    g_1[invRecv20(o_4)] && (NoPerm < 1 / 2 && qpRange20(o_4)) ==> invRecv20(o_4) == o_4
+                  assume (forall o_9: Ref ::
+                    { invRecv20(o_9) }
+                    g_1[invRecv20(o_9)] && (NoPerm < 1 / 2 && qpRange20(o_9)) ==> invRecv20(o_9) == o_9
                   );
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
-              if ((exists_path($$(oldHeap, g_1), v1_2, x): bool)) {
+              if ((exists_path($$(oldHeap, g_1), v1_5, x): bool)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
+                  ExhaleWellDef0Heap := oldHeap;
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@288.103--288.108) [83675]"}
+                    assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@288.103--288.108) [8887]"}
                       (forall n_9: Ref ::
                       { oldHeap[n_9, next] } { QPMask[n_9, next] } { oldHeap[n_9, next] }
                       g_1[n_9] && dummyFunction(oldHeap[n_9, next]) ==> 1 / 2 >= NoPerm
                     );
                   
                   // -- check if receiver n is injective
-                    assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@288.103--288.108) [83676]"}
+                    assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@288.103--288.108) [8888]"}
                       (forall n_9: Ref, n_9_1: Ref ::
                       { neverTriggered21(n_9), neverTriggered21(n_9_1) }
                       (((n_9 != n_9_1 && g_1[n_9]) && g_1[n_9_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_9 != n_9_1
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@288.103--288.108) [83677]"}
+                    assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@288.103--288.108) [8889]"}
                       (forall n_9: Ref ::
                       { oldHeap[n_9, next] } { QPMask[n_9, next] } { oldHeap[n_9, next] }
                       g_1[n_9] ==> 1 / 2 > NoPerm ==> oldMask[n_9, next] > NoPerm
@@ -2134,9 +2134,9 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
                       { oldHeap[n_9, next] } { QPMask[n_9, next] } { oldHeap[n_9, next] }
                       g_1[n_9] && NoPerm < 1 / 2 ==> qpRange21(n_9) && invRecv21(n_9) == n_9
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv21(o_4) }
-                      g_1[invRecv21(o_4)] && (NoPerm < 1 / 2 && qpRange21(o_4)) ==> invRecv21(o_4) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv21(o_9) }
+                      g_1[invRecv21(o_9)] && (NoPerm < 1 / 2 && qpRange21(o_9)) ==> invRecv21(o_9) == o_9
                     );
                   // Finish exhale
                   // Stop execution
@@ -2163,36 +2163,36 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of link might not hold. Assertion !((null in g)) might not hold. (delete_edge1.vpr@278.13--278.33) [83678]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of link might not hold. Assertion !((null in g)) might not hold. (delete_edge1.vpr@278.13--278.33) [8890]"}
       !g_1[null];
-    assert {:msg "  Postcondition of link might not hold. Assertion (x in g) might not hold. (delete_edge1.vpr@278.13--278.33) [83679]"}
+    assert {:msg "  Postcondition of link might not hold. Assertion (x in g) might not hold. (delete_edge1.vpr@278.13--278.33) [8891]"}
       g_1[x];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of link might not hold. There might be insufficient permission to access x.next (delete_edge1.vpr@278.13--278.33) [83680]"}
+      assert {:msg "  Postcondition of link might not hold. There might be insufficient permission to access x.next (delete_edge1.vpr@278.13--278.33) [8892]"}
         perm <= Mask[x, next];
     }
     Mask := Mask[x, next:=Mask[x, next] - perm];
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of link might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@278.13--278.33) [83681]"}
+      assert {:msg "  Postcondition of link might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@278.13--278.33) [8893]"}
         (forall n$1_2: Ref ::
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         (g_1[n$1_2] && n$1_2 != x) && dummyFunction(Heap[n$1_2, next]) ==> 1 / 2 >= NoPerm
       );
     
     // -- check if receiver n$1 is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@278.13--278.33) [83682]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@278.13--278.33) [8894]"}
         (forall n$1_2: Ref, n$1_2_1: Ref ::
         { neverTriggered22(n$1_2), neverTriggered22(n$1_2_1) }
         (((n$1_2 != n$1_2_1 && (g_1[n$1_2] && n$1_2 != x)) && (g_1[n$1_2_1] && n$1_2_1 != x)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$1_2 != n$1_2_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of link might not hold. There might be insufficient permission to access n$1.next (delete_edge1.vpr@278.13--278.33) [83683]"}
+      assert {:msg "  Postcondition of link might not hold. There might be insufficient permission to access n$1.next (delete_edge1.vpr@278.13--278.33) [8895]"}
         (forall n$1_2: Ref ::
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         g_1[n$1_2] && n$1_2 != x ==> Mask[n$1_2, next] >= 1 / 2
@@ -2203,26 +2203,26 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         (g_1[n$1_2] && n$1_2 != x) && NoPerm < 1 / 2 ==> qpRange22(n$1_2) && invRecv22(n$1_2) == n$1_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv22(o_4) }
-        (g_1[invRecv22(o_4)] && invRecv22(o_4) != x) && (NoPerm < 1 / 2 && qpRange22(o_4)) ==> invRecv22(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv22(o_9) }
+        (g_1[invRecv22(o_9)] && invRecv22(o_9) != x) && (NoPerm < 1 / 2 && qpRange22(o_9)) ==> invRecv22(o_9) == o_9
       );
     
     // -- assume permission updates for field next
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g_1[invRecv22(o_4)] && invRecv22(o_4) != x) && (NoPerm < 1 / 2 && qpRange22(o_4)) ==> invRecv22(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - 1 / 2) && (!((g_1[invRecv22(o_4)] && invRecv22(o_4) != x) && (NoPerm < 1 / 2 && qpRange22(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g_1[invRecv22(o_9)] && invRecv22(o_9) != x) && (NoPerm < 1 / 2 && qpRange22(o_9)) ==> invRecv22(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - 1 / 2) && (!((g_1[invRecv22(o_9)] && invRecv22(o_9) != x) && (NoPerm < 1 / 2 && qpRange22(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
       if (g_1[n$2_2] && Heap[n$2_2, next] != null) {
-        assert {:msg "  Postcondition of link might not hold. Assertion (n$2.next in g) might not hold. (delete_edge1.vpr@278.13--278.33) [83684]"}
+        assert {:msg "  Postcondition of link might not hold. Assertion (n$2.next in g) might not hold. (delete_edge1.vpr@278.13--278.33) [8896]"}
           g_1[Heap[n$2_2, next]];
       }
       assume false;
@@ -2231,15 +2231,15 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
       { g_1[Heap[n$2_3_1, next]] } { g_1[n$2_3_1], Heap[n$2_3_1, next] }
       g_1[n$2_3_1] && Heap[n$2_3_1, next] != null ==> g_1[Heap[n$2_3_1, next]]
     );
-    assert {:msg "  Postcondition of link might not hold. Assertion x.next == y might not hold. (delete_edge1.vpr@279.13--279.24) [83685]"}
+    assert {:msg "  Postcondition of link might not hold. Assertion x.next == y might not hold. (delete_edge1.vpr@279.13--279.24) [8897]"}
       Heap[x, next] == y;
     if (y == null) {
-      assert {:msg "  Postcondition of link might not hold. Assertion $$(g) == old($$(g)) might not hold. (delete_edge1.vpr@280.13--280.46) [83686]"}
+      assert {:msg "  Postcondition of link might not hold. Assertion $$(g) == old($$(g)) might not hold. (delete_edge1.vpr@280.13--280.46) [8898]"}
         Set#Equal($$(Heap, g_1), $$(oldHeap, g_1));
     }
     if (y != null) {
       if (*) {
-        assert {:msg "  Postcondition of link might not hold. Assertion edge($$(g), v1, v2) == (edge(old($$(g)), v1, v2) || v1 == x && v2 == y) might not hold. (delete_edge1.vpr@281.13--283.78) [83687]"}
+        assert {:msg "  Postcondition of link might not hold. Assertion edge($$(g), v1, v2) == (edge(old($$(g)), v1, v2) || v1 == x && v2 == y) might not hold. (delete_edge1.vpr@281.13--283.78) [8899]"}
           (edge($$(Heap, g_1), v1_4, v2_4): bool) == ((edge($$(oldHeap, g_1), v1_4, v2_4): bool) || (v1_4 == x && v2_4 == y));
         assume false;
       }
@@ -2251,7 +2251,7 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
     if (y != null) {
       if (*) {
         if (v1_6 != v2_6) {
-          assert {:msg "  Postcondition of link might not hold. Assertion exists_path($$(g), v1, v2) == (exists_path(old($$(g)), v1, v2) || exists_path(old($$(g)), v1, x) && exists_path(old($$(g)), y, v2)) might not hold. (delete_edge1.vpr@284.13--288.118) [83688]"}
+          assert {:msg "  Postcondition of link might not hold. Assertion exists_path($$(g), v1, v2) == (exists_path(old($$(g)), v1, v2) || exists_path(old($$(g)), v1, x) && exists_path(old($$(g)), y, v2)) might not hold. (delete_edge1.vpr@284.13--288.118) [8900]"}
             (exists_path($$(Heap, g_1), v1_6, v2_6): bool) == ((exists_path($$(oldHeap, g_1), v1_6, v2_6): bool) || ((exists_path($$(oldHeap, g_1), v1_6, x): bool) && (exists_path($$(oldHeap, g_1), y, v2_6): bool)));
         }
         assume false;
@@ -2276,19 +2276,19 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var n$0_2: Ref;
-  var oldHeap: HeapType;
+  var n$0_12: Ref;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var n$2_4: Ref;
-  var ExhaleWellDef0Heap: HeapType;
+  var n$2_5: Ref;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var v1_5: Ref;
-  var v2_5: Ref;
   var v1_7: Ref;
   var v2_7: Ref;
+  var v1_8: Ref;
+  var v2_8: Ref;
   var n$2_2: Ref;
   var v1_4: Ref;
   var v2_4: Ref;
@@ -2319,7 +2319,7 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@309.14--309.34) [83689]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@309.14--309.34) [8901]"}
       (forall n_1: Ref, n_1_1: Ref ::
       
       (((n_1 != n_1_1 && (g_1[n_1] && n_1 != x)) && (g_1[n_1_1] && n_1_1 != x)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_1 != n_1_1
@@ -2330,12 +2330,12 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
         { Heap[n_1, next] } { QPMask[n_1, next] } { Heap[n_1, next] }
         (g_1[n_1] && n_1 != x) && NoPerm < 1 / 2 ==> qpRange23(n_1) && invRecv23(n_1) == n_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv23(o_4) }
-        ((g_1[invRecv23(o_4)] && invRecv23(o_4) != x) && NoPerm < 1 / 2) && qpRange23(o_4) ==> invRecv23(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv23(o_9) }
+        ((g_1[invRecv23(o_9)] && invRecv23(o_9) != x) && NoPerm < 1 / 2) && qpRange23(o_9) ==> invRecv23(o_9) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (delete_edge1.vpr@309.14--309.34) [83690]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (delete_edge1.vpr@309.14--309.34) [8902]"}
       (forall n_1: Ref ::
       { Heap[n_1, next] } { QPMask[n_1, next] } { Heap[n_1, next] }
       g_1[n_1] && n_1 != x ==> 1 / 2 >= NoPerm
@@ -2348,26 +2348,26 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (((g_1[invRecv23(o_4)] && invRecv23(o_4) != x) && NoPerm < 1 / 2) && qpRange23(o_4) ==> (NoPerm < 1 / 2 ==> invRecv23(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + 1 / 2) && (!(((g_1[invRecv23(o_4)] && invRecv23(o_4) != x) && NoPerm < 1 / 2) && qpRange23(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (((g_1[invRecv23(o_9)] && invRecv23(o_9) != x) && NoPerm < 1 / 2) && qpRange23(o_9) ==> (NoPerm < 1 / 2 ==> invRecv23(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + 1 / 2) && (!(((g_1[invRecv23(o_9)] && invRecv23(o_9) != x) && NoPerm < 1 / 2) && qpRange23(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n$0: Ref :: { (n$0.next in g) } { (n$0 in g), n$0.next } (n$0 in g) && n$0.next != null ==> (n$0.next in g))
       if (*) {
-        if (g_1[n$0_2]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@309.14--309.34) [83691]"}
-            HasDirectPerm(Mask, n$0_2, next);
+        if (g_1[n$0_12]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@309.14--309.34) [8903]"}
+            HasDirectPerm(Mask, n$0_12, next);
         }
-        if (g_1[n$0_2] && Heap[n$0_2, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@309.14--309.34) [83692]"}
-            HasDirectPerm(Mask, n$0_2, next);
+        if (g_1[n$0_12] && Heap[n$0_12, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@309.14--309.34) [8904]"}
+            HasDirectPerm(Mask, n$0_12, next);
         }
         assume false;
       }
@@ -2380,8 +2380,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2399,7 +2399,7 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@310.13--310.33) [83693]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@310.13--310.33) [8905]"}
       (forall n$1_1: Ref, n$1_1_1: Ref ::
       
       (((n$1_1 != n$1_1_1 && (g_1[n$1_1] && n$1_1 != x)) && (g_1[n$1_1_1] && n$1_1_1 != x)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$1_1 != n$1_1_1
@@ -2410,12 +2410,12 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
         { PostHeap[n$1_1, next] } { QPMask[n$1_1, next] } { PostHeap[n$1_1, next] }
         (g_1[n$1_1] && n$1_1 != x) && NoPerm < 1 / 2 ==> qpRange24(n$1_1) && invRecv24(n$1_1) == n$1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv24(o_4) }
-        ((g_1[invRecv24(o_4)] && invRecv24(o_4) != x) && NoPerm < 1 / 2) && qpRange24(o_4) ==> invRecv24(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv24(o_9) }
+        ((g_1[invRecv24(o_9)] && invRecv24(o_9) != x) && NoPerm < 1 / 2) && qpRange24(o_9) ==> invRecv24(o_9) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (delete_edge1.vpr@310.13--310.33) [83694]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (delete_edge1.vpr@310.13--310.33) [8906]"}
       (forall n$1_1: Ref ::
       { PostHeap[n$1_1, next] } { QPMask[n$1_1, next] } { PostHeap[n$1_1, next] }
       g_1[n$1_1] && n$1_1 != x ==> 1 / 2 >= NoPerm
@@ -2428,43 +2428,43 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (((g_1[invRecv24(o_4)] && invRecv24(o_4) != x) && NoPerm < 1 / 2) && qpRange24(o_4) ==> (NoPerm < 1 / 2 ==> invRecv24(o_4) == o_4) && QPMask[o_4, next] == PostMask[o_4, next] + 1 / 2) && (!(((g_1[invRecv24(o_4)] && invRecv24(o_4) != x) && NoPerm < 1 / 2) && qpRange24(o_4)) ==> QPMask[o_4, next] == PostMask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (((g_1[invRecv24(o_9)] && invRecv24(o_9) != x) && NoPerm < 1 / 2) && qpRange24(o_9) ==> (NoPerm < 1 / 2 ==> invRecv24(o_9) == o_9) && QPMask[o_9, next] == PostMask[o_9, next] + 1 / 2) && (!(((g_1[invRecv24(o_9)] && invRecv24(o_9) != x) && NoPerm < 1 / 2) && qpRange24(o_9)) ==> QPMask[o_9, next] == PostMask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall n$2: Ref :: { (n$2.next in g) } { (n$2 in g), n$2.next } (n$2 in g) && n$2.next != null ==> (n$2.next in g))
       if (*) {
-        if (g_1[n$2_4]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@310.13--310.33) [83695]"}
-            HasDirectPerm(PostMask, n$2_4, next);
+        if (g_1[n$2_5]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@310.13--310.33) [8907]"}
+            HasDirectPerm(PostMask, n$2_5, next);
         }
-        if (g_1[n$2_4] && PostHeap[n$2_4, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@310.13--310.33) [83696]"}
-            HasDirectPerm(PostMask, n$2_4, next);
+        if (g_1[n$2_5] && PostHeap[n$2_5, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@310.13--310.33) [8908]"}
+            HasDirectPerm(PostMask, n$2_5, next);
         }
         assume false;
       }
-    assume (forall n$2_1_1: Ref ::
-      { g_1[PostHeap[n$2_1_1, next]] } { g_1[n$2_1_1], PostHeap[n$2_1_1, next] }
-      g_1[n$2_1_1] && PostHeap[n$2_1_1, next] != null ==> g_1[PostHeap[n$2_1_1, next]]
+    assume (forall n$2_1: Ref ::
+      { g_1[PostHeap[n$2_1, next]] } { g_1[n$2_1], PostHeap[n$2_1, next] }
+      g_1[n$2_1] && PostHeap[n$2_1, next] != null ==> g_1[PostHeap[n$2_1, next]]
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.next == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@311.13--311.27) [83697]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@311.13--311.27) [8909]"}
         HasDirectPerm(PostMask, x, next);
     assume PostHeap[x, next] == null;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of old(x.next) == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@312.13--312.56) [83698]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@312.13--312.56) [8910]"}
         HasDirectPerm(oldMask, x, next);
     if (oldHeap[x, next] == null) {
       assume state(PostHeap, PostMask);
@@ -2472,26 +2472,26 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
       // -- Check definedness of $$(g) == old($$(g))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@312.37--312.42) [83699]"}
+            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@312.37--312.42) [8911]"}
               (forall n_2: Ref ::
               { PostHeap[n_2, next] } { QPMask[n_2, next] } { PostHeap[n_2, next] }
               g_1[n_2] && dummyFunction(PostHeap[n_2, next]) ==> 1 / 2 >= NoPerm
             );
           
           // -- check if receiver n is injective
-            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@312.37--312.42) [83700]"}
+            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@312.37--312.42) [8912]"}
               (forall n_2: Ref, n_2_1: Ref ::
               { neverTriggered25(n_2), neverTriggered25(n_2_1) }
               (((n_2 != n_2_1 && g_1[n_2]) && g_1[n_2_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_2 != n_2_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@312.37--312.42) [83701]"}
+            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@312.37--312.42) [8913]"}
               (forall n_2: Ref ::
               { PostHeap[n_2, next] } { QPMask[n_2, next] } { PostHeap[n_2, next] }
               g_1[n_2] ==> 1 / 2 > NoPerm ==> PostMask[n_2, next] > NoPerm
@@ -2502,9 +2502,9 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
               { PostHeap[n_2, next] } { QPMask[n_2, next] } { PostHeap[n_2, next] }
               g_1[n_2] && NoPerm < 1 / 2 ==> qpRange25(n_2) && invRecv25(n_2) == n_2
             );
-            assume (forall o_4: Ref ::
-              { invRecv25(o_4) }
-              g_1[invRecv25(o_4)] && (NoPerm < 1 / 2 && qpRange25(o_4)) ==> invRecv25(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv25(o_9) }
+              g_1[invRecv25(o_9)] && (NoPerm < 1 / 2 && qpRange25(o_9)) ==> invRecv25(o_9) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -2515,26 +2515,26 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := oldHeap;
           ExhaleWellDef0Mask := oldMask;
+          ExhaleWellDef0Heap := oldHeap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@312.50--312.55) [83702]"}
+            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@312.50--312.55) [8914]"}
               (forall n_3: Ref ::
               { oldHeap[n_3, next] } { QPMask[n_3, next] } { oldHeap[n_3, next] }
               g_1[n_3] && dummyFunction(oldHeap[n_3, next]) ==> 1 / 2 >= NoPerm
             );
           
           // -- check if receiver n is injective
-            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@312.50--312.55) [83703]"}
+            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@312.50--312.55) [8915]"}
               (forall n_3: Ref, n_3_1: Ref ::
               { neverTriggered26(n_3), neverTriggered26(n_3_1) }
               (((n_3 != n_3_1 && g_1[n_3]) && g_1[n_3_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_3 != n_3_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@312.50--312.55) [83704]"}
+            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@312.50--312.55) [8916]"}
               (forall n_3: Ref ::
               { oldHeap[n_3, next] } { QPMask[n_3, next] } { oldHeap[n_3, next] }
               g_1[n_3] ==> 1 / 2 > NoPerm ==> oldMask[n_3, next] > NoPerm
@@ -2545,9 +2545,9 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
               { oldHeap[n_3, next] } { QPMask[n_3, next] } { oldHeap[n_3, next] }
               g_1[n_3] && NoPerm < 1 / 2 ==> qpRange26(n_3) && invRecv26(n_3) == n_3
             );
-            assume (forall o_4: Ref ::
-              { invRecv26(o_4) }
-              g_1[invRecv26(o_4)] && (NoPerm < 1 / 2 && qpRange26(o_4)) ==> invRecv26(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv26(o_9) }
+              g_1[invRecv26(o_9)] && (NoPerm < 1 / 2 && qpRange26(o_9)) ==> invRecv26(o_9) == o_9
             );
           // Finish exhale
           // Stop execution
@@ -2558,7 +2558,7 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of old(x.next) != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@313.13--315.89) [83705]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@313.13--315.89) [8917]"}
         HasDirectPerm(oldMask, x, next);
     if (oldHeap[x, next] != null) {
       assume state(PostHeap, PostMask);
@@ -2567,39 +2567,39 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
         if (*) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@315.18--315.23) [83706]"}
-                (forall n_4_1: Ref ::
-                { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-                g_1[n_4_1] && dummyFunction(PostHeap[n_4_1, next]) ==> 1 / 2 >= NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@315.18--315.23) [8918]"}
+                (forall n_4: Ref ::
+                { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+                g_1[n_4] && dummyFunction(PostHeap[n_4, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@315.18--315.23) [83707]"}
-                (forall n_4_1: Ref, n_4_2: Ref ::
-                { neverTriggered27(n_4_1), neverTriggered27(n_4_2) }
-                (((n_4_1 != n_4_2 && g_1[n_4_1]) && g_1[n_4_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_4_1 != n_4_2
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@315.18--315.23) [8919]"}
+                (forall n_4: Ref, n_4_1: Ref ::
+                { neverTriggered27(n_4), neverTriggered27(n_4_1) }
+                (((n_4 != n_4_1 && g_1[n_4]) && g_1[n_4_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_4 != n_4_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@315.18--315.23) [83708]"}
-                (forall n_4_1: Ref ::
-                { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-                g_1[n_4_1] ==> 1 / 2 > NoPerm ==> PostMask[n_4_1, next] > NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@315.18--315.23) [8920]"}
+                (forall n_4: Ref ::
+                { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+                g_1[n_4] ==> 1 / 2 > NoPerm ==> PostMask[n_4, next] > NoPerm
               );
             
             // -- assumptions for inverse of receiver n
-              assume (forall n_4_1: Ref ::
-                { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-                g_1[n_4_1] && NoPerm < 1 / 2 ==> qpRange27(n_4_1) && invRecv27(n_4_1) == n_4_1
+              assume (forall n_4: Ref ::
+                { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+                g_1[n_4] && NoPerm < 1 / 2 ==> qpRange27(n_4) && invRecv27(n_4) == n_4
               );
-              assume (forall o_4: Ref ::
-                { invRecv27(o_4) }
-                g_1[invRecv27(o_4)] && (NoPerm < 1 / 2 && qpRange27(o_4)) ==> invRecv27(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv27(o_9) }
+                g_1[invRecv27(o_9)] && (NoPerm < 1 / 2 && qpRange27(o_9)) ==> invRecv27(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -2610,26 +2610,26 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@315.45--315.50) [83709]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@315.45--315.50) [8921]"}
                 (forall n_5: Ref ::
                 { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
                 g_1[n_5] && dummyFunction(oldHeap[n_5, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@315.45--315.50) [83710]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@315.45--315.50) [8922]"}
                 (forall n_5: Ref, n_5_1: Ref ::
                 { neverTriggered28(n_5), neverTriggered28(n_5_1) }
                 (((n_5 != n_5_1 && g_1[n_5]) && g_1[n_5_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_5 != n_5_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@315.45--315.50) [83711]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@315.45--315.50) [8923]"}
                 (forall n_5: Ref ::
                 { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
                 g_1[n_5] ==> 1 / 2 > NoPerm ==> oldMask[n_5, next] > NoPerm
@@ -2640,17 +2640,17 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
                 { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
                 g_1[n_5] && NoPerm < 1 / 2 ==> qpRange28(n_5) && invRecv28(n_5) == n_5
               );
-              assume (forall o_4: Ref ::
-                { invRecv28(o_4) }
-                g_1[invRecv28(o_4)] && (NoPerm < 1 / 2 && qpRange28(o_4)) ==> invRecv28(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv28(o_9) }
+                g_1[invRecv28(o_9)] && (NoPerm < 1 / 2 && qpRange28(o_9)) ==> invRecv28(o_9) == o_9
               );
             // Finish exhale
             // Stop execution
             assume false;
           }
-          if ((edge($$(oldHeap, g_1), v1_5, v2_5): bool)) {
-            if (v1_5 == x) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@313.13--315.89) [83712]"}
+          if ((edge($$(oldHeap, g_1), v1_7, v2_7): bool)) {
+            if (v1_7 == x) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@313.13--315.89) [8924]"}
                 HasDirectPerm(oldMask, x, next);
             }
           }
@@ -2664,36 +2664,36 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of old(x.next) != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@316.13--320.129) [83713]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@316.13--320.129) [8925]"}
         HasDirectPerm(oldMask, x, next);
     if (oldHeap[x, next] != null) {
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of (forall v1: Ref, v2: Ref :: { exists_path($$(g), v1, v2) } v1 != v2 ==> exists_path($$(g), v1, v2) == (exists_path(old($$(g)), v1, v2) && !(exists_path(old($$(g)), v1, x) && exists_path(old($$(g)), old(x.next), v2))))
         if (*) {
-          if (v1_7 != v2_7) {
+          if (v1_8 != v2_8) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := PostHeap;
               ExhaleWellDef0Mask := PostMask;
+              ExhaleWellDef0Heap := PostHeap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
-                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@319.29--319.34) [83714]"}
+                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@319.29--319.34) [8926]"}
                   (forall n_6: Ref ::
                   { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
                   g_1[n_6] && dummyFunction(PostHeap[n_6, next]) ==> 1 / 2 >= NoPerm
                 );
               
               // -- check if receiver n is injective
-                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@319.29--319.34) [83715]"}
+                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@319.29--319.34) [8927]"}
                   (forall n_6: Ref, n_6_1: Ref ::
                   { neverTriggered29(n_6), neverTriggered29(n_6_1) }
                   (((n_6 != n_6_1 && g_1[n_6]) && g_1[n_6_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_6 != n_6_1
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@319.29--319.34) [83716]"}
+                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@319.29--319.34) [8928]"}
                   (forall n_6: Ref ::
                   { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
                   g_1[n_6] ==> 1 / 2 > NoPerm ==> PostMask[n_6, next] > NoPerm
@@ -2704,9 +2704,9 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
                   { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
                   g_1[n_6] && NoPerm < 1 / 2 ==> qpRange29(n_6) && invRecv29(n_6) == n_6
                 );
-                assume (forall o_4: Ref ::
-                  { invRecv29(o_4) }
-                  g_1[invRecv29(o_4)] && (NoPerm < 1 / 2 && qpRange29(o_4)) ==> invRecv29(o_4) == o_4
+                assume (forall o_9: Ref ::
+                  { invRecv29(o_9) }
+                  g_1[invRecv29(o_9)] && (NoPerm < 1 / 2 && qpRange29(o_9)) ==> invRecv29(o_9) == o_9
                 );
               // Finish exhale
               havoc ExhaleHeap;
@@ -2717,26 +2717,26 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
-                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@320.37--320.42) [83717]"}
+                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@320.37--320.42) [8929]"}
                   (forall n_7: Ref ::
                   { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
                   g_1[n_7] && dummyFunction(oldHeap[n_7, next]) ==> 1 / 2 >= NoPerm
                 );
               
               // -- check if receiver n is injective
-                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@320.37--320.42) [83718]"}
+                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@320.37--320.42) [8930]"}
                   (forall n_7: Ref, n_7_1: Ref ::
                   { neverTriggered30(n_7), neverTriggered30(n_7_1) }
                   (((n_7 != n_7_1 && g_1[n_7]) && g_1[n_7_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_7 != n_7_1
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@320.37--320.42) [83719]"}
+                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@320.37--320.42) [8931]"}
                   (forall n_7: Ref ::
                   { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
                   g_1[n_7] ==> 1 / 2 > NoPerm ==> oldMask[n_7, next] > NoPerm
@@ -2747,37 +2747,37 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
                   { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
                   g_1[n_7] && NoPerm < 1 / 2 ==> qpRange30(n_7) && invRecv30(n_7) == n_7
                 );
-                assume (forall o_4: Ref ::
-                  { invRecv30(o_4) }
-                  g_1[invRecv30(o_4)] && (NoPerm < 1 / 2 && qpRange30(o_4)) ==> invRecv30(o_4) == o_4
+                assume (forall o_9: Ref ::
+                  { invRecv30(o_9) }
+                  g_1[invRecv30(o_9)] && (NoPerm < 1 / 2 && qpRange30(o_9)) ==> invRecv30(o_9) == o_9
                 );
               // Finish exhale
               // Stop execution
               assume false;
             }
-            if ((exists_path($$(oldHeap, g_1), v1_7, v2_7): bool)) {
+            if ((exists_path($$(oldHeap, g_1), v1_8, v2_8): bool)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
-                  assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@320.72--320.77) [83720]"}
+                  assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@320.72--320.77) [8932]"}
                     (forall n_8: Ref ::
                     { oldHeap[n_8, next] } { QPMask[n_8, next] } { oldHeap[n_8, next] }
                     g_1[n_8] && dummyFunction(oldHeap[n_8, next]) ==> 1 / 2 >= NoPerm
                   );
                 
                 // -- check if receiver n is injective
-                  assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@320.72--320.77) [83721]"}
+                  assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@320.72--320.77) [8933]"}
                     (forall n_8: Ref, n_8_1: Ref ::
                     { neverTriggered31(n_8), neverTriggered31(n_8_1) }
                     (((n_8 != n_8_1 && g_1[n_8]) && g_1[n_8_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_8 != n_8_1
                   );
                 
                 // -- check if sufficient permission is held
-                  assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@320.72--320.77) [83722]"}
+                  assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@320.72--320.77) [8934]"}
                     (forall n_8: Ref ::
                     { oldHeap[n_8, next] } { QPMask[n_8, next] } { oldHeap[n_8, next] }
                     g_1[n_8] ==> 1 / 2 > NoPerm ==> oldMask[n_8, next] > NoPerm
@@ -2788,37 +2788,37 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
                     { oldHeap[n_8, next] } { QPMask[n_8, next] } { oldHeap[n_8, next] }
                     g_1[n_8] && NoPerm < 1 / 2 ==> qpRange31(n_8) && invRecv31(n_8) == n_8
                   );
-                  assume (forall o_4: Ref ::
-                    { invRecv31(o_4) }
-                    g_1[invRecv31(o_4)] && (NoPerm < 1 / 2 && qpRange31(o_4)) ==> invRecv31(o_4) == o_4
+                  assume (forall o_9: Ref ::
+                    { invRecv31(o_9) }
+                    g_1[invRecv31(o_9)] && (NoPerm < 1 / 2 && qpRange31(o_9)) ==> invRecv31(o_9) == o_9
                   );
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
-              if ((exists_path($$(oldHeap, g_1), v1_7, x): bool)) {
+              if ((exists_path($$(oldHeap, g_1), v1_8, x): bool)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
+                  ExhaleWellDef0Heap := oldHeap;
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@320.104--320.109) [83723]"}
+                    assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@320.104--320.109) [8935]"}
                       (forall n_9: Ref ::
                       { oldHeap[n_9, next] } { QPMask[n_9, next] } { oldHeap[n_9, next] }
                       g_1[n_9] && dummyFunction(oldHeap[n_9, next]) ==> 1 / 2 >= NoPerm
                     );
                   
                   // -- check if receiver n is injective
-                    assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@320.104--320.109) [83724]"}
+                    assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@320.104--320.109) [8936]"}
                       (forall n_9: Ref, n_9_1: Ref ::
                       { neverTriggered32(n_9), neverTriggered32(n_9_1) }
                       (((n_9 != n_9_1 && g_1[n_9]) && g_1[n_9_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_9 != n_9_1
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@320.104--320.109) [83725]"}
+                    assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@320.104--320.109) [8937]"}
                       (forall n_9: Ref ::
                       { oldHeap[n_9, next] } { QPMask[n_9, next] } { oldHeap[n_9, next] }
                       g_1[n_9] ==> 1 / 2 > NoPerm ==> oldMask[n_9, next] > NoPerm
@@ -2829,15 +2829,15 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
                       { oldHeap[n_9, next] } { QPMask[n_9, next] } { oldHeap[n_9, next] }
                       g_1[n_9] && NoPerm < 1 / 2 ==> qpRange32(n_9) && invRecv32(n_9) == n_9
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv32(o_4) }
-                      g_1[invRecv32(o_4)] && (NoPerm < 1 / 2 && qpRange32(o_4)) ==> invRecv32(o_4) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv32(o_9) }
+                      g_1[invRecv32(o_9)] && (NoPerm < 1 / 2 && qpRange32(o_9)) ==> invRecv32(o_9) == o_9
                     );
                   // Finish exhale
                   // Stop execution
                   assume false;
                 }
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@316.13--320.129) [83726]"}
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@316.13--320.129) [8938]"}
                   HasDirectPerm(oldMask, x, next);
               }
             }
@@ -2860,36 +2860,36 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of unlink might not hold. Assertion !((null in g)) might not hold. (delete_edge1.vpr@310.13--310.33) [83727]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of unlink might not hold. Assertion !((null in g)) might not hold. (delete_edge1.vpr@310.13--310.33) [8939]"}
       !g_1[null];
-    assert {:msg "  Postcondition of unlink might not hold. Assertion (x in g) might not hold. (delete_edge1.vpr@310.13--310.33) [83728]"}
+    assert {:msg "  Postcondition of unlink might not hold. Assertion (x in g) might not hold. (delete_edge1.vpr@310.13--310.33) [8940]"}
       g_1[x];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of unlink might not hold. There might be insufficient permission to access x.next (delete_edge1.vpr@310.13--310.33) [83729]"}
+      assert {:msg "  Postcondition of unlink might not hold. There might be insufficient permission to access x.next (delete_edge1.vpr@310.13--310.33) [8941]"}
         perm <= Mask[x, next];
     }
     Mask := Mask[x, next:=Mask[x, next] - perm];
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of unlink might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@310.13--310.33) [83730]"}
+      assert {:msg "  Postcondition of unlink might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@310.13--310.33) [8942]"}
         (forall n$1_2: Ref ::
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         (g_1[n$1_2] && n$1_2 != x) && dummyFunction(Heap[n$1_2, next]) ==> 1 / 2 >= NoPerm
       );
     
     // -- check if receiver n$1 is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@310.13--310.33) [83731]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@310.13--310.33) [8943]"}
         (forall n$1_2: Ref, n$1_2_1: Ref ::
         { neverTriggered33(n$1_2), neverTriggered33(n$1_2_1) }
         (((n$1_2 != n$1_2_1 && (g_1[n$1_2] && n$1_2 != x)) && (g_1[n$1_2_1] && n$1_2_1 != x)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$1_2 != n$1_2_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of unlink might not hold. There might be insufficient permission to access n$1.next (delete_edge1.vpr@310.13--310.33) [83732]"}
+      assert {:msg "  Postcondition of unlink might not hold. There might be insufficient permission to access n$1.next (delete_edge1.vpr@310.13--310.33) [8944]"}
         (forall n$1_2: Ref ::
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         g_1[n$1_2] && n$1_2 != x ==> Mask[n$1_2, next] >= 1 / 2
@@ -2900,26 +2900,26 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         (g_1[n$1_2] && n$1_2 != x) && NoPerm < 1 / 2 ==> qpRange33(n$1_2) && invRecv33(n$1_2) == n$1_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv33(o_4) }
-        (g_1[invRecv33(o_4)] && invRecv33(o_4) != x) && (NoPerm < 1 / 2 && qpRange33(o_4)) ==> invRecv33(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv33(o_9) }
+        (g_1[invRecv33(o_9)] && invRecv33(o_9) != x) && (NoPerm < 1 / 2 && qpRange33(o_9)) ==> invRecv33(o_9) == o_9
       );
     
     // -- assume permission updates for field next
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g_1[invRecv33(o_4)] && invRecv33(o_4) != x) && (NoPerm < 1 / 2 && qpRange33(o_4)) ==> invRecv33(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - 1 / 2) && (!((g_1[invRecv33(o_4)] && invRecv33(o_4) != x) && (NoPerm < 1 / 2 && qpRange33(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g_1[invRecv33(o_9)] && invRecv33(o_9) != x) && (NoPerm < 1 / 2 && qpRange33(o_9)) ==> invRecv33(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - 1 / 2) && (!((g_1[invRecv33(o_9)] && invRecv33(o_9) != x) && (NoPerm < 1 / 2 && qpRange33(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
       if (g_1[n$2_2] && Heap[n$2_2, next] != null) {
-        assert {:msg "  Postcondition of unlink might not hold. Assertion (n$2.next in g) might not hold. (delete_edge1.vpr@310.13--310.33) [83733]"}
+        assert {:msg "  Postcondition of unlink might not hold. Assertion (n$2.next in g) might not hold. (delete_edge1.vpr@310.13--310.33) [8945]"}
           g_1[Heap[n$2_2, next]];
       }
       assume false;
@@ -2928,15 +2928,15 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
       { g_1[Heap[n$2_3_1, next]] } { g_1[n$2_3_1], Heap[n$2_3_1, next] }
       g_1[n$2_3_1] && Heap[n$2_3_1, next] != null ==> g_1[Heap[n$2_3_1, next]]
     );
-    assert {:msg "  Postcondition of unlink might not hold. Assertion x.next == null might not hold. (delete_edge1.vpr@311.13--311.27) [83734]"}
+    assert {:msg "  Postcondition of unlink might not hold. Assertion x.next == null might not hold. (delete_edge1.vpr@311.13--311.27) [8946]"}
       Heap[x, next] == null;
     if (oldHeap[x, next] == null) {
-      assert {:msg "  Postcondition of unlink might not hold. Assertion $$(g) == old($$(g)) might not hold. (delete_edge1.vpr@312.13--312.56) [83735]"}
+      assert {:msg "  Postcondition of unlink might not hold. Assertion $$(g) == old($$(g)) might not hold. (delete_edge1.vpr@312.13--312.56) [8947]"}
         Set#Equal($$(Heap, g_1), $$(oldHeap, g_1));
     }
     if (oldHeap[x, next] != null) {
       if (*) {
-        assert {:msg "  Postcondition of unlink might not hold. Assertion edge($$(g), v1, v2) == (edge(old($$(g)), v1, v2) && !(v1 == x && v2 == old(x.next))) might not hold. (delete_edge1.vpr@313.13--315.89) [83736]"}
+        assert {:msg "  Postcondition of unlink might not hold. Assertion edge($$(g), v1, v2) == (edge(old($$(g)), v1, v2) && !(v1 == x && v2 == old(x.next))) might not hold. (delete_edge1.vpr@313.13--315.89) [8948]"}
           (edge($$(Heap, g_1), v1_4, v2_4): bool) == ((edge($$(oldHeap, g_1), v1_4, v2_4): bool) && !(v1_4 == x && v2_4 == oldHeap[x, next]));
         assume false;
       }
@@ -2948,7 +2948,7 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
     if (oldHeap[x, next] != null) {
       if (*) {
         if (v1_6 != v2_6) {
-          assert {:msg "  Postcondition of unlink might not hold. Assertion exists_path($$(g), v1, v2) == (exists_path(old($$(g)), v1, v2) && !(exists_path(old($$(g)), v1, x) && exists_path(old($$(g)), old(x.next), v2))) might not hold. (delete_edge1.vpr@316.13--320.129) [83737]"}
+          assert {:msg "  Postcondition of unlink might not hold. Assertion exists_path($$(g), v1, v2) == (exists_path(old($$(g)), v1, v2) && !(exists_path(old($$(g)), v1, x) && exists_path(old($$(g)), old(x.next), v2))) might not hold. (delete_edge1.vpr@316.13--320.129) [8949]"}
             (exists_path($$(Heap, g_1), v1_6, v2_6): bool) == ((exists_path($$(oldHeap, g_1), v1_6, v2_6): bool) && !((exists_path($$(oldHeap, g_1), v1_6, x): bool) && (exists_path($$(oldHeap, g_1), oldHeap[x, next], v2_6): bool)));
         }
         assume false;
@@ -2968,25 +2968,25 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
 // Translation of method unjoin
 // ==================================================
 
-procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
+procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var n$0_28: Ref;
-  var n$1_16: Ref;
-  var ExhaleWellDef0Heap: HeapType;
+  var n$0_19: Ref;
+  var n$1_11: Ref;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var n$2_25: Ref;
-  var n_32: Ref;
-  var m_1: Ref;
-  var n_33: Ref;
+  var n$2_12: Ref;
+  var n_52: Ref;
+  var m: Ref;
+  var n_53: Ref;
   var m_2: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var n$4_12: Ref;
+  var n$4_8: Ref;
   var n$6_3: Ref;
   var n$7: Ref;
   var PreCallHeap: HeapType;
@@ -2994,7 +2994,7 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
   var arg_g: (Set Ref);
   var perm: Perm;
   var n$0_4: Ref;
-  var n$4_2_1: Ref;
+  var n$4_2: Ref;
   var n$6_2: Ref;
   var n$7_2: Ref;
   
@@ -3006,7 +3006,7 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
   
   // -- Assumptions about method arguments
     assume Heap[x0, $allocated];
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
   
   // -- Checked inhaling of precondition
     
@@ -3035,7 +3035,7 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@325.14--325.32) [83738]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@325.14--325.32) [8950]"}
       (forall n_1: Ref, n_1_1: Ref ::
       
       (((n_1 != n_1_1 && Set#Union(g0, g1)[n_1]) && Set#Union(g0, g1)[n_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_1 != n_1_1
@@ -3046,9 +3046,9 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         { Heap[n_1, next] } { QPMask[n_1, next] } { Heap[n_1, next] }
         Set#Union(g0, g1)[n_1] && NoPerm < FullPerm ==> qpRange34(n_1) && invRecv34(n_1) == n_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv34(o_4) }
-        (Set#Union(g0, g1)[invRecv34(o_4)] && NoPerm < FullPerm) && qpRange34(o_4) ==> invRecv34(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv34(o_9) }
+        (Set#Union(g0, g1)[invRecv34(o_9)] && NoPerm < FullPerm) && qpRange34(o_9) ==> invRecv34(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -3058,26 +3058,26 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((Set#Union(g0, g1)[invRecv34(o_4)] && NoPerm < FullPerm) && qpRange34(o_4) ==> (NoPerm < FullPerm ==> invRecv34(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!((Set#Union(g0, g1)[invRecv34(o_4)] && NoPerm < FullPerm) && qpRange34(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((Set#Union(g0, g1)[invRecv34(o_9)] && NoPerm < FullPerm) && qpRange34(o_9) ==> (NoPerm < FullPerm ==> invRecv34(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!((Set#Union(g0, g1)[invRecv34(o_9)] && NoPerm < FullPerm) && qpRange34(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n$0: Ref :: { (n$0.next in (g0 union g1)) } { (n$0 in (g0 union g1)), n$0.next } (n$0 in (g0 union g1)) && n$0.next != null ==> (n$0.next in (g0 union g1)))
       if (*) {
-        if (Set#Union(g0, g1)[n$0_28]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@325.14--325.32) [83739]"}
-            HasDirectPerm(Mask, n$0_28, next);
+        if (Set#Union(g0, g1)[n$0_19]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@325.14--325.32) [8951]"}
+            HasDirectPerm(Mask, n$0_19, next);
         }
-        if (Set#Union(g0, g1)[n$0_28] && Heap[n$0_28, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@325.14--325.32) [83740]"}
-            HasDirectPerm(Mask, n$0_28, next);
+        if (Set#Union(g0, g1)[n$0_19] && Heap[n$0_19, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@325.14--325.32) [8952]"}
+            HasDirectPerm(Mask, n$0_19, next);
         }
         assume false;
       }
@@ -3087,35 +3087,35 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     );
     assume state(Heap, Mask);
     assume g0[x0];
-    assume g1[x1_2];
+    assume g1[x1];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n$1: Ref :: { exists_path($$(g0), n$1, x0) } (n$1 in g0) ==> exists_path($$(g0), n$1, x0))
       if (*) {
-        if (g0[n$1_16]) {
+        if (g0[n$1_11]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@221.74--221.79) [83741]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@221.74--221.79) [8953]"}
                 (forall n_2: Ref ::
                 { Heap[n_2, next] } { QPMask[n_2, next] } { Heap[n_2, next] }
                 g0[n_2] && dummyFunction(Heap[n_2, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@221.74--221.79) [83742]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@221.74--221.79) [8954]"}
                 (forall n_2: Ref, n_2_1: Ref ::
                 { neverTriggered35(n_2), neverTriggered35(n_2_1) }
                 (((n_2 != n_2_1 && g0[n_2]) && g0[n_2_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_2 != n_2_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@221.74--221.79) [83743]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@221.74--221.79) [8955]"}
                 (forall n_2: Ref ::
                 { Heap[n_2, next] } { QPMask[n_2, next] } { Heap[n_2, next] }
                 g0[n_2] ==> 1 / 2 > NoPerm ==> Mask[n_2, next] > NoPerm
@@ -3126,9 +3126,9 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
                 { Heap[n_2, next] } { QPMask[n_2, next] } { Heap[n_2, next] }
                 g0[n_2] && NoPerm < 1 / 2 ==> qpRange35(n_2) && invRecv35(n_2) == n_2
               );
-              assume (forall o_4: Ref ::
-                { invRecv35(o_4) }
-                g0[invRecv35(o_4)] && (NoPerm < 1 / 2 && qpRange35(o_4)) ==> invRecv35(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv35(o_9) }
+                g0[invRecv35(o_9)] && (NoPerm < 1 / 2 && qpRange35(o_9)) ==> invRecv35(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -3149,29 +3149,29 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     
     // -- Check definedness of (forall n$2: Ref :: { exists_path($$(g1), x1, n$2) } (n$2 in g1) ==> exists_path($$(g1), x1, n$2))
       if (*) {
-        if (g1[n$2_25]) {
+        if (g1[n$2_12]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@215.74--215.79) [83744]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@215.74--215.79) [8956]"}
                 (forall n_3: Ref ::
                 { Heap[n_3, next] } { QPMask[n_3, next] } { Heap[n_3, next] }
                 g1[n_3] && dummyFunction(Heap[n_3, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@215.74--215.79) [83745]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@215.74--215.79) [8957]"}
                 (forall n_3: Ref, n_3_1: Ref ::
                 { neverTriggered36(n_3), neverTriggered36(n_3_1) }
                 (((n_3 != n_3_1 && g1[n_3]) && g1[n_3_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_3 != n_3_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@215.74--215.79) [83746]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@215.74--215.79) [8958]"}
                 (forall n_3: Ref ::
                 { Heap[n_3, next] } { QPMask[n_3, next] } { Heap[n_3, next] }
                 g1[n_3] ==> 1 / 2 > NoPerm ==> Mask[n_3, next] > NoPerm
@@ -3182,9 +3182,9 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
                 { Heap[n_3, next] } { QPMask[n_3, next] } { Heap[n_3, next] }
                 g1[n_3] && NoPerm < 1 / 2 ==> qpRange36(n_3) && invRecv36(n_3) == n_3
               );
-              assume (forall o_4: Ref ::
-                { invRecv36(o_4) }
-                g1[invRecv36(o_4)] && (NoPerm < 1 / 2 && qpRange36(o_4)) ==> invRecv36(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv36(o_9) }
+                g1[invRecv36(o_9)] && (NoPerm < 1 / 2 && qpRange36(o_9)) ==> invRecv36(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -3196,51 +3196,51 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         }
         assume false;
       }
-    assume (forall n$2_1_1: Ref ::
-      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), x1_2, n$2_1_1): bool) }
-      g1[n$2_1_1] ==> (exists_path($$(Heap, g1), x1_2, n$2_1_1): bool)
+    assume (forall n$2_1: Ref ::
+      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), x1, n$2_1): bool) }
+      g1[n$2_1] ==> (exists_path($$(Heap, g1), x1, n$2_1): bool)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n: Ref, m: Ref :: { (n in g0), (m in g1) } (n in g0) && (m in g1) ==> edge($$((g0 union g1)), n, m) == (n == x0 && m == x1))
       if (*) {
-        if (g0[n_32] && g1[m_1]) {
+        if (g0[n_52] && g1[m]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@333.87--333.102) [83747]"}
-                (forall n$0_2_1: Ref ::
-                { Heap[n$0_2_1, next] } { QPMask[n$0_2_1, next] } { Heap[n$0_2_1, next] }
-                Set#Union(g0, g1)[n$0_2_1] && dummyFunction(Heap[n$0_2_1, next]) ==> 1 / 2 >= NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@333.87--333.102) [8959]"}
+                (forall n$0_2: Ref ::
+                { Heap[n$0_2, next] } { QPMask[n$0_2, next] } { Heap[n$0_2, next] }
+                Set#Union(g0, g1)[n$0_2] && dummyFunction(Heap[n$0_2, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n$0 is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@333.87--333.102) [83748]"}
-                (forall n$0_2_1: Ref, n$0_2_2: Ref ::
-                { neverTriggered37(n$0_2_1), neverTriggered37(n$0_2_2) }
-                (((n$0_2_1 != n$0_2_2 && Set#Union(g0, g1)[n$0_2_1]) && Set#Union(g0, g1)[n$0_2_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_2_1 != n$0_2_2
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@333.87--333.102) [8960]"}
+                (forall n$0_2: Ref, n$0_2_1: Ref ::
+                { neverTriggered37(n$0_2), neverTriggered37(n$0_2_1) }
+                (((n$0_2 != n$0_2_1 && Set#Union(g0, g1)[n$0_2]) && Set#Union(g0, g1)[n$0_2_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_2 != n$0_2_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@333.87--333.102) [83749]"}
-                (forall n$0_2_1: Ref ::
-                { Heap[n$0_2_1, next] } { QPMask[n$0_2_1, next] } { Heap[n$0_2_1, next] }
-                Set#Union(g0, g1)[n$0_2_1] ==> 1 / 2 > NoPerm ==> Mask[n$0_2_1, next] > NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@333.87--333.102) [8961]"}
+                (forall n$0_2: Ref ::
+                { Heap[n$0_2, next] } { QPMask[n$0_2, next] } { Heap[n$0_2, next] }
+                Set#Union(g0, g1)[n$0_2] ==> 1 / 2 > NoPerm ==> Mask[n$0_2, next] > NoPerm
               );
             
             // -- assumptions for inverse of receiver n$0
-              assume (forall n$0_2_1: Ref ::
-                { Heap[n$0_2_1, next] } { QPMask[n$0_2_1, next] } { Heap[n$0_2_1, next] }
-                Set#Union(g0, g1)[n$0_2_1] && NoPerm < 1 / 2 ==> qpRange37(n$0_2_1) && invRecv37(n$0_2_1) == n$0_2_1
+              assume (forall n$0_2: Ref ::
+                { Heap[n$0_2, next] } { QPMask[n$0_2, next] } { Heap[n$0_2, next] }
+                Set#Union(g0, g1)[n$0_2] && NoPerm < 1 / 2 ==> qpRange37(n$0_2) && invRecv37(n$0_2) == n$0_2
               );
-              assume (forall o_4: Ref ::
-                { invRecv37(o_4) }
-                Set#Union(g0, g1)[invRecv37(o_4)] && (NoPerm < 1 / 2 && qpRange37(o_4)) ==> invRecv37(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv37(o_9) }
+                Set#Union(g0, g1)[invRecv37(o_9)] && (NoPerm < 1 / 2 && qpRange37(o_9)) ==> invRecv37(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -3252,51 +3252,51 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         }
         assume false;
       }
-    assume (forall n_5: Ref, m_1_1: Ref ::
-      { g0[n_5], g1[m_1_1] }
-      g0[n_5] && g1[m_1_1] ==> (edge($$(Heap, Set#Union(g0, g1)), n_5, m_1_1): bool) == (n_5 == x0 && m_1_1 == x1_2)
+    assume (forall n_5: Ref, m_1: Ref ::
+      { g0[n_5], g1[m_1] }
+      g0[n_5] && g1[m_1] ==> (edge($$(Heap, Set#Union(g0, g1)), n_5, m_1): bool) == (n_5 == x0 && m_1 == x1)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n: Ref, m: Ref :: { (n in g1), (m in g0) } (n in g1) && (m in g0) ==> !edge($$((g0 union g1)), n, m))
       if (*) {
-        if (g1[n_33] && g0[m_2]) {
+        if (g1[n_53] && g0[m_2]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@334.87--334.102) [83750]"}
-                (forall n$0_3_2: Ref ::
-                { Heap[n$0_3_2, next] } { QPMask[n$0_3_2, next] } { Heap[n$0_3_2, next] }
-                Set#Union(g0, g1)[n$0_3_2] && dummyFunction(Heap[n$0_3_2, next]) ==> 1 / 2 >= NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@334.87--334.102) [8962]"}
+                (forall n$0_3: Ref ::
+                { Heap[n$0_3, next] } { QPMask[n$0_3, next] } { Heap[n$0_3, next] }
+                Set#Union(g0, g1)[n$0_3] && dummyFunction(Heap[n$0_3, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n$0 is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@334.87--334.102) [83751]"}
-                (forall n$0_3_2: Ref, n$0_3_3: Ref ::
-                { neverTriggered38(n$0_3_2), neverTriggered38(n$0_3_3) }
-                (((n$0_3_2 != n$0_3_3 && Set#Union(g0, g1)[n$0_3_2]) && Set#Union(g0, g1)[n$0_3_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_3_2 != n$0_3_3
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@334.87--334.102) [8963]"}
+                (forall n$0_3: Ref, n$0_3_1: Ref ::
+                { neverTriggered38(n$0_3), neverTriggered38(n$0_3_1) }
+                (((n$0_3 != n$0_3_1 && Set#Union(g0, g1)[n$0_3]) && Set#Union(g0, g1)[n$0_3_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_3 != n$0_3_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@334.87--334.102) [83752]"}
-                (forall n$0_3_2: Ref ::
-                { Heap[n$0_3_2, next] } { QPMask[n$0_3_2, next] } { Heap[n$0_3_2, next] }
-                Set#Union(g0, g1)[n$0_3_2] ==> 1 / 2 > NoPerm ==> Mask[n$0_3_2, next] > NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@334.87--334.102) [8964]"}
+                (forall n$0_3: Ref ::
+                { Heap[n$0_3, next] } { QPMask[n$0_3, next] } { Heap[n$0_3, next] }
+                Set#Union(g0, g1)[n$0_3] ==> 1 / 2 > NoPerm ==> Mask[n$0_3, next] > NoPerm
               );
             
             // -- assumptions for inverse of receiver n$0
-              assume (forall n$0_3_2: Ref ::
-                { Heap[n$0_3_2, next] } { QPMask[n$0_3_2, next] } { Heap[n$0_3_2, next] }
-                Set#Union(g0, g1)[n$0_3_2] && NoPerm < 1 / 2 ==> qpRange38(n$0_3_2) && invRecv38(n$0_3_2) == n$0_3_2
+              assume (forall n$0_3: Ref ::
+                { Heap[n$0_3, next] } { QPMask[n$0_3, next] } { Heap[n$0_3, next] }
+                Set#Union(g0, g1)[n$0_3] && NoPerm < 1 / 2 ==> qpRange38(n$0_3) && invRecv38(n$0_3) == n$0_3
               );
-              assume (forall o_4: Ref ::
-                { invRecv38(o_4) }
-                Set#Union(g0, g1)[invRecv38(o_4)] && (NoPerm < 1 / 2 && qpRange38(o_4)) ==> invRecv38(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv38(o_9) }
+                Set#Union(g0, g1)[invRecv38(o_9)] && (NoPerm < 1 / 2 && qpRange38(o_9)) ==> invRecv38(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -3318,26 +3318,26 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     // -- Check definedness of acyclic_graph($$((g0 union g1)))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@224.19--224.24) [83753]"}
+          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@224.19--224.24) [8965]"}
             (forall n_8: Ref ::
             { Heap[n_8, next] } { QPMask[n_8, next] } { Heap[n_8, next] }
             Set#Union(g0, g1)[n_8] && dummyFunction(Heap[n_8, next]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@224.19--224.24) [83754]"}
+          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@224.19--224.24) [8966]"}
             (forall n_8: Ref, n_8_1: Ref ::
             { neverTriggered39(n_8), neverTriggered39(n_8_1) }
             (((n_8 != n_8_1 && Set#Union(g0, g1)[n_8]) && Set#Union(g0, g1)[n_8_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_8 != n_8_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@224.19--224.24) [83755]"}
+          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@224.19--224.24) [8967]"}
             (forall n_8: Ref ::
             { Heap[n_8, next] } { QPMask[n_8, next] } { Heap[n_8, next] }
             Set#Union(g0, g1)[n_8] ==> 1 / 2 > NoPerm ==> Mask[n_8, next] > NoPerm
@@ -3348,9 +3348,9 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
             { Heap[n_8, next] } { QPMask[n_8, next] } { Heap[n_8, next] }
             Set#Union(g0, g1)[n_8] && NoPerm < 1 / 2 ==> qpRange39(n_8) && invRecv39(n_8) == n_8
           );
-          assume (forall o_4: Ref ::
-            { invRecv39(o_4) }
-            Set#Union(g0, g1)[invRecv39(o_4)] && (NoPerm < 1 / 2 && qpRange39(o_4)) ==> invRecv39(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv39(o_9) }
+            Set#Union(g0, g1)[invRecv39(o_9)] && (NoPerm < 1 / 2 && qpRange39(o_9)) ==> invRecv39(o_9) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -3365,26 +3365,26 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     // -- Check definedness of func_graph($$((g0 union g1)))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@225.16--225.21) [83756]"}
+          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@225.16--225.21) [8968]"}
             (forall n_9: Ref ::
             { Heap[n_9, next] } { QPMask[n_9, next] } { Heap[n_9, next] }
             Set#Union(g0, g1)[n_9] && dummyFunction(Heap[n_9, next]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@225.16--225.21) [83757]"}
+          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@225.16--225.21) [8969]"}
             (forall n_9: Ref, n_9_1: Ref ::
             { neverTriggered40(n_9), neverTriggered40(n_9_1) }
             (((n_9 != n_9_1 && Set#Union(g0, g1)[n_9]) && Set#Union(g0, g1)[n_9_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_9 != n_9_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@225.16--225.21) [83758]"}
+          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@225.16--225.21) [8970]"}
             (forall n_9: Ref ::
             { Heap[n_9, next] } { QPMask[n_9, next] } { Heap[n_9, next] }
             Set#Union(g0, g1)[n_9] ==> 1 / 2 > NoPerm ==> Mask[n_9, next] > NoPerm
@@ -3395,9 +3395,9 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
             { Heap[n_9, next] } { QPMask[n_9, next] } { Heap[n_9, next] }
             Set#Union(g0, g1)[n_9] && NoPerm < 1 / 2 ==> qpRange40(n_9) && invRecv40(n_9) == n_9
           );
-          assume (forall o_4: Ref ::
-            { invRecv40(o_4) }
-            Set#Union(g0, g1)[invRecv40(o_4)] && (NoPerm < 1 / 2 && qpRange40(o_4)) ==> invRecv40(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv40(o_9) }
+            Set#Union(g0, g1)[invRecv40(o_9)] && (NoPerm < 1 / 2 && qpRange40(o_9)) ==> invRecv40(o_9) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -3412,26 +3412,26 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     // -- Check definedness of unshared_graph($$((g0 union g1)))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@226.20--226.25) [83759]"}
+          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@226.20--226.25) [8971]"}
             (forall n_10_1: Ref ::
             { Heap[n_10_1, next] } { QPMask[n_10_1, next] } { Heap[n_10_1, next] }
             Set#Union(g0, g1)[n_10_1] && dummyFunction(Heap[n_10_1, next]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@226.20--226.25) [83760]"}
+          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@226.20--226.25) [8972]"}
             (forall n_10_1: Ref, n_10_2: Ref ::
             { neverTriggered41(n_10_1), neverTriggered41(n_10_2) }
             (((n_10_1 != n_10_2 && Set#Union(g0, g1)[n_10_1]) && Set#Union(g0, g1)[n_10_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_10_1 != n_10_2
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@226.20--226.25) [83761]"}
+          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@226.20--226.25) [8973]"}
             (forall n_10_1: Ref ::
             { Heap[n_10_1, next] } { QPMask[n_10_1, next] } { Heap[n_10_1, next] }
             Set#Union(g0, g1)[n_10_1] ==> 1 / 2 > NoPerm ==> Mask[n_10_1, next] > NoPerm
@@ -3442,9 +3442,9 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
             { Heap[n_10_1, next] } { QPMask[n_10_1, next] } { Heap[n_10_1, next] }
             Set#Union(g0, g1)[n_10_1] && NoPerm < 1 / 2 ==> qpRange41(n_10_1) && invRecv41(n_10_1) == n_10_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv41(o_4) }
-            Set#Union(g0, g1)[invRecv41(o_4)] && (NoPerm < 1 / 2 && qpRange41(o_4)) ==> invRecv41(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv41(o_9) }
+            Set#Union(g0, g1)[invRecv41(o_9)] && (NoPerm < 1 / 2 && qpRange41(o_9)) ==> invRecv41(o_9) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -3457,16 +3457,16 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x0.next == x1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x0.next (delete_edge1.vpr@339.14--339.27) [83762]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x0.next (delete_edge1.vpr@339.14--339.27) [8974]"}
         HasDirectPerm(Mask, x0, next);
-    assume Heap[x0, next] == x1_2;
+    assume Heap[x0, next] == x1;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3479,55 +3479,55 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n$3.next might not be injective. (delete_edge1.vpr@344.13--344.22) [83763]"}
-      (forall n$3_1_2: Ref, n$3_1_3: Ref ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource n$3.next might not be injective. (delete_edge1.vpr@344.13--344.22) [8975]"}
+      (forall n$3_1: Ref, n$3_1_1: Ref ::
       
-      (((n$3_1_2 != n$3_1_3 && g0[n$3_1_2]) && g0[n$3_1_3]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$3_1_2 != n$3_1_3
+      (((n$3_1 != n$3_1_1 && g0[n$3_1]) && g0[n$3_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$3_1 != n$3_1_1
     );
     
     // -- Define Inverse Function
-      assume (forall n$3_1_2: Ref ::
-        { PostHeap[n$3_1_2, next] } { QPMask[n$3_1_2, next] } { PostHeap[n$3_1_2, next] }
-        g0[n$3_1_2] && NoPerm < FullPerm ==> qpRange42(n$3_1_2) && invRecv42(n$3_1_2) == n$3_1_2
+      assume (forall n$3_1: Ref ::
+        { PostHeap[n$3_1, next] } { QPMask[n$3_1, next] } { PostHeap[n$3_1, next] }
+        g0[n$3_1] && NoPerm < FullPerm ==> qpRange42(n$3_1) && invRecv42(n$3_1) == n$3_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv42(o_4) }
-        (g0[invRecv42(o_4)] && NoPerm < FullPerm) && qpRange42(o_4) ==> invRecv42(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv42(o_9) }
+        (g0[invRecv42(o_9)] && NoPerm < FullPerm) && qpRange42(o_9) ==> invRecv42(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall n$3_1_2: Ref ::
-        { PostHeap[n$3_1_2, next] } { QPMask[n$3_1_2, next] } { PostHeap[n$3_1_2, next] }
-        g0[n$3_1_2] ==> n$3_1_2 != null
+      assume (forall n$3_1: Ref ::
+        { PostHeap[n$3_1, next] } { QPMask[n$3_1, next] } { PostHeap[n$3_1, next] }
+        g0[n$3_1] ==> n$3_1 != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g0[invRecv42(o_4)] && NoPerm < FullPerm) && qpRange42(o_4) ==> (NoPerm < FullPerm ==> invRecv42(o_4) == o_4) && QPMask[o_4, next] == PostMask[o_4, next] + FullPerm) && (!((g0[invRecv42(o_4)] && NoPerm < FullPerm) && qpRange42(o_4)) ==> QPMask[o_4, next] == PostMask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g0[invRecv42(o_9)] && NoPerm < FullPerm) && qpRange42(o_9) ==> (NoPerm < FullPerm ==> invRecv42(o_9) == o_9) && QPMask[o_9, next] == PostMask[o_9, next] + FullPerm) && (!((g0[invRecv42(o_9)] && NoPerm < FullPerm) && qpRange42(o_9)) ==> QPMask[o_9, next] == PostMask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall n$4: Ref :: { (n$4.next in g0) } { (n$4 in g0), n$4.next } (n$4 in g0) && n$4.next != null ==> (n$4.next in g0))
       if (*) {
-        if (g0[n$4_12]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$4.next (delete_edge1.vpr@344.13--344.22) [83764]"}
-            HasDirectPerm(PostMask, n$4_12, next);
+        if (g0[n$4_8]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$4.next (delete_edge1.vpr@344.13--344.22) [8976]"}
+            HasDirectPerm(PostMask, n$4_8, next);
         }
-        if (g0[n$4_12] && PostHeap[n$4_12, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$4.next (delete_edge1.vpr@344.13--344.22) [83765]"}
-            HasDirectPerm(PostMask, n$4_12, next);
+        if (g0[n$4_8] && PostHeap[n$4_8, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$4.next (delete_edge1.vpr@344.13--344.22) [8977]"}
+            HasDirectPerm(PostMask, n$4_8, next);
         }
         assume false;
       }
-    assume (forall n$4_1_2: Ref ::
-      { g0[PostHeap[n$4_1_2, next]] } { g0[n$4_1_2], PostHeap[n$4_1_2, next] }
-      g0[n$4_1_2] && PostHeap[n$4_1_2, next] != null ==> g0[PostHeap[n$4_1_2, next]]
+    assume (forall n$4_1: Ref ::
+      { g0[PostHeap[n$4_1, next]] } { g0[n$4_1], PostHeap[n$4_1, next] }
+      g0[n$4_1] && PostHeap[n$4_1, next] != null ==> g0[PostHeap[n$4_1, next]]
     );
     assume state(PostHeap, PostMask);
     assume !g1[null];
@@ -3537,7 +3537,7 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n$5.next might not be injective. (delete_edge1.vpr@345.13--345.22) [83766]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n$5.next might not be injective. (delete_edge1.vpr@345.13--345.22) [8978]"}
       (forall n$5_1: Ref, n$5_1_1: Ref ::
       
       (((n$5_1 != n$5_1_1 && g1[n$5_1]) && g1[n$5_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$5_1 != n$5_1_1
@@ -3548,9 +3548,9 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         { PostHeap[n$5_1, next] } { QPMask[n$5_1, next] } { PostHeap[n$5_1, next] }
         g1[n$5_1] && NoPerm < FullPerm ==> qpRange43(n$5_1) && invRecv43(n$5_1) == n$5_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv43(o_4) }
-        (g1[invRecv43(o_4)] && NoPerm < FullPerm) && qpRange43(o_4) ==> invRecv43(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv43(o_9) }
+        (g1[invRecv43(o_9)] && NoPerm < FullPerm) && qpRange43(o_9) ==> invRecv43(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -3560,13 +3560,13 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g1[invRecv43(o_4)] && NoPerm < FullPerm) && qpRange43(o_4) ==> (NoPerm < FullPerm ==> invRecv43(o_4) == o_4) && QPMask[o_4, next] == PostMask[o_4, next] + FullPerm) && (!((g1[invRecv43(o_4)] && NoPerm < FullPerm) && qpRange43(o_4)) ==> QPMask[o_4, next] == PostMask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g1[invRecv43(o_9)] && NoPerm < FullPerm) && qpRange43(o_9) ==> (NoPerm < FullPerm ==> invRecv43(o_9) == o_9) && QPMask[o_9, next] == PostMask[o_9, next] + FullPerm) && (!((g1[invRecv43(o_9)] && NoPerm < FullPerm) && qpRange43(o_9)) ==> QPMask[o_9, next] == PostMask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -3574,11 +3574,11 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     // -- Check definedness of (forall n$6: Ref :: { (n$6.next in g1) } { (n$6 in g1), n$6.next } (n$6 in g1) && n$6.next != null ==> (n$6.next in g1))
       if (*) {
         if (g1[n$6_3]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$6.next (delete_edge1.vpr@345.13--345.22) [83767]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$6.next (delete_edge1.vpr@345.13--345.22) [8979]"}
             HasDirectPerm(PostMask, n$6_3, next);
         }
         if (g1[n$6_3] && PostHeap[n$6_3, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$6.next (delete_edge1.vpr@345.13--345.22) [83768]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$6.next (delete_edge1.vpr@345.13--345.22) [8980]"}
             HasDirectPerm(PostMask, n$6_3, next);
         }
         assume false;
@@ -3595,39 +3595,39 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         if (g1[n$7]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@215.74--215.79) [83769]"}
-                (forall n_11_1: Ref ::
-                { PostHeap[n_11_1, next] } { QPMask[n_11_1, next] } { PostHeap[n_11_1, next] }
-                g1[n_11_1] && dummyFunction(PostHeap[n_11_1, next]) ==> 1 / 2 >= NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@215.74--215.79) [8981]"}
+                (forall n_11_2: Ref ::
+                { PostHeap[n_11_2, next] } { QPMask[n_11_2, next] } { PostHeap[n_11_2, next] }
+                g1[n_11_2] && dummyFunction(PostHeap[n_11_2, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@215.74--215.79) [83770]"}
-                (forall n_11_1: Ref, n_11_2: Ref ::
-                { neverTriggered44(n_11_1), neverTriggered44(n_11_2) }
-                (((n_11_1 != n_11_2 && g1[n_11_1]) && g1[n_11_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_11_1 != n_11_2
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@215.74--215.79) [8982]"}
+                (forall n_11_2: Ref, n_11_3: Ref ::
+                { neverTriggered44(n_11_2), neverTriggered44(n_11_3) }
+                (((n_11_2 != n_11_3 && g1[n_11_2]) && g1[n_11_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_11_2 != n_11_3
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@215.74--215.79) [83771]"}
-                (forall n_11_1: Ref ::
-                { PostHeap[n_11_1, next] } { QPMask[n_11_1, next] } { PostHeap[n_11_1, next] }
-                g1[n_11_1] ==> 1 / 2 > NoPerm ==> PostMask[n_11_1, next] > NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@215.74--215.79) [8983]"}
+                (forall n_11_2: Ref ::
+                { PostHeap[n_11_2, next] } { QPMask[n_11_2, next] } { PostHeap[n_11_2, next] }
+                g1[n_11_2] ==> 1 / 2 > NoPerm ==> PostMask[n_11_2, next] > NoPerm
               );
             
             // -- assumptions for inverse of receiver n
-              assume (forall n_11_1: Ref ::
-                { PostHeap[n_11_1, next] } { QPMask[n_11_1, next] } { PostHeap[n_11_1, next] }
-                g1[n_11_1] && NoPerm < 1 / 2 ==> qpRange44(n_11_1) && invRecv44(n_11_1) == n_11_1
+              assume (forall n_11_2: Ref ::
+                { PostHeap[n_11_2, next] } { QPMask[n_11_2, next] } { PostHeap[n_11_2, next] }
+                g1[n_11_2] && NoPerm < 1 / 2 ==> qpRange44(n_11_2) && invRecv44(n_11_2) == n_11_2
               );
-              assume (forall o_4: Ref ::
-                { invRecv44(o_4) }
-                g1[invRecv44(o_4)] && (NoPerm < 1 / 2 && qpRange44(o_4)) ==> invRecv44(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv44(o_9) }
+                g1[invRecv44(o_9)] && (NoPerm < 1 / 2 && qpRange44(o_9)) ==> invRecv44(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -3640,8 +3640,8 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         assume false;
       }
     assume (forall n$7_1: Ref ::
-      { (exists_path($$#frame(FrameFragment($$#condqp1(PostHeap, g1)), g1), x1_2, n$7_1): bool) }
-      g1[n$7_1] ==> (exists_path($$(PostHeap, g1), x1_2, n$7_1): bool)
+      { (exists_path($$#frame(FrameFragment($$#condqp1(PostHeap, g1)), g1), x1, n$7_1): bool) }
+      g1[n$7_1] ==> (exists_path($$(PostHeap, g1), x1, n$7_1): bool)
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -3654,35 +3654,35 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     // -- Check definedness of apply_TCFraming(g0, g1)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@374.12--374.34) [83772]"}
-            (forall n_12_1: Ref, n_12_2: Ref ::
-            { neverTriggered47(n_12_1), neverTriggered47(n_12_2) }
-            (((n_12_1 != n_12_2 && g0[n_12_1]) && g0[n_12_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_12_1 != n_12_2
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@374.12--374.34) [8984]"}
+            (forall n_12: Ref, n_12_1: Ref ::
+            { neverTriggered47(n_12), neverTriggered47(n_12_1) }
+            (((n_12 != n_12_1 && g0[n_12]) && g0[n_12_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_12 != n_12_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@374.12--374.34) [83773]"}
-            (forall n_12_1: Ref ::
-            { Heap[n_12_1, next] } { QPMask[n_12_1, next] } { Heap[n_12_1, next] }
-            g0[n_12_1] ==> FullPerm > NoPerm ==> Mask[n_12_1, next] > NoPerm
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@374.12--374.34) [8985]"}
+            (forall n_12: Ref ::
+            { Heap[n_12, next] } { QPMask[n_12, next] } { Heap[n_12, next] }
+            g0[n_12] ==> FullPerm > NoPerm ==> Mask[n_12, next] > NoPerm
           );
         
         // -- assumptions for inverse of receiver n
-          assume (forall n_12_1: Ref ::
-            { Heap[n_12_1, next] } { QPMask[n_12_1, next] } { Heap[n_12_1, next] }
-            g0[n_12_1] && NoPerm < FullPerm ==> qpRange47(n_12_1) && invRecv47(n_12_1) == n_12_1
+          assume (forall n_12: Ref ::
+            { Heap[n_12, next] } { QPMask[n_12, next] } { Heap[n_12, next] }
+            g0[n_12] && NoPerm < FullPerm ==> qpRange47(n_12) && invRecv47(n_12) == n_12
           );
-          assume (forall o_4: Ref ::
-            { invRecv47(o_4) }
-            g0[invRecv47(o_4)] && (NoPerm < FullPerm && qpRange47(o_4)) ==> invRecv47(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv47(o_9) }
+            g0[invRecv47(o_9)] && (NoPerm < FullPerm && qpRange47(o_9)) ==> invRecv47(o_9) == o_9
           );
         havoc QPMask;
         
@@ -3690,29 +3690,29 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@374.12--374.34) [83774]"}
-            (forall n_13: Ref, n_13_1: Ref ::
-            { neverTriggered48(n_13), neverTriggered48(n_13_1) }
-            (((n_13 != n_13_1 && g1[n_13]) && g1[n_13_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_13 != n_13_1
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@374.12--374.34) [8986]"}
+            (forall n_13_2: Ref, n_13_3: Ref ::
+            { neverTriggered48(n_13_2), neverTriggered48(n_13_3) }
+            (((n_13_2 != n_13_3 && g1[n_13_2]) && g1[n_13_3]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_13_2 != n_13_3
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@374.12--374.34) [83775]"}
-            (forall n_13: Ref ::
-            { Heap[n_13, next] } { QPMask[n_13, next] } { Heap[n_13, next] }
-            g1[n_13] ==> FullPerm > NoPerm ==> Mask[n_13, next] > NoPerm
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@374.12--374.34) [8987]"}
+            (forall n_13_2: Ref ::
+            { Heap[n_13_2, next] } { QPMask[n_13_2, next] } { Heap[n_13_2, next] }
+            g1[n_13_2] ==> FullPerm > NoPerm ==> Mask[n_13_2, next] > NoPerm
           );
         
         // -- assumptions for inverse of receiver n
-          assume (forall n_13: Ref ::
-            { Heap[n_13, next] } { QPMask[n_13, next] } { Heap[n_13, next] }
-            g1[n_13] && NoPerm < FullPerm ==> qpRange48(n_13) && invRecv48(n_13) == n_13
+          assume (forall n_13_2: Ref ::
+            { Heap[n_13_2, next] } { QPMask[n_13_2, next] } { Heap[n_13_2, next] }
+            g1[n_13_2] && NoPerm < FullPerm ==> qpRange48(n_13_2) && invRecv48(n_13_2) == n_13_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv48(o_4) }
-            g1[invRecv48(o_4)] && (NoPerm < FullPerm && qpRange48(o_4)) ==> invRecv48(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv48(o_9) }
+            g1[invRecv48(o_9)] && (NoPerm < FullPerm && qpRange48(o_9)) ==> invRecv48(o_9) == o_9
           );
-        assert {:msg "  Precondition of function apply_TCFraming might not hold. Assertion (g1 intersection g0) == Set[Ref]() might not hold. (delete_edge1.vpr@374.12--374.34) [83776]"}
+        assert {:msg "  Precondition of function apply_TCFraming might not hold. Assertion (g1 intersection g0) == Set[Ref]() might not hold. (delete_edge1.vpr@374.12--374.34) [8988]"}
           Set#Equal(Set#Intersection(g1, g0), (Set#Empty(): Set Ref));
         // Finish exhale
         havoc ExhaleHeap;
@@ -3731,75 +3731,75 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     arg_g := Set#Union(g0, g1);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method unlink might not hold. Assertion (x0 in (g0 union g1)) might not hold. (delete_edge1.vpr@377.5--377.28) [83777]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method unlink might not hold. Assertion (x0 in (g0 union g1)) might not hold. (delete_edge1.vpr@377.5--377.28) [8989]"}
         arg_g[x0];
-      assert {:msg "  The precondition of method unlink might not hold. Assertion !((null in (g0 union g1))) might not hold. (delete_edge1.vpr@377.5--377.28) [83778]"}
+      assert {:msg "  The precondition of method unlink might not hold. Assertion !((null in (g0 union g1))) might not hold. (delete_edge1.vpr@377.5--377.28) [8990]"}
         !arg_g[null];
-      assert {:msg "  The precondition of method unlink might not hold. Assertion (x0 in (g0 union g1)) might not hold. (delete_edge1.vpr@377.5--377.28) [83779]"}
+      assert {:msg "  The precondition of method unlink might not hold. Assertion (x0 in (g0 union g1)) might not hold. (delete_edge1.vpr@377.5--377.28) [8991]"}
         arg_g[x0];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method unlink might not hold. There might be insufficient permission to access x0.next (delete_edge1.vpr@377.5--377.28) [83780]"}
+        assert {:msg "  The precondition of method unlink might not hold. There might be insufficient permission to access x0.next (delete_edge1.vpr@377.5--377.28) [8992]"}
           perm <= Mask[x0, next];
       }
       Mask := Mask[x0, next:=Mask[x0, next] - perm];
       havoc QPMask;
       
       // -- check that the permission amount is positive
-        assert {:msg "  The precondition of method unlink might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@377.5--377.28) [83781]"}
-          (forall n_14: Ref ::
-          { Heap[n_14, next] } { QPMask[n_14, next] } { Heap[n_14, next] }
-          (arg_g[n_14] && n_14 != x0) && dummyFunction(Heap[n_14, next]) ==> 1 / 2 >= NoPerm
+        assert {:msg "  The precondition of method unlink might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@377.5--377.28) [8993]"}
+          (forall n_14_1: Ref ::
+          { Heap[n_14_1, next] } { QPMask[n_14_1, next] } { Heap[n_14_1, next] }
+          (arg_g[n_14_1] && n_14_1 != x0) && dummyFunction(Heap[n_14_1, next]) ==> 1 / 2 >= NoPerm
         );
       
       // -- check if receiver n is injective
-        assert {:msg "  The precondition of method unlink might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@377.5--377.28) [83782]"}
-          (forall n_14: Ref, n_14_1: Ref ::
-          { neverTriggered49(n_14), neverTriggered49(n_14_1) }
-          (((n_14 != n_14_1 && (arg_g[n_14] && n_14 != x0)) && (arg_g[n_14_1] && n_14_1 != x0)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_14 != n_14_1
+        assert {:msg "  The precondition of method unlink might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@377.5--377.28) [8994]"}
+          (forall n_14_1: Ref, n_14_2: Ref ::
+          { neverTriggered49(n_14_1), neverTriggered49(n_14_2) }
+          (((n_14_1 != n_14_2 && (arg_g[n_14_1] && n_14_1 != x0)) && (arg_g[n_14_2] && n_14_2 != x0)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_14_1 != n_14_2
         );
       
       // -- check if sufficient permission is held
-        assert {:msg "  The precondition of method unlink might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@377.5--377.28) [83783]"}
-          (forall n_14: Ref ::
-          { Heap[n_14, next] } { QPMask[n_14, next] } { Heap[n_14, next] }
-          arg_g[n_14] && n_14 != x0 ==> Mask[n_14, next] >= 1 / 2
+        assert {:msg "  The precondition of method unlink might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@377.5--377.28) [8995]"}
+          (forall n_14_1: Ref ::
+          { Heap[n_14_1, next] } { QPMask[n_14_1, next] } { Heap[n_14_1, next] }
+          arg_g[n_14_1] && n_14_1 != x0 ==> Mask[n_14_1, next] >= 1 / 2
         );
       
       // -- assumptions for inverse of receiver n
-        assume (forall n_14: Ref ::
-          { Heap[n_14, next] } { QPMask[n_14, next] } { Heap[n_14, next] }
-          (arg_g[n_14] && n_14 != x0) && NoPerm < 1 / 2 ==> qpRange49(n_14) && invRecv49(n_14) == n_14
+        assume (forall n_14_1: Ref ::
+          { Heap[n_14_1, next] } { QPMask[n_14_1, next] } { Heap[n_14_1, next] }
+          (arg_g[n_14_1] && n_14_1 != x0) && NoPerm < 1 / 2 ==> qpRange49(n_14_1) && invRecv49(n_14_1) == n_14_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv49(o_4) }
-          (arg_g[invRecv49(o_4)] && invRecv49(o_4) != x0) && (NoPerm < 1 / 2 && qpRange49(o_4)) ==> invRecv49(o_4) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv49(o_9) }
+          (arg_g[invRecv49(o_9)] && invRecv49(o_9) != x0) && (NoPerm < 1 / 2 && qpRange49(o_9)) ==> invRecv49(o_9) == o_9
         );
       
       // -- assume permission updates for field next
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, next] }
-          ((arg_g[invRecv49(o_4)] && invRecv49(o_4) != x0) && (NoPerm < 1 / 2 && qpRange49(o_4)) ==> invRecv49(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - 1 / 2) && (!((arg_g[invRecv49(o_4)] && invRecv49(o_4) != x0) && (NoPerm < 1 / 2 && qpRange49(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, next] }
+          ((arg_g[invRecv49(o_9)] && invRecv49(o_9) != x0) && (NoPerm < 1 / 2 && qpRange49(o_9)) ==> invRecv49(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - 1 / 2) && (!((arg_g[invRecv49(o_9)] && invRecv49(o_9) != x0) && (NoPerm < 1 / 2 && qpRange49(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
         );
       
       // -- assume permission updates for independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { QPMask[o_4, f_5] }
-          f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { QPMask[o_9, f_5] }
+          f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       if (*) {
         if (arg_g[n$0_4] && Heap[n$0_4, next] != null) {
-          assert {:msg "  The precondition of method unlink might not hold. Assertion (n$0.next in (g0 union g1)) might not hold. (delete_edge1.vpr@377.5--377.28) [83784]"}
+          assert {:msg "  The precondition of method unlink might not hold. Assertion (n$0.next in (g0 union g1)) might not hold. (delete_edge1.vpr@377.5--377.28) [8996]"}
             arg_g[Heap[n$0_4, next]];
         }
         assume false;
       }
-      assume (forall n$0_5_1: Ref ::
-        { arg_g[Heap[n$0_5_1, next]] } { arg_g[n$0_5_1], Heap[n$0_5_1, next] }
-        arg_g[n$0_5_1] && Heap[n$0_5_1, next] != null ==> arg_g[Heap[n$0_5_1, next]]
+      assume (forall n$0_5_1_1: Ref ::
+        { arg_g[Heap[n$0_5_1_1, next]] } { arg_g[n$0_5_1_1], Heap[n$0_5_1_1, next] }
+        arg_g[n$0_5_1_1] && Heap[n$0_5_1_1, next] != null ==> arg_g[Heap[n$0_5_1_1, next]]
       );
       // Finish exhale
       havoc ExhaleHeap;
@@ -3814,7 +3814,7 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
       Mask := Mask[x0, next:=Mask[x0, next] + perm];
       assume state(Heap, Mask);
       havoc QPMask;
-      assert {:msg "  Method call might fail. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@377.5--377.28) [83785]"}
+      assert {:msg "  Method call might fail. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@377.5--377.28) [8997]"}
         (forall n$1_2: Ref, n$1_2_1: Ref ::
         
         (((n$1_2 != n$1_2_1 && (arg_g[n$1_2] && n$1_2 != x0)) && (arg_g[n$1_2_1] && n$1_2_1 != x0)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$1_2 != n$1_2_1
@@ -3825,12 +3825,12 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
           { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
           (arg_g[n$1_2] && n$1_2 != x0) && NoPerm < 1 / 2 ==> qpRange50(n$1_2) && invRecv50(n$1_2) == n$1_2
         );
-        assume (forall o_4: Ref ::
-          { invRecv50(o_4) }
-          ((arg_g[invRecv50(o_4)] && invRecv50(o_4) != x0) && NoPerm < 1 / 2) && qpRange50(o_4) ==> invRecv50(o_4) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv50(o_9) }
+          ((arg_g[invRecv50(o_9)] && invRecv50(o_9) != x0) && NoPerm < 1 / 2) && qpRange50(o_9) ==> invRecv50(o_9) == o_9
         );
       // Check that permission expression is non-negative for all fields
-      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (delete_edge1.vpr@377.5--377.28) [83786]"}
+      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (delete_edge1.vpr@377.5--377.28) [8998]"}
         (forall n$1_2: Ref ::
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         arg_g[n$1_2] && n$1_2 != x0 ==> 1 / 2 >= NoPerm
@@ -3843,13 +3843,13 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, next] }
-          (((arg_g[invRecv50(o_4)] && invRecv50(o_4) != x0) && NoPerm < 1 / 2) && qpRange50(o_4) ==> (NoPerm < 1 / 2 ==> invRecv50(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + 1 / 2) && (!(((arg_g[invRecv50(o_4)] && invRecv50(o_4) != x0) && NoPerm < 1 / 2) && qpRange50(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, next] }
+          (((arg_g[invRecv50(o_9)] && invRecv50(o_9) != x0) && NoPerm < 1 / 2) && qpRange50(o_9) ==> (NoPerm < 1 / 2 ==> invRecv50(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + 1 / 2) && (!(((arg_g[invRecv50(o_9)] && invRecv50(o_9) != x0) && NoPerm < 1 / 2) && qpRange50(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
@@ -3885,22 +3885,22 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     // -- Check definedness of apply_TCFraming(g0, g1)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@398.12--398.34) [83787]"}
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@398.12--398.34) [8999]"}
             (forall n_15: Ref, n_15_1: Ref ::
             { neverTriggered51(n_15), neverTriggered51(n_15_1) }
             (((n_15 != n_15_1 && g0[n_15]) && g0[n_15_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_15 != n_15_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@398.12--398.34) [83788]"}
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@398.12--398.34) [9000]"}
             (forall n_15: Ref ::
             { Heap[n_15, next] } { QPMask[n_15, next] } { Heap[n_15, next] }
             g0[n_15] ==> FullPerm > NoPerm ==> Mask[n_15, next] > NoPerm
@@ -3911,9 +3911,9 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
             { Heap[n_15, next] } { QPMask[n_15, next] } { Heap[n_15, next] }
             g0[n_15] && NoPerm < FullPerm ==> qpRange51(n_15) && invRecv51(n_15) == n_15
           );
-          assume (forall o_4: Ref ::
-            { invRecv51(o_4) }
-            g0[invRecv51(o_4)] && (NoPerm < FullPerm && qpRange51(o_4)) ==> invRecv51(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv51(o_9) }
+            g0[invRecv51(o_9)] && (NoPerm < FullPerm && qpRange51(o_9)) ==> invRecv51(o_9) == o_9
           );
         havoc QPMask;
         
@@ -3921,29 +3921,29 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@398.12--398.34) [83789]"}
-            (forall n_16: Ref, n_16_1: Ref ::
-            { neverTriggered52(n_16), neverTriggered52(n_16_1) }
-            (((n_16 != n_16_1 && g1[n_16]) && g1[n_16_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_16 != n_16_1
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@398.12--398.34) [9001]"}
+            (forall n_16_1: Ref, n_16_2: Ref ::
+            { neverTriggered52(n_16_1), neverTriggered52(n_16_2) }
+            (((n_16_1 != n_16_2 && g1[n_16_1]) && g1[n_16_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_16_1 != n_16_2
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@398.12--398.34) [83790]"}
-            (forall n_16: Ref ::
-            { Heap[n_16, next] } { QPMask[n_16, next] } { Heap[n_16, next] }
-            g1[n_16] ==> FullPerm > NoPerm ==> Mask[n_16, next] > NoPerm
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@398.12--398.34) [9002]"}
+            (forall n_16_1: Ref ::
+            { Heap[n_16_1, next] } { QPMask[n_16_1, next] } { Heap[n_16_1, next] }
+            g1[n_16_1] ==> FullPerm > NoPerm ==> Mask[n_16_1, next] > NoPerm
           );
         
         // -- assumptions for inverse of receiver n
-          assume (forall n_16: Ref ::
-            { Heap[n_16, next] } { QPMask[n_16, next] } { Heap[n_16, next] }
-            g1[n_16] && NoPerm < FullPerm ==> qpRange52(n_16) && invRecv52(n_16) == n_16
+          assume (forall n_16_1: Ref ::
+            { Heap[n_16_1, next] } { QPMask[n_16_1, next] } { Heap[n_16_1, next] }
+            g1[n_16_1] && NoPerm < FullPerm ==> qpRange52(n_16_1) && invRecv52(n_16_1) == n_16_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv52(o_4) }
-            g1[invRecv52(o_4)] && (NoPerm < FullPerm && qpRange52(o_4)) ==> invRecv52(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv52(o_9) }
+            g1[invRecv52(o_9)] && (NoPerm < FullPerm && qpRange52(o_9)) ==> invRecv52(o_9) == o_9
           );
-        assert {:msg "  Precondition of function apply_TCFraming might not hold. Assertion (g1 intersection g0) == Set[Ref]() might not hold. (delete_edge1.vpr@398.12--398.34) [83791]"}
+        assert {:msg "  Precondition of function apply_TCFraming might not hold. Assertion (g1 intersection g0) == Set[Ref]() might not hold. (delete_edge1.vpr@398.12--398.34) [9003]"}
           Set#Equal(Set#Intersection(g1, g0), (Set#Empty(): Set Ref));
         // Finish exhale
         havoc ExhaleHeap;
@@ -3957,9 +3957,9 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of unjoin might not hold. Assertion !((null in g0)) might not hold. (delete_edge1.vpr@344.13--344.22) [83792]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of unjoin might not hold. Assertion !((null in g0)) might not hold. (delete_edge1.vpr@344.13--344.22) [9004]"}
       !g0[null];
     havoc QPMask;
     
@@ -3967,14 +3967,14 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
       
     
     // -- check if receiver n$3 is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource n$3.next might not be injective. (delete_edge1.vpr@344.13--344.22) [83793]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource n$3.next might not be injective. (delete_edge1.vpr@344.13--344.22) [9005]"}
         (forall n$3_2: Ref, n$3_2_1: Ref ::
         { neverTriggered45(n$3_2), neverTriggered45(n$3_2_1) }
         (((n$3_2 != n$3_2_1 && g0[n$3_2]) && g0[n$3_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$3_2 != n$3_2_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of unjoin might not hold. There might be insufficient permission to access n$3.next (delete_edge1.vpr@344.13--344.22) [83794]"}
+      assert {:msg "  Postcondition of unjoin might not hold. There might be insufficient permission to access n$3.next (delete_edge1.vpr@344.13--344.22) [9006]"}
         (forall n$3_2: Ref ::
         { Heap[n$3_2, next] } { QPMask[n$3_2, next] } { Heap[n$3_2, next] }
         g0[n$3_2] ==> Mask[n$3_2, next] >= FullPerm
@@ -3985,27 +3985,27 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         { Heap[n$3_2, next] } { QPMask[n$3_2, next] } { Heap[n$3_2, next] }
         g0[n$3_2] && NoPerm < FullPerm ==> qpRange45(n$3_2) && invRecv45(n$3_2) == n$3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv45(o_4) }
-        g0[invRecv45(o_4)] && (NoPerm < FullPerm && qpRange45(o_4)) ==> invRecv45(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv45(o_9) }
+        g0[invRecv45(o_9)] && (NoPerm < FullPerm && qpRange45(o_9)) ==> invRecv45(o_9) == o_9
       );
     
     // -- assume permission updates for field next
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (g0[invRecv45(o_4)] && (NoPerm < FullPerm && qpRange45(o_4)) ==> invRecv45(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - FullPerm) && (!(g0[invRecv45(o_4)] && (NoPerm < FullPerm && qpRange45(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (g0[invRecv45(o_9)] && (NoPerm < FullPerm && qpRange45(o_9)) ==> invRecv45(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - FullPerm) && (!(g0[invRecv45(o_9)] && (NoPerm < FullPerm && qpRange45(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (g0[n$4_2_1] && Heap[n$4_2_1, next] != null) {
-        assert {:msg "  Postcondition of unjoin might not hold. Assertion (n$4.next in g0) might not hold. (delete_edge1.vpr@344.13--344.22) [83795]"}
-          g0[Heap[n$4_2_1, next]];
+      if (g0[n$4_2] && Heap[n$4_2, next] != null) {
+        assert {:msg "  Postcondition of unjoin might not hold. Assertion (n$4.next in g0) might not hold. (delete_edge1.vpr@344.13--344.22) [9007]"}
+          g0[Heap[n$4_2, next]];
       }
       assume false;
     }
@@ -4013,7 +4013,7 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
       { g0[Heap[n$4_3_1, next]] } { g0[n$4_3_1], Heap[n$4_3_1, next] }
       g0[n$4_3_1] && Heap[n$4_3_1, next] != null ==> g0[Heap[n$4_3_1, next]]
     );
-    assert {:msg "  Postcondition of unjoin might not hold. Assertion !((null in g1)) might not hold. (delete_edge1.vpr@345.13--345.22) [83796]"}
+    assert {:msg "  Postcondition of unjoin might not hold. Assertion !((null in g1)) might not hold. (delete_edge1.vpr@345.13--345.22) [9008]"}
       !g1[null];
     havoc QPMask;
     
@@ -4021,14 +4021,14 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
       
     
     // -- check if receiver n$5 is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource n$5.next might not be injective. (delete_edge1.vpr@345.13--345.22) [83797]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource n$5.next might not be injective. (delete_edge1.vpr@345.13--345.22) [9009]"}
         (forall n$5_2: Ref, n$5_2_1: Ref ::
         { neverTriggered46(n$5_2), neverTriggered46(n$5_2_1) }
         (((n$5_2 != n$5_2_1 && g1[n$5_2]) && g1[n$5_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$5_2 != n$5_2_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of unjoin might not hold. There might be insufficient permission to access n$5.next (delete_edge1.vpr@345.13--345.22) [83798]"}
+      assert {:msg "  Postcondition of unjoin might not hold. There might be insufficient permission to access n$5.next (delete_edge1.vpr@345.13--345.22) [9010]"}
         (forall n$5_2: Ref ::
         { Heap[n$5_2, next] } { QPMask[n$5_2, next] } { Heap[n$5_2, next] }
         g1[n$5_2] ==> Mask[n$5_2, next] >= FullPerm
@@ -4039,26 +4039,26 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
         { Heap[n$5_2, next] } { QPMask[n$5_2, next] } { Heap[n$5_2, next] }
         g1[n$5_2] && NoPerm < FullPerm ==> qpRange46(n$5_2) && invRecv46(n$5_2) == n$5_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv46(o_4) }
-        g1[invRecv46(o_4)] && (NoPerm < FullPerm && qpRange46(o_4)) ==> invRecv46(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv46(o_9) }
+        g1[invRecv46(o_9)] && (NoPerm < FullPerm && qpRange46(o_9)) ==> invRecv46(o_9) == o_9
       );
     
     // -- assume permission updates for field next
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (g1[invRecv46(o_4)] && (NoPerm < FullPerm && qpRange46(o_4)) ==> invRecv46(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - FullPerm) && (!(g1[invRecv46(o_4)] && (NoPerm < FullPerm && qpRange46(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (g1[invRecv46(o_9)] && (NoPerm < FullPerm && qpRange46(o_9)) ==> invRecv46(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - FullPerm) && (!(g1[invRecv46(o_9)] && (NoPerm < FullPerm && qpRange46(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
       if (g1[n$6_2] && Heap[n$6_2, next] != null) {
-        assert {:msg "  Postcondition of unjoin might not hold. Assertion (n$6.next in g1) might not hold. (delete_edge1.vpr@345.13--345.22) [83799]"}
+        assert {:msg "  Postcondition of unjoin might not hold. Assertion (n$6.next in g1) might not hold. (delete_edge1.vpr@345.13--345.22) [9011]"}
           g1[Heap[n$6_2, next]];
       }
       assume false;
@@ -4069,14 +4069,14 @@ procedure unjoin(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
     );
     if (*) {
       if (g1[n$7_2]) {
-        assert {:msg "  Postcondition of unjoin might not hold. Assertion exists_path($$(g1), x1, n$7) might not hold. (delete_edge1.vpr@347.13--347.34) [83800]"}
-          (exists_path($$(Heap, g1), x1_2, n$7_2): bool);
+        assert {:msg "  Postcondition of unjoin might not hold. Assertion exists_path($$(g1), x1, n$7) might not hold. (delete_edge1.vpr@347.13--347.34) [9012]"}
+          (exists_path($$(Heap, g1), x1, n$7_2): bool);
       }
       assume false;
     }
     assume (forall n$7_3_1: Ref ::
-      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), x1_2, n$7_3_1): bool) }
-      g1[n$7_3_1] ==> (exists_path($$(Heap, g1), x1_2, n$7_3_1): bool)
+      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), x1, n$7_3_1): bool) }
+      g1[n$7_3_1] ==> (exists_path($$(Heap, g1), x1, n$7_3_1): bool)
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -4092,24 +4092,24 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var n$0_31: Ref;
-  var oldHeap: HeapType;
+  var n$0_29: Ref;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var n$2_28: Ref;
-  var n_34: Ref;
-  var ExhaleWellDef0Heap: HeapType;
+  var n$2_22: Ref;
+  var n_54: Ref;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var v1_20: Ref;
-  var v2_20: Ref;
-  var v1_21: Ref;
-  var v2_21: Ref;
-  var n_35: Ref;
-  var n_36: Ref;
-  var u_26: Ref;
-  var v_26: Ref;
+  var v1_9: Ref;
+  var v2_9: Ref;
+  var v1_10: Ref;
+  var v2_10: Ref;
+  var n_55: Ref;
+  var n_56: Ref;
+  var u_25: Ref;
+  var v_25: Ref;
   var n$2_2: Ref;
   var n_20: Ref;
   var v1_4: Ref;
@@ -4136,7 +4136,7 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@448.14--448.22) [83801]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@448.14--448.22) [9013]"}
       (forall n_1: Ref, n_1_1: Ref ::
       
       (((n_1 != n_1_1 && g_1[n_1]) && g_1[n_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_1 != n_1_1
@@ -4147,9 +4147,9 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
         { Heap[n_1, next] } { QPMask[n_1, next] } { Heap[n_1, next] }
         g_1[n_1] && NoPerm < FullPerm ==> qpRange53(n_1) && invRecv53(n_1) == n_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv53(o_4) }
-        (g_1[invRecv53(o_4)] && NoPerm < FullPerm) && qpRange53(o_4) ==> invRecv53(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv53(o_9) }
+        (g_1[invRecv53(o_9)] && NoPerm < FullPerm) && qpRange53(o_9) ==> invRecv53(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -4159,26 +4159,26 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g_1[invRecv53(o_4)] && NoPerm < FullPerm) && qpRange53(o_4) ==> (NoPerm < FullPerm ==> invRecv53(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!((g_1[invRecv53(o_4)] && NoPerm < FullPerm) && qpRange53(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g_1[invRecv53(o_9)] && NoPerm < FullPerm) && qpRange53(o_9) ==> (NoPerm < FullPerm ==> invRecv53(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!((g_1[invRecv53(o_9)] && NoPerm < FullPerm) && qpRange53(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n$0: Ref :: { (n$0.next in g) } { (n$0 in g), n$0.next } (n$0 in g) && n$0.next != null ==> (n$0.next in g))
       if (*) {
-        if (g_1[n$0_31]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@448.14--448.22) [83802]"}
-            HasDirectPerm(Mask, n$0_31, next);
+        if (g_1[n$0_29]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@448.14--448.22) [9014]"}
+            HasDirectPerm(Mask, n$0_29, next);
         }
-        if (g_1[n$0_31] && Heap[n$0_31, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@448.14--448.22) [83803]"}
-            HasDirectPerm(Mask, n$0_31, next);
+        if (g_1[n$0_29] && Heap[n$0_29, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@448.14--448.22) [9015]"}
+            HasDirectPerm(Mask, n$0_29, next);
         }
         assume false;
       }
@@ -4191,8 +4191,8 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4205,7 +4205,7 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@449.13--449.21) [83804]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@449.13--449.21) [9016]"}
       (forall n$1_1: Ref, n$1_1_1: Ref ::
       
       (((n$1_1 != n$1_1_1 && g_1[n$1_1]) && g_1[n$1_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$1_1 != n$1_1_1
@@ -4216,9 +4216,9 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
         { PostHeap[n$1_1, next] } { QPMask[n$1_1, next] } { PostHeap[n$1_1, next] }
         g_1[n$1_1] && NoPerm < FullPerm ==> qpRange54(n$1_1) && invRecv54(n$1_1) == n$1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv54(o_4) }
-        (g_1[invRecv54(o_4)] && NoPerm < FullPerm) && qpRange54(o_4) ==> invRecv54(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv54(o_9) }
+        (g_1[invRecv54(o_9)] && NoPerm < FullPerm) && qpRange54(o_9) ==> invRecv54(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -4228,48 +4228,48 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g_1[invRecv54(o_4)] && NoPerm < FullPerm) && qpRange54(o_4) ==> (NoPerm < FullPerm ==> invRecv54(o_4) == o_4) && QPMask[o_4, next] == PostMask[o_4, next] + FullPerm) && (!((g_1[invRecv54(o_4)] && NoPerm < FullPerm) && qpRange54(o_4)) ==> QPMask[o_4, next] == PostMask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g_1[invRecv54(o_9)] && NoPerm < FullPerm) && qpRange54(o_9) ==> (NoPerm < FullPerm ==> invRecv54(o_9) == o_9) && QPMask[o_9, next] == PostMask[o_9, next] + FullPerm) && (!((g_1[invRecv54(o_9)] && NoPerm < FullPerm) && qpRange54(o_9)) ==> QPMask[o_9, next] == PostMask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall n$2: Ref :: { (n$2.next in g) } { (n$2 in g), n$2.next } (n$2 in g) && n$2.next != null ==> (n$2.next in g))
       if (*) {
-        if (g_1[n$2_28]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@449.13--449.21) [83805]"}
-            HasDirectPerm(PostMask, n$2_28, next);
+        if (g_1[n$2_22]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@449.13--449.21) [9017]"}
+            HasDirectPerm(PostMask, n$2_22, next);
         }
-        if (g_1[n$2_28] && PostHeap[n$2_28, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@449.13--449.21) [83806]"}
-            HasDirectPerm(PostMask, n$2_28, next);
+        if (g_1[n$2_22] && PostHeap[n$2_22, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (delete_edge1.vpr@449.13--449.21) [9018]"}
+            HasDirectPerm(PostMask, n$2_22, next);
         }
         assume false;
       }
-    assume (forall n$2_1_1: Ref ::
-      { g_1[PostHeap[n$2_1_1, next]] } { g_1[n$2_1_1], PostHeap[n$2_1_1, next] }
-      g_1[n$2_1_1] && PostHeap[n$2_1_1, next] != null ==> g_1[PostHeap[n$2_1_1, next]]
+    assume (forall n$2_1: Ref ::
+      { g_1[PostHeap[n$2_1, next]] } { g_1[n$2_1], PostHeap[n$2_1, next] }
+      g_1[n$2_1] && PostHeap[n$2_1, next] != null ==> g_1[PostHeap[n$2_1, next]]
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.next == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@450.13--450.27) [83807]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@450.13--450.27) [9019]"}
         HasDirectPerm(PostMask, x, next);
     assume PostHeap[x, next] == null;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall n: Ref :: { old(n.next) } (n in g) && n != x ==> n.next == old(n.next))
       if (*) {
-        if (g_1[n_34] && n_34 != x) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n.next (delete_edge1.vpr@452.13--452.87) [83808]"}
-            HasDirectPerm(PostMask, n_34, next);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n.next (delete_edge1.vpr@452.13--452.87) [83809]"}
-            HasDirectPerm(oldMask, n_34, next);
+        if (g_1[n_54] && n_54 != x) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n.next (delete_edge1.vpr@452.13--452.87) [9020]"}
+            HasDirectPerm(PostMask, n_54, next);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n.next (delete_edge1.vpr@452.13--452.87) [9021]"}
+            HasDirectPerm(oldMask, n_54, next);
         }
         assume false;
       }
@@ -4280,7 +4280,7 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of old(x.next) == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@453.13--453.56) [83810]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@453.13--453.56) [9022]"}
         HasDirectPerm(oldMask, x, next);
     if (oldHeap[x, next] == null) {
       assume state(PostHeap, PostMask);
@@ -4288,39 +4288,39 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
       // -- Check definedness of $$(g) == old($$(g))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@453.37--453.42) [83811]"}
-              (forall n_4_1: Ref ::
-              { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-              g_1[n_4_1] && dummyFunction(PostHeap[n_4_1, next]) ==> 1 / 2 >= NoPerm
+            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@453.37--453.42) [9023]"}
+              (forall n_4: Ref ::
+              { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+              g_1[n_4] && dummyFunction(PostHeap[n_4, next]) ==> 1 / 2 >= NoPerm
             );
           
           // -- check if receiver n is injective
-            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@453.37--453.42) [83812]"}
-              (forall n_4_1: Ref, n_4_2: Ref ::
-              { neverTriggered55(n_4_1), neverTriggered55(n_4_2) }
-              (((n_4_1 != n_4_2 && g_1[n_4_1]) && g_1[n_4_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_4_1 != n_4_2
+            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@453.37--453.42) [9024]"}
+              (forall n_4: Ref, n_4_1: Ref ::
+              { neverTriggered55(n_4), neverTriggered55(n_4_1) }
+              (((n_4 != n_4_1 && g_1[n_4]) && g_1[n_4_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_4 != n_4_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@453.37--453.42) [83813]"}
-              (forall n_4_1: Ref ::
-              { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-              g_1[n_4_1] ==> 1 / 2 > NoPerm ==> PostMask[n_4_1, next] > NoPerm
+            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@453.37--453.42) [9025]"}
+              (forall n_4: Ref ::
+              { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+              g_1[n_4] ==> 1 / 2 > NoPerm ==> PostMask[n_4, next] > NoPerm
             );
           
           // -- assumptions for inverse of receiver n
-            assume (forall n_4_1: Ref ::
-              { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-              g_1[n_4_1] && NoPerm < 1 / 2 ==> qpRange55(n_4_1) && invRecv55(n_4_1) == n_4_1
+            assume (forall n_4: Ref ::
+              { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+              g_1[n_4] && NoPerm < 1 / 2 ==> qpRange55(n_4) && invRecv55(n_4) == n_4
             );
-            assume (forall o_4: Ref ::
-              { invRecv55(o_4) }
-              g_1[invRecv55(o_4)] && (NoPerm < 1 / 2 && qpRange55(o_4)) ==> invRecv55(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv55(o_9) }
+              g_1[invRecv55(o_9)] && (NoPerm < 1 / 2 && qpRange55(o_9)) ==> invRecv55(o_9) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -4331,26 +4331,26 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := oldHeap;
           ExhaleWellDef0Mask := oldMask;
+          ExhaleWellDef0Heap := oldHeap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@453.50--453.55) [83814]"}
+            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@453.50--453.55) [9026]"}
               (forall n_5: Ref ::
               { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
               g_1[n_5] && dummyFunction(oldHeap[n_5, next]) ==> 1 / 2 >= NoPerm
             );
           
           // -- check if receiver n is injective
-            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@453.50--453.55) [83815]"}
+            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@453.50--453.55) [9027]"}
               (forall n_5: Ref, n_5_1: Ref ::
               { neverTriggered56(n_5), neverTriggered56(n_5_1) }
               (((n_5 != n_5_1 && g_1[n_5]) && g_1[n_5_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_5 != n_5_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@453.50--453.55) [83816]"}
+            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@453.50--453.55) [9028]"}
               (forall n_5: Ref ::
               { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
               g_1[n_5] ==> 1 / 2 > NoPerm ==> oldMask[n_5, next] > NoPerm
@@ -4361,9 +4361,9 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
               { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
               g_1[n_5] && NoPerm < 1 / 2 ==> qpRange56(n_5) && invRecv56(n_5) == n_5
             );
-            assume (forall o_4: Ref ::
-              { invRecv56(o_4) }
-              g_1[invRecv56(o_4)] && (NoPerm < 1 / 2 && qpRange56(o_4)) ==> invRecv56(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv56(o_9) }
+              g_1[invRecv56(o_9)] && (NoPerm < 1 / 2 && qpRange56(o_9)) ==> invRecv56(o_9) == o_9
             );
           // Finish exhale
           // Stop execution
@@ -4374,7 +4374,7 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of old(x.next) != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@454.13--456.89) [83817]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@454.13--456.89) [9029]"}
         HasDirectPerm(oldMask, x, next);
     if (oldHeap[x, next] != null) {
       assume state(PostHeap, PostMask);
@@ -4383,26 +4383,26 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
         if (*) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@456.18--456.23) [83818]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@456.18--456.23) [9030]"}
                 (forall n_6: Ref ::
                 { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
                 g_1[n_6] && dummyFunction(PostHeap[n_6, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@456.18--456.23) [83819]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@456.18--456.23) [9031]"}
                 (forall n_6: Ref, n_6_1: Ref ::
                 { neverTriggered57(n_6), neverTriggered57(n_6_1) }
                 (((n_6 != n_6_1 && g_1[n_6]) && g_1[n_6_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_6 != n_6_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@456.18--456.23) [83820]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@456.18--456.23) [9032]"}
                 (forall n_6: Ref ::
                 { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
                 g_1[n_6] ==> 1 / 2 > NoPerm ==> PostMask[n_6, next] > NoPerm
@@ -4413,9 +4413,9 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                 { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
                 g_1[n_6] && NoPerm < 1 / 2 ==> qpRange57(n_6) && invRecv57(n_6) == n_6
               );
-              assume (forall o_4: Ref ::
-                { invRecv57(o_4) }
-                g_1[invRecv57(o_4)] && (NoPerm < 1 / 2 && qpRange57(o_4)) ==> invRecv57(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv57(o_9) }
+                g_1[invRecv57(o_9)] && (NoPerm < 1 / 2 && qpRange57(o_9)) ==> invRecv57(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -4426,26 +4426,26 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@456.45--456.50) [83821]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@456.45--456.50) [9033]"}
                 (forall n_7: Ref ::
                 { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
                 g_1[n_7] && dummyFunction(oldHeap[n_7, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@456.45--456.50) [83822]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@456.45--456.50) [9034]"}
                 (forall n_7: Ref, n_7_1: Ref ::
                 { neverTriggered58(n_7), neverTriggered58(n_7_1) }
                 (((n_7 != n_7_1 && g_1[n_7]) && g_1[n_7_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_7 != n_7_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@456.45--456.50) [83823]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@456.45--456.50) [9035]"}
                 (forall n_7: Ref ::
                 { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
                 g_1[n_7] ==> 1 / 2 > NoPerm ==> oldMask[n_7, next] > NoPerm
@@ -4456,17 +4456,17 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                 { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
                 g_1[n_7] && NoPerm < 1 / 2 ==> qpRange58(n_7) && invRecv58(n_7) == n_7
               );
-              assume (forall o_4: Ref ::
-                { invRecv58(o_4) }
-                g_1[invRecv58(o_4)] && (NoPerm < 1 / 2 && qpRange58(o_4)) ==> invRecv58(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv58(o_9) }
+                g_1[invRecv58(o_9)] && (NoPerm < 1 / 2 && qpRange58(o_9)) ==> invRecv58(o_9) == o_9
               );
             // Finish exhale
             // Stop execution
             assume false;
           }
-          if ((edge($$(oldHeap, g_1), v1_20, v2_20): bool)) {
-            if (v1_20 == x) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@454.13--456.89) [83824]"}
+          if ((edge($$(oldHeap, g_1), v1_9, v2_9): bool)) {
+            if (v1_9 == x) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@454.13--456.89) [9036]"}
                 HasDirectPerm(oldMask, x, next);
             }
           }
@@ -4480,7 +4480,7 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of old(x.next) != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [83825]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [9037]"}
         HasDirectPerm(oldMask, x, next);
     if (oldHeap[x, next] != null) {
       assume state(PostHeap, PostMask);
@@ -4489,26 +4489,26 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
         if (*) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@460.27--460.32) [83826]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@460.27--460.32) [9038]"}
                 (forall n_8: Ref ::
                 { PostHeap[n_8, next] } { QPMask[n_8, next] } { PostHeap[n_8, next] }
                 g_1[n_8] && dummyFunction(PostHeap[n_8, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@460.27--460.32) [83827]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@460.27--460.32) [9039]"}
                 (forall n_8: Ref, n_8_1: Ref ::
                 { neverTriggered59(n_8), neverTriggered59(n_8_1) }
                 (((n_8 != n_8_1 && g_1[n_8]) && g_1[n_8_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_8 != n_8_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@460.27--460.32) [83828]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@460.27--460.32) [9040]"}
                 (forall n_8: Ref ::
                 { PostHeap[n_8, next] } { QPMask[n_8, next] } { PostHeap[n_8, next] }
                 g_1[n_8] ==> 1 / 2 > NoPerm ==> PostMask[n_8, next] > NoPerm
@@ -4519,9 +4519,9 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                 { PostHeap[n_8, next] } { QPMask[n_8, next] } { PostHeap[n_8, next] }
                 g_1[n_8] && NoPerm < 1 / 2 ==> qpRange59(n_8) && invRecv59(n_8) == n_8
               );
-              assume (forall o_4: Ref ::
-                { invRecv59(o_4) }
-                g_1[invRecv59(o_4)] && (NoPerm < 1 / 2 && qpRange59(o_4)) ==> invRecv59(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv59(o_9) }
+                g_1[invRecv59(o_9)] && (NoPerm < 1 / 2 && qpRange59(o_9)) ==> invRecv59(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -4530,113 +4530,113 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
             // Stop execution
             assume false;
           }
-          if (!(v1_21 == v2_21)) {
-            if (v1_21 != v2_21) {
+          if (!(v1_10 == v2_10)) {
+            if (v1_10 != v2_10) {
               if (*) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
+                  ExhaleWellDef0Heap := oldHeap;
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.51--461.56) [83829]"}
-                      (forall n$0_2_1: Ref ::
-                      { oldHeap[n$0_2_1, next] } { QPMask[n$0_2_1, next] } { oldHeap[n$0_2_1, next] }
-                      g_1[n$0_2_1] && dummyFunction(oldHeap[n$0_2_1, next]) ==> 1 / 2 >= NoPerm
+                    assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.51--461.56) [9041]"}
+                      (forall n$0_2: Ref ::
+                      { oldHeap[n$0_2, next] } { QPMask[n$0_2, next] } { oldHeap[n$0_2, next] }
+                      g_1[n$0_2] && dummyFunction(oldHeap[n$0_2, next]) ==> 1 / 2 >= NoPerm
                     );
                   
                   // -- check if receiver n$0 is injective
-                    assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.51--461.56) [83830]"}
-                      (forall n$0_2_1: Ref, n$0_2_2: Ref ::
-                      { neverTriggered60(n$0_2_1), neverTriggered60(n$0_2_2) }
-                      (((n$0_2_1 != n$0_2_2 && g_1[n$0_2_1]) && g_1[n$0_2_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_2_1 != n$0_2_2
+                    assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.51--461.56) [9042]"}
+                      (forall n$0_2: Ref, n$0_2_1: Ref ::
+                      { neverTriggered60(n$0_2), neverTriggered60(n$0_2_1) }
+                      (((n$0_2 != n$0_2_1 && g_1[n$0_2]) && g_1[n$0_2_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_2 != n$0_2_1
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.51--461.56) [83831]"}
-                      (forall n$0_2_1: Ref ::
-                      { oldHeap[n$0_2_1, next] } { QPMask[n$0_2_1, next] } { oldHeap[n$0_2_1, next] }
-                      g_1[n$0_2_1] ==> 1 / 2 > NoPerm ==> oldMask[n$0_2_1, next] > NoPerm
+                    assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.51--461.56) [9043]"}
+                      (forall n$0_2: Ref ::
+                      { oldHeap[n$0_2, next] } { QPMask[n$0_2, next] } { oldHeap[n$0_2, next] }
+                      g_1[n$0_2] ==> 1 / 2 > NoPerm ==> oldMask[n$0_2, next] > NoPerm
                     );
                   
                   // -- assumptions for inverse of receiver n$0
-                    assume (forall n$0_2_1: Ref ::
-                      { oldHeap[n$0_2_1, next] } { QPMask[n$0_2_1, next] } { oldHeap[n$0_2_1, next] }
-                      g_1[n$0_2_1] && NoPerm < 1 / 2 ==> qpRange60(n$0_2_1) && invRecv60(n$0_2_1) == n$0_2_1
+                    assume (forall n$0_2: Ref ::
+                      { oldHeap[n$0_2, next] } { QPMask[n$0_2, next] } { oldHeap[n$0_2, next] }
+                      g_1[n$0_2] && NoPerm < 1 / 2 ==> qpRange60(n$0_2) && invRecv60(n$0_2) == n$0_2
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv60(o_4) }
-                      g_1[invRecv60(o_4)] && (NoPerm < 1 / 2 && qpRange60(o_4)) ==> invRecv60(o_4) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv60(o_9) }
+                      g_1[invRecv60(o_9)] && (NoPerm < 1 / 2 && qpRange60(o_9)) ==> invRecv60(o_9) == o_9
                     );
                   // Finish exhale
                   // Stop execution
                   assume false;
                 }
-                if ((exists_path($$(oldHeap, g_1), v1_21, n_35): bool)) {
+                if ((exists_path($$(oldHeap, g_1), v1_10, n_55): bool)) {
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := oldHeap;
                     ExhaleWellDef0Mask := oldMask;
+                    ExhaleWellDef0Heap := oldHeap;
                     havoc QPMask;
                     
                     // -- check that the permission amount is positive
-                      assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.83--461.88) [83832]"}
-                        (forall n$0_3_2: Ref ::
-                        { oldHeap[n$0_3_2, next] } { QPMask[n$0_3_2, next] } { oldHeap[n$0_3_2, next] }
-                        g_1[n$0_3_2] && dummyFunction(oldHeap[n$0_3_2, next]) ==> 1 / 2 >= NoPerm
+                      assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.83--461.88) [9044]"}
+                        (forall n$0_3: Ref ::
+                        { oldHeap[n$0_3, next] } { QPMask[n$0_3, next] } { oldHeap[n$0_3, next] }
+                        g_1[n$0_3] && dummyFunction(oldHeap[n$0_3, next]) ==> 1 / 2 >= NoPerm
                       );
                     
                     // -- check if receiver n$0 is injective
-                      assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.83--461.88) [83833]"}
-                        (forall n$0_3_2: Ref, n$0_3_3: Ref ::
-                        { neverTriggered61(n$0_3_2), neverTriggered61(n$0_3_3) }
-                        (((n$0_3_2 != n$0_3_3 && g_1[n$0_3_2]) && g_1[n$0_3_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_3_2 != n$0_3_3
+                      assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.83--461.88) [9045]"}
+                        (forall n$0_3: Ref, n$0_3_1: Ref ::
+                        { neverTriggered61(n$0_3), neverTriggered61(n$0_3_1) }
+                        (((n$0_3 != n$0_3_1 && g_1[n$0_3]) && g_1[n$0_3_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_3 != n$0_3_1
                       );
                     
                     // -- check if sufficient permission is held
-                      assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.83--461.88) [83834]"}
-                        (forall n$0_3_2: Ref ::
-                        { oldHeap[n$0_3_2, next] } { QPMask[n$0_3_2, next] } { oldHeap[n$0_3_2, next] }
-                        g_1[n$0_3_2] ==> 1 / 2 > NoPerm ==> oldMask[n$0_3_2, next] > NoPerm
+                      assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.83--461.88) [9046]"}
+                        (forall n$0_3: Ref ::
+                        { oldHeap[n$0_3, next] } { QPMask[n$0_3, next] } { oldHeap[n$0_3, next] }
+                        g_1[n$0_3] ==> 1 / 2 > NoPerm ==> oldMask[n$0_3, next] > NoPerm
                       );
                     
                     // -- assumptions for inverse of receiver n$0
-                      assume (forall n$0_3_2: Ref ::
-                        { oldHeap[n$0_3_2, next] } { QPMask[n$0_3_2, next] } { oldHeap[n$0_3_2, next] }
-                        g_1[n$0_3_2] && NoPerm < 1 / 2 ==> qpRange61(n$0_3_2) && invRecv61(n$0_3_2) == n$0_3_2
+                      assume (forall n$0_3: Ref ::
+                        { oldHeap[n$0_3, next] } { QPMask[n$0_3, next] } { oldHeap[n$0_3, next] }
+                        g_1[n$0_3] && NoPerm < 1 / 2 ==> qpRange61(n$0_3) && invRecv61(n$0_3) == n$0_3
                       );
-                      assume (forall o_4: Ref ::
-                        { invRecv61(o_4) }
-                        g_1[invRecv61(o_4)] && (NoPerm < 1 / 2 && qpRange61(o_4)) ==> invRecv61(o_4) == o_4
+                      assume (forall o_9: Ref ::
+                        { invRecv61(o_9) }
+                        g_1[invRecv61(o_9)] && (NoPerm < 1 / 2 && qpRange61(o_9)) ==> invRecv61(o_9) == o_9
                       );
                     // Finish exhale
                     // Stop execution
                     assume false;
                   }
-                  if ((exists_path($$(oldHeap, g_1), n_35, v2_21): bool)) {
+                  if ((exists_path($$(oldHeap, g_1), n_55, v2_10): bool)) {
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Heap := oldHeap;
                       ExhaleWellDef0Mask := oldMask;
+                      ExhaleWellDef0Heap := oldHeap;
                       havoc QPMask;
                       
                       // -- check that the permission amount is positive
-                        assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.118--461.123) [83835]"}
+                        assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.118--461.123) [9047]"}
                           (forall n$0_4: Ref ::
                           { oldHeap[n$0_4, next] } { QPMask[n$0_4, next] } { oldHeap[n$0_4, next] }
                           g_1[n$0_4] && dummyFunction(oldHeap[n$0_4, next]) ==> 1 / 2 >= NoPerm
                         );
                       
                       // -- check if receiver n$0 is injective
-                        assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.118--461.123) [83836]"}
+                        assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.118--461.123) [9048]"}
                           (forall n$0_4: Ref, n$0_4_1: Ref ::
                           { neverTriggered62(n$0_4), neverTriggered62(n$0_4_1) }
                           (((n$0_4 != n$0_4_1 && g_1[n$0_4]) && g_1[n$0_4_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_4 != n$0_4_1
                         );
                       
                       // -- check if sufficient permission is held
-                        assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.118--461.123) [83837]"}
+                        assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.118--461.123) [9049]"}
                           (forall n$0_4: Ref ::
                           { oldHeap[n$0_4, next] } { QPMask[n$0_4, next] } { oldHeap[n$0_4, next] }
                           g_1[n$0_4] ==> 1 / 2 > NoPerm ==> oldMask[n$0_4, next] > NoPerm
@@ -4647,37 +4647,37 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                           { oldHeap[n$0_4, next] } { QPMask[n$0_4, next] } { oldHeap[n$0_4, next] }
                           g_1[n$0_4] && NoPerm < 1 / 2 ==> qpRange62(n$0_4) && invRecv62(n$0_4) == n$0_4
                         );
-                        assume (forall o_4: Ref ::
-                          { invRecv62(o_4) }
-                          g_1[invRecv62(o_4)] && (NoPerm < 1 / 2 && qpRange62(o_4)) ==> invRecv62(o_4) == o_4
+                        assume (forall o_9: Ref ::
+                          { invRecv62(o_9) }
+                          g_1[invRecv62(o_9)] && (NoPerm < 1 / 2 && qpRange62(o_9)) ==> invRecv62(o_9) == o_9
                         );
                       // Finish exhale
                       // Stop execution
                       assume false;
                     }
-                    if (!(exists_path($$(oldHeap, g_1), n_35, x): bool)) {
+                    if (!(exists_path($$(oldHeap, g_1), n_55, x): bool)) {
                       if (*) {
                         // Exhale precondition of function application
-                        ExhaleWellDef0Heap := oldHeap;
                         ExhaleWellDef0Mask := oldMask;
+                        ExhaleWellDef0Heap := oldHeap;
                         havoc QPMask;
                         
                         // -- check that the permission amount is positive
-                          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.150--461.155) [83838]"}
+                          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.150--461.155) [9050]"}
                             (forall n$0_5: Ref ::
                             { oldHeap[n$0_5, next] } { QPMask[n$0_5, next] } { oldHeap[n$0_5, next] }
                             g_1[n$0_5] && dummyFunction(oldHeap[n$0_5, next]) ==> 1 / 2 >= NoPerm
                           );
                         
                         // -- check if receiver n$0 is injective
-                          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.150--461.155) [83839]"}
-                            (forall n$0_5: Ref, n$0_5_2: Ref ::
-                            { neverTriggered63(n$0_5), neverTriggered63(n$0_5_2) }
-                            (((n$0_5 != n$0_5_2 && g_1[n$0_5]) && g_1[n$0_5_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_5 != n$0_5_2
+                          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.150--461.155) [9051]"}
+                            (forall n$0_5: Ref, n$0_5_1: Ref ::
+                            { neverTriggered63(n$0_5), neverTriggered63(n$0_5_1) }
+                            (((n$0_5 != n$0_5_1 && g_1[n$0_5]) && g_1[n$0_5_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_5 != n$0_5_1
                           );
                         
                         // -- check if sufficient permission is held
-                          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.150--461.155) [83840]"}
+                          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.150--461.155) [9052]"}
                             (forall n$0_5: Ref ::
                             { oldHeap[n$0_5, next] } { QPMask[n$0_5, next] } { oldHeap[n$0_5, next] }
                             g_1[n$0_5] ==> 1 / 2 > NoPerm ==> oldMask[n$0_5, next] > NoPerm
@@ -4688,38 +4688,38 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                             { oldHeap[n$0_5, next] } { QPMask[n$0_5, next] } { oldHeap[n$0_5, next] }
                             g_1[n$0_5] && NoPerm < 1 / 2 ==> qpRange63(n$0_5) && invRecv63(n$0_5) == n$0_5
                           );
-                          assume (forall o_4: Ref ::
-                            { invRecv63(o_4) }
-                            g_1[invRecv63(o_4)] && (NoPerm < 1 / 2 && qpRange63(o_4)) ==> invRecv63(o_4) == o_4
+                          assume (forall o_9: Ref ::
+                            { invRecv63(o_9) }
+                            g_1[invRecv63(o_9)] && (NoPerm < 1 / 2 && qpRange63(o_9)) ==> invRecv63(o_9) == o_9
                           );
                         // Finish exhale
                         // Stop execution
                         assume false;
                       }
                     }
-                    if (!(!(exists_path($$(oldHeap, g_1), n_35, x): bool) && !(exists_path($$(oldHeap, g_1), x, n_35): bool))) {
+                    if (!(!(exists_path($$(oldHeap, g_1), n_55, x): bool) && !(exists_path($$(oldHeap, g_1), x, n_55): bool))) {
                       if (*) {
                         // Exhale precondition of function application
-                        ExhaleWellDef0Heap := oldHeap;
                         ExhaleWellDef0Mask := oldMask;
+                        ExhaleWellDef0Heap := oldHeap;
                         havoc QPMask;
                         
                         // -- check that the permission amount is positive
-                          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.182--461.187) [83841]"}
+                          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.182--461.187) [9053]"}
                             (forall n$0_6: Ref ::
                             { oldHeap[n$0_6, next] } { QPMask[n$0_6, next] } { oldHeap[n$0_6, next] }
                             g_1[n$0_6] && dummyFunction(oldHeap[n$0_6, next]) ==> 1 / 2 >= NoPerm
                           );
                         
                         // -- check if receiver n$0 is injective
-                          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.182--461.187) [83842]"}
+                          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.182--461.187) [9054]"}
                             (forall n$0_6: Ref, n$0_6_1: Ref ::
                             { neverTriggered64(n$0_6), neverTriggered64(n$0_6_1) }
                             (((n$0_6 != n$0_6_1 && g_1[n$0_6]) && g_1[n$0_6_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_6 != n$0_6_1
                           );
                         
                         // -- check if sufficient permission is held
-                          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.182--461.187) [83843]"}
+                          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.182--461.187) [9055]"}
                             (forall n$0_6: Ref ::
                             { oldHeap[n$0_6, next] } { QPMask[n$0_6, next] } { oldHeap[n$0_6, next] }
                             g_1[n$0_6] ==> 1 / 2 > NoPerm ==> oldMask[n$0_6, next] > NoPerm
@@ -4730,39 +4730,39 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                             { oldHeap[n$0_6, next] } { QPMask[n$0_6, next] } { oldHeap[n$0_6, next] }
                             g_1[n$0_6] && NoPerm < 1 / 2 ==> qpRange64(n$0_6) && invRecv64(n$0_6) == n$0_6
                           );
-                          assume (forall o_4: Ref ::
-                            { invRecv64(o_4) }
-                            g_1[invRecv64(o_4)] && (NoPerm < 1 / 2 && qpRange64(o_4)) ==> invRecv64(o_4) == o_4
+                          assume (forall o_9: Ref ::
+                            { invRecv64(o_9) }
+                            g_1[invRecv64(o_9)] && (NoPerm < 1 / 2 && qpRange64(o_9)) ==> invRecv64(o_9) == o_9
                           );
                         // Finish exhale
                         // Stop execution
                         assume false;
                       }
-                      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [83844]"}
+                      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [9056]"}
                         HasDirectPerm(oldMask, x, next);
-                      if (!(exists_path($$(oldHeap, g_1), n_35, oldHeap[x, next]): bool)) {
+                      if (!(exists_path($$(oldHeap, g_1), n_55, oldHeap[x, next]): bool)) {
                         if (*) {
                           // Exhale precondition of function application
-                          ExhaleWellDef0Heap := oldHeap;
                           ExhaleWellDef0Mask := oldMask;
+                          ExhaleWellDef0Heap := oldHeap;
                           havoc QPMask;
                           
                           // -- check that the permission amount is positive
-                            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.224--461.229) [83845]"}
+                            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@461.224--461.229) [9057]"}
                               (forall n$0_7: Ref ::
                               { oldHeap[n$0_7, next] } { QPMask[n$0_7, next] } { oldHeap[n$0_7, next] }
                               g_1[n$0_7] && dummyFunction(oldHeap[n$0_7, next]) ==> 1 / 2 >= NoPerm
                             );
                           
                           // -- check if receiver n$0 is injective
-                            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.224--461.229) [83846]"}
-                              (forall n$0_7: Ref, n$0_7_2: Ref ::
-                              { neverTriggered65(n$0_7), neverTriggered65(n$0_7_2) }
-                              (((n$0_7 != n$0_7_2 && g_1[n$0_7]) && g_1[n$0_7_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_7 != n$0_7_2
+                            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@461.224--461.229) [9058]"}
+                              (forall n$0_7: Ref, n$0_7_1: Ref ::
+                              { neverTriggered65(n$0_7), neverTriggered65(n$0_7_1) }
+                              (((n$0_7 != n$0_7_1 && g_1[n$0_7]) && g_1[n$0_7_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_7 != n$0_7_1
                             );
                           
                           // -- check if sufficient permission is held
-                            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.224--461.229) [83847]"}
+                            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@461.224--461.229) [9059]"}
                               (forall n$0_7: Ref ::
                               { oldHeap[n$0_7, next] } { QPMask[n$0_7, next] } { oldHeap[n$0_7, next] }
                               g_1[n$0_7] ==> 1 / 2 > NoPerm ==> oldMask[n$0_7, next] > NoPerm
@@ -4773,15 +4773,15 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                               { oldHeap[n$0_7, next] } { QPMask[n$0_7, next] } { oldHeap[n$0_7, next] }
                               g_1[n$0_7] && NoPerm < 1 / 2 ==> qpRange65(n$0_7) && invRecv65(n$0_7) == n$0_7
                             );
-                            assume (forall o_4: Ref ::
-                              { invRecv65(o_4) }
-                              g_1[invRecv65(o_4)] && (NoPerm < 1 / 2 && qpRange65(o_4)) ==> invRecv65(o_4) == o_4
+                            assume (forall o_9: Ref ::
+                              { invRecv65(o_9) }
+                              g_1[invRecv65(o_9)] && (NoPerm < 1 / 2 && qpRange65(o_9)) ==> invRecv65(o_9) == o_9
                             );
                           // Finish exhale
                           // Stop execution
                           assume false;
                         }
-                        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [83848]"}
+                        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [9060]"}
                           HasDirectPerm(oldMask, x, next);
                       }
                     }
@@ -4790,36 +4790,36 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                 assume false;
               }
               if (!(exists n_10_1: Ref ::
-                { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_21, n_10_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_10_1, v2_21): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_10_1, x): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), x, n_10_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_10_1, oldHeap[x, next]): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], n_10_1): bool) }
-                (exists_path($$(oldHeap, g_1), v1_21, n_10_1): bool) && ((exists_path($$(oldHeap, g_1), n_10_1, v2_21): bool) && ((!(exists_path($$(oldHeap, g_1), n_10_1, x): bool) && !(exists_path($$(oldHeap, g_1), x, n_10_1): bool)) || (!(exists_path($$(oldHeap, g_1), n_10_1, oldHeap[x, next]): bool) && !(exists_path($$(oldHeap, g_1), oldHeap[x, next], n_10_1): bool))))
+                { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_10, n_10_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_10_1, v2_10): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_10_1, x): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), x, n_10_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_10_1, oldHeap[x, next]): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], n_10_1): bool) }
+                (exists_path($$(oldHeap, g_1), v1_10, n_10_1): bool) && ((exists_path($$(oldHeap, g_1), n_10_1, v2_10): bool) && ((!(exists_path($$(oldHeap, g_1), n_10_1, x): bool) && !(exists_path($$(oldHeap, g_1), x, n_10_1): bool)) || (!(exists_path($$(oldHeap, g_1), n_10_1, oldHeap[x, next]): bool) && !(exists_path($$(oldHeap, g_1), oldHeap[x, next], n_10_1): bool))))
               )) {
                 if (*) {
-                  if (n_36 != x) {
-                    assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [83849]"}
+                  if (n_56 != x) {
+                    assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [9061]"}
                       HasDirectPerm(oldMask, x, next);
-                    if (n_36 != oldHeap[x, next]) {
+                    if (n_56 != oldHeap[x, next]) {
                       if (*) {
                         // Exhale precondition of function application
-                        ExhaleWellDef0Heap := oldHeap;
                         ExhaleWellDef0Mask := oldMask;
+                        ExhaleWellDef0Heap := oldHeap;
                         havoc QPMask;
                         
                         // -- check that the permission amount is positive
-                          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@463.81--463.86) [83850]"}
+                          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@463.81--463.86) [9062]"}
                             (forall n$0_8: Ref ::
                             { oldHeap[n$0_8, next] } { QPMask[n$0_8, next] } { oldHeap[n$0_8, next] }
                             g_1[n$0_8] && dummyFunction(oldHeap[n$0_8, next]) ==> 1 / 2 >= NoPerm
                           );
                         
                         // -- check if receiver n$0 is injective
-                          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@463.81--463.86) [83851]"}
+                          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@463.81--463.86) [9063]"}
                             (forall n$0_8: Ref, n$0_8_1: Ref ::
                             { neverTriggered66(n$0_8), neverTriggered66(n$0_8_1) }
                             (((n$0_8 != n$0_8_1 && g_1[n$0_8]) && g_1[n$0_8_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_8 != n$0_8_1
                           );
                         
                         // -- check if sufficient permission is held
-                          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@463.81--463.86) [83852]"}
+                          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@463.81--463.86) [9064]"}
                             (forall n$0_8: Ref ::
                             { oldHeap[n$0_8, next] } { QPMask[n$0_8, next] } { oldHeap[n$0_8, next] }
                             g_1[n$0_8] ==> 1 / 2 > NoPerm ==> oldMask[n$0_8, next] > NoPerm
@@ -4830,37 +4830,37 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                             { oldHeap[n$0_8, next] } { QPMask[n$0_8, next] } { oldHeap[n$0_8, next] }
                             g_1[n$0_8] && NoPerm < 1 / 2 ==> qpRange66(n$0_8) && invRecv66(n$0_8) == n$0_8
                           );
-                          assume (forall o_4: Ref ::
-                            { invRecv66(o_4) }
-                            g_1[invRecv66(o_4)] && (NoPerm < 1 / 2 && qpRange66(o_4)) ==> invRecv66(o_4) == o_4
+                          assume (forall o_9: Ref ::
+                            { invRecv66(o_9) }
+                            g_1[invRecv66(o_9)] && (NoPerm < 1 / 2 && qpRange66(o_9)) ==> invRecv66(o_9) == o_9
                           );
                         // Finish exhale
                         // Stop execution
                         assume false;
                       }
-                      if ((exists_path($$(oldHeap, g_1), x, n_36): bool)) {
+                      if ((exists_path($$(oldHeap, g_1), x, n_56): bool)) {
                         if (*) {
                           // Exhale precondition of function application
-                          ExhaleWellDef0Heap := oldHeap;
                           ExhaleWellDef0Mask := oldMask;
+                          ExhaleWellDef0Heap := oldHeap;
                           havoc QPMask;
                           
                           // -- check that the permission amount is positive
-                            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@463.112--463.117) [83853]"}
+                            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@463.112--463.117) [9065]"}
                               (forall n$0_9: Ref ::
                               { oldHeap[n$0_9, next] } { QPMask[n$0_9, next] } { oldHeap[n$0_9, next] }
                               g_1[n$0_9] && dummyFunction(oldHeap[n$0_9, next]) ==> 1 / 2 >= NoPerm
                             );
                           
                           // -- check if receiver n$0 is injective
-                            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@463.112--463.117) [83854]"}
-                              (forall n$0_9: Ref, n$0_9_2: Ref ::
-                              { neverTriggered67(n$0_9), neverTriggered67(n$0_9_2) }
-                              (((n$0_9 != n$0_9_2 && g_1[n$0_9]) && g_1[n$0_9_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_9 != n$0_9_2
+                            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@463.112--463.117) [9066]"}
+                              (forall n$0_9: Ref, n$0_9_1: Ref ::
+                              { neverTriggered67(n$0_9), neverTriggered67(n$0_9_1) }
+                              (((n$0_9 != n$0_9_1 && g_1[n$0_9]) && g_1[n$0_9_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_9 != n$0_9_1
                             );
                           
                           // -- check if sufficient permission is held
-                            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@463.112--463.117) [83855]"}
+                            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@463.112--463.117) [9067]"}
                               (forall n$0_9: Ref ::
                               { oldHeap[n$0_9, next] } { QPMask[n$0_9, next] } { oldHeap[n$0_9, next] }
                               g_1[n$0_9] ==> 1 / 2 > NoPerm ==> oldMask[n$0_9, next] > NoPerm
@@ -4871,135 +4871,135 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                               { oldHeap[n$0_9, next] } { QPMask[n$0_9, next] } { oldHeap[n$0_9, next] }
                               g_1[n$0_9] && NoPerm < 1 / 2 ==> qpRange67(n$0_9) && invRecv67(n$0_9) == n$0_9
                             );
-                            assume (forall o_4: Ref ::
-                              { invRecv67(o_4) }
-                              g_1[invRecv67(o_4)] && (NoPerm < 1 / 2 && qpRange67(o_4)) ==> invRecv67(o_4) == o_4
+                            assume (forall o_9: Ref ::
+                              { invRecv67(o_9) }
+                              g_1[invRecv67(o_9)] && (NoPerm < 1 / 2 && qpRange67(o_9)) ==> invRecv67(o_9) == o_9
                             );
                           // Finish exhale
                           // Stop execution
                           assume false;
                         }
-                        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [83856]"}
+                        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [9068]"}
                           HasDirectPerm(oldMask, x, next);
                       }
                     }
                   }
                   assume false;
                 }
-                if (!(exists n_12_1: Ref ::
-                  { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), x, n_12_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_12_1, oldHeap[x, next]): bool) }
-                  n_12_1 != x && (n_12_1 != oldHeap[x, next] && ((exists_path($$(oldHeap, g_1), x, n_12_1): bool) && (exists_path($$(oldHeap, g_1), n_12_1, oldHeap[x, next]): bool)))
+                if (!(exists n_12: Ref ::
+                  { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), x, n_12): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_12, oldHeap[x, next]): bool) }
+                  n_12 != x && (n_12 != oldHeap[x, next] && ((exists_path($$(oldHeap, g_1), x, n_12): bool) && (exists_path($$(oldHeap, g_1), n_12, oldHeap[x, next]): bool)))
                 )) {
                   if (*) {
-                    if (!(u_26 != x)) {
-                      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [83857]"}
+                    if (!(u_25 != x)) {
+                      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [9069]"}
                         HasDirectPerm(oldMask, x, next);
                     }
-                    if (u_26 != x || v_26 != oldHeap[x, next]) {
+                    if (u_25 != x || v_25 != oldHeap[x, next]) {
                       if (*) {
                         // Exhale precondition of function application
-                        ExhaleWellDef0Heap := oldHeap;
                         ExhaleWellDef0Mask := oldMask;
+                        ExhaleWellDef0Heap := oldHeap;
                         havoc QPMask;
                         
                         // -- check that the permission amount is positive
-                          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@465.83--465.88) [83858]"}
-                            (forall n_13: Ref ::
-                            { oldHeap[n_13, next] } { QPMask[n_13, next] } { oldHeap[n_13, next] }
-                            g_1[n_13] && dummyFunction(oldHeap[n_13, next]) ==> 1 / 2 >= NoPerm
+                          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@465.83--465.88) [9070]"}
+                            (forall n_13_2: Ref ::
+                            { oldHeap[n_13_2, next] } { QPMask[n_13_2, next] } { oldHeap[n_13_2, next] }
+                            g_1[n_13_2] && dummyFunction(oldHeap[n_13_2, next]) ==> 1 / 2 >= NoPerm
                           );
                         
                         // -- check if receiver n is injective
-                          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@465.83--465.88) [83859]"}
-                            (forall n_13: Ref, n_13_1: Ref ::
-                            { neverTriggered68(n_13), neverTriggered68(n_13_1) }
-                            (((n_13 != n_13_1 && g_1[n_13]) && g_1[n_13_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_13 != n_13_1
+                          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@465.83--465.88) [9071]"}
+                            (forall n_13_2: Ref, n_13_3: Ref ::
+                            { neverTriggered68(n_13_2), neverTriggered68(n_13_3) }
+                            (((n_13_2 != n_13_3 && g_1[n_13_2]) && g_1[n_13_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_13_2 != n_13_3
                           );
                         
                         // -- check if sufficient permission is held
-                          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@465.83--465.88) [83860]"}
-                            (forall n_13: Ref ::
-                            { oldHeap[n_13, next] } { QPMask[n_13, next] } { oldHeap[n_13, next] }
-                            g_1[n_13] ==> 1 / 2 > NoPerm ==> oldMask[n_13, next] > NoPerm
+                          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@465.83--465.88) [9072]"}
+                            (forall n_13_2: Ref ::
+                            { oldHeap[n_13_2, next] } { QPMask[n_13_2, next] } { oldHeap[n_13_2, next] }
+                            g_1[n_13_2] ==> 1 / 2 > NoPerm ==> oldMask[n_13_2, next] > NoPerm
                           );
                         
                         // -- assumptions for inverse of receiver n
-                          assume (forall n_13: Ref ::
-                            { oldHeap[n_13, next] } { QPMask[n_13, next] } { oldHeap[n_13, next] }
-                            g_1[n_13] && NoPerm < 1 / 2 ==> qpRange68(n_13) && invRecv68(n_13) == n_13
+                          assume (forall n_13_2: Ref ::
+                            { oldHeap[n_13_2, next] } { QPMask[n_13_2, next] } { oldHeap[n_13_2, next] }
+                            g_1[n_13_2] && NoPerm < 1 / 2 ==> qpRange68(n_13_2) && invRecv68(n_13_2) == n_13_2
                           );
-                          assume (forall o_4: Ref ::
-                            { invRecv68(o_4) }
-                            g_1[invRecv68(o_4)] && (NoPerm < 1 / 2 && qpRange68(o_4)) ==> invRecv68(o_4) == o_4
+                          assume (forall o_9: Ref ::
+                            { invRecv68(o_9) }
+                            g_1[invRecv68(o_9)] && (NoPerm < 1 / 2 && qpRange68(o_9)) ==> invRecv68(o_9) == o_9
                           );
                         // Finish exhale
                         // Stop execution
                         assume false;
                       }
-                      if ((edge($$(oldHeap, g_1), u_26, v_26): bool)) {
+                      if ((edge($$(oldHeap, g_1), u_25, v_25): bool)) {
                         if (*) {
                           // Exhale precondition of function application
-                          ExhaleWellDef0Heap := oldHeap;
                           ExhaleWellDef0Mask := oldMask;
+                          ExhaleWellDef0Heap := oldHeap;
                           havoc QPMask;
                           
                           // -- check that the permission amount is positive
-                            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@465.114--465.119) [83861]"}
-                              (forall n_14: Ref ::
-                              { oldHeap[n_14, next] } { QPMask[n_14, next] } { oldHeap[n_14, next] }
-                              g_1[n_14] && dummyFunction(oldHeap[n_14, next]) ==> 1 / 2 >= NoPerm
+                            assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@465.114--465.119) [9073]"}
+                              (forall n_14_1: Ref ::
+                              { oldHeap[n_14_1, next] } { QPMask[n_14_1, next] } { oldHeap[n_14_1, next] }
+                              g_1[n_14_1] && dummyFunction(oldHeap[n_14_1, next]) ==> 1 / 2 >= NoPerm
                             );
                           
                           // -- check if receiver n is injective
-                            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@465.114--465.119) [83862]"}
-                              (forall n_14: Ref, n_14_1: Ref ::
-                              { neverTriggered69(n_14), neverTriggered69(n_14_1) }
-                              (((n_14 != n_14_1 && g_1[n_14]) && g_1[n_14_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_14 != n_14_1
+                            assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@465.114--465.119) [9074]"}
+                              (forall n_14_1: Ref, n_14_2: Ref ::
+                              { neverTriggered69(n_14_1), neverTriggered69(n_14_2) }
+                              (((n_14_1 != n_14_2 && g_1[n_14_1]) && g_1[n_14_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_14_1 != n_14_2
                             );
                           
                           // -- check if sufficient permission is held
-                            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@465.114--465.119) [83863]"}
-                              (forall n_14: Ref ::
-                              { oldHeap[n_14, next] } { QPMask[n_14, next] } { oldHeap[n_14, next] }
-                              g_1[n_14] ==> 1 / 2 > NoPerm ==> oldMask[n_14, next] > NoPerm
+                            assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@465.114--465.119) [9075]"}
+                              (forall n_14_1: Ref ::
+                              { oldHeap[n_14_1, next] } { QPMask[n_14_1, next] } { oldHeap[n_14_1, next] }
+                              g_1[n_14_1] ==> 1 / 2 > NoPerm ==> oldMask[n_14_1, next] > NoPerm
                             );
                           
                           // -- assumptions for inverse of receiver n
-                            assume (forall n_14: Ref ::
-                              { oldHeap[n_14, next] } { QPMask[n_14, next] } { oldHeap[n_14, next] }
-                              g_1[n_14] && NoPerm < 1 / 2 ==> qpRange69(n_14) && invRecv69(n_14) == n_14
+                            assume (forall n_14_1: Ref ::
+                              { oldHeap[n_14_1, next] } { QPMask[n_14_1, next] } { oldHeap[n_14_1, next] }
+                              g_1[n_14_1] && NoPerm < 1 / 2 ==> qpRange69(n_14_1) && invRecv69(n_14_1) == n_14_1
                             );
-                            assume (forall o_4: Ref ::
-                              { invRecv69(o_4) }
-                              g_1[invRecv69(o_4)] && (NoPerm < 1 / 2 && qpRange69(o_4)) ==> invRecv69(o_4) == o_4
+                            assume (forall o_9: Ref ::
+                              { invRecv69(o_9) }
+                              g_1[invRecv69(o_9)] && (NoPerm < 1 / 2 && qpRange69(o_9)) ==> invRecv69(o_9) == o_9
                             );
                           // Finish exhale
                           // Stop execution
                           assume false;
                         }
-                        if ((exists_path($$(oldHeap, g_1), v1_21, u_26): bool)) {
+                        if ((exists_path($$(oldHeap, g_1), v1_10, u_25): bool)) {
                           if (*) {
                             // Exhale precondition of function application
-                            ExhaleWellDef0Heap := oldHeap;
                             ExhaleWellDef0Mask := oldMask;
+                            ExhaleWellDef0Heap := oldHeap;
                             havoc QPMask;
                             
                             // -- check that the permission amount is positive
-                              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@465.146--465.151) [83864]"}
+                              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@465.146--465.151) [9076]"}
                                 (forall n_15: Ref ::
                                 { oldHeap[n_15, next] } { QPMask[n_15, next] } { oldHeap[n_15, next] }
                                 g_1[n_15] && dummyFunction(oldHeap[n_15, next]) ==> 1 / 2 >= NoPerm
                               );
                             
                             // -- check if receiver n is injective
-                              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@465.146--465.151) [83865]"}
+                              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@465.146--465.151) [9077]"}
                                 (forall n_15: Ref, n_15_1: Ref ::
                                 { neverTriggered70(n_15), neverTriggered70(n_15_1) }
                                 (((n_15 != n_15_1 && g_1[n_15]) && g_1[n_15_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_15 != n_15_1
                               );
                             
                             // -- check if sufficient permission is held
-                              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@465.146--465.151) [83866]"}
+                              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@465.146--465.151) [9078]"}
                                 (forall n_15: Ref ::
                                 { oldHeap[n_15, next] } { QPMask[n_15, next] } { oldHeap[n_15, next] }
                                 g_1[n_15] ==> 1 / 2 > NoPerm ==> oldMask[n_15, next] > NoPerm
@@ -5010,80 +5010,80 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                                 { oldHeap[n_15, next] } { QPMask[n_15, next] } { oldHeap[n_15, next] }
                                 g_1[n_15] && NoPerm < 1 / 2 ==> qpRange70(n_15) && invRecv70(n_15) == n_15
                               );
-                              assume (forall o_4: Ref ::
-                                { invRecv70(o_4) }
-                                g_1[invRecv70(o_4)] && (NoPerm < 1 / 2 && qpRange70(o_4)) ==> invRecv70(o_4) == o_4
+                              assume (forall o_9: Ref ::
+                                { invRecv70(o_9) }
+                                g_1[invRecv70(o_9)] && (NoPerm < 1 / 2 && qpRange70(o_9)) ==> invRecv70(o_9) == o_9
                               );
                             // Finish exhale
                             // Stop execution
                             assume false;
                           }
-                          if ((exists_path($$(oldHeap, g_1), u_26, x): bool)) {
+                          if ((exists_path($$(oldHeap, g_1), u_25, x): bool)) {
                             if (*) {
                               // Exhale precondition of function application
-                              ExhaleWellDef0Heap := oldHeap;
                               ExhaleWellDef0Mask := oldMask;
+                              ExhaleWellDef0Heap := oldHeap;
                               havoc QPMask;
                               
                               // -- check that the permission amount is positive
-                                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@465.177--465.182) [83867]"}
-                                  (forall n_16: Ref ::
-                                  { oldHeap[n_16, next] } { QPMask[n_16, next] } { oldHeap[n_16, next] }
-                                  g_1[n_16] && dummyFunction(oldHeap[n_16, next]) ==> 1 / 2 >= NoPerm
+                                assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@465.177--465.182) [9079]"}
+                                  (forall n_16_1: Ref ::
+                                  { oldHeap[n_16_1, next] } { QPMask[n_16_1, next] } { oldHeap[n_16_1, next] }
+                                  g_1[n_16_1] && dummyFunction(oldHeap[n_16_1, next]) ==> 1 / 2 >= NoPerm
                                 );
                               
                               // -- check if receiver n is injective
-                                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@465.177--465.182) [83868]"}
-                                  (forall n_16: Ref, n_16_1: Ref ::
-                                  { neverTriggered71(n_16), neverTriggered71(n_16_1) }
-                                  (((n_16 != n_16_1 && g_1[n_16]) && g_1[n_16_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_16 != n_16_1
+                                assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@465.177--465.182) [9080]"}
+                                  (forall n_16_1: Ref, n_16_2: Ref ::
+                                  { neverTriggered71(n_16_1), neverTriggered71(n_16_2) }
+                                  (((n_16_1 != n_16_2 && g_1[n_16_1]) && g_1[n_16_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_16_1 != n_16_2
                                 );
                               
                               // -- check if sufficient permission is held
-                                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@465.177--465.182) [83869]"}
-                                  (forall n_16: Ref ::
-                                  { oldHeap[n_16, next] } { QPMask[n_16, next] } { oldHeap[n_16, next] }
-                                  g_1[n_16] ==> 1 / 2 > NoPerm ==> oldMask[n_16, next] > NoPerm
+                                assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@465.177--465.182) [9081]"}
+                                  (forall n_16_1: Ref ::
+                                  { oldHeap[n_16_1, next] } { QPMask[n_16_1, next] } { oldHeap[n_16_1, next] }
+                                  g_1[n_16_1] ==> 1 / 2 > NoPerm ==> oldMask[n_16_1, next] > NoPerm
                                 );
                               
                               // -- assumptions for inverse of receiver n
-                                assume (forall n_16: Ref ::
-                                  { oldHeap[n_16, next] } { QPMask[n_16, next] } { oldHeap[n_16, next] }
-                                  g_1[n_16] && NoPerm < 1 / 2 ==> qpRange71(n_16) && invRecv71(n_16) == n_16
+                                assume (forall n_16_1: Ref ::
+                                  { oldHeap[n_16_1, next] } { QPMask[n_16_1, next] } { oldHeap[n_16_1, next] }
+                                  g_1[n_16_1] && NoPerm < 1 / 2 ==> qpRange71(n_16_1) && invRecv71(n_16_1) == n_16_1
                                 );
-                                assume (forall o_4: Ref ::
-                                  { invRecv71(o_4) }
-                                  g_1[invRecv71(o_4)] && (NoPerm < 1 / 2 && qpRange71(o_4)) ==> invRecv71(o_4) == o_4
+                                assume (forall o_9: Ref ::
+                                  { invRecv71(o_9) }
+                                  g_1[invRecv71(o_9)] && (NoPerm < 1 / 2 && qpRange71(o_9)) ==> invRecv71(o_9) == o_9
                                 );
                               // Finish exhale
                               // Stop execution
                               assume false;
                             }
-                            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [83870]"}
+                            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.next (delete_edge1.vpr@457.13--466.18) [9082]"}
                               HasDirectPerm(oldMask, x, next);
-                            if ((exists_path($$(oldHeap, g_1), oldHeap[x, next], v_26): bool)) {
+                            if ((exists_path($$(oldHeap, g_1), oldHeap[x, next], v_25): bool)) {
                               if (*) {
                                 // Exhale precondition of function application
-                                ExhaleWellDef0Heap := oldHeap;
                                 ExhaleWellDef0Mask := oldMask;
+                                ExhaleWellDef0Heap := oldHeap;
                                 havoc QPMask;
                                 
                                 // -- check that the permission amount is positive
-                                  assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@465.218--465.223) [83871]"}
+                                  assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@465.218--465.223) [9083]"}
                                     (forall n_17: Ref ::
                                     { oldHeap[n_17, next] } { QPMask[n_17, next] } { oldHeap[n_17, next] }
                                     g_1[n_17] && dummyFunction(oldHeap[n_17, next]) ==> 1 / 2 >= NoPerm
                                   );
                                 
                                 // -- check if receiver n is injective
-                                  assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@465.218--465.223) [83872]"}
+                                  assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@465.218--465.223) [9084]"}
                                     (forall n_17: Ref, n_17_1: Ref ::
                                     { neverTriggered72(n_17), neverTriggered72(n_17_1) }
                                     (((n_17 != n_17_1 && g_1[n_17]) && g_1[n_17_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_17 != n_17_1
                                   );
                                 
                                 // -- check if sufficient permission is held
-                                  assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@465.218--465.223) [83873]"}
+                                  assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@465.218--465.223) [9085]"}
                                     (forall n_17: Ref ::
                                     { oldHeap[n_17, next] } { QPMask[n_17, next] } { oldHeap[n_17, next] }
                                     g_1[n_17] ==> 1 / 2 > NoPerm ==> oldMask[n_17, next] > NoPerm
@@ -5094,9 +5094,9 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
                                     { oldHeap[n_17, next] } { QPMask[n_17, next] } { oldHeap[n_17, next] }
                                     g_1[n_17] && NoPerm < 1 / 2 ==> qpRange72(n_17) && invRecv72(n_17) == n_17
                                   );
-                                  assume (forall o_4: Ref ::
-                                    { invRecv72(o_4) }
-                                    g_1[invRecv72(o_4)] && (NoPerm < 1 / 2 && qpRange72(o_4)) ==> invRecv72(o_4) == o_4
+                                  assume (forall o_9: Ref ::
+                                    { invRecv72(o_9) }
+                                    g_1[invRecv72(o_9)] && (NoPerm < 1 / 2 && qpRange72(o_9)) ==> invRecv72(o_9) == o_9
                                   );
                                 // Finish exhale
                                 // Stop execution
@@ -5123,9 +5123,9 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
         ) || ((exists n_19: Ref ::
           { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), x, n_19): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_19, oldHeap[x, next]): bool) }
           n_19 != x && (n_19 != oldHeap[x, next] && ((exists_path($$(oldHeap, g_1), x, n_19): bool) && (exists_path($$(oldHeap, g_1), n_19, oldHeap[x, next]): bool)))
-        ) || (exists u_1: Ref, v_1_1: Ref ::
-          { (edge($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_1, v_1_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_3, u_1): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], v_1_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_3, u_1): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v_1_1, v2_3): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_1, x): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], v_1_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_1, x): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v_1_1, v2_3): bool) }
-          (u_1 != x || v_1_1 != oldHeap[x, next]) && ((edge($$(oldHeap, g_1), u_1, v_1_1): bool) && ((exists_path($$(oldHeap, g_1), v1_3, u_1): bool) && ((exists_path($$(oldHeap, g_1), u_1, x): bool) && ((exists_path($$(oldHeap, g_1), oldHeap[x, next], v_1_1): bool) && (exists_path($$(oldHeap, g_1), v_1_1, v2_3): bool)))))
+        ) || (exists u_1_1: Ref, v_1_1: Ref ::
+          { (edge($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_1_1, v_1_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_3, u_1_1): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], v_1_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_3, u_1_1): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v_1_1, v2_3): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_1_1, x): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], v_1_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_1_1, x): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v_1_1, v2_3): bool) }
+          (u_1_1 != x || v_1_1 != oldHeap[x, next]) && ((edge($$(oldHeap, g_1), u_1_1, v_1_1): bool) && ((exists_path($$(oldHeap, g_1), v1_3, u_1_1): bool) && ((exists_path($$(oldHeap, g_1), u_1_1, x): bool) && ((exists_path($$(oldHeap, g_1), oldHeap[x, next], v_1_1): bool) && (exists_path($$(oldHeap, g_1), v_1_1, v2_3): bool)))))
         )))))
       );
     }
@@ -5140,9 +5140,9 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of unlink_dags might not hold. Assertion !((null in g)) might not hold. (delete_edge1.vpr@449.13--449.21) [83874]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of unlink_dags might not hold. Assertion !((null in g)) might not hold. (delete_edge1.vpr@449.13--449.21) [9086]"}
       !g_1[null];
     havoc QPMask;
     
@@ -5150,14 +5150,14 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
       
     
     // -- check if receiver n$1 is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@449.13--449.21) [83875]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@449.13--449.21) [9087]"}
         (forall n$1_2: Ref, n$1_2_1: Ref ::
         { neverTriggered73(n$1_2), neverTriggered73(n$1_2_1) }
         (((n$1_2 != n$1_2_1 && g_1[n$1_2]) && g_1[n$1_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$1_2 != n$1_2_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of unlink_dags might not hold. There might be insufficient permission to access n$1.next (delete_edge1.vpr@449.13--449.21) [83876]"}
+      assert {:msg "  Postcondition of unlink_dags might not hold. There might be insufficient permission to access n$1.next (delete_edge1.vpr@449.13--449.21) [9088]"}
         (forall n$1_2: Ref ::
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         g_1[n$1_2] ==> Mask[n$1_2, next] >= FullPerm
@@ -5168,26 +5168,26 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         g_1[n$1_2] && NoPerm < FullPerm ==> qpRange73(n$1_2) && invRecv73(n$1_2) == n$1_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv73(o_4) }
-        g_1[invRecv73(o_4)] && (NoPerm < FullPerm && qpRange73(o_4)) ==> invRecv73(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv73(o_9) }
+        g_1[invRecv73(o_9)] && (NoPerm < FullPerm && qpRange73(o_9)) ==> invRecv73(o_9) == o_9
       );
     
     // -- assume permission updates for field next
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (g_1[invRecv73(o_4)] && (NoPerm < FullPerm && qpRange73(o_4)) ==> invRecv73(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - FullPerm) && (!(g_1[invRecv73(o_4)] && (NoPerm < FullPerm && qpRange73(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (g_1[invRecv73(o_9)] && (NoPerm < FullPerm && qpRange73(o_9)) ==> invRecv73(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - FullPerm) && (!(g_1[invRecv73(o_9)] && (NoPerm < FullPerm && qpRange73(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
       if (g_1[n$2_2] && Heap[n$2_2, next] != null) {
-        assert {:msg "  Postcondition of unlink_dags might not hold. Assertion (n$2.next in g) might not hold. (delete_edge1.vpr@449.13--449.21) [83877]"}
+        assert {:msg "  Postcondition of unlink_dags might not hold. Assertion (n$2.next in g) might not hold. (delete_edge1.vpr@449.13--449.21) [9089]"}
           g_1[Heap[n$2_2, next]];
       }
       assume false;
@@ -5196,11 +5196,11 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
       { g_1[Heap[n$2_3_1, next]] } { g_1[n$2_3_1], Heap[n$2_3_1, next] }
       g_1[n$2_3_1] && Heap[n$2_3_1, next] != null ==> g_1[Heap[n$2_3_1, next]]
     );
-    assert {:msg "  Postcondition of unlink_dags might not hold. Assertion x.next == null might not hold. (delete_edge1.vpr@450.13--450.27) [83878]"}
+    assert {:msg "  Postcondition of unlink_dags might not hold. Assertion x.next == null might not hold. (delete_edge1.vpr@450.13--450.27) [9090]"}
       Heap[x, next] == null;
     if (*) {
       if (g_1[n_20] && n_20 != x) {
-        assert {:msg "  Postcondition of unlink_dags might not hold. Assertion n.next == old(n.next) might not hold. (delete_edge1.vpr@452.13--452.87) [83879]"}
+        assert {:msg "  Postcondition of unlink_dags might not hold. Assertion n.next == old(n.next) might not hold. (delete_edge1.vpr@452.13--452.87) [9091]"}
           Heap[n_20, next] == oldHeap[n_20, next];
       }
       assume false;
@@ -5210,12 +5210,12 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
       g_1[n_21_1_1] && n_21_1_1 != x ==> Heap[n_21_1_1, next] == oldHeap[n_21_1_1, next]
     );
     if (oldHeap[x, next] == null) {
-      assert {:msg "  Postcondition of unlink_dags might not hold. Assertion $$(g) == old($$(g)) might not hold. (delete_edge1.vpr@453.13--453.56) [83880]"}
+      assert {:msg "  Postcondition of unlink_dags might not hold. Assertion $$(g) == old($$(g)) might not hold. (delete_edge1.vpr@453.13--453.56) [9092]"}
         Set#Equal($$(Heap, g_1), $$(oldHeap, g_1));
     }
     if (oldHeap[x, next] != null) {
       if (*) {
-        assert {:msg "  Postcondition of unlink_dags might not hold. Assertion edge($$(g), v1, v2) == (edge(old($$(g)), v1, v2) && !(v1 == x && v2 == old(x.next))) might not hold. (delete_edge1.vpr@454.13--456.89) [83881]"}
+        assert {:msg "  Postcondition of unlink_dags might not hold. Assertion edge($$(g), v1, v2) == (edge(old($$(g)), v1, v2) && !(v1 == x && v2 == old(x.next))) might not hold. (delete_edge1.vpr@454.13--456.89) [9093]"}
           (edge($$(Heap, g_1), v1_4, v2_4): bool) == ((edge($$(oldHeap, g_1), v1_4, v2_4): bool) && !(v1_4 == x && v2_4 == oldHeap[x, next]));
         assume false;
       }
@@ -5226,16 +5226,16 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
     }
     if (oldHeap[x, next] != null) {
       if (*) {
-        assert {:msg "  Postcondition of unlink_dags might not hold. Assertion exists_path($$(g), v1, v2) == (v1 == v2 || v1 != v2 && ((exists n: Ref :: { exists_path(old($$(g)), v1, n) } { exists_path(old($$(g)), n, v2) } { exists_path(old($$(g)), n, x) } { exists_path(old($$(g)), x, n) } { exists_path(old($$(g)), n, old(x.next)) } { exists_path(old($$(g)), old(x.next), n) } exists_path(old($$(g)), v1, n) && (exists_path(old($$(g)), n, v2) && (!exists_path(old($$(g)), n, x) && !exists_path(old($$(g)), x, n) || !exists_path(old($$(g)), n, old(x.next)) && !exists_path(old($$(g)), old(x.next), n)))) || ((exists n: Ref :: { exists_path(old($$(g)), x, n) } { exists_path(old($$(g)), n, old(x.next)) } n != x && (n != old(x.next) && (exists_path(old($$(g)), x, n) && exists_path(old($$(g)), n, old(x.next))))) || (exists u: Ref, v: Ref :: { edge(old($$(g)), u, v) } { exists_path(old($$(g)), v1, u), exists_path(old($$(g)), old(x.next), v) } { exists_path(old($$(g)), v1, u), exists_path(old($$(g)), v, v2) } { exists_path(old($$(g)), u, x), exists_path(old($$(g)), old(x.next), v) } { exists_path(old($$(g)), u, x), exists_path(old($$(g)), v, v2) } (u != x || v != old(x.next)) && (edge(old($$(g)), u, v) && (exists_path(old($$(g)), v1, u) && (exists_path(old($$(g)), u, x) && (exists_path(old($$(g)), old(x.next), v) && exists_path(old($$(g)), v, v2))))))))) might not hold. (delete_edge1.vpr@457.13--466.18) [83882]"}
+        assert {:msg "  Postcondition of unlink_dags might not hold. Assertion exists_path($$(g), v1, v2) == (v1 == v2 || v1 != v2 && ((exists n: Ref :: { exists_path(old($$(g)), v1, n) } { exists_path(old($$(g)), n, v2) } { exists_path(old($$(g)), n, x) } { exists_path(old($$(g)), x, n) } { exists_path(old($$(g)), n, old(x.next)) } { exists_path(old($$(g)), old(x.next), n) } exists_path(old($$(g)), v1, n) && (exists_path(old($$(g)), n, v2) && (!exists_path(old($$(g)), n, x) && !exists_path(old($$(g)), x, n) || !exists_path(old($$(g)), n, old(x.next)) && !exists_path(old($$(g)), old(x.next), n)))) || ((exists n: Ref :: { exists_path(old($$(g)), x, n) } { exists_path(old($$(g)), n, old(x.next)) } n != x && (n != old(x.next) && (exists_path(old($$(g)), x, n) && exists_path(old($$(g)), n, old(x.next))))) || (exists u: Ref, v: Ref :: { edge(old($$(g)), u, v) } { exists_path(old($$(g)), v1, u), exists_path(old($$(g)), old(x.next), v) } { exists_path(old($$(g)), v1, u), exists_path(old($$(g)), v, v2) } { exists_path(old($$(g)), u, x), exists_path(old($$(g)), old(x.next), v) } { exists_path(old($$(g)), u, x), exists_path(old($$(g)), v, v2) } (u != x || v != old(x.next)) && (edge(old($$(g)), u, v) && (exists_path(old($$(g)), v1, u) && (exists_path(old($$(g)), u, x) && (exists_path(old($$(g)), old(x.next), v) && exists_path(old($$(g)), v, v2))))))))) might not hold. (delete_edge1.vpr@457.13--466.18) [9094]"}
           (exists_path($$(Heap, g_1), v1_6, v2_6): bool) == (v1_6 == v2_6 || (v1_6 != v2_6 && ((exists n_22: Ref ::
           { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_6, n_22): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_22, v2_6): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_22, x): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), x, n_22): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_22, oldHeap[x, next]): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], n_22): bool) }
           (exists_path($$(oldHeap, g_1), v1_6, n_22): bool) && ((exists_path($$(oldHeap, g_1), n_22, v2_6): bool) && ((!(exists_path($$(oldHeap, g_1), n_22, x): bool) && !(exists_path($$(oldHeap, g_1), x, n_22): bool)) || (!(exists_path($$(oldHeap, g_1), n_22, oldHeap[x, next]): bool) && !(exists_path($$(oldHeap, g_1), oldHeap[x, next], n_22): bool))))
         ) || ((exists n_23: Ref ::
           { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), x, n_23): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_23, oldHeap[x, next]): bool) }
           n_23 != x && (n_23 != oldHeap[x, next] && ((exists_path($$(oldHeap, g_1), x, n_23): bool) && (exists_path($$(oldHeap, g_1), n_23, oldHeap[x, next]): bool)))
-        ) || (exists u_2_1: Ref, v_2_1: Ref ::
-          { (edge($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_2_1, v_2_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_6, u_2_1): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], v_2_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_6, u_2_1): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v_2_1, v2_6): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_2_1, x): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], v_2_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_2_1, x): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v_2_1, v2_6): bool) }
-          (u_2_1 != x || v_2_1 != oldHeap[x, next]) && ((edge($$(oldHeap, g_1), u_2_1, v_2_1): bool) && ((exists_path($$(oldHeap, g_1), v1_6, u_2_1): bool) && ((exists_path($$(oldHeap, g_1), u_2_1, x): bool) && ((exists_path($$(oldHeap, g_1), oldHeap[x, next], v_2_1): bool) && (exists_path($$(oldHeap, g_1), v_2_1, v2_6): bool)))))
+        ) || (exists u_2_2: Ref, v_2_2: Ref ::
+          { (edge($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_2_2, v_2_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_6, u_2_2): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], v_2_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_6, u_2_2): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v_2_2, v2_6): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_2_2, x): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], v_2_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_2_2, x): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v_2_2, v2_6): bool) }
+          (u_2_2 != x || v_2_2 != oldHeap[x, next]) && ((edge($$(oldHeap, g_1), u_2_2, v_2_2): bool) && ((exists_path($$(oldHeap, g_1), v1_6, u_2_2): bool) && ((exists_path($$(oldHeap, g_1), u_2_2, x): bool) && ((exists_path($$(oldHeap, g_1), oldHeap[x, next], v_2_2): bool) && (exists_path($$(oldHeap, g_1), v_2_2, v2_6): bool)))))
         )))));
         assume false;
       }
@@ -5244,9 +5244,9 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
         (exists_path($$(Heap, g_1), v1_7_1, v2_7_1): bool) == (v1_7_1 == v2_7_1 || (v1_7_1 != v2_7_1 && ((exists n_24: Ref ::
           { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_7_1, n_24): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_24, v2_7_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_24, x): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), x, n_24): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_24, oldHeap[x, next]): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], n_24): bool) }
           (exists_path($$(oldHeap, g_1), v1_7_1, n_24): bool) && ((exists_path($$(oldHeap, g_1), n_24, v2_7_1): bool) && ((!(exists_path($$(oldHeap, g_1), n_24, x): bool) && !(exists_path($$(oldHeap, g_1), x, n_24): bool)) || (!(exists_path($$(oldHeap, g_1), n_24, oldHeap[x, next]): bool) && !(exists_path($$(oldHeap, g_1), oldHeap[x, next], n_24): bool))))
-        ) || ((exists n_25_1: Ref ::
-          { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), x, n_25_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_25_1, oldHeap[x, next]): bool) }
-          n_25_1 != x && (n_25_1 != oldHeap[x, next] && ((exists_path($$(oldHeap, g_1), x, n_25_1): bool) && (exists_path($$(oldHeap, g_1), n_25_1, oldHeap[x, next]): bool)))
+        ) || ((exists n_25: Ref ::
+          { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), x, n_25): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), n_25, oldHeap[x, next]): bool) }
+          n_25 != x && (n_25 != oldHeap[x, next] && ((exists_path($$(oldHeap, g_1), x, n_25): bool) && (exists_path($$(oldHeap, g_1), n_25, oldHeap[x, next]): bool)))
         ) || (exists u_3_1: Ref, v_3_1: Ref ::
           { (edge($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_3_1, v_3_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_7_1, u_3_1): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], v_3_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v1_7_1, u_3_1): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v_3_1, v2_7_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_3_1, x): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), oldHeap[x, next], v_3_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), u_3_1, x): bool), (exists_path($$#frame(FrameFragment($$#condqp1(oldHeap, g_1)), g_1), v_3_1, v2_7_1): bool) }
           (u_3_1 != x || v_3_1 != oldHeap[x, next]) && ((edge($$(oldHeap, g_1), u_3_1, v_3_1): bool) && ((exists_path($$(oldHeap, g_1), v1_7_1, u_3_1): bool) && ((exists_path($$(oldHeap, g_1), u_3_1, x): bool) && ((exists_path($$(oldHeap, g_1), oldHeap[x, next], v_3_1): bool) && (exists_path($$(oldHeap, g_1), v_3_1, v2_7_1): bool)))))
@@ -5263,32 +5263,32 @@ procedure unlink_dags(g_1: (Set Ref), x: Ref) returns ()
 // Translation of method unjoin_dags
 // ==================================================
 
-procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns ()
+procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var n$0_32: Ref;
-  var n$1_17: Ref;
-  var ExhaleWellDef0Heap: HeapType;
+  var n$0_30: Ref;
+  var n$1_12: Ref;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var n$2_29: Ref;
-  var n_37: Ref;
+  var n$2_23: Ref;
+  var n_57: Ref;
   var m_4: Ref;
-  var n_38: Ref;
+  var n_58: Ref;
   var m_5: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var n$4_13: Ref;
+  var n$4_9: Ref;
   var n$6_4: Ref;
   var n$7_3: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_g: (Set Ref);
   var n$0_4: Ref;
-  var n$4_2_1: Ref;
+  var n$4_2: Ref;
   var n$6_2: Ref;
   var n$7_2: Ref;
   
@@ -5300,7 +5300,7 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
   
   // -- Assumptions about method arguments
     assume Heap[x0, $allocated];
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
   
   // -- Checked inhaling of precondition
     
@@ -5329,7 +5329,7 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@471.14--471.32) [83883]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (delete_edge1.vpr@471.14--471.32) [9095]"}
       (forall n_1: Ref, n_1_1: Ref ::
       
       (((n_1 != n_1_1 && Set#Union(g0, g1)[n_1]) && Set#Union(g0, g1)[n_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_1 != n_1_1
@@ -5340,9 +5340,9 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         { Heap[n_1, next] } { QPMask[n_1, next] } { Heap[n_1, next] }
         Set#Union(g0, g1)[n_1] && NoPerm < FullPerm ==> qpRange74(n_1) && invRecv74(n_1) == n_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv74(o_4) }
-        (Set#Union(g0, g1)[invRecv74(o_4)] && NoPerm < FullPerm) && qpRange74(o_4) ==> invRecv74(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv74(o_9) }
+        (Set#Union(g0, g1)[invRecv74(o_9)] && NoPerm < FullPerm) && qpRange74(o_9) ==> invRecv74(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -5352,26 +5352,26 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((Set#Union(g0, g1)[invRecv74(o_4)] && NoPerm < FullPerm) && qpRange74(o_4) ==> (NoPerm < FullPerm ==> invRecv74(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!((Set#Union(g0, g1)[invRecv74(o_4)] && NoPerm < FullPerm) && qpRange74(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((Set#Union(g0, g1)[invRecv74(o_9)] && NoPerm < FullPerm) && qpRange74(o_9) ==> (NoPerm < FullPerm ==> invRecv74(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!((Set#Union(g0, g1)[invRecv74(o_9)] && NoPerm < FullPerm) && qpRange74(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n$0: Ref :: { (n$0.next in (g0 union g1)) } { (n$0 in (g0 union g1)), n$0.next } (n$0 in (g0 union g1)) && n$0.next != null ==> (n$0.next in (g0 union g1)))
       if (*) {
-        if (Set#Union(g0, g1)[n$0_32]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@471.14--471.32) [83884]"}
-            HasDirectPerm(Mask, n$0_32, next);
+        if (Set#Union(g0, g1)[n$0_30]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@471.14--471.32) [9096]"}
+            HasDirectPerm(Mask, n$0_30, next);
         }
-        if (Set#Union(g0, g1)[n$0_32] && Heap[n$0_32, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@471.14--471.32) [83885]"}
-            HasDirectPerm(Mask, n$0_32, next);
+        if (Set#Union(g0, g1)[n$0_30] && Heap[n$0_30, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (delete_edge1.vpr@471.14--471.32) [9097]"}
+            HasDirectPerm(Mask, n$0_30, next);
         }
         assume false;
       }
@@ -5381,35 +5381,35 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     );
     assume state(Heap, Mask);
     assume g0[x0];
-    assume g1[x1_2];
+    assume g1[x1];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n$1: Ref :: { exists_path($$(g0), n$1, x0) } (n$1 in g0) ==> exists_path($$(g0), n$1, x0))
       if (*) {
-        if (g0[n$1_17]) {
+        if (g0[n$1_12]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@221.74--221.79) [83886]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@221.74--221.79) [9098]"}
                 (forall n_2: Ref ::
                 { Heap[n_2, next] } { QPMask[n_2, next] } { Heap[n_2, next] }
                 g0[n_2] && dummyFunction(Heap[n_2, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@221.74--221.79) [83887]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@221.74--221.79) [9099]"}
                 (forall n_2: Ref, n_2_1: Ref ::
                 { neverTriggered75(n_2), neverTriggered75(n_2_1) }
                 (((n_2 != n_2_1 && g0[n_2]) && g0[n_2_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_2 != n_2_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@221.74--221.79) [83888]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@221.74--221.79) [9100]"}
                 (forall n_2: Ref ::
                 { Heap[n_2, next] } { QPMask[n_2, next] } { Heap[n_2, next] }
                 g0[n_2] ==> 1 / 2 > NoPerm ==> Mask[n_2, next] > NoPerm
@@ -5420,9 +5420,9 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
                 { Heap[n_2, next] } { QPMask[n_2, next] } { Heap[n_2, next] }
                 g0[n_2] && NoPerm < 1 / 2 ==> qpRange75(n_2) && invRecv75(n_2) == n_2
               );
-              assume (forall o_4: Ref ::
-                { invRecv75(o_4) }
-                g0[invRecv75(o_4)] && (NoPerm < 1 / 2 && qpRange75(o_4)) ==> invRecv75(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv75(o_9) }
+                g0[invRecv75(o_9)] && (NoPerm < 1 / 2 && qpRange75(o_9)) ==> invRecv75(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -5443,29 +5443,29 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     
     // -- Check definedness of (forall n$2: Ref :: { exists_path($$(g1), x1, n$2) } (n$2 in g1) ==> exists_path($$(g1), x1, n$2))
       if (*) {
-        if (g1[n$2_29]) {
+        if (g1[n$2_23]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@215.74--215.79) [83889]"}
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@215.74--215.79) [9101]"}
                 (forall n_3: Ref ::
                 { Heap[n_3, next] } { QPMask[n_3, next] } { Heap[n_3, next] }
                 g1[n_3] && dummyFunction(Heap[n_3, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@215.74--215.79) [83890]"}
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@215.74--215.79) [9102]"}
                 (forall n_3: Ref, n_3_1: Ref ::
                 { neverTriggered76(n_3), neverTriggered76(n_3_1) }
                 (((n_3 != n_3_1 && g1[n_3]) && g1[n_3_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_3 != n_3_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@215.74--215.79) [83891]"}
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@215.74--215.79) [9103]"}
                 (forall n_3: Ref ::
                 { Heap[n_3, next] } { QPMask[n_3, next] } { Heap[n_3, next] }
                 g1[n_3] ==> 1 / 2 > NoPerm ==> Mask[n_3, next] > NoPerm
@@ -5476,9 +5476,9 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
                 { Heap[n_3, next] } { QPMask[n_3, next] } { Heap[n_3, next] }
                 g1[n_3] && NoPerm < 1 / 2 ==> qpRange76(n_3) && invRecv76(n_3) == n_3
               );
-              assume (forall o_4: Ref ::
-                { invRecv76(o_4) }
-                g1[invRecv76(o_4)] && (NoPerm < 1 / 2 && qpRange76(o_4)) ==> invRecv76(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv76(o_9) }
+                g1[invRecv76(o_9)] && (NoPerm < 1 / 2 && qpRange76(o_9)) ==> invRecv76(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -5490,51 +5490,51 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         }
         assume false;
       }
-    assume (forall n$2_1_1: Ref ::
-      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), x1_2, n$2_1_1): bool) }
-      g1[n$2_1_1] ==> (exists_path($$(Heap, g1), x1_2, n$2_1_1): bool)
+    assume (forall n$2_1: Ref ::
+      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), x1, n$2_1): bool) }
+      g1[n$2_1] ==> (exists_path($$(Heap, g1), x1, n$2_1): bool)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n: Ref, m: Ref :: { (n in g0), (m in g1) } (n in g0) && (m in g1) ==> edge($$((g0 union g1)), n, m) == (n == x0 && m == x1))
       if (*) {
-        if (g0[n_37] && g1[m_4]) {
+        if (g0[n_57] && g1[m_4]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@479.87--479.102) [83892]"}
-                (forall n$0_2_1: Ref ::
-                { Heap[n$0_2_1, next] } { QPMask[n$0_2_1, next] } { Heap[n$0_2_1, next] }
-                Set#Union(g0, g1)[n$0_2_1] && dummyFunction(Heap[n$0_2_1, next]) ==> 1 / 2 >= NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@479.87--479.102) [9104]"}
+                (forall n$0_2: Ref ::
+                { Heap[n$0_2, next] } { QPMask[n$0_2, next] } { Heap[n$0_2, next] }
+                Set#Union(g0, g1)[n$0_2] && dummyFunction(Heap[n$0_2, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n$0 is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@479.87--479.102) [83893]"}
-                (forall n$0_2_1: Ref, n$0_2_2: Ref ::
-                { neverTriggered77(n$0_2_1), neverTriggered77(n$0_2_2) }
-                (((n$0_2_1 != n$0_2_2 && Set#Union(g0, g1)[n$0_2_1]) && Set#Union(g0, g1)[n$0_2_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_2_1 != n$0_2_2
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@479.87--479.102) [9105]"}
+                (forall n$0_2: Ref, n$0_2_1: Ref ::
+                { neverTriggered77(n$0_2), neverTriggered77(n$0_2_1) }
+                (((n$0_2 != n$0_2_1 && Set#Union(g0, g1)[n$0_2]) && Set#Union(g0, g1)[n$0_2_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_2 != n$0_2_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@479.87--479.102) [83894]"}
-                (forall n$0_2_1: Ref ::
-                { Heap[n$0_2_1, next] } { QPMask[n$0_2_1, next] } { Heap[n$0_2_1, next] }
-                Set#Union(g0, g1)[n$0_2_1] ==> 1 / 2 > NoPerm ==> Mask[n$0_2_1, next] > NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@479.87--479.102) [9106]"}
+                (forall n$0_2: Ref ::
+                { Heap[n$0_2, next] } { QPMask[n$0_2, next] } { Heap[n$0_2, next] }
+                Set#Union(g0, g1)[n$0_2] ==> 1 / 2 > NoPerm ==> Mask[n$0_2, next] > NoPerm
               );
             
             // -- assumptions for inverse of receiver n$0
-              assume (forall n$0_2_1: Ref ::
-                { Heap[n$0_2_1, next] } { QPMask[n$0_2_1, next] } { Heap[n$0_2_1, next] }
-                Set#Union(g0, g1)[n$0_2_1] && NoPerm < 1 / 2 ==> qpRange77(n$0_2_1) && invRecv77(n$0_2_1) == n$0_2_1
+              assume (forall n$0_2: Ref ::
+                { Heap[n$0_2, next] } { QPMask[n$0_2, next] } { Heap[n$0_2, next] }
+                Set#Union(g0, g1)[n$0_2] && NoPerm < 1 / 2 ==> qpRange77(n$0_2) && invRecv77(n$0_2) == n$0_2
               );
-              assume (forall o_4: Ref ::
-                { invRecv77(o_4) }
-                Set#Union(g0, g1)[invRecv77(o_4)] && (NoPerm < 1 / 2 && qpRange77(o_4)) ==> invRecv77(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv77(o_9) }
+                Set#Union(g0, g1)[invRecv77(o_9)] && (NoPerm < 1 / 2 && qpRange77(o_9)) ==> invRecv77(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -5546,51 +5546,51 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         }
         assume false;
       }
-    assume (forall n_5: Ref, m_1_1: Ref ::
-      { g0[n_5], g1[m_1_1] }
-      g0[n_5] && g1[m_1_1] ==> (edge($$(Heap, Set#Union(g0, g1)), n_5, m_1_1): bool) == (n_5 == x0 && m_1_1 == x1_2)
+    assume (forall n_5: Ref, m_1: Ref ::
+      { g0[n_5], g1[m_1] }
+      g0[n_5] && g1[m_1] ==> (edge($$(Heap, Set#Union(g0, g1)), n_5, m_1): bool) == (n_5 == x0 && m_1 == x1)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n: Ref, m: Ref :: { (n in g1), (m in g0) } (n in g1) && (m in g0) ==> !edge($$((g0 union g1)), n, m))
       if (*) {
-        if (g1[n_38] && g0[m_5]) {
+        if (g1[n_58] && g0[m_5]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@480.87--480.102) [83895]"}
-                (forall n$0_3_2: Ref ::
-                { Heap[n$0_3_2, next] } { QPMask[n$0_3_2, next] } { Heap[n$0_3_2, next] }
-                Set#Union(g0, g1)[n$0_3_2] && dummyFunction(Heap[n$0_3_2, next]) ==> 1 / 2 >= NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@480.87--480.102) [9107]"}
+                (forall n$0_3: Ref ::
+                { Heap[n$0_3, next] } { QPMask[n$0_3, next] } { Heap[n$0_3, next] }
+                Set#Union(g0, g1)[n$0_3] && dummyFunction(Heap[n$0_3, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n$0 is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@480.87--480.102) [83896]"}
-                (forall n$0_3_2: Ref, n$0_3_3: Ref ::
-                { neverTriggered78(n$0_3_2), neverTriggered78(n$0_3_3) }
-                (((n$0_3_2 != n$0_3_3 && Set#Union(g0, g1)[n$0_3_2]) && Set#Union(g0, g1)[n$0_3_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_3_2 != n$0_3_3
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n$0.next might not be injective. (delete_edge1.vpr@480.87--480.102) [9108]"}
+                (forall n$0_3: Ref, n$0_3_1: Ref ::
+                { neverTriggered78(n$0_3), neverTriggered78(n$0_3_1) }
+                (((n$0_3 != n$0_3_1 && Set#Union(g0, g1)[n$0_3]) && Set#Union(g0, g1)[n$0_3_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n$0_3 != n$0_3_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@480.87--480.102) [83897]"}
-                (forall n$0_3_2: Ref ::
-                { Heap[n$0_3_2, next] } { QPMask[n$0_3_2, next] } { Heap[n$0_3_2, next] }
-                Set#Union(g0, g1)[n$0_3_2] ==> 1 / 2 > NoPerm ==> Mask[n$0_3_2, next] > NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n$0.next (delete_edge1.vpr@480.87--480.102) [9109]"}
+                (forall n$0_3: Ref ::
+                { Heap[n$0_3, next] } { QPMask[n$0_3, next] } { Heap[n$0_3, next] }
+                Set#Union(g0, g1)[n$0_3] ==> 1 / 2 > NoPerm ==> Mask[n$0_3, next] > NoPerm
               );
             
             // -- assumptions for inverse of receiver n$0
-              assume (forall n$0_3_2: Ref ::
-                { Heap[n$0_3_2, next] } { QPMask[n$0_3_2, next] } { Heap[n$0_3_2, next] }
-                Set#Union(g0, g1)[n$0_3_2] && NoPerm < 1 / 2 ==> qpRange78(n$0_3_2) && invRecv78(n$0_3_2) == n$0_3_2
+              assume (forall n$0_3: Ref ::
+                { Heap[n$0_3, next] } { QPMask[n$0_3, next] } { Heap[n$0_3, next] }
+                Set#Union(g0, g1)[n$0_3] && NoPerm < 1 / 2 ==> qpRange78(n$0_3) && invRecv78(n$0_3) == n$0_3
               );
-              assume (forall o_4: Ref ::
-                { invRecv78(o_4) }
-                Set#Union(g0, g1)[invRecv78(o_4)] && (NoPerm < 1 / 2 && qpRange78(o_4)) ==> invRecv78(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv78(o_9) }
+                Set#Union(g0, g1)[invRecv78(o_9)] && (NoPerm < 1 / 2 && qpRange78(o_9)) ==> invRecv78(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -5612,26 +5612,26 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     // -- Check definedness of acyclic_graph($$((g0 union g1)))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@484.28--484.43) [83898]"}
+          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@484.28--484.43) [9110]"}
             (forall n_8: Ref ::
             { Heap[n_8, next] } { QPMask[n_8, next] } { Heap[n_8, next] }
             Set#Union(g0, g1)[n_8] && dummyFunction(Heap[n_8, next]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@484.28--484.43) [83899]"}
+          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@484.28--484.43) [9111]"}
             (forall n_8: Ref, n_8_1: Ref ::
             { neverTriggered79(n_8), neverTriggered79(n_8_1) }
             (((n_8 != n_8_1 && Set#Union(g0, g1)[n_8]) && Set#Union(g0, g1)[n_8_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_8 != n_8_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@484.28--484.43) [83900]"}
+          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@484.28--484.43) [9112]"}
             (forall n_8: Ref ::
             { Heap[n_8, next] } { QPMask[n_8, next] } { Heap[n_8, next] }
             Set#Union(g0, g1)[n_8] ==> 1 / 2 > NoPerm ==> Mask[n_8, next] > NoPerm
@@ -5642,9 +5642,9 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
             { Heap[n_8, next] } { QPMask[n_8, next] } { Heap[n_8, next] }
             Set#Union(g0, g1)[n_8] && NoPerm < 1 / 2 ==> qpRange79(n_8) && invRecv79(n_8) == n_8
           );
-          assume (forall o_4: Ref ::
-            { invRecv79(o_4) }
-            Set#Union(g0, g1)[invRecv79(o_4)] && (NoPerm < 1 / 2 && qpRange79(o_4)) ==> invRecv79(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv79(o_9) }
+            Set#Union(g0, g1)[invRecv79(o_9)] && (NoPerm < 1 / 2 && qpRange79(o_9)) ==> invRecv79(o_9) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -5657,16 +5657,16 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     assume state(Heap, Mask);
     
     // -- Check definedness of x0.next == x1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x0.next (delete_edge1.vpr@485.14--485.27) [83901]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x0.next (delete_edge1.vpr@485.14--485.27) [9113]"}
         HasDirectPerm(Mask, x0, next);
-    assume Heap[x0, next] == x1_2;
+    assume Heap[x0, next] == x1;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5679,55 +5679,55 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n$3.next might not be injective. (delete_edge1.vpr@490.13--490.22) [83902]"}
-      (forall n$3_1_2: Ref, n$3_1_3: Ref ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource n$3.next might not be injective. (delete_edge1.vpr@490.13--490.22) [9114]"}
+      (forall n$3_1: Ref, n$3_1_1: Ref ::
       
-      (((n$3_1_2 != n$3_1_3 && g0[n$3_1_2]) && g0[n$3_1_3]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$3_1_2 != n$3_1_3
+      (((n$3_1 != n$3_1_1 && g0[n$3_1]) && g0[n$3_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$3_1 != n$3_1_1
     );
     
     // -- Define Inverse Function
-      assume (forall n$3_1_2: Ref ::
-        { PostHeap[n$3_1_2, next] } { QPMask[n$3_1_2, next] } { PostHeap[n$3_1_2, next] }
-        g0[n$3_1_2] && NoPerm < FullPerm ==> qpRange80(n$3_1_2) && invRecv80(n$3_1_2) == n$3_1_2
+      assume (forall n$3_1: Ref ::
+        { PostHeap[n$3_1, next] } { QPMask[n$3_1, next] } { PostHeap[n$3_1, next] }
+        g0[n$3_1] && NoPerm < FullPerm ==> qpRange80(n$3_1) && invRecv80(n$3_1) == n$3_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv80(o_4) }
-        (g0[invRecv80(o_4)] && NoPerm < FullPerm) && qpRange80(o_4) ==> invRecv80(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv80(o_9) }
+        (g0[invRecv80(o_9)] && NoPerm < FullPerm) && qpRange80(o_9) ==> invRecv80(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall n$3_1_2: Ref ::
-        { PostHeap[n$3_1_2, next] } { QPMask[n$3_1_2, next] } { PostHeap[n$3_1_2, next] }
-        g0[n$3_1_2] ==> n$3_1_2 != null
+      assume (forall n$3_1: Ref ::
+        { PostHeap[n$3_1, next] } { QPMask[n$3_1, next] } { PostHeap[n$3_1, next] }
+        g0[n$3_1] ==> n$3_1 != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g0[invRecv80(o_4)] && NoPerm < FullPerm) && qpRange80(o_4) ==> (NoPerm < FullPerm ==> invRecv80(o_4) == o_4) && QPMask[o_4, next] == PostMask[o_4, next] + FullPerm) && (!((g0[invRecv80(o_4)] && NoPerm < FullPerm) && qpRange80(o_4)) ==> QPMask[o_4, next] == PostMask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g0[invRecv80(o_9)] && NoPerm < FullPerm) && qpRange80(o_9) ==> (NoPerm < FullPerm ==> invRecv80(o_9) == o_9) && QPMask[o_9, next] == PostMask[o_9, next] + FullPerm) && (!((g0[invRecv80(o_9)] && NoPerm < FullPerm) && qpRange80(o_9)) ==> QPMask[o_9, next] == PostMask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall n$4: Ref :: { (n$4.next in g0) } { (n$4 in g0), n$4.next } (n$4 in g0) && n$4.next != null ==> (n$4.next in g0))
       if (*) {
-        if (g0[n$4_13]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$4.next (delete_edge1.vpr@490.13--490.22) [83903]"}
-            HasDirectPerm(PostMask, n$4_13, next);
+        if (g0[n$4_9]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$4.next (delete_edge1.vpr@490.13--490.22) [9115]"}
+            HasDirectPerm(PostMask, n$4_9, next);
         }
-        if (g0[n$4_13] && PostHeap[n$4_13, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$4.next (delete_edge1.vpr@490.13--490.22) [83904]"}
-            HasDirectPerm(PostMask, n$4_13, next);
+        if (g0[n$4_9] && PostHeap[n$4_9, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$4.next (delete_edge1.vpr@490.13--490.22) [9116]"}
+            HasDirectPerm(PostMask, n$4_9, next);
         }
         assume false;
       }
-    assume (forall n$4_1_2: Ref ::
-      { g0[PostHeap[n$4_1_2, next]] } { g0[n$4_1_2], PostHeap[n$4_1_2, next] }
-      g0[n$4_1_2] && PostHeap[n$4_1_2, next] != null ==> g0[PostHeap[n$4_1_2, next]]
+    assume (forall n$4_1: Ref ::
+      { g0[PostHeap[n$4_1, next]] } { g0[n$4_1], PostHeap[n$4_1, next] }
+      g0[n$4_1] && PostHeap[n$4_1, next] != null ==> g0[PostHeap[n$4_1, next]]
     );
     assume state(PostHeap, PostMask);
     assume !g1[null];
@@ -5737,7 +5737,7 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n$5.next might not be injective. (delete_edge1.vpr@491.13--491.22) [83905]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n$5.next might not be injective. (delete_edge1.vpr@491.13--491.22) [9117]"}
       (forall n$5_1: Ref, n$5_1_1: Ref ::
       
       (((n$5_1 != n$5_1_1 && g1[n$5_1]) && g1[n$5_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$5_1 != n$5_1_1
@@ -5748,9 +5748,9 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         { PostHeap[n$5_1, next] } { QPMask[n$5_1, next] } { PostHeap[n$5_1, next] }
         g1[n$5_1] && NoPerm < FullPerm ==> qpRange81(n$5_1) && invRecv81(n$5_1) == n$5_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv81(o_4) }
-        (g1[invRecv81(o_4)] && NoPerm < FullPerm) && qpRange81(o_4) ==> invRecv81(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv81(o_9) }
+        (g1[invRecv81(o_9)] && NoPerm < FullPerm) && qpRange81(o_9) ==> invRecv81(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -5760,13 +5760,13 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g1[invRecv81(o_4)] && NoPerm < FullPerm) && qpRange81(o_4) ==> (NoPerm < FullPerm ==> invRecv81(o_4) == o_4) && QPMask[o_4, next] == PostMask[o_4, next] + FullPerm) && (!((g1[invRecv81(o_4)] && NoPerm < FullPerm) && qpRange81(o_4)) ==> QPMask[o_4, next] == PostMask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g1[invRecv81(o_9)] && NoPerm < FullPerm) && qpRange81(o_9) ==> (NoPerm < FullPerm ==> invRecv81(o_9) == o_9) && QPMask[o_9, next] == PostMask[o_9, next] + FullPerm) && (!((g1[invRecv81(o_9)] && NoPerm < FullPerm) && qpRange81(o_9)) ==> QPMask[o_9, next] == PostMask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -5774,11 +5774,11 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     // -- Check definedness of (forall n$6: Ref :: { (n$6.next in g1) } { (n$6 in g1), n$6.next } (n$6 in g1) && n$6.next != null ==> (n$6.next in g1))
       if (*) {
         if (g1[n$6_4]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$6.next (delete_edge1.vpr@491.13--491.22) [83906]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$6.next (delete_edge1.vpr@491.13--491.22) [9118]"}
             HasDirectPerm(PostMask, n$6_4, next);
         }
         if (g1[n$6_4] && PostHeap[n$6_4, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$6.next (delete_edge1.vpr@491.13--491.22) [83907]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$6.next (delete_edge1.vpr@491.13--491.22) [9119]"}
             HasDirectPerm(PostMask, n$6_4, next);
         }
         assume false;
@@ -5793,26 +5793,26 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     // -- Check definedness of acyclic_graph($$(g1))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@493.27--493.33) [83908]"}
+          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@493.27--493.33) [9120]"}
             (forall n_9: Ref ::
             { PostHeap[n_9, next] } { QPMask[n_9, next] } { PostHeap[n_9, next] }
             g1[n_9] && dummyFunction(PostHeap[n_9, next]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@493.27--493.33) [83909]"}
+          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@493.27--493.33) [9121]"}
             (forall n_9: Ref, n_9_1: Ref ::
             { neverTriggered82(n_9), neverTriggered82(n_9_1) }
             (((n_9 != n_9_1 && g1[n_9]) && g1[n_9_1]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_9 != n_9_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@493.27--493.33) [83910]"}
+          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@493.27--493.33) [9122]"}
             (forall n_9: Ref ::
             { PostHeap[n_9, next] } { QPMask[n_9, next] } { PostHeap[n_9, next] }
             g1[n_9] ==> 1 / 2 > NoPerm ==> PostMask[n_9, next] > NoPerm
@@ -5823,9 +5823,9 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
             { PostHeap[n_9, next] } { QPMask[n_9, next] } { PostHeap[n_9, next] }
             g1[n_9] && NoPerm < 1 / 2 ==> qpRange82(n_9) && invRecv82(n_9) == n_9
           );
-          assume (forall o_4: Ref ::
-            { invRecv82(o_4) }
-            g1[invRecv82(o_4)] && (NoPerm < 1 / 2 && qpRange82(o_4)) ==> invRecv82(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv82(o_9) }
+            g1[invRecv82(o_9)] && (NoPerm < 1 / 2 && qpRange82(o_9)) ==> invRecv82(o_9) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -5841,26 +5841,26 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     // -- Check definedness of acyclic_graph($$(g0))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@494.27--494.33) [83911]"}
+          assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@494.27--494.33) [9123]"}
             (forall n_10_1: Ref ::
             { PostHeap[n_10_1, next] } { QPMask[n_10_1, next] } { PostHeap[n_10_1, next] }
             g0[n_10_1] && dummyFunction(PostHeap[n_10_1, next]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@494.27--494.33) [83912]"}
+          assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@494.27--494.33) [9124]"}
             (forall n_10_1: Ref, n_10_2: Ref ::
             { neverTriggered83(n_10_1), neverTriggered83(n_10_2) }
             (((n_10_1 != n_10_2 && g0[n_10_1]) && g0[n_10_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_10_1 != n_10_2
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@494.27--494.33) [83913]"}
+          assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@494.27--494.33) [9125]"}
             (forall n_10_1: Ref ::
             { PostHeap[n_10_1, next] } { QPMask[n_10_1, next] } { PostHeap[n_10_1, next] }
             g0[n_10_1] ==> 1 / 2 > NoPerm ==> PostMask[n_10_1, next] > NoPerm
@@ -5871,9 +5871,9 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
             { PostHeap[n_10_1, next] } { QPMask[n_10_1, next] } { PostHeap[n_10_1, next] }
             g0[n_10_1] && NoPerm < 1 / 2 ==> qpRange83(n_10_1) && invRecv83(n_10_1) == n_10_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv83(o_4) }
-            g0[invRecv83(o_4)] && (NoPerm < 1 / 2 && qpRange83(o_4)) ==> invRecv83(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv83(o_9) }
+            g0[invRecv83(o_9)] && (NoPerm < 1 / 2 && qpRange83(o_9)) ==> invRecv83(o_9) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -5891,39 +5891,39 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         if (g1[n$7_3]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@215.74--215.79) [83914]"}
-                (forall n_11_1: Ref ::
-                { PostHeap[n_11_1, next] } { QPMask[n_11_1, next] } { PostHeap[n_11_1, next] }
-                g1[n_11_1] && dummyFunction(PostHeap[n_11_1, next]) ==> 1 / 2 >= NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. Fraction 1 / 2 might be negative. (delete_edge1.vpr@215.74--215.79) [9126]"}
+                (forall n_11_2: Ref ::
+                { PostHeap[n_11_2, next] } { QPMask[n_11_2, next] } { PostHeap[n_11_2, next] }
+                g1[n_11_2] && dummyFunction(PostHeap[n_11_2, next]) ==> 1 / 2 >= NoPerm
               );
             
             // -- check if receiver n is injective
-              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@215.74--215.79) [83915]"}
-                (forall n_11_1: Ref, n_11_2: Ref ::
-                { neverTriggered84(n_11_1), neverTriggered84(n_11_2) }
-                (((n_11_1 != n_11_2 && g1[n_11_1]) && g1[n_11_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_11_1 != n_11_2
+              assert {:msg "  Precondition of function $$ might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@215.74--215.79) [9127]"}
+                (forall n_11_2: Ref, n_11_3: Ref ::
+                { neverTriggered84(n_11_2), neverTriggered84(n_11_3) }
+                (((n_11_2 != n_11_3 && g1[n_11_2]) && g1[n_11_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> n_11_2 != n_11_3
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@215.74--215.79) [83916]"}
-                (forall n_11_1: Ref ::
-                { PostHeap[n_11_1, next] } { QPMask[n_11_1, next] } { PostHeap[n_11_1, next] }
-                g1[n_11_1] ==> 1 / 2 > NoPerm ==> PostMask[n_11_1, next] > NoPerm
+              assert {:msg "  Precondition of function $$ might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@215.74--215.79) [9128]"}
+                (forall n_11_2: Ref ::
+                { PostHeap[n_11_2, next] } { QPMask[n_11_2, next] } { PostHeap[n_11_2, next] }
+                g1[n_11_2] ==> 1 / 2 > NoPerm ==> PostMask[n_11_2, next] > NoPerm
               );
             
             // -- assumptions for inverse of receiver n
-              assume (forall n_11_1: Ref ::
-                { PostHeap[n_11_1, next] } { QPMask[n_11_1, next] } { PostHeap[n_11_1, next] }
-                g1[n_11_1] && NoPerm < 1 / 2 ==> qpRange84(n_11_1) && invRecv84(n_11_1) == n_11_1
+              assume (forall n_11_2: Ref ::
+                { PostHeap[n_11_2, next] } { QPMask[n_11_2, next] } { PostHeap[n_11_2, next] }
+                g1[n_11_2] && NoPerm < 1 / 2 ==> qpRange84(n_11_2) && invRecv84(n_11_2) == n_11_2
               );
-              assume (forall o_4: Ref ::
-                { invRecv84(o_4) }
-                g1[invRecv84(o_4)] && (NoPerm < 1 / 2 && qpRange84(o_4)) ==> invRecv84(o_4) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv84(o_9) }
+                g1[invRecv84(o_9)] && (NoPerm < 1 / 2 && qpRange84(o_9)) ==> invRecv84(o_9) == o_9
               );
             // Finish exhale
             havoc ExhaleHeap;
@@ -5936,8 +5936,8 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         assume false;
       }
     assume (forall n$7_1: Ref ::
-      { (exists_path($$#frame(FrameFragment($$#condqp1(PostHeap, g1)), g1), x1_2, n$7_1): bool) }
-      g1[n$7_1] ==> (exists_path($$(PostHeap, g1), x1_2, n$7_1): bool)
+      { (exists_path($$#frame(FrameFragment($$#condqp1(PostHeap, g1)), g1), x1, n$7_1): bool) }
+      g1[n$7_1] ==> (exists_path($$(PostHeap, g1), x1, n$7_1): bool)
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -5950,35 +5950,35 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     // -- Check definedness of apply_TCFraming(g0, g1)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@498.12--498.34) [83917]"}
-            (forall n_12_1: Ref, n_12_2: Ref ::
-            { neverTriggered87(n_12_1), neverTriggered87(n_12_2) }
-            (((n_12_1 != n_12_2 && g0[n_12_1]) && g0[n_12_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_12_1 != n_12_2
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@498.12--498.34) [9129]"}
+            (forall n_12: Ref, n_12_1: Ref ::
+            { neverTriggered87(n_12), neverTriggered87(n_12_1) }
+            (((n_12 != n_12_1 && g0[n_12]) && g0[n_12_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_12 != n_12_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@498.12--498.34) [83918]"}
-            (forall n_12_1: Ref ::
-            { Heap[n_12_1, next] } { QPMask[n_12_1, next] } { Heap[n_12_1, next] }
-            g0[n_12_1] ==> FullPerm > NoPerm ==> Mask[n_12_1, next] > NoPerm
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@498.12--498.34) [9130]"}
+            (forall n_12: Ref ::
+            { Heap[n_12, next] } { QPMask[n_12, next] } { Heap[n_12, next] }
+            g0[n_12] ==> FullPerm > NoPerm ==> Mask[n_12, next] > NoPerm
           );
         
         // -- assumptions for inverse of receiver n
-          assume (forall n_12_1: Ref ::
-            { Heap[n_12_1, next] } { QPMask[n_12_1, next] } { Heap[n_12_1, next] }
-            g0[n_12_1] && NoPerm < FullPerm ==> qpRange87(n_12_1) && invRecv87(n_12_1) == n_12_1
+          assume (forall n_12: Ref ::
+            { Heap[n_12, next] } { QPMask[n_12, next] } { Heap[n_12, next] }
+            g0[n_12] && NoPerm < FullPerm ==> qpRange87(n_12) && invRecv87(n_12) == n_12
           );
-          assume (forall o_4: Ref ::
-            { invRecv87(o_4) }
-            g0[invRecv87(o_4)] && (NoPerm < FullPerm && qpRange87(o_4)) ==> invRecv87(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv87(o_9) }
+            g0[invRecv87(o_9)] && (NoPerm < FullPerm && qpRange87(o_9)) ==> invRecv87(o_9) == o_9
           );
         havoc QPMask;
         
@@ -5986,29 +5986,29 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@498.12--498.34) [83919]"}
-            (forall n_13: Ref, n_13_1: Ref ::
-            { neverTriggered88(n_13), neverTriggered88(n_13_1) }
-            (((n_13 != n_13_1 && g1[n_13]) && g1[n_13_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_13 != n_13_1
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@498.12--498.34) [9131]"}
+            (forall n_13_2: Ref, n_13_3: Ref ::
+            { neverTriggered88(n_13_2), neverTriggered88(n_13_3) }
+            (((n_13_2 != n_13_3 && g1[n_13_2]) && g1[n_13_3]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_13_2 != n_13_3
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@498.12--498.34) [83920]"}
-            (forall n_13: Ref ::
-            { Heap[n_13, next] } { QPMask[n_13, next] } { Heap[n_13, next] }
-            g1[n_13] ==> FullPerm > NoPerm ==> Mask[n_13, next] > NoPerm
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@498.12--498.34) [9132]"}
+            (forall n_13_2: Ref ::
+            { Heap[n_13_2, next] } { QPMask[n_13_2, next] } { Heap[n_13_2, next] }
+            g1[n_13_2] ==> FullPerm > NoPerm ==> Mask[n_13_2, next] > NoPerm
           );
         
         // -- assumptions for inverse of receiver n
-          assume (forall n_13: Ref ::
-            { Heap[n_13, next] } { QPMask[n_13, next] } { Heap[n_13, next] }
-            g1[n_13] && NoPerm < FullPerm ==> qpRange88(n_13) && invRecv88(n_13) == n_13
+          assume (forall n_13_2: Ref ::
+            { Heap[n_13_2, next] } { QPMask[n_13_2, next] } { Heap[n_13_2, next] }
+            g1[n_13_2] && NoPerm < FullPerm ==> qpRange88(n_13_2) && invRecv88(n_13_2) == n_13_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv88(o_4) }
-            g1[invRecv88(o_4)] && (NoPerm < FullPerm && qpRange88(o_4)) ==> invRecv88(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv88(o_9) }
+            g1[invRecv88(o_9)] && (NoPerm < FullPerm && qpRange88(o_9)) ==> invRecv88(o_9) == o_9
           );
-        assert {:msg "  Precondition of function apply_TCFraming might not hold. Assertion (g1 intersection g0) == Set[Ref]() might not hold. (delete_edge1.vpr@498.12--498.34) [83921]"}
+        assert {:msg "  Precondition of function apply_TCFraming might not hold. Assertion (g1 intersection g0) == Set[Ref]() might not hold. (delete_edge1.vpr@498.12--498.34) [9133]"}
           Set#Equal(Set#Intersection(g1, g0), (Set#Empty(): Set Ref));
         // Finish exhale
         havoc ExhaleHeap;
@@ -6027,11 +6027,11 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     arg_g := Set#Union(g0, g1);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method unlink_dags might not hold. Assertion (x0 in (g0 union g1)) might not hold. (delete_edge1.vpr@499.5--499.32) [83922]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method unlink_dags might not hold. Assertion (x0 in (g0 union g1)) might not hold. (delete_edge1.vpr@499.5--499.32) [9134]"}
         arg_g[x0];
-      assert {:msg "  The precondition of method unlink_dags might not hold. Assertion !((null in (g0 union g1))) might not hold. (delete_edge1.vpr@499.5--499.32) [83923]"}
+      assert {:msg "  The precondition of method unlink_dags might not hold. Assertion !((null in (g0 union g1))) might not hold. (delete_edge1.vpr@499.5--499.32) [9135]"}
         !arg_g[null];
       havoc QPMask;
       
@@ -6039,51 +6039,51 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         
       
       // -- check if receiver n is injective
-        assert {:msg "  The precondition of method unlink_dags might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@499.5--499.32) [83924]"}
-          (forall n_14: Ref, n_14_1: Ref ::
-          { neverTriggered89(n_14), neverTriggered89(n_14_1) }
-          (((n_14 != n_14_1 && arg_g[n_14]) && arg_g[n_14_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_14 != n_14_1
+        assert {:msg "  The precondition of method unlink_dags might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@499.5--499.32) [9136]"}
+          (forall n_14_1: Ref, n_14_2: Ref ::
+          { neverTriggered89(n_14_1), neverTriggered89(n_14_2) }
+          (((n_14_1 != n_14_2 && arg_g[n_14_1]) && arg_g[n_14_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_14_1 != n_14_2
         );
       
       // -- check if sufficient permission is held
-        assert {:msg "  The precondition of method unlink_dags might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@499.5--499.32) [83925]"}
-          (forall n_14: Ref ::
-          { Heap[n_14, next] } { QPMask[n_14, next] } { Heap[n_14, next] }
-          arg_g[n_14] ==> Mask[n_14, next] >= FullPerm
+        assert {:msg "  The precondition of method unlink_dags might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@499.5--499.32) [9137]"}
+          (forall n_14_1: Ref ::
+          { Heap[n_14_1, next] } { QPMask[n_14_1, next] } { Heap[n_14_1, next] }
+          arg_g[n_14_1] ==> Mask[n_14_1, next] >= FullPerm
         );
       
       // -- assumptions for inverse of receiver n
-        assume (forall n_14: Ref ::
-          { Heap[n_14, next] } { QPMask[n_14, next] } { Heap[n_14, next] }
-          arg_g[n_14] && NoPerm < FullPerm ==> qpRange89(n_14) && invRecv89(n_14) == n_14
+        assume (forall n_14_1: Ref ::
+          { Heap[n_14_1, next] } { QPMask[n_14_1, next] } { Heap[n_14_1, next] }
+          arg_g[n_14_1] && NoPerm < FullPerm ==> qpRange89(n_14_1) && invRecv89(n_14_1) == n_14_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv89(o_4) }
-          arg_g[invRecv89(o_4)] && (NoPerm < FullPerm && qpRange89(o_4)) ==> invRecv89(o_4) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv89(o_9) }
+          arg_g[invRecv89(o_9)] && (NoPerm < FullPerm && qpRange89(o_9)) ==> invRecv89(o_9) == o_9
         );
       
       // -- assume permission updates for field next
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, next] }
-          (arg_g[invRecv89(o_4)] && (NoPerm < FullPerm && qpRange89(o_4)) ==> invRecv89(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - FullPerm) && (!(arg_g[invRecv89(o_4)] && (NoPerm < FullPerm && qpRange89(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, next] }
+          (arg_g[invRecv89(o_9)] && (NoPerm < FullPerm && qpRange89(o_9)) ==> invRecv89(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - FullPerm) && (!(arg_g[invRecv89(o_9)] && (NoPerm < FullPerm && qpRange89(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
         );
       
       // -- assume permission updates for independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { QPMask[o_4, f_5] }
-          f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { QPMask[o_9, f_5] }
+          f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       if (*) {
         if (arg_g[n$0_4] && Heap[n$0_4, next] != null) {
-          assert {:msg "  The precondition of method unlink_dags might not hold. Assertion (n$0.next in (g0 union g1)) might not hold. (delete_edge1.vpr@499.5--499.32) [83926]"}
+          assert {:msg "  The precondition of method unlink_dags might not hold. Assertion (n$0.next in (g0 union g1)) might not hold. (delete_edge1.vpr@499.5--499.32) [9138]"}
             arg_g[Heap[n$0_4, next]];
         }
         assume false;
       }
-      assume (forall n$0_5_1: Ref ::
-        { arg_g[Heap[n$0_5_1, next]] } { arg_g[n$0_5_1], Heap[n$0_5_1, next] }
-        arg_g[n$0_5_1] && Heap[n$0_5_1, next] != null ==> arg_g[Heap[n$0_5_1, next]]
+      assume (forall n$0_5_1_1: Ref ::
+        { arg_g[Heap[n$0_5_1_1, next]] } { arg_g[n$0_5_1_1], Heap[n$0_5_1_1, next] }
+        arg_g[n$0_5_1_1] && Heap[n$0_5_1_1, next] != null ==> arg_g[Heap[n$0_5_1_1, next]]
       );
       // Finish exhale
       havoc ExhaleHeap;
@@ -6093,7 +6093,7 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     // -- Inhaling postcondition
       assume !arg_g[null];
       havoc QPMask;
-      assert {:msg "  Method call might fail. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@499.5--499.32) [83927]"}
+      assert {:msg "  Method call might fail. Quantified resource n$1.next might not be injective. (delete_edge1.vpr@499.5--499.32) [9139]"}
         (forall n$1_2: Ref, n$1_2_1: Ref ::
         
         (((n$1_2 != n$1_2_1 && arg_g[n$1_2]) && arg_g[n$1_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$1_2 != n$1_2_1
@@ -6104,9 +6104,9 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
           { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
           arg_g[n$1_2] && NoPerm < FullPerm ==> qpRange90(n$1_2) && invRecv90(n$1_2) == n$1_2
         );
-        assume (forall o_4: Ref ::
-          { invRecv90(o_4) }
-          (arg_g[invRecv90(o_4)] && NoPerm < FullPerm) && qpRange90(o_4) ==> invRecv90(o_4) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv90(o_9) }
+          (arg_g[invRecv90(o_9)] && NoPerm < FullPerm) && qpRange90(o_9) ==> invRecv90(o_9) == o_9
         );
       
       // -- Assume set of fields is nonNull
@@ -6116,13 +6116,13 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, next] }
-          ((arg_g[invRecv90(o_4)] && NoPerm < FullPerm) && qpRange90(o_4) ==> (NoPerm < FullPerm ==> invRecv90(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!((arg_g[invRecv90(o_4)] && NoPerm < FullPerm) && qpRange90(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, next] }
+          ((arg_g[invRecv90(o_9)] && NoPerm < FullPerm) && qpRange90(o_9) ==> (NoPerm < FullPerm ==> invRecv90(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!((arg_g[invRecv90(o_9)] && NoPerm < FullPerm) && qpRange90(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
@@ -6150,15 +6150,15 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         assume state(Heap, Mask);
         assume (forall v1_1: Ref, v2_1: Ref ::
           { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, arg_g)), arg_g), v1_1, v2_1): bool) }
-          (exists_path($$(Heap, arg_g), v1_1, v2_1): bool) == (v1_1 == v2_1 || (v1_1 != v2_1 && ((exists n_16: Ref ::
-            { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), v1_1, n_16): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), n_16, v2_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), n_16, x0): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), x0, n_16): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), n_16, PreCallHeap[x0, next]): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), PreCallHeap[x0, next], n_16): bool) }
-            (exists_path($$(PreCallHeap, arg_g), v1_1, n_16): bool) && ((exists_path($$(PreCallHeap, arg_g), n_16, v2_1): bool) && ((!(exists_path($$(PreCallHeap, arg_g), n_16, x0): bool) && !(exists_path($$(PreCallHeap, arg_g), x0, n_16): bool)) || (!(exists_path($$(PreCallHeap, arg_g), n_16, PreCallHeap[x0, next]): bool) && !(exists_path($$(PreCallHeap, arg_g), PreCallHeap[x0, next], n_16): bool))))
+          (exists_path($$(Heap, arg_g), v1_1, v2_1): bool) == (v1_1 == v2_1 || (v1_1 != v2_1 && ((exists n_16_1: Ref ::
+            { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), v1_1, n_16_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), n_16_1, v2_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), n_16_1, x0): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), x0, n_16_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), n_16_1, PreCallHeap[x0, next]): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), PreCallHeap[x0, next], n_16_1): bool) }
+            (exists_path($$(PreCallHeap, arg_g), v1_1, n_16_1): bool) && ((exists_path($$(PreCallHeap, arg_g), n_16_1, v2_1): bool) && ((!(exists_path($$(PreCallHeap, arg_g), n_16_1, x0): bool) && !(exists_path($$(PreCallHeap, arg_g), x0, n_16_1): bool)) || (!(exists_path($$(PreCallHeap, arg_g), n_16_1, PreCallHeap[x0, next]): bool) && !(exists_path($$(PreCallHeap, arg_g), PreCallHeap[x0, next], n_16_1): bool))))
           ) || ((exists n_17: Ref ::
             { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), x0, n_17): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), n_17, PreCallHeap[x0, next]): bool) }
             n_17 != x0 && (n_17 != PreCallHeap[x0, next] && ((exists_path($$(PreCallHeap, arg_g), x0, n_17): bool) && (exists_path($$(PreCallHeap, arg_g), n_17, PreCallHeap[x0, next]): bool)))
-          ) || (exists u_3: Ref, v_2: Ref ::
-            { (edge($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), u_3, v_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), v1_1, u_3): bool), (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), PreCallHeap[x0, next], v_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), v1_1, u_3): bool), (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), v_2, v2_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), u_3, x0): bool), (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), PreCallHeap[x0, next], v_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), u_3, x0): bool), (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), v_2, v2_1): bool) }
-            (u_3 != x0 || v_2 != PreCallHeap[x0, next]) && ((edge($$(PreCallHeap, arg_g), u_3, v_2): bool) && ((exists_path($$(PreCallHeap, arg_g), v1_1, u_3): bool) && ((exists_path($$(PreCallHeap, arg_g), u_3, x0): bool) && ((exists_path($$(PreCallHeap, arg_g), PreCallHeap[x0, next], v_2): bool) && (exists_path($$(PreCallHeap, arg_g), v_2, v2_1): bool)))))
+          ) || (exists u_1: Ref, v_2: Ref ::
+            { (edge($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), u_1, v_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), v1_1, u_1): bool), (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), PreCallHeap[x0, next], v_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), v1_1, u_1): bool), (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), v_2, v2_1): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), u_1, x0): bool), (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), PreCallHeap[x0, next], v_2): bool) } { (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), u_1, x0): bool), (exists_path($$#frame(FrameFragment($$#condqp1(PreCallHeap, arg_g)), arg_g), v_2, v2_1): bool) }
+            (u_1 != x0 || v_2 != PreCallHeap[x0, next]) && ((edge($$(PreCallHeap, arg_g), u_1, v_2): bool) && ((exists_path($$(PreCallHeap, arg_g), v1_1, u_1): bool) && ((exists_path($$(PreCallHeap, arg_g), u_1, x0): bool) && ((exists_path($$(PreCallHeap, arg_g), PreCallHeap[x0, next], v_2): bool) && (exists_path($$(PreCallHeap, arg_g), v_2, v2_1): bool)))))
           )))))
         );
       }
@@ -6171,22 +6171,22 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     // -- Check definedness of apply_TCFraming(g0, g1)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@500.12--500.34) [83928]"}
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@500.12--500.34) [9140]"}
             (forall n_18: Ref, n_18_1: Ref ::
             { neverTriggered91(n_18), neverTriggered91(n_18_1) }
             (((n_18 != n_18_1 && g0[n_18]) && g0[n_18_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_18 != n_18_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@500.12--500.34) [83929]"}
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@500.12--500.34) [9141]"}
             (forall n_18: Ref ::
             { Heap[n_18, next] } { QPMask[n_18, next] } { Heap[n_18, next] }
             g0[n_18] ==> FullPerm > NoPerm ==> Mask[n_18, next] > NoPerm
@@ -6197,9 +6197,9 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
             { Heap[n_18, next] } { QPMask[n_18, next] } { Heap[n_18, next] }
             g0[n_18] && NoPerm < FullPerm ==> qpRange91(n_18) && invRecv91(n_18) == n_18
           );
-          assume (forall o_4: Ref ::
-            { invRecv91(o_4) }
-            g0[invRecv91(o_4)] && (NoPerm < FullPerm && qpRange91(o_4)) ==> invRecv91(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv91(o_9) }
+            g0[invRecv91(o_9)] && (NoPerm < FullPerm && qpRange91(o_9)) ==> invRecv91(o_9) == o_9
           );
         havoc QPMask;
         
@@ -6207,14 +6207,14 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@500.12--500.34) [83930]"}
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. Quantified resource n.next might not be injective. (delete_edge1.vpr@500.12--500.34) [9142]"}
             (forall n_19: Ref, n_19_1: Ref ::
             { neverTriggered92(n_19), neverTriggered92(n_19_1) }
             (((n_19 != n_19_1 && g1[n_19]) && g1[n_19_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_19 != n_19_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@500.12--500.34) [83931]"}
+          assert {:msg "  Precondition of function apply_TCFraming might not hold. There might be insufficient permission to access n.next (delete_edge1.vpr@500.12--500.34) [9143]"}
             (forall n_19: Ref ::
             { Heap[n_19, next] } { QPMask[n_19, next] } { Heap[n_19, next] }
             g1[n_19] ==> FullPerm > NoPerm ==> Mask[n_19, next] > NoPerm
@@ -6225,11 +6225,11 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
             { Heap[n_19, next] } { QPMask[n_19, next] } { Heap[n_19, next] }
             g1[n_19] && NoPerm < FullPerm ==> qpRange92(n_19) && invRecv92(n_19) == n_19
           );
-          assume (forall o_4: Ref ::
-            { invRecv92(o_4) }
-            g1[invRecv92(o_4)] && (NoPerm < FullPerm && qpRange92(o_4)) ==> invRecv92(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv92(o_9) }
+            g1[invRecv92(o_9)] && (NoPerm < FullPerm && qpRange92(o_9)) ==> invRecv92(o_9) == o_9
           );
-        assert {:msg "  Precondition of function apply_TCFraming might not hold. Assertion (g1 intersection g0) == Set[Ref]() might not hold. (delete_edge1.vpr@500.12--500.34) [83932]"}
+        assert {:msg "  Precondition of function apply_TCFraming might not hold. Assertion (g1 intersection g0) == Set[Ref]() might not hold. (delete_edge1.vpr@500.12--500.34) [9144]"}
           Set#Equal(Set#Intersection(g1, g0), (Set#Empty(): Set Ref));
         // Finish exhale
         havoc ExhaleHeap;
@@ -6243,9 +6243,9 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion !((null in g0)) might not hold. (delete_edge1.vpr@490.13--490.22) [83933]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion !((null in g0)) might not hold. (delete_edge1.vpr@490.13--490.22) [9145]"}
       !g0[null];
     havoc QPMask;
     
@@ -6253,14 +6253,14 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
       
     
     // -- check if receiver n$3 is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource n$3.next might not be injective. (delete_edge1.vpr@490.13--490.22) [83934]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource n$3.next might not be injective. (delete_edge1.vpr@490.13--490.22) [9146]"}
         (forall n$3_2: Ref, n$3_2_1: Ref ::
         { neverTriggered85(n$3_2), neverTriggered85(n$3_2_1) }
         (((n$3_2 != n$3_2_1 && g0[n$3_2]) && g0[n$3_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$3_2 != n$3_2_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of unjoin_dags might not hold. There might be insufficient permission to access n$3.next (delete_edge1.vpr@490.13--490.22) [83935]"}
+      assert {:msg "  Postcondition of unjoin_dags might not hold. There might be insufficient permission to access n$3.next (delete_edge1.vpr@490.13--490.22) [9147]"}
         (forall n$3_2: Ref ::
         { Heap[n$3_2, next] } { QPMask[n$3_2, next] } { Heap[n$3_2, next] }
         g0[n$3_2] ==> Mask[n$3_2, next] >= FullPerm
@@ -6271,27 +6271,27 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         { Heap[n$3_2, next] } { QPMask[n$3_2, next] } { Heap[n$3_2, next] }
         g0[n$3_2] && NoPerm < FullPerm ==> qpRange85(n$3_2) && invRecv85(n$3_2) == n$3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv85(o_4) }
-        g0[invRecv85(o_4)] && (NoPerm < FullPerm && qpRange85(o_4)) ==> invRecv85(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv85(o_9) }
+        g0[invRecv85(o_9)] && (NoPerm < FullPerm && qpRange85(o_9)) ==> invRecv85(o_9) == o_9
       );
     
     // -- assume permission updates for field next
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (g0[invRecv85(o_4)] && (NoPerm < FullPerm && qpRange85(o_4)) ==> invRecv85(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - FullPerm) && (!(g0[invRecv85(o_4)] && (NoPerm < FullPerm && qpRange85(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (g0[invRecv85(o_9)] && (NoPerm < FullPerm && qpRange85(o_9)) ==> invRecv85(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - FullPerm) && (!(g0[invRecv85(o_9)] && (NoPerm < FullPerm && qpRange85(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (g0[n$4_2_1] && Heap[n$4_2_1, next] != null) {
-        assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion (n$4.next in g0) might not hold. (delete_edge1.vpr@490.13--490.22) [83936]"}
-          g0[Heap[n$4_2_1, next]];
+      if (g0[n$4_2] && Heap[n$4_2, next] != null) {
+        assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion (n$4.next in g0) might not hold. (delete_edge1.vpr@490.13--490.22) [9148]"}
+          g0[Heap[n$4_2, next]];
       }
       assume false;
     }
@@ -6299,7 +6299,7 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
       { g0[Heap[n$4_3_1, next]] } { g0[n$4_3_1], Heap[n$4_3_1, next] }
       g0[n$4_3_1] && Heap[n$4_3_1, next] != null ==> g0[Heap[n$4_3_1, next]]
     );
-    assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion !((null in g1)) might not hold. (delete_edge1.vpr@491.13--491.22) [83937]"}
+    assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion !((null in g1)) might not hold. (delete_edge1.vpr@491.13--491.22) [9149]"}
       !g1[null];
     havoc QPMask;
     
@@ -6307,14 +6307,14 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
       
     
     // -- check if receiver n$5 is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource n$5.next might not be injective. (delete_edge1.vpr@491.13--491.22) [83938]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource n$5.next might not be injective. (delete_edge1.vpr@491.13--491.22) [9150]"}
         (forall n$5_2: Ref, n$5_2_1: Ref ::
         { neverTriggered86(n$5_2), neverTriggered86(n$5_2_1) }
         (((n$5_2 != n$5_2_1 && g1[n$5_2]) && g1[n$5_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$5_2 != n$5_2_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of unjoin_dags might not hold. There might be insufficient permission to access n$5.next (delete_edge1.vpr@491.13--491.22) [83939]"}
+      assert {:msg "  Postcondition of unjoin_dags might not hold. There might be insufficient permission to access n$5.next (delete_edge1.vpr@491.13--491.22) [9151]"}
         (forall n$5_2: Ref ::
         { Heap[n$5_2, next] } { QPMask[n$5_2, next] } { Heap[n$5_2, next] }
         g1[n$5_2] ==> Mask[n$5_2, next] >= FullPerm
@@ -6325,26 +6325,26 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
         { Heap[n$5_2, next] } { QPMask[n$5_2, next] } { Heap[n$5_2, next] }
         g1[n$5_2] && NoPerm < FullPerm ==> qpRange86(n$5_2) && invRecv86(n$5_2) == n$5_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv86(o_4) }
-        g1[invRecv86(o_4)] && (NoPerm < FullPerm && qpRange86(o_4)) ==> invRecv86(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv86(o_9) }
+        g1[invRecv86(o_9)] && (NoPerm < FullPerm && qpRange86(o_9)) ==> invRecv86(o_9) == o_9
       );
     
     // -- assume permission updates for field next
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (g1[invRecv86(o_4)] && (NoPerm < FullPerm && qpRange86(o_4)) ==> invRecv86(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - FullPerm) && (!(g1[invRecv86(o_4)] && (NoPerm < FullPerm && qpRange86(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (g1[invRecv86(o_9)] && (NoPerm < FullPerm && qpRange86(o_9)) ==> invRecv86(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - FullPerm) && (!(g1[invRecv86(o_9)] && (NoPerm < FullPerm && qpRange86(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
       if (g1[n$6_2] && Heap[n$6_2, next] != null) {
-        assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion (n$6.next in g1) might not hold. (delete_edge1.vpr@491.13--491.22) [83940]"}
+        assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion (n$6.next in g1) might not hold. (delete_edge1.vpr@491.13--491.22) [9152]"}
           g1[Heap[n$6_2, next]];
       }
       assume false;
@@ -6353,20 +6353,20 @@ procedure unjoin_dags(g0: (Set Ref), g1: (Set Ref), x0: Ref, x1_2: Ref) returns 
       { g1[Heap[n$6_3_1, next]] } { g1[n$6_3_1], Heap[n$6_3_1, next] }
       g1[n$6_3_1] && Heap[n$6_3_1, next] != null ==> g1[Heap[n$6_3_1, next]]
     );
-    assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion acyclic_graph($$(g1)) might not hold. (delete_edge1.vpr@493.13--493.34) [83941]"}
+    assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion acyclic_graph($$(g1)) might not hold. (delete_edge1.vpr@493.13--493.34) [9153]"}
       (acyclic_graph($$(Heap, g1)): bool);
-    assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion acyclic_graph($$(g0)) might not hold. (delete_edge1.vpr@494.13--494.34) [83942]"}
+    assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion acyclic_graph($$(g0)) might not hold. (delete_edge1.vpr@494.13--494.34) [9154]"}
       (acyclic_graph($$(Heap, g0)): bool);
     if (*) {
       if (g1[n$7_2]) {
-        assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion exists_path($$(g1), x1, n$7) might not hold. (delete_edge1.vpr@496.13--496.34) [83943]"}
-          (exists_path($$(Heap, g1), x1_2, n$7_2): bool);
+        assert {:msg "  Postcondition of unjoin_dags might not hold. Assertion exists_path($$(g1), x1, n$7) might not hold. (delete_edge1.vpr@496.13--496.34) [9155]"}
+          (exists_path($$(Heap, g1), x1, n$7_2): bool);
       }
       assume false;
     }
     assume (forall n$7_3_1: Ref ::
-      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), x1_2, n$7_3_1): bool) }
-      g1[n$7_3_1] ==> (exists_path($$(Heap, g1), x1_2, n$7_3_1): bool)
+      { (exists_path($$#frame(FrameFragment($$#condqp1(Heap, g1)), g1), x1, n$7_3_1): bool) }
+      g1[n$7_3_1] ==> (exists_path($$(Heap, g1), x1, n$7_3_1): bool)
     );
     // Finish exhale
     havoc ExhaleHeap;

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:32
+// Date:         2025-01-26 21:43:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/fold.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/fold-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -234,7 +234,7 @@ procedure valid#definedness(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f == 0
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access r.f (fold.vpr@7.1--9.2) [185853]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access r.f (fold.vpr@7.1--9.2) [96854]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] == 0;
     assume state(Heap, Mask);
@@ -244,7 +244,7 @@ procedure valid#definedness(r_1: Ref) returns ()
 // Translation of method t1
 // ==================================================
 
-procedure t1(r_1: Ref) returns ()
+procedure t1_2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -277,7 +277,7 @@ procedure t1(r_1: Ref) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: r.f := 0 -- fold.vpr@14.5--14.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (fold.vpr@14.5--14.13) [185854]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (fold.vpr@14.5--14.13) [96855]"}
       FullPerm == Mask[r_1, f_7];
     Heap := Heap[r_1, f_7:=0];
     assume state(Heap, Mask);
@@ -287,11 +287,11 @@ procedure t1(r_1: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding valid(r) might fail. There might be insufficient permission to access r.f (fold.vpr@15.5--15.30) [185857]"}
+      assert {:msg "  Folding valid(r) might fail. There might be insufficient permission to access r.f (fold.vpr@15.5--15.30) [96858]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
-    assert {:msg "  Folding valid(r) might fail. Assertion r.f == 0 might not hold. (fold.vpr@15.5--15.30) [185858]"}
+    assert {:msg "  Folding valid(r) might fail. Assertion r.f == 0 might not hold. (fold.vpr@15.5--15.30) [96859]"}
       Heap[r_1, f_7] == 0;
     perm := FullPerm;
     Mask := Mask[null, valid(r_1):=Mask[null, valid(r_1)] + perm];
@@ -315,7 +315,7 @@ procedure t1(r_1: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding valid(r) might fail. There might be insufficient permission to access valid(r) (fold.vpr@16.5--16.32) [185862]"}
+      assert {:msg "  Unfolding valid(r) might fail. There might be insufficient permission to access valid(r) (fold.vpr@16.5--16.32) [96863]"}
         perm <= Mask[null, valid(r_1)];
     }
     Mask := Mask[null, valid(r_1):=Mask[null, valid(r_1)] - perm];
@@ -336,7 +336,7 @@ procedure t1(r_1: Ref) returns ()
   // -- Translating statement: assert false -- fold.vpr@18.5--18.17
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (fold.vpr@18.12--18.17) [185864]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (fold.vpr@18.12--18.17) [96865]"}
       false;
     assume state(Heap, Mask);
 }
@@ -345,7 +345,7 @@ procedure t1(r_1: Ref) returns ()
 // Translation of method t2
 // ==================================================
 
-procedure t2(r_1: Ref) returns ()
+procedure t2_2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -377,7 +377,7 @@ procedure t2(r_1: Ref) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: r.f := 1 -- fold.vpr@24.5--24.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (fold.vpr@24.5--24.13) [185865]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (fold.vpr@24.5--24.13) [96866]"}
       FullPerm == Mask[r_1, f_7];
     Heap := Heap[r_1, f_7:=1];
     assume state(Heap, Mask);
@@ -387,11 +387,11 @@ procedure t2(r_1: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding valid(r) might fail. There might be insufficient permission to access r.f (fold.vpr@26.5--26.30) [185868]"}
+      assert {:msg "  Folding valid(r) might fail. There might be insufficient permission to access r.f (fold.vpr@26.5--26.30) [96869]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
-    assert {:msg "  Folding valid(r) might fail. Assertion r.f == 0 might not hold. (fold.vpr@26.5--26.30) [185869]"}
+    assert {:msg "  Folding valid(r) might fail. Assertion r.f == 0 might not hold. (fold.vpr@26.5--26.30) [96870]"}
       Heap[r_1, f_7] == 0;
     perm := FullPerm;
     Mask := Mask[null, valid(r_1):=Mask[null, valid(r_1)] + perm];
@@ -445,7 +445,7 @@ procedure t3(r_1: Ref) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: r.f := 1 -- fold.vpr@32.5--32.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (fold.vpr@32.5--32.13) [185871]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (fold.vpr@32.5--32.13) [96872]"}
       FullPerm == Mask[r_1, f_7];
     Heap := Heap[r_1, f_7:=1];
     assume state(Heap, Mask);
@@ -457,7 +457,7 @@ procedure t3(r_1: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding valid(r) might fail. There might be insufficient permission to access valid(r) (fold.vpr@34.5--34.32) [185874]"}
+      assert {:msg "  Unfolding valid(r) might fail. There might be insufficient permission to access valid(r) (fold.vpr@34.5--34.32) [96875]"}
         perm <= Mask[null, valid(r_1)];
     }
     Mask := Mask[null, valid(r_1):=Mask[null, valid(r_1)] - perm];

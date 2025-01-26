@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:01
+// Date:         2025-01-26 21:43:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/backend_types.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/backend_types-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -563,17 +563,17 @@ axiom !IsWandField(ff);
 // Translation of method test
 // ==================================================
 
-procedure test() returns ()
+procedure test_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r_1: Ref;
   var tmp: bv32;
   var freshObj: Ref;
   var fs: (Seq float24e8);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -583,8 +583,8 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[r_1, $allocated];
@@ -602,7 +602,7 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: r.ff := tofp(toBV32(1103888384)) -- backend_types.vpr@28.3--28.35
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.ff (backend_types.vpr@28.3--28.35) [188219]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.ff (backend_types.vpr@28.3--28.35) [100631]"}
       FullPerm == Mask[r_1, ff];
     Heap := Heap[r_1, ff:=(tofp((toBV32(1103888384): bv32)): float24e8)];
     assume state(Heap, Mask);
@@ -613,33 +613,33 @@ procedure test() returns ()
   
   // -- Translating statement: assert fp_eq(fp_min(tofp(tmp), r.ff), fs[0]) &&
   //   fp_eq(fp_max(tofp(toBV32(1081081856)), tofp(toBV32(1103888384))), tofp(toBV32(1103888384))) -- backend_types.vpr@31.3--32.96
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of fp_eq(fp_min(tofp(tmp), r.ff), fs[0])
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.ff (backend_types.vpr@31.10--32.96) [188220]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.ff (backend_types.vpr@31.10--32.96) [100632]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, ff);
-      assert {:msg "  Assert might fail. Index fs[0] into fs might exceed sequence length. (backend_types.vpr@31.10--32.96) [188221]"}
+      assert {:msg "  Assert might fail. Index fs[0] into fs might exceed sequence length. (backend_types.vpr@31.10--32.96) [100633]"}
         0 < Seq#Length(fs);
-    assert {:msg "  Assert might fail. Assertion fp_eq(fp_min(tofp(tmp), r.ff), fs[0]) might not hold. (backend_types.vpr@31.10--32.96) [188222]"}
+    assert {:msg "  Assert might fail. Assertion fp_eq(fp_min(tofp(tmp), r.ff), fs[0]) might not hold. (backend_types.vpr@31.10--32.96) [100634]"}
       (fp_eq((fp_min((tofp(tmp): float24e8), Heap[r_1, ff]): float24e8), Seq#Index(fs, 0)): bool);
-    assert {:msg "  Assert might fail. Assertion fp_eq(fp_max(tofp(toBV32(1081081856)), tofp(toBV32(1103888384))), tofp(toBV32(1103888384))) might not hold. (backend_types.vpr@31.10--32.96) [188223]"}
+    assert {:msg "  Assert might fail. Assertion fp_eq(fp_max(tofp(toBV32(1081081856)), tofp(toBV32(1103888384))), tofp(toBV32(1103888384))) might not hold. (backend_types.vpr@31.10--32.96) [100635]"}
       (fp_eq((fp_max((tofp((toBV32(1081081856): bv32)): float24e8), (tofp((toBV32(1103888384): bv32)): float24e8)): float24e8), (tofp((toBV32(1103888384): bv32)): float24e8)): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fp_eq(fp_min(tofp(tmp), r.ff), fs[0]) &&
   //   fp_eq(fp_max(tofp(toBV32(1081081856)), tofp(toBV32(1103888384))), tofp(toBV32(110388838))) -- backend_types.vpr@35.3--36.95
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of fp_eq(fp_min(tofp(tmp), r.ff), fs[0])
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.ff (backend_types.vpr@35.10--36.95) [188224]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.ff (backend_types.vpr@35.10--36.95) [100636]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, ff);
-      assert {:msg "  Assert might fail. Index fs[0] into fs might exceed sequence length. (backend_types.vpr@35.10--36.95) [188225]"}
+      assert {:msg "  Assert might fail. Index fs[0] into fs might exceed sequence length. (backend_types.vpr@35.10--36.95) [100637]"}
         0 < Seq#Length(fs);
-    assert {:msg "  Assert might fail. Assertion fp_eq(fp_min(tofp(tmp), r.ff), fs[0]) might not hold. (backend_types.vpr@35.10--36.95) [188226]"}
+    assert {:msg "  Assert might fail. Assertion fp_eq(fp_min(tofp(tmp), r.ff), fs[0]) might not hold. (backend_types.vpr@35.10--36.95) [100638]"}
       (fp_eq((fp_min((tofp(tmp): float24e8), Heap[r_1, ff]): float24e8), Seq#Index(fs, 0)): bool);
-    assert {:msg "  Assert might fail. Assertion fp_eq(fp_max(tofp(toBV32(1081081856)), tofp(toBV32(1103888384))), tofp(toBV32(110388838))) might not hold. (backend_types.vpr@35.10--36.95) [188227]"}
+    assert {:msg "  Assert might fail. Assertion fp_eq(fp_max(tofp(toBV32(1081081856)), tofp(toBV32(1103888384))), tofp(toBV32(110388838))) might not hold. (backend_types.vpr@35.10--36.95) [100639]"}
       (fp_eq((fp_max((tofp((toBV32(1081081856): bv32)): float24e8), (tofp((toBV32(1103888384): bv32)): float24e8)): float24e8), (tofp((toBV32(110388838): bv32)): float24e8)): bool);
     assume state(Heap, Mask);
 }
@@ -651,16 +651,16 @@ procedure test() returns ()
 procedure testOp() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var first_1: float24e8;
-  var second_1: float24e8;
+  var oldMask: MaskType;
+  var first: float24e8;
+  var second: float24e8;
   var res: float24e8;
-  var zero: float24e8;
+  var zero_1: float24e8;
   var addition: float24e8;
   var result_addition: float24e8;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -670,15 +670,15 @@ procedure testOp() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: first := tofp(toBV32(1081081856)) -- backend_types.vpr@47.5--47.38
-    first_1 := (tofp((toBV32(1081081856): bv32)): float24e8);
+    first := (tofp((toBV32(1081081856): bv32)): float24e8);
     assume state(Heap, Mask);
   
   // -- Translating statement: second := tofp(toBV32(1103888384)) -- backend_types.vpr@48.5--48.39
-    second_1 := (tofp((toBV32(1103888384): bv32)): float24e8);
+    second := (tofp((toBV32(1103888384): bv32)): float24e8);
     assume state(Heap, Mask);
   
   // -- Translating statement: res := tofp(toBV32(1105854464)) -- backend_types.vpr@49.5--49.36
@@ -686,28 +686,28 @@ procedure testOp() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: zero := tofp(toBV32(0)) -- backend_types.vpr@51.5--51.28
-    zero := (tofp((toBV32(0): bv32)): float24e8);
+    zero_1 := (tofp((toBV32(0): bv32)): float24e8);
     assume state(Heap, Mask);
   
   // -- Translating statement: addition := add(first, second) -- backend_types.vpr@53.5--53.35
-    addition := (add_2(first_1, second_1): float24e8);
+    addition := (add_1(first, second): float24e8);
     assume state(Heap, Mask);
   
   // -- Translating statement: result_addition := add(res, zero) -- backend_types.vpr@55.5--55.38
-    result_addition := (add_2(res, zero): float24e8);
+    result_addition := (add_1(res, zero_1): float24e8);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert addition == result_addition -- backend_types.vpr@57.5--57.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion addition == result_addition might not hold. (backend_types.vpr@57.12--57.39) [188228]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion addition == result_addition might not hold. (backend_types.vpr@57.12--57.39) [100640]"}
       addition == result_addition;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert gt(addition, result_addition) -- backend_types.vpr@59.5--59.41
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion gt(addition, result_addition) might not hold. (backend_types.vpr@59.12--59.41) [188229]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion gt(addition, result_addition) might not hold. (backend_types.vpr@59.12--59.41) [100641]"}
       (gt(addition, result_addition): bool);
     assume state(Heap, Mask);
 }
@@ -716,13 +716,13 @@ procedure testOp() returns ()
 function { :builtin "(_ to_fp 8 24)" } tofp(bv: bv32): float24e8;
 
 // Translation of SMT function fp_min
-function { :builtin "fp.min" } fp_min(f1_3: float24e8, f2_3: float24e8): float24e8;
+function { :builtin "fp.min" } fp_min(f1: float24e8, f2: float24e8): float24e8;
 
 // Translation of SMT function toBV32
-function { :builtin "(_ int2bv 32)" } toBV32(i_100: int): bv32;
+function { :builtin "(_ int2bv 32)" } toBV32(i_26: int): bv32;
 
 // Translation of SMT function add
-function { :builtin "fp.add RNE" } add_2(d1: float24e8, f2_3: float24e8): float24e8;
+function { :builtin "fp.add RNE" } add_1(d1: float24e8, f2: float24e8): float24e8;
 
 // Translation of SMT function fp_eq
 function { :builtin "fp.eq" } fp_eq(fp_eq_param_3: float24e8, fp_eq_param_4: float24e8): bool;
@@ -731,4 +731,4 @@ function { :builtin "fp.eq" } fp_eq(fp_eq_param_3: float24e8, fp_eq_param_4: flo
 function { :builtin "fp.gt" } gt(gt_param_3: float24e8, gt_param_4: float24e8): bool;
 
 // Translation of SMT function fp_max
-function { :builtin "fp.max" } fp_max(f1_3: float24e8, f2_3: float24e8): float24e8;
+function { :builtin "fp.max" } fp_max(f1: float24e8, f2: float24e8): float24e8;

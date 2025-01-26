@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:05:08
+// Date:         2025-01-26 21:44:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/old.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/old-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -288,16 +288,16 @@ procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -311,8 +311,8 @@ procedure test01(x: Ref) returns ()
   var b_3: bool;
   var ResultHeap: HeapType;
   var ResultMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -333,8 +333,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* acc(x.f, write) && old(fun(x)) {
   // } -- old.vpr@13.3--13.43
@@ -352,8 +352,8 @@ procedure test01(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- old.vpr@13.11--13.43
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, write) && old(fun(x))
@@ -365,7 +365,7 @@ procedure test01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (old.vpr@13.3--13.43) [124287]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (old.vpr@13.3--13.43) [212460]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -408,7 +408,7 @@ procedure test01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(true, x, FullPerm, fun(oldHeap, x)):=Heap[null, wand#sm(true, x, FullPerm, fun(oldHeap, x))][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (old.vpr@13.3--13.43) [124288]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (old.vpr@13.3--13.43) [212461]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -424,10 +424,10 @@ procedure test01(x: Ref) returns ()
         // -- Check definedness of old(fun(x))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access x.f (old.vpr@13.36--13.42) [124289]"}
+            assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access x.f (old.vpr@13.36--13.42) [212462]"}
               NoPerm < perm ==> NoPerm < oldMask[x, f_7];
             // Finish exhale
             // Stop execution
@@ -435,7 +435,7 @@ procedure test01(x: Ref) returns ()
           }
       }
     }
-    assert {:msg "  Packaging wand might fail. Assertion old(fun(x)) might not hold. (old.vpr@13.3--13.43) [124290]"}
+    assert {:msg "  Packaging wand might fail. Assertion old(fun(x)) might not hold. (old.vpr@13.3--13.43) [212463]"}
       (b_1_1 && b_1_1) && b_2_1 ==> fun(oldHeap, x);
     assume state(Heap, Mask);
     Mask := Mask[null, wand(true, x, FullPerm, fun(oldHeap, x)):=Mask[null, wand(true, x, FullPerm, fun(oldHeap, x))] + FullPerm];

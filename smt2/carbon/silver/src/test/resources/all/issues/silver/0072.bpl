@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:31
+// Date:         2025-01-26 21:42:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0072.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0072-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -243,10 +243,10 @@ procedure t_plus(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   
   // -- Initializing the state
@@ -267,22 +267,22 @@ procedure t_plus(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(token(x), 1 / 10) -- 0072.vpr@13.5--13.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 10;
-    assert {:msg "  Folding token(x) might fail. Fraction 1 / 10 might be negative. (0072.vpr@13.5--13.31) [219823]"}
+    assert {:msg "  Folding token(x) might fail. Fraction 1 / 10 might be negative. (0072.vpr@13.5--13.31) [54519]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding token(x) might fail. There might be insufficient permission to access x.f (0072.vpr@13.5--13.31) [219824]"}
+      assert {:msg "  Folding token(x) might fail. There might be insufficient permission to access x.f (0072.vpr@13.5--13.31) [54520]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
     perm := 1 / 10;
-    assert {:msg "  Folding token(x) might fail. Fraction 1 / 10 might be negative. (0072.vpr@13.5--13.31) [219825]"}
+    assert {:msg "  Folding token(x) might fail. Fraction 1 / 10 might be negative. (0072.vpr@13.5--13.31) [54521]"}
       perm >= NoPerm;
     Mask := Mask[null, token(x):=Mask[null, token(x)] + perm];
     assume state(Heap, Mask);
@@ -307,10 +307,10 @@ procedure t_minus_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   
   // -- Initializing the state
@@ -331,24 +331,24 @@ procedure t_minus_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(token(x), -1 / 1) -- 0072.vpr@20.5--20.31
-    assert {:msg "  Folding token(x) might fail. Fraction -1 / 1 might not be positive. (0072.vpr@20.5--20.31) [219826]"}
+    assert {:msg "  Folding token(x) might fail. Fraction -1 / 1 might not be positive. (0072.vpr@20.5--20.31) [54522]"}
       false;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := -1 / 1;
-    assert {:msg "  Folding token(x) might fail. Fraction -1 / 1 might be negative. (0072.vpr@20.5--20.31) [219827]"}
+    assert {:msg "  Folding token(x) might fail. Fraction -1 / 1 might be negative. (0072.vpr@20.5--20.31) [54523]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding token(x) might fail. There might be insufficient permission to access x.f (0072.vpr@20.5--20.31) [219828]"}
+      assert {:msg "  Folding token(x) might fail. There might be insufficient permission to access x.f (0072.vpr@20.5--20.31) [54524]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
     perm := -1 / 1;
-    assert {:msg "  Folding token(x) might fail. Fraction -1 / 1 might be negative. (0072.vpr@20.5--20.31) [219829]"}
+    assert {:msg "  Folding token(x) might fail. Fraction -1 / 1 might be negative. (0072.vpr@20.5--20.31) [54525]"}
       perm >= NoPerm;
     Mask := Mask[null, token(x):=Mask[null, token(x)] + perm];
     assume state(Heap, Mask);
@@ -373,10 +373,10 @@ procedure t_minus_2(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   
   // -- Initializing the state
@@ -397,24 +397,24 @@ procedure t_minus_2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(token(x), -(1 / 1)) -- 0072.vpr@27.5--27.31
-    assert {:msg "  Folding token(x) might fail. Fraction -(1 / 1) might not be positive. (0072.vpr@27.5--27.31) [219830]"}
+    assert {:msg "  Folding token(x) might fail. Fraction -(1 / 1) might not be positive. (0072.vpr@27.5--27.31) [54526]"}
       false;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := -(1 / 1);
-    assert {:msg "  Folding token(x) might fail. Fraction -(1 / 1) might be negative. (0072.vpr@27.5--27.31) [219831]"}
+    assert {:msg "  Folding token(x) might fail. Fraction -(1 / 1) might be negative. (0072.vpr@27.5--27.31) [54527]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding token(x) might fail. There might be insufficient permission to access x.f (0072.vpr@27.5--27.31) [219832]"}
+      assert {:msg "  Folding token(x) might fail. There might be insufficient permission to access x.f (0072.vpr@27.5--27.31) [54528]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
     perm := -(1 / 1);
-    assert {:msg "  Folding token(x) might fail. Fraction -(1 / 1) might be negative. (0072.vpr@27.5--27.31) [219833]"}
+    assert {:msg "  Folding token(x) might fail. Fraction -(1 / 1) might be negative. (0072.vpr@27.5--27.31) [54529]"}
       perm >= NoPerm;
     Mask := Mask[null, token(x):=Mask[null, token(x)] + perm];
     assume state(Heap, Mask);

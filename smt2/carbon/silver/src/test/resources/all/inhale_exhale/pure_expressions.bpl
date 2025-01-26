@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:06
+// Date:         2025-01-26 21:41:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/pure_expressions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/pure_expressions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -204,14 +204,14 @@ procedure aa1() returns ()
   // -- Translating statement: assert [x == 0, x == 1] -- pure_expressions.vpr@10.3--10.26
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@10.10--10.26) [188627]"}
+    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@10.10--10.26) [52348]"}
       x == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [x == 1, x == 0] -- pure_expressions.vpr@14.3--14.26
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x == 0 might not hold. (pure_expressions.vpr@14.10--14.26) [188628]"}
+    assert {:msg "  Assert might fail. Assertion x == 0 might not hold. (pure_expressions.vpr@14.10--14.26) [52349]"}
       x == 0;
     assume state(Heap, Mask);
 }
@@ -252,7 +252,7 @@ procedure aa2() returns ()
   // -- Translating statement: assert false -- pure_expressions.vpr@24.3--24.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@24.10--24.15) [188629]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@24.10--24.15) [52350]"}
       false;
     assume state(Heap, Mask);
 }
@@ -293,7 +293,7 @@ procedure aa3() returns ()
   // -- Translating statement: assert false -- pure_expressions.vpr@35.3--35.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@35.10--35.15) [188630]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@35.10--35.15) [52351]"}
       false;
     assume state(Heap, Mask);
 }
@@ -329,18 +329,18 @@ procedure aa4() returns ()
   // -- Translating statement: assert [x == 0, x == 1] && [x == 0, x == 1] -- pure_expressions.vpr@44.3--44.46
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@44.10--44.46) [188631]"}
+    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@44.10--44.46) [52352]"}
       x == 1;
-    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@44.10--44.46) [188632]"}
+    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@44.10--44.46) [52353]"}
       x == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [x == 1, x == 0] && [x == 0, x == 1] -- pure_expressions.vpr@48.3--48.46
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x == 0 might not hold. (pure_expressions.vpr@48.10--48.46) [188633]"}
+    assert {:msg "  Assert might fail. Assertion x == 0 might not hold. (pure_expressions.vpr@48.10--48.46) [52354]"}
       x == 0;
-    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@48.10--48.46) [188634]"}
+    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@48.10--48.46) [52355]"}
       x == 1;
     assume state(Heap, Mask);
 }
@@ -376,14 +376,14 @@ procedure aa5() returns ()
   // -- Translating statement: assert [[x == 0, x == 0], x == 1] -- pure_expressions.vpr@57.3--57.36
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@57.10--57.36) [188635]"}
+    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@57.10--57.36) [52356]"}
       x == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [[x == 0, x == 0], [x == 0, x == 1]] -- pure_expressions.vpr@60.3--60.46
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@60.10--60.46) [188636]"}
+    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@60.10--60.46) [52357]"}
       x == 1;
     assume state(Heap, Mask);
 }
@@ -419,9 +419,9 @@ procedure aa6() returns ()
   // -- Translating statement: assert [[x == 0, x == 0], [x == 0, x == 1] && x == 1] -- pure_expressions.vpr@69.3--69.56
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@69.10--69.56) [188637]"}
+    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@69.10--69.56) [52358]"}
       x == 1;
-    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@69.10--69.56) [188638]"}
+    assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@69.10--69.56) [52359]"}
       x == 1;
     assume state(Heap, Mask);
   
@@ -429,7 +429,7 @@ procedure aa6() returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     if (x == 1) {
-      assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@72.10--72.57) [188639]"}
+      assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@72.10--72.57) [52360]"}
         x == 1;
     }
     assume state(Heap, Mask);
@@ -439,7 +439,7 @@ procedure aa6() returns ()
 // Translation of method ie1
 // ==================================================
 
-procedure ie1_1() returns ()
+procedure ie1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -466,14 +466,14 @@ procedure ie1_1() returns ()
   // -- Translating statement: exhale [x == 0, x == 1] -- pure_expressions.vpr@81.3--81.26
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Exhale might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@81.10--81.26) [188640]"}
+    assert {:msg "  Exhale might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@81.10--81.26) [52361]"}
       x == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale [x == 1, x == 0] -- pure_expressions.vpr@85.3--85.26
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Exhale might fail. Assertion x == 0 might not hold. (pure_expressions.vpr@85.10--85.26) [188641]"}
+    assert {:msg "  Exhale might fail. Assertion x == 0 might not hold. (pure_expressions.vpr@85.10--85.26) [52362]"}
       x == 0;
     assume state(Heap, Mask);
 }
@@ -514,7 +514,7 @@ procedure ie2() returns ()
   // -- Translating statement: assert false -- pure_expressions.vpr@95.3--95.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@95.10--95.15) [188642]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@95.10--95.15) [52363]"}
       false;
     assume state(Heap, Mask);
 }
@@ -555,7 +555,7 @@ procedure ie3() returns ()
   // -- Translating statement: assert false -- pure_expressions.vpr@106.3--106.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@106.10--106.15) [188643]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@106.10--106.15) [52364]"}
       false;
     assume state(Heap, Mask);
 }

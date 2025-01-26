@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:38
+// Date:         2025-01-26 21:43:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/demo/list.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/demo/list-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -192,11 +192,11 @@ axiom !IsWandField(next);
 // ==================================================
 
 // Uninterpreted function definitions
-function  length(Heap: HeapType, this: Ref): int;
+function  length_1(Heap: HeapType, this: Ref): int;
 function  length'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { length(Heap, this) }
-  length(Heap, this) == length'(Heap, this) && dummyFunction(length#triggerStateless(this))
+  { length_1(Heap, this) }
+  length_1(Heap, this) == length'(Heap, this) && dummyFunction(length#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { length'(Heap, this) }

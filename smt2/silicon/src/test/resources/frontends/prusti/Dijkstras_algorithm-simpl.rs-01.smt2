@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:29:22
+; Started: 2025-01-26 21:21:52
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -188,35 +188,35 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-528|)))
+  :qid |quant-u-334|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-529|)))
+  :qid |quant-u-335|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-544|)))
+  :qid |quant-u-350|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-545|)))
+  :qid |quant-u-351|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-546|)))
+  :qid |quant-u-352|)))
 (assert (forall ((s@$ $Snap) (_arg@1@00 $Ref)) (!
   (=
     (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%limited s@$ _arg@1@00)
     (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ s@$ _arg@1@00))
   :pattern ((snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ s@$ _arg@1@00))
-  :qid |quant-u-530|)))
+  :qid |quant-u-336|)))
 (assert (forall ((s@$ $Snap) (_arg@1@00 $Ref)) (!
   (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%stateless _arg@1@00)
   :pattern ((snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%limited s@$ _arg@1@00))
-  :qid |quant-u-531|)))
+  :qid |quant-u-337|)))
 (assert (forall ((s@$ $Snap) (_arg@1@00 $Ref)) (!
   (=>
     (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%precondition s@$ _arg@1@00)
@@ -224,21 +224,21 @@
       (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ s@$ _arg@1@00)
       (as cons$__$TY$__Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_<Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_>  Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_)))
   :pattern ((snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ s@$ _arg@1@00))
-  :qid |quant-u-547|)))
+  :qid |quant-u-353|)))
 (assert (forall ((s@$ $Snap) (_arg@1@00 $Ref)) (!
   true
   :pattern ((snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ s@$ _arg@1@00))
-  :qid |quant-u-548|)))
+  :qid |quant-u-354|)))
 (assert (forall ((s@$ $Snap) (_left@3@00 $Ref) (_right@4@00 $Ref)) (!
   (=
     (equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@3@00 _right@4@00)
     (equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@3@00 _right@4@00))
   :pattern ((equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@3@00 _right@4@00))
-  :qid |quant-u-532|)))
+  :qid |quant-u-338|)))
 (assert (forall ((s@$ $Snap) (_left@3@00 $Ref) (_right@4@00 $Ref)) (!
   (equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _left@3@00 _right@4@00)
   :pattern ((equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@3@00 _right@4@00))
-  :qid |quant-u-533|)))
+  :qid |quant-u-339|)))
 (assert (forall ((s@$ $Snap) (_left@3@00 $Ref) (_right@4@00 $Ref)) (!
   (=>
     (equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@3@00 _right@4@00)
@@ -248,7 +248,7 @@
         (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ ($Snap.first s@$) _left@3@00)
         (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ ($Snap.second s@$) _right@4@00))))
   :pattern ((equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@3@00 _right@4@00))
-  :qid |quant-u-549|)))
+  :qid |quant-u-355|)))
 (assert (forall ((s@$ $Snap) (_left@3@00 $Ref) (_right@4@00 $Ref)) (!
   (=>
     (equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@3@00 _right@4@00)
@@ -256,17 +256,17 @@
       (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.first s@$) _left@3@00)
       (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.second s@$) _right@4@00)))
   :pattern ((equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@3@00 _right@4@00))
-  :qid |quant-u-550|)))
+  :qid |quant-u-356|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref)) (!
   (=
     (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@6@00)
     (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@6@00))
   :pattern ((m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@6@00))
-  :qid |quant-u-534|)))
+  :qid |quant-u-340|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref)) (!
   (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@6@00)
   :pattern ((m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@6@00))
-  :qid |quant-u-535|)))
+  :qid |quant-u-341|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref)) (!
   (let ((result@7@00 (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@6@00))) (=>
     (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@6@00)
@@ -276,21 +276,21 @@
         result@7@00
         (mirror$m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$__$TY$__Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$<Int> (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ ($Snap.first s@$) _pure_1@6@00))))))
   :pattern ((m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@6@00))
-  :qid |quant-u-551|)))
+  :qid |quant-u-357|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref)) (!
   (let ((result@7@00 (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@6@00))) true)
   :pattern ((m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@6@00))
-  :qid |quant-u-552|)))
+  :qid |quant-u-358|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref)) (!
   (let ((result@7@00 (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@6@00))) true)
   :pattern ((m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@6@00))
-  :qid |quant-u-553|)))
+  :qid |quant-u-359|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref)) (!
   (let ((result@7@00 (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@6@00))) (=>
     (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@6@00)
     (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.first s@$) _pure_1@6@00)))
   :pattern ((m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@6@00))
-  :qid |quant-u-554|)))
+  :qid |quant-u-360|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref)) (!
   (=>
     (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@6@00)
@@ -298,21 +298,21 @@
       (m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@6@00)
       5))
   :pattern ((m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@6@00))
-  :qid |quant-u-555|)))
+  :qid |quant-u-361|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref)) (!
   true
   :pattern ((m_Dijkstras_algorithm_simpl$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$0$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@6@00))
-  :qid |quant-u-556|)))
+  :qid |quant-u-362|)))
 (assert (forall ((s@$ $Snap) (_left@8@00 $Ref) (_right@9@00 $Ref)) (!
   (=
     (equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@8@00 _right@9@00)
     (equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@8@00 _right@9@00))
   :pattern ((equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@8@00 _right@9@00))
-  :qid |quant-u-536|)))
+  :qid |quant-u-342|)))
 (assert (forall ((s@$ $Snap) (_left@8@00 $Ref) (_right@9@00 $Ref)) (!
   (equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _left@8@00 _right@9@00)
   :pattern ((equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@8@00 _right@9@00))
-  :qid |quant-u-537|)))
+  :qid |quant-u-343|)))
 (assert (forall ((s@$ $Snap) (_left@8@00 $Ref) (_right@9@00 $Ref)) (!
   (=>
     (equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@8@00 _right@9@00)
@@ -322,7 +322,7 @@
         (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ ($Snap.first ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
         (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ ($Snap.second ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))))
   :pattern ((equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@8@00 _right@9@00))
-  :qid |quant-u-557|)))
+  :qid |quant-u-363|)))
 (assert (forall ((s@$ $Snap) (_left@8@00 $Ref) (_right@9@00 $Ref)) (!
   (=>
     (equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@8@00 _right@9@00)
@@ -330,27 +330,27 @@
       (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.first ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.second ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@8@00 _right@9@00))
-  :qid |quant-u-558|)))
+  :qid |quant-u-364|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-538|)))
+  :qid |quant-u-344|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-539|)))
+  :qid |quant-u-345|)))
 (assert (forall ((s@$ $Snap) (_left@12@00 $Ref) (_right@13@00 $Ref)) (!
   (=
     (not_equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@12@00 _right@13@00)
     (not_equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@12@00 _right@13@00))
   :pattern ((not_equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@12@00 _right@13@00))
-  :qid |quant-u-540|)))
+  :qid |quant-u-346|)))
 (assert (forall ((s@$ $Snap) (_left@12@00 $Ref) (_right@13@00 $Ref)) (!
   (not_equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _left@12@00 _right@13@00)
   :pattern ((not_equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@12@00 _right@13@00))
-  :qid |quant-u-541|)))
+  :qid |quant-u-347|)))
 (assert (forall ((s@$ $Snap) (_left@12@00 $Ref) (_right@13@00 $Ref)) (!
   (=>
     (not_equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@12@00 _right@13@00)
@@ -361,7 +361,7 @@
           (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ ($Snap.first ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
           (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ ($Snap.second ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((not_equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@12@00 _right@13@00))
-  :qid |quant-u-559|)))
+  :qid |quant-u-365|)))
 (assert (forall ((s@$ $Snap) (_left@12@00 $Ref) (_right@13@00 $Ref)) (!
   (=>
     (not_equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@12@00 _right@13@00)
@@ -369,17 +369,17 @@
       (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.first ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.second ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((not_equals$__$TY$__ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$ref$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@12@00 _right@13@00))
-  :qid |quant-u-560|)))
+  :qid |quant-u-366|)))
 (assert (forall ((s@$ $Snap) (_left@15@00 $Ref) (_right@16@00 $Ref)) (!
   (=
     (not_equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@15@00 _right@16@00)
     (not_equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@15@00 _right@16@00))
   :pattern ((not_equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@15@00 _right@16@00))
-  :qid |quant-u-542|)))
+  :qid |quant-u-348|)))
 (assert (forall ((s@$ $Snap) (_left@15@00 $Ref) (_right@16@00 $Ref)) (!
   (not_equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _left@15@00 _right@16@00)
   :pattern ((not_equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@15@00 _right@16@00))
-  :qid |quant-u-543|)))
+  :qid |quant-u-349|)))
 (assert (forall ((s@$ $Snap) (_left@15@00 $Ref) (_right@16@00 $Ref)) (!
   (=>
     (not_equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@15@00 _right@16@00)
@@ -390,7 +390,7 @@
           (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ ($Snap.first s@$) _left@15@00)
           (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_ ($Snap.second s@$) _right@16@00)))))
   :pattern ((not_equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@15@00 _right@16@00))
-  :qid |quant-u-561|)))
+  :qid |quant-u-367|)))
 (assert (forall ((s@$ $Snap) (_left@15@00 $Ref) (_right@16@00 $Ref)) (!
   (=>
     (not_equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@15@00 _right@16@00)
@@ -398,7 +398,7 @@
       (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.first s@$) _left@15@00)
       (snap$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$Snap$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.second s@$) _right@16@00)))
   :pattern ((not_equals$__$TY$__m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$m_Dijkstras_algorithm_simpl$$VecWrapperNode$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@15@00 _right@16@00))
-  :qid |quant-u-562|)))
+  :qid |quant-u-368|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- m_Dijkstras_algorithm_simpl$$main$opensqu$0$closesqu$ ----------

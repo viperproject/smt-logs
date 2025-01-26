@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:10
+// Date:         2025-01-26 21:42:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0509.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0509-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -181,20 +181,20 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique v_36: Field NormalField Ref;
-axiom !IsPredicateField(v_36);
-axiom !IsWandField(v_36);
+const unique v_35: Field NormalField Ref;
+axiom !IsPredicateField(v_35);
+axiom !IsWandField(v_35);
 
 // ==================================================
 // Translation of function len
 // ==================================================
 
 // Uninterpreted function definitions
-function  len_3(Heap: HeapType, x: Ref): int;
+function  len_1(Heap: HeapType, x: Ref): int;
 function  len'(Heap: HeapType, x: Ref): int;
 axiom (forall Heap: HeapType, x: Ref ::
-  { len_3(Heap, x) }
-  len_3(Heap, x) == len'(Heap, x) && dummyFunction(len#triggerStateless(x))
+  { len_1(Heap, x) }
+  len_1(Heap, x) == len'(Heap, x) && dummyFunction(len#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { len'(Heap, x) }
@@ -235,7 +235,7 @@ procedure len#definedness(x: Ref) returns (Result: int)
   
   // -- Inhaling precondition (with checking)
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0509.vpr@9.12--9.30) [197634]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0509.vpr@9.12--9.30) [63654]"}
       perm >= NoPerm;
     Mask := Mask[null, VecI32(x):=Mask[null, VecI32(x)] + perm];
     assume state(Heap, Mask);
@@ -251,11 +251,11 @@ procedure len#definedness(x: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  lookup_1(Heap: HeapType, self: Ref, index: int): int;
+function  lookup(Heap: HeapType, self: Ref, index: int): int;
 function  lookup'(Heap: HeapType, self: Ref, index: int): int;
 axiom (forall Heap: HeapType, self: Ref, index: int ::
-  { lookup_1(Heap, self, index) }
-  lookup_1(Heap, self, index) == lookup'(Heap, self, index) && dummyFunction(lookup#triggerStateless(self, index))
+  { lookup(Heap, self, index) }
+  lookup(Heap, self, index) == lookup'(Heap, self, index) && dummyFunction(lookup#triggerStateless(self, index))
 );
 axiom (forall Heap: HeapType, self: Ref, index: int ::
   { lookup'(Heap, self, index) }
@@ -280,8 +280,8 @@ procedure lookup#definedness(self: Ref, index: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -301,12 +301,12 @@ procedure lookup#definedness(self: Ref, index: int) returns (Result: int)
     // -- Check definedness of index < len(self)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@13.55--13.64) [197635]"}
+        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@13.55--13.64) [63655]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@13.55--13.64) [197636]"}
+        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@13.55--13.64) [63656]"}
           NoPerm < perm ==> NoPerm < Mask[null, VecI32(self)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -315,7 +315,7 @@ procedure lookup#definedness(self: Ref, index: int) returns (Result: int)
         // Stop execution
         assume false;
       }
-    assume index < len_3(Heap, self);
+    assume index < len_1(Heap, self);
     assume state(Heap, Mask);
 }
 
@@ -358,19 +358,19 @@ axiom (forall Heap: HeapType, x: Ref ::
 // Translation of method store
 // ==================================================
 
-procedure vstore(self: Ref, index: int, value_1: int) returns ()
+procedure vstore(self: Ref, index: int, value: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_14: int;
-  var i_2_1: int;
+  var i_18: int;
+  var i_2: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -391,12 +391,12 @@ procedure vstore(self: Ref, index: int, value_1: int) returns ()
     // -- Check definedness of index < len(self)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@16.49--16.58) [197637]"}
+        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@16.49--16.58) [63657]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@16.49--16.58) [197638]"}
+        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@16.49--16.58) [63658]"}
           NoPerm < perm ==> NoPerm < Mask[null, VecI32(self)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -405,14 +405,14 @@ procedure vstore(self: Ref, index: int, value_1: int) returns ()
         // Stop execution
         assume false;
       }
-    assume index < len_3(Heap, self);
+    assume index < len_1(Heap, self);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -426,12 +426,12 @@ procedure vstore(self: Ref, index: int, value_1: int) returns ()
     // -- Check definedness of len(self) == old(len(self))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@17.27--17.36) [197639]"}
+        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@17.27--17.36) [63659]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@17.27--17.36) [197640]"}
+        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@17.27--17.36) [63660]"}
           NoPerm < perm ==> NoPerm < PostMask[null, VecI32(self)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -442,33 +442,33 @@ procedure vstore(self: Ref, index: int, value_1: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@17.44--17.53) [197641]"}
+        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@17.44--17.53) [63661]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@17.44--17.53) [197642]"}
+        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@17.44--17.53) [63662]"}
           NoPerm < perm ==> NoPerm < oldMask[null, VecI32(self)];
         // Finish exhale
         // Stop execution
         assume false;
       }
-    assume len_3(PostHeap, self) == len_3(oldHeap, self);
+    assume len_1(PostHeap, self) == len_1(oldHeap, self);
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of lookup(self, index) == value
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@18.11--18.30) [197643]"}
+        assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@18.11--18.30) [63663]"}
           NoPerm < perm ==> NoPerm < PostMask[null, VecI32(self)];
-        assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= index might not hold. (0509.vpr@18.11--18.30) [197644]"}
+        assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= index might not hold. (0509.vpr@18.11--18.30) [63664]"}
           0 <= index;
-        assert {:msg "  Precondition of function lookup might not hold. Assertion index < len(self) might not hold. (0509.vpr@18.11--18.30) [197645]"}
-          index < len_3(PostHeap, self);
+        assert {:msg "  Precondition of function lookup might not hold. Assertion index < len(self) might not hold. (0509.vpr@18.11--18.30) [63665]"}
+          index < len_1(PostHeap, self);
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -476,21 +476,21 @@ procedure vstore(self: Ref, index: int, value_1: int) returns ()
         // Stop execution
         assume false;
       }
-    assume lookup_1(PostHeap, self, index) == value_1;
+    assume lookup(PostHeap, self, index) == value;
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { lookup(self, i) } 0 <= i && (i < len(self) && i != index) ==> lookup(self, i) == old(lookup(self, i)))
       if (*) {
-        if (0 <= i_14) {
+        if (0 <= i_18) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := 1 / 2;
-            assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@19.59--19.68) [197646]"}
+            assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@19.59--19.68) [63666]"}
               perm >= NoPerm;
-            assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@19.59--19.68) [197647]"}
+            assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@19.59--19.68) [63667]"}
               NoPerm < perm ==> NoPerm < PostMask[null, VecI32(self)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -500,18 +500,18 @@ procedure vstore(self: Ref, index: int, value_1: int) returns ()
             assume false;
           }
         }
-        if (0 <= i_14 && (i_14 < len_3(PostHeap, self) && i_14 != index)) {
+        if (0 <= i_18 && (i_18 < len_1(PostHeap, self) && i_18 != index)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@20.5--20.20) [197648]"}
+            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@20.5--20.20) [63668]"}
               NoPerm < perm ==> NoPerm < PostMask[null, VecI32(self)];
-            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= i might not hold. (0509.vpr@20.5--20.20) [197649]"}
-              0 <= i_14;
-            assert {:msg "  Precondition of function lookup might not hold. Assertion i < len(self) might not hold. (0509.vpr@20.5--20.20) [197650]"}
-              i_14 < len_3(PostHeap, self);
+            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= i might not hold. (0509.vpr@20.5--20.20) [63669]"}
+              0 <= i_18;
+            assert {:msg "  Precondition of function lookup might not hold. Assertion i < len(self) might not hold. (0509.vpr@20.5--20.20) [63670]"}
+              i_18 < len_1(PostHeap, self);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -521,15 +521,15 @@ procedure vstore(self: Ref, index: int, value_1: int) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@20.28--20.42) [197651]"}
+            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@20.28--20.42) [63671]"}
               NoPerm < perm ==> NoPerm < oldMask[null, VecI32(self)];
-            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= i might not hold. (0509.vpr@20.28--20.42) [197652]"}
-              0 <= i_14;
-            assert {:msg "  Precondition of function lookup might not hold. Assertion i < len(self) might not hold. (0509.vpr@20.28--20.42) [197653]"}
-              i_14 < len_3(oldHeap, self);
+            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= i might not hold. (0509.vpr@20.28--20.42) [63672]"}
+              0 <= i_18;
+            assert {:msg "  Precondition of function lookup might not hold. Assertion i < len(self) might not hold. (0509.vpr@20.28--20.42) [63673]"}
+              i_18 < len_1(oldHeap, self);
             // Finish exhale
             // Stop execution
             assume false;
@@ -539,7 +539,7 @@ procedure vstore(self: Ref, index: int, value_1: int) returns ()
       }
     assume (forall i_1: int ::
       { lookup#frame(PostHeap[null, VecI32(self)], self, i_1) }
-      0 <= i_1 && (i_1 < len_3(PostHeap, self) && i_1 != index) ==> lookup_1(PostHeap, self, i_1) == lookup_1(oldHeap, self, i_1)
+      0 <= i_1 && (i_1 < len_1(PostHeap, self) && i_1 != index) ==> lookup(PostHeap, self, i_1) == lookup(oldHeap, self, i_1)
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -552,28 +552,28 @@ procedure vstore(self: Ref, index: int, value_1: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of store might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@17.11--17.54) [197654]"}
+      assert {:msg "  Postcondition of store might not hold. There might be insufficient permission to access VecI32(self) (0509.vpr@17.11--17.54) [63674]"}
         perm <= Mask[null, VecI32(self)];
     }
     Mask := Mask[null, VecI32(self):=Mask[null, VecI32(self)] - perm];
-    assert {:msg "  Postcondition of store might not hold. Assertion len(self) == old(len(self)) might not hold. (0509.vpr@17.11--17.54) [197655]"}
-      len_3(Heap, self) == len_3(oldHeap, self);
-    assert {:msg "  Postcondition of store might not hold. Assertion lookup(self, index) == value might not hold. (0509.vpr@18.11--18.39) [197656]"}
-      lookup_1(Heap, self, index) == value_1;
+    assert {:msg "  Postcondition of store might not hold. Assertion len(self) == old(len(self)) might not hold. (0509.vpr@17.11--17.54) [63675]"}
+      len_1(Heap, self) == len_1(oldHeap, self);
+    assert {:msg "  Postcondition of store might not hold. Assertion lookup(self, index) == value might not hold. (0509.vpr@18.11--18.39) [63676]"}
+      lookup(Heap, self, index) == value;
     if (*) {
-      if (0 <= i_2_1 && (i_2_1 < len_3(Heap, self) && i_2_1 != index)) {
-        assert {:msg "  Postcondition of store might not hold. Assertion lookup(self, i) == old(lookup(self, i)) might not hold. (0509.vpr@19.11--20.43) [197657]"}
-          lookup_1(Heap, self, i_2_1) == lookup_1(oldHeap, self, i_2_1);
+      if (0 <= i_2 && (i_2 < len_1(Heap, self) && i_2 != index)) {
+        assert {:msg "  Postcondition of store might not hold. Assertion lookup(self, i) == old(lookup(self, i)) might not hold. (0509.vpr@19.11--20.43) [63677]"}
+          lookup(Heap, self, i_2) == lookup(oldHeap, self, i_2);
       }
       assume false;
     }
-    assume (forall i_3_1_1: int ::
-      { lookup#frame(Heap[null, VecI32(self)], self, i_3_1_1) }
-      0 <= i_3_1_1 && (i_3_1_1 < len_3(Heap, self) && i_3_1_1 != index) ==> lookup_1(Heap, self, i_3_1_1) == lookup_1(oldHeap, self, i_3_1_1)
+    assume (forall i_3_1: int ::
+      { lookup#frame(Heap[null, VecI32(self)], self, i_3_1) }
+      0 <= i_3_1 && (i_3_1 < len_1(Heap, self) && i_3_1 != index) ==> lookup(Heap, self, i_3_1) == lookup(oldHeap, self, i_3_1)
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -585,35 +585,35 @@ procedure vstore(self: Ref, index: int, value_1: int) returns ()
 // Translation of method merge_sort_part
 // ==================================================
 
-procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
+procedure merge_sort_part(arr: Ref, from_1: int, until: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var left_copy: Ref;
   var mid: int;
   var index: int;
   var left_index: int;
   var right_index: int;
-  var i_2: int;
-  var j: int;
-  var i_4: int;
-  var j_6: int;
-  var ExhaleWellDef1Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var i_3: int;
-  var j_3_1: int;
+  var j_15: int;
+  var i_4: int;
+  var j_12: int;
+  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
+  var i_3_2: int;
+  var j_3: int;
   var left_value: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var i_6: int;
-  var j_2: int;
+  var i_14: int;
+  var j_13: int;
   var i_7_1: int;
-  var j_6_1: int;
+  var j_6_2: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -628,19 +628,19 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
     perm := FullPerm;
     Mask := Mask[null, VecI32(arr):=Mask[null, VecI32(arr)] + perm];
     assume state(Heap, Mask);
-    assume 0 <= from;
-    assume from <= until;
+    assume 0 <= from_1;
+    assume from_1 <= until;
     assume state(Heap, Mask);
     
     // -- Check definedness of until <= len(arr)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@23.66--23.74) [197658]"}
+        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@23.66--23.74) [63678]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@23.66--23.74) [197659]"}
+        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@23.66--23.74) [63679]"}
           NoPerm < perm ==> NoPerm < Mask[null, VecI32(arr)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -649,29 +649,29 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
         // Stop execution
         assume false;
       }
-    assume until <= len_3(Heap, arr);
+    assume until <= len_1(Heap, arr);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[left_copy, $allocated];
   
   // -- Translating statement: inhale until - from > 1 -- 0509.vpr@25.11--25.27
-    assume until - from > 1;
+    assume until - from_1 > 1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: mid := from + (until - from) \ 2 -- 0509.vpr@27.3--27.45
-    mid := from + (until - from) div 2;
+    mid := from_1 + (until - from_1) div 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: index := from -- 0509.vpr@29.3--29.26
-    index := from;
+    index := from_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: left_index := 0 -- 0509.vpr@30.3--30.28
@@ -697,18 +697,18 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
     
     // -- Check definedness of (forall i: Int, j: Int :: { lookup(arr, i), lookup(arr, j) } right_index <= i && (i < j && j < until) ==> lookup(arr, i) <= lookup(arr, j))
       if (*) {
-        if (right_index <= i_2 && (i_2 < j && j < until)) {
+        if (right_index <= i_3 && (i_3 < j_15 && j_15 < until)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@34.102--34.115) [197661]"}
+            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@34.102--34.115) [63681]"}
               NoPerm < perm ==> NoPerm < Mask[null, VecI32(arr)];
-            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= i might not hold. (0509.vpr@34.102--34.115) [197662]"}
-              0 <= i_2;
-            assert {:msg "  Precondition of function lookup might not hold. Assertion i < len(arr) might not hold. (0509.vpr@34.102--34.115) [197663]"}
-              i_2 < len_3(Heap, arr);
+            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= i might not hold. (0509.vpr@34.102--34.115) [63682]"}
+              0 <= i_3;
+            assert {:msg "  Precondition of function lookup might not hold. Assertion i < len(arr) might not hold. (0509.vpr@34.102--34.115) [63683]"}
+              i_3 < len_1(Heap, arr);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -718,15 +718,15 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@34.119--34.132) [197664]"}
+            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@34.119--34.132) [63684]"}
               NoPerm < perm ==> NoPerm < Mask[null, VecI32(arr)];
-            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= j might not hold. (0509.vpr@34.119--34.132) [197665]"}
-              0 <= j;
-            assert {:msg "  Precondition of function lookup might not hold. Assertion j < len(arr) might not hold. (0509.vpr@34.119--34.132) [197666]"}
-              j < len_3(Heap, arr);
+            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= j might not hold. (0509.vpr@34.119--34.132) [63685]"}
+              0 <= j_15;
+            assert {:msg "  Precondition of function lookup might not hold. Assertion j < len(arr) might not hold. (0509.vpr@34.119--34.132) [63686]"}
+              j_15 < len_1(Heap, arr);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -739,7 +739,7 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
       }
     assume (forall i_1: int, j_1: int ::
       { lookup#frame(Heap[null, VecI32(arr)], arr, i_1), lookup#frame(Heap[null, VecI32(arr)], arr, j_1) }
-      right_index <= i_1 && (i_1 < j_1 && j_1 < until) ==> lookup_1(Heap, arr, i_1) <= lookup_1(Heap, arr, j_1)
+      right_index <= i_1 && (i_1 < j_1 && j_1 < until) ==> lookup(Heap, arr, i_1) <= lookup(Heap, arr, j_1)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -750,12 +750,12 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
     // -- Check definedness of left_index < len(left_copy)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@36.23--36.37) [197667]"}
+        assert {:msg "  Precondition of function len might not hold. Fraction 1 / 2 might be negative. (0509.vpr@36.23--36.37) [63687]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(left_copy) (0509.vpr@36.23--36.37) [197668]"}
+        assert {:msg "  Precondition of function len might not hold. There might be insufficient permission to access VecI32(left_copy) (0509.vpr@36.23--36.37) [63688]"}
           NoPerm < perm ==> NoPerm < Mask[null, VecI32(left_copy)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -764,7 +764,7 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
         // Stop execution
         assume false;
       }
-    assume left_index < len_3(Heap, left_copy);
+    assume left_index < len_1(Heap, left_copy);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -772,23 +772,23 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
   //     { lookup(arr, i), lookup(arr, j) }
   //     right_index <= i && (i < j && j < until) ==>
   //     lookup(arr, i) <= lookup(arr, j)) -- 0509.vpr@38.3--38.131
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int, j: Int :: { lookup(arr, i), lookup(arr, j) } right_index <= i && (i < j && j < until) ==> lookup(arr, i) <= lookup(arr, j))
       if (*) {
-        if (right_index <= i_4 && (i_4 < j_6 && j_6 < until)) {
+        if (right_index <= i_4 && (i_4 < j_12 && j_12 < until)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@38.101--38.114) [197669]"}
+            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@38.101--38.114) [63689]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, VecI32(arr)];
-            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= i might not hold. (0509.vpr@38.101--38.114) [197670]"}
+            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= i might not hold. (0509.vpr@38.101--38.114) [63690]"}
               0 <= i_4;
-            assert {:msg "  Precondition of function lookup might not hold. Assertion i < len(arr) might not hold. (0509.vpr@38.101--38.114) [197671]"}
-              i_4 < len_3(ExhaleWellDef0Heap, arr);
+            assert {:msg "  Precondition of function lookup might not hold. Assertion i < len(arr) might not hold. (0509.vpr@38.101--38.114) [63691]"}
+              i_4 < len_1(ExhaleWellDef0Heap, arr);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -798,15 +798,15 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@38.118--38.131) [197672]"}
+            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@38.118--38.131) [63692]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, VecI32(arr)];
-            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= j might not hold. (0509.vpr@38.118--38.131) [197673]"}
-              0 <= j_6;
-            assert {:msg "  Precondition of function lookup might not hold. Assertion j < len(arr) might not hold. (0509.vpr@38.118--38.131) [197674]"}
-              j_6 < len_3(ExhaleWellDef0Heap, arr);
+            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= j might not hold. (0509.vpr@38.118--38.131) [63693]"}
+              0 <= j_12;
+            assert {:msg "  Precondition of function lookup might not hold. Assertion j < len(arr) might not hold. (0509.vpr@38.118--38.131) [63694]"}
+              j_12 < len_1(ExhaleWellDef0Heap, arr);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -818,15 +818,15 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
         assume false;
       }
     if (*) {
-      if (right_index <= i_3 && (i_3 < j_3_1 && j_3_1 < until)) {
-        assert {:msg "  Assert might fail. Assertion lookup(arr, i) <= lookup(arr, j) might not hold. (0509.vpr@38.10--38.131) [197675]"}
-          lookup_1(Heap, arr, i_3) <= lookup_1(Heap, arr, j_3_1);
+      if (right_index <= i_3_2 && (i_3_2 < j_3 && j_3 < until)) {
+        assert {:msg "  Assert might fail. Assertion lookup(arr, i) <= lookup(arr, j) might not hold. (0509.vpr@38.10--38.131) [63695]"}
+          lookup(Heap, arr, i_3_2) <= lookup(Heap, arr, j_3);
       }
       assume false;
     }
     assume (forall i_4_1_1: int, j_4_1_1: int ::
       { lookup#frame(Heap[null, VecI32(arr)], arr, i_4_1_1), lookup#frame(Heap[null, VecI32(arr)], arr, j_4_1_1) }
-      right_index <= i_4_1_1 && (i_4_1_1 < j_4_1_1 && j_4_1_1 < until) ==> lookup_1(Heap, arr, i_4_1_1) <= lookup_1(Heap, arr, j_4_1_1)
+      right_index <= i_4_1_1 && (i_4_1_1 < j_4_1_1 && j_4_1_1 < until) ==> lookup(Heap, arr, i_4_1_1) <= lookup(Heap, arr, j_4_1_1)
     );
     assume state(Heap, Mask);
   
@@ -835,15 +835,15 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
     // -- Check definedness of lookup(left_copy, left_index)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(left_copy) (0509.vpr@39.27--39.55) [197676]"}
+        assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(left_copy) (0509.vpr@39.27--39.55) [63696]"}
           NoPerm < perm ==> NoPerm < Mask[null, VecI32(left_copy)];
-        assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= left_index might not hold. (0509.vpr@39.27--39.55) [197677]"}
+        assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= left_index might not hold. (0509.vpr@39.27--39.55) [63697]"}
           0 <= left_index;
-        assert {:msg "  Precondition of function lookup might not hold. Assertion left_index < len(left_copy) might not hold. (0509.vpr@39.27--39.55) [197678]"}
-          left_index < len_3(Heap, left_copy);
+        assert {:msg "  Precondition of function lookup might not hold. Assertion left_index < len(left_copy) might not hold. (0509.vpr@39.27--39.55) [63698]"}
+          left_index < len_1(Heap, left_copy);
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -851,7 +851,7 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
         // Stop execution
         assume false;
       }
-    left_value := lookup_1(Heap, left_copy, left_index);
+    left_value := lookup(Heap, left_copy, left_index);
     assume state(Heap, Mask);
   
   // -- Translating statement: store(arr, index, left_value) -- 0509.vpr@41.3--41.31
@@ -859,18 +859,18 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method store might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@41.3--41.31) [197679]"}
+        assert {:msg "  The precondition of method store might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@41.3--41.31) [63699]"}
           perm <= Mask[null, VecI32(arr)];
       }
       Mask := Mask[null, VecI32(arr):=Mask[null, VecI32(arr)] - perm];
-      assert {:msg "  The precondition of method store might not hold. Assertion 0 <= index might not hold. (0509.vpr@41.3--41.31) [197680]"}
+      assert {:msg "  The precondition of method store might not hold. Assertion 0 <= index might not hold. (0509.vpr@41.3--41.31) [63700]"}
         0 <= index;
-      assert {:msg "  The precondition of method store might not hold. Assertion index < len(arr) might not hold. (0509.vpr@41.3--41.31) [197681]"}
-        index < len_3(Heap, arr);
+      assert {:msg "  The precondition of method store might not hold. Assertion index < len(arr) might not hold. (0509.vpr@41.3--41.31) [63701]"}
+        index < len_1(Heap, arr);
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -881,13 +881,13 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
       Mask := Mask[null, VecI32(arr):=Mask[null, VecI32(arr)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
-      assume len_3(Heap, arr) == len_3(PreCallHeap, arr);
+      assume len_1(Heap, arr) == len_1(PreCallHeap, arr);
       assume state(Heap, Mask);
-      assume lookup_1(Heap, arr, index) == left_value;
+      assume lookup(Heap, arr, index) == left_value;
       assume state(Heap, Mask);
-      assume (forall i_5: int ::
-        { lookup#frame(Heap[null, VecI32(arr)], arr, i_5) }
-        0 <= i_5 && (i_5 < len_3(Heap, arr) && i_5 != index) ==> lookup_1(Heap, arr, i_5) == lookup_1(PreCallHeap, arr, i_5)
+      assume (forall i_5_1: int ::
+        { lookup#frame(Heap[null, VecI32(arr)], arr, i_5_1) }
+        0 <= i_5_1 && (i_5_1 < len_1(Heap, arr) && i_5_1 != index) ==> lookup(Heap, arr, i_5_1) == lookup(PreCallHeap, arr, i_5_1)
       );
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -896,23 +896,23 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
   //     { lookup(arr, i), lookup(arr, j) }
   //     right_index <= i && (i < j && j < until) ==>
   //     lookup(arr, i) <= lookup(arr, j)) -- 0509.vpr@43.3--43.131
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int, j: Int :: { lookup(arr, i), lookup(arr, j) } right_index <= i && (i < j && j < until) ==> lookup(arr, i) <= lookup(arr, j))
       if (*) {
-        if (right_index <= i_6 && (i_6 < j_2 && j_2 < until)) {
+        if (right_index <= i_14 && (i_14 < j_13 && j_13 < until)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@43.101--43.114) [197682]"}
+            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@43.101--43.114) [63702]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, VecI32(arr)];
-            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= i might not hold. (0509.vpr@43.101--43.114) [197683]"}
-              0 <= i_6;
-            assert {:msg "  Precondition of function lookup might not hold. Assertion i < len(arr) might not hold. (0509.vpr@43.101--43.114) [197684]"}
-              i_6 < len_3(ExhaleWellDef0Heap, arr);
+            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= i might not hold. (0509.vpr@43.101--43.114) [63703]"}
+              0 <= i_14;
+            assert {:msg "  Precondition of function lookup might not hold. Assertion i < len(arr) might not hold. (0509.vpr@43.101--43.114) [63704]"}
+              i_14 < len_1(ExhaleWellDef0Heap, arr);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -922,15 +922,15 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@43.118--43.131) [197685]"}
+            assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access VecI32(arr) (0509.vpr@43.118--43.131) [63705]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, VecI32(arr)];
-            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= j might not hold. (0509.vpr@43.118--43.131) [197686]"}
-              0 <= j_2;
-            assert {:msg "  Precondition of function lookup might not hold. Assertion j < len(arr) might not hold. (0509.vpr@43.118--43.131) [197687]"}
-              j_2 < len_3(ExhaleWellDef0Heap, arr);
+            assert {:msg "  Precondition of function lookup might not hold. Assertion 0 <= j might not hold. (0509.vpr@43.118--43.131) [63706]"}
+              0 <= j_13;
+            assert {:msg "  Precondition of function lookup might not hold. Assertion j < len(arr) might not hold. (0509.vpr@43.118--43.131) [63707]"}
+              j_13 < len_1(ExhaleWellDef0Heap, arr);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -942,15 +942,15 @@ procedure merge_sort_part(arr: Ref, from: int, until: int) returns ()
         assume false;
       }
     if (*) {
-      if (right_index <= i_7_1 && (i_7_1 < j_6_1 && j_6_1 < until)) {
-        assert {:msg "  Assert might fail. Assertion lookup(arr, i) <= lookup(arr, j) might not hold. (0509.vpr@43.10--43.131) [197688]"}
-          lookup_1(Heap, arr, i_7_1) <= lookup_1(Heap, arr, j_6_1);
+      if (right_index <= i_7_1 && (i_7_1 < j_6_2 && j_6_2 < until)) {
+        assert {:msg "  Assert might fail. Assertion lookup(arr, i) <= lookup(arr, j) might not hold. (0509.vpr@43.10--43.131) [63708]"}
+          lookup(Heap, arr, i_7_1) <= lookup(Heap, arr, j_6_2);
       }
       assume false;
     }
-    assume (forall i_8_1: int, j_7_1_1: int ::
-      { lookup#frame(Heap[null, VecI32(arr)], arr, i_8_1), lookup#frame(Heap[null, VecI32(arr)], arr, j_7_1_1) }
-      right_index <= i_8_1 && (i_8_1 < j_7_1_1 && j_7_1_1 < until) ==> lookup_1(Heap, arr, i_8_1) <= lookup_1(Heap, arr, j_7_1_1)
+    assume (forall i_8_1_1: int, j_7_1_1: int ::
+      { lookup#frame(Heap[null, VecI32(arr)], arr, i_8_1_1), lookup#frame(Heap[null, VecI32(arr)], arr, j_7_1_1) }
+      right_index <= i_8_1_1 && (i_8_1_1 < j_7_1_1 && j_7_1_1 < until) ==> lookup(Heap, arr, i_8_1_1) <= lookup(Heap, arr, j_7_1_1)
     );
     assume state(Heap, Mask);
 }

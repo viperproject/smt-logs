@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:53
+// Date:         2025-01-26 21:43:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/contains_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/contains_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,7 +181,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type ContainsDomainDomainType A B;
 
 // Translation of domain function contains
-function  contains_1<A, B>(a_3: A, b_102: B): bool;
+function  contains_1<A, B>(a_3: A, b_33: B): bool;
 
 // ==================================================
 // Translation of domain List
@@ -197,24 +197,24 @@ function  Nil<T>(): ListDomainType T;
 function  Cons<T>(value_2: T, tail: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function get_List_value
-function  get_List_value<T>(t_9: (ListDomainType T)): T;
+function  get_List_value<T>(t_3: (ListDomainType T)): T;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<T>(t_9: (ListDomainType T)): ListDomainType T;
+function  get_List_tail<T>(t_3: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function List_tag
-function  List_tag<T>(t_9: (ListDomainType T)): int;
+function  List_tag<T>(t_3: (ListDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType T)): T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType T)): ListDomainType T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType T)): ListDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -224,9 +224,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType T)): int) == 0
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (List_tag((Cons(value, tail_1): ListDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -236,9 +236,9 @@ axiom (forall <T> t_2: (ListDomainType T) ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (contains_1(value_1, (Cons(value_1, tail_1): ListDomainType T)): bool) && (contains_1(tail_1, (Cons(value_1, tail_1): ListDomainType T)): bool)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (contains_1(value, (Cons(value, tail_1): ListDomainType T)): bool) && (contains_1(tail_1, (Cons(value, tail_1): ListDomainType T)): bool)
 );
 
 // ==================================================
@@ -252,36 +252,36 @@ type TreeDomainType T;
 function  Leaf<T>(): TreeDomainType T;
 
 // Translation of domain function Node
-function  Node_1<T>(value_2: T, left_2: (TreeDomainType T), right_2: (TreeDomainType T)): TreeDomainType T;
+function  Node_1<T>(value_2: T, left_1: (TreeDomainType T), right: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function get_Tree_value
-function  get_Tree_value<T>(t_9: (TreeDomainType T)): T;
+function  get_Tree_value<T>(t_3: (TreeDomainType T)): T;
 
 // Translation of domain function get_Tree_left
-function  get_Tree_left<T>(t_9: (TreeDomainType T)): TreeDomainType T;
+function  get_Tree_left<T>(t_3: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function get_Tree_right
-function  get_Tree_right<T>(t_9: (TreeDomainType T)): TreeDomainType T;
+function  get_Tree_right<T>(t_3: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function Tree_tag
-function  Tree_tag<T>(t_9: (TreeDomainType T)): int;
+function  Tree_tag<T>(t_3: (TreeDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  value_1 == (get_Tree_value((Node_1(value_1, left_1, right): TreeDomainType T)): T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  value == (get_Tree_value((Node_1(value, left, right_2): TreeDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  left_1 == (get_Tree_left((Node_1(value_1, left_1, right): TreeDomainType T)): TreeDomainType T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  left == (get_Tree_left((Node_1(value, left, right_2): TreeDomainType T)): TreeDomainType T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  right == (get_Tree_right((Node_1(value_1, left_1, right): TreeDomainType T)): TreeDomainType T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  right_2 == (get_Tree_right((Node_1(value, left, right_2): TreeDomainType T)): TreeDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -291,9 +291,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  (Tree_tag((Node_1(value_1, left_1, right): TreeDomainType T)): int) == 1
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  (Tree_tag((Node_1(value, left, right_2): TreeDomainType T)): int) == 1
 );
 
 // Translation of anonymous domain axiom
@@ -303,9 +303,9 @@ axiom (forall <T> t_2: (TreeDomainType T) ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  ((contains_1(value_1, (Node_1(value_1, left_1, right): TreeDomainType T)): bool) && (contains_1(left_1, (Node_1(value_1, left_1, right): TreeDomainType T)): bool)) && (contains_1(right, (Node_1(value_1, left_1, right): TreeDomainType T)): bool)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  ((contains_1(value, (Node_1(value, left, right_2): TreeDomainType T)): bool) && (contains_1(left, (Node_1(value, left, right_2): TreeDomainType T)): bool)) && (contains_1(right_2, (Node_1(value, left, right_2): TreeDomainType T)): bool)
 );
 
 // ==================================================
@@ -380,28 +380,28 @@ procedure contains_1a() returns ()
   // -- Translating statement: assert (contains(a, b): Bool) -- contains_1.vpr@29.3--29.23
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (contains(a, b): Bool) might not hold. (contains_1.vpr@29.10--29.23) [222680]"}
+    assert {:msg "  Assert might fail. Assertion (contains(a, b): Bool) might not hold. (contains_1.vpr@29.10--29.23) [103526]"}
       (contains_1(a_2, b_24): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(b, c): Bool) -- contains_1.vpr@30.3--30.23
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (contains(b, c): Bool) might not hold. (contains_1.vpr@30.10--30.23) [222681]"}
+    assert {:msg "  Assert might fail. Assertion (contains(b, c): Bool) might not hold. (contains_1.vpr@30.10--30.23) [103527]"}
       (contains_1(b_24, c): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(a, c): Bool) -- contains_1.vpr@31.3--31.23
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (contains(a, c): Bool) might not hold. (contains_1.vpr@31.10--31.23) [222682]"}
+    assert {:msg "  Assert might fail. Assertion (contains(a, c): Bool) might not hold. (contains_1.vpr@31.10--31.23) [103528]"}
       (contains_1(a_2, c): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(2, c): Bool) -- contains_1.vpr@32.3--32.23
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (contains(2, c): Bool) might not hold. (contains_1.vpr@32.10--32.23) [222683]"}
+    assert {:msg "  Assert might fail. Assertion (contains(2, c): Bool) might not hold. (contains_1.vpr@32.10--32.23) [103529]"}
       (contains_1(2, c): bool);
     assume state(Heap, Mask);
 }
@@ -416,7 +416,7 @@ procedure contains_1b() returns ()
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var list_2: (ListDomainType int);
-  var tree_1: (TreeDomainType (ListDomainType int));
+  var tree: (TreeDomainType (ListDomainType int));
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   
@@ -436,27 +436,27 @@ procedure contains_1b() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: tree := (Node(list, (Leaf(): Tree[List[Int]]), (Leaf(): Tree[List[Int]])): Tree[List[Int]]) -- contains_1.vpr@42.3--42.37
-    tree_1 := (Node_1(list_2, (Leaf(): TreeDomainType (ListDomainType int)), (Leaf(): TreeDomainType (ListDomainType int))): TreeDomainType (ListDomainType int));
+    tree := (Node_1(list_2, (Leaf(): TreeDomainType (ListDomainType int)), (Leaf(): TreeDomainType (ListDomainType int))): TreeDomainType (ListDomainType int));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(42, list): Bool) -- contains_1.vpr@45.3--45.28
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (contains(42, list): Bool) might not hold. (contains_1.vpr@45.10--45.28) [222684]"}
+    assert {:msg "  Assert might fail. Assertion (contains(42, list): Bool) might not hold. (contains_1.vpr@45.10--45.28) [103530]"}
       (contains_1(42, list_2): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(list, tree): Bool) -- contains_1.vpr@46.3--46.30
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (contains(list, tree): Bool) might not hold. (contains_1.vpr@46.10--46.30) [222685]"}
-      (contains_1(list_2, tree_1): bool);
+    assert {:msg "  Assert might fail. Assertion (contains(list, tree): Bool) might not hold. (contains_1.vpr@46.10--46.30) [103531]"}
+      (contains_1(list_2, tree): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(42, tree): Bool) -- contains_1.vpr@47.3--47.28
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (contains(42, tree): Bool) might not hold. (contains_1.vpr@47.10--47.28) [222686]"}
-      (contains_1(42, tree_1): bool);
+    assert {:msg "  Assert might fail. Assertion (contains(42, tree): Bool) might not hold. (contains_1.vpr@47.10--47.28) [103532]"}
+      (contains_1(42, tree): bool);
     assume state(Heap, Mask);
 }

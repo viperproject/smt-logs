@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:55
+// Date:         2025-01-26 21:42:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0088-1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0088-1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -213,7 +213,7 @@ procedure Cellvoid(this: Ref, k: Perm) returns ()
     assume k < FullPerm;
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0088-1.vpr@10.12--10.30) [220467]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0088-1.vpr@10.12--10.30) [54558]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     Mask := Mask[this, Cellx:=Mask[this, Cellx] + perm];
@@ -231,7 +231,7 @@ procedure Cellvoid(this: Ref, k: Perm) returns ()
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0088-1.vpr@11.11--11.29) [220468]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0088-1.vpr@11.11--11.29) [54559]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     PostMask := PostMask[this, Cellx:=PostMask[this, Cellx] + perm];
@@ -245,10 +245,10 @@ procedure Cellvoid(this: Ref, k: Perm) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := k;
-    assert {:msg "  Postcondition of Cellvoid might not hold. Fraction k might be negative. (0088-1.vpr@11.11--11.29) [220469]"}
+    assert {:msg "  Postcondition of Cellvoid might not hold. Fraction k might be negative. (0088-1.vpr@11.11--11.29) [54560]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Cellvoid might not hold. There might be insufficient permission to access this.Cellx (0088-1.vpr@11.11--11.29) [220470]"}
+      assert {:msg "  Postcondition of Cellvoid might not hold. There might be insufficient permission to access this.Cellx (0088-1.vpr@11.11--11.29) [54561]"}
         perm <= Mask[this, Cellx];
     }
     Mask := Mask[this, Cellx:=Mask[this, Cellx] - perm];

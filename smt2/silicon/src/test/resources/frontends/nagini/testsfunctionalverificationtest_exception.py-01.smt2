@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:34:55
+; Started: 2025-01-26 21:26:42
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1834,45 +1834,45 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (tuple___val__%limited s@$ self@0@00) (tuple___val__ s@$ self@0@00))
   :pattern ((tuple___val__ s@$ self@0@00))
-  :qid |quant-u-4429|)))
+  :qid |quant-u-2925|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (tuple___val__%stateless self@0@00)
   :pattern ((tuple___val__%limited s@$ self@0@00))
-  :qid |quant-u-4430|)))
+  :qid |quant-u-2926|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (str___val__%limited s@$ self@2@00) (str___val__ s@$ self@2@00))
   :pattern ((str___val__ s@$ self@2@00))
-  :qid |quant-u-4431|)))
+  :qid |quant-u-2927|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (str___val__%stateless self@2@00)
   :pattern ((str___val__%limited s@$ self@2@00))
-  :qid |quant-u-4432|)))
+  :qid |quant-u-2928|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (= (str___len__%limited s@$ self@4@00) (str___len__ s@$ self@4@00))
   :pattern ((str___len__ s@$ self@4@00))
-  :qid |quant-u-4433|)))
+  :qid |quant-u-2929|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (str___len__%stateless self@4@00)
   :pattern ((str___len__%limited s@$ self@4@00))
-  :qid |quant-u-4434|)))
+  :qid |quant-u-2930|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (let ((result@5@00 (str___len__%limited s@$ self@4@00))) (=>
     (str___len__%precondition s@$ self@4@00)
     (>= result@5@00 0)))
   :pattern ((str___len__%limited s@$ self@4@00))
-  :qid |quant-u-4473|)))
+  :qid |quant-u-2969|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (let ((result@5@00 (str___len__%limited s@$ self@4@00))) true)
   :pattern ((str___len__%limited s@$ self@4@00))
-  :qid |quant-u-4474|)))
+  :qid |quant-u-2970|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (= (tuple___len__%limited s@$ self@6@00) (tuple___len__ s@$ self@6@00))
   :pattern ((tuple___len__ s@$ self@6@00))
-  :qid |quant-u-4435|)))
+  :qid |quant-u-2931|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (tuple___len__%stateless self@6@00)
   :pattern ((tuple___len__%limited s@$ self@6@00))
-  :qid |quant-u-4436|)))
+  :qid |quant-u-2932|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (tuple___len__%limited s@$ self@6@00))) (=>
     (tuple___len__%precondition s@$ self@6@00)
@@ -1882,55 +1882,55 @@
         (Seq_length (tuple_args<Seq<PyType>> (typeof<PyType> self@6@00))))
       (= result@7@00 (Seq_length (tuple___val__ $Snap.unit self@6@00))))))
   :pattern ((tuple___len__%limited s@$ self@6@00))
-  :qid |quant-u-4475|)))
+  :qid |quant-u-2971|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (tuple___len__%limited s@$ self@6@00))) true)
   :pattern ((tuple___len__%limited s@$ self@6@00))
-  :qid |quant-u-4476|)))
+  :qid |quant-u-2972|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (tuple___len__%limited s@$ self@6@00))) (=>
     (tuple___len__%precondition s@$ self@6@00)
     (tuple___val__%precondition $Snap.unit self@6@00)))
   :pattern ((tuple___len__%limited s@$ self@6@00))
-  :qid |quant-u-4477|)))
+  :qid |quant-u-2973|)))
 (assert (forall ((s@$ $Snap) (id@8@00 Int)) (!
   (= (_isDefined%limited s@$ id@8@00) (_isDefined s@$ id@8@00))
   :pattern ((_isDefined s@$ id@8@00))
-  :qid |quant-u-4437|)))
+  :qid |quant-u-2933|)))
 (assert (forall ((s@$ $Snap) (id@8@00 Int)) (!
   (_isDefined%stateless id@8@00)
   :pattern ((_isDefined%limited s@$ id@8@00))
-  :qid |quant-u-4438|)))
+  :qid |quant-u-2934|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (= (bool___unbox__%limited s@$ box@10@00) (bool___unbox__ s@$ box@10@00))
   :pattern ((bool___unbox__ s@$ box@10@00))
-  :qid |quant-u-4439|)))
+  :qid |quant-u-2935|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (bool___unbox__%stateless box@10@00)
   :pattern ((bool___unbox__%limited s@$ box@10@00))
-  :qid |quant-u-4440|)))
+  :qid |quant-u-2936|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (let ((result@11@00 (bool___unbox__%limited s@$ box@10@00))) (=>
     (bool___unbox__%precondition s@$ box@10@00)
     (= (__prim__bool___box__%limited $Snap.unit result@11@00) box@10@00)))
   :pattern ((bool___unbox__%limited s@$ box@10@00))
-  :qid |quant-u-4478|)))
+  :qid |quant-u-2974|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (let ((result@11@00 (bool___unbox__%limited s@$ box@10@00))) (=>
     (bool___unbox__%precondition s@$ box@10@00)
     (__prim__bool___box__%precondition $Snap.unit result@11@00)))
   :pattern ((bool___unbox__%limited s@$ box@10@00))
-  :qid |quant-u-4479|)))
+  :qid |quant-u-2975|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (=
     (__prim__bool___box__%limited s@$ prim@12@00)
     (__prim__bool___box__ s@$ prim@12@00))
   :pattern ((__prim__bool___box__ s@$ prim@12@00))
-  :qid |quant-u-4441|)))
+  :qid |quant-u-2937|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (__prim__bool___box__%stateless prim@12@00)
   :pattern ((__prim__bool___box__%limited s@$ prim@12@00))
-  :qid |quant-u-4442|)))
+  :qid |quant-u-2938|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (let ((result@13@00 (__prim__bool___box__%limited s@$ prim@12@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@12@00)
@@ -1939,31 +1939,31 @@
       (= (bool___unbox__%limited $Snap.unit result@13@00) prim@12@00)
       (= (int___unbox__%limited $Snap.unit result@13@00) (ite prim@12@00 1 0)))))
   :pattern ((__prim__bool___box__%limited s@$ prim@12@00))
-  :qid |quant-u-4480|)))
+  :qid |quant-u-2976|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (let ((result@13@00 (__prim__bool___box__%limited s@$ prim@12@00))) true)
   :pattern ((__prim__bool___box__%limited s@$ prim@12@00))
-  :qid |quant-u-4481|)))
+  :qid |quant-u-2977|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (let ((result@13@00 (__prim__bool___box__%limited s@$ prim@12@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@12@00)
     (bool___unbox__%precondition $Snap.unit result@13@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@12@00))
-  :qid |quant-u-4482|)))
+  :qid |quant-u-2978|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (let ((result@13@00 (__prim__bool___box__%limited s@$ prim@12@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@12@00)
     (int___unbox__%precondition $Snap.unit result@13@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@12@00))
-  :qid |quant-u-4483|)))
+  :qid |quant-u-2979|)))
 (assert (forall ((s@$ $Snap) (box@14@00 $Ref)) (!
   (= (int___unbox__%limited s@$ box@14@00) (int___unbox__ s@$ box@14@00))
   :pattern ((int___unbox__ s@$ box@14@00))
-  :qid |quant-u-4443|)))
+  :qid |quant-u-2939|)))
 (assert (forall ((s@$ $Snap) (box@14@00 $Ref)) (!
   (int___unbox__%stateless box@14@00)
   :pattern ((int___unbox__%limited s@$ box@14@00))
-  :qid |quant-u-4444|)))
+  :qid |quant-u-2940|)))
 (assert (forall ((s@$ $Snap) (box@14@00 $Ref)) (!
   (let ((result@15@00 (int___unbox__%limited s@$ box@14@00))) (=>
     (int___unbox__%precondition s@$ box@14@00)
@@ -1978,7 +1978,7 @@
           (__prim__bool___box__%limited $Snap.unit (not (= result@15@00 0)))
           box@14@00)))))
   :pattern ((int___unbox__%limited s@$ box@14@00))
-  :qid |quant-u-4484|)))
+  :qid |quant-u-2980|)))
 (assert (forall ((s@$ $Snap) (box@14@00 $Ref)) (!
   (let ((result@15@00 (int___unbox__%limited s@$ box@14@00))) (=>
     (and
@@ -1987,7 +1987,7 @@
         (issubtype<Bool> (typeof<PyType> box@14@00) (as bool<PyType>  PyType))))
     (__prim__int___box__%precondition $Snap.unit result@15@00)))
   :pattern ((int___unbox__%limited s@$ box@14@00))
-  :qid |quant-u-4485|)))
+  :qid |quant-u-2981|)))
 (assert (forall ((s@$ $Snap) (box@14@00 $Ref)) (!
   (let ((result@15@00 (int___unbox__%limited s@$ box@14@00))) (=>
     (and
@@ -1995,17 +1995,17 @@
       (issubtype<Bool> (typeof<PyType> box@14@00) (as bool<PyType>  PyType)))
     (__prim__bool___box__%precondition $Snap.unit (not (= result@15@00 0)))))
   :pattern ((int___unbox__%limited s@$ box@14@00))
-  :qid |quant-u-4486|)))
+  :qid |quant-u-2982|)))
 (assert (forall ((s@$ $Snap) (prim@16@00 Int)) (!
   (=
     (__prim__int___box__%limited s@$ prim@16@00)
     (__prim__int___box__ s@$ prim@16@00))
   :pattern ((__prim__int___box__ s@$ prim@16@00))
-  :qid |quant-u-4445|)))
+  :qid |quant-u-2941|)))
 (assert (forall ((s@$ $Snap) (prim@16@00 Int)) (!
   (__prim__int___box__%stateless prim@16@00)
   :pattern ((__prim__int___box__%limited s@$ prim@16@00))
-  :qid |quant-u-4446|)))
+  :qid |quant-u-2942|)))
 (assert (forall ((s@$ $Snap) (prim@16@00 Int)) (!
   (let ((result@17@00 (__prim__int___box__%limited s@$ prim@16@00))) (=>
     (__prim__int___box__%precondition s@$ prim@16@00)
@@ -2013,35 +2013,35 @@
       (= (typeof<PyType> result@17@00) (as int<PyType>  PyType))
       (= (int___unbox__%limited $Snap.unit result@17@00) prim@16@00))))
   :pattern ((__prim__int___box__%limited s@$ prim@16@00))
-  :qid |quant-u-4487|)))
+  :qid |quant-u-2983|)))
 (assert (forall ((s@$ $Snap) (prim@16@00 Int)) (!
   (let ((result@17@00 (__prim__int___box__%limited s@$ prim@16@00))) true)
   :pattern ((__prim__int___box__%limited s@$ prim@16@00))
-  :qid |quant-u-4488|)))
+  :qid |quant-u-2984|)))
 (assert (forall ((s@$ $Snap) (prim@16@00 Int)) (!
   (let ((result@17@00 (__prim__int___box__%limited s@$ prim@16@00))) (=>
     (__prim__int___box__%precondition s@$ prim@16@00)
     (int___unbox__%precondition $Snap.unit result@17@00)))
   :pattern ((__prim__int___box__%limited s@$ prim@16@00))
-  :qid |quant-u-4489|)))
+  :qid |quant-u-2985|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (= (Level%limited s@$ r@18@00) (Level s@$ r@18@00))
   :pattern ((Level s@$ r@18@00))
-  :qid |quant-u-4447|)))
+  :qid |quant-u-2943|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (Level%stateless r@18@00)
   :pattern ((Level%limited s@$ r@18@00))
-  :qid |quant-u-4448|)))
+  :qid |quant-u-2944|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref) (other@21@00 $Ref)) (!
   (=
     (object___eq__%limited s@$ self@20@00 other@21@00)
     (object___eq__ s@$ self@20@00 other@21@00))
   :pattern ((object___eq__ s@$ self@20@00 other@21@00))
-  :qid |quant-u-4449|)))
+  :qid |quant-u-2945|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref) (other@21@00 $Ref)) (!
   (object___eq__%stateless self@20@00 other@21@00)
   :pattern ((object___eq__%limited s@$ self@20@00 other@21@00))
-  :qid |quant-u-4450|)))
+  :qid |quant-u-2946|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref) (other@21@00 $Ref)) (!
   (let ((result@22@00 (object___eq__%limited s@$ self@20@00 other@21@00))) (=>
     (object___eq__%precondition s@$ self@20@00 other@21@00)
@@ -2051,25 +2051,25 @@
         (not (= (= self@20@00 $Ref.null) (= other@21@00 $Ref.null)))
         (not result@22@00)))))
   :pattern ((object___eq__%limited s@$ self@20@00 other@21@00))
-  :qid |quant-u-4490|)))
+  :qid |quant-u-2986|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref) (other@21@00 $Ref)) (!
   (let ((result@22@00 (object___eq__%limited s@$ self@20@00 other@21@00))) true)
   :pattern ((object___eq__%limited s@$ self@20@00 other@21@00))
-  :qid |quant-u-4491|)))
+  :qid |quant-u-2987|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref) (other@21@00 $Ref)) (!
   (let ((result@22@00 (object___eq__%limited s@$ self@20@00 other@21@00))) true)
   :pattern ((object___eq__%limited s@$ self@20@00 other@21@00))
-  :qid |quant-u-4492|)))
+  :qid |quant-u-2988|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (=
     (str___create__%limited s@$ len@23@00 value@24@00)
     (str___create__ s@$ len@23@00 value@24@00))
   :pattern ((str___create__ s@$ len@23@00 value@24@00))
-  :qid |quant-u-4451|)))
+  :qid |quant-u-2947|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (str___create__%stateless len@23@00 value@24@00)
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4452|)))
+  :qid |quant-u-2948|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
@@ -2078,33 +2078,33 @@
       (= (str___val__ $Snap.unit result@25@00) value@24@00)
       (= (typeof<PyType> result@25@00) (as str<PyType>  PyType)))))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4493|)))
+  :qid |quant-u-2989|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
     (str___len__%precondition $Snap.unit result@25@00)))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4494|)))
+  :qid |quant-u-2990|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
     (str___val__%precondition $Snap.unit result@25@00)))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4495|)))
+  :qid |quant-u-2991|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) true)
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4496|)))
+  :qid |quant-u-2992|)))
 (assert (forall ((s@$ $Snap) (self@26@00 $Ref) (other@27@00 $Ref)) (!
   (=
     (str___eq__%limited s@$ self@26@00 other@27@00)
     (str___eq__ s@$ self@26@00 other@27@00))
   :pattern ((str___eq__ s@$ self@26@00 other@27@00))
-  :qid |quant-u-4453|)))
+  :qid |quant-u-2949|)))
 (assert (forall ((s@$ $Snap) (self@26@00 $Ref) (other@27@00 $Ref)) (!
   (str___eq__%stateless self@26@00 other@27@00)
   :pattern ((str___eq__%limited s@$ self@26@00 other@27@00))
-  :qid |quant-u-4454|)))
+  :qid |quant-u-2950|)))
 (assert (forall ((s@$ $Snap) (self@26@00 $Ref) (other@27@00 $Ref)) (!
   (let ((result@28@00 (str___eq__%limited s@$ self@26@00 other@27@00))) (=>
     (str___eq__%precondition s@$ self@26@00 other@27@00)
@@ -2120,7 +2120,7 @@
           (str___len__ $Snap.unit self@26@00)
           (str___len__ $Snap.unit other@27@00))))))
   :pattern ((str___eq__%limited s@$ self@26@00 other@27@00))
-  :qid |quant-u-4497|)))
+  :qid |quant-u-2993|)))
 (assert (forall ((s@$ $Snap) (self@26@00 $Ref) (other@27@00 $Ref)) (!
   (let ((result@28@00 (str___eq__%limited s@$ self@26@00 other@27@00))) (=>
     (str___eq__%precondition s@$ self@26@00 other@27@00)
@@ -2128,7 +2128,7 @@
       (str___val__%precondition $Snap.unit self@26@00)
       (str___val__%precondition $Snap.unit other@27@00))))
   :pattern ((str___eq__%limited s@$ self@26@00 other@27@00))
-  :qid |quant-u-4498|)))
+  :qid |quant-u-2994|)))
 (assert (forall ((s@$ $Snap) (self@26@00 $Ref) (other@27@00 $Ref)) (!
   (let ((result@28@00 (str___eq__%limited s@$ self@26@00 other@27@00))) (=>
     (and (str___eq__%precondition s@$ self@26@00 other@27@00) result@28@00)
@@ -2136,95 +2136,95 @@
       (str___len__%precondition $Snap.unit self@26@00)
       (str___len__%precondition $Snap.unit other@27@00))))
   :pattern ((str___eq__%limited s@$ self@26@00 other@27@00))
-  :qid |quant-u-4499|)))
+  :qid |quant-u-2995|)))
 (assert (forall ((s@$ $Snap) (self@29@00 Int) (other@30@00 Int)) (!
   (=
     (int___gt__%limited s@$ self@29@00 other@30@00)
     (int___gt__ s@$ self@29@00 other@30@00))
   :pattern ((int___gt__ s@$ self@29@00 other@30@00))
-  :qid |quant-u-4455|)))
+  :qid |quant-u-2951|)))
 (assert (forall ((s@$ $Snap) (self@29@00 Int) (other@30@00 Int)) (!
   (int___gt__%stateless self@29@00 other@30@00)
   :pattern ((int___gt__%limited s@$ self@29@00 other@30@00))
-  :qid |quant-u-4456|)))
+  :qid |quant-u-2952|)))
 (assert (forall ((s@$ $Snap) (self@29@00 Int) (other@30@00 Int)) (!
   (=>
     (int___gt__%precondition s@$ self@29@00 other@30@00)
     (= (int___gt__ s@$ self@29@00 other@30@00) (> self@29@00 other@30@00)))
   :pattern ((int___gt__ s@$ self@29@00 other@30@00))
-  :qid |quant-u-4500|)))
+  :qid |quant-u-2996|)))
 (assert (forall ((s@$ $Snap) (self@29@00 Int) (other@30@00 Int)) (!
   true
   :pattern ((int___gt__ s@$ self@29@00 other@30@00))
-  :qid |quant-u-4501|)))
+  :qid |quant-u-2997|)))
 (assert (forall ((s@$ $Snap) (self@32@00 Int) (other@33@00 Int)) (!
   (=
     (int___mul__%limited s@$ self@32@00 other@33@00)
     (int___mul__ s@$ self@32@00 other@33@00))
   :pattern ((int___mul__ s@$ self@32@00 other@33@00))
-  :qid |quant-u-4457|)))
+  :qid |quant-u-2953|)))
 (assert (forall ((s@$ $Snap) (self@32@00 Int) (other@33@00 Int)) (!
   (int___mul__%stateless self@32@00 other@33@00)
   :pattern ((int___mul__%limited s@$ self@32@00 other@33@00))
-  :qid |quant-u-4458|)))
+  :qid |quant-u-2954|)))
 (assert (forall ((s@$ $Snap) (self@32@00 Int) (other@33@00 Int)) (!
   (=>
     (int___mul__%precondition s@$ self@32@00 other@33@00)
     (= (int___mul__ s@$ self@32@00 other@33@00) (* self@32@00 other@33@00)))
   :pattern ((int___mul__ s@$ self@32@00 other@33@00))
-  :qid |quant-u-4502|)))
+  :qid |quant-u-2998|)))
 (assert (forall ((s@$ $Snap) (self@32@00 Int) (other@33@00 Int)) (!
   true
   :pattern ((int___mul__ s@$ self@32@00 other@33@00))
-  :qid |quant-u-4503|)))
+  :qid |quant-u-2999|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   (=
     (int___add__%limited s@$ self@35@00 other@36@00)
     (int___add__ s@$ self@35@00 other@36@00))
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4459|)))
+  :qid |quant-u-2955|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   (int___add__%stateless self@35@00 other@36@00)
   :pattern ((int___add__%limited s@$ self@35@00 other@36@00))
-  :qid |quant-u-4460|)))
+  :qid |quant-u-2956|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   (=>
     (int___add__%precondition s@$ self@35@00 other@36@00)
     (= (int___add__ s@$ self@35@00 other@36@00) (+ self@35@00 other@36@00)))
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4504|)))
+  :qid |quant-u-3000|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   true
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4505|)))
+  :qid |quant-u-3001|)))
 (assert (forall ((s@$ $Snap) (self@38@00 Int) (other@39@00 Int)) (!
   (=
     (int___sub__%limited s@$ self@38@00 other@39@00)
     (int___sub__ s@$ self@38@00 other@39@00))
   :pattern ((int___sub__ s@$ self@38@00 other@39@00))
-  :qid |quant-u-4461|)))
+  :qid |quant-u-2957|)))
 (assert (forall ((s@$ $Snap) (self@38@00 Int) (other@39@00 Int)) (!
   (int___sub__%stateless self@38@00 other@39@00)
   :pattern ((int___sub__%limited s@$ self@38@00 other@39@00))
-  :qid |quant-u-4462|)))
+  :qid |quant-u-2958|)))
 (assert (forall ((s@$ $Snap) (self@38@00 Int) (other@39@00 Int)) (!
   (=>
     (int___sub__%precondition s@$ self@38@00 other@39@00)
     (= (int___sub__ s@$ self@38@00 other@39@00) (- self@38@00 other@39@00)))
   :pattern ((int___sub__ s@$ self@38@00 other@39@00))
-  :qid |quant-u-4506|)))
+  :qid |quant-u-3002|)))
 (assert (forall ((s@$ $Snap) (self@38@00 Int) (other@39@00 Int)) (!
   true
   :pattern ((int___sub__ s@$ self@38@00 other@39@00))
-  :qid |quant-u-4507|)))
+  :qid |quant-u-3003|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (tuple___create0__%limited s@$) (tuple___create0__ s@$))
   :pattern ((tuple___create0__ s@$))
-  :qid |quant-u-4463|)))
+  :qid |quant-u-2959|)))
 (assert (forall ((s@$ $Snap)) (!
   (as tuple___create0__%stateless  Bool)
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4464|)))
+  :qid |quant-u-2960|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) (=>
     (tuple___create0__%precondition s@$)
@@ -2241,69 +2241,69 @@
         (tuple___val__ $Snap.unit result@41@00)
         (as Seq_empty  Seq<$Ref>)))))
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4508|)))
+  :qid |quant-u-3004|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) true)
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4509|)))
+  :qid |quant-u-3005|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) true)
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4510|)))
+  :qid |quant-u-3006|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) (=>
     (tuple___create0__%precondition s@$)
     (tuple___len__%precondition $Snap.unit result@41@00)))
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4511|)))
+  :qid |quant-u-3007|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) true)
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4512|)))
+  :qid |quant-u-3008|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) (=>
     (tuple___create0__%precondition s@$)
     (tuple___val__%precondition $Snap.unit result@41@00)))
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4513|)))
+  :qid |quant-u-3009|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__file__%limited s@$) (__file__ s@$))
   :pattern ((__file__ s@$))
-  :qid |quant-u-4465|)))
+  :qid |quant-u-2961|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __file__%stateless  Bool)
   :pattern ((__file__%limited s@$))
-  :qid |quant-u-4466|)))
+  :qid |quant-u-2962|)))
 (assert (forall ((s@$ $Snap) (val@43@00 $Ref) (id@44@00 Int)) (!
   (=
     (_checkDefined%limited s@$ val@43@00 id@44@00)
     (_checkDefined s@$ val@43@00 id@44@00))
   :pattern ((_checkDefined s@$ val@43@00 id@44@00))
-  :qid |quant-u-4467|)))
+  :qid |quant-u-2963|)))
 (assert (forall ((s@$ $Snap) (val@43@00 $Ref) (id@44@00 Int)) (!
   (_checkDefined%stateless val@43@00 id@44@00)
   :pattern ((_checkDefined%limited s@$ val@43@00 id@44@00))
-  :qid |quant-u-4468|)))
+  :qid |quant-u-2964|)))
 (assert (forall ((s@$ $Snap) (val@43@00 $Ref) (id@44@00 Int)) (!
   (=>
     (_checkDefined%precondition s@$ val@43@00 id@44@00)
     (= (_checkDefined s@$ val@43@00 id@44@00) val@43@00))
   :pattern ((_checkDefined s@$ val@43@00 id@44@00))
-  :qid |quant-u-4514|)))
+  :qid |quant-u-3010|)))
 (assert (forall ((s@$ $Snap) (val@43@00 $Ref) (id@44@00 Int)) (!
   true
   :pattern ((_checkDefined s@$ val@43@00 id@44@00))
-  :qid |quant-u-4515|)))
+  :qid |quant-u-3011|)))
 (assert (forall ((s@$ $Snap) (self@46@00 $Ref) (other@47@00 $Ref)) (!
   (=
     (int___eq__%limited s@$ self@46@00 other@47@00)
     (int___eq__ s@$ self@46@00 other@47@00))
   :pattern ((int___eq__ s@$ self@46@00 other@47@00))
-  :qid |quant-u-4469|)))
+  :qid |quant-u-2965|)))
 (assert (forall ((s@$ $Snap) (self@46@00 $Ref) (other@47@00 $Ref)) (!
   (int___eq__%stateless self@46@00 other@47@00)
   :pattern ((int___eq__%limited s@$ self@46@00 other@47@00))
-  :qid |quant-u-4470|)))
+  :qid |quant-u-2966|)))
 (assert (forall ((s@$ $Snap) (self@46@00 $Ref) (other@47@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@46@00 other@47@00)
@@ -2313,7 +2313,7 @@
         (int___unbox__ $Snap.unit self@46@00)
         (int___unbox__ $Snap.unit other@47@00))))
   :pattern ((int___eq__ s@$ self@46@00 other@47@00))
-  :qid |quant-u-4516|)))
+  :qid |quant-u-3012|)))
 (assert (forall ((s@$ $Snap) (self@46@00 $Ref) (other@47@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@46@00 other@47@00)
@@ -2321,15 +2321,15 @@
       (int___unbox__%precondition $Snap.unit self@46@00)
       (int___unbox__%precondition $Snap.unit other@47@00)))
   :pattern ((int___eq__ s@$ self@46@00 other@47@00))
-  :qid |quant-u-4517|)))
+  :qid |quant-u-3013|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__name__%limited s@$) (__name__ s@$))
   :pattern ((__name__ s@$))
-  :qid |quant-u-4471|)))
+  :qid |quant-u-2967|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __name__%stateless  Bool)
   :pattern ((__name__%limited s@$))
-  :qid |quant-u-4472|)))
+  :qid |quant-u-2968|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- special_raise ----------
@@ -3982,16 +3982,16 @@
 ; Container_res := new()
 (declare-const Container_res@62@01 $Ref)
 (assert (not (= Container_res@62@01 $Ref.null)))
+(assert (not (= Container_res@62@01 MyException_res_0@59@01)))
 (assert (not (= Container_res@62@01 input@48@01)))
+(assert (not (= Container_res@62@01 incon@49@01)))
+(assert (not (= Container_res@62@01 Container_res@58@01)))
 (assert (not
   (=
     Container_res@62@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@53@01))))))))))
-(assert (not (= Container_res@62@01 incon@49@01)))
 (assert (not (= Container_res@62@01 _cthread_162@45@01)))
 (assert (not (= Container_res@62@01 res@55@01)))
-(assert (not (= Container_res@62@01 MyException_res_0@59@01)))
-(assert (not (= Container_res@62@01 Container_res@58@01)))
 ; [exec]
 ; inhale typeof(Container_res) == Container()
 (declare-const $t@63@01 $Snap)
@@ -4207,16 +4207,16 @@
 ; MyException_res_0 := new()
 (declare-const MyException_res_0@69@01 $Ref)
 (assert (not (= MyException_res_0@69@01 $Ref.null)))
-(assert (not (= MyException_res_0@69@01 Container_res@62@01)))
+(assert (not (= MyException_res_0@69@01 MyException_res_0@59@01)))
 (assert (not (= MyException_res_0@69@01 input@48@01)))
+(assert (not (= MyException_res_0@69@01 Container_res@62@01)))
 (assert (not (= MyException_res_0@69@01 incon@49@01)))
-(assert (not (= MyException_res_0@69@01 _cthread_162@45@01)))
+(assert (not (= MyException_res_0@69@01 Container_value@68@01)))
 (assert (not
   (=
     MyException_res_0@69@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@66@01))))))))
-(assert (not (= MyException_res_0@69@01 MyException_res_0@59@01)))
-(assert (not (= MyException_res_0@69@01 Container_value@68@01)))
+(assert (not (= MyException_res_0@69@01 _cthread_162@45@01)))
 ; [exec]
 ; inhale typeof(MyException_res_0) == MyException()
 (declare-const $t@70@01 $Snap)
@@ -5292,16 +5292,16 @@
 ; Container_res_0 := new()
 (declare-const Container_res_0@97@01 $Ref)
 (assert (not (= Container_res_0@97@01 $Ref.null)))
-(assert (not (= Container_res_0@97@01 _cthread_163@80@01)))
-(assert (not (= Container_res_0@97@01 res_0@90@01)))
-(assert (not (= Container_res_0@97@01 MyException_res_1@94@01)))
 (assert (not (= Container_res_0@97@01 input_0@83@01)))
+(assert (not (= Container_res_0@97@01 Container_res_0@93@01)))
+(assert (not (= Container_res_0@97@01 MyException_res_1@94@01)))
+(assert (not (= Container_res_0@97@01 _cthread_163@80@01)))
 (assert (not (= Container_res_0@97@01 incon_0@84@01)))
+(assert (not (= Container_res_0@97@01 res_0@90@01)))
 (assert (not
   (=
     Container_res_0@97@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@88@01))))))))))
-(assert (not (= Container_res_0@97@01 Container_res_0@93@01)))
 ; [exec]
 ; inhale typeof(Container_res_0) == Container()
 (declare-const $t@98@01 $Snap)
@@ -5517,16 +5517,16 @@
 ; MyException_res_1 := new()
 (declare-const MyException_res_1@104@01 $Ref)
 (assert (not (= MyException_res_1@104@01 $Ref.null)))
+(assert (not (= MyException_res_1@104@01 input_0@83@01)))
+(assert (not (= MyException_res_1@104@01 MyException_res_1@94@01)))
 (assert (not (= MyException_res_1@104@01 _cthread_163@80@01)))
+(assert (not (= MyException_res_1@104@01 Container_res_0@97@01)))
+(assert (not (= MyException_res_1@104@01 incon_0@84@01)))
+(assert (not (= MyException_res_1@104@01 Container_value@103@01)))
 (assert (not
   (=
     MyException_res_1@104@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@101@01))))))))
-(assert (not (= MyException_res_1@104@01 MyException_res_1@94@01)))
-(assert (not (= MyException_res_1@104@01 input_0@83@01)))
-(assert (not (= MyException_res_1@104@01 Container_res_0@97@01)))
-(assert (not (= MyException_res_1@104@01 Container_value@103@01)))
-(assert (not (= MyException_res_1@104@01 incon_0@84@01)))
 ; [exec]
 ; inhale typeof(MyException_res_1) == MyException()
 (declare-const $t@105@01 $Snap)
@@ -6444,10 +6444,10 @@
 (declare-const MyException_res_2@129@01 $Ref)
 (assert (not (= MyException_res_2@129@01 $Ref.null)))
 (assert (not (= MyException_res_2@129@01 _cthread_164@114@01)))
+(assert (not (= MyException_res_2@129@01 incon_1@118@01)))
 (assert (not (= MyException_res_2@129@01 MyException_res_2@125@01)))
 (assert (not (= MyException_res_2@129@01 input_1@117@01)))
 (assert (not (= MyException_res_2@129@01 Container_value@128@01)))
-(assert (not (= MyException_res_2@129@01 incon_1@118@01)))
 ; [exec]
 ; inhale typeof(MyException_res_2) == MyException()
 (declare-const $t@130@01 $Snap)
@@ -7069,11 +7069,11 @@
 ; MyException_res_3 := new()
 (declare-const MyException_res_3@153@01 $Ref)
 (assert (not (= MyException_res_3@153@01 $Ref.null)))
-(assert (not (= MyException_res_3@153@01 incon_2@142@01)))
-(assert (not (= MyException_res_3@153@01 Container_value@152@01)))
-(assert (not (= MyException_res_3@153@01 input_2@141@01)))
-(assert (not (= MyException_res_3@153@01 MyException_res_3@149@01)))
 (assert (not (= MyException_res_3@153@01 _cthread_165@138@01)))
+(assert (not (= MyException_res_3@153@01 input_2@141@01)))
+(assert (not (= MyException_res_3@153@01 Container_value@152@01)))
+(assert (not (= MyException_res_3@153@01 MyException_res_3@149@01)))
+(assert (not (= MyException_res_3@153@01 incon_2@142@01)))
 ; [exec]
 ; inhale typeof(MyException_res_3) == MyException()
 (declare-const $t@154@01 $Snap)
@@ -8126,11 +8126,11 @@
 ; MyException_res_4 := new()
 (declare-const MyException_res_4@177@01 $Ref)
 (assert (not (= MyException_res_4@177@01 $Ref.null)))
-(assert (not (= MyException_res_4@177@01 input_3@165@01)))
 (assert (not (= MyException_res_4@177@01 Container_value@176@01)))
+(assert (not (= MyException_res_4@177@01 input_3@165@01)))
+(assert (not (= MyException_res_4@177@01 _cthread_166@162@01)))
 (assert (not (= MyException_res_4@177@01 incon_3@166@01)))
 (assert (not (= MyException_res_4@177@01 MyException_res_4@173@01)))
-(assert (not (= MyException_res_4@177@01 _cthread_166@162@01)))
 ; [exec]
 ; inhale typeof(MyException_res_4) == MyException()
 (declare-const $t@178@01 $Snap)
@@ -8665,17 +8665,17 @@
 ; Container_res_1 := new()
 (declare-const Container_res_1@204@01 $Ref)
 (assert (not (= Container_res_1@204@01 $Ref.null)))
-(assert (not (= Container_res_1@204@01 res_1@196@01)))
-(assert (not (= Container_res_1@204@01 input_4@189@01)))
 (assert (not (= Container_res_1@204@01 incon_4@190@01)))
-(assert (not (= Container_res_1@204@01 _cthread_167@186@01)))
+(assert (not (= Container_res_1@204@01 error_36@200@01)))
+(assert (not (= Container_res_1@204@01 Container_res_1@199@01)))
 (assert (not
   (=
     Container_res_1@204@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@193@01))))))))))
-(assert (not (= Container_res_1@204@01 error_36@200@01)))
+(assert (not (= Container_res_1@204@01 res_1@196@01)))
 (assert (not (= Container_res_1@204@01 MyException_res_5@201@01)))
-(assert (not (= Container_res_1@204@01 Container_res_1@199@01)))
+(assert (not (= Container_res_1@204@01 _cthread_167@186@01)))
+(assert (not (= Container_res_1@204@01 input_4@189@01)))
 ; [exec]
 ; inhale typeof(Container_res_1) == Container()
 (declare-const $t@205@01 $Snap)
@@ -8891,17 +8891,17 @@
 ; MyException_res_5 := new()
 (declare-const MyException_res_5@211@01 $Ref)
 (assert (not (= MyException_res_5@211@01 $Ref.null)))
-(assert (not (= MyException_res_5@211@01 Container_value@210@01)))
-(assert (not (= MyException_res_5@211@01 input_4@189@01)))
 (assert (not (= MyException_res_5@211@01 incon_4@190@01)))
+(assert (not (= MyException_res_5@211@01 error_36@200@01)))
+(assert (not (= MyException_res_5@211@01 Container_res_1@204@01)))
+(assert (not (= MyException_res_5@211@01 MyException_res_5@201@01)))
+(assert (not (= MyException_res_5@211@01 Container_value@210@01)))
+(assert (not (= MyException_res_5@211@01 _cthread_167@186@01)))
 (assert (not
   (=
     MyException_res_5@211@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@208@01))))))))
-(assert (not (= MyException_res_5@211@01 _cthread_167@186@01)))
-(assert (not (= MyException_res_5@211@01 error_36@200@01)))
-(assert (not (= MyException_res_5@211@01 Container_res_1@204@01)))
-(assert (not (= MyException_res_5@211@01 MyException_res_5@201@01)))
+(assert (not (= MyException_res_5@211@01 input_4@189@01)))
 ; [exec]
 ; inhale typeof(MyException_res_5) == MyException()
 (declare-const $t@212@01 $Snap)
@@ -9750,12 +9750,12 @@
 ; MyException_res_6 := new()
 (declare-const MyException_res_6@236@01 $Ref)
 (assert (not (= MyException_res_6@236@01 $Ref.null)))
-(assert (not (= MyException_res_6@236@01 MyOtherException_res@232@01)))
-(assert (not (= MyException_res_6@236@01 _cthread_168@220@01)))
-(assert (not (= MyException_res_6@236@01 input_5@223@01)))
 (assert (not (= MyException_res_6@236@01 Container_value@235@01)))
-(assert (not (= MyException_res_6@236@01 MyException_res_6@231@01)))
+(assert (not (= MyException_res_6@236@01 MyOtherException_res@232@01)))
 (assert (not (= MyException_res_6@236@01 incon_5@224@01)))
+(assert (not (= MyException_res_6@236@01 input_5@223@01)))
+(assert (not (= MyException_res_6@236@01 MyException_res_6@231@01)))
+(assert (not (= MyException_res_6@236@01 _cthread_168@220@01)))
 ; [exec]
 ; inhale typeof(MyException_res_6) == MyException()
 (declare-const $t@237@01 $Snap)
@@ -10077,15 +10077,15 @@
 ; MyOtherException_res := new()
 (declare-const MyOtherException_res@238@01 $Ref)
 (assert (not (= MyOtherException_res@238@01 $Ref.null)))
-(assert (not (= MyOtherException_res@238@01 MyOtherException_res@232@01)))
-(assert (not (= MyOtherException_res@238@01 _cthread_168@220@01)))
-(assert (not (= MyOtherException_res@238@01 input_5@223@01)))
 (assert (not
   (=
     MyOtherException_res@238@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@227@01))))))))))
-(assert (not (= MyOtherException_res@238@01 MyException_res_6@231@01)))
+(assert (not (= MyOtherException_res@238@01 MyOtherException_res@232@01)))
 (assert (not (= MyOtherException_res@238@01 incon_5@224@01)))
+(assert (not (= MyOtherException_res@238@01 input_5@223@01)))
+(assert (not (= MyOtherException_res@238@01 MyException_res_6@231@01)))
+(assert (not (= MyOtherException_res@238@01 _cthread_168@220@01)))
 ; [exec]
 ; inhale typeof(MyOtherException_res) == MyOtherException()
 (declare-const $t@239@01 $Snap)
@@ -10877,10 +10877,10 @@
 ; MyException_res_7 := new()
 (declare-const MyException_res_7@262@01 $Ref)
 (assert (not (= MyException_res_7@262@01 $Ref.null)))
-(assert (not (= MyException_res_7@262@01 _cthread_169@247@01)))
 (assert (not (= MyException_res_7@262@01 Container_value@261@01)))
-(assert (not (= MyException_res_7@262@01 out@250@01)))
 (assert (not (= MyException_res_7@262@01 i@251@01)))
+(assert (not (= MyException_res_7@262@01 out@250@01)))
+(assert (not (= MyException_res_7@262@01 _cthread_169@247@01)))
 (assert (not (= MyException_res_7@262@01 MyException_res_7@258@01)))
 ; [exec]
 ; inhale typeof(MyException_res_7) == MyException()
@@ -11650,14 +11650,14 @@
 ; MyException_res_8 := new()
 (declare-const MyException_res_8@285@01 $Ref)
 (assert (not (= MyException_res_8@285@01 $Ref.null)))
-(assert (not (= MyException_res_8@285@01 error@279@01)))
-(assert (not (= MyException_res_8@285@01 _cthread_170@271@01)))
-(assert (not (= MyException_res_8@285@01 MyException_res_8@282@01)))
 (assert (not (= MyException_res_8@285@01 out_0@274@01)))
+(assert (not (= MyException_res_8@285@01 error@279@01)))
 (assert (not
   (=
     MyException_res_8@285@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@277@01))))))))
+(assert (not (= MyException_res_8@285@01 MyException_res_8@282@01)))
+(assert (not (= MyException_res_8@285@01 _cthread_170@271@01)))
 ; [exec]
 ; inhale typeof(MyException_res_8) == MyException()
 (declare-const $t@286@01 $Snap)
@@ -12106,14 +12106,14 @@
 (declare-const Container_res_2@308@01 $Ref)
 (assert (not (= Container_res_2@308@01 $Ref.null)))
 (assert (not (= Container_res_2@308@01 error_0@302@01)))
-(assert (not (= Container_res_2@308@01 out_1@296@01)))
+(assert (not (= Container_res_2@308@01 Container_res_2@305@01)))
 (assert (not
   (=
     Container_res_2@308@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@298@01))))))))
-(assert (not (= Container_res_2@308@01 Container_res_2@305@01)))
-(assert (not (= Container_res_2@308@01 tmp@301@01)))
+(assert (not (= Container_res_2@308@01 out_1@296@01)))
 (assert (not (= Container_res_2@308@01 _cthread_171@293@01)))
+(assert (not (= Container_res_2@308@01 tmp@301@01)))
 ; [exec]
 ; inhale typeof(Container_res_2) == Container()
 (declare-const $t@309@01 $Snap)
@@ -13595,14 +13595,14 @@
 ; MyException_res_9 := new()
 (declare-const MyException_res_9@339@01 $Ref)
 (assert (not (= MyException_res_9@339@01 $Ref.null)))
-(assert (not (= MyException_res_9@339@01 error_1@333@01)))
-(assert (not (= MyException_res_9@339@01 MyException_res_9@336@01)))
-(assert (not (= MyException_res_9@339@01 out_2@328@01)))
 (assert (not (= MyException_res_9@339@01 _cthread_172@325@01)))
+(assert (not (= MyException_res_9@339@01 MyException_res_9@336@01)))
 (assert (not
   (=
     MyException_res_9@339@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@331@01))))))))
+(assert (not (= MyException_res_9@339@01 error_1@333@01)))
+(assert (not (= MyException_res_9@339@01 out_2@328@01)))
 ; [exec]
 ; inhale typeof(MyException_res_9) == MyException()
 (declare-const $t@340@01 $Snap)
@@ -14195,15 +14195,15 @@
 ; Container_res_3 := new()
 (declare-const Container_res_3@362@01 $Ref)
 (assert (not (= Container_res_3@362@01 $Ref.null)))
-(assert (not (= Container_res_3@362@01 _cthread_173@347@01)))
 (assert (not (= Container_res_3@362@01 Container_res_3@359@01)))
 (assert (not (= Container_res_3@362@01 out_3@350@01)))
 (assert (not (= Container_res_3@362@01 tmp_0@355@01)))
-(assert (not (= Container_res_3@362@01 error_2@356@01)))
 (assert (not
   (=
     Container_res_3@362@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@352@01))))))))
+(assert (not (= Container_res_3@362@01 _cthread_173@347@01)))
+(assert (not (= Container_res_3@362@01 error_2@356@01)))
 ; [exec]
 ; inhale typeof(Container_res_3) == Container()
 (declare-const $t@363@01 $Snap)
@@ -15096,16 +15096,16 @@
 ; MyException_res_10 := new()
 (declare-const MyException_res_10@394@01 $Ref)
 (assert (not (= MyException_res_10@394@01 $Ref.null)))
+(assert (not (= MyException_res_10@394@01 _cthread_174@377@01)))
+(assert (not (= MyException_res_10@394@01 error_3@385@01)))
 (assert (not (= MyException_res_10@394@01 out_4@380@01)))
-(assert (not (= MyException_res_10@394@01 error_4@387@01)))
+(assert (not (= MyException_res_10@394@01 MyException_res_10@390@01)))
 (assert (not
   (=
     MyException_res_10@394@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@382@01))))))))
-(assert (not (= MyException_res_10@394@01 _cthread_174@377@01)))
-(assert (not (= MyException_res_10@394@01 error_3@385@01)))
 (assert (not (= MyException_res_10@394@01 MyOtherException_res_0@391@01)))
-(assert (not (= MyException_res_10@394@01 MyException_res_10@390@01)))
+(assert (not (= MyException_res_10@394@01 error_4@387@01)))
 ; [exec]
 ; inhale typeof(MyException_res_10) == MyException()
 (declare-const $t@395@01 $Snap)
@@ -15281,11 +15281,11 @@
 ; MyOtherException_res_0 := new()
 (declare-const MyOtherException_res_0@397@01 $Ref)
 (assert (not (= MyOtherException_res_0@397@01 $Ref.null)))
-(assert (not (= MyOtherException_res_0@397@01 out_4@380@01)))
-(assert (not (= MyOtherException_res_0@397@01 _cthread_174@377@01)))
-(assert (not (= MyOtherException_res_0@397@01 Container_value@396@01)))
 (assert (not (= MyOtherException_res_0@397@01 MyException_res_10@394@01)))
+(assert (not (= MyOtherException_res_0@397@01 _cthread_174@377@01)))
 (assert (not (= MyOtherException_res_0@397@01 error_3@385@01)))
+(assert (not (= MyOtherException_res_0@397@01 Container_value@396@01)))
+(assert (not (= MyOtherException_res_0@397@01 out_4@380@01)))
 (assert (not (= MyOtherException_res_0@397@01 MyOtherException_res_0@391@01)))
 ; [exec]
 ; inhale typeof(MyOtherException_res_0) == MyOtherException()
@@ -15764,16 +15764,16 @@
 ; MyException_res_11 := new()
 (declare-const MyException_res_11@423@01 $Ref)
 (assert (not (= MyException_res_11@423@01 $Ref.null)))
+(assert (not (= MyException_res_11@423@01 MyException_res_11@419@01)))
+(assert (not (= MyException_res_11@423@01 error_5@414@01)))
 (assert (not
   (=
     MyException_res_11@423@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@411@01))))))))
-(assert (not (= MyException_res_11@423@01 MyOtherException_res_1@420@01)))
 (assert (not (= MyException_res_11@423@01 out_5@409@01)))
-(assert (not (= MyException_res_11@423@01 _cthread_175@406@01)))
-(assert (not (= MyException_res_11@423@01 error_5@414@01)))
-(assert (not (= MyException_res_11@423@01 MyException_res_11@419@01)))
 (assert (not (= MyException_res_11@423@01 error_6@416@01)))
+(assert (not (= MyException_res_11@423@01 MyOtherException_res_1@420@01)))
+(assert (not (= MyException_res_11@423@01 _cthread_175@406@01)))
 ; [exec]
 ; inhale typeof(MyException_res_11) == MyException()
 (declare-const $t@424@01 $Snap)
@@ -16185,16 +16185,16 @@
 ; MyException_res_12 := new()
 (declare-const MyException_res_12@448@01 $Ref)
 (assert (not (= MyException_res_12@448@01 $Ref.null)))
+(assert (not (= MyException_res_12@448@01 error_7@439@01)))
 (assert (not (= MyException_res_12@448@01 MyException_res_12@444@01)))
-(assert (not (= MyException_res_12@448@01 error_8@441@01)))
-(assert (not (= MyException_res_12@448@01 out_6@434@01)))
-(assert (not (= MyException_res_12@448@01 MyOtherException_res_2@445@01)))
 (assert (not
   (=
     MyException_res_12@448@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@436@01))))))))
+(assert (not (= MyException_res_12@448@01 error_8@441@01)))
 (assert (not (= MyException_res_12@448@01 _cthread_176@431@01)))
-(assert (not (= MyException_res_12@448@01 error_7@439@01)))
+(assert (not (= MyException_res_12@448@01 MyOtherException_res_2@445@01)))
+(assert (not (= MyException_res_12@448@01 out_6@434@01)))
 ; [exec]
 ; inhale typeof(MyException_res_12) == MyException()
 (declare-const $t@449@01 $Snap)
@@ -16495,12 +16495,12 @@
 ; MyOtherException_res_2 := new()
 (declare-const MyOtherException_res_2@453@01 $Ref)
 (assert (not (= MyOtherException_res_2@453@01 $Ref.null)))
-(assert (not (= MyOtherException_res_2@453@01 Container_value@452@01)))
-(assert (not (= MyOtherException_res_2@453@01 out_6@434@01)))
-(assert (not (= MyOtherException_res_2@453@01 MyOtherException_res_2@445@01)))
-(assert (not (= MyOtherException_res_2@453@01 _cthread_176@431@01)))
 (assert (not (= MyOtherException_res_2@453@01 error_7@439@01)))
 (assert (not (= MyOtherException_res_2@453@01 MyException_res_12@448@01)))
+(assert (not (= MyOtherException_res_2@453@01 Container_value@452@01)))
+(assert (not (= MyOtherException_res_2@453@01 _cthread_176@431@01)))
+(assert (not (= MyOtherException_res_2@453@01 MyOtherException_res_2@445@01)))
+(assert (not (= MyOtherException_res_2@453@01 out_6@434@01)))
 ; [exec]
 ; inhale typeof(MyOtherException_res_2) == MyOtherException()
 (declare-const $t@454@01 $Snap)
@@ -16981,16 +16981,16 @@
 ; MyException_res_13 := new()
 (declare-const MyException_res_13@479@01 $Ref)
 (assert (not (= MyException_res_13@479@01 $Ref.null)))
+(assert (not (= MyException_res_13@479@01 error_9@470@01)))
+(assert (not (= MyException_res_13@479@01 out_7@465@01)))
+(assert (not (= MyException_res_13@479@01 MyOtherException_res_3@476@01)))
 (assert (not (= MyException_res_13@479@01 error_10@472@01)))
+(assert (not (= MyException_res_13@479@01 MyException_res_13@475@01)))
+(assert (not (= MyException_res_13@479@01 _cthread_177@462@01)))
 (assert (not
   (=
     MyException_res_13@479@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@467@01))))))))
-(assert (not (= MyException_res_13@479@01 _cthread_177@462@01)))
-(assert (not (= MyException_res_13@479@01 MyException_res_13@475@01)))
-(assert (not (= MyException_res_13@479@01 MyOtherException_res_3@476@01)))
-(assert (not (= MyException_res_13@479@01 out_7@465@01)))
-(assert (not (= MyException_res_13@479@01 error_9@470@01)))
 ; [exec]
 ; inhale typeof(MyException_res_13) == MyException()
 (declare-const $t@480@01 $Snap)
@@ -17534,17 +17534,17 @@
 ; MyException_res_14 := new()
 (declare-const MyException_res_14@508@01 $Ref)
 (assert (not (= MyException_res_14@508@01 $Ref.null)))
-(assert (not (= MyException_res_14@508@01 MyException_res_14@504@01)))
 (assert (not (= MyException_res_14@508@01 error_11@497@01)))
 (assert (not (= MyException_res_14@508@01 error_12@499@01)))
-(assert (not (= MyException_res_14@508@01 out_8@492@01)))
-(assert (not (= MyException_res_14@508@01 MyOtherException_res_4@505@01)))
-(assert (not (= MyException_res_14@508@01 error_13@501@01)))
-(assert (not (= MyException_res_14@508@01 _cthread_178@489@01)))
 (assert (not
   (=
     MyException_res_14@508@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@494@01))))))))
+(assert (not (= MyException_res_14@508@01 error_13@501@01)))
+(assert (not (= MyException_res_14@508@01 MyException_res_14@504@01)))
+(assert (not (= MyException_res_14@508@01 MyOtherException_res_4@505@01)))
+(assert (not (= MyException_res_14@508@01 _cthread_178@489@01)))
+(assert (not (= MyException_res_14@508@01 out_8@492@01)))
 ; [exec]
 ; inhale typeof(MyException_res_14) == MyException()
 (declare-const $t@509@01 $Snap)
@@ -17907,11 +17907,11 @@
 (assert (not (= MyOtherException_res_4@514@01 $Ref.null)))
 (assert (not (= MyOtherException_res_4@514@01 error_11@497@01)))
 (assert (not (= MyOtherException_res_4@514@01 error_12@499@01)))
-(assert (not (= MyOtherException_res_4@514@01 out_8@492@01)))
-(assert (not (= MyOtherException_res_4@514@01 MyOtherException_res_4@505@01)))
-(assert (not (= MyOtherException_res_4@514@01 MyException_res_14@508@01)))
 (assert (not (= MyOtherException_res_4@514@01 Container_value@513@01)))
+(assert (not (= MyOtherException_res_4@514@01 MyOtherException_res_4@505@01)))
 (assert (not (= MyOtherException_res_4@514@01 _cthread_178@489@01)))
+(assert (not (= MyOtherException_res_4@514@01 MyException_res_14@508@01)))
+(assert (not (= MyOtherException_res_4@514@01 out_8@492@01)))
 ; [exec]
 ; inhale typeof(MyOtherException_res_4) == MyOtherException()
 (declare-const $t@515@01 $Snap)
@@ -18428,17 +18428,17 @@
 ; MyException_res_15 := new()
 (declare-const MyException_res_15@542@01 $Ref)
 (assert (not (= MyException_res_15@542@01 $Ref.null)))
-(assert (not (= MyException_res_15@542@01 MyOtherException_res_5@539@01)))
+(assert (not (= MyException_res_15@542@01 error_14@531@01)))
+(assert (not (= MyException_res_15@542@01 error_16@535@01)))
 (assert (not
   (=
     MyException_res_15@542@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@528@01))))))))
 (assert (not (= MyException_res_15@542@01 out_9@526@01)))
-(assert (not (= MyException_res_15@542@01 error_15@533@01)))
-(assert (not (= MyException_res_15@542@01 _cthread_179@523@01)))
-(assert (not (= MyException_res_15@542@01 error_14@531@01)))
-(assert (not (= MyException_res_15@542@01 error_16@535@01)))
 (assert (not (= MyException_res_15@542@01 MyException_res_15@538@01)))
+(assert (not (= MyException_res_15@542@01 _cthread_179@523@01)))
+(assert (not (= MyException_res_15@542@01 MyOtherException_res_5@539@01)))
+(assert (not (= MyException_res_15@542@01 error_15@533@01)))
 ; [exec]
 ; inhale typeof(MyException_res_15) == MyException()
 (declare-const $t@543@01 $Snap)
@@ -21348,14 +21348,14 @@
 ; ParameterizedException_res := new()
 (declare-const ParameterizedException_res@671@01 $Ref)
 (assert (not (= ParameterizedException_res@671@01 $Ref.null)))
+(assert (not (= ParameterizedException_res@671@01 out_14@660@01)))
+(assert (not (= ParameterizedException_res@671@01 _cthread_184@657@01)))
+(assert (not (= ParameterizedException_res@671@01 error_25@665@01)))
+(assert (not (= ParameterizedException_res@671@01 ParameterizedException_res@668@01)))
 (assert (not
   (=
     ParameterizedException_res@671@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@662@01))))))))
-(assert (not (= ParameterizedException_res@671@01 out_14@660@01)))
-(assert (not (= ParameterizedException_res@671@01 error_25@665@01)))
-(assert (not (= ParameterizedException_res@671@01 _cthread_184@657@01)))
-(assert (not (= ParameterizedException_res@671@01 ParameterizedException_res@668@01)))
 ; [exec]
 ; inhale typeof(ParameterizedException_res) == ParameterizedException()
 (declare-const $t@672@01 $Snap)
@@ -22230,13 +22230,13 @@
 ; ParameterizedException_res_0 := new()
 (declare-const ParameterizedException_res_0@703@01 $Ref)
 (assert (not (= ParameterizedException_res_0@703@01 $Ref.null)))
+(assert (not (= ParameterizedException_res_0@703@01 out_15@688@01)))
 (assert (not (= ParameterizedException_res_0@703@01 MyException_res_16@699@01)))
-(assert (not (= ParameterizedException_res_0@703@01 _cthread_185@685@01)))
-(assert (not (= ParameterizedException_res_0@703@01 inp@689@01)))
 (assert (not (= ParameterizedException_res_0@703@01 ParameterizedException_res_0@698@01)))
 (assert (not (= ParameterizedException_res_0@703@01 error_26@694@01)))
 (assert (not (= ParameterizedException_res_0@703@01 Container_value@702@01)))
-(assert (not (= ParameterizedException_res_0@703@01 out_15@688@01)))
+(assert (not (= ParameterizedException_res_0@703@01 _cthread_185@685@01)))
+(assert (not (= ParameterizedException_res_0@703@01 inp@689@01)))
 ; [exec]
 ; inhale typeof(ParameterizedException_res_0) == ParameterizedException()
 (declare-const $t@704@01 $Snap)
@@ -22836,16 +22836,16 @@
 ; MyException_res_16 := new()
 (declare-const MyException_res_16@711@01 $Ref)
 (assert (not (= MyException_res_16@711@01 $Ref.null)))
+(assert (not (= MyException_res_16@711@01 out_15@688@01)))
 (assert (not (= MyException_res_16@711@01 MyException_res_16@699@01)))
-(assert (not (= MyException_res_16@711@01 _cthread_185@685@01)))
-(assert (not (= MyException_res_16@711@01 inp@689@01)))
 (assert (not (= MyException_res_16@711@01 ParameterizedException_res_0@698@01)))
+(assert (not (= MyException_res_16@711@01 error_26@694@01)))
+(assert (not (= MyException_res_16@711@01 _cthread_185@685@01)))
 (assert (not
   (=
     MyException_res_16@711@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@691@01)))))))))
-(assert (not (= MyException_res_16@711@01 error_26@694@01)))
-(assert (not (= MyException_res_16@711@01 out_15@688@01)))
+(assert (not (= MyException_res_16@711@01 inp@689@01)))
 ; [exec]
 ; inhale typeof(MyException_res_16) == MyException()
 (declare-const $t@712@01 $Snap)
@@ -23613,13 +23613,13 @@
 ; ParameterizedException_res_1 := new()
 (declare-const ParameterizedException_res_1@740@01 $Ref)
 (assert (not (= ParameterizedException_res_1@740@01 $Ref.null)))
-(assert (not (= ParameterizedException_res_1@740@01 MyException_res_17@736@01)))
-(assert (not (= ParameterizedException_res_1@740@01 out_16@725@01)))
-(assert (not (= ParameterizedException_res_1@740@01 ParameterizedException_res_1@735@01)))
 (assert (not (= ParameterizedException_res_1@740@01 Container_value@739@01)))
 (assert (not (= ParameterizedException_res_1@740@01 error_27@731@01)))
-(assert (not (= ParameterizedException_res_1@740@01 _cthread_186@722@01)))
 (assert (not (= ParameterizedException_res_1@740@01 inp_0@726@01)))
+(assert (not (= ParameterizedException_res_1@740@01 _cthread_186@722@01)))
+(assert (not (= ParameterizedException_res_1@740@01 out_16@725@01)))
+(assert (not (= ParameterizedException_res_1@740@01 ParameterizedException_res_1@735@01)))
+(assert (not (= ParameterizedException_res_1@740@01 MyException_res_17@736@01)))
 ; [exec]
 ; inhale typeof(ParameterizedException_res_1) == ParameterizedException()
 (declare-const $t@741@01 $Snap)
@@ -27495,10 +27495,10 @@
 ; ExceptionClass_res := new()
 (declare-const ExceptionClass_res@815@01 $Ref)
 (assert (not (= ExceptionClass_res@815@01 $Ref.null)))
-(assert (not (= ExceptionClass_res@815@01 res_2@809@01)))
 (assert (not (= ExceptionClass_res@815@01 _cthread_189@801@01)))
-(assert (not (= ExceptionClass_res@815@01 error_30@810@01)))
+(assert (not (= ExceptionClass_res@815@01 res_2@809@01)))
 (assert (not (= ExceptionClass_res@815@01 ExceptionClass_res@812@01)))
+(assert (not (= ExceptionClass_res@815@01 error_30@810@01)))
 ; [exec]
 ; inhale typeof(ExceptionClass_res) == ExceptionClass()
 (declare-const $t@816@01 $Snap)
@@ -29641,10 +29641,10 @@
 ; MyException_res_18 := new()
 (declare-const MyException_res_18@888@01 $Ref)
 (assert (not (= MyException_res_18@888@01 $Ref.null)))
-(assert (not (= MyException_res_18@888@01 error_33@882@01)))
-(assert (not (= MyException_res_18@888@01 MyOtherException_res_6@885@01)))
-(assert (not (= MyException_res_18@888@01 MyException_res_18@884@01)))
 (assert (not (= MyException_res_18@888@01 _cthread_192@875@01)))
+(assert (not (= MyException_res_18@888@01 MyException_res_18@884@01)))
+(assert (not (= MyException_res_18@888@01 MyOtherException_res_6@885@01)))
+(assert (not (= MyException_res_18@888@01 error_33@882@01)))
 ; [exec]
 ; inhale typeof(MyException_res_18) == MyException()
 (declare-const $t@889@01 $Snap)
@@ -29661,9 +29661,9 @@
 ; MyOtherException_res_6 := new()
 (declare-const MyOtherException_res_6@890@01 $Ref)
 (assert (not (= MyOtherException_res_6@890@01 $Ref.null)))
-(assert (not (= MyOtherException_res_6@890@01 error_33@882@01)))
-(assert (not (= MyOtherException_res_6@890@01 MyOtherException_res_6@885@01)))
 (assert (not (= MyOtherException_res_6@890@01 _cthread_192@875@01)))
+(assert (not (= MyOtherException_res_6@890@01 MyOtherException_res_6@885@01)))
+(assert (not (= MyOtherException_res_6@890@01 error_33@882@01)))
 (assert (not (= MyOtherException_res_6@890@01 MyException_res_18@888@01)))
 ; [exec]
 ; inhale typeof(MyOtherException_res_6) == MyOtherException()
@@ -30014,10 +30014,10 @@
 ; MyException_res_19 := new()
 (declare-const MyException_res_19@912@01 $Ref)
 (assert (not (= MyException_res_19@912@01 $Ref.null)))
-(assert (not (= MyException_res_19@912@01 MyException_res_19@908@01)))
+(assert (not (= MyException_res_19@912@01 _cthread_193@898@01)))
 (assert (not (= MyException_res_19@912@01 c_1@901@01)))
 (assert (not (= MyException_res_19@912@01 Container_value@911@01)))
-(assert (not (= MyException_res_19@912@01 _cthread_193@898@01)))
+(assert (not (= MyException_res_19@912@01 MyException_res_19@908@01)))
 ; [exec]
 ; inhale typeof(MyException_res_19) == MyException()
 (declare-const $t@913@01 $Snap)
@@ -30283,12 +30283,12 @@
 (declare-const MyException_res_20@933@01 $Ref)
 (assert (not (= MyException_res_20@933@01 $Ref.null)))
 (assert (not (= MyException_res_20@933@01 _cthread_194@920@01)))
+(assert (not (= MyException_res_20@933@01 MyException_res_20@930@01)))
+(assert (not (= MyException_res_20@933@01 c_2@923@01)))
 (assert (not
   (=
     MyException_res_20@933@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@926@01))))))))
-(assert (not (= MyException_res_20@933@01 c_2@923@01)))
-(assert (not (= MyException_res_20@933@01 MyException_res_20@930@01)))
 ; [exec]
 ; inhale typeof(MyException_res_20) == MyException()
 (declare-const $t@934@01 $Snap)
@@ -30416,11 +30416,11 @@
 ; Container_res_4 := new()
 (declare-const Container_res_4@954@01 $Ref)
 (assert (not (= Container_res_4@954@01 $Ref.null)))
+(assert (not (= Container_res_4@954@01 _cthread_195@939@01)))
 (assert (not (= Container_res_4@954@01 Container_res_4@949@01)))
 (assert (not (= Container_res_4@954@01 require_res@951@01)))
 (assert (not (= Container_res_4@954@01 c_3@946@01)))
 (assert (not (= Container_res_4@954@01 error_34@947@01)))
-(assert (not (= Container_res_4@954@01 _cthread_195@939@01)))
 (assert (not (= Container_res_4@954@01 setup_res@950@01)))
 ; [exec]
 ; inhale typeof(Container_res_4) == Container()
@@ -30959,12 +30959,12 @@
 ; Container_res_5 := new()
 (declare-const Container_res_5@985@01 $Ref)
 (assert (not (= Container_res_5@985@01 $Ref.null)))
-(assert (not (= Container_res_5@985@01 c_4@977@01)))
-(assert (not (= Container_res_5@985@01 require_res_0@981@01)))
-(assert (not (= Container_res_5@985@01 setup_res_0@982@01)))
 (assert (not (= Container_res_5@985@01 Container_res_5@980@01)))
 (assert (not (= Container_res_5@985@01 error_35@978@01)))
 (assert (not (= Container_res_5@985@01 _cthread_196@970@01)))
+(assert (not (= Container_res_5@985@01 c_4@977@01)))
+(assert (not (= Container_res_5@985@01 setup_res_0@982@01)))
+(assert (not (= Container_res_5@985@01 require_res_0@981@01)))
 ; [exec]
 ; inhale typeof(Container_res_5) == Container()
 (declare-const $t@986@01 $Snap)
@@ -32765,11 +32765,11 @@
 ; MyOtherException_res_7 := new()
 (declare-const MyOtherException_res_7@1077@01 $Ref)
 (assert (not (= MyOtherException_res_7@1077@01 $Ref.null)))
-(assert (not (= MyOtherException_res_7@1077@01 ExceptionClass_a_field@1076@01)))
-(assert (not (= MyOtherException_res_7@1077@01 self_2@1061@01)))
 (assert (not (= MyOtherException_res_7@1077@01 MyOtherException_res_7@1069@01)))
-(assert (not (= MyOtherException_res_7@1077@01 _cthread_159@1058@01)))
+(assert (not (= MyOtherException_res_7@1077@01 ExceptionClass_a_field@1076@01)))
 (assert (not (= MyOtherException_res_7@1077@01 b@1062@01)))
+(assert (not (= MyOtherException_res_7@1077@01 self_2@1061@01)))
+(assert (not (= MyOtherException_res_7@1077@01 _cthread_159@1058@01)))
 ; [exec]
 ; inhale typeof(MyOtherException_res_7) == MyOtherException()
 (declare-const $t@1078@01 $Snap)

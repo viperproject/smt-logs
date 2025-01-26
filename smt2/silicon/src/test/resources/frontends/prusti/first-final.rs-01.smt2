@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:28:53
+; Started: 2025-01-26 21:22:44
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -962,43 +962,43 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-277|)))
+  :qid |quant-u-623|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-278|)))
+  :qid |quant-u-624|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-307|)))
+  :qid |quant-u-653|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-308|)))
+  :qid |quant-u-654|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-309|)))
+  :qid |quant-u-655|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (=
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00)
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@1@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@1@00))
-  :qid |quant-u-279|)))
+  :qid |quant-u-625|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _pure_1@1@00)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-280|)))
+  :qid |quant-u-626|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-310|)))
+  :qid |quant-u-656|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-311|)))
+  :qid |quant-u-657|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _pure_1@1@00)
@@ -1006,31 +1006,31 @@
       (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@1@00)
       (= ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first s@$))) 0)))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@1@00))
-  :qid |quant-u-312|)))
+  :qid |quant-u-658|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   true
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$is_empty$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@1@00))
-  :qid |quant-u-313|)))
+  :qid |quant-u-659|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (builtin$unreach_int__$TY$__$int$%limited s@$)
     (builtin$unreach_int__$TY$__$int$ s@$))
   :pattern ((builtin$unreach_int__$TY$__$int$ s@$))
-  :qid |quant-u-281|)))
+  :qid |quant-u-627|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$unreach_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-282|)))
+  :qid |quant-u-628|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (=
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00)
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@4@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@4@00))
-  :qid |quant-u-283|)))
+  :qid |quant-u-629|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@4@00)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))
-  :qid |quant-u-284|)))
+  :qid |quant-u-630|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (let ((result@5@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))) (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@4@00)
@@ -1045,7 +1045,7 @@
         (>= result@5@00 0))
       (<= 0 result@5@00))))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))
-  :qid |quant-u-314|)))
+  :qid |quant-u-660|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (let ((result@5@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))) (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@4@00)
@@ -1053,11 +1053,11 @@
       ($Snap.first s@$)
       $Snap.unit) _pure_1@4@00)))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))
-  :qid |quant-u-315|)))
+  :qid |quant-u-661|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (let ((result@5@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))
-  :qid |quant-u-316|)))
+  :qid |quant-u-662|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@4@00)
@@ -1073,7 +1073,7 @@
             $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$))))))))))))))))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@4@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@4@00) (m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_%trigger ($Snap.first s@$) _pure_1@4@00))
-  :qid |quant-u-317|)))
+  :qid |quant-u-663|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@4@00)
@@ -1084,25 +1084,25 @@
         ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$))))))))))
         $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$))))))))))))))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@4@00))
-  :qid |quant-u-318|)))
+  :qid |quant-u-664|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref) (_pure_2@7@00 Int)) (!
   (=
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00)
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-285|)))
+  :qid |quant-u-631|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref) (_pure_2@7@00 Int)) (!
   (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%stateless _pure_1@6@00 _pure_2@7@00)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-286|)))
+  :qid |quant-u-632|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref) (_pure_2@7@00 Int)) (!
   (let ((result@8@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-319|)))
+  :qid |quant-u-665|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref) (_pure_2@7@00 Int)) (!
   (let ((result@8@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-320|)))
+  :qid |quant-u-666|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref) (_pure_2@7@00 Int)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition s@$ _pure_1@6@00 _pure_2@7@00)
@@ -1121,7 +1121,7 @@
           ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$))))))))))))))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%stateless _pure_1@6@00 _pure_2@7@00) (m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_%trigger ($Snap.first s@$) _pure_1@6@00))
-  :qid |quant-u-321|)))
+  :qid |quant-u-667|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref) (_pure_2@7@00 Int)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition s@$ _pure_1@6@00 _pure_2@7@00)
@@ -1137,31 +1137,31 @@
           1))
         true)))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-322|)))
+  :qid |quant-u-668|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref)) (!
   (=
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@9@00)
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@9@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@9@00))
-  :qid |quant-u-287|)))
+  :qid |quant-u-633|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref)) (!
   (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@9@00)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@9@00))
-  :qid |quant-u-288|)))
+  :qid |quant-u-634|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref)) (!
   (let ((result@10@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@9@00))) (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@9@00)
     (<= 0 result@10@00)))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@9@00))
-  :qid |quant-u-323|)))
+  :qid |quant-u-669|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref)) (!
   (let ((result@10@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@9@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@9@00))
-  :qid |quant-u-324|)))
+  :qid |quant-u-670|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref)) (!
   (let ((result@10@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@9@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@9@00))
-  :qid |quant-u-325|)))
+  :qid |quant-u-671|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@9@00)
@@ -1172,7 +1172,7 @@
         $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))))))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@9@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@9@00) (m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_%trigger ($Snap.first s@$) _pure_1@9@00))
-  :qid |quant-u-326|)))
+  :qid |quant-u-672|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@9@00)
@@ -1180,25 +1180,25 @@
       ($Snap.second ($Snap.first s@$))
       $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$)))))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@9@00))
-  :qid |quant-u-327|)))
+  :qid |quant-u-673|)))
 (assert (forall ((s@$ $Snap) (_pure_1@11@00 $Ref)) (!
   (=
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00)
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@11@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@11@00))
-  :qid |quant-u-289|)))
+  :qid |quant-u-635|)))
 (assert (forall ((s@$ $Snap) (_pure_1@11@00 $Ref)) (!
   (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _pure_1@11@00)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00))
-  :qid |quant-u-290|)))
+  :qid |quant-u-636|)))
 (assert (forall ((s@$ $Snap) (_pure_1@11@00 $Ref)) (!
   (let ((result@12@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00))
-  :qid |quant-u-328|)))
+  :qid |quant-u-674|)))
 (assert (forall ((s@$ $Snap) (_pure_1@11@00 $Ref)) (!
   (let ((result@12@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00))
-  :qid |quant-u-329|)))
+  :qid |quant-u-675|)))
 (assert (forall ((s@$ $Snap) (_pure_1@11@00 $Ref)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _pure_1@11@00)
@@ -1206,29 +1206,29 @@
       (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@11@00)
       (= ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first s@$))) 0)))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@11@00))
-  :qid |quant-u-330|)))
+  :qid |quant-u-676|)))
 (assert (forall ((s@$ $Snap) (_pure_1@11@00 $Ref)) (!
   true
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@11@00))
-  :qid |quant-u-331|)))
+  :qid |quant-u-677|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref)) (!
   (=
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@13@00)
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@13@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@13@00))
-  :qid |quant-u-291|)))
+  :qid |quant-u-637|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref)) (!
   (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _pure_1@13@00)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@13@00))
-  :qid |quant-u-292|)))
+  :qid |quant-u-638|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref)) (!
   (let ((result@14@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@13@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@13@00))
-  :qid |quant-u-332|)))
+  :qid |quant-u-678|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref)) (!
   (let ((result@14@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@13@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@13@00))
-  :qid |quant-u-333|)))
+  :qid |quant-u-679|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _pure_1@13@00)
@@ -1236,49 +1236,49 @@
       (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@13@00)
       (not (= ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first s@$))) 0))))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@13@00))
-  :qid |quant-u-334|)))
+  :qid |quant-u-680|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref)) (!
   true
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@13@00))
-  :qid |quant-u-335|)))
+  :qid |quant-u-681|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (builtin$undef_int__$TY$__$int$%limited s@$)
     (builtin$undef_int__$TY$__$int$ s@$))
   :pattern ((builtin$undef_int__$TY$__$int$ s@$))
-  :qid |quant-u-293|)))
+  :qid |quant-u-639|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$undef_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$undef_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-294|)))
+  :qid |quant-u-640|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-295|)))
+  :qid |quant-u-641|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-296|)))
+  :qid |quant-u-642|)))
 (assert (forall ((s@$ $Snap) (_pure_1@17@00 $Ref) (_pure_2@18@00 Int)) (!
   (=
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@17@00 _pure_2@18@00)
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@17@00 _pure_2@18@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@17@00 _pure_2@18@00))
-  :qid |quant-u-297|)))
+  :qid |quant-u-643|)))
 (assert (forall ((s@$ $Snap) (_pure_1@17@00 $Ref) (_pure_2@18@00 Int)) (!
   (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%stateless _pure_1@17@00 _pure_2@18@00)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@17@00 _pure_2@18@00))
-  :qid |quant-u-298|)))
+  :qid |quant-u-644|)))
 (assert (forall ((s@$ $Snap) (_pure_1@17@00 $Ref) (_pure_2@18@00 Int)) (!
   (let ((result@19@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@17@00 _pure_2@18@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@17@00 _pure_2@18@00))
-  :qid |quant-u-336|)))
+  :qid |quant-u-682|)))
 (assert (forall ((s@$ $Snap) (_pure_1@17@00 $Ref) (_pure_2@18@00 Int)) (!
   (let ((result@19@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@17@00 _pure_2@18@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@17@00 _pure_2@18@00))
-  :qid |quant-u-337|)))
+  :qid |quant-u-683|)))
 (assert (forall ((s@$ $Snap) (_pure_1@17@00 $Ref) (_pure_2@18@00 Int)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition s@$ _pure_1@17@00 _pure_2@18@00)
@@ -1289,7 +1289,7 @@
         ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) _pure_2@18@00)))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@17@00 _pure_2@18@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%stateless _pure_1@17@00 _pure_2@18@00) (m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_%trigger ($Snap.first s@$) _pure_1@17@00))
-  :qid |quant-u-338|)))
+  :qid |quant-u-684|)))
 (assert (forall ((s@$ $Snap) (_pure_1@17@00 $Ref) (_pure_2@18@00 Int)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition s@$ _pure_1@17@00 _pure_2@18@00)
@@ -1297,27 +1297,27 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) _pure_2@18@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@17@00 _pure_2@18@00))
-  :qid |quant-u-339|)))
+  :qid |quant-u-685|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref)) (!
   (=
     (m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@20@00)
     (m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@20@00))
   :pattern ((m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@20@00))
-  :qid |quant-u-299|)))
+  :qid |quant-u-645|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref)) (!
   (m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless self@20@00)
   :pattern ((m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@20@00))
-  :qid |quant-u-300|)))
+  :qid |quant-u-646|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref)) (!
   (let ((result@21@00 (m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@20@00))) (=>
     (m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ self@20@00)
     (and (<= 0 result@21@00) (<= result@21@00 1))))
   :pattern ((m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@20@00))
-  :qid |quant-u-340|)))
+  :qid |quant-u-686|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref)) (!
   (let ((result@21@00 (m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@20@00))) true)
   :pattern ((m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@20@00))
-  :qid |quant-u-341|)))
+  :qid |quant-u-687|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref)) (!
   (=>
     (m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ self@20@00)
@@ -1325,41 +1325,41 @@
       (m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@20@00)
       ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@20@00))
-  :qid |quant-u-342|)))
+  :qid |quant-u-688|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref)) (!
   true
   :pattern ((m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$Link$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@20@00))
-  :qid |quant-u-343|)))
+  :qid |quant-u-689|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (builtin$undef_bool__$TY$__$bool$%limited s@$)
     (builtin$undef_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$undef_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-301|)))
+  :qid |quant-u-647|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$undef_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$undef_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-302|)))
+  :qid |quant-u-648|)))
 (assert (forall ((s@$ $Snap) (self@23@00 $Ref)) (!
   (=
     (m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@23@00)
     (m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@23@00))
   :pattern ((m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@23@00))
-  :qid |quant-u-303|)))
+  :qid |quant-u-649|)))
 (assert (forall ((s@$ $Snap) (self@23@00 $Ref)) (!
   (m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless self@23@00)
   :pattern ((m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@23@00))
-  :qid |quant-u-304|)))
+  :qid |quant-u-650|)))
 (assert (forall ((s@$ $Snap) (self@23@00 $Ref)) (!
   (let ((result@24@00 (m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@23@00))) (=>
     (m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ self@23@00)
     (and (<= 0 result@24@00) (<= result@24@00 1))))
   :pattern ((m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@23@00))
-  :qid |quant-u-344|)))
+  :qid |quant-u-690|)))
 (assert (forall ((s@$ $Snap) (self@23@00 $Ref)) (!
   (let ((result@24@00 (m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@23@00))) true)
   :pattern ((m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@23@00))
-  :qid |quant-u-345|)))
+  :qid |quant-u-691|)))
 (assert (forall ((s@$ $Snap) (self@23@00 $Ref)) (!
   (=>
     (m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ self@23@00)
@@ -1367,29 +1367,29 @@
       (m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@23@00)
       ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@23@00))
-  :qid |quant-u-346|)))
+  :qid |quant-u-692|)))
 (assert (forall ((s@$ $Snap) (self@23@00 $Ref)) (!
   true
   :pattern ((m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@23@00))
-  :qid |quant-u-347|)))
+  :qid |quant-u-693|)))
 (assert (forall ((s@$ $Snap) (_pure_1@25@00 $Ref)) (!
   (=
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@25@00)
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@25@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@25@00))
-  :qid |quant-u-305|)))
+  :qid |quant-u-651|)))
 (assert (forall ((s@$ $Snap) (_pure_1@25@00 $Ref)) (!
   (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@25@00)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@25@00))
-  :qid |quant-u-306|)))
+  :qid |quant-u-652|)))
 (assert (forall ((s@$ $Snap) (_pure_1@25@00 $Ref)) (!
   (let ((result@26@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@25@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@25@00))
-  :qid |quant-u-348|)))
+  :qid |quant-u-694|)))
 (assert (forall ((s@$ $Snap) (_pure_1@25@00 $Ref)) (!
   (let ((result@26@00 (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@25@00))) true)
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@25@00))
-  :qid |quant-u-349|)))
+  :qid |quant-u-695|)))
 (assert (forall ((s@$ $Snap) (_pure_1@25@00 $Ref)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@25@00)
@@ -1401,7 +1401,7 @@
         (builtin$unreach_int__$TY$__$int$ $unresolved@45@00))))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@25@00))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@25@00) (m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_%trigger ($Snap.first s@$) _pure_1@25@00))
-  :qid |quant-u-350|)))
+  :qid |quant-u-696|)))
 (assert (forall ((s@$ $Snap) (_pure_1@25@00 $Ref)) (!
   (=>
     (m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@25@00)
@@ -1410,7 +1410,7 @@
       true
       (builtin$unreach_int__$TY$__$int$%precondition $unresolved@45@00)))
   :pattern ((m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_first_final$$TrustedOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@25@00))
-  :qid |quant-u-351|)))
+  :qid |quant-u-697|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$push$opensqu$0$closesqu$ ----------
@@ -17779,7 +17779,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 72 | m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$(($t@492@01, _), ret@441@01) > 0 | live]
 ; [else-branch: 72 | !(m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$(($t@492@01, _), ret@441@01) > 0) | dead]
@@ -25990,7 +25990,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 112 | m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$(($t@586@01, _), ret@441@01) > 0 | live]
 ; [else-branch: 112 | !(m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$(($t@586@01, _), ret@441@01) > 0) | dead]

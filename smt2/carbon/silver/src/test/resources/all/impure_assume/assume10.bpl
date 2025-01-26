@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:01
+// Date:         2025-01-26 21:41:32
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,34 +181,34 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type __ns__impure_assume_rewriterDomainType;
 
 // Translation of domain function __iar__assume_helper_1
-function  __iar__assume_helper_1(c_1_2: bool, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_1(c_1_2: bool, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_2
-function  __iar__assume_helper_2(c_2_2: bool, c_1_2: bool, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_2(c_2_1: bool, c_1_2: bool, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_3
-function  __iar__assume_helper_3(c_3_2: bool, c_2_2: bool, c_1_2: bool, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_3(c_3_2: bool, c_2_1: bool, c_1_2: bool, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_4
-function  __iar__assume_helper_4(c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_4(c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_5
-function  __iar__assume_helper_5(c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_5(c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_6
-function  __iar__assume_helper_6(c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_6(c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_7
-function  __iar__assume_helper_7(c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_7(c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_8
-function  __iar__assume_helper_8(c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_8_1: Perm, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_8(c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_8_1: Perm, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_9
-function  __iar__assume_helper_9(c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_9_2: Perm, p_8_1: Perm, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_9(c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_9: Perm, p_8_1: Perm, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_10
-function  __iar__assume_helper_10(c_10_1: bool, c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_10_1: Perm, p_9_2: Perm, p_8_1: Perm, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_10(c_10: bool, c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_10: Perm, p_9: Perm, p_8_1: Perm, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain axiom __iar__assume_helper_1_axiom
 axiom (forall c_1: bool, p_1_1: Perm, p_0_1: Perm ::
@@ -217,57 +217,57 @@ axiom (forall c_1: bool, p_1_1: Perm, p_0_1: Perm ::
 );
 
 // Translation of domain axiom __iar__assume_helper_2_axiom
-axiom (forall c_2: bool, c_1: bool, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_2(c_2, c_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_2(c_2, c_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm)
+axiom (forall c_2_2: bool, c_1: bool, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_2(c_2_2, c_1, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_2(c_2_2, c_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_3_axiom
-axiom (forall c_3: bool, c_2: bool, c_1: bool, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_3(c_3, c_2, c_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_3(c_3, c_2, c_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm)
+axiom (forall c_3: bool, c_2_2: bool, c_1: bool, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_3(c_3, c_2_2, c_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_3(c_3, c_2_2, c_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_4_axiom
-axiom (forall c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_4(c_4_2, c_3, c_2, c_1, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_4(c_4_2, c_3, c_2, c_1, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm)
+axiom (forall c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_4(c_4_2, c_3, c_2_2, c_1, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_4(c_4_2, c_3, c_2_2, c_1, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_5_axiom
-axiom (forall c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_5(c_5_1, c_4_2, c_3, c_2, c_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_5(c_5_1, c_4_2, c_3, c_2, c_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm)
+axiom (forall c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_5(c_5, c_4_2, c_3, c_2_2, c_1, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_5(c_5, c_4_2, c_3, c_2_2, c_1, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_6_axiom
-axiom (forall c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_6(c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_6(c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm)
+axiom (forall c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_6(c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_6(c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_7_axiom
-axiom (forall c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_7(c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_7(c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm)
+axiom (forall c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_7(c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_7(c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_8_axiom
-axiom (forall c_8: bool, c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_8: Perm, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_8(c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_8(c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm) + (if c_8 then p_8 else NoPerm)
+axiom (forall c_8: bool, c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_8: Perm, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_8(c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_8(c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm) + (if c_8 then p_8 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_9_axiom
-axiom (forall c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_9_3: Perm, p_8: Perm, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_3 else NoPerm)
+axiom (forall c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_9_1: Perm, p_8: Perm, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_1 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_10_axiom
-axiom (forall c_10_2: bool, c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_10: Perm, p_9_3: Perm, p_8: Perm, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_10(c_10_2, c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_10, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_10(c_10_2, c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_10, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_3 else NoPerm) + (if c_10_2 then p_10 else NoPerm)
+axiom (forall c_10_1: bool, c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_10_1: Perm, p_9_1: Perm, p_8: Perm, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_10(c_10_1, c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_10_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_10(c_10_1, c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_10_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_1 else NoPerm) + (if c_10_1 then p_10_1 else NoPerm)
 );
 
 // ==================================================
@@ -282,14 +282,14 @@ axiom !IsWandField(f_7);
 // Translation of method m
 // ==================================================
 
-procedure m(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref, x7_20: Ref, x8_20: Ref, x9_20: Ref, x10: Ref, x11: Ref, x12: Ref, p_1: Perm) returns ()
+procedure m_17(x1: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref, x7: Ref, x8: Ref, x9: Ref, x10: Ref, x11: Ref, x12: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -297,15 +297,15 @@ procedure m(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref, x7_20: Ref, 
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
     assume Heap[x2, $allocated];
     assume Heap[x3, $allocated];
     assume Heap[x4, $allocated];
     assume Heap[x5, $allocated];
     assume Heap[x6, $allocated];
-    assume Heap[x7_20, $allocated];
-    assume Heap[x8_20, $allocated];
-    assume Heap[x9_20, $allocated];
+    assume Heap[x7, $allocated];
+    assume Heap[x8, $allocated];
+    assume Heap[x9, $allocated];
     assume Heap[x10, $allocated];
     assume Heap[x11, $allocated];
     assume Heap[x12, $allocated];
@@ -317,15 +317,15 @@ procedure m(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref, x7_20: Ref, 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x1.f, p) -- assume10.vpr@10.5--10.24
     perm := p_1;
-    assert {:msg "  Inhale might fail. Fraction p might be negative. (assume10.vpr@10.12--10.24) [150222]"}
+    assert {:msg "  Inhale might fail. Fraction p might be negative. (assume10.vpr@10.12--10.24) [20663]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> x1_2 != null;
-    Mask := Mask[x1_2, f_7:=Mask[x1_2, f_7] + perm];
+    assume perm > NoPerm ==> x1 != null;
+    Mask := Mask[x1, f_7:=Mask[x1, f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -361,28 +361,28 @@ procedure m(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref, x7_20: Ref, 
   // -- Translating statement: inhale perm(x7.f) >=
   //   __iar__assume_helper_5(x2 == x7, x3 == x7, x4 == x7, x5 == x7, x6 == x7, p,
   //   p, p, p, p, p) -- <no position>
-    assume (__iar__assume_helper_5(x2 == x7_20, x3 == x7_20, x4 == x7_20, x5 == x7_20, x6 == x7_20, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x7_20, f_7];
+    assume (__iar__assume_helper_5(x2 == x7, x3 == x7, x4 == x7, x5 == x7, x6 == x7, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x7, f_7];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale perm(x8.f) >=
   //   __iar__assume_helper_6(x2 == x8, x3 == x8, x4 == x8, x5 == x8, x6 == x8, x7 ==
   //   x8, p, p, p, p, p, p, p) -- <no position>
-    assume (__iar__assume_helper_6(x2 == x8_20, x3 == x8_20, x4 == x8_20, x5 == x8_20, x6 == x8_20, x7_20 == x8_20, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x8_20, f_7];
+    assume (__iar__assume_helper_6(x2 == x8, x3 == x8, x4 == x8, x5 == x8, x6 == x8, x7 == x8, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x8, f_7];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale perm(x9.f) >=
   //   __iar__assume_helper_7(x2 == x9, x3 == x9, x4 == x9, x5 == x9, x6 == x9, x7 ==
   //   x9, x8 == x9, p, p, p, p, p, p, p, p) -- <no position>
-    assume (__iar__assume_helper_7(x2 == x9_20, x3 == x9_20, x4 == x9_20, x5 == x9_20, x6 == x9_20, x7_20 == x9_20, x8_20 == x9_20, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x9_20, f_7];
+    assume (__iar__assume_helper_7(x2 == x9, x3 == x9, x4 == x9, x5 == x9, x6 == x9, x7 == x9, x8 == x9, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x9, f_7];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale perm(x10.f) >=
   //   __iar__assume_helper_8(x2 == x10, x3 == x10, x4 == x10, x5 == x10, x6 ==
   //   x10, x7 == x10, x8 == x10, x9 == x10, p, p, p, p, p, p, p, p, p) -- <no position>
-    assume (__iar__assume_helper_8(x2 == x10, x3 == x10, x4 == x10, x5 == x10, x6 == x10, x7_20 == x10, x8_20 == x10, x9_20 == x10, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x10, f_7];
+    assume (__iar__assume_helper_8(x2 == x10, x3 == x10, x4 == x10, x5 == x10, x6 == x10, x7 == x10, x8 == x10, x9 == x10, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x10, f_7];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -390,7 +390,7 @@ procedure m(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref, x7_20: Ref, 
   //   __iar__assume_helper_9(x2 == x11, x3 == x11, x4 == x11, x5 == x11, x6 ==
   //   x11, x7 == x11, x8 == x11, x9 == x11, x10 == x11, p, p, p, p, p, p, p, p,
   //   p, p) -- <no position>
-    assume (__iar__assume_helper_9(x2 == x11, x3 == x11, x4 == x11, x5 == x11, x6 == x11, x7_20 == x11, x8_20 == x11, x9_20 == x11, x10 == x11, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x11, f_7];
+    assume (__iar__assume_helper_9(x2 == x11, x3 == x11, x4 == x11, x5 == x11, x6 == x11, x7 == x11, x8 == x11, x9 == x11, x10 == x11, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x11, f_7];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -398,15 +398,15 @@ procedure m(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref, x7_20: Ref, 
   //   __iar__assume_helper_10(x2 == x12, x3 == x12, x4 == x12, x5 == x12, x6 ==
   //   x12, x7 == x12, x8 == x12, x9 == x12, x10 == x12, x11 == x12, p, p, p, p,
   //   p, p, p, p, p, p, p) -- <no position>
-    assume (__iar__assume_helper_10(x2 == x12, x3 == x12, x4 == x12, x5 == x12, x6 == x12, x7_20 == x12, x8_20 == x12, x9_20 == x12, x10 == x12, x11 == x12, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x12, f_7];
+    assume (__iar__assume_helper_10(x2 == x12, x3 == x12, x4 == x12, x5 == x12, x6 == x12, x7 == x12, x8 == x12, x9 == x12, x10 == x12, x11 == x12, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[x12, f_7];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert p > none ==> false -- assume10.vpr@15.5--15.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (NoPerm < p_1) {
-      assert {:msg "  Assert might fail. Assertion false might not hold. (assume10.vpr@15.12--15.30) [150223]"}
+      assert {:msg "  Assert might fail. Assertion false might not hold. (assume10.vpr@15.12--15.30) [20664]"}
         false;
     }
     assume state(Heap, Mask);

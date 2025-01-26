@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:29
+// Date:         2025-01-26 21:42:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0130.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0130-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -203,7 +203,7 @@ axiom (forall Heap: HeapType, x: DDomainType ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: DDomainType ::
   { state(Heap, Mask), f_6(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> f_6(Heap, x) == g_3(Heap, x)
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> f_6(Heap, x) == g_2(Heap, x)
 );
 
 // Framing axioms
@@ -239,7 +239,7 @@ procedure f#definedness(x: DDomainType) returns (Result: int)
       }
   
   // -- Translate function body
-    Result := g_3(Heap, x);
+    Result := g_2(Heap, x);
 }
 
 // ==================================================
@@ -247,11 +247,11 @@ procedure f#definedness(x: DDomainType) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  g_3(Heap: HeapType, y: DDomainType): int;
+function  g_2(Heap: HeapType, y: DDomainType): int;
 function  g'(Heap: HeapType, y: DDomainType): int;
 axiom (forall Heap: HeapType, y: DDomainType ::
-  { g_3(Heap, y) }
-  g_3(Heap, y) == g'(Heap, y) && dummyFunction(g#triggerStateless(y))
+  { g_2(Heap, y) }
+  g_2(Heap, y) == g'(Heap, y) && dummyFunction(g#triggerStateless(y))
 );
 axiom (forall Heap: HeapType, y: DDomainType ::
   { g'(Heap, y) }
@@ -260,8 +260,8 @@ axiom (forall Heap: HeapType, y: DDomainType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, y: DDomainType ::
-  { state(Heap, Mask), g_3(Heap, y) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> g_3(Heap, y) == 5
+  { state(Heap, Mask), g_2(Heap, y) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> g_2(Heap, y) == 5
 );
 
 // Framing axioms

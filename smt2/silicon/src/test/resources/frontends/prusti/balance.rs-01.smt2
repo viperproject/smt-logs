@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:28:17
+; Started: 2025-01-26 21:21:21
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -204,35 +204,35 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-112|)))
+  :qid |quant-u-148|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-113|)))
+  :qid |quant-u-149|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-130|)))
+  :qid |quant-u-166|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-131|)))
+  :qid |quant-u-167|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-132|)))
+  :qid |quant-u-168|)))
 (assert (forall ((s@$ $Snap) (_arg@1@00 $Ref)) (!
   (=
     (snap$__$TY$__u32$$int$%limited s@$ _arg@1@00)
     (snap$__$TY$__u32$$int$ s@$ _arg@1@00))
   :pattern ((snap$__$TY$__u32$$int$ s@$ _arg@1@00))
-  :qid |quant-u-114|)))
+  :qid |quant-u-150|)))
 (assert (forall ((s@$ $Snap) (_arg@1@00 $Ref)) (!
   (snap$__$TY$__u32$$int$%stateless _arg@1@00)
   :pattern ((snap$__$TY$__u32$$int$%limited s@$ _arg@1@00))
-  :qid |quant-u-115|)))
+  :qid |quant-u-151|)))
 (assert (forall ((s@$ $Snap) (_arg@1@00 $Ref)) (!
   (=>
     (snap$__$TY$__u32$$int$%precondition s@$ _arg@1@00)
@@ -240,21 +240,21 @@
       (snap$__$TY$__u32$$int$ s@$ _arg@1@00)
       ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((snap$__$TY$__u32$$int$ s@$ _arg@1@00))
-  :qid |quant-u-133|)))
+  :qid |quant-u-169|)))
 (assert (forall ((s@$ $Snap) (_arg@1@00 $Ref)) (!
   true
   :pattern ((snap$__$TY$__u32$$int$ s@$ _arg@1@00))
-  :qid |quant-u-134|)))
+  :qid |quant-u-170|)))
 (assert (forall ((s@$ $Snap) (_arg@3@00 $Ref)) (!
   (=
     (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%limited s@$ _arg@3@00)
     (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ s@$ _arg@3@00))
   :pattern ((snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ s@$ _arg@3@00))
-  :qid |quant-u-116|)))
+  :qid |quant-u-152|)))
 (assert (forall ((s@$ $Snap) (_arg@3@00 $Ref)) (!
   (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%stateless _arg@3@00)
   :pattern ((snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%limited s@$ _arg@3@00))
-  :qid |quant-u-117|)))
+  :qid |quant-u-153|)))
 (assert (forall ((s@$ $Snap) (_arg@3@00 $Ref)) (!
   (=>
     (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition s@$ _arg@3@00)
@@ -263,23 +263,23 @@
       (cons$__$TY$__$int$$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_<Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_> (snap$__$TY$__u32$$int$ ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$))))))
   :pattern ((snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ s@$ _arg@3@00))
   :pattern ((snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%stateless _arg@3@00) (m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%trigger s@$ _arg@3@00))
-  :qid |quant-u-135|)))
+  :qid |quant-u-171|)))
 (assert (forall ((s@$ $Snap) (_arg@3@00 $Ref)) (!
   (=>
     (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition s@$ _arg@3@00)
     (snap$__$TY$__u32$$int$%precondition ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$))))
   :pattern ((snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ s@$ _arg@3@00))
-  :qid |quant-u-136|)))
+  :qid |quant-u-172|)))
 (assert (forall ((s@$ $Snap) (_left@5@00 $Ref) (_right@6@00 $Ref)) (!
   (=
     (not_equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@5@00 _right@6@00)
     (not_equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@5@00 _right@6@00))
   :pattern ((not_equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@5@00 _right@6@00))
-  :qid |quant-u-118|)))
+  :qid |quant-u-154|)))
 (assert (forall ((s@$ $Snap) (_left@5@00 $Ref) (_right@6@00 $Ref)) (!
   (not_equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _left@5@00 _right@6@00)
   :pattern ((not_equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@5@00 _right@6@00))
-  :qid |quant-u-119|)))
+  :qid |quant-u-155|)))
 (assert (forall ((s@$ $Snap) (_left@5@00 $Ref) (_right@6@00 $Ref)) (!
   (=>
     (not_equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@5@00 _right@6@00)
@@ -290,7 +290,7 @@
           (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ ($Snap.first s@$) _left@5@00)
           (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ ($Snap.second s@$) _right@6@00)))))
   :pattern ((not_equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@5@00 _right@6@00))
-  :qid |quant-u-137|)))
+  :qid |quant-u-173|)))
 (assert (forall ((s@$ $Snap) (_left@5@00 $Ref) (_right@6@00 $Ref)) (!
   (=>
     (not_equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@5@00 _right@6@00)
@@ -298,17 +298,17 @@
       (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.first s@$) _left@5@00)
       (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.second s@$) _right@6@00)))
   :pattern ((not_equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@5@00 _right@6@00))
-  :qid |quant-u-138|)))
+  :qid |quant-u-174|)))
 (assert (forall ((s@$ $Snap) (_pure_1@8@00 $Ref)) (!
   (=
     (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@8@00)
     (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@8@00))
   :pattern ((m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@8@00))
-  :qid |quant-u-120|)))
+  :qid |quant-u-156|)))
 (assert (forall ((s@$ $Snap) (_pure_1@8@00 $Ref)) (!
   (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@8@00)
   :pattern ((m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@8@00))
-  :qid |quant-u-121|)))
+  :qid |quant-u-157|)))
 (assert (forall ((s@$ $Snap) (_pure_1@8@00 $Ref)) (!
   (let ((result@9@00 (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@8@00))) (=>
     (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@8@00)
@@ -318,21 +318,21 @@
         result@9@00
         (mirror$m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$__$TY$__Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$<Int> (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ ($Snap.first s@$) _pure_1@8@00))))))
   :pattern ((m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@8@00))
-  :qid |quant-u-139|)))
+  :qid |quant-u-175|)))
 (assert (forall ((s@$ $Snap) (_pure_1@8@00 $Ref)) (!
   (let ((result@9@00 (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@8@00))) true)
   :pattern ((m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@8@00))
-  :qid |quant-u-140|)))
+  :qid |quant-u-176|)))
 (assert (forall ((s@$ $Snap) (_pure_1@8@00 $Ref)) (!
   (let ((result@9@00 (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@8@00))) true)
   :pattern ((m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@8@00))
-  :qid |quant-u-141|)))
+  :qid |quant-u-177|)))
 (assert (forall ((s@$ $Snap) (_pure_1@8@00 $Ref)) (!
   (let ((result@9@00 (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@8@00))) (=>
     (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@8@00)
     (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.first s@$) _pure_1@8@00)))
   :pattern ((m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@8@00))
-  :qid |quant-u-142|)))
+  :qid |quant-u-178|)))
 (assert (forall ((s@$ $Snap) (_pure_1@8@00 $Ref)) (!
   (=>
     (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@8@00)
@@ -340,31 +340,31 @@
       (m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@8@00)
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.first s@$))))))
   :pattern ((m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@8@00))
-  :qid |quant-u-143|)))
+  :qid |quant-u-179|)))
 (assert (forall ((s@$ $Snap) (_pure_1@8@00 $Ref)) (!
   true
   :pattern ((m_balance$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$balance$opensqu$0$closesqu$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@8@00))
-  :qid |quant-u-144|)))
+  :qid |quant-u-180|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-122|)))
+  :qid |quant-u-158|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-123|)))
+  :qid |quant-u-159|)))
 (assert (forall ((s@$ $Snap) (_left@11@00 $Ref) (_right@12@00 $Ref)) (!
   (=
     (equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@11@00 _right@12@00)
     (equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@11@00 _right@12@00))
   :pattern ((equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@11@00 _right@12@00))
-  :qid |quant-u-124|)))
+  :qid |quant-u-160|)))
 (assert (forall ((s@$ $Snap) (_left@11@00 $Ref) (_right@12@00 $Ref)) (!
   (equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _left@11@00 _right@12@00)
   :pattern ((equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@11@00 _right@12@00))
-  :qid |quant-u-125|)))
+  :qid |quant-u-161|)))
 (assert (forall ((s@$ $Snap) (_left@11@00 $Ref) (_right@12@00 $Ref)) (!
   (=>
     (equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@11@00 _right@12@00)
@@ -374,7 +374,7 @@
         (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ ($Snap.first ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
         (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ ($Snap.second ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))))
   :pattern ((equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@11@00 _right@12@00))
-  :qid |quant-u-145|)))
+  :qid |quant-u-181|)))
 (assert (forall ((s@$ $Snap) (_left@11@00 $Ref) (_right@12@00 $Ref)) (!
   (=>
     (equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@11@00 _right@12@00)
@@ -382,17 +382,17 @@
       (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.first ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.second ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@11@00 _right@12@00))
-  :qid |quant-u-146|)))
+  :qid |quant-u-182|)))
 (assert (forall ((s@$ $Snap) (_left@14@00 $Ref) (_right@15@00 $Ref)) (!
   (=
     (equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@14@00 _right@15@00)
     (equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@14@00 _right@15@00))
   :pattern ((equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@14@00 _right@15@00))
-  :qid |quant-u-126|)))
+  :qid |quant-u-162|)))
 (assert (forall ((s@$ $Snap) (_left@14@00 $Ref) (_right@15@00 $Ref)) (!
   (equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _left@14@00 _right@15@00)
   :pattern ((equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@14@00 _right@15@00))
-  :qid |quant-u-127|)))
+  :qid |quant-u-163|)))
 (assert (forall ((s@$ $Snap) (_left@14@00 $Ref) (_right@15@00 $Ref)) (!
   (=>
     (equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@14@00 _right@15@00)
@@ -402,7 +402,7 @@
         (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ ($Snap.first s@$) _left@14@00)
         (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ ($Snap.second s@$) _right@15@00))))
   :pattern ((equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@14@00 _right@15@00))
-  :qid |quant-u-147|)))
+  :qid |quant-u-183|)))
 (assert (forall ((s@$ $Snap) (_left@14@00 $Ref) (_right@15@00 $Ref)) (!
   (=>
     (equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@14@00 _right@15@00)
@@ -410,17 +410,17 @@
       (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.first s@$) _left@14@00)
       (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.second s@$) _right@15@00)))
   :pattern ((equals$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@14@00 _right@15@00))
-  :qid |quant-u-148|)))
+  :qid |quant-u-184|)))
 (assert (forall ((s@$ $Snap) (_left@17@00 $Ref) (_right@18@00 $Ref)) (!
   (=
     (not_equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@17@00 _right@18@00)
     (not_equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@17@00 _right@18@00))
   :pattern ((not_equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@17@00 _right@18@00))
-  :qid |quant-u-128|)))
+  :qid |quant-u-164|)))
 (assert (forall ((s@$ $Snap) (_left@17@00 $Ref) (_right@18@00 $Ref)) (!
   (not_equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _left@17@00 _right@18@00)
   :pattern ((not_equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _left@17@00 _right@18@00))
-  :qid |quant-u-129|)))
+  :qid |quant-u-165|)))
 (assert (forall ((s@$ $Snap) (_left@17@00 $Ref) (_right@18@00 $Ref)) (!
   (=>
     (not_equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@17@00 _right@18@00)
@@ -431,7 +431,7 @@
           (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ ($Snap.first ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
           (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_ ($Snap.second ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((not_equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@17@00 _right@18@00))
-  :qid |quant-u-149|)))
+  :qid |quant-u-185|)))
 (assert (forall ((s@$ $Snap) (_left@17@00 $Ref) (_right@18@00 $Ref)) (!
   (=>
     (not_equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _left@17@00 _right@18@00)
@@ -439,7 +439,7 @@
       (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.first ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       (snap$__$TY$__m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$Snap$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_%precondition ($Snap.second ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((not_equals$__$TY$__ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$ref$m_balance$$Account$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _left@17@00 _right@18@00))
-  :qid |quant-u-150|)))
+  :qid |quant-u-186|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- m_balance$$main$opensqu$0$closesqu$ ----------

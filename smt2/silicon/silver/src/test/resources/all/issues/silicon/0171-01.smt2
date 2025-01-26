@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:30
+; Started: 2025-01-26 21:34:21
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -421,27 +421,27 @@
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (= (f_lcp%limited s@$ a@0@00 x@1@00 y@2@00) (f_lcp s@$ a@0@00 x@1@00 y@2@00))
   :pattern ((f_lcp s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23807|)))
+  :qid |quant-u-11020|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (f_lcp%stateless a@0@00 x@1@00 y@2@00)
   :pattern ((f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23808|)))
+  :qid |quant-u-11021|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (let ((result@3@00 (f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))) (=>
     (f_lcp%precondition s@$ a@0@00 x@1@00 y@2@00)
-    (forall ((k Int) (fresh__182 Int)) (!
+    (forall ((k Int) (fresh__73 Int)) (!
       (=>
         (Seq_contains (Seq_range x@1@00 (+ x@1@00 1)) k)
         (Seq_contains (Seq_range 0 (length<Int> a@0@00)) y@2@00))
-      :pattern ((Seq_contains (Seq_range x@1@00 fresh__182) k))
-      :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__182) k))
-      :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__182) k))
+      :pattern ((Seq_contains (Seq_range x@1@00 fresh__73) k))
+      :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__73) k))
+      :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__73) k))
       ))))
   :pattern ((f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23809|)))
+  :qid |quant-u-11022|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (let ((result@3@00 (f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))) true)
   :pattern ((f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23810|)))
+  :qid |quant-u-11023|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:14:13
+// Date:         2025-01-26 21:41:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/permWandAlias.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/permWandAlias-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -225,7 +225,7 @@ axiom !IsWandField(g);
 // Translation of method m
 // ==================================================
 
-procedure m(x: Ref, y: Ref) returns ()
+procedure m_17(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -357,7 +357,7 @@ procedure m(x: Ref, y: Ref) returns ()
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion perm(acc(x.f, write) --* acc(x.g, write)) == 2 * write might not hold. (permWandAlias.vpr@12.16--12.56) [142277]"}
+        assert {:msg "  Assert might fail. Assertion perm(acc(x.f, write) --* acc(x.g, write)) == 2 * write might not hold. (permWandAlias.vpr@12.16--12.56) [53060]"}
           Mask[null, wand(x, FullPerm, x, FullPerm)] == real(2) * FullPerm;
         assume state(Heap, Mask);
     } else {
@@ -391,7 +391,7 @@ procedure m(x: Ref, y: Ref) returns ()
             assume false;
           }
         // permLe
-        assert {:msg "  Exhale might fail. Magic wand instance not found. (permWandAlias.vpr@14.16--14.37) [142278]"}
+        assert {:msg "  Exhale might fail. Magic wand instance not found. (permWandAlias.vpr@14.16--14.37) [53061]"}
           FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm)];
         Mask := Mask[null, wand(x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm)] - FullPerm];
         // Finish exhale
@@ -428,7 +428,7 @@ procedure m(x: Ref, y: Ref) returns ()
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion perm(acc(y.f, write) --* acc(y.g, write)) == write might not hold. (permWandAlias.vpr@15.16--15.52) [142279]"}
+        assert {:msg "  Assert might fail. Assertion perm(acc(y.f, write) --* acc(y.g, write)) == write might not hold. (permWandAlias.vpr@15.16--15.52) [53062]"}
           Mask[null, wand(y, FullPerm, y, FullPerm)] == FullPerm;
         assume state(Heap, Mask);
     }

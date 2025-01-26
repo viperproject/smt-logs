@@ -110,10 +110,6 @@
 (assert (forall ((x@@7 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@7)) x@@7)
  :pattern ( ($Box T@@1 x@@7))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|i#0@@0| Int) ) (!  (=> (or (|_module.__default.bit#canCall| (LitInt |i#0@@0|)) (and (< 1 $FunctionContextHeight) (and (and (<= (LitInt 0) |i#0@@0|) (< |i#0@@0| 18446744073709551616)) (U_2_bool (Lit boolType (bool_2_U (< |i#0@@0| 64))))))) (= (_module.__default.bit (LitInt |i#0@@0|)) (bvshl #x0000000000000001 (concat #b000000000000000000000000000000000000000000000000000000000 ((_ int2bv 7) (LitInt |i#0@@0|))))))
- :weight 3
- :pattern ( (_module.__default.bit (LitInt |i#0@@0|)))
-))))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
@@ -138,6 +134,10 @@
 (assert (forall ((x@@9 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@9)) (Lit BoxType ($Box T@@2 x@@9)))
  :pattern ( ($Box T@@2 (Lit T@@2 x@@9)))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|i#0@@0| Int) ) (!  (=> (or (|_module.__default.bit#canCall| (LitInt |i#0@@0|)) (and (< 1 $FunctionContextHeight) (and (and (<= (LitInt 0) |i#0@@0|) (< |i#0@@0| 18446744073709551616)) (U_2_bool (Lit boolType (bool_2_U (< |i#0@@0| 64))))))) (= (_module.__default.bit (LitInt |i#0@@0|)) (bvshl #x0000000000000001 (concat #b000000000000000000000000000000000000000000000000000000000 ((_ int2bv 7) (LitInt |i#0@@0|))))))
+ :weight 3
+ :pattern ( (_module.__default.bit (LitInt |i#0@@0|)))
+))))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun |newtype$check#1@0| () Int)

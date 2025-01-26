@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:57:00
+// Date:         2025-01-26 21:44:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0098.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0098-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_5: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_5, f_3] }
-  Heap[o_5, $allocated] ==> Heap[Heap[o_5, f_3], $allocated]
+axiom (forall o_56: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_56, f_3] }
+  Heap[o_56, $allocated] ==> Heap[Heap[o_56, f_3], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref, f_9: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, f_9] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_6, f_9) ==> Heap[o_6, f_9] == ExhaleHeap[o_6, f_9]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref, f_51: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, f_51] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_38, f_51) ==> Heap[o_38, f_51] == ExhaleHeap[o_38, f_51]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2), ExhaleHeap[null, PredicateMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> Heap[null, PredicateMaskField(pm_f_2)] == ExhaleHeap[null, PredicateMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26), ExhaleHeap[null, PredicateMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> Heap[null, PredicateMaskField(pm_f_26)] == ExhaleHeap[null, PredicateMaskField(pm_f_26)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, PredicateMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, PredicateMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2), ExhaleHeap[null, WandMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> Heap[null, WandMaskField(pm_f_2)] == ExhaleHeap[null, WandMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26), ExhaleHeap[null, WandMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> Heap[null, WandMaskField(pm_f_26)] == ExhaleHeap[null, WandMaskField(pm_f_26)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, WandMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, WandMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_6, $allocated] ==> ExhaleHeap[o_6, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_38, $allocated] ==> ExhaleHeap[o_38, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_5: Ref, f_10: (Field A B), v: B ::
-  { Heap[o_5, f_10:=v] }
-  succHeap(Heap, Heap[o_5, f_10:=v])
+axiom (forall <A, B> Heap: HeapType, o_56: Ref, f_22: (Field A B), v: B ::
+  { Heap[o_56, f_22:=v] }
+  succHeap(Heap, Heap[o_56, f_22:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -391,14 +391,14 @@ axiom !IsWandField(f_7);
 // Translation of method foo
 // ==================================================
 
-procedure foo_1() returns ()
+procedure foo_3() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var a_2: Ref;
   var b_24: Ref;
-  var s_2: (Set Ref);
+  var s_1: (Set Ref);
   var QPMask: MaskType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
@@ -419,7 +419,7 @@ procedure foo_1() returns ()
     assume Heap[b_24, $allocated];
   
   // -- Translating statement: inhale s == Set(a, b) && (a != null && b != null) -- issue_0098.vpr@11.3--11.46
-    assume Set#Equal(s_2, Set#UnionOne(Set#Singleton(b_24), a_2));
+    assume Set#Equal(s_1, Set#UnionOne(Set#Singleton(b_24), a_2));
     assume a_2 != null;
     assume b_24 != null;
     assume state(Heap, Mask);
@@ -432,36 +432,36 @@ procedure foo_1() returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Inhale might fail. Quantified resource x.f might not be injective. (issue_0098.vpr@12.10--12.46) [74239]"}
+    assert {:msg "  Inhale might fail. Quantified resource x.f might not be injective. (issue_0098.vpr@12.10--12.46) [170774]"}
       (forall x_1: Ref, x_1_1: Ref ::
       
-      (((x_1 != x_1_1 && s_2[x_1]) && s_2[x_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_1 != x_1_1
+      (((x_1 != x_1_1 && s_1[x_1]) && s_1[x_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_1 != x_1_1
     );
     
     // -- Define Inverse Function
       assume (forall x_1: Ref ::
-        { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { s_2[x_1] }
-        s_2[x_1] && NoPerm < FullPerm ==> qpRange1(x_1) && invRecv1(x_1) == x_1
+        { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { s_1[x_1] }
+        s_1[x_1] && NoPerm < FullPerm ==> qpRange1(x_1) && invRecv1(x_1) == x_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (s_2[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4) ==> invRecv1(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (s_1[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9) ==> invRecv1(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall x_1: Ref ::
-        { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { s_2[x_1] }
-        s_2[x_1] ==> x_1 != null
+        { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { s_1[x_1] }
+        s_1[x_1] ==> x_1 != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((s_2[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> invRecv1(o_4) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + FullPerm) && (!((s_2[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((s_1[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> invRecv1(o_9) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + FullPerm) && (!((s_1[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -473,11 +473,11 @@ procedure foo_1() returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a.f == b.f
-      assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (issue_0098.vpr@15.10--15.20) [74240]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (issue_0098.vpr@15.10--15.20) [170775]"}
         HasDirectPerm(ExhaleWellDef0Mask, a_2, f_7);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access b.f (issue_0098.vpr@15.10--15.20) [74241]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access b.f (issue_0098.vpr@15.10--15.20) [170776]"}
         HasDirectPerm(ExhaleWellDef0Mask, b_24, f_7);
-    assert {:msg "  Assert might fail. Assertion a.f == b.f might not hold. (issue_0098.vpr@15.10--15.20) [74242]"}
+    assert {:msg "  Assert might fail. Assertion a.f == b.f might not hold. (issue_0098.vpr@15.10--15.20) [170777]"}
       Heap[a_2, f_7] == Heap[b_24, f_7];
     assume state(Heap, Mask);
 }

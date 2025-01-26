@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:08
+// Date:         2025-01-26 21:43:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/termination_mutual_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/termination_mutual_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -207,33 +207,33 @@ function  bounded<T>(arg1_1: T): bool;
 type List1DomainType;
 
 // Translation of domain function RList1
-function  RList1(x_8: int, l_11: List2DomainType): List1DomainType;
+function  RList1(x_37: int, l_2: List2DomainType): List1DomainType;
 
 // Translation of domain function get_List1_x
-function  get_List1_x(t_9: List1DomainType): int;
+function  get_List1_x(t_3: List1DomainType): int;
 
 // Translation of domain function get_List1_l
-function  get_List1_l(t_9: List1DomainType): List2DomainType;
+function  get_List1_l(t_3: List1DomainType): List2DomainType;
 
 // Translation of domain function List1_tag
-function  List1_tag(t_9: List1DomainType): int;
+function  List1_tag(t_3: List1DomainType): int;
 
 // Translation of anonymous domain axiom
-axiom (forall x: int, l_2: List2DomainType ::
-  { (RList1(x, l_2): List1DomainType) }
-  x == (get_List1_x((RList1(x, l_2): List1DomainType)): int)
+axiom (forall x: int, l_1: List2DomainType ::
+  { (RList1(x, l_1): List1DomainType) }
+  x == (get_List1_x((RList1(x, l_1): List1DomainType)): int)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall x: int, l_2: List2DomainType ::
-  { (RList1(x, l_2): List1DomainType) }
-  l_2 == (get_List1_l((RList1(x, l_2): List1DomainType)): List2DomainType)
+axiom (forall x: int, l_1: List2DomainType ::
+  { (RList1(x, l_1): List1DomainType) }
+  l_1 == (get_List1_l((RList1(x, l_1): List1DomainType)): List2DomainType)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall x: int, l_2: List2DomainType ::
-  { (RList1(x, l_2): List1DomainType) }
-  (List1_tag((RList1(x, l_2): List1DomainType)): int) == 0
+axiom (forall x: int, l_1: List2DomainType ::
+  { (RList1(x, l_1): List1DomainType) }
+  (List1_tag((RList1(x, l_1): List1DomainType)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -250,9 +250,9 @@ axiom (forall t_2: List1DomainType ::
 type List1WellFoundedOrderDomainType;
 
 // Translation of anonymous domain axiom
-axiom (forall l_1: List1DomainType, x_0: int, x: int ::
-  { (RList1(x, (NonEmpty(x_0, l_1): List2DomainType)): List1DomainType) }
-  (decreasing(l_1, (RList1(x, (NonEmpty(x_0, l_1): List2DomainType)): List1DomainType)): bool)
+axiom (forall l_1_2: List1DomainType, x_0: int, x: int ::
+  { (RList1(x, (NonEmpty(x_0, l_1_2): List2DomainType)): List1DomainType) }
+  (decreasing(l_1_2, (RList1(x, (NonEmpty(x_0, l_1_2): List2DomainType)): List1DomainType)): bool)
 );
 
 // Translation of anonymous domain axiom
@@ -278,36 +278,36 @@ type List2DomainType;
 function  Empty(): List2DomainType;
 
 // Translation of domain function NonEmpty
-function  NonEmpty(x_8: int, l_11: List1DomainType): List2DomainType;
+function  NonEmpty(x_37: int, l_2: List1DomainType): List2DomainType;
 
 // Translation of domain function get_List2_x
-function  get_List2_x(t_9: List2DomainType): int;
+function  get_List2_x(t_3: List2DomainType): int;
 
 // Translation of domain function get_List2_l
-function  get_List2_l(t_9: List2DomainType): List1DomainType;
+function  get_List2_l(t_3: List2DomainType): List1DomainType;
 
 // Translation of domain function List2_tag
-function  List2_tag(t_9: List2DomainType): int;
+function  List2_tag(t_3: List2DomainType): int;
 
 // Translation of anonymous domain axiom
-axiom (forall x: int, l_2: List1DomainType ::
-  { (NonEmpty(x, l_2): List2DomainType) }
-  x == (get_List2_x((NonEmpty(x, l_2): List2DomainType)): int)
+axiom (forall x: int, l_1: List1DomainType ::
+  { (NonEmpty(x, l_1): List2DomainType) }
+  x == (get_List2_x((NonEmpty(x, l_1): List2DomainType)): int)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall x: int, l_2: List1DomainType ::
-  { (NonEmpty(x, l_2): List2DomainType) }
-  l_2 == (get_List2_l((NonEmpty(x, l_2): List2DomainType)): List1DomainType)
+axiom (forall x: int, l_1: List1DomainType ::
+  { (NonEmpty(x, l_1): List2DomainType) }
+  l_1 == (get_List2_l((NonEmpty(x, l_1): List2DomainType)): List1DomainType)
 );
 
 // Translation of anonymous domain axiom
 axiom (List2_tag((Empty(): List2DomainType)): int) == 0;
 
 // Translation of anonymous domain axiom
-axiom (forall x: int, l_2: List1DomainType ::
-  { (NonEmpty(x, l_2): List2DomainType) }
-  (List2_tag((NonEmpty(x, l_2): List2DomainType)): int) == 1
+axiom (forall x: int, l_1: List1DomainType ::
+  { (NonEmpty(x, l_1): List2DomainType) }
+  (List2_tag((NonEmpty(x, l_1): List2DomainType)): int) == 1
 );
 
 // Translation of anonymous domain axiom
@@ -327,9 +327,9 @@ type List2WellFoundedOrderDomainType;
 axiom true;
 
 // Translation of anonymous domain axiom
-axiom (forall l_1: List2DomainType, x_0: int, x: int ::
-  { (NonEmpty(x, (RList1(x_0, l_1): List1DomainType)): List2DomainType) }
-  (decreasing(l_1, (NonEmpty(x, (RList1(x_0, l_1): List1DomainType)): List2DomainType)): bool)
+axiom (forall l_1_2: List2DomainType, x_0: int, x: int ::
+  { (NonEmpty(x, (RList1(x_0, l_1_2): List1DomainType)): List2DomainType) }
+  (decreasing(l_1_2, (NonEmpty(x, (RList1(x_0, l_1_2): List1DomainType)): List2DomainType)): bool)
 );
 
 // Translation of anonymous domain axiom
@@ -352,16 +352,16 @@ axiom (forall x: List2DomainType ::
 type MList1DomainType;
 
 // Translation of domain function MRList1
-function  MRList1(x_8: int, y_6: MList2DomainType): MList1DomainType;
+function  MRList1(x_37: int, y_2: MList2DomainType): MList1DomainType;
 
 // Translation of domain function get_MList1_x
-function  get_MList1_x(t_9: MList1DomainType): int;
+function  get_MList1_x(t_3: MList1DomainType): int;
 
 // Translation of domain function get_MList1_y
-function  get_MList1_y(t_9: MList1DomainType): MList2DomainType;
+function  get_MList1_y(t_3: MList1DomainType): MList2DomainType;
 
 // Translation of domain function MList1_tag
-function  MList1_tag(t_9: MList1DomainType): int;
+function  MList1_tag(t_3: MList1DomainType): int;
 
 // Translation of anonymous domain axiom
 axiom (forall x: int, y: MList2DomainType ::
@@ -395,9 +395,9 @@ axiom (forall t_2: MList1DomainType ::
 type MList1WellFoundedOrderDomainType;
 
 // Translation of anonymous domain axiom
-axiom (forall l_1: MList1DomainType, y_0: int, x: int ::
-  { (MRList1(x, (MNonEmpty(y_0, l_1): MList2DomainType)): MList1DomainType) }
-  (decreasing(l_1, (MRList1(x, (MNonEmpty(y_0, l_1): MList2DomainType)): MList1DomainType)): bool)
+axiom (forall l_1_2: MList1DomainType, y_0: int, x: int ::
+  { (MRList1(x, (MNonEmpty(y_0, l_1_2): MList2DomainType)): MList1DomainType) }
+  (decreasing(l_1_2, (MRList1(x, (MNonEmpty(y_0, l_1_2): MList2DomainType)): MList1DomainType)): bool)
 );
 
 // Translation of anonymous domain axiom
@@ -423,36 +423,36 @@ type MList2DomainType;
 function  MEmpty(): MList2DomainType;
 
 // Translation of domain function MNonEmpty
-function  MNonEmpty(y_6: int, l_11: MList1DomainType): MList2DomainType;
+function  MNonEmpty(y_2: int, l_2: MList1DomainType): MList2DomainType;
 
 // Translation of domain function get_MList2_y
-function  get_MList2_y(t_9: MList2DomainType): int;
+function  get_MList2_y(t_3: MList2DomainType): int;
 
 // Translation of domain function get_MList2_l
-function  get_MList2_l(t_9: MList2DomainType): MList1DomainType;
+function  get_MList2_l(t_3: MList2DomainType): MList1DomainType;
 
 // Translation of domain function MList2_tag
-function  MList2_tag(t_9: MList2DomainType): int;
+function  MList2_tag(t_3: MList2DomainType): int;
 
 // Translation of anonymous domain axiom
-axiom (forall y: int, l_2: MList1DomainType ::
-  { (MNonEmpty(y, l_2): MList2DomainType) }
-  y == (get_MList2_y((MNonEmpty(y, l_2): MList2DomainType)): int)
+axiom (forall y: int, l_1: MList1DomainType ::
+  { (MNonEmpty(y, l_1): MList2DomainType) }
+  y == (get_MList2_y((MNonEmpty(y, l_1): MList2DomainType)): int)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall y: int, l_2: MList1DomainType ::
-  { (MNonEmpty(y, l_2): MList2DomainType) }
-  l_2 == (get_MList2_l((MNonEmpty(y, l_2): MList2DomainType)): MList1DomainType)
+axiom (forall y: int, l_1: MList1DomainType ::
+  { (MNonEmpty(y, l_1): MList2DomainType) }
+  l_1 == (get_MList2_l((MNonEmpty(y, l_1): MList2DomainType)): MList1DomainType)
 );
 
 // Translation of anonymous domain axiom
 axiom (MList2_tag((MEmpty(): MList2DomainType)): int) == 0;
 
 // Translation of anonymous domain axiom
-axiom (forall y: int, l_2: MList1DomainType ::
-  { (MNonEmpty(y, l_2): MList2DomainType) }
-  (MList2_tag((MNonEmpty(y, l_2): MList2DomainType)): int) == 1
+axiom (forall y: int, l_1: MList1DomainType ::
+  { (MNonEmpty(y, l_1): MList2DomainType) }
+  (MList2_tag((MNonEmpty(y, l_1): MList2DomainType)): int) == 1
 );
 
 // Translation of anonymous domain axiom
@@ -497,13 +497,13 @@ axiom (forall x: MList2DomainType ::
 type Triple1DomainType;
 
 // Translation of domain function triple1
-function  triple1(x_8: Triple2DomainType): Triple1DomainType;
+function  triple1(x_37: Triple2DomainType): Triple1DomainType;
 
 // Translation of domain function get_Triple1_x
-function  get_Triple1_x(t_9: Triple1DomainType): Triple2DomainType;
+function  get_Triple1_x(t_3: Triple1DomainType): Triple2DomainType;
 
 // Translation of domain function Triple1_tag
-function  Triple1_tag(t_9: Triple1DomainType): int;
+function  Triple1_tag(t_3: Triple1DomainType): int;
 
 // Translation of anonymous domain axiom
 axiom (forall x: Triple2DomainType ::
@@ -556,13 +556,13 @@ axiom (forall x: Triple1DomainType ::
 type Triple2DomainType;
 
 // Translation of domain function triple2
-function  triple2(x_8: Triple3DomainType): Triple2DomainType;
+function  triple2(x_37: Triple3DomainType): Triple2DomainType;
 
 // Translation of domain function get_Triple2_x
-function  get_Triple2_x(t_9: Triple2DomainType): Triple3DomainType;
+function  get_Triple2_x(t_3: Triple2DomainType): Triple3DomainType;
 
 // Translation of domain function Triple2_tag
-function  Triple2_tag(t_9: Triple2DomainType): int;
+function  Triple2_tag(t_3: Triple2DomainType): int;
 
 // Translation of anonymous domain axiom
 axiom (forall x: Triple3DomainType ::
@@ -615,19 +615,19 @@ axiom (forall x: Triple2DomainType ::
 type Triple3DomainType;
 
 // Translation of domain function triple3
-function  triple3(x_8: Triple1DomainType): Triple3DomainType;
+function  triple3(x_37: Triple1DomainType): Triple3DomainType;
 
 // Translation of domain function nil
-function  nil(i_79: int): Triple3DomainType;
+function  nil(i_6: int): Triple3DomainType;
 
 // Translation of domain function get_Triple3_x
-function  get_Triple3_x(t_9: Triple3DomainType): Triple1DomainType;
+function  get_Triple3_x(t_3: Triple3DomainType): Triple1DomainType;
 
 // Translation of domain function get_Triple3_i
-function  get_Triple3_i(t_9: Triple3DomainType): int;
+function  get_Triple3_i(t_3: Triple3DomainType): int;
 
 // Translation of domain function Triple3_tag
-function  Triple3_tag(t_9: Triple3DomainType): int;
+function  Triple3_tag(t_3: Triple3DomainType): int;
 
 // Translation of anonymous domain axiom
 axiom (forall x: Triple1DomainType ::
@@ -692,38 +692,38 @@ axiom (forall x: Triple3DomainType ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  len2(Heap: HeapType, l_2: List2DomainType): int;
-function  len2'(Heap: HeapType, l_2: List2DomainType): int;
-axiom (forall Heap: HeapType, l_2: List2DomainType ::
-  { len2(Heap, l_2) }
-  len2(Heap, l_2) == len2'(Heap, l_2) && dummyFunction(len2#triggerStateless(l_2))
+function  len2(Heap: HeapType, l_1: List2DomainType): int;
+function  len2'(Heap: HeapType, l_1: List2DomainType): int;
+axiom (forall Heap: HeapType, l_1: List2DomainType ::
+  { len2(Heap, l_1) }
+  len2(Heap, l_1) == len2'(Heap, l_1) && dummyFunction(len2#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: List2DomainType ::
-  { len2'(Heap, l_2) }
-  dummyFunction(len2#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: List2DomainType ::
+  { len2'(Heap, l_1) }
+  dummyFunction(len2#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: List2DomainType ::
-  { state(Heap, Mask), len2(Heap, l_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> len2(Heap, l_2) == (if l_2 == (Empty(): List2DomainType) then 0 else 1 + len2'(Heap, (get_List1_l((get_List2_l(l_2): List1DomainType)): List2DomainType)))
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: List2DomainType ::
+  { state(Heap, Mask), len2(Heap, l_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> len2(Heap, l_1) == (if l_1 == (Empty(): List2DomainType) then 0 else 1 + len2'(Heap, (get_List1_l((get_List2_l(l_1): List1DomainType)): List2DomainType)))
 );
 
 // Framing axioms
-function  len2#frame(frame: FrameType, l_2: List2DomainType): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: List2DomainType ::
-  { state(Heap, Mask), len2'(Heap, l_2) }
-  state(Heap, Mask) ==> len2'(Heap, l_2) == len2#frame(EmptyFrame, l_2)
+function  len2#frame(frame: FrameType, l_1: List2DomainType): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: List2DomainType ::
+  { state(Heap, Mask), len2'(Heap, l_1) }
+  state(Heap, Mask) ==> len2'(Heap, l_1) == len2#frame(EmptyFrame, l_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  len2#trigger(frame: FrameType, l_2: List2DomainType): bool;
+function  len2#trigger(frame: FrameType, l_1: List2DomainType): bool;
 
 // State-independent trigger function
-function  len2#triggerStateless(l_2: List2DomainType): int;
+function  len2#triggerStateless(l_1: List2DomainType): int;
 
 // Check contract well-formedness and postcondition
-procedure len2#definedness(l_2: List2DomainType) returns (Result: int)
+procedure len2#definedness(l_1: List2DomainType) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -736,19 +736,19 @@ procedure len2#definedness(l_2: List2DomainType) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (l == Empty() ? 0 : 1 + len2(get_List1_l(get_List2_l(l))))
-      if (l_2 == (Empty(): List2DomainType)) {
+      if (l_1 == (Empty(): List2DomainType)) {
       } else {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume len2#trigger(EmptyFrame, (get_List1_l((get_List2_l(l_2): List1DomainType)): List2DomainType));
+          assume len2#trigger(EmptyFrame, (get_List1_l((get_List2_l(l_1): List1DomainType)): List2DomainType));
         }
       }
   
   // -- Translate function body
-    Result := (if l_2 == (Empty(): List2DomainType) then 0 else 1 + len2(Heap, (get_List1_l((get_List2_l(l_2): List1DomainType)): List2DomainType)));
+    Result := (if l_1 == (Empty(): List2DomainType) then 0 else 1 + len2(Heap, (get_List1_l((get_List2_l(l_1): List1DomainType)): List2DomainType)));
 }
 
 // ==================================================
@@ -756,38 +756,38 @@ procedure len2#definedness(l_2: List2DomainType) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  len2Bad(Heap: HeapType, l_2: List2DomainType): int;
-function  len2Bad'(Heap: HeapType, l_2: List2DomainType): int;
-axiom (forall Heap: HeapType, l_2: List2DomainType ::
-  { len2Bad(Heap, l_2) }
-  len2Bad(Heap, l_2) == len2Bad'(Heap, l_2) && dummyFunction(len2Bad#triggerStateless(l_2))
+function  len2Bad(Heap: HeapType, l_1: List2DomainType): int;
+function  len2Bad'(Heap: HeapType, l_1: List2DomainType): int;
+axiom (forall Heap: HeapType, l_1: List2DomainType ::
+  { len2Bad(Heap, l_1) }
+  len2Bad(Heap, l_1) == len2Bad'(Heap, l_1) && dummyFunction(len2Bad#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: List2DomainType ::
-  { len2Bad'(Heap, l_2) }
-  dummyFunction(len2Bad#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: List2DomainType ::
+  { len2Bad'(Heap, l_1) }
+  dummyFunction(len2Bad#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: List2DomainType ::
-  { state(Heap, Mask), len2Bad(Heap, l_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> len2Bad(Heap, l_2) == (if l_2 == (Empty(): List2DomainType) then 0 else 1 + len2Bad'(Heap, l_2))
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: List2DomainType ::
+  { state(Heap, Mask), len2Bad(Heap, l_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> len2Bad(Heap, l_1) == (if l_1 == (Empty(): List2DomainType) then 0 else 1 + len2Bad'(Heap, l_1))
 );
 
 // Framing axioms
-function  len2Bad#frame(frame: FrameType, l_2: List2DomainType): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: List2DomainType ::
-  { state(Heap, Mask), len2Bad'(Heap, l_2) }
-  state(Heap, Mask) ==> len2Bad'(Heap, l_2) == len2Bad#frame(EmptyFrame, l_2)
+function  len2Bad#frame(frame: FrameType, l_1: List2DomainType): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: List2DomainType ::
+  { state(Heap, Mask), len2Bad'(Heap, l_1) }
+  state(Heap, Mask) ==> len2Bad'(Heap, l_1) == len2Bad#frame(EmptyFrame, l_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  len2Bad#trigger(frame: FrameType, l_2: List2DomainType): bool;
+function  len2Bad#trigger(frame: FrameType, l_1: List2DomainType): bool;
 
 // State-independent trigger function
-function  len2Bad#triggerStateless(l_2: List2DomainType): int;
+function  len2Bad#triggerStateless(l_1: List2DomainType): int;
 
 // Check contract well-formedness and postcondition
-procedure len2Bad#definedness(l_2: List2DomainType) returns (Result: int)
+procedure len2Bad#definedness(l_1: List2DomainType) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -800,19 +800,19 @@ procedure len2Bad#definedness(l_2: List2DomainType) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (l == Empty() ? 0 : 1 + len2Bad(l))
-      if (l_2 == (Empty(): List2DomainType)) {
+      if (l_1 == (Empty(): List2DomainType)) {
       } else {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume len2Bad#trigger(EmptyFrame, l_2);
+          assume len2Bad#trigger(EmptyFrame, l_1);
         }
       }
   
   // -- Translate function body
-    Result := (if l_2 == (Empty(): List2DomainType) then 0 else 1 + len2Bad(Heap, l_2));
+    Result := (if l_1 == (Empty(): List2DomainType) then 0 else 1 + len2Bad(Heap, l_1));
 }
 
 // ==================================================
@@ -820,38 +820,38 @@ procedure len2Bad#definedness(l_2: List2DomainType) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  len1(Heap: HeapType, l_2: List1DomainType): int;
-function  len1'(Heap: HeapType, l_2: List1DomainType): int;
-axiom (forall Heap: HeapType, l_2: List1DomainType ::
-  { len1(Heap, l_2) }
-  len1(Heap, l_2) == len1'(Heap, l_2) && dummyFunction(len1#triggerStateless(l_2))
+function  len1(Heap: HeapType, l_1: List1DomainType): int;
+function  len1'(Heap: HeapType, l_1: List1DomainType): int;
+axiom (forall Heap: HeapType, l_1: List1DomainType ::
+  { len1(Heap, l_1) }
+  len1(Heap, l_1) == len1'(Heap, l_1) && dummyFunction(len1#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: List1DomainType ::
-  { len1'(Heap, l_2) }
-  dummyFunction(len1#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: List1DomainType ::
+  { len1'(Heap, l_1) }
+  dummyFunction(len1#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: List1DomainType ::
-  { state(Heap, Mask), len1(Heap, l_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 9 ==> len1(Heap, l_2) == (if (get_List1_l(l_2): List2DomainType) == (Empty(): List2DomainType) then 0 else 1 + len1'(Heap, (get_List2_l((get_List1_l(l_2): List2DomainType)): List1DomainType)))
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: List1DomainType ::
+  { state(Heap, Mask), len1(Heap, l_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 9 ==> len1(Heap, l_1) == (if (get_List1_l(l_1): List2DomainType) == (Empty(): List2DomainType) then 0 else 1 + len1'(Heap, (get_List2_l((get_List1_l(l_1): List2DomainType)): List1DomainType)))
 );
 
 // Framing axioms
-function  len1#frame(frame: FrameType, l_2: List1DomainType): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: List1DomainType ::
-  { state(Heap, Mask), len1'(Heap, l_2) }
-  state(Heap, Mask) ==> len1'(Heap, l_2) == len1#frame(EmptyFrame, l_2)
+function  len1#frame(frame: FrameType, l_1: List1DomainType): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: List1DomainType ::
+  { state(Heap, Mask), len1'(Heap, l_1) }
+  state(Heap, Mask) ==> len1'(Heap, l_1) == len1#frame(EmptyFrame, l_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  len1#trigger(frame: FrameType, l_2: List1DomainType): bool;
+function  len1#trigger(frame: FrameType, l_1: List1DomainType): bool;
 
 // State-independent trigger function
-function  len1#triggerStateless(l_2: List1DomainType): int;
+function  len1#triggerStateless(l_1: List1DomainType): int;
 
 // Check contract well-formedness and postcondition
-procedure len1#definedness(l_2: List1DomainType) returns (Result: int)
+procedure len1#definedness(l_1: List1DomainType) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -864,19 +864,19 @@ procedure len1#definedness(l_2: List1DomainType) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (get_List1_l(l) == Empty() ? 0 : 1 + len1(get_List2_l(get_List1_l(l))))
-      if ((get_List1_l(l_2): List2DomainType) == (Empty(): List2DomainType)) {
+      if ((get_List1_l(l_1): List2DomainType) == (Empty(): List2DomainType)) {
       } else {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume len1#trigger(EmptyFrame, (get_List2_l((get_List1_l(l_2): List2DomainType)): List1DomainType));
+          assume len1#trigger(EmptyFrame, (get_List2_l((get_List1_l(l_1): List2DomainType)): List1DomainType));
         }
       }
   
   // -- Translate function body
-    Result := (if (get_List1_l(l_2): List2DomainType) == (Empty(): List2DomainType) then 0 else 1 + len1(Heap, (get_List2_l((get_List1_l(l_2): List2DomainType)): List1DomainType)));
+    Result := (if (get_List1_l(l_1): List2DomainType) == (Empty(): List2DomainType) then 0 else 1 + len1(Heap, (get_List2_l((get_List1_l(l_1): List2DomainType)): List1DomainType)));
 }
 
 // ==================================================
@@ -884,38 +884,38 @@ procedure len1#definedness(l_2: List1DomainType) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  len1Bad(Heap: HeapType, l_2: List1DomainType): int;
-function  len1Bad'(Heap: HeapType, l_2: List1DomainType): int;
-axiom (forall Heap: HeapType, l_2: List1DomainType ::
-  { len1Bad(Heap, l_2) }
-  len1Bad(Heap, l_2) == len1Bad'(Heap, l_2) && dummyFunction(len1Bad#triggerStateless(l_2))
+function  len1Bad(Heap: HeapType, l_1: List1DomainType): int;
+function  len1Bad'(Heap: HeapType, l_1: List1DomainType): int;
+axiom (forall Heap: HeapType, l_1: List1DomainType ::
+  { len1Bad(Heap, l_1) }
+  len1Bad(Heap, l_1) == len1Bad'(Heap, l_1) && dummyFunction(len1Bad#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: List1DomainType ::
-  { len1Bad'(Heap, l_2) }
-  dummyFunction(len1Bad#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: List1DomainType ::
+  { len1Bad'(Heap, l_1) }
+  dummyFunction(len1Bad#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: List1DomainType ::
-  { state(Heap, Mask), len1Bad(Heap, l_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> len1Bad(Heap, l_2) == (if (get_List1_l(l_2): List2DomainType) == (Empty(): List2DomainType) then 0 else 1 + len1Bad'(Heap, l_2))
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: List1DomainType ::
+  { state(Heap, Mask), len1Bad(Heap, l_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> len1Bad(Heap, l_1) == (if (get_List1_l(l_1): List2DomainType) == (Empty(): List2DomainType) then 0 else 1 + len1Bad'(Heap, l_1))
 );
 
 // Framing axioms
-function  len1Bad#frame(frame: FrameType, l_2: List1DomainType): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: List1DomainType ::
-  { state(Heap, Mask), len1Bad'(Heap, l_2) }
-  state(Heap, Mask) ==> len1Bad'(Heap, l_2) == len1Bad#frame(EmptyFrame, l_2)
+function  len1Bad#frame(frame: FrameType, l_1: List1DomainType): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: List1DomainType ::
+  { state(Heap, Mask), len1Bad'(Heap, l_1) }
+  state(Heap, Mask) ==> len1Bad'(Heap, l_1) == len1Bad#frame(EmptyFrame, l_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  len1Bad#trigger(frame: FrameType, l_2: List1DomainType): bool;
+function  len1Bad#trigger(frame: FrameType, l_1: List1DomainType): bool;
 
 // State-independent trigger function
-function  len1Bad#triggerStateless(l_2: List1DomainType): int;
+function  len1Bad#triggerStateless(l_1: List1DomainType): int;
 
 // Check contract well-formedness and postcondition
-procedure len1Bad#definedness(l_2: List1DomainType) returns (Result: int)
+procedure len1Bad#definedness(l_1: List1DomainType) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -928,19 +928,19 @@ procedure len1Bad#definedness(l_2: List1DomainType) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (get_List1_l(l) == Empty() ? 0 : 1 + len1Bad(l))
-      if ((get_List1_l(l_2): List2DomainType) == (Empty(): List2DomainType)) {
+      if ((get_List1_l(l_1): List2DomainType) == (Empty(): List2DomainType)) {
       } else {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume len1Bad#trigger(EmptyFrame, l_2);
+          assume len1Bad#trigger(EmptyFrame, l_1);
         }
       }
   
   // -- Translate function body
-    Result := (if (get_List1_l(l_2): List2DomainType) == (Empty(): List2DomainType) then 0 else 1 + len1Bad(Heap, l_2));
+    Result := (if (get_List1_l(l_1): List2DomainType) == (Empty(): List2DomainType) then 0 else 1 + len1Bad(Heap, l_1));
 }
 
 // ==================================================
@@ -948,38 +948,38 @@ procedure len1Bad#definedness(l_2: List1DomainType) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  mlen2(Heap: HeapType, l_2: MList2DomainType): int;
-function  mlen2'(Heap: HeapType, l_2: MList2DomainType): int;
-axiom (forall Heap: HeapType, l_2: MList2DomainType ::
-  { mlen2(Heap, l_2) }
-  mlen2(Heap, l_2) == mlen2'(Heap, l_2) && dummyFunction(mlen2#triggerStateless(l_2))
+function  mlen2(Heap: HeapType, l_1: MList2DomainType): int;
+function  mlen2'(Heap: HeapType, l_1: MList2DomainType): int;
+axiom (forall Heap: HeapType, l_1: MList2DomainType ::
+  { mlen2(Heap, l_1) }
+  mlen2(Heap, l_1) == mlen2'(Heap, l_1) && dummyFunction(mlen2#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: MList2DomainType ::
-  { mlen2'(Heap, l_2) }
-  dummyFunction(mlen2#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: MList2DomainType ::
+  { mlen2'(Heap, l_1) }
+  dummyFunction(mlen2#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: MList2DomainType ::
-  { state(Heap, Mask), mlen2(Heap, l_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 7 ==> mlen2(Heap, l_2) == (if l_2 == (MEmpty(): MList2DomainType) then 0 else 1 + mlen2'(Heap, (get_MList1_y((get_MList2_l(l_2): MList1DomainType)): MList2DomainType)))
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: MList2DomainType ::
+  { state(Heap, Mask), mlen2(Heap, l_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 7 ==> mlen2(Heap, l_1) == (if l_1 == (MEmpty(): MList2DomainType) then 0 else 1 + mlen2'(Heap, (get_MList1_y((get_MList2_l(l_1): MList1DomainType)): MList2DomainType)))
 );
 
 // Framing axioms
-function  mlen2#frame(frame: FrameType, l_2: MList2DomainType): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: MList2DomainType ::
-  { state(Heap, Mask), mlen2'(Heap, l_2) }
-  state(Heap, Mask) ==> mlen2'(Heap, l_2) == mlen2#frame(EmptyFrame, l_2)
+function  mlen2#frame(frame: FrameType, l_1: MList2DomainType): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: MList2DomainType ::
+  { state(Heap, Mask), mlen2'(Heap, l_1) }
+  state(Heap, Mask) ==> mlen2'(Heap, l_1) == mlen2#frame(EmptyFrame, l_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  mlen2#trigger(frame: FrameType, l_2: MList2DomainType): bool;
+function  mlen2#trigger(frame: FrameType, l_1: MList2DomainType): bool;
 
 // State-independent trigger function
-function  mlen2#triggerStateless(l_2: MList2DomainType): int;
+function  mlen2#triggerStateless(l_1: MList2DomainType): int;
 
 // Check contract well-formedness and postcondition
-procedure mlen2#definedness(l_2: MList2DomainType) returns (Result: int)
+procedure mlen2#definedness(l_1: MList2DomainType) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -992,19 +992,19 @@ procedure mlen2#definedness(l_2: MList2DomainType) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (l == MEmpty() ? 0 : 1 + mlen2(get_MList1_y(get_MList2_l(l))))
-      if (l_2 == (MEmpty(): MList2DomainType)) {
+      if (l_1 == (MEmpty(): MList2DomainType)) {
       } else {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume mlen2#trigger(EmptyFrame, (get_MList1_y((get_MList2_l(l_2): MList1DomainType)): MList2DomainType));
+          assume mlen2#trigger(EmptyFrame, (get_MList1_y((get_MList2_l(l_1): MList1DomainType)): MList2DomainType));
         }
       }
   
   // -- Translate function body
-    Result := (if l_2 == (MEmpty(): MList2DomainType) then 0 else 1 + mlen2(Heap, (get_MList1_y((get_MList2_l(l_2): MList1DomainType)): MList2DomainType)));
+    Result := (if l_1 == (MEmpty(): MList2DomainType) then 0 else 1 + mlen2(Heap, (get_MList1_y((get_MList2_l(l_1): MList1DomainType)): MList2DomainType)));
 }
 
 // ==================================================
@@ -1395,7 +1395,7 @@ procedure tripleLen3Bad#definedness(t_2: Triple3DomainType) returns (Result: int
 // Translation of method len2_termination_proof
 // ==================================================
 
-procedure len2_termination_proof(l_2: List2DomainType) returns ()
+procedure len2_termination_proof(l_1: List2DomainType) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -1416,17 +1416,17 @@ procedure len2_termination_proof(l_2: List2DomainType) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: if (l == Empty()) -- <no position>
-    if (l_2 == (Empty(): List2DomainType)) {
+    if (l_1 == (Empty(): List2DomainType)) {
     } else {
       
       // -- Translating statement: assert (decreasing(get_List1_l(get_List2_l(l)), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(get_List1_l(get_List2_l(l)), old(l)): Bool) might not hold. (<no position>) [222760]"}
-          (decreasing((get_List1_l((get_List2_l(l_2): List1DomainType)): List2DomainType), l_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222761]"}
-          (bounded(l_2): bool);
+        assert {:msg "  Assert might fail. Assertion (decreasing(get_List1_l(get_List2_l(l)), old(l)): Bool) might not hold. (<no position>) [103986]"}
+          (decreasing((get_List1_l((get_List2_l(l_1): List1DomainType)): List2DomainType), l_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [103987]"}
+          (bounded(l_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1436,7 +1436,7 @@ procedure len2_termination_proof(l_2: List2DomainType) returns ()
 // Translation of method len2Bad_termination_proof
 // ==================================================
 
-procedure len2Bad_termination_proof(l_2: List2DomainType) returns ()
+procedure len2Bad_termination_proof(l_1: List2DomainType) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -1457,16 +1457,16 @@ procedure len2Bad_termination_proof(l_2: List2DomainType) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: if (l == Empty()) -- <no position>
-    if (l_2 == (Empty(): List2DomainType)) {
+    if (l_1 == (Empty(): List2DomainType)) {
     } else {
       
       // -- Translating statement: assert (decreasing(l, old(l)): Bool) && (bounded(old(l)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(l, old(l)): Bool) might not hold. (<no position>) [222762]"}
-          (decreasing(l_2, l_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222763]"}
-          (bounded(l_2): bool);
+        assert {:msg "  Assert might fail. Assertion (decreasing(l, old(l)): Bool) might not hold. (<no position>) [103988]"}
+          (decreasing(l_1, l_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [103989]"}
+          (bounded(l_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1476,7 +1476,7 @@ procedure len2Bad_termination_proof(l_2: List2DomainType) returns ()
 // Translation of method len1_termination_proof
 // ==================================================
 
-procedure len1_termination_proof(l_2: List1DomainType) returns ()
+procedure len1_termination_proof(l_1: List1DomainType) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -1497,17 +1497,17 @@ procedure len1_termination_proof(l_2: List1DomainType) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: if (get_List1_l(l) == Empty()) -- <no position>
-    if ((get_List1_l(l_2): List2DomainType) == (Empty(): List2DomainType)) {
+    if ((get_List1_l(l_1): List2DomainType) == (Empty(): List2DomainType)) {
     } else {
       
       // -- Translating statement: assert (decreasing(get_List2_l(get_List1_l(l)), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(get_List2_l(get_List1_l(l)), old(l)): Bool) might not hold. (<no position>) [222764]"}
-          (decreasing((get_List2_l((get_List1_l(l_2): List2DomainType)): List1DomainType), l_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222765]"}
-          (bounded(l_2): bool);
+        assert {:msg "  Assert might fail. Assertion (decreasing(get_List2_l(get_List1_l(l)), old(l)): Bool) might not hold. (<no position>) [103990]"}
+          (decreasing((get_List2_l((get_List1_l(l_1): List2DomainType)): List1DomainType), l_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [103991]"}
+          (bounded(l_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1517,7 +1517,7 @@ procedure len1_termination_proof(l_2: List1DomainType) returns ()
 // Translation of method len1Bad_termination_proof
 // ==================================================
 
-procedure len1Bad_termination_proof(l_2: List1DomainType) returns ()
+procedure len1Bad_termination_proof(l_1: List1DomainType) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -1538,16 +1538,16 @@ procedure len1Bad_termination_proof(l_2: List1DomainType) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: if (get_List1_l(l) == Empty()) -- <no position>
-    if ((get_List1_l(l_2): List2DomainType) == (Empty(): List2DomainType)) {
+    if ((get_List1_l(l_1): List2DomainType) == (Empty(): List2DomainType)) {
     } else {
       
       // -- Translating statement: assert (decreasing(l, old(l)): Bool) && (bounded(old(l)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(l, old(l)): Bool) might not hold. (<no position>) [222766]"}
-          (decreasing(l_2, l_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222767]"}
-          (bounded(l_2): bool);
+        assert {:msg "  Assert might fail. Assertion (decreasing(l, old(l)): Bool) might not hold. (<no position>) [103992]"}
+          (decreasing(l_1, l_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [103993]"}
+          (bounded(l_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1557,7 +1557,7 @@ procedure len1Bad_termination_proof(l_2: List1DomainType) returns ()
 // Translation of method mlen2_termination_proof
 // ==================================================
 
-procedure mlen2_termination_proof(l_2: MList2DomainType) returns ()
+procedure mlen2_termination_proof(l_1: MList2DomainType) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -1578,17 +1578,17 @@ procedure mlen2_termination_proof(l_2: MList2DomainType) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: if (l == MEmpty()) -- <no position>
-    if (l_2 == (MEmpty(): MList2DomainType)) {
+    if (l_1 == (MEmpty(): MList2DomainType)) {
     } else {
       
       // -- Translating statement: assert (decreasing(get_MList1_y(get_MList2_l(l)), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(get_MList1_y(get_MList2_l(l)), old(l)): Bool) might not hold. (<no position>) [222768]"}
-          (decreasing((get_MList1_y((get_MList2_l(l_2): MList1DomainType)): MList2DomainType), l_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222769]"}
-          (bounded(l_2): bool);
+        assert {:msg "  Assert might fail. Assertion (decreasing(get_MList1_y(get_MList2_l(l)), old(l)): Bool) might not hold. (<no position>) [103994]"}
+          (decreasing((get_MList1_y((get_MList2_l(l_1): MList1DomainType)): MList2DomainType), l_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [103995]"}
+          (bounded(l_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1626,9 +1626,9 @@ procedure tripleLen1_termination_proof(t_2: Triple1DomainType) returns ()
   //   (bounded(old(t)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(get_Triple3_x(get_Triple2_x(get_Triple1_x(t))), old(t)): Bool) might not hold. (<no position>) [222770]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(get_Triple3_x(get_Triple2_x(get_Triple1_x(t))), old(t)): Bool) might not hold. (<no position>) [103996]"}
           (decreasing((get_Triple3_x((get_Triple2_x((get_Triple1_x(t_2): Triple2DomainType)): Triple3DomainType)): Triple1DomainType), t_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222771]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [103997]"}
           (bounded(t_2): bool);
         assume state(Heap, Mask);
     }
@@ -1667,9 +1667,9 @@ procedure tripleLen2_termination_proof(t_2: Triple2DomainType) returns ()
   //   (bounded(old(t)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(get_Triple1_x(get_Triple3_x(get_Triple2_x(t))), old(t)): Bool) might not hold. (<no position>) [222772]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(get_Triple1_x(get_Triple3_x(get_Triple2_x(t))), old(t)): Bool) might not hold. (<no position>) [103998]"}
           (decreasing((get_Triple1_x((get_Triple3_x((get_Triple2_x(t_2): Triple3DomainType)): Triple1DomainType)): Triple2DomainType), t_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222773]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [103999]"}
           (bounded(t_2): bool);
         assume state(Heap, Mask);
     }
@@ -1708,9 +1708,9 @@ procedure tripleLen3_termination_proof(t_2: Triple3DomainType) returns ()
   //   (bounded(old(t)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(get_Triple2_x(get_Triple1_x(get_Triple3_x(t))), old(t)): Bool) might not hold. (<no position>) [222774]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(get_Triple2_x(get_Triple1_x(get_Triple3_x(t))), old(t)): Bool) might not hold. (<no position>) [104000]"}
           (decreasing((get_Triple2_x((get_Triple1_x((get_Triple3_x(t_2): Triple1DomainType)): Triple2DomainType)): Triple3DomainType), t_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222775]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [104001]"}
           (bounded(t_2): bool);
         assume state(Heap, Mask);
     }
@@ -1748,9 +1748,9 @@ procedure tripleLen1Bad_termination_proof(t_2: Triple1DomainType) returns ()
       // -- Translating statement: assert (decreasing(t, old(t)): Bool) && (bounded(old(t)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(t, old(t)): Bool) might not hold. (<no position>) [222776]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(t, old(t)): Bool) might not hold. (<no position>) [104002]"}
           (decreasing(t_2, t_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222777]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [104003]"}
           (bounded(t_2): bool);
         assume state(Heap, Mask);
     }
@@ -1788,9 +1788,9 @@ procedure tripleLen2Bad_termination_proof(t_2: Triple2DomainType) returns ()
       // -- Translating statement: assert (decreasing(t, old(t)): Bool) && (bounded(old(t)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(t, old(t)): Bool) might not hold. (<no position>) [222778]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(t, old(t)): Bool) might not hold. (<no position>) [104004]"}
           (decreasing(t_2, t_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222779]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [104005]"}
           (bounded(t_2): bool);
         assume state(Heap, Mask);
     }
@@ -1828,9 +1828,9 @@ procedure tripleLen3Bad_termination_proof(t_2: Triple3DomainType) returns ()
       // -- Translating statement: assert (decreasing(t, old(t)): Bool) && (bounded(old(t)): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(t, old(t)): Bool) might not hold. (<no position>) [222780]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(t, old(t)): Bool) might not hold. (<no position>) [104006]"}
           (decreasing(t_2, t_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222781]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [104007]"}
           (bounded(t_2): bool);
         assume state(Heap, Mask);
     }

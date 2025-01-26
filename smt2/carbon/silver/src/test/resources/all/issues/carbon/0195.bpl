@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:43
+// Date:         2025-01-26 21:43:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0195.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0195-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,9 +180,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique v_36: Field NormalField int;
-axiom !IsPredicateField(v_36);
-axiom !IsWandField(v_36);
+const unique v_35: Field NormalField int;
+axiom !IsPredicateField(v_35);
+axiom !IsWandField(v_35);
 
 // ==================================================
 // Translation of function func
@@ -203,7 +203,7 @@ axiom (forall Heap: HeapType, r_1: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, r_1: Ref ::
   { state(Heap, Mask), func(Heap, r_1) } { state(Heap, Mask), func#triggerStateless(r_1), vperm#trigger(Heap, vperm(r_1)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> func(Heap, r_1) == (Heap[r_1, v_36] == Heap[r_1, v_36])
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> func(Heap, r_1) == (Heap[r_1, v_35] == Heap[r_1, v_35])
 );
 
 // Framing axioms
@@ -232,8 +232,8 @@ procedure func#definedness(r_1: Ref) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var v1_1: int;
   
   // -- Initializing the state
@@ -255,52 +255,52 @@ procedure func#definedness(r_1: Ref) returns (Result: bool)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume vperm#trigger(UnfoldingHeap, vperm(r_1));
-      assume UnfoldingHeap[null, vperm(r_1)] == FrameFragment(UnfoldingHeap[r_1, v_36]);
-      ExhaleWellDef0Mask := UnfoldingMask;
+      assume UnfoldingHeap[null, vperm(r_1)] == FrameFragment(UnfoldingHeap[r_1, v_35]);
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access vperm(r) (0195.vpr@8.1--14.1) [191312]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access vperm(r) (0195.vpr@8.1--14.1) [85166]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, vperm(r_1)];
       perm := FullPerm;
       assume r_1 != null;
-      UnfoldingMask := UnfoldingMask[r_1, v_36:=UnfoldingMask[r_1, v_36] + perm];
+      UnfoldingMask := UnfoldingMask[r_1, v_35:=UnfoldingMask[r_1, v_35] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.v (0195.vpr@8.1--14.1) [191313]"}
-        HasDirectPerm(UnfoldingMask, r_1, v_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.v (0195.vpr@8.1--14.1) [85167]"}
+        HasDirectPerm(UnfoldingMask, r_1, v_35);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, vperm#sm(r_1):=Heap[null, vperm#sm(r_1)][r_1, v_36:=true]];
+        Heap := Heap[null, vperm#sm(r_1):=Heap[null, vperm#sm(r_1)][r_1, v_35:=true]];
         assume state(Heap, Mask);
-      v1_1 := Heap[r_1, v_36];
+      v1_1 := Heap[r_1, v_35];
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume vperm#trigger(UnfoldingHeap, vperm(r_1));
-      assume UnfoldingHeap[null, vperm(r_1)] == FrameFragment(UnfoldingHeap[r_1, v_36]);
-      ExhaleWellDef0Mask := UnfoldingMask;
+      assume UnfoldingHeap[null, vperm(r_1)] == FrameFragment(UnfoldingHeap[r_1, v_35]);
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access vperm(r) (0195.vpr@8.1--14.1) [191314]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access vperm(r) (0195.vpr@8.1--14.1) [85168]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, vperm(r_1)];
       perm := FullPerm;
       assume r_1 != null;
-      UnfoldingMask := UnfoldingMask[r_1, v_36:=UnfoldingMask[r_1, v_36] + perm];
+      UnfoldingMask := UnfoldingMask[r_1, v_35:=UnfoldingMask[r_1, v_35] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.v (0195.vpr@8.1--14.1) [191315]"}
-        HasDirectPerm(UnfoldingMask, r_1, v_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.v (0195.vpr@8.1--14.1) [85169]"}
+        HasDirectPerm(UnfoldingMask, r_1, v_35);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, vperm#sm(r_1):=Heap[null, vperm#sm(r_1)][r_1, v_36:=true]];
+        Heap := Heap[null, vperm#sm(r_1):=Heap[null, vperm#sm(r_1)][r_1, v_35:=true]];
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := Heap[r_1, v_36] == Heap[r_1, v_36];
+    Result := Heap[r_1, v_35] == Heap[r_1, v_35];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of func might not hold. Assertion result might not hold. (0195.vpr@10.13--10.19) [191316]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of func might not hold. Assertion result might not hold. (0195.vpr@10.13--10.19) [85170]"}
       Result;
 }
 
@@ -354,7 +354,7 @@ procedure vperm#definedness(r_1: Ref) returns ()
       assume Heap[r_1, $allocated];
     perm := FullPerm;
     assume r_1 != null;
-    Mask := Mask[r_1, v_36:=Mask[r_1, v_36] + perm];
+    Mask := Mask[r_1, v_35:=Mask[r_1, v_35] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
 }

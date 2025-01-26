@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:48:16
+; Started: 2025-01-26 21:36:49
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -701,11 +701,11 @@
 (assert (forall ((s@$ $Snap) (t@0@00 Triple3)) (!
   (= (tripleLen3Bad%limited s@$ t@0@00) (tripleLen3Bad s@$ t@0@00))
   :pattern ((tripleLen3Bad s@$ t@0@00))
-  :qid |quant-u-26313|)))
+  :qid |quant-u-13759|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Triple3)) (!
   (tripleLen3Bad%stateless t@0@00)
   :pattern ((tripleLen3Bad%limited s@$ t@0@00))
-  :qid |quant-u-26314|)))
+  :qid |quant-u-13760|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Triple3)) (!
   (=>
     (tripleLen3Bad%precondition s@$ t@0@00)
@@ -716,7 +716,7 @@
         0
         (+ 3 (tripleLen3Bad%limited $Snap.unit t@0@00)))))
   :pattern ((tripleLen3Bad s@$ t@0@00))
-  :qid |quant-u-26335|)))
+  :qid |quant-u-13781|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Triple3)) (!
   (=>
     (tripleLen3Bad%precondition s@$ t@0@00)
@@ -725,15 +725,15 @@
       true
       (tripleLen3Bad%precondition $Snap.unit t@0@00)))
   :pattern ((tripleLen3Bad s@$ t@0@00))
-  :qid |quant-u-26336|)))
+  :qid |quant-u-13782|)))
 (assert (forall ((s@$ $Snap) (l@2@00 List1)) (!
   (= (len1%limited s@$ l@2@00) (len1 s@$ l@2@00))
   :pattern ((len1 s@$ l@2@00))
-  :qid |quant-u-26315|)))
+  :qid |quant-u-13761|)))
 (assert (forall ((s@$ $Snap) (l@2@00 List1)) (!
   (len1%stateless l@2@00)
   :pattern ((len1%limited s@$ l@2@00))
-  :qid |quant-u-26316|)))
+  :qid |quant-u-13762|)))
 (assert (forall ((s@$ $Snap) (l@2@00 List1)) (!
   (=>
     (len1%precondition s@$ l@2@00)
@@ -746,7 +746,7 @@
           1
           (len1%limited $Snap.unit (get_List2_l<List1> (get_List1_l<List2> l@2@00)))))))
   :pattern ((len1 s@$ l@2@00))
-  :qid |quant-u-26337|)))
+  :qid |quant-u-13783|)))
 (assert (forall ((s@$ $Snap) (l@2@00 List1)) (!
   (=>
     (len1%precondition s@$ l@2@00)
@@ -755,15 +755,15 @@
       true
       (len1%precondition $Snap.unit (get_List2_l<List1> (get_List1_l<List2> l@2@00)))))
   :pattern ((len1 s@$ l@2@00))
-  :qid |quant-u-26338|)))
+  :qid |quant-u-13784|)))
 (assert (forall ((s@$ $Snap) (t@4@00 Triple1)) (!
   (= (tripleLen1%limited s@$ t@4@00) (tripleLen1 s@$ t@4@00))
   :pattern ((tripleLen1 s@$ t@4@00))
-  :qid |quant-u-26317|)))
+  :qid |quant-u-13763|)))
 (assert (forall ((s@$ $Snap) (t@4@00 Triple1)) (!
   (tripleLen1%stateless t@4@00)
   :pattern ((tripleLen1%limited s@$ t@4@00))
-  :qid |quant-u-26318|)))
+  :qid |quant-u-13764|)))
 (assert (forall ((s@$ $Snap) (t@4@00 Triple1)) (!
   (=>
     (tripleLen1%precondition s@$ t@4@00)
@@ -778,7 +778,7 @@
           0
           (tripleLen1%limited $Snap.unit (get_Triple3_x<Triple1> (get_Triple2_x<Triple3> (get_Triple1_x<Triple2> t@4@00))))))))
   :pattern ((tripleLen1 s@$ t@4@00))
-  :qid |quant-u-26339|)))
+  :qid |quant-u-13785|)))
 (assert (forall ((s@$ $Snap) (t@4@00 Triple1)) (!
   (=>
     (tripleLen1%precondition s@$ t@4@00)
@@ -789,15 +789,15 @@
       true
       (tripleLen1%precondition $Snap.unit (get_Triple3_x<Triple1> (get_Triple2_x<Triple3> (get_Triple1_x<Triple2> t@4@00))))))
   :pattern ((tripleLen1 s@$ t@4@00))
-  :qid |quant-u-26340|)))
+  :qid |quant-u-13786|)))
 (assert (forall ((s@$ $Snap) (l@6@00 MList2)) (!
   (= (mlen2%limited s@$ l@6@00) (mlen2 s@$ l@6@00))
   :pattern ((mlen2 s@$ l@6@00))
-  :qid |quant-u-26319|)))
+  :qid |quant-u-13765|)))
 (assert (forall ((s@$ $Snap) (l@6@00 MList2)) (!
   (mlen2%stateless l@6@00)
   :pattern ((mlen2%limited s@$ l@6@00))
-  :qid |quant-u-26320|)))
+  :qid |quant-u-13766|)))
 (assert (forall ((s@$ $Snap) (l@6@00 MList2)) (!
   (=>
     (mlen2%precondition s@$ l@6@00)
@@ -810,7 +810,7 @@
           1
           (mlen2%limited $Snap.unit (get_MList1_y<MList2> (get_MList2_l<MList1> l@6@00)))))))
   :pattern ((mlen2 s@$ l@6@00))
-  :qid |quant-u-26341|)))
+  :qid |quant-u-13787|)))
 (assert (forall ((s@$ $Snap) (l@6@00 MList2)) (!
   (=>
     (mlen2%precondition s@$ l@6@00)
@@ -819,15 +819,15 @@
       true
       (mlen2%precondition $Snap.unit (get_MList1_y<MList2> (get_MList2_l<MList1> l@6@00)))))
   :pattern ((mlen2 s@$ l@6@00))
-  :qid |quant-u-26342|)))
+  :qid |quant-u-13788|)))
 (assert (forall ((s@$ $Snap) (t@8@00 Triple1)) (!
   (= (tripleLen1Bad%limited s@$ t@8@00) (tripleLen1Bad s@$ t@8@00))
   :pattern ((tripleLen1Bad s@$ t@8@00))
-  :qid |quant-u-26321|)))
+  :qid |quant-u-13767|)))
 (assert (forall ((s@$ $Snap) (t@8@00 Triple1)) (!
   (tripleLen1Bad%stateless t@8@00)
   :pattern ((tripleLen1Bad%limited s@$ t@8@00))
-  :qid |quant-u-26322|)))
+  :qid |quant-u-13768|)))
 (assert (forall ((s@$ $Snap) (t@8@00 Triple1)) (!
   (=>
     (tripleLen1Bad%precondition s@$ t@8@00)
@@ -842,7 +842,7 @@
           0
           (tripleLen1Bad%limited $Snap.unit t@8@00)))))
   :pattern ((tripleLen1Bad s@$ t@8@00))
-  :qid |quant-u-26343|)))
+  :qid |quant-u-13789|)))
 (assert (forall ((s@$ $Snap) (t@8@00 Triple1)) (!
   (=>
     (tripleLen1Bad%precondition s@$ t@8@00)
@@ -853,15 +853,15 @@
       true
       (tripleLen1Bad%precondition $Snap.unit t@8@00)))
   :pattern ((tripleLen1Bad s@$ t@8@00))
-  :qid |quant-u-26344|)))
+  :qid |quant-u-13790|)))
 (assert (forall ((s@$ $Snap) (l@10@00 List2)) (!
   (= (len2%limited s@$ l@10@00) (len2 s@$ l@10@00))
   :pattern ((len2 s@$ l@10@00))
-  :qid |quant-u-26323|)))
+  :qid |quant-u-13769|)))
 (assert (forall ((s@$ $Snap) (l@10@00 List2)) (!
   (len2%stateless l@10@00)
   :pattern ((len2%limited s@$ l@10@00))
-  :qid |quant-u-26324|)))
+  :qid |quant-u-13770|)))
 (assert (forall ((s@$ $Snap) (l@10@00 List2)) (!
   (=>
     (len2%precondition s@$ l@10@00)
@@ -874,7 +874,7 @@
           1
           (len2%limited $Snap.unit (get_List1_l<List2> (get_List2_l<List1> l@10@00)))))))
   :pattern ((len2 s@$ l@10@00))
-  :qid |quant-u-26345|)))
+  :qid |quant-u-13791|)))
 (assert (forall ((s@$ $Snap) (l@10@00 List2)) (!
   (=>
     (len2%precondition s@$ l@10@00)
@@ -883,15 +883,15 @@
       true
       (len2%precondition $Snap.unit (get_List1_l<List2> (get_List2_l<List1> l@10@00)))))
   :pattern ((len2 s@$ l@10@00))
-  :qid |quant-u-26346|)))
+  :qid |quant-u-13792|)))
 (assert (forall ((s@$ $Snap) (t@12@00 Triple3)) (!
   (= (tripleLen3%limited s@$ t@12@00) (tripleLen3 s@$ t@12@00))
   :pattern ((tripleLen3 s@$ t@12@00))
-  :qid |quant-u-26325|)))
+  :qid |quant-u-13771|)))
 (assert (forall ((s@$ $Snap) (t@12@00 Triple3)) (!
   (tripleLen3%stateless t@12@00)
   :pattern ((tripleLen3%limited s@$ t@12@00))
-  :qid |quant-u-26326|)))
+  :qid |quant-u-13772|)))
 (assert (forall ((s@$ $Snap) (t@12@00 Triple3)) (!
   (=>
     (tripleLen3%precondition s@$ t@12@00)
@@ -904,7 +904,7 @@
           3
           (tripleLen3%limited $Snap.unit (get_Triple2_x<Triple3> (get_Triple1_x<Triple2> (get_Triple3_x<Triple1> t@12@00))))))))
   :pattern ((tripleLen3 s@$ t@12@00))
-  :qid |quant-u-26347|)))
+  :qid |quant-u-13793|)))
 (assert (forall ((s@$ $Snap) (t@12@00 Triple3)) (!
   (=>
     (tripleLen3%precondition s@$ t@12@00)
@@ -913,15 +913,15 @@
       true
       (tripleLen3%precondition $Snap.unit (get_Triple2_x<Triple3> (get_Triple1_x<Triple2> (get_Triple3_x<Triple1> t@12@00))))))
   :pattern ((tripleLen3 s@$ t@12@00))
-  :qid |quant-u-26348|)))
+  :qid |quant-u-13794|)))
 (assert (forall ((s@$ $Snap) (l@14@00 List1)) (!
   (= (len1Bad%limited s@$ l@14@00) (len1Bad s@$ l@14@00))
   :pattern ((len1Bad s@$ l@14@00))
-  :qid |quant-u-26327|)))
+  :qid |quant-u-13773|)))
 (assert (forall ((s@$ $Snap) (l@14@00 List1)) (!
   (len1Bad%stateless l@14@00)
   :pattern ((len1Bad%limited s@$ l@14@00))
-  :qid |quant-u-26328|)))
+  :qid |quant-u-13774|)))
 (assert (forall ((s@$ $Snap) (l@14@00 List1)) (!
   (=>
     (len1Bad%precondition s@$ l@14@00)
@@ -932,7 +932,7 @@
         0
         (+ 1 (len1Bad%limited $Snap.unit l@14@00)))))
   :pattern ((len1Bad s@$ l@14@00))
-  :qid |quant-u-26349|)))
+  :qid |quant-u-13795|)))
 (assert (forall ((s@$ $Snap) (l@14@00 List1)) (!
   (=>
     (len1Bad%precondition s@$ l@14@00)
@@ -941,15 +941,15 @@
       true
       (len1Bad%precondition $Snap.unit l@14@00)))
   :pattern ((len1Bad s@$ l@14@00))
-  :qid |quant-u-26350|)))
+  :qid |quant-u-13796|)))
 (assert (forall ((s@$ $Snap) (t@16@00 Triple2)) (!
   (= (tripleLen2Bad%limited s@$ t@16@00) (tripleLen2Bad s@$ t@16@00))
   :pattern ((tripleLen2Bad s@$ t@16@00))
-  :qid |quant-u-26329|)))
+  :qid |quant-u-13775|)))
 (assert (forall ((s@$ $Snap) (t@16@00 Triple2)) (!
   (tripleLen2Bad%stateless t@16@00)
   :pattern ((tripleLen2Bad%limited s@$ t@16@00))
-  :qid |quant-u-26330|)))
+  :qid |quant-u-13776|)))
 (assert (forall ((s@$ $Snap) (t@16@00 Triple2)) (!
   (=>
     (tripleLen2Bad%precondition s@$ t@16@00)
@@ -962,7 +962,7 @@
           0
           (+ 1 (tripleLen2Bad%limited $Snap.unit t@16@00))))))
   :pattern ((tripleLen2Bad s@$ t@16@00))
-  :qid |quant-u-26351|)))
+  :qid |quant-u-13797|)))
 (assert (forall ((s@$ $Snap) (t@16@00 Triple2)) (!
   (=>
     (tripleLen2Bad%precondition s@$ t@16@00)
@@ -971,15 +971,15 @@
       true
       (tripleLen2Bad%precondition $Snap.unit t@16@00)))
   :pattern ((tripleLen2Bad s@$ t@16@00))
-  :qid |quant-u-26352|)))
+  :qid |quant-u-13798|)))
 (assert (forall ((s@$ $Snap) (t@18@00 Triple2)) (!
   (= (tripleLen2%limited s@$ t@18@00) (tripleLen2 s@$ t@18@00))
   :pattern ((tripleLen2 s@$ t@18@00))
-  :qid |quant-u-26331|)))
+  :qid |quant-u-13777|)))
 (assert (forall ((s@$ $Snap) (t@18@00 Triple2)) (!
   (tripleLen2%stateless t@18@00)
   :pattern ((tripleLen2%limited s@$ t@18@00))
-  :qid |quant-u-26332|)))
+  :qid |quant-u-13778|)))
 (assert (forall ((s@$ $Snap) (t@18@00 Triple2)) (!
   (=>
     (tripleLen2%precondition s@$ t@18@00)
@@ -994,7 +994,7 @@
             1
             (tripleLen2%limited $Snap.unit (get_Triple1_x<Triple2> (get_Triple3_x<Triple1> (get_Triple2_x<Triple3> t@18@00)))))))))
   :pattern ((tripleLen2 s@$ t@18@00))
-  :qid |quant-u-26353|)))
+  :qid |quant-u-13799|)))
 (assert (forall ((s@$ $Snap) (t@18@00 Triple2)) (!
   (=>
     (tripleLen2%precondition s@$ t@18@00)
@@ -1003,15 +1003,15 @@
       true
       (tripleLen2%precondition $Snap.unit (get_Triple1_x<Triple2> (get_Triple3_x<Triple1> (get_Triple2_x<Triple3> t@18@00))))))
   :pattern ((tripleLen2 s@$ t@18@00))
-  :qid |quant-u-26354|)))
+  :qid |quant-u-13800|)))
 (assert (forall ((s@$ $Snap) (l@20@00 List2)) (!
   (= (len2Bad%limited s@$ l@20@00) (len2Bad s@$ l@20@00))
   :pattern ((len2Bad s@$ l@20@00))
-  :qid |quant-u-26333|)))
+  :qid |quant-u-13779|)))
 (assert (forall ((s@$ $Snap) (l@20@00 List2)) (!
   (len2Bad%stateless l@20@00)
   :pattern ((len2Bad%limited s@$ l@20@00))
-  :qid |quant-u-26334|)))
+  :qid |quant-u-13780|)))
 (assert (forall ((s@$ $Snap) (l@20@00 List2)) (!
   (=>
     (len2Bad%precondition s@$ l@20@00)
@@ -1022,7 +1022,7 @@
         0
         (+ 1 (len2Bad%limited $Snap.unit l@20@00)))))
   :pattern ((len2Bad s@$ l@20@00))
-  :qid |quant-u-26355|)))
+  :qid |quant-u-13801|)))
 (assert (forall ((s@$ $Snap) (l@20@00 List2)) (!
   (=>
     (len2Bad%precondition s@$ l@20@00)
@@ -1031,7 +1031,7 @@
       true
       (len2Bad%precondition $Snap.unit l@20@00)))
   :pattern ((len2Bad s@$ l@20@00))
-  :qid |quant-u-26356|)))
+  :qid |quant-u-13802|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- len2_termination_proof ----------

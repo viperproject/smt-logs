@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:43:03
+; Started: 2025-01-26 21:31:03
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -48,17 +48,17 @@
 (declare-sort Set<$Ref> 0)
 (declare-sort Set<Int> 0)
 (declare-sort Set<$Snap> 0)
-(declare-sort Inverse_9 0)
-(declare-sort Inverse_5 0)
-(declare-sort Inverse_8 0)
-(declare-sort Inverse_6 0)
-(declare-sort Inverse_2 0)
-(declare-sort Inverse_1 0)
-(declare-sort Inverse_4 0)
-(declare-sort Inverse_7 0)
-(declare-sort Inverse_0 0)
-(declare-sort Inverse_3 0)
-(declare-sort Inverse_10 0)
+(declare-sort Inverse_23 0)
+(declare-sort Inverse_22 0)
+(declare-sort Inverse_26 0)
+(declare-sort Inverse_30 0)
+(declare-sort Inverse_29 0)
+(declare-sort Inverse_24 0)
+(declare-sort Inverse_28 0)
+(declare-sort Inverse_25 0)
+(declare-sort Inverse_31 0)
+(declare-sort Inverse_32 0)
+(declare-sort Inverse_27 0)
 (declare-sort $FVF<f> 0)
 (declare-sort $PSF<p> 0)
 (declare-sort $PSF<wand@0> 0)
@@ -151,137 +151,137 @@
     :qid |$Snap.Set<$Snap>To$SnapToSet<$Snap>|
     )))
 ; Declaring additional sort wrappers
-(declare-fun $SortWrappers.Inverse_9To$Snap (Inverse_9) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_9 ($Snap) Inverse_9)
-(assert (forall ((x Inverse_9)) (!
-    (= x ($SortWrappers.$SnapToInverse_9($SortWrappers.Inverse_9To$Snap x)))
-    :pattern (($SortWrappers.Inverse_9To$Snap x))
-    :qid |$Snap.$SnapToInverse_9To$Snap|
+(declare-fun $SortWrappers.Inverse_23To$Snap (Inverse_23) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_23 ($Snap) Inverse_23)
+(assert (forall ((x Inverse_23)) (!
+    (= x ($SortWrappers.$SnapToInverse_23($SortWrappers.Inverse_23To$Snap x)))
+    :pattern (($SortWrappers.Inverse_23To$Snap x))
+    :qid |$Snap.$SnapToInverse_23To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_9To$Snap($SortWrappers.$SnapToInverse_9 x)))
-    :pattern (($SortWrappers.$SnapToInverse_9 x))
-    :qid |$Snap.Inverse_9To$SnapToInverse_9|
+    (= x ($SortWrappers.Inverse_23To$Snap($SortWrappers.$SnapToInverse_23 x)))
+    :pattern (($SortWrappers.$SnapToInverse_23 x))
+    :qid |$Snap.Inverse_23To$SnapToInverse_23|
     )))
-(declare-fun $SortWrappers.Inverse_5To$Snap (Inverse_5) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_5 ($Snap) Inverse_5)
-(assert (forall ((x Inverse_5)) (!
-    (= x ($SortWrappers.$SnapToInverse_5($SortWrappers.Inverse_5To$Snap x)))
-    :pattern (($SortWrappers.Inverse_5To$Snap x))
-    :qid |$Snap.$SnapToInverse_5To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_5To$Snap($SortWrappers.$SnapToInverse_5 x)))
-    :pattern (($SortWrappers.$SnapToInverse_5 x))
-    :qid |$Snap.Inverse_5To$SnapToInverse_5|
-    )))
-(declare-fun $SortWrappers.Inverse_8To$Snap (Inverse_8) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_8 ($Snap) Inverse_8)
-(assert (forall ((x Inverse_8)) (!
-    (= x ($SortWrappers.$SnapToInverse_8($SortWrappers.Inverse_8To$Snap x)))
-    :pattern (($SortWrappers.Inverse_8To$Snap x))
-    :qid |$Snap.$SnapToInverse_8To$Snap|
+(declare-fun $SortWrappers.Inverse_22To$Snap (Inverse_22) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_22 ($Snap) Inverse_22)
+(assert (forall ((x Inverse_22)) (!
+    (= x ($SortWrappers.$SnapToInverse_22($SortWrappers.Inverse_22To$Snap x)))
+    :pattern (($SortWrappers.Inverse_22To$Snap x))
+    :qid |$Snap.$SnapToInverse_22To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_8To$Snap($SortWrappers.$SnapToInverse_8 x)))
-    :pattern (($SortWrappers.$SnapToInverse_8 x))
-    :qid |$Snap.Inverse_8To$SnapToInverse_8|
+    (= x ($SortWrappers.Inverse_22To$Snap($SortWrappers.$SnapToInverse_22 x)))
+    :pattern (($SortWrappers.$SnapToInverse_22 x))
+    :qid |$Snap.Inverse_22To$SnapToInverse_22|
     )))
-(declare-fun $SortWrappers.Inverse_6To$Snap (Inverse_6) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_6 ($Snap) Inverse_6)
-(assert (forall ((x Inverse_6)) (!
-    (= x ($SortWrappers.$SnapToInverse_6($SortWrappers.Inverse_6To$Snap x)))
-    :pattern (($SortWrappers.Inverse_6To$Snap x))
-    :qid |$Snap.$SnapToInverse_6To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_6To$Snap($SortWrappers.$SnapToInverse_6 x)))
-    :pattern (($SortWrappers.$SnapToInverse_6 x))
-    :qid |$Snap.Inverse_6To$SnapToInverse_6|
-    )))
-(declare-fun $SortWrappers.Inverse_2To$Snap (Inverse_2) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_2 ($Snap) Inverse_2)
-(assert (forall ((x Inverse_2)) (!
-    (= x ($SortWrappers.$SnapToInverse_2($SortWrappers.Inverse_2To$Snap x)))
-    :pattern (($SortWrappers.Inverse_2To$Snap x))
-    :qid |$Snap.$SnapToInverse_2To$Snap|
+(declare-fun $SortWrappers.Inverse_26To$Snap (Inverse_26) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_26 ($Snap) Inverse_26)
+(assert (forall ((x Inverse_26)) (!
+    (= x ($SortWrappers.$SnapToInverse_26($SortWrappers.Inverse_26To$Snap x)))
+    :pattern (($SortWrappers.Inverse_26To$Snap x))
+    :qid |$Snap.$SnapToInverse_26To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_2To$Snap($SortWrappers.$SnapToInverse_2 x)))
-    :pattern (($SortWrappers.$SnapToInverse_2 x))
-    :qid |$Snap.Inverse_2To$SnapToInverse_2|
+    (= x ($SortWrappers.Inverse_26To$Snap($SortWrappers.$SnapToInverse_26 x)))
+    :pattern (($SortWrappers.$SnapToInverse_26 x))
+    :qid |$Snap.Inverse_26To$SnapToInverse_26|
     )))
-(declare-fun $SortWrappers.Inverse_1To$Snap (Inverse_1) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_1 ($Snap) Inverse_1)
-(assert (forall ((x Inverse_1)) (!
-    (= x ($SortWrappers.$SnapToInverse_1($SortWrappers.Inverse_1To$Snap x)))
-    :pattern (($SortWrappers.Inverse_1To$Snap x))
-    :qid |$Snap.$SnapToInverse_1To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_1To$Snap($SortWrappers.$SnapToInverse_1 x)))
-    :pattern (($SortWrappers.$SnapToInverse_1 x))
-    :qid |$Snap.Inverse_1To$SnapToInverse_1|
-    )))
-(declare-fun $SortWrappers.Inverse_4To$Snap (Inverse_4) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_4 ($Snap) Inverse_4)
-(assert (forall ((x Inverse_4)) (!
-    (= x ($SortWrappers.$SnapToInverse_4($SortWrappers.Inverse_4To$Snap x)))
-    :pattern (($SortWrappers.Inverse_4To$Snap x))
-    :qid |$Snap.$SnapToInverse_4To$Snap|
+(declare-fun $SortWrappers.Inverse_30To$Snap (Inverse_30) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_30 ($Snap) Inverse_30)
+(assert (forall ((x Inverse_30)) (!
+    (= x ($SortWrappers.$SnapToInverse_30($SortWrappers.Inverse_30To$Snap x)))
+    :pattern (($SortWrappers.Inverse_30To$Snap x))
+    :qid |$Snap.$SnapToInverse_30To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_4To$Snap($SortWrappers.$SnapToInverse_4 x)))
-    :pattern (($SortWrappers.$SnapToInverse_4 x))
-    :qid |$Snap.Inverse_4To$SnapToInverse_4|
+    (= x ($SortWrappers.Inverse_30To$Snap($SortWrappers.$SnapToInverse_30 x)))
+    :pattern (($SortWrappers.$SnapToInverse_30 x))
+    :qid |$Snap.Inverse_30To$SnapToInverse_30|
     )))
-(declare-fun $SortWrappers.Inverse_7To$Snap (Inverse_7) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_7 ($Snap) Inverse_7)
-(assert (forall ((x Inverse_7)) (!
-    (= x ($SortWrappers.$SnapToInverse_7($SortWrappers.Inverse_7To$Snap x)))
-    :pattern (($SortWrappers.Inverse_7To$Snap x))
-    :qid |$Snap.$SnapToInverse_7To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_7To$Snap($SortWrappers.$SnapToInverse_7 x)))
-    :pattern (($SortWrappers.$SnapToInverse_7 x))
-    :qid |$Snap.Inverse_7To$SnapToInverse_7|
-    )))
-(declare-fun $SortWrappers.Inverse_0To$Snap (Inverse_0) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_0 ($Snap) Inverse_0)
-(assert (forall ((x Inverse_0)) (!
-    (= x ($SortWrappers.$SnapToInverse_0($SortWrappers.Inverse_0To$Snap x)))
-    :pattern (($SortWrappers.Inverse_0To$Snap x))
-    :qid |$Snap.$SnapToInverse_0To$Snap|
+(declare-fun $SortWrappers.Inverse_29To$Snap (Inverse_29) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_29 ($Snap) Inverse_29)
+(assert (forall ((x Inverse_29)) (!
+    (= x ($SortWrappers.$SnapToInverse_29($SortWrappers.Inverse_29To$Snap x)))
+    :pattern (($SortWrappers.Inverse_29To$Snap x))
+    :qid |$Snap.$SnapToInverse_29To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_0To$Snap($SortWrappers.$SnapToInverse_0 x)))
-    :pattern (($SortWrappers.$SnapToInverse_0 x))
-    :qid |$Snap.Inverse_0To$SnapToInverse_0|
+    (= x ($SortWrappers.Inverse_29To$Snap($SortWrappers.$SnapToInverse_29 x)))
+    :pattern (($SortWrappers.$SnapToInverse_29 x))
+    :qid |$Snap.Inverse_29To$SnapToInverse_29|
     )))
-(declare-fun $SortWrappers.Inverse_3To$Snap (Inverse_3) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_3 ($Snap) Inverse_3)
-(assert (forall ((x Inverse_3)) (!
-    (= x ($SortWrappers.$SnapToInverse_3($SortWrappers.Inverse_3To$Snap x)))
-    :pattern (($SortWrappers.Inverse_3To$Snap x))
-    :qid |$Snap.$SnapToInverse_3To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_3To$Snap($SortWrappers.$SnapToInverse_3 x)))
-    :pattern (($SortWrappers.$SnapToInverse_3 x))
-    :qid |$Snap.Inverse_3To$SnapToInverse_3|
-    )))
-(declare-fun $SortWrappers.Inverse_10To$Snap (Inverse_10) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_10 ($Snap) Inverse_10)
-(assert (forall ((x Inverse_10)) (!
-    (= x ($SortWrappers.$SnapToInverse_10($SortWrappers.Inverse_10To$Snap x)))
-    :pattern (($SortWrappers.Inverse_10To$Snap x))
-    :qid |$Snap.$SnapToInverse_10To$Snap|
+(declare-fun $SortWrappers.Inverse_24To$Snap (Inverse_24) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_24 ($Snap) Inverse_24)
+(assert (forall ((x Inverse_24)) (!
+    (= x ($SortWrappers.$SnapToInverse_24($SortWrappers.Inverse_24To$Snap x)))
+    :pattern (($SortWrappers.Inverse_24To$Snap x))
+    :qid |$Snap.$SnapToInverse_24To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_10To$Snap($SortWrappers.$SnapToInverse_10 x)))
-    :pattern (($SortWrappers.$SnapToInverse_10 x))
-    :qid |$Snap.Inverse_10To$SnapToInverse_10|
+    (= x ($SortWrappers.Inverse_24To$Snap($SortWrappers.$SnapToInverse_24 x)))
+    :pattern (($SortWrappers.$SnapToInverse_24 x))
+    :qid |$Snap.Inverse_24To$SnapToInverse_24|
+    )))
+(declare-fun $SortWrappers.Inverse_28To$Snap (Inverse_28) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_28 ($Snap) Inverse_28)
+(assert (forall ((x Inverse_28)) (!
+    (= x ($SortWrappers.$SnapToInverse_28($SortWrappers.Inverse_28To$Snap x)))
+    :pattern (($SortWrappers.Inverse_28To$Snap x))
+    :qid |$Snap.$SnapToInverse_28To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.Inverse_28To$Snap($SortWrappers.$SnapToInverse_28 x)))
+    :pattern (($SortWrappers.$SnapToInverse_28 x))
+    :qid |$Snap.Inverse_28To$SnapToInverse_28|
+    )))
+(declare-fun $SortWrappers.Inverse_25To$Snap (Inverse_25) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_25 ($Snap) Inverse_25)
+(assert (forall ((x Inverse_25)) (!
+    (= x ($SortWrappers.$SnapToInverse_25($SortWrappers.Inverse_25To$Snap x)))
+    :pattern (($SortWrappers.Inverse_25To$Snap x))
+    :qid |$Snap.$SnapToInverse_25To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.Inverse_25To$Snap($SortWrappers.$SnapToInverse_25 x)))
+    :pattern (($SortWrappers.$SnapToInverse_25 x))
+    :qid |$Snap.Inverse_25To$SnapToInverse_25|
+    )))
+(declare-fun $SortWrappers.Inverse_31To$Snap (Inverse_31) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_31 ($Snap) Inverse_31)
+(assert (forall ((x Inverse_31)) (!
+    (= x ($SortWrappers.$SnapToInverse_31($SortWrappers.Inverse_31To$Snap x)))
+    :pattern (($SortWrappers.Inverse_31To$Snap x))
+    :qid |$Snap.$SnapToInverse_31To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.Inverse_31To$Snap($SortWrappers.$SnapToInverse_31 x)))
+    :pattern (($SortWrappers.$SnapToInverse_31 x))
+    :qid |$Snap.Inverse_31To$SnapToInverse_31|
+    )))
+(declare-fun $SortWrappers.Inverse_32To$Snap (Inverse_32) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_32 ($Snap) Inverse_32)
+(assert (forall ((x Inverse_32)) (!
+    (= x ($SortWrappers.$SnapToInverse_32($SortWrappers.Inverse_32To$Snap x)))
+    :pattern (($SortWrappers.Inverse_32To$Snap x))
+    :qid |$Snap.$SnapToInverse_32To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.Inverse_32To$Snap($SortWrappers.$SnapToInverse_32 x)))
+    :pattern (($SortWrappers.$SnapToInverse_32 x))
+    :qid |$Snap.Inverse_32To$SnapToInverse_32|
+    )))
+(declare-fun $SortWrappers.Inverse_27To$Snap (Inverse_27) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_27 ($Snap) Inverse_27)
+(assert (forall ((x Inverse_27)) (!
+    (= x ($SortWrappers.$SnapToInverse_27($SortWrappers.Inverse_27To$Snap x)))
+    :pattern (($SortWrappers.Inverse_27To$Snap x))
+    :qid |$Snap.$SnapToInverse_27To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.Inverse_27To$Snap($SortWrappers.$SnapToInverse_27 x)))
+    :pattern (($SortWrappers.$SnapToInverse_27 x))
+    :qid |$Snap.Inverse_27To$SnapToInverse_27|
     )))
 ; Declaring additional sort wrappers
 (declare-fun $SortWrappers.$FVF<f>To$Snap ($FVF<f>) $Snap)
@@ -368,39 +368,39 @@
 (declare-fun Set_subset (Set<$Snap> Set<$Snap>) Bool)
 (declare-fun Set_equal (Set<$Snap> Set<$Snap>) Bool)
 (declare-fun Set_skolem_diff (Set<$Snap> Set<$Snap>) $Snap)
-(declare-fun inv_7_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_7_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_7_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_9_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_9_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_9_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_6_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_6_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_6_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_4_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_4_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_4_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_1_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_1_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_1_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_10_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_10_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_10_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_3_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_3_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_3_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_5_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_5_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_5_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_2_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_2_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_2_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_0_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_0_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_0_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_8_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_8_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
-(declare-fun inv_8_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_26_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_26_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_26_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_30_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_30_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_30_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_23_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_23_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_23_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_25_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_25_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_25_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_28_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_28_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_28_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_29_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_29_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_29_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_27_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_27_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_27_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_31_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_31_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_31_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_22_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_22_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_22_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_32_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_32_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_32_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_24_0<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_24_1<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
+(declare-fun inv_24_2<Ref> ($Ref $Perm $Ref $Perm $Ref $Perm $Ref $Ref $Ref $Perm) $Ref)
 ; /field_value_functions_declarations.smt2 [f: Int]
 (declare-fun $FVF.domain_f ($FVF<f>) Set<$Ref>)
 (declare-fun $FVF.lookup_f ($FVF<f> $Ref) Int)

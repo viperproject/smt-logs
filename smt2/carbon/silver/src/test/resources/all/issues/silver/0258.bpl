@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:27
+// Date:         2025-01-26 21:42:15
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0258.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0258-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,7 +177,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of method test1
 // ==================================================
 
-procedure test1() returns ()
+procedure test1_1() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -206,7 +206,7 @@ procedure test1() returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2() returns ()
+procedure test2_1() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -228,7 +228,7 @@ procedure test2() returns ()
   // -- Translating statement: assert false -- 0258.vpr@20.1--20.13
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0258.vpr@20.8--20.13) [219787]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0258.vpr@20.8--20.13) [55987]"}
       false;
     assume state(Heap, Mask);
 }

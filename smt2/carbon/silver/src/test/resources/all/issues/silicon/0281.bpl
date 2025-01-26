@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:31
+// Date:         2025-01-26 21:42:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0281.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0281-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_5: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_5, f_3] }
-  Heap[o_5, $allocated] ==> Heap[Heap[o_5, f_3], $allocated]
+axiom (forall o_56: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_56, f_3] }
+  Heap[o_56, $allocated] ==> Heap[Heap[o_56, f_3], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref, f_9: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, f_9] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_6, f_9) ==> Heap[o_6, f_9] == ExhaleHeap[o_6, f_9]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref, f_51: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, f_51] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_38, f_51) ==> Heap[o_38, f_51] == ExhaleHeap[o_38, f_51]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2), ExhaleHeap[null, PredicateMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> Heap[null, PredicateMaskField(pm_f_2)] == ExhaleHeap[null, PredicateMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26), ExhaleHeap[null, PredicateMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> Heap[null, PredicateMaskField(pm_f_26)] == ExhaleHeap[null, PredicateMaskField(pm_f_26)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, PredicateMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, PredicateMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2), ExhaleHeap[null, WandMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> Heap[null, WandMaskField(pm_f_2)] == ExhaleHeap[null, WandMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26), ExhaleHeap[null, WandMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> Heap[null, WandMaskField(pm_f_26)] == ExhaleHeap[null, WandMaskField(pm_f_26)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, WandMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, WandMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_6, $allocated] ==> ExhaleHeap[o_6, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_38, $allocated] ==> ExhaleHeap[o_38, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_5: Ref, f_10: (Field A B), v: B ::
-  { Heap[o_5, f_10:=v] }
-  succHeap(Heap, Heap[o_5, f_10:=v])
+axiom (forall <A, B> Heap: HeapType, o_56: Ref, f_22: (Field A B), v: B ::
+  { Heap[o_56, f_22:=v] }
+  succHeap(Heap, Heap[o_56, f_22:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -598,7 +598,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, hdrs: Ref, index: int ::
 // Function used for framing of quantified permission (forall lambda180_26$e: Ref :: { (lambda180_26$e in hdrs.list_acc) } (lambda180_26$e in hdrs.list_acc) ==> acc(ExtensionHeader_State(lambda180_26$e), 1 / 200)) in function extension_len_rec
 // ==================================================
 
-function  extension_len_rec#condqp1(Heap: HeapType, hdrs_1_1: Ref, index_1_1: int): int;
+function  extension_len_rec#condqp1(Heap: HeapType, hdrs_1_1: Ref, index_1_1_1: int): int;
 function  sk_extension_len_rec#condqp1(fnAppH1: int, fnAppH2: int): Ref;
 axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, hdrs: Ref, index: int ::
   { extension_len_rec#condqp1(Heap2Heap, hdrs, index), extension_len_rec#condqp1(Heap1Heap, hdrs, index), succHeapTrans(Heap2Heap, Heap1Heap) }
@@ -618,8 +618,8 @@ procedure extension_len_rec#definedness(hdrs: Ref, index: int) returns (Result: 
   var perm: Perm;
   var QPMask: MaskType;
   var cond_0_1: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -631,7 +631,7 @@ procedure extension_len_rec#definedness(hdrs: Ref, index: int) returns (Result: 
   
   // -- Inhaling precondition (with checking)
     perm := 1 / 200;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 200 might be negative. (0281.vpr@9.12--9.39) [214688]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 200 might be negative. (0281.vpr@9.12--9.39) [74313]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> hdrs != null;
     Mask := Mask[hdrs, list_acc:=Mask[hdrs, list_acc] + perm];
@@ -640,14 +640,14 @@ procedure extension_len_rec#definedness(hdrs: Ref, index: int) returns (Result: 
     
     // -- Check definedness of (forall lambda180_26$e: Ref :: { (lambda180_26$e in hdrs.list_acc) } (lambda180_26$e in hdrs.list_acc) ==> acc(ExtensionHeader_State(lambda180_26$e), 1 / 200))
       if (*) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access hdrs.list_acc (0281.vpr@10.13--10.132) [214689]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access hdrs.list_acc (0281.vpr@10.13--10.132) [74314]"}
           HasDirectPerm(Mask, hdrs, list_acc);
         assume false;
       }
     havoc QPMask;
     
     // -- check if receiver acc(ExtensionHeader_State(lambda180_26$e), 1 / 200) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource ExtensionHeader_State(lambda180_26$e) might not be injective. (0281.vpr@10.13--10.132) [214690]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource ExtensionHeader_State(lambda180_26$e) might not be injective. (0281.vpr@10.13--10.132) [74315]"}
         (forall lambda180_26$e_4: Ref, lambda180_26$e_4_1: Ref ::
         { neverTriggered1(lambda180_26$e_4), neverTriggered1(lambda180_26$e_4_1) }
         (((lambda180_26$e_4 != lambda180_26$e_4_1 && Seq#Contains(Heap[hdrs, list_acc], lambda180_26$e_4)) && Seq#Contains(Heap[hdrs, list_acc], lambda180_26$e_4_1)) && NoPerm < 1 / 200) && NoPerm < 1 / 200 ==> lambda180_26$e_4 != lambda180_26$e_4_1
@@ -663,7 +663,7 @@ procedure extension_len_rec#definedness(hdrs: Ref, index: int) returns (Result: 
         (Seq#Contains(Heap[hdrs, list_acc], invRecv1(r_1)) && NoPerm < 1 / 200) && qpRange1(r_1) ==> invRecv1(r_1) == r_1
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 200 might be negative. (0281.vpr@10.13--10.132) [214691]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 200 might be negative. (0281.vpr@10.13--10.132) [74316]"}
       (forall lambda180_26$e_4: Ref ::
       { Heap[null, ExtensionHeader_State(lambda180_26$e_4)] } { Mask[null, ExtensionHeader_State(lambda180_26$e_4)] } { Seq#ContainsTrigger(Heap[hdrs, list_acc], lambda180_26$e_4) } { Seq#Contains(Heap[hdrs, list_acc], lambda180_26$e_4) }
       Seq#Contains(Heap[hdrs, list_acc], lambda180_26$e_4) ==> 1 / 200 >= NoPerm
@@ -676,9 +676,9 @@ procedure extension_len_rec#definedness(hdrs: Ref, index: int) returns (Result: 
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall r_1: Ref ::
         { QPMask[null, ExtensionHeader_State(r_1)] }
@@ -690,7 +690,7 @@ procedure extension_len_rec#definedness(hdrs: Ref, index: int) returns (Result: 
     assume index >= 0;
     
     // -- Check definedness of index <= |hdrs.list_acc|
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access hdrs.list_acc (0281.vpr@11.12--11.50) [214692]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access hdrs.list_acc (0281.vpr@11.12--11.50) [74317]"}
         HasDirectPerm(Mask, hdrs, list_acc);
     assume index <= Seq#Length(Heap[hdrs, list_acc]);
     assume state(Heap, Mask);
@@ -698,38 +698,38 @@ procedure extension_len_rec#definedness(hdrs: Ref, index: int) returns (Result: 
   // -- Check definedness of function body
     
     // -- Check definedness of (let cond_0 == (index == |hdrs.list_acc|) in (cond_0 ? 0 : extension_len_rec(hdrs, index + 1)))
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access hdrs.list_acc (0281.vpr@8.1--18.2) [214693]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access hdrs.list_acc (0281.vpr@8.1--18.2) [74318]"}
         HasDirectPerm(Mask, hdrs, list_acc);
       cond_0_1 := index == Seq#Length(Heap[hdrs, list_acc]);
       if (cond_0_1) {
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := 1 / 200;
-          assert {:msg "  Precondition of function extension_len_rec might not hold. Fraction 1 / 200 might be negative. (0281.vpr@15.17--15.51) [214694]"}
+          assert {:msg "  Precondition of function extension_len_rec might not hold. Fraction 1 / 200 might be negative. (0281.vpr@15.17--15.51) [74319]"}
             perm >= NoPerm;
-          assert {:msg "  Precondition of function extension_len_rec might not hold. There might be insufficient permission to access hdrs.list_acc (0281.vpr@15.17--15.51) [214695]"}
+          assert {:msg "  Precondition of function extension_len_rec might not hold. There might be insufficient permission to access hdrs.list_acc (0281.vpr@15.17--15.51) [74320]"}
             NoPerm < perm ==> NoPerm < Mask[hdrs, list_acc];
           havoc QPMask;
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function extension_len_rec might not hold. Fraction 1 / 200 might be negative. (0281.vpr@15.17--15.51) [214696]"}
+            assert {:msg "  Precondition of function extension_len_rec might not hold. Fraction 1 / 200 might be negative. (0281.vpr@15.17--15.51) [74321]"}
               (forall r_1_1: Ref ::
               { invRecv2(r_1_1) }
               Seq#Contains(Heap[hdrs, list_acc], invRecv2(r_1_1)) && qpRange2(r_1_1) ==> 1 / 200 >= NoPerm
             );
           
           // -- check if receiver acc(ExtensionHeader_State(lambda180_26$e), 1 / 200) is injective
-            assert {:msg "  Precondition of function extension_len_rec might not hold. Quantified resource ExtensionHeader_State(lambda180_26$e) might not be injective. (0281.vpr@15.17--15.51) [214697]"}
+            assert {:msg "  Precondition of function extension_len_rec might not hold. Quantified resource ExtensionHeader_State(lambda180_26$e) might not be injective. (0281.vpr@15.17--15.51) [74322]"}
               (forall lambda180_26$e_6: Ref, lambda180_26$e_6_1: Ref ::
               { neverTriggered2(lambda180_26$e_6), neverTriggered2(lambda180_26$e_6_1) }
               (((lambda180_26$e_6 != lambda180_26$e_6_1 && Seq#Contains(Heap[hdrs, list_acc], lambda180_26$e_6)) && Seq#Contains(Heap[hdrs, list_acc], lambda180_26$e_6_1)) && NoPerm < 1 / 200) && NoPerm < 1 / 200 ==> lambda180_26$e_6 != lambda180_26$e_6_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function extension_len_rec might not hold. There might be insufficient permission to access ExtensionHeader_State(lambda180_26$e) (0281.vpr@15.17--15.51) [214698]"}
+            assert {:msg "  Precondition of function extension_len_rec might not hold. There might be insufficient permission to access ExtensionHeader_State(lambda180_26$e) (0281.vpr@15.17--15.51) [74323]"}
               (forall lambda180_26$e_6: Ref ::
               { Heap[null, ExtensionHeader_State(lambda180_26$e_6)] } { Mask[null, ExtensionHeader_State(lambda180_26$e_6)] } { Seq#ContainsTrigger(Heap[hdrs, list_acc], lambda180_26$e_6) } { Seq#Contains(Heap[hdrs, list_acc], lambda180_26$e_6) }
               Seq#Contains(Heap[hdrs, list_acc], lambda180_26$e_6) ==> 1 / 200 > NoPerm ==> Mask[null, ExtensionHeader_State(lambda180_26$e_6)] > NoPerm
@@ -744,9 +744,9 @@ procedure extension_len_rec#definedness(hdrs: Ref, index: int) returns (Result: 
               { invRecv2(r_1_1) }
               (Seq#Contains(Heap[hdrs, list_acc], invRecv2(r_1_1)) && NoPerm < 1 / 200) && qpRange2(r_1_1) ==> invRecv2(r_1_1) == r_1_1
             );
-          assert {:msg "  Precondition of function extension_len_rec might not hold. Assertion index + 1 >= 0 might not hold. (0281.vpr@15.17--15.51) [214699]"}
+          assert {:msg "  Precondition of function extension_len_rec might not hold. Assertion index + 1 >= 0 might not hold. (0281.vpr@15.17--15.51) [74324]"}
             index + 1 >= 0;
-          assert {:msg "  Precondition of function extension_len_rec might not hold. Assertion index + 1 <= |hdrs.list_acc| might not hold. (0281.vpr@15.17--15.51) [214700]"}
+          assert {:msg "  Precondition of function extension_len_rec might not hold. Assertion index + 1 <= |hdrs.list_acc| might not hold. (0281.vpr@15.17--15.51) [74325]"}
             index + 1 <= Seq#Length(Heap[hdrs, list_acc]);
           // Finish exhale
           havoc ExhaleHeap;

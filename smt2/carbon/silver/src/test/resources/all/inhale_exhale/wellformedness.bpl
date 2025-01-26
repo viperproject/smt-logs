@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:10
+// Date:         2025-01-26 21:41:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/wellformedness.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/wellformedness-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,19 +177,19 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of method s0
 // ==================================================
 
-procedure s0_1(this: Ref) returns ()
+procedure s0(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -202,32 +202,32 @@ procedure s0_1(this: Ref) returns ()
   // -- Checked inhaling of precondition
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@20.12--20.23) [189098]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@20.12--20.23) [51766]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method s1
 // ==================================================
 
-procedure s1_8(this: Ref) returns ()
+procedure s1(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -240,8 +240,8 @@ procedure s1_8(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -249,9 +249,9 @@ procedure s1_8(this: Ref) returns ()
     // Checked inhaling of postcondition to check definedness
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@26.11--26.22) [189099]"}
-        HasDirectPerm(PostMask, this, x_36);
-    assume PostHeap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@26.11--26.22) [51767]"}
+        HasDirectPerm(PostMask, this, x_42);
+    assume PostHeap[this, x_42] == 0;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -260,32 +260,32 @@ procedure s1_8(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- wellformedness.vpr@28.3--28.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@28.10--28.36) [189101]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@28.10--28.36) [51769]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of s1 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@26.11--26.22) [189102]"}
-      Heap[this, x_36] == 0;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of s1 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@26.11--26.22) [51770]"}
+      Heap[this, x_42] == 0;
 }
 
 // ==================================================
 // Translation of method s2
 // ==================================================
 
-procedure s2_8(this: Ref) returns ()
+procedure s2(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -299,32 +299,32 @@ procedure s2_8(this: Ref) returns ()
     assume this != null;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@33.12--33.39) [189103]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@33.12--33.39) [51771]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method s3
 // ==================================================
 
-procedure s3_1(this: Ref) returns ()
+procedure s3(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -337,8 +337,8 @@ procedure s3_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -347,9 +347,9 @@ procedure s3_1(this: Ref) returns ()
     assume this != null;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@39.11--39.38) [189104]"}
-        HasDirectPerm(PostMask, this, x_36);
-    assume PostHeap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@39.11--39.38) [51772]"}
+        HasDirectPerm(PostMask, this, x_42);
+    assume PostHeap[this, x_42] == 0;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -358,34 +358,34 @@ procedure s3_1(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- wellformedness.vpr@41.3--41.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@41.10--41.36) [189106]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@41.10--41.36) [51774]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of s3 might not hold. Assertion this != null might not hold. (wellformedness.vpr@39.11--39.38) [189107]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of s3 might not hold. Assertion this != null might not hold. (wellformedness.vpr@39.11--39.38) [51775]"}
       this != null;
-    assert {:msg "  Postcondition of s3 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@39.11--39.38) [189108]"}
-      Heap[this, x_36] == 0;
+    assert {:msg "  Postcondition of s3 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@39.11--39.38) [51776]"}
+      Heap[this, x_42] == 0;
 }
 
 // ==================================================
 // Translation of method i0
 // ==================================================
 
-procedure i0_2(this: Ref) returns ()
+procedure i0(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -406,32 +406,32 @@ procedure i0_2(this: Ref) returns ()
     // -- Normally inhale the inhale part.
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@54.12--54.31) [189109]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@54.12--54.31) [51777]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 0;
       assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method i1
 // ==================================================
 
-procedure i1_36(this: Ref) returns ()
+procedure i1_5(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -444,8 +444,8 @@ procedure i1_36(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -456,9 +456,9 @@ procedure i1_36(this: Ref) returns ()
       if (*) {
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@60.11--60.30) [189110]"}
-            HasDirectPerm(PostMask, this, x_36);
-        assume PostHeap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@60.11--60.30) [51778]"}
+            HasDirectPerm(PostMask, this, x_42);
+        assume PostHeap[this, x_42] == 0;
         assume state(PostHeap, PostMask);
         assume false;
       }
@@ -472,30 +472,30 @@ procedure i1_36(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- wellformedness.vpr@62.3--62.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@62.10--62.36) [189112]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@62.10--62.36) [51780]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
 // Translation of method i2
 // ==================================================
 
-procedure i2_33(this: Ref) returns ()
+procedure i2_7(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -517,32 +517,32 @@ procedure i2_33(this: Ref) returns ()
       assume this != null;
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@67.12--67.47) [189113]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@67.12--67.47) [51781]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 0;
       assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method i3
 // ==================================================
 
-procedure i3_15(this: Ref) returns ()
+procedure i3(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -555,8 +555,8 @@ procedure i3_15(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -568,9 +568,9 @@ procedure i3_15(this: Ref) returns ()
         assume this != null;
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@73.11--73.46) [189114]"}
-            HasDirectPerm(PostMask, this, x_36);
-        assume PostHeap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@73.11--73.46) [51782]"}
+            HasDirectPerm(PostMask, this, x_42);
+        assume PostHeap[this, x_42] == 0;
         assume state(PostHeap, PostMask);
         assume false;
       }
@@ -584,30 +584,30 @@ procedure i3_15(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- wellformedness.vpr@75.3--75.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@75.10--75.36) [189116]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@75.10--75.36) [51784]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
 // Translation of method e0
 // ==================================================
 
-procedure e0_1(this: Ref) returns ()
+procedure e0(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -623,9 +623,9 @@ procedure e0_1(this: Ref) returns ()
       if (*) {
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@85.12--85.31) [189117]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@85.12--85.31) [51785]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 0;
         assume state(Heap, Mask);
         assume false;
       }
@@ -636,24 +636,24 @@ procedure e0_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method e1
 // ==================================================
 
-procedure e1_1(this: Ref) returns ()
+procedure e1(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -666,8 +666,8 @@ procedure e1_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -683,9 +683,9 @@ procedure e1_1(this: Ref) returns ()
     // -- Normally inhale the exhale part.
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@92.11--92.30) [189118]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@92.11--92.30) [51786]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 0;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -694,21 +694,21 @@ procedure e1_1(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- wellformedness.vpr@94.3--94.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@94.10--94.36) [189120]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@94.10--94.36) [51788]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of e1 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@92.11--92.30) [189121]"}
-      Heap[this, x_36] == 0;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of e1 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@92.11--92.30) [51789]"}
+      Heap[this, x_42] == 0;
 }
 
 // ==================================================
@@ -718,8 +718,8 @@ procedure e1_1(this: Ref) returns ()
 procedure e2(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -736,9 +736,9 @@ procedure e2(this: Ref) returns ()
         assume this != null;
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@100.12--100.47) [189122]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@100.12--100.47) [51790]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 0;
         assume state(Heap, Mask);
         assume false;
       }
@@ -749,8 +749,8 @@ procedure e2(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -760,13 +760,13 @@ procedure e2(this: Ref) returns ()
 procedure e3(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -779,8 +779,8 @@ procedure e3(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -797,9 +797,9 @@ procedure e3(this: Ref) returns ()
       assume this != null;
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@107.11--107.46) [189123]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@107.11--107.46) [51791]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 0;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -808,34 +808,34 @@ procedure e3(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- wellformedness.vpr@109.3--109.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@109.10--109.36) [189125]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@109.10--109.36) [51793]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of e3 might not hold. Assertion this != null might not hold. (wellformedness.vpr@107.11--107.46) [189126]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of e3 might not hold. Assertion this != null might not hold. (wellformedness.vpr@107.11--107.46) [51794]"}
       this != null;
-    assert {:msg "  Postcondition of e3 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@107.11--107.46) [189127]"}
-      Heap[this, x_36] == 0;
+    assert {:msg "  Postcondition of e3 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@107.11--107.46) [51795]"}
+      Heap[this, x_42] == 0;
 }
 
 // ==================================================
 // Translation of method ie0
 // ==================================================
 
-procedure ie0_1(this: Ref) returns ()
+procedure ie0(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -851,9 +851,9 @@ procedure ie0_1(this: Ref) returns ()
       if (*) {
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@118.12--118.38) [189128]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@118.12--118.38) [51796]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 0;
         assume state(Heap, Mask);
         assume false;
       }
@@ -861,32 +861,32 @@ procedure ie0_1(this: Ref) returns ()
     // -- Normally inhale the inhale part.
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@118.12--118.38) [189129]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@118.12--118.38) [51797]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 0;
       assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method ie1
 // ==================================================
 
-procedure ie1_1(this: Ref) returns ()
+procedure ie1(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -899,8 +899,8 @@ procedure ie1_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -911,9 +911,9 @@ procedure ie1_1(this: Ref) returns ()
       if (*) {
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@124.11--124.37) [189130]"}
-            HasDirectPerm(PostMask, this, x_36);
-        assume PostHeap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@124.11--124.37) [51798]"}
+            HasDirectPerm(PostMask, this, x_42);
+        assume PostHeap[this, x_42] == 0;
         assume state(PostHeap, PostMask);
         assume false;
       }
@@ -921,9 +921,9 @@ procedure ie1_1(this: Ref) returns ()
     // -- Normally inhale the exhale part.
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@124.11--124.37) [189131]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@124.11--124.37) [51799]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 0;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -932,21 +932,21 @@ procedure ie1_1(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- wellformedness.vpr@126.3--126.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@126.10--126.36) [189133]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@126.10--126.36) [51801]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of ie1 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@124.11--124.37) [189134]"}
-      Heap[this, x_36] == 0;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of ie1 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@124.11--124.37) [51802]"}
+      Heap[this, x_42] == 0;
 }
 
 // ==================================================
@@ -956,8 +956,8 @@ procedure ie1_1(this: Ref) returns ()
 procedure ie2(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -974,9 +974,9 @@ procedure ie2(this: Ref) returns ()
         assume this != null;
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@131.12--131.70) [189135]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@131.12--131.70) [51803]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 0;
         assume state(Heap, Mask);
         assume false;
       }
@@ -985,16 +985,16 @@ procedure ie2(this: Ref) returns ()
       assume this != null;
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@131.12--131.70) [189136]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@131.12--131.70) [51804]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 0;
       assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -1004,13 +1004,13 @@ procedure ie2(this: Ref) returns ()
 procedure ie3(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1023,8 +1023,8 @@ procedure ie3(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1036,9 +1036,9 @@ procedure ie3(this: Ref) returns ()
         assume this != null;
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@137.11--137.69) [189137]"}
-            HasDirectPerm(PostMask, this, x_36);
-        assume PostHeap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@137.11--137.69) [51805]"}
+            HasDirectPerm(PostMask, this, x_42);
+        assume PostHeap[this, x_42] == 0;
         assume state(PostHeap, PostMask);
         assume false;
       }
@@ -1047,9 +1047,9 @@ procedure ie3(this: Ref) returns ()
       assume this != null;
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@137.11--137.69) [189138]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@137.11--137.69) [51806]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 0;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -1058,35 +1058,35 @@ procedure ie3(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- wellformedness.vpr@139.3--139.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@139.10--139.36) [189140]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@139.10--139.36) [51808]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of ie3 might not hold. Assertion this != null might not hold. (wellformedness.vpr@137.11--137.69) [189141]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of ie3 might not hold. Assertion this != null might not hold. (wellformedness.vpr@137.11--137.69) [51809]"}
       this != null;
-    assert {:msg "  Postcondition of ie3 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@137.11--137.69) [189142]"}
-      Heap[this, x_36] == 0;
+    assert {:msg "  Postcondition of ie3 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@137.11--137.69) [51810]"}
+      Heap[this, x_42] == 0;
 }
 
 // ==================================================
 // Translation of method t1
 // ==================================================
 
-procedure t1(this: Ref) returns ()
+procedure t1_2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1104,9 +1104,9 @@ procedure t1(this: Ref) returns ()
         assume this != null;
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@156.12--156.47) [189143]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@156.12--156.47) [51811]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 0;
         assume state(Heap, Mask);
         assume false;
       }
@@ -1114,7 +1114,7 @@ procedure t1(this: Ref) returns ()
     // -- Normally inhale the inhale part.
       perm := FullPerm;
       assume this != null;
-      Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+      Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
       assume state(Heap, Mask);
@@ -1122,20 +1122,20 @@ procedure t1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method t2
 // ==================================================
 
-procedure t2(this: Ref) returns ()
+procedure t2_2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1151,7 +1151,7 @@ procedure t2(this: Ref) returns ()
       if (*) {
         perm := FullPerm;
         assume this != null;
-        Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1163,16 +1163,16 @@ procedure t2(this: Ref) returns ()
       assume this != null;
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@169.12--169.47) [189144]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@169.12--169.47) [51812]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 0;
       assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -1182,13 +1182,13 @@ procedure t2(this: Ref) returns ()
 procedure t3(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1202,8 +1202,8 @@ procedure t3(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1214,7 +1214,7 @@ procedure t3(this: Ref) returns ()
       if (*) {
         perm := FullPerm;
         assume this != null;
-        PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+        PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
         assume state(PostHeap, PostMask);
         assume state(PostHeap, PostMask);
         assume state(PostHeap, PostMask);
@@ -1226,9 +1226,9 @@ procedure t3(this: Ref) returns ()
       assume this != null;
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@183.11--183.46) [189145]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@183.11--183.46) [51813]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 0;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -1237,23 +1237,23 @@ procedure t3(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- wellformedness.vpr@185.3--185.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@185.10--185.36) [189147]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@185.10--185.36) [51815]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of t3 might not hold. Assertion this != null might not hold. (wellformedness.vpr@183.11--183.46) [189148]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of t3 might not hold. Assertion this != null might not hold. (wellformedness.vpr@183.11--183.46) [51816]"}
       this != null;
-    assert {:msg "  Postcondition of t3 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@183.11--183.46) [189149]"}
-      Heap[this, x_36] == 0;
+    assert {:msg "  Postcondition of t3 might not hold. Assertion this.x == 0 might not hold. (wellformedness.vpr@183.11--183.46) [51817]"}
+      Heap[this, x_42] == 0;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1267,13 +1267,13 @@ procedure t3(this: Ref) returns ()
 procedure t4(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1287,8 +1287,8 @@ procedure t4(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1301,9 +1301,9 @@ procedure t4(this: Ref) returns ()
         assume this != null;
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@197.11--197.46) [189150]"}
-            HasDirectPerm(PostMask, this, x_36);
-        assume PostHeap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (wellformedness.vpr@197.11--197.46) [51818]"}
+            HasDirectPerm(PostMask, this, x_42);
+        assume PostHeap[this, x_42] == 0;
         assume state(PostHeap, PostMask);
         assume false;
       }
@@ -1311,7 +1311,7 @@ procedure t4(this: Ref) returns ()
     // -- Normally inhale the exhale part.
       perm := FullPerm;
       assume this != null;
-      PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+      PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
       assume state(PostHeap, PostMask);
       assume state(PostHeap, PostMask);
       assume state(PostHeap, PostMask);
@@ -1322,25 +1322,25 @@ procedure t4(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- wellformedness.vpr@199.3--199.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@199.10--199.36) [189152]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (wellformedness.vpr@199.10--199.36) [51820]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t4 might not hold. There might be insufficient permission to access this.x (wellformedness.vpr@195.11--195.30) [189153]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Postcondition of t4 might not hold. There might be insufficient permission to access this.x (wellformedness.vpr@195.11--195.30) [51821]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

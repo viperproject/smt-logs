@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:03
+// Date:         2025-01-26 21:41:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/loops.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/loops-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,9 +177,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of method loopTrueTrue
@@ -188,11 +188,11 @@ axiom !IsWandField(x_36);
 procedure loopTrueTrue(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -207,8 +207,8 @@ procedure loopTrueTrue(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 1 -- loops.vpr@9.3--9.9
     i := 1;
@@ -219,8 +219,8 @@ procedure loopTrueTrue(this: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
     
     // -- Havoc loop written variables (except locals)
       havoc i;
@@ -250,8 +250,8 @@ procedure loopTrueTrue(this: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         // Terminate execution
         assume false;
       }
@@ -270,11 +270,11 @@ procedure loopTrueTrue(this: Ref) returns ()
 procedure loopFalseTrue(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -289,8 +289,8 @@ procedure loopFalseTrue(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 1 -- loops.vpr@20.3--20.9
     i := 1;
@@ -301,8 +301,8 @@ procedure loopFalseTrue(this: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
     
     // -- Havoc loop written variables (except locals)
       havoc i;
@@ -334,8 +334,8 @@ procedure loopFalseTrue(this: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         // Terminate execution
         assume false;
       }
@@ -355,11 +355,11 @@ procedure loopFalseTrue(this: Ref) returns ()
 procedure loopTrueFalse(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -374,8 +374,8 @@ procedure loopTrueFalse(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 1 -- loops.vpr@31.3--31.9
     i := 1;
@@ -386,9 +386,9 @@ procedure loopTrueFalse(this: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant [true, false] might not hold on entry. Assertion false might not hold. (loops.vpr@34.15--34.28) [188352]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant [true, false] might not hold on entry. Assertion false might not hold. (loops.vpr@34.15--34.28) [51594]"}
           false;
     
     // -- Havoc loop written variables (except locals)
@@ -419,9 +419,9 @@ procedure loopTrueFalse(this: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant [true, false] might not be preserved. Assertion false might not hold. (loops.vpr@34.15--34.28) [188353]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant [true, false] might not be preserved. Assertion false might not hold. (loops.vpr@34.15--34.28) [51595]"}
           false;
         // Terminate execution
         assume false;
@@ -441,11 +441,11 @@ procedure loopTrueFalse(this: Ref) returns ()
 procedure loopFalse(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -460,8 +460,8 @@ procedure loopFalse(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 1 -- loops.vpr@43.3--43.9
     i := 1;
@@ -472,9 +472,9 @@ procedure loopFalse(this: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant false might not hold on entry. Assertion false might not hold. (loops.vpr@46.15--46.20) [188354]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant false might not hold on entry. Assertion false might not hold. (loops.vpr@46.15--46.20) [51596]"}
           false;
     
     // -- Havoc loop written variables (except locals)
@@ -507,9 +507,9 @@ procedure loopFalse(this: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant false might not be preserved. Assertion false might not hold. (loops.vpr@46.15--46.20) [188355]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant false might not be preserved. Assertion false might not hold. (loops.vpr@46.15--46.20) [51597]"}
           false;
         // Terminate execution
         assume false;
@@ -531,11 +531,11 @@ procedure loopTrueExpression(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -551,15 +551,15 @@ procedure loopTrueExpression(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 1 -- loops.vpr@56.3--56.9
     i := 1;
@@ -570,14 +570,14 @@ procedure loopTrueExpression(this: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant [true, acc(this.x, write)] might not hold on entry. There might be insufficient permission to access this.x (loops.vpr@59.15--59.34) [188356]"}
-            perm <= Mask[this, x_36];
+          assert {:msg "  Loop invariant [true, acc(this.x, write)] might not hold on entry. There might be insufficient permission to access this.x (loops.vpr@59.15--59.34) [51598]"}
+            perm <= Mask[this, x_42];
         }
-        Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -611,14 +611,14 @@ procedure loopTrueExpression(this: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant [true, acc(this.x, write)] might not be preserved. There might be insufficient permission to access this.x (loops.vpr@59.15--59.34) [188357]"}
-            perm <= Mask[this, x_36];
+          assert {:msg "  Loop invariant [true, acc(this.x, write)] might not be preserved. There might be insufficient permission to access this.x (loops.vpr@59.15--59.34) [51599]"}
+            perm <= Mask[this, x_42];
         }
-        Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -641,14 +641,14 @@ procedure loopTrueExpression(this: Ref) returns ()
 procedure loopExpressionTrue(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -664,8 +664,8 @@ procedure loopExpressionTrue(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -673,7 +673,7 @@ procedure loopExpressionTrue(this: Ref) returns ()
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
     assume this != null;
-    PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+    PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -689,8 +689,8 @@ procedure loopExpressionTrue(this: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -703,7 +703,7 @@ procedure loopExpressionTrue(this: Ref) returns ()
       if (*) {
         perm := FullPerm;
         assume this != null;
-        Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume false;
@@ -719,7 +719,7 @@ procedure loopExpressionTrue(this: Ref) returns ()
         // Inhale invariant
         perm := FullPerm;
         assume this != null;
-        Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         // Check and assume guard
@@ -733,22 +733,22 @@ procedure loopExpressionTrue(this: Ref) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: exhale acc(this.x, write) -- loops.vpr@74.5--74.23
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (loops.vpr@74.12--74.23) [188358]"}
-                perm <= Mask[this, x_36];
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (loops.vpr@74.12--74.23) [51600]"}
+                perm <= Mask[this, x_42];
             }
-            Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+            Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
             Heap := ExhaleHeap;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -762,20 +762,20 @@ procedure loopExpressionTrue(this: Ref) returns ()
       assume state(Heap, Mask);
       perm := FullPerm;
       assume this != null;
-      Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+      Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of loopExpressionTrue might not hold. There might be insufficient permission to access this.x (loops.vpr@66.11--66.22) [188359]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Postcondition of loopExpressionTrue might not hold. There might be insufficient permission to access this.x (loops.vpr@66.11--66.22) [51601]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

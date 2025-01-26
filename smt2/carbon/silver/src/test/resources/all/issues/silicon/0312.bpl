@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:37
+// Date:         2025-01-26 21:43:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0312.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0312-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,15 +177,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique b_94: Field NormalField bool;
-axiom !IsPredicateField(b_94);
-axiom !IsWandField(b_94);
-const unique c_10: Field NormalField Ref;
-axiom !IsPredicateField(c_10);
-axiom !IsWandField(c_10);
-const unique d_3: Field NormalField Ref;
-axiom !IsPredicateField(d_3);
-axiom !IsWandField(d_3);
+const unique b_32: Field NormalField bool;
+axiom !IsPredicateField(b_32);
+axiom !IsWandField(b_32);
+const unique c_12: Field NormalField Ref;
+axiom !IsPredicateField(c_12);
+axiom !IsWandField(c_12);
+const unique d_1: Field NormalField Ref;
+axiom !IsPredicateField(d_1);
+axiom !IsWandField(d_1);
 const unique f_7: Field NormalField int;
 axiom !IsPredicateField(f_7);
 axiom !IsWandField(f_7);
@@ -198,13 +198,13 @@ procedure test0(k: Perm, x: Ref) returns ()
   modifies Heap, Mask;
 {
   var succeeds2_end_label_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var Labelsucceeds2_end_labelHeap: HeapType;
   var Labelsucceeds2_end_labelMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var Labelsucceeds2_end_labelHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -219,8 +219,8 @@ procedure test0(k: Perm, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale k > none -- 0312.vpr@10.3--10.18
     assume NoPerm < k;
@@ -229,22 +229,22 @@ procedure test0(k: Perm, x: Ref) returns ()
   
   // -- Translating statement: inhale acc(x.c, k) && (acc(x.d, k) && acc(x.b, k)) -- 0312.vpr@11.3--11.53
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@11.10--11.53) [218067]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@11.10--11.53) [79643]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, c_10:=Mask[x, c_10] + perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@11.10--11.53) [218068]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@11.10--11.53) [79644]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, d_3:=Mask[x, d_3] + perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@11.10--11.53) [218069]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@11.10--11.53) [79645]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, b_94:=Mask[x, b_94] + perm];
+    Mask := Mask[x, b_32:=Mask[x, b_32] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -252,62 +252,62 @@ procedure test0(k: Perm, x: Ref) returns ()
   // -- Translating statement: inhale x.b == (x.c == x.d) -- 0312.vpr@12.3--12.29
     
     // -- Check definedness of x.b == (x.c == x.d)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.b (0312.vpr@12.10--12.29) [218070]"}
-        HasDirectPerm(Mask, x, b_94);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@12.10--12.29) [218071]"}
-        HasDirectPerm(Mask, x, c_10);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@12.10--12.29) [218072]"}
-        HasDirectPerm(Mask, x, d_3);
-    assume Heap[x, b_94] == (Heap[x, c_10] == Heap[x, d_3]);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.b (0312.vpr@12.10--12.29) [79646]"}
+        HasDirectPerm(Mask, x, b_32);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@12.10--12.29) [79647]"}
+        HasDirectPerm(Mask, x, c_12);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@12.10--12.29) [79648]"}
+        HasDirectPerm(Mask, x, d_1);
+    assume Heap[x, b_32] == (Heap[x, c_12] == Heap[x, d_1]);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale acc(x.c.f, k) && acc(x.d.f, write) -- 0312.vpr@13.3--13.44
     
     // -- Check definedness of acc(x.c.f, k)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@13.10--13.44) [218073]"}
-        HasDirectPerm(Mask, x, c_10);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@13.10--13.44) [79649]"}
+        HasDirectPerm(Mask, x, c_12);
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@13.10--13.44) [218074]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@13.10--13.44) [79650]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Heap[x, c_10] != null;
-    Mask := Mask[Heap[x, c_10], f_7:=Mask[Heap[x, c_10], f_7] + perm];
+    assume perm > NoPerm ==> Heap[x, c_12] != null;
+    Mask := Mask[Heap[x, c_12], f_7:=Mask[Heap[x, c_12], f_7] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.d.f, write)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@13.10--13.44) [218075]"}
-        HasDirectPerm(Mask, x, d_3);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@13.10--13.44) [79651]"}
+        HasDirectPerm(Mask, x, d_1);
     perm := FullPerm;
-    assume Heap[x, d_3] != null;
-    Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] + perm];
+    assume Heap[x, d_1] != null;
+    Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: label succeeds2_end_label -- 0312.vpr@16.3--16.28
     succeeds2_end_label:
-    Labelsucceeds2_end_labelHeap := Heap;
     Labelsucceeds2_end_labelMask := Mask;
+    Labelsucceeds2_end_labelHeap := Heap;
     succeeds2_end_label_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(old[succeeds2_end_label](x.c).f, k) -- 0312.vpr@18.3--18.49
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(old[succeeds2_end_label](x.c).f, k)
-      assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c). (0312.vpr@18.10--18.49) [218077]"}
+      assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c). (0312.vpr@18.10--18.49) [79653]"}
         succeeds2_end_label_lblGuard;
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@18.10--18.49) [218078]"}
-        HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_10);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@18.10--18.49) [79654]"}
+        HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_12);
     perm := k;
-    assert {:msg "  Exhale might fail. Fraction k might be negative. (0312.vpr@18.10--18.49) [218079]"}
+    assert {:msg "  Exhale might fail. Fraction k might be negative. (0312.vpr@18.10--18.49) [79655]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access old[succeeds2_end_label](x.c).f (0312.vpr@18.10--18.49) [218080]"}
-        perm <= Mask[Labelsucceeds2_end_labelHeap[x, c_10], f_7];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access old[succeeds2_end_label](x.c).f (0312.vpr@18.10--18.49) [79656]"}
+        perm <= Mask[Labelsucceeds2_end_labelHeap[x, c_12], f_7];
     }
-    Mask := Mask[Labelsucceeds2_end_labelHeap[x, c_10], f_7:=Mask[Labelsucceeds2_end_labelHeap[x, c_10], f_7] - perm];
+    Mask := Mask[Labelsucceeds2_end_labelHeap[x, c_12], f_7:=Mask[Labelsucceeds2_end_labelHeap[x, c_12], f_7] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -317,29 +317,29 @@ procedure test0(k: Perm, x: Ref) returns ()
   // -- Translating statement: if (old[succeeds2_end_label](x.b)) -- 0312.vpr@20.3--22.4
     
     // -- Check definedness of old[succeeds2_end_label](x.b)
-      assert {:msg "  Conditional statement might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.b). (0312.vpr@20.7--20.36) [218081]"}
+      assert {:msg "  Conditional statement might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.b). (0312.vpr@20.7--20.36) [79657]"}
         succeeds2_end_label_lblGuard;
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.b (0312.vpr@20.7--20.36) [218082]"}
-        HasDirectPerm(Labelsucceeds2_end_labelMask, x, b_94);
-    if (Labelsucceeds2_end_labelHeap[x, b_94]) {
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.b (0312.vpr@20.7--20.36) [79658]"}
+        HasDirectPerm(Labelsucceeds2_end_labelMask, x, b_32);
+    if (Labelsucceeds2_end_labelHeap[x, b_32]) {
       
       // -- Translating statement: exhale old[succeeds2_end_label](x.c.f == x.d.f) -- 0312.vpr@21.5--21.52
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of old[succeeds2_end_label](x.c.f == x.d.f)
-          assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c.f == x.d.f). (0312.vpr@21.12--21.52) [218083]"}
+          assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c.f == x.d.f). (0312.vpr@21.12--21.52) [79659]"}
             succeeds2_end_label_lblGuard;
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@21.12--21.52) [218084]"}
-            HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_10);
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c.f (0312.vpr@21.12--21.52) [218085]"}
-            HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, c_10], f_7);
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d (0312.vpr@21.12--21.52) [218086]"}
-            HasDirectPerm(Labelsucceeds2_end_labelMask, x, d_3);
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d.f (0312.vpr@21.12--21.52) [218087]"}
-            HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, d_3], f_7);
-        assert {:msg "  Exhale might fail. Assertion old[succeeds2_end_label](x.c.f == x.d.f) might not hold. (0312.vpr@21.12--21.52) [218088]"}
-          Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, c_10], f_7] == Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, d_3], f_7];
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@21.12--21.52) [79660]"}
+            HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_12);
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c.f (0312.vpr@21.12--21.52) [79661]"}
+            HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, c_12], f_7);
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d (0312.vpr@21.12--21.52) [79662]"}
+            HasDirectPerm(Labelsucceeds2_end_labelMask, x, d_1);
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d.f (0312.vpr@21.12--21.52) [79663]"}
+            HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, d_1], f_7);
+        assert {:msg "  Exhale might fail. Assertion old[succeeds2_end_label](x.c.f == x.d.f) might not hold. (0312.vpr@21.12--21.52) [79664]"}
+          Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, c_12], f_7] == Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, d_1], f_7];
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -349,17 +349,17 @@ procedure test0(k: Perm, x: Ref) returns ()
 // Translation of method test1
 // ==================================================
 
-procedure test1(k: Perm, x: Ref) returns ()
+procedure test1_1(k: Perm, x: Ref) returns ()
   modifies Heap, Mask;
 {
   var succeeds2_end_label_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var Labelsucceeds2_end_labelHeap: HeapType;
   var Labelsucceeds2_end_labelMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var Labelsucceeds2_end_labelHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -374,8 +374,8 @@ procedure test1(k: Perm, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale k > none -- 0312.vpr@26.3--26.18
     assume NoPerm < k;
@@ -384,22 +384,22 @@ procedure test1(k: Perm, x: Ref) returns ()
   
   // -- Translating statement: inhale acc(x.c, k) && (acc(x.d, k) && acc(x.b, k)) -- 0312.vpr@27.3--27.53
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@27.10--27.53) [218089]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@27.10--27.53) [79665]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, c_10:=Mask[x, c_10] + perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@27.10--27.53) [218090]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@27.10--27.53) [79666]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, d_3:=Mask[x, d_3] + perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@27.10--27.53) [218091]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@27.10--27.53) [79667]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, b_94:=Mask[x, b_94] + perm];
+    Mask := Mask[x, b_32:=Mask[x, b_32] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -407,62 +407,62 @@ procedure test1(k: Perm, x: Ref) returns ()
   // -- Translating statement: inhale x.b == (x.c == x.d) -- 0312.vpr@28.3--28.29
     
     // -- Check definedness of x.b == (x.c == x.d)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.b (0312.vpr@28.10--28.29) [218092]"}
-        HasDirectPerm(Mask, x, b_94);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@28.10--28.29) [218093]"}
-        HasDirectPerm(Mask, x, c_10);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@28.10--28.29) [218094]"}
-        HasDirectPerm(Mask, x, d_3);
-    assume Heap[x, b_94] == (Heap[x, c_10] == Heap[x, d_3]);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.b (0312.vpr@28.10--28.29) [79668]"}
+        HasDirectPerm(Mask, x, b_32);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@28.10--28.29) [79669]"}
+        HasDirectPerm(Mask, x, c_12);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@28.10--28.29) [79670]"}
+        HasDirectPerm(Mask, x, d_1);
+    assume Heap[x, b_32] == (Heap[x, c_12] == Heap[x, d_1]);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale acc(x.c.f, k) && acc(x.d.f, write) -- 0312.vpr@29.3--29.44
     
     // -- Check definedness of acc(x.c.f, k)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@29.10--29.44) [218095]"}
-        HasDirectPerm(Mask, x, c_10);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@29.10--29.44) [79671]"}
+        HasDirectPerm(Mask, x, c_12);
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@29.10--29.44) [218096]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@29.10--29.44) [79672]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Heap[x, c_10] != null;
-    Mask := Mask[Heap[x, c_10], f_7:=Mask[Heap[x, c_10], f_7] + perm];
+    assume perm > NoPerm ==> Heap[x, c_12] != null;
+    Mask := Mask[Heap[x, c_12], f_7:=Mask[Heap[x, c_12], f_7] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.d.f, write)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@29.10--29.44) [218097]"}
-        HasDirectPerm(Mask, x, d_3);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@29.10--29.44) [79673]"}
+        HasDirectPerm(Mask, x, d_1);
     perm := FullPerm;
-    assume Heap[x, d_3] != null;
-    Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] + perm];
+    assume Heap[x, d_1] != null;
+    Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: label succeeds2_end_label -- 0312.vpr@32.3--32.28
     succeeds2_end_label:
-    Labelsucceeds2_end_labelHeap := Heap;
     Labelsucceeds2_end_labelMask := Mask;
+    Labelsucceeds2_end_labelHeap := Heap;
     succeeds2_end_label_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(old[succeeds2_end_label](x.c).f, k) -- 0312.vpr@34.3--34.49
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(old[succeeds2_end_label](x.c).f, k)
-      assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c). (0312.vpr@34.10--34.49) [218099]"}
+      assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c). (0312.vpr@34.10--34.49) [79675]"}
         succeeds2_end_label_lblGuard;
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@34.10--34.49) [218100]"}
-        HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_10);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@34.10--34.49) [79676]"}
+        HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_12);
     perm := k;
-    assert {:msg "  Exhale might fail. Fraction k might be negative. (0312.vpr@34.10--34.49) [218101]"}
+    assert {:msg "  Exhale might fail. Fraction k might be negative. (0312.vpr@34.10--34.49) [79677]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access old[succeeds2_end_label](x.c).f (0312.vpr@34.10--34.49) [218102]"}
-        perm <= Mask[Labelsucceeds2_end_labelHeap[x, c_10], f_7];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access old[succeeds2_end_label](x.c).f (0312.vpr@34.10--34.49) [79678]"}
+        perm <= Mask[Labelsucceeds2_end_labelHeap[x, c_12], f_7];
     }
-    Mask := Mask[Labelsucceeds2_end_labelHeap[x, c_10], f_7:=Mask[Labelsucceeds2_end_labelHeap[x, c_10], f_7] - perm];
+    Mask := Mask[Labelsucceeds2_end_labelHeap[x, c_12], f_7:=Mask[Labelsucceeds2_end_labelHeap[x, c_12], f_7] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -471,31 +471,31 @@ procedure test1(k: Perm, x: Ref) returns ()
   
   // -- Translating statement: exhale old[succeeds2_end_label](x.b) ==>
   //   old[succeeds2_end_label](x.c.f) == old[succeeds2_end_label](x.d.f) -- 0312.vpr@36.3--38.75
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old[succeeds2_end_label](x.b)
-      assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.b). (0312.vpr@37.5--38.75) [218103]"}
+      assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.b). (0312.vpr@37.5--38.75) [79679]"}
         succeeds2_end_label_lblGuard;
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.b (0312.vpr@37.5--38.75) [218104]"}
-        HasDirectPerm(Labelsucceeds2_end_labelMask, x, b_94);
-    if (Labelsucceeds2_end_labelHeap[x, b_94]) {
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.b (0312.vpr@37.5--38.75) [79680]"}
+        HasDirectPerm(Labelsucceeds2_end_labelMask, x, b_32);
+    if (Labelsucceeds2_end_labelHeap[x, b_32]) {
       
       // -- Check definedness of old[succeeds2_end_label](x.c.f) == old[succeeds2_end_label](x.d.f)
-        assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c.f). (0312.vpr@37.5--38.75) [218105]"}
+        assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c.f). (0312.vpr@37.5--38.75) [79681]"}
           succeeds2_end_label_lblGuard;
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@37.5--38.75) [218106]"}
-          HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_10);
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c.f (0312.vpr@37.5--38.75) [218107]"}
-          HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, c_10], f_7);
-        assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.d.f). (0312.vpr@37.5--38.75) [218108]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@37.5--38.75) [79682]"}
+          HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_12);
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c.f (0312.vpr@37.5--38.75) [79683]"}
+          HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, c_12], f_7);
+        assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.d.f). (0312.vpr@37.5--38.75) [79684]"}
           succeeds2_end_label_lblGuard;
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d (0312.vpr@37.5--38.75) [218109]"}
-          HasDirectPerm(Labelsucceeds2_end_labelMask, x, d_3);
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d.f (0312.vpr@37.5--38.75) [218110]"}
-          HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, d_3], f_7);
-      assert {:msg "  Exhale might fail. Assertion old[succeeds2_end_label](x.c.f) == old[succeeds2_end_label](x.d.f) might not hold. (0312.vpr@37.5--38.75) [218111]"}
-        Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, c_10], f_7] == Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, d_3], f_7];
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d (0312.vpr@37.5--38.75) [79685]"}
+          HasDirectPerm(Labelsucceeds2_end_labelMask, x, d_1);
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d.f (0312.vpr@37.5--38.75) [79686]"}
+          HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, d_1], f_7);
+      assert {:msg "  Exhale might fail. Assertion old[succeeds2_end_label](x.c.f) == old[succeeds2_end_label](x.d.f) might not hold. (0312.vpr@37.5--38.75) [79687]"}
+        Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, c_12], f_7] == Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, d_1], f_7];
     }
     assume state(Heap, Mask);
 }
@@ -504,17 +504,17 @@ procedure test1(k: Perm, x: Ref) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(k: Perm, x: Ref) returns ()
+procedure test2_1(k: Perm, x: Ref) returns ()
   modifies Heap, Mask;
 {
   var succeeds2_end_label_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var Labelsucceeds2_end_labelHeap: HeapType;
   var Labelsucceeds2_end_labelMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var Labelsucceeds2_end_labelHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -529,8 +529,8 @@ procedure test2(k: Perm, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale k > none -- 0312.vpr@42.3--42.18
     assume NoPerm < k;
@@ -539,22 +539,22 @@ procedure test2(k: Perm, x: Ref) returns ()
   
   // -- Translating statement: inhale acc(x.c, k) && (acc(x.d, k) && acc(x.b, k)) -- 0312.vpr@43.3--43.53
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@43.10--43.53) [218112]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@43.10--43.53) [79688]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, c_10:=Mask[x, c_10] + perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@43.10--43.53) [218113]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@43.10--43.53) [79689]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, d_3:=Mask[x, d_3] + perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@43.10--43.53) [218114]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@43.10--43.53) [79690]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, b_94:=Mask[x, b_94] + perm];
+    Mask := Mask[x, b_32:=Mask[x, b_32] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -562,62 +562,62 @@ procedure test2(k: Perm, x: Ref) returns ()
   // -- Translating statement: inhale x.b == (x.c == x.d) -- 0312.vpr@44.3--44.29
     
     // -- Check definedness of x.b == (x.c == x.d)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.b (0312.vpr@44.10--44.29) [218115]"}
-        HasDirectPerm(Mask, x, b_94);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@44.10--44.29) [218116]"}
-        HasDirectPerm(Mask, x, c_10);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@44.10--44.29) [218117]"}
-        HasDirectPerm(Mask, x, d_3);
-    assume Heap[x, b_94] == (Heap[x, c_10] == Heap[x, d_3]);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.b (0312.vpr@44.10--44.29) [79691]"}
+        HasDirectPerm(Mask, x, b_32);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@44.10--44.29) [79692]"}
+        HasDirectPerm(Mask, x, c_12);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@44.10--44.29) [79693]"}
+        HasDirectPerm(Mask, x, d_1);
+    assume Heap[x, b_32] == (Heap[x, c_12] == Heap[x, d_1]);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale acc(x.c.f, k) && acc(x.d.f, write) -- 0312.vpr@45.3--45.44
     
     // -- Check definedness of acc(x.c.f, k)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@45.10--45.44) [218118]"}
-        HasDirectPerm(Mask, x, c_10);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.c (0312.vpr@45.10--45.44) [79694]"}
+        HasDirectPerm(Mask, x, c_12);
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@45.10--45.44) [218119]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (0312.vpr@45.10--45.44) [79695]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Heap[x, c_10] != null;
-    Mask := Mask[Heap[x, c_10], f_7:=Mask[Heap[x, c_10], f_7] + perm];
+    assume perm > NoPerm ==> Heap[x, c_12] != null;
+    Mask := Mask[Heap[x, c_12], f_7:=Mask[Heap[x, c_12], f_7] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.d.f, write)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@45.10--45.44) [218120]"}
-        HasDirectPerm(Mask, x, d_3);
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.d (0312.vpr@45.10--45.44) [79696]"}
+        HasDirectPerm(Mask, x, d_1);
     perm := FullPerm;
-    assume Heap[x, d_3] != null;
-    Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] + perm];
+    assume Heap[x, d_1] != null;
+    Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: label succeeds2_end_label -- 0312.vpr@48.3--48.28
     succeeds2_end_label:
-    Labelsucceeds2_end_labelHeap := Heap;
     Labelsucceeds2_end_labelMask := Mask;
+    Labelsucceeds2_end_labelHeap := Heap;
     succeeds2_end_label_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(old[succeeds2_end_label](x.c).f, k) -- 0312.vpr@50.3--50.49
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(old[succeeds2_end_label](x.c).f, k)
-      assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c). (0312.vpr@50.10--50.49) [218122]"}
+      assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c). (0312.vpr@50.10--50.49) [79698]"}
         succeeds2_end_label_lblGuard;
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@50.10--50.49) [218123]"}
-        HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_10);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@50.10--50.49) [79699]"}
+        HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_12);
     perm := k;
-    assert {:msg "  Exhale might fail. Fraction k might be negative. (0312.vpr@50.10--50.49) [218124]"}
+    assert {:msg "  Exhale might fail. Fraction k might be negative. (0312.vpr@50.10--50.49) [79700]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access old[succeeds2_end_label](x.c).f (0312.vpr@50.10--50.49) [218125]"}
-        perm <= Mask[Labelsucceeds2_end_labelHeap[x, c_10], f_7];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access old[succeeds2_end_label](x.c).f (0312.vpr@50.10--50.49) [79701]"}
+        perm <= Mask[Labelsucceeds2_end_labelHeap[x, c_12], f_7];
     }
-    Mask := Mask[Labelsucceeds2_end_labelHeap[x, c_10], f_7:=Mask[Labelsucceeds2_end_labelHeap[x, c_10], f_7] - perm];
+    Mask := Mask[Labelsucceeds2_end_labelHeap[x, c_12], f_7:=Mask[Labelsucceeds2_end_labelHeap[x, c_12], f_7] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -626,29 +626,29 @@ procedure test2(k: Perm, x: Ref) returns ()
   
   // -- Translating statement: exhale old[succeeds2_end_label](x.b) ==>
   //   old[succeeds2_end_label](x.c.f == x.d.f) -- 0312.vpr@52.3--54.49
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old[succeeds2_end_label](x.b)
-      assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.b). (0312.vpr@53.5--54.49) [218126]"}
+      assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.b). (0312.vpr@53.5--54.49) [79702]"}
         succeeds2_end_label_lblGuard;
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.b (0312.vpr@53.5--54.49) [218127]"}
-        HasDirectPerm(Labelsucceeds2_end_labelMask, x, b_94);
-    if (Labelsucceeds2_end_labelHeap[x, b_94]) {
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.b (0312.vpr@53.5--54.49) [79703]"}
+        HasDirectPerm(Labelsucceeds2_end_labelMask, x, b_32);
+    if (Labelsucceeds2_end_labelHeap[x, b_32]) {
       
       // -- Check definedness of old[succeeds2_end_label](x.c.f == x.d.f)
-        assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c.f == x.d.f). (0312.vpr@53.5--54.49) [218128]"}
+        assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c.f == x.d.f). (0312.vpr@53.5--54.49) [79704]"}
           succeeds2_end_label_lblGuard;
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@53.5--54.49) [218129]"}
-          HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_10);
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c.f (0312.vpr@53.5--54.49) [218130]"}
-          HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, c_10], f_7);
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d (0312.vpr@53.5--54.49) [218131]"}
-          HasDirectPerm(Labelsucceeds2_end_labelMask, x, d_3);
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d.f (0312.vpr@53.5--54.49) [218132]"}
-          HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, d_3], f_7);
-      assert {:msg "  Exhale might fail. Assertion old[succeeds2_end_label](x.c.f == x.d.f) might not hold. (0312.vpr@53.5--54.49) [218133]"}
-        Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, c_10], f_7] == Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, d_3], f_7];
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c (0312.vpr@53.5--54.49) [79705]"}
+          HasDirectPerm(Labelsucceeds2_end_labelMask, x, c_12);
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.c.f (0312.vpr@53.5--54.49) [79706]"}
+          HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, c_12], f_7);
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d (0312.vpr@53.5--54.49) [79707]"}
+          HasDirectPerm(Labelsucceeds2_end_labelMask, x, d_1);
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access x.d.f (0312.vpr@53.5--54.49) [79708]"}
+          HasDirectPerm(Labelsucceeds2_end_labelMask, Labelsucceeds2_end_labelHeap[x, d_1], f_7);
+      assert {:msg "  Exhale might fail. Assertion old[succeeds2_end_label](x.c.f == x.d.f) might not hold. (0312.vpr@53.5--54.49) [79709]"}
+        Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, c_12], f_7] == Labelsucceeds2_end_labelHeap[Labelsucceeds2_end_labelHeap[x, d_1], f_7];
     }
     assume state(Heap, Mask);
 }

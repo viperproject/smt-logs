@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:27
+// Date:         2025-01-26 21:43:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/annotationSuccess.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/annotationSuccess-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,7 +185,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type MyTypeDomainType;
 
 // Translation of domain function id
-function  id_1(id_param_2: MyTypeDomainType): MyTypeDomainType;
+function  id_3(id_param_2: MyTypeDomainType): MyTypeDomainType;
 
 // Translation of anonymous domain axiom
 axiom true;
@@ -301,14 +301,14 @@ procedure fun02#definedness(x: Ref, y: Ref, b_24: bool) returns (Result: int)
   
   // -- Inhaling precondition (with checking)
     perm := (if b_24 then FullPerm else NoPerm);
-    assert {:msg "  Contract might not be well-formed. Fraction (b ? write : none) might be negative. (annotationSuccess.vpr@12.12--12.38) [153003]"}
+    assert {:msg "  Contract might not be well-formed. Fraction (b ? write : none) might be negative. (annotationSuccess.vpr@12.12--12.38) [96793]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := (if !b_24 then FullPerm else NoPerm);
-    assert {:msg "  Contract might not be well-formed. Fraction (!b ? write : none) might be negative. (annotationSuccess.vpr@13.12--13.39) [153004]"}
+    assert {:msg "  Contract might not be well-formed. Fraction (!b ? write : none) might be negative. (annotationSuccess.vpr@13.12--13.39) [96794]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> y != null;
     Mask := Mask[y, f_7:=Mask[y, f_7] + perm];
@@ -355,18 +355,18 @@ axiom (forall Heap: HeapType, x: Ref ::
 // Translation of method m
 // ==================================================
 
-procedure m(x: Ref, y: Ref) returns ()
+procedure m_17(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -393,8 +393,8 @@ procedure m(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: @annotating.a.statement("the assignment")
   // tmp := @asd("test 123")
@@ -404,17 +404,17 @@ procedure m(x: Ref, y: Ref) returns ()
     // -- Check definedness of @asd("test 123") (fun02(x, @ann("this is ugly") (y), true))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. Fraction (true ? write : none) might be negative. (annotationSuccess.vpr@42.12--42.67) [153005]"}
+        assert {:msg "  Precondition of function fun02 might not hold. Fraction (true ? write : none) might be negative. (annotationSuccess.vpr@42.12--42.67) [96795]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (annotationSuccess.vpr@42.12--42.67) [153006]"}
+        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (annotationSuccess.vpr@42.12--42.67) [96796]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
         perm := NoPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. Fraction (!true ? write : none) might be negative. (annotationSuccess.vpr@42.12--42.67) [153007]"}
+        assert {:msg "  Precondition of function fun02 might not hold. Fraction (!true ? write : none) might be negative. (annotationSuccess.vpr@42.12--42.67) [96797]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access y.f (annotationSuccess.vpr@42.12--42.67) [153008]"}
+        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access y.f (annotationSuccess.vpr@42.12--42.67) [96798]"}
           NoPerm < perm ==> NoPerm < Mask[y, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -427,29 +427,29 @@ procedure m(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: y.f := 1 -- annotationSuccess.vpr@43.5--43.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (annotationSuccess.vpr@43.5--43.13) [153009]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (annotationSuccess.vpr@43.5--43.13) [96799]"}
       FullPerm == Mask[y, f_7];
     Heap := Heap[y, f_7:=1];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == fun02(x, y, true) -- annotationSuccess.vpr@44.5--44.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of tmp == fun02(x, y, true)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. Fraction (true ? write : none) might be negative. (annotationSuccess.vpr@44.19--44.36) [153010]"}
+        assert {:msg "  Precondition of function fun02 might not hold. Fraction (true ? write : none) might be negative. (annotationSuccess.vpr@44.19--44.36) [96800]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (annotationSuccess.vpr@44.19--44.36) [153011]"}
+        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (annotationSuccess.vpr@44.19--44.36) [96801]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := NoPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. Fraction (!true ? write : none) might be negative. (annotationSuccess.vpr@44.19--44.36) [153012]"}
+        assert {:msg "  Precondition of function fun02 might not hold. Fraction (!true ? write : none) might be negative. (annotationSuccess.vpr@44.19--44.36) [96802]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access y.f (annotationSuccess.vpr@44.19--44.36) [153013]"}
+        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access y.f (annotationSuccess.vpr@44.19--44.36) [96803]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -458,7 +458,7 @@ procedure m(x: Ref, y: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == fun02(x, y, true) might not hold. (annotationSuccess.vpr@44.12--44.36) [153014]"}
+    assert {:msg "  Assert might fail. Assertion tmp == fun02(x, y, true) might not hold. (annotationSuccess.vpr@44.12--44.36) [96804]"}
       tmp == fun02(Heap, x, y, true);
     assume state(Heap, Mask);
 }

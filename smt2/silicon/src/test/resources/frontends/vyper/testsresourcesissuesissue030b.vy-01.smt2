@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:30:05
+; Started: 2025-01-26 21:26:13
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1650,11 +1650,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (= ($pure$success_get%limited s@$ x@0@00) ($pure$success_get s@$ x@0@00))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-825|)))
+  :qid |quant-u-2182|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   ($pure$success_get%stateless x@0@00)
   :pattern (($pure$success_get%limited s@$ x@0@00))
-  :qid |quant-u-826|)))
+  :qid |quant-u-2183|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (=>
     ($pure$success_get%precondition s@$ x@0@00)
@@ -1662,39 +1662,39 @@
       ($pure$success_get s@$ x@0@00)
       ($struct_get<Bool> ($struct_loc<Int> x@0@00 0))))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-833|)))
+  :qid |quant-u-2190|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   true
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-834|)))
+  :qid |quant-u-2191|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (= ($pure$return_get%limited s@$ x@2@00) ($pure$return_get s@$ x@2@00))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-827|)))
+  :qid |quant-u-2184|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   ($pure$return_get%stateless x@2@00)
   :pattern (($pure$return_get%limited s@$ x@2@00))
-  :qid |quant-u-828|)))
+  :qid |quant-u-2185|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (=>
     ($pure$return_get%precondition s@$ x@2@00)
     (= ($pure$return_get s@$ x@2@00) ($struct_loc<Int> x@2@00 1)))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-835|)))
+  :qid |quant-u-2192|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   true
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-836|)))
+  :qid |quant-u-2193|)))
 (assert (forall ((s@$ $Snap) ($addr@4@00 Int) ($self@5@00 $Struct)) (!
   (=
     (g$_val%limited s@$ $addr@4@00 $self@5@00)
     (g$_val s@$ $addr@4@00 $self@5@00))
   :pattern ((g$_val s@$ $addr@4@00 $self@5@00))
-  :qid |quant-u-829|)))
+  :qid |quant-u-2186|)))
 (assert (forall ((s@$ $Snap) ($addr@4@00 Int) ($self@5@00 $Struct)) (!
   (g$_val%stateless $addr@4@00 $self@5@00)
   :pattern ((g$_val%limited s@$ $addr@4@00 $self@5@00))
-  :qid |quant-u-830|)))
+  :qid |quant-u-2187|)))
 (assert (forall ((s@$ $Snap) ($addr@4@00 Int) ($self@5@00 $Struct)) (!
   (let ((result@6@00 (g$_val%limited s@$ $addr@4@00 $self@5@00))) (=>
     (g$_val%precondition s@$ $addr@4@00 $self@5@00)
@@ -1702,19 +1702,19 @@
       (<= (- 0 170141183460469231731687303715884105728) result@6@00)
       (<= result@6@00 170141183460469231731687303715884105727))))
   :pattern ((g$_val%limited s@$ $addr@4@00 $self@5@00))
-  :qid |quant-u-837|)))
+  :qid |quant-u-2194|)))
 (assert (forall ((s@$ $Snap) ($addr@4@00 Int) ($self@5@00 $Struct)) (!
   (let ((result@6@00 (g$_val%limited s@$ $addr@4@00 $self@5@00))) true)
   :pattern ((g$_val%limited s@$ $addr@4@00 $self@5@00))
-  :qid |quant-u-838|)))
+  :qid |quant-u-2195|)))
 (assert (forall ((s@$ $Snap) ($x@7@00 Int) ($y@8@00 Int)) (!
   (= ($range_sum%limited s@$ $x@7@00 $y@8@00) ($range_sum s@$ $x@7@00 $y@8@00))
   :pattern (($range_sum s@$ $x@7@00 $y@8@00))
-  :qid |quant-u-831|)))
+  :qid |quant-u-2188|)))
 (assert (forall ((s@$ $Snap) ($x@7@00 Int) ($y@8@00 Int)) (!
   ($range_sum%stateless $x@7@00 $y@8@00)
   :pattern (($range_sum%limited s@$ $x@7@00 $y@8@00))
-  :qid |quant-u-832|)))
+  :qid |quant-u-2189|)))
 (assert (forall ((s@$ $Snap) ($x@7@00 Int) ($y@8@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@7@00 $y@8@00)
@@ -1734,7 +1734,7 @@
           (+ (- $y_exclusive $x_exclusive) $x@7@00)
           (+ (- (- $y_exclusive $y@8@00) $x_exclusive) $x@7@00)))))))))
   :pattern (($range_sum s@$ $x@7@00 $y@8@00))
-  :qid |quant-u-839|)))
+  :qid |quant-u-2196|)))
 (assert (forall ((s@$ $Snap) ($x@7@00 Int) ($y@8@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@7@00 $y@8@00)
@@ -1746,7 +1746,7 @@
       (div (* (- $y@8@00 1) $y@8@00) 2)
       (div (* (- (- 0 $y@8@00) 1) (- 0 $y@8@00)) 2)))) true)))))
   :pattern (($range_sum s@$ $x@7@00 $y@8@00))
-  :qid |quant-u-840|)))
+  :qid |quant-u-2197|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- $transitivity_check ----------

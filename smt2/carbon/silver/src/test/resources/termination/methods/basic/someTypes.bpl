@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:34:16
+// Date:         2025-01-26 21:41:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/basic/someTypes.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/basic/someTypes-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_12: Ref, f_16: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_12, f_16] }
-  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_16], $allocated]
+axiom (forall o_15: Ref, f_23: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_15, f_23] }
+  Heap[o_15, $allocated] ==> Heap[Heap[o_15, f_23], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref, f_37: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, f_37] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_46, f_37) ==> Heap[o_46, f_37] == ExhaleHeap[o_46, f_37]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_53: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_53] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_53) ==> Heap[o_41, f_53] == ExhaleHeap[o_41, f_53]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> Heap[null, PredicateMaskField(pm_f_22)] == ExhaleHeap[null, PredicateMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> Heap[null, PredicateMaskField(pm_f_20)] == ExhaleHeap[null, PredicateMaskField(pm_f_20)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> Heap[null, WandMaskField(pm_f_22)] == ExhaleHeap[null, WandMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> Heap[null, WandMaskField(pm_f_20)] == ExhaleHeap[null, WandMaskField(pm_f_20)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_46, $allocated] ==> ExhaleHeap[o_46, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_24: (Field A B), v: B ::
-  { Heap[o_12, f_24:=v] }
-  succHeap(Heap, Heap[o_12, f_24:=v])
+axiom (forall <A, B> Heap: HeapType, o_15: Ref, f_54: (Field A B), v: B ::
+  { Heap[o_15, f_54:=v] }
+  succHeap(Heap, Heap[o_15, f_54:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -184,15 +184,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type PredicateInstancesWellFoundedOrderDomainType;
 
 // Translation of domain axiom predicate_instances_ax_dec
-axiom (forall l1_3: PredicateInstanceDomainType, l2_2: PredicateInstanceDomainType ::
-  { (nestedPredicates(l1_3, l2_2): bool) }
-  (decreasing(l1_3, l2_2): bool) == (nestedPredicates(l1_3, l2_2): bool)
+axiom (forall l1_1: PredicateInstanceDomainType, l2: PredicateInstanceDomainType ::
+  { (nestedPredicates(l1_1, l2): bool) }
+  (decreasing(l1_1, l2): bool) == (nestedPredicates(l1_1, l2): bool)
 );
 
 // Translation of domain axiom predicate_instances_ax_bound
-axiom (forall l1_3: PredicateInstanceDomainType ::
-  { (bounded(l1_3): bool) }
-  (bounded(l1_3): bool)
+axiom (forall l1_1: PredicateInstanceDomainType ::
+  { (bounded(l1_1): bool) }
+  (bounded(l1_1): bool)
 );
 
 // ==================================================
@@ -216,18 +216,18 @@ function  bounded<T>(arg1_1: T): bool;
 type PredicateInstancesNestedRelationDomainType;
 
 // Translation of domain function nestedPredicates
-function  nestedPredicates(l1_4: PredicateInstanceDomainType, l2_3: PredicateInstanceDomainType): bool;
+function  nestedPredicates(l1_2: PredicateInstanceDomainType, l2_1: PredicateInstanceDomainType): bool;
 
 // Translation of domain axiom nestedTrans
-axiom (forall l1_3: PredicateInstanceDomainType, l2_2: PredicateInstanceDomainType, l3: PredicateInstanceDomainType ::
-  { (nestedPredicates(l1_3, l2_2): bool), (nestedPredicates(l2_2, l3): bool) }
-  (nestedPredicates(l1_3, l2_2): bool) && (nestedPredicates(l2_2, l3): bool) ==> (nestedPredicates(l1_3, l3): bool)
+axiom (forall l1_1: PredicateInstanceDomainType, l2: PredicateInstanceDomainType, l3: PredicateInstanceDomainType ::
+  { (nestedPredicates(l1_1, l2): bool), (nestedPredicates(l2, l3): bool) }
+  (nestedPredicates(l1_1, l2): bool) && (nestedPredicates(l2, l3): bool) ==> (nestedPredicates(l1_1, l3): bool)
 );
 
 // Translation of domain axiom nestedReflex
-axiom (forall l1_3: PredicateInstanceDomainType ::
-  { (nestedPredicates(l1_3, l1_3): bool) }
-  !(nestedPredicates(l1_3, l1_3): bool)
+axiom (forall l1_1: PredicateInstanceDomainType ::
+  { (nestedPredicates(l1_1, l1_1): bool) }
+  !(nestedPredicates(l1_1, l1_1): bool)
 );
 
 // ==================================================
@@ -350,12 +350,12 @@ procedure list#definedness(xs: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (someTypes.vpr@8.1--11.2) [225182]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (someTypes.vpr@8.1--11.2) [19931]"}
         HasDirectPerm(Mask, xs, next);
     if (Heap[xs, next] != null) {
       
       // -- Check definedness of acc(list(xs.next), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (someTypes.vpr@8.1--11.2) [225183]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (someTypes.vpr@8.1--11.2) [19932]"}
           HasDirectPerm(Mask, xs, next);
       perm := FullPerm;
       Mask := Mask[null, list(Heap[xs, next]):=Mask[null, list(Heap[xs, next])] + perm];
@@ -431,7 +431,7 @@ procedure predicateTest1(xs: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@18.12--18.20) [225184]"}
+        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@18.12--18.20) [19933]"}
           NoPerm < perm ==> NoPerm < Mask[null, list(xs)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -450,7 +450,7 @@ procedure predicateTest1(xs: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [225187]"}
+      assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [19936]"}
         perm <= Mask[null, list(xs)];
     }
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -478,21 +478,21 @@ procedure predicateTest1(xs: Ref) returns ()
   // -- Translating statement: if (xs.next != null) -- someTypes.vpr@10.22--10.55
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.22--10.37) [225190]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.22--10.37) [19939]"}
         HasDirectPerm(Mask, xs, next);
     if (Heap[xs, next] != null) {
       
       // -- Translating statement: list_1681681832 := PI_list(xs.next) -- someTypes.vpr@10.42--10.55
         
         // -- Check definedness of PI_list(xs.next)
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.42--10.55) [225191]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.42--10.55) [19940]"}
             HasDirectPerm(Mask, xs, next);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@10.42--10.55) [225192]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@10.42--10.55) [19941]"}
               NoPerm < perm ==> NoPerm < Mask[null, list(Heap[xs, next])];
             // Finish exhale
             havoc ExhaleHeap;
@@ -514,7 +514,7 @@ procedure predicateTest1(xs: Ref) returns ()
   // -- Translating statement: if (xs.next != null) -- someTypes.vpr@19.5--21.6
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@19.9--19.24) [225193]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@19.9--19.24) [19942]"}
         HasDirectPerm(Mask, xs, next);
     if (Heap[xs, next] != null) {
       
@@ -525,14 +525,14 @@ procedure predicateTest1(xs: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of (decreasing(PI_list(xs.next), old(PI_list(xs))): Bool) && (bounded(old(PI_list(xs))): Bool) || PI_list(xs.next) == old(PI_list(xs)) && false
-          assert {:msg "  Assert might fail. There might be insufficient permission to access xs.next (<no position>) [225194]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access xs.next (<no position>) [19943]"}
             HasDirectPerm(ExhaleWellDef0Mask, xs, next);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@15.15--15.23) [225195]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@15.15--15.23) [19944]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(ExhaleWellDef0Heap[xs, next])];
             // Finish exhale
             havoc ExhaleHeap;
@@ -546,7 +546,7 @@ procedure predicateTest1(xs: Ref) returns ()
             ExhaleWellDef1Heap := oldHeap;
             ExhaleWellDef1Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@15.15--15.23) [225196]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@15.15--15.23) [19945]"}
               NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
             // Finish exhale
             // Stop execution
@@ -558,7 +558,7 @@ procedure predicateTest1(xs: Ref) returns ()
               ExhaleWellDef1Heap := oldHeap;
               ExhaleWellDef1Mask := oldMask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@15.15--15.23) [225197]"}
+              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@15.15--15.23) [19946]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
               // Finish exhale
               // Stop execution
@@ -566,14 +566,14 @@ procedure predicateTest1(xs: Ref) returns ()
             }
           }
           if (!((decreasing(PI_list(Heap, Heap[xs, next]), PI_list(oldHeap, xs)): bool) && (bounded(PI_list(oldHeap, xs)): bool))) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access xs.next (<no position>) [225198]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access xs.next (<no position>) [19947]"}
               HasDirectPerm(ExhaleWellDef0Mask, xs, next);
             if (*) {
               // Exhale precondition of function application
               ExhaleWellDef1Heap := ExhaleWellDef0Heap;
               ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@15.15--15.23) [225199]"}
+              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@15.15--15.23) [19948]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(ExhaleWellDef0Heap[xs, next])];
               // Finish exhale
               havoc ExhaleHeap;
@@ -587,14 +587,14 @@ procedure predicateTest1(xs: Ref) returns ()
               ExhaleWellDef1Heap := oldHeap;
               ExhaleWellDef1Mask := oldMask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@15.15--15.23) [225200]"}
+              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@15.15--15.23) [19949]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
               // Finish exhale
               // Stop execution
               assume false;
             }
           }
-        assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs.next), old(PI_list(xs))): Bool) && (bounded(old(PI_list(xs))): Bool) || PI_list(xs.next) == old(PI_list(xs)) && false might not hold. (<no position>) [225201]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs.next), old(PI_list(xs))): Bool) && (bounded(old(PI_list(xs))): Bool) || PI_list(xs.next) == old(PI_list(xs)) && false might not hold. (<no position>) [19950]"}
           (decreasing(PI_list(Heap, Heap[xs, next]), PI_list(oldHeap, xs)): bool) && (bounded(PI_list(oldHeap, xs)): bool);
         assume state(Heap, Mask);
       
@@ -603,7 +603,7 @@ procedure predicateTest1(xs: Ref) returns ()
         PreCallMask := Mask;
         
         // -- Check definedness of xs.next
-          assert {:msg "  Method call might fail. There might be insufficient permission to access xs.next (someTypes.vpr@20.9--20.32) [225202]"}
+          assert {:msg "  Method call might fail. There might be insufficient permission to access xs.next (someTypes.vpr@20.9--20.32) [19951]"}
             HasDirectPerm(Mask, xs, next);
         arg_xs := Heap[xs, next];
         
@@ -612,7 +612,7 @@ procedure predicateTest1(xs: Ref) returns ()
           ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method predicateTest1 might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@20.9--20.32) [225203]"}
+            assert {:msg "  The precondition of method predicateTest1 might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@20.9--20.32) [19952]"}
               perm <= Mask[null, list(arg_xs)];
           }
           Mask := Mask[null, list(arg_xs):=Mask[null, list(arg_xs)] - perm];
@@ -635,14 +635,14 @@ procedure predicateTest1(xs: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access xs.next (someTypes.vpr@22.5--22.18) [225206]"}
+      assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access xs.next (someTypes.vpr@22.5--22.18) [19955]"}
         perm <= Mask[xs, next];
     }
     Mask := Mask[xs, next:=Mask[xs, next] - perm];
     if (Heap[xs, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access list(xs.next) (someTypes.vpr@22.5--22.18) [225208]"}
+        assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access list(xs.next) (someTypes.vpr@22.5--22.18) [19957]"}
           perm <= Mask[null, list(Heap[xs, next])];
       }
       Mask := Mask[null, list(Heap[xs, next]):=Mask[null, list(Heap[xs, next])] - perm];
@@ -664,9 +664,9 @@ procedure predicateTest1(xs: Ref) returns ()
     Heap := Heap[null, list#sm(xs):=Heap[null, list#sm(xs)][xs, next:=true]];
     if (Heap[xs, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-        { newPMask[o_15, f_20] }
-        Heap[null, list#sm(xs)][o_15, f_20] || Heap[null, list#sm(Heap[xs, next])][o_15, f_20] ==> newPMask[o_15, f_20]
+      assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+        { newPMask[o_5, f_11] }
+        Heap[null, list#sm(xs)][o_5, f_11] || Heap[null, list#sm(Heap[xs, next])][o_5, f_11] ==> newPMask[o_5, f_11]
       );
       Heap := Heap[null, list#sm(xs):=newPMask];
     }
@@ -678,7 +678,7 @@ procedure predicateTest1(xs: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of predicateTest1 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@16.13--16.21) [225210]"}
+      assert {:msg "  Postcondition of predicateTest1 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@16.13--16.21) [19959]"}
         perm <= Mask[null, list(xs)];
     }
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -754,7 +754,7 @@ procedure predicateTest2(xs: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@30.12--30.20) [225211]"}
+        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@30.12--30.20) [19960]"}
           NoPerm < perm ==> NoPerm < Mask[null, list(xs)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -773,7 +773,7 @@ procedure predicateTest2(xs: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [225214]"}
+      assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [19963]"}
         perm <= Mask[null, list(xs)];
     }
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -801,21 +801,21 @@ procedure predicateTest2(xs: Ref) returns ()
   // -- Translating statement: if (xs.next != null) -- someTypes.vpr@10.22--10.55
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.22--10.37) [225217]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.22--10.37) [19966]"}
         HasDirectPerm(Mask, xs, next);
     if (Heap[xs, next] != null) {
       
       // -- Translating statement: list_16816818320 := PI_list(xs.next) -- someTypes.vpr@10.42--10.55
         
         // -- Check definedness of PI_list(xs.next)
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.42--10.55) [225218]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.42--10.55) [19967]"}
             HasDirectPerm(Mask, xs, next);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@10.42--10.55) [225219]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@10.42--10.55) [19968]"}
               NoPerm < perm ==> NoPerm < Mask[null, list(Heap[xs, next])];
             // Finish exhale
             havoc ExhaleHeap;
@@ -837,7 +837,7 @@ procedure predicateTest2(xs: Ref) returns ()
   // -- Translating statement: if (xs.next != null) -- someTypes.vpr@31.5--32.6
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@31.9--31.24) [225220]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@31.9--31.24) [19969]"}
         HasDirectPerm(Mask, xs, next);
     assume state(Heap, Mask);
   
@@ -846,14 +846,14 @@ procedure predicateTest2(xs: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access xs.next (someTypes.vpr@33.5--33.18) [225223]"}
+      assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access xs.next (someTypes.vpr@33.5--33.18) [19972]"}
         perm <= Mask[xs, next];
     }
     Mask := Mask[xs, next:=Mask[xs, next] - perm];
     if (Heap[xs, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access list(xs.next) (someTypes.vpr@33.5--33.18) [225225]"}
+        assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access list(xs.next) (someTypes.vpr@33.5--33.18) [19974]"}
           perm <= Mask[null, list(Heap[xs, next])];
       }
       Mask := Mask[null, list(Heap[xs, next]):=Mask[null, list(Heap[xs, next])] - perm];
@@ -875,9 +875,9 @@ procedure predicateTest2(xs: Ref) returns ()
     Heap := Heap[null, list#sm(xs):=Heap[null, list#sm(xs)][xs, next:=true]];
     if (Heap[xs, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-        { newPMask[o_16, f_21] }
-        Heap[null, list#sm(xs)][o_16, f_21] || Heap[null, list#sm(Heap[xs, next])][o_16, f_21] ==> newPMask[o_16, f_21]
+      assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+        { newPMask[o_6, f_12] }
+        Heap[null, list#sm(xs)][o_6, f_12] || Heap[null, list#sm(Heap[xs, next])][o_6, f_12] ==> newPMask[o_6, f_12]
       );
       Heap := Heap[null, list#sm(xs):=newPMask];
     }
@@ -896,7 +896,7 @@ procedure predicateTest2(xs: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@27.15--27.23) [225227]"}
+        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@27.15--27.23) [19976]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(xs)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -910,7 +910,7 @@ procedure predicateTest2(xs: Ref) returns ()
         ExhaleWellDef1Heap := oldHeap;
         ExhaleWellDef1Mask := oldMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@27.15--27.23) [225228]"}
+        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@27.15--27.23) [19977]"}
           NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
         // Finish exhale
         // Stop execution
@@ -922,7 +922,7 @@ procedure predicateTest2(xs: Ref) returns ()
           ExhaleWellDef1Heap := oldHeap;
           ExhaleWellDef1Mask := oldMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@27.15--27.23) [225229]"}
+          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@27.15--27.23) [19978]"}
             NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
           // Finish exhale
           // Stop execution
@@ -935,7 +935,7 @@ procedure predicateTest2(xs: Ref) returns ()
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@27.15--27.23) [225230]"}
+          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@27.15--27.23) [19979]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(xs)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -949,14 +949,14 @@ procedure predicateTest2(xs: Ref) returns ()
           ExhaleWellDef1Heap := oldHeap;
           ExhaleWellDef1Mask := oldMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@27.15--27.23) [225231]"}
+          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@27.15--27.23) [19980]"}
             NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
           // Finish exhale
           // Stop execution
           assume false;
         }
       }
-    assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs), old(PI_list(xs))): Bool) && (bounded(old(PI_list(xs))): Bool) || PI_list(xs) == old(PI_list(xs)) && false might not hold. (<no position>) [225232]"}
+    assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs), old(PI_list(xs))): Bool) && (bounded(old(PI_list(xs))): Bool) || PI_list(xs) == old(PI_list(xs)) && false might not hold. (<no position>) [19981]"}
       (decreasing(PI_list(Heap, xs), PI_list(oldHeap, xs)): bool) && (bounded(PI_list(oldHeap, xs)): bool);
     assume state(Heap, Mask);
   
@@ -969,7 +969,7 @@ procedure predicateTest2(xs: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method predicateTest2 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@35.5--35.23) [225233]"}
+        assert {:msg "  The precondition of method predicateTest2 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@35.5--35.23) [19982]"}
           perm <= Mask[null, list(xs)];
       }
       Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -990,7 +990,7 @@ procedure predicateTest2(xs: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of predicateTest2 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@28.13--28.21) [225234]"}
+      assert {:msg "  Postcondition of predicateTest2 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@28.13--28.21) [19983]"}
         perm <= Mask[null, list(xs)];
     }
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -1037,7 +1037,7 @@ procedure predicateTest3(xs: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 2 / 3;
-    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (someTypes.vpr@39.14--39.32) [225235]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (someTypes.vpr@39.14--39.32) [19984]"}
       perm >= NoPerm;
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] + perm];
     assume state(Heap, Mask);
@@ -1054,7 +1054,7 @@ procedure predicateTest3(xs: Ref) returns ()
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := 2 / 3;
-    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (someTypes.vpr@41.13--41.31) [225236]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (someTypes.vpr@41.13--41.31) [19985]"}
       perm >= NoPerm;
     PostMask := PostMask[null, list(xs):=PostMask[null, list(xs)] + perm];
     assume state(PostHeap, PostMask);
@@ -1071,7 +1071,7 @@ procedure predicateTest3(xs: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@43.16--43.24) [225237]"}
+        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@43.16--43.24) [19986]"}
           NoPerm < perm ==> NoPerm < Mask[null, list(xs)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1089,10 +1089,10 @@ procedure predicateTest3(xs: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := 2 / 3;
-    assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [225239]"}
+    assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [19988]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [225240]"}
+      assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [19989]"}
         perm <= Mask[null, list(xs)];
     }
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -1103,14 +1103,14 @@ procedure predicateTest3(xs: Ref) returns ()
         Heap := Heap[null, list(xs):=newVersion];
       }
     perm := 2 / 3;
-    assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [225241]"}
+    assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [19990]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> xs != null;
     Mask := Mask[xs, next:=Mask[xs, next] + perm];
     assume state(Heap, Mask);
     if (Heap[xs, next] != null) {
       perm := 2 / 3;
-      assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [225242]"}
+      assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [19991]"}
         perm >= NoPerm;
       Mask := Mask[null, list(Heap[xs, next]):=Mask[null, list(Heap[xs, next])] + perm];
       
@@ -1124,21 +1124,21 @@ procedure predicateTest3(xs: Ref) returns ()
   // -- Translating statement: if (xs.next != null) -- someTypes.vpr@10.22--10.55
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.22--10.37) [225243]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.22--10.37) [19992]"}
         HasDirectPerm(Mask, xs, next);
     if (Heap[xs, next] != null) {
       
       // -- Translating statement: list_16816818321 := PI_list(xs.next) -- someTypes.vpr@10.42--10.55
         
         // -- Check definedness of PI_list(xs.next)
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.42--10.55) [225244]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.42--10.55) [19993]"}
             HasDirectPerm(Mask, xs, next);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@10.42--10.55) [225245]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@10.42--10.55) [19994]"}
               NoPerm < perm ==> NoPerm < Mask[null, list(Heap[xs, next])];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1160,7 +1160,7 @@ procedure predicateTest3(xs: Ref) returns ()
   // -- Translating statement: if (xs.next != null) -- someTypes.vpr@44.5--46.6
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@44.9--44.24) [225246]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@44.9--44.24) [19995]"}
         HasDirectPerm(Mask, xs, next);
     if (Heap[xs, next] != null) {
       
@@ -1171,14 +1171,14 @@ procedure predicateTest3(xs: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of (decreasing(PI_list(xs.next), old(PI_list(xs))): Bool) && (bounded(old(PI_list(xs))): Bool) || PI_list(xs.next) == old(PI_list(xs)) && false
-          assert {:msg "  Assert might fail. There might be insufficient permission to access xs.next (<no position>) [225247]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access xs.next (<no position>) [19996]"}
             HasDirectPerm(ExhaleWellDef0Mask, xs, next);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@40.19--40.27) [225248]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@40.19--40.27) [19997]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(ExhaleWellDef0Heap[xs, next])];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1192,7 +1192,7 @@ procedure predicateTest3(xs: Ref) returns ()
             ExhaleWellDef1Heap := oldHeap;
             ExhaleWellDef1Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@40.19--40.27) [225249]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@40.19--40.27) [19998]"}
               NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
             // Finish exhale
             // Stop execution
@@ -1204,7 +1204,7 @@ procedure predicateTest3(xs: Ref) returns ()
               ExhaleWellDef1Heap := oldHeap;
               ExhaleWellDef1Mask := oldMask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@40.19--40.27) [225250]"}
+              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@40.19--40.27) [19999]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
               // Finish exhale
               // Stop execution
@@ -1212,14 +1212,14 @@ procedure predicateTest3(xs: Ref) returns ()
             }
           }
           if (!((decreasing(PI_list(Heap, Heap[xs, next]), PI_list(oldHeap, xs)): bool) && (bounded(PI_list(oldHeap, xs)): bool))) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access xs.next (<no position>) [225251]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access xs.next (<no position>) [20000]"}
               HasDirectPerm(ExhaleWellDef0Mask, xs, next);
             if (*) {
               // Exhale precondition of function application
               ExhaleWellDef1Heap := ExhaleWellDef0Heap;
               ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@40.19--40.27) [225252]"}
+              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@40.19--40.27) [20001]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(ExhaleWellDef0Heap[xs, next])];
               // Finish exhale
               havoc ExhaleHeap;
@@ -1233,14 +1233,14 @@ procedure predicateTest3(xs: Ref) returns ()
               ExhaleWellDef1Heap := oldHeap;
               ExhaleWellDef1Mask := oldMask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@40.19--40.27) [225253]"}
+              assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@40.19--40.27) [20002]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
               // Finish exhale
               // Stop execution
               assume false;
             }
           }
-        assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs.next), old(PI_list(xs))): Bool) && (bounded(old(PI_list(xs))): Bool) || PI_list(xs.next) == old(PI_list(xs)) && false might not hold. (<no position>) [225254]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs.next), old(PI_list(xs))): Bool) && (bounded(old(PI_list(xs))): Bool) || PI_list(xs.next) == old(PI_list(xs)) && false might not hold. (<no position>) [20003]"}
           (decreasing(PI_list(Heap, Heap[xs, next]), PI_list(oldHeap, xs)): bool) && (bounded(PI_list(oldHeap, xs)): bool);
         assume state(Heap, Mask);
       
@@ -1249,7 +1249,7 @@ procedure predicateTest3(xs: Ref) returns ()
         PreCallMask := Mask;
         
         // -- Check definedness of xs.next
-          assert {:msg "  Method call might fail. There might be insufficient permission to access xs.next (someTypes.vpr@45.9--45.32) [225255]"}
+          assert {:msg "  Method call might fail. There might be insufficient permission to access xs.next (someTypes.vpr@45.9--45.32) [20004]"}
             HasDirectPerm(Mask, xs, next);
         arg_xs := Heap[xs, next];
         
@@ -1257,10 +1257,10 @@ procedure predicateTest3(xs: Ref) returns ()
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
           perm := 2 / 3;
-          assert {:msg "  The precondition of method predicateTest3 might not hold. Fraction 2 / 3 might be negative. (someTypes.vpr@45.9--45.32) [225256]"}
+          assert {:msg "  The precondition of method predicateTest3 might not hold. Fraction 2 / 3 might be negative. (someTypes.vpr@45.9--45.32) [20005]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method predicateTest3 might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@45.9--45.32) [225257]"}
+            assert {:msg "  The precondition of method predicateTest3 might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@45.9--45.32) [20006]"}
               perm <= Mask[null, list(arg_xs)];
           }
           Mask := Mask[null, list(arg_xs):=Mask[null, list(arg_xs)] - perm];
@@ -1271,7 +1271,7 @@ procedure predicateTest3(xs: Ref) returns ()
         
         // -- Inhaling postcondition
           perm := 2 / 3;
-          assert {:msg "  Method call might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@45.9--45.32) [225258]"}
+          assert {:msg "  Method call might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@45.9--45.32) [20007]"}
             perm >= NoPerm;
           Mask := Mask[null, list(arg_xs):=Mask[null, list(arg_xs)] + perm];
           assume state(Heap, Mask);
@@ -1284,19 +1284,19 @@ procedure predicateTest3(xs: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := 2 / 3;
-    assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@47.5--47.28) [225260]"}
+    assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@47.5--47.28) [20009]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access xs.next (someTypes.vpr@47.5--47.28) [225261]"}
+      assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access xs.next (someTypes.vpr@47.5--47.28) [20010]"}
         perm <= Mask[xs, next];
     }
     Mask := Mask[xs, next:=Mask[xs, next] - perm];
     if (Heap[xs, next] != null) {
       perm := 2 / 3;
-      assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@47.5--47.28) [225262]"}
+      assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@47.5--47.28) [20011]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access list(xs.next) (someTypes.vpr@47.5--47.28) [225263]"}
+        assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access list(xs.next) (someTypes.vpr@47.5--47.28) [20012]"}
           perm <= Mask[null, list(Heap[xs, next])];
       }
       Mask := Mask[null, list(Heap[xs, next]):=Mask[null, list(Heap[xs, next])] - perm];
@@ -1305,7 +1305,7 @@ procedure predicateTest3(xs: Ref) returns ()
         assume InsidePredicate(list(xs), Heap[null, list(xs)], list(Heap[xs, next]), Heap[null, list(Heap[xs, next])]);
     }
     perm := 2 / 3;
-    assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@47.5--47.28) [225264]"}
+    assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@47.5--47.28) [20013]"}
       perm >= NoPerm;
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] + perm];
     assume state(Heap, Mask);
@@ -1320,9 +1320,9 @@ procedure predicateTest3(xs: Ref) returns ()
     Heap := Heap[null, list#sm(xs):=Heap[null, list#sm(xs)][xs, next:=true]];
     if (Heap[xs, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-        { newPMask[o_52, f_55] }
-        Heap[null, list#sm(xs)][o_52, f_55] || Heap[null, list#sm(Heap[xs, next])][o_52, f_55] ==> newPMask[o_52, f_55]
+      assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+        { newPMask[o_40, f_52] }
+        Heap[null, list#sm(xs)][o_40, f_52] || Heap[null, list#sm(Heap[xs, next])][o_40, f_52] ==> newPMask[o_40, f_52]
       );
       Heap := Heap[null, list#sm(xs):=newPMask];
     }
@@ -1333,10 +1333,10 @@ procedure predicateTest3(xs: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := 2 / 3;
-    assert {:msg "  Postcondition of predicateTest3 might not hold. Fraction 2 / 3 might be negative. (someTypes.vpr@41.13--41.31) [225265]"}
+    assert {:msg "  Postcondition of predicateTest3 might not hold. Fraction 2 / 3 might be negative. (someTypes.vpr@41.13--41.31) [20014]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of predicateTest3 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@41.13--41.31) [225266]"}
+      assert {:msg "  Postcondition of predicateTest3 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@41.13--41.31) [20015]"}
         perm <= Mask[null, list(xs)];
     }
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -1382,7 +1382,7 @@ procedure predicateTest4(xs: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 2 / 3;
-    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (someTypes.vpr@51.14--51.32) [225267]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (someTypes.vpr@51.14--51.32) [20016]"}
       perm >= NoPerm;
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] + perm];
     assume state(Heap, Mask);
@@ -1399,7 +1399,7 @@ procedure predicateTest4(xs: Ref) returns ()
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := 2 / 3;
-    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (someTypes.vpr@53.13--53.31) [225268]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (someTypes.vpr@53.13--53.31) [20017]"}
       perm >= NoPerm;
     PostMask := PostMask[null, list(xs):=PostMask[null, list(xs)] + perm];
     assume state(PostHeap, PostMask);
@@ -1416,7 +1416,7 @@ procedure predicateTest4(xs: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@55.16--55.24) [225269]"}
+        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@55.16--55.24) [20018]"}
           NoPerm < perm ==> NoPerm < Mask[null, list(xs)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1434,10 +1434,10 @@ procedure predicateTest4(xs: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := 2 / 3;
-    assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [225271]"}
+    assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [20020]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [225272]"}
+      assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [20021]"}
         perm <= Mask[null, list(xs)];
     }
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -1448,14 +1448,14 @@ procedure predicateTest4(xs: Ref) returns ()
         Heap := Heap[null, list(xs):=newVersion];
       }
     perm := 2 / 3;
-    assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [225273]"}
+    assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [20022]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> xs != null;
     Mask := Mask[xs, next:=Mask[xs, next] + perm];
     assume state(Heap, Mask);
     if (Heap[xs, next] != null) {
       perm := 2 / 3;
-      assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [225274]"}
+      assert {:msg "  Unfolding list(xs) might fail. Fraction 2 / 3 might be negative. (<no position>) [20023]"}
         perm >= NoPerm;
       Mask := Mask[null, list(Heap[xs, next]):=Mask[null, list(Heap[xs, next])] + perm];
       
@@ -1469,21 +1469,21 @@ procedure predicateTest4(xs: Ref) returns ()
   // -- Translating statement: if (xs.next != null) -- someTypes.vpr@10.22--10.55
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.22--10.37) [225275]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.22--10.37) [20024]"}
         HasDirectPerm(Mask, xs, next);
     if (Heap[xs, next] != null) {
       
       // -- Translating statement: list_16816818322 := PI_list(xs.next) -- someTypes.vpr@10.42--10.55
         
         // -- Check definedness of PI_list(xs.next)
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.42--10.55) [225276]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (someTypes.vpr@10.42--10.55) [20025]"}
             HasDirectPerm(Mask, xs, next);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@10.42--10.55) [225277]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (someTypes.vpr@10.42--10.55) [20026]"}
               NoPerm < perm ==> NoPerm < Mask[null, list(Heap[xs, next])];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1505,7 +1505,7 @@ procedure predicateTest4(xs: Ref) returns ()
   // -- Translating statement: if (xs.next != null) -- someTypes.vpr@56.5--57.6
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@56.9--56.24) [225278]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (someTypes.vpr@56.9--56.24) [20027]"}
         HasDirectPerm(Mask, xs, next);
     assume state(Heap, Mask);
   
@@ -1513,19 +1513,19 @@ procedure predicateTest4(xs: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := 2 / 3;
-    assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@58.5--58.28) [225280]"}
+    assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@58.5--58.28) [20029]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access xs.next (someTypes.vpr@58.5--58.28) [225281]"}
+      assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access xs.next (someTypes.vpr@58.5--58.28) [20030]"}
         perm <= Mask[xs, next];
     }
     Mask := Mask[xs, next:=Mask[xs, next] - perm];
     if (Heap[xs, next] != null) {
       perm := 2 / 3;
-      assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@58.5--58.28) [225282]"}
+      assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@58.5--58.28) [20031]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access list(xs.next) (someTypes.vpr@58.5--58.28) [225283]"}
+        assert {:msg "  Folding list(xs) might fail. There might be insufficient permission to access list(xs.next) (someTypes.vpr@58.5--58.28) [20032]"}
           perm <= Mask[null, list(Heap[xs, next])];
       }
       Mask := Mask[null, list(Heap[xs, next]):=Mask[null, list(Heap[xs, next])] - perm];
@@ -1534,7 +1534,7 @@ procedure predicateTest4(xs: Ref) returns ()
         assume InsidePredicate(list(xs), Heap[null, list(xs)], list(Heap[xs, next]), Heap[null, list(Heap[xs, next])]);
     }
     perm := 2 / 3;
-    assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@58.5--58.28) [225284]"}
+    assert {:msg "  Folding list(xs) might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@58.5--58.28) [20033]"}
       perm >= NoPerm;
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] + perm];
     assume state(Heap, Mask);
@@ -1549,9 +1549,9 @@ procedure predicateTest4(xs: Ref) returns ()
     Heap := Heap[null, list#sm(xs):=Heap[null, list#sm(xs)][xs, next:=true]];
     if (Heap[xs, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-        { newPMask[o_53, f_56] }
-        Heap[null, list#sm(xs)][o_53, f_56] || Heap[null, list#sm(Heap[xs, next])][o_53, f_56] ==> newPMask[o_53, f_56]
+      assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+        { newPMask[o_42, f_55] }
+        Heap[null, list#sm(xs)][o_42, f_55] || Heap[null, list#sm(Heap[xs, next])][o_42, f_55] ==> newPMask[o_42, f_55]
       );
       Heap := Heap[null, list#sm(xs):=newPMask];
     }
@@ -1570,7 +1570,7 @@ procedure predicateTest4(xs: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@52.19--52.27) [225285]"}
+        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@52.19--52.27) [20034]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(xs)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1584,7 +1584,7 @@ procedure predicateTest4(xs: Ref) returns ()
         ExhaleWellDef1Heap := oldHeap;
         ExhaleWellDef1Mask := oldMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@52.19--52.27) [225286]"}
+        assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@52.19--52.27) [20035]"}
           NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
         // Finish exhale
         // Stop execution
@@ -1596,7 +1596,7 @@ procedure predicateTest4(xs: Ref) returns ()
           ExhaleWellDef1Heap := oldHeap;
           ExhaleWellDef1Mask := oldMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@52.19--52.27) [225287]"}
+          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@52.19--52.27) [20036]"}
             NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
           // Finish exhale
           // Stop execution
@@ -1609,7 +1609,7 @@ procedure predicateTest4(xs: Ref) returns ()
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@52.19--52.27) [225288]"}
+          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@52.19--52.27) [20037]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(xs)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1623,14 +1623,14 @@ procedure predicateTest4(xs: Ref) returns ()
           ExhaleWellDef1Heap := oldHeap;
           ExhaleWellDef1Mask := oldMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@52.19--52.27) [225289]"}
+          assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@52.19--52.27) [20038]"}
             NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
           // Finish exhale
           // Stop execution
           assume false;
         }
       }
-    assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs), old(PI_list(xs))): Bool) && (bounded(old(PI_list(xs))): Bool) || PI_list(xs) == old(PI_list(xs)) && false might not hold. (<no position>) [225290]"}
+    assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs), old(PI_list(xs))): Bool) && (bounded(old(PI_list(xs))): Bool) || PI_list(xs) == old(PI_list(xs)) && false might not hold. (<no position>) [20039]"}
       (decreasing(PI_list(Heap, xs), PI_list(oldHeap, xs)): bool) && (bounded(PI_list(oldHeap, xs)): bool);
     assume state(Heap, Mask);
   
@@ -1642,10 +1642,10 @@ procedure predicateTest4(xs: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       perm := 2 / 3;
-      assert {:msg "  The precondition of method predicateTest4 might not hold. Fraction 2 / 3 might be negative. (someTypes.vpr@60.5--60.23) [225291]"}
+      assert {:msg "  The precondition of method predicateTest4 might not hold. Fraction 2 / 3 might be negative. (someTypes.vpr@60.5--60.23) [20040]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method predicateTest4 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@60.5--60.23) [225292]"}
+        assert {:msg "  The precondition of method predicateTest4 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@60.5--60.23) [20041]"}
           perm <= Mask[null, list(xs)];
       }
       Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -1656,7 +1656,7 @@ procedure predicateTest4(xs: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := 2 / 3;
-      assert {:msg "  Method call might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@60.5--60.23) [225293]"}
+      assert {:msg "  Method call might fail. Fraction 2 / 3 might be negative. (someTypes.vpr@60.5--60.23) [20042]"}
         perm >= NoPerm;
       Mask := Mask[null, list(xs):=Mask[null, list(xs)] + perm];
       assume state(Heap, Mask);
@@ -1667,10 +1667,10 @@ procedure predicateTest4(xs: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := 2 / 3;
-    assert {:msg "  Postcondition of predicateTest4 might not hold. Fraction 2 / 3 might be negative. (someTypes.vpr@53.13--53.31) [225294]"}
+    assert {:msg "  Postcondition of predicateTest4 might not hold. Fraction 2 / 3 might be negative. (someTypes.vpr@53.13--53.31) [20043]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of predicateTest4 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@53.13--53.31) [225295]"}
+      assert {:msg "  Postcondition of predicateTest4 might not hold. There might be insufficient permission to access list(xs) (someTypes.vpr@53.13--53.31) [20044]"}
         perm <= Mask[null, list(xs)];
     }
     Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];

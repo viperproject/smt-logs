@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:22
+// Date:         2025-01-26 21:42:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0334.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0334-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_22: Ref, f_30: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_22, f_30] }
-  Heap[o_22, $allocated] ==> Heap[Heap[o_22, f_30], $allocated]
+axiom (forall o_4: Ref, f_9: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_4, f_9] }
+  Heap[o_4, $allocated] ==> Heap[Heap[o_4, f_9], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_27: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_27] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_27) ==> Heap[o_41, f_27] == ExhaleHeap[o_41, f_27]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_23: Ref, f_15: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_23, f_15] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_23, f_15) ==> Heap[o_23, f_15] == ExhaleHeap[o_23, f_15]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_28), ExhaleHeap[null, PredicateMaskField(pm_f_28)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsPredicateField(pm_f_28) ==> Heap[null, PredicateMaskField(pm_f_28)] == ExhaleHeap[null, PredicateMaskField(pm_f_28)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10), ExhaleHeap[null, PredicateMaskField(pm_f_10)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> Heap[null, PredicateMaskField(pm_f_10)] == ExhaleHeap[null, PredicateMaskField(pm_f_10)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_28) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsPredicateField(pm_f_28) ==> (forall <A, B> o2_28: Ref, f_27: (Field A B) ::
-    { ExhaleHeap[o2_28, f_27] }
-    Heap[null, PredicateMaskField(pm_f_28)][o2_28, f_27] ==> Heap[o2_28, f_27] == ExhaleHeap[o2_28, f_27]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_15: (Field A B) ::
+    { ExhaleHeap[o2_10, f_15] }
+    Heap[null, PredicateMaskField(pm_f_10)][o2_10, f_15] ==> Heap[o2_10, f_15] == ExhaleHeap[o2_10, f_15]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_28), ExhaleHeap[null, WandMaskField(pm_f_28)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsWandField(pm_f_28) ==> Heap[null, WandMaskField(pm_f_28)] == ExhaleHeap[null, WandMaskField(pm_f_28)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10), ExhaleHeap[null, WandMaskField(pm_f_10)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> Heap[null, WandMaskField(pm_f_10)] == ExhaleHeap[null, WandMaskField(pm_f_10)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_28) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsWandField(pm_f_28) ==> (forall <A, B> o2_28: Ref, f_27: (Field A B) ::
-    { ExhaleHeap[o2_28, f_27] }
-    Heap[null, WandMaskField(pm_f_28)][o2_28, f_27] ==> Heap[o2_28, f_27] == ExhaleHeap[o2_28, f_27]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_15: (Field A B) ::
+    { ExhaleHeap[o2_10, f_15] }
+    Heap[null, WandMaskField(pm_f_10)][o2_10, f_15] ==> Heap[o2_10, f_15] == ExhaleHeap[o2_10, f_15]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_23: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_23, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_23, $allocated] ==> ExhaleHeap[o_23, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_22: Ref, f_12: (Field A B), v: B ::
-  { Heap[o_22, f_12:=v] }
-  succHeap(Heap, Heap[o_22, f_12:=v])
+axiom (forall <A, B> Heap: HeapType, o_4: Ref, f_25: (Field A B), v: B ::
+  { Heap[o_4, f_25:=v] }
+  succHeap(Heap, Heap[o_4, f_25:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -181,12 +181,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique value: Field NormalField int;
-axiom !IsPredicateField(value);
-axiom !IsWandField(value);
-const unique left: Field NormalField Ref;
-axiom !IsPredicateField(left);
-axiom !IsWandField(left);
+const unique value_1: Field NormalField int;
+axiom !IsPredicateField(value_1);
+axiom !IsWandField(value_1);
+const unique left_2: Field NormalField Ref;
+axiom !IsPredicateField(left_2);
+axiom !IsWandField(left_2);
 const unique right_1: Field NormalField Ref;
 axiom !IsPredicateField(right_1);
 axiom !IsWandField(right_1);
@@ -196,45 +196,45 @@ axiom !IsWandField(right_1);
 // ==================================================
 
 // Uninterpreted function definitions
-function  tree_size(Heap: HeapType, tree_1: Ref): int;
-function  tree_size'(Heap: HeapType, tree_1: Ref): int;
-axiom (forall Heap: HeapType, tree_1: Ref ::
-  { tree_size(Heap, tree_1) }
-  tree_size(Heap, tree_1) == tree_size'(Heap, tree_1) && dummyFunction(tree_size#triggerStateless(tree_1))
+function  tree_size(Heap: HeapType, tree: Ref): int;
+function  tree_size'(Heap: HeapType, tree: Ref): int;
+axiom (forall Heap: HeapType, tree: Ref ::
+  { tree_size(Heap, tree) }
+  tree_size(Heap, tree) == tree_size'(Heap, tree) && dummyFunction(tree_size#triggerStateless(tree))
 );
-axiom (forall Heap: HeapType, tree_1: Ref ::
-  { tree_size'(Heap, tree_1) }
-  dummyFunction(tree_size#triggerStateless(tree_1))
+axiom (forall Heap: HeapType, tree: Ref ::
+  { tree_size'(Heap, tree) }
+  dummyFunction(tree_size#triggerStateless(tree))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, tree_1: Ref ::
-  { state(Heap, Mask), tree_size(Heap, tree_1) } { state(Heap, Mask), tree_size#triggerStateless(tree_1), BTree#trigger(Heap, BTree(tree_1)), BTree#trigger(Heap, BTree(tree_1)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> tree_size(Heap, tree_1) == (if tree_1 == null then 0 else 1 + tree_size'(Heap, Heap[tree_1, left]) + tree_size'(Heap, Heap[tree_1, right_1]))
+axiom (forall Heap: HeapType, Mask: MaskType, tree: Ref ::
+  { state(Heap, Mask), tree_size(Heap, tree) } { state(Heap, Mask), tree_size#triggerStateless(tree), BTree#trigger(Heap, BTree(tree)), BTree#trigger(Heap, BTree(tree)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> tree_size(Heap, tree) == (if tree == null then 0 else 1 + tree_size'(Heap, Heap[tree, left_2]) + tree_size'(Heap, Heap[tree, right_1]))
 );
 
 // Framing axioms
-function  tree_size#frame(frame: FrameType, tree_1: Ref): int;
-axiom (forall Heap: HeapType, Mask: MaskType, tree_1: Ref ::
-  { state(Heap, Mask), tree_size'(Heap, tree_1) } { state(Heap, Mask), tree_size#triggerStateless(tree_1), BTree#trigger(Heap, BTree(tree_1)), BTree#trigger(Heap, BTree(tree_1)) }
-  state(Heap, Mask) ==> tree_size'(Heap, tree_1) == tree_size#frame(FrameFragment((if tree_1 != null then Heap[null, BTree(tree_1)] else EmptyFrame)), tree_1)
+function  tree_size#frame(frame: FrameType, tree: Ref): int;
+axiom (forall Heap: HeapType, Mask: MaskType, tree: Ref ::
+  { state(Heap, Mask), tree_size'(Heap, tree) } { state(Heap, Mask), tree_size#triggerStateless(tree), BTree#trigger(Heap, BTree(tree)), BTree#trigger(Heap, BTree(tree)) }
+  state(Heap, Mask) ==> tree_size'(Heap, tree) == tree_size#frame(FrameFragment((if tree != null then Heap[null, BTree(tree)] else EmptyFrame)), tree)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  tree_size#trigger(frame: FrameType, tree_1: Ref): bool;
+function  tree_size#trigger(frame: FrameType, tree: Ref): bool;
 
 // State-independent trigger function
-function  tree_size#triggerStateless(tree_1: Ref): int;
+function  tree_size#triggerStateless(tree: Ref): int;
 
 // Check contract well-formedness and postcondition
-procedure tree_size#definedness(tree_1: Ref) returns (Result: int)
+procedure tree_size#definedness(tree: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -242,13 +242,13 @@ procedure tree_size#definedness(tree_1: Ref) returns (Result: int)
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
-    assume Heap[tree_1, $allocated];
+    assume Heap[tree, $allocated];
     assume AssumeFunctionsAbove == 0;
   
   // -- Inhaling precondition (with checking)
-    if (tree_1 != null) {
+    if (tree != null) {
       perm := FullPerm;
-      Mask := Mask[null, BTree(tree_1):=Mask[null, BTree(tree_1)] + perm];
+      Mask := Mask[null, BTree(tree):=Mask[null, BTree(tree)] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -256,56 +256,56 @@ procedure tree_size#definedness(tree_1: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (tree == null ? 0 : (unfolding acc(BTree(tree), write) in 1 + tree_size(tree.left) + tree_size(tree.right)))
-      if (tree_1 == null) {
+      if (tree == null) {
       } else {
         UnfoldingHeap := Heap;
         UnfoldingMask := Mask;
-        assume BTree#trigger(UnfoldingHeap, BTree(tree_1));
-        assume UnfoldingHeap[null, BTree(tree_1)] == CombineFrames(FrameFragment(UnfoldingHeap[tree_1, left]), CombineFrames(FrameFragment((if UnfoldingHeap[tree_1, left] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, left])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[tree_1, right_1]), CombineFrames(FrameFragment((if UnfoldingHeap[tree_1, right_1] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, right_1])] else EmptyFrame)), FrameFragment(UnfoldingHeap[tree_1, value])))));
-        ExhaleWellDef0Heap := UnfoldingHeap;
+        assume BTree#trigger(UnfoldingHeap, BTree(tree));
+        assume UnfoldingHeap[null, BTree(tree)] == CombineFrames(FrameFragment(UnfoldingHeap[tree, left_2]), CombineFrames(FrameFragment((if UnfoldingHeap[tree, left_2] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[tree, right_1]), CombineFrames(FrameFragment((if UnfoldingHeap[tree, right_1] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree, right_1])] else EmptyFrame)), FrameFragment(UnfoldingHeap[tree, value_1])))));
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access BTree(tree) (0334.vpr@14.1--20.2) [199286]"}
-          NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(tree_1)];
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access BTree(tree) (0334.vpr@14.1--20.2) [61497]"}
+          NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(tree)];
         perm := FullPerm;
-        assume tree_1 != null;
-        UnfoldingMask := UnfoldingMask[tree_1, left:=UnfoldingMask[tree_1, left] + perm];
+        assume tree != null;
+        UnfoldingMask := UnfoldingMask[tree, left_2:=UnfoldingMask[tree, left_2] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
-        if (UnfoldingHeap[tree_1, left] != null) {
+        if (UnfoldingHeap[tree, left_2] != null) {
           perm := FullPerm;
-          UnfoldingMask := UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, left]):=UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, left])] + perm];
+          UnfoldingMask := UnfoldingMask[null, BTree(UnfoldingHeap[tree, left_2]):=UnfoldingMask[null, BTree(UnfoldingHeap[tree, left_2])] + perm];
           
           // -- Extra unfolding of predicate
-            assume InsidePredicate(BTree(tree_1), UnfoldingHeap[null, BTree(tree_1)], BTree(UnfoldingHeap[tree_1, left]), UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, left])]);
+            assume InsidePredicate(BTree(tree), UnfoldingHeap[null, BTree(tree)], BTree(UnfoldingHeap[tree, left_2]), UnfoldingHeap[null, BTree(UnfoldingHeap[tree, left_2])]);
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         perm := FullPerm;
-        assume tree_1 != null;
-        UnfoldingMask := UnfoldingMask[tree_1, right_1:=UnfoldingMask[tree_1, right_1] + perm];
+        assume tree != null;
+        UnfoldingMask := UnfoldingMask[tree, right_1:=UnfoldingMask[tree, right_1] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
-        if (UnfoldingHeap[tree_1, right_1] != null) {
+        if (UnfoldingHeap[tree, right_1] != null) {
           perm := FullPerm;
-          UnfoldingMask := UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, right_1]):=UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, right_1])] + perm];
+          UnfoldingMask := UnfoldingMask[null, BTree(UnfoldingHeap[tree, right_1]):=UnfoldingMask[null, BTree(UnfoldingHeap[tree, right_1])] + perm];
           
           // -- Extra unfolding of predicate
-            assume InsidePredicate(BTree(tree_1), UnfoldingHeap[null, BTree(tree_1)], BTree(UnfoldingHeap[tree_1, right_1]), UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, right_1])]);
+            assume InsidePredicate(BTree(tree), UnfoldingHeap[null, BTree(tree)], BTree(UnfoldingHeap[tree, right_1]), UnfoldingHeap[null, BTree(UnfoldingHeap[tree, right_1])]);
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         perm := FullPerm;
-        assume tree_1 != null;
-        UnfoldingMask := UnfoldingMask[tree_1, value:=UnfoldingMask[tree_1, value] + perm];
+        assume tree != null;
+        UnfoldingMask := UnfoldingMask[tree, value_1:=UnfoldingMask[tree, value_1] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree.left (0334.vpr@14.1--20.2) [199287]"}
-          HasDirectPerm(UnfoldingMask, tree_1, left);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree.left (0334.vpr@14.1--20.2) [61498]"}
+          HasDirectPerm(UnfoldingMask, tree, left_2);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
-          if (UnfoldingHeap[tree_1, left] != null) {
+          ExhaleWellDef0Heap := UnfoldingHeap;
+          if (UnfoldingHeap[tree, left_2] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@18.34--18.54) [199288]"}
-              NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, left])];
+            assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@18.34--18.54) [61499]"}
+              NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(UnfoldingHeap[tree, left_2])];
           }
           // Finish exhale
           havoc ExhaleHeap;
@@ -315,18 +315,18 @@ procedure tree_size#definedness(tree_1: Ref) returns (Result: int)
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume tree_size#trigger(FrameFragment((if UnfoldingHeap[tree_1, left] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, left])] else EmptyFrame)), UnfoldingHeap[tree_1, left]);
+          assume tree_size#trigger(FrameFragment((if UnfoldingHeap[tree, left_2] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree, left_2])] else EmptyFrame)), UnfoldingHeap[tree, left_2]);
         }
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree.right (0334.vpr@14.1--20.2) [199289]"}
-          HasDirectPerm(UnfoldingMask, tree_1, right_1);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree.right (0334.vpr@14.1--20.2) [61500]"}
+          HasDirectPerm(UnfoldingMask, tree, right_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
-          if (UnfoldingHeap[tree_1, right_1] != null) {
+          ExhaleWellDef0Heap := UnfoldingHeap;
+          if (UnfoldingHeap[tree, right_1] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.right) (0334.vpr@18.57--18.78) [199290]"}
-              NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, right_1])];
+            assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.right) (0334.vpr@18.57--18.78) [61501]"}
+              NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(UnfoldingHeap[tree, right_1])];
           }
           // Finish exhale
           havoc ExhaleHeap;
@@ -336,34 +336,34 @@ procedure tree_size#definedness(tree_1: Ref) returns (Result: int)
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume tree_size#trigger(FrameFragment((if UnfoldingHeap[tree_1, right_1] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, right_1])] else EmptyFrame)), UnfoldingHeap[tree_1, right_1]);
+          assume tree_size#trigger(FrameFragment((if UnfoldingHeap[tree, right_1] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree, right_1])] else EmptyFrame)), UnfoldingHeap[tree, right_1]);
         }
         
         // -- Free assumptions (exp module)
-          Heap := Heap[null, BTree#sm(tree_1):=Heap[null, BTree#sm(tree_1)][tree_1, left:=true]];
-          if (Heap[tree_1, left] != null) {
+          Heap := Heap[null, BTree#sm(tree):=Heap[null, BTree#sm(tree)][tree, left_2:=true]];
+          if (Heap[tree, left_2] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-              { newPMask[o_15, f_20] }
-              Heap[null, BTree#sm(tree_1)][o_15, f_20] || Heap[null, BTree#sm(Heap[tree_1, left])][o_15, f_20] ==> newPMask[o_15, f_20]
+            assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+              { newPMask[o_5, f_11] }
+              Heap[null, BTree#sm(tree)][o_5, f_11] || Heap[null, BTree#sm(Heap[tree, left_2])][o_5, f_11] ==> newPMask[o_5, f_11]
             );
-            Heap := Heap[null, BTree#sm(tree_1):=newPMask];
+            Heap := Heap[null, BTree#sm(tree):=newPMask];
           }
-          Heap := Heap[null, BTree#sm(tree_1):=Heap[null, BTree#sm(tree_1)][tree_1, right_1:=true]];
-          if (Heap[tree_1, right_1] != null) {
+          Heap := Heap[null, BTree#sm(tree):=Heap[null, BTree#sm(tree)][tree, right_1:=true]];
+          if (Heap[tree, right_1] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-              { newPMask[o_16, f_21] }
-              Heap[null, BTree#sm(tree_1)][o_16, f_21] || Heap[null, BTree#sm(Heap[tree_1, right_1])][o_16, f_21] ==> newPMask[o_16, f_21]
+            assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+              { newPMask[o_6, f_12] }
+              Heap[null, BTree#sm(tree)][o_6, f_12] || Heap[null, BTree#sm(Heap[tree, right_1])][o_6, f_12] ==> newPMask[o_6, f_12]
             );
-            Heap := Heap[null, BTree#sm(tree_1):=newPMask];
+            Heap := Heap[null, BTree#sm(tree):=newPMask];
           }
-          Heap := Heap[null, BTree#sm(tree_1):=Heap[null, BTree#sm(tree_1)][tree_1, value:=true]];
+          Heap := Heap[null, BTree#sm(tree):=Heap[null, BTree#sm(tree)][tree, value_1:=true]];
           assume state(Heap, Mask);
       }
   
   // -- Translate function body
-    Result := (if tree_1 == null then 0 else 1 + tree_size(Heap, Heap[tree_1, left]) + tree_size(Heap, Heap[tree_1, right_1]));
+    Result := (if tree == null then 0 else 1 + tree_size(Heap, Heap[tree, left_2]) + tree_size(Heap, Heap[tree, right_1]));
 }
 
 // ==================================================
@@ -371,45 +371,45 @@ procedure tree_size#definedness(tree_1: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  tree_size_fix(Heap: HeapType, tree_1: Ref, i: int, b_24: int): int;
-function  tree_size_fix'(Heap: HeapType, tree_1: Ref, i: int, b_24: int): int;
-axiom (forall Heap: HeapType, tree_1: Ref, i: int, b_24: int ::
-  { tree_size_fix(Heap, tree_1, i, b_24) }
-  tree_size_fix(Heap, tree_1, i, b_24) == tree_size_fix'(Heap, tree_1, i, b_24) && dummyFunction(tree_size_fix#triggerStateless(tree_1, i, b_24))
+function  tree_size_fix(Heap: HeapType, tree: Ref, i: int, b_24: int): int;
+function  tree_size_fix'(Heap: HeapType, tree: Ref, i: int, b_24: int): int;
+axiom (forall Heap: HeapType, tree: Ref, i: int, b_24: int ::
+  { tree_size_fix(Heap, tree, i, b_24) }
+  tree_size_fix(Heap, tree, i, b_24) == tree_size_fix'(Heap, tree, i, b_24) && dummyFunction(tree_size_fix#triggerStateless(tree, i, b_24))
 );
-axiom (forall Heap: HeapType, tree_1: Ref, i: int, b_24: int ::
-  { tree_size_fix'(Heap, tree_1, i, b_24) }
-  dummyFunction(tree_size_fix#triggerStateless(tree_1, i, b_24))
+axiom (forall Heap: HeapType, tree: Ref, i: int, b_24: int ::
+  { tree_size_fix'(Heap, tree, i, b_24) }
+  dummyFunction(tree_size_fix#triggerStateless(tree, i, b_24))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, tree_1: Ref, i: int, b_24: int ::
-  { state(Heap, Mask), tree_size_fix(Heap, tree_1, i, b_24) } { state(Heap, Mask), tree_size_fix#triggerStateless(tree_1, i, b_24), BTree#trigger(Heap, BTree(tree_1)), BTree#trigger(Heap, BTree(tree_1)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> tree_size_fix(Heap, tree_1, i, b_24) == (if tree_1 == null then 0 else 1 + tree_size_fix'(Heap, Heap[tree_1, left], i, b_24) + tree_size_fix'(Heap, Heap[tree_1, right_1], i, b_24))
+axiom (forall Heap: HeapType, Mask: MaskType, tree: Ref, i: int, b_24: int ::
+  { state(Heap, Mask), tree_size_fix(Heap, tree, i, b_24) } { state(Heap, Mask), tree_size_fix#triggerStateless(tree, i, b_24), BTree#trigger(Heap, BTree(tree)), BTree#trigger(Heap, BTree(tree)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> tree_size_fix(Heap, tree, i, b_24) == (if tree == null then 0 else 1 + tree_size_fix'(Heap, Heap[tree, left_2], i, b_24) + tree_size_fix'(Heap, Heap[tree, right_1], i, b_24))
 );
 
 // Framing axioms
-function  tree_size_fix#frame(frame: FrameType, tree_1: Ref, i: int, b_24: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, tree_1: Ref, i: int, b_24: int ::
-  { state(Heap, Mask), tree_size_fix'(Heap, tree_1, i, b_24) } { state(Heap, Mask), tree_size_fix#triggerStateless(tree_1, i, b_24), BTree#trigger(Heap, BTree(tree_1)), BTree#trigger(Heap, BTree(tree_1)) }
-  state(Heap, Mask) ==> tree_size_fix'(Heap, tree_1, i, b_24) == tree_size_fix#frame(FrameFragment((if tree_1 != null then Heap[null, BTree(tree_1)] else EmptyFrame)), tree_1, i, b_24)
+function  tree_size_fix#frame(frame: FrameType, tree: Ref, i: int, b_24: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, tree: Ref, i: int, b_24: int ::
+  { state(Heap, Mask), tree_size_fix'(Heap, tree, i, b_24) } { state(Heap, Mask), tree_size_fix#triggerStateless(tree, i, b_24), BTree#trigger(Heap, BTree(tree)), BTree#trigger(Heap, BTree(tree)) }
+  state(Heap, Mask) ==> tree_size_fix'(Heap, tree, i, b_24) == tree_size_fix#frame(FrameFragment((if tree != null then Heap[null, BTree(tree)] else EmptyFrame)), tree, i, b_24)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  tree_size_fix#trigger(frame: FrameType, tree_1: Ref, i: int, b_24: int): bool;
+function  tree_size_fix#trigger(frame: FrameType, tree: Ref, i: int, b_24: int): bool;
 
 // State-independent trigger function
-function  tree_size_fix#triggerStateless(tree_1: Ref, i: int, b_24: int): int;
+function  tree_size_fix#triggerStateless(tree: Ref, i: int, b_24: int): int;
 
 // Check contract well-formedness and postcondition
-procedure tree_size_fix#definedness(tree_1: Ref, i: int, b_24: int) returns (Result: int)
+procedure tree_size_fix#definedness(tree: Ref, i: int, b_24: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -417,13 +417,13 @@ procedure tree_size_fix#definedness(tree_1: Ref, i: int, b_24: int) returns (Res
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
-    assume Heap[tree_1, $allocated];
+    assume Heap[tree, $allocated];
     assume AssumeFunctionsAbove == 1;
   
   // -- Inhaling precondition (with checking)
-    if (tree_1 != null) {
+    if (tree != null) {
       perm := FullPerm;
-      Mask := Mask[null, BTree(tree_1):=Mask[null, BTree(tree_1)] + perm];
+      Mask := Mask[null, BTree(tree):=Mask[null, BTree(tree)] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -431,56 +431,56 @@ procedure tree_size_fix#definedness(tree_1: Ref, i: int, b_24: int) returns (Res
   // -- Check definedness of function body
     
     // -- Check definedness of (tree == null ? 0 : (unfolding acc(BTree(tree), write) in 1 + tree_size_fix(tree.left, i, b) + tree_size_fix(tree.right, i, b)))
-      if (tree_1 == null) {
+      if (tree == null) {
       } else {
         UnfoldingHeap := Heap;
         UnfoldingMask := Mask;
-        assume BTree#trigger(UnfoldingHeap, BTree(tree_1));
-        assume UnfoldingHeap[null, BTree(tree_1)] == CombineFrames(FrameFragment(UnfoldingHeap[tree_1, left]), CombineFrames(FrameFragment((if UnfoldingHeap[tree_1, left] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, left])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[tree_1, right_1]), CombineFrames(FrameFragment((if UnfoldingHeap[tree_1, right_1] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, right_1])] else EmptyFrame)), FrameFragment(UnfoldingHeap[tree_1, value])))));
-        ExhaleWellDef0Heap := UnfoldingHeap;
+        assume BTree#trigger(UnfoldingHeap, BTree(tree));
+        assume UnfoldingHeap[null, BTree(tree)] == CombineFrames(FrameFragment(UnfoldingHeap[tree, left_2]), CombineFrames(FrameFragment((if UnfoldingHeap[tree, left_2] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[tree, right_1]), CombineFrames(FrameFragment((if UnfoldingHeap[tree, right_1] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree, right_1])] else EmptyFrame)), FrameFragment(UnfoldingHeap[tree, value_1])))));
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access BTree(tree) (0334.vpr@33.1--39.2) [199291]"}
-          NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(tree_1)];
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access BTree(tree) (0334.vpr@33.1--39.2) [61502]"}
+          NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(tree)];
         perm := FullPerm;
-        assume tree_1 != null;
-        UnfoldingMask := UnfoldingMask[tree_1, left:=UnfoldingMask[tree_1, left] + perm];
+        assume tree != null;
+        UnfoldingMask := UnfoldingMask[tree, left_2:=UnfoldingMask[tree, left_2] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
-        if (UnfoldingHeap[tree_1, left] != null) {
+        if (UnfoldingHeap[tree, left_2] != null) {
           perm := FullPerm;
-          UnfoldingMask := UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, left]):=UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, left])] + perm];
+          UnfoldingMask := UnfoldingMask[null, BTree(UnfoldingHeap[tree, left_2]):=UnfoldingMask[null, BTree(UnfoldingHeap[tree, left_2])] + perm];
           
           // -- Extra unfolding of predicate
-            assume InsidePredicate(BTree(tree_1), UnfoldingHeap[null, BTree(tree_1)], BTree(UnfoldingHeap[tree_1, left]), UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, left])]);
+            assume InsidePredicate(BTree(tree), UnfoldingHeap[null, BTree(tree)], BTree(UnfoldingHeap[tree, left_2]), UnfoldingHeap[null, BTree(UnfoldingHeap[tree, left_2])]);
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         perm := FullPerm;
-        assume tree_1 != null;
-        UnfoldingMask := UnfoldingMask[tree_1, right_1:=UnfoldingMask[tree_1, right_1] + perm];
+        assume tree != null;
+        UnfoldingMask := UnfoldingMask[tree, right_1:=UnfoldingMask[tree, right_1] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
-        if (UnfoldingHeap[tree_1, right_1] != null) {
+        if (UnfoldingHeap[tree, right_1] != null) {
           perm := FullPerm;
-          UnfoldingMask := UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, right_1]):=UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, right_1])] + perm];
+          UnfoldingMask := UnfoldingMask[null, BTree(UnfoldingHeap[tree, right_1]):=UnfoldingMask[null, BTree(UnfoldingHeap[tree, right_1])] + perm];
           
           // -- Extra unfolding of predicate
-            assume InsidePredicate(BTree(tree_1), UnfoldingHeap[null, BTree(tree_1)], BTree(UnfoldingHeap[tree_1, right_1]), UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, right_1])]);
+            assume InsidePredicate(BTree(tree), UnfoldingHeap[null, BTree(tree)], BTree(UnfoldingHeap[tree, right_1]), UnfoldingHeap[null, BTree(UnfoldingHeap[tree, right_1])]);
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         perm := FullPerm;
-        assume tree_1 != null;
-        UnfoldingMask := UnfoldingMask[tree_1, value:=UnfoldingMask[tree_1, value] + perm];
+        assume tree != null;
+        UnfoldingMask := UnfoldingMask[tree, value_1:=UnfoldingMask[tree, value_1] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree.left (0334.vpr@33.1--39.2) [199292]"}
-          HasDirectPerm(UnfoldingMask, tree_1, left);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree.left (0334.vpr@33.1--39.2) [61503]"}
+          HasDirectPerm(UnfoldingMask, tree, left_2);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
-          if (UnfoldingHeap[tree_1, left] != null) {
+          ExhaleWellDef0Heap := UnfoldingHeap;
+          if (UnfoldingHeap[tree, left_2] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@37.34--37.64) [199293]"}
-              NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, left])];
+            assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@37.34--37.64) [61504]"}
+              NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(UnfoldingHeap[tree, left_2])];
           }
           // Finish exhale
           havoc ExhaleHeap;
@@ -490,18 +490,18 @@ procedure tree_size_fix#definedness(tree_1: Ref, i: int, b_24: int) returns (Res
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume tree_size_fix#trigger(FrameFragment((if UnfoldingHeap[tree_1, left] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, left])] else EmptyFrame)), UnfoldingHeap[tree_1, left], i, b_24);
+          assume tree_size_fix#trigger(FrameFragment((if UnfoldingHeap[tree, left_2] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree, left_2])] else EmptyFrame)), UnfoldingHeap[tree, left_2], i, b_24);
         }
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree.right (0334.vpr@33.1--39.2) [199294]"}
-          HasDirectPerm(UnfoldingMask, tree_1, right_1);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree.right (0334.vpr@33.1--39.2) [61505]"}
+          HasDirectPerm(UnfoldingMask, tree, right_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
-          if (UnfoldingHeap[tree_1, right_1] != null) {
+          ExhaleWellDef0Heap := UnfoldingHeap;
+          if (UnfoldingHeap[tree, right_1] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.right) (0334.vpr@37.67--37.98) [199295]"}
-              NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(UnfoldingHeap[tree_1, right_1])];
+            assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.right) (0334.vpr@37.67--37.98) [61506]"}
+              NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(UnfoldingHeap[tree, right_1])];
           }
           // Finish exhale
           havoc ExhaleHeap;
@@ -511,34 +511,34 @@ procedure tree_size_fix#definedness(tree_1: Ref, i: int, b_24: int) returns (Res
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume tree_size_fix#trigger(FrameFragment((if UnfoldingHeap[tree_1, right_1] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, right_1])] else EmptyFrame)), UnfoldingHeap[tree_1, right_1], i, b_24);
+          assume tree_size_fix#trigger(FrameFragment((if UnfoldingHeap[tree, right_1] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree, right_1])] else EmptyFrame)), UnfoldingHeap[tree, right_1], i, b_24);
         }
         
         // -- Free assumptions (exp module)
-          Heap := Heap[null, BTree#sm(tree_1):=Heap[null, BTree#sm(tree_1)][tree_1, left:=true]];
-          if (Heap[tree_1, left] != null) {
+          Heap := Heap[null, BTree#sm(tree):=Heap[null, BTree#sm(tree)][tree, left_2:=true]];
+          if (Heap[tree, left_2] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-              { newPMask[o_52, f_55] }
-              Heap[null, BTree#sm(tree_1)][o_52, f_55] || Heap[null, BTree#sm(Heap[tree_1, left])][o_52, f_55] ==> newPMask[o_52, f_55]
+            assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+              { newPMask[o_40, f_52] }
+              Heap[null, BTree#sm(tree)][o_40, f_52] || Heap[null, BTree#sm(Heap[tree, left_2])][o_40, f_52] ==> newPMask[o_40, f_52]
             );
-            Heap := Heap[null, BTree#sm(tree_1):=newPMask];
+            Heap := Heap[null, BTree#sm(tree):=newPMask];
           }
-          Heap := Heap[null, BTree#sm(tree_1):=Heap[null, BTree#sm(tree_1)][tree_1, right_1:=true]];
-          if (Heap[tree_1, right_1] != null) {
+          Heap := Heap[null, BTree#sm(tree):=Heap[null, BTree#sm(tree)][tree, right_1:=true]];
+          if (Heap[tree, right_1] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-              { newPMask[o_53, f_56] }
-              Heap[null, BTree#sm(tree_1)][o_53, f_56] || Heap[null, BTree#sm(Heap[tree_1, right_1])][o_53, f_56] ==> newPMask[o_53, f_56]
+            assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+              { newPMask[o_42, f_55] }
+              Heap[null, BTree#sm(tree)][o_42, f_55] || Heap[null, BTree#sm(Heap[tree, right_1])][o_42, f_55] ==> newPMask[o_42, f_55]
             );
-            Heap := Heap[null, BTree#sm(tree_1):=newPMask];
+            Heap := Heap[null, BTree#sm(tree):=newPMask];
           }
-          Heap := Heap[null, BTree#sm(tree_1):=Heap[null, BTree#sm(tree_1)][tree_1, value:=true]];
+          Heap := Heap[null, BTree#sm(tree):=Heap[null, BTree#sm(tree)][tree, value_1:=true]];
           assume state(Heap, Mask);
       }
   
   // -- Translate function body
-    Result := (if tree_1 == null then 0 else 1 + tree_size_fix(Heap, Heap[tree_1, left], i, b_24) + tree_size_fix(Heap, Heap[tree_1, right_1], i, b_24));
+    Result := (if tree == null then 0 else 1 + tree_size_fix(Heap, Heap[tree, left_2], i, b_24) + tree_size_fix(Heap, Heap[tree, right_1], i, b_24));
 }
 
 // ==================================================
@@ -591,19 +591,19 @@ procedure BTree#definedness(self: Ref) returns ()
       assume Heap[self, $allocated];
     perm := FullPerm;
     assume self != null;
-    Mask := Mask[self, left:=Mask[self, left] + perm];
+    Mask := Mask[self, left_2:=Mask[self, left_2] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of self.left != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.left (0334.vpr@8.1--12.2) [199296]"}
-        HasDirectPerm(Mask, self, left);
-    if (Heap[self, left] != null) {
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.left (0334.vpr@8.1--12.2) [61507]"}
+        HasDirectPerm(Mask, self, left_2);
+    if (Heap[self, left_2] != null) {
       
       // -- Check definedness of acc(BTree(self.left), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.left (0334.vpr@8.1--12.2) [199297]"}
-          HasDirectPerm(Mask, self, left);
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.left (0334.vpr@8.1--12.2) [61508]"}
+          HasDirectPerm(Mask, self, left_2);
       perm := FullPerm;
-      Mask := Mask[null, BTree(Heap[self, left]):=Mask[null, BTree(Heap[self, left])] + perm];
+      Mask := Mask[null, BTree(Heap[self, left_2]):=Mask[null, BTree(Heap[self, left_2])] + perm];
       assume state(Heap, Mask);
     }
     perm := FullPerm;
@@ -612,12 +612,12 @@ procedure BTree#definedness(self: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of self.right != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.right (0334.vpr@8.1--12.2) [199298]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.right (0334.vpr@8.1--12.2) [61509]"}
         HasDirectPerm(Mask, self, right_1);
     if (Heap[self, right_1] != null) {
       
       // -- Check definedness of acc(BTree(self.right), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.right (0334.vpr@8.1--12.2) [199299]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.right (0334.vpr@8.1--12.2) [61510]"}
           HasDirectPerm(Mask, self, right_1);
       perm := FullPerm;
       Mask := Mask[null, BTree(Heap[self, right_1]):=Mask[null, BTree(Heap[self, right_1])] + perm];
@@ -625,7 +625,7 @@ procedure BTree#definedness(self: Ref) returns ()
     }
     perm := FullPerm;
     assume self != null;
-    Mask := Mask[self, value:=Mask[self, value] + perm];
+    Mask := Mask[self, value_1:=Mask[self, value_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
 }
@@ -634,20 +634,20 @@ procedure BTree#definedness(self: Ref) returns ()
 // Translation of method toArray
 // ==================================================
 
-procedure toArray(tree_1: Ref) returns ()
+procedure toArray(tree: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var i_11: int;
-  var b_103: int;
+  var i_8: int;
+  var b_35: int;
   var i_1: int;
   var b_1_2: int;
   
@@ -658,87 +658,87 @@ procedure toArray(tree_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[tree_1, $allocated];
+    assume Heap[tree, $allocated];
   
   // -- Checked inhaling of precondition
-    assume tree_1 != null;
+    assume tree != null;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, BTree(tree_1):=Mask[null, BTree(tree_1)] + perm];
+    Mask := Mask[null, BTree(tree):=Mask[null, BTree(tree)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(BTree(tree), write) -- 0334.vpr@26.3--26.21
-    assume BTree#trigger(Heap, BTree(tree_1));
-    assume Heap[null, BTree(tree_1)] == CombineFrames(FrameFragment(Heap[tree_1, left]), CombineFrames(FrameFragment((if Heap[tree_1, left] != null then Heap[null, BTree(Heap[tree_1, left])] else EmptyFrame)), CombineFrames(FrameFragment(Heap[tree_1, right_1]), CombineFrames(FrameFragment((if Heap[tree_1, right_1] != null then Heap[null, BTree(Heap[tree_1, right_1])] else EmptyFrame)), FrameFragment(Heap[tree_1, value])))));
-    ExhaleWellDef0Heap := Heap;
+    assume BTree#trigger(Heap, BTree(tree));
+    assume Heap[null, BTree(tree)] == CombineFrames(FrameFragment(Heap[tree, left_2]), CombineFrames(FrameFragment((if Heap[tree, left_2] != null then Heap[null, BTree(Heap[tree, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(Heap[tree, right_1]), CombineFrames(FrameFragment((if Heap[tree, right_1] != null then Heap[null, BTree(Heap[tree, right_1])] else EmptyFrame)), FrameFragment(Heap[tree, value_1])))));
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding BTree(tree) might fail. There might be insufficient permission to access BTree(tree) (0334.vpr@26.3--26.21) [199302]"}
-        perm <= Mask[null, BTree(tree_1)];
+      assert {:msg "  Unfolding BTree(tree) might fail. There might be insufficient permission to access BTree(tree) (0334.vpr@26.3--26.21) [61513]"}
+        perm <= Mask[null, BTree(tree)];
     }
-    Mask := Mask[null, BTree(tree_1):=Mask[null, BTree(tree_1)] - perm];
+    Mask := Mask[null, BTree(tree):=Mask[null, BTree(tree)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, BTree(tree_1))) {
+      if (!HasDirectPerm(Mask, null, BTree(tree))) {
         havoc newVersion;
-        Heap := Heap[null, BTree(tree_1):=newVersion];
+        Heap := Heap[null, BTree(tree):=newVersion];
       }
     perm := FullPerm;
-    assume tree_1 != null;
-    Mask := Mask[tree_1, left:=Mask[tree_1, left] + perm];
+    assume tree != null;
+    Mask := Mask[tree, left_2:=Mask[tree, left_2] + perm];
     assume state(Heap, Mask);
-    if (Heap[tree_1, left] != null) {
+    if (Heap[tree, left_2] != null) {
       perm := FullPerm;
-      Mask := Mask[null, BTree(Heap[tree_1, left]):=Mask[null, BTree(Heap[tree_1, left])] + perm];
+      Mask := Mask[null, BTree(Heap[tree, left_2]):=Mask[null, BTree(Heap[tree, left_2])] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(BTree(tree_1), Heap[null, BTree(tree_1)], BTree(Heap[tree_1, left]), Heap[null, BTree(Heap[tree_1, left])]);
+        assume InsidePredicate(BTree(tree), Heap[null, BTree(tree)], BTree(Heap[tree, left_2]), Heap[null, BTree(Heap[tree, left_2])]);
       assume state(Heap, Mask);
     }
     perm := FullPerm;
-    assume tree_1 != null;
-    Mask := Mask[tree_1, right_1:=Mask[tree_1, right_1] + perm];
+    assume tree != null;
+    Mask := Mask[tree, right_1:=Mask[tree, right_1] + perm];
     assume state(Heap, Mask);
-    if (Heap[tree_1, right_1] != null) {
+    if (Heap[tree, right_1] != null) {
       perm := FullPerm;
-      Mask := Mask[null, BTree(Heap[tree_1, right_1]):=Mask[null, BTree(Heap[tree_1, right_1])] + perm];
+      Mask := Mask[null, BTree(Heap[tree, right_1]):=Mask[null, BTree(Heap[tree, right_1])] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(BTree(tree_1), Heap[null, BTree(tree_1)], BTree(Heap[tree_1, right_1]), Heap[null, BTree(Heap[tree_1, right_1])]);
+        assume InsidePredicate(BTree(tree), Heap[null, BTree(tree)], BTree(Heap[tree, right_1]), Heap[null, BTree(Heap[tree, right_1])]);
       assume state(Heap, Mask);
     }
     perm := FullPerm;
-    assume tree_1 != null;
-    Mask := Mask[tree_1, value:=Mask[tree_1, value] + perm];
+    assume tree != null;
+    Mask := Mask[tree, value_1:=Mask[tree, value_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i: Int, b: Int ::tree_size(tree.left) < i && i < b ==>
   //     tree_size(tree.left) + 1 < b) -- 0334.vpr@28.3--30.77
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int, b: Int ::tree_size(tree.left) < i && i < b ==> tree_size(tree.left) + 1 < b)
       if (*) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access tree.left (0334.vpr@29.5--30.77) [199308]"}
-          HasDirectPerm(ExhaleWellDef0Mask, tree_1, left);
+        assert {:msg "  Assert might fail. There might be insufficient permission to access tree.left (0334.vpr@29.5--30.77) [61519]"}
+          HasDirectPerm(ExhaleWellDef0Mask, tree, left_2);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-          if (ExhaleWellDef0Heap[tree_1, left] != null) {
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+          if (ExhaleWellDef0Heap[tree, left_2] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@30.8--30.28) [199309]"}
-              NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, BTree(ExhaleWellDef0Heap[tree_1, left])];
+            assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@30.8--30.28) [61520]"}
+              NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, BTree(ExhaleWellDef0Heap[tree, left_2])];
           }
           // Finish exhale
           havoc ExhaleHeap;
@@ -747,17 +747,17 @@ procedure toArray(tree_1: Ref) returns ()
           // Stop execution
           assume false;
         }
-        if (tree_size(Heap, Heap[tree_1, left]) < i_11 && i_11 < b_103) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access tree.left (0334.vpr@29.5--30.77) [199310]"}
-            HasDirectPerm(ExhaleWellDef0Mask, tree_1, left);
+        if (tree_size(Heap, Heap[tree, left_2]) < i_8 && i_8 < b_35) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access tree.left (0334.vpr@29.5--30.77) [61521]"}
+            HasDirectPerm(ExhaleWellDef0Mask, tree, left_2);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-            if (ExhaleWellDef0Heap[tree_1, left] != null) {
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            if (ExhaleWellDef0Heap[tree, left_2] != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@30.48--30.68) [199311]"}
-                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, BTree(ExhaleWellDef0Heap[tree_1, left])];
+              assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@30.48--30.68) [61522]"}
+                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, BTree(ExhaleWellDef0Heap[tree, left_2])];
             }
             // Finish exhale
             havoc ExhaleHeap;
@@ -770,15 +770,15 @@ procedure toArray(tree_1: Ref) returns ()
         assume false;
       }
     if (*) {
-      if (tree_size(Heap, Heap[tree_1, left]) < i_1 && i_1 < b_1_2) {
-        assert {:msg "  Assert might fail. Assertion tree_size(tree.left) + 1 < b might not hold. (0334.vpr@29.5--30.77) [199312]"}
-          tree_size(Heap, Heap[tree_1, left]) + 1 < b_1_2;
+      if (tree_size(Heap, Heap[tree, left_2]) < i_1 && i_1 < b_1_2) {
+        assert {:msg "  Assert might fail. Assertion tree_size(tree.left) + 1 < b might not hold. (0334.vpr@29.5--30.77) [61523]"}
+          tree_size(Heap, Heap[tree, left_2]) + 1 < b_1_2;
       }
       assume false;
     }
-    assume (forall i_2_1_1: int, b_2_1_1: int ::
+    assume (forall i_2_1: int, b_2_1_1: int ::
       
-      tree_size(Heap, Heap[tree_1, left]) < i_2_1_1 && i_2_1_1 < b_2_1_1 ==> tree_size(Heap, Heap[tree_1, left]) + 1 < b_2_1_1
+      tree_size(Heap, Heap[tree, left_2]) < i_2_1 && i_2_1 < b_2_1_1 ==> tree_size(Heap, Heap[tree, left_2]) + 1 < b_2_1_1
     );
     assume state(Heap, Mask);
 }
@@ -787,20 +787,20 @@ procedure toArray(tree_1: Ref) returns ()
 // Translation of method toArray_fix
 // ==================================================
 
-procedure toArray_fix(tree_1: Ref) returns ()
+procedure toArray_fix(tree: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var i_12: int;
-  var b_104: int;
+  var i_19: int;
+  var b_36: int;
   var i_1: int;
   var b_1_2: int;
   
@@ -811,66 +811,66 @@ procedure toArray_fix(tree_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[tree_1, $allocated];
+    assume Heap[tree, $allocated];
   
   // -- Checked inhaling of precondition
-    assume tree_1 != null;
+    assume tree != null;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, BTree(tree_1):=Mask[null, BTree(tree_1)] + perm];
+    Mask := Mask[null, BTree(tree):=Mask[null, BTree(tree)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(BTree(tree), write) -- 0334.vpr@45.3--45.21
-    assume BTree#trigger(Heap, BTree(tree_1));
-    assume Heap[null, BTree(tree_1)] == CombineFrames(FrameFragment(Heap[tree_1, left]), CombineFrames(FrameFragment((if Heap[tree_1, left] != null then Heap[null, BTree(Heap[tree_1, left])] else EmptyFrame)), CombineFrames(FrameFragment(Heap[tree_1, right_1]), CombineFrames(FrameFragment((if Heap[tree_1, right_1] != null then Heap[null, BTree(Heap[tree_1, right_1])] else EmptyFrame)), FrameFragment(Heap[tree_1, value])))));
-    ExhaleWellDef0Heap := Heap;
+    assume BTree#trigger(Heap, BTree(tree));
+    assume Heap[null, BTree(tree)] == CombineFrames(FrameFragment(Heap[tree, left_2]), CombineFrames(FrameFragment((if Heap[tree, left_2] != null then Heap[null, BTree(Heap[tree, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(Heap[tree, right_1]), CombineFrames(FrameFragment((if Heap[tree, right_1] != null then Heap[null, BTree(Heap[tree, right_1])] else EmptyFrame)), FrameFragment(Heap[tree, value_1])))));
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding BTree(tree) might fail. There might be insufficient permission to access BTree(tree) (0334.vpr@45.3--45.21) [199315]"}
-        perm <= Mask[null, BTree(tree_1)];
+      assert {:msg "  Unfolding BTree(tree) might fail. There might be insufficient permission to access BTree(tree) (0334.vpr@45.3--45.21) [61526]"}
+        perm <= Mask[null, BTree(tree)];
     }
-    Mask := Mask[null, BTree(tree_1):=Mask[null, BTree(tree_1)] - perm];
+    Mask := Mask[null, BTree(tree):=Mask[null, BTree(tree)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, BTree(tree_1))) {
+      if (!HasDirectPerm(Mask, null, BTree(tree))) {
         havoc newVersion;
-        Heap := Heap[null, BTree(tree_1):=newVersion];
+        Heap := Heap[null, BTree(tree):=newVersion];
       }
     perm := FullPerm;
-    assume tree_1 != null;
-    Mask := Mask[tree_1, left:=Mask[tree_1, left] + perm];
+    assume tree != null;
+    Mask := Mask[tree, left_2:=Mask[tree, left_2] + perm];
     assume state(Heap, Mask);
-    if (Heap[tree_1, left] != null) {
+    if (Heap[tree, left_2] != null) {
       perm := FullPerm;
-      Mask := Mask[null, BTree(Heap[tree_1, left]):=Mask[null, BTree(Heap[tree_1, left])] + perm];
+      Mask := Mask[null, BTree(Heap[tree, left_2]):=Mask[null, BTree(Heap[tree, left_2])] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(BTree(tree_1), Heap[null, BTree(tree_1)], BTree(Heap[tree_1, left]), Heap[null, BTree(Heap[tree_1, left])]);
+        assume InsidePredicate(BTree(tree), Heap[null, BTree(tree)], BTree(Heap[tree, left_2]), Heap[null, BTree(Heap[tree, left_2])]);
       assume state(Heap, Mask);
     }
     perm := FullPerm;
-    assume tree_1 != null;
-    Mask := Mask[tree_1, right_1:=Mask[tree_1, right_1] + perm];
+    assume tree != null;
+    Mask := Mask[tree, right_1:=Mask[tree, right_1] + perm];
     assume state(Heap, Mask);
-    if (Heap[tree_1, right_1] != null) {
+    if (Heap[tree, right_1] != null) {
       perm := FullPerm;
-      Mask := Mask[null, BTree(Heap[tree_1, right_1]):=Mask[null, BTree(Heap[tree_1, right_1])] + perm];
+      Mask := Mask[null, BTree(Heap[tree, right_1]):=Mask[null, BTree(Heap[tree, right_1])] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(BTree(tree_1), Heap[null, BTree(tree_1)], BTree(Heap[tree_1, right_1]), Heap[null, BTree(Heap[tree_1, right_1])]);
+        assume InsidePredicate(BTree(tree), Heap[null, BTree(tree)], BTree(Heap[tree, right_1]), Heap[null, BTree(Heap[tree, right_1])]);
       assume state(Heap, Mask);
     }
     perm := FullPerm;
-    assume tree_1 != null;
-    Mask := Mask[tree_1, value:=Mask[tree_1, value] + perm];
+    assume tree != null;
+    Mask := Mask[tree, value_1:=Mask[tree, value_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -879,21 +879,21 @@ procedure toArray_fix(tree_1: Ref) returns ()
   //     { tree_size_fix(tree.left, i, b) }
   //     tree_size_fix(tree.left, i, b) < i && i < b ==>
   //     tree_size_fix(tree.left, i, b) + 1 < b) -- 0334.vpr@46.3--48.97
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int, b: Int :: { tree_size_fix(tree.left, i, b) } tree_size_fix(tree.left, i, b) < i && i < b ==> tree_size_fix(tree.left, i, b) + 1 < b)
       if (*) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access tree.left (0334.vpr@47.5--48.97) [199321]"}
-          HasDirectPerm(ExhaleWellDef0Mask, tree_1, left);
+        assert {:msg "  Assert might fail. There might be insufficient permission to access tree.left (0334.vpr@47.5--48.97) [61532]"}
+          HasDirectPerm(ExhaleWellDef0Mask, tree, left_2);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-          if (ExhaleWellDef0Heap[tree_1, left] != null) {
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+          if (ExhaleWellDef0Heap[tree, left_2] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@48.8--48.38) [199322]"}
-              NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, BTree(ExhaleWellDef0Heap[tree_1, left])];
+            assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@48.8--48.38) [61533]"}
+              NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, BTree(ExhaleWellDef0Heap[tree, left_2])];
           }
           // Finish exhale
           havoc ExhaleHeap;
@@ -902,17 +902,17 @@ procedure toArray_fix(tree_1: Ref) returns ()
           // Stop execution
           assume false;
         }
-        if (tree_size_fix(Heap, Heap[tree_1, left], i_12, b_104) < i_12 && i_12 < b_104) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access tree.left (0334.vpr@47.5--48.97) [199323]"}
-            HasDirectPerm(ExhaleWellDef0Mask, tree_1, left);
+        if (tree_size_fix(Heap, Heap[tree, left_2], i_19, b_36) < i_19 && i_19 < b_36) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access tree.left (0334.vpr@47.5--48.97) [61534]"}
+            HasDirectPerm(ExhaleWellDef0Mask, tree, left_2);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-            if (ExhaleWellDef0Heap[tree_1, left] != null) {
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            if (ExhaleWellDef0Heap[tree, left_2] != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@48.58--48.88) [199324]"}
-                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, BTree(ExhaleWellDef0Heap[tree_1, left])];
+              assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@48.58--48.88) [61535]"}
+                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, BTree(ExhaleWellDef0Heap[tree, left_2])];
             }
             // Finish exhale
             havoc ExhaleHeap;
@@ -925,15 +925,15 @@ procedure toArray_fix(tree_1: Ref) returns ()
         assume false;
       }
     if (*) {
-      if (tree_size_fix(Heap, Heap[tree_1, left], i_1, b_1_2) < i_1 && i_1 < b_1_2) {
-        assert {:msg "  Assert might fail. Assertion tree_size_fix(tree.left, i, b) + 1 < b might not hold. (0334.vpr@47.5--48.97) [199325]"}
-          tree_size_fix(Heap, Heap[tree_1, left], i_1, b_1_2) + 1 < b_1_2;
+      if (tree_size_fix(Heap, Heap[tree, left_2], i_1, b_1_2) < i_1 && i_1 < b_1_2) {
+        assert {:msg "  Assert might fail. Assertion tree_size_fix(tree.left, i, b) + 1 < b might not hold. (0334.vpr@47.5--48.97) [61536]"}
+          tree_size_fix(Heap, Heap[tree, left_2], i_1, b_1_2) + 1 < b_1_2;
       }
       assume false;
     }
-    assume (forall i_2_1_1: int, b_2_1_1: int ::
-      { tree_size_fix#frame(FrameFragment(Heap[null, BTree(Heap[tree_1, left])]), Heap[tree_1, left], i_2_1_1, b_2_1_1) } { tree_size_fix#frame(FrameFragment(EmptyFrame), Heap[tree_1, left], i_2_1_1, b_2_1_1) }
-      tree_size_fix(Heap, Heap[tree_1, left], i_2_1_1, b_2_1_1) < i_2_1_1 && i_2_1_1 < b_2_1_1 ==> tree_size_fix(Heap, Heap[tree_1, left], i_2_1_1, b_2_1_1) + 1 < b_2_1_1
+    assume (forall i_2_1: int, b_2_1_1: int ::
+      { tree_size_fix#frame(FrameFragment(Heap[null, BTree(Heap[tree, left_2])]), Heap[tree, left_2], i_2_1, b_2_1_1) } { tree_size_fix#frame(FrameFragment(EmptyFrame), Heap[tree, left_2], i_2_1, b_2_1_1) }
+      tree_size_fix(Heap, Heap[tree, left_2], i_2_1, b_2_1_1) < i_2_1 && i_2_1 < b_2_1_1 ==> tree_size_fix(Heap, Heap[tree, left_2], i_2_1, b_2_1_1) + 1 < b_2_1_1
     );
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:47
+// Date:         2025-01-26 21:41:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/basic.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/basic-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -194,11 +194,11 @@ axiom !IsWandField(g);
 // ==================================================
 
 // Uninterpreted function definitions
-function  add_1(Heap: HeapType, x: Ref): int;
+function  add(Heap: HeapType, x: Ref): int;
 function  add'(Heap: HeapType, x: Ref): int;
 axiom (forall Heap: HeapType, x: Ref ::
-  { add_1(Heap, x) }
-  add_1(Heap, x) == add'(Heap, x) && dummyFunction(add#triggerStateless(x))
+  { add(Heap, x) }
+  add(Heap, x) == add'(Heap, x) && dummyFunction(add#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { add'(Heap, x) }
@@ -207,8 +207,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), add_1(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> add_1(Heap, x) == Heap[x, f_7] + Heap[x, g]
+  { state(Heap, Mask), add(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> add(Heap, x) == Heap[x, f_7] + Heap[x, g]
 );
 
 // Framing axioms
@@ -251,9 +251,9 @@ procedure add#definedness(x: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of x.f + x.g
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (basic.vpr@7.1--9.14) [154368]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (basic.vpr@7.1--9.14) [51158]"}
         HasDirectPerm(Mask, x, f_7);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (basic.vpr@7.1--9.14) [154369]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (basic.vpr@7.1--9.14) [51159]"}
         HasDirectPerm(Mask, x, g);
   
   // -- Translate function body
@@ -310,14 +310,14 @@ procedure add3#definedness(x: Ref, a_2: int) returns (Result: int)
   
   // -- Inhaling precondition (with checking)
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (basic.vpr@12.12--12.65) [154370]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (basic.vpr@12.12--12.65) [51160]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, g:=Mask[x, g] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of x.g > 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.g (basic.vpr@12.12--12.65) [154371]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.g (basic.vpr@12.12--12.65) [51161]"}
         HasDirectPerm(Mask, x, g);
     assume Heap[x, g] > 0;
     perm := FullPerm;
@@ -325,7 +325,7 @@ procedure add3#definedness(x: Ref, a_2: int) returns (Result: int)
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (basic.vpr@12.12--12.65) [154372]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (basic.vpr@12.12--12.65) [51162]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, g:=Mask[x, g] + perm];
@@ -335,9 +335,9 @@ procedure add3#definedness(x: Ref, a_2: int) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of x.f - a + x.g
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (basic.vpr@11.1--13.18) [154373]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (basic.vpr@11.1--13.18) [51163]"}
         HasDirectPerm(Mask, x, f_7);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (basic.vpr@11.1--13.18) [154374]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (basic.vpr@11.1--13.18) [51164]"}
         HasDirectPerm(Mask, x, g);
   
   // -- Translate function body
@@ -410,10 +410,10 @@ procedure tern#definedness(x: Ref, b_24: bool) returns (Result: int)
     
     // -- Check definedness of (b ? x.f : x.g)
       if (b_24) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (basic.vpr@39.1--41.18) [154375]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (basic.vpr@39.1--41.18) [51165]"}
           HasDirectPerm(Mask, x, f_7);
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (basic.vpr@39.1--41.18) [154376]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (basic.vpr@39.1--41.18) [51166]"}
           HasDirectPerm(Mask, x, g);
       }
   
@@ -425,7 +425,7 @@ procedure tern#definedness(x: Ref, b_24: bool) returns (Result: int)
 // Translation of method test1
 // ==================================================
 
-procedure test1() returns ()
+procedure test1_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -477,9 +477,9 @@ procedure test1() returns ()
   // -- Translating statement: x.f := y.f -- basic.vpr@19.3--19.13
     
     // -- Check definedness of y.f
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (basic.vpr@19.3--19.13) [154377]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (basic.vpr@19.3--19.13) [51167]"}
         HasDirectPerm(Mask, y, f_7);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@19.3--19.13) [154378]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@19.3--19.13) [51168]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=Heap[y, f_7]];
     assume state(Heap, Mask);
@@ -487,9 +487,9 @@ procedure test1() returns ()
   // -- Translating statement: y.g := x.g -- basic.vpr@20.3--20.13
     
     // -- Check definedness of x.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (basic.vpr@20.3--20.13) [154379]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (basic.vpr@20.3--20.13) [51169]"}
         HasDirectPerm(Mask, x, g);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (basic.vpr@20.3--20.13) [154380]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (basic.vpr@20.3--20.13) [51170]"}
       FullPerm == Mask[y, g];
     Heap := Heap[y, g:=Heap[x, g]];
     assume state(Heap, Mask);
@@ -504,10 +504,10 @@ procedure test1() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@21.10--21.16) [154381]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@21.10--21.16) [51171]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.g (basic.vpr@21.10--21.16) [154382]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.g (basic.vpr@21.10--21.16) [51172]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -521,10 +521,10 @@ procedure test1() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access y.f (basic.vpr@21.20--21.26) [154383]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access y.f (basic.vpr@21.20--21.26) [51173]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access y.g (basic.vpr@21.20--21.26) [154384]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access y.g (basic.vpr@21.20--21.26) [51174]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -533,16 +533,16 @@ procedure test1() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion add(x) == add(y) might not hold. (basic.vpr@21.10--21.26) [154385]"}
-      add_1(Heap, x) == add_1(Heap, y);
+    assert {:msg "  Assert might fail. Assertion add(x) == add(y) might not hold. (basic.vpr@21.10--21.26) [51175]"}
+      add(Heap, x) == add(Heap, y);
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := x.f + 1 -- basic.vpr@23.3--23.17
     
     // -- Check definedness of x.f + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@23.3--23.17) [154386]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@23.3--23.17) [51176]"}
         HasDirectPerm(Mask, x, f_7);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@23.3--23.17) [154387]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@23.3--23.17) [51177]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=Heap[x, f_7] + 1];
     assume state(Heap, Mask);
@@ -557,10 +557,10 @@ procedure test1() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@25.10--25.16) [154388]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@25.10--25.16) [51178]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.g (basic.vpr@25.10--25.16) [154389]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.g (basic.vpr@25.10--25.16) [51179]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -574,10 +574,10 @@ procedure test1() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access y.f (basic.vpr@25.20--25.26) [154390]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access y.f (basic.vpr@25.20--25.26) [51180]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access y.g (basic.vpr@25.20--25.26) [154391]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access y.g (basic.vpr@25.20--25.26) [51181]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -586,8 +586,8 @@ procedure test1() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion add(x) == add(y) might not hold. (basic.vpr@25.10--25.26) [154392]"}
-      add_1(Heap, x) == add_1(Heap, y);
+    assert {:msg "  Assert might fail. Assertion add(x) == add(y) might not hold. (basic.vpr@25.10--25.26) [51182]"}
+      add(Heap, x) == add(Heap, y);
     assume state(Heap, Mask);
 }
 
@@ -595,7 +595,7 @@ procedure test1() returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2() returns ()
+procedure test2_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -634,7 +634,7 @@ procedure test2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x.g := 10 -- basic.vpr@31.3--31.12
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (basic.vpr@31.3--31.12) [154393]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (basic.vpr@31.3--31.12) [51183]"}
       FullPerm == Mask[x, g];
     Heap := Heap[x, g:=10];
     assume state(Heap, Mask);
@@ -649,19 +649,19 @@ procedure test2() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@32.10--32.20) [154394]"}
+        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@32.10--32.20) [51184]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@32.10--32.20) [154395]"}
+        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@32.10--32.20) [51185]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
-        assert {:msg "  Precondition of function add3 might not hold. Assertion x.g > 0 might not hold. (basic.vpr@32.10--32.20) [154396]"}
+        assert {:msg "  Precondition of function add3 might not hold. Assertion x.g > 0 might not hold. (basic.vpr@32.10--32.20) [51186]"}
           ExhaleWellDef0Heap[x, g] > 0;
         perm := FullPerm;
-        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.f (basic.vpr@32.10--32.20) [154397]"}
+        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.f (basic.vpr@32.10--32.20) [51187]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := 1 / 2;
-        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@32.10--32.20) [154398]"}
+        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@32.10--32.20) [51188]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@32.10--32.20) [154399]"}
+        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@32.10--32.20) [51189]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -675,10 +675,10 @@ procedure test2() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@32.24--32.30) [154400]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@32.24--32.30) [51190]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.g (basic.vpr@32.24--32.30) [154401]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.g (basic.vpr@32.24--32.30) [51191]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -687,12 +687,12 @@ procedure test2() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion add3(x, 0) == add(x) might not hold. (basic.vpr@32.10--32.30) [154402]"}
-      add3(Heap, x, 0) == add_1(Heap, x);
+    assert {:msg "  Assert might fail. Assertion add3(x, 0) == add(x) might not hold. (basic.vpr@32.10--32.30) [51192]"}
+      add3(Heap, x, 0) == add(Heap, x);
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := -5 -- basic.vpr@33.3--33.12
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@33.3--33.12) [154403]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@33.3--33.12) [51193]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=-5];
     assume state(Heap, Mask);
@@ -707,19 +707,19 @@ procedure test2() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@34.10--34.20) [154404]"}
+        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@34.10--34.20) [51194]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@34.10--34.20) [154405]"}
+        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@34.10--34.20) [51195]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
-        assert {:msg "  Precondition of function add3 might not hold. Assertion x.g > 0 might not hold. (basic.vpr@34.10--34.20) [154406]"}
+        assert {:msg "  Precondition of function add3 might not hold. Assertion x.g > 0 might not hold. (basic.vpr@34.10--34.20) [51196]"}
           ExhaleWellDef0Heap[x, g] > 0;
         perm := FullPerm;
-        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.f (basic.vpr@34.10--34.20) [154407]"}
+        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.f (basic.vpr@34.10--34.20) [51197]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := 1 / 2;
-        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@34.10--34.20) [154408]"}
+        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@34.10--34.20) [51198]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@34.10--34.20) [154409]"}
+        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@34.10--34.20) [51199]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -728,7 +728,7 @@ procedure test2() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion add3(x, 5) == 0 might not hold. (basic.vpr@34.10--34.25) [154410]"}
+    assert {:msg "  Assert might fail. Assertion add3(x, 5) == 0 might not hold. (basic.vpr@34.10--34.25) [51200]"}
       add3(Heap, x, 5) == 0;
     assume state(Heap, Mask);
   
@@ -742,19 +742,19 @@ procedure test2() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@36.10--36.20) [154411]"}
+        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@36.10--36.20) [51201]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@36.10--36.20) [154412]"}
+        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@36.10--36.20) [51202]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
-        assert {:msg "  Precondition of function add3 might not hold. Assertion x.g > 0 might not hold. (basic.vpr@36.10--36.20) [154413]"}
+        assert {:msg "  Precondition of function add3 might not hold. Assertion x.g > 0 might not hold. (basic.vpr@36.10--36.20) [51203]"}
           ExhaleWellDef0Heap[x, g] > 0;
         perm := FullPerm;
-        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.f (basic.vpr@36.10--36.20) [154414]"}
+        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.f (basic.vpr@36.10--36.20) [51204]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := 1 / 2;
-        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@36.10--36.20) [154415]"}
+        assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@36.10--36.20) [51205]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@36.10--36.20) [154416]"}
+        assert {:msg "  Precondition of function add3 might not hold. There might be insufficient permission to access x.g (basic.vpr@36.10--36.20) [51206]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -768,10 +768,10 @@ procedure test2() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@36.24--36.30) [154417]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@36.24--36.30) [51207]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.g (basic.vpr@36.24--36.30) [154418]"}
+        assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.g (basic.vpr@36.24--36.30) [51208]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -780,8 +780,8 @@ procedure test2() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion add3(x, 1) == add(x) might not hold. (basic.vpr@36.10--36.30) [154419]"}
-      add3(Heap, x, 1) == add_1(Heap, x);
+    assert {:msg "  Assert might fail. Assertion add3(x, 1) == add(x) might not hold. (basic.vpr@36.10--36.30) [51209]"}
+      add3(Heap, x, 1) == add(Heap, x);
     assume state(Heap, Mask);
 }
 
@@ -789,7 +789,7 @@ procedure test2() returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3() returns ()
+procedure test3_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -830,13 +830,13 @@ procedure test3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := 1 -- basic.vpr@46.3--46.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@46.3--46.11) [154420]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@46.3--46.11) [51210]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=1];
     assume state(Heap, Mask);
   
   // -- Translating statement: x.g := 2 -- basic.vpr@47.3--47.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (basic.vpr@47.3--47.11) [154421]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (basic.vpr@47.3--47.11) [51211]"}
       FullPerm == Mask[x, g];
     Heap := Heap[x, g:=2];
     assume state(Heap, Mask);
@@ -844,9 +844,9 @@ procedure test3() returns ()
   // -- Translating statement: b1 := x.f > x.g -- basic.vpr@48.3--48.28
     
     // -- Check definedness of x.f > x.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@48.3--48.28) [154422]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@48.3--48.28) [51212]"}
         HasDirectPerm(Mask, x, f_7);
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (basic.vpr@48.3--48.28) [154423]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (basic.vpr@48.3--48.28) [51213]"}
         HasDirectPerm(Mask, x, g);
     b1 := Heap[x, f_7] > Heap[x, g];
     assume state(Heap, Mask);
@@ -854,9 +854,9 @@ procedure test3() returns ()
   // -- Translating statement: b2 := x.f == x.g -- basic.vpr@49.3--49.29
     
     // -- Check definedness of x.f == x.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@49.3--49.29) [154424]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (basic.vpr@49.3--49.29) [51214]"}
         HasDirectPerm(Mask, x, f_7);
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (basic.vpr@49.3--49.29) [154425]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (basic.vpr@49.3--49.29) [51215]"}
         HasDirectPerm(Mask, x, g);
     b2 := Heap[x, f_7] == Heap[x, g];
     assume state(Heap, Mask);
@@ -872,11 +872,11 @@ procedure test3() returns ()
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         if (b1) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@50.10--50.21) [154426]"}
+          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@50.10--50.21) [51216]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         } else {
           perm := FullPerm;
-          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.g (basic.vpr@50.10--50.21) [154427]"}
+          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.g (basic.vpr@50.10--50.21) [51217]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         }
         // Finish exhale
@@ -886,9 +886,9 @@ procedure test3() returns ()
         // Stop execution
         assume false;
       }
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (basic.vpr@50.10--50.28) [154428]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (basic.vpr@50.10--50.28) [51218]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, g);
-    assert {:msg "  Assert might fail. Assertion tern(x, b1) == x.g might not hold. (basic.vpr@50.10--50.28) [154429]"}
+    assert {:msg "  Assert might fail. Assertion tern(x, b1) == x.g might not hold. (basic.vpr@50.10--50.28) [51219]"}
       tern(Heap, x, b1) == Heap[x, g];
     assume state(Heap, Mask);
   
@@ -903,11 +903,11 @@ procedure test3() returns ()
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         if (!b1) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@51.10--51.22) [154430]"}
+          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@51.10--51.22) [51220]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         } else {
           perm := FullPerm;
-          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.g (basic.vpr@51.10--51.22) [154431]"}
+          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.g (basic.vpr@51.10--51.22) [51221]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         }
         // Finish exhale
@@ -917,9 +917,9 @@ procedure test3() returns ()
         // Stop execution
         assume false;
       }
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (basic.vpr@51.10--51.29) [154432]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (basic.vpr@51.10--51.29) [51222]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion tern(x, !b1) == x.f might not hold. (basic.vpr@51.10--51.29) [154433]"}
+    assert {:msg "  Assert might fail. Assertion tern(x, !b1) == x.f might not hold. (basic.vpr@51.10--51.29) [51223]"}
       tern(Heap, x, !b1) == Heap[x, f_7];
     assume state(Heap, Mask);
   
@@ -934,11 +934,11 @@ procedure test3() returns ()
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         if (b2) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@52.10--52.21) [154434]"}
+          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@52.10--52.21) [51224]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         } else {
           perm := FullPerm;
-          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.g (basic.vpr@52.10--52.21) [154435]"}
+          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.g (basic.vpr@52.10--52.21) [51225]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         }
         // Finish exhale
@@ -948,7 +948,7 @@ procedure test3() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tern(x, b2) > 0 might not hold. (basic.vpr@52.10--52.25) [154436]"}
+    assert {:msg "  Assert might fail. Assertion tern(x, b2) > 0 might not hold. (basic.vpr@52.10--52.25) [51226]"}
       tern(Heap, x, b2) > 0;
     assume state(Heap, Mask);
   
@@ -963,11 +963,11 @@ procedure test3() returns ()
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         if (!b2) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@54.10--54.22) [154437]"}
+          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@54.10--54.22) [51227]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         } else {
           perm := FullPerm;
-          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.g (basic.vpr@54.10--54.22) [154438]"}
+          assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.g (basic.vpr@54.10--54.22) [51228]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         }
         // Finish exhale
@@ -977,7 +977,7 @@ procedure test3() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tern(x, !b2) > 1 might not hold. (basic.vpr@54.10--54.26) [154439]"}
+    assert {:msg "  Assert might fail. Assertion tern(x, !b2) > 1 might not hold. (basic.vpr@54.10--54.26) [51229]"}
       tern(Heap, x, !b2) > 1;
     assume state(Heap, Mask);
 }

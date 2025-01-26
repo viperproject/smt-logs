@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:35
+// Date:         2025-01-26 21:43:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/internal-bug-6.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/internal-bug-6-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,11 +181,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo_2(Heap: HeapType, this: Ref): Ref;
+function  foo_1(Heap: HeapType, this: Ref): Ref;
 function  foo'(Heap: HeapType, this: Ref): Ref;
 axiom (forall Heap: HeapType, this: Ref ::
-  { foo_2(Heap, this) }
-  foo_2(Heap, this) == foo'(Heap, this) && dummyFunction(foo#triggerStateless(this))
+  { foo_1(Heap, this) }
+  foo_1(Heap, this) == foo'(Heap, this) && dummyFunction(foo#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { foo'(Heap, this) }
@@ -194,8 +194,8 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), foo_2(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_2(Heap, this) == this
+  { state(Heap, Mask), foo_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_1(Heap, this) == this
 );
 
 // Framing axioms
@@ -206,7 +206,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
 );
 
 // Trigger function (controlling recursive postconditions)
-function  foo#trigger(frame: FrameType, this: Ref): bool;
+function  foo#trigger_1(frame: FrameType, this: Ref): bool;
 
 // State-independent trigger function
 function  foo#triggerStateless(this: Ref): Ref;
@@ -231,11 +231,11 @@ procedure foo#definedness(this: Ref) returns (Result: Ref)
 // Translation of method m
 // ==================================================
 
-procedure m(this: Ref, b_24: bool) returns ()
+procedure m_17(this: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var c: Ref;
   
   // -- Initializing the state
@@ -250,8 +250,8 @@ procedure m(this: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[c, $allocated];
@@ -266,6 +266,6 @@ procedure m(this: Ref, b_24: bool) returns ()
           assume false;
         }
       }
-    c := (if b_24 then null else foo_2(Heap, this));
+    c := (if b_24 then null else foo_1(Heap, this));
     assume state(Heap, Mask);
 }

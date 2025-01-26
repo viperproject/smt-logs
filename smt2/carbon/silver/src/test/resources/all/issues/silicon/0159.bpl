@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:51
+// Date:         2025-01-26 21:42:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0159.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0159-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,22 +177,22 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of method test1
 // ==================================================
 
-procedure test1(this: Ref) returns ()
+procedure test1_1(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -206,26 +206,26 @@ procedure test1(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(this.x, write) && false -- 0159.vpr@10.3--11.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (0159.vpr@10.11--11.16) [202896]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (0159.vpr@10.11--11.16) [68948]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
-    assert {:msg "  Exhale might fail. Assertion false might not hold. (0159.vpr@10.11--11.16) [202897]"}
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
+    assert {:msg "  Exhale might fail. Assertion false might not hold. (0159.vpr@10.11--11.16) [68949]"}
       false;
     // Finish exhale
     havoc ExhaleHeap;
@@ -238,14 +238,14 @@ procedure test1(this: Ref) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(this: Ref) returns ()
+procedure test2_1(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -258,20 +258,20 @@ procedure test2(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale true && false -- 0159.vpr@18.3--19.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Exhale might fail. Assertion false might not hold. (0159.vpr@18.11--19.16) [202899]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Exhale might fail. Assertion false might not hold. (0159.vpr@18.11--19.16) [68951]"}
       false;
     assume state(Heap, Mask);
 }

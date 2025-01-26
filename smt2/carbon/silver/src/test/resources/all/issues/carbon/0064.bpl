@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:34
+// Date:         2025-01-26 21:43:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0064.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0064-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -248,7 +248,7 @@ procedure Nodesize#definedness(this: Ref) returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Nodesize might not hold. Assertion result > 0 might not hold. (0064.vpr@7.11--7.21) [191054]"}
+    assert {:msg "  Postcondition of Nodesize might not hold. Assertion result > 0 might not hold. (0064.vpr@7.11--7.21) [83030]"}
       Result > 0;
 }
 
@@ -355,10 +355,10 @@ procedure Nodeinit(this: Ref, v_2: int) returns (k: Perm)
             // Exhale precondition of function application
             ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function Nodesize might not hold. Assertion this != null might not hold. (0064.vpr@18.45--18.59) [191055]"}
+            assert {:msg "  Precondition of function Nodesize might not hold. Assertion this != null might not hold. (0064.vpr@18.45--18.59) [83031]"}
               this != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Nodesize might not hold. There might be insufficient permission to access Nodevalid(this) (0064.vpr@18.45--18.59) [191056]"}
+            assert {:msg "  Precondition of function Nodesize might not hold. There might be insufficient permission to access Nodevalid(this) (0064.vpr@18.45--18.59) [83032]"}
               NoPerm < perm ==> NoPerm < PostMask[null, Nodevalid(this)];
             // Finish exhale
             havoc ExhaleHeap;

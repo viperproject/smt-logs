@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:53
+// Date:         2025-01-26 21:42:49
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0092.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0092-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_78: Ref, f_64: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_78, f_64] }
-  Heap[o_78, $allocated] ==> Heap[Heap[o_78, f_64], $allocated]
+axiom (forall o_22: Ref, f_32: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_22, f_32] }
+  Heap[o_22, $allocated] ==> Heap[Heap[o_22, f_32], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_80: Ref, f_192: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_80, f_192] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_80, f_192) ==> Heap[o_80, f_192] == ExhaleHeap[o_80, f_192]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_69: Ref, f_130: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_69, f_130] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_69, f_130) ==> Heap[o_69, f_130] == ExhaleHeap[o_69, f_130]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_57: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_57), ExhaleHeap[null, PredicateMaskField(pm_f_57)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_57) && IsPredicateField(pm_f_57) ==> Heap[null, PredicateMaskField(pm_f_57)] == ExhaleHeap[null, PredicateMaskField(pm_f_57)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_41: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_41), ExhaleHeap[null, PredicateMaskField(pm_f_41)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_41) && IsPredicateField(pm_f_41) ==> Heap[null, PredicateMaskField(pm_f_41)] == ExhaleHeap[null, PredicateMaskField(pm_f_41)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_57: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_57) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_57) && IsPredicateField(pm_f_57) ==> (forall <A, B> o2_57: Ref, f_192: (Field A B) ::
-    { ExhaleHeap[o2_57, f_192] }
-    Heap[null, PredicateMaskField(pm_f_57)][o2_57, f_192] ==> Heap[o2_57, f_192] == ExhaleHeap[o2_57, f_192]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_41: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_41) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_41) && IsPredicateField(pm_f_41) ==> (forall <A, B> o2_41: Ref, f_130: (Field A B) ::
+    { ExhaleHeap[o2_41, f_130] }
+    Heap[null, PredicateMaskField(pm_f_41)][o2_41, f_130] ==> Heap[o2_41, f_130] == ExhaleHeap[o2_41, f_130]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_57: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_57), ExhaleHeap[null, WandMaskField(pm_f_57)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_57) && IsWandField(pm_f_57) ==> Heap[null, WandMaskField(pm_f_57)] == ExhaleHeap[null, WandMaskField(pm_f_57)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_41: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_41), ExhaleHeap[null, WandMaskField(pm_f_41)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_41) && IsWandField(pm_f_41) ==> Heap[null, WandMaskField(pm_f_41)] == ExhaleHeap[null, WandMaskField(pm_f_41)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_57: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_57) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_57) && IsWandField(pm_f_57) ==> (forall <A, B> o2_57: Ref, f_192: (Field A B) ::
-    { ExhaleHeap[o2_57, f_192] }
-    Heap[null, WandMaskField(pm_f_57)][o2_57, f_192] ==> Heap[o2_57, f_192] == ExhaleHeap[o2_57, f_192]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_41: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_41) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_41) && IsWandField(pm_f_41) ==> (forall <A, B> o2_41: Ref, f_130: (Field A B) ::
+    { ExhaleHeap[o2_41, f_130] }
+    Heap[null, WandMaskField(pm_f_41)][o2_41, f_130] ==> Heap[o2_41, f_130] == ExhaleHeap[o2_41, f_130]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_80: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_80, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_80, $allocated] ==> ExhaleHeap[o_80, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_69: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_69, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_69, $allocated] ==> ExhaleHeap[o_69, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_78: Ref, f_86: (Field A B), v: B ::
-  { Heap[o_78, f_86:=v] }
-  succHeap(Heap, Heap[o_78, f_86:=v])
+axiom (forall <A, B> Heap: HeapType, o_22: Ref, f_69: (Field A B), v: B ::
+  { Heap[o_22, f_69:=v] }
+  succHeap(Heap, Heap[o_22, f_69:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -241,7 +241,7 @@ procedure P#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(Q(x.g), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@7.1--9.2) [200740]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@7.1--9.2) [73476]"}
         HasDirectPerm(Mask, x, g);
     perm := FullPerm;
     Mask := Mask[null, Q(Heap[x, g]):=Mask[null, Q(Heap[x, g])] + perm];
@@ -256,7 +256,7 @@ procedure P#definedness(x: Ref) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access Q(x.g) (0092.vpr@7.1--9.2) [200741]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access Q(x.g) (0092.vpr@7.1--9.2) [73477]"}
           perm <= UnfoldingMask[null, Q(UnfoldingHeap[x, g])];
       }
       UnfoldingMask := UnfoldingMask[null, Q(UnfoldingHeap[x, g]):=UnfoldingMask[null, Q(UnfoldingHeap[x, g])] - perm];
@@ -265,11 +265,11 @@ procedure P#definedness(x: Ref) returns ()
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[x, g], f_7:=UnfoldingMask[UnfoldingHeap[x, g], f_7] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@7.1--9.2) [200742]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@7.1--9.2) [73478]"}
         HasDirectPerm(UnfoldingMask, x, g);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@7.1--9.2) [200743]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@7.1--9.2) [73479]"}
         HasDirectPerm(UnfoldingMask, x, g);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g.f (0092.vpr@7.1--9.2) [200744]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g.f (0092.vpr@7.1--9.2) [73480]"}
         HasDirectPerm(UnfoldingMask, UnfoldingHeap[x, g], f_7);
       
       // -- Free assumptions (exp module)
@@ -412,12 +412,12 @@ procedure Rec#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.g != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@23.1--25.2) [200745]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@23.1--25.2) [73481]"}
         HasDirectPerm(Mask, x, g);
     if (Heap[x, g] != null) {
       
       // -- Check definedness of acc(Rec(x.g), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@23.1--25.2) [200746]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@23.1--25.2) [73482]"}
           HasDirectPerm(Mask, x, g);
       perm := FullPerm;
       Mask := Mask[null, Rec(Heap[x, g]):=Mask[null, Rec(Heap[x, g])] + perm];
@@ -432,7 +432,7 @@ procedure Rec#definedness(x: Ref) returns ()
         ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access Rec(x.g) (0092.vpr@23.1--25.2) [200747]"}
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access Rec(x.g) (0092.vpr@23.1--25.2) [73483]"}
             perm <= UnfoldingMask[null, Rec(UnfoldingHeap[x, g])];
         }
         UnfoldingMask := UnfoldingMask[null, Rec(UnfoldingHeap[x, g]):=UnfoldingMask[null, Rec(UnfoldingHeap[x, g])] - perm];
@@ -483,9 +483,9 @@ procedure Rec#definedness(x: Ref) returns ()
                 Unfolding1Heap := Unfolding1Heap[null, Rec#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g]):=Unfolding1Heap[null, Rec#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g])][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g:=true]];
                 if (Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g] != null) {
                   havoc newPMask;
-                  assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-                    { newPMask[o_16, f_21] }
-                    Unfolding1Heap[null, Rec#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g])][o_16, f_21] || Unfolding1Heap[null, Rec#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g])][o_16, f_21] ==> newPMask[o_16, f_21]
+                  assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+                    { newPMask[o_6, f_12] }
+                    Unfolding1Heap[null, Rec#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g])][o_6, f_12] || Unfolding1Heap[null, Rec#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g])][o_6, f_12] ==> newPMask[o_6, f_12]
                   );
                   Unfolding1Heap := Unfolding1Heap[null, Rec#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g]):=newPMask];
                 }
@@ -499,22 +499,22 @@ procedure Rec#definedness(x: Ref) returns ()
             UnfoldingHeap := UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][UnfoldingHeap[UnfoldingHeap[x, g], g], g:=true]];
             if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-                { newPMask[o_15, f_20] }
-                UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_15, f_20] || UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_15, f_20] ==> newPMask[o_15, f_20]
+              assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+                { newPMask[o_5, f_11] }
+                UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_5, f_11] || UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_5, f_11] ==> newPMask[o_5, f_11]
               );
               UnfoldingHeap := UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=newPMask];
             }
             assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@23.1--25.2) [200748]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@23.1--25.2) [73484]"}
           HasDirectPerm(UnfoldingMask, x, g);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0092.vpr@23.1--25.2) [200749]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0092.vpr@23.1--25.2) [73485]"}
           HasDirectPerm(UnfoldingMask, x, f_7);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@23.1--25.2) [200750]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@23.1--25.2) [73486]"}
           HasDirectPerm(UnfoldingMask, x, g);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g.f (0092.vpr@23.1--25.2) [200751]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g.f (0092.vpr@23.1--25.2) [73487]"}
           HasDirectPerm(UnfoldingMask, UnfoldingHeap[x, g], f_7);
         
         // -- Free assumptions (exp module)
@@ -522,9 +522,9 @@ procedure Rec#definedness(x: Ref) returns ()
           Heap := Heap[null, Rec#sm(Heap[x, g]):=Heap[null, Rec#sm(Heap[x, g])][Heap[x, g], g:=true]];
           if (Heap[Heap[x, g], g] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-              { newPMask[o_52, f_55] }
-              Heap[null, Rec#sm(Heap[x, g])][o_52, f_55] || Heap[null, Rec#sm(Heap[Heap[x, g], g])][o_52, f_55] ==> newPMask[o_52, f_55]
+            assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+              { newPMask[o_40, f_52] }
+              Heap[null, Rec#sm(Heap[x, g])][o_40, f_52] || Heap[null, Rec#sm(Heap[Heap[x, g], g])][o_40, f_52] ==> newPMask[o_40, f_52]
             );
             Heap := Heap[null, Rec#sm(Heap[x, g]):=newPMask];
           }
@@ -561,9 +561,9 @@ procedure Rec#definedness(x: Ref) returns ()
             UnfoldingHeap := UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][UnfoldingHeap[UnfoldingHeap[x, g], g], g:=true]];
             if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-                { newPMask[o_53, f_56] }
-                UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_53, f_56] || UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_53, f_56] ==> newPMask[o_53, f_56]
+              assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+                { newPMask[o_42, f_55] }
+                UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_42, f_55] || UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_42, f_55] ==> newPMask[o_42, f_55]
               );
               UnfoldingHeap := UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=newPMask];
             }
@@ -639,12 +639,12 @@ procedure MRecA#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.g != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@39.1--41.2) [200752]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@39.1--41.2) [73488]"}
         HasDirectPerm(Mask, x, g);
     if (Heap[x, g] != null) {
       
       // -- Check definedness of acc(MRecB(x.g), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@39.1--41.2) [200753]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@39.1--41.2) [73489]"}
           HasDirectPerm(Mask, x, g);
       perm := FullPerm;
       Mask := Mask[null, MRecB(Heap[x, g]):=Mask[null, MRecB(Heap[x, g])] + perm];
@@ -659,7 +659,7 @@ procedure MRecA#definedness(x: Ref) returns ()
         ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access MRecB(x.g) (0092.vpr@39.1--41.2) [200754]"}
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access MRecB(x.g) (0092.vpr@39.1--41.2) [73490]"}
             perm <= UnfoldingMask[null, MRecB(UnfoldingHeap[x, g])];
         }
         UnfoldingMask := UnfoldingMask[null, MRecB(UnfoldingHeap[x, g]):=UnfoldingMask[null, MRecB(UnfoldingHeap[x, g])] - perm];
@@ -710,9 +710,9 @@ procedure MRecA#definedness(x: Ref) returns ()
                 Unfolding1Heap := Unfolding1Heap[null, MRecB#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g]):=Unfolding1Heap[null, MRecB#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g])][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g:=true]];
                 if (Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g] != null) {
                   havoc newPMask;
-                  assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-                    { newPMask[o, f_85] }
-                    Unfolding1Heap[null, MRecB#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g])][o, f_85] || Unfolding1Heap[null, MRecA#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g])][o, f_85] ==> newPMask[o, f_85]
+                  assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+                    { newPMask[o, f_61] }
+                    Unfolding1Heap[null, MRecB#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g])][o, f_61] || Unfolding1Heap[null, MRecA#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g])][o, f_61] ==> newPMask[o, f_61]
                   );
                   Unfolding1Heap := Unfolding1Heap[null, MRecB#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g]):=newPMask];
                 }
@@ -726,22 +726,22 @@ procedure MRecA#definedness(x: Ref) returns ()
             UnfoldingHeap := UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][UnfoldingHeap[UnfoldingHeap[x, g], g], g:=true]];
             if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-                { newPMask[o_26, f_29] }
-                UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_26, f_29] || UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_26, f_29] ==> newPMask[o_26, f_29]
+              assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+                { newPMask[o_46, f_60] }
+                UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_46, f_60] || UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_46, f_60] ==> newPMask[o_46, f_60]
               );
               UnfoldingHeap := UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=newPMask];
             }
             assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@39.1--41.2) [200755]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@39.1--41.2) [73491]"}
           HasDirectPerm(UnfoldingMask, x, g);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0092.vpr@39.1--41.2) [200756]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0092.vpr@39.1--41.2) [73492]"}
           HasDirectPerm(UnfoldingMask, x, f_7);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@39.1--41.2) [200757]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@39.1--41.2) [73493]"}
           HasDirectPerm(UnfoldingMask, x, g);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g.f (0092.vpr@39.1--41.2) [200758]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g.f (0092.vpr@39.1--41.2) [73494]"}
           HasDirectPerm(UnfoldingMask, UnfoldingHeap[x, g], f_7);
         
         // -- Free assumptions (exp module)
@@ -749,9 +749,9 @@ procedure MRecA#definedness(x: Ref) returns ()
           Heap := Heap[null, MRecB#sm(Heap[x, g]):=Heap[null, MRecB#sm(Heap[x, g])][Heap[x, g], g:=true]];
           if (Heap[Heap[x, g], g] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-              { newPMask[o_11, f_3] }
-              Heap[null, MRecB#sm(Heap[x, g])][o_11, f_3] || Heap[null, MRecA#sm(Heap[Heap[x, g], g])][o_11, f_3] ==> newPMask[o_11, f_3]
+            assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+              { newPMask[o_14, f_3] }
+              Heap[null, MRecB#sm(Heap[x, g])][o_14, f_3] || Heap[null, MRecA#sm(Heap[Heap[x, g], g])][o_14, f_3] ==> newPMask[o_14, f_3]
             );
             Heap := Heap[null, MRecB#sm(Heap[x, g]):=newPMask];
           }
@@ -788,9 +788,9 @@ procedure MRecA#definedness(x: Ref) returns ()
             UnfoldingHeap := UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][UnfoldingHeap[UnfoldingHeap[x, g], g], g:=true]];
             if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-                { newPMask[o_35, f_17] }
-                UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_35, f_17] || UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_35, f_17] ==> newPMask[o_35, f_17]
+              assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+                { newPMask[o_3, f_24] }
+                UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_3, f_24] || UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_3, f_24] ==> newPMask[o_3, f_24]
               );
               UnfoldingHeap := UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=newPMask];
             }
@@ -866,12 +866,12 @@ procedure MRecB#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.g != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@43.1--45.2) [200759]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@43.1--45.2) [73495]"}
         HasDirectPerm(Mask, x, g);
     if (Heap[x, g] != null) {
       
       // -- Check definedness of acc(MRecA(x.g), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@43.1--45.2) [200760]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@43.1--45.2) [73496]"}
           HasDirectPerm(Mask, x, g);
       perm := FullPerm;
       Mask := Mask[null, MRecA(Heap[x, g]):=Mask[null, MRecA(Heap[x, g])] + perm];
@@ -886,7 +886,7 @@ procedure MRecB#definedness(x: Ref) returns ()
         ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access MRecA(x.g) (0092.vpr@43.1--45.2) [200761]"}
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access MRecA(x.g) (0092.vpr@43.1--45.2) [73497]"}
             perm <= UnfoldingMask[null, MRecA(UnfoldingHeap[x, g])];
         }
         UnfoldingMask := UnfoldingMask[null, MRecA(UnfoldingHeap[x, g]):=UnfoldingMask[null, MRecA(UnfoldingHeap[x, g])] - perm];
@@ -937,9 +937,9 @@ procedure MRecB#definedness(x: Ref) returns ()
                 Unfolding1Heap := Unfolding1Heap[null, MRecA#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g]):=Unfolding1Heap[null, MRecA#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g])][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g:=true]];
                 if (Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g] != null) {
                   havoc newPMask;
-                  assume (forall <A, B> o_12: Ref, f_9: (Field A B) ::
-                    { newPMask[o_12, f_9] }
-                    Unfolding1Heap[null, MRecA#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g])][o_12, f_9] || Unfolding1Heap[null, MRecB#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g])][o_12, f_9] ==> newPMask[o_12, f_9]
+                  assume (forall <A, B> o_15: Ref, f_51: (Field A B) ::
+                    { newPMask[o_15, f_51] }
+                    Unfolding1Heap[null, MRecA#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g])][o_15, f_51] || Unfolding1Heap[null, MRecB#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g], g])][o_15, f_51] ==> newPMask[o_15, f_51]
                   );
                   Unfolding1Heap := Unfolding1Heap[null, MRecA#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, g], g], g]):=newPMask];
                 }
@@ -953,22 +953,22 @@ procedure MRecB#definedness(x: Ref) returns ()
             UnfoldingHeap := UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][UnfoldingHeap[UnfoldingHeap[x, g], g], g:=true]];
             if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_1: Ref, f_11: (Field A B) ::
-                { newPMask[o_1, f_11] }
-                UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_1, f_11] || UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_1, f_11] ==> newPMask[o_1, f_11]
+              assume (forall <A, B> o_1: Ref, f_10: (Field A B) ::
+                { newPMask[o_1, f_10] }
+                UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_1, f_10] || UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_1, f_10] ==> newPMask[o_1, f_10]
               );
               UnfoldingHeap := UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=newPMask];
             }
             assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@43.1--45.2) [200762]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@43.1--45.2) [73498]"}
           HasDirectPerm(UnfoldingMask, x, g);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0092.vpr@43.1--45.2) [200763]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0092.vpr@43.1--45.2) [73499]"}
           HasDirectPerm(UnfoldingMask, x, f_7);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@43.1--45.2) [200764]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (0092.vpr@43.1--45.2) [73500]"}
           HasDirectPerm(UnfoldingMask, x, g);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g.f (0092.vpr@43.1--45.2) [200765]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g.f (0092.vpr@43.1--45.2) [73501]"}
           HasDirectPerm(UnfoldingMask, UnfoldingHeap[x, g], f_7);
         
         // -- Free assumptions (exp module)
@@ -976,9 +976,9 @@ procedure MRecB#definedness(x: Ref) returns ()
           Heap := Heap[null, MRecA#sm(Heap[x, g]):=Heap[null, MRecA#sm(Heap[x, g])][Heap[x, g], g:=true]];
           if (Heap[Heap[x, g], g] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_22: Ref, f_24: (Field A B) ::
-              { newPMask[o_22, f_24] }
-              Heap[null, MRecA#sm(Heap[x, g])][o_22, f_24] || Heap[null, MRecB#sm(Heap[Heap[x, g], g])][o_22, f_24] ==> newPMask[o_22, f_24]
+            assume (forall <A, B> o_4: Ref, f_54: (Field A B) ::
+              { newPMask[o_4, f_54] }
+              Heap[null, MRecA#sm(Heap[x, g])][o_4, f_54] || Heap[null, MRecB#sm(Heap[Heap[x, g], g])][o_4, f_54] ==> newPMask[o_4, f_54]
             );
             Heap := Heap[null, MRecA#sm(Heap[x, g]):=newPMask];
           }
@@ -1015,9 +1015,9 @@ procedure MRecB#definedness(x: Ref) returns ()
             UnfoldingHeap := UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][UnfoldingHeap[UnfoldingHeap[x, g], g], g:=true]];
             if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_3: Ref, f_12: (Field A B) ::
-                { newPMask[o_3, f_12] }
-                UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_3, f_12] || UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_3, f_12] ==> newPMask[o_3, f_12]
+              assume (forall <A, B> o_12: Ref, f_25: (Field A B) ::
+                { newPMask[o_12, f_25] }
+                UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_12, f_25] || UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_12, f_25] ==> newPMask[o_12, f_25]
               );
               UnfoldingHeap := UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=newPMask];
             }
@@ -1083,7 +1083,7 @@ procedure test01(x: Ref) returns ()
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0092.vpr@18.10--18.68) [200766]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0092.vpr@18.10--18.68) [73502]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
@@ -1126,7 +1126,7 @@ procedure test01(x: Ref) returns ()
       ExhaleWellDef1Mask := Unfolding1Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access Q(x.g) (0092.vpr@18.10--18.68) [200767]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access Q(x.g) (0092.vpr@18.10--18.68) [73503]"}
           perm <= Unfolding1Mask[null, Q(Unfolding1Heap[x, g])];
       }
       Unfolding1Mask := Unfolding1Mask[null, Q(Unfolding1Heap[x, g]):=Unfolding1Mask[null, Q(Unfolding1Heap[x, g])] - perm];
@@ -1135,11 +1135,11 @@ procedure test01(x: Ref) returns ()
       Unfolding1Mask := Unfolding1Mask[Unfolding1Heap[x, g], f_7:=Unfolding1Mask[Unfolding1Heap[x, g], f_7] + perm];
       assume state(Unfolding1Heap, Unfolding1Mask);
       assume state(Unfolding1Heap, Unfolding1Mask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0092.vpr@18.10--18.68) [200768]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0092.vpr@18.10--18.68) [73504]"}
         HasDirectPerm(Unfolding1Mask, x, g);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0092.vpr@18.10--18.68) [200769]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0092.vpr@18.10--18.68) [73505]"}
         HasDirectPerm(Unfolding1Mask, x, g);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g.f (0092.vpr@18.10--18.68) [200770]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g.f (0092.vpr@18.10--18.68) [73506]"}
         HasDirectPerm(Unfolding1Mask, Heap[x, g], f_7);
       
       // -- Free assumptions (exp module)
@@ -1149,23 +1149,23 @@ procedure test01(x: Ref) returns ()
       // -- Free assumptions (exp module)
         Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, g:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_46: Ref, f_35: (Field A B) ::
-          { newPMask[o_46, f_35] }
-          Heap[null, P#sm(x)][o_46, f_35] || Heap[null, Q#sm(Heap[x, g])][o_46, f_35] ==> newPMask[o_46, f_35]
+        assume (forall <A, B> o_41: Ref, f_21: (Field A B) ::
+          { newPMask[o_41, f_21] }
+          Heap[null, P#sm(x)][o_41, f_21] || Heap[null, Q#sm(Heap[x, g])][o_41, f_21] ==> newPMask[o_41, f_21]
         );
         Heap := Heap[null, P#sm(x):=newPMask];
         assume state(Heap, Mask);
         Heap := Heap[null, Q#sm(Heap[x, g]):=Heap[null, Q#sm(Heap[x, g])][Heap[x, g], f_7:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Assert might fail. Assertion x.g.f != 0 might not hold. (0092.vpr@18.10--18.68) [200771]"}
+    assert {:msg "  Assert might fail. Assertion x.g.f != 0 might not hold. (0092.vpr@18.10--18.68) [73507]"}
       Heap[Heap[x, g], f_7] != 0;
     
     // -- Free assumptions (exhale module)
       Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, g:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_41: Ref, f_25: (Field A B) ::
-        { newPMask[o_41, f_25] }
-        Heap[null, P#sm(x)][o_41, f_25] || Heap[null, Q#sm(Heap[x, g])][o_41, f_25] ==> newPMask[o_41, f_25]
+      assume (forall <A, B> o_23: Ref, f_13: (Field A B) ::
+        { newPMask[o_23, f_13] }
+        Heap[null, P#sm(x)][o_23, f_13] || Heap[null, Q#sm(Heap[x, g])][o_23, f_13] ==> newPMask[o_23, f_13]
       );
       Heap := Heap[null, P#sm(x):=newPMask];
       assume state(Heap, Mask);
@@ -1218,7 +1218,7 @@ procedure test02(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Rec(x) might fail. There might be insufficient permission to access Rec(x) (0092.vpr@30.3--30.21) [200774]"}
+      assert {:msg "  Unfolding Rec(x) might fail. There might be insufficient permission to access Rec(x) (0092.vpr@30.3--30.21) [73510]"}
         perm <= Mask[null, Rec(x)];
     }
     Mask := Mask[null, Rec(x):=Mask[null, Rec(x)] - perm];
@@ -1275,9 +1275,9 @@ procedure test02(x: Ref) returns ()
             UnfoldingHeap := UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][UnfoldingHeap[UnfoldingHeap[x, g], g], g:=true]];
             if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_55: Ref, f_36: (Field A B) ::
-                { newPMask[o_55, f_36] }
-                UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_55, f_36] || UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_55, f_36] ==> newPMask[o_55, f_36]
+              assume (forall <A, B> o_51: Ref, f_66: (Field A B) ::
+                { newPMask[o_51, f_66] }
+                UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_51, f_66] || UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_51, f_66] ==> newPMask[o_51, f_66]
               );
               UnfoldingHeap := UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=newPMask];
             }
@@ -1291,9 +1291,9 @@ procedure test02(x: Ref) returns ()
         Heap := Heap[null, Rec#sm(Heap[x, g]):=Heap[null, Rec#sm(Heap[x, g])][Heap[x, g], g:=true]];
         if (Heap[Heap[x, g], g] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_34: Ref, f_44: (Field A B) ::
-            { newPMask[o_34, f_44] }
-            Heap[null, Rec#sm(Heap[x, g])][o_34, f_44] || Heap[null, Rec#sm(Heap[Heap[x, g], g])][o_34, f_44] ==> newPMask[o_34, f_44]
+          assume (forall <A, B> o_13: Ref, f_65: (Field A B) ::
+            { newPMask[o_13, f_65] }
+            Heap[null, Rec#sm(Heap[x, g])][o_13, f_65] || Heap[null, Rec#sm(Heap[Heap[x, g], g])][o_13, f_65] ==> newPMask[o_13, f_65]
           );
           Heap := Heap[null, Rec#sm(Heap[x, g]):=newPMask];
         }
@@ -1305,7 +1305,7 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: inhale x.g != null -- 0092.vpr@31.10--31.21
     
     // -- Check definedness of x.g != null
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.g (0092.vpr@31.10--31.21) [200778]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.g (0092.vpr@31.10--31.21) [73514]"}
         HasDirectPerm(Mask, x, g);
     assume Heap[x, g] != null;
     assume state(Heap, Mask);
@@ -1314,7 +1314,7 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: unfold acc(Rec(x.g), write) -- 0092.vpr@32.3--32.23
     
     // -- Check definedness of acc(Rec(x.g), write)
-      assert {:msg "  Unfolding Rec(x.g) might fail. There might be insufficient permission to access x.g (0092.vpr@32.3--32.23) [200779]"}
+      assert {:msg "  Unfolding Rec(x.g) might fail. There might be insufficient permission to access x.g (0092.vpr@32.3--32.23) [73515]"}
         HasDirectPerm(Mask, x, g);
     assume Rec#trigger(Heap, Rec(Heap[x, g]));
     assume Heap[null, Rec(Heap[x, g])] == CombineFrames(FrameFragment(Heap[Heap[x, g], f_7]), CombineFrames(FrameFragment(Heap[Heap[x, g], g]), FrameFragment((if Heap[Heap[x, g], g] != null then Heap[null, Rec(Heap[Heap[x, g], g])] else EmptyFrame))));
@@ -1322,7 +1322,7 @@ procedure test02(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Rec(x.g) might fail. There might be insufficient permission to access Rec(x.g) (0092.vpr@32.3--32.23) [200782]"}
+      assert {:msg "  Unfolding Rec(x.g) might fail. There might be insufficient permission to access Rec(x.g) (0092.vpr@32.3--32.23) [73518]"}
         perm <= Mask[null, Rec(Heap[x, g])];
     }
     Mask := Mask[null, Rec(Heap[x, g]):=Mask[null, Rec(Heap[x, g])] - perm];
@@ -1379,9 +1379,9 @@ procedure test02(x: Ref) returns ()
             UnfoldingHeap := UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g]):=UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g], g:=true]];
             if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g], g] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_13: Ref, f_45: (Field A B) ::
-                { newPMask[o_13, f_45] }
-                UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_13, f_45] || UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g], g])][o_13, f_45] ==> newPMask[o_13, f_45]
+              assume (forall <A, B> o_20: Ref, f_50: (Field A B) ::
+                { newPMask[o_20, f_50] }
+                UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_20, f_50] || UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g], g])][o_20, f_50] ==> newPMask[o_20, f_50]
               );
               UnfoldingHeap := UnfoldingHeap[null, Rec#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g]):=newPMask];
             }
@@ -1395,9 +1395,9 @@ procedure test02(x: Ref) returns ()
         Heap := Heap[null, Rec#sm(Heap[Heap[x, g], g]):=Heap[null, Rec#sm(Heap[Heap[x, g], g])][Heap[Heap[x, g], g], g:=true]];
         if (Heap[Heap[Heap[x, g], g], g] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_42: Ref, f_26: (Field A B) ::
-            { newPMask[o_42, f_26] }
-            Heap[null, Rec#sm(Heap[Heap[x, g], g])][o_42, f_26] || Heap[null, Rec#sm(Heap[Heap[Heap[x, g], g], g])][o_42, f_26] ==> newPMask[o_42, f_26]
+          assume (forall <A, B> o_52: Ref, f_14: (Field A B) ::
+            { newPMask[o_52, f_14] }
+            Heap[null, Rec#sm(Heap[Heap[x, g], g])][o_52, f_14] || Heap[null, Rec#sm(Heap[Heap[Heap[x, g], g], g])][o_52, f_14] ==> newPMask[o_52, f_14]
           );
           Heap := Heap[null, Rec#sm(Heap[Heap[x, g], g]):=newPMask];
         }
@@ -1411,13 +1411,13 @@ procedure test02(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f < x.g.f
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0092.vpr@34.10--34.21) [200786]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0092.vpr@34.10--34.21) [73522]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0092.vpr@34.10--34.21) [200787]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0092.vpr@34.10--34.21) [73523]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, g);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g.f (0092.vpr@34.10--34.21) [200788]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g.f (0092.vpr@34.10--34.21) [73524]"}
         HasDirectPerm(ExhaleWellDef0Mask, Heap[x, g], f_7);
-    assert {:msg "  Assert might fail. Assertion x.f < x.g.f might not hold. (0092.vpr@34.10--34.21) [200789]"}
+    assert {:msg "  Assert might fail. Assertion x.f < x.g.f might not hold. (0092.vpr@34.10--34.21) [73525]"}
       Heap[x, f_7] < Heap[Heap[x, g], f_7];
     assume state(Heap, Mask);
 }
@@ -1466,7 +1466,7 @@ procedure test03(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding MRecA(x) might fail. There might be insufficient permission to access MRecA(x) (0092.vpr@50.3--50.23) [200792]"}
+      assert {:msg "  Unfolding MRecA(x) might fail. There might be insufficient permission to access MRecA(x) (0092.vpr@50.3--50.23) [73528]"}
         perm <= Mask[null, MRecA(x)];
     }
     Mask := Mask[null, MRecA(x):=Mask[null, MRecA(x)] - perm];
@@ -1523,9 +1523,9 @@ procedure test03(x: Ref) returns ()
             UnfoldingHeap := UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][UnfoldingHeap[UnfoldingHeap[x, g], g], g:=true]];
             if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_47: Ref, f_41: (Field A B) ::
-                { newPMask[o_47, f_41] }
-                UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_47, f_41] || UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_47, f_41] ==> newPMask[o_47, f_41]
+              assume (forall <A, B> o_10: Ref, f_67: (Field A B) ::
+                { newPMask[o_10, f_67] }
+                UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g])][o_10, f_67] || UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_10, f_67] ==> newPMask[o_10, f_67]
               );
               UnfoldingHeap := UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[x, g], g]):=newPMask];
             }
@@ -1539,9 +1539,9 @@ procedure test03(x: Ref) returns ()
         Heap := Heap[null, MRecB#sm(Heap[x, g]):=Heap[null, MRecB#sm(Heap[x, g])][Heap[x, g], g:=true]];
         if (Heap[Heap[x, g], g] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_43: Ref, f_13: (Field A B) ::
-            { newPMask[o_43, f_13] }
-            Heap[null, MRecB#sm(Heap[x, g])][o_43, f_13] || Heap[null, MRecA#sm(Heap[Heap[x, g], g])][o_43, f_13] ==> newPMask[o_43, f_13]
+          assume (forall <A, B> o_58: Ref, f_30: (Field A B) ::
+            { newPMask[o_58, f_30] }
+            Heap[null, MRecB#sm(Heap[x, g])][o_58, f_30] || Heap[null, MRecA#sm(Heap[Heap[x, g], g])][o_58, f_30] ==> newPMask[o_58, f_30]
           );
           Heap := Heap[null, MRecB#sm(Heap[x, g]):=newPMask];
         }
@@ -1553,7 +1553,7 @@ procedure test03(x: Ref) returns ()
   // -- Translating statement: inhale x.g != null -- 0092.vpr@51.10--51.21
     
     // -- Check definedness of x.g != null
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.g (0092.vpr@51.10--51.21) [200796]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.g (0092.vpr@51.10--51.21) [73532]"}
         HasDirectPerm(Mask, x, g);
     assume Heap[x, g] != null;
     assume state(Heap, Mask);
@@ -1562,7 +1562,7 @@ procedure test03(x: Ref) returns ()
   // -- Translating statement: unfold acc(MRecB(x.g), write) -- 0092.vpr@52.3--52.25
     
     // -- Check definedness of acc(MRecB(x.g), write)
-      assert {:msg "  Unfolding MRecB(x.g) might fail. There might be insufficient permission to access x.g (0092.vpr@52.3--52.25) [200797]"}
+      assert {:msg "  Unfolding MRecB(x.g) might fail. There might be insufficient permission to access x.g (0092.vpr@52.3--52.25) [73533]"}
         HasDirectPerm(Mask, x, g);
     assume MRecB#trigger(Heap, MRecB(Heap[x, g]));
     assume Heap[null, MRecB(Heap[x, g])] == CombineFrames(FrameFragment(Heap[Heap[x, g], f_7]), CombineFrames(FrameFragment(Heap[Heap[x, g], g]), FrameFragment((if Heap[Heap[x, g], g] != null then Heap[null, MRecA(Heap[Heap[x, g], g])] else EmptyFrame))));
@@ -1570,7 +1570,7 @@ procedure test03(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding MRecB(x.g) might fail. There might be insufficient permission to access MRecB(x.g) (0092.vpr@52.3--52.25) [200800]"}
+      assert {:msg "  Unfolding MRecB(x.g) might fail. There might be insufficient permission to access MRecB(x.g) (0092.vpr@52.3--52.25) [73536]"}
         perm <= Mask[null, MRecB(Heap[x, g])];
     }
     Mask := Mask[null, MRecB(Heap[x, g]):=Mask[null, MRecB(Heap[x, g])] - perm];
@@ -1627,9 +1627,9 @@ procedure test03(x: Ref) returns ()
             UnfoldingHeap := UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g]):=UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g], g:=true]];
             if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g], g] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_44: Ref, f_14: (Field A B) ::
-                { newPMask[o_44, f_14] }
-                UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_44, f_14] || UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g], g])][o_44, f_14] ==> newPMask[o_44, f_14]
+              assume (forall <A, B> o_66: Ref, f_28: (Field A B) ::
+                { newPMask[o_66, f_28] }
+                UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g])][o_66, f_28] || UnfoldingHeap[null, MRecA#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g], g])][o_66, f_28] ==> newPMask[o_66, f_28]
               );
               UnfoldingHeap := UnfoldingHeap[null, MRecB#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, g], g], g]):=newPMask];
             }
@@ -1643,9 +1643,9 @@ procedure test03(x: Ref) returns ()
         Heap := Heap[null, MRecA#sm(Heap[Heap[x, g], g]):=Heap[null, MRecA#sm(Heap[Heap[x, g], g])][Heap[Heap[x, g], g], g:=true]];
         if (Heap[Heap[Heap[x, g], g], g] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_14: Ref, f_51: (Field A B) ::
-            { newPMask[o_14, f_51] }
-            Heap[null, MRecA#sm(Heap[Heap[x, g], g])][o_14, f_51] || Heap[null, MRecB#sm(Heap[Heap[Heap[x, g], g], g])][o_14, f_51] ==> newPMask[o_14, f_51]
+          assume (forall <A, B> o_18: Ref, f_18: (Field A B) ::
+            { newPMask[o_18, f_18] }
+            Heap[null, MRecA#sm(Heap[Heap[x, g], g])][o_18, f_18] || Heap[null, MRecB#sm(Heap[Heap[Heap[x, g], g], g])][o_18, f_18] ==> newPMask[o_18, f_18]
           );
           Heap := Heap[null, MRecA#sm(Heap[Heap[x, g], g]):=newPMask];
         }
@@ -1659,13 +1659,13 @@ procedure test03(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f < x.g.f
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0092.vpr@54.10--54.21) [200804]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0092.vpr@54.10--54.21) [73540]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0092.vpr@54.10--54.21) [200805]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0092.vpr@54.10--54.21) [73541]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, g);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g.f (0092.vpr@54.10--54.21) [200806]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g.f (0092.vpr@54.10--54.21) [73542]"}
         HasDirectPerm(ExhaleWellDef0Mask, Heap[x, g], f_7);
-    assert {:msg "  Assert might fail. Assertion x.f < x.g.f might not hold. (0092.vpr@54.10--54.21) [200807]"}
+    assert {:msg "  Assert might fail. Assertion x.f < x.g.f might not hold. (0092.vpr@54.10--54.21) [73543]"}
       Heap[x, f_7] < Heap[Heap[x, g], f_7];
     assume state(Heap, Mask);
 }

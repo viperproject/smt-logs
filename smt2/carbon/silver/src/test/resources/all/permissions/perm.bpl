@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:24
+// Date:         2025-01-26 21:43:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/perm.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/perm-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -205,13 +205,13 @@ procedure test01a(c1: Ref, c2: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@7.12--7.60) [190344]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@7.12--7.60) [95660]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c1 != null;
     Mask := Mask[c1, val:=Mask[c1, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@7.12--7.60) [190345]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@7.12--7.60) [95661]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c2 != null;
     Mask := Mask[c2, val:=Mask[c2, val] + perm];
@@ -233,7 +233,7 @@ procedure test01a(c1: Ref, c2: Ref) returns ()
   // -- Translating statement: assert false -- perm.vpr@11.3--11.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@11.10--11.15) [190346]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@11.10--11.15) [95662]"}
       false;
     assume state(Heap, Mask);
 }
@@ -263,19 +263,19 @@ procedure test01b(c1: Ref, c2: Ref, c3: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@15.12--15.68) [190347]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@15.12--15.68) [95663]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c1 != null;
     Mask := Mask[c1, val:=Mask[c1, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@15.12--15.68) [190348]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@15.12--15.68) [95664]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c2 != null;
     Mask := Mask[c2, val:=Mask[c2, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@15.12--15.68) [190349]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@15.12--15.68) [95665]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c2 != null;
     Mask := Mask[c2, val:=Mask[c2, val] + perm];
@@ -298,7 +298,7 @@ procedure test01b(c1: Ref, c2: Ref, c3: Ref) returns ()
   // -- Translating statement: assert false -- perm.vpr@20.3--20.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@20.10--20.15) [190350]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@20.10--20.15) [95666]"}
       false;
     assume state(Heap, Mask);
 }
@@ -327,13 +327,13 @@ procedure test01c(c1: Ref, c2: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@24.12--24.48) [190351]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@24.12--24.48) [95667]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c1 != null;
     Mask := Mask[c1, val:=Mask[c1, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@24.12--24.48) [190352]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@24.12--24.48) [95668]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c2 != null;
     Mask := Mask[c2, val:=Mask[c2, val] + perm];
@@ -359,7 +359,7 @@ procedure test01c(c1: Ref, c2: Ref) returns ()
   // -- Translating statement: assert false -- perm.vpr@29.3--29.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@29.10--29.15) [190353]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@29.10--29.15) [95669]"}
       false;
     assume state(Heap, Mask);
 }
@@ -389,13 +389,13 @@ procedure test01d(c1: Ref, c2: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@33.12--33.48) [190354]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@33.12--33.48) [95670]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c1 != null;
     Mask := Mask[c1, val:=Mask[c1, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@33.12--33.48) [190355]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@33.12--33.48) [95671]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c2 != null;
     Mask := Mask[c2, val:=Mask[c2, val] + perm];
@@ -417,10 +417,10 @@ procedure test01d(c1: Ref, c2: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     perm := 1 / 2;
-    assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (perm.vpr@36.10--36.26) [190356]"}
+    assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (perm.vpr@36.10--36.26) [95672]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access c1.val (perm.vpr@36.10--36.26) [190357]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access c1.val (perm.vpr@36.10--36.26) [95673]"}
         perm <= Mask[c1, val];
     }
     Mask := Mask[c1, val:=Mask[c1, val] - perm];
@@ -438,7 +438,7 @@ procedure test01d(c1: Ref, c2: Ref) returns ()
   // -- Translating statement: assert false -- perm.vpr@39.3--39.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@39.10--39.15) [190358]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@39.10--39.15) [95674]"}
       false;
     assume state(Heap, Mask);
 }
@@ -467,13 +467,13 @@ procedure test02a(c1: Ref, c2: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@43.12--43.60) [190359]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@43.12--43.60) [95675]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c1 != null;
     Mask := Mask[c1, val:=Mask[c1, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@43.12--43.60) [190360]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@43.12--43.60) [95676]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c2 != null;
     Mask := Mask[c2, val:=Mask[c2, val] + perm];
@@ -490,7 +490,7 @@ procedure test02a(c1: Ref, c2: Ref) returns ()
   // -- Translating statement: assert perm(c1.val) <= 1 / 2 -- perm.vpr@46.3--46.29
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion perm(c1.val) <= 1 / 2 might not hold. (perm.vpr@46.10--46.29) [190361]"}
+    assert {:msg "  Assert might fail. Assertion perm(c1.val) <= 1 / 2 might not hold. (perm.vpr@46.10--46.29) [95677]"}
       Mask[c1, val] <= 1 / 2;
     assume state(Heap, Mask);
 }
@@ -520,19 +520,19 @@ procedure test02b(c1: Ref, c2: Ref, c3: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@50.12--50.68) [190362]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@50.12--50.68) [95678]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c1 != null;
     Mask := Mask[c1, val:=Mask[c1, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@50.12--50.68) [190363]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@50.12--50.68) [95679]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c2 != null;
     Mask := Mask[c2, val:=Mask[c2, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@50.12--50.68) [190364]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@50.12--50.68) [95680]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c3 != null;
     Mask := Mask[c3, val:=Mask[c3, val] + perm];
@@ -550,7 +550,7 @@ procedure test02b(c1: Ref, c2: Ref, c3: Ref) returns ()
   // -- Translating statement: assert perm(c3.val) <= 1 / 2 -- perm.vpr@54.3--54.29
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion perm(c3.val) <= 1 / 2 might not hold. (perm.vpr@54.10--54.29) [190365]"}
+    assert {:msg "  Assert might fail. Assertion perm(c3.val) <= 1 / 2 might not hold. (perm.vpr@54.10--54.29) [95681]"}
       Mask[c3, val] <= 1 / 2;
     assume state(Heap, Mask);
 }
@@ -579,13 +579,13 @@ procedure test03a(c1: Ref, c2: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@59.12--59.60) [190366]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@59.12--59.60) [95682]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c1 != null;
     Mask := Mask[c1, val:=Mask[c1, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@59.12--59.60) [190367]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@59.12--59.60) [95683]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c2 != null;
     Mask := Mask[c2, val:=Mask[c2, val] + perm];
@@ -602,7 +602,7 @@ procedure test03a(c1: Ref, c2: Ref) returns ()
   // -- Translating statement: assert perm(c1.val) >= 1 / 1 -- perm.vpr@61.3--61.29
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion perm(c1.val) >= 1 / 1 might not hold. (perm.vpr@61.10--61.29) [190368]"}
+    assert {:msg "  Assert might fail. Assertion perm(c1.val) >= 1 / 1 might not hold. (perm.vpr@61.10--61.29) [95684]"}
       1 / 1 <= Mask[c1, val];
     assume state(Heap, Mask);
 }
@@ -632,19 +632,19 @@ procedure test03b(c1: Ref, c2: Ref, c3: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@65.12--65.68) [190369]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@65.12--65.68) [95685]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c1 != null;
     Mask := Mask[c1, val:=Mask[c1, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@65.12--65.68) [190370]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@65.12--65.68) [95686]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c2 != null;
     Mask := Mask[c2, val:=Mask[c2, val] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@65.12--65.68) [190371]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (perm.vpr@65.12--65.68) [95687]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> c3 != null;
     Mask := Mask[c3, val:=Mask[c3, val] + perm];
@@ -662,7 +662,7 @@ procedure test03b(c1: Ref, c2: Ref, c3: Ref) returns ()
   // -- Translating statement: assert perm(c3.val) >= 1 / 1 -- perm.vpr@68.3--68.29
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion perm(c3.val) >= 1 / 1 might not hold. (perm.vpr@68.10--68.29) [190372]"}
+    assert {:msg "  Assert might fail. Assertion perm(c3.val) >= 1 / 1 might not hold. (perm.vpr@68.10--68.29) [95688]"}
       1 / 1 <= Mask[c3, val];
     assume state(Heap, Mask);
 }

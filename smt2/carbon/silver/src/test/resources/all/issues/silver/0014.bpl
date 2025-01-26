@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:23
+// Date:         2025-01-26 21:42:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0014.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0014-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -178,17 +178,17 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // ==================================================
 
 type PredicateType_v;
-function  v_36(): Field PredicateType_v FrameType;
+function  v_35(): Field PredicateType_v FrameType;
 function  v#sm(): Field PredicateType_v PMaskType;
-axiom PredicateMaskField(v_36()) == v#sm();
-axiom IsPredicateField(v_36());
-axiom getPredWandId(v_36()) == 0;
+axiom PredicateMaskField(v_35()) == v#sm();
+axiom IsPredicateField(v_35());
+axiom getPredWandId(v_35()) == 0;
 function  v#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  v#everUsed<A>(pred: (Field A FrameType)): bool;
 
 axiom (forall Heap: HeapType ::
-  { v#trigger(Heap, v_36()) }
-  v#everUsed(v_36())
+  { v#trigger(Heap, v_35()) }
+  v#everUsed(v_35())
 );
 
 procedure v#definedness() returns ()

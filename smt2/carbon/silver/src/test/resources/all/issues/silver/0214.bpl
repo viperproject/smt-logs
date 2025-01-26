@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:10
+// Date:         2025-01-26 21:42:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0214.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0214-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,27 +181,27 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type ArrayDomainType;
 
 // Translation of domain function loc
-function  loc(a_3: ArrayDomainType, i_79: int): Ref;
+function  loc(a_3: ArrayDomainType, i_6: int): Ref;
 
 // Translation of domain function len
-function  len_1(a_3: ArrayDomainType): int;
+function  len(a_3: ArrayDomainType): int;
 
 // Translation of domain function first
-function  first(r_3: Ref): ArrayDomainType;
+function  first_1(r_4: Ref): ArrayDomainType;
 
 // Translation of domain function second
-function  second(r_3: Ref): int;
+function  second_1(r_4: Ref): int;
 
 // Translation of domain axiom all_diff
 axiom (forall a_2: ArrayDomainType, i: int ::
   { (loc(a_2, i): Ref) }
-  (first((loc(a_2, i): Ref)): ArrayDomainType) == a_2 && (second((loc(a_2, i): Ref)): int) == i
+  (first_1((loc(a_2, i): Ref)): ArrayDomainType) == a_2 && (second_1((loc(a_2, i): Ref)): int) == i
 );
 
 // Translation of domain axiom length_nonneg
 axiom (forall a_2: ArrayDomainType ::
-  { (len_1(a_2): int) }
-  (len_1(a_2): int) >= 0
+  { (len(a_2): int) }
+  (len(a_2): int) >= 0
 );
 
 // ==================================================
@@ -216,12 +216,12 @@ axiom !IsWandField(val);
 // Translation of method test
 // ==================================================
 
-procedure test(a_2: ArrayDomainType) returns ()
+procedure test_1(a_2: ArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
   
   // -- Initializing the state
@@ -239,19 +239,19 @@ procedure test(a_2: ArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := loc(a, 0).val -- 0214.vpr@27.3--27.20
     
     // -- Check definedness of loc(a, 0).val
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, 0).val (0214.vpr@27.3--27.20) [220670]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, 0).val (0214.vpr@27.3--27.20) [56250]"}
         HasDirectPerm(Mask, (loc(a_2, 0): Ref), val);
     x := Heap[(loc(a_2, 0): Ref), val];
     assume state(Heap, Mask);
   
   // -- Translating statement: loc(a, 0).val := 0 -- 0214.vpr@28.3--28.12
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, 0).val (0214.vpr@28.3--28.12) [220671]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, 0).val (0214.vpr@28.3--28.12) [56251]"}
       FullPerm == Mask[(loc(a_2, 0): Ref), val];
     Heap := Heap[(loc(a_2, 0): Ref), val:=0];
     assume state(Heap, Mask);

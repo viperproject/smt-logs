@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:46
+// Date:         2025-01-26 21:43:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/many_conjuncts.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/many_conjuncts-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,10 +181,10 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type parallelHeapsDomainType;
 
 // Translation of domain function heap
-function  heap(x_8: Ref): int;
+function  heap(x_37: Ref): int;
 
 // Translation of domain function is_ghost
-function  is_ghost(x_8: Ref): bool;
+function  is_ghost(x_37: Ref): bool;
 
 // ==================================================
 // Translation of domain reads
@@ -194,10 +194,10 @@ function  is_ghost(x_8: Ref): bool;
 type readsDomainType;
 
 // Translation of domain function rd
-function  rd(): Perm;
+function  rd_1(): Perm;
 
 // Translation of domain axiom rdPositive
-axiom NoPerm < (rd(): Perm);
+axiom NoPerm < (rd_1(): Perm);
 
 // ==================================================
 // Translation of all fields
@@ -212,50 +212,50 @@ axiom !IsWandField(init_1);
 const unique rel: Field NormalField int;
 axiom !IsPredicateField(rel);
 axiom !IsWandField(rel);
-const unique acq_1: Field NormalField bool;
-axiom !IsPredicateField(acq_1);
-axiom !IsWandField(acq_1);
+const unique acq: Field NormalField bool;
+axiom !IsPredicateField(acq);
+axiom !IsWandField(acq);
 
 // ==================================================
 // Translation of predicate AcqConjunct
 // ==================================================
 
 type PredicateType_AcqConjunct;
-function  AcqConjunct(x: Ref, idx_1: int): Field PredicateType_AcqConjunct FrameType;
-function  AcqConjunct#sm(x: Ref, idx_1: int): Field PredicateType_AcqConjunct PMaskType;
-axiom (forall x: Ref, idx_1: int ::
-  { PredicateMaskField(AcqConjunct(x, idx_1)) }
-  PredicateMaskField(AcqConjunct(x, idx_1)) == AcqConjunct#sm(x, idx_1)
+function  AcqConjunct(x: Ref, idx: int): Field PredicateType_AcqConjunct FrameType;
+function  AcqConjunct#sm(x: Ref, idx: int): Field PredicateType_AcqConjunct PMaskType;
+axiom (forall x: Ref, idx: int ::
+  { PredicateMaskField(AcqConjunct(x, idx)) }
+  PredicateMaskField(AcqConjunct(x, idx)) == AcqConjunct#sm(x, idx)
 );
-axiom (forall x: Ref, idx_1: int ::
-  { AcqConjunct(x, idx_1) }
-  IsPredicateField(AcqConjunct(x, idx_1))
+axiom (forall x: Ref, idx: int ::
+  { AcqConjunct(x, idx) }
+  IsPredicateField(AcqConjunct(x, idx))
 );
-axiom (forall x: Ref, idx_1: int ::
-  { AcqConjunct(x, idx_1) }
-  getPredWandId(AcqConjunct(x, idx_1)) == 0
+axiom (forall x: Ref, idx: int ::
+  { AcqConjunct(x, idx) }
+  getPredWandId(AcqConjunct(x, idx)) == 0
 );
 function  AcqConjunct#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  AcqConjunct#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall x: Ref, idx_1: int, x2: Ref, idx2: int ::
-  { AcqConjunct(x, idx_1), AcqConjunct(x2, idx2) }
-  AcqConjunct(x, idx_1) == AcqConjunct(x2, idx2) ==> x == x2 && idx_1 == idx2
+axiom (forall x: Ref, idx: int, x2: Ref, idx2: int ::
+  { AcqConjunct(x, idx), AcqConjunct(x2, idx2) }
+  AcqConjunct(x, idx) == AcqConjunct(x2, idx2) ==> x == x2 && idx == idx2
 );
-axiom (forall x: Ref, idx_1: int, x2: Ref, idx2: int ::
-  { AcqConjunct#sm(x, idx_1), AcqConjunct#sm(x2, idx2) }
-  AcqConjunct#sm(x, idx_1) == AcqConjunct#sm(x2, idx2) ==> x == x2 && idx_1 == idx2
+axiom (forall x: Ref, idx: int, x2: Ref, idx2: int ::
+  { AcqConjunct#sm(x, idx), AcqConjunct#sm(x2, idx2) }
+  AcqConjunct#sm(x, idx) == AcqConjunct#sm(x2, idx2) ==> x == x2 && idx == idx2
 );
 
-axiom (forall Heap: HeapType, x: Ref, idx_1: int ::
-  { AcqConjunct#trigger(Heap, AcqConjunct(x, idx_1)) }
-  AcqConjunct#everUsed(AcqConjunct(x, idx_1))
+axiom (forall Heap: HeapType, x: Ref, idx: int ::
+  { AcqConjunct#trigger(Heap, AcqConjunct(x, idx)) }
+  AcqConjunct#everUsed(AcqConjunct(x, idx))
 );
 
 // ==================================================
 // Translation of method read
 // ==================================================
 
-procedure read(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
+procedure read_1(data_1: Ref, count: Ref, ghost: Ref) returns (v_2: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -275,54 +275,54 @@ procedure read(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
   
   // -- Assumptions about method arguments
     assume Heap[data_1, $allocated];
-    assume Heap[count_1, $allocated];
+    assume Heap[count, $allocated];
     assume Heap[ghost, $allocated];
   
   // -- Checked inhaling of precondition
     assume (heap(data_1): int) == 0;
-    assume (heap(count_1): int) == 0;
+    assume (heap(count): int) == 0;
     assume (heap(ghost): int) == 0;
     assume (is_ghost(ghost): bool);
-    perm := (rd(): Perm);
-    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@31.12--31.312) [187033]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@31.12--31.312) [101354]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> data_1 != null;
     Mask := Mask[data_1, val:=Mask[data_1, val] + perm];
     assume state(Heap, Mask);
-    perm := (rd(): Perm);
-    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@31.12--31.312) [187034]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@31.12--31.312) [101355]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> ghost != null;
     Mask := Mask[ghost, val:=Mask[ghost, val] + perm];
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, acq_1:=Mask[count_1, acq_1] + perm];
+    assume count != null;
+    Mask := Mask[count, acq:=Mask[count, acq] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of count.acq == false
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@31.12--31.312) [187035]"}
-        HasDirectPerm(Mask, count_1, acq_1);
-    assume !Heap[count_1, acq_1];
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@31.12--31.312) [101356]"}
+        HasDirectPerm(Mask, count, acq);
+    assume !Heap[count, acq];
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, AcqConjunct(count_1, 0):=Mask[null, AcqConjunct(count_1, 0)] + perm];
+    Mask := Mask[null, AcqConjunct(count, 0):=Mask[null, AcqConjunct(count, 0)] + perm];
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, rel:=Mask[count_1, rel] + perm];
+    assume count != null;
+    Mask := Mask[count, rel:=Mask[count, rel] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of count.rel == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@31.12--31.312) [187036]"}
-        HasDirectPerm(Mask, count_1, rel);
-    assume Heap[count_1, rel] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@31.12--31.312) [101357]"}
+        HasDirectPerm(Mask, count, rel);
+    assume Heap[count, rel] == 0;
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, init_1:=Mask[count_1, init_1] + perm];
+    assume count != null;
+    Mask := Mask[count, init_1:=Mask[count, init_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -340,53 +340,53 @@ procedure read(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
     // -- Do welldefinedness check of the inhale part.
       if (*) {
         assume (heap(data_1): int) == 0;
-        assume (heap(count_1): int) == 0;
+        assume (heap(count): int) == 0;
         assume (heap(ghost): int) == 0;
         assume (is_ghost(ghost): bool);
-        perm := (rd(): Perm);
-        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [187037]"}
+        perm := (rd_1(): Perm);
+        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [101358]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> data_1 != null;
         PostMask := PostMask[data_1, val:=PostMask[data_1, val] + perm];
         assume state(PostHeap, PostMask);
-        perm := (rd(): Perm);
-        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [187038]"}
+        perm := (rd_1(): Perm);
+        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [101359]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> ghost != null;
         PostMask := PostMask[ghost, val:=PostMask[ghost, val] + perm];
         assume state(PostHeap, PostMask);
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, acq_1:=PostMask[count_1, acq_1] + perm];
+        assume count != null;
+        PostMask := PostMask[count, acq:=PostMask[count, acq] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of count.acq == false
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@32.11--32.364) [187039]"}
-            HasDirectPerm(PostMask, count_1, acq_1);
-        assume !PostHeap[count_1, acq_1];
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@32.11--32.364) [101360]"}
+            HasDirectPerm(PostMask, count, acq);
+        assume !PostHeap[count, acq];
         havoc wildcard;
         perm := wildcard;
-        PostMask := PostMask[null, AcqConjunct(count_1, 0):=PostMask[null, AcqConjunct(count_1, 0)] + perm];
+        PostMask := PostMask[null, AcqConjunct(count, 0):=PostMask[null, AcqConjunct(count, 0)] + perm];
         assume state(PostHeap, PostMask);
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, rel:=PostMask[count_1, rel] + perm];
+        assume count != null;
+        PostMask := PostMask[count, rel:=PostMask[count, rel] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of count.rel == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@32.11--32.364) [187040]"}
-            HasDirectPerm(PostMask, count_1, rel);
-        assume PostHeap[count_1, rel] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@32.11--32.364) [101361]"}
+            HasDirectPerm(PostMask, count, rel);
+        assume PostHeap[count, rel] == 0;
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, init_1:=PostMask[count_1, init_1] + perm];
+        assume count != null;
+        PostMask := PostMask[count, init_1:=PostMask[count, init_1] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of data.val == v
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@32.11--32.364) [187041]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@32.11--32.364) [101362]"}
             HasDirectPerm(PostMask, data_1, val);
         assume PostHeap[data_1, val] == v_2;
         assume state(PostHeap, PostMask);
@@ -395,53 +395,53 @@ procedure read(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
     
     // -- Normally inhale the exhale part.
       assume (heap(data_1): int) == 0;
-      assume (heap(count_1): int) == 0;
+      assume (heap(count): int) == 0;
       assume (heap(ghost): int) == 0;
       assume (is_ghost(ghost): bool);
-      perm := (rd(): Perm);
-      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [187042]"}
+      perm := (rd_1(): Perm);
+      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [101363]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> data_1 != null;
       PostMask := PostMask[data_1, val:=PostMask[data_1, val] + perm];
       assume state(PostHeap, PostMask);
-      perm := (rd(): Perm);
-      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [187043]"}
+      perm := (rd_1(): Perm);
+      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [101364]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> ghost != null;
       PostMask := PostMask[ghost, val:=PostMask[ghost, val] + perm];
       assume state(PostHeap, PostMask);
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, acq_1:=PostMask[count_1, acq_1] + perm];
+      assume count != null;
+      PostMask := PostMask[count, acq:=PostMask[count, acq] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of count.acq == false
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@32.11--32.364) [187044]"}
-          HasDirectPerm(PostMask, count_1, acq_1);
-      assume !PostHeap[count_1, acq_1];
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@32.11--32.364) [101365]"}
+          HasDirectPerm(PostMask, count, acq);
+      assume !PostHeap[count, acq];
       havoc wildcard;
       perm := wildcard;
-      PostMask := PostMask[null, AcqConjunct(count_1, 0):=PostMask[null, AcqConjunct(count_1, 0)] + perm];
+      PostMask := PostMask[null, AcqConjunct(count, 0):=PostMask[null, AcqConjunct(count, 0)] + perm];
       assume state(PostHeap, PostMask);
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, rel:=PostMask[count_1, rel] + perm];
+      assume count != null;
+      PostMask := PostMask[count, rel:=PostMask[count, rel] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of count.rel == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@32.11--32.364) [187045]"}
-          HasDirectPerm(PostMask, count_1, rel);
-      assume PostHeap[count_1, rel] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@32.11--32.364) [101366]"}
+          HasDirectPerm(PostMask, count, rel);
+      assume PostHeap[count, rel] == 0;
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, init_1:=PostMask[count_1, init_1] + perm];
+      assume count != null;
+      PostMask := PostMask[count, init_1:=PostMask[count, init_1] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of data.val == v
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@32.11--32.364) [187046]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@32.11--32.364) [101367]"}
           HasDirectPerm(PostMask, data_1, val);
       assume PostHeap[data_1, val] == v_2;
       assume PostMask[data_1, val] == NoPerm;
@@ -453,7 +453,7 @@ procedure read(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
   // -- Translating statement: v := data.val -- many_conjuncts.vpr@34.3--34.16
     
     // -- Check definedness of data.val
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access data.val (many_conjuncts.vpr@34.3--34.16) [187047]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access data.val (many_conjuncts.vpr@34.3--34.16) [101368]"}
         HasDirectPerm(Mask, data_1, val);
     v_2 := Heap[data_1, val];
     assume state(Heap, Mask);
@@ -461,57 +461,57 @@ procedure read(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of read might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@32.11--32.364) [187048]"}
+    assert {:msg "  Postcondition of read might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@32.11--32.364) [101369]"}
       (heap(data_1): int) == 0;
-    assert {:msg "  Postcondition of read might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@32.11--32.364) [187049]"}
-      (heap(count_1): int) == 0;
-    assert {:msg "  Postcondition of read might not hold. Assertion heap(ghost) == 0 might not hold. (many_conjuncts.vpr@32.11--32.364) [187050]"}
+    assert {:msg "  Postcondition of read might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@32.11--32.364) [101370]"}
+      (heap(count): int) == 0;
+    assert {:msg "  Postcondition of read might not hold. Assertion heap(ghost) == 0 might not hold. (many_conjuncts.vpr@32.11--32.364) [101371]"}
       (heap(ghost): int) == 0;
-    assert {:msg "  Postcondition of read might not hold. Assertion is_ghost(ghost) might not hold. (many_conjuncts.vpr@32.11--32.364) [187051]"}
+    assert {:msg "  Postcondition of read might not hold. Assertion is_ghost(ghost) might not hold. (many_conjuncts.vpr@32.11--32.364) [101372]"}
       (is_ghost(ghost): bool);
-    perm := (rd(): Perm);
-    assert {:msg "  Postcondition of read might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [187052]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Postcondition of read might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [101373]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access data.val (many_conjuncts.vpr@32.11--32.364) [187053]"}
+      assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access data.val (many_conjuncts.vpr@32.11--32.364) [101374]"}
         perm <= Mask[data_1, val];
     }
     Mask := Mask[data_1, val:=Mask[data_1, val] - perm];
-    perm := (rd(): Perm);
-    assert {:msg "  Postcondition of read might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [187054]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Postcondition of read might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@32.11--32.364) [101375]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access ghost.val (many_conjuncts.vpr@32.11--32.364) [187055]"}
+      assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access ghost.val (many_conjuncts.vpr@32.11--32.364) [101376]"}
         perm <= Mask[ghost, val];
     }
     Mask := Mask[ghost, val:=Mask[ghost, val] - perm];
-    assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access count.acq (many_conjuncts.vpr@32.11--32.364) [187056]"}
-      Mask[count_1, acq_1] > NoPerm;
+    assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access count.acq (many_conjuncts.vpr@32.11--32.364) [101377]"}
+      Mask[count, acq] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, acq_1];
-    Mask := Mask[count_1, acq_1:=Mask[count_1, acq_1] - wildcard];
-    assert {:msg "  Postcondition of read might not hold. Assertion count.acq == false might not hold. (many_conjuncts.vpr@32.11--32.364) [187057]"}
-      !Heap[count_1, acq_1];
-    assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access AcqConjunct(count, 0) (many_conjuncts.vpr@32.11--32.364) [187058]"}
-      Mask[null, AcqConjunct(count_1, 0)] > NoPerm;
+    assume wildcard < Mask[count, acq];
+    Mask := Mask[count, acq:=Mask[count, acq] - wildcard];
+    assert {:msg "  Postcondition of read might not hold. Assertion count.acq == false might not hold. (many_conjuncts.vpr@32.11--32.364) [101378]"}
+      !Heap[count, acq];
+    assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access AcqConjunct(count, 0) (many_conjuncts.vpr@32.11--32.364) [101379]"}
+      Mask[null, AcqConjunct(count, 0)] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[null, AcqConjunct(count_1, 0)];
-    Mask := Mask[null, AcqConjunct(count_1, 0):=Mask[null, AcqConjunct(count_1, 0)] - wildcard];
-    assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access count.rel (many_conjuncts.vpr@32.11--32.364) [187059]"}
-      Mask[count_1, rel] > NoPerm;
+    assume wildcard < Mask[null, AcqConjunct(count, 0)];
+    Mask := Mask[null, AcqConjunct(count, 0):=Mask[null, AcqConjunct(count, 0)] - wildcard];
+    assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access count.rel (many_conjuncts.vpr@32.11--32.364) [101380]"}
+      Mask[count, rel] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, rel];
-    Mask := Mask[count_1, rel:=Mask[count_1, rel] - wildcard];
-    assert {:msg "  Postcondition of read might not hold. Assertion count.rel == 0 might not hold. (many_conjuncts.vpr@32.11--32.364) [187060]"}
-      Heap[count_1, rel] == 0;
-    assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access count.init (many_conjuncts.vpr@32.11--32.364) [187061]"}
-      Mask[count_1, init_1] > NoPerm;
+    assume wildcard < Mask[count, rel];
+    Mask := Mask[count, rel:=Mask[count, rel] - wildcard];
+    assert {:msg "  Postcondition of read might not hold. Assertion count.rel == 0 might not hold. (many_conjuncts.vpr@32.11--32.364) [101381]"}
+      Heap[count, rel] == 0;
+    assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access count.init (many_conjuncts.vpr@32.11--32.364) [101382]"}
+      Mask[count, init_1] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, init_1];
-    Mask := Mask[count_1, init_1:=Mask[count_1, init_1] - wildcard];
-    assert {:msg "  Postcondition of read might not hold. Assertion data.val == v might not hold. (many_conjuncts.vpr@32.11--32.364) [187062]"}
+    assume wildcard < Mask[count, init_1];
+    Mask := Mask[count, init_1:=Mask[count, init_1] - wildcard];
+    assert {:msg "  Postcondition of read might not hold. Assertion data.val == v might not hold. (many_conjuncts.vpr@32.11--32.364) [101383]"}
       Heap[data_1, val] == v_2;
-    assert {:msg "  Postcondition of read might not hold. Assertion perm(data.val) == none might not hold. (many_conjuncts.vpr@32.11--32.364) [187063]"}
+    assert {:msg "  Postcondition of read might not hold. Assertion perm(data.val) == none might not hold. (many_conjuncts.vpr@32.11--32.364) [101384]"}
       Mask[data_1, val] == NoPerm;
     // Finish exhale
     havoc ExhaleHeap;
@@ -523,7 +523,7 @@ procedure read(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
 // Translation of method read_erroneous
 // ==================================================
 
-procedure read_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
+procedure read_erroneous(data_1: Ref, count: Ref, ghost: Ref) returns (v_2: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -543,54 +543,54 @@ procedure read_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: in
   
   // -- Assumptions about method arguments
     assume Heap[data_1, $allocated];
-    assume Heap[count_1, $allocated];
+    assume Heap[count, $allocated];
     assume Heap[ghost, $allocated];
   
   // -- Checked inhaling of precondition
     assume (heap(data_1): int) == 0;
-    assume (heap(count_1): int) == 0;
+    assume (heap(count): int) == 0;
     assume (heap(ghost): int) == 0;
     assume (is_ghost(ghost): bool);
-    perm := (rd(): Perm);
-    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@38.12--38.312) [187064]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@38.12--38.312) [101385]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> data_1 != null;
     Mask := Mask[data_1, val:=Mask[data_1, val] + perm];
     assume state(Heap, Mask);
-    perm := (rd(): Perm);
-    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@38.12--38.312) [187065]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@38.12--38.312) [101386]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> ghost != null;
     Mask := Mask[ghost, val:=Mask[ghost, val] + perm];
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, acq_1:=Mask[count_1, acq_1] + perm];
+    assume count != null;
+    Mask := Mask[count, acq:=Mask[count, acq] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of count.acq == false
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@38.12--38.312) [187066]"}
-        HasDirectPerm(Mask, count_1, acq_1);
-    assume !Heap[count_1, acq_1];
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@38.12--38.312) [101387]"}
+        HasDirectPerm(Mask, count, acq);
+    assume !Heap[count, acq];
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, AcqConjunct(count_1, 0):=Mask[null, AcqConjunct(count_1, 0)] + perm];
+    Mask := Mask[null, AcqConjunct(count, 0):=Mask[null, AcqConjunct(count, 0)] + perm];
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, rel:=Mask[count_1, rel] + perm];
+    assume count != null;
+    Mask := Mask[count, rel:=Mask[count, rel] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of count.rel == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@38.12--38.312) [187067]"}
-        HasDirectPerm(Mask, count_1, rel);
-    assume Heap[count_1, rel] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@38.12--38.312) [101388]"}
+        HasDirectPerm(Mask, count, rel);
+    assume Heap[count, rel] == 0;
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, init_1:=Mask[count_1, init_1] + perm];
+    assume count != null;
+    Mask := Mask[count, init_1:=Mask[count, init_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -608,53 +608,53 @@ procedure read_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: in
     // -- Do welldefinedness check of the inhale part.
       if (*) {
         assume (heap(data_1): int) == 0;
-        assume (heap(count_1): int) == 0;
+        assume (heap(count): int) == 0;
         assume (heap(ghost): int) == 0;
         assume (is_ghost(ghost): bool);
-        perm := (rd(): Perm);
-        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [187068]"}
+        perm := (rd_1(): Perm);
+        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [101389]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> data_1 != null;
         PostMask := PostMask[data_1, val:=PostMask[data_1, val] + perm];
         assume state(PostHeap, PostMask);
-        perm := (rd(): Perm);
-        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [187069]"}
+        perm := (rd_1(): Perm);
+        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [101390]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> ghost != null;
         PostMask := PostMask[ghost, val:=PostMask[ghost, val] + perm];
         assume state(PostHeap, PostMask);
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, acq_1:=PostMask[count_1, acq_1] + perm];
+        assume count != null;
+        PostMask := PostMask[count, acq:=PostMask[count, acq] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of count.acq == false
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@40.11--40.373) [187070]"}
-            HasDirectPerm(PostMask, count_1, acq_1);
-        assume !PostHeap[count_1, acq_1];
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@40.11--40.373) [101391]"}
+            HasDirectPerm(PostMask, count, acq);
+        assume !PostHeap[count, acq];
         havoc wildcard;
         perm := wildcard;
-        PostMask := PostMask[null, AcqConjunct(count_1, 0):=PostMask[null, AcqConjunct(count_1, 0)] + perm];
+        PostMask := PostMask[null, AcqConjunct(count, 0):=PostMask[null, AcqConjunct(count, 0)] + perm];
         assume state(PostHeap, PostMask);
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, rel:=PostMask[count_1, rel] + perm];
+        assume count != null;
+        PostMask := PostMask[count, rel:=PostMask[count, rel] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of count.rel == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@40.11--40.373) [187071]"}
-            HasDirectPerm(PostMask, count_1, rel);
-        assume PostHeap[count_1, rel] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@40.11--40.373) [101392]"}
+            HasDirectPerm(PostMask, count, rel);
+        assume PostHeap[count, rel] == 0;
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, init_1:=PostMask[count_1, init_1] + perm];
+        assume count != null;
+        PostMask := PostMask[count, init_1:=PostMask[count, init_1] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of data.val == v
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@40.11--40.373) [187072]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@40.11--40.373) [101393]"}
             HasDirectPerm(PostMask, data_1, val);
         assume PostHeap[data_1, val] == v_2;
         assume false;
@@ -664,53 +664,53 @@ procedure read_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: in
     
     // -- Normally inhale the exhale part.
       assume (heap(data_1): int) == 0;
-      assume (heap(count_1): int) == 0;
+      assume (heap(count): int) == 0;
       assume (heap(ghost): int) == 0;
       assume (is_ghost(ghost): bool);
-      perm := (rd(): Perm);
-      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [187073]"}
+      perm := (rd_1(): Perm);
+      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [101394]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> data_1 != null;
       PostMask := PostMask[data_1, val:=PostMask[data_1, val] + perm];
       assume state(PostHeap, PostMask);
-      perm := (rd(): Perm);
-      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [187074]"}
+      perm := (rd_1(): Perm);
+      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [101395]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> ghost != null;
       PostMask := PostMask[ghost, val:=PostMask[ghost, val] + perm];
       assume state(PostHeap, PostMask);
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, acq_1:=PostMask[count_1, acq_1] + perm];
+      assume count != null;
+      PostMask := PostMask[count, acq:=PostMask[count, acq] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of count.acq == false
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@40.11--40.373) [187075]"}
-          HasDirectPerm(PostMask, count_1, acq_1);
-      assume !PostHeap[count_1, acq_1];
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@40.11--40.373) [101396]"}
+          HasDirectPerm(PostMask, count, acq);
+      assume !PostHeap[count, acq];
       havoc wildcard;
       perm := wildcard;
-      PostMask := PostMask[null, AcqConjunct(count_1, 0):=PostMask[null, AcqConjunct(count_1, 0)] + perm];
+      PostMask := PostMask[null, AcqConjunct(count, 0):=PostMask[null, AcqConjunct(count, 0)] + perm];
       assume state(PostHeap, PostMask);
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, rel:=PostMask[count_1, rel] + perm];
+      assume count != null;
+      PostMask := PostMask[count, rel:=PostMask[count, rel] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of count.rel == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@40.11--40.373) [187076]"}
-          HasDirectPerm(PostMask, count_1, rel);
-      assume PostHeap[count_1, rel] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@40.11--40.373) [101397]"}
+          HasDirectPerm(PostMask, count, rel);
+      assume PostHeap[count, rel] == 0;
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, init_1:=PostMask[count_1, init_1] + perm];
+      assume count != null;
+      PostMask := PostMask[count, init_1:=PostMask[count, init_1] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of data.val == v
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@40.11--40.373) [187077]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@40.11--40.373) [101398]"}
           HasDirectPerm(PostMask, data_1, val);
       assume PostHeap[data_1, val] == v_2;
       assume PostMask[data_1, val] == NoPerm;
@@ -723,7 +723,7 @@ procedure read_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: in
   // -- Translating statement: v := data.val -- many_conjuncts.vpr@42.3--42.16
     
     // -- Check definedness of data.val
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access data.val (many_conjuncts.vpr@42.3--42.16) [187078]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access data.val (many_conjuncts.vpr@42.3--42.16) [101399]"}
         HasDirectPerm(Mask, data_1, val);
     v_2 := Heap[data_1, val];
     assume state(Heap, Mask);
@@ -731,59 +731,59 @@ procedure read_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: in
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@40.11--40.373) [187079]"}
+    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@40.11--40.373) [101400]"}
       (heap(data_1): int) == 0;
-    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@40.11--40.373) [187080]"}
-      (heap(count_1): int) == 0;
-    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion heap(ghost) == 0 might not hold. (many_conjuncts.vpr@40.11--40.373) [187081]"}
+    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@40.11--40.373) [101401]"}
+      (heap(count): int) == 0;
+    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion heap(ghost) == 0 might not hold. (many_conjuncts.vpr@40.11--40.373) [101402]"}
       (heap(ghost): int) == 0;
-    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion is_ghost(ghost) might not hold. (many_conjuncts.vpr@40.11--40.373) [187082]"}
+    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion is_ghost(ghost) might not hold. (many_conjuncts.vpr@40.11--40.373) [101403]"}
       (is_ghost(ghost): bool);
-    perm := (rd(): Perm);
-    assert {:msg "  Postcondition of read_erroneous might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [187083]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Postcondition of read_erroneous might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [101404]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access data.val (many_conjuncts.vpr@40.11--40.373) [187084]"}
+      assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access data.val (many_conjuncts.vpr@40.11--40.373) [101405]"}
         perm <= Mask[data_1, val];
     }
     Mask := Mask[data_1, val:=Mask[data_1, val] - perm];
-    perm := (rd(): Perm);
-    assert {:msg "  Postcondition of read_erroneous might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [187085]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Postcondition of read_erroneous might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@40.11--40.373) [101406]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access ghost.val (many_conjuncts.vpr@40.11--40.373) [187086]"}
+      assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access ghost.val (many_conjuncts.vpr@40.11--40.373) [101407]"}
         perm <= Mask[ghost, val];
     }
     Mask := Mask[ghost, val:=Mask[ghost, val] - perm];
-    assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access count.acq (many_conjuncts.vpr@40.11--40.373) [187087]"}
-      Mask[count_1, acq_1] > NoPerm;
+    assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access count.acq (many_conjuncts.vpr@40.11--40.373) [101408]"}
+      Mask[count, acq] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, acq_1];
-    Mask := Mask[count_1, acq_1:=Mask[count_1, acq_1] - wildcard];
-    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion count.acq == false might not hold. (many_conjuncts.vpr@40.11--40.373) [187088]"}
-      !Heap[count_1, acq_1];
-    assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access AcqConjunct(count, 0) (many_conjuncts.vpr@40.11--40.373) [187089]"}
-      Mask[null, AcqConjunct(count_1, 0)] > NoPerm;
+    assume wildcard < Mask[count, acq];
+    Mask := Mask[count, acq:=Mask[count, acq] - wildcard];
+    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion count.acq == false might not hold. (many_conjuncts.vpr@40.11--40.373) [101409]"}
+      !Heap[count, acq];
+    assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access AcqConjunct(count, 0) (many_conjuncts.vpr@40.11--40.373) [101410]"}
+      Mask[null, AcqConjunct(count, 0)] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[null, AcqConjunct(count_1, 0)];
-    Mask := Mask[null, AcqConjunct(count_1, 0):=Mask[null, AcqConjunct(count_1, 0)] - wildcard];
-    assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access count.rel (many_conjuncts.vpr@40.11--40.373) [187090]"}
-      Mask[count_1, rel] > NoPerm;
+    assume wildcard < Mask[null, AcqConjunct(count, 0)];
+    Mask := Mask[null, AcqConjunct(count, 0):=Mask[null, AcqConjunct(count, 0)] - wildcard];
+    assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access count.rel (many_conjuncts.vpr@40.11--40.373) [101411]"}
+      Mask[count, rel] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, rel];
-    Mask := Mask[count_1, rel:=Mask[count_1, rel] - wildcard];
-    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion count.rel == 0 might not hold. (many_conjuncts.vpr@40.11--40.373) [187091]"}
-      Heap[count_1, rel] == 0;
-    assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access count.init (many_conjuncts.vpr@40.11--40.373) [187092]"}
-      Mask[count_1, init_1] > NoPerm;
+    assume wildcard < Mask[count, rel];
+    Mask := Mask[count, rel:=Mask[count, rel] - wildcard];
+    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion count.rel == 0 might not hold. (many_conjuncts.vpr@40.11--40.373) [101412]"}
+      Heap[count, rel] == 0;
+    assert {:msg "  Postcondition of read_erroneous might not hold. There might be insufficient permission to access count.init (many_conjuncts.vpr@40.11--40.373) [101413]"}
+      Mask[count, init_1] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, init_1];
-    Mask := Mask[count_1, init_1:=Mask[count_1, init_1] - wildcard];
-    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion data.val == v might not hold. (many_conjuncts.vpr@40.11--40.373) [187093]"}
+    assume wildcard < Mask[count, init_1];
+    Mask := Mask[count, init_1:=Mask[count, init_1] - wildcard];
+    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion data.val == v might not hold. (many_conjuncts.vpr@40.11--40.373) [101414]"}
       Heap[data_1, val] == v_2;
-    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion perm(data.val) == none might not hold. (many_conjuncts.vpr@40.11--40.373) [187094]"}
+    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion perm(data.val) == none might not hold. (many_conjuncts.vpr@40.11--40.373) [101415]"}
       Mask[data_1, val] == NoPerm;
-    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion false might not hold. (many_conjuncts.vpr@40.11--40.373) [187095]"}
+    assert {:msg "  Postcondition of read_erroneous might not hold. Assertion false might not hold. (many_conjuncts.vpr@40.11--40.373) [101416]"}
       false;
     // Finish exhale
     havoc ExhaleHeap;
@@ -795,7 +795,7 @@ procedure read_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: in
 // Translation of method read2
 // ==================================================
 
-procedure read2(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
+procedure read2(data_1: Ref, count: Ref, ghost: Ref) returns (v_2: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -815,54 +815,54 @@ procedure read2(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
   
   // -- Assumptions about method arguments
     assume Heap[data_1, $allocated];
-    assume Heap[count_1, $allocated];
+    assume Heap[count, $allocated];
     assume Heap[ghost, $allocated];
   
   // -- Checked inhaling of precondition
     assume (heap(data_1): int) == 0;
-    assume (heap(count_1): int) == 0;
+    assume (heap(count): int) == 0;
     assume (heap(ghost): int) == 0;
     assume (is_ghost(ghost): bool);
-    perm := (rd(): Perm);
-    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@47.5--58.30) [187096]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@47.5--58.30) [101417]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> data_1 != null;
     Mask := Mask[data_1, val:=Mask[data_1, val] + perm];
     assume state(Heap, Mask);
-    perm := (rd(): Perm);
-    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@47.5--58.30) [187097]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@47.5--58.30) [101418]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> ghost != null;
     Mask := Mask[ghost, val:=Mask[ghost, val] + perm];
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, acq_1:=Mask[count_1, acq_1] + perm];
+    assume count != null;
+    Mask := Mask[count, acq:=Mask[count, acq] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of count.acq == false
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@47.5--58.30) [187098]"}
-        HasDirectPerm(Mask, count_1, acq_1);
-    assume !Heap[count_1, acq_1];
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@47.5--58.30) [101419]"}
+        HasDirectPerm(Mask, count, acq);
+    assume !Heap[count, acq];
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, AcqConjunct(count_1, 0):=Mask[null, AcqConjunct(count_1, 0)] + perm];
+    Mask := Mask[null, AcqConjunct(count, 0):=Mask[null, AcqConjunct(count, 0)] + perm];
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, rel:=Mask[count_1, rel] + perm];
+    assume count != null;
+    Mask := Mask[count, rel:=Mask[count, rel] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of count.rel == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@47.5--58.30) [187099]"}
-        HasDirectPerm(Mask, count_1, rel);
-    assume Heap[count_1, rel] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@47.5--58.30) [101420]"}
+        HasDirectPerm(Mask, count, rel);
+    assume Heap[count, rel] == 0;
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, init_1:=Mask[count_1, init_1] + perm];
+    assume count != null;
+    Mask := Mask[count, init_1:=Mask[count, init_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -880,53 +880,53 @@ procedure read2(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
     // -- Do welldefinedness check of the inhale part.
       if (*) {
         assume (heap(data_1): int) == 0;
-        assume (heap(count_1): int) == 0;
+        assume (heap(count): int) == 0;
         assume (heap(ghost): int) == 0;
         assume (is_ghost(ghost): bool);
-        perm := (rd(): Perm);
-        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [187100]"}
+        perm := (rd_1(): Perm);
+        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [101421]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> data_1 != null;
         PostMask := PostMask[data_1, val:=PostMask[data_1, val] + perm];
         assume state(PostHeap, PostMask);
-        perm := (rd(): Perm);
-        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [187101]"}
+        perm := (rd_1(): Perm);
+        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [101422]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> ghost != null;
         PostMask := PostMask[ghost, val:=PostMask[ghost, val] + perm];
         assume state(PostHeap, PostMask);
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, acq_1:=PostMask[count_1, acq_1] + perm];
+        assume count != null;
+        PostMask := PostMask[count, acq:=PostMask[count, acq] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of count.acq == false
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@61.5--74.35) [187102]"}
-            HasDirectPerm(PostMask, count_1, acq_1);
-        assume !PostHeap[count_1, acq_1];
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@61.5--74.35) [101423]"}
+            HasDirectPerm(PostMask, count, acq);
+        assume !PostHeap[count, acq];
         havoc wildcard;
         perm := wildcard;
-        PostMask := PostMask[null, AcqConjunct(count_1, 0):=PostMask[null, AcqConjunct(count_1, 0)] + perm];
+        PostMask := PostMask[null, AcqConjunct(count, 0):=PostMask[null, AcqConjunct(count, 0)] + perm];
         assume state(PostHeap, PostMask);
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, rel:=PostMask[count_1, rel] + perm];
+        assume count != null;
+        PostMask := PostMask[count, rel:=PostMask[count, rel] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of count.rel == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@61.5--74.35) [187103]"}
-            HasDirectPerm(PostMask, count_1, rel);
-        assume PostHeap[count_1, rel] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@61.5--74.35) [101424]"}
+            HasDirectPerm(PostMask, count, rel);
+        assume PostHeap[count, rel] == 0;
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, init_1:=PostMask[count_1, init_1] + perm];
+        assume count != null;
+        PostMask := PostMask[count, init_1:=PostMask[count, init_1] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of data.val == v
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@61.5--74.35) [187104]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@61.5--74.35) [101425]"}
             HasDirectPerm(PostMask, data_1, val);
         assume PostHeap[data_1, val] == v_2;
         assume state(PostHeap, PostMask);
@@ -935,53 +935,53 @@ procedure read2(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
     
     // -- Normally inhale the exhale part.
       assume (heap(data_1): int) == 0;
-      assume (heap(count_1): int) == 0;
+      assume (heap(count): int) == 0;
       assume (heap(ghost): int) == 0;
       assume (is_ghost(ghost): bool);
-      perm := (rd(): Perm);
-      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [187105]"}
+      perm := (rd_1(): Perm);
+      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [101426]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> data_1 != null;
       PostMask := PostMask[data_1, val:=PostMask[data_1, val] + perm];
       assume state(PostHeap, PostMask);
-      perm := (rd(): Perm);
-      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [187106]"}
+      perm := (rd_1(): Perm);
+      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [101427]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> ghost != null;
       PostMask := PostMask[ghost, val:=PostMask[ghost, val] + perm];
       assume state(PostHeap, PostMask);
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, acq_1:=PostMask[count_1, acq_1] + perm];
+      assume count != null;
+      PostMask := PostMask[count, acq:=PostMask[count, acq] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of count.acq == false
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@61.5--74.35) [187107]"}
-          HasDirectPerm(PostMask, count_1, acq_1);
-      assume !PostHeap[count_1, acq_1];
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@61.5--74.35) [101428]"}
+          HasDirectPerm(PostMask, count, acq);
+      assume !PostHeap[count, acq];
       havoc wildcard;
       perm := wildcard;
-      PostMask := PostMask[null, AcqConjunct(count_1, 0):=PostMask[null, AcqConjunct(count_1, 0)] + perm];
+      PostMask := PostMask[null, AcqConjunct(count, 0):=PostMask[null, AcqConjunct(count, 0)] + perm];
       assume state(PostHeap, PostMask);
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, rel:=PostMask[count_1, rel] + perm];
+      assume count != null;
+      PostMask := PostMask[count, rel:=PostMask[count, rel] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of count.rel == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@61.5--74.35) [187108]"}
-          HasDirectPerm(PostMask, count_1, rel);
-      assume PostHeap[count_1, rel] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@61.5--74.35) [101429]"}
+          HasDirectPerm(PostMask, count, rel);
+      assume PostHeap[count, rel] == 0;
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, init_1:=PostMask[count_1, init_1] + perm];
+      assume count != null;
+      PostMask := PostMask[count, init_1:=PostMask[count, init_1] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of data.val == v
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@61.5--74.35) [187109]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@61.5--74.35) [101430]"}
           HasDirectPerm(PostMask, data_1, val);
       assume PostHeap[data_1, val] == v_2;
       assume PostMask[data_1, val] == NoPerm;
@@ -993,7 +993,7 @@ procedure read2(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
   // -- Translating statement: v := data.val -- many_conjuncts.vpr@76.3--76.16
     
     // -- Check definedness of data.val
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access data.val (many_conjuncts.vpr@76.3--76.16) [187110]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access data.val (many_conjuncts.vpr@76.3--76.16) [101431]"}
         HasDirectPerm(Mask, data_1, val);
     v_2 := Heap[data_1, val];
     assume state(Heap, Mask);
@@ -1001,57 +1001,57 @@ procedure read2(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of read2 might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@61.5--74.35) [187111]"}
+    assert {:msg "  Postcondition of read2 might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@61.5--74.35) [101432]"}
       (heap(data_1): int) == 0;
-    assert {:msg "  Postcondition of read2 might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@61.5--74.35) [187112]"}
-      (heap(count_1): int) == 0;
-    assert {:msg "  Postcondition of read2 might not hold. Assertion heap(ghost) == 0 might not hold. (many_conjuncts.vpr@61.5--74.35) [187113]"}
+    assert {:msg "  Postcondition of read2 might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@61.5--74.35) [101433]"}
+      (heap(count): int) == 0;
+    assert {:msg "  Postcondition of read2 might not hold. Assertion heap(ghost) == 0 might not hold. (many_conjuncts.vpr@61.5--74.35) [101434]"}
       (heap(ghost): int) == 0;
-    assert {:msg "  Postcondition of read2 might not hold. Assertion is_ghost(ghost) might not hold. (many_conjuncts.vpr@61.5--74.35) [187114]"}
+    assert {:msg "  Postcondition of read2 might not hold. Assertion is_ghost(ghost) might not hold. (many_conjuncts.vpr@61.5--74.35) [101435]"}
       (is_ghost(ghost): bool);
-    perm := (rd(): Perm);
-    assert {:msg "  Postcondition of read2 might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [187115]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Postcondition of read2 might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [101436]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access data.val (many_conjuncts.vpr@61.5--74.35) [187116]"}
+      assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access data.val (many_conjuncts.vpr@61.5--74.35) [101437]"}
         perm <= Mask[data_1, val];
     }
     Mask := Mask[data_1, val:=Mask[data_1, val] - perm];
-    perm := (rd(): Perm);
-    assert {:msg "  Postcondition of read2 might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [187117]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Postcondition of read2 might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@61.5--74.35) [101438]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access ghost.val (many_conjuncts.vpr@61.5--74.35) [187118]"}
+      assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access ghost.val (many_conjuncts.vpr@61.5--74.35) [101439]"}
         perm <= Mask[ghost, val];
     }
     Mask := Mask[ghost, val:=Mask[ghost, val] - perm];
-    assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access count.acq (many_conjuncts.vpr@61.5--74.35) [187119]"}
-      Mask[count_1, acq_1] > NoPerm;
+    assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access count.acq (many_conjuncts.vpr@61.5--74.35) [101440]"}
+      Mask[count, acq] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, acq_1];
-    Mask := Mask[count_1, acq_1:=Mask[count_1, acq_1] - wildcard];
-    assert {:msg "  Postcondition of read2 might not hold. Assertion count.acq == false might not hold. (many_conjuncts.vpr@61.5--74.35) [187120]"}
-      !Heap[count_1, acq_1];
-    assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access AcqConjunct(count, 0) (many_conjuncts.vpr@61.5--74.35) [187121]"}
-      Mask[null, AcqConjunct(count_1, 0)] > NoPerm;
+    assume wildcard < Mask[count, acq];
+    Mask := Mask[count, acq:=Mask[count, acq] - wildcard];
+    assert {:msg "  Postcondition of read2 might not hold. Assertion count.acq == false might not hold. (many_conjuncts.vpr@61.5--74.35) [101441]"}
+      !Heap[count, acq];
+    assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access AcqConjunct(count, 0) (many_conjuncts.vpr@61.5--74.35) [101442]"}
+      Mask[null, AcqConjunct(count, 0)] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[null, AcqConjunct(count_1, 0)];
-    Mask := Mask[null, AcqConjunct(count_1, 0):=Mask[null, AcqConjunct(count_1, 0)] - wildcard];
-    assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access count.rel (many_conjuncts.vpr@61.5--74.35) [187122]"}
-      Mask[count_1, rel] > NoPerm;
+    assume wildcard < Mask[null, AcqConjunct(count, 0)];
+    Mask := Mask[null, AcqConjunct(count, 0):=Mask[null, AcqConjunct(count, 0)] - wildcard];
+    assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access count.rel (many_conjuncts.vpr@61.5--74.35) [101443]"}
+      Mask[count, rel] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, rel];
-    Mask := Mask[count_1, rel:=Mask[count_1, rel] - wildcard];
-    assert {:msg "  Postcondition of read2 might not hold. Assertion count.rel == 0 might not hold. (many_conjuncts.vpr@61.5--74.35) [187123]"}
-      Heap[count_1, rel] == 0;
-    assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access count.init (many_conjuncts.vpr@61.5--74.35) [187124]"}
-      Mask[count_1, init_1] > NoPerm;
+    assume wildcard < Mask[count, rel];
+    Mask := Mask[count, rel:=Mask[count, rel] - wildcard];
+    assert {:msg "  Postcondition of read2 might not hold. Assertion count.rel == 0 might not hold. (many_conjuncts.vpr@61.5--74.35) [101444]"}
+      Heap[count, rel] == 0;
+    assert {:msg "  Postcondition of read2 might not hold. There might be insufficient permission to access count.init (many_conjuncts.vpr@61.5--74.35) [101445]"}
+      Mask[count, init_1] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, init_1];
-    Mask := Mask[count_1, init_1:=Mask[count_1, init_1] - wildcard];
-    assert {:msg "  Postcondition of read2 might not hold. Assertion data.val == v might not hold. (many_conjuncts.vpr@61.5--74.35) [187125]"}
+    assume wildcard < Mask[count, init_1];
+    Mask := Mask[count, init_1:=Mask[count, init_1] - wildcard];
+    assert {:msg "  Postcondition of read2 might not hold. Assertion data.val == v might not hold. (many_conjuncts.vpr@61.5--74.35) [101446]"}
       Heap[data_1, val] == v_2;
-    assert {:msg "  Postcondition of read2 might not hold. Assertion perm(data.val) == none might not hold. (many_conjuncts.vpr@61.5--74.35) [187126]"}
+    assert {:msg "  Postcondition of read2 might not hold. Assertion perm(data.val) == none might not hold. (many_conjuncts.vpr@61.5--74.35) [101447]"}
       Mask[data_1, val] == NoPerm;
     // Finish exhale
     havoc ExhaleHeap;
@@ -1063,7 +1063,7 @@ procedure read2(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
 // Translation of method read2_erroneous
 // ==================================================
 
-procedure read2_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
+procedure read2_erroneous(data_1: Ref, count: Ref, ghost: Ref) returns (v_2: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -1083,54 +1083,54 @@ procedure read2_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: i
   
   // -- Assumptions about method arguments
     assume Heap[data_1, $allocated];
-    assume Heap[count_1, $allocated];
+    assume Heap[count, $allocated];
     assume Heap[ghost, $allocated];
   
   // -- Checked inhaling of precondition
     assume (heap(data_1): int) == 0;
-    assume (heap(count_1): int) == 0;
+    assume (heap(count): int) == 0;
     assume (heap(ghost): int) == 0;
     assume (is_ghost(ghost): bool);
-    perm := (rd(): Perm);
-    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@81.5--92.30) [187127]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@81.5--92.30) [101448]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> data_1 != null;
     Mask := Mask[data_1, val:=Mask[data_1, val] + perm];
     assume state(Heap, Mask);
-    perm := (rd(): Perm);
-    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@81.5--92.30) [187128]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@81.5--92.30) [101449]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> ghost != null;
     Mask := Mask[ghost, val:=Mask[ghost, val] + perm];
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, acq_1:=Mask[count_1, acq_1] + perm];
+    assume count != null;
+    Mask := Mask[count, acq:=Mask[count, acq] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of count.acq == false
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@81.5--92.30) [187129]"}
-        HasDirectPerm(Mask, count_1, acq_1);
-    assume !Heap[count_1, acq_1];
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@81.5--92.30) [101450]"}
+        HasDirectPerm(Mask, count, acq);
+    assume !Heap[count, acq];
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, AcqConjunct(count_1, 0):=Mask[null, AcqConjunct(count_1, 0)] + perm];
+    Mask := Mask[null, AcqConjunct(count, 0):=Mask[null, AcqConjunct(count, 0)] + perm];
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, rel:=Mask[count_1, rel] + perm];
+    assume count != null;
+    Mask := Mask[count, rel:=Mask[count, rel] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of count.rel == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@81.5--92.30) [187130]"}
-        HasDirectPerm(Mask, count_1, rel);
-    assume Heap[count_1, rel] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@81.5--92.30) [101451]"}
+        HasDirectPerm(Mask, count, rel);
+    assume Heap[count, rel] == 0;
     havoc wildcard;
     perm := wildcard;
-    assume count_1 != null;
-    Mask := Mask[count_1, init_1:=Mask[count_1, init_1] + perm];
+    assume count != null;
+    Mask := Mask[count, init_1:=Mask[count, init_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1148,53 +1148,53 @@ procedure read2_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: i
     // -- Do welldefinedness check of the inhale part.
       if (*) {
         assume (heap(data_1): int) == 0;
-        assume (heap(count_1): int) == 0;
+        assume (heap(count): int) == 0;
         assume (heap(ghost): int) == 0;
         assume (is_ghost(ghost): bool);
-        perm := (rd(): Perm);
-        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [187131]"}
+        perm := (rd_1(): Perm);
+        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [101452]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> data_1 != null;
         PostMask := PostMask[data_1, val:=PostMask[data_1, val] + perm];
         assume state(PostHeap, PostMask);
-        perm := (rd(): Perm);
-        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [187132]"}
+        perm := (rd_1(): Perm);
+        assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [101453]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> ghost != null;
         PostMask := PostMask[ghost, val:=PostMask[ghost, val] + perm];
         assume state(PostHeap, PostMask);
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, acq_1:=PostMask[count_1, acq_1] + perm];
+        assume count != null;
+        PostMask := PostMask[count, acq:=PostMask[count, acq] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of count.acq == false
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@96.5--110.10) [187133]"}
-            HasDirectPerm(PostMask, count_1, acq_1);
-        assume !PostHeap[count_1, acq_1];
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@96.5--110.10) [101454]"}
+            HasDirectPerm(PostMask, count, acq);
+        assume !PostHeap[count, acq];
         havoc wildcard;
         perm := wildcard;
-        PostMask := PostMask[null, AcqConjunct(count_1, 0):=PostMask[null, AcqConjunct(count_1, 0)] + perm];
+        PostMask := PostMask[null, AcqConjunct(count, 0):=PostMask[null, AcqConjunct(count, 0)] + perm];
         assume state(PostHeap, PostMask);
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, rel:=PostMask[count_1, rel] + perm];
+        assume count != null;
+        PostMask := PostMask[count, rel:=PostMask[count, rel] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of count.rel == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@96.5--110.10) [187134]"}
-            HasDirectPerm(PostMask, count_1, rel);
-        assume PostHeap[count_1, rel] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@96.5--110.10) [101455]"}
+            HasDirectPerm(PostMask, count, rel);
+        assume PostHeap[count, rel] == 0;
         havoc wildcard;
         perm := wildcard;
-        assume count_1 != null;
-        PostMask := PostMask[count_1, init_1:=PostMask[count_1, init_1] + perm];
+        assume count != null;
+        PostMask := PostMask[count, init_1:=PostMask[count, init_1] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of data.val == v
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@96.5--110.10) [187135]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@96.5--110.10) [101456]"}
             HasDirectPerm(PostMask, data_1, val);
         assume PostHeap[data_1, val] == v_2;
         assume false;
@@ -1204,53 +1204,53 @@ procedure read2_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: i
     
     // -- Normally inhale the exhale part.
       assume (heap(data_1): int) == 0;
-      assume (heap(count_1): int) == 0;
+      assume (heap(count): int) == 0;
       assume (heap(ghost): int) == 0;
       assume (is_ghost(ghost): bool);
-      perm := (rd(): Perm);
-      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [187136]"}
+      perm := (rd_1(): Perm);
+      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [101457]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> data_1 != null;
       PostMask := PostMask[data_1, val:=PostMask[data_1, val] + perm];
       assume state(PostHeap, PostMask);
-      perm := (rd(): Perm);
-      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [187137]"}
+      perm := (rd_1(): Perm);
+      assert {:msg "  Contract might not be well-formed. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [101458]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> ghost != null;
       PostMask := PostMask[ghost, val:=PostMask[ghost, val] + perm];
       assume state(PostHeap, PostMask);
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, acq_1:=PostMask[count_1, acq_1] + perm];
+      assume count != null;
+      PostMask := PostMask[count, acq:=PostMask[count, acq] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of count.acq == false
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@96.5--110.10) [187138]"}
-          HasDirectPerm(PostMask, count_1, acq_1);
-      assume !PostHeap[count_1, acq_1];
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.acq (many_conjuncts.vpr@96.5--110.10) [101459]"}
+          HasDirectPerm(PostMask, count, acq);
+      assume !PostHeap[count, acq];
       havoc wildcard;
       perm := wildcard;
-      PostMask := PostMask[null, AcqConjunct(count_1, 0):=PostMask[null, AcqConjunct(count_1, 0)] + perm];
+      PostMask := PostMask[null, AcqConjunct(count, 0):=PostMask[null, AcqConjunct(count, 0)] + perm];
       assume state(PostHeap, PostMask);
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, rel:=PostMask[count_1, rel] + perm];
+      assume count != null;
+      PostMask := PostMask[count, rel:=PostMask[count, rel] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of count.rel == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@96.5--110.10) [187139]"}
-          HasDirectPerm(PostMask, count_1, rel);
-      assume PostHeap[count_1, rel] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access count.rel (many_conjuncts.vpr@96.5--110.10) [101460]"}
+          HasDirectPerm(PostMask, count, rel);
+      assume PostHeap[count, rel] == 0;
       havoc wildcard;
       perm := wildcard;
-      assume count_1 != null;
-      PostMask := PostMask[count_1, init_1:=PostMask[count_1, init_1] + perm];
+      assume count != null;
+      PostMask := PostMask[count, init_1:=PostMask[count, init_1] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of data.val == v
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@96.5--110.10) [187140]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access data.val (many_conjuncts.vpr@96.5--110.10) [101461]"}
           HasDirectPerm(PostMask, data_1, val);
       assume PostHeap[data_1, val] == v_2;
       assume PostMask[data_1, val] == NoPerm;
@@ -1263,7 +1263,7 @@ procedure read2_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: i
   // -- Translating statement: v := data.val -- many_conjuncts.vpr@112.3--112.16
     
     // -- Check definedness of data.val
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access data.val (many_conjuncts.vpr@112.3--112.16) [187141]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access data.val (many_conjuncts.vpr@112.3--112.16) [101462]"}
         HasDirectPerm(Mask, data_1, val);
     v_2 := Heap[data_1, val];
     assume state(Heap, Mask);
@@ -1271,59 +1271,59 @@ procedure read2_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: i
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@96.5--110.10) [187142]"}
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@96.5--110.10) [101463]"}
       (heap(data_1): int) == 0;
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@96.5--110.10) [187143]"}
-      (heap(count_1): int) == 0;
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion heap(ghost) == 0 might not hold. (many_conjuncts.vpr@96.5--110.10) [187144]"}
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@96.5--110.10) [101464]"}
+      (heap(count): int) == 0;
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion heap(ghost) == 0 might not hold. (many_conjuncts.vpr@96.5--110.10) [101465]"}
       (heap(ghost): int) == 0;
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion is_ghost(ghost) might not hold. (many_conjuncts.vpr@96.5--110.10) [187145]"}
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion is_ghost(ghost) might not hold. (many_conjuncts.vpr@96.5--110.10) [101466]"}
       (is_ghost(ghost): bool);
-    perm := (rd(): Perm);
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [187146]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [101467]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access data.val (many_conjuncts.vpr@96.5--110.10) [187147]"}
+      assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access data.val (many_conjuncts.vpr@96.5--110.10) [101468]"}
         perm <= Mask[data_1, val];
     }
     Mask := Mask[data_1, val:=Mask[data_1, val] - perm];
-    perm := (rd(): Perm);
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [187148]"}
+    perm := (rd_1(): Perm);
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Fraction rd() might be negative. (many_conjuncts.vpr@96.5--110.10) [101469]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access ghost.val (many_conjuncts.vpr@96.5--110.10) [187149]"}
+      assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access ghost.val (many_conjuncts.vpr@96.5--110.10) [101470]"}
         perm <= Mask[ghost, val];
     }
     Mask := Mask[ghost, val:=Mask[ghost, val] - perm];
-    assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access count.acq (many_conjuncts.vpr@96.5--110.10) [187150]"}
-      Mask[count_1, acq_1] > NoPerm;
+    assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access count.acq (many_conjuncts.vpr@96.5--110.10) [101471]"}
+      Mask[count, acq] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, acq_1];
-    Mask := Mask[count_1, acq_1:=Mask[count_1, acq_1] - wildcard];
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion count.acq == false might not hold. (many_conjuncts.vpr@96.5--110.10) [187151]"}
-      !Heap[count_1, acq_1];
-    assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access AcqConjunct(count, 0) (many_conjuncts.vpr@96.5--110.10) [187152]"}
-      Mask[null, AcqConjunct(count_1, 0)] > NoPerm;
+    assume wildcard < Mask[count, acq];
+    Mask := Mask[count, acq:=Mask[count, acq] - wildcard];
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion count.acq == false might not hold. (many_conjuncts.vpr@96.5--110.10) [101472]"}
+      !Heap[count, acq];
+    assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access AcqConjunct(count, 0) (many_conjuncts.vpr@96.5--110.10) [101473]"}
+      Mask[null, AcqConjunct(count, 0)] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[null, AcqConjunct(count_1, 0)];
-    Mask := Mask[null, AcqConjunct(count_1, 0):=Mask[null, AcqConjunct(count_1, 0)] - wildcard];
-    assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access count.rel (many_conjuncts.vpr@96.5--110.10) [187153]"}
-      Mask[count_1, rel] > NoPerm;
+    assume wildcard < Mask[null, AcqConjunct(count, 0)];
+    Mask := Mask[null, AcqConjunct(count, 0):=Mask[null, AcqConjunct(count, 0)] - wildcard];
+    assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access count.rel (many_conjuncts.vpr@96.5--110.10) [101474]"}
+      Mask[count, rel] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, rel];
-    Mask := Mask[count_1, rel:=Mask[count_1, rel] - wildcard];
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion count.rel == 0 might not hold. (many_conjuncts.vpr@96.5--110.10) [187154]"}
-      Heap[count_1, rel] == 0;
-    assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access count.init (many_conjuncts.vpr@96.5--110.10) [187155]"}
-      Mask[count_1, init_1] > NoPerm;
+    assume wildcard < Mask[count, rel];
+    Mask := Mask[count, rel:=Mask[count, rel] - wildcard];
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion count.rel == 0 might not hold. (many_conjuncts.vpr@96.5--110.10) [101475]"}
+      Heap[count, rel] == 0;
+    assert {:msg "  Postcondition of read2_erroneous might not hold. There might be insufficient permission to access count.init (many_conjuncts.vpr@96.5--110.10) [101476]"}
+      Mask[count, init_1] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[count_1, init_1];
-    Mask := Mask[count_1, init_1:=Mask[count_1, init_1] - wildcard];
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion data.val == v might not hold. (many_conjuncts.vpr@96.5--110.10) [187156]"}
+    assume wildcard < Mask[count, init_1];
+    Mask := Mask[count, init_1:=Mask[count, init_1] - wildcard];
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion data.val == v might not hold. (many_conjuncts.vpr@96.5--110.10) [101477]"}
       Heap[data_1, val] == v_2;
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion perm(data.val) == none might not hold. (many_conjuncts.vpr@96.5--110.10) [187157]"}
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion perm(data.val) == none might not hold. (many_conjuncts.vpr@96.5--110.10) [101478]"}
       Mask[data_1, val] == NoPerm;
-    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion false might not hold. (many_conjuncts.vpr@96.5--110.10) [187158]"}
+    assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion false might not hold. (many_conjuncts.vpr@96.5--110.10) [101479]"}
       false;
     // Finish exhale
     havoc ExhaleHeap;

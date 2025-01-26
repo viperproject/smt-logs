@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:02
+// Date:         2025-01-26 21:43:32
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/unique.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/unique-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -193,13 +193,13 @@ const unique u2: TestDomainType;
 // Translation of method test
 // ==================================================
 
-procedure test() returns ()
+procedure test_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -209,20 +209,20 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert u1() != u2() -- unique.vpr@12.5--12.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion u1() != u2() might not hold. (unique.vpr@12.12--12.24) [183626]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion u1() != u2() might not hold. (unique.vpr@12.12--12.24) [100387]"}
       u1 != u2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert c() != u1() -- unique.vpr@15.5--15.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion c() != u1() might not hold. (unique.vpr@15.12--15.23) [183627]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion c() != u1() might not hold. (unique.vpr@15.12--15.23) [100388]"}
       (c_11(): TestDomainType) != u1;
     assume state(Heap, Mask);
 }

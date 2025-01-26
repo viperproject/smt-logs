@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:54
+// Date:         2025-01-26 21:42:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0209.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0209-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -187,10 +187,10 @@ const unique fn$$List__Node: ListDomainType;
 const unique fn$$List__Nil: ListDomainType;
 
 // Translation of domain function variantOfList
-function  variantOfList(self_3: Ref): ListDomainType;
+function  variantOfList(self_1: Ref): ListDomainType;
 
 // Translation of domain function isList
-function  isList(self_3: Ref): bool;
+function  isList(self_1: Ref): bool;
 
 // Translation of domain axiom ax_variantOfList
 axiom (forall x: Ref ::

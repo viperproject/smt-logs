@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:20
+// Date:         2025-01-26 21:43:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0331.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0331-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_22: Ref, f_30: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_22, f_30] }
-  Heap[o_22, $allocated] ==> Heap[Heap[o_22, f_30], $allocated]
+axiom (forall o_4: Ref, f_9: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_4, f_9] }
+  Heap[o_4, $allocated] ==> Heap[Heap[o_4, f_9], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_27: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_27] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_27) ==> Heap[o_41, f_27] == ExhaleHeap[o_41, f_27]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_23: Ref, f_15: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_23, f_15] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_23, f_15) ==> Heap[o_23, f_15] == ExhaleHeap[o_23, f_15]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_28), ExhaleHeap[null, PredicateMaskField(pm_f_28)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsPredicateField(pm_f_28) ==> Heap[null, PredicateMaskField(pm_f_28)] == ExhaleHeap[null, PredicateMaskField(pm_f_28)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10), ExhaleHeap[null, PredicateMaskField(pm_f_10)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> Heap[null, PredicateMaskField(pm_f_10)] == ExhaleHeap[null, PredicateMaskField(pm_f_10)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_28) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsPredicateField(pm_f_28) ==> (forall <A, B> o2_28: Ref, f_27: (Field A B) ::
-    { ExhaleHeap[o2_28, f_27] }
-    Heap[null, PredicateMaskField(pm_f_28)][o2_28, f_27] ==> Heap[o2_28, f_27] == ExhaleHeap[o2_28, f_27]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_15: (Field A B) ::
+    { ExhaleHeap[o2_10, f_15] }
+    Heap[null, PredicateMaskField(pm_f_10)][o2_10, f_15] ==> Heap[o2_10, f_15] == ExhaleHeap[o2_10, f_15]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_28), ExhaleHeap[null, WandMaskField(pm_f_28)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsWandField(pm_f_28) ==> Heap[null, WandMaskField(pm_f_28)] == ExhaleHeap[null, WandMaskField(pm_f_28)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10), ExhaleHeap[null, WandMaskField(pm_f_10)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> Heap[null, WandMaskField(pm_f_10)] == ExhaleHeap[null, WandMaskField(pm_f_10)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_28) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsWandField(pm_f_28) ==> (forall <A, B> o2_28: Ref, f_27: (Field A B) ::
-    { ExhaleHeap[o2_28, f_27] }
-    Heap[null, WandMaskField(pm_f_28)][o2_28, f_27] ==> Heap[o2_28, f_27] == ExhaleHeap[o2_28, f_27]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_15: (Field A B) ::
+    { ExhaleHeap[o2_10, f_15] }
+    Heap[null, WandMaskField(pm_f_10)][o2_10, f_15] ==> Heap[o2_10, f_15] == ExhaleHeap[o2_10, f_15]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_23: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_23, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_23, $allocated] ==> ExhaleHeap[o_23, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_22: Ref, f_12: (Field A B), v: B ::
-  { Heap[o_22, f_12:=v] }
-  succHeap(Heap, Heap[o_22, f_12:=v])
+axiom (forall <A, B> Heap: HeapType, o_4: Ref, f_25: (Field A B), v: B ::
+  { Heap[o_4, f_25:=v] }
+  succHeap(Heap, Heap[o_4, f_25:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -190,11 +190,11 @@ axiom !IsWandField(nx);
 // ==================================================
 
 // Uninterpreted function definitions
-function  integer(Heap: HeapType, r_1: Ref): int;
+function  integer_1(Heap: HeapType, r_1: Ref): int;
 function  integer'(Heap: HeapType, r_1: Ref): int;
 axiom (forall Heap: HeapType, r_1: Ref ::
-  { integer(Heap, r_1) }
-  integer(Heap, r_1) == integer'(Heap, r_1) && dummyFunction(integer#triggerStateless(r_1))
+  { integer_1(Heap, r_1) }
+  integer_1(Heap, r_1) == integer'(Heap, r_1) && dummyFunction(integer#triggerStateless(r_1))
 );
 axiom (forall Heap: HeapType, r_1: Ref ::
   { integer'(Heap, r_1) }
@@ -203,8 +203,8 @@ axiom (forall Heap: HeapType, r_1: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, r_1: Ref ::
-  { state(Heap, Mask), integer(Heap, r_1) } { state(Heap, Mask), integer#triggerStateless(r_1), Peano#trigger(Heap, Peano(r_1)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> integer(Heap, r_1) == (if r_1 == null then 0 else 1 + integer'(Heap, Heap[r_1, nx]))
+  { state(Heap, Mask), integer_1(Heap, r_1) } { state(Heap, Mask), integer#triggerStateless(r_1), Peano#trigger(Heap, Peano(r_1)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> integer_1(Heap, r_1) == (if r_1 == null then 0 else 1 + integer'(Heap, Heap[r_1, nx]))
 );
 
 // Framing axioms
@@ -255,7 +255,7 @@ procedure integer#definedness(r_1: Ref) returns (Result: int)
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Peano(r) (0331.vpr@8.1--10.60) [217099]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Peano(r) (0331.vpr@8.1--10.60) [79516]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Peano(r_1)];
       if (r_1 != null) {
         perm := FullPerm;
@@ -272,14 +272,14 @@ procedure integer#definedness(r_1: Ref) returns (Result: int)
       assume state(UnfoldingHeap, UnfoldingMask);
       if (r_1 == null) {
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.nx (0331.vpr@8.1--10.60) [217100]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.nx (0331.vpr@8.1--10.60) [79517]"}
           HasDirectPerm(UnfoldingMask, r_1, nx);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function integer might not hold. There might be insufficient permission to access Peano(r.nx) (0331.vpr@10.45--10.58) [217101]"}
+          assert {:msg "  Precondition of function integer might not hold. There might be insufficient permission to access Peano(r.nx) (0331.vpr@10.45--10.58) [79518]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Peano(UnfoldingHeap[r_1, nx])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -297,16 +297,16 @@ procedure integer#definedness(r_1: Ref) returns (Result: int)
         if (r_1 != null) {
           Heap := Heap[null, Peano#sm(r_1):=Heap[null, Peano#sm(r_1)][r_1, nx:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, Peano#sm(r_1)][o_15, f_20] || Heap[null, Peano#sm(Heap[r_1, nx])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, Peano#sm(r_1)][o_5, f_11] || Heap[null, Peano#sm(Heap[r_1, nx])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, Peano#sm(r_1):=newPMask];
         }
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := (if r_1 == null then 0 else 1 + integer(Heap, Heap[r_1, nx]));
+    Result := (if r_1 == null then 0 else 1 + integer_1(Heap, Heap[r_1, nx]));
 }
 
 // ==================================================
@@ -328,7 +328,7 @@ axiom (forall Heap: HeapType, r_1: Ref, k: int ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, r_1: Ref, k: int ::
   { state(Heap, Mask), integer2(Heap, r_1, k) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> integer2(Heap, r_1, k) == integer(Heap, r_1) + k
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> integer2(Heap, r_1, k) == integer_1(Heap, r_1) + k
 );
 
 // Framing axioms
@@ -374,7 +374,7 @@ procedure integer2#definedness(r_1: Ref, k: int) returns (Result: int)
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function integer might not hold. There might be insufficient permission to access Peano(r) (0331.vpr@14.3--14.13) [217102]"}
+        assert {:msg "  Precondition of function integer might not hold. There might be insufficient permission to access Peano(r) (0331.vpr@14.3--14.13) [79519]"}
           NoPerm < perm ==> NoPerm < Mask[null, Peano(r_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -385,7 +385,7 @@ procedure integer2#definedness(r_1: Ref, k: int) returns (Result: int)
       }
   
   // -- Translate function body
-    Result := integer(Heap, r_1) + k;
+    Result := integer_1(Heap, r_1) + k;
 }
 
 // ==================================================
@@ -443,7 +443,7 @@ procedure Peano#definedness(r_1: Ref) returns ()
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(Peano(r.nx), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access r.nx (0331.vpr@6.1--6.66) [217103]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access r.nx (0331.vpr@6.1--6.66) [79520]"}
           HasDirectPerm(Mask, r_1, nx);
       perm := FullPerm;
       Mask := Mask[null, Peano(Heap[r_1, nx]):=Mask[null, Peano(Heap[r_1, nx])] + perm];
@@ -470,8 +470,8 @@ procedure A_2(r_1: Ref) returns ()
   var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var k_15: int;
-  var k_1_1: int;
+  var k_9: int;
+  var k_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -507,7 +507,7 @@ procedure A_2(r_1: Ref) returns ()
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access Peano(r) (0331.vpr@20.10--20.41) [217104]"}
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access Peano(r) (0331.vpr@20.10--20.41) [79521]"}
           perm <= UnfoldingMask[null, Peano(r_1)];
       }
       UnfoldingMask := UnfoldingMask[null, Peano(r_1):=UnfoldingMask[null, Peano(r_1)] - perm];
@@ -524,16 +524,16 @@ procedure A_2(r_1: Ref) returns ()
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r.nx (0331.vpr@20.10--20.41) [217105]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r.nx (0331.vpr@20.10--20.41) [79522]"}
         HasDirectPerm(UnfoldingMask, r_1, nx);
       
       // -- Free assumptions (exp module)
         if (r_1 != null) {
           Heap := Heap[null, Peano#sm(r_1):=Heap[null, Peano#sm(r_1)][r_1, nx:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-            { newPMask[o_16, f_21] }
-            Heap[null, Peano#sm(r_1)][o_16, f_21] || Heap[null, Peano#sm(Heap[r_1, nx])][o_16, f_21] ==> newPMask[o_16, f_21]
+          assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+            { newPMask[o_6, f_12] }
+            Heap[null, Peano#sm(r_1)][o_6, f_12] || Heap[null, Peano#sm(Heap[r_1, nx])][o_6, f_12] ==> newPMask[o_6, f_12]
           );
           Heap := Heap[null, Peano#sm(r_1):=newPMask];
         }
@@ -582,7 +582,7 @@ procedure A_2(r_1: Ref) returns ()
         ExhaleWellDef1Heap := UnfoldingHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access Peano(r) (0331.vpr@21.10--23.72) [217106]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access Peano(r) (0331.vpr@21.10--23.72) [79523]"}
             perm <= UnfoldingMask[null, Peano(r_1)];
         }
         UnfoldingMask := UnfoldingMask[null, Peano(r_1):=UnfoldingMask[null, Peano(r_1)] - perm];
@@ -599,14 +599,14 @@ procedure A_2(r_1: Ref) returns ()
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Assert might fail. There might be insufficient permission to access r.nx (0331.vpr@21.10--23.72) [217107]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access r.nx (0331.vpr@21.10--23.72) [79524]"}
           HasDirectPerm(UnfoldingMask, r_1, nx);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r.nx) (0331.vpr@23.28--23.44) [217108]"}
+          assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r.nx) (0331.vpr@23.28--23.44) [79525]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Peano(UnfoldingHeap[r_1, nx])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -620,20 +620,20 @@ procedure A_2(r_1: Ref) returns ()
           if (r_1 != null) {
             Heap := Heap[null, Peano#sm(r_1):=Heap[null, Peano#sm(r_1)][r_1, nx:=true]];
             havoc newPMask;
-            assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-              { newPMask[o_52, f_55] }
-              Heap[null, Peano#sm(r_1)][o_52, f_55] || Heap[null, Peano#sm(Heap[r_1, nx])][o_52, f_55] ==> newPMask[o_52, f_55]
+            assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+              { newPMask[o_40, f_52] }
+              Heap[null, Peano#sm(r_1)][o_40, f_52] || Heap[null, Peano#sm(Heap[r_1, nx])][o_40, f_52] ==> newPMask[o_40, f_52]
             );
             Heap := Heap[null, Peano#sm(r_1):=newPMask];
           }
           assume state(Heap, Mask);
-        if (integer2(Heap, Heap[r_1, nx], k_15) >= 0) {
+        if (integer2(Heap, Heap[r_1, nx], k_9) >= 0) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r) (0331.vpr@23.55--23.68) [217109]"}
+            assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r) (0331.vpr@23.55--23.68) [79526]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Peano(r_1)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -646,15 +646,15 @@ procedure A_2(r_1: Ref) returns ()
         assume false;
       }
     if (*) {
-      if (integer2(Heap, Heap[r_1, nx], k_1_1) >= 0) {
-        assert {:msg "  Assert might fail. Assertion integer2(r, k) > 0 might not hold. (0331.vpr@21.10--23.72) [217110]"}
-          integer2(Heap, r_1, k_1_1) > 0;
+      if (integer2(Heap, Heap[r_1, nx], k_1) >= 0) {
+        assert {:msg "  Assert might fail. Assertion integer2(r, k) > 0 might not hold. (0331.vpr@21.10--23.72) [79527]"}
+          integer2(Heap, r_1, k_1) > 0;
       }
       assume false;
     }
-    assume (forall k_2_1_1: int ::
-      { integer2#frame(Heap[null, Peano(Heap[r_1, nx])], Heap[r_1, nx], k_2_1_1) }
-      integer2(Heap, Heap[r_1, nx], k_2_1_1) >= 0 ==> integer2(Heap, r_1, k_2_1_1) > 0
+    assume (forall k_2_1: int ::
+      { integer2#frame(Heap[null, Peano(Heap[r_1, nx])], Heap[r_1, nx], k_2_1) }
+      integer2(Heap, Heap[r_1, nx], k_2_1) >= 0 ==> integer2(Heap, r_1, k_2_1) > 0
     );
     assume state(Heap, Mask);
 }
@@ -663,7 +663,7 @@ procedure A_2(r_1: Ref) returns ()
 // Translation of method B
 // ==================================================
 
-procedure B_3(r_1: Ref) returns ()
+procedure B_2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -677,8 +677,8 @@ procedure B_3(r_1: Ref) returns ()
   var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
-  var k_18: int;
-  var k_1_1: int;
+  var k_22: int;
+  var k_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -720,7 +720,7 @@ procedure B_3(r_1: Ref) returns ()
         ExhaleWellDef1Heap := UnfoldingHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access Peano(r) (0331.vpr@30.10--32.72) [217111]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access Peano(r) (0331.vpr@30.10--32.72) [79528]"}
             perm <= UnfoldingMask[null, Peano(r_1)];
         }
         UnfoldingMask := UnfoldingMask[null, Peano(r_1):=UnfoldingMask[null, Peano(r_1)] - perm];
@@ -737,14 +737,14 @@ procedure B_3(r_1: Ref) returns ()
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Assert might fail. There might be insufficient permission to access r.nx (0331.vpr@30.10--32.72) [217112]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access r.nx (0331.vpr@30.10--32.72) [79529]"}
           HasDirectPerm(UnfoldingMask, r_1, nx);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r.nx) (0331.vpr@32.28--32.44) [217113]"}
+          assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r.nx) (0331.vpr@32.28--32.44) [79530]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Peano(UnfoldingHeap[r_1, nx])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -758,20 +758,20 @@ procedure B_3(r_1: Ref) returns ()
           if (r_1 != null) {
             Heap := Heap[null, Peano#sm(r_1):=Heap[null, Peano#sm(r_1)][r_1, nx:=true]];
             havoc newPMask;
-            assume (forall <A, B> o_18: Ref, f_22: (Field A B) ::
-              { newPMask[o_18, f_22] }
-              Heap[null, Peano#sm(r_1)][o_18, f_22] || Heap[null, Peano#sm(Heap[r_1, nx])][o_18, f_22] ==> newPMask[o_18, f_22]
+            assume (forall <A, B> o_65: Ref, f_74: (Field A B) ::
+              { newPMask[o_65, f_74] }
+              Heap[null, Peano#sm(r_1)][o_65, f_74] || Heap[null, Peano#sm(Heap[r_1, nx])][o_65, f_74] ==> newPMask[o_65, f_74]
             );
             Heap := Heap[null, Peano#sm(r_1):=newPMask];
           }
           assume state(Heap, Mask);
-        if (integer2(Heap, Heap[r_1, nx], k_18) >= 0) {
+        if (integer2(Heap, Heap[r_1, nx], k_22) >= 0) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r) (0331.vpr@32.55--32.68) [217114]"}
+            assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r) (0331.vpr@32.55--32.68) [79531]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Peano(r_1)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -784,15 +784,15 @@ procedure B_3(r_1: Ref) returns ()
         assume false;
       }
     if (*) {
-      if (integer2(Heap, Heap[r_1, nx], k_1_1) >= 0) {
-        assert {:msg "  Assert might fail. Assertion integer2(r, k) > 0 might not hold. (0331.vpr@30.10--32.72) [217115]"}
-          integer2(Heap, r_1, k_1_1) > 0;
+      if (integer2(Heap, Heap[r_1, nx], k_1) >= 0) {
+        assert {:msg "  Assert might fail. Assertion integer2(r, k) > 0 might not hold. (0331.vpr@30.10--32.72) [79532]"}
+          integer2(Heap, r_1, k_1) > 0;
       }
       assume false;
     }
-    assume (forall k_2_1_1: int ::
-      { integer2#frame(Heap[null, Peano(r_1)], r_1, k_2_1_1) }
-      integer2(Heap, Heap[r_1, nx], k_2_1_1) >= 0 ==> integer2(Heap, r_1, k_2_1_1) > 0
+    assume (forall k_2_1: int ::
+      { integer2#frame(Heap[null, Peano(r_1)], r_1, k_2_1) }
+      integer2(Heap, Heap[r_1, nx], k_2_1) >= 0 ==> integer2(Heap, r_1, k_2_1) > 0
     );
     assume state(Heap, Mask);
 }

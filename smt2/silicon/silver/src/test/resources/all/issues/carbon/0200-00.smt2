@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:26
+; Started: 2025-01-26 21:35:01
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -135,11 +135,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (isBool%limited s@$ r@0@00) (isBool s@$ r@0@00))
   :pattern ((isBool s@$ r@0@00))
-  :qid |quant-u-23681|)))
+  :qid |quant-u-12059|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (isBool%stateless r@0@00)
   :pattern ((isBool%limited s@$ r@0@00))
-  :qid |quant-u-23682|)))
+  :qid |quant-u-12060|)))
 ; ---------- FUNCTION box----------
 (declare-fun b@2@00 () Bool)
 (declare-fun result@3@00 () $Ref)
@@ -158,23 +158,23 @@
 (assert (forall ((s@$ $Snap) (b@2@00 Bool)) (!
   (= (box%limited s@$ b@2@00) (box s@$ b@2@00))
   :pattern ((box s@$ b@2@00))
-  :qid |quant-u-23683|)))
+  :qid |quant-u-12061|)))
 (assert (forall ((s@$ $Snap) (b@2@00 Bool)) (!
   (box%stateless b@2@00)
   :pattern ((box%limited s@$ b@2@00))
-  :qid |quant-u-23684|)))
+  :qid |quant-u-12062|)))
 (assert (forall ((s@$ $Snap) (b@2@00 Bool)) (!
   (let ((result@3@00 (box%limited s@$ b@2@00))) (=>
     (box%precondition s@$ b@2@00)
     (isBool $Snap.unit result@3@00)))
   :pattern ((box%limited s@$ b@2@00))
-  :qid |quant-u-23689|)))
+  :qid |quant-u-12067|)))
 (assert (forall ((s@$ $Snap) (b@2@00 Bool)) (!
   (let ((result@3@00 (box%limited s@$ b@2@00))) (=>
     (box%precondition s@$ b@2@00)
     (isBool%precondition $Snap.unit result@3@00)))
   :pattern ((box%limited s@$ b@2@00))
-  :qid |quant-u-23690|)))
+  :qid |quant-u-12068|)))
 ; ---------- FUNCTION unbox----------
 (declare-fun r@4@00 () $Ref)
 (declare-fun result@5@00 () Bool)
@@ -192,11 +192,11 @@
 (assert (forall ((s@$ $Snap) (r@4@00 $Ref)) (!
   (= (unbox%limited s@$ r@4@00) (unbox s@$ r@4@00))
   :pattern ((unbox s@$ r@4@00))
-  :qid |quant-u-23685|)))
+  :qid |quant-u-12063|)))
 (assert (forall ((s@$ $Snap) (r@4@00 $Ref)) (!
   (unbox%stateless r@4@00)
   :pattern ((unbox%limited s@$ r@4@00))
-  :qid |quant-u-23686|)))
+  :qid |quant-u-12064|)))
 ; ---------- FUNCTION SCIONPath_get_hof----------
 (declare-fun self@6@00 () $Ref)
 (declare-fun result@7@00 () $Ref)
@@ -209,11 +209,11 @@
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (= (SCIONPath_get_hof%limited s@$ self@6@00) (SCIONPath_get_hof s@$ self@6@00))
   :pattern ((SCIONPath_get_hof s@$ self@6@00))
-  :qid |quant-u-23687|)))
+  :qid |quant-u-12065|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (SCIONPath_get_hof%stateless self@6@00)
   :pattern ((SCIONPath_get_hof%limited s@$ self@6@00))
-  :qid |quant-u-23688|)))
+  :qid |quant-u-12066|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@9@00))
@@ -352,13 +352,13 @@
         (SCIONPath_get_hof s@$ self@6@00)
         (let ((idx_0 ($SortWrappers.$SnapToInt s@$))) $Ref.null))))
   :pattern ((SCIONPath_get_hof s@$ self@6@00))
-  :qid |quant-u-23691|)))
+  :qid |quant-u-12069|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (=>
     (SCIONPath_get_hof%precondition s@$ self@6@00)
     (let ((idx_0 ($SortWrappers.$SnapToInt s@$))) true))
   :pattern ((SCIONPath_get_hof s@$ self@6@00))
-  :qid |quant-u-23692|)))
+  :qid |quant-u-12070|)))
 ; ---------- outer ----------
 (declare-const r@13@00 $Ref)
 (push) ; 1

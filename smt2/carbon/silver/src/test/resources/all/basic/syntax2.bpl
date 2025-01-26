@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:44
+// Date:         2025-01-26 21:43:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/syntax2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/syntax2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,13 +181,13 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type D1DomainType T;
 
 // Translation of domain function f1
-function  f1_2<T>(x_8: (D1DomainType T)): D2DomainType T;
+function  f1_3<T>(x_37: (D1DomainType T)): D2DomainType T;
 
 // Translation of domain function make
-function  make<T>(x_8: T): D1DomainType T;
+function  make<T>(x_37: T): D1DomainType T;
 
 // Translation of domain function f1b
-function  f1b<T>(x_8: (D1DomainType T)): int;
+function  f1b<T>(x_37: (D1DomainType T)): int;
 
 // ==================================================
 // Translation of domain D2
@@ -197,21 +197,21 @@ function  f1b<T>(x_8: (D1DomainType T)): int;
 type D2DomainType T;
 
 // Translation of domain function f2
-function  f2_2<T>(x_8: (D2DomainType T)): T;
+function  f2_3<T>(x_37: (D2DomainType T)): T;
 
 // Translation of domain function f2b
-function  f2b<T>(x_8: (D2DomainType T)): int;
+function  f2b<T>(x_37: (D2DomainType T)): int;
 
 // Translation of domain axiom ax2a
 axiom (forall <T> x: (D1DomainType T) ::
-  { (f1b(x): int) } { (f2b((f1_2(x): D2DomainType T)): int) }
-  (f1b(x): int) >= 0 ==> (f2b((f1_2(x): D2DomainType T)): int) > 0
+  { (f1b(x): int) } { (f2b((f1_3(x): D2DomainType T)): int) }
+  (f1b(x): int) >= 0 ==> (f2b((f1_3(x): D2DomainType T)): int) > 0
 );
 
 // Translation of domain axiom ax2b
 axiom (forall <T> x: (D1DomainType T) ::
-  { (f2b((f1_2(x): D2DomainType T)): int) } { (f1b(x): int) }
-  (f2b((f1_2(x): D2DomainType T)): int) > 0 ==> (f1b(x): int) == 0
+  { (f2b((f1_3(x): D2DomainType T)): int) } { (f1b(x): int) }
+  (f2b((f1_3(x): D2DomainType T)): int) > 0 ==> (f1b(x): int) == 0
 );
 
 // ==================================================
@@ -221,10 +221,10 @@ axiom (forall <T> x: (D1DomainType T) ::
 procedure m1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var d1x: (D1DomainType int);
   
   // -- Initializing the state
@@ -235,14 +235,14 @@ procedure m1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (f1b(d1x): Int) >= 0 ==> (f1b(d1x): Int) == 0 -- syntax2.vpr@25.4--25.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if ((f1b(d1x): int) >= 0) {
-      assert {:msg "  Assert might fail. Assertion (f1b(d1x): Int) == 0 might not hold. (syntax2.vpr@25.11--25.42) [186650]"}
+      assert {:msg "  Assert might fail. Assertion (f1b(d1x): Int) == 0 might not hold. (syntax2.vpr@25.11--25.42) [100646]"}
         (f1b(d1x): int) == 0;
     }
     assume state(Heap, Mask);
@@ -255,8 +255,8 @@ procedure m1() returns ()
 procedure m2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var d11x: (D1DomainType (D1DomainType int));
   
   // -- Initializing the state
@@ -267,8 +267,8 @@ procedure m2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: d11x := (make((make(1): D1[Int])): D1[D1[Int]]) -- syntax2.vpr@31.4--31.25
     d11x := (make((make(1): D1DomainType int)): D1DomainType (D1DomainType int));

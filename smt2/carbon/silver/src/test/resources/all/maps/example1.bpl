@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:17:08
+// Date:         2025-01-26 21:41:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/maps/example1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/maps/example1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_7: Ref, f_11: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_7, f_11] }
-  Heap[o_7, $allocated] ==> Heap[Heap[o_7, f_11], $allocated]
+axiom (forall o_16: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_16, f_10] }
+  Heap[o_16, $allocated] ==> Heap[Heap[o_16, f_10], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_8: Ref, f_12: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_8, f_12] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_8, f_12) ==> Heap[o_8, f_12] == ExhaleHeap[o_8, f_12]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_17: Ref, f_25: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_17, f_25] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_17, f_25) ==> Heap[o_17, f_25] == ExhaleHeap[o_17, f_25]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_3), ExhaleHeap[null, PredicateMaskField(pm_f_3)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsPredicateField(pm_f_3) ==> Heap[null, PredicateMaskField(pm_f_3)] == ExhaleHeap[null, PredicateMaskField(pm_f_3)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6), ExhaleHeap[null, PredicateMaskField(pm_f_6)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> Heap[null, PredicateMaskField(pm_f_6)] == ExhaleHeap[null, PredicateMaskField(pm_f_6)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_3) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsPredicateField(pm_f_3) ==> (forall <A, B> o2_3: Ref, f_12: (Field A B) ::
-    { ExhaleHeap[o2_3, f_12] }
-    Heap[null, PredicateMaskField(pm_f_3)][o2_3, f_12] ==> Heap[o2_3, f_12] == ExhaleHeap[o2_3, f_12]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_25: (Field A B) ::
+    { ExhaleHeap[o2_6, f_25] }
+    Heap[null, PredicateMaskField(pm_f_6)][o2_6, f_25] ==> Heap[o2_6, f_25] == ExhaleHeap[o2_6, f_25]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_3), ExhaleHeap[null, WandMaskField(pm_f_3)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsWandField(pm_f_3) ==> Heap[null, WandMaskField(pm_f_3)] == ExhaleHeap[null, WandMaskField(pm_f_3)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6), ExhaleHeap[null, WandMaskField(pm_f_6)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> Heap[null, WandMaskField(pm_f_6)] == ExhaleHeap[null, WandMaskField(pm_f_6)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_3) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsWandField(pm_f_3) ==> (forall <A, B> o2_3: Ref, f_12: (Field A B) ::
-    { ExhaleHeap[o2_3, f_12] }
-    Heap[null, WandMaskField(pm_f_3)][o2_3, f_12] ==> Heap[o2_3, f_12] == ExhaleHeap[o2_3, f_12]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_25: (Field A B) ::
+    { ExhaleHeap[o2_6, f_25] }
+    Heap[null, WandMaskField(pm_f_6)][o2_6, f_25] ==> Heap[o2_6, f_25] == ExhaleHeap[o2_6, f_25]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_8: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_8, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_8, $allocated] ==> ExhaleHeap[o_8, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_17: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_17, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_17, $allocated] ==> ExhaleHeap[o_17, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_7: Ref, f_2: (Field A B), v: B ::
-  { Heap[o_7, f_2:=v] }
-  succHeap(Heap, Heap[o_7, f_2:=v])
+axiom (forall <A, B> Heap: HeapType, o_16: Ref, f_2: (Field A B), v: B ::
+  { Heap[o_16, f_2:=v] }
+  succHeap(Heap, Heap[o_16, f_2:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,7 +144,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(k_1_1: int): bool;
+function  neverTriggered1(k_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -494,14 +494,14 @@ axiom !IsWandField(val);
 // Translation of method test1
 // ==================================================
 
-procedure test1() returns ()
+procedure test1_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var m_17: (Map int bool);
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
+  var m_18: (Map int bool);
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var d: (Set int);
   var r_1: (Set bool);
   
@@ -513,47 +513,47 @@ procedure test1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: m := Map[Int,Bool]() -- example1.vpr@6.3--6.34
-    m_17 := (Map#Empty(): Map int bool);
+    m_18 := (Map#Empty(): Map int bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |Map[Int,Bool]()| == 0 -- example1.vpr@7.3--7.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion |Map[Int,Bool]()| == 0 might not hold. (example1.vpr@7.10--7.33) [157557]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion |Map[Int,Bool]()| == 0 might not hold. (example1.vpr@7.10--7.33) [47810]"}
       Map#Card((Map#Empty(): Map int bool)) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |m| == 0 -- example1.vpr@8.3--8.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion |m| == 0 might not hold. (example1.vpr@8.10--8.18) [157558]"}
-      Map#Card(m_17) == 0;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion |m| == 0 might not hold. (example1.vpr@8.10--8.18) [47811]"}
+      Map#Card(m_18) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: d := domain(m) -- example1.vpr@10.3--10.32
-    d := Map#Domain(m_17);
+    d := Map#Domain(m_18);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert d == Set[Int]() -- example1.vpr@11.3--11.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion d == Set[Int]() might not hold. (example1.vpr@11.10--11.20) [157559]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion d == Set[Int]() might not hold. (example1.vpr@11.10--11.20) [47812]"}
       Set#Equal(d, (Set#Empty(): Set int));
     assume state(Heap, Mask);
   
   // -- Translating statement: r := range(m) -- example1.vpr@13.3--13.32
-    r_1 := Map#Values(m_17);
+    r_1 := Map#Values(m_18);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |range(m)| == 0 -- example1.vpr@14.3--14.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion |range(m)| == 0 might not hold. (example1.vpr@14.10--14.25) [157560]"}
-      Set#Card(Map#Values(m_17)) == 0;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion |range(m)| == 0 might not hold. (example1.vpr@14.10--14.25) [47813]"}
+      Set#Card(Map#Values(m_18)) == 0;
     assume state(Heap, Mask);
 }
 
@@ -561,14 +561,14 @@ procedure test1() returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2() returns ()
+procedure test2_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var m_17: (Map int bool);
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
+  var m_18: (Map int bool);
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -578,40 +578,40 @@ procedure test2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: m := Map[Int,Bool]() -- example1.vpr@19.3--19.34
-    m_17 := (Map#Empty(): Map int bool);
+    m_18 := (Map#Empty(): Map int bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: m := m[2 := true] -- example1.vpr@20.3--20.20
-    m_17 := Map#Build(m_17, 2, true);
+    m_18 := Map#Build(m_18, 2, true);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[2] -- example1.vpr@22.3--22.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of m[2]
-      assert {:msg "  Assert might fail. Map m might not contain an entry at key 2. (example1.vpr@22.10--22.14) [157561]"}
-        Map#Domain(m_17)[2];
-    assert {:msg "  Assert might fail. Assertion m[2] might not hold. (example1.vpr@22.10--22.14) [157562]"}
-      Map#Elements(m_17)[2];
+      assert {:msg "  Assert might fail. Map m might not contain an entry at key 2. (example1.vpr@22.10--22.14) [47814]"}
+        Map#Domain(m_18)[2];
+    assert {:msg "  Assert might fail. Assertion m[2] might not hold. (example1.vpr@22.10--22.14) [47815]"}
+      Map#Elements(m_18)[2];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert domain(m) == Set(2) -- example1.vpr@23.3--23.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion domain(m) == Set(2) might not hold. (example1.vpr@23.10--23.29) [157563]"}
-      Set#Equal(Map#Domain(m_17), Set#Singleton(2));
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion domain(m) == Set(2) might not hold. (example1.vpr@23.10--23.29) [47816]"}
+      Set#Equal(Map#Domain(m_18), Set#Singleton(2));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert range(m) == Set(true) -- example1.vpr@24.3--24.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion range(m) == Set(true) might not hold. (example1.vpr@24.10--24.31) [157564]"}
-      Set#Equal(Map#Values(m_17), Set#Singleton(true));
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion range(m) == Set(true) might not hold. (example1.vpr@24.10--24.31) [47817]"}
+      Set#Equal(Map#Values(m_18), Set#Singleton(true));
     assume state(Heap, Mask);
 }
 
@@ -619,14 +619,14 @@ procedure test2() returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3() returns ()
+procedure test3_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var m_17: (Map int int);
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
+  var m_18: (Map int int);
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -636,69 +636,69 @@ procedure test3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: m := Map(2 := 12, 3 := 24, 4 := 36) -- example1.vpr@29.3--29.58
-    m_17 := Map#Build(Map#Build(Map#Build((Map#Empty(): Map int int), 2, 12), 3, 24), 4, 36);
+    m_18 := Map#Build(Map#Build(Map#Build((Map#Empty(): Map int int), 2, 12), 3, 24), 4, 36);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |m| == 3 -- example1.vpr@31.3--31.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion |m| == 3 might not hold. (example1.vpr@31.10--31.18) [157565]"}
-      Map#Card(m_17) == 3;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion |m| == 3 might not hold. (example1.vpr@31.10--31.18) [47818]"}
+      Map#Card(m_18) == 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[2] == 12 && (m[3] == 24 && m[4] == 36) -- example1.vpr@32.3--32.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of m[2] == 12
-      assert {:msg "  Assert might fail. Map m might not contain an entry at key 2. (example1.vpr@32.10--32.48) [157566]"}
-        Map#Domain(m_17)[2];
-    assert {:msg "  Assert might fail. Assertion m[2] == 12 might not hold. (example1.vpr@32.10--32.48) [157567]"}
-      Map#Elements(m_17)[2] == 12;
+      assert {:msg "  Assert might fail. Map m might not contain an entry at key 2. (example1.vpr@32.10--32.48) [47819]"}
+        Map#Domain(m_18)[2];
+    assert {:msg "  Assert might fail. Assertion m[2] == 12 might not hold. (example1.vpr@32.10--32.48) [47820]"}
+      Map#Elements(m_18)[2] == 12;
     
     // -- Check definedness of m[3] == 24
-      assert {:msg "  Assert might fail. Map m might not contain an entry at key 3. (example1.vpr@32.10--32.48) [157568]"}
-        Map#Domain(m_17)[3];
-    assert {:msg "  Assert might fail. Assertion m[3] == 24 might not hold. (example1.vpr@32.10--32.48) [157569]"}
-      Map#Elements(m_17)[3] == 24;
+      assert {:msg "  Assert might fail. Map m might not contain an entry at key 3. (example1.vpr@32.10--32.48) [47821]"}
+        Map#Domain(m_18)[3];
+    assert {:msg "  Assert might fail. Assertion m[3] == 24 might not hold. (example1.vpr@32.10--32.48) [47822]"}
+      Map#Elements(m_18)[3] == 24;
     
     // -- Check definedness of m[4] == 36
-      assert {:msg "  Assert might fail. Map m might not contain an entry at key 4. (example1.vpr@32.10--32.48) [157570]"}
-        Map#Domain(m_17)[4];
-    assert {:msg "  Assert might fail. Assertion m[4] == 36 might not hold. (example1.vpr@32.10--32.48) [157571]"}
-      Map#Elements(m_17)[4] == 36;
+      assert {:msg "  Assert might fail. Map m might not contain an entry at key 4. (example1.vpr@32.10--32.48) [47823]"}
+        Map#Domain(m_18)[4];
+    assert {:msg "  Assert might fail. Assertion m[4] == 36 might not hold. (example1.vpr@32.10--32.48) [47824]"}
+      Map#Elements(m_18)[4] == 36;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert domain(m) == Set(4, 2, 3) -- example1.vpr@33.3--33.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion domain(m) == Set(4, 2, 3) might not hold. (example1.vpr@33.10--33.35) [157572]"}
-      Set#Equal(Map#Domain(m_17), Set#UnionOne(Set#UnionOne(Set#Singleton(3), 2), 4));
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion domain(m) == Set(4, 2, 3) might not hold. (example1.vpr@33.10--33.35) [47825]"}
+      Set#Equal(Map#Domain(m_18), Set#UnionOne(Set#UnionOne(Set#Singleton(3), 2), 4));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert range(m) == Set(24, 12, 36) -- example1.vpr@34.3--34.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion range(m) == Set(24, 12, 36) might not hold. (example1.vpr@34.10--34.37) [157573]"}
-      Set#Equal(Map#Values(m_17), Set#UnionOne(Set#UnionOne(Set#Singleton(36), 12), 24));
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion range(m) == Set(24, 12, 36) might not hold. (example1.vpr@34.10--34.37) [47826]"}
+      Set#Equal(Map#Values(m_18), Set#UnionOne(Set#UnionOne(Set#Singleton(36), 12), 24));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (3 in m) -- example1.vpr@35.3--35.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (3 in m) might not hold. (example1.vpr@35.10--35.16) [157574]"}
-      Map#Domain(m_17)[3];
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (3 in m) might not hold. (example1.vpr@35.10--35.16) [47827]"}
+      Map#Domain(m_18)[3];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((1 in m)) -- example1.vpr@36.3--36.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion !((1 in m)) might not hold. (example1.vpr@36.10--36.19) [157575]"}
-      !Map#Domain(m_17)[1];
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion !((1 in m)) might not hold. (example1.vpr@36.10--36.19) [47828]"}
+      !Map#Domain(m_18)[1];
     assume state(Heap, Mask);
 }
 
@@ -706,15 +706,15 @@ procedure test3() returns ()
 // Translation of method test4
 // ==================================================
 
-procedure test4() returns ()
+procedure test4_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var m1_3: (Map int bool);
   var m2_1: (Map int bool);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -724,8 +724,8 @@ procedure test4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: m1 := Map(2 := false, 4 := true, 6 := false) -- example1.vpr@41.3--41.68
     m1_3 := Map#Build(Map#Build(Map#Build((Map#Empty(): Map int bool), 2, false), 4, true), 6, false);
@@ -736,41 +736,41 @@ procedure test4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((4 in m2)) -- example1.vpr@44.3--44.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion !((4 in m2)) might not hold. (example1.vpr@44.10--44.20) [157576]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion !((4 in m2)) might not hold. (example1.vpr@44.10--44.20) [47829]"}
       !Map#Domain(m2_1)[4];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m1 != m2 -- example1.vpr@45.3--45.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion m1 != m2 might not hold. (example1.vpr@45.10--45.18) [157577]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion m1 != m2 might not hold. (example1.vpr@45.10--45.18) [47830]"}
       !Map#Equal(m1_3, m2_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m2[4 := true][4] -- example1.vpr@46.3--46.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of m2[4 := true][4]
-      assert {:msg "  Assert might fail. Map m2[4 := true] might not contain an entry at key 4. (example1.vpr@46.10--46.26) [157578]"}
+      assert {:msg "  Assert might fail. Map m2[4 := true] might not contain an entry at key 4. (example1.vpr@46.10--46.26) [47831]"}
         Map#Domain(Map#Build(m2_1, 4, true))[4];
-    assert {:msg "  Assert might fail. Assertion m2[4 := true][4] might not hold. (example1.vpr@46.10--46.26) [157579]"}
+    assert {:msg "  Assert might fail. Assertion m2[4 := true][4] might not hold. (example1.vpr@46.10--46.26) [47832]"}
       Map#Elements(Map#Build(m2_1, 4, true))[4];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m1 == m1[4 := true] -- example1.vpr@47.3--47.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion m1 == m1[4 := true] might not hold. (example1.vpr@47.10--47.29) [157580]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion m1 == m1[4 := true] might not hold. (example1.vpr@47.10--47.29) [47833]"}
       Map#Equal(m1_3, Map#Build(m1_3, 4, true));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m1 == m2[4 := true] -- example1.vpr@48.3--48.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion m1 == m2[4 := true] might not hold. (example1.vpr@48.10--48.29) [157581]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion m1 == m2[4 := true] might not hold. (example1.vpr@48.10--48.29) [47834]"}
       Map#Equal(m1_3, Map#Build(m2_1, 4, true));
     assume state(Heap, Mask);
 }
@@ -779,16 +779,16 @@ procedure test4() returns ()
 // Translation of method test5
 // ==================================================
 
-procedure test5(m_17: (Map int (Map int bool))) returns ()
+procedure test5_1(m_18: (Map int (Map int bool))) returns ()
   modifies Heap, Mask;
 {
-  var i_2: int;
+  var i_3: int;
   var i_4: int;
-  var j_6: int;
-  var oldMask: MaskType;
+  var j_12: int;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -802,107 +802,107 @@ procedure test5(m_17: (Map int (Map int bool))) returns ()
         assume false;
       }
     assume (forall i_1: int ::
-      { Map#Domain(m_17)[i_1] }
-      (0 <= i_1 && i_1 < 4) == Map#Domain(m_17)[i_1]
+      { Map#Domain(m_18)[i_1] }
+      (0 <= i_1 && i_1 < 4) == Map#Domain(m_18)[i_1]
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { (j in m[i]) } (i in m) ==> (0 <= j && j < 4) == (j in m[i]))
       if (*) {
-        if (Map#Domain(m_17)[i_2]) {
-          assert {:msg "  Contract might not be well-formed. Map m might not contain an entry at key i. (example1.vpr@53.12--53.96) [157582]"}
-            Map#Domain(m_17)[i_2];
+        if (Map#Domain(m_18)[i_3]) {
+          assert {:msg "  Contract might not be well-formed. Map m might not contain an entry at key i. (example1.vpr@53.12--53.96) [47835]"}
+            Map#Domain(m_18)[i_3];
         }
         assume false;
       }
-    assume (forall i_3: int, j_1: int ::
-      { Map#Domain(Map#Elements(m_17)[i_3])[j_1] }
-      Map#Domain(m_17)[i_3] ==> (0 <= j_1 && j_1 < 4) == Map#Domain(Map#Elements(m_17)[i_3])[j_1]
+    assume (forall i_3_2: int, j_1: int ::
+      { Map#Domain(Map#Elements(m_18)[i_3_2])[j_1] }
+      Map#Domain(m_18)[i_3_2] ==> (0 <= j_1 && j_1 < 4) == Map#Domain(Map#Elements(m_18)[i_3_2])[j_1]
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { m[i][j] } (i in m) && (j in m) ==> m[i][j] == (i == j))
       if (*) {
-        if (Map#Domain(m_17)[i_4] && Map#Domain(m_17)[j_6]) {
-          assert {:msg "  Contract might not be well-formed. Map m might not contain an entry at key i. (example1.vpr@54.12--54.93) [157583]"}
-            Map#Domain(m_17)[i_4];
-          assert {:msg "  Contract might not be well-formed. Map m[i] might not contain an entry at key j. (example1.vpr@54.12--54.93) [157584]"}
-            Map#Domain(Map#Elements(m_17)[i_4])[j_6];
+        if (Map#Domain(m_18)[i_4] && Map#Domain(m_18)[j_12]) {
+          assert {:msg "  Contract might not be well-formed. Map m might not contain an entry at key i. (example1.vpr@54.12--54.93) [47836]"}
+            Map#Domain(m_18)[i_4];
+          assert {:msg "  Contract might not be well-formed. Map m[i] might not contain an entry at key j. (example1.vpr@54.12--54.93) [47837]"}
+            Map#Domain(Map#Elements(m_18)[i_4])[j_12];
         }
         assume false;
       }
-    assume (forall i_5: int, j_3_1: int ::
-      { Map#Elements(Map#Elements(m_17)[i_5])[j_3_1] }
-      Map#Domain(m_17)[i_5] && Map#Domain(m_17)[j_3_1] ==> Map#Elements(Map#Elements(m_17)[i_5])[j_3_1] == (i_5 == j_3_1)
+    assume (forall i_5_1: int, j_3: int ::
+      { Map#Elements(Map#Elements(m_18)[i_5_1])[j_3] }
+      Map#Domain(m_18)[i_5_1] && Map#Domain(m_18)[j_3] ==> Map#Elements(Map#Elements(m_18)[i_5_1])[j_3] == (i_5_1 == j_3)
     );
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert m[2][2] -- example1.vpr@56.3--56.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of m[2][2]
-      assert {:msg "  Assert might fail. Map m might not contain an entry at key 2. (example1.vpr@56.10--56.17) [157585]"}
-        Map#Domain(m_17)[2];
-      assert {:msg "  Assert might fail. Map m[2] might not contain an entry at key 2. (example1.vpr@56.10--56.17) [157586]"}
-        Map#Domain(Map#Elements(m_17)[2])[2];
-    assert {:msg "  Assert might fail. Assertion m[2][2] might not hold. (example1.vpr@56.10--56.17) [157587]"}
-      Map#Elements(Map#Elements(m_17)[2])[2];
+      assert {:msg "  Assert might fail. Map m might not contain an entry at key 2. (example1.vpr@56.10--56.17) [47838]"}
+        Map#Domain(m_18)[2];
+      assert {:msg "  Assert might fail. Map m[2] might not contain an entry at key 2. (example1.vpr@56.10--56.17) [47839]"}
+        Map#Domain(Map#Elements(m_18)[2])[2];
+    assert {:msg "  Assert might fail. Assertion m[2][2] might not hold. (example1.vpr@56.10--56.17) [47840]"}
+      Map#Elements(Map#Elements(m_18)[2])[2];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !m[1][2] -- example1.vpr@57.3--57.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of !m[1][2]
-      assert {:msg "  Assert might fail. Map m might not contain an entry at key 1. (example1.vpr@57.10--57.18) [157588]"}
-        Map#Domain(m_17)[1];
-      assert {:msg "  Assert might fail. Map m[1] might not contain an entry at key 2. (example1.vpr@57.10--57.18) [157589]"}
-        Map#Domain(Map#Elements(m_17)[1])[2];
-    assert {:msg "  Assert might fail. Assertion !m[1][2] might not hold. (example1.vpr@57.10--57.18) [157590]"}
-      !Map#Elements(Map#Elements(m_17)[1])[2];
+      assert {:msg "  Assert might fail. Map m might not contain an entry at key 1. (example1.vpr@57.10--57.18) [47841]"}
+        Map#Domain(m_18)[1];
+      assert {:msg "  Assert might fail. Map m[1] might not contain an entry at key 2. (example1.vpr@57.10--57.18) [47842]"}
+        Map#Domain(Map#Elements(m_18)[1])[2];
+    assert {:msg "  Assert might fail. Assertion !m[1][2] might not hold. (example1.vpr@57.10--57.18) [47843]"}
+      !Map#Elements(Map#Elements(m_18)[1])[2];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert domain(m) == Set(0, 1, 2, 3) -- example1.vpr@58.3--58.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion domain(m) == Set(0, 1, 2, 3) might not hold. (example1.vpr@58.10--58.38) [157591]"}
-      Set#Equal(Map#Domain(m_17), Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(3), 2), 1), 0));
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion domain(m) == Set(0, 1, 2, 3) might not hold. (example1.vpr@58.10--58.38) [47844]"}
+      Set#Equal(Map#Domain(m_18), Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(3), 2), 1), 0));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert domain(m[0]) == Set(0, 1, 2, 3) -- example1.vpr@59.3--59.41
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of domain(m[0]) == Set(0, 1, 2, 3)
-      assert {:msg "  Assert might fail. Map m might not contain an entry at key 0. (example1.vpr@59.10--59.41) [157592]"}
-        Map#Domain(m_17)[0];
-    assert {:msg "  Assert might fail. Assertion domain(m[0]) == Set(0, 1, 2, 3) might not hold. (example1.vpr@59.10--59.41) [157593]"}
-      Set#Equal(Map#Domain(Map#Elements(m_17)[0]), Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(3), 2), 1), 0));
+      assert {:msg "  Assert might fail. Map m might not contain an entry at key 0. (example1.vpr@59.10--59.41) [47845]"}
+        Map#Domain(m_18)[0];
+    assert {:msg "  Assert might fail. Assertion domain(m[0]) == Set(0, 1, 2, 3) might not hold. (example1.vpr@59.10--59.41) [47846]"}
+      Set#Equal(Map#Domain(Map#Elements(m_18)[0]), Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(3), 2), 1), 0));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[2] == Map(0 := false, 1 := false, 2 := true, 3 := false) -- example1.vpr@60.3--60.68
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of m[2] == Map(0 := false, 1 := false, 2 := true, 3 := false)
-      assert {:msg "  Assert might fail. Map m might not contain an entry at key 2. (example1.vpr@60.10--60.68) [157594]"}
-        Map#Domain(m_17)[2];
-    assert {:msg "  Assert might fail. Assertion m[2] == Map(0 := false, 1 := false, 2 := true, 3 := false) might not hold. (example1.vpr@60.10--60.68) [157595]"}
-      Map#Equal(Map#Elements(m_17)[2], Map#Build(Map#Build(Map#Build(Map#Build((Map#Empty(): Map int bool), 0, false), 1, false), 2, true), 3, false));
+      assert {:msg "  Assert might fail. Map m might not contain an entry at key 2. (example1.vpr@60.10--60.68) [47847]"}
+        Map#Domain(m_18)[2];
+    assert {:msg "  Assert might fail. Assertion m[2] == Map(0 := false, 1 := false, 2 := true, 3 := false) might not hold. (example1.vpr@60.10--60.68) [47848]"}
+      Map#Equal(Map#Elements(m_18)[2], Map#Build(Map#Build(Map#Build(Map#Build((Map#Empty(): Map int bool), 0, false), 1, false), 2, true), 3, false));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Map(0 := false, 1 := false, 2 := true, 3 := false) in range(m)) -- example1.vpr@61.3--61.72
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Map(0 := false, 1 := false, 2 := true, 3 := false) in range(m)) might not hold. (example1.vpr@61.10--61.72) [157596]"}
-      Map#Values(m_17)[Map#Build(Map#Build(Map#Build(Map#Build((Map#Empty(): Map int bool), 0, false), 1, false), 2, true), 3, false)];
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (Map(0 := false, 1 := false, 2 := true, 3 := false) in range(m)) might not hold. (example1.vpr@61.10--61.72) [47849]"}
+      Map#Values(m_18)[Map#Build(Map#Build(Map#Build(Map#Build((Map#Empty(): Map int bool), 0, false), 1, false), 2, true), 3, false)];
     assume state(Heap, Mask);
 }
 
@@ -910,15 +910,15 @@ procedure test5(m_17: (Map int (Map int bool))) returns ()
 // Translation of method test6
 // ==================================================
 
-procedure test6(m_17: (Map int Ref), x: int) returns ()
+procedure test6(m_18: (Map int Ref), x: int) returns ()
   modifies Heap, Mask;
 {
-  var i_6: int;
-  var j_2: int;
-  var k_10: int;
+  var i_14: int;
+  var j_13: int;
+  var k_4: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -929,59 +929,59 @@ procedure test6(m_17: (Map int Ref), x: int) returns ()
     
     // -- Check definedness of (forall i: Int, j: Int :: { (i in m), (j in m) } (i in m) && ((j in m) && i != j) ==> m[i] != m[j])
       if (*) {
-        if (Map#Domain(m_17)[i_6] && (Map#Domain(m_17)[j_2] && i_6 != j_2)) {
-          assert {:msg "  Contract might not be well-formed. Map m might not contain an entry at key i. (example1.vpr@67.12--67.99) [157597]"}
-            Map#Domain(m_17)[i_6];
-          assert {:msg "  Contract might not be well-formed. Map m might not contain an entry at key j. (example1.vpr@67.12--67.99) [157598]"}
-            Map#Domain(m_17)[j_2];
+        if (Map#Domain(m_18)[i_14] && (Map#Domain(m_18)[j_13] && i_14 != j_13)) {
+          assert {:msg "  Contract might not be well-formed. Map m might not contain an entry at key i. (example1.vpr@67.12--67.99) [47850]"}
+            Map#Domain(m_18)[i_14];
+          assert {:msg "  Contract might not be well-formed. Map m might not contain an entry at key j. (example1.vpr@67.12--67.99) [47851]"}
+            Map#Domain(m_18)[j_13];
         }
         assume false;
       }
     assume (forall i_1: int, j_1: int ::
-      { Map#Domain(m_17)[i_1], Map#Domain(m_17)[j_1] }
-      Map#Domain(m_17)[i_1] && (Map#Domain(m_17)[j_1] && i_1 != j_1) ==> Map#Elements(m_17)[i_1] != Map#Elements(m_17)[j_1]
+      { Map#Domain(m_18)[i_1], Map#Domain(m_18)[j_1] }
+      Map#Domain(m_18)[i_1] && (Map#Domain(m_18)[j_1] && i_1 != j_1) ==> Map#Elements(m_18)[i_1] != Map#Elements(m_18)[j_1]
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall k: Int :: { (k in m) } (k in m) ==> acc(m[k].val, write))
       if (*) {
-        if (Map#Domain(m_17)[k_10]) {
-          assert {:msg "  Contract might not be well-formed. Map m might not contain an entry at key k. (example1.vpr@68.12--68.65) [157599]"}
-            Map#Domain(m_17)[k_10];
+        if (Map#Domain(m_18)[k_4]) {
+          assert {:msg "  Contract might not be well-formed. Map m might not contain an entry at key k. (example1.vpr@68.12--68.65) [47852]"}
+            Map#Domain(m_18)[k_4];
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource m[k].val might not be injective. (example1.vpr@68.12--68.65) [157600]"}
-      (forall k_1_1: int, k_1_2: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource m[k].val might not be injective. (example1.vpr@68.12--68.65) [47853]"}
+      (forall k_1: int, k_1_1: int ::
       
-      (((k_1_1 != k_1_2 && Map#Domain(m_17)[k_1_1]) && Map#Domain(m_17)[k_1_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Map#Elements(m_17)[k_1_1] != Map#Elements(m_17)[k_1_2]
+      (((k_1 != k_1_1 && Map#Domain(m_18)[k_1]) && Map#Domain(m_18)[k_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Map#Elements(m_18)[k_1] != Map#Elements(m_18)[k_1_1]
     );
     
     // -- Define Inverse Function
-      assume (forall k_1_1: int ::
-        { Map#Elements(m_17)[k_1_1] } { Map#Domain(m_17)[k_1_1] }
-        Map#Domain(m_17)[k_1_1] && NoPerm < FullPerm ==> qpRange1(Map#Elements(m_17)[k_1_1]) && invRecv1(Map#Elements(m_17)[k_1_1]) == k_1_1
+      assume (forall k_1: int ::
+        { Map#Elements(m_18)[k_1] } { Map#Domain(m_18)[k_1] }
+        Map#Domain(m_18)[k_1] && NoPerm < FullPerm ==> qpRange1(Map#Elements(m_18)[k_1]) && invRecv1(Map#Elements(m_18)[k_1]) == k_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (Map#Domain(m_17)[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4) ==> Map#Elements(m_17)[invRecv1(o_4)] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (Map#Domain(m_18)[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9) ==> Map#Elements(m_18)[invRecv1(o_9)] == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall k_1_1: int ::
-        { Map#Elements(m_17)[k_1_1] } { Map#Domain(m_17)[k_1_1] }
-        Map#Domain(m_17)[k_1_1] ==> Map#Elements(m_17)[k_1_1] != null
+      assume (forall k_1: int ::
+        { Map#Elements(m_18)[k_1] } { Map#Domain(m_18)[k_1] }
+        Map#Domain(m_18)[k_1] ==> Map#Elements(m_18)[k_1] != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((Map#Domain(m_17)[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> Map#Elements(m_17)[invRecv1(o_4)] == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!((Map#Domain(m_17)[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((Map#Domain(m_18)[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> Map#Elements(m_18)[invRecv1(o_9)] == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!((Map#Domain(m_18)[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -990,26 +990,26 @@ procedure test6(m_17: (Map int Ref), x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if ((x in m)) -- example1.vpr@70.3--73.4
-    if (Map#Domain(m_17)[x]) {
+    if (Map#Domain(m_18)[x]) {
       
       // -- Translating statement: m[x].val := m[x].val + x -- example1.vpr@72.5--72.29
         
         // -- Check definedness of m[x]
-          assert {:msg "  Assignment might fail. Map m might not contain an entry at key x. (example1.vpr@72.5--72.29) [157601]"}
-            Map#Domain(m_17)[x];
+          assert {:msg "  Assignment might fail. Map m might not contain an entry at key x. (example1.vpr@72.5--72.29) [47854]"}
+            Map#Domain(m_18)[x];
         
         // -- Check definedness of m[x].val + x
-          assert {:msg "  Assignment might fail. Map m might not contain an entry at key x. (example1.vpr@72.5--72.29) [157602]"}
-            Map#Domain(m_17)[x];
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access m[x].val (example1.vpr@72.5--72.29) [157603]"}
-            HasDirectPerm(Mask, Map#Elements(m_17)[x], val);
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access m[x].val (example1.vpr@72.5--72.29) [157604]"}
-          FullPerm == Mask[Map#Elements(m_17)[x], val];
-        Heap := Heap[Map#Elements(m_17)[x], val:=Heap[Map#Elements(m_17)[x], val] + x];
+          assert {:msg "  Assignment might fail. Map m might not contain an entry at key x. (example1.vpr@72.5--72.29) [47855]"}
+            Map#Domain(m_18)[x];
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access m[x].val (example1.vpr@72.5--72.29) [47856]"}
+            HasDirectPerm(Mask, Map#Elements(m_18)[x], val);
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access m[x].val (example1.vpr@72.5--72.29) [47857]"}
+          FullPerm == Mask[Map#Elements(m_18)[x], val];
+        Heap := Heap[Map#Elements(m_18)[x], val:=Heap[Map#Elements(m_18)[x], val] + x];
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);

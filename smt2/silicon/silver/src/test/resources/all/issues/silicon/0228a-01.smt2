@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:46:23
+; Started: 2025-01-26 21:34:46
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1041,7 +1041,7 @@
         j@9@01)
       (img@11@01 (loc<Ref> ($SortWrappers.$SnapToPtr ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@8@01)))))) j@9@01))))
   :pattern ((loc<Ref> ($SortWrappers.$SnapToPtr ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@8@01)))))) j@9@01))
-  :qid |quant-u-24998|)))
+  :qid |quant-u-11655|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@11@01 r) (and (<= 0 (inv@10@01 r)) (< (inv@10@01 r) len@5@01)))
@@ -1469,7 +1469,7 @@
         j@22@01)
       (img@24@01 (loc<Ref> ($SortWrappers.$SnapToPtr ($Snap.first ($Snap.first ($Snap.second ($Snap.second $t@21@01))))) j@22@01))))
   :pattern ((loc<Ref> ($SortWrappers.$SnapToPtr ($Snap.first ($Snap.first ($Snap.second ($Snap.second $t@21@01))))) j@22@01))
-  :qid |quant-u-25001|)))
+  :qid |quant-u-11658|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and

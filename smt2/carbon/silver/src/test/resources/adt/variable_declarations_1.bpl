@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:34
+// Date:         2025-01-26 21:43:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/variable_declarations_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/variable_declarations_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -845,24 +845,24 @@ function  Nil<T>(): ListDomainType T;
 function  Cons<T>(value_2: T, tail: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function get_List_value
-function  get_List_value<T>(t_9: (ListDomainType T)): T;
+function  get_List_value<T>(t_3: (ListDomainType T)): T;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<T>(t_9: (ListDomainType T)): ListDomainType T;
+function  get_List_tail<T>(t_3: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function List_tag
-function  List_tag<T>(t_9: (ListDomainType T)): int;
+function  List_tag<T>(t_3: (ListDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType T)): T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType T)): ListDomainType T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType T)): ListDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -872,9 +872,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType T)): int) == 0
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (List_tag((Cons(value, tail_1): ListDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -900,19 +900,19 @@ function  TCons<T, S>(elemT: T, tailT: (SpecialListDomainType T S)): SpecialList
 function  SCons<S, T>(elemS: S, tailS: (SpecialListDomainType T S)): SpecialListDomainType T S;
 
 // Translation of domain function get_SpecialList_elemT
-function  get_SpecialList_elemT<T, S>(t_9: (SpecialListDomainType T S)): T;
+function  get_SpecialList_elemT<T, S>(t_3: (SpecialListDomainType T S)): T;
 
 // Translation of domain function get_SpecialList_tailT
-function  get_SpecialList_tailT<T, S>(t_9: (SpecialListDomainType T S)): SpecialListDomainType T S;
+function  get_SpecialList_tailT<T, S>(t_3: (SpecialListDomainType T S)): SpecialListDomainType T S;
 
 // Translation of domain function get_SpecialList_elemS
-function  get_SpecialList_elemS<T, S>(t_9: (SpecialListDomainType T S)): S;
+function  get_SpecialList_elemS<T, S>(t_3: (SpecialListDomainType T S)): S;
 
 // Translation of domain function get_SpecialList_tailS
-function  get_SpecialList_tailS<T, S>(t_9: (SpecialListDomainType T S)): SpecialListDomainType T S;
+function  get_SpecialList_tailS<T, S>(t_3: (SpecialListDomainType T S)): SpecialListDomainType T S;
 
 // Translation of domain function SpecialList_tag
-function  SpecialList_tag<T, S>(t_9: (SpecialListDomainType T S)): int;
+function  SpecialList_tag<T, S>(t_3: (SpecialListDomainType T S)): int;
 
 // Translation of anonymous domain axiom
 axiom (forall <T, S> elemT_1: T, tailT_1: (SpecialListDomainType T S) ::
@@ -969,8 +969,8 @@ axiom (forall <T, S> t_2: (SpecialListDomainType T S) ::
 procedure var_decls_1a() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -980,8 +980,8 @@ procedure var_decls_1a() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
 }
 
 // ==================================================
@@ -991,8 +991,8 @@ procedure var_decls_1a() returns ()
 procedure var_decls_1b() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1002,6 +1002,6 @@ procedure var_decls_1b() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
 }

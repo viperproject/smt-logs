@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:28
+// Date:         2025-01-26 21:42:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0803.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0803-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,15 +177,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of method caller
 // ==================================================
 
-procedure caller() returns (value_1: int)
+procedure caller() returns (value: int)
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var v0_1_1: int;
+  var v0_1: int;
   var var_m2: int;
   var res: int;
-  var v0_1_1_1: int;
+  var v0_1_1: int;
   var var_m2_1: int;
   
   // -- Initializing the state
@@ -200,7 +200,7 @@ procedure caller() returns (value_1: int)
       oldHeap := Heap;
   
   // -- Translating statement: v0_1 := var_m2 -- 0803.vpr@5.3--5.16
-    v0_1_1 := var_m2;
+    v0_1 := var_m2;
     assume state(Heap, Mask);
   
   // -- Translating statement: res := var_m2 -- 0803.vpr@16.3--16.16
@@ -208,7 +208,7 @@ procedure caller() returns (value_1: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: v0_1 := var_m2 -- 0803.vpr@5.3--5.16
-    v0_1_1_1 := var_m2_1;
+    v0_1_1 := var_m2_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: res := var_m2 -- 0803.vpr@16.3--16.16
@@ -216,6 +216,6 @@ procedure caller() returns (value_1: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: value := res -- 0803.vpr@29.3--29.15
-    value_1 := res;
+    value := res;
     assume state(Heap, Mask);
 }

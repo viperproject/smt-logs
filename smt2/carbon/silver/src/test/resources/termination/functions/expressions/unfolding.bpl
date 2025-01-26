@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:40
+// Date:         2025-01-26 21:41:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/unfolding.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/unfolding-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -205,11 +205,11 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 // Uninterpreted function definitions
-function  test_2(Heap: HeapType, x: Ref): bool;
+function  test(Heap: HeapType, x: Ref): bool;
 function  test'(Heap: HeapType, x: Ref): bool;
 axiom (forall Heap: HeapType, x: Ref ::
-  { test_2(Heap, x) }
-  test_2(Heap, x) == test'(Heap, x) && dummyFunction(test#triggerStateless(x))
+  { test(Heap, x) }
+  test(Heap, x) == test'(Heap, x) && dummyFunction(test#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { test'(Heap, x) }
@@ -218,15 +218,15 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), test_2(Heap, x) } { state(Heap, Mask), test#triggerStateless(x), foo#trigger_1(Heap, foo_3(x)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> test_2(Heap, x) == nonTerminating(Heap, x)
+  { state(Heap, Mask), test(Heap, x) } { state(Heap, Mask), test#triggerStateless(x), foo#trigger(Heap, foo(x)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> test(Heap, x) == nonTerminating(Heap, x)
 );
 
 // Framing axioms
 function  test#frame(frame: FrameType, x: Ref): bool;
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), test'(Heap, x) } { state(Heap, Mask), test#triggerStateless(x), foo#trigger_1(Heap, foo_3(x)) }
-  state(Heap, Mask) ==> test'(Heap, x) == test#frame(Heap[null, foo_3(x)], x)
+  { state(Heap, Mask), test'(Heap, x) } { state(Heap, Mask), test#triggerStateless(x), foo#trigger(Heap, foo(x)) }
+  state(Heap, Mask) ==> test'(Heap, x) == test#frame(Heap[null, foo(x)], x)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -254,7 +254,7 @@ procedure test#definedness(x: Ref) returns (Result: bool)
   
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
-    Mask := Mask[null, foo_3(x):=Mask[null, foo_3(x)] + perm];
+    Mask := Mask[null, foo(x):=Mask[null, foo(x)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -263,13 +263,13 @@ procedure test#definedness(x: Ref) returns (Result: bool)
     // -- Check definedness of (unfolding acc(foo(x), write) in nonTerminating(x))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume foo#trigger_1(UnfoldingHeap, foo_3(x));
-      assume UnfoldingHeap[null, foo_3(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
+      assume foo#trigger(UnfoldingHeap, foo(x));
+      assume UnfoldingHeap[null, foo(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access foo(x) (unfolding.vpr@13.1--19.2) [223064]"}
-        NoPerm < perm ==> NoPerm < UnfoldingMask[null, foo_3(x)];
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access foo(x) (unfolding.vpr@13.1--19.2) [17916]"}
+        NoPerm < perm ==> NoPerm < UnfoldingMask[null, foo(x)];
       perm := FullPerm;
       assume x != null;
       UnfoldingMask := UnfoldingMask[x, f_7:=UnfoldingMask[x, f_7] + perm];
@@ -294,11 +294,11 @@ procedure test#definedness(x: Ref) returns (Result: bool)
 // ==================================================
 
 // Uninterpreted function definitions
-function  test2_1(Heap: HeapType, x: Ref): bool;
+function  test2(Heap: HeapType, x: Ref): bool;
 function  test2'(Heap: HeapType, x: Ref): bool;
 axiom (forall Heap: HeapType, x: Ref ::
-  { test2_1(Heap, x) }
-  test2_1(Heap, x) == test2'(Heap, x) && dummyFunction(test2#triggerStateless(x))
+  { test2(Heap, x) }
+  test2(Heap, x) == test2'(Heap, x) && dummyFunction(test2#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { test2'(Heap, x) }
@@ -307,15 +307,15 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), test2_1(Heap, x) } { state(Heap, Mask), test2#triggerStateless(x), foo#trigger_1(Heap, foo_3(x)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test2_1(Heap, x) == partiallyTerminating(Heap, x)
+  { state(Heap, Mask), test2(Heap, x) } { state(Heap, Mask), test2#triggerStateless(x), foo#trigger(Heap, foo(x)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test2(Heap, x) == partiallyTerminating(Heap, x)
 );
 
 // Framing axioms
 function  test2#frame(frame: FrameType, x: Ref): bool;
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), test2'(Heap, x) } { state(Heap, Mask), test2#triggerStateless(x), foo#trigger_1(Heap, foo_3(x)) }
-  state(Heap, Mask) ==> test2'(Heap, x) == test2#frame(Heap[null, foo_3(x)], x)
+  { state(Heap, Mask), test2'(Heap, x) } { state(Heap, Mask), test2#triggerStateless(x), foo#trigger(Heap, foo(x)) }
+  state(Heap, Mask) ==> test2'(Heap, x) == test2#frame(Heap[null, foo(x)], x)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -344,7 +344,7 @@ procedure test2#definedness(x: Ref) returns (Result: bool)
   
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
-    Mask := Mask[null, foo_3(x):=Mask[null, foo_3(x)] + perm];
+    Mask := Mask[null, foo(x):=Mask[null, foo(x)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -353,13 +353,13 @@ procedure test2#definedness(x: Ref) returns (Result: bool)
     // -- Check definedness of (unfolding acc(foo(x), write) in partiallyTerminating(x))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume foo#trigger_1(UnfoldingHeap, foo_3(x));
-      assume UnfoldingHeap[null, foo_3(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
+      assume foo#trigger(UnfoldingHeap, foo(x));
+      assume UnfoldingHeap[null, foo(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access foo(x) (unfolding.vpr@21.1--26.2) [223065]"}
-        NoPerm < perm ==> NoPerm < UnfoldingMask[null, foo_3(x)];
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access foo(x) (unfolding.vpr@21.1--26.2) [17917]"}
+        NoPerm < perm ==> NoPerm < UnfoldingMask[null, foo(x)];
       perm := FullPerm;
       assume x != null;
       UnfoldingMask := UnfoldingMask[x, f_7:=UnfoldingMask[x, f_7] + perm];
@@ -371,7 +371,7 @@ procedure test2#definedness(x: Ref) returns (Result: bool)
         ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function partiallyTerminating might not hold. There might be insufficient permission to access x.f (unfolding.vpr@25.25--25.48) [223066]"}
+        assert {:msg "  Precondition of function partiallyTerminating might not hold. There might be insufficient permission to access x.f (unfolding.vpr@25.25--25.48) [17918]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -488,25 +488,25 @@ procedure partiallyTerminating#definedness(x: Ref) returns (Result: bool)
 // ==================================================
 
 type PredicateType_foo;
-function  foo_3(x: Ref): Field PredicateType_foo FrameType;
+function  foo(x: Ref): Field PredicateType_foo FrameType;
 function  foo#sm(x: Ref): Field PredicateType_foo PMaskType;
 axiom (forall x: Ref ::
-  { PredicateMaskField(foo_3(x)) }
-  PredicateMaskField(foo_3(x)) == foo#sm(x)
+  { PredicateMaskField(foo(x)) }
+  PredicateMaskField(foo(x)) == foo#sm(x)
 );
 axiom (forall x: Ref ::
-  { foo_3(x) }
-  IsPredicateField(foo_3(x))
+  { foo(x) }
+  IsPredicateField(foo(x))
 );
 axiom (forall x: Ref ::
-  { foo_3(x) }
-  getPredWandId(foo_3(x)) == 0
+  { foo(x) }
+  getPredWandId(foo(x)) == 0
 );
-function  foo#trigger_1<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
+function  foo#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  foo#everUsed<A>(pred: (Field A FrameType)): bool;
 axiom (forall x: Ref, x2: Ref ::
-  { foo_3(x), foo_3(x2) }
-  foo_3(x) == foo_3(x2) ==> x == x2
+  { foo(x), foo(x2) }
+  foo(x) == foo(x2) ==> x == x2
 );
 axiom (forall x: Ref, x2: Ref ::
   { foo#sm(x), foo#sm(x2) }
@@ -514,8 +514,8 @@ axiom (forall x: Ref, x2: Ref ::
 );
 
 axiom (forall Heap: HeapType, x: Ref ::
-  { foo#trigger_1(Heap, foo_3(x)) }
-  foo#everUsed(foo_3(x))
+  { foo#trigger(Heap, foo(x)) }
+  foo#everUsed(foo(x))
 );
 
 procedure foo#definedness(x: Ref) returns ()
@@ -537,7 +537,7 @@ procedure foo#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 42
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (unfolding.vpr@8.1--11.2) [223067]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (unfolding.vpr@8.1--11.2) [17919]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 42;
     assume state(Heap, Mask);
@@ -569,7 +569,7 @@ procedure test_termination_proof(x: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    Mask := Mask[null, foo_3(x):=Mask[null, foo_3(x)] + perm];
+    Mask := Mask[null, foo(x):=Mask[null, foo(x)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -583,21 +583,21 @@ procedure test_termination_proof(x: Ref) returns ()
     if (b_24) {
       
       // -- Translating statement: unfold acc(foo(x), write) -- <no position>
-        assume foo#trigger_1(Heap, foo_3(x));
-        assume Heap[null, foo_3(x)] == FrameFragment(Heap[x, f_7]);
+        assume foo#trigger(Heap, foo(x));
+        assume Heap[null, foo(x)] == FrameFragment(Heap[x, f_7]);
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Unfolding foo(x) might fail. There might be insufficient permission to access foo(x) (<no position>) [223070]"}
-            perm <= Mask[null, foo_3(x)];
+          assert {:msg "  Unfolding foo(x) might fail. There might be insufficient permission to access foo(x) (<no position>) [17922]"}
+            perm <= Mask[null, foo(x)];
         }
-        Mask := Mask[null, foo_3(x):=Mask[null, foo_3(x)] - perm];
+        Mask := Mask[null, foo(x):=Mask[null, foo(x)] - perm];
         
         // -- Update version of predicate
-          if (!HasDirectPerm(Mask, null, foo_3(x))) {
+          if (!HasDirectPerm(Mask, null, foo(x))) {
             havoc newVersion;
-            Heap := Heap[null, foo_3(x):=newVersion];
+            Heap := Heap[null, foo(x):=newVersion];
           }
         perm := FullPerm;
         assume x != null;
@@ -610,7 +610,7 @@ procedure test_termination_proof(x: Ref) returns ()
       // -- Translating statement: assert false -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223072]"}
+        assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [17924]"}
           false;
         assume state(Heap, Mask);
       
@@ -650,7 +650,7 @@ procedure test_pres_termination_proof(x: Ref) returns ()
   
   // -- Translating statement: inhale acc(foo(x), write) -- unfolding.vpr@15.14--15.20
     perm := FullPerm;
-    Mask := Mask[null, foo_3(x):=Mask[null, foo_3(x)] + perm];
+    Mask := Mask[null, foo(x):=Mask[null, foo(x)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -682,7 +682,7 @@ procedure test2_termination_proof(x: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    Mask := Mask[null, foo_3(x):=Mask[null, foo_3(x)] + perm];
+    Mask := Mask[null, foo(x):=Mask[null, foo(x)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -696,21 +696,21 @@ procedure test2_termination_proof(x: Ref) returns ()
     if (b1) {
       
       // -- Translating statement: unfold acc(foo(x), write) -- <no position>
-        assume foo#trigger_1(Heap, foo_3(x));
-        assume Heap[null, foo_3(x)] == FrameFragment(Heap[x, f_7]);
+        assume foo#trigger(Heap, foo(x));
+        assume Heap[null, foo(x)] == FrameFragment(Heap[x, f_7]);
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Unfolding foo(x) might fail. There might be insufficient permission to access foo(x) (<no position>) [223076]"}
-            perm <= Mask[null, foo_3(x)];
+          assert {:msg "  Unfolding foo(x) might fail. There might be insufficient permission to access foo(x) (<no position>) [17928]"}
+            perm <= Mask[null, foo(x)];
         }
-        Mask := Mask[null, foo_3(x):=Mask[null, foo_3(x)] - perm];
+        Mask := Mask[null, foo(x):=Mask[null, foo(x)] - perm];
         
         // -- Update version of predicate
-          if (!HasDirectPerm(Mask, null, foo_3(x))) {
+          if (!HasDirectPerm(Mask, null, foo(x))) {
             havoc newVersion;
-            Heap := Heap[null, foo_3(x):=newVersion];
+            Heap := Heap[null, foo(x):=newVersion];
           }
         perm := FullPerm;
         assume x != null;
@@ -725,9 +725,9 @@ procedure test2_termination_proof(x: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of x.f == 42
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (unfolding.vpr@33.18--33.27) [223078]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (unfolding.vpr@33.18--33.27) [17930]"}
             HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-        assert {:msg "  Assert might fail. Assertion x.f == 42 might not hold. (unfolding.vpr@33.18--33.27) [223079]"}
+        assert {:msg "  Assert might fail. Assertion x.f == 42 might not hold. (unfolding.vpr@33.18--33.27) [17931]"}
           Heap[x, f_7] == 42;
         assume state(Heap, Mask);
       
@@ -767,7 +767,7 @@ procedure test2_pres_termination_proof(x: Ref) returns ()
   
   // -- Translating statement: inhale acc(foo(x), write) -- unfolding.vpr@23.14--23.20
     perm := FullPerm;
-    Mask := Mask[null, foo_3(x):=Mask[null, foo_3(x)] + perm];
+    Mask := Mask[null, foo(x):=Mask[null, foo(x)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);

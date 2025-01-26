@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:05:50
+// Date:         2025-01-26 21:44:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/package_inc1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/package_inc1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -339,7 +339,7 @@ procedure test01(x: Ref) returns ()
   // -- Translating statement: assert false -- package_inc1.vpr@14.3--14.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (package_inc1.vpr@14.10--14.15) [125736]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (package_inc1.vpr@14.10--14.15) [210440]"}
       false;
     assume state(Heap, Mask);
 }
@@ -462,7 +462,7 @@ procedure test02(x: Ref) returns ()
               }
             neededTransfer := 1.000000000;
             initNeededTransfer := Used_5Mask[null, wand(false, true)] + neededTransfer;
-            assert {:msg "  Applying wand might fail. Fraction false --* true might be negative. (package_inc1.vpr@19.7--19.27) [125737]"}
+            assert {:msg "  Applying wand might fail. Fraction false --* true might be negative. (package_inc1.vpr@19.7--19.27) [210441]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
@@ -502,7 +502,7 @@ procedure test02(x: Ref) returns ()
                   Mask := Mask[null, wand(false, true):=Mask[null, wand(false, true)] - takeTransfer];
                 }
               }
-            assert {:msg "  Applying wand might fail. Magic wand instance not found. (package_inc1.vpr@19.7--19.27) [125738]"}
+            assert {:msg "  Applying wand might fail. Magic wand instance not found. (package_inc1.vpr@19.7--19.27) [210442]"}
               b_7 && b_8 ==> neededTransfer == 0.000000000 && Used_5Mask[null, wand(false, true)] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
@@ -522,7 +522,7 @@ procedure test02(x: Ref) returns ()
           havoc Used_6Heap;
           Used_6Mask := ZeroMask;
           b_10 := b_10 && state(Used_6Heap, Used_6Mask);
-          assert {:msg "  Applying wand might fail. Assertion false might not hold. (package_inc1.vpr@19.7--19.27) [125739]"}
+          assert {:msg "  Applying wand might fail. Assertion false might not hold. (package_inc1.vpr@19.7--19.27) [210443]"}
             b_7 && b_10 ==> false;
           b_7 := b_7 && b_10;
           b_7 := b_7 && Used_6Heap == Ops_5Heap;
@@ -549,7 +549,7 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: assert false -- package_inc1.vpr@23.3--23.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (package_inc1.vpr@23.10--23.15) [125741]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (package_inc1.vpr@23.10--23.15) [210445]"}
       false;
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:02
+// Date:         2025-01-26 21:42:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0324.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0324-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,14 +185,14 @@ axiom !IsWandField(val);
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref, y: Ref) returns ()
+procedure test_1(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -206,8 +206,8 @@ procedure test(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.val, write) && (x != y ==> acc(y.val, write)) -- 0324.vpr@7.5--7.49
     perm := FullPerm;
@@ -224,25 +224,25 @@ procedure test(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x.val := 4 -- 0324.vpr@8.5--8.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.val (0324.vpr@8.5--8.15) [216505]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.val (0324.vpr@8.5--8.15) [71264]"}
       FullPerm == Mask[x, val];
     Heap := Heap[x, val:=4];
     assume state(Heap, Mask);
   
   // -- Translating statement: y.val := 3 -- 0324.vpr@9.5--9.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.val (0324.vpr@9.5--9.15) [216506]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.val (0324.vpr@9.5--9.15) [71265]"}
       FullPerm == Mask[y, val];
     Heap := Heap[y, val:=3];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.val == 4 -- 0324.vpr@11.5--11.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.val == 4
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.val (0324.vpr@11.12--11.22) [216507]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.val (0324.vpr@11.12--11.22) [71266]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, val);
-    assert {:msg "  Assert might fail. Assertion x.val == 4 might not hold. (0324.vpr@11.12--11.22) [216508]"}
+    assert {:msg "  Assert might fail. Assertion x.val == 4 might not hold. (0324.vpr@11.12--11.22) [71267]"}
       Heap[x, val] == 4;
     assume state(Heap, Mask);
 }

@@ -7175,6 +7175,19 @@ FStar.Pervasives.CNoInline)))
 
 ; End Externals for module FriendProvider
 
+
+; Externals for module Other
+
+
+; <Start encoding let y>
+
+(declare-fun Other.y (Dummy_sort) Term)
+
+; </end encoding let y>
+
+
+; End Externals for module Other
+
 (push) ;; push{1
 
 ; Internals for FriendConsumer
@@ -7264,6 +7277,19 @@ Tm_type))
 (assert (! (HasType Prims.eqtype
 Tm_type)
 :named typing_Prims.eqtype))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Other.y; Namespace Other
+(assert (! 
+;; def=Other.fst(17,4-17,5); use=Other.fst(17,4-17,5)
+(forall ((@u0 Dummy_sort))
+ (! (HasType (Other.y @u0)
+Prims.int)
+ 
+
+:pattern ((Other.y @u0))
+:qid typing_Other.y))
+
+:named typing_Other.y))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name FriendProvider.x; Namespace FriendProvider
 (assert (! 
@@ -7449,6 +7475,21 @@ Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f))
 :qid refinement_interpretation_Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f))
 
 :named refinement_interpretation_Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f))
+;;; Fact-ids: Name Prims.op_Addition; Namespace Prims
+(assert (! 
+;; def=Prims.fst(552,4-552,15); use=Prims.fst(552,4-552,15)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (Prims.op_Addition @x0
+@x1)
+(BoxInt (+ (BoxInt_proj_0 @x0)
+(BoxInt_proj_0 @x1))))
+ 
+
+:pattern ((Prims.op_Addition @x0
+@x1))
+:qid primitive_Prims.op_Addition))
+
+:named primitive_Prims.op_Addition))
 ;;;;;;;;;;;;;;;;int typing
 ;;; Fact-ids: Name Prims.int; Namespace Prims
 (assert (! (forall ((@u0 Int))
@@ -7558,6 +7599,26 @@ Tm_type)
 (assert (! (= Prims.eqtype
 Tm_refine_414d0a9f578ab0048252f8c8f552b99f)
 :named equation_Prims.eqtype))
+;;;;;;;;;;;;;;;;Equation for Other.y
+;;; Fact-ids: Name Other.y; Namespace Other
+(assert (! 
+;; def=Other.fst(17,4-17,5); use=Other.fst(17,4-17,5)
+(forall ((@u0 Dummy_sort))
+ (! (= 
+;; def=Other.fst(17,4-17,5); use=Other.fst(17,4-17,5)
+(Other.y @u0)
+
+(Prims.op_Addition (FriendProvider.x Dummy_value)
+(BoxInt 1)))
+ 
+
+:pattern (
+;; def=Other.fst(17,4-17,5); use=Other.fst(17,4-17,5)
+(Other.y @u0)
+)
+:qid equation_Other.y))
+
+:named equation_Other.y))
 ;;;;;;;;;;;;;;;;Equation for FriendProvider.x
 ;;; Fact-ids: Name FriendProvider.x; Namespace FriendProvider
 (assert (! 
@@ -7645,11 +7706,13 @@ Prims.int))
 :named Prims_pretyping_ae567c2fb75be05905677af440075565))
 (push) ;; push{2
 
-; Starting query at FriendConsumer.fst(18,0-18,41)
+; Starting query at FriendConsumer.fst(18,0-18,51)
 
+(declare-fun label_2 () Bool)
 (declare-fun label_1 () Bool)
 
-; Encoding query formula : FriendProvider.x == 0
+; Encoding query formula : FriendProvider.x + Other.y == 1 /\
+; (forall (pure_result: Prims.unit). FriendProvider.x + Other.y == 1 ==> FriendProvider.x == 0)
 
 
 ; Context: While encoding a query
@@ -7671,12 +7734,40 @@ Prims.int))
 ;;;;;;;;;;;;;;;;query
 ;;; Fact-ids: 
 (assert (! (not 
-;; def=FriendConsumer.fst(18,18-18,41); use=FriendConsumer.fst(18,11-18,17)
+;; def=Prims.fst(441,29-441,97); use=FriendConsumer.fst(18,11-18,17)
+(and 
+;; def=FriendConsumer.fst(18,18-18,51); use=FriendConsumer.fst(18,11-18,17)
 (or label_1
 
-;; def=FriendConsumer.fst(18,18-18,41); use=FriendConsumer.fst(18,11-18,17)
+;; def=FriendConsumer.fst(18,18-18,51); use=FriendConsumer.fst(18,11-18,17)
+(= (Prims.op_Addition (FriendProvider.x Dummy_value)
+(Other.y Dummy_value))
+(BoxInt 1))
+)
+
+
+;; def=Prims.fst(441,36-441,97); use=FriendConsumer.fst(18,11-18,17)
+(forall ((@x0 Term))
+ (! (implies (and (HasType @x0
+Prims.unit)
+
+;; def=FriendConsumer.fst(18,18-18,51); use=FriendConsumer.fst(18,11-18,17)
+(= (Prims.op_Addition (FriendProvider.x Dummy_value)
+(Other.y Dummy_value))
+(BoxInt 1))
+)
+
+;; def=FriendConsumer.fsti(17,18-17,41); use=FriendConsumer.fst(18,11-18,51)
+(or label_2
+
+;; def=FriendConsumer.fsti(17,18-17,41); use=FriendConsumer.fst(18,11-18,51)
 (= (FriendProvider.x Dummy_value)
 (BoxInt 0))
+)
+)
+ 
+;;no pats
+:qid @query))
 )
 )
 :named @query))
@@ -7692,6 +7783,8 @@ Prims.int))
 (get-unsat-core)
 (echo "</unsat-core>")
 (echo "<labels>")
+(echo "label_2")
+(eval label_2)
 (echo "label_1")
 (eval label_1)
 (echo "</labels>")
@@ -7699,4 +7792,4 @@ Prims.int))
 (pop) ;; 0}pop
 ; QUERY ID: (FriendConsumer.test, 1)
 ; STATUS: unsat
-; UNSAT CORE GENERATED: @query, equation_FriendProvider.x
+; UNSAT CORE GENERATED: @MaxIFuel_assumption, @query, equation_FriendProvider.x, equation_Other.y, int_inversion, primitive_Prims.op_Addition, projection_inverse_BoxInt_proj_0, typing_Other.y

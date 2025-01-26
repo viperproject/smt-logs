@@ -682,13 +682,13 @@
 (declare-const fuel%impl&%0.get_Node_0. FuelId)
 (declare-const fuel%impl&%0.get_Node_1. FuelId)
 (declare-const fuel%impl&%0.is_Leaf. FuelId)
-(declare-const fuel%impl&%1.arrow_1. FuelId)
 (declare-const fuel%impl&%1.arrow_0. FuelId)
+(declare-const fuel%impl&%1.arrow_1. FuelId)
 (declare-const fuel%impl&%1.arrow_Node_0. FuelId)
 (declare-const fuel%impl&%1.arrow_Node_1. FuelId)
 (assert
  (distinct fuel%impl&%0.is_Node. fuel%impl&%0.get_Node_0. fuel%impl&%0.get_Node_1.
-  fuel%impl&%0.is_Leaf. fuel%impl&%1.arrow_1. fuel%impl&%1.arrow_0. fuel%impl&%1.arrow_Node_0.
+  fuel%impl&%0.is_Leaf. fuel%impl&%1.arrow_0. fuel%impl&%1.arrow_1. fuel%impl&%1.arrow_Node_0.
   fuel%impl&%1.arrow_Node_1.
 ))
 
@@ -829,11 +829,11 @@
 ;; Function-Decl crate::Tree::is_Leaf
 (declare-fun impl&%0.is_Leaf.? (Poly) Bool)
 
-;; Function-Decl crate::Tree::arrow_1
-(declare-fun impl&%1.arrow_1.? (Poly) Tree.)
-
 ;; Function-Decl crate::Tree::arrow_0
 (declare-fun impl&%1.arrow_0.? (Poly) Tree.)
+
+;; Function-Decl crate::Tree::arrow_1
+(declare-fun impl&%1.arrow_1.? (Poly) Tree.)
 
 ;; Function-Decl crate::Tree::arrow_Node_0
 (declare-fun impl&%1.arrow_Node_0.? (Poly) Tree.)
@@ -897,20 +897,6 @@
     :skolemid skolem_internal_impl&__0.is_Leaf.?_definition
 ))))
 
-;; Function-Axioms crate::Tree::arrow_1
-(assert
- (fuel_bool_default fuel%impl&%1.arrow_1.)
-)
-(assert
- (=>
-  (fuel_bool fuel%impl&%1.arrow_1.)
-  (forall ((self! Poly)) (!
-    (= (impl&%1.arrow_1.? self!) (Tree./Node/1 (%Poly%Tree. self!)))
-    :pattern ((impl&%1.arrow_1.? self!))
-    :qid internal_impl&__1.arrow_1.?_definition
-    :skolemid skolem_internal_impl&__1.arrow_1.?_definition
-))))
-
 ;; Function-Axioms crate::Tree::arrow_0
 (assert
  (fuel_bool_default fuel%impl&%1.arrow_0.)
@@ -923,6 +909,20 @@
     :pattern ((impl&%1.arrow_0.? self!))
     :qid internal_impl&__1.arrow_0.?_definition
     :skolemid skolem_internal_impl&__1.arrow_0.?_definition
+))))
+
+;; Function-Axioms crate::Tree::arrow_1
+(assert
+ (fuel_bool_default fuel%impl&%1.arrow_1.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%impl&%1.arrow_1.)
+  (forall ((self! Poly)) (!
+    (= (impl&%1.arrow_1.? self!) (Tree./Node/1 (%Poly%Tree. self!)))
+    :pattern ((impl&%1.arrow_1.? self!))
+    :qid internal_impl&__1.arrow_1.?_definition
+    :skolemid skolem_internal_impl&__1.arrow_1.?_definition
 ))))
 
 ;; Function-Axioms crate::Tree::arrow_Node_0

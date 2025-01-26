@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:48
+// Date:         2025-01-26 21:43:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0112.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0112-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -246,7 +246,7 @@ procedure fun01#definedness() returns (Result: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of 1 \ result != 2
-      assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@6.11--6.26) [193216]"}
+      assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@6.11--6.26) [85105]"}
         Result != 0;
     assume 1 div Result != 2;
     assume state(Heap, Mask);
@@ -316,13 +316,13 @@ procedure fun02#definedness() returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of fun02 might not hold. Assertion result != 0 might not hold. (0112.vpr@9.11--9.22) [193217]"}
+    assert {:msg "  Postcondition of fun02 might not hold. Assertion result != 0 might not hold. (0112.vpr@9.11--9.22) [85106]"}
       Result != 0;
     
     // -- Check definedness of 1 \ result != 2
-      assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@10.11--10.26) [193218]"}
+      assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@10.11--10.26) [85107]"}
         Result != 0;
-    assert {:msg "  Postcondition of fun02 might not hold. Assertion 1 \ result != 2 might not hold. (0112.vpr@10.11--10.26) [193219]"}
+    assert {:msg "  Postcondition of fun02 might not hold. Assertion 1 \ result != 2 might not hold. (0112.vpr@10.11--10.26) [85108]"}
       1 div Result != 2;
 }
 
@@ -384,7 +384,7 @@ procedure fun03#definedness() returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of 1 \ result != 2
-          assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@17.11--17.26) [193220]"}
+          assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@17.11--17.26) [85109]"}
             Result != 0;
         assume 1 div Result != 2;
         assume state(Heap, Mask);
@@ -395,7 +395,7 @@ procedure fun03#definedness() returns (Result: int)
       assume state(Heap, Mask);
       
       // -- Check definedness of 1 \ result != 2
-        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@17.11--17.26) [193221]"}
+        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@17.11--17.26) [85110]"}
           Result != 0;
       assume 1 div Result != 2;
       assume state(Heap, Mask);
@@ -470,7 +470,7 @@ procedure fun04#definedness() returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of 1 \ result != 2
-          assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@21.11--21.26) [193222]"}
+          assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@21.11--21.26) [85111]"}
             Result != 0;
         assume 1 div Result != 2;
         assume state(Heap, Mask);
@@ -482,9 +482,9 @@ procedure fun04#definedness() returns (Result: int)
       ExhaleWellDef0Mask := Mask;
       
       // -- Check definedness of 1 \ result != 2
-        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@21.11--21.26) [193223]"}
+        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@21.11--21.26) [85112]"}
           Result != 0;
-      assert {:msg "  Postcondition of fun04 might not hold. Assertion 1 \ result != 2 might not hold. (0112.vpr@21.11--21.26) [193224]"}
+      assert {:msg "  Postcondition of fun04 might not hold. Assertion 1 \ result != 2 might not hold. (0112.vpr@21.11--21.26) [85113]"}
         1 div Result != 2;
 }
 
@@ -542,7 +542,7 @@ procedure fun05#definedness() returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of 1 \ result != 2
-          assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@27.11--27.26) [193225]"}
+          assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@27.11--27.26) [85114]"}
             Result != 0;
         assume 1 div Result != 2;
         assume state(Heap, Mask);
@@ -554,7 +554,7 @@ procedure fun05#definedness() returns (Result: int)
       assume state(Heap, Mask);
       
       // -- Check definedness of 1 \ result != 2
-        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@27.11--27.26) [193226]"}
+        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@27.11--27.26) [85115]"}
           Result != 0;
       assume 1 div Result != 2;
       assume state(Heap, Mask);
@@ -625,7 +625,7 @@ procedure fun06#definedness() returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of 1 \ result != 2
-          assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@32.11--32.26) [193227]"}
+          assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@32.11--32.26) [85116]"}
             Result != 0;
         assume 1 div Result != 2;
         assume state(Heap, Mask);
@@ -635,13 +635,13 @@ procedure fun06#definedness() returns (Result: int)
     // -- Normally exhale the exhale part.
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  Postcondition of fun06 might not hold. Assertion result != 0 might not hold. (0112.vpr@30.11--30.30) [193228]"}
+      assert {:msg "  Postcondition of fun06 might not hold. Assertion result != 0 might not hold. (0112.vpr@30.11--30.30) [85117]"}
         Result != 0;
       
       // -- Check definedness of 1 \ result != 2
-        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@32.11--32.26) [193229]"}
+        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@32.11--32.26) [85118]"}
           Result != 0;
-      assert {:msg "  Postcondition of fun06 might not hold. Assertion 1 \ result != 2 might not hold. (0112.vpr@32.11--32.26) [193230]"}
+      assert {:msg "  Postcondition of fun06 might not hold. Assertion 1 \ result != 2 might not hold. (0112.vpr@32.11--32.26) [85119]"}
         1 div Result != 2;
 }
 
@@ -703,7 +703,7 @@ procedure fun07#definedness() returns (Result: int)
       assume state(Heap, Mask);
       
       // -- Check definedness of 1 \ result != 2
-        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@37.11--37.34) [193231]"}
+        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@37.11--37.34) [85120]"}
           Result != 0;
       assume 1 div Result != 2;
       assume state(Heap, Mask);
@@ -776,13 +776,13 @@ procedure fun08#definedness() returns (Result: int)
     // -- Normally exhale the exhale part.
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  Postcondition of fun08 might not hold. Assertion result != 0 might not hold. (0112.vpr@40.11--40.30) [193232]"}
+      assert {:msg "  Postcondition of fun08 might not hold. Assertion result != 0 might not hold. (0112.vpr@40.11--40.30) [85121]"}
         Result != 0;
       
       // -- Check definedness of 1 \ result != 2
-        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@41.11--41.34) [193233]"}
+        assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@41.11--41.34) [85122]"}
           Result != 0;
-      assert {:msg "  Postcondition of fun08 might not hold. Assertion 1 \ result != 2 might not hold. (0112.vpr@41.11--41.34) [193234]"}
+      assert {:msg "  Postcondition of fun08 might not hold. Assertion 1 \ result != 2 might not hold. (0112.vpr@41.11--41.34) [85123]"}
         1 div Result != 2;
 }
 
@@ -831,7 +831,7 @@ procedure fun11#definedness(x: int) returns (Result: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of 1 \ x != 2
-      assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@46.12--46.22) [193235]"}
+      assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@46.12--46.22) [85124]"}
         x != 0;
     assume 1 div x != 2;
     assume state(Heap, Mask);
@@ -888,7 +888,7 @@ procedure fun12#definedness(x: int) returns (Result: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of 1 \ x != 2
-      assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@50.12--50.22) [193236]"}
+      assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@50.12--50.22) [85125]"}
         x != 0;
     assume 1 div x != 2;
     assume state(Heap, Mask);
@@ -944,7 +944,7 @@ procedure fun13#definedness(x: int) returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of 1 \ x != 2
-          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@57.12--57.22) [193237]"}
+          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@57.12--57.22) [85126]"}
             x != 0;
         assume 1 div x != 2;
         assume state(Heap, Mask);
@@ -956,7 +956,7 @@ procedure fun13#definedness(x: int) returns (Result: int)
       assume state(Heap, Mask);
       
       // -- Check definedness of 1 \ x != 2
-        assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@57.12--57.22) [193238]"}
+        assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@57.12--57.22) [85127]"}
           x != 0;
       assume 1 div x != 2;
       assume state(Heap, Mask);
@@ -1015,7 +1015,7 @@ procedure fun14#definedness(x: int) returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of 1 \ x != 2
-          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@63.12--63.22) [193239]"}
+          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@63.12--63.22) [85128]"}
             x != 0;
         assume 1 div x != 2;
         assume state(Heap, Mask);
@@ -1027,7 +1027,7 @@ procedure fun14#definedness(x: int) returns (Result: int)
       assume state(Heap, Mask);
       
       // -- Check definedness of 1 \ x != 2
-        assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@63.12--63.22) [193240]"}
+        assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@63.12--63.22) [85129]"}
           x != 0;
       assume 1 div x != 2;
       assume state(Heap, Mask);
@@ -1084,7 +1084,7 @@ procedure fun15#definedness(x: int) returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of 1 \ x != 2
-          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@69.12--69.22) [193241]"}
+          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@69.12--69.22) [85130]"}
             x != 0;
         assume 1 div x != 2;
         assume state(Heap, Mask);
@@ -1095,7 +1095,7 @@ procedure fun15#definedness(x: int) returns (Result: int)
       assume state(Heap, Mask);
       
       // -- Check definedness of 1 \ x != 2
-        assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@69.12--69.22) [193242]"}
+        assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@69.12--69.22) [85131]"}
           x != 0;
       assume 1 div x != 2;
       assume state(Heap, Mask);
@@ -1155,7 +1155,7 @@ procedure fun16#definedness(x: int) returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of 1 \ x != 2
-          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@74.12--74.22) [193243]"}
+          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@74.12--74.22) [85132]"}
             x != 0;
         assume 1 div x != 2;
         assume state(Heap, Mask);
@@ -1166,7 +1166,7 @@ procedure fun16#definedness(x: int) returns (Result: int)
       assume state(Heap, Mask);
       
       // -- Check definedness of 1 \ x != 2
-        assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@74.12--74.22) [193244]"}
+        assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@74.12--74.22) [85133]"}
           x != 0;
       assume 1 div x != 2;
       assume state(Heap, Mask);
@@ -1223,7 +1223,7 @@ procedure fun17#definedness(x: int) returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of 1 \ x != 2
-          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@79.12--79.30) [193245]"}
+          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@79.12--79.30) [85134]"}
             x != 0;
         assume 1 div x != 2;
         assume state(Heap, Mask);
@@ -1289,7 +1289,7 @@ procedure fun18#definedness(x: int) returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of 1 \ x != 2
-          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@83.12--83.30) [193246]"}
+          assert {:msg "  Contract might not be well-formed. Divisor x might be zero. (0112.vpr@83.12--83.30) [85135]"}
             x != 0;
         assume 1 div x != 2;
         assume state(Heap, Mask);

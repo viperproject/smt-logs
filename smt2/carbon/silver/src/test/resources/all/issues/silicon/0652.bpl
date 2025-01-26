@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:49
+// Date:         2025-01-26 21:42:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0652.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0652-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_6: Ref, f_9: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_6, f_9] }
-  Heap[o_6, $allocated] ==> Heap[Heap[o_6, f_9], $allocated]
+axiom (forall o_38: Ref, f_51: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_38, f_51] }
+  Heap[o_38, $allocated] ==> Heap[Heap[o_38, f_51], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_30: Ref, f_35: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_30, f_35] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_30, f_35) ==> Heap[o_30, f_35] == ExhaleHeap[o_30, f_35]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_39: Ref, f_21: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_39, f_21] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_39, f_21) ==> Heap[o_39, f_21] == ExhaleHeap[o_39, f_21]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_34), ExhaleHeap[null, PredicateMaskField(pm_f_34)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsPredicateField(pm_f_34) ==> Heap[null, PredicateMaskField(pm_f_34)] == ExhaleHeap[null, PredicateMaskField(pm_f_34)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18), ExhaleHeap[null, PredicateMaskField(pm_f_18)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> Heap[null, PredicateMaskField(pm_f_18)] == ExhaleHeap[null, PredicateMaskField(pm_f_18)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_34) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsPredicateField(pm_f_34) ==> (forall <A, B> o2_34: Ref, f_35: (Field A B) ::
-    { ExhaleHeap[o2_34, f_35] }
-    Heap[null, PredicateMaskField(pm_f_34)][o2_34, f_35] ==> Heap[o2_34, f_35] == ExhaleHeap[o2_34, f_35]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_21: (Field A B) ::
+    { ExhaleHeap[o2_18, f_21] }
+    Heap[null, PredicateMaskField(pm_f_18)][o2_18, f_21] ==> Heap[o2_18, f_21] == ExhaleHeap[o2_18, f_21]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_34), ExhaleHeap[null, WandMaskField(pm_f_34)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsWandField(pm_f_34) ==> Heap[null, WandMaskField(pm_f_34)] == ExhaleHeap[null, WandMaskField(pm_f_34)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18), ExhaleHeap[null, WandMaskField(pm_f_18)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> Heap[null, WandMaskField(pm_f_18)] == ExhaleHeap[null, WandMaskField(pm_f_18)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_34) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsWandField(pm_f_34) ==> (forall <A, B> o2_34: Ref, f_35: (Field A B) ::
-    { ExhaleHeap[o2_34, f_35] }
-    Heap[null, WandMaskField(pm_f_34)][o2_34, f_35] ==> Heap[o2_34, f_35] == ExhaleHeap[o2_34, f_35]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_21: (Field A B) ::
+    { ExhaleHeap[o2_18, f_21] }
+    Heap[null, WandMaskField(pm_f_18)][o2_18, f_21] ==> Heap[o2_18, f_21] == ExhaleHeap[o2_18, f_21]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_30: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_30, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_30, $allocated] ==> ExhaleHeap[o_30, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_39: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_39, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_39, $allocated] ==> ExhaleHeap[o_39, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_6: Ref, f_16: (Field A B), v: B ::
-  { Heap[o_6, f_16:=v] }
-  succHeap(Heap, Heap[o_6, f_16:=v])
+axiom (forall <A, B> Heap: HeapType, o_38: Ref, f_23: (Field A B), v: B ::
+  { Heap[o_38, f_23:=v] }
+  succHeap(Heap, Heap[o_38, f_23:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,22 +145,22 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(i_1: int): bool;
-function  neverTriggered2(i_5: int): bool;
-function  neverTriggered3(i_8_2: int): bool;
+function  neverTriggered2(i_5_1: int): bool;
+function  neverTriggered3(i_8_1: int): bool;
 function  neverTriggered4(i_9_1: int): bool;
 function  neverTriggered5(i_10_1: int): bool;
 function  neverTriggered6(i_12_1: int): bool;
 function  neverTriggered7(i_14_1: int): bool;
 function  neverTriggered8(i_16_1: int): bool;
-function  neverTriggered9(i_17: int): bool;
+function  neverTriggered9(i_17_1: int): bool;
 function  neverTriggered10(i_18_1: int): bool;
-function  neverTriggered11(i_19: int): bool;
-function  neverTriggered12(i_20_1: int): bool;
-function  neverTriggered13(i_21: int): bool;
+function  neverTriggered11(i_19_1: int): bool;
+function  neverTriggered12(i_20_2: int): bool;
+function  neverTriggered13(i_21_1: int): bool;
 function  neverTriggered14(i_22_1: int): bool;
-function  neverTriggered15(i_23: int): bool;
+function  neverTriggered15(i_23_1: int): bool;
 function  neverTriggered16(i_24_1: int): bool;
-function  neverTriggered17(i_25: int): bool;
+function  neverTriggered17(i_25_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -247,7 +247,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type arrayDomainType;
 
 // Translation of domain function array_loc
-function  array_loc(a_3: arrayDomainType, i_79: int): Ref;
+function  array_loc(a_3: arrayDomainType, i_6: int): Ref;
 
 // Translation of domain function alen
 function  alen(a_3: arrayDomainType): int;
@@ -341,24 +341,24 @@ procedure aloc#definedness(a_2: arrayDomainType, i: int) returns (Result: Ref)
 procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
   modifies Heap, Mask;
 {
-  var i_14: int;
-  var ExhaleWellDef0Heap: HeapType;
+  var i_18: int;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
-  var i_2: int;
+  var i_3: int;
   var i_4: int;
-  var i_6: int;
-  var oldHeap: HeapType;
+  var i_14: int;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
   var ExhaleHeap: HeapType;
+  var i_5: int;
+  var i_15: int;
   var i_7: int;
-  var i_8: int;
-  var i_9: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -375,15 +375,15 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
     
     // -- Check definedness of (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2))
       if (*) {
-        if (0 <= i_14 && i_14 < 6) {
+        if (0 <= i_18 && i_18 < 6) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@31.78--31.91) [215373]"}
-              0 <= i_14;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@31.78--31.91) [215374]"}
-              i_14 < (alen(arr1): int);
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@31.78--31.91) [75757]"}
+              0 <= i_18;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@31.78--31.91) [75758]"}
+              i_18 < (alen(arr1): int);
             // Stop execution
             assume false;
           }
@@ -391,7 +391,7 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@31.13--31.103) [215375]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@31.13--31.103) [75759]"}
       (forall i_1: int, i_1_1: int ::
       
       (((i_1 != i_1_1 && (0 <= i_1 && i_1 < 6)) && (0 <= i_1_1 && i_1_1 < 6)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, i_1) != aloc_1(Heap, arr1, i_1_1)
@@ -402,12 +402,12 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         { aloc#frame(EmptyFrame, arr1, i_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_1), vint_1] }
         (0 <= i_1 && i_1 < 6) && NoPerm < 1 / 2 ==> qpRange1(aloc_1(Heap, arr1, i_1)) && invRecv1(aloc_1(Heap, arr1, i_1)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && invRecv1(o_4) < 6) && NoPerm < 1 / 2) && qpRange1(o_4) ==> aloc_1(Heap, arr1, invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && invRecv1(o_9) < 6) && NoPerm < 1 / 2) && qpRange1(o_9) ==> aloc_1(Heap, arr1, invRecv1(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0652.vpr@31.13--31.103) [215376]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0652.vpr@31.13--31.103) [75760]"}
       (forall i_1: int ::
       { aloc#frame(EmptyFrame, arr1, i_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_1), vint_1] }
       0 <= i_1 && i_1 < 6 ==> 1 / 2 >= NoPerm
@@ -420,13 +420,13 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, vint_1] }
-        (((0 <= invRecv1(o_4) && invRecv1(o_4) < 6) && NoPerm < 1 / 2) && qpRange1(o_4) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, invRecv1(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + 1 / 2) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < 6) && NoPerm < 1 / 2) && qpRange1(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, vint_1] }
+        (((0 <= invRecv1(o_9) && invRecv1(o_9) < 6) && NoPerm < 1 / 2) && qpRange1(o_9) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, invRecv1(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + 1 / 2) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < 6) && NoPerm < 1 / 2) && qpRange1(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -435,26 +435,26 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
     
     // -- Check definedness of (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> aloc(arr1, i).int == 0)
       if (*) {
-        if (0 <= i_2 && i_2 < 6) {
+        if (0 <= i_3 && i_3 < 6) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@32.74--32.87) [215377]"}
-              0 <= i_2;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@32.74--32.87) [215378]"}
-              i_2 < (alen(arr1): int);
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@32.74--32.87) [75761]"}
+              0 <= i_3;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@32.74--32.87) [75762]"}
+              i_3 < (alen(arr1): int);
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(arr1, i).int (0652.vpr@32.13--32.96) [215379]"}
-            HasDirectPerm(Mask, aloc_1(Heap, arr1, i_2), vint_1);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(arr1, i).int (0652.vpr@32.13--32.96) [75763]"}
+            HasDirectPerm(Mask, aloc_1(Heap, arr1, i_3), vint_1);
         }
         assume false;
       }
-    assume (forall i_3: int ::
-      { Heap[aloc#frame(EmptyFrame, arr1, i_3), vint_1] }
-      0 <= i_3 && i_3 < 6 ==> Heap[aloc_1(Heap, arr1, i_3), vint_1] == 0
+    assume (forall i_3_2: int ::
+      { Heap[aloc#frame(EmptyFrame, arr1, i_3_2), vint_1] }
+      0 <= i_3_2 && i_3_2 < 6 ==> Heap[aloc_1(Heap, arr1, i_3_2), vint_1] == 0
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -464,11 +464,11 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         if (0 <= i_4 && i_4 < 12) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@34.79--34.92) [215380]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@34.79--34.92) [75764]"}
               0 <= i_4;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@34.79--34.92) [215381]"}
+            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@34.79--34.92) [75765]"}
               i_4 < (alen(arr2): int);
             // Stop execution
             assume false;
@@ -477,36 +477,36 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@34.13--34.104) [215382]"}
-      (forall i_5: int, i_5_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@34.13--34.104) [75766]"}
+      (forall i_5_1: int, i_5_2: int ::
       
-      (((i_5 != i_5_1 && (0 <= i_5 && i_5 < 12)) && (0 <= i_5_1 && i_5_1 < 12)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_5) != aloc_1(Heap, arr2, i_5_1)
+      (((i_5_1 != i_5_2 && (0 <= i_5_1 && i_5_1 < 12)) && (0 <= i_5_2 && i_5_2 < 12)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_5_1) != aloc_1(Heap, arr2, i_5_2)
     );
     
     // -- Define Inverse Function
-      assume (forall i_5: int ::
-        { aloc#frame(EmptyFrame, arr2, i_5) } { Heap[aloc#frame(EmptyFrame, arr2, i_5), vint_1] }
-        (0 <= i_5 && i_5 < 12) && NoPerm < FullPerm ==> qpRange2(aloc_1(Heap, arr2, i_5)) && invRecv2(aloc_1(Heap, arr2, i_5)) == i_5
+      assume (forall i_5_1: int ::
+        { aloc#frame(EmptyFrame, arr2, i_5_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_5_1), vint_1] }
+        (0 <= i_5_1 && i_5_1 < 12) && NoPerm < FullPerm ==> qpRange2(aloc_1(Heap, arr2, i_5_1)) && invRecv2(aloc_1(Heap, arr2, i_5_1)) == i_5_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        ((0 <= invRecv2(o_4) && invRecv2(o_4) < 12) && NoPerm < FullPerm) && qpRange2(o_4) ==> aloc_1(Heap, arr2, invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        ((0 <= invRecv2(o_9) && invRecv2(o_9) < 12) && NoPerm < FullPerm) && qpRange2(o_9) ==> aloc_1(Heap, arr2, invRecv2(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_5: int ::
-        { aloc#frame(EmptyFrame, arr2, i_5) } { Heap[aloc#frame(EmptyFrame, arr2, i_5), vint_1] }
-        0 <= i_5 && i_5 < 12 ==> aloc_1(Heap, arr2, i_5) != null
+      assume (forall i_5_1: int ::
+        { aloc#frame(EmptyFrame, arr2, i_5_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_5_1), vint_1] }
+        0 <= i_5_1 && i_5_1 < 12 ==> aloc_1(Heap, arr2, i_5_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, vint_1] }
-        (((0 <= invRecv2(o_4) && invRecv2(o_4) < 12) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> aloc_1(Heap, arr2, invRecv2(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + FullPerm) && (!(((0 <= invRecv2(o_4) && invRecv2(o_4) < 12) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, vint_1] }
+        (((0 <= invRecv2(o_9) && invRecv2(o_9) < 12) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> aloc_1(Heap, arr2, invRecv2(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + FullPerm) && (!(((0 <= invRecv2(o_9) && invRecv2(o_9) < 12) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -515,43 +515,43 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
     
     // -- Check definedness of (forall i: Int :: { aloc(arr2, i).int } 0 <= i && i < 6 ==> aloc(arr2, i).int == 0 * (aloc(arr1, i).int - aloc(arr1, 0).int))
       if (*) {
-        if (0 <= i_6 && i_6 < 6) {
+        if (0 <= i_14 && i_14 < 6) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@35.74--35.87) [215383]"}
-              0 <= i_6;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@35.74--35.87) [215384]"}
-              i_6 < (alen(arr2): int);
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@35.74--35.87) [75767]"}
+              0 <= i_14;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@35.74--35.87) [75768]"}
+              i_14 < (alen(arr2): int);
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(arr2, i).int (0652.vpr@35.13--35.138) [215385]"}
-            HasDirectPerm(Mask, aloc_1(Heap, arr2, i_6), vint_1);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(arr2, i).int (0652.vpr@35.13--35.138) [75769]"}
+            HasDirectPerm(Mask, aloc_1(Heap, arr2, i_14), vint_1);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@35.100--35.113) [215386]"}
-              0 <= i_6;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@35.100--35.113) [215387]"}
-              i_6 < (alen(arr1): int);
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@35.100--35.113) [75770]"}
+              0 <= i_14;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@35.100--35.113) [75771]"}
+              i_14 < (alen(arr1): int);
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(arr1, i).int (0652.vpr@35.13--35.138) [215388]"}
-            HasDirectPerm(Mask, aloc_1(Heap, arr1, i_6), vint_1);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(arr1, i).int (0652.vpr@35.13--35.138) [75772]"}
+            HasDirectPerm(Mask, aloc_1(Heap, arr1, i_14), vint_1);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 < alen(arr1) might not hold. (0652.vpr@35.120--35.133) [215389]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 < alen(arr1) might not hold. (0652.vpr@35.120--35.133) [75773]"}
               0 < (alen(arr1): int);
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(arr1, 0).int (0652.vpr@35.13--35.138) [215390]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(arr1, 0).int (0652.vpr@35.13--35.138) [75774]"}
             HasDirectPerm(Mask, aloc_1(Heap, arr1, 0), vint_1);
         }
         assume false;
@@ -565,8 +565,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 0 -- 0652.vpr@37.3--37.18
     x := 0;
@@ -577,9 +577,9 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant x == x might not hold on entry. Assertion x == x might not hold. (0652.vpr@39.15--39.21) [215391]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant x == x might not hold on entry. Assertion x == x might not hold. (0652.vpr@39.15--39.21) [75775]"}
           x == x;
         havoc QPMask;
         
@@ -587,59 +587,59 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
           
         
         // -- check if receiver aloc(arr2, i) is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 0 <= i && i < 6 ==> acc(aloc(arr2, i).int, write)) might not hold on entry. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@40.16--40.106) [215392]"}
-            (forall i_8_2: int, i_8_3: int ::
-            { neverTriggered3(i_8_2), neverTriggered3(i_8_3) }
-            (((i_8_2 != i_8_3 && (0 <= i_8_2 && i_8_2 < 6)) && (0 <= i_8_3 && i_8_3 < 6)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_8_2) != aloc_1(Heap, arr2, i_8_3)
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 0 <= i && i < 6 ==> acc(aloc(arr2, i).int, write)) might not hold on entry. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@40.16--40.106) [75776]"}
+            (forall i_8_1: int, i_8_2: int ::
+            { neverTriggered3(i_8_1), neverTriggered3(i_8_2) }
+            (((i_8_1 != i_8_2 && (0 <= i_8_1 && i_8_1 < 6)) && (0 <= i_8_2 && i_8_2 < 6)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_8_1) != aloc_1(Heap, arr2, i_8_2)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 0 <= i && i < 6 ==> acc(aloc(arr2, i).int, write)) might not hold on entry. There might be insufficient permission to access aloc(arr2, i).int (0652.vpr@40.16--40.106) [215393]"}
-            (forall i_8_2: int ::
-            { aloc#frame(EmptyFrame, arr2, i_8_2) } { Heap[aloc#frame(EmptyFrame, arr2, i_8_2), vint_1] }
-            0 <= i_8_2 && i_8_2 < 6 ==> Mask[aloc_1(Heap, arr2, i_8_2), vint_1] >= FullPerm
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 0 <= i && i < 6 ==> acc(aloc(arr2, i).int, write)) might not hold on entry. There might be insufficient permission to access aloc(arr2, i).int (0652.vpr@40.16--40.106) [75777]"}
+            (forall i_8_1: int ::
+            { aloc#frame(EmptyFrame, arr2, i_8_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_8_1), vint_1] }
+            0 <= i_8_1 && i_8_1 < 6 ==> Mask[aloc_1(Heap, arr2, i_8_1), vint_1] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver aloc(arr2, i)
-          assume (forall i_8_2: int ::
-            { aloc#frame(EmptyFrame, arr2, i_8_2) } { Heap[aloc#frame(EmptyFrame, arr2, i_8_2), vint_1] }
-            (0 <= i_8_2 && i_8_2 < 6) && NoPerm < FullPerm ==> qpRange3(aloc_1(Heap, arr2, i_8_2)) && invRecv3(aloc_1(Heap, arr2, i_8_2)) == i_8_2
+          assume (forall i_8_1: int ::
+            { aloc#frame(EmptyFrame, arr2, i_8_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_8_1), vint_1] }
+            (0 <= i_8_1 && i_8_1 < 6) && NoPerm < FullPerm ==> qpRange3(aloc_1(Heap, arr2, i_8_1)) && invRecv3(aloc_1(Heap, arr2, i_8_1)) == i_8_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv3(o_4) }
-            (0 <= invRecv3(o_4) && invRecv3(o_4) < 6) && (NoPerm < FullPerm && qpRange3(o_4)) ==> aloc_1(Heap, arr2, invRecv3(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv3(o_9) }
+            (0 <= invRecv3(o_9) && invRecv3(o_9) < 6) && (NoPerm < FullPerm && qpRange3(o_9)) ==> aloc_1(Heap, arr2, invRecv3(o_9)) == o_9
           );
         
         // -- assume permission updates for field int
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            ((0 <= invRecv3(o_4) && invRecv3(o_4) < 6) && (NoPerm < FullPerm && qpRange3(o_4)) ==> aloc_1(Heap, arr2, invRecv3(o_4)) == o_4 && QPMask[o_4, vint_1] == Mask[o_4, vint_1] - FullPerm) && (!((0 <= invRecv3(o_4) && invRecv3(o_4) < 6) && (NoPerm < FullPerm && qpRange3(o_4))) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            ((0 <= invRecv3(o_9) && invRecv3(o_9) < 6) && (NoPerm < FullPerm && qpRange3(o_9)) ==> aloc_1(Heap, arr2, invRecv3(o_9)) == o_9 && QPMask[o_9, vint_1] == Mask[o_9, vint_1] - FullPerm) && (!((0 <= invRecv3(o_9) && invRecv3(o_9) < 6) && (NoPerm < FullPerm && qpRange3(o_9))) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (0652.vpr@41.16--41.107) [215394]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (0652.vpr@41.16--41.107) [75778]"}
             (forall i_9_1: int ::
             { aloc#frame(EmptyFrame, arr2, i_9_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_9_1), vint_1] }
             (6 <= i_9_1 && i_9_1 < 12) && dummyFunction(Heap[aloc_1(Heap, arr2, i_9_1), vint_1]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver aloc(arr2, i) is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not hold on entry. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@41.16--41.107) [215395]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not hold on entry. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@41.16--41.107) [75779]"}
             (forall i_9_1: int, i_9_2: int ::
             { neverTriggered4(i_9_1), neverTriggered4(i_9_2) }
             (((i_9_1 != i_9_2 && (6 <= i_9_1 && i_9_1 < 12)) && (6 <= i_9_2 && i_9_2 < 12)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, i_9_1) != aloc_1(Heap, arr2, i_9_2)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not hold on entry. There might be insufficient permission to access aloc(arr2, i).int (0652.vpr@41.16--41.107) [215396]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not hold on entry. There might be insufficient permission to access aloc(arr2, i).int (0652.vpr@41.16--41.107) [75780]"}
             (forall i_9_1: int ::
             { aloc#frame(EmptyFrame, arr2, i_9_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_9_1), vint_1] }
             6 <= i_9_1 && i_9_1 < 12 ==> Mask[aloc_1(Heap, arr2, i_9_1), vint_1] >= 1 / 2
@@ -650,41 +650,41 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             { aloc#frame(EmptyFrame, arr2, i_9_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_9_1), vint_1] }
             (6 <= i_9_1 && i_9_1 < 12) && NoPerm < 1 / 2 ==> qpRange4(aloc_1(Heap, arr2, i_9_1)) && invRecv4(aloc_1(Heap, arr2, i_9_1)) == i_9_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv4(o_4) }
-            (6 <= invRecv4(o_4) && invRecv4(o_4) < 12) && (NoPerm < 1 / 2 && qpRange4(o_4)) ==> aloc_1(Heap, arr2, invRecv4(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv4(o_9) }
+            (6 <= invRecv4(o_9) && invRecv4(o_9) < 12) && (NoPerm < 1 / 2 && qpRange4(o_9)) ==> aloc_1(Heap, arr2, invRecv4(o_9)) == o_9
           );
         
         // -- assume permission updates for field int
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            ((6 <= invRecv4(o_4) && invRecv4(o_4) < 12) && (NoPerm < 1 / 2 && qpRange4(o_4)) ==> aloc_1(Heap, arr2, invRecv4(o_4)) == o_4 && QPMask[o_4, vint_1] == Mask[o_4, vint_1] - 1 / 2) && (!((6 <= invRecv4(o_4) && invRecv4(o_4) < 12) && (NoPerm < 1 / 2 && qpRange4(o_4))) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            ((6 <= invRecv4(o_9) && invRecv4(o_9) < 12) && (NoPerm < 1 / 2 && qpRange4(o_9)) ==> aloc_1(Heap, arr2, invRecv4(o_9)) == o_9 && QPMask[o_9, vint_1] == Mask[o_9, vint_1] - 1 / 2) && (!((6 <= invRecv4(o_9) && invRecv4(o_9) < 12) && (NoPerm < 1 / 2 && qpRange4(o_9))) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (0652.vpr@42.16--42.106) [215397]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (0652.vpr@42.16--42.106) [75781]"}
             (forall i_10_1: int ::
             { aloc#frame(EmptyFrame, arr1, i_10_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_10_1), vint_1] }
             (0 <= i_10_1 && i_10_1 < 6) && dummyFunction(Heap[aloc_1(Heap, arr1, i_10_1), vint_1]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver aloc(arr1, i) is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not hold on entry. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@42.16--42.106) [215398]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not hold on entry. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@42.16--42.106) [75782]"}
             (forall i_10_1: int, i_10_2: int ::
             { neverTriggered5(i_10_1), neverTriggered5(i_10_2) }
             (((i_10_1 != i_10_2 && (0 <= i_10_1 && i_10_1 < 6)) && (0 <= i_10_2 && i_10_2 < 6)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, i_10_1) != aloc_1(Heap, arr1, i_10_2)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not hold on entry. There might be insufficient permission to access aloc(arr1, i).int (0652.vpr@42.16--42.106) [215399]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not hold on entry. There might be insufficient permission to access aloc(arr1, i).int (0652.vpr@42.16--42.106) [75783]"}
             (forall i_10_1: int ::
             { aloc#frame(EmptyFrame, arr1, i_10_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_10_1), vint_1] }
             0 <= i_10_1 && i_10_1 < 6 ==> Mask[aloc_1(Heap, arr1, i_10_1), vint_1] >= 1 / 2
@@ -695,21 +695,21 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             { aloc#frame(EmptyFrame, arr1, i_10_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_10_1), vint_1] }
             (0 <= i_10_1 && i_10_1 < 6) && NoPerm < 1 / 2 ==> qpRange5(aloc_1(Heap, arr1, i_10_1)) && invRecv5(aloc_1(Heap, arr1, i_10_1)) == i_10_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv5(o_4) }
-            (0 <= invRecv5(o_4) && invRecv5(o_4) < 6) && (NoPerm < 1 / 2 && qpRange5(o_4)) ==> aloc_1(Heap, arr1, invRecv5(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv5(o_9) }
+            (0 <= invRecv5(o_9) && invRecv5(o_9) < 6) && (NoPerm < 1 / 2 && qpRange5(o_9)) ==> aloc_1(Heap, arr1, invRecv5(o_9)) == o_9
           );
         
         // -- assume permission updates for field int
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            ((0 <= invRecv5(o_4) && invRecv5(o_4) < 6) && (NoPerm < 1 / 2 && qpRange5(o_4)) ==> aloc_1(Heap, arr1, invRecv5(o_4)) == o_4 && QPMask[o_4, vint_1] == Mask[o_4, vint_1] - 1 / 2) && (!((0 <= invRecv5(o_4) && invRecv5(o_4) < 6) && (NoPerm < 1 / 2 && qpRange5(o_4))) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            ((0 <= invRecv5(o_9) && invRecv5(o_9) < 6) && (NoPerm < 1 / 2 && qpRange5(o_9)) ==> aloc_1(Heap, arr1, invRecv5(o_9)) == o_9 && QPMask[o_9, vint_1] == Mask[o_9, vint_1] - 1 / 2) && (!((0 <= invRecv5(o_9) && invRecv5(o_9) < 6) && (NoPerm < 1 / 2 && qpRange5(o_9))) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         // Finish exhale
@@ -725,15 +725,15 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         
         // -- Check definedness of (forall i: Int :: { aloc(arr2, i).int } 0 <= i && i < 6 ==> acc(aloc(arr2, i).int, write))
           if (*) {
-            if (0 <= i_7 && i_7 < 6) {
+            if (0 <= i_5 && i_5 < 6) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
-                assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@40.81--40.94) [215400]"}
-                  0 <= i_7;
-                assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@40.81--40.94) [215401]"}
-                  i_7 < (alen(arr2): int);
+                ExhaleWellDef0Heap := Heap;
+                assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@40.81--40.94) [75784]"}
+                  0 <= i_5;
+                assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@40.81--40.94) [75785]"}
+                  i_5 < (alen(arr2): int);
                 // Stop execution
                 assume false;
               }
@@ -741,7 +741,7 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Contract might not be well-formed. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@40.16--40.106) [215402]"}
+        assert {:msg "  Contract might not be well-formed. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@40.16--40.106) [75786]"}
           (forall i_12_1: int, i_12_2: int ::
           
           (((i_12_1 != i_12_2 && (0 <= i_12_1 && i_12_1 < 6)) && (0 <= i_12_2 && i_12_2 < 6)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_12_1) != aloc_1(Heap, arr2, i_12_2)
@@ -752,9 +752,9 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             { aloc#frame(EmptyFrame, arr2, i_12_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_12_1), vint_1] }
             (0 <= i_12_1 && i_12_1 < 6) && NoPerm < FullPerm ==> qpRange6(aloc_1(Heap, arr2, i_12_1)) && invRecv6(aloc_1(Heap, arr2, i_12_1)) == i_12_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv6(o_4) }
-            ((0 <= invRecv6(o_4) && invRecv6(o_4) < 6) && NoPerm < FullPerm) && qpRange6(o_4) ==> aloc_1(Heap, arr2, invRecv6(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv6(o_9) }
+            ((0 <= invRecv6(o_9) && invRecv6(o_9) < 6) && NoPerm < FullPerm) && qpRange6(o_9) ==> aloc_1(Heap, arr2, invRecv6(o_9)) == o_9
           );
         
         // -- Assume set of fields is nonNull
@@ -764,13 +764,13 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            (((0 <= invRecv6(o_4) && invRecv6(o_4) < 6) && NoPerm < FullPerm) && qpRange6(o_4) ==> (NoPerm < FullPerm ==> aloc_1(Heap, arr2, invRecv6(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + FullPerm) && (!(((0 <= invRecv6(o_4) && invRecv6(o_4) < 6) && NoPerm < FullPerm) && qpRange6(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            (((0 <= invRecv6(o_9) && invRecv6(o_9) < 6) && NoPerm < FullPerm) && qpRange6(o_9) ==> (NoPerm < FullPerm ==> aloc_1(Heap, arr2, invRecv6(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + FullPerm) && (!(((0 <= invRecv6(o_9) && invRecv6(o_9) < 6) && NoPerm < FullPerm) && qpRange6(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -779,15 +779,15 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         
         // -- Check definedness of (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2))
           if (*) {
-            if (6 <= i_8 && i_8 < 12) {
+            if (6 <= i_15 && i_15 < 12) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
-                assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@41.82--41.95) [215403]"}
-                  0 <= i_8;
-                assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@41.82--41.95) [215404]"}
-                  i_8 < (alen(arr2): int);
+                ExhaleWellDef0Heap := Heap;
+                assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@41.82--41.95) [75787]"}
+                  0 <= i_15;
+                assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@41.82--41.95) [75788]"}
+                  i_15 < (alen(arr2): int);
                 // Stop execution
                 assume false;
               }
@@ -795,7 +795,7 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Contract might not be well-formed. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@41.16--41.107) [215405]"}
+        assert {:msg "  Contract might not be well-formed. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@41.16--41.107) [75789]"}
           (forall i_14_1: int, i_14_2: int ::
           
           (((i_14_1 != i_14_2 && (6 <= i_14_1 && i_14_1 < 12)) && (6 <= i_14_2 && i_14_2 < 12)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, i_14_1) != aloc_1(Heap, arr2, i_14_2)
@@ -806,12 +806,12 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             { aloc#frame(EmptyFrame, arr2, i_14_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_14_1), vint_1] }
             (6 <= i_14_1 && i_14_1 < 12) && NoPerm < 1 / 2 ==> qpRange7(aloc_1(Heap, arr2, i_14_1)) && invRecv7(aloc_1(Heap, arr2, i_14_1)) == i_14_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv7(o_4) }
-            ((6 <= invRecv7(o_4) && invRecv7(o_4) < 12) && NoPerm < 1 / 2) && qpRange7(o_4) ==> aloc_1(Heap, arr2, invRecv7(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv7(o_9) }
+            ((6 <= invRecv7(o_9) && invRecv7(o_9) < 12) && NoPerm < 1 / 2) && qpRange7(o_9) ==> aloc_1(Heap, arr2, invRecv7(o_9)) == o_9
           );
         // Check that permission expression is non-negative for all fields
-        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0652.vpr@41.16--41.107) [215406]"}
+        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0652.vpr@41.16--41.107) [75790]"}
           (forall i_14_1: int ::
           { aloc#frame(EmptyFrame, arr2, i_14_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_14_1), vint_1] }
           6 <= i_14_1 && i_14_1 < 12 ==> 1 / 2 >= NoPerm
@@ -824,13 +824,13 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            (((6 <= invRecv7(o_4) && invRecv7(o_4) < 12) && NoPerm < 1 / 2) && qpRange7(o_4) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, invRecv7(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + 1 / 2) && (!(((6 <= invRecv7(o_4) && invRecv7(o_4) < 12) && NoPerm < 1 / 2) && qpRange7(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            (((6 <= invRecv7(o_9) && invRecv7(o_9) < 12) && NoPerm < 1 / 2) && qpRange7(o_9) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, invRecv7(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + 1 / 2) && (!(((6 <= invRecv7(o_9) && invRecv7(o_9) < 12) && NoPerm < 1 / 2) && qpRange7(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -839,15 +839,15 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         
         // -- Check definedness of (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2))
           if (*) {
-            if (0 <= i_9 && i_9 < 6) {
+            if (0 <= i_7 && i_7 < 6) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
-                assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@42.81--42.94) [215407]"}
-                  0 <= i_9;
-                assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@42.81--42.94) [215408]"}
-                  i_9 < (alen(arr1): int);
+                ExhaleWellDef0Heap := Heap;
+                assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@42.81--42.94) [75791]"}
+                  0 <= i_7;
+                assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@42.81--42.94) [75792]"}
+                  i_7 < (alen(arr1): int);
                 // Stop execution
                 assume false;
               }
@@ -855,7 +855,7 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Contract might not be well-formed. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@42.16--42.106) [215409]"}
+        assert {:msg "  Contract might not be well-formed. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@42.16--42.106) [75793]"}
           (forall i_16_1: int, i_16_2: int ::
           
           (((i_16_1 != i_16_2 && (0 <= i_16_1 && i_16_1 < 6)) && (0 <= i_16_2 && i_16_2 < 6)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, i_16_1) != aloc_1(Heap, arr1, i_16_2)
@@ -866,12 +866,12 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             { aloc#frame(EmptyFrame, arr1, i_16_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_16_1), vint_1] }
             (0 <= i_16_1 && i_16_1 < 6) && NoPerm < 1 / 2 ==> qpRange8(aloc_1(Heap, arr1, i_16_1)) && invRecv8(aloc_1(Heap, arr1, i_16_1)) == i_16_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv8(o_4) }
-            ((0 <= invRecv8(o_4) && invRecv8(o_4) < 6) && NoPerm < 1 / 2) && qpRange8(o_4) ==> aloc_1(Heap, arr1, invRecv8(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv8(o_9) }
+            ((0 <= invRecv8(o_9) && invRecv8(o_9) < 6) && NoPerm < 1 / 2) && qpRange8(o_9) ==> aloc_1(Heap, arr1, invRecv8(o_9)) == o_9
           );
         // Check that permission expression is non-negative for all fields
-        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0652.vpr@42.16--42.106) [215410]"}
+        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0652.vpr@42.16--42.106) [75794]"}
           (forall i_16_1: int ::
           { aloc#frame(EmptyFrame, arr1, i_16_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_16_1), vint_1] }
           0 <= i_16_1 && i_16_1 < 6 ==> 1 / 2 >= NoPerm
@@ -884,13 +884,13 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            (((0 <= invRecv8(o_4) && invRecv8(o_4) < 6) && NoPerm < 1 / 2) && qpRange8(o_4) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, invRecv8(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + 1 / 2) && (!(((0 <= invRecv8(o_4) && invRecv8(o_4) < 6) && NoPerm < 1 / 2) && qpRange8(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            (((0 <= invRecv8(o_9) && invRecv8(o_9) < 6) && NoPerm < 1 / 2) && qpRange8(o_9) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, invRecv8(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + 1 / 2) && (!(((0 <= invRecv8(o_9) && invRecv8(o_9) < 6) && NoPerm < 1 / 2) && qpRange8(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -909,42 +909,42 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         assume x == x;
         assume state(Heap, Mask);
         havoc QPMask;
-        assert {:msg "  While statement might fail. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@40.16--40.106) [215411]"}
-          (forall i_17: int, i_17_1: int ::
+        assert {:msg "  While statement might fail. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@40.16--40.106) [75795]"}
+          (forall i_17_1: int, i_17_2: int ::
           
-          (((i_17 != i_17_1 && (0 <= i_17 && i_17 < 6)) && (0 <= i_17_1 && i_17_1 < 6)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_17) != aloc_1(Heap, arr2, i_17_1)
+          (((i_17_1 != i_17_2 && (0 <= i_17_1 && i_17_1 < 6)) && (0 <= i_17_2 && i_17_2 < 6)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_17_1) != aloc_1(Heap, arr2, i_17_2)
         );
         
         // -- Define Inverse Function
-          assume (forall i_17: int ::
-            { aloc#frame(EmptyFrame, arr2, i_17) } { Heap[aloc#frame(EmptyFrame, arr2, i_17), vint_1] }
-            (0 <= i_17 && i_17 < 6) && NoPerm < FullPerm ==> qpRange9(aloc_1(Heap, arr2, i_17)) && invRecv9(aloc_1(Heap, arr2, i_17)) == i_17
+          assume (forall i_17_1: int ::
+            { aloc#frame(EmptyFrame, arr2, i_17_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_17_1), vint_1] }
+            (0 <= i_17_1 && i_17_1 < 6) && NoPerm < FullPerm ==> qpRange9(aloc_1(Heap, arr2, i_17_1)) && invRecv9(aloc_1(Heap, arr2, i_17_1)) == i_17_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv9(o_4) }
-            ((0 <= invRecv9(o_4) && invRecv9(o_4) < 6) && NoPerm < FullPerm) && qpRange9(o_4) ==> aloc_1(Heap, arr2, invRecv9(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv9(o_9) }
+            ((0 <= invRecv9(o_9) && invRecv9(o_9) < 6) && NoPerm < FullPerm) && qpRange9(o_9) ==> aloc_1(Heap, arr2, invRecv9(o_9)) == o_9
           );
         
         // -- Assume set of fields is nonNull
-          assume (forall i_17: int ::
-            { aloc#frame(EmptyFrame, arr2, i_17) } { Heap[aloc#frame(EmptyFrame, arr2, i_17), vint_1] }
-            0 <= i_17 && i_17 < 6 ==> aloc_1(Heap, arr2, i_17) != null
+          assume (forall i_17_1: int ::
+            { aloc#frame(EmptyFrame, arr2, i_17_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_17_1), vint_1] }
+            0 <= i_17_1 && i_17_1 < 6 ==> aloc_1(Heap, arr2, i_17_1) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            (((0 <= invRecv9(o_4) && invRecv9(o_4) < 6) && NoPerm < FullPerm) && qpRange9(o_4) ==> (NoPerm < FullPerm ==> aloc_1(Heap, arr2, invRecv9(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + FullPerm) && (!(((0 <= invRecv9(o_4) && invRecv9(o_4) < 6) && NoPerm < FullPerm) && qpRange9(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            (((0 <= invRecv9(o_9) && invRecv9(o_9) < 6) && NoPerm < FullPerm) && qpRange9(o_9) ==> (NoPerm < FullPerm ==> aloc_1(Heap, arr2, invRecv9(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + FullPerm) && (!(((0 <= invRecv9(o_9) && invRecv9(o_9) < 6) && NoPerm < FullPerm) && qpRange9(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         havoc QPMask;
-        assert {:msg "  While statement might fail. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@41.16--41.107) [215412]"}
+        assert {:msg "  While statement might fail. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@41.16--41.107) [75796]"}
           (forall i_18_1: int, i_18_2: int ::
           
           (((i_18_1 != i_18_2 && (6 <= i_18_1 && i_18_1 < 12)) && (6 <= i_18_2 && i_18_2 < 12)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, i_18_1) != aloc_1(Heap, arr2, i_18_2)
@@ -955,12 +955,12 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             { aloc#frame(EmptyFrame, arr2, i_18_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_18_1), vint_1] }
             (6 <= i_18_1 && i_18_1 < 12) && NoPerm < 1 / 2 ==> qpRange10(aloc_1(Heap, arr2, i_18_1)) && invRecv10(aloc_1(Heap, arr2, i_18_1)) == i_18_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv10(o_4) }
-            ((6 <= invRecv10(o_4) && invRecv10(o_4) < 12) && NoPerm < 1 / 2) && qpRange10(o_4) ==> aloc_1(Heap, arr2, invRecv10(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv10(o_9) }
+            ((6 <= invRecv10(o_9) && invRecv10(o_9) < 12) && NoPerm < 1 / 2) && qpRange10(o_9) ==> aloc_1(Heap, arr2, invRecv10(o_9)) == o_9
           );
         // Check that permission expression is non-negative for all fields
-        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0652.vpr@41.16--41.107) [215413]"}
+        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0652.vpr@41.16--41.107) [75797]"}
           (forall i_18_1: int ::
           { aloc#frame(EmptyFrame, arr2, i_18_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_18_1), vint_1] }
           6 <= i_18_1 && i_18_1 < 12 ==> 1 / 2 >= NoPerm
@@ -973,54 +973,54 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            (((6 <= invRecv10(o_4) && invRecv10(o_4) < 12) && NoPerm < 1 / 2) && qpRange10(o_4) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, invRecv10(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + 1 / 2) && (!(((6 <= invRecv10(o_4) && invRecv10(o_4) < 12) && NoPerm < 1 / 2) && qpRange10(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            (((6 <= invRecv10(o_9) && invRecv10(o_9) < 12) && NoPerm < 1 / 2) && qpRange10(o_9) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, invRecv10(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + 1 / 2) && (!(((6 <= invRecv10(o_9) && invRecv10(o_9) < 12) && NoPerm < 1 / 2) && qpRange10(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         havoc QPMask;
-        assert {:msg "  While statement might fail. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@42.16--42.106) [215414]"}
-          (forall i_19: int, i_19_1: int ::
+        assert {:msg "  While statement might fail. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@42.16--42.106) [75798]"}
+          (forall i_19_1: int, i_19_2: int ::
           
-          (((i_19 != i_19_1 && (0 <= i_19 && i_19 < 6)) && (0 <= i_19_1 && i_19_1 < 6)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, i_19) != aloc_1(Heap, arr1, i_19_1)
+          (((i_19_1 != i_19_2 && (0 <= i_19_1 && i_19_1 < 6)) && (0 <= i_19_2 && i_19_2 < 6)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, i_19_1) != aloc_1(Heap, arr1, i_19_2)
         );
         
         // -- Define Inverse Function
-          assume (forall i_19: int ::
-            { aloc#frame(EmptyFrame, arr1, i_19) } { Heap[aloc#frame(EmptyFrame, arr1, i_19), vint_1] }
-            (0 <= i_19 && i_19 < 6) && NoPerm < 1 / 2 ==> qpRange11(aloc_1(Heap, arr1, i_19)) && invRecv11(aloc_1(Heap, arr1, i_19)) == i_19
+          assume (forall i_19_1: int ::
+            { aloc#frame(EmptyFrame, arr1, i_19_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_19_1), vint_1] }
+            (0 <= i_19_1 && i_19_1 < 6) && NoPerm < 1 / 2 ==> qpRange11(aloc_1(Heap, arr1, i_19_1)) && invRecv11(aloc_1(Heap, arr1, i_19_1)) == i_19_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv11(o_4) }
-            ((0 <= invRecv11(o_4) && invRecv11(o_4) < 6) && NoPerm < 1 / 2) && qpRange11(o_4) ==> aloc_1(Heap, arr1, invRecv11(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv11(o_9) }
+            ((0 <= invRecv11(o_9) && invRecv11(o_9) < 6) && NoPerm < 1 / 2) && qpRange11(o_9) ==> aloc_1(Heap, arr1, invRecv11(o_9)) == o_9
           );
         // Check that permission expression is non-negative for all fields
-        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0652.vpr@42.16--42.106) [215415]"}
-          (forall i_19: int ::
-          { aloc#frame(EmptyFrame, arr1, i_19) } { Heap[aloc#frame(EmptyFrame, arr1, i_19), vint_1] }
-          0 <= i_19 && i_19 < 6 ==> 1 / 2 >= NoPerm
+        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0652.vpr@42.16--42.106) [75799]"}
+          (forall i_19_1: int ::
+          { aloc#frame(EmptyFrame, arr1, i_19_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_19_1), vint_1] }
+          0 <= i_19_1 && i_19_1 < 6 ==> 1 / 2 >= NoPerm
         );
         
         // -- Assume set of fields is nonNull
-          assume (forall i_19: int ::
-            { aloc#frame(EmptyFrame, arr1, i_19) } { Heap[aloc#frame(EmptyFrame, arr1, i_19), vint_1] }
-            (0 <= i_19 && i_19 < 6) && 1 / 2 > NoPerm ==> aloc_1(Heap, arr1, i_19) != null
+          assume (forall i_19_1: int ::
+            { aloc#frame(EmptyFrame, arr1, i_19_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_19_1), vint_1] }
+            (0 <= i_19_1 && i_19_1 < 6) && 1 / 2 > NoPerm ==> aloc_1(Heap, arr1, i_19_1) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            (((0 <= invRecv11(o_4) && invRecv11(o_4) < 6) && NoPerm < 1 / 2) && qpRange11(o_4) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, invRecv11(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + 1 / 2) && (!(((0 <= invRecv11(o_4) && invRecv11(o_4) < 6) && NoPerm < 1 / 2) && qpRange11(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            (((0 <= invRecv11(o_9) && invRecv11(o_9) < 6) && NoPerm < 1 / 2) && qpRange11(o_9) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, invRecv11(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + 1 / 2) && (!(((0 <= invRecv11(o_9) && invRecv11(o_9) < 6) && NoPerm < 1 / 2) && qpRange11(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -1031,46 +1031,46 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         // -- Translate loop body
           
           // -- Translating statement: assert aloc(arr2, 6).int == aloc(arr2, 6).int -- 0652.vpr@44.5--44.50
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of aloc(arr2, 6).int == aloc(arr2, 6).int
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                 ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-                assert {:msg "  Precondition of function aloc might not hold. Assertion 6 < alen(arr2) might not hold. (0652.vpr@44.12--44.25) [215416]"}
+                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                assert {:msg "  Precondition of function aloc might not hold. Assertion 6 < alen(arr2) might not hold. (0652.vpr@44.12--44.25) [75800]"}
                   6 < (alen(arr2): int);
                 // Stop execution
                 assume false;
               }
-              assert {:msg "  Assert might fail. There might be insufficient permission to access aloc(arr2, 6).int (0652.vpr@44.12--44.50) [215417]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access aloc(arr2, 6).int (0652.vpr@44.12--44.50) [75801]"}
                 HasDirectPerm(ExhaleWellDef0Mask, aloc_1(Heap, arr2, 6), vint_1);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                 ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-                assert {:msg "  Precondition of function aloc might not hold. Assertion 6 < alen(arr2) might not hold. (0652.vpr@44.33--44.46) [215418]"}
+                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                assert {:msg "  Precondition of function aloc might not hold. Assertion 6 < alen(arr2) might not hold. (0652.vpr@44.33--44.46) [75802]"}
                   6 < (alen(arr2): int);
                 // Stop execution
                 assume false;
               }
-              assert {:msg "  Assert might fail. There might be insufficient permission to access aloc(arr2, 6).int (0652.vpr@44.12--44.50) [215419]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access aloc(arr2, 6).int (0652.vpr@44.12--44.50) [75803]"}
                 HasDirectPerm(ExhaleWellDef0Mask, aloc_1(Heap, arr2, 6), vint_1);
-            assert {:msg "  Assert might fail. Assertion aloc(arr2, 6).int == aloc(arr2, 6).int might not hold. (0652.vpr@44.12--44.50) [215420]"}
+            assert {:msg "  Assert might fail. Assertion aloc(arr2, 6).int == aloc(arr2, 6).int might not hold. (0652.vpr@44.12--44.50) [75804]"}
               Heap[aloc_1(Heap, arr2, 6), vint_1] == Heap[aloc_1(Heap, arr2, 6), vint_1];
             assume state(Heap, Mask);
           
           // -- Translating statement: assert 3 + 8 == 38 -- 0652.vpr@46.5--46.23
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Assert might fail. Assertion 3 + 8 == 38 might not hold. (0652.vpr@46.12--46.23) [215421]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Assert might fail. Assertion 3 + 8 == 38 might not hold. (0652.vpr@46.12--46.23) [75805]"}
               false;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant x == x might not be preserved. Assertion x == x might not hold. (0652.vpr@39.15--39.21) [215422]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant x == x might not be preserved. Assertion x == x might not hold. (0652.vpr@39.15--39.21) [75806]"}
           x == x;
         havoc QPMask;
         
@@ -1078,104 +1078,104 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
           
         
         // -- check if receiver aloc(arr2, i) is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 0 <= i && i < 6 ==> acc(aloc(arr2, i).int, write)) might not be preserved. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@40.16--40.106) [215423]"}
-            (forall i_20_1: int, i_20_2: int ::
-            { neverTriggered12(i_20_1), neverTriggered12(i_20_2) }
-            (((i_20_1 != i_20_2 && (0 <= i_20_1 && i_20_1 < 6)) && (0 <= i_20_2 && i_20_2 < 6)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_20_1) != aloc_1(Heap, arr2, i_20_2)
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 0 <= i && i < 6 ==> acc(aloc(arr2, i).int, write)) might not be preserved. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@40.16--40.106) [75807]"}
+            (forall i_20_2: int, i_20_3: int ::
+            { neverTriggered12(i_20_2), neverTriggered12(i_20_3) }
+            (((i_20_2 != i_20_3 && (0 <= i_20_2 && i_20_2 < 6)) && (0 <= i_20_3 && i_20_3 < 6)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_20_2) != aloc_1(Heap, arr2, i_20_3)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 0 <= i && i < 6 ==> acc(aloc(arr2, i).int, write)) might not be preserved. There might be insufficient permission to access aloc(arr2, i).int (0652.vpr@40.16--40.106) [215424]"}
-            (forall i_20_1: int ::
-            { aloc#frame(EmptyFrame, arr2, i_20_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_20_1), vint_1] }
-            0 <= i_20_1 && i_20_1 < 6 ==> Mask[aloc_1(Heap, arr2, i_20_1), vint_1] >= FullPerm
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 0 <= i && i < 6 ==> acc(aloc(arr2, i).int, write)) might not be preserved. There might be insufficient permission to access aloc(arr2, i).int (0652.vpr@40.16--40.106) [75808]"}
+            (forall i_20_2: int ::
+            { aloc#frame(EmptyFrame, arr2, i_20_2) } { Heap[aloc#frame(EmptyFrame, arr2, i_20_2), vint_1] }
+            0 <= i_20_2 && i_20_2 < 6 ==> Mask[aloc_1(Heap, arr2, i_20_2), vint_1] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver aloc(arr2, i)
-          assume (forall i_20_1: int ::
-            { aloc#frame(EmptyFrame, arr2, i_20_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_20_1), vint_1] }
-            (0 <= i_20_1 && i_20_1 < 6) && NoPerm < FullPerm ==> qpRange12(aloc_1(Heap, arr2, i_20_1)) && invRecv12(aloc_1(Heap, arr2, i_20_1)) == i_20_1
+          assume (forall i_20_2: int ::
+            { aloc#frame(EmptyFrame, arr2, i_20_2) } { Heap[aloc#frame(EmptyFrame, arr2, i_20_2), vint_1] }
+            (0 <= i_20_2 && i_20_2 < 6) && NoPerm < FullPerm ==> qpRange12(aloc_1(Heap, arr2, i_20_2)) && invRecv12(aloc_1(Heap, arr2, i_20_2)) == i_20_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv12(o_4) }
-            (0 <= invRecv12(o_4) && invRecv12(o_4) < 6) && (NoPerm < FullPerm && qpRange12(o_4)) ==> aloc_1(Heap, arr2, invRecv12(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv12(o_9) }
+            (0 <= invRecv12(o_9) && invRecv12(o_9) < 6) && (NoPerm < FullPerm && qpRange12(o_9)) ==> aloc_1(Heap, arr2, invRecv12(o_9)) == o_9
           );
         
         // -- assume permission updates for field int
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            ((0 <= invRecv12(o_4) && invRecv12(o_4) < 6) && (NoPerm < FullPerm && qpRange12(o_4)) ==> aloc_1(Heap, arr2, invRecv12(o_4)) == o_4 && QPMask[o_4, vint_1] == Mask[o_4, vint_1] - FullPerm) && (!((0 <= invRecv12(o_4) && invRecv12(o_4) < 6) && (NoPerm < FullPerm && qpRange12(o_4))) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            ((0 <= invRecv12(o_9) && invRecv12(o_9) < 6) && (NoPerm < FullPerm && qpRange12(o_9)) ==> aloc_1(Heap, arr2, invRecv12(o_9)) == o_9 && QPMask[o_9, vint_1] == Mask[o_9, vint_1] - FullPerm) && (!((0 <= invRecv12(o_9) && invRecv12(o_9) < 6) && (NoPerm < FullPerm && qpRange12(o_9))) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (0652.vpr@41.16--41.107) [215425]"}
-            (forall i_21: int ::
-            { aloc#frame(EmptyFrame, arr2, i_21) } { Heap[aloc#frame(EmptyFrame, arr2, i_21), vint_1] }
-            (6 <= i_21 && i_21 < 12) && dummyFunction(Heap[aloc_1(Heap, arr2, i_21), vint_1]) ==> 1 / 2 >= NoPerm
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (0652.vpr@41.16--41.107) [75809]"}
+            (forall i_21_1: int ::
+            { aloc#frame(EmptyFrame, arr2, i_21_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_21_1), vint_1] }
+            (6 <= i_21_1 && i_21_1 < 12) && dummyFunction(Heap[aloc_1(Heap, arr2, i_21_1), vint_1]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver aloc(arr2, i) is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not be preserved. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@41.16--41.107) [215426]"}
-            (forall i_21: int, i_21_1: int ::
-            { neverTriggered13(i_21), neverTriggered13(i_21_1) }
-            (((i_21 != i_21_1 && (6 <= i_21 && i_21 < 12)) && (6 <= i_21_1 && i_21_1 < 12)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, i_21) != aloc_1(Heap, arr2, i_21_1)
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not be preserved. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@41.16--41.107) [75810]"}
+            (forall i_21_1: int, i_21_2: int ::
+            { neverTriggered13(i_21_1), neverTriggered13(i_21_2) }
+            (((i_21_1 != i_21_2 && (6 <= i_21_1 && i_21_1 < 12)) && (6 <= i_21_2 && i_21_2 < 12)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, i_21_1) != aloc_1(Heap, arr2, i_21_2)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not be preserved. There might be insufficient permission to access aloc(arr2, i).int (0652.vpr@41.16--41.107) [215427]"}
-            (forall i_21: int ::
-            { aloc#frame(EmptyFrame, arr2, i_21) } { Heap[aloc#frame(EmptyFrame, arr2, i_21), vint_1] }
-            6 <= i_21 && i_21 < 12 ==> Mask[aloc_1(Heap, arr2, i_21), vint_1] >= 1 / 2
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr2, i).int } 6 <= i && i < 12 ==> acc(aloc(arr2, i).int, 1 / 2)) might not be preserved. There might be insufficient permission to access aloc(arr2, i).int (0652.vpr@41.16--41.107) [75811]"}
+            (forall i_21_1: int ::
+            { aloc#frame(EmptyFrame, arr2, i_21_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_21_1), vint_1] }
+            6 <= i_21_1 && i_21_1 < 12 ==> Mask[aloc_1(Heap, arr2, i_21_1), vint_1] >= 1 / 2
           );
         
         // -- assumptions for inverse of receiver aloc(arr2, i)
-          assume (forall i_21: int ::
-            { aloc#frame(EmptyFrame, arr2, i_21) } { Heap[aloc#frame(EmptyFrame, arr2, i_21), vint_1] }
-            (6 <= i_21 && i_21 < 12) && NoPerm < 1 / 2 ==> qpRange13(aloc_1(Heap, arr2, i_21)) && invRecv13(aloc_1(Heap, arr2, i_21)) == i_21
+          assume (forall i_21_1: int ::
+            { aloc#frame(EmptyFrame, arr2, i_21_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_21_1), vint_1] }
+            (6 <= i_21_1 && i_21_1 < 12) && NoPerm < 1 / 2 ==> qpRange13(aloc_1(Heap, arr2, i_21_1)) && invRecv13(aloc_1(Heap, arr2, i_21_1)) == i_21_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv13(o_4) }
-            (6 <= invRecv13(o_4) && invRecv13(o_4) < 12) && (NoPerm < 1 / 2 && qpRange13(o_4)) ==> aloc_1(Heap, arr2, invRecv13(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv13(o_9) }
+            (6 <= invRecv13(o_9) && invRecv13(o_9) < 12) && (NoPerm < 1 / 2 && qpRange13(o_9)) ==> aloc_1(Heap, arr2, invRecv13(o_9)) == o_9
           );
         
         // -- assume permission updates for field int
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            ((6 <= invRecv13(o_4) && invRecv13(o_4) < 12) && (NoPerm < 1 / 2 && qpRange13(o_4)) ==> aloc_1(Heap, arr2, invRecv13(o_4)) == o_4 && QPMask[o_4, vint_1] == Mask[o_4, vint_1] - 1 / 2) && (!((6 <= invRecv13(o_4) && invRecv13(o_4) < 12) && (NoPerm < 1 / 2 && qpRange13(o_4))) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            ((6 <= invRecv13(o_9) && invRecv13(o_9) < 12) && (NoPerm < 1 / 2 && qpRange13(o_9)) ==> aloc_1(Heap, arr2, invRecv13(o_9)) == o_9 && QPMask[o_9, vint_1] == Mask[o_9, vint_1] - 1 / 2) && (!((6 <= invRecv13(o_9) && invRecv13(o_9) < 12) && (NoPerm < 1 / 2 && qpRange13(o_9))) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (0652.vpr@42.16--42.106) [215428]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (0652.vpr@42.16--42.106) [75812]"}
             (forall i_22_1: int ::
             { aloc#frame(EmptyFrame, arr1, i_22_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_22_1), vint_1] }
             (0 <= i_22_1 && i_22_1 < 6) && dummyFunction(Heap[aloc_1(Heap, arr1, i_22_1), vint_1]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver aloc(arr1, i) is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not be preserved. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@42.16--42.106) [215429]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not be preserved. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@42.16--42.106) [75813]"}
             (forall i_22_1: int, i_22_2: int ::
             { neverTriggered14(i_22_1), neverTriggered14(i_22_2) }
             (((i_22_1 != i_22_2 && (0 <= i_22_1 && i_22_1 < 6)) && (0 <= i_22_2 && i_22_2 < 6)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, i_22_1) != aloc_1(Heap, arr1, i_22_2)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not be preserved. There might be insufficient permission to access aloc(arr1, i).int (0652.vpr@42.16--42.106) [215430]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { aloc(arr1, i).int } 0 <= i && i < 6 ==> acc(aloc(arr1, i).int, 1 / 2)) might not be preserved. There might be insufficient permission to access aloc(arr1, i).int (0652.vpr@42.16--42.106) [75814]"}
             (forall i_22_1: int ::
             { aloc#frame(EmptyFrame, arr1, i_22_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_22_1), vint_1] }
             0 <= i_22_1 && i_22_1 < 6 ==> Mask[aloc_1(Heap, arr1, i_22_1), vint_1] >= 1 / 2
@@ -1186,21 +1186,21 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             { aloc#frame(EmptyFrame, arr1, i_22_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_22_1), vint_1] }
             (0 <= i_22_1 && i_22_1 < 6) && NoPerm < 1 / 2 ==> qpRange14(aloc_1(Heap, arr1, i_22_1)) && invRecv14(aloc_1(Heap, arr1, i_22_1)) == i_22_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv14(o_4) }
-            (0 <= invRecv14(o_4) && invRecv14(o_4) < 6) && (NoPerm < 1 / 2 && qpRange14(o_4)) ==> aloc_1(Heap, arr1, invRecv14(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv14(o_9) }
+            (0 <= invRecv14(o_9) && invRecv14(o_9) < 6) && (NoPerm < 1 / 2 && qpRange14(o_9)) ==> aloc_1(Heap, arr1, invRecv14(o_9)) == o_9
           );
         
         // -- assume permission updates for field int
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, vint_1] }
-            ((0 <= invRecv14(o_4) && invRecv14(o_4) < 6) && (NoPerm < 1 / 2 && qpRange14(o_4)) ==> aloc_1(Heap, arr1, invRecv14(o_4)) == o_4 && QPMask[o_4, vint_1] == Mask[o_4, vint_1] - 1 / 2) && (!((0 <= invRecv14(o_4) && invRecv14(o_4) < 6) && (NoPerm < 1 / 2 && qpRange14(o_4))) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, vint_1] }
+            ((0 <= invRecv14(o_9) && invRecv14(o_9) < 6) && (NoPerm < 1 / 2 && qpRange14(o_9)) ==> aloc_1(Heap, arr1, invRecv14(o_9)) == o_9 && QPMask[o_9, vint_1] == Mask[o_9, vint_1] - 1 / 2) && (!((0 <= invRecv14(o_9) && invRecv14(o_9) < 6) && (NoPerm < 1 / 2 && qpRange14(o_9))) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         // Finish exhale
@@ -1217,42 +1217,42 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
       assume x == x;
       assume state(Heap, Mask);
       havoc QPMask;
-      assert {:msg "  While statement might fail. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@40.16--40.106) [215431]"}
-        (forall i_23: int, i_23_1: int ::
+      assert {:msg "  While statement might fail. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@40.16--40.106) [75815]"}
+        (forall i_23_1: int, i_23_2: int ::
         
-        (((i_23 != i_23_1 && (0 <= i_23 && i_23 < 6)) && (0 <= i_23_1 && i_23_1 < 6)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_23) != aloc_1(Heap, arr2, i_23_1)
+        (((i_23_1 != i_23_2 && (0 <= i_23_1 && i_23_1 < 6)) && (0 <= i_23_2 && i_23_2 < 6)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, arr2, i_23_1) != aloc_1(Heap, arr2, i_23_2)
       );
       
       // -- Define Inverse Function
-        assume (forall i_23: int ::
-          { aloc#frame(EmptyFrame, arr2, i_23) } { Heap[aloc#frame(EmptyFrame, arr2, i_23), vint_1] }
-          (0 <= i_23 && i_23 < 6) && NoPerm < FullPerm ==> qpRange15(aloc_1(Heap, arr2, i_23)) && invRecv15(aloc_1(Heap, arr2, i_23)) == i_23
+        assume (forall i_23_1: int ::
+          { aloc#frame(EmptyFrame, arr2, i_23_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_23_1), vint_1] }
+          (0 <= i_23_1 && i_23_1 < 6) && NoPerm < FullPerm ==> qpRange15(aloc_1(Heap, arr2, i_23_1)) && invRecv15(aloc_1(Heap, arr2, i_23_1)) == i_23_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv15(o_4) }
-          ((0 <= invRecv15(o_4) && invRecv15(o_4) < 6) && NoPerm < FullPerm) && qpRange15(o_4) ==> aloc_1(Heap, arr2, invRecv15(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv15(o_9) }
+          ((0 <= invRecv15(o_9) && invRecv15(o_9) < 6) && NoPerm < FullPerm) && qpRange15(o_9) ==> aloc_1(Heap, arr2, invRecv15(o_9)) == o_9
         );
       
       // -- Assume set of fields is nonNull
-        assume (forall i_23: int ::
-          { aloc#frame(EmptyFrame, arr2, i_23) } { Heap[aloc#frame(EmptyFrame, arr2, i_23), vint_1] }
-          0 <= i_23 && i_23 < 6 ==> aloc_1(Heap, arr2, i_23) != null
+        assume (forall i_23_1: int ::
+          { aloc#frame(EmptyFrame, arr2, i_23_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_23_1), vint_1] }
+          0 <= i_23_1 && i_23_1 < 6 ==> aloc_1(Heap, arr2, i_23_1) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, vint_1] }
-          (((0 <= invRecv15(o_4) && invRecv15(o_4) < 6) && NoPerm < FullPerm) && qpRange15(o_4) ==> (NoPerm < FullPerm ==> aloc_1(Heap, arr2, invRecv15(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + FullPerm) && (!(((0 <= invRecv15(o_4) && invRecv15(o_4) < 6) && NoPerm < FullPerm) && qpRange15(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, vint_1] }
+          (((0 <= invRecv15(o_9) && invRecv15(o_9) < 6) && NoPerm < FullPerm) && qpRange15(o_9) ==> (NoPerm < FullPerm ==> aloc_1(Heap, arr2, invRecv15(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + FullPerm) && (!(((0 <= invRecv15(o_9) && invRecv15(o_9) < 6) && NoPerm < FullPerm) && qpRange15(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
       assume state(Heap, Mask);
       havoc QPMask;
-      assert {:msg "  While statement might fail. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@41.16--41.107) [215432]"}
+      assert {:msg "  While statement might fail. Quantified resource aloc(arr2, i).int might not be injective. (0652.vpr@41.16--41.107) [75816]"}
         (forall i_24_1: int, i_24_2: int ::
         
         (((i_24_1 != i_24_2 && (6 <= i_24_1 && i_24_1 < 12)) && (6 <= i_24_2 && i_24_2 < 12)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, i_24_1) != aloc_1(Heap, arr2, i_24_2)
@@ -1263,12 +1263,12 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
           { aloc#frame(EmptyFrame, arr2, i_24_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_24_1), vint_1] }
           (6 <= i_24_1 && i_24_1 < 12) && NoPerm < 1 / 2 ==> qpRange16(aloc_1(Heap, arr2, i_24_1)) && invRecv16(aloc_1(Heap, arr2, i_24_1)) == i_24_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv16(o_4) }
-          ((6 <= invRecv16(o_4) && invRecv16(o_4) < 12) && NoPerm < 1 / 2) && qpRange16(o_4) ==> aloc_1(Heap, arr2, invRecv16(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv16(o_9) }
+          ((6 <= invRecv16(o_9) && invRecv16(o_9) < 12) && NoPerm < 1 / 2) && qpRange16(o_9) ==> aloc_1(Heap, arr2, invRecv16(o_9)) == o_9
         );
       // Check that permission expression is non-negative for all fields
-      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0652.vpr@41.16--41.107) [215433]"}
+      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0652.vpr@41.16--41.107) [75817]"}
         (forall i_24_1: int ::
         { aloc#frame(EmptyFrame, arr2, i_24_1) } { Heap[aloc#frame(EmptyFrame, arr2, i_24_1), vint_1] }
         6 <= i_24_1 && i_24_1 < 12 ==> 1 / 2 >= NoPerm
@@ -1281,54 +1281,54 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, vint_1] }
-          (((6 <= invRecv16(o_4) && invRecv16(o_4) < 12) && NoPerm < 1 / 2) && qpRange16(o_4) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, invRecv16(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + 1 / 2) && (!(((6 <= invRecv16(o_4) && invRecv16(o_4) < 12) && NoPerm < 1 / 2) && qpRange16(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, vint_1] }
+          (((6 <= invRecv16(o_9) && invRecv16(o_9) < 12) && NoPerm < 1 / 2) && qpRange16(o_9) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr2, invRecv16(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + 1 / 2) && (!(((6 <= invRecv16(o_9) && invRecv16(o_9) < 12) && NoPerm < 1 / 2) && qpRange16(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
       assume state(Heap, Mask);
       havoc QPMask;
-      assert {:msg "  While statement might fail. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@42.16--42.106) [215434]"}
-        (forall i_25: int, i_25_2: int ::
+      assert {:msg "  While statement might fail. Quantified resource aloc(arr1, i).int might not be injective. (0652.vpr@42.16--42.106) [75818]"}
+        (forall i_25_1: int, i_25_2: int ::
         
-        (((i_25 != i_25_2 && (0 <= i_25 && i_25 < 6)) && (0 <= i_25_2 && i_25_2 < 6)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, i_25) != aloc_1(Heap, arr1, i_25_2)
+        (((i_25_1 != i_25_2 && (0 <= i_25_1 && i_25_1 < 6)) && (0 <= i_25_2 && i_25_2 < 6)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, i_25_1) != aloc_1(Heap, arr1, i_25_2)
       );
       
       // -- Define Inverse Function
-        assume (forall i_25: int ::
-          { aloc#frame(EmptyFrame, arr1, i_25) } { Heap[aloc#frame(EmptyFrame, arr1, i_25), vint_1] }
-          (0 <= i_25 && i_25 < 6) && NoPerm < 1 / 2 ==> qpRange17(aloc_1(Heap, arr1, i_25)) && invRecv17(aloc_1(Heap, arr1, i_25)) == i_25
+        assume (forall i_25_1: int ::
+          { aloc#frame(EmptyFrame, arr1, i_25_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_25_1), vint_1] }
+          (0 <= i_25_1 && i_25_1 < 6) && NoPerm < 1 / 2 ==> qpRange17(aloc_1(Heap, arr1, i_25_1)) && invRecv17(aloc_1(Heap, arr1, i_25_1)) == i_25_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv17(o_4) }
-          ((0 <= invRecv17(o_4) && invRecv17(o_4) < 6) && NoPerm < 1 / 2) && qpRange17(o_4) ==> aloc_1(Heap, arr1, invRecv17(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv17(o_9) }
+          ((0 <= invRecv17(o_9) && invRecv17(o_9) < 6) && NoPerm < 1 / 2) && qpRange17(o_9) ==> aloc_1(Heap, arr1, invRecv17(o_9)) == o_9
         );
       // Check that permission expression is non-negative for all fields
-      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0652.vpr@42.16--42.106) [215435]"}
-        (forall i_25: int ::
-        { aloc#frame(EmptyFrame, arr1, i_25) } { Heap[aloc#frame(EmptyFrame, arr1, i_25), vint_1] }
-        0 <= i_25 && i_25 < 6 ==> 1 / 2 >= NoPerm
+      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0652.vpr@42.16--42.106) [75819]"}
+        (forall i_25_1: int ::
+        { aloc#frame(EmptyFrame, arr1, i_25_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_25_1), vint_1] }
+        0 <= i_25_1 && i_25_1 < 6 ==> 1 / 2 >= NoPerm
       );
       
       // -- Assume set of fields is nonNull
-        assume (forall i_25: int ::
-          { aloc#frame(EmptyFrame, arr1, i_25) } { Heap[aloc#frame(EmptyFrame, arr1, i_25), vint_1] }
-          (0 <= i_25 && i_25 < 6) && 1 / 2 > NoPerm ==> aloc_1(Heap, arr1, i_25) != null
+        assume (forall i_25_1: int ::
+          { aloc#frame(EmptyFrame, arr1, i_25_1) } { Heap[aloc#frame(EmptyFrame, arr1, i_25_1), vint_1] }
+          (0 <= i_25_1 && i_25_1 < 6) && 1 / 2 > NoPerm ==> aloc_1(Heap, arr1, i_25_1) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, vint_1] }
-          (((0 <= invRecv17(o_4) && invRecv17(o_4) < 6) && NoPerm < 1 / 2) && qpRange17(o_4) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, invRecv17(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + 1 / 2) && (!(((0 <= invRecv17(o_4) && invRecv17(o_4) < 6) && NoPerm < 1 / 2) && qpRange17(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, vint_1] }
+          (((0 <= invRecv17(o_9) && invRecv17(o_9) < 6) && NoPerm < 1 / 2) && qpRange17(o_9) ==> (NoPerm < 1 / 2 ==> aloc_1(Heap, arr1, invRecv17(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + 1 / 2) && (!(((0 <= invRecv17(o_9) && invRecv17(o_9) < 6) && NoPerm < 1 / 2) && qpRange17(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);

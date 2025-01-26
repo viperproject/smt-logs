@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:27
+// Date:         2025-01-26 21:43:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/multi_initialization.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/multi_initialization-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,12 +177,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique n_10: Field NormalField Ref;
-axiom !IsPredicateField(n_10);
-axiom !IsWandField(n_10);
-const unique m_22: Field NormalField Ref;
-axiom !IsPredicateField(m_22);
-axiom !IsWandField(m_22);
+const unique n_85: Field NormalField Ref;
+axiom !IsPredicateField(n_85);
+axiom !IsWandField(n_85);
+const unique m_20: Field NormalField Ref;
+axiom !IsPredicateField(m_20);
+axiom !IsWandField(m_20);
 
 // ==================================================
 // Translation of predicate P
@@ -233,7 +233,7 @@ procedure P#definedness(x: Ref) returns ()
       assume Heap[x, $allocated];
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, n_10:=Mask[x, n_10] + perm];
+    Mask := Mask[x, n_85:=Mask[x, n_85] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
 }
@@ -271,7 +271,7 @@ procedure get_refs() returns (x: Ref, y: Ref)
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
     assume x != null;
-    PostMask := PostMask[x, n_10:=PostMask[x, n_10] + perm];
+    PostMask := PostMask[x, n_85:=PostMask[x, n_85] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -288,10 +288,10 @@ procedure get_refs() returns (x: Ref, y: Ref)
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of get_refs might not hold. There might be insufficient permission to access x.n (multi_initialization.vpr@7.13--7.21) [185534]"}
-        perm <= Mask[x, n_10];
+      assert {:msg "  Postcondition of get_refs might not hold. There might be insufficient permission to access x.n (multi_initialization.vpr@7.13--7.21) [100747]"}
+        perm <= Mask[x, n_85];
     }
-    Mask := Mask[x, n_10:=Mask[x, n_10] - perm];
+    Mask := Mask[x, n_85:=Mask[x, n_85] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -302,7 +302,7 @@ procedure get_refs() returns (x: Ref, y: Ref)
 // Translation of method test1
 // ==================================================
 
-procedure test1() returns ()
+procedure test1_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -349,7 +349,7 @@ procedure test1() returns ()
     // -- Inhaling postcondition
       perm := FullPerm;
       assume c != null;
-      Mask := Mask[c, n_10:=Mask[c, n_10] + perm];
+      Mask := Mask[c, n_85:=Mask[c, n_85] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume Heap[c, $allocated];
@@ -361,7 +361,7 @@ procedure test1() returns ()
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     e_1 := freshObj;
-    Mask := Mask[e_1, n_10:=Mask[e_1, n_10] + FullPerm];
+    Mask := Mask[e_1, n_85:=Mask[e_1, n_85] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Assumptions about local variables
@@ -382,7 +382,7 @@ procedure test1() returns ()
     // -- Inhaling postcondition
       perm := FullPerm;
       assume _target0 != null;
-      Mask := Mask[_target0, n_10:=Mask[_target0, n_10] + perm];
+      Mask := Mask[_target0, n_85:=Mask[_target0, n_85] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume Heap[_target0, $allocated];
@@ -390,9 +390,9 @@ procedure test1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: _receiver0.n := _target0 -- multi_initialization.vpr@14.3--14.6
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@14.3--14.6) [185535]"}
-      FullPerm == Mask[_receiver0, n_10];
-    Heap := Heap[_receiver0, n_10:=_target0];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@14.3--14.6) [100748]"}
+      FullPerm == Mask[_receiver0, n_85];
+    Heap := Heap[_receiver0, n_85:=_target0];
     assume state(Heap, Mask);
   
   // -- Assumptions about local variables
@@ -402,9 +402,9 @@ procedure test1() returns ()
   // -- Translating statement: _receiver0 := c.n -- multi_initialization.vpr@15.3--15.6
     
     // -- Check definedness of c.n
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access c.n (multi_initialization.vpr@15.3--15.6) [185536]"}
-        HasDirectPerm(Mask, c, n_10);
-    _receiver0_1 := Heap[c, n_10];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access c.n (multi_initialization.vpr@15.3--15.6) [100749]"}
+        HasDirectPerm(Mask, c, n_85);
+    _receiver0_1 := Heap[c, n_85];
     assume state(Heap, Mask);
   
   // -- Translating statement: _target0 := new(n) -- multi_initialization.vpr@15.3--15.18
@@ -412,13 +412,13 @@ procedure test1() returns ()
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     _target0_1 := freshObj;
-    Mask := Mask[_target0_1, n_10:=Mask[_target0_1, n_10] + FullPerm];
+    Mask := Mask[_target0_1, n_85:=Mask[_target0_1, n_85] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: _receiver0.n := _target0 -- multi_initialization.vpr@15.3--15.8
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@15.3--15.8) [185537]"}
-      FullPerm == Mask[_receiver0_1, n_10];
-    Heap := Heap[_receiver0_1, n_10:=_target0_1];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@15.3--15.8) [100750]"}
+      FullPerm == Mask[_receiver0_1, n_85];
+    Heap := Heap[_receiver0_1, n_85:=_target0_1];
     assume state(Heap, Mask);
 }
 
@@ -426,7 +426,7 @@ procedure test1() returns ()
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref) returns (a_2: Ref, b_24: Ref)
+procedure foo_3(x: Ref) returns (a_2: Ref, b_24: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -463,7 +463,7 @@ procedure foo_1(x: Ref) returns (a_2: Ref, b_24: Ref)
 // Translation of method test2
 // ==================================================
 
-procedure test2(x: Ref) returns ()
+procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -498,66 +498,66 @@ procedure test2(x: Ref) returns ()
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
-      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, n_10]);
+      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, n_85]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access P(x) (multi_initialization.vpr@22.12--22.84) [185538]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access P(x) (multi_initialization.vpr@22.12--22.84) [100751]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
       perm := FullPerm;
       assume x != null;
-      UnfoldingMask := UnfoldingMask[x, n_10:=UnfoldingMask[x, n_10] + perm];
+      UnfoldingMask := UnfoldingMask[x, n_85:=UnfoldingMask[x, n_85] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.n (multi_initialization.vpr@22.12--22.84) [185539]"}
-        HasDirectPerm(UnfoldingMask, x, n_10);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.n (multi_initialization.vpr@22.12--22.84) [100752]"}
+        HasDirectPerm(UnfoldingMask, x, n_85);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_10:=true]];
+        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_85:=true]];
         assume state(Heap, Mask);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_10:=true]];
+        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_85:=true]];
         assume state(Heap, Mask);
     perm := FullPerm;
-    assume Heap[x, n_10] != null;
-    Mask := Mask[Heap[x, n_10], n_10:=Mask[Heap[x, n_10], n_10] + perm];
+    assume Heap[x, n_85] != null;
+    Mask := Mask[Heap[x, n_85], n_85:=Mask[Heap[x, n_85], n_85] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc((unfolding acc(P(x), write) in x.n).m, write)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
-      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, n_10]);
+      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, n_85]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access P(x) (multi_initialization.vpr@22.12--22.84) [185540]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access P(x) (multi_initialization.vpr@22.12--22.84) [100753]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
       perm := FullPerm;
       assume x != null;
-      UnfoldingMask := UnfoldingMask[x, n_10:=UnfoldingMask[x, n_10] + perm];
+      UnfoldingMask := UnfoldingMask[x, n_85:=UnfoldingMask[x, n_85] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.n (multi_initialization.vpr@22.12--22.84) [185541]"}
-        HasDirectPerm(UnfoldingMask, x, n_10);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.n (multi_initialization.vpr@22.12--22.84) [100754]"}
+        HasDirectPerm(UnfoldingMask, x, n_85);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_10:=true]];
+        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_85:=true]];
         assume state(Heap, Mask);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_10:=true]];
+        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_85:=true]];
         assume state(Heap, Mask);
     perm := FullPerm;
-    assume Heap[x, n_10] != null;
-    Mask := Mask[Heap[x, n_10], m_22:=Mask[Heap[x, n_10], m_22] + perm];
+    assume Heap[x, n_85] != null;
+    Mask := Mask[Heap[x, n_85], m_20:=Mask[Heap[x, n_85], m_20] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -579,27 +579,27 @@ procedure test2(x: Ref) returns ()
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
-      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, n_10]);
+      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, n_85]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access P(x) (multi_initialization.vpr@24.4--24.25) [185542]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access P(x) (multi_initialization.vpr@24.4--24.25) [100755]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
       perm := FullPerm;
       assume x != null;
-      UnfoldingMask := UnfoldingMask[x, n_10:=UnfoldingMask[x, n_10] + perm];
+      UnfoldingMask := UnfoldingMask[x, n_85:=UnfoldingMask[x, n_85] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.n (multi_initialization.vpr@24.4--24.25) [185543]"}
-        HasDirectPerm(UnfoldingMask, x, n_10);
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.n (multi_initialization.vpr@24.4--24.25) [100756]"}
+        HasDirectPerm(UnfoldingMask, x, n_85);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_10:=true]];
+        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_85:=true]];
         assume state(Heap, Mask);
-    _receiver0 := Heap[x, n_10];
+    _receiver0 := Heap[x, n_85];
     assume state(Heap, Mask);
   
   // -- Translating statement: _receiver1 := (unfolding acc(P(x), write) in x.n) -- multi_initialization.vpr@24.31--24.52
@@ -608,27 +608,27 @@ procedure test2(x: Ref) returns ()
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
-      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, n_10]);
+      assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, n_85]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access P(x) (multi_initialization.vpr@24.31--24.52) [185544]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access P(x) (multi_initialization.vpr@24.31--24.52) [100757]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
       perm := FullPerm;
       assume x != null;
-      UnfoldingMask := UnfoldingMask[x, n_10:=UnfoldingMask[x, n_10] + perm];
+      UnfoldingMask := UnfoldingMask[x, n_85:=UnfoldingMask[x, n_85] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.n (multi_initialization.vpr@24.31--24.52) [185545]"}
-        HasDirectPerm(UnfoldingMask, x, n_10);
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.n (multi_initialization.vpr@24.31--24.52) [100758]"}
+        HasDirectPerm(UnfoldingMask, x, n_85);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_10:=true]];
+        Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, n_85:=true]];
         assume state(Heap, Mask);
-    _receiver1 := Heap[x, n_10];
+    _receiver1 := Heap[x, n_85];
     assume state(Heap, Mask);
   
   // -- Translating statement: _target0, _target1 := foo(x) -- multi_initialization.vpr@24.3--24.65
@@ -640,7 +640,7 @@ procedure test2(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method foo might not hold. There might be insufficient permission to access P(x) (multi_initialization.vpr@24.3--24.65) [185546]"}
+        assert {:msg "  The precondition of method foo might not hold. There might be insufficient permission to access P(x) (multi_initialization.vpr@24.3--24.65) [100759]"}
           perm <= Mask[null, P(x)];
       }
       Mask := Mask[null, P(x):=Mask[null, P(x)] - perm];
@@ -659,15 +659,15 @@ procedure test2(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: _receiver0.n := _target0 -- multi_initialization.vpr@24.4--24.28
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@24.4--24.28) [185547]"}
-      FullPerm == Mask[_receiver0, n_10];
-    Heap := Heap[_receiver0, n_10:=_target0];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@24.4--24.28) [100760]"}
+      FullPerm == Mask[_receiver0, n_85];
+    Heap := Heap[_receiver0, n_85:=_target0];
     assume state(Heap, Mask);
   
   // -- Translating statement: _receiver1.m := _target1 -- multi_initialization.vpr@24.31--24.55
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver1.m (multi_initialization.vpr@24.31--24.55) [185548]"}
-      FullPerm == Mask[_receiver1, m_22];
-    Heap := Heap[_receiver1, m_22:=_target1];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver1.m (multi_initialization.vpr@24.31--24.55) [100761]"}
+      FullPerm == Mask[_receiver1, m_20];
+    Heap := Heap[_receiver1, m_20:=_target1];
     assume state(Heap, Mask);
 }
 
@@ -675,7 +675,7 @@ procedure test2(x: Ref) returns ()
 // Translation of method bar
 // ==================================================
 
-procedure bar_1(x: Ref) returns (a_2: Ref)
+procedure bar_2(x: Ref) returns (a_2: Ref)
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -707,7 +707,7 @@ procedure bar_1(x: Ref) returns (a_2: Ref)
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
     assume x != null;
-    PostMask := PostMask[x, n_10:=PostMask[x, n_10] + perm];
+    PostMask := PostMask[x, n_85:=PostMask[x, n_85] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -724,10 +724,10 @@ procedure bar_1(x: Ref) returns (a_2: Ref)
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of bar might not hold. There might be insufficient permission to access x.n (multi_initialization.vpr@28.11--28.19) [185549]"}
-        perm <= Mask[x, n_10];
+      assert {:msg "  Postcondition of bar might not hold. There might be insufficient permission to access x.n (multi_initialization.vpr@28.11--28.19) [100762]"}
+        perm <= Mask[x, n_85];
     }
-    Mask := Mask[x, n_10:=Mask[x, n_10] - perm];
+    Mask := Mask[x, n_85:=Mask[x, n_85] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -738,7 +738,7 @@ procedure bar_1(x: Ref) returns (a_2: Ref)
 // Translation of method test3
 // ==================================================
 
-procedure test3(x: Ref) returns ()
+procedure test3_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -781,16 +781,16 @@ procedure test3(x: Ref) returns ()
     // -- Inhaling postcondition
       perm := FullPerm;
       assume x != null;
-      Mask := Mask[x, n_10:=Mask[x, n_10] + perm];
+      Mask := Mask[x, n_85:=Mask[x, n_85] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume Heap[_target0, $allocated];
     assume state(Heap, Mask);
   
   // -- Translating statement: _receiver0.n := _target0 -- multi_initialization.vpr@30.3--30.6
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@30.3--30.6) [185550]"}
-      FullPerm == Mask[_receiver0, n_10];
-    Heap := Heap[_receiver0, n_10:=_target0];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@30.3--30.6) [100763]"}
+      FullPerm == Mask[_receiver0, n_85];
+    Heap := Heap[_receiver0, n_85:=_target0];
     assume state(Heap, Mask);
 }
 
@@ -816,7 +816,7 @@ procedure baz(x: Ref) returns (a_2: Ref)
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, n_10:=Mask[x, n_10] + perm];
+    Mask := Mask[x, n_85:=Mask[x, n_85] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -836,7 +836,7 @@ procedure baz(x: Ref) returns (a_2: Ref)
 // Translation of method test4
 // ==================================================
 
-procedure test4(x: Ref) returns ()
+procedure test4_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -861,7 +861,7 @@ procedure test4(x: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, n_10:=Mask[x, n_10] + perm];
+    Mask := Mask[x, n_85:=Mask[x, n_85] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -888,10 +888,10 @@ procedure test4(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method baz might not hold. There might be insufficient permission to access x.n (multi_initialization.vpr@39.3--39.16) [185551]"}
-          perm <= Mask[x, n_10];
+        assert {:msg "  The precondition of method baz might not hold. There might be insufficient permission to access x.n (multi_initialization.vpr@39.3--39.16) [100764]"}
+          perm <= Mask[x, n_85];
       }
-      Mask := Mask[x, n_10:=Mask[x, n_10] - perm];
+      Mask := Mask[x, n_85:=Mask[x, n_85] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -906,9 +906,9 @@ procedure test4(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: _receiver0.n := _target0 -- multi_initialization.vpr@39.3--39.6
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@39.3--39.6) [185552]"}
-      FullPerm == Mask[_receiver0, n_10];
-    Heap := Heap[_receiver0, n_10:=_target0];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@39.3--39.6) [100765]"}
+      FullPerm == Mask[_receiver0, n_85];
+    Heap := Heap[_receiver0, n_85:=_target0];
     assume state(Heap, Mask);
 }
 
@@ -916,7 +916,7 @@ procedure test4(x: Ref) returns ()
 // Translation of method test5
 // ==================================================
 
-procedure test5() returns ()
+procedure test5_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -953,11 +953,11 @@ procedure test5() returns ()
   // -- Translating statement: inhale acc(a.n, write) && acc(b.m, write) -- multi_initialization.vpr@50.3--50.30
     perm := FullPerm;
     assume a_2 != null;
-    Mask := Mask[a_2, n_10:=Mask[a_2, n_10] + perm];
+    Mask := Mask[a_2, n_85:=Mask[a_2, n_85] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
     assume b_24 != null;
-    Mask := Mask[b_24, m_22:=Mask[b_24, m_22] + perm];
+    Mask := Mask[b_24, m_20:=Mask[b_24, m_20] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -986,7 +986,7 @@ procedure test5() returns ()
     // -- Inhaling postcondition
       perm := FullPerm;
       assume _target0 != null;
-      Mask := Mask[_target0, n_10:=Mask[_target0, n_10] + perm];
+      Mask := Mask[_target0, n_85:=Mask[_target0, n_85] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume Heap[_target0, $allocated];
@@ -994,15 +994,15 @@ procedure test5() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: _receiver0.n := _target0 -- multi_initialization.vpr@43.3--43.6
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@43.3--43.6) [185555]"}
-      FullPerm == Mask[_receiver0, n_10];
-    Heap := Heap[_receiver0, n_10:=_target0];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver0.n (multi_initialization.vpr@43.3--43.6) [100768]"}
+      FullPerm == Mask[_receiver0, n_85];
+    Heap := Heap[_receiver0, n_85:=_target0];
     assume state(Heap, Mask);
   
   // -- Translating statement: _receiver1.m := _target1 -- multi_initialization.vpr@43.8--43.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver1.m (multi_initialization.vpr@43.8--43.11) [185556]"}
-      FullPerm == Mask[_receiver1, m_22];
-    Heap := Heap[_receiver1, m_22:=_target1];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access _receiver1.m (multi_initialization.vpr@43.8--43.11) [100769]"}
+      FullPerm == Mask[_receiver1, m_20];
+    Heap := Heap[_receiver1, m_20:=_target1];
     assume state(Heap, Mask);
   
   // -- Translating statement: c, d := get_refs() -- multi_initialization.vpr@46.3--46.28
@@ -1015,7 +1015,7 @@ procedure test5() returns ()
     // -- Inhaling postcondition
       perm := FullPerm;
       assume c != null;
-      Mask := Mask[c, n_10:=Mask[c, n_10] + perm];
+      Mask := Mask[c, n_85:=Mask[c, n_85] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume Heap[c, $allocated];

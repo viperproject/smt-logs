@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:31
+// Date:         2025-01-26 21:45:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/smoke/inhale-3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/smoke/inhale-3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,19 +177,19 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of method test
 // ==================================================
 
-procedure test(a_2: Ref) returns ()
+procedure test_1(a_2: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -203,13 +203,13 @@ procedure test(a_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(a.x, write) -- inhale-3.vpr@6.5--6.20
     perm := FullPerm;
     assume a_2 != null;
-    Mask := Mask[a_2, x_36:=Mask[a_2, x_36] + perm];
+    Mask := Mask[a_2, x_42:=Mask[a_2, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -217,7 +217,7 @@ procedure test(a_2: Ref) returns ()
   // -- Translating statement: inhale acc(a.x, write) -- inhale-3.vpr@8.5--8.20
     perm := FullPerm;
     assume a_2 != null;
-    Mask := Mask[a_2, x_36:=Mask[a_2, x_36] + perm];
+    Mask := Mask[a_2, x_42:=Mask[a_2, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:27
+// Date:         2025-01-26 21:42:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0365.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0365-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -199,16 +199,16 @@ axiom NoPerm < (eps(): Perm);
 type parallelHeapsDomainType;
 
 // Translation of domain function temp
-function  temp(x_8: Ref): Ref;
+function  temp(x_37: Ref): Ref;
 
 // Translation of domain function temp_inv
-function  temp_inv(x_8: Ref): Ref;
+function  temp_inv(x_37: Ref): Ref;
 
 // Translation of domain function heap
-function  heap(x_8: Ref): int;
+function  heap(x_37: Ref): int;
 
 // Translation of domain function is_ghost
-function  is_ghost(x_8: Ref): bool;
+function  is_ghost(x_37: Ref): bool;
 
 // Translation of domain axiom inv_temp
 axiom (forall r_1: Ref ::
@@ -440,7 +440,7 @@ procedure try_lock_shared() returns ()
         assume false;
       }
     perm := 1 / 1 - real(v1 div 4 + 1) * (eps(): Perm);
-    assert {:msg "  Inhale might fail. Fraction 1 / 1 - (v1 \ 4 + 1) * eps() might be negative. (0365.vpr@46.13--48.63) [199495]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 1 - (v1 \ 4 + 1) * eps() might be negative. (0365.vpr@46.13--48.63) [70564]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> tokCountRef(Heap, resource(Heap)) != null;
     Mask := Mask[tokCountRef(Heap, resource(Heap)), tokCount:=Mask[tokCountRef(Heap, resource(Heap)), tokCount] + perm];
@@ -457,7 +457,7 @@ procedure try_lock_shared() returns ()
         assume false;
       }
     perm := 1 / 1 - real(v1 div 4) * (eps(): Perm);
-    assert {:msg "  Inhale might fail. Fraction 1 / 1 - v1 \ 4 * eps() might be negative. (0365.vpr@46.13--48.63) [199496]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 1 - v1 \ 4 * eps() might be negative. (0365.vpr@46.13--48.63) [70565]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> tokCountRef(Heap, readers(Heap)) != null;
     Mask := Mask[tokCountRef(Heap, readers(Heap)), tokCount:=Mask[tokCountRef(Heap, readers(Heap)), tokCount] + perm];
@@ -487,7 +487,7 @@ procedure try_lock_shared() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion perm(tokCountRef(readers()).tokCount) >= 1 / 1 - v0 * eps() / 1 might not hold. (0365.vpr@53.13--53.74) [199497]"}
+    assert {:msg "  Assert might fail. Assertion perm(tokCountRef(readers()).tokCount) >= 1 / 1 - v0 * eps() / 1 might not hold. (0365.vpr@53.13--53.74) [70566]"}
       1 / 1 - real(v0) * (eps(): Perm) / 1 <= Mask[tokCountRef(Heap, readers(Heap)), tokCount];
     assume state(Heap, Mask);
   
@@ -507,10 +507,10 @@ procedure try_lock_shared() returns ()
         assume false;
       }
     perm := 1 / 1 - real(v0) * (eps(): Perm) / 1;
-    assert {:msg "  Assert might fail. Fraction 1 / 1 - v0 * eps() / 1 might be negative. (0365.vpr@54.13--54.75) [199498]"}
+    assert {:msg "  Assert might fail. Fraction 1 / 1 - v0 * eps() / 1 might be negative. (0365.vpr@54.13--54.75) [70567]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access tokCountRef(readers()).tokCount (0365.vpr@54.13--54.75) [199499]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access tokCountRef(readers()).tokCount (0365.vpr@54.13--54.75) [70568]"}
         perm <= AssertMask[tokCountRef(AssertHeap, readers(AssertHeap)), tokCount];
     }
     AssertMask := AssertMask[tokCountRef(AssertHeap, readers(AssertHeap)), tokCount:=AssertMask[tokCountRef(AssertHeap, readers(AssertHeap)), tokCount] - perm];

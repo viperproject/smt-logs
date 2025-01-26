@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:41
+// Date:         2025-01-26 21:42:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial006.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial006-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,11 +180,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var j_9: int;
+  var j: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -194,8 +194,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: while (true) -- unofficial006.vpr@11.3--14.4
     
@@ -219,7 +219,7 @@ procedure test01() returns ()
         // -- Translate loop body
           
           // -- Translating statement: inhale 0 <= j -- unofficial006.vpr@13.12--13.18
-            assume 0 <= j_9;
+            assume 0 <= j;
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Terminate execution

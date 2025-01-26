@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:14:31
+// Date:         2025-01-26 21:43:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/axiom_call_func3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/axiom_call_func3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,10 +188,10 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type dDomainType;
 
 // Translation of domain function dfunc
-function  dfunc(i_79: int): int;
+function  dfunc(i_6: int): int;
 
 // Translation of domain function dfunc2
-function  dfunc2(i_79: int): int;
+function  dfunc2(i_6: int): int;
 
 // Translation of anonymous domain axiom
 axiom (forall i: int ::
@@ -372,7 +372,7 @@ procedure heapDep#definedness(r_1: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of r.f + 2
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (axiom_call_func3.vpr@14.1--18.2) [142915]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (axiom_call_func3.vpr@14.1--18.2) [93513]"}
         HasDirectPerm(Mask, r_1, f_7);
   
   // -- Translate function body
@@ -445,7 +445,7 @@ procedure heapDep2#definedness(r_1: Ref) returns (Result: int)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function heapDep might not hold. There might be insufficient permission to access r.f (axiom_call_func3.vpr@23.5--23.15) [142916]"}
+        assert {:msg "  Precondition of function heapDep might not hold. There might be insufficient permission to access r.f (axiom_call_func3.vpr@23.5--23.15) [93514]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -459,7 +459,7 @@ procedure heapDep2#definedness(r_1: Ref) returns (Result: int)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function heapDepUnint might not hold. There might be insufficient permission to access r.f (axiom_call_func3.vpr@23.18--23.33) [142917]"}
+        assert {:msg "  Precondition of function heapDepUnint might not hold. There might be insufficient permission to access r.f (axiom_call_func3.vpr@23.18--23.33) [93515]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -531,7 +531,7 @@ procedure heapDepUnint#definedness(r_1: Ref) returns (Result: int)
   // -- Checking definedness of postcondition (no body)
     
     // -- Check definedness of result == r.f + 3
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (axiom_call_func3.vpr@28.13--28.30) [142918]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (axiom_call_func3.vpr@28.13--28.30) [93516]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Result == Heap[r_1, f_7] + 3;
     assume state(Heap, Mask);
@@ -589,13 +589,13 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := 20 -- axiom_call_func3.vpr@51.3--51.12
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (axiom_call_func3.vpr@51.3--51.12) [142919]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (axiom_call_func3.vpr@51.3--51.12) [93517]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=20];
     assume state(Heap, Mask);
   
   // -- Translating statement: y.f := 3 -- axiom_call_func3.vpr@52.3--52.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (axiom_call_func3.vpr@52.3--52.11) [142920]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (axiom_call_func3.vpr@52.3--52.11) [93518]"}
       FullPerm == Mask[y, f_7];
     Heap := Heap[y, f_7:=3];
     assume state(Heap, Mask);
@@ -605,9 +605,9 @@ procedure main() returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of dfunc2(x.f) == 31
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (axiom_call_func3.vpr@53.10--53.27) [142921]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (axiom_call_func3.vpr@53.10--53.27) [93519]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion dfunc2(x.f) == 31 might not hold. (axiom_call_func3.vpr@53.10--53.27) [142922]"}
+    assert {:msg "  Assert might fail. Assertion dfunc2(x.f) == 31 might not hold. (axiom_call_func3.vpr@53.10--53.27) [93520]"}
       (dfunc2(Heap[x, f_7]): int) == 31;
     assume state(Heap, Mask);
   
@@ -621,7 +621,7 @@ procedure main() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function heapDep2 might not hold. There might be insufficient permission to access x.f (axiom_call_func3.vpr@54.10--54.21) [142923]"}
+        assert {:msg "  Precondition of function heapDep2 might not hold. There might be insufficient permission to access x.f (axiom_call_func3.vpr@54.10--54.21) [93521]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -630,7 +630,7 @@ procedure main() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion heapDep2(x) == 15 + 20 + 20 might not hold. (axiom_call_func3.vpr@54.10--54.37) [142924]"}
+    assert {:msg "  Assert might fail. Assertion heapDep2(x) == 15 + 20 + 20 might not hold. (axiom_call_func3.vpr@54.10--54.37) [93522]"}
       heapDep2(Heap, x) == 55;
     assume state(Heap, Mask);
   
@@ -639,9 +639,9 @@ procedure main() returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of dfunc(x.f + 1) == 27
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (axiom_call_func3.vpr@56.10--56.30) [142925]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (axiom_call_func3.vpr@56.10--56.30) [93523]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion dfunc(x.f + 1) == 27 might not hold. (axiom_call_func3.vpr@56.10--56.30) [142926]"}
+    assert {:msg "  Assert might fail. Assertion dfunc(x.f + 1) == 27 might not hold. (axiom_call_func3.vpr@56.10--56.30) [93524]"}
       (dfunc(Heap[x, f_7] + 1): int) == 27;
     assume state(Heap, Mask);
   
@@ -654,7 +654,7 @@ procedure main() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion interp(34) == 35 might not hold. (axiom_call_func3.vpr@57.10--57.26) [142927]"}
+    assert {:msg "  Assert might fail. Assertion interp(34) == 35 might not hold. (axiom_call_func3.vpr@57.10--57.26) [93525]"}
       interp(Heap, 34) == 35;
     assume state(Heap, Mask);
   
@@ -668,7 +668,7 @@ procedure main() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function heapDep might not hold. There might be insufficient permission to access y.f (axiom_call_func3.vpr@58.10--58.20) [142928]"}
+        assert {:msg "  Precondition of function heapDep might not hold. There might be insufficient permission to access y.f (axiom_call_func3.vpr@58.10--58.20) [93526]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -677,9 +677,9 @@ procedure main() returns ()
         // Stop execution
         assume false;
       }
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (axiom_call_func3.vpr@58.10--58.44) [142929]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (axiom_call_func3.vpr@58.10--58.44) [93527]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion heapDep(y) + dfunc2(x.f + 5) == 41 might not hold. (axiom_call_func3.vpr@58.10--58.44) [142930]"}
+    assert {:msg "  Assert might fail. Assertion heapDep(y) + dfunc2(x.f + 5) == 41 might not hold. (axiom_call_func3.vpr@58.10--58.44) [93528]"}
       heapDep(Heap, y) + (dfunc2(Heap[x, f_7] + 5): int) == 41;
     assume state(Heap, Mask);
   
@@ -693,7 +693,7 @@ procedure main() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function heapDepUnint might not hold. There might be insufficient permission to access x.f (axiom_call_func3.vpr@61.10--61.25) [142931]"}
+        assert {:msg "  Precondition of function heapDepUnint might not hold. There might be insufficient permission to access x.f (axiom_call_func3.vpr@61.10--61.25) [93529]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -702,7 +702,7 @@ procedure main() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion heapDepUnint(x) == 24 might not hold. (axiom_call_func3.vpr@61.10--61.31) [142932]"}
+    assert {:msg "  Assert might fail. Assertion heapDepUnint(x) == 24 might not hold. (axiom_call_func3.vpr@61.10--61.31) [93530]"}
       heapDepUnint(Heap, x) == 24;
     assume state(Heap, Mask);
 }

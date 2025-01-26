@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:27
+// Date:         2025-01-26 21:42:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0385.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0385-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -193,9 +193,9 @@ function  guard(a_3: Ref): bool;
 // Translation of all fields
 // ==================================================
 
-const unique flag: Field NormalField bool;
-axiom !IsPredicateField(flag);
-axiom !IsWandField(flag);
+const unique flag_1: Field NormalField bool;
+axiom !IsPredicateField(flag_1);
+axiom !IsWandField(flag_1);
 
 // ==================================================
 // Translation of function foo_1_1
@@ -216,14 +216,14 @@ axiom (forall Heap: HeapType, y: Ref, x: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, y: Ref, x: Ref ::
   { state(Heap, Mask), foo_1_1(Heap, y, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_1_1(Heap, y, x) == (!(guard(y): bool) || Heap[y, flag])
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_1_1(Heap, y, x) == (!(guard(y): bool) || Heap[y, flag_1])
 );
 
 // Framing axioms
 function  foo_1_1#frame(frame: FrameType, y: Ref, x: Ref): bool;
 axiom (forall Heap: HeapType, Mask: MaskType, y: Ref, x: Ref ::
   { state(Heap, Mask), foo_1_1'(Heap, y, x) }
-  state(Heap, Mask) ==> foo_1_1'(Heap, y, x) == foo_1_1#frame(CombineFrames(FrameFragment(Heap[x, flag]), FrameFragment((if (guard(y): bool) then FrameFragment(Heap[y, flag]) else EmptyFrame))), y, x)
+  state(Heap, Mask) ==> foo_1_1'(Heap, y, x) == foo_1_1#frame(CombineFrames(FrameFragment(Heap[x, flag_1]), FrameFragment((if (guard(y): bool) then FrameFragment(Heap[y, flag_1]) else EmptyFrame))), y, x)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -249,13 +249,13 @@ procedure foo_1_1#definedness(y: Ref, x: Ref) returns (Result: bool)
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, flag:=Mask[x, flag] + perm];
+    Mask := Mask[x, flag_1:=Mask[x, flag_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     if ((guard(y): bool)) {
       perm := FullPerm;
       assume y != null;
-      Mask := Mask[y, flag:=Mask[y, flag] + perm];
+      Mask := Mask[y, flag_1:=Mask[y, flag_1] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -264,12 +264,12 @@ procedure foo_1_1#definedness(y: Ref, x: Ref) returns (Result: bool)
     
     // -- Check definedness of !guard(y) || y.flag
       if ((guard(y): bool)) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.flag (0385.vpr@12.1--17.2) [217615]"}
-          HasDirectPerm(Mask, y, flag);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.flag (0385.vpr@12.1--17.2) [63369]"}
+          HasDirectPerm(Mask, y, flag_1);
       }
   
   // -- Translate function body
-    Result := !(guard(y): bool) || Heap[y, flag];
+    Result := !(guard(y): bool) || Heap[y, flag_1];
 }
 
 // ==================================================
@@ -291,14 +291,14 @@ axiom (forall Heap: HeapType, y: Ref, x: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, y: Ref, x: Ref ::
   { state(Heap, Mask), foo_1_2(Heap, y, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> foo_1_2(Heap, y, x) == ((guard(y): bool) ==> Heap[y, flag])
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> foo_1_2(Heap, y, x) == ((guard(y): bool) ==> Heap[y, flag_1])
 );
 
 // Framing axioms
 function  foo_1_2#frame(frame: FrameType, y: Ref, x: Ref): bool;
 axiom (forall Heap: HeapType, Mask: MaskType, y: Ref, x: Ref ::
   { state(Heap, Mask), foo_1_2'(Heap, y, x) }
-  state(Heap, Mask) ==> foo_1_2'(Heap, y, x) == foo_1_2#frame(CombineFrames(FrameFragment(Heap[x, flag]), FrameFragment((if (guard(y): bool) then FrameFragment(Heap[y, flag]) else EmptyFrame))), y, x)
+  state(Heap, Mask) ==> foo_1_2'(Heap, y, x) == foo_1_2#frame(CombineFrames(FrameFragment(Heap[x, flag_1]), FrameFragment((if (guard(y): bool) then FrameFragment(Heap[y, flag_1]) else EmptyFrame))), y, x)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -324,13 +324,13 @@ procedure foo_1_2#definedness(y: Ref, x: Ref) returns (Result: bool)
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, flag:=Mask[x, flag] + perm];
+    Mask := Mask[x, flag_1:=Mask[x, flag_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     if ((guard(y): bool)) {
       perm := FullPerm;
       assume y != null;
-      Mask := Mask[y, flag:=Mask[y, flag] + perm];
+      Mask := Mask[y, flag_1:=Mask[y, flag_1] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -339,12 +339,12 @@ procedure foo_1_2#definedness(y: Ref, x: Ref) returns (Result: bool)
     
     // -- Check definedness of guard(y) ==> y.flag
       if ((guard(y): bool)) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.flag (0385.vpr@19.1--24.2) [217616]"}
-          HasDirectPerm(Mask, y, flag);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.flag (0385.vpr@19.1--24.2) [63370]"}
+          HasDirectPerm(Mask, y, flag_1);
       }
   
   // -- Translate function body
-    Result := (guard(y): bool) ==> Heap[y, flag];
+    Result := (guard(y): bool) ==> Heap[y, flag_1];
 }
 
 // ==================================================
@@ -366,14 +366,14 @@ axiom (forall Heap: HeapType, y: Ref, x: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, y: Ref, x: Ref ::
   { state(Heap, Mask), foo_2_1(Heap, y, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> foo_2_1(Heap, y, x) == (!(guard(y): bool) || Heap[y, flag])
+  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> foo_2_1(Heap, y, x) == (!(guard(y): bool) || Heap[y, flag_1])
 );
 
 // Framing axioms
 function  foo_2_1#frame(frame: FrameType, y: Ref, x: Ref): bool;
 axiom (forall Heap: HeapType, Mask: MaskType, y: Ref, x: Ref ::
   { state(Heap, Mask), foo_2_1'(Heap, y, x) }
-  state(Heap, Mask) ==> foo_2_1'(Heap, y, x) == foo_2_1#frame(FrameFragment((if (guard(y): bool) then CombineFrames(FrameFragment(Heap[x, flag]), FrameFragment(Heap[y, flag])) else FrameFragment(Heap[x, flag]))), y, x)
+  state(Heap, Mask) ==> foo_2_1'(Heap, y, x) == foo_2_1#frame(FrameFragment((if (guard(y): bool) then CombineFrames(FrameFragment(Heap[x, flag_1]), FrameFragment(Heap[y, flag_1])) else FrameFragment(Heap[x, flag_1]))), y, x)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -400,16 +400,16 @@ procedure foo_2_1#definedness(y: Ref, x: Ref) returns (Result: bool)
     if ((guard(y): bool)) {
       perm := FullPerm;
       assume x != null;
-      Mask := Mask[x, flag:=Mask[x, flag] + perm];
+      Mask := Mask[x, flag_1:=Mask[x, flag_1] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume y != null;
-      Mask := Mask[y, flag:=Mask[y, flag] + perm];
+      Mask := Mask[y, flag_1:=Mask[y, flag_1] + perm];
       assume state(Heap, Mask);
     } else {
       perm := FullPerm;
       assume x != null;
-      Mask := Mask[x, flag:=Mask[x, flag] + perm];
+      Mask := Mask[x, flag_1:=Mask[x, flag_1] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -418,12 +418,12 @@ procedure foo_2_1#definedness(y: Ref, x: Ref) returns (Result: bool)
     
     // -- Check definedness of !guard(y) || y.flag
       if ((guard(y): bool)) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.flag (0385.vpr@26.1--30.2) [217617]"}
-          HasDirectPerm(Mask, y, flag);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.flag (0385.vpr@26.1--30.2) [63371]"}
+          HasDirectPerm(Mask, y, flag_1);
       }
   
   // -- Translate function body
-    Result := !(guard(y): bool) || Heap[y, flag];
+    Result := !(guard(y): bool) || Heap[y, flag_1];
 }
 
 // ==================================================
@@ -445,14 +445,14 @@ axiom (forall Heap: HeapType, y: Ref, x: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, y: Ref, x: Ref ::
   { state(Heap, Mask), foo_2_2(Heap, y, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> foo_2_2(Heap, y, x) == ((guard(y): bool) ==> Heap[y, flag])
+  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> foo_2_2(Heap, y, x) == ((guard(y): bool) ==> Heap[y, flag_1])
 );
 
 // Framing axioms
 function  foo_2_2#frame(frame: FrameType, y: Ref, x: Ref): bool;
 axiom (forall Heap: HeapType, Mask: MaskType, y: Ref, x: Ref ::
   { state(Heap, Mask), foo_2_2'(Heap, y, x) }
-  state(Heap, Mask) ==> foo_2_2'(Heap, y, x) == foo_2_2#frame(FrameFragment((if (guard(y): bool) then CombineFrames(FrameFragment(Heap[x, flag]), FrameFragment(Heap[y, flag])) else FrameFragment(Heap[x, flag]))), y, x)
+  state(Heap, Mask) ==> foo_2_2'(Heap, y, x) == foo_2_2#frame(FrameFragment((if (guard(y): bool) then CombineFrames(FrameFragment(Heap[x, flag_1]), FrameFragment(Heap[y, flag_1])) else FrameFragment(Heap[x, flag_1]))), y, x)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -479,16 +479,16 @@ procedure foo_2_2#definedness(y: Ref, x: Ref) returns (Result: bool)
     if ((guard(y): bool)) {
       perm := FullPerm;
       assume x != null;
-      Mask := Mask[x, flag:=Mask[x, flag] + perm];
+      Mask := Mask[x, flag_1:=Mask[x, flag_1] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume y != null;
-      Mask := Mask[y, flag:=Mask[y, flag] + perm];
+      Mask := Mask[y, flag_1:=Mask[y, flag_1] + perm];
       assume state(Heap, Mask);
     } else {
       perm := FullPerm;
       assume x != null;
-      Mask := Mask[x, flag:=Mask[x, flag] + perm];
+      Mask := Mask[x, flag_1:=Mask[x, flag_1] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -497,19 +497,19 @@ procedure foo_2_2#definedness(y: Ref, x: Ref) returns (Result: bool)
     
     // -- Check definedness of guard(y) ==> y.flag
       if ((guard(y): bool)) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.flag (0385.vpr@32.1--36.2) [217618]"}
-          HasDirectPerm(Mask, y, flag);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.flag (0385.vpr@32.1--36.2) [63372]"}
+          HasDirectPerm(Mask, y, flag_1);
       }
   
   // -- Translate function body
-    Result := (guard(y): bool) ==> Heap[y, flag];
+    Result := (guard(y): bool) ==> Heap[y, flag_1];
 }
 
 // ==================================================
 // Translation of method testA
 // ==================================================
 
-procedure testA(s_2: Ref, r_1: Ref) returns ()
+procedure testA(s_1: Ref, r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -528,25 +528,25 @@ procedure testA(s_2: Ref, r_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[s_2, $allocated];
+    assume Heap[s_1, $allocated];
     assume Heap[r_1, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume r_1 != null;
-    Mask := Mask[r_1, flag:=Mask[r_1, flag] + perm];
+    Mask := Mask[r_1, flag_1:=Mask[r_1, flag_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
-    assume s_2 != null;
-    Mask := Mask[s_2, flag:=Mask[s_2, flag] + perm];
+    assume s_1 != null;
+    Mask := Mask[s_1, flag_1:=Mask[s_1, flag_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of s.flag
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access s.flag (0385.vpr@42.12--42.18) [217619]"}
-        HasDirectPerm(Mask, s_2, flag);
-    assume Heap[s_2, flag];
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access s.flag (0385.vpr@42.12--42.18) [63373]"}
+        HasDirectPerm(Mask, s_1, flag_1);
+    assume Heap[s_1, flag_1];
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -565,12 +565,12 @@ procedure testA(s_2: Ref, r_1: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@44.10--44.23) [217620]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
-        if ((guard(s_2): bool)) {
+        assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@44.10--44.23) [63374]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@44.10--44.23) [217621]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@44.10--44.23) [63375]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -579,8 +579,8 @@ procedure testA(s_2: Ref, r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo_1_1(s, r) might not hold. (0385.vpr@44.10--44.23) [217622]"}
-      foo_1_1(Heap, s_2, r_1);
+    assert {:msg "  Assert might fail. Assertion foo_1_1(s, r) might not hold. (0385.vpr@44.10--44.23) [63376]"}
+      foo_1_1(Heap, s_1, r_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo_1_2(s, r) -- 0385.vpr@45.3--45.23
@@ -593,12 +593,12 @@ procedure testA(s_2: Ref, r_1: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@45.10--45.23) [217623]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
-        if ((guard(s_2): bool)) {
+        assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@45.10--45.23) [63377]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@45.10--45.23) [217624]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@45.10--45.23) [63378]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -607,8 +607,8 @@ procedure testA(s_2: Ref, r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo_1_2(s, r) might not hold. (0385.vpr@45.10--45.23) [217625]"}
-      foo_1_2(Heap, s_2, r_1);
+    assert {:msg "  Assert might fail. Assertion foo_1_2(s, r) might not hold. (0385.vpr@45.10--45.23) [63379]"}
+      foo_1_2(Heap, s_1, r_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo_2_1(s, r) -- 0385.vpr@46.3--46.23
@@ -620,17 +620,17 @@ procedure testA(s_2: Ref, r_1: Ref) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        if ((guard(s_2): bool)) {
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@46.10--46.23) [217626]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@46.10--46.23) [63380]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@46.10--46.23) [217627]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@46.10--46.23) [63381]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         } else {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@46.10--46.23) [217628]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@46.10--46.23) [63382]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -639,8 +639,8 @@ procedure testA(s_2: Ref, r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo_2_1(s, r) might not hold. (0385.vpr@46.10--46.23) [217629]"}
-      foo_2_1(Heap, s_2, r_1);
+    assert {:msg "  Assert might fail. Assertion foo_2_1(s, r) might not hold. (0385.vpr@46.10--46.23) [63383]"}
+      foo_2_1(Heap, s_1, r_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo_2_2(s, r) -- 0385.vpr@47.3--47.23
@@ -652,17 +652,17 @@ procedure testA(s_2: Ref, r_1: Ref) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        if ((guard(s_2): bool)) {
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@47.10--47.23) [217630]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@47.10--47.23) [63384]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@47.10--47.23) [217631]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@47.10--47.23) [63385]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         } else {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@47.10--47.23) [217632]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@47.10--47.23) [63386]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -671,8 +671,8 @@ procedure testA(s_2: Ref, r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo_2_2(s, r) might not hold. (0385.vpr@47.10--47.23) [217633]"}
-      foo_2_2(Heap, s_2, r_1);
+    assert {:msg "  Assert might fail. Assertion foo_2_2(s, r) might not hold. (0385.vpr@47.10--47.23) [63387]"}
+      foo_2_2(Heap, s_1, r_1);
     assume state(Heap, Mask);
 }
 
@@ -680,7 +680,7 @@ procedure testA(s_2: Ref, r_1: Ref) returns ()
 // Translation of method testB
 // ==================================================
 
-procedure testB(s_2: Ref, r_1: Ref) returns ()
+procedure testB(s_1: Ref, r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -699,25 +699,25 @@ procedure testB(s_2: Ref, r_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[s_2, $allocated];
+    assume Heap[s_1, $allocated];
     assume Heap[r_1, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume r_1 != null;
-    Mask := Mask[r_1, flag:=Mask[r_1, flag] + perm];
+    Mask := Mask[r_1, flag_1:=Mask[r_1, flag_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
-    assume s_2 != null;
-    Mask := Mask[s_2, flag:=Mask[s_2, flag] + perm];
+    assume s_1 != null;
+    Mask := Mask[s_1, flag_1:=Mask[s_1, flag_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of r.flag
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.flag (0385.vpr@53.12--53.18) [217634]"}
-        HasDirectPerm(Mask, r_1, flag);
-    assume Heap[r_1, flag];
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.flag (0385.vpr@53.12--53.18) [63388]"}
+        HasDirectPerm(Mask, r_1, flag_1);
+    assume Heap[r_1, flag_1];
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -736,12 +736,12 @@ procedure testB(s_2: Ref, r_1: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@57.5--57.18) [217635]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
-        if ((guard(s_2): bool)) {
+        assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@57.5--57.18) [63389]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@57.5--57.18) [217636]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@57.5--57.18) [63390]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -750,18 +750,18 @@ procedure testB(s_2: Ref, r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-      if (!foo_1_1(Heap, s_2, r_1)) {
+      if (!foo_1_1(Heap, s_1, r_1)) {
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@58.5--58.18) [217637]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
-          if ((guard(s_2): bool)) {
+          assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@58.5--58.18) [63391]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
+          if ((guard(s_1): bool)) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@58.5--58.18) [217638]"}
-              NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+            assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@58.5--58.18) [63392]"}
+              NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
           }
           // Finish exhale
           havoc ExhaleHeap;
@@ -770,22 +770,22 @@ procedure testB(s_2: Ref, r_1: Ref) returns ()
           // Stop execution
           assume false;
         }
-        if (!foo_1_2(Heap, s_2, r_1)) {
+        if (!foo_1_2(Heap, s_1, r_1)) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-            if ((guard(s_2): bool)) {
+            if ((guard(s_1): bool)) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@59.5--59.18) [217639]"}
-                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+              assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@59.5--59.18) [63393]"}
+                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
               perm := FullPerm;
-              assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@59.5--59.18) [217640]"}
-                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+              assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@59.5--59.18) [63394]"}
+                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
             } else {
               perm := FullPerm;
-              assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@59.5--59.18) [217641]"}
-                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+              assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@59.5--59.18) [63395]"}
+                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
             }
             // Finish exhale
             havoc ExhaleHeap;
@@ -794,22 +794,22 @@ procedure testB(s_2: Ref, r_1: Ref) returns ()
             // Stop execution
             assume false;
           }
-          if (!foo_2_1(Heap, s_2, r_1)) {
+          if (!foo_2_1(Heap, s_1, r_1)) {
             if (*) {
               // Exhale precondition of function application
               ExhaleWellDef1Heap := ExhaleWellDef0Heap;
               ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-              if ((guard(s_2): bool)) {
+              if ((guard(s_1): bool)) {
                 perm := FullPerm;
-                assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@60.5--60.18) [217642]"}
-                  NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+                assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@60.5--60.18) [63396]"}
+                  NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
                 perm := FullPerm;
-                assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@60.5--60.18) [217643]"}
-                  NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+                assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@60.5--60.18) [63397]"}
+                  NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
               } else {
                 perm := FullPerm;
-                assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@60.5--60.18) [217644]"}
-                  NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+                assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@60.5--60.18) [63398]"}
+                  NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
               }
               // Finish exhale
               havoc ExhaleHeap;
@@ -821,8 +821,8 @@ procedure testB(s_2: Ref, r_1: Ref) returns ()
           }
         }
       }
-    assert {:msg "  Assert might fail. Assertion foo_1_1(s, r) || (foo_1_2(s, r) || (foo_2_1(s, r) || foo_2_2(s, r))) might not hold. (0385.vpr@57.5--60.18) [217645]"}
-      foo_1_1(Heap, s_2, r_1) || (foo_1_2(Heap, s_2, r_1) || (foo_2_1(Heap, s_2, r_1) || foo_2_2(Heap, s_2, r_1)));
+    assert {:msg "  Assert might fail. Assertion foo_1_1(s, r) || (foo_1_2(s, r) || (foo_2_1(s, r) || foo_2_2(s, r))) might not hold. (0385.vpr@57.5--60.18) [63399]"}
+      foo_1_1(Heap, s_1, r_1) || (foo_1_2(Heap, s_1, r_1) || (foo_2_1(Heap, s_1, r_1) || foo_2_2(Heap, s_1, r_1)));
     assume state(Heap, Mask);
 }
 
@@ -830,7 +830,7 @@ procedure testB(s_2: Ref, r_1: Ref) returns ()
 // Translation of method testC
 // ==================================================
 
-procedure testC(s_2: Ref, r_1: Ref) returns ()
+procedure testC(s_1: Ref, r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -849,18 +849,18 @@ procedure testC(s_2: Ref, r_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[s_2, $allocated];
+    assume Heap[s_1, $allocated];
     assume Heap[r_1, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume r_1 != null;
-    Mask := Mask[r_1, flag:=Mask[r_1, flag] + perm];
+    Mask := Mask[r_1, flag_1:=Mask[r_1, flag_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
-    assume s_2 != null;
-    Mask := Mask[s_2, flag:=Mask[s_2, flag] + perm];
+    assume s_1 != null;
+    Mask := Mask[s_1, flag_1:=Mask[s_1, flag_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -881,12 +881,12 @@ procedure testC(s_2: Ref, r_1: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@68.6--68.19) [217646]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
-        if ((guard(s_2): bool)) {
+        assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@68.6--68.19) [63400]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@68.6--68.19) [217647]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_1_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@68.6--68.19) [63401]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -900,12 +900,12 @@ procedure testC(s_2: Ref, r_1: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@68.25--68.38) [217648]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
-        if ((guard(s_2): bool)) {
+        assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@68.25--68.38) [63402]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@68.25--68.38) [217649]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@68.25--68.38) [63403]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -914,8 +914,8 @@ procedure testC(s_2: Ref, r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo_1_1(s, r) == foo_1_2(s, r) might not hold. (0385.vpr@68.5--70.39) [217650]"}
-      foo_1_1(Heap, s_2, r_1) == foo_1_2(Heap, s_2, r_1);
+    assert {:msg "  Assert might fail. Assertion foo_1_1(s, r) == foo_1_2(s, r) might not hold. (0385.vpr@68.5--70.39) [63404]"}
+      foo_1_1(Heap, s_1, r_1) == foo_1_2(Heap, s_1, r_1);
     
     // -- Check definedness of foo_1_2(s, r) == foo_2_1(s, r)
       if (*) {
@@ -923,12 +923,12 @@ procedure testC(s_2: Ref, r_1: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@69.6--69.19) [217651]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
-        if ((guard(s_2): bool)) {
+        assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@69.6--69.19) [63405]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@69.6--69.19) [217652]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_1_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@69.6--69.19) [63406]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -941,17 +941,17 @@ procedure testC(s_2: Ref, r_1: Ref) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        if ((guard(s_2): bool)) {
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@69.25--69.38) [217653]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@69.25--69.38) [63407]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@69.25--69.38) [217654]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@69.25--69.38) [63408]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         } else {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@69.25--69.38) [217655]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@69.25--69.38) [63409]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -960,25 +960,25 @@ procedure testC(s_2: Ref, r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo_1_2(s, r) == foo_2_1(s, r) might not hold. (0385.vpr@68.5--70.39) [217656]"}
-      foo_1_2(Heap, s_2, r_1) == foo_2_1(Heap, s_2, r_1);
+    assert {:msg "  Assert might fail. Assertion foo_1_2(s, r) == foo_2_1(s, r) might not hold. (0385.vpr@68.5--70.39) [63410]"}
+      foo_1_2(Heap, s_1, r_1) == foo_2_1(Heap, s_1, r_1);
     
     // -- Check definedness of foo_2_1(s, r) == foo_2_2(s, r)
       if (*) {
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        if ((guard(s_2): bool)) {
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@70.6--70.19) [217657]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@70.6--70.19) [63411]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@70.6--70.19) [217658]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access s.flag (0385.vpr@70.6--70.19) [63412]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         } else {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@70.6--70.19) [217659]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+          assert {:msg "  Precondition of function foo_2_1 might not hold. There might be insufficient permission to access r.flag (0385.vpr@70.6--70.19) [63413]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -991,17 +991,17 @@ procedure testC(s_2: Ref, r_1: Ref) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        if ((guard(s_2): bool)) {
+        if ((guard(s_1): bool)) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@70.25--70.38) [217660]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@70.25--70.38) [63414]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@70.25--70.38) [217661]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_2, flag];
+          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access s.flag (0385.vpr@70.25--70.38) [63415]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[s_1, flag_1];
         } else {
           perm := FullPerm;
-          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@70.25--70.38) [217662]"}
-            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag];
+          assert {:msg "  Precondition of function foo_2_2 might not hold. There might be insufficient permission to access r.flag (0385.vpr@70.25--70.38) [63416]"}
+            NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, flag_1];
         }
         // Finish exhale
         havoc ExhaleHeap;
@@ -1010,7 +1010,7 @@ procedure testC(s_2: Ref, r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo_2_1(s, r) == foo_2_2(s, r) might not hold. (0385.vpr@68.5--70.39) [217663]"}
-      foo_2_1(Heap, s_2, r_1) == foo_2_2(Heap, s_2, r_1);
+    assert {:msg "  Assert might fail. Assertion foo_2_1(s, r) == foo_2_2(s, r) might not hold. (0385.vpr@68.5--70.39) [63417]"}
+      foo_2_1(Heap, s_1, r_1) == foo_2_2(Heap, s_1, r_1);
     assume state(Heap, Mask);
 }

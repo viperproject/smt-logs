@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:52
+// Date:         2025-01-26 21:43:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0030.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0030-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,9 +177,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of predicate P
@@ -230,8 +230,8 @@ procedure P#definedness(this: Ref) returns ()
     assume this != null;
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.x (0030.vpr@7.1--9.2) [191746]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.x (0030.vpr@7.1--9.2) [83296]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
 }

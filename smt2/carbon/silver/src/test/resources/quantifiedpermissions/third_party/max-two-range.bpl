@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:51:06
+// Date:         2025-01-26 21:44:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_10: Ref, f_14: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_10, f_14] }
-  Heap[o_10, $allocated] ==> Heap[Heap[o_10, f_14], $allocated]
+axiom (forall o_59: Ref, f_28: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_59, f_28] }
+  Heap[o_59, $allocated] ==> Heap[Heap[o_59, f_28], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_40: Ref, f_46: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_40, f_46] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_40, f_46) ==> Heap[o_40, f_46] == ExhaleHeap[o_40, f_46]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_44: Ref, f_58: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_44, f_58] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_44, f_58) ==> Heap[o_44, f_58] == ExhaleHeap[o_44, f_58]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_17: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_17), ExhaleHeap[null, PredicateMaskField(pm_f_17)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_17) && IsPredicateField(pm_f_17) ==> Heap[null, PredicateMaskField(pm_f_17)] == ExhaleHeap[null, PredicateMaskField(pm_f_17)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_54: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_54), ExhaleHeap[null, PredicateMaskField(pm_f_54)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_54) && IsPredicateField(pm_f_54) ==> Heap[null, PredicateMaskField(pm_f_54)] == ExhaleHeap[null, PredicateMaskField(pm_f_54)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_17: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_17) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_17) && IsPredicateField(pm_f_17) ==> (forall <A, B> o2_17: Ref, f_46: (Field A B) ::
-    { ExhaleHeap[o2_17, f_46] }
-    Heap[null, PredicateMaskField(pm_f_17)][o2_17, f_46] ==> Heap[o2_17, f_46] == ExhaleHeap[o2_17, f_46]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_54: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_54) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_54) && IsPredicateField(pm_f_54) ==> (forall <A, B> o2_55: Ref, f_58: (Field A B) ::
+    { ExhaleHeap[o2_55, f_58] }
+    Heap[null, PredicateMaskField(pm_f_54)][o2_55, f_58] ==> Heap[o2_55, f_58] == ExhaleHeap[o2_55, f_58]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_17: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_17), ExhaleHeap[null, WandMaskField(pm_f_17)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_17) && IsWandField(pm_f_17) ==> Heap[null, WandMaskField(pm_f_17)] == ExhaleHeap[null, WandMaskField(pm_f_17)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_54: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_54), ExhaleHeap[null, WandMaskField(pm_f_54)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_54) && IsWandField(pm_f_54) ==> Heap[null, WandMaskField(pm_f_54)] == ExhaleHeap[null, WandMaskField(pm_f_54)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_17: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_17) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_17) && IsWandField(pm_f_17) ==> (forall <A, B> o2_17: Ref, f_46: (Field A B) ::
-    { ExhaleHeap[o2_17, f_46] }
-    Heap[null, WandMaskField(pm_f_17)][o2_17, f_46] ==> Heap[o2_17, f_46] == ExhaleHeap[o2_17, f_46]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_54: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_54) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_54) && IsWandField(pm_f_54) ==> (forall <A, B> o2_55: Ref, f_58: (Field A B) ::
+    { ExhaleHeap[o2_55, f_58] }
+    Heap[null, WandMaskField(pm_f_54)][o2_55, f_58] ==> Heap[o2_55, f_58] == ExhaleHeap[o2_55, f_58]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_40: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_40, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_40, $allocated] ==> ExhaleHeap[o_40, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_44: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_44, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_44, $allocated] ==> ExhaleHeap[o_44, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_10: Ref, f_47: (Field A B), v: B ::
-  { Heap[o_10, f_47:=v] }
-  succHeap(Heap, Heap[o_10, f_47:=v])
+axiom (forall <A, B> Heap: HeapType, o_59: Ref, f_134: (Field A B), v: B ::
+  { Heap[o_59, f_134:=v] }
+  succHeap(Heap, Heap[o_59, f_134:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,24 +144,24 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(i_3: int): bool;
-function  neverTriggered2(i_5: int): bool;
-function  neverTriggered3(i_8_2: int): bool;
+function  neverTriggered1(i_3_2: int): bool;
+function  neverTriggered2(i_5_1: int): bool;
+function  neverTriggered3(i_8_1: int): bool;
 function  neverTriggered4(i_16_1: int): bool;
 function  neverTriggered5(i_22_1: int): bool;
-function  neverTriggered6(i_26: int): bool;
-function  neverTriggered7(i_30_2: int): bool;
-function  neverTriggered8(i_34_2: int): bool;
+function  neverTriggered6(i_26_1: int): bool;
+function  neverTriggered7(i_30: int): bool;
+function  neverTriggered8(i_34: int): bool;
 function  neverTriggered9(i_38: int): bool;
-function  neverTriggered10(i_43_2: int): bool;
-function  neverTriggered11(i_3: int): bool;
+function  neverTriggered10(i_43: int): bool;
+function  neverTriggered11(i_3_2: int): bool;
 function  neverTriggered12(i_9_1: int): bool;
 function  neverTriggered13(i_14_1: int): bool;
-function  neverTriggered14(i_3: int): bool;
+function  neverTriggered14(i_3_2: int): bool;
 function  neverTriggered15(tid_1: int): bool;
 function  neverTriggered16(i_7_1: int): bool;
-function  neverTriggered17(i_8_2: int): bool;
-function  neverTriggered18(i_3: int): bool;
+function  neverTriggered17(i_8_1: int): bool;
+function  neverTriggered18(i_3_2: int): bool;
 function  neverTriggered19(_x_tid_1: int): bool;
 function  neverTriggered20(i_11_1: int): bool;
 function  neverTriggered21(i_16_1: int): bool;
@@ -635,48 +635,48 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var i_14: int;
-  var j_5: int;
-  var i_2: int;
+  var i_18: int;
+  var j_14: int;
+  var i_3: int;
   var QPMask: MaskType;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_4: int;
-  var i_6: int;
+  var i_14: int;
   var __last_barrier: int;
   var half: int;
-  var offset: int;
+  var offset_1: int;
   var k: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var i_7: int;
+  var i_5: int;
   var i_12_1: int;
   var i_14_1: int;
-  var j_2_1: int;
-  var i_17: int;
+  var j_2_2: int;
+  var i_17_1: int;
   var ExhaleHeap: HeapType;
-  var i_8: int;
-  var j_3: int;
-  var i_9: int;
-  var i_10: int;
+  var i_15: int;
+  var j_16: int;
+  var i_7: int;
+  var i_21: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var i_28: int;
   var j_7_1: int;
-  var i_31_1: int;
+  var i_31: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_last_barrier: int;
-  var i_36_2: int;
+  var i_36: int;
   var j_10_2: int;
   var i_39: int;
-  var i_41_2: int;
-  var i_11: int;
-  var i_47_2: int;
-  var i_12: int;
-  var i_50_1: int;
+  var i_41: int;
+  var i_8: int;
+  var i_47: int;
+  var i_19: int;
+  var i_50: int;
   var i_9_1: int;
   
   // -- Initializing the state
@@ -706,7 +706,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     assume state(Heap, Mask);
     
     // -- Check definedness of |this.src| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@19.12--19.31) [14973]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@19.12--19.31) [152668]"}
         HasDirectPerm(Mask, this, src);
     assume Seq#Length(Heap[this, src]) == gsize;
     assume state(Heap, Mask);
@@ -718,7 +718,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     assume state(Heap, Mask);
     
     // -- Check definedness of |this.dst| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@21.12--21.31) [14974]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@21.12--21.31) [152669]"}
         HasDirectPerm(Mask, this, dst);
     assume Seq#Length(Heap[this, dst]) == gsize;
     assume state(Heap, Mask);
@@ -729,19 +729,19 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     
     // -- Check definedness of (forall i: Int, j: Int :: { this.src[i], this.src[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.src[i] != this.src[j])
       if (*) {
-        if (0 <= i_14 && (i_14 < gsize && (0 <= j_5 && (j_5 < gsize && i_14 != j_5)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@24.12--24.120) [14975]"}
+        if (0 <= i_18 && (i_18 < gsize && (0 <= j_14 && (j_14 < gsize && i_18 != j_14)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@24.12--24.120) [152670]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@24.12--24.120) [14976]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@24.12--24.120) [14977]"}
-            i_14 < Seq#Length(Heap[this, src]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@24.12--24.120) [14978]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@24.12--24.120) [152671]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@24.12--24.120) [152672]"}
+            i_18 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@24.12--24.120) [152673]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might be negative. (max-two-range.vpr@24.12--24.120) [14979]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might exceed sequence length. (max-two-range.vpr@24.12--24.120) [14980]"}
-            j_5 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might be negative. (max-two-range.vpr@24.12--24.120) [152674]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might exceed sequence length. (max-two-range.vpr@24.12--24.120) [152675]"}
+            j_14 < Seq#Length(Heap[this, src]);
         }
         assume false;
       }
@@ -753,66 +753,66 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     
     // -- Check definedness of (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, gsize), i_2)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@25.13--25.93) [14981]"}
+        if (Seq#Contains(Seq#Range(0, gsize), i_3)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@25.13--25.93) [152676]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@25.13--25.93) [14982]"}
-            i_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@25.13--25.93) [14983]"}
-            i_2 < Seq#Length(Heap[this, src]);
-          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@25.13--25.93) [14984]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@25.13--25.93) [152677]"}
+            i_3 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@25.13--25.93) [152678]"}
+            i_3 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@25.13--25.93) [152679]"}
             gsize != 0;
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@25.13--25.93) [14985]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@25.13--25.93) [152680]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && Seq#Contains(Seq#Range(0, gsize), i_3)) && Seq#Contains(Seq#Range(0, gsize), i_3_1)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_3) != Seq#Index(Heap[this, src], i_3_1)
+      (((i_3_2 != i_3_3 && Seq#Contains(Seq#Range(0, gsize), i_3_2)) && Seq#Contains(Seq#Range(0, gsize), i_3_3)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_3_2) != Seq#Index(Heap[this, src], i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-        Seq#Contains(Seq#Range(0, gsize), i_3) && NoPerm < 1 / gsize ==> qpRange1(Seq#Index(Heap[this, src], i_3)) && invRecv1(Seq#Index(Heap[this, src], i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+        Seq#Contains(Seq#Range(0, gsize), i_3_2) && NoPerm < 1 / gsize ==> qpRange1(Seq#Index(Heap[this, src], i_3_2)) && invRecv1(Seq#Index(Heap[this, src], i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv1(o_4)) && NoPerm < 1 / gsize) && qpRange1(o_4) ==> Seq#Index(Heap[this, src], invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv1(o_9)) && NoPerm < 1 / gsize) && qpRange1(o_9) ==> Seq#Index(Heap[this, src], invRecv1(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@25.13--25.93) [14986]"}
-      (forall i_3: int ::
-      { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-      Seq#Contains(Seq#Range(0, gsize), i_3) ==> 1 / gsize >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@25.13--25.93) [152681]"}
+      (forall i_3_2: int ::
+      { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+      Seq#Contains(Seq#Range(0, gsize), i_3_2) ==> 1 / gsize >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-        Seq#Contains(Seq#Range(0, gsize), i_3) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+        Seq#Contains(Seq#Range(0, gsize), i_3_2) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        ((Seq#Contains(Seq#Range(0, gsize), invRecv1(o_4)) && NoPerm < 1 / gsize) && qpRange1(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv1(o_4)) == o_4) && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv1(o_4)) && NoPerm < 1 / gsize) && qpRange1(o_4)) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        ((Seq#Contains(Seq#Range(0, gsize), invRecv1(o_9)) && NoPerm < 1 / gsize) && qpRange1(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv1(o_9)) == o_9) && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv1(o_9)) && NoPerm < 1 / gsize) && qpRange1(o_9)) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(this.dst[tid].Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@26.12--26.51) [14987]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@26.12--26.51) [152682]"}
         HasDirectPerm(Mask, this, dst);
-      assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@26.12--26.51) [14988]"}
+      assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@26.12--26.51) [152683]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@26.12--26.51) [14989]"}
+      assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@26.12--26.51) [152684]"}
         tid < Seq#Length(Heap[this, dst]);
     perm := FullPerm;
     assume Seq#Index(Heap[this, dst], tid) != null;
@@ -848,7 +848,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |this.src| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@33.11--33.30) [14990]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@33.11--33.30) [152685]"}
         HasDirectPerm(PostMask, this, src);
     assume Seq#Length(PostHeap[this, src]) == gsize;
     assume state(PostHeap, PostMask);
@@ -860,7 +860,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |this.dst| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@35.11--35.30) [14991]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@35.11--35.30) [152686]"}
         HasDirectPerm(PostMask, this, dst);
     assume Seq#Length(PostHeap[this, dst]) == gsize;
     assume state(PostHeap, PostMask);
@@ -870,17 +870,17 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.src == old(this.src)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@38.11--38.36) [14992]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@38.11--38.36) [152687]"}
         HasDirectPerm(PostMask, this, src);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@38.11--38.36) [14993]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@38.11--38.36) [152688]"}
         HasDirectPerm(oldMask, this, src);
     assume Seq#Equal(PostHeap[this, src], oldHeap[this, src]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.dst == old(this.dst)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@39.11--39.36) [14994]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@39.11--39.36) [152689]"}
         HasDirectPerm(PostMask, this, dst);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@39.11--39.36) [14995]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@39.11--39.36) [152690]"}
         HasDirectPerm(oldMask, this, dst);
     assume Seq#Equal(PostHeap[this, dst], oldHeap[this, dst]);
     assume state(PostHeap, PostMask);
@@ -888,54 +888,54 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     // -- Check definedness of (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize))
       if (*) {
         if (Seq#Contains(Seq#Range(0, gsize), i_4)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@40.12--40.92) [14996]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@40.12--40.92) [152691]"}
             HasDirectPerm(PostMask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@40.12--40.92) [14997]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@40.12--40.92) [152692]"}
             i_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@40.12--40.92) [14998]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@40.12--40.92) [152693]"}
             i_4 < Seq#Length(PostHeap[this, src]);
-          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@40.12--40.92) [14999]"}
+          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@40.12--40.92) [152694]"}
             gsize != 0;
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@40.12--40.92) [15000]"}
-      (forall i_5: int, i_5_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@40.12--40.92) [152695]"}
+      (forall i_5_1: int, i_5_2: int ::
       
-      (((i_5 != i_5_1 && Seq#Contains(Seq#Range(0, gsize), i_5)) && Seq#Contains(Seq#Range(0, gsize), i_5_1)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], i_5) != Seq#Index(PostHeap[this, src], i_5_1)
+      (((i_5_1 != i_5_2 && Seq#Contains(Seq#Range(0, gsize), i_5_1)) && Seq#Contains(Seq#Range(0, gsize), i_5_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], i_5_1) != Seq#Index(PostHeap[this, src], i_5_2)
     );
     
     // -- Define Inverse Function
-      assume (forall i_5: int ::
-        { Seq#Index(PostHeap[this, src], i_5) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_5) } { Seq#Contains(Seq#Range(0, gsize), i_5) } { Seq#Index(PostHeap[this, src], i_5) }
-        Seq#Contains(Seq#Range(0, gsize), i_5) && NoPerm < 1 / gsize ==> qpRange2(Seq#Index(PostHeap[this, src], i_5)) && invRecv2(Seq#Index(PostHeap[this, src], i_5)) == i_5
+      assume (forall i_5_1: int ::
+        { Seq#Index(PostHeap[this, src], i_5_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_5_1) } { Seq#Contains(Seq#Range(0, gsize), i_5_1) } { Seq#Index(PostHeap[this, src], i_5_1) }
+        Seq#Contains(Seq#Range(0, gsize), i_5_1) && NoPerm < 1 / gsize ==> qpRange2(Seq#Index(PostHeap[this, src], i_5_1)) && invRecv2(Seq#Index(PostHeap[this, src], i_5_1)) == i_5_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv2(o_4)) && NoPerm < 1 / gsize) && qpRange2(o_4) ==> Seq#Index(PostHeap[this, src], invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv2(o_9)) && NoPerm < 1 / gsize) && qpRange2(o_9) ==> Seq#Index(PostHeap[this, src], invRecv2(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@40.12--40.92) [15001]"}
-      (forall i_5: int ::
-      { Seq#Index(PostHeap[this, src], i_5) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_5) } { Seq#Contains(Seq#Range(0, gsize), i_5) } { Seq#Index(PostHeap[this, src], i_5) }
-      Seq#Contains(Seq#Range(0, gsize), i_5) ==> 1 / gsize >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@40.12--40.92) [152696]"}
+      (forall i_5_1: int ::
+      { Seq#Index(PostHeap[this, src], i_5_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_5_1) } { Seq#Contains(Seq#Range(0, gsize), i_5_1) } { Seq#Index(PostHeap[this, src], i_5_1) }
+      Seq#Contains(Seq#Range(0, gsize), i_5_1) ==> 1 / gsize >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_5: int ::
-        { Seq#Index(PostHeap[this, src], i_5) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_5) } { Seq#Contains(Seq#Range(0, gsize), i_5) } { Seq#Index(PostHeap[this, src], i_5) }
-        Seq#Contains(Seq#Range(0, gsize), i_5) && 1 / gsize > NoPerm ==> Seq#Index(PostHeap[this, src], i_5) != null
+      assume (forall i_5_1: int ::
+        { Seq#Index(PostHeap[this, src], i_5_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_5_1) } { Seq#Contains(Seq#Range(0, gsize), i_5_1) } { Seq#Index(PostHeap[this, src], i_5_1) }
+        Seq#Contains(Seq#Range(0, gsize), i_5_1) && 1 / gsize > NoPerm ==> Seq#Index(PostHeap[this, src], i_5_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        ((Seq#Contains(Seq#Range(0, gsize), invRecv2(o_4)) && NoPerm < 1 / gsize) && qpRange2(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], invRecv2(o_4)) == o_4) && QPMask[o_4, Integer_value] == PostMask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv2(o_4)) && NoPerm < 1 / gsize) && qpRange2(o_4)) ==> QPMask[o_4, Integer_value] == PostMask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        ((Seq#Contains(Seq#Range(0, gsize), invRecv2(o_9)) && NoPerm < 1 / gsize) && qpRange2(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], invRecv2(o_9)) == o_9) && QPMask[o_9, Integer_value] == PostMask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv2(o_9)) && NoPerm < 1 / gsize) && qpRange2(o_9)) ==> QPMask[o_9, Integer_value] == PostMask[o_9, Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -943,9 +943,9 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     if (tid == 0) {
       
       // -- Check definedness of acc(this.dst[0].Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@41.11--41.63) [15002]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@41.11--41.63) [152697]"}
           HasDirectPerm(PostMask, this, dst);
-        assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@41.11--41.63) [15003]"}
+        assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@41.11--41.63) [152698]"}
           0 < Seq#Length(PostHeap[this, dst]);
       perm := FullPerm;
       assume Seq#Index(PostHeap[this, dst], 0) != null;
@@ -957,21 +957,21 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } 0 <= i && i < tcount ==> this.dst[0].Integer_value >= this.src[i].Integer_value)
         if (*) {
-          if (0 <= i_6 && i_6 < tcount) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@42.12--42.134) [15004]"}
+          if (0 <= i_14 && i_14 < tcount) {
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@42.12--42.134) [152699]"}
               HasDirectPerm(PostMask, this, dst);
-            assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@42.12--42.134) [15005]"}
+            assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@42.12--42.134) [152700]"}
               0 < Seq#Length(PostHeap[this, dst]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@42.12--42.134) [15006]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@42.12--42.134) [152701]"}
               HasDirectPerm(PostMask, Seq#Index(PostHeap[this, dst], 0), Integer_value);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@42.12--42.134) [15007]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@42.12--42.134) [152702]"}
               HasDirectPerm(PostMask, this, src);
-            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@42.12--42.134) [15008]"}
-              i_6 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@42.12--42.134) [15009]"}
-              i_6 < Seq#Length(PostHeap[this, src]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@42.12--42.134) [15010]"}
-              HasDirectPerm(PostMask, Seq#Index(PostHeap[this, src], i_6), Integer_value);
+            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@42.12--42.134) [152703]"}
+              i_14 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@42.12--42.134) [152704]"}
+              i_14 < Seq#Length(PostHeap[this, src]);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@42.12--42.134) [152705]"}
+              HasDirectPerm(PostMask, Seq#Index(PostHeap[this, src], i_14), Integer_value);
           }
           assume false;
         }
@@ -994,7 +994,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     assume state(Heap, Mask);
   
   // -- Translating statement: offset := (tid == 0 ? 0 : half) -- max-two-range.vpr@50.3--50.34
-    offset := (if tid == 0 then 0 else half);
+    offset_1 := (if tid == 0 then 0 else half);
     assume state(Heap, Mask);
   
   // -- Translating statement: if (tid < 2) -- max-two-range.vpr@51.3--85.4
@@ -1003,25 +1003,25 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
       // -- Translating statement: this.dst[tid].Integer_value := this.src[offset].Integer_value -- max-two-range.vpr@52.5--52.66
         
         // -- Check definedness of this.dst[tid]
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@52.5--52.66) [15011]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@52.5--52.66) [152706]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Assignment might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@52.5--52.66) [15012]"}
+          assert {:msg "  Assignment might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@52.5--52.66) [152707]"}
             tid >= 0;
-          assert {:msg "  Assignment might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@52.5--52.66) [15013]"}
+          assert {:msg "  Assignment might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@52.5--52.66) [152708]"}
             tid < Seq#Length(Heap[this, dst]);
         
         // -- Check definedness of this.src[offset].Integer_value
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.src (max-two-range.vpr@52.5--52.66) [15014]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.src (max-two-range.vpr@52.5--52.66) [152709]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Assignment might fail. Index this.src[offset] into this.src might be negative. (max-two-range.vpr@52.5--52.66) [15015]"}
-            offset >= 0;
-          assert {:msg "  Assignment might fail. Index this.src[offset] into this.src might exceed sequence length. (max-two-range.vpr@52.5--52.66) [15016]"}
-            offset < Seq#Length(Heap[this, src]);
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.src[offset].Integer_value (max-two-range.vpr@52.5--52.66) [15017]"}
-            HasDirectPerm(Mask, Seq#Index(Heap[this, src], offset), Integer_value);
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@52.5--52.66) [15018]"}
+          assert {:msg "  Assignment might fail. Index this.src[offset] into this.src might be negative. (max-two-range.vpr@52.5--52.66) [152710]"}
+            offset_1 >= 0;
+          assert {:msg "  Assignment might fail. Index this.src[offset] into this.src might exceed sequence length. (max-two-range.vpr@52.5--52.66) [152711]"}
+            offset_1 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.src[offset].Integer_value (max-two-range.vpr@52.5--52.66) [152712]"}
+            HasDirectPerm(Mask, Seq#Index(Heap[this, src], offset_1), Integer_value);
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@52.5--52.66) [152713]"}
           FullPerm == Mask[Seq#Index(Heap[this, dst], tid), Integer_value];
-        Heap := Heap[Seq#Index(Heap[this, dst], tid), Integer_value:=Heap[Seq#Index(Heap[this, src], offset), Integer_value]];
+        Heap := Heap[Seq#Index(Heap[this, dst], tid), Integer_value:=Heap[Seq#Index(Heap[this, src], offset_1), Integer_value]];
         assume state(Heap, Mask);
       
       // -- Translating statement: k := 0 -- max-two-range.vpr@53.5--53.11
@@ -1033,24 +1033,24 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
         ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this.dst[tid].Integer_value >= this.src[offset].Integer_value
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@54.12--54.73) [15019]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@54.12--54.73) [152714]"}
             HasDirectPerm(ExhaleWellDef0Mask, this, dst);
-          assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@54.12--54.73) [15020]"}
+          assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@54.12--54.73) [152715]"}
             tid >= 0;
-          assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@54.12--54.73) [15021]"}
+          assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@54.12--54.73) [152716]"}
             tid < Seq#Length(Heap[this, dst]);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@54.12--54.73) [15022]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@54.12--54.73) [152717]"}
             HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, dst], tid), Integer_value);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.src (max-two-range.vpr@54.12--54.73) [15023]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.src (max-two-range.vpr@54.12--54.73) [152718]"}
             HasDirectPerm(ExhaleWellDef0Mask, this, src);
-          assert {:msg "  Assert might fail. Index this.src[offset] into this.src might be negative. (max-two-range.vpr@54.12--54.73) [15024]"}
-            offset >= 0;
-          assert {:msg "  Assert might fail. Index this.src[offset] into this.src might exceed sequence length. (max-two-range.vpr@54.12--54.73) [15025]"}
-            offset < Seq#Length(Heap[this, src]);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.src[offset].Integer_value (max-two-range.vpr@54.12--54.73) [15026]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, src], offset), Integer_value);
-        assert {:msg "  Assert might fail. Assertion this.dst[tid].Integer_value >= this.src[offset].Integer_value might not hold. (max-two-range.vpr@54.12--54.73) [15027]"}
-          Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset), Integer_value];
+          assert {:msg "  Assert might fail. Index this.src[offset] into this.src might be negative. (max-two-range.vpr@54.12--54.73) [152719]"}
+            offset_1 >= 0;
+          assert {:msg "  Assert might fail. Index this.src[offset] into this.src might exceed sequence length. (max-two-range.vpr@54.12--54.73) [152720]"}
+            offset_1 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.src[offset].Integer_value (max-two-range.vpr@54.12--54.73) [152721]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, src], offset_1), Integer_value);
+        assert {:msg "  Assert might fail. Assertion this.dst[tid].Integer_value >= this.src[offset].Integer_value might not hold. (max-two-range.vpr@54.12--54.73) [152722]"}
+          Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1), Integer_value];
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this.dst[tid].Integer_value >= this.src[offset + 0].Integer_value -- max-two-range.vpr@55.5--55.77
@@ -1058,24 +1058,24 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
         ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this.dst[tid].Integer_value >= this.src[offset + 0].Integer_value
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@55.12--55.77) [15028]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@55.12--55.77) [152723]"}
             HasDirectPerm(ExhaleWellDef0Mask, this, dst);
-          assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@55.12--55.77) [15029]"}
+          assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@55.12--55.77) [152724]"}
             tid >= 0;
-          assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@55.12--55.77) [15030]"}
+          assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@55.12--55.77) [152725]"}
             tid < Seq#Length(Heap[this, dst]);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@55.12--55.77) [15031]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@55.12--55.77) [152726]"}
             HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, dst], tid), Integer_value);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.src (max-two-range.vpr@55.12--55.77) [15032]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.src (max-two-range.vpr@55.12--55.77) [152727]"}
             HasDirectPerm(ExhaleWellDef0Mask, this, src);
-          assert {:msg "  Assert might fail. Index this.src[offset + 0] into this.src might be negative. (max-two-range.vpr@55.12--55.77) [15033]"}
-            offset + 0 >= 0;
-          assert {:msg "  Assert might fail. Index this.src[offset + 0] into this.src might exceed sequence length. (max-two-range.vpr@55.12--55.77) [15034]"}
-            offset + 0 < Seq#Length(Heap[this, src]);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.src[offset + 0].Integer_value (max-two-range.vpr@55.12--55.77) [15035]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, src], offset + 0), Integer_value);
-        assert {:msg "  Assert might fail. Assertion this.dst[tid].Integer_value >= this.src[offset + 0].Integer_value might not hold. (max-two-range.vpr@55.12--55.77) [15036]"}
-          Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset + 0), Integer_value];
+          assert {:msg "  Assert might fail. Index this.src[offset + 0] into this.src might be negative. (max-two-range.vpr@55.12--55.77) [152728]"}
+            offset_1 + 0 >= 0;
+          assert {:msg "  Assert might fail. Index this.src[offset + 0] into this.src might exceed sequence length. (max-two-range.vpr@55.12--55.77) [152729]"}
+            offset_1 + 0 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.src[offset + 0].Integer_value (max-two-range.vpr@55.12--55.77) [152730]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, src], offset_1 + 0), Integer_value);
+        assert {:msg "  Assert might fail. Assertion this.dst[tid].Integer_value >= this.src[offset + 0].Integer_value might not hold. (max-two-range.vpr@55.12--55.77) [152731]"}
+          Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1 + 0), Integer_value];
         assume state(Heap, Mask);
       
       // -- Translating statement: assert (forall i: Int ::0 <= i && i < k ==>
@@ -1085,36 +1085,36 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
         
         // -- Check definedness of (forall i: Int ::0 <= i && i < k ==> this.dst[tid].Integer_value >= this.src[offset + i].Integer_value)
           if (*) {
-            if (0 <= i_7 && i_7 < k) {
-              assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@56.13--56.121) [15037]"}
+            if (0 <= i_5 && i_5 < k) {
+              assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@56.13--56.121) [152732]"}
                 HasDirectPerm(ExhaleWellDef0Mask, this, dst);
-              assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@56.13--56.121) [15038]"}
+              assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@56.13--56.121) [152733]"}
                 tid >= 0;
-              assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@56.13--56.121) [15039]"}
+              assert {:msg "  Assert might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@56.13--56.121) [152734]"}
                 tid < Seq#Length(Heap[this, dst]);
-              assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@56.13--56.121) [15040]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@56.13--56.121) [152735]"}
                 HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, dst], tid), Integer_value);
-              assert {:msg "  Assert might fail. There might be insufficient permission to access this.src (max-two-range.vpr@56.13--56.121) [15041]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access this.src (max-two-range.vpr@56.13--56.121) [152736]"}
                 HasDirectPerm(ExhaleWellDef0Mask, this, src);
-              assert {:msg "  Assert might fail. Index this.src[offset + i] into this.src might be negative. (max-two-range.vpr@56.13--56.121) [15042]"}
-                offset + i_7 >= 0;
-              assert {:msg "  Assert might fail. Index this.src[offset + i] into this.src might exceed sequence length. (max-two-range.vpr@56.13--56.121) [15043]"}
-                offset + i_7 < Seq#Length(Heap[this, src]);
-              assert {:msg "  Assert might fail. There might be insufficient permission to access this.src[offset + i].Integer_value (max-two-range.vpr@56.13--56.121) [15044]"}
-                HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, src], offset + i_7), Integer_value);
+              assert {:msg "  Assert might fail. Index this.src[offset + i] into this.src might be negative. (max-two-range.vpr@56.13--56.121) [152737]"}
+                offset_1 + i_5 >= 0;
+              assert {:msg "  Assert might fail. Index this.src[offset + i] into this.src might exceed sequence length. (max-two-range.vpr@56.13--56.121) [152738]"}
+                offset_1 + i_5 < Seq#Length(Heap[this, src]);
+              assert {:msg "  Assert might fail. There might be insufficient permission to access this.src[offset + i].Integer_value (max-two-range.vpr@56.13--56.121) [152739]"}
+                HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, src], offset_1 + i_5), Integer_value);
             }
             assume false;
           }
         if (*) {
           if (0 <= i_12_1 && i_12_1 < k) {
-            assert {:msg "  Assert might fail. Assertion this.dst[tid].Integer_value >= this.src[offset + i].Integer_value might not hold. (max-two-range.vpr@56.13--56.121) [15045]"}
-              Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset + i_12_1), Integer_value];
+            assert {:msg "  Assert might fail. Assertion this.dst[tid].Integer_value >= this.src[offset + i].Integer_value might not hold. (max-two-range.vpr@56.13--56.121) [152740]"}
+              Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1 + i_12_1), Integer_value];
           }
           assume false;
         }
         assume (forall i_13_1_1: int ::
           
-          0 <= i_13_1_1 && i_13_1_1 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset + i_13_1_1), Integer_value]
+          0 <= i_13_1_1 && i_13_1_1 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1 + i_13_1_1), Integer_value]
         );
         assume state(Heap, Mask);
       
@@ -1125,40 +1125,40 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
           // -- Exhale loop invariant before loop
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Loop invariant 0 <= tid might not hold on entry. Assertion 0 <= tid might not hold. (max-two-range.vpr@58.17--58.25) [15046]"}
+            assert {:msg "  Loop invariant 0 <= tid might not hold on entry. Assertion 0 <= tid might not hold. (max-two-range.vpr@58.17--58.25) [152741]"}
               0 <= tid;
-            assert {:msg "  Loop invariant tid < tcount might not hold on entry. Assertion tid < tcount might not hold. (max-two-range.vpr@59.17--59.29) [15047]"}
+            assert {:msg "  Loop invariant tid < tcount might not hold on entry. Assertion tid < tcount might not hold. (max-two-range.vpr@59.17--59.29) [152742]"}
               tid < tcount;
-            assert {:msg "  Loop invariant tid == lid might not hold on entry. Assertion tid == lid might not hold. (max-two-range.vpr@60.17--60.27) [15048]"}
+            assert {:msg "  Loop invariant tid == lid might not hold on entry. Assertion tid == lid might not hold. (max-two-range.vpr@60.17--60.27) [152743]"}
               tid == lid;
-            assert {:msg "  Loop invariant tcount == gsize might not hold on entry. Assertion tcount == gsize might not hold. (max-two-range.vpr@61.17--61.32) [15049]"}
+            assert {:msg "  Loop invariant tcount == gsize might not hold on entry. Assertion tcount == gsize might not hold. (max-two-range.vpr@61.17--61.32) [152744]"}
               tcount == gsize;
-            assert {:msg "  Loop invariant gid == 0 might not hold on entry. Assertion gid == 0 might not hold. (max-two-range.vpr@62.17--62.25) [15050]"}
+            assert {:msg "  Loop invariant gid == 0 might not hold on entry. Assertion gid == 0 might not hold. (max-two-range.vpr@62.17--62.25) [152745]"}
               gid == 0;
-            assert {:msg "  Loop invariant acc(this.src, wildcard) might not hold on entry. There might be insufficient permission to access this.src (max-two-range.vpr@63.17--63.40) [15051]"}
+            assert {:msg "  Loop invariant acc(this.src, wildcard) might not hold on entry. There might be insufficient permission to access this.src (max-two-range.vpr@63.17--63.40) [152746]"}
               Mask[this, src] > NoPerm;
             havoc wildcard;
             assume wildcard < Mask[this, src];
             Mask := Mask[this, src:=Mask[this, src] - wildcard];
-            assert {:msg "  Loop invariant |this.src| == gsize might not hold on entry. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@64.17--64.36) [15052]"}
+            assert {:msg "  Loop invariant |this.src| == gsize might not hold on entry. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@64.17--64.36) [152747]"}
               Seq#Length(Heap[this, src]) == gsize;
-            assert {:msg "  Loop invariant acc(this.dst, wildcard) might not hold on entry. There might be insufficient permission to access this.dst (max-two-range.vpr@65.17--65.40) [15053]"}
+            assert {:msg "  Loop invariant acc(this.dst, wildcard) might not hold on entry. There might be insufficient permission to access this.dst (max-two-range.vpr@65.17--65.40) [152748]"}
               Mask[this, dst] > NoPerm;
             havoc wildcard;
             assume wildcard < Mask[this, dst];
             Mask := Mask[this, dst:=Mask[this, dst] - wildcard];
-            assert {:msg "  Loop invariant |this.dst| == gsize might not hold on entry. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@66.17--66.36) [15054]"}
+            assert {:msg "  Loop invariant |this.dst| == gsize might not hold on entry. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@66.17--66.36) [152749]"}
               Seq#Length(Heap[this, dst]) == gsize;
-            assert {:msg "  Loop invariant 4 <= gsize might not hold on entry. Assertion 4 <= gsize might not hold. (max-two-range.vpr@67.17--67.27) [15055]"}
+            assert {:msg "  Loop invariant 4 <= gsize might not hold on entry. Assertion 4 <= gsize might not hold. (max-two-range.vpr@67.17--67.27) [152750]"}
               4 <= gsize;
-            assert {:msg "  Loop invariant gsize % 2 == 0 might not hold on entry. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@68.17--68.31) [15056]"}
+            assert {:msg "  Loop invariant gsize % 2 == 0 might not hold on entry. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@68.17--68.31) [152751]"}
               gsize mod 2 == 0;
-            assert {:msg "  Loop invariant offset == (tid == 0 ? 0 : half) might not hold on entry. Assertion offset == (tid == 0 ? 0 : half) might not hold. (max-two-range.vpr@69.17--69.48) [15057]"}
-              offset == (if tid == 0 then 0 else half);
+            assert {:msg "  Loop invariant offset == (tid == 0 ? 0 : half) might not hold on entry. Assertion offset == (tid == 0 ? 0 : half) might not hold. (max-two-range.vpr@69.17--69.48) [152752]"}
+              offset_1 == (if tid == 0 then 0 else half);
             if (*) {
-              if (0 <= i_14_1 && (i_14_1 < gsize && (0 <= j_2_1 && (j_2_1 < gsize && i_14_1 != j_2_1)))) {
-                assert {:msg "  Loop invariant (forall i: Int, j: Int :: { this.src[i], this.src[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.src[i] != this.src[j]) might not hold on entry. Assertion this.src[i] != this.src[j] might not hold. (max-two-range.vpr@70.17--70.125) [15058]"}
-                  Seq#Index(Heap[this, src], i_14_1) != Seq#Index(Heap[this, src], j_2_1);
+              if (0 <= i_14_1 && (i_14_1 < gsize && (0 <= j_2_2 && (j_2_2 < gsize && i_14_1 != j_2_2)))) {
+                assert {:msg "  Loop invariant (forall i: Int, j: Int :: { this.src[i], this.src[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.src[i] != this.src[j]) might not hold on entry. Assertion this.src[i] != this.src[j] might not hold. (max-two-range.vpr@70.17--70.125) [152753]"}
+                  Seq#Index(Heap[this, src], i_14_1) != Seq#Index(Heap[this, src], j_2_2);
               }
               assume false;
             }
@@ -1169,21 +1169,21 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not hold on entry. Fraction 1 / gsize might be negative. (max-two-range.vpr@71.18--71.98) [15059]"}
+              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not hold on entry. Fraction 1 / gsize might be negative. (max-two-range.vpr@71.18--71.98) [152754]"}
                 (forall i_16_1: int ::
                 { Seq#Index(Heap[this, src], i_16_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_16_1) } { Seq#Contains(Seq#Range(0, gsize), i_16_1) } { Seq#Index(Heap[this, src], i_16_1) }
                 Seq#Contains(Seq#Range(0, gsize), i_16_1) && dummyFunction(Heap[Seq#Index(Heap[this, src], i_16_1), Integer_value]) ==> 1 / gsize >= NoPerm
               );
             
             // -- check if receiver this.src[i] is injective
-              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not hold on entry. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@71.18--71.98) [15060]"}
+              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not hold on entry. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@71.18--71.98) [152755]"}
                 (forall i_16_1: int, i_16_2: int ::
                 { neverTriggered4(i_16_1), neverTriggered4(i_16_2) }
                 (((i_16_1 != i_16_2 && Seq#Contains(Seq#Range(0, gsize), i_16_1)) && Seq#Contains(Seq#Range(0, gsize), i_16_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_16_1) != Seq#Index(Heap[this, src], i_16_2)
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not hold on entry. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@71.18--71.98) [15061]"}
+              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not hold on entry. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@71.18--71.98) [152756]"}
                 (forall i_16_1: int ::
                 { Seq#Index(Heap[this, src], i_16_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_16_1) } { Seq#Contains(Seq#Range(0, gsize), i_16_1) } { Seq#Index(Heap[this, src], i_16_1) }
                 Seq#Contains(Seq#Range(0, gsize), i_16_1) ==> Mask[Seq#Index(Heap[this, src], i_16_1), Integer_value] >= 1 / gsize
@@ -1194,30 +1194,30 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
                 { Seq#Index(Heap[this, src], i_16_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_16_1) } { Seq#Contains(Seq#Range(0, gsize), i_16_1) } { Seq#Index(Heap[this, src], i_16_1) }
                 Seq#Contains(Seq#Range(0, gsize), i_16_1) && NoPerm < 1 / gsize ==> qpRange4(Seq#Index(Heap[this, src], i_16_1)) && invRecv4(Seq#Index(Heap[this, src], i_16_1)) == i_16_1
               );
-              assume (forall o_4: Ref ::
-                { invRecv4(o_4) }
-                Seq#Contains(Seq#Range(0, gsize), invRecv4(o_4)) && (NoPerm < 1 / gsize && qpRange4(o_4)) ==> Seq#Index(Heap[this, src], invRecv4(o_4)) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv4(o_9) }
+                Seq#Contains(Seq#Range(0, gsize), invRecv4(o_9)) && (NoPerm < 1 / gsize && qpRange4(o_9)) ==> Seq#Index(Heap[this, src], invRecv4(o_9)) == o_9
               );
             
             // -- assume permission updates for field Integer_value
-              assume (forall o_4: Ref ::
-                { QPMask[o_4, Integer_value] }
-                (Seq#Contains(Seq#Range(0, gsize), invRecv4(o_4)) && (NoPerm < 1 / gsize && qpRange4(o_4)) ==> Seq#Index(Heap[this, src], invRecv4(o_4)) == o_4 && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv4(o_4)) && (NoPerm < 1 / gsize && qpRange4(o_4))) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+              assume (forall o_9: Ref ::
+                { QPMask[o_9, Integer_value] }
+                (Seq#Contains(Seq#Range(0, gsize), invRecv4(o_9)) && (NoPerm < 1 / gsize && qpRange4(o_9)) ==> Seq#Index(Heap[this, src], invRecv4(o_9)) == o_9 && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv4(o_9)) && (NoPerm < 1 / gsize && qpRange4(o_9))) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
               );
             
             // -- assume permission updates for independent locations
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { QPMask[o_4, f_5] }
-                f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { QPMask[o_9, f_5] }
+                f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
             Mask := QPMask;
-            assert {:msg "  Loop invariant false || __last_barrier == 0 might not hold on entry. Assertion false || __last_barrier == 0 might not hold. (max-two-range.vpr@72.17--72.47) [15062]"}
+            assert {:msg "  Loop invariant false || __last_barrier == 0 might not hold on entry. Assertion false || __last_barrier == 0 might not hold. (max-two-range.vpr@72.17--72.47) [152757]"}
               __last_barrier == 0;
             if (__last_barrier == 1) {
               if (tid == 0) {
                 perm := FullPerm;
                 if (perm != NoPerm) {
-                  assert {:msg "  Loop invariant __last_barrier == 1 ==> (tid == 0 ==> acc(this.dst[0].Integer_value, write)) && (tid == 0 ==> acc(this.dst[1].Integer_value, write)) might not hold on entry. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@73.17--73.155) [15063]"}
+                  assert {:msg "  Loop invariant __last_barrier == 1 ==> (tid == 0 ==> acc(this.dst[0].Integer_value, write)) && (tid == 0 ==> acc(this.dst[1].Integer_value, write)) might not hold on entry. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@73.17--73.155) [152758]"}
                     perm <= Mask[Seq#Index(Heap[this, dst], 0), Integer_value];
                 }
                 Mask := Mask[Seq#Index(Heap[this, dst], 0), Integer_value:=Mask[Seq#Index(Heap[this, dst], 0), Integer_value] - perm];
@@ -1225,7 +1225,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
               if (tid == 0) {
                 perm := FullPerm;
                 if (perm != NoPerm) {
-                  assert {:msg "  Loop invariant __last_barrier == 1 ==> (tid == 0 ==> acc(this.dst[0].Integer_value, write)) && (tid == 0 ==> acc(this.dst[1].Integer_value, write)) might not hold on entry. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@73.17--73.155) [15064]"}
+                  assert {:msg "  Loop invariant __last_barrier == 1 ==> (tid == 0 ==> acc(this.dst[0].Integer_value, write)) && (tid == 0 ==> acc(this.dst[1].Integer_value, write)) might not hold on entry. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@73.17--73.155) [152759]"}
                     perm <= Mask[Seq#Index(Heap[this, dst], 1), Integer_value];
                 }
                 Mask := Mask[Seq#Index(Heap[this, dst], 1), Integer_value:=Mask[Seq#Index(Heap[this, dst], 1), Integer_value] - perm];
@@ -1234,25 +1234,25 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             if (__last_barrier == 0) {
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  Loop invariant __last_barrier == 0 ==> acc(this.dst[tid].Integer_value, write) might not hold on entry. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@74.17--74.82) [15065]"}
+                assert {:msg "  Loop invariant __last_barrier == 0 ==> acc(this.dst[tid].Integer_value, write) might not hold on entry. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@74.17--74.82) [152760]"}
                   perm <= Mask[Seq#Index(Heap[this, dst], tid), Integer_value];
               }
               Mask := Mask[Seq#Index(Heap[this, dst], tid), Integer_value:=Mask[Seq#Index(Heap[this, dst], tid), Integer_value] - perm];
             }
-            assert {:msg "  Loop invariant 0 <= k && k <= half might not hold on entry. Assertion 0 <= k might not hold. (max-two-range.vpr@75.17--75.40) [15066]"}
+            assert {:msg "  Loop invariant 0 <= k && k <= half might not hold on entry. Assertion 0 <= k might not hold. (max-two-range.vpr@75.17--75.40) [152761]"}
               0 <= k;
-            assert {:msg "  Loop invariant 0 <= k && k <= half might not hold on entry. Assertion k <= half might not hold. (max-two-range.vpr@75.17--75.40) [15067]"}
+            assert {:msg "  Loop invariant 0 <= k && k <= half might not hold on entry. Assertion k <= half might not hold. (max-two-range.vpr@75.17--75.40) [152762]"}
               k <= half;
             if (*) {
-              if (0 <= i_17 && i_17 < k) {
-                assert {:msg "  Loop invariant (forall i: Int ::0 <= i && i < k ==> this.dst[tid].Integer_value >= this.src[offset + i].Integer_value) might not hold on entry. Assertion this.dst[tid].Integer_value >= this.src[offset + i].Integer_value might not hold. (max-two-range.vpr@76.18--76.126) [15068]"}
-                  Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset + i_17), Integer_value];
+              if (0 <= i_17_1 && i_17_1 < k) {
+                assert {:msg "  Loop invariant (forall i: Int ::0 <= i && i < k ==> this.dst[tid].Integer_value >= this.src[offset + i].Integer_value) might not hold on entry. Assertion this.dst[tid].Integer_value >= this.src[offset + i].Integer_value might not hold. (max-two-range.vpr@76.18--76.126) [152763]"}
+                  Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1 + i_17_1), Integer_value];
               }
               assume false;
             }
             assume (forall i_18_1_1: int ::
               
-              0 <= i_18_1_1 && i_18_1_1 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset + i_18_1_1), Integer_value]
+              0 <= i_18_1_1 && i_18_1_1 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1 + i_18_1_1), Integer_value]
             );
             // Finish exhale
             havoc ExhaleHeap;
@@ -1282,7 +1282,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             assume state(Heap, Mask);
             
             // -- Check definedness of |this.src| == gsize
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@64.17--64.36) [15069]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@64.17--64.36) [152764]"}
                 HasDirectPerm(Mask, this, src);
             assume Seq#Length(Heap[this, src]) == gsize;
             assume state(Heap, Mask);
@@ -1294,7 +1294,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             assume state(Heap, Mask);
             
             // -- Check definedness of |this.dst| == gsize
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@66.17--66.36) [15070]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@66.17--66.36) [152765]"}
                 HasDirectPerm(Mask, this, dst);
             assume Seq#Length(Heap[this, dst]) == gsize;
             assume state(Heap, Mask);
@@ -1302,49 +1302,49 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             assume state(Heap, Mask);
             assume gsize mod 2 == 0;
             assume state(Heap, Mask);
-            assume offset == (if tid == 0 then 0 else half);
+            assume offset_1 == (if tid == 0 then 0 else half);
             assume state(Heap, Mask);
             
             // -- Check definedness of (forall i: Int, j: Int :: { this.src[i], this.src[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.src[i] != this.src[j])
               if (*) {
-                if (0 <= i_8 && (i_8 < gsize && (0 <= j_3 && (j_3 < gsize && i_8 != j_3)))) {
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@70.17--70.125) [15071]"}
+                if (0 <= i_15 && (i_15 < gsize && (0 <= j_16 && (j_16 < gsize && i_15 != j_16)))) {
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@70.17--70.125) [152766]"}
                     HasDirectPerm(Mask, this, src);
-                  assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@70.17--70.125) [15072]"}
-                    i_8 >= 0;
-                  assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@70.17--70.125) [15073]"}
-                    i_8 < Seq#Length(Heap[this, src]);
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@70.17--70.125) [15074]"}
+                  assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@70.17--70.125) [152767]"}
+                    i_15 >= 0;
+                  assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@70.17--70.125) [152768]"}
+                    i_15 < Seq#Length(Heap[this, src]);
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@70.17--70.125) [152769]"}
                     HasDirectPerm(Mask, this, src);
-                  assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might be negative. (max-two-range.vpr@70.17--70.125) [15075]"}
-                    j_3 >= 0;
-                  assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might exceed sequence length. (max-two-range.vpr@70.17--70.125) [15076]"}
-                    j_3 < Seq#Length(Heap[this, src]);
+                  assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might be negative. (max-two-range.vpr@70.17--70.125) [152770]"}
+                    j_16 >= 0;
+                  assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might exceed sequence length. (max-two-range.vpr@70.17--70.125) [152771]"}
+                    j_16 < Seq#Length(Heap[this, src]);
                 }
                 assume false;
               }
-            assume (forall i_20_1: int, j_5_1: int ::
-              { Seq#Index(Heap[this, src], i_20_1), Seq#Index(Heap[this, src], j_5_1) }
-              0 <= i_20_1 && (i_20_1 < gsize && (0 <= j_5_1 && (j_5_1 < gsize && i_20_1 != j_5_1))) ==> Seq#Index(Heap[this, src], i_20_1) != Seq#Index(Heap[this, src], j_5_1)
+            assume (forall i_20_2: int, j_5: int ::
+              { Seq#Index(Heap[this, src], i_20_2), Seq#Index(Heap[this, src], j_5) }
+              0 <= i_20_2 && (i_20_2 < gsize && (0 <= j_5 && (j_5 < gsize && i_20_2 != j_5))) ==> Seq#Index(Heap[this, src], i_20_2) != Seq#Index(Heap[this, src], j_5)
             );
             assume state(Heap, Mask);
             
             // -- Check definedness of (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize))
               if (*) {
-                if (Seq#Contains(Seq#Range(0, gsize), i_9)) {
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@71.18--71.98) [15077]"}
+                if (Seq#Contains(Seq#Range(0, gsize), i_7)) {
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@71.18--71.98) [152772]"}
                     HasDirectPerm(Mask, this, src);
-                  assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@71.18--71.98) [15078]"}
-                    i_9 >= 0;
-                  assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@71.18--71.98) [15079]"}
-                    i_9 < Seq#Length(Heap[this, src]);
-                  assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@71.18--71.98) [15080]"}
+                  assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@71.18--71.98) [152773]"}
+                    i_7 >= 0;
+                  assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@71.18--71.98) [152774]"}
+                    i_7 < Seq#Length(Heap[this, src]);
+                  assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@71.18--71.98) [152775]"}
                     gsize != 0;
                 }
                 assume false;
               }
             havoc QPMask;
-            assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@71.18--71.98) [15081]"}
+            assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@71.18--71.98) [152776]"}
               (forall i_22_1: int, i_22_2: int ::
               
               (((i_22_1 != i_22_2 && Seq#Contains(Seq#Range(0, gsize), i_22_1)) && Seq#Contains(Seq#Range(0, gsize), i_22_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_22_1) != Seq#Index(Heap[this, src], i_22_2)
@@ -1355,12 +1355,12 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
                 { Seq#Index(Heap[this, src], i_22_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_22_1) } { Seq#Contains(Seq#Range(0, gsize), i_22_1) } { Seq#Index(Heap[this, src], i_22_1) }
                 Seq#Contains(Seq#Range(0, gsize), i_22_1) && NoPerm < 1 / gsize ==> qpRange5(Seq#Index(Heap[this, src], i_22_1)) && invRecv5(Seq#Index(Heap[this, src], i_22_1)) == i_22_1
               );
-              assume (forall o_4: Ref ::
-                { invRecv5(o_4) }
-                (Seq#Contains(Seq#Range(0, gsize), invRecv5(o_4)) && NoPerm < 1 / gsize) && qpRange5(o_4) ==> Seq#Index(Heap[this, src], invRecv5(o_4)) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv5(o_9) }
+                (Seq#Contains(Seq#Range(0, gsize), invRecv5(o_9)) && NoPerm < 1 / gsize) && qpRange5(o_9) ==> Seq#Index(Heap[this, src], invRecv5(o_9)) == o_9
               );
             // Check that permission expression is non-negative for all fields
-            assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@71.18--71.98) [15082]"}
+            assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@71.18--71.98) [152777]"}
               (forall i_22_1: int ::
               { Seq#Index(Heap[this, src], i_22_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_22_1) } { Seq#Contains(Seq#Range(0, gsize), i_22_1) } { Seq#Index(Heap[this, src], i_22_1) }
               Seq#Contains(Seq#Range(0, gsize), i_22_1) ==> 1 / gsize >= NoPerm
@@ -1373,13 +1373,13 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
               );
             
             // -- Define permissions
-              assume (forall o_4: Ref ::
-                { QPMask[o_4, Integer_value] }
-                ((Seq#Contains(Seq#Range(0, gsize), invRecv5(o_4)) && NoPerm < 1 / gsize) && qpRange5(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv5(o_4)) == o_4) && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv5(o_4)) && NoPerm < 1 / gsize) && qpRange5(o_4)) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+              assume (forall o_9: Ref ::
+                { QPMask[o_9, Integer_value] }
+                ((Seq#Contains(Seq#Range(0, gsize), invRecv5(o_9)) && NoPerm < 1 / gsize) && qpRange5(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv5(o_9)) == o_9) && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv5(o_9)) && NoPerm < 1 / gsize) && qpRange5(o_9)) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
               );
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
             Mask := QPMask;
             assume state(Heap, Mask);
@@ -1390,9 +1390,9 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
               if (tid == 0) {
                 
                 // -- Check definedness of acc(this.dst[0].Integer_value, write)
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@73.17--73.155) [15083]"}
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@73.17--73.155) [152778]"}
                     HasDirectPerm(Mask, this, dst);
-                  assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@73.17--73.155) [15084]"}
+                  assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@73.17--73.155) [152779]"}
                     0 < Seq#Length(Heap[this, dst]);
                 perm := FullPerm;
                 assume Seq#Index(Heap[this, dst], 0) != null;
@@ -1402,9 +1402,9 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
               if (tid == 0) {
                 
                 // -- Check definedness of acc(this.dst[1].Integer_value, write)
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@73.17--73.155) [15085]"}
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@73.17--73.155) [152780]"}
                     HasDirectPerm(Mask, this, dst);
-                  assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@73.17--73.155) [15086]"}
+                  assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@73.17--73.155) [152781]"}
                     1 < Seq#Length(Heap[this, dst]);
                 perm := FullPerm;
                 assume Seq#Index(Heap[this, dst], 1) != null;
@@ -1416,11 +1416,11 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             if (__last_barrier == 0) {
               
               // -- Check definedness of acc(this.dst[tid].Integer_value, write)
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@74.17--74.82) [15087]"}
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@74.17--74.82) [152782]"}
                   HasDirectPerm(Mask, this, dst);
-                assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@74.17--74.82) [15088]"}
+                assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@74.17--74.82) [152783]"}
                   tid >= 0;
-                assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@74.17--74.82) [15089]"}
+                assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@74.17--74.82) [152784]"}
                   tid < Seq#Length(Heap[this, dst]);
               perm := FullPerm;
               assume Seq#Index(Heap[this, dst], tid) != null;
@@ -1434,29 +1434,29 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             
             // -- Check definedness of (forall i: Int ::0 <= i && i < k ==> this.dst[tid].Integer_value >= this.src[offset + i].Integer_value)
               if (*) {
-                if (0 <= i_10 && i_10 < k) {
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@76.18--76.126) [15090]"}
+                if (0 <= i_21 && i_21 < k) {
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@76.18--76.126) [152785]"}
                     HasDirectPerm(Mask, this, dst);
-                  assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@76.18--76.126) [15091]"}
+                  assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@76.18--76.126) [152786]"}
                     tid >= 0;
-                  assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@76.18--76.126) [15092]"}
+                  assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@76.18--76.126) [152787]"}
                     tid < Seq#Length(Heap[this, dst]);
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@76.18--76.126) [15093]"}
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@76.18--76.126) [152788]"}
                     HasDirectPerm(Mask, Seq#Index(Heap[this, dst], tid), Integer_value);
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@76.18--76.126) [15094]"}
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@76.18--76.126) [152789]"}
                     HasDirectPerm(Mask, this, src);
-                  assert {:msg "  Contract might not be well-formed. Index this.src[offset + i] into this.src might be negative. (max-two-range.vpr@76.18--76.126) [15095]"}
-                    offset + i_10 >= 0;
-                  assert {:msg "  Contract might not be well-formed. Index this.src[offset + i] into this.src might exceed sequence length. (max-two-range.vpr@76.18--76.126) [15096]"}
-                    offset + i_10 < Seq#Length(Heap[this, src]);
-                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[offset + i].Integer_value (max-two-range.vpr@76.18--76.126) [15097]"}
-                    HasDirectPerm(Mask, Seq#Index(Heap[this, src], offset + i_10), Integer_value);
+                  assert {:msg "  Contract might not be well-formed. Index this.src[offset + i] into this.src might be negative. (max-two-range.vpr@76.18--76.126) [152790]"}
+                    offset_1 + i_21 >= 0;
+                  assert {:msg "  Contract might not be well-formed. Index this.src[offset + i] into this.src might exceed sequence length. (max-two-range.vpr@76.18--76.126) [152791]"}
+                    offset_1 + i_21 < Seq#Length(Heap[this, src]);
+                  assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[offset + i].Integer_value (max-two-range.vpr@76.18--76.126) [152792]"}
+                    HasDirectPerm(Mask, Seq#Index(Heap[this, src], offset_1 + i_21), Integer_value);
                 }
                 assume false;
               }
             assume (forall i_24_1: int ::
               
-              0 <= i_24_1 && i_24_1 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset + i_24_1), Integer_value]
+              0 <= i_24_1 && i_24_1 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1 + i_24_1), Integer_value]
             );
             assume state(Heap, Mask);
             assume false;
@@ -1489,48 +1489,48 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             assume Seq#Length(Heap[this, dst]) == gsize;
             assume 4 <= gsize;
             assume gsize mod 2 == 0;
-            assume offset == (if tid == 0 then 0 else half);
-            assume (forall i_25: int, j_6_1: int ::
-              { Seq#Index(Heap[this, src], i_25), Seq#Index(Heap[this, src], j_6_1) }
-              0 <= i_25 && (i_25 < gsize && (0 <= j_6_1 && (j_6_1 < gsize && i_25 != j_6_1))) ==> Seq#Index(Heap[this, src], i_25) != Seq#Index(Heap[this, src], j_6_1)
+            assume offset_1 == (if tid == 0 then 0 else half);
+            assume (forall i_25_1: int, j_6_2: int ::
+              { Seq#Index(Heap[this, src], i_25_1), Seq#Index(Heap[this, src], j_6_2) }
+              0 <= i_25_1 && (i_25_1 < gsize && (0 <= j_6_2 && (j_6_2 < gsize && i_25_1 != j_6_2))) ==> Seq#Index(Heap[this, src], i_25_1) != Seq#Index(Heap[this, src], j_6_2)
             );
             havoc QPMask;
-            assert {:msg "  While statement might fail. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@71.18--71.98) [15098]"}
-              (forall i_26: int, i_26_1: int ::
+            assert {:msg "  While statement might fail. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@71.18--71.98) [152793]"}
+              (forall i_26_1: int, i_26_2: int ::
               
-              (((i_26 != i_26_1 && Seq#Contains(Seq#Range(0, gsize), i_26)) && Seq#Contains(Seq#Range(0, gsize), i_26_1)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_26) != Seq#Index(Heap[this, src], i_26_1)
+              (((i_26_1 != i_26_2 && Seq#Contains(Seq#Range(0, gsize), i_26_1)) && Seq#Contains(Seq#Range(0, gsize), i_26_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_26_1) != Seq#Index(Heap[this, src], i_26_2)
             );
             
             // -- Define Inverse Function
-              assume (forall i_26: int ::
-                { Seq#Index(Heap[this, src], i_26) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_26) } { Seq#Contains(Seq#Range(0, gsize), i_26) } { Seq#Index(Heap[this, src], i_26) }
-                Seq#Contains(Seq#Range(0, gsize), i_26) && NoPerm < 1 / gsize ==> qpRange6(Seq#Index(Heap[this, src], i_26)) && invRecv6(Seq#Index(Heap[this, src], i_26)) == i_26
+              assume (forall i_26_1: int ::
+                { Seq#Index(Heap[this, src], i_26_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_26_1) } { Seq#Contains(Seq#Range(0, gsize), i_26_1) } { Seq#Index(Heap[this, src], i_26_1) }
+                Seq#Contains(Seq#Range(0, gsize), i_26_1) && NoPerm < 1 / gsize ==> qpRange6(Seq#Index(Heap[this, src], i_26_1)) && invRecv6(Seq#Index(Heap[this, src], i_26_1)) == i_26_1
               );
-              assume (forall o_4: Ref ::
-                { invRecv6(o_4) }
-                (Seq#Contains(Seq#Range(0, gsize), invRecv6(o_4)) && NoPerm < 1 / gsize) && qpRange6(o_4) ==> Seq#Index(Heap[this, src], invRecv6(o_4)) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv6(o_9) }
+                (Seq#Contains(Seq#Range(0, gsize), invRecv6(o_9)) && NoPerm < 1 / gsize) && qpRange6(o_9) ==> Seq#Index(Heap[this, src], invRecv6(o_9)) == o_9
               );
             // Check that permission expression is non-negative for all fields
-            assert {:msg "  While statement might fail. Fraction 1 / gsize might be negative. (max-two-range.vpr@71.18--71.98) [15099]"}
-              (forall i_26: int ::
-              { Seq#Index(Heap[this, src], i_26) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_26) } { Seq#Contains(Seq#Range(0, gsize), i_26) } { Seq#Index(Heap[this, src], i_26) }
-              Seq#Contains(Seq#Range(0, gsize), i_26) ==> 1 / gsize >= NoPerm
+            assert {:msg "  While statement might fail. Fraction 1 / gsize might be negative. (max-two-range.vpr@71.18--71.98) [152794]"}
+              (forall i_26_1: int ::
+              { Seq#Index(Heap[this, src], i_26_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_26_1) } { Seq#Contains(Seq#Range(0, gsize), i_26_1) } { Seq#Index(Heap[this, src], i_26_1) }
+              Seq#Contains(Seq#Range(0, gsize), i_26_1) ==> 1 / gsize >= NoPerm
             );
             
             // -- Assume set of fields is nonNull
-              assume (forall i_26: int ::
-                { Seq#Index(Heap[this, src], i_26) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_26) } { Seq#Contains(Seq#Range(0, gsize), i_26) } { Seq#Index(Heap[this, src], i_26) }
-                Seq#Contains(Seq#Range(0, gsize), i_26) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_26) != null
+              assume (forall i_26_1: int ::
+                { Seq#Index(Heap[this, src], i_26_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_26_1) } { Seq#Contains(Seq#Range(0, gsize), i_26_1) } { Seq#Index(Heap[this, src], i_26_1) }
+                Seq#Contains(Seq#Range(0, gsize), i_26_1) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_26_1) != null
               );
             
             // -- Define permissions
-              assume (forall o_4: Ref ::
-                { QPMask[o_4, Integer_value] }
-                ((Seq#Contains(Seq#Range(0, gsize), invRecv6(o_4)) && NoPerm < 1 / gsize) && qpRange6(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv6(o_4)) == o_4) && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv6(o_4)) && NoPerm < 1 / gsize) && qpRange6(o_4)) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+              assume (forall o_9: Ref ::
+                { QPMask[o_9, Integer_value] }
+                ((Seq#Contains(Seq#Range(0, gsize), invRecv6(o_9)) && NoPerm < 1 / gsize) && qpRange6(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv6(o_9)) == o_9) && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv6(o_9)) && NoPerm < 1 / gsize) && qpRange6(o_9)) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
               );
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
             Mask := QPMask;
             assume state(Heap, Mask);
@@ -1557,9 +1557,9 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             }
             assume 0 <= k;
             assume k <= half;
-            assume (forall i_27: int ::
+            assume (forall i_27_2: int ::
               
-              0 <= i_27 && i_27 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset + i_27), Integer_value]
+              0 <= i_27_2 && i_27_2 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1 + i_27_2), Integer_value]
             );
             assume state(Heap, Mask);
             // Check and assume guard
@@ -1576,55 +1576,55 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
               // -- Translating statement: assert 0 <= offset + k && offset + k < gsize -- max-two-range.vpr@79.7--79.55
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Assert might fail. Assertion 0 <= offset + k might not hold. (max-two-range.vpr@79.14--79.55) [15100]"}
-                  0 <= offset + k;
-                assert {:msg "  Assert might fail. Assertion offset + k < gsize might not hold. (max-two-range.vpr@79.14--79.55) [15101]"}
-                  offset + k < gsize;
+                assert {:msg "  Assert might fail. Assertion 0 <= offset + k might not hold. (max-two-range.vpr@79.14--79.55) [152795]"}
+                  0 <= offset_1 + k;
+                assert {:msg "  Assert might fail. Assertion offset + k < gsize might not hold. (max-two-range.vpr@79.14--79.55) [152796]"}
+                  offset_1 + k < gsize;
                 assume state(Heap, Mask);
               
               // -- Translating statement: if (this.dst[tid].Integer_value < this.src[offset + k].Integer_value) -- max-two-range.vpr@80.7--82.8
                 
                 // -- Check definedness of this.dst[tid].Integer_value < this.src[offset + k].Integer_value
-                  assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@80.11--80.75) [15102]"}
+                  assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@80.11--80.75) [152797]"}
                     HasDirectPerm(Mask, this, dst);
-                  assert {:msg "  Conditional statement might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@80.11--80.75) [15103]"}
+                  assert {:msg "  Conditional statement might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@80.11--80.75) [152798]"}
                     tid >= 0;
-                  assert {:msg "  Conditional statement might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@80.11--80.75) [15104]"}
+                  assert {:msg "  Conditional statement might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@80.11--80.75) [152799]"}
                     tid < Seq#Length(Heap[this, dst]);
-                  assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@80.11--80.75) [15105]"}
+                  assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@80.11--80.75) [152800]"}
                     HasDirectPerm(Mask, Seq#Index(Heap[this, dst], tid), Integer_value);
-                  assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.src (max-two-range.vpr@80.11--80.75) [15106]"}
+                  assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.src (max-two-range.vpr@80.11--80.75) [152801]"}
                     HasDirectPerm(Mask, this, src);
-                  assert {:msg "  Conditional statement might fail. Index this.src[offset + k] into this.src might be negative. (max-two-range.vpr@80.11--80.75) [15107]"}
-                    offset + k >= 0;
-                  assert {:msg "  Conditional statement might fail. Index this.src[offset + k] into this.src might exceed sequence length. (max-two-range.vpr@80.11--80.75) [15108]"}
-                    offset + k < Seq#Length(Heap[this, src]);
-                  assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.src[offset + k].Integer_value (max-two-range.vpr@80.11--80.75) [15109]"}
-                    HasDirectPerm(Mask, Seq#Index(Heap[this, src], offset + k), Integer_value);
-                if (Heap[Seq#Index(Heap[this, dst], tid), Integer_value] < Heap[Seq#Index(Heap[this, src], offset + k), Integer_value]) {
+                  assert {:msg "  Conditional statement might fail. Index this.src[offset + k] into this.src might be negative. (max-two-range.vpr@80.11--80.75) [152802]"}
+                    offset_1 + k >= 0;
+                  assert {:msg "  Conditional statement might fail. Index this.src[offset + k] into this.src might exceed sequence length. (max-two-range.vpr@80.11--80.75) [152803]"}
+                    offset_1 + k < Seq#Length(Heap[this, src]);
+                  assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.src[offset + k].Integer_value (max-two-range.vpr@80.11--80.75) [152804]"}
+                    HasDirectPerm(Mask, Seq#Index(Heap[this, src], offset_1 + k), Integer_value);
+                if (Heap[Seq#Index(Heap[this, dst], tid), Integer_value] < Heap[Seq#Index(Heap[this, src], offset_1 + k), Integer_value]) {
                   
                   // -- Translating statement: this.dst[tid].Integer_value := this.src[offset + k].Integer_value -- max-two-range.vpr@81.9--81.74
                     
                     // -- Check definedness of this.dst[tid]
-                      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@81.9--81.74) [15110]"}
+                      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@81.9--81.74) [152805]"}
                         HasDirectPerm(Mask, this, dst);
-                      assert {:msg "  Assignment might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@81.9--81.74) [15111]"}
+                      assert {:msg "  Assignment might fail. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@81.9--81.74) [152806]"}
                         tid >= 0;
-                      assert {:msg "  Assignment might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@81.9--81.74) [15112]"}
+                      assert {:msg "  Assignment might fail. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@81.9--81.74) [152807]"}
                         tid < Seq#Length(Heap[this, dst]);
                     
                     // -- Check definedness of this.src[offset + k].Integer_value
-                      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.src (max-two-range.vpr@81.9--81.74) [15113]"}
+                      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.src (max-two-range.vpr@81.9--81.74) [152808]"}
                         HasDirectPerm(Mask, this, src);
-                      assert {:msg "  Assignment might fail. Index this.src[offset + k] into this.src might be negative. (max-two-range.vpr@81.9--81.74) [15114]"}
-                        offset + k >= 0;
-                      assert {:msg "  Assignment might fail. Index this.src[offset + k] into this.src might exceed sequence length. (max-two-range.vpr@81.9--81.74) [15115]"}
-                        offset + k < Seq#Length(Heap[this, src]);
-                      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.src[offset + k].Integer_value (max-two-range.vpr@81.9--81.74) [15116]"}
-                        HasDirectPerm(Mask, Seq#Index(Heap[this, src], offset + k), Integer_value);
-                    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@81.9--81.74) [15117]"}
+                      assert {:msg "  Assignment might fail. Index this.src[offset + k] into this.src might be negative. (max-two-range.vpr@81.9--81.74) [152809]"}
+                        offset_1 + k >= 0;
+                      assert {:msg "  Assignment might fail. Index this.src[offset + k] into this.src might exceed sequence length. (max-two-range.vpr@81.9--81.74) [152810]"}
+                        offset_1 + k < Seq#Length(Heap[this, src]);
+                      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.src[offset + k].Integer_value (max-two-range.vpr@81.9--81.74) [152811]"}
+                        HasDirectPerm(Mask, Seq#Index(Heap[this, src], offset_1 + k), Integer_value);
+                    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@81.9--81.74) [152812]"}
                       FullPerm == Mask[Seq#Index(Heap[this, dst], tid), Integer_value];
-                    Heap := Heap[Seq#Index(Heap[this, dst], tid), Integer_value:=Heap[Seq#Index(Heap[this, src], offset + k), Integer_value]];
+                    Heap := Heap[Seq#Index(Heap[this, dst], tid), Integer_value:=Heap[Seq#Index(Heap[this, src], offset_1 + k), Integer_value]];
                     assume state(Heap, Mask);
                 }
                 assume state(Heap, Mask);
@@ -1635,99 +1635,99 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             // Exhale invariant
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Loop invariant 0 <= tid might not be preserved. Assertion 0 <= tid might not hold. (max-two-range.vpr@58.17--58.25) [15118]"}
+            assert {:msg "  Loop invariant 0 <= tid might not be preserved. Assertion 0 <= tid might not hold. (max-two-range.vpr@58.17--58.25) [152813]"}
               0 <= tid;
-            assert {:msg "  Loop invariant tid < tcount might not be preserved. Assertion tid < tcount might not hold. (max-two-range.vpr@59.17--59.29) [15119]"}
+            assert {:msg "  Loop invariant tid < tcount might not be preserved. Assertion tid < tcount might not hold. (max-two-range.vpr@59.17--59.29) [152814]"}
               tid < tcount;
-            assert {:msg "  Loop invariant tid == lid might not be preserved. Assertion tid == lid might not hold. (max-two-range.vpr@60.17--60.27) [15120]"}
+            assert {:msg "  Loop invariant tid == lid might not be preserved. Assertion tid == lid might not hold. (max-two-range.vpr@60.17--60.27) [152815]"}
               tid == lid;
-            assert {:msg "  Loop invariant tcount == gsize might not be preserved. Assertion tcount == gsize might not hold. (max-two-range.vpr@61.17--61.32) [15121]"}
+            assert {:msg "  Loop invariant tcount == gsize might not be preserved. Assertion tcount == gsize might not hold. (max-two-range.vpr@61.17--61.32) [152816]"}
               tcount == gsize;
-            assert {:msg "  Loop invariant gid == 0 might not be preserved. Assertion gid == 0 might not hold. (max-two-range.vpr@62.17--62.25) [15122]"}
+            assert {:msg "  Loop invariant gid == 0 might not be preserved. Assertion gid == 0 might not hold. (max-two-range.vpr@62.17--62.25) [152817]"}
               gid == 0;
-            assert {:msg "  Loop invariant acc(this.src, wildcard) might not be preserved. There might be insufficient permission to access this.src (max-two-range.vpr@63.17--63.40) [15123]"}
+            assert {:msg "  Loop invariant acc(this.src, wildcard) might not be preserved. There might be insufficient permission to access this.src (max-two-range.vpr@63.17--63.40) [152818]"}
               Mask[this, src] > NoPerm;
             havoc wildcard;
             assume wildcard < Mask[this, src];
             Mask := Mask[this, src:=Mask[this, src] - wildcard];
-            assert {:msg "  Loop invariant |this.src| == gsize might not be preserved. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@64.17--64.36) [15124]"}
+            assert {:msg "  Loop invariant |this.src| == gsize might not be preserved. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@64.17--64.36) [152819]"}
               Seq#Length(Heap[this, src]) == gsize;
-            assert {:msg "  Loop invariant acc(this.dst, wildcard) might not be preserved. There might be insufficient permission to access this.dst (max-two-range.vpr@65.17--65.40) [15125]"}
+            assert {:msg "  Loop invariant acc(this.dst, wildcard) might not be preserved. There might be insufficient permission to access this.dst (max-two-range.vpr@65.17--65.40) [152820]"}
               Mask[this, dst] > NoPerm;
             havoc wildcard;
             assume wildcard < Mask[this, dst];
             Mask := Mask[this, dst:=Mask[this, dst] - wildcard];
-            assert {:msg "  Loop invariant |this.dst| == gsize might not be preserved. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@66.17--66.36) [15126]"}
+            assert {:msg "  Loop invariant |this.dst| == gsize might not be preserved. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@66.17--66.36) [152821]"}
               Seq#Length(Heap[this, dst]) == gsize;
-            assert {:msg "  Loop invariant 4 <= gsize might not be preserved. Assertion 4 <= gsize might not hold. (max-two-range.vpr@67.17--67.27) [15127]"}
+            assert {:msg "  Loop invariant 4 <= gsize might not be preserved. Assertion 4 <= gsize might not hold. (max-two-range.vpr@67.17--67.27) [152822]"}
               4 <= gsize;
-            assert {:msg "  Loop invariant gsize % 2 == 0 might not be preserved. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@68.17--68.31) [15128]"}
+            assert {:msg "  Loop invariant gsize % 2 == 0 might not be preserved. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@68.17--68.31) [152823]"}
               gsize mod 2 == 0;
-            assert {:msg "  Loop invariant offset == (tid == 0 ? 0 : half) might not be preserved. Assertion offset == (tid == 0 ? 0 : half) might not hold. (max-two-range.vpr@69.17--69.48) [15129]"}
-              offset == (if tid == 0 then 0 else half);
+            assert {:msg "  Loop invariant offset == (tid == 0 ? 0 : half) might not be preserved. Assertion offset == (tid == 0 ? 0 : half) might not hold. (max-two-range.vpr@69.17--69.48) [152824]"}
+              offset_1 == (if tid == 0 then 0 else half);
             if (*) {
               if (0 <= i_28 && (i_28 < gsize && (0 <= j_7_1 && (j_7_1 < gsize && i_28 != j_7_1)))) {
-                assert {:msg "  Loop invariant (forall i: Int, j: Int :: { this.src[i], this.src[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.src[i] != this.src[j]) might not be preserved. Assertion this.src[i] != this.src[j] might not hold. (max-two-range.vpr@70.17--70.125) [15130]"}
+                assert {:msg "  Loop invariant (forall i: Int, j: Int :: { this.src[i], this.src[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.src[i] != this.src[j]) might not be preserved. Assertion this.src[i] != this.src[j] might not hold. (max-two-range.vpr@70.17--70.125) [152825]"}
                   Seq#Index(Heap[this, src], i_28) != Seq#Index(Heap[this, src], j_7_1);
               }
               assume false;
             }
-            assume (forall i_29_1_1: int, j_8_1_1: int ::
-              { Seq#Index(Heap[this, src], i_29_1_1), Seq#Index(Heap[this, src], j_8_1_1) }
-              0 <= i_29_1_1 && (i_29_1_1 < gsize && (0 <= j_8_1_1 && (j_8_1_1 < gsize && i_29_1_1 != j_8_1_1))) ==> Seq#Index(Heap[this, src], i_29_1_1) != Seq#Index(Heap[this, src], j_8_1_1)
+            assume (forall i_29_1: int, j_8_1: int ::
+              { Seq#Index(Heap[this, src], i_29_1), Seq#Index(Heap[this, src], j_8_1) }
+              0 <= i_29_1 && (i_29_1 < gsize && (0 <= j_8_1 && (j_8_1 < gsize && i_29_1 != j_8_1))) ==> Seq#Index(Heap[this, src], i_29_1) != Seq#Index(Heap[this, src], j_8_1)
             );
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not be preserved. Fraction 1 / gsize might be negative. (max-two-range.vpr@71.18--71.98) [15131]"}
-                (forall i_30_2: int ::
-                { Seq#Index(Heap[this, src], i_30_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_30_2) } { Seq#Contains(Seq#Range(0, gsize), i_30_2) } { Seq#Index(Heap[this, src], i_30_2) }
-                Seq#Contains(Seq#Range(0, gsize), i_30_2) && dummyFunction(Heap[Seq#Index(Heap[this, src], i_30_2), Integer_value]) ==> 1 / gsize >= NoPerm
+              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not be preserved. Fraction 1 / gsize might be negative. (max-two-range.vpr@71.18--71.98) [152826]"}
+                (forall i_30: int ::
+                { Seq#Index(Heap[this, src], i_30) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_30) } { Seq#Contains(Seq#Range(0, gsize), i_30) } { Seq#Index(Heap[this, src], i_30) }
+                Seq#Contains(Seq#Range(0, gsize), i_30) && dummyFunction(Heap[Seq#Index(Heap[this, src], i_30), Integer_value]) ==> 1 / gsize >= NoPerm
               );
             
             // -- check if receiver this.src[i] is injective
-              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not be preserved. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@71.18--71.98) [15132]"}
-                (forall i_30_2: int, i_30_3: int ::
-                { neverTriggered7(i_30_2), neverTriggered7(i_30_3) }
-                (((i_30_2 != i_30_3 && Seq#Contains(Seq#Range(0, gsize), i_30_2)) && Seq#Contains(Seq#Range(0, gsize), i_30_3)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_30_2) != Seq#Index(Heap[this, src], i_30_3)
+              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not be preserved. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@71.18--71.98) [152827]"}
+                (forall i_30: int, i_30_1: int ::
+                { neverTriggered7(i_30), neverTriggered7(i_30_1) }
+                (((i_30 != i_30_1 && Seq#Contains(Seq#Range(0, gsize), i_30)) && Seq#Contains(Seq#Range(0, gsize), i_30_1)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_30) != Seq#Index(Heap[this, src], i_30_1)
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not be preserved. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@71.18--71.98) [15133]"}
-                (forall i_30_2: int ::
-                { Seq#Index(Heap[this, src], i_30_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_30_2) } { Seq#Contains(Seq#Range(0, gsize), i_30_2) } { Seq#Index(Heap[this, src], i_30_2) }
-                Seq#Contains(Seq#Range(0, gsize), i_30_2) ==> Mask[Seq#Index(Heap[this, src], i_30_2), Integer_value] >= 1 / gsize
+              assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize)) might not be preserved. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@71.18--71.98) [152828]"}
+                (forall i_30: int ::
+                { Seq#Index(Heap[this, src], i_30) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_30) } { Seq#Contains(Seq#Range(0, gsize), i_30) } { Seq#Index(Heap[this, src], i_30) }
+                Seq#Contains(Seq#Range(0, gsize), i_30) ==> Mask[Seq#Index(Heap[this, src], i_30), Integer_value] >= 1 / gsize
               );
             
             // -- assumptions for inverse of receiver this.src[i]
-              assume (forall i_30_2: int ::
-                { Seq#Index(Heap[this, src], i_30_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_30_2) } { Seq#Contains(Seq#Range(0, gsize), i_30_2) } { Seq#Index(Heap[this, src], i_30_2) }
-                Seq#Contains(Seq#Range(0, gsize), i_30_2) && NoPerm < 1 / gsize ==> qpRange7(Seq#Index(Heap[this, src], i_30_2)) && invRecv7(Seq#Index(Heap[this, src], i_30_2)) == i_30_2
+              assume (forall i_30: int ::
+                { Seq#Index(Heap[this, src], i_30) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_30) } { Seq#Contains(Seq#Range(0, gsize), i_30) } { Seq#Index(Heap[this, src], i_30) }
+                Seq#Contains(Seq#Range(0, gsize), i_30) && NoPerm < 1 / gsize ==> qpRange7(Seq#Index(Heap[this, src], i_30)) && invRecv7(Seq#Index(Heap[this, src], i_30)) == i_30
               );
-              assume (forall o_4: Ref ::
-                { invRecv7(o_4) }
-                Seq#Contains(Seq#Range(0, gsize), invRecv7(o_4)) && (NoPerm < 1 / gsize && qpRange7(o_4)) ==> Seq#Index(Heap[this, src], invRecv7(o_4)) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv7(o_9) }
+                Seq#Contains(Seq#Range(0, gsize), invRecv7(o_9)) && (NoPerm < 1 / gsize && qpRange7(o_9)) ==> Seq#Index(Heap[this, src], invRecv7(o_9)) == o_9
               );
             
             // -- assume permission updates for field Integer_value
-              assume (forall o_4: Ref ::
-                { QPMask[o_4, Integer_value] }
-                (Seq#Contains(Seq#Range(0, gsize), invRecv7(o_4)) && (NoPerm < 1 / gsize && qpRange7(o_4)) ==> Seq#Index(Heap[this, src], invRecv7(o_4)) == o_4 && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv7(o_4)) && (NoPerm < 1 / gsize && qpRange7(o_4))) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+              assume (forall o_9: Ref ::
+                { QPMask[o_9, Integer_value] }
+                (Seq#Contains(Seq#Range(0, gsize), invRecv7(o_9)) && (NoPerm < 1 / gsize && qpRange7(o_9)) ==> Seq#Index(Heap[this, src], invRecv7(o_9)) == o_9 && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv7(o_9)) && (NoPerm < 1 / gsize && qpRange7(o_9))) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
               );
             
             // -- assume permission updates for independent locations
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { QPMask[o_4, f_5] }
-                f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { QPMask[o_9, f_5] }
+                f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
             Mask := QPMask;
-            assert {:msg "  Loop invariant false || __last_barrier == 0 might not be preserved. Assertion false || __last_barrier == 0 might not hold. (max-two-range.vpr@72.17--72.47) [15134]"}
+            assert {:msg "  Loop invariant false || __last_barrier == 0 might not be preserved. Assertion false || __last_barrier == 0 might not hold. (max-two-range.vpr@72.17--72.47) [152829]"}
               __last_barrier == 0;
             if (__last_barrier == 1) {
               if (tid == 0) {
                 perm := FullPerm;
                 if (perm != NoPerm) {
-                  assert {:msg "  Loop invariant __last_barrier == 1 ==> (tid == 0 ==> acc(this.dst[0].Integer_value, write)) && (tid == 0 ==> acc(this.dst[1].Integer_value, write)) might not be preserved. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@73.17--73.155) [15135]"}
+                  assert {:msg "  Loop invariant __last_barrier == 1 ==> (tid == 0 ==> acc(this.dst[0].Integer_value, write)) && (tid == 0 ==> acc(this.dst[1].Integer_value, write)) might not be preserved. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@73.17--73.155) [152830]"}
                     perm <= Mask[Seq#Index(Heap[this, dst], 0), Integer_value];
                 }
                 Mask := Mask[Seq#Index(Heap[this, dst], 0), Integer_value:=Mask[Seq#Index(Heap[this, dst], 0), Integer_value] - perm];
@@ -1735,7 +1735,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
               if (tid == 0) {
                 perm := FullPerm;
                 if (perm != NoPerm) {
-                  assert {:msg "  Loop invariant __last_barrier == 1 ==> (tid == 0 ==> acc(this.dst[0].Integer_value, write)) && (tid == 0 ==> acc(this.dst[1].Integer_value, write)) might not be preserved. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@73.17--73.155) [15136]"}
+                  assert {:msg "  Loop invariant __last_barrier == 1 ==> (tid == 0 ==> acc(this.dst[0].Integer_value, write)) && (tid == 0 ==> acc(this.dst[1].Integer_value, write)) might not be preserved. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@73.17--73.155) [152831]"}
                     perm <= Mask[Seq#Index(Heap[this, dst], 1), Integer_value];
                 }
                 Mask := Mask[Seq#Index(Heap[this, dst], 1), Integer_value:=Mask[Seq#Index(Heap[this, dst], 1), Integer_value] - perm];
@@ -1744,25 +1744,25 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             if (__last_barrier == 0) {
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  Loop invariant __last_barrier == 0 ==> acc(this.dst[tid].Integer_value, write) might not be preserved. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@74.17--74.82) [15137]"}
+                assert {:msg "  Loop invariant __last_barrier == 0 ==> acc(this.dst[tid].Integer_value, write) might not be preserved. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@74.17--74.82) [152832]"}
                   perm <= Mask[Seq#Index(Heap[this, dst], tid), Integer_value];
               }
               Mask := Mask[Seq#Index(Heap[this, dst], tid), Integer_value:=Mask[Seq#Index(Heap[this, dst], tid), Integer_value] - perm];
             }
-            assert {:msg "  Loop invariant 0 <= k && k <= half might not be preserved. Assertion 0 <= k might not hold. (max-two-range.vpr@75.17--75.40) [15138]"}
+            assert {:msg "  Loop invariant 0 <= k && k <= half might not be preserved. Assertion 0 <= k might not hold. (max-two-range.vpr@75.17--75.40) [152833]"}
               0 <= k;
-            assert {:msg "  Loop invariant 0 <= k && k <= half might not be preserved. Assertion k <= half might not hold. (max-two-range.vpr@75.17--75.40) [15139]"}
+            assert {:msg "  Loop invariant 0 <= k && k <= half might not be preserved. Assertion k <= half might not hold. (max-two-range.vpr@75.17--75.40) [152834]"}
               k <= half;
             if (*) {
-              if (0 <= i_31_1 && i_31_1 < k) {
-                assert {:msg "  Loop invariant (forall i: Int ::0 <= i && i < k ==> this.dst[tid].Integer_value >= this.src[offset + i].Integer_value) might not be preserved. Assertion this.dst[tid].Integer_value >= this.src[offset + i].Integer_value might not hold. (max-two-range.vpr@76.18--76.126) [15140]"}
-                  Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset + i_31_1), Integer_value];
+              if (0 <= i_31 && i_31 < k) {
+                assert {:msg "  Loop invariant (forall i: Int ::0 <= i && i < k ==> this.dst[tid].Integer_value >= this.src[offset + i].Integer_value) might not be preserved. Assertion this.dst[tid].Integer_value >= this.src[offset + i].Integer_value might not hold. (max-two-range.vpr@76.18--76.126) [152835]"}
+                  Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1 + i_31), Integer_value];
               }
               assume false;
             }
-            assume (forall i_32_1: int ::
+            assume (forall i_32_1_1: int ::
               
-              0 <= i_32_1 && i_32_1 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset + i_32_1), Integer_value]
+              0 <= i_32_1_1 && i_32_1_1 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1 + i_32_1_1), Integer_value]
             );
             // Finish exhale
             havoc ExhaleHeap;
@@ -1794,48 +1794,48 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
           assume Seq#Length(Heap[this, dst]) == gsize;
           assume 4 <= gsize;
           assume gsize mod 2 == 0;
-          assume offset == (if tid == 0 then 0 else half);
-          assume (forall i_33_1: int, j_9_1: int ::
-            { Seq#Index(Heap[this, src], i_33_1), Seq#Index(Heap[this, src], j_9_1) }
-            0 <= i_33_1 && (i_33_1 < gsize && (0 <= j_9_1 && (j_9_1 < gsize && i_33_1 != j_9_1))) ==> Seq#Index(Heap[this, src], i_33_1) != Seq#Index(Heap[this, src], j_9_1)
+          assume offset_1 == (if tid == 0 then 0 else half);
+          assume (forall i_33: int, j_9_1: int ::
+            { Seq#Index(Heap[this, src], i_33), Seq#Index(Heap[this, src], j_9_1) }
+            0 <= i_33 && (i_33 < gsize && (0 <= j_9_1 && (j_9_1 < gsize && i_33 != j_9_1))) ==> Seq#Index(Heap[this, src], i_33) != Seq#Index(Heap[this, src], j_9_1)
           );
           havoc QPMask;
-          assert {:msg "  While statement might fail. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@71.18--71.98) [15141]"}
-            (forall i_34_2: int, i_34_3: int ::
+          assert {:msg "  While statement might fail. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@71.18--71.98) [152836]"}
+            (forall i_34: int, i_34_2: int ::
             
-            (((i_34_2 != i_34_3 && Seq#Contains(Seq#Range(0, gsize), i_34_2)) && Seq#Contains(Seq#Range(0, gsize), i_34_3)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_34_2) != Seq#Index(Heap[this, src], i_34_3)
+            (((i_34 != i_34_2 && Seq#Contains(Seq#Range(0, gsize), i_34)) && Seq#Contains(Seq#Range(0, gsize), i_34_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_34) != Seq#Index(Heap[this, src], i_34_2)
           );
           
           // -- Define Inverse Function
-            assume (forall i_34_2: int ::
-              { Seq#Index(Heap[this, src], i_34_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_34_2) } { Seq#Contains(Seq#Range(0, gsize), i_34_2) } { Seq#Index(Heap[this, src], i_34_2) }
-              Seq#Contains(Seq#Range(0, gsize), i_34_2) && NoPerm < 1 / gsize ==> qpRange8(Seq#Index(Heap[this, src], i_34_2)) && invRecv8(Seq#Index(Heap[this, src], i_34_2)) == i_34_2
+            assume (forall i_34: int ::
+              { Seq#Index(Heap[this, src], i_34) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_34) } { Seq#Contains(Seq#Range(0, gsize), i_34) } { Seq#Index(Heap[this, src], i_34) }
+              Seq#Contains(Seq#Range(0, gsize), i_34) && NoPerm < 1 / gsize ==> qpRange8(Seq#Index(Heap[this, src], i_34)) && invRecv8(Seq#Index(Heap[this, src], i_34)) == i_34
             );
-            assume (forall o_4: Ref ::
-              { invRecv8(o_4) }
-              (Seq#Contains(Seq#Range(0, gsize), invRecv8(o_4)) && NoPerm < 1 / gsize) && qpRange8(o_4) ==> Seq#Index(Heap[this, src], invRecv8(o_4)) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv8(o_9) }
+              (Seq#Contains(Seq#Range(0, gsize), invRecv8(o_9)) && NoPerm < 1 / gsize) && qpRange8(o_9) ==> Seq#Index(Heap[this, src], invRecv8(o_9)) == o_9
             );
           // Check that permission expression is non-negative for all fields
-          assert {:msg "  While statement might fail. Fraction 1 / gsize might be negative. (max-two-range.vpr@71.18--71.98) [15142]"}
-            (forall i_34_2: int ::
-            { Seq#Index(Heap[this, src], i_34_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_34_2) } { Seq#Contains(Seq#Range(0, gsize), i_34_2) } { Seq#Index(Heap[this, src], i_34_2) }
-            Seq#Contains(Seq#Range(0, gsize), i_34_2) ==> 1 / gsize >= NoPerm
+          assert {:msg "  While statement might fail. Fraction 1 / gsize might be negative. (max-two-range.vpr@71.18--71.98) [152837]"}
+            (forall i_34: int ::
+            { Seq#Index(Heap[this, src], i_34) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_34) } { Seq#Contains(Seq#Range(0, gsize), i_34) } { Seq#Index(Heap[this, src], i_34) }
+            Seq#Contains(Seq#Range(0, gsize), i_34) ==> 1 / gsize >= NoPerm
           );
           
           // -- Assume set of fields is nonNull
-            assume (forall i_34_2: int ::
-              { Seq#Index(Heap[this, src], i_34_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_34_2) } { Seq#Contains(Seq#Range(0, gsize), i_34_2) } { Seq#Index(Heap[this, src], i_34_2) }
-              Seq#Contains(Seq#Range(0, gsize), i_34_2) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_34_2) != null
+            assume (forall i_34: int ::
+              { Seq#Index(Heap[this, src], i_34) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_34) } { Seq#Contains(Seq#Range(0, gsize), i_34) } { Seq#Index(Heap[this, src], i_34) }
+              Seq#Contains(Seq#Range(0, gsize), i_34) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_34) != null
             );
           
           // -- Define permissions
-            assume (forall o_4: Ref ::
-              { QPMask[o_4, Integer_value] }
-              ((Seq#Contains(Seq#Range(0, gsize), invRecv8(o_4)) && NoPerm < 1 / gsize) && qpRange8(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv8(o_4)) == o_4) && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv8(o_4)) && NoPerm < 1 / gsize) && qpRange8(o_4)) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+            assume (forall o_9: Ref ::
+              { QPMask[o_9, Integer_value] }
+              ((Seq#Contains(Seq#Range(0, gsize), invRecv8(o_9)) && NoPerm < 1 / gsize) && qpRange8(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv8(o_9)) == o_9) && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv8(o_9)) && NoPerm < 1 / gsize) && qpRange8(o_9)) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
             );
-            assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-              { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-              f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+            assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+              { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+              f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
             );
           Mask := QPMask;
           assume state(Heap, Mask);
@@ -1862,9 +1862,9 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
           }
           assume 0 <= k;
           assume k <= half;
-          assume (forall i_35_1: int ::
+          assume (forall i_35: int ::
             
-            0 <= i_35_1 && i_35_1 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset + i_35_1), Integer_value]
+            0 <= i_35 && i_35 < k ==> Heap[Seq#Index(Heap[this, dst], tid), Integer_value] >= Heap[Seq#Index(Heap[this, src], offset_1 + i_35), Integer_value]
           );
           assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1890,65 +1890,65 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     // -- Exhaling precondition
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion false || __last_barrier == 0 might not hold. (max-two-range.vpr@88.3--88.105) [15144]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion false || __last_barrier == 0 might not hold. (max-two-range.vpr@88.3--88.105) [152839]"}
         arg_last_barrier == 0;
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@88.3--88.105) [15145]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@88.3--88.105) [152840]"}
         0 <= tid;
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@88.3--88.105) [15146]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@88.3--88.105) [152841]"}
         tid < tcount;
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion tid == lid might not hold. (max-two-range.vpr@88.3--88.105) [15147]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion tid == lid might not hold. (max-two-range.vpr@88.3--88.105) [152842]"}
         tid == lid;
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@88.3--88.105) [15148]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@88.3--88.105) [152843]"}
         tcount == gsize;
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@88.3--88.105) [15149]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@88.3--88.105) [152844]"}
         gid == 0;
-      assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.src (max-two-range.vpr@88.3--88.105) [15150]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.src (max-two-range.vpr@88.3--88.105) [152845]"}
         Mask[this, src] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[this, src];
       Mask := Mask[this, src:=Mask[this, src] - wildcard];
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@88.3--88.105) [15151]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@88.3--88.105) [152846]"}
         Seq#Length(Heap[this, src]) == gsize;
-      assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.dst (max-two-range.vpr@88.3--88.105) [15152]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.dst (max-two-range.vpr@88.3--88.105) [152847]"}
         Mask[this, dst] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[this, dst];
       Mask := Mask[this, dst:=Mask[this, dst] - wildcard];
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@88.3--88.105) [15153]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@88.3--88.105) [152848]"}
         Seq#Length(Heap[this, dst]) == gsize;
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion 4 <= gsize might not hold. (max-two-range.vpr@88.3--88.105) [15154]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion 4 <= gsize might not hold. (max-two-range.vpr@88.3--88.105) [152849]"}
         4 <= gsize;
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@88.3--88.105) [15155]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@88.3--88.105) [152850]"}
         gsize mod 2 == 0;
       if (*) {
-        if (0 <= i_36_2 && (i_36_2 < gsize && (0 <= j_10_2 && (j_10_2 < gsize && i_36_2 != j_10_2)))) {
-          assert {:msg "  The precondition of method main_barrier might not hold. Assertion this.src[i] != this.src[j] might not hold. (max-two-range.vpr@88.3--88.105) [15156]"}
-            Seq#Index(Heap[this, src], i_36_2) != Seq#Index(Heap[this, src], j_10_2);
+        if (0 <= i_36 && (i_36 < gsize && (0 <= j_10_2 && (j_10_2 < gsize && i_36 != j_10_2)))) {
+          assert {:msg "  The precondition of method main_barrier might not hold. Assertion this.src[i] != this.src[j] might not hold. (max-two-range.vpr@88.3--88.105) [152851]"}
+            Seq#Index(Heap[this, src], i_36) != Seq#Index(Heap[this, src], j_10_2);
         }
         assume false;
       }
-      assume (forall i_37_1_1: int, j_11_1: int ::
-        { Seq#Index(Heap[this, src], i_37_1_1), Seq#Index(Heap[this, src], j_11_1) }
-        0 <= i_37_1_1 && (i_37_1_1 < gsize && (0 <= j_11_1 && (j_11_1 < gsize && i_37_1_1 != j_11_1))) ==> Seq#Index(Heap[this, src], i_37_1_1) != Seq#Index(Heap[this, src], j_11_1)
+      assume (forall i_37_1_1: int, j_11_1_1: int ::
+        { Seq#Index(Heap[this, src], i_37_1_1), Seq#Index(Heap[this, src], j_11_1_1) }
+        0 <= i_37_1_1 && (i_37_1_1 < gsize && (0 <= j_11_1_1 && (j_11_1_1 < gsize && i_37_1_1 != j_11_1_1))) ==> Seq#Index(Heap[this, src], i_37_1_1) != Seq#Index(Heap[this, src], j_11_1_1)
       );
       havoc QPMask;
       
       // -- check that the permission amount is positive
-        assert {:msg "  The precondition of method main_barrier might not hold. Fraction 1 / gsize might be negative. (max-two-range.vpr@88.3--88.105) [15157]"}
+        assert {:msg "  The precondition of method main_barrier might not hold. Fraction 1 / gsize might be negative. (max-two-range.vpr@88.3--88.105) [152852]"}
           (forall i_38: int ::
           { Seq#Index(Heap[this, src], i_38) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_38) } { Seq#Contains(Seq#Range(0, gsize), i_38) } { Seq#Index(Heap[this, src], i_38) }
           Seq#Contains(Seq#Range(0, gsize), i_38) && dummyFunction(Heap[Seq#Index(Heap[this, src], i_38), Integer_value]) ==> 1 / gsize >= NoPerm
         );
       
       // -- check if receiver this.src[i] is injective
-        assert {:msg "  The precondition of method main_barrier might not hold. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@88.3--88.105) [15158]"}
+        assert {:msg "  The precondition of method main_barrier might not hold. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@88.3--88.105) [152853]"}
           (forall i_38: int, i_38_1: int ::
           { neverTriggered9(i_38), neverTriggered9(i_38_1) }
           (((i_38 != i_38_1 && Seq#Contains(Seq#Range(0, gsize), i_38)) && Seq#Contains(Seq#Range(0, gsize), i_38_1)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_38) != Seq#Index(Heap[this, src], i_38_1)
         );
       
       // -- check if sufficient permission is held
-        assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@88.3--88.105) [15159]"}
+        assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@88.3--88.105) [152854]"}
           (forall i_38: int ::
           { Seq#Index(Heap[this, src], i_38) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_38) } { Seq#Contains(Seq#Range(0, gsize), i_38) } { Seq#Index(Heap[this, src], i_38) }
           Seq#Contains(Seq#Range(0, gsize), i_38) ==> Mask[Seq#Index(Heap[this, src], i_38), Integer_value] >= 1 / gsize
@@ -1959,28 +1959,28 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
           { Seq#Index(Heap[this, src], i_38) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_38) } { Seq#Contains(Seq#Range(0, gsize), i_38) } { Seq#Index(Heap[this, src], i_38) }
           Seq#Contains(Seq#Range(0, gsize), i_38) && NoPerm < 1 / gsize ==> qpRange9(Seq#Index(Heap[this, src], i_38)) && invRecv9(Seq#Index(Heap[this, src], i_38)) == i_38
         );
-        assume (forall o_4: Ref ::
-          { invRecv9(o_4) }
-          Seq#Contains(Seq#Range(0, gsize), invRecv9(o_4)) && (NoPerm < 1 / gsize && qpRange9(o_4)) ==> Seq#Index(Heap[this, src], invRecv9(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv9(o_9) }
+          Seq#Contains(Seq#Range(0, gsize), invRecv9(o_9)) && (NoPerm < 1 / gsize && qpRange9(o_9)) ==> Seq#Index(Heap[this, src], invRecv9(o_9)) == o_9
         );
       
       // -- assume permission updates for field Integer_value
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, Integer_value] }
-          (Seq#Contains(Seq#Range(0, gsize), invRecv9(o_4)) && (NoPerm < 1 / gsize && qpRange9(o_4)) ==> Seq#Index(Heap[this, src], invRecv9(o_4)) == o_4 && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv9(o_4)) && (NoPerm < 1 / gsize && qpRange9(o_4))) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, Integer_value] }
+          (Seq#Contains(Seq#Range(0, gsize), invRecv9(o_9)) && (NoPerm < 1 / gsize && qpRange9(o_9)) ==> Seq#Index(Heap[this, src], invRecv9(o_9)) == o_9 && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv9(o_9)) && (NoPerm < 1 / gsize && qpRange9(o_9))) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
         );
       
       // -- assume permission updates for independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { QPMask[o_4, f_5] }
-          f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { QPMask[o_9, f_5] }
+          f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       if (arg_last_barrier == 1) {
         if (tid == 0) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@88.3--88.105) [15160]"}
+            assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@88.3--88.105) [152855]"}
               perm <= Mask[Seq#Index(Heap[this, dst], 0), Integer_value];
           }
           Mask := Mask[Seq#Index(Heap[this, dst], 0), Integer_value:=Mask[Seq#Index(Heap[this, dst], 0), Integer_value] - perm];
@@ -1988,7 +1988,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
         if (tid == 0) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@88.3--88.105) [15161]"}
+            assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@88.3--88.105) [152856]"}
               perm <= Mask[Seq#Index(Heap[this, dst], 1), Integer_value];
           }
           Mask := Mask[Seq#Index(Heap[this, dst], 1), Integer_value:=Mask[Seq#Index(Heap[this, dst], 1), Integer_value] - perm];
@@ -1997,17 +1997,17 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
       if (arg_last_barrier == 0) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@88.3--88.105) [15162]"}
+          assert {:msg "  The precondition of method main_barrier might not hold. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@88.3--88.105) [152857]"}
             perm <= Mask[Seq#Index(Heap[this, dst], tid), Integer_value];
         }
         Mask := Mask[Seq#Index(Heap[this, dst], tid), Integer_value:=Mask[Seq#Index(Heap[this, dst], tid), Integer_value] - perm];
       }
-      assert {:msg "  The precondition of method main_barrier might not hold. Assertion half + half == gsize might not hold. (max-two-range.vpr@88.3--88.105) [15163]"}
+      assert {:msg "  The precondition of method main_barrier might not hold. Assertion half + half == gsize might not hold. (max-two-range.vpr@88.3--88.105) [152858]"}
         half + half == gsize;
       if (tid == 0) {
         if (*) {
           if (0 <= i_39 && i_39 < half) {
-            assert {:msg "  The precondition of method main_barrier might not hold. Assertion this.dst[0].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@88.3--88.105) [15164]"}
+            assert {:msg "  The precondition of method main_barrier might not hold. Assertion this.dst[0].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@88.3--88.105) [152859]"}
               Heap[Seq#Index(Heap[this, dst], 0), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_39), Integer_value];
           }
           assume false;
@@ -2019,15 +2019,15 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
       }
       if (tid == 1) {
         if (*) {
-          if (half <= i_41_2 && i_41_2 < gsize) {
-            assert {:msg "  The precondition of method main_barrier might not hold. Assertion this.dst[1].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@88.3--88.105) [15165]"}
-              Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_41_2), Integer_value];
+          if (half <= i_41 && i_41 < gsize) {
+            assert {:msg "  The precondition of method main_barrier might not hold. Assertion this.dst[1].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@88.3--88.105) [152860]"}
+              Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_41), Integer_value];
           }
           assume false;
         }
-        assume (forall i_42_1: int ::
-          { Seq#Index(Heap[this, src], i_42_1) }
-          half <= i_42_1 && i_42_1 < gsize ==> Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_42_1), Integer_value]
+        assume (forall i_42_1_1: int ::
+          { Seq#Index(Heap[this, src], i_42_1_1) }
+          half <= i_42_1_1 && i_42_1_1 < gsize ==> Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_42_1_1), Integer_value]
         );
       }
       // Finish exhale
@@ -2061,42 +2061,42 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
       assume Seq#Equal(Heap[this, src], PreCallHeap[this, src]);
       assume Seq#Equal(Heap[this, dst], PreCallHeap[this, dst]);
       havoc QPMask;
-      assert {:msg "  Method call might fail. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@88.3--88.105) [15166]"}
-        (forall i_43_2: int, i_43_3: int ::
+      assert {:msg "  Method call might fail. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@88.3--88.105) [152861]"}
+        (forall i_43: int, i_43_1: int ::
         
-        (((i_43_2 != i_43_3 && Seq#Contains(Seq#Range(0, gsize), i_43_2)) && Seq#Contains(Seq#Range(0, gsize), i_43_3)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_43_2) != Seq#Index(Heap[this, src], i_43_3)
+        (((i_43 != i_43_1 && Seq#Contains(Seq#Range(0, gsize), i_43)) && Seq#Contains(Seq#Range(0, gsize), i_43_1)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_43) != Seq#Index(Heap[this, src], i_43_1)
       );
       
       // -- Define Inverse Function
-        assume (forall i_43_2: int ::
-          { Seq#Index(Heap[this, src], i_43_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_43_2) } { Seq#Contains(Seq#Range(0, gsize), i_43_2) } { Seq#Index(Heap[this, src], i_43_2) }
-          Seq#Contains(Seq#Range(0, gsize), i_43_2) && NoPerm < 1 / gsize ==> qpRange10(Seq#Index(Heap[this, src], i_43_2)) && invRecv10(Seq#Index(Heap[this, src], i_43_2)) == i_43_2
+        assume (forall i_43: int ::
+          { Seq#Index(Heap[this, src], i_43) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_43) } { Seq#Contains(Seq#Range(0, gsize), i_43) } { Seq#Index(Heap[this, src], i_43) }
+          Seq#Contains(Seq#Range(0, gsize), i_43) && NoPerm < 1 / gsize ==> qpRange10(Seq#Index(Heap[this, src], i_43)) && invRecv10(Seq#Index(Heap[this, src], i_43)) == i_43
         );
-        assume (forall o_4: Ref ::
-          { invRecv10(o_4) }
-          (Seq#Contains(Seq#Range(0, gsize), invRecv10(o_4)) && NoPerm < 1 / gsize) && qpRange10(o_4) ==> Seq#Index(Heap[this, src], invRecv10(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv10(o_9) }
+          (Seq#Contains(Seq#Range(0, gsize), invRecv10(o_9)) && NoPerm < 1 / gsize) && qpRange10(o_9) ==> Seq#Index(Heap[this, src], invRecv10(o_9)) == o_9
         );
       // Check that permission expression is non-negative for all fields
-      assert {:msg "  Method call might fail. Fraction 1 / gsize might be negative. (max-two-range.vpr@88.3--88.105) [15167]"}
-        (forall i_43_2: int ::
-        { Seq#Index(Heap[this, src], i_43_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_43_2) } { Seq#Contains(Seq#Range(0, gsize), i_43_2) } { Seq#Index(Heap[this, src], i_43_2) }
-        Seq#Contains(Seq#Range(0, gsize), i_43_2) ==> 1 / gsize >= NoPerm
+      assert {:msg "  Method call might fail. Fraction 1 / gsize might be negative. (max-two-range.vpr@88.3--88.105) [152862]"}
+        (forall i_43: int ::
+        { Seq#Index(Heap[this, src], i_43) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_43) } { Seq#Contains(Seq#Range(0, gsize), i_43) } { Seq#Index(Heap[this, src], i_43) }
+        Seq#Contains(Seq#Range(0, gsize), i_43) ==> 1 / gsize >= NoPerm
       );
       
       // -- Assume set of fields is nonNull
-        assume (forall i_43_2: int ::
-          { Seq#Index(Heap[this, src], i_43_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_43_2) } { Seq#Contains(Seq#Range(0, gsize), i_43_2) } { Seq#Index(Heap[this, src], i_43_2) }
-          Seq#Contains(Seq#Range(0, gsize), i_43_2) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_43_2) != null
+        assume (forall i_43: int ::
+          { Seq#Index(Heap[this, src], i_43) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_43) } { Seq#Contains(Seq#Range(0, gsize), i_43) } { Seq#Index(Heap[this, src], i_43) }
+          Seq#Contains(Seq#Range(0, gsize), i_43) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_43) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, Integer_value] }
-          ((Seq#Contains(Seq#Range(0, gsize), invRecv10(o_4)) && NoPerm < 1 / gsize) && qpRange10(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv10(o_4)) == o_4) && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv10(o_4)) && NoPerm < 1 / gsize) && qpRange10(o_4)) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, Integer_value] }
+          ((Seq#Contains(Seq#Range(0, gsize), invRecv10(o_9)) && NoPerm < 1 / gsize) && qpRange10(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv10(o_9)) == o_9) && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv10(o_9)) && NoPerm < 1 / gsize) && qpRange10(o_9)) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
@@ -2128,9 +2128,9 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
         );
       }
       if (tid == 0) {
-        assume (forall i_45_2: int ::
-          { Seq#Index(Heap[this, src], i_45_2) }
-          half <= i_45_2 && i_45_2 < gsize ==> Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_45_2), Integer_value]
+        assume (forall i_45: int ::
+          { Seq#Index(Heap[this, src], i_45) }
+          half <= i_45 && i_45 < gsize ==> Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_45), Integer_value]
         );
       }
       assume state(Heap, Mask);
@@ -2147,28 +2147,28 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } 0 <= i && i < half ==> this.dst[0].Integer_value >= this.src[i].Integer_value)
         if (*) {
-          if (0 <= i_11 && i_11 < half) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@89.10--89.127) [15168]"}
+          if (0 <= i_8 && i_8 < half) {
+            assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@89.10--89.127) [152863]"}
               HasDirectPerm(ExhaleWellDef0Mask, this, dst);
-            assert {:msg "  Assert might fail. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@89.10--89.127) [15169]"}
+            assert {:msg "  Assert might fail. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@89.10--89.127) [152864]"}
               0 < Seq#Length(Heap[this, dst]);
-            assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@89.10--89.127) [15170]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@89.10--89.127) [152865]"}
               HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, dst], 0), Integer_value);
-            assert {:msg "  Assert might fail. There might be insufficient permission to access this.src (max-two-range.vpr@89.10--89.127) [15171]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access this.src (max-two-range.vpr@89.10--89.127) [152866]"}
               HasDirectPerm(ExhaleWellDef0Mask, this, src);
-            assert {:msg "  Assert might fail. Index this.src[i] into this.src might be negative. (max-two-range.vpr@89.10--89.127) [15172]"}
-              i_11 >= 0;
-            assert {:msg "  Assert might fail. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@89.10--89.127) [15173]"}
-              i_11 < Seq#Length(Heap[this, src]);
-            assert {:msg "  Assert might fail. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@89.10--89.127) [15174]"}
-              HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, src], i_11), Integer_value);
+            assert {:msg "  Assert might fail. Index this.src[i] into this.src might be negative. (max-two-range.vpr@89.10--89.127) [152867]"}
+              i_8 >= 0;
+            assert {:msg "  Assert might fail. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@89.10--89.127) [152868]"}
+              i_8 < Seq#Length(Heap[this, src]);
+            assert {:msg "  Assert might fail. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@89.10--89.127) [152869]"}
+              HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, src], i_8), Integer_value);
           }
           assume false;
         }
       if (*) {
-        if (0 <= i_47_2 && i_47_2 < half) {
-          assert {:msg "  Assert might fail. Assertion this.dst[0].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@89.10--89.127) [15175]"}
-            Heap[Seq#Index(Heap[this, dst], 0), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_47_2), Integer_value];
+        if (0 <= i_47 && i_47 < half) {
+          assert {:msg "  Assert might fail. Assertion this.dst[0].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@89.10--89.127) [152870]"}
+            Heap[Seq#Index(Heap[this, dst], 0), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_47), Integer_value];
         }
         assume false;
       }
@@ -2190,34 +2190,34 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } half <= i && i < gsize ==> this.dst[1].Integer_value >= this.src[i].Integer_value)
         if (*) {
-          if (half <= i_12 && i_12 < gsize) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@90.10--90.131) [15176]"}
+          if (half <= i_19 && i_19 < gsize) {
+            assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@90.10--90.131) [152871]"}
               HasDirectPerm(ExhaleWellDef0Mask, this, dst);
-            assert {:msg "  Assert might fail. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@90.10--90.131) [15177]"}
+            assert {:msg "  Assert might fail. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@90.10--90.131) [152872]"}
               1 < Seq#Length(Heap[this, dst]);
-            assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@90.10--90.131) [15178]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@90.10--90.131) [152873]"}
               HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, dst], 1), Integer_value);
-            assert {:msg "  Assert might fail. There might be insufficient permission to access this.src (max-two-range.vpr@90.10--90.131) [15179]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access this.src (max-two-range.vpr@90.10--90.131) [152874]"}
               HasDirectPerm(ExhaleWellDef0Mask, this, src);
-            assert {:msg "  Assert might fail. Index this.src[i] into this.src might be negative. (max-two-range.vpr@90.10--90.131) [15180]"}
-              i_12 >= 0;
-            assert {:msg "  Assert might fail. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@90.10--90.131) [15181]"}
-              i_12 < Seq#Length(Heap[this, src]);
-            assert {:msg "  Assert might fail. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@90.10--90.131) [15182]"}
-              HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, src], i_12), Integer_value);
+            assert {:msg "  Assert might fail. Index this.src[i] into this.src might be negative. (max-two-range.vpr@90.10--90.131) [152875]"}
+              i_19 >= 0;
+            assert {:msg "  Assert might fail. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@90.10--90.131) [152876]"}
+              i_19 < Seq#Length(Heap[this, src]);
+            assert {:msg "  Assert might fail. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@90.10--90.131) [152877]"}
+              HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[this, src], i_19), Integer_value);
           }
           assume false;
         }
       if (*) {
-        if (half <= i_50_1 && i_50_1 < gsize) {
-          assert {:msg "  Assert might fail. Assertion this.dst[1].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@90.10--90.131) [15183]"}
-            Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_50_1), Integer_value];
+        if (half <= i_50 && i_50 < gsize) {
+          assert {:msg "  Assert might fail. Assertion this.dst[1].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@90.10--90.131) [152878]"}
+            Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_50), Integer_value];
         }
         assume false;
       }
-      assume (forall i_51_1_1: int ::
-        { Seq#Index(Heap[this, src], i_51_1_1) }
-        half <= i_51_1_1 && i_51_1_1 < gsize ==> Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_51_1_1), Integer_value]
+      assume (forall i_51_1: int ::
+        { Seq#Index(Heap[this, src], i_51_1) }
+        half <= i_51_1 && i_51_1 < gsize ==> Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_51_1), Integer_value]
       );
     }
     assume state(Heap, Mask);
@@ -2228,36 +2228,36 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
       // -- Translating statement: if (this.dst[1].Integer_value > this.dst[0].Integer_value) -- max-two-range.vpr@92.5--94.6
         
         // -- Check definedness of this.dst[1].Integer_value > this.dst[0].Integer_value
-          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@92.9--92.62) [15184]"}
+          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@92.9--92.62) [152879]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Conditional statement might fail. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@92.9--92.62) [15185]"}
+          assert {:msg "  Conditional statement might fail. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@92.9--92.62) [152880]"}
             1 < Seq#Length(Heap[this, dst]);
-          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@92.9--92.62) [15186]"}
+          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@92.9--92.62) [152881]"}
             HasDirectPerm(Mask, Seq#Index(Heap[this, dst], 1), Integer_value);
-          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@92.9--92.62) [15187]"}
+          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@92.9--92.62) [152882]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Conditional statement might fail. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@92.9--92.62) [15188]"}
+          assert {:msg "  Conditional statement might fail. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@92.9--92.62) [152883]"}
             0 < Seq#Length(Heap[this, dst]);
-          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@92.9--92.62) [15189]"}
+          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@92.9--92.62) [152884]"}
             HasDirectPerm(Mask, Seq#Index(Heap[this, dst], 0), Integer_value);
         if (Heap[Seq#Index(Heap[this, dst], 1), Integer_value] > Heap[Seq#Index(Heap[this, dst], 0), Integer_value]) {
           
           // -- Translating statement: this.dst[0].Integer_value := this.dst[1].Integer_value -- max-two-range.vpr@93.7--93.61
             
             // -- Check definedness of this.dst[0]
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@93.7--93.61) [15190]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@93.7--93.61) [152885]"}
                 HasDirectPerm(Mask, this, dst);
-              assert {:msg "  Assignment might fail. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@93.7--93.61) [15191]"}
+              assert {:msg "  Assignment might fail. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@93.7--93.61) [152886]"}
                 0 < Seq#Length(Heap[this, dst]);
             
             // -- Check definedness of this.dst[1].Integer_value
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@93.7--93.61) [15192]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@93.7--93.61) [152887]"}
                 HasDirectPerm(Mask, this, dst);
-              assert {:msg "  Assignment might fail. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@93.7--93.61) [15193]"}
+              assert {:msg "  Assignment might fail. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@93.7--93.61) [152888]"}
                 1 < Seq#Length(Heap[this, dst]);
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@93.7--93.61) [15194]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@93.7--93.61) [152889]"}
                 HasDirectPerm(Mask, Seq#Index(Heap[this, dst], 1), Integer_value);
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@93.7--93.61) [15195]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@93.7--93.61) [152890]"}
               FullPerm == Mask[Seq#Index(Heap[this, dst], 0), Integer_value];
             Heap := Heap[Seq#Index(Heap[this, dst], 0), Integer_value:=Heap[Seq#Index(Heap[this, dst], 1), Integer_value]];
             assume state(Heap, Mask);
@@ -2269,87 +2269,87 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@27.11--27.19) [15196]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@27.11--27.19) [152891]"}
       0 <= tid;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@28.11--28.23) [15197]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@28.11--28.23) [152892]"}
       tid < tcount;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion tid == lid might not hold. (max-two-range.vpr@29.11--29.21) [15198]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion tid == lid might not hold. (max-two-range.vpr@29.11--29.21) [152893]"}
       tid == lid;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@30.11--30.26) [15199]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@30.11--30.26) [152894]"}
       tcount == gsize;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@31.11--31.19) [15200]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@31.11--31.19) [152895]"}
       gid == 0;
-    assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.src (max-two-range.vpr@32.11--32.34) [15201]"}
+    assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.src (max-two-range.vpr@32.11--32.34) [152896]"}
       Mask[this, src] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, src];
     Mask := Mask[this, src:=Mask[this, src] - wildcard];
-    assert {:msg "  Postcondition of main_main might not hold. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@33.11--33.30) [15202]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@33.11--33.30) [152897]"}
       Seq#Length(Heap[this, src]) == gsize;
-    assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.dst (max-two-range.vpr@34.11--34.34) [15203]"}
+    assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.dst (max-two-range.vpr@34.11--34.34) [152898]"}
       Mask[this, dst] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, dst];
     Mask := Mask[this, dst:=Mask[this, dst] - wildcard];
-    assert {:msg "  Postcondition of main_main might not hold. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@35.11--35.30) [15204]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@35.11--35.30) [152899]"}
       Seq#Length(Heap[this, dst]) == gsize;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion 4 <= gsize might not hold. (max-two-range.vpr@36.11--36.21) [15205]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion 4 <= gsize might not hold. (max-two-range.vpr@36.11--36.21) [152900]"}
       4 <= gsize;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@37.11--37.25) [15206]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@37.11--37.25) [152901]"}
       gsize mod 2 == 0;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion this.src == old(this.src) might not hold. (max-two-range.vpr@38.11--38.36) [15207]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion this.src == old(this.src) might not hold. (max-two-range.vpr@38.11--38.36) [152902]"}
       Seq#Equal(Heap[this, src], oldHeap[this, src]);
-    assert {:msg "  Postcondition of main_main might not hold. Assertion this.dst == old(this.dst) might not hold. (max-two-range.vpr@39.11--39.36) [15208]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion this.dst == old(this.dst) might not hold. (max-two-range.vpr@39.11--39.36) [152903]"}
       Seq#Equal(Heap[this, dst], oldHeap[this, dst]);
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of main_main might not hold. Fraction 1 / gsize might be negative. (max-two-range.vpr@40.12--40.92) [15209]"}
-        (forall i_8_2: int ::
-        { Seq#Index(Heap[this, src], i_8_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_2) } { Seq#Contains(Seq#Range(0, gsize), i_8_2) } { Seq#Index(Heap[this, src], i_8_2) }
-        Seq#Contains(Seq#Range(0, gsize), i_8_2) && dummyFunction(Heap[Seq#Index(Heap[this, src], i_8_2), Integer_value]) ==> 1 / gsize >= NoPerm
+      assert {:msg "  Postcondition of main_main might not hold. Fraction 1 / gsize might be negative. (max-two-range.vpr@40.12--40.92) [152904]"}
+        (forall i_8_1: int ::
+        { Seq#Index(Heap[this, src], i_8_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_1) } { Seq#Contains(Seq#Range(0, gsize), i_8_1) } { Seq#Index(Heap[this, src], i_8_1) }
+        Seq#Contains(Seq#Range(0, gsize), i_8_1) && dummyFunction(Heap[Seq#Index(Heap[this, src], i_8_1), Integer_value]) ==> 1 / gsize >= NoPerm
       );
     
     // -- check if receiver this.src[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@40.12--40.92) [15210]"}
-        (forall i_8_2: int, i_8_3: int ::
-        { neverTriggered3(i_8_2), neverTriggered3(i_8_3) }
-        (((i_8_2 != i_8_3 && Seq#Contains(Seq#Range(0, gsize), i_8_2)) && Seq#Contains(Seq#Range(0, gsize), i_8_3)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_8_2) != Seq#Index(Heap[this, src], i_8_3)
+      assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@40.12--40.92) [152905]"}
+        (forall i_8_1: int, i_8_2: int ::
+        { neverTriggered3(i_8_1), neverTriggered3(i_8_2) }
+        (((i_8_1 != i_8_2 && Seq#Contains(Seq#Range(0, gsize), i_8_1)) && Seq#Contains(Seq#Range(0, gsize), i_8_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_8_1) != Seq#Index(Heap[this, src], i_8_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@40.12--40.92) [15211]"}
-        (forall i_8_2: int ::
-        { Seq#Index(Heap[this, src], i_8_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_2) } { Seq#Contains(Seq#Range(0, gsize), i_8_2) } { Seq#Index(Heap[this, src], i_8_2) }
-        Seq#Contains(Seq#Range(0, gsize), i_8_2) ==> Mask[Seq#Index(Heap[this, src], i_8_2), Integer_value] >= 1 / gsize
+      assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@40.12--40.92) [152906]"}
+        (forall i_8_1: int ::
+        { Seq#Index(Heap[this, src], i_8_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_1) } { Seq#Contains(Seq#Range(0, gsize), i_8_1) } { Seq#Index(Heap[this, src], i_8_1) }
+        Seq#Contains(Seq#Range(0, gsize), i_8_1) ==> Mask[Seq#Index(Heap[this, src], i_8_1), Integer_value] >= 1 / gsize
       );
     
     // -- assumptions for inverse of receiver this.src[i]
-      assume (forall i_8_2: int ::
-        { Seq#Index(Heap[this, src], i_8_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_2) } { Seq#Contains(Seq#Range(0, gsize), i_8_2) } { Seq#Index(Heap[this, src], i_8_2) }
-        Seq#Contains(Seq#Range(0, gsize), i_8_2) && NoPerm < 1 / gsize ==> qpRange3(Seq#Index(Heap[this, src], i_8_2)) && invRecv3(Seq#Index(Heap[this, src], i_8_2)) == i_8_2
+      assume (forall i_8_1: int ::
+        { Seq#Index(Heap[this, src], i_8_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_1) } { Seq#Contains(Seq#Range(0, gsize), i_8_1) } { Seq#Index(Heap[this, src], i_8_1) }
+        Seq#Contains(Seq#Range(0, gsize), i_8_1) && NoPerm < 1 / gsize ==> qpRange3(Seq#Index(Heap[this, src], i_8_1)) && invRecv3(Seq#Index(Heap[this, src], i_8_1)) == i_8_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        Seq#Contains(Seq#Range(0, gsize), invRecv3(o_4)) && (NoPerm < 1 / gsize && qpRange3(o_4)) ==> Seq#Index(Heap[this, src], invRecv3(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        Seq#Contains(Seq#Range(0, gsize), invRecv3(o_9)) && (NoPerm < 1 / gsize && qpRange3(o_9)) ==> Seq#Index(Heap[this, src], invRecv3(o_9)) == o_9
       );
     
     // -- assume permission updates for field Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv3(o_4)) && (NoPerm < 1 / gsize && qpRange3(o_4)) ==> Seq#Index(Heap[this, src], invRecv3(o_4)) == o_4 && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv3(o_4)) && (NoPerm < 1 / gsize && qpRange3(o_4))) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv3(o_9)) && (NoPerm < 1 / gsize && qpRange3(o_9)) ==> Seq#Index(Heap[this, src], invRecv3(o_9)) == o_9 && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv3(o_9)) && (NoPerm < 1 / gsize && qpRange3(o_9))) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (tid == 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@41.11--41.63) [15212]"}
+        assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@41.11--41.63) [152907]"}
           perm <= Mask[Seq#Index(Heap[this, dst], 0), Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[this, dst], 0), Integer_value:=Mask[Seq#Index(Heap[this, dst], 0), Integer_value] - perm];
@@ -2357,7 +2357,7 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     if (tid == 0) {
       if (*) {
         if (0 <= i_9_1 && i_9_1 < tcount) {
-          assert {:msg "  Postcondition of main_main might not hold. Assertion this.dst[0].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@42.12--42.134) [15213]"}
+          assert {:msg "  Postcondition of main_main might not hold. Assertion this.dst[0].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@42.12--42.134) [152908]"}
             Heap[Seq#Index(Heap[this, dst], 0), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_9_1), Integer_value];
         }
         assume false;
@@ -2377,28 +2377,28 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
 // Translation of method main_barrier
 // ==================================================
 
-procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid: int, this_barrier: int, last_barrier: int, k: int, half: int, offset: int) returns (sys__result: int)
+procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid: int, this_barrier: int, last_barrier: int, k: int, half: int, offset_1: int) returns (sys__result: int)
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var i_16: int;
-  var j_18: int;
-  var i_18: int;
+  var i_9: int;
+  var j_7: int;
+  var i_10: int;
   var QPMask: MaskType;
-  var i_13: int;
-  var i_20: int;
+  var i_17: int;
+  var i_11: int;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_22: int;
-  var i_24: int;
-  var i_29: int;
+  var i_12: int;
+  var i_13: int;
+  var i_23: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var i_15: int;
-  var i_17: int;
+  var i_15_1: int;
+  var i_17_1: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2432,7 +2432,7 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     assume state(Heap, Mask);
     
     // -- Check definedness of |this.src| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@106.12--106.31) [15214]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@106.12--106.31) [152909]"}
         HasDirectPerm(Mask, this, src);
     assume Seq#Length(Heap[this, src]) == gsize;
     assume state(Heap, Mask);
@@ -2444,7 +2444,7 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     assume state(Heap, Mask);
     
     // -- Check definedness of |this.dst| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@108.12--108.31) [15215]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@108.12--108.31) [152910]"}
         HasDirectPerm(Mask, this, dst);
     assume Seq#Length(Heap[this, dst]) == gsize;
     assume state(Heap, Mask);
@@ -2455,19 +2455,19 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     
     // -- Check definedness of (forall i: Int, j: Int :: { this.src[i], this.src[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.src[i] != this.src[j])
       if (*) {
-        if (0 <= i_16 && (i_16 < gsize && (0 <= j_18 && (j_18 < gsize && i_16 != j_18)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@111.12--111.120) [15216]"}
+        if (0 <= i_9 && (i_9 < gsize && (0 <= j_7 && (j_7 < gsize && i_9 != j_7)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@111.12--111.120) [152911]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@111.12--111.120) [15217]"}
-            i_16 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@111.12--111.120) [15218]"}
-            i_16 < Seq#Length(Heap[this, src]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@111.12--111.120) [15219]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@111.12--111.120) [152912]"}
+            i_9 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@111.12--111.120) [152913]"}
+            i_9 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@111.12--111.120) [152914]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might be negative. (max-two-range.vpr@111.12--111.120) [15220]"}
-            j_18 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might exceed sequence length. (max-two-range.vpr@111.12--111.120) [15221]"}
-            j_18 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might be negative. (max-two-range.vpr@111.12--111.120) [152915]"}
+            j_7 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might exceed sequence length. (max-two-range.vpr@111.12--111.120) [152916]"}
+            j_7 < Seq#Length(Heap[this, src]);
         }
         assume false;
       }
@@ -2479,55 +2479,55 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     
     // -- Check definedness of (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, gsize), i_18)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@112.13--112.93) [15222]"}
+        if (Seq#Contains(Seq#Range(0, gsize), i_10)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@112.13--112.93) [152917]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@112.13--112.93) [15223]"}
-            i_18 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@112.13--112.93) [15224]"}
-            i_18 < Seq#Length(Heap[this, src]);
-          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@112.13--112.93) [15225]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@112.13--112.93) [152918]"}
+            i_10 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@112.13--112.93) [152919]"}
+            i_10 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@112.13--112.93) [152920]"}
             gsize != 0;
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@112.13--112.93) [15226]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@112.13--112.93) [152921]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && Seq#Contains(Seq#Range(0, gsize), i_3)) && Seq#Contains(Seq#Range(0, gsize), i_3_1)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_3) != Seq#Index(Heap[this, src], i_3_1)
+      (((i_3_2 != i_3_3 && Seq#Contains(Seq#Range(0, gsize), i_3_2)) && Seq#Contains(Seq#Range(0, gsize), i_3_3)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_3_2) != Seq#Index(Heap[this, src], i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-        Seq#Contains(Seq#Range(0, gsize), i_3) && NoPerm < 1 / gsize ==> qpRange11(Seq#Index(Heap[this, src], i_3)) && invRecv11(Seq#Index(Heap[this, src], i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+        Seq#Contains(Seq#Range(0, gsize), i_3_2) && NoPerm < 1 / gsize ==> qpRange11(Seq#Index(Heap[this, src], i_3_2)) && invRecv11(Seq#Index(Heap[this, src], i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv11(o_4) }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv11(o_4)) && NoPerm < 1 / gsize) && qpRange11(o_4) ==> Seq#Index(Heap[this, src], invRecv11(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv11(o_9) }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv11(o_9)) && NoPerm < 1 / gsize) && qpRange11(o_9) ==> Seq#Index(Heap[this, src], invRecv11(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@112.13--112.93) [15227]"}
-      (forall i_3: int ::
-      { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-      Seq#Contains(Seq#Range(0, gsize), i_3) ==> 1 / gsize >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@112.13--112.93) [152922]"}
+      (forall i_3_2: int ::
+      { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+      Seq#Contains(Seq#Range(0, gsize), i_3_2) ==> 1 / gsize >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-        Seq#Contains(Seq#Range(0, gsize), i_3) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+        Seq#Contains(Seq#Range(0, gsize), i_3_2) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        ((Seq#Contains(Seq#Range(0, gsize), invRecv11(o_4)) && NoPerm < 1 / gsize) && qpRange11(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv11(o_4)) == o_4) && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv11(o_4)) && NoPerm < 1 / gsize) && qpRange11(o_4)) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        ((Seq#Contains(Seq#Range(0, gsize), invRecv11(o_9)) && NoPerm < 1 / gsize) && qpRange11(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv11(o_9)) == o_9) && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv11(o_9)) && NoPerm < 1 / gsize) && qpRange11(o_9)) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -2536,9 +2536,9 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
       if (tid == 0) {
         
         // -- Check definedness of acc(this.dst[0].Integer_value, write)
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@113.12--113.148) [15228]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@113.12--113.148) [152923]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@113.12--113.148) [15229]"}
+          assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@113.12--113.148) [152924]"}
             0 < Seq#Length(Heap[this, dst]);
         perm := FullPerm;
         assume Seq#Index(Heap[this, dst], 0) != null;
@@ -2548,9 +2548,9 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
       if (tid == 0) {
         
         // -- Check definedness of acc(this.dst[1].Integer_value, write)
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@113.12--113.148) [15230]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@113.12--113.148) [152925]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@113.12--113.148) [15231]"}
+          assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@113.12--113.148) [152926]"}
             1 < Seq#Length(Heap[this, dst]);
         perm := FullPerm;
         assume Seq#Index(Heap[this, dst], 1) != null;
@@ -2562,11 +2562,11 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     if (last_barrier == 0) {
       
       // -- Check definedness of acc(this.dst[tid].Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@114.12--114.75) [15232]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@114.12--114.75) [152927]"}
           HasDirectPerm(Mask, this, dst);
-        assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@114.12--114.75) [15233]"}
+        assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@114.12--114.75) [152928]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@114.12--114.75) [15234]"}
+        assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@114.12--114.75) [152929]"}
           tid < Seq#Length(Heap[this, dst]);
       perm := FullPerm;
       assume Seq#Index(Heap[this, dst], tid) != null;
@@ -2583,27 +2583,27 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
         
         // -- Check definedness of (forall i: Int :: { this.src[i] } 0 <= i && i < half ==> this.dst[0].Integer_value >= this.src[i].Integer_value)
           if (*) {
-            if (0 <= i_13 && i_13 < half) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@116.12--116.153) [15235]"}
+            if (0 <= i_17 && i_17 < half) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@116.12--116.153) [152930]"}
                 HasDirectPerm(Mask, this, dst);
-              assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@116.12--116.153) [15236]"}
+              assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@116.12--116.153) [152931]"}
                 0 < Seq#Length(Heap[this, dst]);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@116.12--116.153) [15237]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@116.12--116.153) [152932]"}
                 HasDirectPerm(Mask, Seq#Index(Heap[this, dst], 0), Integer_value);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@116.12--116.153) [15238]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@116.12--116.153) [152933]"}
                 HasDirectPerm(Mask, this, src);
-              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@116.12--116.153) [15239]"}
-                i_13 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@116.12--116.153) [15240]"}
-                i_13 < Seq#Length(Heap[this, src]);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@116.12--116.153) [15241]"}
-                HasDirectPerm(Mask, Seq#Index(Heap[this, src], i_13), Integer_value);
+              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@116.12--116.153) [152934]"}
+                i_17 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@116.12--116.153) [152935]"}
+                i_17 < Seq#Length(Heap[this, src]);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@116.12--116.153) [152936]"}
+                HasDirectPerm(Mask, Seq#Index(Heap[this, src], i_17), Integer_value);
             }
             assume false;
           }
-        assume (forall i_5: int ::
-          { Seq#Index(Heap[this, src], i_5) }
-          0 <= i_5 && i_5 < half ==> Heap[Seq#Index(Heap[this, dst], 0), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_5), Integer_value]
+        assume (forall i_5_1: int ::
+          { Seq#Index(Heap[this, src], i_5_1) }
+          0 <= i_5_1 && i_5_1 < half ==> Heap[Seq#Index(Heap[this, dst], 0), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_5_1), Integer_value]
         );
       }
     }
@@ -2613,21 +2613,21 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
         
         // -- Check definedness of (forall i: Int :: { this.src[i] } half <= i && i < gsize ==> this.dst[1].Integer_value >= this.src[i].Integer_value)
           if (*) {
-            if (half <= i_20 && i_20 < gsize) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@117.12--117.157) [15242]"}
+            if (half <= i_11 && i_11 < gsize) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@117.12--117.157) [152937]"}
                 HasDirectPerm(Mask, this, dst);
-              assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@117.12--117.157) [15243]"}
+              assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@117.12--117.157) [152938]"}
                 1 < Seq#Length(Heap[this, dst]);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@117.12--117.157) [15244]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@117.12--117.157) [152939]"}
                 HasDirectPerm(Mask, Seq#Index(Heap[this, dst], 1), Integer_value);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@117.12--117.157) [15245]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@117.12--117.157) [152940]"}
                 HasDirectPerm(Mask, this, src);
-              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@117.12--117.157) [15246]"}
-                i_20 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@117.12--117.157) [15247]"}
-                i_20 < Seq#Length(Heap[this, src]);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@117.12--117.157) [15248]"}
-                HasDirectPerm(Mask, Seq#Index(Heap[this, src], i_20), Integer_value);
+              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@117.12--117.157) [152941]"}
+                i_11 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@117.12--117.157) [152942]"}
+                i_11 < Seq#Length(Heap[this, src]);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@117.12--117.157) [152943]"}
+                HasDirectPerm(Mask, Seq#Index(Heap[this, src], i_11), Integer_value);
             }
             assume false;
           }
@@ -2667,7 +2667,7 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |this.src| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@124.11--124.30) [15249]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@124.11--124.30) [152944]"}
         HasDirectPerm(PostMask, this, src);
     assume Seq#Length(PostHeap[this, src]) == gsize;
     assume state(PostHeap, PostMask);
@@ -2679,7 +2679,7 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |this.dst| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@126.11--126.30) [15250]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@126.11--126.30) [152945]"}
         HasDirectPerm(PostMask, this, dst);
     assume Seq#Length(PostHeap[this, dst]) == gsize;
     assume state(PostHeap, PostMask);
@@ -2689,37 +2689,37 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.src == old(this.src)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@129.11--129.36) [15251]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@129.11--129.36) [152946]"}
         HasDirectPerm(PostMask, this, src);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@129.11--129.36) [15252]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@129.11--129.36) [152947]"}
         HasDirectPerm(oldMask, this, src);
     assume Seq#Equal(PostHeap[this, src], oldHeap[this, src]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.dst == old(this.dst)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@130.11--130.36) [15253]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@130.11--130.36) [152948]"}
         HasDirectPerm(PostMask, this, dst);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@130.11--130.36) [15254]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@130.11--130.36) [152949]"}
         HasDirectPerm(oldMask, this, dst);
     assume Seq#Equal(PostHeap[this, dst], oldHeap[this, dst]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, gsize), i_22)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@131.12--131.92) [15255]"}
+        if (Seq#Contains(Seq#Range(0, gsize), i_12)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@131.12--131.92) [152950]"}
             HasDirectPerm(PostMask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@131.12--131.92) [15256]"}
-            i_22 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@131.12--131.92) [15257]"}
-            i_22 < Seq#Length(PostHeap[this, src]);
-          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@131.12--131.92) [15258]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@131.12--131.92) [152951]"}
+            i_12 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@131.12--131.92) [152952]"}
+            i_12 < Seq#Length(PostHeap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@131.12--131.92) [152953]"}
             gsize != 0;
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@131.12--131.92) [15259]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@131.12--131.92) [152954]"}
       (forall i_9_1: int, i_9_2: int ::
       
       (((i_9_1 != i_9_2 && Seq#Contains(Seq#Range(0, gsize), i_9_1)) && Seq#Contains(Seq#Range(0, gsize), i_9_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], i_9_1) != Seq#Index(PostHeap[this, src], i_9_2)
@@ -2730,12 +2730,12 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
         { Seq#Index(PostHeap[this, src], i_9_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_9_1) } { Seq#Contains(Seq#Range(0, gsize), i_9_1) } { Seq#Index(PostHeap[this, src], i_9_1) }
         Seq#Contains(Seq#Range(0, gsize), i_9_1) && NoPerm < 1 / gsize ==> qpRange12(Seq#Index(PostHeap[this, src], i_9_1)) && invRecv12(Seq#Index(PostHeap[this, src], i_9_1)) == i_9_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv12(o_4) }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv12(o_4)) && NoPerm < 1 / gsize) && qpRange12(o_4) ==> Seq#Index(PostHeap[this, src], invRecv12(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv12(o_9) }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv12(o_9)) && NoPerm < 1 / gsize) && qpRange12(o_9) ==> Seq#Index(PostHeap[this, src], invRecv12(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@131.12--131.92) [15260]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@131.12--131.92) [152955]"}
       (forall i_9_1: int ::
       { Seq#Index(PostHeap[this, src], i_9_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_9_1) } { Seq#Contains(Seq#Range(0, gsize), i_9_1) } { Seq#Index(PostHeap[this, src], i_9_1) }
       Seq#Contains(Seq#Range(0, gsize), i_9_1) ==> 1 / gsize >= NoPerm
@@ -2748,13 +2748,13 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        ((Seq#Contains(Seq#Range(0, gsize), invRecv12(o_4)) && NoPerm < 1 / gsize) && qpRange12(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], invRecv12(o_4)) == o_4) && QPMask[o_4, Integer_value] == PostMask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv12(o_4)) && NoPerm < 1 / gsize) && qpRange12(o_4)) ==> QPMask[o_4, Integer_value] == PostMask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        ((Seq#Contains(Seq#Range(0, gsize), invRecv12(o_9)) && NoPerm < 1 / gsize) && qpRange12(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], invRecv12(o_9)) == o_9) && QPMask[o_9, Integer_value] == PostMask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv12(o_9)) && NoPerm < 1 / gsize) && qpRange12(o_9)) ==> QPMask[o_9, Integer_value] == PostMask[o_9, Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -2763,9 +2763,9 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
       if (tid == 0) {
         
         // -- Check definedness of acc(this.dst[0].Integer_value, write)
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@132.11--132.146) [15261]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@132.11--132.146) [152956]"}
             HasDirectPerm(PostMask, this, dst);
-          assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@132.11--132.146) [15262]"}
+          assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@132.11--132.146) [152957]"}
             0 < Seq#Length(PostHeap[this, dst]);
         perm := FullPerm;
         assume Seq#Index(PostHeap[this, dst], 0) != null;
@@ -2775,9 +2775,9 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
       if (tid == 0) {
         
         // -- Check definedness of acc(this.dst[1].Integer_value, write)
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@132.11--132.146) [15263]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@132.11--132.146) [152958]"}
             HasDirectPerm(PostMask, this, dst);
-          assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@132.11--132.146) [15264]"}
+          assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@132.11--132.146) [152959]"}
             1 < Seq#Length(PostHeap[this, dst]);
         perm := FullPerm;
         assume Seq#Index(PostHeap[this, dst], 1) != null;
@@ -2789,11 +2789,11 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     if (sys__result == 0) {
       
       // -- Check definedness of acc(this.dst[tid].Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@133.11--133.73) [15265]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@133.11--133.73) [152960]"}
           HasDirectPerm(PostMask, this, dst);
-        assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@133.11--133.73) [15266]"}
+        assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@133.11--133.73) [152961]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@133.11--133.73) [15267]"}
+        assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@133.11--133.73) [152962]"}
           tid < Seq#Length(PostHeap[this, dst]);
       perm := FullPerm;
       assume Seq#Index(PostHeap[this, dst], tid) != null;
@@ -2808,21 +2808,21 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
         
         // -- Check definedness of (forall i: Int :: { this.src[i] } 0 <= i && i < half ==> this.dst[0].Integer_value >= this.src[i].Integer_value)
           if (*) {
-            if (0 <= i_24 && i_24 < half) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@135.11--135.152) [15268]"}
+            if (0 <= i_13 && i_13 < half) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@135.11--135.152) [152963]"}
                 HasDirectPerm(PostMask, this, dst);
-              assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@135.11--135.152) [15269]"}
+              assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@135.11--135.152) [152964]"}
                 0 < Seq#Length(PostHeap[this, dst]);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@135.11--135.152) [15270]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@135.11--135.152) [152965]"}
                 HasDirectPerm(PostMask, Seq#Index(PostHeap[this, dst], 0), Integer_value);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@135.11--135.152) [15271]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@135.11--135.152) [152966]"}
                 HasDirectPerm(PostMask, this, src);
-              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@135.11--135.152) [15272]"}
-                i_24 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@135.11--135.152) [15273]"}
-                i_24 < Seq#Length(PostHeap[this, src]);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@135.11--135.152) [15274]"}
-                HasDirectPerm(PostMask, Seq#Index(PostHeap[this, src], i_24), Integer_value);
+              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@135.11--135.152) [152967]"}
+                i_13 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@135.11--135.152) [152968]"}
+                i_13 < Seq#Length(PostHeap[this, src]);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@135.11--135.152) [152969]"}
+                HasDirectPerm(PostMask, Seq#Index(PostHeap[this, src], i_13), Integer_value);
             }
             assume false;
           }
@@ -2838,21 +2838,21 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
         
         // -- Check definedness of (forall i: Int :: { this.src[i] } half <= i && i < gsize ==> this.dst[1].Integer_value >= this.src[i].Integer_value)
           if (*) {
-            if (half <= i_29 && i_29 < gsize) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@136.11--136.156) [15275]"}
+            if (half <= i_23 && i_23 < gsize) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@136.11--136.156) [152970]"}
                 HasDirectPerm(PostMask, this, dst);
-              assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@136.11--136.156) [15276]"}
+              assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@136.11--136.156) [152971]"}
                 1 < Seq#Length(PostHeap[this, dst]);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@136.11--136.156) [15277]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@136.11--136.156) [152972]"}
                 HasDirectPerm(PostMask, Seq#Index(PostHeap[this, dst], 1), Integer_value);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@136.11--136.156) [15278]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@136.11--136.156) [152973]"}
                 HasDirectPerm(PostMask, this, src);
-              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@136.11--136.156) [15279]"}
-                i_29 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@136.11--136.156) [15280]"}
-                i_29 < Seq#Length(PostHeap[this, src]);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@136.11--136.156) [15281]"}
-                HasDirectPerm(PostMask, Seq#Index(PostHeap[this, src], i_29), Integer_value);
+              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@136.11--136.156) [152974]"}
+                i_23 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@136.11--136.156) [152975]"}
+                i_23 < Seq#Length(PostHeap[this, src]);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@136.11--136.156) [152976]"}
+                HasDirectPerm(PostMask, Seq#Index(PostHeap[this, src], i_23), Integer_value);
             }
             assume false;
           }
@@ -2875,56 +2875,56 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@118.11--118.19) [15282]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@118.11--118.19) [152977]"}
       0 <= tid;
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@119.11--119.23) [15283]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@119.11--119.23) [152978]"}
       tid < tcount;
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion tid == lid might not hold. (max-two-range.vpr@120.11--120.21) [15284]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion tid == lid might not hold. (max-two-range.vpr@120.11--120.21) [152979]"}
       tid == lid;
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@121.11--121.26) [15285]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@121.11--121.26) [152980]"}
       tcount == gsize;
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@122.11--122.19) [15286]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@122.11--122.19) [152981]"}
       gid == 0;
-    assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.src (max-two-range.vpr@123.11--123.34) [15287]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.src (max-two-range.vpr@123.11--123.34) [152982]"}
       Mask[this, src] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, src];
     Mask := Mask[this, src:=Mask[this, src] - wildcard];
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@124.11--124.30) [15288]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@124.11--124.30) [152983]"}
       Seq#Length(Heap[this, src]) == gsize;
-    assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.dst (max-two-range.vpr@125.11--125.34) [15289]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.dst (max-two-range.vpr@125.11--125.34) [152984]"}
       Mask[this, dst] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, dst];
     Mask := Mask[this, dst:=Mask[this, dst] - wildcard];
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@126.11--126.30) [15290]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@126.11--126.30) [152985]"}
       Seq#Length(Heap[this, dst]) == gsize;
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion 4 <= gsize might not hold. (max-two-range.vpr@127.11--127.21) [15291]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion 4 <= gsize might not hold. (max-two-range.vpr@127.11--127.21) [152986]"}
       4 <= gsize;
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@128.11--128.25) [15292]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@128.11--128.25) [152987]"}
       gsize mod 2 == 0;
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion this.src == old(this.src) might not hold. (max-two-range.vpr@129.11--129.36) [15293]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion this.src == old(this.src) might not hold. (max-two-range.vpr@129.11--129.36) [152988]"}
       Seq#Equal(Heap[this, src], oldHeap[this, src]);
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion this.dst == old(this.dst) might not hold. (max-two-range.vpr@130.11--130.36) [15294]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion this.dst == old(this.dst) might not hold. (max-two-range.vpr@130.11--130.36) [152989]"}
       Seq#Equal(Heap[this, dst], oldHeap[this, dst]);
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of main_barrier might not hold. Fraction 1 / gsize might be negative. (max-two-range.vpr@131.12--131.92) [15295]"}
+      assert {:msg "  Postcondition of main_barrier might not hold. Fraction 1 / gsize might be negative. (max-two-range.vpr@131.12--131.92) [152990]"}
         (forall i_14_1: int ::
         { Seq#Index(Heap[this, src], i_14_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_14_1) } { Seq#Contains(Seq#Range(0, gsize), i_14_1) } { Seq#Index(Heap[this, src], i_14_1) }
         Seq#Contains(Seq#Range(0, gsize), i_14_1) && dummyFunction(Heap[Seq#Index(Heap[this, src], i_14_1), Integer_value]) ==> 1 / gsize >= NoPerm
       );
     
     // -- check if receiver this.src[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@131.12--131.92) [15296]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@131.12--131.92) [152991]"}
         (forall i_14_1: int, i_14_2: int ::
         { neverTriggered13(i_14_1), neverTriggered13(i_14_2) }
         (((i_14_1 != i_14_2 && Seq#Contains(Seq#Range(0, gsize), i_14_1)) && Seq#Contains(Seq#Range(0, gsize), i_14_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_14_1) != Seq#Index(Heap[this, src], i_14_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@131.12--131.92) [15297]"}
+      assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@131.12--131.92) [152992]"}
         (forall i_14_1: int ::
         { Seq#Index(Heap[this, src], i_14_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_14_1) } { Seq#Contains(Seq#Range(0, gsize), i_14_1) } { Seq#Index(Heap[this, src], i_14_1) }
         Seq#Contains(Seq#Range(0, gsize), i_14_1) ==> Mask[Seq#Index(Heap[this, src], i_14_1), Integer_value] >= 1 / gsize
@@ -2935,28 +2935,28 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
         { Seq#Index(Heap[this, src], i_14_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_14_1) } { Seq#Contains(Seq#Range(0, gsize), i_14_1) } { Seq#Index(Heap[this, src], i_14_1) }
         Seq#Contains(Seq#Range(0, gsize), i_14_1) && NoPerm < 1 / gsize ==> qpRange13(Seq#Index(Heap[this, src], i_14_1)) && invRecv13(Seq#Index(Heap[this, src], i_14_1)) == i_14_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv13(o_4) }
-        Seq#Contains(Seq#Range(0, gsize), invRecv13(o_4)) && (NoPerm < 1 / gsize && qpRange13(o_4)) ==> Seq#Index(Heap[this, src], invRecv13(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv13(o_9) }
+        Seq#Contains(Seq#Range(0, gsize), invRecv13(o_9)) && (NoPerm < 1 / gsize && qpRange13(o_9)) ==> Seq#Index(Heap[this, src], invRecv13(o_9)) == o_9
       );
     
     // -- assume permission updates for field Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv13(o_4)) && (NoPerm < 1 / gsize && qpRange13(o_4)) ==> Seq#Index(Heap[this, src], invRecv13(o_4)) == o_4 && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv13(o_4)) && (NoPerm < 1 / gsize && qpRange13(o_4))) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv13(o_9)) && (NoPerm < 1 / gsize && qpRange13(o_9)) ==> Seq#Index(Heap[this, src], invRecv13(o_9)) == o_9 && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv13(o_9)) && (NoPerm < 1 / gsize && qpRange13(o_9))) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (sys__result == 1) {
       if (tid == 0) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@132.11--132.146) [15298]"}
+          assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@132.11--132.146) [152993]"}
             perm <= Mask[Seq#Index(Heap[this, dst], 0), Integer_value];
         }
         Mask := Mask[Seq#Index(Heap[this, dst], 0), Integer_value:=Mask[Seq#Index(Heap[this, dst], 0), Integer_value] - perm];
@@ -2964,7 +2964,7 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
       if (tid == 0) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@132.11--132.146) [15299]"}
+          assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@132.11--132.146) [152994]"}
             perm <= Mask[Seq#Index(Heap[this, dst], 1), Integer_value];
         }
         Mask := Mask[Seq#Index(Heap[this, dst], 1), Integer_value:=Mask[Seq#Index(Heap[this, dst], 1), Integer_value] - perm];
@@ -2973,19 +2973,19 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     if (sys__result == 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@133.11--133.73) [15300]"}
+        assert {:msg "  Postcondition of main_barrier might not hold. There might be insufficient permission to access this.dst[tid].Integer_value (max-two-range.vpr@133.11--133.73) [152995]"}
           perm <= Mask[Seq#Index(Heap[this, dst], tid), Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[this, dst], tid), Integer_value:=Mask[Seq#Index(Heap[this, dst], tid), Integer_value] - perm];
     }
-    assert {:msg "  Postcondition of main_barrier might not hold. Assertion sys__result == this_barrier might not hold. (max-two-range.vpr@134.11--134.38) [15301]"}
+    assert {:msg "  Postcondition of main_barrier might not hold. Assertion sys__result == this_barrier might not hold. (max-two-range.vpr@134.11--134.38) [152996]"}
       sys__result == this_barrier;
     if (this_barrier == 1) {
       if (tid == 0) {
         if (*) {
-          if (0 <= i_15 && i_15 < half) {
-            assert {:msg "  Postcondition of main_barrier might not hold. Assertion this.dst[0].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@135.11--135.152) [15302]"}
-              Heap[Seq#Index(Heap[this, dst], 0), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_15), Integer_value];
+          if (0 <= i_15_1 && i_15_1 < half) {
+            assert {:msg "  Postcondition of main_barrier might not hold. Assertion this.dst[0].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@135.11--135.152) [152997]"}
+              Heap[Seq#Index(Heap[this, dst], 0), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_15_1), Integer_value];
           }
           assume false;
         }
@@ -2998,9 +2998,9 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     if (this_barrier == 1) {
       if (tid == 0) {
         if (*) {
-          if (half <= i_17 && i_17 < gsize) {
-            assert {:msg "  Postcondition of main_barrier might not hold. Assertion this.dst[1].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@136.11--136.156) [15303]"}
-              Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_17), Integer_value];
+          if (half <= i_17_1 && i_17_1 < gsize) {
+            assert {:msg "  Postcondition of main_barrier might not hold. Assertion this.dst[1].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@136.11--136.156) [152998]"}
+              Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_17_1), Integer_value];
           }
           assume false;
         }
@@ -3020,23 +3020,23 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
 // Translation of method main_resources_of_1
 // ==================================================
 
-procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: int, half: int, offset: int) returns ()
+procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: int, half: int, offset_1: int) returns ()
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var i_30: int;
-  var j_22: int;
-  var i_31: int;
+  var i_24: int;
+  var j_20: int;
+  var i_25: int;
   var QPMask: MaskType;
-  var i_32: int;
-  var j_23: int;
-  var tid_21: int;
+  var i_27: int;
+  var j_21: int;
+  var tid_19: int;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_34: int;
+  var i_42: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
@@ -3062,7 +3062,7 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     assume state(Heap, Mask);
     
     // -- Check definedness of |this.src| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@145.12--145.31) [15304]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@145.12--145.31) [152999]"}
         HasDirectPerm(Mask, this, src);
     assume Seq#Length(Heap[this, src]) == gsize;
     assume state(Heap, Mask);
@@ -3074,7 +3074,7 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     assume state(Heap, Mask);
     
     // -- Check definedness of |this.dst| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@147.12--147.31) [15305]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@147.12--147.31) [153000]"}
         HasDirectPerm(Mask, this, dst);
     assume Seq#Length(Heap[this, dst]) == gsize;
     assume state(Heap, Mask);
@@ -3085,19 +3085,19 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     
     // -- Check definedness of (forall i: Int, j: Int :: { this.src[i], this.src[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.src[i] != this.src[j])
       if (*) {
-        if (0 <= i_30 && (i_30 < gsize && (0 <= j_22 && (j_22 < gsize && i_30 != j_22)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@150.12--150.120) [15306]"}
+        if (0 <= i_24 && (i_24 < gsize && (0 <= j_20 && (j_20 < gsize && i_24 != j_20)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@150.12--150.120) [153001]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@150.12--150.120) [15307]"}
-            i_30 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@150.12--150.120) [15308]"}
-            i_30 < Seq#Length(Heap[this, src]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@150.12--150.120) [15309]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@150.12--150.120) [153002]"}
+            i_24 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@150.12--150.120) [153003]"}
+            i_24 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@150.12--150.120) [153004]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might be negative. (max-two-range.vpr@150.12--150.120) [15310]"}
-            j_22 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might exceed sequence length. (max-two-range.vpr@150.12--150.120) [15311]"}
-            j_22 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might be negative. (max-two-range.vpr@150.12--150.120) [153005]"}
+            j_20 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might exceed sequence length. (max-two-range.vpr@150.12--150.120) [153006]"}
+            j_20 < Seq#Length(Heap[this, src]);
         }
         assume false;
       }
@@ -3109,55 +3109,55 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     
     // -- Check definedness of (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, gsize), i_31)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@151.13--151.93) [15312]"}
+        if (Seq#Contains(Seq#Range(0, gsize), i_25)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@151.13--151.93) [153007]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@151.13--151.93) [15313]"}
-            i_31 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@151.13--151.93) [15314]"}
-            i_31 < Seq#Length(Heap[this, src]);
-          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@151.13--151.93) [15315]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@151.13--151.93) [153008]"}
+            i_25 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@151.13--151.93) [153009]"}
+            i_25 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@151.13--151.93) [153010]"}
             gsize != 0;
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@151.13--151.93) [15316]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@151.13--151.93) [153011]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && Seq#Contains(Seq#Range(0, gsize), i_3)) && Seq#Contains(Seq#Range(0, gsize), i_3_1)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_3) != Seq#Index(Heap[this, src], i_3_1)
+      (((i_3_2 != i_3_3 && Seq#Contains(Seq#Range(0, gsize), i_3_2)) && Seq#Contains(Seq#Range(0, gsize), i_3_3)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_3_2) != Seq#Index(Heap[this, src], i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-        Seq#Contains(Seq#Range(0, gsize), i_3) && NoPerm < 1 / gsize ==> qpRange14(Seq#Index(Heap[this, src], i_3)) && invRecv14(Seq#Index(Heap[this, src], i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+        Seq#Contains(Seq#Range(0, gsize), i_3_2) && NoPerm < 1 / gsize ==> qpRange14(Seq#Index(Heap[this, src], i_3_2)) && invRecv14(Seq#Index(Heap[this, src], i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv14(o_4) }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv14(o_4)) && NoPerm < 1 / gsize) && qpRange14(o_4) ==> Seq#Index(Heap[this, src], invRecv14(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv14(o_9) }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv14(o_9)) && NoPerm < 1 / gsize) && qpRange14(o_9) ==> Seq#Index(Heap[this, src], invRecv14(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@151.13--151.93) [15317]"}
-      (forall i_3: int ::
-      { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-      Seq#Contains(Seq#Range(0, gsize), i_3) ==> 1 / gsize >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@151.13--151.93) [153012]"}
+      (forall i_3_2: int ::
+      { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+      Seq#Contains(Seq#Range(0, gsize), i_3_2) ==> 1 / gsize >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-        Seq#Contains(Seq#Range(0, gsize), i_3) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+        Seq#Contains(Seq#Range(0, gsize), i_3_2) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        ((Seq#Contains(Seq#Range(0, gsize), invRecv14(o_4)) && NoPerm < 1 / gsize) && qpRange14(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv14(o_4)) == o_4) && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv14(o_4)) && NoPerm < 1 / gsize) && qpRange14(o_4)) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        ((Seq#Contains(Seq#Range(0, gsize), invRecv14(o_9)) && NoPerm < 1 / gsize) && qpRange14(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv14(o_9)) == o_9) && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv14(o_9)) && NoPerm < 1 / gsize) && qpRange14(o_9)) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -3165,42 +3165,42 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     
     // -- Check definedness of (forall i: Int, j: Int :: { this.dst[i], this.dst[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.dst[i] != this.dst[j])
       if (*) {
-        if (0 <= i_32 && (i_32 < gsize && (0 <= j_23 && (j_23 < gsize && i_32 != j_23)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@152.12--152.120) [15318]"}
+        if (0 <= i_27 && (i_27 < gsize && (0 <= j_21 && (j_21 < gsize && i_27 != j_21)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@152.12--152.120) [153013]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Contract might not be well-formed. Index this.dst[i] into this.dst might be negative. (max-two-range.vpr@152.12--152.120) [15319]"}
-            i_32 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.dst[i] into this.dst might exceed sequence length. (max-two-range.vpr@152.12--152.120) [15320]"}
-            i_32 < Seq#Length(Heap[this, dst]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@152.12--152.120) [15321]"}
+          assert {:msg "  Contract might not be well-formed. Index this.dst[i] into this.dst might be negative. (max-two-range.vpr@152.12--152.120) [153014]"}
+            i_27 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.dst[i] into this.dst might exceed sequence length. (max-two-range.vpr@152.12--152.120) [153015]"}
+            i_27 < Seq#Length(Heap[this, dst]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@152.12--152.120) [153016]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Contract might not be well-formed. Index this.dst[j] into this.dst might be negative. (max-two-range.vpr@152.12--152.120) [15322]"}
-            j_23 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.dst[j] into this.dst might exceed sequence length. (max-two-range.vpr@152.12--152.120) [15323]"}
-            j_23 < Seq#Length(Heap[this, dst]);
+          assert {:msg "  Contract might not be well-formed. Index this.dst[j] into this.dst might be negative. (max-two-range.vpr@152.12--152.120) [153017]"}
+            j_21 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.dst[j] into this.dst might exceed sequence length. (max-two-range.vpr@152.12--152.120) [153018]"}
+            j_21 < Seq#Length(Heap[this, dst]);
         }
         assume false;
       }
-    assume (forall i_5: int, j_3_1: int ::
-      { Seq#Index(Heap[this, dst], i_5), Seq#Index(Heap[this, dst], j_3_1) }
-      0 <= i_5 && (i_5 < gsize && (0 <= j_3_1 && (j_3_1 < gsize && i_5 != j_3_1))) ==> Seq#Index(Heap[this, dst], i_5) != Seq#Index(Heap[this, dst], j_3_1)
+    assume (forall i_5_1: int, j_3: int ::
+      { Seq#Index(Heap[this, dst], i_5_1), Seq#Index(Heap[this, dst], j_3) }
+      0 <= i_5_1 && (i_5_1 < gsize && (0 <= j_3 && (j_3 < gsize && i_5_1 != j_3))) ==> Seq#Index(Heap[this, dst], i_5_1) != Seq#Index(Heap[this, dst], j_3)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall tid: Int :: { this.dst[tid] } (tid in [gid * gsize..gsize)) ==> acc(this.dst[tid].Integer_value, write))
       if (*) {
-        if (Seq#Contains(Seq#Range(gid * gsize, gsize), tid_21)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@153.13--153.105) [15324]"}
+        if (Seq#Contains(Seq#Range(gid * gsize, gsize), tid_19)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@153.13--153.105) [153019]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@153.13--153.105) [15325]"}
-            tid_21 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@153.13--153.105) [15326]"}
-            tid_21 < Seq#Length(Heap[this, dst]);
+          assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might be negative. (max-two-range.vpr@153.13--153.105) [153020]"}
+            tid_19 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.dst[tid] into this.dst might exceed sequence length. (max-two-range.vpr@153.13--153.105) [153021]"}
+            tid_19 < Seq#Length(Heap[this, dst]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.dst[tid].Integer_value might not be injective. (max-two-range.vpr@153.13--153.105) [15327]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.dst[tid].Integer_value might not be injective. (max-two-range.vpr@153.13--153.105) [153022]"}
       (forall tid_1: int, tid_1_1: int ::
       
       (((tid_1 != tid_1_1 && Seq#Contains(Seq#Range(gid * gsize, gsize), tid_1)) && Seq#Contains(Seq#Range(gid * gsize, gsize), tid_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, dst], tid_1) != Seq#Index(Heap[this, dst], tid_1_1)
@@ -3211,9 +3211,9 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
         { Seq#Index(Heap[this, dst], tid_1) } { Seq#Index(Heap[this, dst], tid_1) }
         Seq#Contains(Seq#Range(gid * gsize, gsize), tid_1) && NoPerm < FullPerm ==> qpRange15(Seq#Index(Heap[this, dst], tid_1)) && invRecv15(Seq#Index(Heap[this, dst], tid_1)) == tid_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv15(o_4) }
-        (Seq#Contains(Seq#Range(gid * gsize, gsize), invRecv15(o_4)) && NoPerm < FullPerm) && qpRange15(o_4) ==> Seq#Index(Heap[this, dst], invRecv15(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv15(o_9) }
+        (Seq#Contains(Seq#Range(gid * gsize, gsize), invRecv15(o_9)) && NoPerm < FullPerm) && qpRange15(o_9) ==> Seq#Index(Heap[this, dst], invRecv15(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -3223,13 +3223,13 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        ((Seq#Contains(Seq#Range(gid * gsize, gsize), invRecv15(o_4)) && NoPerm < FullPerm) && qpRange15(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, dst], invRecv15(o_4)) == o_4) && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(gid * gsize, gsize), invRecv15(o_4)) && NoPerm < FullPerm) && qpRange15(o_4)) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        ((Seq#Contains(Seq#Range(gid * gsize, gsize), invRecv15(o_9)) && NoPerm < FullPerm) && qpRange15(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, dst], invRecv15(o_9)) == o_9) && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(gid * gsize, gsize), invRecv15(o_9)) && NoPerm < FullPerm) && qpRange15(o_9)) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -3257,7 +3257,7 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |this.src| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@157.11--157.30) [15328]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@157.11--157.30) [153023]"}
         HasDirectPerm(PostMask, this, src);
     assume Seq#Length(PostHeap[this, src]) == gsize;
     assume state(PostHeap, PostMask);
@@ -3269,7 +3269,7 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |this.dst| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@159.11--159.30) [15329]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@159.11--159.30) [153024]"}
         HasDirectPerm(PostMask, this, dst);
     assume Seq#Length(PostHeap[this, dst]) == gsize;
     assume state(PostHeap, PostMask);
@@ -3279,37 +3279,37 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.src == old(this.src)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@162.11--162.36) [15330]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@162.11--162.36) [153025]"}
         HasDirectPerm(PostMask, this, src);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@162.11--162.36) [15331]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@162.11--162.36) [153026]"}
         HasDirectPerm(oldMask, this, src);
     assume Seq#Equal(PostHeap[this, src], oldHeap[this, src]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.dst == old(this.dst)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@163.11--163.36) [15332]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@163.11--163.36) [153027]"}
         HasDirectPerm(PostMask, this, dst);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@163.11--163.36) [15333]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@163.11--163.36) [153028]"}
         HasDirectPerm(oldMask, this, dst);
     assume Seq#Equal(PostHeap[this, dst], oldHeap[this, dst]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, gsize), i_34)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@164.12--164.92) [15334]"}
+        if (Seq#Contains(Seq#Range(0, gsize), i_42)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@164.12--164.92) [153029]"}
             HasDirectPerm(PostMask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@164.12--164.92) [15335]"}
-            i_34 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@164.12--164.92) [15336]"}
-            i_34 < Seq#Length(PostHeap[this, src]);
-          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@164.12--164.92) [15337]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@164.12--164.92) [153030]"}
+            i_42 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@164.12--164.92) [153031]"}
+            i_42 < Seq#Length(PostHeap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@164.12--164.92) [153032]"}
             gsize != 0;
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@164.12--164.92) [15338]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@164.12--164.92) [153033]"}
       (forall i_7_1: int, i_7_2: int ::
       
       (((i_7_1 != i_7_2 && Seq#Contains(Seq#Range(0, gsize), i_7_1)) && Seq#Contains(Seq#Range(0, gsize), i_7_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], i_7_1) != Seq#Index(PostHeap[this, src], i_7_2)
@@ -3320,12 +3320,12 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
         { Seq#Index(PostHeap[this, src], i_7_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_7_1) } { Seq#Contains(Seq#Range(0, gsize), i_7_1) } { Seq#Index(PostHeap[this, src], i_7_1) }
         Seq#Contains(Seq#Range(0, gsize), i_7_1) && NoPerm < 1 / gsize ==> qpRange16(Seq#Index(PostHeap[this, src], i_7_1)) && invRecv16(Seq#Index(PostHeap[this, src], i_7_1)) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv16(o_4) }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv16(o_4)) && NoPerm < 1 / gsize) && qpRange16(o_4) ==> Seq#Index(PostHeap[this, src], invRecv16(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv16(o_9) }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv16(o_9)) && NoPerm < 1 / gsize) && qpRange16(o_9) ==> Seq#Index(PostHeap[this, src], invRecv16(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@164.12--164.92) [15339]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@164.12--164.92) [153034]"}
       (forall i_7_1: int ::
       { Seq#Index(PostHeap[this, src], i_7_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_7_1) } { Seq#Contains(Seq#Range(0, gsize), i_7_1) } { Seq#Index(PostHeap[this, src], i_7_1) }
       Seq#Contains(Seq#Range(0, gsize), i_7_1) ==> 1 / gsize >= NoPerm
@@ -3338,13 +3338,13 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        ((Seq#Contains(Seq#Range(0, gsize), invRecv16(o_4)) && NoPerm < 1 / gsize) && qpRange16(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], invRecv16(o_4)) == o_4) && QPMask[o_4, Integer_value] == PostMask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv16(o_4)) && NoPerm < 1 / gsize) && qpRange16(o_4)) ==> QPMask[o_4, Integer_value] == PostMask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        ((Seq#Contains(Seq#Range(0, gsize), invRecv16(o_9)) && NoPerm < 1 / gsize) && qpRange16(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], invRecv16(o_9)) == o_9) && QPMask[o_9, Integer_value] == PostMask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv16(o_9)) && NoPerm < 1 / gsize) && qpRange16(o_9)) ==> QPMask[o_9, Integer_value] == PostMask[o_9, Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -3352,9 +3352,9 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     if (gid * gsize <= 0 && 0 < gsize) {
       
       // -- Check definedness of acc(this.dst[0].Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@165.11--165.86) [15340]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@165.11--165.86) [153035]"}
           HasDirectPerm(PostMask, this, dst);
-        assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@165.11--165.86) [15341]"}
+        assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@165.11--165.86) [153036]"}
           0 < Seq#Length(PostHeap[this, dst]);
       perm := FullPerm;
       assume Seq#Index(PostHeap[this, dst], 0) != null;
@@ -3365,9 +3365,9 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     if (gid * gsize <= 0 && 0 < gsize) {
       
       // -- Check definedness of acc(this.dst[1].Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@166.11--166.86) [15342]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@166.11--166.86) [153037]"}
           HasDirectPerm(PostMask, this, dst);
-        assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@166.11--166.86) [15343]"}
+        assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@166.11--166.86) [153038]"}
           1 < Seq#Length(PostHeap[this, dst]);
       perm := FullPerm;
       assume Seq#Index(PostHeap[this, dst], 1) != null;
@@ -3382,81 +3382,81 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@154.11--154.26) [15344]"}
+    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@154.11--154.26) [153039]"}
       tcount == gsize;
-    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@155.11--155.19) [15345]"}
+    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@155.11--155.19) [153040]"}
       gid == 0;
-    assert {:msg "  Postcondition of main_resources_of_1 might not hold. There might be insufficient permission to access this.src (max-two-range.vpr@156.11--156.34) [15346]"}
+    assert {:msg "  Postcondition of main_resources_of_1 might not hold. There might be insufficient permission to access this.src (max-two-range.vpr@156.11--156.34) [153041]"}
       Mask[this, src] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, src];
     Mask := Mask[this, src:=Mask[this, src] - wildcard];
-    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@157.11--157.30) [15347]"}
+    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@157.11--157.30) [153042]"}
       Seq#Length(Heap[this, src]) == gsize;
-    assert {:msg "  Postcondition of main_resources_of_1 might not hold. There might be insufficient permission to access this.dst (max-two-range.vpr@158.11--158.34) [15348]"}
+    assert {:msg "  Postcondition of main_resources_of_1 might not hold. There might be insufficient permission to access this.dst (max-two-range.vpr@158.11--158.34) [153043]"}
       Mask[this, dst] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, dst];
     Mask := Mask[this, dst:=Mask[this, dst] - wildcard];
-    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@159.11--159.30) [15349]"}
+    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@159.11--159.30) [153044]"}
       Seq#Length(Heap[this, dst]) == gsize;
-    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion 4 <= gsize might not hold. (max-two-range.vpr@160.11--160.21) [15350]"}
+    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion 4 <= gsize might not hold. (max-two-range.vpr@160.11--160.21) [153045]"}
       4 <= gsize;
-    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@161.11--161.25) [15351]"}
+    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@161.11--161.25) [153046]"}
       gsize mod 2 == 0;
-    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion this.src == old(this.src) might not hold. (max-two-range.vpr@162.11--162.36) [15352]"}
+    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion this.src == old(this.src) might not hold. (max-two-range.vpr@162.11--162.36) [153047]"}
       Seq#Equal(Heap[this, src], oldHeap[this, src]);
-    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion this.dst == old(this.dst) might not hold. (max-two-range.vpr@163.11--163.36) [15353]"}
+    assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion this.dst == old(this.dst) might not hold. (max-two-range.vpr@163.11--163.36) [153048]"}
       Seq#Equal(Heap[this, dst], oldHeap[this, dst]);
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of main_resources_of_1 might not hold. Fraction 1 / gsize might be negative. (max-two-range.vpr@164.12--164.92) [15354]"}
-        (forall i_8_2: int ::
-        { Seq#Index(Heap[this, src], i_8_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_2) } { Seq#Contains(Seq#Range(0, gsize), i_8_2) } { Seq#Index(Heap[this, src], i_8_2) }
-        Seq#Contains(Seq#Range(0, gsize), i_8_2) && dummyFunction(Heap[Seq#Index(Heap[this, src], i_8_2), Integer_value]) ==> 1 / gsize >= NoPerm
+      assert {:msg "  Postcondition of main_resources_of_1 might not hold. Fraction 1 / gsize might be negative. (max-two-range.vpr@164.12--164.92) [153049]"}
+        (forall i_8_1: int ::
+        { Seq#Index(Heap[this, src], i_8_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_1) } { Seq#Contains(Seq#Range(0, gsize), i_8_1) } { Seq#Index(Heap[this, src], i_8_1) }
+        Seq#Contains(Seq#Range(0, gsize), i_8_1) && dummyFunction(Heap[Seq#Index(Heap[this, src], i_8_1), Integer_value]) ==> 1 / gsize >= NoPerm
       );
     
     // -- check if receiver this.src[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@164.12--164.92) [15355]"}
-        (forall i_8_2: int, i_8_3: int ::
-        { neverTriggered17(i_8_2), neverTriggered17(i_8_3) }
-        (((i_8_2 != i_8_3 && Seq#Contains(Seq#Range(0, gsize), i_8_2)) && Seq#Contains(Seq#Range(0, gsize), i_8_3)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_8_2) != Seq#Index(Heap[this, src], i_8_3)
+      assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@164.12--164.92) [153050]"}
+        (forall i_8_1: int, i_8_2: int ::
+        { neverTriggered17(i_8_1), neverTriggered17(i_8_2) }
+        (((i_8_1 != i_8_2 && Seq#Contains(Seq#Range(0, gsize), i_8_1)) && Seq#Contains(Seq#Range(0, gsize), i_8_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_8_1) != Seq#Index(Heap[this, src], i_8_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of main_resources_of_1 might not hold. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@164.12--164.92) [15356]"}
-        (forall i_8_2: int ::
-        { Seq#Index(Heap[this, src], i_8_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_2) } { Seq#Contains(Seq#Range(0, gsize), i_8_2) } { Seq#Index(Heap[this, src], i_8_2) }
-        Seq#Contains(Seq#Range(0, gsize), i_8_2) ==> Mask[Seq#Index(Heap[this, src], i_8_2), Integer_value] >= 1 / gsize
+      assert {:msg "  Postcondition of main_resources_of_1 might not hold. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@164.12--164.92) [153051]"}
+        (forall i_8_1: int ::
+        { Seq#Index(Heap[this, src], i_8_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_1) } { Seq#Contains(Seq#Range(0, gsize), i_8_1) } { Seq#Index(Heap[this, src], i_8_1) }
+        Seq#Contains(Seq#Range(0, gsize), i_8_1) ==> Mask[Seq#Index(Heap[this, src], i_8_1), Integer_value] >= 1 / gsize
       );
     
     // -- assumptions for inverse of receiver this.src[i]
-      assume (forall i_8_2: int ::
-        { Seq#Index(Heap[this, src], i_8_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_2) } { Seq#Contains(Seq#Range(0, gsize), i_8_2) } { Seq#Index(Heap[this, src], i_8_2) }
-        Seq#Contains(Seq#Range(0, gsize), i_8_2) && NoPerm < 1 / gsize ==> qpRange17(Seq#Index(Heap[this, src], i_8_2)) && invRecv17(Seq#Index(Heap[this, src], i_8_2)) == i_8_2
+      assume (forall i_8_1: int ::
+        { Seq#Index(Heap[this, src], i_8_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_8_1) } { Seq#Contains(Seq#Range(0, gsize), i_8_1) } { Seq#Index(Heap[this, src], i_8_1) }
+        Seq#Contains(Seq#Range(0, gsize), i_8_1) && NoPerm < 1 / gsize ==> qpRange17(Seq#Index(Heap[this, src], i_8_1)) && invRecv17(Seq#Index(Heap[this, src], i_8_1)) == i_8_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv17(o_4) }
-        Seq#Contains(Seq#Range(0, gsize), invRecv17(o_4)) && (NoPerm < 1 / gsize && qpRange17(o_4)) ==> Seq#Index(Heap[this, src], invRecv17(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv17(o_9) }
+        Seq#Contains(Seq#Range(0, gsize), invRecv17(o_9)) && (NoPerm < 1 / gsize && qpRange17(o_9)) ==> Seq#Index(Heap[this, src], invRecv17(o_9)) == o_9
       );
     
     // -- assume permission updates for field Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv17(o_4)) && (NoPerm < 1 / gsize && qpRange17(o_4)) ==> Seq#Index(Heap[this, src], invRecv17(o_4)) == o_4 && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv17(o_4)) && (NoPerm < 1 / gsize && qpRange17(o_4))) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv17(o_9)) && (NoPerm < 1 / gsize && qpRange17(o_9)) ==> Seq#Index(Heap[this, src], invRecv17(o_9)) == o_9 && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv17(o_9)) && (NoPerm < 1 / gsize && qpRange17(o_9))) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (gid * gsize <= 0 && 0 < gsize) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of main_resources_of_1 might not hold. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@165.11--165.86) [15357]"}
+        assert {:msg "  Postcondition of main_resources_of_1 might not hold. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@165.11--165.86) [153052]"}
           perm <= Mask[Seq#Index(Heap[this, dst], 0), Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[this, dst], 0), Integer_value:=Mask[Seq#Index(Heap[this, dst], 0), Integer_value] - perm];
@@ -3464,7 +3464,7 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
     if (gid * gsize <= 0 && 0 < gsize) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of main_resources_of_1 might not hold. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@166.11--166.86) [15358]"}
+        assert {:msg "  Postcondition of main_resources_of_1 might not hold. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@166.11--166.86) [153053]"}
           perm <= Mask[Seq#Index(Heap[this, dst], 1), Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[this, dst], 1), Integer_value:=Mask[Seq#Index(Heap[this, dst], 1), Integer_value] - perm];
@@ -3479,31 +3479,31 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
 // Translation of method main_post_check_1
 // ==================================================
 
-procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid: int, k: int, half: int, offset: int) returns ()
+procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid: int, k: int, half: int, offset_1: int) returns ()
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var i_35: int;
-  var j_20: int;
-  var i_36: int;
+  var i_51: int;
+  var j_35: int;
+  var i_53: int;
   var QPMask: MaskType;
-  var i_41: int;
-  var j_24: int;
-  var _x_tid_13: int;
-  var i_45: int;
-  var i_56: int;
+  var i_64: int;
+  var j_33: int;
+  var _x_tid_18: int;
+  var i_65: int;
+  var i_74: int;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_47: int;
-  var i_48: int;
-  var i_58: int;
+  var i_66: int;
+  var i_67: int;
+  var i_75: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var i_17: int;
-  var i_19: int;
+  var i_17_1: int;
+  var i_19_1: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3533,7 +3533,7 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     assume state(Heap, Mask);
     
     // -- Check definedness of |this.src| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@177.12--177.31) [15359]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@177.12--177.31) [153054]"}
         HasDirectPerm(Mask, this, src);
     assume Seq#Length(Heap[this, src]) == gsize;
     assume state(Heap, Mask);
@@ -3545,7 +3545,7 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     assume state(Heap, Mask);
     
     // -- Check definedness of |this.dst| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@179.12--179.31) [15360]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@179.12--179.31) [153055]"}
         HasDirectPerm(Mask, this, dst);
     assume Seq#Length(Heap[this, dst]) == gsize;
     assume state(Heap, Mask);
@@ -3556,19 +3556,19 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     
     // -- Check definedness of (forall i: Int, j: Int :: { this.src[i], this.src[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.src[i] != this.src[j])
       if (*) {
-        if (0 <= i_35 && (i_35 < gsize && (0 <= j_20 && (j_20 < gsize && i_35 != j_20)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@182.12--182.120) [15361]"}
+        if (0 <= i_51 && (i_51 < gsize && (0 <= j_35 && (j_35 < gsize && i_51 != j_35)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@182.12--182.120) [153056]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@182.12--182.120) [15362]"}
-            i_35 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@182.12--182.120) [15363]"}
-            i_35 < Seq#Length(Heap[this, src]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@182.12--182.120) [15364]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@182.12--182.120) [153057]"}
+            i_51 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@182.12--182.120) [153058]"}
+            i_51 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@182.12--182.120) [153059]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might be negative. (max-two-range.vpr@182.12--182.120) [15365]"}
-            j_20 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might exceed sequence length. (max-two-range.vpr@182.12--182.120) [15366]"}
-            j_20 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might be negative. (max-two-range.vpr@182.12--182.120) [153060]"}
+            j_35 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[j] into this.src might exceed sequence length. (max-two-range.vpr@182.12--182.120) [153061]"}
+            j_35 < Seq#Length(Heap[this, src]);
         }
         assume false;
       }
@@ -3580,55 +3580,55 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     
     // -- Check definedness of (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, gsize), i_36)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@183.13--183.93) [15367]"}
+        if (Seq#Contains(Seq#Range(0, gsize), i_53)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@183.13--183.93) [153062]"}
             HasDirectPerm(Mask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@183.13--183.93) [15368]"}
-            i_36 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@183.13--183.93) [15369]"}
-            i_36 < Seq#Length(Heap[this, src]);
-          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@183.13--183.93) [15370]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@183.13--183.93) [153063]"}
+            i_53 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@183.13--183.93) [153064]"}
+            i_53 < Seq#Length(Heap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@183.13--183.93) [153065]"}
             gsize != 0;
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@183.13--183.93) [15371]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@183.13--183.93) [153066]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && Seq#Contains(Seq#Range(0, gsize), i_3)) && Seq#Contains(Seq#Range(0, gsize), i_3_1)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_3) != Seq#Index(Heap[this, src], i_3_1)
+      (((i_3_2 != i_3_3 && Seq#Contains(Seq#Range(0, gsize), i_3_2)) && Seq#Contains(Seq#Range(0, gsize), i_3_3)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_3_2) != Seq#Index(Heap[this, src], i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-        Seq#Contains(Seq#Range(0, gsize), i_3) && NoPerm < 1 / gsize ==> qpRange18(Seq#Index(Heap[this, src], i_3)) && invRecv18(Seq#Index(Heap[this, src], i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+        Seq#Contains(Seq#Range(0, gsize), i_3_2) && NoPerm < 1 / gsize ==> qpRange18(Seq#Index(Heap[this, src], i_3_2)) && invRecv18(Seq#Index(Heap[this, src], i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv18(o_4) }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv18(o_4)) && NoPerm < 1 / gsize) && qpRange18(o_4) ==> Seq#Index(Heap[this, src], invRecv18(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv18(o_9) }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv18(o_9)) && NoPerm < 1 / gsize) && qpRange18(o_9) ==> Seq#Index(Heap[this, src], invRecv18(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@183.13--183.93) [15372]"}
-      (forall i_3: int ::
-      { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-      Seq#Contains(Seq#Range(0, gsize), i_3) ==> 1 / gsize >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@183.13--183.93) [153067]"}
+      (forall i_3_2: int ::
+      { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+      Seq#Contains(Seq#Range(0, gsize), i_3_2) ==> 1 / gsize >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(Heap[this, src], i_3) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3) } { Seq#Contains(Seq#Range(0, gsize), i_3) } { Seq#Index(Heap[this, src], i_3) }
-        Seq#Contains(Seq#Range(0, gsize), i_3) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(Heap[this, src], i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_3_2) } { Seq#Contains(Seq#Range(0, gsize), i_3_2) } { Seq#Index(Heap[this, src], i_3_2) }
+        Seq#Contains(Seq#Range(0, gsize), i_3_2) && 1 / gsize > NoPerm ==> Seq#Index(Heap[this, src], i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        ((Seq#Contains(Seq#Range(0, gsize), invRecv18(o_4)) && NoPerm < 1 / gsize) && qpRange18(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv18(o_4)) == o_4) && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv18(o_4)) && NoPerm < 1 / gsize) && qpRange18(o_4)) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        ((Seq#Contains(Seq#Range(0, gsize), invRecv18(o_9)) && NoPerm < 1 / gsize) && qpRange18(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], invRecv18(o_9)) == o_9) && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv18(o_9)) && NoPerm < 1 / gsize) && qpRange18(o_9)) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -3636,42 +3636,42 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     
     // -- Check definedness of (forall i: Int, j: Int :: { this.dst[i], this.dst[j] } 0 <= i && (i < gsize && (0 <= j && (j < gsize && i != j))) ==> this.dst[i] != this.dst[j])
       if (*) {
-        if (0 <= i_41 && (i_41 < gsize && (0 <= j_24 && (j_24 < gsize && i_41 != j_24)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@184.12--184.120) [15373]"}
+        if (0 <= i_64 && (i_64 < gsize && (0 <= j_33 && (j_33 < gsize && i_64 != j_33)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@184.12--184.120) [153068]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Contract might not be well-formed. Index this.dst[i] into this.dst might be negative. (max-two-range.vpr@184.12--184.120) [15374]"}
-            i_41 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.dst[i] into this.dst might exceed sequence length. (max-two-range.vpr@184.12--184.120) [15375]"}
-            i_41 < Seq#Length(Heap[this, dst]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@184.12--184.120) [15376]"}
+          assert {:msg "  Contract might not be well-formed. Index this.dst[i] into this.dst might be negative. (max-two-range.vpr@184.12--184.120) [153069]"}
+            i_64 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.dst[i] into this.dst might exceed sequence length. (max-two-range.vpr@184.12--184.120) [153070]"}
+            i_64 < Seq#Length(Heap[this, dst]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@184.12--184.120) [153071]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Contract might not be well-formed. Index this.dst[j] into this.dst might be negative. (max-two-range.vpr@184.12--184.120) [15377]"}
-            j_24 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.dst[j] into this.dst might exceed sequence length. (max-two-range.vpr@184.12--184.120) [15378]"}
-            j_24 < Seq#Length(Heap[this, dst]);
+          assert {:msg "  Contract might not be well-formed. Index this.dst[j] into this.dst might be negative. (max-two-range.vpr@184.12--184.120) [153072]"}
+            j_33 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.dst[j] into this.dst might exceed sequence length. (max-two-range.vpr@184.12--184.120) [153073]"}
+            j_33 < Seq#Length(Heap[this, dst]);
         }
         assume false;
       }
-    assume (forall i_5: int, j_3_1: int ::
-      { Seq#Index(Heap[this, dst], i_5), Seq#Index(Heap[this, dst], j_3_1) }
-      0 <= i_5 && (i_5 < gsize && (0 <= j_3_1 && (j_3_1 < gsize && i_5 != j_3_1))) ==> Seq#Index(Heap[this, dst], i_5) != Seq#Index(Heap[this, dst], j_3_1)
+    assume (forall i_5_1: int, j_3: int ::
+      { Seq#Index(Heap[this, dst], i_5_1), Seq#Index(Heap[this, dst], j_3) }
+      0 <= i_5_1 && (i_5_1 < gsize && (0 <= j_3 && (j_3 < gsize && i_5_1 != j_3))) ==> Seq#Index(Heap[this, dst], i_5_1) != Seq#Index(Heap[this, dst], j_3)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall _x_tid: Int :: { (_x_tid in [0..gsize)) } { this.dst[_x_tid] } (_x_tid in [0..gsize)) ==> acc(this.dst[_x_tid].Integer_value, write))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, gsize), _x_tid_13)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@185.13--185.104) [15379]"}
+        if (Seq#Contains(Seq#Range(0, gsize), _x_tid_18)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@185.13--185.104) [153074]"}
             HasDirectPerm(Mask, this, dst);
-          assert {:msg "  Contract might not be well-formed. Index this.dst[_x_tid] into this.dst might be negative. (max-two-range.vpr@185.13--185.104) [15380]"}
-            _x_tid_13 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.dst[_x_tid] into this.dst might exceed sequence length. (max-two-range.vpr@185.13--185.104) [15381]"}
-            _x_tid_13 < Seq#Length(Heap[this, dst]);
+          assert {:msg "  Contract might not be well-formed. Index this.dst[_x_tid] into this.dst might be negative. (max-two-range.vpr@185.13--185.104) [153075]"}
+            _x_tid_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.dst[_x_tid] into this.dst might exceed sequence length. (max-two-range.vpr@185.13--185.104) [153076]"}
+            _x_tid_18 < Seq#Length(Heap[this, dst]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.dst[_x_tid].Integer_value might not be injective. (max-two-range.vpr@185.13--185.104) [15382]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.dst[_x_tid].Integer_value might not be injective. (max-two-range.vpr@185.13--185.104) [153077]"}
       (forall _x_tid_1: int, _x_tid_1_1: int ::
       
       (((_x_tid_1 != _x_tid_1_1 && Seq#Contains(Seq#Range(0, gsize), _x_tid_1)) && Seq#Contains(Seq#Range(0, gsize), _x_tid_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, dst], _x_tid_1) != Seq#Index(Heap[this, dst], _x_tid_1_1)
@@ -3682,9 +3682,9 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
         { Seq#Index(Heap[this, dst], _x_tid_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), _x_tid_1) } { Seq#Contains(Seq#Range(0, gsize), _x_tid_1) } { Seq#Index(Heap[this, dst], _x_tid_1) }
         Seq#Contains(Seq#Range(0, gsize), _x_tid_1) && NoPerm < FullPerm ==> qpRange19(Seq#Index(Heap[this, dst], _x_tid_1)) && invRecv19(Seq#Index(Heap[this, dst], _x_tid_1)) == _x_tid_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv19(o_4) }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv19(o_4)) && NoPerm < FullPerm) && qpRange19(o_4) ==> Seq#Index(Heap[this, dst], invRecv19(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv19(o_9) }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv19(o_9)) && NoPerm < FullPerm) && qpRange19(o_9) ==> Seq#Index(Heap[this, dst], invRecv19(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -3694,13 +3694,13 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        ((Seq#Contains(Seq#Range(0, gsize), invRecv19(o_4)) && NoPerm < FullPerm) && qpRange19(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, dst], invRecv19(o_4)) == o_4) && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv19(o_4)) && NoPerm < FullPerm) && qpRange19(o_4)) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        ((Seq#Contains(Seq#Range(0, gsize), invRecv19(o_9)) && NoPerm < FullPerm) && qpRange19(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, dst], invRecv19(o_9)) == o_9) && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv19(o_9)) && NoPerm < FullPerm) && qpRange19(o_9)) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -3711,21 +3711,21 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } 0 <= i && i < half ==> this.dst[0].Integer_value >= this.src[i].Integer_value)
         if (*) {
-          if (0 <= i_45 && i_45 < half) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@187.12--187.142) [15383]"}
+          if (0 <= i_65 && i_65 < half) {
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@187.12--187.142) [153078]"}
               HasDirectPerm(Mask, this, dst);
-            assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@187.12--187.142) [15384]"}
+            assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@187.12--187.142) [153079]"}
               0 < Seq#Length(Heap[this, dst]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@187.12--187.142) [15385]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@187.12--187.142) [153080]"}
               HasDirectPerm(Mask, Seq#Index(Heap[this, dst], 0), Integer_value);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@187.12--187.142) [15386]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@187.12--187.142) [153081]"}
               HasDirectPerm(Mask, this, src);
-            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@187.12--187.142) [15387]"}
-              i_45 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@187.12--187.142) [15388]"}
-              i_45 < Seq#Length(Heap[this, src]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@187.12--187.142) [15389]"}
-              HasDirectPerm(Mask, Seq#Index(Heap[this, src], i_45), Integer_value);
+            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@187.12--187.142) [153082]"}
+              i_65 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@187.12--187.142) [153083]"}
+              i_65 < Seq#Length(Heap[this, src]);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@187.12--187.142) [153084]"}
+              HasDirectPerm(Mask, Seq#Index(Heap[this, src], i_65), Integer_value);
           }
           assume false;
         }
@@ -3739,21 +3739,21 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } half <= i && i < gsize ==> this.dst[1].Integer_value >= this.src[i].Integer_value)
         if (*) {
-          if (half <= i_56 && i_56 < gsize) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@188.12--188.146) [15390]"}
+          if (half <= i_74 && i_74 < gsize) {
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@188.12--188.146) [153085]"}
               HasDirectPerm(Mask, this, dst);
-            assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@188.12--188.146) [15391]"}
+            assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@188.12--188.146) [153086]"}
               1 < Seq#Length(Heap[this, dst]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@188.12--188.146) [15392]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@188.12--188.146) [153087]"}
               HasDirectPerm(Mask, Seq#Index(Heap[this, dst], 1), Integer_value);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@188.12--188.146) [15393]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@188.12--188.146) [153088]"}
               HasDirectPerm(Mask, this, src);
-            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@188.12--188.146) [15394]"}
-              i_56 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@188.12--188.146) [15395]"}
-              i_56 < Seq#Length(Heap[this, src]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@188.12--188.146) [15396]"}
-              HasDirectPerm(Mask, Seq#Index(Heap[this, src], i_56), Integer_value);
+            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@188.12--188.146) [153089]"}
+              i_74 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@188.12--188.146) [153090]"}
+              i_74 < Seq#Length(Heap[this, src]);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@188.12--188.146) [153091]"}
+              HasDirectPerm(Mask, Seq#Index(Heap[this, src], i_74), Integer_value);
           }
           assume false;
         }
@@ -3792,7 +3792,7 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |this.src| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@195.11--195.30) [15397]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@195.11--195.30) [153092]"}
         HasDirectPerm(PostMask, this, src);
     assume Seq#Length(PostHeap[this, src]) == gsize;
     assume state(PostHeap, PostMask);
@@ -3804,7 +3804,7 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |this.dst| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@197.11--197.30) [15398]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@197.11--197.30) [153093]"}
         HasDirectPerm(PostMask, this, dst);
     assume Seq#Length(PostHeap[this, dst]) == gsize;
     assume state(PostHeap, PostMask);
@@ -3814,37 +3814,37 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.src == old(this.src)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@200.11--200.36) [15399]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@200.11--200.36) [153094]"}
         HasDirectPerm(PostMask, this, src);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@200.11--200.36) [15400]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@200.11--200.36) [153095]"}
         HasDirectPerm(oldMask, this, src);
     assume Seq#Equal(PostHeap[this, src], oldHeap[this, src]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.dst == old(this.dst)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@201.11--201.36) [15401]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@201.11--201.36) [153096]"}
         HasDirectPerm(PostMask, this, dst);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@201.11--201.36) [15402]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@201.11--201.36) [153097]"}
         HasDirectPerm(oldMask, this, dst);
     assume Seq#Equal(PostHeap[this, dst], oldHeap[this, dst]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { (i in [0..gsize)) } { this.src[i] } (i in [0..gsize)) ==> acc(this.src[i].Integer_value, 1 / gsize))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, gsize), i_47)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@202.12--202.92) [15403]"}
+        if (Seq#Contains(Seq#Range(0, gsize), i_66)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@202.12--202.92) [153098]"}
             HasDirectPerm(PostMask, this, src);
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@202.12--202.92) [15404]"}
-            i_47 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@202.12--202.92) [15405]"}
-            i_47 < Seq#Length(PostHeap[this, src]);
-          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@202.12--202.92) [15406]"}
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@202.12--202.92) [153099]"}
+            i_66 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@202.12--202.92) [153100]"}
+            i_66 < Seq#Length(PostHeap[this, src]);
+          assert {:msg "  Contract might not be well-formed. Divisor gsize might be zero. (max-two-range.vpr@202.12--202.92) [153101]"}
             gsize != 0;
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@202.12--202.92) [15407]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@202.12--202.92) [153102]"}
       (forall i_11_1: int, i_11_2: int ::
       
       (((i_11_1 != i_11_2 && Seq#Contains(Seq#Range(0, gsize), i_11_1)) && Seq#Contains(Seq#Range(0, gsize), i_11_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], i_11_1) != Seq#Index(PostHeap[this, src], i_11_2)
@@ -3855,12 +3855,12 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
         { Seq#Index(PostHeap[this, src], i_11_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_11_1) } { Seq#Contains(Seq#Range(0, gsize), i_11_1) } { Seq#Index(PostHeap[this, src], i_11_1) }
         Seq#Contains(Seq#Range(0, gsize), i_11_1) && NoPerm < 1 / gsize ==> qpRange20(Seq#Index(PostHeap[this, src], i_11_1)) && invRecv20(Seq#Index(PostHeap[this, src], i_11_1)) == i_11_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv20(o_4) }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv20(o_4)) && NoPerm < 1 / gsize) && qpRange20(o_4) ==> Seq#Index(PostHeap[this, src], invRecv20(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv20(o_9) }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv20(o_9)) && NoPerm < 1 / gsize) && qpRange20(o_9) ==> Seq#Index(PostHeap[this, src], invRecv20(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@202.12--202.92) [15408]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / gsize might be negative. (max-two-range.vpr@202.12--202.92) [153103]"}
       (forall i_11_1: int ::
       { Seq#Index(PostHeap[this, src], i_11_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_11_1) } { Seq#Contains(Seq#Range(0, gsize), i_11_1) } { Seq#Index(PostHeap[this, src], i_11_1) }
       Seq#Contains(Seq#Range(0, gsize), i_11_1) ==> 1 / gsize >= NoPerm
@@ -3873,13 +3873,13 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        ((Seq#Contains(Seq#Range(0, gsize), invRecv20(o_4)) && NoPerm < 1 / gsize) && qpRange20(o_4) ==> (NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], invRecv20(o_4)) == o_4) && QPMask[o_4, Integer_value] == PostMask[o_4, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv20(o_4)) && NoPerm < 1 / gsize) && qpRange20(o_4)) ==> QPMask[o_4, Integer_value] == PostMask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        ((Seq#Contains(Seq#Range(0, gsize), invRecv20(o_9)) && NoPerm < 1 / gsize) && qpRange20(o_9) ==> (NoPerm < 1 / gsize ==> Seq#Index(PostHeap[this, src], invRecv20(o_9)) == o_9) && QPMask[o_9, Integer_value] == PostMask[o_9, Integer_value] + 1 / gsize) && (!((Seq#Contains(Seq#Range(0, gsize), invRecv20(o_9)) && NoPerm < 1 / gsize) && qpRange20(o_9)) ==> QPMask[o_9, Integer_value] == PostMask[o_9, Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -3887,9 +3887,9 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     if (tid == 0) {
       
       // -- Check definedness of acc(this.dst[0].Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@203.11--203.63) [15409]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@203.11--203.63) [153104]"}
           HasDirectPerm(PostMask, this, dst);
-        assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@203.11--203.63) [15410]"}
+        assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@203.11--203.63) [153105]"}
           0 < Seq#Length(PostHeap[this, dst]);
       perm := FullPerm;
       assume Seq#Index(PostHeap[this, dst], 0) != null;
@@ -3900,9 +3900,9 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     if (tid == 0) {
       
       // -- Check definedness of acc(this.dst[1].Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@204.11--204.63) [15411]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@204.11--204.63) [153106]"}
           HasDirectPerm(PostMask, this, dst);
-        assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@204.11--204.63) [15412]"}
+        assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@204.11--204.63) [153107]"}
           1 < Seq#Length(PostHeap[this, dst]);
       perm := FullPerm;
       assume Seq#Index(PostHeap[this, dst], 1) != null;
@@ -3914,21 +3914,21 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } 0 <= i && i < half ==> this.dst[0].Integer_value >= this.src[i].Integer_value)
         if (*) {
-          if (0 <= i_48 && i_48 < half) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@205.11--205.128) [15413]"}
+          if (0 <= i_67 && i_67 < half) {
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@205.11--205.128) [153108]"}
               HasDirectPerm(PostMask, this, dst);
-            assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@205.11--205.128) [15414]"}
+            assert {:msg "  Contract might not be well-formed. Index this.dst[0] into this.dst might exceed sequence length. (max-two-range.vpr@205.11--205.128) [153109]"}
               0 < Seq#Length(PostHeap[this, dst]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@205.11--205.128) [15415]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@205.11--205.128) [153110]"}
               HasDirectPerm(PostMask, Seq#Index(PostHeap[this, dst], 0), Integer_value);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@205.11--205.128) [15416]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@205.11--205.128) [153111]"}
               HasDirectPerm(PostMask, this, src);
-            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@205.11--205.128) [15417]"}
-              i_48 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@205.11--205.128) [15418]"}
-              i_48 < Seq#Length(PostHeap[this, src]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@205.11--205.128) [15419]"}
-              HasDirectPerm(PostMask, Seq#Index(PostHeap[this, src], i_48), Integer_value);
+            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@205.11--205.128) [153112]"}
+              i_67 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@205.11--205.128) [153113]"}
+              i_67 < Seq#Length(PostHeap[this, src]);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@205.11--205.128) [153114]"}
+              HasDirectPerm(PostMask, Seq#Index(PostHeap[this, src], i_67), Integer_value);
           }
           assume false;
         }
@@ -3942,27 +3942,27 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } half <= i && i < gsize ==> this.dst[1].Integer_value >= this.src[i].Integer_value)
         if (*) {
-          if (half <= i_58 && i_58 < gsize) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@206.11--206.132) [15420]"}
+          if (half <= i_75 && i_75 < gsize) {
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst (max-two-range.vpr@206.11--206.132) [153115]"}
               HasDirectPerm(PostMask, this, dst);
-            assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@206.11--206.132) [15421]"}
+            assert {:msg "  Contract might not be well-formed. Index this.dst[1] into this.dst might exceed sequence length. (max-two-range.vpr@206.11--206.132) [153116]"}
               1 < Seq#Length(PostHeap[this, dst]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@206.11--206.132) [15422]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@206.11--206.132) [153117]"}
               HasDirectPerm(PostMask, Seq#Index(PostHeap[this, dst], 1), Integer_value);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@206.11--206.132) [15423]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src (max-two-range.vpr@206.11--206.132) [153118]"}
               HasDirectPerm(PostMask, this, src);
-            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@206.11--206.132) [15424]"}
-              i_58 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@206.11--206.132) [15425]"}
-              i_58 < Seq#Length(PostHeap[this, src]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@206.11--206.132) [15426]"}
-              HasDirectPerm(PostMask, Seq#Index(PostHeap[this, src], i_58), Integer_value);
+            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might be negative. (max-two-range.vpr@206.11--206.132) [153119]"}
+              i_75 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index this.src[i] into this.src might exceed sequence length. (max-two-range.vpr@206.11--206.132) [153120]"}
+              i_75 < Seq#Length(PostHeap[this, src]);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@206.11--206.132) [153121]"}
+              HasDirectPerm(PostMask, Seq#Index(PostHeap[this, src], i_75), Integer_value);
           }
           assume false;
         }
-      assume (forall i_15: int ::
-        { Seq#Index(PostHeap[this, src], i_15) }
-        half <= i_15 && i_15 < gsize ==> PostHeap[Seq#Index(PostHeap[this, dst], 1), Integer_value] >= PostHeap[Seq#Index(PostHeap[this, src], i_15), Integer_value]
+      assume (forall i_15_1: int ::
+        { Seq#Index(PostHeap[this, src], i_15_1) }
+        half <= i_15_1 && i_15_1 < gsize ==> PostHeap[Seq#Index(PostHeap[this, dst], 1), Integer_value] >= PostHeap[Seq#Index(PostHeap[this, src], i_15_1), Integer_value]
       );
     }
     assume state(PostHeap, PostMask);
@@ -3973,56 +3973,56 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@189.11--189.19) [15427]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@189.11--189.19) [153122]"}
       0 <= tid;
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@190.11--190.23) [15428]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@190.11--190.23) [153123]"}
       tid < tcount;
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion tid == lid might not hold. (max-two-range.vpr@191.11--191.21) [15429]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion tid == lid might not hold. (max-two-range.vpr@191.11--191.21) [153124]"}
       tid == lid;
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@192.11--192.26) [15430]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@192.11--192.26) [153125]"}
       tcount == gsize;
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@193.11--193.19) [15431]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@193.11--193.19) [153126]"}
       gid == 0;
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. There might be insufficient permission to access this.src (max-two-range.vpr@194.11--194.34) [15432]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. There might be insufficient permission to access this.src (max-two-range.vpr@194.11--194.34) [153127]"}
       Mask[this, src] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, src];
     Mask := Mask[this, src:=Mask[this, src] - wildcard];
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@195.11--195.30) [15433]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion |this.src| == gsize might not hold. (max-two-range.vpr@195.11--195.30) [153128]"}
       Seq#Length(Heap[this, src]) == gsize;
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. There might be insufficient permission to access this.dst (max-two-range.vpr@196.11--196.34) [15434]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. There might be insufficient permission to access this.dst (max-two-range.vpr@196.11--196.34) [153129]"}
       Mask[this, dst] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, dst];
     Mask := Mask[this, dst:=Mask[this, dst] - wildcard];
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@197.11--197.30) [15435]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion |this.dst| == gsize might not hold. (max-two-range.vpr@197.11--197.30) [153130]"}
       Seq#Length(Heap[this, dst]) == gsize;
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion 4 <= gsize might not hold. (max-two-range.vpr@198.11--198.21) [15436]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion 4 <= gsize might not hold. (max-two-range.vpr@198.11--198.21) [153131]"}
       4 <= gsize;
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@199.11--199.25) [15437]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion gsize % 2 == 0 might not hold. (max-two-range.vpr@199.11--199.25) [153132]"}
       gsize mod 2 == 0;
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion this.src == old(this.src) might not hold. (max-two-range.vpr@200.11--200.36) [15438]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion this.src == old(this.src) might not hold. (max-two-range.vpr@200.11--200.36) [153133]"}
       Seq#Equal(Heap[this, src], oldHeap[this, src]);
-    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion this.dst == old(this.dst) might not hold. (max-two-range.vpr@201.11--201.36) [15439]"}
+    assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion this.dst == old(this.dst) might not hold. (max-two-range.vpr@201.11--201.36) [153134]"}
       Seq#Equal(Heap[this, dst], oldHeap[this, dst]);
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of main_post_check_1 might not hold. Fraction 1 / gsize might be negative. (max-two-range.vpr@202.12--202.92) [15440]"}
+      assert {:msg "  Postcondition of main_post_check_1 might not hold. Fraction 1 / gsize might be negative. (max-two-range.vpr@202.12--202.92) [153135]"}
         (forall i_16_1: int ::
         { Seq#Index(Heap[this, src], i_16_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_16_1) } { Seq#Contains(Seq#Range(0, gsize), i_16_1) } { Seq#Index(Heap[this, src], i_16_1) }
         Seq#Contains(Seq#Range(0, gsize), i_16_1) && dummyFunction(Heap[Seq#Index(Heap[this, src], i_16_1), Integer_value]) ==> 1 / gsize >= NoPerm
       );
     
     // -- check if receiver this.src[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@202.12--202.92) [15441]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource this.src[i].Integer_value might not be injective. (max-two-range.vpr@202.12--202.92) [153136]"}
         (forall i_16_1: int, i_16_2: int ::
         { neverTriggered21(i_16_1), neverTriggered21(i_16_2) }
         (((i_16_1 != i_16_2 && Seq#Contains(Seq#Range(0, gsize), i_16_1)) && Seq#Contains(Seq#Range(0, gsize), i_16_2)) && NoPerm < 1 / gsize) && NoPerm < 1 / gsize ==> Seq#Index(Heap[this, src], i_16_1) != Seq#Index(Heap[this, src], i_16_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of main_post_check_1 might not hold. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@202.12--202.92) [15442]"}
+      assert {:msg "  Postcondition of main_post_check_1 might not hold. There might be insufficient permission to access this.src[i].Integer_value (max-two-range.vpr@202.12--202.92) [153137]"}
         (forall i_16_1: int ::
         { Seq#Index(Heap[this, src], i_16_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_16_1) } { Seq#Contains(Seq#Range(0, gsize), i_16_1) } { Seq#Index(Heap[this, src], i_16_1) }
         Seq#Contains(Seq#Range(0, gsize), i_16_1) ==> Mask[Seq#Index(Heap[this, src], i_16_1), Integer_value] >= 1 / gsize
@@ -4033,27 +4033,27 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
         { Seq#Index(Heap[this, src], i_16_1) } { Seq#ContainsTrigger(Seq#Range(0, gsize), i_16_1) } { Seq#Contains(Seq#Range(0, gsize), i_16_1) } { Seq#Index(Heap[this, src], i_16_1) }
         Seq#Contains(Seq#Range(0, gsize), i_16_1) && NoPerm < 1 / gsize ==> qpRange21(Seq#Index(Heap[this, src], i_16_1)) && invRecv21(Seq#Index(Heap[this, src], i_16_1)) == i_16_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv21(o_4) }
-        Seq#Contains(Seq#Range(0, gsize), invRecv21(o_4)) && (NoPerm < 1 / gsize && qpRange21(o_4)) ==> Seq#Index(Heap[this, src], invRecv21(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv21(o_9) }
+        Seq#Contains(Seq#Range(0, gsize), invRecv21(o_9)) && (NoPerm < 1 / gsize && qpRange21(o_9)) ==> Seq#Index(Heap[this, src], invRecv21(o_9)) == o_9
       );
     
     // -- assume permission updates for field Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer_value] }
-        (Seq#Contains(Seq#Range(0, gsize), invRecv21(o_4)) && (NoPerm < 1 / gsize && qpRange21(o_4)) ==> Seq#Index(Heap[this, src], invRecv21(o_4)) == o_4 && QPMask[o_4, Integer_value] == Mask[o_4, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv21(o_4)) && (NoPerm < 1 / gsize && qpRange21(o_4))) ==> QPMask[o_4, Integer_value] == Mask[o_4, Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer_value] }
+        (Seq#Contains(Seq#Range(0, gsize), invRecv21(o_9)) && (NoPerm < 1 / gsize && qpRange21(o_9)) ==> Seq#Index(Heap[this, src], invRecv21(o_9)) == o_9 && QPMask[o_9, Integer_value] == Mask[o_9, Integer_value] - 1 / gsize) && (!(Seq#Contains(Seq#Range(0, gsize), invRecv21(o_9)) && (NoPerm < 1 / gsize && qpRange21(o_9))) ==> QPMask[o_9, Integer_value] == Mask[o_9, Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (tid == 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of main_post_check_1 might not hold. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@203.11--203.63) [15443]"}
+        assert {:msg "  Postcondition of main_post_check_1 might not hold. There might be insufficient permission to access this.dst[0].Integer_value (max-two-range.vpr@203.11--203.63) [153138]"}
           perm <= Mask[Seq#Index(Heap[this, dst], 0), Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[this, dst], 0), Integer_value:=Mask[Seq#Index(Heap[this, dst], 0), Integer_value] - perm];
@@ -4061,16 +4061,16 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     if (tid == 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of main_post_check_1 might not hold. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@204.11--204.63) [15444]"}
+        assert {:msg "  Postcondition of main_post_check_1 might not hold. There might be insufficient permission to access this.dst[1].Integer_value (max-two-range.vpr@204.11--204.63) [153139]"}
           perm <= Mask[Seq#Index(Heap[this, dst], 1), Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[this, dst], 1), Integer_value:=Mask[Seq#Index(Heap[this, dst], 1), Integer_value] - perm];
     }
     if (tid == 0) {
       if (*) {
-        if (0 <= i_17 && i_17 < half) {
-          assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion this.dst[0].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@205.11--205.128) [15445]"}
-            Heap[Seq#Index(Heap[this, dst], 0), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_17), Integer_value];
+        if (0 <= i_17_1 && i_17_1 < half) {
+          assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion this.dst[0].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@205.11--205.128) [153140]"}
+            Heap[Seq#Index(Heap[this, dst], 0), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_17_1), Integer_value];
         }
         assume false;
       }
@@ -4081,15 +4081,15 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
     }
     if (tid == 0) {
       if (*) {
-        if (half <= i_19 && i_19 < gsize) {
-          assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion this.dst[1].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@206.11--206.132) [15446]"}
-            Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_19), Integer_value];
+        if (half <= i_19_1 && i_19_1 < gsize) {
+          assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion this.dst[1].Integer_value >= this.src[i].Integer_value might not hold. (max-two-range.vpr@206.11--206.132) [153141]"}
+            Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_19_1), Integer_value];
         }
         assume false;
       }
-      assume (forall i_20_1_1: int ::
-        { Seq#Index(Heap[this, src], i_20_1_1) }
-        half <= i_20_1_1 && i_20_1_1 < gsize ==> Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_20_1_1), Integer_value]
+      assume (forall i_20_1: int ::
+        { Seq#Index(Heap[this, src], i_20_1) }
+        half <= i_20_1 && i_20_1 < gsize ==> Heap[Seq#Index(Heap[this, dst], 1), Integer_value] >= Heap[Seq#Index(Heap[this, src], i_20_1), Integer_value]
       );
     }
     // Finish exhale

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:17:04
+// Date:         2025-01-26 21:43:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/multisets/multisets.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/multisets/multisets-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -371,12 +371,12 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
   var B2: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -386,8 +386,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := Multiset(1) -- multisets.vpr@7.3--7.20
     B1 := MultiSet#Singleton(1);
@@ -398,9 +398,9 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert B1 == B2 -- multisets.vpr@11.3--11.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion B1 == B2 might not hold. (multisets.vpr@11.10--11.18) [157094]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion B1 == B2 might not hold. (multisets.vpr@11.10--11.18) [85823]"}
       MultiSet#Equal(B1, B2);
     assume state(Heap, Mask);
 }
@@ -412,11 +412,11 @@ procedure test01() returns ()
 procedure test02() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var B_2: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
+  var B_1: (MultiSet int);
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -426,24 +426,24 @@ procedure test02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B := Multiset(1, 2, 3, 3, 1) -- multisets.vpr@15.3--15.46
-    B_2 := MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(1), 3), 3), 2), 1);
+    B_1 := MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(1), 3), 3), 2), 1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |B| == 5 -- multisets.vpr@16.3--16.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |B| == 5 might not hold. (multisets.vpr@16.10--16.18) [157095]"}
-      MultiSet#Card(B_2) == 5;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |B| == 5 might not hold. (multisets.vpr@16.10--16.18) [85824]"}
+      MultiSet#Card(B_1) == 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |Multiset[Int]()| == 0 -- multisets.vpr@17.3--17.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |Multiset[Int]()| == 0 might not hold. (multisets.vpr@17.10--17.32) [157096]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |Multiset[Int]()| == 0 might not hold. (multisets.vpr@17.10--17.32) [85825]"}
       MultiSet#Card((MultiSet#Empty(): MultiSet int)) == 0;
     assume state(Heap, Mask);
 }
@@ -452,14 +452,14 @@ procedure test02() returns ()
 // Translation of method test03
 // ==================================================
 
-procedure test03(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
+procedure test03(B_1: (MultiSet int), n: int, x: int, y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -467,41 +467,41 @@ procedure test03(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume MultiSet#Card(B_2) == n;
+    assume MultiSet#Card(B_1) == n;
     assume state(Heap, Mask);
-    assume MultiSet#Select(B_2, x) > 0;
+    assume MultiSet#Select(B_1, x) > 0;
     assume state(Heap, Mask);
-    assume MultiSet#Select(B_2, y) > 0;
+    assume MultiSet#Select(B_1, y) > 0;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B setminus Multiset[Int]()) -- multisets.vpr@25.3--25.54
-    B1 := MultiSet#Difference(B_2, (MultiSet#Empty(): MultiSet int));
+    B1 := MultiSet#Difference(B_1, (MultiSet#Empty(): MultiSet int));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((x in B1)) > 0 -- multisets.vpr@26.3--26.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 might not hold. (multisets.vpr@26.11--26.23) [157097]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 might not hold. (multisets.vpr@26.11--26.23) [85826]"}
       MultiSet#Select(B1, x) > 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((y in B1)) > 0 -- multisets.vpr@27.3--27.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion ((y in B1)) > 0 might not hold. (multisets.vpr@27.11--27.23) [157098]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion ((y in B1)) > 0 might not hold. (multisets.vpr@27.11--27.23) [85827]"}
       MultiSet#Select(B1, y) > 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |B1| == n -- multisets.vpr@28.3--28.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |B1| == n might not hold. (multisets.vpr@28.10--28.19) [157099]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |B1| == n might not hold. (multisets.vpr@28.10--28.19) [85828]"}
       MultiSet#Card(B1) == n;
     assume state(Heap, Mask);
 }
@@ -510,14 +510,14 @@ procedure test03(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
 // Translation of method test04a
 // ==================================================
 
-procedure test04a(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
+procedure test04a(B_1: (MultiSet int), n: int, x: int, y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -525,11 +525,11 @@ procedure test04a(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume MultiSet#Card(B_2) == n;
+    assume MultiSet#Card(B_1) == n;
     assume state(Heap, Mask);
-    assume MultiSet#Select(B_2, x) > 0;
+    assume MultiSet#Select(B_1, x) > 0;
     assume state(Heap, Mask);
-    assume MultiSet#Select(B_2, y) > 0;
+    assume MultiSet#Select(B_1, y) > 0;
     assume state(Heap, Mask);
     assume x != y;
     assume state(Heap, Mask);
@@ -537,31 +537,31 @@ procedure test04a(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B setminus Multiset(x)) -- multisets.vpr@37.3--37.50
-    B1 := MultiSet#Difference(B_2, MultiSet#Singleton(x));
+    B1 := MultiSet#Difference(B_1, MultiSet#Singleton(x));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((y in B1)) > 0 -- multisets.vpr@38.3--38.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion ((y in B1)) > 0 might not hold. (multisets.vpr@38.11--38.23) [157100]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion ((y in B1)) > 0 might not hold. (multisets.vpr@38.11--38.23) [85829]"}
       MultiSet#Select(B1, y) > 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |B1| == n - 1 -- multisets.vpr@39.3--39.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |B1| == n - 1 might not hold. (multisets.vpr@39.10--39.23) [157101]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |B1| == n - 1 might not hold. (multisets.vpr@39.10--39.23) [85830]"}
       MultiSet#Card(B1) == n - 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((x in B1)) > 0 -- multisets.vpr@41.3--41.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 might not hold. (multisets.vpr@41.11--41.23) [157102]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 might not hold. (multisets.vpr@41.11--41.23) [85831]"}
       MultiSet#Select(B1, x) > 0;
     assume state(Heap, Mask);
 }
@@ -570,14 +570,14 @@ procedure test04a(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
 // Translation of method test04b
 // ==================================================
 
-procedure test04b(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
+procedure test04b(B_1: (MultiSet int), n: int, x: int, y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -585,9 +585,9 @@ procedure test04b(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume MultiSet#Card(B_2) == n;
+    assume MultiSet#Card(B_1) == n;
     assume state(Heap, Mask);
-    assume MultiSet#Select(B_2, x) > 0;
+    assume MultiSet#Select(B_1, x) > 0;
     assume state(Heap, Mask);
     assume x != y;
     assume state(Heap, Mask);
@@ -595,24 +595,24 @@ procedure test04b(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B setminus Multiset(x)) -- multisets.vpr@51.3--51.50
-    B1 := MultiSet#Difference(B_2, MultiSet#Singleton(x));
+    B1 := MultiSet#Difference(B_1, MultiSet#Singleton(x));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |B1| == n - 1 -- multisets.vpr@52.3--52.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |B1| == n - 1 might not hold. (multisets.vpr@52.10--52.23) [157103]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |B1| == n - 1 might not hold. (multisets.vpr@52.10--52.23) [85832]"}
       MultiSet#Card(B1) == n - 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((x in B1)) > 0 -- multisets.vpr@55.3--55.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 might not hold. (multisets.vpr@55.11--55.23) [157104]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 might not hold. (multisets.vpr@55.11--55.23) [85833]"}
       MultiSet#Select(B1, x) > 0;
     assume state(Heap, Mask);
 }
@@ -621,14 +621,14 @@ procedure test04b(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
 // Translation of method test05
 // ==================================================
 
-procedure test05(B_2: (MultiSet int), n: int, x: int) returns ()
+procedure test05(B_1: (MultiSet int), n: int, x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -636,30 +636,30 @@ procedure test05(B_2: (MultiSet int), n: int, x: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume MultiSet#Card(B_2) == n;
+    assume MultiSet#Card(B_1) == n;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B union B) -- multisets.vpr@61.3--61.37
-    B1 := MultiSet#Union(B_2, B_2);
+    B1 := MultiSet#Union(B_1, B_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((x in B1)) > 0 == ((x in B)) > 0 -- multisets.vpr@62.3--62.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 == ((x in B)) > 0 might not hold. (multisets.vpr@62.10--62.41) [157105]"}
-      (MultiSet#Select(B1, x) > 0) == (MultiSet#Select(B_2, x) > 0);
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 == ((x in B)) > 0 might not hold. (multisets.vpr@62.10--62.41) [85834]"}
+      (MultiSet#Select(B1, x) > 0) == (MultiSet#Select(B_1, x) > 0);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |B1| == 2 * n -- multisets.vpr@63.3--63.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |B1| == 2 * n might not hold. (multisets.vpr@63.10--63.21) [157106]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |B1| == 2 * n might not hold. (multisets.vpr@63.10--63.21) [85835]"}
       MultiSet#Card(B1) == 2 * n;
     assume state(Heap, Mask);
 }
@@ -668,14 +668,14 @@ procedure test05(B_2: (MultiSet int), n: int, x: int) returns ()
 // Translation of method test06a
 // ==================================================
 
-procedure test06a(B_2: (MultiSet int), n: int, x: int, b_24: bool) returns ()
+procedure test06a(B_1: (MultiSet int), n: int, x: int, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -683,23 +683,23 @@ procedure test06a(B_2: (MultiSet int), n: int, x: int, b_24: bool) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume MultiSet#Card(B_2) == n;
+    assume MultiSet#Card(B_1) == n;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B intersection B) -- multisets.vpr@69.3--69.44
-    B1 := MultiSet#Intersection(B_2, B_2);
+    B1 := MultiSet#Intersection(B_1, B_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |B1| == n -- multisets.vpr@73.3--73.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |B1| == n might not hold. (multisets.vpr@73.10--73.19) [157107]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |B1| == n might not hold. (multisets.vpr@73.10--73.19) [85836]"}
       MultiSet#Card(B1) == n;
     assume state(Heap, Mask);
 }
@@ -708,14 +708,14 @@ procedure test06a(B_2: (MultiSet int), n: int, x: int, b_24: bool) returns ()
 // Translation of method test06b
 // ==================================================
 
-procedure test06b(B_2: (MultiSet int), n: int, x: int, b_24: bool) returns ()
+procedure test06b(B_1: (MultiSet int), n: int, x: int, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -723,30 +723,30 @@ procedure test06b(B_2: (MultiSet int), n: int, x: int, b_24: bool) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume MultiSet#Card(B_2) == n;
+    assume MultiSet#Card(B_1) == n;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B intersection B) -- multisets.vpr@79.3--79.44
-    B1 := MultiSet#Intersection(B_2, B_2);
+    B1 := MultiSet#Intersection(B_1, B_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert B1 == B -- multisets.vpr@82.3--82.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion B1 == B might not hold. (multisets.vpr@82.10--82.17) [157108]"}
-      MultiSet#Equal(B1, B_2);
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion B1 == B might not hold. (multisets.vpr@82.10--82.17) [85837]"}
+      MultiSet#Equal(B1, B_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |B1| == n -- multisets.vpr@83.3--83.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |B1| == n might not hold. (multisets.vpr@83.10--83.19) [157109]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |B1| == n might not hold. (multisets.vpr@83.10--83.19) [85838]"}
       MultiSet#Card(B1) == n;
     assume state(Heap, Mask);
 }
@@ -755,14 +755,14 @@ procedure test06b(B_2: (MultiSet int), n: int, x: int, b_24: bool) returns ()
 // Translation of method test07
 // ==================================================
 
-procedure test07(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
+procedure test07(B_1: (MultiSet int), n: int, x: int, y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -770,37 +770,37 @@ procedure test07(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume MultiSet#Card(B_2) == n;
+    assume MultiSet#Card(B_1) == n;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B union Multiset(x, y)) -- multisets.vpr@89.3--89.50
-    B1 := MultiSet#Union(B_2, MultiSet#UnionOne(MultiSet#Singleton(y), x));
+    B1 := MultiSet#Union(B_1, MultiSet#UnionOne(MultiSet#Singleton(y), x));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((x in B1)) > 0 -- multisets.vpr@90.3--90.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 might not hold. (multisets.vpr@90.11--90.23) [157110]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 might not hold. (multisets.vpr@90.11--90.23) [85839]"}
       MultiSet#Select(B1, x) > 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((y in B1)) > 0 -- multisets.vpr@91.3--91.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion ((y in B1)) > 0 might not hold. (multisets.vpr@91.11--91.23) [157111]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion ((y in B1)) > 0 might not hold. (multisets.vpr@91.11--91.23) [85840]"}
       MultiSet#Select(B1, y) > 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |B1| == n + 2 -- multisets.vpr@92.3--92.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |B1| == n + 2 might not hold. (multisets.vpr@92.10--92.23) [157112]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |B1| == n + 2 might not hold. (multisets.vpr@92.10--92.23) [85841]"}
       MultiSet#Card(B1) == n + 2;
     assume state(Heap, Mask);
 }
@@ -809,14 +809,14 @@ procedure test07(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
 // Translation of method test08
 // ==================================================
 
-procedure test08(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
+procedure test08(B_1: (MultiSet int), n: int, x: int, y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -824,30 +824,30 @@ procedure test08(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume MultiSet#Card(B_2) == n;
+    assume MultiSet#Card(B_1) == n;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B intersection Multiset(x, y)) -- multisets.vpr@98.3--98.57
-    B1 := MultiSet#Intersection(B_2, MultiSet#UnionOne(MultiSet#Singleton(y), x));
+    B1 := MultiSet#Intersection(B_1, MultiSet#UnionOne(MultiSet#Singleton(y), x));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((x in B1)) > 0 == ((x in B)) > 0 -- multisets.vpr@99.3--99.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 == ((x in B)) > 0 might not hold. (multisets.vpr@99.10--99.42) [157113]"}
-      (MultiSet#Select(B1, x) > 0) == (MultiSet#Select(B_2, x) > 0);
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion ((x in B1)) > 0 == ((x in B)) > 0 might not hold. (multisets.vpr@99.10--99.42) [85842]"}
+      (MultiSet#Select(B1, x) > 0) == (MultiSet#Select(B_1, x) > 0);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |B1| <= 2 -- multisets.vpr@102.3--102.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |B1| <= 2 might not hold. (multisets.vpr@102.10--102.19) [157114]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |B1| <= 2 might not hold. (multisets.vpr@102.10--102.19) [85843]"}
       MultiSet#Card(B1) <= 2;
     assume state(Heap, Mask);
 }
@@ -856,13 +856,13 @@ procedure test08(B_2: (MultiSet int), n: int, x: int, y: int) returns ()
 // Translation of method test09
 // ==================================================
 
-procedure test09(A_1: (MultiSet int), B_2: (MultiSet int), C: (MultiSet int)) returns ()
+procedure test09(A_1: (MultiSet int), B_1: (MultiSet int), C: (MultiSet int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -870,33 +870,33 @@ procedure test09(A_1: (MultiSet int), B_2: (MultiSet int), C: (MultiSet int)) re
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume MultiSet#Equal(MultiSet#Union(A_1, B_2), C);
+    assume MultiSet#Equal(MultiSet#Union(A_1, B_1), C);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (A subset C) -- multisets.vpr@108.3--108.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (A subset C) might not hold. (multisets.vpr@108.10--108.20) [157115]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (A subset C) might not hold. (multisets.vpr@108.10--108.20) [85844]"}
       MultiSet#Subset(A_1, C);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (B subset C) -- multisets.vpr@109.3--109.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (B subset C) might not hold. (multisets.vpr@109.10--109.20) [157116]"}
-      MultiSet#Subset(B_2, C);
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (B subset C) might not hold. (multisets.vpr@109.10--109.20) [85845]"}
+      MultiSet#Subset(B_1, C);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (A subset B) -- multisets.vpr@111.3--111.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (A subset B) might not hold. (multisets.vpr@111.10--111.20) [157117]"}
-      MultiSet#Subset(A_1, B_2);
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (A subset B) might not hold. (multisets.vpr@111.10--111.20) [85846]"}
+      MultiSet#Subset(A_1, B_1);
     assume state(Heap, Mask);
 }

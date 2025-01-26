@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:17:09
+// Date:         2025-01-26 21:41:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/maps/regressions1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/maps/regressions1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_5: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_5, f_3] }
-  Heap[o_5, $allocated] ==> Heap[Heap[o_5, f_3], $allocated]
+axiom (forall o_56: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_56, f_3] }
+  Heap[o_56, $allocated] ==> Heap[Heap[o_56, f_3], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref, f_9: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, f_9] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_6, f_9) ==> Heap[o_6, f_9] == ExhaleHeap[o_6, f_9]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref, f_51: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, f_51] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_38, f_51) ==> Heap[o_38, f_51] == ExhaleHeap[o_38, f_51]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2), ExhaleHeap[null, PredicateMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> Heap[null, PredicateMaskField(pm_f_2)] == ExhaleHeap[null, PredicateMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26), ExhaleHeap[null, PredicateMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> Heap[null, PredicateMaskField(pm_f_26)] == ExhaleHeap[null, PredicateMaskField(pm_f_26)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, PredicateMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, PredicateMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2), ExhaleHeap[null, WandMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> Heap[null, WandMaskField(pm_f_2)] == ExhaleHeap[null, WandMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26), ExhaleHeap[null, WandMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> Heap[null, WandMaskField(pm_f_26)] == ExhaleHeap[null, WandMaskField(pm_f_26)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, WandMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, WandMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_6, $allocated] ==> ExhaleHeap[o_6, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_38, $allocated] ==> ExhaleHeap[o_38, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_5: Ref, f_10: (Field A B), v: B ::
-  { Heap[o_5, f_10:=v] }
-  succHeap(Heap, Heap[o_5, f_10:=v])
+axiom (forall <A, B> Heap: HeapType, o_56: Ref, f_22: (Field A B), v: B ::
+  { Heap[o_56, f_22:=v] }
+  succHeap(Heap, Heap[o_56, f_22:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -479,13 +479,13 @@ axiom !IsWandField(val);
 // Translation of method test1
 // ==================================================
 
-procedure test1(m_17: (Map int Ref), x: int) returns ()
+procedure test1_1(m_18: (Map int Ref), x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -493,26 +493,26 @@ procedure test1(m_17: (Map int Ref), x: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume Map#Domain(m_17)[x];
+    assume Map#Domain(m_18)[x];
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert 0 < m[x].val -- regressions1.vpr@10.3--10.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of 0 < m[x].val
-      assert {:msg "  Assert might fail. Map m might not contain an entry at key x. (regressions1.vpr@10.10--10.22) [157614]"}
-        Map#Domain(m_17)[x];
-      assert {:msg "  Assert might fail. There might be insufficient permission to access m[x].val (regressions1.vpr@10.10--10.22) [157615]"}
-        HasDirectPerm(ExhaleWellDef0Mask, Map#Elements(m_17)[x], val);
-    assert {:msg "  Assert might fail. Assertion 0 < m[x].val might not hold. (regressions1.vpr@10.10--10.22) [157616]"}
-      0 < Heap[Map#Elements(m_17)[x], val];
+      assert {:msg "  Assert might fail. Map m might not contain an entry at key x. (regressions1.vpr@10.10--10.22) [47720]"}
+        Map#Domain(m_18)[x];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access m[x].val (regressions1.vpr@10.10--10.22) [47721]"}
+        HasDirectPerm(ExhaleWellDef0Mask, Map#Elements(m_18)[x], val);
+    assert {:msg "  Assert might fail. Assertion 0 < m[x].val might not hold. (regressions1.vpr@10.10--10.22) [47722]"}
+      0 < Heap[Map#Elements(m_18)[x], val];
     assume state(Heap, Mask);
 }
 
@@ -520,13 +520,13 @@ procedure test1(m_17: (Map int Ref), x: int) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(m_17: (Map int (Map int bool))) returns ()
+procedure test2_1(m_18: (Map int (Map int bool))) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -540,22 +540,22 @@ procedure test2(m_17: (Map int (Map int bool))) returns ()
         assume false;
       }
     assume (forall i_1: int ::
-      { Map#Domain(m_17)[i_1] }
-      (0 <= i_1 && i_1 < 4) == Map#Domain(m_17)[i_1]
+      { Map#Domain(m_18)[i_1] }
+      (0 <= i_1 && i_1 < 4) == Map#Domain(m_18)[i_1]
     );
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert domain(m) == Set(0, 1, 2) || !((3 in m)) -- regressions1.vpr@17.3--17.48
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion domain(m) == Set(0, 1, 2) || !((3 in m)) might not hold. (regressions1.vpr@17.10--17.48) [157617]"}
-      Set#Equal(Map#Domain(m_17), Set#UnionOne(Set#UnionOne(Set#Singleton(2), 1), 0)) || !Map#Domain(m_17)[3];
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion domain(m) == Set(0, 1, 2) || !((3 in m)) might not hold. (regressions1.vpr@17.10--17.48) [47723]"}
+      Set#Equal(Map#Domain(m_18), Set#UnionOne(Set#UnionOne(Set#Singleton(2), 1), 0)) || !Map#Domain(m_18)[3];
     assume state(Heap, Mask);
 }
 
@@ -563,14 +563,14 @@ procedure test2(m_17: (Map int (Map int bool))) returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3() returns ()
+procedure test3_1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var m_17: (Map int bool);
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
+  var m_18: (Map int bool);
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -580,18 +580,18 @@ procedure test3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: m := Map(6 := false, 2 := false) -- regressions1.vpr@22.3--22.56
-    m_17 := Map#Build(Map#Build((Map#Empty(): Map int bool), 6, false), 2, false);
+    m_18 := Map#Build(Map#Build((Map#Empty(): Map int bool), 6, false), 2, false);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (4 in m) || (true in range(m)) -- regressions1.vpr@25.3--25.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (4 in m) || (true in range(m)) might not hold. (regressions1.vpr@25.10--25.36) [157618]"}
-      Map#Domain(m_17)[4] || Map#Values(m_17)[true];
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (4 in m) || (true in range(m)) might not hold. (regressions1.vpr@25.10--25.36) [47724]"}
+      Map#Domain(m_18)[4] || Map#Values(m_18)[true];
     assume state(Heap, Mask);
 }
 
@@ -599,14 +599,14 @@ procedure test3() returns ()
 // Translation of method test4
 // ==================================================
 
-procedure test4() returns ()
+procedure test4_1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var m_17: (Map int int);
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
+  var m_18: (Map int int);
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -616,18 +616,18 @@ procedure test4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: m := Map[Int,Int]() -- regressions1.vpr@30.3--30.33
-    m_17 := (Map#Empty(): Map int int);
+    m_18 := (Map#Empty(): Map int int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |m| != 0 -- regressions1.vpr@33.3--33.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |m| != 0 might not hold. (regressions1.vpr@33.10--33.18) [157619]"}
-      Map#Card(m_17) != 0;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |m| != 0 might not hold. (regressions1.vpr@33.10--33.18) [47725]"}
+      Map#Card(m_18) != 0;
     assume state(Heap, Mask);
 }
 
@@ -635,14 +635,14 @@ procedure test4() returns ()
 // Translation of method test5
 // ==================================================
 
-procedure test5() returns ()
+procedure test5_1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var m_17: (Map int int);
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
+  var m_18: (Map int int);
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -652,17 +652,17 @@ procedure test5() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: m := Map(3 := 9) -- regressions1.vpr@38.3--38.39
-    m_17 := Map#Build((Map#Empty(): Map int int), 3, 9);
+    m_18 := Map#Build((Map#Empty(): Map int int), 3, 9);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[3 := 5] == Map(3 := 9) -- regressions1.vpr@41.3--41.34
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion m[3 := 5] == Map(3 := 9) might not hold. (regressions1.vpr@41.10--41.34) [157620]"}
-      Map#Equal(Map#Build(m_17, 3, 5), Map#Build((Map#Empty(): Map int int), 3, 9));
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion m[3 := 5] == Map(3 := 9) might not hold. (regressions1.vpr@41.10--41.34) [47726]"}
+      Map#Equal(Map#Build(m_18, 3, 5), Map#Build((Map#Empty(): Map int int), 3, 9));
     assume state(Heap, Mask);
 }

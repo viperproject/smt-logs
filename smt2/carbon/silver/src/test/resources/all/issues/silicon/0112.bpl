@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:27:28
+// Date:         2025-01-26 21:42:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0112.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0112-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -544,20 +544,20 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // Translation of all fields
 // ==================================================
 
-const unique v_36: Field NormalField int;
-axiom !IsPredicateField(v_36);
-axiom !IsWandField(v_36);
+const unique v_35: Field NormalField int;
+axiom !IsPredicateField(v_35);
+axiom !IsWandField(v_35);
 
 // ==================================================
 // Translation of function val
 // ==================================================
 
 // Uninterpreted function definitions
-function  val_2(Heap: HeapType, x: Ref): Seq int;
+function  val_3(Heap: HeapType, x: Ref): Seq int;
 function  val'(Heap: HeapType, x: Ref): Seq int;
 axiom (forall Heap: HeapType, x: Ref ::
-  { val_2(Heap, x) }
-  val_2(Heap, x) == val'(Heap, x) && dummyFunction(val#triggerStateless(x))
+  { val_3(Heap, x) }
+  val_3(Heap, x) == val'(Heap, x) && dummyFunction(val#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { val'(Heap, x) }
@@ -566,8 +566,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), val_2(Heap, x) } { state(Heap, Mask), val#triggerStateless(x), Cell#trigger(Heap, Cell(x)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> val_2(Heap, x) == (if x == null then (Seq#Empty(): Seq int) else Seq#Singleton(Heap[x, v_36]))
+  { state(Heap, Mask), val_3(Heap, x) } { state(Heap, Mask), val#triggerStateless(x), Cell#trigger(Heap, Cell(x)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> val_3(Heap, x) == (if x == null then (Seq#Empty(): Seq int) else Seq#Singleton(Heap[x, v_35]))
 );
 
 // Framing axioms
@@ -590,8 +590,8 @@ procedure val#definedness(x: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -614,31 +614,31 @@ procedure val#definedness(x: Ref) returns (Result: (Seq int))
         UnfoldingHeap := Heap;
         UnfoldingMask := Mask;
         assume Cell#trigger(UnfoldingHeap, Cell(x));
-        assume UnfoldingHeap[null, Cell(x)] == FrameFragment((if x != null then FrameFragment(UnfoldingHeap[x, v_36]) else EmptyFrame));
-        ExhaleWellDef0Heap := UnfoldingHeap;
+        assume UnfoldingHeap[null, Cell(x)] == FrameFragment((if x != null then FrameFragment(UnfoldingHeap[x, v_35]) else EmptyFrame));
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Cell(x) (0112.vpr@10.1--12.64) [209317]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Cell(x) (0112.vpr@10.1--12.64) [77446]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Cell(x)];
         if (x != null) {
           perm := FullPerm;
           assume x != null;
-          UnfoldingMask := UnfoldingMask[x, v_36:=UnfoldingMask[x, v_36] + perm];
+          UnfoldingMask := UnfoldingMask[x, v_35:=UnfoldingMask[x, v_35] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.v (0112.vpr@10.1--12.64) [209318]"}
-          HasDirectPerm(UnfoldingMask, x, v_36);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.v (0112.vpr@10.1--12.64) [77447]"}
+          HasDirectPerm(UnfoldingMask, x, v_35);
         
         // -- Free assumptions (exp module)
           if (x != null) {
-            Heap := Heap[null, Cell#sm(x):=Heap[null, Cell#sm(x)][x, v_36:=true]];
+            Heap := Heap[null, Cell#sm(x):=Heap[null, Cell#sm(x)][x, v_35:=true]];
           }
           assume state(Heap, Mask);
       }
   
   // -- Translate function body
-    Result := (if x == null then (Seq#Empty(): Seq int) else Seq#Singleton(Heap[x, v_36]));
+    Result := (if x == null then (Seq#Empty(): Seq int) else Seq#Singleton(Heap[x, v_35]));
 }
 
 // ==================================================
@@ -692,7 +692,7 @@ procedure Cell#definedness(x: Ref) returns ()
     if (x != null) {
       perm := FullPerm;
       assume x != null;
-      Mask := Mask[x, v_36:=Mask[x, v_36] + perm];
+      Mask := Mask[x, v_35:=Mask[x, v_35] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -706,12 +706,12 @@ procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -732,8 +732,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale x == null -- 0112.vpr@17.10--17.19
     assume x == null;
@@ -741,16 +741,16 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq[Int]() == val(x) -- 0112.vpr@18.3--18.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of Seq[Int]() == val(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function val might not hold. There might be insufficient permission to access Cell(x) (0112.vpr@18.24--18.30) [209319]"}
+        assert {:msg "  Precondition of function val might not hold. There might be insufficient permission to access Cell(x) (0112.vpr@18.24--18.30) [77448]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Cell(x)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -759,14 +759,14 @@ procedure test01(x: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Seq[Int]() == val(x) might not hold. (0112.vpr@18.10--18.30) [209320]"}
-      Seq#Equal((Seq#Empty(): Seq int), val_2(Heap, x));
+    assert {:msg "  Assert might fail. Assertion Seq[Int]() == val(x) might not hold. (0112.vpr@18.10--18.30) [77449]"}
+      Seq#Equal((Seq#Empty(): Seq int), val_3(Heap, x));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0112.vpr@21.3--21.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0112.vpr@21.10--21.15) [209321]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0112.vpr@21.10--21.15) [77450]"}
       false;
     assume state(Heap, Mask);
 }

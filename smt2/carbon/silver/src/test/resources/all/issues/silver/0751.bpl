@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:37
+// Date:         2025-01-26 21:41:59
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0751.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0751-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -183,32 +183,32 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  f_get(Heap: HeapType, idx_1: int): int;
-function  f_get'(Heap: HeapType, idx_1: int): int;
-axiom (forall Heap: HeapType, idx_1: int ::
-  { f_get(Heap, idx_1) }
-  f_get(Heap, idx_1) == f_get'(Heap, idx_1) && dummyFunction(f_get#triggerStateless(idx_1))
+function  f_get(Heap: HeapType, idx: int): int;
+function  f_get'(Heap: HeapType, idx: int): int;
+axiom (forall Heap: HeapType, idx: int ::
+  { f_get(Heap, idx) }
+  f_get(Heap, idx) == f_get'(Heap, idx) && dummyFunction(f_get#triggerStateless(idx))
 );
-axiom (forall Heap: HeapType, idx_1: int ::
-  { f_get'(Heap, idx_1) }
-  dummyFunction(f_get#triggerStateless(idx_1))
+axiom (forall Heap: HeapType, idx: int ::
+  { f_get'(Heap, idx) }
+  dummyFunction(f_get#triggerStateless(idx))
 );
 
 // Framing axioms
-function  f_get#frame(frame: FrameType, idx_1: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, idx_1: int ::
-  { state(Heap, Mask), f_get'(Heap, idx_1) }
-  state(Heap, Mask) ==> f_get'(Heap, idx_1) == f_get#frame(EmptyFrame, idx_1)
+function  f_get#frame(frame: FrameType, idx: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, idx: int ::
+  { state(Heap, Mask), f_get'(Heap, idx) }
+  state(Heap, Mask) ==> f_get'(Heap, idx) == f_get#frame(EmptyFrame, idx)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  f_get#trigger(frame: FrameType, idx_1: int): bool;
+function  f_get#trigger(frame: FrameType, idx: int): bool;
 
 // State-independent trigger function
-function  f_get#triggerStateless(idx_1: int): int;
+function  f_get#triggerStateless(idx: int): int;
 
 // Check contract well-formedness and postcondition
-procedure f_get#definedness(idx_1: int) returns (Result: int)
+procedure f_get#definedness(idx: int) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -224,32 +224,32 @@ procedure f_get#definedness(idx_1: int) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  f_get2(Heap: HeapType, idx_1: int): int;
-function  f_get2'(Heap: HeapType, idx_1: int): int;
-axiom (forall Heap: HeapType, idx_1: int ::
-  { f_get2(Heap, idx_1) }
-  f_get2(Heap, idx_1) == f_get2'(Heap, idx_1) && dummyFunction(f_get2#triggerStateless(idx_1))
+function  f_get2(Heap: HeapType, idx: int): int;
+function  f_get2'(Heap: HeapType, idx: int): int;
+axiom (forall Heap: HeapType, idx: int ::
+  { f_get2(Heap, idx) }
+  f_get2(Heap, idx) == f_get2'(Heap, idx) && dummyFunction(f_get2#triggerStateless(idx))
 );
-axiom (forall Heap: HeapType, idx_1: int ::
-  { f_get2'(Heap, idx_1) }
-  dummyFunction(f_get2#triggerStateless(idx_1))
+axiom (forall Heap: HeapType, idx: int ::
+  { f_get2'(Heap, idx) }
+  dummyFunction(f_get2#triggerStateless(idx))
 );
 
 // Framing axioms
-function  f_get2#frame(frame: FrameType, idx_1: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, idx_1: int ::
-  { state(Heap, Mask), f_get2'(Heap, idx_1) }
-  state(Heap, Mask) ==> f_get2'(Heap, idx_1) == f_get2#frame(EmptyFrame, idx_1)
+function  f_get2#frame(frame: FrameType, idx: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, idx: int ::
+  { state(Heap, Mask), f_get2'(Heap, idx) }
+  state(Heap, Mask) ==> f_get2'(Heap, idx) == f_get2#frame(EmptyFrame, idx)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  f_get2#trigger(frame: FrameType, idx_1: int): bool;
+function  f_get2#trigger(frame: FrameType, idx: int): bool;
 
 // State-independent trigger function
-function  f_get2#triggerStateless(idx_1: int): int;
+function  f_get2#triggerStateless(idx: int): int;
 
 // Check contract well-formedness and postcondition
-procedure f_get2#definedness(idx_1: int) returns (Result: int)
+procedure f_get2#definedness(idx: int) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -260,7 +260,7 @@ procedure f_get2#definedness(idx_1: int) returns (Result: int)
     assume AssumeFunctionsAbove == 2;
   
   // -- Inhaling precondition (with checking)
-    assume idx_1 > -5;
+    assume idx > -5;
     assume state(Heap, Mask);
 }
 
@@ -377,7 +377,7 @@ procedure main() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion f_get(10) == 0 might not hold. (0751.vpr@8.12--8.26) [221007]"}
+    assert {:msg "  Assert might fail. Assertion f_get(10) == 0 might not hold. (0751.vpr@8.12--8.26) [53995]"}
       f_get(Heap, 10) == 0;
     assume state(Heap, Mask);
 }
@@ -423,7 +423,7 @@ procedure main2() returns ()
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function f_get2 might not hold. Assertion alias > -5 might not hold. (0751.vpr@17.9--17.22) [221008]"}
+            assert {:msg "  Precondition of function f_get2 might not hold. Assertion alias > -5 might not hold. (0751.vpr@17.9--17.22) [53996]"}
               alias > -5;
             // Stop execution
             assume false;
@@ -454,7 +454,7 @@ procedure main2() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion f_get2(10) == 0 might not hold. (0751.vpr@18.12--18.27) [221009]"}
+    assert {:msg "  Assert might fail. Assertion f_get2(10) == 0 might not hold. (0751.vpr@18.12--18.27) [53997]"}
       f_get2(Heap, 10) == 0;
     assume state(Heap, Mask);
 }

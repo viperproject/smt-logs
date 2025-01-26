@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:55:49
+// Date:         2025-01-26 21:44:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/linked-list-qp-append.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/linked-list-qp-append-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_34: Ref, f_40: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_34, f_40] }
-  Heap[o_34, $allocated] ==> Heap[Heap[o_34, f_40], $allocated]
+axiom (forall o_13: Ref, f_20: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_13, f_20] }
+  Heap[o_13, $allocated] ==> Heap[Heap[o_13, f_20], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref, f_18: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, f_18] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_13, f_18) ==> Heap[o_13, f_18] == ExhaleHeap[o_13, f_18]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_20: Ref, f_29: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_20, f_29] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_20, f_29) ==> Heap[o_20, f_29] == ExhaleHeap[o_20, f_29]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_12), ExhaleHeap[null, PredicateMaskField(pm_f_12)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsPredicateField(pm_f_12) ==> Heap[null, PredicateMaskField(pm_f_12)] == ExhaleHeap[null, PredicateMaskField(pm_f_12)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_37), ExhaleHeap[null, PredicateMaskField(pm_f_37)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsPredicateField(pm_f_37) ==> Heap[null, PredicateMaskField(pm_f_37)] == ExhaleHeap[null, PredicateMaskField(pm_f_37)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_12) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsPredicateField(pm_f_12) ==> (forall <A, B> o2_12: Ref, f_18: (Field A B) ::
-    { ExhaleHeap[o2_12, f_18] }
-    Heap[null, PredicateMaskField(pm_f_12)][o2_12, f_18] ==> Heap[o2_12, f_18] == ExhaleHeap[o2_12, f_18]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_37) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsPredicateField(pm_f_37) ==> (forall <A, B> o2_37: Ref, f_29: (Field A B) ::
+    { ExhaleHeap[o2_37, f_29] }
+    Heap[null, PredicateMaskField(pm_f_37)][o2_37, f_29] ==> Heap[o2_37, f_29] == ExhaleHeap[o2_37, f_29]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_12), ExhaleHeap[null, WandMaskField(pm_f_12)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsWandField(pm_f_12) ==> Heap[null, WandMaskField(pm_f_12)] == ExhaleHeap[null, WandMaskField(pm_f_12)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_37), ExhaleHeap[null, WandMaskField(pm_f_37)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsWandField(pm_f_37) ==> Heap[null, WandMaskField(pm_f_37)] == ExhaleHeap[null, WandMaskField(pm_f_37)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_12) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsWandField(pm_f_12) ==> (forall <A, B> o2_12: Ref, f_18: (Field A B) ::
-    { ExhaleHeap[o2_12, f_18] }
-    Heap[null, WandMaskField(pm_f_12)][o2_12, f_18] ==> Heap[o2_12, f_18] == ExhaleHeap[o2_12, f_18]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_37) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsWandField(pm_f_37) ==> (forall <A, B> o2_37: Ref, f_29: (Field A B) ::
+    { ExhaleHeap[o2_37, f_29] }
+    Heap[null, WandMaskField(pm_f_37)][o2_37, f_29] ==> Heap[o2_37, f_29] == ExhaleHeap[o2_37, f_29]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_13, $allocated] ==> ExhaleHeap[o_13, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_20: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_20, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_20, $allocated] ==> ExhaleHeap[o_20, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_34: Ref, f_36: (Field A B), v: B ::
-  { Heap[o_34, f_36:=v] }
-  succHeap(Heap, Heap[o_34, f_36:=v])
+axiom (forall <A, B> Heap: HeapType, o_13: Ref, f_66: (Field A B), v: B ::
+  { Heap[o_13, f_66:=v] }
+  succHeap(Heap, Heap[o_13, f_66:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,13 +145,13 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(i_1: int): bool;
-function  neverTriggered2(i_2_1: int): bool;
+function  neverTriggered2(i_2: int): bool;
 function  neverTriggered3(i_1: int): bool;
-function  neverTriggered4(i_2_1: int): bool;
-function  neverTriggered5(i_5: int): bool;
+function  neverTriggered4(i_2: int): bool;
+function  neverTriggered5(i_5_1: int): bool;
 function  neverTriggered6(i_7_1: int): bool;
-function  neverTriggered7(i_5: int): bool;
-function  neverTriggered8(i_6_1: int): bool;
+function  neverTriggered7(i_5_1: int): bool;
+function  neverTriggered8(i_6_2: int): bool;
 function  neverTriggered9(i_12_1: int): bool;
 function  neverTriggered10(i_13_1: int): bool;
 // ==================================================
@@ -593,12 +593,12 @@ axiom !IsWandField(next);
 const unique val: Field NormalField int;
 axiom !IsPredicateField(val);
 axiom !IsWandField(val);
-const unique value: Field NormalField int;
-axiom !IsPredicateField(value);
-axiom !IsWandField(value);
-const unique nodes: Field NormalField (Seq Ref);
-axiom !IsPredicateField(nodes);
-axiom !IsWandField(nodes);
+const unique value_1: Field NormalField int;
+axiom !IsPredicateField(value_1);
+axiom !IsWandField(value_1);
+const unique nodes_1: Field NormalField (Seq Ref);
+axiom !IsPredicateField(nodes_1);
+axiom !IsWandField(nodes_1);
 const unique data: Field NormalField (Seq int);
 axiom !IsPredicateField(data);
 axiom !IsWandField(data);
@@ -608,11 +608,11 @@ axiom !IsWandField(data);
 // ==================================================
 
 // Uninterpreted function definitions
-function  length(Heap: HeapType, this: Ref): int;
+function  length_1(Heap: HeapType, this: Ref): int;
 function  length'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { length(Heap, this) }
-  length(Heap, this) == length'(Heap, this) && dummyFunction(length#triggerStateless(this))
+  { length_1(Heap, this) }
+  length_1(Heap, this) == length'(Heap, this) && dummyFunction(length#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { length'(Heap, this) }
@@ -621,8 +621,8 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), length(Heap, this) } { state(Heap, Mask), length#triggerStateless(this), List#trigger(Heap, List(this)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> length(Heap, this) == Seq#Length(Heap[this, nodes])
+  { state(Heap, Mask), length_1(Heap, this) } { state(Heap, Mask), length#triggerStateless(this), List#trigger(Heap, List(this)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> length_1(Heap, this) == Seq#Length(Heap[this, nodes_1])
 );
 
 // Framing axioms
@@ -669,124 +669,124 @@ procedure length#definedness(this: Ref) returns (Result: int)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(this));
-      assume UnfoldingHeap[null, List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, nodes]), CombineFrames(FrameFragment(List#condqp1(UnfoldingHeap, this)), FrameFragment(List#condqp2(UnfoldingHeap, this))));
+      assume UnfoldingHeap[null, List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, nodes_1]), CombineFrames(FrameFragment(List#condqp1(UnfoldingHeap, this)), FrameFragment(List#condqp2(UnfoldingHeap, this))));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@24.1--28.2) [63073]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@24.1--28.2) [186599]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(this)];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, nodes:=UnfoldingMask[this, nodes] + perm];
+      UnfoldingMask := UnfoldingMask[this, nodes_1:=UnfoldingMask[this, nodes_1] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume (forall i: int, j_9: int ::
-        { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#Index(UnfoldingHeap[this, nodes], j_9) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#Index(UnfoldingHeap[this, nodes], j_9) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9), Seq#Index(UnfoldingHeap[this, nodes], i) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9), Seq#Index(UnfoldingHeap[this, nodes], i) } { Seq#Index(UnfoldingHeap[this, nodes], i), Seq#Index(UnfoldingHeap[this, nodes], j_9) }
-        Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i) && (Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9) && i != j_9) ==> Seq#Index(UnfoldingHeap[this, nodes], i) != Seq#Index(UnfoldingHeap[this, nodes], j_9)
+      assume (forall i: int, j: int ::
+        { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#Index(UnfoldingHeap[this, nodes_1], j) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#Index(UnfoldingHeap[this, nodes_1], j) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j), Seq#Index(UnfoldingHeap[this, nodes_1], i) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j), Seq#Index(UnfoldingHeap[this, nodes_1], i) } { Seq#Index(UnfoldingHeap[this, nodes_1], i), Seq#Index(UnfoldingHeap[this, nodes_1], j) }
+        Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i) && (Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j) && i != j) ==> Seq#Index(UnfoldingHeap[this, nodes_1], i) != Seq#Index(UnfoldingHeap[this, nodes_1], j)
       );
       havoc QPMask;
-      assert {:msg "  Function might not be well-formed. Quantified resource this.nodes[i].val might not be injective. (linked-list-qp-append.vpr@24.1--28.2) [63074]"}
+      assert {:msg "  Function might not be well-formed. Quantified resource this.nodes[i].val might not be injective. (linked-list-qp-append.vpr@24.1--28.2) [186600]"}
         (forall i_1: int, i_1_1: int ::
         
-        (((i_1 != i_1_1 && (0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes]))) && (0 <= i_1_1 && i_1_1 < Seq#Length(UnfoldingHeap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes], i_1) != Seq#Index(UnfoldingHeap[this, nodes], i_1_1)
+        (((i_1 != i_1_1 && (0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes_1]))) && (0 <= i_1_1 && i_1_1 < Seq#Length(UnfoldingHeap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes_1], i_1) != Seq#Index(UnfoldingHeap[this, nodes_1], i_1_1)
       );
       
       // -- Define Inverse Function
         assume (forall i_1: int ::
-          { Seq#Index(UnfoldingHeap[this, nodes], i_1) } { Seq#Index(UnfoldingHeap[this, nodes], i_1) }
-          (0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm ==> qpRange1(Seq#Index(UnfoldingHeap[this, nodes], i_1)) && invRecv1(Seq#Index(UnfoldingHeap[this, nodes], i_1)) == i_1
+          { Seq#Index(UnfoldingHeap[this, nodes_1], i_1) } { Seq#Index(UnfoldingHeap[this, nodes_1], i_1) }
+          (0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange1(Seq#Index(UnfoldingHeap[this, nodes_1], i_1)) && invRecv1(Seq#Index(UnfoldingHeap[this, nodes_1], i_1)) == i_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv1(o_4) }
-          ((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange1(o_4) ==> Seq#Index(UnfoldingHeap[this, nodes], invRecv1(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv1(o_9) }
+          ((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange1(o_9) ==> Seq#Index(UnfoldingHeap[this, nodes_1], invRecv1(o_9)) == o_9
         );
       
       // -- Assume set of fields is nonNull
         assume (forall i_1: int ::
-          { Seq#Index(UnfoldingHeap[this, nodes], i_1) } { Seq#Index(UnfoldingHeap[this, nodes], i_1) }
-          0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes]) ==> Seq#Index(UnfoldingHeap[this, nodes], i_1) != null
+          { Seq#Index(UnfoldingHeap[this, nodes_1], i_1) } { Seq#Index(UnfoldingHeap[this, nodes_1], i_1) }
+          0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes_1]) ==> Seq#Index(UnfoldingHeap[this, nodes_1], i_1) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, val] }
-          (((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes], invRecv1(o_4)) == o_4) && QPMask[o_4, val] == UnfoldingMask[o_4, val] + FullPerm) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, val] == UnfoldingMask[o_4, val])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, val] }
+          (((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes_1], invRecv1(o_9)) == o_9) && QPMask[o_9, val] == UnfoldingMask[o_9, val] + FullPerm) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, val] == UnfoldingMask[o_9, val])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != val ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != val ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
       havoc QPMask;
-      assert {:msg "  Function might not be well-formed. Quantified resource this.nodes[i].next might not be injective. (linked-list-qp-append.vpr@24.1--28.2) [63075]"}
-        (forall i_2_1: int, i_2_2: int ::
+      assert {:msg "  Function might not be well-formed. Quantified resource this.nodes[i].next might not be injective. (linked-list-qp-append.vpr@24.1--28.2) [186601]"}
+        (forall i_2: int, i_2_2: int ::
         
-        (((i_2_1 != i_2_2 && (0 <= i_2_1 && i_2_1 < Seq#Length(UnfoldingHeap[this, nodes]))) && (0 <= i_2_2 && i_2_2 < Seq#Length(UnfoldingHeap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes], i_2_1) != Seq#Index(UnfoldingHeap[this, nodes], i_2_2)
+        (((i_2 != i_2_2 && (0 <= i_2 && i_2 < Seq#Length(UnfoldingHeap[this, nodes_1]))) && (0 <= i_2_2 && i_2_2 < Seq#Length(UnfoldingHeap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes_1], i_2) != Seq#Index(UnfoldingHeap[this, nodes_1], i_2_2)
       );
       
       // -- Define Inverse Function
-        assume (forall i_2_1: int ::
-          { Seq#Index(UnfoldingHeap[this, nodes], i_2_1) } { Seq#Index(UnfoldingHeap[this, nodes], i_2_1) }
-          (0 <= i_2_1 && i_2_1 < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm ==> qpRange2(Seq#Index(UnfoldingHeap[this, nodes], i_2_1)) && invRecv2(Seq#Index(UnfoldingHeap[this, nodes], i_2_1)) == i_2_1
+        assume (forall i_2: int ::
+          { Seq#Index(UnfoldingHeap[this, nodes_1], i_2) } { Seq#Index(UnfoldingHeap[this, nodes_1], i_2) }
+          (0 <= i_2 && i_2 < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange2(Seq#Index(UnfoldingHeap[this, nodes_1], i_2)) && invRecv2(Seq#Index(UnfoldingHeap[this, nodes_1], i_2)) == i_2
         );
-        assume (forall o_4: Ref ::
-          { invRecv2(o_4) }
-          ((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange2(o_4) ==> Seq#Index(UnfoldingHeap[this, nodes], invRecv2(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv2(o_9) }
+          ((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange2(o_9) ==> Seq#Index(UnfoldingHeap[this, nodes_1], invRecv2(o_9)) == o_9
         );
       
       // -- Assume set of fields is nonNull
-        assume (forall i_2_1: int ::
-          { Seq#Index(UnfoldingHeap[this, nodes], i_2_1) } { Seq#Index(UnfoldingHeap[this, nodes], i_2_1) }
-          0 <= i_2_1 && i_2_1 < Seq#Length(UnfoldingHeap[this, nodes]) ==> Seq#Index(UnfoldingHeap[this, nodes], i_2_1) != null
+        assume (forall i_2: int ::
+          { Seq#Index(UnfoldingHeap[this, nodes_1], i_2) } { Seq#Index(UnfoldingHeap[this, nodes_1], i_2) }
+          0 <= i_2 && i_2 < Seq#Length(UnfoldingHeap[this, nodes_1]) ==> Seq#Index(UnfoldingHeap[this, nodes_1], i_2) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, next] }
-          (((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes], invRecv2(o_4)) == o_4) && QPMask[o_4, next] == UnfoldingMask[o_4, next] + FullPerm) && (!(((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, next] == UnfoldingMask[o_4, next])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, next] }
+          (((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes_1], invRecv2(o_9)) == o_9) && QPMask[o_9, next] == UnfoldingMask[o_9, next] + FullPerm) && (!(((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, next] == UnfoldingMask[o_9, next])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != next ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != next ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume (forall i_3: int ::
-        { UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes], i_3), next] }
-        0 <= i_3 && i_3 < Seq#Length(UnfoldingHeap[this, nodes]) ==> Seq#Contains(UnfoldingHeap[this, nodes], Seq#Index(UnfoldingHeap[this, nodes], i_3)) && (if i_3 < Seq#Length(UnfoldingHeap[this, nodes]) - 1 then UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes], i_3), next] == Seq#Index(UnfoldingHeap[this, nodes], i_3 + 1) else UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes], i_3), next] == null)
+      assume (forall i_3_2: int ::
+        { UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes_1], i_3_2), next] }
+        0 <= i_3_2 && i_3_2 < Seq#Length(UnfoldingHeap[this, nodes_1]) ==> Seq#Contains(UnfoldingHeap[this, nodes_1], Seq#Index(UnfoldingHeap[this, nodes_1], i_3_2)) && (if i_3_2 < Seq#Length(UnfoldingHeap[this, nodes_1]) - 1 then UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes_1], i_3_2), next] == Seq#Index(UnfoldingHeap[this, nodes_1], i_3_2 + 1) else UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes_1], i_3_2), next] == null)
       );
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@24.1--28.2) [63076]"}
-        HasDirectPerm(UnfoldingMask, this, nodes);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@24.1--28.2) [186602]"}
+        HasDirectPerm(UnfoldingMask, this, nodes_1);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, List#sm(this):=Heap[null, List#sm(this)][this, nodes:=true]];
+        Heap := Heap[null, List#sm(this):=Heap[null, List#sm(this)][this, nodes_1:=true]];
         // register all known folded permissions guarded by predicate List
         havoc newPMask;
-        assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-          { newPMask[o_15, f_20] }
-          Heap[null, List#sm(this)][o_15, f_20] ==> newPMask[o_15, f_20]
+        assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+          { newPMask[o_5, f_11] }
+          Heap[null, List#sm(this)][o_5, f_11] ==> newPMask[o_5, f_11]
         );
         assume (forall i_4_1: int ::
           
-          0 <= i_4_1 && i_4_1 < Seq#Length(Heap[this, nodes]) ==> newPMask[Seq#Index(Heap[this, nodes], i_4_1), val]
+          0 <= i_4_1 && i_4_1 < Seq#Length(Heap[this, nodes_1]) ==> newPMask[Seq#Index(Heap[this, nodes_1], i_4_1), val]
         );
         Heap := Heap[null, List#sm(this):=newPMask];
         // register all known folded permissions guarded by predicate List
         havoc newPMask;
-        assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-          { newPMask[o_16, f_21] }
-          Heap[null, List#sm(this)][o_16, f_21] ==> newPMask[o_16, f_21]
+        assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+          { newPMask[o_6, f_12] }
+          Heap[null, List#sm(this)][o_6, f_12] ==> newPMask[o_6, f_12]
         );
-        assume (forall i_5: int ::
+        assume (forall i_5_1: int ::
           
-          0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes]) ==> newPMask[Seq#Index(Heap[this, nodes], i_5), next]
+          0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1]) ==> newPMask[Seq#Index(Heap[this, nodes_1], i_5_1), next]
         );
         Heap := Heap[null, List#sm(this):=newPMask];
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := Seq#Length(Heap[this, nodes]);
+    Result := Seq#Length(Heap[this, nodes_1]);
 }
 
 // ==================================================
@@ -808,7 +808,7 @@ axiom (forall Heap: HeapType, this: Ref, index: int ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, index: int ::
   { state(Heap, Mask), itemAt(Heap, this, index) } { state(Heap, Mask), itemAt#triggerStateless(this, index), List#trigger(Heap, List(this)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> 0 <= index && index < length(Heap, this) ==> itemAt(Heap, this, index) == Heap[Seq#Index(Heap[this, nodes], index), val]
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> 0 <= index && index < length_1(Heap, this) ==> itemAt(Heap, this, index) == Heap[Seq#Index(Heap[this, nodes_1], index), val]
 );
 
 // Framing axioms
@@ -858,7 +858,7 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@32.34--32.46) [63077]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@32.34--32.46) [186603]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -867,7 +867,7 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
         // Stop execution
         assume false;
       }
-    assume index < length(Heap, this);
+    assume index < length_1(Heap, this);
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
@@ -876,130 +876,130 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(this));
-      assume UnfoldingHeap[null, List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, nodes]), CombineFrames(FrameFragment(List#condqp1(UnfoldingHeap, this)), FrameFragment(List#condqp2(UnfoldingHeap, this))));
+      assume UnfoldingHeap[null, List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, nodes_1]), CombineFrames(FrameFragment(List#condqp1(UnfoldingHeap, this)), FrameFragment(List#condqp2(UnfoldingHeap, this))));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@30.1--35.2) [63078]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@30.1--35.2) [186604]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(this)];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, nodes:=UnfoldingMask[this, nodes] + perm];
+      UnfoldingMask := UnfoldingMask[this, nodes_1:=UnfoldingMask[this, nodes_1] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume (forall i: int, j_9: int ::
-        { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#Index(UnfoldingHeap[this, nodes], j_9) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i), Seq#Index(UnfoldingHeap[this, nodes], j_9) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9), Seq#Index(UnfoldingHeap[this, nodes], i) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9), Seq#Index(UnfoldingHeap[this, nodes], i) } { Seq#Index(UnfoldingHeap[this, nodes], i), Seq#Index(UnfoldingHeap[this, nodes], j_9) }
-        Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), i) && (Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes])), j_9) && i != j_9) ==> Seq#Index(UnfoldingHeap[this, nodes], i) != Seq#Index(UnfoldingHeap[this, nodes], j_9)
+      assume (forall i: int, j: int ::
+        { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#Index(UnfoldingHeap[this, nodes_1], j) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i), Seq#Index(UnfoldingHeap[this, nodes_1], j) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j), Seq#Index(UnfoldingHeap[this, nodes_1], i) } { Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j), Seq#Index(UnfoldingHeap[this, nodes_1], i) } { Seq#Index(UnfoldingHeap[this, nodes_1], i), Seq#Index(UnfoldingHeap[this, nodes_1], j) }
+        Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), i) && (Seq#Contains(Seq#Range(0, Seq#Length(UnfoldingHeap[this, nodes_1])), j) && i != j) ==> Seq#Index(UnfoldingHeap[this, nodes_1], i) != Seq#Index(UnfoldingHeap[this, nodes_1], j)
       );
       havoc QPMask;
-      assert {:msg "  Function might not be well-formed. Quantified resource this.nodes[i].val might not be injective. (linked-list-qp-append.vpr@30.1--35.2) [63079]"}
+      assert {:msg "  Function might not be well-formed. Quantified resource this.nodes[i].val might not be injective. (linked-list-qp-append.vpr@30.1--35.2) [186605]"}
         (forall i_1: int, i_1_1: int ::
         
-        (((i_1 != i_1_1 && (0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes]))) && (0 <= i_1_1 && i_1_1 < Seq#Length(UnfoldingHeap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes], i_1) != Seq#Index(UnfoldingHeap[this, nodes], i_1_1)
+        (((i_1 != i_1_1 && (0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes_1]))) && (0 <= i_1_1 && i_1_1 < Seq#Length(UnfoldingHeap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes_1], i_1) != Seq#Index(UnfoldingHeap[this, nodes_1], i_1_1)
       );
       
       // -- Define Inverse Function
         assume (forall i_1: int ::
-          { Seq#Index(UnfoldingHeap[this, nodes], i_1) } { Seq#Index(UnfoldingHeap[this, nodes], i_1) }
-          (0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm ==> qpRange3(Seq#Index(UnfoldingHeap[this, nodes], i_1)) && invRecv3(Seq#Index(UnfoldingHeap[this, nodes], i_1)) == i_1
+          { Seq#Index(UnfoldingHeap[this, nodes_1], i_1) } { Seq#Index(UnfoldingHeap[this, nodes_1], i_1) }
+          (0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange3(Seq#Index(UnfoldingHeap[this, nodes_1], i_1)) && invRecv3(Seq#Index(UnfoldingHeap[this, nodes_1], i_1)) == i_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv3(o_4) }
-          ((0 <= invRecv3(o_4) && invRecv3(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange3(o_4) ==> Seq#Index(UnfoldingHeap[this, nodes], invRecv3(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv3(o_9) }
+          ((0 <= invRecv3(o_9) && invRecv3(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange3(o_9) ==> Seq#Index(UnfoldingHeap[this, nodes_1], invRecv3(o_9)) == o_9
         );
       
       // -- Assume set of fields is nonNull
         assume (forall i_1: int ::
-          { Seq#Index(UnfoldingHeap[this, nodes], i_1) } { Seq#Index(UnfoldingHeap[this, nodes], i_1) }
-          0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes]) ==> Seq#Index(UnfoldingHeap[this, nodes], i_1) != null
+          { Seq#Index(UnfoldingHeap[this, nodes_1], i_1) } { Seq#Index(UnfoldingHeap[this, nodes_1], i_1) }
+          0 <= i_1 && i_1 < Seq#Length(UnfoldingHeap[this, nodes_1]) ==> Seq#Index(UnfoldingHeap[this, nodes_1], i_1) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, val] }
-          (((0 <= invRecv3(o_4) && invRecv3(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes], invRecv3(o_4)) == o_4) && QPMask[o_4, val] == UnfoldingMask[o_4, val] + FullPerm) && (!(((0 <= invRecv3(o_4) && invRecv3(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, val] == UnfoldingMask[o_4, val])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, val] }
+          (((0 <= invRecv3(o_9) && invRecv3(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes_1], invRecv3(o_9)) == o_9) && QPMask[o_9, val] == UnfoldingMask[o_9, val] + FullPerm) && (!(((0 <= invRecv3(o_9) && invRecv3(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, val] == UnfoldingMask[o_9, val])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != val ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != val ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
       havoc QPMask;
-      assert {:msg "  Function might not be well-formed. Quantified resource this.nodes[i].next might not be injective. (linked-list-qp-append.vpr@30.1--35.2) [63080]"}
-        (forall i_2_1: int, i_2_2: int ::
+      assert {:msg "  Function might not be well-formed. Quantified resource this.nodes[i].next might not be injective. (linked-list-qp-append.vpr@30.1--35.2) [186606]"}
+        (forall i_2: int, i_2_2: int ::
         
-        (((i_2_1 != i_2_2 && (0 <= i_2_1 && i_2_1 < Seq#Length(UnfoldingHeap[this, nodes]))) && (0 <= i_2_2 && i_2_2 < Seq#Length(UnfoldingHeap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes], i_2_1) != Seq#Index(UnfoldingHeap[this, nodes], i_2_2)
+        (((i_2 != i_2_2 && (0 <= i_2 && i_2 < Seq#Length(UnfoldingHeap[this, nodes_1]))) && (0 <= i_2_2 && i_2_2 < Seq#Length(UnfoldingHeap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes_1], i_2) != Seq#Index(UnfoldingHeap[this, nodes_1], i_2_2)
       );
       
       // -- Define Inverse Function
-        assume (forall i_2_1: int ::
-          { Seq#Index(UnfoldingHeap[this, nodes], i_2_1) } { Seq#Index(UnfoldingHeap[this, nodes], i_2_1) }
-          (0 <= i_2_1 && i_2_1 < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm ==> qpRange4(Seq#Index(UnfoldingHeap[this, nodes], i_2_1)) && invRecv4(Seq#Index(UnfoldingHeap[this, nodes], i_2_1)) == i_2_1
+        assume (forall i_2: int ::
+          { Seq#Index(UnfoldingHeap[this, nodes_1], i_2) } { Seq#Index(UnfoldingHeap[this, nodes_1], i_2) }
+          (0 <= i_2 && i_2 < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange4(Seq#Index(UnfoldingHeap[this, nodes_1], i_2)) && invRecv4(Seq#Index(UnfoldingHeap[this, nodes_1], i_2)) == i_2
         );
-        assume (forall o_4: Ref ::
-          { invRecv4(o_4) }
-          ((0 <= invRecv4(o_4) && invRecv4(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange4(o_4) ==> Seq#Index(UnfoldingHeap[this, nodes], invRecv4(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv4(o_9) }
+          ((0 <= invRecv4(o_9) && invRecv4(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange4(o_9) ==> Seq#Index(UnfoldingHeap[this, nodes_1], invRecv4(o_9)) == o_9
         );
       
       // -- Assume set of fields is nonNull
-        assume (forall i_2_1: int ::
-          { Seq#Index(UnfoldingHeap[this, nodes], i_2_1) } { Seq#Index(UnfoldingHeap[this, nodes], i_2_1) }
-          0 <= i_2_1 && i_2_1 < Seq#Length(UnfoldingHeap[this, nodes]) ==> Seq#Index(UnfoldingHeap[this, nodes], i_2_1) != null
+        assume (forall i_2: int ::
+          { Seq#Index(UnfoldingHeap[this, nodes_1], i_2) } { Seq#Index(UnfoldingHeap[this, nodes_1], i_2) }
+          0 <= i_2 && i_2 < Seq#Length(UnfoldingHeap[this, nodes_1]) ==> Seq#Index(UnfoldingHeap[this, nodes_1], i_2) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, next] }
-          (((0 <= invRecv4(o_4) && invRecv4(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange4(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes], invRecv4(o_4)) == o_4) && QPMask[o_4, next] == UnfoldingMask[o_4, next] + FullPerm) && (!(((0 <= invRecv4(o_4) && invRecv4(o_4) < Seq#Length(UnfoldingHeap[this, nodes])) && NoPerm < FullPerm) && qpRange4(o_4)) ==> QPMask[o_4, next] == UnfoldingMask[o_4, next])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, next] }
+          (((0 <= invRecv4(o_9) && invRecv4(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange4(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(UnfoldingHeap[this, nodes_1], invRecv4(o_9)) == o_9) && QPMask[o_9, next] == UnfoldingMask[o_9, next] + FullPerm) && (!(((0 <= invRecv4(o_9) && invRecv4(o_9) < Seq#Length(UnfoldingHeap[this, nodes_1])) && NoPerm < FullPerm) && qpRange4(o_9)) ==> QPMask[o_9, next] == UnfoldingMask[o_9, next])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != next ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != next ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume (forall i_3: int ::
-        { UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes], i_3), next] }
-        0 <= i_3 && i_3 < Seq#Length(UnfoldingHeap[this, nodes]) ==> Seq#Contains(UnfoldingHeap[this, nodes], Seq#Index(UnfoldingHeap[this, nodes], i_3)) && (if i_3 < Seq#Length(UnfoldingHeap[this, nodes]) - 1 then UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes], i_3), next] == Seq#Index(UnfoldingHeap[this, nodes], i_3 + 1) else UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes], i_3), next] == null)
+      assume (forall i_3_2: int ::
+        { UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes_1], i_3_2), next] }
+        0 <= i_3_2 && i_3_2 < Seq#Length(UnfoldingHeap[this, nodes_1]) ==> Seq#Contains(UnfoldingHeap[this, nodes_1], Seq#Index(UnfoldingHeap[this, nodes_1], i_3_2)) && (if i_3_2 < Seq#Length(UnfoldingHeap[this, nodes_1]) - 1 then UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes_1], i_3_2), next] == Seq#Index(UnfoldingHeap[this, nodes_1], i_3_2 + 1) else UnfoldingHeap[Seq#Index(UnfoldingHeap[this, nodes_1], i_3_2), next] == null)
       );
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@30.1--35.2) [63081]"}
-        HasDirectPerm(UnfoldingMask, this, nodes);
-      assert {:msg "  Function might not be well-formed. Index this.nodes[index] into this.nodes might be negative. (linked-list-qp-append.vpr@30.1--35.2) [63082]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@30.1--35.2) [186607]"}
+        HasDirectPerm(UnfoldingMask, this, nodes_1);
+      assert {:msg "  Function might not be well-formed. Index this.nodes[index] into this.nodes might be negative. (linked-list-qp-append.vpr@30.1--35.2) [186608]"}
         index >= 0;
-      assert {:msg "  Function might not be well-formed. Index this.nodes[index] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@30.1--35.2) [63083]"}
-        index < Seq#Length(UnfoldingHeap[this, nodes]);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.nodes[index].val (linked-list-qp-append.vpr@30.1--35.2) [63084]"}
-        HasDirectPerm(UnfoldingMask, Seq#Index(UnfoldingHeap[this, nodes], index), val);
+      assert {:msg "  Function might not be well-formed. Index this.nodes[index] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@30.1--35.2) [186609]"}
+        index < Seq#Length(UnfoldingHeap[this, nodes_1]);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.nodes[index].val (linked-list-qp-append.vpr@30.1--35.2) [186610]"}
+        HasDirectPerm(UnfoldingMask, Seq#Index(UnfoldingHeap[this, nodes_1], index), val);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, List#sm(this):=Heap[null, List#sm(this)][this, nodes:=true]];
+        Heap := Heap[null, List#sm(this):=Heap[null, List#sm(this)][this, nodes_1:=true]];
         // register all known folded permissions guarded by predicate List
         havoc newPMask;
-        assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-          { newPMask[o_52, f_55] }
-          Heap[null, List#sm(this)][o_52, f_55] ==> newPMask[o_52, f_55]
+        assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+          { newPMask[o_40, f_52] }
+          Heap[null, List#sm(this)][o_40, f_52] ==> newPMask[o_40, f_52]
         );
         assume (forall i_4_1: int ::
           
-          0 <= i_4_1 && i_4_1 < Seq#Length(Heap[this, nodes]) ==> newPMask[Seq#Index(Heap[this, nodes], i_4_1), val]
+          0 <= i_4_1 && i_4_1 < Seq#Length(Heap[this, nodes_1]) ==> newPMask[Seq#Index(Heap[this, nodes_1], i_4_1), val]
         );
         Heap := Heap[null, List#sm(this):=newPMask];
         // register all known folded permissions guarded by predicate List
         havoc newPMask;
-        assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-          { newPMask[o_53, f_56] }
-          Heap[null, List#sm(this)][o_53, f_56] ==> newPMask[o_53, f_56]
+        assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+          { newPMask[o_42, f_55] }
+          Heap[null, List#sm(this)][o_42, f_55] ==> newPMask[o_42, f_55]
         );
-        assume (forall i_5: int ::
+        assume (forall i_5_1: int ::
           
-          0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes]) ==> newPMask[Seq#Index(Heap[this, nodes], i_5), next]
+          0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1]) ==> newPMask[Seq#Index(Heap[this, nodes_1], i_5_1), next]
         );
         Heap := Heap[null, List#sm(this):=newPMask];
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := Heap[Seq#Index(Heap[this, nodes], index), val];
+    Result := Heap[Seq#Index(Heap[this, nodes_1], index), val];
 }
 
 // ==================================================
@@ -1045,7 +1045,7 @@ function  List#condqp1(Heap: HeapType, this_2_1: Ref): int;
 function  sk_List#condqp1(fnAppH1: int, fnAppH2: int): int;
 axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, this: Ref ::
   { List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this), succHeapTrans(Heap2Heap, Heap1Heap) }
-  ((0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes])) && NoPerm < FullPerm <==> (0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap1Heap[this, nodes])) && NoPerm < FullPerm) && ((0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes])) && NoPerm < FullPerm ==> Heap2Heap[Seq#Index(Heap2Heap[this, nodes], sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this))), val] == Heap1Heap[Seq#Index(Heap1Heap[this, nodes], sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this))), val]) ==> List#condqp1(Heap2Heap, this) == List#condqp1(Heap1Heap, this)
+  ((0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes_1])) && NoPerm < FullPerm <==> (0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap1Heap[this, nodes_1])) && NoPerm < FullPerm) && ((0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes_1])) && NoPerm < FullPerm ==> Heap2Heap[Seq#Index(Heap2Heap[this, nodes_1], sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this))), val] == Heap1Heap[Seq#Index(Heap1Heap[this, nodes_1], sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this))), val]) ==> List#condqp1(Heap2Heap, this) == List#condqp1(Heap1Heap, this)
 );
 
 // ==================================================
@@ -1056,19 +1056,19 @@ function  List#condqp2(Heap: HeapType, this_2_1: Ref): int;
 function  sk_List#condqp2(fnAppH1_1: int, fnAppH2_1: int): int;
 axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, this: Ref ::
   { List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this), succHeapTrans(Heap2Heap, Heap1Heap) }
-  ((0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes])) && NoPerm < FullPerm <==> (0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap1Heap[this, nodes])) && NoPerm < FullPerm) && ((0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes])) && NoPerm < FullPerm ==> Heap2Heap[Seq#Index(Heap2Heap[this, nodes], sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this))), next] == Heap1Heap[Seq#Index(Heap1Heap[this, nodes], sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this))), next]) ==> List#condqp2(Heap2Heap, this) == List#condqp2(Heap1Heap, this)
+  ((0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes_1])) && NoPerm < FullPerm <==> (0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap1Heap[this, nodes_1])) && NoPerm < FullPerm) && ((0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes_1])) && NoPerm < FullPerm ==> Heap2Heap[Seq#Index(Heap2Heap[this, nodes_1], sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this))), next] == Heap1Heap[Seq#Index(Heap1Heap[this, nodes_1], sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this))), next]) ==> List#condqp2(Heap2Heap, this) == List#condqp2(Heap1Heap, this)
 );
 
 procedure List#definedness(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var i_11: int;
-  var j_11: int;
-  var i_12: int;
+  var i_8: int;
+  var j_6: int;
+  var i_19: int;
   var QPMask: MaskType;
-  var i_16: int;
-  var i_18: int;
+  var i_9: int;
+  var i_10: int;
   
   // -- Check definedness of predicate body of List
     
@@ -1080,190 +1080,190 @@ procedure List#definedness(this: Ref) returns ()
       assume Heap[this, $allocated];
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, nodes:=Mask[this, nodes] + perm];
+    Mask := Mask[this, nodes_1:=Mask[this, nodes_1] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { (i in [0..|this.nodes|)), (j in [0..|this.nodes|)) } { (i in [0..|this.nodes|)), this.nodes[j] } { (j in [0..|this.nodes|)), this.nodes[i] } { this.nodes[i], this.nodes[j] } (i in [0..|this.nodes|)) && ((j in [0..|this.nodes|)) && i != j) ==> this.nodes[i] != this.nodes[j])
       if (*) {
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63085]"}
-          HasDirectPerm(Mask, this, nodes);
-        if (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_11)) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63086]"}
-            HasDirectPerm(Mask, this, nodes);
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186611]"}
+          HasDirectPerm(Mask, this, nodes_1);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_8)) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186612]"}
+            HasDirectPerm(Mask, this, nodes_1);
         }
-        if (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_11) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_11) && i_11 != j_11)) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63087]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [63088]"}
-            i_11 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [63089]"}
-            i_11 < Seq#Length(Heap[this, nodes]);
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63090]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[j] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [63091]"}
-            j_11 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[j] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [63092]"}
-            j_11 < Seq#Length(Heap[this, nodes]);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_8) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_6) && i_8 != j_6)) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186613]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [186614]"}
+            i_8 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [186615]"}
+            i_8 < Seq#Length(Heap[this, nodes_1]);
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186616]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[j] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [186617]"}
+            j_6 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[j] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [186618]"}
+            j_6 < Seq#Length(Heap[this, nodes_1]);
         }
         assume false;
       }
-    assume (forall i_3: int, j_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_3), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_3), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_3), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_3), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_3), Seq#Index(Heap[this, nodes], j_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_3), Seq#Index(Heap[this, nodes], j_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_1), Seq#Index(Heap[this, nodes], i_3) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_1), Seq#Index(Heap[this, nodes], i_3) } { Seq#Index(Heap[this, nodes], i_3), Seq#Index(Heap[this, nodes], j_1) }
-      Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_3) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_1) && i_3 != j_1) ==> Seq#Index(Heap[this, nodes], i_3) != Seq#Index(Heap[this, nodes], j_1)
+    assume (forall i_3_2: int, j_1: int ::
+      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_3_2), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_3_2), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_3_2), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_3_2), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_3_2), Seq#Index(Heap[this, nodes_1], j_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_3_2), Seq#Index(Heap[this, nodes_1], j_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_1), Seq#Index(Heap[this, nodes_1], i_3_2) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_1), Seq#Index(Heap[this, nodes_1], i_3_2) } { Seq#Index(Heap[this, nodes_1], i_3_2), Seq#Index(Heap[this, nodes_1], j_1) }
+      Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_3_2) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_1) && i_3_2 != j_1) ==> Seq#Index(Heap[this, nodes_1], i_3_2) != Seq#Index(Heap[this, nodes_1], j_1)
     );
     
     // -- Check definedness of (forall i: Int :: { this.nodes[i] } 0 <= i && i < |this.nodes| ==> acc(this.nodes[i].val, write))
       if (*) {
-        if (0 <= i_12) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63093]"}
-            HasDirectPerm(Mask, this, nodes);
+        if (0 <= i_19) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186619]"}
+            HasDirectPerm(Mask, this, nodes_1);
         }
-        if (0 <= i_12 && i_12 < Seq#Length(Heap[this, nodes])) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63094]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [63095]"}
-            i_12 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [63096]"}
-            i_12 < Seq#Length(Heap[this, nodes]);
+        if (0 <= i_19 && i_19 < Seq#Length(Heap[this, nodes_1])) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186620]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [186621]"}
+            i_19 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [186622]"}
+            i_19 < Seq#Length(Heap[this, nodes_1]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Predicate might not be well-formed. Quantified resource this.nodes[i].val might not be injective. (linked-list-qp-append.vpr@13.1--22.2) [63097]"}
-      (forall i_5: int, i_5_1: int ::
+    assert {:msg "  Predicate might not be well-formed. Quantified resource this.nodes[i].val might not be injective. (linked-list-qp-append.vpr@13.1--22.2) [186623]"}
+      (forall i_5_1: int, i_5_2: int ::
       
-      (((i_5 != i_5_1 && (0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes]))) && (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_5) != Seq#Index(Heap[this, nodes], i_5_1)
+      (((i_5_1 != i_5_2 && (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_5_2 && i_5_2 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_5_1) != Seq#Index(Heap[this, nodes_1], i_5_2)
     );
     
     // -- Define Inverse Function
-      assume (forall i_5: int ::
-        { Seq#Index(Heap[this, nodes], i_5) } { Seq#Index(Heap[this, nodes], i_5) }
-        (0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange5(Seq#Index(Heap[this, nodes], i_5)) && invRecv5(Seq#Index(Heap[this, nodes], i_5)) == i_5
+      assume (forall i_5_1: int ::
+        { Seq#Index(Heap[this, nodes_1], i_5_1) } { Seq#Index(Heap[this, nodes_1], i_5_1) }
+        (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange5(Seq#Index(Heap[this, nodes_1], i_5_1)) && invRecv5(Seq#Index(Heap[this, nodes_1], i_5_1)) == i_5_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        ((0 <= invRecv5(o_4) && invRecv5(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange5(o_4) ==> Seq#Index(Heap[this, nodes], invRecv5(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        ((0 <= invRecv5(o_9) && invRecv5(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange5(o_9) ==> Seq#Index(Heap[this, nodes_1], invRecv5(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_5: int ::
-        { Seq#Index(Heap[this, nodes], i_5) } { Seq#Index(Heap[this, nodes], i_5) }
-        0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes]) ==> Seq#Index(Heap[this, nodes], i_5) != null
+      assume (forall i_5_1: int ::
+        { Seq#Index(Heap[this, nodes_1], i_5_1) } { Seq#Index(Heap[this, nodes_1], i_5_1) }
+        0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Index(Heap[this, nodes_1], i_5_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv5(o_4) && invRecv5(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange5(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], invRecv5(o_4)) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv5(o_4) && invRecv5(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange5(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv5(o_9) && invRecv5(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange5(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], invRecv5(o_9)) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv5(o_9) && invRecv5(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange5(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { this.nodes[i] } 0 <= i && i < |this.nodes| ==> acc(this.nodes[i].next, write))
       if (*) {
-        if (0 <= i_16) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63098]"}
-            HasDirectPerm(Mask, this, nodes);
+        if (0 <= i_9) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186624]"}
+            HasDirectPerm(Mask, this, nodes_1);
         }
-        if (0 <= i_16 && i_16 < Seq#Length(Heap[this, nodes])) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63099]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [63100]"}
-            i_16 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [63101]"}
-            i_16 < Seq#Length(Heap[this, nodes]);
+        if (0 <= i_9 && i_9 < Seq#Length(Heap[this, nodes_1])) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186625]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [186626]"}
+            i_9 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [186627]"}
+            i_9 < Seq#Length(Heap[this, nodes_1]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Predicate might not be well-formed. Quantified resource this.nodes[i].next might not be injective. (linked-list-qp-append.vpr@13.1--22.2) [63102]"}
+    assert {:msg "  Predicate might not be well-formed. Quantified resource this.nodes[i].next might not be injective. (linked-list-qp-append.vpr@13.1--22.2) [186628]"}
       (forall i_7_1: int, i_7_2: int ::
       
-      (((i_7_1 != i_7_2 && (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes]))) && (0 <= i_7_2 && i_7_2 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_7_1) != Seq#Index(Heap[this, nodes], i_7_2)
+      (((i_7_1 != i_7_2 && (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_7_2 && i_7_2 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_7_1) != Seq#Index(Heap[this, nodes_1], i_7_2)
     );
     
     // -- Define Inverse Function
       assume (forall i_7_1: int ::
-        { Seq#Index(Heap[this, nodes], i_7_1) } { Seq#Index(Heap[this, nodes], i_7_1) }
-        (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange6(Seq#Index(Heap[this, nodes], i_7_1)) && invRecv6(Seq#Index(Heap[this, nodes], i_7_1)) == i_7_1
+        { Seq#Index(Heap[this, nodes_1], i_7_1) } { Seq#Index(Heap[this, nodes_1], i_7_1) }
+        (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange6(Seq#Index(Heap[this, nodes_1], i_7_1)) && invRecv6(Seq#Index(Heap[this, nodes_1], i_7_1)) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv6(o_4) }
-        ((0 <= invRecv6(o_4) && invRecv6(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange6(o_4) ==> Seq#Index(Heap[this, nodes], invRecv6(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv6(o_9) }
+        ((0 <= invRecv6(o_9) && invRecv6(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange6(o_9) ==> Seq#Index(Heap[this, nodes_1], invRecv6(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i_7_1: int ::
-        { Seq#Index(Heap[this, nodes], i_7_1) } { Seq#Index(Heap[this, nodes], i_7_1) }
-        0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes]) ==> Seq#Index(Heap[this, nodes], i_7_1) != null
+        { Seq#Index(Heap[this, nodes_1], i_7_1) } { Seq#Index(Heap[this, nodes_1], i_7_1) }
+        0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Index(Heap[this, nodes_1], i_7_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (((0 <= invRecv6(o_4) && invRecv6(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange6(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], invRecv6(o_4)) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!(((0 <= invRecv6(o_4) && invRecv6(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange6(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (((0 <= invRecv6(o_9) && invRecv6(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange6(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], invRecv6(o_9)) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!(((0 <= invRecv6(o_9) && invRecv6(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange6(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { this.nodes[i].next } 0 <= i && i < |this.nodes| ==> (this.nodes[i] in this.nodes) && (i < |this.nodes| - 1 ? this.nodes[i].next == this.nodes[i + 1] : this.nodes[i].next == null))
       if (*) {
-        if (0 <= i_18) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63103]"}
-            HasDirectPerm(Mask, this, nodes);
+        if (0 <= i_10) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186629]"}
+            HasDirectPerm(Mask, this, nodes_1);
         }
-        if (0 <= i_18 && i_18 < Seq#Length(Heap[this, nodes])) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63104]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [63105]"}
-            i_18 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [63106]"}
-            i_18 < Seq#Length(Heap[this, nodes]);
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63107]"}
-            HasDirectPerm(Mask, this, nodes);
-          if (Seq#Contains(Heap[this, nodes], Seq#Index(Heap[this, nodes], i_18))) {
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63108]"}
-              HasDirectPerm(Mask, this, nodes);
-            if (i_18 < Seq#Length(Heap[this, nodes]) - 1) {
-              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63109]"}
-                HasDirectPerm(Mask, this, nodes);
-              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [63110]"}
-                i_18 >= 0;
-              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [63111]"}
-                i_18 < Seq#Length(Heap[this, nodes]);
-              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes[i].next (linked-list-qp-append.vpr@13.1--22.2) [63112]"}
-                HasDirectPerm(Mask, Seq#Index(Heap[this, nodes], i_18), next);
-              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63113]"}
-                HasDirectPerm(Mask, this, nodes);
-              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i + 1] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [63114]"}
-                i_18 + 1 >= 0;
-              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i + 1] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [63115]"}
-                i_18 + 1 < Seq#Length(Heap[this, nodes]);
+        if (0 <= i_10 && i_10 < Seq#Length(Heap[this, nodes_1])) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186630]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [186631]"}
+            i_10 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [186632]"}
+            i_10 < Seq#Length(Heap[this, nodes_1]);
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186633]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          if (Seq#Contains(Heap[this, nodes_1], Seq#Index(Heap[this, nodes_1], i_10))) {
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186634]"}
+              HasDirectPerm(Mask, this, nodes_1);
+            if (i_10 < Seq#Length(Heap[this, nodes_1]) - 1) {
+              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186635]"}
+                HasDirectPerm(Mask, this, nodes_1);
+              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [186636]"}
+                i_10 >= 0;
+              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [186637]"}
+                i_10 < Seq#Length(Heap[this, nodes_1]);
+              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes[i].next (linked-list-qp-append.vpr@13.1--22.2) [186638]"}
+                HasDirectPerm(Mask, Seq#Index(Heap[this, nodes_1], i_10), next);
+              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186639]"}
+                HasDirectPerm(Mask, this, nodes_1);
+              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i + 1] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [186640]"}
+                i_10 + 1 >= 0;
+              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i + 1] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [186641]"}
+                i_10 + 1 < Seq#Length(Heap[this, nodes_1]);
             } else {
-              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [63116]"}
-                HasDirectPerm(Mask, this, nodes);
-              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [63117]"}
-                i_18 >= 0;
-              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [63118]"}
-                i_18 < Seq#Length(Heap[this, nodes]);
-              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes[i].next (linked-list-qp-append.vpr@13.1--22.2) [63119]"}
-                HasDirectPerm(Mask, Seq#Index(Heap[this, nodes], i_18), next);
+              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@13.1--22.2) [186642]"}
+                HasDirectPerm(Mask, this, nodes_1);
+              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@13.1--22.2) [186643]"}
+                i_10 >= 0;
+              assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@13.1--22.2) [186644]"}
+                i_10 < Seq#Length(Heap[this, nodes_1]);
+              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes[i].next (linked-list-qp-append.vpr@13.1--22.2) [186645]"}
+                HasDirectPerm(Mask, Seq#Index(Heap[this, nodes_1], i_10), next);
             }
           }
         }
         assume false;
       }
     assume (forall i_9_1: int ::
-      { Heap[Seq#Index(Heap[this, nodes], i_9_1), next] }
-      0 <= i_9_1 && i_9_1 < Seq#Length(Heap[this, nodes]) ==> Seq#Contains(Heap[this, nodes], Seq#Index(Heap[this, nodes], i_9_1)) && (if i_9_1 < Seq#Length(Heap[this, nodes]) - 1 then Heap[Seq#Index(Heap[this, nodes], i_9_1), next] == Seq#Index(Heap[this, nodes], i_9_1 + 1) else Heap[Seq#Index(Heap[this, nodes], i_9_1), next] == null)
+      { Heap[Seq#Index(Heap[this, nodes_1], i_9_1), next] }
+      0 <= i_9_1 && i_9_1 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Contains(Heap[this, nodes_1], Seq#Index(Heap[this, nodes_1], i_9_1)) && (if i_9_1 < Seq#Length(Heap[this, nodes_1]) - 1 then Heap[Seq#Index(Heap[this, nodes_1], i_9_1), next] == Seq#Index(Heap[this, nodes_1], i_9_1 + 1) else Heap[Seq#Index(Heap[this, nodes_1], i_9_1), next] == null)
     );
     assume state(Heap, Mask);
 }
@@ -1272,7 +1272,7 @@ procedure List#definedness(this: Ref) returns ()
 // Translation of method append
 // ==================================================
 
-procedure append(this: Ref, elem: int) returns ()
+procedure append(this: Ref, elem_1: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -1283,18 +1283,18 @@ procedure append(this: Ref, elem: int) returns ()
   var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_13: int;
+  var i_17: int;
   var n: Ref;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var freshObj: Ref;
-  var i_20: int;
+  var i_11: int;
   var i_10_1: int;
   var j_1: int;
   var i_14_1: int;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
-  var i_2_1: int;
+  var i_2: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1317,7 +1317,7 @@ procedure append(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@39.16--39.28) [63120]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@39.16--39.28) [186646]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1326,7 +1326,7 @@ procedure append(this: Ref, elem: int) returns ()
         // Stop execution
         assume false;
       }
-    if (0 < length(Heap, this)) {
+    if (0 < length_1(Heap, this)) {
       assume state(Heap, Mask);
       
       // -- Check definedness of itemAt(this, length(this) - 1) <= elem
@@ -1335,7 +1335,7 @@ procedure append(this: Ref, elem: int) returns ()
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@39.46--39.58) [63121]"}
+          assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@39.46--39.58) [186647]"}
             NoPerm < perm ==> NoPerm < Mask[null, List(this)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1349,12 +1349,12 @@ procedure append(this: Ref, elem: int) returns ()
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@39.33--39.63) [63122]"}
+          assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@39.33--39.63) [186648]"}
             NoPerm < perm ==> NoPerm < Mask[null, List(this)];
-          assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= length(this) - 1 might not hold. (linked-list-qp-append.vpr@39.33--39.63) [63123]"}
-            0 <= length(Heap, this) - 1;
-          assert {:msg "  Precondition of function itemAt might not hold. Assertion length(this) - 1 < length(this) might not hold. (linked-list-qp-append.vpr@39.33--39.63) [63124]"}
-            length(Heap, this) - 1 < length(Heap, this);
+          assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= length(this) - 1 might not hold. (linked-list-qp-append.vpr@39.33--39.63) [186649]"}
+            0 <= length_1(Heap, this) - 1;
+          assert {:msg "  Precondition of function itemAt might not hold. Assertion length(this) - 1 < length(this) might not hold. (linked-list-qp-append.vpr@39.33--39.63) [186650]"}
+            length_1(Heap, this) - 1 < length_1(Heap, this);
           // Finish exhale
           havoc ExhaleHeap;
           assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1362,7 +1362,7 @@ procedure append(this: Ref, elem: int) returns ()
           // Stop execution
           assume false;
         }
-      assume itemAt(Heap, this, length(Heap, this) - 1) <= elem;
+      assume itemAt(Heap, this, length_1(Heap, this) - 1) <= elem_1;
     }
     assume state(Heap, Mask);
   
@@ -1388,7 +1388,7 @@ procedure append(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@41.11--41.23) [63125]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@41.11--41.23) [186651]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1402,13 +1402,13 @@ procedure append(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@41.31--41.43) [63126]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@41.31--41.43) [186652]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(this)];
         // Finish exhale
         // Stop execution
         assume false;
       }
-    assume length(PostHeap, this) == length(oldHeap, this) + 1;
+    assume length_1(PostHeap, this) == length_1(oldHeap, this) + 1;
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
@@ -1418,7 +1418,7 @@ procedure append(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@42.24--42.36) [63127]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@42.24--42.36) [186653]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1432,12 +1432,12 @@ procedure append(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@42.11--42.41) [63128]"}
+        assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@42.11--42.41) [186654]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
-        assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= length(this) - 1 might not hold. (linked-list-qp-append.vpr@42.11--42.41) [63129]"}
-          0 <= length(PostHeap, this) - 1;
-        assert {:msg "  Precondition of function itemAt might not hold. Assertion length(this) - 1 < length(this) might not hold. (linked-list-qp-append.vpr@42.11--42.41) [63130]"}
-          length(PostHeap, this) - 1 < length(PostHeap, this);
+        assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= length(this) - 1 might not hold. (linked-list-qp-append.vpr@42.11--42.41) [186655]"}
+          0 <= length_1(PostHeap, this) - 1;
+        assert {:msg "  Precondition of function itemAt might not hold. Assertion length(this) - 1 < length(this) might not hold. (linked-list-qp-append.vpr@42.11--42.41) [186656]"}
+          length_1(PostHeap, this) - 1 < length_1(PostHeap, this);
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1445,19 +1445,19 @@ procedure append(this: Ref, elem: int) returns ()
         // Stop execution
         assume false;
       }
-    assume itemAt(PostHeap, this, length(PostHeap, this) - 1) == elem;
+    assume itemAt(PostHeap, this, length_1(PostHeap, this) - 1) == elem_1;
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { old(itemAt(this, i)) } 0 <= i && i < length(this) - 1 ==> itemAt(this, i) == old(itemAt(this, i)))
       if (*) {
-        if (0 <= i_13) {
+        if (0 <= i_17) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@43.42--43.54) [63131]"}
+            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@43.42--43.54) [186657]"}
               NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1467,18 +1467,18 @@ procedure append(this: Ref, elem: int) returns ()
             assume false;
           }
         }
-        if (0 <= i_13 && i_13 < length(PostHeap, this) - 1) {
+        if (0 <= i_17 && i_17 < length_1(PostHeap, this) - 1) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@43.63--43.78) [63132]"}
+            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@43.63--43.78) [186658]"}
               NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i might not hold. (linked-list-qp-append.vpr@43.63--43.78) [63133]"}
-              0 <= i_13;
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion i < length(this) might not hold. (linked-list-qp-append.vpr@43.63--43.78) [63134]"}
-              i_13 < length(PostHeap, this);
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i might not hold. (linked-list-qp-append.vpr@43.63--43.78) [186659]"}
+              0 <= i_17;
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion i < length(this) might not hold. (linked-list-qp-append.vpr@43.63--43.78) [186660]"}
+              i_17 < length_1(PostHeap, this);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1491,12 +1491,12 @@ procedure append(this: Ref, elem: int) returns ()
             ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@43.86--43.101) [63135]"}
+            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@43.86--43.101) [186661]"}
               NoPerm < perm ==> NoPerm < oldMask[null, List(this)];
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i might not hold. (linked-list-qp-append.vpr@43.86--43.101) [63136]"}
-              0 <= i_13;
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion i < length(this) might not hold. (linked-list-qp-append.vpr@43.86--43.101) [63137]"}
-              i_13 < length(oldHeap, this);
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i might not hold. (linked-list-qp-append.vpr@43.86--43.101) [186662]"}
+              0 <= i_17;
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion i < length(this) might not hold. (linked-list-qp-append.vpr@43.86--43.101) [186663]"}
+              i_17 < length_1(oldHeap, this);
             // Finish exhale
             // Stop execution
             assume false;
@@ -1506,7 +1506,7 @@ procedure append(this: Ref, elem: int) returns ()
       }
     assume (forall i_1: int ::
       { itemAt#frame(oldHeap[null, List(this)], this, i_1) }
-      0 <= i_1 && i_1 < length(PostHeap, this) - 1 ==> itemAt(PostHeap, this, i_1) == itemAt(oldHeap, this, i_1)
+      0 <= i_1 && i_1 < length_1(PostHeap, this) - 1 ==> itemAt(PostHeap, this, i_1) == itemAt(oldHeap, this, i_1)
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -1518,12 +1518,12 @@ procedure append(this: Ref, elem: int) returns ()
   
   // -- Translating statement: unfold acc(List(this), write) -- linked-list-qp-append.vpr@45.2--45.24
     assume List#trigger(Heap, List(this));
-    assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes]), CombineFrames(FrameFragment(List#condqp1(Heap, this)), FrameFragment(List#condqp2(Heap, this))));
+    assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes_1]), CombineFrames(FrameFragment(List#condqp1(Heap, this)), FrameFragment(List#condqp2(Heap, this))));
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding List(this) might fail. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@45.2--45.24) [63140]"}
+      assert {:msg "  Unfolding List(this) might fail. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@45.2--45.24) [186666]"}
         perm <= Mask[null, List(this)];
     }
     Mask := Mask[null, List(this):=Mask[null, List(this)] - perm];
@@ -1535,83 +1535,83 @@ procedure append(this: Ref, elem: int) returns ()
       }
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, nodes:=Mask[this, nodes] + perm];
+    Mask := Mask[this, nodes_1:=Mask[this, nodes_1] + perm];
     assume state(Heap, Mask);
-    assume (forall i_4_1: int, j_9: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_4_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_9) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_4_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_9) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_4_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_9) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_4_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_9) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_4_1), Seq#Index(Heap[this, nodes], j_9) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_4_1), Seq#Index(Heap[this, nodes], j_9) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_9), Seq#Index(Heap[this, nodes], i_4_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_9), Seq#Index(Heap[this, nodes], i_4_1) } { Seq#Index(Heap[this, nodes], i_4_1), Seq#Index(Heap[this, nodes], j_9) }
-      Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_4_1) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_9) && i_4_1 != j_9) ==> Seq#Index(Heap[this, nodes], i_4_1) != Seq#Index(Heap[this, nodes], j_9)
+    assume (forall i_4_1: int, j: int ::
+      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_4_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_4_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_4_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_4_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_4_1), Seq#Index(Heap[this, nodes_1], j) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_4_1), Seq#Index(Heap[this, nodes_1], j) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j), Seq#Index(Heap[this, nodes_1], i_4_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j), Seq#Index(Heap[this, nodes_1], i_4_1) } { Seq#Index(Heap[this, nodes_1], i_4_1), Seq#Index(Heap[this, nodes_1], j) }
+      Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_4_1) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j) && i_4_1 != j) ==> Seq#Index(Heap[this, nodes_1], i_4_1) != Seq#Index(Heap[this, nodes_1], j)
     );
     havoc QPMask;
-    assert {:msg "  Unfolding List(this) might fail. Quantified resource this.nodes[i].val might not be injective. (linked-list-qp-append.vpr@45.2--45.24) [63142]"}
-      (forall i_5: int, i_5_1: int ::
+    assert {:msg "  Unfolding List(this) might fail. Quantified resource this.nodes[i].val might not be injective. (linked-list-qp-append.vpr@45.2--45.24) [186668]"}
+      (forall i_5_1: int, i_5_2: int ::
       
-      (((i_5 != i_5_1 && (0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes]))) && (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_5) != Seq#Index(Heap[this, nodes], i_5_1)
+      (((i_5_1 != i_5_2 && (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_5_2 && i_5_2 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_5_1) != Seq#Index(Heap[this, nodes_1], i_5_2)
     );
     
     // -- Define Inverse Function
-      assume (forall i_5: int ::
-        { Seq#Index(Heap[this, nodes], i_5) } { Seq#Index(Heap[this, nodes], i_5) }
-        (0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange7(Seq#Index(Heap[this, nodes], i_5)) && invRecv7(Seq#Index(Heap[this, nodes], i_5)) == i_5
+      assume (forall i_5_1: int ::
+        { Seq#Index(Heap[this, nodes_1], i_5_1) } { Seq#Index(Heap[this, nodes_1], i_5_1) }
+        (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange7(Seq#Index(Heap[this, nodes_1], i_5_1)) && invRecv7(Seq#Index(Heap[this, nodes_1], i_5_1)) == i_5_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv7(o_4) }
-        ((0 <= invRecv7(o_4) && invRecv7(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange7(o_4) ==> Seq#Index(Heap[this, nodes], invRecv7(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv7(o_9) }
+        ((0 <= invRecv7(o_9) && invRecv7(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange7(o_9) ==> Seq#Index(Heap[this, nodes_1], invRecv7(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_5: int ::
-        { Seq#Index(Heap[this, nodes], i_5) } { Seq#Index(Heap[this, nodes], i_5) }
-        0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes]) ==> Seq#Index(Heap[this, nodes], i_5) != null
+      assume (forall i_5_1: int ::
+        { Seq#Index(Heap[this, nodes_1], i_5_1) } { Seq#Index(Heap[this, nodes_1], i_5_1) }
+        0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Index(Heap[this, nodes_1], i_5_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv7(o_4) && invRecv7(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange7(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], invRecv7(o_4)) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv7(o_4) && invRecv7(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange7(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv7(o_9) && invRecv7(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange7(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], invRecv7(o_9)) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv7(o_9) && invRecv7(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange7(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     havoc QPMask;
-    assert {:msg "  Unfolding List(this) might fail. Quantified resource this.nodes[i].next might not be injective. (linked-list-qp-append.vpr@45.2--45.24) [63143]"}
-      (forall i_6_1: int, i_6_2: int ::
+    assert {:msg "  Unfolding List(this) might fail. Quantified resource this.nodes[i].next might not be injective. (linked-list-qp-append.vpr@45.2--45.24) [186669]"}
+      (forall i_6_2: int, i_6_3: int ::
       
-      (((i_6_1 != i_6_2 && (0 <= i_6_1 && i_6_1 < Seq#Length(Heap[this, nodes]))) && (0 <= i_6_2 && i_6_2 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_6_1) != Seq#Index(Heap[this, nodes], i_6_2)
+      (((i_6_2 != i_6_3 && (0 <= i_6_2 && i_6_2 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_6_3 && i_6_3 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_6_2) != Seq#Index(Heap[this, nodes_1], i_6_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_6_1: int ::
-        { Seq#Index(Heap[this, nodes], i_6_1) } { Seq#Index(Heap[this, nodes], i_6_1) }
-        (0 <= i_6_1 && i_6_1 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange8(Seq#Index(Heap[this, nodes], i_6_1)) && invRecv8(Seq#Index(Heap[this, nodes], i_6_1)) == i_6_1
+      assume (forall i_6_2: int ::
+        { Seq#Index(Heap[this, nodes_1], i_6_2) } { Seq#Index(Heap[this, nodes_1], i_6_2) }
+        (0 <= i_6_2 && i_6_2 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange8(Seq#Index(Heap[this, nodes_1], i_6_2)) && invRecv8(Seq#Index(Heap[this, nodes_1], i_6_2)) == i_6_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv8(o_4) }
-        ((0 <= invRecv8(o_4) && invRecv8(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange8(o_4) ==> Seq#Index(Heap[this, nodes], invRecv8(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv8(o_9) }
+        ((0 <= invRecv8(o_9) && invRecv8(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange8(o_9) ==> Seq#Index(Heap[this, nodes_1], invRecv8(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_6_1: int ::
-        { Seq#Index(Heap[this, nodes], i_6_1) } { Seq#Index(Heap[this, nodes], i_6_1) }
-        0 <= i_6_1 && i_6_1 < Seq#Length(Heap[this, nodes]) ==> Seq#Index(Heap[this, nodes], i_6_1) != null
+      assume (forall i_6_2: int ::
+        { Seq#Index(Heap[this, nodes_1], i_6_2) } { Seq#Index(Heap[this, nodes_1], i_6_2) }
+        0 <= i_6_2 && i_6_2 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Index(Heap[this, nodes_1], i_6_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (((0 <= invRecv8(o_4) && invRecv8(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange8(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], invRecv8(o_4)) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!(((0 <= invRecv8(o_4) && invRecv8(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange8(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (((0 <= invRecv8(o_9) && invRecv8(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange8(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], invRecv8(o_9)) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!(((0 <= invRecv8(o_9) && invRecv8(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange8(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     assume (forall i_7_1: int ::
-      { Heap[Seq#Index(Heap[this, nodes], i_7_1), next] }
-      0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes]) ==> Seq#Contains(Heap[this, nodes], Seq#Index(Heap[this, nodes], i_7_1)) && (if i_7_1 < Seq#Length(Heap[this, nodes]) - 1 then Heap[Seq#Index(Heap[this, nodes], i_7_1), next] == Seq#Index(Heap[this, nodes], i_7_1 + 1) else Heap[Seq#Index(Heap[this, nodes], i_7_1), next] == null)
+      { Heap[Seq#Index(Heap[this, nodes_1], i_7_1), next] }
+      0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Contains(Heap[this, nodes_1], Seq#Index(Heap[this, nodes_1], i_7_1)) && (if i_7_1 < Seq#Length(Heap[this, nodes_1]) - 1 then Heap[Seq#Index(Heap[this, nodes_1], i_7_1), next] == Seq#Index(Heap[this, nodes_1], i_7_1 + 1) else Heap[Seq#Index(Heap[this, nodes_1], i_7_1), next] == null)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1639,77 +1639,77 @@ procedure append(this: Ref, elem: int) returns ()
     
     // -- Check definedness of (forall i: Int :: { this.nodes[i] } 0 <= i && i < |this.nodes| ==> this.nodes[i] != n)
       if (*) {
-        if (0 <= i_20) {
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@49.9--49.106) [63146]"}
-            HasDirectPerm(Mask, this, nodes);
+        if (0 <= i_11) {
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@49.9--49.106) [186672]"}
+            HasDirectPerm(Mask, this, nodes_1);
         }
-        if (0 <= i_20 && i_20 < Seq#Length(Heap[this, nodes])) {
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@49.9--49.106) [63147]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Inhale might fail. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@49.9--49.106) [63148]"}
-            i_20 >= 0;
-          assert {:msg "  Inhale might fail. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@49.9--49.106) [63149]"}
-            i_20 < Seq#Length(Heap[this, nodes]);
+        if (0 <= i_11 && i_11 < Seq#Length(Heap[this, nodes_1])) {
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@49.9--49.106) [186673]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Inhale might fail. Index this.nodes[i] into this.nodes might be negative. (linked-list-qp-append.vpr@49.9--49.106) [186674]"}
+            i_11 >= 0;
+          assert {:msg "  Inhale might fail. Index this.nodes[i] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@49.9--49.106) [186675]"}
+            i_11 < Seq#Length(Heap[this, nodes_1]);
         }
         assume false;
       }
     assume (forall i_9_1: int ::
-      { Seq#Index(Heap[this, nodes], i_9_1) }
-      0 <= i_9_1 && i_9_1 < Seq#Length(Heap[this, nodes]) ==> Seq#Index(Heap[this, nodes], i_9_1) != n
+      { Seq#Index(Heap[this, nodes_1], i_9_1) }
+      0 <= i_9_1 && i_9_1 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Index(Heap[this, nodes_1], i_9_1) != n
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: n.next := null -- linked-list-qp-append.vpr@51.2--51.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access n.next (linked-list-qp-append.vpr@51.2--51.16) [63150]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access n.next (linked-list-qp-append.vpr@51.2--51.16) [186676]"}
       FullPerm == Mask[n, next];
     Heap := Heap[n, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: n.val := elem -- linked-list-qp-append.vpr@52.2--52.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access n.val (linked-list-qp-append.vpr@52.2--52.15) [63151]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access n.val (linked-list-qp-append.vpr@52.2--52.15) [186677]"}
       FullPerm == Mask[n, val];
-    Heap := Heap[n, val:=elem];
+    Heap := Heap[n, val:=elem_1];
     assume state(Heap, Mask);
   
   // -- Translating statement: if (|this.nodes| > 0) -- linked-list-qp-append.vpr@54.2--59.3
     
     // -- Check definedness of |this.nodes| > 0
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@54.5--54.21) [63152]"}
-        HasDirectPerm(Mask, this, nodes);
-    if (Seq#Length(Heap[this, nodes]) > 0) {
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@54.5--54.21) [186678]"}
+        HasDirectPerm(Mask, this, nodes_1);
+    if (Seq#Length(Heap[this, nodes_1]) > 0) {
       
       // -- Translating statement: this.nodes[|this.nodes| - 1].next := n -- linked-list-qp-append.vpr@55.3--55.41
         
         // -- Check definedness of this.nodes[|this.nodes| - 1]
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@55.3--55.41) [63153]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@55.3--55.41) [63154]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Assignment might fail. Index this.nodes[|this.nodes| - 1] into this.nodes might be negative. (linked-list-qp-append.vpr@55.3--55.41) [63155]"}
-            Seq#Length(Heap[this, nodes]) - 1 >= 0;
-          assert {:msg "  Assignment might fail. Index this.nodes[|this.nodes| - 1] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@55.3--55.41) [63156]"}
-            Seq#Length(Heap[this, nodes]) - 1 < Seq#Length(Heap[this, nodes]);
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes[|this.nodes| - 1].next (linked-list-qp-append.vpr@55.3--55.41) [63157]"}
-          FullPerm == Mask[Seq#Index(Heap[this, nodes], Seq#Length(Heap[this, nodes]) - 1), next];
-        Heap := Heap[Seq#Index(Heap[this, nodes], Seq#Length(Heap[this, nodes]) - 1), next:=n];
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@55.3--55.41) [186679]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@55.3--55.41) [186680]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Assignment might fail. Index this.nodes[|this.nodes| - 1] into this.nodes might be negative. (linked-list-qp-append.vpr@55.3--55.41) [186681]"}
+            Seq#Length(Heap[this, nodes_1]) - 1 >= 0;
+          assert {:msg "  Assignment might fail. Index this.nodes[|this.nodes| - 1] into this.nodes might exceed sequence length. (linked-list-qp-append.vpr@55.3--55.41) [186682]"}
+            Seq#Length(Heap[this, nodes_1]) - 1 < Seq#Length(Heap[this, nodes_1]);
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes[|this.nodes| - 1].next (linked-list-qp-append.vpr@55.3--55.41) [186683]"}
+          FullPerm == Mask[Seq#Index(Heap[this, nodes_1], Seq#Length(Heap[this, nodes_1]) - 1), next];
+        Heap := Heap[Seq#Index(Heap[this, nodes_1], Seq#Length(Heap[this, nodes_1]) - 1), next:=n];
         assume state(Heap, Mask);
       
       // -- Translating statement: this.nodes := this.nodes ++ Seq(n) -- linked-list-qp-append.vpr@56.3--56.37
         
         // -- Check definedness of this.nodes ++ Seq(n)
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@56.3--56.37) [63158]"}
-            HasDirectPerm(Mask, this, nodes);
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@56.3--56.37) [63159]"}
-          FullPerm == Mask[this, nodes];
-        Heap := Heap[this, nodes:=Seq#Append(Heap[this, nodes], Seq#Singleton(n))];
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@56.3--56.37) [186684]"}
+            HasDirectPerm(Mask, this, nodes_1);
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@56.3--56.37) [186685]"}
+          FullPerm == Mask[this, nodes_1];
+        Heap := Heap[this, nodes_1:=Seq#Append(Heap[this, nodes_1], Seq#Singleton(n))];
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: this.nodes := Seq(n) -- linked-list-qp-append.vpr@58.3--58.23
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@58.3--58.23) [63160]"}
-          FullPerm == Mask[this, nodes];
-        Heap := Heap[this, nodes:=Seq#Singleton(n)];
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@58.3--58.23) [186686]"}
+          FullPerm == Mask[this, nodes_1];
+        Heap := Heap[this, nodes_1:=Seq#Singleton(n)];
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1719,20 +1719,20 @@ procedure append(this: Ref, elem: int) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@60.2--60.22) [63163]"}
-        perm <= Mask[this, nodes];
+      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@60.2--60.22) [186689]"}
+        perm <= Mask[this, nodes_1];
     }
-    Mask := Mask[this, nodes:=Mask[this, nodes] - perm];
+    Mask := Mask[this, nodes_1:=Mask[this, nodes_1] - perm];
     if (*) {
-      if (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_10_1) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_1) && i_10_1 != j_1)) {
-        assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i] != this.nodes[j] might not hold. (linked-list-qp-append.vpr@60.2--60.22) [63164]"}
-          Seq#Index(Heap[this, nodes], i_10_1) != Seq#Index(Heap[this, nodes], j_1);
+      if (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_10_1) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_1) && i_10_1 != j_1)) {
+        assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i] != this.nodes[j] might not hold. (linked-list-qp-append.vpr@60.2--60.22) [186690]"}
+          Seq#Index(Heap[this, nodes_1], i_10_1) != Seq#Index(Heap[this, nodes_1], j_1);
       }
       assume false;
     }
-    assume (forall i_11_1_1: int, j_2_1_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_11_1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_11_1_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_11_1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_11_1_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_11_1_1), Seq#Index(Heap[this, nodes], j_2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_11_1_1), Seq#Index(Heap[this, nodes], j_2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_2_1_1), Seq#Index(Heap[this, nodes], i_11_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_2_1_1), Seq#Index(Heap[this, nodes], i_11_1_1) } { Seq#Index(Heap[this, nodes], i_11_1_1), Seq#Index(Heap[this, nodes], j_2_1_1) }
-      Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), i_11_1_1) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes])), j_2_1_1) && i_11_1_1 != j_2_1_1) ==> Seq#Index(Heap[this, nodes], i_11_1_1) != Seq#Index(Heap[this, nodes], j_2_1_1)
+    assume (forall i_11_1_1: int, j_2_1: int ::
+      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_11_1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_2_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_11_1_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_2_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_11_1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_2_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_11_1_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_2_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_11_1_1), Seq#Index(Heap[this, nodes_1], j_2_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_11_1_1), Seq#Index(Heap[this, nodes_1], j_2_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_2_1), Seq#Index(Heap[this, nodes_1], i_11_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_2_1), Seq#Index(Heap[this, nodes_1], i_11_1_1) } { Seq#Index(Heap[this, nodes_1], i_11_1_1), Seq#Index(Heap[this, nodes_1], j_2_1) }
+      Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), i_11_1_1) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[this, nodes_1])), j_2_1) && i_11_1_1 != j_2_1) ==> Seq#Index(Heap[this, nodes_1], i_11_1_1) != Seq#Index(Heap[this, nodes_1], j_2_1)
     );
     havoc QPMask;
     
@@ -1740,39 +1740,39 @@ procedure append(this: Ref, elem: int) returns ()
       
     
     // -- check if receiver this.nodes[i] is injective
-      assert {:msg "  Folding List(this) might fail. Quantified resource this.nodes[i].val might not be injective. (linked-list-qp-append.vpr@60.2--60.22) [63166]"}
+      assert {:msg "  Folding List(this) might fail. Quantified resource this.nodes[i].val might not be injective. (linked-list-qp-append.vpr@60.2--60.22) [186692]"}
         (forall i_12_1: int, i_12_2: int ::
         { neverTriggered9(i_12_1), neverTriggered9(i_12_2) }
-        (((i_12_1 != i_12_2 && (0 <= i_12_1 && i_12_1 < Seq#Length(Heap[this, nodes]))) && (0 <= i_12_2 && i_12_2 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_12_1) != Seq#Index(Heap[this, nodes], i_12_2)
+        (((i_12_1 != i_12_2 && (0 <= i_12_1 && i_12_1 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_12_2 && i_12_2 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_12_1) != Seq#Index(Heap[this, nodes_1], i_12_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes[i].val (linked-list-qp-append.vpr@60.2--60.22) [63167]"}
+      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes[i].val (linked-list-qp-append.vpr@60.2--60.22) [186693]"}
         (forall i_12_1: int ::
-        { Seq#Index(Heap[this, nodes], i_12_1) } { Seq#Index(Heap[this, nodes], i_12_1) }
-        0 <= i_12_1 && i_12_1 < Seq#Length(Heap[this, nodes]) ==> Mask[Seq#Index(Heap[this, nodes], i_12_1), val] >= FullPerm
+        { Seq#Index(Heap[this, nodes_1], i_12_1) } { Seq#Index(Heap[this, nodes_1], i_12_1) }
+        0 <= i_12_1 && i_12_1 < Seq#Length(Heap[this, nodes_1]) ==> Mask[Seq#Index(Heap[this, nodes_1], i_12_1), val] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver this.nodes[i]
       assume (forall i_12_1: int ::
-        { Seq#Index(Heap[this, nodes], i_12_1) } { Seq#Index(Heap[this, nodes], i_12_1) }
-        (0 <= i_12_1 && i_12_1 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange9(Seq#Index(Heap[this, nodes], i_12_1)) && invRecv9(Seq#Index(Heap[this, nodes], i_12_1)) == i_12_1
+        { Seq#Index(Heap[this, nodes_1], i_12_1) } { Seq#Index(Heap[this, nodes_1], i_12_1) }
+        (0 <= i_12_1 && i_12_1 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange9(Seq#Index(Heap[this, nodes_1], i_12_1)) && invRecv9(Seq#Index(Heap[this, nodes_1], i_12_1)) == i_12_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv9(o_4) }
-        (0 <= invRecv9(o_4) && invRecv9(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange9(o_4)) ==> Seq#Index(Heap[this, nodes], invRecv9(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv9(o_9) }
+        (0 <= invRecv9(o_9) && invRecv9(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange9(o_9)) ==> Seq#Index(Heap[this, nodes_1], invRecv9(o_9)) == o_9
       );
     
     // -- assume permission updates for field val
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((0 <= invRecv9(o_4) && invRecv9(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange9(o_4)) ==> Seq#Index(Heap[this, nodes], invRecv9(o_4)) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((0 <= invRecv9(o_4) && invRecv9(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange9(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((0 <= invRecv9(o_9) && invRecv9(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange9(o_9)) ==> Seq#Index(Heap[this, nodes_1], invRecv9(o_9)) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((0 <= invRecv9(o_9) && invRecv9(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange9(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     havoc QPMask;
@@ -1781,91 +1781,91 @@ procedure append(this: Ref, elem: int) returns ()
       
     
     // -- check if receiver this.nodes[i] is injective
-      assert {:msg "  Folding List(this) might fail. Quantified resource this.nodes[i].next might not be injective. (linked-list-qp-append.vpr@60.2--60.22) [63169]"}
+      assert {:msg "  Folding List(this) might fail. Quantified resource this.nodes[i].next might not be injective. (linked-list-qp-append.vpr@60.2--60.22) [186695]"}
         (forall i_13_1: int, i_13_2: int ::
         { neverTriggered10(i_13_1), neverTriggered10(i_13_2) }
-        (((i_13_1 != i_13_2 && (0 <= i_13_1 && i_13_1 < Seq#Length(Heap[this, nodes]))) && (0 <= i_13_2 && i_13_2 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_13_1) != Seq#Index(Heap[this, nodes], i_13_2)
+        (((i_13_1 != i_13_2 && (0 <= i_13_1 && i_13_1 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_13_2 && i_13_2 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_13_1) != Seq#Index(Heap[this, nodes_1], i_13_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes[i].next (linked-list-qp-append.vpr@60.2--60.22) [63170]"}
+      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes[i].next (linked-list-qp-append.vpr@60.2--60.22) [186696]"}
         (forall i_13_1: int ::
-        { Seq#Index(Heap[this, nodes], i_13_1) } { Seq#Index(Heap[this, nodes], i_13_1) }
-        0 <= i_13_1 && i_13_1 < Seq#Length(Heap[this, nodes]) ==> Mask[Seq#Index(Heap[this, nodes], i_13_1), next] >= FullPerm
+        { Seq#Index(Heap[this, nodes_1], i_13_1) } { Seq#Index(Heap[this, nodes_1], i_13_1) }
+        0 <= i_13_1 && i_13_1 < Seq#Length(Heap[this, nodes_1]) ==> Mask[Seq#Index(Heap[this, nodes_1], i_13_1), next] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver this.nodes[i]
       assume (forall i_13_1: int ::
-        { Seq#Index(Heap[this, nodes], i_13_1) } { Seq#Index(Heap[this, nodes], i_13_1) }
-        (0 <= i_13_1 && i_13_1 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange10(Seq#Index(Heap[this, nodes], i_13_1)) && invRecv10(Seq#Index(Heap[this, nodes], i_13_1)) == i_13_1
+        { Seq#Index(Heap[this, nodes_1], i_13_1) } { Seq#Index(Heap[this, nodes_1], i_13_1) }
+        (0 <= i_13_1 && i_13_1 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange10(Seq#Index(Heap[this, nodes_1], i_13_1)) && invRecv10(Seq#Index(Heap[this, nodes_1], i_13_1)) == i_13_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv10(o_4) }
-        (0 <= invRecv10(o_4) && invRecv10(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange10(o_4)) ==> Seq#Index(Heap[this, nodes], invRecv10(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv10(o_9) }
+        (0 <= invRecv10(o_9) && invRecv10(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange10(o_9)) ==> Seq#Index(Heap[this, nodes_1], invRecv10(o_9)) == o_9
       );
     
     // -- assume permission updates for field next
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((0 <= invRecv10(o_4) && invRecv10(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange10(o_4)) ==> Seq#Index(Heap[this, nodes], invRecv10(o_4)) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - FullPerm) && (!((0 <= invRecv10(o_4) && invRecv10(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange10(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((0 <= invRecv10(o_9) && invRecv10(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange10(o_9)) ==> Seq#Index(Heap[this, nodes_1], invRecv10(o_9)) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - FullPerm) && (!((0 <= invRecv10(o_9) && invRecv10(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange10(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (0 <= i_14_1 && i_14_1 < Seq#Length(Heap[this, nodes])) {
-        assert {:msg "  Folding List(this) might fail. Assertion (this.nodes[i] in this.nodes) might not hold. (linked-list-qp-append.vpr@60.2--60.22) [63171]"}
-          Seq#Contains(Heap[this, nodes], Seq#Index(Heap[this, nodes], i_14_1));
-        if (i_14_1 < Seq#Length(Heap[this, nodes]) - 1) {
-          assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i].next == this.nodes[i + 1] might not hold. (linked-list-qp-append.vpr@60.2--60.22) [63172]"}
-            Heap[Seq#Index(Heap[this, nodes], i_14_1), next] == Seq#Index(Heap[this, nodes], i_14_1 + 1);
+      if (0 <= i_14_1 && i_14_1 < Seq#Length(Heap[this, nodes_1])) {
+        assert {:msg "  Folding List(this) might fail. Assertion (this.nodes[i] in this.nodes) might not hold. (linked-list-qp-append.vpr@60.2--60.22) [186697]"}
+          Seq#Contains(Heap[this, nodes_1], Seq#Index(Heap[this, nodes_1], i_14_1));
+        if (i_14_1 < Seq#Length(Heap[this, nodes_1]) - 1) {
+          assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i].next == this.nodes[i + 1] might not hold. (linked-list-qp-append.vpr@60.2--60.22) [186698]"}
+            Heap[Seq#Index(Heap[this, nodes_1], i_14_1), next] == Seq#Index(Heap[this, nodes_1], i_14_1 + 1);
         } else {
-          assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i].next == null might not hold. (linked-list-qp-append.vpr@60.2--60.22) [63173]"}
-            Heap[Seq#Index(Heap[this, nodes], i_14_1), next] == null;
+          assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i].next == null might not hold. (linked-list-qp-append.vpr@60.2--60.22) [186699]"}
+            Heap[Seq#Index(Heap[this, nodes_1], i_14_1), next] == null;
         }
       }
       assume false;
     }
     assume (forall i_15_1_1: int ::
-      { Heap[Seq#Index(Heap[this, nodes], i_15_1_1), next] }
-      0 <= i_15_1_1 && i_15_1_1 < Seq#Length(Heap[this, nodes]) ==> Seq#Contains(Heap[this, nodes], Seq#Index(Heap[this, nodes], i_15_1_1)) && (if i_15_1_1 < Seq#Length(Heap[this, nodes]) - 1 then Heap[Seq#Index(Heap[this, nodes], i_15_1_1), next] == Seq#Index(Heap[this, nodes], i_15_1_1 + 1) else Heap[Seq#Index(Heap[this, nodes], i_15_1_1), next] == null)
+      { Heap[Seq#Index(Heap[this, nodes_1], i_15_1_1), next] }
+      0 <= i_15_1_1 && i_15_1_1 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Contains(Heap[this, nodes_1], Seq#Index(Heap[this, nodes_1], i_15_1_1)) && (if i_15_1_1 < Seq#Length(Heap[this, nodes_1]) - 1 then Heap[Seq#Index(Heap[this, nodes_1], i_15_1_1), next] == Seq#Index(Heap[this, nodes_1], i_15_1_1 + 1) else Heap[Seq#Index(Heap[this, nodes_1], i_15_1_1), next] == null)
     );
     perm := FullPerm;
     Mask := Mask[null, List(this):=Mask[null, List(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume List#trigger(Heap, List(this));
-    assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes]), CombineFrames(FrameFragment(List#condqp1(Heap, this)), FrameFragment(List#condqp2(Heap, this))));
+    assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes_1]), CombineFrames(FrameFragment(List#condqp1(Heap, this)), FrameFragment(List#condqp2(Heap, this))));
     if (!HasDirectPerm(Mask, null, List(this))) {
       Heap := Heap[null, List#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, List(this):=freshVersion];
     }
-    Heap := Heap[null, List#sm(this):=Heap[null, List#sm(this)][this, nodes:=true]];
+    Heap := Heap[null, List#sm(this):=Heap[null, List#sm(this)][this, nodes_1:=true]];
     // register all known folded permissions guarded by predicate List
     havoc newPMask;
-    assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-      { newPMask[o_35, f_17] }
-      Heap[null, List#sm(this)][o_35, f_17] ==> newPMask[o_35, f_17]
+    assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+      { newPMask[o_3, f_24] }
+      Heap[null, List#sm(this)][o_3, f_24] ==> newPMask[o_3, f_24]
     );
     assume (forall i_16_1: int ::
       
-      0 <= i_16_1 && i_16_1 < Seq#Length(Heap[this, nodes]) ==> newPMask[Seq#Index(Heap[this, nodes], i_16_1), val]
+      0 <= i_16_1 && i_16_1 < Seq#Length(Heap[this, nodes_1]) ==> newPMask[Seq#Index(Heap[this, nodes_1], i_16_1), val]
     );
     Heap := Heap[null, List#sm(this):=newPMask];
     // register all known folded permissions guarded by predicate List
     havoc newPMask;
-    assume (forall <A, B> o_1: Ref, f_11: (Field A B) ::
-      { newPMask[o_1, f_11] }
-      Heap[null, List#sm(this)][o_1, f_11] ==> newPMask[o_1, f_11]
+    assume (forall <A, B> o_1: Ref, f_10: (Field A B) ::
+      { newPMask[o_1, f_10] }
+      Heap[null, List#sm(this)][o_1, f_10] ==> newPMask[o_1, f_10]
     );
-    assume (forall i_17: int ::
+    assume (forall i_17_1: int ::
       
-      0 <= i_17 && i_17 < Seq#Length(Heap[this, nodes]) ==> newPMask[Seq#Index(Heap[this, nodes], i_17), next]
+      0 <= i_17_1 && i_17_1 < Seq#Length(Heap[this, nodes_1]) ==> newPMask[Seq#Index(Heap[this, nodes_1], i_17_1), next]
     );
     Heap := Heap[null, List#sm(this):=newPMask];
     assume state(Heap, Mask);
@@ -1876,24 +1876,24 @@ procedure append(this: Ref, elem: int) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of append might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@40.11--40.26) [63175]"}
+      assert {:msg "  Postcondition of append might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@40.11--40.26) [186701]"}
         perm <= Mask[null, List(this)];
     }
     Mask := Mask[null, List(this):=Mask[null, List(this)] - perm];
-    assert {:msg "  Postcondition of append might not hold. Assertion length(this) == old(length(this)) + 1 might not hold. (linked-list-qp-append.vpr@41.11--41.48) [63176]"}
-      length(Heap, this) == length(oldHeap, this) + 1;
-    assert {:msg "  Postcondition of append might not hold. Assertion itemAt(this, length(this) - 1) == elem might not hold. (linked-list-qp-append.vpr@42.11--42.49) [63177]"}
-      itemAt(Heap, this, length(Heap, this) - 1) == elem;
+    assert {:msg "  Postcondition of append might not hold. Assertion length(this) == old(length(this)) + 1 might not hold. (linked-list-qp-append.vpr@41.11--41.48) [186702]"}
+      length_1(Heap, this) == length_1(oldHeap, this) + 1;
+    assert {:msg "  Postcondition of append might not hold. Assertion itemAt(this, length(this) - 1) == elem might not hold. (linked-list-qp-append.vpr@42.11--42.49) [186703]"}
+      itemAt(Heap, this, length_1(Heap, this) - 1) == elem_1;
     if (*) {
-      if (0 <= i_2_1 && i_2_1 < length(Heap, this) - 1) {
-        assert {:msg "  Postcondition of append might not hold. Assertion itemAt(this, i) == old(itemAt(this, i)) might not hold. (linked-list-qp-append.vpr@43.11--43.102) [63178]"}
-          itemAt(Heap, this, i_2_1) == itemAt(oldHeap, this, i_2_1);
+      if (0 <= i_2 && i_2 < length_1(Heap, this) - 1) {
+        assert {:msg "  Postcondition of append might not hold. Assertion itemAt(this, i) == old(itemAt(this, i)) might not hold. (linked-list-qp-append.vpr@43.11--43.102) [186704]"}
+          itemAt(Heap, this, i_2) == itemAt(oldHeap, this, i_2);
       }
       assume false;
     }
-    assume (forall i_3_1_1: int ::
-      { itemAt#frame(oldHeap[null, List(this)], this, i_3_1_1) }
-      0 <= i_3_1_1 && i_3_1_1 < length(Heap, this) - 1 ==> itemAt(Heap, this, i_3_1_1) == itemAt(oldHeap, this, i_3_1_1)
+    assume (forall i_3_1: int ::
+      { itemAt#frame(oldHeap[null, List(this)], this, i_3_1) }
+      0 <= i_3_1 && i_3_1 < length_1(Heap, this) - 1 ==> itemAt(Heap, this, i_3_1) == itemAt(oldHeap, this, i_3_1)
     );
     // Finish exhale
     havoc ExhaleHeap;

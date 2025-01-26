@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:36
+// Date:         2025-01-26 21:43:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_20: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_20, f_17] }
-  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_17], $allocated]
+axiom (forall o_54: Ref, f_24: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_54, f_24] }
+  Heap[o_54, $allocated] ==> Heap[Heap[o_54, f_24], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref, f_24: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, f_24] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_27, f_24) ==> Heap[o_27, f_24] == ExhaleHeap[o_27, f_24]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref, f_54: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, f_54] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_55, f_54) ==> Heap[o_55, f_54] == ExhaleHeap[o_55, f_54]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9), ExhaleHeap[null, PredicateMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> Heap[null, PredicateMaskField(pm_f_9)] == ExhaleHeap[null, PredicateMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32), ExhaleHeap[null, PredicateMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> Heap[null, PredicateMaskField(pm_f_32)] == ExhaleHeap[null, PredicateMaskField(pm_f_32)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, PredicateMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, PredicateMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9), ExhaleHeap[null, WandMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> Heap[null, WandMaskField(pm_f_9)] == ExhaleHeap[null, WandMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32), ExhaleHeap[null, WandMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> Heap[null, WandMaskField(pm_f_32)] == ExhaleHeap[null, WandMaskField(pm_f_32)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, WandMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, WandMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_27, $allocated] ==> ExhaleHeap[o_27, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_55, $allocated] ==> ExhaleHeap[o_55, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_31: (Field A B), v: B ::
-  { Heap[o_20, f_31:=v] }
-  succHeap(Heap, Heap[o_20, f_31:=v])
+axiom (forall <A, B> Heap: HeapType, o_54: Ref, f_8: (Field A B), v: B ::
+  { Heap[o_54, f_8:=v] }
+  succHeap(Heap, Heap[o_54, f_8:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -554,45 +554,45 @@ type TreeDomainType;
 function  Leaf(): TreeDomainType;
 
 // Translation of domain function Node
-function  Node_1(v_4: int, left_2: TreeDomainType, right_2: TreeDomainType): TreeDomainType;
+function  Node_1(v_29: int, left_1: TreeDomainType, right: TreeDomainType): TreeDomainType;
 
 // Translation of domain function get_Tree_v
-function  get_Tree_v(t_9: TreeDomainType): int;
+function  get_Tree_v(t_3: TreeDomainType): int;
 
 // Translation of domain function get_Tree_left
-function  get_Tree_left(t_9: TreeDomainType): TreeDomainType;
+function  get_Tree_left(t_3: TreeDomainType): TreeDomainType;
 
 // Translation of domain function get_Tree_right
-function  get_Tree_right(t_9: TreeDomainType): TreeDomainType;
+function  get_Tree_right(t_3: TreeDomainType): TreeDomainType;
 
 // Translation of domain function Tree_tag
-function  Tree_tag(t_9: TreeDomainType): int;
+function  Tree_tag(t_3: TreeDomainType): int;
 
 // Translation of anonymous domain axiom
-axiom (forall v_2: int, left_1: TreeDomainType, right: TreeDomainType ::
-  { (Node_1(v_2, left_1, right): TreeDomainType) }
-  v_2 == (get_Tree_v((Node_1(v_2, left_1, right): TreeDomainType)): int)
+axiom (forall v_2: int, left: TreeDomainType, right_2: TreeDomainType ::
+  { (Node_1(v_2, left, right_2): TreeDomainType) }
+  v_2 == (get_Tree_v((Node_1(v_2, left, right_2): TreeDomainType)): int)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall v_2: int, left_1: TreeDomainType, right: TreeDomainType ::
-  { (Node_1(v_2, left_1, right): TreeDomainType) }
-  left_1 == (get_Tree_left((Node_1(v_2, left_1, right): TreeDomainType)): TreeDomainType)
+axiom (forall v_2: int, left: TreeDomainType, right_2: TreeDomainType ::
+  { (Node_1(v_2, left, right_2): TreeDomainType) }
+  left == (get_Tree_left((Node_1(v_2, left, right_2): TreeDomainType)): TreeDomainType)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall v_2: int, left_1: TreeDomainType, right: TreeDomainType ::
-  { (Node_1(v_2, left_1, right): TreeDomainType) }
-  right == (get_Tree_right((Node_1(v_2, left_1, right): TreeDomainType)): TreeDomainType)
+axiom (forall v_2: int, left: TreeDomainType, right_2: TreeDomainType ::
+  { (Node_1(v_2, left, right_2): TreeDomainType) }
+  right_2 == (get_Tree_right((Node_1(v_2, left, right_2): TreeDomainType)): TreeDomainType)
 );
 
 // Translation of anonymous domain axiom
 axiom (Tree_tag((Leaf(): TreeDomainType)): int) == 0;
 
 // Translation of anonymous domain axiom
-axiom (forall v_2: int, left_1: TreeDomainType, right: TreeDomainType ::
-  { (Node_1(v_2, left_1, right): TreeDomainType) }
-  (Tree_tag((Node_1(v_2, left_1, right): TreeDomainType)): int) == 1
+axiom (forall v_2: int, left: TreeDomainType, right_2: TreeDomainType ::
+  { (Node_1(v_2, left, right_2): TreeDomainType) }
+  (Tree_tag((Node_1(v_2, left, right_2): TreeDomainType)): int) == 1
 );
 
 // Translation of anonymous domain axiom
@@ -674,11 +674,11 @@ procedure height_recursive#definedness(ts: (Seq TreeDomainType)) returns (Result
 // ==================================================
 
 // Uninterpreted function definitions
-function  height_1(Heap: HeapType, t_2: TreeDomainType): int;
+function  height_2(Heap: HeapType, t_2: TreeDomainType): int;
 function  height'(Heap: HeapType, t_2: TreeDomainType): int;
 axiom (forall Heap: HeapType, t_2: TreeDomainType ::
-  { height_1(Heap, t_2) }
-  height_1(Heap, t_2) == height'(Heap, t_2) && dummyFunction(height#triggerStateless(t_2))
+  { height_2(Heap, t_2) }
+  height_2(Heap, t_2) == height'(Heap, t_2) && dummyFunction(height#triggerStateless(t_2))
 );
 axiom (forall Heap: HeapType, t_2: TreeDomainType ::
   { height'(Heap, t_2) }
@@ -687,8 +687,8 @@ axiom (forall Heap: HeapType, t_2: TreeDomainType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, t_2: TreeDomainType ::
-  { state(Heap, Mask), height_1(Heap, t_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> height_1(Heap, t_2) == (if (Tree_tag(t_2): int) == 0 then 0 else height_recursive(Heap, Seq#Singleton(t_2)))
+  { state(Heap, Mask), height_2(Heap, t_2) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> height_2(Heap, t_2) == (if (Tree_tag(t_2): int) == 0 then 0 else height_recursive(Heap, Seq#Singleton(t_2)))
 );
 
 // Framing axioms
@@ -832,7 +832,7 @@ procedure children_seq#definedness(ts: (Seq TreeDomainType)) returns (Result: (S
       if (Seq#Length(ts) == 0) {
       } else {
         if (Seq#Length(ts) == 1) {
-          assert {:msg "  Function might not be well-formed. Index ts[0] into ts might exceed sequence length. (example_2.vpr@50.1--57.2) [222976]"}
+          assert {:msg "  Function might not be well-formed. Index ts[0] into ts might exceed sequence length. (example_2.vpr@50.1--57.2) [103784]"}
             0 < Seq#Length(ts);
           if (*) {
             // Stop execution
@@ -846,7 +846,7 @@ procedure children_seq#definedness(ts: (Seq TreeDomainType)) returns (Result: (S
             // Enable postcondition for recursive call
             assume children_seq#trigger(EmptyFrame, Seq#Drop(ts, 1));
           }
-          assert {:msg "  Function might not be well-formed. Index ts[0] into ts might exceed sequence length. (example_2.vpr@50.1--57.2) [222977]"}
+          assert {:msg "  Function might not be well-formed. Index ts[0] into ts might exceed sequence length. (example_2.vpr@50.1--57.2) [103785]"}
             0 < Seq#Length(ts);
           if (*) {
             // Stop execution
@@ -866,27 +866,27 @@ procedure children_seq#definedness(ts: (Seq TreeDomainType)) returns (Result: (S
 procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var current: (Seq TreeDomainType);
   var next_1: (Seq TreeDomainType);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i: int;
-  var i_14: int;
+  var i_18: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var old_current: (Seq TreeDomainType);
-  var i_5: int;
+  var i_5_1: int;
   var i_7_1: int;
-  var i_2: int;
+  var i_3: int;
   var i_4: int;
   var node: TreeDomainType;
-  var i_15: int;
-  var i_17: int;
-  var i_21: int;
+  var i_15_1: int;
+  var i_17_1: int;
+  var i_21_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -897,8 +897,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -911,7 +911,7 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
         // Stop execution
         assume false;
       }
-    assume height_1(PostHeap, t_2) == res;
+    assume height_2(PostHeap, t_2) == res;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -942,11 +942,11 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (*) {
               if (i >= 0 && i < Seq#Length(current)) {
-                assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not hold on entry. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@77.17--77.79) [222978]"}
+                assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not hold on entry. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@77.17--77.79) [103786]"}
                   (Tree_tag(Seq#Index(current, i)): int) == 1;
               }
               assume false;
@@ -955,8 +955,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
               { (Tree_tag(Seq#Index(current, i_1_1_1)): int) }
               i_1_1_1 >= 0 && i_1_1_1 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_1_1_1)): int) == 1
             );
-            assert {:msg "  Loop invariant height(t) == res + height_recursive(current) might not hold on entry. Assertion height(t) == res + height_recursive(current) might not hold. (example_2.vpr@78.17--78.61) [222979]"}
-              height_1(Heap, t_2) == res + height_recursive(Heap, current);
+            assert {:msg "  Loop invariant height(t) == res + height_recursive(current) might not hold on entry. Assertion height(t) == res + height_recursive(current) might not hold. (example_2.vpr@78.17--78.61) [103787]"}
+              height_2(Heap, t_2) == res + height_recursive(Heap, current);
         
         // -- Havoc loop written variables (except locals)
           havoc current, next_1, res;
@@ -966,17 +966,17 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
             
             // -- Check definedness of (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1)
               if (*) {
-                if (i_14 >= 0 && i_14 < Seq#Length(current)) {
-                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might be negative. (example_2.vpr@77.17--77.79) [222980]"}
-                    i_14 >= 0;
-                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might exceed sequence length. (example_2.vpr@77.17--77.79) [222981]"}
-                    i_14 < Seq#Length(current);
+                if (i_18 >= 0 && i_18 < Seq#Length(current)) {
+                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might be negative. (example_2.vpr@77.17--77.79) [103788]"}
+                    i_18 >= 0;
+                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might exceed sequence length. (example_2.vpr@77.17--77.79) [103789]"}
+                    i_18 < Seq#Length(current);
                 }
                 assume false;
               }
-            assume (forall i_3: int ::
-              { (Tree_tag(Seq#Index(current, i_3)): int) }
-              i_3 >= 0 && i_3 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_3)): int) == 1
+            assume (forall i_3_2: int ::
+              { (Tree_tag(Seq#Index(current, i_3_2)): int) }
+              i_3_2 >= 0 && i_3_2 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_3_2)): int) == 1
             );
             assume state(Heap, Mask);
             assume state(Heap, Mask);
@@ -990,7 +990,7 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                 // Stop execution
                 assume false;
               }
-            assume height_1(Heap, t_2) == res + height_recursive(Heap, current);
+            assume height_2(Heap, t_2) == res + height_recursive(Heap, current);
             assume state(Heap, Mask);
             assume false;
           }
@@ -1008,7 +1008,7 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
               i_4_1 >= 0 && i_4_1 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_4_1)): int) == 1
             );
             assume state(Heap, Mask);
-            assume height_1(Heap, t_2) == res + height_recursive(Heap, current);
+            assume height_2(Heap, t_2) == res + height_recursive(Heap, current);
             assume state(Heap, Mask);
             // Check and assume guard
             assume Seq#Length(current) > 0;
@@ -1034,31 +1034,31 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                 // -- Before loop head
                   
                   // -- Exhale loop invariant before loop
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
+                    ExhaleWellDef0Heap := Heap;
                     if (*) {
-                      if (i_5 >= 0 && i_5 < Seq#Length(current)) {
-                        assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not hold on entry. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@88.19--88.81) [222982]"}
-                          (Tree_tag(Seq#Index(current, i_5)): int) == 1;
+                      if (i_5_1 >= 0 && i_5_1 < Seq#Length(current)) {
+                        assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not hold on entry. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@88.19--88.81) [103790]"}
+                          (Tree_tag(Seq#Index(current, i_5_1)): int) == 1;
                       }
                       assume false;
                     }
-                    assume (forall i_6_1_1: int ::
-                      { (Tree_tag(Seq#Index(current, i_6_1_1)): int) }
-                      i_6_1_1 >= 0 && i_6_1_1 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_6_1_1)): int) == 1
+                    assume (forall i_6_1: int ::
+                      { (Tree_tag(Seq#Index(current, i_6_1)): int) }
+                      i_6_1 >= 0 && i_6_1 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_6_1)): int) == 1
                     );
                     if (*) {
                       if (i_7_1 >= 0 && i_7_1 < Seq#Length(next_1)) {
-                        assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(next[i]) } i >= 0 && i < |next| ==> Tree_tag(next[i]) == 1) might not hold on entry. Assertion Tree_tag(next[i]) == 1 might not hold. (example_2.vpr@89.19--89.75) [222983]"}
+                        assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(next[i]) } i >= 0 && i < |next| ==> Tree_tag(next[i]) == 1) might not hold on entry. Assertion Tree_tag(next[i]) == 1 might not hold. (example_2.vpr@89.19--89.75) [103791]"}
                           (Tree_tag(Seq#Index(next_1, i_7_1)): int) == 1;
                       }
                       assume false;
                     }
-                    assume (forall i_8_1: int ::
-                      { (Tree_tag(Seq#Index(next_1, i_8_1)): int) }
-                      i_8_1 >= 0 && i_8_1 < Seq#Length(next_1) ==> (Tree_tag(Seq#Index(next_1, i_8_1)): int) == 1
+                    assume (forall i_8_1_1: int ::
+                      { (Tree_tag(Seq#Index(next_1, i_8_1_1)): int) }
+                      i_8_1_1 >= 0 && i_8_1_1 < Seq#Length(next_1) ==> (Tree_tag(Seq#Index(next_1, i_8_1_1)): int) == 1
                     );
-                    assert {:msg "  Loop invariant children_seq(old_current) == children_seq(current) ++ next might not hold on entry. Assertion children_seq(old_current) == children_seq(current) ++ next might not hold. (example_2.vpr@90.19--90.77) [222984]"}
+                    assert {:msg "  Loop invariant children_seq(old_current) == children_seq(current) ++ next might not hold on entry. Assertion children_seq(old_current) == children_seq(current) ++ next might not hold. (example_2.vpr@90.19--90.77) [103792]"}
                       Seq#Equal(children_seq(Heap, old_current), Seq#Append(children_seq(Heap, current), next_1));
                 
                 // -- Havoc loop written variables (except locals)
@@ -1069,11 +1069,11 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                     
                     // -- Check definedness of (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1)
                       if (*) {
-                        if (i_2 >= 0 && i_2 < Seq#Length(current)) {
-                          assert {:msg "  Contract might not be well-formed. Index current[i] into current might be negative. (example_2.vpr@88.19--88.81) [222985]"}
-                            i_2 >= 0;
-                          assert {:msg "  Contract might not be well-formed. Index current[i] into current might exceed sequence length. (example_2.vpr@88.19--88.81) [222986]"}
-                            i_2 < Seq#Length(current);
+                        if (i_3 >= 0 && i_3 < Seq#Length(current)) {
+                          assert {:msg "  Contract might not be well-formed. Index current[i] into current might be negative. (example_2.vpr@88.19--88.81) [103793]"}
+                            i_3 >= 0;
+                          assert {:msg "  Contract might not be well-formed. Index current[i] into current might exceed sequence length. (example_2.vpr@88.19--88.81) [103794]"}
+                            i_3 < Seq#Length(current);
                         }
                         assume false;
                       }
@@ -1086,9 +1086,9 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                     // -- Check definedness of (forall i: Int :: { Tree_tag(next[i]) } i >= 0 && i < |next| ==> Tree_tag(next[i]) == 1)
                       if (*) {
                         if (i_4 >= 0 && i_4 < Seq#Length(next_1)) {
-                          assert {:msg "  Contract might not be well-formed. Index next[i] into next might be negative. (example_2.vpr@89.19--89.75) [222987]"}
+                          assert {:msg "  Contract might not be well-formed. Index next[i] into next might be negative. (example_2.vpr@89.19--89.75) [103795]"}
                             i_4 >= 0;
-                          assert {:msg "  Contract might not be well-formed. Index next[i] into next might exceed sequence length. (example_2.vpr@89.19--89.75) [222988]"}
+                          assert {:msg "  Contract might not be well-formed. Index next[i] into next might exceed sequence length. (example_2.vpr@89.19--89.75) [103796]"}
                             i_4 < Seq#Length(next_1);
                         }
                         assume false;
@@ -1142,7 +1142,7 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                       // -- Translating statement: node := current[0] -- example_2.vpr@92.9--92.38
                         
                         // -- Check definedness of current[0]
-                          assert {:msg "  Assignment might fail. Index current[0] into current might exceed sequence length. (example_2.vpr@92.9--92.38) [222989]"}
+                          assert {:msg "  Assignment might fail. Index current[0] into current might exceed sequence length. (example_2.vpr@92.9--92.38) [103797]"}
                             0 < Seq#Length(current);
                         node := Seq#Index(current, 0);
                         assume state(Heap, Mask);
@@ -1169,12 +1169,12 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                         }
                         assume state(Heap, Mask);
                     // Exhale invariant
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
+                    ExhaleWellDef0Heap := Heap;
                     if (*) {
-                      if (i_15 >= 0 && i_15 < Seq#Length(current)) {
-                        assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not be preserved. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@88.19--88.81) [222990]"}
-                          (Tree_tag(Seq#Index(current, i_15)): int) == 1;
+                      if (i_15_1 >= 0 && i_15_1 < Seq#Length(current)) {
+                        assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not be preserved. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@88.19--88.81) [103798]"}
+                          (Tree_tag(Seq#Index(current, i_15_1)): int) == 1;
                       }
                       assume false;
                     }
@@ -1183,9 +1183,9 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                       i_16_1_1 >= 0 && i_16_1_1 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_16_1_1)): int) == 1
                     );
                     if (*) {
-                      if (i_17 >= 0 && i_17 < Seq#Length(next_1)) {
-                        assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(next[i]) } i >= 0 && i < |next| ==> Tree_tag(next[i]) == 1) might not be preserved. Assertion Tree_tag(next[i]) == 1 might not hold. (example_2.vpr@89.19--89.75) [222991]"}
-                          (Tree_tag(Seq#Index(next_1, i_17)): int) == 1;
+                      if (i_17_1 >= 0 && i_17_1 < Seq#Length(next_1)) {
+                        assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(next[i]) } i >= 0 && i < |next| ==> Tree_tag(next[i]) == 1) might not be preserved. Assertion Tree_tag(next[i]) == 1 might not hold. (example_2.vpr@89.19--89.75) [103799]"}
+                          (Tree_tag(Seq#Index(next_1, i_17_1)): int) == 1;
                       }
                       assume false;
                     }
@@ -1193,7 +1193,7 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                       { (Tree_tag(Seq#Index(next_1, i_18_1_1)): int) }
                       i_18_1_1 >= 0 && i_18_1_1 < Seq#Length(next_1) ==> (Tree_tag(Seq#Index(next_1, i_18_1_1)): int) == 1
                     );
-                    assert {:msg "  Loop invariant children_seq(old_current) == children_seq(current) ++ next might not be preserved. Assertion children_seq(old_current) == children_seq(current) ++ next might not hold. (example_2.vpr@90.19--90.77) [222992]"}
+                    assert {:msg "  Loop invariant children_seq(old_current) == children_seq(current) ++ next might not be preserved. Assertion children_seq(old_current) == children_seq(current) ++ next might not hold. (example_2.vpr@90.19--90.77) [103800]"}
                       Seq#Equal(children_seq(Heap, old_current), Seq#Append(children_seq(Heap, current), next_1));
                     // Terminate execution
                     assume false;
@@ -1202,13 +1202,13 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                 // -- Inhale loop invariant after loop, and assume guard
                   assume !(Seq#Length(current) > 0);
                   assume state(Heap, Mask);
-                  assume (forall i_19: int ::
-                    { (Tree_tag(Seq#Index(current, i_19)): int) }
-                    i_19 >= 0 && i_19 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_19)): int) == 1
+                  assume (forall i_19_1: int ::
+                    { (Tree_tag(Seq#Index(current, i_19_1)): int) }
+                    i_19_1 >= 0 && i_19_1 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_19_1)): int) == 1
                   );
-                  assume (forall i_20_1: int ::
-                    { (Tree_tag(Seq#Index(next_1, i_20_1)): int) }
-                    i_20_1 >= 0 && i_20_1 < Seq#Length(next_1) ==> (Tree_tag(Seq#Index(next_1, i_20_1)): int) == 1
+                  assume (forall i_20_2: int ::
+                    { (Tree_tag(Seq#Index(next_1, i_20_2)): int) }
+                    i_20_2 >= 0 && i_20_2 < Seq#Length(next_1) ==> (Tree_tag(Seq#Index(next_1, i_20_2)): int) == 1
                   );
                   assume state(Heap, Mask);
                   assume Seq#Equal(children_seq(Heap, old_current), Seq#Append(children_seq(Heap, current), next_1));
@@ -1219,12 +1219,12 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                 current := next_1;
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (*) {
-              if (i_21 >= 0 && i_21 < Seq#Length(current)) {
-                assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not be preserved. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@77.17--77.79) [222993]"}
-                  (Tree_tag(Seq#Index(current, i_21)): int) == 1;
+              if (i_21_1 >= 0 && i_21_1 < Seq#Length(current)) {
+                assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not be preserved. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@77.17--77.79) [103801]"}
+                  (Tree_tag(Seq#Index(current, i_21_1)): int) == 1;
               }
               assume false;
             }
@@ -1232,8 +1232,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
               { (Tree_tag(Seq#Index(current, i_22_1_1)): int) }
               i_22_1_1 >= 0 && i_22_1_1 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_22_1_1)): int) == 1
             );
-            assert {:msg "  Loop invariant height(t) == res + height_recursive(current) might not be preserved. Assertion height(t) == res + height_recursive(current) might not hold. (example_2.vpr@78.17--78.61) [222994]"}
-              height_1(Heap, t_2) == res + height_recursive(Heap, current);
+            assert {:msg "  Loop invariant height(t) == res + height_recursive(current) might not be preserved. Assertion height(t) == res + height_recursive(current) might not hold. (example_2.vpr@78.17--78.61) [103802]"}
+              height_2(Heap, t_2) == res + height_recursive(Heap, current);
             // Terminate execution
             assume false;
           }
@@ -1241,20 +1241,20 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
         // -- Inhale loop invariant after loop, and assume guard
           assume !(Seq#Length(current) > 0);
           assume state(Heap, Mask);
-          assume (forall i_23: int ::
-            { (Tree_tag(Seq#Index(current, i_23)): int) }
-            i_23 >= 0 && i_23 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_23)): int) == 1
+          assume (forall i_23_1: int ::
+            { (Tree_tag(Seq#Index(current, i_23_1)): int) }
+            i_23_1 >= 0 && i_23_1 < Seq#Length(current) ==> (Tree_tag(Seq#Index(current, i_23_1)): int) == 1
           );
           assume state(Heap, Mask);
-          assume height_1(Heap, t_2) == res + height_recursive(Heap, current);
+          assume height_2(Heap, t_2) == res + height_recursive(Heap, current);
           assume state(Heap, Mask);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of computeTreeHeight might not hold. Assertion height(t) == res might not hold. (example_2.vpr@62.11--62.27) [222995]"}
-      height_1(Heap, t_2) == res;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of computeTreeHeight might not hold. Assertion height(t) == res might not hold. (example_2.vpr@62.11--62.27) [103803]"}
+      height_2(Heap, t_2) == res;
 }

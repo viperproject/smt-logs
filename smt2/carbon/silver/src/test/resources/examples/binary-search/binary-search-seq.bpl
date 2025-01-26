@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:03:14
+// Date:         2025-01-26 21:43:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/binary-search/binary-search-seq.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/binary-search/binary-search-seq-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_20: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_20, f_17] }
-  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_17], $allocated]
+axiom (forall o_54: Ref, f_24: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_54, f_24] }
+  Heap[o_54, $allocated] ==> Heap[Heap[o_54, f_24], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref, f_24: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, f_24] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_27, f_24) ==> Heap[o_27, f_24] == ExhaleHeap[o_27, f_24]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref, f_54: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, f_54] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_55, f_54) ==> Heap[o_55, f_54] == ExhaleHeap[o_55, f_54]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9), ExhaleHeap[null, PredicateMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> Heap[null, PredicateMaskField(pm_f_9)] == ExhaleHeap[null, PredicateMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32), ExhaleHeap[null, PredicateMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> Heap[null, PredicateMaskField(pm_f_32)] == ExhaleHeap[null, PredicateMaskField(pm_f_32)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, PredicateMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, PredicateMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9), ExhaleHeap[null, WandMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> Heap[null, WandMaskField(pm_f_9)] == ExhaleHeap[null, WandMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32), ExhaleHeap[null, WandMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> Heap[null, WandMaskField(pm_f_32)] == ExhaleHeap[null, WandMaskField(pm_f_32)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, WandMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, WandMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_27, $allocated] ==> ExhaleHeap[o_27, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_55, $allocated] ==> ExhaleHeap[o_55, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_31: (Field A B), v: B ::
-  { Heap[o_20, f_31:=v] }
-  succHeap(Heap, Heap[o_20, f_31:=v])
+axiom (forall <A, B> Heap: HeapType, o_54: Ref, f_8: (Field A B), v: B ::
+  { Heap[o_54, f_8:=v] }
+  succHeap(Heap, Heap[o_54, f_8:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -541,21 +541,21 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // Translation of method binary_search
 // ==================================================
 
-procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
+procedure binary_search(xs: (Seq int), key_2: int) returns (index: int)
   modifies Heap, Mask;
 {
-  var i_14: int;
-  var j_5: int;
+  var i_18: int;
+  var j_14: int;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_2: int;
+  var i_3: int;
   var low: int;
   var high: int;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var i_6_1: int;
+  var i_6_2: int;
   var i_4: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -572,15 +572,15 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
     
     // -- Check definedness of (forall i: Int, j: Int :: { xs[i], xs[j] } 0 <= i && (j < |xs| && i < j) ==> xs[i] < xs[j])
       if (*) {
-        if (0 <= i_14 && (j_5 < Seq#Length(xs) && i_14 < j_5)) {
-          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (binary-search-seq.vpr@7.13--7.83) [116656]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (binary-search-seq.vpr@7.13--7.83) [116657]"}
-            i_14 < Seq#Length(xs);
-          assert {:msg "  Contract might not be well-formed. Index xs[j] into xs might be negative. (binary-search-seq.vpr@7.13--7.83) [116658]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[j] into xs might exceed sequence length. (binary-search-seq.vpr@7.13--7.83) [116659]"}
-            j_5 < Seq#Length(xs);
+        if (0 <= i_18 && (j_14 < Seq#Length(xs) && i_18 < j_14)) {
+          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (binary-search-seq.vpr@7.13--7.83) [113091]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (binary-search-seq.vpr@7.13--7.83) [113092]"}
+            i_18 < Seq#Length(xs);
+          assert {:msg "  Contract might not be well-formed. Index xs[j] into xs might be negative. (binary-search-seq.vpr@7.13--7.83) [113093]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[j] into xs might exceed sequence length. (binary-search-seq.vpr@7.13--7.83) [113094]"}
+            j_14 < Seq#Length(xs);
         }
         assume false;
       }
@@ -606,28 +606,28 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
     if (0 <= index) {
       
       // -- Check definedness of xs[index] == key
-        assert {:msg "  Contract might not be well-formed. Index xs[index] into xs might be negative. (binary-search-seq.vpr@9.12--9.43) [116660]"}
+        assert {:msg "  Contract might not be well-formed. Index xs[index] into xs might be negative. (binary-search-seq.vpr@9.12--9.43) [113095]"}
           index >= 0;
-        assert {:msg "  Contract might not be well-formed. Index xs[index] into xs might exceed sequence length. (binary-search-seq.vpr@9.12--9.43) [116661]"}
+        assert {:msg "  Contract might not be well-formed. Index xs[index] into xs might exceed sequence length. (binary-search-seq.vpr@9.12--9.43) [113096]"}
           index < Seq#Length(xs);
-      assume Seq#Index(xs, index) == key_1;
+      assume Seq#Index(xs, index) == key_2;
     }
     assume state(PostHeap, PostMask);
     if (-1 == index) {
       
       // -- Check definedness of (forall i: Int :: { xs[i] } 0 <= i && i < |xs| ==> xs[i] != key)
         if (*) {
-          if (0 <= i_2 && i_2 < Seq#Length(xs)) {
-            assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (binary-search-seq.vpr@10.12--10.82) [116662]"}
-              i_2 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (binary-search-seq.vpr@10.12--10.82) [116663]"}
-              i_2 < Seq#Length(xs);
+          if (0 <= i_3 && i_3 < Seq#Length(xs)) {
+            assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (binary-search-seq.vpr@10.12--10.82) [113097]"}
+              i_3 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (binary-search-seq.vpr@10.12--10.82) [113098]"}
+              i_3 < Seq#Length(xs);
           }
           assume false;
         }
-      assume (forall i_3: int ::
-        { Seq#Index(xs, i_3) }
-        0 <= i_3 && i_3 < Seq#Length(xs) ==> Seq#Index(xs, i_3) != key_1
+      assume (forall i_3_2: int ::
+        { Seq#Index(xs, i_3_2) }
+        0 <= i_3_2 && i_3_2 < Seq#Length(xs) ==> Seq#Index(xs, i_3_2) != key_2
       );
     }
     assume state(PostHeap, PostMask);
@@ -654,32 +654,32 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not hold on entry. Assertion 0 <= low might not hold. (binary-search-seq.vpr@17.17--17.56) [116664]"}
+        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not hold on entry. Assertion 0 <= low might not hold. (binary-search-seq.vpr@17.17--17.56) [113099]"}
           0 <= low;
-        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not hold on entry. Assertion low <= high might not hold. (binary-search-seq.vpr@17.17--17.56) [116665]"}
+        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not hold on entry. Assertion low <= high might not hold. (binary-search-seq.vpr@17.17--17.56) [113100]"}
           low <= high;
-        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not hold on entry. Assertion high <= |xs| might not hold. (binary-search-seq.vpr@17.17--17.56) [116666]"}
+        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not hold on entry. Assertion high <= |xs| might not hold. (binary-search-seq.vpr@17.17--17.56) [113101]"}
           high <= Seq#Length(xs);
         if (index == -1) {
           if (*) {
-            if (0 <= i_6_1 && (i_6_1 < Seq#Length(xs) && !(low <= i_6_1 && i_6_1 < high))) {
-              assert {:msg "  Loop invariant index == -1 ==> (forall i: Int :: { xs[i] } 0 <= i && (i < |xs| && !(low <= i && i < high)) ==> xs[i] != key) might not hold on entry. Assertion xs[i] != key might not hold. (binary-search-seq.vpr@18.17--18.114) [116667]"}
-                Seq#Index(xs, i_6_1) != key_1;
+            if (0 <= i_6_2 && (i_6_2 < Seq#Length(xs) && !(low <= i_6_2 && i_6_2 < high))) {
+              assert {:msg "  Loop invariant index == -1 ==> (forall i: Int :: { xs[i] } 0 <= i && (i < |xs| && !(low <= i && i < high)) ==> xs[i] != key) might not hold on entry. Assertion xs[i] != key might not hold. (binary-search-seq.vpr@18.17--18.114) [113102]"}
+                Seq#Index(xs, i_6_2) != key_2;
             }
             assume false;
           }
           assume (forall i_7_1_1: int ::
             { Seq#Index(xs, i_7_1_1) }
-            0 <= i_7_1_1 && (i_7_1_1 < Seq#Length(xs) && !(low <= i_7_1_1 && i_7_1_1 < high)) ==> Seq#Index(xs, i_7_1_1) != key_1
+            0 <= i_7_1_1 && (i_7_1_1 < Seq#Length(xs) && !(low <= i_7_1_1 && i_7_1_1 < high)) ==> Seq#Index(xs, i_7_1_1) != key_2
           );
         }
-        assert {:msg "  Loop invariant -1 <= index && index < |xs| might not hold on entry. Assertion -1 <= index might not hold. (binary-search-seq.vpr@19.17--19.44) [116668]"}
+        assert {:msg "  Loop invariant -1 <= index && index < |xs| might not hold on entry. Assertion -1 <= index might not hold. (binary-search-seq.vpr@19.17--19.44) [113103]"}
           -1 <= index;
-        assert {:msg "  Loop invariant -1 <= index && index < |xs| might not hold on entry. Assertion index < |xs| might not hold. (binary-search-seq.vpr@19.17--19.44) [116669]"}
+        assert {:msg "  Loop invariant -1 <= index && index < |xs| might not hold on entry. Assertion index < |xs| might not hold. (binary-search-seq.vpr@19.17--19.44) [113104]"}
           index < Seq#Length(xs);
         if (0 <= index) {
-          assert {:msg "  Loop invariant 0 <= index ==> xs[index] == key might not hold on entry. Assertion xs[index] == key might not hold. (binary-search-seq.vpr@20.17--20.48) [116670]"}
-            Seq#Index(xs, index) == key_1;
+          assert {:msg "  Loop invariant 0 <= index ==> xs[index] == key might not hold on entry. Assertion xs[index] == key might not hold. (binary-search-seq.vpr@20.17--20.48) [113105]"}
+            Seq#Index(xs, index) == key_2;
         }
     
     // -- Havoc loop written variables (except locals)
@@ -696,16 +696,16 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
           // -- Check definedness of (forall i: Int :: { xs[i] } 0 <= i && (i < |xs| && !(low <= i && i < high)) ==> xs[i] != key)
             if (*) {
               if (0 <= i_4 && (i_4 < Seq#Length(xs) && !(low <= i_4 && i_4 < high))) {
-                assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (binary-search-seq.vpr@18.17--18.114) [116671]"}
+                assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (binary-search-seq.vpr@18.17--18.114) [113106]"}
                   i_4 >= 0;
-                assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (binary-search-seq.vpr@18.17--18.114) [116672]"}
+                assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (binary-search-seq.vpr@18.17--18.114) [113107]"}
                   i_4 < Seq#Length(xs);
               }
               assume false;
             }
           assume (forall i_9_1: int ::
             { Seq#Index(xs, i_9_1) }
-            0 <= i_9_1 && (i_9_1 < Seq#Length(xs) && !(low <= i_9_1 && i_9_1 < high)) ==> Seq#Index(xs, i_9_1) != key_1
+            0 <= i_9_1 && (i_9_1 < Seq#Length(xs) && !(low <= i_9_1 && i_9_1 < high)) ==> Seq#Index(xs, i_9_1) != key_2
           );
         }
         assume state(Heap, Mask);
@@ -715,11 +715,11 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
         if (0 <= index) {
           
           // -- Check definedness of xs[index] == key
-            assert {:msg "  Contract might not be well-formed. Index xs[index] into xs might be negative. (binary-search-seq.vpr@20.17--20.48) [116673]"}
+            assert {:msg "  Contract might not be well-formed. Index xs[index] into xs might be negative. (binary-search-seq.vpr@20.17--20.48) [113108]"}
               index >= 0;
-            assert {:msg "  Contract might not be well-formed. Index xs[index] into xs might exceed sequence length. (binary-search-seq.vpr@20.17--20.48) [116674]"}
+            assert {:msg "  Contract might not be well-formed. Index xs[index] into xs might exceed sequence length. (binary-search-seq.vpr@20.17--20.48) [113109]"}
               index < Seq#Length(xs);
-          assume Seq#Index(xs, index) == key_1;
+          assume Seq#Index(xs, index) == key_2;
         }
         assume state(Heap, Mask);
         assume false;
@@ -739,13 +739,13 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
         if (index == -1) {
           assume (forall i_10_1: int ::
             { Seq#Index(xs, i_10_1) }
-            0 <= i_10_1 && (i_10_1 < Seq#Length(xs) && !(low <= i_10_1 && i_10_1 < high)) ==> Seq#Index(xs, i_10_1) != key_1
+            0 <= i_10_1 && (i_10_1 < Seq#Length(xs) && !(low <= i_10_1 && i_10_1 < high)) ==> Seq#Index(xs, i_10_1) != key_2
           );
         }
         assume -1 <= index;
         assume index < Seq#Length(xs);
         if (0 <= index) {
-          assume Seq#Index(xs, index) == key_1;
+          assume Seq#Index(xs, index) == key_2;
         }
         assume state(Heap, Mask);
         // Check and assume guard
@@ -761,11 +761,11 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
           // -- Translating statement: if (xs[mid] < key) -- binary-search-seq.vpr@23.5--32.6
             
             // -- Check definedness of xs[mid] < key
-              assert {:msg "  Conditional statement might fail. Index xs[mid] into xs might be negative. (binary-search-seq.vpr@23.9--23.22) [116675]"}
+              assert {:msg "  Conditional statement might fail. Index xs[mid] into xs might be negative. (binary-search-seq.vpr@23.9--23.22) [113110]"}
                 mid >= 0;
-              assert {:msg "  Conditional statement might fail. Index xs[mid] into xs might exceed sequence length. (binary-search-seq.vpr@23.9--23.22) [116676]"}
+              assert {:msg "  Conditional statement might fail. Index xs[mid] into xs might exceed sequence length. (binary-search-seq.vpr@23.9--23.22) [113111]"}
                 mid < Seq#Length(xs);
-            if (Seq#Index(xs, mid) < key_1) {
+            if (Seq#Index(xs, mid) < key_2) {
               
               // -- Translating statement: low := mid + 1 -- binary-search-seq.vpr@24.7--24.21
                 low := mid + 1;
@@ -775,11 +775,11 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
               // -- Translating statement: if (key < xs[mid]) -- binary-search-seq.vpr@26.7--31.8
                 
                 // -- Check definedness of key < xs[mid]
-                  assert {:msg "  Conditional statement might fail. Index xs[mid] into xs might be negative. (binary-search-seq.vpr@26.11--26.24) [116677]"}
+                  assert {:msg "  Conditional statement might fail. Index xs[mid] into xs might be negative. (binary-search-seq.vpr@26.11--26.24) [113112]"}
                     mid >= 0;
-                  assert {:msg "  Conditional statement might fail. Index xs[mid] into xs might exceed sequence length. (binary-search-seq.vpr@26.11--26.24) [116678]"}
+                  assert {:msg "  Conditional statement might fail. Index xs[mid] into xs might exceed sequence length. (binary-search-seq.vpr@26.11--26.24) [113113]"}
                     mid < Seq#Length(xs);
-                if (key_1 < Seq#Index(xs, mid)) {
+                if (key_2 < Seq#Index(xs, mid)) {
                   
                   // -- Translating statement: high := mid -- binary-search-seq.vpr@27.10--27.21
                     high := mid;
@@ -800,32 +800,32 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
         // Exhale invariant
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not be preserved. Assertion 0 <= low might not hold. (binary-search-seq.vpr@17.17--17.56) [116679]"}
+        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not be preserved. Assertion 0 <= low might not hold. (binary-search-seq.vpr@17.17--17.56) [113114]"}
           0 <= low;
-        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not be preserved. Assertion low <= high might not hold. (binary-search-seq.vpr@17.17--17.56) [116680]"}
+        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not be preserved. Assertion low <= high might not hold. (binary-search-seq.vpr@17.17--17.56) [113115]"}
           low <= high;
-        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not be preserved. Assertion high <= |xs| might not hold. (binary-search-seq.vpr@17.17--17.56) [116681]"}
+        assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not be preserved. Assertion high <= |xs| might not hold. (binary-search-seq.vpr@17.17--17.56) [113116]"}
           high <= Seq#Length(xs);
         if (index == -1) {
           if (*) {
             if (0 <= i_11_1 && (i_11_1 < Seq#Length(xs) && !(low <= i_11_1 && i_11_1 < high))) {
-              assert {:msg "  Loop invariant index == -1 ==> (forall i: Int :: { xs[i] } 0 <= i && (i < |xs| && !(low <= i && i < high)) ==> xs[i] != key) might not be preserved. Assertion xs[i] != key might not hold. (binary-search-seq.vpr@18.17--18.114) [116682]"}
-                Seq#Index(xs, i_11_1) != key_1;
+              assert {:msg "  Loop invariant index == -1 ==> (forall i: Int :: { xs[i] } 0 <= i && (i < |xs| && !(low <= i && i < high)) ==> xs[i] != key) might not be preserved. Assertion xs[i] != key might not hold. (binary-search-seq.vpr@18.17--18.114) [113117]"}
+                Seq#Index(xs, i_11_1) != key_2;
             }
             assume false;
           }
           assume (forall i_12_1_1: int ::
             { Seq#Index(xs, i_12_1_1) }
-            0 <= i_12_1_1 && (i_12_1_1 < Seq#Length(xs) && !(low <= i_12_1_1 && i_12_1_1 < high)) ==> Seq#Index(xs, i_12_1_1) != key_1
+            0 <= i_12_1_1 && (i_12_1_1 < Seq#Length(xs) && !(low <= i_12_1_1 && i_12_1_1 < high)) ==> Seq#Index(xs, i_12_1_1) != key_2
           );
         }
-        assert {:msg "  Loop invariant -1 <= index && index < |xs| might not be preserved. Assertion -1 <= index might not hold. (binary-search-seq.vpr@19.17--19.44) [116683]"}
+        assert {:msg "  Loop invariant -1 <= index && index < |xs| might not be preserved. Assertion -1 <= index might not hold. (binary-search-seq.vpr@19.17--19.44) [113118]"}
           -1 <= index;
-        assert {:msg "  Loop invariant -1 <= index && index < |xs| might not be preserved. Assertion index < |xs| might not hold. (binary-search-seq.vpr@19.17--19.44) [116684]"}
+        assert {:msg "  Loop invariant -1 <= index && index < |xs| might not be preserved. Assertion index < |xs| might not hold. (binary-search-seq.vpr@19.17--19.44) [113119]"}
           index < Seq#Length(xs);
         if (0 <= index) {
-          assert {:msg "  Loop invariant 0 <= index ==> xs[index] == key might not be preserved. Assertion xs[index] == key might not hold. (binary-search-seq.vpr@20.17--20.48) [116685]"}
-            Seq#Index(xs, index) == key_1;
+          assert {:msg "  Loop invariant 0 <= index ==> xs[index] == key might not be preserved. Assertion xs[index] == key might not hold. (binary-search-seq.vpr@20.17--20.48) [113120]"}
+            Seq#Index(xs, index) == key_2;
         }
         // Terminate execution
         assume false;
@@ -840,13 +840,13 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
       if (index == -1) {
         assume (forall i_13_1: int ::
           { Seq#Index(xs, i_13_1) }
-          0 <= i_13_1 && (i_13_1 < Seq#Length(xs) && !(low <= i_13_1 && i_13_1 < high)) ==> Seq#Index(xs, i_13_1) != key_1
+          0 <= i_13_1 && (i_13_1 < Seq#Length(xs) && !(low <= i_13_1 && i_13_1 < high)) ==> Seq#Index(xs, i_13_1) != key_2
         );
       }
       assume -1 <= index;
       assume index < Seq#Length(xs);
       if (0 <= index) {
-        assume Seq#Index(xs, index) == key_1;
+        assume Seq#Index(xs, index) == key_2;
       }
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -854,25 +854,25 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of binary_search might not hold. Assertion -1 <= index might not hold. (binary-search-seq.vpr@8.12--8.39) [116686]"}
+    assert {:msg "  Postcondition of binary_search might not hold. Assertion -1 <= index might not hold. (binary-search-seq.vpr@8.12--8.39) [113121]"}
       -1 <= index;
-    assert {:msg "  Postcondition of binary_search might not hold. Assertion index < |xs| might not hold. (binary-search-seq.vpr@8.12--8.39) [116687]"}
+    assert {:msg "  Postcondition of binary_search might not hold. Assertion index < |xs| might not hold. (binary-search-seq.vpr@8.12--8.39) [113122]"}
       index < Seq#Length(xs);
     if (0 <= index) {
-      assert {:msg "  Postcondition of binary_search might not hold. Assertion xs[index] == key might not hold. (binary-search-seq.vpr@9.12--9.43) [116688]"}
-        Seq#Index(xs, index) == key_1;
+      assert {:msg "  Postcondition of binary_search might not hold. Assertion xs[index] == key might not hold. (binary-search-seq.vpr@9.12--9.43) [113123]"}
+        Seq#Index(xs, index) == key_2;
     }
     if (-1 == index) {
       if (*) {
         if (0 <= i_4_1 && i_4_1 < Seq#Length(xs)) {
-          assert {:msg "  Postcondition of binary_search might not hold. Assertion xs[i] != key might not hold. (binary-search-seq.vpr@10.12--10.82) [116689]"}
-            Seq#Index(xs, i_4_1) != key_1;
+          assert {:msg "  Postcondition of binary_search might not hold. Assertion xs[i] != key might not hold. (binary-search-seq.vpr@10.12--10.82) [113124]"}
+            Seq#Index(xs, i_4_1) != key_2;
         }
         assume false;
       }
       assume (forall i_5_1_1: int ::
         { Seq#Index(xs, i_5_1_1) }
-        0 <= i_5_1_1 && i_5_1_1 < Seq#Length(xs) ==> Seq#Index(xs, i_5_1_1) != key_1
+        0 <= i_5_1_1 && i_5_1_1 < Seq#Length(xs) ==> Seq#Index(xs, i_5_1_1) != key_2
       );
     }
 }

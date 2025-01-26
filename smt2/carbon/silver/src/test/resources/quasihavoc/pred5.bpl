@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:57:19
+// Date:         2025-01-26 21:43:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/pred5.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/pred5-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -239,9 +239,9 @@ procedure Pair#definedness(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == y.f
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (pred5.vpr@3.1--5.2) [77244]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (pred5.vpr@3.1--5.2) [102483]"}
         HasDirectPerm(Mask, x, f_7);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access y.f (pred5.vpr@3.1--5.2) [77245]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access y.f (pred5.vpr@3.1--5.2) [102484]"}
         HasDirectPerm(Mask, y, f_7);
     assume Heap[x, f_7] == Heap[y, f_7];
     assume state(Heap, Mask);
@@ -251,7 +251,7 @@ procedure Pair#definedness(x: Ref, y: Ref) returns ()
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
+procedure foo_3(x: Ref, y: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -289,7 +289,7 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Pair(x, y) (pred5.vpr@10.14--10.46) [77246]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Pair(x, y) (pred5.vpr@10.14--10.46) [102485]"}
           perm <= UnfoldingMask[null, Pair(x, y)];
       }
       UnfoldingMask := UnfoldingMask[null, Pair(x, y):=UnfoldingMask[null, Pair(x, y)] - perm];
@@ -303,7 +303,7 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
       assume state(UnfoldingHeap, UnfoldingMask);
       assume UnfoldingHeap[x, f_7] == UnfoldingHeap[y, f_7];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (pred5.vpr@10.14--10.46) [77247]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (pred5.vpr@10.14--10.46) [102486]"}
         HasDirectPerm(UnfoldingMask, x, f_7);
       
       // -- Free assumptions (exp module)
@@ -350,10 +350,10 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := perm_temp_quasihavoc_;
-        assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77248]"}
+        assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102487]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access Pair(x, y) (<no position>) [77249]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access Pair(x, y) (<no position>) [102488]"}
             perm <= Mask[null, Pair(x, y)];
         }
         Mask := Mask[null, Pair(x, y):=Mask[null, Pair(x, y)] - perm];
@@ -365,7 +365,7 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
       
       // -- Translating statement: inhale acc(Pair(x, y), perm_temp_quasihavoc_) -- <no position>
         perm := perm_temp_quasihavoc_;
-        assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77250]"}
+        assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102489]"}
           perm >= NoPerm;
         Mask := Mask[null, Pair(x, y):=Mask[null, Pair(x, y)] + perm];
         assume state(Heap, Mask);
@@ -381,7 +381,7 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Pair(x, y) might fail. There might be insufficient permission to access Pair(x, y) (pred5.vpr@13.5--13.22) [77253]"}
+      assert {:msg "  Unfolding Pair(x, y) might fail. There might be insufficient permission to access Pair(x, y) (pred5.vpr@13.5--13.22) [102492]"}
         perm <= Mask[null, Pair(x, y)];
     }
     Mask := Mask[null, Pair(x, y):=Mask[null, Pair(x, y)] - perm];
@@ -413,9 +413,9 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of y.f == 3
-      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (pred5.vpr@16.12--16.20) [77256]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (pred5.vpr@16.12--16.20) [102495]"}
         HasDirectPerm(ExhaleWellDef0Mask, y, f_7);
-    assert {:msg "  Assert might fail. Assertion y.f == 3 might not hold. (pred5.vpr@16.12--16.20) [77257]"}
+    assert {:msg "  Assert might fail. Assertion y.f == 3 might not hold. (pred5.vpr@16.12--16.20) [102496]"}
       Heap[y, f_7] == 3;
     assume state(Heap, Mask);
 }

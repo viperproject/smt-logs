@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:18
+// Date:         2025-01-26 21:42:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0134.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0134-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,15 +185,15 @@ axiom !IsWandField(next);
 // Translation of method main01
 // ==================================================
 
-procedure main01(t1_6: Ref, t2_1: Ref) returns ()
+procedure main01(t1_1: Ref, t2_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -201,14 +201,14 @@ procedure main01(t1_6: Ref, t2_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[t1_6, $allocated];
+    assume Heap[t1_1, $allocated];
     assume Heap[t2_1, $allocated];
   
   // -- Checked inhaling of precondition
     havoc wildcard;
     perm := wildcard;
-    assume t1_6 != null;
-    Mask := Mask[t1_6, next:=Mask[t1_6, next] + perm];
+    assume t1_1 != null;
+    Mask := Mask[t1_1, next:=Mask[t1_1, next] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     havoc wildcard;
@@ -221,16 +221,16 @@ procedure main01(t1_6: Ref, t2_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (t1 == t2) -- 0134.vpr@13.3--16.4
-    if (t1_6 == t2_1) {
+    if (t1_1 == t2_1) {
       
       // -- Translating statement: assert false -- 0134.vpr@15.5--15.17
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (0134.vpr@15.12--15.17) [216940]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion false might not hold. (0134.vpr@15.12--15.17) [64306]"}
           false;
         assume state(Heap, Mask);
     }
@@ -241,15 +241,15 @@ procedure main01(t1_6: Ref, t2_1: Ref) returns ()
 // Translation of method main02
 // ==================================================
 
-procedure main02(t1_6: Ref, t2_1: Ref) returns ()
+procedure main02(t1_1: Ref, t2_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -257,14 +257,14 @@ procedure main02(t1_6: Ref, t2_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[t1_6, $allocated];
+    assume Heap[t1_1, $allocated];
     assume Heap[t2_1, $allocated];
   
   // -- Checked inhaling of precondition
     havoc wildcard;
     perm := wildcard;
-    assume t1_6 != null;
-    Mask := Mask[t1_6, next:=Mask[t1_6, next] + perm];
+    assume t1_1 != null;
+    Mask := Mask[t1_1, next:=Mask[t1_1, next] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     havoc wildcard;
@@ -275,29 +275,29 @@ procedure main02(t1_6: Ref, t2_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of t1.next != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t1.next (0134.vpr@23.12--23.27) [216941]"}
-        HasDirectPerm(Mask, t1_6, next);
-    assume Heap[t1_6, next] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t1.next (0134.vpr@23.12--23.27) [64307]"}
+        HasDirectPerm(Mask, t1_1, next);
+    assume Heap[t1_1, next] != null;
     assume state(Heap, Mask);
     
     // -- Check definedness of t2.next != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t2.next (0134.vpr@24.12--24.27) [216942]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t2.next (0134.vpr@24.12--24.27) [64308]"}
         HasDirectPerm(Mask, t2_1, next);
     assume Heap[t2_1, next] != null;
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(t1.next.next, wildcard)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t1.next (0134.vpr@25.12--25.39) [216943]"}
-        HasDirectPerm(Mask, t1_6, next);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t1.next (0134.vpr@25.12--25.39) [64309]"}
+        HasDirectPerm(Mask, t1_1, next);
     havoc wildcard;
     perm := wildcard;
-    assume Heap[t1_6, next] != null;
-    Mask := Mask[Heap[t1_6, next], next:=Mask[Heap[t1_6, next], next] + perm];
+    assume Heap[t1_1, next] != null;
+    Mask := Mask[Heap[t1_1, next], next:=Mask[Heap[t1_1, next], next] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(t2.next.next, wildcard)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t2.next (0134.vpr@26.12--26.39) [216944]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t2.next (0134.vpr@26.12--26.39) [64310]"}
         HasDirectPerm(Mask, t2_1, next);
     havoc wildcard;
     perm := wildcard;
@@ -309,16 +309,16 @@ procedure main02(t1_6: Ref, t2_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (t1 == t2) -- 0134.vpr@28.3--31.4
-    if (t1_6 == t2_1) {
+    if (t1_1 == t2_1) {
       
       // -- Translating statement: assert false -- 0134.vpr@30.5--30.17
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (0134.vpr@30.12--30.17) [216945]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion false might not hold. (0134.vpr@30.12--30.17) [64311]"}
           false;
         assume state(Heap, Mask);
     }
@@ -329,15 +329,15 @@ procedure main02(t1_6: Ref, t2_1: Ref) returns ()
 // Translation of method test01
 // ==================================================
 
-procedure test01(t1_6: Ref, t2_1: Ref) returns ()
+procedure test01(t1_1: Ref, t2_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -345,14 +345,14 @@ procedure test01(t1_6: Ref, t2_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[t1_6, $allocated];
+    assume Heap[t1_1, $allocated];
     assume Heap[t2_1, $allocated];
   
   // -- Checked inhaling of precondition
     havoc wildcard;
     perm := wildcard;
-    assume t1_6 != null;
-    Mask := Mask[t1_6, next:=Mask[t1_6, next] + perm];
+    assume t1_1 != null;
+    Mask := Mask[t1_1, next:=Mask[t1_1, next] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     havoc wildcard;
@@ -365,14 +365,14 @@ procedure test01(t1_6: Ref, t2_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert t1 != t2 -- 0134.vpr@41.3--41.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion t1 != t2 might not hold. (0134.vpr@41.10--41.18) [216946]"}
-      t1_6 != t2_1;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion t1 != t2 might not hold. (0134.vpr@41.10--41.18) [64312]"}
+      t1_1 != t2_1;
     assume state(Heap, Mask);
 }
 
@@ -380,15 +380,15 @@ procedure test01(t1_6: Ref, t2_1: Ref) returns ()
 // Translation of method test02
 // ==================================================
 
-procedure test02(t1_6: Ref, t2_1: Ref) returns ()
+procedure test02(t1_1: Ref, t2_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -396,14 +396,14 @@ procedure test02(t1_6: Ref, t2_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[t1_6, $allocated];
+    assume Heap[t1_1, $allocated];
     assume Heap[t2_1, $allocated];
   
   // -- Checked inhaling of precondition
     havoc wildcard;
     perm := wildcard;
-    assume t1_6 != null;
-    Mask := Mask[t1_6, next:=Mask[t1_6, next] + perm];
+    assume t1_1 != null;
+    Mask := Mask[t1_1, next:=Mask[t1_1, next] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
@@ -415,14 +415,14 @@ procedure test02(t1_6: Ref, t2_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert t1 != t2 -- 0134.vpr@48.3--48.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion t1 != t2 might not hold. (0134.vpr@48.10--48.18) [216947]"}
-      t1_6 != t2_1;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion t1 != t2 might not hold. (0134.vpr@48.10--48.18) [64313]"}
+      t1_1 != t2_1;
     assume state(Heap, Mask);
 }
 
@@ -430,14 +430,14 @@ procedure test02(t1_6: Ref, t2_1: Ref) returns ()
 // Translation of method test03
 // ==================================================
 
-procedure test03(t1_6: Ref, t2_1: Ref) returns ()
+procedure test03(t1_1: Ref, t2_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -445,19 +445,19 @@ procedure test03(t1_6: Ref, t2_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[t1_6, $allocated];
+    assume Heap[t1_1, $allocated];
     assume Heap[t2_1, $allocated];
   
   // -- Checked inhaling of precondition
     perm := 1 / 3;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 3 might be negative. (0134.vpr@52.12--52.29) [216948]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 3 might be negative. (0134.vpr@52.12--52.29) [64314]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> t1_6 != null;
-    Mask := Mask[t1_6, next:=Mask[t1_6, next] + perm];
+    assume perm > NoPerm ==> t1_1 != null;
+    Mask := Mask[t1_1, next:=Mask[t1_1, next] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := 1 / 3;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 3 might be negative. (0134.vpr@53.12--53.29) [216949]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 3 might be negative. (0134.vpr@53.12--53.29) [64315]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> t2_1 != null;
     Mask := Mask[t2_1, next:=Mask[t2_1, next] + perm];
@@ -467,14 +467,14 @@ procedure test03(t1_6: Ref, t2_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert t1 != t2 -- 0134.vpr@56.3--56.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion t1 != t2 might not hold. (0134.vpr@56.10--56.18) [216950]"}
-      t1_6 != t2_1;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion t1 != t2 might not hold. (0134.vpr@56.10--56.18) [64316]"}
+      t1_1 != t2_1;
     assume state(Heap, Mask);
 }
 
@@ -482,14 +482,14 @@ procedure test03(t1_6: Ref, t2_1: Ref) returns ()
 // Translation of method test04
 // ==================================================
 
-procedure test04(t1_6: Ref, t2_1: Ref) returns ()
+procedure test04(t1_1: Ref, t2_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -497,19 +497,19 @@ procedure test04(t1_6: Ref, t2_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[t1_6, $allocated];
+    assume Heap[t1_1, $allocated];
     assume Heap[t2_1, $allocated];
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0134.vpr@60.12--60.29) [216951]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0134.vpr@60.12--60.29) [64317]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> t1_6 != null;
-    Mask := Mask[t1_6, next:=Mask[t1_6, next] + perm];
+    assume perm > NoPerm ==> t1_1 != null;
+    Mask := Mask[t1_1, next:=Mask[t1_1, next] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := 2 / 3;
-    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (0134.vpr@61.12--61.29) [216952]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (0134.vpr@61.12--61.29) [64318]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> t2_1 != null;
     Mask := Mask[t2_1, next:=Mask[t2_1, next] + perm];
@@ -519,14 +519,14 @@ procedure test04(t1_6: Ref, t2_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert t1 != t2 -- 0134.vpr@63.3--63.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion t1 != t2 might not hold. (0134.vpr@63.10--63.18) [216953]"}
-      t1_6 != t2_1;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion t1 != t2 might not hold. (0134.vpr@63.10--63.18) [64319]"}
+      t1_1 != t2_1;
     assume state(Heap, Mask);
 }
 
@@ -534,15 +534,15 @@ procedure test04(t1_6: Ref, t2_1: Ref) returns ()
 // Translation of method test05
 // ==================================================
 
-procedure test05(t1_6: Ref, t2_1: Ref) returns ()
+procedure test05(t1_1: Ref, t2_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
   var wildcard: real where wildcard > NoPerm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -550,15 +550,15 @@ procedure test05(t1_6: Ref, t2_1: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[t1_6, $allocated];
+    assume Heap[t1_1, $allocated];
     assume Heap[t2_1, $allocated];
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0134.vpr@67.12--67.29) [216954]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0134.vpr@67.12--67.29) [64320]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> t1_6 != null;
-    Mask := Mask[t1_6, next:=Mask[t1_6, next] + perm];
+    assume perm > NoPerm ==> t1_1 != null;
+    Mask := Mask[t1_1, next:=Mask[t1_1, next] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     havoc wildcard;
@@ -571,13 +571,13 @@ procedure test05(t1_6: Ref, t2_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert t1 != t2 -- 0134.vpr@71.3--71.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion t1 != t2 might not hold. (0134.vpr@71.10--71.18) [216955]"}
-      t1_6 != t2_1;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion t1 != t2 might not hold. (0134.vpr@71.10--71.18) [64321]"}
+      t1_1 != t2_1;
     assume state(Heap, Mask);
 }

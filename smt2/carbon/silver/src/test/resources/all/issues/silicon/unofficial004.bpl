@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:06
+// Date:         2025-01-26 21:42:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial004.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial004-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -265,11 +265,11 @@ procedure TestunfoldVRd$(this: Ref, k: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var tk1: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshObj: Ref;
   var freshVersion: FrameType;
@@ -297,24 +297,24 @@ procedure TestunfoldVRd$(this: Ref, k: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[tk1, $allocated];
   
   // -- Translating statement: unfold acc(P(this), k) -- unofficial004.vpr@32.3--32.25
-    assert {:msg "  Unfolding P(this) might fail. Fraction k might not be positive. (unofficial004.vpr@32.3--32.25) [201164]"}
+    assert {:msg "  Unfolding P(this) might fail. Fraction k might not be positive. (unofficial004.vpr@32.3--32.25) [58423]"}
       k > NoPerm;
     assume P#trigger(Heap, P(this));
     assume Heap[null, P(this)] == FrameFragment(Heap[this, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := k;
-    assert {:msg "  Unfolding P(this) might fail. Fraction k might be negative. (unofficial004.vpr@32.3--32.25) [201165]"}
+    assert {:msg "  Unfolding P(this) might fail. Fraction k might be negative. (unofficial004.vpr@32.3--32.25) [58424]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding P(this) might fail. There might be insufficient permission to access P(this) (unofficial004.vpr@32.3--32.25) [201166]"}
+      assert {:msg "  Unfolding P(this) might fail. There might be insufficient permission to access P(this) (unofficial004.vpr@32.3--32.25) [58425]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -325,7 +325,7 @@ procedure TestunfoldVRd$(this: Ref, k: Perm) returns ()
         Heap := Heap[null, P(this):=newVersion];
       }
     perm := FullPerm * k;
-    assert {:msg "  Unfolding P(this) might fail. Fraction write * k might be negative. (unofficial004.vpr@32.3--32.25) [201167]"}
+    assert {:msg "  Unfolding P(this) might fail. Fraction write * k might be negative. (unofficial004.vpr@32.3--32.25) [58426]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     Mask := Mask[this, f_7:=Mask[this, f_7] + perm];
@@ -345,19 +345,19 @@ procedure TestunfoldVRd$(this: Ref, k: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: tk1.joinable$ := true -- unofficial004.vpr@35.3--35.24
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access tk1.joinable$ (unofficial004.vpr@35.3--35.24) [201168]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access tk1.joinable$ (unofficial004.vpr@35.3--35.24) [58427]"}
       FullPerm == Mask[tk1, joinable$];
     Heap := Heap[tk1, joinable$:=true];
     assume state(Heap, Mask);
   
   // -- Translating statement: tk1.parX := this -- unofficial004.vpr@36.3--36.19
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access tk1.parX (unofficial004.vpr@36.3--36.19) [201169]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access tk1.parX (unofficial004.vpr@36.3--36.19) [58428]"}
       FullPerm == Mask[tk1, parX];
     Heap := Heap[tk1, parX:=this];
     assume state(Heap, Mask);
   
   // -- Translating statement: tk1.parK := k -- unofficial004.vpr@37.3--37.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access tk1.parK (unofficial004.vpr@37.3--37.16) [201170]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access tk1.parK (unofficial004.vpr@37.3--37.16) [58429]"}
       FullPerm == Mask[tk1, parK];
     Heap := Heap[tk1, parK:=k];
     assume state(Heap, Mask);
@@ -365,12 +365,12 @@ procedure TestunfoldVRd$(this: Ref, k: Perm) returns ()
   // -- Translating statement: inhale acc(tk1.parX.f, tk1.parK) -- unofficial004.vpr@39.3--39.35
     
     // -- Check definedness of acc(tk1.parX.f, tk1.parK)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access tk1.parX (unofficial004.vpr@39.10--39.35) [201171]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access tk1.parX (unofficial004.vpr@39.10--39.35) [58430]"}
         HasDirectPerm(Mask, tk1, parX);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access tk1.parK (unofficial004.vpr@39.10--39.35) [201172]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access tk1.parK (unofficial004.vpr@39.10--39.35) [58431]"}
         HasDirectPerm(Mask, tk1, parK);
     perm := Heap[tk1, parK];
-    assert {:msg "  Inhale might fail. Fraction tk1.parK might be negative. (unofficial004.vpr@39.10--39.35) [201173]"}
+    assert {:msg "  Inhale might fail. Fraction tk1.parK might be negative. (unofficial004.vpr@39.10--39.35) [58432]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Heap[tk1, parX] != null;
     Mask := Mask[Heap[tk1, parX], f_7:=Mask[Heap[tk1, parX], f_7] + perm];
@@ -379,26 +379,26 @@ procedure TestunfoldVRd$(this: Ref, k: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: tk1.joinable$ := false -- unofficial004.vpr@41.3--41.25
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access tk1.joinable$ (unofficial004.vpr@41.3--41.25) [201174]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access tk1.joinable$ (unofficial004.vpr@41.3--41.25) [58433]"}
       FullPerm == Mask[tk1, joinable$];
     Heap := Heap[tk1, joinable$:=false];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(this), k) -- unofficial004.vpr@43.3--43.23
-    assert {:msg "  Folding P(this) might fail. Fraction k might not be positive. (unofficial004.vpr@43.3--43.23) [201175]"}
+    assert {:msg "  Folding P(this) might fail. Fraction k might not be positive. (unofficial004.vpr@43.3--43.23) [58434]"}
       k > NoPerm;
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm * k;
-    assert {:msg "  Folding P(this) might fail. Fraction write * k might be negative. (unofficial004.vpr@43.3--43.23) [201176]"}
+    assert {:msg "  Folding P(this) might fail. Fraction write * k might be negative. (unofficial004.vpr@43.3--43.23) [58435]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.f (unofficial004.vpr@43.3--43.23) [201177]"}
+      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.f (unofficial004.vpr@43.3--43.23) [58436]"}
         perm <= Mask[this, f_7];
     }
     Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
     perm := k;
-    assert {:msg "  Folding P(this) might fail. Fraction k might be negative. (unofficial004.vpr@43.3--43.23) [201178]"}
+    assert {:msg "  Folding P(this) might fail. Fraction k might be negative. (unofficial004.vpr@43.3--43.23) [58437]"}
       perm >= NoPerm;
     Mask := Mask[null, P(this):=Mask[null, P(this)] + perm];
     assume state(Heap, Mask);

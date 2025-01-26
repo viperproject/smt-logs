@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:18:05
+// Date:         2025-01-26 21:41:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testListAppend.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testListAppend-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_13: Ref, f_18: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_13, f_18] }
-  Heap[o_13, $allocated] ==> Heap[Heap[o_13, f_18], $allocated]
+axiom (forall o_20: Ref, f_29: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_20, f_29] }
+  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_29], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_14: Ref, f_19: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_14, f_19] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_14, f_19) ==> Heap[o_14, f_19] == ExhaleHeap[o_14, f_19]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_18: Ref, f_26: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_18, f_26] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_18, f_26) ==> Heap[o_18, f_26] == ExhaleHeap[o_18, f_26]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6), ExhaleHeap[null, PredicateMaskField(pm_f_6)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> Heap[null, PredicateMaskField(pm_f_6)] == ExhaleHeap[null, PredicateMaskField(pm_f_6)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_8), ExhaleHeap[null, PredicateMaskField(pm_f_8)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsPredicateField(pm_f_8) ==> Heap[null, PredicateMaskField(pm_f_8)] == ExhaleHeap[null, PredicateMaskField(pm_f_8)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_19: (Field A B) ::
-    { ExhaleHeap[o2_6, f_19] }
-    Heap[null, PredicateMaskField(pm_f_6)][o2_6, f_19] ==> Heap[o2_6, f_19] == ExhaleHeap[o2_6, f_19]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_8) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsPredicateField(pm_f_8) ==> (forall <A, B> o2_8: Ref, f_26: (Field A B) ::
+    { ExhaleHeap[o2_8, f_26] }
+    Heap[null, PredicateMaskField(pm_f_8)][o2_8, f_26] ==> Heap[o2_8, f_26] == ExhaleHeap[o2_8, f_26]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6), ExhaleHeap[null, WandMaskField(pm_f_6)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> Heap[null, WandMaskField(pm_f_6)] == ExhaleHeap[null, WandMaskField(pm_f_6)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_8), ExhaleHeap[null, WandMaskField(pm_f_8)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsWandField(pm_f_8) ==> Heap[null, WandMaskField(pm_f_8)] == ExhaleHeap[null, WandMaskField(pm_f_8)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_19: (Field A B) ::
-    { ExhaleHeap[o2_6, f_19] }
-    Heap[null, WandMaskField(pm_f_6)][o2_6, f_19] ==> Heap[o2_6, f_19] == ExhaleHeap[o2_6, f_19]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_8) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsWandField(pm_f_8) ==> (forall <A, B> o2_8: Ref, f_26: (Field A B) ::
+    { ExhaleHeap[o2_8, f_26] }
+    Heap[null, WandMaskField(pm_f_8)][o2_8, f_26] ==> Heap[o2_8, f_26] == ExhaleHeap[o2_8, f_26]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_14: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_14, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_14, $allocated] ==> ExhaleHeap[o_14, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_18: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_18, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_18, $allocated] ==> ExhaleHeap[o_18, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_13: Ref, f_13: (Field A B), v: B ::
-  { Heap[o_13, f_13:=v] }
-  succHeap(Heap, Heap[o_13, f_13:=v])
+axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_30: (Field A B), v: B ::
+  { Heap[o_20, f_30:=v] }
+  succHeap(Heap, Heap[o_20, f_30:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -652,8 +652,8 @@ procedure Wand_list_for_list__get_in_1#definedness(diz: Ref) returns (Result: Re
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   
@@ -679,10 +679,10 @@ procedure Wand_list_for_list__get_in_1#definedness(diz: Ref) returns (Result: Re
       UnfoldingMask := Mask;
       assume Wand_list_for_list__valid_wand#trigger(UnfoldingHeap, Wand_list_for_list__valid_wand(diz));
       assume UnfoldingHeap[null, Wand_list_for_list__valid_wand(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__lemma]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__in_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__in_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__out_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__out_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__this_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L2_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__tmp_suffix_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L1_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__tmp_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__suffix_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__cursor_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__wand_1]), CombineFrames(FrameFragment((if UnfoldingHeap[diz, Wand_list_for_list__lemma] == 1 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_list_for_list__tmp_1], List__val]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_list_for_list__tmp_1], List__next]), UnfoldingHeap[null, Wand_list_for_list__valid_wand(UnfoldingHeap[diz, Wand_list_for_list__wand_1])])) else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__this_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L2_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L1_2]), FrameFragment((if UnfoldingHeap[diz, Wand_list_for_list__lemma] == 2 then EmptyFrame else EmptyFrame)))))))))))))))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@40.1--46.2) [165286]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@40.1--46.2) [42066]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_list_for_list__valid_wand(diz)];
       havoc wildcard;
       perm := wildcard;
@@ -808,7 +808,7 @@ procedure Wand_list_for_list__get_in_1#definedness(diz: Ref) returns (Result: Re
       }
       assume UnfoldingHeap[diz, Wand_list_for_list__lemma] <= 2;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1 (testListAppend.vpr@40.1--46.2) [165287]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1 (testListAppend.vpr@40.1--46.2) [42067]"}
         HasDirectPerm(UnfoldingMask, diz, Wand_list_for_list__in_1);
       
       // -- Free assumptions (exp module)
@@ -829,9 +829,9 @@ procedure Wand_list_for_list__get_in_1#definedness(diz: Ref) returns (Result: Re
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=Heap[null, Wand_list_for_list__valid_wand#sm(diz)][Heap[diz, Wand_list_for_list__tmp_1], List__val:=true]];
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=Heap[null, Wand_list_for_list__valid_wand#sm(diz)][Heap[diz, Wand_list_for_list__tmp_1], List__next:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, Wand_list_for_list__valid_wand#sm(diz)][o_15, f_20] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[diz, Wand_list_for_list__wand_1])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, Wand_list_for_list__valid_wand#sm(diz)][o_5, f_11] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[diz, Wand_list_for_list__wand_1])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=newPMask];
         }
@@ -844,9 +844,9 @@ procedure Wand_list_for_list__get_in_1#definedness(diz: Ref) returns (Result: Re
     Result := Heap[diz, Wand_list_for_list__in_1];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Wand_list_for_list__get_in_1 might not hold. Assertion result != null might not hold. (testListAppend.vpr@43.11--43.25) [165288]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of Wand_list_for_list__get_in_1 might not hold. Assertion result != null might not hold. (testListAppend.vpr@43.11--43.25) [42068]"}
       Result != null;
 }
 
@@ -892,8 +892,8 @@ procedure Wand_list_for_list__get_in_1_0#definedness(diz: Ref) returns (Result: 
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   
@@ -919,10 +919,10 @@ procedure Wand_list_for_list__get_in_1_0#definedness(diz: Ref) returns (Result: 
       UnfoldingMask := Mask;
       assume Wand_list_for_list__valid_wand#trigger(UnfoldingHeap, Wand_list_for_list__valid_wand(diz));
       assume UnfoldingHeap[null, Wand_list_for_list__valid_wand(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__lemma]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__in_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__in_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__out_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__out_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__this_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L2_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__tmp_suffix_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L1_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__tmp_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__suffix_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__cursor_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__wand_1]), CombineFrames(FrameFragment((if UnfoldingHeap[diz, Wand_list_for_list__lemma] == 1 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_list_for_list__tmp_1], List__val]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_list_for_list__tmp_1], List__next]), UnfoldingHeap[null, Wand_list_for_list__valid_wand(UnfoldingHeap[diz, Wand_list_for_list__wand_1])])) else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__this_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L2_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L1_2]), FrameFragment((if UnfoldingHeap[diz, Wand_list_for_list__lemma] == 2 then EmptyFrame else EmptyFrame)))))))))))))))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@48.1--53.2) [165289]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@48.1--53.2) [42069]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_list_for_list__valid_wand(diz)];
       havoc wildcard;
       perm := wildcard;
@@ -1048,7 +1048,7 @@ procedure Wand_list_for_list__get_in_1_0#definedness(diz: Ref) returns (Result: 
       }
       assume UnfoldingHeap[diz, Wand_list_for_list__lemma] <= 2;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1_0 (testListAppend.vpr@48.1--53.2) [165290]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1_0 (testListAppend.vpr@48.1--53.2) [42070]"}
         HasDirectPerm(UnfoldingMask, diz, Wand_list_for_list__in_1_0);
       
       // -- Free assumptions (exp module)
@@ -1069,9 +1069,9 @@ procedure Wand_list_for_list__get_in_1_0#definedness(diz: Ref) returns (Result: 
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=Heap[null, Wand_list_for_list__valid_wand#sm(diz)][Heap[diz, Wand_list_for_list__tmp_1], List__val:=true]];
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=Heap[null, Wand_list_for_list__valid_wand#sm(diz)][Heap[diz, Wand_list_for_list__tmp_1], List__next:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-            { newPMask[o_16, f_21] }
-            Heap[null, Wand_list_for_list__valid_wand#sm(diz)][o_16, f_21] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[diz, Wand_list_for_list__wand_1])][o_16, f_21] ==> newPMask[o_16, f_21]
+          assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+            { newPMask[o_6, f_12] }
+            Heap[null, Wand_list_for_list__valid_wand#sm(diz)][o_6, f_12] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[diz, Wand_list_for_list__wand_1])][o_6, f_12] ==> newPMask[o_6, f_12]
           );
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=newPMask];
         }
@@ -1132,8 +1132,8 @@ procedure Wand_list_for_list__get_out_1#definedness(diz: Ref) returns (Result: R
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   
@@ -1159,10 +1159,10 @@ procedure Wand_list_for_list__get_out_1#definedness(diz: Ref) returns (Result: R
       UnfoldingMask := Mask;
       assume Wand_list_for_list__valid_wand#trigger(UnfoldingHeap, Wand_list_for_list__valid_wand(diz));
       assume UnfoldingHeap[null, Wand_list_for_list__valid_wand(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__lemma]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__in_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__in_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__out_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__out_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__this_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L2_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__tmp_suffix_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L1_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__tmp_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__suffix_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__cursor_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__wand_1]), CombineFrames(FrameFragment((if UnfoldingHeap[diz, Wand_list_for_list__lemma] == 1 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_list_for_list__tmp_1], List__val]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_list_for_list__tmp_1], List__next]), UnfoldingHeap[null, Wand_list_for_list__valid_wand(UnfoldingHeap[diz, Wand_list_for_list__wand_1])])) else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__this_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L2_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L1_2]), FrameFragment((if UnfoldingHeap[diz, Wand_list_for_list__lemma] == 2 then EmptyFrame else EmptyFrame)))))))))))))))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@55.1--61.2) [165291]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@55.1--61.2) [42071]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_list_for_list__valid_wand(diz)];
       havoc wildcard;
       perm := wildcard;
@@ -1288,7 +1288,7 @@ procedure Wand_list_for_list__get_out_1#definedness(diz: Ref) returns (Result: R
       }
       assume UnfoldingHeap[diz, Wand_list_for_list__lemma] <= 2;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1 (testListAppend.vpr@55.1--61.2) [165292]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1 (testListAppend.vpr@55.1--61.2) [42072]"}
         HasDirectPerm(UnfoldingMask, diz, Wand_list_for_list__out_1);
       
       // -- Free assumptions (exp module)
@@ -1309,9 +1309,9 @@ procedure Wand_list_for_list__get_out_1#definedness(diz: Ref) returns (Result: R
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=Heap[null, Wand_list_for_list__valid_wand#sm(diz)][Heap[diz, Wand_list_for_list__tmp_1], List__val:=true]];
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=Heap[null, Wand_list_for_list__valid_wand#sm(diz)][Heap[diz, Wand_list_for_list__tmp_1], List__next:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-            { newPMask[o_52, f_55] }
-            Heap[null, Wand_list_for_list__valid_wand#sm(diz)][o_52, f_55] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[diz, Wand_list_for_list__wand_1])][o_52, f_55] ==> newPMask[o_52, f_55]
+          assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+            { newPMask[o_40, f_52] }
+            Heap[null, Wand_list_for_list__valid_wand#sm(diz)][o_40, f_52] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[diz, Wand_list_for_list__wand_1])][o_40, f_52] ==> newPMask[o_40, f_52]
           );
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=newPMask];
         }
@@ -1324,9 +1324,9 @@ procedure Wand_list_for_list__get_out_1#definedness(diz: Ref) returns (Result: R
     Result := Heap[diz, Wand_list_for_list__out_1];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Wand_list_for_list__get_out_1 might not hold. Assertion result != null might not hold. (testListAppend.vpr@58.11--58.25) [165293]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of Wand_list_for_list__get_out_1 might not hold. Assertion result != null might not hold. (testListAppend.vpr@58.11--58.25) [42073]"}
       Result != null;
 }
 
@@ -1372,8 +1372,8 @@ procedure Wand_list_for_list__get_out_1_0#definedness(diz: Ref) returns (Result:
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   
@@ -1399,10 +1399,10 @@ procedure Wand_list_for_list__get_out_1_0#definedness(diz: Ref) returns (Result:
       UnfoldingMask := Mask;
       assume Wand_list_for_list__valid_wand#trigger(UnfoldingHeap, Wand_list_for_list__valid_wand(diz));
       assume UnfoldingHeap[null, Wand_list_for_list__valid_wand(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__lemma]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__in_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__in_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__out_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__out_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__this_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L2_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__tmp_suffix_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L1_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__tmp_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__suffix_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__cursor_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__wand_1]), CombineFrames(FrameFragment((if UnfoldingHeap[diz, Wand_list_for_list__lemma] == 1 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_list_for_list__tmp_1], List__val]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_list_for_list__tmp_1], List__next]), UnfoldingHeap[null, Wand_list_for_list__valid_wand(UnfoldingHeap[diz, Wand_list_for_list__wand_1])])) else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__this_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L2_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_list_for_list__L1_2]), FrameFragment((if UnfoldingHeap[diz, Wand_list_for_list__lemma] == 2 then EmptyFrame else EmptyFrame)))))))))))))))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@63.1--68.2) [165294]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@63.1--68.2) [42074]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_list_for_list__valid_wand(diz)];
       havoc wildcard;
       perm := wildcard;
@@ -1528,7 +1528,7 @@ procedure Wand_list_for_list__get_out_1_0#definedness(diz: Ref) returns (Result:
       }
       assume UnfoldingHeap[diz, Wand_list_for_list__lemma] <= 2;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1_0 (testListAppend.vpr@63.1--68.2) [165295]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1_0 (testListAppend.vpr@63.1--68.2) [42075]"}
         HasDirectPerm(UnfoldingMask, diz, Wand_list_for_list__out_1_0);
       
       // -- Free assumptions (exp module)
@@ -1549,9 +1549,9 @@ procedure Wand_list_for_list__get_out_1_0#definedness(diz: Ref) returns (Result:
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=Heap[null, Wand_list_for_list__valid_wand#sm(diz)][Heap[diz, Wand_list_for_list__tmp_1], List__val:=true]];
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=Heap[null, Wand_list_for_list__valid_wand#sm(diz)][Heap[diz, Wand_list_for_list__tmp_1], List__next:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-            { newPMask[o_53, f_56] }
-            Heap[null, Wand_list_for_list__valid_wand#sm(diz)][o_53, f_56] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[diz, Wand_list_for_list__wand_1])][o_53, f_56] ==> newPMask[o_53, f_56]
+          assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+            { newPMask[o_42, f_55] }
+            Heap[null, Wand_list_for_list__valid_wand#sm(diz)][o_42, f_55] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[diz, Wand_list_for_list__wand_1])][o_42, f_55] ==> newPMask[o_42, f_55]
           );
           Heap := Heap[null, Wand_list_for_list__valid_wand#sm(diz):=newPMask];
         }
@@ -1606,8 +1606,8 @@ procedure List__contents#definedness(diz: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -1633,10 +1633,10 @@ procedure List__contents#definedness(diz: Ref) returns (Result: (Seq int))
       UnfoldingMask := Mask;
       assume List__state#trigger(UnfoldingHeap, List__state(diz));
       assume UnfoldingHeap[null, List__state(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, List__val]), CombineFrames(FrameFragment(UnfoldingHeap[diz, List__next]), FrameFragment((if UnfoldingHeap[diz, List__next] != null then UnfoldingHeap[null, List__state(UnfoldingHeap[diz, List__next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@70.1--75.2) [165296]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@70.1--75.2) [42076]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List__state(diz)];
       perm := FullPerm;
       assume diz != null;
@@ -1655,24 +1655,24 @@ procedure List__contents#definedness(diz: Ref) returns (Result: (Seq int))
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.List__next (testListAppend.vpr@70.1--75.2) [165297]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.List__next (testListAppend.vpr@70.1--75.2) [42077]"}
         HasDirectPerm(UnfoldingMask, diz, List__next);
       if (UnfoldingHeap[diz, List__next] == null) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.List__val (testListAppend.vpr@70.1--75.2) [165298]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.List__val (testListAppend.vpr@70.1--75.2) [42078]"}
           HasDirectPerm(UnfoldingMask, diz, List__val);
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.List__val (testListAppend.vpr@70.1--75.2) [165299]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.List__val (testListAppend.vpr@70.1--75.2) [42079]"}
           HasDirectPerm(UnfoldingMask, diz, List__val);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.List__next (testListAppend.vpr@70.1--75.2) [165300]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.List__next (testListAppend.vpr@70.1--75.2) [42080]"}
           HasDirectPerm(UnfoldingMask, diz, List__next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
-          assert {:msg "  Precondition of function List__contents might not hold. Assertion diz.List__next != null might not hold. (testListAppend.vpr@74.115--74.145) [165301]"}
+          ExhaleWellDef0Heap := UnfoldingHeap;
+          assert {:msg "  Precondition of function List__contents might not hold. Assertion diz.List__next != null might not hold. (testListAppend.vpr@74.115--74.145) [42081]"}
             UnfoldingHeap[diz, List__next] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz.List__next) (testListAppend.vpr@74.115--74.145) [165302]"}
+          assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz.List__next) (testListAppend.vpr@74.115--74.145) [42082]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, List__state(UnfoldingHeap[diz, List__next])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1691,9 +1691,9 @@ procedure List__contents#definedness(diz: Ref) returns (Result: (Seq int))
         Heap := Heap[null, List__state#sm(diz):=Heap[null, List__state#sm(diz)][diz, List__next:=true]];
         if (Heap[diz, List__next] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-            { newPMask[o_26, f_29] }
-            Heap[null, List__state#sm(diz)][o_26, f_29] || Heap[null, List__state#sm(Heap[diz, List__next])][o_26, f_29] ==> newPMask[o_26, f_29]
+          assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+            { newPMask[o_46, f_60] }
+            Heap[null, List__state#sm(diz)][o_46, f_60] || Heap[null, List__state#sm(Heap[diz, List__next])][o_46, f_60] ==> newPMask[o_46, f_60]
           );
           Heap := Heap[null, List__state#sm(diz):=newPMask];
         }
@@ -1745,8 +1745,8 @@ procedure List__get_next#definedness(diz: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -1771,10 +1771,10 @@ procedure List__get_next#definedness(diz: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume List__state#trigger(UnfoldingHeap, List__state(diz));
       assume UnfoldingHeap[null, List__state(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, List__val]), CombineFrames(FrameFragment(UnfoldingHeap[diz, List__next]), FrameFragment((if UnfoldingHeap[diz, List__next] != null then UnfoldingHeap[null, List__state(UnfoldingHeap[diz, List__next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@77.1--82.2) [165303]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@77.1--82.2) [42083]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List__state(diz)];
       perm := FullPerm;
       assume diz != null;
@@ -1793,7 +1793,7 @@ procedure List__get_next#definedness(diz: Ref) returns (Result: Ref)
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.List__next (testListAppend.vpr@77.1--82.2) [165304]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.List__next (testListAppend.vpr@77.1--82.2) [42084]"}
         HasDirectPerm(UnfoldingMask, diz, List__next);
       
       // -- Free assumptions (exp module)
@@ -1801,9 +1801,9 @@ procedure List__get_next#definedness(diz: Ref) returns (Result: Ref)
         Heap := Heap[null, List__state#sm(diz):=Heap[null, List__state#sm(diz)][diz, List__next:=true]];
         if (Heap[diz, List__next] != null) {
           havoc newPMask;
-          assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-            { newPMask[o, f_85] }
-            Heap[null, List__state#sm(diz)][o, f_85] || Heap[null, List__state#sm(Heap[diz, List__next])][o, f_85] ==> newPMask[o, f_85]
+          assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+            { newPMask[o, f_61] }
+            Heap[null, List__state#sm(diz)][o, f_61] || Heap[null, List__state#sm(Heap[diz, List__next])][o, f_61] ==> newPMask[o, f_61]
           );
           Heap := Heap[null, List__state#sm(diz):=newPMask];
         }
@@ -1853,8 +1853,8 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of Wand_list_for_list__valid_wand
@@ -1872,7 +1872,7 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of 1 <= diz.Wand_list_for_list__lemma
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@84.1--86.2) [165305]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@84.1--86.2) [42085]"}
         HasDirectPerm(Mask, diz, Wand_list_for_list__lemma);
     assume 1 <= Heap[diz, Wand_list_for_list__lemma];
     havoc wildcard;
@@ -1882,7 +1882,7 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_list_for_list__in_1 != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1 (testListAppend.vpr@84.1--86.2) [165306]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1 (testListAppend.vpr@84.1--86.2) [42086]"}
         HasDirectPerm(Mask, diz, Wand_list_for_list__in_1);
     assume Heap[diz, Wand_list_for_list__in_1] != null;
     havoc wildcard;
@@ -1897,7 +1897,7 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_list_for_list__out_1 != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1 (testListAppend.vpr@84.1--86.2) [165307]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1 (testListAppend.vpr@84.1--86.2) [42087]"}
         HasDirectPerm(Mask, diz, Wand_list_for_list__out_1);
     assume Heap[diz, Wand_list_for_list__out_1] != null;
     havoc wildcard;
@@ -1947,17 +1947,17 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_list_for_list__lemma == 1
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@84.1--86.2) [165308]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@84.1--86.2) [42088]"}
         HasDirectPerm(Mask, diz, Wand_list_for_list__lemma);
     if (Heap[diz, Wand_list_for_list__lemma] == 1) {
       
       // -- Check definedness of diz.Wand_list_for_list__this_1 != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_1 (testListAppend.vpr@84.1--86.2) [165309]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_1 (testListAppend.vpr@84.1--86.2) [42089]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__this_1);
       assume Heap[diz, Wand_list_for_list__this_1] != null;
       
       // -- Check definedness of acc(diz.Wand_list_for_list__tmp_1.List__val, write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@84.1--86.2) [165310]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@84.1--86.2) [42090]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__tmp_1);
       perm := FullPerm;
       assume Heap[diz, Wand_list_for_list__tmp_1] != null;
@@ -1965,7 +1965,7 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(diz.Wand_list_for_list__tmp_1.List__next, write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@84.1--86.2) [165311]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@84.1--86.2) [42091]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__tmp_1);
       perm := FullPerm;
       assume Heap[diz, Wand_list_for_list__tmp_1] != null;
@@ -1973,32 +1973,32 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
       assume state(Heap, Mask);
       
       // -- Check definedness of diz.Wand_list_for_list__tmp_1.List__next == diz.Wand_list_for_list__cursor_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@84.1--86.2) [165312]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@84.1--86.2) [42092]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__tmp_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1.List__next (testListAppend.vpr@84.1--86.2) [165313]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1.List__next (testListAppend.vpr@84.1--86.2) [42093]"}
           HasDirectPerm(Mask, Heap[diz, Wand_list_for_list__tmp_1], List__next);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__cursor_1 (testListAppend.vpr@84.1--86.2) [165314]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__cursor_1 (testListAppend.vpr@84.1--86.2) [42094]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__cursor_1);
       assume Heap[Heap[diz, Wand_list_for_list__tmp_1], List__next] == Heap[diz, Wand_list_for_list__cursor_1];
       
       // -- Check definedness of diz.Wand_list_for_list__tmp_suffix_1 == Seq(diz.Wand_list_for_list__tmp_1.List__val) ++ diz.Wand_list_for_list__suffix_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@84.1--86.2) [165315]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@84.1--86.2) [42095]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__tmp_suffix_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@84.1--86.2) [165316]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@84.1--86.2) [42096]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__tmp_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1.List__val (testListAppend.vpr@84.1--86.2) [165317]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1.List__val (testListAppend.vpr@84.1--86.2) [42097]"}
           HasDirectPerm(Mask, Heap[diz, Wand_list_for_list__tmp_1], List__val);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__suffix_1 (testListAppend.vpr@84.1--86.2) [165318]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__suffix_1 (testListAppend.vpr@84.1--86.2) [42098]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__suffix_1);
       assume Seq#Equal(Heap[diz, Wand_list_for_list__tmp_suffix_1], Seq#Append(Seq#Singleton(Heap[Heap[diz, Wand_list_for_list__tmp_1], List__val]), Heap[diz, Wand_list_for_list__suffix_1]));
       
       // -- Check definedness of diz.Wand_list_for_list__wand_1 != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [165319]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [42099]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__wand_1);
       assume Heap[diz, Wand_list_for_list__wand_1] != null;
       
       // -- Check definedness of acc(Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [165320]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [42100]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__wand_1);
       perm := FullPerm;
       Mask := Mask[null, Wand_list_for_list__valid_wand(Heap[diz, Wand_list_for_list__wand_1]):=Mask[null, Wand_list_for_list__valid_wand(Heap[diz, Wand_list_for_list__wand_1])] + perm];
@@ -2006,16 +2006,16 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
       assume state(Heap, Mask);
       
       // -- Check definedness of Wand_list_for_list__get_in_1(diz.Wand_list_for_list__wand_1) == diz.Wand_list_for_list__tmp_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [165321]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [42101]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__wand_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion diz.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@85.1296--85.1356) [165322]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion diz.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@85.1296--85.1356) [42102]"}
             Heap[diz, Wand_list_for_list__wand_1] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1) (testListAppend.vpr@85.1296--85.1356) [165323]"}
+          assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1) (testListAppend.vpr@85.1296--85.1356) [42103]"}
             NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(Heap[diz, Wand_list_for_list__wand_1])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2024,22 +2024,22 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
           // Stop execution
           assume false;
         }
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@84.1--86.2) [165324]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@84.1--86.2) [42104]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__tmp_1);
       assume Wand_list_for_list__get_in_1(Heap, Heap[diz, Wand_list_for_list__wand_1]) == Heap[diz, Wand_list_for_list__tmp_1];
       assume state(Heap, Mask);
       
       // -- Check definedness of Wand_list_for_list__get_in_1_0(diz.Wand_list_for_list__wand_1) == diz.Wand_list_for_list__tmp_suffix_1 ++ diz.Wand_list_for_list__L2_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [165325]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [42105]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__wand_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion diz.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@85.1395--85.1457) [165326]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion diz.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@85.1395--85.1457) [42106]"}
             Heap[diz, Wand_list_for_list__wand_1] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1) (testListAppend.vpr@85.1395--85.1457) [165327]"}
+          assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1) (testListAppend.vpr@85.1395--85.1457) [42107]"}
             NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(Heap[diz, Wand_list_for_list__wand_1])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2048,24 +2048,24 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
           // Stop execution
           assume false;
         }
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@84.1--86.2) [165328]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@84.1--86.2) [42108]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__tmp_suffix_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_1 (testListAppend.vpr@84.1--86.2) [165329]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_1 (testListAppend.vpr@84.1--86.2) [42109]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__L2_1);
       assume Seq#Equal(Wand_list_for_list__get_in_1_0(Heap, Heap[diz, Wand_list_for_list__wand_1]), Seq#Append(Heap[diz, Wand_list_for_list__tmp_suffix_1], Heap[diz, Wand_list_for_list__L2_1]));
       assume state(Heap, Mask);
       
       // -- Check definedness of Wand_list_for_list__get_out_1(diz.Wand_list_for_list__wand_1) == diz.Wand_list_for_list__this_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [165330]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [42110]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__wand_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@85.1535--85.1596) [165331]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@85.1535--85.1596) [42111]"}
             Heap[diz, Wand_list_for_list__wand_1] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1) (testListAppend.vpr@85.1535--85.1596) [165332]"}
+          assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1) (testListAppend.vpr@85.1535--85.1596) [42112]"}
             NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(Heap[diz, Wand_list_for_list__wand_1])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2074,22 +2074,22 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
           // Stop execution
           assume false;
         }
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_1 (testListAppend.vpr@84.1--86.2) [165333]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_1 (testListAppend.vpr@84.1--86.2) [42113]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__this_1);
       assume Wand_list_for_list__get_out_1(Heap, Heap[diz, Wand_list_for_list__wand_1]) == Heap[diz, Wand_list_for_list__this_1];
       assume state(Heap, Mask);
       
       // -- Check definedness of Wand_list_for_list__get_out_1_0(diz.Wand_list_for_list__wand_1) == diz.Wand_list_for_list__L1_1 ++ diz.Wand_list_for_list__L2_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [165334]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@84.1--86.2) [42114]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__wand_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion diz.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@85.1636--85.1699) [165335]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion diz.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@85.1636--85.1699) [42115]"}
             Heap[diz, Wand_list_for_list__wand_1] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1) (testListAppend.vpr@85.1636--85.1699) [165336]"}
+          assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1) (testListAppend.vpr@85.1636--85.1699) [42116]"}
             NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(Heap[diz, Wand_list_for_list__wand_1])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2098,41 +2098,41 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
           // Stop execution
           assume false;
         }
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L1_1 (testListAppend.vpr@84.1--86.2) [165337]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L1_1 (testListAppend.vpr@84.1--86.2) [42117]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__L1_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_1 (testListAppend.vpr@84.1--86.2) [165338]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_1 (testListAppend.vpr@84.1--86.2) [42118]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__L2_1);
       assume Seq#Equal(Wand_list_for_list__get_out_1_0(Heap, Heap[diz, Wand_list_for_list__wand_1]), Seq#Append(Heap[diz, Wand_list_for_list__L1_1], Heap[diz, Wand_list_for_list__L2_1]));
       
       // -- Check definedness of diz.Wand_list_for_list__in_1 == diz.Wand_list_for_list__cursor_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1 (testListAppend.vpr@84.1--86.2) [165339]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1 (testListAppend.vpr@84.1--86.2) [42119]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__in_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__cursor_1 (testListAppend.vpr@84.1--86.2) [165340]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__cursor_1 (testListAppend.vpr@84.1--86.2) [42120]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__cursor_1);
       assume Heap[diz, Wand_list_for_list__in_1] == Heap[diz, Wand_list_for_list__cursor_1];
       
       // -- Check definedness of diz.Wand_list_for_list__in_1_0 == diz.Wand_list_for_list__suffix_1 ++ diz.Wand_list_for_list__L2_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1_0 (testListAppend.vpr@84.1--86.2) [165341]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1_0 (testListAppend.vpr@84.1--86.2) [42121]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__in_1_0);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__suffix_1 (testListAppend.vpr@84.1--86.2) [165342]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__suffix_1 (testListAppend.vpr@84.1--86.2) [42122]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__suffix_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_1 (testListAppend.vpr@84.1--86.2) [165343]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_1 (testListAppend.vpr@84.1--86.2) [42123]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__L2_1);
       assume Seq#Equal(Heap[diz, Wand_list_for_list__in_1_0], Seq#Append(Heap[diz, Wand_list_for_list__suffix_1], Heap[diz, Wand_list_for_list__L2_1]));
       
       // -- Check definedness of diz.Wand_list_for_list__out_1 == diz.Wand_list_for_list__this_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1 (testListAppend.vpr@84.1--86.2) [165344]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1 (testListAppend.vpr@84.1--86.2) [42124]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__out_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_1 (testListAppend.vpr@84.1--86.2) [165345]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_1 (testListAppend.vpr@84.1--86.2) [42125]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__this_1);
       assume Heap[diz, Wand_list_for_list__out_1] == Heap[diz, Wand_list_for_list__this_1];
       
       // -- Check definedness of diz.Wand_list_for_list__out_1_0 == diz.Wand_list_for_list__L1_1 ++ diz.Wand_list_for_list__L2_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1_0 (testListAppend.vpr@84.1--86.2) [165346]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1_0 (testListAppend.vpr@84.1--86.2) [42126]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__out_1_0);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L1_1 (testListAppend.vpr@84.1--86.2) [165347]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L1_1 (testListAppend.vpr@84.1--86.2) [42127]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__L1_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_1 (testListAppend.vpr@84.1--86.2) [165348]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_1 (testListAppend.vpr@84.1--86.2) [42128]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__L2_1);
       assume Seq#Equal(Heap[diz, Wand_list_for_list__out_1_0], Seq#Append(Heap[diz, Wand_list_for_list__L1_1], Heap[diz, Wand_list_for_list__L2_1]));
     }
@@ -2153,50 +2153,50 @@ procedure Wand_list_for_list__valid_wand#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_list_for_list__lemma == 2
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@84.1--86.2) [165349]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@84.1--86.2) [42129]"}
         HasDirectPerm(Mask, diz, Wand_list_for_list__lemma);
     if (Heap[diz, Wand_list_for_list__lemma] == 2) {
       
       // -- Check definedness of diz.Wand_list_for_list__this_2 != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_2 (testListAppend.vpr@84.1--86.2) [165350]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_2 (testListAppend.vpr@84.1--86.2) [42130]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__this_2);
       assume Heap[diz, Wand_list_for_list__this_2] != null;
       
       // -- Check definedness of diz.Wand_list_for_list__in_1 == diz.Wand_list_for_list__this_2
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1 (testListAppend.vpr@84.1--86.2) [165351]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1 (testListAppend.vpr@84.1--86.2) [42131]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__in_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_2 (testListAppend.vpr@84.1--86.2) [165352]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_2 (testListAppend.vpr@84.1--86.2) [42132]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__this_2);
       assume Heap[diz, Wand_list_for_list__in_1] == Heap[diz, Wand_list_for_list__this_2];
       
       // -- Check definedness of diz.Wand_list_for_list__in_1_0 == diz.Wand_list_for_list__L1_2 ++ diz.Wand_list_for_list__L2_2
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1_0 (testListAppend.vpr@84.1--86.2) [165353]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__in_1_0 (testListAppend.vpr@84.1--86.2) [42133]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__in_1_0);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L1_2 (testListAppend.vpr@84.1--86.2) [165354]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L1_2 (testListAppend.vpr@84.1--86.2) [42134]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__L1_2);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_2 (testListAppend.vpr@84.1--86.2) [165355]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_2 (testListAppend.vpr@84.1--86.2) [42135]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__L2_2);
       assume Seq#Equal(Heap[diz, Wand_list_for_list__in_1_0], Seq#Append(Heap[diz, Wand_list_for_list__L1_2], Heap[diz, Wand_list_for_list__L2_2]));
       
       // -- Check definedness of diz.Wand_list_for_list__out_1 == diz.Wand_list_for_list__this_2
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1 (testListAppend.vpr@84.1--86.2) [165356]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1 (testListAppend.vpr@84.1--86.2) [42136]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__out_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_2 (testListAppend.vpr@84.1--86.2) [165357]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__this_2 (testListAppend.vpr@84.1--86.2) [42137]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__this_2);
       assume Heap[diz, Wand_list_for_list__out_1] == Heap[diz, Wand_list_for_list__this_2];
       
       // -- Check definedness of diz.Wand_list_for_list__out_1_0 == diz.Wand_list_for_list__L1_2 ++ diz.Wand_list_for_list__L2_2
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1_0 (testListAppend.vpr@84.1--86.2) [165358]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__out_1_0 (testListAppend.vpr@84.1--86.2) [42138]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__out_1_0);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L1_2 (testListAppend.vpr@84.1--86.2) [165359]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L1_2 (testListAppend.vpr@84.1--86.2) [42139]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__L1_2);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_2 (testListAppend.vpr@84.1--86.2) [165360]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__L2_2 (testListAppend.vpr@84.1--86.2) [42140]"}
           HasDirectPerm(Mask, diz, Wand_list_for_list__L2_2);
       assume Seq#Equal(Heap[diz, Wand_list_for_list__out_1_0], Seq#Append(Heap[diz, Wand_list_for_list__L1_2], Heap[diz, Wand_list_for_list__L2_2]));
     }
     
     // -- Check definedness of diz.Wand_list_for_list__lemma <= 2
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@84.1--86.2) [165361]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@84.1--86.2) [42141]"}
         HasDirectPerm(Mask, diz, Wand_list_for_list__lemma);
     assume Heap[diz, Wand_list_for_list__lemma] <= 2;
     assume state(Heap, Mask);
@@ -2260,12 +2260,12 @@ procedure List__state#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.List__next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.List__next (testListAppend.vpr@88.1--90.2) [165362]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.List__next (testListAppend.vpr@88.1--90.2) [42142]"}
         HasDirectPerm(Mask, diz, List__next);
     if (Heap[diz, List__next] != null) {
       
       // -- Check definedness of acc(List__state(diz.List__next), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.List__next (testListAppend.vpr@88.1--90.2) [165363]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.List__next (testListAppend.vpr@88.1--90.2) [42143]"}
           HasDirectPerm(Mask, diz, List__next);
       perm := FullPerm;
       Mask := Mask[null, List__state(Heap[diz, List__next]):=Mask[null, List__state(Heap[diz, List__next])] + perm];
@@ -2282,11 +2282,11 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -2298,8 +2298,8 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
   var arg_diz: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2324,12 +2324,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
     // -- Check definedness of acc(List__state(Wand_list_for_list__get_in_1(diz)), write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@96.28--96.61) [165364]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@96.28--96.61) [42144]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@96.28--96.61) [165365]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@96.28--96.61) [42145]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2347,12 +2347,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
     // -- Check definedness of List__contents(Wand_list_for_list__get_in_1(diz)) == Wand_list_for_list__get_in_1_0(diz)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@97.27--97.60) [165366]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@97.27--97.60) [42146]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@97.27--97.60) [165367]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@97.27--97.60) [42147]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2363,12 +2363,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion Wand_list_for_list__get_in_1(diz) != null might not hold. (testListAppend.vpr@97.12--97.61) [165368]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion Wand_list_for_list__get_in_1(diz) != null might not hold. (testListAppend.vpr@97.12--97.61) [42148]"}
           Wand_list_for_list__get_in_1(Heap, diz) != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(Wand_list_for_list__get_in_1(diz)) (testListAppend.vpr@97.12--97.61) [165369]"}
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(Wand_list_for_list__get_in_1(diz)) (testListAppend.vpr@97.12--97.61) [42149]"}
           NoPerm < perm ==> NoPerm < Mask[null, List__state(Wand_list_for_list__get_in_1(Heap, diz))];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2379,12 +2379,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@97.65--97.100) [165370]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@97.65--97.100) [42150]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@97.65--97.100) [165371]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@97.65--97.100) [42151]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2400,12 +2400,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
     // -- Check definedness of Wand_list_for_list__get_out_1(diz) != null
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@98.12--98.46) [165372]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@98.12--98.46) [42152]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@98.12--98.46) [165373]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@98.12--98.46) [42153]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2420,8 +2420,8 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2432,12 +2432,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
     // -- Check definedness of acc(List__state(old(Wand_list_for_list__get_out_1(diz))), write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@99.31--99.65) [165374]"}
+        ExhaleWellDef0Heap := oldHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@99.31--99.65) [42154]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@99.31--99.65) [165375]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@99.31--99.65) [42155]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Wand_list_for_list__valid_wand(diz)];
         // Finish exhale
         // Stop execution
@@ -2452,12 +2452,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
     // -- Check definedness of List__contents(old(Wand_list_for_list__get_out_1(diz))) == old(Wand_list_for_list__get_out_1_0(diz))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@100.30--100.64) [165376]"}
+        ExhaleWellDef0Heap := oldHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@100.30--100.64) [42156]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@100.30--100.64) [165377]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@100.30--100.64) [42157]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Wand_list_for_list__valid_wand(diz)];
         // Finish exhale
         // Stop execution
@@ -2465,12 +2465,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion old(Wand_list_for_list__get_out_1(diz)) != null might not hold. (testListAppend.vpr@100.11--100.66) [165378]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion old(Wand_list_for_list__get_out_1(diz)) != null might not hold. (testListAppend.vpr@100.11--100.66) [42158]"}
           Wand_list_for_list__get_out_1(oldHeap, diz) != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@100.11--100.66) [165379]"}
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@100.11--100.66) [42159]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz))];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2481,12 +2481,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@100.74--100.110) [165380]"}
+        ExhaleWellDef0Heap := oldHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@100.74--100.110) [42160]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@100.74--100.110) [165381]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@100.74--100.110) [42161]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Wand_list_for_list__valid_wand(diz)];
         // Finish exhale
         // Stop execution
@@ -2501,11 +2501,11 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
   // -- Translating statement: unfold acc(Wand_list_for_list__valid_wand(diz), write) -- testListAppend.vpr@102.3--102.57
     assume Wand_list_for_list__valid_wand#trigger(Heap, Wand_list_for_list__valid_wand(diz));
     assume Heap[null, Wand_list_for_list__valid_wand(diz)] == CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__lemma]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__in_1]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__in_1_0]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__out_1]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__out_1_0]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__this_1]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__L2_1]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__tmp_suffix_1]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__L1_1]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__tmp_1]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__suffix_1]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__cursor_1]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__wand_1]), CombineFrames(FrameFragment((if Heap[diz, Wand_list_for_list__lemma] == 1 then CombineFrames(FrameFragment(Heap[Heap[diz, Wand_list_for_list__tmp_1], List__val]), CombineFrames(FrameFragment(Heap[Heap[diz, Wand_list_for_list__tmp_1], List__next]), Heap[null, Wand_list_for_list__valid_wand(Heap[diz, Wand_list_for_list__wand_1])])) else EmptyFrame)), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__this_2]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__L2_2]), CombineFrames(FrameFragment(Heap[diz, Wand_list_for_list__L1_2]), FrameFragment((if Heap[diz, Wand_list_for_list__lemma] == 2 then EmptyFrame else EmptyFrame)))))))))))))))))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Wand_list_for_list__valid_wand(diz) might fail. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@102.3--102.57) [165384]"}
+      assert {:msg "  Unfolding Wand_list_for_list__valid_wand(diz) might fail. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@102.3--102.57) [42164]"}
         perm <= Mask[null, Wand_list_for_list__valid_wand(diz)];
     }
     Mask := Mask[null, Wand_list_for_list__valid_wand(diz):=Mask[null, Wand_list_for_list__valid_wand(diz)] - perm];
@@ -2644,33 +2644,33 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
   // -- Translating statement: if (diz.Wand_list_for_list__lemma == 1) -- testListAppend.vpr@103.3--111.4
     
     // -- Check definedness of diz.Wand_list_for_list__lemma == 1
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@103.7--103.41) [165388]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@103.7--103.41) [42168]"}
         HasDirectPerm(Mask, diz, Wand_list_for_list__lemma);
     if (Heap[diz, Wand_list_for_list__lemma] == 1) {
       
       // -- Translating statement: fold acc(List__state(diz.Wand_list_for_list__tmp_1), write) -- testListAppend.vpr@104.5--104.64
         
         // -- Check definedness of acc(List__state(diz.Wand_list_for_list__tmp_1), write)
-          assert {:msg "  Folding List__state(diz.Wand_list_for_list__tmp_1) might fail. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@104.5--104.64) [165389]"}
+          assert {:msg "  Folding List__state(diz.Wand_list_for_list__tmp_1) might fail. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@104.5--104.64) [42169]"}
             HasDirectPerm(Mask, diz, Wand_list_for_list__tmp_1);
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding List__state(diz.Wand_list_for_list__tmp_1) might fail. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1.List__val (testListAppend.vpr@104.5--104.64) [165392]"}
+          assert {:msg "  Folding List__state(diz.Wand_list_for_list__tmp_1) might fail. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1.List__val (testListAppend.vpr@104.5--104.64) [42172]"}
             perm <= Mask[Heap[diz, Wand_list_for_list__tmp_1], List__val];
         }
         Mask := Mask[Heap[diz, Wand_list_for_list__tmp_1], List__val:=Mask[Heap[diz, Wand_list_for_list__tmp_1], List__val] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding List__state(diz.Wand_list_for_list__tmp_1) might fail. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1.List__next (testListAppend.vpr@104.5--104.64) [165394]"}
+          assert {:msg "  Folding List__state(diz.Wand_list_for_list__tmp_1) might fail. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1.List__next (testListAppend.vpr@104.5--104.64) [42174]"}
             perm <= Mask[Heap[diz, Wand_list_for_list__tmp_1], List__next];
         }
         Mask := Mask[Heap[diz, Wand_list_for_list__tmp_1], List__next:=Mask[Heap[diz, Wand_list_for_list__tmp_1], List__next] - perm];
         if (Heap[Heap[diz, Wand_list_for_list__tmp_1], List__next] != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Folding List__state(diz.Wand_list_for_list__tmp_1) might fail. There might be insufficient permission to access List__state(diz.Wand_list_for_list__tmp_1.List__next) (testListAppend.vpr@104.5--104.64) [165396]"}
+            assert {:msg "  Folding List__state(diz.Wand_list_for_list__tmp_1) might fail. There might be insufficient permission to access List__state(diz.Wand_list_for_list__tmp_1.List__next) (testListAppend.vpr@104.5--104.64) [42176]"}
               perm <= Mask[null, List__state(Heap[Heap[diz, Wand_list_for_list__tmp_1], List__next])];
           }
           Mask := Mask[null, List__state(Heap[Heap[diz, Wand_list_for_list__tmp_1], List__next]):=Mask[null, List__state(Heap[Heap[diz, Wand_list_for_list__tmp_1], List__next])] - perm];
@@ -2693,9 +2693,9 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
         Heap := Heap[null, List__state#sm(Heap[diz, Wand_list_for_list__tmp_1]):=Heap[null, List__state#sm(Heap[diz, Wand_list_for_list__tmp_1])][Heap[diz, Wand_list_for_list__tmp_1], List__next:=true]];
         if (Heap[Heap[diz, Wand_list_for_list__tmp_1], List__next] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-            { newPMask[o_11, f_3] }
-            Heap[null, List__state#sm(Heap[diz, Wand_list_for_list__tmp_1])][o_11, f_3] || Heap[null, List__state#sm(Heap[Heap[diz, Wand_list_for_list__tmp_1], List__next])][o_11, f_3] ==> newPMask[o_11, f_3]
+          assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+            { newPMask[o_14, f_3] }
+            Heap[null, List__state#sm(Heap[diz, Wand_list_for_list__tmp_1])][o_14, f_3] || Heap[null, List__state#sm(Heap[Heap[diz, Wand_list_for_list__tmp_1], List__next])][o_14, f_3] ==> newPMask[o_14, f_3]
           );
           Heap := Heap[null, List__state#sm(Heap[diz, Wand_list_for_list__tmp_1]):=newPMask];
         }
@@ -2707,32 +2707,32 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
         PreCallMask := Mask;
         
         // -- Check definedness of diz.Wand_list_for_list__wand_1
-          assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@105.5--105.82) [165398]"}
+          assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@105.5--105.82) [42178]"}
             HasDirectPerm(Mask, diz, Wand_list_for_list__wand_1);
         arg_diz := Heap[diz, Wand_list_for_list__wand_1];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion diz.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@105.5--105.82) [165399]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion diz.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@105.5--105.82) [42179]"}
             arg_diz != null;
-          assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@105.5--105.82) [165400]"}
+          assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@105.5--105.82) [42180]"}
             current_thread_id >= 0;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1) (testListAppend.vpr@105.5--105.82) [165401]"}
+            assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz.Wand_list_for_list__wand_1) (testListAppend.vpr@105.5--105.82) [42181]"}
               perm <= Mask[null, Wand_list_for_list__valid_wand(arg_diz)];
           }
           Mask := Mask[null, Wand_list_for_list__valid_wand(arg_diz):=Mask[null, Wand_list_for_list__valid_wand(arg_diz)] - perm];
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. There might be insufficient permission to access List__state(Wand_list_for_list__get_in_1(diz.Wand_list_for_list__wand_1)) (testListAppend.vpr@105.5--105.82) [165402]"}
+            assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. There might be insufficient permission to access List__state(Wand_list_for_list__get_in_1(diz.Wand_list_for_list__wand_1)) (testListAppend.vpr@105.5--105.82) [42182]"}
               perm <= Mask[null, List__state(Wand_list_for_list__get_in_1(Heap, arg_diz))];
           }
           Mask := Mask[null, List__state(Wand_list_for_list__get_in_1(Heap, arg_diz)):=Mask[null, List__state(Wand_list_for_list__get_in_1(Heap, arg_diz))] - perm];
-          assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion List__contents(Wand_list_for_list__get_in_1(diz.Wand_list_for_list__wand_1)) == Wand_list_for_list__get_in_1_0(diz.Wand_list_for_list__wand_1) might not hold. (testListAppend.vpr@105.5--105.82) [165403]"}
+          assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion List__contents(Wand_list_for_list__get_in_1(diz.Wand_list_for_list__wand_1)) == Wand_list_for_list__get_in_1_0(diz.Wand_list_for_list__wand_1) might not hold. (testListAppend.vpr@105.5--105.82) [42183]"}
             Seq#Equal(List__contents(Heap, Wand_list_for_list__get_in_1(Heap, arg_diz)), Wand_list_for_list__get_in_1_0(Heap, arg_diz));
-          assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion Wand_list_for_list__get_out_1(diz.Wand_list_for_list__wand_1) != null might not hold. (testListAppend.vpr@105.5--105.82) [165404]"}
+          assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion Wand_list_for_list__get_out_1(diz.Wand_list_for_list__wand_1) != null might not hold. (testListAppend.vpr@105.5--105.82) [42184]"}
             Wand_list_for_list__get_out_1(Heap, arg_diz) != null;
           // Finish exhale
           havoc ExhaleHeap;
@@ -2754,18 +2754,18 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
   //   old(Wand_list_for_list__get_out_1_0(diz)) -- testListAppend.vpr@106.5--106.182
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         
         // -- Check definedness of acc(List__state(old(Wand_list_for_list__get_out_1(diz))), write)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := oldHeap;
             ExhaleWellDef1Mask := oldMask;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@106.32--106.66) [165405]"}
+            ExhaleWellDef1Heap := oldHeap;
+            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@106.32--106.66) [42185]"}
               diz != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@106.32--106.66) [165406]"}
+            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@106.32--106.66) [42186]"}
               NoPerm < perm ==> NoPerm < oldMask[null, Wand_list_for_list__valid_wand(diz)];
             // Finish exhale
             // Stop execution
@@ -2773,7 +2773,7 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
           }
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@106.12--106.182) [165408]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@106.12--106.182) [42188]"}
             perm <= AssertMask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz))];
         }
         AssertMask := AssertMask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz)):=AssertMask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz))] - perm];
@@ -2781,12 +2781,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
         // -- Check definedness of List__contents(old(Wand_list_for_list__get_out_1(diz))) == old(Wand_list_for_list__get_out_1_0(diz))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := oldHeap;
             ExhaleWellDef1Mask := oldMask;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@106.100--106.134) [165409]"}
+            ExhaleWellDef1Heap := oldHeap;
+            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@106.100--106.134) [42189]"}
               diz != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@106.100--106.134) [165410]"}
+            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@106.100--106.134) [42190]"}
               NoPerm < perm ==> NoPerm < oldMask[null, Wand_list_for_list__valid_wand(diz)];
             // Finish exhale
             // Stop execution
@@ -2794,12 +2794,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-            assert {:msg "  Precondition of function List__contents might not hold. Assertion old(Wand_list_for_list__get_out_1(diz)) != null might not hold. (testListAppend.vpr@106.81--106.136) [165411]"}
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            assert {:msg "  Precondition of function List__contents might not hold. Assertion old(Wand_list_for_list__get_out_1(diz)) != null might not hold. (testListAppend.vpr@106.81--106.136) [42191]"}
               Wand_list_for_list__get_out_1(oldHeap, diz) != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@106.81--106.136) [165412]"}
+            assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@106.81--106.136) [42192]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz))];
             // Finish exhale
             havoc ExhaleHeap;
@@ -2810,18 +2810,18 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := oldHeap;
             ExhaleWellDef1Mask := oldMask;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@106.144--106.180) [165413]"}
+            ExhaleWellDef1Heap := oldHeap;
+            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@106.144--106.180) [42193]"}
               diz != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@106.144--106.180) [165414]"}
+            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@106.144--106.180) [42194]"}
               NoPerm < perm ==> NoPerm < oldMask[null, Wand_list_for_list__valid_wand(diz)];
             // Finish exhale
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion List__contents(old(Wand_list_for_list__get_out_1(diz))) == old(Wand_list_for_list__get_out_1_0(diz)) might not hold. (testListAppend.vpr@106.12--106.182) [165415]"}
+        assert {:msg "  Assert might fail. Assertion List__contents(old(Wand_list_for_list__get_out_1(diz))) == old(Wand_list_for_list__get_out_1_0(diz)) might not hold. (testListAppend.vpr@106.12--106.182) [42195]"}
           Seq#Equal(List__contents(AssertHeap, Wand_list_for_list__get_out_1(oldHeap, diz)), Wand_list_for_list__get_out_1_0(oldHeap, diz));
         assume state(Heap, Mask);
       
@@ -2834,7 +2834,7 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
       // -- Translating statement: if (diz.Wand_list_for_list__lemma == 2) -- testListAppend.vpr@108.5--111.4
         
         // -- Check definedness of diz.Wand_list_for_list__lemma == 2
-          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@108.13--108.47) [165416]"}
+          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@108.13--108.47) [42196]"}
             HasDirectPerm(Mask, diz, Wand_list_for_list__lemma);
         if (Heap[diz, Wand_list_for_list__lemma] == 2) {
           
@@ -2843,18 +2843,18 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
   //   old(Wand_list_for_list__get_out_1_0(diz)) -- testListAppend.vpr@109.5--109.182
             AssertHeap := Heap;
             AssertMask := Mask;
-            ExhaleWellDef0Heap := AssertHeap;
             ExhaleWellDef0Mask := AssertMask;
+            ExhaleWellDef0Heap := AssertHeap;
             
             // -- Check definedness of acc(List__state(old(Wand_list_for_list__get_out_1(diz))), write)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Heap := oldHeap;
                 ExhaleWellDef1Mask := oldMask;
-                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@109.32--109.66) [165417]"}
+                ExhaleWellDef1Heap := oldHeap;
+                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@109.32--109.66) [42197]"}
                   diz != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@109.32--109.66) [165418]"}
+                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@109.32--109.66) [42198]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, Wand_list_for_list__valid_wand(diz)];
                 // Finish exhale
                 // Stop execution
@@ -2862,7 +2862,7 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
               }
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Assert might fail. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@109.12--109.182) [165420]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@109.12--109.182) [42200]"}
                 perm <= AssertMask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz))];
             }
             AssertMask := AssertMask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz)):=AssertMask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz))] - perm];
@@ -2870,12 +2870,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
             // -- Check definedness of List__contents(old(Wand_list_for_list__get_out_1(diz))) == old(Wand_list_for_list__get_out_1_0(diz))
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Heap := oldHeap;
                 ExhaleWellDef1Mask := oldMask;
-                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@109.100--109.134) [165421]"}
+                ExhaleWellDef1Heap := oldHeap;
+                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@109.100--109.134) [42201]"}
                   diz != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@109.100--109.134) [165422]"}
+                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@109.100--109.134) [42202]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, Wand_list_for_list__valid_wand(diz)];
                 // Finish exhale
                 // Stop execution
@@ -2883,12 +2883,12 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                 ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-                assert {:msg "  Precondition of function List__contents might not hold. Assertion old(Wand_list_for_list__get_out_1(diz)) != null might not hold. (testListAppend.vpr@109.81--109.136) [165423]"}
+                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                assert {:msg "  Precondition of function List__contents might not hold. Assertion old(Wand_list_for_list__get_out_1(diz)) != null might not hold. (testListAppend.vpr@109.81--109.136) [42203]"}
                   Wand_list_for_list__get_out_1(oldHeap, diz) != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@109.81--109.136) [165424]"}
+                assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@109.81--109.136) [42204]"}
                   NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz))];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -2899,18 +2899,18 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Heap := oldHeap;
                 ExhaleWellDef1Mask := oldMask;
-                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@109.144--109.180) [165425]"}
+                ExhaleWellDef1Heap := oldHeap;
+                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@109.144--109.180) [42205]"}
                   diz != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@109.144--109.180) [165426]"}
+                assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(diz) (testListAppend.vpr@109.144--109.180) [42206]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, Wand_list_for_list__valid_wand(diz)];
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
-            assert {:msg "  Assert might fail. Assertion List__contents(old(Wand_list_for_list__get_out_1(diz))) == old(Wand_list_for_list__get_out_1_0(diz)) might not hold. (testListAppend.vpr@109.12--109.182) [165427]"}
+            assert {:msg "  Assert might fail. Assertion List__contents(old(Wand_list_for_list__get_out_1(diz))) == old(Wand_list_for_list__get_out_1_0(diz)) might not hold. (testListAppend.vpr@109.12--109.182) [42207]"}
               Seq#Equal(List__contents(AssertHeap, Wand_list_for_list__get_out_1(oldHeap, diz)), Wand_list_for_list__get_out_1_0(oldHeap, diz));
             assume state(Heap, Mask);
           
@@ -2924,15 +2924,15 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list___apply might not hold. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@99.11--99.75) [165428]"}
+      assert {:msg "  Postcondition of Wand_list_for_list___apply might not hold. There might be insufficient permission to access List__state(old(Wand_list_for_list__get_out_1(diz))) (testListAppend.vpr@99.11--99.75) [42208]"}
         perm <= Mask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz))];
     }
     Mask := Mask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz)):=Mask[null, List__state(Wand_list_for_list__get_out_1(oldHeap, diz))] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list___apply might not hold. Assertion List__contents(old(Wand_list_for_list__get_out_1(diz))) == old(Wand_list_for_list__get_out_1_0(diz)) might not hold. (testListAppend.vpr@100.11--100.111) [165429]"}
+    assert {:msg "  Postcondition of Wand_list_for_list___apply might not hold. Assertion List__contents(old(Wand_list_for_list__get_out_1(diz))) == old(Wand_list_for_list__get_out_1_0(diz)) might not hold. (testListAppend.vpr@100.11--100.111) [42209]"}
       Seq#Equal(List__contents(Heap, Wand_list_for_list__get_out_1(oldHeap, diz)), Wand_list_for_list__get_out_1_0(oldHeap, diz));
     // Finish exhale
     havoc ExhaleHeap;
@@ -2947,8 +2947,8 @@ procedure Wand_list_for_list___apply(diz: Ref, current_thread_id: int) returns (
 procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -2974,8 +2974,8 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
   var __flatten_53: (Seq int);
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2991,8 +2991,8 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3006,7 +3006,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__lemma == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__lemma (testListAppend.vpr@117.11--117.108) [165430]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__lemma (testListAppend.vpr@117.11--117.108) [42210]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__lemma);
     assume PostHeap[sys__result, Wand_list_for_list__lemma] == 0;
     assume state(PostHeap, PostMask);
@@ -3016,7 +3016,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__in_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1 (testListAppend.vpr@118.11--118.109) [165431]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1 (testListAppend.vpr@118.11--118.109) [42211]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__in_1);
     assume PostHeap[sys__result, Wand_list_for_list__in_1] == null;
     assume state(PostHeap, PostMask);
@@ -3026,7 +3026,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__in_1_0 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1_0 (testListAppend.vpr@119.11--119.119) [165432]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1_0 (testListAppend.vpr@119.11--119.119) [42212]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__in_1_0);
     assume Seq#Equal(PostHeap[sys__result, Wand_list_for_list__in_1_0], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3036,7 +3036,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__out_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1 (testListAppend.vpr@120.11--120.111) [165433]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1 (testListAppend.vpr@120.11--120.111) [42213]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__out_1);
     assume PostHeap[sys__result, Wand_list_for_list__out_1] == null;
     assume state(PostHeap, PostMask);
@@ -3046,7 +3046,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__out_1_0 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1_0 (testListAppend.vpr@121.11--121.121) [165434]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1_0 (testListAppend.vpr@121.11--121.121) [42214]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__out_1_0);
     assume Seq#Equal(PostHeap[sys__result, Wand_list_for_list__out_1_0], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3056,7 +3056,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__this_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__this_1 (testListAppend.vpr@122.11--122.113) [165435]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__this_1 (testListAppend.vpr@122.11--122.113) [42215]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__this_1);
     assume PostHeap[sys__result, Wand_list_for_list__this_1] == null;
     assume state(PostHeap, PostMask);
@@ -3066,7 +3066,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__L2_1 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_1 (testListAppend.vpr@123.11--123.115) [165436]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_1 (testListAppend.vpr@123.11--123.115) [42216]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__L2_1);
     assume Seq#Equal(PostHeap[sys__result, Wand_list_for_list__L2_1], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3076,7 +3076,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__tmp_suffix_1 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@124.11--124.131) [165437]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@124.11--124.131) [42217]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__tmp_suffix_1);
     assume Seq#Equal(PostHeap[sys__result, Wand_list_for_list__tmp_suffix_1], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3086,7 +3086,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__L1_1 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_1 (testListAppend.vpr@125.11--125.115) [165438]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_1 (testListAppend.vpr@125.11--125.115) [42218]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__L1_1);
     assume Seq#Equal(PostHeap[sys__result, Wand_list_for_list__L1_1], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3096,7 +3096,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__tmp_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_1 (testListAppend.vpr@126.11--126.111) [165439]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_1 (testListAppend.vpr@126.11--126.111) [42219]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__tmp_1);
     assume PostHeap[sys__result, Wand_list_for_list__tmp_1] == null;
     assume state(PostHeap, PostMask);
@@ -3106,7 +3106,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__suffix_1 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__suffix_1 (testListAppend.vpr@127.11--127.123) [165440]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__suffix_1 (testListAppend.vpr@127.11--127.123) [42220]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__suffix_1);
     assume Seq#Equal(PostHeap[sys__result, Wand_list_for_list__suffix_1], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3116,7 +3116,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__cursor_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__cursor_1 (testListAppend.vpr@128.11--128.117) [165441]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__cursor_1 (testListAppend.vpr@128.11--128.117) [42221]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__cursor_1);
     assume PostHeap[sys__result, Wand_list_for_list__cursor_1] == null;
     assume state(PostHeap, PostMask);
@@ -3126,7 +3126,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__wand_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__wand_1 (testListAppend.vpr@129.11--129.113) [165442]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__wand_1 (testListAppend.vpr@129.11--129.113) [42222]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__wand_1);
     assume PostHeap[sys__result, Wand_list_for_list__wand_1] == null;
     assume state(PostHeap, PostMask);
@@ -3136,7 +3136,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__this_2 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__this_2 (testListAppend.vpr@130.11--130.113) [165443]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__this_2 (testListAppend.vpr@130.11--130.113) [42223]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__this_2);
     assume PostHeap[sys__result, Wand_list_for_list__this_2] == null;
     assume state(PostHeap, PostMask);
@@ -3146,7 +3146,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__L2_2 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_2 (testListAppend.vpr@131.11--131.115) [165444]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_2 (testListAppend.vpr@131.11--131.115) [42224]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__L2_2);
     assume Seq#Equal(PostHeap[sys__result, Wand_list_for_list__L2_2], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3156,7 +3156,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_list_for_list__L1_2 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_2 (testListAppend.vpr@132.11--132.115) [165445]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_2 (testListAppend.vpr@132.11--132.115) [42225]"}
         HasDirectPerm(PostMask, sys__result, Wand_list_for_list__L1_2);
     assume Seq#Equal(PostHeap[sys__result, Wand_list_for_list__L1_2], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3199,13 +3199,13 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__lemma := __flatten_45 -- testListAppend.vpr@156.3--156.48
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@156.3--156.48) [165446]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__lemma (testListAppend.vpr@156.3--156.48) [42226]"}
       FullPerm == Mask[diz, Wand_list_for_list__lemma];
     Heap := Heap[diz, Wand_list_for_list__lemma:=__flatten_45];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__in_1 := null -- testListAppend.vpr@157.3--157.39
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__in_1 (testListAppend.vpr@157.3--157.39) [165447]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__in_1 (testListAppend.vpr@157.3--157.39) [42227]"}
       FullPerm == Mask[diz, Wand_list_for_list__in_1];
     Heap := Heap[diz, Wand_list_for_list__in_1:=null];
     assume state(Heap, Mask);
@@ -3219,13 +3219,13 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__in_1_0 := __flatten_46 -- testListAppend.vpr@160.3--160.49
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__in_1_0 (testListAppend.vpr@160.3--160.49) [165448]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__in_1_0 (testListAppend.vpr@160.3--160.49) [42228]"}
       FullPerm == Mask[diz, Wand_list_for_list__in_1_0];
     Heap := Heap[diz, Wand_list_for_list__in_1_0:=__flatten_46];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__out_1 := null -- testListAppend.vpr@161.3--161.40
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__out_1 (testListAppend.vpr@161.3--161.40) [165449]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__out_1 (testListAppend.vpr@161.3--161.40) [42229]"}
       FullPerm == Mask[diz, Wand_list_for_list__out_1];
     Heap := Heap[diz, Wand_list_for_list__out_1:=null];
     assume state(Heap, Mask);
@@ -3239,13 +3239,13 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__out_1_0 := __flatten_47 -- testListAppend.vpr@164.3--164.50
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__out_1_0 (testListAppend.vpr@164.3--164.50) [165450]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__out_1_0 (testListAppend.vpr@164.3--164.50) [42230]"}
       FullPerm == Mask[diz, Wand_list_for_list__out_1_0];
     Heap := Heap[diz, Wand_list_for_list__out_1_0:=__flatten_47];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__this_1 := null -- testListAppend.vpr@165.3--165.41
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__this_1 (testListAppend.vpr@165.3--165.41) [165451]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__this_1 (testListAppend.vpr@165.3--165.41) [42231]"}
       FullPerm == Mask[diz, Wand_list_for_list__this_1];
     Heap := Heap[diz, Wand_list_for_list__this_1:=null];
     assume state(Heap, Mask);
@@ -3259,7 +3259,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__L2_1 := __flatten_48 -- testListAppend.vpr@168.3--168.47
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__L2_1 (testListAppend.vpr@168.3--168.47) [165452]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__L2_1 (testListAppend.vpr@168.3--168.47) [42232]"}
       FullPerm == Mask[diz, Wand_list_for_list__L2_1];
     Heap := Heap[diz, Wand_list_for_list__L2_1:=__flatten_48];
     assume state(Heap, Mask);
@@ -3273,7 +3273,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__tmp_suffix_1 := __flatten_49 -- testListAppend.vpr@171.3--171.55
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@171.3--171.55) [165453]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@171.3--171.55) [42233]"}
       FullPerm == Mask[diz, Wand_list_for_list__tmp_suffix_1];
     Heap := Heap[diz, Wand_list_for_list__tmp_suffix_1:=__flatten_49];
     assume state(Heap, Mask);
@@ -3287,13 +3287,13 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__L1_1 := __flatten_50 -- testListAppend.vpr@174.3--174.47
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__L1_1 (testListAppend.vpr@174.3--174.47) [165454]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__L1_1 (testListAppend.vpr@174.3--174.47) [42234]"}
       FullPerm == Mask[diz, Wand_list_for_list__L1_1];
     Heap := Heap[diz, Wand_list_for_list__L1_1:=__flatten_50];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__tmp_1 := null -- testListAppend.vpr@175.3--175.40
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@175.3--175.40) [165455]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__tmp_1 (testListAppend.vpr@175.3--175.40) [42235]"}
       FullPerm == Mask[diz, Wand_list_for_list__tmp_1];
     Heap := Heap[diz, Wand_list_for_list__tmp_1:=null];
     assume state(Heap, Mask);
@@ -3307,25 +3307,25 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__suffix_1 := __flatten_51 -- testListAppend.vpr@178.3--178.51
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__suffix_1 (testListAppend.vpr@178.3--178.51) [165456]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__suffix_1 (testListAppend.vpr@178.3--178.51) [42236]"}
       FullPerm == Mask[diz, Wand_list_for_list__suffix_1];
     Heap := Heap[diz, Wand_list_for_list__suffix_1:=__flatten_51];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__cursor_1 := null -- testListAppend.vpr@179.3--179.43
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__cursor_1 (testListAppend.vpr@179.3--179.43) [165457]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__cursor_1 (testListAppend.vpr@179.3--179.43) [42237]"}
       FullPerm == Mask[diz, Wand_list_for_list__cursor_1];
     Heap := Heap[diz, Wand_list_for_list__cursor_1:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__wand_1 := null -- testListAppend.vpr@180.3--180.41
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@180.3--180.41) [165458]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__wand_1 (testListAppend.vpr@180.3--180.41) [42238]"}
       FullPerm == Mask[diz, Wand_list_for_list__wand_1];
     Heap := Heap[diz, Wand_list_for_list__wand_1:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__this_2 := null -- testListAppend.vpr@181.3--181.41
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__this_2 (testListAppend.vpr@181.3--181.41) [165459]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__this_2 (testListAppend.vpr@181.3--181.41) [42239]"}
       FullPerm == Mask[diz, Wand_list_for_list__this_2];
     Heap := Heap[diz, Wand_list_for_list__this_2:=null];
     assume state(Heap, Mask);
@@ -3339,7 +3339,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__L2_2 := __flatten_52 -- testListAppend.vpr@184.3--184.47
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__L2_2 (testListAppend.vpr@184.3--184.47) [165460]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__L2_2 (testListAppend.vpr@184.3--184.47) [42240]"}
       FullPerm == Mask[diz, Wand_list_for_list__L2_2];
     Heap := Heap[diz, Wand_list_for_list__L2_2:=__flatten_52];
     assume state(Heap, Mask);
@@ -3353,7 +3353,7 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_list_for_list__L1_2 := __flatten_53 -- testListAppend.vpr@187.3--187.47
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__L1_2 (testListAppend.vpr@187.3--187.47) [165461]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_list_for_list__L1_2 (testListAppend.vpr@187.3--187.47) [42241]"}
       FullPerm == Mask[diz, Wand_list_for_list__L1_2];
     Heap := Heap[diz, Wand_list_for_list__L1_2:=__flatten_53];
     assume state(Heap, Mask);
@@ -3397,201 +3397,201 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
   //   sys__result.Wand_list_for_list__L1_2 == Seq[Int]())))))))))))))))) -- testListAppend.vpr@189.3--189.1800
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testListAppend.vpr@189.10--189.1800) [165462]"}
+    ExhaleWellDef0Heap := AssertHeap;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testListAppend.vpr@189.10--189.1800) [42242]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__lemma (testListAppend.vpr@189.10--189.1800) [165464]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__lemma (testListAppend.vpr@189.10--189.1800) [42244]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__lemma];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__lemma:=AssertMask[sys__result, Wand_list_for_list__lemma] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__lemma == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__lemma (testListAppend.vpr@189.10--189.1800) [165465]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__lemma (testListAppend.vpr@189.10--189.1800) [42245]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__lemma);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__lemma == 0 might not hold. (testListAppend.vpr@189.10--189.1800) [165466]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__lemma == 0 might not hold. (testListAppend.vpr@189.10--189.1800) [42246]"}
       AssertHeap[sys__result, Wand_list_for_list__lemma] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1 (testListAppend.vpr@189.10--189.1800) [165468]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1 (testListAppend.vpr@189.10--189.1800) [42248]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__in_1];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__in_1:=AssertMask[sys__result, Wand_list_for_list__in_1] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__in_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1 (testListAppend.vpr@189.10--189.1800) [165469]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1 (testListAppend.vpr@189.10--189.1800) [42249]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__in_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__in_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [165470]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__in_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [42250]"}
       AssertHeap[sys__result, Wand_list_for_list__in_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1_0 (testListAppend.vpr@189.10--189.1800) [165472]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1_0 (testListAppend.vpr@189.10--189.1800) [42252]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__in_1_0];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__in_1_0:=AssertMask[sys__result, Wand_list_for_list__in_1_0] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__in_1_0 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1_0 (testListAppend.vpr@189.10--189.1800) [165473]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1_0 (testListAppend.vpr@189.10--189.1800) [42253]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__in_1_0);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__in_1_0 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [165474]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__in_1_0 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [42254]"}
       Seq#Equal(AssertHeap[sys__result, Wand_list_for_list__in_1_0], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1 (testListAppend.vpr@189.10--189.1800) [165476]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1 (testListAppend.vpr@189.10--189.1800) [42256]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__out_1];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__out_1:=AssertMask[sys__result, Wand_list_for_list__out_1] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__out_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1 (testListAppend.vpr@189.10--189.1800) [165477]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1 (testListAppend.vpr@189.10--189.1800) [42257]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__out_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__out_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [165478]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__out_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [42258]"}
       AssertHeap[sys__result, Wand_list_for_list__out_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1_0 (testListAppend.vpr@189.10--189.1800) [165480]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1_0 (testListAppend.vpr@189.10--189.1800) [42260]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__out_1_0];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__out_1_0:=AssertMask[sys__result, Wand_list_for_list__out_1_0] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__out_1_0 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1_0 (testListAppend.vpr@189.10--189.1800) [165481]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1_0 (testListAppend.vpr@189.10--189.1800) [42261]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__out_1_0);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__out_1_0 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [165482]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__out_1_0 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [42262]"}
       Seq#Equal(AssertHeap[sys__result, Wand_list_for_list__out_1_0], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__this_1 (testListAppend.vpr@189.10--189.1800) [165484]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__this_1 (testListAppend.vpr@189.10--189.1800) [42264]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__this_1];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__this_1:=AssertMask[sys__result, Wand_list_for_list__this_1] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__this_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__this_1 (testListAppend.vpr@189.10--189.1800) [165485]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__this_1 (testListAppend.vpr@189.10--189.1800) [42265]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__this_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__this_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [165486]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__this_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [42266]"}
       AssertHeap[sys__result, Wand_list_for_list__this_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_1 (testListAppend.vpr@189.10--189.1800) [165488]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_1 (testListAppend.vpr@189.10--189.1800) [42268]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__L2_1];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__L2_1:=AssertMask[sys__result, Wand_list_for_list__L2_1] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__L2_1 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_1 (testListAppend.vpr@189.10--189.1800) [165489]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_1 (testListAppend.vpr@189.10--189.1800) [42269]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__L2_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__L2_1 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [165490]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__L2_1 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [42270]"}
       Seq#Equal(AssertHeap[sys__result, Wand_list_for_list__L2_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@189.10--189.1800) [165492]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@189.10--189.1800) [42272]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__tmp_suffix_1];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__tmp_suffix_1:=AssertMask[sys__result, Wand_list_for_list__tmp_suffix_1] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__tmp_suffix_1 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@189.10--189.1800) [165493]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@189.10--189.1800) [42273]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__tmp_suffix_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__tmp_suffix_1 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [165494]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__tmp_suffix_1 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [42274]"}
       Seq#Equal(AssertHeap[sys__result, Wand_list_for_list__tmp_suffix_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_1 (testListAppend.vpr@189.10--189.1800) [165496]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_1 (testListAppend.vpr@189.10--189.1800) [42276]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__L1_1];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__L1_1:=AssertMask[sys__result, Wand_list_for_list__L1_1] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__L1_1 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_1 (testListAppend.vpr@189.10--189.1800) [165497]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_1 (testListAppend.vpr@189.10--189.1800) [42277]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__L1_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__L1_1 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [165498]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__L1_1 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [42278]"}
       Seq#Equal(AssertHeap[sys__result, Wand_list_for_list__L1_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_1 (testListAppend.vpr@189.10--189.1800) [165500]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_1 (testListAppend.vpr@189.10--189.1800) [42280]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__tmp_1];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__tmp_1:=AssertMask[sys__result, Wand_list_for_list__tmp_1] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__tmp_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_1 (testListAppend.vpr@189.10--189.1800) [165501]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_1 (testListAppend.vpr@189.10--189.1800) [42281]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__tmp_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__tmp_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [165502]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__tmp_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [42282]"}
       AssertHeap[sys__result, Wand_list_for_list__tmp_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__suffix_1 (testListAppend.vpr@189.10--189.1800) [165504]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__suffix_1 (testListAppend.vpr@189.10--189.1800) [42284]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__suffix_1];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__suffix_1:=AssertMask[sys__result, Wand_list_for_list__suffix_1] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__suffix_1 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__suffix_1 (testListAppend.vpr@189.10--189.1800) [165505]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__suffix_1 (testListAppend.vpr@189.10--189.1800) [42285]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__suffix_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__suffix_1 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [165506]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__suffix_1 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [42286]"}
       Seq#Equal(AssertHeap[sys__result, Wand_list_for_list__suffix_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__cursor_1 (testListAppend.vpr@189.10--189.1800) [165508]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__cursor_1 (testListAppend.vpr@189.10--189.1800) [42288]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__cursor_1];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__cursor_1:=AssertMask[sys__result, Wand_list_for_list__cursor_1] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__cursor_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__cursor_1 (testListAppend.vpr@189.10--189.1800) [165509]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__cursor_1 (testListAppend.vpr@189.10--189.1800) [42289]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__cursor_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__cursor_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [165510]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__cursor_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [42290]"}
       AssertHeap[sys__result, Wand_list_for_list__cursor_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__wand_1 (testListAppend.vpr@189.10--189.1800) [165512]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__wand_1 (testListAppend.vpr@189.10--189.1800) [42292]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__wand_1];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__wand_1:=AssertMask[sys__result, Wand_list_for_list__wand_1] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__wand_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__wand_1 (testListAppend.vpr@189.10--189.1800) [165513]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__wand_1 (testListAppend.vpr@189.10--189.1800) [42293]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__wand_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__wand_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [165514]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__wand_1 == null might not hold. (testListAppend.vpr@189.10--189.1800) [42294]"}
       AssertHeap[sys__result, Wand_list_for_list__wand_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__this_2 (testListAppend.vpr@189.10--189.1800) [165516]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__this_2 (testListAppend.vpr@189.10--189.1800) [42296]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__this_2];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__this_2:=AssertMask[sys__result, Wand_list_for_list__this_2] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__this_2 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__this_2 (testListAppend.vpr@189.10--189.1800) [165517]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__this_2 (testListAppend.vpr@189.10--189.1800) [42297]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__this_2);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__this_2 == null might not hold. (testListAppend.vpr@189.10--189.1800) [165518]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__this_2 == null might not hold. (testListAppend.vpr@189.10--189.1800) [42298]"}
       AssertHeap[sys__result, Wand_list_for_list__this_2] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_2 (testListAppend.vpr@189.10--189.1800) [165520]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_2 (testListAppend.vpr@189.10--189.1800) [42300]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__L2_2];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__L2_2:=AssertMask[sys__result, Wand_list_for_list__L2_2] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__L2_2 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_2 (testListAppend.vpr@189.10--189.1800) [165521]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_2 (testListAppend.vpr@189.10--189.1800) [42301]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__L2_2);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__L2_2 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [165522]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__L2_2 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [42302]"}
       Seq#Equal(AssertHeap[sys__result, Wand_list_for_list__L2_2], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_2 (testListAppend.vpr@189.10--189.1800) [165524]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_2 (testListAppend.vpr@189.10--189.1800) [42304]"}
         perm <= AssertMask[sys__result, Wand_list_for_list__L1_2];
     }
     AssertMask := AssertMask[sys__result, Wand_list_for_list__L1_2:=AssertMask[sys__result, Wand_list_for_list__L1_2] - perm];
     
     // -- Check definedness of sys__result.Wand_list_for_list__L1_2 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_2 (testListAppend.vpr@189.10--189.1800) [165525]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_2 (testListAppend.vpr@189.10--189.1800) [42305]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_list_for_list__L1_2);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__L1_2 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [165526]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_list_for_list__L1_2 == Seq[Int]() might not hold. (testListAppend.vpr@189.10--189.1800) [42306]"}
       Seq#Equal(AssertHeap[sys__result, Wand_list_for_list__L1_2], (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
   
@@ -3601,137 +3601,137 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@116.11--116.30) [165527]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@116.11--116.30) [42307]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__lemma (testListAppend.vpr@117.11--117.108) [165528]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__lemma (testListAppend.vpr@117.11--117.108) [42308]"}
         perm <= Mask[sys__result, Wand_list_for_list__lemma];
     }
     Mask := Mask[sys__result, Wand_list_for_list__lemma:=Mask[sys__result, Wand_list_for_list__lemma] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__lemma == 0 might not hold. (testListAppend.vpr@117.11--117.108) [165529]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__lemma == 0 might not hold. (testListAppend.vpr@117.11--117.108) [42309]"}
       Heap[sys__result, Wand_list_for_list__lemma] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1 (testListAppend.vpr@118.11--118.109) [165530]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1 (testListAppend.vpr@118.11--118.109) [42310]"}
         perm <= Mask[sys__result, Wand_list_for_list__in_1];
     }
     Mask := Mask[sys__result, Wand_list_for_list__in_1:=Mask[sys__result, Wand_list_for_list__in_1] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__in_1 == null might not hold. (testListAppend.vpr@118.11--118.109) [165531]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__in_1 == null might not hold. (testListAppend.vpr@118.11--118.109) [42311]"}
       Heap[sys__result, Wand_list_for_list__in_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1_0 (testListAppend.vpr@119.11--119.119) [165532]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__in_1_0 (testListAppend.vpr@119.11--119.119) [42312]"}
         perm <= Mask[sys__result, Wand_list_for_list__in_1_0];
     }
     Mask := Mask[sys__result, Wand_list_for_list__in_1_0:=Mask[sys__result, Wand_list_for_list__in_1_0] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__in_1_0 == Seq[Int]() might not hold. (testListAppend.vpr@119.11--119.119) [165533]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__in_1_0 == Seq[Int]() might not hold. (testListAppend.vpr@119.11--119.119) [42313]"}
       Seq#Equal(Heap[sys__result, Wand_list_for_list__in_1_0], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1 (testListAppend.vpr@120.11--120.111) [165534]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1 (testListAppend.vpr@120.11--120.111) [42314]"}
         perm <= Mask[sys__result, Wand_list_for_list__out_1];
     }
     Mask := Mask[sys__result, Wand_list_for_list__out_1:=Mask[sys__result, Wand_list_for_list__out_1] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__out_1 == null might not hold. (testListAppend.vpr@120.11--120.111) [165535]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__out_1 == null might not hold. (testListAppend.vpr@120.11--120.111) [42315]"}
       Heap[sys__result, Wand_list_for_list__out_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1_0 (testListAppend.vpr@121.11--121.121) [165536]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__out_1_0 (testListAppend.vpr@121.11--121.121) [42316]"}
         perm <= Mask[sys__result, Wand_list_for_list__out_1_0];
     }
     Mask := Mask[sys__result, Wand_list_for_list__out_1_0:=Mask[sys__result, Wand_list_for_list__out_1_0] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__out_1_0 == Seq[Int]() might not hold. (testListAppend.vpr@121.11--121.121) [165537]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__out_1_0 == Seq[Int]() might not hold. (testListAppend.vpr@121.11--121.121) [42317]"}
       Seq#Equal(Heap[sys__result, Wand_list_for_list__out_1_0], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__this_1 (testListAppend.vpr@122.11--122.113) [165538]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__this_1 (testListAppend.vpr@122.11--122.113) [42318]"}
         perm <= Mask[sys__result, Wand_list_for_list__this_1];
     }
     Mask := Mask[sys__result, Wand_list_for_list__this_1:=Mask[sys__result, Wand_list_for_list__this_1] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__this_1 == null might not hold. (testListAppend.vpr@122.11--122.113) [165539]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__this_1 == null might not hold. (testListAppend.vpr@122.11--122.113) [42319]"}
       Heap[sys__result, Wand_list_for_list__this_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_1 (testListAppend.vpr@123.11--123.115) [165540]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_1 (testListAppend.vpr@123.11--123.115) [42320]"}
         perm <= Mask[sys__result, Wand_list_for_list__L2_1];
     }
     Mask := Mask[sys__result, Wand_list_for_list__L2_1:=Mask[sys__result, Wand_list_for_list__L2_1] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__L2_1 == Seq[Int]() might not hold. (testListAppend.vpr@123.11--123.115) [165541]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__L2_1 == Seq[Int]() might not hold. (testListAppend.vpr@123.11--123.115) [42321]"}
       Seq#Equal(Heap[sys__result, Wand_list_for_list__L2_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@124.11--124.131) [165542]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@124.11--124.131) [42322]"}
         perm <= Mask[sys__result, Wand_list_for_list__tmp_suffix_1];
     }
     Mask := Mask[sys__result, Wand_list_for_list__tmp_suffix_1:=Mask[sys__result, Wand_list_for_list__tmp_suffix_1] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__tmp_suffix_1 == Seq[Int]() might not hold. (testListAppend.vpr@124.11--124.131) [165543]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__tmp_suffix_1 == Seq[Int]() might not hold. (testListAppend.vpr@124.11--124.131) [42323]"}
       Seq#Equal(Heap[sys__result, Wand_list_for_list__tmp_suffix_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_1 (testListAppend.vpr@125.11--125.115) [165544]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_1 (testListAppend.vpr@125.11--125.115) [42324]"}
         perm <= Mask[sys__result, Wand_list_for_list__L1_1];
     }
     Mask := Mask[sys__result, Wand_list_for_list__L1_1:=Mask[sys__result, Wand_list_for_list__L1_1] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__L1_1 == Seq[Int]() might not hold. (testListAppend.vpr@125.11--125.115) [165545]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__L1_1 == Seq[Int]() might not hold. (testListAppend.vpr@125.11--125.115) [42325]"}
       Seq#Equal(Heap[sys__result, Wand_list_for_list__L1_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_1 (testListAppend.vpr@126.11--126.111) [165546]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__tmp_1 (testListAppend.vpr@126.11--126.111) [42326]"}
         perm <= Mask[sys__result, Wand_list_for_list__tmp_1];
     }
     Mask := Mask[sys__result, Wand_list_for_list__tmp_1:=Mask[sys__result, Wand_list_for_list__tmp_1] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__tmp_1 == null might not hold. (testListAppend.vpr@126.11--126.111) [165547]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__tmp_1 == null might not hold. (testListAppend.vpr@126.11--126.111) [42327]"}
       Heap[sys__result, Wand_list_for_list__tmp_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__suffix_1 (testListAppend.vpr@127.11--127.123) [165548]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__suffix_1 (testListAppend.vpr@127.11--127.123) [42328]"}
         perm <= Mask[sys__result, Wand_list_for_list__suffix_1];
     }
     Mask := Mask[sys__result, Wand_list_for_list__suffix_1:=Mask[sys__result, Wand_list_for_list__suffix_1] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__suffix_1 == Seq[Int]() might not hold. (testListAppend.vpr@127.11--127.123) [165549]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__suffix_1 == Seq[Int]() might not hold. (testListAppend.vpr@127.11--127.123) [42329]"}
       Seq#Equal(Heap[sys__result, Wand_list_for_list__suffix_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__cursor_1 (testListAppend.vpr@128.11--128.117) [165550]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__cursor_1 (testListAppend.vpr@128.11--128.117) [42330]"}
         perm <= Mask[sys__result, Wand_list_for_list__cursor_1];
     }
     Mask := Mask[sys__result, Wand_list_for_list__cursor_1:=Mask[sys__result, Wand_list_for_list__cursor_1] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__cursor_1 == null might not hold. (testListAppend.vpr@128.11--128.117) [165551]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__cursor_1 == null might not hold. (testListAppend.vpr@128.11--128.117) [42331]"}
       Heap[sys__result, Wand_list_for_list__cursor_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__wand_1 (testListAppend.vpr@129.11--129.113) [165552]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__wand_1 (testListAppend.vpr@129.11--129.113) [42332]"}
         perm <= Mask[sys__result, Wand_list_for_list__wand_1];
     }
     Mask := Mask[sys__result, Wand_list_for_list__wand_1:=Mask[sys__result, Wand_list_for_list__wand_1] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__wand_1 == null might not hold. (testListAppend.vpr@129.11--129.113) [165553]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__wand_1 == null might not hold. (testListAppend.vpr@129.11--129.113) [42333]"}
       Heap[sys__result, Wand_list_for_list__wand_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__this_2 (testListAppend.vpr@130.11--130.113) [165554]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__this_2 (testListAppend.vpr@130.11--130.113) [42334]"}
         perm <= Mask[sys__result, Wand_list_for_list__this_2];
     }
     Mask := Mask[sys__result, Wand_list_for_list__this_2:=Mask[sys__result, Wand_list_for_list__this_2] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__this_2 == null might not hold. (testListAppend.vpr@130.11--130.113) [165555]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__this_2 == null might not hold. (testListAppend.vpr@130.11--130.113) [42335]"}
       Heap[sys__result, Wand_list_for_list__this_2] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_2 (testListAppend.vpr@131.11--131.115) [165556]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__L2_2 (testListAppend.vpr@131.11--131.115) [42336]"}
         perm <= Mask[sys__result, Wand_list_for_list__L2_2];
     }
     Mask := Mask[sys__result, Wand_list_for_list__L2_2:=Mask[sys__result, Wand_list_for_list__L2_2] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__L2_2 == Seq[Int]() might not hold. (testListAppend.vpr@131.11--131.115) [165557]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__L2_2 == Seq[Int]() might not hold. (testListAppend.vpr@131.11--131.115) [42337]"}
       Seq#Equal(Heap[sys__result, Wand_list_for_list__L2_2], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_2 (testListAppend.vpr@132.11--132.115) [165558]"}
+      assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. There might be insufficient permission to access sys__result.Wand_list_for_list__L1_2 (testListAppend.vpr@132.11--132.115) [42338]"}
         perm <= Mask[sys__result, Wand_list_for_list__L1_2];
     }
     Mask := Mask[sys__result, Wand_list_for_list__L1_2:=Mask[sys__result, Wand_list_for_list__L1_2] - perm];
-    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__L1_2 == Seq[Int]() might not hold. (testListAppend.vpr@132.11--132.115) [165559]"}
+    assert {:msg "  Postcondition of Wand_list_for_list__Wand_list_for_list might not hold. Assertion sys__result.Wand_list_for_list__L1_2 == Seq[Int]() might not hold. (testListAppend.vpr@132.11--132.115) [42339]"}
       Seq#Equal(Heap[sys__result, Wand_list_for_list__L1_2], (Seq#Empty(): Seq int));
     // Finish exhale
     havoc ExhaleHeap;
@@ -3746,13 +3746,13 @@ procedure Wand_list_for_list__Wand_list_for_list(current_thread_id: int) returns
 procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var diz: Ref;
   var freshObj: Ref;
@@ -3762,8 +3762,8 @@ procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref
   var newPMask: PMaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3778,8 +3778,8 @@ procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3796,12 +3796,12 @@ procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref
     // -- Check definedness of List__contents(sys__result) == Seq(v)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@197.11--197.38) [165560]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@197.11--197.38) [42340]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(sys__result) (testListAppend.vpr@197.11--197.38) [165561]"}
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(sys__result) (testListAppend.vpr@197.11--197.38) [42341]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List__state(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -3837,36 +3837,36 @@ procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.List__val := __flatten_54 -- testListAppend.vpr@205.3--205.32
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.List__val (testListAppend.vpr@205.3--205.32) [165562]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.List__val (testListAppend.vpr@205.3--205.32) [42342]"}
       FullPerm == Mask[diz, List__val];
     Heap := Heap[diz, List__val:=__flatten_54];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.List__next := null -- testListAppend.vpr@206.3--206.25
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@206.3--206.25) [165563]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@206.3--206.25) [42343]"}
       FullPerm == Mask[diz, List__next];
     Heap := Heap[diz, List__next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List__state(diz), write) -- testListAppend.vpr@207.3--207.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access diz.List__val (testListAppend.vpr@207.3--207.36) [165566]"}
+      assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access diz.List__val (testListAppend.vpr@207.3--207.36) [42346]"}
         perm <= Mask[diz, List__val];
     }
     Mask := Mask[diz, List__val:=Mask[diz, List__val] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@207.3--207.36) [165568]"}
+      assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@207.3--207.36) [42348]"}
         perm <= Mask[diz, List__next];
     }
     Mask := Mask[diz, List__next:=Mask[diz, List__next] - perm];
     if (Heap[diz, List__next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access List__state(diz.List__next) (testListAppend.vpr@207.3--207.36) [165570]"}
+        assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access List__state(diz.List__next) (testListAppend.vpr@207.3--207.36) [42350]"}
           perm <= Mask[null, List__state(Heap[diz, List__next])];
       }
       Mask := Mask[null, List__state(Heap[diz, List__next]):=Mask[null, List__state(Heap[diz, List__next])] - perm];
@@ -3889,9 +3889,9 @@ procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref
     Heap := Heap[null, List__state#sm(diz):=Heap[null, List__state#sm(diz)][diz, List__next:=true]];
     if (Heap[diz, List__next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-        { newPMask[o_35, f_17] }
-        Heap[null, List__state#sm(diz)][o_35, f_17] || Heap[null, List__state#sm(Heap[diz, List__next])][o_35, f_17] ==> newPMask[o_35, f_17]
+      assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+        { newPMask[o_3, f_24] }
+        Heap[null, List__state#sm(diz)][o_3, f_24] || Heap[null, List__state#sm(Heap[diz, List__next])][o_3, f_24] ==> newPMask[o_3, f_24]
       );
       Heap := Heap[null, List__state#sm(diz):=newPMask];
     }
@@ -3907,13 +3907,13 @@ procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref
   //   List__contents(sys__result) == Seq(v)) -- testListAppend.vpr@209.3--209.114
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testListAppend.vpr@209.10--209.114) [165572]"}
+    ExhaleWellDef0Heap := AssertHeap;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testListAppend.vpr@209.10--209.114) [42352]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access List__state(sys__result) (testListAppend.vpr@209.10--209.114) [165574]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access List__state(sys__result) (testListAppend.vpr@209.10--209.114) [42354]"}
         perm <= AssertMask[null, List__state(sys__result)];
     }
     AssertMask := AssertMask[null, List__state(sys__result):=AssertMask[null, List__state(sys__result)] - perm];
@@ -3921,12 +3921,12 @@ procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref
     // -- Check definedness of List__contents(sys__result) == Seq(v)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@209.76--209.103) [165575]"}
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@209.76--209.103) [42355]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(sys__result) (testListAppend.vpr@209.76--209.103) [165576]"}
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(sys__result) (testListAppend.vpr@209.76--209.103) [42356]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, List__state(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -3935,7 +3935,7 @@ procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion List__contents(sys__result) == Seq(v) might not hold. (testListAppend.vpr@209.10--209.114) [165577]"}
+    assert {:msg "  Assert might fail. Assertion List__contents(sys__result) == Seq(v) might not hold. (testListAppend.vpr@209.10--209.114) [42357]"}
       Seq#Equal(List__contents(AssertHeap, sys__result), Seq#Singleton(v_2));
     assume state(Heap, Mask);
   
@@ -3945,17 +3945,17 @@ procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of List__List might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@195.11--195.30) [165578]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of List__List might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@195.11--195.30) [42358]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of List__List might not hold. There might be insufficient permission to access List__state(sys__result) (testListAppend.vpr@196.11--196.47) [165579]"}
+      assert {:msg "  Postcondition of List__List might not hold. There might be insufficient permission to access List__state(sys__result) (testListAppend.vpr@196.11--196.47) [42359]"}
         perm <= Mask[null, List__state(sys__result)];
     }
     Mask := Mask[null, List__state(sys__result):=Mask[null, List__state(sys__result)] - perm];
-    assert {:msg "  Postcondition of List__List might not hold. Assertion List__contents(sys__result) == Seq(v) might not hold. (testListAppend.vpr@197.11--197.48) [165580]"}
+    assert {:msg "  Postcondition of List__List might not hold. Assertion List__contents(sys__result) == Seq(v) might not hold. (testListAppend.vpr@197.11--197.48) [42360]"}
       Seq#Equal(List__contents(Heap, sys__result), Seq#Singleton(v_2));
     // Finish exhale
     havoc ExhaleHeap;
@@ -3967,15 +3967,15 @@ procedure List__List(current_thread_id: int, v_2: int) returns (sys__result: Ref
 // Translation of method List__append_rec
 // ==================================================
 
-procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq int), L2: (Seq int)) returns ()
+procedure List__append_rec(diz: Ref, current_thread_id: int, l_1: Ref, L1: (Seq int), L2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_12: Ref;
@@ -3996,7 +3996,7 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
   
   // -- Assumptions about method arguments
     assume Heap[diz, $allocated];
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
   
   // -- Checked inhaling of precondition
     assume diz != null;
@@ -4012,12 +4012,12 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
     // -- Check definedness of List__contents(diz) == L1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion diz != null might not hold. (testListAppend.vpr@217.12--217.31) [165581]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion diz != null might not hold. (testListAppend.vpr@217.12--217.31) [42361]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@217.12--217.31) [165582]"}
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@217.12--217.31) [42362]"}
           NoPerm < perm ==> NoPerm < Mask[null, List__state(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4028,10 +4028,10 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
       }
     assume Seq#Equal(List__contents(Heap, diz), L1);
     assume state(Heap, Mask);
-    assume l_2 != null;
+    assume l_1 != null;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, List__state(l_2):=Mask[null, List__state(l_2)] + perm];
+    Mask := Mask[null, List__state(l_1):=Mask[null, List__state(l_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -4039,13 +4039,13 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
     // -- Check definedness of List__contents(l) == L2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion l != null might not hold. (testListAppend.vpr@220.12--220.29) [165583]"}
-          l_2 != null;
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion l != null might not hold. (testListAppend.vpr@220.12--220.29) [42363]"}
+          l_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(l) (testListAppend.vpr@220.12--220.29) [165584]"}
-          NoPerm < perm ==> NoPerm < Mask[null, List__state(l_2)];
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(l) (testListAppend.vpr@220.12--220.29) [42364]"}
+          NoPerm < perm ==> NoPerm < Mask[null, List__state(l_1)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -4053,14 +4053,14 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
         // Stop execution
         assume false;
       }
-    assume Seq#Equal(List__contents(Heap, l_2), L2);
+    assume Seq#Equal(List__contents(Heap, l_1), L2);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4075,12 +4075,12 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
     // -- Check definedness of List__contents(diz) == L1 ++ L2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion diz != null might not hold. (testListAppend.vpr@222.11--222.30) [165585]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion diz != null might not hold. (testListAppend.vpr@222.11--222.30) [42365]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@222.11--222.30) [165586]"}
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@222.11--222.30) [42366]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List__state(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4102,11 +4102,11 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
   // -- Translating statement: unfold acc(List__state(diz), write) -- testListAppend.vpr@227.3--227.38
     assume List__state#trigger(Heap, List__state(diz));
     assume Heap[null, List__state(diz)] == CombineFrames(FrameFragment(Heap[diz, List__val]), CombineFrames(FrameFragment(Heap[diz, List__next]), FrameFragment((if Heap[diz, List__next] != null then Heap[null, List__state(Heap[diz, List__next])] else EmptyFrame))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding List__state(diz) might fail. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@227.3--227.38) [165589]"}
+      assert {:msg "  Unfolding List__state(diz) might fail. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@227.3--227.38) [42369]"}
         perm <= Mask[null, List__state(diz)];
     }
     Mask := Mask[null, List__state(diz):=Mask[null, List__state(diz)] - perm];
@@ -4138,12 +4138,12 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
   // -- Translating statement: if (diz.List__next == null) -- testListAppend.vpr@228.3--235.4
     
     // -- Check definedness of diz.List__next == null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@228.7--228.29) [165593]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@228.7--228.29) [42373]"}
         HasDirectPerm(Mask, diz, List__next);
     if (Heap[diz, List__next] == null) {
       
       // -- Translating statement: __flatten_12 := l -- testListAppend.vpr@229.5--229.22
-        __flatten_12 := l_2;
+        __flatten_12 := l_1;
         assume state(Heap, Mask);
       
       // -- Translating statement: __flatten_55 := __flatten_12 -- testListAppend.vpr@230.5--230.33
@@ -4151,7 +4151,7 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
         assume state(Heap, Mask);
       
       // -- Translating statement: diz.List__next := __flatten_55 -- testListAppend.vpr@231.5--231.35
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@231.5--231.35) [165594]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@231.5--231.35) [42374]"}
           FullPerm == Mask[diz, List__next];
         Heap := Heap[diz, List__next:=__flatten_55];
         assume state(Heap, Mask);
@@ -4160,16 +4160,16 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
       // -- Translating statement: __flatten_56 := List__contents(diz.List__next) -- testListAppend.vpr@233.5--233.51
         
         // -- Check definedness of List__contents(diz.List__next)
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@233.5--233.51) [165595]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@233.5--233.51) [42375]"}
             HasDirectPerm(Mask, diz, List__next);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function List__contents might not hold. Assertion diz.List__next != null might not hold. (testListAppend.vpr@233.21--233.51) [165596]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function List__contents might not hold. Assertion diz.List__next != null might not hold. (testListAppend.vpr@233.21--233.51) [42376]"}
               Heap[diz, List__next] != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz.List__next) (testListAppend.vpr@233.21--233.51) [165597]"}
+            assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz.List__next) (testListAppend.vpr@233.21--233.51) [42377]"}
               NoPerm < perm ==> NoPerm < Mask[null, List__state(Heap[diz, List__next])];
             // Finish exhale
             havoc ExhaleHeap;
@@ -4186,35 +4186,35 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
         PreCallMask := Mask;
         
         // -- Check definedness of diz.List__next
-          assert {:msg "  Method call might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@234.5--234.77) [165598]"}
+          assert {:msg "  Method call might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@234.5--234.77) [42378]"}
             HasDirectPerm(Mask, diz, List__next);
         arg_diz := Heap[diz, List__next];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method List__append_rec might not hold. Assertion diz.List__next != null might not hold. (testListAppend.vpr@234.5--234.77) [165599]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  The precondition of method List__append_rec might not hold. Assertion diz.List__next != null might not hold. (testListAppend.vpr@234.5--234.77) [42379]"}
             arg_diz != null;
-          assert {:msg "  The precondition of method List__append_rec might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@234.5--234.77) [165600]"}
+          assert {:msg "  The precondition of method List__append_rec might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@234.5--234.77) [42380]"}
             current_thread_id >= 0;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method List__append_rec might not hold. There might be insufficient permission to access List__state(diz.List__next) (testListAppend.vpr@234.5--234.77) [165601]"}
+            assert {:msg "  The precondition of method List__append_rec might not hold. There might be insufficient permission to access List__state(diz.List__next) (testListAppend.vpr@234.5--234.77) [42381]"}
               perm <= Mask[null, List__state(arg_diz)];
           }
           Mask := Mask[null, List__state(arg_diz):=Mask[null, List__state(arg_diz)] - perm];
-          assert {:msg "  The precondition of method List__append_rec might not hold. Assertion List__contents(diz.List__next) == __flatten_56 might not hold. (testListAppend.vpr@234.5--234.77) [165602]"}
+          assert {:msg "  The precondition of method List__append_rec might not hold. Assertion List__contents(diz.List__next) == __flatten_56 might not hold. (testListAppend.vpr@234.5--234.77) [42382]"}
             Seq#Equal(List__contents(Heap, arg_diz), __flatten_56);
-          assert {:msg "  The precondition of method List__append_rec might not hold. Assertion l != null might not hold. (testListAppend.vpr@234.5--234.77) [165603]"}
-            l_2 != null;
+          assert {:msg "  The precondition of method List__append_rec might not hold. Assertion l != null might not hold. (testListAppend.vpr@234.5--234.77) [42383]"}
+            l_1 != null;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method List__append_rec might not hold. There might be insufficient permission to access List__state(l) (testListAppend.vpr@234.5--234.77) [165604]"}
-              perm <= Mask[null, List__state(l_2)];
+            assert {:msg "  The precondition of method List__append_rec might not hold. There might be insufficient permission to access List__state(l) (testListAppend.vpr@234.5--234.77) [42384]"}
+              perm <= Mask[null, List__state(l_1)];
           }
-          Mask := Mask[null, List__state(l_2):=Mask[null, List__state(l_2)] - perm];
-          assert {:msg "  The precondition of method List__append_rec might not hold. Assertion List__contents(l) == L2 might not hold. (testListAppend.vpr@234.5--234.77) [165605]"}
-            Seq#Equal(List__contents(Heap, l_2), L2);
+          Mask := Mask[null, List__state(l_1):=Mask[null, List__state(l_1)] - perm];
+          assert {:msg "  The precondition of method List__append_rec might not hold. Assertion List__contents(l) == L2 might not hold. (testListAppend.vpr@234.5--234.77) [42385]"}
+            Seq#Equal(List__contents(Heap, l_1), L2);
           // Finish exhale
           havoc ExhaleHeap;
           assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -4232,24 +4232,24 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List__state(diz), write) -- testListAppend.vpr@236.3--236.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access diz.List__val (testListAppend.vpr@236.3--236.36) [165608]"}
+      assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access diz.List__val (testListAppend.vpr@236.3--236.36) [42388]"}
         perm <= Mask[diz, List__val];
     }
     Mask := Mask[diz, List__val:=Mask[diz, List__val] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@236.3--236.36) [165610]"}
+      assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access diz.List__next (testListAppend.vpr@236.3--236.36) [42390]"}
         perm <= Mask[diz, List__next];
     }
     Mask := Mask[diz, List__next:=Mask[diz, List__next] - perm];
     if (Heap[diz, List__next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access List__state(diz.List__next) (testListAppend.vpr@236.3--236.36) [165612]"}
+        assert {:msg "  Folding List__state(diz) might fail. There might be insufficient permission to access List__state(diz.List__next) (testListAppend.vpr@236.3--236.36) [42392]"}
           perm <= Mask[null, List__state(Heap[diz, List__next])];
       }
       Mask := Mask[null, List__state(Heap[diz, List__next]):=Mask[null, List__state(Heap[diz, List__next])] - perm];
@@ -4272,9 +4272,9 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
     Heap := Heap[null, List__state#sm(diz):=Heap[null, List__state#sm(diz)][diz, List__next:=true]];
     if (Heap[diz, List__next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_1: Ref, f_11: (Field A B) ::
-        { newPMask[o_1, f_11] }
-        Heap[null, List__state#sm(diz)][o_1, f_11] || Heap[null, List__state#sm(Heap[diz, List__next])][o_1, f_11] ==> newPMask[o_1, f_11]
+      assume (forall <A, B> o_1: Ref, f_10: (Field A B) ::
+        { newPMask[o_1, f_10] }
+        Heap[null, List__state#sm(diz)][o_1, f_10] || Heap[null, List__state#sm(Heap[diz, List__next])][o_1, f_10] ==> newPMask[o_1, f_10]
       );
       Heap := Heap[null, List__state#sm(diz):=newPMask];
     }
@@ -4282,15 +4282,15 @@ procedure List__append_rec(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of List__append_rec might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@221.11--221.39) [165614]"}
+      assert {:msg "  Postcondition of List__append_rec might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@221.11--221.39) [42394]"}
         perm <= Mask[null, List__state(diz)];
     }
     Mask := Mask[null, List__state(diz):=Mask[null, List__state(diz)] - perm];
-    assert {:msg "  Postcondition of List__append_rec might not hold. Assertion List__contents(diz) == L1 ++ L2 might not hold. (testListAppend.vpr@222.11--222.42) [165615]"}
+    assert {:msg "  Postcondition of List__append_rec might not hold. Assertion List__contents(diz) == L1 ++ L2 might not hold. (testListAppend.vpr@222.11--222.42) [42395]"}
       Seq#Equal(List__contents(Heap, diz), Seq#Append(L1, L2));
     // Finish exhale
     havoc ExhaleHeap;
@@ -4306,11 +4306,11 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var vwand: Ref;
@@ -4349,8 +4349,8 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
   var newPMask: PMaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -4386,13 +4386,13 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
     
     // -- Check definedness of tmp_1.List__next == cursor_1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access tmp_1.List__next (testListAppend.vpr@245.12--245.40) [165616]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access tmp_1.List__next (testListAppend.vpr@245.12--245.40) [42396]"}
         HasDirectPerm(Mask, tmp_1, List__next);
     assume Heap[tmp_1, List__next] == cursor_1;
     assume state(Heap, Mask);
     
     // -- Check definedness of tmp_suffix_1 == Seq(tmp_1.List__val) ++ suffix_1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access tmp_1.List__val (testListAppend.vpr@246.12--246.60) [165617]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access tmp_1.List__val (testListAppend.vpr@246.12--246.60) [42397]"}
         HasDirectPerm(Mask, tmp_1, List__val);
     assume Seq#Equal(tmp_suffix_1, Seq#Append(Seq#Singleton(Heap[tmp_1, List__val]), suffix_1));
     assume state(Heap, Mask);
@@ -4407,12 +4407,12 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_in_1(wand_1) == tmp_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion wand_1 != null might not hold. (testListAppend.vpr@249.12--249.48) [165618]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion wand_1 != null might not hold. (testListAppend.vpr@249.12--249.48) [42398]"}
           wand_1_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(wand_1) (testListAppend.vpr@249.12--249.48) [165619]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(wand_1) (testListAppend.vpr@249.12--249.48) [42399]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(wand_1_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4428,12 +4428,12 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_in_1_0(wand_1) == tmp_suffix_1 ++ L2_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion wand_1 != null might not hold. (testListAppend.vpr@250.12--250.50) [165620]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion wand_1 != null might not hold. (testListAppend.vpr@250.12--250.50) [42400]"}
           wand_1_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(wand_1) (testListAppend.vpr@250.12--250.50) [165621]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(wand_1) (testListAppend.vpr@250.12--250.50) [42401]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(wand_1_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4449,12 +4449,12 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_out_1(wand_1) == this_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion wand_1 != null might not hold. (testListAppend.vpr@251.12--251.49) [165622]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion wand_1 != null might not hold. (testListAppend.vpr@251.12--251.49) [42402]"}
           wand_1_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(wand_1) (testListAppend.vpr@251.12--251.49) [165623]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(wand_1) (testListAppend.vpr@251.12--251.49) [42403]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(wand_1_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4470,12 +4470,12 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_out_1_0(wand_1) == L1_1 ++ L2_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion wand_1 != null might not hold. (testListAppend.vpr@252.12--252.51) [165624]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion wand_1 != null might not hold. (testListAppend.vpr@252.12--252.51) [42404]"}
           wand_1_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(wand_1) (testListAppend.vpr@252.12--252.51) [165625]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(wand_1) (testListAppend.vpr@252.12--252.51) [42405]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(wand_1_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4502,8 +4502,8 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4520,12 +4520,12 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_in_1(sys__result) == in_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@261.11--261.52) [165626]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@261.11--261.52) [42406]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@261.11--261.52) [165627]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@261.11--261.52) [42407]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4541,12 +4541,12 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_in_1_0(sys__result) == in_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@262.11--262.54) [165628]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@262.11--262.54) [42408]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@262.11--262.54) [165629]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@262.11--262.54) [42409]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4562,12 +4562,12 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_out_1(sys__result) == out_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@263.11--263.53) [165630]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@263.11--263.53) [42410]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@263.11--263.53) [165631]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@263.11--263.53) [42411]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4583,12 +4583,12 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_out_1_0(sys__result) == out_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@264.11--264.55) [165632]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@264.11--264.55) [42412]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@264.11--264.55) [165633]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@264.11--264.55) [42413]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4625,9 +4625,9 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Wand_list_for_list__Wand_list_for_list might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@295.3--295.76) [165634]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Wand_list_for_list__Wand_list_for_list might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@295.3--295.76) [42414]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -4732,7 +4732,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__lemma := __flatten_59 -- testListAppend.vpr@299.3--299.50
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__lemma (testListAppend.vpr@299.3--299.50) [165635]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__lemma (testListAppend.vpr@299.3--299.50) [42415]"}
       FullPerm == Mask[vwand, Wand_list_for_list__lemma];
     Heap := Heap[vwand, Wand_list_for_list__lemma:=__flatten_59];
     assume state(Heap, Mask);
@@ -4746,7 +4746,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__this_1 := __flatten_60 -- testListAppend.vpr@302.3--302.51
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_1 (testListAppend.vpr@302.3--302.51) [165636]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_1 (testListAppend.vpr@302.3--302.51) [42416]"}
       FullPerm == Mask[vwand, Wand_list_for_list__this_1];
     Heap := Heap[vwand, Wand_list_for_list__this_1:=__flatten_60];
     assume state(Heap, Mask);
@@ -4760,7 +4760,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__L2_1 := __flatten_61 -- testListAppend.vpr@305.3--305.49
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_1 (testListAppend.vpr@305.3--305.49) [165637]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_1 (testListAppend.vpr@305.3--305.49) [42417]"}
       FullPerm == Mask[vwand, Wand_list_for_list__L2_1];
     Heap := Heap[vwand, Wand_list_for_list__L2_1:=__flatten_61];
     assume state(Heap, Mask);
@@ -4774,7 +4774,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__tmp_suffix_1 := __flatten_62 -- testListAppend.vpr@308.3--308.57
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@308.3--308.57) [165638]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@308.3--308.57) [42418]"}
       FullPerm == Mask[vwand, Wand_list_for_list__tmp_suffix_1];
     Heap := Heap[vwand, Wand_list_for_list__tmp_suffix_1:=__flatten_62];
     assume state(Heap, Mask);
@@ -4788,7 +4788,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__L1_1 := __flatten_63 -- testListAppend.vpr@311.3--311.49
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_1 (testListAppend.vpr@311.3--311.49) [165639]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_1 (testListAppend.vpr@311.3--311.49) [42419]"}
       FullPerm == Mask[vwand, Wand_list_for_list__L1_1];
     Heap := Heap[vwand, Wand_list_for_list__L1_1:=__flatten_63];
     assume state(Heap, Mask);
@@ -4802,7 +4802,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__tmp_1 := __flatten_64 -- testListAppend.vpr@314.3--314.50
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1 (testListAppend.vpr@314.3--314.50) [165640]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1 (testListAppend.vpr@314.3--314.50) [42420]"}
       FullPerm == Mask[vwand, Wand_list_for_list__tmp_1];
     Heap := Heap[vwand, Wand_list_for_list__tmp_1:=__flatten_64];
     assume state(Heap, Mask);
@@ -4816,7 +4816,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__suffix_1 := __flatten_65 -- testListAppend.vpr@317.3--317.53
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__suffix_1 (testListAppend.vpr@317.3--317.53) [165641]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__suffix_1 (testListAppend.vpr@317.3--317.53) [42421]"}
       FullPerm == Mask[vwand, Wand_list_for_list__suffix_1];
     Heap := Heap[vwand, Wand_list_for_list__suffix_1:=__flatten_65];
     assume state(Heap, Mask);
@@ -4830,7 +4830,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__cursor_1 := __flatten_66 -- testListAppend.vpr@320.3--320.53
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__cursor_1 (testListAppend.vpr@320.3--320.53) [165642]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__cursor_1 (testListAppend.vpr@320.3--320.53) [42422]"}
       FullPerm == Mask[vwand, Wand_list_for_list__cursor_1];
     Heap := Heap[vwand, Wand_list_for_list__cursor_1:=__flatten_66];
     assume state(Heap, Mask);
@@ -4844,7 +4844,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__wand_1 := __flatten_67 -- testListAppend.vpr@323.3--323.51
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__wand_1 (testListAppend.vpr@323.3--323.51) [165643]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__wand_1 (testListAppend.vpr@323.3--323.51) [42423]"}
       FullPerm == Mask[vwand, Wand_list_for_list__wand_1];
     Heap := Heap[vwand, Wand_list_for_list__wand_1:=__flatten_67];
     assume state(Heap, Mask);
@@ -4858,7 +4858,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__in_1 := __flatten_68 -- testListAppend.vpr@326.3--326.49
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1 (testListAppend.vpr@326.3--326.49) [165644]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1 (testListAppend.vpr@326.3--326.49) [42424]"}
       FullPerm == Mask[vwand, Wand_list_for_list__in_1];
     Heap := Heap[vwand, Wand_list_for_list__in_1:=__flatten_68];
     assume state(Heap, Mask);
@@ -4872,7 +4872,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__in_1_0 := __flatten_69 -- testListAppend.vpr@329.3--329.51
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1_0 (testListAppend.vpr@329.3--329.51) [165645]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1_0 (testListAppend.vpr@329.3--329.51) [42425]"}
       FullPerm == Mask[vwand, Wand_list_for_list__in_1_0];
     Heap := Heap[vwand, Wand_list_for_list__in_1_0:=__flatten_69];
     assume state(Heap, Mask);
@@ -4886,7 +4886,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__out_1 := __flatten_70 -- testListAppend.vpr@332.3--332.50
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1 (testListAppend.vpr@332.3--332.50) [165646]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1 (testListAppend.vpr@332.3--332.50) [42426]"}
       FullPerm == Mask[vwand, Wand_list_for_list__out_1];
     Heap := Heap[vwand, Wand_list_for_list__out_1:=__flatten_70];
     assume state(Heap, Mask);
@@ -4900,160 +4900,160 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__out_1_0 := __flatten_71 -- testListAppend.vpr@335.3--335.52
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1_0 (testListAppend.vpr@335.3--335.52) [165647]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1_0 (testListAppend.vpr@335.3--335.52) [42427]"}
       FullPerm == Mask[vwand, Wand_list_for_list__out_1_0];
     Heap := Heap[vwand, Wand_list_for_list__out_1_0:=__flatten_71];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Wand_list_for_list__valid_wand(vwand), write) -- testListAppend.vpr@336.3--336.57
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__lemma (testListAppend.vpr@336.3--336.57) [165649]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__lemma (testListAppend.vpr@336.3--336.57) [42429]"}
       Mask[vwand, Wand_list_for_list__lemma] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__lemma];
     Mask := Mask[vwand, Wand_list_for_list__lemma:=Mask[vwand, Wand_list_for_list__lemma] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion 1 <= vwand.Wand_list_for_list__lemma might not hold. (testListAppend.vpr@336.3--336.57) [165650]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion 1 <= vwand.Wand_list_for_list__lemma might not hold. (testListAppend.vpr@336.3--336.57) [42430]"}
       1 <= Heap[vwand, Wand_list_for_list__lemma];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1 (testListAppend.vpr@336.3--336.57) [165651]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1 (testListAppend.vpr@336.3--336.57) [42431]"}
       Mask[vwand, Wand_list_for_list__in_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__in_1];
     Mask := Mask[vwand, Wand_list_for_list__in_1:=Mask[vwand, Wand_list_for_list__in_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 != null might not hold. (testListAppend.vpr@336.3--336.57) [165652]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 != null might not hold. (testListAppend.vpr@336.3--336.57) [42432]"}
       Heap[vwand, Wand_list_for_list__in_1] != null;
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1_0 (testListAppend.vpr@336.3--336.57) [165653]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1_0 (testListAppend.vpr@336.3--336.57) [42433]"}
       Mask[vwand, Wand_list_for_list__in_1_0] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__in_1_0];
     Mask := Mask[vwand, Wand_list_for_list__in_1_0:=Mask[vwand, Wand_list_for_list__in_1_0] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1 (testListAppend.vpr@336.3--336.57) [165654]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1 (testListAppend.vpr@336.3--336.57) [42434]"}
       Mask[vwand, Wand_list_for_list__out_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__out_1];
     Mask := Mask[vwand, Wand_list_for_list__out_1:=Mask[vwand, Wand_list_for_list__out_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 != null might not hold. (testListAppend.vpr@336.3--336.57) [165655]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 != null might not hold. (testListAppend.vpr@336.3--336.57) [42435]"}
       Heap[vwand, Wand_list_for_list__out_1] != null;
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1_0 (testListAppend.vpr@336.3--336.57) [165656]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1_0 (testListAppend.vpr@336.3--336.57) [42436]"}
       Mask[vwand, Wand_list_for_list__out_1_0] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__out_1_0];
     Mask := Mask[vwand, Wand_list_for_list__out_1_0:=Mask[vwand, Wand_list_for_list__out_1_0] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_1 (testListAppend.vpr@336.3--336.57) [165657]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_1 (testListAppend.vpr@336.3--336.57) [42437]"}
       Mask[vwand, Wand_list_for_list__this_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__this_1];
     Mask := Mask[vwand, Wand_list_for_list__this_1:=Mask[vwand, Wand_list_for_list__this_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_1 (testListAppend.vpr@336.3--336.57) [165658]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_1 (testListAppend.vpr@336.3--336.57) [42438]"}
       Mask[vwand, Wand_list_for_list__L2_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__L2_1];
     Mask := Mask[vwand, Wand_list_for_list__L2_1:=Mask[vwand, Wand_list_for_list__L2_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@336.3--336.57) [165659]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@336.3--336.57) [42439]"}
       Mask[vwand, Wand_list_for_list__tmp_suffix_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__tmp_suffix_1];
     Mask := Mask[vwand, Wand_list_for_list__tmp_suffix_1:=Mask[vwand, Wand_list_for_list__tmp_suffix_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_1 (testListAppend.vpr@336.3--336.57) [165660]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_1 (testListAppend.vpr@336.3--336.57) [42440]"}
       Mask[vwand, Wand_list_for_list__L1_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__L1_1];
     Mask := Mask[vwand, Wand_list_for_list__L1_1:=Mask[vwand, Wand_list_for_list__L1_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1 (testListAppend.vpr@336.3--336.57) [165661]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1 (testListAppend.vpr@336.3--336.57) [42441]"}
       Mask[vwand, Wand_list_for_list__tmp_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__tmp_1];
     Mask := Mask[vwand, Wand_list_for_list__tmp_1:=Mask[vwand, Wand_list_for_list__tmp_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__suffix_1 (testListAppend.vpr@336.3--336.57) [165662]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__suffix_1 (testListAppend.vpr@336.3--336.57) [42442]"}
       Mask[vwand, Wand_list_for_list__suffix_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__suffix_1];
     Mask := Mask[vwand, Wand_list_for_list__suffix_1:=Mask[vwand, Wand_list_for_list__suffix_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__cursor_1 (testListAppend.vpr@336.3--336.57) [165663]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__cursor_1 (testListAppend.vpr@336.3--336.57) [42443]"}
       Mask[vwand, Wand_list_for_list__cursor_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__cursor_1];
     Mask := Mask[vwand, Wand_list_for_list__cursor_1:=Mask[vwand, Wand_list_for_list__cursor_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__wand_1 (testListAppend.vpr@336.3--336.57) [165664]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__wand_1 (testListAppend.vpr@336.3--336.57) [42444]"}
       Mask[vwand, Wand_list_for_list__wand_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__wand_1];
     Mask := Mask[vwand, Wand_list_for_list__wand_1:=Mask[vwand, Wand_list_for_list__wand_1] - wildcard];
     if (Heap[vwand, Wand_list_for_list__lemma] == 1) {
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__this_1 != null might not hold. (testListAppend.vpr@336.3--336.57) [165665]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__this_1 != null might not hold. (testListAppend.vpr@336.3--336.57) [42445]"}
         Heap[vwand, Wand_list_for_list__this_1] != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1.List__val (testListAppend.vpr@336.3--336.57) [165667]"}
+        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1.List__val (testListAppend.vpr@336.3--336.57) [42447]"}
           perm <= Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__val];
       }
       Mask := Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__val:=Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__val] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1.List__next (testListAppend.vpr@336.3--336.57) [165669]"}
+        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1.List__next (testListAppend.vpr@336.3--336.57) [42449]"}
           perm <= Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__next];
       }
       Mask := Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__next:=Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__next] - perm];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__tmp_1.List__next == vwand.Wand_list_for_list__cursor_1 might not hold. (testListAppend.vpr@336.3--336.57) [165670]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__tmp_1.List__next == vwand.Wand_list_for_list__cursor_1 might not hold. (testListAppend.vpr@336.3--336.57) [42450]"}
         Heap[Heap[vwand, Wand_list_for_list__tmp_1], List__next] == Heap[vwand, Wand_list_for_list__cursor_1];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__tmp_suffix_1 == Seq(vwand.Wand_list_for_list__tmp_1.List__val) ++ vwand.Wand_list_for_list__suffix_1 might not hold. (testListAppend.vpr@336.3--336.57) [165671]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__tmp_suffix_1 == Seq(vwand.Wand_list_for_list__tmp_1.List__val) ++ vwand.Wand_list_for_list__suffix_1 might not hold. (testListAppend.vpr@336.3--336.57) [42451]"}
         Seq#Equal(Heap[vwand, Wand_list_for_list__tmp_suffix_1], Seq#Append(Seq#Singleton(Heap[Heap[vwand, Wand_list_for_list__tmp_1], List__val]), Heap[vwand, Wand_list_for_list__suffix_1]));
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@336.3--336.57) [165672]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@336.3--336.57) [42452]"}
         Heap[vwand, Wand_list_for_list__wand_1] != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand.Wand_list_for_list__wand_1) (testListAppend.vpr@336.3--336.57) [165674]"}
+        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand.Wand_list_for_list__wand_1) (testListAppend.vpr@336.3--336.57) [42454]"}
           perm <= Mask[null, Wand_list_for_list__valid_wand(Heap[vwand, Wand_list_for_list__wand_1])];
       }
       Mask := Mask[null, Wand_list_for_list__valid_wand(Heap[vwand, Wand_list_for_list__wand_1]):=Mask[null, Wand_list_for_list__valid_wand(Heap[vwand, Wand_list_for_list__wand_1])] - perm];
       
       // -- Record predicate instance information
         assume InsidePredicate(Wand_list_for_list__valid_wand(vwand), Heap[null, Wand_list_for_list__valid_wand(vwand)], Wand_list_for_list__valid_wand(Heap[vwand, Wand_list_for_list__wand_1]), Heap[null, Wand_list_for_list__valid_wand(Heap[vwand, Wand_list_for_list__wand_1])]);
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_in_1(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__tmp_1 might not hold. (testListAppend.vpr@336.3--336.57) [165675]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_in_1(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__tmp_1 might not hold. (testListAppend.vpr@336.3--336.57) [42455]"}
         Wand_list_for_list__get_in_1(Heap, Heap[vwand, Wand_list_for_list__wand_1]) == Heap[vwand, Wand_list_for_list__tmp_1];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_in_1_0(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__tmp_suffix_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@336.3--336.57) [165676]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_in_1_0(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__tmp_suffix_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@336.3--336.57) [42456]"}
         Seq#Equal(Wand_list_for_list__get_in_1_0(Heap, Heap[vwand, Wand_list_for_list__wand_1]), Seq#Append(Heap[vwand, Wand_list_for_list__tmp_suffix_1], Heap[vwand, Wand_list_for_list__L2_1]));
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_out_1(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__this_1 might not hold. (testListAppend.vpr@336.3--336.57) [165677]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_out_1(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__this_1 might not hold. (testListAppend.vpr@336.3--336.57) [42457]"}
         Wand_list_for_list__get_out_1(Heap, Heap[vwand, Wand_list_for_list__wand_1]) == Heap[vwand, Wand_list_for_list__this_1];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_out_1_0(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__L1_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@336.3--336.57) [165678]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_out_1_0(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__L1_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@336.3--336.57) [42458]"}
         Seq#Equal(Wand_list_for_list__get_out_1_0(Heap, Heap[vwand, Wand_list_for_list__wand_1]), Seq#Append(Heap[vwand, Wand_list_for_list__L1_1], Heap[vwand, Wand_list_for_list__L2_1]));
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 == vwand.Wand_list_for_list__cursor_1 might not hold. (testListAppend.vpr@336.3--336.57) [165679]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 == vwand.Wand_list_for_list__cursor_1 might not hold. (testListAppend.vpr@336.3--336.57) [42459]"}
         Heap[vwand, Wand_list_for_list__in_1] == Heap[vwand, Wand_list_for_list__cursor_1];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1_0 == vwand.Wand_list_for_list__suffix_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@336.3--336.57) [165680]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1_0 == vwand.Wand_list_for_list__suffix_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@336.3--336.57) [42460]"}
         Seq#Equal(Heap[vwand, Wand_list_for_list__in_1_0], Seq#Append(Heap[vwand, Wand_list_for_list__suffix_1], Heap[vwand, Wand_list_for_list__L2_1]));
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 == vwand.Wand_list_for_list__this_1 might not hold. (testListAppend.vpr@336.3--336.57) [165681]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 == vwand.Wand_list_for_list__this_1 might not hold. (testListAppend.vpr@336.3--336.57) [42461]"}
         Heap[vwand, Wand_list_for_list__out_1] == Heap[vwand, Wand_list_for_list__this_1];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1_0 == vwand.Wand_list_for_list__L1_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@336.3--336.57) [165682]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1_0 == vwand.Wand_list_for_list__L1_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@336.3--336.57) [42462]"}
         Seq#Equal(Heap[vwand, Wand_list_for_list__out_1_0], Seq#Append(Heap[vwand, Wand_list_for_list__L1_1], Heap[vwand, Wand_list_for_list__L2_1]));
     }
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_2 (testListAppend.vpr@336.3--336.57) [165683]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_2 (testListAppend.vpr@336.3--336.57) [42463]"}
       Mask[vwand, Wand_list_for_list__this_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__this_2];
     Mask := Mask[vwand, Wand_list_for_list__this_2:=Mask[vwand, Wand_list_for_list__this_2] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_2 (testListAppend.vpr@336.3--336.57) [165684]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_2 (testListAppend.vpr@336.3--336.57) [42464]"}
       Mask[vwand, Wand_list_for_list__L2_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__L2_2];
     Mask := Mask[vwand, Wand_list_for_list__L2_2:=Mask[vwand, Wand_list_for_list__L2_2] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_2 (testListAppend.vpr@336.3--336.57) [165685]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_2 (testListAppend.vpr@336.3--336.57) [42465]"}
       Mask[vwand, Wand_list_for_list__L1_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__L1_2];
     Mask := Mask[vwand, Wand_list_for_list__L1_2:=Mask[vwand, Wand_list_for_list__L1_2] - wildcard];
     if (Heap[vwand, Wand_list_for_list__lemma] == 2) {
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__this_2 != null might not hold. (testListAppend.vpr@336.3--336.57) [165686]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__this_2 != null might not hold. (testListAppend.vpr@336.3--336.57) [42466]"}
         Heap[vwand, Wand_list_for_list__this_2] != null;
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 == vwand.Wand_list_for_list__this_2 might not hold. (testListAppend.vpr@336.3--336.57) [165687]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 == vwand.Wand_list_for_list__this_2 might not hold. (testListAppend.vpr@336.3--336.57) [42467]"}
         Heap[vwand, Wand_list_for_list__in_1] == Heap[vwand, Wand_list_for_list__this_2];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1_0 == vwand.Wand_list_for_list__L1_2 ++ vwand.Wand_list_for_list__L2_2 might not hold. (testListAppend.vpr@336.3--336.57) [165688]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1_0 == vwand.Wand_list_for_list__L1_2 ++ vwand.Wand_list_for_list__L2_2 might not hold. (testListAppend.vpr@336.3--336.57) [42468]"}
         Seq#Equal(Heap[vwand, Wand_list_for_list__in_1_0], Seq#Append(Heap[vwand, Wand_list_for_list__L1_2], Heap[vwand, Wand_list_for_list__L2_2]));
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 == vwand.Wand_list_for_list__this_2 might not hold. (testListAppend.vpr@336.3--336.57) [165689]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 == vwand.Wand_list_for_list__this_2 might not hold. (testListAppend.vpr@336.3--336.57) [42469]"}
         Heap[vwand, Wand_list_for_list__out_1] == Heap[vwand, Wand_list_for_list__this_2];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1_0 == vwand.Wand_list_for_list__L1_2 ++ vwand.Wand_list_for_list__L2_2 might not hold. (testListAppend.vpr@336.3--336.57) [165690]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1_0 == vwand.Wand_list_for_list__L1_2 ++ vwand.Wand_list_for_list__L2_2 might not hold. (testListAppend.vpr@336.3--336.57) [42470]"}
         Seq#Equal(Heap[vwand, Wand_list_for_list__out_1_0], Seq#Append(Heap[vwand, Wand_list_for_list__L1_2], Heap[vwand, Wand_list_for_list__L2_2]));
     }
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__lemma <= 2 might not hold. (testListAppend.vpr@336.3--336.57) [165691]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__lemma <= 2 might not hold. (testListAppend.vpr@336.3--336.57) [42471]"}
       Heap[vwand, Wand_list_for_list__lemma] <= 2;
     perm := FullPerm;
     Mask := Mask[null, Wand_list_for_list__valid_wand(vwand):=Mask[null, Wand_list_for_list__valid_wand(vwand)] + perm];
@@ -5083,9 +5083,9 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
       Heap := Heap[null, Wand_list_for_list__valid_wand#sm(vwand):=Heap[null, Wand_list_for_list__valid_wand#sm(vwand)][Heap[vwand, Wand_list_for_list__tmp_1], List__val:=true]];
       Heap := Heap[null, Wand_list_for_list__valid_wand#sm(vwand):=Heap[null, Wand_list_for_list__valid_wand#sm(vwand)][Heap[vwand, Wand_list_for_list__tmp_1], List__next:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_12: Ref, f_9: (Field A B) ::
-        { newPMask[o_12, f_9] }
-        Heap[null, Wand_list_for_list__valid_wand#sm(vwand)][o_12, f_9] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[vwand, Wand_list_for_list__wand_1])][o_12, f_9] ==> newPMask[o_12, f_9]
+      assume (forall <A, B> o_15: Ref, f_51: (Field A B) ::
+        { newPMask[o_15, f_51] }
+        Heap[null, Wand_list_for_list__valid_wand#sm(vwand)][o_15, f_51] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[vwand, Wand_list_for_list__wand_1])][o_15, f_51] ==> newPMask[o_15, f_51]
       );
       Heap := Heap[null, Wand_list_for_list__valid_wand#sm(vwand):=newPMask];
     }
@@ -5111,13 +5111,13 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
   //   Wand_list_for_list__get_out_1_0(sys__result) == out_1_0)))) -- testListAppend.vpr@339.3--339.322
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testListAppend.vpr@339.10--339.322) [165693]"}
+    ExhaleWellDef0Heap := AssertHeap;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testListAppend.vpr@339.10--339.322) [42473]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@339.10--339.322) [165695]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@339.10--339.322) [42475]"}
         perm <= AssertMask[null, Wand_list_for_list__valid_wand(sys__result)];
     }
     AssertMask := AssertMask[null, Wand_list_for_list__valid_wand(sys__result):=AssertMask[null, Wand_list_for_list__valid_wand(sys__result)] - perm];
@@ -5125,12 +5125,12 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_in_1(sys__result) == in_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@339.95--339.136) [165696]"}
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@339.95--339.136) [42476]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@339.95--339.136) [165697]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@339.95--339.136) [42477]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5139,18 +5139,18 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_in_1(sys__result) == in_1 might not hold. (testListAppend.vpr@339.10--339.322) [165698]"}
+    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_in_1(sys__result) == in_1 might not hold. (testListAppend.vpr@339.10--339.322) [42478]"}
       Wand_list_for_list__get_in_1(AssertHeap, sys__result) == in_1;
     
     // -- Check definedness of Wand_list_for_list__get_in_1_0(sys__result) == in_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@339.150--339.193) [165699]"}
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@339.150--339.193) [42479]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@339.150--339.193) [165700]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@339.150--339.193) [42480]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5159,18 +5159,18 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_in_1_0(sys__result) == in_1_0 might not hold. (testListAppend.vpr@339.10--339.322) [165701]"}
+    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_in_1_0(sys__result) == in_1_0 might not hold. (testListAppend.vpr@339.10--339.322) [42481]"}
       Seq#Equal(Wand_list_for_list__get_in_1_0(AssertHeap, sys__result), in_1_0);
     
     // -- Check definedness of Wand_list_for_list__get_out_1(sys__result) == out_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@339.209--339.251) [165702]"}
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@339.209--339.251) [42482]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@339.209--339.251) [165703]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@339.209--339.251) [42483]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5179,18 +5179,18 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_out_1(sys__result) == out_1 might not hold. (testListAppend.vpr@339.10--339.322) [165704]"}
+    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_out_1(sys__result) == out_1 might not hold. (testListAppend.vpr@339.10--339.322) [42484]"}
       Wand_list_for_list__get_out_1(AssertHeap, sys__result) == out_1;
     
     // -- Check definedness of Wand_list_for_list__get_out_1_0(sys__result) == out_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@339.266--339.310) [165705]"}
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@339.266--339.310) [42485]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@339.266--339.310) [165706]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@339.266--339.310) [42486]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5199,7 +5199,7 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_out_1_0(sys__result) == out_1_0 might not hold. (testListAppend.vpr@339.10--339.322) [165707]"}
+    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_out_1_0(sys__result) == out_1_0 might not hold. (testListAppend.vpr@339.10--339.322) [42487]"}
       Seq#Equal(Wand_list_for_list__get_out_1_0(AssertHeap, sys__result), out_1_0);
     assume state(Heap, Mask);
   
@@ -5209,23 +5209,23 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@259.11--259.30) [165708]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@259.11--259.30) [42488]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@260.11--260.66) [165709]"}
+      assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@260.11--260.66) [42489]"}
         perm <= Mask[null, Wand_list_for_list__valid_wand(sys__result)];
     }
     Mask := Mask[null, Wand_list_for_list__valid_wand(sys__result):=Mask[null, Wand_list_for_list__valid_wand(sys__result)] - perm];
-    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_in_1(sys__result) == in_1 might not hold. (testListAppend.vpr@261.11--261.60) [165710]"}
+    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_in_1(sys__result) == in_1 might not hold. (testListAppend.vpr@261.11--261.60) [42490]"}
       Wand_list_for_list__get_in_1(Heap, sys__result) == in_1;
-    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_in_1_0(sys__result) == in_1_0 might not hold. (testListAppend.vpr@262.11--262.64) [165711]"}
+    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_in_1_0(sys__result) == in_1_0 might not hold. (testListAppend.vpr@262.11--262.64) [42491]"}
       Seq#Equal(Wand_list_for_list__get_in_1_0(Heap, sys__result), in_1_0);
-    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_out_1(sys__result) == out_1 might not hold. (testListAppend.vpr@263.11--263.62) [165712]"}
+    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_out_1(sys__result) == out_1 might not hold. (testListAppend.vpr@263.11--263.62) [42492]"}
       Wand_list_for_list__get_out_1(Heap, sys__result) == out_1;
-    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_out_1_0(sys__result) == out_1_0 might not hold. (testListAppend.vpr@264.11--264.66) [165713]"}
+    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_out_1_0(sys__result) == out_1_0 might not hold. (testListAppend.vpr@264.11--264.66) [42493]"}
       Seq#Equal(Wand_list_for_list__get_out_1_0(Heap, sys__result), out_1_0);
     // Finish exhale
     havoc ExhaleHeap;
@@ -5240,13 +5240,13 @@ procedure List__Wand_list_for_list_lemma_1(diz: Ref, current_thread_id: int, thi
 procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, this_2: Ref, L2_2: (Seq int), L1_2: (Seq int), in_1: Ref, in_1_0: (Seq int), out_1: Ref, out_1_0: (Seq int)) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var vwand: Ref;
   var __flatten_29: Ref;
@@ -5274,8 +5274,8 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
   var newPMask: PMaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -5312,8 +5312,8 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5330,12 +5330,12 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_in_1(sys__result) == in_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@355.11--355.52) [165714]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@355.11--355.52) [42494]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@355.11--355.52) [165715]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@355.11--355.52) [42495]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5351,12 +5351,12 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_in_1_0(sys__result) == in_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@356.11--356.54) [165716]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@356.11--356.54) [42496]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@356.11--356.54) [165717]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@356.11--356.54) [42497]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5372,12 +5372,12 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_out_1(sys__result) == out_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@357.11--357.53) [165718]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@357.11--357.53) [42498]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@357.11--357.53) [165719]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@357.11--357.53) [42499]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5393,12 +5393,12 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_out_1_0(sys__result) == out_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@358.11--358.55) [165720]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@358.11--358.55) [42500]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@358.11--358.55) [165721]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@358.11--358.55) [42501]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5429,9 +5429,9 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Wand_list_for_list__Wand_list_for_list might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@379.3--379.76) [165722]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Wand_list_for_list__Wand_list_for_list might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@379.3--379.76) [42502]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -5536,7 +5536,7 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__lemma := __flatten_73 -- testListAppend.vpr@383.3--383.50
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__lemma (testListAppend.vpr@383.3--383.50) [165723]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__lemma (testListAppend.vpr@383.3--383.50) [42503]"}
       FullPerm == Mask[vwand, Wand_list_for_list__lemma];
     Heap := Heap[vwand, Wand_list_for_list__lemma:=__flatten_73];
     assume state(Heap, Mask);
@@ -5550,7 +5550,7 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__this_2 := __flatten_74 -- testListAppend.vpr@386.3--386.51
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_2 (testListAppend.vpr@386.3--386.51) [165724]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_2 (testListAppend.vpr@386.3--386.51) [42504]"}
       FullPerm == Mask[vwand, Wand_list_for_list__this_2];
     Heap := Heap[vwand, Wand_list_for_list__this_2:=__flatten_74];
     assume state(Heap, Mask);
@@ -5564,7 +5564,7 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__L2_2 := __flatten_75 -- testListAppend.vpr@389.3--389.49
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_2 (testListAppend.vpr@389.3--389.49) [165725]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_2 (testListAppend.vpr@389.3--389.49) [42505]"}
       FullPerm == Mask[vwand, Wand_list_for_list__L2_2];
     Heap := Heap[vwand, Wand_list_for_list__L2_2:=__flatten_75];
     assume state(Heap, Mask);
@@ -5578,7 +5578,7 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__L1_2 := __flatten_76 -- testListAppend.vpr@392.3--392.49
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_2 (testListAppend.vpr@392.3--392.49) [165726]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_2 (testListAppend.vpr@392.3--392.49) [42506]"}
       FullPerm == Mask[vwand, Wand_list_for_list__L1_2];
     Heap := Heap[vwand, Wand_list_for_list__L1_2:=__flatten_76];
     assume state(Heap, Mask);
@@ -5592,7 +5592,7 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__in_1 := __flatten_77 -- testListAppend.vpr@395.3--395.49
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1 (testListAppend.vpr@395.3--395.49) [165727]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1 (testListAppend.vpr@395.3--395.49) [42507]"}
       FullPerm == Mask[vwand, Wand_list_for_list__in_1];
     Heap := Heap[vwand, Wand_list_for_list__in_1:=__flatten_77];
     assume state(Heap, Mask);
@@ -5606,7 +5606,7 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__in_1_0 := __flatten_78 -- testListAppend.vpr@398.3--398.51
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1_0 (testListAppend.vpr@398.3--398.51) [165728]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1_0 (testListAppend.vpr@398.3--398.51) [42508]"}
       FullPerm == Mask[vwand, Wand_list_for_list__in_1_0];
     Heap := Heap[vwand, Wand_list_for_list__in_1_0:=__flatten_78];
     assume state(Heap, Mask);
@@ -5620,7 +5620,7 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__out_1 := __flatten_79 -- testListAppend.vpr@401.3--401.50
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1 (testListAppend.vpr@401.3--401.50) [165729]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1 (testListAppend.vpr@401.3--401.50) [42509]"}
       FullPerm == Mask[vwand, Wand_list_for_list__out_1];
     Heap := Heap[vwand, Wand_list_for_list__out_1:=__flatten_79];
     assume state(Heap, Mask);
@@ -5634,160 +5634,160 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_list_for_list__out_1_0 := __flatten_80 -- testListAppend.vpr@404.3--404.52
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1_0 (testListAppend.vpr@404.3--404.52) [165730]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1_0 (testListAppend.vpr@404.3--404.52) [42510]"}
       FullPerm == Mask[vwand, Wand_list_for_list__out_1_0];
     Heap := Heap[vwand, Wand_list_for_list__out_1_0:=__flatten_80];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Wand_list_for_list__valid_wand(vwand), write) -- testListAppend.vpr@405.3--405.57
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__lemma (testListAppend.vpr@405.3--405.57) [165732]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__lemma (testListAppend.vpr@405.3--405.57) [42512]"}
       Mask[vwand, Wand_list_for_list__lemma] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__lemma];
     Mask := Mask[vwand, Wand_list_for_list__lemma:=Mask[vwand, Wand_list_for_list__lemma] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion 1 <= vwand.Wand_list_for_list__lemma might not hold. (testListAppend.vpr@405.3--405.57) [165733]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion 1 <= vwand.Wand_list_for_list__lemma might not hold. (testListAppend.vpr@405.3--405.57) [42513]"}
       1 <= Heap[vwand, Wand_list_for_list__lemma];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1 (testListAppend.vpr@405.3--405.57) [165734]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1 (testListAppend.vpr@405.3--405.57) [42514]"}
       Mask[vwand, Wand_list_for_list__in_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__in_1];
     Mask := Mask[vwand, Wand_list_for_list__in_1:=Mask[vwand, Wand_list_for_list__in_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 != null might not hold. (testListAppend.vpr@405.3--405.57) [165735]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 != null might not hold. (testListAppend.vpr@405.3--405.57) [42515]"}
       Heap[vwand, Wand_list_for_list__in_1] != null;
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1_0 (testListAppend.vpr@405.3--405.57) [165736]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__in_1_0 (testListAppend.vpr@405.3--405.57) [42516]"}
       Mask[vwand, Wand_list_for_list__in_1_0] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__in_1_0];
     Mask := Mask[vwand, Wand_list_for_list__in_1_0:=Mask[vwand, Wand_list_for_list__in_1_0] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1 (testListAppend.vpr@405.3--405.57) [165737]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1 (testListAppend.vpr@405.3--405.57) [42517]"}
       Mask[vwand, Wand_list_for_list__out_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__out_1];
     Mask := Mask[vwand, Wand_list_for_list__out_1:=Mask[vwand, Wand_list_for_list__out_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 != null might not hold. (testListAppend.vpr@405.3--405.57) [165738]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 != null might not hold. (testListAppend.vpr@405.3--405.57) [42518]"}
       Heap[vwand, Wand_list_for_list__out_1] != null;
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1_0 (testListAppend.vpr@405.3--405.57) [165739]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__out_1_0 (testListAppend.vpr@405.3--405.57) [42519]"}
       Mask[vwand, Wand_list_for_list__out_1_0] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__out_1_0];
     Mask := Mask[vwand, Wand_list_for_list__out_1_0:=Mask[vwand, Wand_list_for_list__out_1_0] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_1 (testListAppend.vpr@405.3--405.57) [165740]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_1 (testListAppend.vpr@405.3--405.57) [42520]"}
       Mask[vwand, Wand_list_for_list__this_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__this_1];
     Mask := Mask[vwand, Wand_list_for_list__this_1:=Mask[vwand, Wand_list_for_list__this_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_1 (testListAppend.vpr@405.3--405.57) [165741]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_1 (testListAppend.vpr@405.3--405.57) [42521]"}
       Mask[vwand, Wand_list_for_list__L2_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__L2_1];
     Mask := Mask[vwand, Wand_list_for_list__L2_1:=Mask[vwand, Wand_list_for_list__L2_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@405.3--405.57) [165742]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_suffix_1 (testListAppend.vpr@405.3--405.57) [42522]"}
       Mask[vwand, Wand_list_for_list__tmp_suffix_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__tmp_suffix_1];
     Mask := Mask[vwand, Wand_list_for_list__tmp_suffix_1:=Mask[vwand, Wand_list_for_list__tmp_suffix_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_1 (testListAppend.vpr@405.3--405.57) [165743]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_1 (testListAppend.vpr@405.3--405.57) [42523]"}
       Mask[vwand, Wand_list_for_list__L1_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__L1_1];
     Mask := Mask[vwand, Wand_list_for_list__L1_1:=Mask[vwand, Wand_list_for_list__L1_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1 (testListAppend.vpr@405.3--405.57) [165744]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1 (testListAppend.vpr@405.3--405.57) [42524]"}
       Mask[vwand, Wand_list_for_list__tmp_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__tmp_1];
     Mask := Mask[vwand, Wand_list_for_list__tmp_1:=Mask[vwand, Wand_list_for_list__tmp_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__suffix_1 (testListAppend.vpr@405.3--405.57) [165745]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__suffix_1 (testListAppend.vpr@405.3--405.57) [42525]"}
       Mask[vwand, Wand_list_for_list__suffix_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__suffix_1];
     Mask := Mask[vwand, Wand_list_for_list__suffix_1:=Mask[vwand, Wand_list_for_list__suffix_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__cursor_1 (testListAppend.vpr@405.3--405.57) [165746]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__cursor_1 (testListAppend.vpr@405.3--405.57) [42526]"}
       Mask[vwand, Wand_list_for_list__cursor_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__cursor_1];
     Mask := Mask[vwand, Wand_list_for_list__cursor_1:=Mask[vwand, Wand_list_for_list__cursor_1] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__wand_1 (testListAppend.vpr@405.3--405.57) [165747]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__wand_1 (testListAppend.vpr@405.3--405.57) [42527]"}
       Mask[vwand, Wand_list_for_list__wand_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__wand_1];
     Mask := Mask[vwand, Wand_list_for_list__wand_1:=Mask[vwand, Wand_list_for_list__wand_1] - wildcard];
     if (Heap[vwand, Wand_list_for_list__lemma] == 1) {
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__this_1 != null might not hold. (testListAppend.vpr@405.3--405.57) [165748]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__this_1 != null might not hold. (testListAppend.vpr@405.3--405.57) [42528]"}
         Heap[vwand, Wand_list_for_list__this_1] != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1.List__val (testListAppend.vpr@405.3--405.57) [165750]"}
+        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1.List__val (testListAppend.vpr@405.3--405.57) [42530]"}
           perm <= Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__val];
       }
       Mask := Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__val:=Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__val] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1.List__next (testListAppend.vpr@405.3--405.57) [165752]"}
+        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__tmp_1.List__next (testListAppend.vpr@405.3--405.57) [42532]"}
           perm <= Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__next];
       }
       Mask := Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__next:=Mask[Heap[vwand, Wand_list_for_list__tmp_1], List__next] - perm];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__tmp_1.List__next == vwand.Wand_list_for_list__cursor_1 might not hold. (testListAppend.vpr@405.3--405.57) [165753]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__tmp_1.List__next == vwand.Wand_list_for_list__cursor_1 might not hold. (testListAppend.vpr@405.3--405.57) [42533]"}
         Heap[Heap[vwand, Wand_list_for_list__tmp_1], List__next] == Heap[vwand, Wand_list_for_list__cursor_1];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__tmp_suffix_1 == Seq(vwand.Wand_list_for_list__tmp_1.List__val) ++ vwand.Wand_list_for_list__suffix_1 might not hold. (testListAppend.vpr@405.3--405.57) [165754]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__tmp_suffix_1 == Seq(vwand.Wand_list_for_list__tmp_1.List__val) ++ vwand.Wand_list_for_list__suffix_1 might not hold. (testListAppend.vpr@405.3--405.57) [42534]"}
         Seq#Equal(Heap[vwand, Wand_list_for_list__tmp_suffix_1], Seq#Append(Seq#Singleton(Heap[Heap[vwand, Wand_list_for_list__tmp_1], List__val]), Heap[vwand, Wand_list_for_list__suffix_1]));
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@405.3--405.57) [165755]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__wand_1 != null might not hold. (testListAppend.vpr@405.3--405.57) [42535]"}
         Heap[vwand, Wand_list_for_list__wand_1] != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand.Wand_list_for_list__wand_1) (testListAppend.vpr@405.3--405.57) [165757]"}
+        assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand.Wand_list_for_list__wand_1) (testListAppend.vpr@405.3--405.57) [42537]"}
           perm <= Mask[null, Wand_list_for_list__valid_wand(Heap[vwand, Wand_list_for_list__wand_1])];
       }
       Mask := Mask[null, Wand_list_for_list__valid_wand(Heap[vwand, Wand_list_for_list__wand_1]):=Mask[null, Wand_list_for_list__valid_wand(Heap[vwand, Wand_list_for_list__wand_1])] - perm];
       
       // -- Record predicate instance information
         assume InsidePredicate(Wand_list_for_list__valid_wand(vwand), Heap[null, Wand_list_for_list__valid_wand(vwand)], Wand_list_for_list__valid_wand(Heap[vwand, Wand_list_for_list__wand_1]), Heap[null, Wand_list_for_list__valid_wand(Heap[vwand, Wand_list_for_list__wand_1])]);
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_in_1(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__tmp_1 might not hold. (testListAppend.vpr@405.3--405.57) [165758]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_in_1(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__tmp_1 might not hold. (testListAppend.vpr@405.3--405.57) [42538]"}
         Wand_list_for_list__get_in_1(Heap, Heap[vwand, Wand_list_for_list__wand_1]) == Heap[vwand, Wand_list_for_list__tmp_1];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_in_1_0(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__tmp_suffix_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@405.3--405.57) [165759]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_in_1_0(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__tmp_suffix_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@405.3--405.57) [42539]"}
         Seq#Equal(Wand_list_for_list__get_in_1_0(Heap, Heap[vwand, Wand_list_for_list__wand_1]), Seq#Append(Heap[vwand, Wand_list_for_list__tmp_suffix_1], Heap[vwand, Wand_list_for_list__L2_1]));
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_out_1(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__this_1 might not hold. (testListAppend.vpr@405.3--405.57) [165760]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_out_1(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__this_1 might not hold. (testListAppend.vpr@405.3--405.57) [42540]"}
         Wand_list_for_list__get_out_1(Heap, Heap[vwand, Wand_list_for_list__wand_1]) == Heap[vwand, Wand_list_for_list__this_1];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_out_1_0(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__L1_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@405.3--405.57) [165761]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion Wand_list_for_list__get_out_1_0(vwand.Wand_list_for_list__wand_1) == vwand.Wand_list_for_list__L1_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@405.3--405.57) [42541]"}
         Seq#Equal(Wand_list_for_list__get_out_1_0(Heap, Heap[vwand, Wand_list_for_list__wand_1]), Seq#Append(Heap[vwand, Wand_list_for_list__L1_1], Heap[vwand, Wand_list_for_list__L2_1]));
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 == vwand.Wand_list_for_list__cursor_1 might not hold. (testListAppend.vpr@405.3--405.57) [165762]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 == vwand.Wand_list_for_list__cursor_1 might not hold. (testListAppend.vpr@405.3--405.57) [42542]"}
         Heap[vwand, Wand_list_for_list__in_1] == Heap[vwand, Wand_list_for_list__cursor_1];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1_0 == vwand.Wand_list_for_list__suffix_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@405.3--405.57) [165763]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1_0 == vwand.Wand_list_for_list__suffix_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@405.3--405.57) [42543]"}
         Seq#Equal(Heap[vwand, Wand_list_for_list__in_1_0], Seq#Append(Heap[vwand, Wand_list_for_list__suffix_1], Heap[vwand, Wand_list_for_list__L2_1]));
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 == vwand.Wand_list_for_list__this_1 might not hold. (testListAppend.vpr@405.3--405.57) [165764]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 == vwand.Wand_list_for_list__this_1 might not hold. (testListAppend.vpr@405.3--405.57) [42544]"}
         Heap[vwand, Wand_list_for_list__out_1] == Heap[vwand, Wand_list_for_list__this_1];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1_0 == vwand.Wand_list_for_list__L1_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@405.3--405.57) [165765]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1_0 == vwand.Wand_list_for_list__L1_1 ++ vwand.Wand_list_for_list__L2_1 might not hold. (testListAppend.vpr@405.3--405.57) [42545]"}
         Seq#Equal(Heap[vwand, Wand_list_for_list__out_1_0], Seq#Append(Heap[vwand, Wand_list_for_list__L1_1], Heap[vwand, Wand_list_for_list__L2_1]));
     }
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_2 (testListAppend.vpr@405.3--405.57) [165766]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__this_2 (testListAppend.vpr@405.3--405.57) [42546]"}
       Mask[vwand, Wand_list_for_list__this_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__this_2];
     Mask := Mask[vwand, Wand_list_for_list__this_2:=Mask[vwand, Wand_list_for_list__this_2] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_2 (testListAppend.vpr@405.3--405.57) [165767]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L2_2 (testListAppend.vpr@405.3--405.57) [42547]"}
       Mask[vwand, Wand_list_for_list__L2_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__L2_2];
     Mask := Mask[vwand, Wand_list_for_list__L2_2:=Mask[vwand, Wand_list_for_list__L2_2] - wildcard];
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_2 (testListAppend.vpr@405.3--405.57) [165768]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_list_for_list__L1_2 (testListAppend.vpr@405.3--405.57) [42548]"}
       Mask[vwand, Wand_list_for_list__L1_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_list_for_list__L1_2];
     Mask := Mask[vwand, Wand_list_for_list__L1_2:=Mask[vwand, Wand_list_for_list__L1_2] - wildcard];
     if (Heap[vwand, Wand_list_for_list__lemma] == 2) {
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__this_2 != null might not hold. (testListAppend.vpr@405.3--405.57) [165769]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__this_2 != null might not hold. (testListAppend.vpr@405.3--405.57) [42549]"}
         Heap[vwand, Wand_list_for_list__this_2] != null;
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 == vwand.Wand_list_for_list__this_2 might not hold. (testListAppend.vpr@405.3--405.57) [165770]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1 == vwand.Wand_list_for_list__this_2 might not hold. (testListAppend.vpr@405.3--405.57) [42550]"}
         Heap[vwand, Wand_list_for_list__in_1] == Heap[vwand, Wand_list_for_list__this_2];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1_0 == vwand.Wand_list_for_list__L1_2 ++ vwand.Wand_list_for_list__L2_2 might not hold. (testListAppend.vpr@405.3--405.57) [165771]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__in_1_0 == vwand.Wand_list_for_list__L1_2 ++ vwand.Wand_list_for_list__L2_2 might not hold. (testListAppend.vpr@405.3--405.57) [42551]"}
         Seq#Equal(Heap[vwand, Wand_list_for_list__in_1_0], Seq#Append(Heap[vwand, Wand_list_for_list__L1_2], Heap[vwand, Wand_list_for_list__L2_2]));
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 == vwand.Wand_list_for_list__this_2 might not hold. (testListAppend.vpr@405.3--405.57) [165772]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1 == vwand.Wand_list_for_list__this_2 might not hold. (testListAppend.vpr@405.3--405.57) [42552]"}
         Heap[vwand, Wand_list_for_list__out_1] == Heap[vwand, Wand_list_for_list__this_2];
-      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1_0 == vwand.Wand_list_for_list__L1_2 ++ vwand.Wand_list_for_list__L2_2 might not hold. (testListAppend.vpr@405.3--405.57) [165773]"}
+      assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__out_1_0 == vwand.Wand_list_for_list__L1_2 ++ vwand.Wand_list_for_list__L2_2 might not hold. (testListAppend.vpr@405.3--405.57) [42553]"}
         Seq#Equal(Heap[vwand, Wand_list_for_list__out_1_0], Seq#Append(Heap[vwand, Wand_list_for_list__L1_2], Heap[vwand, Wand_list_for_list__L2_2]));
     }
-    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__lemma <= 2 might not hold. (testListAppend.vpr@405.3--405.57) [165774]"}
+    assert {:msg "  Folding Wand_list_for_list__valid_wand(vwand) might fail. Assertion vwand.Wand_list_for_list__lemma <= 2 might not hold. (testListAppend.vpr@405.3--405.57) [42554]"}
       Heap[vwand, Wand_list_for_list__lemma] <= 2;
     perm := FullPerm;
     Mask := Mask[null, Wand_list_for_list__valid_wand(vwand):=Mask[null, Wand_list_for_list__valid_wand(vwand)] + perm];
@@ -5817,9 +5817,9 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
       Heap := Heap[null, Wand_list_for_list__valid_wand#sm(vwand):=Heap[null, Wand_list_for_list__valid_wand#sm(vwand)][Heap[vwand, Wand_list_for_list__tmp_1], List__val:=true]];
       Heap := Heap[null, Wand_list_for_list__valid_wand#sm(vwand):=Heap[null, Wand_list_for_list__valid_wand#sm(vwand)][Heap[vwand, Wand_list_for_list__tmp_1], List__next:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_22: Ref, f_24: (Field A B) ::
-        { newPMask[o_22, f_24] }
-        Heap[null, Wand_list_for_list__valid_wand#sm(vwand)][o_22, f_24] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[vwand, Wand_list_for_list__wand_1])][o_22, f_24] ==> newPMask[o_22, f_24]
+      assume (forall <A, B> o_4: Ref, f_54: (Field A B) ::
+        { newPMask[o_4, f_54] }
+        Heap[null, Wand_list_for_list__valid_wand#sm(vwand)][o_4, f_54] || Heap[null, Wand_list_for_list__valid_wand#sm(Heap[vwand, Wand_list_for_list__wand_1])][o_4, f_54] ==> newPMask[o_4, f_54]
       );
       Heap := Heap[null, Wand_list_for_list__valid_wand#sm(vwand):=newPMask];
     }
@@ -5845,13 +5845,13 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
   //   Wand_list_for_list__get_out_1_0(sys__result) == out_1_0)))) -- testListAppend.vpr@408.3--408.322
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testListAppend.vpr@408.10--408.322) [165776]"}
+    ExhaleWellDef0Heap := AssertHeap;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testListAppend.vpr@408.10--408.322) [42556]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@408.10--408.322) [165778]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@408.10--408.322) [42558]"}
         perm <= AssertMask[null, Wand_list_for_list__valid_wand(sys__result)];
     }
     AssertMask := AssertMask[null, Wand_list_for_list__valid_wand(sys__result):=AssertMask[null, Wand_list_for_list__valid_wand(sys__result)] - perm];
@@ -5859,12 +5859,12 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     // -- Check definedness of Wand_list_for_list__get_in_1(sys__result) == in_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@408.95--408.136) [165779]"}
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@408.95--408.136) [42559]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@408.95--408.136) [165780]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@408.95--408.136) [42560]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5873,18 +5873,18 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_in_1(sys__result) == in_1 might not hold. (testListAppend.vpr@408.10--408.322) [165781]"}
+    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_in_1(sys__result) == in_1 might not hold. (testListAppend.vpr@408.10--408.322) [42561]"}
       Wand_list_for_list__get_in_1(AssertHeap, sys__result) == in_1;
     
     // -- Check definedness of Wand_list_for_list__get_in_1_0(sys__result) == in_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@408.150--408.193) [165782]"}
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@408.150--408.193) [42562]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@408.150--408.193) [165783]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@408.150--408.193) [42563]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5893,18 +5893,18 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_in_1_0(sys__result) == in_1_0 might not hold. (testListAppend.vpr@408.10--408.322) [165784]"}
+    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_in_1_0(sys__result) == in_1_0 might not hold. (testListAppend.vpr@408.10--408.322) [42564]"}
       Seq#Equal(Wand_list_for_list__get_in_1_0(AssertHeap, sys__result), in_1_0);
     
     // -- Check definedness of Wand_list_for_list__get_out_1(sys__result) == out_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@408.209--408.251) [165785]"}
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@408.209--408.251) [42565]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@408.209--408.251) [165786]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@408.209--408.251) [42566]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5913,18 +5913,18 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_out_1(sys__result) == out_1 might not hold. (testListAppend.vpr@408.10--408.322) [165787]"}
+    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_out_1(sys__result) == out_1 might not hold. (testListAppend.vpr@408.10--408.322) [42567]"}
       Wand_list_for_list__get_out_1(AssertHeap, sys__result) == out_1;
     
     // -- Check definedness of Wand_list_for_list__get_out_1_0(sys__result) == out_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@408.266--408.310) [165788]"}
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@408.266--408.310) [42568]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@408.266--408.310) [165789]"}
+        assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@408.266--408.310) [42569]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_list_for_list__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5933,7 +5933,7 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_out_1_0(sys__result) == out_1_0 might not hold. (testListAppend.vpr@408.10--408.322) [165790]"}
+    assert {:msg "  Assert might fail. Assertion Wand_list_for_list__get_out_1_0(sys__result) == out_1_0 might not hold. (testListAppend.vpr@408.10--408.322) [42570]"}
       Seq#Equal(Wand_list_for_list__get_out_1_0(AssertHeap, sys__result), out_1_0);
     assume state(Heap, Mask);
   
@@ -5943,23 +5943,23 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@353.11--353.30) [165791]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. Assertion sys__result != null might not hold. (testListAppend.vpr@353.11--353.30) [42571]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@354.11--354.66) [165792]"}
+      assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(sys__result) (testListAppend.vpr@354.11--354.66) [42572]"}
         perm <= Mask[null, Wand_list_for_list__valid_wand(sys__result)];
     }
     Mask := Mask[null, Wand_list_for_list__valid_wand(sys__result):=Mask[null, Wand_list_for_list__valid_wand(sys__result)] - perm];
-    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. Assertion Wand_list_for_list__get_in_1(sys__result) == in_1 might not hold. (testListAppend.vpr@355.11--355.60) [165793]"}
+    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. Assertion Wand_list_for_list__get_in_1(sys__result) == in_1 might not hold. (testListAppend.vpr@355.11--355.60) [42573]"}
       Wand_list_for_list__get_in_1(Heap, sys__result) == in_1;
-    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. Assertion Wand_list_for_list__get_in_1_0(sys__result) == in_1_0 might not hold. (testListAppend.vpr@356.11--356.64) [165794]"}
+    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. Assertion Wand_list_for_list__get_in_1_0(sys__result) == in_1_0 might not hold. (testListAppend.vpr@356.11--356.64) [42574]"}
       Seq#Equal(Wand_list_for_list__get_in_1_0(Heap, sys__result), in_1_0);
-    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. Assertion Wand_list_for_list__get_out_1(sys__result) == out_1 might not hold. (testListAppend.vpr@357.11--357.62) [165795]"}
+    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. Assertion Wand_list_for_list__get_out_1(sys__result) == out_1 might not hold. (testListAppend.vpr@357.11--357.62) [42575]"}
       Wand_list_for_list__get_out_1(Heap, sys__result) == out_1;
-    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. Assertion Wand_list_for_list__get_out_1_0(sys__result) == out_1_0 might not hold. (testListAppend.vpr@358.11--358.66) [165796]"}
+    assert {:msg "  Postcondition of List__Wand_list_for_list_lemma_2 might not hold. Assertion Wand_list_for_list__get_out_1_0(sys__result) == out_1_0 might not hold. (testListAppend.vpr@358.11--358.66) [42576]"}
       Seq#Equal(Wand_list_for_list__get_out_1_0(Heap, sys__result), out_1_0);
     // Finish exhale
     havoc ExhaleHeap;
@@ -5971,15 +5971,15 @@ procedure List__Wand_list_for_list_lemma_2(diz: Ref, current_thread_id: int, thi
 // Translation of method List__append_iter
 // ==================================================
 
-procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq int), L2: (Seq int)) returns ()
+procedure List__append_iter(diz: Ref, current_thread_id: int, l_1: Ref, L1: (Seq int), L2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var cursor: Ref;
@@ -6015,7 +6015,7 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
   
   // -- Assumptions about method arguments
     assume Heap[diz, $allocated];
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
   
   // -- Checked inhaling of precondition
     assume diz != null;
@@ -6031,12 +6031,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     // -- Check definedness of List__contents(diz) == L1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion diz != null might not hold. (testListAppend.vpr@416.12--416.31) [165797]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion diz != null might not hold. (testListAppend.vpr@416.12--416.31) [42577]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@416.12--416.31) [165798]"}
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@416.12--416.31) [42578]"}
           NoPerm < perm ==> NoPerm < Mask[null, List__state(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -6047,10 +6047,10 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
       }
     assume Seq#Equal(List__contents(Heap, diz), L1);
     assume state(Heap, Mask);
-    assume l_2 != null;
+    assume l_1 != null;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, List__state(l_2):=Mask[null, List__state(l_2)] + perm];
+    Mask := Mask[null, List__state(l_1):=Mask[null, List__state(l_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -6058,13 +6058,13 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     // -- Check definedness of List__contents(l) == L2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion l != null might not hold. (testListAppend.vpr@419.12--419.29) [165799]"}
-          l_2 != null;
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion l != null might not hold. (testListAppend.vpr@419.12--419.29) [42579]"}
+          l_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(l) (testListAppend.vpr@419.12--419.29) [165800]"}
-          NoPerm < perm ==> NoPerm < Mask[null, List__state(l_2)];
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(l) (testListAppend.vpr@419.12--419.29) [42580]"}
+          NoPerm < perm ==> NoPerm < Mask[null, List__state(l_1)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -6072,14 +6072,14 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
         // Stop execution
         assume false;
       }
-    assume Seq#Equal(List__contents(Heap, l_2), L2);
+    assume Seq#Equal(List__contents(Heap, l_1), L2);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -6094,12 +6094,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     // -- Check definedness of List__contents(diz) == L1 ++ L2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion diz != null might not hold. (testListAppend.vpr@421.11--421.30) [165801]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion diz != null might not hold. (testListAppend.vpr@421.11--421.30) [42581]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@421.11--421.30) [165802]"}
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@421.11--421.30) [42582]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List__state(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -6135,12 +6135,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     // -- Check definedness of List__contents(cursor)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function List__contents might not hold. Assertion cursor != null might not hold. (testListAppend.vpr@438.19--438.41) [165803]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function List__contents might not hold. Assertion cursor != null might not hold. (testListAppend.vpr@438.19--438.41) [42583]"}
           cursor != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@438.19--438.41) [165804]"}
+        assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@438.19--438.41) [42584]"}
           NoPerm < perm ==> NoPerm < Mask[null, List__state(cursor)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -6168,25 +6168,25 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     arg_out_1_0 := Seq#Append(L1, L2);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@441.3--441.111) [165805]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@441.3--441.111) [42585]"}
         diz != null;
-      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@441.3--441.111) [165806]"}
+      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@441.3--441.111) [42586]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@441.3--441.111) [165807]"}
+      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@441.3--441.111) [42587]"}
         diz != null;
-      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@441.3--441.111) [165808]"}
+      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@441.3--441.111) [42588]"}
         diz != null;
-      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz == diz might not hold. (testListAppend.vpr@441.3--441.111) [165809]"}
+      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz == diz might not hold. (testListAppend.vpr@441.3--441.111) [42589]"}
         diz == diz;
-      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion L1 ++ L2 == L1 ++ L2 might not hold. (testListAppend.vpr@441.3--441.111) [165810]"}
+      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion L1 ++ L2 == L1 ++ L2 might not hold. (testListAppend.vpr@441.3--441.111) [42590]"}
         Seq#Equal(arg_in_1_0, Seq#Append(L1, L2));
-      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@441.3--441.111) [165811]"}
+      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@441.3--441.111) [42591]"}
         diz != null;
-      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz == diz might not hold. (testListAppend.vpr@441.3--441.111) [165812]"}
+      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion diz == diz might not hold. (testListAppend.vpr@441.3--441.111) [42592]"}
         diz == diz;
-      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion L1 ++ L2 == L1 ++ L2 might not hold. (testListAppend.vpr@441.3--441.111) [165813]"}
+      assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_2 might not hold. Assertion L1 ++ L2 == L1 ++ L2 might not hold. (testListAppend.vpr@441.3--441.111) [42593]"}
         Seq#Equal(arg_out_1_0, Seq#Append(L1, L2));
     
     // -- Havocing target variables
@@ -6214,45 +6214,45 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant cursor != null might not hold on entry. Assertion cursor != null might not hold. (testListAppend.vpr@443.15--443.29) [165814]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant cursor != null might not hold on entry. Assertion cursor != null might not hold. (testListAppend.vpr@443.15--443.29) [42594]"}
           cursor != null;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(List__state(cursor), write) might not hold on entry. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@444.15--444.46) [165815]"}
+          assert {:msg "  Loop invariant acc(List__state(cursor), write) might not hold on entry. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@444.15--444.46) [42595]"}
             perm <= Mask[null, List__state(cursor)];
         }
         Mask := Mask[null, List__state(cursor):=Mask[null, List__state(cursor)] - perm];
-        assert {:msg "  Loop invariant suffix == List__contents(cursor) might not hold on entry. Assertion suffix == List__contents(cursor) might not hold. (testListAppend.vpr@445.15--445.47) [165816]"}
+        assert {:msg "  Loop invariant suffix == List__contents(cursor) might not hold on entry. Assertion suffix == List__contents(cursor) might not hold. (testListAppend.vpr@445.15--445.47) [42596]"}
           Seq#Equal(suffix, List__contents(Heap, cursor));
-        assert {:msg "  Loop invariant prefix ++ suffix == L1 might not hold on entry. Assertion prefix ++ suffix == L1 might not hold. (testListAppend.vpr@446.15--446.37) [165817]"}
+        assert {:msg "  Loop invariant prefix ++ suffix == L1 might not hold on entry. Assertion prefix ++ suffix == L1 might not hold. (testListAppend.vpr@446.15--446.37) [42597]"}
           Seq#Equal(Seq#Append(prefix, suffix), L1);
-        assert {:msg "  Loop invariant l != null might not hold on entry. Assertion l != null might not hold. (testListAppend.vpr@447.15--447.24) [165818]"}
-          l_2 != null;
+        assert {:msg "  Loop invariant l != null might not hold on entry. Assertion l != null might not hold. (testListAppend.vpr@447.15--447.24) [42598]"}
+          l_1 != null;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(List__state(l), write) might not hold on entry. There might be insufficient permission to access List__state(l) (testListAppend.vpr@448.15--448.41) [165819]"}
-            perm <= Mask[null, List__state(l_2)];
+          assert {:msg "  Loop invariant acc(List__state(l), write) might not hold on entry. There might be insufficient permission to access List__state(l) (testListAppend.vpr@448.15--448.41) [42599]"}
+            perm <= Mask[null, List__state(l_1)];
         }
-        Mask := Mask[null, List__state(l_2):=Mask[null, List__state(l_2)] - perm];
-        assert {:msg "  Loop invariant List__contents(l) == L2 might not hold on entry. Assertion List__contents(l) == L2 might not hold. (testListAppend.vpr@449.15--449.38) [165820]"}
-          Seq#Equal(List__contents(Heap, l_2), L2);
-        assert {:msg "  Loop invariant vwand != null might not hold on entry. Assertion vwand != null might not hold. (testListAppend.vpr@450.15--450.28) [165821]"}
+        Mask := Mask[null, List__state(l_1):=Mask[null, List__state(l_1)] - perm];
+        assert {:msg "  Loop invariant List__contents(l) == L2 might not hold on entry. Assertion List__contents(l) == L2 might not hold. (testListAppend.vpr@449.15--449.38) [42600]"}
+          Seq#Equal(List__contents(Heap, l_1), L2);
+        assert {:msg "  Loop invariant vwand != null might not hold on entry. Assertion vwand != null might not hold. (testListAppend.vpr@450.15--450.28) [42601]"}
           vwand != null;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(Wand_list_for_list__valid_wand(vwand), write) might not hold on entry. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@451.15--451.64) [165822]"}
+          assert {:msg "  Loop invariant acc(Wand_list_for_list__valid_wand(vwand), write) might not hold on entry. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@451.15--451.64) [42602]"}
             perm <= Mask[null, Wand_list_for_list__valid_wand(vwand)];
         }
         Mask := Mask[null, Wand_list_for_list__valid_wand(vwand):=Mask[null, Wand_list_for_list__valid_wand(vwand)] - perm];
-        assert {:msg "  Loop invariant Wand_list_for_list__get_in_1(vwand) == cursor might not hold on entry. Assertion Wand_list_for_list__get_in_1(vwand) == cursor might not hold. (testListAppend.vpr@452.15--452.60) [165823]"}
+        assert {:msg "  Loop invariant Wand_list_for_list__get_in_1(vwand) == cursor might not hold on entry. Assertion Wand_list_for_list__get_in_1(vwand) == cursor might not hold. (testListAppend.vpr@452.15--452.60) [42603]"}
           Wand_list_for_list__get_in_1(Heap, vwand) == cursor;
-        assert {:msg "  Loop invariant Wand_list_for_list__get_in_1_0(vwand) == suffix ++ L2 might not hold on entry. Assertion Wand_list_for_list__get_in_1_0(vwand) == suffix ++ L2 might not hold. (testListAppend.vpr@453.15--453.68) [165824]"}
+        assert {:msg "  Loop invariant Wand_list_for_list__get_in_1_0(vwand) == suffix ++ L2 might not hold on entry. Assertion Wand_list_for_list__get_in_1_0(vwand) == suffix ++ L2 might not hold. (testListAppend.vpr@453.15--453.68) [42604]"}
           Seq#Equal(Wand_list_for_list__get_in_1_0(Heap, vwand), Seq#Append(suffix, L2));
-        assert {:msg "  Loop invariant Wand_list_for_list__get_out_1(vwand) == diz might not hold on entry. Assertion Wand_list_for_list__get_out_1(vwand) == diz might not hold. (testListAppend.vpr@454.15--454.58) [165825]"}
+        assert {:msg "  Loop invariant Wand_list_for_list__get_out_1(vwand) == diz might not hold on entry. Assertion Wand_list_for_list__get_out_1(vwand) == diz might not hold. (testListAppend.vpr@454.15--454.58) [42605]"}
           Wand_list_for_list__get_out_1(Heap, vwand) == diz;
-        assert {:msg "  Loop invariant Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2 might not hold on entry. Assertion Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2 might not hold. (testListAppend.vpr@455.15--455.65) [165826]"}
+        assert {:msg "  Loop invariant Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2 might not hold on entry. Assertion Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2 might not hold. (testListAppend.vpr@455.15--455.65) [42606]"}
           Seq#Equal(Wand_list_for_list__get_out_1_0(Heap, vwand), Seq#Append(L1, L2));
         // Finish exhale
         havoc ExhaleHeap;
@@ -6279,12 +6279,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
         // -- Check definedness of suffix == List__contents(cursor)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function List__contents might not hold. Assertion cursor != null might not hold. (testListAppend.vpr@445.25--445.47) [165827]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function List__contents might not hold. Assertion cursor != null might not hold. (testListAppend.vpr@445.25--445.47) [42607]"}
               cursor != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@445.25--445.47) [165828]"}
+            assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@445.25--445.47) [42608]"}
               NoPerm < perm ==> NoPerm < Mask[null, List__state(cursor)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -6297,10 +6297,10 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
         assume state(Heap, Mask);
         assume Seq#Equal(Seq#Append(prefix, suffix), L1);
         assume state(Heap, Mask);
-        assume l_2 != null;
+        assume l_1 != null;
         assume state(Heap, Mask);
         perm := FullPerm;
-        Mask := Mask[null, List__state(l_2):=Mask[null, List__state(l_2)] + perm];
+        Mask := Mask[null, List__state(l_1):=Mask[null, List__state(l_1)] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -6308,13 +6308,13 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
         // -- Check definedness of List__contents(l) == L2
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function List__contents might not hold. Assertion l != null might not hold. (testListAppend.vpr@449.15--449.32) [165829]"}
-              l_2 != null;
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function List__contents might not hold. Assertion l != null might not hold. (testListAppend.vpr@449.15--449.32) [42609]"}
+              l_1 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(l) (testListAppend.vpr@449.15--449.32) [165830]"}
-              NoPerm < perm ==> NoPerm < Mask[null, List__state(l_2)];
+            assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(l) (testListAppend.vpr@449.15--449.32) [42610]"}
+              NoPerm < perm ==> NoPerm < Mask[null, List__state(l_1)];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -6322,7 +6322,7 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
             // Stop execution
             assume false;
           }
-        assume Seq#Equal(List__contents(Heap, l_2), L2);
+        assume Seq#Equal(List__contents(Heap, l_1), L2);
         assume state(Heap, Mask);
         assume vwand != null;
         assume state(Heap, Mask);
@@ -6335,12 +6335,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
         // -- Check definedness of Wand_list_for_list__get_in_1(vwand) == cursor
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@452.15--452.50) [165831]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@452.15--452.50) [42611]"}
               vwand != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@452.15--452.50) [165832]"}
+            assert {:msg "  Precondition of function Wand_list_for_list__get_in_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@452.15--452.50) [42612]"}
               NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(vwand)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -6356,12 +6356,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
         // -- Check definedness of Wand_list_for_list__get_in_1_0(vwand) == suffix ++ L2
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@453.15--453.52) [165833]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@453.15--453.52) [42613]"}
               vwand != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@453.15--453.52) [165834]"}
+            assert {:msg "  Precondition of function Wand_list_for_list__get_in_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@453.15--453.52) [42614]"}
               NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(vwand)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -6377,12 +6377,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
         // -- Check definedness of Wand_list_for_list__get_out_1(vwand) == diz
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@454.15--454.51) [165835]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@454.15--454.51) [42615]"}
               vwand != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@454.15--454.51) [165836]"}
+            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@454.15--454.51) [42616]"}
               NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(vwand)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -6398,12 +6398,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
         // -- Check definedness of Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@455.15--455.53) [165837]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@455.15--455.53) [42617]"}
               vwand != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@455.15--455.53) [165838]"}
+            assert {:msg "  Precondition of function Wand_list_for_list__get_out_1_0 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@455.15--455.53) [42618]"}
               NoPerm < perm ==> NoPerm < Mask[null, Wand_list_for_list__valid_wand(vwand)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -6432,12 +6432,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
         assume state(Heap, Mask);
         assume Seq#Equal(suffix, List__contents(Heap, cursor));
         assume Seq#Equal(Seq#Append(prefix, suffix), L1);
-        assume l_2 != null;
+        assume l_1 != null;
         perm := FullPerm;
-        Mask := Mask[null, List__state(l_2):=Mask[null, List__state(l_2)] + perm];
+        Mask := Mask[null, List__state(l_1):=Mask[null, List__state(l_1)] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
-        assume Seq#Equal(List__contents(Heap, l_2), L2);
+        assume Seq#Equal(List__contents(Heap, l_1), L2);
         assume vwand != null;
         perm := FullPerm;
         Mask := Mask[null, Wand_list_for_list__valid_wand(vwand):=Mask[null, Wand_list_for_list__valid_wand(vwand)] + perm];
@@ -6456,12 +6456,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
         // -- Check definedness of List__get_next(cursor) != null
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function List__get_next might not hold. Assertion cursor != null might not hold. (testListAppend.vpr@442.10--442.32) [165839]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function List__get_next might not hold. Assertion cursor != null might not hold. (testListAppend.vpr@442.10--442.32) [42619]"}
               cursor != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function List__get_next might not hold. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@442.10--442.32) [165840]"}
+            assert {:msg "  Precondition of function List__get_next might not hold. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@442.10--442.32) [42620]"}
               NoPerm < perm ==> NoPerm < Mask[null, List__state(cursor)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -6486,11 +6486,11 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
           // -- Translating statement: unfold acc(List__state(cursor), write) -- testListAppend.vpr@459.5--459.43
             assume List__state#trigger(Heap, List__state(cursor));
             assume Heap[null, List__state(cursor)] == CombineFrames(FrameFragment(Heap[cursor, List__val]), CombineFrames(FrameFragment(Heap[cursor, List__next]), FrameFragment((if Heap[cursor, List__next] != null then Heap[null, List__state(Heap[cursor, List__next])] else EmptyFrame))));
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding List__state(cursor) might fail. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@459.5--459.43) [165841]"}
+              assert {:msg "  Unfolding List__state(cursor) might fail. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@459.5--459.43) [42621]"}
                 perm <= Mask[null, List__state(cursor)];
             }
             Mask := Mask[null, List__state(cursor):=Mask[null, List__state(cursor)] - perm];
@@ -6522,7 +6522,7 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
           // -- Translating statement: prefix := prefix ++ Seq(cursor.List__val) -- testListAppend.vpr@460.5--460.46
             
             // -- Check definedness of prefix ++ Seq(cursor.List__val)
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access cursor.List__val (testListAppend.vpr@460.5--460.46) [165842]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access cursor.List__val (testListAppend.vpr@460.5--460.46) [42622]"}
                 HasDirectPerm(Mask, cursor, List__val);
             prefix := Seq#Append(prefix, Seq#Singleton(Heap[cursor, List__val]));
             assume state(Heap, Mask);
@@ -6530,16 +6530,16 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
           // -- Translating statement: __flatten_82 := List__contents(cursor.List__next) -- testListAppend.vpr@461.5--461.54
             
             // -- Check definedness of List__contents(cursor.List__next)
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access cursor.List__next (testListAppend.vpr@461.5--461.54) [165843]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access cursor.List__next (testListAppend.vpr@461.5--461.54) [42623]"}
                 HasDirectPerm(Mask, cursor, List__next);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
-                assert {:msg "  Precondition of function List__contents might not hold. Assertion cursor.List__next != null might not hold. (testListAppend.vpr@461.21--461.54) [165844]"}
+                ExhaleWellDef0Heap := Heap;
+                assert {:msg "  Precondition of function List__contents might not hold. Assertion cursor.List__next != null might not hold. (testListAppend.vpr@461.21--461.54) [42624]"}
                   Heap[cursor, List__next] != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(cursor.List__next) (testListAppend.vpr@461.21--461.54) [165845]"}
+                assert {:msg "  Precondition of function List__contents might not hold. There might be insufficient permission to access List__state(cursor.List__next) (testListAppend.vpr@461.21--461.54) [42625]"}
                   NoPerm < perm ==> NoPerm < Mask[null, List__state(Heap[cursor, List__next])];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -6562,7 +6562,7 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
           // -- Translating statement: cursor := cursor.List__next -- testListAppend.vpr@464.5--464.32
             
             // -- Check definedness of cursor.List__next
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access cursor.List__next (testListAppend.vpr@464.5--464.32) [165846]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access cursor.List__next (testListAppend.vpr@464.5--464.32) [42626]"}
                 HasDirectPerm(Mask, cursor, List__next);
             cursor := Heap[cursor, List__next];
             assume state(Heap, Mask);
@@ -6576,57 +6576,57 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
             arg_out_1_0_1 := Seq#Append(L1, L2);
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@465.5--465.167) [165847]"}
+              ExhaleWellDef0Heap := Heap;
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@465.5--465.167) [42627]"}
                 diz != null;
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@465.5--465.167) [165848]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@465.5--465.167) [42628]"}
                 current_thread_id >= 0;
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@465.5--465.167) [165849]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@465.5--465.167) [42629]"}
                 diz != null;
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. There might be insufficient permission to access tmp.List__val (testListAppend.vpr@465.5--465.167) [165850]"}
+                assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. There might be insufficient permission to access tmp.List__val (testListAppend.vpr@465.5--465.167) [42630]"}
                   perm <= Mask[tmp, List__val];
               }
               Mask := Mask[tmp, List__val:=Mask[tmp, List__val] - perm];
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. There might be insufficient permission to access tmp.List__next (testListAppend.vpr@465.5--465.167) [165851]"}
+                assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. There might be insufficient permission to access tmp.List__next (testListAppend.vpr@465.5--465.167) [42631]"}
                   perm <= Mask[tmp, List__next];
               }
               Mask := Mask[tmp, List__next:=Mask[tmp, List__next] - perm];
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion tmp.List__next == cursor might not hold. (testListAppend.vpr@465.5--465.167) [165852]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion tmp.List__next == cursor might not hold. (testListAppend.vpr@465.5--465.167) [42632]"}
                 Heap[tmp, List__next] == cursor;
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion tmp_suffix == Seq(tmp.List__val) ++ suffix might not hold. (testListAppend.vpr@465.5--465.167) [165853]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion tmp_suffix == Seq(tmp.List__val) ++ suffix might not hold. (testListAppend.vpr@465.5--465.167) [42633]"}
                 Seq#Equal(tmp_suffix, Seq#Append(Seq#Singleton(Heap[tmp, List__val]), suffix));
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@465.5--465.167) [165854]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@465.5--465.167) [42634]"}
                 vwand != null;
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@465.5--465.167) [165855]"}
+                assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@465.5--465.167) [42635]"}
                   perm <= Mask[null, Wand_list_for_list__valid_wand(vwand)];
               }
               Mask := Mask[null, Wand_list_for_list__valid_wand(vwand):=Mask[null, Wand_list_for_list__valid_wand(vwand)] - perm];
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_in_1(vwand) == tmp might not hold. (testListAppend.vpr@465.5--465.167) [165856]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_in_1(vwand) == tmp might not hold. (testListAppend.vpr@465.5--465.167) [42636]"}
                 Wand_list_for_list__get_in_1(Heap, vwand) == tmp;
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_in_1_0(vwand) == tmp_suffix ++ L2 might not hold. (testListAppend.vpr@465.5--465.167) [165857]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_in_1_0(vwand) == tmp_suffix ++ L2 might not hold. (testListAppend.vpr@465.5--465.167) [42637]"}
                 Seq#Equal(Wand_list_for_list__get_in_1_0(Heap, vwand), Seq#Append(tmp_suffix, L2));
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_out_1(vwand) == diz might not hold. (testListAppend.vpr@465.5--465.167) [165858]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_out_1(vwand) == diz might not hold. (testListAppend.vpr@465.5--465.167) [42638]"}
                 Wand_list_for_list__get_out_1(Heap, vwand) == diz;
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2 might not hold. (testListAppend.vpr@465.5--465.167) [165859]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2 might not hold. (testListAppend.vpr@465.5--465.167) [42639]"}
                 Seq#Equal(Wand_list_for_list__get_out_1_0(Heap, vwand), Seq#Append(L1, L2));
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion cursor != null might not hold. (testListAppend.vpr@465.5--465.167) [165860]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion cursor != null might not hold. (testListAppend.vpr@465.5--465.167) [42640]"}
                 cursor != null;
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion cursor == cursor might not hold. (testListAppend.vpr@465.5--465.167) [165861]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion cursor == cursor might not hold. (testListAppend.vpr@465.5--465.167) [42641]"}
                 cursor == cursor;
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion suffix ++ L2 == suffix ++ L2 might not hold. (testListAppend.vpr@465.5--465.167) [165862]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion suffix ++ L2 == suffix ++ L2 might not hold. (testListAppend.vpr@465.5--465.167) [42642]"}
                 Seq#Equal(arg_in_1_0_1, Seq#Append(suffix, L2));
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@465.5--465.167) [165863]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion diz != null might not hold. (testListAppend.vpr@465.5--465.167) [42643]"}
                 diz != null;
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion diz == diz might not hold. (testListAppend.vpr@465.5--465.167) [165864]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion diz == diz might not hold. (testListAppend.vpr@465.5--465.167) [42644]"}
                 diz == diz;
-              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion L1 ++ L2 == L1 ++ L2 might not hold. (testListAppend.vpr@465.5--465.167) [165865]"}
+              assert {:msg "  The precondition of method List__Wand_list_for_list_lemma_1 might not hold. Assertion L1 ++ L2 == L1 ++ L2 might not hold. (testListAppend.vpr@465.5--465.167) [42645]"}
                 Seq#Equal(arg_out_1_0_1, Seq#Append(L1, L2));
               // Finish exhale
               havoc ExhaleHeap;
@@ -6657,45 +6657,45 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
             vwand := __flatten_41;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant cursor != null might not be preserved. Assertion cursor != null might not hold. (testListAppend.vpr@443.15--443.29) [165866]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant cursor != null might not be preserved. Assertion cursor != null might not hold. (testListAppend.vpr@443.15--443.29) [42646]"}
           cursor != null;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(List__state(cursor), write) might not be preserved. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@444.15--444.46) [165867]"}
+          assert {:msg "  Loop invariant acc(List__state(cursor), write) might not be preserved. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@444.15--444.46) [42647]"}
             perm <= Mask[null, List__state(cursor)];
         }
         Mask := Mask[null, List__state(cursor):=Mask[null, List__state(cursor)] - perm];
-        assert {:msg "  Loop invariant suffix == List__contents(cursor) might not be preserved. Assertion suffix == List__contents(cursor) might not hold. (testListAppend.vpr@445.15--445.47) [165868]"}
+        assert {:msg "  Loop invariant suffix == List__contents(cursor) might not be preserved. Assertion suffix == List__contents(cursor) might not hold. (testListAppend.vpr@445.15--445.47) [42648]"}
           Seq#Equal(suffix, List__contents(Heap, cursor));
-        assert {:msg "  Loop invariant prefix ++ suffix == L1 might not be preserved. Assertion prefix ++ suffix == L1 might not hold. (testListAppend.vpr@446.15--446.37) [165869]"}
+        assert {:msg "  Loop invariant prefix ++ suffix == L1 might not be preserved. Assertion prefix ++ suffix == L1 might not hold. (testListAppend.vpr@446.15--446.37) [42649]"}
           Seq#Equal(Seq#Append(prefix, suffix), L1);
-        assert {:msg "  Loop invariant l != null might not be preserved. Assertion l != null might not hold. (testListAppend.vpr@447.15--447.24) [165870]"}
-          l_2 != null;
+        assert {:msg "  Loop invariant l != null might not be preserved. Assertion l != null might not hold. (testListAppend.vpr@447.15--447.24) [42650]"}
+          l_1 != null;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(List__state(l), write) might not be preserved. There might be insufficient permission to access List__state(l) (testListAppend.vpr@448.15--448.41) [165871]"}
-            perm <= Mask[null, List__state(l_2)];
+          assert {:msg "  Loop invariant acc(List__state(l), write) might not be preserved. There might be insufficient permission to access List__state(l) (testListAppend.vpr@448.15--448.41) [42651]"}
+            perm <= Mask[null, List__state(l_1)];
         }
-        Mask := Mask[null, List__state(l_2):=Mask[null, List__state(l_2)] - perm];
-        assert {:msg "  Loop invariant List__contents(l) == L2 might not be preserved. Assertion List__contents(l) == L2 might not hold. (testListAppend.vpr@449.15--449.38) [165872]"}
-          Seq#Equal(List__contents(Heap, l_2), L2);
-        assert {:msg "  Loop invariant vwand != null might not be preserved. Assertion vwand != null might not hold. (testListAppend.vpr@450.15--450.28) [165873]"}
+        Mask := Mask[null, List__state(l_1):=Mask[null, List__state(l_1)] - perm];
+        assert {:msg "  Loop invariant List__contents(l) == L2 might not be preserved. Assertion List__contents(l) == L2 might not hold. (testListAppend.vpr@449.15--449.38) [42652]"}
+          Seq#Equal(List__contents(Heap, l_1), L2);
+        assert {:msg "  Loop invariant vwand != null might not be preserved. Assertion vwand != null might not hold. (testListAppend.vpr@450.15--450.28) [42653]"}
           vwand != null;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(Wand_list_for_list__valid_wand(vwand), write) might not be preserved. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@451.15--451.64) [165874]"}
+          assert {:msg "  Loop invariant acc(Wand_list_for_list__valid_wand(vwand), write) might not be preserved. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@451.15--451.64) [42654]"}
             perm <= Mask[null, Wand_list_for_list__valid_wand(vwand)];
         }
         Mask := Mask[null, Wand_list_for_list__valid_wand(vwand):=Mask[null, Wand_list_for_list__valid_wand(vwand)] - perm];
-        assert {:msg "  Loop invariant Wand_list_for_list__get_in_1(vwand) == cursor might not be preserved. Assertion Wand_list_for_list__get_in_1(vwand) == cursor might not hold. (testListAppend.vpr@452.15--452.60) [165875]"}
+        assert {:msg "  Loop invariant Wand_list_for_list__get_in_1(vwand) == cursor might not be preserved. Assertion Wand_list_for_list__get_in_1(vwand) == cursor might not hold. (testListAppend.vpr@452.15--452.60) [42655]"}
           Wand_list_for_list__get_in_1(Heap, vwand) == cursor;
-        assert {:msg "  Loop invariant Wand_list_for_list__get_in_1_0(vwand) == suffix ++ L2 might not be preserved. Assertion Wand_list_for_list__get_in_1_0(vwand) == suffix ++ L2 might not hold. (testListAppend.vpr@453.15--453.68) [165876]"}
+        assert {:msg "  Loop invariant Wand_list_for_list__get_in_1_0(vwand) == suffix ++ L2 might not be preserved. Assertion Wand_list_for_list__get_in_1_0(vwand) == suffix ++ L2 might not hold. (testListAppend.vpr@453.15--453.68) [42656]"}
           Seq#Equal(Wand_list_for_list__get_in_1_0(Heap, vwand), Seq#Append(suffix, L2));
-        assert {:msg "  Loop invariant Wand_list_for_list__get_out_1(vwand) == diz might not be preserved. Assertion Wand_list_for_list__get_out_1(vwand) == diz might not hold. (testListAppend.vpr@454.15--454.58) [165877]"}
+        assert {:msg "  Loop invariant Wand_list_for_list__get_out_1(vwand) == diz might not be preserved. Assertion Wand_list_for_list__get_out_1(vwand) == diz might not hold. (testListAppend.vpr@454.15--454.58) [42657]"}
           Wand_list_for_list__get_out_1(Heap, vwand) == diz;
-        assert {:msg "  Loop invariant Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2 might not be preserved. Assertion Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2 might not hold. (testListAppend.vpr@455.15--455.65) [165878]"}
+        assert {:msg "  Loop invariant Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2 might not be preserved. Assertion Wand_list_for_list__get_out_1_0(vwand) == L1 ++ L2 might not hold. (testListAppend.vpr@455.15--455.65) [42658]"}
           Seq#Equal(Wand_list_for_list__get_out_1_0(Heap, vwand), Seq#Append(L1, L2));
         // Finish exhale
         havoc ExhaleHeap;
@@ -6715,12 +6715,12 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
       assume state(Heap, Mask);
       assume Seq#Equal(suffix, List__contents(Heap, cursor));
       assume Seq#Equal(Seq#Append(prefix, suffix), L1);
-      assume l_2 != null;
+      assume l_1 != null;
       perm := FullPerm;
-      Mask := Mask[null, List__state(l_2):=Mask[null, List__state(l_2)] + perm];
+      Mask := Mask[null, List__state(l_1):=Mask[null, List__state(l_1)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
-      assume Seq#Equal(List__contents(Heap, l_2), L2);
+      assume Seq#Equal(List__contents(Heap, l_1), L2);
       assume vwand != null;
       perm := FullPerm;
       Mask := Mask[null, Wand_list_for_list__valid_wand(vwand):=Mask[null, Wand_list_for_list__valid_wand(vwand)] + perm];
@@ -6739,11 +6739,11 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
   // -- Translating statement: unfold acc(List__state(cursor), write) -- testListAppend.vpr@468.3--468.41
     assume List__state#trigger(Heap, List__state(cursor));
     assume Heap[null, List__state(cursor)] == CombineFrames(FrameFragment(Heap[cursor, List__val]), CombineFrames(FrameFragment(Heap[cursor, List__next]), FrameFragment((if Heap[cursor, List__next] != null then Heap[null, List__state(Heap[cursor, List__next])] else EmptyFrame))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding List__state(cursor) might fail. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@468.3--468.41) [165881]"}
+      assert {:msg "  Unfolding List__state(cursor) might fail. There might be insufficient permission to access List__state(cursor) (testListAppend.vpr@468.3--468.41) [42661]"}
         perm <= Mask[null, List__state(cursor)];
     }
     Mask := Mask[null, List__state(cursor):=Mask[null, List__state(cursor)] - perm];
@@ -6773,7 +6773,7 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_42 := l -- testListAppend.vpr@469.3--469.20
-    __flatten_42 := l_2;
+    __flatten_42 := l_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_84 := __flatten_42 -- testListAppend.vpr@470.3--470.31
@@ -6781,30 +6781,30 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     assume state(Heap, Mask);
   
   // -- Translating statement: cursor.List__next := __flatten_84 -- testListAppend.vpr@471.3--471.36
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access cursor.List__next (testListAppend.vpr@471.3--471.36) [165885]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access cursor.List__next (testListAppend.vpr@471.3--471.36) [42665]"}
       FullPerm == Mask[cursor, List__next];
     Heap := Heap[cursor, List__next:=__flatten_84];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List__state(cursor), write) -- testListAppend.vpr@472.3--472.39
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List__state(cursor) might fail. There might be insufficient permission to access cursor.List__val (testListAppend.vpr@472.3--472.39) [165888]"}
+      assert {:msg "  Folding List__state(cursor) might fail. There might be insufficient permission to access cursor.List__val (testListAppend.vpr@472.3--472.39) [42668]"}
         perm <= Mask[cursor, List__val];
     }
     Mask := Mask[cursor, List__val:=Mask[cursor, List__val] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List__state(cursor) might fail. There might be insufficient permission to access cursor.List__next (testListAppend.vpr@472.3--472.39) [165890]"}
+      assert {:msg "  Folding List__state(cursor) might fail. There might be insufficient permission to access cursor.List__next (testListAppend.vpr@472.3--472.39) [42670]"}
         perm <= Mask[cursor, List__next];
     }
     Mask := Mask[cursor, List__next:=Mask[cursor, List__next] - perm];
     if (Heap[cursor, List__next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding List__state(cursor) might fail. There might be insufficient permission to access List__state(cursor.List__next) (testListAppend.vpr@472.3--472.39) [165892]"}
+        assert {:msg "  Folding List__state(cursor) might fail. There might be insufficient permission to access List__state(cursor.List__next) (testListAppend.vpr@472.3--472.39) [42672]"}
           perm <= Mask[null, List__state(Heap[cursor, List__next])];
       }
       Mask := Mask[null, List__state(Heap[cursor, List__next]):=Mask[null, List__state(Heap[cursor, List__next])] - perm];
@@ -6827,9 +6827,9 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     Heap := Heap[null, List__state#sm(cursor):=Heap[null, List__state#sm(cursor)][cursor, List__next:=true]];
     if (Heap[cursor, List__next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_3: Ref, f_12: (Field A B) ::
-        { newPMask[o_3, f_12] }
-        Heap[null, List__state#sm(cursor)][o_3, f_12] || Heap[null, List__state#sm(Heap[cursor, List__next])][o_3, f_12] ==> newPMask[o_3, f_12]
+      assume (forall <A, B> o_12: Ref, f_25: (Field A B) ::
+        { newPMask[o_12, f_25] }
+        Heap[null, List__state#sm(cursor)][o_12, f_25] || Heap[null, List__state#sm(Heap[cursor, List__next])][o_12, f_25] ==> newPMask[o_12, f_25]
       );
       Heap := Heap[null, List__state#sm(cursor):=newPMask];
     }
@@ -6841,27 +6841,27 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@473.3--473.55) [165894]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion vwand != null might not hold. (testListAppend.vpr@473.3--473.55) [42674]"}
         vwand != null;
-      assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@473.3--473.55) [165895]"}
+      assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testListAppend.vpr@473.3--473.55) [42675]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@473.3--473.55) [165896]"}
+        assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. There might be insufficient permission to access Wand_list_for_list__valid_wand(vwand) (testListAppend.vpr@473.3--473.55) [42676]"}
           perm <= Mask[null, Wand_list_for_list__valid_wand(vwand)];
       }
       Mask := Mask[null, Wand_list_for_list__valid_wand(vwand):=Mask[null, Wand_list_for_list__valid_wand(vwand)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. There might be insufficient permission to access List__state(Wand_list_for_list__get_in_1(vwand)) (testListAppend.vpr@473.3--473.55) [165897]"}
+        assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. There might be insufficient permission to access List__state(Wand_list_for_list__get_in_1(vwand)) (testListAppend.vpr@473.3--473.55) [42677]"}
           perm <= Mask[null, List__state(Wand_list_for_list__get_in_1(Heap, vwand))];
       }
       Mask := Mask[null, List__state(Wand_list_for_list__get_in_1(Heap, vwand)):=Mask[null, List__state(Wand_list_for_list__get_in_1(Heap, vwand))] - perm];
-      assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion List__contents(Wand_list_for_list__get_in_1(vwand)) == Wand_list_for_list__get_in_1_0(vwand) might not hold. (testListAppend.vpr@473.3--473.55) [165898]"}
+      assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion List__contents(Wand_list_for_list__get_in_1(vwand)) == Wand_list_for_list__get_in_1_0(vwand) might not hold. (testListAppend.vpr@473.3--473.55) [42678]"}
         Seq#Equal(List__contents(Heap, Wand_list_for_list__get_in_1(Heap, vwand)), Wand_list_for_list__get_in_1_0(Heap, vwand));
-      assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion Wand_list_for_list__get_out_1(vwand) != null might not hold. (testListAppend.vpr@473.3--473.55) [165899]"}
+      assert {:msg "  The precondition of method Wand_list_for_list___apply might not hold. Assertion Wand_list_for_list__get_out_1(vwand) != null might not hold. (testListAppend.vpr@473.3--473.55) [42679]"}
         Wand_list_for_list__get_out_1(Heap, vwand) != null;
       // Finish exhale
       havoc ExhaleHeap;
@@ -6879,15 +6879,15 @@ procedure List__append_iter(diz: Ref, current_thread_id: int, l_2: Ref, L1: (Seq
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of List__append_iter might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@420.11--420.39) [165900]"}
+      assert {:msg "  Postcondition of List__append_iter might not hold. There might be insufficient permission to access List__state(diz) (testListAppend.vpr@420.11--420.39) [42680]"}
         perm <= Mask[null, List__state(diz)];
     }
     Mask := Mask[null, List__state(diz):=Mask[null, List__state(diz)] - perm];
-    assert {:msg "  Postcondition of List__append_iter might not hold. Assertion List__contents(diz) == L1 ++ L2 might not hold. (testListAppend.vpr@421.11--421.42) [165901]"}
+    assert {:msg "  Postcondition of List__append_iter might not hold. Assertion List__contents(diz) == L1 ++ L2 might not hold. (testListAppend.vpr@421.11--421.42) [42681]"}
       Seq#Equal(List__contents(Heap, diz), Seq#Append(L1, L2));
     // Finish exhale
     havoc ExhaleHeap;

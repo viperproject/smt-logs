@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:09
+// Date:         2025-01-26 21:42:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0043.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0043-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,15 +177,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of method checkGcd
 // ==================================================
 
-procedure checkGcd(left_1: int, right: int) returns ()
+procedure checkGcd(left: int, right_2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -193,15 +193,15 @@ procedure checkGcd(left_1: int, right: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume left_1 >= 0;
-    assume right >= 0;
+    assume left >= 0;
+    assume right_2 >= 0;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -209,19 +209,19 @@ procedure checkGcd(left_1: int, right: int) returns ()
     // Checked inhaling of postcondition to check definedness
     
     // -- Check definedness of right == 0 || left % right >= 0
-      if (!(right == 0)) {
-        assert {:msg "  Contract might not be well-formed. Divisor right might be zero. (0043.vpr@6.11--6.44) [197396]"}
-          right != 0;
+      if (!(right_2 == 0)) {
+        assert {:msg "  Contract might not be well-formed. Divisor right might be zero. (0043.vpr@6.11--6.44) [63714]"}
+          right_2 != 0;
       }
-    assume right == 0 || left_1 mod right >= 0;
+    assume right_2 == 0 || left mod right_2 >= 0;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of checkGcd might not hold. Assertion right == 0 || left % right >= 0 might not hold. (0043.vpr@6.11--6.44) [197397]"}
-      right == 0 || left_1 mod right >= 0;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of checkGcd might not hold. Assertion right == 0 || left % right >= 0 might not hold. (0043.vpr@6.11--6.44) [63715]"}
+      right_2 == 0 || left mod right_2 >= 0;
 }

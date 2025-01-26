@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:52
+// Date:         2025-01-26 21:43:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0081.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0081-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -242,7 +242,7 @@ procedure valid#definedness(self: Ref) returns ()
 // Translation of method read
 // ==================================================
 
-procedure read(a_2: Ref) returns ()
+procedure read_1(a_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -289,7 +289,7 @@ procedure read(a_2: Ref) returns ()
   // -- Translating statement: assert perm(a.f) == none -- 0081.vpr@15.5--15.29
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion perm(a.f) == none might not hold. (0081.vpr@15.12--15.29) [193367]"}
+    assert {:msg "  Assert might fail. Assertion perm(a.f) == none might not hold. (0081.vpr@15.12--15.29) [83047]"}
       Mask[a_2, f_7] == NoPerm;
     assume state(Heap, Mask);
   
@@ -298,7 +298,7 @@ procedure read(a_2: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access valid(a) (0081.vpr@13.13--13.33) [193368]"}
+      assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access valid(a) (0081.vpr@13.13--13.33) [83048]"}
         perm <= Mask[null, valid(a_2)];
     }
     Mask := Mask[null, valid(a_2):=Mask[null, valid(a_2)] - perm];

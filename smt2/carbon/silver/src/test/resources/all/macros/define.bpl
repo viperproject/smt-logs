@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:13
+// Date:         2025-01-26 21:43:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/macros/define.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/macros/define-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -341,7 +341,7 @@ procedure test03(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (define.vpr@28.10--28.18) [189466]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (define.vpr@28.10--28.18) [93367]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -395,7 +395,7 @@ procedure test04(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == null
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (define.vpr@35.10--35.20) [189468]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (define.vpr@35.10--35.20) [93369]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == null;
     assume state(Heap, Mask);
@@ -414,7 +414,7 @@ procedure test04(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: y.f := z -- define.vpr@39.3--39.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (define.vpr@39.3--39.11) [189469]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (define.vpr@39.3--39.11) [93370]"}
       FullPerm == Mask[y, f_7];
     Heap := Heap[y, f_7:=z];
     assume state(Heap, Mask);
@@ -424,23 +424,23 @@ procedure test04(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (define.vpr@40.10--40.31) [189471]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (define.vpr@40.10--40.31) [93372]"}
         perm <= Mask[y, f_7];
     }
     Mask := Mask[y, f_7:=Mask[y, f_7] - perm];
     
     // -- Check definedness of y.f == z
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (define.vpr@40.10--40.31) [189472]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (define.vpr@40.10--40.31) [93373]"}
         HasDirectPerm(ExhaleWellDef0Mask, y, f_7);
-    assert {:msg "  Exhale might fail. Assertion y.f == z might not hold. (define.vpr@40.10--40.31) [189473]"}
+    assert {:msg "  Exhale might fail. Assertion y.f == z might not hold. (define.vpr@40.10--40.31) [93374]"}
       Heap[y, f_7] == z;
     
     // -- Check definedness of acc(y.f.f, write)
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (define.vpr@40.10--40.31) [189474]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (define.vpr@40.10--40.31) [93375]"}
         HasDirectPerm(ExhaleWellDef0Mask, y, f_7);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f.f (define.vpr@40.10--40.31) [189476]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f.f (define.vpr@40.10--40.31) [93377]"}
         perm <= Mask[Heap[y, f_7], f_7];
     }
     Mask := Mask[Heap[y, f_7], f_7:=Mask[Heap[y, f_7], f_7] - perm];
@@ -497,7 +497,7 @@ procedure test05(x: int) returns ()
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant fun01(x != i) might not hold on entry. Assertion fun01(x != i) might not hold. (define.vpr@53.15--53.28) [189477]"}
+        assert {:msg "  Loop invariant fun01(x != i) might not hold on entry. Assertion fun01(x != i) might not hold. (define.vpr@53.15--53.28) [93378]"}
           fun01(Heap, x != i);
     
     // -- Havoc loop written variables (except locals)
@@ -545,7 +545,7 @@ procedure test05(x: int) returns ()
         // Exhale invariant
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant fun01(x != i) might not be preserved. Assertion fun01(x != i) might not hold. (define.vpr@53.15--53.28) [189478]"}
+        assert {:msg "  Loop invariant fun01(x != i) might not be preserved. Assertion fun01(x != i) might not hold. (define.vpr@53.15--53.28) [93379]"}
           fun01(Heap, x != i);
         // Terminate execution
         assume false;
@@ -602,7 +602,7 @@ procedure test06() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x.g := 1 -- define.vpr@69.32--69.40
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@69.32--69.40) [189480]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@69.32--69.40) [93381]"}
       FullPerm == Mask[x, g];
     Heap := Heap[x, g:=1];
     assume state(Heap, Mask);
@@ -616,7 +616,7 @@ procedure test06() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: y.g := 2 -- define.vpr@70.32--70.40
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (define.vpr@70.32--70.40) [189482]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (define.vpr@70.32--70.40) [93383]"}
       FullPerm == Mask[y, g];
     Heap := Heap[y, g:=2];
     assume state(Heap, Mask);
@@ -632,9 +632,9 @@ procedure test06() returns ()
   // -- Translating statement: t.g := x.g -- define.vpr@61.3--61.13
     
     // -- Check definedness of x.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@61.3--61.13) [189484]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@61.3--61.13) [93385]"}
         HasDirectPerm(Mask, x, g);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access t.g (define.vpr@61.3--61.13) [189485]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access t.g (define.vpr@61.3--61.13) [93386]"}
       FullPerm == Mask[t_2, g];
     Heap := Heap[t_2, g:=Heap[x, g]];
     assume state(Heap, Mask);
@@ -642,9 +642,9 @@ procedure test06() returns ()
   // -- Translating statement: x.g := y.g -- define.vpr@62.3--62.13
     
     // -- Check definedness of y.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (define.vpr@62.3--62.13) [189486]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (define.vpr@62.3--62.13) [93387]"}
         HasDirectPerm(Mask, y, g);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@62.3--62.13) [189487]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@62.3--62.13) [93388]"}
       FullPerm == Mask[x, g];
     Heap := Heap[x, g:=Heap[y, g]];
     assume state(Heap, Mask);
@@ -652,9 +652,9 @@ procedure test06() returns ()
   // -- Translating statement: y.g := t.g -- define.vpr@63.3--63.13
     
     // -- Check definedness of t.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access t.g (define.vpr@63.3--63.13) [189488]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access t.g (define.vpr@63.3--63.13) [93389]"}
         HasDirectPerm(Mask, t_2, g);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (define.vpr@63.3--63.13) [189489]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (define.vpr@63.3--63.13) [93390]"}
       FullPerm == Mask[y, g];
     Heap := Heap[y, g:=Heap[t_2, g]];
     assume state(Heap, Mask);
@@ -664,30 +664,30 @@ procedure test06() returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.g == 2
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (define.vpr@73.10--73.42) [189490]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (define.vpr@73.10--73.42) [93391]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, g);
-    assert {:msg "  Assert might fail. Assertion x.g == 2 might not hold. (define.vpr@73.10--73.42) [189491]"}
+    assert {:msg "  Assert might fail. Assertion x.g == 2 might not hold. (define.vpr@73.10--73.42) [93392]"}
       Heap[x, g] == 2;
     
     // -- Check definedness of y.g == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access y.g (define.vpr@73.10--73.42) [189492]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access y.g (define.vpr@73.10--73.42) [93393]"}
         HasDirectPerm(ExhaleWellDef0Mask, y, g);
-    assert {:msg "  Assert might fail. Assertion y.g == 1 might not hold. (define.vpr@73.10--73.42) [189493]"}
+    assert {:msg "  Assert might fail. Assertion y.g == 1 might not hold. (define.vpr@73.10--73.42) [93394]"}
       Heap[y, g] == 1;
     
     // -- Check definedness of t.g == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access t.g (define.vpr@73.10--73.42) [189494]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access t.g (define.vpr@73.10--73.42) [93395]"}
         HasDirectPerm(ExhaleWellDef0Mask, t_2, g);
-    assert {:msg "  Assert might fail. Assertion t.g == 1 might not hold. (define.vpr@73.10--73.42) [189495]"}
+    assert {:msg "  Assert might fail. Assertion t.g == 1 might not hold. (define.vpr@73.10--73.42) [93396]"}
       Heap[t_2, g] == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: x.g := y.g -- define.vpr@61.3--61.13
     
     // -- Check definedness of y.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (define.vpr@61.3--61.13) [189496]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (define.vpr@61.3--61.13) [93397]"}
         HasDirectPerm(Mask, y, g);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@61.3--61.13) [189497]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@61.3--61.13) [93398]"}
       FullPerm == Mask[x, g];
     Heap := Heap[x, g:=Heap[y, g]];
     assume state(Heap, Mask);
@@ -695,9 +695,9 @@ procedure test06() returns ()
   // -- Translating statement: y.g := t.g -- define.vpr@62.3--62.13
     
     // -- Check definedness of t.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access t.g (define.vpr@62.3--62.13) [189498]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access t.g (define.vpr@62.3--62.13) [93399]"}
         HasDirectPerm(Mask, t_2, g);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (define.vpr@62.3--62.13) [189499]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.g (define.vpr@62.3--62.13) [93400]"}
       FullPerm == Mask[y, g];
     Heap := Heap[y, g:=Heap[t_2, g]];
     assume state(Heap, Mask);
@@ -705,9 +705,9 @@ procedure test06() returns ()
   // -- Translating statement: t.g := x.g -- define.vpr@63.3--63.13
     
     // -- Check definedness of x.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@63.3--63.13) [189500]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@63.3--63.13) [93401]"}
         HasDirectPerm(Mask, x, g);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access t.g (define.vpr@63.3--63.13) [189501]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access t.g (define.vpr@63.3--63.13) [93402]"}
       FullPerm == Mask[t_2, g];
     Heap := Heap[t_2, g:=Heap[x, g]];
     assume state(Heap, Mask);
@@ -717,21 +717,21 @@ procedure test06() returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.g == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (define.vpr@75.10--75.42) [189502]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (define.vpr@75.10--75.42) [93403]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, g);
-    assert {:msg "  Assert might fail. Assertion x.g == 1 might not hold. (define.vpr@75.10--75.42) [189503]"}
+    assert {:msg "  Assert might fail. Assertion x.g == 1 might not hold. (define.vpr@75.10--75.42) [93404]"}
       Heap[x, g] == 1;
     
     // -- Check definedness of y.g == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access y.g (define.vpr@75.10--75.42) [189504]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access y.g (define.vpr@75.10--75.42) [93405]"}
         HasDirectPerm(ExhaleWellDef0Mask, y, g);
-    assert {:msg "  Assert might fail. Assertion y.g == 1 might not hold. (define.vpr@75.10--75.42) [189505]"}
+    assert {:msg "  Assert might fail. Assertion y.g == 1 might not hold. (define.vpr@75.10--75.42) [93406]"}
       Heap[y, g] == 1;
     
     // -- Check definedness of t.g == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access t.g (define.vpr@75.10--75.42) [189506]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access t.g (define.vpr@75.10--75.42) [93407]"}
         HasDirectPerm(ExhaleWellDef0Mask, t_2, g);
-    assert {:msg "  Assert might fail. Assertion t.g == 1 might not hold. (define.vpr@75.10--75.42) [189507]"}
+    assert {:msg "  Assert might fail. Assertion t.g == 1 might not hold. (define.vpr@75.10--75.42) [93408]"}
       Heap[t_2, g] == 1;
     assume state(Heap, Mask);
 }
@@ -772,7 +772,7 @@ procedure test07(x: Ref) returns ()
       oldMask := Mask;
   
   // -- Translating statement: x.g := 1 -- define.vpr@87.3--87.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@87.3--87.11) [189508]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (define.vpr@87.3--87.11) [93409]"}
       FullPerm == Mask[x, g];
     Heap := Heap[x, g:=1];
     assume state(Heap, Mask);
@@ -780,7 +780,7 @@ procedure test07(x: Ref) returns ()
   // -- Translating statement: if (x.g <= 5) -- define.vpr@82.5--84.6
     
     // -- Check definedness of x.g <= 5
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.g (define.vpr@82.9--82.15) [189509]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.g (define.vpr@82.9--82.15) [93410]"}
         HasDirectPerm(Mask, x, g);
     if (Heap[x, g] <= 5) {
       
@@ -794,7 +794,7 @@ procedure test07(x: Ref) returns ()
   // -- Translating statement: assert false -- define.vpr@89.3--89.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (define.vpr@89.10--89.15) [189510]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (define.vpr@89.10--89.15) [93411]"}
       false;
     assume state(Heap, Mask);
 }

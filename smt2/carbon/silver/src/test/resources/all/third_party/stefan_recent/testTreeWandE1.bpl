@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:18:57
+// Date:         2025-01-26 21:41:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testTreeWandE1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testTreeWandE1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_40: Ref, f_46: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_40, f_46] }
-  Heap[o_40, $allocated] ==> Heap[Heap[o_40, f_46], $allocated]
+axiom (forall o_44: Ref, f_58: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_44, f_58] }
+  Heap[o_44, $allocated] ==> Heap[Heap[o_44, f_58], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,34 +39,34 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_45: Ref, f_49: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_45, f_49] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_45, f_49) ==> Heap[o_45, f_49] == ExhaleHeap[o_45, f_49]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_45: Ref, f_59: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_45, f_59] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_45, f_59) ==> Heap[o_45, f_59] == ExhaleHeap[o_45, f_59]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> Heap[null, PredicateMaskField(pm_f_20)] == ExhaleHeap[null, PredicateMaskField(pm_f_20)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> Heap[null, PredicateMaskField(pm_f_22)] == ExhaleHeap[null, PredicateMaskField(pm_f_22)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_49: (Field A B) ::
-    { ExhaleHeap[o2_20, f_49] }
-    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_49] ==> Heap[o2_20, f_49] == ExhaleHeap[o2_20, f_49]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_59: (Field A B) ::
+    { ExhaleHeap[o2_22, f_59] }
+    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_59] ==> Heap[o2_22, f_59] == ExhaleHeap[o2_22, f_59]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> Heap[null, WandMaskField(pm_f_20)] == ExhaleHeap[null, WandMaskField(pm_f_20)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> Heap[null, WandMaskField(pm_f_22)] == ExhaleHeap[null, WandMaskField(pm_f_22)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_49: (Field A B) ::
-    { ExhaleHeap[o2_20, f_49] }
-    Heap[null, WandMaskField(pm_f_20)][o2_20, f_49] ==> Heap[o2_20, f_49] == ExhaleHeap[o2_20, f_49]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_59: (Field A B) ::
+    { ExhaleHeap[o2_22, f_59] }
+    Heap[null, WandMaskField(pm_f_22)][o2_22, f_59] ==> Heap[o2_22, f_59] == ExhaleHeap[o2_22, f_59]
   )
 );
 // All previously-allocated references are still allocated
@@ -75,9 +75,9 @@ axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_45: Ref ::
   IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_45, $allocated] ==> ExhaleHeap[o_45, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_40: Ref, f_50: (Field A B), v: B ::
-  { Heap[o_40, f_50:=v] }
-  succHeap(Heap, Heap[o_40, f_50:=v])
+axiom (forall <A, B> Heap: HeapType, o_44: Ref, f_31: (Field A B), v: B ::
+  { Heap[o_44, f_31:=v] }
+  succHeap(Heap, Heap[o_44, f_31:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -656,8 +656,8 @@ procedure Wand_state_contains_for_state_contains__get_in_1#definedness(diz: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   
@@ -683,10 +683,10 @@ procedure Wand_state_contains_for_state_contains__get_in_1#definedness(diz: Ref)
       UnfoldingMask := Mask;
       assume Wand_state_contains_for_state_contains__valid_wand#trigger(UnfoldingHeap, Wand_state_contains_for_state_contains__valid_wand(diz));
       assume UnfoldingHeap[null, Wand_state_contains_for_state_contains__valid_wand(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__in_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__in_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__out_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__out_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__this_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__target_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__cur_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__top_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__cur_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__wand_1]), CombineFrames(FrameFragment((if UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] == 1 then CombineFrames(CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left]), FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__data])), CombineFrames(CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])] else EmptyFrame))), UnfoldingHeap[null, Wand_state_contains_for_state_contains__valid_wand(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__wand_1])])) else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__this_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__target_contents_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__top_2]), FrameFragment((if UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] == 2 then EmptyFrame else EmptyFrame)))))))))))))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@43.1--49.2) [176656]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@43.1--49.2) [28354]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
       havoc wildcard;
       perm := wildcard;
@@ -827,7 +827,7 @@ procedure Wand_state_contains_for_state_contains__get_in_1#definedness(diz: Ref)
       }
       assume UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] <= 2;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@43.1--49.2) [176657]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@43.1--49.2) [28355]"}
         HasDirectPerm(UnfoldingMask, diz, Wand_state_contains_for_state_contains__in_1);
       
       // -- Free assumptions (exp module)
@@ -850,16 +850,16 @@ procedure Wand_state_contains_for_state_contains__get_in_1#definedness(diz: Ref)
           Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right:=true]];
           if (Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-              { newPMask[o_15, f_20] }
-              Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_15, f_20] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_15, f_20] ==> newPMask[o_15, f_20]
+            assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+              { newPMask[o_5, f_11] }
+              Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_5, f_11] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_5, f_11] ==> newPMask[o_5, f_11]
             );
             Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=newPMask];
           }
           havoc newPMask;
-          assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-            { newPMask[o_16, f_21] }
-            Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_16, f_21] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[diz, Wand_state_contains_for_state_contains__wand_1])][o_16, f_21] ==> newPMask[o_16, f_21]
+          assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+            { newPMask[o_6, f_12] }
+            Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_6, f_12] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[diz, Wand_state_contains_for_state_contains__wand_1])][o_6, f_12] ==> newPMask[o_6, f_12]
           );
           Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=newPMask];
         }
@@ -872,9 +872,9 @@ procedure Wand_state_contains_for_state_contains__get_in_1#definedness(diz: Ref)
     Result := Heap[diz, Wand_state_contains_for_state_contains__in_1];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion result != null might not hold. (testTreeWandE1.vpr@46.11--46.25) [176658]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion result != null might not hold. (testTreeWandE1.vpr@46.11--46.25) [28356]"}
       Result != null;
 }
 
@@ -920,8 +920,8 @@ procedure Wand_state_contains_for_state_contains__get_in_1_0#definedness(diz: Re
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   
@@ -947,10 +947,10 @@ procedure Wand_state_contains_for_state_contains__get_in_1_0#definedness(diz: Re
       UnfoldingMask := Mask;
       assume Wand_state_contains_for_state_contains__valid_wand#trigger(UnfoldingHeap, Wand_state_contains_for_state_contains__valid_wand(diz));
       assume UnfoldingHeap[null, Wand_state_contains_for_state_contains__valid_wand(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__in_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__in_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__out_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__out_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__this_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__target_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__cur_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__top_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__cur_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__wand_1]), CombineFrames(FrameFragment((if UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] == 1 then CombineFrames(CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left]), FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__data])), CombineFrames(CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])] else EmptyFrame))), UnfoldingHeap[null, Wand_state_contains_for_state_contains__valid_wand(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__wand_1])])) else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__this_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__target_contents_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__top_2]), FrameFragment((if UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] == 2 then EmptyFrame else EmptyFrame)))))))))))))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@51.1--56.2) [176659]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@51.1--56.2) [28357]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
       havoc wildcard;
       perm := wildcard;
@@ -1091,7 +1091,7 @@ procedure Wand_state_contains_for_state_contains__get_in_1_0#definedness(diz: Re
       }
       assume UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] <= 2;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@51.1--56.2) [176660]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@51.1--56.2) [28358]"}
         HasDirectPerm(UnfoldingMask, diz, Wand_state_contains_for_state_contains__in_1_0);
       
       // -- Free assumptions (exp module)
@@ -1114,16 +1114,16 @@ procedure Wand_state_contains_for_state_contains__get_in_1_0#definedness(diz: Re
           Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right:=true]];
           if (Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-              { newPMask[o_52, f_55] }
-              Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_52, f_55] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_52, f_55] ==> newPMask[o_52, f_55]
+            assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+              { newPMask[o_40, f_52] }
+              Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_40, f_52] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_40, f_52] ==> newPMask[o_40, f_52]
             );
             Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=newPMask];
           }
           havoc newPMask;
-          assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-            { newPMask[o_53, f_56] }
-            Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_53, f_56] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[diz, Wand_state_contains_for_state_contains__wand_1])][o_53, f_56] ==> newPMask[o_53, f_56]
+          assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+            { newPMask[o_42, f_55] }
+            Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_42, f_55] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[diz, Wand_state_contains_for_state_contains__wand_1])][o_42, f_55] ==> newPMask[o_42, f_55]
           );
           Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=newPMask];
         }
@@ -1184,8 +1184,8 @@ procedure Wand_state_contains_for_state_contains__get_out_1#definedness(diz: Ref
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   
@@ -1211,10 +1211,10 @@ procedure Wand_state_contains_for_state_contains__get_out_1#definedness(diz: Ref
       UnfoldingMask := Mask;
       assume Wand_state_contains_for_state_contains__valid_wand#trigger(UnfoldingHeap, Wand_state_contains_for_state_contains__valid_wand(diz));
       assume UnfoldingHeap[null, Wand_state_contains_for_state_contains__valid_wand(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__in_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__in_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__out_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__out_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__this_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__target_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__cur_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__top_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__cur_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__wand_1]), CombineFrames(FrameFragment((if UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] == 1 then CombineFrames(CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left]), FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__data])), CombineFrames(CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])] else EmptyFrame))), UnfoldingHeap[null, Wand_state_contains_for_state_contains__valid_wand(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__wand_1])])) else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__this_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__target_contents_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__top_2]), FrameFragment((if UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] == 2 then EmptyFrame else EmptyFrame)))))))))))))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@58.1--64.2) [176661]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@58.1--64.2) [28359]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
       havoc wildcard;
       perm := wildcard;
@@ -1355,7 +1355,7 @@ procedure Wand_state_contains_for_state_contains__get_out_1#definedness(diz: Ref
       }
       assume UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] <= 2;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@58.1--64.2) [176662]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@58.1--64.2) [28360]"}
         HasDirectPerm(UnfoldingMask, diz, Wand_state_contains_for_state_contains__out_1);
       
       // -- Free assumptions (exp module)
@@ -1378,16 +1378,16 @@ procedure Wand_state_contains_for_state_contains__get_out_1#definedness(diz: Ref
           Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right:=true]];
           if (Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-              { newPMask[o_26, f_29] }
-              Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_26, f_29] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_26, f_29] ==> newPMask[o_26, f_29]
+            assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+              { newPMask[o_46, f_60] }
+              Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_46, f_60] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_46, f_60] ==> newPMask[o_46, f_60]
             );
             Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=newPMask];
           }
           havoc newPMask;
-          assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-            { newPMask[o, f_85] }
-            Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o, f_85] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[diz, Wand_state_contains_for_state_contains__wand_1])][o, f_85] ==> newPMask[o, f_85]
+          assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+            { newPMask[o, f_61] }
+            Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o, f_61] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[diz, Wand_state_contains_for_state_contains__wand_1])][o, f_61] ==> newPMask[o, f_61]
           );
           Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=newPMask];
         }
@@ -1400,9 +1400,9 @@ procedure Wand_state_contains_for_state_contains__get_out_1#definedness(diz: Ref
     Result := Heap[diz, Wand_state_contains_for_state_contains__out_1];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion result != null might not hold. (testTreeWandE1.vpr@61.11--61.25) [176663]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion result != null might not hold. (testTreeWandE1.vpr@61.11--61.25) [28361]"}
       Result != null;
 }
 
@@ -1448,8 +1448,8 @@ procedure Wand_state_contains_for_state_contains__get_out_1_0#definedness(diz: R
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   
@@ -1475,10 +1475,10 @@ procedure Wand_state_contains_for_state_contains__get_out_1_0#definedness(diz: R
       UnfoldingMask := Mask;
       assume Wand_state_contains_for_state_contains__valid_wand#trigger(UnfoldingHeap, Wand_state_contains_for_state_contains__valid_wand(diz));
       assume UnfoldingHeap[null, Wand_state_contains_for_state_contains__valid_wand(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__in_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__in_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__out_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__out_1_0]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__this_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__target_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__cur_contents_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__top_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__cur_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__wand_1]), CombineFrames(FrameFragment((if UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] == 1 then CombineFrames(CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left]), FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__data])), CombineFrames(CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[UnfoldingHeap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])] else EmptyFrame))), UnfoldingHeap[null, Wand_state_contains_for_state_contains__valid_wand(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__wand_1])])) else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__this_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__target_contents_2]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_state_contains_for_state_contains__top_2]), FrameFragment((if UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] == 2 then EmptyFrame else EmptyFrame)))))))))))))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@66.1--71.2) [176664]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@66.1--71.2) [28362]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
       havoc wildcard;
       perm := wildcard;
@@ -1619,7 +1619,7 @@ procedure Wand_state_contains_for_state_contains__get_out_1_0#definedness(diz: R
       }
       assume UnfoldingHeap[diz, Wand_state_contains_for_state_contains__lemma] <= 2;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@66.1--71.2) [176665]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@66.1--71.2) [28363]"}
         HasDirectPerm(UnfoldingMask, diz, Wand_state_contains_for_state_contains__out_1_0);
       
       // -- Free assumptions (exp module)
@@ -1642,16 +1642,16 @@ procedure Wand_state_contains_for_state_contains__get_out_1_0#definedness(diz: R
           Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right:=true]];
           if (Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-              { newPMask[o_11, f_3] }
-              Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_11, f_3] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_11, f_3] ==> newPMask[o_11, f_3]
+            assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+              { newPMask[o_14, f_3] }
+              Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_14, f_3] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_14, f_3] ==> newPMask[o_14, f_3]
             );
             Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=newPMask];
           }
           havoc newPMask;
-          assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-            { newPMask[o_35, f_17] }
-            Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_35, f_17] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[diz, Wand_state_contains_for_state_contains__wand_1])][o_35, f_17] ==> newPMask[o_35, f_17]
+          assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+            { newPMask[o_3, f_24] }
+            Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz)][o_3, f_24] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[diz, Wand_state_contains_for_state_contains__wand_1])][o_3, f_24] ==> newPMask[o_3, f_24]
           );
           Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(diz):=newPMask];
         }
@@ -1706,8 +1706,8 @@ procedure Tree__tolist#definedness(t_2: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -1735,10 +1735,10 @@ procedure Tree__tolist#definedness(t_2: Ref) returns (Result: (Seq int))
         UnfoldingMask := Mask;
         assume Tree__state#trigger(UnfoldingHeap, Tree__state(t_2));
         assume UnfoldingHeap[null, Tree__state(t_2)] == CombineFrames(FrameFragment(UnfoldingHeap[t_2, Tree__data]), CombineFrames(FrameFragment(UnfoldingHeap[t_2, Tree__left]), CombineFrames(FrameFragment(UnfoldingHeap[t_2, Tree__right]), CombineFrames(FrameFragment((if UnfoldingHeap[t_2, Tree__left] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[t_2, Tree__left])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[t_2, Tree__right] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[t_2, Tree__right])] else EmptyFrame))))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree__state(t) (testTreeWandE1.vpr@73.1--77.2) [176666]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree__state(t) (testTreeWandE1.vpr@73.1--77.2) [28364]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree__state(t_2)];
         perm := FullPerm;
         assume t_2 != null;
@@ -1769,15 +1769,15 @@ procedure Tree__tolist#definedness(t_2: Ref) returns (Result: (Seq int))
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__left (testTreeWandE1.vpr@73.1--77.2) [176667]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__left (testTreeWandE1.vpr@73.1--77.2) [28365]"}
           HasDirectPerm(UnfoldingMask, t_2, Tree__left);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           if (UnfoldingHeap[t_2, Tree__left] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeWandE1.vpr@76.70--76.96) [176668]"}
+            assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeWandE1.vpr@76.70--76.96) [28366]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree__state(UnfoldingHeap[t_2, Tree__left])];
           }
           // Finish exhale
@@ -1790,17 +1790,17 @@ procedure Tree__tolist#definedness(t_2: Ref) returns (Result: (Seq int))
           // Enable postcondition for recursive call
           assume Tree__tolist#trigger(FrameFragment((if UnfoldingHeap[t_2, Tree__left] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[t_2, Tree__left])] else EmptyFrame)), UnfoldingHeap[t_2, Tree__left]);
         }
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__data (testTreeWandE1.vpr@73.1--77.2) [176669]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__data (testTreeWandE1.vpr@73.1--77.2) [28367]"}
           HasDirectPerm(UnfoldingMask, t_2, Tree__data);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__right (testTreeWandE1.vpr@73.1--77.2) [176670]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__right (testTreeWandE1.vpr@73.1--77.2) [28368]"}
           HasDirectPerm(UnfoldingMask, t_2, Tree__right);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           if (UnfoldingHeap[t_2, Tree__right] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(t.Tree__right) (testTreeWandE1.vpr@76.121--76.148) [176671]"}
+            assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(t.Tree__right) (testTreeWandE1.vpr@76.121--76.148) [28369]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree__state(UnfoldingHeap[t_2, Tree__right])];
           }
           // Finish exhale
@@ -1820,17 +1820,17 @@ procedure Tree__tolist#definedness(t_2: Ref) returns (Result: (Seq int))
           Heap := Heap[null, Tree__state#sm(t_2):=Heap[null, Tree__state#sm(t_2)][t_2, Tree__right:=true]];
           if (Heap[t_2, Tree__left] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_1: Ref, f_11: (Field A B) ::
-              { newPMask[o_1, f_11] }
-              Heap[null, Tree__state#sm(t_2)][o_1, f_11] || Heap[null, Tree__state#sm(Heap[t_2, Tree__left])][o_1, f_11] ==> newPMask[o_1, f_11]
+            assume (forall <A, B> o_1: Ref, f_10: (Field A B) ::
+              { newPMask[o_1, f_10] }
+              Heap[null, Tree__state#sm(t_2)][o_1, f_10] || Heap[null, Tree__state#sm(Heap[t_2, Tree__left])][o_1, f_10] ==> newPMask[o_1, f_10]
             );
             Heap := Heap[null, Tree__state#sm(t_2):=newPMask];
           }
           if (Heap[t_2, Tree__right] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_12: Ref, f_9: (Field A B) ::
-              { newPMask[o_12, f_9] }
-              Heap[null, Tree__state#sm(t_2)][o_12, f_9] || Heap[null, Tree__state#sm(Heap[t_2, Tree__right])][o_12, f_9] ==> newPMask[o_12, f_9]
+            assume (forall <A, B> o_15: Ref, f_51: (Field A B) ::
+              { newPMask[o_15, f_51] }
+              Heap[null, Tree__state#sm(t_2)][o_15, f_51] || Heap[null, Tree__state#sm(Heap[t_2, Tree__right])][o_15, f_51] ==> newPMask[o_15, f_51]
             );
             Heap := Heap[null, Tree__state#sm(t_2):=newPMask];
           }
@@ -1846,45 +1846,45 @@ procedure Tree__tolist#definedness(t_2: Ref) returns (Result: (Seq int))
 // ==================================================
 
 // Uninterpreted function definitions
-function  Tree__sorted_list(Heap: HeapType, s_2: (Seq int)): bool;
-function  Tree__sorted_list'(Heap: HeapType, s_2: (Seq int)): bool;
-axiom (forall Heap: HeapType, s_2: (Seq int) ::
-  { Tree__sorted_list(Heap, s_2) }
-  Tree__sorted_list(Heap, s_2) == Tree__sorted_list'(Heap, s_2) && dummyFunction(Tree__sorted_list#triggerStateless(s_2))
+function  Tree__sorted_list(Heap: HeapType, s_1: (Seq int)): bool;
+function  Tree__sorted_list'(Heap: HeapType, s_1: (Seq int)): bool;
+axiom (forall Heap: HeapType, s_1: (Seq int) ::
+  { Tree__sorted_list(Heap, s_1) }
+  Tree__sorted_list(Heap, s_1) == Tree__sorted_list'(Heap, s_1) && dummyFunction(Tree__sorted_list#triggerStateless(s_1))
 );
-axiom (forall Heap: HeapType, s_2: (Seq int) ::
-  { Tree__sorted_list'(Heap, s_2) }
-  dummyFunction(Tree__sorted_list#triggerStateless(s_2))
+axiom (forall Heap: HeapType, s_1: (Seq int) ::
+  { Tree__sorted_list'(Heap, s_1) }
+  dummyFunction(Tree__sorted_list#triggerStateless(s_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (Seq int) ::
-  { state(Heap, Mask), Tree__sorted_list(Heap, s_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> Tree__sorted_list(Heap, s_2) == (forall i: int, j_9: int ::
-    { Seq#Index(s_2, i), Seq#Index(s_2, j_9) }
-    1 <= i && (i < j_9 && j_9 < Seq#Length(s_2)) ==> Seq#Index(s_2, i) <= Seq#Index(s_2, j_9)
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (Seq int) ::
+  { state(Heap, Mask), Tree__sorted_list(Heap, s_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> Tree__sorted_list(Heap, s_1) == (forall i: int, j: int ::
+    { Seq#Index(s_1, i), Seq#Index(s_1, j) }
+    1 <= i && (i < j && j < Seq#Length(s_1)) ==> Seq#Index(s_1, i) <= Seq#Index(s_1, j)
   )
 );
 
 // Framing axioms
-function  Tree__sorted_list#frame(frame: FrameType, s_2: (Seq int)): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (Seq int) ::
-  { state(Heap, Mask), Tree__sorted_list'(Heap, s_2) }
-  state(Heap, Mask) ==> Tree__sorted_list'(Heap, s_2) == Tree__sorted_list#frame(EmptyFrame, s_2)
+function  Tree__sorted_list#frame(frame: FrameType, s_1: (Seq int)): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (Seq int) ::
+  { state(Heap, Mask), Tree__sorted_list'(Heap, s_1) }
+  state(Heap, Mask) ==> Tree__sorted_list'(Heap, s_1) == Tree__sorted_list#frame(EmptyFrame, s_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  Tree__sorted_list#trigger(frame: FrameType, s_2: (Seq int)): bool;
+function  Tree__sorted_list#trigger(frame: FrameType, s_1: (Seq int)): bool;
 
 // State-independent trigger function
-function  Tree__sorted_list#triggerStateless(s_2: (Seq int)): bool;
+function  Tree__sorted_list#triggerStateless(s_1: (Seq int)): bool;
 
 // Check contract well-formedness and postcondition
-procedure Tree__sorted_list#definedness(s_2: (Seq int)) returns (Result: bool)
+procedure Tree__sorted_list#definedness(s_1: (Seq int)) returns (Result: bool)
   modifies Heap, Mask;
 {
-  var i_33: int;
-  var j_17: int;
+  var i_16: int;
+  var j_11: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1896,23 +1896,23 @@ procedure Tree__sorted_list#definedness(s_2: (Seq int)) returns (Result: bool)
     
     // -- Check definedness of (forall i: Int, j: Int :: { s[i], s[j] } 1 <= i && (i < j && j < |s|) ==> s[i] <= s[j])
       if (*) {
-        if (1 <= i_33 && (i_33 < j_17 && j_17 < Seq#Length(s_2))) {
-          assert {:msg "  Function might not be well-formed. Index s[i] into s might be negative. (testTreeWandE1.vpr@84.1--87.2) [176672]"}
-            i_33 >= 0;
-          assert {:msg "  Function might not be well-formed. Index s[i] into s might exceed sequence length. (testTreeWandE1.vpr@84.1--87.2) [176673]"}
-            i_33 < Seq#Length(s_2);
-          assert {:msg "  Function might not be well-formed. Index s[j] into s might be negative. (testTreeWandE1.vpr@84.1--87.2) [176674]"}
-            j_17 >= 0;
-          assert {:msg "  Function might not be well-formed. Index s[j] into s might exceed sequence length. (testTreeWandE1.vpr@84.1--87.2) [176675]"}
-            j_17 < Seq#Length(s_2);
+        if (1 <= i_16 && (i_16 < j_11 && j_11 < Seq#Length(s_1))) {
+          assert {:msg "  Function might not be well-formed. Index s[i] into s might be negative. (testTreeWandE1.vpr@84.1--87.2) [28370]"}
+            i_16 >= 0;
+          assert {:msg "  Function might not be well-formed. Index s[i] into s might exceed sequence length. (testTreeWandE1.vpr@84.1--87.2) [28371]"}
+            i_16 < Seq#Length(s_1);
+          assert {:msg "  Function might not be well-formed. Index s[j] into s might be negative. (testTreeWandE1.vpr@84.1--87.2) [28372]"}
+            j_11 >= 0;
+          assert {:msg "  Function might not be well-formed. Index s[j] into s might exceed sequence length. (testTreeWandE1.vpr@84.1--87.2) [28373]"}
+            j_11 < Seq#Length(s_1);
         }
         assume false;
       }
   
   // -- Translate function body
-    Result := (forall i_2_1: int, j_2_1: int ::
-      { Seq#Index(s_2, i_2_1), Seq#Index(s_2, j_2_1) }
-      1 <= i_2_1 && (i_2_1 < j_2_1 && j_2_1 < Seq#Length(s_2)) ==> Seq#Index(s_2, i_2_1) <= Seq#Index(s_2, j_2_1)
+    Result := (forall i_2: int, j_2_2: int ::
+      { Seq#Index(s_1, i_2), Seq#Index(s_1, j_2_2) }
+      1 <= i_2 && (i_2 < j_2_2 && j_2_2 < Seq#Length(s_1)) ==> Seq#Index(s_1, i_2) <= Seq#Index(s_1, j_2_2)
     );
 }
 
@@ -1956,8 +1956,8 @@ procedure Tree__sorted#definedness(t_2: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1980,11 +1980,11 @@ procedure Tree__sorted#definedness(t_2: Ref) returns (Result: bool)
     // -- Check definedness of Tree__sorted_list(Tree__tolist(t))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (t_2 != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(t) (testTreeWandE1.vpr@92.21--92.36) [176676]"}
+          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(t) (testTreeWandE1.vpr@92.21--92.36) [28374]"}
             NoPerm < perm ==> NoPerm < Mask[null, Tree__state(t_2)];
         }
         // Finish exhale
@@ -2043,8 +2043,8 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of Wand_state_contains_for_state_contains__valid_wand
@@ -2062,7 +2062,7 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
     assume state(Heap, Mask);
     
     // -- Check definedness of 1 <= diz.Wand_state_contains_for_state_contains__lemma
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@95.1--97.2) [176677]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@95.1--97.2) [28375]"}
         HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__lemma);
     assume 1 <= Heap[diz, Wand_state_contains_for_state_contains__lemma];
     havoc wildcard;
@@ -2072,7 +2072,7 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_state_contains_for_state_contains__in_1 != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@95.1--97.2) [176678]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@95.1--97.2) [28376]"}
         HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__in_1);
     assume Heap[diz, Wand_state_contains_for_state_contains__in_1] != null;
     havoc wildcard;
@@ -2087,7 +2087,7 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_state_contains_for_state_contains__out_1 != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@95.1--97.2) [176679]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@95.1--97.2) [28377]"}
         HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__out_1);
     assume Heap[diz, Wand_state_contains_for_state_contains__out_1] != null;
     havoc wildcard;
@@ -2137,27 +2137,27 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_state_contains_for_state_contains__lemma == 1
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@95.1--97.2) [176680]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@95.1--97.2) [28378]"}
         HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__lemma);
     if (Heap[diz, Wand_state_contains_for_state_contains__lemma] == 1) {
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__this_1 != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@95.1--97.2) [176681]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@95.1--97.2) [28379]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__this_1);
       assume Heap[diz, Wand_state_contains_for_state_contains__this_1] != null;
       
       // -- Check definedness of |diz.Wand_state_contains_for_state_contains__prev_contents_1| > 0
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@95.1--97.2) [176682]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@95.1--97.2) [28380]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_contents_1);
       assume Seq#Length(Heap[diz, Wand_state_contains_for_state_contains__prev_contents_1]) > 0;
       
       // -- Check definedness of |diz.Wand_state_contains_for_state_contains__cur_contents_1| > 0
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@95.1--97.2) [176683]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@95.1--97.2) [28381]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__cur_contents_1);
       assume Seq#Length(Heap[diz, Wand_state_contains_for_state_contains__cur_contents_1]) > 0;
       
       // -- Check definedness of acc(diz.Wand_state_contains_for_state_contains__prev_1.Tree__left, write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [176684]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [28382]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_1);
       perm := FullPerm;
       assume Heap[diz, Wand_state_contains_for_state_contains__prev_1] != null;
@@ -2165,7 +2165,7 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(diz.Wand_state_contains_for_state_contains__prev_1.Tree__data, write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [176685]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [28383]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_1);
       perm := FullPerm;
       assume Heap[diz, Wand_state_contains_for_state_contains__prev_1] != null;
@@ -2173,7 +2173,7 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(diz.Wand_state_contains_for_state_contains__prev_1.Tree__right, write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [176686]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [28384]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_1);
       perm := FullPerm;
       assume Heap[diz, Wand_state_contains_for_state_contains__prev_1] != null;
@@ -2181,16 +2181,16 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
       assume state(Heap, Mask);
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__prev_1.Tree__right != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [176687]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [28385]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@95.1--97.2) [176688]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@95.1--97.2) [28386]"}
           HasDirectPerm(Mask, Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right);
       if (Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
         
         // -- Check definedness of acc(Tree__state(diz.Wand_state_contains_for_state_contains__prev_1.Tree__right), write)
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [176689]"}
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [28387]"}
             HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_1);
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@95.1--97.2) [176690]"}
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@95.1--97.2) [28388]"}
             HasDirectPerm(Mask, Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right);
         perm := FullPerm;
         Mask := Mask[null, Tree__state(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right]):=Mask[null, Tree__state(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])] + perm];
@@ -2198,35 +2198,35 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
       }
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__prev_1.Tree__left == diz.Wand_state_contains_for_state_contains__cur_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [176691]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [28389]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__left (testTreeWandE1.vpr@95.1--97.2) [176692]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__left (testTreeWandE1.vpr@95.1--97.2) [28390]"}
           HasDirectPerm(Mask, Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@95.1--97.2) [176693]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@95.1--97.2) [28391]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__cur_1);
       assume Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left] == Heap[diz, Wand_state_contains_for_state_contains__cur_1];
       assume state(Heap, Mask);
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__prev_contents_1 == diz.Wand_state_contains_for_state_contains__cur_contents_1 ++ Seq(diz.Wand_state_contains_for_state_contains__prev_1.Tree__data) ++ Tree__tolist(diz.Wand_state_contains_for_state_contains__prev_1.Tree__right)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@95.1--97.2) [176694]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@95.1--97.2) [28392]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_contents_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@95.1--97.2) [176695]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@95.1--97.2) [28393]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__cur_contents_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [176696]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [28394]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__data (testTreeWandE1.vpr@95.1--97.2) [176697]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__data (testTreeWandE1.vpr@95.1--97.2) [28395]"}
           HasDirectPerm(Mask, Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__data);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [176698]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [28396]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@95.1--97.2) [176699]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@95.1--97.2) [28397]"}
           HasDirectPerm(Mask, Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           if (Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(diz.Wand_state_contains_for_state_contains__prev_1.Tree__right) (testTreeWandE1.vpr@96.2097--96.2173) [176700]"}
+            assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(diz.Wand_state_contains_for_state_contains__prev_1.Tree__right) (testTreeWandE1.vpr@96.2097--96.2173) [28398]"}
               NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])];
           }
           // Finish exhale
@@ -2239,12 +2239,12 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
       assume Seq#Equal(Heap[diz, Wand_state_contains_for_state_contains__prev_contents_1], Seq#Append(Seq#Append(Heap[diz, Wand_state_contains_for_state_contains__cur_contents_1], Seq#Singleton(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__data])), Tree__tolist(Heap, Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])));
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__wand_1 != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [176701]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [28399]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__wand_1);
       assume Heap[diz, Wand_state_contains_for_state_contains__wand_1] != null;
       
       // -- Check definedness of acc(Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [176702]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [28400]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__wand_1);
       perm := FullPerm;
       Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[diz, Wand_state_contains_for_state_contains__wand_1]):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[diz, Wand_state_contains_for_state_contains__wand_1])] + perm];
@@ -2252,16 +2252,16 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
       assume state(Heap, Mask);
       
       // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1(diz.Wand_state_contains_for_state_contains__wand_1) == diz.Wand_state_contains_for_state_contains__prev_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [176703]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [28401]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__wand_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion diz.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@96.2362--96.2462) [176704]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion diz.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@96.2362--96.2462) [28402]"}
             Heap[diz, Wand_state_contains_for_state_contains__wand_1] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@96.2362--96.2462) [176705]"}
+          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@96.2362--96.2462) [28403]"}
             NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[diz, Wand_state_contains_for_state_contains__wand_1])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2270,22 +2270,22 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
           // Stop execution
           assume false;
         }
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [176706]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@95.1--97.2) [28404]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_1);
       assume Wand_state_contains_for_state_contains__get_in_1(Heap, Heap[diz, Wand_state_contains_for_state_contains__wand_1]) == Heap[diz, Wand_state_contains_for_state_contains__prev_1];
       assume state(Heap, Mask);
       
       // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1_0(diz.Wand_state_contains_for_state_contains__wand_1) == diz.Wand_state_contains_for_state_contains__prev_contents_1[1..]
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [176707]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [28405]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__wand_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion diz.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@96.2522--96.2624) [176708]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion diz.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@96.2522--96.2624) [28406]"}
             Heap[diz, Wand_state_contains_for_state_contains__wand_1] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@96.2522--96.2624) [176709]"}
+          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@96.2522--96.2624) [28407]"}
             NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[diz, Wand_state_contains_for_state_contains__wand_1])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2294,22 +2294,22 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
           // Stop execution
           assume false;
         }
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@95.1--97.2) [176710]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@95.1--97.2) [28408]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_contents_1);
       assume Seq#Equal(Wand_state_contains_for_state_contains__get_in_1_0(Heap, Heap[diz, Wand_state_contains_for_state_contains__wand_1]), Seq#Drop(Heap[diz, Wand_state_contains_for_state_contains__prev_contents_1], 1));
       assume state(Heap, Mask);
       
       // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1(diz.Wand_state_contains_for_state_contains__wand_1) == diz.Wand_state_contains_for_state_contains__top_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [176711]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [28409]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__wand_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@96.2698--96.2799) [176712]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@96.2698--96.2799) [28410]"}
             Heap[diz, Wand_state_contains_for_state_contains__wand_1] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@96.2698--96.2799) [176713]"}
+          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@96.2698--96.2799) [28411]"}
             NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[diz, Wand_state_contains_for_state_contains__wand_1])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2318,22 +2318,22 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
           // Stop execution
           assume false;
         }
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@95.1--97.2) [176714]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@95.1--97.2) [28412]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__top_1);
       assume Wand_state_contains_for_state_contains__get_out_1(Heap, Heap[diz, Wand_state_contains_for_state_contains__wand_1]) == Heap[diz, Wand_state_contains_for_state_contains__top_1];
       assume state(Heap, Mask);
       
       // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1_0(diz.Wand_state_contains_for_state_contains__wand_1) == diz.Wand_state_contains_for_state_contains__target_contents_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [176715]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@95.1--97.2) [28413]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__wand_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion diz.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@96.2858--96.2961) [176716]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion diz.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@96.2858--96.2961) [28414]"}
             Heap[diz, Wand_state_contains_for_state_contains__wand_1] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@96.2858--96.2961) [176717]"}
+          assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@96.2858--96.2961) [28415]"}
             NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[diz, Wand_state_contains_for_state_contains__wand_1])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2342,35 +2342,35 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
           // Stop execution
           assume false;
         }
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@95.1--97.2) [176718]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@95.1--97.2) [28416]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__target_contents_1);
       assume Seq#Equal(Wand_state_contains_for_state_contains__get_out_1_0(Heap, Heap[diz, Wand_state_contains_for_state_contains__wand_1]), Heap[diz, Wand_state_contains_for_state_contains__target_contents_1]);
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__in_1 == diz.Wand_state_contains_for_state_contains__cur_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@95.1--97.2) [176719]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@95.1--97.2) [28417]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__in_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@95.1--97.2) [176720]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@95.1--97.2) [28418]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__cur_1);
       assume Heap[diz, Wand_state_contains_for_state_contains__in_1] == Heap[diz, Wand_state_contains_for_state_contains__cur_1];
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__in_1_0 == diz.Wand_state_contains_for_state_contains__cur_contents_1[1..]
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@95.1--97.2) [176721]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@95.1--97.2) [28419]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__in_1_0);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@95.1--97.2) [176722]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@95.1--97.2) [28420]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__cur_contents_1);
       assume Seq#Equal(Heap[diz, Wand_state_contains_for_state_contains__in_1_0], Seq#Drop(Heap[diz, Wand_state_contains_for_state_contains__cur_contents_1], 1));
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__out_1 == diz.Wand_state_contains_for_state_contains__top_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@95.1--97.2) [176723]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@95.1--97.2) [28421]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__out_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@95.1--97.2) [176724]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@95.1--97.2) [28422]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__top_1);
       assume Heap[diz, Wand_state_contains_for_state_contains__out_1] == Heap[diz, Wand_state_contains_for_state_contains__top_1];
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__out_1_0 == diz.Wand_state_contains_for_state_contains__target_contents_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@95.1--97.2) [176725]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@95.1--97.2) [28423]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__out_1_0);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@95.1--97.2) [176726]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@95.1--97.2) [28424]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__target_contents_1);
       assume Seq#Equal(Heap[diz, Wand_state_contains_for_state_contains__out_1_0], Heap[diz, Wand_state_contains_for_state_contains__target_contents_1]);
     }
@@ -2391,46 +2391,46 @@ procedure Wand_state_contains_for_state_contains__valid_wand#definedness(diz: Re
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_state_contains_for_state_contains__lemma == 2
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@95.1--97.2) [176727]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@95.1--97.2) [28425]"}
         HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__lemma);
     if (Heap[diz, Wand_state_contains_for_state_contains__lemma] == 2) {
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__this_2 != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@95.1--97.2) [176728]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@95.1--97.2) [28426]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__this_2);
       assume Heap[diz, Wand_state_contains_for_state_contains__this_2] != null;
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__in_1 == diz.Wand_state_contains_for_state_contains__top_2
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@95.1--97.2) [176729]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@95.1--97.2) [28427]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__in_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@95.1--97.2) [176730]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@95.1--97.2) [28428]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__top_2);
       assume Heap[diz, Wand_state_contains_for_state_contains__in_1] == Heap[diz, Wand_state_contains_for_state_contains__top_2];
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__in_1_0 == diz.Wand_state_contains_for_state_contains__target_contents_2
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@95.1--97.2) [176731]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@95.1--97.2) [28429]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__in_1_0);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@95.1--97.2) [176732]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@95.1--97.2) [28430]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__target_contents_2);
       assume Seq#Equal(Heap[diz, Wand_state_contains_for_state_contains__in_1_0], Heap[diz, Wand_state_contains_for_state_contains__target_contents_2]);
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__out_1 == diz.Wand_state_contains_for_state_contains__top_2
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@95.1--97.2) [176733]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@95.1--97.2) [28431]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__out_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@95.1--97.2) [176734]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@95.1--97.2) [28432]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__top_2);
       assume Heap[diz, Wand_state_contains_for_state_contains__out_1] == Heap[diz, Wand_state_contains_for_state_contains__top_2];
       
       // -- Check definedness of diz.Wand_state_contains_for_state_contains__out_1_0 == diz.Wand_state_contains_for_state_contains__target_contents_2
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@95.1--97.2) [176735]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@95.1--97.2) [28433]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__out_1_0);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@95.1--97.2) [176736]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@95.1--97.2) [28434]"}
           HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__target_contents_2);
       assume Seq#Equal(Heap[diz, Wand_state_contains_for_state_contains__out_1_0], Heap[diz, Wand_state_contains_for_state_contains__target_contents_2]);
     }
     
     // -- Check definedness of diz.Wand_state_contains_for_state_contains__lemma <= 2
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@95.1--97.2) [176737]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@95.1--97.2) [28435]"}
         HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__lemma);
     assume Heap[diz, Wand_state_contains_for_state_contains__lemma] <= 2;
     assume state(Heap, Mask);
@@ -2498,12 +2498,12 @@ procedure Tree__state#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Tree__left != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__left (testTreeWandE1.vpr@99.1--101.2) [176738]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__left (testTreeWandE1.vpr@99.1--101.2) [28436]"}
         HasDirectPerm(Mask, diz, Tree__left);
     if (Heap[diz, Tree__left] != null) {
       
       // -- Check definedness of acc(Tree__state(diz.Tree__left), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__left (testTreeWandE1.vpr@99.1--101.2) [176739]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__left (testTreeWandE1.vpr@99.1--101.2) [28437]"}
           HasDirectPerm(Mask, diz, Tree__left);
       perm := FullPerm;
       Mask := Mask[null, Tree__state(Heap[diz, Tree__left]):=Mask[null, Tree__state(Heap[diz, Tree__left])] + perm];
@@ -2511,12 +2511,12 @@ procedure Tree__state#definedness(diz: Ref) returns ()
     }
     
     // -- Check definedness of diz.Tree__right != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__right (testTreeWandE1.vpr@99.1--101.2) [176740]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__right (testTreeWandE1.vpr@99.1--101.2) [28438]"}
         HasDirectPerm(Mask, diz, Tree__right);
     if (Heap[diz, Tree__right] != null) {
       
       // -- Check definedness of acc(Tree__state(diz.Tree__right), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__right (testTreeWandE1.vpr@99.1--101.2) [176741]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__right (testTreeWandE1.vpr@99.1--101.2) [28439]"}
           HasDirectPerm(Mask, diz, Tree__right);
       perm := FullPerm;
       Mask := Mask[null, Tree__state(Heap[diz, Tree__right]):=Mask[null, Tree__state(Heap[diz, Tree__right])] + perm];
@@ -2533,11 +2533,11 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -2546,8 +2546,8 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
   var newPMask: PMaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_diz: Ref;
@@ -2575,12 +2575,12 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
     // -- Check definedness of acc(Tree__state(Wand_state_contains_for_state_contains__get_in_1(diz)), write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@107.28--107.81) [176742]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@107.28--107.81) [28440]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@107.28--107.81) [176743]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@107.28--107.81) [28441]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2598,12 +2598,12 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
     // -- Check definedness of Tree__tolist(Wand_state_contains_for_state_contains__get_in_1(diz)) == Wand_state_contains_for_state_contains__get_in_1_0(diz)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@108.25--108.78) [176744]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@108.25--108.78) [28442]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@108.25--108.78) [176745]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@108.25--108.78) [28443]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2614,11 +2614,11 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (Wand_state_contains_for_state_contains__get_in_1(Heap, diz) != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(Wand_state_contains_for_state_contains__get_in_1(diz)) (testTreeWandE1.vpr@108.12--108.79) [176746]"}
+          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(Wand_state_contains_for_state_contains__get_in_1(diz)) (testTreeWandE1.vpr@108.12--108.79) [28444]"}
             NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_in_1(Heap, diz))];
         }
         // Finish exhale
@@ -2630,12 +2630,12 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@108.83--108.138) [176747]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@108.83--108.138) [28445]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@108.83--108.138) [176748]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@108.83--108.138) [28446]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2651,12 +2651,12 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1(diz) != null
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@109.12--109.66) [176749]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@109.12--109.66) [28447]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@109.12--109.66) [176750]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@109.12--109.66) [28448]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2671,8 +2671,8 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2683,12 +2683,12 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
     // -- Check definedness of acc(Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))), write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@110.31--110.85) [176751]"}
+        ExhaleWellDef0Mask := oldMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@110.31--110.85) [28449]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@110.31--110.85) [176752]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@110.31--110.85) [28450]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
         // Finish exhale
         // Stop execution
@@ -2703,12 +2703,12 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
     // -- Check definedness of Tree__tolist(old(Wand_state_contains_for_state_contains__get_out_1(diz))) == old(Wand_state_contains_for_state_contains__get_out_1_0(diz))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@111.28--111.82) [176753]"}
+        ExhaleWellDef0Mask := oldMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@111.28--111.82) [28451]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@111.28--111.82) [176754]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@111.28--111.82) [28452]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
         // Finish exhale
         // Stop execution
@@ -2716,11 +2716,11 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         if (Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz) != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@111.11--111.84) [176755]"}
+          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@111.11--111.84) [28453]"}
             NoPerm < perm ==> NoPerm < PostMask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz))];
         }
         // Finish exhale
@@ -2732,12 +2732,12 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@111.92--111.148) [176756]"}
+        ExhaleWellDef0Mask := oldMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@111.92--111.148) [28454]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@111.92--111.148) [176757]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@111.92--111.148) [28455]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
         // Finish exhale
         // Stop execution
@@ -2752,11 +2752,11 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
   // -- Translating statement: unfold acc(Wand_state_contains_for_state_contains__valid_wand(diz), write) -- testTreeWandE1.vpr@113.3--113.77
     assume Wand_state_contains_for_state_contains__valid_wand#trigger(Heap, Wand_state_contains_for_state_contains__valid_wand(diz));
     assume Heap[null, Wand_state_contains_for_state_contains__valid_wand(diz)] == CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__lemma]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__in_1]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__in_1_0]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__out_1]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__out_1_0]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__this_1]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__target_contents_1]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__prev_contents_1]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__prev_1]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__cur_contents_1]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__top_1]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__cur_1]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__wand_1]), CombineFrames(FrameFragment((if Heap[diz, Wand_state_contains_for_state_contains__lemma] == 1 then CombineFrames(CombineFrames(FrameFragment(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left]), FrameFragment(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__data])), CombineFrames(CombineFrames(FrameFragment(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right]), FrameFragment((if Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null then Heap[null, Tree__state(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])] else EmptyFrame))), Heap[null, Wand_state_contains_for_state_contains__valid_wand(Heap[diz, Wand_state_contains_for_state_contains__wand_1])])) else EmptyFrame)), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__this_2]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__target_contents_2]), CombineFrames(FrameFragment(Heap[diz, Wand_state_contains_for_state_contains__top_2]), FrameFragment((if Heap[diz, Wand_state_contains_for_state_contains__lemma] == 2 then EmptyFrame else EmptyFrame)))))))))))))))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Wand_state_contains_for_state_contains__valid_wand(diz) might fail. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@113.3--113.77) [176760]"}
+      assert {:msg "  Unfolding Wand_state_contains_for_state_contains__valid_wand(diz) might fail. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@113.3--113.77) [28458]"}
         perm <= Mask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
     }
     Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(diz):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(diz)] - perm];
@@ -2910,39 +2910,39 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
   // -- Translating statement: if (diz.Wand_state_contains_for_state_contains__lemma == 1) -- testTreeWandE1.vpr@114.3--123.4
     
     // -- Check definedness of diz.Wand_state_contains_for_state_contains__lemma == 1
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@114.7--114.61) [176766]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@114.7--114.61) [28464]"}
         HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__lemma);
     if (Heap[diz, Wand_state_contains_for_state_contains__lemma] == 1) {
       
       // -- Translating statement: fold acc(Tree__state(diz.Wand_state_contains_for_state_contains__prev_1), write) -- testTreeWandE1.vpr@115.5--115.85
         
         // -- Check definedness of acc(Tree__state(diz.Wand_state_contains_for_state_contains__prev_1), write)
-          assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@115.5--115.85) [176767]"}
+          assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@115.5--115.85) [28465]"}
             HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__prev_1);
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__data (testTreeWandE1.vpr@115.5--115.85) [176770]"}
+          assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__data (testTreeWandE1.vpr@115.5--115.85) [28468]"}
             perm <= Mask[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__data];
         }
         Mask := Mask[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__data:=Mask[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__data] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__left (testTreeWandE1.vpr@115.5--115.85) [176772]"}
+          assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__left (testTreeWandE1.vpr@115.5--115.85) [28470]"}
             perm <= Mask[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left];
         }
         Mask := Mask[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left:=Mask[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@115.5--115.85) [176774]"}
+          assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@115.5--115.85) [28472]"}
             perm <= Mask[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right];
         }
         Mask := Mask[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right:=Mask[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] - perm];
         if (Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left] != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access Tree__state(diz.Wand_state_contains_for_state_contains__prev_1.Tree__left) (testTreeWandE1.vpr@115.5--115.85) [176776]"}
+            assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access Tree__state(diz.Wand_state_contains_for_state_contains__prev_1.Tree__left) (testTreeWandE1.vpr@115.5--115.85) [28474]"}
               perm <= Mask[null, Tree__state(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left])];
           }
           Mask := Mask[null, Tree__state(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left]):=Mask[null, Tree__state(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left])] - perm];
@@ -2953,7 +2953,7 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
         if (Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access Tree__state(diz.Wand_state_contains_for_state_contains__prev_1.Tree__right) (testTreeWandE1.vpr@115.5--115.85) [176778]"}
+            assert {:msg "  Folding Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) might fail. There might be insufficient permission to access Tree__state(diz.Wand_state_contains_for_state_contains__prev_1.Tree__right) (testTreeWandE1.vpr@115.5--115.85) [28476]"}
               perm <= Mask[null, Tree__state(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])];
           }
           Mask := Mask[null, Tree__state(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right]):=Mask[null, Tree__state(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])] - perm];
@@ -2977,17 +2977,17 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
         Heap := Heap[null, Tree__state#sm(Heap[diz, Wand_state_contains_for_state_contains__prev_1]):=Heap[null, Tree__state#sm(Heap[diz, Wand_state_contains_for_state_contains__prev_1])][Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right:=true]];
         if (Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_8: Ref, f_30: (Field A B) ::
-            { newPMask[o_8, f_30] }
-            Heap[null, Tree__state#sm(Heap[diz, Wand_state_contains_for_state_contains__prev_1])][o_8, f_30] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left])][o_8, f_30] ==> newPMask[o_8, f_30]
+          assume (forall <A, B> o_17: Ref, f_9: (Field A B) ::
+            { newPMask[o_17, f_9] }
+            Heap[null, Tree__state#sm(Heap[diz, Wand_state_contains_for_state_contains__prev_1])][o_17, f_9] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__left])][o_17, f_9] ==> newPMask[o_17, f_9]
           );
           Heap := Heap[null, Tree__state#sm(Heap[diz, Wand_state_contains_for_state_contains__prev_1]):=newPMask];
         }
         if (Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_30: Ref, f_8: (Field A B) ::
-            { newPMask[o_30, f_8] }
-            Heap[null, Tree__state#sm(Heap[diz, Wand_state_contains_for_state_contains__prev_1])][o_30, f_8] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_30, f_8] ==> newPMask[o_30, f_8]
+          assume (forall <A, B> o_39: Ref, f_19: (Field A B) ::
+            { newPMask[o_39, f_19] }
+            Heap[null, Tree__state#sm(Heap[diz, Wand_state_contains_for_state_contains__prev_1])][o_39, f_19] || Heap[null, Tree__state#sm(Heap[Heap[diz, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_39, f_19] ==> newPMask[o_39, f_19]
           );
           Heap := Heap[null, Tree__state#sm(Heap[diz, Wand_state_contains_for_state_contains__prev_1]):=newPMask];
         }
@@ -2999,29 +2999,29 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
   //   diz.Wand_state_contains_for_state_contains__prev_contents_1[1..] -- testTreeWandE1.vpr@116.5--116.225
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         
         // -- Check definedness of acc(Tree__state(diz.Wand_state_contains_for_state_contains__prev_1), write)
-          assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@116.12--116.225) [176780]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@116.12--116.225) [28478]"}
             HasDirectPerm(ExhaleWellDef0Mask, diz, Wand_state_contains_for_state_contains__prev_1);
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) (testTreeWandE1.vpr@116.12--116.225) [176782]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) (testTreeWandE1.vpr@116.12--116.225) [28480]"}
             perm <= AssertMask[null, Tree__state(AssertHeap[diz, Wand_state_contains_for_state_contains__prev_1])];
         }
         AssertMask := AssertMask[null, Tree__state(AssertHeap[diz, Wand_state_contains_for_state_contains__prev_1]):=AssertMask[null, Tree__state(AssertHeap[diz, Wand_state_contains_for_state_contains__prev_1])] - perm];
         
         // -- Check definedness of Tree__tolist(diz.Wand_state_contains_for_state_contains__prev_1) == diz.Wand_state_contains_for_state_contains__prev_contents_1[1..]
-          assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@116.12--116.225) [176783]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@116.12--116.225) [28481]"}
             HasDirectPerm(ExhaleWellDef0Mask, diz, Wand_state_contains_for_state_contains__prev_1);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (ExhaleWellDef0Heap[diz, Wand_state_contains_for_state_contains__prev_1] != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) (testTreeWandE1.vpr@116.92--116.156) [176784]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(diz.Wand_state_contains_for_state_contains__prev_1) (testTreeWandE1.vpr@116.92--116.156) [28482]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(ExhaleWellDef0Heap[diz, Wand_state_contains_for_state_contains__prev_1])];
             }
             // Finish exhale
@@ -3031,9 +3031,9 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
             // Stop execution
             assume false;
           }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@116.12--116.225) [176785]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@116.12--116.225) [28483]"}
             HasDirectPerm(ExhaleWellDef0Mask, diz, Wand_state_contains_for_state_contains__prev_contents_1);
-        assert {:msg "  Assert might fail. Assertion Tree__tolist(diz.Wand_state_contains_for_state_contains__prev_1) == diz.Wand_state_contains_for_state_contains__prev_contents_1[1..] might not hold. (testTreeWandE1.vpr@116.12--116.225) [176786]"}
+        assert {:msg "  Assert might fail. Assertion Tree__tolist(diz.Wand_state_contains_for_state_contains__prev_1) == diz.Wand_state_contains_for_state_contains__prev_contents_1[1..] might not hold. (testTreeWandE1.vpr@116.12--116.225) [28484]"}
           Seq#Equal(Tree__tolist(AssertHeap, AssertHeap[diz, Wand_state_contains_for_state_contains__prev_1]), Seq#Drop(AssertHeap[diz, Wand_state_contains_for_state_contains__prev_contents_1], 1));
         assume state(Heap, Mask);
       
@@ -3043,32 +3043,32 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
         PreCallMask := Mask;
         
         // -- Check definedness of diz.Wand_state_contains_for_state_contains__wand_1
-          assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@117.5--117.122) [176787]"}
+          assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@117.5--117.122) [28485]"}
             HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__wand_1);
         arg_diz := Heap[diz, Wand_state_contains_for_state_contains__wand_1];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion diz.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@117.5--117.122) [176788]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion diz.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@117.5--117.122) [28486]"}
             arg_diz != null;
-          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@117.5--117.122) [176789]"}
+          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@117.5--117.122) [28487]"}
             current_thread_id >= 0;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@117.5--117.122) [176790]"}
+            assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@117.5--117.122) [28488]"}
               perm <= Mask[null, Wand_state_contains_for_state_contains__valid_wand(arg_diz)];
           }
           Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(arg_diz):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(arg_diz)] - perm];
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. There might be insufficient permission to access Tree__state(Wand_state_contains_for_state_contains__get_in_1(diz.Wand_state_contains_for_state_contains__wand_1)) (testTreeWandE1.vpr@117.5--117.122) [176791]"}
+            assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. There might be insufficient permission to access Tree__state(Wand_state_contains_for_state_contains__get_in_1(diz.Wand_state_contains_for_state_contains__wand_1)) (testTreeWandE1.vpr@117.5--117.122) [28489]"}
               perm <= Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_in_1(Heap, arg_diz))];
           }
           Mask := Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_in_1(Heap, arg_diz)):=Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_in_1(Heap, arg_diz))] - perm];
-          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion Tree__tolist(Wand_state_contains_for_state_contains__get_in_1(diz.Wand_state_contains_for_state_contains__wand_1)) == Wand_state_contains_for_state_contains__get_in_1_0(diz.Wand_state_contains_for_state_contains__wand_1) might not hold. (testTreeWandE1.vpr@117.5--117.122) [176792]"}
+          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion Tree__tolist(Wand_state_contains_for_state_contains__get_in_1(diz.Wand_state_contains_for_state_contains__wand_1)) == Wand_state_contains_for_state_contains__get_in_1_0(diz.Wand_state_contains_for_state_contains__wand_1) might not hold. (testTreeWandE1.vpr@117.5--117.122) [28490]"}
             Seq#Equal(Tree__tolist(Heap, Wand_state_contains_for_state_contains__get_in_1(Heap, arg_diz)), Wand_state_contains_for_state_contains__get_in_1_0(Heap, arg_diz));
-          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1(diz.Wand_state_contains_for_state_contains__wand_1) != null might not hold. (testTreeWandE1.vpr@117.5--117.122) [176793]"}
+          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1(diz.Wand_state_contains_for_state_contains__wand_1) != null might not hold. (testTreeWandE1.vpr@117.5--117.122) [28491]"}
             Wand_state_contains_for_state_contains__get_out_1(Heap, arg_diz) != null;
           // Finish exhale
           havoc ExhaleHeap;
@@ -3090,18 +3090,18 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
   //   old(Wand_state_contains_for_state_contains__get_out_1_0(diz)) -- testTreeWandE1.vpr@118.5--118.240
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         
         // -- Check definedness of acc(Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))), write)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
-            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@118.32--118.86) [176794]"}
+            ExhaleWellDef1Mask := oldMask;
+            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@118.32--118.86) [28492]"}
               diz != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@118.32--118.86) [176795]"}
+            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@118.32--118.86) [28493]"}
               NoPerm < perm ==> NoPerm < oldMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
             // Finish exhale
             // Stop execution
@@ -3109,7 +3109,7 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
           }
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@118.12--118.240) [176797]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@118.12--118.240) [28495]"}
             perm <= AssertMask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz))];
         }
         AssertMask := AssertMask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz)):=AssertMask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz))] - perm];
@@ -3117,12 +3117,12 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
         // -- Check definedness of Tree__tolist(old(Wand_state_contains_for_state_contains__get_out_1(diz))) == old(Wand_state_contains_for_state_contains__get_out_1_0(diz))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
-            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@118.118--118.172) [176798]"}
+            ExhaleWellDef1Mask := oldMask;
+            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@118.118--118.172) [28496]"}
               diz != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@118.118--118.172) [176799]"}
+            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@118.118--118.172) [28497]"}
               NoPerm < perm ==> NoPerm < oldMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
             // Finish exhale
             // Stop execution
@@ -3130,11 +3130,11 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz) != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@118.101--118.174) [176800]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@118.101--118.174) [28498]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz))];
             }
             // Finish exhale
@@ -3146,18 +3146,18 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
-            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@118.182--118.238) [176801]"}
+            ExhaleWellDef1Mask := oldMask;
+            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@118.182--118.238) [28499]"}
               diz != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@118.182--118.238) [176802]"}
+            assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@118.182--118.238) [28500]"}
               NoPerm < perm ==> NoPerm < oldMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
             // Finish exhale
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion Tree__tolist(old(Wand_state_contains_for_state_contains__get_out_1(diz))) == old(Wand_state_contains_for_state_contains__get_out_1_0(diz)) might not hold. (testTreeWandE1.vpr@118.12--118.240) [176803]"}
+        assert {:msg "  Assert might fail. Assertion Tree__tolist(old(Wand_state_contains_for_state_contains__get_out_1(diz))) == old(Wand_state_contains_for_state_contains__get_out_1_0(diz)) might not hold. (testTreeWandE1.vpr@118.12--118.240) [28501]"}
           Seq#Equal(Tree__tolist(AssertHeap, Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz)), Wand_state_contains_for_state_contains__get_out_1_0(oldHeap, diz));
         assume state(Heap, Mask);
       
@@ -3170,7 +3170,7 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
       // -- Translating statement: if (diz.Wand_state_contains_for_state_contains__lemma == 2) -- testTreeWandE1.vpr@120.5--123.4
         
         // -- Check definedness of diz.Wand_state_contains_for_state_contains__lemma == 2
-          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@120.13--120.67) [176804]"}
+          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@120.13--120.67) [28502]"}
             HasDirectPerm(Mask, diz, Wand_state_contains_for_state_contains__lemma);
         if (Heap[diz, Wand_state_contains_for_state_contains__lemma] == 2) {
           
@@ -3179,18 +3179,18 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
   //   old(Wand_state_contains_for_state_contains__get_out_1_0(diz)) -- testTreeWandE1.vpr@121.5--121.240
             AssertHeap := Heap;
             AssertMask := Mask;
-            ExhaleWellDef0Mask := AssertMask;
             ExhaleWellDef0Heap := AssertHeap;
+            ExhaleWellDef0Mask := AssertMask;
             
             // -- Check definedness of acc(Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))), write)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := oldMask;
                 ExhaleWellDef1Heap := oldHeap;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@121.32--121.86) [176805]"}
+                ExhaleWellDef1Mask := oldMask;
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@121.32--121.86) [28503]"}
                   diz != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@121.32--121.86) [176806]"}
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@121.32--121.86) [28504]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
                 // Finish exhale
                 // Stop execution
@@ -3198,7 +3198,7 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
               }
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@121.12--121.240) [176808]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@121.12--121.240) [28506]"}
                 perm <= AssertMask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz))];
             }
             AssertMask := AssertMask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz)):=AssertMask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz))] - perm];
@@ -3206,12 +3206,12 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
             // -- Check definedness of Tree__tolist(old(Wand_state_contains_for_state_contains__get_out_1(diz))) == old(Wand_state_contains_for_state_contains__get_out_1_0(diz))
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := oldMask;
                 ExhaleWellDef1Heap := oldHeap;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@121.118--121.172) [176809]"}
+                ExhaleWellDef1Mask := oldMask;
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@121.118--121.172) [28507]"}
                   diz != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@121.118--121.172) [176810]"}
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@121.118--121.172) [28508]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
                 // Finish exhale
                 // Stop execution
@@ -3219,11 +3219,11 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 if (Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz) != null) {
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@121.101--121.174) [176811]"}
+                  assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@121.101--121.174) [28509]"}
                     NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz))];
                 }
                 // Finish exhale
@@ -3235,18 +3235,18 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := oldMask;
                 ExhaleWellDef1Heap := oldHeap;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@121.182--121.238) [176812]"}
+                ExhaleWellDef1Mask := oldMask;
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@121.182--121.238) [28510]"}
                   diz != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@121.182--121.238) [176813]"}
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(diz) (testTreeWandE1.vpr@121.182--121.238) [28511]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, Wand_state_contains_for_state_contains__valid_wand(diz)];
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
-            assert {:msg "  Assert might fail. Assertion Tree__tolist(old(Wand_state_contains_for_state_contains__get_out_1(diz))) == old(Wand_state_contains_for_state_contains__get_out_1_0(diz)) might not hold. (testTreeWandE1.vpr@121.12--121.240) [176814]"}
+            assert {:msg "  Assert might fail. Assertion Tree__tolist(old(Wand_state_contains_for_state_contains__get_out_1(diz))) == old(Wand_state_contains_for_state_contains__get_out_1_0(diz)) might not hold. (testTreeWandE1.vpr@121.12--121.240) [28512]"}
               Seq#Equal(Tree__tolist(AssertHeap, Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz)), Wand_state_contains_for_state_contains__get_out_1_0(oldHeap, diz));
             assume state(Heap, Mask);
           
@@ -3260,15 +3260,15 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains___apply might not hold. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@110.11--110.95) [176815]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains___apply might not hold. There might be insufficient permission to access Tree__state(old(Wand_state_contains_for_state_contains__get_out_1(diz))) (testTreeWandE1.vpr@110.11--110.95) [28513]"}
         perm <= Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz))];
     }
     Mask := Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz)):=Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz))] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains___apply might not hold. Assertion Tree__tolist(old(Wand_state_contains_for_state_contains__get_out_1(diz))) == old(Wand_state_contains_for_state_contains__get_out_1_0(diz)) might not hold. (testTreeWandE1.vpr@111.11--111.149) [176816]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains___apply might not hold. Assertion Tree__tolist(old(Wand_state_contains_for_state_contains__get_out_1(diz))) == old(Wand_state_contains_for_state_contains__get_out_1_0(diz)) might not hold. (testTreeWandE1.vpr@111.11--111.149) [28514]"}
       Seq#Equal(Tree__tolist(Heap, Wand_state_contains_for_state_contains__get_out_1(oldHeap, diz)), Wand_state_contains_for_state_contains__get_out_1_0(oldHeap, diz));
     // Finish exhale
     havoc ExhaleHeap;
@@ -3283,8 +3283,8 @@ procedure Wand_state_contains_for_state_contains___apply(diz: Ref, current_threa
 procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -3306,8 +3306,8 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
   var __flatten_52: (Seq int);
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3323,8 +3323,8 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3338,7 +3338,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__lemma == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@129.11--129.148) [176817]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@129.11--129.148) [28515]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__lemma);
     assume PostHeap[sys__result, Wand_state_contains_for_state_contains__lemma] == 0;
     assume state(PostHeap, PostMask);
@@ -3348,7 +3348,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__in_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@130.11--130.149) [176818]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@130.11--130.149) [28516]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__in_1);
     assume PostHeap[sys__result, Wand_state_contains_for_state_contains__in_1] == null;
     assume state(PostHeap, PostMask);
@@ -3358,7 +3358,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__in_1_0 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@131.11--131.159) [176819]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@131.11--131.159) [28517]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__in_1_0);
     assume Seq#Equal(PostHeap[sys__result, Wand_state_contains_for_state_contains__in_1_0], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3368,7 +3368,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__out_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@132.11--132.151) [176820]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@132.11--132.151) [28518]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__out_1);
     assume PostHeap[sys__result, Wand_state_contains_for_state_contains__out_1] == null;
     assume state(PostHeap, PostMask);
@@ -3378,7 +3378,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__out_1_0 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@133.11--133.161) [176821]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@133.11--133.161) [28519]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__out_1_0);
     assume Seq#Equal(PostHeap[sys__result, Wand_state_contains_for_state_contains__out_1_0], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3388,7 +3388,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__this_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@134.11--134.153) [176822]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@134.11--134.153) [28520]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__this_1);
     assume PostHeap[sys__result, Wand_state_contains_for_state_contains__this_1] == null;
     assume state(PostHeap, PostMask);
@@ -3398,7 +3398,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__target_contents_1 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@135.11--135.181) [176823]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@135.11--135.181) [28521]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__target_contents_1);
     assume Seq#Equal(PostHeap[sys__result, Wand_state_contains_for_state_contains__target_contents_1], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3408,7 +3408,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__prev_contents_1 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@136.11--136.177) [176824]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@136.11--136.177) [28522]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__prev_contents_1);
     assume Seq#Equal(PostHeap[sys__result, Wand_state_contains_for_state_contains__prev_contents_1], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3418,7 +3418,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__prev_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@137.11--137.153) [176825]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@137.11--137.153) [28523]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__prev_1);
     assume PostHeap[sys__result, Wand_state_contains_for_state_contains__prev_1] == null;
     assume state(PostHeap, PostMask);
@@ -3428,7 +3428,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__cur_contents_1 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@138.11--138.175) [176826]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@138.11--138.175) [28524]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__cur_contents_1);
     assume Seq#Equal(PostHeap[sys__result, Wand_state_contains_for_state_contains__cur_contents_1], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3438,7 +3438,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__top_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@139.11--139.151) [176827]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@139.11--139.151) [28525]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__top_1);
     assume PostHeap[sys__result, Wand_state_contains_for_state_contains__top_1] == null;
     assume state(PostHeap, PostMask);
@@ -3448,7 +3448,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__cur_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@140.11--140.151) [176828]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@140.11--140.151) [28526]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__cur_1);
     assume PostHeap[sys__result, Wand_state_contains_for_state_contains__cur_1] == null;
     assume state(PostHeap, PostMask);
@@ -3458,7 +3458,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__wand_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@141.11--141.153) [176829]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@141.11--141.153) [28527]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__wand_1);
     assume PostHeap[sys__result, Wand_state_contains_for_state_contains__wand_1] == null;
     assume state(PostHeap, PostMask);
@@ -3468,7 +3468,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__this_2 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@142.11--142.153) [176830]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@142.11--142.153) [28528]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__this_2);
     assume PostHeap[sys__result, Wand_state_contains_for_state_contains__this_2] == null;
     assume state(PostHeap, PostMask);
@@ -3478,7 +3478,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__target_contents_2 == Seq[Int]()
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@143.11--143.181) [176831]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@143.11--143.181) [28529]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__target_contents_2);
     assume Seq#Equal(PostHeap[sys__result, Wand_state_contains_for_state_contains__target_contents_2], (Seq#Empty(): Seq int));
     assume state(PostHeap, PostMask);
@@ -3488,7 +3488,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__top_2 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@144.11--144.151) [176832]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@144.11--144.151) [28530]"}
         HasDirectPerm(PostMask, sys__result, Wand_state_contains_for_state_contains__top_2);
     assume PostHeap[sys__result, Wand_state_contains_for_state_contains__top_2] == null;
     assume state(PostHeap, PostMask);
@@ -3531,13 +3531,13 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__lemma := __flatten_46 -- testTreeWandE1.vpr@164.3--164.68
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@164.3--164.68) [176833]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@164.3--164.68) [28531]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__lemma];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__lemma:=__flatten_46];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__in_1 := null -- testTreeWandE1.vpr@165.3--165.59
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@165.3--165.59) [176834]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@165.3--165.59) [28532]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__in_1];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__in_1:=null];
     assume state(Heap, Mask);
@@ -3551,13 +3551,13 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__in_1_0 := __flatten_47 -- testTreeWandE1.vpr@168.3--168.69
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@168.3--168.69) [176835]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@168.3--168.69) [28533]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__in_1_0];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__in_1_0:=__flatten_47];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__out_1 := null -- testTreeWandE1.vpr@169.3--169.60
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@169.3--169.60) [176836]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@169.3--169.60) [28534]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__out_1];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__out_1:=null];
     assume state(Heap, Mask);
@@ -3571,13 +3571,13 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__out_1_0 := __flatten_48 -- testTreeWandE1.vpr@172.3--172.70
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@172.3--172.70) [176837]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@172.3--172.70) [28535]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__out_1_0];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__out_1_0:=__flatten_48];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__this_1 := null -- testTreeWandE1.vpr@173.3--173.61
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@173.3--173.61) [176838]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@173.3--173.61) [28536]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__this_1];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__this_1:=null];
     assume state(Heap, Mask);
@@ -3591,7 +3591,7 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__target_contents_1 := __flatten_49 -- testTreeWandE1.vpr@176.3--176.80
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@176.3--176.80) [176839]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@176.3--176.80) [28537]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__target_contents_1];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__target_contents_1:=__flatten_49];
     assume state(Heap, Mask);
@@ -3605,13 +3605,13 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__prev_contents_1 := __flatten_50 -- testTreeWandE1.vpr@179.3--179.78
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@179.3--179.78) [176840]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@179.3--179.78) [28538]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__prev_contents_1];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__prev_contents_1:=__flatten_50];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__prev_1 := null -- testTreeWandE1.vpr@180.3--180.61
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@180.3--180.61) [176841]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@180.3--180.61) [28539]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__prev_1];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__prev_1:=null];
     assume state(Heap, Mask);
@@ -3625,31 +3625,31 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__cur_contents_1 := __flatten_51 -- testTreeWandE1.vpr@183.3--183.77
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@183.3--183.77) [176842]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@183.3--183.77) [28540]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__cur_contents_1];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__cur_contents_1:=__flatten_51];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__top_1 := null -- testTreeWandE1.vpr@184.3--184.60
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@184.3--184.60) [176843]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@184.3--184.60) [28541]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__top_1];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__top_1:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__cur_1 := null -- testTreeWandE1.vpr@185.3--185.60
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@185.3--185.60) [176844]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@185.3--185.60) [28542]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__cur_1];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__cur_1:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__wand_1 := null -- testTreeWandE1.vpr@186.3--186.61
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@186.3--186.61) [176845]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@186.3--186.61) [28543]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__wand_1];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__wand_1:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__this_2 := null -- testTreeWandE1.vpr@187.3--187.61
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@187.3--187.61) [176846]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@187.3--187.61) [28544]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__this_2];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__this_2:=null];
     assume state(Heap, Mask);
@@ -3663,13 +3663,13 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__target_contents_2 := __flatten_52 -- testTreeWandE1.vpr@190.3--190.80
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@190.3--190.80) [176847]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@190.3--190.80) [28545]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__target_contents_2];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__target_contents_2:=__flatten_52];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_state_contains_for_state_contains__top_2 := null -- testTreeWandE1.vpr@191.3--191.60
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@191.3--191.60) [176848]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@191.3--191.60) [28546]"}
       FullPerm == Mask[diz, Wand_state_contains_for_state_contains__top_2];
     Heap := Heap[diz, Wand_state_contains_for_state_contains__top_2:=null];
     assume state(Heap, Mask);
@@ -3717,201 +3717,201 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
   //   sys__result.Wand_state_contains_for_state_contains__top_2 == null)))))))))))))))) -- testTreeWandE1.vpr@193.3--193.2498
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176849]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28547]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@193.10--193.2498) [176851]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@193.10--193.2498) [28549]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__lemma];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__lemma:=AssertMask[sys__result, Wand_state_contains_for_state_contains__lemma] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__lemma == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@193.10--193.2498) [176852]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@193.10--193.2498) [28550]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__lemma);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__lemma == 0 might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176853]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__lemma == 0 might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28551]"}
       AssertHeap[sys__result, Wand_state_contains_for_state_contains__lemma] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@193.10--193.2498) [176855]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@193.10--193.2498) [28553]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__in_1];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__in_1:=AssertMask[sys__result, Wand_state_contains_for_state_contains__in_1] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__in_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@193.10--193.2498) [176856]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@193.10--193.2498) [28554]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__in_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__in_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176857]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__in_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28555]"}
       AssertHeap[sys__result, Wand_state_contains_for_state_contains__in_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@193.10--193.2498) [176859]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@193.10--193.2498) [28557]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__in_1_0];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__in_1_0:=AssertMask[sys__result, Wand_state_contains_for_state_contains__in_1_0] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__in_1_0 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@193.10--193.2498) [176860]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@193.10--193.2498) [28558]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__in_1_0);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__in_1_0 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176861]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__in_1_0 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28559]"}
       Seq#Equal(AssertHeap[sys__result, Wand_state_contains_for_state_contains__in_1_0], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@193.10--193.2498) [176863]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@193.10--193.2498) [28561]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__out_1];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__out_1:=AssertMask[sys__result, Wand_state_contains_for_state_contains__out_1] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__out_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@193.10--193.2498) [176864]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@193.10--193.2498) [28562]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__out_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__out_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176865]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__out_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28563]"}
       AssertHeap[sys__result, Wand_state_contains_for_state_contains__out_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@193.10--193.2498) [176867]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@193.10--193.2498) [28565]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__out_1_0];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__out_1_0:=AssertMask[sys__result, Wand_state_contains_for_state_contains__out_1_0] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__out_1_0 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@193.10--193.2498) [176868]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@193.10--193.2498) [28566]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__out_1_0);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__out_1_0 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176869]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__out_1_0 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28567]"}
       Seq#Equal(AssertHeap[sys__result, Wand_state_contains_for_state_contains__out_1_0], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@193.10--193.2498) [176871]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@193.10--193.2498) [28569]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__this_1];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__this_1:=AssertMask[sys__result, Wand_state_contains_for_state_contains__this_1] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__this_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@193.10--193.2498) [176872]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@193.10--193.2498) [28570]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__this_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__this_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176873]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__this_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28571]"}
       AssertHeap[sys__result, Wand_state_contains_for_state_contains__this_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [176875]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [28573]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__target_contents_1];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__target_contents_1:=AssertMask[sys__result, Wand_state_contains_for_state_contains__target_contents_1] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__target_contents_1 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [176876]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [28574]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__target_contents_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__target_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176877]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__target_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28575]"}
       Seq#Equal(AssertHeap[sys__result, Wand_state_contains_for_state_contains__target_contents_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [176879]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [28577]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__prev_contents_1];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__prev_contents_1:=AssertMask[sys__result, Wand_state_contains_for_state_contains__prev_contents_1] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__prev_contents_1 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [176880]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [28578]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__prev_contents_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__prev_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176881]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__prev_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28579]"}
       Seq#Equal(AssertHeap[sys__result, Wand_state_contains_for_state_contains__prev_contents_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@193.10--193.2498) [176883]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@193.10--193.2498) [28581]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__prev_1];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__prev_1:=AssertMask[sys__result, Wand_state_contains_for_state_contains__prev_1] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__prev_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@193.10--193.2498) [176884]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@193.10--193.2498) [28582]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__prev_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__prev_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176885]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__prev_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28583]"}
       AssertHeap[sys__result, Wand_state_contains_for_state_contains__prev_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [176887]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [28585]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__cur_contents_1];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__cur_contents_1:=AssertMask[sys__result, Wand_state_contains_for_state_contains__cur_contents_1] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__cur_contents_1 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [176888]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@193.10--193.2498) [28586]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__cur_contents_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__cur_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176889]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__cur_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28587]"}
       Seq#Equal(AssertHeap[sys__result, Wand_state_contains_for_state_contains__cur_contents_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@193.10--193.2498) [176891]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@193.10--193.2498) [28589]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__top_1];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__top_1:=AssertMask[sys__result, Wand_state_contains_for_state_contains__top_1] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__top_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@193.10--193.2498) [176892]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@193.10--193.2498) [28590]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__top_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__top_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176893]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__top_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28591]"}
       AssertHeap[sys__result, Wand_state_contains_for_state_contains__top_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@193.10--193.2498) [176895]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@193.10--193.2498) [28593]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__cur_1];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__cur_1:=AssertMask[sys__result, Wand_state_contains_for_state_contains__cur_1] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__cur_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@193.10--193.2498) [176896]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@193.10--193.2498) [28594]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__cur_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__cur_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176897]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__cur_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28595]"}
       AssertHeap[sys__result, Wand_state_contains_for_state_contains__cur_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@193.10--193.2498) [176899]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@193.10--193.2498) [28597]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__wand_1];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__wand_1:=AssertMask[sys__result, Wand_state_contains_for_state_contains__wand_1] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__wand_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@193.10--193.2498) [176900]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@193.10--193.2498) [28598]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__wand_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__wand_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176901]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__wand_1 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28599]"}
       AssertHeap[sys__result, Wand_state_contains_for_state_contains__wand_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@193.10--193.2498) [176903]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@193.10--193.2498) [28601]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__this_2];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__this_2:=AssertMask[sys__result, Wand_state_contains_for_state_contains__this_2] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__this_2 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@193.10--193.2498) [176904]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@193.10--193.2498) [28602]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__this_2);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__this_2 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176905]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__this_2 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28603]"}
       AssertHeap[sys__result, Wand_state_contains_for_state_contains__this_2] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@193.10--193.2498) [176907]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@193.10--193.2498) [28605]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__target_contents_2];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__target_contents_2:=AssertMask[sys__result, Wand_state_contains_for_state_contains__target_contents_2] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__target_contents_2 == Seq[Int]()
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@193.10--193.2498) [176908]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@193.10--193.2498) [28606]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__target_contents_2);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__target_contents_2 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176909]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__target_contents_2 == Seq[Int]() might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28607]"}
       Seq#Equal(AssertHeap[sys__result, Wand_state_contains_for_state_contains__target_contents_2], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@193.10--193.2498) [176911]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@193.10--193.2498) [28609]"}
         perm <= AssertMask[sys__result, Wand_state_contains_for_state_contains__top_2];
     }
     AssertMask := AssertMask[sys__result, Wand_state_contains_for_state_contains__top_2:=AssertMask[sys__result, Wand_state_contains_for_state_contains__top_2] - perm];
     
     // -- Check definedness of sys__result.Wand_state_contains_for_state_contains__top_2 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@193.10--193.2498) [176912]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@193.10--193.2498) [28610]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_state_contains_for_state_contains__top_2);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__top_2 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [176913]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_state_contains_for_state_contains__top_2 == null might not hold. (testTreeWandE1.vpr@193.10--193.2498) [28611]"}
       AssertHeap[sys__result, Wand_state_contains_for_state_contains__top_2] == null;
     assume state(Heap, Mask);
   
@@ -3921,137 +3921,137 @@ procedure Wand_state_contains_for_state_contains__Wand_state_contains_for_state_
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@128.11--128.30) [176914]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@128.11--128.30) [28612]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@129.11--129.148) [176915]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@129.11--129.148) [28613]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__lemma];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__lemma:=Mask[sys__result, Wand_state_contains_for_state_contains__lemma] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__lemma == 0 might not hold. (testTreeWandE1.vpr@129.11--129.148) [176916]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__lemma == 0 might not hold. (testTreeWandE1.vpr@129.11--129.148) [28614]"}
       Heap[sys__result, Wand_state_contains_for_state_contains__lemma] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@130.11--130.149) [176917]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@130.11--130.149) [28615]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__in_1];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__in_1:=Mask[sys__result, Wand_state_contains_for_state_contains__in_1] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__in_1 == null might not hold. (testTreeWandE1.vpr@130.11--130.149) [176918]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__in_1 == null might not hold. (testTreeWandE1.vpr@130.11--130.149) [28616]"}
       Heap[sys__result, Wand_state_contains_for_state_contains__in_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@131.11--131.159) [176919]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@131.11--131.159) [28617]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__in_1_0];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__in_1_0:=Mask[sys__result, Wand_state_contains_for_state_contains__in_1_0] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__in_1_0 == Seq[Int]() might not hold. (testTreeWandE1.vpr@131.11--131.159) [176920]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__in_1_0 == Seq[Int]() might not hold. (testTreeWandE1.vpr@131.11--131.159) [28618]"}
       Seq#Equal(Heap[sys__result, Wand_state_contains_for_state_contains__in_1_0], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@132.11--132.151) [176921]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@132.11--132.151) [28619]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__out_1];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__out_1:=Mask[sys__result, Wand_state_contains_for_state_contains__out_1] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__out_1 == null might not hold. (testTreeWandE1.vpr@132.11--132.151) [176922]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__out_1 == null might not hold. (testTreeWandE1.vpr@132.11--132.151) [28620]"}
       Heap[sys__result, Wand_state_contains_for_state_contains__out_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@133.11--133.161) [176923]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@133.11--133.161) [28621]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__out_1_0];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__out_1_0:=Mask[sys__result, Wand_state_contains_for_state_contains__out_1_0] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__out_1_0 == Seq[Int]() might not hold. (testTreeWandE1.vpr@133.11--133.161) [176924]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__out_1_0 == Seq[Int]() might not hold. (testTreeWandE1.vpr@133.11--133.161) [28622]"}
       Seq#Equal(Heap[sys__result, Wand_state_contains_for_state_contains__out_1_0], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@134.11--134.153) [176925]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@134.11--134.153) [28623]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__this_1];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__this_1:=Mask[sys__result, Wand_state_contains_for_state_contains__this_1] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__this_1 == null might not hold. (testTreeWandE1.vpr@134.11--134.153) [176926]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__this_1 == null might not hold. (testTreeWandE1.vpr@134.11--134.153) [28624]"}
       Heap[sys__result, Wand_state_contains_for_state_contains__this_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@135.11--135.181) [176927]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@135.11--135.181) [28625]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__target_contents_1];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__target_contents_1:=Mask[sys__result, Wand_state_contains_for_state_contains__target_contents_1] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__target_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@135.11--135.181) [176928]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__target_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@135.11--135.181) [28626]"}
       Seq#Equal(Heap[sys__result, Wand_state_contains_for_state_contains__target_contents_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@136.11--136.177) [176929]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@136.11--136.177) [28627]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__prev_contents_1];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__prev_contents_1:=Mask[sys__result, Wand_state_contains_for_state_contains__prev_contents_1] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__prev_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@136.11--136.177) [176930]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__prev_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@136.11--136.177) [28628]"}
       Seq#Equal(Heap[sys__result, Wand_state_contains_for_state_contains__prev_contents_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@137.11--137.153) [176931]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@137.11--137.153) [28629]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__prev_1];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__prev_1:=Mask[sys__result, Wand_state_contains_for_state_contains__prev_1] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__prev_1 == null might not hold. (testTreeWandE1.vpr@137.11--137.153) [176932]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__prev_1 == null might not hold. (testTreeWandE1.vpr@137.11--137.153) [28630]"}
       Heap[sys__result, Wand_state_contains_for_state_contains__prev_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@138.11--138.175) [176933]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@138.11--138.175) [28631]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__cur_contents_1];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__cur_contents_1:=Mask[sys__result, Wand_state_contains_for_state_contains__cur_contents_1] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__cur_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@138.11--138.175) [176934]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__cur_contents_1 == Seq[Int]() might not hold. (testTreeWandE1.vpr@138.11--138.175) [28632]"}
       Seq#Equal(Heap[sys__result, Wand_state_contains_for_state_contains__cur_contents_1], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@139.11--139.151) [176935]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@139.11--139.151) [28633]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__top_1];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__top_1:=Mask[sys__result, Wand_state_contains_for_state_contains__top_1] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__top_1 == null might not hold. (testTreeWandE1.vpr@139.11--139.151) [176936]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__top_1 == null might not hold. (testTreeWandE1.vpr@139.11--139.151) [28634]"}
       Heap[sys__result, Wand_state_contains_for_state_contains__top_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@140.11--140.151) [176937]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@140.11--140.151) [28635]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__cur_1];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__cur_1:=Mask[sys__result, Wand_state_contains_for_state_contains__cur_1] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__cur_1 == null might not hold. (testTreeWandE1.vpr@140.11--140.151) [176938]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__cur_1 == null might not hold. (testTreeWandE1.vpr@140.11--140.151) [28636]"}
       Heap[sys__result, Wand_state_contains_for_state_contains__cur_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@141.11--141.153) [176939]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@141.11--141.153) [28637]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__wand_1];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__wand_1:=Mask[sys__result, Wand_state_contains_for_state_contains__wand_1] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__wand_1 == null might not hold. (testTreeWandE1.vpr@141.11--141.153) [176940]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__wand_1 == null might not hold. (testTreeWandE1.vpr@141.11--141.153) [28638]"}
       Heap[sys__result, Wand_state_contains_for_state_contains__wand_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@142.11--142.153) [176941]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@142.11--142.153) [28639]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__this_2];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__this_2:=Mask[sys__result, Wand_state_contains_for_state_contains__this_2] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__this_2 == null might not hold. (testTreeWandE1.vpr@142.11--142.153) [176942]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__this_2 == null might not hold. (testTreeWandE1.vpr@142.11--142.153) [28640]"}
       Heap[sys__result, Wand_state_contains_for_state_contains__this_2] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@143.11--143.181) [176943]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@143.11--143.181) [28641]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__target_contents_2];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__target_contents_2:=Mask[sys__result, Wand_state_contains_for_state_contains__target_contents_2] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__target_contents_2 == Seq[Int]() might not hold. (testTreeWandE1.vpr@143.11--143.181) [176944]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__target_contents_2 == Seq[Int]() might not hold. (testTreeWandE1.vpr@143.11--143.181) [28642]"}
       Seq#Equal(Heap[sys__result, Wand_state_contains_for_state_contains__target_contents_2], (Seq#Empty(): Seq int));
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@144.11--144.151) [176945]"}
+      assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. There might be insufficient permission to access sys__result.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@144.11--144.151) [28643]"}
         perm <= Mask[sys__result, Wand_state_contains_for_state_contains__top_2];
     }
     Mask := Mask[sys__result, Wand_state_contains_for_state_contains__top_2:=Mask[sys__result, Wand_state_contains_for_state_contains__top_2] - perm];
-    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__top_2 == null might not hold. (testTreeWandE1.vpr@144.11--144.151) [176946]"}
+    assert {:msg "  Postcondition of Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion sys__result.Wand_state_contains_for_state_contains__top_2 == null might not hold. (testTreeWandE1.vpr@144.11--144.151) [28644]"}
       Heap[sys__result, Wand_state_contains_for_state_contains__top_2] == null;
     // Finish exhale
     havoc ExhaleHeap;
@@ -4067,11 +4067,11 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var vwand: Ref;
@@ -4110,8 +4110,8 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
   var newPMask: PMaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -4157,12 +4157,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
     
     // -- Check definedness of prev_1.Tree__right != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access prev_1.Tree__right (testTreeWandE1.vpr@206.12--206.88) [176947]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access prev_1.Tree__right (testTreeWandE1.vpr@206.12--206.88) [28645]"}
         HasDirectPerm(Mask, prev_1, Tree__right);
     if (Heap[prev_1, Tree__right] != null) {
       
       // -- Check definedness of acc(Tree__state(prev_1.Tree__right), write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access prev_1.Tree__right (testTreeWandE1.vpr@206.12--206.88) [176948]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access prev_1.Tree__right (testTreeWandE1.vpr@206.12--206.88) [28646]"}
           HasDirectPerm(Mask, prev_1, Tree__right);
       perm := FullPerm;
       Mask := Mask[null, Tree__state(Heap[prev_1, Tree__right]):=Mask[null, Tree__state(Heap[prev_1, Tree__right])] + perm];
@@ -4171,24 +4171,24 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
     
     // -- Check definedness of prev_1.Tree__left == cur_1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access prev_1.Tree__left (testTreeWandE1.vpr@207.12--207.38) [176949]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access prev_1.Tree__left (testTreeWandE1.vpr@207.12--207.38) [28647]"}
         HasDirectPerm(Mask, prev_1, Tree__left);
     assume Heap[prev_1, Tree__left] == cur_1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of prev_contents_1 == cur_contents_1 ++ Seq(prev_1.Tree__data) ++ Tree__tolist(prev_1.Tree__right)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access prev_1.Tree__data (testTreeWandE1.vpr@208.12--208.107) [176950]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access prev_1.Tree__data (testTreeWandE1.vpr@208.12--208.107) [28648]"}
         HasDirectPerm(Mask, prev_1, Tree__data);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access prev_1.Tree__right (testTreeWandE1.vpr@208.12--208.107) [176951]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access prev_1.Tree__right (testTreeWandE1.vpr@208.12--208.107) [28649]"}
         HasDirectPerm(Mask, prev_1, Tree__right);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (Heap[prev_1, Tree__right] != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(prev_1.Tree__right) (testTreeWandE1.vpr@208.75--208.107) [176952]"}
+          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(prev_1.Tree__right) (testTreeWandE1.vpr@208.75--208.107) [28650]"}
             NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[prev_1, Tree__right])];
         }
         // Finish exhale
@@ -4211,12 +4211,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1(wand_1) == prev_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion wand_1 != null might not hold. (testTreeWandE1.vpr@211.12--211.68) [176953]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion wand_1 != null might not hold. (testTreeWandE1.vpr@211.12--211.68) [28651]"}
           wand_1_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(wand_1) (testTreeWandE1.vpr@211.12--211.68) [176954]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(wand_1) (testTreeWandE1.vpr@211.12--211.68) [28652]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(wand_1_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4232,12 +4232,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1_0(wand_1) == prev_contents_1[1..]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion wand_1 != null might not hold. (testTreeWandE1.vpr@212.12--212.70) [176955]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion wand_1 != null might not hold. (testTreeWandE1.vpr@212.12--212.70) [28653]"}
           wand_1_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(wand_1) (testTreeWandE1.vpr@212.12--212.70) [176956]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(wand_1) (testTreeWandE1.vpr@212.12--212.70) [28654]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(wand_1_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4253,12 +4253,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1(wand_1) == top_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion wand_1 != null might not hold. (testTreeWandE1.vpr@213.12--213.69) [176957]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion wand_1 != null might not hold. (testTreeWandE1.vpr@213.12--213.69) [28655]"}
           wand_1_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(wand_1) (testTreeWandE1.vpr@213.12--213.69) [176958]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(wand_1) (testTreeWandE1.vpr@213.12--213.69) [28656]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(wand_1_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4274,12 +4274,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1_0(wand_1) == target_contents_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion wand_1 != null might not hold. (testTreeWandE1.vpr@214.12--214.71) [176959]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion wand_1 != null might not hold. (testTreeWandE1.vpr@214.12--214.71) [28657]"}
           wand_1_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(wand_1) (testTreeWandE1.vpr@214.12--214.71) [176960]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(wand_1) (testTreeWandE1.vpr@214.12--214.71) [28658]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(wand_1_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4306,8 +4306,8 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4324,12 +4324,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@223.11--223.72) [176961]"}
+        ExhaleWellDef0Mask := PostMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@223.11--223.72) [28659]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@223.11--223.72) [176962]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@223.11--223.72) [28660]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4345,12 +4345,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@224.11--224.74) [176963]"}
+        ExhaleWellDef0Mask := PostMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@224.11--224.74) [28661]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@224.11--224.74) [176964]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@224.11--224.74) [28662]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4366,12 +4366,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@225.11--225.73) [176965]"}
+        ExhaleWellDef0Mask := PostMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@225.11--225.73) [28663]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@225.11--225.73) [176966]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@225.11--225.73) [28664]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4387,12 +4387,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@226.11--226.75) [176967]"}
+        ExhaleWellDef0Mask := PostMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@226.11--226.75) [28665]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@226.11--226.75) [176968]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@226.11--226.75) [28666]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4431,9 +4431,9 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@257.3--257.115) [176969]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@257.3--257.115) [28667]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -4538,7 +4538,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__lemma := __flatten_54 -- testTreeWandE1.vpr@261.3--261.70
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@261.3--261.70) [176970]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@261.3--261.70) [28668]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__lemma];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__lemma:=__flatten_54];
     assume state(Heap, Mask);
@@ -4552,7 +4552,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__this_1 := __flatten_55 -- testTreeWandE1.vpr@264.3--264.71
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@264.3--264.71) [176971]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@264.3--264.71) [28669]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__this_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__this_1:=__flatten_55];
     assume state(Heap, Mask);
@@ -4566,7 +4566,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__target_contents_1 := __flatten_56 -- testTreeWandE1.vpr@267.3--267.82
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@267.3--267.82) [176972]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@267.3--267.82) [28670]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__target_contents_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__target_contents_1:=__flatten_56];
     assume state(Heap, Mask);
@@ -4580,7 +4580,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__prev_contents_1 := __flatten_57 -- testTreeWandE1.vpr@270.3--270.80
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@270.3--270.80) [176973]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@270.3--270.80) [28671]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__prev_contents_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__prev_contents_1:=__flatten_57];
     assume state(Heap, Mask);
@@ -4594,7 +4594,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__prev_1 := __flatten_58 -- testTreeWandE1.vpr@273.3--273.71
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@273.3--273.71) [176974]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@273.3--273.71) [28672]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__prev_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__prev_1:=__flatten_58];
     assume state(Heap, Mask);
@@ -4608,7 +4608,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__cur_contents_1 := __flatten_59 -- testTreeWandE1.vpr@276.3--276.79
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@276.3--276.79) [176975]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@276.3--276.79) [28673]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__cur_contents_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__cur_contents_1:=__flatten_59];
     assume state(Heap, Mask);
@@ -4622,7 +4622,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__top_1 := __flatten_60 -- testTreeWandE1.vpr@279.3--279.70
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@279.3--279.70) [176976]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@279.3--279.70) [28674]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__top_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__top_1:=__flatten_60];
     assume state(Heap, Mask);
@@ -4636,7 +4636,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__cur_1 := __flatten_61 -- testTreeWandE1.vpr@282.3--282.70
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@282.3--282.70) [176977]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@282.3--282.70) [28675]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__cur_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__cur_1:=__flatten_61];
     assume state(Heap, Mask);
@@ -4650,7 +4650,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__wand_1 := __flatten_62 -- testTreeWandE1.vpr@285.3--285.71
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@285.3--285.71) [176978]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@285.3--285.71) [28676]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__wand_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__wand_1:=__flatten_62];
     assume state(Heap, Mask);
@@ -4664,7 +4664,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__in_1 := __flatten_63 -- testTreeWandE1.vpr@288.3--288.69
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@288.3--288.69) [176979]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@288.3--288.69) [28677]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__in_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__in_1:=__flatten_63];
     assume state(Heap, Mask);
@@ -4678,7 +4678,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__in_1_0 := __flatten_64 -- testTreeWandE1.vpr@291.3--291.71
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@291.3--291.71) [176980]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@291.3--291.71) [28678]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__in_1_0];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__in_1_0:=__flatten_64];
     assume state(Heap, Mask);
@@ -4692,7 +4692,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__out_1 := __flatten_65 -- testTreeWandE1.vpr@294.3--294.70
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@294.3--294.70) [176981]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@294.3--294.70) [28679]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__out_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__out_1:=__flatten_65];
     assume state(Heap, Mask);
@@ -4706,114 +4706,114 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__out_1_0 := __flatten_66 -- testTreeWandE1.vpr@297.3--297.72
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@297.3--297.72) [176982]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@297.3--297.72) [28680]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__out_1_0];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__out_1_0:=__flatten_66];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Wand_state_contains_for_state_contains__valid_wand(vwand), write) -- testTreeWandE1.vpr@298.3--298.77
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@298.3--298.77) [176984]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@298.3--298.77) [28682]"}
       Mask[vwand, Wand_state_contains_for_state_contains__lemma] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__lemma];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__lemma:=Mask[vwand, Wand_state_contains_for_state_contains__lemma] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion 1 <= vwand.Wand_state_contains_for_state_contains__lemma might not hold. (testTreeWandE1.vpr@298.3--298.77) [176985]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion 1 <= vwand.Wand_state_contains_for_state_contains__lemma might not hold. (testTreeWandE1.vpr@298.3--298.77) [28683]"}
       1 <= Heap[vwand, Wand_state_contains_for_state_contains__lemma];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@298.3--298.77) [176986]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@298.3--298.77) [28684]"}
       Mask[vwand, Wand_state_contains_for_state_contains__in_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__in_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__in_1:=Mask[vwand, Wand_state_contains_for_state_contains__in_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 != null might not hold. (testTreeWandE1.vpr@298.3--298.77) [176987]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 != null might not hold. (testTreeWandE1.vpr@298.3--298.77) [28685]"}
       Heap[vwand, Wand_state_contains_for_state_contains__in_1] != null;
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@298.3--298.77) [176988]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@298.3--298.77) [28686]"}
       Mask[vwand, Wand_state_contains_for_state_contains__in_1_0] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__in_1_0];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__in_1_0:=Mask[vwand, Wand_state_contains_for_state_contains__in_1_0] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@298.3--298.77) [176989]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@298.3--298.77) [28687]"}
       Mask[vwand, Wand_state_contains_for_state_contains__out_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__out_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__out_1:=Mask[vwand, Wand_state_contains_for_state_contains__out_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 != null might not hold. (testTreeWandE1.vpr@298.3--298.77) [176990]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 != null might not hold. (testTreeWandE1.vpr@298.3--298.77) [28688]"}
       Heap[vwand, Wand_state_contains_for_state_contains__out_1] != null;
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@298.3--298.77) [176991]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@298.3--298.77) [28689]"}
       Mask[vwand, Wand_state_contains_for_state_contains__out_1_0] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__out_1_0];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__out_1_0:=Mask[vwand, Wand_state_contains_for_state_contains__out_1_0] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@298.3--298.77) [176992]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@298.3--298.77) [28690]"}
       Mask[vwand, Wand_state_contains_for_state_contains__this_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__this_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__this_1:=Mask[vwand, Wand_state_contains_for_state_contains__this_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@298.3--298.77) [176993]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@298.3--298.77) [28691]"}
       Mask[vwand, Wand_state_contains_for_state_contains__target_contents_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__target_contents_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__target_contents_1:=Mask[vwand, Wand_state_contains_for_state_contains__target_contents_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@298.3--298.77) [176994]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@298.3--298.77) [28692]"}
       Mask[vwand, Wand_state_contains_for_state_contains__prev_contents_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__prev_contents_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__prev_contents_1:=Mask[vwand, Wand_state_contains_for_state_contains__prev_contents_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@298.3--298.77) [176995]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@298.3--298.77) [28693]"}
       Mask[vwand, Wand_state_contains_for_state_contains__prev_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__prev_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__prev_1:=Mask[vwand, Wand_state_contains_for_state_contains__prev_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@298.3--298.77) [176996]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@298.3--298.77) [28694]"}
       Mask[vwand, Wand_state_contains_for_state_contains__cur_contents_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__cur_contents_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__cur_contents_1:=Mask[vwand, Wand_state_contains_for_state_contains__cur_contents_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@298.3--298.77) [176997]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@298.3--298.77) [28695]"}
       Mask[vwand, Wand_state_contains_for_state_contains__top_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__top_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__top_1:=Mask[vwand, Wand_state_contains_for_state_contains__top_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@298.3--298.77) [176998]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@298.3--298.77) [28696]"}
       Mask[vwand, Wand_state_contains_for_state_contains__cur_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__cur_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__cur_1:=Mask[vwand, Wand_state_contains_for_state_contains__cur_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@298.3--298.77) [176999]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@298.3--298.77) [28697]"}
       Mask[vwand, Wand_state_contains_for_state_contains__wand_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__wand_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__wand_1:=Mask[vwand, Wand_state_contains_for_state_contains__wand_1] - wildcard];
     if (Heap[vwand, Wand_state_contains_for_state_contains__lemma] == 1) {
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__this_1 != null might not hold. (testTreeWandE1.vpr@298.3--298.77) [177000]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__this_1 != null might not hold. (testTreeWandE1.vpr@298.3--298.77) [28698]"}
         Heap[vwand, Wand_state_contains_for_state_contains__this_1] != null;
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion |vwand.Wand_state_contains_for_state_contains__prev_contents_1| > 0 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177001]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion |vwand.Wand_state_contains_for_state_contains__prev_contents_1| > 0 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28699]"}
         Seq#Length(Heap[vwand, Wand_state_contains_for_state_contains__prev_contents_1]) > 0;
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion |vwand.Wand_state_contains_for_state_contains__cur_contents_1| > 0 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177002]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion |vwand.Wand_state_contains_for_state_contains__cur_contents_1| > 0 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28700]"}
         Seq#Length(Heap[vwand, Wand_state_contains_for_state_contains__cur_contents_1]) > 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__left (testTreeWandE1.vpr@298.3--298.77) [177004]"}
+        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__left (testTreeWandE1.vpr@298.3--298.77) [28702]"}
           perm <= Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__left];
       }
       Mask := Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__left:=Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__left] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__data (testTreeWandE1.vpr@298.3--298.77) [177006]"}
+        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__data (testTreeWandE1.vpr@298.3--298.77) [28704]"}
           perm <= Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__data];
       }
       Mask := Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__data:=Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__data] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@298.3--298.77) [177008]"}
+        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@298.3--298.77) [28706]"}
           perm <= Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right];
       }
       Mask := Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right:=Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right] - perm];
       if (Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access Tree__state(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right) (testTreeWandE1.vpr@298.3--298.77) [177010]"}
+          assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access Tree__state(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right) (testTreeWandE1.vpr@298.3--298.77) [28708]"}
             perm <= Mask[null, Tree__state(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])];
         }
         Mask := Mask[null, Tree__state(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right]):=Mask[null, Tree__state(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])] - perm];
@@ -4821,66 +4821,66 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
         // -- Record predicate instance information
           assume InsidePredicate(Wand_state_contains_for_state_contains__valid_wand(vwand), Heap[null, Wand_state_contains_for_state_contains__valid_wand(vwand)], Tree__state(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right]), Heap[null, Tree__state(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])]);
       }
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__prev_1.Tree__left == vwand.Wand_state_contains_for_state_contains__cur_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177011]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__prev_1.Tree__left == vwand.Wand_state_contains_for_state_contains__cur_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28709]"}
         Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__left] == Heap[vwand, Wand_state_contains_for_state_contains__cur_1];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__prev_contents_1 == vwand.Wand_state_contains_for_state_contains__cur_contents_1 ++ Seq(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__data) ++ Tree__tolist(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right) might not hold. (testTreeWandE1.vpr@298.3--298.77) [177012]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__prev_contents_1 == vwand.Wand_state_contains_for_state_contains__cur_contents_1 ++ Seq(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__data) ++ Tree__tolist(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right) might not hold. (testTreeWandE1.vpr@298.3--298.77) [28710]"}
         Seq#Equal(Heap[vwand, Wand_state_contains_for_state_contains__prev_contents_1], Seq#Append(Seq#Append(Heap[vwand, Wand_state_contains_for_state_contains__cur_contents_1], Seq#Singleton(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__data])), Tree__tolist(Heap, Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])));
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@298.3--298.77) [177013]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@298.3--298.77) [28711]"}
         Heap[vwand, Wand_state_contains_for_state_contains__wand_1] != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@298.3--298.77) [177015]"}
+        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@298.3--298.77) [28713]"}
           perm <= Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[vwand, Wand_state_contains_for_state_contains__wand_1])];
       }
       Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[vwand, Wand_state_contains_for_state_contains__wand_1]):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[vwand, Wand_state_contains_for_state_contains__wand_1])] - perm];
       
       // -- Record predicate instance information
         assume InsidePredicate(Wand_state_contains_for_state_contains__valid_wand(vwand), Heap[null, Wand_state_contains_for_state_contains__valid_wand(vwand)], Wand_state_contains_for_state_contains__valid_wand(Heap[vwand, Wand_state_contains_for_state_contains__wand_1]), Heap[null, Wand_state_contains_for_state_contains__valid_wand(Heap[vwand, Wand_state_contains_for_state_contains__wand_1])]);
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_in_1(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__prev_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177016]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_in_1(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__prev_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28714]"}
         Wand_state_contains_for_state_contains__get_in_1(Heap, Heap[vwand, Wand_state_contains_for_state_contains__wand_1]) == Heap[vwand, Wand_state_contains_for_state_contains__prev_1];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_in_1_0(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__prev_contents_1[1..] might not hold. (testTreeWandE1.vpr@298.3--298.77) [177017]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_in_1_0(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__prev_contents_1[1..] might not hold. (testTreeWandE1.vpr@298.3--298.77) [28715]"}
         Seq#Equal(Wand_state_contains_for_state_contains__get_in_1_0(Heap, Heap[vwand, Wand_state_contains_for_state_contains__wand_1]), Seq#Drop(Heap[vwand, Wand_state_contains_for_state_contains__prev_contents_1], 1));
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__top_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177018]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__top_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28716]"}
         Wand_state_contains_for_state_contains__get_out_1(Heap, Heap[vwand, Wand_state_contains_for_state_contains__wand_1]) == Heap[vwand, Wand_state_contains_for_state_contains__top_1];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_out_1_0(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__target_contents_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177019]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_out_1_0(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__target_contents_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28717]"}
         Seq#Equal(Wand_state_contains_for_state_contains__get_out_1_0(Heap, Heap[vwand, Wand_state_contains_for_state_contains__wand_1]), Heap[vwand, Wand_state_contains_for_state_contains__target_contents_1]);
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 == vwand.Wand_state_contains_for_state_contains__cur_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177020]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 == vwand.Wand_state_contains_for_state_contains__cur_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28718]"}
         Heap[vwand, Wand_state_contains_for_state_contains__in_1] == Heap[vwand, Wand_state_contains_for_state_contains__cur_1];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1_0 == vwand.Wand_state_contains_for_state_contains__cur_contents_1[1..] might not hold. (testTreeWandE1.vpr@298.3--298.77) [177021]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1_0 == vwand.Wand_state_contains_for_state_contains__cur_contents_1[1..] might not hold. (testTreeWandE1.vpr@298.3--298.77) [28719]"}
         Seq#Equal(Heap[vwand, Wand_state_contains_for_state_contains__in_1_0], Seq#Drop(Heap[vwand, Wand_state_contains_for_state_contains__cur_contents_1], 1));
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 == vwand.Wand_state_contains_for_state_contains__top_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177022]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 == vwand.Wand_state_contains_for_state_contains__top_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28720]"}
         Heap[vwand, Wand_state_contains_for_state_contains__out_1] == Heap[vwand, Wand_state_contains_for_state_contains__top_1];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177023]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_1 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28721]"}
         Seq#Equal(Heap[vwand, Wand_state_contains_for_state_contains__out_1_0], Heap[vwand, Wand_state_contains_for_state_contains__target_contents_1]);
     }
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@298.3--298.77) [177024]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@298.3--298.77) [28722]"}
       Mask[vwand, Wand_state_contains_for_state_contains__this_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__this_2];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__this_2:=Mask[vwand, Wand_state_contains_for_state_contains__this_2] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@298.3--298.77) [177025]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@298.3--298.77) [28723]"}
       Mask[vwand, Wand_state_contains_for_state_contains__target_contents_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__target_contents_2];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__target_contents_2:=Mask[vwand, Wand_state_contains_for_state_contains__target_contents_2] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@298.3--298.77) [177026]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@298.3--298.77) [28724]"}
       Mask[vwand, Wand_state_contains_for_state_contains__top_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__top_2];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__top_2:=Mask[vwand, Wand_state_contains_for_state_contains__top_2] - wildcard];
     if (Heap[vwand, Wand_state_contains_for_state_contains__lemma] == 2) {
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__this_2 != null might not hold. (testTreeWandE1.vpr@298.3--298.77) [177027]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__this_2 != null might not hold. (testTreeWandE1.vpr@298.3--298.77) [28725]"}
         Heap[vwand, Wand_state_contains_for_state_contains__this_2] != null;
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 == vwand.Wand_state_contains_for_state_contains__top_2 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177028]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 == vwand.Wand_state_contains_for_state_contains__top_2 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28726]"}
         Heap[vwand, Wand_state_contains_for_state_contains__in_1] == Heap[vwand, Wand_state_contains_for_state_contains__top_2];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_2 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177029]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_2 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28727]"}
         Seq#Equal(Heap[vwand, Wand_state_contains_for_state_contains__in_1_0], Heap[vwand, Wand_state_contains_for_state_contains__target_contents_2]);
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 == vwand.Wand_state_contains_for_state_contains__top_2 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177030]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 == vwand.Wand_state_contains_for_state_contains__top_2 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28728]"}
         Heap[vwand, Wand_state_contains_for_state_contains__out_1] == Heap[vwand, Wand_state_contains_for_state_contains__top_2];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_2 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177031]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_2 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28729]"}
         Seq#Equal(Heap[vwand, Wand_state_contains_for_state_contains__out_1_0], Heap[vwand, Wand_state_contains_for_state_contains__target_contents_2]);
     }
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__lemma <= 2 might not hold. (testTreeWandE1.vpr@298.3--298.77) [177032]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__lemma <= 2 might not hold. (testTreeWandE1.vpr@298.3--298.77) [28730]"}
       Heap[vwand, Wand_state_contains_for_state_contains__lemma] <= 2;
     perm := FullPerm;
     Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)] + perm];
@@ -4912,16 +4912,16 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
       Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand):=Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand)][Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right:=true]];
       if (Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
         havoc newPMask;
-        assume (forall <A, B> o_23: Ref, f_37: (Field A B) ::
-          { newPMask[o_23, f_37] }
-          Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand)][o_23, f_37] || Heap[null, Tree__state#sm(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_23, f_37] ==> newPMask[o_23, f_37]
+        assume (forall <A, B> o_7: Ref, f_53: (Field A B) ::
+          { newPMask[o_7, f_53] }
+          Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand)][o_7, f_53] || Heap[null, Tree__state#sm(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_7, f_53] ==> newPMask[o_7, f_53]
         );
         Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand):=newPMask];
       }
       havoc newPMask;
-      assume (forall <A, B> o_38: Ref, f_27: (Field A B) ::
-        { newPMask[o_38, f_27] }
-        Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand)][o_38, f_27] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[vwand, Wand_state_contains_for_state_contains__wand_1])][o_38, f_27] ==> newPMask[o_38, f_27]
+      assume (forall <A, B> o_47: Ref, f_15: (Field A B) ::
+        { newPMask[o_47, f_15] }
+        Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand)][o_47, f_15] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[vwand, Wand_state_contains_for_state_contains__wand_1])][o_47, f_15] ==> newPMask[o_47, f_15]
       );
       Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand):=newPMask];
     }
@@ -4949,13 +4949,13 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
   //   out_1_0)))) -- testTreeWandE1.vpr@301.3--301.422
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@301.10--301.422) [177034]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@301.10--301.422) [28732]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@301.10--301.422) [177036]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@301.10--301.422) [28734]"}
         perm <= AssertMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
     }
     AssertMask := AssertMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result):=AssertMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)] - perm];
@@ -4963,12 +4963,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@301.115--301.176) [177037]"}
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@301.115--301.176) [28735]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@301.115--301.176) [177038]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@301.115--301.176) [28736]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4977,18 +4977,18 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1 might not hold. (testTreeWandE1.vpr@301.10--301.422) [177039]"}
+    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1 might not hold. (testTreeWandE1.vpr@301.10--301.422) [28737]"}
       Wand_state_contains_for_state_contains__get_in_1(AssertHeap, sys__result) == in_1;
     
     // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@301.190--301.253) [177040]"}
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@301.190--301.253) [28738]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@301.190--301.253) [177041]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@301.190--301.253) [28739]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -4997,18 +4997,18 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0 might not hold. (testTreeWandE1.vpr@301.10--301.422) [177042]"}
+    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0 might not hold. (testTreeWandE1.vpr@301.10--301.422) [28740]"}
       Seq#Equal(Wand_state_contains_for_state_contains__get_in_1_0(AssertHeap, sys__result), in_1_0);
     
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@301.269--301.331) [177043]"}
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@301.269--301.331) [28741]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@301.269--301.331) [177044]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@301.269--301.331) [28742]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5017,18 +5017,18 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1 might not hold. (testTreeWandE1.vpr@301.10--301.422) [177045]"}
+    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1 might not hold. (testTreeWandE1.vpr@301.10--301.422) [28743]"}
       Wand_state_contains_for_state_contains__get_out_1(AssertHeap, sys__result) == out_1;
     
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@301.346--301.410) [177046]"}
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@301.346--301.410) [28744]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@301.346--301.410) [177047]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@301.346--301.410) [28745]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5037,7 +5037,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0 might not hold. (testTreeWandE1.vpr@301.10--301.422) [177048]"}
+    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0 might not hold. (testTreeWandE1.vpr@301.10--301.422) [28746]"}
       Seq#Equal(Wand_state_contains_for_state_contains__get_out_1_0(AssertHeap, sys__result), out_1_0);
     assume state(Heap, Mask);
   
@@ -5047,23 +5047,23 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@221.11--221.30) [177049]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@221.11--221.30) [28747]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@222.11--222.86) [177050]"}
+      assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@222.11--222.86) [28748]"}
         perm <= Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
     }
     Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)] - perm];
-    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1 might not hold. (testTreeWandE1.vpr@223.11--223.80) [177051]"}
+    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1 might not hold. (testTreeWandE1.vpr@223.11--223.80) [28749]"}
       Wand_state_contains_for_state_contains__get_in_1(Heap, sys__result) == in_1;
-    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0 might not hold. (testTreeWandE1.vpr@224.11--224.84) [177052]"}
+    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0 might not hold. (testTreeWandE1.vpr@224.11--224.84) [28750]"}
       Seq#Equal(Wand_state_contains_for_state_contains__get_in_1_0(Heap, sys__result), in_1_0);
-    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1 might not hold. (testTreeWandE1.vpr@225.11--225.82) [177053]"}
+    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1 might not hold. (testTreeWandE1.vpr@225.11--225.82) [28751]"}
       Wand_state_contains_for_state_contains__get_out_1(Heap, sys__result) == out_1;
-    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0 might not hold. (testTreeWandE1.vpr@226.11--226.86) [177054]"}
+    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0 might not hold. (testTreeWandE1.vpr@226.11--226.86) [28752]"}
       Seq#Equal(Wand_state_contains_for_state_contains__get_out_1_0(Heap, sys__result), out_1_0);
     // Finish exhale
     havoc ExhaleHeap;
@@ -5078,13 +5078,13 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_1(diz: Ref, current
 procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current_thread_id: int, this_2: Ref, target_contents_2: (Seq int), top_2: Ref, in_1: Ref, in_1_0: (Seq int), out_1: Ref, out_1_0: (Seq int)) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var vwand: Ref;
   var __flatten_24: Ref;
@@ -5112,8 +5112,8 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
   var newPMask: PMaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -5151,8 +5151,8 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5169,12 +5169,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@317.11--317.72) [177055]"}
+        ExhaleWellDef0Mask := PostMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@317.11--317.72) [28753]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@317.11--317.72) [177056]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@317.11--317.72) [28754]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5190,12 +5190,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@318.11--318.74) [177057]"}
+        ExhaleWellDef0Mask := PostMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@318.11--318.74) [28755]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@318.11--318.74) [177058]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@318.11--318.74) [28756]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5211,12 +5211,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@319.11--319.73) [177059]"}
+        ExhaleWellDef0Mask := PostMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@319.11--319.73) [28757]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@319.11--319.73) [177060]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@319.11--319.73) [28758]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5232,12 +5232,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@320.11--320.75) [177061]"}
+        ExhaleWellDef0Mask := PostMask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@320.11--320.75) [28759]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@320.11--320.75) [177062]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@320.11--320.75) [28760]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5270,9 +5270,9 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@341.3--341.116) [177063]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Wand_state_contains_for_state_contains__Wand_state_contains_for_state_contains might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@341.3--341.116) [28761]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -5377,7 +5377,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__lemma := __flatten_68 -- testTreeWandE1.vpr@345.3--345.70
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@345.3--345.70) [177064]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@345.3--345.70) [28762]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__lemma];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__lemma:=__flatten_68];
     assume state(Heap, Mask);
@@ -5391,7 +5391,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__this_2 := __flatten_69 -- testTreeWandE1.vpr@348.3--348.71
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@348.3--348.71) [177065]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@348.3--348.71) [28763]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__this_2];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__this_2:=__flatten_69];
     assume state(Heap, Mask);
@@ -5405,7 +5405,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__target_contents_2 := __flatten_70 -- testTreeWandE1.vpr@351.3--351.82
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@351.3--351.82) [177066]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@351.3--351.82) [28764]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__target_contents_2];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__target_contents_2:=__flatten_70];
     assume state(Heap, Mask);
@@ -5419,7 +5419,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__top_2 := __flatten_71 -- testTreeWandE1.vpr@354.3--354.70
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@354.3--354.70) [177067]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@354.3--354.70) [28765]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__top_2];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__top_2:=__flatten_71];
     assume state(Heap, Mask);
@@ -5433,7 +5433,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__in_1 := __flatten_72 -- testTreeWandE1.vpr@357.3--357.69
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@357.3--357.69) [177068]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@357.3--357.69) [28766]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__in_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__in_1:=__flatten_72];
     assume state(Heap, Mask);
@@ -5447,7 +5447,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__in_1_0 := __flatten_73 -- testTreeWandE1.vpr@360.3--360.71
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@360.3--360.71) [177069]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@360.3--360.71) [28767]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__in_1_0];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__in_1_0:=__flatten_73];
     assume state(Heap, Mask);
@@ -5461,7 +5461,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__out_1 := __flatten_74 -- testTreeWandE1.vpr@363.3--363.70
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@363.3--363.70) [177070]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@363.3--363.70) [28768]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__out_1];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__out_1:=__flatten_74];
     assume state(Heap, Mask);
@@ -5475,114 +5475,114 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_state_contains_for_state_contains__out_1_0 := __flatten_75 -- testTreeWandE1.vpr@366.3--366.72
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@366.3--366.72) [177071]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@366.3--366.72) [28769]"}
       FullPerm == Mask[vwand, Wand_state_contains_for_state_contains__out_1_0];
     Heap := Heap[vwand, Wand_state_contains_for_state_contains__out_1_0:=__flatten_75];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Wand_state_contains_for_state_contains__valid_wand(vwand), write) -- testTreeWandE1.vpr@367.3--367.77
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@367.3--367.77) [177073]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__lemma (testTreeWandE1.vpr@367.3--367.77) [28771]"}
       Mask[vwand, Wand_state_contains_for_state_contains__lemma] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__lemma];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__lemma:=Mask[vwand, Wand_state_contains_for_state_contains__lemma] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion 1 <= vwand.Wand_state_contains_for_state_contains__lemma might not hold. (testTreeWandE1.vpr@367.3--367.77) [177074]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion 1 <= vwand.Wand_state_contains_for_state_contains__lemma might not hold. (testTreeWandE1.vpr@367.3--367.77) [28772]"}
       1 <= Heap[vwand, Wand_state_contains_for_state_contains__lemma];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@367.3--367.77) [177075]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1 (testTreeWandE1.vpr@367.3--367.77) [28773]"}
       Mask[vwand, Wand_state_contains_for_state_contains__in_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__in_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__in_1:=Mask[vwand, Wand_state_contains_for_state_contains__in_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 != null might not hold. (testTreeWandE1.vpr@367.3--367.77) [177076]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 != null might not hold. (testTreeWandE1.vpr@367.3--367.77) [28774]"}
       Heap[vwand, Wand_state_contains_for_state_contains__in_1] != null;
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@367.3--367.77) [177077]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__in_1_0 (testTreeWandE1.vpr@367.3--367.77) [28775]"}
       Mask[vwand, Wand_state_contains_for_state_contains__in_1_0] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__in_1_0];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__in_1_0:=Mask[vwand, Wand_state_contains_for_state_contains__in_1_0] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@367.3--367.77) [177078]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1 (testTreeWandE1.vpr@367.3--367.77) [28776]"}
       Mask[vwand, Wand_state_contains_for_state_contains__out_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__out_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__out_1:=Mask[vwand, Wand_state_contains_for_state_contains__out_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 != null might not hold. (testTreeWandE1.vpr@367.3--367.77) [177079]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 != null might not hold. (testTreeWandE1.vpr@367.3--367.77) [28777]"}
       Heap[vwand, Wand_state_contains_for_state_contains__out_1] != null;
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@367.3--367.77) [177080]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__out_1_0 (testTreeWandE1.vpr@367.3--367.77) [28778]"}
       Mask[vwand, Wand_state_contains_for_state_contains__out_1_0] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__out_1_0];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__out_1_0:=Mask[vwand, Wand_state_contains_for_state_contains__out_1_0] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@367.3--367.77) [177081]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_1 (testTreeWandE1.vpr@367.3--367.77) [28779]"}
       Mask[vwand, Wand_state_contains_for_state_contains__this_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__this_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__this_1:=Mask[vwand, Wand_state_contains_for_state_contains__this_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@367.3--367.77) [177082]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_1 (testTreeWandE1.vpr@367.3--367.77) [28780]"}
       Mask[vwand, Wand_state_contains_for_state_contains__target_contents_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__target_contents_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__target_contents_1:=Mask[vwand, Wand_state_contains_for_state_contains__target_contents_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@367.3--367.77) [177083]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_contents_1 (testTreeWandE1.vpr@367.3--367.77) [28781]"}
       Mask[vwand, Wand_state_contains_for_state_contains__prev_contents_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__prev_contents_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__prev_contents_1:=Mask[vwand, Wand_state_contains_for_state_contains__prev_contents_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@367.3--367.77) [177084]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1 (testTreeWandE1.vpr@367.3--367.77) [28782]"}
       Mask[vwand, Wand_state_contains_for_state_contains__prev_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__prev_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__prev_1:=Mask[vwand, Wand_state_contains_for_state_contains__prev_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@367.3--367.77) [177085]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_contents_1 (testTreeWandE1.vpr@367.3--367.77) [28783]"}
       Mask[vwand, Wand_state_contains_for_state_contains__cur_contents_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__cur_contents_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__cur_contents_1:=Mask[vwand, Wand_state_contains_for_state_contains__cur_contents_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@367.3--367.77) [177086]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_1 (testTreeWandE1.vpr@367.3--367.77) [28784]"}
       Mask[vwand, Wand_state_contains_for_state_contains__top_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__top_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__top_1:=Mask[vwand, Wand_state_contains_for_state_contains__top_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@367.3--367.77) [177087]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__cur_1 (testTreeWandE1.vpr@367.3--367.77) [28785]"}
       Mask[vwand, Wand_state_contains_for_state_contains__cur_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__cur_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__cur_1:=Mask[vwand, Wand_state_contains_for_state_contains__cur_1] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@367.3--367.77) [177088]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__wand_1 (testTreeWandE1.vpr@367.3--367.77) [28786]"}
       Mask[vwand, Wand_state_contains_for_state_contains__wand_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__wand_1];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__wand_1:=Mask[vwand, Wand_state_contains_for_state_contains__wand_1] - wildcard];
     if (Heap[vwand, Wand_state_contains_for_state_contains__lemma] == 1) {
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__this_1 != null might not hold. (testTreeWandE1.vpr@367.3--367.77) [177089]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__this_1 != null might not hold. (testTreeWandE1.vpr@367.3--367.77) [28787]"}
         Heap[vwand, Wand_state_contains_for_state_contains__this_1] != null;
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion |vwand.Wand_state_contains_for_state_contains__prev_contents_1| > 0 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177090]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion |vwand.Wand_state_contains_for_state_contains__prev_contents_1| > 0 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28788]"}
         Seq#Length(Heap[vwand, Wand_state_contains_for_state_contains__prev_contents_1]) > 0;
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion |vwand.Wand_state_contains_for_state_contains__cur_contents_1| > 0 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177091]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion |vwand.Wand_state_contains_for_state_contains__cur_contents_1| > 0 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28789]"}
         Seq#Length(Heap[vwand, Wand_state_contains_for_state_contains__cur_contents_1]) > 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__left (testTreeWandE1.vpr@367.3--367.77) [177093]"}
+        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__left (testTreeWandE1.vpr@367.3--367.77) [28791]"}
           perm <= Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__left];
       }
       Mask := Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__left:=Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__left] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__data (testTreeWandE1.vpr@367.3--367.77) [177095]"}
+        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__data (testTreeWandE1.vpr@367.3--367.77) [28793]"}
           perm <= Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__data];
       }
       Mask := Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__data:=Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__data] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@367.3--367.77) [177097]"}
+        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right (testTreeWandE1.vpr@367.3--367.77) [28795]"}
           perm <= Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right];
       }
       Mask := Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right:=Mask[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right] - perm];
       if (Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access Tree__state(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right) (testTreeWandE1.vpr@367.3--367.77) [177099]"}
+          assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access Tree__state(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right) (testTreeWandE1.vpr@367.3--367.77) [28797]"}
             perm <= Mask[null, Tree__state(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])];
         }
         Mask := Mask[null, Tree__state(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right]):=Mask[null, Tree__state(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])] - perm];
@@ -5590,66 +5590,66 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
         // -- Record predicate instance information
           assume InsidePredicate(Wand_state_contains_for_state_contains__valid_wand(vwand), Heap[null, Wand_state_contains_for_state_contains__valid_wand(vwand)], Tree__state(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right]), Heap[null, Tree__state(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])]);
       }
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__prev_1.Tree__left == vwand.Wand_state_contains_for_state_contains__cur_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177100]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__prev_1.Tree__left == vwand.Wand_state_contains_for_state_contains__cur_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28798]"}
         Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__left] == Heap[vwand, Wand_state_contains_for_state_contains__cur_1];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__prev_contents_1 == vwand.Wand_state_contains_for_state_contains__cur_contents_1 ++ Seq(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__data) ++ Tree__tolist(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right) might not hold. (testTreeWandE1.vpr@367.3--367.77) [177101]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__prev_contents_1 == vwand.Wand_state_contains_for_state_contains__cur_contents_1 ++ Seq(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__data) ++ Tree__tolist(vwand.Wand_state_contains_for_state_contains__prev_1.Tree__right) might not hold. (testTreeWandE1.vpr@367.3--367.77) [28799]"}
         Seq#Equal(Heap[vwand, Wand_state_contains_for_state_contains__prev_contents_1], Seq#Append(Seq#Append(Heap[vwand, Wand_state_contains_for_state_contains__cur_contents_1], Seq#Singleton(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__data])), Tree__tolist(Heap, Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])));
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@367.3--367.77) [177102]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__wand_1 != null might not hold. (testTreeWandE1.vpr@367.3--367.77) [28800]"}
         Heap[vwand, Wand_state_contains_for_state_contains__wand_1] != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@367.3--367.77) [177104]"}
+        assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand.Wand_state_contains_for_state_contains__wand_1) (testTreeWandE1.vpr@367.3--367.77) [28802]"}
           perm <= Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[vwand, Wand_state_contains_for_state_contains__wand_1])];
       }
       Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[vwand, Wand_state_contains_for_state_contains__wand_1]):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(Heap[vwand, Wand_state_contains_for_state_contains__wand_1])] - perm];
       
       // -- Record predicate instance information
         assume InsidePredicate(Wand_state_contains_for_state_contains__valid_wand(vwand), Heap[null, Wand_state_contains_for_state_contains__valid_wand(vwand)], Wand_state_contains_for_state_contains__valid_wand(Heap[vwand, Wand_state_contains_for_state_contains__wand_1]), Heap[null, Wand_state_contains_for_state_contains__valid_wand(Heap[vwand, Wand_state_contains_for_state_contains__wand_1])]);
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_in_1(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__prev_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177105]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_in_1(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__prev_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28803]"}
         Wand_state_contains_for_state_contains__get_in_1(Heap, Heap[vwand, Wand_state_contains_for_state_contains__wand_1]) == Heap[vwand, Wand_state_contains_for_state_contains__prev_1];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_in_1_0(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__prev_contents_1[1..] might not hold. (testTreeWandE1.vpr@367.3--367.77) [177106]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_in_1_0(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__prev_contents_1[1..] might not hold. (testTreeWandE1.vpr@367.3--367.77) [28804]"}
         Seq#Equal(Wand_state_contains_for_state_contains__get_in_1_0(Heap, Heap[vwand, Wand_state_contains_for_state_contains__wand_1]), Seq#Drop(Heap[vwand, Wand_state_contains_for_state_contains__prev_contents_1], 1));
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__top_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177107]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__top_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28805]"}
         Wand_state_contains_for_state_contains__get_out_1(Heap, Heap[vwand, Wand_state_contains_for_state_contains__wand_1]) == Heap[vwand, Wand_state_contains_for_state_contains__top_1];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_out_1_0(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__target_contents_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177108]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion Wand_state_contains_for_state_contains__get_out_1_0(vwand.Wand_state_contains_for_state_contains__wand_1) == vwand.Wand_state_contains_for_state_contains__target_contents_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28806]"}
         Seq#Equal(Wand_state_contains_for_state_contains__get_out_1_0(Heap, Heap[vwand, Wand_state_contains_for_state_contains__wand_1]), Heap[vwand, Wand_state_contains_for_state_contains__target_contents_1]);
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 == vwand.Wand_state_contains_for_state_contains__cur_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177109]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 == vwand.Wand_state_contains_for_state_contains__cur_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28807]"}
         Heap[vwand, Wand_state_contains_for_state_contains__in_1] == Heap[vwand, Wand_state_contains_for_state_contains__cur_1];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1_0 == vwand.Wand_state_contains_for_state_contains__cur_contents_1[1..] might not hold. (testTreeWandE1.vpr@367.3--367.77) [177110]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1_0 == vwand.Wand_state_contains_for_state_contains__cur_contents_1[1..] might not hold. (testTreeWandE1.vpr@367.3--367.77) [28808]"}
         Seq#Equal(Heap[vwand, Wand_state_contains_for_state_contains__in_1_0], Seq#Drop(Heap[vwand, Wand_state_contains_for_state_contains__cur_contents_1], 1));
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 == vwand.Wand_state_contains_for_state_contains__top_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177111]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 == vwand.Wand_state_contains_for_state_contains__top_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28809]"}
         Heap[vwand, Wand_state_contains_for_state_contains__out_1] == Heap[vwand, Wand_state_contains_for_state_contains__top_1];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177112]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_1 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28810]"}
         Seq#Equal(Heap[vwand, Wand_state_contains_for_state_contains__out_1_0], Heap[vwand, Wand_state_contains_for_state_contains__target_contents_1]);
     }
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@367.3--367.77) [177113]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__this_2 (testTreeWandE1.vpr@367.3--367.77) [28811]"}
       Mask[vwand, Wand_state_contains_for_state_contains__this_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__this_2];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__this_2:=Mask[vwand, Wand_state_contains_for_state_contains__this_2] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@367.3--367.77) [177114]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__target_contents_2 (testTreeWandE1.vpr@367.3--367.77) [28812]"}
       Mask[vwand, Wand_state_contains_for_state_contains__target_contents_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__target_contents_2];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__target_contents_2:=Mask[vwand, Wand_state_contains_for_state_contains__target_contents_2] - wildcard];
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@367.3--367.77) [177115]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_state_contains_for_state_contains__top_2 (testTreeWandE1.vpr@367.3--367.77) [28813]"}
       Mask[vwand, Wand_state_contains_for_state_contains__top_2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_state_contains_for_state_contains__top_2];
     Mask := Mask[vwand, Wand_state_contains_for_state_contains__top_2:=Mask[vwand, Wand_state_contains_for_state_contains__top_2] - wildcard];
     if (Heap[vwand, Wand_state_contains_for_state_contains__lemma] == 2) {
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__this_2 != null might not hold. (testTreeWandE1.vpr@367.3--367.77) [177116]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__this_2 != null might not hold. (testTreeWandE1.vpr@367.3--367.77) [28814]"}
         Heap[vwand, Wand_state_contains_for_state_contains__this_2] != null;
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 == vwand.Wand_state_contains_for_state_contains__top_2 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177117]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1 == vwand.Wand_state_contains_for_state_contains__top_2 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28815]"}
         Heap[vwand, Wand_state_contains_for_state_contains__in_1] == Heap[vwand, Wand_state_contains_for_state_contains__top_2];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_2 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177118]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__in_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_2 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28816]"}
         Seq#Equal(Heap[vwand, Wand_state_contains_for_state_contains__in_1_0], Heap[vwand, Wand_state_contains_for_state_contains__target_contents_2]);
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 == vwand.Wand_state_contains_for_state_contains__top_2 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177119]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1 == vwand.Wand_state_contains_for_state_contains__top_2 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28817]"}
         Heap[vwand, Wand_state_contains_for_state_contains__out_1] == Heap[vwand, Wand_state_contains_for_state_contains__top_2];
-      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_2 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177120]"}
+      assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__out_1_0 == vwand.Wand_state_contains_for_state_contains__target_contents_2 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28818]"}
         Seq#Equal(Heap[vwand, Wand_state_contains_for_state_contains__out_1_0], Heap[vwand, Wand_state_contains_for_state_contains__target_contents_2]);
     }
-    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__lemma <= 2 might not hold. (testTreeWandE1.vpr@367.3--367.77) [177121]"}
+    assert {:msg "  Folding Wand_state_contains_for_state_contains__valid_wand(vwand) might fail. Assertion vwand.Wand_state_contains_for_state_contains__lemma <= 2 might not hold. (testTreeWandE1.vpr@367.3--367.77) [28819]"}
       Heap[vwand, Wand_state_contains_for_state_contains__lemma] <= 2;
     perm := FullPerm;
     Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)] + perm];
@@ -5681,16 +5681,16 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
       Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand):=Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand)][Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right:=true]];
       if (Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right] != null) {
         havoc newPMask;
-        assume (forall <A, B> o_31: Ref, f_40: (Field A B) ::
-          { newPMask[o_31, f_40] }
-          Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand)][o_31, f_40] || Heap[null, Tree__state#sm(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_31, f_40] ==> newPMask[o_31, f_40]
+        assume (forall <A, B> o_48: Ref, f_20: (Field A B) ::
+          { newPMask[o_48, f_20] }
+          Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand)][o_48, f_20] || Heap[null, Tree__state#sm(Heap[Heap[vwand, Wand_state_contains_for_state_contains__prev_1], Tree__right])][o_48, f_20] ==> newPMask[o_48, f_20]
         );
         Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand):=newPMask];
       }
       havoc newPMask;
-      assume (forall <A, B> o_24: Ref, f_54: (Field A B) ::
-        { newPMask[o_24, f_54] }
-        Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand)][o_24, f_54] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[vwand, Wand_state_contains_for_state_contains__wand_1])][o_24, f_54] ==> newPMask[o_24, f_54]
+      assume (forall <A, B> o_8: Ref, f_62: (Field A B) ::
+        { newPMask[o_8, f_62] }
+        Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand)][o_8, f_62] || Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(Heap[vwand, Wand_state_contains_for_state_contains__wand_1])][o_8, f_62] ==> newPMask[o_8, f_62]
       );
       Heap := Heap[null, Wand_state_contains_for_state_contains__valid_wand#sm(vwand):=newPMask];
     }
@@ -5718,13 +5718,13 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
   //   out_1_0)))) -- testTreeWandE1.vpr@370.3--370.422
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@370.10--370.422) [177123]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@370.10--370.422) [28821]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@370.10--370.422) [177125]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@370.10--370.422) [28823]"}
         perm <= AssertMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
     }
     AssertMask := AssertMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result):=AssertMask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)] - perm];
@@ -5732,12 +5732,12 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@370.115--370.176) [177126]"}
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@370.115--370.176) [28824]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@370.115--370.176) [177127]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@370.115--370.176) [28825]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5746,18 +5746,18 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1 might not hold. (testTreeWandE1.vpr@370.10--370.422) [177128]"}
+    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1 might not hold. (testTreeWandE1.vpr@370.10--370.422) [28826]"}
       Wand_state_contains_for_state_contains__get_in_1(AssertHeap, sys__result) == in_1;
     
     // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@370.190--370.253) [177129]"}
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@370.190--370.253) [28827]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@370.190--370.253) [177130]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@370.190--370.253) [28828]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5766,18 +5766,18 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0 might not hold. (testTreeWandE1.vpr@370.10--370.422) [177131]"}
+    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0 might not hold. (testTreeWandE1.vpr@370.10--370.422) [28829]"}
       Seq#Equal(Wand_state_contains_for_state_contains__get_in_1_0(AssertHeap, sys__result), in_1_0);
     
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@370.269--370.331) [177132]"}
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@370.269--370.331) [28830]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@370.269--370.331) [177133]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@370.269--370.331) [28831]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5786,18 +5786,18 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1 might not hold. (testTreeWandE1.vpr@370.10--370.422) [177134]"}
+    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1 might not hold. (testTreeWandE1.vpr@370.10--370.422) [28832]"}
       Wand_state_contains_for_state_contains__get_out_1(AssertHeap, sys__result) == out_1;
     
     // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@370.346--370.410) [177135]"}
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@370.346--370.410) [28833]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@370.346--370.410) [177136]"}
+        assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@370.346--370.410) [28834]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -5806,7 +5806,7 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0 might not hold. (testTreeWandE1.vpr@370.10--370.422) [177137]"}
+    assert {:msg "  Assert might fail. Assertion Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0 might not hold. (testTreeWandE1.vpr@370.10--370.422) [28835]"}
       Seq#Equal(Wand_state_contains_for_state_contains__get_out_1_0(AssertHeap, sys__result), out_1_0);
     assume state(Heap, Mask);
   
@@ -5816,23 +5816,23 @@ procedure Tree__Wand_state_contains_for_state_contains_lemma_2(diz: Ref, current
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@315.11--315.30) [177138]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@315.11--315.30) [28836]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@316.11--316.86) [177139]"}
+      assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(sys__result) (testTreeWandE1.vpr@316.11--316.86) [28837]"}
         perm <= Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)];
     }
     Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(sys__result)] - perm];
-    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1 might not hold. (testTreeWandE1.vpr@317.11--317.80) [177140]"}
+    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1 might not hold. (testTreeWandE1.vpr@317.11--317.80) [28838]"}
       Wand_state_contains_for_state_contains__get_in_1(Heap, sys__result) == in_1;
-    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0 might not hold. (testTreeWandE1.vpr@318.11--318.84) [177141]"}
+    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0 might not hold. (testTreeWandE1.vpr@318.11--318.84) [28839]"}
       Seq#Equal(Wand_state_contains_for_state_contains__get_in_1_0(Heap, sys__result), in_1_0);
-    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1 might not hold. (testTreeWandE1.vpr@319.11--319.82) [177142]"}
+    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1 might not hold. (testTreeWandE1.vpr@319.11--319.82) [28840]"}
       Wand_state_contains_for_state_contains__get_out_1(Heap, sys__result) == out_1;
-    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0 might not hold. (testTreeWandE1.vpr@320.11--320.86) [177143]"}
+    assert {:msg "  Postcondition of Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0 might not hold. (testTreeWandE1.vpr@320.11--320.86) [28841]"}
       Seq#Equal(Wand_state_contains_for_state_contains__get_out_1_0(Heap, sys__result), out_1_0);
     // Finish exhale
     havoc ExhaleHeap;
@@ -5848,16 +5848,16 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var prev: Ref;
   var vwand: Ref;
-  var left_1: Ref;
+  var left: Ref;
   var cur: Ref;
   var __flatten_36: Ref;
   var __flatten_40: Ref;
@@ -5871,8 +5871,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
   var __flatten_35: (Seq int);
   var target_contents: (Seq int);
   var newVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var cur_contents: (Seq int);
@@ -5916,8 +5916,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5934,11 +5934,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
     // -- Check definedness of old(Tree__tolist(top))[1..] == Tree__tolist(sys__result)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         if (top != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@380.15--380.32) [177144]"}
+          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@380.15--380.32) [28842]"}
             NoPerm < perm ==> NoPerm < oldMask[null, Tree__state(top)];
         }
         // Finish exhale
@@ -5947,11 +5947,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         if (sys__result != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@380.42--380.67) [177145]"}
+          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@380.42--380.67) [28843]"}
             NoPerm < perm ==> NoPerm < PostMask[null, Tree__state(sys__result)];
         }
         // Finish exhale
@@ -5967,11 +5967,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
     // -- Check definedness of old(Tree__sorted(top))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         if (top != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@381.15--381.32) [177146]"}
+          assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@381.15--381.32) [28844]"}
             NoPerm < perm ==> NoPerm < oldMask[null, Tree__state(top)];
         }
         // Finish exhale
@@ -5984,11 +5984,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
       // -- Check definedness of Tree__sorted(sys__result)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           if (sys__result != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@381.38--381.63) [177147]"}
+            assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@381.38--381.63) [28845]"}
               NoPerm < perm ==> NoPerm < PostMask[null, Tree__state(sys__result)];
           }
           // Finish exhale
@@ -6008,7 +6008,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
   // -- Assumptions about local variables
     assume Heap[prev, $allocated];
     assume Heap[vwand, $allocated];
-    assume Heap[left_1, $allocated];
+    assume Heap[left, $allocated];
     assume Heap[cur, $allocated];
     assume Heap[__flatten_36, $allocated];
     assume Heap[__flatten_40, $allocated];
@@ -6021,11 +6021,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
     // -- Check definedness of Tree__tolist(top)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (top != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@406.19--406.36) [177148]"}
+          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@406.19--406.36) [28846]"}
             NoPerm < perm ==> NoPerm < Mask[null, Tree__state(top)];
         }
         // Finish exhale
@@ -6051,11 +6051,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
     // -- Check definedness of Tree__tolist(top)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (top != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@409.19--409.36) [177149]"}
+          assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@409.19--409.36) [28847]"}
             NoPerm < perm ==> NoPerm < Mask[null, Tree__state(top)];
         }
         // Finish exhale
@@ -6079,11 +6079,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
   // -- Translating statement: unfold acc(Tree__state(top), write) -- testTreeWandE1.vpr@412.3--412.38
     assume Tree__state#trigger(Heap, Tree__state(top));
     assume Heap[null, Tree__state(top)] == CombineFrames(FrameFragment(Heap[top, Tree__data]), CombineFrames(FrameFragment(Heap[top, Tree__left]), CombineFrames(FrameFragment(Heap[top, Tree__right]), CombineFrames(FrameFragment((if Heap[top, Tree__left] != null then Heap[null, Tree__state(Heap[top, Tree__left])] else EmptyFrame)), FrameFragment((if Heap[top, Tree__right] != null then Heap[null, Tree__state(Heap[top, Tree__right])] else EmptyFrame))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Tree__state(top) might fail. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@412.3--412.38) [177152]"}
+      assert {:msg "  Unfolding Tree__state(top) might fail. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@412.3--412.38) [28850]"}
         perm <= Mask[null, Tree__state(top)];
     }
     Mask := Mask[null, Tree__state(top):=Mask[null, Tree__state(top)] - perm];
@@ -6127,26 +6127,26 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
   // -- Translating statement: if (top.Tree__left == null) -- testTreeWandE1.vpr@413.3--479.4
     
     // -- Check definedness of top.Tree__left == null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access top.Tree__left (testTreeWandE1.vpr@413.7--413.29) [177158]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access top.Tree__left (testTreeWandE1.vpr@413.7--413.29) [28856]"}
         HasDirectPerm(Mask, top, Tree__left);
     if (Heap[top, Tree__left] == null) {
       
       // -- Translating statement: assert orig_contents ==
   //   Tree__tolist(top.Tree__left) ++ Seq(top.Tree__data) ++
   //   Tree__tolist(top.Tree__right) -- testTreeWandE1.vpr@414.5--414.113
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of orig_contents == Tree__tolist(top.Tree__left) ++ Seq(top.Tree__data) ++ Tree__tolist(top.Tree__right)
-          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__left (testTreeWandE1.vpr@414.12--414.113) [177159]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__left (testTreeWandE1.vpr@414.12--414.113) [28857]"}
             HasDirectPerm(ExhaleWellDef0Mask, top, Tree__left);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (ExhaleWellDef0Heap[top, Tree__left] != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top.Tree__left) (testTreeWandE1.vpr@414.29--414.57) [177160]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top.Tree__left) (testTreeWandE1.vpr@414.29--414.57) [28858]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(ExhaleWellDef0Heap[top, Tree__left])];
             }
             // Finish exhale
@@ -6156,17 +6156,17 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Stop execution
             assume false;
           }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__data (testTreeWandE1.vpr@414.12--414.113) [177161]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__data (testTreeWandE1.vpr@414.12--414.113) [28859]"}
             HasDirectPerm(ExhaleWellDef0Mask, top, Tree__data);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__right (testTreeWandE1.vpr@414.12--414.113) [177162]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__right (testTreeWandE1.vpr@414.12--414.113) [28860]"}
             HasDirectPerm(ExhaleWellDef0Mask, top, Tree__right);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (ExhaleWellDef0Heap[top, Tree__right] != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top.Tree__right) (testTreeWandE1.vpr@414.84--414.113) [177163]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top.Tree__right) (testTreeWandE1.vpr@414.84--414.113) [28861]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(ExhaleWellDef0Heap[top, Tree__right])];
             }
             // Finish exhale
@@ -6176,24 +6176,24 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion orig_contents == Tree__tolist(top.Tree__left) ++ Seq(top.Tree__data) ++ Tree__tolist(top.Tree__right) might not hold. (testTreeWandE1.vpr@414.12--414.113) [177164]"}
+        assert {:msg "  Assert might fail. Assertion orig_contents == Tree__tolist(top.Tree__left) ++ Seq(top.Tree__data) ++ Tree__tolist(top.Tree__right) might not hold. (testTreeWandE1.vpr@414.12--414.113) [28862]"}
           Seq#Equal(orig_contents, Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[top, Tree__left]), Seq#Singleton(Heap[top, Tree__data])), Tree__tolist(Heap, Heap[top, Tree__right])));
         assume state(Heap, Mask);
       
       // -- Translating statement: assert Tree__tolist(top.Tree__left) == Seq[Int]() -- testTreeWandE1.vpr@415.5--415.54
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of Tree__tolist(top.Tree__left) == Seq[Int]()
-          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__left (testTreeWandE1.vpr@415.12--415.54) [177165]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__left (testTreeWandE1.vpr@415.12--415.54) [28863]"}
             HasDirectPerm(ExhaleWellDef0Mask, top, Tree__left);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (ExhaleWellDef0Heap[top, Tree__left] != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top.Tree__left) (testTreeWandE1.vpr@415.12--415.40) [177166]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top.Tree__left) (testTreeWandE1.vpr@415.12--415.40) [28864]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(ExhaleWellDef0Heap[top, Tree__left])];
             }
             // Finish exhale
@@ -6203,14 +6203,14 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion Tree__tolist(top.Tree__left) == Seq[Int]() might not hold. (testTreeWandE1.vpr@415.12--415.54) [177167]"}
+        assert {:msg "  Assert might fail. Assertion Tree__tolist(top.Tree__left) == Seq[Int]() might not hold. (testTreeWandE1.vpr@415.12--415.54) [28865]"}
           Seq#Equal(Tree__tolist(Heap, Heap[top, Tree__left]), (Seq#Empty(): Seq int));
         assume state(Heap, Mask);
       
       // -- Translating statement: __flatten_36 := top.Tree__left -- testTreeWandE1.vpr@416.5--416.35
         
         // -- Check definedness of top.Tree__left
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access top.Tree__left (testTreeWandE1.vpr@416.5--416.35) [177168]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access top.Tree__left (testTreeWandE1.vpr@416.5--416.35) [28866]"}
             HasDirectPerm(Mask, top, Tree__left);
         __flatten_36 := Heap[top, Tree__left];
         assume state(Heap, Mask);
@@ -6224,12 +6224,12 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
   //   (old(Tree__sorted(top)) ==> Tree__sorted(sys__result))) -- testTreeWandE1.vpr@420.5--420.196
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         if (sys__result != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@420.12--420.196) [177170]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@420.12--420.196) [28868]"}
               perm <= AssertMask[null, Tree__state(sys__result)];
           }
           AssertMask := AssertMask[null, Tree__state(sys__result):=AssertMask[null, Tree__state(sys__result)] - perm];
@@ -6238,11 +6238,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         // -- Check definedness of old(Tree__tolist(top))[1..] == Tree__tolist(sys__result)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
+            ExhaleWellDef1Mask := oldMask;
             if (top != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@420.85--420.102) [177171]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@420.85--420.102) [28869]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, Tree__state(top)];
             }
             // Finish exhale
@@ -6251,11 +6251,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (sys__result != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@420.112--420.137) [177172]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@420.112--420.137) [28870]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(sys__result)];
             }
             // Finish exhale
@@ -6265,17 +6265,17 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion old(Tree__tolist(top))[1..] == Tree__tolist(sys__result) might not hold. (testTreeWandE1.vpr@420.12--420.196) [177173]"}
+        assert {:msg "  Assert might fail. Assertion old(Tree__tolist(top))[1..] == Tree__tolist(sys__result) might not hold. (testTreeWandE1.vpr@420.12--420.196) [28871]"}
           Seq#Equal(Seq#Drop(Tree__tolist(oldHeap, top), 1), Tree__tolist(AssertHeap, sys__result));
         
         // -- Check definedness of old(Tree__sorted(top))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
+            ExhaleWellDef1Mask := oldMask;
             if (top != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@420.147--420.164) [177174]"}
+              assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@420.147--420.164) [28872]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, Tree__state(top)];
             }
             // Finish exhale
@@ -6287,11 +6287,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
           // -- Check definedness of Tree__sorted(sys__result)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               if (sys__result != null) {
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@420.170--420.195) [177175]"}
+                assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@420.170--420.195) [28873]"}
                   NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(sys__result)];
               }
               // Finish exhale
@@ -6301,7 +6301,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
               // Stop execution
               assume false;
             }
-          assert {:msg "  Assert might fail. Assertion Tree__sorted(sys__result) might not hold. (testTreeWandE1.vpr@420.12--420.196) [177176]"}
+          assert {:msg "  Assert might fail. Assertion Tree__sorted(sys__result) might not hold. (testTreeWandE1.vpr@420.12--420.196) [28874]"}
             Tree__sorted(AssertHeap, sys__result);
         }
         assume state(Heap, Mask);
@@ -6319,9 +6319,9 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
       // -- Translating statement: left := top.Tree__left -- testTreeWandE1.vpr@424.5--424.27
         
         // -- Check definedness of top.Tree__left
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access top.Tree__left (testTreeWandE1.vpr@424.5--424.27) [177177]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access top.Tree__left (testTreeWandE1.vpr@424.5--424.27) [28875]"}
             HasDirectPerm(Mask, top, Tree__left);
-        left_1 := Heap[top, Tree__left];
+        left := Heap[top, Tree__left];
         assume state(Heap, Mask);
       
       // -- Translating statement: cur_contents := orig_contents -- testTreeWandE1.vpr@425.5--425.34
@@ -6331,18 +6331,18 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
       // -- Translating statement: assert cur_contents ==
   //   Tree__tolist(left) ++ Seq(top.Tree__data) ++
   //   Tree__tolist(top.Tree__right) -- testTreeWandE1.vpr@426.5--426.102
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of cur_contents == Tree__tolist(left) ++ Seq(top.Tree__data) ++ Tree__tolist(top.Tree__right)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-            if (left_1 != null) {
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            if (left != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(left) (testTreeWandE1.vpr@426.28--426.46) [177178]"}
-                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(left_1)];
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(left) (testTreeWandE1.vpr@426.28--426.46) [28876]"}
+                NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(left)];
             }
             // Finish exhale
             havoc ExhaleHeap;
@@ -6351,17 +6351,17 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Stop execution
             assume false;
           }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__data (testTreeWandE1.vpr@426.12--426.102) [177179]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__data (testTreeWandE1.vpr@426.12--426.102) [28877]"}
             HasDirectPerm(ExhaleWellDef0Mask, top, Tree__data);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__right (testTreeWandE1.vpr@426.12--426.102) [177180]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access top.Tree__right (testTreeWandE1.vpr@426.12--426.102) [28878]"}
             HasDirectPerm(ExhaleWellDef0Mask, top, Tree__right);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (ExhaleWellDef0Heap[top, Tree__right] != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top.Tree__right) (testTreeWandE1.vpr@426.73--426.102) [177181]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top.Tree__right) (testTreeWandE1.vpr@426.73--426.102) [28879]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(ExhaleWellDef0Heap[top, Tree__right])];
             }
             // Finish exhale
@@ -6371,53 +6371,53 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion cur_contents == Tree__tolist(left) ++ Seq(top.Tree__data) ++ Tree__tolist(top.Tree__right) might not hold. (testTreeWandE1.vpr@426.12--426.102) [177182]"}
-          Seq#Equal(cur_contents, Seq#Append(Seq#Append(Tree__tolist(Heap, left_1), Seq#Singleton(Heap[top, Tree__data])), Tree__tolist(Heap, Heap[top, Tree__right])));
+        assert {:msg "  Assert might fail. Assertion cur_contents == Tree__tolist(left) ++ Seq(top.Tree__data) ++ Tree__tolist(top.Tree__right) might not hold. (testTreeWandE1.vpr@426.12--426.102) [28880]"}
+          Seq#Equal(cur_contents, Seq#Append(Seq#Append(Tree__tolist(Heap, left), Seq#Singleton(Heap[top, Tree__data])), Tree__tolist(Heap, Heap[top, Tree__right])));
         assume state(Heap, Mask);
       
       // -- Translating statement: unfold acc(Tree__state(left), write) -- testTreeWandE1.vpr@427.5--427.41
-        assume Tree__state#trigger(Heap, Tree__state(left_1));
-        assume Heap[null, Tree__state(left_1)] == CombineFrames(FrameFragment(Heap[left_1, Tree__data]), CombineFrames(FrameFragment(Heap[left_1, Tree__left]), CombineFrames(FrameFragment(Heap[left_1, Tree__right]), CombineFrames(FrameFragment((if Heap[left_1, Tree__left] != null then Heap[null, Tree__state(Heap[left_1, Tree__left])] else EmptyFrame)), FrameFragment((if Heap[left_1, Tree__right] != null then Heap[null, Tree__state(Heap[left_1, Tree__right])] else EmptyFrame))))));
-        ExhaleWellDef0Mask := Mask;
+        assume Tree__state#trigger(Heap, Tree__state(left));
+        assume Heap[null, Tree__state(left)] == CombineFrames(FrameFragment(Heap[left, Tree__data]), CombineFrames(FrameFragment(Heap[left, Tree__left]), CombineFrames(FrameFragment(Heap[left, Tree__right]), CombineFrames(FrameFragment((if Heap[left, Tree__left] != null then Heap[null, Tree__state(Heap[left, Tree__left])] else EmptyFrame)), FrameFragment((if Heap[left, Tree__right] != null then Heap[null, Tree__state(Heap[left, Tree__right])] else EmptyFrame))))));
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Unfolding Tree__state(left) might fail. There might be insufficient permission to access Tree__state(left) (testTreeWandE1.vpr@427.5--427.41) [177185]"}
-            perm <= Mask[null, Tree__state(left_1)];
+          assert {:msg "  Unfolding Tree__state(left) might fail. There might be insufficient permission to access Tree__state(left) (testTreeWandE1.vpr@427.5--427.41) [28883]"}
+            perm <= Mask[null, Tree__state(left)];
         }
-        Mask := Mask[null, Tree__state(left_1):=Mask[null, Tree__state(left_1)] - perm];
+        Mask := Mask[null, Tree__state(left):=Mask[null, Tree__state(left)] - perm];
         
         // -- Update version of predicate
-          if (!HasDirectPerm(Mask, null, Tree__state(left_1))) {
+          if (!HasDirectPerm(Mask, null, Tree__state(left))) {
             havoc newVersion;
-            Heap := Heap[null, Tree__state(left_1):=newVersion];
+            Heap := Heap[null, Tree__state(left):=newVersion];
           }
         perm := FullPerm;
-        assume left_1 != null;
-        Mask := Mask[left_1, Tree__data:=Mask[left_1, Tree__data] + perm];
+        assume left != null;
+        Mask := Mask[left, Tree__data:=Mask[left, Tree__data] + perm];
         assume state(Heap, Mask);
         perm := FullPerm;
-        assume left_1 != null;
-        Mask := Mask[left_1, Tree__left:=Mask[left_1, Tree__left] + perm];
+        assume left != null;
+        Mask := Mask[left, Tree__left:=Mask[left, Tree__left] + perm];
         assume state(Heap, Mask);
         perm := FullPerm;
-        assume left_1 != null;
-        Mask := Mask[left_1, Tree__right:=Mask[left_1, Tree__right] + perm];
+        assume left != null;
+        Mask := Mask[left, Tree__right:=Mask[left, Tree__right] + perm];
         assume state(Heap, Mask);
-        if (Heap[left_1, Tree__left] != null) {
+        if (Heap[left, Tree__left] != null) {
           perm := FullPerm;
-          Mask := Mask[null, Tree__state(Heap[left_1, Tree__left]):=Mask[null, Tree__state(Heap[left_1, Tree__left])] + perm];
+          Mask := Mask[null, Tree__state(Heap[left, Tree__left]):=Mask[null, Tree__state(Heap[left, Tree__left])] + perm];
           
           // -- Extra unfolding of predicate
-            assume InsidePredicate(Tree__state(left_1), Heap[null, Tree__state(left_1)], Tree__state(Heap[left_1, Tree__left]), Heap[null, Tree__state(Heap[left_1, Tree__left])]);
+            assume InsidePredicate(Tree__state(left), Heap[null, Tree__state(left)], Tree__state(Heap[left, Tree__left]), Heap[null, Tree__state(Heap[left, Tree__left])]);
           assume state(Heap, Mask);
         }
-        if (Heap[left_1, Tree__right] != null) {
+        if (Heap[left, Tree__right] != null) {
           perm := FullPerm;
-          Mask := Mask[null, Tree__state(Heap[left_1, Tree__right]):=Mask[null, Tree__state(Heap[left_1, Tree__right])] + perm];
+          Mask := Mask[null, Tree__state(Heap[left, Tree__right]):=Mask[null, Tree__state(Heap[left, Tree__right])] + perm];
           
           // -- Extra unfolding of predicate
-            assume InsidePredicate(Tree__state(left_1), Heap[null, Tree__state(left_1)], Tree__state(Heap[left_1, Tree__right]), Heap[null, Tree__state(Heap[left_1, Tree__right])]);
+            assume InsidePredicate(Tree__state(left), Heap[null, Tree__state(left)], Tree__state(Heap[left, Tree__right]), Heap[null, Tree__state(Heap[left, Tree__right])]);
           assume state(Heap, Mask);
         }
         assume state(Heap, Mask);
@@ -6429,25 +6429,25 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@428.5--428.161) [177191]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@428.5--428.161) [28889]"}
             diz != null;
-          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@428.5--428.161) [177192]"}
+          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@428.5--428.161) [28890]"}
             current_thread_id >= 0;
-          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@428.5--428.161) [177193]"}
+          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@428.5--428.161) [28891]"}
             diz != null;
-          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion top != null might not hold. (testTreeWandE1.vpr@428.5--428.161) [177194]"}
+          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion top != null might not hold. (testTreeWandE1.vpr@428.5--428.161) [28892]"}
             top != null;
-          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion top == top might not hold. (testTreeWandE1.vpr@428.5--428.161) [177195]"}
+          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion top == top might not hold. (testTreeWandE1.vpr@428.5--428.161) [28893]"}
             top == top;
-          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion target_contents == target_contents might not hold. (testTreeWandE1.vpr@428.5--428.161) [177196]"}
+          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion target_contents == target_contents might not hold. (testTreeWandE1.vpr@428.5--428.161) [28894]"}
             Seq#Equal(target_contents, target_contents);
-          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion top != null might not hold. (testTreeWandE1.vpr@428.5--428.161) [177197]"}
+          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion top != null might not hold. (testTreeWandE1.vpr@428.5--428.161) [28895]"}
             top != null;
-          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion top == top might not hold. (testTreeWandE1.vpr@428.5--428.161) [177198]"}
+          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion top == top might not hold. (testTreeWandE1.vpr@428.5--428.161) [28896]"}
             top == top;
-          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion target_contents == target_contents might not hold. (testTreeWandE1.vpr@428.5--428.161) [177199]"}
+          assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_2 might not hold. Assertion target_contents == target_contents might not hold. (testTreeWandE1.vpr@428.5--428.161) [28897]"}
             Seq#Equal(target_contents, target_contents);
         
         // -- Havocing target variables
@@ -6475,87 +6475,87 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(cur.Tree__left, write) might not hold on entry. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@430.17--430.43) [177200]"}
+              assert {:msg "  Loop invariant acc(cur.Tree__left, write) might not hold on entry. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@430.17--430.43) [28898]"}
                 perm <= Mask[cur, Tree__left];
             }
             Mask := Mask[cur, Tree__left:=Mask[cur, Tree__left] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(cur.Tree__data, write) might not hold on entry. There might be insufficient permission to access cur.Tree__data (testTreeWandE1.vpr@431.17--431.43) [177201]"}
+              assert {:msg "  Loop invariant acc(cur.Tree__data, write) might not hold on entry. There might be insufficient permission to access cur.Tree__data (testTreeWandE1.vpr@431.17--431.43) [28899]"}
                 perm <= Mask[cur, Tree__data];
             }
             Mask := Mask[cur, Tree__data:=Mask[cur, Tree__data] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(cur.Tree__right, write) might not hold on entry. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@432.17--432.44) [177202]"}
+              assert {:msg "  Loop invariant acc(cur.Tree__right, write) might not hold on entry. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@432.17--432.44) [28900]"}
                 perm <= Mask[cur, Tree__right];
             }
             Mask := Mask[cur, Tree__right:=Mask[cur, Tree__right] - perm];
-            assert {:msg "  Loop invariant cur.Tree__left == left might not hold on entry. Assertion cur.Tree__left == left might not hold. (testTreeWandE1.vpr@433.17--433.39) [177203]"}
-              Heap[cur, Tree__left] == left_1;
+            assert {:msg "  Loop invariant cur.Tree__left == left might not hold on entry. Assertion cur.Tree__left == left might not hold. (testTreeWandE1.vpr@433.17--433.39) [28901]"}
+              Heap[cur, Tree__left] == left;
             if (Heap[cur, Tree__right] != null) {
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  Loop invariant cur.Tree__right != null ==> acc(Tree__state(cur.Tree__right), write) might not hold on entry. There might be insufficient permission to access Tree__state(cur.Tree__right) (testTreeWandE1.vpr@434.17--434.87) [177204]"}
+                assert {:msg "  Loop invariant cur.Tree__right != null ==> acc(Tree__state(cur.Tree__right), write) might not hold on entry. There might be insufficient permission to access Tree__state(cur.Tree__right) (testTreeWandE1.vpr@434.17--434.87) [28902]"}
                   perm <= Mask[null, Tree__state(Heap[cur, Tree__right])];
               }
               Mask := Mask[null, Tree__state(Heap[cur, Tree__right]):=Mask[null, Tree__state(Heap[cur, Tree__right])] - perm];
             }
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(left.Tree__left, write) might not hold on entry. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@435.17--435.44) [177205]"}
-                perm <= Mask[left_1, Tree__left];
+              assert {:msg "  Loop invariant acc(left.Tree__left, write) might not hold on entry. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@435.17--435.44) [28903]"}
+                perm <= Mask[left, Tree__left];
             }
-            Mask := Mask[left_1, Tree__left:=Mask[left_1, Tree__left] - perm];
+            Mask := Mask[left, Tree__left:=Mask[left, Tree__left] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(left.Tree__data, write) might not hold on entry. There might be insufficient permission to access left.Tree__data (testTreeWandE1.vpr@436.17--436.44) [177206]"}
-                perm <= Mask[left_1, Tree__data];
+              assert {:msg "  Loop invariant acc(left.Tree__data, write) might not hold on entry. There might be insufficient permission to access left.Tree__data (testTreeWandE1.vpr@436.17--436.44) [28904]"}
+                perm <= Mask[left, Tree__data];
             }
-            Mask := Mask[left_1, Tree__data:=Mask[left_1, Tree__data] - perm];
+            Mask := Mask[left, Tree__data:=Mask[left, Tree__data] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(left.Tree__right, write) might not hold on entry. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@437.17--437.45) [177207]"}
-                perm <= Mask[left_1, Tree__right];
+              assert {:msg "  Loop invariant acc(left.Tree__right, write) might not hold on entry. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@437.17--437.45) [28905]"}
+                perm <= Mask[left, Tree__right];
             }
-            Mask := Mask[left_1, Tree__right:=Mask[left_1, Tree__right] - perm];
-            if (Heap[left_1, Tree__left] != null) {
+            Mask := Mask[left, Tree__right:=Mask[left, Tree__right] - perm];
+            if (Heap[left, Tree__left] != null) {
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  Loop invariant left.Tree__left != null ==> acc(Tree__state(left.Tree__left), write) might not hold on entry. There might be insufficient permission to access Tree__state(left.Tree__left) (testTreeWandE1.vpr@438.17--438.87) [177208]"}
-                  perm <= Mask[null, Tree__state(Heap[left_1, Tree__left])];
+                assert {:msg "  Loop invariant left.Tree__left != null ==> acc(Tree__state(left.Tree__left), write) might not hold on entry. There might be insufficient permission to access Tree__state(left.Tree__left) (testTreeWandE1.vpr@438.17--438.87) [28906]"}
+                  perm <= Mask[null, Tree__state(Heap[left, Tree__left])];
               }
-              Mask := Mask[null, Tree__state(Heap[left_1, Tree__left]):=Mask[null, Tree__state(Heap[left_1, Tree__left])] - perm];
+              Mask := Mask[null, Tree__state(Heap[left, Tree__left]):=Mask[null, Tree__state(Heap[left, Tree__left])] - perm];
             }
-            if (Heap[left_1, Tree__right] != null) {
+            if (Heap[left, Tree__right] != null) {
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  Loop invariant left.Tree__right != null ==> acc(Tree__state(left.Tree__right), write) might not hold on entry. There might be insufficient permission to access Tree__state(left.Tree__right) (testTreeWandE1.vpr@439.17--439.89) [177209]"}
-                  perm <= Mask[null, Tree__state(Heap[left_1, Tree__right])];
+                assert {:msg "  Loop invariant left.Tree__right != null ==> acc(Tree__state(left.Tree__right), write) might not hold on entry. There might be insufficient permission to access Tree__state(left.Tree__right) (testTreeWandE1.vpr@439.17--439.89) [28907]"}
+                  perm <= Mask[null, Tree__state(Heap[left, Tree__right])];
               }
-              Mask := Mask[null, Tree__state(Heap[left_1, Tree__right]):=Mask[null, Tree__state(Heap[left_1, Tree__right])] - perm];
+              Mask := Mask[null, Tree__state(Heap[left, Tree__right]):=Mask[null, Tree__state(Heap[left, Tree__right])] - perm];
             }
-            assert {:msg "  Loop invariant cur_contents == Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right) might not hold on entry. Assertion cur_contents == Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right) might not hold. (testTreeWandE1.vpr@440.17--440.176) [177210]"}
-              Seq#Equal(cur_contents, Seq#Append(Seq#Append(Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[left_1, Tree__left]), Seq#Singleton(Heap[left_1, Tree__data])), Tree__tolist(Heap, Heap[left_1, Tree__right])), Seq#Singleton(Heap[cur, Tree__data])), Tree__tolist(Heap, Heap[cur, Tree__right])));
-            assert {:msg "  Loop invariant vwand != null might not hold on entry. Assertion vwand != null might not hold. (testTreeWandE1.vpr@441.17--441.30) [177211]"}
+            assert {:msg "  Loop invariant cur_contents == Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right) might not hold on entry. Assertion cur_contents == Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right) might not hold. (testTreeWandE1.vpr@440.17--440.176) [28908]"}
+              Seq#Equal(cur_contents, Seq#Append(Seq#Append(Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[left, Tree__left]), Seq#Singleton(Heap[left, Tree__data])), Tree__tolist(Heap, Heap[left, Tree__right])), Seq#Singleton(Heap[cur, Tree__data])), Tree__tolist(Heap, Heap[cur, Tree__right])));
+            assert {:msg "  Loop invariant vwand != null might not hold on entry. Assertion vwand != null might not hold. (testTreeWandE1.vpr@441.17--441.30) [28909]"}
               vwand != null;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(Wand_state_contains_for_state_contains__valid_wand(vwand), write) might not hold on entry. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@442.17--442.86) [177212]"}
+              assert {:msg "  Loop invariant acc(Wand_state_contains_for_state_contains__valid_wand(vwand), write) might not hold on entry. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@442.17--442.86) [28910]"}
                 perm <= Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)];
             }
             Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)] - perm];
-            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_in_1(vwand) == cur might not hold on entry. Assertion Wand_state_contains_for_state_contains__get_in_1(vwand) == cur might not hold. (testTreeWandE1.vpr@443.17--443.79) [177213]"}
+            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_in_1(vwand) == cur might not hold on entry. Assertion Wand_state_contains_for_state_contains__get_in_1(vwand) == cur might not hold. (testTreeWandE1.vpr@443.17--443.79) [28911]"}
               Wand_state_contains_for_state_contains__get_in_1(Heap, vwand) == cur;
-            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_in_1_0(vwand) == cur_contents[1..] might not hold on entry. Assertion Wand_state_contains_for_state_contains__get_in_1_0(vwand) == cur_contents[1..] might not hold. (testTreeWandE1.vpr@444.17--444.95) [177214]"}
+            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_in_1_0(vwand) == cur_contents[1..] might not hold on entry. Assertion Wand_state_contains_for_state_contains__get_in_1_0(vwand) == cur_contents[1..] might not hold. (testTreeWandE1.vpr@444.17--444.95) [28912]"}
               Seq#Equal(Wand_state_contains_for_state_contains__get_in_1_0(Heap, vwand), Seq#Drop(cur_contents, 1));
-            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_out_1(vwand) == top might not hold on entry. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand) == top might not hold. (testTreeWandE1.vpr@445.17--445.80) [177215]"}
+            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_out_1(vwand) == top might not hold on entry. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand) == top might not hold. (testTreeWandE1.vpr@445.17--445.80) [28913]"}
               Wand_state_contains_for_state_contains__get_out_1(Heap, vwand) == top;
-            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents might not hold on entry. Assertion Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents might not hold. (testTreeWandE1.vpr@446.17--446.94) [177216]"}
+            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents might not hold on entry. Assertion Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents might not hold. (testTreeWandE1.vpr@446.17--446.94) [28914]"}
               Seq#Equal(Wand_state_contains_for_state_contains__get_out_1_0(Heap, vwand), target_contents);
             // Finish exhale
             havoc ExhaleHeap;
@@ -6563,9 +6563,9 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             Heap := ExhaleHeap;
         
         // -- Havoc loop written variables (except locals)
-          havoc vwand, cur_contents, __flatten_39, __flatten_80, __flatten_38, __flatten_79, __flatten_37, __flatten_78, left_1, cur, prev_contents, prev, __flatten_40;
+          havoc vwand, cur_contents, __flatten_39, __flatten_80, __flatten_38, __flatten_79, __flatten_37, __flatten_78, left, cur, prev_contents, prev, __flatten_40;
           assume Heap[vwand, $allocated];
-          assume Heap[left_1, $allocated];
+          assume Heap[left, $allocated];
           assume Heap[cur, $allocated];
           assume Heap[prev, $allocated];
           assume Heap[__flatten_40, $allocated];
@@ -6589,18 +6589,18 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             assume state(Heap, Mask);
             
             // -- Check definedness of cur.Tree__left == left
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@433.17--433.39) [177217]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@433.17--433.39) [28915]"}
                 HasDirectPerm(Mask, cur, Tree__left);
-            assume Heap[cur, Tree__left] == left_1;
+            assume Heap[cur, Tree__left] == left;
             assume state(Heap, Mask);
             
             // -- Check definedness of cur.Tree__right != null
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@434.17--434.87) [177218]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@434.17--434.87) [28916]"}
                 HasDirectPerm(Mask, cur, Tree__right);
             if (Heap[cur, Tree__right] != null) {
               
               // -- Check definedness of acc(Tree__state(cur.Tree__right), write)
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@434.17--434.87) [177219]"}
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@434.17--434.87) [28917]"}
                   HasDirectPerm(Mask, cur, Tree__right);
               perm := FullPerm;
               Mask := Mask[null, Tree__state(Heap[cur, Tree__right]):=Mask[null, Tree__state(Heap[cur, Tree__right])] + perm];
@@ -6608,61 +6608,61 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             }
             assume state(Heap, Mask);
             perm := FullPerm;
-            assume left_1 != null;
-            Mask := Mask[left_1, Tree__left:=Mask[left_1, Tree__left] + perm];
+            assume left != null;
+            Mask := Mask[left, Tree__left:=Mask[left, Tree__left] + perm];
             assume state(Heap, Mask);
             assume state(Heap, Mask);
             perm := FullPerm;
-            assume left_1 != null;
-            Mask := Mask[left_1, Tree__data:=Mask[left_1, Tree__data] + perm];
+            assume left != null;
+            Mask := Mask[left, Tree__data:=Mask[left, Tree__data] + perm];
             assume state(Heap, Mask);
             assume state(Heap, Mask);
             perm := FullPerm;
-            assume left_1 != null;
-            Mask := Mask[left_1, Tree__right:=Mask[left_1, Tree__right] + perm];
+            assume left != null;
+            Mask := Mask[left, Tree__right:=Mask[left, Tree__right] + perm];
             assume state(Heap, Mask);
             assume state(Heap, Mask);
             
             // -- Check definedness of left.Tree__left != null
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@438.17--438.87) [177220]"}
-                HasDirectPerm(Mask, left_1, Tree__left);
-            if (Heap[left_1, Tree__left] != null) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@438.17--438.87) [28918]"}
+                HasDirectPerm(Mask, left, Tree__left);
+            if (Heap[left, Tree__left] != null) {
               
               // -- Check definedness of acc(Tree__state(left.Tree__left), write)
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@438.17--438.87) [177221]"}
-                  HasDirectPerm(Mask, left_1, Tree__left);
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@438.17--438.87) [28919]"}
+                  HasDirectPerm(Mask, left, Tree__left);
               perm := FullPerm;
-              Mask := Mask[null, Tree__state(Heap[left_1, Tree__left]):=Mask[null, Tree__state(Heap[left_1, Tree__left])] + perm];
+              Mask := Mask[null, Tree__state(Heap[left, Tree__left]):=Mask[null, Tree__state(Heap[left, Tree__left])] + perm];
               assume state(Heap, Mask);
             }
             assume state(Heap, Mask);
             
             // -- Check definedness of left.Tree__right != null
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@439.17--439.89) [177222]"}
-                HasDirectPerm(Mask, left_1, Tree__right);
-            if (Heap[left_1, Tree__right] != null) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@439.17--439.89) [28920]"}
+                HasDirectPerm(Mask, left, Tree__right);
+            if (Heap[left, Tree__right] != null) {
               
               // -- Check definedness of acc(Tree__state(left.Tree__right), write)
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@439.17--439.89) [177223]"}
-                  HasDirectPerm(Mask, left_1, Tree__right);
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@439.17--439.89) [28921]"}
+                  HasDirectPerm(Mask, left, Tree__right);
               perm := FullPerm;
-              Mask := Mask[null, Tree__state(Heap[left_1, Tree__right]):=Mask[null, Tree__state(Heap[left_1, Tree__right])] + perm];
+              Mask := Mask[null, Tree__state(Heap[left, Tree__right]):=Mask[null, Tree__state(Heap[left, Tree__right])] + perm];
               assume state(Heap, Mask);
             }
             assume state(Heap, Mask);
             assume state(Heap, Mask);
             
             // -- Check definedness of cur_contents == Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right)
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@440.17--440.176) [177224]"}
-                HasDirectPerm(Mask, left_1, Tree__left);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@440.17--440.176) [28922]"}
+                HasDirectPerm(Mask, left, Tree__left);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                if (Heap[left_1, Tree__left] != null) {
+                ExhaleWellDef0Mask := Mask;
+                if (Heap[left, Tree__left] != null) {
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(left.Tree__left) (testTreeWandE1.vpr@440.33--440.62) [177225]"}
-                    NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[left_1, Tree__left])];
+                  assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(left.Tree__left) (testTreeWandE1.vpr@440.33--440.62) [28923]"}
+                    NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[left, Tree__left])];
                 }
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -6671,18 +6671,18 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
                 // Stop execution
                 assume false;
               }
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__data (testTreeWandE1.vpr@440.17--440.176) [177226]"}
-                HasDirectPerm(Mask, left_1, Tree__data);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@440.17--440.176) [177227]"}
-                HasDirectPerm(Mask, left_1, Tree__right);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__data (testTreeWandE1.vpr@440.17--440.176) [28924]"}
+                HasDirectPerm(Mask, left, Tree__data);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@440.17--440.176) [28925]"}
+                HasDirectPerm(Mask, left, Tree__right);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                if (Heap[left_1, Tree__right] != null) {
+                ExhaleWellDef0Mask := Mask;
+                if (Heap[left, Tree__right] != null) {
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(left.Tree__right) (testTreeWandE1.vpr@440.90--440.120) [177228]"}
-                    NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[left_1, Tree__right])];
+                  assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(left.Tree__right) (testTreeWandE1.vpr@440.90--440.120) [28926]"}
+                    NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[left, Tree__right])];
                 }
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -6691,17 +6691,17 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
                 // Stop execution
                 assume false;
               }
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access cur.Tree__data (testTreeWandE1.vpr@440.17--440.176) [177229]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access cur.Tree__data (testTreeWandE1.vpr@440.17--440.176) [28927]"}
                 HasDirectPerm(Mask, cur, Tree__data);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@440.17--440.176) [177230]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@440.17--440.176) [28928]"}
                 HasDirectPerm(Mask, cur, Tree__right);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (Heap[cur, Tree__right] != null) {
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur.Tree__right) (testTreeWandE1.vpr@440.147--440.176) [177231]"}
+                  assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur.Tree__right) (testTreeWandE1.vpr@440.147--440.176) [28929]"}
                     NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[cur, Tree__right])];
                 }
                 // Finish exhale
@@ -6711,7 +6711,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
                 // Stop execution
                 assume false;
               }
-            assume Seq#Equal(cur_contents, Seq#Append(Seq#Append(Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[left_1, Tree__left]), Seq#Singleton(Heap[left_1, Tree__data])), Tree__tolist(Heap, Heap[left_1, Tree__right])), Seq#Singleton(Heap[cur, Tree__data])), Tree__tolist(Heap, Heap[cur, Tree__right])));
+            assume Seq#Equal(cur_contents, Seq#Append(Seq#Append(Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[left, Tree__left]), Seq#Singleton(Heap[left, Tree__data])), Tree__tolist(Heap, Heap[left, Tree__right])), Seq#Singleton(Heap[cur, Tree__data])), Tree__tolist(Heap, Heap[cur, Tree__right])));
             assume state(Heap, Mask);
             assume vwand != null;
             assume state(Heap, Mask);
@@ -6724,12 +6724,12 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1(vwand) == cur
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@443.17--443.72) [177232]"}
+                ExhaleWellDef0Mask := Mask;
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@443.17--443.72) [28930]"}
                   vwand != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@443.17--443.72) [177233]"}
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@443.17--443.72) [28931]"}
                   NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -6745,12 +6745,12 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // -- Check definedness of Wand_state_contains_for_state_contains__get_in_1_0(vwand) == cur_contents[1..]
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@444.17--444.74) [177234]"}
+                ExhaleWellDef0Mask := Mask;
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@444.17--444.74) [28932]"}
                   vwand != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@444.17--444.74) [177235]"}
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_in_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@444.17--444.74) [28933]"}
                   NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -6766,12 +6766,12 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1(vwand) == top
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@445.17--445.73) [177236]"}
+                ExhaleWellDef0Mask := Mask;
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@445.17--445.73) [28934]"}
                   vwand != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@445.17--445.73) [177237]"}
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@445.17--445.73) [28935]"}
                   NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -6787,12 +6787,12 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // -- Check definedness of Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@446.17--446.75) [177238]"}
+                ExhaleWellDef0Mask := Mask;
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@446.17--446.75) [28936]"}
                   vwand != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@446.17--446.75) [177239]"}
+                assert {:msg "  Precondition of function Wand_state_contains_for_state_contains__get_out_1_0 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@446.17--446.75) [28937]"}
                   NoPerm < perm ==> NoPerm < Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -6826,36 +6826,36 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             assume cur != null;
             Mask := Mask[cur, Tree__right:=Mask[cur, Tree__right] + perm];
             assume state(Heap, Mask);
-            assume Heap[cur, Tree__left] == left_1;
+            assume Heap[cur, Tree__left] == left;
             if (Heap[cur, Tree__right] != null) {
               perm := FullPerm;
               Mask := Mask[null, Tree__state(Heap[cur, Tree__right]):=Mask[null, Tree__state(Heap[cur, Tree__right])] + perm];
               assume state(Heap, Mask);
             }
             perm := FullPerm;
-            assume left_1 != null;
-            Mask := Mask[left_1, Tree__left:=Mask[left_1, Tree__left] + perm];
+            assume left != null;
+            Mask := Mask[left, Tree__left:=Mask[left, Tree__left] + perm];
             assume state(Heap, Mask);
             perm := FullPerm;
-            assume left_1 != null;
-            Mask := Mask[left_1, Tree__data:=Mask[left_1, Tree__data] + perm];
+            assume left != null;
+            Mask := Mask[left, Tree__data:=Mask[left, Tree__data] + perm];
             assume state(Heap, Mask);
             perm := FullPerm;
-            assume left_1 != null;
-            Mask := Mask[left_1, Tree__right:=Mask[left_1, Tree__right] + perm];
+            assume left != null;
+            Mask := Mask[left, Tree__right:=Mask[left, Tree__right] + perm];
             assume state(Heap, Mask);
-            if (Heap[left_1, Tree__left] != null) {
+            if (Heap[left, Tree__left] != null) {
               perm := FullPerm;
-              Mask := Mask[null, Tree__state(Heap[left_1, Tree__left]):=Mask[null, Tree__state(Heap[left_1, Tree__left])] + perm];
+              Mask := Mask[null, Tree__state(Heap[left, Tree__left]):=Mask[null, Tree__state(Heap[left, Tree__left])] + perm];
               assume state(Heap, Mask);
             }
-            if (Heap[left_1, Tree__right] != null) {
+            if (Heap[left, Tree__right] != null) {
               perm := FullPerm;
-              Mask := Mask[null, Tree__state(Heap[left_1, Tree__right]):=Mask[null, Tree__state(Heap[left_1, Tree__right])] + perm];
+              Mask := Mask[null, Tree__state(Heap[left, Tree__right]):=Mask[null, Tree__state(Heap[left, Tree__right])] + perm];
               assume state(Heap, Mask);
             }
             assume state(Heap, Mask);
-            assume Seq#Equal(cur_contents, Seq#Append(Seq#Append(Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[left_1, Tree__left]), Seq#Singleton(Heap[left_1, Tree__data])), Tree__tolist(Heap, Heap[left_1, Tree__right])), Seq#Singleton(Heap[cur, Tree__data])), Tree__tolist(Heap, Heap[cur, Tree__right])));
+            assume Seq#Equal(cur_contents, Seq#Append(Seq#Append(Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[left, Tree__left]), Seq#Singleton(Heap[left, Tree__data])), Tree__tolist(Heap, Heap[left, Tree__right])), Seq#Singleton(Heap[cur, Tree__data])), Tree__tolist(Heap, Heap[cur, Tree__right])));
             assume vwand != null;
             perm := FullPerm;
             Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)] + perm];
@@ -6872,9 +6872,9 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Check and assume guard
             
             // -- Check definedness of left.Tree__left != null
-              assert {:msg "  While statement might fail. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@429.12--429.35) [177240]"}
-                HasDirectPerm(Mask, left_1, Tree__left);
-            assume Heap[left_1, Tree__left] != null;
+              assert {:msg "  While statement might fail. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@429.12--429.35) [28938]"}
+                HasDirectPerm(Mask, left, Tree__left);
+            assume Heap[left, Tree__left] != null;
             assume state(Heap, Mask);
             
             // -- Translate loop body
@@ -6888,60 +6888,60 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
                 assume state(Heap, Mask);
               
               // -- Translating statement: cur := left -- testTreeWandE1.vpr@450.7--450.18
-                cur := left_1;
+                cur := left;
                 assume state(Heap, Mask);
               
               // -- Translating statement: left := cur.Tree__left -- testTreeWandE1.vpr@451.7--451.29
                 
                 // -- Check definedness of cur.Tree__left
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@451.7--451.29) [177241]"}
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@451.7--451.29) [28939]"}
                     HasDirectPerm(Mask, cur, Tree__left);
-                left_1 := Heap[cur, Tree__left];
+                left := Heap[cur, Tree__left];
                 assume state(Heap, Mask);
               
               // -- Translating statement: unfold acc(Tree__state(left), write) -- testTreeWandE1.vpr@452.7--452.43
-                assume Tree__state#trigger(Heap, Tree__state(left_1));
-                assume Heap[null, Tree__state(left_1)] == CombineFrames(FrameFragment(Heap[left_1, Tree__data]), CombineFrames(FrameFragment(Heap[left_1, Tree__left]), CombineFrames(FrameFragment(Heap[left_1, Tree__right]), CombineFrames(FrameFragment((if Heap[left_1, Tree__left] != null then Heap[null, Tree__state(Heap[left_1, Tree__left])] else EmptyFrame)), FrameFragment((if Heap[left_1, Tree__right] != null then Heap[null, Tree__state(Heap[left_1, Tree__right])] else EmptyFrame))))));
-                ExhaleWellDef0Mask := Mask;
+                assume Tree__state#trigger(Heap, Tree__state(left));
+                assume Heap[null, Tree__state(left)] == CombineFrames(FrameFragment(Heap[left, Tree__data]), CombineFrames(FrameFragment(Heap[left, Tree__left]), CombineFrames(FrameFragment(Heap[left, Tree__right]), CombineFrames(FrameFragment((if Heap[left, Tree__left] != null then Heap[null, Tree__state(Heap[left, Tree__left])] else EmptyFrame)), FrameFragment((if Heap[left, Tree__right] != null then Heap[null, Tree__state(Heap[left, Tree__right])] else EmptyFrame))))));
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
-                  assert {:msg "  Unfolding Tree__state(left) might fail. There might be insufficient permission to access Tree__state(left) (testTreeWandE1.vpr@452.7--452.43) [177242]"}
-                    perm <= Mask[null, Tree__state(left_1)];
+                  assert {:msg "  Unfolding Tree__state(left) might fail. There might be insufficient permission to access Tree__state(left) (testTreeWandE1.vpr@452.7--452.43) [28940]"}
+                    perm <= Mask[null, Tree__state(left)];
                 }
-                Mask := Mask[null, Tree__state(left_1):=Mask[null, Tree__state(left_1)] - perm];
+                Mask := Mask[null, Tree__state(left):=Mask[null, Tree__state(left)] - perm];
                 
                 // -- Update version of predicate
-                  if (!HasDirectPerm(Mask, null, Tree__state(left_1))) {
+                  if (!HasDirectPerm(Mask, null, Tree__state(left))) {
                     havoc newVersion;
-                    Heap := Heap[null, Tree__state(left_1):=newVersion];
+                    Heap := Heap[null, Tree__state(left):=newVersion];
                   }
                 perm := FullPerm;
-                assume left_1 != null;
-                Mask := Mask[left_1, Tree__data:=Mask[left_1, Tree__data] + perm];
+                assume left != null;
+                Mask := Mask[left, Tree__data:=Mask[left, Tree__data] + perm];
                 assume state(Heap, Mask);
                 perm := FullPerm;
-                assume left_1 != null;
-                Mask := Mask[left_1, Tree__left:=Mask[left_1, Tree__left] + perm];
+                assume left != null;
+                Mask := Mask[left, Tree__left:=Mask[left, Tree__left] + perm];
                 assume state(Heap, Mask);
                 perm := FullPerm;
-                assume left_1 != null;
-                Mask := Mask[left_1, Tree__right:=Mask[left_1, Tree__right] + perm];
+                assume left != null;
+                Mask := Mask[left, Tree__right:=Mask[left, Tree__right] + perm];
                 assume state(Heap, Mask);
-                if (Heap[left_1, Tree__left] != null) {
+                if (Heap[left, Tree__left] != null) {
                   perm := FullPerm;
-                  Mask := Mask[null, Tree__state(Heap[left_1, Tree__left]):=Mask[null, Tree__state(Heap[left_1, Tree__left])] + perm];
+                  Mask := Mask[null, Tree__state(Heap[left, Tree__left]):=Mask[null, Tree__state(Heap[left, Tree__left])] + perm];
                   
                   // -- Extra unfolding of predicate
-                    assume InsidePredicate(Tree__state(left_1), Heap[null, Tree__state(left_1)], Tree__state(Heap[left_1, Tree__left]), Heap[null, Tree__state(Heap[left_1, Tree__left])]);
+                    assume InsidePredicate(Tree__state(left), Heap[null, Tree__state(left)], Tree__state(Heap[left, Tree__left]), Heap[null, Tree__state(Heap[left, Tree__left])]);
                   assume state(Heap, Mask);
                 }
-                if (Heap[left_1, Tree__right] != null) {
+                if (Heap[left, Tree__right] != null) {
                   perm := FullPerm;
-                  Mask := Mask[null, Tree__state(Heap[left_1, Tree__right]):=Mask[null, Tree__state(Heap[left_1, Tree__right])] + perm];
+                  Mask := Mask[null, Tree__state(Heap[left, Tree__right]):=Mask[null, Tree__state(Heap[left, Tree__right])] + perm];
                   
                   // -- Extra unfolding of predicate
-                    assume InsidePredicate(Tree__state(left_1), Heap[null, Tree__state(left_1)], Tree__state(Heap[left_1, Tree__right]), Heap[null, Tree__state(Heap[left_1, Tree__right])]);
+                    assume InsidePredicate(Tree__state(left), Heap[null, Tree__state(left)], Tree__state(Heap[left, Tree__right]), Heap[null, Tree__state(Heap[left, Tree__right])]);
                   assume state(Heap, Mask);
                 }
                 assume state(Heap, Mask);
@@ -6950,16 +6950,16 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
               // -- Translating statement: __flatten_78 := Tree__tolist(left.Tree__left) -- testTreeWandE1.vpr@453.7--453.52
                 
                 // -- Check definedness of Tree__tolist(left.Tree__left)
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@453.7--453.52) [177243]"}
-                    HasDirectPerm(Mask, left_1, Tree__left);
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@453.7--453.52) [28941]"}
+                    HasDirectPerm(Mask, left, Tree__left);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
-                    if (Heap[left_1, Tree__left] != null) {
+                    ExhaleWellDef0Mask := Mask;
+                    if (Heap[left, Tree__left] != null) {
                       perm := FullPerm;
-                      assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(left.Tree__left) (testTreeWandE1.vpr@453.23--453.52) [177244]"}
-                        NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[left_1, Tree__left])];
+                      assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(left.Tree__left) (testTreeWandE1.vpr@453.23--453.52) [28942]"}
+                        NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[left, Tree__left])];
                     }
                     // Finish exhale
                     havoc ExhaleHeap;
@@ -6968,7 +6968,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
                     // Stop execution
                     assume false;
                   }
-                __flatten_78 := Tree__tolist(Heap, Heap[left_1, Tree__left]);
+                __flatten_78 := Tree__tolist(Heap, Heap[left, Tree__left]);
                 assume state(Heap, Mask);
               
               // -- Translating statement: __flatten_37 := __flatten_78 -- testTreeWandE1.vpr@454.7--454.35
@@ -6978,16 +6978,16 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
               // -- Translating statement: __flatten_79 := Tree__tolist(left.Tree__right) -- testTreeWandE1.vpr@455.7--455.53
                 
                 // -- Check definedness of Tree__tolist(left.Tree__right)
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@455.7--455.53) [177245]"}
-                    HasDirectPerm(Mask, left_1, Tree__right);
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@455.7--455.53) [28943]"}
+                    HasDirectPerm(Mask, left, Tree__right);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
-                    if (Heap[left_1, Tree__right] != null) {
+                    ExhaleWellDef0Mask := Mask;
+                    if (Heap[left, Tree__right] != null) {
                       perm := FullPerm;
-                      assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(left.Tree__right) (testTreeWandE1.vpr@455.23--455.53) [177246]"}
-                        NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[left_1, Tree__right])];
+                      assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(left.Tree__right) (testTreeWandE1.vpr@455.23--455.53) [28944]"}
+                        NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[left, Tree__right])];
                     }
                     // Finish exhale
                     havoc ExhaleHeap;
@@ -6996,7 +6996,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
                     // Stop execution
                     assume false;
                   }
-                __flatten_79 := Tree__tolist(Heap, Heap[left_1, Tree__right]);
+                __flatten_79 := Tree__tolist(Heap, Heap[left, Tree__right]);
                 assume state(Heap, Mask);
               
               // -- Translating statement: __flatten_38 := __flatten_79 -- testTreeWandE1.vpr@456.7--456.35
@@ -7006,23 +7006,23 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
               // -- Translating statement: cur_contents := __flatten_37 ++ Seq(left.Tree__data) ++ __flatten_38 -- testTreeWandE1.vpr@457.7--457.75
                 
                 // -- Check definedness of __flatten_37 ++ Seq(left.Tree__data) ++ __flatten_38
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access left.Tree__data (testTreeWandE1.vpr@457.7--457.75) [177247]"}
-                    HasDirectPerm(Mask, left_1, Tree__data);
-                cur_contents := Seq#Append(Seq#Append(__flatten_37, Seq#Singleton(Heap[left_1, Tree__data])), __flatten_38);
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access left.Tree__data (testTreeWandE1.vpr@457.7--457.75) [28945]"}
+                    HasDirectPerm(Mask, left, Tree__data);
+                cur_contents := Seq#Append(Seq#Append(__flatten_37, Seq#Singleton(Heap[left, Tree__data])), __flatten_38);
                 assume state(Heap, Mask);
               
               // -- Translating statement: __flatten_80 := Tree__tolist(cur.Tree__right) -- testTreeWandE1.vpr@458.7--458.52
                 
                 // -- Check definedness of Tree__tolist(cur.Tree__right)
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@458.7--458.52) [177248]"}
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@458.7--458.52) [28946]"}
                     HasDirectPerm(Mask, cur, Tree__right);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (Heap[cur, Tree__right] != null) {
                       perm := FullPerm;
-                      assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur.Tree__right) (testTreeWandE1.vpr@458.23--458.52) [177249]"}
+                      assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur.Tree__right) (testTreeWandE1.vpr@458.23--458.52) [28947]"}
                         NoPerm < perm ==> NoPerm < Mask[null, Tree__state(Heap[cur, Tree__right])];
                     }
                     // Finish exhale
@@ -7042,42 +7042,42 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
               // -- Translating statement: cur_contents := cur_contents ++ Seq(cur.Tree__data) ++ __flatten_39 -- testTreeWandE1.vpr@460.7--460.74
                 
                 // -- Check definedness of cur_contents ++ Seq(cur.Tree__data) ++ __flatten_39
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access cur.Tree__data (testTreeWandE1.vpr@460.7--460.74) [177250]"}
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access cur.Tree__data (testTreeWandE1.vpr@460.7--460.74) [28948]"}
                     HasDirectPerm(Mask, cur, Tree__data);
                 cur_contents := Seq#Append(Seq#Append(cur_contents, Seq#Singleton(Heap[cur, Tree__data])), __flatten_39);
                 assume state(Heap, Mask);
               
               // -- Translating statement: assert |prev_contents| > 0 -- testTreeWandE1.vpr@461.7--461.33
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Assert might fail. Assertion |prev_contents| > 0 might not hold. (testTreeWandE1.vpr@461.14--461.33) [177251]"}
+                ExhaleWellDef0Mask := Mask;
+                assert {:msg "  Assert might fail. Assertion |prev_contents| > 0 might not hold. (testTreeWandE1.vpr@461.14--461.33) [28949]"}
                   Seq#Length(prev_contents) > 0;
                 assume state(Heap, Mask);
               
               // -- Translating statement: assert |cur_contents| > 0 -- testTreeWandE1.vpr@462.7--462.32
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Assert might fail. Assertion |cur_contents| > 0 might not hold. (testTreeWandE1.vpr@462.14--462.32) [177252]"}
+                ExhaleWellDef0Mask := Mask;
+                assert {:msg "  Assert might fail. Assertion |cur_contents| > 0 might not hold. (testTreeWandE1.vpr@462.14--462.32) [28950]"}
                   Seq#Length(cur_contents) > 0;
                 assume state(Heap, Mask);
               
               // -- Translating statement: assert prev_contents ==
   //   cur_contents ++ Seq(prev.Tree__data) ++ Tree__tolist(prev.Tree__right) -- testTreeWandE1.vpr@463.7--463.101
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 
                 // -- Check definedness of prev_contents == cur_contents ++ Seq(prev.Tree__data) ++ Tree__tolist(prev.Tree__right)
-                  assert {:msg "  Assert might fail. There might be insufficient permission to access prev.Tree__data (testTreeWandE1.vpr@463.14--463.101) [177253]"}
+                  assert {:msg "  Assert might fail. There might be insufficient permission to access prev.Tree__data (testTreeWandE1.vpr@463.14--463.101) [28951]"}
                     HasDirectPerm(ExhaleWellDef0Mask, prev, Tree__data);
-                  assert {:msg "  Assert might fail. There might be insufficient permission to access prev.Tree__right (testTreeWandE1.vpr@463.14--463.101) [177254]"}
+                  assert {:msg "  Assert might fail. There might be insufficient permission to access prev.Tree__right (testTreeWandE1.vpr@463.14--463.101) [28952]"}
                     HasDirectPerm(ExhaleWellDef0Mask, prev, Tree__right);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     if (ExhaleWellDef0Heap[prev, Tree__right] != null) {
                       perm := FullPerm;
-                      assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(prev.Tree__right) (testTreeWandE1.vpr@463.71--463.101) [177255]"}
+                      assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(prev.Tree__right) (testTreeWandE1.vpr@463.71--463.101) [28953]"}
                         NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(ExhaleWellDef0Heap[prev, Tree__right])];
                     }
                     // Finish exhale
@@ -7087,7 +7087,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
                     // Stop execution
                     assume false;
                   }
-                assert {:msg "  Assert might fail. Assertion prev_contents == cur_contents ++ Seq(prev.Tree__data) ++ Tree__tolist(prev.Tree__right) might not hold. (testTreeWandE1.vpr@463.14--463.101) [177256]"}
+                assert {:msg "  Assert might fail. Assertion prev_contents == cur_contents ++ Seq(prev.Tree__data) ++ Tree__tolist(prev.Tree__right) might not hold. (testTreeWandE1.vpr@463.14--463.101) [28954]"}
                   Seq#Equal(prev_contents, Seq#Append(Seq#Append(cur_contents, Seq#Singleton(Heap[prev, Tree__data])), Tree__tolist(Heap, Heap[prev, Tree__right])));
                 assume state(Heap, Mask);
               
@@ -7099,75 +7099,75 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
                 arg_in_1_0 := Seq#Drop(cur_contents, 1);
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@464.7--464.219) [177257]"}
+                  ExhaleWellDef0Mask := Mask;
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@464.7--464.219) [28955]"}
                     diz != null;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@464.7--464.219) [177258]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@464.7--464.219) [28956]"}
                     current_thread_id >= 0;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@464.7--464.219) [177259]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion diz != null might not hold. (testTreeWandE1.vpr@464.7--464.219) [28957]"}
                     diz != null;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion |prev_contents| > 0 might not hold. (testTreeWandE1.vpr@464.7--464.219) [177260]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion |prev_contents| > 0 might not hold. (testTreeWandE1.vpr@464.7--464.219) [28958]"}
                     Seq#Length(prev_contents) > 0;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion |cur_contents| > 0 might not hold. (testTreeWandE1.vpr@464.7--464.219) [177261]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion |cur_contents| > 0 might not hold. (testTreeWandE1.vpr@464.7--464.219) [28959]"}
                     Seq#Length(cur_contents) > 0;
                   perm := FullPerm;
                   if (perm != NoPerm) {
-                    assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access prev.Tree__left (testTreeWandE1.vpr@464.7--464.219) [177262]"}
+                    assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access prev.Tree__left (testTreeWandE1.vpr@464.7--464.219) [28960]"}
                       perm <= Mask[prev, Tree__left];
                   }
                   Mask := Mask[prev, Tree__left:=Mask[prev, Tree__left] - perm];
                   perm := FullPerm;
                   if (perm != NoPerm) {
-                    assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access prev.Tree__data (testTreeWandE1.vpr@464.7--464.219) [177263]"}
+                    assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access prev.Tree__data (testTreeWandE1.vpr@464.7--464.219) [28961]"}
                       perm <= Mask[prev, Tree__data];
                   }
                   Mask := Mask[prev, Tree__data:=Mask[prev, Tree__data] - perm];
                   perm := FullPerm;
                   if (perm != NoPerm) {
-                    assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access prev.Tree__right (testTreeWandE1.vpr@464.7--464.219) [177264]"}
+                    assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access prev.Tree__right (testTreeWandE1.vpr@464.7--464.219) [28962]"}
                       perm <= Mask[prev, Tree__right];
                   }
                   Mask := Mask[prev, Tree__right:=Mask[prev, Tree__right] - perm];
                   if (Heap[prev, Tree__right] != null) {
                     perm := FullPerm;
                     if (perm != NoPerm) {
-                      assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access Tree__state(prev.Tree__right) (testTreeWandE1.vpr@464.7--464.219) [177265]"}
+                      assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access Tree__state(prev.Tree__right) (testTreeWandE1.vpr@464.7--464.219) [28963]"}
                         perm <= Mask[null, Tree__state(Heap[prev, Tree__right])];
                     }
                     Mask := Mask[null, Tree__state(Heap[prev, Tree__right]):=Mask[null, Tree__state(Heap[prev, Tree__right])] - perm];
                   }
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion prev.Tree__left == cur might not hold. (testTreeWandE1.vpr@464.7--464.219) [177266]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion prev.Tree__left == cur might not hold. (testTreeWandE1.vpr@464.7--464.219) [28964]"}
                     Heap[prev, Tree__left] == cur;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion prev_contents == cur_contents ++ Seq(prev.Tree__data) ++ Tree__tolist(prev.Tree__right) might not hold. (testTreeWandE1.vpr@464.7--464.219) [177267]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion prev_contents == cur_contents ++ Seq(prev.Tree__data) ++ Tree__tolist(prev.Tree__right) might not hold. (testTreeWandE1.vpr@464.7--464.219) [28965]"}
                     Seq#Equal(prev_contents, Seq#Append(Seq#Append(cur_contents, Seq#Singleton(Heap[prev, Tree__data])), Tree__tolist(Heap, Heap[prev, Tree__right])));
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@464.7--464.219) [177268]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@464.7--464.219) [28966]"}
                     vwand != null;
                   perm := FullPerm;
                   if (perm != NoPerm) {
-                    assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@464.7--464.219) [177269]"}
+                    assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@464.7--464.219) [28967]"}
                       perm <= Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)];
                   }
                   Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)] - perm];
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1(vwand) == prev might not hold. (testTreeWandE1.vpr@464.7--464.219) [177270]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1(vwand) == prev might not hold. (testTreeWandE1.vpr@464.7--464.219) [28968]"}
                     Wand_state_contains_for_state_contains__get_in_1(Heap, vwand) == prev;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1_0(vwand) == prev_contents[1..] might not hold. (testTreeWandE1.vpr@464.7--464.219) [177271]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_in_1_0(vwand) == prev_contents[1..] might not hold. (testTreeWandE1.vpr@464.7--464.219) [28969]"}
                     Seq#Equal(Wand_state_contains_for_state_contains__get_in_1_0(Heap, vwand), Seq#Drop(prev_contents, 1));
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand) == top might not hold. (testTreeWandE1.vpr@464.7--464.219) [177272]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand) == top might not hold. (testTreeWandE1.vpr@464.7--464.219) [28970]"}
                     Wand_state_contains_for_state_contains__get_out_1(Heap, vwand) == top;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents might not hold. (testTreeWandE1.vpr@464.7--464.219) [177273]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents might not hold. (testTreeWandE1.vpr@464.7--464.219) [28971]"}
                     Seq#Equal(Wand_state_contains_for_state_contains__get_out_1_0(Heap, vwand), target_contents);
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion cur != null might not hold. (testTreeWandE1.vpr@464.7--464.219) [177274]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion cur != null might not hold. (testTreeWandE1.vpr@464.7--464.219) [28972]"}
                     cur != null;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion cur == cur might not hold. (testTreeWandE1.vpr@464.7--464.219) [177275]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion cur == cur might not hold. (testTreeWandE1.vpr@464.7--464.219) [28973]"}
                     cur == cur;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion cur_contents[1..] == cur_contents[1..] might not hold. (testTreeWandE1.vpr@464.7--464.219) [177276]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion cur_contents[1..] == cur_contents[1..] might not hold. (testTreeWandE1.vpr@464.7--464.219) [28974]"}
                     Seq#Equal(arg_in_1_0, Seq#Drop(cur_contents, 1));
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion top != null might not hold. (testTreeWandE1.vpr@464.7--464.219) [177277]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion top != null might not hold. (testTreeWandE1.vpr@464.7--464.219) [28975]"}
                     top != null;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion top == top might not hold. (testTreeWandE1.vpr@464.7--464.219) [177278]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion top == top might not hold. (testTreeWandE1.vpr@464.7--464.219) [28976]"}
                     top == top;
-                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion target_contents == target_contents might not hold. (testTreeWandE1.vpr@464.7--464.219) [177279]"}
+                  assert {:msg "  The precondition of method Tree__Wand_state_contains_for_state_contains_lemma_1 might not hold. Assertion target_contents == target_contents might not hold. (testTreeWandE1.vpr@464.7--464.219) [28977]"}
                     Seq#Equal(target_contents, target_contents);
                   // Finish exhale
                   havoc ExhaleHeap;
@@ -7198,87 +7198,87 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
                 vwand := __flatten_40;
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(cur.Tree__left, write) might not be preserved. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@430.17--430.43) [177280]"}
+              assert {:msg "  Loop invariant acc(cur.Tree__left, write) might not be preserved. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@430.17--430.43) [28978]"}
                 perm <= Mask[cur, Tree__left];
             }
             Mask := Mask[cur, Tree__left:=Mask[cur, Tree__left] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(cur.Tree__data, write) might not be preserved. There might be insufficient permission to access cur.Tree__data (testTreeWandE1.vpr@431.17--431.43) [177281]"}
+              assert {:msg "  Loop invariant acc(cur.Tree__data, write) might not be preserved. There might be insufficient permission to access cur.Tree__data (testTreeWandE1.vpr@431.17--431.43) [28979]"}
                 perm <= Mask[cur, Tree__data];
             }
             Mask := Mask[cur, Tree__data:=Mask[cur, Tree__data] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(cur.Tree__right, write) might not be preserved. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@432.17--432.44) [177282]"}
+              assert {:msg "  Loop invariant acc(cur.Tree__right, write) might not be preserved. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@432.17--432.44) [28980]"}
                 perm <= Mask[cur, Tree__right];
             }
             Mask := Mask[cur, Tree__right:=Mask[cur, Tree__right] - perm];
-            assert {:msg "  Loop invariant cur.Tree__left == left might not be preserved. Assertion cur.Tree__left == left might not hold. (testTreeWandE1.vpr@433.17--433.39) [177283]"}
-              Heap[cur, Tree__left] == left_1;
+            assert {:msg "  Loop invariant cur.Tree__left == left might not be preserved. Assertion cur.Tree__left == left might not hold. (testTreeWandE1.vpr@433.17--433.39) [28981]"}
+              Heap[cur, Tree__left] == left;
             if (Heap[cur, Tree__right] != null) {
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  Loop invariant cur.Tree__right != null ==> acc(Tree__state(cur.Tree__right), write) might not be preserved. There might be insufficient permission to access Tree__state(cur.Tree__right) (testTreeWandE1.vpr@434.17--434.87) [177284]"}
+                assert {:msg "  Loop invariant cur.Tree__right != null ==> acc(Tree__state(cur.Tree__right), write) might not be preserved. There might be insufficient permission to access Tree__state(cur.Tree__right) (testTreeWandE1.vpr@434.17--434.87) [28982]"}
                   perm <= Mask[null, Tree__state(Heap[cur, Tree__right])];
               }
               Mask := Mask[null, Tree__state(Heap[cur, Tree__right]):=Mask[null, Tree__state(Heap[cur, Tree__right])] - perm];
             }
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(left.Tree__left, write) might not be preserved. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@435.17--435.44) [177285]"}
-                perm <= Mask[left_1, Tree__left];
+              assert {:msg "  Loop invariant acc(left.Tree__left, write) might not be preserved. There might be insufficient permission to access left.Tree__left (testTreeWandE1.vpr@435.17--435.44) [28983]"}
+                perm <= Mask[left, Tree__left];
             }
-            Mask := Mask[left_1, Tree__left:=Mask[left_1, Tree__left] - perm];
+            Mask := Mask[left, Tree__left:=Mask[left, Tree__left] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(left.Tree__data, write) might not be preserved. There might be insufficient permission to access left.Tree__data (testTreeWandE1.vpr@436.17--436.44) [177286]"}
-                perm <= Mask[left_1, Tree__data];
+              assert {:msg "  Loop invariant acc(left.Tree__data, write) might not be preserved. There might be insufficient permission to access left.Tree__data (testTreeWandE1.vpr@436.17--436.44) [28984]"}
+                perm <= Mask[left, Tree__data];
             }
-            Mask := Mask[left_1, Tree__data:=Mask[left_1, Tree__data] - perm];
+            Mask := Mask[left, Tree__data:=Mask[left, Tree__data] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(left.Tree__right, write) might not be preserved. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@437.17--437.45) [177287]"}
-                perm <= Mask[left_1, Tree__right];
+              assert {:msg "  Loop invariant acc(left.Tree__right, write) might not be preserved. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@437.17--437.45) [28985]"}
+                perm <= Mask[left, Tree__right];
             }
-            Mask := Mask[left_1, Tree__right:=Mask[left_1, Tree__right] - perm];
-            if (Heap[left_1, Tree__left] != null) {
+            Mask := Mask[left, Tree__right:=Mask[left, Tree__right] - perm];
+            if (Heap[left, Tree__left] != null) {
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  Loop invariant left.Tree__left != null ==> acc(Tree__state(left.Tree__left), write) might not be preserved. There might be insufficient permission to access Tree__state(left.Tree__left) (testTreeWandE1.vpr@438.17--438.87) [177288]"}
-                  perm <= Mask[null, Tree__state(Heap[left_1, Tree__left])];
+                assert {:msg "  Loop invariant left.Tree__left != null ==> acc(Tree__state(left.Tree__left), write) might not be preserved. There might be insufficient permission to access Tree__state(left.Tree__left) (testTreeWandE1.vpr@438.17--438.87) [28986]"}
+                  perm <= Mask[null, Tree__state(Heap[left, Tree__left])];
               }
-              Mask := Mask[null, Tree__state(Heap[left_1, Tree__left]):=Mask[null, Tree__state(Heap[left_1, Tree__left])] - perm];
+              Mask := Mask[null, Tree__state(Heap[left, Tree__left]):=Mask[null, Tree__state(Heap[left, Tree__left])] - perm];
             }
-            if (Heap[left_1, Tree__right] != null) {
+            if (Heap[left, Tree__right] != null) {
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  Loop invariant left.Tree__right != null ==> acc(Tree__state(left.Tree__right), write) might not be preserved. There might be insufficient permission to access Tree__state(left.Tree__right) (testTreeWandE1.vpr@439.17--439.89) [177289]"}
-                  perm <= Mask[null, Tree__state(Heap[left_1, Tree__right])];
+                assert {:msg "  Loop invariant left.Tree__right != null ==> acc(Tree__state(left.Tree__right), write) might not be preserved. There might be insufficient permission to access Tree__state(left.Tree__right) (testTreeWandE1.vpr@439.17--439.89) [28987]"}
+                  perm <= Mask[null, Tree__state(Heap[left, Tree__right])];
               }
-              Mask := Mask[null, Tree__state(Heap[left_1, Tree__right]):=Mask[null, Tree__state(Heap[left_1, Tree__right])] - perm];
+              Mask := Mask[null, Tree__state(Heap[left, Tree__right]):=Mask[null, Tree__state(Heap[left, Tree__right])] - perm];
             }
-            assert {:msg "  Loop invariant cur_contents == Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right) might not be preserved. Assertion cur_contents == Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right) might not hold. (testTreeWandE1.vpr@440.17--440.176) [177290]"}
-              Seq#Equal(cur_contents, Seq#Append(Seq#Append(Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[left_1, Tree__left]), Seq#Singleton(Heap[left_1, Tree__data])), Tree__tolist(Heap, Heap[left_1, Tree__right])), Seq#Singleton(Heap[cur, Tree__data])), Tree__tolist(Heap, Heap[cur, Tree__right])));
-            assert {:msg "  Loop invariant vwand != null might not be preserved. Assertion vwand != null might not hold. (testTreeWandE1.vpr@441.17--441.30) [177291]"}
+            assert {:msg "  Loop invariant cur_contents == Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right) might not be preserved. Assertion cur_contents == Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right) might not hold. (testTreeWandE1.vpr@440.17--440.176) [28988]"}
+              Seq#Equal(cur_contents, Seq#Append(Seq#Append(Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[left, Tree__left]), Seq#Singleton(Heap[left, Tree__data])), Tree__tolist(Heap, Heap[left, Tree__right])), Seq#Singleton(Heap[cur, Tree__data])), Tree__tolist(Heap, Heap[cur, Tree__right])));
+            assert {:msg "  Loop invariant vwand != null might not be preserved. Assertion vwand != null might not hold. (testTreeWandE1.vpr@441.17--441.30) [28989]"}
               vwand != null;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Loop invariant acc(Wand_state_contains_for_state_contains__valid_wand(vwand), write) might not be preserved. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@442.17--442.86) [177292]"}
+              assert {:msg "  Loop invariant acc(Wand_state_contains_for_state_contains__valid_wand(vwand), write) might not be preserved. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@442.17--442.86) [28990]"}
                 perm <= Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)];
             }
             Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)] - perm];
-            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_in_1(vwand) == cur might not be preserved. Assertion Wand_state_contains_for_state_contains__get_in_1(vwand) == cur might not hold. (testTreeWandE1.vpr@443.17--443.79) [177293]"}
+            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_in_1(vwand) == cur might not be preserved. Assertion Wand_state_contains_for_state_contains__get_in_1(vwand) == cur might not hold. (testTreeWandE1.vpr@443.17--443.79) [28991]"}
               Wand_state_contains_for_state_contains__get_in_1(Heap, vwand) == cur;
-            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_in_1_0(vwand) == cur_contents[1..] might not be preserved. Assertion Wand_state_contains_for_state_contains__get_in_1_0(vwand) == cur_contents[1..] might not hold. (testTreeWandE1.vpr@444.17--444.95) [177294]"}
+            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_in_1_0(vwand) == cur_contents[1..] might not be preserved. Assertion Wand_state_contains_for_state_contains__get_in_1_0(vwand) == cur_contents[1..] might not hold. (testTreeWandE1.vpr@444.17--444.95) [28992]"}
               Seq#Equal(Wand_state_contains_for_state_contains__get_in_1_0(Heap, vwand), Seq#Drop(cur_contents, 1));
-            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_out_1(vwand) == top might not be preserved. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand) == top might not hold. (testTreeWandE1.vpr@445.17--445.80) [177295]"}
+            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_out_1(vwand) == top might not be preserved. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand) == top might not hold. (testTreeWandE1.vpr@445.17--445.80) [28993]"}
               Wand_state_contains_for_state_contains__get_out_1(Heap, vwand) == top;
-            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents might not be preserved. Assertion Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents might not hold. (testTreeWandE1.vpr@446.17--446.94) [177296]"}
+            assert {:msg "  Loop invariant Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents might not be preserved. Assertion Wand_state_contains_for_state_contains__get_out_1_0(vwand) == target_contents might not hold. (testTreeWandE1.vpr@446.17--446.94) [28994]"}
               Seq#Equal(Wand_state_contains_for_state_contains__get_out_1_0(Heap, vwand), target_contents);
             // Finish exhale
             havoc ExhaleHeap;
@@ -7289,7 +7289,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
           }
         
         // -- Inhale loop invariant after loop, and assume guard
-          assume !(Heap[left_1, Tree__left] != null);
+          assume !(Heap[left, Tree__left] != null);
           assume state(Heap, Mask);
           perm := FullPerm;
           assume cur != null;
@@ -7303,36 +7303,36 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
           assume cur != null;
           Mask := Mask[cur, Tree__right:=Mask[cur, Tree__right] + perm];
           assume state(Heap, Mask);
-          assume Heap[cur, Tree__left] == left_1;
+          assume Heap[cur, Tree__left] == left;
           if (Heap[cur, Tree__right] != null) {
             perm := FullPerm;
             Mask := Mask[null, Tree__state(Heap[cur, Tree__right]):=Mask[null, Tree__state(Heap[cur, Tree__right])] + perm];
             assume state(Heap, Mask);
           }
           perm := FullPerm;
-          assume left_1 != null;
-          Mask := Mask[left_1, Tree__left:=Mask[left_1, Tree__left] + perm];
+          assume left != null;
+          Mask := Mask[left, Tree__left:=Mask[left, Tree__left] + perm];
           assume state(Heap, Mask);
           perm := FullPerm;
-          assume left_1 != null;
-          Mask := Mask[left_1, Tree__data:=Mask[left_1, Tree__data] + perm];
+          assume left != null;
+          Mask := Mask[left, Tree__data:=Mask[left, Tree__data] + perm];
           assume state(Heap, Mask);
           perm := FullPerm;
-          assume left_1 != null;
-          Mask := Mask[left_1, Tree__right:=Mask[left_1, Tree__right] + perm];
+          assume left != null;
+          Mask := Mask[left, Tree__right:=Mask[left, Tree__right] + perm];
           assume state(Heap, Mask);
-          if (Heap[left_1, Tree__left] != null) {
+          if (Heap[left, Tree__left] != null) {
             perm := FullPerm;
-            Mask := Mask[null, Tree__state(Heap[left_1, Tree__left]):=Mask[null, Tree__state(Heap[left_1, Tree__left])] + perm];
+            Mask := Mask[null, Tree__state(Heap[left, Tree__left]):=Mask[null, Tree__state(Heap[left, Tree__left])] + perm];
             assume state(Heap, Mask);
           }
-          if (Heap[left_1, Tree__right] != null) {
+          if (Heap[left, Tree__right] != null) {
             perm := FullPerm;
-            Mask := Mask[null, Tree__state(Heap[left_1, Tree__right]):=Mask[null, Tree__state(Heap[left_1, Tree__right])] + perm];
+            Mask := Mask[null, Tree__state(Heap[left, Tree__right]):=Mask[null, Tree__state(Heap[left, Tree__right])] + perm];
             assume state(Heap, Mask);
           }
           assume state(Heap, Mask);
-          assume Seq#Equal(cur_contents, Seq#Append(Seq#Append(Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[left_1, Tree__left]), Seq#Singleton(Heap[left_1, Tree__data])), Tree__tolist(Heap, Heap[left_1, Tree__right])), Seq#Singleton(Heap[cur, Tree__data])), Tree__tolist(Heap, Heap[cur, Tree__right])));
+          assume Seq#Equal(cur_contents, Seq#Append(Seq#Append(Seq#Append(Seq#Append(Tree__tolist(Heap, Heap[left, Tree__left]), Seq#Singleton(Heap[left, Tree__data])), Tree__tolist(Heap, Heap[left, Tree__right])), Seq#Singleton(Heap[cur, Tree__data])), Tree__tolist(Heap, Heap[cur, Tree__right])));
           assume vwand != null;
           perm := FullPerm;
           Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)] + perm];
@@ -7351,9 +7351,9 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
       // -- Translating statement: __flatten_41 := left.Tree__right -- testTreeWandE1.vpr@467.5--467.37
         
         // -- Check definedness of left.Tree__right
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@467.5--467.37) [177297]"}
-            HasDirectPerm(Mask, left_1, Tree__right);
-        __flatten_41 := Heap[left_1, Tree__right];
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access left.Tree__right (testTreeWandE1.vpr@467.5--467.37) [28995]"}
+            HasDirectPerm(Mask, left, Tree__right);
+        __flatten_41 := Heap[left, Tree__right];
         assume state(Heap, Mask);
       
       // -- Translating statement: __flatten_82 := __flatten_41 -- testTreeWandE1.vpr@468.5--468.33
@@ -7361,36 +7361,36 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         assume state(Heap, Mask);
       
       // -- Translating statement: cur.Tree__left := __flatten_82 -- testTreeWandE1.vpr@469.5--469.35
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@469.5--469.35) [177298]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@469.5--469.35) [28996]"}
           FullPerm == Mask[cur, Tree__left];
         Heap := Heap[cur, Tree__left:=__flatten_82];
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(Tree__state(cur), write) -- testTreeWandE1.vpr@470.5--470.38
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Tree__state(cur) might fail. There might be insufficient permission to access cur.Tree__data (testTreeWandE1.vpr@470.5--470.38) [177301]"}
+          assert {:msg "  Folding Tree__state(cur) might fail. There might be insufficient permission to access cur.Tree__data (testTreeWandE1.vpr@470.5--470.38) [28999]"}
             perm <= Mask[cur, Tree__data];
         }
         Mask := Mask[cur, Tree__data:=Mask[cur, Tree__data] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Tree__state(cur) might fail. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@470.5--470.38) [177303]"}
+          assert {:msg "  Folding Tree__state(cur) might fail. There might be insufficient permission to access cur.Tree__left (testTreeWandE1.vpr@470.5--470.38) [29001]"}
             perm <= Mask[cur, Tree__left];
         }
         Mask := Mask[cur, Tree__left:=Mask[cur, Tree__left] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Tree__state(cur) might fail. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@470.5--470.38) [177305]"}
+          assert {:msg "  Folding Tree__state(cur) might fail. There might be insufficient permission to access cur.Tree__right (testTreeWandE1.vpr@470.5--470.38) [29003]"}
             perm <= Mask[cur, Tree__right];
         }
         Mask := Mask[cur, Tree__right:=Mask[cur, Tree__right] - perm];
         if (Heap[cur, Tree__left] != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Folding Tree__state(cur) might fail. There might be insufficient permission to access Tree__state(cur.Tree__left) (testTreeWandE1.vpr@470.5--470.38) [177307]"}
+            assert {:msg "  Folding Tree__state(cur) might fail. There might be insufficient permission to access Tree__state(cur.Tree__left) (testTreeWandE1.vpr@470.5--470.38) [29005]"}
               perm <= Mask[null, Tree__state(Heap[cur, Tree__left])];
           }
           Mask := Mask[null, Tree__state(Heap[cur, Tree__left]):=Mask[null, Tree__state(Heap[cur, Tree__left])] - perm];
@@ -7401,7 +7401,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         if (Heap[cur, Tree__right] != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Folding Tree__state(cur) might fail. There might be insufficient permission to access Tree__state(cur.Tree__right) (testTreeWandE1.vpr@470.5--470.38) [177309]"}
+            assert {:msg "  Folding Tree__state(cur) might fail. There might be insufficient permission to access Tree__state(cur.Tree__right) (testTreeWandE1.vpr@470.5--470.38) [29007]"}
               perm <= Mask[null, Tree__state(Heap[cur, Tree__right])];
           }
           Mask := Mask[null, Tree__state(Heap[cur, Tree__right]):=Mask[null, Tree__state(Heap[cur, Tree__right])] - perm];
@@ -7425,17 +7425,17 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         Heap := Heap[null, Tree__state#sm(cur):=Heap[null, Tree__state#sm(cur)][cur, Tree__right:=true]];
         if (Heap[cur, Tree__left] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_39: Ref, f_48: (Field A B) ::
-            { newPMask[o_39, f_48] }
-            Heap[null, Tree__state#sm(cur)][o_39, f_48] || Heap[null, Tree__state#sm(Heap[cur, Tree__left])][o_39, f_48] ==> newPMask[o_39, f_48]
+          assume (forall <A, B> o_36: Ref, f_63: (Field A B) ::
+            { newPMask[o_36, f_63] }
+            Heap[null, Tree__state#sm(cur)][o_36, f_63] || Heap[null, Tree__state#sm(Heap[cur, Tree__left])][o_36, f_63] ==> newPMask[o_36, f_63]
           );
           Heap := Heap[null, Tree__state#sm(cur):=newPMask];
         }
         if (Heap[cur, Tree__right] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_9: Ref, f_18: (Field A B) ::
-            { newPMask[o_9, f_18] }
-            Heap[null, Tree__state#sm(cur)][o_9, f_18] || Heap[null, Tree__state#sm(Heap[cur, Tree__right])][o_9, f_18] ==> newPMask[o_9, f_18]
+          assume (forall <A, B> o_49: Ref, f_29: (Field A B) ::
+            { newPMask[o_49, f_29] }
+            Heap[null, Tree__state#sm(cur)][o_49, f_29] || Heap[null, Tree__state#sm(Heap[cur, Tree__right])][o_49, f_29] ==> newPMask[o_49, f_29]
           );
           Heap := Heap[null, Tree__state#sm(cur):=newPMask];
         }
@@ -7443,17 +7443,17 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         assume state(Heap, Mask);
       
       // -- Translating statement: assert Tree__tolist(cur) == cur_contents[1..] -- testTreeWandE1.vpr@471.5--471.50
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of Tree__tolist(cur) == cur_contents[1..]
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (cur != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@471.12--471.29) [177311]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@471.12--471.29) [29009]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(cur)];
             }
             // Finish exhale
@@ -7463,7 +7463,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion Tree__tolist(cur) == cur_contents[1..] might not hold. (testTreeWandE1.vpr@471.12--471.50) [177312]"}
+        assert {:msg "  Assert might fail. Assertion Tree__tolist(cur) == cur_contents[1..] might not hold. (testTreeWandE1.vpr@471.12--471.50) [29010]"}
           Seq#Equal(Tree__tolist(Heap, cur), Seq#Drop(cur_contents, 1));
         assume state(Heap, Mask);
       
@@ -7471,11 +7471,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
   //   Tree__tolist(cur) == Tree__tolist(cur) -- testTreeWandE1.vpr@472.5--472.84
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@472.12--472.84) [177314]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@472.12--472.84) [29012]"}
             perm <= AssertMask[null, Tree__state(cur)];
         }
         AssertMask := AssertMask[null, Tree__state(cur):=AssertMask[null, Tree__state(cur)] - perm];
@@ -7483,11 +7483,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         // -- Check definedness of Tree__tolist(cur) == Tree__tolist(cur)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (cur != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@472.45--472.62) [177315]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@472.45--472.62) [29013]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(cur)];
             }
             // Finish exhale
@@ -7499,11 +7499,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (cur != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@472.66--472.83) [177316]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@472.66--472.83) [29014]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(cur)];
             }
             // Finish exhale
@@ -7513,7 +7513,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion Tree__tolist(cur) == Tree__tolist(cur) might not hold. (testTreeWandE1.vpr@472.12--472.84) [177317]"}
+        assert {:msg "  Assert might fail. Assertion Tree__tolist(cur) == Tree__tolist(cur) might not hold. (testTreeWandE1.vpr@472.12--472.84) [29015]"}
           Seq#Equal(Tree__tolist(AssertHeap, cur), Tree__tolist(AssertHeap, cur));
         assume state(Heap, Mask);
       
@@ -7521,11 +7521,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
   //   Tree__tolist(cur) == cur_contents[1..] -- testTreeWandE1.vpr@473.5--473.84
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@473.12--473.84) [177319]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@473.12--473.84) [29017]"}
             perm <= AssertMask[null, Tree__state(cur)];
         }
         AssertMask := AssertMask[null, Tree__state(cur):=AssertMask[null, Tree__state(cur)] - perm];
@@ -7533,11 +7533,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         // -- Check definedness of Tree__tolist(cur) == cur_contents[1..]
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (cur != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@473.45--473.62) [177320]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(cur) (testTreeWandE1.vpr@473.45--473.62) [29018]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(cur)];
             }
             // Finish exhale
@@ -7547,7 +7547,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion Tree__tolist(cur) == cur_contents[1..] might not hold. (testTreeWandE1.vpr@473.12--473.84) [177321]"}
+        assert {:msg "  Assert might fail. Assertion Tree__tolist(cur) == cur_contents[1..] might not hold. (testTreeWandE1.vpr@473.12--473.84) [29019]"}
           Seq#Equal(Tree__tolist(AssertHeap, cur), Seq#Drop(cur_contents, 1));
         assume state(Heap, Mask);
       
@@ -7556,27 +7556,27 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@474.5--474.77) [177322]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion vwand != null might not hold. (testTreeWandE1.vpr@474.5--474.77) [29020]"}
             vwand != null;
-          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@474.5--474.77) [177323]"}
+          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeWandE1.vpr@474.5--474.77) [29021]"}
             current_thread_id >= 0;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@474.5--474.77) [177324]"}
+            assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. There might be insufficient permission to access Wand_state_contains_for_state_contains__valid_wand(vwand) (testTreeWandE1.vpr@474.5--474.77) [29022]"}
               perm <= Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)];
           }
           Mask := Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand):=Mask[null, Wand_state_contains_for_state_contains__valid_wand(vwand)] - perm];
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. There might be insufficient permission to access Tree__state(Wand_state_contains_for_state_contains__get_in_1(vwand)) (testTreeWandE1.vpr@474.5--474.77) [177325]"}
+            assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. There might be insufficient permission to access Tree__state(Wand_state_contains_for_state_contains__get_in_1(vwand)) (testTreeWandE1.vpr@474.5--474.77) [29023]"}
               perm <= Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_in_1(Heap, vwand))];
           }
           Mask := Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_in_1(Heap, vwand)):=Mask[null, Tree__state(Wand_state_contains_for_state_contains__get_in_1(Heap, vwand))] - perm];
-          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion Tree__tolist(Wand_state_contains_for_state_contains__get_in_1(vwand)) == Wand_state_contains_for_state_contains__get_in_1_0(vwand) might not hold. (testTreeWandE1.vpr@474.5--474.77) [177326]"}
+          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion Tree__tolist(Wand_state_contains_for_state_contains__get_in_1(vwand)) == Wand_state_contains_for_state_contains__get_in_1_0(vwand) might not hold. (testTreeWandE1.vpr@474.5--474.77) [29024]"}
             Seq#Equal(Tree__tolist(Heap, Wand_state_contains_for_state_contains__get_in_1(Heap, vwand)), Wand_state_contains_for_state_contains__get_in_1_0(Heap, vwand));
-          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand) != null might not hold. (testTreeWandE1.vpr@474.5--474.77) [177327]"}
+          assert {:msg "  The precondition of method Wand_state_contains_for_state_contains___apply might not hold. Assertion Wand_state_contains_for_state_contains__get_out_1(vwand) != null might not hold. (testTreeWandE1.vpr@474.5--474.77) [29025]"}
             Wand_state_contains_for_state_contains__get_out_1(Heap, vwand) != null;
           // Finish exhale
           havoc ExhaleHeap;
@@ -7606,12 +7606,12 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
   //   (old(Tree__sorted(top)) ==> Tree__sorted(sys__result))) -- testTreeWandE1.vpr@477.5--477.196
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         if (sys__result != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@477.12--477.196) [177329]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@477.12--477.196) [29027]"}
               perm <= AssertMask[null, Tree__state(sys__result)];
           }
           AssertMask := AssertMask[null, Tree__state(sys__result):=AssertMask[null, Tree__state(sys__result)] - perm];
@@ -7620,11 +7620,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
         // -- Check definedness of old(Tree__tolist(top))[1..] == Tree__tolist(sys__result)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
+            ExhaleWellDef1Mask := oldMask;
             if (top != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@477.85--477.102) [177330]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@477.85--477.102) [29028]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, Tree__state(top)];
             }
             // Finish exhale
@@ -7633,11 +7633,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (sys__result != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@477.112--477.137) [177331]"}
+              assert {:msg "  Precondition of function Tree__tolist might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@477.112--477.137) [29029]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(sys__result)];
             }
             // Finish exhale
@@ -7647,17 +7647,17 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion old(Tree__tolist(top))[1..] == Tree__tolist(sys__result) might not hold. (testTreeWandE1.vpr@477.12--477.196) [177332]"}
+        assert {:msg "  Assert might fail. Assertion old(Tree__tolist(top))[1..] == Tree__tolist(sys__result) might not hold. (testTreeWandE1.vpr@477.12--477.196) [29030]"}
           Seq#Equal(Seq#Drop(Tree__tolist(oldHeap, top), 1), Tree__tolist(AssertHeap, sys__result));
         
         // -- Check definedness of old(Tree__sorted(top))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
+            ExhaleWellDef1Mask := oldMask;
             if (top != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@477.147--477.164) [177333]"}
+              assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(top) (testTreeWandE1.vpr@477.147--477.164) [29031]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, Tree__state(top)];
             }
             // Finish exhale
@@ -7669,11 +7669,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
           // -- Check definedness of Tree__sorted(sys__result)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               if (sys__result != null) {
                 perm := FullPerm;
-                assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@477.170--477.195) [177334]"}
+                assert {:msg "  Precondition of function Tree__sorted might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@477.170--477.195) [29032]"}
                   NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(sys__result)];
               }
               // Finish exhale
@@ -7683,7 +7683,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
               // Stop execution
               assume false;
             }
-          assert {:msg "  Assert might fail. Assertion Tree__sorted(sys__result) might not hold. (testTreeWandE1.vpr@477.12--477.196) [177335]"}
+          assert {:msg "  Assert might fail. Assertion Tree__sorted(sys__result) might not hold. (testTreeWandE1.vpr@477.12--477.196) [29033]"}
             Tree__sorted(AssertHeap, sys__result);
         }
         assume state(Heap, Mask);
@@ -7696,20 +7696,20 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (sys__result != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of Tree__del_min might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@379.11--379.73) [177336]"}
+        assert {:msg "  Postcondition of Tree__del_min might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeWandE1.vpr@379.11--379.73) [29034]"}
           perm <= Mask[null, Tree__state(sys__result)];
       }
       Mask := Mask[null, Tree__state(sys__result):=Mask[null, Tree__state(sys__result)] - perm];
     }
-    assert {:msg "  Postcondition of Tree__del_min might not hold. Assertion old(Tree__tolist(top))[1..] == Tree__tolist(sys__result) might not hold. (testTreeWandE1.vpr@380.11--380.67) [177337]"}
+    assert {:msg "  Postcondition of Tree__del_min might not hold. Assertion old(Tree__tolist(top))[1..] == Tree__tolist(sys__result) might not hold. (testTreeWandE1.vpr@380.11--380.67) [29035]"}
       Seq#Equal(Seq#Drop(Tree__tolist(oldHeap, top), 1), Tree__tolist(Heap, sys__result));
     if (Tree__sorted(oldHeap, top)) {
-      assert {:msg "  Postcondition of Tree__del_min might not hold. Assertion Tree__sorted(sys__result) might not hold. (testTreeWandE1.vpr@381.11--381.63) [177338]"}
+      assert {:msg "  Postcondition of Tree__del_min might not hold. Assertion Tree__sorted(sys__result) might not hold. (testTreeWandE1.vpr@381.11--381.63) [29036]"}
         Tree__sorted(Heap, sys__result);
     }
     // Finish exhale
@@ -7725,8 +7725,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, top: Ref) returns (sys
 procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -7736,8 +7736,8 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   var __flatten_84: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -7753,8 +7753,8 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -7768,7 +7768,7 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Tree__data == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__data (testTreeWandE1.vpr@485.11--485.78) [177339]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__data (testTreeWandE1.vpr@485.11--485.78) [29037]"}
         HasDirectPerm(PostMask, sys__result, Tree__data);
     assume PostHeap[sys__result, Tree__data] == 0;
     assume state(PostHeap, PostMask);
@@ -7778,7 +7778,7 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Tree__left == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__left (testTreeWandE1.vpr@486.11--486.81) [177340]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__left (testTreeWandE1.vpr@486.11--486.81) [29038]"}
         HasDirectPerm(PostMask, sys__result, Tree__left);
     assume PostHeap[sys__result, Tree__left] == null;
     assume state(PostHeap, PostMask);
@@ -7788,7 +7788,7 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Tree__right == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__right (testTreeWandE1.vpr@487.11--487.83) [177341]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__right (testTreeWandE1.vpr@487.11--487.83) [29039]"}
         HasDirectPerm(PostMask, sys__result, Tree__right);
     assume PostHeap[sys__result, Tree__right] == null;
     assume state(PostHeap, PostMask);
@@ -7818,19 +7818,19 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Tree__data := __flatten_84 -- testTreeWandE1.vpr@495.3--495.33
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__data (testTreeWandE1.vpr@495.3--495.33) [177342]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__data (testTreeWandE1.vpr@495.3--495.33) [29040]"}
       FullPerm == Mask[diz, Tree__data];
     Heap := Heap[diz, Tree__data:=__flatten_84];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Tree__left := null -- testTreeWandE1.vpr@496.3--496.25
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__left (testTreeWandE1.vpr@496.3--496.25) [177343]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__left (testTreeWandE1.vpr@496.3--496.25) [29041]"}
       FullPerm == Mask[diz, Tree__left];
     Heap := Heap[diz, Tree__left:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Tree__right := null -- testTreeWandE1.vpr@497.3--497.26
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__right (testTreeWandE1.vpr@497.3--497.26) [177344]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__right (testTreeWandE1.vpr@497.3--497.26) [29042]"}
       FullPerm == Mask[diz, Tree__right];
     Heap := Heap[diz, Tree__right:=null];
     assume state(Heap, Mask);
@@ -7845,45 +7845,45 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   //   (acc(sys__result.Tree__right, write) && sys__result.Tree__right == null))) -- testTreeWandE1.vpr@499.3--499.258
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@499.10--499.258) [177345]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@499.10--499.258) [29043]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__data (testTreeWandE1.vpr@499.10--499.258) [177347]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__data (testTreeWandE1.vpr@499.10--499.258) [29045]"}
         perm <= AssertMask[sys__result, Tree__data];
     }
     AssertMask := AssertMask[sys__result, Tree__data:=AssertMask[sys__result, Tree__data] - perm];
     
     // -- Check definedness of sys__result.Tree__data == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__data (testTreeWandE1.vpr@499.10--499.258) [177348]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__data (testTreeWandE1.vpr@499.10--499.258) [29046]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Tree__data);
-    assert {:msg "  Assert might fail. Assertion sys__result.Tree__data == 0 might not hold. (testTreeWandE1.vpr@499.10--499.258) [177349]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Tree__data == 0 might not hold. (testTreeWandE1.vpr@499.10--499.258) [29047]"}
       AssertHeap[sys__result, Tree__data] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__left (testTreeWandE1.vpr@499.10--499.258) [177351]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__left (testTreeWandE1.vpr@499.10--499.258) [29049]"}
         perm <= AssertMask[sys__result, Tree__left];
     }
     AssertMask := AssertMask[sys__result, Tree__left:=AssertMask[sys__result, Tree__left] - perm];
     
     // -- Check definedness of sys__result.Tree__left == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__left (testTreeWandE1.vpr@499.10--499.258) [177352]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__left (testTreeWandE1.vpr@499.10--499.258) [29050]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Tree__left);
-    assert {:msg "  Assert might fail. Assertion sys__result.Tree__left == null might not hold. (testTreeWandE1.vpr@499.10--499.258) [177353]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Tree__left == null might not hold. (testTreeWandE1.vpr@499.10--499.258) [29051]"}
       AssertHeap[sys__result, Tree__left] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__right (testTreeWandE1.vpr@499.10--499.258) [177355]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__right (testTreeWandE1.vpr@499.10--499.258) [29053]"}
         perm <= AssertMask[sys__result, Tree__right];
     }
     AssertMask := AssertMask[sys__result, Tree__right:=AssertMask[sys__result, Tree__right] - perm];
     
     // -- Check definedness of sys__result.Tree__right == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__right (testTreeWandE1.vpr@499.10--499.258) [177356]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__right (testTreeWandE1.vpr@499.10--499.258) [29054]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Tree__right);
-    assert {:msg "  Assert might fail. Assertion sys__result.Tree__right == null might not hold. (testTreeWandE1.vpr@499.10--499.258) [177357]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Tree__right == null might not hold. (testTreeWandE1.vpr@499.10--499.258) [29055]"}
       AssertHeap[sys__result, Tree__right] == null;
     assume state(Heap, Mask);
   
@@ -7893,33 +7893,33 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@484.11--484.30) [177358]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result != null might not hold. (testTreeWandE1.vpr@484.11--484.30) [29056]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__data (testTreeWandE1.vpr@485.11--485.78) [177359]"}
+      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__data (testTreeWandE1.vpr@485.11--485.78) [29057]"}
         perm <= Mask[sys__result, Tree__data];
     }
     Mask := Mask[sys__result, Tree__data:=Mask[sys__result, Tree__data] - perm];
-    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__data == 0 might not hold. (testTreeWandE1.vpr@485.11--485.78) [177360]"}
+    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__data == 0 might not hold. (testTreeWandE1.vpr@485.11--485.78) [29058]"}
       Heap[sys__result, Tree__data] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__left (testTreeWandE1.vpr@486.11--486.81) [177361]"}
+      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__left (testTreeWandE1.vpr@486.11--486.81) [29059]"}
         perm <= Mask[sys__result, Tree__left];
     }
     Mask := Mask[sys__result, Tree__left:=Mask[sys__result, Tree__left] - perm];
-    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__left == null might not hold. (testTreeWandE1.vpr@486.11--486.81) [177362]"}
+    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__left == null might not hold. (testTreeWandE1.vpr@486.11--486.81) [29060]"}
       Heap[sys__result, Tree__left] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__right (testTreeWandE1.vpr@487.11--487.83) [177363]"}
+      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__right (testTreeWandE1.vpr@487.11--487.83) [29061]"}
         perm <= Mask[sys__result, Tree__right];
     }
     Mask := Mask[sys__result, Tree__right:=Mask[sys__result, Tree__right] - perm];
-    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__right == null might not hold. (testTreeWandE1.vpr@487.11--487.83) [177364]"}
+    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__right == null might not hold. (testTreeWandE1.vpr@487.11--487.83) [29062]"}
       Heap[sys__result, Tree__right] == null;
     // Finish exhale
     havoc ExhaleHeap;

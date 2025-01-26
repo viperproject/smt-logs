@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:10:28
+// Date:         2025-01-26 21:45:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/packaging_nested.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/packaging_nested-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -513,7 +513,7 @@ procedure t01(x: Ref) returns ()
             havoc Used_3Heap;
             Used_3Mask := ZeroMask;
             b_6 := b_6 && state(Used_3Heap, Used_3Mask);
-            assert {:msg "  Packaging wand might fail. Assertion false might not hold. (packaging_nested.vpr@14.9--14.33) [133420]"}
+            assert {:msg "  Packaging wand might fail. Assertion false might not hold. (packaging_nested.vpr@14.9--14.33) [214216]"}
               (b_5 && (b_5 && (b_3 && b_1_1))) && b_6 ==> false;
             Ops_3Mask := Ops_3Mask[null, wand_2(true, false):=Ops_3Mask[null, wand_2(true, false)] + FullPerm];
             b_3 := b_3 && state(Ops_3Heap, Ops_3Mask);
@@ -552,7 +552,7 @@ procedure t01(x: Ref) returns ()
             }
           neededTransfer := 1.000000000;
           initNeededTransfer := Used_4Mask[null, wand_2(true, false)] + neededTransfer;
-          assert {:msg "  Packaging wand might fail. Fraction true --* false might be negative. (packaging_nested.vpr@13.5--15.6) [133421]"}
+          assert {:msg "  Packaging wand might fail. Fraction true --* false might be negative. (packaging_nested.vpr@13.5--15.6) [214217]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -611,7 +611,7 @@ procedure t01(x: Ref) returns ()
                 Mask := Mask[null, wand_2(true, false):=Mask[null, wand_2(true, false)] - takeTransfer];
               }
             }
-          assert {:msg "  Packaging wand might fail. Magic wand instance not found. (packaging_nested.vpr@13.5--15.6) [133422]"}
+          assert {:msg "  Packaging wand might fail. Magic wand instance not found. (packaging_nested.vpr@13.5--15.6) [214218]"}
             (b_3 && (b_3 && b_1_1)) && b_7 ==> neededTransfer == 0.000000000 && Used_4Mask[null, wand_2(true, false)] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -678,7 +678,7 @@ procedure t01(x: Ref) returns ()
         }
       neededTransfer := 1.000000000;
       initNeededTransfer := Used_5Mask[null, wand_1(false, true, false)] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction false --* true --* false might be negative. (packaging_nested.vpr@12.1--17.2) [133423]"}
+      assert {:msg "  Packaging wand might fail. Fraction false --* true --* false might be negative. (packaging_nested.vpr@12.1--17.2) [214219]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -718,7 +718,7 @@ procedure t01(x: Ref) returns ()
             Mask := Mask[null, wand_1(false, true, false):=Mask[null, wand_1(false, true, false)] - takeTransfer];
           }
         }
-      assert {:msg "  Packaging wand might fail. Magic wand instance not found. (packaging_nested.vpr@12.1--17.2) [133424]"}
+      assert {:msg "  Packaging wand might fail. Magic wand instance not found. (packaging_nested.vpr@12.1--17.2) [214220]"}
         (b_1_1 && b_1_1) && b_9 ==> neededTransfer == 0.000000000 && Used_5Mask[null, wand_1(false, true, false)] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -794,7 +794,7 @@ procedure t01(x: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (packaging_nested.vpr@19.8--19.45) [133425]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (packaging_nested.vpr@19.8--19.45) [214221]"}
       FullPerm <= Mask[null, wand(true, false, true, false)];
     Mask := Mask[null, wand(true, false, true, false):=Mask[null, wand(true, false, true, false)] - FullPerm];
     // Finish exhale
@@ -806,7 +806,7 @@ procedure t01(x: Ref) returns ()
   // -- Translating statement: assert false -- packaging_nested.vpr@22.1--22.13
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (packaging_nested.vpr@22.8--22.13) [133426]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (packaging_nested.vpr@22.8--22.13) [214222]"}
       false;
     assume state(Heap, Mask);
 }
@@ -903,7 +903,7 @@ procedure t03(x: Ref) returns ()
     if (b_12) {
       if (b_12) {
         perm := 1 / 2;
-        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (packaging_nested.vpr@30.1--32.2) [133427]"}
+        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (packaging_nested.vpr@30.1--32.2) [214223]"}
           perm >= NoPerm;
         b_12 := b_12 && (perm > NoPerm ==> x != null);
         Ops_7Mask := Ops_7Mask[x, f_7:=Ops_7Mask[x, f_7] + perm];
@@ -913,7 +913,7 @@ procedure t03(x: Ref) returns ()
         if (b_12) {
           
           // -- Check definedness of x.f == 2
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_nested.vpr@30.1--32.2) [133428]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_nested.vpr@30.1--32.2) [214224]"}
               HasDirectPerm(Ops_7Mask, x, f_7);
         }
         b_12 := b_12 && Ops_7Heap[x, f_7] == 2;
@@ -940,7 +940,7 @@ procedure t03(x: Ref) returns ()
         // Inhaling left hand side of current wand into hypothetical state
         if (b_14) {
           perm := 1 / 4;
-          assert {:msg "  Packaging wand might fail. Fraction 1 / 4 might be negative. (packaging_nested.vpr@31.5--31.44) [133429]"}
+          assert {:msg "  Packaging wand might fail. Fraction 1 / 4 might be negative. (packaging_nested.vpr@31.5--31.44) [214225]"}
             perm >= NoPerm;
           b_14 := b_14 && (perm > NoPerm ==> x != null);
           Ops_9Mask := Ops_9Mask[x, f_7:=Ops_9Mask[x, f_7] + perm];
@@ -963,7 +963,7 @@ procedure t03(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := 3 / 4;
           initNeededTransfer := Used_8Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 3 / 4) might be negative. (packaging_nested.vpr@31.5--31.44) [133430]"}
+          assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 3 / 4) might be negative. (packaging_nested.vpr@31.5--31.44) [214226]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -1027,7 +1027,7 @@ procedure t03(x: Ref) returns ()
                 Heap := Heap[null, wand_4#sm(x, 1 / 4, x, 3 / 4):=Heap[null, wand_4#sm(x, 1 / 4, x, 3 / 4)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_nested.vpr@31.5--31.44) [133431]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_nested.vpr@31.5--31.44) [214227]"}
             (b_14 && (b_14 && b_12)) && b_15 ==> neededTransfer == 0.000000000 && Used_8Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -1058,7 +1058,7 @@ procedure t03(x: Ref) returns ()
                 havoc WandDefLHSHeap;
                 WandDefLHSMask := ZeroMask;
                 perm := 1 / 4;
-                assert {:msg "  Packaging wand might fail. Fraction 1 / 4 might be negative. (packaging_nested.vpr@30.1--32.2) [133432]"}
+                assert {:msg "  Packaging wand might fail. Fraction 1 / 4 might be negative. (packaging_nested.vpr@30.1--32.2) [214228]"}
                   perm >= NoPerm;
                 assume perm > NoPerm ==> x != null;
                 WandDefLHSMask := WandDefLHSMask[x, f_7:=WandDefLHSMask[x, f_7] + perm];
@@ -1073,7 +1073,7 @@ procedure t03(x: Ref) returns ()
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
                 perm := 3 / 4;
-                assert {:msg "  Packaging wand might fail. Fraction 3 / 4 might be negative. (packaging_nested.vpr@30.1--32.2) [133433]"}
+                assert {:msg "  Packaging wand might fail. Fraction 3 / 4 might be negative. (packaging_nested.vpr@30.1--32.2) [214229]"}
                   perm >= NoPerm;
                 assume perm > NoPerm ==> x != null;
                 WandDefRHSMask := WandDefRHSMask[x, f_7:=WandDefRHSMask[x, f_7] + perm];
@@ -1085,7 +1085,7 @@ procedure t03(x: Ref) returns ()
         }
       neededTransfer := 1.000000000;
       initNeededTransfer := Used_9Mask[null, wand_4(x, 1 / 4, x, 3 / 4)] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 1 / 4) --* acc(x.f, 3 / 4) might be negative. (packaging_nested.vpr@30.1--32.2) [133434]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 1 / 4) --* acc(x.f, 3 / 4) might be negative. (packaging_nested.vpr@30.1--32.2) [214230]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -1125,7 +1125,7 @@ procedure t03(x: Ref) returns ()
             Mask := Mask[null, wand_4(x, 1 / 4, x, 3 / 4):=Mask[null, wand_4(x, 1 / 4, x, 3 / 4)] - takeTransfer];
           }
         }
-      assert {:msg "  Packaging wand might fail. Magic wand instance not found. (packaging_nested.vpr@30.1--32.2) [133435]"}
+      assert {:msg "  Packaging wand might fail. Magic wand instance not found. (packaging_nested.vpr@30.1--32.2) [214231]"}
         (b_12 && b_12) && b_17 ==> neededTransfer == 0.000000000 && Used_9Mask[null, wand_4(x, 1 / 4, x, 3 / 4)] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -1153,14 +1153,14 @@ procedure t03(x: Ref) returns ()
         havoc WandDefLHSHeap;
         WandDefLHSMask := ZeroMask;
         perm := 1 / 2;
-        assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (packaging_nested.vpr@36.8--36.63) [133436]"}
+        assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (packaging_nested.vpr@36.8--36.63) [214232]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> y != null;
         WandDefLHSMask := WandDefLHSMask[y, f_7:=WandDefLHSMask[y, f_7] + perm];
         assume state(WandDefLHSHeap, WandDefLHSMask);
         
         // -- Check definedness of y.f == 2
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (packaging_nested.vpr@36.8--36.63) [133437]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (packaging_nested.vpr@36.8--36.63) [214233]"}
             HasDirectPerm(WandDefLHSMask, y, f_7);
         assume WandDefLHSHeap[y, f_7] == 2;
         assume state(WandDefLHSHeap, WandDefLHSMask);
@@ -1178,7 +1178,7 @@ procedure t03(x: Ref) returns ()
             havoc WandDefLHSHeap;
             WandDefLHSMask := ZeroMask;
             perm := 1 / 4;
-            assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (packaging_nested.vpr@36.8--36.63) [133438]"}
+            assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (packaging_nested.vpr@36.8--36.63) [214234]"}
               perm >= NoPerm;
             assume perm > NoPerm ==> y != null;
             WandDefLHSMask := WandDefLHSMask[y, f_7:=WandDefLHSMask[y, f_7] + perm];
@@ -1193,7 +1193,7 @@ procedure t03(x: Ref) returns ()
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
             perm := 3 / 4;
-            assert {:msg "  Exhale might fail. Fraction 3 / 4 might be negative. (packaging_nested.vpr@36.8--36.63) [133439]"}
+            assert {:msg "  Exhale might fail. Fraction 3 / 4 might be negative. (packaging_nested.vpr@36.8--36.63) [214235]"}
               perm >= NoPerm;
             assume perm > NoPerm ==> y != null;
             WandDefRHSMask := WandDefRHSMask[y, f_7:=WandDefRHSMask[y, f_7] + perm];
@@ -1207,7 +1207,7 @@ procedure t03(x: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (packaging_nested.vpr@36.8--36.63) [133440]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (packaging_nested.vpr@36.8--36.63) [214236]"}
       FullPerm <= Mask[null, wand_3(y, 1 / 2, y, 2, y, 1 / 4, y, 3 / 4)];
     Mask := Mask[null, wand_3(y, 1 / 2, y, 2, y, 1 / 4, y, 3 / 4):=Mask[null, wand_3(y, 1 / 2, y, 2, y, 1 / 4, y, 3 / 4)] - FullPerm];
     // Finish exhale
@@ -1219,7 +1219,7 @@ procedure t03(x: Ref) returns ()
   // -- Translating statement: assert false -- packaging_nested.vpr@39.1--39.13
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (packaging_nested.vpr@39.8--39.13) [133441]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (packaging_nested.vpr@39.8--39.13) [214237]"}
       false;
     assume state(Heap, Mask);
 }

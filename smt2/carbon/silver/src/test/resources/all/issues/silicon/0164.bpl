@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:25
+// Date:         2025-01-26 21:42:32
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0164.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0164-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,11 +180,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure loopTrueFalse(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -199,8 +199,8 @@ procedure loopTrueFalse(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 1 -- 0164.vpr@7.3--7.9
     i := 1;
@@ -211,9 +211,9 @@ procedure loopTrueFalse(this: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant [true, false] might not hold on entry. Assertion false might not hold. (0164.vpr@10.15--10.28) [217236]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant [true, false] might not hold on entry. Assertion false might not hold. (0164.vpr@10.15--10.28) [60868]"}
           false;
     
     // -- Havoc loop written variables (except locals)
@@ -244,9 +244,9 @@ procedure loopTrueFalse(this: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant [true, false] might not be preserved. Assertion false might not hold. (0164.vpr@10.15--10.28) [217237]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant [true, false] might not be preserved. Assertion false might not hold. (0164.vpr@10.15--10.28) [60869]"}
           false;
         // Terminate execution
         assume false;
@@ -266,11 +266,11 @@ procedure loopTrueFalse(this: Ref) returns ()
 procedure loopFalse(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -285,8 +285,8 @@ procedure loopFalse(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 1 -- 0164.vpr@19.3--19.9
     i := 1;
@@ -297,9 +297,9 @@ procedure loopFalse(this: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant false might not hold on entry. Assertion false might not hold. (0164.vpr@22.15--22.20) [217238]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant false might not hold on entry. Assertion false might not hold. (0164.vpr@22.15--22.20) [60870]"}
           false;
     
     // -- Havoc loop written variables (except locals)
@@ -332,9 +332,9 @@ procedure loopFalse(this: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant false might not be preserved. Assertion false might not hold. (0164.vpr@22.15--22.20) [217239]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant false might not be preserved. Assertion false might not hold. (0164.vpr@22.15--22.20) [60871]"}
           false;
         // Terminate execution
         assume false;

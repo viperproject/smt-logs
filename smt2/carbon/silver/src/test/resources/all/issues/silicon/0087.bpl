@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:55
+// Date:         2025-01-26 21:42:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0087.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0087-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -245,7 +245,7 @@ procedure test01(b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     if (b_24) {
-      assert {:msg "  Postcondition of test01 might not hold. Assertion b might not hold. (0087.vpr@8.11--8.37) [218819]"}
+      assert {:msg "  Postcondition of test01 might not hold. Assertion b might not hold. (0087.vpr@8.11--8.37) [71010]"}
         b_24;
     }
 }
@@ -338,7 +338,7 @@ procedure test02(b1: bool, b2: bool, x: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of test02 might not hold. There might be insufficient permission to access x.f (0087.vpr@16.11--16.19) [218821]"}
+      assert {:msg "  Postcondition of test02 might not hold. There might be insufficient permission to access x.f (0087.vpr@16.11--16.19) [71012]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -402,7 +402,7 @@ procedure test03(x: Ref, b_24: bool, b1: bool, b2: bool) returns ()
             if (b2) {
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  The precondition of method test02 might not hold. There might be insufficient permission to access x.f (0087.vpr@26.5--26.22) [218823]"}
+                assert {:msg "  The precondition of method test02 might not hold. There might be insufficient permission to access x.f (0087.vpr@26.5--26.22) [71014]"}
                   perm <= Mask[x, f_7];
               }
               Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -424,13 +424,13 @@ procedure test03(x: Ref, b_24: bool, b1: bool, b2: bool) returns ()
       
       // -- Translating statement: inhale acc(x.f, 1 / 2) && acc(x.f, 1 / 2) -- 0087.vpr@28.5--28.42
         perm := 1 / 2;
-        assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (0087.vpr@28.12--28.42) [218824]"}
+        assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (0087.vpr@28.12--28.42) [71015]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> x != null;
         Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
         assume state(Heap, Mask);
         perm := 1 / 2;
-        assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (0087.vpr@28.12--28.42) [218825]"}
+        assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (0087.vpr@28.12--28.42) [71016]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> x != null;
         Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -449,7 +449,7 @@ procedure test03(x: Ref, b_24: bool, b1: bool, b2: bool) returns ()
             if (b2) {
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  The precondition of method test02 might not hold. There might be insufficient permission to access x.f (0087.vpr@29.5--29.22) [218826]"}
+                assert {:msg "  The precondition of method test02 might not hold. There might be insufficient permission to access x.f (0087.vpr@29.5--29.22) [71017]"}
                   perm <= Mask[x, f_7];
               }
               Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -476,18 +476,18 @@ procedure test03(x: Ref, b_24: bool, b1: bool, b2: bool) returns ()
     ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
     perm := 1 / 2;
-    assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0087.vpr@32.10--32.40) [218827]"}
+    assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0087.vpr@32.10--32.40) [71018]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0087.vpr@32.10--32.40) [218828]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0087.vpr@32.10--32.40) [71019]"}
         perm <= AssertMask[x, f_7];
     }
     AssertMask := AssertMask[x, f_7:=AssertMask[x, f_7] - perm];
     perm := 1 / 2;
-    assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0087.vpr@32.10--32.40) [218829]"}
+    assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0087.vpr@32.10--32.40) [71020]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0087.vpr@32.10--32.40) [218830]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0087.vpr@32.10--32.40) [71021]"}
         perm <= AssertMask[x, f_7];
     }
     AssertMask := AssertMask[x, f_7:=AssertMask[x, f_7] - perm];

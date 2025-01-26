@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:52
+// Date:         2025-01-26 21:42:13
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0176.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0176-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,10 +181,10 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type TDomainType;
 
 // Translation of domain function f
-function  f_198(i_79: int): TDomainType;
+function  f_68(i_6: int): TDomainType;
 
 // Translation of domain axiom a
 axiom (forall i: int ::
-  { (f_198(i): TDomainType) }
-  (f_198(i): TDomainType) != (f_198(i + 1): TDomainType)
+  { (f_68(i): TDomainType) }
+  (f_68(i): TDomainType) != (f_68(i + 1): TDomainType)
 );

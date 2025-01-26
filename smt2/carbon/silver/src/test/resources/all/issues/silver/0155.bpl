@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:24
+// Date:         2025-01-26 21:42:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0155.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0155-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -368,7 +368,7 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 // Translation of method foo
 // ==================================================
 
-procedure foo_1() returns ()
+procedure foo_3() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -391,7 +391,7 @@ procedure foo_1() returns ()
   // -- Translating statement: exhale g == (g union Set[Ref]()) -- 0155.vpr@6.3--6.28
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Exhale might fail. Assertion g == (g union Set[Ref]()) might not hold. (0155.vpr@6.10--6.28) [219781]"}
+    assert {:msg "  Exhale might fail. Assertion g == (g union Set[Ref]()) might not hold. (0155.vpr@6.10--6.28) [56502]"}
       Set#Equal(g_1, Set#Union(g_1, (Set#Empty(): Set Ref)));
     assume state(Heap, Mask);
 }

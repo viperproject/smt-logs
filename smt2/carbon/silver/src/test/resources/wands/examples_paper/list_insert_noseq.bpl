@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:04:14
+// Date:         2025-01-26 21:44:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/list_insert_noseq.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/list_insert_noseq-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_41: Ref, f_27: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_41, f_27] }
-  Heap[o_41, $allocated] ==> Heap[Heap[o_41, f_27], $allocated]
+axiom (forall o_23: Ref, f_15: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_23, f_15] }
+  Heap[o_23, $allocated] ==> Heap[Heap[o_23, f_15], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_42: Ref, f_48: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_42, f_48] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_42, f_48) ==> Heap[o_42, f_48] == ExhaleHeap[o_42, f_48]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_52: Ref, f_63: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_52, f_63] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_52, f_63) ==> Heap[o_52, f_63] == ExhaleHeap[o_52, f_63]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18), ExhaleHeap[null, PredicateMaskField(pm_f_18)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> Heap[null, PredicateMaskField(pm_f_18)] == ExhaleHeap[null, PredicateMaskField(pm_f_18)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_24), ExhaleHeap[null, PredicateMaskField(pm_f_24)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsPredicateField(pm_f_24) ==> Heap[null, PredicateMaskField(pm_f_24)] == ExhaleHeap[null, PredicateMaskField(pm_f_24)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_48: (Field A B) ::
-    { ExhaleHeap[o2_18, f_48] }
-    Heap[null, PredicateMaskField(pm_f_18)][o2_18, f_48] ==> Heap[o2_18, f_48] == ExhaleHeap[o2_18, f_48]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_24) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsPredicateField(pm_f_24) ==> (forall <A, B> o2_24: Ref, f_63: (Field A B) ::
+    { ExhaleHeap[o2_24, f_63] }
+    Heap[null, PredicateMaskField(pm_f_24)][o2_24, f_63] ==> Heap[o2_24, f_63] == ExhaleHeap[o2_24, f_63]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18), ExhaleHeap[null, WandMaskField(pm_f_18)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> Heap[null, WandMaskField(pm_f_18)] == ExhaleHeap[null, WandMaskField(pm_f_18)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_24), ExhaleHeap[null, WandMaskField(pm_f_24)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsWandField(pm_f_24) ==> Heap[null, WandMaskField(pm_f_24)] == ExhaleHeap[null, WandMaskField(pm_f_24)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_48: (Field A B) ::
-    { ExhaleHeap[o2_18, f_48] }
-    Heap[null, WandMaskField(pm_f_18)][o2_18, f_48] ==> Heap[o2_18, f_48] == ExhaleHeap[o2_18, f_48]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_24) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsWandField(pm_f_24) ==> (forall <A, B> o2_24: Ref, f_63: (Field A B) ::
+    { ExhaleHeap[o2_24, f_63] }
+    Heap[null, WandMaskField(pm_f_24)][o2_24, f_63] ==> Heap[o2_24, f_63] == ExhaleHeap[o2_24, f_63]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_42: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_42, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_42, $allocated] ==> ExhaleHeap[o_42, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_52: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_52, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_52, $allocated] ==> ExhaleHeap[o_52, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_41: Ref, f_44: (Field A B), v: B ::
-  { Heap[o_41, f_44:=v] }
-  succHeap(Heap, Heap[o_41, f_44:=v])
+axiom (forall <A, B> Heap: HeapType, o_23: Ref, f_65: (Field A B), v: B ::
+  { Heap[o_23, f_65:=v] }
+  succHeap(Heap, Heap[o_23, f_65:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -229,11 +229,11 @@ axiom !IsWandField(next);
 // ==================================================
 
 // Uninterpreted function definitions
-function  head_3(Heap: HeapType, xs: Ref): int;
+function  head_2(Heap: HeapType, xs: Ref): int;
 function  head'(Heap: HeapType, xs: Ref): int;
 axiom (forall Heap: HeapType, xs: Ref ::
-  { head_3(Heap, xs) }
-  head_3(Heap, xs) == head'(Heap, xs) && dummyFunction(head#triggerStateless(xs))
+  { head_2(Heap, xs) }
+  head_2(Heap, xs) == head'(Heap, xs) && dummyFunction(head#triggerStateless(xs))
 );
 axiom (forall Heap: HeapType, xs: Ref ::
   { head'(Heap, xs) }
@@ -242,8 +242,8 @@ axiom (forall Heap: HeapType, xs: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, xs: Ref ::
-  { state(Heap, Mask), head_3(Heap, xs) } { state(Heap, Mask), head#triggerStateless(xs), List#trigger(Heap, List(xs)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> head_3(Heap, xs) == Heap[xs, val]
+  { state(Heap, Mask), head_2(Heap, xs) } { state(Heap, Mask), head#triggerStateless(xs), List#trigger(Heap, List(xs)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> head_2(Heap, xs) == Heap[xs, val]
 );
 
 // Framing axioms
@@ -266,8 +266,8 @@ procedure head#definedness(xs: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -290,10 +290,10 @@ procedure head#definedness(xs: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(xs));
       assume UnfoldingHeap[null, List(xs)] == CombineFrames(FrameFragment(UnfoldingHeap[xs, val]), CombineFrames(FrameFragment(UnfoldingHeap[xs, next]), FrameFragment((if UnfoldingHeap[xs, next] != null then UnfoldingHeap[null, List(UnfoldingHeap[xs, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@24.1--26.33) [122379]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@24.1--26.33) [205189]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(xs)];
       perm := FullPerm;
       assume xs != null;
@@ -312,7 +312,7 @@ procedure head#definedness(xs: Ref) returns (Result: int)
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access xs.val (list_insert_noseq.vpr@24.1--26.33) [122380]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access xs.val (list_insert_noseq.vpr@24.1--26.33) [205190]"}
         HasDirectPerm(UnfoldingMask, xs, val);
       
       // -- Free assumptions (exp module)
@@ -320,9 +320,9 @@ procedure head#definedness(xs: Ref) returns (Result: int)
         Heap := Heap[null, List#sm(xs):=Heap[null, List#sm(xs)][xs, next:=true]];
         if (Heap[xs, next] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, List#sm(xs)][o_15, f_20] || Heap[null, List#sm(Heap[xs, next])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, List#sm(xs)][o_5, f_11] || Heap[null, List#sm(Heap[xs, next])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, List#sm(xs):=newPMask];
         }
@@ -390,12 +390,12 @@ procedure List#definedness(xs: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (list_insert_noseq.vpr@14.1--16.2) [122381]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (list_insert_noseq.vpr@14.1--16.2) [205191]"}
         HasDirectPerm(Mask, xs, next);
     if (Heap[xs, next] != null) {
       
       // -- Check definedness of acc(List(xs.next), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (list_insert_noseq.vpr@14.1--16.2) [122382]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (list_insert_noseq.vpr@14.1--16.2) [205192]"}
           HasDirectPerm(Mask, xs, next);
       perm := FullPerm;
       Mask := Mask[null, List(Heap[xs, next]):=Mask[null, List(Heap[xs, next])] + perm];
@@ -412,11 +412,11 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var crt: Ref;
@@ -429,13 +429,13 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
-  var arg_1: Ref;
+  var arg: Ref;
   var neededTransfer: Perm;
   var initNeededTransfer: Perm;
   var accVar2: bool;
@@ -448,8 +448,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   var ResultMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var loopHeap: HeapType;
@@ -462,8 +462,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs4Mask: MaskType;
   var Labellhs4Heap: HeapType;
+  var Labellhs4Mask: MaskType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -475,7 +475,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   var b_8: bool;
   var Result_2Heap: HeapType;
   var Result_2Mask: MaskType;
-  var arg_1_1: Ref;
+  var arg_1_13: Ref;
   var b_9: bool;
   var Result_3Heap: HeapType;
   var Result_3Mask: MaskType;
@@ -486,22 +486,22 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_11: bool;
-  var Labellhs7Mask: MaskType;
   var Labellhs7Heap: HeapType;
+  var Labellhs7Mask: MaskType;
   var b_12: bool;
   var Result_5Heap: HeapType;
   var Result_5Mask: MaskType;
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
   var b_13: bool;
-  var arg_2: Ref;
+  var arg_2_13: Ref;
   var b_14: bool;
   var Result_6Heap: HeapType;
   var Result_6Mask: MaskType;
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
   var b_15: bool;
-  var arg_3: Ref;
+  var arg_3_13: Ref;
   var b_16: bool;
   var Result_7Heap: HeapType;
   var Result_7Mask: MaskType;
@@ -526,10 +526,10 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     // -- Check definedness of head(xs) < x
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function head might not hold. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@33.12--33.20) [122383]"}
+        assert {:msg "  Precondition of function head might not hold. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@33.12--33.20) [205193]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(xs)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -538,14 +538,14 @@ procedure insert(xs: Ref, x: int) returns (i: int)
         // Stop execution
         assume false;
       }
-    assume head_3(Heap, xs) < x;
+    assume head_2(Heap, xs) < x;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -571,11 +571,11 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   // -- Translating statement: unfold acc(List(xs), write) -- list_insert_noseq.vpr@44.3--44.18
     assume List#trigger(Heap, List(xs));
     assume Heap[null, List(xs)] == CombineFrames(FrameFragment(Heap[xs, val]), CombineFrames(FrameFragment(Heap[xs, next]), FrameFragment((if Heap[xs, next] != null then Heap[null, List(Heap[xs, next])] else EmptyFrame))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding List(xs) might fail. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@44.3--44.18) [122386]"}
+      assert {:msg "  Unfolding List(xs) might fail. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@44.3--44.18) [205196]"}
         perm <= Mask[null, List(xs)];
     }
     Mask := Mask[null, List(xs):=Mask[null, List(xs)] - perm];
@@ -611,7 +611,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   // -- Translating statement: nxt := xs.next -- list_insert_noseq.vpr@46.3--46.17
     
     // -- Check definedness of xs.next
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (list_insert_noseq.vpr@46.3--46.17) [122390]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (list_insert_noseq.vpr@46.3--46.17) [205200]"}
         HasDirectPerm(Mask, xs, next);
     nxt := Heap[xs, next];
     assume state(Heap, Mask);
@@ -635,8 +635,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     
     // -- Translating statement: label lhs1 -- list_insert_noseq.vpr@48.11--48.18
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(List(xs), write)
@@ -645,10 +645,10 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
     
     // -- Transfer of acc(List(xs), write)
-      arg_1 := xs;
+      arg := xs;
       neededTransfer := FullPerm;
-      initNeededTransfer := Used_1Mask[null, List(arg_1)] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(List(xs), write) might be negative. (list_insert_noseq.vpr@48.3--48.18) [122391]"}
+      initNeededTransfer := Used_1Mask[null, List(arg)] + neededTransfer;
+      assert {:msg "  Packaging wand might fail. Fraction acc(List(xs), write) might be negative. (list_insert_noseq.vpr@48.3--48.18) [205201]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -656,7 +656,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_1_1 && b_1_1) && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Ops_1Mask[null, List(arg_1)];
+          maskTransfer := Ops_1Mask[null, List(arg)];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -664,11 +664,11 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_1Mask := Used_1Mask[null, List(arg_1):=Used_1Mask[null, List(arg_1)] + takeTransfer];
+            Used_1Mask := Used_1Mask[null, List(arg):=Used_1Mask[null, List(arg)] + takeTransfer];
             b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-            TempMask := ZeroMask[null, List(arg_1):=FullPerm];
+            TempMask := ZeroMask[null, List(arg):=FullPerm];
             b_2_1 := b_2_1 && IdenticalOnKnownLocations(Ops_1Heap, Used_1Heap, TempMask);
-            Ops_1Mask := Ops_1Mask[null, List(arg_1):=Ops_1Mask[null, List(arg_1)] - takeTransfer];
+            Ops_1Mask := Ops_1Mask[null, List(arg):=Ops_1Mask[null, List(arg)] - takeTransfer];
           }
         }
       
@@ -677,7 +677,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_1_1 && b_1_1) && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Mask[null, List(arg_1)];
+          maskTransfer := Mask[null, List(arg)];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -685,21 +685,21 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_1Mask := Used_1Mask[null, List(arg_1):=Used_1Mask[null, List(arg_1)] + takeTransfer];
+            Used_1Mask := Used_1Mask[null, List(arg):=Used_1Mask[null, List(arg)] + takeTransfer];
             b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-            TempMask := ZeroMask[null, List(arg_1):=FullPerm];
+            TempMask := ZeroMask[null, List(arg):=FullPerm];
             b_2_1 := b_2_1 && IdenticalOnKnownLocations(Heap, Used_1Heap, TempMask);
-            Mask := Mask[null, List(arg_1):=Mask[null, List(arg_1)] - takeTransfer];
+            Mask := Mask[null, List(arg):=Mask[null, List(arg)] - takeTransfer];
             havoc newPMask;
-            assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-              { newPMask[o_16, f_21] }
-              Heap[null, wand#sm(crt, xs)][o_16, f_21] || Heap[null, List#sm(xs)][o_16, f_21] ==> newPMask[o_16, f_21]
+            assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+              { newPMask[o_6, f_12] }
+              Heap[null, wand#sm(crt, xs)][o_6, f_12] || Heap[null, List#sm(xs)][o_6, f_12] ==> newPMask[o_6, f_12]
             );
             Heap := Heap[null, wand#sm(crt, xs):=newPMask];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@48.3--48.18) [122392]"}
-        (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, List(arg_1)] == initNeededTransfer;
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@48.3--48.18) [205202]"}
+        (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, List(arg)] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
         b_3 := b_1_1 && b_2_1;
@@ -718,32 +718,32 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(crt.val, write) && acc(crt.next, write) might not hold on entry. There might be insufficient permission to access crt.val (list_insert_noseq.vpr@57.15--57.44) [122393]"}
+          assert {:msg "  Loop invariant acc(crt.val, write) && acc(crt.next, write) might not hold on entry. There might be insufficient permission to access crt.val (list_insert_noseq.vpr@57.15--57.44) [205203]"}
             perm <= Mask[crt, val];
         }
         Mask := Mask[crt, val:=Mask[crt, val] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(crt.val, write) && acc(crt.next, write) might not hold on entry. There might be insufficient permission to access crt.next (list_insert_noseq.vpr@57.15--57.44) [122394]"}
+          assert {:msg "  Loop invariant acc(crt.val, write) && acc(crt.next, write) might not hold on entry. There might be insufficient permission to access crt.next (list_insert_noseq.vpr@57.15--57.44) [205204]"}
             perm <= Mask[crt, next];
         }
         Mask := Mask[crt, next:=Mask[crt, next] - perm];
-        assert {:msg "  Loop invariant nxt == crt.next might not hold on entry. Assertion nxt == crt.next might not hold. (list_insert_noseq.vpr@58.15--58.30) [122395]"}
+        assert {:msg "  Loop invariant nxt == crt.next might not hold on entry. Assertion nxt == crt.next might not hold. (list_insert_noseq.vpr@58.15--58.30) [205205]"}
           nxt == Heap[crt, next];
         if (nxt != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant nxt != null ==> acc(List(nxt), write) might not hold on entry. There might be insufficient permission to access List(nxt) (list_insert_noseq.vpr@60.15--60.47) [122396]"}
+            assert {:msg "  Loop invariant nxt != null ==> acc(List(nxt), write) might not hold on entry. There might be insufficient permission to access List(nxt) (list_insert_noseq.vpr@60.15--60.47) [205206]"}
               perm <= Mask[null, List(nxt)];
           }
           Mask := Mask[null, List(nxt):=Mask[null, List(nxt)] - perm];
         }
         // permLe
-        assert {:msg "  Loop invariant acc(List(crt), write) --* acc(List(xs), write) might not hold on entry. Magic wand instance not found. (list_insert_noseq.vpr@61.15--61.22) [122397]"}
+        assert {:msg "  Loop invariant acc(List(crt), write) --* acc(List(xs), write) might not hold on entry. Magic wand instance not found. (list_insert_noseq.vpr@61.15--61.22) [205207]"}
           FullPerm <= Mask[null, wand(crt, xs)];
         Mask := Mask[null, wand(crt, xs):=Mask[null, wand(crt, xs)] - FullPerm];
         // Finish exhale
@@ -769,7 +769,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of nxt == crt.next
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access crt.next (list_insert_noseq.vpr@58.15--58.30) [122398]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access crt.next (list_insert_noseq.vpr@58.15--58.30) [205208]"}
             HasDirectPerm(Mask, crt, next);
         assume nxt == Heap[crt, next];
         assume state(Heap, Mask);
@@ -791,8 +791,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             
             // -- Translating statement: label lhs3 -- list_insert_noseq.vpr@61.15--61.22
               lhs3:
-              Labellhs3Mask := WandDefLHSMask;
               Labellhs3Heap := WandDefLHSHeap;
+              Labellhs3Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -839,10 +839,10 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           if (nxt != null) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function head might not hold. There might be insufficient permission to access List(nxt) (list_insert_noseq.vpr@54.25--54.34) [122399]"}
+              assert {:msg "  Precondition of function head might not hold. There might be insufficient permission to access List(nxt) (list_insert_noseq.vpr@54.25--54.34) [205209]"}
                 NoPerm < perm ==> NoPerm < Mask[null, List(nxt)];
               // Finish exhale
               havoc ExhaleHeap;
@@ -852,7 +852,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
               assume false;
             }
           }
-        assume nxt != null && head_3(Heap, nxt) < x;
+        assume nxt != null && head_2(Heap, nxt) < x;
         assume state(Heap, Mask);
         
         // -- Translate loop body
@@ -872,11 +872,11 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           // -- Translating statement: unfold acc(List(nxt), write) -- list_insert_noseq.vpr@68.5--68.21
             assume List#trigger(Heap, List(nxt));
             assume Heap[null, List(nxt)] == CombineFrames(FrameFragment(Heap[nxt, val]), CombineFrames(FrameFragment(Heap[nxt, next]), FrameFragment((if Heap[nxt, next] != null then Heap[null, List(Heap[nxt, next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding List(nxt) might fail. There might be insufficient permission to access List(nxt) (list_insert_noseq.vpr@68.5--68.21) [122400]"}
+              assert {:msg "  Unfolding List(nxt) might fail. There might be insufficient permission to access List(nxt) (list_insert_noseq.vpr@68.5--68.21) [205210]"}
                 perm <= Mask[null, List(nxt)];
             }
             Mask := Mask[null, List(nxt):=Mask[null, List(nxt)] - perm];
@@ -912,7 +912,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           // -- Translating statement: nxt := nxt.next -- list_insert_noseq.vpr@70.5--70.20
             
             // -- Check definedness of nxt.next
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access nxt.next (list_insert_noseq.vpr@70.5--70.20) [122401]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access nxt.next (list_insert_noseq.vpr@70.5--70.20) [205211]"}
                 HasDirectPerm(Mask, nxt, next);
             nxt := Heap[nxt, next];
             assume state(Heap, Mask);
@@ -942,15 +942,15 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             
             // -- Translating statement: label lhs4 -- list_insert_noseq.vpr@73.13--73.22
               lhs4:
-              Labellhs4Mask := Ops_3Mask;
               Labellhs4Heap := Ops_3Heap;
+              Labellhs4Mask := Ops_3Mask;
               b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
             boolCur_1 := true;
             if (b_5) {
               
               // -- Translating statement: fold acc(List(prev), write) -- list_insert_noseq.vpr@74.9--74.24
-                ExhaleWellDef0Mask := Ops_3Mask;
                 ExhaleWellDef0Heap := Ops_3Heap;
+                ExhaleWellDef0Mask := Ops_3Mask;
                 havoc Used_3Heap;
                 Used_3Mask := ZeroMask;
                 b_6 := b_6 && state(Used_3Heap, Used_3Mask);
@@ -959,7 +959,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                   rcvLocal := prev;
                   neededTransfer := FullPerm;
                   initNeededTransfer := Used_3Mask[rcvLocal, val] + neededTransfer;
-                  assert {:msg "  Folding List(prev) might fail. Fraction acc(prev.val, write) might be negative. (list_insert_noseq.vpr@74.9--74.24) [122402]"}
+                  assert {:msg "  Folding List(prev) might fail. Fraction acc(prev.val, write) might be negative. (list_insert_noseq.vpr@74.9--74.24) [205212]"}
                     neededTransfer >= 0.000000000;
                   
                   // -- transfer code for top state of stack
@@ -1002,7 +1002,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                         Heap := Heap[null, wand#sm(crt, xs):=Heap[null, wand#sm(crt, xs)][prev, val:=true]];
                       }
                     }
-                  assert {:msg "  Folding List(prev) might fail. There might be insufficient permission to access prev.val (list_insert_noseq.vpr@74.9--74.24) [122403]"}
+                  assert {:msg "  Folding List(prev) might fail. There might be insufficient permission to access prev.val (list_insert_noseq.vpr@74.9--74.24) [205213]"}
                     b_5 && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, val] == initNeededTransfer;
                   
                   // -- Creating state which is the sum of the two previously built up states
@@ -1019,7 +1019,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                   rcvLocal := prev;
                   neededTransfer := FullPerm;
                   initNeededTransfer := Used_3Mask[rcvLocal, next] + neededTransfer;
-                  assert {:msg "  Folding List(prev) might fail. Fraction acc(prev.next, write) might be negative. (list_insert_noseq.vpr@74.9--74.24) [122404]"}
+                  assert {:msg "  Folding List(prev) might fail. Fraction acc(prev.next, write) might be negative. (list_insert_noseq.vpr@74.9--74.24) [205214]"}
                     neededTransfer >= 0.000000000;
                   
                   // -- transfer code for top state of stack
@@ -1062,7 +1062,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                         Heap := Heap[null, wand#sm(crt, xs):=Heap[null, wand#sm(crt, xs)][prev, next:=true]];
                       }
                     }
-                  assert {:msg "  Folding List(prev) might fail. There might be insufficient permission to access prev.next (list_insert_noseq.vpr@74.9--74.24) [122405]"}
+                  assert {:msg "  Folding List(prev) might fail. There might be insufficient permission to access prev.next (list_insert_noseq.vpr@74.9--74.24) [205215]"}
                     b_5 && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, next] == initNeededTransfer;
                   
                   // -- Creating state which is the sum of the two previously built up states
@@ -1083,14 +1083,14 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                         if (b_5) {
                           
                           // -- Check definedness of acc(List(prev.next), write)
-                            assert {:msg "  Folding List(prev) might fail. There might be insufficient permission to access prev.next (list_insert_noseq.vpr@74.9--74.24) [122406]"}
+                            assert {:msg "  Folding List(prev) might fail. There might be insufficient permission to access prev.next (list_insert_noseq.vpr@74.9--74.24) [205216]"}
                               HasDirectPerm(Result_2Mask, prev, next);
                         }
                       }
-                    arg_1_1 := Result_2Heap[prev, next];
+                    arg_1_13 := Result_2Heap[prev, next];
                     neededTransfer := FullPerm;
-                    initNeededTransfer := Used_3Mask[null, List(arg_1_1)] + neededTransfer;
-                    assert {:msg "  Folding List(prev) might fail. Fraction acc(List(prev.next), write) might be negative. (list_insert_noseq.vpr@74.9--74.24) [122407]"}
+                    initNeededTransfer := Used_3Mask[null, List(arg_1_13)] + neededTransfer;
+                    assert {:msg "  Folding List(prev) might fail. Fraction acc(List(prev.next), write) might be negative. (list_insert_noseq.vpr@74.9--74.24) [205217]"}
                       neededTransfer >= 0.000000000;
                     
                     // -- transfer code for top state of stack
@@ -1098,7 +1098,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                       accVar2 := true;
                       // actual code for the transfer from current state on stack
                       if (((b_5 && b_6) && accVar2) && neededTransfer > 0.000000000) {
-                        maskTransfer := Ops_3Mask[null, List(arg_1_1)];
+                        maskTransfer := Ops_3Mask[null, List(arg_1_13)];
                         if (neededTransfer <= maskTransfer) {
                           takeTransfer := neededTransfer;
                         } else {
@@ -1106,11 +1106,11 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                         }
                         if (takeTransfer > 0.000000000) {
                           neededTransfer := neededTransfer - takeTransfer;
-                          Used_3Mask := Used_3Mask[null, List(arg_1_1):=Used_3Mask[null, List(arg_1_1)] + takeTransfer];
+                          Used_3Mask := Used_3Mask[null, List(arg_1_13):=Used_3Mask[null, List(arg_1_13)] + takeTransfer];
                           b_6 := b_6 && state(Used_3Heap, Used_3Mask);
-                          TempMask := ZeroMask[null, List(arg_1_1):=FullPerm];
+                          TempMask := ZeroMask[null, List(arg_1_13):=FullPerm];
                           b_6 := b_6 && IdenticalOnKnownLocations(Ops_3Heap, Used_3Heap, TempMask);
-                          Ops_3Mask := Ops_3Mask[null, List(arg_1_1):=Ops_3Mask[null, List(arg_1_1)] - takeTransfer];
+                          Ops_3Mask := Ops_3Mask[null, List(arg_1_13):=Ops_3Mask[null, List(arg_1_13)] - takeTransfer];
                         }
                       }
                     
@@ -1119,7 +1119,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                       accVar2 := true;
                       // actual code for the transfer from current state on stack
                       if (((b_5 && b_6) && accVar2) && neededTransfer > 0.000000000) {
-                        maskTransfer := Mask[null, List(arg_1_1)];
+                        maskTransfer := Mask[null, List(arg_1_13)];
                         if (neededTransfer <= maskTransfer) {
                           takeTransfer := neededTransfer;
                         } else {
@@ -1127,21 +1127,21 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                         }
                         if (takeTransfer > 0.000000000) {
                           neededTransfer := neededTransfer - takeTransfer;
-                          Used_3Mask := Used_3Mask[null, List(arg_1_1):=Used_3Mask[null, List(arg_1_1)] + takeTransfer];
+                          Used_3Mask := Used_3Mask[null, List(arg_1_13):=Used_3Mask[null, List(arg_1_13)] + takeTransfer];
                           b_6 := b_6 && state(Used_3Heap, Used_3Mask);
-                          TempMask := ZeroMask[null, List(arg_1_1):=FullPerm];
+                          TempMask := ZeroMask[null, List(arg_1_13):=FullPerm];
                           b_6 := b_6 && IdenticalOnKnownLocations(Heap, Used_3Heap, TempMask);
-                          Mask := Mask[null, List(arg_1_1):=Mask[null, List(arg_1_1)] - takeTransfer];
+                          Mask := Mask[null, List(arg_1_13):=Mask[null, List(arg_1_13)] - takeTransfer];
                           havoc newPMask;
-                          assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-                            { newPMask[o_52, f_55] }
-                            Heap[null, wand#sm(crt, xs)][o_52, f_55] || Heap[null, List#sm(Heap[prev, next])][o_52, f_55] ==> newPMask[o_52, f_55]
+                          assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+                            { newPMask[o_40, f_52] }
+                            Heap[null, wand#sm(crt, xs)][o_40, f_52] || Heap[null, List#sm(Heap[prev, next])][o_40, f_52] ==> newPMask[o_40, f_52]
                           );
                           Heap := Heap[null, wand#sm(crt, xs):=newPMask];
                         }
                       }
-                    assert {:msg "  Folding List(prev) might fail. There might be insufficient permission to access List(prev.next) (list_insert_noseq.vpr@74.9--74.24) [122408]"}
-                      b_5 && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[null, List(arg_1_1)] == initNeededTransfer;
+                    assert {:msg "  Folding List(prev) might fail. There might be insufficient permission to access List(prev.next) (list_insert_noseq.vpr@74.9--74.24) [205218]"}
+                      b_5 && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[null, List(arg_1_13)] == initNeededTransfer;
                     
                     // -- Creating state which is the sum of the two previously built up states
                       b_9 := b_5 && b_6;
@@ -1177,9 +1177,9 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                 Ops_3Heap := Ops_3Heap[null, List#sm(prev):=Ops_3Heap[null, List#sm(prev)][prev, next:=true]];
                 if (Ops_3Heap[prev, next] != null) {
                   havoc newPMask;
-                  assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-                    { newPMask[o_53, f_56] }
-                    Ops_3Heap[null, List#sm(prev)][o_53, f_56] || Ops_3Heap[null, List#sm(Ops_3Heap[prev, next])][o_53, f_56] ==> newPMask[o_53, f_56]
+                  assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+                    { newPMask[o_42, f_55] }
+                    Ops_3Heap[null, List#sm(prev)][o_42, f_55] || Ops_3Heap[null, List#sm(Ops_3Heap[prev, next])][o_42, f_55] ==> newPMask[o_42, f_55]
                   );
                   Ops_3Heap := Ops_3Heap[null, List#sm(prev):=newPMask];
                 }
@@ -1191,8 +1191,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
               // -- Translating statement: apply acc(List(oldCrt), write) --* acc(List(xs), write) -- list_insert_noseq.vpr@75.9--75.50
                 
                 // -- check if wand is held and remove an instance
-                  ExhaleWellDef0Mask := Ops_3Mask;
                   ExhaleWellDef0Heap := Ops_3Heap;
+                  ExhaleWellDef0Mask := Ops_3Mask;
                   havoc Used_4Heap;
                   Used_4Mask := ZeroMask;
                   b_11 := b_11 && state(Used_4Heap, Used_4Mask);
@@ -1214,8 +1214,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                               
                               // -- Translating statement: label lhs7 -- list_insert_noseq.vpr@75.15--75.50
                                 lhs7:
-                                Labellhs7Mask := WandDefLHSMask;
                                 Labellhs7Heap := WandDefLHSHeap;
+                                Labellhs7Mask := WandDefLHSMask;
                                 assume state(WandDefLHSHeap, WandDefLHSMask);
                               havoc WandDefRHSHeap;
                               WandDefRHSMask := ZeroMask;
@@ -1229,7 +1229,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                       }
                     neededTransfer := 1.000000000;
                     initNeededTransfer := Used_4Mask[null, wand(oldCrt, xs)] + neededTransfer;
-                    assert {:msg "  Applying wand might fail. Fraction acc(List(oldCrt), write) --* acc(List(xs), write) might be negative. (list_insert_noseq.vpr@75.9--75.50) [122409]"}
+                    assert {:msg "  Applying wand might fail. Fraction acc(List(oldCrt), write) --* acc(List(xs), write) might be negative. (list_insert_noseq.vpr@75.9--75.50) [205219]"}
                       neededTransfer >= 0.000000000;
                     
                     // -- transfer code for top state of stack
@@ -1269,7 +1269,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                           Mask := Mask[null, wand(oldCrt, xs):=Mask[null, wand(oldCrt, xs)] - takeTransfer];
                         }
                       }
-                    assert {:msg "  Applying wand might fail. Magic wand instance not found. (list_insert_noseq.vpr@75.9--75.50) [122410]"}
+                    assert {:msg "  Applying wand might fail. Magic wand instance not found. (list_insert_noseq.vpr@75.9--75.50) [205220]"}
                       b_5 && b_11 ==> neededTransfer == 0.000000000 && Used_4Mask[null, wand(oldCrt, xs)] == initNeededTransfer;
                     
                     // -- Creating state which is the sum of the two previously built up states
@@ -1284,17 +1284,17 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                 b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
                 
                 // -- check if LHS holds and remove permissions 
-                  ExhaleWellDef0Mask := Ops_3Mask;
                   ExhaleWellDef0Heap := Ops_3Heap;
+                  ExhaleWellDef0Mask := Ops_3Mask;
                   havoc Used_5Heap;
                   Used_5Mask := ZeroMask;
                   b_13 := b_13 && state(Used_5Heap, Used_5Mask);
                   
                   // -- Transfer of acc(List(oldCrt), write)
-                    arg_2 := oldCrt;
+                    arg_2_13 := oldCrt;
                     neededTransfer := FullPerm;
-                    initNeededTransfer := Used_5Mask[null, List(arg_2)] + neededTransfer;
-                    assert {:msg "  Applying wand might fail. Fraction acc(List(oldCrt), write) might be negative. (list_insert_noseq.vpr@75.9--75.50) [122411]"}
+                    initNeededTransfer := Used_5Mask[null, List(arg_2_13)] + neededTransfer;
+                    assert {:msg "  Applying wand might fail. Fraction acc(List(oldCrt), write) might be negative. (list_insert_noseq.vpr@75.9--75.50) [205221]"}
                       neededTransfer >= 0.000000000;
                     
                     // -- transfer code for top state of stack
@@ -1302,7 +1302,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                       accVar2 := true;
                       // actual code for the transfer from current state on stack
                       if (((b_5 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                        maskTransfer := Ops_3Mask[null, List(arg_2)];
+                        maskTransfer := Ops_3Mask[null, List(arg_2_13)];
                         if (neededTransfer <= maskTransfer) {
                           takeTransfer := neededTransfer;
                         } else {
@@ -1310,11 +1310,11 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                         }
                         if (takeTransfer > 0.000000000) {
                           neededTransfer := neededTransfer - takeTransfer;
-                          Used_5Mask := Used_5Mask[null, List(arg_2):=Used_5Mask[null, List(arg_2)] + takeTransfer];
+                          Used_5Mask := Used_5Mask[null, List(arg_2_13):=Used_5Mask[null, List(arg_2_13)] + takeTransfer];
                           b_13 := b_13 && state(Used_5Heap, Used_5Mask);
-                          TempMask := ZeroMask[null, List(arg_2):=FullPerm];
+                          TempMask := ZeroMask[null, List(arg_2_13):=FullPerm];
                           b_13 := b_13 && IdenticalOnKnownLocations(Ops_3Heap, Used_5Heap, TempMask);
-                          Ops_3Mask := Ops_3Mask[null, List(arg_2):=Ops_3Mask[null, List(arg_2)] - takeTransfer];
+                          Ops_3Mask := Ops_3Mask[null, List(arg_2_13):=Ops_3Mask[null, List(arg_2_13)] - takeTransfer];
                         }
                       }
                     
@@ -1323,7 +1323,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                       accVar2 := true;
                       // actual code for the transfer from current state on stack
                       if (((b_5 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                        maskTransfer := Mask[null, List(arg_2)];
+                        maskTransfer := Mask[null, List(arg_2_13)];
                         if (neededTransfer <= maskTransfer) {
                           takeTransfer := neededTransfer;
                         } else {
@@ -1331,21 +1331,21 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                         }
                         if (takeTransfer > 0.000000000) {
                           neededTransfer := neededTransfer - takeTransfer;
-                          Used_5Mask := Used_5Mask[null, List(arg_2):=Used_5Mask[null, List(arg_2)] + takeTransfer];
+                          Used_5Mask := Used_5Mask[null, List(arg_2_13):=Used_5Mask[null, List(arg_2_13)] + takeTransfer];
                           b_13 := b_13 && state(Used_5Heap, Used_5Mask);
-                          TempMask := ZeroMask[null, List(arg_2):=FullPerm];
+                          TempMask := ZeroMask[null, List(arg_2_13):=FullPerm];
                           b_13 := b_13 && IdenticalOnKnownLocations(Heap, Used_5Heap, TempMask);
-                          Mask := Mask[null, List(arg_2):=Mask[null, List(arg_2)] - takeTransfer];
+                          Mask := Mask[null, List(arg_2_13):=Mask[null, List(arg_2_13)] - takeTransfer];
                           havoc newPMask;
-                          assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-                            { newPMask[o_26, f_29] }
-                            Heap[null, wand#sm(crt, xs)][o_26, f_29] || Heap[null, List#sm(oldCrt)][o_26, f_29] ==> newPMask[o_26, f_29]
+                          assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+                            { newPMask[o_46, f_60] }
+                            Heap[null, wand#sm(crt, xs)][o_46, f_60] || Heap[null, List#sm(oldCrt)][o_46, f_60] ==> newPMask[o_46, f_60]
                           );
                           Heap := Heap[null, wand#sm(crt, xs):=newPMask];
                         }
                       }
-                    assert {:msg "  Applying wand might fail. There might be insufficient permission to access List(oldCrt) (list_insert_noseq.vpr@75.9--75.50) [122412]"}
-                      b_5 && b_13 ==> neededTransfer == 0.000000000 && Used_5Mask[null, List(arg_2)] == initNeededTransfer;
+                    assert {:msg "  Applying wand might fail. There might be insufficient permission to access List(oldCrt) (list_insert_noseq.vpr@75.9--75.50) [205222]"}
+                      b_5 && b_13 ==> neededTransfer == 0.000000000 && Used_5Mask[null, List(arg_2_13)] == initNeededTransfer;
                     
                     // -- Creating state which is the sum of the two previously built up states
                       b_14 := b_5 && b_13;
@@ -1376,10 +1376,10 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             b_15 := b_15 && state(Used_6Heap, Used_6Mask);
             
             // -- Transfer of acc(List(xs), write)
-              arg_3 := xs;
+              arg_3_13 := xs;
               neededTransfer := FullPerm;
-              initNeededTransfer := Used_6Mask[null, List(arg_3)] + neededTransfer;
-              assert {:msg "  Packaging wand might fail. Fraction acc(List(xs), write) might be negative. (list_insert_noseq.vpr@73.5--76.6) [122413]"}
+              initNeededTransfer := Used_6Mask[null, List(arg_3_13)] + neededTransfer;
+              assert {:msg "  Packaging wand might fail. Fraction acc(List(xs), write) might be negative. (list_insert_noseq.vpr@73.5--76.6) [205223]"}
                 neededTransfer >= 0.000000000;
               
               // -- transfer code for top state of stack
@@ -1387,7 +1387,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                 accVar2 := true;
                 // actual code for the transfer from current state on stack
                 if ((((b_5 && b_5) && b_15) && accVar2) && neededTransfer > 0.000000000) {
-                  maskTransfer := Ops_3Mask[null, List(arg_3)];
+                  maskTransfer := Ops_3Mask[null, List(arg_3_13)];
                   if (neededTransfer <= maskTransfer) {
                     takeTransfer := neededTransfer;
                   } else {
@@ -1395,11 +1395,11 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                   }
                   if (takeTransfer > 0.000000000) {
                     neededTransfer := neededTransfer - takeTransfer;
-                    Used_6Mask := Used_6Mask[null, List(arg_3):=Used_6Mask[null, List(arg_3)] + takeTransfer];
+                    Used_6Mask := Used_6Mask[null, List(arg_3_13):=Used_6Mask[null, List(arg_3_13)] + takeTransfer];
                     b_15 := b_15 && state(Used_6Heap, Used_6Mask);
-                    TempMask := ZeroMask[null, List(arg_3):=FullPerm];
+                    TempMask := ZeroMask[null, List(arg_3_13):=FullPerm];
                     b_15 := b_15 && IdenticalOnKnownLocations(Ops_3Heap, Used_6Heap, TempMask);
-                    Ops_3Mask := Ops_3Mask[null, List(arg_3):=Ops_3Mask[null, List(arg_3)] - takeTransfer];
+                    Ops_3Mask := Ops_3Mask[null, List(arg_3_13):=Ops_3Mask[null, List(arg_3_13)] - takeTransfer];
                   }
                 }
               
@@ -1408,7 +1408,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                 accVar2 := true;
                 // actual code for the transfer from current state on stack
                 if ((((b_5 && b_5) && b_15) && accVar2) && neededTransfer > 0.000000000) {
-                  maskTransfer := Mask[null, List(arg_3)];
+                  maskTransfer := Mask[null, List(arg_3_13)];
                   if (neededTransfer <= maskTransfer) {
                     takeTransfer := neededTransfer;
                   } else {
@@ -1416,21 +1416,21 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                   }
                   if (takeTransfer > 0.000000000) {
                     neededTransfer := neededTransfer - takeTransfer;
-                    Used_6Mask := Used_6Mask[null, List(arg_3):=Used_6Mask[null, List(arg_3)] + takeTransfer];
+                    Used_6Mask := Used_6Mask[null, List(arg_3_13):=Used_6Mask[null, List(arg_3_13)] + takeTransfer];
                     b_15 := b_15 && state(Used_6Heap, Used_6Mask);
-                    TempMask := ZeroMask[null, List(arg_3):=FullPerm];
+                    TempMask := ZeroMask[null, List(arg_3_13):=FullPerm];
                     b_15 := b_15 && IdenticalOnKnownLocations(Heap, Used_6Heap, TempMask);
-                    Mask := Mask[null, List(arg_3):=Mask[null, List(arg_3)] - takeTransfer];
+                    Mask := Mask[null, List(arg_3_13):=Mask[null, List(arg_3_13)] - takeTransfer];
                     havoc newPMask;
-                    assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-                      { newPMask[o, f_85] }
-                      Heap[null, wand#sm(crt, xs)][o, f_85] || Heap[null, List#sm(xs)][o, f_85] ==> newPMask[o, f_85]
+                    assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+                      { newPMask[o, f_61] }
+                      Heap[null, wand#sm(crt, xs)][o, f_61] || Heap[null, List#sm(xs)][o, f_61] ==> newPMask[o, f_61]
                     );
                     Heap := Heap[null, wand#sm(crt, xs):=newPMask];
                   }
                 }
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@73.5--76.6) [122414]"}
-                (b_5 && b_5) && b_15 ==> neededTransfer == 0.000000000 && Used_6Mask[null, List(arg_3)] == initNeededTransfer;
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@73.5--76.6) [205224]"}
+                (b_5 && b_5) && b_15 ==> neededTransfer == 0.000000000 && Used_6Mask[null, List(arg_3_13)] == initNeededTransfer;
               
               // -- Creating state which is the sum of the two previously built up states
                 b_16 := b_5 && b_15;
@@ -1444,32 +1444,32 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(crt.val, write) && acc(crt.next, write) might not be preserved. There might be insufficient permission to access crt.val (list_insert_noseq.vpr@57.15--57.44) [122415]"}
+          assert {:msg "  Loop invariant acc(crt.val, write) && acc(crt.next, write) might not be preserved. There might be insufficient permission to access crt.val (list_insert_noseq.vpr@57.15--57.44) [205225]"}
             perm <= Mask[crt, val];
         }
         Mask := Mask[crt, val:=Mask[crt, val] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(crt.val, write) && acc(crt.next, write) might not be preserved. There might be insufficient permission to access crt.next (list_insert_noseq.vpr@57.15--57.44) [122416]"}
+          assert {:msg "  Loop invariant acc(crt.val, write) && acc(crt.next, write) might not be preserved. There might be insufficient permission to access crt.next (list_insert_noseq.vpr@57.15--57.44) [205226]"}
             perm <= Mask[crt, next];
         }
         Mask := Mask[crt, next:=Mask[crt, next] - perm];
-        assert {:msg "  Loop invariant nxt == crt.next might not be preserved. Assertion nxt == crt.next might not hold. (list_insert_noseq.vpr@58.15--58.30) [122417]"}
+        assert {:msg "  Loop invariant nxt == crt.next might not be preserved. Assertion nxt == crt.next might not hold. (list_insert_noseq.vpr@58.15--58.30) [205227]"}
           nxt == Heap[crt, next];
         if (nxt != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant nxt != null ==> acc(List(nxt), write) might not be preserved. There might be insufficient permission to access List(nxt) (list_insert_noseq.vpr@60.15--60.47) [122418]"}
+            assert {:msg "  Loop invariant nxt != null ==> acc(List(nxt), write) might not be preserved. There might be insufficient permission to access List(nxt) (list_insert_noseq.vpr@60.15--60.47) [205228]"}
               perm <= Mask[null, List(nxt)];
           }
           Mask := Mask[null, List(nxt):=Mask[null, List(nxt)] - perm];
         }
         // permLe
-        assert {:msg "  Loop invariant acc(List(crt), write) --* acc(List(xs), write) might not be preserved. Magic wand instance not found. (list_insert_noseq.vpr@61.15--61.22) [122419]"}
+        assert {:msg "  Loop invariant acc(List(crt), write) --* acc(List(xs), write) might not be preserved. Magic wand instance not found. (list_insert_noseq.vpr@61.15--61.22) [205229]"}
           FullPerm <= Mask[null, wand(crt, xs)];
         Mask := Mask[null, wand(crt, xs):=Mask[null, wand(crt, xs)] - FullPerm];
         // Finish exhale
@@ -1481,7 +1481,7 @@ procedure insert(xs: Ref, x: int) returns (i: int)
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(nxt != null && head_3(Heap, nxt) < x);
+      assume !(nxt != null && head_2(Heap, nxt) < x);
       assume state(Heap, Mask);
       perm := FullPerm;
       assume crt != null;
@@ -1512,36 +1512,36 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: node.val := x -- list_insert_noseq.vpr@82.3--82.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access node.val (list_insert_noseq.vpr@82.3--82.16) [122420]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access node.val (list_insert_noseq.vpr@82.3--82.16) [205230]"}
       FullPerm == Mask[node, val];
     Heap := Heap[node, val:=x];
     assume state(Heap, Mask);
   
   // -- Translating statement: node.next := nxt -- list_insert_noseq.vpr@83.3--83.19
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access node.next (list_insert_noseq.vpr@83.3--83.19) [122421]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access node.next (list_insert_noseq.vpr@83.3--83.19) [205231]"}
       FullPerm == Mask[node, next];
     Heap := Heap[node, next:=nxt];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List(node), write) -- list_insert_noseq.vpr@84.3--84.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List(node) might fail. There might be insufficient permission to access node.val (list_insert_noseq.vpr@84.3--84.18) [122424]"}
+      assert {:msg "  Folding List(node) might fail. There might be insufficient permission to access node.val (list_insert_noseq.vpr@84.3--84.18) [205234]"}
         perm <= Mask[node, val];
     }
     Mask := Mask[node, val:=Mask[node, val] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List(node) might fail. There might be insufficient permission to access node.next (list_insert_noseq.vpr@84.3--84.18) [122426]"}
+      assert {:msg "  Folding List(node) might fail. There might be insufficient permission to access node.next (list_insert_noseq.vpr@84.3--84.18) [205236]"}
         perm <= Mask[node, next];
     }
     Mask := Mask[node, next:=Mask[node, next] - perm];
     if (Heap[node, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding List(node) might fail. There might be insufficient permission to access List(node.next) (list_insert_noseq.vpr@84.3--84.18) [122428]"}
+        assert {:msg "  Folding List(node) might fail. There might be insufficient permission to access List(node.next) (list_insert_noseq.vpr@84.3--84.18) [205238]"}
           perm <= Mask[null, List(Heap[node, next])];
       }
       Mask := Mask[null, List(Heap[node, next]):=Mask[null, List(Heap[node, next])] - perm];
@@ -1564,9 +1564,9 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     Heap := Heap[null, List#sm(node):=Heap[null, List#sm(node)][node, next:=true]];
     if (Heap[node, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-        { newPMask[o_11, f_3] }
-        Heap[null, List#sm(node)][o_11, f_3] || Heap[null, List#sm(Heap[node, next])][o_11, f_3] ==> newPMask[o_11, f_3]
+      assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+        { newPMask[o_14, f_3] }
+        Heap[null, List#sm(node)][o_14, f_3] || Heap[null, List#sm(Heap[node, next])][o_14, f_3] ==> newPMask[o_14, f_3]
       );
       Heap := Heap[null, List#sm(node):=newPMask];
     }
@@ -1574,30 +1574,30 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: crt.next := node -- list_insert_noseq.vpr@89.3--89.19
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access crt.next (list_insert_noseq.vpr@89.3--89.19) [122430]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access crt.next (list_insert_noseq.vpr@89.3--89.19) [205240]"}
       FullPerm == Mask[crt, next];
     Heap := Heap[crt, next:=node];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List(crt), write) -- list_insert_noseq.vpr@90.3--90.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List(crt) might fail. There might be insufficient permission to access crt.val (list_insert_noseq.vpr@90.3--90.17) [122433]"}
+      assert {:msg "  Folding List(crt) might fail. There might be insufficient permission to access crt.val (list_insert_noseq.vpr@90.3--90.17) [205243]"}
         perm <= Mask[crt, val];
     }
     Mask := Mask[crt, val:=Mask[crt, val] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List(crt) might fail. There might be insufficient permission to access crt.next (list_insert_noseq.vpr@90.3--90.17) [122435]"}
+      assert {:msg "  Folding List(crt) might fail. There might be insufficient permission to access crt.next (list_insert_noseq.vpr@90.3--90.17) [205245]"}
         perm <= Mask[crt, next];
     }
     Mask := Mask[crt, next:=Mask[crt, next] - perm];
     if (Heap[crt, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding List(crt) might fail. There might be insufficient permission to access List(crt.next) (list_insert_noseq.vpr@90.3--90.17) [122437]"}
+        assert {:msg "  Folding List(crt) might fail. There might be insufficient permission to access List(crt.next) (list_insert_noseq.vpr@90.3--90.17) [205247]"}
           perm <= Mask[null, List(Heap[crt, next])];
       }
       Mask := Mask[null, List(Heap[crt, next]):=Mask[null, List(Heap[crt, next])] - perm];
@@ -1620,9 +1620,9 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     Heap := Heap[null, List#sm(crt):=Heap[null, List#sm(crt)][crt, next:=true]];
     if (Heap[crt, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-        { newPMask[o_35, f_17] }
-        Heap[null, List#sm(crt)][o_35, f_17] || Heap[null, List#sm(Heap[crt, next])][o_35, f_17] ==> newPMask[o_35, f_17]
+      assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+        { newPMask[o_3, f_24] }
+        Heap[null, List#sm(crt)][o_3, f_24] || Heap[null, List#sm(Heap[crt, next])][o_3, f_24] ==> newPMask[o_3, f_24]
       );
       Heap := Heap[null, List#sm(crt):=newPMask];
     }
@@ -1632,20 +1632,20 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   // -- Translating statement: apply acc(List(crt), write) --* acc(List(xs), write) -- list_insert_noseq.vpr@95.3--95.16
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (list_insert_noseq.vpr@95.3--95.16) [122439]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (list_insert_noseq.vpr@95.3--95.16) [205249]"}
         FullPerm <= Mask[null, wand(crt, xs)];
       Mask := Mask[null, wand(crt, xs):=Mask[null, wand(crt, xs)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access List(crt) (list_insert_noseq.vpr@95.3--95.16) [122441]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access List(crt) (list_insert_noseq.vpr@95.3--95.16) [205251]"}
           perm <= Mask[null, List(crt)];
       }
       Mask := Mask[null, List(crt):=Mask[null, List(crt)] - perm];
@@ -1663,11 +1663,11 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of insert might not hold. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@34.11--34.24) [122443]"}
+      assert {:msg "  Postcondition of insert might not hold. There might be insufficient permission to access List(xs) (list_insert_noseq.vpr@34.11--34.24) [205253]"}
         perm <= Mask[null, List(xs)];
     }
     Mask := Mask[null, List(xs):=Mask[null, List(xs)] - perm];

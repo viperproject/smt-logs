@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:53
+// Date:         2025-01-26 21:42:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0753.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0753-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -210,24 +210,24 @@ function  Nil<V>(): ListDomainType V;
 function  Cons<V>(value_2: V, tail: (ListDomainType V)): ListDomainType V;
 
 // Translation of domain function get_List_value
-function  get_List_value<V>(t_9: (ListDomainType V)): V;
+function  get_List_value<V>(t_3: (ListDomainType V)): V;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<V>(t_9: (ListDomainType V)): ListDomainType V;
+function  get_List_tail<V>(t_3: (ListDomainType V)): ListDomainType V;
 
 // Translation of domain function List_tag
-function  List_tag<V>(t_9: (ListDomainType V)): int;
+function  List_tag<V>(t_3: (ListDomainType V)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <V> value_1: V, tail_1: (ListDomainType V) ::
-  { (Cons(value_1, tail_1): ListDomainType V) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType V)): V)
+axiom (forall <V> value: V, tail_1: (ListDomainType V) ::
+  { (Cons(value, tail_1): ListDomainType V) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType V)): V)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <V> value_1: V, tail_1: (ListDomainType V) ::
-  { (Cons(value_1, tail_1): ListDomainType V) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType V)): ListDomainType V)
+axiom (forall <V> value: V, tail_1: (ListDomainType V) ::
+  { (Cons(value, tail_1): ListDomainType V) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType V)): ListDomainType V)
 );
 
 // Translation of anonymous domain axiom
@@ -237,17 +237,17 @@ axiom (forall <V>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <V> value_1: V, tail_1: (ListDomainType V) ::
-  { (Cons(value_1, tail_1): ListDomainType V) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType V)): int) == 0
+axiom (forall <V> value: V, tail_1: (ListDomainType V) ::
+  { (Cons(value, tail_1): ListDomainType V) }
+  (List_tag((Cons(value, tail_1): ListDomainType V)): int) == 0
 );
 
 // Translation of anonymous domain axiom
 axiom (forall <V> t_2: (ListDomainType V) ::
   { (List_tag(t_2): int) } { (get_List_value(t_2): V) } { (get_List_tail(t_2): ListDomainType V) }
-  ((List_tag(t_2): int) == 1 && t_2 == (Nil(): ListDomainType V)) || ((List_tag(t_2): int) == 0 && (exists v_2: V, l_2: (ListDomainType V) ::
-    { (Cons(v_2, l_2): ListDomainType V) }
-    t_2 == (Cons(v_2, l_2): ListDomainType V)
+  ((List_tag(t_2): int) == 1 && t_2 == (Nil(): ListDomainType V)) || ((List_tag(t_2): int) == 0 && (exists v_2: V, l_1: (ListDomainType V) ::
+    { (Cons(v_2, l_1): ListDomainType V) }
+    t_2 == (Cons(v_2, l_1): ListDomainType V)
   ))
 );
 
@@ -265,9 +265,9 @@ axiom (forall <V>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <V> value_1: V, tail_1: (ListDomainType V) ::
-  { (Cons(value_1, tail_1): ListDomainType V) }
-  (bounded((Cons(value_1, tail_1): ListDomainType V)): bool) && (decreasing(tail_1, (Cons(value_1, tail_1): ListDomainType V)): bool)
+axiom (forall <V> value: V, tail_1: (ListDomainType V) ::
+  { (Cons(value, tail_1): ListDomainType V) }
+  (bounded((Cons(value, tail_1): ListDomainType V)): bool) && (decreasing(tail_1, (Cons(value, tail_1): ListDomainType V)): bool)
 );
 
 // ==================================================
@@ -275,44 +275,44 @@ axiom (forall <V> value_1: V, tail_1: (ListDomainType V) ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  len_3(Heap: HeapType, l_2: (ListDomainType ValDomainType)): int;
-function  len'(Heap: HeapType, l_2: (ListDomainType ValDomainType)): int;
-axiom (forall Heap: HeapType, l_2: (ListDomainType ValDomainType) ::
-  { len_3(Heap, l_2) }
-  len_3(Heap, l_2) == len'(Heap, l_2) && dummyFunction(len#triggerStateless(l_2))
+function  len_1(Heap: HeapType, l_1: (ListDomainType ValDomainType)): int;
+function  len'(Heap: HeapType, l_1: (ListDomainType ValDomainType)): int;
+axiom (forall Heap: HeapType, l_1: (ListDomainType ValDomainType) ::
+  { len_1(Heap, l_1) }
+  len_1(Heap, l_1) == len'(Heap, l_1) && dummyFunction(len#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: (ListDomainType ValDomainType) ::
-  { len'(Heap, l_2) }
-  dummyFunction(len#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: (ListDomainType ValDomainType) ::
+  { len'(Heap, l_1) }
+  dummyFunction(len#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), len_3(Heap, l_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> len_3(Heap, l_2) == (if (List_tag(l_2): int) == 1 then 0 else 1 + len'(Heap, (get_List_tail(l_2): ListDomainType ValDomainType)))
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), len_1(Heap, l_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> len_1(Heap, l_1) == (if (List_tag(l_1): int) == 1 then 0 else 1 + len'(Heap, (get_List_tail(l_1): ListDomainType ValDomainType)))
 );
 
 // Framing axioms
-function  len#frame(frame: FrameType, l_2: (ListDomainType ValDomainType)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), len'(Heap, l_2) }
-  state(Heap, Mask) ==> len'(Heap, l_2) == len#frame(EmptyFrame, l_2)
+function  len#frame(frame: FrameType, l_1: (ListDomainType ValDomainType)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), len'(Heap, l_1) }
+  state(Heap, Mask) ==> len'(Heap, l_1) == len#frame(EmptyFrame, l_1)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), len'(Heap, l_2) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || len#trigger(EmptyFrame, l_2)) ==> len'(Heap, l_2) >= 0
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), len'(Heap, l_1) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || len#trigger(EmptyFrame, l_1)) ==> len'(Heap, l_1) >= 0
 );
 
 // Trigger function (controlling recursive postconditions)
-function  len#trigger(frame: FrameType, l_2: (ListDomainType ValDomainType)): bool;
+function  len#trigger(frame: FrameType, l_1: (ListDomainType ValDomainType)): bool;
 
 // State-independent trigger function
-function  len#triggerStateless(l_2: (ListDomainType ValDomainType)): int;
+function  len#triggerStateless(l_1: (ListDomainType ValDomainType)): int;
 
 // Check contract well-formedness and postcondition
-procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: int)
+procedure len#definedness(l_1: (ListDomainType ValDomainType)) returns (Result: int)
   modifies Heap, Mask;
 {
   var ExhaleWellDef0Heap: HeapType;
@@ -327,24 +327,24 @@ procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: 
   // -- Check definedness of function body
     
     // -- Check definedness of ((List_tag(l): Int) == 1 ? 0 : 1 + len((get_List_tail(l): List[Val])))
-      if ((List_tag(l_2): int) == 1) {
+      if ((List_tag(l_1): int) == 1) {
       } else {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume len#trigger(EmptyFrame, (get_List_tail(l_2): ListDomainType ValDomainType));
+          assume len#trigger(EmptyFrame, (get_List_tail(l_1): ListDomainType ValDomainType));
         }
       }
   
   // -- Translate function body
-    Result := (if (List_tag(l_2): int) == 1 then 0 else 1 + len_3(Heap, (get_List_tail(l_2): ListDomainType ValDomainType)));
+    Result := (if (List_tag(l_1): int) == 1 then 0 else 1 + len_1(Heap, (get_List_tail(l_1): ListDomainType ValDomainType)));
   
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of len might not hold. Assertion result >= 0 might not hold. (0753.vpr@76.11--76.22) [215600]"}
+    assert {:msg "  Postcondition of len might not hold. Assertion result >= 0 might not hold. (0753.vpr@76.11--76.22) [60196]"}
       Result >= 0;
 }
 
@@ -352,7 +352,7 @@ procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: 
 // Translation of method len_termination_proof
 // ==================================================
 
-procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
+procedure len_termination_proof(l_1: (ListDomainType ValDomainType)) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -373,17 +373,17 @@ procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
       oldMask := Mask;
   
   // -- Translating statement: if ((List_tag(l): Int) == 1) -- 0753.vpr@84.3--87.31
-    if ((List_tag(l_2): int) == 1) {
+    if ((List_tag(l_1): int) == 1) {
     } else {
       
       // -- Translating statement: assert (decreasing((get_List_tail(l): List[Val]), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- 0753.vpr@86.5--87.30
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion (decreasing((get_List_tail(l): List[Val]), old(l)): Bool) might not hold. (0753.vpr@86.12--87.30) [215601]"}
-          (decreasing((get_List_tail(l_2): ListDomainType ValDomainType), l_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (0753.vpr@86.12--87.30) [215602]"}
-          (bounded(l_2): bool);
+        assert {:msg "  Assert might fail. Assertion (decreasing((get_List_tail(l): List[Val]), old(l)): Bool) might not hold. (0753.vpr@86.12--87.30) [60197]"}
+          (decreasing((get_List_tail(l_1): ListDomainType ValDomainType), l_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (0753.vpr@86.12--87.30) [60198]"}
+          (bounded(l_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:56:41
+// Date:         2025-01-26 21:44:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0170.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0170-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_12: Ref, f_16: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_12, f_16] }
-  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_16], $allocated]
+axiom (forall o_15: Ref, f_23: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_15, f_23] }
+  Heap[o_15, $allocated] ==> Heap[Heap[o_15, f_23], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref, f_37: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, f_37] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_46, f_37) ==> Heap[o_46, f_37] == ExhaleHeap[o_46, f_37]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_53: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_53] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_53) ==> Heap[o_41, f_53] == ExhaleHeap[o_41, f_53]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> Heap[null, PredicateMaskField(pm_f_22)] == ExhaleHeap[null, PredicateMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> Heap[null, PredicateMaskField(pm_f_20)] == ExhaleHeap[null, PredicateMaskField(pm_f_20)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> Heap[null, WandMaskField(pm_f_22)] == ExhaleHeap[null, WandMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> Heap[null, WandMaskField(pm_f_20)] == ExhaleHeap[null, WandMaskField(pm_f_20)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_46, $allocated] ==> ExhaleHeap[o_46, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_24: (Field A B), v: B ::
-  { Heap[o_12, f_24:=v] }
-  succHeap(Heap, Heap[o_12, f_24:=v])
+axiom (forall <A, B> Heap: HeapType, o_15: Ref, f_54: (Field A B), v: B ::
+  { Heap[o_15, f_54:=v] }
+  succHeap(Heap, Heap[o_15, f_54:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,11 +144,11 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(i_5: int): bool;
+function  neverTriggered1(i_5_1: int): bool;
 function  neverTriggered2(i_7_1: int): bool;
 function  neverTriggered3(i_1: int): bool;
-function  neverTriggered4(i_2_1: int): bool;
-function  neverTriggered5(i_6_1: int): bool;
+function  neverTriggered4(i_2: int): bool;
+function  neverTriggered5(i_6_2: int): bool;
 function  neverTriggered6(i_7_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
@@ -577,9 +577,9 @@ axiom !IsWandField(next);
 const unique val: Field NormalField int;
 axiom !IsPredicateField(val);
 axiom !IsWandField(val);
-const unique nodes: Field NormalField (Seq Ref);
-axiom !IsPredicateField(nodes);
-axiom !IsWandField(nodes);
+const unique nodes_1: Field NormalField (Seq Ref);
+axiom !IsPredicateField(nodes_1);
+axiom !IsWandField(nodes_1);
 
 // ==================================================
 // Translation of predicate List
@@ -624,7 +624,7 @@ function  List#condqp1(Heap: HeapType, this_1_1: Ref): int;
 function  sk_List#condqp1(fnAppH1: int, fnAppH2: int): int;
 axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, this: Ref ::
   { List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this), succHeapTrans(Heap2Heap, Heap1Heap) }
-  ((0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes])) && NoPerm < FullPerm <==> (0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap1Heap[this, nodes])) && NoPerm < FullPerm) && ((0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes])) && NoPerm < FullPerm ==> Heap2Heap[Seq#Index(Heap2Heap[this, nodes], sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this))), val] == Heap1Heap[Seq#Index(Heap1Heap[this, nodes], sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this))), val]) ==> List#condqp1(Heap2Heap, this) == List#condqp1(Heap1Heap, this)
+  ((0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes_1])) && NoPerm < FullPerm <==> (0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap1Heap[this, nodes_1])) && NoPerm < FullPerm) && ((0 <= sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) && sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes_1])) && NoPerm < FullPerm ==> Heap2Heap[Seq#Index(Heap2Heap[this, nodes_1], sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this))), val] == Heap1Heap[Seq#Index(Heap1Heap[this, nodes_1], sk_List#condqp1(List#condqp1(Heap2Heap, this), List#condqp1(Heap1Heap, this))), val]) ==> List#condqp1(Heap2Heap, this) == List#condqp1(Heap1Heap, this)
 );
 
 // ==================================================
@@ -635,19 +635,19 @@ function  List#condqp2(Heap: HeapType, this_1_1: Ref): int;
 function  sk_List#condqp2(fnAppH1_1: int, fnAppH2_1: int): int;
 axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, this: Ref ::
   { List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this), succHeapTrans(Heap2Heap, Heap1Heap) }
-  ((0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes])) && NoPerm < FullPerm <==> (0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap1Heap[this, nodes])) && NoPerm < FullPerm) && ((0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes])) && NoPerm < FullPerm ==> Heap2Heap[Seq#Index(Heap2Heap[this, nodes], sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this))), next] == Heap1Heap[Seq#Index(Heap1Heap[this, nodes], sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this))), next]) ==> List#condqp2(Heap2Heap, this) == List#condqp2(Heap1Heap, this)
+  ((0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes_1])) && NoPerm < FullPerm <==> (0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap1Heap[this, nodes_1])) && NoPerm < FullPerm) && ((0 <= sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) && sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this)) < Seq#Length(Heap2Heap[this, nodes_1])) && NoPerm < FullPerm ==> Heap2Heap[Seq#Index(Heap2Heap[this, nodes_1], sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this))), next] == Heap1Heap[Seq#Index(Heap1Heap[this, nodes_1], sk_List#condqp2(List#condqp2(Heap2Heap, this), List#condqp2(Heap1Heap, this))), next]) ==> List#condqp2(Heap2Heap, this) == List#condqp2(Heap1Heap, this)
 );
 
 procedure List#definedness(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var i_14: int;
-  var j_5: int;
-  var i_2: int;
+  var i_18: int;
+  var j_14: int;
+  var i_3: int;
   var QPMask: MaskType;
   var i_4: int;
-  var i_6: int;
+  var i_14: int;
   
   // -- Check definedness of predicate body of List
     
@@ -658,89 +658,89 @@ procedure List#definedness(this: Ref) returns ()
       assume Heap[this, $allocated];
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, nodes:=Mask[this, nodes] + perm];
+    Mask := Mask[this, nodes_1:=Mask[this, nodes_1] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { this.nodes[i], this.nodes[j] } i >= 0 && (i < |this.nodes| && (j >= 0 && (j < |this.nodes| && i != j))) ==> this.nodes[i] != this.nodes[j])
       if (*) {
-        if (i_14 >= 0) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70838]"}
-            HasDirectPerm(Mask, this, nodes);
-          if (i_14 < Seq#Length(Heap[this, nodes])) {
-            if (j_5 >= 0) {
-              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70839]"}
-                HasDirectPerm(Mask, this, nodes);
+        if (i_18 >= 0) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168818]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          if (i_18 < Seq#Length(Heap[this, nodes_1])) {
+            if (j_14 >= 0) {
+              assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168819]"}
+                HasDirectPerm(Mask, this, nodes_1);
             }
           }
         }
-        if (i_14 >= 0 && (i_14 < Seq#Length(Heap[this, nodes]) && (j_5 >= 0 && (j_5 < Seq#Length(Heap[this, nodes]) && i_14 != j_5)))) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70840]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [70841]"}
-            i_14 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [70842]"}
-            i_14 < Seq#Length(Heap[this, nodes]);
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70843]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[j] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [70844]"}
-            j_5 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[j] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [70845]"}
-            j_5 < Seq#Length(Heap[this, nodes]);
+        if (i_18 >= 0 && (i_18 < Seq#Length(Heap[this, nodes_1]) && (j_14 >= 0 && (j_14 < Seq#Length(Heap[this, nodes_1]) && i_18 != j_14)))) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168820]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [168821]"}
+            i_18 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [168822]"}
+            i_18 < Seq#Length(Heap[this, nodes_1]);
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168823]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[j] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [168824]"}
+            j_14 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[j] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [168825]"}
+            j_14 < Seq#Length(Heap[this, nodes_1]);
         }
         assume false;
       }
-    assume (forall i_3: int, j_1: int ::
-      { Seq#Index(Heap[this, nodes], i_3), Seq#Index(Heap[this, nodes], j_1) }
-      i_3 >= 0 && (i_3 < Seq#Length(Heap[this, nodes]) && (j_1 >= 0 && (j_1 < Seq#Length(Heap[this, nodes]) && i_3 != j_1))) ==> Seq#Index(Heap[this, nodes], i_3) != Seq#Index(Heap[this, nodes], j_1)
+    assume (forall i_3_2: int, j_1: int ::
+      { Seq#Index(Heap[this, nodes_1], i_3_2), Seq#Index(Heap[this, nodes_1], j_1) }
+      i_3_2 >= 0 && (i_3_2 < Seq#Length(Heap[this, nodes_1]) && (j_1 >= 0 && (j_1 < Seq#Length(Heap[this, nodes_1]) && i_3_2 != j_1))) ==> Seq#Index(Heap[this, nodes_1], i_3_2) != Seq#Index(Heap[this, nodes_1], j_1)
     );
     
     // -- Check definedness of (forall i: Int :: { this.nodes[i] } 0 <= i && i < |this.nodes| ==> acc(this.nodes[i].val, write))
       if (*) {
-        if (0 <= i_2) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70846]"}
-            HasDirectPerm(Mask, this, nodes);
+        if (0 <= i_3) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168826]"}
+            HasDirectPerm(Mask, this, nodes_1);
         }
-        if (0 <= i_2 && i_2 < Seq#Length(Heap[this, nodes])) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70847]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [70848]"}
-            i_2 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [70849]"}
-            i_2 < Seq#Length(Heap[this, nodes]);
+        if (0 <= i_3 && i_3 < Seq#Length(Heap[this, nodes_1])) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168827]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [168828]"}
+            i_3 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [168829]"}
+            i_3 < Seq#Length(Heap[this, nodes_1]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Predicate might not be well-formed. Quantified resource this.nodes[i].val might not be injective. (issue_0170.vpr@8.1--16.2) [70850]"}
-      (forall i_5: int, i_5_1: int ::
+    assert {:msg "  Predicate might not be well-formed. Quantified resource this.nodes[i].val might not be injective. (issue_0170.vpr@8.1--16.2) [168830]"}
+      (forall i_5_1: int, i_5_2: int ::
       
-      (((i_5 != i_5_1 && (0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes]))) && (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_5) != Seq#Index(Heap[this, nodes], i_5_1)
+      (((i_5_1 != i_5_2 && (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_5_2 && i_5_2 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_5_1) != Seq#Index(Heap[this, nodes_1], i_5_2)
     );
     
     // -- Define Inverse Function
-      assume (forall i_5: int ::
-        { Seq#Index(Heap[this, nodes], i_5) } { Seq#Index(Heap[this, nodes], i_5) }
-        (0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange1(Seq#Index(Heap[this, nodes], i_5)) && invRecv1(Seq#Index(Heap[this, nodes], i_5)) == i_5
+      assume (forall i_5_1: int ::
+        { Seq#Index(Heap[this, nodes_1], i_5_1) } { Seq#Index(Heap[this, nodes_1], i_5_1) }
+        (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange1(Seq#Index(Heap[this, nodes_1], i_5_1)) && invRecv1(Seq#Index(Heap[this, nodes_1], i_5_1)) == i_5_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange1(o_4) ==> Seq#Index(Heap[this, nodes], invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange1(o_9) ==> Seq#Index(Heap[this, nodes_1], invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_5: int ::
-        { Seq#Index(Heap[this, nodes], i_5) } { Seq#Index(Heap[this, nodes], i_5) }
-        0 <= i_5 && i_5 < Seq#Length(Heap[this, nodes]) ==> Seq#Index(Heap[this, nodes], i_5) != null
+      assume (forall i_5_1: int ::
+        { Seq#Index(Heap[this, nodes_1], i_5_1) } { Seq#Index(Heap[this, nodes_1], i_5_1) }
+        0 <= i_5_1 && i_5_1 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Index(Heap[this, nodes_1], i_5_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], invRecv1(o_4)) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], invRecv1(o_9)) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -748,94 +748,94 @@ procedure List#definedness(this: Ref) returns ()
     // -- Check definedness of (forall i: Int :: { this.nodes[i] } 0 <= i && i < |this.nodes| ==> acc(this.nodes[i].next, write))
       if (*) {
         if (0 <= i_4) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70851]"}
-            HasDirectPerm(Mask, this, nodes);
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168831]"}
+            HasDirectPerm(Mask, this, nodes_1);
         }
-        if (0 <= i_4 && i_4 < Seq#Length(Heap[this, nodes])) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70852]"}
-            HasDirectPerm(Mask, this, nodes);
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [70853]"}
+        if (0 <= i_4 && i_4 < Seq#Length(Heap[this, nodes_1])) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168832]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [168833]"}
             i_4 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [70854]"}
-            i_4 < Seq#Length(Heap[this, nodes]);
+          assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [168834]"}
+            i_4 < Seq#Length(Heap[this, nodes_1]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Predicate might not be well-formed. Quantified resource this.nodes[i].next might not be injective. (issue_0170.vpr@8.1--16.2) [70855]"}
+    assert {:msg "  Predicate might not be well-formed. Quantified resource this.nodes[i].next might not be injective. (issue_0170.vpr@8.1--16.2) [168835]"}
       (forall i_7_1: int, i_7_2: int ::
       
-      (((i_7_1 != i_7_2 && (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes]))) && (0 <= i_7_2 && i_7_2 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_7_1) != Seq#Index(Heap[this, nodes], i_7_2)
+      (((i_7_1 != i_7_2 && (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_7_2 && i_7_2 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_7_1) != Seq#Index(Heap[this, nodes_1], i_7_2)
     );
     
     // -- Define Inverse Function
       assume (forall i_7_1: int ::
-        { Seq#Index(Heap[this, nodes], i_7_1) } { Seq#Index(Heap[this, nodes], i_7_1) }
-        (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange2(Seq#Index(Heap[this, nodes], i_7_1)) && invRecv2(Seq#Index(Heap[this, nodes], i_7_1)) == i_7_1
+        { Seq#Index(Heap[this, nodes_1], i_7_1) } { Seq#Index(Heap[this, nodes_1], i_7_1) }
+        (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange2(Seq#Index(Heap[this, nodes_1], i_7_1)) && invRecv2(Seq#Index(Heap[this, nodes_1], i_7_1)) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        ((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange2(o_4) ==> Seq#Index(Heap[this, nodes], invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        ((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange2(o_9) ==> Seq#Index(Heap[this, nodes_1], invRecv2(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i_7_1: int ::
-        { Seq#Index(Heap[this, nodes], i_7_1) } { Seq#Index(Heap[this, nodes], i_7_1) }
-        0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes]) ==> Seq#Index(Heap[this, nodes], i_7_1) != null
+        { Seq#Index(Heap[this, nodes_1], i_7_1) } { Seq#Index(Heap[this, nodes_1], i_7_1) }
+        0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Index(Heap[this, nodes_1], i_7_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], invRecv2(o_4)) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!(((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], invRecv2(o_9)) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!(((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { this.nodes[i] } 0 <= i && i < |this.nodes| ==> (i < |this.nodes| - 1 ? this.nodes[i].next == this.nodes[i + 1] : this.nodes[i].next == null))
       if (*) {
-        if (0 <= i_6) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70856]"}
-            HasDirectPerm(Mask, this, nodes);
+        if (0 <= i_14) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168836]"}
+            HasDirectPerm(Mask, this, nodes_1);
         }
-        if (0 <= i_6 && i_6 < Seq#Length(Heap[this, nodes])) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70857]"}
-            HasDirectPerm(Mask, this, nodes);
-          if (i_6 < Seq#Length(Heap[this, nodes]) - 1) {
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70858]"}
-              HasDirectPerm(Mask, this, nodes);
-            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [70859]"}
-              i_6 >= 0;
-            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [70860]"}
-              i_6 < Seq#Length(Heap[this, nodes]);
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes[i].next (issue_0170.vpr@8.1--16.2) [70861]"}
-              HasDirectPerm(Mask, Seq#Index(Heap[this, nodes], i_6), next);
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70862]"}
-              HasDirectPerm(Mask, this, nodes);
-            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i + 1] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [70863]"}
-              i_6 + 1 >= 0;
-            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i + 1] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [70864]"}
-              i_6 + 1 < Seq#Length(Heap[this, nodes]);
+        if (0 <= i_14 && i_14 < Seq#Length(Heap[this, nodes_1])) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168837]"}
+            HasDirectPerm(Mask, this, nodes_1);
+          if (i_14 < Seq#Length(Heap[this, nodes_1]) - 1) {
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168838]"}
+              HasDirectPerm(Mask, this, nodes_1);
+            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [168839]"}
+              i_14 >= 0;
+            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [168840]"}
+              i_14 < Seq#Length(Heap[this, nodes_1]);
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes[i].next (issue_0170.vpr@8.1--16.2) [168841]"}
+              HasDirectPerm(Mask, Seq#Index(Heap[this, nodes_1], i_14), next);
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168842]"}
+              HasDirectPerm(Mask, this, nodes_1);
+            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i + 1] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [168843]"}
+              i_14 + 1 >= 0;
+            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i + 1] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [168844]"}
+              i_14 + 1 < Seq#Length(Heap[this, nodes_1]);
           } else {
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [70865]"}
-              HasDirectPerm(Mask, this, nodes);
-            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [70866]"}
-              i_6 >= 0;
-            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [70867]"}
-              i_6 < Seq#Length(Heap[this, nodes]);
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes[i].next (issue_0170.vpr@8.1--16.2) [70868]"}
-              HasDirectPerm(Mask, Seq#Index(Heap[this, nodes], i_6), next);
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (issue_0170.vpr@8.1--16.2) [168845]"}
+              HasDirectPerm(Mask, this, nodes_1);
+            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might be negative. (issue_0170.vpr@8.1--16.2) [168846]"}
+              i_14 >= 0;
+            assert {:msg "  Predicate might not be well-formed. Index this.nodes[i] into this.nodes might exceed sequence length. (issue_0170.vpr@8.1--16.2) [168847]"}
+              i_14 < Seq#Length(Heap[this, nodes_1]);
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes[i].next (issue_0170.vpr@8.1--16.2) [168848]"}
+              HasDirectPerm(Mask, Seq#Index(Heap[this, nodes_1], i_14), next);
           }
         }
         assume false;
       }
     assume (forall i_9_1: int ::
-      { Seq#Index(Heap[this, nodes], i_9_1) }
-      0 <= i_9_1 && i_9_1 < Seq#Length(Heap[this, nodes]) ==> (if i_9_1 < Seq#Length(Heap[this, nodes]) - 1 then Heap[Seq#Index(Heap[this, nodes], i_9_1), next] == Seq#Index(Heap[this, nodes], i_9_1 + 1) else Heap[Seq#Index(Heap[this, nodes], i_9_1), next] == null)
+      { Seq#Index(Heap[this, nodes_1], i_9_1) }
+      0 <= i_9_1 && i_9_1 < Seq#Length(Heap[this, nodes_1]) ==> (if i_9_1 < Seq#Length(Heap[this, nodes_1]) - 1 then Heap[Seq#Index(Heap[this, nodes_1], i_9_1), next] == Seq#Index(Heap[this, nodes_1], i_9_1 + 1) else Heap[Seq#Index(Heap[this, nodes_1], i_9_1), next] == null)
     );
     assume state(Heap, Mask);
 }
@@ -858,7 +858,7 @@ procedure repro(this: Ref) returns ()
   var freshObj: Ref;
   var i_4_1: int;
   var j_1: int;
-  var i_8_2: int;
+  var i_8_1: int;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   
@@ -887,12 +887,12 @@ procedure repro(this: Ref) returns ()
   
   // -- Translating statement: unfold acc(List(this), write) -- issue_0170.vpr@21.2--21.24
     assume List#trigger(Heap, List(this));
-    assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes]), CombineFrames(FrameFragment(List#condqp1(Heap, this)), FrameFragment(List#condqp2(Heap, this))));
+    assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes_1]), CombineFrames(FrameFragment(List#condqp1(Heap, this)), FrameFragment(List#condqp2(Heap, this))));
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding List(this) might fail. There might be insufficient permission to access List(this) (issue_0170.vpr@21.2--21.24) [70871]"}
+      assert {:msg "  Unfolding List(this) might fail. There might be insufficient permission to access List(this) (issue_0170.vpr@21.2--21.24) [168851]"}
         perm <= Mask[null, List(this)];
     }
     Mask := Mask[null, List(this):=Mask[null, List(this)] - perm];
@@ -904,83 +904,83 @@ procedure repro(this: Ref) returns ()
       }
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, nodes:=Mask[this, nodes] + perm];
+    Mask := Mask[this, nodes_1:=Mask[this, nodes_1] + perm];
     assume state(Heap, Mask);
-    assume (forall i: int, j_9: int ::
-      { Seq#Index(Heap[this, nodes], i), Seq#Index(Heap[this, nodes], j_9) }
-      i >= 0 && (i < Seq#Length(Heap[this, nodes]) && (j_9 >= 0 && (j_9 < Seq#Length(Heap[this, nodes]) && i != j_9))) ==> Seq#Index(Heap[this, nodes], i) != Seq#Index(Heap[this, nodes], j_9)
+    assume (forall i: int, j: int ::
+      { Seq#Index(Heap[this, nodes_1], i), Seq#Index(Heap[this, nodes_1], j) }
+      i >= 0 && (i < Seq#Length(Heap[this, nodes_1]) && (j >= 0 && (j < Seq#Length(Heap[this, nodes_1]) && i != j))) ==> Seq#Index(Heap[this, nodes_1], i) != Seq#Index(Heap[this, nodes_1], j)
     );
     havoc QPMask;
-    assert {:msg "  Unfolding List(this) might fail. Quantified resource this.nodes[i].val might not be injective. (issue_0170.vpr@21.2--21.24) [70873]"}
+    assert {:msg "  Unfolding List(this) might fail. Quantified resource this.nodes[i].val might not be injective. (issue_0170.vpr@21.2--21.24) [168853]"}
       (forall i_1: int, i_1_1: int ::
       
-      (((i_1 != i_1_1 && (0 <= i_1 && i_1 < Seq#Length(Heap[this, nodes]))) && (0 <= i_1_1 && i_1_1 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_1) != Seq#Index(Heap[this, nodes], i_1_1)
+      (((i_1 != i_1_1 && (0 <= i_1 && i_1 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_1_1 && i_1_1 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_1) != Seq#Index(Heap[this, nodes_1], i_1_1)
     );
     
     // -- Define Inverse Function
       assume (forall i_1: int ::
-        { Seq#Index(Heap[this, nodes], i_1) } { Seq#Index(Heap[this, nodes], i_1) }
-        (0 <= i_1 && i_1 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange3(Seq#Index(Heap[this, nodes], i_1)) && invRecv3(Seq#Index(Heap[this, nodes], i_1)) == i_1
+        { Seq#Index(Heap[this, nodes_1], i_1) } { Seq#Index(Heap[this, nodes_1], i_1) }
+        (0 <= i_1 && i_1 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange3(Seq#Index(Heap[this, nodes_1], i_1)) && invRecv3(Seq#Index(Heap[this, nodes_1], i_1)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        ((0 <= invRecv3(o_4) && invRecv3(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange3(o_4) ==> Seq#Index(Heap[this, nodes], invRecv3(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        ((0 <= invRecv3(o_9) && invRecv3(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange3(o_9) ==> Seq#Index(Heap[this, nodes_1], invRecv3(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i_1: int ::
-        { Seq#Index(Heap[this, nodes], i_1) } { Seq#Index(Heap[this, nodes], i_1) }
-        0 <= i_1 && i_1 < Seq#Length(Heap[this, nodes]) ==> Seq#Index(Heap[this, nodes], i_1) != null
+        { Seq#Index(Heap[this, nodes_1], i_1) } { Seq#Index(Heap[this, nodes_1], i_1) }
+        0 <= i_1 && i_1 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Index(Heap[this, nodes_1], i_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv3(o_4) && invRecv3(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], invRecv3(o_4)) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv3(o_4) && invRecv3(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv3(o_9) && invRecv3(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], invRecv3(o_9)) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv3(o_9) && invRecv3(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     havoc QPMask;
-    assert {:msg "  Unfolding List(this) might fail. Quantified resource this.nodes[i].next might not be injective. (issue_0170.vpr@21.2--21.24) [70874]"}
-      (forall i_2_1: int, i_2_2: int ::
+    assert {:msg "  Unfolding List(this) might fail. Quantified resource this.nodes[i].next might not be injective. (issue_0170.vpr@21.2--21.24) [168854]"}
+      (forall i_2: int, i_2_2: int ::
       
-      (((i_2_1 != i_2_2 && (0 <= i_2_1 && i_2_1 < Seq#Length(Heap[this, nodes]))) && (0 <= i_2_2 && i_2_2 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_2_1) != Seq#Index(Heap[this, nodes], i_2_2)
+      (((i_2 != i_2_2 && (0 <= i_2 && i_2 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_2_2 && i_2_2 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_2) != Seq#Index(Heap[this, nodes_1], i_2_2)
     );
     
     // -- Define Inverse Function
-      assume (forall i_2_1: int ::
-        { Seq#Index(Heap[this, nodes], i_2_1) } { Seq#Index(Heap[this, nodes], i_2_1) }
-        (0 <= i_2_1 && i_2_1 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange4(Seq#Index(Heap[this, nodes], i_2_1)) && invRecv4(Seq#Index(Heap[this, nodes], i_2_1)) == i_2_1
+      assume (forall i_2: int ::
+        { Seq#Index(Heap[this, nodes_1], i_2) } { Seq#Index(Heap[this, nodes_1], i_2) }
+        (0 <= i_2 && i_2 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange4(Seq#Index(Heap[this, nodes_1], i_2)) && invRecv4(Seq#Index(Heap[this, nodes_1], i_2)) == i_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        ((0 <= invRecv4(o_4) && invRecv4(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange4(o_4) ==> Seq#Index(Heap[this, nodes], invRecv4(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        ((0 <= invRecv4(o_9) && invRecv4(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange4(o_9) ==> Seq#Index(Heap[this, nodes_1], invRecv4(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_2_1: int ::
-        { Seq#Index(Heap[this, nodes], i_2_1) } { Seq#Index(Heap[this, nodes], i_2_1) }
-        0 <= i_2_1 && i_2_1 < Seq#Length(Heap[this, nodes]) ==> Seq#Index(Heap[this, nodes], i_2_1) != null
+      assume (forall i_2: int ::
+        { Seq#Index(Heap[this, nodes_1], i_2) } { Seq#Index(Heap[this, nodes_1], i_2) }
+        0 <= i_2 && i_2 < Seq#Length(Heap[this, nodes_1]) ==> Seq#Index(Heap[this, nodes_1], i_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (((0 <= invRecv4(o_4) && invRecv4(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange4(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], invRecv4(o_4)) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!(((0 <= invRecv4(o_4) && invRecv4(o_4) < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm) && qpRange4(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (((0 <= invRecv4(o_9) && invRecv4(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange4(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], invRecv4(o_9)) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!(((0 <= invRecv4(o_9) && invRecv4(o_9) < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm) && qpRange4(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
-    assume (forall i_3: int ::
-      { Seq#Index(Heap[this, nodes], i_3) }
-      0 <= i_3 && i_3 < Seq#Length(Heap[this, nodes]) ==> (if i_3 < Seq#Length(Heap[this, nodes]) - 1 then Heap[Seq#Index(Heap[this, nodes], i_3), next] == Seq#Index(Heap[this, nodes], i_3 + 1) else Heap[Seq#Index(Heap[this, nodes], i_3), next] == null)
+    assume (forall i_3_2: int ::
+      { Seq#Index(Heap[this, nodes_1], i_3_2) }
+      0 <= i_3_2 && i_3_2 < Seq#Length(Heap[this, nodes_1]) ==> (if i_3_2 < Seq#Length(Heap[this, nodes_1]) - 1 then Heap[Seq#Index(Heap[this, nodes_1], i_3_2), next] == Seq#Index(Heap[this, nodes_1], i_3_2 + 1) else Heap[Seq#Index(Heap[this, nodes_1], i_3_2), next] == null)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -998,20 +998,20 @@ procedure repro(this: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes (issue_0170.vpr@24.2--24.22) [70877]"}
-        perm <= Mask[this, nodes];
+      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes (issue_0170.vpr@24.2--24.22) [168857]"}
+        perm <= Mask[this, nodes_1];
     }
-    Mask := Mask[this, nodes:=Mask[this, nodes] - perm];
+    Mask := Mask[this, nodes_1:=Mask[this, nodes_1] - perm];
     if (*) {
-      if (i_4_1 >= 0 && (i_4_1 < Seq#Length(Heap[this, nodes]) && (j_1 >= 0 && (j_1 < Seq#Length(Heap[this, nodes]) && i_4_1 != j_1)))) {
-        assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i] != this.nodes[j] might not hold. (issue_0170.vpr@24.2--24.22) [70878]"}
-          Seq#Index(Heap[this, nodes], i_4_1) != Seq#Index(Heap[this, nodes], j_1);
+      if (i_4_1 >= 0 && (i_4_1 < Seq#Length(Heap[this, nodes_1]) && (j_1 >= 0 && (j_1 < Seq#Length(Heap[this, nodes_1]) && i_4_1 != j_1)))) {
+        assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i] != this.nodes[j] might not hold. (issue_0170.vpr@24.2--24.22) [168858]"}
+          Seq#Index(Heap[this, nodes_1], i_4_1) != Seq#Index(Heap[this, nodes_1], j_1);
       }
       assume false;
     }
-    assume (forall i_5_1_1: int, j_2_1_1: int ::
-      { Seq#Index(Heap[this, nodes], i_5_1_1), Seq#Index(Heap[this, nodes], j_2_1_1) }
-      i_5_1_1 >= 0 && (i_5_1_1 < Seq#Length(Heap[this, nodes]) && (j_2_1_1 >= 0 && (j_2_1_1 < Seq#Length(Heap[this, nodes]) && i_5_1_1 != j_2_1_1))) ==> Seq#Index(Heap[this, nodes], i_5_1_1) != Seq#Index(Heap[this, nodes], j_2_1_1)
+    assume (forall i_5_1_1: int, j_2_1: int ::
+      { Seq#Index(Heap[this, nodes_1], i_5_1_1), Seq#Index(Heap[this, nodes_1], j_2_1) }
+      i_5_1_1 >= 0 && (i_5_1_1 < Seq#Length(Heap[this, nodes_1]) && (j_2_1 >= 0 && (j_2_1 < Seq#Length(Heap[this, nodes_1]) && i_5_1_1 != j_2_1))) ==> Seq#Index(Heap[this, nodes_1], i_5_1_1) != Seq#Index(Heap[this, nodes_1], j_2_1)
     );
     havoc QPMask;
     
@@ -1019,39 +1019,39 @@ procedure repro(this: Ref) returns ()
       
     
     // -- check if receiver this.nodes[i] is injective
-      assert {:msg "  Folding List(this) might fail. Quantified resource this.nodes[i].val might not be injective. (issue_0170.vpr@24.2--24.22) [70880]"}
-        (forall i_6_1: int, i_6_2: int ::
-        { neverTriggered5(i_6_1), neverTriggered5(i_6_2) }
-        (((i_6_1 != i_6_2 && (0 <= i_6_1 && i_6_1 < Seq#Length(Heap[this, nodes]))) && (0 <= i_6_2 && i_6_2 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_6_1) != Seq#Index(Heap[this, nodes], i_6_2)
+      assert {:msg "  Folding List(this) might fail. Quantified resource this.nodes[i].val might not be injective. (issue_0170.vpr@24.2--24.22) [168860]"}
+        (forall i_6_2: int, i_6_3: int ::
+        { neverTriggered5(i_6_2), neverTriggered5(i_6_3) }
+        (((i_6_2 != i_6_3 && (0 <= i_6_2 && i_6_2 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_6_3 && i_6_3 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_6_2) != Seq#Index(Heap[this, nodes_1], i_6_3)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes[i].val (issue_0170.vpr@24.2--24.22) [70881]"}
-        (forall i_6_1: int ::
-        { Seq#Index(Heap[this, nodes], i_6_1) } { Seq#Index(Heap[this, nodes], i_6_1) }
-        0 <= i_6_1 && i_6_1 < Seq#Length(Heap[this, nodes]) ==> Mask[Seq#Index(Heap[this, nodes], i_6_1), val] >= FullPerm
+      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes[i].val (issue_0170.vpr@24.2--24.22) [168861]"}
+        (forall i_6_2: int ::
+        { Seq#Index(Heap[this, nodes_1], i_6_2) } { Seq#Index(Heap[this, nodes_1], i_6_2) }
+        0 <= i_6_2 && i_6_2 < Seq#Length(Heap[this, nodes_1]) ==> Mask[Seq#Index(Heap[this, nodes_1], i_6_2), val] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver this.nodes[i]
-      assume (forall i_6_1: int ::
-        { Seq#Index(Heap[this, nodes], i_6_1) } { Seq#Index(Heap[this, nodes], i_6_1) }
-        (0 <= i_6_1 && i_6_1 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange5(Seq#Index(Heap[this, nodes], i_6_1)) && invRecv5(Seq#Index(Heap[this, nodes], i_6_1)) == i_6_1
+      assume (forall i_6_2: int ::
+        { Seq#Index(Heap[this, nodes_1], i_6_2) } { Seq#Index(Heap[this, nodes_1], i_6_2) }
+        (0 <= i_6_2 && i_6_2 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange5(Seq#Index(Heap[this, nodes_1], i_6_2)) && invRecv5(Seq#Index(Heap[this, nodes_1], i_6_2)) == i_6_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        (0 <= invRecv5(o_4) && invRecv5(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange5(o_4)) ==> Seq#Index(Heap[this, nodes], invRecv5(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        (0 <= invRecv5(o_9) && invRecv5(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange5(o_9)) ==> Seq#Index(Heap[this, nodes_1], invRecv5(o_9)) == o_9
       );
     
     // -- assume permission updates for field val
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((0 <= invRecv5(o_4) && invRecv5(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange5(o_4)) ==> Seq#Index(Heap[this, nodes], invRecv5(o_4)) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((0 <= invRecv5(o_4) && invRecv5(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange5(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((0 <= invRecv5(o_9) && invRecv5(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange5(o_9)) ==> Seq#Index(Heap[this, nodes_1], invRecv5(o_9)) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((0 <= invRecv5(o_9) && invRecv5(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange5(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     havoc QPMask;
@@ -1060,89 +1060,89 @@ procedure repro(this: Ref) returns ()
       
     
     // -- check if receiver this.nodes[i] is injective
-      assert {:msg "  Folding List(this) might fail. Quantified resource this.nodes[i].next might not be injective. (issue_0170.vpr@24.2--24.22) [70883]"}
+      assert {:msg "  Folding List(this) might fail. Quantified resource this.nodes[i].next might not be injective. (issue_0170.vpr@24.2--24.22) [168863]"}
         (forall i_7_1: int, i_7_2: int ::
         { neverTriggered6(i_7_1), neverTriggered6(i_7_2) }
-        (((i_7_1 != i_7_2 && (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes]))) && (0 <= i_7_2 && i_7_2 < Seq#Length(Heap[this, nodes]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes], i_7_1) != Seq#Index(Heap[this, nodes], i_7_2)
+        (((i_7_1 != i_7_2 && (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes_1]))) && (0 <= i_7_2 && i_7_2 < Seq#Length(Heap[this, nodes_1]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, nodes_1], i_7_1) != Seq#Index(Heap[this, nodes_1], i_7_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes[i].next (issue_0170.vpr@24.2--24.22) [70884]"}
+      assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes[i].next (issue_0170.vpr@24.2--24.22) [168864]"}
         (forall i_7_1: int ::
-        { Seq#Index(Heap[this, nodes], i_7_1) } { Seq#Index(Heap[this, nodes], i_7_1) }
-        0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes]) ==> Mask[Seq#Index(Heap[this, nodes], i_7_1), next] >= FullPerm
+        { Seq#Index(Heap[this, nodes_1], i_7_1) } { Seq#Index(Heap[this, nodes_1], i_7_1) }
+        0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes_1]) ==> Mask[Seq#Index(Heap[this, nodes_1], i_7_1), next] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver this.nodes[i]
       assume (forall i_7_1: int ::
-        { Seq#Index(Heap[this, nodes], i_7_1) } { Seq#Index(Heap[this, nodes], i_7_1) }
-        (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes])) && NoPerm < FullPerm ==> qpRange6(Seq#Index(Heap[this, nodes], i_7_1)) && invRecv6(Seq#Index(Heap[this, nodes], i_7_1)) == i_7_1
+        { Seq#Index(Heap[this, nodes_1], i_7_1) } { Seq#Index(Heap[this, nodes_1], i_7_1) }
+        (0 <= i_7_1 && i_7_1 < Seq#Length(Heap[this, nodes_1])) && NoPerm < FullPerm ==> qpRange6(Seq#Index(Heap[this, nodes_1], i_7_1)) && invRecv6(Seq#Index(Heap[this, nodes_1], i_7_1)) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv6(o_4) }
-        (0 <= invRecv6(o_4) && invRecv6(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange6(o_4)) ==> Seq#Index(Heap[this, nodes], invRecv6(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv6(o_9) }
+        (0 <= invRecv6(o_9) && invRecv6(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange6(o_9)) ==> Seq#Index(Heap[this, nodes_1], invRecv6(o_9)) == o_9
       );
     
     // -- assume permission updates for field next
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((0 <= invRecv6(o_4) && invRecv6(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange6(o_4)) ==> Seq#Index(Heap[this, nodes], invRecv6(o_4)) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - FullPerm) && (!((0 <= invRecv6(o_4) && invRecv6(o_4) < Seq#Length(Heap[this, nodes])) && (NoPerm < FullPerm && qpRange6(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((0 <= invRecv6(o_9) && invRecv6(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange6(o_9)) ==> Seq#Index(Heap[this, nodes_1], invRecv6(o_9)) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - FullPerm) && (!((0 <= invRecv6(o_9) && invRecv6(o_9) < Seq#Length(Heap[this, nodes_1])) && (NoPerm < FullPerm && qpRange6(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (0 <= i_8_2 && i_8_2 < Seq#Length(Heap[this, nodes])) {
-        if (i_8_2 < Seq#Length(Heap[this, nodes]) - 1) {
-          assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i].next == this.nodes[i + 1] might not hold. (issue_0170.vpr@24.2--24.22) [70885]"}
-            Heap[Seq#Index(Heap[this, nodes], i_8_2), next] == Seq#Index(Heap[this, nodes], i_8_2 + 1);
+      if (0 <= i_8_1 && i_8_1 < Seq#Length(Heap[this, nodes_1])) {
+        if (i_8_1 < Seq#Length(Heap[this, nodes_1]) - 1) {
+          assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i].next == this.nodes[i + 1] might not hold. (issue_0170.vpr@24.2--24.22) [168865]"}
+            Heap[Seq#Index(Heap[this, nodes_1], i_8_1), next] == Seq#Index(Heap[this, nodes_1], i_8_1 + 1);
         } else {
-          assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i].next == null might not hold. (issue_0170.vpr@24.2--24.22) [70886]"}
-            Heap[Seq#Index(Heap[this, nodes], i_8_2), next] == null;
+          assert {:msg "  Folding List(this) might fail. Assertion this.nodes[i].next == null might not hold. (issue_0170.vpr@24.2--24.22) [168866]"}
+            Heap[Seq#Index(Heap[this, nodes_1], i_8_1), next] == null;
         }
       }
       assume false;
     }
     assume (forall i_9_1_1: int ::
-      { Seq#Index(Heap[this, nodes], i_9_1_1) }
-      0 <= i_9_1_1 && i_9_1_1 < Seq#Length(Heap[this, nodes]) ==> (if i_9_1_1 < Seq#Length(Heap[this, nodes]) - 1 then Heap[Seq#Index(Heap[this, nodes], i_9_1_1), next] == Seq#Index(Heap[this, nodes], i_9_1_1 + 1) else Heap[Seq#Index(Heap[this, nodes], i_9_1_1), next] == null)
+      { Seq#Index(Heap[this, nodes_1], i_9_1_1) }
+      0 <= i_9_1_1 && i_9_1_1 < Seq#Length(Heap[this, nodes_1]) ==> (if i_9_1_1 < Seq#Length(Heap[this, nodes_1]) - 1 then Heap[Seq#Index(Heap[this, nodes_1], i_9_1_1), next] == Seq#Index(Heap[this, nodes_1], i_9_1_1 + 1) else Heap[Seq#Index(Heap[this, nodes_1], i_9_1_1), next] == null)
     );
     perm := FullPerm;
     Mask := Mask[null, List(this):=Mask[null, List(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume List#trigger(Heap, List(this));
-    assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes]), CombineFrames(FrameFragment(List#condqp1(Heap, this)), FrameFragment(List#condqp2(Heap, this))));
+    assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes_1]), CombineFrames(FrameFragment(List#condqp1(Heap, this)), FrameFragment(List#condqp2(Heap, this))));
     if (!HasDirectPerm(Mask, null, List(this))) {
       Heap := Heap[null, List#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, List(this):=freshVersion];
     }
-    Heap := Heap[null, List#sm(this):=Heap[null, List#sm(this)][this, nodes:=true]];
+    Heap := Heap[null, List#sm(this):=Heap[null, List#sm(this)][this, nodes_1:=true]];
     // register all known folded permissions guarded by predicate List
     havoc newPMask;
-    assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-      { newPMask[o_52, f_55] }
-      Heap[null, List#sm(this)][o_52, f_55] ==> newPMask[o_52, f_55]
+    assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+      { newPMask[o_40, f_52] }
+      Heap[null, List#sm(this)][o_40, f_52] ==> newPMask[o_40, f_52]
     );
     assume (forall i_10_1: int ::
       
-      0 <= i_10_1 && i_10_1 < Seq#Length(Heap[this, nodes]) ==> newPMask[Seq#Index(Heap[this, nodes], i_10_1), val]
+      0 <= i_10_1 && i_10_1 < Seq#Length(Heap[this, nodes_1]) ==> newPMask[Seq#Index(Heap[this, nodes_1], i_10_1), val]
     );
     Heap := Heap[null, List#sm(this):=newPMask];
     // register all known folded permissions guarded by predicate List
     havoc newPMask;
-    assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-      { newPMask[o_53, f_56] }
-      Heap[null, List#sm(this)][o_53, f_56] ==> newPMask[o_53, f_56]
+    assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+      { newPMask[o_42, f_55] }
+      Heap[null, List#sm(this)][o_42, f_55] ==> newPMask[o_42, f_55]
     );
     assume (forall i_11_1: int ::
       
-      0 <= i_11_1 && i_11_1 < Seq#Length(Heap[this, nodes]) ==> newPMask[Seq#Index(Heap[this, nodes], i_11_1), next]
+      0 <= i_11_1 && i_11_1 < Seq#Length(Heap[this, nodes_1]) ==> newPMask[Seq#Index(Heap[this, nodes_1], i_11_1), next]
     );
     Heap := Heap[null, List#sm(this):=newPMask];
     assume state(Heap, Mask);

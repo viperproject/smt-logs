@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:14
+// Date:         2025-01-26 21:43:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/inex.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/inex-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,12 +185,12 @@ axiom !IsWandField(f_7);
 // Translation of method t1
 // ==================================================
 
-procedure t1(r_1: Ref) returns ()
+procedure t1_2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -218,11 +218,11 @@ procedure t1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r.f := 1 -- inex.vpr@10.5--10.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (inex.vpr@10.5--10.13) [184338]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (inex.vpr@10.5--10.13) [98099]"}
       FullPerm == Mask[r_1, f_7];
     Heap := Heap[r_1, f_7:=1];
     assume state(Heap, Mask);
@@ -232,12 +232,12 @@ procedure t1(r_1: Ref) returns ()
 // Translation of method t2
 // ==================================================
 
-procedure t2(r_1: Ref) returns ()
+procedure t2_2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -266,11 +266,11 @@ procedure t2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r.f := 1 -- inex.vpr@17.5--17.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (inex.vpr@17.5--17.13) [184339]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (inex.vpr@17.5--17.13) [98100]"}
       FullPerm == Mask[r_1, f_7];
     Heap := Heap[r_1, f_7:=1];
     assume state(Heap, Mask);
@@ -283,12 +283,12 @@ procedure t2(r_1: Ref) returns ()
 procedure t3(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -302,16 +302,16 @@ procedure t3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: t1(r) -- inex.vpr@22.5--22.10
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -330,12 +330,12 @@ procedure t4(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -367,7 +367,7 @@ procedure t4(r_1: Ref) returns ()
       assume state(Heap, Mask);
       
       // -- Check definedness of r.f == 2
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (inex.vpr@27.14--27.39) [184340]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (inex.vpr@27.14--27.39) [98101]"}
           HasDirectPerm(Mask, r_1, f_7);
       assume Heap[r_1, f_7] == 2;
       assume state(Heap, Mask);
@@ -375,8 +375,8 @@ procedure t4(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -392,7 +392,7 @@ procedure t4(r_1: Ref) returns ()
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of r.f == 2
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (inex.vpr@30.13--30.42) [184341]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (inex.vpr@30.13--30.42) [98102]"}
             HasDirectPerm(PostMask, r_1, f_7);
         assume PostHeap[r_1, f_7] == 2;
         assume state(PostHeap, PostMask);
@@ -407,7 +407,7 @@ procedure t4(r_1: Ref) returns ()
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of r.f == 3
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (inex.vpr@30.13--30.42) [184342]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (inex.vpr@30.13--30.42) [98103]"}
           HasDirectPerm(PostMask, r_1, f_7);
       assume PostHeap[r_1, f_7] == 3;
       assume state(PostHeap, PostMask);
@@ -416,15 +416,15 @@ procedure t4(r_1: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t4 might not hold. There might be insufficient permission to access r.f (inex.vpr@28.13--28.28) [184343]"}
+      assert {:msg "  Postcondition of t4 might not hold. There might be insufficient permission to access r.f (inex.vpr@28.13--28.28) [98104]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
-    assert {:msg "  Postcondition of t4 might not hold. Assertion r.f == 3 might not hold. (inex.vpr@30.13--30.42) [184344]"}
+    assert {:msg "  Postcondition of t4 might not hold. Assertion r.f == 3 might not hold. (inex.vpr@30.13--30.42) [98105]"}
       Heap[r_1, f_7] == 3;
     // Finish exhale
     havoc ExhaleHeap;

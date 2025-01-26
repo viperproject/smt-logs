@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:15
+// Date:         2025-01-26 21:43:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0118.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0118-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref, f_8: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, f_8] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_3, f_8) ==> Heap[o_3, f_8] == ExhaleHeap[o_3, f_8]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_19: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_19] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_19) ==> Heap[o_12, f_19] == ExhaleHeap[o_12, f_19]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19), ExhaleHeap[null, PredicateMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> Heap[null, PredicateMaskField(pm_f_19)] == ExhaleHeap[null, PredicateMaskField(pm_f_19)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, PredicateMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19), ExhaleHeap[null, WandMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> Heap[null, WandMaskField(pm_f_19)] == ExhaleHeap[null, WandMaskField(pm_f_19)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, WandMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, WandMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_3, $allocated] ==> ExhaleHeap[o_3, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_9: (Field A B), v: B ::
-  { Heap[o_1, f_9:=v] }
-  succHeap(Heap, Heap[o_1, f_9:=v])
+axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_51: (Field A B), v: B ::
+  { Heap[o_1, f_51:=v] }
+  succHeap(Heap, Heap[o_1, f_51:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -241,8 +241,8 @@ procedure Nodelen#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -269,10 +269,10 @@ procedure Nodelen#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Nodeinv#trigger(UnfoldingHeap, Nodeinv(this));
       assume UnfoldingHeap[null, Nodeinv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodev]), CombineFrames(FrameFragment(UnfoldingHeap[this, Noden]), FrameFragment((if UnfoldingHeap[this, Noden] != null then UnfoldingHeap[null, Nodeinv(UnfoldingHeap[this, Noden])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodeinv(this) (0118.vpr@10.1--16.2) [216809]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodeinv(this) (0118.vpr@10.1--16.2) [79918]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodeinv(this)];
       havoc wildcard;
       perm := wildcard;
@@ -294,20 +294,20 @@ procedure Nodelen#definedness(this: Ref) returns (Result: int)
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Noden (0118.vpr@10.1--16.2) [216810]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Noden (0118.vpr@10.1--16.2) [79919]"}
         HasDirectPerm(UnfoldingMask, this, Noden);
       if (UnfoldingHeap[this, Noden] == null) {
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Noden (0118.vpr@10.1--16.2) [216811]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Noden (0118.vpr@10.1--16.2) [79920]"}
           HasDirectPerm(UnfoldingMask, this, Noden);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
-          assert {:msg "  Precondition of function Nodelen might not hold. Assertion this.Noden != null might not hold. (0118.vpr@15.76--15.95) [216812]"}
+          ExhaleWellDef0Mask := UnfoldingMask;
+          assert {:msg "  Precondition of function Nodelen might not hold. Assertion this.Noden != null might not hold. (0118.vpr@15.76--15.95) [79921]"}
             UnfoldingHeap[this, Noden] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Nodelen might not hold. There might be insufficient permission to access Nodeinv(this.Noden) (0118.vpr@15.76--15.95) [216813]"}
+          assert {:msg "  Precondition of function Nodelen might not hold. There might be insufficient permission to access Nodeinv(this.Noden) (0118.vpr@15.76--15.95) [79922]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodeinv(UnfoldingHeap[this, Noden])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -326,9 +326,9 @@ procedure Nodelen#definedness(this: Ref) returns (Result: int)
         Heap := Heap[null, Nodeinv#sm(this):=Heap[null, Nodeinv#sm(this)][this, Noden:=true]];
         if (Heap[this, Noden] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, Nodeinv#sm(this)][o_15, f_20] || Heap[null, Nodeinv#sm(Heap[this, Noden])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, Nodeinv#sm(this)][o_5, f_11] || Heap[null, Nodeinv#sm(Heap[this, Noden])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, Nodeinv#sm(this):=newPMask];
         }
@@ -338,9 +338,9 @@ procedure Nodelen#definedness(this: Ref) returns (Result: int)
     Result := (if Heap[this, Noden] == null then 1 else 1 + Nodelen(Heap, Heap[this, Noden]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Nodelen might not hold. Assertion result > 0 might not hold. (0118.vpr@13.11--13.21) [216814]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Nodelen might not hold. Assertion result > 0 might not hold. (0118.vpr@13.11--13.21) [79923]"}
       Result > 0;
 }
 
@@ -385,8 +385,8 @@ procedure Nodeget#definedness(this: Ref, i: int) returns (Result: int)
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -412,12 +412,12 @@ procedure Nodeget#definedness(this: Ref, i: int) returns (Result: int)
     // -- Check definedness of i < Nodelen(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Nodelen might not hold. Assertion this != null might not hold. (0118.vpr@20.61--20.74) [216815]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function Nodelen might not hold. Assertion this != null might not hold. (0118.vpr@20.61--20.74) [79924]"}
           this != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Nodelen might not hold. There might be insufficient permission to access Nodeinv(this) (0118.vpr@20.61--20.74) [216816]"}
+        assert {:msg "  Precondition of function Nodelen might not hold. There might be insufficient permission to access Nodeinv(this) (0118.vpr@20.61--20.74) [79925]"}
           NoPerm < perm ==> NoPerm < Mask[null, Nodeinv(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -436,10 +436,10 @@ procedure Nodeget#definedness(this: Ref, i: int) returns (Result: int)
       UnfoldingMask := Mask;
       assume Nodeinv#trigger(UnfoldingHeap, Nodeinv(this));
       assume UnfoldingHeap[null, Nodeinv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodev]), CombineFrames(FrameFragment(UnfoldingHeap[this, Noden]), FrameFragment((if UnfoldingHeap[this, Noden] != null then UnfoldingHeap[null, Nodeinv(UnfoldingHeap[this, Noden])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodeinv(this) (0118.vpr@18.1--23.2) [216817]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodeinv(this) (0118.vpr@18.1--23.2) [79926]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodeinv(this)];
       havoc wildcard;
       perm := wildcard;
@@ -462,23 +462,23 @@ procedure Nodeget#definedness(this: Ref, i: int) returns (Result: int)
       }
       assume state(UnfoldingHeap, UnfoldingMask);
       if (i == 0) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Nodev (0118.vpr@18.1--23.2) [216818]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Nodev (0118.vpr@18.1--23.2) [79927]"}
           HasDirectPerm(UnfoldingMask, this, Nodev);
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Noden (0118.vpr@18.1--23.2) [216819]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Noden (0118.vpr@18.1--23.2) [79928]"}
           HasDirectPerm(UnfoldingMask, this, Noden);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
-          assert {:msg "  Precondition of function Nodeget might not hold. Assertion this.Noden != null might not hold. (0118.vpr@22.69--22.95) [216820]"}
+          ExhaleWellDef0Mask := UnfoldingMask;
+          assert {:msg "  Precondition of function Nodeget might not hold. Assertion this.Noden != null might not hold. (0118.vpr@22.69--22.95) [79929]"}
             UnfoldingHeap[this, Noden] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Nodeget might not hold. There might be insufficient permission to access Nodeinv(this.Noden) (0118.vpr@22.69--22.95) [216821]"}
+          assert {:msg "  Precondition of function Nodeget might not hold. There might be insufficient permission to access Nodeinv(this.Noden) (0118.vpr@22.69--22.95) [79930]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodeinv(UnfoldingHeap[this, Noden])];
-          assert {:msg "  Precondition of function Nodeget might not hold. Assertion 0 <= i - 1 might not hold. (0118.vpr@22.69--22.95) [216822]"}
+          assert {:msg "  Precondition of function Nodeget might not hold. Assertion 0 <= i - 1 might not hold. (0118.vpr@22.69--22.95) [79931]"}
             0 <= i - 1;
-          assert {:msg "  Precondition of function Nodeget might not hold. Assertion i - 1 < Nodelen(this.Noden) might not hold. (0118.vpr@22.69--22.95) [216823]"}
+          assert {:msg "  Precondition of function Nodeget might not hold. Assertion i - 1 < Nodelen(this.Noden) might not hold. (0118.vpr@22.69--22.95) [79932]"}
             i - 1 < Nodelen(UnfoldingHeap, UnfoldingHeap[this, Noden]);
           // Finish exhale
           havoc ExhaleHeap;
@@ -497,9 +497,9 @@ procedure Nodeget#definedness(this: Ref, i: int) returns (Result: int)
         Heap := Heap[null, Nodeinv#sm(this):=Heap[null, Nodeinv#sm(this)][this, Noden:=true]];
         if (Heap[this, Noden] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-            { newPMask[o_16, f_21] }
-            Heap[null, Nodeinv#sm(this)][o_16, f_21] || Heap[null, Nodeinv#sm(Heap[this, Noden])][o_16, f_21] ==> newPMask[o_16, f_21]
+          assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+            { newPMask[o_6, f_12] }
+            Heap[null, Nodeinv#sm(this)][o_6, f_12] || Heap[null, Nodeinv#sm(Heap[this, Noden])][o_6, f_12] ==> newPMask[o_6, f_12]
           );
           Heap := Heap[null, Nodeinv#sm(this):=newPMask];
         }
@@ -558,8 +558,8 @@ procedure Listlen#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -586,10 +586,10 @@ procedure Listlen#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Listinv#trigger(UnfoldingHeap, Listinv(this));
       assume UnfoldingHeap[null, Listinv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Listc]), FrameFragment((if UnfoldingHeap[this, Listc] != null then UnfoldingHeap[null, Nodeinv(UnfoldingHeap[this, Listc])] else EmptyFrame)));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Listinv(this) (0118.vpr@25.1--31.2) [216824]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Listinv(this) (0118.vpr@25.1--31.2) [79933]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Listinv(this)];
       havoc wildcard;
       perm := wildcard;
@@ -606,20 +606,20 @@ procedure Listlen#definedness(this: Ref) returns (Result: int)
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Listc (0118.vpr@25.1--31.2) [216825]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Listc (0118.vpr@25.1--31.2) [79934]"}
         HasDirectPerm(UnfoldingMask, this, Listc);
       if (UnfoldingHeap[this, Listc] == null) {
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Listc (0118.vpr@25.1--31.2) [216826]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.Listc (0118.vpr@25.1--31.2) [79935]"}
           HasDirectPerm(UnfoldingMask, this, Listc);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
-          assert {:msg "  Precondition of function Nodelen might not hold. Assertion this.Listc != null might not hold. (0118.vpr@30.72--30.91) [216827]"}
+          ExhaleWellDef0Mask := UnfoldingMask;
+          assert {:msg "  Precondition of function Nodelen might not hold. Assertion this.Listc != null might not hold. (0118.vpr@30.72--30.91) [79936]"}
             UnfoldingHeap[this, Listc] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Nodelen might not hold. There might be insufficient permission to access Nodeinv(this.Listc) (0118.vpr@30.72--30.91) [216828]"}
+          assert {:msg "  Precondition of function Nodelen might not hold. There might be insufficient permission to access Nodeinv(this.Listc) (0118.vpr@30.72--30.91) [79937]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodeinv(UnfoldingHeap[this, Listc])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -634,9 +634,9 @@ procedure Listlen#definedness(this: Ref) returns (Result: int)
         Heap := Heap[null, Listinv#sm(this):=Heap[null, Listinv#sm(this)][this, Listc:=true]];
         if (Heap[this, Listc] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-            { newPMask[o_52, f_55] }
-            Heap[null, Listinv#sm(this)][o_52, f_55] || Heap[null, Nodeinv#sm(Heap[this, Listc])][o_52, f_55] ==> newPMask[o_52, f_55]
+          assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+            { newPMask[o_40, f_52] }
+            Heap[null, Listinv#sm(this)][o_40, f_52] || Heap[null, Nodeinv#sm(Heap[this, Listc])][o_40, f_52] ==> newPMask[o_40, f_52]
           );
           Heap := Heap[null, Listinv#sm(this):=newPMask];
         }
@@ -646,9 +646,9 @@ procedure Listlen#definedness(this: Ref) returns (Result: int)
     Result := (if Heap[this, Listc] == null then 0 else Nodelen(Heap, Heap[this, Listc]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Listlen might not hold. Assertion result >= 0 might not hold. (0118.vpr@28.11--28.22) [216829]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Listlen might not hold. Assertion result >= 0 might not hold. (0118.vpr@28.11--28.22) [79938]"}
       Result >= 0;
 }
 
@@ -710,12 +710,12 @@ procedure Nodeinv#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Noden != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Noden (0118.vpr@33.1--35.2) [216830]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Noden (0118.vpr@33.1--35.2) [79939]"}
         HasDirectPerm(Mask, this, Noden);
     if (Heap[this, Noden] != null) {
       
       // -- Check definedness of acc(Nodeinv(this.Noden), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Noden (0118.vpr@33.1--35.2) [216831]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Noden (0118.vpr@33.1--35.2) [79940]"}
           HasDirectPerm(Mask, this, Noden);
       perm := FullPerm;
       Mask := Mask[null, Nodeinv(Heap[this, Noden]):=Mask[null, Nodeinv(Heap[this, Noden])] + perm];
@@ -778,12 +778,12 @@ procedure Listinv#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Listc != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Listc (0118.vpr@37.1--39.2) [216832]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Listc (0118.vpr@37.1--39.2) [79941]"}
         HasDirectPerm(Mask, this, Listc);
     if (Heap[this, Listc] != null) {
       
       // -- Check definedness of acc(Nodeinv(this.Listc), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Listc (0118.vpr@37.1--39.2) [216833]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Listc (0118.vpr@37.1--39.2) [79942]"}
           HasDirectPerm(Mask, this, Listc);
       perm := FullPerm;
       Mask := Mask[null, Nodeinv(Heap[this, Listc]):=Mask[null, Nodeinv(Heap[this, Listc])] + perm];

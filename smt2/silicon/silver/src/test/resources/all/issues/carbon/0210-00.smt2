@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:15
+; Started: 2025-01-26 21:35:14
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -696,7 +696,7 @@
     (Set_in n@2@00 g@0@00)
     (and (= (inv@4@00 s@$ g@0@00 n@2@00) n@2@00) (img@5@00 s@$ g@0@00 n@2@00)))
   :pattern (($FVF.loc_next ($FVF.lookup_next ($SortWrappers.$SnapTo$FVF<next> ($Snap.first ($Snap.second s@$))) n@2@00) n@2@00))
-  :qid |quant-u-23497|)))
+  :qid |quant-u-12202|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@5@00 s@$ g@0@00 r) (Set_in (inv@4@00 s@$ g@0@00 r) g@0@00))
@@ -729,7 +729,7 @@
     (Set_in (inv@4@00 s@$ g@0@00 r) g@0@00)
     ($FVF.loc_next ($FVF.lookup_next (sm@6@00 s@$ g@0@00) r) r))
   :pattern ((inv@4@00 s@$ g@0@00 r))
-  :qid |quant-u-23498|)))
+  :qid |quant-u-12203|)))
 (assert (= ($Snap.second ($Snap.second s@$)) $Snap.unit))
 ; [eval] (forall n$0: Ref :: { (n$0.next in g) } { (n$0 in g), n$0.next } (n$0 in g) && n$0.next != null ==> (n$0.next in g))
 (declare-const n$0@7@00 $Ref)
@@ -950,8 +950,8 @@
 (assert (forall ((s@$ $Snap) (g@0@00 Set<$Ref>)) (!
   (= (hfun%limited s@$ g@0@00) (hfun s@$ g@0@00))
   :pattern ((hfun s@$ g@0@00))
-  :qid |quant-u-23494|)))
+  :qid |quant-u-12199|)))
 (assert (forall ((s@$ $Snap) (g@0@00 Set<$Ref>)) (!
   (hfun%stateless g@0@00)
   :pattern ((hfun%limited s@$ g@0@00))
-  :qid |quant-u-23495|)))
+  :qid |quant-u-12200|)))

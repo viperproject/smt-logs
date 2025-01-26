@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:32
+// Date:         2025-01-26 21:43:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0073.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0073-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,15 +180,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 const unique data: Field NormalField int;
 axiom !IsPredicateField(data);
 axiom !IsWandField(data);
-const unique rds_1: Field NormalField int;
-axiom !IsPredicateField(rds_1);
-axiom !IsWandField(rds_1);
+const unique rds: Field NormalField int;
+axiom !IsPredicateField(rds);
+axiom !IsWandField(rds);
 
 // ==================================================
 // Translation of method test
 // ==================================================
 
-procedure test(this: Ref, I: Perm) returns ()
+procedure test_1(this: Ref, I_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -216,22 +216,22 @@ procedure test(this: Ref, I: Perm) returns ()
   //   (this.rds >= 0 && (acc(this.data, write) && this.rds * I > none)) -- 0073.vpr@9.3--9.88
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, rds_1:=Mask[this, rds_1] + perm];
+    Mask := Mask[this, rds:=Mask[this, rds] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.rds >= 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.rds (0073.vpr@9.10--9.88) [191010]"}
-        HasDirectPerm(Mask, this, rds_1);
-    assume Heap[this, rds_1] >= 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.rds (0073.vpr@9.10--9.88) [82998]"}
+        HasDirectPerm(Mask, this, rds);
+    assume Heap[this, rds] >= 0;
     perm := FullPerm;
     assume this != null;
     Mask := Mask[this, data:=Mask[this, data] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.rds * I > none
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.rds (0073.vpr@9.10--9.88) [191012]"}
-        HasDirectPerm(Mask, this, rds_1);
-    assume NoPerm < real(Heap[this, rds_1]) * I;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.rds (0073.vpr@9.10--9.88) [83000]"}
+        HasDirectPerm(Mask, this, rds);
+    assume NoPerm < real(Heap[this, rds]) * I_1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -240,10 +240,10 @@ procedure test(this: Ref, I: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.rds * I > none
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.rds (0073.vpr@10.10--10.29) [191013]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, rds_1);
-    assert {:msg "  Assert might fail. Assertion this.rds * I > none might not hold. (0073.vpr@10.10--10.29) [191014]"}
-      NoPerm < real(Heap[this, rds_1]) * I;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.rds (0073.vpr@10.10--10.29) [83001]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, rds);
+    assert {:msg "  Assert might fail. Assertion this.rds * I > none might not hold. (0073.vpr@10.10--10.29) [83002]"}
+      NoPerm < real(Heap[this, rds]) * I_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(this.data, write) -- 0073.vpr@11.3--11.31
@@ -251,7 +251,7 @@ procedure test(this: Ref, I: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.data (0073.vpr@11.10--11.31) [191016]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.data (0073.vpr@11.10--11.31) [83004]"}
         perm <= Mask[this, data];
     }
     Mask := Mask[this, data:=Mask[this, data] - perm];
@@ -266,10 +266,10 @@ procedure test(this: Ref, I: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.rds >= 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.rds (0073.vpr@12.10--12.23) [191017]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, rds_1);
-    assert {:msg "  Assert might fail. Assertion this.rds >= 0 might not hold. (0073.vpr@12.10--12.23) [191018]"}
-      Heap[this, rds_1] >= 0;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.rds (0073.vpr@12.10--12.23) [83005]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, rds);
+    assert {:msg "  Assert might fail. Assertion this.rds >= 0 might not hold. (0073.vpr@12.10--12.23) [83006]"}
+      Heap[this, rds] >= 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.rds * I > none -- 0073.vpr@16.3--16.29
@@ -277,9 +277,9 @@ procedure test(this: Ref, I: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.rds * I > none
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.rds (0073.vpr@16.10--16.29) [191019]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, rds_1);
-    assert {:msg "  Assert might fail. Assertion this.rds * I > none might not hold. (0073.vpr@16.10--16.29) [191020]"}
-      NoPerm < real(Heap[this, rds_1]) * I;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.rds (0073.vpr@16.10--16.29) [83007]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, rds);
+    assert {:msg "  Assert might fail. Assertion this.rds * I > none might not hold. (0073.vpr@16.10--16.29) [83008]"}
+      NoPerm < real(Heap[this, rds]) * I_1;
     assume state(Heap, Mask);
 }

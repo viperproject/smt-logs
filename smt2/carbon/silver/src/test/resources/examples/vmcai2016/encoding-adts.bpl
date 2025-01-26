@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:02:51
+// Date:         2025-01-26 21:43:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/vmcai2016/encoding-adts.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/vmcai2016/encoding-adts-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -253,10 +253,10 @@ axiom (forall xs: listDomainType ::
 procedure test_types(x: listDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -266,13 +266,13 @@ procedure test_types(x: listDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert is_Nil(x) == !is_Cons(x) -- encoding-adts.vpr@72.3--72.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion is_Nil(x) == !is_Cons(x) might not hold. (encoding-adts.vpr@72.10--72.36) [113110]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion is_Nil(x) == !is_Cons(x) might not hold. (encoding-adts.vpr@72.10--72.36) [112279]"}
       (is_Nil(x): bool) == !(is_Cons(x): bool);
     assume state(Heap, Mask);
 }
@@ -284,10 +284,10 @@ procedure test_types(x: listDomainType) returns ()
 procedure test_quantifiers() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var xs_1_2: listDomainType;
   var head_1_1: int;
   var tail_1_1: listDomainType;
@@ -304,8 +304,8 @@ procedure test_quantifiers() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall head: Int, tail: list, xs: list ::
   //     { is_Cons(xs), Cons(head, tail) }
@@ -314,8 +314,8 @@ procedure test_quantifiers() returns ()
   //     is_Cons(xs) ==>
   //     (head == head_Cons(xs) && tail == tail_Cons(xs)) ==
   //     (Cons(head, tail) == xs)) -- encoding-adts.vpr@78.5--79.99
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall head: Int, tail: list, xs: list :: { is_Cons(xs), Cons(head, tail) } { head_Cons(xs), Cons(head, tail) } { tail_Cons(xs), Cons(head, tail) } is_Cons(xs) ==> (head == head_Cons(xs) && tail == tail_Cons(xs)) == (Cons(head, tail) == xs))
       if (*) {
@@ -323,7 +323,7 @@ procedure test_quantifiers() returns ()
       }
     if (*) {
       if ((is_Cons(xs_1_2): bool)) {
-        assert {:msg "  Assert might fail. Assertion (head == head_Cons(xs) && tail == tail_Cons(xs)) == (Cons(head, tail) == xs) might not hold. (encoding-adts.vpr@78.12--79.99) [113111]"}
+        assert {:msg "  Assert might fail. Assertion (head == head_Cons(xs) && tail == tail_Cons(xs)) == (Cons(head, tail) == xs) might not hold. (encoding-adts.vpr@78.12--79.99) [112280]"}
           (head_1_1 == (head_Cons(xs_1_2): int) && tail_1_1 == (tail_Cons(xs_1_2): listDomainType)) == ((Cons(head_1_1, tail_1_1): listDomainType) == xs_1_2);
       }
       assume false;
@@ -338,15 +338,15 @@ procedure test_quantifiers() returns ()
   //     { Cons(head1, tail1), Cons(head2, tail2) }
   //     (Cons(head1, tail1) == Cons(head2, tail2)) ==
   //     (head1 == head2 && tail1 == tail2)) -- encoding-adts.vpr@82.5--83.85
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall head1: Int, head2: Int, tail1: list, tail2: list :: { Cons(head1, tail1), Cons(head2, tail2) } (Cons(head1, tail1) == Cons(head2, tail2)) == (head1 == head2 && tail1 == tail2))
       if (*) {
         assume false;
       }
     if (*) {
-      assert {:msg "  Assert might fail. Assertion (Cons(head1, tail1) == Cons(head2, tail2)) == (head1 == head2 && tail1 == tail2) might not hold. (encoding-adts.vpr@82.12--83.85) [113112]"}
+      assert {:msg "  Assert might fail. Assertion (Cons(head1, tail1) == Cons(head2, tail2)) == (head1 == head2 && tail1 == tail2) might not hold. (encoding-adts.vpr@82.12--83.85) [112281]"}
         ((Cons(head1_1, tail1_1): listDomainType) == (Cons(head2_1, tail2_1): listDomainType)) == (head1_1 == head2_1 && tail1_1 == tail2_1);
       assume false;
     }
@@ -364,10 +364,10 @@ procedure test_quantifiers() returns ()
 procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ys: listDomainType;
   var ys_1: listDomainType;
   var y: int;
@@ -386,7 +386,7 @@ procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
   var ys_13: listDomainType;
   var z_1: int;
   var ys_16: listDomainType;
-  var y_7_2: int;
+  var y_7: int;
   var ys_17: listDomainType;
   var z_3: int;
   
@@ -398,8 +398,8 @@ procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert !is_Nil(xs) &&
   //   (!(is_Cons(xs) && (let ys == (tail_Cons(xs)) in is_Nil(ys))) &&
@@ -410,8 +410,8 @@ procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
   //       (tail_Cons(xs)) in
   //       is_Cons(ys))))) ==>
   //   false -- encoding-adts.vpr@101.4--105.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of !is_Nil(xs) && (!(is_Cons(xs) && (let ys == (tail_Cons(xs)) in is_Nil(ys))) && !(is_Cons(xs) && (let y == (head_Cons(xs)) in (let ys == (tail_Cons(xs)) in is_Cons(ys)))))
       if (!(is_Nil(xs): bool)) {
@@ -433,7 +433,7 @@ procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
         }
       }
     if (!(is_Nil(xs): bool) && (!((is_Cons(xs): bool) && (is_Nil((tail_Cons(xs): listDomainType)): bool)) && !((is_Cons(xs): bool) && (is_Cons((tail_Cons(xs): listDomainType)): bool)))) {
-      assert {:msg "  Assert might fail. Assertion false might not hold. (encoding-adts.vpr@101.14--105.16) [113113]"}
+      assert {:msg "  Assert might fail. Assertion false might not hold. (encoding-adts.vpr@101.14--105.16) [112282]"}
         false;
     }
     
@@ -452,8 +452,8 @@ procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
   //       (tail_Cons(xs)) in
   //       is_Cons(ys) && (let z == (head_Cons(ys)) in y < z))))) ==>
   //   false -- encoding-adts.vpr@114.4--119.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of !is_Nil(xs) && (!(is_Cons(xs) && (let ys == (tail_Cons(xs)) in is_Nil(ys))) && !(is_Cons(xs) && (let y == (head_Cons(xs)) in (let ys == (tail_Cons(xs)) in is_Cons(ys) && (let z == (head_Cons(ys)) in y < z)))))
       if (!(is_Nil(xs): bool)) {
@@ -479,13 +479,13 @@ procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
         }
       }
     if (!(is_Nil(xs): bool) && (!((is_Cons(xs): bool) && (is_Nil((tail_Cons(xs): listDomainType)): bool)) && !((is_Cons(xs): bool) && ((is_Cons((tail_Cons(xs): listDomainType)): bool) && (head_Cons(xs): int) < (head_Cons((tail_Cons(xs): listDomainType)): int))))) {
-      assert {:msg "  Assert might fail. Assertion false might not hold. (encoding-adts.vpr@114.14--119.16) [113114]"}
+      assert {:msg "  Assert might fail. Assertion false might not hold. (encoding-adts.vpr@114.14--119.16) [112283]"}
         false;
     }
     
     // -- Free assumptions (exhale module)
       ys_16 := (tail_Cons(xs): listDomainType);
-      y_7_2 := (head_Cons(xs): int);
+      y_7 := (head_Cons(xs): int);
       ys_17 := (tail_Cons(xs): listDomainType);
       z_3 := (head_Cons(ys_17): int);
     assume state(Heap, Mask);

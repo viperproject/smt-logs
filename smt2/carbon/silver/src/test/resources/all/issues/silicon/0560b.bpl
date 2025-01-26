@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:54
+// Date:         2025-01-26 21:42:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0560b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0560b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -551,25 +551,25 @@ type TreeDomainType;
 function  Leaf(): TreeDomainType;
 
 // Translation of domain function Node
-function  Node_1(v_4: int, lft: TreeDomainType, rgt: TreeDomainType): TreeDomainType;
+function  Node_1(v_29: int, lft_1: TreeDomainType, rgt: TreeDomainType): TreeDomainType;
 
 // Translation of domain function isLeaf
-function  isLeaf(t_9: TreeDomainType): bool;
+function  isLeaf(t_3: TreeDomainType): bool;
 
 // Translation of domain function isNode
-function  isNode(t_9: TreeDomainType): bool;
+function  isNode(t_3: TreeDomainType): bool;
 
 // Translation of domain function getVal
-function  getVal(t_9: TreeDomainType): int;
+function  getVal(t_3: TreeDomainType): int;
 
 // Translation of domain function getLeft
-function  getLeft(t_9: TreeDomainType): TreeDomainType;
+function  getLeft(t_3: TreeDomainType): TreeDomainType;
 
 // Translation of domain function getRight
-function  getRight(t_9: TreeDomainType): TreeDomainType;
+function  getRight(t_3: TreeDomainType): TreeDomainType;
 
 // Translation of domain function type
-function  vtype(t_9: TreeDomainType): int;
+function  vtype(t_3: TreeDomainType): int;
 
 // Translation of domain unique function type_Leaf
 const unique type_Leaf: int;
@@ -602,26 +602,26 @@ axiom (forall t_2: TreeDomainType ::
 );
 
 // Translation of domain axiom destruct_over_construct
-axiom (forall v_2: int, lft_1: TreeDomainType, rgt_1: TreeDomainType ::
-  { (getVal((Node_1(v_2, lft_1, rgt_1): TreeDomainType)): int) } { (getLeft((Node_1(v_2, lft_1, rgt_1): TreeDomainType)): TreeDomainType) } { (getRight((Node_1(v_2, lft_1, rgt_1): TreeDomainType)): TreeDomainType) }
-  (getVal((Node_1(v_2, lft_1, rgt_1): TreeDomainType)): int) == v_2 && ((getLeft((Node_1(v_2, lft_1, rgt_1): TreeDomainType)): TreeDomainType) == lft_1 && (getRight((Node_1(v_2, lft_1, rgt_1): TreeDomainType)): TreeDomainType) == rgt_1)
+axiom (forall v_2: int, lft: TreeDomainType, rgt_1: TreeDomainType ::
+  { (getVal((Node_1(v_2, lft, rgt_1): TreeDomainType)): int) } { (getLeft((Node_1(v_2, lft, rgt_1): TreeDomainType)): TreeDomainType) } { (getRight((Node_1(v_2, lft, rgt_1): TreeDomainType)): TreeDomainType) }
+  (getVal((Node_1(v_2, lft, rgt_1): TreeDomainType)): int) == v_2 && ((getLeft((Node_1(v_2, lft, rgt_1): TreeDomainType)): TreeDomainType) == lft && (getRight((Node_1(v_2, lft, rgt_1): TreeDomainType)): TreeDomainType) == rgt_1)
 );
 
 // Translation of domain axiom type_of_Leaf
 axiom (vtype((Leaf(): TreeDomainType)): int) == type_Leaf;
 
 // Translation of domain axiom type_of_Node
-axiom (forall v_2: int, lft_1: TreeDomainType, rgt_1: TreeDomainType ::
-  { (vtype((Node_1(v_2, lft_1, rgt_1): TreeDomainType)): int) }
-  (vtype((Node_1(v_2, lft_1, rgt_1): TreeDomainType)): int) == type_Node
+axiom (forall v_2: int, lft: TreeDomainType, rgt_1: TreeDomainType ::
+  { (vtype((Node_1(v_2, lft, rgt_1): TreeDomainType)): int) }
+  (vtype((Node_1(v_2, lft, rgt_1): TreeDomainType)): int) == type_Node
 );
 
 // Translation of domain axiom all_types
 axiom (forall t_2: TreeDomainType ::
   { (vtype(t_2): int) }
-  ((vtype(t_2): int) == type_Leaf && t_2 == (Leaf(): TreeDomainType)) || ((vtype(t_2): int) == type_Node && (exists v_2: int, lft_1: TreeDomainType, rgt_1: TreeDomainType ::
-    { (Node_1(v_2, lft_1, rgt_1): TreeDomainType) }
-    t_2 == (Node_1(v_2, lft_1, rgt_1): TreeDomainType)
+  ((vtype(t_2): int) == type_Leaf && t_2 == (Leaf(): TreeDomainType)) || ((vtype(t_2): int) == type_Node && (exists v_2: int, lft: TreeDomainType, rgt_1: TreeDomainType ::
+    { (Node_1(v_2, lft, rgt_1): TreeDomainType) }
+    t_2 == (Node_1(v_2, lft, rgt_1): TreeDomainType)
   ))
 );
 
@@ -630,11 +630,11 @@ axiom (forall t_2: TreeDomainType ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  height_1(Heap: HeapType, t_2: TreeDomainType): int;
+function  height_2(Heap: HeapType, t_2: TreeDomainType): int;
 function  height'(Heap: HeapType, t_2: TreeDomainType): int;
 axiom (forall Heap: HeapType, t_2: TreeDomainType ::
-  { height_1(Heap, t_2) }
-  height_1(Heap, t_2) == height'(Heap, t_2) && dummyFunction(height#triggerStateless(t_2))
+  { height_2(Heap, t_2) }
+  height_2(Heap, t_2) == height'(Heap, t_2) && dummyFunction(height#triggerStateless(t_2))
 );
 axiom (forall Heap: HeapType, t_2: TreeDomainType ::
   { height'(Heap, t_2) }
@@ -643,8 +643,8 @@ axiom (forall Heap: HeapType, t_2: TreeDomainType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, t_2: TreeDomainType ::
-  { state(Heap, Mask), height_1(Heap, t_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> height_1(Heap, t_2) == (if (isLeaf(t_2): bool) then 0 else (if height'(Heap, (getLeft(t_2): TreeDomainType)) > height'(Heap, (getRight(t_2): TreeDomainType)) then height'(Heap, (getLeft(t_2): TreeDomainType)) + 1 else height'(Heap, (getRight(t_2): TreeDomainType)) + 1))
+  { state(Heap, Mask), height_2(Heap, t_2) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> height_2(Heap, t_2) == (if (isLeaf(t_2): bool) then 0 else (if height'(Heap, (getLeft(t_2): TreeDomainType)) > height'(Heap, (getRight(t_2): TreeDomainType)) then height'(Heap, (getLeft(t_2): TreeDomainType)) + 1 else height'(Heap, (getRight(t_2): TreeDomainType)) + 1))
 );
 
 // Framing axioms
@@ -690,7 +690,7 @@ procedure height#definedness(t_2: TreeDomainType) returns (Result: int)
           // Enable postcondition for recursive call
           assume height#trigger(EmptyFrame, (getRight(t_2): TreeDomainType));
         }
-        if (height_1(Heap, (getLeft(t_2): TreeDomainType)) > height_1(Heap, (getRight(t_2): TreeDomainType))) {
+        if (height_2(Heap, (getLeft(t_2): TreeDomainType)) > height_2(Heap, (getRight(t_2): TreeDomainType))) {
           if (*) {
             // Stop execution
             assume false;
@@ -710,7 +710,7 @@ procedure height#definedness(t_2: TreeDomainType) returns (Result: int)
       }
   
   // -- Translate function body
-    Result := (if (isLeaf(t_2): bool) then 0 else (if height_1(Heap, (getLeft(t_2): TreeDomainType)) > height_1(Heap, (getRight(t_2): TreeDomainType)) then height_1(Heap, (getLeft(t_2): TreeDomainType)) + 1 else height_1(Heap, (getRight(t_2): TreeDomainType)) + 1));
+    Result := (if (isLeaf(t_2): bool) then 0 else (if height_2(Heap, (getLeft(t_2): TreeDomainType)) > height_2(Heap, (getRight(t_2): TreeDomainType)) then height_2(Heap, (getLeft(t_2): TreeDomainType)) + 1 else height_2(Heap, (getRight(t_2): TreeDomainType)) + 1));
 }
 
 // ==================================================
@@ -720,27 +720,27 @@ procedure height#definedness(t_2: TreeDomainType) returns (Result: int)
 procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var current: (Seq TreeDomainType);
   var next_1: (Seq TreeDomainType);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var i: int;
   var k: int;
-  var j_9: int;
-  var i_6: int;
-  var k_1: int;
-  var j_6: int;
-  var k_2: int;
+  var j: int;
+  var i_14: int;
+  var k_16: int;
+  var j_12: int;
+  var k_6: int;
   var node: TreeDomainType;
-  var i_5: int;
-  var k_14: int;
-  var j_6_1: int;
+  var i_5_1: int;
+  var k_14_2: int;
+  var j_6_2: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -751,8 +751,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -765,7 +765,7 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
         // Stop execution
         assume false;
       }
-    assume res == height_1(PostHeap, t_2);
+    assume res == height_2(PostHeap, t_2);
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -796,11 +796,11 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (Seq#Length(current) == 0) {
-              assert {:msg "  Loop invariant |current| == 0 ==> res == height(t) might not hold on entry. Assertion res == height(t) might not hold. (0560b.vpr@91.17--91.52) [203067]"}
-                res == height_1(Heap, t_2);
+              assert {:msg "  Loop invariant |current| == 0 ==> res == height(t) might not hold on entry. Assertion res == height(t) might not hold. (0560b.vpr@91.17--91.52) [76133]"}
+                res == height_2(Heap, t_2);
             }
         
         // -- Havoc loop written variables (except locals)
@@ -816,7 +816,7 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                   // Stop execution
                   assume false;
                 }
-              assume res == height_1(Heap, t_2);
+              assume res == height_2(Heap, t_2);
             }
             assume state(Heap, Mask);
             assume false;
@@ -832,7 +832,7 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
             // Inhale invariant
             if (Seq#Length(current) == 0) {
               assume state(Heap, Mask);
-              assume res == height_1(Heap, t_2);
+              assume res == height_2(Heap, t_2);
             }
             assume state(Heap, Mask);
             // Check and assume guard
@@ -854,33 +854,33 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                 // -- Before loop head
                   
                   // -- Exhale loop invariant before loop
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (*) {
-                      assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion i >= 0 might not hold. (0560b.vpr@100.19--106.60) [203068]"}
+                      assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion i >= 0 might not hold. (0560b.vpr@100.19--106.60) [76134]"}
                         i >= 0;
-                      assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion i < |current| might not hold. (0560b.vpr@100.19--106.60) [203069]"}
+                      assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion i < |current| might not hold. (0560b.vpr@100.19--106.60) [76135]"}
                         i < Seq#Length(current);
                       if (*) {
-                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion k >= 0 might not hold. (0560b.vpr@100.19--106.60) [203070]"}
+                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion k >= 0 might not hold. (0560b.vpr@100.19--106.60) [76136]"}
                           k >= 0;
-                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion k < |current| might not hold. (0560b.vpr@100.19--106.60) [203071]"}
+                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion k < |current| might not hold. (0560b.vpr@100.19--106.60) [76137]"}
                           k < Seq#Length(current);
-                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion height(current[i]) > height(current[k]) might not hold. (0560b.vpr@100.19--106.60) [203072]"}
-                          height_1(Heap, Seq#Index(current, i)) > height_1(Heap, Seq#Index(current, k));
+                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion height(current[i]) > height(current[k]) might not hold. (0560b.vpr@100.19--106.60) [76138]"}
+                          height_2(Heap, Seq#Index(current, i)) > height_2(Heap, Seq#Index(current, k));
                         assume false;
                       }
                       assume (forall k_1_1_1: int ::
                         { height#frame(EmptyFrame, Seq#Index(current, k_1_1_1)) }
-                        k_1_1_1 >= 0 && (k_1_1_1 < Seq#Length(current) && height_1(Heap, Seq#Index(current, i)) > height_1(Heap, Seq#Index(current, k_1_1_1)))
+                        k_1_1_1 >= 0 && (k_1_1_1 < Seq#Length(current) && height_2(Heap, Seq#Index(current, i)) > height_2(Heap, Seq#Index(current, k_1_1_1)))
                       );
                       if (*) {
-                        if (j_9 >= 0 && (j_9 < Seq#Length(next_1) && (forall k_2_1: int ::
-                          { height#frame(EmptyFrame, Seq#Index(next_1, k_2_1)) }
-                          k_2_1 >= 0 && (k_2_1 < Seq#Length(next_1) && height_1(Heap, Seq#Index(next_1, j_9)) > height_1(Heap, Seq#Index(next_1, k_2_1)))
+                        if (j >= 0 && (j < Seq#Length(next_1) && (forall k_2_2: int ::
+                          { height#frame(EmptyFrame, Seq#Index(next_1, k_2_2)) }
+                          k_2_2 >= 0 && (k_2_2 < Seq#Length(next_1) && height_2(Heap, Seq#Index(next_1, j)) > height_2(Heap, Seq#Index(next_1, k_2_2)))
                         ))) {
-                          assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion height(next[j]) == height(current[i]) - 1 might not hold. (0560b.vpr@100.19--106.60) [203073]"}
-                            height_1(Heap, Seq#Index(next_1, j_9)) == height_1(Heap, Seq#Index(current, i)) - 1;
+                          assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion height(next[j]) == height(current[i]) - 1 might not hold. (0560b.vpr@100.19--106.60) [76139]"}
+                            height_2(Heap, Seq#Index(next_1, j)) == height_2(Heap, Seq#Index(current, i)) - 1;
                         }
                         assume false;
                       }
@@ -888,22 +888,22 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                         { height#frame(EmptyFrame, Seq#Index(next_1, j_1_1_1)) }
                         j_1_1_1 >= 0 && (j_1_1_1 < Seq#Length(next_1) && (forall k_3: int ::
                           { height#frame(EmptyFrame, Seq#Index(next_1, k_3)) }
-                          k_3 >= 0 && (k_3 < Seq#Length(next_1) && height_1(Heap, Seq#Index(next_1, j_1_1_1)) > height_1(Heap, Seq#Index(next_1, k_3)))
-                        )) ==> height_1(Heap, Seq#Index(next_1, j_1_1_1)) == height_1(Heap, Seq#Index(current, i)) - 1
+                          k_3 >= 0 && (k_3 < Seq#Length(next_1) && height_2(Heap, Seq#Index(next_1, j_1_1_1)) > height_2(Heap, Seq#Index(next_1, k_3)))
+                        )) ==> height_2(Heap, Seq#Index(next_1, j_1_1_1)) == height_2(Heap, Seq#Index(current, i)) - 1
                       );
                       assume false;
                     }
                     assume (forall i_1_1_1: int ::
                       { height#frame(EmptyFrame, Seq#Index(current, i_1_1_1)) }
-                      i_1_1_1 >= 0 && (i_1_1_1 < Seq#Length(current) && ((forall k_4_1: int ::
-                        { height#frame(EmptyFrame, Seq#Index(current, k_4_1)) }
-                        k_4_1 >= 0 && (k_4_1 < Seq#Length(current) && height_1(Heap, Seq#Index(current, i_1_1_1)) > height_1(Heap, Seq#Index(current, k_4_1)))
-                      ) && (forall j_2_1: int ::
-                        { height#frame(EmptyFrame, Seq#Index(next_1, j_2_1)) }
-                        j_2_1 >= 0 && (j_2_1 < Seq#Length(next_1) && (forall k_5: int ::
+                      i_1_1_1 >= 0 && (i_1_1_1 < Seq#Length(current) && ((forall k_4_2: int ::
+                        { height#frame(EmptyFrame, Seq#Index(current, k_4_2)) }
+                        k_4_2 >= 0 && (k_4_2 < Seq#Length(current) && height_2(Heap, Seq#Index(current, i_1_1_1)) > height_2(Heap, Seq#Index(current, k_4_2)))
+                      ) && (forall j_2_2: int ::
+                        { height#frame(EmptyFrame, Seq#Index(next_1, j_2_2)) }
+                        j_2_2 >= 0 && (j_2_2 < Seq#Length(next_1) && (forall k_5: int ::
                           { height#frame(EmptyFrame, Seq#Index(next_1, k_5)) }
-                          k_5 >= 0 && (k_5 < Seq#Length(next_1) && height_1(Heap, Seq#Index(next_1, j_2_1)) > height_1(Heap, Seq#Index(next_1, k_5)))
-                        )) ==> height_1(Heap, Seq#Index(next_1, j_2_1)) == height_1(Heap, Seq#Index(current, i_1_1_1)) - 1
+                          k_5 >= 0 && (k_5 < Seq#Length(next_1) && height_2(Heap, Seq#Index(next_1, j_2_2)) > height_2(Heap, Seq#Index(next_1, k_5)))
+                        )) ==> height_2(Heap, Seq#Index(next_1, j_2_2)) == height_2(Heap, Seq#Index(current, i_1_1_1)) - 1
                       )))
                     );
                 
@@ -916,23 +916,23 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                     
                     // -- Check definedness of (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1))))
                       if (*) {
-                        if (i_6 >= 0) {
-                          if (i_6 < Seq#Length(current)) {
+                        if (i_14 >= 0) {
+                          if (i_14 < Seq#Length(current)) {
                             if (*) {
-                              if (k_1 >= 0) {
-                                if (k_1 < Seq#Length(current)) {
-                                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might be negative. (0560b.vpr@100.19--106.60) [203074]"}
-                                    i_6 >= 0;
-                                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might exceed sequence length. (0560b.vpr@100.19--106.60) [203075]"}
-                                    i_6 < Seq#Length(current);
+                              if (k_16 >= 0) {
+                                if (k_16 < Seq#Length(current)) {
+                                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might be negative. (0560b.vpr@100.19--106.60) [76140]"}
+                                    i_14 >= 0;
+                                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might exceed sequence length. (0560b.vpr@100.19--106.60) [76141]"}
+                                    i_14 < Seq#Length(current);
                                   if (*) {
                                     // Stop execution
                                     assume false;
                                   }
-                                  assert {:msg "  Contract might not be well-formed. Index current[k] into current might be negative. (0560b.vpr@100.19--106.60) [203076]"}
-                                    k_1 >= 0;
-                                  assert {:msg "  Contract might not be well-formed. Index current[k] into current might exceed sequence length. (0560b.vpr@100.19--106.60) [203077]"}
-                                    k_1 < Seq#Length(current);
+                                  assert {:msg "  Contract might not be well-formed. Index current[k] into current might be negative. (0560b.vpr@100.19--106.60) [76142]"}
+                                    k_16 >= 0;
+                                  assert {:msg "  Contract might not be well-formed. Index current[k] into current might exceed sequence length. (0560b.vpr@100.19--106.60) [76143]"}
+                                    k_16 < Seq#Length(current);
                                   if (*) {
                                     // Stop execution
                                     assume false;
@@ -943,26 +943,26 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                             }
                             if ((forall k_7_1: int ::
                               { height#frame(EmptyFrame, Seq#Index(current, k_7_1)) }
-                              k_7_1 >= 0 && (k_7_1 < Seq#Length(current) && height_1(Heap, Seq#Index(current, i_6)) > height_1(Heap, Seq#Index(current, k_7_1)))
+                              k_7_1 >= 0 && (k_7_1 < Seq#Length(current) && height_2(Heap, Seq#Index(current, i_14)) > height_2(Heap, Seq#Index(current, k_7_1)))
                             )) {
                               if (*) {
-                                if (j_6 >= 0) {
-                                  if (j_6 < Seq#Length(next_1)) {
+                                if (j_12 >= 0) {
+                                  if (j_12 < Seq#Length(next_1)) {
                                     if (*) {
-                                      if (k_2 >= 0) {
-                                        if (k_2 < Seq#Length(next_1)) {
-                                          assert {:msg "  Contract might not be well-formed. Index next[j] into next might be negative. (0560b.vpr@100.19--106.60) [203078]"}
-                                            j_6 >= 0;
-                                          assert {:msg "  Contract might not be well-formed. Index next[j] into next might exceed sequence length. (0560b.vpr@100.19--106.60) [203079]"}
-                                            j_6 < Seq#Length(next_1);
+                                      if (k_6 >= 0) {
+                                        if (k_6 < Seq#Length(next_1)) {
+                                          assert {:msg "  Contract might not be well-formed. Index next[j] into next might be negative. (0560b.vpr@100.19--106.60) [76144]"}
+                                            j_12 >= 0;
+                                          assert {:msg "  Contract might not be well-formed. Index next[j] into next might exceed sequence length. (0560b.vpr@100.19--106.60) [76145]"}
+                                            j_12 < Seq#Length(next_1);
                                           if (*) {
                                             // Stop execution
                                             assume false;
                                           }
-                                          assert {:msg "  Contract might not be well-formed. Index next[k] into next might be negative. (0560b.vpr@100.19--106.60) [203080]"}
-                                            k_2 >= 0;
-                                          assert {:msg "  Contract might not be well-formed. Index next[k] into next might exceed sequence length. (0560b.vpr@100.19--106.60) [203081]"}
-                                            k_2 < Seq#Length(next_1);
+                                          assert {:msg "  Contract might not be well-formed. Index next[k] into next might be negative. (0560b.vpr@100.19--106.60) [76146]"}
+                                            k_6 >= 0;
+                                          assert {:msg "  Contract might not be well-formed. Index next[k] into next might exceed sequence length. (0560b.vpr@100.19--106.60) [76147]"}
+                                            k_6 < Seq#Length(next_1);
                                           if (*) {
                                             // Stop execution
                                             assume false;
@@ -973,22 +973,22 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                                     }
                                   }
                                 }
-                                if (j_6 >= 0 && (j_6 < Seq#Length(next_1) && (forall k_9: int ::
-                                  { height#frame(EmptyFrame, Seq#Index(next_1, k_9)) }
-                                  k_9 >= 0 && (k_9 < Seq#Length(next_1) && height_1(Heap, Seq#Index(next_1, j_6)) > height_1(Heap, Seq#Index(next_1, k_9)))
+                                if (j_12 >= 0 && (j_12 < Seq#Length(next_1) && (forall k_9_1: int ::
+                                  { height#frame(EmptyFrame, Seq#Index(next_1, k_9_1)) }
+                                  k_9_1 >= 0 && (k_9_1 < Seq#Length(next_1) && height_2(Heap, Seq#Index(next_1, j_12)) > height_2(Heap, Seq#Index(next_1, k_9_1)))
                                 ))) {
-                                  assert {:msg "  Contract might not be well-formed. Index next[j] into next might be negative. (0560b.vpr@100.19--106.60) [203082]"}
-                                    j_6 >= 0;
-                                  assert {:msg "  Contract might not be well-formed. Index next[j] into next might exceed sequence length. (0560b.vpr@100.19--106.60) [203083]"}
-                                    j_6 < Seq#Length(next_1);
+                                  assert {:msg "  Contract might not be well-formed. Index next[j] into next might be negative. (0560b.vpr@100.19--106.60) [76148]"}
+                                    j_12 >= 0;
+                                  assert {:msg "  Contract might not be well-formed. Index next[j] into next might exceed sequence length. (0560b.vpr@100.19--106.60) [76149]"}
+                                    j_12 < Seq#Length(next_1);
                                   if (*) {
                                     // Stop execution
                                     assume false;
                                   }
-                                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might be negative. (0560b.vpr@100.19--106.60) [203084]"}
-                                    i_6 >= 0;
-                                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might exceed sequence length. (0560b.vpr@100.19--106.60) [203085]"}
-                                    i_6 < Seq#Length(current);
+                                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might be negative. (0560b.vpr@100.19--106.60) [76150]"}
+                                    i_14 >= 0;
+                                  assert {:msg "  Contract might not be well-formed. Index current[i] into current might exceed sequence length. (0560b.vpr@100.19--106.60) [76151]"}
+                                    i_14 < Seq#Length(current);
                                   if (*) {
                                     // Stop execution
                                     assume false;
@@ -1001,17 +1001,17 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                         }
                         assume false;
                       }
-                    assume (forall i_3: int ::
-                      { height#frame(EmptyFrame, Seq#Index(current, i_3)) }
-                      i_3 >= 0 && (i_3 < Seq#Length(current) && ((forall k_10_2: int ::
-                        { height#frame(EmptyFrame, Seq#Index(current, k_10_2)) }
-                        k_10_2 >= 0 && (k_10_2 < Seq#Length(current) && height_1(Heap, Seq#Index(current, i_3)) > height_1(Heap, Seq#Index(current, k_10_2)))
+                    assume (forall i_3_2: int ::
+                      { height#frame(EmptyFrame, Seq#Index(current, i_3_2)) }
+                      i_3_2 >= 0 && (i_3_2 < Seq#Length(current) && ((forall k_10: int ::
+                        { height#frame(EmptyFrame, Seq#Index(current, k_10)) }
+                        k_10 >= 0 && (k_10 < Seq#Length(current) && height_2(Heap, Seq#Index(current, i_3_2)) > height_2(Heap, Seq#Index(current, k_10)))
                       ) && (forall j_4_1: int ::
                         { height#frame(EmptyFrame, Seq#Index(next_1, j_4_1)) }
                         j_4_1 >= 0 && (j_4_1 < Seq#Length(next_1) && (forall k_11: int ::
                           { height#frame(EmptyFrame, Seq#Index(next_1, k_11)) }
-                          k_11 >= 0 && (k_11 < Seq#Length(next_1) && height_1(Heap, Seq#Index(next_1, j_4_1)) > height_1(Heap, Seq#Index(next_1, k_11)))
-                        )) ==> height_1(Heap, Seq#Index(next_1, j_4_1)) == height_1(Heap, Seq#Index(current, i_3)) - 1
+                          k_11 >= 0 && (k_11 < Seq#Length(next_1) && height_2(Heap, Seq#Index(next_1, j_4_1)) > height_2(Heap, Seq#Index(next_1, k_11)))
+                        )) ==> height_2(Heap, Seq#Index(next_1, j_4_1)) == height_2(Heap, Seq#Index(current, i_3_2)) - 1
                       )))
                     );
                     assume state(Heap, Mask);
@@ -1029,15 +1029,15 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                     assume state(Heap, Mask);
                     assume (forall i_4_1: int ::
                       { height#frame(EmptyFrame, Seq#Index(current, i_4_1)) }
-                      i_4_1 >= 0 && (i_4_1 < Seq#Length(current) && ((forall k_12_2: int ::
-                        { height#frame(EmptyFrame, Seq#Index(current, k_12_2)) }
-                        k_12_2 >= 0 && (k_12_2 < Seq#Length(current) && height_1(Heap, Seq#Index(current, i_4_1)) > height_1(Heap, Seq#Index(current, k_12_2)))
-                      ) && (forall j_5_1: int ::
-                        { height#frame(EmptyFrame, Seq#Index(next_1, j_5_1)) }
-                        j_5_1 >= 0 && (j_5_1 < Seq#Length(next_1) && (forall k_13: int ::
+                      i_4_1 >= 0 && (i_4_1 < Seq#Length(current) && ((forall k_12: int ::
+                        { height#frame(EmptyFrame, Seq#Index(current, k_12)) }
+                        k_12 >= 0 && (k_12 < Seq#Length(current) && height_2(Heap, Seq#Index(current, i_4_1)) > height_2(Heap, Seq#Index(current, k_12)))
+                      ) && (forall j_5: int ::
+                        { height#frame(EmptyFrame, Seq#Index(next_1, j_5)) }
+                        j_5 >= 0 && (j_5 < Seq#Length(next_1) && (forall k_13: int ::
                           { height#frame(EmptyFrame, Seq#Index(next_1, k_13)) }
-                          k_13 >= 0 && (k_13 < Seq#Length(next_1) && height_1(Heap, Seq#Index(next_1, j_5_1)) > height_1(Heap, Seq#Index(next_1, k_13)))
-                        )) ==> height_1(Heap, Seq#Index(next_1, j_5_1)) == height_1(Heap, Seq#Index(current, i_4_1)) - 1
+                          k_13 >= 0 && (k_13 < Seq#Length(next_1) && height_2(Heap, Seq#Index(next_1, j_5)) > height_2(Heap, Seq#Index(next_1, k_13)))
+                        )) ==> height_2(Heap, Seq#Index(next_1, j_5)) == height_2(Heap, Seq#Index(current, i_4_1)) - 1
                       )))
                     );
                     assume state(Heap, Mask);
@@ -1050,7 +1050,7 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                       // -- Translating statement: node := current[0] -- 0560b.vpr@108.9--108.38
                         
                         // -- Check definedness of current[0]
-                          assert {:msg "  Assignment might fail. Index current[0] into current might exceed sequence length. (0560b.vpr@108.9--108.38) [203086]"}
+                          assert {:msg "  Assignment might fail. Index current[0] into current might exceed sequence length. (0560b.vpr@108.9--108.38) [76152]"}
                             0 < Seq#Length(current);
                         node := Seq#Index(current, 0);
                         assume state(Heap, Mask);
@@ -1077,56 +1077,56 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                         }
                         assume state(Heap, Mask);
                     // Exhale invariant
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (*) {
-                      assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion i >= 0 might not hold. (0560b.vpr@100.19--106.60) [203087]"}
-                        i_5 >= 0;
-                      assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion i < |current| might not hold. (0560b.vpr@100.19--106.60) [203088]"}
-                        i_5 < Seq#Length(current);
+                      assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion i >= 0 might not hold. (0560b.vpr@100.19--106.60) [76153]"}
+                        i_5_1 >= 0;
+                      assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion i < |current| might not hold. (0560b.vpr@100.19--106.60) [76154]"}
+                        i_5_1 < Seq#Length(current);
                       if (*) {
-                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion k >= 0 might not hold. (0560b.vpr@100.19--106.60) [203089]"}
-                          k_14 >= 0;
-                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion k < |current| might not hold. (0560b.vpr@100.19--106.60) [203090]"}
-                          k_14 < Seq#Length(current);
-                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion height(current[i]) > height(current[k]) might not hold. (0560b.vpr@100.19--106.60) [203091]"}
-                          height_1(Heap, Seq#Index(current, i_5)) > height_1(Heap, Seq#Index(current, k_14));
+                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion k >= 0 might not hold. (0560b.vpr@100.19--106.60) [76155]"}
+                          k_14_2 >= 0;
+                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion k < |current| might not hold. (0560b.vpr@100.19--106.60) [76156]"}
+                          k_14_2 < Seq#Length(current);
+                        assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion height(current[i]) > height(current[k]) might not hold. (0560b.vpr@100.19--106.60) [76157]"}
+                          height_2(Heap, Seq#Index(current, i_5_1)) > height_2(Heap, Seq#Index(current, k_14_2));
                         assume false;
                       }
-                      assume (forall k_15_1_1: int ::
-                        { height#frame(EmptyFrame, Seq#Index(current, k_15_1_1)) }
-                        k_15_1_1 >= 0 && (k_15_1_1 < Seq#Length(current) && height_1(Heap, Seq#Index(current, i_5)) > height_1(Heap, Seq#Index(current, k_15_1_1)))
+                      assume (forall k_15_1: int ::
+                        { height#frame(EmptyFrame, Seq#Index(current, k_15_1)) }
+                        k_15_1 >= 0 && (k_15_1 < Seq#Length(current) && height_2(Heap, Seq#Index(current, i_5_1)) > height_2(Heap, Seq#Index(current, k_15_1)))
                       );
                       if (*) {
-                        if (j_6_1 >= 0 && (j_6_1 < Seq#Length(next_1) && (forall k_16_1: int ::
-                          { height#frame(EmptyFrame, Seq#Index(next_1, k_16_1)) }
-                          k_16_1 >= 0 && (k_16_1 < Seq#Length(next_1) && height_1(Heap, Seq#Index(next_1, j_6_1)) > height_1(Heap, Seq#Index(next_1, k_16_1)))
+                        if (j_6_2 >= 0 && (j_6_2 < Seq#Length(next_1) && (forall k_16_2: int ::
+                          { height#frame(EmptyFrame, Seq#Index(next_1, k_16_2)) }
+                          k_16_2 >= 0 && (k_16_2 < Seq#Length(next_1) && height_2(Heap, Seq#Index(next_1, j_6_2)) > height_2(Heap, Seq#Index(next_1, k_16_2)))
                         ))) {
-                          assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion height(next[j]) == height(current[i]) - 1 might not hold. (0560b.vpr@100.19--106.60) [203092]"}
-                            height_1(Heap, Seq#Index(next_1, j_6_1)) == height_1(Heap, Seq#Index(current, i_5)) - 1;
+                          assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion height(next[j]) == height(current[i]) - 1 might not hold. (0560b.vpr@100.19--106.60) [76158]"}
+                            height_2(Heap, Seq#Index(next_1, j_6_2)) == height_2(Heap, Seq#Index(current, i_5_1)) - 1;
                         }
                         assume false;
                       }
                       assume (forall j_7_1_1: int ::
                         { height#frame(EmptyFrame, Seq#Index(next_1, j_7_1_1)) }
-                        j_7_1_1 >= 0 && (j_7_1_1 < Seq#Length(next_1) && (forall k_17_2: int ::
-                          { height#frame(EmptyFrame, Seq#Index(next_1, k_17_2)) }
-                          k_17_2 >= 0 && (k_17_2 < Seq#Length(next_1) && height_1(Heap, Seq#Index(next_1, j_7_1_1)) > height_1(Heap, Seq#Index(next_1, k_17_2)))
-                        )) ==> height_1(Heap, Seq#Index(next_1, j_7_1_1)) == height_1(Heap, Seq#Index(current, i_5)) - 1
+                        j_7_1_1 >= 0 && (j_7_1_1 < Seq#Length(next_1) && (forall k_17: int ::
+                          { height#frame(EmptyFrame, Seq#Index(next_1, k_17)) }
+                          k_17 >= 0 && (k_17 < Seq#Length(next_1) && height_2(Heap, Seq#Index(next_1, j_7_1_1)) > height_2(Heap, Seq#Index(next_1, k_17)))
+                        )) ==> height_2(Heap, Seq#Index(next_1, j_7_1_1)) == height_2(Heap, Seq#Index(current, i_5_1)) - 1
                       );
                       assume false;
                     }
-                    assume (forall i_6_1_1: int ::
-                      { height#frame(EmptyFrame, Seq#Index(current, i_6_1_1)) }
-                      i_6_1_1 >= 0 && (i_6_1_1 < Seq#Length(current) && ((forall k_18_1: int ::
-                        { height#frame(EmptyFrame, Seq#Index(current, k_18_1)) }
-                        k_18_1 >= 0 && (k_18_1 < Seq#Length(current) && height_1(Heap, Seq#Index(current, i_6_1_1)) > height_1(Heap, Seq#Index(current, k_18_1)))
-                      ) && (forall j_8: int ::
-                        { height#frame(EmptyFrame, Seq#Index(next_1, j_8)) }
-                        j_8 >= 0 && (j_8 < Seq#Length(next_1) && (forall k_19_1: int ::
+                    assume (forall i_6_1: int ::
+                      { height#frame(EmptyFrame, Seq#Index(current, i_6_1)) }
+                      i_6_1 >= 0 && (i_6_1 < Seq#Length(current) && ((forall k_18: int ::
+                        { height#frame(EmptyFrame, Seq#Index(current, k_18)) }
+                        k_18 >= 0 && (k_18 < Seq#Length(current) && height_2(Heap, Seq#Index(current, i_6_1)) > height_2(Heap, Seq#Index(current, k_18)))
+                      ) && (forall j_8_2: int ::
+                        { height#frame(EmptyFrame, Seq#Index(next_1, j_8_2)) }
+                        j_8_2 >= 0 && (j_8_2 < Seq#Length(next_1) && (forall k_19_1: int ::
                           { height#frame(EmptyFrame, Seq#Index(next_1, k_19_1)) }
-                          k_19_1 >= 0 && (k_19_1 < Seq#Length(next_1) && height_1(Heap, Seq#Index(next_1, j_8)) > height_1(Heap, Seq#Index(next_1, k_19_1)))
-                        )) ==> height_1(Heap, Seq#Index(next_1, j_8)) == height_1(Heap, Seq#Index(current, i_6_1_1)) - 1
+                          k_19_1 >= 0 && (k_19_1 < Seq#Length(next_1) && height_2(Heap, Seq#Index(next_1, j_8_2)) > height_2(Heap, Seq#Index(next_1, k_19_1)))
+                        )) ==> height_2(Heap, Seq#Index(next_1, j_8_2)) == height_2(Heap, Seq#Index(current, i_6_1)) - 1
                       )))
                     );
                     // Terminate execution
@@ -1141,13 +1141,13 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                     { height#frame(EmptyFrame, Seq#Index(current, i_7_1)) }
                     i_7_1 >= 0 && (i_7_1 < Seq#Length(current) && ((forall k_20_1: int ::
                       { height#frame(EmptyFrame, Seq#Index(current, k_20_1)) }
-                      k_20_1 >= 0 && (k_20_1 < Seq#Length(current) && height_1(Heap, Seq#Index(current, i_7_1)) > height_1(Heap, Seq#Index(current, k_20_1)))
+                      k_20_1 >= 0 && (k_20_1 < Seq#Length(current) && height_2(Heap, Seq#Index(current, i_7_1)) > height_2(Heap, Seq#Index(current, k_20_1)))
                     ) && (forall j_9_1: int ::
                       { height#frame(EmptyFrame, Seq#Index(next_1, j_9_1)) }
                       j_9_1 >= 0 && (j_9_1 < Seq#Length(next_1) && (forall k_21_1: int ::
                         { height#frame(EmptyFrame, Seq#Index(next_1, k_21_1)) }
-                        k_21_1 >= 0 && (k_21_1 < Seq#Length(next_1) && height_1(Heap, Seq#Index(next_1, j_9_1)) > height_1(Heap, Seq#Index(next_1, k_21_1)))
-                      )) ==> height_1(Heap, Seq#Index(next_1, j_9_1)) == height_1(Heap, Seq#Index(current, i_7_1)) - 1
+                        k_21_1 >= 0 && (k_21_1 < Seq#Length(next_1) && height_2(Heap, Seq#Index(next_1, j_9_1)) > height_2(Heap, Seq#Index(next_1, k_21_1)))
+                      )) ==> height_2(Heap, Seq#Index(next_1, j_9_1)) == height_2(Heap, Seq#Index(current, i_7_1)) - 1
                     )))
                   );
                   assume state(Heap, Mask);
@@ -1157,11 +1157,11 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                 current := next_1;
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (Seq#Length(current) == 0) {
-              assert {:msg "  Loop invariant |current| == 0 ==> res == height(t) might not be preserved. Assertion res == height(t) might not hold. (0560b.vpr@91.17--91.52) [203093]"}
-                res == height_1(Heap, t_2);
+              assert {:msg "  Loop invariant |current| == 0 ==> res == height(t) might not be preserved. Assertion res == height(t) might not hold. (0560b.vpr@91.17--91.52) [76159]"}
+                res == height_2(Heap, t_2);
             }
             // Terminate execution
             assume false;
@@ -1172,7 +1172,7 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
           assume state(Heap, Mask);
           if (Seq#Length(current) == 0) {
             assume state(Heap, Mask);
-            assume res == height_1(Heap, t_2);
+            assume res == height_2(Heap, t_2);
           }
           assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1180,8 +1180,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of computeTreeHeight might not hold. Assertion res == height(t) might not hold. (0560b.vpr@77.11--77.27) [203094]"}
-      res == height_1(Heap, t_2);
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of computeTreeHeight might not hold. Assertion res == height(t) might not hold. (0560b.vpr@77.11--77.27) [76160]"}
+      res == height_2(Heap, t_2);
 }

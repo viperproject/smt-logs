@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:24
+; Started: 2025-01-26 21:35:04
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -398,11 +398,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (prio%limited s@$ this@0@00) (prio s@$ this@0@00))
   :pattern ((prio s@$ this@0@00))
-  :qid |quant-u-23664|)))
+  :qid |quant-u-12098|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (prio%stateless this@0@00)
   :pattern ((prio%limited s@$ this@0@00))
-  :qid |quant-u-23665|)))
+  :qid |quant-u-12099|)))
 ; ---------- FUNCTION contentNodes----------
 (declare-fun this@2@00 () $Ref)
 (declare-fun end@3@00 () $Ref)
@@ -1705,11 +1705,11 @@
     (contentNodes%limited s@$ this@2@00 end@3@00)
     (contentNodes s@$ this@2@00 end@3@00))
   :pattern ((contentNodes s@$ this@2@00 end@3@00))
-  :qid |quant-u-23666|)))
+  :qid |quant-u-12100|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (end@3@00 $Ref)) (!
   (contentNodes%stateless this@2@00 end@3@00)
   :pattern ((contentNodes%limited s@$ this@2@00 end@3@00))
-  :qid |quant-u-23667|)))
+  :qid |quant-u-12101|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (end@3@00 $Ref)) (!
   (let ((result@4@00 (contentNodes%limited s@$ this@2@00 end@3@00))) (=>
     (contentNodes%precondition s@$ this@2@00 end@3@00)
@@ -1742,19 +1742,19 @@
             j)))
           ))))))
   :pattern ((contentNodes%limited s@$ this@2@00 end@3@00))
-  :qid |quant-u-23668|)))
+  :qid |quant-u-12102|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (end@3@00 $Ref)) (!
   (let ((result@4@00 (contentNodes%limited s@$ this@2@00 end@3@00))) true)
   :pattern ((contentNodes%limited s@$ this@2@00 end@3@00))
-  :qid |quant-u-23669|)))
+  :qid |quant-u-12103|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (end@3@00 $Ref)) (!
   (let ((result@4@00 (contentNodes%limited s@$ this@2@00 end@3@00))) true)
   :pattern ((contentNodes%limited s@$ this@2@00 end@3@00))
-  :qid |quant-u-23670|)))
+  :qid |quant-u-12104|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (end@3@00 $Ref)) (!
   (let ((result@4@00 (contentNodes%limited s@$ this@2@00 end@3@00))) true)
   :pattern ((contentNodes%limited s@$ this@2@00 end@3@00))
-  :qid |quant-u-23671|)))
+  :qid |quant-u-12105|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (end@3@00 $Ref)) (!
   (let ((result@4@00 (contentNodes%limited s@$ this@2@00 end@3@00))) (=>
     (and
@@ -1777,7 +1777,7 @@
         j)))
       ))))
   :pattern ((contentNodes%limited s@$ this@2@00 end@3@00))
-  :qid |quant-u-23672|)))
+  :qid |quant-u-12106|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -4093,7 +4093,7 @@
             (contentNodes%limited ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) end@3@00))))))
   :pattern ((contentNodes s@$ this@2@00 end@3@00))
   :pattern ((contentNodes%stateless this@2@00 end@3@00) (Lseg%trigger s@$ this@2@00 end@3@00))
-  :qid |quant-u-23673|)))
+  :qid |quant-u-12107|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (end@3@00 $Ref)) (!
   (=>
     (contentNodes%precondition s@$ this@2@00 end@3@00)
@@ -4107,7 +4107,7 @@
         true
         (contentNodes%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) end@3@00))))
   :pattern ((contentNodes s@$ this@2@00 end@3@00))
-  :qid |quant-u-23674|)))
+  :qid |quant-u-12108|)))
 ; ---------- Lseg ----------
 (declare-const this@19@00 $Ref)
 (declare-const end@20@00 $Ref)

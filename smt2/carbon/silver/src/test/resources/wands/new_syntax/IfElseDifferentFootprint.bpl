@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:13:00
+// Date:         2025-01-26 21:45:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/IfElseDifferentFootprint.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/IfElseDifferentFootprint-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -330,7 +330,7 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
               rcvLocal := x;
               neededTransfer := FullPerm;
               initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-              assert {:msg "  Exhale might fail. Fraction acc(x.f, write) might be negative. (IfElseDifferentFootprint.vpr@10.20--10.28) [139539]"}
+              assert {:msg "  Exhale might fail. Fraction acc(x.f, write) might be negative. (IfElseDifferentFootprint.vpr@10.20--10.28) [225236]"}
                 neededTransfer >= 0.000000000;
               
               // -- transfer code for top state of stack
@@ -373,7 +373,7 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
                     Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][x, f_7:=true]];
                   }
                 }
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (IfElseDifferentFootprint.vpr@10.20--10.28) [139540]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (IfElseDifferentFootprint.vpr@10.20--10.28) [225237]"}
                 b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
               
               // -- Creating state which is the sum of the two previously built up states
@@ -402,7 +402,7 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
               rcvLocal := y;
               neededTransfer := FullPerm;
               initNeededTransfer := Used_2Mask[rcvLocal, f_7] + neededTransfer;
-              assert {:msg "  Exhale might fail. Fraction acc(y.f, write) might be negative. (IfElseDifferentFootprint.vpr@12.20--12.28) [139541]"}
+              assert {:msg "  Exhale might fail. Fraction acc(y.f, write) might be negative. (IfElseDifferentFootprint.vpr@12.20--12.28) [225238]"}
                 neededTransfer >= 0.000000000;
               
               // -- transfer code for top state of stack
@@ -445,7 +445,7 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
                     Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][y, f_7:=true]];
                   }
                 }
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (IfElseDifferentFootprint.vpr@12.20--12.28) [139542]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (IfElseDifferentFootprint.vpr@12.20--12.28) [225239]"}
                 b_1_1 && b_4 ==> neededTransfer == 0.000000000 && Used_2Mask[rcvLocal, f_7] == initNeededTransfer;
               
               // -- Creating state which is the sum of the two previously built up states
@@ -483,7 +483,7 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
         ExhaleWellDef0Heap := AssertHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (IfElseDifferentFootprint.vpr@16.16--16.24) [139545]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (IfElseDifferentFootprint.vpr@16.16--16.24) [225242]"}
             perm <= AssertMask[y, f_7];
         }
         AssertMask := AssertMask[y, f_7:=AssertMask[y, f_7] - perm];
@@ -497,7 +497,7 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
         ExhaleWellDef0Heap := AssertHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (IfElseDifferentFootprint.vpr@18.16--18.24) [139547]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (IfElseDifferentFootprint.vpr@18.16--18.24) [225244]"}
             perm <= AssertMask[x, f_7];
         }
         AssertMask := AssertMask[x, f_7:=AssertMask[x, f_7] - perm];
@@ -515,7 +515,7 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
         ExhaleWellDef0Heap := AssertHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (IfElseDifferentFootprint.vpr@22.16--22.24) [139549]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (IfElseDifferentFootprint.vpr@22.16--22.24) [225246]"}
             perm <= AssertMask[x, f_7];
         }
         AssertMask := AssertMask[x, f_7:=AssertMask[x, f_7] - perm];

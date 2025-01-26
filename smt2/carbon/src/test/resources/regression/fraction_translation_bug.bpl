@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:49:36
+// Date:         2025-01-26 21:41:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/fraction_translation_bug.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/fraction_translation_bug-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -215,7 +215,7 @@ procedure test01(x: Ref) returns ()
   // -- Translating statement: assert p + p + p == 1 / 1 -- fraction_translation_bug.vpr@16.3--16.22
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion p + p + p == 1 / 1 might not hold. (fraction_translation_bug.vpr@16.10--16.22) [1113]"}
+    assert {:msg "  Assert might fail. Assertion p + p + p == 1 / 1 might not hold. (fraction_translation_bug.vpr@16.10--16.22) [14]"}
       p_1 + p_1 + p_1 == 1 / 1;
     assume state(Heap, Mask);
 }
@@ -244,7 +244,7 @@ procedure test02(x: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 3;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 3 might be negative. (fraction_translation_bug.vpr@20.10--20.22) [1114]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 3 might be negative. (fraction_translation_bug.vpr@20.10--20.22) [15]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -264,7 +264,7 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: assert p + p + p == 999999999 / 1000000000 -- fraction_translation_bug.vpr@24.3--24.39
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion p + p + p == 999999999 / 1000000000 might not hold. (fraction_translation_bug.vpr@24.10--24.39) [1115]"}
+    assert {:msg "  Assert might fail. Assertion p + p + p == 999999999 / 1000000000 might not hold. (fraction_translation_bug.vpr@24.10--24.39) [16]"}
       p_1 + p_1 + p_1 == 999999999 / 1000000000;
     assume state(Heap, Mask);
 }

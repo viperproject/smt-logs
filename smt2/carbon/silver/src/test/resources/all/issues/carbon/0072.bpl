@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:42
+// Date:         2025-01-26 21:43:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0072.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0072-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -224,10 +224,10 @@ procedure run(this: Ref) returns ()
     // Checked inhaling of postcondition to check definedness
     
     // -- Check definedness of acc(this.data, this.frac)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.frac (0072.vpr@10.11--10.36) [191278]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.frac (0072.vpr@10.11--10.36) [82344]"}
         HasDirectPerm(PostMask, this, frac_1);
     perm := PostHeap[this, frac_1];
-    assert {:msg "  Contract might not be well-formed. Fraction this.frac might be negative. (0072.vpr@10.11--10.36) [191279]"}
+    assert {:msg "  Contract might not be well-formed. Fraction this.frac might be negative. (0072.vpr@10.11--10.36) [82345]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     PostMask := PostMask[this, data:=PostMask[this, data] + perm];
@@ -246,10 +246,10 @@ procedure run(this: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := Heap[this, frac_1];
-    assert {:msg "  Postcondition of run might not hold. Fraction this.frac might be negative. (0072.vpr@10.11--10.36) [191280]"}
+    assert {:msg "  Postcondition of run might not hold. Fraction this.frac might be negative. (0072.vpr@10.11--10.36) [82346]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of run might not hold. There might be insufficient permission to access this.data (0072.vpr@10.11--10.36) [191281]"}
+      assert {:msg "  Postcondition of run might not hold. There might be insufficient permission to access this.data (0072.vpr@10.11--10.36) [82347]"}
         perm <= Mask[this, data];
     }
     Mask := Mask[this, data:=Mask[this, data] - perm];

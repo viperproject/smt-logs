@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:58
+// Date:         2025-01-26 21:42:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0742.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0742-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -828,15 +828,15 @@ axiom (forall <S> mSet1: (MultiSet S) ::
 type PredicateInstancesWellFoundedOrderDomainType;
 
 // Translation of domain axiom predicate_instances_ax_dec
-axiom (forall l1_3: PredicateInstanceDomainType, l2_2: PredicateInstanceDomainType ::
-  { (nestedPredicates(l1_3, l2_2): bool) }
-  (decreasing(l1_3, l2_2): bool) == (nestedPredicates(l1_3, l2_2): bool)
+axiom (forall l1_1: PredicateInstanceDomainType, l2: PredicateInstanceDomainType ::
+  { (nestedPredicates(l1_1, l2): bool) }
+  (decreasing(l1_1, l2): bool) == (nestedPredicates(l1_1, l2): bool)
 );
 
 // Translation of domain axiom predicate_instances_ax_bound
-axiom (forall l1_3: PredicateInstanceDomainType ::
-  { (bounded(l1_3): bool) }
-  (bounded(l1_3): bool)
+axiom (forall l1_1: PredicateInstanceDomainType ::
+  { (bounded(l1_1): bool) }
+  (bounded(l1_1): bool)
 );
 
 // ==================================================
@@ -847,18 +847,18 @@ axiom (forall l1_3: PredicateInstanceDomainType ::
 type PredicateInstancesNestedRelationDomainType;
 
 // Translation of domain function nestedPredicates
-function  nestedPredicates(l1_4: PredicateInstanceDomainType, l2_3: PredicateInstanceDomainType): bool;
+function  nestedPredicates(l1_2: PredicateInstanceDomainType, l2_1: PredicateInstanceDomainType): bool;
 
 // Translation of domain axiom nestedTrans
-axiom (forall l1_3: PredicateInstanceDomainType, l2_2: PredicateInstanceDomainType, l3: PredicateInstanceDomainType ::
-  { (nestedPredicates(l1_3, l2_2): bool), (nestedPredicates(l2_2, l3): bool) }
-  (nestedPredicates(l1_3, l2_2): bool) && (nestedPredicates(l2_2, l3): bool) ==> (nestedPredicates(l1_3, l3): bool)
+axiom (forall l1_1: PredicateInstanceDomainType, l2: PredicateInstanceDomainType, l3: PredicateInstanceDomainType ::
+  { (nestedPredicates(l1_1, l2): bool), (nestedPredicates(l2, l3): bool) }
+  (nestedPredicates(l1_1, l2): bool) && (nestedPredicates(l2, l3): bool) ==> (nestedPredicates(l1_1, l3): bool)
 );
 
 // Translation of domain axiom nestedReflex
-axiom (forall l1_3: PredicateInstanceDomainType ::
-  { (nestedPredicates(l1_3, l1_3): bool) }
-  !(nestedPredicates(l1_3, l1_3): bool)
+axiom (forall l1_1: PredicateInstanceDomainType ::
+  { (nestedPredicates(l1_1, l1_1): bool) }
+  !(nestedPredicates(l1_1, l1_1): bool)
 );
 
 // ==================================================
@@ -958,24 +958,24 @@ function  Nil<T>(): ListDomainType T;
 function  Cons<T>(value_2: T, tail: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function get_List_value
-function  get_List_value<T>(t_9: (ListDomainType T)): T;
+function  get_List_value<T>(t_3: (ListDomainType T)): T;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<T>(t_9: (ListDomainType T)): ListDomainType T;
+function  get_List_tail<T>(t_3: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function List_tag
-function  List_tag<T>(t_9: (ListDomainType T)): int;
+function  List_tag<T>(t_3: (ListDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType T)): T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType T)): ListDomainType T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType T)): ListDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -985,9 +985,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType T)): int) == 0
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (List_tag((Cons(value, tail_1): ListDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:56:30
+// Date:         2025-01-26 21:44:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/countfalse.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/countfalse-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_7: Ref, f_11: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_7, f_11] }
-  Heap[o_7, $allocated] ==> Heap[Heap[o_7, f_11], $allocated]
+axiom (forall o_16: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_16, f_10] }
+  Heap[o_16, $allocated] ==> Heap[Heap[o_16, f_10], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_8: Ref, f_12: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_8, f_12] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_8, f_12) ==> Heap[o_8, f_12] == ExhaleHeap[o_8, f_12]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_17: Ref, f_25: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_17, f_25] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_17, f_25) ==> Heap[o_17, f_25] == ExhaleHeap[o_17, f_25]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_3), ExhaleHeap[null, PredicateMaskField(pm_f_3)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsPredicateField(pm_f_3) ==> Heap[null, PredicateMaskField(pm_f_3)] == ExhaleHeap[null, PredicateMaskField(pm_f_3)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6), ExhaleHeap[null, PredicateMaskField(pm_f_6)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> Heap[null, PredicateMaskField(pm_f_6)] == ExhaleHeap[null, PredicateMaskField(pm_f_6)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_3) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsPredicateField(pm_f_3) ==> (forall <A, B> o2_3: Ref, f_12: (Field A B) ::
-    { ExhaleHeap[o2_3, f_12] }
-    Heap[null, PredicateMaskField(pm_f_3)][o2_3, f_12] ==> Heap[o2_3, f_12] == ExhaleHeap[o2_3, f_12]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_25: (Field A B) ::
+    { ExhaleHeap[o2_6, f_25] }
+    Heap[null, PredicateMaskField(pm_f_6)][o2_6, f_25] ==> Heap[o2_6, f_25] == ExhaleHeap[o2_6, f_25]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_3), ExhaleHeap[null, WandMaskField(pm_f_3)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsWandField(pm_f_3) ==> Heap[null, WandMaskField(pm_f_3)] == ExhaleHeap[null, WandMaskField(pm_f_3)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6), ExhaleHeap[null, WandMaskField(pm_f_6)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> Heap[null, WandMaskField(pm_f_6)] == ExhaleHeap[null, WandMaskField(pm_f_6)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_3) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsWandField(pm_f_3) ==> (forall <A, B> o2_3: Ref, f_12: (Field A B) ::
-    { ExhaleHeap[o2_3, f_12] }
-    Heap[null, WandMaskField(pm_f_3)][o2_3, f_12] ==> Heap[o2_3, f_12] == ExhaleHeap[o2_3, f_12]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_25: (Field A B) ::
+    { ExhaleHeap[o2_6, f_25] }
+    Heap[null, WandMaskField(pm_f_6)][o2_6, f_25] ==> Heap[o2_6, f_25] == ExhaleHeap[o2_6, f_25]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_8: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_8, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_8, $allocated] ==> ExhaleHeap[o_8, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_17: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_17, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_17, $allocated] ==> ExhaleHeap[o_17, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_7: Ref, f_2: (Field A B), v: B ::
-  { Heap[o_7, f_2:=v] }
-  succHeap(Heap, Heap[o_7, f_2:=v])
+axiom (forall <A, B> Heap: HeapType, o_16: Ref, f_2: (Field A B), v: B ::
+  { Heap[o_16, f_2:=v] }
+  succHeap(Heap, Heap[o_16, f_2:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -236,27 +236,27 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type ArrayDomainType;
 
 // Translation of domain function loc
-function  loc(a_3: ArrayDomainType, i_79: int): Ref;
+function  loc(a_3: ArrayDomainType, i_6: int): Ref;
 
 // Translation of domain function length
-function  length_1(a_3: ArrayDomainType): int;
+function  length_2(a_3: ArrayDomainType): int;
 
 // Translation of domain function first
-function  first(r_3: Ref): ArrayDomainType;
+function  first_1(r_4: Ref): ArrayDomainType;
 
 // Translation of domain function second
-function  second(r_3: Ref): int;
+function  second_1(r_4: Ref): int;
 
 // Translation of domain axiom all_diff
 axiom (forall a_2: ArrayDomainType, i: int ::
   { (loc(a_2, i): Ref) }
-  (first((loc(a_2, i): Ref)): ArrayDomainType) == a_2 && (second((loc(a_2, i): Ref)): int) == i
+  (first_1((loc(a_2, i): Ref)): ArrayDomainType) == a_2 && (second_1((loc(a_2, i): Ref)): int) == i
 );
 
 // Translation of domain axiom length_nonneg
 axiom (forall a_2: ArrayDomainType ::
-  { (length_1(a_2): int) }
-  (length_1(a_2): int) >= 0
+  { (length_2(a_2): int) }
+  (length_2(a_2): int) >= 0
 );
 
 // ==================================================
@@ -272,28 +272,28 @@ axiom !IsWandField(val);
 // ==================================================
 
 // Uninterpreted function definitions
-function  countFalseX(Heap: HeapType, a_2: ArrayDomainType, from: int): int;
-function  countFalseX'(Heap: HeapType, a_2: ArrayDomainType, from: int): int;
-axiom (forall Heap: HeapType, a_2: ArrayDomainType, from: int ::
-  { countFalseX(Heap, a_2, from) }
-  countFalseX(Heap, a_2, from) == countFalseX'(Heap, a_2, from) && dummyFunction(countFalseX#triggerStateless(a_2, from))
+function  countFalseX(Heap: HeapType, a_2: ArrayDomainType, from_1: int): int;
+function  countFalseX'(Heap: HeapType, a_2: ArrayDomainType, from_1: int): int;
+axiom (forall Heap: HeapType, a_2: ArrayDomainType, from_1: int ::
+  { countFalseX(Heap, a_2, from_1) }
+  countFalseX(Heap, a_2, from_1) == countFalseX'(Heap, a_2, from_1) && dummyFunction(countFalseX#triggerStateless(a_2, from_1))
 );
-axiom (forall Heap: HeapType, a_2: ArrayDomainType, from: int ::
-  { countFalseX'(Heap, a_2, from) }
-  dummyFunction(countFalseX#triggerStateless(a_2, from))
+axiom (forall Heap: HeapType, a_2: ArrayDomainType, from_1: int ::
+  { countFalseX'(Heap, a_2, from_1) }
+  dummyFunction(countFalseX#triggerStateless(a_2, from_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, from: int ::
-  { state(Heap, Mask), countFalseX(Heap, a_2, from) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> 0 <= from && from <= (length_1(a_2): int) ==> countFalseX(Heap, a_2, from) == (if from == (length_1(a_2): int) then 0 else countFalseX'(Heap, a_2, from + 1))
+axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, from_1: int ::
+  { state(Heap, Mask), countFalseX(Heap, a_2, from_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> 0 <= from_1 && from_1 <= (length_2(a_2): int) ==> countFalseX(Heap, a_2, from_1) == (if from_1 == (length_2(a_2): int) then 0 else countFalseX'(Heap, a_2, from_1 + 1))
 );
 
 // Framing axioms
-function  countFalseX#frame(frame: FrameType, a_2: ArrayDomainType, from: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, from: int ::
-  { state(Heap, Mask), countFalseX'(Heap, a_2, from) }
-  state(Heap, Mask) ==> countFalseX'(Heap, a_2, from) == countFalseX#frame(FrameFragment(countFalseX#condqp1(Heap, a_2, from)), a_2, from)
+function  countFalseX#frame(frame: FrameType, a_2: ArrayDomainType, from_1: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, from_1: int ::
+  { state(Heap, Mask), countFalseX'(Heap, a_2, from_1) }
+  state(Heap, Mask) ==> countFalseX'(Heap, a_2, from_1) == countFalseX#frame(FrameFragment(countFalseX#condqp1(Heap, a_2, from_1)), a_2, from_1)
 );
 // ==================================================
 // Function used for framing of quantified permission (forall z: Int :: { loc(a, z) } from <= z && z < length(a) ==> acc(loc(a, z).val, write)) in function countFalseX
@@ -301,24 +301,24 @@ axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, from: int ::
 
 function  countFalseX#condqp1(Heap: HeapType, a_1_1_1: ArrayDomainType, from_1_1: int): int;
 function  sk_countFalseX#condqp1(fnAppH1: int, fnAppH2: int): int;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, a_2: ArrayDomainType, from: int ::
-  { countFalseX#condqp1(Heap2Heap, a_2, from), countFalseX#condqp1(Heap1Heap, a_2, from), succHeapTrans(Heap2Heap, Heap1Heap) }
-  ((from <= sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from), countFalseX#condqp1(Heap1Heap, a_2, from)) && sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from), countFalseX#condqp1(Heap1Heap, a_2, from)) < (length_1(a_2): int)) && NoPerm < FullPerm <==> (from <= sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from), countFalseX#condqp1(Heap1Heap, a_2, from)) && sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from), countFalseX#condqp1(Heap1Heap, a_2, from)) < (length_1(a_2): int)) && NoPerm < FullPerm) && ((from <= sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from), countFalseX#condqp1(Heap1Heap, a_2, from)) && sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from), countFalseX#condqp1(Heap1Heap, a_2, from)) < (length_1(a_2): int)) && NoPerm < FullPerm ==> Heap2Heap[(loc(a_2, sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from), countFalseX#condqp1(Heap1Heap, a_2, from))): Ref), val] == Heap1Heap[(loc(a_2, sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from), countFalseX#condqp1(Heap1Heap, a_2, from))): Ref), val]) ==> countFalseX#condqp1(Heap2Heap, a_2, from) == countFalseX#condqp1(Heap1Heap, a_2, from)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, a_2: ArrayDomainType, from_1: int ::
+  { countFalseX#condqp1(Heap2Heap, a_2, from_1), countFalseX#condqp1(Heap1Heap, a_2, from_1), succHeapTrans(Heap2Heap, Heap1Heap) }
+  ((from_1 <= sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from_1), countFalseX#condqp1(Heap1Heap, a_2, from_1)) && sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from_1), countFalseX#condqp1(Heap1Heap, a_2, from_1)) < (length_2(a_2): int)) && NoPerm < FullPerm <==> (from_1 <= sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from_1), countFalseX#condqp1(Heap1Heap, a_2, from_1)) && sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from_1), countFalseX#condqp1(Heap1Heap, a_2, from_1)) < (length_2(a_2): int)) && NoPerm < FullPerm) && ((from_1 <= sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from_1), countFalseX#condqp1(Heap1Heap, a_2, from_1)) && sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from_1), countFalseX#condqp1(Heap1Heap, a_2, from_1)) < (length_2(a_2): int)) && NoPerm < FullPerm ==> Heap2Heap[(loc(a_2, sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from_1), countFalseX#condqp1(Heap1Heap, a_2, from_1))): Ref), val] == Heap1Heap[(loc(a_2, sk_countFalseX#condqp1(countFalseX#condqp1(Heap2Heap, a_2, from_1), countFalseX#condqp1(Heap1Heap, a_2, from_1))): Ref), val]) ==> countFalseX#condqp1(Heap2Heap, a_2, from_1) == countFalseX#condqp1(Heap1Heap, a_2, from_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  countFalseX#trigger(frame: FrameType, a_2: ArrayDomainType, from: int): bool;
+function  countFalseX#trigger(frame: FrameType, a_2: ArrayDomainType, from_1: int): bool;
 
 // State-independent trigger function
-function  countFalseX#triggerStateless(a_2: ArrayDomainType, from: int): int;
+function  countFalseX#triggerStateless(a_2: ArrayDomainType, from_1: int): int;
 
 // Check contract well-formedness and postcondition
-procedure countFalseX#definedness(a_2: ArrayDomainType, from: int) returns (Result: int)
+procedure countFalseX#definedness(a_2: ArrayDomainType, from_1: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -328,8 +328,8 @@ procedure countFalseX#definedness(a_2: ArrayDomainType, from: int) returns (Resu
     assume AssumeFunctionsAbove == 1;
   
   // -- Inhaling precondition (with checking)
-    assume 0 <= from;
-    assume from <= (length_1(a_2): int);
+    assume 0 <= from_1;
+    assume from_1 <= (length_2(a_2): int);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall z: Int :: { loc(a, z) } from <= z && z < length(a) ==> acc(loc(a, z).val, write))
@@ -337,36 +337,36 @@ procedure countFalseX#definedness(a_2: ArrayDomainType, from: int) returns (Resu
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@6.12--6.79) [69646]"}
-      (forall z_4: int, z_4_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@6.12--6.79) [176373]"}
+      (forall z_4: int, z_4_2: int ::
       
-      (((z_4 != z_4_1 && (from <= z_4 && z_4 < (length_1(a_2): int))) && (from <= z_4_1 && z_4_1 < (length_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_4): Ref) != (loc(a_2, z_4_1): Ref)
+      (((z_4 != z_4_2 && (from_1 <= z_4 && z_4 < (length_2(a_2): int))) && (from_1 <= z_4_2 && z_4_2 < (length_2(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_4): Ref) != (loc(a_2, z_4_2): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall z_4: int ::
         { (loc(a_2, z_4): Ref) } { (loc(a_2, z_4): Ref) }
-        (from <= z_4 && z_4 < (length_1(a_2): int)) && NoPerm < FullPerm ==> qpRange1((loc(a_2, z_4): Ref)) && invRecv1((loc(a_2, z_4): Ref)) == z_4
+        (from_1 <= z_4 && z_4 < (length_2(a_2): int)) && NoPerm < FullPerm ==> qpRange1((loc(a_2, z_4): Ref)) && invRecv1((loc(a_2, z_4): Ref)) == z_4
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((from <= invRecv1(o_4) && invRecv1(o_4) < (length_1(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_4) ==> (loc(a_2, invRecv1(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((from_1 <= invRecv1(o_9) && invRecv1(o_9) < (length_2(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_9) ==> (loc(a_2, invRecv1(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall z_4: int ::
         { (loc(a_2, z_4): Ref) } { (loc(a_2, z_4): Ref) }
-        from <= z_4 && z_4 < (length_1(a_2): int) ==> (loc(a_2, z_4): Ref) != null
+        from_1 <= z_4 && z_4 < (length_2(a_2): int) ==> (loc(a_2, z_4): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((from <= invRecv1(o_4) && invRecv1(o_4) < (length_1(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv1(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((from <= invRecv1(o_4) && invRecv1(o_4) < (length_1(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((from_1 <= invRecv1(o_9) && invRecv1(o_9) < (length_2(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv1(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((from_1 <= invRecv1(o_9) && invRecv1(o_9) < (length_2(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -375,43 +375,43 @@ procedure countFalseX#definedness(a_2: ArrayDomainType, from: int) returns (Resu
   // -- Check definedness of function body
     
     // -- Check definedness of (from == length(a) ? 0 : countFalseX(a, from + 1))
-      if (from == (length_1(a_2): int)) {
+      if (from_1 == (length_2(a_2): int)) {
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@8.27--8.49) [69647]"}
-            0 <= from + 1;
-          assert {:msg "  Precondition of function countFalseX might not hold. Assertion from + 1 <= length(a) might not hold. (countfalse.vpr@8.27--8.49) [69648]"}
-            from + 1 <= (length_1(a_2): int);
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@8.27--8.49) [176374]"}
+            0 <= from_1 + 1;
+          assert {:msg "  Precondition of function countFalseX might not hold. Assertion from + 1 <= length(a) might not hold. (countfalse.vpr@8.27--8.49) [176375]"}
+            from_1 + 1 <= (length_2(a_2): int);
           havoc QPMask;
           
           // -- check that the permission amount is positive
             
           
           // -- check if receiver loc(a, z) is injective
-            assert {:msg "  Precondition of function countFalseX might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@8.27--8.49) [69649]"}
-              (forall z_5: int, z_5_1: int ::
-              { neverTriggered2(z_5), neverTriggered2(z_5_1) }
-              (((z_5 != z_5_1 && (from + 1 <= z_5 && z_5 < (length_1(a_2): int))) && (from + 1 <= z_5_1 && z_5_1 < (length_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_5): Ref) != (loc(a_2, z_5_1): Ref)
+            assert {:msg "  Precondition of function countFalseX might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@8.27--8.49) [176376]"}
+              (forall z_5: int, z_5_2: int ::
+              { neverTriggered2(z_5), neverTriggered2(z_5_2) }
+              (((z_5 != z_5_2 && (from_1 + 1 <= z_5 && z_5 < (length_2(a_2): int))) && (from_1 + 1 <= z_5_2 && z_5_2 < (length_2(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_5): Ref) != (loc(a_2, z_5_2): Ref)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function countFalseX might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@8.27--8.49) [69650]"}
+            assert {:msg "  Precondition of function countFalseX might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@8.27--8.49) [176377]"}
               (forall z_5: int ::
               { (loc(a_2, z_5): Ref) } { (loc(a_2, z_5): Ref) }
-              from + 1 <= z_5 && z_5 < (length_1(a_2): int) ==> FullPerm > NoPerm ==> Mask[(loc(a_2, z_5): Ref), val] > NoPerm
+              from_1 + 1 <= z_5 && z_5 < (length_2(a_2): int) ==> FullPerm > NoPerm ==> Mask[(loc(a_2, z_5): Ref), val] > NoPerm
             );
           
           // -- assumptions for inverse of receiver loc(a, z)
             assume (forall z_5: int ::
               { (loc(a_2, z_5): Ref) } { (loc(a_2, z_5): Ref) }
-              (from + 1 <= z_5 && z_5 < (length_1(a_2): int)) && NoPerm < FullPerm ==> qpRange2((loc(a_2, z_5): Ref)) && invRecv2((loc(a_2, z_5): Ref)) == z_5
+              (from_1 + 1 <= z_5 && z_5 < (length_2(a_2): int)) && NoPerm < FullPerm ==> qpRange2((loc(a_2, z_5): Ref)) && invRecv2((loc(a_2, z_5): Ref)) == z_5
             );
-            assume (forall o_4: Ref ::
-              { invRecv2(o_4) }
-              (from + 1 <= invRecv2(o_4) && invRecv2(o_4) < (length_1(a_2): int)) && (NoPerm < FullPerm && qpRange2(o_4)) ==> (loc(a_2, invRecv2(o_4)): Ref) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv2(o_9) }
+              (from_1 + 1 <= invRecv2(o_9) && invRecv2(o_9) < (length_2(a_2): int)) && (NoPerm < FullPerm && qpRange2(o_9)) ==> (loc(a_2, invRecv2(o_9)): Ref) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -421,12 +421,12 @@ procedure countFalseX#definedness(a_2: ArrayDomainType, from: int) returns (Resu
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume countFalseX#trigger(FrameFragment(countFalseX#condqp1(Heap, a_2, from + 1)), a_2, from + 1);
+          assume countFalseX#trigger(FrameFragment(countFalseX#condqp1(Heap, a_2, from_1 + 1)), a_2, from_1 + 1);
         }
       }
   
   // -- Translate function body
-    Result := (if from == (length_1(a_2): int) then 0 else countFalseX(Heap, a_2, from + 1));
+    Result := (if from_1 == (length_2(a_2): int) then 0 else countFalseX(Heap, a_2, from_1 + 1));
 }
 
 // ==================================================
@@ -434,28 +434,28 @@ procedure countFalseX#definedness(a_2: ArrayDomainType, from: int) returns (Resu
 // ==================================================
 
 // Uninterpreted function definitions
-function  countFalse(Heap: HeapType, a_2: ArrayDomainType, from: int, to: int): int;
-function  countFalse'(Heap: HeapType, a_2: ArrayDomainType, from: int, to: int): int;
-axiom (forall Heap: HeapType, a_2: ArrayDomainType, from: int, to: int ::
-  { countFalse(Heap, a_2, from, to) }
-  countFalse(Heap, a_2, from, to) == countFalse'(Heap, a_2, from, to) && dummyFunction(countFalse#triggerStateless(a_2, from, to))
+function  countFalse(Heap: HeapType, a_2: ArrayDomainType, from_1: int, to_1: int): int;
+function  countFalse'(Heap: HeapType, a_2: ArrayDomainType, from_1: int, to_1: int): int;
+axiom (forall Heap: HeapType, a_2: ArrayDomainType, from_1: int, to_1: int ::
+  { countFalse(Heap, a_2, from_1, to_1) }
+  countFalse(Heap, a_2, from_1, to_1) == countFalse'(Heap, a_2, from_1, to_1) && dummyFunction(countFalse#triggerStateless(a_2, from_1, to_1))
 );
-axiom (forall Heap: HeapType, a_2: ArrayDomainType, from: int, to: int ::
-  { countFalse'(Heap, a_2, from, to) }
-  dummyFunction(countFalse#triggerStateless(a_2, from, to))
+axiom (forall Heap: HeapType, a_2: ArrayDomainType, from_1: int, to_1: int ::
+  { countFalse'(Heap, a_2, from_1, to_1) }
+  dummyFunction(countFalse#triggerStateless(a_2, from_1, to_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, from: int, to: int ::
-  { state(Heap, Mask), countFalse(Heap, a_2, from, to) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> 0 <= from && (from <= to && to <= (length_1(a_2): int)) ==> countFalse(Heap, a_2, from, to) == (if from == to then 0 else (if Heap[(loc(a_2, from): Ref), val] then 0 else 1) + countFalse'(Heap, a_2, from + 1, to))
+axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, from_1: int, to_1: int ::
+  { state(Heap, Mask), countFalse(Heap, a_2, from_1, to_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> 0 <= from_1 && (from_1 <= to_1 && to_1 <= (length_2(a_2): int)) ==> countFalse(Heap, a_2, from_1, to_1) == (if from_1 == to_1 then 0 else (if Heap[(loc(a_2, from_1): Ref), val] then 0 else 1) + countFalse'(Heap, a_2, from_1 + 1, to_1))
 );
 
 // Framing axioms
-function  countFalse#frame(frame: FrameType, a_2: ArrayDomainType, from: int, to: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, from: int, to: int ::
-  { state(Heap, Mask), countFalse'(Heap, a_2, from, to) }
-  state(Heap, Mask) ==> countFalse'(Heap, a_2, from, to) == countFalse#frame(FrameFragment(countFalse#condqp2(Heap, a_2, from, to)), a_2, from, to)
+function  countFalse#frame(frame: FrameType, a_2: ArrayDomainType, from_1: int, to_1: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, from_1: int, to_1: int ::
+  { state(Heap, Mask), countFalse'(Heap, a_2, from_1, to_1) }
+  state(Heap, Mask) ==> countFalse'(Heap, a_2, from_1, to_1) == countFalse#frame(FrameFragment(countFalse#condqp2(Heap, a_2, from_1, to_1)), a_2, from_1, to_1)
 );
 // ==================================================
 // Function used for framing of quantified permission (forall z: Int :: { loc(a, z) } from <= z && z < to ==> acc(loc(a, z).val, write)) in function countFalse
@@ -463,24 +463,24 @@ axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, from: int, t
 
 function  countFalse#condqp2(Heap: HeapType, a_1_1_1: ArrayDomainType, from_1_1: int, to_1_1: int): int;
 function  sk_countFalse#condqp2(fnAppH1: int, fnAppH2: int): int;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, a_2: ArrayDomainType, from: int, to: int ::
-  { countFalse#condqp2(Heap2Heap, a_2, from, to), countFalse#condqp2(Heap1Heap, a_2, from, to), succHeapTrans(Heap2Heap, Heap1Heap) }
-  ((from <= sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from, to), countFalse#condqp2(Heap1Heap, a_2, from, to)) && sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from, to), countFalse#condqp2(Heap1Heap, a_2, from, to)) < to) && NoPerm < FullPerm <==> (from <= sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from, to), countFalse#condqp2(Heap1Heap, a_2, from, to)) && sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from, to), countFalse#condqp2(Heap1Heap, a_2, from, to)) < to) && NoPerm < FullPerm) && ((from <= sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from, to), countFalse#condqp2(Heap1Heap, a_2, from, to)) && sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from, to), countFalse#condqp2(Heap1Heap, a_2, from, to)) < to) && NoPerm < FullPerm ==> Heap2Heap[(loc(a_2, sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from, to), countFalse#condqp2(Heap1Heap, a_2, from, to))): Ref), val] == Heap1Heap[(loc(a_2, sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from, to), countFalse#condqp2(Heap1Heap, a_2, from, to))): Ref), val]) ==> countFalse#condqp2(Heap2Heap, a_2, from, to) == countFalse#condqp2(Heap1Heap, a_2, from, to)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, a_2: ArrayDomainType, from_1: int, to_1: int ::
+  { countFalse#condqp2(Heap2Heap, a_2, from_1, to_1), countFalse#condqp2(Heap1Heap, a_2, from_1, to_1), succHeapTrans(Heap2Heap, Heap1Heap) }
+  ((from_1 <= sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from_1, to_1), countFalse#condqp2(Heap1Heap, a_2, from_1, to_1)) && sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from_1, to_1), countFalse#condqp2(Heap1Heap, a_2, from_1, to_1)) < to_1) && NoPerm < FullPerm <==> (from_1 <= sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from_1, to_1), countFalse#condqp2(Heap1Heap, a_2, from_1, to_1)) && sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from_1, to_1), countFalse#condqp2(Heap1Heap, a_2, from_1, to_1)) < to_1) && NoPerm < FullPerm) && ((from_1 <= sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from_1, to_1), countFalse#condqp2(Heap1Heap, a_2, from_1, to_1)) && sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from_1, to_1), countFalse#condqp2(Heap1Heap, a_2, from_1, to_1)) < to_1) && NoPerm < FullPerm ==> Heap2Heap[(loc(a_2, sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from_1, to_1), countFalse#condqp2(Heap1Heap, a_2, from_1, to_1))): Ref), val] == Heap1Heap[(loc(a_2, sk_countFalse#condqp2(countFalse#condqp2(Heap2Heap, a_2, from_1, to_1), countFalse#condqp2(Heap1Heap, a_2, from_1, to_1))): Ref), val]) ==> countFalse#condqp2(Heap2Heap, a_2, from_1, to_1) == countFalse#condqp2(Heap1Heap, a_2, from_1, to_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  countFalse#trigger(frame: FrameType, a_2: ArrayDomainType, from: int, to: int): bool;
+function  countFalse#trigger(frame: FrameType, a_2: ArrayDomainType, from_1: int, to_1: int): bool;
 
 // State-independent trigger function
-function  countFalse#triggerStateless(a_2: ArrayDomainType, from: int, to: int): int;
+function  countFalse#triggerStateless(a_2: ArrayDomainType, from_1: int, to_1: int): int;
 
 // Check contract well-formedness and postcondition
-procedure countFalse#definedness(a_2: ArrayDomainType, from: int, to: int) returns (Result: int)
+procedure countFalse#definedness(a_2: ArrayDomainType, from_1: int, to_1: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -490,9 +490,9 @@ procedure countFalse#definedness(a_2: ArrayDomainType, from: int, to: int) retur
     assume AssumeFunctionsAbove == 0;
   
   // -- Inhaling precondition (with checking)
-    assume 0 <= from;
-    assume from <= to;
-    assume to <= (length_1(a_2): int);
+    assume 0 <= from_1;
+    assume from_1 <= to_1;
+    assume to_1 <= (length_2(a_2): int);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall z: Int :: { loc(a, z) } from <= z && z < to ==> acc(loc(a, z).val, write))
@@ -500,36 +500,36 @@ procedure countFalse#definedness(a_2: ArrayDomainType, from: int, to: int) retur
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@39.12--39.72) [69651]"}
-      (forall z_4: int, z_4_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@39.12--39.72) [176378]"}
+      (forall z_4: int, z_4_2: int ::
       
-      (((z_4 != z_4_1 && (from <= z_4 && z_4 < to)) && (from <= z_4_1 && z_4_1 < to)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_4): Ref) != (loc(a_2, z_4_1): Ref)
+      (((z_4 != z_4_2 && (from_1 <= z_4 && z_4 < to_1)) && (from_1 <= z_4_2 && z_4_2 < to_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_4): Ref) != (loc(a_2, z_4_2): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall z_4: int ::
         { (loc(a_2, z_4): Ref) } { (loc(a_2, z_4): Ref) }
-        (from <= z_4 && z_4 < to) && NoPerm < FullPerm ==> qpRange3((loc(a_2, z_4): Ref)) && invRecv3((loc(a_2, z_4): Ref)) == z_4
+        (from_1 <= z_4 && z_4 < to_1) && NoPerm < FullPerm ==> qpRange3((loc(a_2, z_4): Ref)) && invRecv3((loc(a_2, z_4): Ref)) == z_4
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        ((from <= invRecv3(o_4) && invRecv3(o_4) < to) && NoPerm < FullPerm) && qpRange3(o_4) ==> (loc(a_2, invRecv3(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        ((from_1 <= invRecv3(o_9) && invRecv3(o_9) < to_1) && NoPerm < FullPerm) && qpRange3(o_9) ==> (loc(a_2, invRecv3(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall z_4: int ::
         { (loc(a_2, z_4): Ref) } { (loc(a_2, z_4): Ref) }
-        from <= z_4 && z_4 < to ==> (loc(a_2, z_4): Ref) != null
+        from_1 <= z_4 && z_4 < to_1 ==> (loc(a_2, z_4): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((from <= invRecv3(o_4) && invRecv3(o_4) < to) && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv3(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((from <= invRecv3(o_4) && invRecv3(o_4) < to) && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((from_1 <= invRecv3(o_9) && invRecv3(o_9) < to_1) && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv3(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((from_1 <= invRecv3(o_9) && invRecv3(o_9) < to_1) && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -538,47 +538,47 @@ procedure countFalse#definedness(a_2: ArrayDomainType, from: int, to: int) retur
   // -- Check definedness of function body
     
     // -- Check definedness of (from == to ? 0 : (loc(a, from).val ? 0 : 1) + countFalse(a, from + 1, to))
-      if (from == to) {
+      if (from_1 == to_1) {
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access loc(a, from).val (countfalse.vpr@37.1--42.2) [69652]"}
-          HasDirectPerm(Mask, (loc(a_2, from): Ref), val);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access loc(a, from).val (countfalse.vpr@37.1--42.2) [176379]"}
+          HasDirectPerm(Mask, (loc(a_2, from_1): Ref), val);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function countFalse might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@41.49--41.74) [69653]"}
-            0 <= from + 1;
-          assert {:msg "  Precondition of function countFalse might not hold. Assertion from + 1 <= to might not hold. (countfalse.vpr@41.49--41.74) [69654]"}
-            from + 1 <= to;
-          assert {:msg "  Precondition of function countFalse might not hold. Assertion to <= length(a) might not hold. (countfalse.vpr@41.49--41.74) [69655]"}
-            to <= (length_1(a_2): int);
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function countFalse might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@41.49--41.74) [176380]"}
+            0 <= from_1 + 1;
+          assert {:msg "  Precondition of function countFalse might not hold. Assertion from + 1 <= to might not hold. (countfalse.vpr@41.49--41.74) [176381]"}
+            from_1 + 1 <= to_1;
+          assert {:msg "  Precondition of function countFalse might not hold. Assertion to <= length(a) might not hold. (countfalse.vpr@41.49--41.74) [176382]"}
+            to_1 <= (length_2(a_2): int);
           havoc QPMask;
           
           // -- check that the permission amount is positive
             
           
           // -- check if receiver loc(a, z) is injective
-            assert {:msg "  Precondition of function countFalse might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@41.49--41.74) [69656]"}
-              (forall z_5: int, z_5_1: int ::
-              { neverTriggered4(z_5), neverTriggered4(z_5_1) }
-              (((z_5 != z_5_1 && (from + 1 <= z_5 && z_5 < to)) && (from + 1 <= z_5_1 && z_5_1 < to)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_5): Ref) != (loc(a_2, z_5_1): Ref)
+            assert {:msg "  Precondition of function countFalse might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@41.49--41.74) [176383]"}
+              (forall z_5: int, z_5_2: int ::
+              { neverTriggered4(z_5), neverTriggered4(z_5_2) }
+              (((z_5 != z_5_2 && (from_1 + 1 <= z_5 && z_5 < to_1)) && (from_1 + 1 <= z_5_2 && z_5_2 < to_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_5): Ref) != (loc(a_2, z_5_2): Ref)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function countFalse might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@41.49--41.74) [69657]"}
+            assert {:msg "  Precondition of function countFalse might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@41.49--41.74) [176384]"}
               (forall z_5: int ::
               { (loc(a_2, z_5): Ref) } { (loc(a_2, z_5): Ref) }
-              from + 1 <= z_5 && z_5 < to ==> FullPerm > NoPerm ==> Mask[(loc(a_2, z_5): Ref), val] > NoPerm
+              from_1 + 1 <= z_5 && z_5 < to_1 ==> FullPerm > NoPerm ==> Mask[(loc(a_2, z_5): Ref), val] > NoPerm
             );
           
           // -- assumptions for inverse of receiver loc(a, z)
             assume (forall z_5: int ::
               { (loc(a_2, z_5): Ref) } { (loc(a_2, z_5): Ref) }
-              (from + 1 <= z_5 && z_5 < to) && NoPerm < FullPerm ==> qpRange4((loc(a_2, z_5): Ref)) && invRecv4((loc(a_2, z_5): Ref)) == z_5
+              (from_1 + 1 <= z_5 && z_5 < to_1) && NoPerm < FullPerm ==> qpRange4((loc(a_2, z_5): Ref)) && invRecv4((loc(a_2, z_5): Ref)) == z_5
             );
-            assume (forall o_4: Ref ::
-              { invRecv4(o_4) }
-              (from + 1 <= invRecv4(o_4) && invRecv4(o_4) < to) && (NoPerm < FullPerm && qpRange4(o_4)) ==> (loc(a_2, invRecv4(o_4)): Ref) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv4(o_9) }
+              (from_1 + 1 <= invRecv4(o_9) && invRecv4(o_9) < to_1) && (NoPerm < FullPerm && qpRange4(o_9)) ==> (loc(a_2, invRecv4(o_9)): Ref) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -588,28 +588,28 @@ procedure countFalse#definedness(a_2: ArrayDomainType, from: int, to: int) retur
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume countFalse#trigger(FrameFragment(countFalse#condqp2(Heap, a_2, from + 1, to)), a_2, from + 1, to);
+          assume countFalse#trigger(FrameFragment(countFalse#condqp2(Heap, a_2, from_1 + 1, to_1)), a_2, from_1 + 1, to_1);
         }
       }
   
   // -- Translate function body
-    Result := (if from == to then 0 else (if Heap[(loc(a_2, from): Ref), val] then 0 else 1) + countFalse(Heap, a_2, from + 1, to));
+    Result := (if from_1 == to_1 then 0 else (if Heap[(loc(a_2, from_1): Ref), val] then 0 else 1) + countFalse(Heap, a_2, from_1 + 1, to_1));
 }
 
 // ==================================================
 // Translation of method lemmaFrontX
 // ==================================================
 
-procedure lemmaFrontX(a_2: ArrayDomainType, from: int) returns ()
+procedure lemmaFrontX(a_2: ArrayDomainType, from_1: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -619,8 +619,8 @@ procedure lemmaFrontX(a_2: ArrayDomainType, from: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume 0 <= from;
-    assume from <= (length_1(a_2): int);
+    assume 0 <= from_1;
+    assume from_1 <= (length_2(a_2): int);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall z: Int :: { loc(a, z) } from <= z && z < length(a) ==> acc(loc(a, z).val, write))
@@ -628,36 +628,36 @@ procedure lemmaFrontX(a_2: ArrayDomainType, from: int) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@13.12--13.79) [69658]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@13.12--13.79) [176385]"}
       (forall z_1: int, z_1_1: int ::
       
-      (((z_1 != z_1_1 && (from <= z_1 && z_1 < (length_1(a_2): int))) && (from <= z_1_1 && z_1_1 < (length_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_1): Ref) != (loc(a_2, z_1_1): Ref)
+      (((z_1 != z_1_1 && (from_1 <= z_1 && z_1 < (length_2(a_2): int))) && (from_1 <= z_1_1 && z_1_1 < (length_2(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_1): Ref) != (loc(a_2, z_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall z_1: int ::
         { (loc(a_2, z_1): Ref) } { (loc(a_2, z_1): Ref) }
-        (from <= z_1 && z_1 < (length_1(a_2): int)) && NoPerm < FullPerm ==> qpRange5((loc(a_2, z_1): Ref)) && invRecv5((loc(a_2, z_1): Ref)) == z_1
+        (from_1 <= z_1 && z_1 < (length_2(a_2): int)) && NoPerm < FullPerm ==> qpRange5((loc(a_2, z_1): Ref)) && invRecv5((loc(a_2, z_1): Ref)) == z_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        ((from <= invRecv5(o_4) && invRecv5(o_4) < (length_1(a_2): int)) && NoPerm < FullPerm) && qpRange5(o_4) ==> (loc(a_2, invRecv5(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        ((from_1 <= invRecv5(o_9) && invRecv5(o_9) < (length_2(a_2): int)) && NoPerm < FullPerm) && qpRange5(o_9) ==> (loc(a_2, invRecv5(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall z_1: int ::
         { (loc(a_2, z_1): Ref) } { (loc(a_2, z_1): Ref) }
-        from <= z_1 && z_1 < (length_1(a_2): int) ==> (loc(a_2, z_1): Ref) != null
+        from_1 <= z_1 && z_1 < (length_2(a_2): int) ==> (loc(a_2, z_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((from <= invRecv5(o_4) && invRecv5(o_4) < (length_1(a_2): int)) && NoPerm < FullPerm) && qpRange5(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv5(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((from <= invRecv5(o_4) && invRecv5(o_4) < (length_1(a_2): int)) && NoPerm < FullPerm) && qpRange5(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((from_1 <= invRecv5(o_9) && invRecv5(o_9) < (length_2(a_2): int)) && NoPerm < FullPerm) && qpRange5(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv5(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((from_1 <= invRecv5(o_9) && invRecv5(o_9) < (length_2(a_2): int)) && NoPerm < FullPerm) && qpRange5(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -666,50 +666,50 @@ procedure lemmaFrontX(a_2: ArrayDomainType, from: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert countFalseX(a, from) ==
   //   (from == length(a) ? 0 : countFalseX(a, from + 1)) -- countfalse.vpr@15.3--18.53
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of countFalseX(a, from) == (from == length(a) ? 0 : countFalseX(a, from + 1))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from might not hold. (countfalse.vpr@16.5--16.25) [69659]"}
-          0 <= from;
-        assert {:msg "  Precondition of function countFalseX might not hold. Assertion from <= length(a) might not hold. (countfalse.vpr@16.5--16.25) [69660]"}
-          from <= (length_1(a_2): int);
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from might not hold. (countfalse.vpr@16.5--16.25) [176386]"}
+          0 <= from_1;
+        assert {:msg "  Precondition of function countFalseX might not hold. Assertion from <= length(a) might not hold. (countfalse.vpr@16.5--16.25) [176387]"}
+          from_1 <= (length_2(a_2): int);
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver loc(a, z) is injective
-          assert {:msg "  Precondition of function countFalseX might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@16.5--16.25) [69661]"}
-            (forall z_2: int, z_2_1: int ::
-            { neverTriggered6(z_2), neverTriggered6(z_2_1) }
-            (((z_2 != z_2_1 && (from <= z_2 && z_2 < (length_1(a_2): int))) && (from <= z_2_1 && z_2_1 < (length_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_2): Ref) != (loc(a_2, z_2_1): Ref)
+          assert {:msg "  Precondition of function countFalseX might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@16.5--16.25) [176388]"}
+            (forall z_2: int, z_2_2: int ::
+            { neverTriggered6(z_2), neverTriggered6(z_2_2) }
+            (((z_2 != z_2_2 && (from_1 <= z_2 && z_2 < (length_2(a_2): int))) && (from_1 <= z_2_2 && z_2_2 < (length_2(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_2): Ref) != (loc(a_2, z_2_2): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function countFalseX might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@16.5--16.25) [69662]"}
+          assert {:msg "  Precondition of function countFalseX might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@16.5--16.25) [176389]"}
             (forall z_2: int ::
             { (loc(a_2, z_2): Ref) } { (loc(a_2, z_2): Ref) }
-            from <= z_2 && z_2 < (length_1(a_2): int) ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_2): Ref), val] > NoPerm
+            from_1 <= z_2 && z_2 < (length_2(a_2): int) ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_2): Ref), val] > NoPerm
           );
         
         // -- assumptions for inverse of receiver loc(a, z)
           assume (forall z_2: int ::
             { (loc(a_2, z_2): Ref) } { (loc(a_2, z_2): Ref) }
-            (from <= z_2 && z_2 < (length_1(a_2): int)) && NoPerm < FullPerm ==> qpRange6((loc(a_2, z_2): Ref)) && invRecv6((loc(a_2, z_2): Ref)) == z_2
+            (from_1 <= z_2 && z_2 < (length_2(a_2): int)) && NoPerm < FullPerm ==> qpRange6((loc(a_2, z_2): Ref)) && invRecv6((loc(a_2, z_2): Ref)) == z_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv6(o_4) }
-            (from <= invRecv6(o_4) && invRecv6(o_4) < (length_1(a_2): int)) && (NoPerm < FullPerm && qpRange6(o_4)) ==> (loc(a_2, invRecv6(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv6(o_9) }
+            (from_1 <= invRecv6(o_9) && invRecv6(o_9) < (length_2(a_2): int)) && (NoPerm < FullPerm && qpRange6(o_9)) ==> (loc(a_2, invRecv6(o_9)): Ref) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -718,43 +718,43 @@ procedure lemmaFrontX(a_2: ArrayDomainType, from: int) returns ()
         // Stop execution
         assume false;
       }
-      if (from == (length_1(a_2): int)) {
+      if (from_1 == (length_2(a_2): int)) {
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-          assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@18.30--18.52) [69663]"}
-            0 <= from + 1;
-          assert {:msg "  Precondition of function countFalseX might not hold. Assertion from + 1 <= length(a) might not hold. (countfalse.vpr@18.30--18.52) [69664]"}
-            from + 1 <= (length_1(a_2): int);
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@18.30--18.52) [176390]"}
+            0 <= from_1 + 1;
+          assert {:msg "  Precondition of function countFalseX might not hold. Assertion from + 1 <= length(a) might not hold. (countfalse.vpr@18.30--18.52) [176391]"}
+            from_1 + 1 <= (length_2(a_2): int);
           havoc QPMask;
           
           // -- check that the permission amount is positive
             
           
           // -- check if receiver loc(a, z) is injective
-            assert {:msg "  Precondition of function countFalseX might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@18.30--18.52) [69665]"}
+            assert {:msg "  Precondition of function countFalseX might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@18.30--18.52) [176392]"}
               (forall z_3: int, z_3_1: int ::
               { neverTriggered7(z_3), neverTriggered7(z_3_1) }
-              (((z_3 != z_3_1 && (from + 1 <= z_3 && z_3 < (length_1(a_2): int))) && (from + 1 <= z_3_1 && z_3_1 < (length_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_3): Ref) != (loc(a_2, z_3_1): Ref)
+              (((z_3 != z_3_1 && (from_1 + 1 <= z_3 && z_3 < (length_2(a_2): int))) && (from_1 + 1 <= z_3_1 && z_3_1 < (length_2(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_3): Ref) != (loc(a_2, z_3_1): Ref)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function countFalseX might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@18.30--18.52) [69666]"}
+            assert {:msg "  Precondition of function countFalseX might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@18.30--18.52) [176393]"}
               (forall z_3: int ::
               { (loc(a_2, z_3): Ref) } { (loc(a_2, z_3): Ref) }
-              from + 1 <= z_3 && z_3 < (length_1(a_2): int) ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_3): Ref), val] > NoPerm
+              from_1 + 1 <= z_3 && z_3 < (length_2(a_2): int) ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_3): Ref), val] > NoPerm
             );
           
           // -- assumptions for inverse of receiver loc(a, z)
             assume (forall z_3: int ::
               { (loc(a_2, z_3): Ref) } { (loc(a_2, z_3): Ref) }
-              (from + 1 <= z_3 && z_3 < (length_1(a_2): int)) && NoPerm < FullPerm ==> qpRange7((loc(a_2, z_3): Ref)) && invRecv7((loc(a_2, z_3): Ref)) == z_3
+              (from_1 + 1 <= z_3 && z_3 < (length_2(a_2): int)) && NoPerm < FullPerm ==> qpRange7((loc(a_2, z_3): Ref)) && invRecv7((loc(a_2, z_3): Ref)) == z_3
             );
-            assume (forall o_4: Ref ::
-              { invRecv7(o_4) }
-              (from + 1 <= invRecv7(o_4) && invRecv7(o_4) < (length_1(a_2): int)) && (NoPerm < FullPerm && qpRange7(o_4)) ==> (loc(a_2, invRecv7(o_4)): Ref) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv7(o_9) }
+              (from_1 + 1 <= invRecv7(o_9) && invRecv7(o_9) < (length_2(a_2): int)) && (NoPerm < FullPerm && qpRange7(o_9)) ==> (loc(a_2, invRecv7(o_9)): Ref) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -764,8 +764,8 @@ procedure lemmaFrontX(a_2: ArrayDomainType, from: int) returns ()
           assume false;
         }
       }
-    assert {:msg "  Assert might fail. Assertion countFalseX(a, from) == (from == length(a) ? 0 : countFalseX(a, from + 1)) might not hold. (countfalse.vpr@16.5--18.53) [69667]"}
-      countFalseX(Heap, a_2, from) == (if from == (length_1(a_2): int) then 0 else countFalseX(Heap, a_2, from + 1));
+    assert {:msg "  Assert might fail. Assertion countFalseX(a, from) == (from == length(a) ? 0 : countFalseX(a, from + 1)) might not hold. (countfalse.vpr@16.5--18.53) [176394]"}
+      countFalseX(Heap, a_2, from_1) == (if from_1 == (length_2(a_2): int) then 0 else countFalseX(Heap, a_2, from_1 + 1));
     assume state(Heap, Mask);
 }
 
@@ -773,16 +773,16 @@ procedure lemmaFrontX(a_2: ArrayDomainType, from: int) returns ()
 // Translation of method lemmaFrontXX
 // ==================================================
 
-procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
+procedure lemmaFrontXX(a_2: ArrayDomainType, from_1: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -792,8 +792,8 @@ procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume 0 <= from;
-    assume from <= (length_1(a_2): int);
+    assume 0 <= from_1;
+    assume from_1 <= (length_2(a_2): int);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall z: Int :: { loc(a, z) } from <= z && z < length(a) ==> acc(loc(a, z).val, write))
@@ -801,36 +801,36 @@ procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@23.12--23.79) [69668]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@23.12--23.79) [176395]"}
       (forall z_1: int, z_1_1: int ::
       
-      (((z_1 != z_1_1 && (from <= z_1 && z_1 < (length_1(a_2): int))) && (from <= z_1_1 && z_1_1 < (length_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_1): Ref) != (loc(a_2, z_1_1): Ref)
+      (((z_1 != z_1_1 && (from_1 <= z_1 && z_1 < (length_2(a_2): int))) && (from_1 <= z_1_1 && z_1_1 < (length_2(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_1): Ref) != (loc(a_2, z_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall z_1: int ::
         { (loc(a_2, z_1): Ref) } { (loc(a_2, z_1): Ref) }
-        (from <= z_1 && z_1 < (length_1(a_2): int)) && NoPerm < FullPerm ==> qpRange8((loc(a_2, z_1): Ref)) && invRecv8((loc(a_2, z_1): Ref)) == z_1
+        (from_1 <= z_1 && z_1 < (length_2(a_2): int)) && NoPerm < FullPerm ==> qpRange8((loc(a_2, z_1): Ref)) && invRecv8((loc(a_2, z_1): Ref)) == z_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv8(o_4) }
-        ((from <= invRecv8(o_4) && invRecv8(o_4) < (length_1(a_2): int)) && NoPerm < FullPerm) && qpRange8(o_4) ==> (loc(a_2, invRecv8(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv8(o_9) }
+        ((from_1 <= invRecv8(o_9) && invRecv8(o_9) < (length_2(a_2): int)) && NoPerm < FullPerm) && qpRange8(o_9) ==> (loc(a_2, invRecv8(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall z_1: int ::
         { (loc(a_2, z_1): Ref) } { (loc(a_2, z_1): Ref) }
-        from <= z_1 && z_1 < (length_1(a_2): int) ==> (loc(a_2, z_1): Ref) != null
+        from_1 <= z_1 && z_1 < (length_2(a_2): int) ==> (loc(a_2, z_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((from <= invRecv8(o_4) && invRecv8(o_4) < (length_1(a_2): int)) && NoPerm < FullPerm) && qpRange8(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv8(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((from <= invRecv8(o_4) && invRecv8(o_4) < (length_1(a_2): int)) && NoPerm < FullPerm) && qpRange8(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((from_1 <= invRecv8(o_9) && invRecv8(o_9) < (length_2(a_2): int)) && NoPerm < FullPerm) && qpRange8(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv8(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((from_1 <= invRecv8(o_9) && invRecv8(o_9) < (length_2(a_2): int)) && NoPerm < FullPerm) && qpRange8(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -839,50 +839,50 @@ procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert countFalseX(a, from) ==
   //   (from == length(a) ? 0 : countFalseX(a, from + 1)) -- countfalse.vpr@25.3--28.53
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of countFalseX(a, from) == (from == length(a) ? 0 : countFalseX(a, from + 1))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from might not hold. (countfalse.vpr@26.5--26.25) [69669]"}
-          0 <= from;
-        assert {:msg "  Precondition of function countFalseX might not hold. Assertion from <= length(a) might not hold. (countfalse.vpr@26.5--26.25) [69670]"}
-          from <= (length_1(a_2): int);
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from might not hold. (countfalse.vpr@26.5--26.25) [176396]"}
+          0 <= from_1;
+        assert {:msg "  Precondition of function countFalseX might not hold. Assertion from <= length(a) might not hold. (countfalse.vpr@26.5--26.25) [176397]"}
+          from_1 <= (length_2(a_2): int);
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver loc(a, z) is injective
-          assert {:msg "  Precondition of function countFalseX might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@26.5--26.25) [69671]"}
-            (forall z_2: int, z_2_1: int ::
-            { neverTriggered9(z_2), neverTriggered9(z_2_1) }
-            (((z_2 != z_2_1 && (from <= z_2 && z_2 < (length_1(a_2): int))) && (from <= z_2_1 && z_2_1 < (length_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_2): Ref) != (loc(a_2, z_2_1): Ref)
+          assert {:msg "  Precondition of function countFalseX might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@26.5--26.25) [176398]"}
+            (forall z_2: int, z_2_2: int ::
+            { neverTriggered9(z_2), neverTriggered9(z_2_2) }
+            (((z_2 != z_2_2 && (from_1 <= z_2 && z_2 < (length_2(a_2): int))) && (from_1 <= z_2_2 && z_2_2 < (length_2(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_2): Ref) != (loc(a_2, z_2_2): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function countFalseX might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@26.5--26.25) [69672]"}
+          assert {:msg "  Precondition of function countFalseX might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@26.5--26.25) [176399]"}
             (forall z_2: int ::
             { (loc(a_2, z_2): Ref) } { (loc(a_2, z_2): Ref) }
-            from <= z_2 && z_2 < (length_1(a_2): int) ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_2): Ref), val] > NoPerm
+            from_1 <= z_2 && z_2 < (length_2(a_2): int) ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_2): Ref), val] > NoPerm
           );
         
         // -- assumptions for inverse of receiver loc(a, z)
           assume (forall z_2: int ::
             { (loc(a_2, z_2): Ref) } { (loc(a_2, z_2): Ref) }
-            (from <= z_2 && z_2 < (length_1(a_2): int)) && NoPerm < FullPerm ==> qpRange9((loc(a_2, z_2): Ref)) && invRecv9((loc(a_2, z_2): Ref)) == z_2
+            (from_1 <= z_2 && z_2 < (length_2(a_2): int)) && NoPerm < FullPerm ==> qpRange9((loc(a_2, z_2): Ref)) && invRecv9((loc(a_2, z_2): Ref)) == z_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv9(o_4) }
-            (from <= invRecv9(o_4) && invRecv9(o_4) < (length_1(a_2): int)) && (NoPerm < FullPerm && qpRange9(o_4)) ==> (loc(a_2, invRecv9(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv9(o_9) }
+            (from_1 <= invRecv9(o_9) && invRecv9(o_9) < (length_2(a_2): int)) && (NoPerm < FullPerm && qpRange9(o_9)) ==> (loc(a_2, invRecv9(o_9)): Ref) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -891,43 +891,43 @@ procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
         // Stop execution
         assume false;
       }
-      if (from == (length_1(a_2): int)) {
+      if (from_1 == (length_2(a_2): int)) {
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-          assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@28.30--28.52) [69673]"}
-            0 <= from + 1;
-          assert {:msg "  Precondition of function countFalseX might not hold. Assertion from + 1 <= length(a) might not hold. (countfalse.vpr@28.30--28.52) [69674]"}
-            from + 1 <= (length_1(a_2): int);
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@28.30--28.52) [176400]"}
+            0 <= from_1 + 1;
+          assert {:msg "  Precondition of function countFalseX might not hold. Assertion from + 1 <= length(a) might not hold. (countfalse.vpr@28.30--28.52) [176401]"}
+            from_1 + 1 <= (length_2(a_2): int);
           havoc QPMask;
           
           // -- check that the permission amount is positive
             
           
           // -- check if receiver loc(a, z) is injective
-            assert {:msg "  Precondition of function countFalseX might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@28.30--28.52) [69675]"}
+            assert {:msg "  Precondition of function countFalseX might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@28.30--28.52) [176402]"}
               (forall z_3: int, z_3_1: int ::
               { neverTriggered10(z_3), neverTriggered10(z_3_1) }
-              (((z_3 != z_3_1 && (from + 1 <= z_3 && z_3 < (length_1(a_2): int))) && (from + 1 <= z_3_1 && z_3_1 < (length_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_3): Ref) != (loc(a_2, z_3_1): Ref)
+              (((z_3 != z_3_1 && (from_1 + 1 <= z_3 && z_3 < (length_2(a_2): int))) && (from_1 + 1 <= z_3_1 && z_3_1 < (length_2(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_3): Ref) != (loc(a_2, z_3_1): Ref)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function countFalseX might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@28.30--28.52) [69676]"}
+            assert {:msg "  Precondition of function countFalseX might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@28.30--28.52) [176403]"}
               (forall z_3: int ::
               { (loc(a_2, z_3): Ref) } { (loc(a_2, z_3): Ref) }
-              from + 1 <= z_3 && z_3 < (length_1(a_2): int) ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_3): Ref), val] > NoPerm
+              from_1 + 1 <= z_3 && z_3 < (length_2(a_2): int) ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_3): Ref), val] > NoPerm
             );
           
           // -- assumptions for inverse of receiver loc(a, z)
             assume (forall z_3: int ::
               { (loc(a_2, z_3): Ref) } { (loc(a_2, z_3): Ref) }
-              (from + 1 <= z_3 && z_3 < (length_1(a_2): int)) && NoPerm < FullPerm ==> qpRange10((loc(a_2, z_3): Ref)) && invRecv10((loc(a_2, z_3): Ref)) == z_3
+              (from_1 + 1 <= z_3 && z_3 < (length_2(a_2): int)) && NoPerm < FullPerm ==> qpRange10((loc(a_2, z_3): Ref)) && invRecv10((loc(a_2, z_3): Ref)) == z_3
             );
-            assume (forall o_4: Ref ::
-              { invRecv10(o_4) }
-              (from + 1 <= invRecv10(o_4) && invRecv10(o_4) < (length_1(a_2): int)) && (NoPerm < FullPerm && qpRange10(o_4)) ==> (loc(a_2, invRecv10(o_4)): Ref) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv10(o_9) }
+              (from_1 + 1 <= invRecv10(o_9) && invRecv10(o_9) < (length_2(a_2): int)) && (NoPerm < FullPerm && qpRange10(o_9)) ==> (loc(a_2, invRecv10(o_9)): Ref) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -937,14 +937,14 @@ procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
           assume false;
         }
       }
-    assert {:msg "  Assert might fail. Assertion countFalseX(a, from) == (from == length(a) ? 0 : countFalseX(a, from + 1)) might not hold. (countfalse.vpr@26.5--28.53) [69677]"}
-      countFalseX(Heap, a_2, from) == (if from == (length_1(a_2): int) then 0 else countFalseX(Heap, a_2, from + 1));
+    assert {:msg "  Assert might fail. Assertion countFalseX(a, from) == (from == length(a) ? 0 : countFalseX(a, from + 1)) might not hold. (countfalse.vpr@26.5--28.53) [176404]"}
+      countFalseX(Heap, a_2, from_1) == (if from_1 == (length_2(a_2): int) then 0 else countFalseX(Heap, a_2, from_1 + 1));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- countfalse.vpr@31.3--31.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (countfalse.vpr@31.10--31.15) [69678]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (countfalse.vpr@31.10--31.15) [176405]"}
       false;
     assume state(Heap, Mask);
 }
@@ -953,16 +953,16 @@ procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
 // Translation of method lemmaFront
 // ==================================================
 
-procedure lemmaFront(a_2: ArrayDomainType, from: int, to: int) returns ()
+procedure lemmaFront(a_2: ArrayDomainType, from_1: int, to_1: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -972,9 +972,9 @@ procedure lemmaFront(a_2: ArrayDomainType, from: int, to: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume 0 <= from;
-    assume from <= to;
-    assume to <= (length_1(a_2): int);
+    assume 0 <= from_1;
+    assume from_1 <= to_1;
+    assume to_1 <= (length_2(a_2): int);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall z: Int :: { loc(a, z) } from <= z && z < to ==> acc(loc(a, z).val, write))
@@ -982,36 +982,36 @@ procedure lemmaFront(a_2: ArrayDomainType, from: int, to: int) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@46.12--46.72) [69679]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@46.12--46.72) [176406]"}
       (forall z_1: int, z_1_1: int ::
       
-      (((z_1 != z_1_1 && (from <= z_1 && z_1 < to)) && (from <= z_1_1 && z_1_1 < to)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_1): Ref) != (loc(a_2, z_1_1): Ref)
+      (((z_1 != z_1_1 && (from_1 <= z_1 && z_1 < to_1)) && (from_1 <= z_1_1 && z_1_1 < to_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_1): Ref) != (loc(a_2, z_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall z_1: int ::
         { (loc(a_2, z_1): Ref) } { (loc(a_2, z_1): Ref) }
-        (from <= z_1 && z_1 < to) && NoPerm < FullPerm ==> qpRange11((loc(a_2, z_1): Ref)) && invRecv11((loc(a_2, z_1): Ref)) == z_1
+        (from_1 <= z_1 && z_1 < to_1) && NoPerm < FullPerm ==> qpRange11((loc(a_2, z_1): Ref)) && invRecv11((loc(a_2, z_1): Ref)) == z_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv11(o_4) }
-        ((from <= invRecv11(o_4) && invRecv11(o_4) < to) && NoPerm < FullPerm) && qpRange11(o_4) ==> (loc(a_2, invRecv11(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv11(o_9) }
+        ((from_1 <= invRecv11(o_9) && invRecv11(o_9) < to_1) && NoPerm < FullPerm) && qpRange11(o_9) ==> (loc(a_2, invRecv11(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall z_1: int ::
         { (loc(a_2, z_1): Ref) } { (loc(a_2, z_1): Ref) }
-        from <= z_1 && z_1 < to ==> (loc(a_2, z_1): Ref) != null
+        from_1 <= z_1 && z_1 < to_1 ==> (loc(a_2, z_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((from <= invRecv11(o_4) && invRecv11(o_4) < to) && NoPerm < FullPerm) && qpRange11(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv11(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((from <= invRecv11(o_4) && invRecv11(o_4) < to) && NoPerm < FullPerm) && qpRange11(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((from_1 <= invRecv11(o_9) && invRecv11(o_9) < to_1) && NoPerm < FullPerm) && qpRange11(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv11(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((from_1 <= invRecv11(o_9) && invRecv11(o_9) < to_1) && NoPerm < FullPerm) && qpRange11(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1020,54 +1020,54 @@ procedure lemmaFront(a_2: ArrayDomainType, from: int, to: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert countFalse(a, from, to) ==
   //   (from == to ?
   //     0 :
   //     (loc(a, from).val ? 0 : 1) + countFalse(a, from + 1, to)) -- countfalse.vpr@49.3--52.77
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of countFalse(a, from, to) == (from == to ? 0 : (loc(a, from).val ? 0 : 1) + countFalse(a, from + 1, to))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function countFalse might not hold. Assertion 0 <= from might not hold. (countfalse.vpr@50.5--50.28) [69680]"}
-          0 <= from;
-        assert {:msg "  Precondition of function countFalse might not hold. Assertion from <= to might not hold. (countfalse.vpr@50.5--50.28) [69681]"}
-          from <= to;
-        assert {:msg "  Precondition of function countFalse might not hold. Assertion to <= length(a) might not hold. (countfalse.vpr@50.5--50.28) [69682]"}
-          to <= (length_1(a_2): int);
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function countFalse might not hold. Assertion 0 <= from might not hold. (countfalse.vpr@50.5--50.28) [176407]"}
+          0 <= from_1;
+        assert {:msg "  Precondition of function countFalse might not hold. Assertion from <= to might not hold. (countfalse.vpr@50.5--50.28) [176408]"}
+          from_1 <= to_1;
+        assert {:msg "  Precondition of function countFalse might not hold. Assertion to <= length(a) might not hold. (countfalse.vpr@50.5--50.28) [176409]"}
+          to_1 <= (length_2(a_2): int);
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver loc(a, z) is injective
-          assert {:msg "  Precondition of function countFalse might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@50.5--50.28) [69683]"}
-            (forall z_2: int, z_2_1: int ::
-            { neverTriggered12(z_2), neverTriggered12(z_2_1) }
-            (((z_2 != z_2_1 && (from <= z_2 && z_2 < to)) && (from <= z_2_1 && z_2_1 < to)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_2): Ref) != (loc(a_2, z_2_1): Ref)
+          assert {:msg "  Precondition of function countFalse might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@50.5--50.28) [176410]"}
+            (forall z_2: int, z_2_2: int ::
+            { neverTriggered12(z_2), neverTriggered12(z_2_2) }
+            (((z_2 != z_2_2 && (from_1 <= z_2 && z_2 < to_1)) && (from_1 <= z_2_2 && z_2_2 < to_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_2): Ref) != (loc(a_2, z_2_2): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function countFalse might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@50.5--50.28) [69684]"}
+          assert {:msg "  Precondition of function countFalse might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@50.5--50.28) [176411]"}
             (forall z_2: int ::
             { (loc(a_2, z_2): Ref) } { (loc(a_2, z_2): Ref) }
-            from <= z_2 && z_2 < to ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_2): Ref), val] > NoPerm
+            from_1 <= z_2 && z_2 < to_1 ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_2): Ref), val] > NoPerm
           );
         
         // -- assumptions for inverse of receiver loc(a, z)
           assume (forall z_2: int ::
             { (loc(a_2, z_2): Ref) } { (loc(a_2, z_2): Ref) }
-            (from <= z_2 && z_2 < to) && NoPerm < FullPerm ==> qpRange12((loc(a_2, z_2): Ref)) && invRecv12((loc(a_2, z_2): Ref)) == z_2
+            (from_1 <= z_2 && z_2 < to_1) && NoPerm < FullPerm ==> qpRange12((loc(a_2, z_2): Ref)) && invRecv12((loc(a_2, z_2): Ref)) == z_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv12(o_4) }
-            (from <= invRecv12(o_4) && invRecv12(o_4) < to) && (NoPerm < FullPerm && qpRange12(o_4)) ==> (loc(a_2, invRecv12(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv12(o_9) }
+            (from_1 <= invRecv12(o_9) && invRecv12(o_9) < to_1) && (NoPerm < FullPerm && qpRange12(o_9)) ==> (loc(a_2, invRecv12(o_9)): Ref) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -1076,47 +1076,47 @@ procedure lemmaFront(a_2: ArrayDomainType, from: int, to: int) returns ()
         // Stop execution
         assume false;
       }
-      if (from == to) {
+      if (from_1 == to_1) {
       } else {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, from).val (countfalse.vpr@50.5--52.77) [69685]"}
-          HasDirectPerm(ExhaleWellDef0Mask, (loc(a_2, from): Ref), val);
+        assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, from).val (countfalse.vpr@50.5--52.77) [176412]"}
+          HasDirectPerm(ExhaleWellDef0Mask, (loc(a_2, from_1): Ref), val);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-          assert {:msg "  Precondition of function countFalse might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@52.51--52.76) [69686]"}
-            0 <= from + 1;
-          assert {:msg "  Precondition of function countFalse might not hold. Assertion from + 1 <= to might not hold. (countfalse.vpr@52.51--52.76) [69687]"}
-            from + 1 <= to;
-          assert {:msg "  Precondition of function countFalse might not hold. Assertion to <= length(a) might not hold. (countfalse.vpr@52.51--52.76) [69688]"}
-            to <= (length_1(a_2): int);
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          assert {:msg "  Precondition of function countFalse might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@52.51--52.76) [176413]"}
+            0 <= from_1 + 1;
+          assert {:msg "  Precondition of function countFalse might not hold. Assertion from + 1 <= to might not hold. (countfalse.vpr@52.51--52.76) [176414]"}
+            from_1 + 1 <= to_1;
+          assert {:msg "  Precondition of function countFalse might not hold. Assertion to <= length(a) might not hold. (countfalse.vpr@52.51--52.76) [176415]"}
+            to_1 <= (length_2(a_2): int);
           havoc QPMask;
           
           // -- check that the permission amount is positive
             
           
           // -- check if receiver loc(a, z) is injective
-            assert {:msg "  Precondition of function countFalse might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@52.51--52.76) [69689]"}
+            assert {:msg "  Precondition of function countFalse might not hold. Quantified resource loc(a, z).val might not be injective. (countfalse.vpr@52.51--52.76) [176416]"}
               (forall z_3: int, z_3_1: int ::
               { neverTriggered13(z_3), neverTriggered13(z_3_1) }
-              (((z_3 != z_3_1 && (from + 1 <= z_3 && z_3 < to)) && (from + 1 <= z_3_1 && z_3_1 < to)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_3): Ref) != (loc(a_2, z_3_1): Ref)
+              (((z_3 != z_3_1 && (from_1 + 1 <= z_3 && z_3 < to_1)) && (from_1 + 1 <= z_3_1 && z_3_1 < to_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, z_3): Ref) != (loc(a_2, z_3_1): Ref)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function countFalse might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@52.51--52.76) [69690]"}
+            assert {:msg "  Precondition of function countFalse might not hold. There might be insufficient permission to access loc(a, z).val (countfalse.vpr@52.51--52.76) [176417]"}
               (forall z_3: int ::
               { (loc(a_2, z_3): Ref) } { (loc(a_2, z_3): Ref) }
-              from + 1 <= z_3 && z_3 < to ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_3): Ref), val] > NoPerm
+              from_1 + 1 <= z_3 && z_3 < to_1 ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, z_3): Ref), val] > NoPerm
             );
           
           // -- assumptions for inverse of receiver loc(a, z)
             assume (forall z_3: int ::
               { (loc(a_2, z_3): Ref) } { (loc(a_2, z_3): Ref) }
-              (from + 1 <= z_3 && z_3 < to) && NoPerm < FullPerm ==> qpRange13((loc(a_2, z_3): Ref)) && invRecv13((loc(a_2, z_3): Ref)) == z_3
+              (from_1 + 1 <= z_3 && z_3 < to_1) && NoPerm < FullPerm ==> qpRange13((loc(a_2, z_3): Ref)) && invRecv13((loc(a_2, z_3): Ref)) == z_3
             );
-            assume (forall o_4: Ref ::
-              { invRecv13(o_4) }
-              (from + 1 <= invRecv13(o_4) && invRecv13(o_4) < to) && (NoPerm < FullPerm && qpRange13(o_4)) ==> (loc(a_2, invRecv13(o_4)): Ref) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv13(o_9) }
+              (from_1 + 1 <= invRecv13(o_9) && invRecv13(o_9) < to_1) && (NoPerm < FullPerm && qpRange13(o_9)) ==> (loc(a_2, invRecv13(o_9)): Ref) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -1126,7 +1126,7 @@ procedure lemmaFront(a_2: ArrayDomainType, from: int, to: int) returns ()
           assume false;
         }
       }
-    assert {:msg "  Assert might fail. Assertion countFalse(a, from, to) == (from == to ? 0 : (loc(a, from).val ? 0 : 1) + countFalse(a, from + 1, to)) might not hold. (countfalse.vpr@50.5--52.77) [69691]"}
-      countFalse(Heap, a_2, from, to) == (if from == to then 0 else (if Heap[(loc(a_2, from): Ref), val] then 0 else 1) + countFalse(Heap, a_2, from + 1, to));
+    assert {:msg "  Assert might fail. Assertion countFalse(a, from, to) == (from == to ? 0 : (loc(a, from).val ? 0 : 1) + countFalse(a, from + 1, to)) might not hold. (countfalse.vpr@50.5--52.77) [176418]"}
+      countFalse(Heap, a_2, from_1, to_1) == (if from_1 == to_1 then 0 else (if Heap[(loc(a_2, from_1): Ref), val] then 0 else 1) + countFalse(Heap, a_2, from_1 + 1, to_1));
     assume state(Heap, Mask);
 }

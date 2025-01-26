@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:41
+// Date:         2025-01-26 21:43:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0122.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0122-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -287,7 +287,7 @@ procedure P#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 0
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0122.vpr@6.1--6.45) [191254]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0122.vpr@6.1--6.45) [83610]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 0;
     assume state(Heap, Mask);
@@ -297,7 +297,7 @@ procedure P#definedness(x: Ref) returns ()
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref) returns ()
+procedure test_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -340,7 +340,7 @@ procedure test(x: Ref) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access P(x) (0122.vpr@15.10--15.50) [191256]"}
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access P(x) (0122.vpr@15.10--15.50) [83612]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
@@ -381,7 +381,7 @@ procedure test(x: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(x) (0122.vpr@16.9--16.15) [191257]"}
+        assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(x) (0122.vpr@16.9--16.15) [83613]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(x)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -398,7 +398,7 @@ procedure test(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(x) (0122.vpr@18.10--18.19) [191259]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(x) (0122.vpr@18.10--18.19) [83615]"}
         perm <= Mask[null, P(x)];
     }
     Mask := Mask[null, P(x):=Mask[null, P(x)] - perm];
@@ -422,7 +422,7 @@ procedure test(x: Ref) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access P(x) (0122.vpr@20.10--20.50) [191261]"}
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access P(x) (0122.vpr@20.10--20.50) [83617]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
@@ -463,7 +463,7 @@ procedure test(x: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(x) (0122.vpr@21.9--21.15) [191262]"}
+        assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(x) (0122.vpr@21.9--21.15) [83618]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(x)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -478,7 +478,7 @@ procedure test(x: Ref) returns ()
   // -- Translating statement: assert v1 == v2 -- 0122.vpr@23.3--23.18
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion v1 == v2 might not hold. (0122.vpr@23.10--23.18) [191263]"}
+    assert {:msg "  Assert might fail. Assertion v1 == v2 might not hold. (0122.vpr@23.10--23.18) [83619]"}
       v1 == v2;
     assume state(Heap, Mask);
 }

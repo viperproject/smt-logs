@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:14:10
+// Date:         2025-01-26 21:41:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/forpermWands.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/forpermWands-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_7: Ref, f_11: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_7, f_11] }
-  Heap[o_7, $allocated] ==> Heap[Heap[o_7, f_11], $allocated]
+axiom (forall o_16: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_16, f_10] }
+  Heap[o_16, $allocated] ==> Heap[Heap[o_16, f_10], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_8: Ref, f_12: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_8, f_12] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_8, f_12) ==> Heap[o_8, f_12] == ExhaleHeap[o_8, f_12]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_17: Ref, f_25: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_17, f_25] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_17, f_25) ==> Heap[o_17, f_25] == ExhaleHeap[o_17, f_25]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_3), ExhaleHeap[null, PredicateMaskField(pm_f_3)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsPredicateField(pm_f_3) ==> Heap[null, PredicateMaskField(pm_f_3)] == ExhaleHeap[null, PredicateMaskField(pm_f_3)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6), ExhaleHeap[null, PredicateMaskField(pm_f_6)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> Heap[null, PredicateMaskField(pm_f_6)] == ExhaleHeap[null, PredicateMaskField(pm_f_6)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_3) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsPredicateField(pm_f_3) ==> (forall <A, B> o2_3: Ref, f_12: (Field A B) ::
-    { ExhaleHeap[o2_3, f_12] }
-    Heap[null, PredicateMaskField(pm_f_3)][o2_3, f_12] ==> Heap[o2_3, f_12] == ExhaleHeap[o2_3, f_12]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_25: (Field A B) ::
+    { ExhaleHeap[o2_6, f_25] }
+    Heap[null, PredicateMaskField(pm_f_6)][o2_6, f_25] ==> Heap[o2_6, f_25] == ExhaleHeap[o2_6, f_25]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_3), ExhaleHeap[null, WandMaskField(pm_f_3)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsWandField(pm_f_3) ==> Heap[null, WandMaskField(pm_f_3)] == ExhaleHeap[null, WandMaskField(pm_f_3)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6), ExhaleHeap[null, WandMaskField(pm_f_6)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> Heap[null, WandMaskField(pm_f_6)] == ExhaleHeap[null, WandMaskField(pm_f_6)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_3) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsWandField(pm_f_3) ==> (forall <A, B> o2_3: Ref, f_12: (Field A B) ::
-    { ExhaleHeap[o2_3, f_12] }
-    Heap[null, WandMaskField(pm_f_3)][o2_3, f_12] ==> Heap[o2_3, f_12] == ExhaleHeap[o2_3, f_12]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_25: (Field A B) ::
+    { ExhaleHeap[o2_6, f_25] }
+    Heap[null, WandMaskField(pm_f_6)][o2_6, f_25] ==> Heap[o2_6, f_25] == ExhaleHeap[o2_6, f_25]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_8: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_8, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_8, $allocated] ==> ExhaleHeap[o_8, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_17: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_17, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_17, $allocated] ==> ExhaleHeap[o_17, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_7: Ref, f_2: (Field A B), v: B ::
-  { Heap[o_7, f_2:=v] }
-  succHeap(Heap, Heap[o_7, f_2:=v])
+axiom (forall <A, B> Heap: HeapType, o_16: Ref, f_2: (Field A B), v: B ::
+  { Heap[o_16, f_2:=v] }
+  succHeap(Heap, Heap[o_16, f_2:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -257,26 +257,26 @@ axiom !IsWandField(f_7);
 procedure m1(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_21: Ref;
-  var b_96: Ref;
-  var Labellhs2Heap: HeapType;
+  var b_27: Ref;
   var Labellhs2Mask: MaskType;
+  var Labellhs2Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var a_4: Ref;
-  var b_97: Ref;
-  var Labellhs4Heap: HeapType;
+  var a_5: Ref;
+  var b_28: Ref;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -290,8 +290,8 @@ procedure m1(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, write) -- forpermWands.vpr@7.5--7.20
     perm := FullPerm;
@@ -304,7 +304,7 @@ procedure m1(x: Ref, y: Ref) returns ()
   // -- Translating statement: inhale x.f > 0 -- forpermWands.vpr@8.5--8.19
     
     // -- Check definedness of x.f > 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (forpermWands.vpr@8.12--8.19) [142039]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (forpermWands.vpr@8.12--8.19) [53733]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] > 0;
     assume state(Heap, Mask);
@@ -324,8 +324,8 @@ procedure m1(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs1 -- forpermWands.vpr@9.12--9.33
           lhs1:
-          Labellhs1Heap := WandDefLHSHeap;
           Labellhs1Mask := WandDefLHSMask;
+          Labellhs1Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -343,12 +343,12 @@ procedure m1(x: Ref, y: Ref) returns ()
   
   // -- Translating statement: assert (forperm
   //     a: Ref, b: Ref [acc(a.f, write) --* acc(b.f, write)] :: a.f > 0) -- forpermWands.vpr@11.5--11.69
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref, b: Ref [acc(a.f, write) --* acc(b.f, write)] :: a.f > 0)
       if (*) {
-        if (HasDirectPerm(Mask, null, wand(a_21, FullPerm, b_96, FullPerm))) {
+        if (HasDirectPerm(Mask, null, wand(a_21, FullPerm, b_27, FullPerm))) {
           if (*) {
             havoc WandDefLHSHeap;
             WandDefLHSMask := ZeroMask;
@@ -360,24 +360,24 @@ procedure m1(x: Ref, y: Ref) returns ()
             
             // -- Translating statement: label lhs2 -- forpermWands.vpr@11.36--11.57
               lhs2:
-              Labellhs2Heap := WandDefLHSHeap;
               Labellhs2Mask := WandDefLHSMask;
+              Labellhs2Heap := WandDefLHSHeap;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
             perm := FullPerm;
-            assume b_96 != null;
-            WandDefRHSMask := WandDefRHSMask[b_96, f_7:=WandDefRHSMask[b_96, f_7] + perm];
+            assume b_27 != null;
+            WandDefRHSMask := WandDefRHSMask[b_27, f_7:=WandDefRHSMask[b_27, f_7] + perm];
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume false;
           }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (forpermWands.vpr@11.12--11.69) [142040]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (forpermWands.vpr@11.12--11.69) [53734]"}
             HasDirectPerm(ExhaleWellDef0Mask, a_21, f_7);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm a: Ref, b: Ref [acc(a.f, write) --* acc(b.f, write)] :: a.f > 0) might not hold. (forpermWands.vpr@11.12--11.69) [142041]"}
+    assert {:msg "  Assert might fail. Assertion (forperm a: Ref, b: Ref [acc(a.f, write) --* acc(b.f, write)] :: a.f > 0) might not hold. (forpermWands.vpr@11.12--11.69) [53735]"}
       (forall a_1_1: Ref, b_1_2: Ref ::
       { Mask[null, wand(a_1_1, FullPerm, b_1_2, FullPerm)] } { Heap[null, wand(a_1_1, FullPerm, b_1_2, FullPerm)] }
       HasDirectPerm(Mask, null, wand(a_1_1, FullPerm, b_1_2, FullPerm)) ==> Heap[a_1_1, f_7] > 0
@@ -387,20 +387,20 @@ procedure m1(x: Ref, y: Ref) returns ()
   // -- Translating statement: apply acc(x.f, write) --* acc(y.f, write) -- forpermWands.vpr@12.5--12.32
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (forpermWands.vpr@12.5--12.32) [142042]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (forpermWands.vpr@12.5--12.32) [53736]"}
         FullPerm <= Mask[null, wand(x, FullPerm, y, FullPerm)];
       Mask := Mask[null, wand(x, FullPerm, y, FullPerm):=Mask[null, wand(x, FullPerm, y, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (forpermWands.vpr@12.5--12.32) [142044]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (forpermWands.vpr@12.5--12.32) [53738]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -420,31 +420,31 @@ procedure m1(x: Ref, y: Ref) returns ()
   
   // -- Translating statement: assert (forperm
   //     a: Ref, b: Ref [acc(a.f, write) --* acc(b.f, write)] :: false) -- forpermWands.vpr@13.5--13.67
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref, b: Ref [acc(a.f, write) --* acc(b.f, write)] :: false)
       if (*) {
-        if (HasDirectPerm(Mask, null, wand(a_4, FullPerm, b_97, FullPerm))) {
+        if (HasDirectPerm(Mask, null, wand(a_5, FullPerm, b_28, FullPerm))) {
           if (*) {
             havoc WandDefLHSHeap;
             WandDefLHSMask := ZeroMask;
             perm := FullPerm;
-            assume a_4 != null;
-            WandDefLHSMask := WandDefLHSMask[a_4, f_7:=WandDefLHSMask[a_4, f_7] + perm];
+            assume a_5 != null;
+            WandDefLHSMask := WandDefLHSMask[a_5, f_7:=WandDefLHSMask[a_5, f_7] + perm];
             assume state(WandDefLHSHeap, WandDefLHSMask);
             assume state(WandDefLHSHeap, WandDefLHSMask);
             
             // -- Translating statement: label lhs4 -- forpermWands.vpr@13.36--13.57
               lhs4:
-              Labellhs4Heap := WandDefLHSHeap;
               Labellhs4Mask := WandDefLHSMask;
+              Labellhs4Heap := WandDefLHSHeap;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
             perm := FullPerm;
-            assume b_97 != null;
-            WandDefRHSMask := WandDefRHSMask[b_97, f_7:=WandDefRHSMask[b_97, f_7] + perm];
+            assume b_28 != null;
+            WandDefRHSMask := WandDefRHSMask[b_28, f_7:=WandDefRHSMask[b_28, f_7] + perm];
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume false;
@@ -452,10 +452,10 @@ procedure m1(x: Ref, y: Ref) returns ()
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm a: Ref, b: Ref [acc(a.f, write) --* acc(b.f, write)] :: false) might not hold. (forpermWands.vpr@13.12--13.67) [142046]"}
-      (forall a_3_1: Ref, b_3_2: Ref ::
-      { Mask[null, wand(a_3_1, FullPerm, b_3_2, FullPerm)] } { Heap[null, wand(a_3_1, FullPerm, b_3_2, FullPerm)] }
-      HasDirectPerm(Mask, null, wand(a_3_1, FullPerm, b_3_2, FullPerm)) ==> false
+    assert {:msg "  Assert might fail. Assertion (forperm a: Ref, b: Ref [acc(a.f, write) --* acc(b.f, write)] :: false) might not hold. (forpermWands.vpr@13.12--13.67) [53740]"}
+      (forall a_3_1: Ref, b_3_1: Ref ::
+      { Mask[null, wand(a_3_1, FullPerm, b_3_1, FullPerm)] } { Heap[null, wand(a_3_1, FullPerm, b_3_1, FullPerm)] }
+      HasDirectPerm(Mask, null, wand(a_3_1, FullPerm, b_3_1, FullPerm)) ==> false
     );
     assume state(Heap, Mask);
 }
@@ -467,27 +467,27 @@ procedure m1(x: Ref, y: Ref) returns ()
 procedure m2(x: Ref, y: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var Labellhs6Heap: HeapType;
   var Labellhs6Mask: MaskType;
-  var a_5: Ref;
-  var b_98: Ref;
-  var Labellhs7Heap: HeapType;
+  var Labellhs6Heap: HeapType;
+  var a_6: Ref;
+  var b_29: Ref;
   var Labellhs7Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var Labellhs7Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_8: Ref;
-  var b_99: Ref;
-  var Labellhs8Heap: HeapType;
+  var b_30: Ref;
   var Labellhs8Mask: MaskType;
+  var Labellhs8Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -502,8 +502,8 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, write) -- forpermWands.vpr@17.5--17.20
     perm := FullPerm;
@@ -543,8 +543,8 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
         
         // -- Translating statement: label lhs5 -- forpermWands.vpr@20.12--20.33
           lhs5:
-          Labellhs5Heap := WandDefLHSHeap;
           Labellhs5Mask := WandDefLHSMask;
+          Labellhs5Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -574,8 +574,8 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
         
         // -- Translating statement: label lhs6 -- forpermWands.vpr@21.12--21.33
           lhs6:
-          Labellhs6Heap := WandDefLHSHeap;
           Labellhs6Mask := WandDefLHSMask;
+          Labellhs6Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -597,35 +597,35 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
     
     // -- Check definedness of (forperm a: Ref, b: Ref [acc(a.f, write) --* acc(b.f, write)] :: a.f > 0 && b.f < 0)
       if (*) {
-        if (HasDirectPerm(Mask, null, wand(a_5, FullPerm, b_98, FullPerm))) {
+        if (HasDirectPerm(Mask, null, wand(a_6, FullPerm, b_29, FullPerm))) {
           if (*) {
             havoc WandDefLHSHeap;
             WandDefLHSMask := ZeroMask;
             perm := FullPerm;
-            assume a_5 != null;
-            WandDefLHSMask := WandDefLHSMask[a_5, f_7:=WandDefLHSMask[a_5, f_7] + perm];
+            assume a_6 != null;
+            WandDefLHSMask := WandDefLHSMask[a_6, f_7:=WandDefLHSMask[a_6, f_7] + perm];
             assume state(WandDefLHSHeap, WandDefLHSMask);
             assume state(WandDefLHSHeap, WandDefLHSMask);
             
             // -- Translating statement: label lhs7 -- forpermWands.vpr@22.36--22.57
               lhs7:
-              Labellhs7Heap := WandDefLHSHeap;
               Labellhs7Mask := WandDefLHSMask;
+              Labellhs7Heap := WandDefLHSHeap;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
             perm := FullPerm;
-            assume b_98 != null;
-            WandDefRHSMask := WandDefRHSMask[b_98, f_7:=WandDefRHSMask[b_98, f_7] + perm];
+            assume b_29 != null;
+            WandDefRHSMask := WandDefRHSMask[b_29, f_7:=WandDefRHSMask[b_29, f_7] + perm];
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume false;
           }
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.f (forpermWands.vpr@22.12--22.80) [142050]"}
-            HasDirectPerm(Mask, a_5, f_7);
-          if (Heap[a_5, f_7] > 0) {
-            assert {:msg "  Inhale might fail. There might be insufficient permission to access b.f (forpermWands.vpr@22.12--22.80) [142051]"}
-              HasDirectPerm(Mask, b_98, f_7);
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.f (forpermWands.vpr@22.12--22.80) [53744]"}
+            HasDirectPerm(Mask, a_6, f_7);
+          if (Heap[a_6, f_7] > 0) {
+            assert {:msg "  Inhale might fail. There might be insufficient permission to access b.f (forpermWands.vpr@22.12--22.80) [53745]"}
+              HasDirectPerm(Mask, b_29, f_7);
           }
         }
         assume false;
@@ -638,24 +638,24 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f > 0 -- forpermWands.vpr@25.5--25.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f > 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (forpermWands.vpr@25.12--25.19) [142052]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (forpermWands.vpr@25.12--25.19) [53746]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f > 0 might not hold. (forpermWands.vpr@25.12--25.19) [142053]"}
+    assert {:msg "  Assert might fail. Assertion x.f > 0 might not hold. (forpermWands.vpr@25.12--25.19) [53747]"}
       Heap[x, f_7] > 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f < 0 -- forpermWands.vpr@26.5--26.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y.f < 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (forpermWands.vpr@26.12--26.19) [142054]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (forpermWands.vpr@26.12--26.19) [53748]"}
         HasDirectPerm(ExhaleWellDef0Mask, y, f_7);
-    assert {:msg "  Assert might fail. Assertion y.f < 0 might not hold. (forpermWands.vpr@26.12--26.19) [142055]"}
+    assert {:msg "  Assert might fail. Assertion y.f < 0 might not hold. (forpermWands.vpr@26.12--26.19) [53749]"}
       Heap[y, f_7] < 0;
     assume state(Heap, Mask);
   
@@ -664,7 +664,7 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
     
     // -- Check definedness of (forperm a: Ref, b: Ref [acc(a.f, write) --* acc(b.f, write)] :: a == x)
       if (*) {
-        if (HasDirectPerm(Mask, null, wand(a_8, FullPerm, b_99, FullPerm))) {
+        if (HasDirectPerm(Mask, null, wand(a_8, FullPerm, b_30, FullPerm))) {
           if (*) {
             havoc WandDefLHSHeap;
             WandDefLHSMask := ZeroMask;
@@ -676,14 +676,14 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
             
             // -- Translating statement: label lhs8 -- forpermWands.vpr@28.36--28.57
               lhs8:
-              Labellhs8Heap := WandDefLHSHeap;
               Labellhs8Mask := WandDefLHSMask;
+              Labellhs8Heap := WandDefLHSHeap;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
             perm := FullPerm;
-            assume b_99 != null;
-            WandDefRHSMask := WandDefRHSMask[b_99, f_7:=WandDefRHSMask[b_99, f_7] + perm];
+            assume b_30 != null;
+            WandDefRHSMask := WandDefRHSMask[b_30, f_7:=WandDefRHSMask[b_30, f_7] + perm];
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume false;
@@ -691,17 +691,17 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
         }
         assume false;
       }
-    assume (forall a_3_1: Ref, b_3_2: Ref ::
-      { Mask[null, wand(a_3_1, FullPerm, b_3_2, FullPerm)] } { Heap[null, wand(a_3_1, FullPerm, b_3_2, FullPerm)] }
-      HasDirectPerm(Mask, null, wand(a_3_1, FullPerm, b_3_2, FullPerm)) ==> a_3_1 == x
+    assume (forall a_3_1: Ref, b_3_1: Ref ::
+      { Mask[null, wand(a_3_1, FullPerm, b_3_1, FullPerm)] } { Heap[null, wand(a_3_1, FullPerm, b_3_1, FullPerm)] }
+      HasDirectPerm(Mask, null, wand(a_3_1, FullPerm, b_3_1, FullPerm)) ==> a_3_1 == x
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x == z -- forpermWands.vpr@30.5--30.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x == z might not hold. (forpermWands.vpr@30.12--30.18) [142056]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion x == z might not hold. (forpermWands.vpr@30.12--30.18) [53750]"}
       x == z;
     assume state(Heap, Mask);
 }
@@ -713,25 +713,25 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
 procedure m3(x: Ref, y: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
   var p_1: Perm;
   var perm: Perm;
-  var Labellhs9Heap: HeapType;
   var Labellhs9Mask: MaskType;
+  var Labellhs9Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var Labellhs10Heap: HeapType;
   var Labellhs10Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var Labellhs10Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_9: Ref;
-  var b_100: Ref;
+  var b_31: Ref;
   var p_1_1: Perm;
-  var Labellhs11Heap: HeapType;
   var Labellhs11Mask: MaskType;
+  var Labellhs11Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -746,8 +746,8 @@ procedure m3(x: Ref, y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (let p == (write) in acc(x.f, p)) --* acc(y.f, write) -- forpermWands.vpr@34.5--34.58
     
@@ -757,7 +757,7 @@ procedure m3(x: Ref, y: Ref, z: Ref) returns ()
         WandDefLHSMask := ZeroMask;
         p_1 := FullPerm;
         perm := p_1;
-        assert {:msg "  Inhale might fail. Fraction p might be negative. (forpermWands.vpr@34.12--34.58) [142057]"}
+        assert {:msg "  Inhale might fail. Fraction p might be negative. (forpermWands.vpr@34.12--34.58) [53751]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> x != null;
         WandDefLHSMask := WandDefLHSMask[x, f_7:=WandDefLHSMask[x, f_7] + perm];
@@ -766,8 +766,8 @@ procedure m3(x: Ref, y: Ref, z: Ref) returns ()
         
         // -- Translating statement: label lhs9 -- forpermWands.vpr@34.12--34.58
           lhs9:
-          Labellhs9Heap := WandDefLHSHeap;
           Labellhs9Mask := WandDefLHSMask;
+          Labellhs9Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -797,8 +797,8 @@ procedure m3(x: Ref, y: Ref, z: Ref) returns ()
         
         // -- Translating statement: label lhs10 -- forpermWands.vpr@35.12--35.33
           lhs10:
-          Labellhs10Heap := WandDefLHSHeap;
           Labellhs10Mask := WandDefLHSMask;
+          Labellhs10Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -818,18 +818,18 @@ procedure m3(x: Ref, y: Ref, z: Ref) returns ()
   //     a: Ref, b: Ref [(let p == (write) in acc(a.f, p)) --* acc(b.f, write)] :: a ==
   //     x &&
   //     b == y) -- forpermWands.vpr@37.5--37.103
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref, b: Ref [(let p == (write) in acc(a.f, p)) --* acc(b.f, write)] :: a == x && b == y)
       if (*) {
-        if (HasDirectPerm(Mask, null, wand_1(FullPerm, a_9, b_100, FullPerm))) {
+        if (HasDirectPerm(Mask, null, wand_1(FullPerm, a_9, b_31, FullPerm))) {
           if (*) {
             havoc WandDefLHSHeap;
             WandDefLHSMask := ZeroMask;
             p_1_1 := FullPerm;
             perm := p_1_1;
-            assert {:msg "  Assert might fail. Fraction p might be negative. (forpermWands.vpr@37.12--37.103) [142058]"}
+            assert {:msg "  Assert might fail. Fraction p might be negative. (forpermWands.vpr@37.12--37.103) [53752]"}
               perm >= NoPerm;
             assume perm > NoPerm ==> a_9 != null;
             WandDefLHSMask := WandDefLHSMask[a_9, f_7:=WandDefLHSMask[a_9, f_7] + perm];
@@ -838,14 +838,14 @@ procedure m3(x: Ref, y: Ref, z: Ref) returns ()
             
             // -- Translating statement: label lhs11 -- forpermWands.vpr@37.36--37.82
               lhs11:
-              Labellhs11Heap := WandDefLHSHeap;
               Labellhs11Mask := WandDefLHSMask;
+              Labellhs11Heap := WandDefLHSHeap;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
             perm := FullPerm;
-            assume b_100 != null;
-            WandDefRHSMask := WandDefRHSMask[b_100, f_7:=WandDefRHSMask[b_100, f_7] + perm];
+            assume b_31 != null;
+            WandDefRHSMask := WandDefRHSMask[b_31, f_7:=WandDefRHSMask[b_31, f_7] + perm];
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume state(WandDefRHSHeap, WandDefRHSMask);
             assume false;
@@ -853,7 +853,7 @@ procedure m3(x: Ref, y: Ref, z: Ref) returns ()
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm a: Ref, b: Ref [(let p == (write) in acc(a.f, p)) --* acc(b.f, write)] :: a == x && b == y) might not hold. (forpermWands.vpr@37.12--37.103) [142059]"}
+    assert {:msg "  Assert might fail. Assertion (forperm a: Ref, b: Ref [(let p == (write) in acc(a.f, p)) --* acc(b.f, write)] :: a == x && b == y) might not hold. (forpermWands.vpr@37.12--37.103) [53753]"}
       (forall a_1_1: Ref, b_1_2: Ref ::
       { Mask[null, wand_1(FullPerm, a_1_1, b_1_2, FullPerm)] } { Heap[null, wand_1(FullPerm, a_1_1, b_1_2, FullPerm)] }
       HasDirectPerm(Mask, null, wand_1(FullPerm, a_1_1, b_1_2, FullPerm)) ==> a_1_1 == x && b_1_2 == y

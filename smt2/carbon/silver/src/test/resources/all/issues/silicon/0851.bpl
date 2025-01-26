@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:42
+// Date:         2025-01-26 21:42:59
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0851.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0851-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,15 +180,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique v_36: Field NormalField int;
-axiom !IsPredicateField(v_36);
-axiom !IsWandField(v_36);
-const unique r_6: Field NormalField Ref;
-axiom !IsPredicateField(r_6);
-axiom !IsWandField(r_6);
-const unique l_8: Field NormalField Ref;
-axiom !IsPredicateField(l_8);
-axiom !IsWandField(l_8);
+const unique v_35: Field NormalField int;
+axiom !IsPredicateField(v_35);
+axiom !IsWandField(v_35);
+const unique r_11: Field NormalField Ref;
+axiom !IsPredicateField(r_11);
+axiom !IsWandField(r_11);
+const unique l: Field NormalField Ref;
+axiom !IsPredicateField(l);
+axiom !IsWandField(l);
 
 // ==================================================
 // Translation of function fun01
@@ -209,14 +209,14 @@ axiom (forall Heap: HeapType, x: Ref, b1: bool, b2: bool ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref, b1: bool, b2: bool ::
   { state(Heap, Mask), fun01(Heap, x, b1, b2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> fun01(Heap, x, b1, b2) == Heap[x, v_36]
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> fun01(Heap, x, b1, b2) == Heap[x, v_35]
 );
 
 // Framing axioms
 function  fun01#frame(frame: FrameType, x: Ref, b1: bool, b2: bool): int;
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref, b1: bool, b2: bool ::
   { state(Heap, Mask), fun01'(Heap, x, b1, b2) }
-  state(Heap, Mask) ==> fun01'(Heap, x, b1, b2) == fun01#frame(CombineFrames(FrameFragment(Heap[x, v_36]), CombineFrames(ConditionalFrame((if b1 then 1 / 3 else NoPerm), FrameFragment(Heap[x, v_36])), ConditionalFrame((if b2 then 1 / 3 else NoPerm), FrameFragment(Heap[x, v_36])))), x, b1, b2)
+  state(Heap, Mask) ==> fun01'(Heap, x, b1, b2) == fun01#frame(CombineFrames(FrameFragment(Heap[x, v_35]), CombineFrames(ConditionalFrame((if b1 then 1 / 3 else NoPerm), FrameFragment(Heap[x, v_35])), ConditionalFrame((if b2 then 1 / 3 else NoPerm), FrameFragment(Heap[x, v_35])))), x, b1, b2)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -240,35 +240,35 @@ procedure fun01#definedness(x: Ref, b1: bool, b2: bool) returns (Result: int)
   
   // -- Inhaling precondition (with checking)
     perm := 1 / 3;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 3 might be negative. (0851.vpr@11.12--11.27) [196085]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 3 might be negative. (0851.vpr@11.12--11.27) [78970]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, v_36:=Mask[x, v_36] + perm];
+    Mask := Mask[x, v_35:=Mask[x, v_35] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := (if b1 then 1 / 3 else NoPerm);
-    assert {:msg "  Contract might not be well-formed. Fraction (b1 ? 1 / 3 : none) might be negative. (0851.vpr@12.12--12.41) [196086]"}
+    assert {:msg "  Contract might not be well-formed. Fraction (b1 ? 1 / 3 : none) might be negative. (0851.vpr@12.12--12.41) [78971]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, v_36:=Mask[x, v_36] + perm];
+    Mask := Mask[x, v_35:=Mask[x, v_35] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := (if b2 then 1 / 3 else NoPerm);
-    assert {:msg "  Contract might not be well-formed. Fraction (b2 ? 1 / 3 : none) might be negative. (0851.vpr@13.12--13.41) [196087]"}
+    assert {:msg "  Contract might not be well-formed. Fraction (b2 ? 1 / 3 : none) might be negative. (0851.vpr@13.12--13.41) [78972]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, v_36:=Mask[x, v_36] + perm];
+    Mask := Mask[x, v_35:=Mask[x, v_35] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of x.v
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.v (0851.vpr@10.1--16.2) [196088]"}
-        HasDirectPerm(Mask, x, v_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.v (0851.vpr@10.1--16.2) [78973]"}
+        HasDirectPerm(Mask, x, v_35);
   
   // -- Translate function body
-    Result := Heap[x, v_36];
+    Result := Heap[x, v_35];
 }
 
 // ==================================================
@@ -279,12 +279,12 @@ procedure test01(x: Ref, b1: bool, b2: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -299,46 +299,46 @@ procedure test01(x: Ref, b1: bool, b2: bool) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, v_36:=Mask[x, v_36] + perm];
+    Mask := Mask[x, v_35:=Mask[x, v_35] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: x.v := 4 -- 0851.vpr@21.3--21.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.v (0851.vpr@21.3--21.11) [196089]"}
-      FullPerm == Mask[x, v_36];
-    Heap := Heap[x, v_36:=4];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.v (0851.vpr@21.3--21.11) [78974]"}
+      FullPerm == Mask[x, v_35];
+    Heap := Heap[x, v_35:=4];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun01(x, b2, b1) == 4 -- 0851.vpr@22.3--22.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of fun01(x, b2, b1) == 4
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 3;
-        assert {:msg "  Precondition of function fun01 might not hold. Fraction 1 / 3 might be negative. (0851.vpr@22.10--22.26) [196090]"}
+        assert {:msg "  Precondition of function fun01 might not hold. Fraction 1 / 3 might be negative. (0851.vpr@22.10--22.26) [78975]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.v (0851.vpr@22.10--22.26) [196091]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, v_36];
+        assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.v (0851.vpr@22.10--22.26) [78976]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, v_35];
         perm := (if b2 then 1 / 3 else NoPerm);
-        assert {:msg "  Precondition of function fun01 might not hold. Fraction (b2 ? 1 / 3 : none) might be negative. (0851.vpr@22.10--22.26) [196092]"}
+        assert {:msg "  Precondition of function fun01 might not hold. Fraction (b2 ? 1 / 3 : none) might be negative. (0851.vpr@22.10--22.26) [78977]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.v (0851.vpr@22.10--22.26) [196093]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, v_36];
+        assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.v (0851.vpr@22.10--22.26) [78978]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, v_35];
         perm := (if b1 then 1 / 3 else NoPerm);
-        assert {:msg "  Precondition of function fun01 might not hold. Fraction (b1 ? 1 / 3 : none) might be negative. (0851.vpr@22.10--22.26) [196094]"}
+        assert {:msg "  Precondition of function fun01 might not hold. Fraction (b1 ? 1 / 3 : none) might be negative. (0851.vpr@22.10--22.26) [78979]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.v (0851.vpr@22.10--22.26) [196095]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, v_36];
+        assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.v (0851.vpr@22.10--22.26) [78980]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, v_35];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -346,14 +346,14 @@ procedure test01(x: Ref, b1: bool, b2: bool) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun01(x, b2, b1) == 4 might not hold. (0851.vpr@22.10--22.31) [196096]"}
+    assert {:msg "  Assert might fail. Assertion fun01(x, b2, b1) == 4 might not hold. (0851.vpr@22.10--22.31) [78981]"}
       fun01(Heap, x, b2, b1) == 4;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0851.vpr@24.3--24.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0851.vpr@24.10--24.15) [196097]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0851.vpr@24.10--24.15) [78982]"}
       false;
     assume state(Heap, Mask);
 }

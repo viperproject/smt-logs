@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:56
+// Date:         2025-01-26 21:41:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/unfolding_nonnull.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/unfolding_nonnull-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -256,14 +256,14 @@ procedure fun3#definedness(x: Ref) returns (Result: int)
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access F(x) (unfolding_nonnull.vpr@10.1--12.31) [155756]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access F(x) (unfolding_nonnull.vpr@10.1--12.31) [51287]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, F(x)];
       perm := FullPerm;
       assume x != null;
       UnfoldingMask := UnfoldingMask[x, f_7:=UnfoldingMask[x, f_7] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (unfolding_nonnull.vpr@10.1--12.31) [155757]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (unfolding_nonnull.vpr@10.1--12.31) [51288]"}
         HasDirectPerm(UnfoldingMask, x, f_7);
       
       // -- Free assumptions (exp module)
@@ -343,7 +343,7 @@ procedure fun4#definedness(x: Ref, y: Ref) returns (Result: int)
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access FF(x, y) (unfolding_nonnull.vpr@26.1--28.35) [155758]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access FF(x, y) (unfolding_nonnull.vpr@26.1--28.35) [51289]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, FF(x, y)];
       perm := FullPerm;
       assume x != null;
@@ -354,7 +354,7 @@ procedure fun4#definedness(x: Ref, y: Ref) returns (Result: int)
       UnfoldingMask := UnfoldingMask[y, f_7:=UnfoldingMask[y, f_7] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (unfolding_nonnull.vpr@26.1--28.35) [155759]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (unfolding_nonnull.vpr@26.1--28.35) [51290]"}
         HasDirectPerm(UnfoldingMask, x, f_7);
       
       // -- Free assumptions (exp module)
@@ -571,7 +571,7 @@ procedure test6(x: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun3 might not hold. There might be insufficient permission to access F(x) (unfolding_nonnull.vpr@15.25--15.32) [155760]"}
+        assert {:msg "  Precondition of function fun3 might not hold. There might be insufficient permission to access F(x) (unfolding_nonnull.vpr@15.25--15.32) [51291]"}
           NoPerm < perm ==> NoPerm < Mask[null, F(x)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -592,7 +592,7 @@ procedure test6(x: Ref) returns ()
   // -- Translating statement: assert x != null -- unfolding_nonnull.vpr@19.3--19.19
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x != null might not hold. (unfolding_nonnull.vpr@19.10--19.19) [155761]"}
+    assert {:msg "  Assert might fail. Assertion x != null might not hold. (unfolding_nonnull.vpr@19.10--19.19) [51292]"}
       x != null;
     assume state(Heap, Mask);
 }
@@ -633,7 +633,7 @@ procedure test7(x: Ref, y: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access FF(x, y) (unfolding_nonnull.vpr@31.29--31.39) [155762]"}
+        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access FF(x, y) (unfolding_nonnull.vpr@31.29--31.39) [51293]"}
           NoPerm < perm ==> NoPerm < Mask[null, FF(x, y)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -654,14 +654,14 @@ procedure test7(x: Ref, y: Ref) returns ()
   // -- Translating statement: assert x != null -- unfolding_nonnull.vpr@35.3--35.19
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x != null might not hold. (unfolding_nonnull.vpr@35.10--35.19) [155763]"}
+    assert {:msg "  Assert might fail. Assertion x != null might not hold. (unfolding_nonnull.vpr@35.10--35.19) [51294]"}
       x != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y != null -- unfolding_nonnull.vpr@39.3--39.19
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion y != null might not hold. (unfolding_nonnull.vpr@39.10--39.19) [155764]"}
+    assert {:msg "  Assert might fail. Assertion y != null might not hold. (unfolding_nonnull.vpr@39.10--39.19) [51295]"}
       y != null;
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:27:42
+// Date:         2025-01-26 21:42:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial008.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial008-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -185,7 +185,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type PyTypeDomainType;
 
 // Translation of domain function isInt
-function  isInt_1(r_3: Ref): bool;
+function  isInt(r_4: Ref): bool;
 
 // ==================================================
 // Translation of all fields
@@ -194,9 +194,9 @@ function  isInt_1(r_3: Ref): bool;
 const unique path: Field NormalField Ref;
 axiom !IsPredicateField(path);
 axiom !IsWandField(path);
-const unique idx_3: Field NormalField Ref;
-axiom !IsPredicateField(idx_3);
-axiom !IsWandField(idx_3);
+const unique idx_1: Field NormalField Ref;
+axiom !IsPredicateField(idx_1);
+axiom !IsWandField(idx_1);
 
 // ==================================================
 // Translation of function get_idx
@@ -230,7 +230,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, self: Ref ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, self: Ref ::
   { state(Heap, Mask), get_idx'(Heap, self) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || get_idx#trigger(Heap[null, Packet(self)], self)) ==> (isInt_1(get_idx'(Heap, self)): bool)
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || get_idx#trigger(Heap[null, Packet(self)], self)) ==> (isInt(get_idx'(Heap, self)): bool)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -274,7 +274,7 @@ procedure get_idx#definedness(self: Ref) returns (Result: Ref)
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Packet(self) (unofficial008.vpr@21.1--26.2) [209689]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Packet(self) (unofficial008.vpr@21.1--26.2) [63016]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Packet(self)];
       perm := FullPerm;
       assume self != null;
@@ -295,10 +295,10 @@ procedure get_idx#definedness(self: Ref) returns (Result: Ref)
         ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function get_idx_1 might not hold. There might be insufficient permission to access self.path (unofficial008.vpr@25.42--25.57) [209690]"}
+        assert {:msg "  Precondition of function get_idx_1 might not hold. There might be insufficient permission to access self.path (unofficial008.vpr@25.42--25.57) [63017]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[self, path];
         perm := FullPerm;
-        assert {:msg "  Precondition of function get_idx_1 might not hold. There might be insufficient permission to access Path(self.path) (unofficial008.vpr@25.42--25.57) [209691]"}
+        assert {:msg "  Precondition of function get_idx_1 might not hold. There might be insufficient permission to access Path(self.path) (unofficial008.vpr@25.42--25.57) [63018]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Path(UnfoldingHeap[self, path])];
         // Finish exhale
         havoc ExhaleHeap;
@@ -312,9 +312,9 @@ procedure get_idx#definedness(self: Ref) returns (Result: Ref)
         Heap := Heap[null, Packet#sm(self):=Heap[null, Packet#sm(self)][self, path:=true]];
         if (Heap[self, path] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, Packet#sm(self)][o_15, f_20] || Heap[null, Path#sm(Heap[self, path])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, Packet#sm(self)][o_5, f_11] || Heap[null, Path#sm(Heap[self, path])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, Packet#sm(self):=newPMask];
         }
@@ -326,8 +326,8 @@ procedure get_idx#definedness(self: Ref) returns (Result: Ref)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of get_idx might not hold. Assertion isInt(result) might not hold. (unofficial008.vpr@23.11--23.24) [209692]"}
-      (isInt_1(Result): bool);
+    assert {:msg "  Postcondition of get_idx might not hold. Assertion isInt(result) might not hold. (unofficial008.vpr@23.11--23.24) [63019]"}
+      (isInt(Result): bool);
 }
 
 // ==================================================
@@ -349,7 +349,7 @@ axiom (forall Heap: HeapType, self: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, self: Ref ::
   { state(Heap, Mask), get_idx_1(Heap, self) } { state(Heap, Mask), get_idx_1#triggerStateless(self), Path#trigger(Heap, Path(Heap[self, path])) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> get_idx_1(Heap, self) == Heap[Heap[self, path], idx_3]
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> get_idx_1(Heap, self) == Heap[Heap[self, path], idx_1]
 );
 
 // Framing axioms
@@ -362,7 +362,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, self: Ref ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, self: Ref ::
   { state(Heap, Mask), get_idx_1'(Heap, self) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || get_idx_1#trigger(CombineFrames(FrameFragment(Heap[self, path]), Heap[null, Path(Heap[self, path])]), self)) ==> (isInt_1(get_idx_1'(Heap, self)): bool)
+  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || get_idx_1#trigger(CombineFrames(FrameFragment(Heap[self, path]), Heap[null, Path(Heap[self, path])]), self)) ==> (isInt(get_idx_1'(Heap, self)): bool)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -396,7 +396,7 @@ procedure get_idx_1#definedness(self: Ref) returns (Result: Ref)
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(Path(self.path), write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@30.12--30.39) [209693]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@30.12--30.39) [63020]"}
         HasDirectPerm(Mask, self, path);
     perm := FullPerm;
     Mask := Mask[null, Path(Heap[self, path]):=Mask[null, Path(Heap[self, path])] + perm];
@@ -409,37 +409,37 @@ procedure get_idx_1#definedness(self: Ref) returns (Result: Ref)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume Path#trigger(UnfoldingHeap, Path(UnfoldingHeap[self, path]));
-      assume UnfoldingHeap[null, Path(UnfoldingHeap[self, path])] == FrameFragment(UnfoldingHeap[UnfoldingHeap[self, path], idx_3]);
+      assume UnfoldingHeap[null, Path(UnfoldingHeap[self, path])] == FrameFragment(UnfoldingHeap[UnfoldingHeap[self, path], idx_1]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Path(self.path) (unofficial008.vpr@28.1--35.1) [209694]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Path(self.path) (unofficial008.vpr@28.1--35.1) [63021]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Path(UnfoldingHeap[self, path])];
       perm := FullPerm;
       assume UnfoldingHeap[self, path] != null;
-      UnfoldingMask := UnfoldingMask[UnfoldingHeap[self, path], idx_3:=UnfoldingMask[UnfoldingHeap[self, path], idx_3] + perm];
+      UnfoldingMask := UnfoldingMask[UnfoldingHeap[self, path], idx_1:=UnfoldingMask[UnfoldingHeap[self, path], idx_1] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume (isInt_1(UnfoldingHeap[UnfoldingHeap[self, path], idx_3]): bool);
+      assume (isInt(UnfoldingHeap[UnfoldingHeap[self, path], idx_1]): bool);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@28.1--35.1) [209695]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@28.1--35.1) [63022]"}
         HasDirectPerm(UnfoldingMask, self, path);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@28.1--35.1) [209696]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@28.1--35.1) [63023]"}
         HasDirectPerm(UnfoldingMask, self, path);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.path.idx (unofficial008.vpr@28.1--35.1) [209697]"}
-        HasDirectPerm(UnfoldingMask, UnfoldingHeap[self, path], idx_3);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.path.idx (unofficial008.vpr@28.1--35.1) [63024]"}
+        HasDirectPerm(UnfoldingMask, UnfoldingHeap[self, path], idx_1);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, Path#sm(Heap[self, path]):=Heap[null, Path#sm(Heap[self, path])][Heap[self, path], idx_3:=true]];
+        Heap := Heap[null, Path#sm(Heap[self, path]):=Heap[null, Path#sm(Heap[self, path])][Heap[self, path], idx_1:=true]];
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := Heap[Heap[self, path], idx_3];
+    Result := Heap[Heap[self, path], idx_1];
   
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of get_idx_1 might not hold. Assertion isInt(result) might not hold. (unofficial008.vpr@31.11--31.24) [209698]"}
-      (isInt_1(Result): bool);
+    assert {:msg "  Postcondition of get_idx_1 might not hold. Assertion isInt(result) might not hold. (unofficial008.vpr@31.11--31.24) [63025]"}
+      (isInt(Result): bool);
 }
 
 // ==================================================
@@ -496,12 +496,12 @@ procedure Packet#definedness(self: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of self.path != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@11.1--15.2) [209699]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@11.1--15.2) [63026]"}
         HasDirectPerm(Mask, self, path);
     if (Heap[self, path] != null) {
       
       // -- Check definedness of acc(Path(self.path), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@11.1--15.2) [209700]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@11.1--15.2) [63027]"}
           HasDirectPerm(Mask, self, path);
       perm := FullPerm;
       Mask := Mask[null, Path(Heap[self, path]):=Mask[null, Path(Heap[self, path])] + perm];
@@ -509,7 +509,7 @@ procedure Packet#definedness(self: Ref) returns ()
     }
     
     // -- Check definedness of self.path != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@11.1--15.2) [209701]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.path (unofficial008.vpr@11.1--15.2) [63028]"}
         HasDirectPerm(Mask, self, path);
     assume Heap[self, path] != null;
     assume state(Heap, Mask);
@@ -565,12 +565,12 @@ procedure Path#definedness(self: Ref) returns ()
       assume Heap[self, $allocated];
     perm := FullPerm;
     assume self != null;
-    Mask := Mask[self, idx_3:=Mask[self, idx_3] + perm];
+    Mask := Mask[self, idx_1:=Mask[self, idx_1] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of isInt(self.idx)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.idx (unofficial008.vpr@17.1--19.2) [209702]"}
-        HasDirectPerm(Mask, self, idx_3);
-    assume (isInt_1(Heap[self, idx_3]): bool);
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.idx (unofficial008.vpr@17.1--19.2) [63029]"}
+        HasDirectPerm(Mask, self, idx_1);
+    assume (isInt(Heap[self, idx_1]): bool);
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:27:39
+// Date:         2025-01-26 21:43:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0744.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0744-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -257,7 +257,7 @@ procedure fac#definedness(i: int) returns (Result: int)
         // Stop execution
         assume false;
       }
-    assert {:msg "  Postcondition of fac might not hold. Assertion ge(result, 1) might not hold. (0744.vpr@6.11--6.24) [209546]"}
+    assert {:msg "  Postcondition of fac might not hold. Assertion ge(result, 1) might not hold. (0744.vpr@6.11--6.24) [79945]"}
       ge(Heap, Result, 1);
 }
 
@@ -266,38 +266,38 @@ procedure fac#definedness(i: int) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  ge(Heap: HeapType, i1: int, i2_1: int): bool;
-function  ge'(Heap: HeapType, i1: int, i2_1: int): bool;
-axiom (forall Heap: HeapType, i1: int, i2_1: int ::
-  { ge(Heap, i1, i2_1) }
-  ge(Heap, i1, i2_1) == ge'(Heap, i1, i2_1) && dummyFunction(ge#triggerStateless(i1, i2_1))
+function  ge(Heap: HeapType, i1_9: int, i2: int): bool;
+function  ge'(Heap: HeapType, i1_9: int, i2: int): bool;
+axiom (forall Heap: HeapType, i1_9: int, i2: int ::
+  { ge(Heap, i1_9, i2) }
+  ge(Heap, i1_9, i2) == ge'(Heap, i1_9, i2) && dummyFunction(ge#triggerStateless(i1_9, i2))
 );
-axiom (forall Heap: HeapType, i1: int, i2_1: int ::
-  { ge'(Heap, i1, i2_1) }
-  dummyFunction(ge#triggerStateless(i1, i2_1))
+axiom (forall Heap: HeapType, i1_9: int, i2: int ::
+  { ge'(Heap, i1_9, i2) }
+  dummyFunction(ge#triggerStateless(i1_9, i2))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i1: int, i2_1: int ::
-  { state(Heap, Mask), ge(Heap, i1, i2_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> ge(Heap, i1, i2_1) == (i1 >= i2_1)
+axiom (forall Heap: HeapType, Mask: MaskType, i1_9: int, i2: int ::
+  { state(Heap, Mask), ge(Heap, i1_9, i2) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> ge(Heap, i1_9, i2) == (i1_9 >= i2)
 );
 
 // Framing axioms
-function  ge#frame(frame: FrameType, i1: int, i2_1: int): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, i1: int, i2_1: int ::
-  { state(Heap, Mask), ge'(Heap, i1, i2_1) }
-  state(Heap, Mask) ==> ge'(Heap, i1, i2_1) == ge#frame(EmptyFrame, i1, i2_1)
+function  ge#frame(frame: FrameType, i1_9: int, i2: int): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, i1_9: int, i2: int ::
+  { state(Heap, Mask), ge'(Heap, i1_9, i2) }
+  state(Heap, Mask) ==> ge'(Heap, i1_9, i2) == ge#frame(EmptyFrame, i1_9, i2)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  ge#trigger(frame: FrameType, i1: int, i2_1: int): bool;
+function  ge#trigger(frame: FrameType, i1_9: int, i2: int): bool;
 
 // State-independent trigger function
-function  ge#triggerStateless(i1: int, i2_1: int): bool;
+function  ge#triggerStateless(i1_9: int, i2: int): bool;
 
 // Check contract well-formedness and postcondition
-procedure ge#definedness(i1: int, i2_1: int) returns (Result: bool)
+procedure ge#definedness(i1_9: int, i2: int) returns (Result: bool)
   modifies Heap, Mask;
 {
   
@@ -308,5 +308,5 @@ procedure ge#definedness(i1: int, i2_1: int) returns (Result: bool)
     assume AssumeFunctionsAbove == 1;
   
   // -- Translate function body
-    Result := i1 >= i2_1;
+    Result := i1_9 >= i2;
 }

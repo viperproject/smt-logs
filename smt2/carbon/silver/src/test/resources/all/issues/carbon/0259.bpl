@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:58
+// Date:         2025-01-26 21:43:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0259.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0259-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -239,7 +239,7 @@ procedure P#definedness(self: Ref) returns ()
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref, y: Ref) returns ()
+procedure test_1(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -292,22 +292,22 @@ procedure test(x: Ref, y: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
-        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193651]"}
+        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [81607]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. There might be insufficient permission to access P(x) (0259.vpr@15.19--15.62) [193652]"}
+          assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. There might be insufficient permission to access P(x) (0259.vpr@15.19--15.62) [81608]"}
             perm <= Mask[null, P(x)];
         }
         Mask := Mask[null, P(x):=Mask[null, P(x)] - perm];
         perm := 1 / 2;
-        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193653]"}
+        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [81609]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. There might be insufficient permission to access P(y) (0259.vpr@15.19--15.62) [193654]"}
+          assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. There might be insufficient permission to access P(y) (0259.vpr@15.19--15.62) [81610]"}
             perm <= Mask[null, P(y)];
         }
         Mask := Mask[null, P(y):=Mask[null, P(y)] - perm];
-        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. Assertion i <= 10 might not hold. (0259.vpr@15.19--15.62) [193655]"}
+        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. Assertion i <= 10 might not hold. (0259.vpr@15.19--15.62) [81611]"}
           i <= 10;
         // Finish exhale
         havoc ExhaleHeap;
@@ -320,12 +320,12 @@ procedure test(x: Ref, y: Ref) returns ()
     // -- Check definedness of invariant
       if (*) {
         perm := 1 / 2;
-        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193656]"}
+        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [81612]"}
           perm >= NoPerm;
         Mask := Mask[null, P(x):=Mask[null, P(x)] + perm];
         assume state(Heap, Mask);
         perm := 1 / 2;
-        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193657]"}
+        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [81613]"}
           perm >= NoPerm;
         Mask := Mask[null, P(y):=Mask[null, P(y)] + perm];
         assume state(Heap, Mask);
@@ -343,12 +343,12 @@ procedure test(x: Ref, y: Ref) returns ()
         assume state(Heap, Mask);
         // Inhale invariant
         perm := 1 / 2;
-        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193658]"}
+        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [81614]"}
           perm >= NoPerm;
         Mask := Mask[null, P(x):=Mask[null, P(x)] + perm];
         assume state(Heap, Mask);
         perm := 1 / 2;
-        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193659]"}
+        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [81615]"}
           perm >= NoPerm;
         Mask := Mask[null, P(y):=Mask[null, P(y)] + perm];
         assume state(Heap, Mask);
@@ -367,22 +367,22 @@ procedure test(x: Ref, y: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
-        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193660]"}
+        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [81616]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. There might be insufficient permission to access P(x) (0259.vpr@15.19--15.62) [193661]"}
+          assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. There might be insufficient permission to access P(x) (0259.vpr@15.19--15.62) [81617]"}
             perm <= Mask[null, P(x)];
         }
         Mask := Mask[null, P(x):=Mask[null, P(x)] - perm];
         perm := 1 / 2;
-        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193662]"}
+        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [81618]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. There might be insufficient permission to access P(y) (0259.vpr@15.19--15.62) [193663]"}
+          assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. There might be insufficient permission to access P(y) (0259.vpr@15.19--15.62) [81619]"}
             perm <= Mask[null, P(y)];
         }
         Mask := Mask[null, P(y):=Mask[null, P(y)] - perm];
-        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. Assertion i <= 10 might not hold. (0259.vpr@15.19--15.62) [193664]"}
+        assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. Assertion i <= 10 might not hold. (0259.vpr@15.19--15.62) [81620]"}
           i <= 10;
         // Finish exhale
         havoc ExhaleHeap;
@@ -396,12 +396,12 @@ procedure test(x: Ref, y: Ref) returns ()
       assume !(i < 10);
       assume state(Heap, Mask);
       perm := 1 / 2;
-      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193665]"}
+      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [81621]"}
         perm >= NoPerm;
       Mask := Mask[null, P(x):=Mask[null, P(x)] + perm];
       assume state(Heap, Mask);
       perm := 1 / 2;
-      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193666]"}
+      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [81622]"}
         perm >= NoPerm;
       Mask := Mask[null, P(y):=Mask[null, P(y)] + perm];
       assume state(Heap, Mask);
@@ -423,7 +423,7 @@ procedure test(x: Ref, y: Ref) returns ()
       ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0259.vpr@20.12--20.65) [193667]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0259.vpr@20.12--20.65) [81623]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
@@ -432,7 +432,7 @@ procedure test(x: Ref, y: Ref) returns ()
       UnfoldingMask := UnfoldingMask[x, f_7:=UnfoldingMask[x, f_7] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0259.vpr@20.12--20.65) [193668]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0259.vpr@20.12--20.65) [81624]"}
         HasDirectPerm(UnfoldingMask, x, f_7);
       
       // -- Free assumptions (exp module)
@@ -446,7 +446,7 @@ procedure test(x: Ref, y: Ref) returns ()
       ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0259.vpr@20.12--20.65) [193669]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0259.vpr@20.12--20.65) [81625]"}
           perm <= UnfoldingMask[null, P(x)];
       }
       UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
@@ -455,13 +455,13 @@ procedure test(x: Ref, y: Ref) returns ()
       UnfoldingMask := UnfoldingMask[x, f_7:=UnfoldingMask[x, f_7] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0259.vpr@20.12--20.65) [193670]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0259.vpr@20.12--20.65) [81626]"}
         HasDirectPerm(UnfoldingMask, x, f_7);
       
       // -- Free assumptions (exp module)
         Heap := Heap[null, P#sm(x):=Heap[null, P#sm(x)][x, f_7:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Assert might fail. Assertion (unfolding acc(P(x), write) in x.f) == old((unfolding acc(P(x), write) in x.f)) might not hold. (0259.vpr@20.12--20.65) [193671]"}
+    assert {:msg "  Assert might fail. Assertion (unfolding acc(P(x), write) in x.f) == old((unfolding acc(P(x), write) in x.f)) might not hold. (0259.vpr@20.12--20.65) [81627]"}
       Heap[x, f_7] == oldHeap[x, f_7];
     
     // -- Free assumptions (exhale module)
@@ -483,7 +483,7 @@ procedure test(x: Ref, y: Ref) returns ()
       ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access P(y) (0259.vpr@22.12--22.65) [193672]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access P(y) (0259.vpr@22.12--22.65) [81628]"}
           perm <= UnfoldingMask[null, P(y)];
       }
       UnfoldingMask := UnfoldingMask[null, P(y):=UnfoldingMask[null, P(y)] - perm];
@@ -492,7 +492,7 @@ procedure test(x: Ref, y: Ref) returns ()
       UnfoldingMask := UnfoldingMask[y, f_7:=UnfoldingMask[y, f_7] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (0259.vpr@22.12--22.65) [193673]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (0259.vpr@22.12--22.65) [81629]"}
         HasDirectPerm(UnfoldingMask, y, f_7);
       
       // -- Free assumptions (exp module)
@@ -506,7 +506,7 @@ procedure test(x: Ref, y: Ref) returns ()
       ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access P(y) (0259.vpr@22.12--22.65) [193674]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access P(y) (0259.vpr@22.12--22.65) [81630]"}
           perm <= UnfoldingMask[null, P(y)];
       }
       UnfoldingMask := UnfoldingMask[null, P(y):=UnfoldingMask[null, P(y)] - perm];
@@ -515,13 +515,13 @@ procedure test(x: Ref, y: Ref) returns ()
       UnfoldingMask := UnfoldingMask[y, f_7:=UnfoldingMask[y, f_7] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (0259.vpr@22.12--22.65) [193675]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (0259.vpr@22.12--22.65) [81631]"}
         HasDirectPerm(UnfoldingMask, y, f_7);
       
       // -- Free assumptions (exp module)
         Heap := Heap[null, P#sm(y):=Heap[null, P#sm(y)][y, f_7:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Assert might fail. Assertion (unfolding acc(P(y), write) in y.f) == old((unfolding acc(P(y), write) in y.f)) might not hold. (0259.vpr@22.12--22.65) [193676]"}
+    assert {:msg "  Assert might fail. Assertion (unfolding acc(P(y), write) in y.f) == old((unfolding acc(P(y), write) in y.f)) might not hold. (0259.vpr@22.12--22.65) [81632]"}
       Heap[y, f_7] == oldHeap[y, f_7];
     
     // -- Free assumptions (exhale module)

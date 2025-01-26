@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:19
+// Date:         2025-01-26 21:41:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/receiverless.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/receiverless-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -229,7 +229,7 @@ procedure valid#definedness(b_24: bool) returns ()
 // Translation of method t1
 // ==================================================
 
-procedure t1(this: Ref, b_24: bool) returns ()
+procedure t1_2(this: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -261,7 +261,7 @@ procedure t1(this: Ref, b_24: bool) returns ()
   // -- Translating statement: assert false -- receiverless.vpr@12.5--12.17
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (receiverless.vpr@12.12--12.17) [151948]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (receiverless.vpr@12.12--12.17) [45932]"}
       false;
     assume state(Heap, Mask);
 }
@@ -270,7 +270,7 @@ procedure t1(this: Ref, b_24: bool) returns ()
 // Translation of method t2
 // ==================================================
 
-procedure t2(this: Ref, b_24: bool) returns ()
+procedure t2_2(this: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -307,7 +307,7 @@ procedure t2(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding valid(false) might fail. There might be insufficient permission to access valid(false) (receiverless.vpr@18.5--18.36) [151951]"}
+      assert {:msg "  Unfolding valid(false) might fail. There might be insufficient permission to access valid(false) (receiverless.vpr@18.5--18.36) [45935]"}
         perm <= Mask[null, valid(false)];
     }
     Mask := Mask[null, valid(false):=Mask[null, valid(false)] - perm];
@@ -324,7 +324,7 @@ procedure t2(this: Ref, b_24: bool) returns ()
   // -- Translating statement: assert false -- receiverless.vpr@19.5--19.17
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (receiverless.vpr@19.12--19.17) [151952]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (receiverless.vpr@19.12--19.17) [45936]"}
       false;
     assume state(Heap, Mask);
 }
@@ -370,7 +370,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding valid(true) might fail. There might be insufficient permission to access valid(true) (receiverless.vpr@25.5--25.35) [151955]"}
+      assert {:msg "  Unfolding valid(true) might fail. There might be insufficient permission to access valid(true) (receiverless.vpr@25.5--25.35) [45939]"}
         perm <= Mask[null, valid(true)];
     }
     Mask := Mask[null, valid(true):=Mask[null, valid(true)] - perm];
@@ -386,7 +386,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
   // -- Translating statement: assert false -- receiverless.vpr@27.5--27.17
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (receiverless.vpr@27.12--27.17) [151956]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (receiverless.vpr@27.12--27.17) [45940]"}
       false;
     assume state(Heap, Mask);
 }

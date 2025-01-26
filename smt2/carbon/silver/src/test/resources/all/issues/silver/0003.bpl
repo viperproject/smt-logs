@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:13
+// Date:         2025-01-26 21:42:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0003.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0003-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,11 +188,11 @@ axiom !IsWandField(f_7);
 procedure t11(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var j_9: int;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
+  var j: int;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -211,11 +211,11 @@ procedure t11(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: j := 2 -- 0003.vpr@9.5--9.20
-    j_9 := 2;
+    j := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (j < 3) -- 0003.vpr@11.5--18.6
@@ -223,22 +223,22 @@ procedure t11(r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant r != null && r.f == 2 might not hold on entry. Assertion r != null might not hold. (0003.vpr@15.19--15.40) [220758]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant r != null && r.f == 2 might not hold on entry. Assertion r != null might not hold. (0003.vpr@15.19--15.40) [56444]"}
           r_1 != null;
-        assert {:msg "  Loop invariant r != null && r.f == 2 might not hold on entry. Assertion r.f == 2 might not hold. (0003.vpr@15.19--15.40) [220759]"}
+        assert {:msg "  Loop invariant r != null && r.f == 2 might not hold on entry. Assertion r.f == 2 might not hold. (0003.vpr@15.19--15.40) [56445]"}
           Heap[r_1, f_7] == 2;
     
     // -- Havoc loop written variables (except locals)
-      havoc j_9;
+      havoc j;
     
     // -- Check definedness of invariant
       if (*) {
         assume r_1 != null;
         
         // -- Check definedness of r.f == 2
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (0003.vpr@15.19--15.40) [220760]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (0003.vpr@15.19--15.40) [56446]"}
             HasDirectPerm(Mask, r_1, f_7);
         assume Heap[r_1, f_7] == 2;
         assume state(Heap, Mask);
@@ -257,27 +257,27 @@ procedure t11(r_1: Ref) returns ()
         assume Heap[r_1, f_7] == 2;
         assume state(Heap, Mask);
         // Check and assume guard
-        assume j_9 < 3;
+        assume j < 3;
         assume state(Heap, Mask);
         
         // -- Translate loop body
           
           // -- Translating statement: j := j + 1 -- 0003.vpr@17.9--17.17
-            j_9 := j_9 + 1;
+            j := j + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant r != null && r.f == 2 might not be preserved. Assertion r != null might not hold. (0003.vpr@15.19--15.40) [220761]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant r != null && r.f == 2 might not be preserved. Assertion r != null might not hold. (0003.vpr@15.19--15.40) [56447]"}
           r_1 != null;
-        assert {:msg "  Loop invariant r != null && r.f == 2 might not be preserved. Assertion r.f == 2 might not hold. (0003.vpr@15.19--15.40) [220762]"}
+        assert {:msg "  Loop invariant r != null && r.f == 2 might not be preserved. Assertion r.f == 2 might not hold. (0003.vpr@15.19--15.40) [56448]"}
           Heap[r_1, f_7] == 2;
         // Terminate execution
         assume false;
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(j_9 < 3);
+      assume !(j < 3);
       assume state(Heap, Mask);
       assume r_1 != null;
       assume Heap[r_1, f_7] == 2;
@@ -289,14 +289,14 @@ procedure t11(r_1: Ref) returns ()
 // Translation of method t1
 // ==================================================
 
-procedure t1(r_1: Ref) returns ()
+procedure t1_2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -319,19 +319,19 @@ procedure t1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (true) -- 0003.vpr@24.3--30.4
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(r.f, write) might not hold on entry. There might be insufficient permission to access r.f (0003.vpr@27.15--27.23) [220763]"}
+          assert {:msg "  Loop invariant acc(r.f, write) might not hold on entry. There might be insufficient permission to access r.f (0003.vpr@27.15--27.23) [56449]"}
             perm <= Mask[r_1, f_7];
         }
         Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -370,11 +370,11 @@ procedure t1(r_1: Ref) returns ()
         // -- Translate loop body
           
           // -- Translating statement: exhale acc(r.f, write) -- 0003.vpr@29.5--29.20
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (0003.vpr@29.12--29.20) [220764]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (0003.vpr@29.12--29.20) [56450]"}
                 perm <= Mask[r_1, f_7];
             }
             Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -384,11 +384,11 @@ procedure t1(r_1: Ref) returns ()
             Heap := ExhaleHeap;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(r.f, write) might not be preserved. There might be insufficient permission to access r.f (0003.vpr@27.15--27.23) [220765]"}
+          assert {:msg "  Loop invariant acc(r.f, write) might not be preserved. There might be insufficient permission to access r.f (0003.vpr@27.15--27.23) [56451]"}
             perm <= Mask[r_1, f_7];
         }
         Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -415,13 +415,13 @@ procedure t1(r_1: Ref) returns ()
 // Translation of method t2
 // ==================================================
 
-procedure t2(r_1: Ref) returns ()
+procedure t2_2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -442,19 +442,19 @@ procedure t2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (true) -- 0003.vpr@36.3--40.5
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(r.f, write) might not hold on entry. There might be insufficient permission to access r.f (0003.vpr@39.15--39.23) [220766]"}
+          assert {:msg "  Loop invariant acc(r.f, write) might not hold on entry. There might be insufficient permission to access r.f (0003.vpr@39.15--39.23) [56452]"}
             perm <= Mask[r_1, f_7];
         }
         Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -490,11 +490,11 @@ procedure t2(r_1: Ref) returns ()
         // Check and assume guard
         assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(r.f, write) might not be preserved. There might be insufficient permission to access r.f (0003.vpr@39.15--39.23) [220767]"}
+          assert {:msg "  Loop invariant acc(r.f, write) might not be preserved. There might be insufficient permission to access r.f (0003.vpr@39.15--39.23) [56453]"}
             perm <= Mask[r_1, f_7];
         }
         Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];

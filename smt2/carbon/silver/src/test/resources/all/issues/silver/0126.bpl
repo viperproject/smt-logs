@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:59
+// Date:         2025-01-26 21:42:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0126.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0126-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -545,11 +545,11 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // ==================================================
 
 // Uninterpreted function definitions
-function  g_3(Heap: HeapType, xs: (Seq Ref)): Seq Ref;
+function  g_2(Heap: HeapType, xs: (Seq Ref)): Seq Ref;
 function  g'(Heap: HeapType, xs: (Seq Ref)): Seq Ref;
 axiom (forall Heap: HeapType, xs: (Seq Ref) ::
-  { g_3(Heap, xs) }
-  g_3(Heap, xs) == g'(Heap, xs) && dummyFunction(g#triggerStateless(xs))
+  { g_2(Heap, xs) }
+  g_2(Heap, xs) == g'(Heap, xs) && dummyFunction(g#triggerStateless(xs))
 );
 axiom (forall Heap: HeapType, xs: (Seq Ref) ::
   { g'(Heap, xs) }
@@ -585,16 +585,16 @@ procedure g#definedness(xs: (Seq Ref)) returns (Result: (Seq Ref))
 // Translation of method f
 // ==================================================
 
-procedure f_204() returns ()
+procedure f_81() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: Ref;
   var b_24: Ref;
-  var s_2: (Seq Ref);
-  var ExhaleWellDef0Mask: MaskType;
+  var s_1: (Seq Ref);
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -605,8 +605,8 @@ procedure f_204() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -620,20 +620,20 @@ procedure f_204() returns ()
         // Stop execution
         assume false;
       }
-    assume Seq#Equal(g_3(Heap, Seq#Append(Seq#Singleton(b_24), (Seq#Empty(): Seq Ref))), s_2);
+    assume Seq#Equal(g_2(Heap, Seq#Append(Seq#Singleton(b_24), (Seq#Empty(): Seq Ref))), s_1);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert g(Seq(b)) == s -- 0126.vpr@11.3--11.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of g(Seq(b)) == s
       if (*) {
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion g(Seq(b)) == s might not hold. (0126.vpr@11.10--11.24) [220494]"}
-      Seq#Equal(g_3(Heap, Seq#Singleton(b_24)), s_2);
+    assert {:msg "  Assert might fail. Assertion g(Seq(b)) == s might not hold. (0126.vpr@11.10--11.24) [56500]"}
+      Seq#Equal(g_2(Heap, Seq#Singleton(b_24)), s_1);
     assume state(Heap, Mask);
 }

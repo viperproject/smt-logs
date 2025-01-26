@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:19
+// Date:         2025-01-26 21:43:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0810.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0810-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_5: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_5, f_3] }
-  Heap[o_5, $allocated] ==> Heap[Heap[o_5, f_3], $allocated]
+axiom (forall o_56: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_56, f_3] }
+  Heap[o_56, $allocated] ==> Heap[Heap[o_56, f_3], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref, f_9: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, f_9] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_6, f_9) ==> Heap[o_6, f_9] == ExhaleHeap[o_6, f_9]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref, f_51: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, f_51] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_38, f_51) ==> Heap[o_38, f_51] == ExhaleHeap[o_38, f_51]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2), ExhaleHeap[null, PredicateMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> Heap[null, PredicateMaskField(pm_f_2)] == ExhaleHeap[null, PredicateMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26), ExhaleHeap[null, PredicateMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> Heap[null, PredicateMaskField(pm_f_26)] == ExhaleHeap[null, PredicateMaskField(pm_f_26)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, PredicateMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, PredicateMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2), ExhaleHeap[null, WandMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> Heap[null, WandMaskField(pm_f_2)] == ExhaleHeap[null, WandMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26), ExhaleHeap[null, WandMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> Heap[null, WandMaskField(pm_f_26)] == ExhaleHeap[null, WandMaskField(pm_f_26)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, WandMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, WandMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_6, $allocated] ==> ExhaleHeap[o_6, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_38, $allocated] ==> ExhaleHeap[o_38, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_5: Ref, f_10: (Field A B), v: B ::
-  { Heap[o_5, f_10:=v] }
-  succHeap(Heap, Heap[o_5, f_10:=v])
+axiom (forall <A, B> Heap: HeapType, o_56: Ref, f_22: (Field A B), v: B ::
+  { Heap[o_56, f_22:=v] }
+  succHeap(Heap, Heap[o_56, f_22:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -579,7 +579,7 @@ function  isnotsubtype(sub: PyTypeDomainType, super: PyTypeDomainType): bool;
 function  typeof(obj: Ref): PyTypeDomainType;
 
 // Translation of domain function get_basic
-function  get_basic(t_9: PyTypeDomainType): PyTypeDomainType;
+function  get_basic(t_3: PyTypeDomainType): PyTypeDomainType;
 
 // Translation of domain function union_type_1
 function  union_type_1(arg_1_12: PyTypeDomainType): PyTypeDomainType;
@@ -606,7 +606,7 @@ function  list_1(arg0: PyTypeDomainType): PyTypeDomainType;
 const unique set_basic: PyTypeDomainType;
 
 // Translation of domain function set
-function  set_1(arg0: PyTypeDomainType): PyTypeDomainType;
+function  set(arg0: PyTypeDomainType): PyTypeDomainType;
 
 // Translation of domain function set_arg
 function  set_arg(typ: PyTypeDomainType, index_1: int): PyTypeDomainType;
@@ -812,8 +812,8 @@ function  __prim__int___box__#triggerStateless(prim: int): Ref;
 procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -829,9 +829,9 @@ procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
     // -- Check definedness of int___unbox__(result) == prim
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0810.vpr@182.11--182.32) [198877]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0810.vpr@182.11--182.32) [80152]"}
           (issubtype((typeof(Result): PyTypeDomainType), vint): bool);
         // Stop execution
         assume false;
@@ -845,38 +845,38 @@ procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
 // ==================================================
 
 // Uninterpreted function definitions
-function  int___unbox__(Heap: HeapType, box_1: Ref): int;
-function  int___unbox__'(Heap: HeapType, box_1: Ref): int;
-axiom (forall Heap: HeapType, box_1: Ref ::
-  { int___unbox__(Heap, box_1) }
-  int___unbox__(Heap, box_1) == int___unbox__'(Heap, box_1) && dummyFunction(int___unbox__#triggerStateless(box_1))
+function  int___unbox__(Heap: HeapType, box: Ref): int;
+function  int___unbox__'(Heap: HeapType, box: Ref): int;
+axiom (forall Heap: HeapType, box: Ref ::
+  { int___unbox__(Heap, box) }
+  int___unbox__(Heap, box) == int___unbox__'(Heap, box) && dummyFunction(int___unbox__#triggerStateless(box))
 );
-axiom (forall Heap: HeapType, box_1: Ref ::
-  { int___unbox__'(Heap, box_1) }
-  dummyFunction(int___unbox__#triggerStateless(box_1))
+axiom (forall Heap: HeapType, box: Ref ::
+  { int___unbox__'(Heap, box) }
+  dummyFunction(int___unbox__#triggerStateless(box))
 );
 
 // Framing axioms
-function  int___unbox__#frame(frame: FrameType, box_1: Ref): int;
-axiom (forall Heap: HeapType, Mask: MaskType, box_1: Ref ::
-  { state(Heap, Mask), int___unbox__'(Heap, box_1) }
-  state(Heap, Mask) ==> int___unbox__'(Heap, box_1) == int___unbox__#frame(EmptyFrame, box_1)
+function  int___unbox__#frame(frame: FrameType, box: Ref): int;
+axiom (forall Heap: HeapType, Mask: MaskType, box: Ref ::
+  { state(Heap, Mask), int___unbox__'(Heap, box) }
+  state(Heap, Mask) ==> int___unbox__'(Heap, box) == int___unbox__#frame(EmptyFrame, box)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, box_1: Ref ::
-  { state(Heap, Mask), int___unbox__'(Heap, box_1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 4 || int___unbox__#trigger(EmptyFrame, box_1)) ==> (issubtype((typeof(box_1): PyTypeDomainType), vint): bool) ==> !(issubtype((typeof(box_1): PyTypeDomainType), vbool): bool) ==> __prim__int___box__'(Heap, int___unbox__'(Heap, box_1)) == box_1
+axiom (forall Heap: HeapType, Mask: MaskType, box: Ref ::
+  { state(Heap, Mask), int___unbox__'(Heap, box) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 4 || int___unbox__#trigger(EmptyFrame, box)) ==> (issubtype((typeof(box): PyTypeDomainType), vint): bool) ==> !(issubtype((typeof(box): PyTypeDomainType), vbool): bool) ==> __prim__int___box__'(Heap, int___unbox__'(Heap, box)) == box
 );
 
 // Trigger function (controlling recursive postconditions)
-function  int___unbox__#trigger(frame: FrameType, box_1: Ref): bool;
+function  int___unbox__#trigger(frame: FrameType, box: Ref): bool;
 
 // State-independent trigger function
-function  int___unbox__#triggerStateless(box_1: Ref): int;
+function  int___unbox__#triggerStateless(box: Ref): int;
 
 // Check contract well-formedness and postcondition
-procedure int___unbox__#definedness(box_1: Ref) returns (Result: int)
+procedure int___unbox__#definedness(box: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -884,15 +884,15 @@ procedure int___unbox__#definedness(box_1: Ref) returns (Result: int)
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
-    assume Heap[box_1, $allocated];
+    assume Heap[box, $allocated];
     assume AssumeFunctionsAbove == 4;
   
   // -- Inhaling precondition (with checking)
-    assume (issubtype((typeof(box_1): PyTypeDomainType), vint): bool);
+    assume (issubtype((typeof(box): PyTypeDomainType), vint): bool);
     assume state(Heap, Mask);
   
   // -- Checking definedness of postcondition (no body)
-    if (!(issubtype((typeof(box_1): PyTypeDomainType), vbool): bool)) {
+    if (!(issubtype((typeof(box): PyTypeDomainType), vbool): bool)) {
       assume state(Heap, Mask);
       
       // -- Check definedness of __prim__int___box__(result) == box
@@ -900,7 +900,7 @@ procedure int___unbox__#definedness(box_1: Ref) returns (Result: int)
           // Stop execution
           assume false;
         }
-      assume __prim__int___box__(Heap, Result) == box_1;
+      assume __prim__int___box__(Heap, Result) == box;
     }
     assume state(Heap, Mask);
 }
@@ -1065,7 +1065,7 @@ procedure list___len__#definedness(self: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of |self.list_acc|
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.list_acc (0810.vpr@203.1--208.2) [198878]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.list_acc (0810.vpr@203.1--208.2) [80153]"}
         HasDirectPerm(Mask, self, list_acc);
   
   // -- Translate function body
@@ -1077,38 +1077,38 @@ procedure list___len__#definedness(self: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  list___getitem__(Heap: HeapType, self: Ref, key_1: Ref): Ref;
-function  list___getitem__'(Heap: HeapType, self: Ref, key_1: Ref): Ref;
-axiom (forall Heap: HeapType, self: Ref, key_1: Ref ::
-  { list___getitem__(Heap, self, key_1) }
-  list___getitem__(Heap, self, key_1) == list___getitem__'(Heap, self, key_1) && dummyFunction(list___getitem__#triggerStateless(self, key_1))
+function  list___getitem__(Heap: HeapType, self: Ref, key_2: Ref): Ref;
+function  list___getitem__'(Heap: HeapType, self: Ref, key_2: Ref): Ref;
+axiom (forall Heap: HeapType, self: Ref, key_2: Ref ::
+  { list___getitem__(Heap, self, key_2) }
+  list___getitem__(Heap, self, key_2) == list___getitem__'(Heap, self, key_2) && dummyFunction(list___getitem__#triggerStateless(self, key_2))
 );
-axiom (forall Heap: HeapType, self: Ref, key_1: Ref ::
-  { list___getitem__'(Heap, self, key_1) }
-  dummyFunction(list___getitem__#triggerStateless(self, key_1))
+axiom (forall Heap: HeapType, self: Ref, key_2: Ref ::
+  { list___getitem__'(Heap, self, key_2) }
+  dummyFunction(list___getitem__#triggerStateless(self, key_2))
 );
 
 // Framing axioms
-function  list___getitem__#frame(frame: FrameType, self: Ref, key_1: Ref): Ref;
-axiom (forall Heap: HeapType, Mask: MaskType, self: Ref, key_1: Ref ::
-  { state(Heap, Mask), list___getitem__'(Heap, self, key_1) }
-  state(Heap, Mask) ==> list___getitem__'(Heap, self, key_1) == list___getitem__#frame(CombineFrames(FrameFragment(Heap[self, list_acc]), CombineFrames(FrameFragment((if int___unbox__(Heap, key_1) < 0 then EmptyFrame else EmptyFrame)), FrameFragment((if int___unbox__(Heap, key_1) >= 0 then EmptyFrame else EmptyFrame)))), self, key_1)
+function  list___getitem__#frame(frame: FrameType, self: Ref, key_2: Ref): Ref;
+axiom (forall Heap: HeapType, Mask: MaskType, self: Ref, key_2: Ref ::
+  { state(Heap, Mask), list___getitem__'(Heap, self, key_2) }
+  state(Heap, Mask) ==> list___getitem__'(Heap, self, key_2) == list___getitem__#frame(CombineFrames(FrameFragment(Heap[self, list_acc]), CombineFrames(FrameFragment((if int___unbox__(Heap, key_2) < 0 then EmptyFrame else EmptyFrame)), FrameFragment((if int___unbox__(Heap, key_2) >= 0 then EmptyFrame else EmptyFrame)))), self, key_2)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  list___getitem__#trigger(frame: FrameType, self: Ref, key_1: Ref): bool;
+function  list___getitem__#trigger(frame: FrameType, self: Ref, key_2: Ref): bool;
 
 // State-independent trigger function
-function  list___getitem__#triggerStateless(self: Ref, key_1: Ref): Ref;
+function  list___getitem__#triggerStateless(self: Ref, key_2: Ref): Ref;
 
 // Check contract well-formedness and postcondition
-procedure list___getitem__#definedness(self: Ref, key_1: Ref) returns (Result: Ref)
+procedure list___getitem__#definedness(self: Ref, key_2: Ref) returns (Result: Ref)
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var ln_1: int;
   
@@ -1117,11 +1117,11 @@ procedure list___getitem__#definedness(self: Ref, key_1: Ref) returns (Result: R
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
     assume Heap[self, $allocated];
-    assume Heap[key_1, $allocated];
+    assume Heap[key_2, $allocated];
     assume AssumeFunctionsAbove == 1;
   
   // -- Inhaling precondition (with checking)
-    assume (issubtype((typeof(key_1): PyTypeDomainType), vint): bool);
+    assume (issubtype((typeof(key_2): PyTypeDomainType), vint): bool);
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
@@ -1133,10 +1133,10 @@ procedure list___getitem__#definedness(self: Ref, key_1: Ref) returns (Result: R
     // -- Check definedness of list___len__(self)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function list___len__ might not hold. There might be insufficient permission to access self.list_acc (0810.vpr@214.8--214.26) [198879]"}
+        assert {:msg "  Precondition of function list___len__ might not hold. There might be insufficient permission to access self.list_acc (0810.vpr@214.8--214.26) [80154]"}
           NoPerm < perm ==> NoPerm < Mask[self, list_acc];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1150,53 +1150,53 @@ procedure list___getitem__#definedness(self: Ref, key_1: Ref) returns (Result: R
     // -- Check definedness of int___unbox__(key) < 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@215.8--215.26) [198880]"}
-          (issubtype((typeof(key_1): PyTypeDomainType), vint): bool);
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@215.8--215.26) [80155]"}
+          (issubtype((typeof(key_2): PyTypeDomainType), vint): bool);
         // Stop execution
         assume false;
       }
-    if (int___unbox__(Heap, key_1) < 0) {
+    if (int___unbox__(Heap, key_2) < 0) {
       assume state(Heap, Mask);
       
       // -- Check definedness of int___unbox__(key) >= -ln
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@215.35--215.53) [198881]"}
-            (issubtype((typeof(key_1): PyTypeDomainType), vint): bool);
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@215.35--215.53) [80156]"}
+            (issubtype((typeof(key_2): PyTypeDomainType), vint): bool);
           // Stop execution
           assume false;
         }
-      assume int___unbox__(Heap, key_1) >= -ln_1;
+      assume int___unbox__(Heap, key_2) >= -ln_1;
     }
     
     // -- Check definedness of int___unbox__(key) >= 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@216.8--216.26) [198882]"}
-          (issubtype((typeof(key_1): PyTypeDomainType), vint): bool);
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@216.8--216.26) [80157]"}
+          (issubtype((typeof(key_2): PyTypeDomainType), vint): bool);
         // Stop execution
         assume false;
       }
-    if (int___unbox__(Heap, key_1) >= 0) {
+    if (int___unbox__(Heap, key_2) >= 0) {
       assume state(Heap, Mask);
       
       // -- Check definedness of int___unbox__(key) < ln
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@216.36--216.54) [198883]"}
-            (issubtype((typeof(key_1): PyTypeDomainType), vint): bool);
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@216.36--216.54) [80158]"}
+            (issubtype((typeof(key_2): PyTypeDomainType), vint): bool);
           // Stop execution
           assume false;
         }
-      assume int___unbox__(Heap, key_1) < ln_1;
+      assume int___unbox__(Heap, key_2) < ln_1;
     }
     assume state(Heap, Mask);
 }
@@ -1208,12 +1208,12 @@ procedure list___getitem__#definedness(self: Ref, key_1: Ref) returns (Result: R
 procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var iii: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var ln_1: int;
   var QPMask: MaskType;
@@ -1230,8 +1230,8 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(marked_execution_tree.Node_children, write) &&
   //   issubtype(typeof(marked_execution_tree.Node_children), list(Node())) -- 0810.vpr@166.5--167.84
@@ -1241,7 +1241,7 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of issubtype(typeof(marked_execution_tree.Node_children), list(Node()))
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access marked_execution_tree.Node_children (0810.vpr@166.12--167.84) [198885]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access marked_execution_tree.Node_children (0810.vpr@166.12--167.84) [80160]"}
         HasDirectPerm(Mask, marked_execution_tree, Node_children);
     assume (issubtype((typeof(Heap[marked_execution_tree, Node_children]): PyTypeDomainType), (list_1(Node_1): PyTypeDomainType)): bool);
     assume state(Heap, Mask);
@@ -1250,7 +1250,7 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
   // -- Translating statement: inhale acc(marked_execution_tree.Node_children.list_acc, write) -- 0810.vpr@168.5--168.68
     
     // -- Check definedness of acc(marked_execution_tree.Node_children.list_acc, write)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access marked_execution_tree.Node_children (0810.vpr@168.12--168.68) [198886]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access marked_execution_tree.Node_children (0810.vpr@168.12--168.68) [80161]"}
         HasDirectPerm(Mask, marked_execution_tree, Node_children);
     perm := FullPerm;
     assume Heap[marked_execution_tree, Node_children] != null;
@@ -1275,9 +1275,9 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
         if ((typeof(iii): PyTypeDomainType) == vint) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(iii), int()) might not hold. (0810.vpr@174.30--174.48) [198888]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(iii), int()) might not hold. (0810.vpr@174.30--174.48) [80163]"}
               (issubtype((typeof(iii): PyTypeDomainType), vint): bool);
             // Stop execution
             assume false;
@@ -1289,21 +1289,21 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
           if (int___ge__(Heap, int___unbox__(Heap, iii), 0)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
-              assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(iii), int()) might not hold. (0810.vpr@175.29--175.47) [198889]"}
+              ExhaleWellDef0Heap := Heap;
+              assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(iii), int()) might not hold. (0810.vpr@175.29--175.47) [80164]"}
                 (issubtype((typeof(iii): PyTypeDomainType), vint): bool);
               // Stop execution
               assume false;
             }
-            assert {:msg "  Inhale might fail. There might be insufficient permission to access marked_execution_tree.Node_children (0810.vpr@171.13--176.107) [198890]"}
+            assert {:msg "  Inhale might fail. There might be insufficient permission to access marked_execution_tree.Node_children (0810.vpr@171.13--176.107) [80165]"}
               HasDirectPerm(Mask, marked_execution_tree, Node_children);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
-              assert {:msg "  Precondition of function list___len__ might not hold. There might be insufficient permission to access marked_execution_tree.Node_children.list_acc (0810.vpr@175.49--175.98) [198891]"}
+              assert {:msg "  Precondition of function list___len__ might not hold. There might be insufficient permission to access marked_execution_tree.Node_children.list_acc (0810.vpr@175.49--175.98) [80166]"}
                 NoPerm < perm ==> NoPerm < Mask[Heap[marked_execution_tree, Node_children], list_acc];
               // Finish exhale
               havoc ExhaleHeap;
@@ -1319,18 +1319,18 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
           }
         }
         if ((typeof(iii): PyTypeDomainType) == vint && (int___ge__(Heap, int___unbox__(Heap, iii), 0) && int___lt__(Heap, int___unbox__(Heap, iii), list___len__(Heap, Heap[marked_execution_tree, Node_children])))) {
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access marked_execution_tree.Node_children (0810.vpr@171.13--176.107) [198892]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access marked_execution_tree.Node_children (0810.vpr@171.13--176.107) [80167]"}
             HasDirectPerm(Mask, marked_execution_tree, Node_children);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function list___getitem__ might not hold. Assertion issubtype(typeof(iii), int()) might not hold. (0810.vpr@176.22--176.80) [198893]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function list___getitem__ might not hold. Assertion issubtype(typeof(iii), int()) might not hold. (0810.vpr@176.22--176.80) [80168]"}
               (issubtype((typeof(iii): PyTypeDomainType), vint): bool);
             perm := FullPerm;
-            assert {:msg "  Precondition of function list___getitem__ might not hold. There might be insufficient permission to access marked_execution_tree.Node_children.list_acc (0810.vpr@176.22--176.80) [198894]"}
+            assert {:msg "  Precondition of function list___getitem__ might not hold. There might be insufficient permission to access marked_execution_tree.Node_children.list_acc (0810.vpr@176.22--176.80) [80169]"}
               NoPerm < perm ==> NoPerm < Mask[Heap[marked_execution_tree, Node_children], list_acc];
-            assert {:msg "  Precondition of function list___getitem__ might not hold. Assertion (let ln == (list___len__(marked_execution_tree.Node_children)) in (int___unbox__(iii) < 0 ==> int___unbox__(iii) >= -ln) && (int___unbox__(iii) >= 0 ==> int___unbox__(iii) < ln)) might not hold. (0810.vpr@176.22--176.80) [198895]"}
+            assert {:msg "  Precondition of function list___getitem__ might not hold. Assertion (let ln == (list___len__(marked_execution_tree.Node_children)) in (int___unbox__(iii) < 0 ==> int___unbox__(iii) >= -ln) && (int___unbox__(iii) >= 0 ==> int___unbox__(iii) < ln)) might not hold. (0810.vpr@176.22--176.80) [80170]"}
               (int___unbox__(Heap, iii) < 0 ==> int___unbox__(Heap, iii) >= -list___len__(Heap, Heap[marked_execution_tree, Node_children])) && (int___unbox__(Heap, iii) >= 0 ==> int___unbox__(Heap, iii) < list___len__(Heap, Heap[marked_execution_tree, Node_children]));
             
             // -- Free assumptions (exhale module)
@@ -1346,7 +1346,7 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Inhale might fail. Quantified resource list___getitem__(marked_execution_tree.Node_children, iii).Node_function_name might not be injective. (0810.vpr@171.13--176.107) [198896]"}
+    assert {:msg "  Inhale might fail. Quantified resource list___getitem__(marked_execution_tree.Node_children, iii).Node_function_name might not be injective. (0810.vpr@171.13--176.107) [80171]"}
       (forall iii_1: Ref, iii_1_1: Ref ::
       
       (((iii_1 != iii_1_1 && ((typeof(iii_1): PyTypeDomainType) == vint && (int___ge__(Heap, int___unbox__(Heap, iii_1), 0) && int___lt__(Heap, int___unbox__(Heap, iii_1), list___len__(Heap, Heap[marked_execution_tree, Node_children]))))) && ((typeof(iii_1_1): PyTypeDomainType) == vint && (int___ge__(Heap, int___unbox__(Heap, iii_1_1), 0) && int___lt__(Heap, int___unbox__(Heap, iii_1_1), list___len__(Heap, Heap[marked_execution_tree, Node_children]))))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> list___getitem__(Heap, Heap[marked_execution_tree, Node_children], iii_1) != list___getitem__(Heap, Heap[marked_execution_tree, Node_children], iii_1_1)
@@ -1357,9 +1357,9 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
         { list___getitem__#frame(CombineFrames(FrameFragment(Heap[Heap[marked_execution_tree, Node_children], list_acc]), CombineFrames(FrameFragment(EmptyFrame), FrameFragment(EmptyFrame))), Heap[marked_execution_tree, Node_children], iii_1) } { list___getitem__#frame(CombineFrames(FrameFragment(Heap[Heap[marked_execution_tree, Node_children], list_acc]), CombineFrames(FrameFragment(EmptyFrame), FrameFragment(EmptyFrame))), Heap[marked_execution_tree, Node_children], iii_1) } { list___getitem__#frame(CombineFrames(FrameFragment(Heap[Heap[marked_execution_tree, Node_children], list_acc]), CombineFrames(FrameFragment(EmptyFrame), FrameFragment(EmptyFrame))), Heap[marked_execution_tree, Node_children], iii_1) } { list___getitem__#frame(CombineFrames(FrameFragment(Heap[Heap[marked_execution_tree, Node_children], list_acc]), CombineFrames(FrameFragment(EmptyFrame), FrameFragment(EmptyFrame))), Heap[marked_execution_tree, Node_children], iii_1) } { (typeof(iii_1): PyTypeDomainType) } { int___ge__#frame(EmptyFrame, int___unbox__#frame(EmptyFrame, iii_1), 0) } { int___lt__#frame(EmptyFrame, int___unbox__#frame(EmptyFrame, iii_1), list___len__#frame(FrameFragment(Heap[Heap[marked_execution_tree, Node_children], list_acc]), Heap[marked_execution_tree, Node_children])) } { list___getitem__#frame(CombineFrames(FrameFragment(Heap[Heap[marked_execution_tree, Node_children], list_acc]), CombineFrames(FrameFragment(EmptyFrame), FrameFragment(EmptyFrame))), Heap[marked_execution_tree, Node_children], iii_1) } { list___getitem__#frame(CombineFrames(FrameFragment(Heap[Heap[marked_execution_tree, Node_children], list_acc]), CombineFrames(FrameFragment(EmptyFrame), FrameFragment(EmptyFrame))), Heap[marked_execution_tree, Node_children], iii_1) } { list___getitem__#frame(CombineFrames(FrameFragment(Heap[Heap[marked_execution_tree, Node_children], list_acc]), CombineFrames(FrameFragment(EmptyFrame), FrameFragment(EmptyFrame))), Heap[marked_execution_tree, Node_children], iii_1) } { list___getitem__#frame(CombineFrames(FrameFragment(Heap[Heap[marked_execution_tree, Node_children], list_acc]), CombineFrames(FrameFragment(EmptyFrame), FrameFragment(EmptyFrame))), Heap[marked_execution_tree, Node_children], iii_1) }
         ((typeof(iii_1): PyTypeDomainType) == vint && (int___ge__(Heap, int___unbox__(Heap, iii_1), 0) && int___lt__(Heap, int___unbox__(Heap, iii_1), list___len__(Heap, Heap[marked_execution_tree, Node_children])))) && NoPerm < FullPerm ==> qpRange1(list___getitem__(Heap, Heap[marked_execution_tree, Node_children], iii_1)) && invRecv1(list___getitem__(Heap, Heap[marked_execution_tree, Node_children], iii_1)) == iii_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (((typeof(invRecv1(o_4)): PyTypeDomainType) == vint && (int___ge__(Heap, int___unbox__(Heap, invRecv1(o_4)), 0) && int___lt__(Heap, int___unbox__(Heap, invRecv1(o_4)), list___len__(Heap, Heap[marked_execution_tree, Node_children])))) && NoPerm < FullPerm) && qpRange1(o_4) ==> list___getitem__(Heap, Heap[marked_execution_tree, Node_children], invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (((typeof(invRecv1(o_9)): PyTypeDomainType) == vint && (int___ge__(Heap, int___unbox__(Heap, invRecv1(o_9)), 0) && int___lt__(Heap, int___unbox__(Heap, invRecv1(o_9)), list___len__(Heap, Heap[marked_execution_tree, Node_children])))) && NoPerm < FullPerm) && qpRange1(o_9) ==> list___getitem__(Heap, Heap[marked_execution_tree, Node_children], invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1369,13 +1369,13 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Node_function_name] }
-        ((((typeof(invRecv1(o_4)): PyTypeDomainType) == vint && (int___ge__(Heap, int___unbox__(Heap, invRecv1(o_4)), 0) && int___lt__(Heap, int___unbox__(Heap, invRecv1(o_4)), list___len__(Heap, Heap[marked_execution_tree, Node_children])))) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> list___getitem__(Heap, Heap[marked_execution_tree, Node_children], invRecv1(o_4)) == o_4) && QPMask[o_4, Node_function_name] == Mask[o_4, Node_function_name] + FullPerm) && (!((((typeof(invRecv1(o_4)): PyTypeDomainType) == vint && (int___ge__(Heap, int___unbox__(Heap, invRecv1(o_4)), 0) && int___lt__(Heap, int___unbox__(Heap, invRecv1(o_4)), list___len__(Heap, Heap[marked_execution_tree, Node_children])))) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, Node_function_name] == Mask[o_4, Node_function_name])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Node_function_name] }
+        ((((typeof(invRecv1(o_9)): PyTypeDomainType) == vint && (int___ge__(Heap, int___unbox__(Heap, invRecv1(o_9)), 0) && int___lt__(Heap, int___unbox__(Heap, invRecv1(o_9)), list___len__(Heap, Heap[marked_execution_tree, Node_children])))) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> list___getitem__(Heap, Heap[marked_execution_tree, Node_children], invRecv1(o_9)) == o_9) && QPMask[o_9, Node_function_name] == Mask[o_9, Node_function_name] + FullPerm) && (!((((typeof(invRecv1(o_9)): PyTypeDomainType) == vint && (int___ge__(Heap, int___unbox__(Heap, invRecv1(o_9)), 0) && int___lt__(Heap, int___unbox__(Heap, invRecv1(o_9)), list___len__(Heap, Heap[marked_execution_tree, Node_children])))) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, Node_function_name] == Mask[o_9, Node_function_name])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Node_function_name ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Node_function_name ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:43:28
+; Started: 2025-01-26 21:32:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1843,7 +1843,7 @@
 (check-sat)
 ; unsat
 (pop) ; 3
-; 0.04s
+; 0.05s
 ; (get-info :all-statistics)
 (assert (Map_equal m1@11@01 (Map_update m1@11@01 4 true)))
 ; [exec]
@@ -2184,7 +2184,7 @@
 (check-sat)
 ; unsat
 (pop) ; 3
-; 0.04s
+; 0.05s
 ; (get-info :all-statistics)
 (assert (Map_equal (Map_apply m@14@01 2) (Map_update (Map_update (Map_update (Map_update (as Map_empty  Map<Int~_Bool>) 0 false) 1 false) 2 true) 3 false)))
 ; [exec]
@@ -2379,7 +2379,7 @@
       (= (inv@29@01 (Map_apply m@23@01 k@28@01)) k@28@01)
       (img@30@01 (Map_apply m@23@01 k@28@01))))
   :pattern ((Set_in k@28@01 (Map_domain m@23@01)))
-  :qid |quant-u-22329|)))
+  :qid |quant-u-8870|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@30@01 r) (Set_in (inv@29@01 r) (Map_domain m@23@01)))
@@ -2471,7 +2471,7 @@
       (pTaken@31@01 r))
     $Perm.No)
   
-  :qid |quant-u-22331|))))
+  :qid |quant-u-8872|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2483,7 +2483,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@31@01 r) $Perm.No)
   
-  :qid |quant-u-22332|))))
+  :qid |quant-u-8873|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2498,7 +2498,7 @@
     (= r (Map_apply m@23@01 x@24@01))
     (= (- $Perm.Write (pTaken@31@01 r)) $Perm.No))
   
-  :qid |quant-u-22333|))))
+  :qid |quant-u-8874|))))
 (check-sat)
 ; unsat
 (pop) ; 4

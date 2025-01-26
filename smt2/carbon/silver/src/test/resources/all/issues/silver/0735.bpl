@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:00
+// Date:         2025-01-26 21:42:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0735.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0735-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_12: Ref, f_16: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_12, f_16] }
-  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_16], $allocated]
+axiom (forall o_15: Ref, f_23: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_15, f_23] }
+  Heap[o_15, $allocated] ==> Heap[Heap[o_15, f_23], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -41,45 +41,45 @@ function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 function  SumHeap(Heap: HeapType, Heap1: HeapType, mask1: MaskType, Heap2: HeapType, mask2: MaskType): bool;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref, f_37: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, f_37] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_46, f_37) ==> Heap[o_46, f_37] == ExhaleHeap[o_46, f_37]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_53: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_53] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_53) ==> Heap[o_41, f_53] == ExhaleHeap[o_41, f_53]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> Heap[null, PredicateMaskField(pm_f_22)] == ExhaleHeap[null, PredicateMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> Heap[null, PredicateMaskField(pm_f_20)] == ExhaleHeap[null, PredicateMaskField(pm_f_20)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> Heap[null, WandMaskField(pm_f_22)] == ExhaleHeap[null, WandMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> Heap[null, WandMaskField(pm_f_20)] == ExhaleHeap[null, WandMaskField(pm_f_20)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_46, $allocated] ==> ExhaleHeap[o_46, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_24: (Field A B), v: B ::
-  { Heap[o_12, f_24:=v] }
-  succHeap(Heap, Heap[o_12, f_24:=v])
+axiom (forall <A, B> Heap: HeapType, o_15: Ref, f_54: (Field A B), v: B ::
+  { Heap[o_15, f_54:=v] }
+  succHeap(Heap, Heap[o_15, f_54:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -102,46 +102,46 @@ axiom (forall Heap0: HeapType, Heap1: HeapType, Heap2: HeapType ::
   succHeapTrans(Heap0, Heap1) && succHeap(Heap1, Heap2) ==> succHeapTrans(Heap0, Heap2)
 );
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_34: Ref, f_40: (Field A B) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_34, f_40] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_34, f_40) ==> Heap[o_34, f_40] == ExhaleHeap[o_34, f_40]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref, f_20: (Field A B) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, f_20] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_13, f_20) ==> Heap[o_13, f_20] == ExhaleHeap[o_13, f_20]
 );
 // Frame all predicate mask locations of predicates with direct permission. But don't propagate information  of locations that are not known-folded to allow for equating with multiple different (but compatible) heaps
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_16), ExhaleHeap[null, PredicateMaskField(pm_f_16)] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsPredicateField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[null, PredicateMaskField(pm_f_16)][o2_16, f_40] }
-    Heap[null, PredicateMaskField(pm_f_16)][o2_16, f_40] ==> ExhaleHeap[null, PredicateMaskField(pm_f_16)][o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4), ExhaleHeap[null, PredicateMaskField(pm_f_4)] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[null, PredicateMaskField(pm_f_4)][o2_4, f_20] }
+    Heap[null, PredicateMaskField(pm_f_4)][o2_4, f_20] ==> ExhaleHeap[null, PredicateMaskField(pm_f_4)][o2_4, f_20]
   )
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_16) }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsPredicateField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[o2_16, f_40] }
-    Heap[null, PredicateMaskField(pm_f_16)][o2_16, f_40] ==> Heap[o2_16, f_40] == ExhaleHeap[o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4) }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[o2_4, f_20] }
+    Heap[null, PredicateMaskField(pm_f_4)][o2_4, f_20] ==> Heap[o2_4, f_20] == ExhaleHeap[o2_4, f_20]
   )
 );
 // Frame all wand mask locations of wands with direct permission (but don't propagate information about locations that are not known-folded)
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_16), ExhaleHeap[null, WandMaskField(pm_f_16)] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsWandField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[null, WandMaskField(pm_f_16)][o2_16, f_40] }
-    Heap[null, WandMaskField(pm_f_16)][o2_16, f_40] ==> ExhaleHeap[null, WandMaskField(pm_f_16)][o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4), ExhaleHeap[null, WandMaskField(pm_f_4)] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[null, WandMaskField(pm_f_4)][o2_4, f_20] }
+    Heap[null, WandMaskField(pm_f_4)][o2_4, f_20] ==> ExhaleHeap[null, WandMaskField(pm_f_4)][o2_4, f_20]
   )
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_16) }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsWandField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[o2_16, f_40] }
-    Heap[null, WandMaskField(pm_f_16)][o2_16, f_40] ==> Heap[o2_16, f_40] == ExhaleHeap[o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4) }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[o2_4, f_20] }
+    Heap[null, WandMaskField(pm_f_4)][o2_4, f_20] ==> Heap[o2_4, f_20] == ExhaleHeap[o2_4, f_20]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_34: Ref ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_34, $allocated] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> Heap[o_34, $allocated] ==> ExhaleHeap[o_34, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, $allocated] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> Heap[o_13, $allocated] ==> ExhaleHeap[o_13, $allocated]
 );
 // ==================================================
 // Sum of heaps
@@ -911,13 +911,13 @@ function  issubtype(sub: PyTypeDomainType, super: PyTypeDomainType): bool;
 function  isnotsubtype(sub: PyTypeDomainType, super: PyTypeDomainType): bool;
 
 // Translation of domain function tuple_args
-function  tuple_args(t_9: PyTypeDomainType): Seq PyTypeDomainType;
+function  tuple_args(t_3: PyTypeDomainType): Seq PyTypeDomainType;
 
 // Translation of domain function typeof
 function  typeof(obj: Ref): PyTypeDomainType;
 
 // Translation of domain function get_basic
-function  get_basic(t_9: PyTypeDomainType): PyTypeDomainType;
+function  get_basic(t_3: PyTypeDomainType): PyTypeDomainType;
 
 // Translation of domain function union_type_1
 function  union_type_1(arg_1_12: PyTypeDomainType): PyTypeDomainType;
@@ -947,7 +947,7 @@ function  list_arg(typ: PyTypeDomainType, index_1: int): PyTypeDomainType;
 const unique set_basic: PyTypeDomainType;
 
 // Translation of domain function set
-function  set_1(arg0: PyTypeDomainType): PyTypeDomainType;
+function  set(arg0: PyTypeDomainType): PyTypeDomainType;
 
 // Translation of domain function set_arg
 function  set_arg(typ: PyTypeDomainType, index_1: int): PyTypeDomainType;
@@ -1103,15 +1103,15 @@ axiom (forall sub_1: PyTypeDomainType, middle: PyTypeDomainType, super_1: PyType
 );
 
 // Translation of domain axiom tuple_arg_def
-axiom (forall seq_1: (Seq PyTypeDomainType), i: int, Z_1: PyTypeDomainType ::
-  { (tuple(seq_1): PyTypeDomainType), (tuple_arg(Z_1, i): PyTypeDomainType) }
-  (issubtype(Z_1, (tuple(seq_1): PyTypeDomainType)): bool) ==> (issubtype((tuple_arg(Z_1, i): PyTypeDomainType), Seq#Index(seq_1, i)): bool)
+axiom (forall seq: (Seq PyTypeDomainType), i: int, Z_1: PyTypeDomainType ::
+  { (tuple(seq): PyTypeDomainType), (tuple_arg(Z_1, i): PyTypeDomainType) }
+  (issubtype(Z_1, (tuple(seq): PyTypeDomainType)): bool) ==> (issubtype((tuple_arg(Z_1, i): PyTypeDomainType), Seq#Index(seq, i)): bool)
 );
 
 // Translation of domain axiom tuple_args_def
-axiom (forall seq_1: (Seq PyTypeDomainType), Z_1: PyTypeDomainType ::
-  { (issubtype(Z_1, (tuple(seq_1): PyTypeDomainType)): bool) }
-  (issubtype(Z_1, (tuple(seq_1): PyTypeDomainType)): bool) ==> Seq#Length((tuple_args(Z_1): Seq PyTypeDomainType)) == Seq#Length(seq_1)
+axiom (forall seq: (Seq PyTypeDomainType), Z_1: PyTypeDomainType ::
+  { (issubtype(Z_1, (tuple(seq): PyTypeDomainType)): bool) }
+  (issubtype(Z_1, (tuple(seq): PyTypeDomainType)): bool) ==> Seq#Length((tuple_args(Z_1): Seq PyTypeDomainType)) == Seq#Length(seq)
 );
 
 // Translation of domain axiom tuple_self_subtype
@@ -1124,51 +1124,51 @@ axiom (forall seq1: (Seq PyTypeDomainType), seq2: (Seq PyTypeDomainType) ::
 );
 
 // Translation of domain axiom union_subtype_1
-axiom (forall arg_1_2: PyTypeDomainType, X_1: PyTypeDomainType ::
-  { (issubtype(X_1, (union_type_1(arg_1_2): PyTypeDomainType)): bool) }
-  (issubtype(X_1, (union_type_1(arg_1_2): PyTypeDomainType)): bool) == (issubtype(X_1, arg_1_2): bool)
+axiom (forall arg_1: PyTypeDomainType, X: PyTypeDomainType ::
+  { (issubtype(X, (union_type_1(arg_1): PyTypeDomainType)): bool) }
+  (issubtype(X, (union_type_1(arg_1): PyTypeDomainType)): bool) == (issubtype(X, arg_1): bool)
 );
 
 // Translation of domain axiom union_subtype_2
-axiom (forall arg_1_2: PyTypeDomainType, arg_2_1: PyTypeDomainType, X_1: PyTypeDomainType ::
-  { (issubtype(X_1, (union_type_2(arg_1_2, arg_2_1): PyTypeDomainType)): bool) }
-  (issubtype(X_1, (union_type_2(arg_1_2, arg_2_1): PyTypeDomainType)): bool) == ((issubtype(X_1, arg_1_2): bool) || (issubtype(X_1, arg_2_1): bool))
+axiom (forall arg_1: PyTypeDomainType, arg_2: PyTypeDomainType, X: PyTypeDomainType ::
+  { (issubtype(X, (union_type_2(arg_1, arg_2): PyTypeDomainType)): bool) }
+  (issubtype(X, (union_type_2(arg_1, arg_2): PyTypeDomainType)): bool) == ((issubtype(X, arg_1): bool) || (issubtype(X, arg_2): bool))
 );
 
 // Translation of domain axiom union_subtype_3
-axiom (forall arg_1_2: PyTypeDomainType, arg_2_1: PyTypeDomainType, arg_3_1: PyTypeDomainType, X_1: PyTypeDomainType ::
-  { (issubtype(X_1, (union_type_3(arg_1_2, arg_2_1, arg_3_1): PyTypeDomainType)): bool) }
-  (issubtype(X_1, (union_type_3(arg_1_2, arg_2_1, arg_3_1): PyTypeDomainType)): bool) == ((issubtype(X_1, arg_1_2): bool) || ((issubtype(X_1, arg_2_1): bool) || (issubtype(X_1, arg_3_1): bool)))
+axiom (forall arg_1: PyTypeDomainType, arg_2: PyTypeDomainType, arg_3: PyTypeDomainType, X: PyTypeDomainType ::
+  { (issubtype(X, (union_type_3(arg_1, arg_2, arg_3): PyTypeDomainType)): bool) }
+  (issubtype(X, (union_type_3(arg_1, arg_2, arg_3): PyTypeDomainType)): bool) == ((issubtype(X, arg_1): bool) || ((issubtype(X, arg_2): bool) || (issubtype(X, arg_3): bool)))
 );
 
 // Translation of domain axiom union_subtype_4
-axiom (forall arg_1_2: PyTypeDomainType, arg_2_1: PyTypeDomainType, arg_3_1: PyTypeDomainType, arg_4_1: PyTypeDomainType, X_1: PyTypeDomainType ::
-  { (issubtype(X_1, (union_type_4(arg_1_2, arg_2_1, arg_3_1, arg_4_1): PyTypeDomainType)): bool) }
-  (issubtype(X_1, (union_type_4(arg_1_2, arg_2_1, arg_3_1, arg_4_1): PyTypeDomainType)): bool) == ((issubtype(X_1, arg_1_2): bool) || ((issubtype(X_1, arg_2_1): bool) || ((issubtype(X_1, arg_3_1): bool) || (issubtype(X_1, arg_4_1): bool))))
+axiom (forall arg_1: PyTypeDomainType, arg_2: PyTypeDomainType, arg_3: PyTypeDomainType, arg_4: PyTypeDomainType, X: PyTypeDomainType ::
+  { (issubtype(X, (union_type_4(arg_1, arg_2, arg_3, arg_4): PyTypeDomainType)): bool) }
+  (issubtype(X, (union_type_4(arg_1, arg_2, arg_3, arg_4): PyTypeDomainType)): bool) == ((issubtype(X, arg_1): bool) || ((issubtype(X, arg_2): bool) || ((issubtype(X, arg_3): bool) || (issubtype(X, arg_4): bool))))
 );
 
 // Translation of domain axiom subtype_union_1
-axiom (forall arg_1_2: PyTypeDomainType, X_1: PyTypeDomainType ::
-  { (issubtype((union_type_1(arg_1_2): PyTypeDomainType), X_1): bool) }
-  (issubtype((union_type_1(arg_1_2): PyTypeDomainType), X_1): bool) == (issubtype(arg_1_2, X_1): bool)
+axiom (forall arg_1: PyTypeDomainType, X: PyTypeDomainType ::
+  { (issubtype((union_type_1(arg_1): PyTypeDomainType), X): bool) }
+  (issubtype((union_type_1(arg_1): PyTypeDomainType), X): bool) == (issubtype(arg_1, X): bool)
 );
 
 // Translation of domain axiom subtype_union_2
-axiom (forall arg_1_2: PyTypeDomainType, arg_2_1: PyTypeDomainType, X_1: PyTypeDomainType ::
-  { (issubtype((union_type_2(arg_1_2, arg_2_1): PyTypeDomainType), X_1): bool) }
-  (issubtype((union_type_2(arg_1_2, arg_2_1): PyTypeDomainType), X_1): bool) == ((issubtype(arg_1_2, X_1): bool) && (issubtype(arg_2_1, X_1): bool))
+axiom (forall arg_1: PyTypeDomainType, arg_2: PyTypeDomainType, X: PyTypeDomainType ::
+  { (issubtype((union_type_2(arg_1, arg_2): PyTypeDomainType), X): bool) }
+  (issubtype((union_type_2(arg_1, arg_2): PyTypeDomainType), X): bool) == ((issubtype(arg_1, X): bool) && (issubtype(arg_2, X): bool))
 );
 
 // Translation of domain axiom subtype_union_3
-axiom (forall arg_1_2: PyTypeDomainType, arg_2_1: PyTypeDomainType, arg_3_1: PyTypeDomainType, X_1: PyTypeDomainType ::
-  { (issubtype((union_type_3(arg_1_2, arg_2_1, arg_3_1): PyTypeDomainType), X_1): bool) }
-  (issubtype((union_type_3(arg_1_2, arg_2_1, arg_3_1): PyTypeDomainType), X_1): bool) == ((issubtype(arg_1_2, X_1): bool) && ((issubtype(arg_2_1, X_1): bool) && (issubtype(arg_3_1, X_1): bool)))
+axiom (forall arg_1: PyTypeDomainType, arg_2: PyTypeDomainType, arg_3: PyTypeDomainType, X: PyTypeDomainType ::
+  { (issubtype((union_type_3(arg_1, arg_2, arg_3): PyTypeDomainType), X): bool) }
+  (issubtype((union_type_3(arg_1, arg_2, arg_3): PyTypeDomainType), X): bool) == ((issubtype(arg_1, X): bool) && ((issubtype(arg_2, X): bool) && (issubtype(arg_3, X): bool)))
 );
 
 // Translation of domain axiom subtype_union_4
-axiom (forall arg_1_2: PyTypeDomainType, arg_2_1: PyTypeDomainType, arg_3_1: PyTypeDomainType, arg_4_1: PyTypeDomainType, X_1: PyTypeDomainType ::
-  { (issubtype((union_type_4(arg_1_2, arg_2_1, arg_3_1, arg_4_1): PyTypeDomainType), X_1): bool) }
-  (issubtype((union_type_4(arg_1_2, arg_2_1, arg_3_1, arg_4_1): PyTypeDomainType), X_1): bool) == ((issubtype(arg_1_2, X_1): bool) && ((issubtype(arg_2_1, X_1): bool) && ((issubtype(arg_3_1, X_1): bool) && (issubtype(arg_4_1, X_1): bool))))
+axiom (forall arg_1: PyTypeDomainType, arg_2: PyTypeDomainType, arg_3: PyTypeDomainType, arg_4: PyTypeDomainType, X: PyTypeDomainType ::
+  { (issubtype((union_type_4(arg_1, arg_2, arg_3, arg_4): PyTypeDomainType), X): bool) }
+  (issubtype((union_type_4(arg_1, arg_2, arg_3, arg_4): PyTypeDomainType), X): bool) == ((issubtype(arg_1, X): bool) && ((issubtype(arg_2, X): bool) && ((issubtype(arg_3, X): bool) && (issubtype(arg_4, X): bool))))
 );
 
 // Translation of domain axiom subtype_list
@@ -1185,14 +1185,14 @@ axiom (forall Z_1: PyTypeDomainType, arg0_1: PyTypeDomainType ::
 
 // Translation of domain axiom subtype_set
 axiom (forall var0: PyTypeDomainType ::
-  { (set_1(var0): PyTypeDomainType) }
-  (extends_((set_1(var0): PyTypeDomainType), object): bool) && (get_basic((set_1(var0): PyTypeDomainType)): PyTypeDomainType) == set_basic
+  { (set(var0): PyTypeDomainType) }
+  (extends_((set(var0): PyTypeDomainType), object): bool) && (get_basic((set(var0): PyTypeDomainType)): PyTypeDomainType) == set_basic
 );
 
 // Translation of domain axiom set_args0
 axiom (forall Z_1: PyTypeDomainType, arg0_1: PyTypeDomainType ::
-  { (set_1(arg0_1): PyTypeDomainType), (set_arg(Z_1, 0): PyTypeDomainType) }
-  (issubtype(Z_1, (set_1(arg0_1): PyTypeDomainType)): bool) ==> (set_arg(Z_1, 0): PyTypeDomainType) == arg0_1
+  { (set(arg0_1): PyTypeDomainType), (set_arg(Z_1, 0): PyTypeDomainType) }
+  (issubtype(Z_1, (set(arg0_1): PyTypeDomainType)): bool) ==> (set_arg(Z_1, 0): PyTypeDomainType) == arg0_1
 );
 
 // Translation of domain axiom subtype_dict
@@ -1326,7 +1326,7 @@ axiom (extends_(__prim__Seq_type, object): bool) && (get_basic(__prim__Seq_type)
 type SIFDomainDomainType T;
 
 // Translation of domain function Low
-function  Low<T>(x_8: T): bool;
+function  Low<T>(x_37: T): bool;
 
 // Translation of domain axiom low_true
 axiom (forall <T> x: T ::
@@ -1345,7 +1345,7 @@ type _list_ce_helperDomainType;
 function  seq_ref_length(___s: (Seq Ref)): int;
 
 // Translation of domain function seq_ref_index
-function  seq_ref_index(___s: (Seq Ref), i_79: int): Ref;
+function  seq_ref_index(___s: (Seq Ref), i_6: int): Ref;
 
 // Translation of domain axiom relate_length
 axiom (forall ___s_1: (Seq Ref) ::
@@ -1367,16 +1367,16 @@ axiom (forall ___s_1: (Seq Ref), ___i: int ::
 type Measure$DomainType;
 
 // Translation of domain function Measure$create
-function  Measure$create(guard: bool, key_6: Ref, value_2: int): Measure$DomainType;
+function  Measure$create(guard: bool, key: Ref, value_2: int): Measure$DomainType;
 
 // Translation of domain function Measure$guard
-function  Measure$guard(m_18: Measure$DomainType): bool;
+function  Measure$guard(m_19: Measure$DomainType): bool;
 
 // Translation of domain function Measure$key
-function  Measure$key(m_18: Measure$DomainType): Ref;
+function  Measure$key(m_19: Measure$DomainType): Ref;
 
 // Translation of domain function Measure$value
-function  Measure$value(m_18: Measure$DomainType): int;
+function  Measure$value(m_19: Measure$DomainType): int;
 
 // Translation of domain axiom Measure$A0
 axiom (forall g_1: bool, k: Ref, v_2: int ::
@@ -1404,7 +1404,7 @@ axiom (forall g_1: bool, k: Ref, v_2: int ::
 type __MSHelperDomainType T$;
 
 // Translation of domain function __toMS
-function  __toMS<T$>(s_17: (Seq T$)): MultiSet T$;
+function  __toMS<T$>(s: (Seq T$)): MultiSet T$;
 
 // Translation of domain axiom __toMS_def_1
 axiom (forall <T$>  ::
@@ -1438,7 +1438,7 @@ axiom (forall <T$> __ss1: (Seq T$) ::
 type _NameDomainType;
 
 // Translation of domain function _combine
-function  _combine(n1_12: _NameDomainType, n2_8: _NameDomainType): _NameDomainType;
+function  _combine(n1_6: _NameDomainType, n2_6: _NameDomainType): _NameDomainType;
 
 // Translation of domain function _single
 function  _single(n_84: int): _NameDomainType;
@@ -1480,9 +1480,9 @@ axiom (forall i: int ::
 );
 
 // Translation of domain axiom decompose_combined
-axiom (forall n1_1: _NameDomainType, n2: _NameDomainType ::
-  { (_combine(n1_1, n2): _NameDomainType) }
-  (_get_combined_prefix((_combine(n1_1, n2): _NameDomainType)): _NameDomainType) == n1_1 && (_get_combined_name((_combine(n1_1, n2): _NameDomainType)): _NameDomainType) == n2
+axiom (forall n1: _NameDomainType, n2: _NameDomainType ::
+  { (_combine(n1, n2): _NameDomainType) }
+  (_get_combined_prefix((_combine(n1, n2): _NameDomainType)): _NameDomainType) == n1 && (_get_combined_name((_combine(n1, n2): _NameDomainType)): _NameDomainType) == n2
 );
 
 // Translation of domain axiom compose_combined
@@ -1492,9 +1492,9 @@ axiom (forall n: _NameDomainType ::
 );
 
 // Translation of domain axiom type_of_composed
-axiom (forall n1_1: _NameDomainType, n2: _NameDomainType ::
-  { (_combine(n1_1, n2): _NameDomainType) }
-  !(_name_type((_combine(n1_1, n2): _NameDomainType)): bool)
+axiom (forall n1: _NameDomainType, n2: _NameDomainType ::
+  { (_combine(n1, n2): _NameDomainType) }
+  !(_name_type((_combine(n1, n2): _NameDomainType)): bool)
 );
 
 // Translation of domain axiom type_is_single
@@ -1581,32 +1581,32 @@ axiom !IsWandField(MustReleaseUnbounded);
 // ==================================================
 
 // Uninterpreted function definitions
-function  _isDefined(Heap: HeapType, id_2: int): bool;
-function  _isDefined'(Heap: HeapType, id_2: int): bool;
-axiom (forall Heap: HeapType, id_2: int ::
-  { _isDefined(Heap, id_2) }
-  _isDefined(Heap, id_2) == _isDefined'(Heap, id_2) && dummyFunction(_isDefined#triggerStateless(id_2))
+function  _isDefined(Heap: HeapType, id_1: int): bool;
+function  _isDefined'(Heap: HeapType, id_1: int): bool;
+axiom (forall Heap: HeapType, id_1: int ::
+  { _isDefined(Heap, id_1) }
+  _isDefined(Heap, id_1) == _isDefined'(Heap, id_1) && dummyFunction(_isDefined#triggerStateless(id_1))
 );
-axiom (forall Heap: HeapType, id_2: int ::
-  { _isDefined'(Heap, id_2) }
-  dummyFunction(_isDefined#triggerStateless(id_2))
+axiom (forall Heap: HeapType, id_1: int ::
+  { _isDefined'(Heap, id_1) }
+  dummyFunction(_isDefined#triggerStateless(id_1))
 );
 
 // Framing axioms
-function  _isDefined#frame(frame: FrameType, id_2: int): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, id_2: int ::
-  { state(Heap, Mask), _isDefined'(Heap, id_2) }
-  state(Heap, Mask) ==> _isDefined'(Heap, id_2) == _isDefined#frame(EmptyFrame, id_2)
+function  _isDefined#frame(frame: FrameType, id_1: int): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, id_1: int ::
+  { state(Heap, Mask), _isDefined'(Heap, id_1) }
+  state(Heap, Mask) ==> _isDefined'(Heap, id_1) == _isDefined#frame(EmptyFrame, id_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  _isDefined#trigger(frame: FrameType, id_2: int): bool;
+function  _isDefined#trigger(frame: FrameType, id_1: int): bool;
 
 // State-independent trigger function
-function  _isDefined#triggerStateless(id_2: int): bool;
+function  _isDefined#triggerStateless(id_1: int): bool;
 
 // Check contract well-formedness and postcondition
-procedure _isDefined#definedness(id_2: int) returns (Result: bool)
+procedure _isDefined#definedness(id_1: int) returns (Result: bool)
   modifies Heap, Mask;
 {
   
@@ -1660,8 +1660,8 @@ function  __prim__int___box__#triggerStateless(prim: int): Ref;
 procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1677,9 +1677,9 @@ procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
     // -- Check definedness of int___unbox__(result) == prim
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0735.vpr@609.11--609.32) [221456]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0735.vpr@609.11--609.32) [55904]"}
           (issubtype((typeof(Result): PyTypeDomainType), vint): bool);
         // Stop execution
         assume false;
@@ -1693,42 +1693,42 @@ procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
 // ==================================================
 
 // Uninterpreted function definitions
-function  int___unbox__(Heap: HeapType, box_1: Ref): int;
-function  int___unbox__'(Heap: HeapType, box_1: Ref): int;
-axiom (forall Heap: HeapType, box_1: Ref ::
-  { int___unbox__(Heap, box_1) }
-  int___unbox__(Heap, box_1) == int___unbox__'(Heap, box_1) && dummyFunction(int___unbox__#triggerStateless(box_1))
+function  int___unbox__(Heap: HeapType, box: Ref): int;
+function  int___unbox__'(Heap: HeapType, box: Ref): int;
+axiom (forall Heap: HeapType, box: Ref ::
+  { int___unbox__(Heap, box) }
+  int___unbox__(Heap, box) == int___unbox__'(Heap, box) && dummyFunction(int___unbox__#triggerStateless(box))
 );
-axiom (forall Heap: HeapType, box_1: Ref ::
-  { int___unbox__'(Heap, box_1) }
-  dummyFunction(int___unbox__#triggerStateless(box_1))
+axiom (forall Heap: HeapType, box: Ref ::
+  { int___unbox__'(Heap, box) }
+  dummyFunction(int___unbox__#triggerStateless(box))
 );
 
 // Framing axioms
-function  int___unbox__#frame(frame: FrameType, box_1: Ref): int;
-axiom (forall Heap: HeapType, Mask: MaskType, box_1: Ref ::
-  { state(Heap, Mask), int___unbox__'(Heap, box_1) }
-  state(Heap, Mask) ==> int___unbox__'(Heap, box_1) == int___unbox__#frame(EmptyFrame, box_1)
+function  int___unbox__#frame(frame: FrameType, box: Ref): int;
+axiom (forall Heap: HeapType, Mask: MaskType, box: Ref ::
+  { state(Heap, Mask), int___unbox__'(Heap, box) }
+  state(Heap, Mask) ==> int___unbox__'(Heap, box) == int___unbox__#frame(EmptyFrame, box)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, box_1: Ref ::
-  { state(Heap, Mask), int___unbox__'(Heap, box_1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || int___unbox__#trigger(EmptyFrame, box_1)) ==> (issubtype((typeof(box_1): PyTypeDomainType), vint): bool) ==> !(issubtype((typeof(box_1): PyTypeDomainType), vbool): bool) ==> __prim__int___box__'(Heap, int___unbox__'(Heap, box_1)) == box_1
+axiom (forall Heap: HeapType, Mask: MaskType, box: Ref ::
+  { state(Heap, Mask), int___unbox__'(Heap, box) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || int___unbox__#trigger(EmptyFrame, box)) ==> (issubtype((typeof(box): PyTypeDomainType), vint): bool) ==> !(issubtype((typeof(box): PyTypeDomainType), vbool): bool) ==> __prim__int___box__'(Heap, int___unbox__'(Heap, box)) == box
 );
-axiom (forall Heap: HeapType, Mask: MaskType, box_1: Ref ::
-  { state(Heap, Mask), int___unbox__'(Heap, box_1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || int___unbox__#trigger(EmptyFrame, box_1)) ==> (issubtype((typeof(box_1): PyTypeDomainType), vint): bool) ==> (issubtype((typeof(box_1): PyTypeDomainType), vbool): bool) ==> __prim__bool___box__'(Heap, int___unbox__'(Heap, box_1) != 0) == box_1
+axiom (forall Heap: HeapType, Mask: MaskType, box: Ref ::
+  { state(Heap, Mask), int___unbox__'(Heap, box) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || int___unbox__#trigger(EmptyFrame, box)) ==> (issubtype((typeof(box): PyTypeDomainType), vint): bool) ==> (issubtype((typeof(box): PyTypeDomainType), vbool): bool) ==> __prim__bool___box__'(Heap, int___unbox__'(Heap, box) != 0) == box
 );
 
 // Trigger function (controlling recursive postconditions)
-function  int___unbox__#trigger(frame: FrameType, box_1: Ref): bool;
+function  int___unbox__#trigger(frame: FrameType, box: Ref): bool;
 
 // State-independent trigger function
-function  int___unbox__#triggerStateless(box_1: Ref): int;
+function  int___unbox__#triggerStateless(box: Ref): int;
 
 // Check contract well-formedness and postcondition
-procedure int___unbox__#definedness(box_1: Ref) returns (Result: int)
+procedure int___unbox__#definedness(box: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -1736,15 +1736,15 @@ procedure int___unbox__#definedness(box_1: Ref) returns (Result: int)
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
-    assume Heap[box_1, $allocated];
+    assume Heap[box, $allocated];
     assume AssumeFunctionsAbove == 0;
   
   // -- Inhaling precondition (with checking)
-    assume (issubtype((typeof(box_1): PyTypeDomainType), vint): bool);
+    assume (issubtype((typeof(box): PyTypeDomainType), vint): bool);
     assume state(Heap, Mask);
   
   // -- Checking definedness of postcondition (no body)
-    if (!(issubtype((typeof(box_1): PyTypeDomainType), vbool): bool)) {
+    if (!(issubtype((typeof(box): PyTypeDomainType), vbool): bool)) {
       assume state(Heap, Mask);
       
       // -- Check definedness of __prim__int___box__(result) == box
@@ -1752,10 +1752,10 @@ procedure int___unbox__#definedness(box_1: Ref) returns (Result: int)
           // Stop execution
           assume false;
         }
-      assume __prim__int___box__(Heap, Result) == box_1;
+      assume __prim__int___box__(Heap, Result) == box;
     }
     assume state(Heap, Mask);
-    if ((issubtype((typeof(box_1): PyTypeDomainType), vbool): bool)) {
+    if ((issubtype((typeof(box): PyTypeDomainType), vbool): bool)) {
       assume state(Heap, Mask);
       
       // -- Check definedness of __prim__bool___box__(result != 0) == box
@@ -1763,7 +1763,7 @@ procedure int___unbox__#definedness(box_1: Ref) returns (Result: int)
           // Stop execution
           assume false;
         }
-      assume __prim__bool___box__(Heap, Result != 0) == box_1;
+      assume __prim__bool___box__(Heap, Result != 0) == box;
     }
     assume state(Heap, Mask);
 }
@@ -1815,8 +1815,8 @@ function  __prim__bool___box__#triggerStateless(prim: bool): Ref;
 procedure __prim__bool___box__#definedness(prim: bool) returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1832,9 +1832,9 @@ procedure __prim__bool___box__#definedness(prim: bool) returns (Result: Ref)
     // -- Check definedness of bool___unbox__(result) == prim
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function bool___unbox__ might not hold. Assertion issubtype(typeof(result), bool()) might not hold. (0735.vpr@624.11--624.33) [221457]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function bool___unbox__ might not hold. Assertion issubtype(typeof(result), bool()) might not hold. (0735.vpr@624.11--624.33) [55905]"}
           (issubtype((typeof(Result): PyTypeDomainType), vbool): bool);
         // Stop execution
         assume false;
@@ -1846,9 +1846,9 @@ procedure __prim__bool___box__#definedness(prim: bool) returns (Result: Ref)
     // -- Check definedness of int___unbox__(result) == (prim ? 1 : 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0735.vpr@625.11--625.32) [221458]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0735.vpr@625.11--625.32) [55906]"}
           (issubtype((typeof(Result): PyTypeDomainType), vint): bool);
         // Stop execution
         assume false;
@@ -1862,38 +1862,38 @@ procedure __prim__bool___box__#definedness(prim: bool) returns (Result: Ref)
 // ==================================================
 
 // Uninterpreted function definitions
-function  bool___unbox__(Heap: HeapType, box_1: Ref): bool;
-function  bool___unbox__'(Heap: HeapType, box_1: Ref): bool;
-axiom (forall Heap: HeapType, box_1: Ref ::
-  { bool___unbox__(Heap, box_1) }
-  bool___unbox__(Heap, box_1) == bool___unbox__'(Heap, box_1) && dummyFunction(bool___unbox__#triggerStateless(box_1))
+function  bool___unbox__(Heap: HeapType, box: Ref): bool;
+function  bool___unbox__'(Heap: HeapType, box: Ref): bool;
+axiom (forall Heap: HeapType, box: Ref ::
+  { bool___unbox__(Heap, box) }
+  bool___unbox__(Heap, box) == bool___unbox__'(Heap, box) && dummyFunction(bool___unbox__#triggerStateless(box))
 );
-axiom (forall Heap: HeapType, box_1: Ref ::
-  { bool___unbox__'(Heap, box_1) }
-  dummyFunction(bool___unbox__#triggerStateless(box_1))
+axiom (forall Heap: HeapType, box: Ref ::
+  { bool___unbox__'(Heap, box) }
+  dummyFunction(bool___unbox__#triggerStateless(box))
 );
 
 // Framing axioms
-function  bool___unbox__#frame(frame: FrameType, box_1: Ref): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, box_1: Ref ::
-  { state(Heap, Mask), bool___unbox__'(Heap, box_1) }
-  state(Heap, Mask) ==> bool___unbox__'(Heap, box_1) == bool___unbox__#frame(EmptyFrame, box_1)
+function  bool___unbox__#frame(frame: FrameType, box: Ref): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, box: Ref ::
+  { state(Heap, Mask), bool___unbox__'(Heap, box) }
+  state(Heap, Mask) ==> bool___unbox__'(Heap, box) == bool___unbox__#frame(EmptyFrame, box)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, box_1: Ref ::
-  { state(Heap, Mask), bool___unbox__'(Heap, box_1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || bool___unbox__#trigger(EmptyFrame, box_1)) ==> (issubtype((typeof(box_1): PyTypeDomainType), vbool): bool) ==> __prim__bool___box__'(Heap, bool___unbox__'(Heap, box_1)) == box_1
+axiom (forall Heap: HeapType, Mask: MaskType, box: Ref ::
+  { state(Heap, Mask), bool___unbox__'(Heap, box) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || bool___unbox__#trigger(EmptyFrame, box)) ==> (issubtype((typeof(box): PyTypeDomainType), vbool): bool) ==> __prim__bool___box__'(Heap, bool___unbox__'(Heap, box)) == box
 );
 
 // Trigger function (controlling recursive postconditions)
-function  bool___unbox__#trigger(frame: FrameType, box_1: Ref): bool;
+function  bool___unbox__#trigger(frame: FrameType, box: Ref): bool;
 
 // State-independent trigger function
-function  bool___unbox__#triggerStateless(box_1: Ref): bool;
+function  bool___unbox__#triggerStateless(box: Ref): bool;
 
 // Check contract well-formedness and postcondition
-procedure bool___unbox__#definedness(box_1: Ref) returns (Result: bool)
+procedure bool___unbox__#definedness(box: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   
@@ -1901,11 +1901,11 @@ procedure bool___unbox__#definedness(box_1: Ref) returns (Result: bool)
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
-    assume Heap[box_1, $allocated];
+    assume Heap[box, $allocated];
     assume AssumeFunctionsAbove == 0;
   
   // -- Inhaling precondition (with checking)
-    assume (issubtype((typeof(box_1): PyTypeDomainType), vbool): bool);
+    assume (issubtype((typeof(box): PyTypeDomainType), vbool): bool);
     assume state(Heap, Mask);
   
   // -- Checking definedness of postcondition (no body)
@@ -1916,7 +1916,7 @@ procedure bool___unbox__#definedness(box_1: Ref) returns (Result: bool)
         // Stop execution
         assume false;
       }
-    assume __prim__bool___box__(Heap, Result) == box_1;
+    assume __prim__bool___box__(Heap, Result) == box;
     assume state(Heap, Mask);
 }
 
@@ -2122,34 +2122,34 @@ axiom (forall Heap: HeapType, r_1: Ref ::
 // ==================================================
 
 type PredicateType__MaySet;
-function  _MaySet(rec: Ref, id_2: int): Field PredicateType__MaySet FrameType;
-function  _MaySet#sm(rec: Ref, id_2: int): Field PredicateType__MaySet PMaskType;
-axiom (forall rec: Ref, id_2: int ::
-  { PredicateMaskField(_MaySet(rec, id_2)) }
-  PredicateMaskField(_MaySet(rec, id_2)) == _MaySet#sm(rec, id_2)
+function  _MaySet(rec: Ref, id_1: int): Field PredicateType__MaySet FrameType;
+function  _MaySet#sm(rec: Ref, id_1: int): Field PredicateType__MaySet PMaskType;
+axiom (forall rec: Ref, id_1: int ::
+  { PredicateMaskField(_MaySet(rec, id_1)) }
+  PredicateMaskField(_MaySet(rec, id_1)) == _MaySet#sm(rec, id_1)
 );
-axiom (forall rec: Ref, id_2: int ::
-  { _MaySet(rec, id_2) }
-  IsPredicateField(_MaySet(rec, id_2))
+axiom (forall rec: Ref, id_1: int ::
+  { _MaySet(rec, id_1) }
+  IsPredicateField(_MaySet(rec, id_1))
 );
-axiom (forall rec: Ref, id_2: int ::
-  { _MaySet(rec, id_2) }
-  getPredWandId(_MaySet(rec, id_2)) == 3
+axiom (forall rec: Ref, id_1: int ::
+  { _MaySet(rec, id_1) }
+  getPredWandId(_MaySet(rec, id_1)) == 3
 );
 function  _MaySet#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  _MaySet#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall rec: Ref, id_2: int, rec2: Ref, id2: int ::
-  { _MaySet(rec, id_2), _MaySet(rec2, id2) }
-  _MaySet(rec, id_2) == _MaySet(rec2, id2) ==> rec == rec2 && id_2 == id2
+axiom (forall rec: Ref, id_1: int, rec2: Ref, id2: int ::
+  { _MaySet(rec, id_1), _MaySet(rec2, id2) }
+  _MaySet(rec, id_1) == _MaySet(rec2, id2) ==> rec == rec2 && id_1 == id2
 );
-axiom (forall rec: Ref, id_2: int, rec2: Ref, id2: int ::
-  { _MaySet#sm(rec, id_2), _MaySet#sm(rec2, id2) }
-  _MaySet#sm(rec, id_2) == _MaySet#sm(rec2, id2) ==> rec == rec2 && id_2 == id2
+axiom (forall rec: Ref, id_1: int, rec2: Ref, id2: int ::
+  { _MaySet#sm(rec, id_1), _MaySet#sm(rec2, id2) }
+  _MaySet#sm(rec, id_1) == _MaySet#sm(rec2, id2) ==> rec == rec2 && id_1 == id2
 );
 
-axiom (forall Heap: HeapType, rec: Ref, id_2: int ::
-  { _MaySet#trigger(Heap, _MaySet(rec, id_2)) }
-  _MaySet#everUsed(_MaySet(rec, id_2))
+axiom (forall Heap: HeapType, rec: Ref, id_1: int ::
+  { _MaySet#trigger(Heap, _MaySet(rec, id_1)) }
+  _MaySet#everUsed(_MaySet(rec, id_1))
 );
 
 // ==================================================
@@ -2160,29 +2160,29 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
   modifies Heap, Mask;
 {
   var __end_lblGuard: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var _r_1: Ref;
   var _r_1_2: Ref;
   var _r_1_4: Ref;
   var _r_1_6: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var _err: Ref;
   var r_1: Ref;
   var x_1: Ref;
   var _method_measures_155: (Seq Measure$DomainType);
-  var huh_1: int;
+  var huh: int;
   var __plugin_refute_nondet1: bool;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var __plugin_refute_nondet2: bool;
   var __plugin_refute_nondet3: bool;
   var __plugin_refute_nondet4: bool;
   var __plugin_refute_nondet5: bool;
   var __plugin_refute_nondet6: bool;
-  var Label__endMask: MaskType;
   var Label__endHeap: HeapType;
+  var Label__endMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2210,9 +2210,9 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
         // -- Check definedness of int___gt__(int___unbox__(x_0), 10)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_0), int()) might not hold. (0735.vpr@658.23--658.41) [221459]"}
+            ExhaleWellDef0Mask := Mask;
+            assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_0), int()) might not hold. (0735.vpr@658.23--658.41) [55907]"}
               (issubtype((typeof(x_0): PyTypeDomainType), vint): bool);
             // Stop execution
             assume false;
@@ -2228,7 +2228,7 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
         // -- Check definedness of (forperm _r_1: Ref [MustInvokeBounded(_r_1)] :: false)
           if (*) {
             if (HasDirectPerm(Mask, null, MustInvokeBounded(_r_1))) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access MustInvokeBounded(_r_1) (0735.vpr@659.12--664.65) [221460]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access MustInvokeBounded(_r_1) (0735.vpr@659.12--664.65) [55908]"}
                 HasDirectPerm(Mask, null, MustInvokeBounded(_r_1));
             }
             assume false;
@@ -2241,7 +2241,7 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
         // -- Check definedness of (forperm _r_1: Ref [MustInvokeUnbounded(_r_1)] :: false)
           if (*) {
             if (HasDirectPerm(Mask, null, MustInvokeUnbounded(_r_1_2))) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access MustInvokeUnbounded(_r_1) (0735.vpr@659.12--664.65) [221461]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access MustInvokeUnbounded(_r_1) (0735.vpr@659.12--664.65) [55909]"}
                 HasDirectPerm(Mask, null, MustInvokeUnbounded(_r_1_2));
             }
             assume false;
@@ -2254,7 +2254,7 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
         // -- Check definedness of (forperm _r_1: Ref [_r_1.MustReleaseBounded] :: false)
           if (*) {
             if (HasDirectPerm(Mask, _r_1_4, MustReleaseBounded)) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access _r_1.MustReleaseBounded (0735.vpr@659.12--664.65) [221462]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access _r_1.MustReleaseBounded (0735.vpr@659.12--664.65) [55910]"}
                 HasDirectPerm(Mask, _r_1_4, MustReleaseBounded);
             }
             assume false;
@@ -2267,7 +2267,7 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
         // -- Check definedness of (forperm _r_1: Ref [_r_1.MustReleaseUnbounded] :: false)
           if (*) {
             if (HasDirectPerm(Mask, _r_1_6, MustReleaseUnbounded)) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access _r_1.MustReleaseUnbounded (0735.vpr@659.12--664.65) [221463]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access _r_1.MustReleaseUnbounded (0735.vpr@659.12--664.65) [55911]"}
                 HasDirectPerm(Mask, _r_1_6, MustReleaseUnbounded);
             }
             assume false;
@@ -2292,9 +2292,9 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       // -- Check definedness of int___gt__(int___unbox__(x_0), 10)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_0), int()) might not hold. (0735.vpr@658.23--658.41) [221464]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_0), int()) might not hold. (0735.vpr@658.23--658.41) [55912]"}
             (issubtype((typeof(x_0): PyTypeDomainType), vint): bool);
           // Stop execution
           assume false;
@@ -2310,8 +2310,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[_err, $allocated];
@@ -2380,7 +2380,7 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
   
   // -- Translating statement: // id = 13
   // huh := 9 -- 0735.vpr@674.3--674.20
-    huh_1 := 9;
+    huh := 9;
     assume state(Heap, Mask);
   
   // -- Translating statement: if (__plugin_refute_nondet1) -- 0735.vpr@675.3--675.44
@@ -2388,15 +2388,15 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       
       // -- Translating statement: // id = 14
   // assert !int___gt__(int___unbox__(x_1), 0) -- 0735.vpr@675.3--675.44
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of !int___gt__(int___unbox__(x_1), 0)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-            assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_1), int()) might not hold. (0735.vpr@675.22--675.40) [221465]"}
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_1), int()) might not hold. (0735.vpr@675.22--675.40) [55913]"}
               (issubtype((typeof(x_1): PyTypeDomainType), vint): bool);
             // Stop execution
             assume false;
@@ -2405,7 +2405,7 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion !int___gt__(int___unbox__(x_1), 0) might not hold. (0735.vpr@675.10--675.44) [221466]"}
+        assert {:msg "  Assert might fail. Assertion !int___gt__(int___unbox__(x_1), 0) might not hold. (0735.vpr@675.10--675.44) [55914]"}
           !int___gt__(Heap, int___unbox__(Heap, x_1), 0);
         assume state(Heap, Mask);
       
@@ -2433,15 +2433,15 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       
       // -- Translating statement: // id = 18
   // assert int___gt__(int___unbox__(x_1), 0) -- 0735.vpr@677.3--677.43
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of int___gt__(int___unbox__(x_1), 0)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-            assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_1), int()) might not hold. (0735.vpr@677.21--677.39) [221467]"}
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_1), int()) might not hold. (0735.vpr@677.21--677.39) [55915]"}
               (issubtype((typeof(x_1): PyTypeDomainType), vint): bool);
             // Stop execution
             assume false;
@@ -2450,7 +2450,7 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion int___gt__(int___unbox__(x_1), 0) might not hold. (0735.vpr@677.10--677.43) [221468]"}
+        assert {:msg "  Assert might fail. Assertion int___gt__(int___unbox__(x_1), 0) might not hold. (0735.vpr@677.10--677.43) [55916]"}
           int___gt__(Heap, int___unbox__(Heap, x_1), 0);
         assume state(Heap, Mask);
       
@@ -2478,9 +2478,9 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       
       // -- Translating statement: // id = 22
   // assert false -- 0735.vpr@678.3--678.15
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (0735.vpr@678.10--678.15) [221469]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion false might not hold. (0735.vpr@678.10--678.15) [55917]"}
           false;
         assume state(Heap, Mask);
       
@@ -2508,8 +2508,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       
       // -- Translating statement: // id = 26
   // assert true -- 0735.vpr@680.3--680.14
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assume state(Heap, Mask);
       
       // -- Translating statement: // id = 27
@@ -2536,9 +2536,9 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       
       // -- Translating statement: // id = 30
   // assert false -- 0735.vpr@681.3--681.15
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (0735.vpr@681.10--681.15) [221471]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion false might not hold. (0735.vpr@681.10--681.15) [55919]"}
           false;
         assume state(Heap, Mask);
       
@@ -2566,9 +2566,9 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
     // -- Check definedness of int___gt__(int___unbox__(x_1), 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_1), int()) might not hold. (0735.vpr@682.18--682.36) [221472]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_1), int()) might not hold. (0735.vpr@682.18--682.36) [55920]"}
           (issubtype((typeof(x_1): PyTypeDomainType), vint): bool);
         // Stop execution
         assume false;
@@ -2608,9 +2608,9 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
           
           // -- Translating statement: // id = 37
   // assert false -- 0735.vpr@687.5--687.17
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion false might not hold. (0735.vpr@687.12--687.17) [221473]"}
+            ExhaleWellDef0Mask := Mask;
+            assert {:msg "  Assert might fail. Assertion false might not hold. (0735.vpr@687.12--687.17) [55921]"}
               false;
             assume state(Heap, Mask);
           
@@ -2662,8 +2662,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
   // -- Translating statement: // id = 43
   // label __end -- 0735.vpr@692.3--692.14
     __end:
-    Label__endMask := Mask;
     Label__endHeap := Heap;
+    Label__endMask := Mask;
     __end_lblGuard := true;
     assume state(Heap, Mask);
 }

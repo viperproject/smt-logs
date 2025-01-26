@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:55
+// Date:         2025-01-26 21:41:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/recursion.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/recursion-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -252,7 +252,7 @@ procedure fac#definedness(n: int) returns (Result: int)
           // Exhale precondition of function application
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function fac might not hold. Assertion n - 1 >= 0 might not hold. (recursion.vpr@9.19--9.29) [155689]"}
+          assert {:msg "  Precondition of function fac might not hold. Assertion n - 1 >= 0 might not hold. (recursion.vpr@9.19--9.29) [49722]"}
             n - 1 >= 0;
           // Stop execution
           assume false;
@@ -268,7 +268,7 @@ procedure fac#definedness(n: int) returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of fac might not hold. Assertion result >= 0 might not hold. (recursion.vpr@8.11--8.22) [155690]"}
+    assert {:msg "  Postcondition of fac might not hold. Assertion result >= 0 might not hold. (recursion.vpr@8.11--8.22) [49723]"}
       Result >= 0;
 }
 
@@ -339,7 +339,7 @@ procedure err1#definedness(n: int) returns (Result: int)
           // Exhale precondition of function application
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function err1 might not hold. Assertion n - 1 >= 0 might not hold. (recursion.vpr@27.16--27.27) [155691]"}
+          assert {:msg "  Precondition of function err1 might not hold. Assertion n - 1 >= 0 might not hold. (recursion.vpr@27.16--27.27) [49724]"}
             n - 1 >= 0;
           // Stop execution
           assume false;
@@ -355,7 +355,7 @@ procedure err1#definedness(n: int) returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of err1 might not hold. Assertion result >= 0 might not hold. (recursion.vpr@26.11--26.22) [155692]"}
+    assert {:msg "  Postcondition of err1 might not hold. Assertion result >= 0 might not hold. (recursion.vpr@26.11--26.22) [49725]"}
       Result >= 0;
 }
 
@@ -363,7 +363,7 @@ procedure err1#definedness(n: int) returns (Result: int)
 // Translation of method test
 // ==================================================
 
-procedure test() returns ()
+procedure test_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -397,7 +397,7 @@ procedure test() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fac(0) == 0 might not hold. (recursion.vpr@12.10--12.21) [155693]"}
+    assert {:msg "  Assert might fail. Assertion fac(0) == 0 might not hold. (recursion.vpr@12.10--12.21) [49726]"}
       fac(Heap, 0) == 0;
     assume state(Heap, Mask);
   
@@ -413,7 +413,7 @@ procedure test() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fac(1) == 1 might not hold. (recursion.vpr@13.10--13.21) [155694]"}
+    assert {:msg "  Assert might fail. Assertion fac(1) == 1 might not hold. (recursion.vpr@13.10--13.21) [49727]"}
       fac(Heap, 1) == 1;
     assume state(Heap, Mask);
   
@@ -429,7 +429,7 @@ procedure test() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fac(2) == 2 might not hold. (recursion.vpr@14.10--14.21) [155695]"}
+    assert {:msg "  Assert might fail. Assertion fac(2) == 2 might not hold. (recursion.vpr@14.10--14.21) [49728]"}
       fac(Heap, 2) == 2;
     assume state(Heap, Mask);
   
@@ -445,7 +445,7 @@ procedure test() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fac(3) == 6 might not hold. (recursion.vpr@15.10--15.21) [155696]"}
+    assert {:msg "  Assert might fail. Assertion fac(3) == 6 might not hold. (recursion.vpr@15.10--15.21) [49729]"}
       fac(Heap, 3) == 6;
     assume state(Heap, Mask);
   
@@ -461,7 +461,7 @@ procedure test() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fac(4) == 24 might not hold. (recursion.vpr@16.10--16.22) [155697]"}
+    assert {:msg "  Assert might fail. Assertion fac(4) == 24 might not hold. (recursion.vpr@16.10--16.22) [49730]"}
       fac(Heap, 4) == 24;
     assume state(Heap, Mask);
   
@@ -477,7 +477,7 @@ procedure test() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fac(7) >= 0 might not hold. (recursion.vpr@18.10--18.21) [155698]"}
+    assert {:msg "  Assert might fail. Assertion fac(7) >= 0 might not hold. (recursion.vpr@18.10--18.21) [49731]"}
       fac(Heap, 7) >= 0;
     assume state(Heap, Mask);
 }

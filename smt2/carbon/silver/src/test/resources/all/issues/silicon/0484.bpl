@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:08
+// Date:         2025-01-26 21:42:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0484.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0484-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,9 +177,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique left: Field NormalField Ref;
-axiom !IsPredicateField(left);
-axiom !IsWandField(left);
+const unique left_2: Field NormalField Ref;
+axiom !IsPredicateField(left_2);
+axiom !IsWandField(left_2);
 const unique right_1: Field NormalField Ref;
 axiom !IsPredicateField(right_1);
 axiom !IsWandField(right_1);
@@ -234,7 +234,7 @@ procedure treePerm_simpler#definedness(current: Ref) returns ()
     if (current != null) {
       perm := FullPerm;
       assume current != null;
-      Mask := Mask[current, left:=Mask[current, left] + perm];
+      Mask := Mask[current, left_2:=Mask[current, left_2] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -290,7 +290,7 @@ procedure treePerm#definedness(current: Ref) returns ()
     if (current != null) {
       perm := FullPerm;
       assume current != null;
-      Mask := Mask[current, left:=Mask[current, left] + perm];
+      Mask := Mask[current, left_2:=Mask[current, left_2] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume current != null;
@@ -339,7 +339,7 @@ procedure insert_simpler(current: Ref, bool_val: bool) returns ()
   // -- Translating statement: inhale acc(current.left, write) -- 0484.vpr@13.3--13.27
     perm := FullPerm;
     assume current != null;
-    Mask := Mask[current, left:=Mask[current, left] + perm];
+    Mask := Mask[current, left_2:=Mask[current, left_2] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -350,24 +350,24 @@ procedure insert_simpler(current: Ref, bool_val: bool) returns ()
     if (current != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding treePerm_simpler(current) might fail. There might be insufficient permission to access current.left (0484.vpr@15.3--15.38) [219287]"}
-          perm <= Mask[current, left];
+        assert {:msg "  Folding treePerm_simpler(current) might fail. There might be insufficient permission to access current.left (0484.vpr@15.3--15.38) [61886]"}
+          perm <= Mask[current, left_2];
       }
-      Mask := Mask[current, left:=Mask[current, left] - perm];
+      Mask := Mask[current, left_2:=Mask[current, left_2] - perm];
     }
     perm := FullPerm;
     Mask := Mask[null, treePerm_simpler(current):=Mask[null, treePerm_simpler(current)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume treePerm_simpler#trigger(Heap, treePerm_simpler(current));
-    assume Heap[null, treePerm_simpler(current)] == FrameFragment((if current != null then FrameFragment(Heap[current, left]) else EmptyFrame));
+    assume Heap[null, treePerm_simpler(current)] == FrameFragment((if current != null then FrameFragment(Heap[current, left_2]) else EmptyFrame));
     if (!HasDirectPerm(Mask, null, treePerm_simpler(current))) {
       Heap := Heap[null, treePerm_simpler#sm(current):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, treePerm_simpler(current):=freshVersion];
     }
     if (current != null) {
-      Heap := Heap[null, treePerm_simpler#sm(current):=Heap[null, treePerm_simpler#sm(current)][current, left:=true]];
+      Heap := Heap[null, treePerm_simpler#sm(current):=Heap[null, treePerm_simpler#sm(current)][current, left_2:=true]];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -382,33 +382,33 @@ procedure insert_simpler(current: Ref, bool_val: bool) returns ()
         UnfoldingHeap := ExhaleWellDef0Heap;
         UnfoldingMask := ExhaleWellDef0Mask;
         assume treePerm_simpler#trigger(UnfoldingHeap, treePerm_simpler(current));
-        assume UnfoldingHeap[null, treePerm_simpler(current)] == FrameFragment((if current != null then FrameFragment(UnfoldingHeap[current, left]) else EmptyFrame));
+        assume UnfoldingHeap[null, treePerm_simpler(current)] == FrameFragment((if current != null then FrameFragment(UnfoldingHeap[current, left_2]) else EmptyFrame));
         ExhaleWellDef1Heap := UnfoldingHeap;
         ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access treePerm_simpler(current) (0484.vpr@18.5--18.72) [219290]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access treePerm_simpler(current) (0484.vpr@18.5--18.72) [61889]"}
             perm <= UnfoldingMask[null, treePerm_simpler(current)];
         }
         UnfoldingMask := UnfoldingMask[null, treePerm_simpler(current):=UnfoldingMask[null, treePerm_simpler(current)] - perm];
         if (current != null) {
           perm := FullPerm;
           assume current != null;
-          UnfoldingMask := UnfoldingMask[current, left:=UnfoldingMask[current, left] + perm];
+          UnfoldingMask := UnfoldingMask[current, left_2:=UnfoldingMask[current, left_2] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
         
         // -- Free assumptions (exp module)
           if (current != null) {
-            Heap := Heap[null, treePerm_simpler#sm(current):=Heap[null, treePerm_simpler#sm(current)][current, left:=true]];
+            Heap := Heap[null, treePerm_simpler#sm(current):=Heap[null, treePerm_simpler#sm(current)][current, left_2:=true]];
           }
           assume state(Heap, Mask);
       }
     
     // -- Free assumptions (exhale module)
       if (current != null) {
-        Heap := Heap[null, treePerm_simpler#sm(current):=Heap[null, treePerm_simpler#sm(current)][current, left:=true]];
+        Heap := Heap[null, treePerm_simpler#sm(current):=Heap[null, treePerm_simpler#sm(current)][current, left_2:=true]];
       }
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -457,12 +457,12 @@ procedure insert(current: Ref, bool_val: bool) returns ()
   
   // -- Translating statement: unfold acc(treePerm(current), write) -- 0484.vpr@34.3--34.39
     assume treePerm#trigger(Heap, treePerm(current));
-    assume Heap[null, treePerm(current)] == FrameFragment((if current != null then CombineFrames(FrameFragment(Heap[current, left]), FrameFragment(Heap[current, right_1])) else EmptyFrame));
+    assume Heap[null, treePerm(current)] == FrameFragment((if current != null then CombineFrames(FrameFragment(Heap[current, left_2]), FrameFragment(Heap[current, right_1])) else EmptyFrame));
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding treePerm(current) might fail. There might be insufficient permission to access treePerm(current) (0484.vpr@34.3--34.39) [219294]"}
+      assert {:msg "  Unfolding treePerm(current) might fail. There might be insufficient permission to access treePerm(current) (0484.vpr@34.3--34.39) [61893]"}
         perm <= Mask[null, treePerm(current)];
     }
     Mask := Mask[null, treePerm(current):=Mask[null, treePerm(current)] - perm];
@@ -475,7 +475,7 @@ procedure insert(current: Ref, bool_val: bool) returns ()
     if (current != null) {
       perm := FullPerm;
       assume current != null;
-      Mask := Mask[current, left:=Mask[current, left] + perm];
+      Mask := Mask[current, left_2:=Mask[current, left_2] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume current != null;
@@ -491,13 +491,13 @@ procedure insert(current: Ref, bool_val: bool) returns ()
     if (current != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding treePerm(current) might fail. There might be insufficient permission to access current.left (0484.vpr@35.3--35.37) [219299]"}
-          perm <= Mask[current, left];
+        assert {:msg "  Folding treePerm(current) might fail. There might be insufficient permission to access current.left (0484.vpr@35.3--35.37) [61898]"}
+          perm <= Mask[current, left_2];
       }
-      Mask := Mask[current, left:=Mask[current, left] - perm];
+      Mask := Mask[current, left_2:=Mask[current, left_2] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding treePerm(current) might fail. There might be insufficient permission to access current.right (0484.vpr@35.3--35.37) [219301]"}
+        assert {:msg "  Folding treePerm(current) might fail. There might be insufficient permission to access current.right (0484.vpr@35.3--35.37) [61900]"}
           perm <= Mask[current, right_1];
       }
       Mask := Mask[current, right_1:=Mask[current, right_1] - perm];
@@ -507,14 +507,14 @@ procedure insert(current: Ref, bool_val: bool) returns ()
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume treePerm#trigger(Heap, treePerm(current));
-    assume Heap[null, treePerm(current)] == FrameFragment((if current != null then CombineFrames(FrameFragment(Heap[current, left]), FrameFragment(Heap[current, right_1])) else EmptyFrame));
+    assume Heap[null, treePerm(current)] == FrameFragment((if current != null then CombineFrames(FrameFragment(Heap[current, left_2]), FrameFragment(Heap[current, right_1])) else EmptyFrame));
     if (!HasDirectPerm(Mask, null, treePerm(current))) {
       Heap := Heap[null, treePerm#sm(current):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, treePerm(current):=freshVersion];
     }
     if (current != null) {
-      Heap := Heap[null, treePerm#sm(current):=Heap[null, treePerm#sm(current)][current, left:=true]];
+      Heap := Heap[null, treePerm#sm(current):=Heap[null, treePerm#sm(current)][current, left_2:=true]];
       Heap := Heap[null, treePerm#sm(current):=Heap[null, treePerm#sm(current)][current, right_1:=true]];
     }
     assume state(Heap, Mask);
@@ -530,19 +530,19 @@ procedure insert(current: Ref, bool_val: bool) returns ()
         UnfoldingHeap := ExhaleWellDef0Heap;
         UnfoldingMask := ExhaleWellDef0Mask;
         assume treePerm#trigger(UnfoldingHeap, treePerm(current));
-        assume UnfoldingHeap[null, treePerm(current)] == FrameFragment((if current != null then CombineFrames(FrameFragment(UnfoldingHeap[current, left]), FrameFragment(UnfoldingHeap[current, right_1])) else EmptyFrame));
+        assume UnfoldingHeap[null, treePerm(current)] == FrameFragment((if current != null then CombineFrames(FrameFragment(UnfoldingHeap[current, left_2]), FrameFragment(UnfoldingHeap[current, right_1])) else EmptyFrame));
         ExhaleWellDef1Heap := UnfoldingHeap;
         ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access treePerm(current) (0484.vpr@36.11--37.64) [219303]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access treePerm(current) (0484.vpr@36.11--37.64) [61902]"}
             perm <= UnfoldingMask[null, treePerm(current)];
         }
         UnfoldingMask := UnfoldingMask[null, treePerm(current):=UnfoldingMask[null, treePerm(current)] - perm];
         if (current != null) {
           perm := FullPerm;
           assume current != null;
-          UnfoldingMask := UnfoldingMask[current, left:=UnfoldingMask[current, left] + perm];
+          UnfoldingMask := UnfoldingMask[current, left_2:=UnfoldingMask[current, left_2] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := FullPerm;
           assume current != null;
@@ -553,7 +553,7 @@ procedure insert(current: Ref, bool_val: bool) returns ()
         
         // -- Free assumptions (exp module)
           if (current != null) {
-            Heap := Heap[null, treePerm#sm(current):=Heap[null, treePerm#sm(current)][current, left:=true]];
+            Heap := Heap[null, treePerm#sm(current):=Heap[null, treePerm#sm(current)][current, left_2:=true]];
             Heap := Heap[null, treePerm#sm(current):=Heap[null, treePerm#sm(current)][current, right_1:=true]];
           }
           assume state(Heap, Mask);
@@ -561,7 +561,7 @@ procedure insert(current: Ref, bool_val: bool) returns ()
     
     // -- Free assumptions (exhale module)
       if (current != null) {
-        Heap := Heap[null, treePerm#sm(current):=Heap[null, treePerm#sm(current)][current, left:=true]];
+        Heap := Heap[null, treePerm#sm(current):=Heap[null, treePerm#sm(current)][current, left_2:=true]];
         Heap := Heap[null, treePerm#sm(current):=Heap[null, treePerm#sm(current)][current, right_1:=true]];
       }
       assume state(Heap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:42
+// Date:         2025-01-26 21:43:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/new.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/new-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,9 +177,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique value: Field NormalField int;
-axiom !IsPredicateField(value);
-axiom !IsWandField(value);
+const unique value_1: Field NormalField int;
+axiom !IsPredicateField(value_1);
+axiom !IsWandField(value_1);
 const unique Node_v: Field NormalField int;
 axiom !IsPredicateField(Node_v);
 axiom !IsWandField(Node_v);
@@ -244,12 +244,12 @@ procedure Node_P#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Node_n != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Node_n (new.vpr@74.1--77.2) [186606]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Node_n (new.vpr@74.1--77.2) [99248]"}
         HasDirectPerm(Mask, this, Node_n);
     if (Heap[this, Node_n] != null) {
       
       // -- Check definedness of acc(Node_P(this.Node_n), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Node_n (new.vpr@74.1--77.2) [186607]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.Node_n (new.vpr@74.1--77.2) [99249]"}
           HasDirectPerm(Mask, this, Node_n);
       perm := FullPerm;
       Mask := Mask[null, Node_P(Heap[this, Node_n]):=Mask[null, Node_P(Heap[this, Node_n])] + perm];
@@ -262,7 +262,7 @@ procedure Node_P#definedness(this: Ref) returns ()
 // Translation of method t1
 // ==================================================
 
-procedure t1(this: Ref, a_2: int, b_24: bool, g_1: Ref) returns (c: bool, d: int)
+procedure t1_2(this: Ref, a_2: int, b_24: bool, g_1: Ref) returns (c: bool, d: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -270,8 +270,8 @@ procedure t1(this: Ref, a_2: int, b_24: bool, g_1: Ref) returns (c: bool, d: int
   var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var f1: Ref;
-  var f2: Ref;
+  var f1_1: Ref;
+  var f2_1: Ref;
   var freshObj: Ref;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
@@ -289,7 +289,7 @@ procedure t1(this: Ref, a_2: int, b_24: bool, g_1: Ref) returns (c: bool, d: int
     assume b_24;
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, value:=Mask[this, value] + perm];
+    Mask := Mask[this, value_1:=Mask[this, value_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -310,27 +310,27 @@ procedure t1(this: Ref, a_2: int, b_24: bool, g_1: Ref) returns (c: bool, d: int
   }
   
   // -- Assumptions about local variables
-    assume Heap[f1, $allocated];
-    assume Heap[f2, $allocated];
+    assume Heap[f1_1, $allocated];
+    assume Heap[f2_1, $allocated];
   
   // -- Translating statement: this.value := 1 -- new.vpr@12.5--12.20
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.value (new.vpr@12.5--12.20) [186608]"}
-      FullPerm == Mask[this, value];
-    Heap := Heap[this, value:=1];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.value (new.vpr@12.5--12.20) [99250]"}
+      FullPerm == Mask[this, value_1];
+    Heap := Heap[this, value_1:=1];
     assume state(Heap, Mask);
   
   // -- Translating statement: f1 := new() -- new.vpr@13.5--13.16
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    f1 := freshObj;
+    f1_1 := freshObj;
     assume state(Heap, Mask);
   
   // -- Translating statement: f2 := new() -- new.vpr@14.5--14.16
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    f2 := freshObj;
+    f2_1 := freshObj;
     assume state(Heap, Mask);
   
   // -- Translating statement: if (g != null) -- new.vpr@15.5--17.6
@@ -339,8 +339,8 @@ procedure t1(this: Ref, a_2: int, b_24: bool, g_1: Ref) returns (c: bool, d: int
       // -- Translating statement: exhale g != f1 -- new.vpr@16.9--16.23
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Exhale might fail. Assertion g != f1 might not hold. (new.vpr@16.16--16.23) [186609]"}
-          g_1 != f1;
+        assert {:msg "  Exhale might fail. Assertion g != f1 might not hold. (new.vpr@16.16--16.23) [99251]"}
+          g_1 != f1_1;
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -350,17 +350,17 @@ procedure t1(this: Ref, a_2: int, b_24: bool, g_1: Ref) returns (c: bool, d: int
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this.value <= 42
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.value (new.vpr@18.12--18.28) [186610]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, value);
-    assert {:msg "  Exhale might fail. Assertion this.value <= 42 might not hold. (new.vpr@18.12--18.28) [186611]"}
-      Heap[this, value] <= 42;
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.value (new.vpr@18.12--18.28) [99252]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, value_1);
+    assert {:msg "  Exhale might fail. Assertion this.value <= 42 might not hold. (new.vpr@18.12--18.28) [99253]"}
+      Heap[this, value_1] <= 42;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale f1 != f2 -- new.vpr@19.5--19.20
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Exhale might fail. Assertion f1 != f2 might not hold. (new.vpr@19.12--19.20) [186612]"}
-      f1 != f2;
+    assert {:msg "  Exhale might fail. Assertion f1 != f2 might not hold. (new.vpr@19.12--19.20) [99254]"}
+      f1_1 != f2_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale a == -11 -- new.vpr@20.5--20.22
@@ -371,7 +371,7 @@ procedure t1(this: Ref, a_2: int, b_24: bool, g_1: Ref) returns (c: bool, d: int
   // -- Translating statement: exhale a < 0 -- new.vpr@21.5--21.17
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Exhale might fail. Assertion a < 0 might not hold. (new.vpr@21.12--21.17) [186613]"}
+    assert {:msg "  Exhale might fail. Assertion a < 0 might not hold. (new.vpr@21.12--21.17) [99255]"}
       a_2 < 0;
     assume state(Heap, Mask);
   
@@ -396,7 +396,7 @@ procedure t1(this: Ref, a_2: int, b_24: bool, g_1: Ref) returns (c: bool, d: int
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of t1 might not hold. Assertion d == 1 || d == 2 might not hold. (new.vpr@7.13--7.33) [186614]"}
+    assert {:msg "  Postcondition of t1 might not hold. Assertion d == 1 || d == 2 might not hold. (new.vpr@7.13--7.33) [99256]"}
       d == 1 || d == 2;
 }
 
@@ -404,13 +404,13 @@ procedure t1(this: Ref, a_2: int, b_24: bool, g_1: Ref) returns (c: bool, d: int
 // Translation of method t2
 // ==================================================
 
-procedure t2(a_2: Ref, b_24: Ref) returns ()
+procedure t2_2(a_2: Ref, b_24: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var l1_3: Ref;
-  var l2_2: Ref;
+  var l1_1: Ref;
+  var l2: Ref;
   var freshObj: Ref;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
@@ -431,41 +431,41 @@ procedure t2(a_2: Ref, b_24: Ref) returns ()
       oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[l1_3, $allocated];
-    assume Heap[l2_2, $allocated];
+    assume Heap[l1_1, $allocated];
+    assume Heap[l2, $allocated];
   
   // -- Translating statement: l1 := new() -- new.vpr@37.5--37.16
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    l1_3 := freshObj;
+    l1_1 := freshObj;
     assume state(Heap, Mask);
   
   // -- Translating statement: l2 := new() -- new.vpr@38.5--38.16
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    l2_2 := freshObj;
+    l2 := freshObj;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale a != l1 -- new.vpr@39.5--39.19
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Exhale might fail. Assertion a != l1 might not hold. (new.vpr@39.12--39.19) [186615]"}
-      a_2 != l1_3;
+    assert {:msg "  Exhale might fail. Assertion a != l1 might not hold. (new.vpr@39.12--39.19) [99257]"}
+      a_2 != l1_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale l1 != l2 -- new.vpr@40.5--40.20
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Exhale might fail. Assertion l1 != l2 might not hold. (new.vpr@40.12--40.20) [186616]"}
-      l1_3 != l2_2;
+    assert {:msg "  Exhale might fail. Assertion l1 != l2 might not hold. (new.vpr@40.12--40.20) [99258]"}
+      l1_1 != l2;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale a != b -- new.vpr@42.5--42.18
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Exhale might fail. Assertion a != b might not hold. (new.vpr@42.12--42.18) [186617]"}
+    assert {:msg "  Exhale might fail. Assertion a != b might not hold. (new.vpr@42.12--42.18) [99259]"}
       a_2 != b_24;
     assume state(Heap, Mask);
 }
@@ -506,7 +506,7 @@ procedure t3(a_2: Ref, b_24: Ref) returns ()
           // -- Translating statement: exhale a != b -- new.vpr@50.13--50.26
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Exhale might fail. Assertion a != b might not hold. (new.vpr@50.20--50.26) [186618]"}
+            assert {:msg "  Exhale might fail. Assertion a != b might not hold. (new.vpr@50.20--50.26) [99260]"}
               a_2 != b_24;
             assume state(Heap, Mask);
         }
@@ -515,7 +515,7 @@ procedure t3(a_2: Ref, b_24: Ref) returns ()
       // -- Translating statement: exhale a != b -- new.vpr@53.9--53.22
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Exhale might fail. Assertion a != b might not hold. (new.vpr@53.16--53.22) [186619]"}
+        assert {:msg "  Exhale might fail. Assertion a != b might not hold. (new.vpr@53.16--53.22) [99261]"}
           a_2 != b_24;
         assume state(Heap, Mask);
     }
@@ -558,7 +558,7 @@ procedure t4(a_2: Ref, b_24: Ref) returns ()
           // -- Translating statement: exhale a != b -- new.vpr@62.13--62.26
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Exhale might fail. Assertion a != b might not hold. (new.vpr@62.20--62.26) [186620]"}
+            assert {:msg "  Exhale might fail. Assertion a != b might not hold. (new.vpr@62.20--62.26) [99262]"}
               a_2 != b_24;
             assume state(Heap, Mask);
         }
@@ -571,14 +571,14 @@ procedure t4(a_2: Ref, b_24: Ref) returns ()
 // Translation of method test5
 // ==================================================
 
-procedure test5(n: Ref) returns ()
+procedure test5_1(n: Ref) returns ()
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var m_17: Ref;
+  var m_18: Ref;
   var freshObj: Ref;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
@@ -607,27 +607,27 @@ procedure test5(n: Ref) returns ()
       oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[m_17, $allocated];
+    assume Heap[m_18, $allocated];
   
   // -- Translating statement: m := new() -- new.vpr@84.3--84.13
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    m_17 := freshObj;
+    m_18 := freshObj;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m != null -- new.vpr@85.3--85.19
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion m != null might not hold. (new.vpr@85.10--85.19) [186621]"}
-      m_17 != null;
+    assert {:msg "  Assert might fail. Assertion m != null might not hold. (new.vpr@85.10--85.19) [99263]"}
+      m_18 != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m != n -- new.vpr@86.3--86.16
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion m != n might not hold. (new.vpr@86.10--86.16) [186622]"}
-      m_17 != n;
+    assert {:msg "  Assert might fail. Assertion m != n might not hold. (new.vpr@86.10--86.16) [99264]"}
+      m_18 != n;
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(Node_P(n), wildcard) -- new.vpr@88.3--88.34
@@ -635,7 +635,7 @@ procedure test5(n: Ref) returns ()
     assume Heap[null, Node_P(n)] == CombineFrames(FrameFragment(Heap[n, Node_v]), CombineFrames(FrameFragment(Heap[n, Node_n]), FrameFragment((if Heap[n, Node_n] != null then Heap[null, Node_P(Heap[n, Node_n])] else EmptyFrame))));
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Unfolding Node_P(n) might fail. There might be insufficient permission to access Node_P(n) (new.vpr@88.3--88.34) [186624]"}
+    assert {:msg "  Unfolding Node_P(n) might fail. There might be insufficient permission to access Node_P(n) (new.vpr@88.3--88.34) [99266]"}
       Mask[null, Node_P(n)] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[null, Node_P(n)];
@@ -673,29 +673,29 @@ procedure test5(n: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m != n.Node_n
-      assert {:msg "  Assert might fail. There might be insufficient permission to access n.Node_n (new.vpr@90.10--90.25) [186625]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access n.Node_n (new.vpr@90.10--90.25) [99267]"}
         HasDirectPerm(ExhaleWellDef0Mask, n, Node_n);
-    assert {:msg "  Assert might fail. Assertion m != n.Node_n might not hold. (new.vpr@90.10--90.25) [186626]"}
-      m_17 != Heap[n, Node_n];
+    assert {:msg "  Assert might fail. Assertion m != n.Node_n might not hold. (new.vpr@90.10--90.25) [99268]"}
+      m_18 != Heap[n, Node_n];
     assume state(Heap, Mask);
   
   // -- Translating statement: if (n.Node_n != null) -- new.vpr@92.3--95.4
     
     // -- Check definedness of n.Node_n != null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access n.Node_n (new.vpr@92.7--92.23) [186627]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access n.Node_n (new.vpr@92.7--92.23) [99269]"}
         HasDirectPerm(Mask, n, Node_n);
     if (Heap[n, Node_n] != null) {
       
       // -- Translating statement: unfold acc(Node_P(n.Node_n), wildcard) -- new.vpr@93.5--93.43
         
         // -- Check definedness of acc(Node_P(n.Node_n), wildcard)
-          assert {:msg "  Unfolding Node_P(n.Node_n) might fail. There might be insufficient permission to access n.Node_n (new.vpr@93.5--93.43) [186628]"}
+          assert {:msg "  Unfolding Node_P(n.Node_n) might fail. There might be insufficient permission to access n.Node_n (new.vpr@93.5--93.43) [99270]"}
             HasDirectPerm(Mask, n, Node_n);
         assume Node_P#trigger(Heap, Node_P(Heap[n, Node_n]));
         assume Heap[null, Node_P(Heap[n, Node_n])] == CombineFrames(FrameFragment(Heap[Heap[n, Node_n], Node_v]), CombineFrames(FrameFragment(Heap[Heap[n, Node_n], Node_n]), FrameFragment((if Heap[Heap[n, Node_n], Node_n] != null then Heap[null, Node_P(Heap[Heap[n, Node_n], Node_n])] else EmptyFrame))));
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Unfolding Node_P(n.Node_n) might fail. There might be insufficient permission to access Node_P(n.Node_n) (new.vpr@93.5--93.43) [186630]"}
+        assert {:msg "  Unfolding Node_P(n.Node_n) might fail. There might be insufficient permission to access Node_P(n.Node_n) (new.vpr@93.5--93.43) [99272]"}
           Mask[null, Node_P(Heap[n, Node_n])] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[null, Node_P(Heap[n, Node_n])];
@@ -733,12 +733,12 @@ procedure test5(n: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of m != n.Node_n.Node_n
-          assert {:msg "  Assert might fail. There might be insufficient permission to access n.Node_n (new.vpr@94.12--94.34) [186631]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access n.Node_n (new.vpr@94.12--94.34) [99273]"}
             HasDirectPerm(ExhaleWellDef0Mask, n, Node_n);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access n.Node_n.Node_n (new.vpr@94.12--94.34) [186632]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access n.Node_n.Node_n (new.vpr@94.12--94.34) [99274]"}
             HasDirectPerm(ExhaleWellDef0Mask, Heap[n, Node_n], Node_n);
-        assert {:msg "  Assert might fail. Assertion m != n.Node_n.Node_n might not hold. (new.vpr@94.12--94.34) [186633]"}
-          m_17 != Heap[Heap[n, Node_n], Node_n];
+        assert {:msg "  Assert might fail. Assertion m != n.Node_n.Node_n might not hold. (new.vpr@94.12--94.34) [99275]"}
+          m_18 != Heap[Heap[n, Node_n], Node_n];
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -753,7 +753,7 @@ procedure test6() returns ()
 {
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var m_17: Ref;
+  var m_18: Ref;
   var freshObj: Ref;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
@@ -772,16 +772,16 @@ procedure test6() returns ()
       oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[m_17, $allocated];
+    assume Heap[m_18, $allocated];
   
   // -- Translating statement: m := new(value, Node_v, Node_n) -- new.vpr@102.3--102.14
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    m_17 := freshObj;
-    Mask := Mask[m_17, value:=Mask[m_17, value] + FullPerm];
-    Mask := Mask[m_17, Node_v:=Mask[m_17, Node_v] + FullPerm];
-    Mask := Mask[m_17, Node_n:=Mask[m_17, Node_n] + FullPerm];
+    m_18 := freshObj;
+    Mask := Mask[m_18, value_1:=Mask[m_18, value_1] + FullPerm];
+    Mask := Mask[m_18, Node_v:=Mask[m_18, Node_v] + FullPerm];
+    Mask := Mask[m_18, Node_n:=Mask[m_18, Node_n] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(m.Node_v, write) -- new.vpr@104.3--104.23
@@ -789,10 +789,10 @@ procedure test6() returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access m.Node_v (new.vpr@104.10--104.23) [186635]"}
-        perm <= Mask[m_17, Node_v];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access m.Node_v (new.vpr@104.10--104.23) [99277]"}
+        perm <= Mask[m_18, Node_v];
     }
-    Mask := Mask[m_17, Node_v:=Mask[m_17, Node_v] - perm];
+    Mask := Mask[m_18, Node_v:=Mask[m_18, Node_v] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -804,10 +804,10 @@ procedure test6() returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access m.Node_n (new.vpr@105.10--105.23) [186637]"}
-        perm <= Mask[m_17, Node_n];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access m.Node_n (new.vpr@105.10--105.23) [99279]"}
+        perm <= Mask[m_18, Node_n];
     }
-    Mask := Mask[m_17, Node_n:=Mask[m_17, Node_n] - perm];
+    Mask := Mask[m_18, Node_n:=Mask[m_18, Node_n] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -819,10 +819,10 @@ procedure test6() returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access m.value (new.vpr@106.10--106.22) [186639]"}
-        perm <= Mask[m_17, value];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access m.value (new.vpr@106.10--106.22) [99281]"}
+        perm <= Mask[m_18, value_1];
     }
-    Mask := Mask[m_17, value:=Mask[m_17, value] - perm];
+    Mask := Mask[m_18, value_1:=Mask[m_18, value_1] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:17
+// Date:         2025-01-26 21:42:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/79.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/79-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,7 +177,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of method test1
 // ==================================================
 
-procedure test1() returns ()
+procedure test1_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -199,7 +199,7 @@ procedure test1() returns ()
   // -- Translating statement: exhale 3 * write == 3 * write -- 79.vpr@8.3--8.28
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Exhale might fail. Assertion 3 * write == 3 * write might not hold. (79.vpr@8.10--8.28) [220829]"}
+    assert {:msg "  Exhale might fail. Assertion 3 * write == 3 * write might not hold. (79.vpr@8.10--8.28) [54548]"}
       real(3) * FullPerm == real(3) * FullPerm;
     assume state(Heap, Mask);
 }
@@ -208,7 +208,7 @@ procedure test1() returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2() returns ()
+procedure test2_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -230,7 +230,7 @@ procedure test2() returns ()
   // -- Translating statement: exhale 3 * (-1 / 2) == -3 * (1 / 2) -- 79.vpr@13.3--13.30
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Exhale might fail. Assertion 3 * (-1 / 2) == -3 * (1 / 2) might not hold. (79.vpr@13.10--13.30) [220830]"}
+    assert {:msg "  Exhale might fail. Assertion 3 * (-1 / 2) == -3 * (1 / 2) might not hold. (79.vpr@13.10--13.30) [54549]"}
       real(3) * (-1 / 2) == real(-3) * (1 / 2);
     assume state(Heap, Mask);
 }

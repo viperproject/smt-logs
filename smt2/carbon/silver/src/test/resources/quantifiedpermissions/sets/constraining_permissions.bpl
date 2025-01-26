@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:49:57
+// Date:         2025-01-26 21:44:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/constraining_permissions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/constraining_permissions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_27: Ref, f_24: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_27, f_24] }
-  Heap[o_27, $allocated] ==> Heap[Heap[o_27, f_24], $allocated]
+axiom (forall o_55: Ref, f_54: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_55, f_54] }
+  Heap[o_55, $allocated] ==> Heap[Heap[o_55, f_54], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_23: Ref, f_25: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_23, f_25] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_23, f_25) ==> Heap[o_23, f_25] == ExhaleHeap[o_23, f_25]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_7: Ref, f_13: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_7, f_13] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_7, f_13) ==> Heap[o_7, f_13] == ExhaleHeap[o_7, f_13]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_8), ExhaleHeap[null, PredicateMaskField(pm_f_8)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsPredicateField(pm_f_8) ==> Heap[null, PredicateMaskField(pm_f_8)] == ExhaleHeap[null, PredicateMaskField(pm_f_8)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_30: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_30), ExhaleHeap[null, PredicateMaskField(pm_f_30)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_30) && IsPredicateField(pm_f_30) ==> Heap[null, PredicateMaskField(pm_f_30)] == ExhaleHeap[null, PredicateMaskField(pm_f_30)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_8) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsPredicateField(pm_f_8) ==> (forall <A, B> o2_8: Ref, f_25: (Field A B) ::
-    { ExhaleHeap[o2_8, f_25] }
-    Heap[null, PredicateMaskField(pm_f_8)][o2_8, f_25] ==> Heap[o2_8, f_25] == ExhaleHeap[o2_8, f_25]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_30: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_30) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_30) && IsPredicateField(pm_f_30) ==> (forall <A, B> o2_30: Ref, f_13: (Field A B) ::
+    { ExhaleHeap[o2_30, f_13] }
+    Heap[null, PredicateMaskField(pm_f_30)][o2_30, f_13] ==> Heap[o2_30, f_13] == ExhaleHeap[o2_30, f_13]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_8), ExhaleHeap[null, WandMaskField(pm_f_8)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsWandField(pm_f_8) ==> Heap[null, WandMaskField(pm_f_8)] == ExhaleHeap[null, WandMaskField(pm_f_8)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_30: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_30), ExhaleHeap[null, WandMaskField(pm_f_30)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_30) && IsWandField(pm_f_30) ==> Heap[null, WandMaskField(pm_f_30)] == ExhaleHeap[null, WandMaskField(pm_f_30)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_8) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsWandField(pm_f_8) ==> (forall <A, B> o2_8: Ref, f_25: (Field A B) ::
-    { ExhaleHeap[o2_8, f_25] }
-    Heap[null, WandMaskField(pm_f_8)][o2_8, f_25] ==> Heap[o2_8, f_25] == ExhaleHeap[o2_8, f_25]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_30: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_30) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_30) && IsWandField(pm_f_30) ==> (forall <A, B> o2_30: Ref, f_13: (Field A B) ::
+    { ExhaleHeap[o2_30, f_13] }
+    Heap[null, WandMaskField(pm_f_30)][o2_30, f_13] ==> Heap[o2_30, f_13] == ExhaleHeap[o2_30, f_13]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_23: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_23, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_23, $allocated] ==> ExhaleHeap[o_23, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_7: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_7, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_7, $allocated] ==> ExhaleHeap[o_7, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_27: Ref, f_30: (Field A B), v: B ::
-  { Heap[o_27, f_30:=v] }
-  succHeap(Heap, Heap[o_27, f_30:=v])
+axiom (forall <A, B> Heap: HeapType, o_55: Ref, f_9: (Field A B), v: B ::
+  { Heap[o_55, f_9:=v] }
+  succHeap(Heap, Heap[o_55, f_9:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -146,7 +146,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 
 function  neverTriggered1(x_1: Ref): bool;
 function  neverTriggered2(x_3: Ref): bool;
-function  neverTriggered3(x_4: Ref): bool;
+function  neverTriggered3(x_4_2: Ref): bool;
 function  neverTriggered4(x_1: Ref): bool;
 function  neverTriggered5(x_3: Ref): bool;
 function  neverTriggered6(x_5: Ref): bool;
@@ -417,12 +417,12 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 type FooDomainType;
 
 // Translation of domain function foo
-function  foo(x_8: Ref): Perm;
+function  foo_2(x_37: Ref): Perm;
 
 // Translation of domain axiom foo_not_none
 axiom (forall x: Ref ::
-  { (foo(x): Perm) }
-  NoPerm < (foo(x): Perm)
+  { (foo_2(x): Perm) }
+  NoPerm < (foo_2(x): Perm)
 );
 
 // ==================================================
@@ -442,12 +442,12 @@ procedure test00(xs: (Set Ref)) returns ()
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -462,7 +462,7 @@ procedure test00(xs: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@7.12--7.59) [3398]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@7.12--7.59) [182396]"}
       (forall x_1: Ref, x_1_1: Ref ::
       
       (((x_1 != x_1_1 && xs[x_1]) && xs[x_1_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_1 != x_1_1
@@ -473,9 +473,9 @@ procedure test00(xs: (Set Ref)) returns ()
         { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { xs[x_1] }
         xs[x_1] ==> qpRange1(x_1) && invRecv1(x_1) == x_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        xs[invRecv1(o_4)] && qpRange1(o_4) ==> invRecv1(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        xs[invRecv1(o_9)] && qpRange1(o_9) ==> invRecv1(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -485,13 +485,13 @@ procedure test00(xs: (Set Ref)) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (xs[invRecv1(o_4)] && qpRange1(o_4) ==> invRecv1(o_4) == o_4 && Mask[o_4, f_7] < QPMask[o_4, f_7]) && (!(xs[invRecv1(o_4)] && qpRange1(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (xs[invRecv1(o_9)] && qpRange1(o_9) ==> invRecv1(o_9) == o_9 && Mask[o_9, f_7] < QPMask[o_9, f_7]) && (!(xs[invRecv1(o_9)] && qpRange1(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -500,8 +500,8 @@ procedure test00(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -513,7 +513,7 @@ procedure test00(xs: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@8.12--8.59) [3399]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@8.12--8.59) [182397]"}
       (forall x_3: Ref, x_3_1: Ref ::
       
       (((x_3 != x_3_1 && xs[x_3]) && xs[x_3_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_3 != x_3_1
@@ -524,9 +524,9 @@ procedure test00(xs: (Set Ref)) returns ()
         { PostHeap[x_3, f_7] } { QPMask[x_3, f_7] } { xs[x_3] }
         xs[x_3] ==> qpRange2(x_3) && invRecv2(x_3) == x_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        xs[invRecv2(o_4)] && qpRange2(o_4) ==> invRecv2(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        xs[invRecv2(o_9)] && qpRange2(o_9) ==> invRecv2(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -536,13 +536,13 @@ procedure test00(xs: (Set Ref)) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (xs[invRecv2(o_4)] && qpRange2(o_4) ==> invRecv2(o_4) == o_4 && PostMask[o_4, f_7] < QPMask[o_4, f_7]) && (!(xs[invRecv2(o_4)] && qpRange2(o_4)) ==> QPMask[o_4, f_7] == PostMask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (xs[invRecv2(o_9)] && qpRange2(o_9) ==> invRecv2(o_9) == o_9 && PostMask[o_9, f_7] < QPMask[o_9, f_7]) && (!(xs[invRecv2(o_9)] && qpRange2(o_9)) ==> QPMask[o_9, f_7] == PostMask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -552,62 +552,62 @@ procedure test00(xs: (Set Ref)) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
-    assert {:msg "  Postcondition of test00 might not hold. There might be insufficient permission to access x.f (constraining_permissions.vpr@8.12--8.59) [3400]"}
-      (forall x_4: Ref ::
+    assert {:msg "  Postcondition of test00 might not hold. There might be insufficient permission to access x.f (constraining_permissions.vpr@8.12--8.59) [182398]"}
+      (forall x_4_2: Ref ::
       
-      xs[x_4] ==> Mask[x_4, f_7] > NoPerm
+      xs[x_4_2] ==> Mask[x_4_2, f_7] > NoPerm
     );
-    assume (forall x_4: Ref ::
+    assume (forall x_4_2: Ref ::
       
-      xs[x_4] ==> wildcard < Mask[x_4, f_7]
+      xs[x_4_2] ==> wildcard < Mask[x_4_2, f_7]
     );
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of test00 might not hold. Fraction wildcard might be negative. (constraining_permissions.vpr@8.12--8.59) [3401]"}
-        (forall x_4: Ref ::
-        { Heap[x_4, f_7] } { QPMask[x_4, f_7] } { xs[x_4] }
-        xs[x_4] && dummyFunction(Heap[x_4, f_7]) ==> wildcard >= NoPerm
+      assert {:msg "  Postcondition of test00 might not hold. Fraction wildcard might be negative. (constraining_permissions.vpr@8.12--8.59) [182399]"}
+        (forall x_4_2: Ref ::
+        { Heap[x_4_2, f_7] } { QPMask[x_4_2, f_7] } { xs[x_4_2] }
+        xs[x_4_2] && dummyFunction(Heap[x_4_2, f_7]) ==> wildcard >= NoPerm
       );
     
     // -- check if receiver x is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@8.12--8.59) [3402]"}
-        (forall x_4: Ref, x_4_1: Ref ::
-        { neverTriggered3(x_4), neverTriggered3(x_4_1) }
-        (((x_4 != x_4_1 && xs[x_4]) && xs[x_4_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_4 != x_4_1
+      assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@8.12--8.59) [182400]"}
+        (forall x_4_2: Ref, x_4_3: Ref ::
+        { neverTriggered3(x_4_2), neverTriggered3(x_4_3) }
+        (((x_4_2 != x_4_3 && xs[x_4_2]) && xs[x_4_3]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_4_2 != x_4_3
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of test00 might not hold. There might be insufficient permission to access x.f (constraining_permissions.vpr@8.12--8.59) [3403]"}
-        (forall x_4: Ref ::
-        { Heap[x_4, f_7] } { QPMask[x_4, f_7] } { xs[x_4] }
-        xs[x_4] ==> Mask[x_4, f_7] > NoPerm
+      assert {:msg "  Postcondition of test00 might not hold. There might be insufficient permission to access x.f (constraining_permissions.vpr@8.12--8.59) [182401]"}
+        (forall x_4_2: Ref ::
+        { Heap[x_4_2, f_7] } { QPMask[x_4_2, f_7] } { xs[x_4_2] }
+        xs[x_4_2] ==> Mask[x_4_2, f_7] > NoPerm
       );
     
     // -- assumptions for inverse of receiver x
-      assume (forall x_4: Ref ::
-        { Heap[x_4, f_7] } { QPMask[x_4, f_7] } { xs[x_4] }
-        xs[x_4] && NoPerm < wildcard ==> qpRange3(x_4) && invRecv3(x_4) == x_4
+      assume (forall x_4_2: Ref ::
+        { Heap[x_4_2, f_7] } { QPMask[x_4_2, f_7] } { xs[x_4_2] }
+        xs[x_4_2] && NoPerm < wildcard ==> qpRange3(x_4_2) && invRecv3(x_4_2) == x_4_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        xs[invRecv3(o_4)] && (NoPerm < wildcard && qpRange3(o_4)) ==> invRecv3(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        xs[invRecv3(o_9)] && (NoPerm < wildcard && qpRange3(o_9)) ==> invRecv3(o_9) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (xs[invRecv3(o_4)] && (NoPerm < wildcard && qpRange3(o_4)) ==> invRecv3(o_4) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - wildcard) && (!(xs[invRecv3(o_4)] && (NoPerm < wildcard && qpRange3(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (xs[invRecv3(o_9)] && (NoPerm < wildcard && qpRange3(o_9)) ==> invRecv3(o_9) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - wildcard) && (!(xs[invRecv3(o_9)] && (NoPerm < wildcard && qpRange3(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -625,12 +625,12 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -645,7 +645,7 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@12.12--12.59) [3404]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@12.12--12.59) [182402]"}
       (forall x_1: Ref, x_1_1: Ref ::
       
       (((x_1 != x_1_1 && xs[x_1]) && xs[x_1_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_1 != x_1_1
@@ -656,9 +656,9 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
         { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { xs[x_1] }
         xs[x_1] ==> qpRange4(x_1) && invRecv4(x_1) == x_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        xs[invRecv4(o_4)] && qpRange4(o_4) ==> invRecv4(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        xs[invRecv4(o_9)] && qpRange4(o_9) ==> invRecv4(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -668,13 +668,13 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (xs[invRecv4(o_4)] && qpRange4(o_4) ==> invRecv4(o_4) == o_4 && Mask[o_4, f_7] < QPMask[o_4, f_7]) && (!(xs[invRecv4(o_4)] && qpRange4(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (xs[invRecv4(o_9)] && qpRange4(o_9) ==> invRecv4(o_9) == o_9 && Mask[o_9, f_7] < QPMask[o_9, f_7]) && (!(xs[invRecv4(o_9)] && qpRange4(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -685,7 +685,7 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@13.12--13.59) [3405]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@13.12--13.59) [182403]"}
       (forall x_3: Ref, x_3_1: Ref ::
       
       (((x_3 != x_3_1 && ys[x_3]) && ys[x_3_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_3 != x_3_1
@@ -696,9 +696,9 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
         { Heap[x_3, f_7] } { QPMask[x_3, f_7] } { ys[x_3] }
         ys[x_3] ==> qpRange5(x_3) && invRecv5(x_3) == x_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        ys[invRecv5(o_4)] && qpRange5(o_4) ==> invRecv5(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        ys[invRecv5(o_9)] && qpRange5(o_9) ==> invRecv5(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -708,13 +708,13 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (ys[invRecv5(o_4)] && qpRange5(o_4) ==> invRecv5(o_4) == o_4 && Mask[o_4, f_7] < QPMask[o_4, f_7]) && (!(ys[invRecv5(o_4)] && qpRange5(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (ys[invRecv5(o_9)] && qpRange5(o_9) ==> invRecv5(o_9) == o_9 && Mask[o_9, f_7] < QPMask[o_9, f_7]) && (!(ys[invRecv5(o_9)] && qpRange5(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -723,8 +723,8 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -736,7 +736,7 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@14.12--14.70) [3406]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@14.12--14.70) [182404]"}
       (forall x_5: Ref, x_5_1: Ref ::
       
       (((x_5 != x_5_1 && Set#Union(xs, ys)[x_5]) && Set#Union(xs, ys)[x_5_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_5 != x_5_1
@@ -747,9 +747,9 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
         { PostHeap[x_5, f_7] } { QPMask[x_5, f_7] } { Set#Union(xs, ys)[x_5] }
         Set#Union(xs, ys)[x_5] ==> qpRange6(x_5) && invRecv6(x_5) == x_5
       );
-      assume (forall o_4: Ref ::
-        { invRecv6(o_4) }
-        Set#Union(xs, ys)[invRecv6(o_4)] && qpRange6(o_4) ==> invRecv6(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv6(o_9) }
+        Set#Union(xs, ys)[invRecv6(o_9)] && qpRange6(o_9) ==> invRecv6(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -759,13 +759,13 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Set#Union(xs, ys)[invRecv6(o_4)] && qpRange6(o_4) ==> invRecv6(o_4) == o_4 && PostMask[o_4, f_7] < QPMask[o_4, f_7]) && (!(Set#Union(xs, ys)[invRecv6(o_4)] && qpRange6(o_4)) ==> QPMask[o_4, f_7] == PostMask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Set#Union(xs, ys)[invRecv6(o_9)] && qpRange6(o_9) ==> invRecv6(o_9) == o_9 && PostMask[o_9, f_7] < QPMask[o_9, f_7]) && (!(Set#Union(xs, ys)[invRecv6(o_9)] && qpRange6(o_9)) ==> QPMask[o_9, f_7] == PostMask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -775,12 +775,12 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
-    assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access x.f (constraining_permissions.vpr@14.12--14.70) [3407]"}
+    assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access x.f (constraining_permissions.vpr@14.12--14.70) [182405]"}
       (forall x_6: Ref ::
       
       Set#Union(xs, ys)[x_6] ==> Mask[x_6, f_7] > NoPerm
@@ -791,21 +791,21 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
     );
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of test01 might not hold. Fraction wildcard might be negative. (constraining_permissions.vpr@14.12--14.70) [3408]"}
+      assert {:msg "  Postcondition of test01 might not hold. Fraction wildcard might be negative. (constraining_permissions.vpr@14.12--14.70) [182406]"}
         (forall x_6: Ref ::
         { Heap[x_6, f_7] } { QPMask[x_6, f_7] } { Set#Union(xs, ys)[x_6] }
         Set#Union(xs, ys)[x_6] && dummyFunction(Heap[x_6, f_7]) ==> wildcard >= NoPerm
       );
     
     // -- check if receiver x is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@14.12--14.70) [3409]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@14.12--14.70) [182407]"}
         (forall x_6: Ref, x_6_1: Ref ::
         { neverTriggered7(x_6), neverTriggered7(x_6_1) }
         (((x_6 != x_6_1 && Set#Union(xs, ys)[x_6]) && Set#Union(xs, ys)[x_6_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_6 != x_6_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access x.f (constraining_permissions.vpr@14.12--14.70) [3410]"}
+      assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access x.f (constraining_permissions.vpr@14.12--14.70) [182408]"}
         (forall x_6: Ref ::
         { Heap[x_6, f_7] } { QPMask[x_6, f_7] } { Set#Union(xs, ys)[x_6] }
         Set#Union(xs, ys)[x_6] ==> Mask[x_6, f_7] > NoPerm
@@ -816,21 +816,21 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
         { Heap[x_6, f_7] } { QPMask[x_6, f_7] } { Set#Union(xs, ys)[x_6] }
         Set#Union(xs, ys)[x_6] && NoPerm < wildcard ==> qpRange7(x_6) && invRecv7(x_6) == x_6
       );
-      assume (forall o_4: Ref ::
-        { invRecv7(o_4) }
-        Set#Union(xs, ys)[invRecv7(o_4)] && (NoPerm < wildcard && qpRange7(o_4)) ==> invRecv7(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv7(o_9) }
+        Set#Union(xs, ys)[invRecv7(o_9)] && (NoPerm < wildcard && qpRange7(o_9)) ==> invRecv7(o_9) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Set#Union(xs, ys)[invRecv7(o_4)] && (NoPerm < wildcard && qpRange7(o_4)) ==> invRecv7(o_4) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - wildcard) && (!(Set#Union(xs, ys)[invRecv7(o_4)] && (NoPerm < wildcard && qpRange7(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Set#Union(xs, ys)[invRecv7(o_9)] && (NoPerm < wildcard && qpRange7(o_9)) ==> invRecv7(o_9) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - wildcard) && (!(Set#Union(xs, ys)[invRecv7(o_9)] && (NoPerm < wildcard && qpRange7(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -848,10 +848,10 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var k0: Perm;
   
@@ -871,7 +871,7 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@18.12--18.59) [3411]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (constraining_permissions.vpr@18.12--18.59) [182409]"}
       (forall x_1: Ref, x_1_1: Ref ::
       
       (((x_1 != x_1_1 && xs[x_1]) && xs[x_1_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_1 != x_1_1
@@ -882,9 +882,9 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
         { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { xs[x_1] }
         xs[x_1] ==> qpRange8(x_1) && invRecv8(x_1) == x_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv8(o_4) }
-        xs[invRecv8(o_4)] && qpRange8(o_4) ==> invRecv8(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv8(o_9) }
+        xs[invRecv8(o_9)] && qpRange8(o_9) ==> invRecv8(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -894,13 +894,13 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (xs[invRecv8(o_4)] && qpRange8(o_4) ==> invRecv8(o_4) == o_4 && Mask[o_4, f_7] < QPMask[o_4, f_7]) && (!(xs[invRecv8(o_4)] && qpRange8(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (xs[invRecv8(o_9)] && qpRange8(o_9) ==> invRecv8(o_9) == o_9 && Mask[o_9, f_7] < QPMask[o_9, f_7]) && (!(xs[invRecv8(o_9)] && qpRange8(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -911,16 +911,16 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if ((y in xs)) -- constraining_permissions.vpr@21.3--23.4
     if (xs[y]) {
       
       // -- Translating statement: exhale acc(y.f, wildcard) -- constraining_permissions.vpr@22.5--22.30
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (constraining_permissions.vpr@22.12--22.30) [3412]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (constraining_permissions.vpr@22.12--22.30) [182410]"}
           Mask[y, f_7] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[y, f_7];
@@ -936,8 +936,8 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
   // -- Translating statement: exhale (forall x: Ref ::
   //     { (x in (xs setminus Set(y))) }
   //     (x in (xs setminus Set(y))) ==> acc(x.f, wildcard)) -- constraining_permissions.vpr@25.3--25.75
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { (x in (xs setminus Set(y))) } (x in (xs setminus Set(y))) ==> acc(x.f, wildcard))
       if (*) {
@@ -946,7 +946,7 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
-    assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (constraining_permissions.vpr@25.10--25.75) [3413]"}
+    assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (constraining_permissions.vpr@25.10--25.75) [182411]"}
       (forall x_3: Ref ::
       
       Set#Difference(xs, Set#Singleton(y))[x_3] ==> Mask[x_3, f_7] > NoPerm
@@ -957,21 +957,21 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
     );
     
     // -- check that the permission amount is positive
-      assert {:msg "  Exhale might fail. Fraction wildcard might be negative. (constraining_permissions.vpr@25.10--25.75) [3414]"}
+      assert {:msg "  Exhale might fail. Fraction wildcard might be negative. (constraining_permissions.vpr@25.10--25.75) [182412]"}
         (forall x_3: Ref ::
         { Heap[x_3, f_7] } { QPMask[x_3, f_7] } { Set#Difference(xs, Set#Singleton(y))[x_3] }
         Set#Difference(xs, Set#Singleton(y))[x_3] && dummyFunction(Heap[x_3, f_7]) ==> wildcard >= NoPerm
       );
     
     // -- check if receiver x is injective
-      assert {:msg "  Exhale might fail. Quantified resource x.f might not be injective. (constraining_permissions.vpr@25.10--25.75) [3415]"}
+      assert {:msg "  Exhale might fail. Quantified resource x.f might not be injective. (constraining_permissions.vpr@25.10--25.75) [182413]"}
         (forall x_3: Ref, x_3_1: Ref ::
         { neverTriggered9(x_3), neverTriggered9(x_3_1) }
         (((x_3 != x_3_1 && Set#Difference(xs, Set#Singleton(y))[x_3]) && Set#Difference(xs, Set#Singleton(y))[x_3_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_3 != x_3_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (constraining_permissions.vpr@25.10--25.75) [3416]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (constraining_permissions.vpr@25.10--25.75) [182414]"}
         (forall x_3: Ref ::
         { Heap[x_3, f_7] } { QPMask[x_3, f_7] } { Set#Difference(xs, Set#Singleton(y))[x_3] }
         Set#Difference(xs, Set#Singleton(y))[x_3] ==> Mask[x_3, f_7] > NoPerm
@@ -982,21 +982,21 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
         { Heap[x_3, f_7] } { QPMask[x_3, f_7] } { Set#Difference(xs, Set#Singleton(y))[x_3] }
         Set#Difference(xs, Set#Singleton(y))[x_3] && NoPerm < wildcard ==> qpRange9(x_3) && invRecv9(x_3) == x_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv9(o_4) }
-        Set#Difference(xs, Set#Singleton(y))[invRecv9(o_4)] && (NoPerm < wildcard && qpRange9(o_4)) ==> invRecv9(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv9(o_9) }
+        Set#Difference(xs, Set#Singleton(y))[invRecv9(o_9)] && (NoPerm < wildcard && qpRange9(o_9)) ==> invRecv9(o_9) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Set#Difference(xs, Set#Singleton(y))[invRecv9(o_4)] && (NoPerm < wildcard && qpRange9(o_4)) ==> invRecv9(o_4) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - wildcard) && (!(Set#Difference(xs, Set#Singleton(y))[invRecv9(o_4)] && (NoPerm < wildcard && qpRange9(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Set#Difference(xs, Set#Singleton(y))[invRecv9(o_9)] && (NoPerm < wildcard && qpRange9(o_9)) ==> invRecv9(o_9) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - wildcard) && (!(Set#Difference(xs, Set#Singleton(y))[invRecv9(o_9)] && (NoPerm < wildcard && qpRange9(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -1006,8 +1006,8 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, wildcard)) -- constraining_permissions.vpr@26.3--26.57
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, wildcard))
       if (*) {
@@ -1016,7 +1016,7 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
-    assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (constraining_permissions.vpr@26.10--26.57) [3417]"}
+    assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (constraining_permissions.vpr@26.10--26.57) [182415]"}
       (forall x_5: Ref ::
       
       xs[x_5] ==> Mask[x_5, f_7] > NoPerm
@@ -1027,21 +1027,21 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
     );
     
     // -- check that the permission amount is positive
-      assert {:msg "  Exhale might fail. Fraction wildcard might be negative. (constraining_permissions.vpr@26.10--26.57) [3418]"}
+      assert {:msg "  Exhale might fail. Fraction wildcard might be negative. (constraining_permissions.vpr@26.10--26.57) [182416]"}
         (forall x_5: Ref ::
         { Heap[x_5, f_7] } { QPMask[x_5, f_7] } { xs[x_5] }
         xs[x_5] && dummyFunction(Heap[x_5, f_7]) ==> wildcard >= NoPerm
       );
     
     // -- check if receiver x is injective
-      assert {:msg "  Exhale might fail. Quantified resource x.f might not be injective. (constraining_permissions.vpr@26.10--26.57) [3419]"}
+      assert {:msg "  Exhale might fail. Quantified resource x.f might not be injective. (constraining_permissions.vpr@26.10--26.57) [182417]"}
         (forall x_5: Ref, x_5_1: Ref ::
         { neverTriggered10(x_5), neverTriggered10(x_5_1) }
         (((x_5 != x_5_1 && xs[x_5]) && xs[x_5_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_5 != x_5_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (constraining_permissions.vpr@26.10--26.57) [3420]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (constraining_permissions.vpr@26.10--26.57) [182418]"}
         (forall x_5: Ref ::
         { Heap[x_5, f_7] } { QPMask[x_5, f_7] } { xs[x_5] }
         xs[x_5] ==> Mask[x_5, f_7] > NoPerm
@@ -1052,21 +1052,21 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
         { Heap[x_5, f_7] } { QPMask[x_5, f_7] } { xs[x_5] }
         xs[x_5] && NoPerm < wildcard ==> qpRange10(x_5) && invRecv10(x_5) == x_5
       );
-      assume (forall o_4: Ref ::
-        { invRecv10(o_4) }
-        xs[invRecv10(o_4)] && (NoPerm < wildcard && qpRange10(o_4)) ==> invRecv10(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv10(o_9) }
+        xs[invRecv10(o_9)] && (NoPerm < wildcard && qpRange10(o_9)) ==> invRecv10(o_9) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (xs[invRecv10(o_4)] && (NoPerm < wildcard && qpRange10(o_4)) ==> invRecv10(o_4) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - wildcard) && (!(xs[invRecv10(o_4)] && (NoPerm < wildcard && qpRange10(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (xs[invRecv10(o_9)] && (NoPerm < wildcard && qpRange10(o_9)) ==> invRecv10(o_9) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - wildcard) && (!(xs[invRecv10(o_9)] && (NoPerm < wildcard && qpRange10(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -1081,8 +1081,8 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, k0)) -- constraining_permissions.vpr@31.3--31.51
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, k0))
       if (*) {
@@ -1091,21 +1091,21 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Exhale might fail. Fraction k0 might be negative. (constraining_permissions.vpr@31.10--31.51) [3421]"}
+      assert {:msg "  Exhale might fail. Fraction k0 might be negative. (constraining_permissions.vpr@31.10--31.51) [182419]"}
         (forall x_7: Ref ::
         { Heap[x_7, f_7] } { QPMask[x_7, f_7] } { xs[x_7] }
         xs[x_7] && dummyFunction(Heap[x_7, f_7]) ==> k0 >= NoPerm
       );
     
     // -- check if receiver x is injective
-      assert {:msg "  Exhale might fail. Quantified resource x.f might not be injective. (constraining_permissions.vpr@31.10--31.51) [3422]"}
+      assert {:msg "  Exhale might fail. Quantified resource x.f might not be injective. (constraining_permissions.vpr@31.10--31.51) [182420]"}
         (forall x_7: Ref, x_7_1: Ref ::
         { neverTriggered11(x_7), neverTriggered11(x_7_1) }
         (((x_7 != x_7_1 && xs[x_7]) && xs[x_7_1]) && NoPerm < k0) && NoPerm < k0 ==> x_7 != x_7_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (constraining_permissions.vpr@31.10--31.51) [3423]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (constraining_permissions.vpr@31.10--31.51) [182421]"}
         (forall x_7: Ref ::
         { Heap[x_7, f_7] } { QPMask[x_7, f_7] } { xs[x_7] }
         xs[x_7] ==> Mask[x_7, f_7] >= k0
@@ -1116,21 +1116,21 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
         { Heap[x_7, f_7] } { QPMask[x_7, f_7] } { xs[x_7] }
         xs[x_7] && NoPerm < k0 ==> qpRange11(x_7) && invRecv11(x_7) == x_7
       );
-      assume (forall o_4: Ref ::
-        { invRecv11(o_4) }
-        xs[invRecv11(o_4)] && (NoPerm < k0 && qpRange11(o_4)) ==> invRecv11(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv11(o_9) }
+        xs[invRecv11(o_9)] && (NoPerm < k0 && qpRange11(o_9)) ==> invRecv11(o_9) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (xs[invRecv11(o_4)] && (NoPerm < k0 && qpRange11(o_4)) ==> invRecv11(o_4) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - k0) && (!(xs[invRecv11(o_4)] && (NoPerm < k0 && qpRange11(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (xs[invRecv11(o_9)] && (NoPerm < k0 && qpRange11(o_9)) ==> invRecv11(o_9) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - k0) && (!(xs[invRecv11(o_9)] && (NoPerm < k0 && qpRange11(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale

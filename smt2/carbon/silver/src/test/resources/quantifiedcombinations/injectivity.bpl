@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:00:30
+// Date:         2025-01-26 21:41:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedcombinations/injectivity.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedcombinations/injectivity-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_23: Ref, f_25: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_23, f_25] }
-  Heap[o_23, $allocated] ==> Heap[Heap[o_23, f_25], $allocated]
+axiom (forall o_7: Ref, f_13: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_7, f_13] }
+  Heap[o_7, $allocated] ==> Heap[Heap[o_7, f_13], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_24: Ref, f_26: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_24, f_26] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_24, f_26) ==> Heap[o_24, f_26] == ExhaleHeap[o_24, f_26]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_8: Ref, f_14: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_8, f_14] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_8, f_14) ==> Heap[o_8, f_14] == ExhaleHeap[o_8, f_14]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_7: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_7), ExhaleHeap[null, PredicateMaskField(pm_f_7)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_7) && IsPredicateField(pm_f_7) ==> Heap[null, PredicateMaskField(pm_f_7)] == ExhaleHeap[null, PredicateMaskField(pm_f_7)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2), ExhaleHeap[null, PredicateMaskField(pm_f_2)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> Heap[null, PredicateMaskField(pm_f_2)] == ExhaleHeap[null, PredicateMaskField(pm_f_2)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_7: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_7) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_7) && IsPredicateField(pm_f_7) ==> (forall <A, B> o2_7: Ref, f_26: (Field A B) ::
-    { ExhaleHeap[o2_7, f_26] }
-    Heap[null, PredicateMaskField(pm_f_7)][o2_7, f_26] ==> Heap[o2_7, f_26] == ExhaleHeap[o2_7, f_26]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_14: (Field A B) ::
+    { ExhaleHeap[o2_2, f_14] }
+    Heap[null, PredicateMaskField(pm_f_2)][o2_2, f_14] ==> Heap[o2_2, f_14] == ExhaleHeap[o2_2, f_14]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_7: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_7), ExhaleHeap[null, WandMaskField(pm_f_7)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_7) && IsWandField(pm_f_7) ==> Heap[null, WandMaskField(pm_f_7)] == ExhaleHeap[null, WandMaskField(pm_f_7)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2), ExhaleHeap[null, WandMaskField(pm_f_2)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> Heap[null, WandMaskField(pm_f_2)] == ExhaleHeap[null, WandMaskField(pm_f_2)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_7: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_7) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_7) && IsWandField(pm_f_7) ==> (forall <A, B> o2_7: Ref, f_26: (Field A B) ::
-    { ExhaleHeap[o2_7, f_26] }
-    Heap[null, WandMaskField(pm_f_7)][o2_7, f_26] ==> Heap[o2_7, f_26] == ExhaleHeap[o2_7, f_26]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_14: (Field A B) ::
+    { ExhaleHeap[o2_2, f_14] }
+    Heap[null, WandMaskField(pm_f_2)][o2_2, f_14] ==> Heap[o2_2, f_14] == ExhaleHeap[o2_2, f_14]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_24: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_24, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_24, $allocated] ==> ExhaleHeap[o_24, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_8: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_8, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_8, $allocated] ==> ExhaleHeap[o_8, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_23: Ref, f_27: (Field A B), v: B ::
-  { Heap[o_23, f_27:=v] }
-  succHeap(Heap, Heap[o_23, f_27:=v])
+axiom (forall <A, B> Heap: HeapType, o_7: Ref, f_15: (Field A B), v: B ::
+  { Heap[o_7, f_15:=v] }
+  succHeap(Heap, Heap[o_7, f_15:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -148,17 +148,17 @@ function  neverTriggered1(x_1: Ref): bool;
 function  neverTriggered2(x_3: Ref): bool;
 function  neverTriggered3(x_6: Ref): bool;
 function  neverTriggered4(x_7: Ref): bool;
-function  neverTriggered5(x_8_1: Ref): bool;
+function  neverTriggered5(x_8: Ref): bool;
 function  neverTriggered6(x_1: Ref): bool;
 function  neverTriggered7(x_3: Ref): bool;
 function  neverTriggered8(x_5: Ref): bool;
 function  neverTriggered9(x_7: Ref): bool;
-function  neverTriggered10(x_8_1: Ref): bool;
+function  neverTriggered10(x_8: Ref): bool;
 function  neverTriggered11(x_1: Ref): bool;
 function  neverTriggered12(x_3: Ref): bool;
 function  neverTriggered13(x_6: Ref): bool;
 function  neverTriggered14(x_7: Ref): bool;
-function  neverTriggered15(x_8_1: Ref): bool;
+function  neverTriggered15(x_8: Ref): bool;
 function  neverTriggered16(x_1: Ref): bool;
 function  neverTriggered17(x_3: Ref): bool;
 function  neverTriggered18(x_5: Ref): bool;
@@ -695,13 +695,13 @@ axiom (forall a_2: Ref, i: int ::
 );
 function  pred2#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  pred2#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall a_2: Ref, i: int, a2: Ref, i2_1: int ::
-  { pred2(a_2, i), pred2(a2, i2_1) }
-  pred2(a_2, i) == pred2(a2, i2_1) ==> a_2 == a2 && i == i2_1
+axiom (forall a_2: Ref, i: int, a2: Ref, i2: int ::
+  { pred2(a_2, i), pred2(a2, i2) }
+  pred2(a_2, i) == pred2(a2, i2) ==> a_2 == a2 && i == i2
 );
-axiom (forall a_2: Ref, i: int, a2: Ref, i2_1: int ::
-  { pred2#sm(a_2, i), pred2#sm(a2, i2_1) }
-  pred2#sm(a_2, i) == pred2#sm(a2, i2_1) ==> a_2 == a2 && i == i2_1
+axiom (forall a_2: Ref, i: int, a2: Ref, i2: int ::
+  { pred2#sm(a_2, i), pred2#sm(a2, i2) }
+  pred2#sm(a_2, i) == pred2#sm(a2, i2) ==> a_2 == a2 && i == i2
 );
 
 axiom (forall Heap: HeapType, a_2: Ref, i: int ::
@@ -764,7 +764,7 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@17.10--17.46) [102025]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@17.10--17.46) [1333]"}
       (forall x_1: Ref, x_1_1: Ref ::
       
       (((x_1 != x_1_1 && Seq#Contains(xs, x_1)) && Seq#Contains(xs, x_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_1 != x_1_1
@@ -775,9 +775,9 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
         { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { Seq#ContainsTrigger(xs, x_1) } { Seq#Contains(xs, x_1) }
         Seq#Contains(xs, x_1) && NoPerm < FullPerm ==> qpRange1(x_1) && invRecv1(x_1) == x_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (Seq#Contains(xs, invRecv1(o_4)) && NoPerm < FullPerm) && qpRange1(o_4) ==> invRecv1(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (Seq#Contains(xs, invRecv1(o_9)) && NoPerm < FullPerm) && qpRange1(o_9) ==> invRecv1(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -787,13 +787,13 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(xs, invRecv1(o_4)) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> invRecv1(o_4) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv1(o_4)) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(xs, invRecv1(o_9)) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> invRecv1(o_9) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv1(o_9)) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -817,7 +817,7 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
     havoc QPMask;
     
     // -- check if receiver acc(pred1(y), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource pred1(y) might not be injective. (injectivity.vpr@19.9--19.64) [102026]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource pred1(y) might not be injective. (injectivity.vpr@19.9--19.64) [1334]"}
         (forall x_3: Ref, x_3_1: Ref ::
         { neverTriggered2(x_3), neverTriggered2(x_3_1) }
         (((x_3 != x_3_1 && Seq#Contains(xs, x_3)) && Seq#Contains(xs, x_3_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> y != y
@@ -840,9 +840,9 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall a_2: Ref ::
         { QPMask[null, pred1(a_2)] }
@@ -856,7 +856,7 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@19.9--19.64) [102027]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@19.9--19.64) [1335]"}
       (forall x_6: Ref, x_6_1: Ref ::
       
       (((x_6 != x_6_1 && Seq#Contains(xs, x_6)) && Seq#Contains(xs, x_6_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_6 != x_6_1
@@ -867,9 +867,9 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
         { PostHeap[x_6, f_7] } { QPMask[x_6, f_7] } { Seq#ContainsTrigger(xs, x_6) } { Seq#Contains(xs, x_6) }
         Seq#Contains(xs, x_6) && NoPerm < FullPerm ==> qpRange3(x_6) && invRecv3(x_6) == x_6
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (Seq#Contains(xs, invRecv3(o_4)) && NoPerm < FullPerm) && qpRange3(o_4) ==> invRecv3(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (Seq#Contains(xs, invRecv3(o_9)) && NoPerm < FullPerm) && qpRange3(o_9) ==> invRecv3(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -879,13 +879,13 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(xs, invRecv3(o_4)) && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> invRecv3(o_4) == o_4) && QPMask[o_4, f_7] == PostMask[o_4, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv3(o_4)) && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, f_7] == PostMask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(xs, invRecv3(o_9)) && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> invRecv3(o_9) == o_9) && QPMask[o_9, f_7] == PostMask[o_9, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv3(o_9)) && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, f_7] == PostMask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -903,14 +903,14 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
       
     
     // -- check if receiver acc(pred1(y), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource pred1(y) might not be injective. (injectivity.vpr@19.9--19.64) [102028]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource pred1(y) might not be injective. (injectivity.vpr@19.9--19.64) [1336]"}
         (forall x_7: Ref, x_7_1: Ref ::
         { neverTriggered4(x_7), neverTriggered4(x_7_1) }
         (((x_7 != x_7_1 && Seq#Contains(xs, x_7)) && Seq#Contains(xs, x_7_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> y != y
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of test01_1 might not hold. There might be insufficient permission to access pred1(y) (injectivity.vpr@19.9--19.64) [102029]"}
+      assert {:msg "  Postcondition of test01_1 might not hold. There might be insufficient permission to access pred1(y) (injectivity.vpr@19.9--19.64) [1337]"}
         (forall x_7: Ref ::
         { Seq#ContainsTrigger(xs, x_7) } { Seq#Contains(xs, x_7) }
         Seq#Contains(xs, x_7) ==> Mask[null, pred1(y)] >= FullPerm
@@ -937,9 +937,9 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- assume permission updates for independent locations 
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     havoc QPMask;
@@ -948,39 +948,39 @@ procedure test01_1(xs: (Seq Ref), y: Ref) returns ()
       
     
     // -- check if receiver x is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@19.9--19.64) [102030]"}
-        (forall x_8_1: Ref, x_8_2: Ref ::
-        { neverTriggered5(x_8_1), neverTriggered5(x_8_2) }
-        (((x_8_1 != x_8_2 && Seq#Contains(xs, x_8_1)) && Seq#Contains(xs, x_8_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_8_1 != x_8_2
+      assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@19.9--19.64) [1338]"}
+        (forall x_8: Ref, x_8_1: Ref ::
+        { neverTriggered5(x_8), neverTriggered5(x_8_1) }
+        (((x_8 != x_8_1 && Seq#Contains(xs, x_8)) && Seq#Contains(xs, x_8_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_8 != x_8_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of test01_1 might not hold. There might be insufficient permission to access x.f (injectivity.vpr@19.9--19.64) [102031]"}
-        (forall x_8_1: Ref ::
-        { Heap[x_8_1, f_7] } { QPMask[x_8_1, f_7] } { Seq#ContainsTrigger(xs, x_8_1) } { Seq#Contains(xs, x_8_1) }
-        Seq#Contains(xs, x_8_1) ==> Mask[x_8_1, f_7] >= FullPerm
+      assert {:msg "  Postcondition of test01_1 might not hold. There might be insufficient permission to access x.f (injectivity.vpr@19.9--19.64) [1339]"}
+        (forall x_8: Ref ::
+        { Heap[x_8, f_7] } { QPMask[x_8, f_7] } { Seq#ContainsTrigger(xs, x_8) } { Seq#Contains(xs, x_8) }
+        Seq#Contains(xs, x_8) ==> Mask[x_8, f_7] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver x
-      assume (forall x_8_1: Ref ::
-        { Heap[x_8_1, f_7] } { QPMask[x_8_1, f_7] } { Seq#ContainsTrigger(xs, x_8_1) } { Seq#Contains(xs, x_8_1) }
-        Seq#Contains(xs, x_8_1) && NoPerm < FullPerm ==> qpRange5(x_8_1) && invRecv5(x_8_1) == x_8_1
+      assume (forall x_8: Ref ::
+        { Heap[x_8, f_7] } { QPMask[x_8, f_7] } { Seq#ContainsTrigger(xs, x_8) } { Seq#Contains(xs, x_8) }
+        Seq#Contains(xs, x_8) && NoPerm < FullPerm ==> qpRange5(x_8) && invRecv5(x_8) == x_8
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        Seq#Contains(xs, invRecv5(o_4)) && (NoPerm < FullPerm && qpRange5(o_4)) ==> invRecv5(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        Seq#Contains(xs, invRecv5(o_9)) && (NoPerm < FullPerm && qpRange5(o_9)) ==> invRecv5(o_9) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Seq#Contains(xs, invRecv5(o_4)) && (NoPerm < FullPerm && qpRange5(o_4)) ==> invRecv5(o_4) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - FullPerm) && (!(Seq#Contains(xs, invRecv5(o_4)) && (NoPerm < FullPerm && qpRange5(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Seq#Contains(xs, invRecv5(o_9)) && (NoPerm < FullPerm && qpRange5(o_9)) ==> invRecv5(o_9) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - FullPerm) && (!(Seq#Contains(xs, invRecv5(o_9)) && (NoPerm < FullPerm && qpRange5(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -1025,7 +1025,7 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@24.10--24.46) [102032]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@24.10--24.46) [1340]"}
       (forall x_1: Ref, x_1_1: Ref ::
       
       (((x_1 != x_1_1 && Seq#Contains(xs, x_1)) && Seq#Contains(xs, x_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_1 != x_1_1
@@ -1036,9 +1036,9 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
         { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { Seq#ContainsTrigger(xs, x_1) } { Seq#Contains(xs, x_1) }
         Seq#Contains(xs, x_1) && NoPerm < FullPerm ==> qpRange6(x_1) && invRecv6(x_1) == x_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv6(o_4) }
-        (Seq#Contains(xs, invRecv6(o_4)) && NoPerm < FullPerm) && qpRange6(o_4) ==> invRecv6(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv6(o_9) }
+        (Seq#Contains(xs, invRecv6(o_9)) && NoPerm < FullPerm) && qpRange6(o_9) ==> invRecv6(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1048,13 +1048,13 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(xs, invRecv6(o_4)) && NoPerm < FullPerm) && qpRange6(o_4) ==> (NoPerm < FullPerm ==> invRecv6(o_4) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv6(o_4)) && NoPerm < FullPerm) && qpRange6(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(xs, invRecv6(o_9)) && NoPerm < FullPerm) && qpRange6(o_9) ==> (NoPerm < FullPerm ==> invRecv6(o_9) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv6(o_9)) && NoPerm < FullPerm) && qpRange6(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1076,7 +1076,7 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@26.9--26.64) [102033]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@26.9--26.64) [1341]"}
       (forall x_3: Ref, x_3_1: Ref ::
       
       (((x_3 != x_3_1 && Seq#Contains(xs, x_3)) && Seq#Contains(xs, x_3_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_3 != x_3_1
@@ -1087,9 +1087,9 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
         { PostHeap[x_3, f_7] } { QPMask[x_3, f_7] } { Seq#ContainsTrigger(xs, x_3) } { Seq#Contains(xs, x_3) }
         Seq#Contains(xs, x_3) && NoPerm < FullPerm ==> qpRange7(x_3) && invRecv7(x_3) == x_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv7(o_4) }
-        (Seq#Contains(xs, invRecv7(o_4)) && NoPerm < FullPerm) && qpRange7(o_4) ==> invRecv7(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv7(o_9) }
+        (Seq#Contains(xs, invRecv7(o_9)) && NoPerm < FullPerm) && qpRange7(o_9) ==> invRecv7(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1099,13 +1099,13 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(xs, invRecv7(o_4)) && NoPerm < FullPerm) && qpRange7(o_4) ==> (NoPerm < FullPerm ==> invRecv7(o_4) == o_4) && QPMask[o_4, f_7] == PostMask[o_4, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv7(o_4)) && NoPerm < FullPerm) && qpRange7(o_4)) ==> QPMask[o_4, f_7] == PostMask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(xs, invRecv7(o_9)) && NoPerm < FullPerm) && qpRange7(o_9) ==> (NoPerm < FullPerm ==> invRecv7(o_9) == o_9) && QPMask[o_9, f_7] == PostMask[o_9, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv7(o_9)) && NoPerm < FullPerm) && qpRange7(o_9)) ==> QPMask[o_9, f_7] == PostMask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -1117,7 +1117,7 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
     havoc QPMask;
     
     // -- check if receiver acc(pred1(y), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource pred1(y) might not be injective. (injectivity.vpr@26.9--26.64) [102034]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource pred1(y) might not be injective. (injectivity.vpr@26.9--26.64) [1342]"}
         (forall x_5: Ref, x_5_1: Ref ::
         { neverTriggered8(x_5), neverTriggered8(x_5_1) }
         (((x_5 != x_5_1 && Seq#Contains(xs, x_5)) && Seq#Contains(xs, x_5_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> y != y
@@ -1140,9 +1140,9 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall a_2: Ref ::
         { QPMask[null, pred1(a_2)] }
@@ -1164,14 +1164,14 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
       
     
     // -- check if receiver x is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@26.9--26.64) [102035]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@26.9--26.64) [1343]"}
         (forall x_7: Ref, x_7_1: Ref ::
         { neverTriggered9(x_7), neverTriggered9(x_7_1) }
         (((x_7 != x_7_1 && Seq#Contains(xs, x_7)) && Seq#Contains(xs, x_7_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_7 != x_7_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of test01_2 might not hold. There might be insufficient permission to access x.f (injectivity.vpr@26.9--26.64) [102036]"}
+      assert {:msg "  Postcondition of test01_2 might not hold. There might be insufficient permission to access x.f (injectivity.vpr@26.9--26.64) [1344]"}
         (forall x_7: Ref ::
         { Heap[x_7, f_7] } { QPMask[x_7, f_7] } { Seq#ContainsTrigger(xs, x_7) } { Seq#Contains(xs, x_7) }
         Seq#Contains(xs, x_7) ==> Mask[x_7, f_7] >= FullPerm
@@ -1182,21 +1182,21 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
         { Heap[x_7, f_7] } { QPMask[x_7, f_7] } { Seq#ContainsTrigger(xs, x_7) } { Seq#Contains(xs, x_7) }
         Seq#Contains(xs, x_7) && NoPerm < FullPerm ==> qpRange9(x_7) && invRecv9(x_7) == x_7
       );
-      assume (forall o_4: Ref ::
-        { invRecv9(o_4) }
-        Seq#Contains(xs, invRecv9(o_4)) && (NoPerm < FullPerm && qpRange9(o_4)) ==> invRecv9(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv9(o_9) }
+        Seq#Contains(xs, invRecv9(o_9)) && (NoPerm < FullPerm && qpRange9(o_9)) ==> invRecv9(o_9) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Seq#Contains(xs, invRecv9(o_4)) && (NoPerm < FullPerm && qpRange9(o_4)) ==> invRecv9(o_4) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - FullPerm) && (!(Seq#Contains(xs, invRecv9(o_4)) && (NoPerm < FullPerm && qpRange9(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Seq#Contains(xs, invRecv9(o_9)) && (NoPerm < FullPerm && qpRange9(o_9)) ==> invRecv9(o_9) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - FullPerm) && (!(Seq#Contains(xs, invRecv9(o_9)) && (NoPerm < FullPerm && qpRange9(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     havoc QPMask;
@@ -1205,23 +1205,23 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
       
     
     // -- check if receiver acc(pred1(y), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource pred1(y) might not be injective. (injectivity.vpr@26.9--26.64) [102037]"}
-        (forall x_8_1: Ref, x_8_2: Ref ::
-        { neverTriggered10(x_8_1), neverTriggered10(x_8_2) }
-        (((x_8_1 != x_8_2 && Seq#Contains(xs, x_8_1)) && Seq#Contains(xs, x_8_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> y != y
+      assert {:msg "  Contract might not be well-formed. Quantified resource pred1(y) might not be injective. (injectivity.vpr@26.9--26.64) [1345]"}
+        (forall x_8: Ref, x_8_1: Ref ::
+        { neverTriggered10(x_8), neverTriggered10(x_8_1) }
+        (((x_8 != x_8_1 && Seq#Contains(xs, x_8)) && Seq#Contains(xs, x_8_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> y != y
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of test01_2 might not hold. There might be insufficient permission to access pred1(y) (injectivity.vpr@26.9--26.64) [102038]"}
-        (forall x_8_1: Ref ::
-        { Seq#ContainsTrigger(xs, x_8_1) } { Seq#Contains(xs, x_8_1) }
-        Seq#Contains(xs, x_8_1) ==> Mask[null, pred1(y)] >= FullPerm
+      assert {:msg "  Postcondition of test01_2 might not hold. There might be insufficient permission to access pred1(y) (injectivity.vpr@26.9--26.64) [1346]"}
+        (forall x_8: Ref ::
+        { Seq#ContainsTrigger(xs, x_8) } { Seq#Contains(xs, x_8) }
+        Seq#Contains(xs, x_8) ==> Mask[null, pred1(y)] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver acc(pred1(y), write)
-      assume (forall x_8_1: Ref ::
-        { Seq#ContainsTrigger(xs, x_8_1) } { Seq#Contains(xs, x_8_1) }
-        Seq#Contains(xs, x_8_1) && NoPerm < FullPerm ==> invRecv10(y) == x_8_1 && qpRange10(y)
+      assume (forall x_8: Ref ::
+        { Seq#ContainsTrigger(xs, x_8) } { Seq#Contains(xs, x_8) }
+        Seq#Contains(xs, x_8) && NoPerm < FullPerm ==> invRecv10(y) == x_8 && qpRange10(y)
       );
       assume (forall a_1_1: Ref ::
         { invRecv10(a_1_1) }
@@ -1239,9 +1239,9 @@ procedure test01_2(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- assume permission updates for independent locations 
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -1286,7 +1286,7 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@32.11--32.49) [102039]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@32.11--32.49) [1347]"}
       (forall x_1: Ref, x_1_1: Ref ::
       
       (((x_1 != x_1_1 && Seq#Contains(xs, x_1)) && Seq#Contains(xs, x_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_1 != x_1_1
@@ -1297,9 +1297,9 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
         { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { Seq#ContainsTrigger(xs, x_1) } { Seq#Contains(xs, x_1) }
         Seq#Contains(xs, x_1) && NoPerm < FullPerm ==> qpRange11(x_1) && invRecv11(x_1) == x_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv11(o_4) }
-        (Seq#Contains(xs, invRecv11(o_4)) && NoPerm < FullPerm) && qpRange11(o_4) ==> invRecv11(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv11(o_9) }
+        (Seq#Contains(xs, invRecv11(o_9)) && NoPerm < FullPerm) && qpRange11(o_9) ==> invRecv11(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1309,13 +1309,13 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(xs, invRecv11(o_4)) && NoPerm < FullPerm) && qpRange11(o_4) ==> (NoPerm < FullPerm ==> invRecv11(o_4) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv11(o_4)) && NoPerm < FullPerm) && qpRange11(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(xs, invRecv11(o_9)) && NoPerm < FullPerm) && qpRange11(o_9) ==> (NoPerm < FullPerm ==> invRecv11(o_9) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv11(o_9)) && NoPerm < FullPerm) && qpRange11(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1339,7 +1339,7 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
     havoc QPMask;
     
     // -- check if receiver acc(pred2(y, 1), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource pred2(y, 1) might not be injective. (injectivity.vpr@34.10--34.68) [102040]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource pred2(y, 1) might not be injective. (injectivity.vpr@34.10--34.68) [1348]"}
         (forall x_3: Ref, x_3_1: Ref ::
         { neverTriggered12(x_3), neverTriggered12(x_3_1) }
         (((x_3 != x_3_1 && Seq#Contains(xs, x_3)) && Seq#Contains(xs, x_3_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> y != y
@@ -1362,9 +1362,9 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall a_2: Ref, i: int ::
         { QPMask[null, pred2(a_2, i)] }
@@ -1378,7 +1378,7 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@34.10--34.68) [102041]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@34.10--34.68) [1349]"}
       (forall x_6: Ref, x_6_1: Ref ::
       
       (((x_6 != x_6_1 && Seq#Contains(xs, x_6)) && Seq#Contains(xs, x_6_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_6 != x_6_1
@@ -1389,9 +1389,9 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
         { PostHeap[x_6, f_7] } { QPMask[x_6, f_7] } { Seq#ContainsTrigger(xs, x_6) } { Seq#Contains(xs, x_6) }
         Seq#Contains(xs, x_6) && NoPerm < FullPerm ==> qpRange13(x_6) && invRecv13(x_6) == x_6
       );
-      assume (forall o_4: Ref ::
-        { invRecv13(o_4) }
-        (Seq#Contains(xs, invRecv13(o_4)) && NoPerm < FullPerm) && qpRange13(o_4) ==> invRecv13(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv13(o_9) }
+        (Seq#Contains(xs, invRecv13(o_9)) && NoPerm < FullPerm) && qpRange13(o_9) ==> invRecv13(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1401,13 +1401,13 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(xs, invRecv13(o_4)) && NoPerm < FullPerm) && qpRange13(o_4) ==> (NoPerm < FullPerm ==> invRecv13(o_4) == o_4) && QPMask[o_4, f_7] == PostMask[o_4, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv13(o_4)) && NoPerm < FullPerm) && qpRange13(o_4)) ==> QPMask[o_4, f_7] == PostMask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(xs, invRecv13(o_9)) && NoPerm < FullPerm) && qpRange13(o_9) ==> (NoPerm < FullPerm ==> invRecv13(o_9) == o_9) && QPMask[o_9, f_7] == PostMask[o_9, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv13(o_9)) && NoPerm < FullPerm) && qpRange13(o_9)) ==> QPMask[o_9, f_7] == PostMask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -1425,14 +1425,14 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
       
     
     // -- check if receiver acc(pred2(y, 1), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource pred2(y, 1) might not be injective. (injectivity.vpr@34.10--34.68) [102042]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource pred2(y, 1) might not be injective. (injectivity.vpr@34.10--34.68) [1350]"}
         (forall x_7: Ref, x_7_1: Ref ::
         { neverTriggered14(x_7), neverTriggered14(x_7_1) }
         (((x_7 != x_7_1 && Seq#Contains(xs, x_7)) && Seq#Contains(xs, x_7_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> y != y
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of test02 might not hold. There might be insufficient permission to access pred2(y, 1) (injectivity.vpr@34.10--34.68) [102043]"}
+      assert {:msg "  Postcondition of test02 might not hold. There might be insufficient permission to access pred2(y, 1) (injectivity.vpr@34.10--34.68) [1351]"}
         (forall x_7: Ref ::
         { Seq#ContainsTrigger(xs, x_7) } { Seq#Contains(xs, x_7) }
         Seq#Contains(xs, x_7) ==> Mask[null, pred2(y, 1)] >= FullPerm
@@ -1459,9 +1459,9 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- assume permission updates for independent locations 
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     havoc QPMask;
@@ -1470,39 +1470,39 @@ procedure test02(xs: (Seq Ref), y: Ref) returns ()
       
     
     // -- check if receiver x is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@34.10--34.68) [102044]"}
-        (forall x_8_1: Ref, x_8_2: Ref ::
-        { neverTriggered15(x_8_1), neverTriggered15(x_8_2) }
-        (((x_8_1 != x_8_2 && Seq#Contains(xs, x_8_1)) && Seq#Contains(xs, x_8_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_8_1 != x_8_2
+      assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@34.10--34.68) [1352]"}
+        (forall x_8: Ref, x_8_1: Ref ::
+        { neverTriggered15(x_8), neverTriggered15(x_8_1) }
+        (((x_8 != x_8_1 && Seq#Contains(xs, x_8)) && Seq#Contains(xs, x_8_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_8 != x_8_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of test02 might not hold. There might be insufficient permission to access x.f (injectivity.vpr@34.10--34.68) [102045]"}
-        (forall x_8_1: Ref ::
-        { Heap[x_8_1, f_7] } { QPMask[x_8_1, f_7] } { Seq#ContainsTrigger(xs, x_8_1) } { Seq#Contains(xs, x_8_1) }
-        Seq#Contains(xs, x_8_1) ==> Mask[x_8_1, f_7] >= FullPerm
+      assert {:msg "  Postcondition of test02 might not hold. There might be insufficient permission to access x.f (injectivity.vpr@34.10--34.68) [1353]"}
+        (forall x_8: Ref ::
+        { Heap[x_8, f_7] } { QPMask[x_8, f_7] } { Seq#ContainsTrigger(xs, x_8) } { Seq#Contains(xs, x_8) }
+        Seq#Contains(xs, x_8) ==> Mask[x_8, f_7] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver x
-      assume (forall x_8_1: Ref ::
-        { Heap[x_8_1, f_7] } { QPMask[x_8_1, f_7] } { Seq#ContainsTrigger(xs, x_8_1) } { Seq#Contains(xs, x_8_1) }
-        Seq#Contains(xs, x_8_1) && NoPerm < FullPerm ==> qpRange15(x_8_1) && invRecv15(x_8_1) == x_8_1
+      assume (forall x_8: Ref ::
+        { Heap[x_8, f_7] } { QPMask[x_8, f_7] } { Seq#ContainsTrigger(xs, x_8) } { Seq#Contains(xs, x_8) }
+        Seq#Contains(xs, x_8) && NoPerm < FullPerm ==> qpRange15(x_8) && invRecv15(x_8) == x_8
       );
-      assume (forall o_4: Ref ::
-        { invRecv15(o_4) }
-        Seq#Contains(xs, invRecv15(o_4)) && (NoPerm < FullPerm && qpRange15(o_4)) ==> invRecv15(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv15(o_9) }
+        Seq#Contains(xs, invRecv15(o_9)) && (NoPerm < FullPerm && qpRange15(o_9)) ==> invRecv15(o_9) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Seq#Contains(xs, invRecv15(o_4)) && (NoPerm < FullPerm && qpRange15(o_4)) ==> invRecv15(o_4) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - FullPerm) && (!(Seq#Contains(xs, invRecv15(o_4)) && (NoPerm < FullPerm && qpRange15(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Seq#Contains(xs, invRecv15(o_9)) && (NoPerm < FullPerm && qpRange15(o_9)) ==> invRecv15(o_9) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - FullPerm) && (!(Seq#Contains(xs, invRecv15(o_9)) && (NoPerm < FullPerm && qpRange15(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -1540,7 +1540,7 @@ procedure test03_1(xs: (Seq Ref), y: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@39.10--39.46) [102046]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@39.10--39.46) [1354]"}
       (forall x_1: Ref, x_1_1: Ref ::
       
       (((x_1 != x_1_1 && Seq#Contains(xs, x_1)) && Seq#Contains(xs, x_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_1 != x_1_1
@@ -1551,9 +1551,9 @@ procedure test03_1(xs: (Seq Ref), y: Ref) returns ()
         { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { Seq#ContainsTrigger(xs, x_1) } { Seq#Contains(xs, x_1) }
         Seq#Contains(xs, x_1) && NoPerm < FullPerm ==> qpRange16(x_1) && invRecv16(x_1) == x_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv16(o_4) }
-        (Seq#Contains(xs, invRecv16(o_4)) && NoPerm < FullPerm) && qpRange16(o_4) ==> invRecv16(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv16(o_9) }
+        (Seq#Contains(xs, invRecv16(o_9)) && NoPerm < FullPerm) && qpRange16(o_9) ==> invRecv16(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1563,13 +1563,13 @@ procedure test03_1(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(xs, invRecv16(o_4)) && NoPerm < FullPerm) && qpRange16(o_4) ==> (NoPerm < FullPerm ==> invRecv16(o_4) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv16(o_4)) && NoPerm < FullPerm) && qpRange16(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(xs, invRecv16(o_9)) && NoPerm < FullPerm) && qpRange16(o_9) ==> (NoPerm < FullPerm ==> invRecv16(o_9) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv16(o_9)) && NoPerm < FullPerm) && qpRange16(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1598,14 +1598,14 @@ procedure test03_1(xs: (Seq Ref), y: Ref) returns ()
       
     
     // -- check if receiver acc(pred2(x, 1), write) is injective
-      assert {:msg "  Exhale might fail. Quantified resource pred2(x, 1) might not be injective. (injectivity.vpr@42.9--42.66) [102048]"}
+      assert {:msg "  Exhale might fail. Quantified resource pred2(x, 1) might not be injective. (injectivity.vpr@42.9--42.66) [1356]"}
         (forall x_3: Ref, x_3_1: Ref ::
         { neverTriggered17(x_3), neverTriggered17(x_3_1) }
         (((x_3 != x_3_1 && Seq#Contains(xs, x_3)) && Seq#Contains(xs, x_3_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_3 != x_3_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access pred2(x, 1) (injectivity.vpr@42.9--42.66) [102049]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access pred2(x, 1) (injectivity.vpr@42.9--42.66) [1357]"}
         (forall x_3: Ref ::
         { Heap[null, pred2(x_3, 1)] } { Mask[null, pred2(x_3, 1)] } { Seq#ContainsTrigger(xs, x_3) } { Seq#Contains(xs, x_3) }
         Seq#Contains(xs, x_3) ==> Mask[null, pred2(x_3, 1)] >= FullPerm
@@ -1632,9 +1632,9 @@ procedure test03_1(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- assume permission updates for independent locations 
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     
@@ -1648,14 +1648,14 @@ procedure test03_1(xs: (Seq Ref), y: Ref) returns ()
       
     
     // -- check if receiver x is injective
-      assert {:msg "  Exhale might fail. Quantified resource x.f might not be injective. (injectivity.vpr@42.9--42.66) [102051]"}
+      assert {:msg "  Exhale might fail. Quantified resource x.f might not be injective. (injectivity.vpr@42.9--42.66) [1359]"}
         (forall x_5: Ref, x_5_1: Ref ::
         { neverTriggered18(x_5), neverTriggered18(x_5_1) }
         (((x_5 != x_5_1 && Seq#Contains(xs, x_5)) && Seq#Contains(xs, x_5_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_5 != x_5_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (injectivity.vpr@42.9--42.66) [102052]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (injectivity.vpr@42.9--42.66) [1360]"}
         (forall x_5: Ref ::
         { Heap[x_5, f_7] } { QPMask[x_5, f_7] } { Seq#ContainsTrigger(xs, x_5) } { Seq#Contains(xs, x_5) }
         Seq#Contains(xs, x_5) ==> Mask[x_5, f_7] >= FullPerm
@@ -1666,21 +1666,21 @@ procedure test03_1(xs: (Seq Ref), y: Ref) returns ()
         { Heap[x_5, f_7] } { QPMask[x_5, f_7] } { Seq#ContainsTrigger(xs, x_5) } { Seq#Contains(xs, x_5) }
         Seq#Contains(xs, x_5) && NoPerm < FullPerm ==> qpRange18(x_5) && invRecv18(x_5) == x_5
       );
-      assume (forall o_4: Ref ::
-        { invRecv18(o_4) }
-        Seq#Contains(xs, invRecv18(o_4)) && (NoPerm < FullPerm && qpRange18(o_4)) ==> invRecv18(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv18(o_9) }
+        Seq#Contains(xs, invRecv18(o_9)) && (NoPerm < FullPerm && qpRange18(o_9)) ==> invRecv18(o_9) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Seq#Contains(xs, invRecv18(o_4)) && (NoPerm < FullPerm && qpRange18(o_4)) ==> invRecv18(o_4) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - FullPerm) && (!(Seq#Contains(xs, invRecv18(o_4)) && (NoPerm < FullPerm && qpRange18(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Seq#Contains(xs, invRecv18(o_9)) && (NoPerm < FullPerm && qpRange18(o_9)) ==> invRecv18(o_9) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - FullPerm) && (!(Seq#Contains(xs, invRecv18(o_9)) && (NoPerm < FullPerm && qpRange18(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -1719,7 +1719,7 @@ procedure test03_2(xs: (Seq Ref), y: Ref) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@46.10--46.46) [102053]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource x.f might not be injective. (injectivity.vpr@46.10--46.46) [1361]"}
       (forall x_1: Ref, x_1_1: Ref ::
       
       (((x_1 != x_1_1 && Seq#Contains(xs, x_1)) && Seq#Contains(xs, x_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_1 != x_1_1
@@ -1730,9 +1730,9 @@ procedure test03_2(xs: (Seq Ref), y: Ref) returns ()
         { Heap[x_1, f_7] } { QPMask[x_1, f_7] } { Seq#ContainsTrigger(xs, x_1) } { Seq#Contains(xs, x_1) }
         Seq#Contains(xs, x_1) && NoPerm < FullPerm ==> qpRange19(x_1) && invRecv19(x_1) == x_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv19(o_4) }
-        (Seq#Contains(xs, invRecv19(o_4)) && NoPerm < FullPerm) && qpRange19(o_4) ==> invRecv19(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv19(o_9) }
+        (Seq#Contains(xs, invRecv19(o_9)) && NoPerm < FullPerm) && qpRange19(o_9) ==> invRecv19(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1742,13 +1742,13 @@ procedure test03_2(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(xs, invRecv19(o_4)) && NoPerm < FullPerm) && qpRange19(o_4) ==> (NoPerm < FullPerm ==> invRecv19(o_4) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv19(o_4)) && NoPerm < FullPerm) && qpRange19(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(xs, invRecv19(o_9)) && NoPerm < FullPerm) && qpRange19(o_9) ==> (NoPerm < FullPerm ==> invRecv19(o_9) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + FullPerm) && (!((Seq#Contains(xs, invRecv19(o_9)) && NoPerm < FullPerm) && qpRange19(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1775,14 +1775,14 @@ procedure test03_2(xs: (Seq Ref), y: Ref) returns ()
       
     
     // -- check if receiver x is injective
-      assert {:msg "  Exhale might fail. Quantified resource x.f might not be injective. (injectivity.vpr@49.9--49.66) [102055]"}
+      assert {:msg "  Exhale might fail. Quantified resource x.f might not be injective. (injectivity.vpr@49.9--49.66) [1363]"}
         (forall x_3: Ref, x_3_1: Ref ::
         { neverTriggered20(x_3), neverTriggered20(x_3_1) }
         (((x_3 != x_3_1 && Seq#Contains(xs, x_3)) && Seq#Contains(xs, x_3_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_3 != x_3_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (injectivity.vpr@49.9--49.66) [102056]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (injectivity.vpr@49.9--49.66) [1364]"}
         (forall x_3: Ref ::
         { Heap[x_3, f_7] } { QPMask[x_3, f_7] } { Seq#ContainsTrigger(xs, x_3) } { Seq#Contains(xs, x_3) }
         Seq#Contains(xs, x_3) ==> Mask[x_3, f_7] >= FullPerm
@@ -1793,21 +1793,21 @@ procedure test03_2(xs: (Seq Ref), y: Ref) returns ()
         { Heap[x_3, f_7] } { QPMask[x_3, f_7] } { Seq#ContainsTrigger(xs, x_3) } { Seq#Contains(xs, x_3) }
         Seq#Contains(xs, x_3) && NoPerm < FullPerm ==> qpRange20(x_3) && invRecv20(x_3) == x_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv20(o_4) }
-        Seq#Contains(xs, invRecv20(o_4)) && (NoPerm < FullPerm && qpRange20(o_4)) ==> invRecv20(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv20(o_9) }
+        Seq#Contains(xs, invRecv20(o_9)) && (NoPerm < FullPerm && qpRange20(o_9)) ==> invRecv20(o_9) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Seq#Contains(xs, invRecv20(o_4)) && (NoPerm < FullPerm && qpRange20(o_4)) ==> invRecv20(o_4) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - FullPerm) && (!(Seq#Contains(xs, invRecv20(o_4)) && (NoPerm < FullPerm && qpRange20(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Seq#Contains(xs, invRecv20(o_9)) && (NoPerm < FullPerm && qpRange20(o_9)) ==> invRecv20(o_9) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - FullPerm) && (!(Seq#Contains(xs, invRecv20(o_9)) && (NoPerm < FullPerm && qpRange20(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     
@@ -1821,14 +1821,14 @@ procedure test03_2(xs: (Seq Ref), y: Ref) returns ()
       
     
     // -- check if receiver acc(pred2(x, 1), write) is injective
-      assert {:msg "  Exhale might fail. Quantified resource pred2(x, 1) might not be injective. (injectivity.vpr@49.9--49.66) [102058]"}
+      assert {:msg "  Exhale might fail. Quantified resource pred2(x, 1) might not be injective. (injectivity.vpr@49.9--49.66) [1366]"}
         (forall x_5: Ref, x_5_1: Ref ::
         { neverTriggered21(x_5), neverTriggered21(x_5_1) }
         (((x_5 != x_5_1 && Seq#Contains(xs, x_5)) && Seq#Contains(xs, x_5_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_5 != x_5_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access pred2(x, 1) (injectivity.vpr@49.9--49.66) [102059]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access pred2(x, 1) (injectivity.vpr@49.9--49.66) [1367]"}
         (forall x_5: Ref ::
         { Heap[null, pred2(x_5, 1)] } { Mask[null, pred2(x_5, 1)] } { Seq#ContainsTrigger(xs, x_5) } { Seq#Contains(xs, x_5) }
         Seq#Contains(xs, x_5) ==> Mask[null, pred2(x_5, 1)] >= FullPerm
@@ -1855,9 +1855,9 @@ procedure test03_2(xs: (Seq Ref), y: Ref) returns ()
       );
     
     // -- assume permission updates for independent locations 
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:43:10
+; Started: 2025-01-26 21:31:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -48,18 +48,18 @@
 (declare-sort Set<$Ref> 0)
 (declare-sort Set<Int> 0)
 (declare-sort Set<$Snap> 0)
-(declare-sort Inverse_23 0)
-(declare-sort Inverse_22 0)
-(declare-sort Inverse_26 0)
-(declare-sort Inverse_30 0)
-(declare-sort Inverse_29 0)
-(declare-sort Inverse_24 0)
-(declare-sort Inverse_28 0)
-(declare-sort Inverse_25 0)
-(declare-sort Inverse_31 0)
+(declare-sort Inverse_9 0)
+(declare-sort Inverse_5 0)
+(declare-sort Inverse_8 0)
+(declare-sort Inverse_6 0)
+(declare-sort Inverse_2 0)
+(declare-sort Inverse_4 0)
+(declare-sort Inverse_7 0)
+(declare-sort Inverse_0 0)
+(declare-sort Inverse_3 0)
+(declare-sort Inverse_10 0)
 (declare-sort __ns__impure_assume_rewriter 0)
-(declare-sort Inverse_32 0)
-(declare-sort Inverse_27 0)
+(declare-sort Inverse_1 0)
 (declare-sort $FVF<f> 0)
 ; ////////// Sort wrappers
 ; Declaring additional sort wrappers
@@ -149,113 +149,125 @@
     :qid |$Snap.Set<$Snap>To$SnapToSet<$Snap>|
     )))
 ; Declaring additional sort wrappers
-(declare-fun $SortWrappers.Inverse_23To$Snap (Inverse_23) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_23 ($Snap) Inverse_23)
-(assert (forall ((x Inverse_23)) (!
-    (= x ($SortWrappers.$SnapToInverse_23($SortWrappers.Inverse_23To$Snap x)))
-    :pattern (($SortWrappers.Inverse_23To$Snap x))
-    :qid |$Snap.$SnapToInverse_23To$Snap|
+(declare-fun $SortWrappers.Inverse_9To$Snap (Inverse_9) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_9 ($Snap) Inverse_9)
+(assert (forall ((x Inverse_9)) (!
+    (= x ($SortWrappers.$SnapToInverse_9($SortWrappers.Inverse_9To$Snap x)))
+    :pattern (($SortWrappers.Inverse_9To$Snap x))
+    :qid |$Snap.$SnapToInverse_9To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_23To$Snap($SortWrappers.$SnapToInverse_23 x)))
-    :pattern (($SortWrappers.$SnapToInverse_23 x))
-    :qid |$Snap.Inverse_23To$SnapToInverse_23|
+    (= x ($SortWrappers.Inverse_9To$Snap($SortWrappers.$SnapToInverse_9 x)))
+    :pattern (($SortWrappers.$SnapToInverse_9 x))
+    :qid |$Snap.Inverse_9To$SnapToInverse_9|
     )))
-(declare-fun $SortWrappers.Inverse_22To$Snap (Inverse_22) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_22 ($Snap) Inverse_22)
-(assert (forall ((x Inverse_22)) (!
-    (= x ($SortWrappers.$SnapToInverse_22($SortWrappers.Inverse_22To$Snap x)))
-    :pattern (($SortWrappers.Inverse_22To$Snap x))
-    :qid |$Snap.$SnapToInverse_22To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_22To$Snap($SortWrappers.$SnapToInverse_22 x)))
-    :pattern (($SortWrappers.$SnapToInverse_22 x))
-    :qid |$Snap.Inverse_22To$SnapToInverse_22|
-    )))
-(declare-fun $SortWrappers.Inverse_26To$Snap (Inverse_26) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_26 ($Snap) Inverse_26)
-(assert (forall ((x Inverse_26)) (!
-    (= x ($SortWrappers.$SnapToInverse_26($SortWrappers.Inverse_26To$Snap x)))
-    :pattern (($SortWrappers.Inverse_26To$Snap x))
-    :qid |$Snap.$SnapToInverse_26To$Snap|
+(declare-fun $SortWrappers.Inverse_5To$Snap (Inverse_5) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_5 ($Snap) Inverse_5)
+(assert (forall ((x Inverse_5)) (!
+    (= x ($SortWrappers.$SnapToInverse_5($SortWrappers.Inverse_5To$Snap x)))
+    :pattern (($SortWrappers.Inverse_5To$Snap x))
+    :qid |$Snap.$SnapToInverse_5To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_26To$Snap($SortWrappers.$SnapToInverse_26 x)))
-    :pattern (($SortWrappers.$SnapToInverse_26 x))
-    :qid |$Snap.Inverse_26To$SnapToInverse_26|
+    (= x ($SortWrappers.Inverse_5To$Snap($SortWrappers.$SnapToInverse_5 x)))
+    :pattern (($SortWrappers.$SnapToInverse_5 x))
+    :qid |$Snap.Inverse_5To$SnapToInverse_5|
     )))
-(declare-fun $SortWrappers.Inverse_30To$Snap (Inverse_30) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_30 ($Snap) Inverse_30)
-(assert (forall ((x Inverse_30)) (!
-    (= x ($SortWrappers.$SnapToInverse_30($SortWrappers.Inverse_30To$Snap x)))
-    :pattern (($SortWrappers.Inverse_30To$Snap x))
-    :qid |$Snap.$SnapToInverse_30To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_30To$Snap($SortWrappers.$SnapToInverse_30 x)))
-    :pattern (($SortWrappers.$SnapToInverse_30 x))
-    :qid |$Snap.Inverse_30To$SnapToInverse_30|
-    )))
-(declare-fun $SortWrappers.Inverse_29To$Snap (Inverse_29) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_29 ($Snap) Inverse_29)
-(assert (forall ((x Inverse_29)) (!
-    (= x ($SortWrappers.$SnapToInverse_29($SortWrappers.Inverse_29To$Snap x)))
-    :pattern (($SortWrappers.Inverse_29To$Snap x))
-    :qid |$Snap.$SnapToInverse_29To$Snap|
+(declare-fun $SortWrappers.Inverse_8To$Snap (Inverse_8) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_8 ($Snap) Inverse_8)
+(assert (forall ((x Inverse_8)) (!
+    (= x ($SortWrappers.$SnapToInverse_8($SortWrappers.Inverse_8To$Snap x)))
+    :pattern (($SortWrappers.Inverse_8To$Snap x))
+    :qid |$Snap.$SnapToInverse_8To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_29To$Snap($SortWrappers.$SnapToInverse_29 x)))
-    :pattern (($SortWrappers.$SnapToInverse_29 x))
-    :qid |$Snap.Inverse_29To$SnapToInverse_29|
+    (= x ($SortWrappers.Inverse_8To$Snap($SortWrappers.$SnapToInverse_8 x)))
+    :pattern (($SortWrappers.$SnapToInverse_8 x))
+    :qid |$Snap.Inverse_8To$SnapToInverse_8|
     )))
-(declare-fun $SortWrappers.Inverse_24To$Snap (Inverse_24) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_24 ($Snap) Inverse_24)
-(assert (forall ((x Inverse_24)) (!
-    (= x ($SortWrappers.$SnapToInverse_24($SortWrappers.Inverse_24To$Snap x)))
-    :pattern (($SortWrappers.Inverse_24To$Snap x))
-    :qid |$Snap.$SnapToInverse_24To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_24To$Snap($SortWrappers.$SnapToInverse_24 x)))
-    :pattern (($SortWrappers.$SnapToInverse_24 x))
-    :qid |$Snap.Inverse_24To$SnapToInverse_24|
-    )))
-(declare-fun $SortWrappers.Inverse_28To$Snap (Inverse_28) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_28 ($Snap) Inverse_28)
-(assert (forall ((x Inverse_28)) (!
-    (= x ($SortWrappers.$SnapToInverse_28($SortWrappers.Inverse_28To$Snap x)))
-    :pattern (($SortWrappers.Inverse_28To$Snap x))
-    :qid |$Snap.$SnapToInverse_28To$Snap|
+(declare-fun $SortWrappers.Inverse_6To$Snap (Inverse_6) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_6 ($Snap) Inverse_6)
+(assert (forall ((x Inverse_6)) (!
+    (= x ($SortWrappers.$SnapToInverse_6($SortWrappers.Inverse_6To$Snap x)))
+    :pattern (($SortWrappers.Inverse_6To$Snap x))
+    :qid |$Snap.$SnapToInverse_6To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_28To$Snap($SortWrappers.$SnapToInverse_28 x)))
-    :pattern (($SortWrappers.$SnapToInverse_28 x))
-    :qid |$Snap.Inverse_28To$SnapToInverse_28|
+    (= x ($SortWrappers.Inverse_6To$Snap($SortWrappers.$SnapToInverse_6 x)))
+    :pattern (($SortWrappers.$SnapToInverse_6 x))
+    :qid |$Snap.Inverse_6To$SnapToInverse_6|
     )))
-(declare-fun $SortWrappers.Inverse_25To$Snap (Inverse_25) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_25 ($Snap) Inverse_25)
-(assert (forall ((x Inverse_25)) (!
-    (= x ($SortWrappers.$SnapToInverse_25($SortWrappers.Inverse_25To$Snap x)))
-    :pattern (($SortWrappers.Inverse_25To$Snap x))
-    :qid |$Snap.$SnapToInverse_25To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_25To$Snap($SortWrappers.$SnapToInverse_25 x)))
-    :pattern (($SortWrappers.$SnapToInverse_25 x))
-    :qid |$Snap.Inverse_25To$SnapToInverse_25|
-    )))
-(declare-fun $SortWrappers.Inverse_31To$Snap (Inverse_31) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_31 ($Snap) Inverse_31)
-(assert (forall ((x Inverse_31)) (!
-    (= x ($SortWrappers.$SnapToInverse_31($SortWrappers.Inverse_31To$Snap x)))
-    :pattern (($SortWrappers.Inverse_31To$Snap x))
-    :qid |$Snap.$SnapToInverse_31To$Snap|
+(declare-fun $SortWrappers.Inverse_2To$Snap (Inverse_2) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_2 ($Snap) Inverse_2)
+(assert (forall ((x Inverse_2)) (!
+    (= x ($SortWrappers.$SnapToInverse_2($SortWrappers.Inverse_2To$Snap x)))
+    :pattern (($SortWrappers.Inverse_2To$Snap x))
+    :qid |$Snap.$SnapToInverse_2To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_31To$Snap($SortWrappers.$SnapToInverse_31 x)))
-    :pattern (($SortWrappers.$SnapToInverse_31 x))
-    :qid |$Snap.Inverse_31To$SnapToInverse_31|
+    (= x ($SortWrappers.Inverse_2To$Snap($SortWrappers.$SnapToInverse_2 x)))
+    :pattern (($SortWrappers.$SnapToInverse_2 x))
+    :qid |$Snap.Inverse_2To$SnapToInverse_2|
+    )))
+(declare-fun $SortWrappers.Inverse_4To$Snap (Inverse_4) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_4 ($Snap) Inverse_4)
+(assert (forall ((x Inverse_4)) (!
+    (= x ($SortWrappers.$SnapToInverse_4($SortWrappers.Inverse_4To$Snap x)))
+    :pattern (($SortWrappers.Inverse_4To$Snap x))
+    :qid |$Snap.$SnapToInverse_4To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.Inverse_4To$Snap($SortWrappers.$SnapToInverse_4 x)))
+    :pattern (($SortWrappers.$SnapToInverse_4 x))
+    :qid |$Snap.Inverse_4To$SnapToInverse_4|
+    )))
+(declare-fun $SortWrappers.Inverse_7To$Snap (Inverse_7) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_7 ($Snap) Inverse_7)
+(assert (forall ((x Inverse_7)) (!
+    (= x ($SortWrappers.$SnapToInverse_7($SortWrappers.Inverse_7To$Snap x)))
+    :pattern (($SortWrappers.Inverse_7To$Snap x))
+    :qid |$Snap.$SnapToInverse_7To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.Inverse_7To$Snap($SortWrappers.$SnapToInverse_7 x)))
+    :pattern (($SortWrappers.$SnapToInverse_7 x))
+    :qid |$Snap.Inverse_7To$SnapToInverse_7|
+    )))
+(declare-fun $SortWrappers.Inverse_0To$Snap (Inverse_0) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_0 ($Snap) Inverse_0)
+(assert (forall ((x Inverse_0)) (!
+    (= x ($SortWrappers.$SnapToInverse_0($SortWrappers.Inverse_0To$Snap x)))
+    :pattern (($SortWrappers.Inverse_0To$Snap x))
+    :qid |$Snap.$SnapToInverse_0To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.Inverse_0To$Snap($SortWrappers.$SnapToInverse_0 x)))
+    :pattern (($SortWrappers.$SnapToInverse_0 x))
+    :qid |$Snap.Inverse_0To$SnapToInverse_0|
+    )))
+(declare-fun $SortWrappers.Inverse_3To$Snap (Inverse_3) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_3 ($Snap) Inverse_3)
+(assert (forall ((x Inverse_3)) (!
+    (= x ($SortWrappers.$SnapToInverse_3($SortWrappers.Inverse_3To$Snap x)))
+    :pattern (($SortWrappers.Inverse_3To$Snap x))
+    :qid |$Snap.$SnapToInverse_3To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.Inverse_3To$Snap($SortWrappers.$SnapToInverse_3 x)))
+    :pattern (($SortWrappers.$SnapToInverse_3 x))
+    :qid |$Snap.Inverse_3To$SnapToInverse_3|
+    )))
+(declare-fun $SortWrappers.Inverse_10To$Snap (Inverse_10) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_10 ($Snap) Inverse_10)
+(assert (forall ((x Inverse_10)) (!
+    (= x ($SortWrappers.$SnapToInverse_10($SortWrappers.Inverse_10To$Snap x)))
+    :pattern (($SortWrappers.Inverse_10To$Snap x))
+    :qid |$Snap.$SnapToInverse_10To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.Inverse_10To$Snap($SortWrappers.$SnapToInverse_10 x)))
+    :pattern (($SortWrappers.$SnapToInverse_10 x))
+    :qid |$Snap.Inverse_10To$SnapToInverse_10|
     )))
 (declare-fun $SortWrappers.__ns__impure_assume_rewriterTo$Snap (__ns__impure_assume_rewriter) $Snap)
 (declare-fun $SortWrappers.$SnapTo__ns__impure_assume_rewriter ($Snap) __ns__impure_assume_rewriter)
@@ -269,29 +281,17 @@
     :pattern (($SortWrappers.$SnapTo__ns__impure_assume_rewriter x))
     :qid |$Snap.__ns__impure_assume_rewriterTo$SnapTo__ns__impure_assume_rewriter|
     )))
-(declare-fun $SortWrappers.Inverse_32To$Snap (Inverse_32) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_32 ($Snap) Inverse_32)
-(assert (forall ((x Inverse_32)) (!
-    (= x ($SortWrappers.$SnapToInverse_32($SortWrappers.Inverse_32To$Snap x)))
-    :pattern (($SortWrappers.Inverse_32To$Snap x))
-    :qid |$Snap.$SnapToInverse_32To$Snap|
+(declare-fun $SortWrappers.Inverse_1To$Snap (Inverse_1) $Snap)
+(declare-fun $SortWrappers.$SnapToInverse_1 ($Snap) Inverse_1)
+(assert (forall ((x Inverse_1)) (!
+    (= x ($SortWrappers.$SnapToInverse_1($SortWrappers.Inverse_1To$Snap x)))
+    :pattern (($SortWrappers.Inverse_1To$Snap x))
+    :qid |$Snap.$SnapToInverse_1To$Snap|
     )))
 (assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_32To$Snap($SortWrappers.$SnapToInverse_32 x)))
-    :pattern (($SortWrappers.$SnapToInverse_32 x))
-    :qid |$Snap.Inverse_32To$SnapToInverse_32|
-    )))
-(declare-fun $SortWrappers.Inverse_27To$Snap (Inverse_27) $Snap)
-(declare-fun $SortWrappers.$SnapToInverse_27 ($Snap) Inverse_27)
-(assert (forall ((x Inverse_27)) (!
-    (= x ($SortWrappers.$SnapToInverse_27($SortWrappers.Inverse_27To$Snap x)))
-    :pattern (($SortWrappers.Inverse_27To$Snap x))
-    :qid |$Snap.$SnapToInverse_27To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.Inverse_27To$Snap($SortWrappers.$SnapToInverse_27 x)))
-    :pattern (($SortWrappers.$SnapToInverse_27 x))
-    :qid |$Snap.Inverse_27To$SnapToInverse_27|
+    (= x ($SortWrappers.Inverse_1To$Snap($SortWrappers.$SnapToInverse_1 x)))
+    :pattern (($SortWrappers.$SnapToInverse_1 x))
+    :qid |$Snap.Inverse_1To$SnapToInverse_1|
     )))
 ; Declaring additional sort wrappers
 (declare-fun $SortWrappers.$FVF<f>To$Snap ($FVF<f>) $Snap)
@@ -340,8 +340,6 @@
 (declare-fun Set_subset (Set<$Snap> Set<$Snap>) Bool)
 (declare-fun Set_equal (Set<$Snap> Set<$Snap>) Bool)
 (declare-fun Set_skolem_diff (Set<$Snap> Set<$Snap>) $Snap)
-(declare-fun inv_26<Ref> ($Ref) $Ref)
-(declare-fun inv_31<Ref> ($Ref) $Ref)
 (declare-fun __iar__assume_helper_1<Perm> (Bool $Perm $Perm) $Perm)
 (declare-fun __iar__assume_helper_2<Perm> (Bool Bool $Perm $Perm $Perm) $Perm)
 (declare-fun __iar__assume_helper_3<Perm> (Bool Bool Bool $Perm $Perm $Perm $Perm) $Perm)
@@ -352,15 +350,17 @@
 (declare-fun __iar__assume_helper_8<Perm> (Bool Bool Bool Bool Bool Bool Bool Bool $Perm $Perm $Perm $Perm $Perm $Perm $Perm $Perm $Perm) $Perm)
 (declare-fun __iar__assume_helper_9<Perm> (Bool Bool Bool Bool Bool Bool Bool Bool Bool $Perm $Perm $Perm $Perm $Perm $Perm $Perm $Perm $Perm $Perm) $Perm)
 (declare-fun __iar__assume_helper_10<Perm> (Bool Bool Bool Bool Bool Bool Bool Bool Bool Bool $Perm $Perm $Perm $Perm $Perm $Perm $Perm $Perm $Perm $Perm $Perm) $Perm)
-(declare-fun inv_30<Ref> ($Ref) $Ref)
-(declare-fun inv_24<Ref> ($Ref) $Ref)
-(declare-fun inv_25<Ref> ($Ref) $Ref)
-(declare-fun inv_29<Ref> ($Ref) $Ref)
-(declare-fun inv_22<Ref> ($Ref) $Ref)
-(declare-fun inv_28<Ref> ($Ref) $Ref)
-(declare-fun inv_23<Ref> ($Ref) $Ref)
-(declare-fun inv_32<Ref> ($Ref) $Ref)
-(declare-fun inv_27<Ref> ($Ref) $Ref)
+(declare-fun inv_2<Ref> ($Ref) $Ref)
+(declare-fun inv_6<Ref> ($Ref) $Ref)
+(declare-fun inv_7<Ref> ($Ref) $Ref)
+(declare-fun inv_5<Ref> ($Ref) $Ref)
+(declare-fun inv_4<Ref> ($Ref) $Ref)
+(declare-fun inv_10<Ref> ($Ref) $Ref)
+(declare-fun inv_0<Ref> ($Ref) $Ref)
+(declare-fun inv_8<Ref> ($Ref) $Ref)
+(declare-fun inv_9<Ref> ($Ref) $Ref)
+(declare-fun inv_3<Ref> ($Ref) $Ref)
+(declare-fun inv_1<Ref> ($Ref) $Ref)
 ; /field_value_functions_declarations.smt2 [f: Int]
 (declare-fun $FVF.domain_f ($FVF<f>) Set<$Ref>)
 (declare-fun $FVF.lookup_f ($FVF<f> $Ref) Int)
@@ -1022,16 +1022,14 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall x1: Ref ::
-;     { x1.f }
-;     (x1 in xs1) ==> true && inv_22(x1) == x1)
+; inhale (forall x1: Ref :: { x1.f } (x1 in xs1) ==> true && inv_0(x1) == x1)
 (declare-const $t@30@01 $Snap)
 (assert (= $t@30@01 $Snap.unit))
-; [eval] (forall x1: Ref :: { x1.f } (x1 in xs1) ==> true && inv_22(x1) == x1)
+; [eval] (forall x1: Ref :: { x1.f } (x1 in xs1) ==> true && inv_0(x1) == x1)
 (declare-const x1@31@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x1 in xs1) ==> true && inv_22(x1) == x1
+; [eval] (x1 in xs1) ==> true && inv_0(x1) == x1
 ; [eval] (x1 in xs1)
 (push) ; 4
 ; [then-branch: 0 | x1@31@01 in xs1@13@01 | live]
@@ -1039,7 +1037,7 @@
 (push) ; 5
 ; [then-branch: 0 | x1@31@01 in xs1@13@01]
 (assert (Set_in x1@31@01 xs1@13@01))
-; [eval] true && inv_22(x1) == x1
+; [eval] true && inv_0(x1) == x1
 (push) ; 6
 ; [then-branch: 1 | False | live]
 ; [else-branch: 1 | True | live]
@@ -1049,8 +1047,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 1 | True]
-; [eval] inv_22(x1) == x1
-; [eval] inv_22(x1)
+; [eval] inv_0(x1) == x1
+; [eval] inv_0(x1)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -1073,7 +1071,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x1@31@01) x1@31@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@14@11@14@62-aux|)))
 (assert (forall ((x1@31@01 $Ref)) (!
-  (=> (Set_in x1@31@01 xs1@13@01) (= (inv_22<Ref> x1@31@01) x1@31@01))
+  (=> (Set_in x1@31@01 xs1@13@01) (= (inv_0<Ref> x1@31@01) x1@31@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x1@31@01) x1@31@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@14@11@14@62|)))
 ; State saturation: after inhale
@@ -1081,73 +1079,69 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_22(r) }
-;     (inv_22(r) in xs1) ==> inv_22(r) == r)
+; inhale (forall r: Ref :: { inv_0(r) } (inv_0(r) in xs1) ==> inv_0(r) == r)
 (declare-const $t@32@01 $Snap)
 (assert (= $t@32@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_22(r) } (inv_22(r) in xs1) ==> inv_22(r) == r)
+; [eval] (forall r: Ref :: { inv_0(r) } (inv_0(r) in xs1) ==> inv_0(r) == r)
 (declare-const r@33@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_22(r) in xs1) ==> inv_22(r) == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] (inv_0(r) in xs1) ==> inv_0(r) == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 4
-; [then-branch: 2 | inv_22[Ref](r@33@01) in xs1@13@01 | live]
-; [else-branch: 2 | !(inv_22[Ref](r@33@01) in xs1@13@01) | live]
+; [then-branch: 2 | inv_0[Ref](r@33@01) in xs1@13@01 | live]
+; [else-branch: 2 | !(inv_0[Ref](r@33@01) in xs1@13@01) | live]
 (push) ; 5
-; [then-branch: 2 | inv_22[Ref](r@33@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@33@01) xs1@13@01))
-; [eval] inv_22(r) == r
-; [eval] inv_22(r)
+; [then-branch: 2 | inv_0[Ref](r@33@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@33@01) xs1@13@01))
+; [eval] inv_0(r) == r
+; [eval] inv_0(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 2 | !(inv_22[Ref](r@33@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@33@01) xs1@13@01)))
+; [else-branch: 2 | !(inv_0[Ref](r@33@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@33@01) xs1@13@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_22<Ref> r@33@01) xs1@13@01))
-  (Set_in (inv_22<Ref> r@33@01) xs1@13@01)))
+  (not (Set_in (inv_0<Ref> r@33@01) xs1@13@01))
+  (Set_in (inv_0<Ref> r@33@01) xs1@13@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@33@01 $Ref)) (!
   (or
-    (not (Set_in (inv_22<Ref> r@33@01) xs1@13@01))
-    (Set_in (inv_22<Ref> r@33@01) xs1@13@01))
-  :pattern ((inv_22<Ref> r@33@01))
+    (not (Set_in (inv_0<Ref> r@33@01) xs1@13@01))
+    (Set_in (inv_0<Ref> r@33@01) xs1@13@01))
+  :pattern ((inv_0<Ref> r@33@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@14@11@14@62-aux|)))
 (assert (forall ((r@33@01 $Ref)) (!
-  (=> (Set_in (inv_22<Ref> r@33@01) xs1@13@01) (= (inv_22<Ref> r@33@01) r@33@01))
-  :pattern ((inv_22<Ref> r@33@01))
+  (=> (Set_in (inv_0<Ref> r@33@01) xs1@13@01) (= (inv_0<Ref> r@33@01) r@33@01))
+  :pattern ((inv_0<Ref> r@33@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@14@11@14@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_22(r) }
-;     (inv_22(r) in xs1) ==> perm(r.f) >= p)
+; inhale (forall r: Ref :: { inv_0(r) } (inv_0(r) in xs1) ==> perm(r.f) >= p)
 (declare-const $t@34@01 $Snap)
 (assert (= $t@34@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_22(r) } (inv_22(r) in xs1) ==> perm(r.f) >= p)
+; [eval] (forall r: Ref :: { inv_0(r) } (inv_0(r) in xs1) ==> perm(r.f) >= p)
 (declare-const r@35@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_22(r) in xs1) ==> perm(r.f) >= p
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] (inv_0(r) in xs1) ==> perm(r.f) >= p
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 4
-; [then-branch: 3 | inv_22[Ref](r@35@01) in xs1@13@01 | live]
-; [else-branch: 3 | !(inv_22[Ref](r@35@01) in xs1@13@01) | live]
+; [then-branch: 3 | inv_0[Ref](r@35@01) in xs1@13@01 | live]
+; [else-branch: 3 | !(inv_0[Ref](r@35@01) in xs1@13@01) | live]
 (push) ; 5
-; [then-branch: 3 | inv_22[Ref](r@35@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@35@01) xs1@13@01))
+; [then-branch: 3 | inv_0[Ref](r@35@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@35@01) xs1@13@01))
 ; [eval] perm(r.f) >= p
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
@@ -1167,8 +1161,8 @@
 (assert (<= ($FVF.perm_f (as pm@36@01  $FPM) r@35@01) $Perm.Write))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 3 | !(inv_22[Ref](r@35@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@35@01) xs1@13@01)))
+; [else-branch: 3 | !(inv_0[Ref](r@35@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@35@01) xs1@13@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -1183,15 +1177,15 @@
   :pattern (($FVF.perm_f (as pm@36@01  $FPM) r))
   :qid |qp.resTrgDef3|)))
 (assert (=>
-  (Set_in (inv_22<Ref> r@35@01) xs1@13@01)
+  (Set_in (inv_0<Ref> r@35@01) xs1@13@01)
   (and
-    (Set_in (inv_22<Ref> r@35@01) xs1@13@01)
+    (Set_in (inv_0<Ref> r@35@01) xs1@13@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@35@01) r@35@01)
     (<= ($FVF.perm_f (as pm@36@01  $FPM) r@35@01) $Perm.Write))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_22<Ref> r@35@01) xs1@13@01))
-  (Set_in (inv_22<Ref> r@35@01) xs1@13@01)))
+  (not (Set_in (inv_0<Ref> r@35@01) xs1@13@01))
+  (Set_in (inv_0<Ref> r@35@01) xs1@13@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -1208,37 +1202,35 @@
 (assert (forall ((r@35@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_22<Ref> r@35@01) xs1@13@01)
+      (Set_in (inv_0<Ref> r@35@01) xs1@13@01)
       (and
-        (Set_in (inv_22<Ref> r@35@01) xs1@13@01)
+        (Set_in (inv_0<Ref> r@35@01) xs1@13@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@35@01) r@35@01)
         (<= ($FVF.perm_f (as pm@36@01  $FPM) r@35@01) $Perm.Write)))
     (or
-      (not (Set_in (inv_22<Ref> r@35@01) xs1@13@01))
-      (Set_in (inv_22<Ref> r@35@01) xs1@13@01)))
-  :pattern ((inv_22<Ref> r@35@01))
+      (not (Set_in (inv_0<Ref> r@35@01) xs1@13@01))
+      (Set_in (inv_0<Ref> r@35@01) xs1@13@01)))
+  :pattern ((inv_0<Ref> r@35@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@14@11@14@62-aux|)))
 (assert (forall ((r@35@01 $Ref)) (!
   (=>
-    (Set_in (inv_22<Ref> r@35@01) xs1@13@01)
+    (Set_in (inv_0<Ref> r@35@01) xs1@13@01)
     (>= ($FVF.perm_f (as pm@36@01  $FPM) r@35@01) p@25@01))
-  :pattern ((inv_22<Ref> r@35@01))
+  :pattern ((inv_0<Ref> r@35@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@14@11@14@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall x2: Ref ::
-;     { x2.f }
-;     (x2 in xs2) ==> true && inv_23(x2) == x2)
+; inhale (forall x2: Ref :: { x2.f } (x2 in xs2) ==> true && inv_1(x2) == x2)
 (declare-const $t@37@01 $Snap)
 (assert (= $t@37@01 $Snap.unit))
-; [eval] (forall x2: Ref :: { x2.f } (x2 in xs2) ==> true && inv_23(x2) == x2)
+; [eval] (forall x2: Ref :: { x2.f } (x2 in xs2) ==> true && inv_1(x2) == x2)
 (declare-const x2@38@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x2 in xs2) ==> true && inv_23(x2) == x2
+; [eval] (x2 in xs2) ==> true && inv_1(x2) == x2
 ; [eval] (x2 in xs2)
 (push) ; 4
 ; [then-branch: 4 | x2@38@01 in xs2@14@01 | live]
@@ -1246,7 +1238,7 @@
 (push) ; 5
 ; [then-branch: 4 | x2@38@01 in xs2@14@01]
 (assert (Set_in x2@38@01 xs2@14@01))
-; [eval] true && inv_23(x2) == x2
+; [eval] true && inv_1(x2) == x2
 (push) ; 6
 ; [then-branch: 5 | False | live]
 ; [else-branch: 5 | True | live]
@@ -1256,8 +1248,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 5 | True]
-; [eval] inv_23(x2) == x2
-; [eval] inv_23(x2)
+; [eval] inv_1(x2) == x2
+; [eval] inv_1(x2)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -1280,7 +1272,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x2@38@01) x2@38@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@15@11@15@62-aux|)))
 (assert (forall ((x2@38@01 $Ref)) (!
-  (=> (Set_in x2@38@01 xs2@14@01) (= (inv_23<Ref> x2@38@01) x2@38@01))
+  (=> (Set_in x2@38@01 xs2@14@01) (= (inv_1<Ref> x2@38@01) x2@38@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x2@38@01) x2@38@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@15@11@15@62|)))
 ; State saturation: after inhale
@@ -1288,49 +1280,47 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_23(r) }
-;     (inv_23(r) in xs2) ==> inv_23(r) == r)
+; inhale (forall r: Ref :: { inv_1(r) } (inv_1(r) in xs2) ==> inv_1(r) == r)
 (declare-const $t@39@01 $Snap)
 (assert (= $t@39@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_23(r) } (inv_23(r) in xs2) ==> inv_23(r) == r)
+; [eval] (forall r: Ref :: { inv_1(r) } (inv_1(r) in xs2) ==> inv_1(r) == r)
 (declare-const r@40@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_23(r) in xs2) ==> inv_23(r) == r
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+; [eval] (inv_1(r) in xs2) ==> inv_1(r) == r
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 4
-; [then-branch: 6 | inv_23[Ref](r@40@01) in xs2@14@01 | live]
-; [else-branch: 6 | !(inv_23[Ref](r@40@01) in xs2@14@01) | live]
+; [then-branch: 6 | inv_1[Ref](r@40@01) in xs2@14@01 | live]
+; [else-branch: 6 | !(inv_1[Ref](r@40@01) in xs2@14@01) | live]
 (push) ; 5
-; [then-branch: 6 | inv_23[Ref](r@40@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@40@01) xs2@14@01))
-; [eval] inv_23(r) == r
-; [eval] inv_23(r)
+; [then-branch: 6 | inv_1[Ref](r@40@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@40@01) xs2@14@01))
+; [eval] inv_1(r) == r
+; [eval] inv_1(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 6 | !(inv_23[Ref](r@40@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@40@01) xs2@14@01)))
+; [else-branch: 6 | !(inv_1[Ref](r@40@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@40@01) xs2@14@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_23<Ref> r@40@01) xs2@14@01))
-  (Set_in (inv_23<Ref> r@40@01) xs2@14@01)))
+  (not (Set_in (inv_1<Ref> r@40@01) xs2@14@01))
+  (Set_in (inv_1<Ref> r@40@01) xs2@14@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@40@01 $Ref)) (!
   (or
-    (not (Set_in (inv_23<Ref> r@40@01) xs2@14@01))
-    (Set_in (inv_23<Ref> r@40@01) xs2@14@01))
-  :pattern ((inv_23<Ref> r@40@01))
+    (not (Set_in (inv_1<Ref> r@40@01) xs2@14@01))
+    (Set_in (inv_1<Ref> r@40@01) xs2@14@01))
+  :pattern ((inv_1<Ref> r@40@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@15@11@15@62-aux|)))
 (assert (forall ((r@40@01 $Ref)) (!
-  (=> (Set_in (inv_23<Ref> r@40@01) xs2@14@01) (= (inv_23<Ref> r@40@01) r@40@01))
-  :pattern ((inv_23<Ref> r@40@01))
+  (=> (Set_in (inv_1<Ref> r@40@01) xs2@14@01) (= (inv_1<Ref> r@40@01) r@40@01))
+  :pattern ((inv_1<Ref> r@40@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@15@11@15@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -1338,25 +1328,25 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_23(r) }
-;     (inv_23(r) in xs2) ==>
-;     perm(r.f) >= __iar__assume_helper_1((inv_22(r) in xs1) && r == r, p, p))
+;     { inv_1(r) }
+;     (inv_1(r) in xs2) ==>
+;     perm(r.f) >= __iar__assume_helper_1((inv_0(r) in xs1) && r == r, p, p))
 (declare-const $t@41@01 $Snap)
 (assert (= $t@41@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_23(r) } (inv_23(r) in xs2) ==> perm(r.f) >= __iar__assume_helper_1((inv_22(r) in xs1) && r == r, p, p))
+; [eval] (forall r: Ref :: { inv_1(r) } (inv_1(r) in xs2) ==> perm(r.f) >= __iar__assume_helper_1((inv_0(r) in xs1) && r == r, p, p))
 (declare-const r@42@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_23(r) in xs2) ==> perm(r.f) >= __iar__assume_helper_1((inv_22(r) in xs1) && r == r, p, p)
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+; [eval] (inv_1(r) in xs2) ==> perm(r.f) >= __iar__assume_helper_1((inv_0(r) in xs1) && r == r, p, p)
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 4
-; [then-branch: 7 | inv_23[Ref](r@42@01) in xs2@14@01 | live]
-; [else-branch: 7 | !(inv_23[Ref](r@42@01) in xs2@14@01) | live]
+; [then-branch: 7 | inv_1[Ref](r@42@01) in xs2@14@01 | live]
+; [else-branch: 7 | !(inv_1[Ref](r@42@01) in xs2@14@01) | live]
 (push) ; 5
-; [then-branch: 7 | inv_23[Ref](r@42@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@42@01) xs2@14@01))
-; [eval] perm(r.f) >= __iar__assume_helper_1((inv_22(r) in xs1) && r == r, p, p)
+; [then-branch: 7 | inv_1[Ref](r@42@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@42@01) xs2@14@01))
+; [eval] perm(r.f) >= __iar__assume_helper_1((inv_0(r) in xs1) && r == r, p, p)
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
 (declare-const pm@43@01 $FPM)
@@ -1373,32 +1363,32 @@
 (assert ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@42@01) r@42@01))
 ; perm(r.f)  ~~>  assume upper permission bound
 (assert (<= ($FVF.perm_f (as pm@43@01  $FPM) r@42@01) $Perm.Write))
-; [eval] __iar__assume_helper_1((inv_22(r) in xs1) && r == r, p, p)
-; [eval] (inv_22(r) in xs1) && r == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] __iar__assume_helper_1((inv_0(r) in xs1) && r == r, p, p)
+; [eval] (inv_0(r) in xs1) && r == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 6
-; [then-branch: 8 | !(inv_22[Ref](r@42@01) in xs1@13@01) | live]
-; [else-branch: 8 | inv_22[Ref](r@42@01) in xs1@13@01 | live]
+; [then-branch: 8 | !(inv_0[Ref](r@42@01) in xs1@13@01) | live]
+; [else-branch: 8 | inv_0[Ref](r@42@01) in xs1@13@01 | live]
 (push) ; 7
-; [then-branch: 8 | !(inv_22[Ref](r@42@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@42@01) xs1@13@01)))
+; [then-branch: 8 | !(inv_0[Ref](r@42@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@42@01) xs1@13@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 8 | inv_22[Ref](r@42@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@42@01) xs1@13@01))
+; [else-branch: 8 | inv_0[Ref](r@42@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@42@01) xs1@13@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_22<Ref> r@42@01) xs1@13@01)
-  (not (Set_in (inv_22<Ref> r@42@01) xs1@13@01))))
+  (Set_in (inv_0<Ref> r@42@01) xs1@13@01)
+  (not (Set_in (inv_0<Ref> r@42@01) xs1@13@01))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 7 | !(inv_23[Ref](r@42@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@42@01) xs2@14@01)))
+; [else-branch: 7 | !(inv_1[Ref](r@42@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@42@01) xs2@14@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -1413,18 +1403,18 @@
   :pattern (($FVF.perm_f (as pm@43@01  $FPM) r))
   :qid |qp.resTrgDef5|)))
 (assert (=>
-  (Set_in (inv_23<Ref> r@42@01) xs2@14@01)
+  (Set_in (inv_1<Ref> r@42@01) xs2@14@01)
   (and
-    (Set_in (inv_23<Ref> r@42@01) xs2@14@01)
+    (Set_in (inv_1<Ref> r@42@01) xs2@14@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@42@01) r@42@01)
     (<= ($FVF.perm_f (as pm@43@01  $FPM) r@42@01) $Perm.Write)
     (or
-      (Set_in (inv_22<Ref> r@42@01) xs1@13@01)
-      (not (Set_in (inv_22<Ref> r@42@01) xs1@13@01))))))
+      (Set_in (inv_0<Ref> r@42@01) xs1@13@01)
+      (not (Set_in (inv_0<Ref> r@42@01) xs1@13@01))))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_23<Ref> r@42@01) xs2@14@01))
-  (Set_in (inv_23<Ref> r@42@01) xs2@14@01)))
+  (not (Set_in (inv_1<Ref> r@42@01) xs2@14@01))
+  (Set_in (inv_1<Ref> r@42@01) xs2@14@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -1441,42 +1431,40 @@
 (assert (forall ((r@42@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_23<Ref> r@42@01) xs2@14@01)
+      (Set_in (inv_1<Ref> r@42@01) xs2@14@01)
       (and
-        (Set_in (inv_23<Ref> r@42@01) xs2@14@01)
+        (Set_in (inv_1<Ref> r@42@01) xs2@14@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@42@01) r@42@01)
         (<= ($FVF.perm_f (as pm@43@01  $FPM) r@42@01) $Perm.Write)
         (or
-          (Set_in (inv_22<Ref> r@42@01) xs1@13@01)
-          (not (Set_in (inv_22<Ref> r@42@01) xs1@13@01)))))
+          (Set_in (inv_0<Ref> r@42@01) xs1@13@01)
+          (not (Set_in (inv_0<Ref> r@42@01) xs1@13@01)))))
     (or
-      (not (Set_in (inv_23<Ref> r@42@01) xs2@14@01))
-      (Set_in (inv_23<Ref> r@42@01) xs2@14@01)))
-  :pattern ((inv_23<Ref> r@42@01))
+      (not (Set_in (inv_1<Ref> r@42@01) xs2@14@01))
+      (Set_in (inv_1<Ref> r@42@01) xs2@14@01)))
+  :pattern ((inv_1<Ref> r@42@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@15@11@15@62-aux|)))
 (assert (forall ((r@42@01 $Ref)) (!
   (=>
-    (Set_in (inv_23<Ref> r@42@01) xs2@14@01)
+    (Set_in (inv_1<Ref> r@42@01) xs2@14@01)
     (>=
       ($FVF.perm_f (as pm@43@01  $FPM) r@42@01)
-      (__iar__assume_helper_1<Perm> (Set_in (inv_22<Ref> r@42@01) xs1@13@01) p@25@01 p@25@01)))
-  :pattern ((inv_23<Ref> r@42@01))
+      (__iar__assume_helper_1<Perm> (Set_in (inv_0<Ref> r@42@01) xs1@13@01) p@25@01 p@25@01)))
+  :pattern ((inv_1<Ref> r@42@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@15@11@15@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall x3: Ref ::
-;     { x3.f }
-;     (x3 in xs3) ==> true && inv_24(x3) == x3)
+; inhale (forall x3: Ref :: { x3.f } (x3 in xs3) ==> true && inv_2(x3) == x3)
 (declare-const $t@44@01 $Snap)
 (assert (= $t@44@01 $Snap.unit))
-; [eval] (forall x3: Ref :: { x3.f } (x3 in xs3) ==> true && inv_24(x3) == x3)
+; [eval] (forall x3: Ref :: { x3.f } (x3 in xs3) ==> true && inv_2(x3) == x3)
 (declare-const x3@45@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x3 in xs3) ==> true && inv_24(x3) == x3
+; [eval] (x3 in xs3) ==> true && inv_2(x3) == x3
 ; [eval] (x3 in xs3)
 (push) ; 4
 ; [then-branch: 9 | x3@45@01 in xs3@15@01 | live]
@@ -1484,7 +1472,7 @@
 (push) ; 5
 ; [then-branch: 9 | x3@45@01 in xs3@15@01]
 (assert (Set_in x3@45@01 xs3@15@01))
-; [eval] true && inv_24(x3) == x3
+; [eval] true && inv_2(x3) == x3
 (push) ; 6
 ; [then-branch: 10 | False | live]
 ; [else-branch: 10 | True | live]
@@ -1494,8 +1482,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 10 | True]
-; [eval] inv_24(x3) == x3
-; [eval] inv_24(x3)
+; [eval] inv_2(x3) == x3
+; [eval] inv_2(x3)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -1518,7 +1506,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x3@45@01) x3@45@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@16@11@16@62-aux|)))
 (assert (forall ((x3@45@01 $Ref)) (!
-  (=> (Set_in x3@45@01 xs3@15@01) (= (inv_24<Ref> x3@45@01) x3@45@01))
+  (=> (Set_in x3@45@01 xs3@15@01) (= (inv_2<Ref> x3@45@01) x3@45@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x3@45@01) x3@45@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@16@11@16@62|)))
 ; State saturation: after inhale
@@ -1526,49 +1514,47 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_24(r) }
-;     (inv_24(r) in xs3) ==> inv_24(r) == r)
+; inhale (forall r: Ref :: { inv_2(r) } (inv_2(r) in xs3) ==> inv_2(r) == r)
 (declare-const $t@46@01 $Snap)
 (assert (= $t@46@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_24(r) } (inv_24(r) in xs3) ==> inv_24(r) == r)
+; [eval] (forall r: Ref :: { inv_2(r) } (inv_2(r) in xs3) ==> inv_2(r) == r)
 (declare-const r@47@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_24(r) in xs3) ==> inv_24(r) == r
-; [eval] (inv_24(r) in xs3)
-; [eval] inv_24(r)
+; [eval] (inv_2(r) in xs3) ==> inv_2(r) == r
+; [eval] (inv_2(r) in xs3)
+; [eval] inv_2(r)
 (push) ; 4
-; [then-branch: 11 | inv_24[Ref](r@47@01) in xs3@15@01 | live]
-; [else-branch: 11 | !(inv_24[Ref](r@47@01) in xs3@15@01) | live]
+; [then-branch: 11 | inv_2[Ref](r@47@01) in xs3@15@01 | live]
+; [else-branch: 11 | !(inv_2[Ref](r@47@01) in xs3@15@01) | live]
 (push) ; 5
-; [then-branch: 11 | inv_24[Ref](r@47@01) in xs3@15@01]
-(assert (Set_in (inv_24<Ref> r@47@01) xs3@15@01))
-; [eval] inv_24(r) == r
-; [eval] inv_24(r)
+; [then-branch: 11 | inv_2[Ref](r@47@01) in xs3@15@01]
+(assert (Set_in (inv_2<Ref> r@47@01) xs3@15@01))
+; [eval] inv_2(r) == r
+; [eval] inv_2(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 11 | !(inv_24[Ref](r@47@01) in xs3@15@01)]
-(assert (not (Set_in (inv_24<Ref> r@47@01) xs3@15@01)))
+; [else-branch: 11 | !(inv_2[Ref](r@47@01) in xs3@15@01)]
+(assert (not (Set_in (inv_2<Ref> r@47@01) xs3@15@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_24<Ref> r@47@01) xs3@15@01))
-  (Set_in (inv_24<Ref> r@47@01) xs3@15@01)))
+  (not (Set_in (inv_2<Ref> r@47@01) xs3@15@01))
+  (Set_in (inv_2<Ref> r@47@01) xs3@15@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@47@01 $Ref)) (!
   (or
-    (not (Set_in (inv_24<Ref> r@47@01) xs3@15@01))
-    (Set_in (inv_24<Ref> r@47@01) xs3@15@01))
-  :pattern ((inv_24<Ref> r@47@01))
+    (not (Set_in (inv_2<Ref> r@47@01) xs3@15@01))
+    (Set_in (inv_2<Ref> r@47@01) xs3@15@01))
+  :pattern ((inv_2<Ref> r@47@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@16@11@16@62-aux|)))
 (assert (forall ((r@47@01 $Ref)) (!
-  (=> (Set_in (inv_24<Ref> r@47@01) xs3@15@01) (= (inv_24<Ref> r@47@01) r@47@01))
-  :pattern ((inv_24<Ref> r@47@01))
+  (=> (Set_in (inv_2<Ref> r@47@01) xs3@15@01) (= (inv_2<Ref> r@47@01) r@47@01))
+  :pattern ((inv_2<Ref> r@47@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@16@11@16@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -1576,27 +1562,27 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_24(r) }
-;     (inv_24(r) in xs3) ==>
+;     { inv_2(r) }
+;     (inv_2(r) in xs3) ==>
 ;     perm(r.f) >=
-;     __iar__assume_helper_2((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) &&
+;     __iar__assume_helper_2((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) &&
 ;     r == r, p, p, p))
 (declare-const $t@48@01 $Snap)
 (assert (= $t@48@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_24(r) } (inv_24(r) in xs3) ==> perm(r.f) >= __iar__assume_helper_2((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, p, p, p))
+; [eval] (forall r: Ref :: { inv_2(r) } (inv_2(r) in xs3) ==> perm(r.f) >= __iar__assume_helper_2((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, p, p, p))
 (declare-const r@49@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_24(r) in xs3) ==> perm(r.f) >= __iar__assume_helper_2((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, p, p, p)
-; [eval] (inv_24(r) in xs3)
-; [eval] inv_24(r)
+; [eval] (inv_2(r) in xs3) ==> perm(r.f) >= __iar__assume_helper_2((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, p, p, p)
+; [eval] (inv_2(r) in xs3)
+; [eval] inv_2(r)
 (push) ; 4
-; [then-branch: 12 | inv_24[Ref](r@49@01) in xs3@15@01 | live]
-; [else-branch: 12 | !(inv_24[Ref](r@49@01) in xs3@15@01) | live]
+; [then-branch: 12 | inv_2[Ref](r@49@01) in xs3@15@01 | live]
+; [else-branch: 12 | !(inv_2[Ref](r@49@01) in xs3@15@01) | live]
 (push) ; 5
-; [then-branch: 12 | inv_24[Ref](r@49@01) in xs3@15@01]
-(assert (Set_in (inv_24<Ref> r@49@01) xs3@15@01))
-; [eval] perm(r.f) >= __iar__assume_helper_2((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, p, p, p)
+; [then-branch: 12 | inv_2[Ref](r@49@01) in xs3@15@01]
+(assert (Set_in (inv_2<Ref> r@49@01) xs3@15@01))
+; [eval] perm(r.f) >= __iar__assume_helper_2((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, p, p, p)
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
 (declare-const pm@50@01 $FPM)
@@ -1613,53 +1599,53 @@
 (assert ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@49@01) r@49@01))
 ; perm(r.f)  ~~>  assume upper permission bound
 (assert (<= ($FVF.perm_f (as pm@50@01  $FPM) r@49@01) $Perm.Write))
-; [eval] __iar__assume_helper_2((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, p, p, p)
-; [eval] (inv_22(r) in xs1) && r == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] __iar__assume_helper_2((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, p, p, p)
+; [eval] (inv_0(r) in xs1) && r == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 6
-; [then-branch: 13 | !(inv_22[Ref](r@49@01) in xs1@13@01) | live]
-; [else-branch: 13 | inv_22[Ref](r@49@01) in xs1@13@01 | live]
+; [then-branch: 13 | !(inv_0[Ref](r@49@01) in xs1@13@01) | live]
+; [else-branch: 13 | inv_0[Ref](r@49@01) in xs1@13@01 | live]
 (push) ; 7
-; [then-branch: 13 | !(inv_22[Ref](r@49@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@49@01) xs1@13@01)))
+; [then-branch: 13 | !(inv_0[Ref](r@49@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@49@01) xs1@13@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 13 | inv_22[Ref](r@49@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@49@01) xs1@13@01))
+; [else-branch: 13 | inv_0[Ref](r@49@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@49@01) xs1@13@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_22<Ref> r@49@01) xs1@13@01)
-  (not (Set_in (inv_22<Ref> r@49@01) xs1@13@01))))
-; [eval] (inv_23(r) in xs2) && r == r
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+  (Set_in (inv_0<Ref> r@49@01) xs1@13@01)
+  (not (Set_in (inv_0<Ref> r@49@01) xs1@13@01))))
+; [eval] (inv_1(r) in xs2) && r == r
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 6
-; [then-branch: 14 | !(inv_23[Ref](r@49@01) in xs2@14@01) | live]
-; [else-branch: 14 | inv_23[Ref](r@49@01) in xs2@14@01 | live]
+; [then-branch: 14 | !(inv_1[Ref](r@49@01) in xs2@14@01) | live]
+; [else-branch: 14 | inv_1[Ref](r@49@01) in xs2@14@01 | live]
 (push) ; 7
-; [then-branch: 14 | !(inv_23[Ref](r@49@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@49@01) xs2@14@01)))
+; [then-branch: 14 | !(inv_1[Ref](r@49@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@49@01) xs2@14@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 14 | inv_23[Ref](r@49@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@49@01) xs2@14@01))
+; [else-branch: 14 | inv_1[Ref](r@49@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@49@01) xs2@14@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_23<Ref> r@49@01) xs2@14@01)
-  (not (Set_in (inv_23<Ref> r@49@01) xs2@14@01))))
+  (Set_in (inv_1<Ref> r@49@01) xs2@14@01)
+  (not (Set_in (inv_1<Ref> r@49@01) xs2@14@01))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 12 | !(inv_24[Ref](r@49@01) in xs3@15@01)]
-(assert (not (Set_in (inv_24<Ref> r@49@01) xs3@15@01)))
+; [else-branch: 12 | !(inv_2[Ref](r@49@01) in xs3@15@01)]
+(assert (not (Set_in (inv_2<Ref> r@49@01) xs3@15@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -1674,21 +1660,21 @@
   :pattern (($FVF.perm_f (as pm@50@01  $FPM) r))
   :qid |qp.resTrgDef7|)))
 (assert (=>
-  (Set_in (inv_24<Ref> r@49@01) xs3@15@01)
+  (Set_in (inv_2<Ref> r@49@01) xs3@15@01)
   (and
-    (Set_in (inv_24<Ref> r@49@01) xs3@15@01)
+    (Set_in (inv_2<Ref> r@49@01) xs3@15@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@49@01) r@49@01)
     (<= ($FVF.perm_f (as pm@50@01  $FPM) r@49@01) $Perm.Write)
     (or
-      (Set_in (inv_22<Ref> r@49@01) xs1@13@01)
-      (not (Set_in (inv_22<Ref> r@49@01) xs1@13@01)))
+      (Set_in (inv_0<Ref> r@49@01) xs1@13@01)
+      (not (Set_in (inv_0<Ref> r@49@01) xs1@13@01)))
     (or
-      (Set_in (inv_23<Ref> r@49@01) xs2@14@01)
-      (not (Set_in (inv_23<Ref> r@49@01) xs2@14@01))))))
+      (Set_in (inv_1<Ref> r@49@01) xs2@14@01)
+      (not (Set_in (inv_1<Ref> r@49@01) xs2@14@01))))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_24<Ref> r@49@01) xs3@15@01))
-  (Set_in (inv_24<Ref> r@49@01) xs3@15@01)))
+  (not (Set_in (inv_2<Ref> r@49@01) xs3@15@01))
+  (Set_in (inv_2<Ref> r@49@01) xs3@15@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -1705,45 +1691,43 @@
 (assert (forall ((r@49@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_24<Ref> r@49@01) xs3@15@01)
+      (Set_in (inv_2<Ref> r@49@01) xs3@15@01)
       (and
-        (Set_in (inv_24<Ref> r@49@01) xs3@15@01)
+        (Set_in (inv_2<Ref> r@49@01) xs3@15@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@49@01) r@49@01)
         (<= ($FVF.perm_f (as pm@50@01  $FPM) r@49@01) $Perm.Write)
         (or
-          (Set_in (inv_22<Ref> r@49@01) xs1@13@01)
-          (not (Set_in (inv_22<Ref> r@49@01) xs1@13@01)))
+          (Set_in (inv_0<Ref> r@49@01) xs1@13@01)
+          (not (Set_in (inv_0<Ref> r@49@01) xs1@13@01)))
         (or
-          (Set_in (inv_23<Ref> r@49@01) xs2@14@01)
-          (not (Set_in (inv_23<Ref> r@49@01) xs2@14@01)))))
+          (Set_in (inv_1<Ref> r@49@01) xs2@14@01)
+          (not (Set_in (inv_1<Ref> r@49@01) xs2@14@01)))))
     (or
-      (not (Set_in (inv_24<Ref> r@49@01) xs3@15@01))
-      (Set_in (inv_24<Ref> r@49@01) xs3@15@01)))
-  :pattern ((inv_24<Ref> r@49@01))
+      (not (Set_in (inv_2<Ref> r@49@01) xs3@15@01))
+      (Set_in (inv_2<Ref> r@49@01) xs3@15@01)))
+  :pattern ((inv_2<Ref> r@49@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@16@11@16@62-aux|)))
 (assert (forall ((r@49@01 $Ref)) (!
   (=>
-    (Set_in (inv_24<Ref> r@49@01) xs3@15@01)
+    (Set_in (inv_2<Ref> r@49@01) xs3@15@01)
     (>=
       ($FVF.perm_f (as pm@50@01  $FPM) r@49@01)
-      (__iar__assume_helper_2<Perm> (Set_in (inv_22<Ref> r@49@01) xs1@13@01) (Set_in (inv_23<Ref> r@49@01) xs2@14@01) p@25@01 p@25@01 p@25@01)))
-  :pattern ((inv_24<Ref> r@49@01))
+      (__iar__assume_helper_2<Perm> (Set_in (inv_0<Ref> r@49@01) xs1@13@01) (Set_in (inv_1<Ref> r@49@01) xs2@14@01) p@25@01 p@25@01 p@25@01)))
+  :pattern ((inv_2<Ref> r@49@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@16@11@16@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall x4: Ref ::
-;     { x4.f }
-;     (x4 in xs4) ==> true && inv_25(x4) == x4)
+; inhale (forall x4: Ref :: { x4.f } (x4 in xs4) ==> true && inv_3(x4) == x4)
 (declare-const $t@51@01 $Snap)
 (assert (= $t@51@01 $Snap.unit))
-; [eval] (forall x4: Ref :: { x4.f } (x4 in xs4) ==> true && inv_25(x4) == x4)
+; [eval] (forall x4: Ref :: { x4.f } (x4 in xs4) ==> true && inv_3(x4) == x4)
 (declare-const x4@52@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x4 in xs4) ==> true && inv_25(x4) == x4
+; [eval] (x4 in xs4) ==> true && inv_3(x4) == x4
 ; [eval] (x4 in xs4)
 (push) ; 4
 ; [then-branch: 15 | x4@52@01 in xs4@16@01 | live]
@@ -1751,7 +1735,7 @@
 (push) ; 5
 ; [then-branch: 15 | x4@52@01 in xs4@16@01]
 (assert (Set_in x4@52@01 xs4@16@01))
-; [eval] true && inv_25(x4) == x4
+; [eval] true && inv_3(x4) == x4
 (push) ; 6
 ; [then-branch: 16 | False | live]
 ; [else-branch: 16 | True | live]
@@ -1761,8 +1745,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 16 | True]
-; [eval] inv_25(x4) == x4
-; [eval] inv_25(x4)
+; [eval] inv_3(x4) == x4
+; [eval] inv_3(x4)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -1785,7 +1769,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x4@52@01) x4@52@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@17@11@17@62-aux|)))
 (assert (forall ((x4@52@01 $Ref)) (!
-  (=> (Set_in x4@52@01 xs4@16@01) (= (inv_25<Ref> x4@52@01) x4@52@01))
+  (=> (Set_in x4@52@01 xs4@16@01) (= (inv_3<Ref> x4@52@01) x4@52@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x4@52@01) x4@52@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@17@11@17@62|)))
 ; State saturation: after inhale
@@ -1793,49 +1777,47 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_25(r) }
-;     (inv_25(r) in xs4) ==> inv_25(r) == r)
+; inhale (forall r: Ref :: { inv_3(r) } (inv_3(r) in xs4) ==> inv_3(r) == r)
 (declare-const $t@53@01 $Snap)
 (assert (= $t@53@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_25(r) } (inv_25(r) in xs4) ==> inv_25(r) == r)
+; [eval] (forall r: Ref :: { inv_3(r) } (inv_3(r) in xs4) ==> inv_3(r) == r)
 (declare-const r@54@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_25(r) in xs4) ==> inv_25(r) == r
-; [eval] (inv_25(r) in xs4)
-; [eval] inv_25(r)
+; [eval] (inv_3(r) in xs4) ==> inv_3(r) == r
+; [eval] (inv_3(r) in xs4)
+; [eval] inv_3(r)
 (push) ; 4
-; [then-branch: 17 | inv_25[Ref](r@54@01) in xs4@16@01 | live]
-; [else-branch: 17 | !(inv_25[Ref](r@54@01) in xs4@16@01) | live]
+; [then-branch: 17 | inv_3[Ref](r@54@01) in xs4@16@01 | live]
+; [else-branch: 17 | !(inv_3[Ref](r@54@01) in xs4@16@01) | live]
 (push) ; 5
-; [then-branch: 17 | inv_25[Ref](r@54@01) in xs4@16@01]
-(assert (Set_in (inv_25<Ref> r@54@01) xs4@16@01))
-; [eval] inv_25(r) == r
-; [eval] inv_25(r)
+; [then-branch: 17 | inv_3[Ref](r@54@01) in xs4@16@01]
+(assert (Set_in (inv_3<Ref> r@54@01) xs4@16@01))
+; [eval] inv_3(r) == r
+; [eval] inv_3(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 17 | !(inv_25[Ref](r@54@01) in xs4@16@01)]
-(assert (not (Set_in (inv_25<Ref> r@54@01) xs4@16@01)))
+; [else-branch: 17 | !(inv_3[Ref](r@54@01) in xs4@16@01)]
+(assert (not (Set_in (inv_3<Ref> r@54@01) xs4@16@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_25<Ref> r@54@01) xs4@16@01))
-  (Set_in (inv_25<Ref> r@54@01) xs4@16@01)))
+  (not (Set_in (inv_3<Ref> r@54@01) xs4@16@01))
+  (Set_in (inv_3<Ref> r@54@01) xs4@16@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@54@01 $Ref)) (!
   (or
-    (not (Set_in (inv_25<Ref> r@54@01) xs4@16@01))
-    (Set_in (inv_25<Ref> r@54@01) xs4@16@01))
-  :pattern ((inv_25<Ref> r@54@01))
+    (not (Set_in (inv_3<Ref> r@54@01) xs4@16@01))
+    (Set_in (inv_3<Ref> r@54@01) xs4@16@01))
+  :pattern ((inv_3<Ref> r@54@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@17@11@17@62-aux|)))
 (assert (forall ((r@54@01 $Ref)) (!
-  (=> (Set_in (inv_25<Ref> r@54@01) xs4@16@01) (= (inv_25<Ref> r@54@01) r@54@01))
-  :pattern ((inv_25<Ref> r@54@01))
+  (=> (Set_in (inv_3<Ref> r@54@01) xs4@16@01) (= (inv_3<Ref> r@54@01) r@54@01))
+  :pattern ((inv_3<Ref> r@54@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@17@11@17@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -1843,27 +1825,27 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_25(r) }
-;     (inv_25(r) in xs4) ==>
+;     { inv_3(r) }
+;     (inv_3(r) in xs4) ==>
 ;     perm(r.f) >=
-;     __iar__assume_helper_3((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) &&
-;     r == r, (inv_24(r) in xs3) && r == r, p, p, p, p))
+;     __iar__assume_helper_3((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) &&
+;     r == r, (inv_2(r) in xs3) && r == r, p, p, p, p))
 (declare-const $t@55@01 $Snap)
 (assert (= $t@55@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_25(r) } (inv_25(r) in xs4) ==> perm(r.f) >= __iar__assume_helper_3((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, p, p, p, p))
+; [eval] (forall r: Ref :: { inv_3(r) } (inv_3(r) in xs4) ==> perm(r.f) >= __iar__assume_helper_3((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, p, p, p, p))
 (declare-const r@56@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_25(r) in xs4) ==> perm(r.f) >= __iar__assume_helper_3((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, p, p, p, p)
-; [eval] (inv_25(r) in xs4)
-; [eval] inv_25(r)
+; [eval] (inv_3(r) in xs4) ==> perm(r.f) >= __iar__assume_helper_3((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, p, p, p, p)
+; [eval] (inv_3(r) in xs4)
+; [eval] inv_3(r)
 (push) ; 4
-; [then-branch: 18 | inv_25[Ref](r@56@01) in xs4@16@01 | live]
-; [else-branch: 18 | !(inv_25[Ref](r@56@01) in xs4@16@01) | live]
+; [then-branch: 18 | inv_3[Ref](r@56@01) in xs4@16@01 | live]
+; [else-branch: 18 | !(inv_3[Ref](r@56@01) in xs4@16@01) | live]
 (push) ; 5
-; [then-branch: 18 | inv_25[Ref](r@56@01) in xs4@16@01]
-(assert (Set_in (inv_25<Ref> r@56@01) xs4@16@01))
-; [eval] perm(r.f) >= __iar__assume_helper_3((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, p, p, p, p)
+; [then-branch: 18 | inv_3[Ref](r@56@01) in xs4@16@01]
+(assert (Set_in (inv_3<Ref> r@56@01) xs4@16@01))
+; [eval] perm(r.f) >= __iar__assume_helper_3((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, p, p, p, p)
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
 (declare-const pm@57@01 $FPM)
@@ -1880,74 +1862,74 @@
 (assert ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@56@01) r@56@01))
 ; perm(r.f)  ~~>  assume upper permission bound
 (assert (<= ($FVF.perm_f (as pm@57@01  $FPM) r@56@01) $Perm.Write))
-; [eval] __iar__assume_helper_3((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, p, p, p, p)
-; [eval] (inv_22(r) in xs1) && r == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] __iar__assume_helper_3((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, p, p, p, p)
+; [eval] (inv_0(r) in xs1) && r == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 6
-; [then-branch: 19 | !(inv_22[Ref](r@56@01) in xs1@13@01) | live]
-; [else-branch: 19 | inv_22[Ref](r@56@01) in xs1@13@01 | live]
+; [then-branch: 19 | !(inv_0[Ref](r@56@01) in xs1@13@01) | live]
+; [else-branch: 19 | inv_0[Ref](r@56@01) in xs1@13@01 | live]
 (push) ; 7
-; [then-branch: 19 | !(inv_22[Ref](r@56@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@56@01) xs1@13@01)))
+; [then-branch: 19 | !(inv_0[Ref](r@56@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@56@01) xs1@13@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 19 | inv_22[Ref](r@56@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@56@01) xs1@13@01))
+; [else-branch: 19 | inv_0[Ref](r@56@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@56@01) xs1@13@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_22<Ref> r@56@01) xs1@13@01)
-  (not (Set_in (inv_22<Ref> r@56@01) xs1@13@01))))
-; [eval] (inv_23(r) in xs2) && r == r
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+  (Set_in (inv_0<Ref> r@56@01) xs1@13@01)
+  (not (Set_in (inv_0<Ref> r@56@01) xs1@13@01))))
+; [eval] (inv_1(r) in xs2) && r == r
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 6
-; [then-branch: 20 | !(inv_23[Ref](r@56@01) in xs2@14@01) | live]
-; [else-branch: 20 | inv_23[Ref](r@56@01) in xs2@14@01 | live]
+; [then-branch: 20 | !(inv_1[Ref](r@56@01) in xs2@14@01) | live]
+; [else-branch: 20 | inv_1[Ref](r@56@01) in xs2@14@01 | live]
 (push) ; 7
-; [then-branch: 20 | !(inv_23[Ref](r@56@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@56@01) xs2@14@01)))
+; [then-branch: 20 | !(inv_1[Ref](r@56@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@56@01) xs2@14@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 20 | inv_23[Ref](r@56@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@56@01) xs2@14@01))
+; [else-branch: 20 | inv_1[Ref](r@56@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@56@01) xs2@14@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_23<Ref> r@56@01) xs2@14@01)
-  (not (Set_in (inv_23<Ref> r@56@01) xs2@14@01))))
-; [eval] (inv_24(r) in xs3) && r == r
-; [eval] (inv_24(r) in xs3)
-; [eval] inv_24(r)
+  (Set_in (inv_1<Ref> r@56@01) xs2@14@01)
+  (not (Set_in (inv_1<Ref> r@56@01) xs2@14@01))))
+; [eval] (inv_2(r) in xs3) && r == r
+; [eval] (inv_2(r) in xs3)
+; [eval] inv_2(r)
 (push) ; 6
-; [then-branch: 21 | !(inv_24[Ref](r@56@01) in xs3@15@01) | live]
-; [else-branch: 21 | inv_24[Ref](r@56@01) in xs3@15@01 | live]
+; [then-branch: 21 | !(inv_2[Ref](r@56@01) in xs3@15@01) | live]
+; [else-branch: 21 | inv_2[Ref](r@56@01) in xs3@15@01 | live]
 (push) ; 7
-; [then-branch: 21 | !(inv_24[Ref](r@56@01) in xs3@15@01)]
-(assert (not (Set_in (inv_24<Ref> r@56@01) xs3@15@01)))
+; [then-branch: 21 | !(inv_2[Ref](r@56@01) in xs3@15@01)]
+(assert (not (Set_in (inv_2<Ref> r@56@01) xs3@15@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 21 | inv_24[Ref](r@56@01) in xs3@15@01]
-(assert (Set_in (inv_24<Ref> r@56@01) xs3@15@01))
+; [else-branch: 21 | inv_2[Ref](r@56@01) in xs3@15@01]
+(assert (Set_in (inv_2<Ref> r@56@01) xs3@15@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_24<Ref> r@56@01) xs3@15@01)
-  (not (Set_in (inv_24<Ref> r@56@01) xs3@15@01))))
+  (Set_in (inv_2<Ref> r@56@01) xs3@15@01)
+  (not (Set_in (inv_2<Ref> r@56@01) xs3@15@01))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 18 | !(inv_25[Ref](r@56@01) in xs4@16@01)]
-(assert (not (Set_in (inv_25<Ref> r@56@01) xs4@16@01)))
+; [else-branch: 18 | !(inv_3[Ref](r@56@01) in xs4@16@01)]
+(assert (not (Set_in (inv_3<Ref> r@56@01) xs4@16@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -1962,24 +1944,24 @@
   :pattern (($FVF.perm_f (as pm@57@01  $FPM) r))
   :qid |qp.resTrgDef9|)))
 (assert (=>
-  (Set_in (inv_25<Ref> r@56@01) xs4@16@01)
+  (Set_in (inv_3<Ref> r@56@01) xs4@16@01)
   (and
-    (Set_in (inv_25<Ref> r@56@01) xs4@16@01)
+    (Set_in (inv_3<Ref> r@56@01) xs4@16@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@56@01) r@56@01)
     (<= ($FVF.perm_f (as pm@57@01  $FPM) r@56@01) $Perm.Write)
     (or
-      (Set_in (inv_22<Ref> r@56@01) xs1@13@01)
-      (not (Set_in (inv_22<Ref> r@56@01) xs1@13@01)))
+      (Set_in (inv_0<Ref> r@56@01) xs1@13@01)
+      (not (Set_in (inv_0<Ref> r@56@01) xs1@13@01)))
     (or
-      (Set_in (inv_23<Ref> r@56@01) xs2@14@01)
-      (not (Set_in (inv_23<Ref> r@56@01) xs2@14@01)))
+      (Set_in (inv_1<Ref> r@56@01) xs2@14@01)
+      (not (Set_in (inv_1<Ref> r@56@01) xs2@14@01)))
     (or
-      (Set_in (inv_24<Ref> r@56@01) xs3@15@01)
-      (not (Set_in (inv_24<Ref> r@56@01) xs3@15@01))))))
+      (Set_in (inv_2<Ref> r@56@01) xs3@15@01)
+      (not (Set_in (inv_2<Ref> r@56@01) xs3@15@01))))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_25<Ref> r@56@01) xs4@16@01))
-  (Set_in (inv_25<Ref> r@56@01) xs4@16@01)))
+  (not (Set_in (inv_3<Ref> r@56@01) xs4@16@01))
+  (Set_in (inv_3<Ref> r@56@01) xs4@16@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -1996,48 +1978,46 @@
 (assert (forall ((r@56@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_25<Ref> r@56@01) xs4@16@01)
+      (Set_in (inv_3<Ref> r@56@01) xs4@16@01)
       (and
-        (Set_in (inv_25<Ref> r@56@01) xs4@16@01)
+        (Set_in (inv_3<Ref> r@56@01) xs4@16@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@56@01) r@56@01)
         (<= ($FVF.perm_f (as pm@57@01  $FPM) r@56@01) $Perm.Write)
         (or
-          (Set_in (inv_22<Ref> r@56@01) xs1@13@01)
-          (not (Set_in (inv_22<Ref> r@56@01) xs1@13@01)))
+          (Set_in (inv_0<Ref> r@56@01) xs1@13@01)
+          (not (Set_in (inv_0<Ref> r@56@01) xs1@13@01)))
         (or
-          (Set_in (inv_23<Ref> r@56@01) xs2@14@01)
-          (not (Set_in (inv_23<Ref> r@56@01) xs2@14@01)))
+          (Set_in (inv_1<Ref> r@56@01) xs2@14@01)
+          (not (Set_in (inv_1<Ref> r@56@01) xs2@14@01)))
         (or
-          (Set_in (inv_24<Ref> r@56@01) xs3@15@01)
-          (not (Set_in (inv_24<Ref> r@56@01) xs3@15@01)))))
+          (Set_in (inv_2<Ref> r@56@01) xs3@15@01)
+          (not (Set_in (inv_2<Ref> r@56@01) xs3@15@01)))))
     (or
-      (not (Set_in (inv_25<Ref> r@56@01) xs4@16@01))
-      (Set_in (inv_25<Ref> r@56@01) xs4@16@01)))
-  :pattern ((inv_25<Ref> r@56@01))
+      (not (Set_in (inv_3<Ref> r@56@01) xs4@16@01))
+      (Set_in (inv_3<Ref> r@56@01) xs4@16@01)))
+  :pattern ((inv_3<Ref> r@56@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@17@11@17@62-aux|)))
 (assert (forall ((r@56@01 $Ref)) (!
   (=>
-    (Set_in (inv_25<Ref> r@56@01) xs4@16@01)
+    (Set_in (inv_3<Ref> r@56@01) xs4@16@01)
     (>=
       ($FVF.perm_f (as pm@57@01  $FPM) r@56@01)
-      (__iar__assume_helper_3<Perm> (Set_in (inv_22<Ref> r@56@01) xs1@13@01) (Set_in (inv_23<Ref> r@56@01) xs2@14@01) (Set_in (inv_24<Ref> r@56@01) xs3@15@01) p@25@01 p@25@01 p@25@01 p@25@01)))
-  :pattern ((inv_25<Ref> r@56@01))
+      (__iar__assume_helper_3<Perm> (Set_in (inv_0<Ref> r@56@01) xs1@13@01) (Set_in (inv_1<Ref> r@56@01) xs2@14@01) (Set_in (inv_2<Ref> r@56@01) xs3@15@01) p@25@01 p@25@01 p@25@01 p@25@01)))
+  :pattern ((inv_3<Ref> r@56@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@17@11@17@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall x5: Ref ::
-;     { x5.f }
-;     (x5 in xs5) ==> true && inv_26(x5) == x5)
+; inhale (forall x5: Ref :: { x5.f } (x5 in xs5) ==> true && inv_4(x5) == x5)
 (declare-const $t@58@01 $Snap)
 (assert (= $t@58@01 $Snap.unit))
-; [eval] (forall x5: Ref :: { x5.f } (x5 in xs5) ==> true && inv_26(x5) == x5)
+; [eval] (forall x5: Ref :: { x5.f } (x5 in xs5) ==> true && inv_4(x5) == x5)
 (declare-const x5@59@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x5 in xs5) ==> true && inv_26(x5) == x5
+; [eval] (x5 in xs5) ==> true && inv_4(x5) == x5
 ; [eval] (x5 in xs5)
 (push) ; 4
 ; [then-branch: 22 | x5@59@01 in xs5@17@01 | live]
@@ -2045,7 +2025,7 @@
 (push) ; 5
 ; [then-branch: 22 | x5@59@01 in xs5@17@01]
 (assert (Set_in x5@59@01 xs5@17@01))
-; [eval] true && inv_26(x5) == x5
+; [eval] true && inv_4(x5) == x5
 (push) ; 6
 ; [then-branch: 23 | False | live]
 ; [else-branch: 23 | True | live]
@@ -2055,8 +2035,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 23 | True]
-; [eval] inv_26(x5) == x5
-; [eval] inv_26(x5)
+; [eval] inv_4(x5) == x5
+; [eval] inv_4(x5)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -2079,7 +2059,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x5@59@01) x5@59@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@18@11@18@62-aux|)))
 (assert (forall ((x5@59@01 $Ref)) (!
-  (=> (Set_in x5@59@01 xs5@17@01) (= (inv_26<Ref> x5@59@01) x5@59@01))
+  (=> (Set_in x5@59@01 xs5@17@01) (= (inv_4<Ref> x5@59@01) x5@59@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x5@59@01) x5@59@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@18@11@18@62|)))
 ; State saturation: after inhale
@@ -2087,49 +2067,47 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_26(r) }
-;     (inv_26(r) in xs5) ==> inv_26(r) == r)
+; inhale (forall r: Ref :: { inv_4(r) } (inv_4(r) in xs5) ==> inv_4(r) == r)
 (declare-const $t@60@01 $Snap)
 (assert (= $t@60@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_26(r) } (inv_26(r) in xs5) ==> inv_26(r) == r)
+; [eval] (forall r: Ref :: { inv_4(r) } (inv_4(r) in xs5) ==> inv_4(r) == r)
 (declare-const r@61@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_26(r) in xs5) ==> inv_26(r) == r
-; [eval] (inv_26(r) in xs5)
-; [eval] inv_26(r)
+; [eval] (inv_4(r) in xs5) ==> inv_4(r) == r
+; [eval] (inv_4(r) in xs5)
+; [eval] inv_4(r)
 (push) ; 4
-; [then-branch: 24 | inv_26[Ref](r@61@01) in xs5@17@01 | live]
-; [else-branch: 24 | !(inv_26[Ref](r@61@01) in xs5@17@01) | live]
+; [then-branch: 24 | inv_4[Ref](r@61@01) in xs5@17@01 | live]
+; [else-branch: 24 | !(inv_4[Ref](r@61@01) in xs5@17@01) | live]
 (push) ; 5
-; [then-branch: 24 | inv_26[Ref](r@61@01) in xs5@17@01]
-(assert (Set_in (inv_26<Ref> r@61@01) xs5@17@01))
-; [eval] inv_26(r) == r
-; [eval] inv_26(r)
+; [then-branch: 24 | inv_4[Ref](r@61@01) in xs5@17@01]
+(assert (Set_in (inv_4<Ref> r@61@01) xs5@17@01))
+; [eval] inv_4(r) == r
+; [eval] inv_4(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 24 | !(inv_26[Ref](r@61@01) in xs5@17@01)]
-(assert (not (Set_in (inv_26<Ref> r@61@01) xs5@17@01)))
+; [else-branch: 24 | !(inv_4[Ref](r@61@01) in xs5@17@01)]
+(assert (not (Set_in (inv_4<Ref> r@61@01) xs5@17@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_26<Ref> r@61@01) xs5@17@01))
-  (Set_in (inv_26<Ref> r@61@01) xs5@17@01)))
+  (not (Set_in (inv_4<Ref> r@61@01) xs5@17@01))
+  (Set_in (inv_4<Ref> r@61@01) xs5@17@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@61@01 $Ref)) (!
   (or
-    (not (Set_in (inv_26<Ref> r@61@01) xs5@17@01))
-    (Set_in (inv_26<Ref> r@61@01) xs5@17@01))
-  :pattern ((inv_26<Ref> r@61@01))
+    (not (Set_in (inv_4<Ref> r@61@01) xs5@17@01))
+    (Set_in (inv_4<Ref> r@61@01) xs5@17@01))
+  :pattern ((inv_4<Ref> r@61@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@18@11@18@62-aux|)))
 (assert (forall ((r@61@01 $Ref)) (!
-  (=> (Set_in (inv_26<Ref> r@61@01) xs5@17@01) (= (inv_26<Ref> r@61@01) r@61@01))
-  :pattern ((inv_26<Ref> r@61@01))
+  (=> (Set_in (inv_4<Ref> r@61@01) xs5@17@01) (= (inv_4<Ref> r@61@01) r@61@01))
+  :pattern ((inv_4<Ref> r@61@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@18@11@18@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -2137,28 +2115,28 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_26(r) }
-;     (inv_26(r) in xs5) ==>
+;     { inv_4(r) }
+;     (inv_4(r) in xs5) ==>
 ;     perm(r.f) >=
-;     __iar__assume_helper_4((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) &&
-;     r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, p, p,
+;     __iar__assume_helper_4((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) &&
+;     r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, p, p,
 ;     p, p, p))
 (declare-const $t@62@01 $Snap)
 (assert (= $t@62@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_26(r) } (inv_26(r) in xs5) ==> perm(r.f) >= __iar__assume_helper_4((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, p, p, p, p, p))
+; [eval] (forall r: Ref :: { inv_4(r) } (inv_4(r) in xs5) ==> perm(r.f) >= __iar__assume_helper_4((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, p, p, p, p, p))
 (declare-const r@63@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_26(r) in xs5) ==> perm(r.f) >= __iar__assume_helper_4((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, p, p, p, p, p)
-; [eval] (inv_26(r) in xs5)
-; [eval] inv_26(r)
+; [eval] (inv_4(r) in xs5) ==> perm(r.f) >= __iar__assume_helper_4((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, p, p, p, p, p)
+; [eval] (inv_4(r) in xs5)
+; [eval] inv_4(r)
 (push) ; 4
-; [then-branch: 25 | inv_26[Ref](r@63@01) in xs5@17@01 | live]
-; [else-branch: 25 | !(inv_26[Ref](r@63@01) in xs5@17@01) | live]
+; [then-branch: 25 | inv_4[Ref](r@63@01) in xs5@17@01 | live]
+; [else-branch: 25 | !(inv_4[Ref](r@63@01) in xs5@17@01) | live]
 (push) ; 5
-; [then-branch: 25 | inv_26[Ref](r@63@01) in xs5@17@01]
-(assert (Set_in (inv_26<Ref> r@63@01) xs5@17@01))
-; [eval] perm(r.f) >= __iar__assume_helper_4((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, p, p, p, p, p)
+; [then-branch: 25 | inv_4[Ref](r@63@01) in xs5@17@01]
+(assert (Set_in (inv_4<Ref> r@63@01) xs5@17@01))
+; [eval] perm(r.f) >= __iar__assume_helper_4((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, p, p, p, p, p)
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
 (declare-const pm@64@01 $FPM)
@@ -2175,95 +2153,95 @@
 (assert ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@63@01) r@63@01))
 ; perm(r.f)  ~~>  assume upper permission bound
 (assert (<= ($FVF.perm_f (as pm@64@01  $FPM) r@63@01) $Perm.Write))
-; [eval] __iar__assume_helper_4((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, p, p, p, p, p)
-; [eval] (inv_22(r) in xs1) && r == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] __iar__assume_helper_4((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, p, p, p, p, p)
+; [eval] (inv_0(r) in xs1) && r == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 6
-; [then-branch: 26 | !(inv_22[Ref](r@63@01) in xs1@13@01) | live]
-; [else-branch: 26 | inv_22[Ref](r@63@01) in xs1@13@01 | live]
+; [then-branch: 26 | !(inv_0[Ref](r@63@01) in xs1@13@01) | live]
+; [else-branch: 26 | inv_0[Ref](r@63@01) in xs1@13@01 | live]
 (push) ; 7
-; [then-branch: 26 | !(inv_22[Ref](r@63@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@63@01) xs1@13@01)))
+; [then-branch: 26 | !(inv_0[Ref](r@63@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@63@01) xs1@13@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 26 | inv_22[Ref](r@63@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@63@01) xs1@13@01))
+; [else-branch: 26 | inv_0[Ref](r@63@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@63@01) xs1@13@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_22<Ref> r@63@01) xs1@13@01)
-  (not (Set_in (inv_22<Ref> r@63@01) xs1@13@01))))
-; [eval] (inv_23(r) in xs2) && r == r
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+  (Set_in (inv_0<Ref> r@63@01) xs1@13@01)
+  (not (Set_in (inv_0<Ref> r@63@01) xs1@13@01))))
+; [eval] (inv_1(r) in xs2) && r == r
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 6
-; [then-branch: 27 | !(inv_23[Ref](r@63@01) in xs2@14@01) | live]
-; [else-branch: 27 | inv_23[Ref](r@63@01) in xs2@14@01 | live]
+; [then-branch: 27 | !(inv_1[Ref](r@63@01) in xs2@14@01) | live]
+; [else-branch: 27 | inv_1[Ref](r@63@01) in xs2@14@01 | live]
 (push) ; 7
-; [then-branch: 27 | !(inv_23[Ref](r@63@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@63@01) xs2@14@01)))
+; [then-branch: 27 | !(inv_1[Ref](r@63@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@63@01) xs2@14@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 27 | inv_23[Ref](r@63@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@63@01) xs2@14@01))
+; [else-branch: 27 | inv_1[Ref](r@63@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@63@01) xs2@14@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_23<Ref> r@63@01) xs2@14@01)
-  (not (Set_in (inv_23<Ref> r@63@01) xs2@14@01))))
-; [eval] (inv_24(r) in xs3) && r == r
-; [eval] (inv_24(r) in xs3)
-; [eval] inv_24(r)
+  (Set_in (inv_1<Ref> r@63@01) xs2@14@01)
+  (not (Set_in (inv_1<Ref> r@63@01) xs2@14@01))))
+; [eval] (inv_2(r) in xs3) && r == r
+; [eval] (inv_2(r) in xs3)
+; [eval] inv_2(r)
 (push) ; 6
-; [then-branch: 28 | !(inv_24[Ref](r@63@01) in xs3@15@01) | live]
-; [else-branch: 28 | inv_24[Ref](r@63@01) in xs3@15@01 | live]
+; [then-branch: 28 | !(inv_2[Ref](r@63@01) in xs3@15@01) | live]
+; [else-branch: 28 | inv_2[Ref](r@63@01) in xs3@15@01 | live]
 (push) ; 7
-; [then-branch: 28 | !(inv_24[Ref](r@63@01) in xs3@15@01)]
-(assert (not (Set_in (inv_24<Ref> r@63@01) xs3@15@01)))
+; [then-branch: 28 | !(inv_2[Ref](r@63@01) in xs3@15@01)]
+(assert (not (Set_in (inv_2<Ref> r@63@01) xs3@15@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 28 | inv_24[Ref](r@63@01) in xs3@15@01]
-(assert (Set_in (inv_24<Ref> r@63@01) xs3@15@01))
+; [else-branch: 28 | inv_2[Ref](r@63@01) in xs3@15@01]
+(assert (Set_in (inv_2<Ref> r@63@01) xs3@15@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_24<Ref> r@63@01) xs3@15@01)
-  (not (Set_in (inv_24<Ref> r@63@01) xs3@15@01))))
-; [eval] (inv_25(r) in xs4) && r == r
-; [eval] (inv_25(r) in xs4)
-; [eval] inv_25(r)
+  (Set_in (inv_2<Ref> r@63@01) xs3@15@01)
+  (not (Set_in (inv_2<Ref> r@63@01) xs3@15@01))))
+; [eval] (inv_3(r) in xs4) && r == r
+; [eval] (inv_3(r) in xs4)
+; [eval] inv_3(r)
 (push) ; 6
-; [then-branch: 29 | !(inv_25[Ref](r@63@01) in xs4@16@01) | live]
-; [else-branch: 29 | inv_25[Ref](r@63@01) in xs4@16@01 | live]
+; [then-branch: 29 | !(inv_3[Ref](r@63@01) in xs4@16@01) | live]
+; [else-branch: 29 | inv_3[Ref](r@63@01) in xs4@16@01 | live]
 (push) ; 7
-; [then-branch: 29 | !(inv_25[Ref](r@63@01) in xs4@16@01)]
-(assert (not (Set_in (inv_25<Ref> r@63@01) xs4@16@01)))
+; [then-branch: 29 | !(inv_3[Ref](r@63@01) in xs4@16@01)]
+(assert (not (Set_in (inv_3<Ref> r@63@01) xs4@16@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 29 | inv_25[Ref](r@63@01) in xs4@16@01]
-(assert (Set_in (inv_25<Ref> r@63@01) xs4@16@01))
+; [else-branch: 29 | inv_3[Ref](r@63@01) in xs4@16@01]
+(assert (Set_in (inv_3<Ref> r@63@01) xs4@16@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_25<Ref> r@63@01) xs4@16@01)
-  (not (Set_in (inv_25<Ref> r@63@01) xs4@16@01))))
+  (Set_in (inv_3<Ref> r@63@01) xs4@16@01)
+  (not (Set_in (inv_3<Ref> r@63@01) xs4@16@01))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 25 | !(inv_26[Ref](r@63@01) in xs5@17@01)]
-(assert (not (Set_in (inv_26<Ref> r@63@01) xs5@17@01)))
+; [else-branch: 25 | !(inv_4[Ref](r@63@01) in xs5@17@01)]
+(assert (not (Set_in (inv_4<Ref> r@63@01) xs5@17@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -2278,27 +2256,27 @@
   :pattern (($FVF.perm_f (as pm@64@01  $FPM) r))
   :qid |qp.resTrgDef11|)))
 (assert (=>
-  (Set_in (inv_26<Ref> r@63@01) xs5@17@01)
+  (Set_in (inv_4<Ref> r@63@01) xs5@17@01)
   (and
-    (Set_in (inv_26<Ref> r@63@01) xs5@17@01)
+    (Set_in (inv_4<Ref> r@63@01) xs5@17@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@63@01) r@63@01)
     (<= ($FVF.perm_f (as pm@64@01  $FPM) r@63@01) $Perm.Write)
     (or
-      (Set_in (inv_22<Ref> r@63@01) xs1@13@01)
-      (not (Set_in (inv_22<Ref> r@63@01) xs1@13@01)))
+      (Set_in (inv_0<Ref> r@63@01) xs1@13@01)
+      (not (Set_in (inv_0<Ref> r@63@01) xs1@13@01)))
     (or
-      (Set_in (inv_23<Ref> r@63@01) xs2@14@01)
-      (not (Set_in (inv_23<Ref> r@63@01) xs2@14@01)))
+      (Set_in (inv_1<Ref> r@63@01) xs2@14@01)
+      (not (Set_in (inv_1<Ref> r@63@01) xs2@14@01)))
     (or
-      (Set_in (inv_24<Ref> r@63@01) xs3@15@01)
-      (not (Set_in (inv_24<Ref> r@63@01) xs3@15@01)))
+      (Set_in (inv_2<Ref> r@63@01) xs3@15@01)
+      (not (Set_in (inv_2<Ref> r@63@01) xs3@15@01)))
     (or
-      (Set_in (inv_25<Ref> r@63@01) xs4@16@01)
-      (not (Set_in (inv_25<Ref> r@63@01) xs4@16@01))))))
+      (Set_in (inv_3<Ref> r@63@01) xs4@16@01)
+      (not (Set_in (inv_3<Ref> r@63@01) xs4@16@01))))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_26<Ref> r@63@01) xs5@17@01))
-  (Set_in (inv_26<Ref> r@63@01) xs5@17@01)))
+  (not (Set_in (inv_4<Ref> r@63@01) xs5@17@01))
+  (Set_in (inv_4<Ref> r@63@01) xs5@17@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -2315,51 +2293,49 @@
 (assert (forall ((r@63@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_26<Ref> r@63@01) xs5@17@01)
+      (Set_in (inv_4<Ref> r@63@01) xs5@17@01)
       (and
-        (Set_in (inv_26<Ref> r@63@01) xs5@17@01)
+        (Set_in (inv_4<Ref> r@63@01) xs5@17@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@63@01) r@63@01)
         (<= ($FVF.perm_f (as pm@64@01  $FPM) r@63@01) $Perm.Write)
         (or
-          (Set_in (inv_22<Ref> r@63@01) xs1@13@01)
-          (not (Set_in (inv_22<Ref> r@63@01) xs1@13@01)))
+          (Set_in (inv_0<Ref> r@63@01) xs1@13@01)
+          (not (Set_in (inv_0<Ref> r@63@01) xs1@13@01)))
         (or
-          (Set_in (inv_23<Ref> r@63@01) xs2@14@01)
-          (not (Set_in (inv_23<Ref> r@63@01) xs2@14@01)))
+          (Set_in (inv_1<Ref> r@63@01) xs2@14@01)
+          (not (Set_in (inv_1<Ref> r@63@01) xs2@14@01)))
         (or
-          (Set_in (inv_24<Ref> r@63@01) xs3@15@01)
-          (not (Set_in (inv_24<Ref> r@63@01) xs3@15@01)))
+          (Set_in (inv_2<Ref> r@63@01) xs3@15@01)
+          (not (Set_in (inv_2<Ref> r@63@01) xs3@15@01)))
         (or
-          (Set_in (inv_25<Ref> r@63@01) xs4@16@01)
-          (not (Set_in (inv_25<Ref> r@63@01) xs4@16@01)))))
+          (Set_in (inv_3<Ref> r@63@01) xs4@16@01)
+          (not (Set_in (inv_3<Ref> r@63@01) xs4@16@01)))))
     (or
-      (not (Set_in (inv_26<Ref> r@63@01) xs5@17@01))
-      (Set_in (inv_26<Ref> r@63@01) xs5@17@01)))
-  :pattern ((inv_26<Ref> r@63@01))
+      (not (Set_in (inv_4<Ref> r@63@01) xs5@17@01))
+      (Set_in (inv_4<Ref> r@63@01) xs5@17@01)))
+  :pattern ((inv_4<Ref> r@63@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@18@11@18@62-aux|)))
 (assert (forall ((r@63@01 $Ref)) (!
   (=>
-    (Set_in (inv_26<Ref> r@63@01) xs5@17@01)
+    (Set_in (inv_4<Ref> r@63@01) xs5@17@01)
     (>=
       ($FVF.perm_f (as pm@64@01  $FPM) r@63@01)
-      (__iar__assume_helper_4<Perm> (Set_in (inv_22<Ref> r@63@01) xs1@13@01) (Set_in (inv_23<Ref> r@63@01) xs2@14@01) (Set_in (inv_24<Ref> r@63@01) xs3@15@01) (Set_in (inv_25<Ref> r@63@01) xs4@16@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
-  :pattern ((inv_26<Ref> r@63@01))
+      (__iar__assume_helper_4<Perm> (Set_in (inv_0<Ref> r@63@01) xs1@13@01) (Set_in (inv_1<Ref> r@63@01) xs2@14@01) (Set_in (inv_2<Ref> r@63@01) xs3@15@01) (Set_in (inv_3<Ref> r@63@01) xs4@16@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
+  :pattern ((inv_4<Ref> r@63@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@18@11@18@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall x6: Ref ::
-;     { x6.f }
-;     (x6 in xs6) ==> true && inv_27(x6) == x6)
+; inhale (forall x6: Ref :: { x6.f } (x6 in xs6) ==> true && inv_5(x6) == x6)
 (declare-const $t@65@01 $Snap)
 (assert (= $t@65@01 $Snap.unit))
-; [eval] (forall x6: Ref :: { x6.f } (x6 in xs6) ==> true && inv_27(x6) == x6)
+; [eval] (forall x6: Ref :: { x6.f } (x6 in xs6) ==> true && inv_5(x6) == x6)
 (declare-const x6@66@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x6 in xs6) ==> true && inv_27(x6) == x6
+; [eval] (x6 in xs6) ==> true && inv_5(x6) == x6
 ; [eval] (x6 in xs6)
 (push) ; 4
 ; [then-branch: 30 | x6@66@01 in xs6@18@01 | live]
@@ -2367,7 +2343,7 @@
 (push) ; 5
 ; [then-branch: 30 | x6@66@01 in xs6@18@01]
 (assert (Set_in x6@66@01 xs6@18@01))
-; [eval] true && inv_27(x6) == x6
+; [eval] true && inv_5(x6) == x6
 (push) ; 6
 ; [then-branch: 31 | False | live]
 ; [else-branch: 31 | True | live]
@@ -2377,8 +2353,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 31 | True]
-; [eval] inv_27(x6) == x6
-; [eval] inv_27(x6)
+; [eval] inv_5(x6) == x6
+; [eval] inv_5(x6)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -2401,7 +2377,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x6@66@01) x6@66@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@19@11@19@62-aux|)))
 (assert (forall ((x6@66@01 $Ref)) (!
-  (=> (Set_in x6@66@01 xs6@18@01) (= (inv_27<Ref> x6@66@01) x6@66@01))
+  (=> (Set_in x6@66@01 xs6@18@01) (= (inv_5<Ref> x6@66@01) x6@66@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x6@66@01) x6@66@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@19@11@19@62|)))
 ; State saturation: after inhale
@@ -2409,49 +2385,47 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_27(r) }
-;     (inv_27(r) in xs6) ==> inv_27(r) == r)
+; inhale (forall r: Ref :: { inv_5(r) } (inv_5(r) in xs6) ==> inv_5(r) == r)
 (declare-const $t@67@01 $Snap)
 (assert (= $t@67@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_27(r) } (inv_27(r) in xs6) ==> inv_27(r) == r)
+; [eval] (forall r: Ref :: { inv_5(r) } (inv_5(r) in xs6) ==> inv_5(r) == r)
 (declare-const r@68@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_27(r) in xs6) ==> inv_27(r) == r
-; [eval] (inv_27(r) in xs6)
-; [eval] inv_27(r)
+; [eval] (inv_5(r) in xs6) ==> inv_5(r) == r
+; [eval] (inv_5(r) in xs6)
+; [eval] inv_5(r)
 (push) ; 4
-; [then-branch: 32 | inv_27[Ref](r@68@01) in xs6@18@01 | live]
-; [else-branch: 32 | !(inv_27[Ref](r@68@01) in xs6@18@01) | live]
+; [then-branch: 32 | inv_5[Ref](r@68@01) in xs6@18@01 | live]
+; [else-branch: 32 | !(inv_5[Ref](r@68@01) in xs6@18@01) | live]
 (push) ; 5
-; [then-branch: 32 | inv_27[Ref](r@68@01) in xs6@18@01]
-(assert (Set_in (inv_27<Ref> r@68@01) xs6@18@01))
-; [eval] inv_27(r) == r
-; [eval] inv_27(r)
+; [then-branch: 32 | inv_5[Ref](r@68@01) in xs6@18@01]
+(assert (Set_in (inv_5<Ref> r@68@01) xs6@18@01))
+; [eval] inv_5(r) == r
+; [eval] inv_5(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 32 | !(inv_27[Ref](r@68@01) in xs6@18@01)]
-(assert (not (Set_in (inv_27<Ref> r@68@01) xs6@18@01)))
+; [else-branch: 32 | !(inv_5[Ref](r@68@01) in xs6@18@01)]
+(assert (not (Set_in (inv_5<Ref> r@68@01) xs6@18@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_27<Ref> r@68@01) xs6@18@01))
-  (Set_in (inv_27<Ref> r@68@01) xs6@18@01)))
+  (not (Set_in (inv_5<Ref> r@68@01) xs6@18@01))
+  (Set_in (inv_5<Ref> r@68@01) xs6@18@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@68@01 $Ref)) (!
   (or
-    (not (Set_in (inv_27<Ref> r@68@01) xs6@18@01))
-    (Set_in (inv_27<Ref> r@68@01) xs6@18@01))
-  :pattern ((inv_27<Ref> r@68@01))
+    (not (Set_in (inv_5<Ref> r@68@01) xs6@18@01))
+    (Set_in (inv_5<Ref> r@68@01) xs6@18@01))
+  :pattern ((inv_5<Ref> r@68@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@19@11@19@62-aux|)))
 (assert (forall ((r@68@01 $Ref)) (!
-  (=> (Set_in (inv_27<Ref> r@68@01) xs6@18@01) (= (inv_27<Ref> r@68@01) r@68@01))
-  :pattern ((inv_27<Ref> r@68@01))
+  (=> (Set_in (inv_5<Ref> r@68@01) xs6@18@01) (= (inv_5<Ref> r@68@01) r@68@01))
+  :pattern ((inv_5<Ref> r@68@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@19@11@19@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -2459,29 +2433,29 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_27(r) }
-;     (inv_27(r) in xs6) ==>
+;     { inv_5(r) }
+;     (inv_5(r) in xs6) ==>
 ;     perm(r.f) >=
-;     __iar__assume_helper_5((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) &&
-;     r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in
+;     __iar__assume_helper_5((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) &&
+;     r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in
 ;     xs5) &&
 ;     r == r, p, p, p, p, p, p))
 (declare-const $t@69@01 $Snap)
 (assert (= $t@69@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_27(r) } (inv_27(r) in xs6) ==> perm(r.f) >= __iar__assume_helper_5((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, p, p, p, p, p, p))
+; [eval] (forall r: Ref :: { inv_5(r) } (inv_5(r) in xs6) ==> perm(r.f) >= __iar__assume_helper_5((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, p, p, p, p, p, p))
 (declare-const r@70@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_27(r) in xs6) ==> perm(r.f) >= __iar__assume_helper_5((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, p, p, p, p, p, p)
-; [eval] (inv_27(r) in xs6)
-; [eval] inv_27(r)
+; [eval] (inv_5(r) in xs6) ==> perm(r.f) >= __iar__assume_helper_5((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, p, p, p, p, p, p)
+; [eval] (inv_5(r) in xs6)
+; [eval] inv_5(r)
 (push) ; 4
-; [then-branch: 33 | inv_27[Ref](r@70@01) in xs6@18@01 | live]
-; [else-branch: 33 | !(inv_27[Ref](r@70@01) in xs6@18@01) | live]
+; [then-branch: 33 | inv_5[Ref](r@70@01) in xs6@18@01 | live]
+; [else-branch: 33 | !(inv_5[Ref](r@70@01) in xs6@18@01) | live]
 (push) ; 5
-; [then-branch: 33 | inv_27[Ref](r@70@01) in xs6@18@01]
-(assert (Set_in (inv_27<Ref> r@70@01) xs6@18@01))
-; [eval] perm(r.f) >= __iar__assume_helper_5((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, p, p, p, p, p, p)
+; [then-branch: 33 | inv_5[Ref](r@70@01) in xs6@18@01]
+(assert (Set_in (inv_5<Ref> r@70@01) xs6@18@01))
+; [eval] perm(r.f) >= __iar__assume_helper_5((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, p, p, p, p, p, p)
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
 (declare-const pm@71@01 $FPM)
@@ -2498,116 +2472,116 @@
 (assert ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@70@01) r@70@01))
 ; perm(r.f)  ~~>  assume upper permission bound
 (assert (<= ($FVF.perm_f (as pm@71@01  $FPM) r@70@01) $Perm.Write))
-; [eval] __iar__assume_helper_5((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, p, p, p, p, p, p)
-; [eval] (inv_22(r) in xs1) && r == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] __iar__assume_helper_5((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, p, p, p, p, p, p)
+; [eval] (inv_0(r) in xs1) && r == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 6
-; [then-branch: 34 | !(inv_22[Ref](r@70@01) in xs1@13@01) | live]
-; [else-branch: 34 | inv_22[Ref](r@70@01) in xs1@13@01 | live]
+; [then-branch: 34 | !(inv_0[Ref](r@70@01) in xs1@13@01) | live]
+; [else-branch: 34 | inv_0[Ref](r@70@01) in xs1@13@01 | live]
 (push) ; 7
-; [then-branch: 34 | !(inv_22[Ref](r@70@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@70@01) xs1@13@01)))
+; [then-branch: 34 | !(inv_0[Ref](r@70@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@70@01) xs1@13@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 34 | inv_22[Ref](r@70@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@70@01) xs1@13@01))
+; [else-branch: 34 | inv_0[Ref](r@70@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@70@01) xs1@13@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_22<Ref> r@70@01) xs1@13@01)
-  (not (Set_in (inv_22<Ref> r@70@01) xs1@13@01))))
-; [eval] (inv_23(r) in xs2) && r == r
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+  (Set_in (inv_0<Ref> r@70@01) xs1@13@01)
+  (not (Set_in (inv_0<Ref> r@70@01) xs1@13@01))))
+; [eval] (inv_1(r) in xs2) && r == r
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 6
-; [then-branch: 35 | !(inv_23[Ref](r@70@01) in xs2@14@01) | live]
-; [else-branch: 35 | inv_23[Ref](r@70@01) in xs2@14@01 | live]
+; [then-branch: 35 | !(inv_1[Ref](r@70@01) in xs2@14@01) | live]
+; [else-branch: 35 | inv_1[Ref](r@70@01) in xs2@14@01 | live]
 (push) ; 7
-; [then-branch: 35 | !(inv_23[Ref](r@70@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@70@01) xs2@14@01)))
+; [then-branch: 35 | !(inv_1[Ref](r@70@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@70@01) xs2@14@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 35 | inv_23[Ref](r@70@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@70@01) xs2@14@01))
+; [else-branch: 35 | inv_1[Ref](r@70@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@70@01) xs2@14@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_23<Ref> r@70@01) xs2@14@01)
-  (not (Set_in (inv_23<Ref> r@70@01) xs2@14@01))))
-; [eval] (inv_24(r) in xs3) && r == r
-; [eval] (inv_24(r) in xs3)
-; [eval] inv_24(r)
+  (Set_in (inv_1<Ref> r@70@01) xs2@14@01)
+  (not (Set_in (inv_1<Ref> r@70@01) xs2@14@01))))
+; [eval] (inv_2(r) in xs3) && r == r
+; [eval] (inv_2(r) in xs3)
+; [eval] inv_2(r)
 (push) ; 6
-; [then-branch: 36 | !(inv_24[Ref](r@70@01) in xs3@15@01) | live]
-; [else-branch: 36 | inv_24[Ref](r@70@01) in xs3@15@01 | live]
+; [then-branch: 36 | !(inv_2[Ref](r@70@01) in xs3@15@01) | live]
+; [else-branch: 36 | inv_2[Ref](r@70@01) in xs3@15@01 | live]
 (push) ; 7
-; [then-branch: 36 | !(inv_24[Ref](r@70@01) in xs3@15@01)]
-(assert (not (Set_in (inv_24<Ref> r@70@01) xs3@15@01)))
+; [then-branch: 36 | !(inv_2[Ref](r@70@01) in xs3@15@01)]
+(assert (not (Set_in (inv_2<Ref> r@70@01) xs3@15@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 36 | inv_24[Ref](r@70@01) in xs3@15@01]
-(assert (Set_in (inv_24<Ref> r@70@01) xs3@15@01))
+; [else-branch: 36 | inv_2[Ref](r@70@01) in xs3@15@01]
+(assert (Set_in (inv_2<Ref> r@70@01) xs3@15@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_24<Ref> r@70@01) xs3@15@01)
-  (not (Set_in (inv_24<Ref> r@70@01) xs3@15@01))))
-; [eval] (inv_25(r) in xs4) && r == r
-; [eval] (inv_25(r) in xs4)
-; [eval] inv_25(r)
+  (Set_in (inv_2<Ref> r@70@01) xs3@15@01)
+  (not (Set_in (inv_2<Ref> r@70@01) xs3@15@01))))
+; [eval] (inv_3(r) in xs4) && r == r
+; [eval] (inv_3(r) in xs4)
+; [eval] inv_3(r)
 (push) ; 6
-; [then-branch: 37 | !(inv_25[Ref](r@70@01) in xs4@16@01) | live]
-; [else-branch: 37 | inv_25[Ref](r@70@01) in xs4@16@01 | live]
+; [then-branch: 37 | !(inv_3[Ref](r@70@01) in xs4@16@01) | live]
+; [else-branch: 37 | inv_3[Ref](r@70@01) in xs4@16@01 | live]
 (push) ; 7
-; [then-branch: 37 | !(inv_25[Ref](r@70@01) in xs4@16@01)]
-(assert (not (Set_in (inv_25<Ref> r@70@01) xs4@16@01)))
+; [then-branch: 37 | !(inv_3[Ref](r@70@01) in xs4@16@01)]
+(assert (not (Set_in (inv_3<Ref> r@70@01) xs4@16@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 37 | inv_25[Ref](r@70@01) in xs4@16@01]
-(assert (Set_in (inv_25<Ref> r@70@01) xs4@16@01))
+; [else-branch: 37 | inv_3[Ref](r@70@01) in xs4@16@01]
+(assert (Set_in (inv_3<Ref> r@70@01) xs4@16@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_25<Ref> r@70@01) xs4@16@01)
-  (not (Set_in (inv_25<Ref> r@70@01) xs4@16@01))))
-; [eval] (inv_26(r) in xs5) && r == r
-; [eval] (inv_26(r) in xs5)
-; [eval] inv_26(r)
+  (Set_in (inv_3<Ref> r@70@01) xs4@16@01)
+  (not (Set_in (inv_3<Ref> r@70@01) xs4@16@01))))
+; [eval] (inv_4(r) in xs5) && r == r
+; [eval] (inv_4(r) in xs5)
+; [eval] inv_4(r)
 (push) ; 6
-; [then-branch: 38 | !(inv_26[Ref](r@70@01) in xs5@17@01) | live]
-; [else-branch: 38 | inv_26[Ref](r@70@01) in xs5@17@01 | live]
+; [then-branch: 38 | !(inv_4[Ref](r@70@01) in xs5@17@01) | live]
+; [else-branch: 38 | inv_4[Ref](r@70@01) in xs5@17@01 | live]
 (push) ; 7
-; [then-branch: 38 | !(inv_26[Ref](r@70@01) in xs5@17@01)]
-(assert (not (Set_in (inv_26<Ref> r@70@01) xs5@17@01)))
+; [then-branch: 38 | !(inv_4[Ref](r@70@01) in xs5@17@01)]
+(assert (not (Set_in (inv_4<Ref> r@70@01) xs5@17@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 38 | inv_26[Ref](r@70@01) in xs5@17@01]
-(assert (Set_in (inv_26<Ref> r@70@01) xs5@17@01))
+; [else-branch: 38 | inv_4[Ref](r@70@01) in xs5@17@01]
+(assert (Set_in (inv_4<Ref> r@70@01) xs5@17@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_26<Ref> r@70@01) xs5@17@01)
-  (not (Set_in (inv_26<Ref> r@70@01) xs5@17@01))))
+  (Set_in (inv_4<Ref> r@70@01) xs5@17@01)
+  (not (Set_in (inv_4<Ref> r@70@01) xs5@17@01))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 33 | !(inv_27[Ref](r@70@01) in xs6@18@01)]
-(assert (not (Set_in (inv_27<Ref> r@70@01) xs6@18@01)))
+; [else-branch: 33 | !(inv_5[Ref](r@70@01) in xs6@18@01)]
+(assert (not (Set_in (inv_5<Ref> r@70@01) xs6@18@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -2622,30 +2596,30 @@
   :pattern (($FVF.perm_f (as pm@71@01  $FPM) r))
   :qid |qp.resTrgDef13|)))
 (assert (=>
-  (Set_in (inv_27<Ref> r@70@01) xs6@18@01)
+  (Set_in (inv_5<Ref> r@70@01) xs6@18@01)
   (and
-    (Set_in (inv_27<Ref> r@70@01) xs6@18@01)
+    (Set_in (inv_5<Ref> r@70@01) xs6@18@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@70@01) r@70@01)
     (<= ($FVF.perm_f (as pm@71@01  $FPM) r@70@01) $Perm.Write)
     (or
-      (Set_in (inv_22<Ref> r@70@01) xs1@13@01)
-      (not (Set_in (inv_22<Ref> r@70@01) xs1@13@01)))
+      (Set_in (inv_0<Ref> r@70@01) xs1@13@01)
+      (not (Set_in (inv_0<Ref> r@70@01) xs1@13@01)))
     (or
-      (Set_in (inv_23<Ref> r@70@01) xs2@14@01)
-      (not (Set_in (inv_23<Ref> r@70@01) xs2@14@01)))
+      (Set_in (inv_1<Ref> r@70@01) xs2@14@01)
+      (not (Set_in (inv_1<Ref> r@70@01) xs2@14@01)))
     (or
-      (Set_in (inv_24<Ref> r@70@01) xs3@15@01)
-      (not (Set_in (inv_24<Ref> r@70@01) xs3@15@01)))
+      (Set_in (inv_2<Ref> r@70@01) xs3@15@01)
+      (not (Set_in (inv_2<Ref> r@70@01) xs3@15@01)))
     (or
-      (Set_in (inv_25<Ref> r@70@01) xs4@16@01)
-      (not (Set_in (inv_25<Ref> r@70@01) xs4@16@01)))
+      (Set_in (inv_3<Ref> r@70@01) xs4@16@01)
+      (not (Set_in (inv_3<Ref> r@70@01) xs4@16@01)))
     (or
-      (Set_in (inv_26<Ref> r@70@01) xs5@17@01)
-      (not (Set_in (inv_26<Ref> r@70@01) xs5@17@01))))))
+      (Set_in (inv_4<Ref> r@70@01) xs5@17@01)
+      (not (Set_in (inv_4<Ref> r@70@01) xs5@17@01))))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_27<Ref> r@70@01) xs6@18@01))
-  (Set_in (inv_27<Ref> r@70@01) xs6@18@01)))
+  (not (Set_in (inv_5<Ref> r@70@01) xs6@18@01))
+  (Set_in (inv_5<Ref> r@70@01) xs6@18@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -2662,54 +2636,52 @@
 (assert (forall ((r@70@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_27<Ref> r@70@01) xs6@18@01)
+      (Set_in (inv_5<Ref> r@70@01) xs6@18@01)
       (and
-        (Set_in (inv_27<Ref> r@70@01) xs6@18@01)
+        (Set_in (inv_5<Ref> r@70@01) xs6@18@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@70@01) r@70@01)
         (<= ($FVF.perm_f (as pm@71@01  $FPM) r@70@01) $Perm.Write)
         (or
-          (Set_in (inv_22<Ref> r@70@01) xs1@13@01)
-          (not (Set_in (inv_22<Ref> r@70@01) xs1@13@01)))
+          (Set_in (inv_0<Ref> r@70@01) xs1@13@01)
+          (not (Set_in (inv_0<Ref> r@70@01) xs1@13@01)))
         (or
-          (Set_in (inv_23<Ref> r@70@01) xs2@14@01)
-          (not (Set_in (inv_23<Ref> r@70@01) xs2@14@01)))
+          (Set_in (inv_1<Ref> r@70@01) xs2@14@01)
+          (not (Set_in (inv_1<Ref> r@70@01) xs2@14@01)))
         (or
-          (Set_in (inv_24<Ref> r@70@01) xs3@15@01)
-          (not (Set_in (inv_24<Ref> r@70@01) xs3@15@01)))
+          (Set_in (inv_2<Ref> r@70@01) xs3@15@01)
+          (not (Set_in (inv_2<Ref> r@70@01) xs3@15@01)))
         (or
-          (Set_in (inv_25<Ref> r@70@01) xs4@16@01)
-          (not (Set_in (inv_25<Ref> r@70@01) xs4@16@01)))
+          (Set_in (inv_3<Ref> r@70@01) xs4@16@01)
+          (not (Set_in (inv_3<Ref> r@70@01) xs4@16@01)))
         (or
-          (Set_in (inv_26<Ref> r@70@01) xs5@17@01)
-          (not (Set_in (inv_26<Ref> r@70@01) xs5@17@01)))))
+          (Set_in (inv_4<Ref> r@70@01) xs5@17@01)
+          (not (Set_in (inv_4<Ref> r@70@01) xs5@17@01)))))
     (or
-      (not (Set_in (inv_27<Ref> r@70@01) xs6@18@01))
-      (Set_in (inv_27<Ref> r@70@01) xs6@18@01)))
-  :pattern ((inv_27<Ref> r@70@01))
+      (not (Set_in (inv_5<Ref> r@70@01) xs6@18@01))
+      (Set_in (inv_5<Ref> r@70@01) xs6@18@01)))
+  :pattern ((inv_5<Ref> r@70@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@19@11@19@62-aux|)))
 (assert (forall ((r@70@01 $Ref)) (!
   (=>
-    (Set_in (inv_27<Ref> r@70@01) xs6@18@01)
+    (Set_in (inv_5<Ref> r@70@01) xs6@18@01)
     (>=
       ($FVF.perm_f (as pm@71@01  $FPM) r@70@01)
-      (__iar__assume_helper_5<Perm> (Set_in (inv_22<Ref> r@70@01) xs1@13@01) (Set_in (inv_23<Ref> r@70@01) xs2@14@01) (Set_in (inv_24<Ref> r@70@01) xs3@15@01) (Set_in (inv_25<Ref> r@70@01) xs4@16@01) (Set_in (inv_26<Ref> r@70@01) xs5@17@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
-  :pattern ((inv_27<Ref> r@70@01))
+      (__iar__assume_helper_5<Perm> (Set_in (inv_0<Ref> r@70@01) xs1@13@01) (Set_in (inv_1<Ref> r@70@01) xs2@14@01) (Set_in (inv_2<Ref> r@70@01) xs3@15@01) (Set_in (inv_3<Ref> r@70@01) xs4@16@01) (Set_in (inv_4<Ref> r@70@01) xs5@17@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
+  :pattern ((inv_5<Ref> r@70@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@19@11@19@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall x7: Ref ::
-;     { x7.f }
-;     (x7 in xs7) ==> true && inv_28(x7) == x7)
+; inhale (forall x7: Ref :: { x7.f } (x7 in xs7) ==> true && inv_6(x7) == x7)
 (declare-const $t@72@01 $Snap)
 (assert (= $t@72@01 $Snap.unit))
-; [eval] (forall x7: Ref :: { x7.f } (x7 in xs7) ==> true && inv_28(x7) == x7)
+; [eval] (forall x7: Ref :: { x7.f } (x7 in xs7) ==> true && inv_6(x7) == x7)
 (declare-const x7@73@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x7 in xs7) ==> true && inv_28(x7) == x7
+; [eval] (x7 in xs7) ==> true && inv_6(x7) == x7
 ; [eval] (x7 in xs7)
 (push) ; 4
 ; [then-branch: 39 | x7@73@01 in xs7@19@01 | live]
@@ -2717,7 +2689,7 @@
 (push) ; 5
 ; [then-branch: 39 | x7@73@01 in xs7@19@01]
 (assert (Set_in x7@73@01 xs7@19@01))
-; [eval] true && inv_28(x7) == x7
+; [eval] true && inv_6(x7) == x7
 (push) ; 6
 ; [then-branch: 40 | False | live]
 ; [else-branch: 40 | True | live]
@@ -2727,8 +2699,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 40 | True]
-; [eval] inv_28(x7) == x7
-; [eval] inv_28(x7)
+; [eval] inv_6(x7) == x7
+; [eval] inv_6(x7)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -2751,7 +2723,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x7@73@01) x7@73@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@20@11@20@62-aux|)))
 (assert (forall ((x7@73@01 $Ref)) (!
-  (=> (Set_in x7@73@01 xs7@19@01) (= (inv_28<Ref> x7@73@01) x7@73@01))
+  (=> (Set_in x7@73@01 xs7@19@01) (= (inv_6<Ref> x7@73@01) x7@73@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x7@73@01) x7@73@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@20@11@20@62|)))
 ; State saturation: after inhale
@@ -2759,49 +2731,47 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_28(r) }
-;     (inv_28(r) in xs7) ==> inv_28(r) == r)
+; inhale (forall r: Ref :: { inv_6(r) } (inv_6(r) in xs7) ==> inv_6(r) == r)
 (declare-const $t@74@01 $Snap)
 (assert (= $t@74@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_28(r) } (inv_28(r) in xs7) ==> inv_28(r) == r)
+; [eval] (forall r: Ref :: { inv_6(r) } (inv_6(r) in xs7) ==> inv_6(r) == r)
 (declare-const r@75@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_28(r) in xs7) ==> inv_28(r) == r
-; [eval] (inv_28(r) in xs7)
-; [eval] inv_28(r)
+; [eval] (inv_6(r) in xs7) ==> inv_6(r) == r
+; [eval] (inv_6(r) in xs7)
+; [eval] inv_6(r)
 (push) ; 4
-; [then-branch: 41 | inv_28[Ref](r@75@01) in xs7@19@01 | live]
-; [else-branch: 41 | !(inv_28[Ref](r@75@01) in xs7@19@01) | live]
+; [then-branch: 41 | inv_6[Ref](r@75@01) in xs7@19@01 | live]
+; [else-branch: 41 | !(inv_6[Ref](r@75@01) in xs7@19@01) | live]
 (push) ; 5
-; [then-branch: 41 | inv_28[Ref](r@75@01) in xs7@19@01]
-(assert (Set_in (inv_28<Ref> r@75@01) xs7@19@01))
-; [eval] inv_28(r) == r
-; [eval] inv_28(r)
+; [then-branch: 41 | inv_6[Ref](r@75@01) in xs7@19@01]
+(assert (Set_in (inv_6<Ref> r@75@01) xs7@19@01))
+; [eval] inv_6(r) == r
+; [eval] inv_6(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 41 | !(inv_28[Ref](r@75@01) in xs7@19@01)]
-(assert (not (Set_in (inv_28<Ref> r@75@01) xs7@19@01)))
+; [else-branch: 41 | !(inv_6[Ref](r@75@01) in xs7@19@01)]
+(assert (not (Set_in (inv_6<Ref> r@75@01) xs7@19@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_28<Ref> r@75@01) xs7@19@01))
-  (Set_in (inv_28<Ref> r@75@01) xs7@19@01)))
+  (not (Set_in (inv_6<Ref> r@75@01) xs7@19@01))
+  (Set_in (inv_6<Ref> r@75@01) xs7@19@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@75@01 $Ref)) (!
   (or
-    (not (Set_in (inv_28<Ref> r@75@01) xs7@19@01))
-    (Set_in (inv_28<Ref> r@75@01) xs7@19@01))
-  :pattern ((inv_28<Ref> r@75@01))
+    (not (Set_in (inv_6<Ref> r@75@01) xs7@19@01))
+    (Set_in (inv_6<Ref> r@75@01) xs7@19@01))
+  :pattern ((inv_6<Ref> r@75@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@20@11@20@62-aux|)))
 (assert (forall ((r@75@01 $Ref)) (!
-  (=> (Set_in (inv_28<Ref> r@75@01) xs7@19@01) (= (inv_28<Ref> r@75@01) r@75@01))
-  :pattern ((inv_28<Ref> r@75@01))
+  (=> (Set_in (inv_6<Ref> r@75@01) xs7@19@01) (= (inv_6<Ref> r@75@01) r@75@01))
+  :pattern ((inv_6<Ref> r@75@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@20@11@20@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -2809,29 +2779,29 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_28(r) }
-;     (inv_28(r) in xs7) ==>
+;     { inv_6(r) }
+;     (inv_6(r) in xs7) ==>
 ;     perm(r.f) >=
-;     __iar__assume_helper_6((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) &&
-;     r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in
+;     __iar__assume_helper_6((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) &&
+;     r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in
 ;     xs5) &&
-;     r == r, (inv_27(r) in xs6) && r == r, p, p, p, p, p, p, p))
+;     r == r, (inv_5(r) in xs6) && r == r, p, p, p, p, p, p, p))
 (declare-const $t@76@01 $Snap)
 (assert (= $t@76@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_28(r) } (inv_28(r) in xs7) ==> perm(r.f) >= __iar__assume_helper_6((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, p, p, p, p, p, p, p))
+; [eval] (forall r: Ref :: { inv_6(r) } (inv_6(r) in xs7) ==> perm(r.f) >= __iar__assume_helper_6((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, p, p, p, p, p, p, p))
 (declare-const r@77@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_28(r) in xs7) ==> perm(r.f) >= __iar__assume_helper_6((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, p, p, p, p, p, p, p)
-; [eval] (inv_28(r) in xs7)
-; [eval] inv_28(r)
+; [eval] (inv_6(r) in xs7) ==> perm(r.f) >= __iar__assume_helper_6((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, p, p, p, p, p, p, p)
+; [eval] (inv_6(r) in xs7)
+; [eval] inv_6(r)
 (push) ; 4
-; [then-branch: 42 | inv_28[Ref](r@77@01) in xs7@19@01 | live]
-; [else-branch: 42 | !(inv_28[Ref](r@77@01) in xs7@19@01) | live]
+; [then-branch: 42 | inv_6[Ref](r@77@01) in xs7@19@01 | live]
+; [else-branch: 42 | !(inv_6[Ref](r@77@01) in xs7@19@01) | live]
 (push) ; 5
-; [then-branch: 42 | inv_28[Ref](r@77@01) in xs7@19@01]
-(assert (Set_in (inv_28<Ref> r@77@01) xs7@19@01))
-; [eval] perm(r.f) >= __iar__assume_helper_6((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, p, p, p, p, p, p, p)
+; [then-branch: 42 | inv_6[Ref](r@77@01) in xs7@19@01]
+(assert (Set_in (inv_6<Ref> r@77@01) xs7@19@01))
+; [eval] perm(r.f) >= __iar__assume_helper_6((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, p, p, p, p, p, p, p)
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
 (declare-const pm@78@01 $FPM)
@@ -2848,137 +2818,137 @@
 (assert ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@77@01) r@77@01))
 ; perm(r.f)  ~~>  assume upper permission bound
 (assert (<= ($FVF.perm_f (as pm@78@01  $FPM) r@77@01) $Perm.Write))
-; [eval] __iar__assume_helper_6((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, p, p, p, p, p, p, p)
-; [eval] (inv_22(r) in xs1) && r == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] __iar__assume_helper_6((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, p, p, p, p, p, p, p)
+; [eval] (inv_0(r) in xs1) && r == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 6
-; [then-branch: 43 | !(inv_22[Ref](r@77@01) in xs1@13@01) | live]
-; [else-branch: 43 | inv_22[Ref](r@77@01) in xs1@13@01 | live]
+; [then-branch: 43 | !(inv_0[Ref](r@77@01) in xs1@13@01) | live]
+; [else-branch: 43 | inv_0[Ref](r@77@01) in xs1@13@01 | live]
 (push) ; 7
-; [then-branch: 43 | !(inv_22[Ref](r@77@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@77@01) xs1@13@01)))
+; [then-branch: 43 | !(inv_0[Ref](r@77@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@77@01) xs1@13@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 43 | inv_22[Ref](r@77@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@77@01) xs1@13@01))
+; [else-branch: 43 | inv_0[Ref](r@77@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@77@01) xs1@13@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_22<Ref> r@77@01) xs1@13@01)
-  (not (Set_in (inv_22<Ref> r@77@01) xs1@13@01))))
-; [eval] (inv_23(r) in xs2) && r == r
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+  (Set_in (inv_0<Ref> r@77@01) xs1@13@01)
+  (not (Set_in (inv_0<Ref> r@77@01) xs1@13@01))))
+; [eval] (inv_1(r) in xs2) && r == r
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 6
-; [then-branch: 44 | !(inv_23[Ref](r@77@01) in xs2@14@01) | live]
-; [else-branch: 44 | inv_23[Ref](r@77@01) in xs2@14@01 | live]
+; [then-branch: 44 | !(inv_1[Ref](r@77@01) in xs2@14@01) | live]
+; [else-branch: 44 | inv_1[Ref](r@77@01) in xs2@14@01 | live]
 (push) ; 7
-; [then-branch: 44 | !(inv_23[Ref](r@77@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@77@01) xs2@14@01)))
+; [then-branch: 44 | !(inv_1[Ref](r@77@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@77@01) xs2@14@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 44 | inv_23[Ref](r@77@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@77@01) xs2@14@01))
+; [else-branch: 44 | inv_1[Ref](r@77@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@77@01) xs2@14@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_23<Ref> r@77@01) xs2@14@01)
-  (not (Set_in (inv_23<Ref> r@77@01) xs2@14@01))))
-; [eval] (inv_24(r) in xs3) && r == r
-; [eval] (inv_24(r) in xs3)
-; [eval] inv_24(r)
+  (Set_in (inv_1<Ref> r@77@01) xs2@14@01)
+  (not (Set_in (inv_1<Ref> r@77@01) xs2@14@01))))
+; [eval] (inv_2(r) in xs3) && r == r
+; [eval] (inv_2(r) in xs3)
+; [eval] inv_2(r)
 (push) ; 6
-; [then-branch: 45 | !(inv_24[Ref](r@77@01) in xs3@15@01) | live]
-; [else-branch: 45 | inv_24[Ref](r@77@01) in xs3@15@01 | live]
+; [then-branch: 45 | !(inv_2[Ref](r@77@01) in xs3@15@01) | live]
+; [else-branch: 45 | inv_2[Ref](r@77@01) in xs3@15@01 | live]
 (push) ; 7
-; [then-branch: 45 | !(inv_24[Ref](r@77@01) in xs3@15@01)]
-(assert (not (Set_in (inv_24<Ref> r@77@01) xs3@15@01)))
+; [then-branch: 45 | !(inv_2[Ref](r@77@01) in xs3@15@01)]
+(assert (not (Set_in (inv_2<Ref> r@77@01) xs3@15@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 45 | inv_24[Ref](r@77@01) in xs3@15@01]
-(assert (Set_in (inv_24<Ref> r@77@01) xs3@15@01))
+; [else-branch: 45 | inv_2[Ref](r@77@01) in xs3@15@01]
+(assert (Set_in (inv_2<Ref> r@77@01) xs3@15@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_24<Ref> r@77@01) xs3@15@01)
-  (not (Set_in (inv_24<Ref> r@77@01) xs3@15@01))))
-; [eval] (inv_25(r) in xs4) && r == r
-; [eval] (inv_25(r) in xs4)
-; [eval] inv_25(r)
+  (Set_in (inv_2<Ref> r@77@01) xs3@15@01)
+  (not (Set_in (inv_2<Ref> r@77@01) xs3@15@01))))
+; [eval] (inv_3(r) in xs4) && r == r
+; [eval] (inv_3(r) in xs4)
+; [eval] inv_3(r)
 (push) ; 6
-; [then-branch: 46 | !(inv_25[Ref](r@77@01) in xs4@16@01) | live]
-; [else-branch: 46 | inv_25[Ref](r@77@01) in xs4@16@01 | live]
+; [then-branch: 46 | !(inv_3[Ref](r@77@01) in xs4@16@01) | live]
+; [else-branch: 46 | inv_3[Ref](r@77@01) in xs4@16@01 | live]
 (push) ; 7
-; [then-branch: 46 | !(inv_25[Ref](r@77@01) in xs4@16@01)]
-(assert (not (Set_in (inv_25<Ref> r@77@01) xs4@16@01)))
+; [then-branch: 46 | !(inv_3[Ref](r@77@01) in xs4@16@01)]
+(assert (not (Set_in (inv_3<Ref> r@77@01) xs4@16@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 46 | inv_25[Ref](r@77@01) in xs4@16@01]
-(assert (Set_in (inv_25<Ref> r@77@01) xs4@16@01))
+; [else-branch: 46 | inv_3[Ref](r@77@01) in xs4@16@01]
+(assert (Set_in (inv_3<Ref> r@77@01) xs4@16@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_25<Ref> r@77@01) xs4@16@01)
-  (not (Set_in (inv_25<Ref> r@77@01) xs4@16@01))))
-; [eval] (inv_26(r) in xs5) && r == r
-; [eval] (inv_26(r) in xs5)
-; [eval] inv_26(r)
+  (Set_in (inv_3<Ref> r@77@01) xs4@16@01)
+  (not (Set_in (inv_3<Ref> r@77@01) xs4@16@01))))
+; [eval] (inv_4(r) in xs5) && r == r
+; [eval] (inv_4(r) in xs5)
+; [eval] inv_4(r)
 (push) ; 6
-; [then-branch: 47 | !(inv_26[Ref](r@77@01) in xs5@17@01) | live]
-; [else-branch: 47 | inv_26[Ref](r@77@01) in xs5@17@01 | live]
+; [then-branch: 47 | !(inv_4[Ref](r@77@01) in xs5@17@01) | live]
+; [else-branch: 47 | inv_4[Ref](r@77@01) in xs5@17@01 | live]
 (push) ; 7
-; [then-branch: 47 | !(inv_26[Ref](r@77@01) in xs5@17@01)]
-(assert (not (Set_in (inv_26<Ref> r@77@01) xs5@17@01)))
+; [then-branch: 47 | !(inv_4[Ref](r@77@01) in xs5@17@01)]
+(assert (not (Set_in (inv_4<Ref> r@77@01) xs5@17@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 47 | inv_26[Ref](r@77@01) in xs5@17@01]
-(assert (Set_in (inv_26<Ref> r@77@01) xs5@17@01))
+; [else-branch: 47 | inv_4[Ref](r@77@01) in xs5@17@01]
+(assert (Set_in (inv_4<Ref> r@77@01) xs5@17@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_26<Ref> r@77@01) xs5@17@01)
-  (not (Set_in (inv_26<Ref> r@77@01) xs5@17@01))))
-; [eval] (inv_27(r) in xs6) && r == r
-; [eval] (inv_27(r) in xs6)
-; [eval] inv_27(r)
+  (Set_in (inv_4<Ref> r@77@01) xs5@17@01)
+  (not (Set_in (inv_4<Ref> r@77@01) xs5@17@01))))
+; [eval] (inv_5(r) in xs6) && r == r
+; [eval] (inv_5(r) in xs6)
+; [eval] inv_5(r)
 (push) ; 6
-; [then-branch: 48 | !(inv_27[Ref](r@77@01) in xs6@18@01) | live]
-; [else-branch: 48 | inv_27[Ref](r@77@01) in xs6@18@01 | live]
+; [then-branch: 48 | !(inv_5[Ref](r@77@01) in xs6@18@01) | live]
+; [else-branch: 48 | inv_5[Ref](r@77@01) in xs6@18@01 | live]
 (push) ; 7
-; [then-branch: 48 | !(inv_27[Ref](r@77@01) in xs6@18@01)]
-(assert (not (Set_in (inv_27<Ref> r@77@01) xs6@18@01)))
+; [then-branch: 48 | !(inv_5[Ref](r@77@01) in xs6@18@01)]
+(assert (not (Set_in (inv_5<Ref> r@77@01) xs6@18@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 48 | inv_27[Ref](r@77@01) in xs6@18@01]
-(assert (Set_in (inv_27<Ref> r@77@01) xs6@18@01))
+; [else-branch: 48 | inv_5[Ref](r@77@01) in xs6@18@01]
+(assert (Set_in (inv_5<Ref> r@77@01) xs6@18@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_27<Ref> r@77@01) xs6@18@01)
-  (not (Set_in (inv_27<Ref> r@77@01) xs6@18@01))))
+  (Set_in (inv_5<Ref> r@77@01) xs6@18@01)
+  (not (Set_in (inv_5<Ref> r@77@01) xs6@18@01))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 42 | !(inv_28[Ref](r@77@01) in xs7@19@01)]
-(assert (not (Set_in (inv_28<Ref> r@77@01) xs7@19@01)))
+; [else-branch: 42 | !(inv_6[Ref](r@77@01) in xs7@19@01)]
+(assert (not (Set_in (inv_6<Ref> r@77@01) xs7@19@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -2993,33 +2963,33 @@
   :pattern (($FVF.perm_f (as pm@78@01  $FPM) r))
   :qid |qp.resTrgDef15|)))
 (assert (=>
-  (Set_in (inv_28<Ref> r@77@01) xs7@19@01)
+  (Set_in (inv_6<Ref> r@77@01) xs7@19@01)
   (and
-    (Set_in (inv_28<Ref> r@77@01) xs7@19@01)
+    (Set_in (inv_6<Ref> r@77@01) xs7@19@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@77@01) r@77@01)
     (<= ($FVF.perm_f (as pm@78@01  $FPM) r@77@01) $Perm.Write)
     (or
-      (Set_in (inv_22<Ref> r@77@01) xs1@13@01)
-      (not (Set_in (inv_22<Ref> r@77@01) xs1@13@01)))
+      (Set_in (inv_0<Ref> r@77@01) xs1@13@01)
+      (not (Set_in (inv_0<Ref> r@77@01) xs1@13@01)))
     (or
-      (Set_in (inv_23<Ref> r@77@01) xs2@14@01)
-      (not (Set_in (inv_23<Ref> r@77@01) xs2@14@01)))
+      (Set_in (inv_1<Ref> r@77@01) xs2@14@01)
+      (not (Set_in (inv_1<Ref> r@77@01) xs2@14@01)))
     (or
-      (Set_in (inv_24<Ref> r@77@01) xs3@15@01)
-      (not (Set_in (inv_24<Ref> r@77@01) xs3@15@01)))
+      (Set_in (inv_2<Ref> r@77@01) xs3@15@01)
+      (not (Set_in (inv_2<Ref> r@77@01) xs3@15@01)))
     (or
-      (Set_in (inv_25<Ref> r@77@01) xs4@16@01)
-      (not (Set_in (inv_25<Ref> r@77@01) xs4@16@01)))
+      (Set_in (inv_3<Ref> r@77@01) xs4@16@01)
+      (not (Set_in (inv_3<Ref> r@77@01) xs4@16@01)))
     (or
-      (Set_in (inv_26<Ref> r@77@01) xs5@17@01)
-      (not (Set_in (inv_26<Ref> r@77@01) xs5@17@01)))
+      (Set_in (inv_4<Ref> r@77@01) xs5@17@01)
+      (not (Set_in (inv_4<Ref> r@77@01) xs5@17@01)))
     (or
-      (Set_in (inv_27<Ref> r@77@01) xs6@18@01)
-      (not (Set_in (inv_27<Ref> r@77@01) xs6@18@01))))))
+      (Set_in (inv_5<Ref> r@77@01) xs6@18@01)
+      (not (Set_in (inv_5<Ref> r@77@01) xs6@18@01))))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_28<Ref> r@77@01) xs7@19@01))
-  (Set_in (inv_28<Ref> r@77@01) xs7@19@01)))
+  (not (Set_in (inv_6<Ref> r@77@01) xs7@19@01))
+  (Set_in (inv_6<Ref> r@77@01) xs7@19@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -3036,57 +3006,55 @@
 (assert (forall ((r@77@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_28<Ref> r@77@01) xs7@19@01)
+      (Set_in (inv_6<Ref> r@77@01) xs7@19@01)
       (and
-        (Set_in (inv_28<Ref> r@77@01) xs7@19@01)
+        (Set_in (inv_6<Ref> r@77@01) xs7@19@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@77@01) r@77@01)
         (<= ($FVF.perm_f (as pm@78@01  $FPM) r@77@01) $Perm.Write)
         (or
-          (Set_in (inv_22<Ref> r@77@01) xs1@13@01)
-          (not (Set_in (inv_22<Ref> r@77@01) xs1@13@01)))
+          (Set_in (inv_0<Ref> r@77@01) xs1@13@01)
+          (not (Set_in (inv_0<Ref> r@77@01) xs1@13@01)))
         (or
-          (Set_in (inv_23<Ref> r@77@01) xs2@14@01)
-          (not (Set_in (inv_23<Ref> r@77@01) xs2@14@01)))
+          (Set_in (inv_1<Ref> r@77@01) xs2@14@01)
+          (not (Set_in (inv_1<Ref> r@77@01) xs2@14@01)))
         (or
-          (Set_in (inv_24<Ref> r@77@01) xs3@15@01)
-          (not (Set_in (inv_24<Ref> r@77@01) xs3@15@01)))
+          (Set_in (inv_2<Ref> r@77@01) xs3@15@01)
+          (not (Set_in (inv_2<Ref> r@77@01) xs3@15@01)))
         (or
-          (Set_in (inv_25<Ref> r@77@01) xs4@16@01)
-          (not (Set_in (inv_25<Ref> r@77@01) xs4@16@01)))
+          (Set_in (inv_3<Ref> r@77@01) xs4@16@01)
+          (not (Set_in (inv_3<Ref> r@77@01) xs4@16@01)))
         (or
-          (Set_in (inv_26<Ref> r@77@01) xs5@17@01)
-          (not (Set_in (inv_26<Ref> r@77@01) xs5@17@01)))
+          (Set_in (inv_4<Ref> r@77@01) xs5@17@01)
+          (not (Set_in (inv_4<Ref> r@77@01) xs5@17@01)))
         (or
-          (Set_in (inv_27<Ref> r@77@01) xs6@18@01)
-          (not (Set_in (inv_27<Ref> r@77@01) xs6@18@01)))))
+          (Set_in (inv_5<Ref> r@77@01) xs6@18@01)
+          (not (Set_in (inv_5<Ref> r@77@01) xs6@18@01)))))
     (or
-      (not (Set_in (inv_28<Ref> r@77@01) xs7@19@01))
-      (Set_in (inv_28<Ref> r@77@01) xs7@19@01)))
-  :pattern ((inv_28<Ref> r@77@01))
+      (not (Set_in (inv_6<Ref> r@77@01) xs7@19@01))
+      (Set_in (inv_6<Ref> r@77@01) xs7@19@01)))
+  :pattern ((inv_6<Ref> r@77@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@20@11@20@62-aux|)))
 (assert (forall ((r@77@01 $Ref)) (!
   (=>
-    (Set_in (inv_28<Ref> r@77@01) xs7@19@01)
+    (Set_in (inv_6<Ref> r@77@01) xs7@19@01)
     (>=
       ($FVF.perm_f (as pm@78@01  $FPM) r@77@01)
-      (__iar__assume_helper_6<Perm> (Set_in (inv_22<Ref> r@77@01) xs1@13@01) (Set_in (inv_23<Ref> r@77@01) xs2@14@01) (Set_in (inv_24<Ref> r@77@01) xs3@15@01) (Set_in (inv_25<Ref> r@77@01) xs4@16@01) (Set_in (inv_26<Ref> r@77@01) xs5@17@01) (Set_in (inv_27<Ref> r@77@01) xs6@18@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
-  :pattern ((inv_28<Ref> r@77@01))
+      (__iar__assume_helper_6<Perm> (Set_in (inv_0<Ref> r@77@01) xs1@13@01) (Set_in (inv_1<Ref> r@77@01) xs2@14@01) (Set_in (inv_2<Ref> r@77@01) xs3@15@01) (Set_in (inv_3<Ref> r@77@01) xs4@16@01) (Set_in (inv_4<Ref> r@77@01) xs5@17@01) (Set_in (inv_5<Ref> r@77@01) xs6@18@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
+  :pattern ((inv_6<Ref> r@77@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@20@11@20@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall x8: Ref ::
-;     { x8.f }
-;     (x8 in xs8) ==> true && inv_29(x8) == x8)
+; inhale (forall x8: Ref :: { x8.f } (x8 in xs8) ==> true && inv_7(x8) == x8)
 (declare-const $t@79@01 $Snap)
 (assert (= $t@79@01 $Snap.unit))
-; [eval] (forall x8: Ref :: { x8.f } (x8 in xs8) ==> true && inv_29(x8) == x8)
+; [eval] (forall x8: Ref :: { x8.f } (x8 in xs8) ==> true && inv_7(x8) == x8)
 (declare-const x8@80@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x8 in xs8) ==> true && inv_29(x8) == x8
+; [eval] (x8 in xs8) ==> true && inv_7(x8) == x8
 ; [eval] (x8 in xs8)
 (push) ; 4
 ; [then-branch: 49 | x8@80@01 in xs8@20@01 | live]
@@ -3094,7 +3062,7 @@
 (push) ; 5
 ; [then-branch: 49 | x8@80@01 in xs8@20@01]
 (assert (Set_in x8@80@01 xs8@20@01))
-; [eval] true && inv_29(x8) == x8
+; [eval] true && inv_7(x8) == x8
 (push) ; 6
 ; [then-branch: 50 | False | live]
 ; [else-branch: 50 | True | live]
@@ -3104,8 +3072,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 50 | True]
-; [eval] inv_29(x8) == x8
-; [eval] inv_29(x8)
+; [eval] inv_7(x8) == x8
+; [eval] inv_7(x8)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -3128,7 +3096,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x8@80@01) x8@80@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@21@11@21@62-aux|)))
 (assert (forall ((x8@80@01 $Ref)) (!
-  (=> (Set_in x8@80@01 xs8@20@01) (= (inv_29<Ref> x8@80@01) x8@80@01))
+  (=> (Set_in x8@80@01 xs8@20@01) (= (inv_7<Ref> x8@80@01) x8@80@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x8@80@01) x8@80@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@21@11@21@62|)))
 ; State saturation: after inhale
@@ -3136,49 +3104,47 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_29(r) }
-;     (inv_29(r) in xs8) ==> inv_29(r) == r)
+; inhale (forall r: Ref :: { inv_7(r) } (inv_7(r) in xs8) ==> inv_7(r) == r)
 (declare-const $t@81@01 $Snap)
 (assert (= $t@81@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_29(r) } (inv_29(r) in xs8) ==> inv_29(r) == r)
+; [eval] (forall r: Ref :: { inv_7(r) } (inv_7(r) in xs8) ==> inv_7(r) == r)
 (declare-const r@82@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_29(r) in xs8) ==> inv_29(r) == r
-; [eval] (inv_29(r) in xs8)
-; [eval] inv_29(r)
+; [eval] (inv_7(r) in xs8) ==> inv_7(r) == r
+; [eval] (inv_7(r) in xs8)
+; [eval] inv_7(r)
 (push) ; 4
-; [then-branch: 51 | inv_29[Ref](r@82@01) in xs8@20@01 | live]
-; [else-branch: 51 | !(inv_29[Ref](r@82@01) in xs8@20@01) | live]
+; [then-branch: 51 | inv_7[Ref](r@82@01) in xs8@20@01 | live]
+; [else-branch: 51 | !(inv_7[Ref](r@82@01) in xs8@20@01) | live]
 (push) ; 5
-; [then-branch: 51 | inv_29[Ref](r@82@01) in xs8@20@01]
-(assert (Set_in (inv_29<Ref> r@82@01) xs8@20@01))
-; [eval] inv_29(r) == r
-; [eval] inv_29(r)
+; [then-branch: 51 | inv_7[Ref](r@82@01) in xs8@20@01]
+(assert (Set_in (inv_7<Ref> r@82@01) xs8@20@01))
+; [eval] inv_7(r) == r
+; [eval] inv_7(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 51 | !(inv_29[Ref](r@82@01) in xs8@20@01)]
-(assert (not (Set_in (inv_29<Ref> r@82@01) xs8@20@01)))
+; [else-branch: 51 | !(inv_7[Ref](r@82@01) in xs8@20@01)]
+(assert (not (Set_in (inv_7<Ref> r@82@01) xs8@20@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_29<Ref> r@82@01) xs8@20@01))
-  (Set_in (inv_29<Ref> r@82@01) xs8@20@01)))
+  (not (Set_in (inv_7<Ref> r@82@01) xs8@20@01))
+  (Set_in (inv_7<Ref> r@82@01) xs8@20@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@82@01 $Ref)) (!
   (or
-    (not (Set_in (inv_29<Ref> r@82@01) xs8@20@01))
-    (Set_in (inv_29<Ref> r@82@01) xs8@20@01))
-  :pattern ((inv_29<Ref> r@82@01))
+    (not (Set_in (inv_7<Ref> r@82@01) xs8@20@01))
+    (Set_in (inv_7<Ref> r@82@01) xs8@20@01))
+  :pattern ((inv_7<Ref> r@82@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@21@11@21@62-aux|)))
 (assert (forall ((r@82@01 $Ref)) (!
-  (=> (Set_in (inv_29<Ref> r@82@01) xs8@20@01) (= (inv_29<Ref> r@82@01) r@82@01))
-  :pattern ((inv_29<Ref> r@82@01))
+  (=> (Set_in (inv_7<Ref> r@82@01) xs8@20@01) (= (inv_7<Ref> r@82@01) r@82@01))
+  :pattern ((inv_7<Ref> r@82@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@21@11@21@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -3186,30 +3152,30 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_29(r) }
-;     (inv_29(r) in xs8) ==>
+;     { inv_7(r) }
+;     (inv_7(r) in xs8) ==>
 ;     perm(r.f) >=
-;     __iar__assume_helper_7((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) &&
-;     r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in
+;     __iar__assume_helper_7((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) &&
+;     r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in
 ;     xs5) &&
-;     r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, p, p,
+;     r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, p, p,
 ;     p, p, p, p, p, p))
 (declare-const $t@83@01 $Snap)
 (assert (= $t@83@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_29(r) } (inv_29(r) in xs8) ==> perm(r.f) >= __iar__assume_helper_7((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, p, p, p, p, p, p, p, p))
+; [eval] (forall r: Ref :: { inv_7(r) } (inv_7(r) in xs8) ==> perm(r.f) >= __iar__assume_helper_7((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, p, p, p, p, p, p, p, p))
 (declare-const r@84@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_29(r) in xs8) ==> perm(r.f) >= __iar__assume_helper_7((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, p, p, p, p, p, p, p, p)
-; [eval] (inv_29(r) in xs8)
-; [eval] inv_29(r)
+; [eval] (inv_7(r) in xs8) ==> perm(r.f) >= __iar__assume_helper_7((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, p, p, p, p, p, p, p, p)
+; [eval] (inv_7(r) in xs8)
+; [eval] inv_7(r)
 (push) ; 4
-; [then-branch: 52 | inv_29[Ref](r@84@01) in xs8@20@01 | live]
-; [else-branch: 52 | !(inv_29[Ref](r@84@01) in xs8@20@01) | live]
+; [then-branch: 52 | inv_7[Ref](r@84@01) in xs8@20@01 | live]
+; [else-branch: 52 | !(inv_7[Ref](r@84@01) in xs8@20@01) | live]
 (push) ; 5
-; [then-branch: 52 | inv_29[Ref](r@84@01) in xs8@20@01]
-(assert (Set_in (inv_29<Ref> r@84@01) xs8@20@01))
-; [eval] perm(r.f) >= __iar__assume_helper_7((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, p, p, p, p, p, p, p, p)
+; [then-branch: 52 | inv_7[Ref](r@84@01) in xs8@20@01]
+(assert (Set_in (inv_7<Ref> r@84@01) xs8@20@01))
+; [eval] perm(r.f) >= __iar__assume_helper_7((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, p, p, p, p, p, p, p, p)
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
 (declare-const pm@85@01 $FPM)
@@ -3226,158 +3192,158 @@
 (assert ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@84@01) r@84@01))
 ; perm(r.f)  ~~>  assume upper permission bound
 (assert (<= ($FVF.perm_f (as pm@85@01  $FPM) r@84@01) $Perm.Write))
-; [eval] __iar__assume_helper_7((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, p, p, p, p, p, p, p, p)
-; [eval] (inv_22(r) in xs1) && r == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] __iar__assume_helper_7((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, p, p, p, p, p, p, p, p)
+; [eval] (inv_0(r) in xs1) && r == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 6
-; [then-branch: 53 | !(inv_22[Ref](r@84@01) in xs1@13@01) | live]
-; [else-branch: 53 | inv_22[Ref](r@84@01) in xs1@13@01 | live]
+; [then-branch: 53 | !(inv_0[Ref](r@84@01) in xs1@13@01) | live]
+; [else-branch: 53 | inv_0[Ref](r@84@01) in xs1@13@01 | live]
 (push) ; 7
-; [then-branch: 53 | !(inv_22[Ref](r@84@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@84@01) xs1@13@01)))
+; [then-branch: 53 | !(inv_0[Ref](r@84@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@84@01) xs1@13@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 53 | inv_22[Ref](r@84@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@84@01) xs1@13@01))
+; [else-branch: 53 | inv_0[Ref](r@84@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@84@01) xs1@13@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_22<Ref> r@84@01) xs1@13@01)
-  (not (Set_in (inv_22<Ref> r@84@01) xs1@13@01))))
-; [eval] (inv_23(r) in xs2) && r == r
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+  (Set_in (inv_0<Ref> r@84@01) xs1@13@01)
+  (not (Set_in (inv_0<Ref> r@84@01) xs1@13@01))))
+; [eval] (inv_1(r) in xs2) && r == r
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 6
-; [then-branch: 54 | !(inv_23[Ref](r@84@01) in xs2@14@01) | live]
-; [else-branch: 54 | inv_23[Ref](r@84@01) in xs2@14@01 | live]
+; [then-branch: 54 | !(inv_1[Ref](r@84@01) in xs2@14@01) | live]
+; [else-branch: 54 | inv_1[Ref](r@84@01) in xs2@14@01 | live]
 (push) ; 7
-; [then-branch: 54 | !(inv_23[Ref](r@84@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@84@01) xs2@14@01)))
+; [then-branch: 54 | !(inv_1[Ref](r@84@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@84@01) xs2@14@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 54 | inv_23[Ref](r@84@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@84@01) xs2@14@01))
+; [else-branch: 54 | inv_1[Ref](r@84@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@84@01) xs2@14@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_23<Ref> r@84@01) xs2@14@01)
-  (not (Set_in (inv_23<Ref> r@84@01) xs2@14@01))))
-; [eval] (inv_24(r) in xs3) && r == r
-; [eval] (inv_24(r) in xs3)
-; [eval] inv_24(r)
+  (Set_in (inv_1<Ref> r@84@01) xs2@14@01)
+  (not (Set_in (inv_1<Ref> r@84@01) xs2@14@01))))
+; [eval] (inv_2(r) in xs3) && r == r
+; [eval] (inv_2(r) in xs3)
+; [eval] inv_2(r)
 (push) ; 6
-; [then-branch: 55 | !(inv_24[Ref](r@84@01) in xs3@15@01) | live]
-; [else-branch: 55 | inv_24[Ref](r@84@01) in xs3@15@01 | live]
+; [then-branch: 55 | !(inv_2[Ref](r@84@01) in xs3@15@01) | live]
+; [else-branch: 55 | inv_2[Ref](r@84@01) in xs3@15@01 | live]
 (push) ; 7
-; [then-branch: 55 | !(inv_24[Ref](r@84@01) in xs3@15@01)]
-(assert (not (Set_in (inv_24<Ref> r@84@01) xs3@15@01)))
+; [then-branch: 55 | !(inv_2[Ref](r@84@01) in xs3@15@01)]
+(assert (not (Set_in (inv_2<Ref> r@84@01) xs3@15@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 55 | inv_24[Ref](r@84@01) in xs3@15@01]
-(assert (Set_in (inv_24<Ref> r@84@01) xs3@15@01))
+; [else-branch: 55 | inv_2[Ref](r@84@01) in xs3@15@01]
+(assert (Set_in (inv_2<Ref> r@84@01) xs3@15@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_24<Ref> r@84@01) xs3@15@01)
-  (not (Set_in (inv_24<Ref> r@84@01) xs3@15@01))))
-; [eval] (inv_25(r) in xs4) && r == r
-; [eval] (inv_25(r) in xs4)
-; [eval] inv_25(r)
+  (Set_in (inv_2<Ref> r@84@01) xs3@15@01)
+  (not (Set_in (inv_2<Ref> r@84@01) xs3@15@01))))
+; [eval] (inv_3(r) in xs4) && r == r
+; [eval] (inv_3(r) in xs4)
+; [eval] inv_3(r)
 (push) ; 6
-; [then-branch: 56 | !(inv_25[Ref](r@84@01) in xs4@16@01) | live]
-; [else-branch: 56 | inv_25[Ref](r@84@01) in xs4@16@01 | live]
+; [then-branch: 56 | !(inv_3[Ref](r@84@01) in xs4@16@01) | live]
+; [else-branch: 56 | inv_3[Ref](r@84@01) in xs4@16@01 | live]
 (push) ; 7
-; [then-branch: 56 | !(inv_25[Ref](r@84@01) in xs4@16@01)]
-(assert (not (Set_in (inv_25<Ref> r@84@01) xs4@16@01)))
+; [then-branch: 56 | !(inv_3[Ref](r@84@01) in xs4@16@01)]
+(assert (not (Set_in (inv_3<Ref> r@84@01) xs4@16@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 56 | inv_25[Ref](r@84@01) in xs4@16@01]
-(assert (Set_in (inv_25<Ref> r@84@01) xs4@16@01))
+; [else-branch: 56 | inv_3[Ref](r@84@01) in xs4@16@01]
+(assert (Set_in (inv_3<Ref> r@84@01) xs4@16@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_25<Ref> r@84@01) xs4@16@01)
-  (not (Set_in (inv_25<Ref> r@84@01) xs4@16@01))))
-; [eval] (inv_26(r) in xs5) && r == r
-; [eval] (inv_26(r) in xs5)
-; [eval] inv_26(r)
+  (Set_in (inv_3<Ref> r@84@01) xs4@16@01)
+  (not (Set_in (inv_3<Ref> r@84@01) xs4@16@01))))
+; [eval] (inv_4(r) in xs5) && r == r
+; [eval] (inv_4(r) in xs5)
+; [eval] inv_4(r)
 (push) ; 6
-; [then-branch: 57 | !(inv_26[Ref](r@84@01) in xs5@17@01) | live]
-; [else-branch: 57 | inv_26[Ref](r@84@01) in xs5@17@01 | live]
+; [then-branch: 57 | !(inv_4[Ref](r@84@01) in xs5@17@01) | live]
+; [else-branch: 57 | inv_4[Ref](r@84@01) in xs5@17@01 | live]
 (push) ; 7
-; [then-branch: 57 | !(inv_26[Ref](r@84@01) in xs5@17@01)]
-(assert (not (Set_in (inv_26<Ref> r@84@01) xs5@17@01)))
+; [then-branch: 57 | !(inv_4[Ref](r@84@01) in xs5@17@01)]
+(assert (not (Set_in (inv_4<Ref> r@84@01) xs5@17@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 57 | inv_26[Ref](r@84@01) in xs5@17@01]
-(assert (Set_in (inv_26<Ref> r@84@01) xs5@17@01))
+; [else-branch: 57 | inv_4[Ref](r@84@01) in xs5@17@01]
+(assert (Set_in (inv_4<Ref> r@84@01) xs5@17@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_26<Ref> r@84@01) xs5@17@01)
-  (not (Set_in (inv_26<Ref> r@84@01) xs5@17@01))))
-; [eval] (inv_27(r) in xs6) && r == r
-; [eval] (inv_27(r) in xs6)
-; [eval] inv_27(r)
+  (Set_in (inv_4<Ref> r@84@01) xs5@17@01)
+  (not (Set_in (inv_4<Ref> r@84@01) xs5@17@01))))
+; [eval] (inv_5(r) in xs6) && r == r
+; [eval] (inv_5(r) in xs6)
+; [eval] inv_5(r)
 (push) ; 6
-; [then-branch: 58 | !(inv_27[Ref](r@84@01) in xs6@18@01) | live]
-; [else-branch: 58 | inv_27[Ref](r@84@01) in xs6@18@01 | live]
+; [then-branch: 58 | !(inv_5[Ref](r@84@01) in xs6@18@01) | live]
+; [else-branch: 58 | inv_5[Ref](r@84@01) in xs6@18@01 | live]
 (push) ; 7
-; [then-branch: 58 | !(inv_27[Ref](r@84@01) in xs6@18@01)]
-(assert (not (Set_in (inv_27<Ref> r@84@01) xs6@18@01)))
+; [then-branch: 58 | !(inv_5[Ref](r@84@01) in xs6@18@01)]
+(assert (not (Set_in (inv_5<Ref> r@84@01) xs6@18@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 58 | inv_27[Ref](r@84@01) in xs6@18@01]
-(assert (Set_in (inv_27<Ref> r@84@01) xs6@18@01))
+; [else-branch: 58 | inv_5[Ref](r@84@01) in xs6@18@01]
+(assert (Set_in (inv_5<Ref> r@84@01) xs6@18@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_27<Ref> r@84@01) xs6@18@01)
-  (not (Set_in (inv_27<Ref> r@84@01) xs6@18@01))))
-; [eval] (inv_28(r) in xs7) && r == r
-; [eval] (inv_28(r) in xs7)
-; [eval] inv_28(r)
+  (Set_in (inv_5<Ref> r@84@01) xs6@18@01)
+  (not (Set_in (inv_5<Ref> r@84@01) xs6@18@01))))
+; [eval] (inv_6(r) in xs7) && r == r
+; [eval] (inv_6(r) in xs7)
+; [eval] inv_6(r)
 (push) ; 6
-; [then-branch: 59 | !(inv_28[Ref](r@84@01) in xs7@19@01) | live]
-; [else-branch: 59 | inv_28[Ref](r@84@01) in xs7@19@01 | live]
+; [then-branch: 59 | !(inv_6[Ref](r@84@01) in xs7@19@01) | live]
+; [else-branch: 59 | inv_6[Ref](r@84@01) in xs7@19@01 | live]
 (push) ; 7
-; [then-branch: 59 | !(inv_28[Ref](r@84@01) in xs7@19@01)]
-(assert (not (Set_in (inv_28<Ref> r@84@01) xs7@19@01)))
+; [then-branch: 59 | !(inv_6[Ref](r@84@01) in xs7@19@01)]
+(assert (not (Set_in (inv_6<Ref> r@84@01) xs7@19@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 59 | inv_28[Ref](r@84@01) in xs7@19@01]
-(assert (Set_in (inv_28<Ref> r@84@01) xs7@19@01))
+; [else-branch: 59 | inv_6[Ref](r@84@01) in xs7@19@01]
+(assert (Set_in (inv_6<Ref> r@84@01) xs7@19@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_28<Ref> r@84@01) xs7@19@01)
-  (not (Set_in (inv_28<Ref> r@84@01) xs7@19@01))))
+  (Set_in (inv_6<Ref> r@84@01) xs7@19@01)
+  (not (Set_in (inv_6<Ref> r@84@01) xs7@19@01))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 52 | !(inv_29[Ref](r@84@01) in xs8@20@01)]
-(assert (not (Set_in (inv_29<Ref> r@84@01) xs8@20@01)))
+; [else-branch: 52 | !(inv_7[Ref](r@84@01) in xs8@20@01)]
+(assert (not (Set_in (inv_7<Ref> r@84@01) xs8@20@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -3392,36 +3358,36 @@
   :pattern (($FVF.perm_f (as pm@85@01  $FPM) r))
   :qid |qp.resTrgDef17|)))
 (assert (=>
-  (Set_in (inv_29<Ref> r@84@01) xs8@20@01)
+  (Set_in (inv_7<Ref> r@84@01) xs8@20@01)
   (and
-    (Set_in (inv_29<Ref> r@84@01) xs8@20@01)
+    (Set_in (inv_7<Ref> r@84@01) xs8@20@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@84@01) r@84@01)
     (<= ($FVF.perm_f (as pm@85@01  $FPM) r@84@01) $Perm.Write)
     (or
-      (Set_in (inv_22<Ref> r@84@01) xs1@13@01)
-      (not (Set_in (inv_22<Ref> r@84@01) xs1@13@01)))
+      (Set_in (inv_0<Ref> r@84@01) xs1@13@01)
+      (not (Set_in (inv_0<Ref> r@84@01) xs1@13@01)))
     (or
-      (Set_in (inv_23<Ref> r@84@01) xs2@14@01)
-      (not (Set_in (inv_23<Ref> r@84@01) xs2@14@01)))
+      (Set_in (inv_1<Ref> r@84@01) xs2@14@01)
+      (not (Set_in (inv_1<Ref> r@84@01) xs2@14@01)))
     (or
-      (Set_in (inv_24<Ref> r@84@01) xs3@15@01)
-      (not (Set_in (inv_24<Ref> r@84@01) xs3@15@01)))
+      (Set_in (inv_2<Ref> r@84@01) xs3@15@01)
+      (not (Set_in (inv_2<Ref> r@84@01) xs3@15@01)))
     (or
-      (Set_in (inv_25<Ref> r@84@01) xs4@16@01)
-      (not (Set_in (inv_25<Ref> r@84@01) xs4@16@01)))
+      (Set_in (inv_3<Ref> r@84@01) xs4@16@01)
+      (not (Set_in (inv_3<Ref> r@84@01) xs4@16@01)))
     (or
-      (Set_in (inv_26<Ref> r@84@01) xs5@17@01)
-      (not (Set_in (inv_26<Ref> r@84@01) xs5@17@01)))
+      (Set_in (inv_4<Ref> r@84@01) xs5@17@01)
+      (not (Set_in (inv_4<Ref> r@84@01) xs5@17@01)))
     (or
-      (Set_in (inv_27<Ref> r@84@01) xs6@18@01)
-      (not (Set_in (inv_27<Ref> r@84@01) xs6@18@01)))
+      (Set_in (inv_5<Ref> r@84@01) xs6@18@01)
+      (not (Set_in (inv_5<Ref> r@84@01) xs6@18@01)))
     (or
-      (Set_in (inv_28<Ref> r@84@01) xs7@19@01)
-      (not (Set_in (inv_28<Ref> r@84@01) xs7@19@01))))))
+      (Set_in (inv_6<Ref> r@84@01) xs7@19@01)
+      (not (Set_in (inv_6<Ref> r@84@01) xs7@19@01))))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_29<Ref> r@84@01) xs8@20@01))
-  (Set_in (inv_29<Ref> r@84@01) xs8@20@01)))
+  (not (Set_in (inv_7<Ref> r@84@01) xs8@20@01))
+  (Set_in (inv_7<Ref> r@84@01) xs8@20@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -3438,60 +3404,58 @@
 (assert (forall ((r@84@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_29<Ref> r@84@01) xs8@20@01)
+      (Set_in (inv_7<Ref> r@84@01) xs8@20@01)
       (and
-        (Set_in (inv_29<Ref> r@84@01) xs8@20@01)
+        (Set_in (inv_7<Ref> r@84@01) xs8@20@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@84@01) r@84@01)
         (<= ($FVF.perm_f (as pm@85@01  $FPM) r@84@01) $Perm.Write)
         (or
-          (Set_in (inv_22<Ref> r@84@01) xs1@13@01)
-          (not (Set_in (inv_22<Ref> r@84@01) xs1@13@01)))
+          (Set_in (inv_0<Ref> r@84@01) xs1@13@01)
+          (not (Set_in (inv_0<Ref> r@84@01) xs1@13@01)))
         (or
-          (Set_in (inv_23<Ref> r@84@01) xs2@14@01)
-          (not (Set_in (inv_23<Ref> r@84@01) xs2@14@01)))
+          (Set_in (inv_1<Ref> r@84@01) xs2@14@01)
+          (not (Set_in (inv_1<Ref> r@84@01) xs2@14@01)))
         (or
-          (Set_in (inv_24<Ref> r@84@01) xs3@15@01)
-          (not (Set_in (inv_24<Ref> r@84@01) xs3@15@01)))
+          (Set_in (inv_2<Ref> r@84@01) xs3@15@01)
+          (not (Set_in (inv_2<Ref> r@84@01) xs3@15@01)))
         (or
-          (Set_in (inv_25<Ref> r@84@01) xs4@16@01)
-          (not (Set_in (inv_25<Ref> r@84@01) xs4@16@01)))
+          (Set_in (inv_3<Ref> r@84@01) xs4@16@01)
+          (not (Set_in (inv_3<Ref> r@84@01) xs4@16@01)))
         (or
-          (Set_in (inv_26<Ref> r@84@01) xs5@17@01)
-          (not (Set_in (inv_26<Ref> r@84@01) xs5@17@01)))
+          (Set_in (inv_4<Ref> r@84@01) xs5@17@01)
+          (not (Set_in (inv_4<Ref> r@84@01) xs5@17@01)))
         (or
-          (Set_in (inv_27<Ref> r@84@01) xs6@18@01)
-          (not (Set_in (inv_27<Ref> r@84@01) xs6@18@01)))
+          (Set_in (inv_5<Ref> r@84@01) xs6@18@01)
+          (not (Set_in (inv_5<Ref> r@84@01) xs6@18@01)))
         (or
-          (Set_in (inv_28<Ref> r@84@01) xs7@19@01)
-          (not (Set_in (inv_28<Ref> r@84@01) xs7@19@01)))))
+          (Set_in (inv_6<Ref> r@84@01) xs7@19@01)
+          (not (Set_in (inv_6<Ref> r@84@01) xs7@19@01)))))
     (or
-      (not (Set_in (inv_29<Ref> r@84@01) xs8@20@01))
-      (Set_in (inv_29<Ref> r@84@01) xs8@20@01)))
-  :pattern ((inv_29<Ref> r@84@01))
+      (not (Set_in (inv_7<Ref> r@84@01) xs8@20@01))
+      (Set_in (inv_7<Ref> r@84@01) xs8@20@01)))
+  :pattern ((inv_7<Ref> r@84@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@21@11@21@62-aux|)))
 (assert (forall ((r@84@01 $Ref)) (!
   (=>
-    (Set_in (inv_29<Ref> r@84@01) xs8@20@01)
+    (Set_in (inv_7<Ref> r@84@01) xs8@20@01)
     (>=
       ($FVF.perm_f (as pm@85@01  $FPM) r@84@01)
-      (__iar__assume_helper_7<Perm> (Set_in (inv_22<Ref> r@84@01) xs1@13@01) (Set_in (inv_23<Ref> r@84@01) xs2@14@01) (Set_in (inv_24<Ref> r@84@01) xs3@15@01) (Set_in (inv_25<Ref> r@84@01) xs4@16@01) (Set_in (inv_26<Ref> r@84@01) xs5@17@01) (Set_in (inv_27<Ref> r@84@01) xs6@18@01) (Set_in (inv_28<Ref> r@84@01) xs7@19@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
-  :pattern ((inv_29<Ref> r@84@01))
+      (__iar__assume_helper_7<Perm> (Set_in (inv_0<Ref> r@84@01) xs1@13@01) (Set_in (inv_1<Ref> r@84@01) xs2@14@01) (Set_in (inv_2<Ref> r@84@01) xs3@15@01) (Set_in (inv_3<Ref> r@84@01) xs4@16@01) (Set_in (inv_4<Ref> r@84@01) xs5@17@01) (Set_in (inv_5<Ref> r@84@01) xs6@18@01) (Set_in (inv_6<Ref> r@84@01) xs7@19@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
+  :pattern ((inv_7<Ref> r@84@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@21@11@21@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall x9: Ref ::
-;     { x9.f }
-;     (x9 in xs9) ==> true && inv_30(x9) == x9)
+; inhale (forall x9: Ref :: { x9.f } (x9 in xs9) ==> true && inv_8(x9) == x9)
 (declare-const $t@86@01 $Snap)
 (assert (= $t@86@01 $Snap.unit))
-; [eval] (forall x9: Ref :: { x9.f } (x9 in xs9) ==> true && inv_30(x9) == x9)
+; [eval] (forall x9: Ref :: { x9.f } (x9 in xs9) ==> true && inv_8(x9) == x9)
 (declare-const x9@87@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x9 in xs9) ==> true && inv_30(x9) == x9
+; [eval] (x9 in xs9) ==> true && inv_8(x9) == x9
 ; [eval] (x9 in xs9)
 (push) ; 4
 ; [then-branch: 60 | x9@87@01 in xs9@21@01 | live]
@@ -3499,7 +3463,7 @@
 (push) ; 5
 ; [then-branch: 60 | x9@87@01 in xs9@21@01]
 (assert (Set_in x9@87@01 xs9@21@01))
-; [eval] true && inv_30(x9) == x9
+; [eval] true && inv_8(x9) == x9
 (push) ; 6
 ; [then-branch: 61 | False | live]
 ; [else-branch: 61 | True | live]
@@ -3509,8 +3473,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 61 | True]
-; [eval] inv_30(x9) == x9
-; [eval] inv_30(x9)
+; [eval] inv_8(x9) == x9
+; [eval] inv_8(x9)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -3533,7 +3497,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x9@87@01) x9@87@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@22@11@22@62-aux|)))
 (assert (forall ((x9@87@01 $Ref)) (!
-  (=> (Set_in x9@87@01 xs9@21@01) (= (inv_30<Ref> x9@87@01) x9@87@01))
+  (=> (Set_in x9@87@01 xs9@21@01) (= (inv_8<Ref> x9@87@01) x9@87@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x9@87@01) x9@87@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@22@11@22@62|)))
 ; State saturation: after inhale
@@ -3541,49 +3505,47 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_30(r) }
-;     (inv_30(r) in xs9) ==> inv_30(r) == r)
+; inhale (forall r: Ref :: { inv_8(r) } (inv_8(r) in xs9) ==> inv_8(r) == r)
 (declare-const $t@88@01 $Snap)
 (assert (= $t@88@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_30(r) } (inv_30(r) in xs9) ==> inv_30(r) == r)
+; [eval] (forall r: Ref :: { inv_8(r) } (inv_8(r) in xs9) ==> inv_8(r) == r)
 (declare-const r@89@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_30(r) in xs9) ==> inv_30(r) == r
-; [eval] (inv_30(r) in xs9)
-; [eval] inv_30(r)
+; [eval] (inv_8(r) in xs9) ==> inv_8(r) == r
+; [eval] (inv_8(r) in xs9)
+; [eval] inv_8(r)
 (push) ; 4
-; [then-branch: 62 | inv_30[Ref](r@89@01) in xs9@21@01 | live]
-; [else-branch: 62 | !(inv_30[Ref](r@89@01) in xs9@21@01) | live]
+; [then-branch: 62 | inv_8[Ref](r@89@01) in xs9@21@01 | live]
+; [else-branch: 62 | !(inv_8[Ref](r@89@01) in xs9@21@01) | live]
 (push) ; 5
-; [then-branch: 62 | inv_30[Ref](r@89@01) in xs9@21@01]
-(assert (Set_in (inv_30<Ref> r@89@01) xs9@21@01))
-; [eval] inv_30(r) == r
-; [eval] inv_30(r)
+; [then-branch: 62 | inv_8[Ref](r@89@01) in xs9@21@01]
+(assert (Set_in (inv_8<Ref> r@89@01) xs9@21@01))
+; [eval] inv_8(r) == r
+; [eval] inv_8(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 62 | !(inv_30[Ref](r@89@01) in xs9@21@01)]
-(assert (not (Set_in (inv_30<Ref> r@89@01) xs9@21@01)))
+; [else-branch: 62 | !(inv_8[Ref](r@89@01) in xs9@21@01)]
+(assert (not (Set_in (inv_8<Ref> r@89@01) xs9@21@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_30<Ref> r@89@01) xs9@21@01))
-  (Set_in (inv_30<Ref> r@89@01) xs9@21@01)))
+  (not (Set_in (inv_8<Ref> r@89@01) xs9@21@01))
+  (Set_in (inv_8<Ref> r@89@01) xs9@21@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@89@01 $Ref)) (!
   (or
-    (not (Set_in (inv_30<Ref> r@89@01) xs9@21@01))
-    (Set_in (inv_30<Ref> r@89@01) xs9@21@01))
-  :pattern ((inv_30<Ref> r@89@01))
+    (not (Set_in (inv_8<Ref> r@89@01) xs9@21@01))
+    (Set_in (inv_8<Ref> r@89@01) xs9@21@01))
+  :pattern ((inv_8<Ref> r@89@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@22@11@22@62-aux|)))
 (assert (forall ((r@89@01 $Ref)) (!
-  (=> (Set_in (inv_30<Ref> r@89@01) xs9@21@01) (= (inv_30<Ref> r@89@01) r@89@01))
-  :pattern ((inv_30<Ref> r@89@01))
+  (=> (Set_in (inv_8<Ref> r@89@01) xs9@21@01) (= (inv_8<Ref> r@89@01) r@89@01))
+  :pattern ((inv_8<Ref> r@89@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@22@11@22@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -3591,31 +3553,31 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_30(r) }
-;     (inv_30(r) in xs9) ==>
+;     { inv_8(r) }
+;     (inv_8(r) in xs9) ==>
 ;     perm(r.f) >=
-;     __iar__assume_helper_8((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) &&
-;     r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in
+;     __iar__assume_helper_8((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) &&
+;     r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in
 ;     xs5) &&
-;     r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in
+;     r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in
 ;     xs8) &&
 ;     r == r, p, p, p, p, p, p, p, p, p))
 (declare-const $t@90@01 $Snap)
 (assert (= $t@90@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_30(r) } (inv_30(r) in xs9) ==> perm(r.f) >= __iar__assume_helper_8((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, p, p, p, p, p, p, p, p, p))
+; [eval] (forall r: Ref :: { inv_8(r) } (inv_8(r) in xs9) ==> perm(r.f) >= __iar__assume_helper_8((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, p, p, p, p, p, p, p, p, p))
 (declare-const r@91@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_30(r) in xs9) ==> perm(r.f) >= __iar__assume_helper_8((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, p, p, p, p, p, p, p, p, p)
-; [eval] (inv_30(r) in xs9)
-; [eval] inv_30(r)
+; [eval] (inv_8(r) in xs9) ==> perm(r.f) >= __iar__assume_helper_8((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, p, p, p, p, p, p, p, p, p)
+; [eval] (inv_8(r) in xs9)
+; [eval] inv_8(r)
 (push) ; 4
-; [then-branch: 63 | inv_30[Ref](r@91@01) in xs9@21@01 | live]
-; [else-branch: 63 | !(inv_30[Ref](r@91@01) in xs9@21@01) | live]
+; [then-branch: 63 | inv_8[Ref](r@91@01) in xs9@21@01 | live]
+; [else-branch: 63 | !(inv_8[Ref](r@91@01) in xs9@21@01) | live]
 (push) ; 5
-; [then-branch: 63 | inv_30[Ref](r@91@01) in xs9@21@01]
-(assert (Set_in (inv_30<Ref> r@91@01) xs9@21@01))
-; [eval] perm(r.f) >= __iar__assume_helper_8((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, p, p, p, p, p, p, p, p, p)
+; [then-branch: 63 | inv_8[Ref](r@91@01) in xs9@21@01]
+(assert (Set_in (inv_8<Ref> r@91@01) xs9@21@01))
+; [eval] perm(r.f) >= __iar__assume_helper_8((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, p, p, p, p, p, p, p, p, p)
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
 (declare-const pm@92@01 $FPM)
@@ -3632,179 +3594,179 @@
 (assert ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@91@01) r@91@01))
 ; perm(r.f)  ~~>  assume upper permission bound
 (assert (<= ($FVF.perm_f (as pm@92@01  $FPM) r@91@01) $Perm.Write))
-; [eval] __iar__assume_helper_8((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, p, p, p, p, p, p, p, p, p)
-; [eval] (inv_22(r) in xs1) && r == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] __iar__assume_helper_8((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, p, p, p, p, p, p, p, p, p)
+; [eval] (inv_0(r) in xs1) && r == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 6
-; [then-branch: 64 | !(inv_22[Ref](r@91@01) in xs1@13@01) | live]
-; [else-branch: 64 | inv_22[Ref](r@91@01) in xs1@13@01 | live]
+; [then-branch: 64 | !(inv_0[Ref](r@91@01) in xs1@13@01) | live]
+; [else-branch: 64 | inv_0[Ref](r@91@01) in xs1@13@01 | live]
 (push) ; 7
-; [then-branch: 64 | !(inv_22[Ref](r@91@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@91@01) xs1@13@01)))
+; [then-branch: 64 | !(inv_0[Ref](r@91@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@91@01) xs1@13@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 64 | inv_22[Ref](r@91@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@91@01) xs1@13@01))
+; [else-branch: 64 | inv_0[Ref](r@91@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@91@01) xs1@13@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_22<Ref> r@91@01) xs1@13@01)
-  (not (Set_in (inv_22<Ref> r@91@01) xs1@13@01))))
-; [eval] (inv_23(r) in xs2) && r == r
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+  (Set_in (inv_0<Ref> r@91@01) xs1@13@01)
+  (not (Set_in (inv_0<Ref> r@91@01) xs1@13@01))))
+; [eval] (inv_1(r) in xs2) && r == r
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 6
-; [then-branch: 65 | !(inv_23[Ref](r@91@01) in xs2@14@01) | live]
-; [else-branch: 65 | inv_23[Ref](r@91@01) in xs2@14@01 | live]
+; [then-branch: 65 | !(inv_1[Ref](r@91@01) in xs2@14@01) | live]
+; [else-branch: 65 | inv_1[Ref](r@91@01) in xs2@14@01 | live]
 (push) ; 7
-; [then-branch: 65 | !(inv_23[Ref](r@91@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@91@01) xs2@14@01)))
+; [then-branch: 65 | !(inv_1[Ref](r@91@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@91@01) xs2@14@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 65 | inv_23[Ref](r@91@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@91@01) xs2@14@01))
+; [else-branch: 65 | inv_1[Ref](r@91@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@91@01) xs2@14@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_23<Ref> r@91@01) xs2@14@01)
-  (not (Set_in (inv_23<Ref> r@91@01) xs2@14@01))))
-; [eval] (inv_24(r) in xs3) && r == r
-; [eval] (inv_24(r) in xs3)
-; [eval] inv_24(r)
+  (Set_in (inv_1<Ref> r@91@01) xs2@14@01)
+  (not (Set_in (inv_1<Ref> r@91@01) xs2@14@01))))
+; [eval] (inv_2(r) in xs3) && r == r
+; [eval] (inv_2(r) in xs3)
+; [eval] inv_2(r)
 (push) ; 6
-; [then-branch: 66 | !(inv_24[Ref](r@91@01) in xs3@15@01) | live]
-; [else-branch: 66 | inv_24[Ref](r@91@01) in xs3@15@01 | live]
+; [then-branch: 66 | !(inv_2[Ref](r@91@01) in xs3@15@01) | live]
+; [else-branch: 66 | inv_2[Ref](r@91@01) in xs3@15@01 | live]
 (push) ; 7
-; [then-branch: 66 | !(inv_24[Ref](r@91@01) in xs3@15@01)]
-(assert (not (Set_in (inv_24<Ref> r@91@01) xs3@15@01)))
+; [then-branch: 66 | !(inv_2[Ref](r@91@01) in xs3@15@01)]
+(assert (not (Set_in (inv_2<Ref> r@91@01) xs3@15@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 66 | inv_24[Ref](r@91@01) in xs3@15@01]
-(assert (Set_in (inv_24<Ref> r@91@01) xs3@15@01))
+; [else-branch: 66 | inv_2[Ref](r@91@01) in xs3@15@01]
+(assert (Set_in (inv_2<Ref> r@91@01) xs3@15@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_24<Ref> r@91@01) xs3@15@01)
-  (not (Set_in (inv_24<Ref> r@91@01) xs3@15@01))))
-; [eval] (inv_25(r) in xs4) && r == r
-; [eval] (inv_25(r) in xs4)
-; [eval] inv_25(r)
+  (Set_in (inv_2<Ref> r@91@01) xs3@15@01)
+  (not (Set_in (inv_2<Ref> r@91@01) xs3@15@01))))
+; [eval] (inv_3(r) in xs4) && r == r
+; [eval] (inv_3(r) in xs4)
+; [eval] inv_3(r)
 (push) ; 6
-; [then-branch: 67 | !(inv_25[Ref](r@91@01) in xs4@16@01) | live]
-; [else-branch: 67 | inv_25[Ref](r@91@01) in xs4@16@01 | live]
+; [then-branch: 67 | !(inv_3[Ref](r@91@01) in xs4@16@01) | live]
+; [else-branch: 67 | inv_3[Ref](r@91@01) in xs4@16@01 | live]
 (push) ; 7
-; [then-branch: 67 | !(inv_25[Ref](r@91@01) in xs4@16@01)]
-(assert (not (Set_in (inv_25<Ref> r@91@01) xs4@16@01)))
+; [then-branch: 67 | !(inv_3[Ref](r@91@01) in xs4@16@01)]
+(assert (not (Set_in (inv_3<Ref> r@91@01) xs4@16@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 67 | inv_25[Ref](r@91@01) in xs4@16@01]
-(assert (Set_in (inv_25<Ref> r@91@01) xs4@16@01))
+; [else-branch: 67 | inv_3[Ref](r@91@01) in xs4@16@01]
+(assert (Set_in (inv_3<Ref> r@91@01) xs4@16@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_25<Ref> r@91@01) xs4@16@01)
-  (not (Set_in (inv_25<Ref> r@91@01) xs4@16@01))))
-; [eval] (inv_26(r) in xs5) && r == r
-; [eval] (inv_26(r) in xs5)
-; [eval] inv_26(r)
+  (Set_in (inv_3<Ref> r@91@01) xs4@16@01)
+  (not (Set_in (inv_3<Ref> r@91@01) xs4@16@01))))
+; [eval] (inv_4(r) in xs5) && r == r
+; [eval] (inv_4(r) in xs5)
+; [eval] inv_4(r)
 (push) ; 6
-; [then-branch: 68 | !(inv_26[Ref](r@91@01) in xs5@17@01) | live]
-; [else-branch: 68 | inv_26[Ref](r@91@01) in xs5@17@01 | live]
+; [then-branch: 68 | !(inv_4[Ref](r@91@01) in xs5@17@01) | live]
+; [else-branch: 68 | inv_4[Ref](r@91@01) in xs5@17@01 | live]
 (push) ; 7
-; [then-branch: 68 | !(inv_26[Ref](r@91@01) in xs5@17@01)]
-(assert (not (Set_in (inv_26<Ref> r@91@01) xs5@17@01)))
+; [then-branch: 68 | !(inv_4[Ref](r@91@01) in xs5@17@01)]
+(assert (not (Set_in (inv_4<Ref> r@91@01) xs5@17@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 68 | inv_26[Ref](r@91@01) in xs5@17@01]
-(assert (Set_in (inv_26<Ref> r@91@01) xs5@17@01))
+; [else-branch: 68 | inv_4[Ref](r@91@01) in xs5@17@01]
+(assert (Set_in (inv_4<Ref> r@91@01) xs5@17@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_26<Ref> r@91@01) xs5@17@01)
-  (not (Set_in (inv_26<Ref> r@91@01) xs5@17@01))))
-; [eval] (inv_27(r) in xs6) && r == r
-; [eval] (inv_27(r) in xs6)
-; [eval] inv_27(r)
+  (Set_in (inv_4<Ref> r@91@01) xs5@17@01)
+  (not (Set_in (inv_4<Ref> r@91@01) xs5@17@01))))
+; [eval] (inv_5(r) in xs6) && r == r
+; [eval] (inv_5(r) in xs6)
+; [eval] inv_5(r)
 (push) ; 6
-; [then-branch: 69 | !(inv_27[Ref](r@91@01) in xs6@18@01) | live]
-; [else-branch: 69 | inv_27[Ref](r@91@01) in xs6@18@01 | live]
+; [then-branch: 69 | !(inv_5[Ref](r@91@01) in xs6@18@01) | live]
+; [else-branch: 69 | inv_5[Ref](r@91@01) in xs6@18@01 | live]
 (push) ; 7
-; [then-branch: 69 | !(inv_27[Ref](r@91@01) in xs6@18@01)]
-(assert (not (Set_in (inv_27<Ref> r@91@01) xs6@18@01)))
+; [then-branch: 69 | !(inv_5[Ref](r@91@01) in xs6@18@01)]
+(assert (not (Set_in (inv_5<Ref> r@91@01) xs6@18@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 69 | inv_27[Ref](r@91@01) in xs6@18@01]
-(assert (Set_in (inv_27<Ref> r@91@01) xs6@18@01))
+; [else-branch: 69 | inv_5[Ref](r@91@01) in xs6@18@01]
+(assert (Set_in (inv_5<Ref> r@91@01) xs6@18@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_27<Ref> r@91@01) xs6@18@01)
-  (not (Set_in (inv_27<Ref> r@91@01) xs6@18@01))))
-; [eval] (inv_28(r) in xs7) && r == r
-; [eval] (inv_28(r) in xs7)
-; [eval] inv_28(r)
+  (Set_in (inv_5<Ref> r@91@01) xs6@18@01)
+  (not (Set_in (inv_5<Ref> r@91@01) xs6@18@01))))
+; [eval] (inv_6(r) in xs7) && r == r
+; [eval] (inv_6(r) in xs7)
+; [eval] inv_6(r)
 (push) ; 6
-; [then-branch: 70 | !(inv_28[Ref](r@91@01) in xs7@19@01) | live]
-; [else-branch: 70 | inv_28[Ref](r@91@01) in xs7@19@01 | live]
+; [then-branch: 70 | !(inv_6[Ref](r@91@01) in xs7@19@01) | live]
+; [else-branch: 70 | inv_6[Ref](r@91@01) in xs7@19@01 | live]
 (push) ; 7
-; [then-branch: 70 | !(inv_28[Ref](r@91@01) in xs7@19@01)]
-(assert (not (Set_in (inv_28<Ref> r@91@01) xs7@19@01)))
+; [then-branch: 70 | !(inv_6[Ref](r@91@01) in xs7@19@01)]
+(assert (not (Set_in (inv_6<Ref> r@91@01) xs7@19@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 70 | inv_28[Ref](r@91@01) in xs7@19@01]
-(assert (Set_in (inv_28<Ref> r@91@01) xs7@19@01))
+; [else-branch: 70 | inv_6[Ref](r@91@01) in xs7@19@01]
+(assert (Set_in (inv_6<Ref> r@91@01) xs7@19@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_28<Ref> r@91@01) xs7@19@01)
-  (not (Set_in (inv_28<Ref> r@91@01) xs7@19@01))))
-; [eval] (inv_29(r) in xs8) && r == r
-; [eval] (inv_29(r) in xs8)
-; [eval] inv_29(r)
+  (Set_in (inv_6<Ref> r@91@01) xs7@19@01)
+  (not (Set_in (inv_6<Ref> r@91@01) xs7@19@01))))
+; [eval] (inv_7(r) in xs8) && r == r
+; [eval] (inv_7(r) in xs8)
+; [eval] inv_7(r)
 (push) ; 6
-; [then-branch: 71 | !(inv_29[Ref](r@91@01) in xs8@20@01) | live]
-; [else-branch: 71 | inv_29[Ref](r@91@01) in xs8@20@01 | live]
+; [then-branch: 71 | !(inv_7[Ref](r@91@01) in xs8@20@01) | live]
+; [else-branch: 71 | inv_7[Ref](r@91@01) in xs8@20@01 | live]
 (push) ; 7
-; [then-branch: 71 | !(inv_29[Ref](r@91@01) in xs8@20@01)]
-(assert (not (Set_in (inv_29<Ref> r@91@01) xs8@20@01)))
+; [then-branch: 71 | !(inv_7[Ref](r@91@01) in xs8@20@01)]
+(assert (not (Set_in (inv_7<Ref> r@91@01) xs8@20@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 71 | inv_29[Ref](r@91@01) in xs8@20@01]
-(assert (Set_in (inv_29<Ref> r@91@01) xs8@20@01))
+; [else-branch: 71 | inv_7[Ref](r@91@01) in xs8@20@01]
+(assert (Set_in (inv_7<Ref> r@91@01) xs8@20@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_29<Ref> r@91@01) xs8@20@01)
-  (not (Set_in (inv_29<Ref> r@91@01) xs8@20@01))))
+  (Set_in (inv_7<Ref> r@91@01) xs8@20@01)
+  (not (Set_in (inv_7<Ref> r@91@01) xs8@20@01))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 63 | !(inv_30[Ref](r@91@01) in xs9@21@01)]
-(assert (not (Set_in (inv_30<Ref> r@91@01) xs9@21@01)))
+; [else-branch: 63 | !(inv_8[Ref](r@91@01) in xs9@21@01)]
+(assert (not (Set_in (inv_8<Ref> r@91@01) xs9@21@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -3819,39 +3781,39 @@
   :pattern (($FVF.perm_f (as pm@92@01  $FPM) r))
   :qid |qp.resTrgDef19|)))
 (assert (=>
-  (Set_in (inv_30<Ref> r@91@01) xs9@21@01)
+  (Set_in (inv_8<Ref> r@91@01) xs9@21@01)
   (and
-    (Set_in (inv_30<Ref> r@91@01) xs9@21@01)
+    (Set_in (inv_8<Ref> r@91@01) xs9@21@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@91@01) r@91@01)
     (<= ($FVF.perm_f (as pm@92@01  $FPM) r@91@01) $Perm.Write)
     (or
-      (Set_in (inv_22<Ref> r@91@01) xs1@13@01)
-      (not (Set_in (inv_22<Ref> r@91@01) xs1@13@01)))
+      (Set_in (inv_0<Ref> r@91@01) xs1@13@01)
+      (not (Set_in (inv_0<Ref> r@91@01) xs1@13@01)))
     (or
-      (Set_in (inv_23<Ref> r@91@01) xs2@14@01)
-      (not (Set_in (inv_23<Ref> r@91@01) xs2@14@01)))
+      (Set_in (inv_1<Ref> r@91@01) xs2@14@01)
+      (not (Set_in (inv_1<Ref> r@91@01) xs2@14@01)))
     (or
-      (Set_in (inv_24<Ref> r@91@01) xs3@15@01)
-      (not (Set_in (inv_24<Ref> r@91@01) xs3@15@01)))
+      (Set_in (inv_2<Ref> r@91@01) xs3@15@01)
+      (not (Set_in (inv_2<Ref> r@91@01) xs3@15@01)))
     (or
-      (Set_in (inv_25<Ref> r@91@01) xs4@16@01)
-      (not (Set_in (inv_25<Ref> r@91@01) xs4@16@01)))
+      (Set_in (inv_3<Ref> r@91@01) xs4@16@01)
+      (not (Set_in (inv_3<Ref> r@91@01) xs4@16@01)))
     (or
-      (Set_in (inv_26<Ref> r@91@01) xs5@17@01)
-      (not (Set_in (inv_26<Ref> r@91@01) xs5@17@01)))
+      (Set_in (inv_4<Ref> r@91@01) xs5@17@01)
+      (not (Set_in (inv_4<Ref> r@91@01) xs5@17@01)))
     (or
-      (Set_in (inv_27<Ref> r@91@01) xs6@18@01)
-      (not (Set_in (inv_27<Ref> r@91@01) xs6@18@01)))
+      (Set_in (inv_5<Ref> r@91@01) xs6@18@01)
+      (not (Set_in (inv_5<Ref> r@91@01) xs6@18@01)))
     (or
-      (Set_in (inv_28<Ref> r@91@01) xs7@19@01)
-      (not (Set_in (inv_28<Ref> r@91@01) xs7@19@01)))
+      (Set_in (inv_6<Ref> r@91@01) xs7@19@01)
+      (not (Set_in (inv_6<Ref> r@91@01) xs7@19@01)))
     (or
-      (Set_in (inv_29<Ref> r@91@01) xs8@20@01)
-      (not (Set_in (inv_29<Ref> r@91@01) xs8@20@01))))))
+      (Set_in (inv_7<Ref> r@91@01) xs8@20@01)
+      (not (Set_in (inv_7<Ref> r@91@01) xs8@20@01))))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_30<Ref> r@91@01) xs9@21@01))
-  (Set_in (inv_30<Ref> r@91@01) xs9@21@01)))
+  (not (Set_in (inv_8<Ref> r@91@01) xs9@21@01))
+  (Set_in (inv_8<Ref> r@91@01) xs9@21@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -3868,47 +3830,47 @@
 (assert (forall ((r@91@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_30<Ref> r@91@01) xs9@21@01)
+      (Set_in (inv_8<Ref> r@91@01) xs9@21@01)
       (and
-        (Set_in (inv_30<Ref> r@91@01) xs9@21@01)
+        (Set_in (inv_8<Ref> r@91@01) xs9@21@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@91@01) r@91@01)
         (<= ($FVF.perm_f (as pm@92@01  $FPM) r@91@01) $Perm.Write)
         (or
-          (Set_in (inv_22<Ref> r@91@01) xs1@13@01)
-          (not (Set_in (inv_22<Ref> r@91@01) xs1@13@01)))
+          (Set_in (inv_0<Ref> r@91@01) xs1@13@01)
+          (not (Set_in (inv_0<Ref> r@91@01) xs1@13@01)))
         (or
-          (Set_in (inv_23<Ref> r@91@01) xs2@14@01)
-          (not (Set_in (inv_23<Ref> r@91@01) xs2@14@01)))
+          (Set_in (inv_1<Ref> r@91@01) xs2@14@01)
+          (not (Set_in (inv_1<Ref> r@91@01) xs2@14@01)))
         (or
-          (Set_in (inv_24<Ref> r@91@01) xs3@15@01)
-          (not (Set_in (inv_24<Ref> r@91@01) xs3@15@01)))
+          (Set_in (inv_2<Ref> r@91@01) xs3@15@01)
+          (not (Set_in (inv_2<Ref> r@91@01) xs3@15@01)))
         (or
-          (Set_in (inv_25<Ref> r@91@01) xs4@16@01)
-          (not (Set_in (inv_25<Ref> r@91@01) xs4@16@01)))
+          (Set_in (inv_3<Ref> r@91@01) xs4@16@01)
+          (not (Set_in (inv_3<Ref> r@91@01) xs4@16@01)))
         (or
-          (Set_in (inv_26<Ref> r@91@01) xs5@17@01)
-          (not (Set_in (inv_26<Ref> r@91@01) xs5@17@01)))
+          (Set_in (inv_4<Ref> r@91@01) xs5@17@01)
+          (not (Set_in (inv_4<Ref> r@91@01) xs5@17@01)))
         (or
-          (Set_in (inv_27<Ref> r@91@01) xs6@18@01)
-          (not (Set_in (inv_27<Ref> r@91@01) xs6@18@01)))
+          (Set_in (inv_5<Ref> r@91@01) xs6@18@01)
+          (not (Set_in (inv_5<Ref> r@91@01) xs6@18@01)))
         (or
-          (Set_in (inv_28<Ref> r@91@01) xs7@19@01)
-          (not (Set_in (inv_28<Ref> r@91@01) xs7@19@01)))
+          (Set_in (inv_6<Ref> r@91@01) xs7@19@01)
+          (not (Set_in (inv_6<Ref> r@91@01) xs7@19@01)))
         (or
-          (Set_in (inv_29<Ref> r@91@01) xs8@20@01)
-          (not (Set_in (inv_29<Ref> r@91@01) xs8@20@01)))))
+          (Set_in (inv_7<Ref> r@91@01) xs8@20@01)
+          (not (Set_in (inv_7<Ref> r@91@01) xs8@20@01)))))
     (or
-      (not (Set_in (inv_30<Ref> r@91@01) xs9@21@01))
-      (Set_in (inv_30<Ref> r@91@01) xs9@21@01)))
-  :pattern ((inv_30<Ref> r@91@01))
+      (not (Set_in (inv_8<Ref> r@91@01) xs9@21@01))
+      (Set_in (inv_8<Ref> r@91@01) xs9@21@01)))
+  :pattern ((inv_8<Ref> r@91@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@22@11@22@62-aux|)))
 (assert (forall ((r@91@01 $Ref)) (!
   (=>
-    (Set_in (inv_30<Ref> r@91@01) xs9@21@01)
+    (Set_in (inv_8<Ref> r@91@01) xs9@21@01)
     (>=
       ($FVF.perm_f (as pm@92@01  $FPM) r@91@01)
-      (__iar__assume_helper_8<Perm> (Set_in (inv_22<Ref> r@91@01) xs1@13@01) (Set_in (inv_23<Ref> r@91@01) xs2@14@01) (Set_in (inv_24<Ref> r@91@01) xs3@15@01) (Set_in (inv_25<Ref> r@91@01) xs4@16@01) (Set_in (inv_26<Ref> r@91@01) xs5@17@01) (Set_in (inv_27<Ref> r@91@01) xs6@18@01) (Set_in (inv_28<Ref> r@91@01) xs7@19@01) (Set_in (inv_29<Ref> r@91@01) xs8@20@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
-  :pattern ((inv_30<Ref> r@91@01))
+      (__iar__assume_helper_8<Perm> (Set_in (inv_0<Ref> r@91@01) xs1@13@01) (Set_in (inv_1<Ref> r@91@01) xs2@14@01) (Set_in (inv_2<Ref> r@91@01) xs3@15@01) (Set_in (inv_3<Ref> r@91@01) xs4@16@01) (Set_in (inv_4<Ref> r@91@01) xs5@17@01) (Set_in (inv_5<Ref> r@91@01) xs6@18@01) (Set_in (inv_6<Ref> r@91@01) xs7@19@01) (Set_in (inv_7<Ref> r@91@01) xs8@20@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
+  :pattern ((inv_8<Ref> r@91@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@22@11@22@62|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -3917,14 +3879,14 @@
 ; [exec]
 ; inhale (forall x10: Ref ::
 ;     { x10.f }
-;     (x10 in xs10) ==> true && inv_31(x10) == x10)
+;     (x10 in xs10) ==> true && inv_9(x10) == x10)
 (declare-const $t@93@01 $Snap)
 (assert (= $t@93@01 $Snap.unit))
-; [eval] (forall x10: Ref :: { x10.f } (x10 in xs10) ==> true && inv_31(x10) == x10)
+; [eval] (forall x10: Ref :: { x10.f } (x10 in xs10) ==> true && inv_9(x10) == x10)
 (declare-const x10@94@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x10 in xs10) ==> true && inv_31(x10) == x10
+; [eval] (x10 in xs10) ==> true && inv_9(x10) == x10
 ; [eval] (x10 in xs10)
 (push) ; 4
 ; [then-branch: 72 | x10@94@01 in xs10@22@01 | live]
@@ -3932,7 +3894,7 @@
 (push) ; 5
 ; [then-branch: 72 | x10@94@01 in xs10@22@01]
 (assert (Set_in x10@94@01 xs10@22@01))
-; [eval] true && inv_31(x10) == x10
+; [eval] true && inv_9(x10) == x10
 (push) ; 6
 ; [then-branch: 73 | False | live]
 ; [else-branch: 73 | True | live]
@@ -3942,8 +3904,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 73 | True]
-; [eval] inv_31(x10) == x10
-; [eval] inv_31(x10)
+; [eval] inv_9(x10) == x10
+; [eval] inv_9(x10)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -3966,7 +3928,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x10@94@01) x10@94@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@23@11@23@67-aux|)))
 (assert (forall ((x10@94@01 $Ref)) (!
-  (=> (Set_in x10@94@01 xs10@22@01) (= (inv_31<Ref> x10@94@01) x10@94@01))
+  (=> (Set_in x10@94@01 xs10@22@01) (= (inv_9<Ref> x10@94@01) x10@94@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x10@94@01) x10@94@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@23@11@23@67|)))
 ; State saturation: after inhale
@@ -3974,51 +3936,47 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall r: Ref ::
-;     { inv_31(r) }
-;     (inv_31(r) in xs10) ==> inv_31(r) == r)
+; inhale (forall r: Ref :: { inv_9(r) } (inv_9(r) in xs10) ==> inv_9(r) == r)
 (declare-const $t@95@01 $Snap)
 (assert (= $t@95@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_31(r) } (inv_31(r) in xs10) ==> inv_31(r) == r)
+; [eval] (forall r: Ref :: { inv_9(r) } (inv_9(r) in xs10) ==> inv_9(r) == r)
 (declare-const r@96@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_31(r) in xs10) ==> inv_31(r) == r
-; [eval] (inv_31(r) in xs10)
-; [eval] inv_31(r)
+; [eval] (inv_9(r) in xs10) ==> inv_9(r) == r
+; [eval] (inv_9(r) in xs10)
+; [eval] inv_9(r)
 (push) ; 4
-; [then-branch: 74 | inv_31[Ref](r@96@01) in xs10@22@01 | live]
-; [else-branch: 74 | !(inv_31[Ref](r@96@01) in xs10@22@01) | live]
+; [then-branch: 74 | inv_9[Ref](r@96@01) in xs10@22@01 | live]
+; [else-branch: 74 | !(inv_9[Ref](r@96@01) in xs10@22@01) | live]
 (push) ; 5
-; [then-branch: 74 | inv_31[Ref](r@96@01) in xs10@22@01]
-(assert (Set_in (inv_31<Ref> r@96@01) xs10@22@01))
-; [eval] inv_31(r) == r
-; [eval] inv_31(r)
+; [then-branch: 74 | inv_9[Ref](r@96@01) in xs10@22@01]
+(assert (Set_in (inv_9<Ref> r@96@01) xs10@22@01))
+; [eval] inv_9(r) == r
+; [eval] inv_9(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 74 | !(inv_31[Ref](r@96@01) in xs10@22@01)]
-(assert (not (Set_in (inv_31<Ref> r@96@01) xs10@22@01)))
+; [else-branch: 74 | !(inv_9[Ref](r@96@01) in xs10@22@01)]
+(assert (not (Set_in (inv_9<Ref> r@96@01) xs10@22@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_31<Ref> r@96@01) xs10@22@01))
-  (Set_in (inv_31<Ref> r@96@01) xs10@22@01)))
+  (not (Set_in (inv_9<Ref> r@96@01) xs10@22@01))
+  (Set_in (inv_9<Ref> r@96@01) xs10@22@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@96@01 $Ref)) (!
   (or
-    (not (Set_in (inv_31<Ref> r@96@01) xs10@22@01))
-    (Set_in (inv_31<Ref> r@96@01) xs10@22@01))
-  :pattern ((inv_31<Ref> r@96@01))
+    (not (Set_in (inv_9<Ref> r@96@01) xs10@22@01))
+    (Set_in (inv_9<Ref> r@96@01) xs10@22@01))
+  :pattern ((inv_9<Ref> r@96@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@23@11@23@67-aux|)))
 (assert (forall ((r@96@01 $Ref)) (!
-  (=>
-    (Set_in (inv_31<Ref> r@96@01) xs10@22@01)
-    (= (inv_31<Ref> r@96@01) r@96@01))
-  :pattern ((inv_31<Ref> r@96@01))
+  (=> (Set_in (inv_9<Ref> r@96@01) xs10@22@01) (= (inv_9<Ref> r@96@01) r@96@01))
+  :pattern ((inv_9<Ref> r@96@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@23@11@23@67|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -4026,31 +3984,31 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_31(r) }
-;     (inv_31(r) in xs10) ==>
+;     { inv_9(r) }
+;     (inv_9(r) in xs10) ==>
 ;     perm(r.f) >=
-;     __iar__assume_helper_9((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) &&
-;     r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in
+;     __iar__assume_helper_9((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) &&
+;     r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in
 ;     xs5) &&
-;     r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in
+;     r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in
 ;     xs8) &&
-;     r == r, (inv_30(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p))
+;     r == r, (inv_8(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p))
 (declare-const $t@97@01 $Snap)
 (assert (= $t@97@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_31(r) } (inv_31(r) in xs10) ==> perm(r.f) >= __iar__assume_helper_9((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, (inv_30(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p))
+; [eval] (forall r: Ref :: { inv_9(r) } (inv_9(r) in xs10) ==> perm(r.f) >= __iar__assume_helper_9((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, (inv_8(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p))
 (declare-const r@98@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_31(r) in xs10) ==> perm(r.f) >= __iar__assume_helper_9((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, (inv_30(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p)
-; [eval] (inv_31(r) in xs10)
-; [eval] inv_31(r)
+; [eval] (inv_9(r) in xs10) ==> perm(r.f) >= __iar__assume_helper_9((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, (inv_8(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p)
+; [eval] (inv_9(r) in xs10)
+; [eval] inv_9(r)
 (push) ; 4
-; [then-branch: 75 | inv_31[Ref](r@98@01) in xs10@22@01 | live]
-; [else-branch: 75 | !(inv_31[Ref](r@98@01) in xs10@22@01) | live]
+; [then-branch: 75 | inv_9[Ref](r@98@01) in xs10@22@01 | live]
+; [else-branch: 75 | !(inv_9[Ref](r@98@01) in xs10@22@01) | live]
 (push) ; 5
-; [then-branch: 75 | inv_31[Ref](r@98@01) in xs10@22@01]
-(assert (Set_in (inv_31<Ref> r@98@01) xs10@22@01))
-; [eval] perm(r.f) >= __iar__assume_helper_9((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, (inv_30(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p)
+; [then-branch: 75 | inv_9[Ref](r@98@01) in xs10@22@01]
+(assert (Set_in (inv_9<Ref> r@98@01) xs10@22@01))
+; [eval] perm(r.f) >= __iar__assume_helper_9((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, (inv_8(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p)
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
 (declare-const pm@99@01 $FPM)
@@ -4067,200 +4025,200 @@
 (assert ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@98@01) r@98@01))
 ; perm(r.f)  ~~>  assume upper permission bound
 (assert (<= ($FVF.perm_f (as pm@99@01  $FPM) r@98@01) $Perm.Write))
-; [eval] __iar__assume_helper_9((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, (inv_30(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p)
-; [eval] (inv_22(r) in xs1) && r == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] __iar__assume_helper_9((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, (inv_8(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p)
+; [eval] (inv_0(r) in xs1) && r == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 6
-; [then-branch: 76 | !(inv_22[Ref](r@98@01) in xs1@13@01) | live]
-; [else-branch: 76 | inv_22[Ref](r@98@01) in xs1@13@01 | live]
+; [then-branch: 76 | !(inv_0[Ref](r@98@01) in xs1@13@01) | live]
+; [else-branch: 76 | inv_0[Ref](r@98@01) in xs1@13@01 | live]
 (push) ; 7
-; [then-branch: 76 | !(inv_22[Ref](r@98@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@98@01) xs1@13@01)))
+; [then-branch: 76 | !(inv_0[Ref](r@98@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@98@01) xs1@13@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 76 | inv_22[Ref](r@98@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@98@01) xs1@13@01))
+; [else-branch: 76 | inv_0[Ref](r@98@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@98@01) xs1@13@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_22<Ref> r@98@01) xs1@13@01)
-  (not (Set_in (inv_22<Ref> r@98@01) xs1@13@01))))
-; [eval] (inv_23(r) in xs2) && r == r
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+  (Set_in (inv_0<Ref> r@98@01) xs1@13@01)
+  (not (Set_in (inv_0<Ref> r@98@01) xs1@13@01))))
+; [eval] (inv_1(r) in xs2) && r == r
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 6
-; [then-branch: 77 | !(inv_23[Ref](r@98@01) in xs2@14@01) | live]
-; [else-branch: 77 | inv_23[Ref](r@98@01) in xs2@14@01 | live]
+; [then-branch: 77 | !(inv_1[Ref](r@98@01) in xs2@14@01) | live]
+; [else-branch: 77 | inv_1[Ref](r@98@01) in xs2@14@01 | live]
 (push) ; 7
-; [then-branch: 77 | !(inv_23[Ref](r@98@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@98@01) xs2@14@01)))
+; [then-branch: 77 | !(inv_1[Ref](r@98@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@98@01) xs2@14@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 77 | inv_23[Ref](r@98@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@98@01) xs2@14@01))
+; [else-branch: 77 | inv_1[Ref](r@98@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@98@01) xs2@14@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_23<Ref> r@98@01) xs2@14@01)
-  (not (Set_in (inv_23<Ref> r@98@01) xs2@14@01))))
-; [eval] (inv_24(r) in xs3) && r == r
-; [eval] (inv_24(r) in xs3)
-; [eval] inv_24(r)
+  (Set_in (inv_1<Ref> r@98@01) xs2@14@01)
+  (not (Set_in (inv_1<Ref> r@98@01) xs2@14@01))))
+; [eval] (inv_2(r) in xs3) && r == r
+; [eval] (inv_2(r) in xs3)
+; [eval] inv_2(r)
 (push) ; 6
-; [then-branch: 78 | !(inv_24[Ref](r@98@01) in xs3@15@01) | live]
-; [else-branch: 78 | inv_24[Ref](r@98@01) in xs3@15@01 | live]
+; [then-branch: 78 | !(inv_2[Ref](r@98@01) in xs3@15@01) | live]
+; [else-branch: 78 | inv_2[Ref](r@98@01) in xs3@15@01 | live]
 (push) ; 7
-; [then-branch: 78 | !(inv_24[Ref](r@98@01) in xs3@15@01)]
-(assert (not (Set_in (inv_24<Ref> r@98@01) xs3@15@01)))
+; [then-branch: 78 | !(inv_2[Ref](r@98@01) in xs3@15@01)]
+(assert (not (Set_in (inv_2<Ref> r@98@01) xs3@15@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 78 | inv_24[Ref](r@98@01) in xs3@15@01]
-(assert (Set_in (inv_24<Ref> r@98@01) xs3@15@01))
+; [else-branch: 78 | inv_2[Ref](r@98@01) in xs3@15@01]
+(assert (Set_in (inv_2<Ref> r@98@01) xs3@15@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_24<Ref> r@98@01) xs3@15@01)
-  (not (Set_in (inv_24<Ref> r@98@01) xs3@15@01))))
-; [eval] (inv_25(r) in xs4) && r == r
-; [eval] (inv_25(r) in xs4)
-; [eval] inv_25(r)
+  (Set_in (inv_2<Ref> r@98@01) xs3@15@01)
+  (not (Set_in (inv_2<Ref> r@98@01) xs3@15@01))))
+; [eval] (inv_3(r) in xs4) && r == r
+; [eval] (inv_3(r) in xs4)
+; [eval] inv_3(r)
 (push) ; 6
-; [then-branch: 79 | !(inv_25[Ref](r@98@01) in xs4@16@01) | live]
-; [else-branch: 79 | inv_25[Ref](r@98@01) in xs4@16@01 | live]
+; [then-branch: 79 | !(inv_3[Ref](r@98@01) in xs4@16@01) | live]
+; [else-branch: 79 | inv_3[Ref](r@98@01) in xs4@16@01 | live]
 (push) ; 7
-; [then-branch: 79 | !(inv_25[Ref](r@98@01) in xs4@16@01)]
-(assert (not (Set_in (inv_25<Ref> r@98@01) xs4@16@01)))
+; [then-branch: 79 | !(inv_3[Ref](r@98@01) in xs4@16@01)]
+(assert (not (Set_in (inv_3<Ref> r@98@01) xs4@16@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 79 | inv_25[Ref](r@98@01) in xs4@16@01]
-(assert (Set_in (inv_25<Ref> r@98@01) xs4@16@01))
+; [else-branch: 79 | inv_3[Ref](r@98@01) in xs4@16@01]
+(assert (Set_in (inv_3<Ref> r@98@01) xs4@16@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_25<Ref> r@98@01) xs4@16@01)
-  (not (Set_in (inv_25<Ref> r@98@01) xs4@16@01))))
-; [eval] (inv_26(r) in xs5) && r == r
-; [eval] (inv_26(r) in xs5)
-; [eval] inv_26(r)
+  (Set_in (inv_3<Ref> r@98@01) xs4@16@01)
+  (not (Set_in (inv_3<Ref> r@98@01) xs4@16@01))))
+; [eval] (inv_4(r) in xs5) && r == r
+; [eval] (inv_4(r) in xs5)
+; [eval] inv_4(r)
 (push) ; 6
-; [then-branch: 80 | !(inv_26[Ref](r@98@01) in xs5@17@01) | live]
-; [else-branch: 80 | inv_26[Ref](r@98@01) in xs5@17@01 | live]
+; [then-branch: 80 | !(inv_4[Ref](r@98@01) in xs5@17@01) | live]
+; [else-branch: 80 | inv_4[Ref](r@98@01) in xs5@17@01 | live]
 (push) ; 7
-; [then-branch: 80 | !(inv_26[Ref](r@98@01) in xs5@17@01)]
-(assert (not (Set_in (inv_26<Ref> r@98@01) xs5@17@01)))
+; [then-branch: 80 | !(inv_4[Ref](r@98@01) in xs5@17@01)]
+(assert (not (Set_in (inv_4<Ref> r@98@01) xs5@17@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 80 | inv_26[Ref](r@98@01) in xs5@17@01]
-(assert (Set_in (inv_26<Ref> r@98@01) xs5@17@01))
+; [else-branch: 80 | inv_4[Ref](r@98@01) in xs5@17@01]
+(assert (Set_in (inv_4<Ref> r@98@01) xs5@17@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_26<Ref> r@98@01) xs5@17@01)
-  (not (Set_in (inv_26<Ref> r@98@01) xs5@17@01))))
-; [eval] (inv_27(r) in xs6) && r == r
-; [eval] (inv_27(r) in xs6)
-; [eval] inv_27(r)
+  (Set_in (inv_4<Ref> r@98@01) xs5@17@01)
+  (not (Set_in (inv_4<Ref> r@98@01) xs5@17@01))))
+; [eval] (inv_5(r) in xs6) && r == r
+; [eval] (inv_5(r) in xs6)
+; [eval] inv_5(r)
 (push) ; 6
-; [then-branch: 81 | !(inv_27[Ref](r@98@01) in xs6@18@01) | live]
-; [else-branch: 81 | inv_27[Ref](r@98@01) in xs6@18@01 | live]
+; [then-branch: 81 | !(inv_5[Ref](r@98@01) in xs6@18@01) | live]
+; [else-branch: 81 | inv_5[Ref](r@98@01) in xs6@18@01 | live]
 (push) ; 7
-; [then-branch: 81 | !(inv_27[Ref](r@98@01) in xs6@18@01)]
-(assert (not (Set_in (inv_27<Ref> r@98@01) xs6@18@01)))
+; [then-branch: 81 | !(inv_5[Ref](r@98@01) in xs6@18@01)]
+(assert (not (Set_in (inv_5<Ref> r@98@01) xs6@18@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 81 | inv_27[Ref](r@98@01) in xs6@18@01]
-(assert (Set_in (inv_27<Ref> r@98@01) xs6@18@01))
+; [else-branch: 81 | inv_5[Ref](r@98@01) in xs6@18@01]
+(assert (Set_in (inv_5<Ref> r@98@01) xs6@18@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_27<Ref> r@98@01) xs6@18@01)
-  (not (Set_in (inv_27<Ref> r@98@01) xs6@18@01))))
-; [eval] (inv_28(r) in xs7) && r == r
-; [eval] (inv_28(r) in xs7)
-; [eval] inv_28(r)
+  (Set_in (inv_5<Ref> r@98@01) xs6@18@01)
+  (not (Set_in (inv_5<Ref> r@98@01) xs6@18@01))))
+; [eval] (inv_6(r) in xs7) && r == r
+; [eval] (inv_6(r) in xs7)
+; [eval] inv_6(r)
 (push) ; 6
-; [then-branch: 82 | !(inv_28[Ref](r@98@01) in xs7@19@01) | live]
-; [else-branch: 82 | inv_28[Ref](r@98@01) in xs7@19@01 | live]
+; [then-branch: 82 | !(inv_6[Ref](r@98@01) in xs7@19@01) | live]
+; [else-branch: 82 | inv_6[Ref](r@98@01) in xs7@19@01 | live]
 (push) ; 7
-; [then-branch: 82 | !(inv_28[Ref](r@98@01) in xs7@19@01)]
-(assert (not (Set_in (inv_28<Ref> r@98@01) xs7@19@01)))
+; [then-branch: 82 | !(inv_6[Ref](r@98@01) in xs7@19@01)]
+(assert (not (Set_in (inv_6<Ref> r@98@01) xs7@19@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 82 | inv_28[Ref](r@98@01) in xs7@19@01]
-(assert (Set_in (inv_28<Ref> r@98@01) xs7@19@01))
+; [else-branch: 82 | inv_6[Ref](r@98@01) in xs7@19@01]
+(assert (Set_in (inv_6<Ref> r@98@01) xs7@19@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_28<Ref> r@98@01) xs7@19@01)
-  (not (Set_in (inv_28<Ref> r@98@01) xs7@19@01))))
-; [eval] (inv_29(r) in xs8) && r == r
-; [eval] (inv_29(r) in xs8)
-; [eval] inv_29(r)
+  (Set_in (inv_6<Ref> r@98@01) xs7@19@01)
+  (not (Set_in (inv_6<Ref> r@98@01) xs7@19@01))))
+; [eval] (inv_7(r) in xs8) && r == r
+; [eval] (inv_7(r) in xs8)
+; [eval] inv_7(r)
 (push) ; 6
-; [then-branch: 83 | !(inv_29[Ref](r@98@01) in xs8@20@01) | live]
-; [else-branch: 83 | inv_29[Ref](r@98@01) in xs8@20@01 | live]
+; [then-branch: 83 | !(inv_7[Ref](r@98@01) in xs8@20@01) | live]
+; [else-branch: 83 | inv_7[Ref](r@98@01) in xs8@20@01 | live]
 (push) ; 7
-; [then-branch: 83 | !(inv_29[Ref](r@98@01) in xs8@20@01)]
-(assert (not (Set_in (inv_29<Ref> r@98@01) xs8@20@01)))
+; [then-branch: 83 | !(inv_7[Ref](r@98@01) in xs8@20@01)]
+(assert (not (Set_in (inv_7<Ref> r@98@01) xs8@20@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 83 | inv_29[Ref](r@98@01) in xs8@20@01]
-(assert (Set_in (inv_29<Ref> r@98@01) xs8@20@01))
+; [else-branch: 83 | inv_7[Ref](r@98@01) in xs8@20@01]
+(assert (Set_in (inv_7<Ref> r@98@01) xs8@20@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_29<Ref> r@98@01) xs8@20@01)
-  (not (Set_in (inv_29<Ref> r@98@01) xs8@20@01))))
-; [eval] (inv_30(r) in xs9) && r == r
-; [eval] (inv_30(r) in xs9)
-; [eval] inv_30(r)
+  (Set_in (inv_7<Ref> r@98@01) xs8@20@01)
+  (not (Set_in (inv_7<Ref> r@98@01) xs8@20@01))))
+; [eval] (inv_8(r) in xs9) && r == r
+; [eval] (inv_8(r) in xs9)
+; [eval] inv_8(r)
 (push) ; 6
-; [then-branch: 84 | !(inv_30[Ref](r@98@01) in xs9@21@01) | live]
-; [else-branch: 84 | inv_30[Ref](r@98@01) in xs9@21@01 | live]
+; [then-branch: 84 | !(inv_8[Ref](r@98@01) in xs9@21@01) | live]
+; [else-branch: 84 | inv_8[Ref](r@98@01) in xs9@21@01 | live]
 (push) ; 7
-; [then-branch: 84 | !(inv_30[Ref](r@98@01) in xs9@21@01)]
-(assert (not (Set_in (inv_30<Ref> r@98@01) xs9@21@01)))
+; [then-branch: 84 | !(inv_8[Ref](r@98@01) in xs9@21@01)]
+(assert (not (Set_in (inv_8<Ref> r@98@01) xs9@21@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 84 | inv_30[Ref](r@98@01) in xs9@21@01]
-(assert (Set_in (inv_30<Ref> r@98@01) xs9@21@01))
+; [else-branch: 84 | inv_8[Ref](r@98@01) in xs9@21@01]
+(assert (Set_in (inv_8<Ref> r@98@01) xs9@21@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_30<Ref> r@98@01) xs9@21@01)
-  (not (Set_in (inv_30<Ref> r@98@01) xs9@21@01))))
+  (Set_in (inv_8<Ref> r@98@01) xs9@21@01)
+  (not (Set_in (inv_8<Ref> r@98@01) xs9@21@01))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 75 | !(inv_31[Ref](r@98@01) in xs10@22@01)]
-(assert (not (Set_in (inv_31<Ref> r@98@01) xs10@22@01)))
+; [else-branch: 75 | !(inv_9[Ref](r@98@01) in xs10@22@01)]
+(assert (not (Set_in (inv_9<Ref> r@98@01) xs10@22@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -4275,42 +4233,42 @@
   :pattern (($FVF.perm_f (as pm@99@01  $FPM) r))
   :qid |qp.resTrgDef21|)))
 (assert (=>
-  (Set_in (inv_31<Ref> r@98@01) xs10@22@01)
+  (Set_in (inv_9<Ref> r@98@01) xs10@22@01)
   (and
-    (Set_in (inv_31<Ref> r@98@01) xs10@22@01)
+    (Set_in (inv_9<Ref> r@98@01) xs10@22@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@98@01) r@98@01)
     (<= ($FVF.perm_f (as pm@99@01  $FPM) r@98@01) $Perm.Write)
     (or
-      (Set_in (inv_22<Ref> r@98@01) xs1@13@01)
-      (not (Set_in (inv_22<Ref> r@98@01) xs1@13@01)))
+      (Set_in (inv_0<Ref> r@98@01) xs1@13@01)
+      (not (Set_in (inv_0<Ref> r@98@01) xs1@13@01)))
     (or
-      (Set_in (inv_23<Ref> r@98@01) xs2@14@01)
-      (not (Set_in (inv_23<Ref> r@98@01) xs2@14@01)))
+      (Set_in (inv_1<Ref> r@98@01) xs2@14@01)
+      (not (Set_in (inv_1<Ref> r@98@01) xs2@14@01)))
     (or
-      (Set_in (inv_24<Ref> r@98@01) xs3@15@01)
-      (not (Set_in (inv_24<Ref> r@98@01) xs3@15@01)))
+      (Set_in (inv_2<Ref> r@98@01) xs3@15@01)
+      (not (Set_in (inv_2<Ref> r@98@01) xs3@15@01)))
     (or
-      (Set_in (inv_25<Ref> r@98@01) xs4@16@01)
-      (not (Set_in (inv_25<Ref> r@98@01) xs4@16@01)))
+      (Set_in (inv_3<Ref> r@98@01) xs4@16@01)
+      (not (Set_in (inv_3<Ref> r@98@01) xs4@16@01)))
     (or
-      (Set_in (inv_26<Ref> r@98@01) xs5@17@01)
-      (not (Set_in (inv_26<Ref> r@98@01) xs5@17@01)))
+      (Set_in (inv_4<Ref> r@98@01) xs5@17@01)
+      (not (Set_in (inv_4<Ref> r@98@01) xs5@17@01)))
     (or
-      (Set_in (inv_27<Ref> r@98@01) xs6@18@01)
-      (not (Set_in (inv_27<Ref> r@98@01) xs6@18@01)))
+      (Set_in (inv_5<Ref> r@98@01) xs6@18@01)
+      (not (Set_in (inv_5<Ref> r@98@01) xs6@18@01)))
     (or
-      (Set_in (inv_28<Ref> r@98@01) xs7@19@01)
-      (not (Set_in (inv_28<Ref> r@98@01) xs7@19@01)))
+      (Set_in (inv_6<Ref> r@98@01) xs7@19@01)
+      (not (Set_in (inv_6<Ref> r@98@01) xs7@19@01)))
     (or
-      (Set_in (inv_29<Ref> r@98@01) xs8@20@01)
-      (not (Set_in (inv_29<Ref> r@98@01) xs8@20@01)))
+      (Set_in (inv_7<Ref> r@98@01) xs8@20@01)
+      (not (Set_in (inv_7<Ref> r@98@01) xs8@20@01)))
     (or
-      (Set_in (inv_30<Ref> r@98@01) xs9@21@01)
-      (not (Set_in (inv_30<Ref> r@98@01) xs9@21@01))))))
+      (Set_in (inv_8<Ref> r@98@01) xs9@21@01)
+      (not (Set_in (inv_8<Ref> r@98@01) xs9@21@01))))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_31<Ref> r@98@01) xs10@22@01))
-  (Set_in (inv_31<Ref> r@98@01) xs10@22@01)))
+  (not (Set_in (inv_9<Ref> r@98@01) xs10@22@01))
+  (Set_in (inv_9<Ref> r@98@01) xs10@22@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -4327,50 +4285,50 @@
 (assert (forall ((r@98@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_31<Ref> r@98@01) xs10@22@01)
+      (Set_in (inv_9<Ref> r@98@01) xs10@22@01)
       (and
-        (Set_in (inv_31<Ref> r@98@01) xs10@22@01)
+        (Set_in (inv_9<Ref> r@98@01) xs10@22@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@98@01) r@98@01)
         (<= ($FVF.perm_f (as pm@99@01  $FPM) r@98@01) $Perm.Write)
         (or
-          (Set_in (inv_22<Ref> r@98@01) xs1@13@01)
-          (not (Set_in (inv_22<Ref> r@98@01) xs1@13@01)))
+          (Set_in (inv_0<Ref> r@98@01) xs1@13@01)
+          (not (Set_in (inv_0<Ref> r@98@01) xs1@13@01)))
         (or
-          (Set_in (inv_23<Ref> r@98@01) xs2@14@01)
-          (not (Set_in (inv_23<Ref> r@98@01) xs2@14@01)))
+          (Set_in (inv_1<Ref> r@98@01) xs2@14@01)
+          (not (Set_in (inv_1<Ref> r@98@01) xs2@14@01)))
         (or
-          (Set_in (inv_24<Ref> r@98@01) xs3@15@01)
-          (not (Set_in (inv_24<Ref> r@98@01) xs3@15@01)))
+          (Set_in (inv_2<Ref> r@98@01) xs3@15@01)
+          (not (Set_in (inv_2<Ref> r@98@01) xs3@15@01)))
         (or
-          (Set_in (inv_25<Ref> r@98@01) xs4@16@01)
-          (not (Set_in (inv_25<Ref> r@98@01) xs4@16@01)))
+          (Set_in (inv_3<Ref> r@98@01) xs4@16@01)
+          (not (Set_in (inv_3<Ref> r@98@01) xs4@16@01)))
         (or
-          (Set_in (inv_26<Ref> r@98@01) xs5@17@01)
-          (not (Set_in (inv_26<Ref> r@98@01) xs5@17@01)))
+          (Set_in (inv_4<Ref> r@98@01) xs5@17@01)
+          (not (Set_in (inv_4<Ref> r@98@01) xs5@17@01)))
         (or
-          (Set_in (inv_27<Ref> r@98@01) xs6@18@01)
-          (not (Set_in (inv_27<Ref> r@98@01) xs6@18@01)))
+          (Set_in (inv_5<Ref> r@98@01) xs6@18@01)
+          (not (Set_in (inv_5<Ref> r@98@01) xs6@18@01)))
         (or
-          (Set_in (inv_28<Ref> r@98@01) xs7@19@01)
-          (not (Set_in (inv_28<Ref> r@98@01) xs7@19@01)))
+          (Set_in (inv_6<Ref> r@98@01) xs7@19@01)
+          (not (Set_in (inv_6<Ref> r@98@01) xs7@19@01)))
         (or
-          (Set_in (inv_29<Ref> r@98@01) xs8@20@01)
-          (not (Set_in (inv_29<Ref> r@98@01) xs8@20@01)))
+          (Set_in (inv_7<Ref> r@98@01) xs8@20@01)
+          (not (Set_in (inv_7<Ref> r@98@01) xs8@20@01)))
         (or
-          (Set_in (inv_30<Ref> r@98@01) xs9@21@01)
-          (not (Set_in (inv_30<Ref> r@98@01) xs9@21@01)))))
+          (Set_in (inv_8<Ref> r@98@01) xs9@21@01)
+          (not (Set_in (inv_8<Ref> r@98@01) xs9@21@01)))))
     (or
-      (not (Set_in (inv_31<Ref> r@98@01) xs10@22@01))
-      (Set_in (inv_31<Ref> r@98@01) xs10@22@01)))
-  :pattern ((inv_31<Ref> r@98@01))
+      (not (Set_in (inv_9<Ref> r@98@01) xs10@22@01))
+      (Set_in (inv_9<Ref> r@98@01) xs10@22@01)))
+  :pattern ((inv_9<Ref> r@98@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@23@11@23@67-aux|)))
 (assert (forall ((r@98@01 $Ref)) (!
   (=>
-    (Set_in (inv_31<Ref> r@98@01) xs10@22@01)
+    (Set_in (inv_9<Ref> r@98@01) xs10@22@01)
     (>=
       ($FVF.perm_f (as pm@99@01  $FPM) r@98@01)
-      (__iar__assume_helper_9<Perm> (Set_in (inv_22<Ref> r@98@01) xs1@13@01) (Set_in (inv_23<Ref> r@98@01) xs2@14@01) (Set_in (inv_24<Ref> r@98@01) xs3@15@01) (Set_in (inv_25<Ref> r@98@01) xs4@16@01) (Set_in (inv_26<Ref> r@98@01) xs5@17@01) (Set_in (inv_27<Ref> r@98@01) xs6@18@01) (Set_in (inv_28<Ref> r@98@01) xs7@19@01) (Set_in (inv_29<Ref> r@98@01) xs8@20@01) (Set_in (inv_30<Ref> r@98@01) xs9@21@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
-  :pattern ((inv_31<Ref> r@98@01))
+      (__iar__assume_helper_9<Perm> (Set_in (inv_0<Ref> r@98@01) xs1@13@01) (Set_in (inv_1<Ref> r@98@01) xs2@14@01) (Set_in (inv_2<Ref> r@98@01) xs3@15@01) (Set_in (inv_3<Ref> r@98@01) xs4@16@01) (Set_in (inv_4<Ref> r@98@01) xs5@17@01) (Set_in (inv_5<Ref> r@98@01) xs6@18@01) (Set_in (inv_6<Ref> r@98@01) xs7@19@01) (Set_in (inv_7<Ref> r@98@01) xs8@20@01) (Set_in (inv_8<Ref> r@98@01) xs9@21@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
+  :pattern ((inv_9<Ref> r@98@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@23@11@23@67|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -4379,14 +4337,14 @@
 ; [exec]
 ; inhale (forall x11: Ref ::
 ;     { x11.f }
-;     (x11 in xs11) ==> true && inv_32(x11) == x11)
+;     (x11 in xs11) ==> true && inv_10(x11) == x11)
 (declare-const $t@100@01 $Snap)
 (assert (= $t@100@01 $Snap.unit))
-; [eval] (forall x11: Ref :: { x11.f } (x11 in xs11) ==> true && inv_32(x11) == x11)
+; [eval] (forall x11: Ref :: { x11.f } (x11 in xs11) ==> true && inv_10(x11) == x11)
 (declare-const x11@101@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (x11 in xs11) ==> true && inv_32(x11) == x11
+; [eval] (x11 in xs11) ==> true && inv_10(x11) == x11
 ; [eval] (x11 in xs11)
 (push) ; 4
 ; [then-branch: 85 | x11@101@01 in xs11@23@01 | live]
@@ -4394,7 +4352,7 @@
 (push) ; 5
 ; [then-branch: 85 | x11@101@01 in xs11@23@01]
 (assert (Set_in x11@101@01 xs11@23@01))
-; [eval] true && inv_32(x11) == x11
+; [eval] true && inv_10(x11) == x11
 (push) ; 6
 ; [then-branch: 86 | False | live]
 ; [else-branch: 86 | True | live]
@@ -4404,8 +4362,8 @@
 (pop) ; 7
 (push) ; 7
 ; [else-branch: 86 | True]
-; [eval] inv_32(x11) == x11
-; [eval] inv_32(x11)
+; [eval] inv_10(x11) == x11
+; [eval] inv_10(x11)
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
@@ -4428,7 +4386,7 @@
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x11@101@01) x11@101@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@24@11@24@67-aux|)))
 (assert (forall ((x11@101@01 $Ref)) (!
-  (=> (Set_in x11@101@01 xs11@23@01) (= (inv_32<Ref> x11@101@01) x11@101@01))
+  (=> (Set_in x11@101@01 xs11@23@01) (= (inv_10<Ref> x11@101@01) x11@101@01))
   :pattern (($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) x11@101@01) x11@101@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@24@11@24@67|)))
 ; State saturation: after inhale
@@ -4437,50 +4395,50 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_32(r) }
-;     (inv_32(r) in xs11) ==> inv_32(r) == r)
+;     { inv_10(r) }
+;     (inv_10(r) in xs11) ==> inv_10(r) == r)
 (declare-const $t@102@01 $Snap)
 (assert (= $t@102@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_32(r) } (inv_32(r) in xs11) ==> inv_32(r) == r)
+; [eval] (forall r: Ref :: { inv_10(r) } (inv_10(r) in xs11) ==> inv_10(r) == r)
 (declare-const r@103@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_32(r) in xs11) ==> inv_32(r) == r
-; [eval] (inv_32(r) in xs11)
-; [eval] inv_32(r)
+; [eval] (inv_10(r) in xs11) ==> inv_10(r) == r
+; [eval] (inv_10(r) in xs11)
+; [eval] inv_10(r)
 (push) ; 4
-; [then-branch: 87 | inv_32[Ref](r@103@01) in xs11@23@01 | live]
-; [else-branch: 87 | !(inv_32[Ref](r@103@01) in xs11@23@01) | live]
+; [then-branch: 87 | inv_10[Ref](r@103@01) in xs11@23@01 | live]
+; [else-branch: 87 | !(inv_10[Ref](r@103@01) in xs11@23@01) | live]
 (push) ; 5
-; [then-branch: 87 | inv_32[Ref](r@103@01) in xs11@23@01]
-(assert (Set_in (inv_32<Ref> r@103@01) xs11@23@01))
-; [eval] inv_32(r) == r
-; [eval] inv_32(r)
+; [then-branch: 87 | inv_10[Ref](r@103@01) in xs11@23@01]
+(assert (Set_in (inv_10<Ref> r@103@01) xs11@23@01))
+; [eval] inv_10(r) == r
+; [eval] inv_10(r)
 (pop) ; 5
 (push) ; 5
-; [else-branch: 87 | !(inv_32[Ref](r@103@01) in xs11@23@01)]
-(assert (not (Set_in (inv_32<Ref> r@103@01) xs11@23@01)))
+; [else-branch: 87 | !(inv_10[Ref](r@103@01) in xs11@23@01)]
+(assert (not (Set_in (inv_10<Ref> r@103@01) xs11@23@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_32<Ref> r@103@01) xs11@23@01))
-  (Set_in (inv_32<Ref> r@103@01) xs11@23@01)))
+  (not (Set_in (inv_10<Ref> r@103@01) xs11@23@01))
+  (Set_in (inv_10<Ref> r@103@01) xs11@23@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((r@103@01 $Ref)) (!
   (or
-    (not (Set_in (inv_32<Ref> r@103@01) xs11@23@01))
-    (Set_in (inv_32<Ref> r@103@01) xs11@23@01))
-  :pattern ((inv_32<Ref> r@103@01))
+    (not (Set_in (inv_10<Ref> r@103@01) xs11@23@01))
+    (Set_in (inv_10<Ref> r@103@01) xs11@23@01))
+  :pattern ((inv_10<Ref> r@103@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@24@11@24@67-aux|)))
 (assert (forall ((r@103@01 $Ref)) (!
   (=>
-    (Set_in (inv_32<Ref> r@103@01) xs11@23@01)
-    (= (inv_32<Ref> r@103@01) r@103@01))
-  :pattern ((inv_32<Ref> r@103@01))
+    (Set_in (inv_10<Ref> r@103@01) xs11@23@01)
+    (= (inv_10<Ref> r@103@01) r@103@01))
+  :pattern ((inv_10<Ref> r@103@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@24@11@24@67|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -4488,33 +4446,32 @@
 ; unknown
 ; [exec]
 ; inhale (forall r: Ref ::
-;     { inv_32(r) }
-;     (inv_32(r) in xs11) ==>
+;     { inv_10(r) }
+;     (inv_10(r) in xs11) ==>
 ;     perm(r.f) >=
-;     __iar__assume_helper_10((inv_22(r) in xs1) && r == r, (inv_23(r) in
-;     xs2) &&
-;     r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in
+;     __iar__assume_helper_10((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) &&
+;     r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in
 ;     xs5) &&
-;     r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in
+;     r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in
 ;     xs8) &&
-;     r == r, (inv_30(r) in xs9) && r == r, (inv_31(r) in xs10) && r == r, p,
-;     p, p, p, p, p, p, p, p, p, p))
+;     r == r, (inv_8(r) in xs9) && r == r, (inv_9(r) in xs10) && r == r, p, p,
+;     p, p, p, p, p, p, p, p, p))
 (declare-const $t@104@01 $Snap)
 (assert (= $t@104@01 $Snap.unit))
-; [eval] (forall r: Ref :: { inv_32(r) } (inv_32(r) in xs11) ==> perm(r.f) >= __iar__assume_helper_10((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, (inv_30(r) in xs9) && r == r, (inv_31(r) in xs10) && r == r, p, p, p, p, p, p, p, p, p, p, p))
+; [eval] (forall r: Ref :: { inv_10(r) } (inv_10(r) in xs11) ==> perm(r.f) >= __iar__assume_helper_10((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, (inv_8(r) in xs9) && r == r, (inv_9(r) in xs10) && r == r, p, p, p, p, p, p, p, p, p, p, p))
 (declare-const r@105@01 $Ref)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] (inv_32(r) in xs11) ==> perm(r.f) >= __iar__assume_helper_10((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, (inv_30(r) in xs9) && r == r, (inv_31(r) in xs10) && r == r, p, p, p, p, p, p, p, p, p, p, p)
-; [eval] (inv_32(r) in xs11)
-; [eval] inv_32(r)
+; [eval] (inv_10(r) in xs11) ==> perm(r.f) >= __iar__assume_helper_10((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, (inv_8(r) in xs9) && r == r, (inv_9(r) in xs10) && r == r, p, p, p, p, p, p, p, p, p, p, p)
+; [eval] (inv_10(r) in xs11)
+; [eval] inv_10(r)
 (push) ; 4
-; [then-branch: 88 | inv_32[Ref](r@105@01) in xs11@23@01 | live]
-; [else-branch: 88 | !(inv_32[Ref](r@105@01) in xs11@23@01) | live]
+; [then-branch: 88 | inv_10[Ref](r@105@01) in xs11@23@01 | live]
+; [else-branch: 88 | !(inv_10[Ref](r@105@01) in xs11@23@01) | live]
 (push) ; 5
-; [then-branch: 88 | inv_32[Ref](r@105@01) in xs11@23@01]
-(assert (Set_in (inv_32<Ref> r@105@01) xs11@23@01))
-; [eval] perm(r.f) >= __iar__assume_helper_10((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, (inv_30(r) in xs9) && r == r, (inv_31(r) in xs10) && r == r, p, p, p, p, p, p, p, p, p, p, p)
+; [then-branch: 88 | inv_10[Ref](r@105@01) in xs11@23@01]
+(assert (Set_in (inv_10<Ref> r@105@01) xs11@23@01))
+; [eval] perm(r.f) >= __iar__assume_helper_10((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, (inv_8(r) in xs9) && r == r, (inv_9(r) in xs10) && r == r, p, p, p, p, p, p, p, p, p, p, p)
 ; [eval] perm(r.f)
 ; Definitional axioms for snapshot map values
 (declare-const pm@106@01 $FPM)
@@ -4531,221 +4488,221 @@
 (assert ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@105@01) r@105@01))
 ; perm(r.f)  ~~>  assume upper permission bound
 (assert (<= ($FVF.perm_f (as pm@106@01  $FPM) r@105@01) $Perm.Write))
-; [eval] __iar__assume_helper_10((inv_22(r) in xs1) && r == r, (inv_23(r) in xs2) && r == r, (inv_24(r) in xs3) && r == r, (inv_25(r) in xs4) && r == r, (inv_26(r) in xs5) && r == r, (inv_27(r) in xs6) && r == r, (inv_28(r) in xs7) && r == r, (inv_29(r) in xs8) && r == r, (inv_30(r) in xs9) && r == r, (inv_31(r) in xs10) && r == r, p, p, p, p, p, p, p, p, p, p, p)
-; [eval] (inv_22(r) in xs1) && r == r
-; [eval] (inv_22(r) in xs1)
-; [eval] inv_22(r)
+; [eval] __iar__assume_helper_10((inv_0(r) in xs1) && r == r, (inv_1(r) in xs2) && r == r, (inv_2(r) in xs3) && r == r, (inv_3(r) in xs4) && r == r, (inv_4(r) in xs5) && r == r, (inv_5(r) in xs6) && r == r, (inv_6(r) in xs7) && r == r, (inv_7(r) in xs8) && r == r, (inv_8(r) in xs9) && r == r, (inv_9(r) in xs10) && r == r, p, p, p, p, p, p, p, p, p, p, p)
+; [eval] (inv_0(r) in xs1) && r == r
+; [eval] (inv_0(r) in xs1)
+; [eval] inv_0(r)
 (push) ; 6
-; [then-branch: 89 | !(inv_22[Ref](r@105@01) in xs1@13@01) | live]
-; [else-branch: 89 | inv_22[Ref](r@105@01) in xs1@13@01 | live]
+; [then-branch: 89 | !(inv_0[Ref](r@105@01) in xs1@13@01) | live]
+; [else-branch: 89 | inv_0[Ref](r@105@01) in xs1@13@01 | live]
 (push) ; 7
-; [then-branch: 89 | !(inv_22[Ref](r@105@01) in xs1@13@01)]
-(assert (not (Set_in (inv_22<Ref> r@105@01) xs1@13@01)))
+; [then-branch: 89 | !(inv_0[Ref](r@105@01) in xs1@13@01)]
+(assert (not (Set_in (inv_0<Ref> r@105@01) xs1@13@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 89 | inv_22[Ref](r@105@01) in xs1@13@01]
-(assert (Set_in (inv_22<Ref> r@105@01) xs1@13@01))
+; [else-branch: 89 | inv_0[Ref](r@105@01) in xs1@13@01]
+(assert (Set_in (inv_0<Ref> r@105@01) xs1@13@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_22<Ref> r@105@01) xs1@13@01)
-  (not (Set_in (inv_22<Ref> r@105@01) xs1@13@01))))
-; [eval] (inv_23(r) in xs2) && r == r
-; [eval] (inv_23(r) in xs2)
-; [eval] inv_23(r)
+  (Set_in (inv_0<Ref> r@105@01) xs1@13@01)
+  (not (Set_in (inv_0<Ref> r@105@01) xs1@13@01))))
+; [eval] (inv_1(r) in xs2) && r == r
+; [eval] (inv_1(r) in xs2)
+; [eval] inv_1(r)
 (push) ; 6
-; [then-branch: 90 | !(inv_23[Ref](r@105@01) in xs2@14@01) | live]
-; [else-branch: 90 | inv_23[Ref](r@105@01) in xs2@14@01 | live]
+; [then-branch: 90 | !(inv_1[Ref](r@105@01) in xs2@14@01) | live]
+; [else-branch: 90 | inv_1[Ref](r@105@01) in xs2@14@01 | live]
 (push) ; 7
-; [then-branch: 90 | !(inv_23[Ref](r@105@01) in xs2@14@01)]
-(assert (not (Set_in (inv_23<Ref> r@105@01) xs2@14@01)))
+; [then-branch: 90 | !(inv_1[Ref](r@105@01) in xs2@14@01)]
+(assert (not (Set_in (inv_1<Ref> r@105@01) xs2@14@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 90 | inv_23[Ref](r@105@01) in xs2@14@01]
-(assert (Set_in (inv_23<Ref> r@105@01) xs2@14@01))
+; [else-branch: 90 | inv_1[Ref](r@105@01) in xs2@14@01]
+(assert (Set_in (inv_1<Ref> r@105@01) xs2@14@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_23<Ref> r@105@01) xs2@14@01)
-  (not (Set_in (inv_23<Ref> r@105@01) xs2@14@01))))
-; [eval] (inv_24(r) in xs3) && r == r
-; [eval] (inv_24(r) in xs3)
-; [eval] inv_24(r)
+  (Set_in (inv_1<Ref> r@105@01) xs2@14@01)
+  (not (Set_in (inv_1<Ref> r@105@01) xs2@14@01))))
+; [eval] (inv_2(r) in xs3) && r == r
+; [eval] (inv_2(r) in xs3)
+; [eval] inv_2(r)
 (push) ; 6
-; [then-branch: 91 | !(inv_24[Ref](r@105@01) in xs3@15@01) | live]
-; [else-branch: 91 | inv_24[Ref](r@105@01) in xs3@15@01 | live]
+; [then-branch: 91 | !(inv_2[Ref](r@105@01) in xs3@15@01) | live]
+; [else-branch: 91 | inv_2[Ref](r@105@01) in xs3@15@01 | live]
 (push) ; 7
-; [then-branch: 91 | !(inv_24[Ref](r@105@01) in xs3@15@01)]
-(assert (not (Set_in (inv_24<Ref> r@105@01) xs3@15@01)))
+; [then-branch: 91 | !(inv_2[Ref](r@105@01) in xs3@15@01)]
+(assert (not (Set_in (inv_2<Ref> r@105@01) xs3@15@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 91 | inv_24[Ref](r@105@01) in xs3@15@01]
-(assert (Set_in (inv_24<Ref> r@105@01) xs3@15@01))
+; [else-branch: 91 | inv_2[Ref](r@105@01) in xs3@15@01]
+(assert (Set_in (inv_2<Ref> r@105@01) xs3@15@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_24<Ref> r@105@01) xs3@15@01)
-  (not (Set_in (inv_24<Ref> r@105@01) xs3@15@01))))
-; [eval] (inv_25(r) in xs4) && r == r
-; [eval] (inv_25(r) in xs4)
-; [eval] inv_25(r)
+  (Set_in (inv_2<Ref> r@105@01) xs3@15@01)
+  (not (Set_in (inv_2<Ref> r@105@01) xs3@15@01))))
+; [eval] (inv_3(r) in xs4) && r == r
+; [eval] (inv_3(r) in xs4)
+; [eval] inv_3(r)
 (push) ; 6
-; [then-branch: 92 | !(inv_25[Ref](r@105@01) in xs4@16@01) | live]
-; [else-branch: 92 | inv_25[Ref](r@105@01) in xs4@16@01 | live]
+; [then-branch: 92 | !(inv_3[Ref](r@105@01) in xs4@16@01) | live]
+; [else-branch: 92 | inv_3[Ref](r@105@01) in xs4@16@01 | live]
 (push) ; 7
-; [then-branch: 92 | !(inv_25[Ref](r@105@01) in xs4@16@01)]
-(assert (not (Set_in (inv_25<Ref> r@105@01) xs4@16@01)))
+; [then-branch: 92 | !(inv_3[Ref](r@105@01) in xs4@16@01)]
+(assert (not (Set_in (inv_3<Ref> r@105@01) xs4@16@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 92 | inv_25[Ref](r@105@01) in xs4@16@01]
-(assert (Set_in (inv_25<Ref> r@105@01) xs4@16@01))
+; [else-branch: 92 | inv_3[Ref](r@105@01) in xs4@16@01]
+(assert (Set_in (inv_3<Ref> r@105@01) xs4@16@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_25<Ref> r@105@01) xs4@16@01)
-  (not (Set_in (inv_25<Ref> r@105@01) xs4@16@01))))
-; [eval] (inv_26(r) in xs5) && r == r
-; [eval] (inv_26(r) in xs5)
-; [eval] inv_26(r)
+  (Set_in (inv_3<Ref> r@105@01) xs4@16@01)
+  (not (Set_in (inv_3<Ref> r@105@01) xs4@16@01))))
+; [eval] (inv_4(r) in xs5) && r == r
+; [eval] (inv_4(r) in xs5)
+; [eval] inv_4(r)
 (push) ; 6
-; [then-branch: 93 | !(inv_26[Ref](r@105@01) in xs5@17@01) | live]
-; [else-branch: 93 | inv_26[Ref](r@105@01) in xs5@17@01 | live]
+; [then-branch: 93 | !(inv_4[Ref](r@105@01) in xs5@17@01) | live]
+; [else-branch: 93 | inv_4[Ref](r@105@01) in xs5@17@01 | live]
 (push) ; 7
-; [then-branch: 93 | !(inv_26[Ref](r@105@01) in xs5@17@01)]
-(assert (not (Set_in (inv_26<Ref> r@105@01) xs5@17@01)))
+; [then-branch: 93 | !(inv_4[Ref](r@105@01) in xs5@17@01)]
+(assert (not (Set_in (inv_4<Ref> r@105@01) xs5@17@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 93 | inv_26[Ref](r@105@01) in xs5@17@01]
-(assert (Set_in (inv_26<Ref> r@105@01) xs5@17@01))
+; [else-branch: 93 | inv_4[Ref](r@105@01) in xs5@17@01]
+(assert (Set_in (inv_4<Ref> r@105@01) xs5@17@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_26<Ref> r@105@01) xs5@17@01)
-  (not (Set_in (inv_26<Ref> r@105@01) xs5@17@01))))
-; [eval] (inv_27(r) in xs6) && r == r
-; [eval] (inv_27(r) in xs6)
-; [eval] inv_27(r)
+  (Set_in (inv_4<Ref> r@105@01) xs5@17@01)
+  (not (Set_in (inv_4<Ref> r@105@01) xs5@17@01))))
+; [eval] (inv_5(r) in xs6) && r == r
+; [eval] (inv_5(r) in xs6)
+; [eval] inv_5(r)
 (push) ; 6
-; [then-branch: 94 | !(inv_27[Ref](r@105@01) in xs6@18@01) | live]
-; [else-branch: 94 | inv_27[Ref](r@105@01) in xs6@18@01 | live]
+; [then-branch: 94 | !(inv_5[Ref](r@105@01) in xs6@18@01) | live]
+; [else-branch: 94 | inv_5[Ref](r@105@01) in xs6@18@01 | live]
 (push) ; 7
-; [then-branch: 94 | !(inv_27[Ref](r@105@01) in xs6@18@01)]
-(assert (not (Set_in (inv_27<Ref> r@105@01) xs6@18@01)))
+; [then-branch: 94 | !(inv_5[Ref](r@105@01) in xs6@18@01)]
+(assert (not (Set_in (inv_5<Ref> r@105@01) xs6@18@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 94 | inv_27[Ref](r@105@01) in xs6@18@01]
-(assert (Set_in (inv_27<Ref> r@105@01) xs6@18@01))
+; [else-branch: 94 | inv_5[Ref](r@105@01) in xs6@18@01]
+(assert (Set_in (inv_5<Ref> r@105@01) xs6@18@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_27<Ref> r@105@01) xs6@18@01)
-  (not (Set_in (inv_27<Ref> r@105@01) xs6@18@01))))
-; [eval] (inv_28(r) in xs7) && r == r
-; [eval] (inv_28(r) in xs7)
-; [eval] inv_28(r)
+  (Set_in (inv_5<Ref> r@105@01) xs6@18@01)
+  (not (Set_in (inv_5<Ref> r@105@01) xs6@18@01))))
+; [eval] (inv_6(r) in xs7) && r == r
+; [eval] (inv_6(r) in xs7)
+; [eval] inv_6(r)
 (push) ; 6
-; [then-branch: 95 | !(inv_28[Ref](r@105@01) in xs7@19@01) | live]
-; [else-branch: 95 | inv_28[Ref](r@105@01) in xs7@19@01 | live]
+; [then-branch: 95 | !(inv_6[Ref](r@105@01) in xs7@19@01) | live]
+; [else-branch: 95 | inv_6[Ref](r@105@01) in xs7@19@01 | live]
 (push) ; 7
-; [then-branch: 95 | !(inv_28[Ref](r@105@01) in xs7@19@01)]
-(assert (not (Set_in (inv_28<Ref> r@105@01) xs7@19@01)))
+; [then-branch: 95 | !(inv_6[Ref](r@105@01) in xs7@19@01)]
+(assert (not (Set_in (inv_6<Ref> r@105@01) xs7@19@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 95 | inv_28[Ref](r@105@01) in xs7@19@01]
-(assert (Set_in (inv_28<Ref> r@105@01) xs7@19@01))
+; [else-branch: 95 | inv_6[Ref](r@105@01) in xs7@19@01]
+(assert (Set_in (inv_6<Ref> r@105@01) xs7@19@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_28<Ref> r@105@01) xs7@19@01)
-  (not (Set_in (inv_28<Ref> r@105@01) xs7@19@01))))
-; [eval] (inv_29(r) in xs8) && r == r
-; [eval] (inv_29(r) in xs8)
-; [eval] inv_29(r)
+  (Set_in (inv_6<Ref> r@105@01) xs7@19@01)
+  (not (Set_in (inv_6<Ref> r@105@01) xs7@19@01))))
+; [eval] (inv_7(r) in xs8) && r == r
+; [eval] (inv_7(r) in xs8)
+; [eval] inv_7(r)
 (push) ; 6
-; [then-branch: 96 | !(inv_29[Ref](r@105@01) in xs8@20@01) | live]
-; [else-branch: 96 | inv_29[Ref](r@105@01) in xs8@20@01 | live]
+; [then-branch: 96 | !(inv_7[Ref](r@105@01) in xs8@20@01) | live]
+; [else-branch: 96 | inv_7[Ref](r@105@01) in xs8@20@01 | live]
 (push) ; 7
-; [then-branch: 96 | !(inv_29[Ref](r@105@01) in xs8@20@01)]
-(assert (not (Set_in (inv_29<Ref> r@105@01) xs8@20@01)))
+; [then-branch: 96 | !(inv_7[Ref](r@105@01) in xs8@20@01)]
+(assert (not (Set_in (inv_7<Ref> r@105@01) xs8@20@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 96 | inv_29[Ref](r@105@01) in xs8@20@01]
-(assert (Set_in (inv_29<Ref> r@105@01) xs8@20@01))
+; [else-branch: 96 | inv_7[Ref](r@105@01) in xs8@20@01]
+(assert (Set_in (inv_7<Ref> r@105@01) xs8@20@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_29<Ref> r@105@01) xs8@20@01)
-  (not (Set_in (inv_29<Ref> r@105@01) xs8@20@01))))
-; [eval] (inv_30(r) in xs9) && r == r
-; [eval] (inv_30(r) in xs9)
-; [eval] inv_30(r)
+  (Set_in (inv_7<Ref> r@105@01) xs8@20@01)
+  (not (Set_in (inv_7<Ref> r@105@01) xs8@20@01))))
+; [eval] (inv_8(r) in xs9) && r == r
+; [eval] (inv_8(r) in xs9)
+; [eval] inv_8(r)
 (push) ; 6
-; [then-branch: 97 | !(inv_30[Ref](r@105@01) in xs9@21@01) | live]
-; [else-branch: 97 | inv_30[Ref](r@105@01) in xs9@21@01 | live]
+; [then-branch: 97 | !(inv_8[Ref](r@105@01) in xs9@21@01) | live]
+; [else-branch: 97 | inv_8[Ref](r@105@01) in xs9@21@01 | live]
 (push) ; 7
-; [then-branch: 97 | !(inv_30[Ref](r@105@01) in xs9@21@01)]
-(assert (not (Set_in (inv_30<Ref> r@105@01) xs9@21@01)))
+; [then-branch: 97 | !(inv_8[Ref](r@105@01) in xs9@21@01)]
+(assert (not (Set_in (inv_8<Ref> r@105@01) xs9@21@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 97 | inv_30[Ref](r@105@01) in xs9@21@01]
-(assert (Set_in (inv_30<Ref> r@105@01) xs9@21@01))
+; [else-branch: 97 | inv_8[Ref](r@105@01) in xs9@21@01]
+(assert (Set_in (inv_8<Ref> r@105@01) xs9@21@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_30<Ref> r@105@01) xs9@21@01)
-  (not (Set_in (inv_30<Ref> r@105@01) xs9@21@01))))
-; [eval] (inv_31(r) in xs10) && r == r
-; [eval] (inv_31(r) in xs10)
-; [eval] inv_31(r)
+  (Set_in (inv_8<Ref> r@105@01) xs9@21@01)
+  (not (Set_in (inv_8<Ref> r@105@01) xs9@21@01))))
+; [eval] (inv_9(r) in xs10) && r == r
+; [eval] (inv_9(r) in xs10)
+; [eval] inv_9(r)
 (push) ; 6
-; [then-branch: 98 | !(inv_31[Ref](r@105@01) in xs10@22@01) | live]
-; [else-branch: 98 | inv_31[Ref](r@105@01) in xs10@22@01 | live]
+; [then-branch: 98 | !(inv_9[Ref](r@105@01) in xs10@22@01) | live]
+; [else-branch: 98 | inv_9[Ref](r@105@01) in xs10@22@01 | live]
 (push) ; 7
-; [then-branch: 98 | !(inv_31[Ref](r@105@01) in xs10@22@01)]
-(assert (not (Set_in (inv_31<Ref> r@105@01) xs10@22@01)))
+; [then-branch: 98 | !(inv_9[Ref](r@105@01) in xs10@22@01)]
+(assert (not (Set_in (inv_9<Ref> r@105@01) xs10@22@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 98 | inv_31[Ref](r@105@01) in xs10@22@01]
-(assert (Set_in (inv_31<Ref> r@105@01) xs10@22@01))
+; [else-branch: 98 | inv_9[Ref](r@105@01) in xs10@22@01]
+(assert (Set_in (inv_9<Ref> r@105@01) xs10@22@01))
 ; [eval] r == r
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (Set_in (inv_31<Ref> r@105@01) xs10@22@01)
-  (not (Set_in (inv_31<Ref> r@105@01) xs10@22@01))))
+  (Set_in (inv_9<Ref> r@105@01) xs10@22@01)
+  (not (Set_in (inv_9<Ref> r@105@01) xs10@22@01))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 88 | !(inv_32[Ref](r@105@01) in xs11@23@01)]
-(assert (not (Set_in (inv_32<Ref> r@105@01) xs11@23@01)))
+; [else-branch: 88 | !(inv_10[Ref](r@105@01) in xs11@23@01)]
+(assert (not (Set_in (inv_10<Ref> r@105@01) xs11@23@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -4760,45 +4717,45 @@
   :pattern (($FVF.perm_f (as pm@106@01  $FPM) r))
   :qid |qp.resTrgDef23|)))
 (assert (=>
-  (Set_in (inv_32<Ref> r@105@01) xs11@23@01)
+  (Set_in (inv_10<Ref> r@105@01) xs11@23@01)
   (and
-    (Set_in (inv_32<Ref> r@105@01) xs11@23@01)
+    (Set_in (inv_10<Ref> r@105@01) xs11@23@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@105@01) r@105@01)
     (<= ($FVF.perm_f (as pm@106@01  $FPM) r@105@01) $Perm.Write)
     (or
-      (Set_in (inv_22<Ref> r@105@01) xs1@13@01)
-      (not (Set_in (inv_22<Ref> r@105@01) xs1@13@01)))
+      (Set_in (inv_0<Ref> r@105@01) xs1@13@01)
+      (not (Set_in (inv_0<Ref> r@105@01) xs1@13@01)))
     (or
-      (Set_in (inv_23<Ref> r@105@01) xs2@14@01)
-      (not (Set_in (inv_23<Ref> r@105@01) xs2@14@01)))
+      (Set_in (inv_1<Ref> r@105@01) xs2@14@01)
+      (not (Set_in (inv_1<Ref> r@105@01) xs2@14@01)))
     (or
-      (Set_in (inv_24<Ref> r@105@01) xs3@15@01)
-      (not (Set_in (inv_24<Ref> r@105@01) xs3@15@01)))
+      (Set_in (inv_2<Ref> r@105@01) xs3@15@01)
+      (not (Set_in (inv_2<Ref> r@105@01) xs3@15@01)))
     (or
-      (Set_in (inv_25<Ref> r@105@01) xs4@16@01)
-      (not (Set_in (inv_25<Ref> r@105@01) xs4@16@01)))
+      (Set_in (inv_3<Ref> r@105@01) xs4@16@01)
+      (not (Set_in (inv_3<Ref> r@105@01) xs4@16@01)))
     (or
-      (Set_in (inv_26<Ref> r@105@01) xs5@17@01)
-      (not (Set_in (inv_26<Ref> r@105@01) xs5@17@01)))
+      (Set_in (inv_4<Ref> r@105@01) xs5@17@01)
+      (not (Set_in (inv_4<Ref> r@105@01) xs5@17@01)))
     (or
-      (Set_in (inv_27<Ref> r@105@01) xs6@18@01)
-      (not (Set_in (inv_27<Ref> r@105@01) xs6@18@01)))
+      (Set_in (inv_5<Ref> r@105@01) xs6@18@01)
+      (not (Set_in (inv_5<Ref> r@105@01) xs6@18@01)))
     (or
-      (Set_in (inv_28<Ref> r@105@01) xs7@19@01)
-      (not (Set_in (inv_28<Ref> r@105@01) xs7@19@01)))
+      (Set_in (inv_6<Ref> r@105@01) xs7@19@01)
+      (not (Set_in (inv_6<Ref> r@105@01) xs7@19@01)))
     (or
-      (Set_in (inv_29<Ref> r@105@01) xs8@20@01)
-      (not (Set_in (inv_29<Ref> r@105@01) xs8@20@01)))
+      (Set_in (inv_7<Ref> r@105@01) xs8@20@01)
+      (not (Set_in (inv_7<Ref> r@105@01) xs8@20@01)))
     (or
-      (Set_in (inv_30<Ref> r@105@01) xs9@21@01)
-      (not (Set_in (inv_30<Ref> r@105@01) xs9@21@01)))
+      (Set_in (inv_8<Ref> r@105@01) xs9@21@01)
+      (not (Set_in (inv_8<Ref> r@105@01) xs9@21@01)))
     (or
-      (Set_in (inv_31<Ref> r@105@01) xs10@22@01)
-      (not (Set_in (inv_31<Ref> r@105@01) xs10@22@01))))))
+      (Set_in (inv_9<Ref> r@105@01) xs10@22@01)
+      (not (Set_in (inv_9<Ref> r@105@01) xs10@22@01))))))
 ; Joined path conditions
 (assert (or
-  (not (Set_in (inv_32<Ref> r@105@01) xs11@23@01))
-  (Set_in (inv_32<Ref> r@105@01) xs11@23@01)))
+  (not (Set_in (inv_10<Ref> r@105@01) xs11@23@01))
+  (Set_in (inv_10<Ref> r@105@01) xs11@23@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -4815,53 +4772,53 @@
 (assert (forall ((r@105@01 $Ref)) (!
   (and
     (=>
-      (Set_in (inv_32<Ref> r@105@01) xs11@23@01)
+      (Set_in (inv_10<Ref> r@105@01) xs11@23@01)
       (and
-        (Set_in (inv_32<Ref> r@105@01) xs11@23@01)
+        (Set_in (inv_10<Ref> r@105@01) xs11@23@01)
         ($FVF.loc_f ($FVF.lookup_f (as sm@29@01  $FVF<f>) r@105@01) r@105@01)
         (<= ($FVF.perm_f (as pm@106@01  $FPM) r@105@01) $Perm.Write)
         (or
-          (Set_in (inv_22<Ref> r@105@01) xs1@13@01)
-          (not (Set_in (inv_22<Ref> r@105@01) xs1@13@01)))
+          (Set_in (inv_0<Ref> r@105@01) xs1@13@01)
+          (not (Set_in (inv_0<Ref> r@105@01) xs1@13@01)))
         (or
-          (Set_in (inv_23<Ref> r@105@01) xs2@14@01)
-          (not (Set_in (inv_23<Ref> r@105@01) xs2@14@01)))
+          (Set_in (inv_1<Ref> r@105@01) xs2@14@01)
+          (not (Set_in (inv_1<Ref> r@105@01) xs2@14@01)))
         (or
-          (Set_in (inv_24<Ref> r@105@01) xs3@15@01)
-          (not (Set_in (inv_24<Ref> r@105@01) xs3@15@01)))
+          (Set_in (inv_2<Ref> r@105@01) xs3@15@01)
+          (not (Set_in (inv_2<Ref> r@105@01) xs3@15@01)))
         (or
-          (Set_in (inv_25<Ref> r@105@01) xs4@16@01)
-          (not (Set_in (inv_25<Ref> r@105@01) xs4@16@01)))
+          (Set_in (inv_3<Ref> r@105@01) xs4@16@01)
+          (not (Set_in (inv_3<Ref> r@105@01) xs4@16@01)))
         (or
-          (Set_in (inv_26<Ref> r@105@01) xs5@17@01)
-          (not (Set_in (inv_26<Ref> r@105@01) xs5@17@01)))
+          (Set_in (inv_4<Ref> r@105@01) xs5@17@01)
+          (not (Set_in (inv_4<Ref> r@105@01) xs5@17@01)))
         (or
-          (Set_in (inv_27<Ref> r@105@01) xs6@18@01)
-          (not (Set_in (inv_27<Ref> r@105@01) xs6@18@01)))
+          (Set_in (inv_5<Ref> r@105@01) xs6@18@01)
+          (not (Set_in (inv_5<Ref> r@105@01) xs6@18@01)))
         (or
-          (Set_in (inv_28<Ref> r@105@01) xs7@19@01)
-          (not (Set_in (inv_28<Ref> r@105@01) xs7@19@01)))
+          (Set_in (inv_6<Ref> r@105@01) xs7@19@01)
+          (not (Set_in (inv_6<Ref> r@105@01) xs7@19@01)))
         (or
-          (Set_in (inv_29<Ref> r@105@01) xs8@20@01)
-          (not (Set_in (inv_29<Ref> r@105@01) xs8@20@01)))
+          (Set_in (inv_7<Ref> r@105@01) xs8@20@01)
+          (not (Set_in (inv_7<Ref> r@105@01) xs8@20@01)))
         (or
-          (Set_in (inv_30<Ref> r@105@01) xs9@21@01)
-          (not (Set_in (inv_30<Ref> r@105@01) xs9@21@01)))
+          (Set_in (inv_8<Ref> r@105@01) xs9@21@01)
+          (not (Set_in (inv_8<Ref> r@105@01) xs9@21@01)))
         (or
-          (Set_in (inv_31<Ref> r@105@01) xs10@22@01)
-          (not (Set_in (inv_31<Ref> r@105@01) xs10@22@01)))))
+          (Set_in (inv_9<Ref> r@105@01) xs10@22@01)
+          (not (Set_in (inv_9<Ref> r@105@01) xs10@22@01)))))
     (or
-      (not (Set_in (inv_32<Ref> r@105@01) xs11@23@01))
-      (Set_in (inv_32<Ref> r@105@01) xs11@23@01)))
-  :pattern ((inv_32<Ref> r@105@01))
+      (not (Set_in (inv_10<Ref> r@105@01) xs11@23@01))
+      (Set_in (inv_10<Ref> r@105@01) xs11@23@01)))
+  :pattern ((inv_10<Ref> r@105@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@24@11@24@67-aux|)))
 (assert (forall ((r@105@01 $Ref)) (!
   (=>
-    (Set_in (inv_32<Ref> r@105@01) xs11@23@01)
+    (Set_in (inv_10<Ref> r@105@01) xs11@23@01)
     (>=
       ($FVF.perm_f (as pm@106@01  $FPM) r@105@01)
-      (__iar__assume_helper_10<Perm> (Set_in (inv_22<Ref> r@105@01) xs1@13@01) (Set_in (inv_23<Ref> r@105@01) xs2@14@01) (Set_in (inv_24<Ref> r@105@01) xs3@15@01) (Set_in (inv_25<Ref> r@105@01) xs4@16@01) (Set_in (inv_26<Ref> r@105@01) xs5@17@01) (Set_in (inv_27<Ref> r@105@01) xs6@18@01) (Set_in (inv_28<Ref> r@105@01) xs7@19@01) (Set_in (inv_29<Ref> r@105@01) xs8@20@01) (Set_in (inv_30<Ref> r@105@01) xs9@21@01) (Set_in (inv_31<Ref> r@105@01) xs10@22@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
-  :pattern ((inv_32<Ref> r@105@01))
+      (__iar__assume_helper_10<Perm> (Set_in (inv_0<Ref> r@105@01) xs1@13@01) (Set_in (inv_1<Ref> r@105@01) xs2@14@01) (Set_in (inv_2<Ref> r@105@01) xs3@15@01) (Set_in (inv_3<Ref> r@105@01) xs4@16@01) (Set_in (inv_4<Ref> r@105@01) xs5@17@01) (Set_in (inv_5<Ref> r@105@01) xs6@18@01) (Set_in (inv_6<Ref> r@105@01) xs7@19@01) (Set_in (inv_7<Ref> r@105@01) xs8@20@01) (Set_in (inv_8<Ref> r@105@01) xs9@21@01) (Set_in (inv_9<Ref> r@105@01) xs10@22@01) p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01 p@25@01)))
+  :pattern ((inv_10<Ref> r@105@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/impure_assume/assume10QP.vpr@24@11@24@67|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
@@ -4916,7 +4873,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r x@24@01) (= (- p@25@01 (pTaken@109@01 r)) $Perm.No))
   
-  :qid |quant-u-21925|))))
+  :qid |quant-u-8580|))))
 (check-sat)
 ; unsat
 (pop) ; 3

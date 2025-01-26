@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:01
+// Date:         2025-01-26 21:42:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0053.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0053-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -241,12 +241,12 @@ procedure valid#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0053.vpr@7.1--10.2) [203438]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0053.vpr@7.1--10.2) [74496]"}
         HasDirectPerm(Mask, this, next);
     if (Heap[this, next] != null) {
       
       // -- Check definedness of acc(valid(this.next), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0053.vpr@7.1--10.2) [203439]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0053.vpr@7.1--10.2) [74497]"}
           HasDirectPerm(Mask, this, next);
       perm := FullPerm;
       Mask := Mask[null, valid(Heap[this, next]):=Mask[null, valid(Heap[this, next])] + perm];
@@ -310,7 +310,7 @@ procedure traverse(list_2: Ref) returns ()
         if (tmp != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant tmp != null ==> acc(valid(tmp), write) might not hold on entry. There might be insufficient permission to access valid(tmp) (0053.vpr@18.15--18.48) [203440]"}
+            assert {:msg "  Loop invariant tmp != null ==> acc(valid(tmp), write) might not hold on entry. There might be insufficient permission to access valid(tmp) (0053.vpr@18.15--18.48) [74498]"}
               perm <= Mask[null, valid(tmp)];
           }
           Mask := Mask[null, valid(tmp):=Mask[null, valid(tmp)] - perm];
@@ -362,7 +362,7 @@ procedure traverse(list_2: Ref) returns ()
             ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding valid(tmp) might fail. There might be insufficient permission to access valid(tmp) (0053.vpr@20.5--20.27) [203441]"}
+              assert {:msg "  Unfolding valid(tmp) might fail. There might be insufficient permission to access valid(tmp) (0053.vpr@20.5--20.27) [74499]"}
                 perm <= Mask[null, valid(tmp)];
             }
             Mask := Mask[null, valid(tmp):=Mask[null, valid(tmp)] - perm];
@@ -394,7 +394,7 @@ procedure traverse(list_2: Ref) returns ()
           // -- Translating statement: tmp := tmp.next -- 0053.vpr@21.5--21.20
             
             // -- Check definedness of tmp.next
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access tmp.next (0053.vpr@21.5--21.20) [203442]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access tmp.next (0053.vpr@21.5--21.20) [74500]"}
                 HasDirectPerm(Mask, tmp, next);
             tmp := Heap[tmp, next];
             assume state(Heap, Mask);
@@ -404,7 +404,7 @@ procedure traverse(list_2: Ref) returns ()
         if (tmp != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant tmp != null ==> acc(valid(tmp), write) might not be preserved. There might be insufficient permission to access valid(tmp) (0053.vpr@18.15--18.48) [203443]"}
+            assert {:msg "  Loop invariant tmp != null ==> acc(valid(tmp), write) might not be preserved. There might be insufficient permission to access valid(tmp) (0053.vpr@18.15--18.48) [74501]"}
               perm <= Mask[null, valid(tmp)];
           }
           Mask := Mask[null, valid(tmp):=Mask[null, valid(tmp)] - perm];

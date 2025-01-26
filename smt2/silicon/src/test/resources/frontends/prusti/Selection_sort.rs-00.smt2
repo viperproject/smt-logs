@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:28:42
+; Started: 2025-01-26 21:22:18
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -975,25 +975,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-258|)))
+  :qid |quant-u-513|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-259|)))
+  :qid |quant-u-514|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-266|)))
+  :qid |quant-u-521|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-267|)))
+  :qid |quant-u-522|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-268|)))
+  :qid |quant-u-523|)))
 ; ---------- FUNCTION m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$----------
 (declare-fun _pure_1@1@00 () $Ref)
 (declare-fun result@2@00 () Int)
@@ -1035,29 +1035,29 @@
     (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00)
     (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@1@00))
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@1@00))
-  :qid |quant-u-260|)))
+  :qid |quant-u-515|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@1@00)
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-261|)))
+  :qid |quant-u-516|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))) (=>
     (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@1@00)
     (and (<= 0 result@2@00) (<= result@2@00 18446744073709551615))))
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-269|)))
+  :qid |quant-u-524|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-270|)))
+  :qid |quant-u-525|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-271|)))
+  :qid |quant-u-526|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-272|)))
+  :qid |quant-u-527|)))
 ; ---------- FUNCTION builtin$unreach_bool__$TY$__$bool$----------
 (declare-fun result@3@00 () Bool)
 ; ----- Well-definedness of specifications -----
@@ -1070,11 +1070,11 @@
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-262|)))
+  :qid |quant-u-517|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-263|)))
+  :qid |quant-u-518|)))
 ; ---------- FUNCTION m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$----------
 (declare-fun _pure_1@4@00 () $Ref)
 (declare-fun _pure_2@5@00 () Int)
@@ -1176,29 +1176,29 @@
     (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@4@00 _pure_2@5@00)
     (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@4@00 _pure_2@5@00))
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@4@00 _pure_2@5@00))
-  :qid |quant-u-264|)))
+  :qid |quant-u-519|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref) (_pure_2@5@00 Int)) (!
   (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%stateless _pure_1@4@00 _pure_2@5@00)
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@4@00 _pure_2@5@00))
-  :qid |quant-u-265|)))
+  :qid |quant-u-520|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref) (_pure_2@5@00 Int)) (!
   (let ((result@6@00 (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@4@00 _pure_2@5@00))) (=>
     (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition s@$ _pure_1@4@00 _pure_2@5@00)
     (and (<= (- 0 2147483648) result@6@00) (<= result@6@00 2147483647))))
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@4@00 _pure_2@5@00))
-  :qid |quant-u-273|)))
+  :qid |quant-u-528|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref) (_pure_2@5@00 Int)) (!
   (let ((result@6@00 (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@4@00 _pure_2@5@00))) true)
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@4@00 _pure_2@5@00))
-  :qid |quant-u-274|)))
+  :qid |quant-u-529|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref) (_pure_2@5@00 Int)) (!
   (let ((result@6@00 (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@4@00 _pure_2@5@00))) true)
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@4@00 _pure_2@5@00))
-  :qid |quant-u-275|)))
+  :qid |quant-u-530|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref) (_pure_2@5@00 Int)) (!
   (let ((result@6@00 (m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@4@00 _pure_2@5@00))) true)
   :pattern ((m_Selection_sort$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Selection_sort$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@4@00 _pure_2@5@00))
-  :qid |quant-u-276|)))
+  :qid |quant-u-531|)))
 ; ---------- DeadBorrowToken$ ----------
 (declare-const borrow@10@00 Int)
 ; ---------- bool ----------

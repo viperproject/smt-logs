@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:37:40
+; Started: 2025-01-26 21:38:30
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1713,7 +1713,7 @@
       (= (inv@11@01 (Seq_index v@5@01 j@10@01)) j@10@01)
       (img@12@01 (Seq_index v@5@01 j@10@01))))
   :pattern ((Seq_index v@5@01 j@10@01))
-  :qid |quant-u-12265|)))
+  :qid |quant-u-19153|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@12@01 r) (Seq_contains (Seq_range 0 i@6@01) (inv@11@01 r)))
@@ -2348,7 +2348,7 @@
       (= r (Seq_index (as Seq_empty  Seq<$Ref>) (inv@17@01 r))))
     false)
   
-  :qid |quant-u-12267|))))
+  :qid |quant-u-19155|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2488,7 +2488,7 @@
       (= (inv@11@01 (Seq_index v@5@01 j@10@01)) j@10@01)
       (img@12@01 (Seq_index v@5@01 j@10@01))))
   :pattern ((Seq_index v@5@01 j@10@01))
-  :qid |quant-u-12265|)))
+  :qid |quant-u-19153|)))
 (assert (forall ((j@10@01 Int)) (!
   (=>
     (Seq_contains (Seq_range 0 i@6@01) j@10@01)
@@ -2940,7 +2940,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r tmp@22@01) (= (- $Perm.Write (pTaken@25@01 r)) $Perm.No))
   
-  :qid |quant-u-12270|))))
+  :qid |quant-u-19158|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -3518,7 +3518,7 @@
 (assert (not (forall ((j@32@01 Int)) (!
   (= (Seq_index v@28@01 j@32@01) (Seq_index v@5@01 j@32@01))
   
-  :qid |quant-u-12272|))))
+  :qid |quant-u-19160|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3572,7 +3572,7 @@
       (= r (Seq_index v@28@01 (inv@33@01 r))))
     (= (- $Perm.Write (pTaken@35@01 r)) $Perm.No))
   
-  :qid |quant-u-12275|))))
+  :qid |quant-u-19163|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3592,7 +3592,7 @@
       (pTaken@36@01 r))
     $Perm.No)
   
-  :qid |quant-u-12276|))))
+  :qid |quant-u-19164|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -3610,7 +3610,7 @@
       (= r (Seq_index v@28@01 (inv@33@01 r))))
     (= (- (- $Perm.Write (pTaken@35@01 r)) (pTaken@36@01 r)) $Perm.No))
   
-  :qid |quant-u-12277|))))
+  :qid |quant-u-19165|))))
 (check-sat)
 ; unsat
 (pop) ; 6

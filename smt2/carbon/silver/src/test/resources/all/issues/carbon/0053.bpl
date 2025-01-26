@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:08
+// Date:         2025-01-26 21:43:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0053.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0053-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -299,7 +299,7 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access TestP$(this) (0053.vpr@18.12--18.81) [192023]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access TestP$(this) (0053.vpr@18.12--18.81) [83947]"}
           perm <= UnfoldingMask[null, TestP$(this)];
       }
       UnfoldingMask := UnfoldingMask[null, TestP$(this):=UnfoldingMask[null, TestP$(this)] - perm];
@@ -308,9 +308,9 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
       UnfoldingMask := UnfoldingMask[this, Testx$:=UnfoldingMask[this, Testx$] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testx$ (0053.vpr@18.12--18.81) [192024]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testx$ (0053.vpr@18.12--18.81) [83948]"}
         HasDirectPerm(UnfoldingMask, this, Testx$);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testx$ (0053.vpr@18.12--18.81) [192025]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testx$ (0053.vpr@18.12--18.81) [83949]"}
         HasDirectPerm(oldMask, this, Testx$);
       
       // -- Free assumptions (exp module)
@@ -342,7 +342,7 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Testfail10$ might not hold. There might be insufficient permission to access TestP$(this) (0053.vpr@16.11--16.35) [192026]"}
+      assert {:msg "  Postcondition of Testfail10$ might not hold. There might be insufficient permission to access TestP$(this) (0053.vpr@16.11--16.35) [83950]"}
         perm <= Mask[null, TestP$(this)];
     }
     Mask := Mask[null, TestP$(this):=Mask[null, TestP$(this)] - perm];
@@ -356,7 +356,7 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of Testfail10$ might not hold. There might be insufficient permission to access TestP$(this) (0053.vpr@18.12--18.81) [192027]"}
+        assert {:msg "  Postcondition of Testfail10$ might not hold. There might be insufficient permission to access TestP$(this) (0053.vpr@18.12--18.81) [83951]"}
           perm <= UnfoldingMask[null, TestP$(this)];
       }
       UnfoldingMask := UnfoldingMask[null, TestP$(this):=UnfoldingMask[null, TestP$(this)] - perm];
@@ -365,7 +365,7 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
       UnfoldingMask := UnfoldingMask[this, Testx$:=UnfoldingMask[this, Testx$] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-    assert {:msg "  Postcondition of Testfail10$ might not hold. Assertion this.Testx$ == old(this.Testx$) might not hold. (0053.vpr@18.12--18.81) [192028]"}
+    assert {:msg "  Postcondition of Testfail10$ might not hold. Assertion this.Testx$ == old(this.Testx$) might not hold. (0053.vpr@18.12--18.81) [83952]"}
       Heap[this, Testx$] == oldHeap[this, Testx$];
     
     // -- Free assumptions (exhale module)

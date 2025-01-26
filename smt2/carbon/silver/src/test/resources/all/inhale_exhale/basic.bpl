@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:07
+// Date:         2025-01-26 21:41:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/basic.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/basic-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -204,7 +204,7 @@ procedure aa1() returns ()
   // -- Translating statement: assert [true, false] -- basic.vpr@11.3--11.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@11.10--11.23) [188662]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@11.10--11.23) [52088]"}
       false;
     assume state(Heap, Mask);
 }
@@ -240,7 +240,7 @@ procedure aa2() returns ()
   // -- Translating statement: assert false -- basic.vpr@18.3--18.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@18.10--18.15) [188663]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@18.10--18.15) [52089]"}
       false;
     assume state(Heap, Mask);
 }
@@ -275,7 +275,7 @@ procedure aa3() returns ()
   // -- Translating statement: assert false -- basic.vpr@26.3--26.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@26.10--26.15) [188664]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@26.10--26.15) [52090]"}
       false;
     assume state(Heap, Mask);
 }
@@ -311,7 +311,7 @@ procedure aa4() returns ()
   // -- Translating statement: assert [true, false] && [false, true] -- basic.vpr@36.3--36.40
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@36.10--36.40) [188667]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@36.10--36.40) [52093]"}
       false;
     assume state(Heap, Mask);
 }
@@ -388,7 +388,7 @@ procedure aa6() returns ()
 // Translation of method ie1
 // ==================================================
 
-procedure ie1_1() returns ()
+procedure ie1() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -415,7 +415,7 @@ procedure ie1_1() returns ()
   // -- Translating statement: exhale [true, false] -- basic.vpr@64.3--64.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Exhale might fail. Assertion false might not hold. (basic.vpr@64.10--64.23) [188675]"}
+    assert {:msg "  Exhale might fail. Assertion false might not hold. (basic.vpr@64.10--64.23) [52101]"}
       false;
     assume state(Heap, Mask);
 }
@@ -451,7 +451,7 @@ procedure ie2() returns ()
   // -- Translating statement: assert false -- basic.vpr@71.3--71.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@71.10--71.15) [188676]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@71.10--71.15) [52102]"}
       false;
     assume state(Heap, Mask);
 }
@@ -486,7 +486,7 @@ procedure ie3() returns ()
   // -- Translating statement: assert false -- basic.vpr@79.3--79.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@79.10--79.15) [188677]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (basic.vpr@79.10--79.15) [52103]"}
       false;
     assume state(Heap, Mask);
 }

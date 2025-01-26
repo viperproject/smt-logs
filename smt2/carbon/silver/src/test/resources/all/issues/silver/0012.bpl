@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:08
+// Date:         2025-01-26 21:42:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0012.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0012-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -234,10 +234,10 @@ procedure valid1#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(this.root.root, 1 / 2)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.root (0012.vpr@6.1--9.2) [220661]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.root (0012.vpr@6.1--9.2) [54144]"}
         HasDirectPerm(Mask, this, root_1);
     perm := 1 / 2;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0012.vpr@6.1--9.2) [220662]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0012.vpr@6.1--9.2) [54145]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Heap[this, root_1] != null;
     Mask := Mask[Heap[this, root_1], root_1:=Mask[Heap[this, root_1], root_1] + perm];
@@ -298,10 +298,10 @@ procedure valid2#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(this.root.root, 1 / 2)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.root (0012.vpr@11.1--14.2) [220663]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.root (0012.vpr@11.1--14.2) [54146]"}
         HasDirectPerm(Mask, this, root_1);
     perm := 1 / 2;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0012.vpr@11.1--14.2) [220664]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0012.vpr@11.1--14.2) [54147]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Heap[this, root_1] != null;
     Mask := Mask[Heap[this, root_1], root_1:=Mask[Heap[this, root_1], root_1] + perm];

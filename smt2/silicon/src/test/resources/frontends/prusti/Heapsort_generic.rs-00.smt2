@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:28:31
+; Started: 2025-01-26 21:22:04
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -252,25 +252,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-235|)))
+  :qid |quant-u-429|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-236|)))
+  :qid |quant-u-430|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-245|)))
+  :qid |quant-u-439|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-246|)))
+  :qid |quant-u-440|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-247|)))
+  :qid |quant-u-441|)))
 ; ---------- FUNCTION builtin$unreach_bool__$TY$__$bool$----------
 (declare-fun result@1@00 () Bool)
 ; ----- Well-definedness of specifications -----
@@ -283,11 +283,11 @@
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-237|)))
+  :qid |quant-u-431|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-238|)))
+  :qid |quant-u-432|)))
 ; ---------- FUNCTION m_Heapsort_generic$$order$opensqu$0$closesqu$__$TY$____TYPARAM__$T$__$__TYPARAM__$T$__$$bool$----------
 (declare-fun _pure_1@2@00 () $Ref)
 (declare-fun _pure_2@3@00 () $Ref)
@@ -342,19 +342,19 @@
     (m_Heapsort_generic$$order$opensqu$0$closesqu$__$TY$____TYPARAM__$T$__$__TYPARAM__$T$__$$bool$%limited s@$ _pure_1@2@00 _pure_2@3@00)
     (m_Heapsort_generic$$order$opensqu$0$closesqu$__$TY$____TYPARAM__$T$__$__TYPARAM__$T$__$$bool$ s@$ _pure_1@2@00 _pure_2@3@00))
   :pattern ((m_Heapsort_generic$$order$opensqu$0$closesqu$__$TY$____TYPARAM__$T$__$__TYPARAM__$T$__$$bool$ s@$ _pure_1@2@00 _pure_2@3@00))
-  :qid |quant-u-239|)))
+  :qid |quant-u-433|)))
 (assert (forall ((s@$ $Snap) (_pure_1@2@00 $Ref) (_pure_2@3@00 $Ref)) (!
   (m_Heapsort_generic$$order$opensqu$0$closesqu$__$TY$____TYPARAM__$T$__$__TYPARAM__$T$__$$bool$%stateless _pure_1@2@00 _pure_2@3@00)
   :pattern ((m_Heapsort_generic$$order$opensqu$0$closesqu$__$TY$____TYPARAM__$T$__$__TYPARAM__$T$__$$bool$%limited s@$ _pure_1@2@00 _pure_2@3@00))
-  :qid |quant-u-240|)))
+  :qid |quant-u-434|)))
 (assert (forall ((s@$ $Snap) (_pure_1@2@00 $Ref) (_pure_2@3@00 $Ref)) (!
   (let ((result@4@00 (m_Heapsort_generic$$order$opensqu$0$closesqu$__$TY$____TYPARAM__$T$__$__TYPARAM__$T$__$$bool$%limited s@$ _pure_1@2@00 _pure_2@3@00))) true)
   :pattern ((m_Heapsort_generic$$order$opensqu$0$closesqu$__$TY$____TYPARAM__$T$__$__TYPARAM__$T$__$$bool$%limited s@$ _pure_1@2@00 _pure_2@3@00))
-  :qid |quant-u-248|)))
+  :qid |quant-u-442|)))
 (assert (forall ((s@$ $Snap) (_pure_1@2@00 $Ref) (_pure_2@3@00 $Ref)) (!
   (let ((result@4@00 (m_Heapsort_generic$$order$opensqu$0$closesqu$__$TY$____TYPARAM__$T$__$__TYPARAM__$T$__$$bool$%limited s@$ _pure_1@2@00 _pure_2@3@00))) true)
   :pattern ((m_Heapsort_generic$$order$opensqu$0$closesqu$__$TY$____TYPARAM__$T$__$__TYPARAM__$T$__$$bool$%limited s@$ _pure_1@2@00 _pure_2@3@00))
-  :qid |quant-u-249|)))
+  :qid |quant-u-443|)))
 ; ---------- FUNCTION m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$----------
 (declare-fun _pure_1@5@00 () $Ref)
 (declare-fun result@6@00 () Int)
@@ -397,29 +397,29 @@
     (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%limited s@$ _pure_1@5@00)
     (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$ s@$ _pure_1@5@00))
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$ s@$ _pure_1@5@00))
-  :qid |quant-u-241|)))
+  :qid |quant-u-435|)))
 (assert (forall ((s@$ $Snap) (_pure_1@5@00 $Ref)) (!
   (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%stateless _pure_1@5@00)
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%limited s@$ _pure_1@5@00))
-  :qid |quant-u-242|)))
+  :qid |quant-u-436|)))
 (assert (forall ((s@$ $Snap) (_pure_1@5@00 $Ref)) (!
   (let ((result@6@00 (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%limited s@$ _pure_1@5@00))) (=>
     (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%precondition s@$ _pure_1@5@00)
     (and (<= 0 result@6@00) (<= result@6@00 18446744073709551615))))
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%limited s@$ _pure_1@5@00))
-  :qid |quant-u-250|)))
+  :qid |quant-u-444|)))
 (assert (forall ((s@$ $Snap) (_pure_1@5@00 $Ref)) (!
   (let ((result@6@00 (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%limited s@$ _pure_1@5@00))) true)
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%limited s@$ _pure_1@5@00))
-  :qid |quant-u-251|)))
+  :qid |quant-u-445|)))
 (assert (forall ((s@$ $Snap) (_pure_1@5@00 $Ref)) (!
   (let ((result@6@00 (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%limited s@$ _pure_1@5@00))) true)
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%limited s@$ _pure_1@5@00))
-  :qid |quant-u-252|)))
+  :qid |quant-u-446|)))
 (assert (forall ((s@$ $Snap) (_pure_1@5@00 $Ref)) (!
   (let ((result@6@00 (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%limited s@$ _pure_1@5@00))) true)
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$__TYPARAM__$T$__$_end_$$int$%limited s@$ _pure_1@5@00))
-  :qid |quant-u-253|)))
+  :qid |quant-u-447|)))
 ; ---------- FUNCTION m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$----------
 (declare-fun _pure_1@7@00 () $Ref)
 (declare-fun result@8@00 () Int)
@@ -461,29 +461,29 @@
     (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%limited s@$ _pure_1@7@00)
     (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$ s@$ _pure_1@7@00))
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$ s@$ _pure_1@7@00))
-  :qid |quant-u-243|)))
+  :qid |quant-u-437|)))
 (assert (forall ((s@$ $Snap) (_pure_1@7@00 $Ref)) (!
   (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%stateless _pure_1@7@00)
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%limited s@$ _pure_1@7@00))
-  :qid |quant-u-244|)))
+  :qid |quant-u-438|)))
 (assert (forall ((s@$ $Snap) (_pure_1@7@00 $Ref)) (!
   (let ((result@8@00 (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%limited s@$ _pure_1@7@00))) (=>
     (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%precondition s@$ _pure_1@7@00)
     (and (<= 0 result@8@00) (<= result@8@00 18446744073709551615))))
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%limited s@$ _pure_1@7@00))
-  :qid |quant-u-254|)))
+  :qid |quant-u-448|)))
 (assert (forall ((s@$ $Snap) (_pure_1@7@00 $Ref)) (!
   (let ((result@8@00 (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%limited s@$ _pure_1@7@00))) true)
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%limited s@$ _pure_1@7@00))
-  :qid |quant-u-255|)))
+  :qid |quant-u-449|)))
 (assert (forall ((s@$ $Snap) (_pure_1@7@00 $Ref)) (!
   (let ((result@8@00 (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%limited s@$ _pure_1@7@00))) true)
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%limited s@$ _pure_1@7@00))
-  :qid |quant-u-256|)))
+  :qid |quant-u-450|)))
 (assert (forall ((s@$ $Snap) (_pure_1@7@00 $Ref)) (!
   (let ((result@8@00 (m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%limited s@$ _pure_1@7@00))) true)
   :pattern ((m_Heapsort_generic$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Heapsort_generic$$VecWrapper$opensqu$0$closesqu$$_beg_$i32$_end_$$int$%limited s@$ _pure_1@7@00))
-  :qid |quant-u-257|)))
+  :qid |quant-u-451|)))
 ; ---------- DeadBorrowToken$ ----------
 (declare-const borrow@13@00 Int)
 ; ---------- __TYPARAM__$T$__ ----------

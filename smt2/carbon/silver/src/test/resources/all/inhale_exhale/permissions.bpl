@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:11
+// Date:         2025-01-26 21:41:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/permissions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/permissions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,22 +177,22 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of method t1
 // ==================================================
 
-procedure t1(this: Ref) returns ()
+procedure t1_2(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -206,69 +206,69 @@ procedure t1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale [acc(this.x, write) && this.x == 1, true] -- permissions.vpr@8.3--8.44
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (permissions.vpr@8.10--8.44) [189333]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (permissions.vpr@8.10--8.44) [52283]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.x == 1 -- permissions.vpr@9.3--9.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (permissions.vpr@9.10--9.21) [189334]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (permissions.vpr@9.10--9.21) [189335]"}
-      Heap[this, x_36] == 1;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (permissions.vpr@9.10--9.21) [52284]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (permissions.vpr@9.10--9.21) [52285]"}
+      Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale [acc(this.x, write) && this.x == 1, true] -- permissions.vpr@10.3--10.44
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.x == 1 -- permissions.vpr@11.3--11.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (permissions.vpr@11.10--11.21) [189337]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (permissions.vpr@11.10--11.21) [189338]"}
-      Heap[this, x_36] == 1;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (permissions.vpr@11.10--11.21) [52287]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (permissions.vpr@11.10--11.21) [52288]"}
+      Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale [true, this.x == 1] -- permissions.vpr@12.3--12.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (permissions.vpr@12.10--12.29) [189339]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Exhale might fail. Assertion this.x == 1 might not hold. (permissions.vpr@12.10--12.29) [189340]"}
-      Heap[this, x_36] == 1;
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (permissions.vpr@12.10--12.29) [52289]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Exhale might fail. Assertion this.x == 1 might not hold. (permissions.vpr@12.10--12.29) [52290]"}
+      Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale [true, acc(this.x, write)] -- permissions.vpr@13.3--13.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (permissions.vpr@13.10--13.29) [189342]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (permissions.vpr@13.10--13.29) [52292]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -276,14 +276,14 @@ procedure t1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.x == 1 -- permissions.vpr@15.3--15.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (permissions.vpr@15.10--15.21) [189343]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (permissions.vpr@15.10--15.21) [189344]"}
-      Heap[this, x_36] == 1;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (permissions.vpr@15.10--15.21) [52293]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (permissions.vpr@15.10--15.21) [52294]"}
+      Heap[this, x_42] == 1;
     assume state(Heap, Mask);
 }
 
@@ -291,12 +291,12 @@ procedure t1(this: Ref) returns ()
 // Translation of method inhaleTrue1
 // ==================================================
 
-procedure inhaleTrue1_1(this: Ref) returns ()
+procedure inhaleTrue1(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -312,13 +312,13 @@ procedure inhaleTrue1_1(this: Ref) returns ()
       if (*) {
         perm := FullPerm;
         assume this != null;
-        Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
         assume state(Heap, Mask);
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@19.12--19.46) [189345]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@19.12--19.46) [52295]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 1;
         assume state(Heap, Mask);
         assume false;
       }
@@ -329,20 +329,20 @@ procedure inhaleTrue1_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method inhaleTrue2
 // ==================================================
 
-procedure inhaleTrue2_1(this: Ref) returns ()
+procedure inhaleTrue2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -358,13 +358,13 @@ procedure inhaleTrue2_1(this: Ref) returns ()
       if (*) {
         perm := FullPerm;
         assume this != null;
-        Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
         assume state(Heap, Mask);
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@24.12--24.54) [189346]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@24.12--24.54) [52296]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 1;
         assume state(Heap, Mask);
         assume false;
       }
@@ -375,20 +375,20 @@ procedure inhaleTrue2_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method inhaleTrue3
 // ==================================================
 
-procedure inhaleTrue3_1(this: Ref) returns ()
+procedure inhaleTrue3(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -404,14 +404,14 @@ procedure inhaleTrue3_1(this: Ref) returns ()
       if (*) {
         perm := FullPerm;
         assume this != null;
-        Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@30.12--30.31) [189347]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@30.12--30.31) [52297]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 1;
         assume state(Heap, Mask);
         assume false;
       }
@@ -423,20 +423,20 @@ procedure inhaleTrue3_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method inhaleExpression1
 // ==================================================
 
-procedure inhaleExpression1_1(this: Ref) returns ()
+procedure inhaleExpression1(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -457,32 +457,32 @@ procedure inhaleExpression1_1(this: Ref) returns ()
     // -- Normally inhale the inhale part.
       perm := FullPerm;
       assume this != null;
-      Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+      Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@35.12--35.46) [189348]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@35.12--35.46) [52298]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 1;
       assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method inhaleExpression2
 // ==================================================
 
-procedure inhaleExpression2_1(this: Ref) returns ()
+procedure inhaleExpression2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -503,32 +503,32 @@ procedure inhaleExpression2_1(this: Ref) returns ()
     // -- Normally inhale the inhale part.
       perm := FullPerm;
       assume this != null;
-      Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+      Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@40.12--40.54) [189349]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@40.12--40.54) [52299]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 1;
       assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method inhaleExpression3
 // ==================================================
 
-procedure inhaleExpression3_1(this: Ref) returns ()
+procedure inhaleExpression3(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -550,37 +550,37 @@ procedure inhaleExpression3_1(this: Ref) returns ()
     // -- Normally inhale the inhale part.
       perm := FullPerm;
       assume this != null;
-      Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+      Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@46.12--46.31) [189350]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@46.12--46.31) [52300]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 1;
       assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method exhaleTrue1
 // ==================================================
 
-procedure exhaleTrue1_1(this: Ref) returns ()
+procedure exhaleTrue1(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -594,8 +594,8 @@ procedure exhaleTrue1_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -606,13 +606,13 @@ procedure exhaleTrue1_1(this: Ref) returns ()
       if (*) {
         perm := FullPerm;
         assume this != null;
-        PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+        PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@51.11--51.45) [189351]"}
-            HasDirectPerm(PostMask, this, x_36);
-        assume PostHeap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@51.11--51.45) [52301]"}
+            HasDirectPerm(PostMask, this, x_42);
+        assume PostHeap[this, x_42] == 1;
         assume state(PostHeap, PostMask);
         assume false;
       }
@@ -624,8 +624,8 @@ procedure exhaleTrue1_1(this: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -636,16 +636,16 @@ procedure exhaleTrue1_1(this: Ref) returns ()
 // Translation of method exhaleTrue2
 // ==================================================
 
-procedure exhaleTrue2_1(this: Ref) returns ()
+procedure exhaleTrue2(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -659,8 +659,8 @@ procedure exhaleTrue2_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -671,13 +671,13 @@ procedure exhaleTrue2_1(this: Ref) returns ()
       if (*) {
         perm := FullPerm;
         assume this != null;
-        PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+        PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@56.11--56.53) [189352]"}
-            HasDirectPerm(PostMask, this, x_36);
-        assume PostHeap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@56.11--56.53) [52302]"}
+            HasDirectPerm(PostMask, this, x_42);
+        assume PostHeap[this, x_42] == 1;
         assume state(PostHeap, PostMask);
         assume false;
       }
@@ -689,8 +689,8 @@ procedure exhaleTrue2_1(this: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -701,16 +701,16 @@ procedure exhaleTrue2_1(this: Ref) returns ()
 // Translation of method exhaleTrue3
 // ==================================================
 
-procedure exhaleTrue3_1(this: Ref) returns ()
+procedure exhaleTrue3(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -724,8 +724,8 @@ procedure exhaleTrue3_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -736,14 +736,14 @@ procedure exhaleTrue3_1(this: Ref) returns ()
       if (*) {
         perm := FullPerm;
         assume this != null;
-        PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+        PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
         assume state(PostHeap, PostMask);
         assume state(PostHeap, PostMask);
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@62.11--62.30) [189353]"}
-            HasDirectPerm(PostMask, this, x_36);
-        assume PostHeap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@62.11--62.30) [52303]"}
+            HasDirectPerm(PostMask, this, x_42);
+        assume PostHeap[this, x_42] == 1;
         assume state(PostHeap, PostMask);
         assume false;
       }
@@ -756,8 +756,8 @@ procedure exhaleTrue3_1(this: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -768,16 +768,16 @@ procedure exhaleTrue3_1(this: Ref) returns ()
 // Translation of method exhaleExpression1WithRequires
 // ==================================================
 
-procedure exhaleExpression1WithRequires_1(this: Ref) returns ()
+procedure exhaleExpression1WithRequires(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -791,20 +791,20 @@ procedure exhaleExpression1WithRequires_1(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@67.12--67.38) [189354]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@67.12--67.38) [52304]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -820,29 +820,29 @@ procedure exhaleExpression1WithRequires_1(this: Ref) returns ()
     // -- Normally inhale the exhale part.
       perm := FullPerm;
       assume this != null;
-      PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+      PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@68.11--68.45) [189355]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@68.11--68.45) [52305]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 1;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of exhaleExpression1WithRequires might not hold. There might be insufficient permission to access this.x (permissions.vpr@68.11--68.45) [189356]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Postcondition of exhaleExpression1WithRequires might not hold. There might be insufficient permission to access this.x (permissions.vpr@68.11--68.45) [52306]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
-    assert {:msg "  Postcondition of exhaleExpression1WithRequires might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@68.11--68.45) [189357]"}
-      Heap[this, x_36] == 1;
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
+    assert {:msg "  Postcondition of exhaleExpression1WithRequires might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@68.11--68.45) [52307]"}
+      Heap[this, x_42] == 1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -853,16 +853,16 @@ procedure exhaleExpression1WithRequires_1(this: Ref) returns ()
 // Translation of method exhaleExpression2WithRequires
 // ==================================================
 
-procedure exhaleExpression2WithRequires_1(this: Ref) returns ()
+procedure exhaleExpression2WithRequires(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -876,20 +876,20 @@ procedure exhaleExpression2WithRequires_1(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@73.12--73.38) [189358]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@73.12--73.38) [52308]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -905,29 +905,29 @@ procedure exhaleExpression2WithRequires_1(this: Ref) returns ()
     // -- Normally inhale the exhale part.
       perm := FullPerm;
       assume this != null;
-      PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+      PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@74.11--74.53) [189359]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@74.11--74.53) [52309]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 1;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of exhaleExpression2WithRequires might not hold. There might be insufficient permission to access this.x (permissions.vpr@74.11--74.53) [189360]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Postcondition of exhaleExpression2WithRequires might not hold. There might be insufficient permission to access this.x (permissions.vpr@74.11--74.53) [52310]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
-    assert {:msg "  Postcondition of exhaleExpression2WithRequires might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@74.11--74.53) [189361]"}
-      Heap[this, x_36] == 1;
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
+    assert {:msg "  Postcondition of exhaleExpression2WithRequires might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@74.11--74.53) [52311]"}
+      Heap[this, x_42] == 1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -938,16 +938,16 @@ procedure exhaleExpression2WithRequires_1(this: Ref) returns ()
 // Translation of method exhaleExpression3WithRequires
 // ==================================================
 
-procedure exhaleExpression3WithRequires_1(this: Ref) returns ()
+procedure exhaleExpression3WithRequires(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -961,20 +961,20 @@ procedure exhaleExpression3WithRequires_1(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@79.12--79.38) [189362]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@79.12--79.38) [52312]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -991,30 +991,30 @@ procedure exhaleExpression3WithRequires_1(this: Ref) returns ()
     // -- Normally inhale the exhale part.
       perm := FullPerm;
       assume this != null;
-      PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+      PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
       assume state(PostHeap, PostMask);
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@81.11--81.30) [189363]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@81.11--81.30) [52313]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 1;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of exhaleExpression3WithRequires might not hold. There might be insufficient permission to access this.x (permissions.vpr@80.11--80.30) [189364]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Postcondition of exhaleExpression3WithRequires might not hold. There might be insufficient permission to access this.x (permissions.vpr@80.11--80.30) [52314]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
-    assert {:msg "  Postcondition of exhaleExpression3WithRequires might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@81.11--81.30) [189365]"}
-      Heap[this, x_36] == 1;
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
+    assert {:msg "  Postcondition of exhaleExpression3WithRequires might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@81.11--81.30) [52315]"}
+      Heap[this, x_42] == 1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1028,13 +1028,13 @@ procedure exhaleExpression3WithRequires_1(this: Ref) returns ()
 procedure exhaleExpression1WithInhale(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1048,8 +1048,8 @@ procedure exhaleExpression1WithInhale(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1065,13 +1065,13 @@ procedure exhaleExpression1WithInhale(this: Ref) returns ()
     // -- Normally inhale the exhale part.
       perm := FullPerm;
       assume this != null;
-      PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+      PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@86.11--86.45) [189366]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@86.11--86.45) [52316]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 1;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -1080,27 +1080,27 @@ procedure exhaleExpression1WithInhale(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 1 -- permissions.vpr@88.3--88.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (permissions.vpr@88.10--88.36) [189368]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (permissions.vpr@88.10--88.36) [52318]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of exhaleExpression1WithInhale might not hold. There might be insufficient permission to access this.x (permissions.vpr@86.11--86.45) [189369]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Postcondition of exhaleExpression1WithInhale might not hold. There might be insufficient permission to access this.x (permissions.vpr@86.11--86.45) [52319]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
-    assert {:msg "  Postcondition of exhaleExpression1WithInhale might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@86.11--86.45) [189370]"}
-      Heap[this, x_36] == 1;
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
+    assert {:msg "  Postcondition of exhaleExpression1WithInhale might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@86.11--86.45) [52320]"}
+      Heap[this, x_42] == 1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1114,13 +1114,13 @@ procedure exhaleExpression1WithInhale(this: Ref) returns ()
 procedure exhaleExpression2WithInhale(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1134,8 +1134,8 @@ procedure exhaleExpression2WithInhale(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1151,13 +1151,13 @@ procedure exhaleExpression2WithInhale(this: Ref) returns ()
     // -- Normally inhale the exhale part.
       perm := FullPerm;
       assume this != null;
-      PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+      PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@92.11--92.53) [189371]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@92.11--92.53) [52321]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 1;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -1166,27 +1166,27 @@ procedure exhaleExpression2WithInhale(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 1 -- permissions.vpr@94.3--94.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (permissions.vpr@94.10--94.36) [189373]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (permissions.vpr@94.10--94.36) [52323]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of exhaleExpression2WithInhale might not hold. There might be insufficient permission to access this.x (permissions.vpr@92.11--92.53) [189374]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Postcondition of exhaleExpression2WithInhale might not hold. There might be insufficient permission to access this.x (permissions.vpr@92.11--92.53) [52324]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
-    assert {:msg "  Postcondition of exhaleExpression2WithInhale might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@92.11--92.53) [189375]"}
-      Heap[this, x_36] == 1;
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
+    assert {:msg "  Postcondition of exhaleExpression2WithInhale might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@92.11--92.53) [52325]"}
+      Heap[this, x_42] == 1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1200,13 +1200,13 @@ procedure exhaleExpression2WithInhale(this: Ref) returns ()
 procedure exhaleExpression3WithInhale(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1220,8 +1220,8 @@ procedure exhaleExpression3WithInhale(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1238,14 +1238,14 @@ procedure exhaleExpression3WithInhale(this: Ref) returns ()
     // -- Normally inhale the exhale part.
       perm := FullPerm;
       assume this != null;
-      PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+      PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
       assume state(PostHeap, PostMask);
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@99.11--99.30) [189376]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (permissions.vpr@99.11--99.30) [52326]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 1;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -1254,27 +1254,27 @@ procedure exhaleExpression3WithInhale(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 1 -- permissions.vpr@101.3--101.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (permissions.vpr@101.10--101.36) [189378]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (permissions.vpr@101.10--101.36) [52328]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of exhaleExpression3WithInhale might not hold. There might be insufficient permission to access this.x (permissions.vpr@98.11--98.30) [189379]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Postcondition of exhaleExpression3WithInhale might not hold. There might be insufficient permission to access this.x (permissions.vpr@98.11--98.30) [52329]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
-    assert {:msg "  Postcondition of exhaleExpression3WithInhale might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@99.11--99.30) [189380]"}
-      Heap[this, x_36] == 1;
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
+    assert {:msg "  Postcondition of exhaleExpression3WithInhale might not hold. Assertion this.x == 1 might not hold. (permissions.vpr@99.11--99.30) [52330]"}
+      Heap[this, x_42] == 1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

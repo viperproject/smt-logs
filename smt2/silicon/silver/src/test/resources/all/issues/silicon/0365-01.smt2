@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:45
+; Started: 2025-01-26 21:34:05
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -177,39 +177,39 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (resource%limited s@$) (resource s@$))
   :pattern ((resource s@$))
-  :qid |quant-u-24189|)))
+  :qid |quant-u-10650|)))
 (assert (forall ((s@$ $Snap)) (!
   (as resource%stateless  Bool)
   :pattern ((resource%limited s@$))
-  :qid |quant-u-24190|)))
+  :qid |quant-u-10651|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (= (tokCountRef%limited s@$ r@1@00) (tokCountRef s@$ r@1@00))
   :pattern ((tokCountRef s@$ r@1@00))
-  :qid |quant-u-24191|)))
+  :qid |quant-u-10652|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (tokCountRef%stateless r@1@00)
   :pattern ((tokCountRef%limited s@$ r@1@00))
-  :qid |quant-u-24192|)))
+  :qid |quant-u-10653|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (let ((result@2@00 (tokCountRef%limited s@$ r@1@00))) (=>
     (tokCountRef%precondition s@$ r@1@00)
     (= (tokCountRef%limited $Snap.unit (temp<Ref> r@1@00)) result@2@00)))
   :pattern ((tokCountRef%limited s@$ r@1@00))
-  :qid |quant-u-24195|)))
+  :qid |quant-u-10656|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (let ((result@2@00 (tokCountRef%limited s@$ r@1@00))) (=>
     (tokCountRef%precondition s@$ r@1@00)
     (tokCountRef%precondition $Snap.unit (temp<Ref> r@1@00))))
   :pattern ((tokCountRef%limited s@$ r@1@00))
-  :qid |quant-u-24196|)))
+  :qid |quant-u-10657|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (readers%limited s@$) (readers s@$))
   :pattern ((readers s@$))
-  :qid |quant-u-24193|)))
+  :qid |quant-u-10654|)))
 (assert (forall ((s@$ $Snap)) (!
   (as readers%stateless  Bool)
   :pattern ((readers%limited s@$))
-  :qid |quant-u-24194|)))
+  :qid |quant-u-10655|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- try_lock_shared ----------
@@ -480,7 +480,7 @@
 (check-sat)
 ; unsat
 (pop) ; 3
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (pop) ; 2
 (pop) ; 1

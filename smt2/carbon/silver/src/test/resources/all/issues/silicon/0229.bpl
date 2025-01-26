@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:37
+// Date:         2025-01-26 21:42:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0229.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0229-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -246,9 +246,9 @@ axiom (forall arg1: Ref, arg2: Perm, arg3: Ref, arg4: Perm, arg5: Ref, arg6: Per
 // Translation of all fields
 // ==================================================
 
-const unique r_6: Field NormalField bool;
-axiom !IsPredicateField(r_6);
-axiom !IsWandField(r_6);
+const unique r_11: Field NormalField bool;
+axiom !IsPredicateField(r_11);
+axiom !IsWandField(r_11);
 const unique Foo__v1: Field NormalField Ref;
 axiom !IsPredicateField(Foo__v1);
 axiom !IsWandField(Foo__v1);
@@ -308,7 +308,7 @@ procedure valid2#definedness(self: Ref) returns ()
       assume Heap[self, $allocated];
     perm := FullPerm;
     assume self != null;
-    Mask := Mask[self, r_6:=Mask[self, r_6] + perm];
+    Mask := Mask[self, r_11:=Mask[self, r_11] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
 }
@@ -366,7 +366,7 @@ procedure valid__Foo#definedness(self: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(self.Foo__v1.Int__v, write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.Foo__v1 (0229.vpr@47.1--52.2) [202404]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.Foo__v1 (0229.vpr@47.1--52.2) [74875]"}
         HasDirectPerm(Mask, self, Foo__v1);
     perm := FullPerm;
     assume Heap[self, Foo__v1] != null;
@@ -378,7 +378,7 @@ procedure valid__Foo#definedness(self: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(self.Foo__v2.Int__v, write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.Foo__v2 (0229.vpr@47.1--52.2) [202405]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.Foo__v2 (0229.vpr@47.1--52.2) [74876]"}
         HasDirectPerm(Mask, self, Foo__v2);
     perm := FullPerm;
     assume Heap[self, Foo__v2] != null;
@@ -397,16 +397,16 @@ procedure test42(x: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var oldMask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var Ops_1Heap: HeapType;
@@ -415,8 +415,8 @@ procedure test42(x: Ref) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs2Mask: MaskType;
   var Labellhs2Heap: HeapType;
+  var Labellhs2Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -441,49 +441,49 @@ procedure test42(x: Ref) returns ()
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume valid2#trigger(UnfoldingHeap, valid2(x));
-      assume UnfoldingHeap[null, valid2(x)] == FrameFragment(UnfoldingHeap[x, r_6]);
-      ExhaleWellDef0Mask := UnfoldingMask;
+      assume UnfoldingHeap[null, valid2(x)] == FrameFragment(UnfoldingHeap[x, r_11]);
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid2(x) (0229.vpr@10.12--10.43) [202406]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid2(x) (0229.vpr@10.12--10.43) [74877]"}
           perm <= UnfoldingMask[null, valid2(x)];
       }
       UnfoldingMask := UnfoldingMask[null, valid2(x):=UnfoldingMask[null, valid2(x)] - perm];
       perm := FullPerm;
       assume x != null;
-      UnfoldingMask := UnfoldingMask[x, r_6:=UnfoldingMask[x, r_6] + perm];
+      UnfoldingMask := UnfoldingMask[x, r_11:=UnfoldingMask[x, r_11] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.r (0229.vpr@10.12--10.43) [202407]"}
-        HasDirectPerm(UnfoldingMask, x, r_6);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.r (0229.vpr@10.12--10.43) [74878]"}
+        HasDirectPerm(UnfoldingMask, x, r_11);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, valid2#sm(x):=Heap[null, valid2#sm(x)][x, r_6:=true]];
+        Heap := Heap[null, valid2#sm(x):=Heap[null, valid2#sm(x)][x, r_11:=true]];
         assume state(Heap, Mask);
     
     // -- Execute unfolding (for extra information)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume valid2#trigger(UnfoldingHeap, valid2(x));
-      assume UnfoldingHeap[null, valid2(x)] == FrameFragment(UnfoldingHeap[x, r_6]);
-      ExhaleWellDef0Mask := UnfoldingMask;
+      assume UnfoldingHeap[null, valid2(x)] == FrameFragment(UnfoldingHeap[x, r_11]);
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, valid2(x):=UnfoldingMask[null, valid2(x)] - perm];
       perm := FullPerm;
       assume x != null;
-      UnfoldingMask := UnfoldingMask[x, r_6:=UnfoldingMask[x, r_6] + perm];
+      UnfoldingMask := UnfoldingMask[x, r_11:=UnfoldingMask[x, r_11] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-    assume Heap[x, r_6];
+    assume Heap[x, r_11];
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -498,8 +498,8 @@ procedure test42(x: Ref) returns ()
         
         // -- Translating statement: label lhs1 -- 0229.vpr@11.11--11.24
           lhs1:
-          Labellhs1Mask := WandDefLHSMask;
           Labellhs1Heap := WandDefLHSHeap;
+          Labellhs1Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -508,27 +508,27 @@ procedure test42(x: Ref) returns ()
           UnfoldingHeap := oldHeap;
           UnfoldingMask := oldMask;
           assume valid2#trigger(UnfoldingHeap, valid2(x));
-          assume UnfoldingHeap[null, valid2(x)] == FrameFragment(UnfoldingHeap[x, r_6]);
-          ExhaleWellDef0Mask := UnfoldingMask;
+          assume UnfoldingHeap[null, valid2(x)] == FrameFragment(UnfoldingHeap[x, r_11]);
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid2(x) (0229.vpr@11.11--11.24) [202408]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid2(x) (0229.vpr@11.11--11.24) [74879]"}
               perm <= UnfoldingMask[null, valid2(x)];
           }
           UnfoldingMask := UnfoldingMask[null, valid2(x):=UnfoldingMask[null, valid2(x)] - perm];
           perm := FullPerm;
           assume x != null;
-          UnfoldingMask := UnfoldingMask[x, r_6:=UnfoldingMask[x, r_6] + perm];
+          UnfoldingMask := UnfoldingMask[x, r_11:=UnfoldingMask[x, r_11] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.r (0229.vpr@11.11--11.24) [202409]"}
-            HasDirectPerm(UnfoldingMask, x, r_6);
-        assume oldHeap[x, r_6];
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.r (0229.vpr@11.11--11.24) [74880]"}
+            HasDirectPerm(UnfoldingMask, x, r_11);
+        assume oldHeap[x, r_11];
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume false;
       }
-    PostMask := PostMask[null, wand(true, oldHeap[x, r_6]):=PostMask[null, wand(true, oldHeap[x, r_6])] + FullPerm];
+    PostMask := PostMask[null, wand(true, oldHeap[x, r_11]):=PostMask[null, wand(true, oldHeap[x, r_11])] + FullPerm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -551,8 +551,8 @@ procedure test42(x: Ref) returns ()
     
     // -- Translating statement: label lhs2 -- 0229.vpr@13.11--13.24
       lhs2:
-      Labellhs2Mask := Ops_1Mask;
       Labellhs2Heap := Ops_1Heap;
+      Labellhs2Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationold((unfolding acc(valid2(x), write) in x.r))
@@ -566,38 +566,38 @@ procedure test42(x: Ref) returns ()
           UnfoldingHeap := oldHeap;
           UnfoldingMask := oldMask;
           assume valid2#trigger(UnfoldingHeap, valid2(x));
-          assume UnfoldingHeap[null, valid2(x)] == FrameFragment(UnfoldingHeap[x, r_6]);
-          ExhaleWellDef0Mask := UnfoldingMask;
+          assume UnfoldingHeap[null, valid2(x)] == FrameFragment(UnfoldingHeap[x, r_11]);
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access valid2(x) (0229.vpr@13.3--13.24) [202410]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access valid2(x) (0229.vpr@13.3--13.24) [74881]"}
               perm <= UnfoldingMask[null, valid2(x)];
           }
           UnfoldingMask := UnfoldingMask[null, valid2(x):=UnfoldingMask[null, valid2(x)] - perm];
           perm := FullPerm;
           assume x != null;
-          UnfoldingMask := UnfoldingMask[x, r_6:=UnfoldingMask[x, r_6] + perm];
+          UnfoldingMask := UnfoldingMask[x, r_11:=UnfoldingMask[x, r_11] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.r (0229.vpr@13.3--13.24) [202411]"}
-            HasDirectPerm(UnfoldingMask, x, r_6);
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.r (0229.vpr@13.3--13.24) [74882]"}
+            HasDirectPerm(UnfoldingMask, x, r_11);
       }
     }
-    assert {:msg "  Packaging wand might fail. Assertion old((unfolding acc(valid2(x), write) in x.r)) might not hold. (0229.vpr@13.3--13.24) [202412]"}
-      (b_1_1 && b_1_1) && b_2_1 ==> oldHeap[x, r_6];
-    Mask := Mask[null, wand(true, oldHeap[x, r_6]):=Mask[null, wand(true, oldHeap[x, r_6])] + FullPerm];
+    assert {:msg "  Packaging wand might fail. Assertion old((unfolding acc(valid2(x), write) in x.r)) might not hold. (0229.vpr@13.3--13.24) [74883]"}
+      (b_1_1 && b_1_1) && b_2_1 ==> oldHeap[x, r_11];
+    Mask := Mask[null, wand(true, oldHeap[x, r_11]):=Mask[null, wand(true, oldHeap[x, r_11])] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     // permLe
-    assert {:msg "  Postcondition of test42 might not hold. Magic wand instance not found. (0229.vpr@11.11--11.24) [202413]"}
-      FullPerm <= Mask[null, wand(true, oldHeap[x, r_6])];
-    Mask := Mask[null, wand(true, oldHeap[x, r_6]):=Mask[null, wand(true, oldHeap[x, r_6])] - FullPerm];
+    assert {:msg "  Postcondition of test42 might not hold. Magic wand instance not found. (0229.vpr@11.11--11.24) [74884]"}
+      FullPerm <= Mask[null, wand(true, oldHeap[x, r_11])];
+    Mask := Mask[null, wand(true, oldHeap[x, r_11]):=Mask[null, wand(true, oldHeap[x, r_11])] - FullPerm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -608,24 +608,24 @@ procedure test42(x: Ref) returns ()
 // Translation of method test4
 // ==================================================
 
-procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
+procedure test4_1(x$1_2: Ref, rd$1: Perm) returns (res$1: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs4Mask: MaskType;
   var Labellhs4Heap: HeapType;
+  var Labellhs4Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
@@ -633,8 +633,8 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_3: bool;
-  var Labellhs5Mask: MaskType;
   var Labellhs5Heap: HeapType;
+  var Labellhs5Mask: MaskType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -661,7 +661,7 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_10: bool;
-  var arg_1: Ref;
+  var arg: Ref;
   var TempMask: MaskType;
   var newPMask: PMaskType;
   var b_11: bool;
@@ -675,22 +675,22 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[x$1, $allocated];
+    assume Heap[x$1_2, $allocated];
   
   // -- Checked inhaling of precondition
     assume NoPerm < rd$1;
     assume rd$1 < FullPerm;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, valid__Foo(x$1):=Mask[null, valid__Foo(x$1)] + perm];
+    Mask := Mask[null, valid__Foo(x$1_2):=Mask[null, valid__Foo(x$1_2)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -714,125 +714,125 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
         
         // -- Translating statement: label lhs4 -- 0229.vpr@34.11--34.43
           lhs4:
-          Labellhs4Mask := WandDefLHSMask;
           Labellhs4Heap := WandDefLHSHeap;
+          Labellhs4Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
         perm := FullPerm;
-        WandDefRHSMask := WandDefRHSMask[null, valid__Foo(x$1):=WandDefRHSMask[null, valid__Foo(x$1)] + perm];
+        WandDefRHSMask := WandDefRHSMask[null, valid__Foo(x$1_2):=WandDefRHSMask[null, valid__Foo(x$1_2)] + perm];
         assume state(WandDefRHSHeap, WandDefRHSMask);
         
         // -- Check definedness of (unfolding acc(valid__Foo(x$1), rd$1 / 2) in x$1.Foo__v2.Int__v) == old((unfolding acc(valid__Foo(x$1), rd$1 / 2) in x$1.Foo__v2.Int__v))
           UnfoldingHeap := WandDefRHSHeap;
           UnfoldingMask := WandDefRHSMask;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0229.vpr@34.11--34.43) [202414]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0229.vpr@34.11--34.43) [74885]"}
             rd$1 > NoPerm;
-          assume valid__Foo#trigger(UnfoldingHeap, valid__Foo(x$1));
-          assume UnfoldingHeap[null, valid__Foo(x$1)] == CombineFrames(FrameFragment(UnfoldingHeap[x$1, Foo__v1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1, Foo__v1], Int__v]), CombineFrames(FrameFragment(UnfoldingHeap[x$1, Foo__v2]), FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1, Foo__v2], Int__v]))));
-          ExhaleWellDef0Mask := UnfoldingMask;
+          assume valid__Foo#trigger(UnfoldingHeap, valid__Foo(x$1_2));
+          assume UnfoldingHeap[null, valid__Foo(x$1_2)] == CombineFrames(FrameFragment(UnfoldingHeap[x$1_2, Foo__v1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1_2, Foo__v1], Int__v]), CombineFrames(FrameFragment(UnfoldingHeap[x$1_2, Foo__v2]), FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1_2, Foo__v2], Int__v]))));
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [202415]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [74886]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@34.11--34.43) [202416]"}
-              perm <= UnfoldingMask[null, valid__Foo(x$1)];
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@34.11--34.43) [74887]"}
+              perm <= UnfoldingMask[null, valid__Foo(x$1_2)];
           }
-          UnfoldingMask := UnfoldingMask[null, valid__Foo(x$1):=UnfoldingMask[null, valid__Foo(x$1)] - perm];
+          UnfoldingMask := UnfoldingMask[null, valid__Foo(x$1_2):=UnfoldingMask[null, valid__Foo(x$1_2)] - perm];
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [202417]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [74888]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> x$1 != null;
-          UnfoldingMask := UnfoldingMask[x$1, Foo__v1:=UnfoldingMask[x$1, Foo__v1] + perm];
-          assume state(UnfoldingHeap, UnfoldingMask);
-          perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [202418]"}
-            perm >= NoPerm;
-          assume perm > NoPerm ==> UnfoldingHeap[x$1, Foo__v1] != null;
-          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1, Foo__v1], Int__v:=UnfoldingMask[UnfoldingHeap[x$1, Foo__v1], Int__v] + perm];
+          assume perm > NoPerm ==> x$1_2 != null;
+          UnfoldingMask := UnfoldingMask[x$1_2, Foo__v1:=UnfoldingMask[x$1_2, Foo__v1] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [202419]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [74889]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> x$1 != null;
-          UnfoldingMask := UnfoldingMask[x$1, Foo__v2:=UnfoldingMask[x$1, Foo__v2] + perm];
+          assume perm > NoPerm ==> UnfoldingHeap[x$1_2, Foo__v1] != null;
+          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v1], Int__v:=UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v1], Int__v] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [202420]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [74890]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> UnfoldingHeap[x$1, Foo__v2] != null;
-          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1, Foo__v2], Int__v:=UnfoldingMask[UnfoldingHeap[x$1, Foo__v2], Int__v] + perm];
+          assume perm > NoPerm ==> x$1_2 != null;
+          UnfoldingMask := UnfoldingMask[x$1_2, Foo__v2:=UnfoldingMask[x$1_2, Foo__v2] + perm];
+          assume state(UnfoldingHeap, UnfoldingMask);
+          perm := rd$1 / 2;
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [74891]"}
+            perm >= NoPerm;
+          assume perm > NoPerm ==> UnfoldingHeap[x$1_2, Foo__v2] != null;
+          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v2], Int__v:=UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v2], Int__v] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@34.11--34.43) [202421]"}
-            HasDirectPerm(UnfoldingMask, x$1, Foo__v2);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x$1.Foo__v2.Int__v (0229.vpr@34.11--34.43) [202422]"}
-            HasDirectPerm(UnfoldingMask, UnfoldingHeap[x$1, Foo__v2], Int__v);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@34.11--34.43) [74892]"}
+            HasDirectPerm(UnfoldingMask, x$1_2, Foo__v2);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x$1.Foo__v2.Int__v (0229.vpr@34.11--34.43) [74893]"}
+            HasDirectPerm(UnfoldingMask, UnfoldingHeap[x$1_2, Foo__v2], Int__v);
           
           // -- Free assumptions (exp module)
-            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1):=WandDefRHSHeap[null, valid__Foo#sm(x$1)][x$1, Foo__v1:=true]];
-            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1):=WandDefRHSHeap[null, valid__Foo#sm(x$1)][WandDefRHSHeap[x$1, Foo__v1], Int__v:=true]];
-            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1):=WandDefRHSHeap[null, valid__Foo#sm(x$1)][x$1, Foo__v2:=true]];
-            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1):=WandDefRHSHeap[null, valid__Foo#sm(x$1)][WandDefRHSHeap[x$1, Foo__v2], Int__v:=true]];
+            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1_2):=WandDefRHSHeap[null, valid__Foo#sm(x$1_2)][x$1_2, Foo__v1:=true]];
+            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1_2):=WandDefRHSHeap[null, valid__Foo#sm(x$1_2)][WandDefRHSHeap[x$1_2, Foo__v1], Int__v:=true]];
+            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1_2):=WandDefRHSHeap[null, valid__Foo#sm(x$1_2)][x$1_2, Foo__v2:=true]];
+            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1_2):=WandDefRHSHeap[null, valid__Foo#sm(x$1_2)][WandDefRHSHeap[x$1_2, Foo__v2], Int__v:=true]];
             assume state(WandDefRHSHeap, WandDefRHSMask);
           UnfoldingHeap := oldHeap;
           UnfoldingMask := oldMask;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0229.vpr@34.11--34.43) [202423]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0229.vpr@34.11--34.43) [74894]"}
             rd$1 > NoPerm;
-          assume valid__Foo#trigger(UnfoldingHeap, valid__Foo(x$1));
-          assume UnfoldingHeap[null, valid__Foo(x$1)] == CombineFrames(FrameFragment(UnfoldingHeap[x$1, Foo__v1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1, Foo__v1], Int__v]), CombineFrames(FrameFragment(UnfoldingHeap[x$1, Foo__v2]), FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1, Foo__v2], Int__v]))));
-          ExhaleWellDef0Mask := UnfoldingMask;
+          assume valid__Foo#trigger(UnfoldingHeap, valid__Foo(x$1_2));
+          assume UnfoldingHeap[null, valid__Foo(x$1_2)] == CombineFrames(FrameFragment(UnfoldingHeap[x$1_2, Foo__v1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1_2, Foo__v1], Int__v]), CombineFrames(FrameFragment(UnfoldingHeap[x$1_2, Foo__v2]), FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1_2, Foo__v2], Int__v]))));
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [202424]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [74895]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@34.11--34.43) [202425]"}
-              perm <= UnfoldingMask[null, valid__Foo(x$1)];
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@34.11--34.43) [74896]"}
+              perm <= UnfoldingMask[null, valid__Foo(x$1_2)];
           }
-          UnfoldingMask := UnfoldingMask[null, valid__Foo(x$1):=UnfoldingMask[null, valid__Foo(x$1)] - perm];
+          UnfoldingMask := UnfoldingMask[null, valid__Foo(x$1_2):=UnfoldingMask[null, valid__Foo(x$1_2)] - perm];
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [202426]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [74897]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> x$1 != null;
-          UnfoldingMask := UnfoldingMask[x$1, Foo__v1:=UnfoldingMask[x$1, Foo__v1] + perm];
-          assume state(UnfoldingHeap, UnfoldingMask);
-          perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [202427]"}
-            perm >= NoPerm;
-          assume perm > NoPerm ==> UnfoldingHeap[x$1, Foo__v1] != null;
-          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1, Foo__v1], Int__v:=UnfoldingMask[UnfoldingHeap[x$1, Foo__v1], Int__v] + perm];
+          assume perm > NoPerm ==> x$1_2 != null;
+          UnfoldingMask := UnfoldingMask[x$1_2, Foo__v1:=UnfoldingMask[x$1_2, Foo__v1] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [202428]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [74898]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> x$1 != null;
-          UnfoldingMask := UnfoldingMask[x$1, Foo__v2:=UnfoldingMask[x$1, Foo__v2] + perm];
+          assume perm > NoPerm ==> UnfoldingHeap[x$1_2, Foo__v1] != null;
+          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v1], Int__v:=UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v1], Int__v] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [202429]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [74899]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> UnfoldingHeap[x$1, Foo__v2] != null;
-          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1, Foo__v2], Int__v:=UnfoldingMask[UnfoldingHeap[x$1, Foo__v2], Int__v] + perm];
+          assume perm > NoPerm ==> x$1_2 != null;
+          UnfoldingMask := UnfoldingMask[x$1_2, Foo__v2:=UnfoldingMask[x$1_2, Foo__v2] + perm];
+          assume state(UnfoldingHeap, UnfoldingMask);
+          perm := rd$1 / 2;
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0229.vpr@34.11--34.43) [74900]"}
+            perm >= NoPerm;
+          assume perm > NoPerm ==> UnfoldingHeap[x$1_2, Foo__v2] != null;
+          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v2], Int__v:=UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v2], Int__v] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@34.11--34.43) [202430]"}
-            HasDirectPerm(UnfoldingMask, x$1, Foo__v2);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x$1.Foo__v2.Int__v (0229.vpr@34.11--34.43) [202431]"}
-            HasDirectPerm(UnfoldingMask, UnfoldingHeap[x$1, Foo__v2], Int__v);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@34.11--34.43) [74901]"}
+            HasDirectPerm(UnfoldingMask, x$1_2, Foo__v2);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x$1.Foo__v2.Int__v (0229.vpr@34.11--34.43) [74902]"}
+            HasDirectPerm(UnfoldingMask, UnfoldingHeap[x$1_2, Foo__v2], Int__v);
           
           // -- Free assumptions (exp module)
-            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1):=WandDefRHSHeap[null, valid__Foo#sm(x$1)][x$1, Foo__v1:=true]];
-            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1):=WandDefRHSHeap[null, valid__Foo#sm(x$1)][WandDefRHSHeap[x$1, Foo__v1], Int__v:=true]];
-            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1):=WandDefRHSHeap[null, valid__Foo#sm(x$1)][x$1, Foo__v2:=true]];
-            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1):=WandDefRHSHeap[null, valid__Foo#sm(x$1)][WandDefRHSHeap[x$1, Foo__v2], Int__v:=true]];
+            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1_2):=WandDefRHSHeap[null, valid__Foo#sm(x$1_2)][x$1_2, Foo__v1:=true]];
+            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1_2):=WandDefRHSHeap[null, valid__Foo#sm(x$1_2)][WandDefRHSHeap[x$1_2, Foo__v1], Int__v:=true]];
+            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1_2):=WandDefRHSHeap[null, valid__Foo#sm(x$1_2)][x$1_2, Foo__v2:=true]];
+            WandDefRHSHeap := WandDefRHSHeap[null, valid__Foo#sm(x$1_2):=WandDefRHSHeap[null, valid__Foo#sm(x$1_2)][WandDefRHSHeap[x$1_2, Foo__v2], Int__v:=true]];
             assume state(WandDefRHSHeap, WandDefRHSMask);
-        assume WandDefRHSHeap[WandDefRHSHeap[x$1, Foo__v2], Int__v] == oldHeap[oldHeap[x$1, Foo__v2], Int__v];
+        assume WandDefRHSHeap[WandDefRHSHeap[x$1_2, Foo__v2], Int__v] == oldHeap[oldHeap[x$1_2, Foo__v2], Int__v];
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume false;
       }
-    PostMask := PostMask[null, wand_1(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v]):=PostMask[null, wand_1(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v])] + FullPerm];
+    PostMask := PostMask[null, wand_1(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v]):=PostMask[null, wand_1(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v])] + FullPerm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -840,37 +840,37 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
   }
   
   // -- Translating statement: unfold acc(valid__Foo(x$1), write) -- 0229.vpr@36.5--36.39
-    assume valid__Foo#trigger(Heap, valid__Foo(x$1));
-    assume Heap[null, valid__Foo(x$1)] == CombineFrames(FrameFragment(Heap[x$1, Foo__v1]), CombineFrames(FrameFragment(Heap[Heap[x$1, Foo__v1], Int__v]), CombineFrames(FrameFragment(Heap[x$1, Foo__v2]), FrameFragment(Heap[Heap[x$1, Foo__v2], Int__v]))));
-    ExhaleWellDef0Mask := Mask;
+    assume valid__Foo#trigger(Heap, valid__Foo(x$1_2));
+    assume Heap[null, valid__Foo(x$1_2)] == CombineFrames(FrameFragment(Heap[x$1_2, Foo__v1]), CombineFrames(FrameFragment(Heap[Heap[x$1_2, Foo__v1], Int__v]), CombineFrames(FrameFragment(Heap[x$1_2, Foo__v2]), FrameFragment(Heap[Heap[x$1_2, Foo__v2], Int__v]))));
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding valid__Foo(x$1) might fail. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@36.5--36.39) [202434]"}
-        perm <= Mask[null, valid__Foo(x$1)];
+      assert {:msg "  Unfolding valid__Foo(x$1) might fail. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@36.5--36.39) [74905]"}
+        perm <= Mask[null, valid__Foo(x$1_2)];
     }
-    Mask := Mask[null, valid__Foo(x$1):=Mask[null, valid__Foo(x$1)] - perm];
+    Mask := Mask[null, valid__Foo(x$1_2):=Mask[null, valid__Foo(x$1_2)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, valid__Foo(x$1))) {
+      if (!HasDirectPerm(Mask, null, valid__Foo(x$1_2))) {
         havoc newVersion;
-        Heap := Heap[null, valid__Foo(x$1):=newVersion];
+        Heap := Heap[null, valid__Foo(x$1_2):=newVersion];
       }
     perm := FullPerm;
-    assume x$1 != null;
-    Mask := Mask[x$1, Foo__v1:=Mask[x$1, Foo__v1] + perm];
+    assume x$1_2 != null;
+    Mask := Mask[x$1_2, Foo__v1:=Mask[x$1_2, Foo__v1] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
-    assume Heap[x$1, Foo__v1] != null;
-    Mask := Mask[Heap[x$1, Foo__v1], Int__v:=Mask[Heap[x$1, Foo__v1], Int__v] + perm];
+    assume Heap[x$1_2, Foo__v1] != null;
+    Mask := Mask[Heap[x$1_2, Foo__v1], Int__v:=Mask[Heap[x$1_2, Foo__v1], Int__v] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
-    assume x$1 != null;
-    Mask := Mask[x$1, Foo__v2:=Mask[x$1, Foo__v2] + perm];
+    assume x$1_2 != null;
+    Mask := Mask[x$1_2, Foo__v2:=Mask[x$1_2, Foo__v2] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
-    assume Heap[x$1, Foo__v2] != null;
-    Mask := Mask[Heap[x$1, Foo__v2], Int__v:=Mask[Heap[x$1, Foo__v2], Int__v] + perm];
+    assume Heap[x$1_2, Foo__v2] != null;
+    Mask := Mask[Heap[x$1_2, Foo__v2], Int__v:=Mask[Heap[x$1_2, Foo__v2], Int__v] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -878,9 +878,9 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
   // -- Translating statement: res$1 := x$1.Foo__v1 -- 0229.vpr@37.5--37.25
     
     // -- Check definedness of x$1.Foo__v1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x$1.Foo__v1 (0229.vpr@37.5--37.25) [202439]"}
-        HasDirectPerm(Mask, x$1, Foo__v1);
-    res$1 := Heap[x$1, Foo__v1];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x$1.Foo__v1 (0229.vpr@37.5--37.25) [74910]"}
+        HasDirectPerm(Mask, x$1_2, Foo__v1);
+    res$1 := Heap[x$1_2, Foo__v1];
     assume state(Heap, Mask);
   
   // -- Translating statement: package acc(res$1.Int__v, write) --*
@@ -906,24 +906,24 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
     
     // -- Translating statement: label lhs5 -- 0229.vpr@39.11--39.45
       lhs5:
-      Labellhs5Mask := Ops_3Mask;
       Labellhs5Heap := Ops_3Heap;
+      Labellhs5Mask := Ops_3Mask;
       b_4 := b_4 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_4) {
       
       // -- Translating statement: fold acc(valid__Foo(x$1), write) -- 0229.vpr@40.7--40.39
-        ExhaleWellDef0Mask := Ops_3Mask;
         ExhaleWellDef0Heap := Ops_3Heap;
+        ExhaleWellDef0Mask := Ops_3Mask;
         havoc Used_3Heap;
         Used_3Mask := ZeroMask;
         b_5 := b_5 && state(Used_3Heap, Used_3Mask);
         
         // -- Transfer of acc(x$1.Foo__v1, write)
-          rcvLocal := x$1;
+          rcvLocal := x$1_2;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_3Mask[rcvLocal, Foo__v1] + neededTransfer;
-          assert {:msg "  Folding valid__Foo(x$1) might fail. Fraction acc(x$1.Foo__v1, write) might be negative. (0229.vpr@40.7--40.39) [202441]"}
+          assert {:msg "  Folding valid__Foo(x$1) might fail. Fraction acc(x$1.Foo__v1, write) might be negative. (0229.vpr@40.7--40.39) [74912]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -963,10 +963,10 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
                 b_5 := b_5 && state(Used_3Heap, Used_3Mask);
                 b_5 := b_5 && Heap[rcvLocal, Foo__v1] == Used_3Heap[rcvLocal, Foo__v1];
                 Mask := Mask[rcvLocal, Foo__v1:=Mask[rcvLocal, Foo__v1] - takeTransfer];
-                Heap := Heap[null, wand_1#sm(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v]):=Heap[null, wand_1#sm(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v])][x$1, Foo__v1:=true]];
+                Heap := Heap[null, wand_1#sm(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v]):=Heap[null, wand_1#sm(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v])][x$1_2, Foo__v1:=true]];
               }
             }
-          assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v1 (0229.vpr@40.7--40.39) [202442]"}
+          assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v1 (0229.vpr@40.7--40.39) [74913]"}
             b_4 && b_5 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, Foo__v1] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -986,14 +986,14 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
               if (b_4) {
                 
                 // -- Check definedness of acc(x$1.Foo__v1.Int__v, write)
-                  assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v1 (0229.vpr@40.7--40.39) [202443]"}
-                    HasDirectPerm(ResultMask, x$1, Foo__v1);
+                  assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v1 (0229.vpr@40.7--40.39) [74914]"}
+                    HasDirectPerm(ResultMask, x$1_2, Foo__v1);
               }
             }
-          rcvLocal := ResultHeap[x$1, Foo__v1];
+          rcvLocal := ResultHeap[x$1_2, Foo__v1];
           neededTransfer := FullPerm;
           initNeededTransfer := Used_3Mask[rcvLocal, Int__v] + neededTransfer;
-          assert {:msg "  Folding valid__Foo(x$1) might fail. Fraction acc(x$1.Foo__v1.Int__v, write) might be negative. (0229.vpr@40.7--40.39) [202444]"}
+          assert {:msg "  Folding valid__Foo(x$1) might fail. Fraction acc(x$1.Foo__v1.Int__v, write) might be negative. (0229.vpr@40.7--40.39) [74915]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -1033,10 +1033,10 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
                 b_5 := b_5 && state(Used_3Heap, Used_3Mask);
                 b_5 := b_5 && Heap[rcvLocal, Int__v] == Used_3Heap[rcvLocal, Int__v];
                 Mask := Mask[rcvLocal, Int__v:=Mask[rcvLocal, Int__v] - takeTransfer];
-                Heap := Heap[null, wand_1#sm(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v]):=Heap[null, wand_1#sm(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v])][Heap[x$1, Foo__v1], Int__v:=true]];
+                Heap := Heap[null, wand_1#sm(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v]):=Heap[null, wand_1#sm(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v])][Heap[x$1_2, Foo__v1], Int__v:=true]];
               }
             }
-          assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v1.Int__v (0229.vpr@40.7--40.39) [202445]"}
+          assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v1.Int__v (0229.vpr@40.7--40.39) [74916]"}
             b_4 && b_5 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, Int__v] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -1050,10 +1050,10 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
         b_4 := b_4 && Used_3Heap == Ops_3Heap;
         
         // -- Transfer of acc(x$1.Foo__v2, write)
-          rcvLocal := x$1;
+          rcvLocal := x$1_2;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_3Mask[rcvLocal, Foo__v2] + neededTransfer;
-          assert {:msg "  Folding valid__Foo(x$1) might fail. Fraction acc(x$1.Foo__v2, write) might be negative. (0229.vpr@40.7--40.39) [202446]"}
+          assert {:msg "  Folding valid__Foo(x$1) might fail. Fraction acc(x$1.Foo__v2, write) might be negative. (0229.vpr@40.7--40.39) [74917]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -1093,10 +1093,10 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
                 b_5 := b_5 && state(Used_3Heap, Used_3Mask);
                 b_5 := b_5 && Heap[rcvLocal, Foo__v2] == Used_3Heap[rcvLocal, Foo__v2];
                 Mask := Mask[rcvLocal, Foo__v2:=Mask[rcvLocal, Foo__v2] - takeTransfer];
-                Heap := Heap[null, wand_1#sm(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v]):=Heap[null, wand_1#sm(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v])][x$1, Foo__v2:=true]];
+                Heap := Heap[null, wand_1#sm(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v]):=Heap[null, wand_1#sm(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v])][x$1_2, Foo__v2:=true]];
               }
             }
-          assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@40.7--40.39) [202447]"}
+          assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@40.7--40.39) [74918]"}
             b_4 && b_5 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, Foo__v2] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -1116,14 +1116,14 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
               if (b_4) {
                 
                 // -- Check definedness of acc(x$1.Foo__v2.Int__v, write)
-                  assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@40.7--40.39) [202448]"}
-                    HasDirectPerm(Result_2Mask, x$1, Foo__v2);
+                  assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@40.7--40.39) [74919]"}
+                    HasDirectPerm(Result_2Mask, x$1_2, Foo__v2);
               }
             }
-          rcvLocal := Result_2Heap[x$1, Foo__v2];
+          rcvLocal := Result_2Heap[x$1_2, Foo__v2];
           neededTransfer := FullPerm;
           initNeededTransfer := Used_3Mask[rcvLocal, Int__v] + neededTransfer;
-          assert {:msg "  Folding valid__Foo(x$1) might fail. Fraction acc(x$1.Foo__v2.Int__v, write) might be negative. (0229.vpr@40.7--40.39) [202449]"}
+          assert {:msg "  Folding valid__Foo(x$1) might fail. Fraction acc(x$1.Foo__v2.Int__v, write) might be negative. (0229.vpr@40.7--40.39) [74920]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -1163,10 +1163,10 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
                 b_5 := b_5 && state(Used_3Heap, Used_3Mask);
                 b_5 := b_5 && Heap[rcvLocal, Int__v] == Used_3Heap[rcvLocal, Int__v];
                 Mask := Mask[rcvLocal, Int__v:=Mask[rcvLocal, Int__v] - takeTransfer];
-                Heap := Heap[null, wand_1#sm(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v]):=Heap[null, wand_1#sm(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v])][Heap[x$1, Foo__v2], Int__v:=true]];
+                Heap := Heap[null, wand_1#sm(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v]):=Heap[null, wand_1#sm(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v])][Heap[x$1_2, Foo__v2], Int__v:=true]];
               }
             }
-          assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v2.Int__v (0229.vpr@40.7--40.39) [202450]"}
+          assert {:msg "  Folding valid__Foo(x$1) might fail. There might be insufficient permission to access x$1.Foo__v2.Int__v (0229.vpr@40.7--40.39) [74921]"}
             b_4 && b_5 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, Int__v] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -1180,20 +1180,20 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
         b_4 := b_4 && Used_3Heap == Ops_3Heap;
         perm := FullPerm;
         b_4 := b_4;
-        Ops_3Mask := Ops_3Mask[null, valid__Foo(x$1):=Ops_3Mask[null, valid__Foo(x$1)] + perm];
+        Ops_3Mask := Ops_3Mask[null, valid__Foo(x$1_2):=Ops_3Mask[null, valid__Foo(x$1_2)] + perm];
         b_4 := b_4 && state(Ops_3Heap, Ops_3Mask);
         b_4 := b_4 && state(Ops_3Heap, Ops_3Mask);
-        assume valid__Foo#trigger(Ops_3Heap, valid__Foo(x$1));
-        assume Ops_3Heap[null, valid__Foo(x$1)] == CombineFrames(FrameFragment(Ops_3Heap[x$1, Foo__v1]), CombineFrames(FrameFragment(Ops_3Heap[Ops_3Heap[x$1, Foo__v1], Int__v]), CombineFrames(FrameFragment(Ops_3Heap[x$1, Foo__v2]), FrameFragment(Ops_3Heap[Ops_3Heap[x$1, Foo__v2], Int__v]))));
-        if (!HasDirectPerm(Ops_3Mask, null, valid__Foo(x$1))) {
-          Ops_3Heap := Ops_3Heap[null, valid__Foo#sm(x$1):=ZeroPMask];
+        assume valid__Foo#trigger(Ops_3Heap, valid__Foo(x$1_2));
+        assume Ops_3Heap[null, valid__Foo(x$1_2)] == CombineFrames(FrameFragment(Ops_3Heap[x$1_2, Foo__v1]), CombineFrames(FrameFragment(Ops_3Heap[Ops_3Heap[x$1_2, Foo__v1], Int__v]), CombineFrames(FrameFragment(Ops_3Heap[x$1_2, Foo__v2]), FrameFragment(Ops_3Heap[Ops_3Heap[x$1_2, Foo__v2], Int__v]))));
+        if (!HasDirectPerm(Ops_3Mask, null, valid__Foo(x$1_2))) {
+          Ops_3Heap := Ops_3Heap[null, valid__Foo#sm(x$1_2):=ZeroPMask];
           havoc freshVersion;
-          Ops_3Heap := Ops_3Heap[null, valid__Foo(x$1):=freshVersion];
+          Ops_3Heap := Ops_3Heap[null, valid__Foo(x$1_2):=freshVersion];
         }
-        Ops_3Heap := Ops_3Heap[null, valid__Foo#sm(x$1):=Ops_3Heap[null, valid__Foo#sm(x$1)][x$1, Foo__v1:=true]];
-        Ops_3Heap := Ops_3Heap[null, valid__Foo#sm(x$1):=Ops_3Heap[null, valid__Foo#sm(x$1)][Ops_3Heap[x$1, Foo__v1], Int__v:=true]];
-        Ops_3Heap := Ops_3Heap[null, valid__Foo#sm(x$1):=Ops_3Heap[null, valid__Foo#sm(x$1)][x$1, Foo__v2:=true]];
-        Ops_3Heap := Ops_3Heap[null, valid__Foo#sm(x$1):=Ops_3Heap[null, valid__Foo#sm(x$1)][Ops_3Heap[x$1, Foo__v2], Int__v:=true]];
+        Ops_3Heap := Ops_3Heap[null, valid__Foo#sm(x$1_2):=Ops_3Heap[null, valid__Foo#sm(x$1_2)][x$1_2, Foo__v1:=true]];
+        Ops_3Heap := Ops_3Heap[null, valid__Foo#sm(x$1_2):=Ops_3Heap[null, valid__Foo#sm(x$1_2)][Ops_3Heap[x$1_2, Foo__v1], Int__v:=true]];
+        Ops_3Heap := Ops_3Heap[null, valid__Foo#sm(x$1_2):=Ops_3Heap[null, valid__Foo#sm(x$1_2)][x$1_2, Foo__v2:=true]];
+        Ops_3Heap := Ops_3Heap[null, valid__Foo#sm(x$1_2):=Ops_3Heap[null, valid__Foo#sm(x$1_2)][Ops_3Heap[x$1_2, Foo__v2], Int__v:=true]];
         assume state(Ops_3Heap, Ops_3Mask);
         b_4 := b_4 && state(Ops_3Heap, Ops_3Mask);
     }
@@ -1203,10 +1203,10 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
     b_10 := b_10 && state(Used_4Heap, Used_4Mask);
     
     // -- Transfer of acc(valid__Foo(x$1), write)
-      arg_1 := x$1;
+      arg := x$1_2;
       neededTransfer := FullPerm;
-      initNeededTransfer := Used_4Mask[null, valid__Foo(arg_1)] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(valid__Foo(x$1), write) might be negative. (0229.vpr@39.3--41.4) [202452]"}
+      initNeededTransfer := Used_4Mask[null, valid__Foo(arg)] + neededTransfer;
+      assert {:msg "  Packaging wand might fail. Fraction acc(valid__Foo(x$1), write) might be negative. (0229.vpr@39.3--41.4) [74923]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -1214,7 +1214,7 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_4 && b_4) && b_10) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Ops_3Mask[null, valid__Foo(arg_1)];
+          maskTransfer := Ops_3Mask[null, valid__Foo(arg)];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -1222,11 +1222,11 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_4Mask := Used_4Mask[null, valid__Foo(arg_1):=Used_4Mask[null, valid__Foo(arg_1)] + takeTransfer];
+            Used_4Mask := Used_4Mask[null, valid__Foo(arg):=Used_4Mask[null, valid__Foo(arg)] + takeTransfer];
             b_10 := b_10 && state(Used_4Heap, Used_4Mask);
-            TempMask := ZeroMask[null, valid__Foo(arg_1):=FullPerm];
+            TempMask := ZeroMask[null, valid__Foo(arg):=FullPerm];
             b_10 := b_10 && IdenticalOnKnownLocations(Ops_3Heap, Used_4Heap, TempMask);
-            Ops_3Mask := Ops_3Mask[null, valid__Foo(arg_1):=Ops_3Mask[null, valid__Foo(arg_1)] - takeTransfer];
+            Ops_3Mask := Ops_3Mask[null, valid__Foo(arg):=Ops_3Mask[null, valid__Foo(arg)] - takeTransfer];
           }
         }
       
@@ -1235,7 +1235,7 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_4 && b_4) && b_10) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Mask[null, valid__Foo(arg_1)];
+          maskTransfer := Mask[null, valid__Foo(arg)];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -1243,21 +1243,21 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_4Mask := Used_4Mask[null, valid__Foo(arg_1):=Used_4Mask[null, valid__Foo(arg_1)] + takeTransfer];
+            Used_4Mask := Used_4Mask[null, valid__Foo(arg):=Used_4Mask[null, valid__Foo(arg)] + takeTransfer];
             b_10 := b_10 && state(Used_4Heap, Used_4Mask);
-            TempMask := ZeroMask[null, valid__Foo(arg_1):=FullPerm];
+            TempMask := ZeroMask[null, valid__Foo(arg):=FullPerm];
             b_10 := b_10 && IdenticalOnKnownLocations(Heap, Used_4Heap, TempMask);
-            Mask := Mask[null, valid__Foo(arg_1):=Mask[null, valid__Foo(arg_1)] - takeTransfer];
+            Mask := Mask[null, valid__Foo(arg):=Mask[null, valid__Foo(arg)] - takeTransfer];
             havoc newPMask;
-            assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-              { newPMask[o_15, f_20] }
-              Heap[null, wand_1#sm(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v])][o_15, f_20] || Heap[null, valid__Foo#sm(x$1)][o_15, f_20] ==> newPMask[o_15, f_20]
+            assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+              { newPMask[o_5, f_11] }
+              Heap[null, wand_1#sm(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v])][o_5, f_11] || Heap[null, valid__Foo#sm(x$1_2)][o_5, f_11] ==> newPMask[o_5, f_11]
             );
-            Heap := Heap[null, wand_1#sm(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v]):=newPMask];
+            Heap := Heap[null, wand_1#sm(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v]):=newPMask];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@39.3--41.4) [202453]"}
-        (b_4 && b_4) && b_10 ==> neededTransfer == 0.000000000 && Used_4Mask[null, valid__Foo(arg_1)] == initNeededTransfer;
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@39.3--41.4) [74924]"}
+        (b_4 && b_4) && b_10 ==> neededTransfer == 0.000000000 && Used_4Mask[null, valid__Foo(arg)] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
         b_11 := b_4 && b_10;
@@ -1272,130 +1272,130 @@ procedure test4(x$1: Ref, rd$1: Perm) returns (res$1: Ref)
         // -- Check definedness of (unfolding acc(valid__Foo(x$1), rd$1 / 2) in x$1.Foo__v2.Int__v) == old((unfolding acc(valid__Foo(x$1), rd$1 / 2) in x$1.Foo__v2.Int__v))
           UnfoldingHeap := Result_4Heap;
           UnfoldingMask := Result_4Mask;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might not be positive. (0229.vpr@39.3--41.4) [202454]"}
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might not be positive. (0229.vpr@39.3--41.4) [74925]"}
             rd$1 > NoPerm;
-          assume valid__Foo#trigger(UnfoldingHeap, valid__Foo(x$1));
-          assume UnfoldingHeap[null, valid__Foo(x$1)] == CombineFrames(FrameFragment(UnfoldingHeap[x$1, Foo__v1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1, Foo__v1], Int__v]), CombineFrames(FrameFragment(UnfoldingHeap[x$1, Foo__v2]), FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1, Foo__v2], Int__v]))));
-          ExhaleWellDef0Mask := UnfoldingMask;
+          assume valid__Foo#trigger(UnfoldingHeap, valid__Foo(x$1_2));
+          assume UnfoldingHeap[null, valid__Foo(x$1_2)] == CombineFrames(FrameFragment(UnfoldingHeap[x$1_2, Foo__v1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1_2, Foo__v1], Int__v]), CombineFrames(FrameFragment(UnfoldingHeap[x$1_2, Foo__v2]), FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1_2, Foo__v2], Int__v]))));
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := rd$1 / 2;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [202455]"}
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [74926]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@39.3--41.4) [202456]"}
-              perm <= UnfoldingMask[null, valid__Foo(x$1)];
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@39.3--41.4) [74927]"}
+              perm <= UnfoldingMask[null, valid__Foo(x$1_2)];
           }
-          UnfoldingMask := UnfoldingMask[null, valid__Foo(x$1):=UnfoldingMask[null, valid__Foo(x$1)] - perm];
+          UnfoldingMask := UnfoldingMask[null, valid__Foo(x$1_2):=UnfoldingMask[null, valid__Foo(x$1_2)] - perm];
           perm := rd$1 / 2;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [202457]"}
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [74928]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> x$1 != null;
-          UnfoldingMask := UnfoldingMask[x$1, Foo__v1:=UnfoldingMask[x$1, Foo__v1] + perm];
-          assume state(UnfoldingHeap, UnfoldingMask);
-          perm := rd$1 / 2;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [202458]"}
-            perm >= NoPerm;
-          assume perm > NoPerm ==> UnfoldingHeap[x$1, Foo__v1] != null;
-          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1, Foo__v1], Int__v:=UnfoldingMask[UnfoldingHeap[x$1, Foo__v1], Int__v] + perm];
+          assume perm > NoPerm ==> x$1_2 != null;
+          UnfoldingMask := UnfoldingMask[x$1_2, Foo__v1:=UnfoldingMask[x$1_2, Foo__v1] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [202459]"}
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [74929]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> x$1 != null;
-          UnfoldingMask := UnfoldingMask[x$1, Foo__v2:=UnfoldingMask[x$1, Foo__v2] + perm];
+          assume perm > NoPerm ==> UnfoldingHeap[x$1_2, Foo__v1] != null;
+          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v1], Int__v:=UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v1], Int__v] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [202460]"}
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [74930]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> UnfoldingHeap[x$1, Foo__v2] != null;
-          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1, Foo__v2], Int__v:=UnfoldingMask[UnfoldingHeap[x$1, Foo__v2], Int__v] + perm];
+          assume perm > NoPerm ==> x$1_2 != null;
+          UnfoldingMask := UnfoldingMask[x$1_2, Foo__v2:=UnfoldingMask[x$1_2, Foo__v2] + perm];
+          assume state(UnfoldingHeap, UnfoldingMask);
+          perm := rd$1 / 2;
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [74931]"}
+            perm >= NoPerm;
+          assume perm > NoPerm ==> UnfoldingHeap[x$1_2, Foo__v2] != null;
+          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v2], Int__v:=UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v2], Int__v] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@39.3--41.4) [202461]"}
-            HasDirectPerm(UnfoldingMask, x$1, Foo__v2);
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x$1.Foo__v2.Int__v (0229.vpr@39.3--41.4) [202462]"}
-            HasDirectPerm(UnfoldingMask, UnfoldingHeap[x$1, Foo__v2], Int__v);
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@39.3--41.4) [74932]"}
+            HasDirectPerm(UnfoldingMask, x$1_2, Foo__v2);
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x$1.Foo__v2.Int__v (0229.vpr@39.3--41.4) [74933]"}
+            HasDirectPerm(UnfoldingMask, UnfoldingHeap[x$1_2, Foo__v2], Int__v);
           
           // -- Free assumptions (exp module)
-            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1):=Result_4Heap[null, valid__Foo#sm(x$1)][x$1, Foo__v1:=true]];
-            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1):=Result_4Heap[null, valid__Foo#sm(x$1)][Result_4Heap[x$1, Foo__v1], Int__v:=true]];
-            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1):=Result_4Heap[null, valid__Foo#sm(x$1)][x$1, Foo__v2:=true]];
-            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1):=Result_4Heap[null, valid__Foo#sm(x$1)][Result_4Heap[x$1, Foo__v2], Int__v:=true]];
+            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1_2):=Result_4Heap[null, valid__Foo#sm(x$1_2)][x$1_2, Foo__v1:=true]];
+            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1_2):=Result_4Heap[null, valid__Foo#sm(x$1_2)][Result_4Heap[x$1_2, Foo__v1], Int__v:=true]];
+            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1_2):=Result_4Heap[null, valid__Foo#sm(x$1_2)][x$1_2, Foo__v2:=true]];
+            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1_2):=Result_4Heap[null, valid__Foo#sm(x$1_2)][Result_4Heap[x$1_2, Foo__v2], Int__v:=true]];
             assume state(Result_4Heap, Result_4Mask);
           UnfoldingHeap := oldHeap;
           UnfoldingMask := oldMask;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might not be positive. (0229.vpr@39.3--41.4) [202463]"}
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might not be positive. (0229.vpr@39.3--41.4) [74934]"}
             rd$1 > NoPerm;
-          assume valid__Foo#trigger(UnfoldingHeap, valid__Foo(x$1));
-          assume UnfoldingHeap[null, valid__Foo(x$1)] == CombineFrames(FrameFragment(UnfoldingHeap[x$1, Foo__v1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1, Foo__v1], Int__v]), CombineFrames(FrameFragment(UnfoldingHeap[x$1, Foo__v2]), FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1, Foo__v2], Int__v]))));
-          ExhaleWellDef0Mask := UnfoldingMask;
+          assume valid__Foo#trigger(UnfoldingHeap, valid__Foo(x$1_2));
+          assume UnfoldingHeap[null, valid__Foo(x$1_2)] == CombineFrames(FrameFragment(UnfoldingHeap[x$1_2, Foo__v1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1_2, Foo__v1], Int__v]), CombineFrames(FrameFragment(UnfoldingHeap[x$1_2, Foo__v2]), FrameFragment(UnfoldingHeap[UnfoldingHeap[x$1_2, Foo__v2], Int__v]))));
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := rd$1 / 2;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [202464]"}
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [74935]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@39.3--41.4) [202465]"}
-              perm <= UnfoldingMask[null, valid__Foo(x$1)];
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access valid__Foo(x$1) (0229.vpr@39.3--41.4) [74936]"}
+              perm <= UnfoldingMask[null, valid__Foo(x$1_2)];
           }
-          UnfoldingMask := UnfoldingMask[null, valid__Foo(x$1):=UnfoldingMask[null, valid__Foo(x$1)] - perm];
+          UnfoldingMask := UnfoldingMask[null, valid__Foo(x$1_2):=UnfoldingMask[null, valid__Foo(x$1_2)] - perm];
           perm := rd$1 / 2;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [202466]"}
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [74937]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> x$1 != null;
-          UnfoldingMask := UnfoldingMask[x$1, Foo__v1:=UnfoldingMask[x$1, Foo__v1] + perm];
-          assume state(UnfoldingHeap, UnfoldingMask);
-          perm := rd$1 / 2;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [202467]"}
-            perm >= NoPerm;
-          assume perm > NoPerm ==> UnfoldingHeap[x$1, Foo__v1] != null;
-          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1, Foo__v1], Int__v:=UnfoldingMask[UnfoldingHeap[x$1, Foo__v1], Int__v] + perm];
+          assume perm > NoPerm ==> x$1_2 != null;
+          UnfoldingMask := UnfoldingMask[x$1_2, Foo__v1:=UnfoldingMask[x$1_2, Foo__v1] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [202468]"}
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [74938]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> x$1 != null;
-          UnfoldingMask := UnfoldingMask[x$1, Foo__v2:=UnfoldingMask[x$1, Foo__v2] + perm];
+          assume perm > NoPerm ==> UnfoldingHeap[x$1_2, Foo__v1] != null;
+          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v1], Int__v:=UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v1], Int__v] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [202469]"}
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [74939]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> UnfoldingHeap[x$1, Foo__v2] != null;
-          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1, Foo__v2], Int__v:=UnfoldingMask[UnfoldingHeap[x$1, Foo__v2], Int__v] + perm];
+          assume perm > NoPerm ==> x$1_2 != null;
+          UnfoldingMask := UnfoldingMask[x$1_2, Foo__v2:=UnfoldingMask[x$1_2, Foo__v2] + perm];
+          assume state(UnfoldingHeap, UnfoldingMask);
+          perm := rd$1 / 2;
+          assert {:msg "  Packaging wand might fail. Fraction rd$1 / 2 might be negative. (0229.vpr@39.3--41.4) [74940]"}
+            perm >= NoPerm;
+          assume perm > NoPerm ==> UnfoldingHeap[x$1_2, Foo__v2] != null;
+          UnfoldingMask := UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v2], Int__v:=UnfoldingMask[UnfoldingHeap[x$1_2, Foo__v2], Int__v] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@39.3--41.4) [202470]"}
-            HasDirectPerm(UnfoldingMask, x$1, Foo__v2);
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x$1.Foo__v2.Int__v (0229.vpr@39.3--41.4) [202471]"}
-            HasDirectPerm(UnfoldingMask, UnfoldingHeap[x$1, Foo__v2], Int__v);
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x$1.Foo__v2 (0229.vpr@39.3--41.4) [74941]"}
+            HasDirectPerm(UnfoldingMask, x$1_2, Foo__v2);
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x$1.Foo__v2.Int__v (0229.vpr@39.3--41.4) [74942]"}
+            HasDirectPerm(UnfoldingMask, UnfoldingHeap[x$1_2, Foo__v2], Int__v);
           
           // -- Free assumptions (exp module)
-            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1):=Result_4Heap[null, valid__Foo#sm(x$1)][x$1, Foo__v1:=true]];
-            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1):=Result_4Heap[null, valid__Foo#sm(x$1)][Result_4Heap[x$1, Foo__v1], Int__v:=true]];
-            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1):=Result_4Heap[null, valid__Foo#sm(x$1)][x$1, Foo__v2:=true]];
-            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1):=Result_4Heap[null, valid__Foo#sm(x$1)][Result_4Heap[x$1, Foo__v2], Int__v:=true]];
+            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1_2):=Result_4Heap[null, valid__Foo#sm(x$1_2)][x$1_2, Foo__v1:=true]];
+            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1_2):=Result_4Heap[null, valid__Foo#sm(x$1_2)][Result_4Heap[x$1_2, Foo__v1], Int__v:=true]];
+            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1_2):=Result_4Heap[null, valid__Foo#sm(x$1_2)][x$1_2, Foo__v2:=true]];
+            Result_4Heap := Result_4Heap[null, valid__Foo#sm(x$1_2):=Result_4Heap[null, valid__Foo#sm(x$1_2)][Result_4Heap[x$1_2, Foo__v2], Int__v:=true]];
             assume state(Result_4Heap, Result_4Mask);
       }
     }
-    assert {:msg "  Packaging wand might fail. Assertion (unfolding acc(valid__Foo(x$1), rd$1 / 2) in x$1.Foo__v2.Int__v) == old((unfolding acc(valid__Foo(x$1), rd$1 / 2) in x$1.Foo__v2.Int__v)) might not hold. (0229.vpr@39.3--41.4) [202472]"}
-      (b_4 && b_4) && b_10 ==> Result_4Heap[Result_4Heap[x$1, Foo__v2], Int__v] == oldHeap[oldHeap[x$1, Foo__v2], Int__v];
-    Mask := Mask[null, wand_1(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v]):=Mask[null, wand_1(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v])] + FullPerm];
+    assert {:msg "  Packaging wand might fail. Assertion (unfolding acc(valid__Foo(x$1), rd$1 / 2) in x$1.Foo__v2.Int__v) == old((unfolding acc(valid__Foo(x$1), rd$1 / 2) in x$1.Foo__v2.Int__v)) might not hold. (0229.vpr@39.3--41.4) [74943]"}
+      (b_4 && b_4) && b_10 ==> Result_4Heap[Result_4Heap[x$1_2, Foo__v2], Int__v] == oldHeap[oldHeap[x$1_2, Foo__v2], Int__v];
+    Mask := Mask[null, wand_1(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v]):=Mask[null, wand_1(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v])] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of test4 might not hold. There might be insufficient permission to access res$1.Int__v (0229.vpr@33.11--33.35) [202473]"}
+      assert {:msg "  Postcondition of test4 might not hold. There might be insufficient permission to access res$1.Int__v (0229.vpr@33.11--33.35) [74944]"}
         perm <= Mask[res$1, Int__v];
     }
     Mask := Mask[res$1, Int__v:=Mask[res$1, Int__v] - perm];
     // permLe
-    assert {:msg "  Postcondition of test4 might not hold. Magic wand instance not found. (0229.vpr@34.11--34.43) [202474]"}
-      FullPerm <= Mask[null, wand_1(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v])];
-    Mask := Mask[null, wand_1(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v]):=Mask[null, wand_1(res$1, FullPerm, x$1, FullPerm, x$1, rd$1 / 2, x$1, oldHeap[oldHeap[x$1, Foo__v2], Int__v])] - FullPerm];
+    assert {:msg "  Postcondition of test4 might not hold. Magic wand instance not found. (0229.vpr@34.11--34.43) [74945]"}
+      FullPerm <= Mask[null, wand_1(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v])];
+    Mask := Mask[null, wand_1(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v]):=Mask[null, wand_1(res$1, FullPerm, x$1_2, FullPerm, x$1_2, rd$1 / 2, x$1_2, oldHeap[oldHeap[x$1_2, Foo__v2], Int__v])] - FullPerm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

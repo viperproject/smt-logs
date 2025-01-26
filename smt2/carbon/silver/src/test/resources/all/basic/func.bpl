@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:59
+// Date:         2025-01-26 21:43:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/func.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/func-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -195,11 +195,11 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 // Uninterpreted function definitions
-function  f1_3(Heap: HeapType): int;
+function  f1(Heap: HeapType): int;
 function  f1'(Heap: HeapType): int;
 axiom (forall Heap: HeapType ::
-  { f1_3(Heap) }
-  f1_3(Heap) == f1'(Heap) && dummyFunction(f1#triggerStateless())
+  { f1(Heap) }
+  f1(Heap) == f1'(Heap) && dummyFunction(f1#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { f1'(Heap) }
@@ -208,8 +208,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), f1_3(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 6 ==> f1_3(Heap) == 1
+  { state(Heap, Mask), f1(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 6 ==> f1(Heap) == 1
 );
 
 // Framing axioms
@@ -245,11 +245,11 @@ procedure f1#definedness() returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  f2_3(Heap: HeapType): int;
+function  f2(Heap: HeapType): int;
 function  f2'(Heap: HeapType): int;
 axiom (forall Heap: HeapType ::
-  { f2_3(Heap) }
-  f2_3(Heap) == f2'(Heap) && dummyFunction(f2#triggerStateless())
+  { f2(Heap) }
+  f2(Heap) == f2'(Heap) && dummyFunction(f2#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { f2'(Heap) }
@@ -258,8 +258,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), f2_3(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> f1_3(Heap) > 0 ==> f2_3(Heap) == 2
+  { state(Heap, Mask), f2(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> f1(Heap) > 0 ==> f2(Heap) == 2
 );
 
 // Framing axioms
@@ -294,7 +294,7 @@ procedure f2#definedness() returns (Result: int)
         // Stop execution
         assume false;
       }
-    assume f1_3(Heap) > 0;
+    assume f1(Heap) > 0;
     assume state(Heap, Mask);
   
   // -- Translate function body
@@ -306,11 +306,11 @@ procedure f2#definedness() returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  f3_2(Heap: HeapType, i: int): int;
+function  f3(Heap: HeapType, i: int): int;
 function  f3'(Heap: HeapType, i: int): int;
 axiom (forall Heap: HeapType, i: int ::
-  { f3_2(Heap, i) }
-  f3_2(Heap, i) == f3'(Heap, i) && dummyFunction(f3#triggerStateless(i))
+  { f3(Heap, i) }
+  f3(Heap, i) == f3'(Heap, i) && dummyFunction(f3#triggerStateless(i))
 );
 axiom (forall Heap: HeapType, i: int ::
   { f3'(Heap, i) }
@@ -319,8 +319,8 @@ axiom (forall Heap: HeapType, i: int ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, i: int ::
-  { state(Heap, Mask), f3_2(Heap, i) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> f3_2(Heap, i) == i
+  { state(Heap, Mask), f3(Heap, i) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> f3(Heap, i) == i
 );
 
 // Framing axioms
@@ -356,11 +356,11 @@ procedure f3#definedness(i: int) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  f4_1(Heap: HeapType): int;
+function  f4(Heap: HeapType): int;
 function  f4'(Heap: HeapType): int;
 axiom (forall Heap: HeapType ::
-  { f4_1(Heap) }
-  f4_1(Heap) == f4'(Heap) && dummyFunction(f4#triggerStateless())
+  { f4(Heap) }
+  f4(Heap) == f4'(Heap) && dummyFunction(f4#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { f4'(Heap) }
@@ -369,8 +369,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), f4_1(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> f4_1(Heap) == f1_3(Heap) + f2_3(Heap)
+  { state(Heap, Mask), f4(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> f4(Heap) == f1(Heap) + f2(Heap)
 );
 
 // Framing axioms
@@ -410,14 +410,14 @@ procedure f4#definedness() returns (Result: int)
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function f2 might not hold. Assertion f1() > 0 might not hold. (func.vpr@14.29--14.33) [188195]"}
-          f1_3(Heap) > 0;
+        assert {:msg "  Precondition of function f2 might not hold. Assertion f1() > 0 might not hold. (func.vpr@14.29--14.33) [100610]"}
+          f1(Heap) > 0;
         // Stop execution
         assume false;
       }
   
   // -- Translate function body
-    Result := f1_3(Heap) + f2_3(Heap);
+    Result := f1(Heap) + f2(Heap);
 }
 
 // ==================================================
@@ -425,11 +425,11 @@ procedure f4#definedness() returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  f5_1(Heap: HeapType, i: int, b_24: bool): int;
+function  f5(Heap: HeapType, i: int, b_24: bool): int;
 function  f5'(Heap: HeapType, i: int, b_24: bool): int;
 axiom (forall Heap: HeapType, i: int, b_24: bool ::
-  { f5_1(Heap, i, b_24) }
-  f5_1(Heap, i, b_24) == f5'(Heap, i, b_24) && dummyFunction(f5#triggerStateless(i, b_24))
+  { f5(Heap, i, b_24) }
+  f5(Heap, i, b_24) == f5'(Heap, i, b_24) && dummyFunction(f5#triggerStateless(i, b_24))
 );
 axiom (forall Heap: HeapType, i: int, b_24: bool ::
   { f5'(Heap, i, b_24) }
@@ -438,8 +438,8 @@ axiom (forall Heap: HeapType, i: int, b_24: bool ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, i: int, b_24: bool ::
-  { state(Heap, Mask), f5_1(Heap, i, b_24) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> f5_1(Heap, i, b_24) == (if b_24 then f5'(Heap, 2 * i, false) else i)
+  { state(Heap, Mask), f5(Heap, i, b_24) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> f5(Heap, i, b_24) == (if b_24 then f5'(Heap, 2 * i, false) else i)
 );
 
 // Framing axioms
@@ -480,7 +480,7 @@ procedure f5#definedness(i: int, b_24: bool) returns (Result: int)
       }
   
   // -- Translate function body
-    Result := (if b_24 then f5_1(Heap, 2 * i, false) else i);
+    Result := (if b_24 then f5(Heap, 2 * i, false) else i);
 }
 
 // ==================================================
@@ -488,11 +488,11 @@ procedure f5#definedness(i: int, b_24: bool) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  f6_1(Heap: HeapType): int;
+function  f6(Heap: HeapType): int;
 function  f6'(Heap: HeapType): int;
 axiom (forall Heap: HeapType ::
-  { f6_1(Heap) }
-  f6_1(Heap) == f6'(Heap) && dummyFunction(f6#triggerStateless())
+  { f6(Heap) }
+  f6(Heap) == f6'(Heap) && dummyFunction(f6#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { f6'(Heap) }
@@ -501,8 +501,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), f6_1(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> f6_1(Heap) == f7'(Heap)
+  { state(Heap, Mask), f6(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> f6(Heap) == f7'(Heap)
 );
 
 // Framing axioms
@@ -596,7 +596,7 @@ procedure f7#definedness() returns (Result: int)
       }
   
   // -- Translate function body
-    Result := f6_1(Heap);
+    Result := f6(Heap);
 }
 
 // ==================================================
@@ -604,11 +604,11 @@ procedure f7#definedness() returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  f8(Heap: HeapType): int;
+function  f8_2(Heap: HeapType): int;
 function  f8'(Heap: HeapType): int;
 axiom (forall Heap: HeapType ::
-  { f8(Heap) }
-  f8(Heap) == f8'(Heap) && dummyFunction(f8#triggerStateless())
+  { f8_2(Heap) }
+  f8_2(Heap) == f8'(Heap) && dummyFunction(f8#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { f8'(Heap) }
@@ -617,8 +617,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), f8(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> f8(Heap) == f3_2(Heap, f1_3(Heap))
+  { state(Heap, Mask), f8_2(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> f8_2(Heap) == f3(Heap, f1(Heap))
 );
 
 // Framing axioms
@@ -658,14 +658,14 @@ procedure f8#definedness() returns (Result: int)
       }
   
   // -- Translate function body
-    Result := f3_2(Heap, f1_3(Heap));
+    Result := f3(Heap, f1(Heap));
 }
 
 // ==================================================
 // Translation of method t1
 // ==================================================
 
-procedure t1(b_24: bool, d: int, r_1: Ref) returns ()
+procedure t1_2(b_24: bool, d: int, r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -697,7 +697,7 @@ procedure t1(b_24: bool, d: int, r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion f1() == 1 might not hold. (func.vpr@25.12--25.21) [188196]"}
-      f1_3(Heap) == 1;
+    assert {:msg "  Assert might fail. Assertion f1() == 1 might not hold. (func.vpr@25.12--25.21) [100611]"}
+      f1(Heap) == 1;
     assume state(Heap, Mask);
 }

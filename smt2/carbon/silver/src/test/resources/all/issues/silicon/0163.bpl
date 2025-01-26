@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:51
+// Date:         2025-01-26 21:42:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0163.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0163-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,9 +189,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of function inhaleTrue
@@ -327,7 +327,7 @@ procedure onlyWorksWithInhale#definedness(i: int) returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of onlyWorksWithInhale might not hold. Assertion result > 17 might not hold. (0163.vpr@14.13--14.24) [218701]"}
+    assert {:msg "  Postcondition of onlyWorksWithInhale might not hold. Assertion result > 17 might not hold. (0163.vpr@14.13--14.24) [64260]"}
       Result > 17;
 }
 
@@ -336,38 +336,38 @@ procedure onlyWorksWithInhale#definedness(i: int) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  onlyWorksWithPreExhale(Heap: HeapType, i2_1: int): int;
-function  onlyWorksWithPreExhale'(Heap: HeapType, i2_1: int): int;
-axiom (forall Heap: HeapType, i2_1: int ::
-  { onlyWorksWithPreExhale(Heap, i2_1) }
-  onlyWorksWithPreExhale(Heap, i2_1) == onlyWorksWithPreExhale'(Heap, i2_1) && dummyFunction(onlyWorksWithPreExhale#triggerStateless(i2_1))
+function  onlyWorksWithPreExhale(Heap: HeapType, i2: int): int;
+function  onlyWorksWithPreExhale'(Heap: HeapType, i2: int): int;
+axiom (forall Heap: HeapType, i2: int ::
+  { onlyWorksWithPreExhale(Heap, i2) }
+  onlyWorksWithPreExhale(Heap, i2) == onlyWorksWithPreExhale'(Heap, i2) && dummyFunction(onlyWorksWithPreExhale#triggerStateless(i2))
 );
-axiom (forall Heap: HeapType, i2_1: int ::
-  { onlyWorksWithPreExhale'(Heap, i2_1) }
-  dummyFunction(onlyWorksWithPreExhale#triggerStateless(i2_1))
+axiom (forall Heap: HeapType, i2: int ::
+  { onlyWorksWithPreExhale'(Heap, i2) }
+  dummyFunction(onlyWorksWithPreExhale#triggerStateless(i2))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i2_1: int ::
-  { state(Heap, Mask), onlyWorksWithPreExhale(Heap, i2_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> onlyWorksWithPreExhale(Heap, i2_1) == onlyWorksWithInhale(Heap, i2_1)
+axiom (forall Heap: HeapType, Mask: MaskType, i2: int ::
+  { state(Heap, Mask), onlyWorksWithPreExhale(Heap, i2) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> onlyWorksWithPreExhale(Heap, i2) == onlyWorksWithInhale(Heap, i2)
 );
 
 // Framing axioms
-function  onlyWorksWithPreExhale#frame(frame: FrameType, i2_1: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, i2_1: int ::
-  { state(Heap, Mask), onlyWorksWithPreExhale'(Heap, i2_1) }
-  state(Heap, Mask) ==> onlyWorksWithPreExhale'(Heap, i2_1) == onlyWorksWithPreExhale#frame(EmptyFrame, i2_1)
+function  onlyWorksWithPreExhale#frame(frame: FrameType, i2: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, i2: int ::
+  { state(Heap, Mask), onlyWorksWithPreExhale'(Heap, i2) }
+  state(Heap, Mask) ==> onlyWorksWithPreExhale'(Heap, i2) == onlyWorksWithPreExhale#frame(EmptyFrame, i2)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  onlyWorksWithPreExhale#trigger(frame: FrameType, i2_1: int): bool;
+function  onlyWorksWithPreExhale#trigger(frame: FrameType, i2: int): bool;
 
 // State-independent trigger function
-function  onlyWorksWithPreExhale#triggerStateless(i2_1: int): int;
+function  onlyWorksWithPreExhale#triggerStateless(i2: int): int;
 
 // Check contract well-formedness and postcondition
-procedure onlyWorksWithPreExhale#definedness(i2_1: int) returns (Result: int)
+procedure onlyWorksWithPreExhale#definedness(i2: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var ExhaleWellDef0Heap: HeapType;
@@ -391,7 +391,7 @@ procedure onlyWorksWithPreExhale#definedness(i2_1: int) returns (Result: int)
       }
   
   // -- Translate function body
-    Result := onlyWorksWithInhale(Heap, i2_1);
+    Result := onlyWorksWithInhale(Heap, i2);
 }
 
 // ==================================================
@@ -466,7 +466,7 @@ procedure onlyWorksWithInhale2#definedness(i: int) returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of onlyWorksWithInhale2 might not hold. Assertion result > 17 might not hold. (0163.vpr@27.13--27.24) [218702]"}
+    assert {:msg "  Postcondition of onlyWorksWithInhale2 might not hold. Assertion result > 17 might not hold. (0163.vpr@27.13--27.24) [64261]"}
       Result > 17;
 }
 
@@ -475,38 +475,38 @@ procedure onlyWorksWithInhale2#definedness(i: int) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  onlyWorksWithPreExhale2(Heap: HeapType, i2_1: int): int;
-function  onlyWorksWithPreExhale2'(Heap: HeapType, i2_1: int): int;
-axiom (forall Heap: HeapType, i2_1: int ::
-  { onlyWorksWithPreExhale2(Heap, i2_1) }
-  onlyWorksWithPreExhale2(Heap, i2_1) == onlyWorksWithPreExhale2'(Heap, i2_1) && dummyFunction(onlyWorksWithPreExhale2#triggerStateless(i2_1))
+function  onlyWorksWithPreExhale2(Heap: HeapType, i2: int): int;
+function  onlyWorksWithPreExhale2'(Heap: HeapType, i2: int): int;
+axiom (forall Heap: HeapType, i2: int ::
+  { onlyWorksWithPreExhale2(Heap, i2) }
+  onlyWorksWithPreExhale2(Heap, i2) == onlyWorksWithPreExhale2'(Heap, i2) && dummyFunction(onlyWorksWithPreExhale2#triggerStateless(i2))
 );
-axiom (forall Heap: HeapType, i2_1: int ::
-  { onlyWorksWithPreExhale2'(Heap, i2_1) }
-  dummyFunction(onlyWorksWithPreExhale2#triggerStateless(i2_1))
+axiom (forall Heap: HeapType, i2: int ::
+  { onlyWorksWithPreExhale2'(Heap, i2) }
+  dummyFunction(onlyWorksWithPreExhale2#triggerStateless(i2))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i2_1: int ::
-  { state(Heap, Mask), onlyWorksWithPreExhale2(Heap, i2_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> onlyWorksWithPreExhale2(Heap, i2_1) == onlyWorksWithInhale2(Heap, i2_1)
+axiom (forall Heap: HeapType, Mask: MaskType, i2: int ::
+  { state(Heap, Mask), onlyWorksWithPreExhale2(Heap, i2) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> onlyWorksWithPreExhale2(Heap, i2) == onlyWorksWithInhale2(Heap, i2)
 );
 
 // Framing axioms
-function  onlyWorksWithPreExhale2#frame(frame: FrameType, i2_1: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, i2_1: int ::
-  { state(Heap, Mask), onlyWorksWithPreExhale2'(Heap, i2_1) }
-  state(Heap, Mask) ==> onlyWorksWithPreExhale2'(Heap, i2_1) == onlyWorksWithPreExhale2#frame(EmptyFrame, i2_1)
+function  onlyWorksWithPreExhale2#frame(frame: FrameType, i2: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, i2: int ::
+  { state(Heap, Mask), onlyWorksWithPreExhale2'(Heap, i2) }
+  state(Heap, Mask) ==> onlyWorksWithPreExhale2'(Heap, i2) == onlyWorksWithPreExhale2#frame(EmptyFrame, i2)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  onlyWorksWithPreExhale2#trigger(frame: FrameType, i2_1: int): bool;
+function  onlyWorksWithPreExhale2#trigger(frame: FrameType, i2: int): bool;
 
 // State-independent trigger function
-function  onlyWorksWithPreExhale2#triggerStateless(i2_1: int): int;
+function  onlyWorksWithPreExhale2#triggerStateless(i2: int): int;
 
 // Check contract well-formedness and postcondition
-procedure onlyWorksWithPreExhale2#definedness(i2_1: int) returns (Result: int)
+procedure onlyWorksWithPreExhale2#definedness(i2: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var ExhaleWellDef0Heap: HeapType;
@@ -525,14 +525,14 @@ procedure onlyWorksWithPreExhale2#definedness(i2_1: int) returns (Result: int)
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function onlyWorksWithInhale2 might not hold. Assertion i2 > 17 might not hold. (0163.vpr@35.5--35.29) [218703]"}
-          i2_1 > 17;
+        assert {:msg "  Precondition of function onlyWorksWithInhale2 might not hold. Assertion i2 > 17 might not hold. (0163.vpr@35.5--35.29) [64262]"}
+          i2 > 17;
         // Stop execution
         assume false;
       }
   
   // -- Translate function body
-    Result := onlyWorksWithInhale2(Heap, i2_1);
+    Result := onlyWorksWithInhale2(Heap, i2);
 }
 
 // ==================================================
@@ -540,11 +540,11 @@ procedure onlyWorksWithPreExhale2#definedness(i2_1: int) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  helper(Heap: HeapType, r_1: Ref): int;
+function  helper_1(Heap: HeapType, r_1: Ref): int;
 function  helper'(Heap: HeapType, r_1: Ref): int;
 axiom (forall Heap: HeapType, r_1: Ref ::
-  { helper(Heap, r_1) }
-  helper(Heap, r_1) == helper'(Heap, r_1) && dummyFunction(helper#triggerStateless(r_1))
+  { helper_1(Heap, r_1) }
+  helper_1(Heap, r_1) == helper'(Heap, r_1) && dummyFunction(helper#triggerStateless(r_1))
 );
 axiom (forall Heap: HeapType, r_1: Ref ::
   { helper'(Heap, r_1) }
@@ -650,7 +650,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, r_1: Ref ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, r_1: Ref ::
   { state(Heap, Mask), postInhale'(Heap, r_1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 7 || postInhale#trigger(EmptyFrame, r_1)) ==> helper(Heap, postInhale'(Heap, r_1)) == 2
+  state(Heap, Mask) && (AssumeFunctionsAbove < 7 || postInhale#trigger(EmptyFrame, r_1)) ==> helper_1(Heap, postInhale'(Heap, r_1)) == 2
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -695,7 +695,7 @@ procedure postInhale#definedness(r_1: Ref) returns (Result: Ref)
             // Stop execution
             assume false;
           }
-        assume helper(Heap, Result) == 2;
+        assume helper_1(Heap, Result) == 2;
         assume state(Heap, Mask);
         assume false;
       }
@@ -737,7 +737,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, r2: Ref ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, r2: Ref ::
   { state(Heap, Mask), main'(Heap, r2) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 4 || main#trigger(EmptyFrame, r2)) ==> helper(Heap, main'(Heap, r2)) == 2
+  state(Heap, Mask) && (AssumeFunctionsAbove < 4 || main#trigger(EmptyFrame, r2)) ==> helper_1(Heap, main'(Heap, r2)) == 2
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -780,8 +780,8 @@ procedure main#definedness(r2: Ref) returns (Result: Ref)
         // Stop execution
         assume false;
       }
-    assert {:msg "  Postcondition of main might not hold. Assertion helper(result) == 2 might not hold. (0163.vpr@49.13--49.32) [218704]"}
-      helper(Heap, Result) == 2;
+    assert {:msg "  Postcondition of main might not hold. Assertion helper(result) == 2 might not hold. (0163.vpr@49.13--49.32) [64263]"}
+      helper_1(Heap, Result) == 2;
 }
 
 // ==================================================
@@ -789,44 +789,44 @@ procedure main#definedness(r2: Ref) returns (Result: Ref)
 // ==================================================
 
 // Uninterpreted function definitions
-function  main2_1(Heap: HeapType, i3_7: int): int;
-function  main2'(Heap: HeapType, i3_7: int): int;
-axiom (forall Heap: HeapType, i3_7: int ::
-  { main2_1(Heap, i3_7) }
-  main2_1(Heap, i3_7) == main2'(Heap, i3_7) && dummyFunction(main2#triggerStateless(i3_7))
+function  main2_1(Heap: HeapType, i3_1: int): int;
+function  main2'(Heap: HeapType, i3_1: int): int;
+axiom (forall Heap: HeapType, i3_1: int ::
+  { main2_1(Heap, i3_1) }
+  main2_1(Heap, i3_1) == main2'(Heap, i3_1) && dummyFunction(main2#triggerStateless(i3_1))
 );
-axiom (forall Heap: HeapType, i3_7: int ::
-  { main2'(Heap, i3_7) }
-  dummyFunction(main2#triggerStateless(i3_7))
+axiom (forall Heap: HeapType, i3_1: int ::
+  { main2'(Heap, i3_1) }
+  dummyFunction(main2#triggerStateless(i3_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i3_7: int ::
-  { state(Heap, Mask), main2_1(Heap, i3_7) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> main2_1(Heap, i3_7) == onlyWorksWithInhale(Heap, i3_7)
+axiom (forall Heap: HeapType, Mask: MaskType, i3_1: int ::
+  { state(Heap, Mask), main2_1(Heap, i3_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> main2_1(Heap, i3_1) == onlyWorksWithInhale(Heap, i3_1)
 );
 
 // Framing axioms
-function  main2#frame(frame: FrameType, i3_7: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, i3_7: int ::
-  { state(Heap, Mask), main2'(Heap, i3_7) }
-  state(Heap, Mask) ==> main2'(Heap, i3_7) == main2#frame(EmptyFrame, i3_7)
+function  main2#frame(frame: FrameType, i3_1: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, i3_1: int ::
+  { state(Heap, Mask), main2'(Heap, i3_1) }
+  state(Heap, Mask) ==> main2'(Heap, i3_1) == main2#frame(EmptyFrame, i3_1)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, i3_7: int ::
-  { state(Heap, Mask), main2'(Heap, i3_7) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || main2#trigger(EmptyFrame, i3_7)) ==> main2'(Heap, i3_7) > 17
+axiom (forall Heap: HeapType, Mask: MaskType, i3_1: int ::
+  { state(Heap, Mask), main2'(Heap, i3_1) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || main2#trigger(EmptyFrame, i3_1)) ==> main2'(Heap, i3_1) > 17
 );
 
 // Trigger function (controlling recursive postconditions)
-function  main2#trigger(frame: FrameType, i3_7: int): bool;
+function  main2#trigger(frame: FrameType, i3_1: int): bool;
 
 // State-independent trigger function
-function  main2#triggerStateless(i3_7: int): int;
+function  main2#triggerStateless(i3_1: int): int;
 
 // Check contract well-formedness and postcondition
-procedure main2#definedness(i3_7: int) returns (Result: int)
+procedure main2#definedness(i3_1: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var ExhaleWellDef0Heap: HeapType;
@@ -850,11 +850,11 @@ procedure main2#definedness(i3_7: int) returns (Result: int)
       }
   
   // -- Translate function body
-    Result := onlyWorksWithInhale(Heap, i3_7);
+    Result := onlyWorksWithInhale(Heap, i3_1);
   
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of main2 might not hold. Assertion result > 17 might not hold. (0163.vpr@55.13--55.24) [218705]"}
+    assert {:msg "  Postcondition of main2 might not hold. Assertion result > 17 might not hold. (0163.vpr@55.13--55.24) [64264]"}
       Result > 17;
 }

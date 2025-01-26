@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:57:34
+// Date:         2025-01-26 21:43:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/pred2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/pred2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -283,7 +283,7 @@ procedure p2#definedness(x: Ref) returns ()
       assume AssumePermUpperBound;
       assume Heap[x, $allocated];
     perm := 1 / 2;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (pred2.vpr@7.1--9.2) [77901]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (pred2.vpr@7.1--9.2) [102752]"}
       perm >= NoPerm;
     Mask := Mask[null, p1(x):=Mask[null, p1(x)] + perm];
     assume state(Heap, Mask);
@@ -294,14 +294,14 @@ procedure p2#definedness(x: Ref) returns ()
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref) returns ()
+procedure foo_3(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var perm_temp_quasihavoc_: Perm;
@@ -323,7 +323,7 @@ procedure foo_1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 42
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (pred2.vpr@12.14--12.35) [77902]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (pred2.vpr@12.14--12.35) [102753]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 42;
     assume state(Heap, Mask);
@@ -331,15 +331,15 @@ procedure foo_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(p1(x), write) -- pred2.vpr@14.5--14.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding p1(x) might fail. There might be insufficient permission to access x.f (pred2.vpr@14.5--14.15) [77905]"}
+      assert {:msg "  Folding p1(x) might fail. There might be insufficient permission to access x.f (pred2.vpr@14.5--14.15) [102756]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -359,13 +359,13 @@ procedure foo_1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p2(x), write) -- pred2.vpr@15.5--15.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
-    assert {:msg "  Folding p2(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@15.5--15.15) [77908]"}
+    assert {:msg "  Folding p2(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@15.5--15.15) [102759]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding p2(x) might fail. There might be insufficient permission to access p1(x) (pred2.vpr@15.5--15.15) [77909]"}
+      assert {:msg "  Folding p2(x) might fail. There might be insufficient permission to access p1(x) (pred2.vpr@15.5--15.15) [102760]"}
         perm <= Mask[null, p1(x)];
     }
     Mask := Mask[null, p1(x):=Mask[null, p1(x)] - perm];
@@ -384,9 +384,9 @@ procedure foo_1(x: Ref) returns ()
       Heap := Heap[null, p2(x):=freshVersion];
     }
     havoc newPMask;
-    assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-      { newPMask[o_15, f_20] }
-      Heap[null, p2#sm(x)][o_15, f_20] || Heap[null, p1#sm(x)][o_15, f_20] ==> newPMask[o_15, f_20]
+    assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+      { newPMask[o_5, f_11] }
+      Heap[null, p2#sm(x)][o_5, f_11] || Heap[null, p1#sm(x)][o_5, f_11] ==> newPMask[o_5, f_11]
     );
     Heap := Heap[null, p2#sm(x):=newPMask];
     assume state(Heap, Mask);
@@ -397,13 +397,13 @@ procedure foo_1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(p1(x), perm_temp_quasihavoc_) -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := perm_temp_quasihavoc_;
-    assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77911]"}
+    assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102762]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access p1(x) (<no position>) [77912]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access p1(x) (<no position>) [102763]"}
         perm <= Mask[null, p1(x)];
     }
     Mask := Mask[null, p1(x):=Mask[null, p1(x)] - perm];
@@ -415,7 +415,7 @@ procedure foo_1(x: Ref) returns ()
   
   // -- Translating statement: inhale acc(p1(x), perm_temp_quasihavoc_) -- <no position>
     perm := perm_temp_quasihavoc_;
-    assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77913]"}
+    assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102764]"}
       perm >= NoPerm;
     Mask := Mask[null, p1(x):=Mask[null, p1(x)] + perm];
     assume state(Heap, Mask);
@@ -425,13 +425,13 @@ procedure foo_1(x: Ref) returns ()
   // -- Translating statement: unfold acc(p1(x), 1 / 2) -- pred2.vpr@19.5--19.27
     assume p1#trigger(Heap, p1(x));
     assume Heap[null, p1(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
-    assert {:msg "  Unfolding p1(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@19.5--19.27) [77915]"}
+    assert {:msg "  Unfolding p1(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@19.5--19.27) [102766]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding p1(x) might fail. There might be insufficient permission to access p1(x) (pred2.vpr@19.5--19.27) [77916]"}
+      assert {:msg "  Unfolding p1(x) might fail. There might be insufficient permission to access p1(x) (pred2.vpr@19.5--19.27) [102767]"}
         perm <= Mask[null, p1(x)];
     }
     Mask := Mask[null, p1(x):=Mask[null, p1(x)] - perm];
@@ -442,7 +442,7 @@ procedure foo_1(x: Ref) returns ()
         Heap := Heap[null, p1(x):=newVersion];
       }
     perm := 1 / 2;
-    assert {:msg "  Unfolding p1(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@19.5--19.27) [77917]"}
+    assert {:msg "  Unfolding p1(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@19.5--19.27) [102768]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -453,11 +453,11 @@ procedure foo_1(x: Ref) returns ()
   // -- Translating statement: unfold acc(p2(x), write) -- pred2.vpr@22.5--22.17
     assume p2#trigger(Heap, p2(x));
     assume Heap[null, p2(x)] == Heap[null, p1(x)];
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding p2(x) might fail. There might be insufficient permission to access p2(x) (pred2.vpr@22.5--22.17) [77920]"}
+      assert {:msg "  Unfolding p2(x) might fail. There might be insufficient permission to access p2(x) (pred2.vpr@22.5--22.17) [102771]"}
         perm <= Mask[null, p2(x)];
     }
     Mask := Mask[null, p2(x):=Mask[null, p2(x)] - perm];
@@ -468,7 +468,7 @@ procedure foo_1(x: Ref) returns ()
         Heap := Heap[null, p2(x):=newVersion];
       }
     perm := 1 / 2;
-    assert {:msg "  Unfolding p2(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@22.5--22.17) [77921]"}
+    assert {:msg "  Unfolding p2(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@22.5--22.17) [102772]"}
       perm >= NoPerm;
     Mask := Mask[null, p1(x):=Mask[null, p1(x)] + perm];
     
@@ -481,13 +481,13 @@ procedure foo_1(x: Ref) returns ()
   // -- Translating statement: unfold acc(p1(x), 1 / 2) -- pred2.vpr@23.5--23.27
     assume p1#trigger(Heap, p1(x));
     assume Heap[null, p1(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
-    assert {:msg "  Unfolding p1(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@23.5--23.27) [77923]"}
+    assert {:msg "  Unfolding p1(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@23.5--23.27) [102774]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding p1(x) might fail. There might be insufficient permission to access p1(x) (pred2.vpr@23.5--23.27) [77924]"}
+      assert {:msg "  Unfolding p1(x) might fail. There might be insufficient permission to access p1(x) (pred2.vpr@23.5--23.27) [102775]"}
         perm <= Mask[null, p1(x)];
     }
     Mask := Mask[null, p1(x):=Mask[null, p1(x)] - perm];
@@ -498,7 +498,7 @@ procedure foo_1(x: Ref) returns ()
         Heap := Heap[null, p1(x):=newVersion];
       }
     perm := 1 / 2;
-    assert {:msg "  Unfolding p1(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@23.5--23.27) [77925]"}
+    assert {:msg "  Unfolding p1(x) might fail. Fraction 1 / 2 might be negative. (pred2.vpr@23.5--23.27) [102776]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -507,13 +507,13 @@ procedure foo_1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 42 -- pred2.vpr@24.5--24.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 42
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (pred2.vpr@24.12--24.21) [77926]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (pred2.vpr@24.12--24.21) [102777]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == 42 might not hold. (pred2.vpr@24.12--24.21) [77927]"}
+    assert {:msg "  Assert might fail. Assertion x.f == 42 might not hold. (pred2.vpr@24.12--24.21) [102778]"}
       Heap[x, f_7] == 42;
     assume state(Heap, Mask);
 }

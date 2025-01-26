@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:07
+// Date:         2025-01-26 21:43:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0222.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0222-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,11 +189,11 @@ axiom !IsWandField(val);
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo_2(Heap: HeapType, x: Ref): int;
+function  foo_1(Heap: HeapType, x: Ref): int;
 function  foo'(Heap: HeapType, x: Ref): int;
 axiom (forall Heap: HeapType, x: Ref ::
-  { foo_2(Heap, x) }
-  foo_2(Heap, x) == foo'(Heap, x) && dummyFunction(foo#triggerStateless(x))
+  { foo_1(Heap, x) }
+  foo_1(Heap, x) == foo'(Heap, x) && dummyFunction(foo#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { foo'(Heap, x) }
@@ -202,8 +202,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), foo_2(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_2(Heap, x) == Heap[x, val]
+  { state(Heap, Mask), foo_1(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_1(Heap, x) == Heap[x, val]
 );
 
 // Framing axioms
@@ -214,7 +214,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
 );
 
 // Trigger function (controlling recursive postconditions)
-function  foo#trigger(frame: FrameType, x: Ref): bool;
+function  foo#trigger_1(frame: FrameType, x: Ref): bool;
 
 // State-independent trigger function
 function  foo#triggerStateless(x: Ref): int;
@@ -223,7 +223,7 @@ function  foo#triggerStateless(x: Ref): int;
 procedure foo#definedness(x: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
-  var y_2: Ref;
+  var y_2_1: Ref;
   var perm: Perm;
   
   // -- Initializing the state
@@ -234,17 +234,17 @@ procedure foo#definedness(x: Ref) returns (Result: int)
     assume AssumeFunctionsAbove == 0;
   
   // -- Inhaling precondition (with checking)
-    y_2 := x;
+    y_2_1 := x;
     perm := FullPerm;
-    assume y_2 != null;
-    Mask := Mask[y_2, val:=Mask[y_2, val] + perm];
+    assume y_2_1 != null;
+    Mask := Mask[y_2_1, val:=Mask[y_2_1, val] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of x.val
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.val (0222.vpr@6.1--10.4) [191978]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.val (0222.vpr@6.1--10.4) [82378]"}
         HasDirectPerm(Mask, x, val);
   
   // -- Translate function body
@@ -255,20 +255,20 @@ procedure foo#definedness(x: Ref) returns (Result: int)
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref, z: Ref) returns ()
+procedure test_1(x: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var y: Ref;
   var y_1: Ref;
   var ExhaleHeap: HeapType;
-  var y_2: Ref;
+  var y_2_1: Ref;
   var y_3_2: Ref;
   var y_4_1: Ref;
   var y_5_2: Ref;
@@ -297,27 +297,27 @@ procedure test(x: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x.val := 4 -- 0222.vpr@15.3--15.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.val (0222.vpr@15.3--15.13) [191979]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.val (0222.vpr@15.3--15.13) [82379]"}
       FullPerm == Mask[x, val];
     Heap := Heap[x, val:=4];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo(x) == 4 -- 0222.vpr@16.3--16.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo(x) == 4
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         y := x;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access y.val (0222.vpr@16.10--16.16) [191980]"}
+        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access y.val (0222.vpr@16.10--16.16) [82380]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, val];
         
         // -- Free assumptions (exhale module)
@@ -329,29 +329,29 @@ procedure test(x: Ref, z: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo(x) == 4 might not hold. (0222.vpr@16.10--16.21) [191981]"}
-      foo_2(Heap, x) == 4;
+    assert {:msg "  Assert might fail. Assertion foo(x) == 4 might not hold. (0222.vpr@16.10--16.21) [82381]"}
+      foo_1(Heap, x) == 4;
     assume state(Heap, Mask);
   
   // -- Translating statement: z.val := 3 -- 0222.vpr@17.3--17.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access z.val (0222.vpr@17.3--17.13) [191982]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access z.val (0222.vpr@17.3--17.13) [82382]"}
       FullPerm == Mask[z, val];
     Heap := Heap[z, val:=3];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo(x) == 4 -- 0222.vpr@18.3--18.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo(x) == 4
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        y_2 := x;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        y_2_1 := x;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access y.val (0222.vpr@18.10--18.16) [191983]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y_2, val];
+        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access y.val (0222.vpr@18.10--18.16) [82383]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y_2_1, val];
         
         // -- Free assumptions (exhale module)
           y_3_2 := x;
@@ -362,28 +362,28 @@ procedure test(x: Ref, z: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo(x) == 4 might not hold. (0222.vpr@18.10--18.21) [191984]"}
-      foo_2(Heap, x) == 4;
+    assert {:msg "  Assert might fail. Assertion foo(x) == 4 might not hold. (0222.vpr@18.10--18.21) [82384]"}
+      foo_1(Heap, x) == 4;
     assume state(Heap, Mask);
   
   // -- Translating statement: x.val := 5 -- 0222.vpr@19.3--19.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.val (0222.vpr@19.3--19.13) [191985]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.val (0222.vpr@19.3--19.13) [82385]"}
       FullPerm == Mask[x, val];
     Heap := Heap[x, val:=5];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo(x) == 42 -- 0222.vpr@21.3--21.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo(x) == 42
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         y_4_1 := x;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access y.val (0222.vpr@21.10--21.16) [191986]"}
+        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access y.val (0222.vpr@21.10--21.16) [82386]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y_4_1, val];
         
         // -- Free assumptions (exhale module)
@@ -395,7 +395,7 @@ procedure test(x: Ref, z: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo(x) == 42 might not hold. (0222.vpr@21.10--21.22) [191987]"}
-      foo_2(Heap, x) == 42;
+    assert {:msg "  Assert might fail. Assertion foo(x) == 42 might not hold. (0222.vpr@21.10--21.22) [82387]"}
+      foo_1(Heap, x) == 42;
     assume state(Heap, Mask);
 }

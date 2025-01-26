@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:46
+// Date:         2025-01-26 21:42:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0630.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0630-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -189,25 +189,25 @@ axiom !IsWandField(field1);
 // ==================================================
 
 type PredicateType_pred;
-function  pred_3(self: Ref): Field PredicateType_pred FrameType;
+function  pred_1(self: Ref): Field PredicateType_pred FrameType;
 function  pred#sm(self: Ref): Field PredicateType_pred PMaskType;
 axiom (forall self: Ref ::
-  { PredicateMaskField(pred_3(self)) }
-  PredicateMaskField(pred_3(self)) == pred#sm(self)
+  { PredicateMaskField(pred_1(self)) }
+  PredicateMaskField(pred_1(self)) == pred#sm(self)
 );
 axiom (forall self: Ref ::
-  { pred_3(self) }
-  IsPredicateField(pred_3(self))
+  { pred_1(self) }
+  IsPredicateField(pred_1(self))
 );
 axiom (forall self: Ref ::
-  { pred_3(self) }
-  getPredWandId(pred_3(self)) == 0
+  { pred_1(self) }
+  getPredWandId(pred_1(self)) == 0
 );
 function  pred#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  pred#everUsed<A>(pred: (Field A FrameType)): bool;
 axiom (forall self: Ref, self2: Ref ::
-  { pred_3(self), pred_3(self2) }
-  pred_3(self) == pred_3(self2) ==> self == self2
+  { pred_1(self), pred_1(self2) }
+  pred_1(self) == pred_1(self2) ==> self == self2
 );
 axiom (forall self: Ref, self2: Ref ::
   { pred#sm(self), pred#sm(self2) }
@@ -215,8 +215,8 @@ axiom (forall self: Ref, self2: Ref ::
 );
 
 axiom (forall Heap: HeapType, self: Ref ::
-  { pred#trigger(Heap, pred_3(self)) }
-  pred#everUsed(pred_3(self))
+  { pred#trigger(Heap, pred_1(self)) }
+  pred#everUsed(pred_1(self))
 );
 
 procedure pred#definedness(self: Ref) returns ()
@@ -241,12 +241,12 @@ procedure pred#definedness(self: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of self.discriminant == 4
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.discriminant (0630.vpr@8.1--14.2) [206774]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.discriminant (0630.vpr@8.1--14.2) [72804]"}
         HasDirectPerm(Mask, self, discriminant);
     if (Heap[self, discriminant] == 4) {
       
       // -- Check definedness of acc(predFive(self.field1), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.field1 (0630.vpr@8.1--14.2) [206775]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.field1 (0630.vpr@8.1--14.2) [72805]"}
           HasDirectPerm(Mask, self, field1);
       perm := FullPerm;
       Mask := Mask[null, predFive(Heap[self, field1]):=Mask[null, predFive(Heap[self, field1])] + perm];
@@ -388,7 +388,7 @@ procedure m_test1() returns ()
   
   // -- Translating statement: inhale acc(pred(_1), write) -- 0630.vpr@27.3--27.30
     perm := FullPerm;
-    Mask := Mask[null, pred_3(_1):=Mask[null, pred_3(_1)] + perm];
+    Mask := Mask[null, pred_1(_1):=Mask[null, pred_1(_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -400,16 +400,16 @@ procedure m_test1() returns ()
     // -- Check definedness of (unfolding acc(pred(_1), write) in _1.discriminant == 4 && (unfolding acc(predFive(_1.field1), write) in true))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume pred#trigger(UnfoldingHeap, pred_3(_1));
-      assume UnfoldingHeap[null, pred_3(_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_1, discriminant]), CombineFrames(FrameFragment(UnfoldingHeap[_1, field1]), FrameFragment((if UnfoldingHeap[_1, discriminant] == 4 then UnfoldingHeap[null, predFive(UnfoldingHeap[_1, field1])] else FrameFragment(EmptyFrame)))));
+      assume pred#trigger(UnfoldingHeap, pred_1(_1));
+      assume UnfoldingHeap[null, pred_1(_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_1, discriminant]), CombineFrames(FrameFragment(UnfoldingHeap[_1, field1]), FrameFragment((if UnfoldingHeap[_1, discriminant] == 4 then UnfoldingHeap[null, predFive(UnfoldingHeap[_1, field1])] else FrameFragment(EmptyFrame)))));
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access pred(_1) (0630.vpr@28.11--29.44) [206777]"}
-          perm <= UnfoldingMask[null, pred_3(_1)];
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access pred(_1) (0630.vpr@28.11--29.44) [72807]"}
+          perm <= UnfoldingMask[null, pred_1(_1)];
       }
-      UnfoldingMask := UnfoldingMask[null, pred_3(_1):=UnfoldingMask[null, pred_3(_1)] - perm];
+      UnfoldingMask := UnfoldingMask[null, pred_1(_1):=UnfoldingMask[null, pred_1(_1)] - perm];
       perm := FullPerm;
       assume _1 != null;
       UnfoldingMask := UnfoldingMask[_1, discriminant:=UnfoldingMask[_1, discriminant] + perm];
@@ -423,11 +423,11 @@ procedure m_test1() returns ()
         UnfoldingMask := UnfoldingMask[null, predFive(UnfoldingHeap[_1, field1]):=UnfoldingMask[null, predFive(UnfoldingHeap[_1, field1])] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(pred_3(_1), UnfoldingHeap[null, pred_3(_1)], predFive(UnfoldingHeap[_1, field1]), UnfoldingHeap[null, predFive(UnfoldingHeap[_1, field1])]);
+          assume InsidePredicate(pred_1(_1), UnfoldingHeap[null, pred_1(_1)], predFive(UnfoldingHeap[_1, field1]), UnfoldingHeap[null, predFive(UnfoldingHeap[_1, field1])]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access _1.discriminant (0630.vpr@28.11--29.44) [206778]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access _1.discriminant (0630.vpr@28.11--29.44) [72808]"}
         HasDirectPerm(UnfoldingMask, _1, discriminant);
       if (UnfoldingHeap[_1, discriminant] == 4) {
         Unfolding1Heap := UnfoldingHeap;
@@ -438,12 +438,12 @@ procedure m_test1() returns ()
         ExhaleWellDef0Heap := Unfolding1Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access predFive(_1.field1) (0630.vpr@28.11--29.44) [206779]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access predFive(_1.field1) (0630.vpr@28.11--29.44) [72809]"}
             perm <= Unfolding1Mask[null, predFive(Unfolding1Heap[_1, field1])];
         }
         Unfolding1Mask := Unfolding1Mask[null, predFive(Unfolding1Heap[_1, field1]):=Unfolding1Mask[null, predFive(Unfolding1Heap[_1, field1])] - perm];
         assume state(Unfolding1Heap, Unfolding1Mask);
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access _1.field1 (0630.vpr@28.11--29.44) [206780]"}
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access _1.field1 (0630.vpr@28.11--29.44) [72810]"}
           HasDirectPerm(Unfolding1Mask, _1, field1);
         
         // -- Free assumptions (exp module)
@@ -455,9 +455,9 @@ procedure m_test1() returns ()
         Heap := Heap[null, pred#sm(_1):=Heap[null, pred#sm(_1)][_1, field1:=true]];
         if (Heap[_1, discriminant] == 4) {
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, pred#sm(_1)][o_15, f_20] || Heap[null, predFive#sm(Heap[_1, field1])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, pred#sm(_1)][o_5, f_11] || Heap[null, predFive#sm(Heap[_1, field1])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, pred#sm(_1):=newPMask];
         }
@@ -467,12 +467,12 @@ procedure m_test1() returns ()
     // -- Execute unfolding (for extra information)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume pred#trigger(UnfoldingHeap, pred_3(_1));
-      assume UnfoldingHeap[null, pred_3(_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_1, discriminant]), CombineFrames(FrameFragment(UnfoldingHeap[_1, field1]), FrameFragment((if UnfoldingHeap[_1, discriminant] == 4 then UnfoldingHeap[null, predFive(UnfoldingHeap[_1, field1])] else FrameFragment(EmptyFrame)))));
+      assume pred#trigger(UnfoldingHeap, pred_1(_1));
+      assume UnfoldingHeap[null, pred_1(_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_1, discriminant]), CombineFrames(FrameFragment(UnfoldingHeap[_1, field1]), FrameFragment((if UnfoldingHeap[_1, discriminant] == 4 then UnfoldingHeap[null, predFive(UnfoldingHeap[_1, field1])] else FrameFragment(EmptyFrame)))));
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      UnfoldingMask := UnfoldingMask[null, pred_3(_1):=UnfoldingMask[null, pred_3(_1)] - perm];
+      UnfoldingMask := UnfoldingMask[null, pred_1(_1):=UnfoldingMask[null, pred_1(_1)] - perm];
       perm := FullPerm;
       assume _1 != null;
       UnfoldingMask := UnfoldingMask[_1, discriminant:=UnfoldingMask[_1, discriminant] + perm];
@@ -486,7 +486,7 @@ procedure m_test1() returns ()
         UnfoldingMask := UnfoldingMask[null, predFive(UnfoldingHeap[_1, field1]):=UnfoldingMask[null, predFive(UnfoldingHeap[_1, field1])] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(pred_3(_1), UnfoldingHeap[null, pred_3(_1)], predFive(UnfoldingHeap[_1, field1]), UnfoldingHeap[null, predFive(UnfoldingHeap[_1, field1])]);
+          assume InsidePredicate(pred_1(_1), UnfoldingHeap[null, pred_1(_1)], predFive(UnfoldingHeap[_1, field1]), UnfoldingHeap[null, predFive(UnfoldingHeap[_1, field1])]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
@@ -497,7 +497,7 @@ procedure m_test1() returns ()
   // -- Translating statement: assert false -- 0630.vpr@32.3--32.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0630.vpr@32.10--32.15) [206781]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0630.vpr@32.10--32.15) [72811]"}
       false;
     assume state(Heap, Mask);
 }

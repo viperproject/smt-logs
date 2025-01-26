@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:27:18
+// Date:         2025-01-26 21:42:24
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0483a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0483a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_22: Ref, f_30: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_22, f_30] }
-  Heap[o_22, $allocated] ==> Heap[Heap[o_22, f_30], $allocated]
+axiom (forall o_4: Ref, f_9: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_4, f_9] }
+  Heap[o_4, $allocated] ==> Heap[Heap[o_4, f_9], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_27: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_27] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_27) ==> Heap[o_41, f_27] == ExhaleHeap[o_41, f_27]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_23: Ref, f_15: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_23, f_15] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_23, f_15) ==> Heap[o_23, f_15] == ExhaleHeap[o_23, f_15]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_28), ExhaleHeap[null, PredicateMaskField(pm_f_28)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsPredicateField(pm_f_28) ==> Heap[null, PredicateMaskField(pm_f_28)] == ExhaleHeap[null, PredicateMaskField(pm_f_28)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10), ExhaleHeap[null, PredicateMaskField(pm_f_10)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> Heap[null, PredicateMaskField(pm_f_10)] == ExhaleHeap[null, PredicateMaskField(pm_f_10)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_28) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsPredicateField(pm_f_28) ==> (forall <A, B> o2_28: Ref, f_27: (Field A B) ::
-    { ExhaleHeap[o2_28, f_27] }
-    Heap[null, PredicateMaskField(pm_f_28)][o2_28, f_27] ==> Heap[o2_28, f_27] == ExhaleHeap[o2_28, f_27]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_15: (Field A B) ::
+    { ExhaleHeap[o2_10, f_15] }
+    Heap[null, PredicateMaskField(pm_f_10)][o2_10, f_15] ==> Heap[o2_10, f_15] == ExhaleHeap[o2_10, f_15]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_28), ExhaleHeap[null, WandMaskField(pm_f_28)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsWandField(pm_f_28) ==> Heap[null, WandMaskField(pm_f_28)] == ExhaleHeap[null, WandMaskField(pm_f_28)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10), ExhaleHeap[null, WandMaskField(pm_f_10)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> Heap[null, WandMaskField(pm_f_10)] == ExhaleHeap[null, WandMaskField(pm_f_10)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_28) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsWandField(pm_f_28) ==> (forall <A, B> o2_28: Ref, f_27: (Field A B) ::
-    { ExhaleHeap[o2_28, f_27] }
-    Heap[null, WandMaskField(pm_f_28)][o2_28, f_27] ==> Heap[o2_28, f_27] == ExhaleHeap[o2_28, f_27]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_15: (Field A B) ::
+    { ExhaleHeap[o2_10, f_15] }
+    Heap[null, WandMaskField(pm_f_10)][o2_10, f_15] ==> Heap[o2_10, f_15] == ExhaleHeap[o2_10, f_15]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_23: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_23, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_23, $allocated] ==> ExhaleHeap[o_23, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_22: Ref, f_12: (Field A B), v: B ::
-  { Heap[o_22, f_12:=v] }
-  succHeap(Heap, Heap[o_22, f_12:=v])
+axiom (forall <A, B> Heap: HeapType, o_4: Ref, f_25: (Field A B), v: B ::
+  { Heap[o_4, f_25:=v] }
+  succHeap(Heap, Heap[o_4, f_25:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -147,9 +147,9 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 function  neverTriggered1(i_9_1: int): bool;
 function  neverTriggered2(i_11_1: int): bool;
 function  neverTriggered3(i_1: int): bool;
-function  neverTriggered4(i_3: int): bool;
+function  neverTriggered4(i_3_2: int): bool;
 function  neverTriggered5(i_4_1: int): bool;
-function  neverTriggered6(i_5: int): bool;
+function  neverTriggered6(i_5_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -579,7 +579,7 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 type VCTArrayDomainType CT;
 
 // Translation of domain function loc
-function  loc<CT>(a_3: (VCTArrayDomainType CT), i_79: int): CT;
+function  loc<CT>(a_3: (VCTArrayDomainType CT), i_6: int): CT;
 
 // Translation of domain function alen
 function  alen<CT>(a_3: (VCTArrayDomainType CT)): int;
@@ -591,9 +591,9 @@ axiom (forall <CT> a_2: (VCTArrayDomainType CT) ::
 );
 
 // Translation of domain axiom loc_inject
-axiom (forall <CT> a_2: (VCTArrayDomainType CT), i: int, j_9: int ::
-  { (loc(a_2, i): CT), (loc(a_2, j_9): CT) }
-  i >= 0 && (j_9 >= 0 && (i < (alen(a_2): int) && (j_9 < (alen(a_2): int) && i != j_9))) ==> (loc(a_2, i): CT) != (loc(a_2, j_9): CT)
+axiom (forall <CT> a_2: (VCTArrayDomainType CT), i: int, j: int ::
+  { (loc(a_2, i): CT), (loc(a_2, j): CT) }
+  i >= 0 && (j >= 0 && (i < (alen(a_2): int) && (j < (alen(a_2): int) && i != j))) ==> (loc(a_2, i): CT) != (loc(a_2, j): CT)
 );
 
 // ==================================================
@@ -646,7 +646,7 @@ function  CheckBounded#triggerStateless(order: (Seq int), maxLen: int): bool;
 procedure CheckBounded#definedness(order: (Seq int), maxLen: int) returns (Result: bool)
   modifies Heap, Mask;
 {
-  var i_14: int;
+  var i_18: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -659,23 +659,23 @@ procedure CheckBounded#definedness(order: (Seq int), maxLen: int) returns (Resul
     
     // -- Check definedness of (forall i: Int :: { order[i] } 0 <= i && i < |order| ==> 0 <= order[i] && order[i] < maxLen)
       if (*) {
-        if (0 <= i_14 && i_14 < Seq#Length(order)) {
-          assert {:msg "  Contract might not be well-formed. Index order[i] into order might be negative. (0483a.vpr@20.9--20.120) [208623]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index order[i] into order might exceed sequence length. (0483a.vpr@20.9--20.120) [208624]"}
-            i_14 < Seq#Length(order);
-          if (0 <= Seq#Index(order, i_14)) {
-            assert {:msg "  Contract might not be well-formed. Index order[i] into order might be negative. (0483a.vpr@20.9--20.120) [208625]"}
-              i_14 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index order[i] into order might exceed sequence length. (0483a.vpr@20.9--20.120) [208626]"}
-              i_14 < Seq#Length(order);
+        if (0 <= i_18 && i_18 < Seq#Length(order)) {
+          assert {:msg "  Contract might not be well-formed. Index order[i] into order might be negative. (0483a.vpr@20.9--20.120) [57136]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index order[i] into order might exceed sequence length. (0483a.vpr@20.9--20.120) [57137]"}
+            i_18 < Seq#Length(order);
+          if (0 <= Seq#Index(order, i_18)) {
+            assert {:msg "  Contract might not be well-formed. Index order[i] into order might be negative. (0483a.vpr@20.9--20.120) [57138]"}
+              i_18 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index order[i] into order might exceed sequence length. (0483a.vpr@20.9--20.120) [57139]"}
+              i_18 < Seq#Length(order);
           }
         }
         assume false;
       }
-    assume (forall i_2_1: int ::
-      { Seq#Index(order, i_2_1) }
-      0 <= i_2_1 && i_2_1 < Seq#Length(order) ==> 0 <= Seq#Index(order, i_2_1) && Seq#Index(order, i_2_1) < maxLen
+    assume (forall i_2: int ::
+      { Seq#Index(order, i_2) }
+      0 <= i_2 && i_2 < Seq#Length(order) ==> 0 <= Seq#Index(order, i_2) && Seq#Index(order, i_2) < maxLen
     );
     assume state(Heap, Mask);
 }
@@ -699,9 +699,9 @@ axiom (forall Heap: HeapType, origL: (VCTArrayDomainType Ref), newO: (Seq int), 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, origL: (VCTArrayDomainType Ref), newO: (Seq int), newL: (VCTArrayDomainType Ref), maxLen: int ::
   { state(Heap, Mask), IsReordered(Heap, origL, newO, newL, maxLen) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> IsReordered(Heap, origL, newO, newL, maxLen) == (maxLen <= (alen(origL): int) && (maxLen <= (alen(newL): int) && (CheckBounded(Heap, newO, maxLen) && (forall i_2_1: int ::
-    { (loc(origL, Seq#Index(newO, i_2_1)): Ref) }
-    0 <= i_2_1 && i_2_1 < Seq#Length(newO) ==> Heap[(loc(newL, i_2_1): Ref), Integer__item] == Heap[(loc(origL, Seq#Index(newO, i_2_1)): Ref), Integer__item]
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> IsReordered(Heap, origL, newO, newL, maxLen) == (maxLen <= (alen(origL): int) && (maxLen <= (alen(newL): int) && (CheckBounded(Heap, newO, maxLen) && (forall i_2: int ::
+    { (loc(origL, Seq#Index(newO, i_2)): Ref) }
+    0 <= i_2 && i_2 < Seq#Length(newO) ==> Heap[(loc(newL, i_2): Ref), Integer__item] == Heap[(loc(origL, Seq#Index(newO, i_2)): Ref), Integer__item]
   ))))
 );
 
@@ -752,10 +752,10 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var i_6: int;
-  var ExhaleWellDef0Mask: MaskType;
+  var i_14: int;
   var ExhaleWellDef0Heap: HeapType;
-  var i_7: int;
+  var ExhaleWellDef0Mask: MaskType;
+  var i_5: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -770,7 +770,7 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource (loc(origL, i): Ref).Integer__item might not be injective. (0483a.vpr@25.13--25.115) [208627]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource (loc(origL, i): Ref).Integer__item might not be injective. (0483a.vpr@25.13--25.115) [57140]"}
       (forall i_9_1: int, i_9_2: int ::
       
       (((i_9_1 != i_9_2 && (0 <= i_9_1 && i_9_1 < (alen(origL): int))) && (0 <= i_9_2 && i_9_2 < (alen(origL): int))) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (loc(origL, i_9_1): Ref) != (loc(origL, i_9_2): Ref)
@@ -781,12 +781,12 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
         { (loc(origL, i_9_1): Ref) } { (loc(origL, i_9_1): Ref) }
         (0 <= i_9_1 && i_9_1 < (alen(origL): int)) && NoPerm < 1 / 2 ==> qpRange1((loc(origL, i_9_1): Ref)) && invRecv1((loc(origL, i_9_1): Ref)) == i_9_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && invRecv1(o_4) < (alen(origL): int)) && NoPerm < 1 / 2) && qpRange1(o_4) ==> (loc(origL, invRecv1(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && invRecv1(o_9) < (alen(origL): int)) && NoPerm < 1 / 2) && qpRange1(o_9) ==> (loc(origL, invRecv1(o_9)): Ref) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0483a.vpr@25.13--25.115) [208628]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0483a.vpr@25.13--25.115) [57141]"}
       (forall i_9_1: int ::
       { (loc(origL, i_9_1): Ref) } { (loc(origL, i_9_1): Ref) }
       0 <= i_9_1 && i_9_1 < (alen(origL): int) ==> 1 / 2 >= NoPerm
@@ -799,13 +799,13 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer__item] }
-        (((0 <= invRecv1(o_4) && invRecv1(o_4) < (alen(origL): int)) && NoPerm < 1 / 2) && qpRange1(o_4) ==> (NoPerm < 1 / 2 ==> (loc(origL, invRecv1(o_4)): Ref) == o_4) && QPMask[o_4, Integer__item] == Mask[o_4, Integer__item] + 1 / 2) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < (alen(origL): int)) && NoPerm < 1 / 2) && qpRange1(o_4)) ==> QPMask[o_4, Integer__item] == Mask[o_4, Integer__item])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer__item] }
+        (((0 <= invRecv1(o_9) && invRecv1(o_9) < (alen(origL): int)) && NoPerm < 1 / 2) && qpRange1(o_9) ==> (NoPerm < 1 / 2 ==> (loc(origL, invRecv1(o_9)): Ref) == o_9) && QPMask[o_9, Integer__item] == Mask[o_9, Integer__item] + 1 / 2) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < (alen(origL): int)) && NoPerm < 1 / 2) && qpRange1(o_9)) ==> QPMask[o_9, Integer__item] == Mask[o_9, Integer__item])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer__item ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer__item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -817,7 +817,7 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
           assume false;
         }
       havoc QPMask;
-      assert {:msg "  Contract might not be well-formed. Quantified resource (loc(newL, i): Ref).Integer__item might not be injective. (0483a.vpr@26.12--26.131) [208629]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource (loc(newL, i): Ref).Integer__item might not be injective. (0483a.vpr@26.12--26.131) [57142]"}
         (forall i_11_1: int, i_11_2: int ::
         
         (((i_11_1 != i_11_2 && (0 <= i_11_1 && i_11_1 < (alen(newL): int))) && (0 <= i_11_2 && i_11_2 < (alen(newL): int))) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (loc(newL, i_11_1): Ref) != (loc(newL, i_11_2): Ref)
@@ -828,12 +828,12 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
           { (loc(newL, i_11_1): Ref) } { (loc(newL, i_11_1): Ref) }
           (0 <= i_11_1 && i_11_1 < (alen(newL): int)) && NoPerm < 1 / 2 ==> qpRange2((loc(newL, i_11_1): Ref)) && invRecv2((loc(newL, i_11_1): Ref)) == i_11_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv2(o_4) }
-          ((0 <= invRecv2(o_4) && invRecv2(o_4) < (alen(newL): int)) && NoPerm < 1 / 2) && qpRange2(o_4) ==> (loc(newL, invRecv2(o_4)): Ref) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv2(o_9) }
+          ((0 <= invRecv2(o_9) && invRecv2(o_9) < (alen(newL): int)) && NoPerm < 1 / 2) && qpRange2(o_9) ==> (loc(newL, invRecv2(o_9)): Ref) == o_9
         );
       // Check that permission expression is non-negative for all fields
-      assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0483a.vpr@26.12--26.131) [208630]"}
+      assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0483a.vpr@26.12--26.131) [57143]"}
         (forall i_11_1: int ::
         { (loc(newL, i_11_1): Ref) } { (loc(newL, i_11_1): Ref) }
         0 <= i_11_1 && i_11_1 < (alen(newL): int) ==> 1 / 2 >= NoPerm
@@ -846,13 +846,13 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, Integer__item] }
-          (((0 <= invRecv2(o_4) && invRecv2(o_4) < (alen(newL): int)) && NoPerm < 1 / 2) && qpRange2(o_4) ==> (NoPerm < 1 / 2 ==> (loc(newL, invRecv2(o_4)): Ref) == o_4) && QPMask[o_4, Integer__item] == Mask[o_4, Integer__item] + 1 / 2) && (!(((0 <= invRecv2(o_4) && invRecv2(o_4) < (alen(newL): int)) && NoPerm < 1 / 2) && qpRange2(o_4)) ==> QPMask[o_4, Integer__item] == Mask[o_4, Integer__item])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, Integer__item] }
+          (((0 <= invRecv2(o_9) && invRecv2(o_9) < (alen(newL): int)) && NoPerm < 1 / 2) && qpRange2(o_9) ==> (NoPerm < 1 / 2 ==> (loc(newL, invRecv2(o_9)): Ref) == o_9) && QPMask[o_9, Integer__item] == Mask[o_9, Integer__item] + 1 / 2) && (!(((0 <= invRecv2(o_9) && invRecv2(o_9) < (alen(newL): int)) && NoPerm < 1 / 2) && qpRange2(o_9)) ==> QPMask[o_9, Integer__item] == Mask[o_9, Integer__item])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != Integer__item ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != Integer__item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
@@ -870,15 +870,15 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
           }
           if (CheckBounded(Heap, newO, maxLen)) {
             if (*) {
-              if (0 <= i_6 && i_6 < Seq#Length(newO)) {
-                assert {:msg "  Function might not be well-formed. There might be insufficient permission to access (loc(newL, i): Ref).Integer__item (0483a.vpr@24.1--30.2) [208631]"}
-                  HasDirectPerm(Mask, (loc(newL, i_6): Ref), Integer__item);
-                assert {:msg "  Function might not be well-formed. Index newO[i] into newO might be negative. (0483a.vpr@24.1--30.2) [208632]"}
-                  i_6 >= 0;
-                assert {:msg "  Function might not be well-formed. Index newO[i] into newO might exceed sequence length. (0483a.vpr@24.1--30.2) [208633]"}
-                  i_6 < Seq#Length(newO);
-                assert {:msg "  Function might not be well-formed. There might be insufficient permission to access (loc(origL, newO[i]): Ref).Integer__item (0483a.vpr@24.1--30.2) [208634]"}
-                  HasDirectPerm(Mask, (loc(origL, Seq#Index(newO, i_6)): Ref), Integer__item);
+              if (0 <= i_14 && i_14 < Seq#Length(newO)) {
+                assert {:msg "  Function might not be well-formed. There might be insufficient permission to access (loc(newL, i): Ref).Integer__item (0483a.vpr@24.1--30.2) [57144]"}
+                  HasDirectPerm(Mask, (loc(newL, i_14): Ref), Integer__item);
+                assert {:msg "  Function might not be well-formed. Index newO[i] into newO might be negative. (0483a.vpr@24.1--30.2) [57145]"}
+                  i_14 >= 0;
+                assert {:msg "  Function might not be well-formed. Index newO[i] into newO might exceed sequence length. (0483a.vpr@24.1--30.2) [57146]"}
+                  i_14 < Seq#Length(newO);
+                assert {:msg "  Function might not be well-formed. There might be insufficient permission to access (loc(origL, newO[i]): Ref).Integer__item (0483a.vpr@24.1--30.2) [57147]"}
+                  HasDirectPerm(Mask, (loc(origL, Seq#Index(newO, i_14)): Ref), Integer__item);
               }
               assume false;
             }
@@ -893,8 +893,8 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
     )));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of result == (maxLen <= (alen(origL): Int) && (maxLen <= (alen(newL): Int) && (CheckBounded(newO, maxLen) && (forall i: Int :: { (loc(origL, newO[i]): Ref) } 0 <= i && i < |newO| ==> (loc(newL, i): Ref).Integer__item == (loc(origL, newO[i]): Ref).Integer__item))))
       if (maxLen <= (alen(origL): int)) {
@@ -905,25 +905,25 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
           }
           if (CheckBounded(Heap, newO, maxLen)) {
             if (*) {
-              if (0 <= i_7 && i_7 < Seq#Length(newO)) {
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (loc(newL, i): Ref).Integer__item (0483a.vpr@27.11--27.231) [208635]"}
-                  HasDirectPerm(ExhaleWellDef0Mask, (loc(newL, i_7): Ref), Integer__item);
-                assert {:msg "  Contract might not be well-formed. Index newO[i] into newO might be negative. (0483a.vpr@27.11--27.231) [208636]"}
-                  i_7 >= 0;
-                assert {:msg "  Contract might not be well-formed. Index newO[i] into newO might exceed sequence length. (0483a.vpr@27.11--27.231) [208637]"}
-                  i_7 < Seq#Length(newO);
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (loc(origL, newO[i]): Ref).Integer__item (0483a.vpr@27.11--27.231) [208638]"}
-                  HasDirectPerm(ExhaleWellDef0Mask, (loc(origL, Seq#Index(newO, i_7)): Ref), Integer__item);
+              if (0 <= i_5 && i_5 < Seq#Length(newO)) {
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (loc(newL, i): Ref).Integer__item (0483a.vpr@27.11--27.231) [57148]"}
+                  HasDirectPerm(ExhaleWellDef0Mask, (loc(newL, i_5): Ref), Integer__item);
+                assert {:msg "  Contract might not be well-formed. Index newO[i] into newO might be negative. (0483a.vpr@27.11--27.231) [57149]"}
+                  i_5 >= 0;
+                assert {:msg "  Contract might not be well-formed. Index newO[i] into newO might exceed sequence length. (0483a.vpr@27.11--27.231) [57150]"}
+                  i_5 < Seq#Length(newO);
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (loc(origL, newO[i]): Ref).Integer__item (0483a.vpr@27.11--27.231) [57151]"}
+                  HasDirectPerm(ExhaleWellDef0Mask, (loc(origL, Seq#Index(newO, i_5)): Ref), Integer__item);
               }
               assume false;
             }
           }
         }
       }
-    assert {:msg "  Postcondition of IsReordered might not hold. Assertion result == (maxLen <= (alen(origL): Int) && (maxLen <= (alen(newL): Int) && (CheckBounded(newO, maxLen) && (forall i: Int :: { (loc(origL, newO[i]): Ref) } 0 <= i && i < |newO| ==> (loc(newL, i): Ref).Integer__item == (loc(origL, newO[i]): Ref).Integer__item)))) might not hold. (0483a.vpr@27.11--27.231) [208639]"}
-      Result == (maxLen <= (alen(origL): int) && (maxLen <= (alen(newL): int) && (CheckBounded(Heap, newO, maxLen) && (forall i_15: int ::
-      { (loc(origL, Seq#Index(newO, i_15)): Ref) }
-      0 <= i_15 && i_15 < Seq#Length(newO) ==> Heap[(loc(newL, i_15): Ref), Integer__item] == Heap[(loc(origL, Seq#Index(newO, i_15)): Ref), Integer__item]
+    assert {:msg "  Postcondition of IsReordered might not hold. Assertion result == (maxLen <= (alen(origL): Int) && (maxLen <= (alen(newL): Int) && (CheckBounded(newO, maxLen) && (forall i: Int :: { (loc(origL, newO[i]): Ref) } 0 <= i && i < |newO| ==> (loc(newL, i): Ref).Integer__item == (loc(origL, newO[i]): Ref).Integer__item)))) might not hold. (0483a.vpr@27.11--27.231) [57152]"}
+      Result == (maxLen <= (alen(origL): int) && (maxLen <= (alen(newL): int) && (CheckBounded(Heap, newO, maxLen) && (forall i_15_1: int ::
+      { (loc(origL, Seq#Index(newO, i_15_1)): Ref) }
+      0 <= i_15_1 && i_15_1 < Seq#Length(newO) ==> Heap[(loc(newL, i_15_1): Ref), Integer__item] == Heap[(loc(origL, Seq#Index(newO, i_15_1)): Ref), Integer__item]
     ))));
 }
 
@@ -935,10 +935,10 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var rep__1: bool;
   var i__2: int;
@@ -960,7 +960,7 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource (loc(origL, i): Ref).Integer__item might not be injective. (0483a.vpr@34.13--34.99) [208640]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource (loc(origL, i): Ref).Integer__item might not be injective. (0483a.vpr@34.13--34.99) [57153]"}
       (forall i_1: int, i_1_1: int ::
       
       (((i_1 != i_1_1 && (0 <= i_1 && i_1 < (alen(origL): int))) && (0 <= i_1_1 && i_1_1 < (alen(origL): int))) && NoPerm < 2 / 3) && NoPerm < 2 / 3 ==> (loc(origL, i_1): Ref) != (loc(origL, i_1_1): Ref)
@@ -971,12 +971,12 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
         { (loc(origL, i_1): Ref) } { (loc(origL, i_1): Ref) }
         (0 <= i_1 && i_1 < (alen(origL): int)) && NoPerm < 2 / 3 ==> qpRange3((loc(origL, i_1): Ref)) && invRecv3((loc(origL, i_1): Ref)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        ((0 <= invRecv3(o_4) && invRecv3(o_4) < (alen(origL): int)) && NoPerm < 2 / 3) && qpRange3(o_4) ==> (loc(origL, invRecv3(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        ((0 <= invRecv3(o_9) && invRecv3(o_9) < (alen(origL): int)) && NoPerm < 2 / 3) && qpRange3(o_9) ==> (loc(origL, invRecv3(o_9)): Ref) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (0483a.vpr@34.13--34.99) [208641]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (0483a.vpr@34.13--34.99) [57154]"}
       (forall i_1: int ::
       { (loc(origL, i_1): Ref) } { (loc(origL, i_1): Ref) }
       0 <= i_1 && i_1 < (alen(origL): int) ==> 2 / 3 >= NoPerm
@@ -989,13 +989,13 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer__item] }
-        (((0 <= invRecv3(o_4) && invRecv3(o_4) < (alen(origL): int)) && NoPerm < 2 / 3) && qpRange3(o_4) ==> (NoPerm < 2 / 3 ==> (loc(origL, invRecv3(o_4)): Ref) == o_4) && QPMask[o_4, Integer__item] == Mask[o_4, Integer__item] + 2 / 3) && (!(((0 <= invRecv3(o_4) && invRecv3(o_4) < (alen(origL): int)) && NoPerm < 2 / 3) && qpRange3(o_4)) ==> QPMask[o_4, Integer__item] == Mask[o_4, Integer__item])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer__item] }
+        (((0 <= invRecv3(o_9) && invRecv3(o_9) < (alen(origL): int)) && NoPerm < 2 / 3) && qpRange3(o_9) ==> (NoPerm < 2 / 3 ==> (loc(origL, invRecv3(o_9)): Ref) == o_9) && QPMask[o_9, Integer__item] == Mask[o_9, Integer__item] + 2 / 3) && (!(((0 <= invRecv3(o_9) && invRecv3(o_9) < (alen(origL): int)) && NoPerm < 2 / 3) && qpRange3(o_9)) ==> QPMask[o_9, Integer__item] == Mask[o_9, Integer__item])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer__item ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer__item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1007,42 +1007,42 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
           assume false;
         }
       havoc QPMask;
-      assert {:msg "  Contract might not be well-formed. Quantified resource (loc(newL, i): Ref).Integer__item might not be injective. (0483a.vpr@35.12--35.116) [208642]"}
-        (forall i_3: int, i_3_1: int ::
+      assert {:msg "  Contract might not be well-formed. Quantified resource (loc(newL, i): Ref).Integer__item might not be injective. (0483a.vpr@35.12--35.116) [57155]"}
+        (forall i_3_2: int, i_3_3: int ::
         
-        (((i_3 != i_3_1 && (0 <= i_3 && i_3 < (alen(newL): int))) && (0 <= i_3_1 && i_3_1 < (alen(newL): int))) && NoPerm < 2 / 3) && NoPerm < 2 / 3 ==> (loc(newL, i_3): Ref) != (loc(newL, i_3_1): Ref)
+        (((i_3_2 != i_3_3 && (0 <= i_3_2 && i_3_2 < (alen(newL): int))) && (0 <= i_3_3 && i_3_3 < (alen(newL): int))) && NoPerm < 2 / 3) && NoPerm < 2 / 3 ==> (loc(newL, i_3_2): Ref) != (loc(newL, i_3_3): Ref)
       );
       
       // -- Define Inverse Function
-        assume (forall i_3: int ::
-          { (loc(newL, i_3): Ref) } { (loc(newL, i_3): Ref) }
-          (0 <= i_3 && i_3 < (alen(newL): int)) && NoPerm < 2 / 3 ==> qpRange4((loc(newL, i_3): Ref)) && invRecv4((loc(newL, i_3): Ref)) == i_3
+        assume (forall i_3_2: int ::
+          { (loc(newL, i_3_2): Ref) } { (loc(newL, i_3_2): Ref) }
+          (0 <= i_3_2 && i_3_2 < (alen(newL): int)) && NoPerm < 2 / 3 ==> qpRange4((loc(newL, i_3_2): Ref)) && invRecv4((loc(newL, i_3_2): Ref)) == i_3_2
         );
-        assume (forall o_4: Ref ::
-          { invRecv4(o_4) }
-          ((0 <= invRecv4(o_4) && invRecv4(o_4) < (alen(newL): int)) && NoPerm < 2 / 3) && qpRange4(o_4) ==> (loc(newL, invRecv4(o_4)): Ref) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv4(o_9) }
+          ((0 <= invRecv4(o_9) && invRecv4(o_9) < (alen(newL): int)) && NoPerm < 2 / 3) && qpRange4(o_9) ==> (loc(newL, invRecv4(o_9)): Ref) == o_9
         );
       // Check that permission expression is non-negative for all fields
-      assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (0483a.vpr@35.12--35.116) [208643]"}
-        (forall i_3: int ::
-        { (loc(newL, i_3): Ref) } { (loc(newL, i_3): Ref) }
-        0 <= i_3 && i_3 < (alen(newL): int) ==> 2 / 3 >= NoPerm
+      assert {:msg "  Contract might not be well-formed. Fraction 2 / 3 might be negative. (0483a.vpr@35.12--35.116) [57156]"}
+        (forall i_3_2: int ::
+        { (loc(newL, i_3_2): Ref) } { (loc(newL, i_3_2): Ref) }
+        0 <= i_3_2 && i_3_2 < (alen(newL): int) ==> 2 / 3 >= NoPerm
       );
       
       // -- Assume set of fields is nonNull
-        assume (forall i_3: int ::
-          { (loc(newL, i_3): Ref) } { (loc(newL, i_3): Ref) }
-          (0 <= i_3 && i_3 < (alen(newL): int)) && 2 / 3 > NoPerm ==> (loc(newL, i_3): Ref) != null
+        assume (forall i_3_2: int ::
+          { (loc(newL, i_3_2): Ref) } { (loc(newL, i_3_2): Ref) }
+          (0 <= i_3_2 && i_3_2 < (alen(newL): int)) && 2 / 3 > NoPerm ==> (loc(newL, i_3_2): Ref) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, Integer__item] }
-          (((0 <= invRecv4(o_4) && invRecv4(o_4) < (alen(newL): int)) && NoPerm < 2 / 3) && qpRange4(o_4) ==> (NoPerm < 2 / 3 ==> (loc(newL, invRecv4(o_4)): Ref) == o_4) && QPMask[o_4, Integer__item] == Mask[o_4, Integer__item] + 2 / 3) && (!(((0 <= invRecv4(o_4) && invRecv4(o_4) < (alen(newL): int)) && NoPerm < 2 / 3) && qpRange4(o_4)) ==> QPMask[o_4, Integer__item] == Mask[o_4, Integer__item])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, Integer__item] }
+          (((0 <= invRecv4(o_9) && invRecv4(o_9) < (alen(newL): int)) && NoPerm < 2 / 3) && qpRange4(o_9) ==> (NoPerm < 2 / 3 ==> (loc(newL, invRecv4(o_9)): Ref) == o_9) && QPMask[o_9, Integer__item] == Mask[o_9, Integer__item] + 2 / 3) && (!(((0 <= invRecv4(o_9) && invRecv4(o_9) < (alen(newL): int)) && NoPerm < 2 / 3) && qpRange4(o_9)) ==> QPMask[o_9, Integer__item] == Mask[o_9, Integer__item])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != Integer__item ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != Integer__item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
@@ -1052,34 +1052,34 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: rep__1 := IsReordered(origL, order, newL, |order|) -- 0483a.vpr@38.3--38.53
     
     // -- Check definedness of IsReordered(origL, order, newL, |order|)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function IsReordered might not hold. Fraction 1 / 2 might be negative. (0483a.vpr@38.13--38.53) [208644]"}
+          assert {:msg "  Precondition of function IsReordered might not hold. Fraction 1 / 2 might be negative. (0483a.vpr@38.13--38.53) [57157]"}
             (forall i_4_1: int ::
             { (loc(origL, i_4_1): Ref) } { (loc(origL, i_4_1): Ref) }
             (0 <= i_4_1 && i_4_1 < (alen(origL): int)) && dummyFunction(Heap[(loc(origL, i_4_1): Ref), Integer__item]) ==> 1 / 2 >= NoPerm
           );
         
         // -- check if receiver (loc(origL, i): Ref) is injective
-          assert {:msg "  Precondition of function IsReordered might not hold. Quantified resource (loc(origL, i): Ref).Integer__item might not be injective. (0483a.vpr@38.13--38.53) [208645]"}
+          assert {:msg "  Precondition of function IsReordered might not hold. Quantified resource (loc(origL, i): Ref).Integer__item might not be injective. (0483a.vpr@38.13--38.53) [57158]"}
             (forall i_4_1: int, i_4_2: int ::
             { neverTriggered5(i_4_1), neverTriggered5(i_4_2) }
             (((i_4_1 != i_4_2 && (0 <= i_4_1 && i_4_1 < (alen(origL): int))) && (0 <= i_4_2 && i_4_2 < (alen(origL): int))) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (loc(origL, i_4_1): Ref) != (loc(origL, i_4_2): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function IsReordered might not hold. There might be insufficient permission to access (loc(origL, i): Ref).Integer__item (0483a.vpr@38.13--38.53) [208646]"}
+          assert {:msg "  Precondition of function IsReordered might not hold. There might be insufficient permission to access (loc(origL, i): Ref).Integer__item (0483a.vpr@38.13--38.53) [57159]"}
             (forall i_4_1: int ::
             { (loc(origL, i_4_1): Ref) } { (loc(origL, i_4_1): Ref) }
             0 <= i_4_1 && i_4_1 < (alen(origL): int) ==> 1 / 2 > NoPerm ==> Mask[(loc(origL, i_4_1): Ref), Integer__item] > NoPerm
@@ -1090,42 +1090,42 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
             { (loc(origL, i_4_1): Ref) } { (loc(origL, i_4_1): Ref) }
             (0 <= i_4_1 && i_4_1 < (alen(origL): int)) && NoPerm < 1 / 2 ==> qpRange5((loc(origL, i_4_1): Ref)) && invRecv5((loc(origL, i_4_1): Ref)) == i_4_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv5(o_4) }
-            (0 <= invRecv5(o_4) && invRecv5(o_4) < (alen(origL): int)) && (NoPerm < 1 / 2 && qpRange5(o_4)) ==> (loc(origL, invRecv5(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv5(o_9) }
+            (0 <= invRecv5(o_9) && invRecv5(o_9) < (alen(origL): int)) && (NoPerm < 1 / 2 && qpRange5(o_9)) ==> (loc(origL, invRecv5(o_9)): Ref) == o_9
           );
         if (origL != newL) {
           havoc QPMask;
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function IsReordered might not hold. Fraction 1 / 2 might be negative. (0483a.vpr@38.13--38.53) [208647]"}
-              (forall i_5: int ::
-              { (loc(newL, i_5): Ref) } { (loc(newL, i_5): Ref) }
-              (0 <= i_5 && i_5 < (alen(newL): int)) && dummyFunction(Heap[(loc(newL, i_5): Ref), Integer__item]) ==> 1 / 2 >= NoPerm
+            assert {:msg "  Precondition of function IsReordered might not hold. Fraction 1 / 2 might be negative. (0483a.vpr@38.13--38.53) [57160]"}
+              (forall i_5_1: int ::
+              { (loc(newL, i_5_1): Ref) } { (loc(newL, i_5_1): Ref) }
+              (0 <= i_5_1 && i_5_1 < (alen(newL): int)) && dummyFunction(Heap[(loc(newL, i_5_1): Ref), Integer__item]) ==> 1 / 2 >= NoPerm
             );
           
           // -- check if receiver (loc(newL, i): Ref) is injective
-            assert {:msg "  Precondition of function IsReordered might not hold. Quantified resource (loc(newL, i): Ref).Integer__item might not be injective. (0483a.vpr@38.13--38.53) [208648]"}
-              (forall i_5: int, i_5_1: int ::
-              { neverTriggered6(i_5), neverTriggered6(i_5_1) }
-              (((i_5 != i_5_1 && (0 <= i_5 && i_5 < (alen(newL): int))) && (0 <= i_5_1 && i_5_1 < (alen(newL): int))) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (loc(newL, i_5): Ref) != (loc(newL, i_5_1): Ref)
+            assert {:msg "  Precondition of function IsReordered might not hold. Quantified resource (loc(newL, i): Ref).Integer__item might not be injective. (0483a.vpr@38.13--38.53) [57161]"}
+              (forall i_5_1: int, i_5_2: int ::
+              { neverTriggered6(i_5_1), neverTriggered6(i_5_2) }
+              (((i_5_1 != i_5_2 && (0 <= i_5_1 && i_5_1 < (alen(newL): int))) && (0 <= i_5_2 && i_5_2 < (alen(newL): int))) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (loc(newL, i_5_1): Ref) != (loc(newL, i_5_2): Ref)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function IsReordered might not hold. There might be insufficient permission to access (loc(newL, i): Ref).Integer__item (0483a.vpr@38.13--38.53) [208649]"}
-              (forall i_5: int ::
-              { (loc(newL, i_5): Ref) } { (loc(newL, i_5): Ref) }
-              0 <= i_5 && i_5 < (alen(newL): int) ==> 1 / 2 > NoPerm ==> Mask[(loc(newL, i_5): Ref), Integer__item] > NoPerm
+            assert {:msg "  Precondition of function IsReordered might not hold. There might be insufficient permission to access (loc(newL, i): Ref).Integer__item (0483a.vpr@38.13--38.53) [57162]"}
+              (forall i_5_1: int ::
+              { (loc(newL, i_5_1): Ref) } { (loc(newL, i_5_1): Ref) }
+              0 <= i_5_1 && i_5_1 < (alen(newL): int) ==> 1 / 2 > NoPerm ==> Mask[(loc(newL, i_5_1): Ref), Integer__item] > NoPerm
             );
           
           // -- assumptions for inverse of receiver (loc(newL, i): Ref)
-            assume (forall i_5: int ::
-              { (loc(newL, i_5): Ref) } { (loc(newL, i_5): Ref) }
-              (0 <= i_5 && i_5 < (alen(newL): int)) && NoPerm < 1 / 2 ==> qpRange6((loc(newL, i_5): Ref)) && invRecv6((loc(newL, i_5): Ref)) == i_5
+            assume (forall i_5_1: int ::
+              { (loc(newL, i_5_1): Ref) } { (loc(newL, i_5_1): Ref) }
+              (0 <= i_5_1 && i_5_1 < (alen(newL): int)) && NoPerm < 1 / 2 ==> qpRange6((loc(newL, i_5_1): Ref)) && invRecv6((loc(newL, i_5_1): Ref)) == i_5_1
             );
-            assume (forall o_4: Ref ::
-              { invRecv6(o_4) }
-              (0 <= invRecv6(o_4) && invRecv6(o_4) < (alen(newL): int)) && (NoPerm < 1 / 2 && qpRange6(o_4)) ==> (loc(newL, invRecv6(o_4)): Ref) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv6(o_9) }
+              (0 <= invRecv6(o_9) && invRecv6(o_9) < (alen(newL): int)) && (NoPerm < 1 / 2 && qpRange6(o_9)) ==> (loc(newL, invRecv6(o_9)): Ref) == o_9
             );
         }
         // Finish exhale
@@ -1144,27 +1144,27 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
   //     0 <= i__2 && i__2 < |order| ==>
   //     (loc(newL, i__2): Ref).Integer__item ==
   //     (loc(origL, order[i__2]): Ref).Integer__item) -- 0483a.vpr@40.11--40.181
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (rep__1) {
       
       // -- Check definedness of (forall i__2: Int :: { (loc(origL, order[i__2]): Ref) } 0 <= i__2 && i__2 < |order| ==> (loc(newL, i__2): Ref).Integer__item == (loc(origL, order[i__2]): Ref).Integer__item)
         if (*) {
           if (0 <= i__2 && i__2 < Seq#Length(order)) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access (loc(newL, i__2): Ref).Integer__item (0483a.vpr@40.19--40.180) [208650]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access (loc(newL, i__2): Ref).Integer__item (0483a.vpr@40.19--40.180) [57163]"}
               HasDirectPerm(ExhaleWellDef0Mask, (loc(newL, i__2): Ref), Integer__item);
-            assert {:msg "  Assert might fail. Index order[i__2] into order might be negative. (0483a.vpr@40.19--40.180) [208651]"}
+            assert {:msg "  Assert might fail. Index order[i__2] into order might be negative. (0483a.vpr@40.19--40.180) [57164]"}
               i__2 >= 0;
-            assert {:msg "  Assert might fail. Index order[i__2] into order might exceed sequence length. (0483a.vpr@40.19--40.180) [208652]"}
+            assert {:msg "  Assert might fail. Index order[i__2] into order might exceed sequence length. (0483a.vpr@40.19--40.180) [57165]"}
               i__2 < Seq#Length(order);
-            assert {:msg "  Assert might fail. There might be insufficient permission to access (loc(origL, order[i__2]): Ref).Integer__item (0483a.vpr@40.19--40.180) [208653]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access (loc(origL, order[i__2]): Ref).Integer__item (0483a.vpr@40.19--40.180) [57166]"}
               HasDirectPerm(ExhaleWellDef0Mask, (loc(origL, Seq#Index(order, i__2)): Ref), Integer__item);
           }
           assume false;
         }
       if (*) {
         if (0 <= i__2_1 && i__2_1 < Seq#Length(order)) {
-          assert {:msg "  Assert might fail. Assertion (loc(newL, i__2): Ref).Integer__item == (loc(origL, order[i__2]): Ref).Integer__item might not hold. (0483a.vpr@40.19--40.180) [208654]"}
+          assert {:msg "  Assert might fail. Assertion (loc(newL, i__2): Ref).Integer__item == (loc(origL, order[i__2]): Ref).Integer__item might not hold. (0483a.vpr@40.19--40.180) [57167]"}
             Heap[(loc(newL, i__2_1): Ref), Integer__item] == Heap[(loc(origL, Seq#Index(order, i__2_1)): Ref), Integer__item];
         }
         assume false;
@@ -1187,13 +1187,13 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
       if (rep__1) {
         if (*) {
           if (0 <= i__2_2 && i__2_2 < Seq#Length(order)) {
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access (loc(newL, i__2): Ref).Integer__item (0483a.vpr@41.3--41.181) [208655]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access (loc(newL, i__2): Ref).Integer__item (0483a.vpr@41.3--41.181) [57168]"}
               HasDirectPerm(Mask, (loc(newL, i__2_2): Ref), Integer__item);
-            assert {:msg "  Assignment might fail. Index order[i__2] into order might be negative. (0483a.vpr@41.3--41.181) [208656]"}
+            assert {:msg "  Assignment might fail. Index order[i__2] into order might be negative. (0483a.vpr@41.3--41.181) [57169]"}
               i__2_2 >= 0;
-            assert {:msg "  Assignment might fail. Index order[i__2] into order might exceed sequence length. (0483a.vpr@41.3--41.181) [208657]"}
+            assert {:msg "  Assignment might fail. Index order[i__2] into order might exceed sequence length. (0483a.vpr@41.3--41.181) [57170]"}
               i__2_2 < Seq#Length(order);
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access (loc(origL, order[i__2]): Ref).Integer__item (0483a.vpr@41.3--41.181) [208658]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access (loc(origL, order[i__2]): Ref).Integer__item (0483a.vpr@41.3--41.181) [57171]"}
               HasDirectPerm(Mask, (loc(origL, Seq#Index(order, i__2_2)): Ref), Integer__item);
           }
           assume false;
@@ -1211,27 +1211,27 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
   //     0 <= i__2 && i__2 < |order| ==>
   //     (loc(newL, i__2): Ref).Integer__item ==
   //     (loc(origL, order[i__2]): Ref).Integer__item) -- 0483a.vpr@42.11--42.181
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (rep__1) {
       
       // -- Check definedness of (forall i__2: Int :: { (loc(origL, order[i__2]): Ref) } 0 <= i__2 && i__2 < |order| ==> (loc(newL, i__2): Ref).Integer__item == (loc(origL, order[i__2]): Ref).Integer__item)
         if (*) {
           if (0 <= i__2_3 && i__2_3 < Seq#Length(order)) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access (loc(newL, i__2): Ref).Integer__item (0483a.vpr@42.19--42.180) [208659]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access (loc(newL, i__2): Ref).Integer__item (0483a.vpr@42.19--42.180) [57172]"}
               HasDirectPerm(ExhaleWellDef0Mask, (loc(newL, i__2_3): Ref), Integer__item);
-            assert {:msg "  Assert might fail. Index order[i__2] into order might be negative. (0483a.vpr@42.19--42.180) [208660]"}
+            assert {:msg "  Assert might fail. Index order[i__2] into order might be negative. (0483a.vpr@42.19--42.180) [57173]"}
               i__2_3 >= 0;
-            assert {:msg "  Assert might fail. Index order[i__2] into order might exceed sequence length. (0483a.vpr@42.19--42.180) [208661]"}
+            assert {:msg "  Assert might fail. Index order[i__2] into order might exceed sequence length. (0483a.vpr@42.19--42.180) [57174]"}
               i__2_3 < Seq#Length(order);
-            assert {:msg "  Assert might fail. There might be insufficient permission to access (loc(origL, order[i__2]): Ref).Integer__item (0483a.vpr@42.19--42.180) [208662]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access (loc(origL, order[i__2]): Ref).Integer__item (0483a.vpr@42.19--42.180) [57175]"}
               HasDirectPerm(ExhaleWellDef0Mask, (loc(origL, Seq#Index(order, i__2_3)): Ref), Integer__item);
           }
           assume false;
         }
       if (*) {
         if (0 <= i__2_6 && i__2_6 < Seq#Length(order)) {
-          assert {:msg "  Assert might fail. Assertion (loc(newL, i__2): Ref).Integer__item == (loc(origL, order[i__2]): Ref).Integer__item might not hold. (0483a.vpr@42.19--42.180) [208663]"}
+          assert {:msg "  Assert might fail. Assertion (loc(newL, i__2): Ref).Integer__item == (loc(origL, order[i__2]): Ref).Integer__item might not hold. (0483a.vpr@42.19--42.180) [57176]"}
             Heap[(loc(newL, i__2_6): Ref), Integer__item] == Heap[(loc(origL, Seq#Index(order, i__2_6)): Ref), Integer__item];
         }
         assume false;
@@ -1244,9 +1244,9 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result -- 0483a.vpr@43.3--43.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion sys__result might not hold. (0483a.vpr@43.10--43.21) [208664]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion sys__result might not hold. (0483a.vpr@43.10--43.21) [57177]"}
       sys__result;
     assume state(Heap, Mask);
 }

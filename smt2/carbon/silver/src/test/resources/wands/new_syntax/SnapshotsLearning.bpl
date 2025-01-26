@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:11:41
+// Date:         2025-01-26 21:45:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/SnapshotsLearning.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/SnapshotsLearning-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -356,14 +356,14 @@ procedure get#definedness(x: Ref) returns (Result: int)
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Cell(x) (SnapshotsLearning.vpr@11.1--14.2) [137080]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Cell(x) (SnapshotsLearning.vpr@11.1--14.2) [222087]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Cell(x)];
       perm := FullPerm;
       assume x != null;
       UnfoldingMask := UnfoldingMask[x, f_7:=UnfoldingMask[x, f_7] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@11.1--14.2) [137081]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@11.1--14.2) [222088]"}
         HasDirectPerm(UnfoldingMask, x, f_7);
       
       // -- Free assumptions (exp module)
@@ -503,7 +503,7 @@ procedure test0(x: Ref) returns ()
         ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
         // permLe
-        assert {:msg "  Inhale might fail. Magic wand instance not found. (SnapshotsLearning.vpr@17.12--17.75) [137082]"}
+        assert {:msg "  Inhale might fail. Magic wand instance not found. (SnapshotsLearning.vpr@17.12--17.75) [222089]"}
           FullPerm <= ApplyingMask[null, wand(true, x, FullPerm)];
         ApplyingMask := ApplyingMask[null, wand(true, x, FullPerm):=ApplyingMask[null, wand(true, x, FullPerm)] - FullPerm];
       assume state(ApplyingHeap, ApplyingMask);
@@ -542,7 +542,7 @@ procedure test0(x: Ref) returns ()
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume false;
       }
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@17.12--17.75) [137083]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@17.12--17.75) [222090]"}
         HasDirectPerm(ApplyingMask, x, f_7);
     assume Heap[x, f_7] == 0;
     assume state(Heap, Mask);
@@ -554,7 +554,7 @@ procedure test0(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLearning.vpr@18.5--18.28) [137084]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLearning.vpr@18.5--18.28) [222091]"}
         FullPerm <= Mask[null, wand(true, x, FullPerm)];
       Mask := Mask[null, wand(true, x, FullPerm):=Mask[null, wand(true, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
@@ -581,9 +581,9 @@ procedure test0(x: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@19.12--19.20) [137087]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@19.12--19.20) [222094]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (SnapshotsLearning.vpr@19.12--19.20) [137088]"}
+    assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (SnapshotsLearning.vpr@19.12--19.20) [222095]"}
       Heap[x, f_7] == 0;
     assume state(Heap, Mask);
 }
@@ -592,7 +592,7 @@ procedure test0(x: Ref) returns ()
 // Translation of method test1
 // ==================================================
 
-procedure test1(x: Ref) returns ()
+procedure test1_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -650,7 +650,7 @@ procedure test1(x: Ref) returns ()
         assume state(WandDefRHSHeap, WandDefRHSMask);
         
         // -- Check definedness of x.f == 0
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@23.12--24.28) [137089]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@23.12--24.28) [222096]"}
             HasDirectPerm(WandDefRHSMask, x, f_7);
         if (WandDefRHSHeap[x, f_7] == 0) {
           perm := FullPerm;
@@ -672,7 +672,7 @@ procedure test1(x: Ref) returns ()
         ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
         // permLe
-        assert {:msg "  Inhale might fail. Magic wand instance not found. (SnapshotsLearning.vpr@23.12--24.28) [137090]"}
+        assert {:msg "  Inhale might fail. Magic wand instance not found. (SnapshotsLearning.vpr@23.12--24.28) [222097]"}
           FullPerm <= ApplyingMask[null, wand_1(true, x, FullPerm, x, 0, x, FullPerm)];
         ApplyingMask := ApplyingMask[null, wand_1(true, x, FullPerm, x, 0, x, FullPerm):=ApplyingMask[null, wand_1(true, x, FullPerm, x, 0, x, FullPerm)] - FullPerm];
       assume state(ApplyingHeap, ApplyingMask);
@@ -716,7 +716,7 @@ procedure test1(x: Ref) returns ()
         assume state(WandDefRHSHeap, WandDefRHSMask);
         
         // -- Check definedness of x.f == 0
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@23.12--24.28) [137091]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@23.12--24.28) [222098]"}
             HasDirectPerm(WandDefRHSMask, x, f_7);
         if (WandDefRHSHeap[x, f_7] == 0) {
           perm := FullPerm;
@@ -727,10 +727,10 @@ procedure test1(x: Ref) returns ()
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume false;
       }
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@23.12--24.28) [137092]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@23.12--24.28) [222099]"}
         HasDirectPerm(ApplyingMask, x, f_7);
       if (ApplyingHeap[x, f_7] == 0) {
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access x.g (SnapshotsLearning.vpr@23.12--24.28) [137093]"}
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access x.g (SnapshotsLearning.vpr@23.12--24.28) [222100]"}
           HasDirectPerm(ApplyingMask, x, g);
       }
     assume Heap[x, f_7] == 0 ==> Heap[x, g] == 0;
@@ -743,7 +743,7 @@ procedure test1(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLearning.vpr@25.5--25.55) [137094]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLearning.vpr@25.5--25.55) [222101]"}
         FullPerm <= Mask[null, wand_1(true, x, FullPerm, x, 0, x, FullPerm)];
       Mask := Mask[null, wand_1(true, x, FullPerm, x, 0, x, FullPerm):=Mask[null, wand_1(true, x, FullPerm, x, 0, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
@@ -774,7 +774,7 @@ procedure test1(x: Ref) returns ()
   // -- Translating statement: if (x.f == 0) -- SnapshotsLearning.vpr@26.5--28.6
     
     // -- Check definedness of x.f == 0
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@26.9--26.17) [137098]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@26.9--26.17) [222105]"}
         HasDirectPerm(Mask, x, f_7);
     if (Heap[x, f_7] == 0) {
       
@@ -783,9 +783,9 @@ procedure test1(x: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of x.g == 0
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (SnapshotsLearning.vpr@27.16--27.24) [137099]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (SnapshotsLearning.vpr@27.16--27.24) [222106]"}
             HasDirectPerm(ExhaleWellDef0Mask, x, g);
-        assert {:msg "  Assert might fail. Assertion x.g == 0 might not hold. (SnapshotsLearning.vpr@27.16--27.24) [137100]"}
+        assert {:msg "  Assert might fail. Assertion x.g == 0 might not hold. (SnapshotsLearning.vpr@27.16--27.24) [222107]"}
           Heap[x, g] == 0;
         assume state(Heap, Mask);
     }
@@ -796,7 +796,7 @@ procedure test1(x: Ref) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(x: Ref) returns ()
+procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -867,7 +867,7 @@ procedure test2(x: Ref) returns ()
         ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
         // permLe
-        assert {:msg "  Inhale might fail. Magic wand instance not found. (SnapshotsLearning.vpr@32.12--32.76) [137101]"}
+        assert {:msg "  Inhale might fail. Magic wand instance not found. (SnapshotsLearning.vpr@32.12--32.76) [222108]"}
           FullPerm <= ApplyingMask[null, wand_2(true, x)];
         ApplyingMask := ApplyingMask[null, wand_2(true, x):=ApplyingMask[null, wand_2(true, x)] - FullPerm];
       assume state(ApplyingHeap, ApplyingMask);
@@ -909,7 +909,7 @@ procedure test2(x: Ref) returns ()
         ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access Cell(x) (SnapshotsLearning.vpr@32.65--32.71) [137102]"}
+        assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access Cell(x) (SnapshotsLearning.vpr@32.65--32.71) [222109]"}
           NoPerm < perm ==> NoPerm < ApplyingMask[null, Cell(x)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -928,7 +928,7 @@ procedure test2(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLearning.vpr@33.5--33.27) [137103]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLearning.vpr@33.5--33.27) [222110]"}
         FullPerm <= Mask[null, wand_2(true, x)];
       Mask := Mask[null, wand_2(true, x):=Mask[null, wand_2(true, x)] - FullPerm];
     assume state(Heap, Mask);
@@ -956,7 +956,7 @@ procedure test2(x: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Cell(x) might fail. There might be insufficient permission to access Cell(x) (SnapshotsLearning.vpr@34.5--34.19) [137108]"}
+      assert {:msg "  Unfolding Cell(x) might fail. There might be insufficient permission to access Cell(x) (SnapshotsLearning.vpr@34.5--34.19) [222115]"}
         perm <= Mask[null, Cell(x)];
     }
     Mask := Mask[null, Cell(x):=Mask[null, Cell(x)] - perm];
@@ -978,9 +978,9 @@ procedure test2(x: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@35.12--35.20) [137110]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@35.12--35.20) [222117]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (SnapshotsLearning.vpr@35.12--35.20) [137111]"}
+    assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (SnapshotsLearning.vpr@35.12--35.20) [222118]"}
       Heap[x, f_7] == 0;
     assume state(Heap, Mask);
 }

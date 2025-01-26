@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:04:41
+// Date:         2025-01-26 21:44:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue024.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue024-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -320,16 +320,16 @@ procedure incompleteness_01(x: Ref) returns ()
   var perm: Perm;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -358,8 +358,8 @@ procedure incompleteness_01(x: Ref) returns ()
         
         // -- Translating statement: label lhs1 -- issue024.vpr@21.25--21.46
           lhs1:
-          Labellhs1Heap := WandDefLHSHeap;
           Labellhs1Mask := WandDefLHSMask;
+          Labellhs1Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -377,8 +377,8 @@ procedure incompleteness_01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -394,35 +394,35 @@ procedure incompleteness_01(x: Ref) returns ()
   }
   
   // -- Translating statement: assert x.f == old(x.f) -- issue024.vpr@24.5--24.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == old(x.f)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@24.12--24.27) [123560]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@24.12--24.27) [207573]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@24.12--24.27) [123561]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@24.12--24.27) [207574]"}
         HasDirectPerm(oldMask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == old(x.f) might not hold. (issue024.vpr@24.12--24.27) [123562]"}
+    assert {:msg "  Assert might fail. Assertion x.f == old(x.f) might not hold. (issue024.vpr@24.12--24.27) [207575]"}
       Heap[x, f_7] == oldHeap[x, f_7];
     assume state(Heap, Mask);
   
   // -- Translating statement: apply acc(x.f, write) --* acc(x.f, write) -- issue024.vpr@25.5--25.34
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue024.vpr@25.5--25.34) [123563]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue024.vpr@25.5--25.34) [207576]"}
         FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm)];
       Mask := Mask[null, wand(x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (issue024.vpr@25.5--25.34) [123565]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (issue024.vpr@25.5--25.34) [207578]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -441,24 +441,24 @@ procedure incompleteness_01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == old(x.f) -- issue024.vpr@27.5--27.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == old(x.f)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@27.12--27.27) [123567]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@27.12--27.27) [207580]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@27.12--27.27) [123568]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@27.12--27.27) [207581]"}
         HasDirectPerm(oldMask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == old(x.f) might not hold. (issue024.vpr@27.12--27.27) [123569]"}
+    assert {:msg "  Assert might fail. Assertion x.f == old(x.f) might not hold. (issue024.vpr@27.12--27.27) [207582]"}
       Heap[x, f_7] == oldHeap[x, f_7];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of incompleteness_01 might not hold. There might be insufficient permission to access x.f (issue024.vpr@22.11--22.19) [123570]"}
+      assert {:msg "  Postcondition of incompleteness_01 might not hold. There might be insufficient permission to access x.f (issue024.vpr@22.11--22.19) [207583]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -476,12 +476,12 @@ procedure comparison(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var newVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -504,8 +504,8 @@ procedure comparison(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -521,24 +521,24 @@ procedure comparison(x: Ref) returns ()
   }
   
   // -- Translating statement: assert x.f == old(x.f) -- issue024.vpr@35.5--35.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == old(x.f)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@35.12--35.27) [123571]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@35.12--35.27) [207584]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@35.12--35.27) [123572]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@35.12--35.27) [207585]"}
         HasDirectPerm(oldMask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == old(x.f) might not hold. (issue024.vpr@35.12--35.27) [123573]"}
+    assert {:msg "  Assert might fail. Assertion x.f == old(x.f) might not hold. (issue024.vpr@35.12--35.27) [207586]"}
       Heap[x, f_7] == oldHeap[x, f_7];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(compare(x), write) -- issue024.vpr@36.5--36.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding compare(x) might fail. There might be insufficient permission to access x.f (issue024.vpr@36.5--36.20) [123576]"}
+      assert {:msg "  Folding compare(x) might fail. There might be insufficient permission to access x.f (issue024.vpr@36.5--36.20) [207589]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -560,11 +560,11 @@ procedure comparison(x: Ref) returns ()
   // -- Translating statement: unfold acc(compare(x), write) -- issue024.vpr@37.5--37.22
     assume compare#trigger(Heap, compare(x));
     assume Heap[null, compare(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding compare(x) might fail. There might be insufficient permission to access compare(x) (issue024.vpr@37.5--37.22) [123580]"}
+      assert {:msg "  Unfolding compare(x) might fail. There might be insufficient permission to access compare(x) (issue024.vpr@37.5--37.22) [207593]"}
         perm <= Mask[null, compare(x)];
     }
     Mask := Mask[null, compare(x):=Mask[null, compare(x)] - perm];
@@ -582,24 +582,24 @@ procedure comparison(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == old(x.f) -- issue024.vpr@38.5--38.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == old(x.f)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@38.12--38.27) [123582]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@38.12--38.27) [207595]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@38.12--38.27) [123583]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (issue024.vpr@38.12--38.27) [207596]"}
         HasDirectPerm(oldMask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == old(x.f) might not hold. (issue024.vpr@38.12--38.27) [123584]"}
+    assert {:msg "  Assert might fail. Assertion x.f == old(x.f) might not hold. (issue024.vpr@38.12--38.27) [207597]"}
       Heap[x, f_7] == oldHeap[x, f_7];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of comparison might not hold. There might be insufficient permission to access x.f (issue024.vpr@33.11--33.19) [123585]"}
+      assert {:msg "  Postcondition of comparison might not hold. There might be insufficient permission to access x.f (issue024.vpr@33.11--33.19) [207598]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -617,16 +617,16 @@ procedure incompleteness_02(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -643,8 +643,8 @@ procedure incompleteness_02(x: Ref) returns ()
   var b_4: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
@@ -671,8 +671,8 @@ procedure incompleteness_02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, write) --* acc(x.f, write) && (x.f ==> acc(x.g, write)) {
   // } -- issue024.vpr@47.3--47.18
@@ -693,8 +693,8 @@ procedure incompleteness_02(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- issue024.vpr@47.11--47.18
       lhs3:
-      Labellhs3Heap := Ops_1Heap;
       Labellhs3Mask := Ops_1Mask;
+      Labellhs3Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, write) && (x.f ==> acc(x.g, write))
@@ -706,7 +706,7 @@ procedure incompleteness_02(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (issue024.vpr@47.3--47.18) [123586]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (issue024.vpr@47.3--47.18) [207599]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -749,7 +749,7 @@ procedure incompleteness_02(x: Ref) returns ()
             Heap := Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, x, FullPerm):=Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (issue024.vpr@47.3--47.18) [123587]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (issue024.vpr@47.3--47.18) [207600]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -766,7 +766,7 @@ procedure incompleteness_02(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_1Mask[rcvLocal, g] + neededTransfer;
-          assert {:msg "  Packaging wand might fail. Fraction acc(x.g, write) might be negative. (issue024.vpr@47.3--47.18) [123588]"}
+          assert {:msg "  Packaging wand might fail. Fraction acc(x.g, write) might be negative. (issue024.vpr@47.3--47.18) [207601]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -809,7 +809,7 @@ procedure incompleteness_02(x: Ref) returns ()
                 Heap := Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, x, FullPerm):=Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, x, FullPerm)][x, g:=true]];
               }
             }
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.g (issue024.vpr@47.3--47.18) [123589]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.g (issue024.vpr@47.3--47.18) [207602]"}
             (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, g] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -829,27 +829,27 @@ procedure incompleteness_02(x: Ref) returns ()
   // -- Translating statement: if (x.f) -- issue024.vpr@49.3--52.4
     
     // -- Check definedness of x.f
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.f (issue024.vpr@49.6--49.9) [123590]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.f (issue024.vpr@49.6--49.9) [207603]"}
         HasDirectPerm(Mask, x, f_7);
     if (Heap[x, f_7]) {
       
       // -- Translating statement: apply acc(x.f, write) --* acc(x.f, write) && (x.f ==> acc(x.g, write)) -- issue024.vpr@50.5--50.18
         
         // -- check if wand is held and remove an instance
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           // permLe
-          assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue024.vpr@50.5--50.18) [123591]"}
+          assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue024.vpr@50.5--50.18) [207604]"}
             FullPerm <= Mask[null, wand_1(x, FullPerm, x, FullPerm, x, x, FullPerm)];
           Mask := Mask[null, wand_1(x, FullPerm, x, FullPerm, x, x, FullPerm):=Mask[null, wand_1(x, FullPerm, x, FullPerm, x, x, FullPerm)] - FullPerm];
         assume state(Heap, Mask);
         
         // -- check if LHS holds and remove permissions 
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (issue024.vpr@50.5--50.18) [123593]"}
+            assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (issue024.vpr@50.5--50.18) [207606]"}
               perm <= Mask[x, f_7];
           }
           Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -876,11 +876,11 @@ procedure incompleteness_02(x: Ref) returns ()
       // -- Translating statement: assert acc(x.g, write) -- issue024.vpr@51.5--51.20
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (issue024.vpr@51.12--51.20) [123597]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (issue024.vpr@51.12--51.20) [207610]"}
             perm <= AssertMask[x, g];
         }
         AssertMask := AssertMask[x, g:=AssertMask[x, g] - perm];

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:43
+// Date:         2025-01-26 21:43:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/assert.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/assert-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,15 +177,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique test_1: Field NormalField bool;
-axiom !IsPredicateField(test_1);
-axiom !IsWandField(test_1);
+const unique test_2: Field NormalField bool;
+axiom !IsPredicateField(test_2);
+axiom !IsWandField(test_2);
 
 // ==================================================
 // Translation of method t1
 // ==================================================
 
-procedure t1(b_24: bool, d: int, r_1: Ref) returns ()
+procedure t1_2(b_24: bool, d: int, r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -206,7 +206,7 @@ procedure t1(b_24: bool, d: int, r_1: Ref) returns ()
     assume b_24;
     perm := FullPerm;
     assume r_1 != null;
-    Mask := Mask[r_1, test_1:=Mask[r_1, test_1] + perm];
+    Mask := Mask[r_1, test_2:=Mask[r_1, test_2] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -217,9 +217,9 @@ procedure t1(b_24: bool, d: int, r_1: Ref) returns ()
       oldMask := Mask;
   
   // -- Translating statement: r.test := b -- assert.vpr@10.5--10.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.test (assert.vpr@10.5--10.16) [186646]"}
-      FullPerm == Mask[r_1, test_1];
-    Heap := Heap[r_1, test_1:=b_24];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.test (assert.vpr@10.5--10.16) [100776]"}
+      FullPerm == Mask[r_1, test_2];
+    Heap := Heap[r_1, test_2:=b_24];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b == r.test -- assert.vpr@11.5--11.25
@@ -227,9 +227,9 @@ procedure t1(b_24: bool, d: int, r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of b == r.test
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.test (assert.vpr@11.12--11.25) [186647]"}
-        HasDirectPerm(ExhaleWellDef0Mask, r_1, test_1);
-    assert {:msg "  Assert might fail. Assertion b == r.test might not hold. (assert.vpr@11.12--11.25) [186648]"}
-      b_24 == Heap[r_1, test_1];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.test (assert.vpr@11.12--11.25) [100777]"}
+        HasDirectPerm(ExhaleWellDef0Mask, r_1, test_2);
+    assert {:msg "  Assert might fail. Assertion b == r.test might not hold. (assert.vpr@11.12--11.25) [100778]"}
+      b_24 == Heap[r_1, test_2];
     assume state(Heap, Mask);
 }

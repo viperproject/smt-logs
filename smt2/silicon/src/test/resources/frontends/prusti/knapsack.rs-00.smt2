@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:28:05
+; Started: 2025-01-26 21:21:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1101,25 +1101,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-47|)))
+  :qid |quant-u-369|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-48|)))
+  :qid |quant-u-370|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-71|)))
+  :qid |quant-u-393|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-72|)))
+  :qid |quant-u-394|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-73|)))
+  :qid |quant-u-395|)))
 ; ---------- FUNCTION m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$----------
 (declare-fun _pure_1@1@00 () $Ref)
 (declare-fun result@2@00 () Int)
@@ -1155,25 +1155,25 @@
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@1@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@1@00))
-  :qid |quant-u-49|)))
+  :qid |quant-u-371|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@1@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-50|)))
+  :qid |quant-u-372|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@1@00)
     (and (>= result@2@00 0) (<= 0 result@2@00))))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-74|)))
+  :qid |quant-u-396|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-75|)))
+  :qid |quant-u-397|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-76|)))
+  :qid |quant-u-398|)))
 ; ---------- FUNCTION m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$----------
 (declare-fun _pure_1@3@00 () $Ref)
 (declare-fun _pure_2@4@00 () Int)
@@ -1260,25 +1260,25 @@
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@3@00 _pure_2@4@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-51|)))
+  :qid |quant-u-373|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref) (_pure_2@4@00 Int)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%stateless _pure_1@3@00 _pure_2@4@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-52|)))
+  :qid |quant-u-374|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref) (_pure_2@4@00 Int)) (!
   (let ((result@5@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition s@$ _pure_1@3@00 _pure_2@4@00)
     (and (>= result@5@00 0) (<= 0 result@5@00))))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-77|)))
+  :qid |quant-u-399|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref) (_pure_2@4@00 Int)) (!
   (let ((result@5@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-78|)))
+  :qid |quant-u-400|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref) (_pure_2@4@00 Int)) (!
   (let ((result@5@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_value$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-79|)))
+  :qid |quant-u-401|)))
 ; ---------- FUNCTION m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$----------
 (declare-fun _pure_1@6@00 () Int)
 (declare-fun _pure_2@7@00 () Int)
@@ -1328,11 +1328,11 @@
     (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00)
     (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-53|)))
+  :qid |quant-u-375|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%stateless _pure_1@6@00 _pure_2@7@00)
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-54|)))
+  :qid |quant-u-376|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (let ((result@8@00 (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))) (=>
     (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%precondition s@$ _pure_1@6@00 _pure_2@7@00)
@@ -1342,19 +1342,19 @@
         result@8@00
         (mirror$m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$__$TY$__$int$$$int$$$int$<Int> _pure_1@6@00 _pure_2@7@00)))))
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-80|)))
+  :qid |quant-u-402|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (let ((result@8@00 (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))) true)
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-81|)))
+  :qid |quant-u-403|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (let ((result@8@00 (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))) true)
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-82|)))
+  :qid |quant-u-404|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   (let ((result@8@00 (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))) true)
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-83|)))
+  :qid |quant-u-405|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1435,11 +1435,11 @@
       (m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00)
       (ite (not (< _pure_1@6@00 _pure_2@7@00)) _pure_1@6@00 _pure_2@7@00)))
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-84|)))
+  :qid |quant-u-406|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 Int) (_pure_2@7@00 Int)) (!
   true
   :pattern ((m_knapsack$$max$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00))
-  :qid |quant-u-85|)))
+  :qid |quant-u-407|)))
 ; ---------- FUNCTION m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$----------
 (declare-fun _pure_1@9@00 () $Ref)
 (declare-fun _pure_2@10@00 () Int)
@@ -1526,25 +1526,25 @@
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@9@00 _pure_2@10@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@9@00 _pure_2@10@00))
-  :qid |quant-u-55|)))
+  :qid |quant-u-377|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref) (_pure_2@10@00 Int)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%stateless _pure_1@9@00 _pure_2@10@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))
-  :qid |quant-u-56|)))
+  :qid |quant-u-378|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref) (_pure_2@10@00 Int)) (!
   (let ((result@11@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition s@$ _pure_1@9@00 _pure_2@10@00)
     (and (> result@11@00 0) (<= 0 result@11@00))))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))
-  :qid |quant-u-86|)))
+  :qid |quant-u-408|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref) (_pure_2@10@00 Int)) (!
   (let ((result@11@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))
-  :qid |quant-u-87|)))
+  :qid |quant-u-409|)))
 (assert (forall ((s@$ $Snap) (_pure_1@9@00 $Ref) (_pure_2@10@00 Int)) (!
   (let ((result@11@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@9@00 _pure_2@10@00))
-  :qid |quant-u-88|)))
+  :qid |quant-u-410|)))
 ; ---------- FUNCTION m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$----------
 (declare-fun _pure_1@12@00 () $Ref)
 (declare-fun result@13@00 () Int)
@@ -1579,25 +1579,25 @@
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@12@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@12@00))
-  :qid |quant-u-57|)))
+  :qid |quant-u-379|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@12@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))
-  :qid |quant-u-58|)))
+  :qid |quant-u-380|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   (let ((result@13@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@12@00)
     (<= 0 result@13@00)))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))
-  :qid |quant-u-89|)))
+  :qid |quant-u-411|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   (let ((result@13@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))
-  :qid |quant-u-90|)))
+  :qid |quant-u-412|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   (let ((result@13@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@12@00))
-  :qid |quant-u-91|)))
+  :qid |quant-u-413|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1893,11 +1893,11 @@
       (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@12@00)
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$)))))))))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@12@00))
-  :qid |quant-u-92|)))
+  :qid |quant-u-414|)))
 (assert (forall ((s@$ $Snap) (_pure_1@12@00 $Ref)) (!
   true
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$weight_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@12@00))
-  :qid |quant-u-93|)))
+  :qid |quant-u-415|)))
 ; ---------- FUNCTION m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$----------
 (declare-fun _pure_1@14@00 () $Ref)
 (declare-fun result@15@00 () Int)
@@ -1931,25 +1931,25 @@
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@14@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@14@00))
-  :qid |quant-u-59|)))
+  :qid |quant-u-381|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@14@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))
-  :qid |quant-u-60|)))
+  :qid |quant-u-382|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   (let ((result@15@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@14@00)
     (<= 0 result@15@00)))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))
-  :qid |quant-u-94|)))
+  :qid |quant-u-416|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   (let ((result@15@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))
-  :qid |quant-u-95|)))
+  :qid |quant-u-417|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   (let ((result@15@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@14@00))
-  :qid |quant-u-96|)))
+  :qid |quant-u-418|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -2232,11 +2232,11 @@
       (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@14@00)
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first ($Snap.second ($Snap.first s@$)))))))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@14@00))
-  :qid |quant-u-97|)))
+  :qid |quant-u-419|)))
 (assert (forall ((s@$ $Snap) (_pure_1@14@00 $Ref)) (!
   true
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$item_len$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@14@00))
-  :qid |quant-u-98|)))
+  :qid |quant-u-420|)))
 ; ---------- FUNCTION builtin$undef_int__$TY$__$int$----------
 (declare-fun result@16@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -2247,11 +2247,11 @@
     (builtin$undef_int__$TY$__$int$%limited s@$)
     (builtin$undef_int__$TY$__$int$ s@$))
   :pattern ((builtin$undef_int__$TY$__$int$ s@$))
-  :qid |quant-u-61|)))
+  :qid |quant-u-383|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$undef_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$undef_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-62|)))
+  :qid |quant-u-384|)))
 ; ---------- FUNCTION builtin$unreach_bool__$TY$__$bool$----------
 (declare-fun result@17@00 () Bool)
 ; ----- Well-definedness of specifications -----
@@ -2264,11 +2264,11 @@
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-63|)))
+  :qid |quant-u-385|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-64|)))
+  :qid |quant-u-386|)))
 ; ---------- FUNCTION m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$----------
 (declare-fun _pure_1@18@00 () $Ref)
 (declare-fun _pure_2@19@00 () Int)
@@ -2394,25 +2394,25 @@
     (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00)
     (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-65|)))
+  :qid |quant-u-387|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%stateless _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00)
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-66|)))
+  :qid |quant-u-388|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (let ((result@22@00 (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))) (=>
     (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00)
     (<= 0 result@22@00)))
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-99|)))
+  :qid |quant-u-421|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (let ((result@22@00 (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))) true)
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-100|)))
+  :qid |quant-u-422|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (let ((result@22@00 (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))) true)
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%limited s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-101|)))
+  :qid |quant-u-423|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -3981,7 +3981,7 @@
             _pure_2@19@00
             1) _pure_3@20@00 _pure_4@21@00)))))
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-102|)))
+  :qid |quant-u-424|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref) (_pure_2@19@00 Int) (_pure_3@20@00 Int) (_pure_4@21@00 Int)) (!
   (=>
     (m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$%precondition s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00)
@@ -4117,7 +4117,7 @@
             _pure_2@19@00
             1) _pure_3@20@00 _pure_4@21@00)))))
   :pattern ((m_knapsack$$m$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$$$int$ s@$ _pure_1@18@00 _pure_2@19@00 _pure_3@20@00 _pure_4@21@00))
-  :qid |quant-u-103|)))
+  :qid |quant-u-425|)))
 ; ---------- FUNCTION builtin$unreach_int__$TY$__$int$----------
 (declare-fun result@23@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -4130,11 +4130,11 @@
     (builtin$unreach_int__$TY$__$int$%limited s@$)
     (builtin$unreach_int__$TY$__$int$ s@$))
   :pattern ((builtin$unreach_int__$TY$__$int$ s@$))
-  :qid |quant-u-67|)))
+  :qid |quant-u-389|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$unreach_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-68|)))
+  :qid |quant-u-390|)))
 ; ---------- FUNCTION m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$----------
 (declare-fun _pure_1@24@00 () $Ref)
 (declare-fun _pure_2@25@00 () Int)
@@ -4283,25 +4283,25 @@
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00)
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
-  :qid |quant-u-69|)))
+  :qid |quant-u-391|)))
 (assert (forall ((s@$ $Snap) (_pure_1@24@00 $Ref) (_pure_2@25@00 Int) (_pure_3@26@00 Int)) (!
   (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%stateless _pure_1@24@00 _pure_2@25@00 _pure_3@26@00)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
-  :qid |quant-u-70|)))
+  :qid |quant-u-392|)))
 (assert (forall ((s@$ $Snap) (_pure_1@24@00 $Ref) (_pure_2@25@00 Int) (_pure_3@26@00 Int)) (!
   (let ((result@27@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))) (=>
     (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00)
     (<= 0 result@27@00)))
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
-  :qid |quant-u-104|)))
+  :qid |quant-u-426|)))
 (assert (forall ((s@$ $Snap) (_pure_1@24@00 $Ref) (_pure_2@25@00 Int) (_pure_3@26@00 Int)) (!
   (let ((result@27@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
-  :qid |quant-u-105|)))
+  :qid |quant-u-427|)))
 (assert (forall ((s@$ $Snap) (_pure_1@24@00 $Ref) (_pure_2@25@00 Int) (_pure_3@26@00 Int)) (!
   (let ((result@27@00 (m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))) true)
   :pattern ((m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$4$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_knapsack$$BestValues$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@24@00 _pure_2@25@00 _pure_3@26@00))
-  :qid |quant-u-106|)))
+  :qid |quant-u-428|)))
 ; ---------- DeadBorrowToken$ ----------
 (declare-const borrow@37@00 Int)
 ; ---------- bool ----------

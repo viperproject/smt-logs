@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:19:51
+// Date:         2025-01-26 21:41:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/forward-dep.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/forward-dep-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -541,9 +541,9 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // Translation of all fields
 // ==================================================
 
-const unique ar_1: Field NormalField (Seq Ref);
-axiom !IsPredicateField(ar_1);
-axiom !IsWandField(ar_1);
+const unique ar: Field NormalField (Seq Ref);
+axiom !IsPredicateField(ar);
+axiom !IsWandField(ar);
 const unique Integer_value: Field NormalField int;
 axiom !IsPredicateField(Integer_value);
 axiom !IsWandField(Integer_value);
@@ -557,12 +557,12 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -581,34 +581,34 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
     havoc wildcard;
     perm := wildcard;
     assume this != null;
-    Mask := Mask[this, ar_1:=Mask[this, ar_1] + perm];
+    Mask := Mask[this, ar:=Mask[this, ar] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of |this.ar| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@14.12--14.31) [181152]"}
-        HasDirectPerm(Mask, this, ar_1);
-    assume Seq#Length(Heap[this, ar_1]) == tcount;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@14.12--14.31) [22058]"}
+        HasDirectPerm(Mask, this, ar);
+    assume Seq#Length(Heap[this, ar]) == tcount;
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(this.ar[tid].Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@15.12--15.50) [181153]"}
-        HasDirectPerm(Mask, this, ar_1);
-      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@15.12--15.50) [181154]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@15.12--15.50) [22059]"}
+        HasDirectPerm(Mask, this, ar);
+      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@15.12--15.50) [22060]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@15.12--15.50) [181155]"}
-        tid < Seq#Length(Heap[this, ar_1]);
+      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@15.12--15.50) [22061]"}
+        tid < Seq#Length(Heap[this, ar]);
     perm := FullPerm;
-    assume Seq#Index(Heap[this, ar_1], tid) != null;
-    Mask := Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value] + perm];
+    assume Seq#Index(Heap[this, ar], tid) != null;
+    Mask := Mask[Seq#Index(Heap[this, ar], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar], tid), Integer_value] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -621,49 +621,49 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
     havoc wildcard;
     perm := wildcard;
     assume this != null;
-    PostMask := PostMask[this, ar_1:=PostMask[this, ar_1] + perm];
+    PostMask := PostMask[this, ar:=PostMask[this, ar] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |this.ar| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@19.11--19.30) [181156]"}
-        HasDirectPerm(PostMask, this, ar_1);
-    assume Seq#Length(PostHeap[this, ar_1]) == tcount;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@19.11--19.30) [22062]"}
+        HasDirectPerm(PostMask, this, ar);
+    assume Seq#Length(PostHeap[this, ar]) == tcount;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.ar == old(this.ar)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@20.11--20.34) [181157]"}
-        HasDirectPerm(PostMask, this, ar_1);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@20.11--20.34) [181158]"}
-        HasDirectPerm(oldMask, this, ar_1);
-    assume Seq#Equal(PostHeap[this, ar_1], oldHeap[this, ar_1]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@20.11--20.34) [22063]"}
+        HasDirectPerm(PostMask, this, ar);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@20.11--20.34) [22064]"}
+        HasDirectPerm(oldMask, this, ar);
+    assume Seq#Equal(PostHeap[this, ar], oldHeap[this, ar]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(this.ar[tid].Integer_value, 1 / 2)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@21.11--21.49) [181159]"}
-        HasDirectPerm(PostMask, this, ar_1);
-      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@21.11--21.49) [181160]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@21.11--21.49) [22065]"}
+        HasDirectPerm(PostMask, this, ar);
+      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@21.11--21.49) [22066]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@21.11--21.49) [181161]"}
-        tid < Seq#Length(PostHeap[this, ar_1]);
+      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@21.11--21.49) [22067]"}
+        tid < Seq#Length(PostHeap[this, ar]);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (forward-dep.vpr@21.11--21.49) [181162]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (forward-dep.vpr@21.11--21.49) [22068]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Seq#Index(PostHeap[this, ar_1], tid) != null;
-    PostMask := PostMask[Seq#Index(PostHeap[this, ar_1], tid), Integer_value:=PostMask[Seq#Index(PostHeap[this, ar_1], tid), Integer_value] + perm];
+    assume perm > NoPerm ==> Seq#Index(PostHeap[this, ar], tid) != null;
+    PostMask := PostMask[Seq#Index(PostHeap[this, ar], tid), Integer_value:=PostMask[Seq#Index(PostHeap[this, ar], tid), Integer_value] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.ar[tid].Integer_value == tid + 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@22.11--22.48) [181163]"}
-        HasDirectPerm(PostMask, this, ar_1);
-      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@22.11--22.48) [181164]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar (forward-dep.vpr@22.11--22.48) [22069]"}
+        HasDirectPerm(PostMask, this, ar);
+      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@22.11--22.48) [22070]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@22.11--22.48) [181165]"}
-        tid < Seq#Length(PostHeap[this, ar_1]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar[tid].Integer_value (forward-dep.vpr@22.11--22.48) [181166]"}
-        HasDirectPerm(PostMask, Seq#Index(PostHeap[this, ar_1], tid), Integer_value);
-    assume PostHeap[Seq#Index(PostHeap[this, ar_1], tid), Integer_value] == tid + 1;
+      assert {:msg "  Contract might not be well-formed. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@22.11--22.48) [22071]"}
+        tid < Seq#Length(PostHeap[this, ar]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.ar[tid].Integer_value (forward-dep.vpr@22.11--22.48) [22072]"}
+        HasDirectPerm(PostMask, Seq#Index(PostHeap[this, ar], tid), Integer_value);
+    assume PostHeap[Seq#Index(PostHeap[this, ar], tid), Integer_value] == tid + 1;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -672,36 +672,36 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
   // -- Translating statement: this.ar[tid].Integer_value := tid + 1 -- forward-dep.vpr@24.3--24.40
     
     // -- Check definedness of this.ar[tid]
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@24.3--24.40) [181167]"}
-        HasDirectPerm(Mask, this, ar_1);
-      assert {:msg "  Assignment might fail. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@24.3--24.40) [181168]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@24.3--24.40) [22073]"}
+        HasDirectPerm(Mask, this, ar);
+      assert {:msg "  Assignment might fail. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@24.3--24.40) [22074]"}
         tid >= 0;
-      assert {:msg "  Assignment might fail. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@24.3--24.40) [181169]"}
-        tid < Seq#Length(Heap[this, ar_1]);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.ar[tid].Integer_value (forward-dep.vpr@24.3--24.40) [181170]"}
-      FullPerm == Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value];
-    Heap := Heap[Seq#Index(Heap[this, ar_1], tid), Integer_value:=tid + 1];
+      assert {:msg "  Assignment might fail. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@24.3--24.40) [22075]"}
+        tid < Seq#Length(Heap[this, ar]);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.ar[tid].Integer_value (forward-dep.vpr@24.3--24.40) [22076]"}
+      FullPerm == Mask[Seq#Index(Heap[this, ar], tid), Integer_value];
+    Heap := Heap[Seq#Index(Heap[this, ar], tid), Integer_value:=tid + 1];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(this.ar[tid].Integer_value, 1 / 2) -- forward-dep.vpr@26.3--26.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(this.ar[tid].Integer_value, 1 / 2)
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@26.10--26.46) [181171]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, ar_1);
-      assert {:msg "  Exhale might fail. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@26.10--26.46) [181172]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@26.10--26.46) [22077]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, ar);
+      assert {:msg "  Exhale might fail. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@26.10--26.46) [22078]"}
         tid >= 0;
-      assert {:msg "  Exhale might fail. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@26.10--26.46) [181173]"}
-        tid < Seq#Length(Heap[this, ar_1]);
+      assert {:msg "  Exhale might fail. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@26.10--26.46) [22079]"}
+        tid < Seq#Length(Heap[this, ar]);
     perm := 1 / 2;
-    assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (forward-dep.vpr@26.10--26.46) [181174]"}
+    assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (forward-dep.vpr@26.10--26.46) [22080]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.ar[tid].Integer_value (forward-dep.vpr@26.10--26.46) [181175]"}
-        perm <= Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.ar[tid].Integer_value (forward-dep.vpr@26.10--26.46) [22081]"}
+        perm <= Mask[Seq#Index(Heap[this, ar], tid), Integer_value];
     }
-    Mask := Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value] - perm];
+    Mask := Mask[Seq#Index(Heap[this, ar], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar], tid), Integer_value] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -711,40 +711,40 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
   // -- Translating statement: inhale acc(this.ar[tid].Integer_value, 1 / 4) -- forward-dep.vpr@27.3--27.48
     
     // -- Check definedness of acc(this.ar[tid].Integer_value, 1 / 4)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@27.10--27.48) [181176]"}
-        HasDirectPerm(Mask, this, ar_1);
-      assert {:msg "  Inhale might fail. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@27.10--27.48) [181177]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@27.10--27.48) [22082]"}
+        HasDirectPerm(Mask, this, ar);
+      assert {:msg "  Inhale might fail. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@27.10--27.48) [22083]"}
         tid >= 0;
-      assert {:msg "  Inhale might fail. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@27.10--27.48) [181178]"}
-        tid < Seq#Length(Heap[this, ar_1]);
+      assert {:msg "  Inhale might fail. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@27.10--27.48) [22084]"}
+        tid < Seq#Length(Heap[this, ar]);
     perm := 1 / 4;
-    assert {:msg "  Inhale might fail. Fraction 1 / 4 might be negative. (forward-dep.vpr@27.10--27.48) [181179]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 4 might be negative. (forward-dep.vpr@27.10--27.48) [22085]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Seq#Index(Heap[this, ar_1], tid) != null;
-    Mask := Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value] + perm];
+    assume perm > NoPerm ==> Seq#Index(Heap[this, ar], tid) != null;
+    Mask := Mask[Seq#Index(Heap[this, ar], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar], tid), Integer_value] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(this.ar[tid].Integer_value, 1 / 2) -- forward-dep.vpr@34.3--34.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(this.ar[tid].Integer_value, 1 / 2)
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@34.10--34.46) [181180]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, ar_1);
-      assert {:msg "  Exhale might fail. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@34.10--34.46) [181181]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@34.10--34.46) [22086]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, ar);
+      assert {:msg "  Exhale might fail. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@34.10--34.46) [22087]"}
         tid >= 0;
-      assert {:msg "  Exhale might fail. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@34.10--34.46) [181182]"}
-        tid < Seq#Length(Heap[this, ar_1]);
+      assert {:msg "  Exhale might fail. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@34.10--34.46) [22088]"}
+        tid < Seq#Length(Heap[this, ar]);
     perm := 1 / 2;
-    assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (forward-dep.vpr@34.10--34.46) [181183]"}
+    assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (forward-dep.vpr@34.10--34.46) [22089]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.ar[tid].Integer_value (forward-dep.vpr@34.10--34.46) [181184]"}
-        perm <= Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.ar[tid].Integer_value (forward-dep.vpr@34.10--34.46) [22090]"}
+        perm <= Mask[Seq#Index(Heap[this, ar], tid), Integer_value];
     }
-    Mask := Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value] - perm];
+    Mask := Mask[Seq#Index(Heap[this, ar], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar], tid), Integer_value] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -754,47 +754,47 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
   // -- Translating statement: inhale acc(this.ar[tid].Integer_value, 1 / 4) -- forward-dep.vpr@35.3--35.48
     
     // -- Check definedness of acc(this.ar[tid].Integer_value, 1 / 4)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@35.10--35.48) [181185]"}
-        HasDirectPerm(Mask, this, ar_1);
-      assert {:msg "  Inhale might fail. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@35.10--35.48) [181186]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@35.10--35.48) [22091]"}
+        HasDirectPerm(Mask, this, ar);
+      assert {:msg "  Inhale might fail. Index this.ar[tid] into this.ar might be negative. (forward-dep.vpr@35.10--35.48) [22092]"}
         tid >= 0;
-      assert {:msg "  Inhale might fail. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@35.10--35.48) [181187]"}
-        tid < Seq#Length(Heap[this, ar_1]);
+      assert {:msg "  Inhale might fail. Index this.ar[tid] into this.ar might exceed sequence length. (forward-dep.vpr@35.10--35.48) [22093]"}
+        tid < Seq#Length(Heap[this, ar]);
     perm := 1 / 4;
-    assert {:msg "  Inhale might fail. Fraction 1 / 4 might be negative. (forward-dep.vpr@35.10--35.48) [181188]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 4 might be negative. (forward-dep.vpr@35.10--35.48) [22094]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Seq#Index(Heap[this, ar_1], tid) != null;
-    Mask := Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value] + perm];
+    assume perm > NoPerm ==> Seq#Index(Heap[this, ar], tid) != null;
+    Mask := Mask[Seq#Index(Heap[this, ar], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar], tid), Integer_value] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion 0 <= tid might not hold. (forward-dep.vpr@16.11--16.19) [181189]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of main_main might not hold. Assertion 0 <= tid might not hold. (forward-dep.vpr@16.11--16.19) [22095]"}
       0 <= tid;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion tid < tcount might not hold. (forward-dep.vpr@17.11--17.23) [181190]"}
+    assert {:msg "  Postcondition of main_main might not hold. Assertion tid < tcount might not hold. (forward-dep.vpr@17.11--17.23) [22096]"}
       tid < tcount;
-    assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.ar (forward-dep.vpr@18.11--18.33) [181191]"}
-      Mask[this, ar_1] > NoPerm;
+    assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.ar (forward-dep.vpr@18.11--18.33) [22097]"}
+      Mask[this, ar] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[this, ar_1];
-    Mask := Mask[this, ar_1:=Mask[this, ar_1] - wildcard];
-    assert {:msg "  Postcondition of main_main might not hold. Assertion |this.ar| == tcount might not hold. (forward-dep.vpr@19.11--19.30) [181192]"}
-      Seq#Length(Heap[this, ar_1]) == tcount;
-    assert {:msg "  Postcondition of main_main might not hold. Assertion this.ar == old(this.ar) might not hold. (forward-dep.vpr@20.11--20.34) [181193]"}
-      Seq#Equal(Heap[this, ar_1], oldHeap[this, ar_1]);
+    assume wildcard < Mask[this, ar];
+    Mask := Mask[this, ar:=Mask[this, ar] - wildcard];
+    assert {:msg "  Postcondition of main_main might not hold. Assertion |this.ar| == tcount might not hold. (forward-dep.vpr@19.11--19.30) [22098]"}
+      Seq#Length(Heap[this, ar]) == tcount;
+    assert {:msg "  Postcondition of main_main might not hold. Assertion this.ar == old(this.ar) might not hold. (forward-dep.vpr@20.11--20.34) [22099]"}
+      Seq#Equal(Heap[this, ar], oldHeap[this, ar]);
     perm := 1 / 2;
-    assert {:msg "  Postcondition of main_main might not hold. Fraction 1 / 2 might be negative. (forward-dep.vpr@21.11--21.49) [181194]"}
+    assert {:msg "  Postcondition of main_main might not hold. Fraction 1 / 2 might be negative. (forward-dep.vpr@21.11--21.49) [22100]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.ar[tid].Integer_value (forward-dep.vpr@21.11--21.49) [181195]"}
-        perm <= Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value];
+      assert {:msg "  Postcondition of main_main might not hold. There might be insufficient permission to access this.ar[tid].Integer_value (forward-dep.vpr@21.11--21.49) [22101]"}
+        perm <= Mask[Seq#Index(Heap[this, ar], tid), Integer_value];
     }
-    Mask := Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar_1], tid), Integer_value] - perm];
-    assert {:msg "  Postcondition of main_main might not hold. Assertion this.ar[tid].Integer_value == tid + 1 might not hold. (forward-dep.vpr@22.11--22.48) [181196]"}
-      Heap[Seq#Index(Heap[this, ar_1], tid), Integer_value] == tid + 1;
+    Mask := Mask[Seq#Index(Heap[this, ar], tid), Integer_value:=Mask[Seq#Index(Heap[this, ar], tid), Integer_value] - perm];
+    assert {:msg "  Postcondition of main_main might not hold. Assertion this.ar[tid].Integer_value == tid + 1 might not hold. (forward-dep.vpr@22.11--22.48) [22102]"}
+      Heap[Seq#Index(Heap[this, ar], tid), Integer_value] == tid + 1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

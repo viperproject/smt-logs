@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:46:06
+; Started: 2025-01-26 21:33:17
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -408,21 +408,21 @@
     (idx00%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00)
     (idx00 s@$ a@0@00 b@1@00 c@2@00 n@3@00))
   :pattern ((idx00 s@$ a@0@00 b@1@00 c@2@00 n@3@00))
-  :qid |quant-u-24548|)))
+  :qid |quant-u-9749|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (b@1@00 Int) (c@2@00 Int) (n@3@00 Int)) (!
   (idx00%stateless a@0@00 b@1@00 c@2@00 n@3@00)
   :pattern ((idx00%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00))
-  :qid |quant-u-24549|)))
+  :qid |quant-u-9750|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (b@1@00 Int) (c@2@00 Int) (n@3@00 Int)) (!
   (let ((result@4@00 (idx00%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00))) (=>
     (idx00%precondition s@$ a@0@00 b@1@00 c@2@00 n@3@00)
     (and (<= 0 result@4@00) (< result@4@00 n@3@00))))
   :pattern ((idx00%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00))
-  :qid |quant-u-24550|)))
+  :qid |quant-u-9751|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (b@1@00 Int) (c@2@00 Int) (n@3@00 Int)) (!
   (let ((result@4@00 (idx00%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00))) true)
   :pattern ((idx00%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00))
-  :qid |quant-u-24551|)))
+  :qid |quant-u-9752|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test00 ----------
@@ -461,16 +461,16 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall i: Int, j: Int, fresh__189: Int ::
-;     { xs[idx00(i, j, fresh__189, n)] }
+; inhale (forall i: Int, j: Int, fresh__65: Int ::
+;     { xs[idx00(i, j, fresh__65, n)] }
 ;     0 <= i && (i < n && (0 <= j && j < i)) ==>
 ;     xs[idx00(i, j, j + 1, n)] == i + j)
 (declare-const $t@6@01 $Snap)
 (assert (= $t@6@01 $Snap.unit))
-; [eval] (forall i: Int, j: Int, fresh__189: Int :: { xs[idx00(i, j, fresh__189, n)] } 0 <= i && (i < n && (0 <= j && j < i)) ==> xs[idx00(i, j, j + 1, n)] == i + j)
+; [eval] (forall i: Int, j: Int, fresh__65: Int :: { xs[idx00(i, j, fresh__65, n)] } 0 <= i && (i < n && (0 <= j && j < i)) ==> xs[idx00(i, j, j + 1, n)] == i + j)
 (declare-const i@7@01 Int)
 (declare-const j@8@01 Int)
-(declare-const fresh__189@9@01 Int)
+(declare-const fresh__65@9@01 Int)
 (set-option :timeout 0)
 (push) ; 3
 ; [eval] 0 <= i && (i < n && (0 <= j && j < i)) ==> xs[idx00(i, j, j + 1, n)] == i + j
@@ -594,32 +594,32 @@
   (and
     (<= 0 i@7@01)
     (and (< i@7@01 n@3@01) (and (<= 0 j@8@01) (< j@8@01 i@7@01))))))
-; [eval] xs[idx00(i, j, fresh__189, n)]
-; [eval] idx00(i, j, fresh__189, n)
+; [eval] xs[idx00(i, j, fresh__65, n)]
+; [eval] idx00(i, j, fresh__65, n)
 (push) ; 4
-(assert (idx00%precondition $Snap.unit i@7@01 j@8@01 fresh__189@9@01 n@3@01))
+(assert (idx00%precondition $Snap.unit i@7@01 j@8@01 fresh__65@9@01 n@3@01))
 (pop) ; 4
 ; Joined path conditions
-(assert (idx00%precondition $Snap.unit i@7@01 j@8@01 fresh__189@9@01 n@3@01))
+(assert (idx00%precondition $Snap.unit i@7@01 j@8@01 fresh__65@9@01 n@3@01))
 (push) ; 4
-(assert (not (>= (idx00 $Snap.unit i@7@01 j@8@01 fresh__189@9@01 n@3@01) 0)))
+(assert (not (>= (idx00 $Snap.unit i@7@01 j@8@01 fresh__65@9@01 n@3@01) 0)))
 (check-sat)
 ; unsat
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 4
-(assert (not (< (idx00 $Snap.unit i@7@01 j@8@01 fresh__189@9@01 n@3@01) (Seq_length xs@2@01))))
+(assert (not (< (idx00 $Snap.unit i@7@01 j@8@01 fresh__65@9@01 n@3@01) (Seq_length xs@2@01))))
 (check-sat)
 ; unsat
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (idx00%precondition $Snap.unit i@7@01 j@8@01 fresh__189@9@01 n@3@01))
+(assert (idx00%precondition $Snap.unit i@7@01 j@8@01 fresh__65@9@01 n@3@01))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@7@01 Int) (j@8@01 Int) (fresh__189@9@01 Int)) (!
+(assert (forall ((i@7@01 Int) (j@8@01 Int) (fresh__65@9@01 Int)) (!
   (and
     (=>
       (<= 0 i@7@01)
@@ -648,12 +648,12 @@
       (and
         (<= 0 i@7@01)
         (and (< i@7@01 n@3@01) (and (<= 0 j@8@01) (< j@8@01 i@7@01)))))
-    (idx00%precondition $Snap.unit i@7@01 j@8@01 fresh__189@9@01 n@3@01))
+    (idx00%precondition $Snap.unit i@7@01 j@8@01 fresh__65@9@01 n@3@01))
   :pattern ((Seq_index
     xs@2@01
-    (idx00 $Snap.unit i@7@01 j@8@01 fresh__189@9@01 n@3@01)))
+    (idx00 $Snap.unit i@7@01 j@8@01 fresh__65@9@01 n@3@01)))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/silicon/0146.vpr@13@10@16@41-aux|)))
-(assert (forall ((i@7@01 Int) (j@8@01 Int) (fresh__189@9@01 Int)) (!
+(assert (forall ((i@7@01 Int) (j@8@01 Int) (fresh__65@9@01 Int)) (!
   (=>
     (and
       (<= 0 i@7@01)
@@ -663,7 +663,7 @@
       (+ i@7@01 j@8@01)))
   :pattern ((Seq_index
     xs@2@01
-    (idx00 $Snap.unit i@7@01 j@8@01 fresh__189@9@01 n@3@01)))
+    (idx00 $Snap.unit i@7@01 j@8@01 fresh__65@9@01 n@3@01)))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/silicon/0146.vpr@13@10@16@41|)))
 ; State saturation: after inhale
 (set-option :timeout 20)

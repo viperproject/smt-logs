@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:19:48
+// Date:         2025-01-26 21:41:40
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testCollections.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testCollections-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -735,13 +735,13 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 procedure Ref__types(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var L: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var S: (Set int);
-  var B_2: (MultiSet int);
+  var B_1: (MultiSet int);
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -760,17 +760,17 @@ procedure Ref__types(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: L := Seq(1, 2, 3) -- testCollections.vpr@11.3--11.20
     L := Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(2)), Seq#Singleton(3));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert L == Seq(1, 2, 3) -- testCollections.vpr@12.3--12.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion L == Seq(1, 2, 3) might not hold. (testCollections.vpr@12.10--12.27) [180559]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion L == Seq(1, 2, 3) might not hold. (testCollections.vpr@12.10--12.27) [31045]"}
       Seq#Equal(L, Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(2)), Seq#Singleton(3)));
     assume state(Heap, Mask);
   
@@ -779,35 +779,35 @@ procedure Ref__types(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert S == Set(2, 1, 3) -- testCollections.vpr@14.3--14.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion S == Set(2, 1, 3) might not hold. (testCollections.vpr@14.10--14.27) [180560]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion S == Set(2, 1, 3) might not hold. (testCollections.vpr@14.10--14.27) [31046]"}
       Set#Equal(S, Set#UnionOne(Set#UnionOne(Set#Singleton(3), 1), 2));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert S == Set(1, 1, 2, 3, 3) -- testCollections.vpr@15.3--15.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion S == Set(1, 1, 2, 3, 3) might not hold. (testCollections.vpr@15.10--15.33) [180561]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion S == Set(1, 1, 2, 3, 3) might not hold. (testCollections.vpr@15.10--15.33) [31047]"}
       Set#Equal(S, Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(3), 3), 2), 1), 1));
     assume state(Heap, Mask);
   
   // -- Translating statement: B := Multiset(1, 1, 2, 3) -- testCollections.vpr@16.3--16.28
-    B_2 := MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(3), 2), 1), 1);
+    B_1 := MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(3), 2), 1), 1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert B == Multiset(1, 1, 2, 3) -- testCollections.vpr@17.3--17.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion B == Multiset(1, 1, 2, 3) might not hold. (testCollections.vpr@17.10--17.35) [180562]"}
-      MultiSet#Equal(B_2, MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(3), 2), 1), 1));
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion B == Multiset(1, 1, 2, 3) might not hold. (testCollections.vpr@17.10--17.35) [31048]"}
+      MultiSet#Equal(B_1, MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(3), 2), 1), 1));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (1 in B) == 2 -- testCollections.vpr@18.3--18.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (1 in B) == 2 might not hold. (testCollections.vpr@18.10--18.23) [180563]"}
-      MultiSet#Select(B_2, 1) == 2;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (1 in B) == 2 might not hold. (testCollections.vpr@18.10--18.23) [31049]"}
+      MultiSet#Select(B_1, 1) == 2;
     assume state(Heap, Mask);
 }
 
@@ -818,14 +818,14 @@ procedure Ref__types(diz: Ref, current_thread_id: int) returns ()
 procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -839,8 +839,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -867,9 +867,9 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- testCollections.vpr@28.3--28.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testCollections.vpr@28.10--28.29) [180564]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testCollections.vpr@28.10--28.29) [31050]"}
       sys__result != null;
     assume state(Heap, Mask);
   
@@ -879,8 +879,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testCollections.vpr@23.11--23.30) [180565]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testCollections.vpr@23.11--23.30) [31051]"}
       sys__result != null;
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:42
+// Date:         2025-01-26 21:41:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0230.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0230-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -222,22 +222,22 @@ axiom !IsWandField(f_7);
 // Translation of method m
 // ==================================================
 
-procedure m(x: Ref, y: Ref) returns ()
+procedure m_17(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var Labellhs2Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labellhs2Heap: HeapType;
+  var Labellhs2Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -263,8 +263,8 @@ procedure m(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale true --* old(x.f) + old(y.f) == 4 -- 0230.vpr@9.5--9.45
     
@@ -276,16 +276,16 @@ procedure m(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs1 -- 0230.vpr@9.12--9.45
           lhs1:
-          Labellhs1Mask := WandDefLHSMask;
           Labellhs1Heap := WandDefLHSHeap;
+          Labellhs1Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
         
         // -- Check definedness of old(x.f) + old(y.f) == 4
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (0230.vpr@9.12--9.45) [221237]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (0230.vpr@9.12--9.45) [53822]"}
             HasDirectPerm(oldMask, x, f_7);
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access y.f (0230.vpr@9.12--9.45) [221238]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access y.f (0230.vpr@9.12--9.45) [53823]"}
             HasDirectPerm(oldMask, y, f_7);
         assume oldHeap[x, f_7] + oldHeap[y, f_7] == 4;
         assume state(WandDefRHSHeap, WandDefRHSMask);
@@ -297,8 +297,8 @@ procedure m(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale true --* old(x.f + y.f) == 4 -- 0230.vpr@10.5--10.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of true --* old(x.f + y.f) == 4
       if (*) {
@@ -308,23 +308,23 @@ procedure m(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs2 -- 0230.vpr@10.12--10.40
           lhs2:
-          Labellhs2Mask := WandDefLHSMask;
           Labellhs2Heap := WandDefLHSHeap;
+          Labellhs2Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
         
         // -- Check definedness of old(x.f + y.f) == 4
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0230.vpr@10.12--10.40) [221239]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0230.vpr@10.12--10.40) [53824]"}
             HasDirectPerm(oldMask, x, f_7);
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (0230.vpr@10.12--10.40) [221240]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (0230.vpr@10.12--10.40) [53825]"}
             HasDirectPerm(oldMask, y, f_7);
         assume oldHeap[x, f_7] + oldHeap[y, f_7] == 4;
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (0230.vpr@10.12--10.40) [221241]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (0230.vpr@10.12--10.40) [53826]"}
       FullPerm <= Mask[null, wand(true, oldHeap[x, f_7] + oldHeap[y, f_7] == 4)];
     Mask := Mask[null, wand(true, oldHeap[x, f_7] + oldHeap[y, f_7] == 4):=Mask[null, wand(true, oldHeap[x, f_7] + oldHeap[y, f_7] == 4)] - FullPerm];
     // Finish exhale
@@ -338,22 +338,22 @@ procedure m(x: Ref, y: Ref) returns ()
 // Translation of method n
 // ==================================================
 
-procedure n_12(x: Ref, y: Ref) returns ()
+procedure n_83(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var Labellhs4Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labellhs4Heap: HeapType;
+  var Labellhs4Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -379,8 +379,8 @@ procedure n_12(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale true --* old(x.f + y.f) == 4 -- 0230.vpr@16.5--16.40
     
@@ -392,16 +392,16 @@ procedure n_12(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs3 -- 0230.vpr@16.12--16.40
           lhs3:
-          Labellhs3Mask := WandDefLHSMask;
           Labellhs3Heap := WandDefLHSHeap;
+          Labellhs3Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
         
         // -- Check definedness of old(x.f + y.f) == 4
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (0230.vpr@16.12--16.40) [221242]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (0230.vpr@16.12--16.40) [53827]"}
             HasDirectPerm(oldMask, x, f_7);
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access y.f (0230.vpr@16.12--16.40) [221243]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access y.f (0230.vpr@16.12--16.40) [53828]"}
             HasDirectPerm(oldMask, y, f_7);
         assume oldHeap[x, f_7] + oldHeap[y, f_7] == 4;
         assume state(WandDefRHSHeap, WandDefRHSMask);
@@ -413,8 +413,8 @@ procedure n_12(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale true --* old(x.f) + old(y.f) == 4 -- 0230.vpr@17.5--17.45
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of true --* old(x.f) + old(y.f) == 4
       if (*) {
@@ -424,23 +424,23 @@ procedure n_12(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs4 -- 0230.vpr@17.12--17.45
           lhs4:
-          Labellhs4Mask := WandDefLHSMask;
           Labellhs4Heap := WandDefLHSHeap;
+          Labellhs4Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
         
         // -- Check definedness of old(x.f) + old(y.f) == 4
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0230.vpr@17.12--17.45) [221244]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0230.vpr@17.12--17.45) [53829]"}
             HasDirectPerm(oldMask, x, f_7);
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (0230.vpr@17.12--17.45) [221245]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (0230.vpr@17.12--17.45) [53830]"}
             HasDirectPerm(oldMask, y, f_7);
         assume oldHeap[x, f_7] + oldHeap[y, f_7] == 4;
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (0230.vpr@17.12--17.45) [221246]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (0230.vpr@17.12--17.45) [53831]"}
       FullPerm <= Mask[null, wand(true, oldHeap[x, f_7] + oldHeap[y, f_7] == 4)];
     Mask := Mask[null, wand(true, oldHeap[x, f_7] + oldHeap[y, f_7] == 4):=Mask[null, wand(true, oldHeap[x, f_7] + oldHeap[y, f_7] == 4)] - FullPerm];
     // Finish exhale
@@ -454,22 +454,22 @@ procedure n_12(x: Ref, y: Ref) returns ()
 // Translation of method o
 // ==================================================
 
-procedure o_195(x: Ref, y: Ref) returns ()
+procedure o_60(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs5Mask: MaskType;
   var Labellhs5Heap: HeapType;
+  var Labellhs5Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var Labellhs6Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labellhs6Heap: HeapType;
+  var Labellhs6Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -495,8 +495,8 @@ procedure o_195(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale old(x.f) + old(y.f) == 4 --* true -- 0230.vpr@23.5--23.45
     
@@ -506,17 +506,17 @@ procedure o_195(x: Ref, y: Ref) returns ()
         WandDefLHSMask := ZeroMask;
         
         // -- Check definedness of old(x.f) + old(y.f) == 4
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (0230.vpr@23.12--23.45) [221247]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (0230.vpr@23.12--23.45) [53832]"}
             HasDirectPerm(oldMask, x, f_7);
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access y.f (0230.vpr@23.12--23.45) [221248]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access y.f (0230.vpr@23.12--23.45) [53833]"}
             HasDirectPerm(oldMask, y, f_7);
         assume oldHeap[x, f_7] + oldHeap[y, f_7] == 4;
         assume state(WandDefLHSHeap, WandDefLHSMask);
         
         // -- Translating statement: label lhs5 -- 0230.vpr@23.12--23.45
           lhs5:
-          Labellhs5Mask := WandDefLHSMask;
           Labellhs5Heap := WandDefLHSHeap;
+          Labellhs5Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -529,8 +529,8 @@ procedure o_195(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale old(x.f + y.f) == 4 --* true -- 0230.vpr@24.5--24.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old(x.f + y.f) == 4 --* true
       if (*) {
@@ -538,17 +538,17 @@ procedure o_195(x: Ref, y: Ref) returns ()
         WandDefLHSMask := ZeroMask;
         
         // -- Check definedness of old(x.f + y.f) == 4
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0230.vpr@24.12--24.40) [221249]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0230.vpr@24.12--24.40) [53834]"}
             HasDirectPerm(oldMask, x, f_7);
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (0230.vpr@24.12--24.40) [221250]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (0230.vpr@24.12--24.40) [53835]"}
             HasDirectPerm(oldMask, y, f_7);
         assume oldHeap[x, f_7] + oldHeap[y, f_7] == 4;
         assume state(WandDefLHSHeap, WandDefLHSMask);
         
         // -- Translating statement: label lhs6 -- 0230.vpr@24.12--24.40
           lhs6:
-          Labellhs6Mask := WandDefLHSMask;
           Labellhs6Heap := WandDefLHSHeap;
+          Labellhs6Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -556,7 +556,7 @@ procedure o_195(x: Ref, y: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (0230.vpr@24.12--24.40) [221251]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (0230.vpr@24.12--24.40) [53836]"}
       FullPerm <= Mask[null, wand(oldHeap[x, f_7] + oldHeap[y, f_7] == 4, true)];
     Mask := Mask[null, wand(oldHeap[x, f_7] + oldHeap[y, f_7] == 4, true):=Mask[null, wand(oldHeap[x, f_7] + oldHeap[y, f_7] == 4, true)] - FullPerm];
     // Finish exhale
@@ -570,22 +570,22 @@ procedure o_195(x: Ref, y: Ref) returns ()
 // Translation of method p
 // ==================================================
 
-procedure p_20(x: Ref, y: Ref) returns ()
+procedure p_11(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs7Mask: MaskType;
   var Labellhs7Heap: HeapType;
+  var Labellhs7Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var Labellhs8Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labellhs8Heap: HeapType;
+  var Labellhs8Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -611,8 +611,8 @@ procedure p_20(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale old(x.f + y.f) == 4 --* true -- 0230.vpr@30.5--30.40
     
@@ -622,17 +622,17 @@ procedure p_20(x: Ref, y: Ref) returns ()
         WandDefLHSMask := ZeroMask;
         
         // -- Check definedness of old(x.f + y.f) == 4
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (0230.vpr@30.12--30.40) [221252]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (0230.vpr@30.12--30.40) [53837]"}
             HasDirectPerm(oldMask, x, f_7);
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access y.f (0230.vpr@30.12--30.40) [221253]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access y.f (0230.vpr@30.12--30.40) [53838]"}
             HasDirectPerm(oldMask, y, f_7);
         assume oldHeap[x, f_7] + oldHeap[y, f_7] == 4;
         assume state(WandDefLHSHeap, WandDefLHSMask);
         
         // -- Translating statement: label lhs7 -- 0230.vpr@30.12--30.40
           lhs7:
-          Labellhs7Mask := WandDefLHSMask;
           Labellhs7Heap := WandDefLHSHeap;
+          Labellhs7Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -645,8 +645,8 @@ procedure p_20(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale old(x.f) + old(y.f) == 4 --* true -- 0230.vpr@31.5--31.45
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old(x.f) + old(y.f) == 4 --* true
       if (*) {
@@ -654,17 +654,17 @@ procedure p_20(x: Ref, y: Ref) returns ()
         WandDefLHSMask := ZeroMask;
         
         // -- Check definedness of old(x.f) + old(y.f) == 4
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0230.vpr@31.12--31.45) [221254]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0230.vpr@31.12--31.45) [53839]"}
             HasDirectPerm(oldMask, x, f_7);
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (0230.vpr@31.12--31.45) [221255]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (0230.vpr@31.12--31.45) [53840]"}
             HasDirectPerm(oldMask, y, f_7);
         assume oldHeap[x, f_7] + oldHeap[y, f_7] == 4;
         assume state(WandDefLHSHeap, WandDefLHSMask);
         
         // -- Translating statement: label lhs8 -- 0230.vpr@31.12--31.45
           lhs8:
-          Labellhs8Mask := WandDefLHSMask;
           Labellhs8Heap := WandDefLHSHeap;
+          Labellhs8Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -672,7 +672,7 @@ procedure p_20(x: Ref, y: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (0230.vpr@31.12--31.45) [221256]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (0230.vpr@31.12--31.45) [53841]"}
       FullPerm <= Mask[null, wand(oldHeap[x, f_7] + oldHeap[y, f_7] == 4, true)];
     Mask := Mask[null, wand(oldHeap[x, f_7] + oldHeap[y, f_7] == 4, true):=Mask[null, wand(oldHeap[x, f_7] + oldHeap[y, f_7] == 4, true)] - FullPerm];
     // Finish exhale

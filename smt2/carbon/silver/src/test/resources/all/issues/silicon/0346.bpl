@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:23
+// Date:         2025-01-26 21:42:59
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0346.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0346-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -221,14 +221,14 @@ procedure equiv#definedness() returns (Result: bool)
 // Translation of method test
 // ==================================================
 
-procedure test() returns ()
+procedure test_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b_24: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -239,8 +239,8 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: b := equiv() -- 0346.vpr@7.3--7.25
     
@@ -253,15 +253,15 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b == equiv() -- 0346.vpr@8.3--8.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of b == equiv()
       if (*) {
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion b == equiv() might not hold. (0346.vpr@8.10--8.22) [217203]"}
+    assert {:msg "  Assert might fail. Assertion b == equiv() might not hold. (0346.vpr@8.10--8.22) [78984]"}
       b_24 == vequiv(Heap);
     assume state(Heap, Mask);
 }

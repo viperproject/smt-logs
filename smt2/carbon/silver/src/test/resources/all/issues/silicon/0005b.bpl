@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:58
+// Date:         2025-01-26 21:42:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0005b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0005b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_42: Ref, f_48: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_42, f_48] }
-  Heap[o_42, $allocated] ==> Heap[Heap[o_42, f_48], $allocated]
+axiom (forall o_52: Ref, f_63: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_52, f_63] }
+  Heap[o_52, $allocated] ==> Heap[Heap[o_52, f_63], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_47: Ref, f_43: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_47, f_43] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_47, f_43) ==> Heap[o_47, f_43] == ExhaleHeap[o_47, f_43]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_10: Ref, f_16: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_10, f_16] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_10, f_16) ==> Heap[o_10, f_16] == ExhaleHeap[o_10, f_16]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_52: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_52), ExhaleHeap[null, PredicateMaskField(pm_f_52)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_52) && IsPredicateField(pm_f_52) ==> Heap[null, PredicateMaskField(pm_f_52)] == ExhaleHeap[null, PredicateMaskField(pm_f_52)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_39: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_39), ExhaleHeap[null, PredicateMaskField(pm_f_39)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_39) && IsPredicateField(pm_f_39) ==> Heap[null, PredicateMaskField(pm_f_39)] == ExhaleHeap[null, PredicateMaskField(pm_f_39)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_52: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_52) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_52) && IsPredicateField(pm_f_52) ==> (forall <A, B> o2_52: Ref, f_43: (Field A B) ::
-    { ExhaleHeap[o2_52, f_43] }
-    Heap[null, PredicateMaskField(pm_f_52)][o2_52, f_43] ==> Heap[o2_52, f_43] == ExhaleHeap[o2_52, f_43]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_39: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_39) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_39) && IsPredicateField(pm_f_39) ==> (forall <A, B> o2_39: Ref, f_16: (Field A B) ::
+    { ExhaleHeap[o2_39, f_16] }
+    Heap[null, PredicateMaskField(pm_f_39)][o2_39, f_16] ==> Heap[o2_39, f_16] == ExhaleHeap[o2_39, f_16]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_52: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_52), ExhaleHeap[null, WandMaskField(pm_f_52)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_52) && IsWandField(pm_f_52) ==> Heap[null, WandMaskField(pm_f_52)] == ExhaleHeap[null, WandMaskField(pm_f_52)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_39: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_39), ExhaleHeap[null, WandMaskField(pm_f_39)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_39) && IsWandField(pm_f_39) ==> Heap[null, WandMaskField(pm_f_39)] == ExhaleHeap[null, WandMaskField(pm_f_39)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_52: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_52) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_52) && IsWandField(pm_f_52) ==> (forall <A, B> o2_52: Ref, f_43: (Field A B) ::
-    { ExhaleHeap[o2_52, f_43] }
-    Heap[null, WandMaskField(pm_f_52)][o2_52, f_43] ==> Heap[o2_52, f_43] == ExhaleHeap[o2_52, f_43]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_39: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_39) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_39) && IsWandField(pm_f_39) ==> (forall <A, B> o2_39: Ref, f_16: (Field A B) ::
+    { ExhaleHeap[o2_39, f_16] }
+    Heap[null, WandMaskField(pm_f_39)][o2_39, f_16] ==> Heap[o2_39, f_16] == ExhaleHeap[o2_39, f_16]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_47: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_47, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_47, $allocated] ==> ExhaleHeap[o_47, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_10: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_10, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_10, $allocated] ==> ExhaleHeap[o_10, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_42: Ref, f_45: (Field A B), v: B ::
-  { Heap[o_42, f_45:=v] }
-  succHeap(Heap, Heap[o_42, f_45:=v])
+axiom (forall <A, B> Heap: HeapType, o_52: Ref, f_50: (Field A B), v: B ::
+  { Heap[o_52, f_50:=v] }
+  succHeap(Heap, Heap[o_52, f_50:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -297,8 +297,8 @@ procedure Triggersf$#definedness(this$_2: Ref, x: int, y: int, z: int) returns (
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -325,10 +325,10 @@ procedure Triggersf$#definedness(this$_2: Ref, x: int, y: int, z: int) returns (
       UnfoldingMask := Mask;
       assume Triggersvalid$#trigger(UnfoldingHeap, Triggersvalid$(this$_2));
       assume UnfoldingHeap[null, Triggersvalid$(this$_2)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Triggersnext$]), UnfoldingHeap[null, Triggersvalid$(UnfoldingHeap[this$_2, Triggersnext$])]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Triggersvalid$(this$_2) (0005b.vpr@51.1--56.2) [216233]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Triggersvalid$(this$_2) (0005b.vpr@51.1--56.2) [72633]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Triggersvalid$(this$_2)];
       havoc wildcard;
       perm := wildcard;
@@ -344,16 +344,16 @@ procedure Triggersf$#definedness(this$_2: Ref, x: int, y: int, z: int) returns (
         assume InsidePredicate(Triggersvalid$(this$_2), UnfoldingHeap[null, Triggersvalid$(this$_2)], Triggersvalid$(UnfoldingHeap[this$_2, Triggersnext$]), UnfoldingHeap[null, Triggersvalid$(UnfoldingHeap[this$_2, Triggersnext$])]);
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_2.Triggersnext$ (0005b.vpr@51.1--56.2) [216234]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_2.Triggersnext$ (0005b.vpr@51.1--56.2) [72634]"}
         HasDirectPerm(UnfoldingMask, this$_2, Triggersnext$);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
-        assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_2.Triggersnext$ != null might not hold. (0005b.vpr@55.56--55.98) [216235]"}
+        ExhaleWellDef0Heap := UnfoldingHeap;
+        assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_2.Triggersnext$ != null might not hold. (0005b.vpr@55.56--55.98) [72635]"}
           UnfoldingHeap[this$_2, Triggersnext$] != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_2.Triggersnext$) (0005b.vpr@55.56--55.98) [216236]"}
+        assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_2.Triggersnext$) (0005b.vpr@55.56--55.98) [72636]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Triggersvalid$(UnfoldingHeap[this$_2, Triggersnext$])];
         // Finish exhale
         havoc ExhaleHeap;
@@ -369,9 +369,9 @@ procedure Triggersf$#definedness(this$_2: Ref, x: int, y: int, z: int) returns (
       // -- Free assumptions (exp module)
         Heap := Heap[null, Triggersvalid$#sm(this$_2):=Heap[null, Triggersvalid$#sm(this$_2)][this$_2, Triggersnext$:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-          { newPMask[o_15, f_20] }
-          Heap[null, Triggersvalid$#sm(this$_2)][o_15, f_20] || Heap[null, Triggersvalid$#sm(Heap[this$_2, Triggersnext$])][o_15, f_20] ==> newPMask[o_15, f_20]
+        assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+          { newPMask[o_5, f_11] }
+          Heap[null, Triggersvalid$#sm(this$_2)][o_5, f_11] || Heap[null, Triggersvalid$#sm(Heap[this$_2, Triggersnext$])][o_5, f_11] ==> newPMask[o_5, f_11]
         );
         Heap := Heap[null, Triggersvalid$#sm(this$_2):=newPMask];
         assume state(Heap, Mask);
@@ -423,8 +423,8 @@ procedure Triggersh$#definedness(this$_3: Ref, x: int, y: int, z: int) returns (
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -451,10 +451,10 @@ procedure Triggersh$#definedness(this$_3: Ref, x: int, y: int, z: int) returns (
       UnfoldingMask := Mask;
       assume Triggersvalid$#trigger(UnfoldingHeap, Triggersvalid$(this$_3));
       assume UnfoldingHeap[null, Triggersvalid$(this$_3)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_3, Triggersnext$]), UnfoldingHeap[null, Triggersvalid$(UnfoldingHeap[this$_3, Triggersnext$])]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Triggersvalid$(this$_3) (0005b.vpr@58.1--63.2) [216237]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Triggersvalid$(this$_3) (0005b.vpr@58.1--63.2) [72637]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Triggersvalid$(this$_3)];
       havoc wildcard;
       perm := wildcard;
@@ -470,16 +470,16 @@ procedure Triggersh$#definedness(this$_3: Ref, x: int, y: int, z: int) returns (
         assume InsidePredicate(Triggersvalid$(this$_3), UnfoldingHeap[null, Triggersvalid$(this$_3)], Triggersvalid$(UnfoldingHeap[this$_3, Triggersnext$]), UnfoldingHeap[null, Triggersvalid$(UnfoldingHeap[this$_3, Triggersnext$])]);
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_3.Triggersnext$ (0005b.vpr@58.1--63.2) [216238]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_3.Triggersnext$ (0005b.vpr@58.1--63.2) [72638]"}
         HasDirectPerm(UnfoldingMask, this$_3, Triggersnext$);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
-        assert {:msg "  Precondition of function Triggersh$ might not hold. Assertion this$_3.Triggersnext$ != null might not hold. (0005b.vpr@62.56--62.98) [216239]"}
+        ExhaleWellDef0Heap := UnfoldingHeap;
+        assert {:msg "  Precondition of function Triggersh$ might not hold. Assertion this$_3.Triggersnext$ != null might not hold. (0005b.vpr@62.56--62.98) [72639]"}
           UnfoldingHeap[this$_3, Triggersnext$] != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Triggersh$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_3.Triggersnext$) (0005b.vpr@62.56--62.98) [216240]"}
+        assert {:msg "  Precondition of function Triggersh$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_3.Triggersnext$) (0005b.vpr@62.56--62.98) [72640]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Triggersvalid$(UnfoldingHeap[this$_3, Triggersnext$])];
         // Finish exhale
         havoc ExhaleHeap;
@@ -495,9 +495,9 @@ procedure Triggersh$#definedness(this$_3: Ref, x: int, y: int, z: int) returns (
       // -- Free assumptions (exp module)
         Heap := Heap[null, Triggersvalid$#sm(this$_3):=Heap[null, Triggersvalid$#sm(this$_3)][this$_3, Triggersnext$:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-          { newPMask[o_16, f_21] }
-          Heap[null, Triggersvalid$#sm(this$_3)][o_16, f_21] || Heap[null, Triggersvalid$#sm(Heap[this$_3, Triggersnext$])][o_16, f_21] ==> newPMask[o_16, f_21]
+        assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+          { newPMask[o_6, f_12] }
+          Heap[null, Triggersvalid$#sm(this$_3)][o_6, f_12] || Heap[null, Triggersvalid$#sm(Heap[this$_3, Triggersnext$])][o_6, f_12] ==> newPMask[o_6, f_12]
         );
         Heap := Heap[null, Triggersvalid$#sm(this$_3):=newPMask];
         assume state(Heap, Mask);
@@ -549,8 +549,8 @@ procedure Triggersg$#definedness(this$_4: Ref, x: int) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -577,10 +577,10 @@ procedure Triggersg$#definedness(this$_4: Ref, x: int) returns (Result: bool)
       UnfoldingMask := Mask;
       assume Triggersvalid$#trigger(UnfoldingHeap, Triggersvalid$(this$_4));
       assume UnfoldingHeap[null, Triggersvalid$(this$_4)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_4, Triggersnext$]), UnfoldingHeap[null, Triggersvalid$(UnfoldingHeap[this$_4, Triggersnext$])]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Triggersvalid$(this$_4) (0005b.vpr@65.1--70.2) [216241]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Triggersvalid$(this$_4) (0005b.vpr@65.1--70.2) [72641]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Triggersvalid$(this$_4)];
       havoc wildcard;
       perm := wildcard;
@@ -596,16 +596,16 @@ procedure Triggersg$#definedness(this$_4: Ref, x: int) returns (Result: bool)
         assume InsidePredicate(Triggersvalid$(this$_4), UnfoldingHeap[null, Triggersvalid$(this$_4)], Triggersvalid$(UnfoldingHeap[this$_4, Triggersnext$]), UnfoldingHeap[null, Triggersvalid$(UnfoldingHeap[this$_4, Triggersnext$])]);
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_4.Triggersnext$ (0005b.vpr@65.1--70.2) [216242]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_4.Triggersnext$ (0005b.vpr@65.1--70.2) [72642]"}
         HasDirectPerm(UnfoldingMask, this$_4, Triggersnext$);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
-        assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_4.Triggersnext$ != null might not hold. (0005b.vpr@69.56--69.92) [216243]"}
+        ExhaleWellDef0Heap := UnfoldingHeap;
+        assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_4.Triggersnext$ != null might not hold. (0005b.vpr@69.56--69.92) [72643]"}
           UnfoldingHeap[this$_4, Triggersnext$] != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_4.Triggersnext$) (0005b.vpr@69.56--69.92) [216244]"}
+        assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_4.Triggersnext$) (0005b.vpr@69.56--69.92) [72644]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Triggersvalid$(UnfoldingHeap[this$_4, Triggersnext$])];
         // Finish exhale
         havoc ExhaleHeap;
@@ -621,9 +621,9 @@ procedure Triggersg$#definedness(this$_4: Ref, x: int) returns (Result: bool)
       // -- Free assumptions (exp module)
         Heap := Heap[null, Triggersvalid$#sm(this$_4):=Heap[null, Triggersvalid$#sm(this$_4)][this$_4, Triggersnext$:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-          { newPMask[o_52, f_55] }
-          Heap[null, Triggersvalid$#sm(this$_4)][o_52, f_55] || Heap[null, Triggersvalid$#sm(Heap[this$_4, Triggersnext$])][o_52, f_55] ==> newPMask[o_52, f_55]
+        assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+          { newPMask[o_40, f_52] }
+          Heap[null, Triggersvalid$#sm(this$_4)][o_40, f_52] || Heap[null, Triggersvalid$#sm(Heap[this$_4, Triggersnext$])][o_40, f_52] ==> newPMask[o_40, f_52]
         );
         Heap := Heap[null, Triggersvalid$#sm(this$_4):=newPMask];
         assume state(Heap, Mask);
@@ -675,8 +675,8 @@ procedure Triggersi$#definedness(this$_5: Ref, x: int, y: bool) returns (Result:
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -703,10 +703,10 @@ procedure Triggersi$#definedness(this$_5: Ref, x: int, y: bool) returns (Result:
       UnfoldingMask := Mask;
       assume Triggersvalid$#trigger(UnfoldingHeap, Triggersvalid$(this$_5));
       assume UnfoldingHeap[null, Triggersvalid$(this$_5)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_5, Triggersnext$]), UnfoldingHeap[null, Triggersvalid$(UnfoldingHeap[this$_5, Triggersnext$])]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Triggersvalid$(this$_5) (0005b.vpr@72.1--77.2) [216245]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Triggersvalid$(this$_5) (0005b.vpr@72.1--77.2) [72645]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Triggersvalid$(this$_5)];
       havoc wildcard;
       perm := wildcard;
@@ -722,16 +722,16 @@ procedure Triggersi$#definedness(this$_5: Ref, x: int, y: bool) returns (Result:
         assume InsidePredicate(Triggersvalid$(this$_5), UnfoldingHeap[null, Triggersvalid$(this$_5)], Triggersvalid$(UnfoldingHeap[this$_5, Triggersnext$]), UnfoldingHeap[null, Triggersvalid$(UnfoldingHeap[this$_5, Triggersnext$])]);
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_5.Triggersnext$ (0005b.vpr@72.1--77.2) [216246]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_5.Triggersnext$ (0005b.vpr@72.1--77.2) [72646]"}
         HasDirectPerm(UnfoldingMask, this$_5, Triggersnext$);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
-        assert {:msg "  Precondition of function Triggersi$ might not hold. Assertion this$_5.Triggersnext$ != null might not hold. (0005b.vpr@76.56--76.95) [216247]"}
+        ExhaleWellDef0Heap := UnfoldingHeap;
+        assert {:msg "  Precondition of function Triggersi$ might not hold. Assertion this$_5.Triggersnext$ != null might not hold. (0005b.vpr@76.56--76.95) [72647]"}
           UnfoldingHeap[this$_5, Triggersnext$] != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Triggersi$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_5.Triggersnext$) (0005b.vpr@76.56--76.95) [216248]"}
+        assert {:msg "  Precondition of function Triggersi$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_5.Triggersnext$) (0005b.vpr@76.56--76.95) [72648]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Triggersvalid$(UnfoldingHeap[this$_5, Triggersnext$])];
         // Finish exhale
         havoc ExhaleHeap;
@@ -747,9 +747,9 @@ procedure Triggersi$#definedness(this$_5: Ref, x: int, y: bool) returns (Result:
       // -- Free assumptions (exp module)
         Heap := Heap[null, Triggersvalid$#sm(this$_5):=Heap[null, Triggersvalid$#sm(this$_5)][this$_5, Triggersnext$:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-          { newPMask[o_53, f_56] }
-          Heap[null, Triggersvalid$#sm(this$_5)][o_53, f_56] || Heap[null, Triggersvalid$#sm(Heap[this$_5, Triggersnext$])][o_53, f_56] ==> newPMask[o_53, f_56]
+        assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+          { newPMask[o_42, f_55] }
+          Heap[null, Triggersvalid$#sm(this$_5)][o_42, f_55] || Heap[null, Triggersvalid$#sm(Heap[this$_5, Triggersnext$])][o_42, f_55] ==> newPMask[o_42, f_55]
         );
         Heap := Heap[null, Triggersvalid$#sm(this$_5):=newPMask];
         assume state(Heap, Mask);
@@ -862,12 +862,12 @@ procedure Triggersvalid$#definedness(this$_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this$_1.Triggersnext$ != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_1.Triggersnext$ (0005b.vpr@83.1--85.2) [216249]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_1.Triggersnext$ (0005b.vpr@83.1--85.2) [72649]"}
         HasDirectPerm(Mask, this$_1, Triggersnext$);
     assume Heap[this$_1, Triggersnext$] != null;
     
     // -- Check definedness of acc(Triggersvalid$(this$_1.Triggersnext$), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_1.Triggersnext$ (0005b.vpr@83.1--85.2) [216250]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_1.Triggersnext$ (0005b.vpr@83.1--85.2) [72650]"}
         HasDirectPerm(Mask, this$_1, Triggersnext$);
     perm := FullPerm;
     Mask := Mask[null, Triggersvalid$(Heap[this$_1, Triggersnext$]):=Mask[null, Triggersvalid$(Heap[this$_1, Triggersnext$])] + perm];
@@ -883,11 +883,11 @@ procedure Triggerstriggers_one$(this$_6: Ref, k$: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$: Ref;
@@ -919,12 +919,12 @@ procedure Triggerstriggers_one$(this$_6: Ref, k$: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_6 != null might not hold. (0005b.vpr@92.41--92.63) [216251]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_6 != null might not hold. (0005b.vpr@92.41--92.63) [72651]"}
             this$_6 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_6) (0005b.vpr@92.41--92.63) [216252]"}
+          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_6) (0005b.vpr@92.41--92.63) [72652]"}
             NoPerm < perm ==> NoPerm < Mask[null, Triggersvalid$(this$_6)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -944,8 +944,8 @@ procedure Triggerstriggers_one$(this$_6: Ref, k$: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -961,12 +961,12 @@ procedure Triggerstriggers_one$(this$_6: Ref, k$: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_6 != null might not hold. (0005b.vpr@94.38--94.60) [216253]"}
+          ExhaleWellDef0Heap := PostHeap;
+          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_6 != null might not hold. (0005b.vpr@94.38--94.60) [72653]"}
             this$_6 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_6) (0005b.vpr@94.38--94.60) [216254]"}
+          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_6) (0005b.vpr@94.38--94.60) [72654]"}
             NoPerm < perm ==> NoPerm < PostMask[null, Triggersvalid$(this$_6)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -990,22 +990,22 @@ procedure Triggerstriggers_one$(this$_6: Ref, k$: Perm) returns ()
     assume Heap[n$, $allocated];
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Triggerstriggers_one$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_6) (0005b.vpr@93.11--93.46) [216255]"}
+      assert {:msg "  Postcondition of Triggerstriggers_one$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_6) (0005b.vpr@93.11--93.46) [72655]"}
         perm <= Mask[null, Triggersvalid$(this$_6)];
     }
     Mask := Mask[null, Triggersvalid$(this$_6):=Mask[null, Triggersvalid$(this$_6)] - perm];
     if (*) {
-      assert {:msg "  Postcondition of Triggerstriggers_one$ might not hold. Assertion Triggersg$(this$_6, b) might not hold. (0005b.vpr@94.12--94.60) [216256]"}
+      assert {:msg "  Postcondition of Triggerstriggers_one$ might not hold. Assertion Triggersg$(this$_6, b) might not hold. (0005b.vpr@94.12--94.60) [72656]"}
         Triggersg$(Heap, this$_6, b_2_2);
       assume false;
     }
-    assume (forall b_3_1: int ::
-      { Triggersg$#frame(Heap[null, Triggersvalid$(this$_6)], this$_6, b_3_1) }
-      Triggersg$(Heap, this$_6, b_3_1)
+    assume (forall b_3_1_1: int ::
+      { Triggersg$#frame(Heap[null, Triggersvalid$(this$_6)], this$_6, b_3_1_1) }
+      Triggersg$(Heap, this$_6, b_3_1_1)
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -1021,17 +1021,17 @@ procedure Triggerstriggers_two$(this$_7: Ref, k$_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var a_13: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$_1: Ref;
   var x_2_2: int;
-  var y_2: int;
+  var y_2_1: int;
   var z_2: int;
   var w_2_2: int;
   
@@ -1061,12 +1061,12 @@ procedure Triggerstriggers_two$(this$_7: Ref, k$_1: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_7 != null might not hold. (0005b.vpr@106.14--106.36) [216257]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_7 != null might not hold. (0005b.vpr@106.14--106.36) [72657]"}
             this$_7 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_7) (0005b.vpr@106.14--106.36) [216258]"}
+          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_7) (0005b.vpr@106.14--106.36) [72658]"}
             NoPerm < perm ==> NoPerm < Mask[null, Triggersvalid$(this$_7)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1078,12 +1078,12 @@ procedure Triggerstriggers_two$(this$_7: Ref, k$_1: Perm) returns ()
         if (Triggersg$(Heap, this$_7, a_13)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_7 != null might not hold. (0005b.vpr@106.40--106.68) [216259]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_7 != null might not hold. (0005b.vpr@106.40--106.68) [72659]"}
               this$_7 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_7) (0005b.vpr@106.40--106.68) [216260]"}
+            assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_7) (0005b.vpr@106.40--106.68) [72660]"}
               NoPerm < perm ==> NoPerm < Mask[null, Triggersvalid$(this$_7)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1104,8 +1104,8 @@ procedure Triggerstriggers_two$(this$_7: Ref, k$_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1121,12 +1121,12 @@ procedure Triggerstriggers_two$(this$_7: Ref, k$_1: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
-          assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_7 != null might not hold. (0005b.vpr@108.54--108.82) [216261]"}
+          ExhaleWellDef0Heap := PostHeap;
+          assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_7 != null might not hold. (0005b.vpr@108.54--108.82) [72661]"}
             this$_7 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_7) (0005b.vpr@108.54--108.82) [216262]"}
+          assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_7) (0005b.vpr@108.54--108.82) [72662]"}
             NoPerm < perm ==> NoPerm < PostMask[null, Triggersvalid$(this$_7)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1148,12 +1148,12 @@ procedure Triggerstriggers_two$(this$_7: Ref, k$_1: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_7 != null might not hold. (0005b.vpr@111.14--111.36) [216263]"}
+          ExhaleWellDef0Heap := PostHeap;
+          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_7 != null might not hold. (0005b.vpr@111.14--111.36) [72663]"}
             this$_7 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_7) (0005b.vpr@111.14--111.36) [216264]"}
+          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_7) (0005b.vpr@111.14--111.36) [72664]"}
             NoPerm < perm ==> NoPerm < PostMask[null, Triggersvalid$(this$_7)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1164,9 +1164,9 @@ procedure Triggerstriggers_two$(this$_7: Ref, k$_1: Perm) returns ()
         }
         assume false;
       }
-    assume (forall w_1: int ::
-      { Triggersg$#frame(PostHeap[null, Triggersvalid$(this$_7)], this$_7, w_1) }
-      Triggersg$(PostHeap, this$_7, w_1)
+    assume (forall w_1_1: int ::
+      { Triggersg$#frame(PostHeap[null, Triggersvalid$(this$_7)], this$_7, w_1_1) }
+      Triggersg$(PostHeap, this$_7, w_1_1)
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -1177,17 +1177,17 @@ procedure Triggerstriggers_two$(this$_7: Ref, k$_1: Perm) returns ()
     assume Heap[n$_1, $allocated];
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Triggerstriggers_two$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_7) (0005b.vpr@107.11--107.46) [216265]"}
+      assert {:msg "  Postcondition of Triggerstriggers_two$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_7) (0005b.vpr@107.11--107.46) [72665]"}
         perm <= Mask[null, Triggersvalid$(this$_7)];
     }
     Mask := Mask[null, Triggersvalid$(this$_7):=Mask[null, Triggersvalid$(this$_7)] - perm];
     if (*) {
-      assert {:msg "  Postcondition of Triggerstriggers_two$ might not hold. Assertion Triggersf$(this$_7, x, y, z) might not hold. (0005b.vpr@108.12--108.82) [216266]"}
-        Triggersf$(Heap, this$_7, x_2_2, y_2, z_2);
+      assert {:msg "  Postcondition of Triggerstriggers_two$ might not hold. Assertion Triggersf$(this$_7, x, y, z) might not hold. (0005b.vpr@108.12--108.82) [72666]"}
+        Triggersf$(Heap, this$_7, x_2_2, y_2_1, z_2);
       assume false;
     }
     assume (forall x_3_1_1: int, y_3_1: int, z_3_1_1: int ::
@@ -1195,7 +1195,7 @@ procedure Triggerstriggers_two$(this$_7: Ref, k$_1: Perm) returns ()
       Triggersf$(Heap, this$_7, x_3_1_1, y_3_1, z_3_1_1)
     );
     if (*) {
-      assert {:msg "  Postcondition of Triggerstriggers_two$ might not hold. Assertion Triggersg$(this$_7, w) might not hold. (0005b.vpr@110.12--111.36) [216267]"}
+      assert {:msg "  Postcondition of Triggerstriggers_two$ might not hold. Assertion Triggersg$(this$_7, w) might not hold. (0005b.vpr@110.12--111.36) [72667]"}
         Triggersg$(Heap, this$_7, w_2_2);
       assume false;
     }
@@ -1217,17 +1217,17 @@ procedure Triggerstriggers_three$(this$_8: Ref, k$_2: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var a_26: int;
-  var oldHeap: HeapType;
+  var a_27: int;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$_2: Ref;
   var x_2_2: int;
-  var y_2: int;
+  var y_2_1: int;
   var z_2: int;
   var w_2_2: int;
   
@@ -1257,12 +1257,12 @@ procedure Triggerstriggers_three$(this$_8: Ref, k$_2: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_8 != null might not hold. (0005b.vpr@123.15--123.37) [216268]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_8 != null might not hold. (0005b.vpr@123.15--123.37) [72668]"}
             this$_8 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_8) (0005b.vpr@123.15--123.37) [216269]"}
+          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_8) (0005b.vpr@123.15--123.37) [72669]"}
             NoPerm < perm ==> NoPerm < Mask[null, Triggersvalid$(this$_8)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1271,16 +1271,16 @@ procedure Triggerstriggers_three$(this$_8: Ref, k$_2: Perm) returns ()
           // Stop execution
           assume false;
         }
-        if (Triggersg$(Heap, this$_8, a_26)) {
+        if (Triggersg$(Heap, this$_8, a_27)) {
           if (*) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
-              assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_8 != null might not hold. (0005b.vpr@124.50--124.78) [216270]"}
+              ExhaleWellDef0Heap := Heap;
+              assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_8 != null might not hold. (0005b.vpr@124.50--124.78) [72670]"}
                 this$_8 != null;
               perm := FullPerm;
-              assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_8) (0005b.vpr@124.50--124.78) [216271]"}
+              assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_8) (0005b.vpr@124.50--124.78) [72671]"}
                 NoPerm < perm ==> NoPerm < Mask[null, Triggersvalid$(this$_8)];
               // Finish exhale
               havoc ExhaleHeap;
@@ -1306,8 +1306,8 @@ procedure Triggerstriggers_three$(this$_8: Ref, k$_2: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1323,12 +1323,12 @@ procedure Triggerstriggers_three$(this$_8: Ref, k$_2: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
-          assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_8 != null might not hold. (0005b.vpr@127.54--127.82) [216272]"}
+          ExhaleWellDef0Heap := PostHeap;
+          assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_8 != null might not hold. (0005b.vpr@127.54--127.82) [72672]"}
             this$_8 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_8) (0005b.vpr@127.54--127.82) [216273]"}
+          assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_8) (0005b.vpr@127.54--127.82) [72673]"}
             NoPerm < perm ==> NoPerm < PostMask[null, Triggersvalid$(this$_8)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1350,12 +1350,12 @@ procedure Triggerstriggers_three$(this$_8: Ref, k$_2: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_8 != null might not hold. (0005b.vpr@128.38--128.60) [216274]"}
+          ExhaleWellDef0Heap := PostHeap;
+          assert {:msg "  Precondition of function Triggersg$ might not hold. Assertion this$_8 != null might not hold. (0005b.vpr@128.38--128.60) [72674]"}
             this$_8 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_8) (0005b.vpr@128.38--128.60) [216275]"}
+          assert {:msg "  Precondition of function Triggersg$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_8) (0005b.vpr@128.38--128.60) [72675]"}
             NoPerm < perm ==> NoPerm < PostMask[null, Triggersvalid$(this$_8)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1366,9 +1366,9 @@ procedure Triggerstriggers_three$(this$_8: Ref, k$_2: Perm) returns ()
         }
         assume false;
       }
-    assume (forall w_1: int ::
-      { Triggersg$#frame(PostHeap[null, Triggersvalid$(this$_8)], this$_8, w_1) }
-      Triggersg$(PostHeap, this$_8, w_1)
+    assume (forall w_1_1: int ::
+      { Triggersg$#frame(PostHeap[null, Triggersvalid$(this$_8)], this$_8, w_1_1) }
+      Triggersg$(PostHeap, this$_8, w_1_1)
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -1379,17 +1379,17 @@ procedure Triggerstriggers_three$(this$_8: Ref, k$_2: Perm) returns ()
     assume Heap[n$_2, $allocated];
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Triggerstriggers_three$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_8) (0005b.vpr@125.11--125.46) [216276]"}
+      assert {:msg "  Postcondition of Triggerstriggers_three$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_8) (0005b.vpr@125.11--125.46) [72676]"}
         perm <= Mask[null, Triggersvalid$(this$_8)];
     }
     Mask := Mask[null, Triggersvalid$(this$_8):=Mask[null, Triggersvalid$(this$_8)] - perm];
     if (*) {
-      assert {:msg "  Postcondition of Triggerstriggers_three$ might not hold. Assertion Triggersf$(this$_8, x, y, z) might not hold. (0005b.vpr@127.12--127.82) [216277]"}
-        Triggersf$(Heap, this$_8, x_2_2, y_2, z_2);
+      assert {:msg "  Postcondition of Triggerstriggers_three$ might not hold. Assertion Triggersf$(this$_8, x, y, z) might not hold. (0005b.vpr@127.12--127.82) [72677]"}
+        Triggersf$(Heap, this$_8, x_2_2, y_2_1, z_2);
       assume false;
     }
     assume (forall x_3_1_1: int, y_3_1: int, z_3_1_1: int ::
@@ -1397,7 +1397,7 @@ procedure Triggerstriggers_three$(this$_8: Ref, k$_2: Perm) returns ()
       Triggersf$(Heap, this$_8, x_3_1_1, y_3_1, z_3_1_1)
     );
     if (*) {
-      assert {:msg "  Postcondition of Triggerstriggers_three$ might not hold. Assertion Triggersg$(this$_8, w) might not hold. (0005b.vpr@128.12--128.60) [216278]"}
+      assert {:msg "  Postcondition of Triggerstriggers_three$ might not hold. Assertion Triggersg$(this$_8, w) might not hold. (0005b.vpr@128.12--128.60) [72678]"}
         Triggersg$(Heap, this$_8, w_2_2);
       assume false;
     }
@@ -1419,26 +1419,26 @@ procedure Triggerstriggers_four$(this$_9: Ref, k$_3: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var a_27: int;
-  var b_105: int;
-  var c_4: int;
-  var d_4: int;
-  var oldHeap: HeapType;
+  var a_28: int;
+  var b_37: int;
+  var c_2: int;
+  var d_2: int;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var x_27: int;
-  var y_36: int;
-  var z_32: int;
+  var x_22: int;
+  var y_18: int;
+  var z_22: int;
   var n$_3: Ref;
-  var x_4: int;
+  var x_4_2: int;
   var y_4_1: int;
   var z_4: int;
   var x_6: int;
-  var y_6_2: int;
+  var y_6: int;
   var z_6: int;
   
   // -- Initializing the state
@@ -1467,12 +1467,12 @@ procedure Triggerstriggers_four$(this$_9: Ref, k$_3: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@140.24--140.52) [216279]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@140.24--140.52) [72679]"}
             this$_9 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@140.24--140.52) [216280]"}
+          assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@140.24--140.52) [72680]"}
             NoPerm < perm ==> NoPerm < Mask[null, Triggersvalid$(this$_9)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1481,15 +1481,15 @@ procedure Triggerstriggers_four$(this$_9: Ref, k$_3: Perm) returns ()
           // Stop execution
           assume false;
         }
-        if (Triggersf$(Heap, this$_9, a_27, b_105, c_4)) {
+        if (Triggersf$(Heap, this$_9, a_28, b_37, c_2)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function Triggersh$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@140.56--140.84) [216281]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function Triggersh$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@140.56--140.84) [72681]"}
               this$_9 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Triggersh$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@140.56--140.84) [216282]"}
+            assert {:msg "  Precondition of function Triggersh$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@140.56--140.84) [72682]"}
               NoPerm < perm ==> NoPerm < Mask[null, Triggersvalid$(this$_9)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1498,15 +1498,15 @@ procedure Triggerstriggers_four$(this$_9: Ref, k$_3: Perm) returns ()
             // Stop execution
             assume false;
           }
-          if (Triggersh$(Heap, this$_9, b_105, c_4, d_4)) {
+          if (Triggersh$(Heap, this$_9, b_37, c_2, d_2)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
-              assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@140.88--140.116) [216283]"}
+              ExhaleWellDef0Heap := Heap;
+              assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@140.88--140.116) [72683]"}
                 this$_9 != null;
               perm := FullPerm;
-              assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@140.88--140.116) [216284]"}
+              assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@140.88--140.116) [72684]"}
                 NoPerm < perm ==> NoPerm < Mask[null, Triggersvalid$(this$_9)];
               // Finish exhale
               havoc ExhaleHeap;
@@ -1519,17 +1519,17 @@ procedure Triggerstriggers_four$(this$_9: Ref, k$_3: Perm) returns ()
         }
         assume false;
       }
-    assume (forall a_1_1: int, b_1_2: int, c_1: int, d_1: int, e_1_1: int ::
-      { Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, a_1_1, b_1_2, c_1), Triggersh$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, b_1_2, c_1, d_1), Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, c_1, d_1, e_1_1) } { Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, a_1_1, b_1_2, c_1), Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, c_1, d_1, e_1_1) }
-      Triggersf$(Heap, this$_9, a_1_1, b_1_2, c_1) && (Triggersh$(Heap, this$_9, b_1_2, c_1, d_1) && Triggersf$(Heap, this$_9, c_1, d_1, e_1_1))
+    assume (forall a_1_1: int, b_1_2: int, c_1: int, d_1_1: int, e_1_1: int ::
+      { Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, a_1_1, b_1_2, c_1), Triggersh$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, b_1_2, c_1, d_1_1), Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, c_1, d_1_1, e_1_1) } { Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, a_1_1, b_1_2, c_1), Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, c_1, d_1_1, e_1_1) }
+      Triggersf$(Heap, this$_9, a_1_1, b_1_2, c_1) && (Triggersh$(Heap, this$_9, b_1_2, c_1, d_1_1) && Triggersf$(Heap, this$_9, c_1, d_1_1, e_1_1))
     );
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1545,12 +1545,12 @@ procedure Triggerstriggers_four$(this$_9: Ref, k$_3: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
-          assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@143.54--143.82) [216285]"}
+          ExhaleWellDef0Heap := PostHeap;
+          assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@143.54--143.82) [72685]"}
             this$_9 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@143.54--143.82) [216286]"}
+          assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@143.54--143.82) [72686]"}
             NoPerm < perm ==> NoPerm < PostMask[null, Triggersvalid$(this$_9)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1572,12 +1572,12 @@ procedure Triggerstriggers_four$(this$_9: Ref, k$_3: Perm) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
-          assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@144.54--144.82) [216287]"}
+          ExhaleWellDef0Heap := PostHeap;
+          assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@144.54--144.82) [72687]"}
             this$_9 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@144.54--144.82) [216288]"}
+          assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@144.54--144.82) [72688]"}
             NoPerm < perm ==> NoPerm < PostMask[null, Triggersvalid$(this$_9)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1586,15 +1586,15 @@ procedure Triggerstriggers_four$(this$_9: Ref, k$_3: Perm) returns ()
           // Stop execution
           assume false;
         }
-        if (Triggersf$(PostHeap, this$_9, x_27, y_36, z_32)) {
+        if (Triggersf$(PostHeap, this$_9, x_22, y_18, z_22)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
-            assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@144.86--144.114) [216289]"}
+            ExhaleWellDef0Heap := PostHeap;
+            assert {:msg "  Precondition of function Triggersf$ might not hold. Assertion this$_9 != null might not hold. (0005b.vpr@144.86--144.114) [72689]"}
               this$_9 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@144.86--144.114) [216290]"}
+            assert {:msg "  Precondition of function Triggersf$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@144.86--144.114) [72690]"}
               NoPerm < perm ==> NoPerm < PostMask[null, Triggersvalid$(this$_9)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1619,33 +1619,33 @@ procedure Triggerstriggers_four$(this$_9: Ref, k$_3: Perm) returns ()
     assume Heap[n$_3, $allocated];
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Triggerstriggers_four$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@141.11--141.46) [216291]"}
+      assert {:msg "  Postcondition of Triggerstriggers_four$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_9) (0005b.vpr@141.11--141.46) [72691]"}
         perm <= Mask[null, Triggersvalid$(this$_9)];
     }
     Mask := Mask[null, Triggersvalid$(this$_9):=Mask[null, Triggersvalid$(this$_9)] - perm];
     if (*) {
-      assert {:msg "  Postcondition of Triggerstriggers_four$ might not hold. Assertion Triggersf$(this$_9, x, y, z) might not hold. (0005b.vpr@143.12--143.82) [216292]"}
-        Triggersf$(Heap, this$_9, x_4, y_4_1, z_4);
+      assert {:msg "  Postcondition of Triggerstriggers_four$ might not hold. Assertion Triggersf$(this$_9, x, y, z) might not hold. (0005b.vpr@143.12--143.82) [72692]"}
+        Triggersf$(Heap, this$_9, x_4_2, y_4_1, z_4);
       assume false;
     }
-    assume (forall x_5_1_1: int, y_5_1: int, z_5_1_1: int ::
-      { Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, x_5_1_1, y_5_1, z_5_1_1) }
-      Triggersf$(Heap, this$_9, x_5_1_1, y_5_1, z_5_1_1)
+    assume (forall x_5_1_1: int, y_5_1: int, z_5_1: int ::
+      { Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, x_5_1_1, y_5_1, z_5_1) }
+      Triggersf$(Heap, this$_9, x_5_1_1, y_5_1, z_5_1)
     );
     if (*) {
-      assert {:msg "  Postcondition of Triggerstriggers_four$ might not hold. Assertion Triggersf$(this$_9, x, y, z) might not hold. (0005b.vpr@144.12--144.114) [216293]"}
-        Triggersf$(Heap, this$_9, x_6, y_6_2, z_6);
-      assert {:msg "  Postcondition of Triggerstriggers_four$ might not hold. Assertion Triggersf$(this$_9, z, y, x) might not hold. (0005b.vpr@144.12--144.114) [216294]"}
-        Triggersf$(Heap, this$_9, z_6, y_6_2, x_6);
+      assert {:msg "  Postcondition of Triggerstriggers_four$ might not hold. Assertion Triggersf$(this$_9, x, y, z) might not hold. (0005b.vpr@144.12--144.114) [72693]"}
+        Triggersf$(Heap, this$_9, x_6, y_6, z_6);
+      assert {:msg "  Postcondition of Triggerstriggers_four$ might not hold. Assertion Triggersf$(this$_9, z, y, x) might not hold. (0005b.vpr@144.12--144.114) [72694]"}
+        Triggersf$(Heap, this$_9, z_6, y_6, x_6);
       assume false;
     }
-    assume (forall x_7_1_1: int, y_7_1: int, z_7_1_1: int ::
-      { Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, x_7_1_1, y_7_1, z_7_1_1) } { Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, z_7_1_1, y_7_1, x_7_1_1) }
-      Triggersf$(Heap, this$_9, x_7_1_1, y_7_1, z_7_1_1) && Triggersf$(Heap, this$_9, z_7_1_1, y_7_1, x_7_1_1)
+    assume (forall x_7_1_1: int, y_7_1: int, z_7_1: int ::
+      { Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, x_7_1_1, y_7_1, z_7_1) } { Triggersf$#frame(Heap[null, Triggersvalid$(this$_9)], this$_9, z_7_1, y_7_1, x_7_1_1) }
+      Triggersf$(Heap, this$_9, x_7_1_1, y_7_1, z_7_1) && Triggersf$(Heap, this$_9, z_7_1, y_7_1, x_7_1_1)
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -1661,11 +1661,11 @@ procedure Triggerstriggers_five$(this$_10: Ref, k$_4: Perm, c: bool, d: bool) re
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$_4: Ref;
@@ -1696,16 +1696,16 @@ procedure Triggerstriggers_five$(this$_10: Ref, k$_4: Perm, c: bool, d: bool) re
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
-    // -- Check definedness of (forall x: Int, fresh__419: Bool :: { Triggersi$(this$_10, x, fresh__419) } true ==> Triggersi$(this$_10, x, c ==> d))
+    // -- Check definedness of (forall x: Int, fresh__225: Bool :: { Triggersi$(this$_10, x, fresh__225) } true ==> Triggersi$(this$_10, x, c ==> d))
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Triggersi$ might not hold. Assertion this$_10 != null might not hold. (0005b.vpr@156.39--156.71) [216295]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function Triggersi$ might not hold. Assertion this$_10 != null might not hold. (0005b.vpr@156.39--156.71) [72695]"}
             this$_10 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersi$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_10) (0005b.vpr@156.39--156.71) [216296]"}
+          assert {:msg "  Precondition of function Triggersi$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_10) (0005b.vpr@156.39--156.71) [72696]"}
             NoPerm < perm ==> NoPerm < Mask[null, Triggersvalid$(this$_10)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1716,8 +1716,8 @@ procedure Triggerstriggers_five$(this$_10: Ref, k$_4: Perm, c: bool, d: bool) re
         }
         assume false;
       }
-    assume (forall x_1: int, fresh__419_1: bool ::
-      { Triggersi$#frame(Heap[null, Triggersvalid$(this$_10)], this$_10, x_1, fresh__419_1) }
+    assume (forall x_1: int, fresh__225_1: bool ::
+      { Triggersi$#frame(Heap[null, Triggersvalid$(this$_10)], this$_10, x_1, fresh__225_1) }
       Triggersi$(Heap, this$_10, x_1, c ==> d)
     );
     assume state(Heap, Mask);
@@ -1725,8 +1725,8 @@ procedure Triggerstriggers_five$(this$_10: Ref, k$_4: Perm, c: bool, d: bool) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1741,12 +1741,12 @@ procedure Triggerstriggers_five$(this$_10: Ref, k$_4: Perm, c: bool, d: bool) re
     // -- Check definedness of Triggersi$(this$_10, 4, true)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function Triggersi$ might not hold. Assertion this$_10 != null might not hold. (0005b.vpr@158.11--158.40) [216297]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function Triggersi$ might not hold. Assertion this$_10 != null might not hold. (0005b.vpr@158.11--158.40) [72697]"}
           this$_10 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Triggersi$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_10) (0005b.vpr@158.11--158.40) [216298]"}
+        assert {:msg "  Precondition of function Triggersi$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_10) (0005b.vpr@158.11--158.40) [72698]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Triggersvalid$(this$_10)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1765,15 +1765,15 @@ procedure Triggerstriggers_five$(this$_10: Ref, k$_4: Perm, c: bool, d: bool) re
     assume Heap[n$_4, $allocated];
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Triggerstriggers_five$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_10) (0005b.vpr@157.11--157.47) [216299]"}
+      assert {:msg "  Postcondition of Triggerstriggers_five$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_10) (0005b.vpr@157.11--157.47) [72699]"}
         perm <= Mask[null, Triggersvalid$(this$_10)];
     }
     Mask := Mask[null, Triggersvalid$(this$_10):=Mask[null, Triggersvalid$(this$_10)] - perm];
-    assert {:msg "  Postcondition of Triggerstriggers_five$ might not hold. Assertion Triggersi$(this$_10, 4, true) might not hold. (0005b.vpr@158.11--158.40) [216300]"}
+    assert {:msg "  Postcondition of Triggerstriggers_five$ might not hold. Assertion Triggersi$(this$_10, 4, true) might not hold. (0005b.vpr@158.11--158.40) [72700]"}
       Triggersi$(Heap, this$_10, 4, true);
     // Finish exhale
     havoc ExhaleHeap;
@@ -1789,11 +1789,11 @@ procedure Triggerstriggers_six$(this$_11: Ref, k$_5: Perm, c: int, d: int) retur
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$_5: Ref;
@@ -1822,16 +1822,16 @@ procedure Triggerstriggers_six$(this$_11: Ref, k$_5: Perm, c: int, d: int) retur
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
-    // -- Check definedness of (forall x: Int, fresh__420: Bool :: { Triggersi$(this$_11, x, fresh__420) } true ==> Triggersi$(this$_11, x, c > d))
+    // -- Check definedness of (forall x: Int, fresh__226: Bool :: { Triggersi$(this$_11, x, fresh__226) } true ==> Triggersi$(this$_11, x, c > d))
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Triggersi$ might not hold. Assertion this$_11 != null might not hold. (0005b.vpr@170.39--170.69) [216301]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  Precondition of function Triggersi$ might not hold. Assertion this$_11 != null might not hold. (0005b.vpr@170.39--170.69) [72701]"}
             this$_11 != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Triggersi$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_11) (0005b.vpr@170.39--170.69) [216302]"}
+          assert {:msg "  Precondition of function Triggersi$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_11) (0005b.vpr@170.39--170.69) [72702]"}
             NoPerm < perm ==> NoPerm < Mask[null, Triggersvalid$(this$_11)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1842,8 +1842,8 @@ procedure Triggerstriggers_six$(this$_11: Ref, k$_5: Perm, c: int, d: int) retur
         }
         assume false;
       }
-    assume (forall x_1: int, fresh__420_1: bool ::
-      { Triggersi$#frame(Heap[null, Triggersvalid$(this$_11)], this$_11, x_1, fresh__420_1) }
+    assume (forall x_1: int, fresh__226_1: bool ::
+      { Triggersi$#frame(Heap[null, Triggersvalid$(this$_11)], this$_11, x_1, fresh__226_1) }
       Triggersi$(Heap, this$_11, x_1, c > d)
     );
     assume state(Heap, Mask);
@@ -1851,8 +1851,8 @@ procedure Triggerstriggers_six$(this$_11: Ref, k$_5: Perm, c: int, d: int) retur
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1867,12 +1867,12 @@ procedure Triggerstriggers_six$(this$_11: Ref, k$_5: Perm, c: int, d: int) retur
     // -- Check definedness of Triggersi$(this$_11, 4, true)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function Triggersi$ might not hold. Assertion this$_11 != null might not hold. (0005b.vpr@172.11--172.40) [216303]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function Triggersi$ might not hold. Assertion this$_11 != null might not hold. (0005b.vpr@172.11--172.40) [72703]"}
           this$_11 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Triggersi$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_11) (0005b.vpr@172.11--172.40) [216304]"}
+        assert {:msg "  Precondition of function Triggersi$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_11) (0005b.vpr@172.11--172.40) [72704]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Triggersvalid$(this$_11)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1891,15 +1891,15 @@ procedure Triggerstriggers_six$(this$_11: Ref, k$_5: Perm, c: int, d: int) retur
     assume Heap[n$_5, $allocated];
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Triggerstriggers_six$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_11) (0005b.vpr@171.11--171.47) [216305]"}
+      assert {:msg "  Postcondition of Triggerstriggers_six$ might not hold. There might be insufficient permission to access Triggersvalid$(this$_11) (0005b.vpr@171.11--171.47) [72705]"}
         perm <= Mask[null, Triggersvalid$(this$_11)];
     }
     Mask := Mask[null, Triggersvalid$(this$_11):=Mask[null, Triggersvalid$(this$_11)] - perm];
-    assert {:msg "  Postcondition of Triggerstriggers_six$ might not hold. Assertion Triggersi$(this$_11, 4, true) might not hold. (0005b.vpr@172.11--172.40) [216306]"}
+    assert {:msg "  Postcondition of Triggerstriggers_six$ might not hold. Assertion Triggersi$(this$_11, 4, true) might not hold. (0005b.vpr@172.11--172.40) [72706]"}
       Triggersi$(Heap, this$_11, 4, true);
     // Finish exhale
     havoc ExhaleHeap;

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:20
+; Started: 2025-01-26 21:35:03
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -406,19 +406,19 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (reqIGt0%limited s@$ i@0@00) (reqIGt0 s@$ i@0@00))
   :pattern ((reqIGt0 s@$ i@0@00))
-  :qid |quant-u-23586|)))
+  :qid |quant-u-12094|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (reqIGt0%stateless i@0@00)
   :pattern ((reqIGt0%limited s@$ i@0@00))
-  :qid |quant-u-23587|)))
+  :qid |quant-u-12095|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (=> (reqIGt0%precondition s@$ i@0@00) (= (reqIGt0 s@$ i@0@00) i@0@00))
   :pattern ((reqIGt0 s@$ i@0@00))
-  :qid |quant-u-23588|)))
+  :qid |quant-u-12096|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   true
   :pattern ((reqIGt0 s@$ i@0@00))
-  :qid |quant-u-23589|)))
+  :qid |quant-u-12097|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- succeedsRange10 ----------
@@ -836,12 +836,12 @@
     i@6@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0008.vpr@16@10@16@69|)))
 ; [exec]
-; assert (forall i: Int, fresh__178: Int ::
-;     { (i in Seq(fresh__178, 2, 4, 6, 8)) }
+; assert (forall i: Int, fresh__78: Int ::
+;     { (i in Seq(fresh__78, 2, 4, 6, 8)) }
 ;     (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i)
-; [eval] (forall i: Int, fresh__178: Int :: { (i in Seq(fresh__178, 2, 4, 6, 8)) } (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i)
+; [eval] (forall i: Int, fresh__78: Int :: { (i in Seq(fresh__78, 2, 4, 6, 8)) } (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i)
 (declare-const i@7@01 Int)
-(declare-const fresh__178@8@01 Int)
+(declare-const fresh__78@8@01 Int)
 (push) ; 3
 ; [eval] (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i
 ; [eval] (i in Seq(-2, 2, 4, 6, 8))
@@ -949,14 +949,14 @@
         (Seq_singleton 6))
       (Seq_singleton 8))
     i@7@01)))
-; [eval] (i in Seq(fresh__178, 2, 4, 6, 8))
-; [eval] Seq(fresh__178, 2, 4, 6, 8)
+; [eval] (i in Seq(fresh__78, 2, 4, 6, 8))
+; [eval] Seq(fresh__78, 2, 4, 6, 8)
 (assert (=
   (Seq_length
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8)))
@@ -966,7 +966,7 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8)))
@@ -984,7 +984,7 @@
       (Seq_singleton 8)))
   5))
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@7@01 Int) (fresh__178@8@01 Int)) (!
+(assert (forall ((i@7@01 Int) (fresh__78@8@01 Int)) (!
   (and
     (=>
       (Seq_contains
@@ -1033,7 +1033,7 @@
         (Seq_append
           (Seq_append
             (Seq_append
-              (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+              (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
               (Seq_singleton 4))
             (Seq_singleton 6))
           (Seq_singleton 8)))
@@ -1042,7 +1042,7 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))
@@ -1051,13 +1051,13 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))
     i@7@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0008.vpr@17@10@17@72-aux|)))
-(assert (forall ((i@7@01 Int) (fresh__178@8@01 Int)) (!
+(assert (forall ((i@7@01 Int) (fresh__78@8@01 Int)) (!
   (and
     (=>
       (Seq_contains
@@ -1106,7 +1106,7 @@
         (Seq_append
           (Seq_append
             (Seq_append
-              (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+              (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
               (Seq_singleton 4))
             (Seq_singleton 6))
           (Seq_singleton 8)))
@@ -1115,13 +1115,13 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))
     i@7@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0008.vpr@17@10@17@72-aux|)))
-(assert (forall ((i@7@01 Int) (fresh__178@8@01 Int)) (!
+(assert (forall ((i@7@01 Int) (fresh__78@8@01 Int)) (!
   (=>
     (Seq_contains
       (Seq_append
@@ -1137,7 +1137,7 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))
@@ -1146,7 +1146,7 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))
@@ -1155,14 +1155,14 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))
     i@7@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0008.vpr@17@10@17@72_precondition|)))
 (push) ; 3
-(assert (not (forall ((i@7@01 Int) (fresh__178@8@01 Int)) (!
+(assert (not (forall ((i@7@01 Int) (fresh__78@8@01 Int)) (!
   (=>
     (and
       (=>
@@ -1190,7 +1190,7 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))
@@ -1199,7 +1199,7 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))
@@ -1208,7 +1208,7 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))
@@ -1219,7 +1219,7 @@
 (pop) ; 3
 ; 0.04s
 ; (get-info :all-statistics)
-(assert (forall ((i@7@01 Int) (fresh__178@8@01 Int)) (!
+(assert (forall ((i@7@01 Int) (fresh__78@8@01 Int)) (!
   (=>
     (Seq_contains
       (Seq_append
@@ -1235,7 +1235,7 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))
@@ -1244,7 +1244,7 @@
     (Seq_append
       (Seq_append
         (Seq_append
-          (Seq_append (Seq_singleton fresh__178@8@01) (Seq_singleton 2))
+          (Seq_append (Seq_singleton fresh__78@8@01) (Seq_singleton 2))
           (Seq_singleton 4))
         (Seq_singleton 6))
       (Seq_singleton 8))

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:14:20
+// Date:         2025-01-26 21:43:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains_threshold.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains_threshold-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,50 +181,50 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type D1DomainType T;
 
 // Translation of domain function f1
-function  f1_2<T>(t_9: T): D1DomainType T;
+function  f1_3<T>(t_3: T): D1DomainType T;
 
 // Translation of domain function f2
-function  f2_2<T>(t_9: (D1DomainType T)): D1DomainType T;
+function  f2_3<T>(t_3: (D1DomainType T)): D1DomainType T;
 
 // Translation of domain function f3
-function  f3_1<T>(t_9: (D1DomainType T)): T;
+function  f3_2<T>(t_3: (D1DomainType T)): T;
 
 // Translation of domain function f4
-function  f4<T>(t_9: (D1DomainType (D1DomainType T))): T;
+function  f4_1<T>(t_3: (D1DomainType (D1DomainType T))): T;
 
 // Translation of domain function f5
-function  f5<T>(t_9: T): D1DomainType (D1DomainType T);
+function  f5_1<T>(t_3: T): D1DomainType (D1DomainType T);
 
 // Translation of domain function f6
-function  f6<T>(t_9: (D1DomainType T)): D1DomainType (D1DomainType T);
+function  f6_1<T>(t_3: (D1DomainType T)): D1DomainType (D1DomainType T);
 
 // Translation of domain axiom A1
 axiom (forall <T> x: T ::
-  { (f6((f1_2(x): D1DomainType T)): D1DomainType (D1DomainType T)) } { (f1_2((f1_2(x): D1DomainType T)): D1DomainType (D1DomainType T)) }
-  (f6((f1_2(x): D1DomainType T)): D1DomainType (D1DomainType T)) == (f1_2((f1_2(x): D1DomainType T)): D1DomainType (D1DomainType T))
+  { (f6_1((f1_3(x): D1DomainType T)): D1DomainType (D1DomainType T)) } { (f1_3((f1_3(x): D1DomainType T)): D1DomainType (D1DomainType T)) }
+  (f6_1((f1_3(x): D1DomainType T)): D1DomainType (D1DomainType T)) == (f1_3((f1_3(x): D1DomainType T)): D1DomainType (D1DomainType T))
 );
 
 // Translation of domain axiom A2
 axiom (forall <T> y: (D1DomainType T) ::
-  { (f2_2(y): D1DomainType T) }
-  y == (f2_2(y): D1DomainType T)
+  { (f2_3(y): D1DomainType T) }
+  y == (f2_3(y): D1DomainType T)
 );
 
 // Translation of domain axiom A3
 axiom (forall <T> z: (D1DomainType (D1DomainType T)) ::
-  { (f4(z): T) } { (f3_1((f3_1(z): D1DomainType T)): T) }
-  (f4(z): T) == (f3_1((f3_1(z): D1DomainType T)): T)
+  { (f4_1(z): T) } { (f3_2((f3_2(z): D1DomainType T)): T) }
+  (f4_1(z): T) == (f3_2((f3_2(z): D1DomainType T)): T)
 );
 
 // ==================================================
 // Translation of method m
 // ==================================================
 
-procedure m(x: (D1DomainType int)) returns (r_1: (D1DomainType bool))
+procedure m_17(x: (D1DomainType int)) returns (r_1: (D1DomainType bool))
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: int;
   var z: (D1DomainType (D1DomainType (D1DomainType int)));
   
@@ -236,18 +236,18 @@ procedure m(x: (D1DomainType int)) returns (r_1: (D1DomainType bool))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: y := 5 -- domains_threshold.vpr@21.2--21.8
     y := 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: y := (f4((f1(x): D1[D1[Int]])): Int) -- domains_threshold.vpr@23.2--23.16
-    y := (f4((f1_2(x): D1DomainType (D1DomainType int))): int);
+    y := (f4_1((f1_3(x): D1DomainType (D1DomainType int))): int);
     assume state(Heap, Mask);
   
   // -- Translating statement: z := (f5(x): D1[D1[D1[Int]]]) -- domains_threshold.vpr@25.2--25.33
-    z := (f5(x): D1DomainType (D1DomainType (D1DomainType int)));
+    z := (f5_1(x): D1DomainType (D1DomainType (D1DomainType int)));
     assume state(Heap, Mask);
 }

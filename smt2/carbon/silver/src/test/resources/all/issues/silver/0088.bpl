@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:11
+// Date:         2025-01-26 21:42:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0088.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0088-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,13 +180,13 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -199,8 +199,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 0 -- 0088.vpr@8.3--8.9
     i := 0;
@@ -273,9 +273,9 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0088.vpr@16.3--16.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0088.vpr@16.10--16.15) [219602]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0088.vpr@16.10--16.15) [56048]"}
       false;
     assume state(Heap, Mask);
 }
@@ -287,14 +287,14 @@ procedure test01(x: Ref) returns ()
 procedure test04(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var j_9: int;
+  var j: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -307,8 +307,8 @@ procedure test04(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 0 -- 0088.vpr@23.3--23.9
     i := 0;
@@ -317,7 +317,7 @@ procedure test04(x: Ref) returns ()
   // -- Translating statement: while (i < 1) -- 0088.vpr@25.3--29.4
     
     // -- Havoc loop written variables (except locals)
-      havoc i, j_9;
+      havoc i, j;
     
     // -- Check definedness of invariant
       if (*) {
@@ -340,7 +340,7 @@ procedure test04(x: Ref) returns ()
         // -- Translate loop body
           
           // -- Translating statement: j := 1 -- 0088.vpr@26.5--26.11
-            j_9 := 1;
+            j := 1;
             assume state(Heap, Mask);
           
           // -- Translating statement: while (false) -- 0088.vpr@27.5--27.21
@@ -385,9 +385,9 @@ procedure test04(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0088.vpr@32.3--32.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0088.vpr@32.10--32.15) [219603]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0088.vpr@32.10--32.15) [56049]"}
       false;
     assume state(Heap, Mask);
 }

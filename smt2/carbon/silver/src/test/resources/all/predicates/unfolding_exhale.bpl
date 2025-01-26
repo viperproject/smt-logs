@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:15
+// Date:         2025-01-26 21:41:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/unfolding_exhale.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/unfolding_exhale-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,9 +177,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of predicate P
@@ -230,7 +230,7 @@ procedure P#definedness(this: Ref) returns ()
       assume Heap[this, $allocated];
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
 }
@@ -279,7 +279,7 @@ procedure fail10(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@16.10--16.75) [151118]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@16.10--16.75) [47018]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -288,33 +288,33 @@ procedure fail10(this: Ref) returns ()
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@16.10--16.75) [151119]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@16.10--16.75) [47019]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@16.10--16.75) [151120]"}
-        HasDirectPerm(UnfoldingMask, this, x_36);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@16.10--16.75) [151121]"}
-        HasDirectPerm(oldMask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@16.10--16.75) [47020]"}
+        HasDirectPerm(UnfoldingMask, this, x_42);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@16.10--16.75) [47021]"}
+        HasDirectPerm(oldMask, this, x_42);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Exhale might fail. Assertion this.x == old(this.x) might not hold. (unfolding_exhale.vpr@16.10--16.75) [151122]"}
-      Heap[this, x_36] == oldHeap[this, x_36];
+    assert {:msg "  Exhale might fail. Assertion this.x == old(this.x) might not hold. (unfolding_exhale.vpr@16.10--16.75) [47022]"}
+      Heap[this, x_42] == oldHeap[this, x_42];
     
     // -- Free assumptions (exhale module)
-      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
       assume state(Heap, Mask);
     // Finish exhale
     havoc ExhaleHeap;
@@ -370,7 +370,7 @@ procedure success10(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@22.10--22.96) [151124]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@22.10--22.96) [47024]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -379,50 +379,50 @@ procedure success10(this: Ref) returns ()
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@22.10--22.96) [151125]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@22.10--22.96) [47025]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@22.10--22.96) [151126]"}
-        HasDirectPerm(UnfoldingMask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@22.10--22.96) [47026]"}
+        HasDirectPerm(UnfoldingMask, this, x_42);
       Unfolding1Heap := oldHeap;
       Unfolding1Mask := oldMask;
       assume P#trigger(Unfolding1Heap, P(this));
-      assume Unfolding1Heap[null, P(this)] == FrameFragment(Unfolding1Heap[this, x_36]);
+      assume Unfolding1Heap[null, P(this)] == FrameFragment(Unfolding1Heap[this, x_42]);
       ExhaleWellDef1Heap := Unfolding1Heap;
       ExhaleWellDef1Mask := Unfolding1Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@22.10--22.96) [151127]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@22.10--22.96) [47027]"}
           perm <= Unfolding1Mask[null, P(this)];
       }
       Unfolding1Mask := Unfolding1Mask[null, P(this):=Unfolding1Mask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      Unfolding1Mask := Unfolding1Mask[this, x_36:=Unfolding1Mask[this, x_36] + perm];
+      Unfolding1Mask := Unfolding1Mask[this, x_42:=Unfolding1Mask[this, x_42] + perm];
       assume state(Unfolding1Heap, Unfolding1Mask);
       assume state(Unfolding1Heap, Unfolding1Mask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@22.10--22.96) [151128]"}
-        HasDirectPerm(Unfolding1Mask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@22.10--22.96) [47028]"}
+        HasDirectPerm(Unfolding1Mask, this, x_42);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Exhale might fail. Assertion this.x == old((unfolding acc(P(this), write) in this.x)) might not hold. (unfolding_exhale.vpr@22.10--22.96) [151129]"}
-      Heap[this, x_36] == oldHeap[this, x_36];
+    assert {:msg "  Exhale might fail. Assertion this.x == old((unfolding acc(P(this), write) in this.x)) might not hold. (unfolding_exhale.vpr@22.10--22.96) [47029]"}
+      Heap[this, x_42] == oldHeap[this, x_42];
     
     // -- Free assumptions (exhale module)
-      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
       assume state(Heap, Mask);
     // Finish exhale
     havoc ExhaleHeap;
@@ -461,7 +461,7 @@ procedure success2(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -476,22 +476,22 @@ procedure success2(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@28.3--28.15) [151132]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@28.3--28.15) [47032]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
     perm := FullPerm;
     Mask := Mask[null, P(this):=Mask[null, P(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume P#trigger(Heap, P(this));
-    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_36]);
+    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_42]);
     if (!HasDirectPerm(Mask, null, P(this))) {
       Heap := Heap[null, P#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, P(this):=freshVersion];
     }
-    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -501,7 +501,7 @@ procedure success2(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@29.10--29.75) [151135]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@29.10--29.75) [47035]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -510,33 +510,33 @@ procedure success2(this: Ref) returns ()
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@29.10--29.75) [151136]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@29.10--29.75) [47036]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@29.10--29.75) [151137]"}
-        HasDirectPerm(UnfoldingMask, this, x_36);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@29.10--29.75) [151138]"}
-        HasDirectPerm(oldMask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@29.10--29.75) [47037]"}
+        HasDirectPerm(UnfoldingMask, this, x_42);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@29.10--29.75) [47038]"}
+        HasDirectPerm(oldMask, this, x_42);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Exhale might fail. Assertion this.x == old(this.x) might not hold. (unfolding_exhale.vpr@29.10--29.75) [151139]"}
-      Heap[this, x_36] == oldHeap[this, x_36];
+    assert {:msg "  Exhale might fail. Assertion this.x == old(this.x) might not hold. (unfolding_exhale.vpr@29.10--29.75) [47039]"}
+      Heap[this, x_42] == oldHeap[this, x_42];
     
     // -- Free assumptions (exhale module)
-      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
       assume state(Heap, Mask);
     // Finish exhale
     havoc ExhaleHeap;
@@ -587,12 +587,12 @@ procedure fail5(this: Ref) returns ()
   
   // -- Translating statement: unfold acc(P(this), write) -- unfolding_exhale.vpr@35.3--35.17
     assume P#trigger(Heap, P(this));
-    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_36]);
+    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_42]);
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding P(this) might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@35.3--35.17) [151142]"}
+      assert {:msg "  Unfolding P(this) might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@35.3--35.17) [47042]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -604,7 +604,7 @@ procedure fail5(this: Ref) returns ()
       }
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -612,11 +612,11 @@ procedure fail5(this: Ref) returns ()
   // -- Translating statement: this.x := this.x + 1 -- unfolding_exhale.vpr@36.3--36.23
     
     // -- Check definedness of this.x + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@36.3--36.23) [151144]"}
-        HasDirectPerm(Mask, this, x_36);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@36.3--36.23) [151145]"}
-      FullPerm == Mask[this, x_36];
-    Heap := Heap[this, x_36:=Heap[this, x_36] + 1];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@36.3--36.23) [47044]"}
+        HasDirectPerm(Mask, this, x_42);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@36.3--36.23) [47045]"}
+      FullPerm == Mask[this, x_42];
+    Heap := Heap[this, x_42:=Heap[this, x_42] + 1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(this), write) -- unfolding_exhale.vpr@37.3--37.15
@@ -624,22 +624,22 @@ procedure fail5(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@37.3--37.15) [151148]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@37.3--37.15) [47048]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
     perm := FullPerm;
     Mask := Mask[null, P(this):=Mask[null, P(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume P#trigger(Heap, P(this));
-    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_36]);
+    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_42]);
     if (!HasDirectPerm(Mask, null, P(this))) {
       Heap := Heap[null, P#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, P(this):=freshVersion];
     }
-    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -649,7 +649,7 @@ procedure fail5(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@39.10--39.79) [151151]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@39.10--39.79) [47051]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -658,33 +658,33 @@ procedure fail5(this: Ref) returns ()
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@39.10--39.79) [151152]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@39.10--39.79) [47052]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@39.10--39.79) [151153]"}
-        HasDirectPerm(UnfoldingMask, this, x_36);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@39.10--39.79) [151154]"}
-        HasDirectPerm(oldMask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@39.10--39.79) [47053]"}
+        HasDirectPerm(UnfoldingMask, this, x_42);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@39.10--39.79) [47054]"}
+        HasDirectPerm(oldMask, this, x_42);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Exhale might fail. Assertion this.x == old(this.x) + 1 might not hold. (unfolding_exhale.vpr@39.10--39.79) [151155]"}
-      Heap[this, x_36] == oldHeap[this, x_36] + 1;
+    assert {:msg "  Exhale might fail. Assertion this.x == old(this.x) + 1 might not hold. (unfolding_exhale.vpr@39.10--39.79) [47055]"}
+      Heap[this, x_42] == oldHeap[this, x_42] + 1;
     
     // -- Free assumptions (exhale module)
-      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
       assume state(Heap, Mask);
     // Finish exhale
     havoc ExhaleHeap;
@@ -739,12 +739,12 @@ procedure success5(this: Ref) returns ()
   
   // -- Translating statement: unfold acc(P(this), write) -- unfolding_exhale.vpr@46.3--46.29
     assume P#trigger(Heap, P(this));
-    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_36]);
+    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_42]);
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding P(this) might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@46.3--46.29) [151158]"}
+      assert {:msg "  Unfolding P(this) might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@46.3--46.29) [47058]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -756,7 +756,7 @@ procedure success5(this: Ref) returns ()
       }
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -764,11 +764,11 @@ procedure success5(this: Ref) returns ()
   // -- Translating statement: this.x := this.x + 1 -- unfolding_exhale.vpr@47.3--47.23
     
     // -- Check definedness of this.x + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@47.3--47.23) [151160]"}
-        HasDirectPerm(Mask, this, x_36);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@47.3--47.23) [151161]"}
-      FullPerm == Mask[this, x_36];
-    Heap := Heap[this, x_36:=Heap[this, x_36] + 1];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@47.3--47.23) [47060]"}
+        HasDirectPerm(Mask, this, x_42);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@47.3--47.23) [47061]"}
+      FullPerm == Mask[this, x_42];
+    Heap := Heap[this, x_42:=Heap[this, x_42] + 1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(this), write) -- unfolding_exhale.vpr@48.3--48.27
@@ -776,22 +776,22 @@ procedure success5(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@48.3--48.27) [151164]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@48.3--48.27) [47064]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
     perm := FullPerm;
     Mask := Mask[null, P(this):=Mask[null, P(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume P#trigger(Heap, P(this));
-    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_36]);
+    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_42]);
     if (!HasDirectPerm(Mask, null, P(this))) {
       Heap := Heap[null, P#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, P(this):=freshVersion];
     }
-    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -802,7 +802,7 @@ procedure success5(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@49.10--49.128) [151167]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@49.10--49.128) [47067]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -811,50 +811,50 @@ procedure success5(this: Ref) returns ()
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@49.10--49.128) [151168]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@49.10--49.128) [47068]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@49.10--49.128) [151169]"}
-        HasDirectPerm(UnfoldingMask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@49.10--49.128) [47069]"}
+        HasDirectPerm(UnfoldingMask, this, x_42);
       Unfolding1Heap := oldHeap;
       Unfolding1Mask := oldMask;
       assume P#trigger(Unfolding1Heap, P(this));
-      assume Unfolding1Heap[null, P(this)] == FrameFragment(Unfolding1Heap[this, x_36]);
+      assume Unfolding1Heap[null, P(this)] == FrameFragment(Unfolding1Heap[this, x_42]);
       ExhaleWellDef1Heap := Unfolding1Heap;
       ExhaleWellDef1Mask := Unfolding1Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@49.10--49.128) [151170]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@49.10--49.128) [47070]"}
           perm <= Unfolding1Mask[null, P(this)];
       }
       Unfolding1Mask := Unfolding1Mask[null, P(this):=Unfolding1Mask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      Unfolding1Mask := Unfolding1Mask[this, x_36:=Unfolding1Mask[this, x_36] + perm];
+      Unfolding1Mask := Unfolding1Mask[this, x_42:=Unfolding1Mask[this, x_42] + perm];
       assume state(Unfolding1Heap, Unfolding1Mask);
       assume state(Unfolding1Heap, Unfolding1Mask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@49.10--49.128) [151171]"}
-        HasDirectPerm(Unfolding1Mask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@49.10--49.128) [47071]"}
+        HasDirectPerm(Unfolding1Mask, this, x_42);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Exhale might fail. Assertion this.x == old((unfolding acc(P(this), write) in this.x)) + 1 might not hold. (unfolding_exhale.vpr@49.10--49.128) [151172]"}
-      Heap[this, x_36] == oldHeap[this, x_36] + 1;
+    assert {:msg "  Exhale might fail. Assertion this.x == old((unfolding acc(P(this), write) in this.x)) + 1 might not hold. (unfolding_exhale.vpr@49.10--49.128) [47072]"}
+      Heap[this, x_42] == oldHeap[this, x_42] + 1;
     
     // -- Free assumptions (exhale module)
-      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
       assume state(Heap, Mask);
     // Finish exhale
     havoc ExhaleHeap;
@@ -895,7 +895,7 @@ procedure success4(this: Ref) returns ()
     assume state(Heap, Mask);
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -908,11 +908,11 @@ procedure success4(this: Ref) returns ()
   // -- Translating statement: this.x := this.x + 1 -- unfolding_exhale.vpr@56.3--56.23
     
     // -- Check definedness of this.x + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@56.3--56.23) [151173]"}
-        HasDirectPerm(Mask, this, x_36);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@56.3--56.23) [151174]"}
-      FullPerm == Mask[this, x_36];
-    Heap := Heap[this, x_36:=Heap[this, x_36] + 1];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@56.3--56.23) [47073]"}
+        HasDirectPerm(Mask, this, x_42);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@56.3--56.23) [47074]"}
+      FullPerm == Mask[this, x_42];
+    Heap := Heap[this, x_42:=Heap[this, x_42] + 1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(this), write) -- unfolding_exhale.vpr@57.3--57.27
@@ -920,22 +920,22 @@ procedure success4(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@57.3--57.27) [151177]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@57.3--57.27) [47077]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
     perm := FullPerm;
     Mask := Mask[null, P(this):=Mask[null, P(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume P#trigger(Heap, P(this));
-    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_36]);
+    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_42]);
     if (!HasDirectPerm(Mask, null, P(this))) {
       Heap := Heap[null, P#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, P(this):=freshVersion];
     }
-    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -945,7 +945,7 @@ procedure success4(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@58.10--58.93) [151180]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@58.10--58.93) [47080]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -954,33 +954,33 @@ procedure success4(this: Ref) returns ()
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@58.10--58.93) [151181]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@58.10--58.93) [47081]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@58.10--58.93) [151182]"}
-        HasDirectPerm(UnfoldingMask, this, x_36);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@58.10--58.93) [151183]"}
-        HasDirectPerm(oldMask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@58.10--58.93) [47082]"}
+        HasDirectPerm(UnfoldingMask, this, x_42);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@58.10--58.93) [47083]"}
+        HasDirectPerm(oldMask, this, x_42);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Exhale might fail. Assertion this.x == old(this.x) + 1 might not hold. (unfolding_exhale.vpr@58.10--58.93) [151184]"}
-      Heap[this, x_36] == oldHeap[this, x_36] + 1;
+    assert {:msg "  Exhale might fail. Assertion this.x == old(this.x) + 1 might not hold. (unfolding_exhale.vpr@58.10--58.93) [47084]"}
+      Heap[this, x_42] == oldHeap[this, x_42] + 1;
     
     // -- Free assumptions (exhale module)
-      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
       assume state(Heap, Mask);
     // Finish exhale
     havoc ExhaleHeap;
@@ -1023,7 +1023,7 @@ procedure fail1(this: Ref) returns ()
     assume state(Heap, Mask);
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1038,22 +1038,22 @@ procedure fail1(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@65.3--65.27) [151187]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@65.3--65.27) [47087]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
     perm := FullPerm;
     Mask := Mask[null, P(this):=Mask[null, P(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume P#trigger(Heap, P(this));
-    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_36]);
+    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_42]);
     if (!HasDirectPerm(Mask, null, P(this))) {
       Heap := Heap[null, P#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, P(this):=freshVersion];
     }
-    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1064,7 +1064,7 @@ procedure fail1(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@67.11--67.125) [151190]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@67.11--67.125) [47090]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -1073,50 +1073,50 @@ procedure fail1(this: Ref) returns ()
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@67.11--67.125) [151191]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@67.11--67.125) [47091]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@67.11--67.125) [151192]"}
-        HasDirectPerm(UnfoldingMask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@67.11--67.125) [47092]"}
+        HasDirectPerm(UnfoldingMask, this, x_42);
       Unfolding1Heap := oldHeap;
       Unfolding1Mask := oldMask;
       assume P#trigger(Unfolding1Heap, P(this));
-      assume Unfolding1Heap[null, P(this)] == FrameFragment(Unfolding1Heap[this, x_36]);
+      assume Unfolding1Heap[null, P(this)] == FrameFragment(Unfolding1Heap[this, x_42]);
       ExhaleWellDef1Heap := Unfolding1Heap;
       ExhaleWellDef1Mask := Unfolding1Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@67.11--67.125) [151193]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@67.11--67.125) [47093]"}
           perm <= Unfolding1Mask[null, P(this)];
       }
       Unfolding1Mask := Unfolding1Mask[null, P(this):=Unfolding1Mask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      Unfolding1Mask := Unfolding1Mask[this, x_36:=Unfolding1Mask[this, x_36] + perm];
+      Unfolding1Mask := Unfolding1Mask[this, x_42:=Unfolding1Mask[this, x_42] + perm];
       assume state(Unfolding1Heap, Unfolding1Mask);
       assume state(Unfolding1Heap, Unfolding1Mask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@67.11--67.125) [151194]"}
-        HasDirectPerm(Unfolding1Mask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@67.11--67.125) [47094]"}
+        HasDirectPerm(Unfolding1Mask, this, x_42);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Exhale might fail. Assertion this.x == old((unfolding acc(P(this), write) in this.x)) might not hold. (unfolding_exhale.vpr@67.11--67.125) [151195]"}
-      Heap[this, x_36] == oldHeap[this, x_36];
+    assert {:msg "  Exhale might fail. Assertion this.x == old((unfolding acc(P(this), write) in this.x)) might not hold. (unfolding_exhale.vpr@67.11--67.125) [47095]"}
+      Heap[this, x_42] == oldHeap[this, x_42];
     
     // -- Free assumptions (exhale module)
-      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
       assume state(Heap, Mask);
     // Finish exhale
     havoc ExhaleHeap;
@@ -1157,7 +1157,7 @@ procedure fail2(this: Ref) returns ()
     assume state(Heap, Mask);
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1168,9 +1168,9 @@ procedure fail2(this: Ref) returns ()
       oldMask := Mask;
   
   // -- Translating statement: this.x := 0 -- unfolding_exhale.vpr@74.3--74.14
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@74.3--74.14) [151196]"}
-      FullPerm == Mask[this, x_36];
-    Heap := Heap[this, x_36:=0];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@74.3--74.14) [47096]"}
+      FullPerm == Mask[this, x_42];
+    Heap := Heap[this, x_42:=0];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(this), write) -- unfolding_exhale.vpr@75.3--75.27
@@ -1178,22 +1178,22 @@ procedure fail2(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@75.3--75.27) [151199]"}
-        perm <= Mask[this, x_36];
+      assert {:msg "  Folding P(this) might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@75.3--75.27) [47099]"}
+        perm <= Mask[this, x_42];
     }
-    Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
     perm := FullPerm;
     Mask := Mask[null, P(this):=Mask[null, P(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume P#trigger(Heap, P(this));
-    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_36]);
+    assume Heap[null, P(this)] == FrameFragment(Heap[this, x_42]);
     if (!HasDirectPerm(Mask, null, P(this))) {
       Heap := Heap[null, P#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, P(this):=freshVersion];
     }
-    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+    Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1203,7 +1203,7 @@ procedure fail2(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@77.10--77.89) [151202]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@77.10--77.89) [47102]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -1212,33 +1212,33 @@ procedure fail2(this: Ref) returns ()
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@77.10--77.89) [151203]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (unfolding_exhale.vpr@77.10--77.89) [47103]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@77.10--77.89) [151204]"}
-        HasDirectPerm(UnfoldingMask, this, x_36);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@77.10--77.89) [151205]"}
-        HasDirectPerm(oldMask, this, x_36);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@77.10--77.89) [47104]"}
+        HasDirectPerm(UnfoldingMask, this, x_42);
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (unfolding_exhale.vpr@77.10--77.89) [47105]"}
+        HasDirectPerm(oldMask, this, x_42);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Exhale might fail. Assertion this.x == old(this.x) might not hold. (unfolding_exhale.vpr@77.10--77.89) [151206]"}
-      Heap[this, x_36] == oldHeap[this, x_36];
+    assert {:msg "  Exhale might fail. Assertion this.x == old(this.x) might not hold. (unfolding_exhale.vpr@77.10--77.89) [47106]"}
+      Heap[this, x_42] == oldHeap[this, x_42];
     
     // -- Free assumptions (exhale module)
-      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
       assume state(Heap, Mask);
     // Finish exhale
     havoc ExhaleHeap;

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:45
+// Date:         2025-01-26 21:43:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0172.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0172-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -240,7 +240,7 @@ procedure t#definedness(r_1: int) returns (Result: bool)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of t might not hold. Assertion r > 0 might not hold. (0172.vpr@6.13--6.18) [191329]"}
+    assert {:msg "  Postcondition of t might not hold. Assertion r > 0 might not hold. (0172.vpr@6.13--6.18) [83444]"}
       r_1 > 0;
 }
 
@@ -248,7 +248,7 @@ procedure t#definedness(r_1: int) returns (Result: bool)
 // Translation of method m
 // ==================================================
 
-procedure m() returns ()
+procedure m_17() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -281,7 +281,7 @@ procedure m() returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function t might not hold. Assertion 0 > 0 might not hold. (0172.vpr@14.13--14.17) [191330]"}
+        assert {:msg "  Precondition of function t might not hold. Assertion 0 > 0 might not hold. (0172.vpr@14.13--14.17) [83445]"}
           false;
         // Stop execution
         assume false;
@@ -295,6 +295,6 @@ procedure m() returns ()
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of m might not hold. Assertion t(0) might not hold. (0172.vpr@14.13--14.17) [191331]"}
+    assert {:msg "  Postcondition of m might not hold. Assertion t(0) might not hold. (0172.vpr@14.13--14.17) [83446]"}
       t(Heap, 0);
 }

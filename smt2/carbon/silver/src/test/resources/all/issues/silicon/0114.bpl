@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:27:47
+// Date:         2025-01-26 21:42:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0114.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0114-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_22: Ref, f_30: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_22, f_30] }
-  Heap[o_22, $allocated] ==> Heap[Heap[o_22, f_30], $allocated]
+axiom (forall o_4: Ref, f_9: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_4, f_9] }
+  Heap[o_4, $allocated] ==> Heap[Heap[o_4, f_9], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_27: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_27] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_27) ==> Heap[o_41, f_27] == ExhaleHeap[o_41, f_27]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_23: Ref, f_15: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_23, f_15] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_23, f_15) ==> Heap[o_23, f_15] == ExhaleHeap[o_23, f_15]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_28), ExhaleHeap[null, PredicateMaskField(pm_f_28)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsPredicateField(pm_f_28) ==> Heap[null, PredicateMaskField(pm_f_28)] == ExhaleHeap[null, PredicateMaskField(pm_f_28)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10), ExhaleHeap[null, PredicateMaskField(pm_f_10)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> Heap[null, PredicateMaskField(pm_f_10)] == ExhaleHeap[null, PredicateMaskField(pm_f_10)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_28) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsPredicateField(pm_f_28) ==> (forall <A, B> o2_28: Ref, f_27: (Field A B) ::
-    { ExhaleHeap[o2_28, f_27] }
-    Heap[null, PredicateMaskField(pm_f_28)][o2_28, f_27] ==> Heap[o2_28, f_27] == ExhaleHeap[o2_28, f_27]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_15: (Field A B) ::
+    { ExhaleHeap[o2_10, f_15] }
+    Heap[null, PredicateMaskField(pm_f_10)][o2_10, f_15] ==> Heap[o2_10, f_15] == ExhaleHeap[o2_10, f_15]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_28), ExhaleHeap[null, WandMaskField(pm_f_28)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsWandField(pm_f_28) ==> Heap[null, WandMaskField(pm_f_28)] == ExhaleHeap[null, WandMaskField(pm_f_28)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10), ExhaleHeap[null, WandMaskField(pm_f_10)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> Heap[null, WandMaskField(pm_f_10)] == ExhaleHeap[null, WandMaskField(pm_f_10)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_28) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsWandField(pm_f_28) ==> (forall <A, B> o2_28: Ref, f_27: (Field A B) ::
-    { ExhaleHeap[o2_28, f_27] }
-    Heap[null, WandMaskField(pm_f_28)][o2_28, f_27] ==> Heap[o2_28, f_27] == ExhaleHeap[o2_28, f_27]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_15: (Field A B) ::
+    { ExhaleHeap[o2_10, f_15] }
+    Heap[null, WandMaskField(pm_f_10)][o2_10, f_15] ==> Heap[o2_10, f_15] == ExhaleHeap[o2_10, f_15]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_23: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_23, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_23, $allocated] ==> ExhaleHeap[o_23, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_22: Ref, f_12: (Field A B), v: B ::
-  { Heap[o_22, f_12:=v] }
-  succHeap(Heap, Heap[o_22, f_12:=v])
+axiom (forall <A, B> Heap: HeapType, o_4: Ref, f_25: (Field A B), v: B ::
+  { Heap[o_4, f_25:=v] }
+  succHeap(Heap, Heap[o_4, f_25:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -185,7 +185,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type DDomainType;
 
 // Translation of domain function fun3
-function  fun3_1(i_79: int): bool;
+function  fun3_1(i_6: int): bool;
 
 // ==================================================
 // Translation of all fields
@@ -200,38 +200,38 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 // Uninterpreted function definitions
-function  fun1(Heap: HeapType, j_9: int): int;
-function  fun1'(Heap: HeapType, j_9: int): int;
-axiom (forall Heap: HeapType, j_9: int ::
-  { fun1(Heap, j_9) }
-  fun1(Heap, j_9) == fun1'(Heap, j_9) && dummyFunction(fun1#triggerStateless(j_9))
+function  fun1(Heap: HeapType, j: int): int;
+function  fun1'(Heap: HeapType, j: int): int;
+axiom (forall Heap: HeapType, j: int ::
+  { fun1(Heap, j) }
+  fun1(Heap, j) == fun1'(Heap, j) && dummyFunction(fun1#triggerStateless(j))
 );
-axiom (forall Heap: HeapType, j_9: int ::
-  { fun1'(Heap, j_9) }
-  dummyFunction(fun1#triggerStateless(j_9))
+axiom (forall Heap: HeapType, j: int ::
+  { fun1'(Heap, j) }
+  dummyFunction(fun1#triggerStateless(j))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, j_9: int ::
-  { state(Heap, Mask), fun1(Heap, j_9) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> fun1(Heap, j_9) == 10
+axiom (forall Heap: HeapType, Mask: MaskType, j: int ::
+  { state(Heap, Mask), fun1(Heap, j) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> fun1(Heap, j) == 10
 );
 
 // Framing axioms
-function  fun1#frame(frame: FrameType, j_9: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, j_9: int ::
-  { state(Heap, Mask), fun1'(Heap, j_9) }
-  state(Heap, Mask) ==> fun1'(Heap, j_9) == fun1#frame(EmptyFrame, j_9)
+function  fun1#frame(frame: FrameType, j: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, j: int ::
+  { state(Heap, Mask), fun1'(Heap, j) }
+  state(Heap, Mask) ==> fun1'(Heap, j) == fun1#frame(EmptyFrame, j)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  fun1#trigger(frame: FrameType, j_9: int): bool;
+function  fun1#trigger(frame: FrameType, j: int): bool;
 
 // State-independent trigger function
-function  fun1#triggerStateless(j_9: int): int;
+function  fun1#triggerStateless(j: int): int;
 
 // Check contract well-formedness and postcondition
-procedure fun1#definedness(j_9: int) returns (Result: int)
+procedure fun1#definedness(j: int) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -250,38 +250,38 @@ procedure fun1#definedness(j_9: int) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  fun2(Heap: HeapType, b_24: bool, x: Ref, y: Ref, j_9: int): int;
-function  fun2'(Heap: HeapType, b_24: bool, x: Ref, y: Ref, j_9: int): int;
-axiom (forall Heap: HeapType, b_24: bool, x: Ref, y: Ref, j_9: int ::
-  { fun2(Heap, b_24, x, y, j_9) }
-  fun2(Heap, b_24, x, y, j_9) == fun2'(Heap, b_24, x, y, j_9) && dummyFunction(fun2#triggerStateless(b_24, x, y, j_9))
+function  fun2(Heap: HeapType, b_24: bool, x: Ref, y: Ref, j: int): int;
+function  fun2'(Heap: HeapType, b_24: bool, x: Ref, y: Ref, j: int): int;
+axiom (forall Heap: HeapType, b_24: bool, x: Ref, y: Ref, j: int ::
+  { fun2(Heap, b_24, x, y, j) }
+  fun2(Heap, b_24, x, y, j) == fun2'(Heap, b_24, x, y, j) && dummyFunction(fun2#triggerStateless(b_24, x, y, j))
 );
-axiom (forall Heap: HeapType, b_24: bool, x: Ref, y: Ref, j_9: int ::
-  { fun2'(Heap, b_24, x, y, j_9) }
-  dummyFunction(fun2#triggerStateless(b_24, x, y, j_9))
+axiom (forall Heap: HeapType, b_24: bool, x: Ref, y: Ref, j: int ::
+  { fun2'(Heap, b_24, x, y, j) }
+  dummyFunction(fun2#triggerStateless(b_24, x, y, j))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, b_24: bool, x: Ref, y: Ref, j_9: int ::
-  { state(Heap, Mask), fun2(Heap, b_24, x, y, j_9) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> fun2(Heap, b_24, x, y, j_9) == 10
+axiom (forall Heap: HeapType, Mask: MaskType, b_24: bool, x: Ref, y: Ref, j: int ::
+  { state(Heap, Mask), fun2(Heap, b_24, x, y, j) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> fun2(Heap, b_24, x, y, j) == 10
 );
 
 // Framing axioms
-function  fun2#frame(frame: FrameType, b_24: bool, x: Ref, y: Ref, j_9: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, b_24: bool, x: Ref, y: Ref, j_9: int ::
-  { state(Heap, Mask), fun2'(Heap, b_24, x, y, j_9) }
-  state(Heap, Mask) ==> fun2'(Heap, b_24, x, y, j_9) == fun2#frame(FrameFragment((if b_24 then FrameFragment(Heap[x, f_7]) else FrameFragment(Heap[y, f_7]))), b_24, x, y, j_9)
+function  fun2#frame(frame: FrameType, b_24: bool, x: Ref, y: Ref, j: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, b_24: bool, x: Ref, y: Ref, j: int ::
+  { state(Heap, Mask), fun2'(Heap, b_24, x, y, j) }
+  state(Heap, Mask) ==> fun2'(Heap, b_24, x, y, j) == fun2#frame(FrameFragment((if b_24 then FrameFragment(Heap[x, f_7]) else FrameFragment(Heap[y, f_7]))), b_24, x, y, j)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  fun2#trigger(frame: FrameType, b_24: bool, x: Ref, y: Ref, j_9: int): bool;
+function  fun2#trigger(frame: FrameType, b_24: bool, x: Ref, y: Ref, j: int): bool;
 
 // State-independent trigger function
-function  fun2#triggerStateless(b_24: bool, x: Ref, y: Ref, j_9: int): int;
+function  fun2#triggerStateless(b_24: bool, x: Ref, y: Ref, j: int): int;
 
 // Check contract well-formedness and postcondition
-procedure fun2#definedness(b_24: bool, x: Ref, y: Ref, j_9: int) returns (Result: int)
+procedure fun2#definedness(b_24: bool, x: Ref, y: Ref, j: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -376,15 +376,15 @@ procedure P#definedness(x: Ref, b_24: bool) returns ()
 procedure test02(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var j_1: int;
   
   // -- Initializing the state
@@ -399,8 +399,8 @@ procedure test02(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(x, b), write) -- 0114.vpr@12.3--12.17
     perm := FullPerm;
@@ -412,8 +412,8 @@ procedure test02(x: Ref, b_24: bool) returns ()
   // -- Translating statement: assert (forall j: Int ::
   //     { fun1(j) }
   //     (unfolding acc(P(x, b), write) in fun1(j) > 0)) -- 0114.vpr@15.3--15.69
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } (unfolding acc(P(x, b), write) in fun1(j) > 0))
       if (*) {
@@ -421,11 +421,11 @@ procedure test02(x: Ref, b_24: bool) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume P#trigger(UnfoldingHeap, P(x, b_24));
         assume UnfoldingHeap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(UnfoldingHeap[x, f_7]) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, b) (0114.vpr@15.10--15.69) [210238]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, b) (0114.vpr@15.10--15.69) [68625]"}
             perm <= UnfoldingMask[null, P(x, b_24)];
         }
         UnfoldingMask := UnfoldingMask[null, P(x, b_24):=UnfoldingMask[null, P(x, b_24)] - perm];
@@ -455,11 +455,11 @@ procedure test02(x: Ref, b_24: bool) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume P#trigger(UnfoldingHeap, P(x, b_24));
         assume UnfoldingHeap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(UnfoldingHeap[x, f_7]) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, b) (0114.vpr@15.10--15.69) [210241]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, b) (0114.vpr@15.10--15.69) [68628]"}
             perm <= UnfoldingMask[null, P(x, b_24)];
         }
         UnfoldingMask := UnfoldingMask[null, P(x, b_24):=UnfoldingMask[null, P(x, b_24)] - perm];
@@ -470,13 +470,13 @@ procedure test02(x: Ref, b_24: bool) returns ()
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@15.10--15.69) [210243]"}
+      assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@15.10--15.69) [68630]"}
         fun1(Heap, j_1) > 0;
       assume false;
     }
-    assume (forall j_2_1_1: int ::
-      { fun1#frame(EmptyFrame, j_2_1_1) }
-      fun1(Heap, j_2_1_1) > 0
+    assume (forall j_2_1: int ::
+      { fun1#frame(EmptyFrame, j_2_1) }
+      fun1(Heap, j_2_1) > 0
     );
     assume state(Heap, Mask);
 }
@@ -488,10 +488,10 @@ procedure test02(x: Ref, b_24: bool) returns ()
 procedure test03(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_1: int;
   
   // -- Initializing the state
@@ -506,12 +506,12 @@ procedure test03(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } (b ? fun1(j) > 0 : fun1(j) > 1)) -- 0114.vpr@20.3--20.66
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } (b ? fun1(j) > 0 : fun1(j) > 1))
       if (*) {
@@ -530,17 +530,17 @@ procedure test03(x: Ref, b_24: bool) returns ()
       }
     if (*) {
       if (b_24) {
-        assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@20.10--20.66) [210244]"}
+        assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@20.10--20.66) [68631]"}
           fun1(Heap, j_1) > 0;
       } else {
-        assert {:msg "  Assert might fail. Assertion fun1(j) > 1 might not hold. (0114.vpr@20.10--20.66) [210245]"}
+        assert {:msg "  Assert might fail. Assertion fun1(j) > 1 might not hold. (0114.vpr@20.10--20.66) [68632]"}
           fun1(Heap, j_1) > 1;
       }
       assume false;
     }
-    assume (forall j_2_1_1: int ::
-      { fun1#frame(EmptyFrame, j_2_1_1) }
-      (if b_24 then fun1(Heap, j_2_1_1) > 0 else fun1(Heap, j_2_1_1) > 1)
+    assume (forall j_2_1: int ::
+      { fun1#frame(EmptyFrame, j_2_1) }
+      (if b_24 then fun1(Heap, j_2_1) > 0 else fun1(Heap, j_2_1) > 1)
     );
     assume state(Heap, Mask);
 }
@@ -552,13 +552,13 @@ procedure test03(x: Ref, b_24: bool) returns ()
 procedure test04(x: Ref, y: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var j_1: int;
   
@@ -575,8 +575,8 @@ procedure test04(x: Ref, y: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, write) && acc(y.f, write) -- 0114.vpr@29.3--29.30
     perm := FullPerm;
@@ -591,22 +591,22 @@ procedure test04(x: Ref, y: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { fun2(b, x, y, j) } fun2(b, x, y, j) > 0) -- 0114.vpr@31.3--31.66
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun2(b, x, y, j) } fun2(b, x, y, j) > 0)
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           if (b_24) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access x.f (0114.vpr@31.46--31.62) [210248]"}
+            assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access x.f (0114.vpr@31.46--31.62) [68635]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
           } else {
             perm := FullPerm;
-            assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access y.f (0114.vpr@31.46--31.62) [210249]"}
+            assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access y.f (0114.vpr@31.46--31.62) [68636]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, f_7];
           }
           // Finish exhale
@@ -619,13 +619,13 @@ procedure test04(x: Ref, y: Ref, b_24: bool) returns ()
         assume false;
       }
     if (*) {
-      assert {:msg "  Assert might fail. Assertion fun2(b, x, y, j) > 0 might not hold. (0114.vpr@31.10--31.66) [210250]"}
+      assert {:msg "  Assert might fail. Assertion fun2(b, x, y, j) > 0 might not hold. (0114.vpr@31.10--31.66) [68637]"}
         fun2(Heap, b_24, x, y, j_1) > 0;
       assume false;
     }
-    assume (forall j_2_1_1: int ::
-      { fun2#frame(FrameFragment(FrameFragment(Heap[x, f_7])), b_24, x, y, j_2_1_1) } { fun2#frame(FrameFragment(FrameFragment(Heap[y, f_7])), b_24, x, y, j_2_1_1) }
-      fun2(Heap, b_24, x, y, j_2_1_1) > 0
+    assume (forall j_2_1: int ::
+      { fun2#frame(FrameFragment(FrameFragment(Heap[x, f_7])), b_24, x, y, j_2_1) } { fun2#frame(FrameFragment(FrameFragment(Heap[y, f_7])), b_24, x, y, j_2_1) }
+      fun2(Heap, b_24, x, y, j_2_1) > 0
     );
     assume state(Heap, Mask);
 }
@@ -637,11 +637,11 @@ procedure test04(x: Ref, y: Ref, b_24: bool) returns ()
 procedure test05(x: Ref, y: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -657,8 +657,8 @@ procedure test05(x: Ref, y: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, write) && acc(y.f, write) -- 0114.vpr@40.3--40.30
     perm := FullPerm;
@@ -692,15 +692,15 @@ procedure test05(x: Ref, y: Ref, b_24: bool) returns ()
     // -- Check definedness of fun2(b, x, y, 5) > 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (b_24) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access x.f (0114.vpr@43.10--43.26) [210253]"}
+          assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access x.f (0114.vpr@43.10--43.26) [68640]"}
             NoPerm < perm ==> NoPerm < Mask[x, f_7];
         } else {
           perm := FullPerm;
-          assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access y.f (0114.vpr@43.10--43.26) [210254]"}
+          assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access y.f (0114.vpr@43.10--43.26) [68641]"}
             NoPerm < perm ==> NoPerm < Mask[y, f_7];
         }
         // Finish exhale
@@ -715,9 +715,9 @@ procedure test05(x: Ref, y: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun3(5) -- 0114.vpr@46.3--46.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion fun3(5) might not hold. (0114.vpr@46.10--46.17) [210255]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion fun3(5) might not hold. (0114.vpr@46.10--46.17) [68642]"}
       (fun3_1(5): bool);
     assume state(Heap, Mask);
 }
@@ -730,10 +730,10 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_1: int;
   var j_4_1: int;
   var j_7_1: int;
@@ -741,9 +741,9 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
   var j_13_2: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
-  var j_16_2: int;
+  var ExhaleWellDef1Mask: MaskType;
+  var j_16_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -763,12 +763,12 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } fun1(j) > 0) -- 0114.vpr@53.3--53.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } fun1(j) > 0)
       if (*) {
@@ -779,19 +779,19 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
         assume false;
       }
     if (*) {
-      assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@53.10--53.38) [210256]"}
+      assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@53.10--53.38) [68643]"}
         fun1(Heap, j_1) > 0;
       assume false;
     }
-    assume (forall j_2_1_1: int ::
-      { fun1#frame(EmptyFrame, j_2_1_1) }
-      fun1(Heap, j_2_1_1) > 0
+    assume (forall j_2_1: int ::
+      { fun1#frame(EmptyFrame, j_2_1) }
+      fun1(Heap, j_2_1) > 0
     );
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } (false ? true : fun1(j) > 0)) -- 0114.vpr@54.3--54.53
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } (false ? true : fun1(j) > 0))
       if (*) {
@@ -802,7 +802,7 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
         assume false;
       }
     if (*) {
-      assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@54.10--54.53) [210258]"}
+      assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@54.10--54.53) [68645]"}
         fun1(Heap, j_4_1) > 0;
       assume false;
     }
@@ -813,8 +813,8 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } (b ? fun1(j) > 5 : fun1(j) > 0)) -- 0114.vpr@55.3--55.56
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } (b ? fun1(j) > 5 : fun1(j) > 0))
       if (*) {
@@ -833,23 +833,23 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
       }
     if (*) {
       if (b_24) {
-        assert {:msg "  Assert might fail. Assertion fun1(j) > 5 might not hold. (0114.vpr@55.10--55.56) [210259]"}
+        assert {:msg "  Assert might fail. Assertion fun1(j) > 5 might not hold. (0114.vpr@55.10--55.56) [68646]"}
           fun1(Heap, j_7_1) > 5;
       } else {
-        assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@55.10--55.56) [210260]"}
+        assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@55.10--55.56) [68647]"}
           fun1(Heap, j_7_1) > 0;
       }
       assume false;
     }
-    assume (forall j_8_1_1: int ::
-      { fun1#frame(EmptyFrame, j_8_1_1) }
-      (if b_24 then fun1(Heap, j_8_1_1) > 5 else fun1(Heap, j_8_1_1) > 0)
+    assume (forall j_8_1: int ::
+      { fun1#frame(EmptyFrame, j_8_1) }
+      (if b_24 then fun1(Heap, j_8_1) > 5 else fun1(Heap, j_8_1) > 0)
     );
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } true ==> fun1(j) > 0) -- 0114.vpr@57.3--57.47
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } true ==> fun1(j) > 0)
       if (*) {
@@ -860,19 +860,19 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
         assume false;
       }
     if (*) {
-      assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@57.10--57.47) [210261]"}
+      assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@57.10--57.47) [68648]"}
         fun1(Heap, j_10_2) > 0;
       assume false;
     }
-    assume (forall j_11_1: int ::
-      { fun1#frame(EmptyFrame, j_11_1) }
-      fun1(Heap, j_11_1) > 0
+    assume (forall j_11_1_1: int ::
+      { fun1#frame(EmptyFrame, j_11_1_1) }
+      fun1(Heap, j_11_1_1) > 0
     );
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } b ==> fun1(j) > 0) -- 0114.vpr@58.3--58.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } b ==> fun1(j) > 0)
       if (*) {
@@ -886,22 +886,22 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
       }
     if (*) {
       if (b_24) {
-        assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@58.10--58.44) [210262]"}
+        assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@58.10--58.44) [68649]"}
           fun1(Heap, j_13_2) > 0;
       }
       assume false;
     }
-    assume (forall j_14_1_1: int ::
-      { fun1#frame(EmptyFrame, j_14_1_1) }
-      b_24 ==> fun1(Heap, j_14_1_1) > 0
+    assume (forall j_14_1: int ::
+      { fun1#frame(EmptyFrame, j_14_1) }
+      b_24 ==> fun1(Heap, j_14_1) > 0
     );
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int ::
   //     { fun1(j) }
   //     (unfolding acc(P(x, c), write) in fun1(j) > 0)) -- 0114.vpr@61.3--61.64
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } (unfolding acc(P(x, c), write) in fun1(j) > 0))
       if (*) {
@@ -909,11 +909,11 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume P#trigger(UnfoldingHeap, P(x, c));
         assume UnfoldingHeap[null, P(x, c)] == FrameFragment((if c then FrameFragment(UnfoldingHeap[x, f_7]) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, c) (0114.vpr@61.10--61.64) [210263]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, c) (0114.vpr@61.10--61.64) [68650]"}
             perm <= UnfoldingMask[null, P(x, c)];
         }
         UnfoldingMask := UnfoldingMask[null, P(x, c):=UnfoldingMask[null, P(x, c)] - perm];
@@ -943,11 +943,11 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume P#trigger(UnfoldingHeap, P(x, c));
         assume UnfoldingHeap[null, P(x, c)] == FrameFragment((if c then FrameFragment(UnfoldingHeap[x, f_7]) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, c) (0114.vpr@61.10--61.64) [210266]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, c) (0114.vpr@61.10--61.64) [68653]"}
             perm <= UnfoldingMask[null, P(x, c)];
         }
         UnfoldingMask := UnfoldingMask[null, P(x, c):=UnfoldingMask[null, P(x, c)] - perm];
@@ -958,20 +958,20 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@61.10--61.64) [210268]"}
-        fun1(Heap, j_16_2) > 0;
+      assert {:msg "  Assert might fail. Assertion fun1(j) > 0 might not hold. (0114.vpr@61.10--61.64) [68655]"}
+        fun1(Heap, j_16_1) > 0;
       assume false;
     }
-    assume (forall j_17_1_1: int ::
-      { fun1#frame(EmptyFrame, j_17_1_1) }
-      fun1(Heap, j_17_1_1) > 0
+    assume (forall j_17_1: int ::
+      { fun1#frame(EmptyFrame, j_17_1) }
+      fun1(Heap, j_17_1) > 0
     );
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0114.vpr@65.3--65.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0114.vpr@65.10--65.15) [210269]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0114.vpr@65.10--65.15) [68656]"}
       false;
     assume state(Heap, Mask);
 }

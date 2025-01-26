@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:55:55
+// Date:         2025-01-26 21:44:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/parallel_max.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/parallel_max-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_3, f_8] }
-  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
+axiom (forall o_12: Ref, f_19: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_12, f_19] }
+  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_19], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_34: Ref, f_40: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_34, f_40] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_34, f_40) ==> Heap[o_34, f_40] == ExhaleHeap[o_34, f_40]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref, f_20: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, f_20] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_13, f_20) ==> Heap[o_13, f_20] == ExhaleHeap[o_13, f_20]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_16), ExhaleHeap[null, PredicateMaskField(pm_f_16)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsPredicateField(pm_f_16) ==> Heap[null, PredicateMaskField(pm_f_16)] == ExhaleHeap[null, PredicateMaskField(pm_f_16)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4), ExhaleHeap[null, PredicateMaskField(pm_f_4)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> Heap[null, PredicateMaskField(pm_f_4)] == ExhaleHeap[null, PredicateMaskField(pm_f_4)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_16) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsPredicateField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[o2_16, f_40] }
-    Heap[null, PredicateMaskField(pm_f_16)][o2_16, f_40] ==> Heap[o2_16, f_40] == ExhaleHeap[o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[o2_4, f_20] }
+    Heap[null, PredicateMaskField(pm_f_4)][o2_4, f_20] ==> Heap[o2_4, f_20] == ExhaleHeap[o2_4, f_20]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_16), ExhaleHeap[null, WandMaskField(pm_f_16)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsWandField(pm_f_16) ==> Heap[null, WandMaskField(pm_f_16)] == ExhaleHeap[null, WandMaskField(pm_f_16)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4), ExhaleHeap[null, WandMaskField(pm_f_4)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> Heap[null, WandMaskField(pm_f_4)] == ExhaleHeap[null, WandMaskField(pm_f_4)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_16) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsWandField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[o2_16, f_40] }
-    Heap[null, WandMaskField(pm_f_16)][o2_16, f_40] ==> Heap[o2_16, f_40] == ExhaleHeap[o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[o2_4, f_20] }
+    Heap[null, WandMaskField(pm_f_4)][o2_4, f_20] ==> Heap[o2_4, f_20] == ExhaleHeap[o2_4, f_20]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_34: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_34, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_34, $allocated] ==> ExhaleHeap[o_34, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_13, $allocated] ==> ExhaleHeap[o_13, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_35: (Field A B), v: B ::
-  { Heap[o_3, f_35:=v] }
-  succHeap(Heap, Heap[o_3, f_35:=v])
+axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_21: (Field A B), v: B ::
+  { Heap[o_12, f_21:=v] }
+  succHeap(Heap, Heap[o_12, f_21:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,12 +144,12 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(i_3: int): bool;
+function  neverTriggered1(i_3_2: int): bool;
 function  neverTriggered2(i_7_1: int): bool;
 function  neverTriggered3(i_10_1: int): bool;
-function  neverTriggered4(i1_1_1: int): bool;
-function  neverTriggered5(i2_1_1: int): bool;
-function  neverTriggered6(i3_1: int): bool;
+function  neverTriggered4(i1_1: int): bool;
+function  neverTriggered5(i2_1: int): bool;
+function  neverTriggered6(i3_1_1: int): bool;
 function  neverTriggered7(i5_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
@@ -574,51 +574,51 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // Translation of all fields
 // ==================================================
 
-const unique value: Field NormalField int;
-axiom !IsPredicateField(value);
-axiom !IsWandField(value);
-const unique array: Field NormalField (Seq Ref);
-axiom !IsPredicateField(array);
-axiom !IsWandField(array);
+const unique value_1: Field NormalField int;
+axiom !IsPredicateField(value_1);
+axiom !IsWandField(value_1);
+const unique array_1: Field NormalField (Seq Ref);
+axiom !IsPredicateField(array_1);
+axiom !IsWandField(array_1);
 
 // ==================================================
 // Translation of method parallel_max
 // ==================================================
 
-procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx: int, pos: int)
+procedure parallel_max(a_2: Ref, start_1: int, end_1: int, kperm: Perm) returns (mx: int, pos: int)
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var i_14: int;
-  var j_5: int;
-  var i_2: int;
+  var i_18: int;
+  var j_14: int;
+  var i_3: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_4: int;
-  var j_6: int;
-  var i_6: int;
-  var l_5: int;
+  var j_12: int;
+  var i_14: int;
+  var l_13: int;
   var middle: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var i1_25: int;
-  var i2_9: int;
-  var i3_11: int;
+  var i1: int;
+  var i2_13: int;
+  var i3_13: int;
   var posl: int;
   var ml: int;
-  var l1: int;
+  var l1_3: int;
   var i5: int;
   var posr: int;
   var mr: int;
-  var l2: int;
+  var l2_2: int;
   var i6: int;
   var i6_1: int;
-  var i_8_2: int;
+  var i_8_1: int;
   var j_4_1: int;
   var l_2_1: int;
   
@@ -636,102 +636,102 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
     havoc wildcard;
     perm := wildcard;
     assume a_2 != null;
-    Mask := Mask[a_2, array:=Mask[a_2, array] + perm];
+    Mask := Mask[a_2, array_1:=Mask[a_2, array_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume 0 <= start;
-    assume start < end;
+    assume 0 <= start_1;
+    assume start_1 < end_1;
     
     // -- Check definedness of end < |a.array|
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@13.12--13.56) [64830]"}
-        HasDirectPerm(Mask, a_2, array);
-    assume end < Seq#Length(Heap[a_2, array]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@13.12--13.56) [187570]"}
+        HasDirectPerm(Mask, a_2, array_1);
+    assume end_1 < Seq#Length(Heap[a_2, array_1]);
     assume state(Heap, Mask);
     assume NoPerm <= kperm;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { (i in [start..end)), (j in [start..end)) } { (i in [start..end)), a.array[j] } { (j in [start..end)), a.array[i] } { a.array[i], a.array[j] } (i in [start..end)) && ((j in [start..end)) && i != j) ==> a.array[i] != a.array[j])
       if (*) {
-        if (Seq#Contains(Seq#Range(start, end), i_14) && (Seq#Contains(Seq#Range(start, end), j_5) && i_14 != j_5)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@15.12--15.112) [64831]"}
-            HasDirectPerm(Mask, a_2, array);
-          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might be negative. (parallel_max.vpr@15.12--15.112) [64832]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might exceed sequence length. (parallel_max.vpr@15.12--15.112) [64833]"}
-            i_14 < Seq#Length(Heap[a_2, array]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@15.12--15.112) [64834]"}
-            HasDirectPerm(Mask, a_2, array);
-          assert {:msg "  Contract might not be well-formed. Index a.array[j] into a.array might be negative. (parallel_max.vpr@15.12--15.112) [64835]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a.array[j] into a.array might exceed sequence length. (parallel_max.vpr@15.12--15.112) [64836]"}
-            j_5 < Seq#Length(Heap[a_2, array]);
+        if (Seq#Contains(Seq#Range(start_1, end_1), i_18) && (Seq#Contains(Seq#Range(start_1, end_1), j_14) && i_18 != j_14)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@15.12--15.112) [187571]"}
+            HasDirectPerm(Mask, a_2, array_1);
+          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might be negative. (parallel_max.vpr@15.12--15.112) [187572]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might exceed sequence length. (parallel_max.vpr@15.12--15.112) [187573]"}
+            i_18 < Seq#Length(Heap[a_2, array_1]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@15.12--15.112) [187574]"}
+            HasDirectPerm(Mask, a_2, array_1);
+          assert {:msg "  Contract might not be well-formed. Index a.array[j] into a.array might be negative. (parallel_max.vpr@15.12--15.112) [187575]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a.array[j] into a.array might exceed sequence length. (parallel_max.vpr@15.12--15.112) [187576]"}
+            j_14 < Seq#Length(Heap[a_2, array_1]);
         }
         assume false;
       }
     assume (forall i_1: int, j_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(start, end), i_1), Seq#ContainsTrigger(Seq#Range(start, end), j_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_1), Seq#Contains(Seq#Range(start, end), j_1) } { Seq#Contains(Seq#Range(start, end), i_1), Seq#ContainsTrigger(Seq#Range(start, end), j_1) } { Seq#Contains(Seq#Range(start, end), i_1), Seq#Contains(Seq#Range(start, end), j_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_1), Seq#Index(Heap[a_2, array], j_1) } { Seq#Contains(Seq#Range(start, end), i_1), Seq#Index(Heap[a_2, array], j_1) } { Seq#ContainsTrigger(Seq#Range(start, end), j_1), Seq#Index(Heap[a_2, array], i_1) } { Seq#Contains(Seq#Range(start, end), j_1), Seq#Index(Heap[a_2, array], i_1) } { Seq#Index(Heap[a_2, array], i_1), Seq#Index(Heap[a_2, array], j_1) }
-      Seq#Contains(Seq#Range(start, end), i_1) && (Seq#Contains(Seq#Range(start, end), j_1) && i_1 != j_1) ==> Seq#Index(Heap[a_2, array], i_1) != Seq#Index(Heap[a_2, array], j_1)
+      { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_1), Seq#ContainsTrigger(Seq#Range(start_1, end_1), j_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_1), Seq#Contains(Seq#Range(start_1, end_1), j_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_1), Seq#ContainsTrigger(Seq#Range(start_1, end_1), j_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_1), Seq#Contains(Seq#Range(start_1, end_1), j_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_1), Seq#Index(Heap[a_2, array_1], j_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_1), Seq#Index(Heap[a_2, array_1], j_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), j_1), Seq#Index(Heap[a_2, array_1], i_1) } { Seq#Contains(Seq#Range(start_1, end_1), j_1), Seq#Index(Heap[a_2, array_1], i_1) } { Seq#Index(Heap[a_2, array_1], i_1), Seq#Index(Heap[a_2, array_1], j_1) }
+      Seq#Contains(Seq#Range(start_1, end_1), i_1) && (Seq#Contains(Seq#Range(start_1, end_1), j_1) && i_1 != j_1) ==> Seq#Index(Heap[a_2, array_1], i_1) != Seq#Index(Heap[a_2, array_1], j_1)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { (i in [start..end)) } { a.array[i] } (i in [start..end)) ==> acc(a.array[i].value, kperm))
       if (*) {
-        if (Seq#Contains(Seq#Range(start, end), i_2)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@16.12--16.78) [64837]"}
-            HasDirectPerm(Mask, a_2, array);
-          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might be negative. (parallel_max.vpr@16.12--16.78) [64838]"}
-            i_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might exceed sequence length. (parallel_max.vpr@16.12--16.78) [64839]"}
-            i_2 < Seq#Length(Heap[a_2, array]);
+        if (Seq#Contains(Seq#Range(start_1, end_1), i_3)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@16.12--16.78) [187577]"}
+            HasDirectPerm(Mask, a_2, array_1);
+          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might be negative. (parallel_max.vpr@16.12--16.78) [187578]"}
+            i_3 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might exceed sequence length. (parallel_max.vpr@16.12--16.78) [187579]"}
+            i_3 < Seq#Length(Heap[a_2, array_1]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource a.array[i].value might not be injective. (parallel_max.vpr@16.12--16.78) [64840]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource a.array[i].value might not be injective. (parallel_max.vpr@16.12--16.78) [187580]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && Seq#Contains(Seq#Range(start, end), i_3)) && Seq#Contains(Seq#Range(start, end), i_3_1)) && NoPerm < kperm) && NoPerm < kperm ==> Seq#Index(Heap[a_2, array], i_3) != Seq#Index(Heap[a_2, array], i_3_1)
+      (((i_3_2 != i_3_3 && Seq#Contains(Seq#Range(start_1, end_1), i_3_2)) && Seq#Contains(Seq#Range(start_1, end_1), i_3_3)) && NoPerm < kperm) && NoPerm < kperm ==> Seq#Index(Heap[a_2, array_1], i_3_2) != Seq#Index(Heap[a_2, array_1], i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(Heap[a_2, array], i_3) } { Seq#ContainsTrigger(Seq#Range(start, end), i_3) } { Seq#Contains(Seq#Range(start, end), i_3) } { Seq#Index(Heap[a_2, array], i_3) }
-        Seq#Contains(Seq#Range(start, end), i_3) && NoPerm < kperm ==> qpRange1(Seq#Index(Heap[a_2, array], i_3)) && invRecv1(Seq#Index(Heap[a_2, array], i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(Heap[a_2, array_1], i_3_2) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_3_2) } { Seq#Contains(Seq#Range(start_1, end_1), i_3_2) } { Seq#Index(Heap[a_2, array_1], i_3_2) }
+        Seq#Contains(Seq#Range(start_1, end_1), i_3_2) && NoPerm < kperm ==> qpRange1(Seq#Index(Heap[a_2, array_1], i_3_2)) && invRecv1(Seq#Index(Heap[a_2, array_1], i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (Seq#Contains(Seq#Range(start, end), invRecv1(o_4)) && NoPerm < kperm) && qpRange1(o_4) ==> Seq#Index(Heap[a_2, array], invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (Seq#Contains(Seq#Range(start_1, end_1), invRecv1(o_9)) && NoPerm < kperm) && qpRange1(o_9) ==> Seq#Index(Heap[a_2, array_1], invRecv1(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction kperm might be negative. (parallel_max.vpr@16.12--16.78) [64841]"}
-      (forall i_3: int ::
-      { Seq#Index(Heap[a_2, array], i_3) } { Seq#ContainsTrigger(Seq#Range(start, end), i_3) } { Seq#Contains(Seq#Range(start, end), i_3) } { Seq#Index(Heap[a_2, array], i_3) }
-      Seq#Contains(Seq#Range(start, end), i_3) ==> kperm >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction kperm might be negative. (parallel_max.vpr@16.12--16.78) [187581]"}
+      (forall i_3_2: int ::
+      { Seq#Index(Heap[a_2, array_1], i_3_2) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_3_2) } { Seq#Contains(Seq#Range(start_1, end_1), i_3_2) } { Seq#Index(Heap[a_2, array_1], i_3_2) }
+      Seq#Contains(Seq#Range(start_1, end_1), i_3_2) ==> kperm >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(Heap[a_2, array], i_3) } { Seq#ContainsTrigger(Seq#Range(start, end), i_3) } { Seq#Contains(Seq#Range(start, end), i_3) } { Seq#Index(Heap[a_2, array], i_3) }
-        Seq#Contains(Seq#Range(start, end), i_3) && kperm > NoPerm ==> Seq#Index(Heap[a_2, array], i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(Heap[a_2, array_1], i_3_2) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_3_2) } { Seq#Contains(Seq#Range(start_1, end_1), i_3_2) } { Seq#Index(Heap[a_2, array_1], i_3_2) }
+        Seq#Contains(Seq#Range(start_1, end_1), i_3_2) && kperm > NoPerm ==> Seq#Index(Heap[a_2, array_1], i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, value] }
-        ((Seq#Contains(Seq#Range(start, end), invRecv1(o_4)) && NoPerm < kperm) && qpRange1(o_4) ==> (NoPerm < kperm ==> Seq#Index(Heap[a_2, array], invRecv1(o_4)) == o_4) && QPMask[o_4, value] == Mask[o_4, value] + kperm) && (!((Seq#Contains(Seq#Range(start, end), invRecv1(o_4)) && NoPerm < kperm) && qpRange1(o_4)) ==> QPMask[o_4, value] == Mask[o_4, value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, value_1] }
+        ((Seq#Contains(Seq#Range(start_1, end_1), invRecv1(o_9)) && NoPerm < kperm) && qpRange1(o_9) ==> (NoPerm < kperm ==> Seq#Index(Heap[a_2, array_1], invRecv1(o_9)) == o_9) && QPMask[o_9, value_1] == Mask[o_9, value_1] + kperm) && (!((Seq#Contains(Seq#Range(start_1, end_1), invRecv1(o_9)) && NoPerm < kperm) && qpRange1(o_9)) ==> QPMask[o_9, value_1] == Mask[o_9, value_1])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != value_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of |a.array| >= 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@17.12--17.26) [64842]"}
-        HasDirectPerm(Mask, a_2, array);
-    assume Seq#Length(Heap[a_2, array]) >= 1;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@17.12--17.26) [187582]"}
+        HasDirectPerm(Mask, a_2, array_1);
+    assume Seq#Length(Heap[a_2, array_1]) >= 1;
     assume state(Heap, Mask);
     assume NoPerm < kperm;
     assume kperm < FullPerm;
@@ -740,8 +740,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -750,126 +750,126 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
     havoc wildcard;
     perm := wildcard;
     assume a_2 != null;
-    PostMask := PostMask[a_2, array:=PostMask[a_2, array] + perm];
+    PostMask := PostMask[a_2, array_1:=PostMask[a_2, array_1] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of end < |a.array|
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@20.11--20.26) [64843]"}
-        HasDirectPerm(PostMask, a_2, array);
-    assume end < Seq#Length(PostHeap[a_2, array]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@20.11--20.26) [187583]"}
+        HasDirectPerm(PostMask, a_2, array_1);
+    assume end_1 < Seq#Length(PostHeap[a_2, array_1]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { (i in [start..end)), (j in [start..end)) } { (i in [start..end)), a.array[j] } { (j in [start..end)), a.array[i] } { a.array[i], a.array[j] } (i in [start..end)) && ((j in [start..end)) && i != j) ==> a.array[i] != a.array[j])
       if (*) {
-        if (Seq#Contains(Seq#Range(start, end), i_4) && (Seq#Contains(Seq#Range(start, end), j_6) && i_4 != j_6)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@21.11--21.111) [64844]"}
-            HasDirectPerm(PostMask, a_2, array);
-          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might be negative. (parallel_max.vpr@21.11--21.111) [64845]"}
+        if (Seq#Contains(Seq#Range(start_1, end_1), i_4) && (Seq#Contains(Seq#Range(start_1, end_1), j_12) && i_4 != j_12)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@21.11--21.111) [187584]"}
+            HasDirectPerm(PostMask, a_2, array_1);
+          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might be negative. (parallel_max.vpr@21.11--21.111) [187585]"}
             i_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might exceed sequence length. (parallel_max.vpr@21.11--21.111) [64846]"}
-            i_4 < Seq#Length(PostHeap[a_2, array]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@21.11--21.111) [64847]"}
-            HasDirectPerm(PostMask, a_2, array);
-          assert {:msg "  Contract might not be well-formed. Index a.array[j] into a.array might be negative. (parallel_max.vpr@21.11--21.111) [64848]"}
-            j_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a.array[j] into a.array might exceed sequence length. (parallel_max.vpr@21.11--21.111) [64849]"}
-            j_6 < Seq#Length(PostHeap[a_2, array]);
+          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might exceed sequence length. (parallel_max.vpr@21.11--21.111) [187586]"}
+            i_4 < Seq#Length(PostHeap[a_2, array_1]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@21.11--21.111) [187587]"}
+            HasDirectPerm(PostMask, a_2, array_1);
+          assert {:msg "  Contract might not be well-formed. Index a.array[j] into a.array might be negative. (parallel_max.vpr@21.11--21.111) [187588]"}
+            j_12 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a.array[j] into a.array might exceed sequence length. (parallel_max.vpr@21.11--21.111) [187589]"}
+            j_12 < Seq#Length(PostHeap[a_2, array_1]);
         }
         assume false;
       }
-    assume (forall i_5: int, j_3_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(start, end), i_5), Seq#ContainsTrigger(Seq#Range(start, end), j_3_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_5), Seq#Contains(Seq#Range(start, end), j_3_1) } { Seq#Contains(Seq#Range(start, end), i_5), Seq#ContainsTrigger(Seq#Range(start, end), j_3_1) } { Seq#Contains(Seq#Range(start, end), i_5), Seq#Contains(Seq#Range(start, end), j_3_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_5), Seq#Index(PostHeap[a_2, array], j_3_1) } { Seq#Contains(Seq#Range(start, end), i_5), Seq#Index(PostHeap[a_2, array], j_3_1) } { Seq#ContainsTrigger(Seq#Range(start, end), j_3_1), Seq#Index(PostHeap[a_2, array], i_5) } { Seq#Contains(Seq#Range(start, end), j_3_1), Seq#Index(PostHeap[a_2, array], i_5) } { Seq#Index(PostHeap[a_2, array], i_5), Seq#Index(PostHeap[a_2, array], j_3_1) }
-      Seq#Contains(Seq#Range(start, end), i_5) && (Seq#Contains(Seq#Range(start, end), j_3_1) && i_5 != j_3_1) ==> Seq#Index(PostHeap[a_2, array], i_5) != Seq#Index(PostHeap[a_2, array], j_3_1)
+    assume (forall i_5_1: int, j_3: int ::
+      { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_5_1), Seq#ContainsTrigger(Seq#Range(start_1, end_1), j_3) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_5_1), Seq#Contains(Seq#Range(start_1, end_1), j_3) } { Seq#Contains(Seq#Range(start_1, end_1), i_5_1), Seq#ContainsTrigger(Seq#Range(start_1, end_1), j_3) } { Seq#Contains(Seq#Range(start_1, end_1), i_5_1), Seq#Contains(Seq#Range(start_1, end_1), j_3) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_5_1), Seq#Index(PostHeap[a_2, array_1], j_3) } { Seq#Contains(Seq#Range(start_1, end_1), i_5_1), Seq#Index(PostHeap[a_2, array_1], j_3) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), j_3), Seq#Index(PostHeap[a_2, array_1], i_5_1) } { Seq#Contains(Seq#Range(start_1, end_1), j_3), Seq#Index(PostHeap[a_2, array_1], i_5_1) } { Seq#Index(PostHeap[a_2, array_1], i_5_1), Seq#Index(PostHeap[a_2, array_1], j_3) }
+      Seq#Contains(Seq#Range(start_1, end_1), i_5_1) && (Seq#Contains(Seq#Range(start_1, end_1), j_3) && i_5_1 != j_3) ==> Seq#Index(PostHeap[a_2, array_1], i_5_1) != Seq#Index(PostHeap[a_2, array_1], j_3)
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { (i in [start..end)) } { a.array[i] } (i in [start..end)) ==> acc(a.array[i].value, kperm))
       if (*) {
-        if (Seq#Contains(Seq#Range(start, end), i_6)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@22.11--22.77) [64850]"}
-            HasDirectPerm(PostMask, a_2, array);
-          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might be negative. (parallel_max.vpr@22.11--22.77) [64851]"}
-            i_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might exceed sequence length. (parallel_max.vpr@22.11--22.77) [64852]"}
-            i_6 < Seq#Length(PostHeap[a_2, array]);
+        if (Seq#Contains(Seq#Range(start_1, end_1), i_14)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@22.11--22.77) [187590]"}
+            HasDirectPerm(PostMask, a_2, array_1);
+          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might be negative. (parallel_max.vpr@22.11--22.77) [187591]"}
+            i_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a.array[i] into a.array might exceed sequence length. (parallel_max.vpr@22.11--22.77) [187592]"}
+            i_14 < Seq#Length(PostHeap[a_2, array_1]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource a.array[i].value might not be injective. (parallel_max.vpr@22.11--22.77) [64853]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource a.array[i].value might not be injective. (parallel_max.vpr@22.11--22.77) [187593]"}
       (forall i_7_1: int, i_7_2: int ::
       
-      (((i_7_1 != i_7_2 && Seq#Contains(Seq#Range(start, end), i_7_1)) && Seq#Contains(Seq#Range(start, end), i_7_2)) && NoPerm < kperm) && NoPerm < kperm ==> Seq#Index(PostHeap[a_2, array], i_7_1) != Seq#Index(PostHeap[a_2, array], i_7_2)
+      (((i_7_1 != i_7_2 && Seq#Contains(Seq#Range(start_1, end_1), i_7_1)) && Seq#Contains(Seq#Range(start_1, end_1), i_7_2)) && NoPerm < kperm) && NoPerm < kperm ==> Seq#Index(PostHeap[a_2, array_1], i_7_1) != Seq#Index(PostHeap[a_2, array_1], i_7_2)
     );
     
     // -- Define Inverse Function
       assume (forall i_7_1: int ::
-        { Seq#Index(PostHeap[a_2, array], i_7_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_7_1) } { Seq#Contains(Seq#Range(start, end), i_7_1) } { Seq#Index(PostHeap[a_2, array], i_7_1) }
-        Seq#Contains(Seq#Range(start, end), i_7_1) && NoPerm < kperm ==> qpRange2(Seq#Index(PostHeap[a_2, array], i_7_1)) && invRecv2(Seq#Index(PostHeap[a_2, array], i_7_1)) == i_7_1
+        { Seq#Index(PostHeap[a_2, array_1], i_7_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_7_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_7_1) } { Seq#Index(PostHeap[a_2, array_1], i_7_1) }
+        Seq#Contains(Seq#Range(start_1, end_1), i_7_1) && NoPerm < kperm ==> qpRange2(Seq#Index(PostHeap[a_2, array_1], i_7_1)) && invRecv2(Seq#Index(PostHeap[a_2, array_1], i_7_1)) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        (Seq#Contains(Seq#Range(start, end), invRecv2(o_4)) && NoPerm < kperm) && qpRange2(o_4) ==> Seq#Index(PostHeap[a_2, array], invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        (Seq#Contains(Seq#Range(start_1, end_1), invRecv2(o_9)) && NoPerm < kperm) && qpRange2(o_9) ==> Seq#Index(PostHeap[a_2, array_1], invRecv2(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction kperm might be negative. (parallel_max.vpr@22.11--22.77) [64854]"}
+    assert {:msg "  Contract might not be well-formed. Fraction kperm might be negative. (parallel_max.vpr@22.11--22.77) [187594]"}
       (forall i_7_1: int ::
-      { Seq#Index(PostHeap[a_2, array], i_7_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_7_1) } { Seq#Contains(Seq#Range(start, end), i_7_1) } { Seq#Index(PostHeap[a_2, array], i_7_1) }
-      Seq#Contains(Seq#Range(start, end), i_7_1) ==> kperm >= NoPerm
+      { Seq#Index(PostHeap[a_2, array_1], i_7_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_7_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_7_1) } { Seq#Index(PostHeap[a_2, array_1], i_7_1) }
+      Seq#Contains(Seq#Range(start_1, end_1), i_7_1) ==> kperm >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
       assume (forall i_7_1: int ::
-        { Seq#Index(PostHeap[a_2, array], i_7_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_7_1) } { Seq#Contains(Seq#Range(start, end), i_7_1) } { Seq#Index(PostHeap[a_2, array], i_7_1) }
-        Seq#Contains(Seq#Range(start, end), i_7_1) && kperm > NoPerm ==> Seq#Index(PostHeap[a_2, array], i_7_1) != null
+        { Seq#Index(PostHeap[a_2, array_1], i_7_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_7_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_7_1) } { Seq#Index(PostHeap[a_2, array_1], i_7_1) }
+        Seq#Contains(Seq#Range(start_1, end_1), i_7_1) && kperm > NoPerm ==> Seq#Index(PostHeap[a_2, array_1], i_7_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, value] }
-        ((Seq#Contains(Seq#Range(start, end), invRecv2(o_4)) && NoPerm < kperm) && qpRange2(o_4) ==> (NoPerm < kperm ==> Seq#Index(PostHeap[a_2, array], invRecv2(o_4)) == o_4) && QPMask[o_4, value] == PostMask[o_4, value] + kperm) && (!((Seq#Contains(Seq#Range(start, end), invRecv2(o_4)) && NoPerm < kperm) && qpRange2(o_4)) ==> QPMask[o_4, value] == PostMask[o_4, value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, value_1] }
+        ((Seq#Contains(Seq#Range(start_1, end_1), invRecv2(o_9)) && NoPerm < kperm) && qpRange2(o_9) ==> (NoPerm < kperm ==> Seq#Index(PostHeap[a_2, array_1], invRecv2(o_9)) == o_9) && QPMask[o_9, value_1] == PostMask[o_9, value_1] + kperm) && (!((Seq#Contains(Seq#Range(start_1, end_1), invRecv2(o_9)) && NoPerm < kperm) && qpRange2(o_9)) ==> QPMask[o_9, value_1] == PostMask[o_9, value_1])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != value_1 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
-    assume start <= pos;
-    assume pos < end;
+    assume start_1 <= pos;
+    assume pos < end_1;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of a.array[pos].value == mx
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@24.11--24.35) [64855]"}
-        HasDirectPerm(PostMask, a_2, array);
-      assert {:msg "  Contract might not be well-formed. Index a.array[pos] into a.array might be negative. (parallel_max.vpr@24.11--24.35) [64856]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@24.11--24.35) [187595]"}
+        HasDirectPerm(PostMask, a_2, array_1);
+      assert {:msg "  Contract might not be well-formed. Index a.array[pos] into a.array might be negative. (parallel_max.vpr@24.11--24.35) [187596]"}
         pos >= 0;
-      assert {:msg "  Contract might not be well-formed. Index a.array[pos] into a.array might exceed sequence length. (parallel_max.vpr@24.11--24.35) [64857]"}
-        pos < Seq#Length(PostHeap[a_2, array]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array[pos].value (parallel_max.vpr@24.11--24.35) [64858]"}
-        HasDirectPerm(PostMask, Seq#Index(PostHeap[a_2, array], pos), value);
-    assume PostHeap[Seq#Index(PostHeap[a_2, array], pos), value] == mx;
+      assert {:msg "  Contract might not be well-formed. Index a.array[pos] into a.array might exceed sequence length. (parallel_max.vpr@24.11--24.35) [187597]"}
+        pos < Seq#Length(PostHeap[a_2, array_1]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array[pos].value (parallel_max.vpr@24.11--24.35) [187598]"}
+        HasDirectPerm(PostMask, Seq#Index(PostHeap[a_2, array_1], pos), value_1);
+    assume PostHeap[Seq#Index(PostHeap[a_2, array_1], pos), value_1] == mx;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall l: Int :: { (l in [start..end)) } { a.array[l] } (l in [start..end)) ==> a.array[l].value <= mx)
       if (*) {
-        if (Seq#Contains(Seq#Range(start, end), l_5)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@25.12--25.71) [64859]"}
-            HasDirectPerm(PostMask, a_2, array);
-          assert {:msg "  Contract might not be well-formed. Index a.array[l] into a.array might be negative. (parallel_max.vpr@25.12--25.71) [64860]"}
-            l_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a.array[l] into a.array might exceed sequence length. (parallel_max.vpr@25.12--25.71) [64861]"}
-            l_5 < Seq#Length(PostHeap[a_2, array]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array[l].value (parallel_max.vpr@25.12--25.71) [64862]"}
-            HasDirectPerm(PostMask, Seq#Index(PostHeap[a_2, array], l_5), value);
+        if (Seq#Contains(Seq#Range(start_1, end_1), l_13)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array (parallel_max.vpr@25.12--25.71) [187599]"}
+            HasDirectPerm(PostMask, a_2, array_1);
+          assert {:msg "  Contract might not be well-formed. Index a.array[l] into a.array might be negative. (parallel_max.vpr@25.12--25.71) [187600]"}
+            l_13 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a.array[l] into a.array might exceed sequence length. (parallel_max.vpr@25.12--25.71) [187601]"}
+            l_13 < Seq#Length(PostHeap[a_2, array_1]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.array[l].value (parallel_max.vpr@25.12--25.71) [187602]"}
+            HasDirectPerm(PostMask, Seq#Index(PostHeap[a_2, array_1], l_13), value_1);
         }
         assume false;
       }
-    assume (forall l_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(start, end), l_1) } { Seq#Contains(Seq#Range(start, end), l_1) } { Seq#Index(PostHeap[a_2, array], l_1) }
-      Seq#Contains(Seq#Range(start, end), l_1) ==> PostHeap[Seq#Index(PostHeap[a_2, array], l_1), value] <= mx
+    assume (forall l_1_2: int ::
+      { Seq#ContainsTrigger(Seq#Range(start_1, end_1), l_1_2) } { Seq#Contains(Seq#Range(start_1, end_1), l_1_2) } { Seq#Index(PostHeap[a_2, array_1], l_1_2) }
+      Seq#Contains(Seq#Range(start_1, end_1), l_1_2) ==> PostHeap[Seq#Index(PostHeap[a_2, array_1], l_1_2), value_1] <= mx
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -877,27 +877,27 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
   }
   
   // -- Translating statement: if (end - start > 1) -- parallel_max.vpr@34.5--75.6
-    if (end - start > 1) {
+    if (end_1 - start_1 > 1) {
       
       // -- Translating statement: middle := start + (end - start) \ 2 -- parallel_max.vpr@36.9--36.40
-        middle := start + (end - start) div 2;
+        middle := start_1 + (end_1 - start_1) div 2;
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale a != null -- parallel_max.vpr@39.9--39.25
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Exhale might fail. Assertion a != null might not hold. (parallel_max.vpr@39.16--39.25) [64863]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Exhale might fail. Assertion a != null might not hold. (parallel_max.vpr@39.16--39.25) [187603]"}
           a_2 != null;
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(a.array, wildcard) -- parallel_max.vpr@40.9--40.38
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@40.16--40.38) [64864]"}
-          Mask[a_2, array] > NoPerm;
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@40.16--40.38) [187604]"}
+          Mask[a_2, array_1] > NoPerm;
         havoc wildcard;
-        assume wildcard < Mask[a_2, array];
-        Mask := Mask[a_2, array:=Mask[a_2, array] - wildcard];
+        assume wildcard < Mask[a_2, array_1];
+        Mask := Mask[a_2, array_1:=Mask[a_2, array_1] - wildcard];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -905,82 +905,82 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale 0 <= start && (start < middle && middle < |a.array|) -- parallel_max.vpr@41.9--41.66
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Exhale might fail. Assertion 0 <= start might not hold. (parallel_max.vpr@41.16--41.66) [64865]"}
-          0 <= start;
-        assert {:msg "  Exhale might fail. Assertion start < middle might not hold. (parallel_max.vpr@41.16--41.66) [64866]"}
-          start < middle;
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Exhale might fail. Assertion 0 <= start might not hold. (parallel_max.vpr@41.16--41.66) [187605]"}
+          0 <= start_1;
+        assert {:msg "  Exhale might fail. Assertion start < middle might not hold. (parallel_max.vpr@41.16--41.66) [187606]"}
+          start_1 < middle;
         
         // -- Check definedness of middle < |a.array|
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@41.16--41.66) [64867]"}
-            HasDirectPerm(ExhaleWellDef0Mask, a_2, array);
-        assert {:msg "  Exhale might fail. Assertion middle < |a.array| might not hold. (parallel_max.vpr@41.16--41.66) [64868]"}
-          middle < Seq#Length(Heap[a_2, array]);
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@41.16--41.66) [187607]"}
+            HasDirectPerm(ExhaleWellDef0Mask, a_2, array_1);
+        assert {:msg "  Exhale might fail. Assertion middle < |a.array| might not hold. (parallel_max.vpr@41.16--41.66) [187608]"}
+          middle < Seq#Length(Heap[a_2, array_1]);
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale (forall i1: Int ::
   //     { (i1 in [start..middle)) }
   //     { a.array[i1] }
   //     (i1 in [start..middle)) ==> acc(a.array[i1].value, 1 / 2 * kperm)) -- parallel_max.vpr@42.9--42.98
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i1: Int :: { (i1 in [start..middle)) } { a.array[i1] } (i1 in [start..middle)) ==> acc(a.array[i1].value, 1 / 2 * kperm))
           if (*) {
-            if (Seq#Contains(Seq#Range(start, middle), i1_25)) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@42.16--42.98) [64869]"}
-                HasDirectPerm(ExhaleWellDef0Mask, a_2, array);
-              assert {:msg "  Exhale might fail. Index a.array[i1] into a.array might be negative. (parallel_max.vpr@42.16--42.98) [64870]"}
-                i1_25 >= 0;
-              assert {:msg "  Exhale might fail. Index a.array[i1] into a.array might exceed sequence length. (parallel_max.vpr@42.16--42.98) [64871]"}
-                i1_25 < Seq#Length(Heap[a_2, array]);
+            if (Seq#Contains(Seq#Range(start_1, middle), i1)) {
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@42.16--42.98) [187609]"}
+                HasDirectPerm(ExhaleWellDef0Mask, a_2, array_1);
+              assert {:msg "  Exhale might fail. Index a.array[i1] into a.array might be negative. (parallel_max.vpr@42.16--42.98) [187610]"}
+                i1 >= 0;
+              assert {:msg "  Exhale might fail. Index a.array[i1] into a.array might exceed sequence length. (parallel_max.vpr@42.16--42.98) [187611]"}
+                i1 < Seq#Length(Heap[a_2, array_1]);
             }
             assume false;
           }
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Exhale might fail. Fraction 1 / 2 * kperm might be negative. (parallel_max.vpr@42.16--42.98) [64872]"}
-            (forall i1_1_1: int ::
-            { Seq#Index(Heap[a_2, array], i1_1_1) } { Seq#ContainsTrigger(Seq#Range(start, middle), i1_1_1) } { Seq#Contains(Seq#Range(start, middle), i1_1_1) } { Seq#Index(Heap[a_2, array], i1_1_1) }
-            Seq#Contains(Seq#Range(start, middle), i1_1_1) && dummyFunction(Heap[Seq#Index(Heap[a_2, array], i1_1_1), value]) ==> 1 / 2 * kperm >= NoPerm
+          assert {:msg "  Exhale might fail. Fraction 1 / 2 * kperm might be negative. (parallel_max.vpr@42.16--42.98) [187612]"}
+            (forall i1_1: int ::
+            { Seq#Index(Heap[a_2, array_1], i1_1) } { Seq#ContainsTrigger(Seq#Range(start_1, middle), i1_1) } { Seq#Contains(Seq#Range(start_1, middle), i1_1) } { Seq#Index(Heap[a_2, array_1], i1_1) }
+            Seq#Contains(Seq#Range(start_1, middle), i1_1) && dummyFunction(Heap[Seq#Index(Heap[a_2, array_1], i1_1), value_1]) ==> 1 / 2 * kperm >= NoPerm
           );
         
         // -- check if receiver a.array[i1] is injective
-          assert {:msg "  Exhale might fail. Quantified resource a.array[i1].value might not be injective. (parallel_max.vpr@42.16--42.98) [64873]"}
-            (forall i1_1_1: int, i1_1_2: int ::
-            { neverTriggered4(i1_1_1), neverTriggered4(i1_1_2) }
-            (((i1_1_1 != i1_1_2 && Seq#Contains(Seq#Range(start, middle), i1_1_1)) && Seq#Contains(Seq#Range(start, middle), i1_1_2)) && NoPerm < 1 / 2 * kperm) && NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array], i1_1_1) != Seq#Index(Heap[a_2, array], i1_1_2)
+          assert {:msg "  Exhale might fail. Quantified resource a.array[i1].value might not be injective. (parallel_max.vpr@42.16--42.98) [187613]"}
+            (forall i1_1: int, i1_1_1: int ::
+            { neverTriggered4(i1_1), neverTriggered4(i1_1_1) }
+            (((i1_1 != i1_1_1 && Seq#Contains(Seq#Range(start_1, middle), i1_1)) && Seq#Contains(Seq#Range(start_1, middle), i1_1_1)) && NoPerm < 1 / 2 * kperm) && NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array_1], i1_1) != Seq#Index(Heap[a_2, array_1], i1_1_1)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array[i1].value (parallel_max.vpr@42.16--42.98) [64874]"}
-            (forall i1_1_1: int ::
-            { Seq#Index(Heap[a_2, array], i1_1_1) } { Seq#ContainsTrigger(Seq#Range(start, middle), i1_1_1) } { Seq#Contains(Seq#Range(start, middle), i1_1_1) } { Seq#Index(Heap[a_2, array], i1_1_1) }
-            Seq#Contains(Seq#Range(start, middle), i1_1_1) ==> Mask[Seq#Index(Heap[a_2, array], i1_1_1), value] >= 1 / 2 * kperm
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array[i1].value (parallel_max.vpr@42.16--42.98) [187614]"}
+            (forall i1_1: int ::
+            { Seq#Index(Heap[a_2, array_1], i1_1) } { Seq#ContainsTrigger(Seq#Range(start_1, middle), i1_1) } { Seq#Contains(Seq#Range(start_1, middle), i1_1) } { Seq#Index(Heap[a_2, array_1], i1_1) }
+            Seq#Contains(Seq#Range(start_1, middle), i1_1) ==> Mask[Seq#Index(Heap[a_2, array_1], i1_1), value_1] >= 1 / 2 * kperm
           );
         
         // -- assumptions for inverse of receiver a.array[i1]
-          assume (forall i1_1_1: int ::
-            { Seq#Index(Heap[a_2, array], i1_1_1) } { Seq#ContainsTrigger(Seq#Range(start, middle), i1_1_1) } { Seq#Contains(Seq#Range(start, middle), i1_1_1) } { Seq#Index(Heap[a_2, array], i1_1_1) }
-            Seq#Contains(Seq#Range(start, middle), i1_1_1) && NoPerm < 1 / 2 * kperm ==> qpRange4(Seq#Index(Heap[a_2, array], i1_1_1)) && invRecv4(Seq#Index(Heap[a_2, array], i1_1_1)) == i1_1_1
+          assume (forall i1_1: int ::
+            { Seq#Index(Heap[a_2, array_1], i1_1) } { Seq#ContainsTrigger(Seq#Range(start_1, middle), i1_1) } { Seq#Contains(Seq#Range(start_1, middle), i1_1) } { Seq#Index(Heap[a_2, array_1], i1_1) }
+            Seq#Contains(Seq#Range(start_1, middle), i1_1) && NoPerm < 1 / 2 * kperm ==> qpRange4(Seq#Index(Heap[a_2, array_1], i1_1)) && invRecv4(Seq#Index(Heap[a_2, array_1], i1_1)) == i1_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv4(o_4) }
-            Seq#Contains(Seq#Range(start, middle), invRecv4(o_4)) && (NoPerm < 1 / 2 * kperm && qpRange4(o_4)) ==> Seq#Index(Heap[a_2, array], invRecv4(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv4(o_9) }
+            Seq#Contains(Seq#Range(start_1, middle), invRecv4(o_9)) && (NoPerm < 1 / 2 * kperm && qpRange4(o_9)) ==> Seq#Index(Heap[a_2, array_1], invRecv4(o_9)) == o_9
           );
         
         // -- assume permission updates for field value
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, value] }
-            (Seq#Contains(Seq#Range(start, middle), invRecv4(o_4)) && (NoPerm < 1 / 2 * kperm && qpRange4(o_4)) ==> Seq#Index(Heap[a_2, array], invRecv4(o_4)) == o_4 && QPMask[o_4, value] == Mask[o_4, value] - 1 / 2 * kperm) && (!(Seq#Contains(Seq#Range(start, middle), invRecv4(o_4)) && (NoPerm < 1 / 2 * kperm && qpRange4(o_4))) ==> QPMask[o_4, value] == Mask[o_4, value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, value_1] }
+            (Seq#Contains(Seq#Range(start_1, middle), invRecv4(o_9)) && (NoPerm < 1 / 2 * kperm && qpRange4(o_9)) ==> Seq#Index(Heap[a_2, array_1], invRecv4(o_9)) == o_9 && QPMask[o_9, value_1] == Mask[o_9, value_1] - 1 / 2 * kperm) && (!(Seq#Contains(Seq#Range(start_1, middle), invRecv4(o_9)) && (NoPerm < 1 / 2 * kperm && qpRange4(o_9))) ==> QPMask[o_9, value_1] == Mask[o_9, value_1])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != value_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         // Finish exhale
@@ -990,40 +990,40 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale |a.array| >= 1 -- parallel_max.vpr@43.9--43.30
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of |a.array| >= 1
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@43.16--43.30) [64875]"}
-            HasDirectPerm(ExhaleWellDef0Mask, a_2, array);
-        assert {:msg "  Exhale might fail. Assertion |a.array| >= 1 might not hold. (parallel_max.vpr@43.16--43.30) [64876]"}
-          Seq#Length(Heap[a_2, array]) >= 1;
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@43.16--43.30) [187615]"}
+            HasDirectPerm(ExhaleWellDef0Mask, a_2, array_1);
+        assert {:msg "  Exhale might fail. Assertion |a.array| >= 1 might not hold. (parallel_max.vpr@43.16--43.30) [187616]"}
+          Seq#Length(Heap[a_2, array_1]) >= 1;
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale none < 1 / 2 * kperm && 1 / 2 * kperm < write -- parallel_max.vpr@44.9--44.65
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Exhale might fail. Assertion none < 1 / 2 * kperm might not hold. (parallel_max.vpr@44.16--44.65) [64877]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Exhale might fail. Assertion none < 1 / 2 * kperm might not hold. (parallel_max.vpr@44.16--44.65) [187617]"}
           NoPerm < 1 / 2 * kperm;
-        assert {:msg "  Exhale might fail. Assertion 1 / 2 * kperm < write might not hold. (parallel_max.vpr@44.16--44.65) [64878]"}
+        assert {:msg "  Exhale might fail. Assertion 1 / 2 * kperm < write might not hold. (parallel_max.vpr@44.16--44.65) [187618]"}
           1 / 2 * kperm < FullPerm;
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale a != null -- parallel_max.vpr@47.9--47.25
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Exhale might fail. Assertion a != null might not hold. (parallel_max.vpr@47.16--47.25) [64879]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Exhale might fail. Assertion a != null might not hold. (parallel_max.vpr@47.16--47.25) [187619]"}
           a_2 != null;
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(a.array, wildcard) -- parallel_max.vpr@48.9--48.38
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@48.16--48.38) [64880]"}
-          Mask[a_2, array] > NoPerm;
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@48.16--48.38) [187620]"}
+          Mask[a_2, array_1] > NoPerm;
         havoc wildcard;
-        assume wildcard < Mask[a_2, array];
-        Mask := Mask[a_2, array:=Mask[a_2, array] - wildcard];
+        assume wildcard < Mask[a_2, array_1];
+        Mask := Mask[a_2, array_1:=Mask[a_2, array_1] - wildcard];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1031,82 +1031,82 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale 0 <= middle && (middle < end && end < |a.array|) -- parallel_max.vpr@49.9--49.62
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Exhale might fail. Assertion 0 <= middle might not hold. (parallel_max.vpr@49.16--49.62) [64881]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Exhale might fail. Assertion 0 <= middle might not hold. (parallel_max.vpr@49.16--49.62) [187621]"}
           0 <= middle;
-        assert {:msg "  Exhale might fail. Assertion middle < end might not hold. (parallel_max.vpr@49.16--49.62) [64882]"}
-          middle < end;
+        assert {:msg "  Exhale might fail. Assertion middle < end might not hold. (parallel_max.vpr@49.16--49.62) [187622]"}
+          middle < end_1;
         
         // -- Check definedness of end < |a.array|
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@49.16--49.62) [64883]"}
-            HasDirectPerm(ExhaleWellDef0Mask, a_2, array);
-        assert {:msg "  Exhale might fail. Assertion end < |a.array| might not hold. (parallel_max.vpr@49.16--49.62) [64884]"}
-          end < Seq#Length(Heap[a_2, array]);
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@49.16--49.62) [187623]"}
+            HasDirectPerm(ExhaleWellDef0Mask, a_2, array_1);
+        assert {:msg "  Exhale might fail. Assertion end < |a.array| might not hold. (parallel_max.vpr@49.16--49.62) [187624]"}
+          end_1 < Seq#Length(Heap[a_2, array_1]);
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale (forall i2: Int ::
   //     { (i2 in [middle..end)) }
   //     { a.array[i2] }
   //     (i2 in [middle..end)) ==> acc(a.array[i2].value, 1 / 2 * kperm)) -- parallel_max.vpr@50.9--50.96
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i2: Int :: { (i2 in [middle..end)) } { a.array[i2] } (i2 in [middle..end)) ==> acc(a.array[i2].value, 1 / 2 * kperm))
           if (*) {
-            if (Seq#Contains(Seq#Range(middle, end), i2_9)) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@50.16--50.96) [64885]"}
-                HasDirectPerm(ExhaleWellDef0Mask, a_2, array);
-              assert {:msg "  Exhale might fail. Index a.array[i2] into a.array might be negative. (parallel_max.vpr@50.16--50.96) [64886]"}
-                i2_9 >= 0;
-              assert {:msg "  Exhale might fail. Index a.array[i2] into a.array might exceed sequence length. (parallel_max.vpr@50.16--50.96) [64887]"}
-                i2_9 < Seq#Length(Heap[a_2, array]);
+            if (Seq#Contains(Seq#Range(middle, end_1), i2_13)) {
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@50.16--50.96) [187625]"}
+                HasDirectPerm(ExhaleWellDef0Mask, a_2, array_1);
+              assert {:msg "  Exhale might fail. Index a.array[i2] into a.array might be negative. (parallel_max.vpr@50.16--50.96) [187626]"}
+                i2_13 >= 0;
+              assert {:msg "  Exhale might fail. Index a.array[i2] into a.array might exceed sequence length. (parallel_max.vpr@50.16--50.96) [187627]"}
+                i2_13 < Seq#Length(Heap[a_2, array_1]);
             }
             assume false;
           }
         havoc QPMask;
         
         // -- check that the permission amount is positive
-          assert {:msg "  Exhale might fail. Fraction 1 / 2 * kperm might be negative. (parallel_max.vpr@50.16--50.96) [64888]"}
-            (forall i2_1_1: int ::
-            { Seq#Index(Heap[a_2, array], i2_1_1) } { Seq#ContainsTrigger(Seq#Range(middle, end), i2_1_1) } { Seq#Contains(Seq#Range(middle, end), i2_1_1) } { Seq#Index(Heap[a_2, array], i2_1_1) }
-            Seq#Contains(Seq#Range(middle, end), i2_1_1) && dummyFunction(Heap[Seq#Index(Heap[a_2, array], i2_1_1), value]) ==> 1 / 2 * kperm >= NoPerm
+          assert {:msg "  Exhale might fail. Fraction 1 / 2 * kperm might be negative. (parallel_max.vpr@50.16--50.96) [187628]"}
+            (forall i2_1: int ::
+            { Seq#Index(Heap[a_2, array_1], i2_1) } { Seq#ContainsTrigger(Seq#Range(middle, end_1), i2_1) } { Seq#Contains(Seq#Range(middle, end_1), i2_1) } { Seq#Index(Heap[a_2, array_1], i2_1) }
+            Seq#Contains(Seq#Range(middle, end_1), i2_1) && dummyFunction(Heap[Seq#Index(Heap[a_2, array_1], i2_1), value_1]) ==> 1 / 2 * kperm >= NoPerm
           );
         
         // -- check if receiver a.array[i2] is injective
-          assert {:msg "  Exhale might fail. Quantified resource a.array[i2].value might not be injective. (parallel_max.vpr@50.16--50.96) [64889]"}
-            (forall i2_1_1: int, i2_1_2: int ::
-            { neverTriggered5(i2_1_1), neverTriggered5(i2_1_2) }
-            (((i2_1_1 != i2_1_2 && Seq#Contains(Seq#Range(middle, end), i2_1_1)) && Seq#Contains(Seq#Range(middle, end), i2_1_2)) && NoPerm < 1 / 2 * kperm) && NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array], i2_1_1) != Seq#Index(Heap[a_2, array], i2_1_2)
+          assert {:msg "  Exhale might fail. Quantified resource a.array[i2].value might not be injective. (parallel_max.vpr@50.16--50.96) [187629]"}
+            (forall i2_1: int, i2_1_1: int ::
+            { neverTriggered5(i2_1), neverTriggered5(i2_1_1) }
+            (((i2_1 != i2_1_1 && Seq#Contains(Seq#Range(middle, end_1), i2_1)) && Seq#Contains(Seq#Range(middle, end_1), i2_1_1)) && NoPerm < 1 / 2 * kperm) && NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array_1], i2_1) != Seq#Index(Heap[a_2, array_1], i2_1_1)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array[i2].value (parallel_max.vpr@50.16--50.96) [64890]"}
-            (forall i2_1_1: int ::
-            { Seq#Index(Heap[a_2, array], i2_1_1) } { Seq#ContainsTrigger(Seq#Range(middle, end), i2_1_1) } { Seq#Contains(Seq#Range(middle, end), i2_1_1) } { Seq#Index(Heap[a_2, array], i2_1_1) }
-            Seq#Contains(Seq#Range(middle, end), i2_1_1) ==> Mask[Seq#Index(Heap[a_2, array], i2_1_1), value] >= 1 / 2 * kperm
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array[i2].value (parallel_max.vpr@50.16--50.96) [187630]"}
+            (forall i2_1: int ::
+            { Seq#Index(Heap[a_2, array_1], i2_1) } { Seq#ContainsTrigger(Seq#Range(middle, end_1), i2_1) } { Seq#Contains(Seq#Range(middle, end_1), i2_1) } { Seq#Index(Heap[a_2, array_1], i2_1) }
+            Seq#Contains(Seq#Range(middle, end_1), i2_1) ==> Mask[Seq#Index(Heap[a_2, array_1], i2_1), value_1] >= 1 / 2 * kperm
           );
         
         // -- assumptions for inverse of receiver a.array[i2]
-          assume (forall i2_1_1: int ::
-            { Seq#Index(Heap[a_2, array], i2_1_1) } { Seq#ContainsTrigger(Seq#Range(middle, end), i2_1_1) } { Seq#Contains(Seq#Range(middle, end), i2_1_1) } { Seq#Index(Heap[a_2, array], i2_1_1) }
-            Seq#Contains(Seq#Range(middle, end), i2_1_1) && NoPerm < 1 / 2 * kperm ==> qpRange5(Seq#Index(Heap[a_2, array], i2_1_1)) && invRecv5(Seq#Index(Heap[a_2, array], i2_1_1)) == i2_1_1
+          assume (forall i2_1: int ::
+            { Seq#Index(Heap[a_2, array_1], i2_1) } { Seq#ContainsTrigger(Seq#Range(middle, end_1), i2_1) } { Seq#Contains(Seq#Range(middle, end_1), i2_1) } { Seq#Index(Heap[a_2, array_1], i2_1) }
+            Seq#Contains(Seq#Range(middle, end_1), i2_1) && NoPerm < 1 / 2 * kperm ==> qpRange5(Seq#Index(Heap[a_2, array_1], i2_1)) && invRecv5(Seq#Index(Heap[a_2, array_1], i2_1)) == i2_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv5(o_4) }
-            Seq#Contains(Seq#Range(middle, end), invRecv5(o_4)) && (NoPerm < 1 / 2 * kperm && qpRange5(o_4)) ==> Seq#Index(Heap[a_2, array], invRecv5(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv5(o_9) }
+            Seq#Contains(Seq#Range(middle, end_1), invRecv5(o_9)) && (NoPerm < 1 / 2 * kperm && qpRange5(o_9)) ==> Seq#Index(Heap[a_2, array_1], invRecv5(o_9)) == o_9
           );
         
         // -- assume permission updates for field value
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, value] }
-            (Seq#Contains(Seq#Range(middle, end), invRecv5(o_4)) && (NoPerm < 1 / 2 * kperm && qpRange5(o_4)) ==> Seq#Index(Heap[a_2, array], invRecv5(o_4)) == o_4 && QPMask[o_4, value] == Mask[o_4, value] - 1 / 2 * kperm) && (!(Seq#Contains(Seq#Range(middle, end), invRecv5(o_4)) && (NoPerm < 1 / 2 * kperm && qpRange5(o_4))) ==> QPMask[o_4, value] == Mask[o_4, value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, value_1] }
+            (Seq#Contains(Seq#Range(middle, end_1), invRecv5(o_9)) && (NoPerm < 1 / 2 * kperm && qpRange5(o_9)) ==> Seq#Index(Heap[a_2, array_1], invRecv5(o_9)) == o_9 && QPMask[o_9, value_1] == Mask[o_9, value_1] - 1 / 2 * kperm) && (!(Seq#Contains(Seq#Range(middle, end_1), invRecv5(o_9)) && (NoPerm < 1 / 2 * kperm && qpRange5(o_9))) ==> QPMask[o_9, value_1] == Mask[o_9, value_1])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != value_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         // Finish exhale
@@ -1116,22 +1116,22 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale |a.array| >= 1 -- parallel_max.vpr@51.9--51.30
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of |a.array| >= 1
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@51.16--51.30) [64891]"}
-            HasDirectPerm(ExhaleWellDef0Mask, a_2, array);
-        assert {:msg "  Exhale might fail. Assertion |a.array| >= 1 might not hold. (parallel_max.vpr@51.16--51.30) [64892]"}
-          Seq#Length(Heap[a_2, array]) >= 1;
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@51.16--51.30) [187631]"}
+            HasDirectPerm(ExhaleWellDef0Mask, a_2, array_1);
+        assert {:msg "  Exhale might fail. Assertion |a.array| >= 1 might not hold. (parallel_max.vpr@51.16--51.30) [187632]"}
+          Seq#Length(Heap[a_2, array_1]) >= 1;
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale none < 1 / 2 * kperm && 1 / 2 * kperm < write -- parallel_max.vpr@52.9--52.65
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Exhale might fail. Assertion none < 1 / 2 * kperm might not hold. (parallel_max.vpr@52.16--52.65) [64893]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Exhale might fail. Assertion none < 1 / 2 * kperm might not hold. (parallel_max.vpr@52.16--52.65) [187633]"}
           NoPerm < 1 / 2 * kperm;
-        assert {:msg "  Exhale might fail. Assertion 1 / 2 * kperm < write might not hold. (parallel_max.vpr@52.16--52.65) [64894]"}
+        assert {:msg "  Exhale might fail. Assertion 1 / 2 * kperm < write might not hold. (parallel_max.vpr@52.16--52.65) [187634]"}
           1 / 2 * kperm < FullPerm;
         assume state(Heap, Mask);
       
@@ -1139,7 +1139,7 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         havoc wildcard;
         perm := wildcard;
         assume a_2 != null;
-        Mask := Mask[a_2, array:=Mask[a_2, array] + perm];
+        Mask := Mask[a_2, array_1:=Mask[a_2, array_1] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1147,9 +1147,9 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
       // -- Translating statement: inhale middle < |a.array| -- parallel_max.vpr@56.9--56.34
         
         // -- Check definedness of middle < |a.array|
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@56.16--56.34) [64895]"}
-            HasDirectPerm(Mask, a_2, array);
-        assume middle < Seq#Length(Heap[a_2, array]);
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@56.16--56.34) [187635]"}
+            HasDirectPerm(Mask, a_2, array_1);
+        assume middle < Seq#Length(Heap[a_2, array_1]);
         assume state(Heap, Mask);
         assume state(Heap, Mask);
       
@@ -1160,53 +1160,53 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         
         // -- Check definedness of (forall i3: Int :: { (i3 in [start..middle)) } { a.array[i3] } (i3 in [start..middle)) ==> acc(a.array[i3].value, 1 / 2 * kperm))
           if (*) {
-            if (Seq#Contains(Seq#Range(start, middle), i3_11)) {
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@57.16--57.98) [64896]"}
-                HasDirectPerm(Mask, a_2, array);
-              assert {:msg "  Inhale might fail. Index a.array[i3] into a.array might be negative. (parallel_max.vpr@57.16--57.98) [64897]"}
-                i3_11 >= 0;
-              assert {:msg "  Inhale might fail. Index a.array[i3] into a.array might exceed sequence length. (parallel_max.vpr@57.16--57.98) [64898]"}
-                i3_11 < Seq#Length(Heap[a_2, array]);
+            if (Seq#Contains(Seq#Range(start_1, middle), i3_13)) {
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@57.16--57.98) [187636]"}
+                HasDirectPerm(Mask, a_2, array_1);
+              assert {:msg "  Inhale might fail. Index a.array[i3] into a.array might be negative. (parallel_max.vpr@57.16--57.98) [187637]"}
+                i3_13 >= 0;
+              assert {:msg "  Inhale might fail. Index a.array[i3] into a.array might exceed sequence length. (parallel_max.vpr@57.16--57.98) [187638]"}
+                i3_13 < Seq#Length(Heap[a_2, array_1]);
             }
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Inhale might fail. Quantified resource a.array[i3].value might not be injective. (parallel_max.vpr@57.16--57.98) [64899]"}
-          (forall i3_1: int, i3_1_1: int ::
+        assert {:msg "  Inhale might fail. Quantified resource a.array[i3].value might not be injective. (parallel_max.vpr@57.16--57.98) [187639]"}
+          (forall i3_1_1: int, i3_1_2: int ::
           
-          (((i3_1 != i3_1_1 && Seq#Contains(Seq#Range(start, middle), i3_1)) && Seq#Contains(Seq#Range(start, middle), i3_1_1)) && NoPerm < 1 / 2 * kperm) && NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array], i3_1) != Seq#Index(Heap[a_2, array], i3_1_1)
+          (((i3_1_1 != i3_1_2 && Seq#Contains(Seq#Range(start_1, middle), i3_1_1)) && Seq#Contains(Seq#Range(start_1, middle), i3_1_2)) && NoPerm < 1 / 2 * kperm) && NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array_1], i3_1_1) != Seq#Index(Heap[a_2, array_1], i3_1_2)
         );
         
         // -- Define Inverse Function
-          assume (forall i3_1: int ::
-            { Seq#Index(Heap[a_2, array], i3_1) } { Seq#ContainsTrigger(Seq#Range(start, middle), i3_1) } { Seq#Contains(Seq#Range(start, middle), i3_1) } { Seq#Index(Heap[a_2, array], i3_1) }
-            Seq#Contains(Seq#Range(start, middle), i3_1) && NoPerm < 1 / 2 * kperm ==> qpRange6(Seq#Index(Heap[a_2, array], i3_1)) && invRecv6(Seq#Index(Heap[a_2, array], i3_1)) == i3_1
+          assume (forall i3_1_1: int ::
+            { Seq#Index(Heap[a_2, array_1], i3_1_1) } { Seq#ContainsTrigger(Seq#Range(start_1, middle), i3_1_1) } { Seq#Contains(Seq#Range(start_1, middle), i3_1_1) } { Seq#Index(Heap[a_2, array_1], i3_1_1) }
+            Seq#Contains(Seq#Range(start_1, middle), i3_1_1) && NoPerm < 1 / 2 * kperm ==> qpRange6(Seq#Index(Heap[a_2, array_1], i3_1_1)) && invRecv6(Seq#Index(Heap[a_2, array_1], i3_1_1)) == i3_1_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv6(o_4) }
-            (Seq#Contains(Seq#Range(start, middle), invRecv6(o_4)) && NoPerm < 1 / 2 * kperm) && qpRange6(o_4) ==> Seq#Index(Heap[a_2, array], invRecv6(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv6(o_9) }
+            (Seq#Contains(Seq#Range(start_1, middle), invRecv6(o_9)) && NoPerm < 1 / 2 * kperm) && qpRange6(o_9) ==> Seq#Index(Heap[a_2, array_1], invRecv6(o_9)) == o_9
           );
         // Check that permission expression is non-negative for all fields
-        assert {:msg "  Inhale might fail. Fraction 1 / 2 * kperm might be negative. (parallel_max.vpr@57.16--57.98) [64900]"}
-          (forall i3_1: int ::
-          { Seq#Index(Heap[a_2, array], i3_1) } { Seq#ContainsTrigger(Seq#Range(start, middle), i3_1) } { Seq#Contains(Seq#Range(start, middle), i3_1) } { Seq#Index(Heap[a_2, array], i3_1) }
-          Seq#Contains(Seq#Range(start, middle), i3_1) ==> 1 / 2 * kperm >= NoPerm
+        assert {:msg "  Inhale might fail. Fraction 1 / 2 * kperm might be negative. (parallel_max.vpr@57.16--57.98) [187640]"}
+          (forall i3_1_1: int ::
+          { Seq#Index(Heap[a_2, array_1], i3_1_1) } { Seq#ContainsTrigger(Seq#Range(start_1, middle), i3_1_1) } { Seq#Contains(Seq#Range(start_1, middle), i3_1_1) } { Seq#Index(Heap[a_2, array_1], i3_1_1) }
+          Seq#Contains(Seq#Range(start_1, middle), i3_1_1) ==> 1 / 2 * kperm >= NoPerm
         );
         
         // -- Assume set of fields is nonNull
-          assume (forall i3_1: int ::
-            { Seq#Index(Heap[a_2, array], i3_1) } { Seq#ContainsTrigger(Seq#Range(start, middle), i3_1) } { Seq#Contains(Seq#Range(start, middle), i3_1) } { Seq#Index(Heap[a_2, array], i3_1) }
-            Seq#Contains(Seq#Range(start, middle), i3_1) && 1 / 2 * kperm > NoPerm ==> Seq#Index(Heap[a_2, array], i3_1) != null
+          assume (forall i3_1_1: int ::
+            { Seq#Index(Heap[a_2, array_1], i3_1_1) } { Seq#ContainsTrigger(Seq#Range(start_1, middle), i3_1_1) } { Seq#Contains(Seq#Range(start_1, middle), i3_1_1) } { Seq#Index(Heap[a_2, array_1], i3_1_1) }
+            Seq#Contains(Seq#Range(start_1, middle), i3_1_1) && 1 / 2 * kperm > NoPerm ==> Seq#Index(Heap[a_2, array_1], i3_1_1) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, value] }
-            ((Seq#Contains(Seq#Range(start, middle), invRecv6(o_4)) && NoPerm < 1 / 2 * kperm) && qpRange6(o_4) ==> (NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array], invRecv6(o_4)) == o_4) && QPMask[o_4, value] == Mask[o_4, value] + 1 / 2 * kperm) && (!((Seq#Contains(Seq#Range(start, middle), invRecv6(o_4)) && NoPerm < 1 / 2 * kperm) && qpRange6(o_4)) ==> QPMask[o_4, value] == Mask[o_4, value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, value_1] }
+            ((Seq#Contains(Seq#Range(start_1, middle), invRecv6(o_9)) && NoPerm < 1 / 2 * kperm) && qpRange6(o_9) ==> (NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array_1], invRecv6(o_9)) == o_9) && QPMask[o_9, value_1] == Mask[o_9, value_1] + 1 / 2 * kperm) && (!((Seq#Contains(Seq#Range(start_1, middle), invRecv6(o_9)) && NoPerm < 1 / 2 * kperm) && qpRange6(o_9)) ==> QPMask[o_9, value_1] == Mask[o_9, value_1])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != value_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -1214,7 +1214,7 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: inhale start <= posl && posl < middle -- parallel_max.vpr@58.9--58.42
-        assume start <= posl;
+        assume start_1 <= posl;
         assume posl < middle;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1222,15 +1222,15 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
       // -- Translating statement: inhale a.array[posl].value == ml -- parallel_max.vpr@59.9--59.41
         
         // -- Check definedness of a.array[posl].value == ml
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@59.16--59.41) [64901]"}
-            HasDirectPerm(Mask, a_2, array);
-          assert {:msg "  Inhale might fail. Index a.array[posl] into a.array might be negative. (parallel_max.vpr@59.16--59.41) [64902]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@59.16--59.41) [187641]"}
+            HasDirectPerm(Mask, a_2, array_1);
+          assert {:msg "  Inhale might fail. Index a.array[posl] into a.array might be negative. (parallel_max.vpr@59.16--59.41) [187642]"}
             posl >= 0;
-          assert {:msg "  Inhale might fail. Index a.array[posl] into a.array might exceed sequence length. (parallel_max.vpr@59.16--59.41) [64903]"}
-            posl < Seq#Length(Heap[a_2, array]);
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array[posl].value (parallel_max.vpr@59.16--59.41) [64904]"}
-            HasDirectPerm(Mask, Seq#Index(Heap[a_2, array], posl), value);
-        assume Heap[Seq#Index(Heap[a_2, array], posl), value] == ml;
+          assert {:msg "  Inhale might fail. Index a.array[posl] into a.array might exceed sequence length. (parallel_max.vpr@59.16--59.41) [187643]"}
+            posl < Seq#Length(Heap[a_2, array_1]);
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array[posl].value (parallel_max.vpr@59.16--59.41) [187644]"}
+            HasDirectPerm(Mask, Seq#Index(Heap[a_2, array_1], posl), value_1);
+        assume Heap[Seq#Index(Heap[a_2, array_1], posl), value_1] == ml;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
       
@@ -1241,21 +1241,21 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         
         // -- Check definedness of (forall l1: Int :: { (l1 in [start..middle)) } { a.array[l1] } (l1 in [start..middle)) ==> a.array[l1].value <= ml)
           if (*) {
-            if (Seq#Contains(Seq#Range(start, middle), l1)) {
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@60.17--60.84) [64905]"}
-                HasDirectPerm(Mask, a_2, array);
-              assert {:msg "  Inhale might fail. Index a.array[l1] into a.array might be negative. (parallel_max.vpr@60.17--60.84) [64906]"}
-                l1 >= 0;
-              assert {:msg "  Inhale might fail. Index a.array[l1] into a.array might exceed sequence length. (parallel_max.vpr@60.17--60.84) [64907]"}
-                l1 < Seq#Length(Heap[a_2, array]);
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array[l1].value (parallel_max.vpr@60.17--60.84) [64908]"}
-                HasDirectPerm(Mask, Seq#Index(Heap[a_2, array], l1), value);
+            if (Seq#Contains(Seq#Range(start_1, middle), l1_3)) {
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@60.17--60.84) [187645]"}
+                HasDirectPerm(Mask, a_2, array_1);
+              assert {:msg "  Inhale might fail. Index a.array[l1] into a.array might be negative. (parallel_max.vpr@60.17--60.84) [187646]"}
+                l1_3 >= 0;
+              assert {:msg "  Inhale might fail. Index a.array[l1] into a.array might exceed sequence length. (parallel_max.vpr@60.17--60.84) [187647]"}
+                l1_3 < Seq#Length(Heap[a_2, array_1]);
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array[l1].value (parallel_max.vpr@60.17--60.84) [187648]"}
+                HasDirectPerm(Mask, Seq#Index(Heap[a_2, array_1], l1_3), value_1);
             }
             assume false;
           }
-        assume (forall l1_1: int ::
-          { Seq#ContainsTrigger(Seq#Range(start, middle), l1_1) } { Seq#Contains(Seq#Range(start, middle), l1_1) } { Seq#Index(Heap[a_2, array], l1_1) }
-          Seq#Contains(Seq#Range(start, middle), l1_1) ==> Heap[Seq#Index(Heap[a_2, array], l1_1), value] <= ml
+        assume (forall l1_1_1: int ::
+          { Seq#ContainsTrigger(Seq#Range(start_1, middle), l1_1_1) } { Seq#Contains(Seq#Range(start_1, middle), l1_1_1) } { Seq#Index(Heap[a_2, array_1], l1_1_1) }
+          Seq#Contains(Seq#Range(start_1, middle), l1_1_1) ==> Heap[Seq#Index(Heap[a_2, array_1], l1_1_1), value_1] <= ml
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1264,7 +1264,7 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         havoc wildcard;
         perm := wildcard;
         assume a_2 != null;
-        Mask := Mask[a_2, array:=Mask[a_2, array] + perm];
+        Mask := Mask[a_2, array_1:=Mask[a_2, array_1] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1272,9 +1272,9 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
       // -- Translating statement: inhale middle < |a.array| -- parallel_max.vpr@64.9--64.34
         
         // -- Check definedness of middle < |a.array|
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@64.16--64.34) [64909]"}
-            HasDirectPerm(Mask, a_2, array);
-        assume middle < Seq#Length(Heap[a_2, array]);
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@64.16--64.34) [187649]"}
+            HasDirectPerm(Mask, a_2, array_1);
+        assume middle < Seq#Length(Heap[a_2, array_1]);
         assume state(Heap, Mask);
         assume state(Heap, Mask);
       
@@ -1285,53 +1285,53 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         
         // -- Check definedness of (forall i5: Int :: { (i5 in [middle..end)) } { a.array[i5] } (i5 in [middle..end)) ==> acc(a.array[i5].value, 1 / 2 * kperm))
           if (*) {
-            if (Seq#Contains(Seq#Range(middle, end), i5)) {
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@65.16--65.96) [64910]"}
-                HasDirectPerm(Mask, a_2, array);
-              assert {:msg "  Inhale might fail. Index a.array[i5] into a.array might be negative. (parallel_max.vpr@65.16--65.96) [64911]"}
+            if (Seq#Contains(Seq#Range(middle, end_1), i5)) {
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@65.16--65.96) [187650]"}
+                HasDirectPerm(Mask, a_2, array_1);
+              assert {:msg "  Inhale might fail. Index a.array[i5] into a.array might be negative. (parallel_max.vpr@65.16--65.96) [187651]"}
                 i5 >= 0;
-              assert {:msg "  Inhale might fail. Index a.array[i5] into a.array might exceed sequence length. (parallel_max.vpr@65.16--65.96) [64912]"}
-                i5 < Seq#Length(Heap[a_2, array]);
+              assert {:msg "  Inhale might fail. Index a.array[i5] into a.array might exceed sequence length. (parallel_max.vpr@65.16--65.96) [187652]"}
+                i5 < Seq#Length(Heap[a_2, array_1]);
             }
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Inhale might fail. Quantified resource a.array[i5].value might not be injective. (parallel_max.vpr@65.16--65.96) [64913]"}
+        assert {:msg "  Inhale might fail. Quantified resource a.array[i5].value might not be injective. (parallel_max.vpr@65.16--65.96) [187653]"}
           (forall i5_1: int, i5_1_1: int ::
           
-          (((i5_1 != i5_1_1 && Seq#Contains(Seq#Range(middle, end), i5_1)) && Seq#Contains(Seq#Range(middle, end), i5_1_1)) && NoPerm < 1 / 2 * kperm) && NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array], i5_1) != Seq#Index(Heap[a_2, array], i5_1_1)
+          (((i5_1 != i5_1_1 && Seq#Contains(Seq#Range(middle, end_1), i5_1)) && Seq#Contains(Seq#Range(middle, end_1), i5_1_1)) && NoPerm < 1 / 2 * kperm) && NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array_1], i5_1) != Seq#Index(Heap[a_2, array_1], i5_1_1)
         );
         
         // -- Define Inverse Function
           assume (forall i5_1: int ::
-            { Seq#Index(Heap[a_2, array], i5_1) } { Seq#ContainsTrigger(Seq#Range(middle, end), i5_1) } { Seq#Contains(Seq#Range(middle, end), i5_1) } { Seq#Index(Heap[a_2, array], i5_1) }
-            Seq#Contains(Seq#Range(middle, end), i5_1) && NoPerm < 1 / 2 * kperm ==> qpRange7(Seq#Index(Heap[a_2, array], i5_1)) && invRecv7(Seq#Index(Heap[a_2, array], i5_1)) == i5_1
+            { Seq#Index(Heap[a_2, array_1], i5_1) } { Seq#ContainsTrigger(Seq#Range(middle, end_1), i5_1) } { Seq#Contains(Seq#Range(middle, end_1), i5_1) } { Seq#Index(Heap[a_2, array_1], i5_1) }
+            Seq#Contains(Seq#Range(middle, end_1), i5_1) && NoPerm < 1 / 2 * kperm ==> qpRange7(Seq#Index(Heap[a_2, array_1], i5_1)) && invRecv7(Seq#Index(Heap[a_2, array_1], i5_1)) == i5_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv7(o_4) }
-            (Seq#Contains(Seq#Range(middle, end), invRecv7(o_4)) && NoPerm < 1 / 2 * kperm) && qpRange7(o_4) ==> Seq#Index(Heap[a_2, array], invRecv7(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv7(o_9) }
+            (Seq#Contains(Seq#Range(middle, end_1), invRecv7(o_9)) && NoPerm < 1 / 2 * kperm) && qpRange7(o_9) ==> Seq#Index(Heap[a_2, array_1], invRecv7(o_9)) == o_9
           );
         // Check that permission expression is non-negative for all fields
-        assert {:msg "  Inhale might fail. Fraction 1 / 2 * kperm might be negative. (parallel_max.vpr@65.16--65.96) [64914]"}
+        assert {:msg "  Inhale might fail. Fraction 1 / 2 * kperm might be negative. (parallel_max.vpr@65.16--65.96) [187654]"}
           (forall i5_1: int ::
-          { Seq#Index(Heap[a_2, array], i5_1) } { Seq#ContainsTrigger(Seq#Range(middle, end), i5_1) } { Seq#Contains(Seq#Range(middle, end), i5_1) } { Seq#Index(Heap[a_2, array], i5_1) }
-          Seq#Contains(Seq#Range(middle, end), i5_1) ==> 1 / 2 * kperm >= NoPerm
+          { Seq#Index(Heap[a_2, array_1], i5_1) } { Seq#ContainsTrigger(Seq#Range(middle, end_1), i5_1) } { Seq#Contains(Seq#Range(middle, end_1), i5_1) } { Seq#Index(Heap[a_2, array_1], i5_1) }
+          Seq#Contains(Seq#Range(middle, end_1), i5_1) ==> 1 / 2 * kperm >= NoPerm
         );
         
         // -- Assume set of fields is nonNull
           assume (forall i5_1: int ::
-            { Seq#Index(Heap[a_2, array], i5_1) } { Seq#ContainsTrigger(Seq#Range(middle, end), i5_1) } { Seq#Contains(Seq#Range(middle, end), i5_1) } { Seq#Index(Heap[a_2, array], i5_1) }
-            Seq#Contains(Seq#Range(middle, end), i5_1) && 1 / 2 * kperm > NoPerm ==> Seq#Index(Heap[a_2, array], i5_1) != null
+            { Seq#Index(Heap[a_2, array_1], i5_1) } { Seq#ContainsTrigger(Seq#Range(middle, end_1), i5_1) } { Seq#Contains(Seq#Range(middle, end_1), i5_1) } { Seq#Index(Heap[a_2, array_1], i5_1) }
+            Seq#Contains(Seq#Range(middle, end_1), i5_1) && 1 / 2 * kperm > NoPerm ==> Seq#Index(Heap[a_2, array_1], i5_1) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, value] }
-            ((Seq#Contains(Seq#Range(middle, end), invRecv7(o_4)) && NoPerm < 1 / 2 * kperm) && qpRange7(o_4) ==> (NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array], invRecv7(o_4)) == o_4) && QPMask[o_4, value] == Mask[o_4, value] + 1 / 2 * kperm) && (!((Seq#Contains(Seq#Range(middle, end), invRecv7(o_4)) && NoPerm < 1 / 2 * kperm) && qpRange7(o_4)) ==> QPMask[o_4, value] == Mask[o_4, value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, value_1] }
+            ((Seq#Contains(Seq#Range(middle, end_1), invRecv7(o_9)) && NoPerm < 1 / 2 * kperm) && qpRange7(o_9) ==> (NoPerm < 1 / 2 * kperm ==> Seq#Index(Heap[a_2, array_1], invRecv7(o_9)) == o_9) && QPMask[o_9, value_1] == Mask[o_9, value_1] + 1 / 2 * kperm) && (!((Seq#Contains(Seq#Range(middle, end_1), invRecv7(o_9)) && NoPerm < 1 / 2 * kperm) && qpRange7(o_9)) ==> QPMask[o_9, value_1] == Mask[o_9, value_1])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != value_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -1340,22 +1340,22 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
       
       // -- Translating statement: inhale middle <= posr && posr < end -- parallel_max.vpr@66.9--66.40
         assume middle <= posr;
-        assume posr < end;
+        assume posr < end_1;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
       
       // -- Translating statement: inhale a.array[posr].value == mr -- parallel_max.vpr@67.9--67.41
         
         // -- Check definedness of a.array[posr].value == mr
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@67.16--67.41) [64915]"}
-            HasDirectPerm(Mask, a_2, array);
-          assert {:msg "  Inhale might fail. Index a.array[posr] into a.array might be negative. (parallel_max.vpr@67.16--67.41) [64916]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@67.16--67.41) [187655]"}
+            HasDirectPerm(Mask, a_2, array_1);
+          assert {:msg "  Inhale might fail. Index a.array[posr] into a.array might be negative. (parallel_max.vpr@67.16--67.41) [187656]"}
             posr >= 0;
-          assert {:msg "  Inhale might fail. Index a.array[posr] into a.array might exceed sequence length. (parallel_max.vpr@67.16--67.41) [64917]"}
-            posr < Seq#Length(Heap[a_2, array]);
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array[posr].value (parallel_max.vpr@67.16--67.41) [64918]"}
-            HasDirectPerm(Mask, Seq#Index(Heap[a_2, array], posr), value);
-        assume Heap[Seq#Index(Heap[a_2, array], posr), value] == mr;
+          assert {:msg "  Inhale might fail. Index a.array[posr] into a.array might exceed sequence length. (parallel_max.vpr@67.16--67.41) [187657]"}
+            posr < Seq#Length(Heap[a_2, array_1]);
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array[posr].value (parallel_max.vpr@67.16--67.41) [187658]"}
+            HasDirectPerm(Mask, Seq#Index(Heap[a_2, array_1], posr), value_1);
+        assume Heap[Seq#Index(Heap[a_2, array_1], posr), value_1] == mr;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
       
@@ -1366,21 +1366,21 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         
         // -- Check definedness of (forall l2: Int :: { (l2 in [middle..end)) } { a.array[l2] } (l2 in [middle..end)) ==> a.array[l2].value <= mr)
           if (*) {
-            if (Seq#Contains(Seq#Range(middle, end), l2)) {
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@68.17--68.82) [64919]"}
-                HasDirectPerm(Mask, a_2, array);
-              assert {:msg "  Inhale might fail. Index a.array[l2] into a.array might be negative. (parallel_max.vpr@68.17--68.82) [64920]"}
-                l2 >= 0;
-              assert {:msg "  Inhale might fail. Index a.array[l2] into a.array might exceed sequence length. (parallel_max.vpr@68.17--68.82) [64921]"}
-                l2 < Seq#Length(Heap[a_2, array]);
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array[l2].value (parallel_max.vpr@68.17--68.82) [64922]"}
-                HasDirectPerm(Mask, Seq#Index(Heap[a_2, array], l2), value);
+            if (Seq#Contains(Seq#Range(middle, end_1), l2_2)) {
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@68.17--68.82) [187659]"}
+                HasDirectPerm(Mask, a_2, array_1);
+              assert {:msg "  Inhale might fail. Index a.array[l2] into a.array might be negative. (parallel_max.vpr@68.17--68.82) [187660]"}
+                l2_2 >= 0;
+              assert {:msg "  Inhale might fail. Index a.array[l2] into a.array might exceed sequence length. (parallel_max.vpr@68.17--68.82) [187661]"}
+                l2_2 < Seq#Length(Heap[a_2, array_1]);
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access a.array[l2].value (parallel_max.vpr@68.17--68.82) [187662]"}
+                HasDirectPerm(Mask, Seq#Index(Heap[a_2, array_1], l2_2), value_1);
             }
             assume false;
           }
-        assume (forall l2_1: int ::
-          { Seq#ContainsTrigger(Seq#Range(middle, end), l2_1) } { Seq#Contains(Seq#Range(middle, end), l2_1) } { Seq#Index(Heap[a_2, array], l2_1) }
-          Seq#Contains(Seq#Range(middle, end), l2_1) ==> Heap[Seq#Index(Heap[a_2, array], l2_1), value] <= mr
+        assume (forall l2_1_1: int ::
+          { Seq#ContainsTrigger(Seq#Range(middle, end_1), l2_1_1) } { Seq#Contains(Seq#Range(middle, end_1), l2_1_1) } { Seq#Index(Heap[a_2, array_1], l2_1_1) }
+          Seq#Contains(Seq#Range(middle, end_1), l2_1_1) ==> Heap[Seq#Index(Heap[a_2, array_1], l2_1_1), value_1] <= mr
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1407,19 +1407,19 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
       // -- Translating statement: mx := a.array[start].value -- parallel_max.vpr@73.9--73.37
         
         // -- Check definedness of a.array[start].value
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access a.array (parallel_max.vpr@73.9--73.37) [64923]"}
-            HasDirectPerm(Mask, a_2, array);
-          assert {:msg "  Assignment might fail. Index a.array[start] into a.array might be negative. (parallel_max.vpr@73.9--73.37) [64924]"}
-            start >= 0;
-          assert {:msg "  Assignment might fail. Index a.array[start] into a.array might exceed sequence length. (parallel_max.vpr@73.9--73.37) [64925]"}
-            start < Seq#Length(Heap[a_2, array]);
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access a.array[start].value (parallel_max.vpr@73.9--73.37) [64926]"}
-            HasDirectPerm(Mask, Seq#Index(Heap[a_2, array], start), value);
-        mx := Heap[Seq#Index(Heap[a_2, array], start), value];
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access a.array (parallel_max.vpr@73.9--73.37) [187663]"}
+            HasDirectPerm(Mask, a_2, array_1);
+          assert {:msg "  Assignment might fail. Index a.array[start] into a.array might be negative. (parallel_max.vpr@73.9--73.37) [187664]"}
+            start_1 >= 0;
+          assert {:msg "  Assignment might fail. Index a.array[start] into a.array might exceed sequence length. (parallel_max.vpr@73.9--73.37) [187665]"}
+            start_1 < Seq#Length(Heap[a_2, array_1]);
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access a.array[start].value (parallel_max.vpr@73.9--73.37) [187666]"}
+            HasDirectPerm(Mask, Seq#Index(Heap[a_2, array_1], start_1), value_1);
+        mx := Heap[Seq#Index(Heap[a_2, array_1], start_1), value_1];
         assume state(Heap, Mask);
       
       // -- Translating statement: pos := start -- parallel_max.vpr@74.9--74.21
-        pos := start;
+        pos := start_1;
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1428,126 +1428,126 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
   //     { (i6 in [start..end)) }
   //     { old(a.array[i6]) }
   //     (i6 in [start..end)) ==> a.array[i6].value == old(a.array[i6].value)) -- parallel_max.vpr@78.5--78.95
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i6: Int :: { (i6 in [start..end)) } { old(a.array[i6]) } (i6 in [start..end)) ==> a.array[i6].value == old(a.array[i6].value))
       if (*) {
-        if (Seq#Contains(Seq#Range(start, end), i6)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access a.array (parallel_max.vpr@78.12--78.95) [64927]"}
-            HasDirectPerm(ExhaleWellDef0Mask, a_2, array);
-          assert {:msg "  Assert might fail. Index a.array[i6] into a.array might be negative. (parallel_max.vpr@78.12--78.95) [64928]"}
+        if (Seq#Contains(Seq#Range(start_1, end_1), i6)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access a.array (parallel_max.vpr@78.12--78.95) [187667]"}
+            HasDirectPerm(ExhaleWellDef0Mask, a_2, array_1);
+          assert {:msg "  Assert might fail. Index a.array[i6] into a.array might be negative. (parallel_max.vpr@78.12--78.95) [187668]"}
             i6 >= 0;
-          assert {:msg "  Assert might fail. Index a.array[i6] into a.array might exceed sequence length. (parallel_max.vpr@78.12--78.95) [64929]"}
-            i6 < Seq#Length(Heap[a_2, array]);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access a.array[i6].value (parallel_max.vpr@78.12--78.95) [64930]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[a_2, array], i6), value);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access a.array (parallel_max.vpr@78.12--78.95) [64931]"}
-            HasDirectPerm(oldMask, a_2, array);
-          assert {:msg "  Assert might fail. Index a.array[i6] into a.array might be negative. (parallel_max.vpr@78.12--78.95) [64932]"}
+          assert {:msg "  Assert might fail. Index a.array[i6] into a.array might exceed sequence length. (parallel_max.vpr@78.12--78.95) [187669]"}
+            i6 < Seq#Length(Heap[a_2, array_1]);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access a.array[i6].value (parallel_max.vpr@78.12--78.95) [187670]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[a_2, array_1], i6), value_1);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access a.array (parallel_max.vpr@78.12--78.95) [187671]"}
+            HasDirectPerm(oldMask, a_2, array_1);
+          assert {:msg "  Assert might fail. Index a.array[i6] into a.array might be negative. (parallel_max.vpr@78.12--78.95) [187672]"}
             i6 >= 0;
-          assert {:msg "  Assert might fail. Index a.array[i6] into a.array might exceed sequence length. (parallel_max.vpr@78.12--78.95) [64933]"}
-            i6 < Seq#Length(oldHeap[a_2, array]);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access a.array[i6].value (parallel_max.vpr@78.12--78.95) [64934]"}
-            HasDirectPerm(oldMask, Seq#Index(oldHeap[a_2, array], i6), value);
+          assert {:msg "  Assert might fail. Index a.array[i6] into a.array might exceed sequence length. (parallel_max.vpr@78.12--78.95) [187673]"}
+            i6 < Seq#Length(oldHeap[a_2, array_1]);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access a.array[i6].value (parallel_max.vpr@78.12--78.95) [187674]"}
+            HasDirectPerm(oldMask, Seq#Index(oldHeap[a_2, array_1], i6), value_1);
         }
         assume false;
       }
     if (*) {
-      if (Seq#Contains(Seq#Range(start, end), i6_1)) {
-        assert {:msg "  Assert might fail. Assertion a.array[i6].value == old(a.array[i6].value) might not hold. (parallel_max.vpr@78.12--78.95) [64935]"}
-          Heap[Seq#Index(Heap[a_2, array], i6_1), value] == oldHeap[Seq#Index(oldHeap[a_2, array], i6_1), value];
+      if (Seq#Contains(Seq#Range(start_1, end_1), i6_1)) {
+        assert {:msg "  Assert might fail. Assertion a.array[i6].value == old(a.array[i6].value) might not hold. (parallel_max.vpr@78.12--78.95) [187675]"}
+          Heap[Seq#Index(Heap[a_2, array_1], i6_1), value_1] == oldHeap[Seq#Index(oldHeap[a_2, array_1], i6_1), value_1];
       }
       assume false;
     }
     assume (forall i6_2_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(start, end), i6_2_1) } { Seq#Contains(Seq#Range(start, end), i6_2_1) } { Seq#Index(oldHeap[a_2, array], i6_2_1) }
-      Seq#Contains(Seq#Range(start, end), i6_2_1) ==> Heap[Seq#Index(Heap[a_2, array], i6_2_1), value] == oldHeap[Seq#Index(oldHeap[a_2, array], i6_2_1), value]
+      { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i6_2_1) } { Seq#Contains(Seq#Range(start_1, end_1), i6_2_1) } { Seq#Index(oldHeap[a_2, array_1], i6_2_1) }
+      Seq#Contains(Seq#Range(start_1, end_1), i6_2_1) ==> Heap[Seq#Index(Heap[a_2, array_1], i6_2_1), value_1] == oldHeap[Seq#Index(oldHeap[a_2, array_1], i6_2_1), value_1]
     );
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of parallel_max might not hold. There might be insufficient permission to access a.array (parallel_max.vpr@19.11--19.33) [64936]"}
-      Mask[a_2, array] > NoPerm;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of parallel_max might not hold. There might be insufficient permission to access a.array (parallel_max.vpr@19.11--19.33) [187676]"}
+      Mask[a_2, array_1] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[a_2, array];
-    Mask := Mask[a_2, array:=Mask[a_2, array] - wildcard];
-    assert {:msg "  Postcondition of parallel_max might not hold. Assertion end < |a.array| might not hold. (parallel_max.vpr@20.11--20.26) [64937]"}
-      end < Seq#Length(Heap[a_2, array]);
+    assume wildcard < Mask[a_2, array_1];
+    Mask := Mask[a_2, array_1:=Mask[a_2, array_1] - wildcard];
+    assert {:msg "  Postcondition of parallel_max might not hold. Assertion end < |a.array| might not hold. (parallel_max.vpr@20.11--20.26) [187677]"}
+      end_1 < Seq#Length(Heap[a_2, array_1]);
     if (*) {
-      if (Seq#Contains(Seq#Range(start, end), i_8_2) && (Seq#Contains(Seq#Range(start, end), j_4_1) && i_8_2 != j_4_1)) {
-        assert {:msg "  Postcondition of parallel_max might not hold. Assertion a.array[i] != a.array[j] might not hold. (parallel_max.vpr@21.11--21.111) [64938]"}
-          Seq#Index(Heap[a_2, array], i_8_2) != Seq#Index(Heap[a_2, array], j_4_1);
+      if (Seq#Contains(Seq#Range(start_1, end_1), i_8_1) && (Seq#Contains(Seq#Range(start_1, end_1), j_4_1) && i_8_1 != j_4_1)) {
+        assert {:msg "  Postcondition of parallel_max might not hold. Assertion a.array[i] != a.array[j] might not hold. (parallel_max.vpr@21.11--21.111) [187678]"}
+          Seq#Index(Heap[a_2, array_1], i_8_1) != Seq#Index(Heap[a_2, array_1], j_4_1);
       }
       assume false;
     }
     assume (forall i_9_1_1: int, j_5_1_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(start, end), i_9_1_1), Seq#ContainsTrigger(Seq#Range(start, end), j_5_1_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_9_1_1), Seq#Contains(Seq#Range(start, end), j_5_1_1) } { Seq#Contains(Seq#Range(start, end), i_9_1_1), Seq#ContainsTrigger(Seq#Range(start, end), j_5_1_1) } { Seq#Contains(Seq#Range(start, end), i_9_1_1), Seq#Contains(Seq#Range(start, end), j_5_1_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_9_1_1), Seq#Index(Heap[a_2, array], j_5_1_1) } { Seq#Contains(Seq#Range(start, end), i_9_1_1), Seq#Index(Heap[a_2, array], j_5_1_1) } { Seq#ContainsTrigger(Seq#Range(start, end), j_5_1_1), Seq#Index(Heap[a_2, array], i_9_1_1) } { Seq#Contains(Seq#Range(start, end), j_5_1_1), Seq#Index(Heap[a_2, array], i_9_1_1) } { Seq#Index(Heap[a_2, array], i_9_1_1), Seq#Index(Heap[a_2, array], j_5_1_1) }
-      Seq#Contains(Seq#Range(start, end), i_9_1_1) && (Seq#Contains(Seq#Range(start, end), j_5_1_1) && i_9_1_1 != j_5_1_1) ==> Seq#Index(Heap[a_2, array], i_9_1_1) != Seq#Index(Heap[a_2, array], j_5_1_1)
+      { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_9_1_1), Seq#ContainsTrigger(Seq#Range(start_1, end_1), j_5_1_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_9_1_1), Seq#Contains(Seq#Range(start_1, end_1), j_5_1_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_9_1_1), Seq#ContainsTrigger(Seq#Range(start_1, end_1), j_5_1_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_9_1_1), Seq#Contains(Seq#Range(start_1, end_1), j_5_1_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_9_1_1), Seq#Index(Heap[a_2, array_1], j_5_1_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_9_1_1), Seq#Index(Heap[a_2, array_1], j_5_1_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), j_5_1_1), Seq#Index(Heap[a_2, array_1], i_9_1_1) } { Seq#Contains(Seq#Range(start_1, end_1), j_5_1_1), Seq#Index(Heap[a_2, array_1], i_9_1_1) } { Seq#Index(Heap[a_2, array_1], i_9_1_1), Seq#Index(Heap[a_2, array_1], j_5_1_1) }
+      Seq#Contains(Seq#Range(start_1, end_1), i_9_1_1) && (Seq#Contains(Seq#Range(start_1, end_1), j_5_1_1) && i_9_1_1 != j_5_1_1) ==> Seq#Index(Heap[a_2, array_1], i_9_1_1) != Seq#Index(Heap[a_2, array_1], j_5_1_1)
     );
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of parallel_max might not hold. Fraction kperm might be negative. (parallel_max.vpr@22.11--22.77) [64939]"}
+      assert {:msg "  Postcondition of parallel_max might not hold. Fraction kperm might be negative. (parallel_max.vpr@22.11--22.77) [187679]"}
         (forall i_10_1: int ::
-        { Seq#Index(Heap[a_2, array], i_10_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_10_1) } { Seq#Contains(Seq#Range(start, end), i_10_1) } { Seq#Index(Heap[a_2, array], i_10_1) }
-        Seq#Contains(Seq#Range(start, end), i_10_1) && dummyFunction(Heap[Seq#Index(Heap[a_2, array], i_10_1), value]) ==> kperm >= NoPerm
+        { Seq#Index(Heap[a_2, array_1], i_10_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_10_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_10_1) } { Seq#Index(Heap[a_2, array_1], i_10_1) }
+        Seq#Contains(Seq#Range(start_1, end_1), i_10_1) && dummyFunction(Heap[Seq#Index(Heap[a_2, array_1], i_10_1), value_1]) ==> kperm >= NoPerm
       );
     
     // -- check if receiver a.array[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource a.array[i].value might not be injective. (parallel_max.vpr@22.11--22.77) [64940]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource a.array[i].value might not be injective. (parallel_max.vpr@22.11--22.77) [187680]"}
         (forall i_10_1: int, i_10_2: int ::
         { neverTriggered3(i_10_1), neverTriggered3(i_10_2) }
-        (((i_10_1 != i_10_2 && Seq#Contains(Seq#Range(start, end), i_10_1)) && Seq#Contains(Seq#Range(start, end), i_10_2)) && NoPerm < kperm) && NoPerm < kperm ==> Seq#Index(Heap[a_2, array], i_10_1) != Seq#Index(Heap[a_2, array], i_10_2)
+        (((i_10_1 != i_10_2 && Seq#Contains(Seq#Range(start_1, end_1), i_10_1)) && Seq#Contains(Seq#Range(start_1, end_1), i_10_2)) && NoPerm < kperm) && NoPerm < kperm ==> Seq#Index(Heap[a_2, array_1], i_10_1) != Seq#Index(Heap[a_2, array_1], i_10_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of parallel_max might not hold. There might be insufficient permission to access a.array[i].value (parallel_max.vpr@22.11--22.77) [64941]"}
+      assert {:msg "  Postcondition of parallel_max might not hold. There might be insufficient permission to access a.array[i].value (parallel_max.vpr@22.11--22.77) [187681]"}
         (forall i_10_1: int ::
-        { Seq#Index(Heap[a_2, array], i_10_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_10_1) } { Seq#Contains(Seq#Range(start, end), i_10_1) } { Seq#Index(Heap[a_2, array], i_10_1) }
-        Seq#Contains(Seq#Range(start, end), i_10_1) ==> Mask[Seq#Index(Heap[a_2, array], i_10_1), value] >= kperm
+        { Seq#Index(Heap[a_2, array_1], i_10_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_10_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_10_1) } { Seq#Index(Heap[a_2, array_1], i_10_1) }
+        Seq#Contains(Seq#Range(start_1, end_1), i_10_1) ==> Mask[Seq#Index(Heap[a_2, array_1], i_10_1), value_1] >= kperm
       );
     
     // -- assumptions for inverse of receiver a.array[i]
       assume (forall i_10_1: int ::
-        { Seq#Index(Heap[a_2, array], i_10_1) } { Seq#ContainsTrigger(Seq#Range(start, end), i_10_1) } { Seq#Contains(Seq#Range(start, end), i_10_1) } { Seq#Index(Heap[a_2, array], i_10_1) }
-        Seq#Contains(Seq#Range(start, end), i_10_1) && NoPerm < kperm ==> qpRange3(Seq#Index(Heap[a_2, array], i_10_1)) && invRecv3(Seq#Index(Heap[a_2, array], i_10_1)) == i_10_1
+        { Seq#Index(Heap[a_2, array_1], i_10_1) } { Seq#ContainsTrigger(Seq#Range(start_1, end_1), i_10_1) } { Seq#Contains(Seq#Range(start_1, end_1), i_10_1) } { Seq#Index(Heap[a_2, array_1], i_10_1) }
+        Seq#Contains(Seq#Range(start_1, end_1), i_10_1) && NoPerm < kperm ==> qpRange3(Seq#Index(Heap[a_2, array_1], i_10_1)) && invRecv3(Seq#Index(Heap[a_2, array_1], i_10_1)) == i_10_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        Seq#Contains(Seq#Range(start, end), invRecv3(o_4)) && (NoPerm < kperm && qpRange3(o_4)) ==> Seq#Index(Heap[a_2, array], invRecv3(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        Seq#Contains(Seq#Range(start_1, end_1), invRecv3(o_9)) && (NoPerm < kperm && qpRange3(o_9)) ==> Seq#Index(Heap[a_2, array_1], invRecv3(o_9)) == o_9
       );
     
     // -- assume permission updates for field value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, value] }
-        (Seq#Contains(Seq#Range(start, end), invRecv3(o_4)) && (NoPerm < kperm && qpRange3(o_4)) ==> Seq#Index(Heap[a_2, array], invRecv3(o_4)) == o_4 && QPMask[o_4, value] == Mask[o_4, value] - kperm) && (!(Seq#Contains(Seq#Range(start, end), invRecv3(o_4)) && (NoPerm < kperm && qpRange3(o_4))) ==> QPMask[o_4, value] == Mask[o_4, value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, value_1] }
+        (Seq#Contains(Seq#Range(start_1, end_1), invRecv3(o_9)) && (NoPerm < kperm && qpRange3(o_9)) ==> Seq#Index(Heap[a_2, array_1], invRecv3(o_9)) == o_9 && QPMask[o_9, value_1] == Mask[o_9, value_1] - kperm) && (!(Seq#Contains(Seq#Range(start_1, end_1), invRecv3(o_9)) && (NoPerm < kperm && qpRange3(o_9))) ==> QPMask[o_9, value_1] == Mask[o_9, value_1])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != value_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
-    assert {:msg "  Postcondition of parallel_max might not hold. Assertion start <= pos might not hold. (parallel_max.vpr@23.11--23.32) [64942]"}
-      start <= pos;
-    assert {:msg "  Postcondition of parallel_max might not hold. Assertion pos < end might not hold. (parallel_max.vpr@23.11--23.32) [64943]"}
-      pos < end;
-    assert {:msg "  Postcondition of parallel_max might not hold. Assertion a.array[pos].value == mx might not hold. (parallel_max.vpr@24.11--24.35) [64944]"}
-      Heap[Seq#Index(Heap[a_2, array], pos), value] == mx;
+    assert {:msg "  Postcondition of parallel_max might not hold. Assertion start <= pos might not hold. (parallel_max.vpr@23.11--23.32) [187682]"}
+      start_1 <= pos;
+    assert {:msg "  Postcondition of parallel_max might not hold. Assertion pos < end might not hold. (parallel_max.vpr@23.11--23.32) [187683]"}
+      pos < end_1;
+    assert {:msg "  Postcondition of parallel_max might not hold. Assertion a.array[pos].value == mx might not hold. (parallel_max.vpr@24.11--24.35) [187684]"}
+      Heap[Seq#Index(Heap[a_2, array_1], pos), value_1] == mx;
     if (*) {
-      if (Seq#Contains(Seq#Range(start, end), l_2_1)) {
-        assert {:msg "  Postcondition of parallel_max might not hold. Assertion a.array[l].value <= mx might not hold. (parallel_max.vpr@25.12--25.71) [64945]"}
-          Heap[Seq#Index(Heap[a_2, array], l_2_1), value] <= mx;
+      if (Seq#Contains(Seq#Range(start_1, end_1), l_2_1)) {
+        assert {:msg "  Postcondition of parallel_max might not hold. Assertion a.array[l].value <= mx might not hold. (parallel_max.vpr@25.12--25.71) [187685]"}
+          Heap[Seq#Index(Heap[a_2, array_1], l_2_1), value_1] <= mx;
       }
       assume false;
     }
-    assume (forall l_3_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(start, end), l_3_1) } { Seq#Contains(Seq#Range(start, end), l_3_1) } { Seq#Index(Heap[a_2, array], l_3_1) }
-      Seq#Contains(Seq#Range(start, end), l_3_1) ==> Heap[Seq#Index(Heap[a_2, array], l_3_1), value] <= mx
+    assume (forall l_3_1_1: int ::
+      { Seq#ContainsTrigger(Seq#Range(start_1, end_1), l_3_1_1) } { Seq#Contains(Seq#Range(start_1, end_1), l_3_1_1) } { Seq#Index(Heap[a_2, array_1], l_3_1_1) }
+      Seq#Contains(Seq#Range(start_1, end_1), l_3_1_1) ==> Heap[Seq#Index(Heap[a_2, array_1], l_3_1_1), value_1] <= mx
     );
     // Finish exhale
     havoc ExhaleHeap;

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:57
+// Date:         2025-01-26 21:44:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/ImplicationsToDisjunction/nested.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/ImplicationsToDisjunction/nested-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -183,7 +183,7 @@ procedure main() returns ()
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var i: bool;
-  var j_9: bool;
+  var j: bool;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   
@@ -203,7 +203,7 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: j := false -- nested.vpr@7.4--7.24
-    j_9 := false;
+    j := false;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j ==> i ==> true ==> !j ==> true -- nested.vpr@9.4--9.45

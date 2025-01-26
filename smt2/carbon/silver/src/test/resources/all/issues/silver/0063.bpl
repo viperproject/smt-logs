@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:45
+// Date:         2025-01-26 21:42:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0063.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0063-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,10 +188,10 @@ axiom !IsWandField(f_7);
 procedure split(p_1: Perm, i: int) returns (q_1: Perm)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -206,36 +206,36 @@ procedure split(p_1: Perm, i: int) returns (q_1: Perm)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: q := p / i -- 0063.vpr@9.3--9.11
     
     // -- Check definedness of p / i
-      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@9.3--9.11) [220149]"}
+      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@9.3--9.11) [55563]"}
         i != 0;
     q_1 := p_1 / i;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert q > none -- 0063.vpr@10.3--10.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion q > none might not hold. (0063.vpr@10.10--10.18) [220150]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion q > none might not hold. (0063.vpr@10.10--10.18) [55564]"}
       NoPerm < q_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: q := i / i -- 0063.vpr@12.3--12.11
     
     // -- Check definedness of i / i
-      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@12.3--12.11) [220151]"}
+      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@12.3--12.11) [55565]"}
         i != 0;
     q_1 := i / i;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert q == write -- 0063.vpr@13.3--13.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion q == write might not hold. (0063.vpr@13.10--13.20) [220152]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion q == write might not hold. (0063.vpr@13.10--13.20) [55566]"}
       q_1 == FullPerm;
     assume state(Heap, Mask);
 }
@@ -247,8 +247,8 @@ procedure split(p_1: Perm, i: int) returns (q_1: Perm)
 procedure test01(i: int) returns (q_1: Perm)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -258,13 +258,13 @@ procedure test01(i: int) returns (q_1: Perm)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: q := i / i -- 0063.vpr@18.3--18.11
     
     // -- Check definedness of i / i
-      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@18.3--18.11) [220153]"}
+      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@18.3--18.11) [55567]"}
         i != 0;
     q_1 := i / i;
     assume state(Heap, Mask);
@@ -277,8 +277,8 @@ procedure test01(i: int) returns (q_1: Perm)
 procedure test02(p_1: Perm, i: int) returns (q_1: Perm)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -288,13 +288,13 @@ procedure test02(p_1: Perm, i: int) returns (q_1: Perm)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: q := p / i -- 0063.vpr@23.3--23.11
     
     // -- Check definedness of p / i
-      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@23.3--23.11) [220154]"}
+      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@23.3--23.11) [55568]"}
         i != 0;
     q_1 := p_1 / i;
     assume state(Heap, Mask);
@@ -307,10 +307,10 @@ procedure test02(p_1: Perm, i: int) returns (q_1: Perm)
 procedure test03(p_1: Perm, i: int) returns (q_1: Perm)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -325,21 +325,21 @@ procedure test03(p_1: Perm, i: int) returns (q_1: Perm)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: q := p / i -- 0063.vpr@29.3--29.11
     
     // -- Check definedness of p / i
-      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@29.3--29.11) [220155]"}
+      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@29.3--29.11) [55569]"}
         i != 0;
     q_1 := p_1 / i;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert q > none -- 0063.vpr@32.3--32.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion q > none might not hold. (0063.vpr@32.10--32.18) [220156]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion q > none might not hold. (0063.vpr@32.10--32.18) [55570]"}
       NoPerm < q_1;
     assume state(Heap, Mask);
 }
@@ -351,10 +351,10 @@ procedure test03(p_1: Perm, i: int) returns (q_1: Perm)
 procedure test04(p_1: Perm, i: int) returns (q_1: Perm)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -368,21 +368,21 @@ procedure test04(p_1: Perm, i: int) returns (q_1: Perm)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: q := p / i -- 0063.vpr@39.3--39.11
     
     // -- Check definedness of p / i
-      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@39.3--39.11) [220157]"}
+      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@39.3--39.11) [55571]"}
         i != 0;
     q_1 := p_1 / i;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert q > none -- 0063.vpr@41.3--41.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion q > none might not hold. (0063.vpr@41.10--41.18) [220158]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion q > none might not hold. (0063.vpr@41.10--41.18) [55572]"}
       NoPerm < q_1;
     assume state(Heap, Mask);
 }
@@ -395,10 +395,10 @@ procedure test05(p_1: Perm, i: int, r_1: Ref) returns (q_1: Perm)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -413,7 +413,7 @@ procedure test05(p_1: Perm, i: int, r_1: Ref) returns (q_1: Perm)
     assume state(Heap, Mask);
     assume i > 0;
     perm := p_1;
-    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (0063.vpr@47.12--47.32) [220159]"}
+    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (0063.vpr@47.12--47.32) [55573]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] + perm];
@@ -423,21 +423,21 @@ procedure test05(p_1: Perm, i: int, r_1: Ref) returns (q_1: Perm)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: q := p / i -- 0063.vpr@49.3--49.11
     
     // -- Check definedness of p / i
-      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@49.3--49.11) [220160]"}
+      assert {:msg "  Assignment might fail. Divisor i might be zero. (0063.vpr@49.3--49.11) [55574]"}
         i != 0;
     q_1 := p_1 / i;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert q > none -- 0063.vpr@50.3--50.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion q > none might not hold. (0063.vpr@50.10--50.18) [220161]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion q > none might not hold. (0063.vpr@50.10--50.18) [55575]"}
       NoPerm < q_1;
     assume state(Heap, Mask);
 }

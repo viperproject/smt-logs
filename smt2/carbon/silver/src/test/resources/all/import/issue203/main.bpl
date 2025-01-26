@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:47
+// Date:         2025-01-26 21:43:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/issue203/main.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/issue203/main-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,19 +181,19 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type DDomainType;
 
 // Translation of domain function b1
-function  b1_2(): bool;
+function  b1_1(): bool;
 
 // Translation of domain function b2
-function  b2_2(): bool;
+function  b2_1(): bool;
 
 // Translation of domain axiom bothTrue
-axiom (b1_2(): bool) && (b2_2(): bool);
+axiom (b1_1(): bool) && (b2_1(): bool);
 
 // ==================================================
 // Translation of method test1
 // ==================================================
 
-procedure test1() returns ()
+procedure test1_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -215,8 +215,8 @@ procedure test1() returns ()
   // -- Translating statement: assert b1() -- main.vpr@7.3--7.14
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion b1() might not hold. (main.vpr@7.10--7.14) [149435]"}
-      (b1_2(): bool);
+    assert {:msg "  Assert might fail. Assertion b1() might not hold. (main.vpr@7.10--7.14) [93206]"}
+      (b1_1(): bool);
     assume state(Heap, Mask);
 }
 
@@ -224,7 +224,7 @@ procedure test1() returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2() returns ()
+procedure test2_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -246,7 +246,7 @@ procedure test2() returns ()
   // -- Translating statement: assert b2() -- libA.vpr@7.3--7.14
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion b2() might not hold. (libA.vpr@7.10--7.14) [149436]"}
-      (b2_2(): bool);
+    assert {:msg "  Assert might fail. Assertion b2() might not hold. (libA.vpr@7.10--7.14) [93207]"}
+      (b2_1(): bool);
     assume state(Heap, Mask);
 }

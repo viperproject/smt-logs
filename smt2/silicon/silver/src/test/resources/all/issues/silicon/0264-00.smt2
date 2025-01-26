@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:32
+; Started: 2025-01-26 21:33:45
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -291,11 +291,11 @@
 (assert (forall ((s@$ $Snap) (ref@0@00 $Ref)) (!
   (= (getWSet%limited s@$ ref@0@00) (getWSet s@$ ref@0@00))
   :pattern ((getWSet s@$ ref@0@00))
-  :qid |quant-u-23839|)))
+  :qid |quant-u-10350|)))
 (assert (forall ((s@$ $Snap) (ref@0@00 $Ref)) (!
   (getWSet%stateless ref@0@00)
   :pattern ((getWSet%limited s@$ ref@0@00))
-  :qid |quant-u-23840|)))
+  :qid |quant-u-10351|)))
 ; ---------- FUNCTION validList_abstract----------
 (declare-fun root@2@00 () $Ref)
 (declare-fun nodes@3@00 () Set<$Ref>)
@@ -318,11 +318,11 @@
     (validList_abstract%limited s@$ root@2@00 nodes@3@00)
     (validList_abstract s@$ root@2@00 nodes@3@00))
   :pattern ((validList_abstract s@$ root@2@00 nodes@3@00))
-  :qid |quant-u-23841|)))
+  :qid |quant-u-10352|)))
 (assert (forall ((s@$ $Snap) (root@2@00 $Ref) (nodes@3@00 Set<$Ref>)) (!
   (validList_abstract%stateless root@2@00 nodes@3@00)
   :pattern ((validList_abstract%limited s@$ root@2@00 nodes@3@00))
-  :qid |quant-u-23842|)))
+  :qid |quant-u-10353|)))
 ; ---------- FUNCTION validList----------
 (declare-fun root@5@00 () $Ref)
 (declare-fun nodes@6@00 () Set<$Ref>)
@@ -345,11 +345,11 @@
     (validList%limited s@$ root@5@00 nodes@6@00)
     (validList s@$ root@5@00 nodes@6@00))
   :pattern ((validList s@$ root@5@00 nodes@6@00))
-  :qid |quant-u-23843|)))
+  :qid |quant-u-10354|)))
 (assert (forall ((s@$ $Snap) (root@5@00 $Ref) (nodes@6@00 Set<$Ref>)) (!
   (validList%stateless root@5@00 nodes@6@00)
   :pattern ((validList%limited s@$ root@5@00 nodes@6@00))
-  :qid |quant-u-23844|)))
+  :qid |quant-u-10355|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -367,10 +367,10 @@
     (validList%precondition s@$ root@5@00 nodes@6@00)
     (= (validList s@$ root@5@00 nodes@6@00) true))
   :pattern ((validList s@$ root@5@00 nodes@6@00))
-  :qid |quant-u-23845|)))
+  :qid |quant-u-10356|)))
 (assert (forall ((s@$ $Snap) (root@5@00 $Ref) (nodes@6@00 Set<$Ref>)) (!
   true
   :pattern ((validList s@$ root@5@00 nodes@6@00))
-  :qid |quant-u-23846|)))
+  :qid |quant-u-10357|)))
 ; ---------- RefGuard ----------
 (declare-const ref@8@00 $Ref)

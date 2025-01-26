@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:06:01
+// Date:         2025-01-26 21:44:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/packaging_cond_perm.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/packaging_cond_perm-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -292,8 +292,8 @@ axiom !IsWandField(next);
 procedure t01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -301,8 +301,8 @@ procedure t01(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -328,8 +328,8 @@ procedure t01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, 1 / 2) && x.f > -1 --* acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) {
   // } -- packaging_cond_perm.vpr@13.3--13.73
@@ -343,7 +343,7 @@ procedure t01(x: Ref) returns ()
     if (b_1_1) {
       if (b_1_1) {
         perm := 1 / 2;
-        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (packaging_cond_perm.vpr@13.3--13.73) [126305]"}
+        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (packaging_cond_perm.vpr@13.3--13.73) [208326]"}
           perm >= NoPerm;
         b_1_1 := b_1_1 && (perm > NoPerm ==> x != null);
         Ops_1Mask := Ops_1Mask[x, f_7:=Ops_1Mask[x, f_7] + perm];
@@ -353,7 +353,7 @@ procedure t01(x: Ref) returns ()
         if (b_1_1) {
           
           // -- Check definedness of x.f > -1
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@13.3--13.73) [126306]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@13.3--13.73) [208327]"}
               HasDirectPerm(Ops_1Mask, x, f_7);
         }
         b_1_1 := b_1_1 && Ops_1Heap[x, f_7] > -1;
@@ -363,8 +363,8 @@ procedure t01(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- packaging_cond_perm.vpr@13.11--13.73
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2))
@@ -379,14 +379,14 @@ procedure t01(x: Ref) returns ()
           if (b_1_1) {
             
             // -- Check definedness of acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2))
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@13.3--13.73) [126307]"}
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@13.3--13.73) [208328]"}
                 HasDirectPerm(Ops_1Mask, x, f_7);
           }
         }
       rcvLocal := x;
       neededTransfer := (if Used_1Heap[x, f_7] > 0 then 1 / 4 else 1 / 2);
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) might be negative. (packaging_cond_perm.vpr@13.3--13.73) [126308]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) might be negative. (packaging_cond_perm.vpr@13.3--13.73) [208329]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -429,7 +429,7 @@ procedure t01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, 1 / 2, x, -1, x, x, 0, 1 / 4, 1 / 2):=Heap[null, wand#sm(x, 1 / 2, x, -1, x, x, 0, 1 / 4, 1 / 2)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@13.3--13.73) [126309]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@13.3--13.73) [208330]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -452,8 +452,8 @@ procedure t01(x: Ref) returns ()
 procedure t02(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
@@ -461,8 +461,8 @@ procedure t02(x: Ref) returns ()
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -479,8 +479,8 @@ procedure t02(x: Ref) returns ()
   var b_8: bool;
   var Result_2Heap: HeapType;
   var Result_2Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -494,12 +494,12 @@ procedure t02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 2 / 4) -- packaging_cond_perm.vpr@18.3--18.22
     perm := 2 / 4;
-    assert {:msg "  Inhale might fail. Fraction 2 / 4 might be negative. (packaging_cond_perm.vpr@18.10--18.22) [126310]"}
+    assert {:msg "  Inhale might fail. Fraction 2 / 4 might be negative. (packaging_cond_perm.vpr@18.10--18.22) [208331]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -520,7 +520,7 @@ procedure t02(x: Ref) returns ()
     if (b_5) {
       if (b_5) {
         perm := 2 / 4;
-        assert {:msg "  Packaging wand might fail. Fraction 2 / 4 might be negative. (packaging_cond_perm.vpr@19.3--19.89) [126311]"}
+        assert {:msg "  Packaging wand might fail. Fraction 2 / 4 might be negative. (packaging_cond_perm.vpr@19.3--19.89) [208332]"}
           perm >= NoPerm;
         b_5 := b_5 && (perm > NoPerm ==> x != null);
         Ops_3Mask := Ops_3Mask[x, f_7:=Ops_3Mask[x, f_7] + perm];
@@ -530,7 +530,7 @@ procedure t02(x: Ref) returns ()
         if (b_5) {
           
           // -- Check definedness of x.f > 0
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@19.3--19.89) [126312]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@19.3--19.89) [208333]"}
               HasDirectPerm(Ops_3Mask, x, f_7);
         }
         b_5 := b_5 && Ops_3Heap[x, f_7] > 0;
@@ -540,8 +540,8 @@ procedure t02(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- packaging_cond_perm.vpr@19.11--19.89
       lhs3:
-      Labellhs3Heap := Ops_3Heap;
       Labellhs3Mask := Ops_3Mask;
+      Labellhs3Heap := Ops_3Heap;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(x.f, 1 / 4) && acc(x.f, (x.f > 0 ? 2 / 4 : 1 / 4))
@@ -553,7 +553,7 @@ procedure t02(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := 1 / 4;
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 1 / 4) might be negative. (packaging_cond_perm.vpr@19.3--19.89) [126313]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 1 / 4) might be negative. (packaging_cond_perm.vpr@19.3--19.89) [208334]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -596,7 +596,7 @@ procedure t02(x: Ref) returns ()
             Heap := Heap[null, wand_1#sm(x, 2 / 4, x, 0, x, 1 / 4, x, x, 0, 2 / 4, 1 / 4):=Heap[null, wand_1#sm(x, 2 / 4, x, 0, x, 1 / 4, x, x, 0, 2 / 4, 1 / 4)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@19.3--19.89) [126314]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@19.3--19.89) [208335]"}
         (b_5 && b_5) && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -614,14 +614,14 @@ procedure t02(x: Ref) returns ()
           if (b_5) {
             
             // -- Check definedness of acc(x.f, (x.f > 0 ? 2 / 4 : 1 / 4))
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@19.3--19.89) [126315]"}
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@19.3--19.89) [208336]"}
                 HasDirectPerm(Result_1Mask, x, f_7);
           }
         }
       rcvLocal := x;
       neededTransfer := (if Used_3Heap[x, f_7] > 0 then 2 / 4 else 1 / 4);
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, (x.f > 0 ? 2 / 4 : 1 / 4)) might be negative. (packaging_cond_perm.vpr@19.3--19.89) [126316]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, (x.f > 0 ? 2 / 4 : 1 / 4)) might be negative. (packaging_cond_perm.vpr@19.3--19.89) [208337]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -664,7 +664,7 @@ procedure t02(x: Ref) returns ()
             Heap := Heap[null, wand_1#sm(x, 2 / 4, x, 0, x, 1 / 4, x, x, 0, 2 / 4, 1 / 4):=Heap[null, wand_1#sm(x, 2 / 4, x, 0, x, 1 / 4, x, x, 0, 2 / 4, 1 / 4)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@19.3--19.89) [126317]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@19.3--19.89) [208338]"}
         (b_5 && b_5) && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -680,13 +680,13 @@ procedure t02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, 1 / 4) -- packaging_cond_perm.vpr@20.3--20.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
-    assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (packaging_cond_perm.vpr@20.10--20.22) [126318]"}
+    assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (packaging_cond_perm.vpr@20.10--20.22) [208339]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@20.10--20.22) [126319]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@20.10--20.22) [208340]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -697,13 +697,13 @@ procedure t02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, 1 / 4) -- packaging_cond_perm.vpr@22.3--22.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
-    assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (packaging_cond_perm.vpr@22.10--22.22) [126320]"}
+    assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (packaging_cond_perm.vpr@22.10--22.22) [208341]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@22.10--22.22) [126321]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@22.10--22.22) [208342]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -722,16 +722,16 @@ procedure t03(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
   var b_10: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_9: bool;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var boolCur_2: bool;
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
@@ -748,8 +748,8 @@ procedure t03(x: Ref) returns ()
   var b_13: bool;
   var Result_4Heap: HeapType;
   var Result_4Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -764,7 +764,7 @@ procedure t03(x: Ref) returns ()
     assume x != null;
     assume state(Heap, Mask);
     perm := 3 / 4;
-    assert {:msg "  Contract might not be well-formed. Fraction 3 / 4 might be negative. (packaging_cond_perm.vpr@27.12--27.24) [126322]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 3 / 4 might be negative. (packaging_cond_perm.vpr@27.12--27.24) [208343]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -774,8 +774,8 @@ procedure t03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* acc(x.f, 1 / 4) && acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) {
   // } -- packaging_cond_perm.vpr@29.3--29.70
@@ -793,8 +793,8 @@ procedure t03(x: Ref) returns ()
     
     // -- Translating statement: label lhs5 -- packaging_cond_perm.vpr@29.11--29.70
       lhs5:
-      Labellhs5Heap := Ops_5Heap;
       Labellhs5Mask := Ops_5Mask;
+      Labellhs5Heap := Ops_5Heap;
       b_10 := b_10 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     // Translating exec of non-ghost operationacc(x.f, 1 / 4) && acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2))
@@ -806,7 +806,7 @@ procedure t03(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := 1 / 4;
       initNeededTransfer := Used_5Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 1 / 4) might be negative. (packaging_cond_perm.vpr@29.3--29.70) [126323]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 1 / 4) might be negative. (packaging_cond_perm.vpr@29.3--29.70) [208344]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -849,7 +849,7 @@ procedure t03(x: Ref) returns ()
             Heap := Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2):=Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@29.3--29.70) [126324]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@29.3--29.70) [208345]"}
         (b_10 && b_10) && b_11 ==> neededTransfer == 0.000000000 && Used_5Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -867,14 +867,14 @@ procedure t03(x: Ref) returns ()
           if (b_10) {
             
             // -- Check definedness of acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2))
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@29.3--29.70) [126325]"}
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@29.3--29.70) [208346]"}
                 HasDirectPerm(Result_3Mask, x, f_7);
           }
         }
       rcvLocal := x;
       neededTransfer := (if Used_5Heap[x, f_7] > 0 then 1 / 4 else 1 / 2);
       initNeededTransfer := Used_5Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) might be negative. (packaging_cond_perm.vpr@29.3--29.70) [126326]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) might be negative. (packaging_cond_perm.vpr@29.3--29.70) [208347]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -917,7 +917,7 @@ procedure t03(x: Ref) returns ()
             Heap := Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2):=Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@29.3--29.70) [126327]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@29.3--29.70) [208348]"}
         (b_10 && b_10) && b_11 ==> neededTransfer == 0.000000000 && Used_5Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -933,13 +933,13 @@ procedure t03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, 1 / 4) -- packaging_cond_perm.vpr@32.3--32.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
-    assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (packaging_cond_perm.vpr@32.10--32.22) [126328]"}
+    assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (packaging_cond_perm.vpr@32.10--32.22) [208349]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@32.10--32.22) [126329]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@32.10--32.22) [208350]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -958,16 +958,16 @@ procedure t04(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
   var b_15: bool;
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
   var b_14: bool;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var boolCur_3: bool;
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
@@ -984,8 +984,8 @@ procedure t04(x: Ref) returns ()
   var b_18: bool;
   var Result_6Heap: HeapType;
   var Result_6Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1000,7 +1000,7 @@ procedure t04(x: Ref) returns ()
     assume x != null;
     assume state(Heap, Mask);
     perm := 3 / 4;
-    assert {:msg "  Contract might not be well-formed. Fraction 3 / 4 might be negative. (packaging_cond_perm.vpr@37.12--37.24) [126330]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 3 / 4 might be negative. (packaging_cond_perm.vpr@37.12--37.24) [208351]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -1008,7 +1008,7 @@ procedure t04(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f > 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@38.12--38.19) [126331]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@38.12--38.19) [208352]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] > 0;
     assume state(Heap, Mask);
@@ -1016,8 +1016,8 @@ procedure t04(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* acc(x.f, 1 / 4) && acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) {
   // } -- packaging_cond_perm.vpr@40.3--40.70
@@ -1035,8 +1035,8 @@ procedure t04(x: Ref) returns ()
     
     // -- Translating statement: label lhs7 -- packaging_cond_perm.vpr@40.11--40.70
       lhs7:
-      Labellhs7Heap := Ops_7Heap;
       Labellhs7Mask := Ops_7Mask;
+      Labellhs7Heap := Ops_7Heap;
       b_15 := b_15 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     // Translating exec of non-ghost operationacc(x.f, 1 / 4) && acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2))
@@ -1048,7 +1048,7 @@ procedure t04(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := 1 / 4;
       initNeededTransfer := Used_7Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 1 / 4) might be negative. (packaging_cond_perm.vpr@40.3--40.70) [126332]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 1 / 4) might be negative. (packaging_cond_perm.vpr@40.3--40.70) [208353]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -1091,7 +1091,7 @@ procedure t04(x: Ref) returns ()
             Heap := Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2):=Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@40.3--40.70) [126333]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@40.3--40.70) [208354]"}
         (b_15 && b_15) && b_16 ==> neededTransfer == 0.000000000 && Used_7Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -1109,14 +1109,14 @@ procedure t04(x: Ref) returns ()
           if (b_15) {
             
             // -- Check definedness of acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2))
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@40.3--40.70) [126334]"}
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@40.3--40.70) [208355]"}
                 HasDirectPerm(Result_5Mask, x, f_7);
           }
         }
       rcvLocal := x;
       neededTransfer := (if Used_7Heap[x, f_7] > 0 then 1 / 4 else 1 / 2);
       initNeededTransfer := Used_7Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) might be negative. (packaging_cond_perm.vpr@40.3--40.70) [126335]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) might be negative. (packaging_cond_perm.vpr@40.3--40.70) [208356]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -1159,7 +1159,7 @@ procedure t04(x: Ref) returns ()
             Heap := Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2):=Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@40.3--40.70) [126336]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@40.3--40.70) [208357]"}
         (b_15 && b_15) && b_16 ==> neededTransfer == 0.000000000 && Used_7Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -1175,13 +1175,13 @@ procedure t04(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, 1 / 4) -- packaging_cond_perm.vpr@41.3--41.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
-    assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (packaging_cond_perm.vpr@41.10--41.22) [126337]"}
+    assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (packaging_cond_perm.vpr@41.10--41.22) [208358]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@41.10--41.22) [126338]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@41.10--41.22) [208359]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -1192,9 +1192,9 @@ procedure t04(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- packaging_cond_perm.vpr@44.3--44.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (packaging_cond_perm.vpr@44.10--44.15) [126339]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (packaging_cond_perm.vpr@44.10--44.15) [208360]"}
       false;
     assume state(Heap, Mask);
 }
@@ -1207,16 +1207,16 @@ procedure t05(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_9Heap: HeapType;
   var Ops_9Mask: MaskType;
   var b_20: bool;
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
   var b_19: bool;
-  var Labellhs9Heap: HeapType;
   var Labellhs9Mask: MaskType;
+  var Labellhs9Heap: HeapType;
   var boolCur_4: bool;
   var Used_9Heap: HeapType;
   var Used_9Mask: MaskType;
@@ -1233,8 +1233,8 @@ procedure t05(x: Ref) returns ()
   var b_23: bool;
   var Result_8Heap: HeapType;
   var Result_8Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1249,7 +1249,7 @@ procedure t05(x: Ref) returns ()
     assume x != null;
     assume state(Heap, Mask);
     perm := 3 / 4;
-    assert {:msg "  Contract might not be well-formed. Fraction 3 / 4 might be negative. (packaging_cond_perm.vpr@49.12--49.24) [126340]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 3 / 4 might be negative. (packaging_cond_perm.vpr@49.12--49.24) [208361]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -1257,7 +1257,7 @@ procedure t05(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f > 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@50.12--50.19) [126341]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@50.12--50.19) [208362]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] > 0;
     assume state(Heap, Mask);
@@ -1265,8 +1265,8 @@ procedure t05(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* acc(x.f, 1 / 4) && acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) {
   // } -- packaging_cond_perm.vpr@52.3--52.70
@@ -1284,8 +1284,8 @@ procedure t05(x: Ref) returns ()
     
     // -- Translating statement: label lhs9 -- packaging_cond_perm.vpr@52.11--52.70
       lhs9:
-      Labellhs9Heap := Ops_9Heap;
       Labellhs9Mask := Ops_9Mask;
+      Labellhs9Heap := Ops_9Heap;
       b_20 := b_20 && state(Ops_9Heap, Ops_9Mask);
     boolCur_4 := true;
     // Translating exec of non-ghost operationacc(x.f, 1 / 4) && acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2))
@@ -1297,7 +1297,7 @@ procedure t05(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := 1 / 4;
       initNeededTransfer := Used_9Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 1 / 4) might be negative. (packaging_cond_perm.vpr@52.3--52.70) [126342]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 1 / 4) might be negative. (packaging_cond_perm.vpr@52.3--52.70) [208363]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -1340,7 +1340,7 @@ procedure t05(x: Ref) returns ()
             Heap := Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2):=Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@52.3--52.70) [126343]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@52.3--52.70) [208364]"}
         (b_20 && b_20) && b_21 ==> neededTransfer == 0.000000000 && Used_9Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -1358,14 +1358,14 @@ procedure t05(x: Ref) returns ()
           if (b_20) {
             
             // -- Check definedness of acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2))
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@52.3--52.70) [126344]"}
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@52.3--52.70) [208365]"}
                 HasDirectPerm(Result_7Mask, x, f_7);
           }
         }
       rcvLocal := x;
       neededTransfer := (if Used_9Heap[x, f_7] > 0 then 1 / 4 else 1 / 2);
       initNeededTransfer := Used_9Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) might be negative. (packaging_cond_perm.vpr@52.3--52.70) [126345]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, (x.f > 0 ? 1 / 4 : 1 / 2)) might be negative. (packaging_cond_perm.vpr@52.3--52.70) [208366]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -1408,7 +1408,7 @@ procedure t05(x: Ref) returns ()
             Heap := Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2):=Heap[null, wand_2#sm(true, x, 1 / 4, x, x, 0, 1 / 4, 1 / 2)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@52.3--52.70) [126346]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@52.3--52.70) [208367]"}
         (b_20 && b_20) && b_21 ==> neededTransfer == 0.000000000 && Used_9Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -1424,13 +1424,13 @@ procedure t05(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, 1 / 2) -- packaging_cond_perm.vpr@55.3--55.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 2;
-    assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (packaging_cond_perm.vpr@55.10--55.22) [126347]"}
+    assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (packaging_cond_perm.vpr@55.10--55.22) [208368]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@55.10--55.22) [126348]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (packaging_cond_perm.vpr@55.10--55.22) [208369]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];

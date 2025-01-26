@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:07
+// Date:         2025-01-26 21:43:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0052.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0052-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,15 +177,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of method f
 // ==================================================
 
-procedure f_204(this: Ref) returns ()
+procedure f_81(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -207,7 +207,7 @@ procedure f_204(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -223,23 +223,23 @@ procedure f_204(this: Ref) returns ()
     // Checked inhaling of postcondition to check definedness
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0052.vpr@9.11--9.22) [194164]"}
-        HasDirectPerm(PostMask, this, x_36);
-    assume PostHeap[this, x_36] == 1;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0052.vpr@9.11--9.22) [81350]"}
+        HasDirectPerm(PostMask, this, x_42);
+    assume PostHeap[this, x_42] == 1;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
   }
   
   // -- Translating statement: this.x := 1 -- 0052.vpr@11.3--11.14
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (0052.vpr@11.3--11.14) [194165]"}
-      FullPerm == Mask[this, x_36];
-    Heap := Heap[this, x_36:=1];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (0052.vpr@11.3--11.14) [81351]"}
+      FullPerm == Mask[this, x_42];
+    Heap := Heap[this, x_42:=1];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of f might not hold. Assertion this.x == 1 might not hold. (0052.vpr@9.11--9.22) [194166]"}
-      Heap[this, x_36] == 1;
+    assert {:msg "  Postcondition of f might not hold. Assertion this.x == 1 might not hold. (0052.vpr@9.11--9.22) [81352]"}
+      Heap[this, x_42] == 1;
 }

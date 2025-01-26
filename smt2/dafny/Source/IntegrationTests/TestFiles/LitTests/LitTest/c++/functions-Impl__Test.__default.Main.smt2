@@ -80,9 +80,8 @@
 (assert (forall ((|i#0| T@U) ($h T@U) ) (! ($IsAlloc intType |i#0| Tclass.Test.uint32 $h)
  :pattern ( ($IsAlloc intType |i#0| Tclass.Test.uint32 $h))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|Test.__default.Test#canCall| (LitInt |x#0@@0|)) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 4294967296)))) (= (Test.__default.Test (LitInt |x#0@@0|)) (LitInt (+ |x#0@@0| 1))))
- :weight 3
- :pattern ( (Test.__default.Test (LitInt |x#0@@0|)))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|Test.__default.Test#canCall| |x#0@@0|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 4294967296)))) (= (Test.__default.Test |x#0@@0|) (+ |x#0@@0| 1)))
+ :pattern ( (Test.__default.Test |x#0@@0|))
 ))))
 (assert  (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
  :weight 0
@@ -107,6 +106,10 @@
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
  :pattern ( ($Unbox T@@0 x@@4))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|Test.__default.Test#canCall| (LitInt |x#0@@1|)) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@1|) (< |x#0@@1| 4294967296)))) (= (Test.__default.Test (LitInt |x#0@@1|)) (LitInt (+ |x#0@@1| 1))))
+ :weight 3
+ :pattern ( (Test.__default.Test (LitInt |x#0@@1|)))
+))))
 (assert (forall ((h@@0 T@U) (k@@0 T@U) (v T@U) (t T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@0 k@@0) (=> ($IsAlloc T@@1 v t h@@0) ($IsAlloc T@@1 v t k@@0)))
  :pattern ( ($HeapSucc h@@0 k@@0) ($IsAlloc T@@1 v t h@@0))
 )))
@@ -134,9 +137,6 @@
 (assert (forall ((x@@7 T@U) (T@@3 T@T) ) (! (= ($Box T@@3 (Lit T@@3 x@@7)) (Lit BoxType ($Box T@@3 x@@7)))
  :pattern ( ($Box T@@3 (Lit T@@3 x@@7)))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|Test.__default.Test#canCall| |x#0@@1|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@1|) (< |x#0@@1| 4294967296)))) (= (Test.__default.Test |x#0@@1|) (+ |x#0@@1| 1)))
- :pattern ( (Test.__default.Test |x#0@@1|))
-))))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun $_ModifiesFrame@0 () T@U)

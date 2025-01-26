@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:59:27
+// Date:         2025-01-26 21:44:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/PresentationSlides/simpleRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/PresentationSlides/simpleRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -199,7 +199,7 @@ procedure main() returns ()
   // -- Translating statement: assert (true ==> true && true) ==> false || false && false -- simpleRef.vpr@6.4--6.69
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false || false && false might not hold. (simpleRef.vpr@6.11--6.68) [92867]"}
+    assert {:msg "  Assert might fail. Assertion false || false && false might not hold. (simpleRef.vpr@6.11--6.68) [198615]"}
       false;
     assume state(Heap, Mask);
 }

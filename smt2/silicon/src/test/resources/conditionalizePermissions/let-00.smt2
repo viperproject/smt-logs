@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:27:54
+; Started: 2025-01-26 21:28:51
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -125,11 +125,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (ok%limited s@$) (ok s@$))
   :pattern ((ok s@$))
-  :qid |quant-u-0|)))
+  :qid |quant-u-4998|)))
 (assert (forall ((s@$ $Snap)) (!
   (as ok%stateless  Bool)
   :pattern ((ok%limited s@$))
-  :qid |quant-u-1|)))
+  :qid |quant-u-4999|)))
 ; ---------- FUNCTION val----------
 (declare-fun result@1@00 () $Ref)
 ; ----- Well-definedness of specifications -----
@@ -146,8 +146,8 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (val%limited s@$) (val s@$))
   :pattern ((val s@$))
-  :qid |quant-u-2|)))
+  :qid |quant-u-5000|)))
 (assert (forall ((s@$ $Snap)) (!
   (as val%stateless  Bool)
   :pattern ((val%limited s@$))
-  :qid |quant-u-3|)))
+  :qid |quant-u-5001|)))

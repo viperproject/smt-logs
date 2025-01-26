@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:53:39
+// Date:         2025-01-26 21:44:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_binomial_noauto.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_binomial_noauto-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_41: Ref, f_27: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_41, f_27] }
-  Heap[o_41, $allocated] ==> Heap[Heap[o_41, f_27], $allocated]
+axiom (forall o_23: Ref, f_15: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_23, f_15] }
+  Heap[o_23, $allocated] ==> Heap[Heap[o_23, f_15], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_42: Ref, f_48: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_42, f_48] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_42, f_48) ==> Heap[o_42, f_48] == ExhaleHeap[o_42, f_48]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_52: Ref, f_63: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_52, f_63] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_52, f_63) ==> Heap[o_52, f_63] == ExhaleHeap[o_52, f_63]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18), ExhaleHeap[null, PredicateMaskField(pm_f_18)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> Heap[null, PredicateMaskField(pm_f_18)] == ExhaleHeap[null, PredicateMaskField(pm_f_18)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_24), ExhaleHeap[null, PredicateMaskField(pm_f_24)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsPredicateField(pm_f_24) ==> Heap[null, PredicateMaskField(pm_f_24)] == ExhaleHeap[null, PredicateMaskField(pm_f_24)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_48: (Field A B) ::
-    { ExhaleHeap[o2_18, f_48] }
-    Heap[null, PredicateMaskField(pm_f_18)][o2_18, f_48] ==> Heap[o2_18, f_48] == ExhaleHeap[o2_18, f_48]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_24) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsPredicateField(pm_f_24) ==> (forall <A, B> o2_24: Ref, f_63: (Field A B) ::
+    { ExhaleHeap[o2_24, f_63] }
+    Heap[null, PredicateMaskField(pm_f_24)][o2_24, f_63] ==> Heap[o2_24, f_63] == ExhaleHeap[o2_24, f_63]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18), ExhaleHeap[null, WandMaskField(pm_f_18)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> Heap[null, WandMaskField(pm_f_18)] == ExhaleHeap[null, WandMaskField(pm_f_18)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_24), ExhaleHeap[null, WandMaskField(pm_f_24)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsWandField(pm_f_24) ==> Heap[null, WandMaskField(pm_f_24)] == ExhaleHeap[null, WandMaskField(pm_f_24)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_48: (Field A B) ::
-    { ExhaleHeap[o2_18, f_48] }
-    Heap[null, WandMaskField(pm_f_18)][o2_18, f_48] ==> Heap[o2_18, f_48] == ExhaleHeap[o2_18, f_48]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_24) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsWandField(pm_f_24) ==> (forall <A, B> o2_24: Ref, f_63: (Field A B) ::
+    { ExhaleHeap[o2_24, f_63] }
+    Heap[null, WandMaskField(pm_f_24)][o2_24, f_63] ==> Heap[o2_24, f_63] == ExhaleHeap[o2_24, f_63]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_42: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_42, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_42, $allocated] ==> ExhaleHeap[o_42, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_52: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_52, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_52, $allocated] ==> ExhaleHeap[o_52, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_41: Ref, f_44: (Field A B), v: B ::
-  { Heap[o_41, f_44:=v] }
-  succHeap(Heap, Heap[o_41, f_44:=v])
+axiom (forall <A, B> Heap: HeapType, o_23: Ref, f_65: (Field A B), v: B ::
+  { Heap[o_23, f_65:=v] }
+  succHeap(Heap, Heap[o_23, f_65:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -146,9 +146,9 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 
 function  neverTriggered1(tid_1: int): bool;
 function  neverTriggered2(tid_5: int): bool;
-function  neverTriggered3(tid_6_1: int): bool;
+function  neverTriggered3(tid_6: int): bool;
 function  neverTriggered4(tid_1: int): bool;
-function  neverTriggered5(tid_3: int): bool;
+function  neverTriggered5(tid_3_1: int): bool;
 function  neverTriggered6(tid_4_1: int): bool;
 function  neverTriggered7(_x_tid_1: int): bool;
 function  neverTriggered8(_x_tid_3: int): bool;
@@ -661,11 +661,11 @@ procedure demo__bin#definedness(N: int, k: int) returns (Result: int)
           // Exhale precondition of function application
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_noauto.vpr@15.43--15.66) [36661]"}
+          assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_noauto.vpr@15.43--15.66) [144255]"}
             N - 1 >= 0;
-          assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= k - 1 might not hold. (test_binomial_noauto.vpr@15.43--15.66) [36662]"}
+          assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= k - 1 might not hold. (test_binomial_noauto.vpr@15.43--15.66) [144256]"}
             0 <= k - 1;
-          assert {:msg "  Precondition of function demo__bin might not hold. Assertion k - 1 <= N - 1 might not hold. (test_binomial_noauto.vpr@15.43--15.66) [36663]"}
+          assert {:msg "  Precondition of function demo__bin might not hold. Assertion k - 1 <= N - 1 might not hold. (test_binomial_noauto.vpr@15.43--15.66) [144257]"}
             k - 1 <= N - 1;
           // Stop execution
           assume false;
@@ -677,11 +677,11 @@ procedure demo__bin#definedness(N: int, k: int) returns (Result: int)
           // Exhale precondition of function application
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_noauto.vpr@15.69--15.88) [36664]"}
+          assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_noauto.vpr@15.69--15.88) [144258]"}
             N - 1 >= 0;
-          assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= k might not hold. (test_binomial_noauto.vpr@15.69--15.88) [36665]"}
+          assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= k might not hold. (test_binomial_noauto.vpr@15.69--15.88) [144259]"}
             0 <= k;
-          assert {:msg "  Precondition of function demo__bin might not hold. Assertion k <= N - 1 might not hold. (test_binomial_noauto.vpr@15.69--15.88) [36666]"}
+          assert {:msg "  Precondition of function demo__bin might not hold. Assertion k <= N - 1 might not hold. (test_binomial_noauto.vpr@15.69--15.88) [144260]"}
             k <= N - 1;
           // Stop execution
           assume false;
@@ -759,7 +759,7 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.demo__ar| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@27.12--27.35) [36667]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@27.12--27.35) [144261]"}
         HasDirectPerm(Mask, diz, demo__ar);
     assume Seq#Length(Heap[diz, demo__ar]) == gsize;
     assume state(Heap, Mask);
@@ -771,7 +771,7 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.demo__tmp| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@29.12--29.36) [36668]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@29.12--29.36) [144262]"}
         HasDirectPerm(Mask, diz, demo__tmp);
     assume Seq#Length(Heap[diz, demo__tmp]) == gsize;
     assume state(Heap, Mask);
@@ -779,11 +779,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(diz.demo__ar[tid].Ref__Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@31.12--31.60) [36669]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@31.12--31.60) [144263]"}
         HasDirectPerm(Mask, diz, demo__ar);
-      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@31.12--31.60) [36670]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@31.12--31.60) [144264]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@31.12--31.60) [36671]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@31.12--31.60) [144265]"}
         tid < Seq#Length(Heap[diz, demo__ar]);
     perm := FullPerm;
     assume Seq#Index(Heap[diz, demo__ar], tid) != null;
@@ -792,11 +792,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(diz.demo__tmp[tid].Ref__Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@32.12--32.61) [36672]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@32.12--32.61) [144266]"}
         HasDirectPerm(Mask, diz, demo__tmp);
-      assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@32.12--32.61) [36673]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@32.12--32.61) [144267]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@32.12--32.61) [36674]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@32.12--32.61) [144268]"}
         tid < Seq#Length(Heap[diz, demo__tmp]);
     perm := FullPerm;
     assume Seq#Index(Heap[diz, demo__tmp], tid) != null;
@@ -832,7 +832,7 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.demo__ar| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@39.11--39.34) [36675]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@39.11--39.34) [144269]"}
         HasDirectPerm(PostMask, diz, demo__ar);
     assume Seq#Length(PostHeap[diz, demo__ar]) == gsize;
     assume state(PostHeap, PostMask);
@@ -844,23 +844,23 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.demo__tmp| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@41.11--41.35) [36676]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@41.11--41.35) [144270]"}
         HasDirectPerm(PostMask, diz, demo__tmp);
     assume Seq#Length(PostHeap[diz, demo__tmp]) == gsize;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__ar == old(diz.demo__ar)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@42.11--42.44) [36677]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@42.11--42.44) [144271]"}
         HasDirectPerm(PostMask, diz, demo__ar);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@42.11--42.44) [36678]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@42.11--42.44) [144272]"}
         HasDirectPerm(oldMask, diz, demo__ar);
     assume Seq#Equal(PostHeap[diz, demo__ar], oldHeap[diz, demo__ar]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__tmp == old(diz.demo__tmp)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@43.11--43.46) [36679]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@43.11--43.46) [144273]"}
         HasDirectPerm(PostMask, diz, demo__tmp);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@43.11--43.46) [36680]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@43.11--43.46) [144274]"}
         HasDirectPerm(oldMask, diz, demo__tmp);
     assume Seq#Equal(PostHeap[diz, demo__tmp], oldHeap[diz, demo__tmp]);
     assume state(PostHeap, PostMask);
@@ -868,11 +868,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(diz.demo__ar[tid].Ref__Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@45.11--45.59) [36681]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@45.11--45.59) [144275]"}
         HasDirectPerm(PostMask, diz, demo__ar);
-      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@45.11--45.59) [36682]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@45.11--45.59) [144276]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@45.11--45.59) [36683]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@45.11--45.59) [144277]"}
         tid < Seq#Length(PostHeap[diz, demo__ar]);
     perm := FullPerm;
     assume Seq#Index(PostHeap[diz, demo__ar], tid) != null;
@@ -882,23 +882,23 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__ar[tid].Ref__Integer_value == demo__bin(gsize - 1, tid)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@46.11--46.76) [36684]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@46.11--46.76) [144278]"}
         HasDirectPerm(PostMask, diz, demo__ar);
-      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@46.11--46.76) [36685]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@46.11--46.76) [144279]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@46.11--46.76) [36686]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@46.11--46.76) [144280]"}
         tid < Seq#Length(PostHeap[diz, demo__ar]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@46.11--46.76) [36687]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@46.11--46.76) [144281]"}
         HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, demo__ar], tid), Ref__Integer_value);
       if (*) {
         // Exhale precondition of function application
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function demo__bin might not hold. Assertion gsize - 1 >= 0 might not hold. (test_binomial_noauto.vpr@46.51--46.76) [36688]"}
+        assert {:msg "  Precondition of function demo__bin might not hold. Assertion gsize - 1 >= 0 might not hold. (test_binomial_noauto.vpr@46.51--46.76) [144282]"}
           gsize - 1 >= 0;
-        assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@46.51--46.76) [36689]"}
+        assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@46.51--46.76) [144283]"}
           0 <= tid;
-        assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= gsize - 1 might not hold. (test_binomial_noauto.vpr@46.51--46.76) [36690]"}
+        assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= gsize - 1 might not hold. (test_binomial_noauto.vpr@46.51--46.76) [144284]"}
           tid <= gsize - 1;
         // Stop execution
         assume false;
@@ -928,11 +928,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
   // -- Translating statement: __flatten_1 := diz.demo__ar[tid] -- test_binomial_noauto.vpr@61.3--61.35
     
     // -- Check definedness of diz.demo__ar[tid]
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@61.3--61.35) [36691]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@61.3--61.35) [144285]"}
         HasDirectPerm(Mask, diz, demo__ar);
-      assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@61.3--61.35) [36692]"}
+      assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@61.3--61.35) [144286]"}
         tid >= 0;
-      assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@61.3--61.35) [36693]"}
+      assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@61.3--61.35) [144287]"}
         tid < Seq#Length(Heap[diz, demo__ar]);
     __flatten_1 := Seq#Index(Heap[diz, demo__ar], tid);
     assume state(Heap, Mask);
@@ -942,7 +942,7 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_1.Ref__Integer_value := __flatten_2 -- test_binomial_noauto.vpr@63.3--63.48
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_1.Ref__Integer_value (test_binomial_noauto.vpr@63.3--63.48) [36694]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_1.Ref__Integer_value (test_binomial_noauto.vpr@63.3--63.48) [144288]"}
       FullPerm == Mask[__flatten_1, Ref__Integer_value];
     Heap := Heap[__flatten_1, Ref__Integer_value:=__flatten_2];
     assume state(Heap, Mask);
@@ -954,49 +954,49 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant 0 <= tid might not hold on entry. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@65.15--65.23) [36695]"}
+        assert {:msg "  Loop invariant 0 <= tid might not hold on entry. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@65.15--65.23) [144289]"}
           0 <= tid;
-        assert {:msg "  Loop invariant tid < tcount might not hold on entry. Assertion tid < tcount might not hold. (test_binomial_noauto.vpr@66.15--66.27) [36696]"}
+        assert {:msg "  Loop invariant tid < tcount might not hold on entry. Assertion tid < tcount might not hold. (test_binomial_noauto.vpr@66.15--66.27) [144290]"}
           tid < tcount;
-        assert {:msg "  Loop invariant tid == lid might not hold on entry. Assertion tid == lid might not hold. (test_binomial_noauto.vpr@67.15--67.25) [36697]"}
+        assert {:msg "  Loop invariant tid == lid might not hold on entry. Assertion tid == lid might not hold. (test_binomial_noauto.vpr@67.15--67.25) [144291]"}
           tid == lid;
-        assert {:msg "  Loop invariant tcount == gsize might not hold on entry. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@68.15--68.30) [36698]"}
+        assert {:msg "  Loop invariant tcount == gsize might not hold on entry. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@68.15--68.30) [144292]"}
           tcount == gsize;
-        assert {:msg "  Loop invariant gid == 0 might not hold on entry. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@69.15--69.23) [36699]"}
+        assert {:msg "  Loop invariant gid == 0 might not hold on entry. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@69.15--69.23) [144293]"}
           gid == 0;
-        assert {:msg "  Loop invariant acc(diz.demo__ar, wildcard) might not hold on entry. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@70.15--70.42) [36700]"}
+        assert {:msg "  Loop invariant acc(diz.demo__ar, wildcard) might not hold on entry. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@70.15--70.42) [144294]"}
           Mask[diz, demo__ar] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[diz, demo__ar];
         Mask := Mask[diz, demo__ar:=Mask[diz, demo__ar] - wildcard];
-        assert {:msg "  Loop invariant |diz.demo__ar| == gsize might not hold on entry. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@71.15--71.38) [36701]"}
+        assert {:msg "  Loop invariant |diz.demo__ar| == gsize might not hold on entry. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@71.15--71.38) [144295]"}
           Seq#Length(Heap[diz, demo__ar]) == gsize;
-        assert {:msg "  Loop invariant acc(diz.demo__tmp, wildcard) might not hold on entry. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@72.15--72.43) [36702]"}
+        assert {:msg "  Loop invariant acc(diz.demo__tmp, wildcard) might not hold on entry. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@72.15--72.43) [144296]"}
           Mask[diz, demo__tmp] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[diz, demo__tmp];
         Mask := Mask[diz, demo__tmp:=Mask[diz, demo__tmp] - wildcard];
-        assert {:msg "  Loop invariant |diz.demo__tmp| == gsize might not hold on entry. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@73.15--73.39) [36703]"}
+        assert {:msg "  Loop invariant |diz.demo__tmp| == gsize might not hold on entry. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@73.15--73.39) [144297]"}
           Seq#Length(Heap[diz, demo__tmp]) == gsize;
-        assert {:msg "  Loop invariant gsize > 1 might not hold on entry. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@74.15--74.24) [36704]"}
+        assert {:msg "  Loop invariant gsize > 1 might not hold on entry. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@74.15--74.24) [144298]"}
           gsize > 1;
-        assert {:msg "  Loop invariant 0 < N might not hold on entry. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@75.15--75.20) [36705]"}
+        assert {:msg "  Loop invariant 0 < N might not hold on entry. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@75.15--75.20) [144299]"}
           0 < N;
-        assert {:msg "  Loop invariant N < gsize might not hold on entry. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@76.15--76.24) [36706]"}
+        assert {:msg "  Loop invariant N < gsize might not hold on entry. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@76.15--76.24) [144300]"}
           N < gsize;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.demo__ar[tid].Ref__Integer_value, write) might not hold on entry. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@77.15--77.63) [36707]"}
+          assert {:msg "  Loop invariant acc(diz.demo__ar[tid].Ref__Integer_value, write) might not hold on entry. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@77.15--77.63) [144301]"}
             perm <= Mask[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value];
         }
         Mask := Mask[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.demo__tmp[tid].Ref__Integer_value, write) might not hold on entry. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@78.15--78.64) [36708]"}
+          assert {:msg "  Loop invariant acc(diz.demo__tmp[tid].Ref__Integer_value, write) might not hold on entry. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@78.15--78.64) [144302]"}
             perm <= Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value];
         }
         Mask := Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value] - perm];
-        assert {:msg "  Loop invariant diz.demo__ar[tid].Ref__Integer_value == (tid < N ? demo__bin(N, tid) : 1) might not hold on entry. Assertion diz.demo__ar[tid].Ref__Integer_value == (tid < N ? demo__bin(N, tid) : 1) might not hold. (test_binomial_noauto.vpr@79.15--79.88) [36709]"}
+        assert {:msg "  Loop invariant diz.demo__ar[tid].Ref__Integer_value == (tid < N ? demo__bin(N, tid) : 1) might not hold on entry. Assertion diz.demo__ar[tid].Ref__Integer_value == (tid < N ? demo__bin(N, tid) : 1) might not hold. (test_binomial_noauto.vpr@79.15--79.88) [144303]"}
           Heap[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value] == (if tid < N then demo__bin(Heap, N, tid) else 1);
         // Finish exhale
         havoc ExhaleHeap;
@@ -1031,7 +1031,7 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
         assume state(Heap, Mask);
         
         // -- Check definedness of |diz.demo__ar| == gsize
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@71.15--71.38) [36710]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@71.15--71.38) [144304]"}
             HasDirectPerm(Mask, diz, demo__ar);
         assume Seq#Length(Heap[diz, demo__ar]) == gsize;
         assume state(Heap, Mask);
@@ -1043,7 +1043,7 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
         assume state(Heap, Mask);
         
         // -- Check definedness of |diz.demo__tmp| == gsize
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@73.15--73.39) [36711]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@73.15--73.39) [144305]"}
             HasDirectPerm(Mask, diz, demo__tmp);
         assume Seq#Length(Heap[diz, demo__tmp]) == gsize;
         assume state(Heap, Mask);
@@ -1055,11 +1055,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
         assume state(Heap, Mask);
         
         // -- Check definedness of acc(diz.demo__ar[tid].Ref__Integer_value, write)
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@77.15--77.63) [36712]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@77.15--77.63) [144306]"}
             HasDirectPerm(Mask, diz, demo__ar);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@77.15--77.63) [36713]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@77.15--77.63) [144307]"}
             tid >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@77.15--77.63) [36714]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@77.15--77.63) [144308]"}
             tid < Seq#Length(Heap[diz, demo__ar]);
         perm := FullPerm;
         assume Seq#Index(Heap[diz, demo__ar], tid) != null;
@@ -1068,11 +1068,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
         assume state(Heap, Mask);
         
         // -- Check definedness of acc(diz.demo__tmp[tid].Ref__Integer_value, write)
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@78.15--78.64) [36715]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@78.15--78.64) [144309]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@78.15--78.64) [36716]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@78.15--78.64) [144310]"}
             tid >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@78.15--78.64) [36717]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@78.15--78.64) [144311]"}
             tid < Seq#Length(Heap[diz, demo__tmp]);
         perm := FullPerm;
         assume Seq#Index(Heap[diz, demo__tmp], tid) != null;
@@ -1082,24 +1082,24 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
         assume state(Heap, Mask);
         
         // -- Check definedness of diz.demo__ar[tid].Ref__Integer_value == (tid < N ? demo__bin(N, tid) : 1)
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@79.15--79.88) [36718]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@79.15--79.88) [144312]"}
             HasDirectPerm(Mask, diz, demo__ar);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@79.15--79.88) [36719]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@79.15--79.88) [144313]"}
             tid >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@79.15--79.88) [36720]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@79.15--79.88) [144314]"}
             tid < Seq#Length(Heap[diz, demo__ar]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@79.15--79.88) [36721]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@79.15--79.88) [144315]"}
             HasDirectPerm(Mask, Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value);
           if (tid < N) {
             if (*) {
               // Exhale precondition of function application
               ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
-              assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@79.66--79.83) [36722]"}
+              assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@79.66--79.83) [144316]"}
                 N >= 0;
-              assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@79.66--79.83) [36723]"}
+              assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@79.66--79.83) [144317]"}
                 0 <= tid;
-              assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= N might not hold. (test_binomial_noauto.vpr@79.66--79.83) [36724]"}
+              assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= N might not hold. (test_binomial_noauto.vpr@79.66--79.83) [144318]"}
                 tid <= N;
               // Stop execution
               assume false;
@@ -1158,11 +1158,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
           // -- Translating statement: __flatten_3 := diz.demo__tmp[tid] -- test_binomial_noauto.vpr@81.5--81.38
             
             // -- Check definedness of diz.demo__tmp[tid]
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@81.5--81.38) [36725]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@81.5--81.38) [144319]"}
                 HasDirectPerm(Mask, diz, demo__tmp);
-              assert {:msg "  Assignment might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@81.5--81.38) [36726]"}
+              assert {:msg "  Assignment might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@81.5--81.38) [144320]"}
                 tid >= 0;
-              assert {:msg "  Assignment might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@81.5--81.38) [36727]"}
+              assert {:msg "  Assignment might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@81.5--81.38) [144321]"}
                 tid < Seq#Length(Heap[diz, demo__tmp]);
             __flatten_3 := Seq#Index(Heap[diz, demo__tmp], tid);
             assume state(Heap, Mask);
@@ -1170,11 +1170,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
           // -- Translating statement: __flatten_5 := diz.demo__ar[tid] -- test_binomial_noauto.vpr@82.5--82.37
             
             // -- Check definedness of diz.demo__ar[tid]
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@82.5--82.37) [36728]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@82.5--82.37) [144322]"}
                 HasDirectPerm(Mask, diz, demo__ar);
-              assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@82.5--82.37) [36729]"}
+              assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@82.5--82.37) [144323]"}
                 tid >= 0;
-              assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@82.5--82.37) [36730]"}
+              assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@82.5--82.37) [144324]"}
                 tid < Seq#Length(Heap[diz, demo__ar]);
             __flatten_5 := Seq#Index(Heap[diz, demo__ar], tid);
             assume state(Heap, Mask);
@@ -1182,13 +1182,13 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
           // -- Translating statement: __flatten_4 := __flatten_5.Ref__Integer_value -- test_binomial_noauto.vpr@83.5--83.50
             
             // -- Check definedness of __flatten_5.Ref__Integer_value
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_5.Ref__Integer_value (test_binomial_noauto.vpr@83.5--83.50) [36731]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_5.Ref__Integer_value (test_binomial_noauto.vpr@83.5--83.50) [144325]"}
                 HasDirectPerm(Mask, __flatten_5, Ref__Integer_value);
             __flatten_4 := Heap[__flatten_5, Ref__Integer_value];
             assume state(Heap, Mask);
           
           // -- Translating statement: __flatten_3.Ref__Integer_value := __flatten_4 -- test_binomial_noauto.vpr@84.5--84.50
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_3.Ref__Integer_value (test_binomial_noauto.vpr@84.5--84.50) [36732]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_3.Ref__Integer_value (test_binomial_noauto.vpr@84.5--84.50) [144326]"}
               FullPerm == Mask[__flatten_3, Ref__Integer_value];
             Heap := Heap[__flatten_3, Ref__Integer_value:=__flatten_4];
             assume state(Heap, Mask);
@@ -1196,21 +1196,21 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
           // -- Translating statement: assert gsize > 1 -- test_binomial_noauto.vpr@85.5--85.21
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@85.12--85.21) [36733]"}
+            assert {:msg "  Assert might fail. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@85.12--85.21) [144327]"}
               gsize > 1;
             assume state(Heap, Mask);
           
           // -- Translating statement: assert 0 < N -- test_binomial_noauto.vpr@86.5--86.17
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@86.12--86.17) [36734]"}
+            assert {:msg "  Assert might fail. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@86.12--86.17) [144328]"}
               0 < N;
             assume state(Heap, Mask);
           
           // -- Translating statement: assert N < gsize -- test_binomial_noauto.vpr@87.5--87.21
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@87.12--87.21) [36735]"}
+            assert {:msg "  Assert might fail. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@87.12--87.21) [144329]"}
               N < gsize;
             assume state(Heap, Mask);
           
@@ -1221,28 +1221,28 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
             if (0 <= tid && tid < N) {
               
               // -- Check definedness of diz.demo__tmp[tid].Ref__Integer_value == demo__bin(N, tid)
-                assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@88.12--88.100) [36736]"}
+                assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@88.12--88.100) [144330]"}
                   HasDirectPerm(ExhaleWellDef0Mask, diz, demo__tmp);
-                assert {:msg "  Assert might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@88.12--88.100) [36737]"}
+                assert {:msg "  Assert might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@88.12--88.100) [144331]"}
                   tid >= 0;
-                assert {:msg "  Assert might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@88.12--88.100) [36738]"}
+                assert {:msg "  Assert might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@88.12--88.100) [144332]"}
                   tid < Seq#Length(Heap[diz, demo__tmp]);
-                assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@88.12--88.100) [36739]"}
+                assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@88.12--88.100) [144333]"}
                   HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value);
                 if (*) {
                   // Exhale precondition of function application
                   ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                   ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@88.82--88.99) [36740]"}
+                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@88.82--88.99) [144334]"}
                     N >= 0;
-                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@88.82--88.99) [36741]"}
+                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@88.82--88.99) [144335]"}
                     0 <= tid;
-                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= N might not hold. (test_binomial_noauto.vpr@88.82--88.99) [36742]"}
+                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= N might not hold. (test_binomial_noauto.vpr@88.82--88.99) [144336]"}
                     tid <= N;
                   // Stop execution
                   assume false;
                 }
-              assert {:msg "  Assert might fail. Assertion diz.demo__tmp[tid].Ref__Integer_value == demo__bin(N, tid) might not hold. (test_binomial_noauto.vpr@88.12--88.100) [36743]"}
+              assert {:msg "  Assert might fail. Assertion diz.demo__tmp[tid].Ref__Integer_value == demo__bin(N, tid) might not hold. (test_binomial_noauto.vpr@88.12--88.100) [144337]"}
                 Heap[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value] == demo__bin(Heap, N, tid);
             }
             assume state(Heap, Mask);
@@ -1254,15 +1254,15 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
             if (tid < gsize - 1) {
               
               // -- Check definedness of acc(diz.demo__tmp[tid].Ref__Integer_value, write)
-                assert {:msg "  Exhale might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@89.12--89.83) [36744]"}
+                assert {:msg "  Exhale might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@89.12--89.83) [144338]"}
                   HasDirectPerm(ExhaleWellDef0Mask, diz, demo__tmp);
-                assert {:msg "  Exhale might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@89.12--89.83) [36745]"}
+                assert {:msg "  Exhale might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@89.12--89.83) [144339]"}
                   tid >= 0;
-                assert {:msg "  Exhale might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@89.12--89.83) [36746]"}
+                assert {:msg "  Exhale might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@89.12--89.83) [144340]"}
                   tid < Seq#Length(Heap[diz, demo__tmp]);
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  Exhale might fail. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@89.12--89.83) [36747]"}
+                assert {:msg "  Exhale might fail. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@89.12--89.83) [144341]"}
                   perm <= Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value];
               }
               Mask := Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value] - perm];
@@ -1292,11 +1292,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
             if (tid > 0) {
               
               // -- Check definedness of acc(diz.demo__tmp[tid - 1].Ref__Integer_value, write)
-                assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@93.12--93.79) [36748]"}
+                assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@93.12--93.79) [144342]"}
                   HasDirectPerm(Mask, diz, demo__tmp);
-                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@93.12--93.79) [36749]"}
+                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@93.12--93.79) [144343]"}
                   tid - 1 >= 0;
-                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@93.12--93.79) [36750]"}
+                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@93.12--93.79) [144344]"}
                   tid - 1 < Seq#Length(Heap[diz, demo__tmp]);
               perm := FullPerm;
               assume Seq#Index(Heap[diz, demo__tmp], tid - 1) != null;
@@ -1312,23 +1312,23 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
               assume state(Heap, Mask);
               
               // -- Check definedness of diz.demo__tmp[tid - 1].Ref__Integer_value == demo__bin(N, tid - 1)
-                assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@94.12--94.108) [36751]"}
+                assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@94.12--94.108) [144345]"}
                   HasDirectPerm(Mask, diz, demo__tmp);
-                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@94.12--94.108) [36752]"}
+                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@94.12--94.108) [144346]"}
                   tid - 1 >= 0;
-                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@94.12--94.108) [36753]"}
+                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@94.12--94.108) [144347]"}
                   tid - 1 < Seq#Length(Heap[diz, demo__tmp]);
-                assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.demo__tmp[tid - 1].Ref__Integer_value (test_binomial_noauto.vpr@94.12--94.108) [36754]"}
+                assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.demo__tmp[tid - 1].Ref__Integer_value (test_binomial_noauto.vpr@94.12--94.108) [144348]"}
                   HasDirectPerm(Mask, Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value);
                 if (*) {
                   // Exhale precondition of function application
                   ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
-                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@94.86--94.107) [36755]"}
+                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@94.86--94.107) [144349]"}
                     N >= 0;
-                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid - 1 might not hold. (test_binomial_noauto.vpr@94.86--94.107) [36756]"}
+                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid - 1 might not hold. (test_binomial_noauto.vpr@94.86--94.107) [144350]"}
                     0 <= tid - 1;
-                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid - 1 <= N might not hold. (test_binomial_noauto.vpr@94.86--94.107) [36757]"}
+                  assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid - 1 <= N might not hold. (test_binomial_noauto.vpr@94.86--94.107) [144351]"}
                     tid - 1 <= N;
                   // Stop execution
                   assume false;
@@ -1352,64 +1352,64 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
                 ExhaleWellDef0Heap := Heap;
                 
                 // -- Check definedness of diz.demo__tmp[tid - 1].Ref__Integer_value == demo__bin(N - 1, tid - 1)
-                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@97.14--97.153) [36758]"}
+                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@97.14--97.153) [144352]"}
                     HasDirectPerm(ExhaleWellDef0Mask, diz, demo__tmp);
-                  assert {:msg "  Assert might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@97.14--97.153) [36759]"}
+                  assert {:msg "  Assert might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@97.14--97.153) [144353]"}
                     tid - 1 >= 0;
-                  assert {:msg "  Assert might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@97.14--97.153) [36760]"}
+                  assert {:msg "  Assert might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@97.14--97.153) [144354]"}
                     tid - 1 < Seq#Length(Heap[diz, demo__tmp]);
-                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__tmp[tid - 1].Ref__Integer_value (test_binomial_noauto.vpr@97.14--97.153) [36761]"}
+                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__tmp[tid - 1].Ref__Integer_value (test_binomial_noauto.vpr@97.14--97.153) [144355]"}
                     HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value);
                   if (*) {
                     // Exhale precondition of function application
                     ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_noauto.vpr@97.60--97.85) [36762]"}
+                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_noauto.vpr@97.60--97.85) [144356]"}
                       N - 1 >= 0;
-                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid - 1 might not hold. (test_binomial_noauto.vpr@97.60--97.85) [36763]"}
+                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid - 1 might not hold. (test_binomial_noauto.vpr@97.60--97.85) [144357]"}
                       0 <= tid - 1;
-                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid - 1 <= N - 1 might not hold. (test_binomial_noauto.vpr@97.60--97.85) [36764]"}
+                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid - 1 <= N - 1 might not hold. (test_binomial_noauto.vpr@97.60--97.85) [144358]"}
                       tid - 1 <= N - 1;
                     // Stop execution
                     assume false;
                   }
-                assert {:msg "  Assert might fail. Assertion diz.demo__tmp[tid - 1].Ref__Integer_value == demo__bin(N - 1, tid - 1) might not hold. (test_binomial_noauto.vpr@97.14--97.153) [36765]"}
+                assert {:msg "  Assert might fail. Assertion diz.demo__tmp[tid - 1].Ref__Integer_value == demo__bin(N - 1, tid - 1) might not hold. (test_binomial_noauto.vpr@97.14--97.153) [144359]"}
                   Heap[Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value] == demo__bin(Heap, N - 1, tid - 1);
                 
                 // -- Check definedness of diz.demo__ar[tid].Ref__Integer_value == demo__bin(N - 1, tid)
-                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@97.14--97.153) [36766]"}
+                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@97.14--97.153) [144360]"}
                     HasDirectPerm(ExhaleWellDef0Mask, diz, demo__ar);
-                  assert {:msg "  Assert might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@97.14--97.153) [36767]"}
+                  assert {:msg "  Assert might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@97.14--97.153) [144361]"}
                     tid >= 0;
-                  assert {:msg "  Assert might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@97.14--97.153) [36768]"}
+                  assert {:msg "  Assert might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@97.14--97.153) [144362]"}
                     tid < Seq#Length(Heap[diz, demo__ar]);
-                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@97.14--97.153) [36769]"}
+                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@97.14--97.153) [144363]"}
                     HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value);
                   if (*) {
                     // Exhale precondition of function application
                     ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_noauto.vpr@97.131--97.152) [36770]"}
+                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_noauto.vpr@97.131--97.152) [144364]"}
                       N - 1 >= 0;
-                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@97.131--97.152) [36771]"}
+                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@97.131--97.152) [144365]"}
                       0 <= tid;
-                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= N - 1 might not hold. (test_binomial_noauto.vpr@97.131--97.152) [36772]"}
+                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= N - 1 might not hold. (test_binomial_noauto.vpr@97.131--97.152) [144366]"}
                       tid <= N - 1;
                     // Stop execution
                     assume false;
                   }
-                assert {:msg "  Assert might fail. Assertion diz.demo__ar[tid].Ref__Integer_value == demo__bin(N - 1, tid) might not hold. (test_binomial_noauto.vpr@97.14--97.153) [36773]"}
+                assert {:msg "  Assert might fail. Assertion diz.demo__ar[tid].Ref__Integer_value == demo__bin(N - 1, tid) might not hold. (test_binomial_noauto.vpr@97.14--97.153) [144367]"}
                   Heap[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value] == demo__bin(Heap, N - 1, tid);
                 assume state(Heap, Mask);
               
               // -- Translating statement: __flatten_6 := diz.demo__ar[tid] -- test_binomial_noauto.vpr@98.7--98.39
                 
                 // -- Check definedness of diz.demo__ar[tid]
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@98.7--98.39) [36774]"}
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@98.7--98.39) [144368]"}
                     HasDirectPerm(Mask, diz, demo__ar);
-                  assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@98.7--98.39) [36775]"}
+                  assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@98.7--98.39) [144369]"}
                     tid >= 0;
-                  assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@98.7--98.39) [36776]"}
+                  assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@98.7--98.39) [144370]"}
                     tid < Seq#Length(Heap[diz, demo__ar]);
                 __flatten_6 := Seq#Index(Heap[diz, demo__ar], tid);
                 assume state(Heap, Mask);
@@ -1417,11 +1417,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
               // -- Translating statement: __flatten_8 := diz.demo__tmp[tid - 1] -- test_binomial_noauto.vpr@99.7--99.44
                 
                 // -- Check definedness of diz.demo__tmp[tid - 1]
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@99.7--99.44) [36777]"}
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@99.7--99.44) [144371]"}
                     HasDirectPerm(Mask, diz, demo__tmp);
-                  assert {:msg "  Assignment might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@99.7--99.44) [36778]"}
+                  assert {:msg "  Assignment might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@99.7--99.44) [144372]"}
                     tid - 1 >= 0;
-                  assert {:msg "  Assignment might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@99.7--99.44) [36779]"}
+                  assert {:msg "  Assignment might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@99.7--99.44) [144373]"}
                     tid - 1 < Seq#Length(Heap[diz, demo__tmp]);
                 __flatten_8 := Seq#Index(Heap[diz, demo__tmp], tid - 1);
                 assume state(Heap, Mask);
@@ -1429,11 +1429,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
               // -- Translating statement: __flatten_9 := diz.demo__ar[tid] -- test_binomial_noauto.vpr@100.7--100.39
                 
                 // -- Check definedness of diz.demo__ar[tid]
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@100.7--100.39) [36780]"}
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@100.7--100.39) [144374]"}
                     HasDirectPerm(Mask, diz, demo__ar);
-                  assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@100.7--100.39) [36781]"}
+                  assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@100.7--100.39) [144375]"}
                     tid >= 0;
-                  assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@100.7--100.39) [36782]"}
+                  assert {:msg "  Assignment might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@100.7--100.39) [144376]"}
                     tid < Seq#Length(Heap[diz, demo__ar]);
                 __flatten_9 := Seq#Index(Heap[diz, demo__ar], tid);
                 assume state(Heap, Mask);
@@ -1442,15 +1442,15 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
   //   __flatten_9.Ref__Integer_value -- test_binomial_noauto.vpr@101.7--101.85
                 
                 // -- Check definedness of __flatten_8.Ref__Integer_value + __flatten_9.Ref__Integer_value
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_8.Ref__Integer_value (test_binomial_noauto.vpr@101.7--101.85) [36783]"}
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_8.Ref__Integer_value (test_binomial_noauto.vpr@101.7--101.85) [144377]"}
                     HasDirectPerm(Mask, __flatten_8, Ref__Integer_value);
-                  assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_9.Ref__Integer_value (test_binomial_noauto.vpr@101.7--101.85) [36784]"}
+                  assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_9.Ref__Integer_value (test_binomial_noauto.vpr@101.7--101.85) [144378]"}
                     HasDirectPerm(Mask, __flatten_9, Ref__Integer_value);
                 __flatten_7 := Heap[__flatten_8, Ref__Integer_value] + Heap[__flatten_9, Ref__Integer_value];
                 assume state(Heap, Mask);
               
               // -- Translating statement: __flatten_6.Ref__Integer_value := __flatten_7 -- test_binomial_noauto.vpr@102.7--102.52
-                assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_6.Ref__Integer_value (test_binomial_noauto.vpr@102.7--102.52) [36785]"}
+                assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_6.Ref__Integer_value (test_binomial_noauto.vpr@102.7--102.52) [144379]"}
                   FullPerm == Mask[__flatten_6, Ref__Integer_value];
                 Heap := Heap[__flatten_6, Ref__Integer_value:=__flatten_7];
                 assume state(Heap, Mask);
@@ -1460,28 +1460,28 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
                 ExhaleWellDef0Heap := Heap;
                 
                 // -- Check definedness of diz.demo__ar[tid].Ref__Integer_value == demo__bin(N, tid)
-                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@103.14--103.71) [36786]"}
+                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@103.14--103.71) [144380]"}
                     HasDirectPerm(ExhaleWellDef0Mask, diz, demo__ar);
-                  assert {:msg "  Assert might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@103.14--103.71) [36787]"}
+                  assert {:msg "  Assert might fail. Index diz.demo__ar[tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@103.14--103.71) [144381]"}
                     tid >= 0;
-                  assert {:msg "  Assert might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@103.14--103.71) [36788]"}
+                  assert {:msg "  Assert might fail. Index diz.demo__ar[tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@103.14--103.71) [144382]"}
                     tid < Seq#Length(Heap[diz, demo__ar]);
-                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@103.14--103.71) [36789]"}
+                  assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@103.14--103.71) [144383]"}
                     HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value);
                   if (*) {
                     // Exhale precondition of function application
                     ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@103.54--103.71) [36790]"}
+                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@103.54--103.71) [144384]"}
                       N >= 0;
-                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@103.54--103.71) [36791]"}
+                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@103.54--103.71) [144385]"}
                       0 <= tid;
-                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= N might not hold. (test_binomial_noauto.vpr@103.54--103.71) [36792]"}
+                    assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= N might not hold. (test_binomial_noauto.vpr@103.54--103.71) [144386]"}
                       tid <= N;
                     // Stop execution
                     assume false;
                   }
-                assert {:msg "  Assert might fail. Assertion diz.demo__ar[tid].Ref__Integer_value == demo__bin(N, tid) might not hold. (test_binomial_noauto.vpr@103.14--103.71) [36793]"}
+                assert {:msg "  Assert might fail. Assertion diz.demo__ar[tid].Ref__Integer_value == demo__bin(N, tid) might not hold. (test_binomial_noauto.vpr@103.14--103.71) [144387]"}
                   Heap[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value] == demo__bin(Heap, N, tid);
                 assume state(Heap, Mask);
             }
@@ -1490,21 +1490,21 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
           // -- Translating statement: assert gsize > 1 -- test_binomial_noauto.vpr@105.5--105.21
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@105.12--105.21) [36794]"}
+            assert {:msg "  Assert might fail. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@105.12--105.21) [144388]"}
               gsize > 1;
             assume state(Heap, Mask);
           
           // -- Translating statement: assert 0 < N -- test_binomial_noauto.vpr@106.5--106.17
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@106.12--106.17) [36795]"}
+            assert {:msg "  Assert might fail. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@106.12--106.17) [144389]"}
               0 < N;
             assume state(Heap, Mask);
           
           // -- Translating statement: assert N < gsize -- test_binomial_noauto.vpr@107.5--107.21
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@107.12--107.21) [36796]"}
+            assert {:msg "  Assert might fail. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@107.12--107.21) [144390]"}
               N < gsize;
             assume state(Heap, Mask);
           
@@ -1514,15 +1514,15 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
             if (tid > 0) {
               
               // -- Check definedness of acc(diz.demo__tmp[tid - 1].Ref__Integer_value, write)
-                assert {:msg "  Exhale might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@108.12--108.79) [36797]"}
+                assert {:msg "  Exhale might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@108.12--108.79) [144391]"}
                   HasDirectPerm(ExhaleWellDef0Mask, diz, demo__tmp);
-                assert {:msg "  Exhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@108.12--108.79) [36798]"}
+                assert {:msg "  Exhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@108.12--108.79) [144392]"}
                   tid - 1 >= 0;
-                assert {:msg "  Exhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@108.12--108.79) [36799]"}
+                assert {:msg "  Exhale might fail. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@108.12--108.79) [144393]"}
                   tid - 1 < Seq#Length(Heap[diz, demo__tmp]);
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  Exhale might fail. There might be insufficient permission to access diz.demo__tmp[tid - 1].Ref__Integer_value (test_binomial_noauto.vpr@108.12--108.79) [36800]"}
+                assert {:msg "  Exhale might fail. There might be insufficient permission to access diz.demo__tmp[tid - 1].Ref__Integer_value (test_binomial_noauto.vpr@108.12--108.79) [144394]"}
                   perm <= Mask[Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value];
               }
               Mask := Mask[Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value] - perm];
@@ -1553,11 +1553,11 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
             if (tid < gsize - 1) {
               
               // -- Check definedness of acc(diz.demo__tmp[tid].Ref__Integer_value, write)
-                assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@112.12--112.83) [36801]"}
+                assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@112.12--112.83) [144395]"}
                   HasDirectPerm(Mask, diz, demo__tmp);
-                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@112.12--112.83) [36802]"}
+                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@112.12--112.83) [144396]"}
                   tid >= 0;
-                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@112.12--112.83) [36803]"}
+                assert {:msg "  Inhale might fail. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@112.12--112.83) [144397]"}
                   tid < Seq#Length(Heap[diz, demo__tmp]);
               perm := FullPerm;
               assume Seq#Index(Heap[diz, demo__tmp], tid) != null;
@@ -1569,49 +1569,49 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant 0 <= tid might not be preserved. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@65.15--65.23) [36804]"}
+        assert {:msg "  Loop invariant 0 <= tid might not be preserved. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@65.15--65.23) [144398]"}
           0 <= tid;
-        assert {:msg "  Loop invariant tid < tcount might not be preserved. Assertion tid < tcount might not hold. (test_binomial_noauto.vpr@66.15--66.27) [36805]"}
+        assert {:msg "  Loop invariant tid < tcount might not be preserved. Assertion tid < tcount might not hold. (test_binomial_noauto.vpr@66.15--66.27) [144399]"}
           tid < tcount;
-        assert {:msg "  Loop invariant tid == lid might not be preserved. Assertion tid == lid might not hold. (test_binomial_noauto.vpr@67.15--67.25) [36806]"}
+        assert {:msg "  Loop invariant tid == lid might not be preserved. Assertion tid == lid might not hold. (test_binomial_noauto.vpr@67.15--67.25) [144400]"}
           tid == lid;
-        assert {:msg "  Loop invariant tcount == gsize might not be preserved. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@68.15--68.30) [36807]"}
+        assert {:msg "  Loop invariant tcount == gsize might not be preserved. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@68.15--68.30) [144401]"}
           tcount == gsize;
-        assert {:msg "  Loop invariant gid == 0 might not be preserved. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@69.15--69.23) [36808]"}
+        assert {:msg "  Loop invariant gid == 0 might not be preserved. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@69.15--69.23) [144402]"}
           gid == 0;
-        assert {:msg "  Loop invariant acc(diz.demo__ar, wildcard) might not be preserved. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@70.15--70.42) [36809]"}
+        assert {:msg "  Loop invariant acc(diz.demo__ar, wildcard) might not be preserved. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@70.15--70.42) [144403]"}
           Mask[diz, demo__ar] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[diz, demo__ar];
         Mask := Mask[diz, demo__ar:=Mask[diz, demo__ar] - wildcard];
-        assert {:msg "  Loop invariant |diz.demo__ar| == gsize might not be preserved. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@71.15--71.38) [36810]"}
+        assert {:msg "  Loop invariant |diz.demo__ar| == gsize might not be preserved. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@71.15--71.38) [144404]"}
           Seq#Length(Heap[diz, demo__ar]) == gsize;
-        assert {:msg "  Loop invariant acc(diz.demo__tmp, wildcard) might not be preserved. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@72.15--72.43) [36811]"}
+        assert {:msg "  Loop invariant acc(diz.demo__tmp, wildcard) might not be preserved. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@72.15--72.43) [144405]"}
           Mask[diz, demo__tmp] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[diz, demo__tmp];
         Mask := Mask[diz, demo__tmp:=Mask[diz, demo__tmp] - wildcard];
-        assert {:msg "  Loop invariant |diz.demo__tmp| == gsize might not be preserved. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@73.15--73.39) [36812]"}
+        assert {:msg "  Loop invariant |diz.demo__tmp| == gsize might not be preserved. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@73.15--73.39) [144406]"}
           Seq#Length(Heap[diz, demo__tmp]) == gsize;
-        assert {:msg "  Loop invariant gsize > 1 might not be preserved. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@74.15--74.24) [36813]"}
+        assert {:msg "  Loop invariant gsize > 1 might not be preserved. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@74.15--74.24) [144407]"}
           gsize > 1;
-        assert {:msg "  Loop invariant 0 < N might not be preserved. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@75.15--75.20) [36814]"}
+        assert {:msg "  Loop invariant 0 < N might not be preserved. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@75.15--75.20) [144408]"}
           0 < N;
-        assert {:msg "  Loop invariant N < gsize might not be preserved. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@76.15--76.24) [36815]"}
+        assert {:msg "  Loop invariant N < gsize might not be preserved. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@76.15--76.24) [144409]"}
           N < gsize;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.demo__ar[tid].Ref__Integer_value, write) might not be preserved. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@77.15--77.63) [36816]"}
+          assert {:msg "  Loop invariant acc(diz.demo__ar[tid].Ref__Integer_value, write) might not be preserved. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@77.15--77.63) [144410]"}
             perm <= Mask[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value];
         }
         Mask := Mask[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.demo__tmp[tid].Ref__Integer_value, write) might not be preserved. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@78.15--78.64) [36817]"}
+          assert {:msg "  Loop invariant acc(diz.demo__tmp[tid].Ref__Integer_value, write) might not be preserved. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@78.15--78.64) [144411]"}
             perm <= Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value];
         }
         Mask := Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value] - perm];
-        assert {:msg "  Loop invariant diz.demo__ar[tid].Ref__Integer_value == (tid < N ? demo__bin(N, tid) : 1) might not be preserved. Assertion diz.demo__ar[tid].Ref__Integer_value == (tid < N ? demo__bin(N, tid) : 1) might not hold. (test_binomial_noauto.vpr@79.15--79.88) [36818]"}
+        assert {:msg "  Loop invariant diz.demo__ar[tid].Ref__Integer_value == (tid < N ? demo__bin(N, tid) : 1) might not be preserved. Assertion diz.demo__ar[tid].Ref__Integer_value == (tid < N ? demo__bin(N, tid) : 1) might not hold. (test_binomial_noauto.vpr@79.15--79.88) [144412]"}
           Heap[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value] == (if tid < N then demo__bin(Heap, N, tid) else 1);
         // Finish exhale
         havoc ExhaleHeap;
@@ -1660,43 +1660,43 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@33.11--33.19) [36819]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@33.11--33.19) [144413]"}
       0 <= tid;
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion tid < tcount might not hold. (test_binomial_noauto.vpr@34.11--34.23) [36820]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion tid < tcount might not hold. (test_binomial_noauto.vpr@34.11--34.23) [144414]"}
       tid < tcount;
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion tid == lid might not hold. (test_binomial_noauto.vpr@35.11--35.21) [36821]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion tid == lid might not hold. (test_binomial_noauto.vpr@35.11--35.21) [144415]"}
       tid == lid;
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@36.11--36.26) [36822]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@36.11--36.26) [144416]"}
       tcount == gsize;
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@37.11--37.19) [36823]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@37.11--37.19) [144417]"}
       gid == 0;
-    assert {:msg "  Postcondition of demo__main_main might not hold. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@38.11--38.38) [36824]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@38.11--38.38) [144418]"}
       Mask[diz, demo__ar] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, demo__ar];
     Mask := Mask[diz, demo__ar:=Mask[diz, demo__ar] - wildcard];
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@39.11--39.34) [36825]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@39.11--39.34) [144419]"}
       Seq#Length(Heap[diz, demo__ar]) == gsize;
-    assert {:msg "  Postcondition of demo__main_main might not hold. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@40.11--40.39) [36826]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@40.11--40.39) [144420]"}
       Mask[diz, demo__tmp] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, demo__tmp];
     Mask := Mask[diz, demo__tmp:=Mask[diz, demo__tmp] - wildcard];
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@41.11--41.35) [36827]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@41.11--41.35) [144421]"}
       Seq#Length(Heap[diz, demo__tmp]) == gsize;
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion diz.demo__ar == old(diz.demo__ar) might not hold. (test_binomial_noauto.vpr@42.11--42.44) [36828]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion diz.demo__ar == old(diz.demo__ar) might not hold. (test_binomial_noauto.vpr@42.11--42.44) [144422]"}
       Seq#Equal(Heap[diz, demo__ar], oldHeap[diz, demo__ar]);
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion diz.demo__tmp == old(diz.demo__tmp) might not hold. (test_binomial_noauto.vpr@43.11--43.46) [36829]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion diz.demo__tmp == old(diz.demo__tmp) might not hold. (test_binomial_noauto.vpr@43.11--43.46) [144423]"}
       Seq#Equal(Heap[diz, demo__tmp], oldHeap[diz, demo__tmp]);
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@44.11--44.20) [36830]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@44.11--44.20) [144424]"}
       gsize > 1;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of demo__main_main might not hold. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@45.11--45.59) [36831]"}
+      assert {:msg "  Postcondition of demo__main_main might not hold. There might be insufficient permission to access diz.demo__ar[tid].Ref__Integer_value (test_binomial_noauto.vpr@45.11--45.59) [144425]"}
         perm <= Mask[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value];
     }
     Mask := Mask[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value] - perm];
-    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion diz.demo__ar[tid].Ref__Integer_value == demo__bin(gsize - 1, tid) might not hold. (test_binomial_noauto.vpr@46.11--46.76) [36832]"}
+    assert {:msg "  Postcondition of demo__main_main might not hold. Assertion diz.demo__ar[tid].Ref__Integer_value == demo__bin(gsize - 1, tid) might not hold. (test_binomial_noauto.vpr@46.11--46.76) [144426]"}
       Heap[Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value] == demo__bin(Heap, gsize - 1, tid);
     // Finish exhale
     havoc ExhaleHeap;
@@ -1713,18 +1713,18 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var i_14: int;
-  var j_5: int;
-  var tid_24: int;
+  var i_18: int;
+  var j_14: int;
+  var tid_2: int;
   var QPMask: MaskType;
-  var tid_20: int;
+  var tid_3: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var tid_2: int;
+  var tid_8: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1753,7 +1753,7 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.demo__ar| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@122.12--122.35) [36833]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@122.12--122.35) [144427]"}
         HasDirectPerm(Mask, diz, demo__ar);
     assume Seq#Length(Heap[diz, demo__ar]) == gsize;
     assume state(Heap, Mask);
@@ -1765,7 +1765,7 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.demo__tmp| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@124.12--124.36) [36834]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@124.12--124.36) [144428]"}
         HasDirectPerm(Mask, diz, demo__tmp);
     assume Seq#Length(Heap[diz, demo__tmp]) == gsize;
     assume state(Heap, Mask);
@@ -1780,29 +1780,29 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
     
     // -- Check definedness of (forall i: Int, j: Int :: { diz.demo__tmp[i], diz.demo__tmp[j] } i >= 0 && (i < |diz.demo__tmp| && (j >= 0 && (j < |diz.demo__tmp| && i != j))) ==> diz.demo__tmp[i] != diz.demo__tmp[j])
       if (*) {
-        if (i_14 >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@129.12--129.148) [36835]"}
+        if (i_18 >= 0) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@129.12--129.148) [144429]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          if (i_14 < Seq#Length(Heap[diz, demo__tmp])) {
-            if (j_5 >= 0) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@129.12--129.148) [36836]"}
+          if (i_18 < Seq#Length(Heap[diz, demo__tmp])) {
+            if (j_14 >= 0) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@129.12--129.148) [144430]"}
                 HasDirectPerm(Mask, diz, demo__tmp);
             }
           }
         }
-        if (i_14 >= 0 && (i_14 < Seq#Length(Heap[diz, demo__tmp]) && (j_5 >= 0 && (j_5 < Seq#Length(Heap[diz, demo__tmp]) && i_14 != j_5)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@129.12--129.148) [36837]"}
+        if (i_18 >= 0 && (i_18 < Seq#Length(Heap[diz, demo__tmp]) && (j_14 >= 0 && (j_14 < Seq#Length(Heap[diz, demo__tmp]) && i_18 != j_14)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@129.12--129.148) [144431]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@129.12--129.148) [36838]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@129.12--129.148) [36839]"}
-            i_14 < Seq#Length(Heap[diz, demo__tmp]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@129.12--129.148) [36840]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@129.12--129.148) [144432]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@129.12--129.148) [144433]"}
+            i_18 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@129.12--129.148) [144434]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@129.12--129.148) [36841]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@129.12--129.148) [36842]"}
-            j_5 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@129.12--129.148) [144435]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@129.12--129.148) [144436]"}
+            j_14 < Seq#Length(Heap[diz, demo__tmp]);
         }
         assume false;
       }
@@ -1814,18 +1814,18 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
     
     // -- Check definedness of (forall tid: Int :: { diz.demo__tmp[tid] } 0 <= tid && tid < (gsize - 1 < gsize ? gsize - 1 : gsize) ==> acc(diz.demo__tmp[tid].Ref__Integer_value, write))
       if (*) {
-        if (0 <= tid_24 && tid_24 < (if gsize - 1 < gsize then gsize - 1 else gsize)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@130.13--130.147) [36843]"}
+        if (0 <= tid_2 && tid_2 < (if gsize - 1 < gsize then gsize - 1 else gsize)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@130.13--130.147) [144437]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@130.13--130.147) [36844]"}
-            tid_24 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@130.13--130.147) [36845]"}
-            tid_24 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@130.13--130.147) [144438]"}
+            tid_2 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@130.13--130.147) [144439]"}
+            tid_2 < Seq#Length(Heap[diz, demo__tmp]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@130.13--130.147) [36846]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@130.13--130.147) [144440]"}
       (forall tid_1: int, tid_1_1: int ::
       
       (((tid_1 != tid_1_1 && (0 <= tid_1 && tid_1 < (if gsize - 1 < gsize then gsize - 1 else gsize))) && (0 <= tid_1_1 && tid_1_1 < (if gsize - 1 < gsize then gsize - 1 else gsize))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], tid_1) != Seq#Index(Heap[diz, demo__tmp], tid_1_1)
@@ -1836,9 +1836,9 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
         { Seq#Index(Heap[diz, demo__tmp], tid_1) } { Seq#Index(Heap[diz, demo__tmp], tid_1) }
         (0 <= tid_1 && tid_1 < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm ==> qpRange1(Seq#Index(Heap[diz, demo__tmp], tid_1)) && invRecv1(Seq#Index(Heap[diz, demo__tmp], tid_1)) == tid_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && invRecv1(o_4) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange1(o_4) ==> Seq#Index(Heap[diz, demo__tmp], invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && invRecv1(o_9) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange1(o_9) ==> Seq#Index(Heap[diz, demo__tmp], invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1848,13 +1848,13 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv1(o_4) && invRecv1(o_4) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], invRecv1(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv1(o_9) && invRecv1(o_9) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], invRecv1(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1863,34 +1863,34 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
     
     // -- Check definedness of (forall tid: Int :: { diz.demo__tmp[tid] } { demo__bin(N, tid) } 0 <= tid && (tid < gsize && (0 <= tid && tid < N)) ==> diz.demo__tmp[tid].Ref__Integer_value == demo__bin(N, tid))
       if (*) {
-        if (0 <= tid_20 && (tid_20 < gsize && (0 <= tid_20 && tid_20 < N))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@131.13--131.153) [36847]"}
+        if (0 <= tid_3 && (tid_3 < gsize && (0 <= tid_3 && tid_3 < N))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@131.13--131.153) [144441]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@131.13--131.153) [36848]"}
-            tid_20 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@131.13--131.153) [36849]"}
-            tid_20 < Seq#Length(Heap[diz, demo__tmp]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@131.13--131.153) [36850]"}
-            HasDirectPerm(Mask, Seq#Index(Heap[diz, demo__tmp], tid_20), Ref__Integer_value);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@131.13--131.153) [144442]"}
+            tid_3 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@131.13--131.153) [144443]"}
+            tid_3 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@131.13--131.153) [144444]"}
+            HasDirectPerm(Mask, Seq#Index(Heap[diz, demo__tmp], tid_3), Ref__Integer_value);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@131.135--131.152) [36851]"}
+            assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@131.135--131.152) [144445]"}
               N >= 0;
-            assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@131.135--131.152) [36852]"}
-              0 <= tid_20;
-            assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= N might not hold. (test_binomial_noauto.vpr@131.135--131.152) [36853]"}
-              tid_20 <= N;
+            assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@131.135--131.152) [144446]"}
+              0 <= tid_3;
+            assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid <= N might not hold. (test_binomial_noauto.vpr@131.135--131.152) [144447]"}
+              tid_3 <= N;
             // Stop execution
             assume false;
           }
         }
         assume false;
       }
-    assume (forall tid_3: int ::
-      { Seq#Index(Heap[diz, demo__tmp], tid_3) } { demo__bin#frame(EmptyFrame, N, tid_3) }
-      0 <= tid_3 && (tid_3 < gsize && (0 <= tid_3 && tid_3 < N)) ==> Heap[Seq#Index(Heap[diz, demo__tmp], tid_3), Ref__Integer_value] == demo__bin(Heap, N, tid_3)
+    assume (forall tid_3_1: int ::
+      { Seq#Index(Heap[diz, demo__tmp], tid_3_1) } { demo__bin#frame(EmptyFrame, N, tid_3_1) }
+      0 <= tid_3_1 && (tid_3_1 < gsize && (0 <= tid_3_1 && tid_3_1 < N)) ==> Heap[Seq#Index(Heap[diz, demo__tmp], tid_3_1), Ref__Integer_value] == demo__bin(Heap, N, tid_3_1)
     );
     assume state(Heap, Mask);
   
@@ -1916,7 +1916,7 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.demo__ar| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@135.11--135.34) [36854]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@135.11--135.34) [144448]"}
         HasDirectPerm(PostMask, diz, demo__ar);
     assume Seq#Length(PostHeap[diz, demo__ar]) == gsize;
     assume state(PostHeap, PostMask);
@@ -1928,7 +1928,7 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.demo__tmp| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@137.11--137.35) [36855]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@137.11--137.35) [144449]"}
         HasDirectPerm(PostMask, diz, demo__tmp);
     assume Seq#Length(PostHeap[diz, demo__tmp]) == gsize;
     assume state(PostHeap, PostMask);
@@ -1936,35 +1936,35 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__ar == old(diz.demo__ar)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@139.11--139.44) [36856]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@139.11--139.44) [144450]"}
         HasDirectPerm(PostMask, diz, demo__ar);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@139.11--139.44) [36857]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@139.11--139.44) [144451]"}
         HasDirectPerm(oldMask, diz, demo__ar);
     assume Seq#Equal(PostHeap[diz, demo__ar], oldHeap[diz, demo__ar]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__tmp == old(diz.demo__tmp)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@140.11--140.46) [36858]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@140.11--140.46) [144452]"}
         HasDirectPerm(PostMask, diz, demo__tmp);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@140.11--140.46) [36859]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@140.11--140.46) [144453]"}
         HasDirectPerm(oldMask, diz, demo__tmp);
     assume Seq#Equal(PostHeap[diz, demo__tmp], oldHeap[diz, demo__tmp]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall tid: Int :: { diz.demo__tmp[tid] } (0 <= 0 ? 1 : 0) - 1 <= tid && tid < gsize - 1 ==> acc(diz.demo__tmp[tid].Ref__Integer_value, write))
       if (*) {
-        if (0 <= tid_2 && tid_2 < gsize - 1) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@141.12--141.135) [36860]"}
+        if (0 <= tid_8 && tid_8 < gsize - 1) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@141.12--141.135) [144454]"}
             HasDirectPerm(PostMask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@141.12--141.135) [36861]"}
-            tid_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@141.12--141.135) [36862]"}
-            tid_2 < Seq#Length(PostHeap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@141.12--141.135) [144455]"}
+            tid_8 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@141.12--141.135) [144456]"}
+            tid_8 < Seq#Length(PostHeap[diz, demo__tmp]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@141.12--141.135) [36863]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@141.12--141.135) [144457]"}
       (forall tid_5: int, tid_5_1: int ::
       
       (((tid_5 != tid_5_1 && (0 <= tid_5 && tid_5 < gsize - 1)) && (0 <= tid_5_1 && tid_5_1 < gsize - 1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(PostHeap[diz, demo__tmp], tid_5) != Seq#Index(PostHeap[diz, demo__tmp], tid_5_1)
@@ -1975,9 +1975,9 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
         { Seq#Index(PostHeap[diz, demo__tmp], tid_5) } { Seq#Index(PostHeap[diz, demo__tmp], tid_5) }
         (0 <= tid_5 && tid_5 < gsize - 1) && NoPerm < FullPerm ==> qpRange2(Seq#Index(PostHeap[diz, demo__tmp], tid_5)) && invRecv2(Seq#Index(PostHeap[diz, demo__tmp], tid_5)) == tid_5
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        ((0 <= invRecv2(o_4) && invRecv2(o_4) < gsize - 1) && NoPerm < FullPerm) && qpRange2(o_4) ==> Seq#Index(PostHeap[diz, demo__tmp], invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        ((0 <= invRecv2(o_9) && invRecv2(o_9) < gsize - 1) && NoPerm < FullPerm) && qpRange2(o_9) ==> Seq#Index(PostHeap[diz, demo__tmp], invRecv2(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1987,13 +1987,13 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv2(o_4) && invRecv2(o_4) < gsize - 1) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(PostHeap[diz, demo__tmp], invRecv2(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv2(o_4) && invRecv2(o_4) < gsize - 1) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv2(o_9) && invRecv2(o_9) < gsize - 1) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(PostHeap[diz, demo__tmp], invRecv2(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv2(o_9) && invRecv2(o_9) < gsize - 1) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -2005,29 +2005,29 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@132.11--132.26) [36864]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@132.11--132.26) [144458]"}
       tcount == gsize;
-    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@133.11--133.19) [36865]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@133.11--133.19) [144459]"}
       gid == 0;
-    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@134.11--134.38) [36866]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@134.11--134.38) [144460]"}
       Mask[diz, demo__ar] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, demo__ar];
     Mask := Mask[diz, demo__ar:=Mask[diz, demo__ar] - wildcard];
-    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@135.11--135.34) [36867]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@135.11--135.34) [144461]"}
       Seq#Length(Heap[diz, demo__ar]) == gsize;
-    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@136.11--136.39) [36868]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@136.11--136.39) [144462]"}
       Mask[diz, demo__tmp] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, demo__tmp];
     Mask := Mask[diz, demo__tmp:=Mask[diz, demo__tmp] - wildcard];
-    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@137.11--137.35) [36869]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@137.11--137.35) [144463]"}
       Seq#Length(Heap[diz, demo__tmp]) == gsize;
-    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@138.11--138.20) [36870]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@138.11--138.20) [144464]"}
       gsize > 1;
-    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion diz.demo__ar == old(diz.demo__ar) might not hold. (test_binomial_noauto.vpr@139.11--139.44) [36871]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion diz.demo__ar == old(diz.demo__ar) might not hold. (test_binomial_noauto.vpr@139.11--139.44) [144465]"}
       Seq#Equal(Heap[diz, demo__ar], oldHeap[diz, demo__ar]);
-    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion diz.demo__tmp == old(diz.demo__tmp) might not hold. (test_binomial_noauto.vpr@140.11--140.46) [36872]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion diz.demo__tmp == old(diz.demo__tmp) might not hold. (test_binomial_noauto.vpr@140.11--140.46) [144466]"}
       Seq#Equal(Heap[diz, demo__tmp], oldHeap[diz, demo__tmp]);
     havoc QPMask;
     
@@ -2035,39 +2035,39 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
       
     
     // -- check if receiver diz.demo__tmp[tid] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@141.12--141.135) [36873]"}
-        (forall tid_6_1: int, tid_6_2: int ::
-        { neverTriggered3(tid_6_1), neverTriggered3(tid_6_2) }
-        (((tid_6_1 != tid_6_2 && (0 <= tid_6_1 && tid_6_1 < gsize - 1)) && (0 <= tid_6_2 && tid_6_2 < gsize - 1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], tid_6_1) != Seq#Index(Heap[diz, demo__tmp], tid_6_2)
+      assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@141.12--141.135) [144467]"}
+        (forall tid_6: int, tid_6_1: int ::
+        { neverTriggered3(tid_6), neverTriggered3(tid_6_1) }
+        (((tid_6 != tid_6_1 && (0 <= tid_6 && tid_6 < gsize - 1)) && (0 <= tid_6_1 && tid_6_1 < gsize - 1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], tid_6) != Seq#Index(Heap[diz, demo__tmp], tid_6_1)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@141.12--141.135) [36874]"}
-        (forall tid_6_1: int ::
-        { Seq#Index(Heap[diz, demo__tmp], tid_6_1) } { Seq#Index(Heap[diz, demo__tmp], tid_6_1) }
-        0 <= tid_6_1 && tid_6_1 < gsize - 1 ==> Mask[Seq#Index(Heap[diz, demo__tmp], tid_6_1), Ref__Integer_value] >= FullPerm
+      assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@141.12--141.135) [144468]"}
+        (forall tid_6: int ::
+        { Seq#Index(Heap[diz, demo__tmp], tid_6) } { Seq#Index(Heap[diz, demo__tmp], tid_6) }
+        0 <= tid_6 && tid_6 < gsize - 1 ==> Mask[Seq#Index(Heap[diz, demo__tmp], tid_6), Ref__Integer_value] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver diz.demo__tmp[tid]
-      assume (forall tid_6_1: int ::
-        { Seq#Index(Heap[diz, demo__tmp], tid_6_1) } { Seq#Index(Heap[diz, demo__tmp], tid_6_1) }
-        (0 <= tid_6_1 && tid_6_1 < gsize - 1) && NoPerm < FullPerm ==> qpRange3(Seq#Index(Heap[diz, demo__tmp], tid_6_1)) && invRecv3(Seq#Index(Heap[diz, demo__tmp], tid_6_1)) == tid_6_1
+      assume (forall tid_6: int ::
+        { Seq#Index(Heap[diz, demo__tmp], tid_6) } { Seq#Index(Heap[diz, demo__tmp], tid_6) }
+        (0 <= tid_6 && tid_6 < gsize - 1) && NoPerm < FullPerm ==> qpRange3(Seq#Index(Heap[diz, demo__tmp], tid_6)) && invRecv3(Seq#Index(Heap[diz, demo__tmp], tid_6)) == tid_6
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (0 <= invRecv3(o_4) && invRecv3(o_4) < gsize - 1) && (NoPerm < FullPerm && qpRange3(o_4)) ==> Seq#Index(Heap[diz, demo__tmp], invRecv3(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (0 <= invRecv3(o_9) && invRecv3(o_9) < gsize - 1) && (NoPerm < FullPerm && qpRange3(o_9)) ==> Seq#Index(Heap[diz, demo__tmp], invRecv3(o_9)) == o_9
       );
     
     // -- assume permission updates for field Ref__Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((0 <= invRecv3(o_4) && invRecv3(o_4) < gsize - 1) && (NoPerm < FullPerm && qpRange3(o_4)) ==> Seq#Index(Heap[diz, demo__tmp], invRecv3(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!((0 <= invRecv3(o_4) && invRecv3(o_4) < gsize - 1) && (NoPerm < FullPerm && qpRange3(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((0 <= invRecv3(o_9) && invRecv3(o_9) < gsize - 1) && (NoPerm < FullPerm && qpRange3(o_9)) ==> Seq#Index(Heap[diz, demo__tmp], invRecv3(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!((0 <= invRecv3(o_9) && invRecv3(o_9) < gsize - 1) && (NoPerm < FullPerm && qpRange3(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -2085,15 +2085,15 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var i_7: int;
-  var j_7: int;
-  var tid_6: int;
+  var i_5: int;
+  var j_2: int;
+  var tid_12: int;
   var QPMask: MaskType;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var tid_8: int;
+  var tid_18: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
@@ -2124,7 +2124,7 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.demo__ar| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@151.12--151.35) [36875]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@151.12--151.35) [144469]"}
         HasDirectPerm(Mask, diz, demo__ar);
     assume Seq#Length(Heap[diz, demo__ar]) == gsize;
     assume state(Heap, Mask);
@@ -2136,7 +2136,7 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.demo__tmp| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@153.12--153.36) [36876]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@153.12--153.36) [144470]"}
         HasDirectPerm(Mask, diz, demo__tmp);
     assume Seq#Length(Heap[diz, demo__tmp]) == gsize;
     assume state(Heap, Mask);
@@ -2151,29 +2151,29 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
     
     // -- Check definedness of (forall i: Int, j: Int :: { diz.demo__tmp[i], diz.demo__tmp[j] } i >= 0 && (i < |diz.demo__tmp| && (j >= 0 && (j < |diz.demo__tmp| && i != j))) ==> diz.demo__tmp[i] != diz.demo__tmp[j])
       if (*) {
-        if (i_7 >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@158.12--158.148) [36877]"}
+        if (i_5 >= 0) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@158.12--158.148) [144471]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          if (i_7 < Seq#Length(Heap[diz, demo__tmp])) {
-            if (j_7 >= 0) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@158.12--158.148) [36878]"}
+          if (i_5 < Seq#Length(Heap[diz, demo__tmp])) {
+            if (j_2 >= 0) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@158.12--158.148) [144472]"}
                 HasDirectPerm(Mask, diz, demo__tmp);
             }
           }
         }
-        if (i_7 >= 0 && (i_7 < Seq#Length(Heap[diz, demo__tmp]) && (j_7 >= 0 && (j_7 < Seq#Length(Heap[diz, demo__tmp]) && i_7 != j_7)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@158.12--158.148) [36879]"}
+        if (i_5 >= 0 && (i_5 < Seq#Length(Heap[diz, demo__tmp]) && (j_2 >= 0 && (j_2 < Seq#Length(Heap[diz, demo__tmp]) && i_5 != j_2)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@158.12--158.148) [144473]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@158.12--158.148) [36880]"}
-            i_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@158.12--158.148) [36881]"}
-            i_7 < Seq#Length(Heap[diz, demo__tmp]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@158.12--158.148) [36882]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@158.12--158.148) [144474]"}
+            i_5 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@158.12--158.148) [144475]"}
+            i_5 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@158.12--158.148) [144476]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@158.12--158.148) [36883]"}
-            j_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@158.12--158.148) [36884]"}
-            j_7 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@158.12--158.148) [144477]"}
+            j_2 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@158.12--158.148) [144478]"}
+            j_2 < Seq#Length(Heap[diz, demo__tmp]);
         }
         assume false;
       }
@@ -2185,18 +2185,18 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
     
     // -- Check definedness of (forall tid: Int :: { diz.demo__tmp[tid] } (0 <= 0 ? 1 : 0) - 1 <= tid && tid < gsize - 1 ==> acc(diz.demo__tmp[tid].Ref__Integer_value, write))
       if (*) {
-        if (0 <= tid_6 && tid_6 < gsize - 1) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@159.13--159.136) [36885]"}
+        if (0 <= tid_12 && tid_12 < gsize - 1) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@159.13--159.136) [144479]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@159.13--159.136) [36886]"}
-            tid_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@159.13--159.136) [36887]"}
-            tid_6 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@159.13--159.136) [144480]"}
+            tid_12 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@159.13--159.136) [144481]"}
+            tid_12 < Seq#Length(Heap[diz, demo__tmp]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@159.13--159.136) [36888]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@159.13--159.136) [144482]"}
       (forall tid_1: int, tid_1_1: int ::
       
       (((tid_1 != tid_1_1 && (0 <= tid_1 && tid_1 < gsize - 1)) && (0 <= tid_1_1 && tid_1_1 < gsize - 1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], tid_1) != Seq#Index(Heap[diz, demo__tmp], tid_1_1)
@@ -2207,9 +2207,9 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
         { Seq#Index(Heap[diz, demo__tmp], tid_1) } { Seq#Index(Heap[diz, demo__tmp], tid_1) }
         (0 <= tid_1 && tid_1 < gsize - 1) && NoPerm < FullPerm ==> qpRange4(Seq#Index(Heap[diz, demo__tmp], tid_1)) && invRecv4(Seq#Index(Heap[diz, demo__tmp], tid_1)) == tid_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        ((0 <= invRecv4(o_4) && invRecv4(o_4) < gsize - 1) && NoPerm < FullPerm) && qpRange4(o_4) ==> Seq#Index(Heap[diz, demo__tmp], invRecv4(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        ((0 <= invRecv4(o_9) && invRecv4(o_9) < gsize - 1) && NoPerm < FullPerm) && qpRange4(o_9) ==> Seq#Index(Heap[diz, demo__tmp], invRecv4(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -2219,13 +2219,13 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv4(o_4) && invRecv4(o_4) < gsize - 1) && NoPerm < FullPerm) && qpRange4(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], invRecv4(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv4(o_4) && invRecv4(o_4) < gsize - 1) && NoPerm < FullPerm) && qpRange4(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv4(o_9) && invRecv4(o_9) < gsize - 1) && NoPerm < FullPerm) && qpRange4(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], invRecv4(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv4(o_9) && invRecv4(o_9) < gsize - 1) && NoPerm < FullPerm) && qpRange4(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -2253,7 +2253,7 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.demo__ar| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@163.11--163.34) [36889]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@163.11--163.34) [144483]"}
         HasDirectPerm(PostMask, diz, demo__ar);
     assume Seq#Length(PostHeap[diz, demo__ar]) == gsize;
     assume state(PostHeap, PostMask);
@@ -2265,7 +2265,7 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.demo__tmp| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@165.11--165.35) [36890]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@165.11--165.35) [144484]"}
         HasDirectPerm(PostMask, diz, demo__tmp);
     assume Seq#Length(PostHeap[diz, demo__tmp]) == gsize;
     assume state(PostHeap, PostMask);
@@ -2273,64 +2273,64 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__ar == old(diz.demo__ar)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@167.11--167.44) [36891]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@167.11--167.44) [144485]"}
         HasDirectPerm(PostMask, diz, demo__ar);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@167.11--167.44) [36892]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@167.11--167.44) [144486]"}
         HasDirectPerm(oldMask, diz, demo__ar);
     assume Seq#Equal(PostHeap[diz, demo__ar], oldHeap[diz, demo__ar]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__tmp == old(diz.demo__tmp)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@168.11--168.46) [36893]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@168.11--168.46) [144487]"}
         HasDirectPerm(PostMask, diz, demo__tmp);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@168.11--168.46) [36894]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@168.11--168.46) [144488]"}
         HasDirectPerm(oldMask, diz, demo__tmp);
     assume Seq#Equal(PostHeap[diz, demo__tmp], oldHeap[diz, demo__tmp]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall tid: Int :: { diz.demo__tmp[tid] } 0 <= tid && tid < (gsize - 1 < gsize ? gsize - 1 : gsize) ==> acc(diz.demo__tmp[tid].Ref__Integer_value, write))
       if (*) {
-        if (0 <= tid_8 && tid_8 < (if gsize - 1 < gsize then gsize - 1 else gsize)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@169.12--169.146) [36895]"}
+        if (0 <= tid_18 && tid_18 < (if gsize - 1 < gsize then gsize - 1 else gsize)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@169.12--169.146) [144489]"}
             HasDirectPerm(PostMask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@169.12--169.146) [36896]"}
-            tid_8 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@169.12--169.146) [36897]"}
-            tid_8 < Seq#Length(PostHeap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@169.12--169.146) [144490]"}
+            tid_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@169.12--169.146) [144491]"}
+            tid_18 < Seq#Length(PostHeap[diz, demo__tmp]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@169.12--169.146) [36898]"}
-      (forall tid_3: int, tid_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@169.12--169.146) [144492]"}
+      (forall tid_3_1: int, tid_3_2: int ::
       
-      (((tid_3 != tid_3_1 && (0 <= tid_3 && tid_3 < (if gsize - 1 < gsize then gsize - 1 else gsize))) && (0 <= tid_3_1 && tid_3_1 < (if gsize - 1 < gsize then gsize - 1 else gsize))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(PostHeap[diz, demo__tmp], tid_3) != Seq#Index(PostHeap[diz, demo__tmp], tid_3_1)
+      (((tid_3_1 != tid_3_2 && (0 <= tid_3_1 && tid_3_1 < (if gsize - 1 < gsize then gsize - 1 else gsize))) && (0 <= tid_3_2 && tid_3_2 < (if gsize - 1 < gsize then gsize - 1 else gsize))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(PostHeap[diz, demo__tmp], tid_3_1) != Seq#Index(PostHeap[diz, demo__tmp], tid_3_2)
     );
     
     // -- Define Inverse Function
-      assume (forall tid_3: int ::
-        { Seq#Index(PostHeap[diz, demo__tmp], tid_3) } { Seq#Index(PostHeap[diz, demo__tmp], tid_3) }
-        (0 <= tid_3 && tid_3 < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm ==> qpRange5(Seq#Index(PostHeap[diz, demo__tmp], tid_3)) && invRecv5(Seq#Index(PostHeap[diz, demo__tmp], tid_3)) == tid_3
+      assume (forall tid_3_1: int ::
+        { Seq#Index(PostHeap[diz, demo__tmp], tid_3_1) } { Seq#Index(PostHeap[diz, demo__tmp], tid_3_1) }
+        (0 <= tid_3_1 && tid_3_1 < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm ==> qpRange5(Seq#Index(PostHeap[diz, demo__tmp], tid_3_1)) && invRecv5(Seq#Index(PostHeap[diz, demo__tmp], tid_3_1)) == tid_3_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        ((0 <= invRecv5(o_4) && invRecv5(o_4) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange5(o_4) ==> Seq#Index(PostHeap[diz, demo__tmp], invRecv5(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        ((0 <= invRecv5(o_9) && invRecv5(o_9) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange5(o_9) ==> Seq#Index(PostHeap[diz, demo__tmp], invRecv5(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall tid_3: int ::
-        { Seq#Index(PostHeap[diz, demo__tmp], tid_3) } { Seq#Index(PostHeap[diz, demo__tmp], tid_3) }
-        0 <= tid_3 && tid_3 < (if gsize - 1 < gsize then gsize - 1 else gsize) ==> Seq#Index(PostHeap[diz, demo__tmp], tid_3) != null
+      assume (forall tid_3_1: int ::
+        { Seq#Index(PostHeap[diz, demo__tmp], tid_3_1) } { Seq#Index(PostHeap[diz, demo__tmp], tid_3_1) }
+        0 <= tid_3_1 && tid_3_1 < (if gsize - 1 < gsize then gsize - 1 else gsize) ==> Seq#Index(PostHeap[diz, demo__tmp], tid_3_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv5(o_4) && invRecv5(o_4) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange5(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(PostHeap[diz, demo__tmp], invRecv5(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv5(o_4) && invRecv5(o_4) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange5(o_4)) ==> QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv5(o_9) && invRecv5(o_9) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange5(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(PostHeap[diz, demo__tmp], invRecv5(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv5(o_9) && invRecv5(o_9) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm) && qpRange5(o_9)) ==> QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -2342,29 +2342,29 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@160.11--160.26) [36899]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@160.11--160.26) [144493]"}
       tcount == gsize;
-    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@161.11--161.19) [36900]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@161.11--161.19) [144494]"}
       gid == 0;
-    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@162.11--162.38) [36901]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@162.11--162.38) [144495]"}
       Mask[diz, demo__ar] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, demo__ar];
     Mask := Mask[diz, demo__ar:=Mask[diz, demo__ar] - wildcard];
-    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@163.11--163.34) [36902]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@163.11--163.34) [144496]"}
       Seq#Length(Heap[diz, demo__ar]) == gsize;
-    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@164.11--164.39) [36903]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@164.11--164.39) [144497]"}
       Mask[diz, demo__tmp] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, demo__tmp];
     Mask := Mask[diz, demo__tmp:=Mask[diz, demo__tmp] - wildcard];
-    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@165.11--165.35) [36904]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@165.11--165.35) [144498]"}
       Seq#Length(Heap[diz, demo__tmp]) == gsize;
-    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@166.11--166.20) [36905]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@166.11--166.20) [144499]"}
       gsize > 1;
-    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion diz.demo__ar == old(diz.demo__ar) might not hold. (test_binomial_noauto.vpr@167.11--167.44) [36906]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion diz.demo__ar == old(diz.demo__ar) might not hold. (test_binomial_noauto.vpr@167.11--167.44) [144500]"}
       Seq#Equal(Heap[diz, demo__ar], oldHeap[diz, demo__ar]);
-    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion diz.demo__tmp == old(diz.demo__tmp) might not hold. (test_binomial_noauto.vpr@168.11--168.46) [36907]"}
+    assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion diz.demo__tmp == old(diz.demo__tmp) might not hold. (test_binomial_noauto.vpr@168.11--168.46) [144501]"}
       Seq#Equal(Heap[diz, demo__tmp], oldHeap[diz, demo__tmp]);
     havoc QPMask;
     
@@ -2372,14 +2372,14 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
       
     
     // -- check if receiver diz.demo__tmp[tid] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@169.12--169.146) [36908]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@169.12--169.146) [144502]"}
         (forall tid_4_1: int, tid_4_2: int ::
         { neverTriggered6(tid_4_1), neverTriggered6(tid_4_2) }
         (((tid_4_1 != tid_4_2 && (0 <= tid_4_1 && tid_4_1 < (if gsize - 1 < gsize then gsize - 1 else gsize))) && (0 <= tid_4_2 && tid_4_2 < (if gsize - 1 < gsize then gsize - 1 else gsize))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], tid_4_1) != Seq#Index(Heap[diz, demo__tmp], tid_4_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@169.12--169.146) [36909]"}
+      assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@169.12--169.146) [144503]"}
         (forall tid_4_1: int ::
         { Seq#Index(Heap[diz, demo__tmp], tid_4_1) } { Seq#Index(Heap[diz, demo__tmp], tid_4_1) }
         0 <= tid_4_1 && tid_4_1 < (if gsize - 1 < gsize then gsize - 1 else gsize) ==> Mask[Seq#Index(Heap[diz, demo__tmp], tid_4_1), Ref__Integer_value] >= FullPerm
@@ -2390,21 +2390,21 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
         { Seq#Index(Heap[diz, demo__tmp], tid_4_1) } { Seq#Index(Heap[diz, demo__tmp], tid_4_1) }
         (0 <= tid_4_1 && tid_4_1 < (if gsize - 1 < gsize then gsize - 1 else gsize)) && NoPerm < FullPerm ==> qpRange6(Seq#Index(Heap[diz, demo__tmp], tid_4_1)) && invRecv6(Seq#Index(Heap[diz, demo__tmp], tid_4_1)) == tid_4_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv6(o_4) }
-        (0 <= invRecv6(o_4) && invRecv6(o_4) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && (NoPerm < FullPerm && qpRange6(o_4)) ==> Seq#Index(Heap[diz, demo__tmp], invRecv6(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv6(o_9) }
+        (0 <= invRecv6(o_9) && invRecv6(o_9) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && (NoPerm < FullPerm && qpRange6(o_9)) ==> Seq#Index(Heap[diz, demo__tmp], invRecv6(o_9)) == o_9
       );
     
     // -- assume permission updates for field Ref__Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((0 <= invRecv6(o_4) && invRecv6(o_4) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && (NoPerm < FullPerm && qpRange6(o_4)) ==> Seq#Index(Heap[diz, demo__tmp], invRecv6(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!((0 <= invRecv6(o_4) && invRecv6(o_4) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && (NoPerm < FullPerm && qpRange6(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((0 <= invRecv6(o_9) && invRecv6(o_9) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && (NoPerm < FullPerm && qpRange6(o_9)) ==> Seq#Index(Heap[diz, demo__tmp], invRecv6(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!((0 <= invRecv6(o_9) && invRecv6(o_9) < (if gsize - 1 < gsize then gsize - 1 else gsize)) && (NoPerm < FullPerm && qpRange6(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -2422,14 +2422,14 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var i_10: int;
-  var j_4: int;
-  var i_11: int;
-  var j_11: int;
-  var _x_tid_10: int;
+  var i_21: int;
+  var j_17: int;
+  var i_8: int;
+  var j_6: int;
+  var _x_tid_2: int;
   var QPMask: MaskType;
-  var _x_tid_11: int;
-  var _x_tid_12: int;
+  var _x_tid_4: int;
+  var _x_tid_6: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var oldMask: MaskType;
@@ -2470,7 +2470,7 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.demo__ar| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@182.12--182.35) [36910]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@182.12--182.35) [144504]"}
         HasDirectPerm(Mask, diz, demo__ar);
     assume Seq#Length(Heap[diz, demo__ar]) == gsize;
     assume state(Heap, Mask);
@@ -2482,36 +2482,36 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.demo__tmp| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@184.12--184.36) [36911]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@184.12--184.36) [144505]"}
         HasDirectPerm(Mask, diz, demo__tmp);
     assume Seq#Length(Heap[diz, demo__tmp]) == gsize;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { diz.demo__ar[i], diz.demo__ar[j] } i >= 0 && (i < |diz.demo__ar| && (j >= 0 && (j < |diz.demo__ar| && i != j))) ==> diz.demo__ar[i] != diz.demo__ar[j])
       if (*) {
-        if (i_10 >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@185.12--185.144) [36912]"}
+        if (i_21 >= 0) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@185.12--185.144) [144506]"}
             HasDirectPerm(Mask, diz, demo__ar);
-          if (i_10 < Seq#Length(Heap[diz, demo__ar])) {
-            if (j_4 >= 0) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@185.12--185.144) [36913]"}
+          if (i_21 < Seq#Length(Heap[diz, demo__ar])) {
+            if (j_17 >= 0) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@185.12--185.144) [144507]"}
                 HasDirectPerm(Mask, diz, demo__ar);
             }
           }
         }
-        if (i_10 >= 0 && (i_10 < Seq#Length(Heap[diz, demo__ar]) && (j_4 >= 0 && (j_4 < Seq#Length(Heap[diz, demo__ar]) && i_10 != j_4)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@185.12--185.144) [36914]"}
+        if (i_21 >= 0 && (i_21 < Seq#Length(Heap[diz, demo__ar]) && (j_17 >= 0 && (j_17 < Seq#Length(Heap[diz, demo__ar]) && i_21 != j_17)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@185.12--185.144) [144508]"}
             HasDirectPerm(Mask, diz, demo__ar);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[i] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@185.12--185.144) [36915]"}
-            i_10 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[i] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@185.12--185.144) [36916]"}
-            i_10 < Seq#Length(Heap[diz, demo__ar]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@185.12--185.144) [36917]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[i] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@185.12--185.144) [144509]"}
+            i_21 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[i] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@185.12--185.144) [144510]"}
+            i_21 < Seq#Length(Heap[diz, demo__ar]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@185.12--185.144) [144511]"}
             HasDirectPerm(Mask, diz, demo__ar);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[j] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@185.12--185.144) [36918]"}
-            j_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[j] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@185.12--185.144) [36919]"}
-            j_4 < Seq#Length(Heap[diz, demo__ar]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[j] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@185.12--185.144) [144512]"}
+            j_17 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[j] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@185.12--185.144) [144513]"}
+            j_17 < Seq#Length(Heap[diz, demo__ar]);
         }
         assume false;
       }
@@ -2523,52 +2523,52 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
     
     // -- Check definedness of (forall i: Int, j: Int :: { diz.demo__tmp[i], diz.demo__tmp[j] } i >= 0 && (i < |diz.demo__tmp| && (j >= 0 && (j < |diz.demo__tmp| && i != j))) ==> diz.demo__tmp[i] != diz.demo__tmp[j])
       if (*) {
-        if (i_11 >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@186.12--186.148) [36920]"}
+        if (i_8 >= 0) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@186.12--186.148) [144514]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          if (i_11 < Seq#Length(Heap[diz, demo__tmp])) {
-            if (j_11 >= 0) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@186.12--186.148) [36921]"}
+          if (i_8 < Seq#Length(Heap[diz, demo__tmp])) {
+            if (j_6 >= 0) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@186.12--186.148) [144515]"}
                 HasDirectPerm(Mask, diz, demo__tmp);
             }
           }
         }
-        if (i_11 >= 0 && (i_11 < Seq#Length(Heap[diz, demo__tmp]) && (j_11 >= 0 && (j_11 < Seq#Length(Heap[diz, demo__tmp]) && i_11 != j_11)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@186.12--186.148) [36922]"}
+        if (i_8 >= 0 && (i_8 < Seq#Length(Heap[diz, demo__tmp]) && (j_6 >= 0 && (j_6 < Seq#Length(Heap[diz, demo__tmp]) && i_8 != j_6)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@186.12--186.148) [144516]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@186.12--186.148) [36923]"}
-            i_11 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@186.12--186.148) [36924]"}
-            i_11 < Seq#Length(Heap[diz, demo__tmp]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@186.12--186.148) [36925]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@186.12--186.148) [144517]"}
+            i_8 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@186.12--186.148) [144518]"}
+            i_8 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@186.12--186.148) [144519]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@186.12--186.148) [36926]"}
-            j_11 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@186.12--186.148) [36927]"}
-            j_11 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@186.12--186.148) [144520]"}
+            j_6 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@186.12--186.148) [144521]"}
+            j_6 < Seq#Length(Heap[diz, demo__tmp]);
         }
         assume false;
       }
-    assume (forall i_3: int, j_3_1: int ::
-      { Seq#Index(Heap[diz, demo__tmp], i_3), Seq#Index(Heap[diz, demo__tmp], j_3_1) }
-      i_3 >= 0 && (i_3 < Seq#Length(Heap[diz, demo__tmp]) && (j_3_1 >= 0 && (j_3_1 < Seq#Length(Heap[diz, demo__tmp]) && i_3 != j_3_1))) ==> Seq#Index(Heap[diz, demo__tmp], i_3) != Seq#Index(Heap[diz, demo__tmp], j_3_1)
+    assume (forall i_3_2: int, j_3: int ::
+      { Seq#Index(Heap[diz, demo__tmp], i_3_2), Seq#Index(Heap[diz, demo__tmp], j_3) }
+      i_3_2 >= 0 && (i_3_2 < Seq#Length(Heap[diz, demo__tmp]) && (j_3 >= 0 && (j_3 < Seq#Length(Heap[diz, demo__tmp]) && i_3_2 != j_3))) ==> Seq#Index(Heap[diz, demo__tmp], i_3_2) != Seq#Index(Heap[diz, demo__tmp], j_3)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall _x_tid: Int :: { diz.demo__ar[_x_tid] } 0 <= _x_tid && _x_tid < gsize ==> acc(diz.demo__ar[_x_tid].Ref__Integer_value, write))
       if (*) {
-        if (0 <= _x_tid_10 && _x_tid_10 < gsize) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@187.13--187.124) [36928]"}
+        if (0 <= _x_tid_2 && _x_tid_2 < gsize) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@187.13--187.124) [144522]"}
             HasDirectPerm(Mask, diz, demo__ar);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[_x_tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@187.13--187.124) [36929]"}
-            _x_tid_10 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[_x_tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@187.13--187.124) [36930]"}
-            _x_tid_10 < Seq#Length(Heap[diz, demo__ar]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[_x_tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@187.13--187.124) [144523]"}
+            _x_tid_2 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[_x_tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@187.13--187.124) [144524]"}
+            _x_tid_2 < Seq#Length(Heap[diz, demo__ar]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__ar[_x_tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@187.13--187.124) [36931]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__ar[_x_tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@187.13--187.124) [144525]"}
       (forall _x_tid_1: int, _x_tid_1_1: int ::
       
       (((_x_tid_1 != _x_tid_1_1 && (0 <= _x_tid_1 && _x_tid_1 < gsize)) && (0 <= _x_tid_1_1 && _x_tid_1_1 < gsize)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__ar], _x_tid_1) != Seq#Index(Heap[diz, demo__ar], _x_tid_1_1)
@@ -2579,9 +2579,9 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
         { Seq#Index(Heap[diz, demo__ar], _x_tid_1) } { Seq#Index(Heap[diz, demo__ar], _x_tid_1) }
         (0 <= _x_tid_1 && _x_tid_1 < gsize) && NoPerm < FullPerm ==> qpRange7(Seq#Index(Heap[diz, demo__ar], _x_tid_1)) && invRecv7(Seq#Index(Heap[diz, demo__ar], _x_tid_1)) == _x_tid_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv7(o_4) }
-        ((0 <= invRecv7(o_4) && invRecv7(o_4) < gsize) && NoPerm < FullPerm) && qpRange7(o_4) ==> Seq#Index(Heap[diz, demo__ar], invRecv7(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv7(o_9) }
+        ((0 <= invRecv7(o_9) && invRecv7(o_9) < gsize) && NoPerm < FullPerm) && qpRange7(o_9) ==> Seq#Index(Heap[diz, demo__ar], invRecv7(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -2591,13 +2591,13 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv7(o_4) && invRecv7(o_4) < gsize) && NoPerm < FullPerm) && qpRange7(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__ar], invRecv7(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv7(o_4) && invRecv7(o_4) < gsize) && NoPerm < FullPerm) && qpRange7(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv7(o_9) && invRecv7(o_9) < gsize) && NoPerm < FullPerm) && qpRange7(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__ar], invRecv7(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv7(o_9) && invRecv7(o_9) < gsize) && NoPerm < FullPerm) && qpRange7(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -2605,18 +2605,18 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
     
     // -- Check definedness of (forall _x_tid: Int :: { diz.demo__tmp[_x_tid] } 0 <= _x_tid && _x_tid < gsize ==> acc(diz.demo__tmp[_x_tid].Ref__Integer_value, write))
       if (*) {
-        if (0 <= _x_tid_11 && _x_tid_11 < gsize) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@188.13--188.125) [36932]"}
+        if (0 <= _x_tid_4 && _x_tid_4 < gsize) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@188.13--188.125) [144526]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@188.13--188.125) [36933]"}
-            _x_tid_11 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@188.13--188.125) [36934]"}
-            _x_tid_11 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@188.13--188.125) [144527]"}
+            _x_tid_4 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@188.13--188.125) [144528]"}
+            _x_tid_4 < Seq#Length(Heap[diz, demo__tmp]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[_x_tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@188.13--188.125) [36935]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[_x_tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@188.13--188.125) [144529]"}
       (forall _x_tid_3: int, _x_tid_3_1: int ::
       
       (((_x_tid_3 != _x_tid_3_1 && (0 <= _x_tid_3 && _x_tid_3 < gsize)) && (0 <= _x_tid_3_1 && _x_tid_3_1 < gsize)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], _x_tid_3) != Seq#Index(Heap[diz, demo__tmp], _x_tid_3_1)
@@ -2627,9 +2627,9 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
         { Seq#Index(Heap[diz, demo__tmp], _x_tid_3) } { Seq#Index(Heap[diz, demo__tmp], _x_tid_3) }
         (0 <= _x_tid_3 && _x_tid_3 < gsize) && NoPerm < FullPerm ==> qpRange8(Seq#Index(Heap[diz, demo__tmp], _x_tid_3)) && invRecv8(Seq#Index(Heap[diz, demo__tmp], _x_tid_3)) == _x_tid_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv8(o_4) }
-        ((0 <= invRecv8(o_4) && invRecv8(o_4) < gsize) && NoPerm < FullPerm) && qpRange8(o_4) ==> Seq#Index(Heap[diz, demo__tmp], invRecv8(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv8(o_9) }
+        ((0 <= invRecv8(o_9) && invRecv8(o_9) < gsize) && NoPerm < FullPerm) && qpRange8(o_9) ==> Seq#Index(Heap[diz, demo__tmp], invRecv8(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -2639,13 +2639,13 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv8(o_4) && invRecv8(o_4) < gsize) && NoPerm < FullPerm) && qpRange8(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], invRecv8(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv8(o_4) && invRecv8(o_4) < gsize) && NoPerm < FullPerm) && qpRange8(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv8(o_9) && invRecv8(o_9) < gsize) && NoPerm < FullPerm) && qpRange8(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], invRecv8(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv8(o_9) && invRecv8(o_9) < gsize) && NoPerm < FullPerm) && qpRange8(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -2660,25 +2660,25 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
     
     // -- Check definedness of (forall _x_tid: Int :: { diz.demo__tmp[_x_tid] } { demo__bin(N, _x_tid) } 0 <= _x_tid && (_x_tid < gsize && (0 <= _x_tid && _x_tid < N)) ==> diz.demo__tmp[_x_tid].Ref__Integer_value == demo__bin(N, _x_tid))
       if (*) {
-        if (0 <= _x_tid_12 && (_x_tid_12 < gsize && (0 <= _x_tid_12 && _x_tid_12 < N))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@192.13--192.174) [36936]"}
+        if (0 <= _x_tid_6 && (_x_tid_6 < gsize && (0 <= _x_tid_6 && _x_tid_6 < N))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@192.13--192.174) [144530]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@192.13--192.174) [36937]"}
-            _x_tid_12 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@192.13--192.174) [36938]"}
-            _x_tid_12 < Seq#Length(Heap[diz, demo__tmp]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp[_x_tid].Ref__Integer_value (test_binomial_noauto.vpr@192.13--192.174) [36939]"}
-            HasDirectPerm(Mask, Seq#Index(Heap[diz, demo__tmp], _x_tid_12), Ref__Integer_value);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@192.13--192.174) [144531]"}
+            _x_tid_6 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@192.13--192.174) [144532]"}
+            _x_tid_6 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp[_x_tid].Ref__Integer_value (test_binomial_noauto.vpr@192.13--192.174) [144533]"}
+            HasDirectPerm(Mask, Seq#Index(Heap[diz, demo__tmp], _x_tid_6), Ref__Integer_value);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@192.153--192.173) [36940]"}
+            assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@192.153--192.173) [144534]"}
               N >= 0;
-            assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= _x_tid might not hold. (test_binomial_noauto.vpr@192.153--192.173) [36941]"}
-              0 <= _x_tid_12;
-            assert {:msg "  Precondition of function demo__bin might not hold. Assertion _x_tid <= N might not hold. (test_binomial_noauto.vpr@192.153--192.173) [36942]"}
-              _x_tid_12 <= N;
+            assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= _x_tid might not hold. (test_binomial_noauto.vpr@192.153--192.173) [144535]"}
+              0 <= _x_tid_6;
+            assert {:msg "  Precondition of function demo__bin might not hold. Assertion _x_tid <= N might not hold. (test_binomial_noauto.vpr@192.153--192.173) [144536]"}
+              _x_tid_6 <= N;
             // Stop execution
             assume false;
           }
@@ -2719,7 +2719,7 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.demo__ar| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@199.11--199.34) [36943]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@199.11--199.34) [144537]"}
         HasDirectPerm(PostMask, diz, demo__ar);
     assume Seq#Length(PostHeap[diz, demo__ar]) == gsize;
     assume state(PostHeap, PostMask);
@@ -2731,34 +2731,34 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.demo__tmp| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@201.11--201.35) [36944]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@201.11--201.35) [144538]"}
         HasDirectPerm(PostMask, diz, demo__tmp);
     assume Seq#Length(PostHeap[diz, demo__tmp]) == gsize;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__ar == old(diz.demo__ar)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@202.11--202.44) [36945]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@202.11--202.44) [144539]"}
         HasDirectPerm(PostMask, diz, demo__ar);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@202.11--202.44) [36946]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@202.11--202.44) [144540]"}
         HasDirectPerm(oldMask, diz, demo__ar);
     assume Seq#Equal(PostHeap[diz, demo__ar], oldHeap[diz, demo__ar]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__tmp == old(diz.demo__tmp)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@203.11--203.46) [36947]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@203.11--203.46) [144541]"}
         HasDirectPerm(PostMask, diz, demo__tmp);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@203.11--203.46) [36948]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@203.11--203.46) [144542]"}
         HasDirectPerm(oldMask, diz, demo__tmp);
     assume Seq#Equal(PostHeap[diz, demo__tmp], oldHeap[diz, demo__tmp]);
     assume state(PostHeap, PostMask);
     if (tid > 0) {
       
       // -- Check definedness of acc(diz.demo__tmp[tid - 1].Ref__Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@204.11--204.78) [36949]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@204.11--204.78) [144543]"}
           HasDirectPerm(PostMask, diz, demo__tmp);
-        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@204.11--204.78) [36950]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@204.11--204.78) [144544]"}
           tid - 1 >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@204.11--204.78) [36951]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@204.11--204.78) [144545]"}
           tid - 1 < Seq#Length(PostHeap[diz, demo__tmp]);
       perm := FullPerm;
       assume Seq#Index(PostHeap[diz, demo__tmp], tid - 1) != null;
@@ -2776,23 +2776,23 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of diz.demo__tmp[tid - 1].Ref__Integer_value == demo__bin(N, tid - 1)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@208.11--208.107) [36952]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@208.11--208.107) [144546]"}
           HasDirectPerm(PostMask, diz, demo__tmp);
-        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@208.11--208.107) [36953]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@208.11--208.107) [144547]"}
           tid - 1 >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@208.11--208.107) [36954]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid - 1] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@208.11--208.107) [144548]"}
           tid - 1 < Seq#Length(PostHeap[diz, demo__tmp]);
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp[tid - 1].Ref__Integer_value (test_binomial_noauto.vpr@208.11--208.107) [36955]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp[tid - 1].Ref__Integer_value (test_binomial_noauto.vpr@208.11--208.107) [144549]"}
           HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, demo__tmp], tid - 1), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
-          assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@208.85--208.106) [36956]"}
+          assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_noauto.vpr@208.85--208.106) [144550]"}
             N >= 0;
-          assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid - 1 might not hold. (test_binomial_noauto.vpr@208.85--208.106) [36957]"}
+          assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid - 1 might not hold. (test_binomial_noauto.vpr@208.85--208.106) [144551]"}
             0 <= tid - 1;
-          assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid - 1 <= N might not hold. (test_binomial_noauto.vpr@208.85--208.106) [36958]"}
+          assert {:msg "  Precondition of function demo__bin might not hold. Assertion tid - 1 <= N might not hold. (test_binomial_noauto.vpr@208.85--208.106) [144552]"}
             tid - 1 <= N;
           // Stop execution
           assume false;
@@ -2807,50 +2807,50 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@193.11--193.19) [36959]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@193.11--193.19) [144553]"}
       0 <= tid;
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion tid < tcount might not hold. (test_binomial_noauto.vpr@194.11--194.23) [36960]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion tid < tcount might not hold. (test_binomial_noauto.vpr@194.11--194.23) [144554]"}
       tid < tcount;
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion tid == lid might not hold. (test_binomial_noauto.vpr@195.11--195.21) [36961]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion tid == lid might not hold. (test_binomial_noauto.vpr@195.11--195.21) [144555]"}
       tid == lid;
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@196.11--196.26) [36962]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@196.11--196.26) [144556]"}
       tcount == gsize;
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@197.11--197.19) [36963]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@197.11--197.19) [144557]"}
       gid == 0;
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@198.11--198.38) [36964]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@198.11--198.38) [144558]"}
       Mask[diz, demo__ar] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, demo__ar];
     Mask := Mask[diz, demo__ar:=Mask[diz, demo__ar] - wildcard];
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@199.11--199.34) [36965]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@199.11--199.34) [144559]"}
       Seq#Length(Heap[diz, demo__ar]) == gsize;
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@200.11--200.39) [36966]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@200.11--200.39) [144560]"}
       Mask[diz, demo__tmp] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, demo__tmp];
     Mask := Mask[diz, demo__tmp:=Mask[diz, demo__tmp] - wildcard];
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@201.11--201.35) [36967]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@201.11--201.35) [144561]"}
       Seq#Length(Heap[diz, demo__tmp]) == gsize;
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion diz.demo__ar == old(diz.demo__ar) might not hold. (test_binomial_noauto.vpr@202.11--202.44) [36968]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion diz.demo__ar == old(diz.demo__ar) might not hold. (test_binomial_noauto.vpr@202.11--202.44) [144562]"}
       Seq#Equal(Heap[diz, demo__ar], oldHeap[diz, demo__ar]);
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion diz.demo__tmp == old(diz.demo__tmp) might not hold. (test_binomial_noauto.vpr@203.11--203.46) [36969]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion diz.demo__tmp == old(diz.demo__tmp) might not hold. (test_binomial_noauto.vpr@203.11--203.46) [144563]"}
       Seq#Equal(Heap[diz, demo__tmp], oldHeap[diz, demo__tmp]);
     if (tid > 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. There might be insufficient permission to access diz.demo__tmp[tid - 1].Ref__Integer_value (test_binomial_noauto.vpr@204.11--204.78) [36970]"}
+        assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. There might be insufficient permission to access diz.demo__tmp[tid - 1].Ref__Integer_value (test_binomial_noauto.vpr@204.11--204.78) [144564]"}
           perm <= Mask[Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value] - perm];
     }
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@205.11--205.20) [36971]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@205.11--205.20) [144565]"}
       gsize > 1;
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@206.11--206.16) [36972]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@206.11--206.16) [144566]"}
       0 < N;
-    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@207.11--207.20) [36973]"}
+    assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@207.11--207.20) [144567]"}
       N < gsize;
     if (0 < tid && tid <= N) {
-      assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion diz.demo__tmp[tid - 1].Ref__Integer_value == demo__bin(N, tid - 1) might not hold. (test_binomial_noauto.vpr@208.11--208.107) [36974]"}
+      assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion diz.demo__tmp[tid - 1].Ref__Integer_value == demo__bin(N, tid - 1) might not hold. (test_binomial_noauto.vpr@208.11--208.107) [144568]"}
         Heap[Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value] == demo__bin(Heap, N, tid - 1);
     }
     // Finish exhale
@@ -2868,13 +2868,13 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var i_13: int;
-  var j_12: int;
-  var i_20: int;
-  var j_13: int;
-  var _x_tid_2: int;
+  var i_17: int;
+  var j_22: int;
+  var i_11: int;
+  var j_9: int;
+  var _x_tid_9: int;
   var QPMask: MaskType;
-  var _x_tid_4: int;
+  var _x_tid_10: int;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PostHeap: HeapType;
@@ -2915,7 +2915,7 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.demo__ar| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@221.12--221.35) [36975]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@221.12--221.35) [144569]"}
         HasDirectPerm(Mask, diz, demo__ar);
     assume Seq#Length(Heap[diz, demo__ar]) == gsize;
     assume state(Heap, Mask);
@@ -2927,36 +2927,36 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.demo__tmp| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@223.12--223.36) [36976]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@223.12--223.36) [144570]"}
         HasDirectPerm(Mask, diz, demo__tmp);
     assume Seq#Length(Heap[diz, demo__tmp]) == gsize;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { diz.demo__ar[i], diz.demo__ar[j] } i >= 0 && (i < |diz.demo__ar| && (j >= 0 && (j < |diz.demo__ar| && i != j))) ==> diz.demo__ar[i] != diz.demo__ar[j])
       if (*) {
-        if (i_13 >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@224.12--224.144) [36977]"}
+        if (i_17 >= 0) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@224.12--224.144) [144571]"}
             HasDirectPerm(Mask, diz, demo__ar);
-          if (i_13 < Seq#Length(Heap[diz, demo__ar])) {
-            if (j_12 >= 0) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@224.12--224.144) [36978]"}
+          if (i_17 < Seq#Length(Heap[diz, demo__ar])) {
+            if (j_22 >= 0) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@224.12--224.144) [144572]"}
                 HasDirectPerm(Mask, diz, demo__ar);
             }
           }
         }
-        if (i_13 >= 0 && (i_13 < Seq#Length(Heap[diz, demo__ar]) && (j_12 >= 0 && (j_12 < Seq#Length(Heap[diz, demo__ar]) && i_13 != j_12)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@224.12--224.144) [36979]"}
+        if (i_17 >= 0 && (i_17 < Seq#Length(Heap[diz, demo__ar]) && (j_22 >= 0 && (j_22 < Seq#Length(Heap[diz, demo__ar]) && i_17 != j_22)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@224.12--224.144) [144573]"}
             HasDirectPerm(Mask, diz, demo__ar);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[i] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@224.12--224.144) [36980]"}
-            i_13 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[i] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@224.12--224.144) [36981]"}
-            i_13 < Seq#Length(Heap[diz, demo__ar]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@224.12--224.144) [36982]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[i] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@224.12--224.144) [144574]"}
+            i_17 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[i] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@224.12--224.144) [144575]"}
+            i_17 < Seq#Length(Heap[diz, demo__ar]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@224.12--224.144) [144576]"}
             HasDirectPerm(Mask, diz, demo__ar);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[j] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@224.12--224.144) [36983]"}
-            j_12 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[j] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@224.12--224.144) [36984]"}
-            j_12 < Seq#Length(Heap[diz, demo__ar]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[j] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@224.12--224.144) [144577]"}
+            j_22 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[j] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@224.12--224.144) [144578]"}
+            j_22 < Seq#Length(Heap[diz, demo__ar]);
         }
         assume false;
       }
@@ -2968,52 +2968,52 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
     
     // -- Check definedness of (forall i: Int, j: Int :: { diz.demo__tmp[i], diz.demo__tmp[j] } i >= 0 && (i < |diz.demo__tmp| && (j >= 0 && (j < |diz.demo__tmp| && i != j))) ==> diz.demo__tmp[i] != diz.demo__tmp[j])
       if (*) {
-        if (i_20 >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@225.12--225.148) [36985]"}
+        if (i_11 >= 0) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@225.12--225.148) [144579]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          if (i_20 < Seq#Length(Heap[diz, demo__tmp])) {
-            if (j_13 >= 0) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@225.12--225.148) [36986]"}
+          if (i_11 < Seq#Length(Heap[diz, demo__tmp])) {
+            if (j_9 >= 0) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@225.12--225.148) [144580]"}
                 HasDirectPerm(Mask, diz, demo__tmp);
             }
           }
         }
-        if (i_20 >= 0 && (i_20 < Seq#Length(Heap[diz, demo__tmp]) && (j_13 >= 0 && (j_13 < Seq#Length(Heap[diz, demo__tmp]) && i_20 != j_13)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@225.12--225.148) [36987]"}
+        if (i_11 >= 0 && (i_11 < Seq#Length(Heap[diz, demo__tmp]) && (j_9 >= 0 && (j_9 < Seq#Length(Heap[diz, demo__tmp]) && i_11 != j_9)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@225.12--225.148) [144581]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@225.12--225.148) [36988]"}
-            i_20 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@225.12--225.148) [36989]"}
-            i_20 < Seq#Length(Heap[diz, demo__tmp]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@225.12--225.148) [36990]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@225.12--225.148) [144582]"}
+            i_11 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[i] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@225.12--225.148) [144583]"}
+            i_11 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@225.12--225.148) [144584]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@225.12--225.148) [36991]"}
-            j_13 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@225.12--225.148) [36992]"}
-            j_13 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@225.12--225.148) [144585]"}
+            j_9 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[j] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@225.12--225.148) [144586]"}
+            j_9 < Seq#Length(Heap[diz, demo__tmp]);
         }
         assume false;
       }
-    assume (forall i_3: int, j_3_1: int ::
-      { Seq#Index(Heap[diz, demo__tmp], i_3), Seq#Index(Heap[diz, demo__tmp], j_3_1) }
-      i_3 >= 0 && (i_3 < Seq#Length(Heap[diz, demo__tmp]) && (j_3_1 >= 0 && (j_3_1 < Seq#Length(Heap[diz, demo__tmp]) && i_3 != j_3_1))) ==> Seq#Index(Heap[diz, demo__tmp], i_3) != Seq#Index(Heap[diz, demo__tmp], j_3_1)
+    assume (forall i_3_2: int, j_3: int ::
+      { Seq#Index(Heap[diz, demo__tmp], i_3_2), Seq#Index(Heap[diz, demo__tmp], j_3) }
+      i_3_2 >= 0 && (i_3_2 < Seq#Length(Heap[diz, demo__tmp]) && (j_3 >= 0 && (j_3 < Seq#Length(Heap[diz, demo__tmp]) && i_3_2 != j_3))) ==> Seq#Index(Heap[diz, demo__tmp], i_3_2) != Seq#Index(Heap[diz, demo__tmp], j_3)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall _x_tid: Int :: { diz.demo__ar[_x_tid] } 0 <= _x_tid && _x_tid < gsize ==> acc(diz.demo__ar[_x_tid].Ref__Integer_value, write))
       if (*) {
-        if (0 <= _x_tid_2 && _x_tid_2 < gsize) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@226.13--226.124) [36993]"}
+        if (0 <= _x_tid_9 && _x_tid_9 < gsize) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@226.13--226.124) [144587]"}
             HasDirectPerm(Mask, diz, demo__ar);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[_x_tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@226.13--226.124) [36994]"}
-            _x_tid_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[_x_tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@226.13--226.124) [36995]"}
-            _x_tid_2 < Seq#Length(Heap[diz, demo__ar]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[_x_tid] into diz.demo__ar might be negative. (test_binomial_noauto.vpr@226.13--226.124) [144588]"}
+            _x_tid_9 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__ar[_x_tid] into diz.demo__ar might exceed sequence length. (test_binomial_noauto.vpr@226.13--226.124) [144589]"}
+            _x_tid_9 < Seq#Length(Heap[diz, demo__ar]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__ar[_x_tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@226.13--226.124) [36996]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__ar[_x_tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@226.13--226.124) [144590]"}
       (forall _x_tid_1: int, _x_tid_1_1: int ::
       
       (((_x_tid_1 != _x_tid_1_1 && (0 <= _x_tid_1 && _x_tid_1 < gsize)) && (0 <= _x_tid_1_1 && _x_tid_1_1 < gsize)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__ar], _x_tid_1) != Seq#Index(Heap[diz, demo__ar], _x_tid_1_1)
@@ -3024,9 +3024,9 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
         { Seq#Index(Heap[diz, demo__ar], _x_tid_1) } { Seq#Index(Heap[diz, demo__ar], _x_tid_1) }
         (0 <= _x_tid_1 && _x_tid_1 < gsize) && NoPerm < FullPerm ==> qpRange9(Seq#Index(Heap[diz, demo__ar], _x_tid_1)) && invRecv9(Seq#Index(Heap[diz, demo__ar], _x_tid_1)) == _x_tid_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv9(o_4) }
-        ((0 <= invRecv9(o_4) && invRecv9(o_4) < gsize) && NoPerm < FullPerm) && qpRange9(o_4) ==> Seq#Index(Heap[diz, demo__ar], invRecv9(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv9(o_9) }
+        ((0 <= invRecv9(o_9) && invRecv9(o_9) < gsize) && NoPerm < FullPerm) && qpRange9(o_9) ==> Seq#Index(Heap[diz, demo__ar], invRecv9(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -3036,13 +3036,13 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv9(o_4) && invRecv9(o_4) < gsize) && NoPerm < FullPerm) && qpRange9(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__ar], invRecv9(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv9(o_4) && invRecv9(o_4) < gsize) && NoPerm < FullPerm) && qpRange9(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv9(o_9) && invRecv9(o_9) < gsize) && NoPerm < FullPerm) && qpRange9(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__ar], invRecv9(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv9(o_9) && invRecv9(o_9) < gsize) && NoPerm < FullPerm) && qpRange9(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -3050,18 +3050,18 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
     
     // -- Check definedness of (forall _x_tid: Int :: { diz.demo__tmp[_x_tid] } 0 <= _x_tid && _x_tid < gsize ==> acc(diz.demo__tmp[_x_tid].Ref__Integer_value, write))
       if (*) {
-        if (0 <= _x_tid_4 && _x_tid_4 < gsize) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@227.13--227.125) [36997]"}
+        if (0 <= _x_tid_10 && _x_tid_10 < gsize) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@227.13--227.125) [144591]"}
             HasDirectPerm(Mask, diz, demo__tmp);
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@227.13--227.125) [36998]"}
-            _x_tid_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@227.13--227.125) [36999]"}
-            _x_tid_4 < Seq#Length(Heap[diz, demo__tmp]);
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@227.13--227.125) [144592]"}
+            _x_tid_10 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[_x_tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@227.13--227.125) [144593]"}
+            _x_tid_10 < Seq#Length(Heap[diz, demo__tmp]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[_x_tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@227.13--227.125) [37000]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.demo__tmp[_x_tid].Ref__Integer_value might not be injective. (test_binomial_noauto.vpr@227.13--227.125) [144594]"}
       (forall _x_tid_3: int, _x_tid_3_1: int ::
       
       (((_x_tid_3 != _x_tid_3_1 && (0 <= _x_tid_3 && _x_tid_3 < gsize)) && (0 <= _x_tid_3_1 && _x_tid_3_1 < gsize)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], _x_tid_3) != Seq#Index(Heap[diz, demo__tmp], _x_tid_3_1)
@@ -3072,9 +3072,9 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
         { Seq#Index(Heap[diz, demo__tmp], _x_tid_3) } { Seq#Index(Heap[diz, demo__tmp], _x_tid_3) }
         (0 <= _x_tid_3 && _x_tid_3 < gsize) && NoPerm < FullPerm ==> qpRange10(Seq#Index(Heap[diz, demo__tmp], _x_tid_3)) && invRecv10(Seq#Index(Heap[diz, demo__tmp], _x_tid_3)) == _x_tid_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv10(o_4) }
-        ((0 <= invRecv10(o_4) && invRecv10(o_4) < gsize) && NoPerm < FullPerm) && qpRange10(o_4) ==> Seq#Index(Heap[diz, demo__tmp], invRecv10(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv10(o_9) }
+        ((0 <= invRecv10(o_9) && invRecv10(o_9) < gsize) && NoPerm < FullPerm) && qpRange10(o_9) ==> Seq#Index(Heap[diz, demo__tmp], invRecv10(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -3084,13 +3084,13 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv10(o_4) && invRecv10(o_4) < gsize) && NoPerm < FullPerm) && qpRange10(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], invRecv10(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv10(o_4) && invRecv10(o_4) < gsize) && NoPerm < FullPerm) && qpRange10(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv10(o_9) && invRecv10(o_9) < gsize) && NoPerm < FullPerm) && qpRange10(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, demo__tmp], invRecv10(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv10(o_9) && invRecv10(o_9) < gsize) && NoPerm < FullPerm) && qpRange10(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -3130,7 +3130,7 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.demo__ar| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@237.11--237.34) [37001]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@237.11--237.34) [144595]"}
         HasDirectPerm(PostMask, diz, demo__ar);
     assume Seq#Length(PostHeap[diz, demo__ar]) == gsize;
     assume state(PostHeap, PostMask);
@@ -3142,34 +3142,34 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.demo__tmp| == gsize
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@239.11--239.35) [37002]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@239.11--239.35) [144596]"}
         HasDirectPerm(PostMask, diz, demo__tmp);
     assume Seq#Length(PostHeap[diz, demo__tmp]) == gsize;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__ar == old(diz.demo__ar)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@240.11--240.44) [37003]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@240.11--240.44) [144597]"}
         HasDirectPerm(PostMask, diz, demo__ar);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@240.11--240.44) [37004]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@240.11--240.44) [144598]"}
         HasDirectPerm(oldMask, diz, demo__ar);
     assume Seq#Equal(PostHeap[diz, demo__ar], oldHeap[diz, demo__ar]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.demo__tmp == old(diz.demo__tmp)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@241.11--241.46) [37005]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@241.11--241.46) [144599]"}
         HasDirectPerm(PostMask, diz, demo__tmp);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@241.11--241.46) [37006]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@241.11--241.46) [144600]"}
         HasDirectPerm(oldMask, diz, demo__tmp);
     assume Seq#Equal(PostHeap[diz, demo__tmp], oldHeap[diz, demo__tmp]);
     assume state(PostHeap, PostMask);
     if (tid < gsize - 1) {
       
       // -- Check definedness of acc(diz.demo__tmp[tid].Ref__Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@242.11--242.82) [37007]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@242.11--242.82) [144601]"}
           HasDirectPerm(PostMask, diz, demo__tmp);
-        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@242.11--242.82) [37008]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might be negative. (test_binomial_noauto.vpr@242.11--242.82) [144602]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@242.11--242.82) [37009]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.demo__tmp[tid] into diz.demo__tmp might exceed sequence length. (test_binomial_noauto.vpr@242.11--242.82) [144603]"}
           tid < Seq#Length(PostHeap[diz, demo__tmp]);
       perm := FullPerm;
       assume Seq#Index(PostHeap[diz, demo__tmp], tid) != null;
@@ -3190,47 +3190,47 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@231.11--231.19) [37010]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion 0 <= tid might not hold. (test_binomial_noauto.vpr@231.11--231.19) [144604]"}
       0 <= tid;
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion tid < tcount might not hold. (test_binomial_noauto.vpr@232.11--232.23) [37011]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion tid < tcount might not hold. (test_binomial_noauto.vpr@232.11--232.23) [144605]"}
       tid < tcount;
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion tid == lid might not hold. (test_binomial_noauto.vpr@233.11--233.21) [37012]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion tid == lid might not hold. (test_binomial_noauto.vpr@233.11--233.21) [144606]"}
       tid == lid;
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@234.11--234.26) [37013]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion tcount == gsize might not hold. (test_binomial_noauto.vpr@234.11--234.26) [144607]"}
       tcount == gsize;
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@235.11--235.19) [37014]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion gid == 0 might not hold. (test_binomial_noauto.vpr@235.11--235.19) [144608]"}
       gid == 0;
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@236.11--236.38) [37015]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. There might be insufficient permission to access diz.demo__ar (test_binomial_noauto.vpr@236.11--236.38) [144609]"}
       Mask[diz, demo__ar] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, demo__ar];
     Mask := Mask[diz, demo__ar:=Mask[diz, demo__ar] - wildcard];
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@237.11--237.34) [37016]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion |diz.demo__ar| == gsize might not hold. (test_binomial_noauto.vpr@237.11--237.34) [144610]"}
       Seq#Length(Heap[diz, demo__ar]) == gsize;
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@238.11--238.39) [37017]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. There might be insufficient permission to access diz.demo__tmp (test_binomial_noauto.vpr@238.11--238.39) [144611]"}
       Mask[diz, demo__tmp] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, demo__tmp];
     Mask := Mask[diz, demo__tmp:=Mask[diz, demo__tmp] - wildcard];
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@239.11--239.35) [37018]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion |diz.demo__tmp| == gsize might not hold. (test_binomial_noauto.vpr@239.11--239.35) [144612]"}
       Seq#Length(Heap[diz, demo__tmp]) == gsize;
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion diz.demo__ar == old(diz.demo__ar) might not hold. (test_binomial_noauto.vpr@240.11--240.44) [37019]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion diz.demo__ar == old(diz.demo__ar) might not hold. (test_binomial_noauto.vpr@240.11--240.44) [144613]"}
       Seq#Equal(Heap[diz, demo__ar], oldHeap[diz, demo__ar]);
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion diz.demo__tmp == old(diz.demo__tmp) might not hold. (test_binomial_noauto.vpr@241.11--241.46) [37020]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion diz.demo__tmp == old(diz.demo__tmp) might not hold. (test_binomial_noauto.vpr@241.11--241.46) [144614]"}
       Seq#Equal(Heap[diz, demo__tmp], oldHeap[diz, demo__tmp]);
     if (tid < gsize - 1) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@242.11--242.82) [37021]"}
+        assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. There might be insufficient permission to access diz.demo__tmp[tid].Ref__Integer_value (test_binomial_noauto.vpr@242.11--242.82) [144615]"}
           perm <= Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, demo__tmp], tid), Ref__Integer_value] - perm];
     }
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@243.11--243.20) [37022]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion gsize > 1 might not hold. (test_binomial_noauto.vpr@243.11--243.20) [144616]"}
       gsize > 1;
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@244.11--244.16) [37023]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion 0 < N might not hold. (test_binomial_noauto.vpr@244.11--244.16) [144617]"}
       0 < N;
-    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@245.11--245.20) [37024]"}
+    assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion N < gsize might not hold. (test_binomial_noauto.vpr@245.11--245.20) [144618]"}
       N < gsize;
     // Finish exhale
     havoc ExhaleHeap;

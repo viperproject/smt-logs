@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:29
+// Date:         2025-01-26 21:42:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0292.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0292-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_20: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_20, f_17] }
-  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_17], $allocated]
+axiom (forall o_54: Ref, f_24: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_54, f_24] }
+  Heap[o_54, $allocated] ==> Heap[Heap[o_54, f_24], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref, f_24: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, f_24] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_27, f_24) ==> Heap[o_27, f_24] == ExhaleHeap[o_27, f_24]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref, f_54: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, f_54] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_55, f_54) ==> Heap[o_55, f_54] == ExhaleHeap[o_55, f_54]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9), ExhaleHeap[null, PredicateMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> Heap[null, PredicateMaskField(pm_f_9)] == ExhaleHeap[null, PredicateMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32), ExhaleHeap[null, PredicateMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> Heap[null, PredicateMaskField(pm_f_32)] == ExhaleHeap[null, PredicateMaskField(pm_f_32)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, PredicateMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, PredicateMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9), ExhaleHeap[null, WandMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> Heap[null, WandMaskField(pm_f_9)] == ExhaleHeap[null, WandMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32), ExhaleHeap[null, WandMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> Heap[null, WandMaskField(pm_f_32)] == ExhaleHeap[null, WandMaskField(pm_f_32)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, WandMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, WandMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_27, $allocated] ==> ExhaleHeap[o_27, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_55, $allocated] ==> ExhaleHeap[o_55, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_31: (Field A B), v: B ::
-  { Heap[o_20, f_31:=v] }
-  succHeap(Heap, Heap[o_20, f_31:=v])
+axiom (forall <A, B> Heap: HeapType, o_54: Ref, f_8: (Field A B), v: B ::
+  { Heap[o_54, f_8:=v] }
+  succHeap(Heap, Heap[o_54, f_8:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -700,8 +700,8 @@ procedure SCIONPath_get_iof#definedness(self: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
@@ -734,10 +734,10 @@ procedure SCIONPath_get_iof#definedness(self: Ref) returns (Result: Ref)
         UnfoldingMask := Mask;
         assume SCIONPath_State#trigger(UnfoldingHeap, SCIONPath_State(self));
         assume UnfoldingHeap[null, SCIONPath_State(self)] == CombineFrames(FrameFragment(UnfoldingHeap[self, SCIONPath__ofs]), UnfoldingHeap[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs])]);
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access SCIONPath_State(self) (0292.vpr@12.1--16.2) [217735]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access SCIONPath_State(self) (0292.vpr@12.1--16.2) [77486]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, SCIONPath_State(self)];
         havoc wildcard;
         perm := wildcard;
@@ -757,8 +757,8 @@ procedure SCIONPath_get_iof#definedness(self: Ref) returns (Result: Ref)
           Unfolding1Mask := UnfoldingMask;
           assume OpaqueFieldList_State#trigger(Unfolding1Heap, OpaqueFieldList_State(Unfolding1Heap[self, SCIONPath__ofs]));
           assume Unfolding1Heap[null, OpaqueFieldList_State(Unfolding1Heap[self, SCIONPath__ofs])] == FrameFragment(OpaqueFieldList_State#condqp1(Unfolding1Heap, Unfolding1Heap[self, SCIONPath__ofs]));
-          ExhaleWellDef0Mask := Unfolding1Mask;
           ExhaleWellDef0Heap := Unfolding1Heap;
+          ExhaleWellDef0Mask := Unfolding1Mask;
           perm := FullPerm;
           assume state(Unfolding1Heap, Unfolding1Mask);
           havoc QPMask;
@@ -783,9 +783,9 @@ procedure SCIONPath_get_iof#definedness(self: Ref) returns (Result: Ref)
             );
           
           // -- Define independent locations
-            assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-              { Unfolding1Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-              (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Unfolding1Mask[o_4, f_5] == QPMask[o_4, f_5]
+            assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+              { Unfolding1Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+              (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Unfolding1Mask[o_9, f_5] == QPMask[o_9, f_5]
             );
             assume (forall self_4_1: Ref ::
               { QPMask[null, OpaqueField_State(self_4_1)] }
@@ -802,9 +802,9 @@ procedure SCIONPath_get_iof#definedness(self: Ref) returns (Result: Ref)
         // -- Free assumptions (exp module)
           Heap := Heap[null, SCIONPath_State#sm(self):=Heap[null, SCIONPath_State#sm(self)][self, SCIONPath__ofs:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, SCIONPath_State#sm(self)][o_15, f_20] || Heap[null, OpaqueFieldList_State#sm(Heap[self, SCIONPath__ofs])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, SCIONPath_State#sm(self)][o_5, f_11] || Heap[null, OpaqueFieldList_State#sm(Heap[self, SCIONPath__ofs])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, SCIONPath_State#sm(self):=newPMask];
           assume state(Heap, Mask);
@@ -936,7 +936,7 @@ procedure OpaqueFieldList_State#definedness(self: Ref) returns ()
     havoc QPMask;
     
     // -- check if receiver acc(OpaqueField_State(x), write) is injective
-      assert {:msg "  Predicate might not be well-formed. Quantified resource OpaqueField_State(x) might not be injective. (0292.vpr@20.1--24.2) [217736]"}
+      assert {:msg "  Predicate might not be well-formed. Quantified resource OpaqueField_State(x) might not be injective. (0292.vpr@20.1--24.2) [77487]"}
         (forall x_2_2: Ref, x_2_3: Ref ::
         { neverTriggered2(x_2_2), neverTriggered2(x_2_3) }
         (((x_2_2 != x_2_3 && Seq#Contains(OpaqueFieldList_contents(Heap, self), x_2_2)) && Seq#Contains(OpaqueFieldList_contents(Heap, self), x_2_3)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_2_2 != x_2_3
@@ -959,9 +959,9 @@ procedure OpaqueFieldList_State#definedness(self: Ref) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall self_1_1: Ref ::
         { QPMask[null, OpaqueField_State(self_1_1)] }
@@ -1013,8 +1013,8 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   
   // -- Check definedness of predicate body of SCIONPath_State
@@ -1031,7 +1031,7 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(OpaqueFieldList_State(self.SCIONPath__ofs), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.SCIONPath__ofs (0292.vpr@26.1--30.2) [217737]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.SCIONPath__ofs (0292.vpr@26.1--30.2) [77488]"}
         HasDirectPerm(Mask, self, SCIONPath__ofs);
     perm := FullPerm;
     Mask := Mask[null, OpaqueFieldList_State(Heap[self, SCIONPath__ofs]):=Mask[null, OpaqueFieldList_State(Heap[self, SCIONPath__ofs])] + perm];
@@ -1042,11 +1042,11 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume OpaqueFieldList_State#trigger(UnfoldingHeap, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs]));
       assume UnfoldingHeap[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs])] == FrameFragment(OpaqueFieldList_State#condqp1(UnfoldingHeap, UnfoldingHeap[self, SCIONPath__ofs]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access OpaqueFieldList_State(self.SCIONPath__ofs) (0292.vpr@26.1--30.2) [217738]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access OpaqueFieldList_State(self.SCIONPath__ofs) (0292.vpr@26.1--30.2) [77489]"}
           perm <= UnfoldingMask[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs])];
       }
       UnfoldingMask := UnfoldingMask[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs]):=UnfoldingMask[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs])] - perm];
@@ -1054,10 +1054,10 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
       havoc QPMask;
       
       // -- check if receiver acc(OpaqueField_State(x), write) is injective
-        assert {:msg "  Predicate might not be well-formed. Quantified resource OpaqueField_State(x) might not be injective. (0292.vpr@26.1--30.2) [217739]"}
-          (forall x: Ref, x_9: Ref ::
-          { neverTriggered3(x), neverTriggered3(x_9) }
-          (((x != x_9 && Seq#Contains(OpaqueFieldList_contents(UnfoldingHeap, UnfoldingHeap[self, SCIONPath__ofs]), x)) && Seq#Contains(OpaqueFieldList_contents(UnfoldingHeap, UnfoldingHeap[self, SCIONPath__ofs]), x_9)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x != x_9
+        assert {:msg "  Predicate might not be well-formed. Quantified resource OpaqueField_State(x) might not be injective. (0292.vpr@26.1--30.2) [77490]"}
+          (forall x: Ref, x_46: Ref ::
+          { neverTriggered3(x), neverTriggered3(x_46) }
+          (((x != x_46 && Seq#Contains(OpaqueFieldList_contents(UnfoldingHeap, UnfoldingHeap[self, SCIONPath__ofs]), x)) && Seq#Contains(OpaqueFieldList_contents(UnfoldingHeap, UnfoldingHeap[self, SCIONPath__ofs]), x_46)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x != x_46
         );
       
       // -- Define Inverse Function
@@ -1077,9 +1077,9 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
         );
       
       // -- Define independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
         assume (forall self_1_1: Ref ::
           { QPMask[null, OpaqueField_State(self_1_1)] }
@@ -1088,7 +1088,7 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.SCIONPath__ofs (0292.vpr@26.1--30.2) [217740]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.SCIONPath__ofs (0292.vpr@26.1--30.2) [77491]"}
         HasDirectPerm(UnfoldingMask, self, SCIONPath__ofs);
       
       // -- Free assumptions (exp module)
@@ -1099,8 +1099,8 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume OpaqueFieldList_State#trigger(UnfoldingHeap, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs]));
       assume UnfoldingHeap[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs])] == FrameFragment(OpaqueFieldList_State#condqp1(UnfoldingHeap, UnfoldingHeap[self, SCIONPath__ofs]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs]):=UnfoldingMask[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs])] - perm];
       assume state(UnfoldingHeap, UnfoldingMask);
@@ -1126,9 +1126,9 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
         );
       
       // -- Define independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
         assume (forall self_2_1: Ref ::
           { QPMask[null, OpaqueField_State(self_2_1)] }

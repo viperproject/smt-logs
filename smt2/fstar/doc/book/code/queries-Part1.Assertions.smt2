@@ -154981,7 +154981,7 @@ Prims.int))
 
 (push) ;; push{2
 
-; Starting query at Part1.Assertions.fst(3,32-3,51)
+; Starting query at Part1.Assertions.fst(4,32-4,51)
 
 (declare-fun label_1 () Bool)
 
@@ -155010,10 +155010,10 @@ Prims.int))
  (! (implies (HasType @x0
 Prims.int)
 
-;; def=Part1.Assertions.fst(3,39-3,51); use=Part1.Assertions.fst(3,39-3,51)
+;; def=Part1.Assertions.fst(4,39-4,51); use=Part1.Assertions.fst(4,39-4,51)
 (or label_1
 
-;; def=Part1.Assertions.fst(3,39-3,51); use=Part1.Assertions.fst(3,39-3,51)
+;; def=Part1.Assertions.fst(4,39-4,51); use=Part1.Assertions.fst(4,39-4,51)
 (>= (BoxInt_proj_0 (Prims.op_Multiply @x0
 @x0))
 (BoxInt_proj_0 (BoxInt 0)))
@@ -155061,7 +155061,7 @@ Prims.int)
 ;;;;;;;;;;;;;;;;Name-token correspondence
 ;;; Fact-ids: Name Part1.Assertions.sqr_is_nat; Namespace Part1.Assertions
 (assert (! 
-;; def=Part1.Assertions.fst(3,4-3,14); use=Part1.Assertions.fst(3,4-3,14)
+;; def=Part1.Assertions.fst(4,4-4,14); use=Part1.Assertions.fst(4,4-4,14)
 (forall ((@x0 Term))
  (! (= (ApplyTT Part1.Assertions.sqr_is_nat@tok
 @x0)
@@ -155076,13 +155076,13 @@ Prims.int)
 ;;;;;;;;;;;;;;;;function token typing
 ;;; Fact-ids: Name Part1.Assertions.sqr_is_nat; Namespace Part1.Assertions
 (assert (! 
-;; def=Part1.Assertions.fst(3,4-3,14); use=Part1.Assertions.fst(3,4-3,14)
+;; def=Part1.Assertions.fst(4,4-4,14); use=Part1.Assertions.fst(4,4-4,14)
 (forall ((@x0 Term))
  (! (and (NoHoist @x0
 (HasType Part1.Assertions.sqr_is_nat@tok
 Tm_arrow_f12575a0ee171a8be16a63e3359708f8))
 
-;; def=Part1.Assertions.fst(3,4-3,14); use=Part1.Assertions.fst(3,4-3,14)
+;; def=Part1.Assertions.fst(4,4-4,14); use=Part1.Assertions.fst(4,4-4,14)
 (forall ((@x1 Term))
  (! (= (ApplyTT Part1.Assertions.sqr_is_nat@tok
 @x1)
@@ -155102,7 +155102,7 @@ Part1.Assertions.sqr_is_nat@tok))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Part1.Assertions.sqr_is_nat; Namespace Part1.Assertions
 (assert (! 
-;; def=Part1.Assertions.fst(3,4-3,14); use=Part1.Assertions.fst(3,4-3,14)
+;; def=Part1.Assertions.fst(4,4-4,14); use=Part1.Assertions.fst(4,4-4,14)
 (forall ((@x0 Term))
  (! (implies (HasType @x0
 Prims.int)
@@ -155117,7 +155117,7 @@ Prims.unit))
 ;;;;;;;;;;;;;;;;Equation for Part1.Assertions.sqr_is_nat
 ;;; Fact-ids: Name Part1.Assertions.sqr_is_nat; Namespace Part1.Assertions
 (assert (! 
-;; def=Part1.Assertions.fst(3,4-3,14); use=Part1.Assertions.fst(3,4-3,14)
+;; def=Part1.Assertions.fst(4,4-4,14); use=Part1.Assertions.fst(4,4-4,14)
 (forall ((@x0 Term))
  (! (= (Part1.Assertions.sqr_is_nat @x0)
 Tm_unit)
@@ -155136,7 +155136,7 @@ Tm_unit)
 
 (push) ;; push{3
 
-; Starting query at Part1.Assertions.fst(6,32-6,50)
+; Starting query at Part1.Assertions.fst(7,32-7,50)
 
 (declare-fun label_1 () Bool)
 
@@ -155166,10 +155166,10 @@ Tm_unit)
  (! (implies (HasType @x0
 Prims.int)
 
-;; def=Part1.Assertions.fst(6,39-6,50); use=Part1.Assertions.fst(6,39-6,50)
+;; def=Part1.Assertions.fst(7,39-7,50); use=Part1.Assertions.fst(7,39-7,50)
 (or label_1
 
-;; def=Part1.Assertions.fst(6,39-6,50); use=Part1.Assertions.fst(6,39-6,50)
+;; def=Part1.Assertions.fst(7,39-7,50); use=Part1.Assertions.fst(7,39-7,50)
 (> (BoxInt_proj_0 (Prims.op_Multiply @x0
 @x0))
 (BoxInt_proj_0 (BoxInt 0)))
@@ -155221,10 +155221,10 @@ Prims.int)
  (! (implies (HasType @x0
 Prims.int)
 
-;; def=Part1.Assertions.fst(6,39-6,50); use=Part1.Assertions.fst(6,39-6,50)
+;; def=Part1.Assertions.fst(7,39-7,50); use=Part1.Assertions.fst(7,39-7,50)
 (or label_1
 
-;; def=Part1.Assertions.fst(6,39-6,50); use=Part1.Assertions.fst(6,39-6,50)
+;; def=Part1.Assertions.fst(7,39-7,50); use=Part1.Assertions.fst(7,39-7,50)
 (> (BoxInt_proj_0 (Prims.op_Multiply @x0
 @x0))
 (BoxInt_proj_0 (BoxInt 0)))
@@ -155276,10 +155276,10 @@ Prims.int)
  (! (implies (HasType @x0
 Prims.int)
 
-;; def=Part1.Assertions.fst(6,39-6,50); use=Part1.Assertions.fst(6,39-6,50)
+;; def=Part1.Assertions.fst(7,39-7,50); use=Part1.Assertions.fst(7,39-7,50)
 (or label_1
 
-;; def=Part1.Assertions.fst(6,39-6,50); use=Part1.Assertions.fst(6,39-6,50)
+;; def=Part1.Assertions.fst(7,39-7,50); use=Part1.Assertions.fst(7,39-7,50)
 (> (BoxInt_proj_0 (Prims.op_Multiply @x0
 @x0))
 (BoxInt_proj_0 (BoxInt 0)))
@@ -155331,10 +155331,10 @@ Prims.int)
  (! (implies (HasType @x0
 Prims.int)
 
-;; def=Part1.Assertions.fst(6,39-6,50); use=Part1.Assertions.fst(6,39-6,50)
+;; def=Part1.Assertions.fst(7,39-7,50); use=Part1.Assertions.fst(7,39-7,50)
 (or label_1
 
-;; def=Part1.Assertions.fst(6,39-6,50); use=Part1.Assertions.fst(6,39-6,50)
+;; def=Part1.Assertions.fst(7,39-7,50); use=Part1.Assertions.fst(7,39-7,50)
 (> (BoxInt_proj_0 (Prims.op_Multiply @x0
 @x0))
 (BoxInt_proj_0 (BoxInt 0)))
@@ -155382,7 +155382,7 @@ Prims.int)
 ;;;;;;;;;;;;;;;;Name-token correspondence
 ;;; Fact-ids: Name Part1.Assertions.max; Namespace Part1.Assertions
 (assert (! 
-;; def=Part1.Assertions.fst(10,4-10,7); use=Part1.Assertions.fst(10,4-10,7)
+;; def=Part1.Assertions.fst(11,4-11,7); use=Part1.Assertions.fst(11,4-11,7)
 (forall ((@x0 Term) (@x1 Term))
  (! (= (ApplyTT (ApplyTT Part1.Assertions.max@tok
 @x0)
@@ -155400,13 +155400,13 @@ Prims.int)
 ;;;;;;;;;;;;;;;;function token typing
 ;;; Fact-ids: Name Part1.Assertions.max; Namespace Part1.Assertions
 (assert (! 
-;; def=Part1.Assertions.fst(10,4-10,7); use=Part1.Assertions.fst(10,4-10,7)
+;; def=Part1.Assertions.fst(11,4-11,7); use=Part1.Assertions.fst(11,4-11,7)
 (forall ((@x0 Term))
  (! (and (NoHoist @x0
 (HasType Part1.Assertions.max@tok
 Tm_arrow_47fc285d7b44e13bcb7e420cbfc55623))
 
-;; def=Part1.Assertions.fst(10,4-10,7); use=Part1.Assertions.fst(10,4-10,7)
+;; def=Part1.Assertions.fst(11,4-11,7); use=Part1.Assertions.fst(11,4-11,7)
 (forall ((@x1 Term) (@x2 Term))
  (! (= (ApplyTT (ApplyTT Part1.Assertions.max@tok
 @x1)
@@ -155429,7 +155429,7 @@ Part1.Assertions.max@tok))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Part1.Assertions.max; Namespace Part1.Assertions
 (assert (! 
-;; def=Part1.Assertions.fst(10,4-10,7); use=Part1.Assertions.fst(10,4-10,7)
+;; def=Part1.Assertions.fst(11,4-11,7); use=Part1.Assertions.fst(11,4-11,7)
 (forall ((@x0 Term) (@x1 Term))
  (! (implies (and (HasType @x0
 Prims.int)
@@ -155448,7 +155448,7 @@ Prims.int))
 ;;;;;;;;;;;;;;;;Equation for Part1.Assertions.max
 ;;; Fact-ids: Name Part1.Assertions.max; Namespace Part1.Assertions
 (assert (! 
-;; def=Part1.Assertions.fst(10,4-10,7); use=Part1.Assertions.fst(10,4-10,7)
+;; def=Part1.Assertions.fst(11,4-11,7); use=Part1.Assertions.fst(11,4-11,7)
 (forall ((@x0 Term) (@x1 Term))
  (! (= (Part1.Assertions.max @x0
 @x1)
@@ -155470,7 +155470,7 @@ Prims.int))
 
 (push) ;; push{2
 
-; Starting query at Part1.Assertions.fst(11,0-11,28)
+; Starting query at Part1.Assertions.fst(12,0-12,28)
 
 (declare-fun label_1 () Bool)
 
@@ -155496,10 +155496,10 @@ Prims.int))
 ;;;;;;;;;;;;;;;;query
 ;;; Fact-ids: 
 (assert (! (not 
-;; def=Part1.Assertions.fst(11,15-11,28); use=Part1.Assertions.fst(11,8-11,14)
+;; def=Part1.Assertions.fst(12,15-12,28); use=Part1.Assertions.fst(12,8-12,14)
 (or label_1
 
-;; def=Part1.Assertions.fst(11,15-11,28); use=Part1.Assertions.fst(11,8-11,14)
+;; def=Part1.Assertions.fst(12,15-12,28); use=Part1.Assertions.fst(12,8-12,14)
 (= (Part1.Assertions.max (BoxInt 0)
 (BoxInt 1))
 (BoxInt 1))
@@ -155564,7 +155564,7 @@ Tm_unit)
 
 (push) ;; push{2
 
-; Starting query at Part1.Assertions.fst(12,0-14,57)
+; Starting query at Part1.Assertions.fst(13,0-15,57)
 
 (declare-fun label_3 () Bool)
 (declare-fun label_2 () Bool)
@@ -155594,45 +155594,45 @@ Tm_unit)
 ;;;;;;;;;;;;;;;;query
 ;;; Fact-ids: 
 (assert (! (not 
-;; def=Part1.Assertions.fst(12,15-14,57); use=Part1.Assertions.fst(12,8-12,14)
+;; def=Part1.Assertions.fst(13,15-15,57); use=Part1.Assertions.fst(13,8-13,14)
 (forall ((@x0 Term) (@x1 Term))
  (! (implies (and (HasType @x0
 Prims.int)
 (HasType @x1
 Prims.int))
 
-;; def=Part1.Assertions.fst(12,28-14,56); use=Part1.Assertions.fst(12,8-12,14)
+;; def=Part1.Assertions.fst(13,28-15,56); use=Part1.Assertions.fst(13,8-13,14)
 (and 
-;; def=Part1.Assertions.fst(12,28-12,40); use=Part1.Assertions.fst(12,8-12,14)
+;; def=Part1.Assertions.fst(13,28-13,40); use=Part1.Assertions.fst(13,8-13,14)
 (or label_1
 
-;; def=Part1.Assertions.fst(12,28-12,40); use=Part1.Assertions.fst(12,8-12,14)
+;; def=Part1.Assertions.fst(13,28-13,40); use=Part1.Assertions.fst(13,8-13,14)
 (>= (BoxInt_proj_0 (Part1.Assertions.max @x0
 @x1))
 (BoxInt_proj_0 @x0))
 )
 
 
-;; def=Part1.Assertions.fst(13,28-13,40); use=Part1.Assertions.fst(12,8-12,14)
+;; def=Part1.Assertions.fst(14,28-14,40); use=Part1.Assertions.fst(13,8-13,14)
 (or label_2
 
-;; def=Part1.Assertions.fst(13,28-13,40); use=Part1.Assertions.fst(12,8-12,14)
+;; def=Part1.Assertions.fst(14,28-14,40); use=Part1.Assertions.fst(13,8-13,14)
 (>= (BoxInt_proj_0 (Part1.Assertions.max @x0
 @x1))
 (BoxInt_proj_0 @x1))
 )
 
 
-;; def=Part1.Assertions.fst(14,28-14,56); use=Part1.Assertions.fst(12,8-12,14)
+;; def=Part1.Assertions.fst(15,28-15,56); use=Part1.Assertions.fst(13,8-13,14)
 (or label_3
 
-;; def=Part1.Assertions.fst(14,29-14,40); use=Part1.Assertions.fst(12,8-12,14)
+;; def=Part1.Assertions.fst(15,29-15,40); use=Part1.Assertions.fst(13,8-13,14)
 (= (Part1.Assertions.max @x0
 @x1)
 @x0)
 
 
-;; def=Part1.Assertions.fst(14,44-14,55); use=Part1.Assertions.fst(12,8-12,14)
+;; def=Part1.Assertions.fst(15,44-15,55); use=Part1.Assertions.fst(13,8-13,14)
 (= (Part1.Assertions.max @x0
 @x1)
 @x1)

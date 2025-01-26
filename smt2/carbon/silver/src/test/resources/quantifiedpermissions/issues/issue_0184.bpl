@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:57:12
+// Date:         2025-01-26 21:44:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0184.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0184-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,7 +145,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(i_1: int): bool;
-function  neverTriggered2(i_5: int): bool;
+function  neverTriggered2(i_5_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -563,7 +563,7 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 type DDomainType;
 
 // Translation of domain function TRG
-function  TRG(x_8: Ref): bool;
+function  TRG(x_37: Ref): bool;
 
 // ==================================================
 // Translation of all fields
@@ -644,7 +644,7 @@ procedure ArrayTest__ArrayTest(current_thread_id: int) returns (sys__result: Ref
   // -- Translating statement: assert sys__result != null -- issue_0184.vpr@18.3--18.29
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (issue_0184.vpr@18.10--18.29) [76519]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (issue_0184.vpr@18.10--18.29) [171258]"}
       sys__result != null;
     assume state(Heap, Mask);
   
@@ -656,7 +656,7 @@ procedure ArrayTest__ArrayTest(current_thread_id: int) returns (sys__result: Ref
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of ArrayTest__ArrayTest might not hold. Assertion sys__result != null might not hold. (issue_0184.vpr@12.11--12.30) [76520]"}
+    assert {:msg "  Postcondition of ArrayTest__ArrayTest might not hold. Assertion sys__result != null might not hold. (issue_0184.vpr@12.11--12.30) [171259]"}
       sys__result != null;
 }
 
@@ -669,13 +669,13 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var i1_17: int;
-  var i2_7: int;
-  var i_2: int;
+  var i1_10: int;
+  var i2_12: int;
+  var i_3: int;
   var QPMask: MaskType;
   var i_4: int;
-  var j_6: int;
-  var i_6: int;
+  var j_12: int;
+  var i_14: int;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var __flatten_1__3: Ref;
@@ -706,7 +706,7 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.ArrayTest__twin != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@30.12--30.39) [76521]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@30.12--30.39) [171260]"}
         HasDirectPerm(Mask, diz, ArrayTest__twin);
     assume Heap[diz, ArrayTest__twin] != null;
     assume state(Heap, Mask);
@@ -718,7 +718,7 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(diz.ArrayTest__twin.ArrayTest__x, wildcard)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@32.12--32.59) [76522]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@32.12--32.59) [171261]"}
         HasDirectPerm(Mask, diz, ArrayTest__twin);
     havoc wildcard;
     perm := wildcard;
@@ -728,59 +728,59 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.ArrayTest__x| > 10
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@33.12--33.35) [76523]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@33.12--33.35) [171262]"}
         HasDirectPerm(Mask, diz, ArrayTest__x);
     assume Seq#Length(Heap[diz, ArrayTest__x]) > 10;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i1: Int, i2: Int :: { (i1 in [0..|diz.ArrayTest__x|)), (i2 in [0..|diz.ArrayTest__x|)) } { (i1 in [0..|diz.ArrayTest__x|)), diz.ArrayTest__x[i2] } { (i2 in [0..|diz.ArrayTest__x|)), diz.ArrayTest__x[i1] } { diz.ArrayTest__x[i1], diz.ArrayTest__x[i2] } (i1 in [0..|diz.ArrayTest__x|)) && ((i2 in [0..|diz.ArrayTest__x|)) && i1 != i2) ==> diz.ArrayTest__x[i1] != diz.ArrayTest__x[i2])
       if (*) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@34.12--34.162) [76524]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@34.12--34.162) [171263]"}
           HasDirectPerm(Mask, diz, ArrayTest__x);
-        if (Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_17)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@34.12--34.162) [76525]"}
+        if (Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_10)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@34.12--34.162) [171264]"}
             HasDirectPerm(Mask, diz, ArrayTest__x);
         }
-        if (Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_17) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_7) && i1_17 != i2_7)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@34.12--34.162) [76526]"}
+        if (Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_10) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_12) && i1_10 != i2_12)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@34.12--34.162) [171265]"}
             HasDirectPerm(Mask, diz, ArrayTest__x);
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i1] into diz.ArrayTest__x might be negative. (issue_0184.vpr@34.12--34.162) [76527]"}
-            i1_17 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i1] into diz.ArrayTest__x might exceed sequence length. (issue_0184.vpr@34.12--34.162) [76528]"}
-            i1_17 < Seq#Length(Heap[diz, ArrayTest__x]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@34.12--34.162) [76529]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i1] into diz.ArrayTest__x might be negative. (issue_0184.vpr@34.12--34.162) [171266]"}
+            i1_10 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i1] into diz.ArrayTest__x might exceed sequence length. (issue_0184.vpr@34.12--34.162) [171267]"}
+            i1_10 < Seq#Length(Heap[diz, ArrayTest__x]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@34.12--34.162) [171268]"}
             HasDirectPerm(Mask, diz, ArrayTest__x);
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i2] into diz.ArrayTest__x might be negative. (issue_0184.vpr@34.12--34.162) [76530]"}
-            i2_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i2] into diz.ArrayTest__x might exceed sequence length. (issue_0184.vpr@34.12--34.162) [76531]"}
-            i2_7 < Seq#Length(Heap[diz, ArrayTest__x]);
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i2] into diz.ArrayTest__x might be negative. (issue_0184.vpr@34.12--34.162) [171269]"}
+            i2_12 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i2] into diz.ArrayTest__x might exceed sequence length. (issue_0184.vpr@34.12--34.162) [171270]"}
+            i2_12 < Seq#Length(Heap[diz, ArrayTest__x]);
         }
         assume false;
       }
-    assume (forall i1_1_1: int, i2_1_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1_1), Seq#Index(Heap[diz, ArrayTest__x], i2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1_1), Seq#Index(Heap[diz, ArrayTest__x], i2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1_1), Seq#Index(Heap[diz, ArrayTest__x], i1_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1_1), Seq#Index(Heap[diz, ArrayTest__x], i1_1_1) } { Seq#Index(Heap[diz, ArrayTest__x], i1_1_1), Seq#Index(Heap[diz, ArrayTest__x], i2_1_1) }
-      Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1_1) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1_1) && i1_1_1 != i2_1_1) ==> Seq#Index(Heap[diz, ArrayTest__x], i1_1_1) != Seq#Index(Heap[diz, ArrayTest__x], i2_1_1)
+    assume (forall i1_1: int, i2_1: int ::
+      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1), Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1), Seq#Index(Heap[diz, ArrayTest__x], i2_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1), Seq#Index(Heap[diz, ArrayTest__x], i2_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1), Seq#Index(Heap[diz, ArrayTest__x], i1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1), Seq#Index(Heap[diz, ArrayTest__x], i1_1) } { Seq#Index(Heap[diz, ArrayTest__x], i1_1), Seq#Index(Heap[diz, ArrayTest__x], i2_1) }
+      Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i1_1) && (Seq#Contains(Seq#Range(0, Seq#Length(Heap[diz, ArrayTest__x])), i2_1) && i1_1 != i2_1) ==> Seq#Index(Heap[diz, ArrayTest__x], i1_1) != Seq#Index(Heap[diz, ArrayTest__x], i2_1)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { diz.ArrayTest__x[i] } 0 <= i && i < |diz.ArrayTest__x| ==> acc(diz.ArrayTest__x[i].Ref__Integer_value, 1 / 2))
       if (*) {
-        if (0 <= i_2) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@35.13--35.121) [76532]"}
+        if (0 <= i_3) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@35.13--35.121) [171271]"}
             HasDirectPerm(Mask, diz, ArrayTest__x);
         }
-        if (0 <= i_2 && i_2 < Seq#Length(Heap[diz, ArrayTest__x])) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@35.13--35.121) [76533]"}
+        if (0 <= i_3 && i_3 < Seq#Length(Heap[diz, ArrayTest__x])) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@35.13--35.121) [171272]"}
             HasDirectPerm(Mask, diz, ArrayTest__x);
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i] into diz.ArrayTest__x might be negative. (issue_0184.vpr@35.13--35.121) [76534]"}
-            i_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i] into diz.ArrayTest__x might exceed sequence length. (issue_0184.vpr@35.13--35.121) [76535]"}
-            i_2 < Seq#Length(Heap[diz, ArrayTest__x]);
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i] into diz.ArrayTest__x might be negative. (issue_0184.vpr@35.13--35.121) [171273]"}
+            i_3 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__x[i] into diz.ArrayTest__x might exceed sequence length. (issue_0184.vpr@35.13--35.121) [171274]"}
+            i_3 < Seq#Length(Heap[diz, ArrayTest__x]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.ArrayTest__x[i].Ref__Integer_value might not be injective. (issue_0184.vpr@35.13--35.121) [76536]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.ArrayTest__x[i].Ref__Integer_value might not be injective. (issue_0184.vpr@35.13--35.121) [171275]"}
       (forall i_1: int, i_1_1: int ::
       
       (((i_1 != i_1_1 && (0 <= i_1 && i_1 < Seq#Length(Heap[diz, ArrayTest__x]))) && (0 <= i_1_1 && i_1_1 < Seq#Length(Heap[diz, ArrayTest__x]))) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Seq#Index(Heap[diz, ArrayTest__x], i_1) != Seq#Index(Heap[diz, ArrayTest__x], i_1_1)
@@ -791,12 +791,12 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
         { Seq#Index(Heap[diz, ArrayTest__x], i_1) } { Seq#Index(Heap[diz, ArrayTest__x], i_1) }
         (0 <= i_1 && i_1 < Seq#Length(Heap[diz, ArrayTest__x])) && NoPerm < 1 / 2 ==> qpRange1(Seq#Index(Heap[diz, ArrayTest__x], i_1)) && invRecv1(Seq#Index(Heap[diz, ArrayTest__x], i_1)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(Heap[diz, ArrayTest__x])) && NoPerm < 1 / 2) && qpRange1(o_4) ==> Seq#Index(Heap[diz, ArrayTest__x], invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(Heap[diz, ArrayTest__x])) && NoPerm < 1 / 2) && qpRange1(o_9) ==> Seq#Index(Heap[diz, ArrayTest__x], invRecv1(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (issue_0184.vpr@35.13--35.121) [76537]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (issue_0184.vpr@35.13--35.121) [171276]"}
       (forall i_1: int ::
       { Seq#Index(Heap[diz, ArrayTest__x], i_1) } { Seq#Index(Heap[diz, ArrayTest__x], i_1) }
       0 <= i_1 && i_1 < Seq#Length(Heap[diz, ArrayTest__x]) ==> 1 / 2 >= NoPerm
@@ -809,22 +809,22 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(Heap[diz, ArrayTest__x])) && NoPerm < 1 / 2) && qpRange1(o_4) ==> (NoPerm < 1 / 2 ==> Seq#Index(Heap[diz, ArrayTest__x], invRecv1(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + 1 / 2) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(Heap[diz, ArrayTest__x])) && NoPerm < 1 / 2) && qpRange1(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(Heap[diz, ArrayTest__x])) && NoPerm < 1 / 2) && qpRange1(o_9) ==> (NoPerm < 1 / 2 ==> Seq#Index(Heap[diz, ArrayTest__x], invRecv1(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + 1 / 2) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(Heap[diz, ArrayTest__x])) && NoPerm < 1 / 2) && qpRange1(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.ArrayTest__twin.ArrayTest__x| > 10
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@36.12--36.51) [76538]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@36.12--36.51) [171277]"}
         HasDirectPerm(Mask, diz, ArrayTest__twin);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@36.12--36.51) [76539]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@36.12--36.51) [171278]"}
         HasDirectPerm(Mask, Heap[diz, ArrayTest__twin], ArrayTest__x);
     assume Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) > 10;
     assume state(Heap, Mask);
@@ -832,102 +832,102 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
     // -- Check definedness of (forall i: Int, j: Int :: { diz.ArrayTest__twin.ArrayTest__x[i], diz.ArrayTest__twin.ArrayTest__x[j] } i >= 0 && (i < |diz.ArrayTest__twin.ArrayTest__x| && (j >= 0 && (j < |diz.ArrayTest__twin.ArrayTest__x| && i != j))) ==> diz.ArrayTest__twin.ArrayTest__x[i] != diz.ArrayTest__twin.ArrayTest__x[j])
       if (*) {
         if (i_4 >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@37.12--37.226) [76540]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@37.12--37.226) [171279]"}
             HasDirectPerm(Mask, diz, ArrayTest__twin);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@37.12--37.226) [76541]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@37.12--37.226) [171280]"}
             HasDirectPerm(Mask, Heap[diz, ArrayTest__twin], ArrayTest__x);
           if (i_4 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) {
-            if (j_6 >= 0) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@37.12--37.226) [76542]"}
+            if (j_12 >= 0) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@37.12--37.226) [171281]"}
                 HasDirectPerm(Mask, diz, ArrayTest__twin);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@37.12--37.226) [76543]"}
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@37.12--37.226) [171282]"}
                 HasDirectPerm(Mask, Heap[diz, ArrayTest__twin], ArrayTest__x);
             }
           }
         }
-        if (i_4 >= 0 && (i_4 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) && (j_6 >= 0 && (j_6 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) && i_4 != j_6)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@37.12--37.226) [76544]"}
+        if (i_4 >= 0 && (i_4 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) && (j_12 >= 0 && (j_12 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) && i_4 != j_12)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@37.12--37.226) [171283]"}
             HasDirectPerm(Mask, diz, ArrayTest__twin);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@37.12--37.226) [76545]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@37.12--37.226) [171284]"}
             HasDirectPerm(Mask, Heap[diz, ArrayTest__twin], ArrayTest__x);
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[i] into diz.ArrayTest__twin.ArrayTest__x might be negative. (issue_0184.vpr@37.12--37.226) [76546]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[i] into diz.ArrayTest__twin.ArrayTest__x might be negative. (issue_0184.vpr@37.12--37.226) [171285]"}
             i_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[i] into diz.ArrayTest__twin.ArrayTest__x might exceed sequence length. (issue_0184.vpr@37.12--37.226) [76547]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[i] into diz.ArrayTest__twin.ArrayTest__x might exceed sequence length. (issue_0184.vpr@37.12--37.226) [171286]"}
             i_4 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@37.12--37.226) [76548]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@37.12--37.226) [171287]"}
             HasDirectPerm(Mask, diz, ArrayTest__twin);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@37.12--37.226) [76549]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@37.12--37.226) [171288]"}
             HasDirectPerm(Mask, Heap[diz, ArrayTest__twin], ArrayTest__x);
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[j] into diz.ArrayTest__twin.ArrayTest__x might be negative. (issue_0184.vpr@37.12--37.226) [76550]"}
-            j_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[j] into diz.ArrayTest__twin.ArrayTest__x might exceed sequence length. (issue_0184.vpr@37.12--37.226) [76551]"}
-            j_6 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]);
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[j] into diz.ArrayTest__twin.ArrayTest__x might be negative. (issue_0184.vpr@37.12--37.226) [171289]"}
+            j_12 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[j] into diz.ArrayTest__twin.ArrayTest__x might exceed sequence length. (issue_0184.vpr@37.12--37.226) [171290]"}
+            j_12 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]);
         }
         assume false;
       }
-    assume (forall i_3: int, j_1: int ::
-      { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_3), Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], j_1) }
-      i_3 >= 0 && (i_3 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) && (j_1 >= 0 && (j_1 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) && i_3 != j_1))) ==> Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_3) != Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], j_1)
+    assume (forall i_3_2: int, j_1: int ::
+      { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_3_2), Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], j_1) }
+      i_3_2 >= 0 && (i_3_2 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) && (j_1 >= 0 && (j_1 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) && i_3_2 != j_1))) ==> Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_3_2) != Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], j_1)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { diz.ArrayTest__twin.ArrayTest__x[i] } 0 <= i && i < |diz.ArrayTest__twin.ArrayTest__x| ==> acc(diz.ArrayTest__twin.ArrayTest__x[i].Ref__Integer_value, 1 / 2))
       if (*) {
-        if (0 <= i_6) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@38.13--38.153) [76552]"}
+        if (0 <= i_14) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@38.13--38.153) [171291]"}
             HasDirectPerm(Mask, diz, ArrayTest__twin);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@38.13--38.153) [76553]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@38.13--38.153) [171292]"}
             HasDirectPerm(Mask, Heap[diz, ArrayTest__twin], ArrayTest__x);
         }
-        if (0 <= i_6 && i_6 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@38.13--38.153) [76554]"}
+        if (0 <= i_14 && i_14 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@38.13--38.153) [171293]"}
             HasDirectPerm(Mask, diz, ArrayTest__twin);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@38.13--38.153) [76555]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.ArrayTest__twin.ArrayTest__x (issue_0184.vpr@38.13--38.153) [171294]"}
             HasDirectPerm(Mask, Heap[diz, ArrayTest__twin], ArrayTest__x);
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[i] into diz.ArrayTest__twin.ArrayTest__x might be negative. (issue_0184.vpr@38.13--38.153) [76556]"}
-            i_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[i] into diz.ArrayTest__twin.ArrayTest__x might exceed sequence length. (issue_0184.vpr@38.13--38.153) [76557]"}
-            i_6 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]);
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[i] into diz.ArrayTest__twin.ArrayTest__x might be negative. (issue_0184.vpr@38.13--38.153) [171295]"}
+            i_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.ArrayTest__twin.ArrayTest__x[i] into diz.ArrayTest__twin.ArrayTest__x might exceed sequence length. (issue_0184.vpr@38.13--38.153) [171296]"}
+            i_14 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.ArrayTest__twin.ArrayTest__x[i].Ref__Integer_value might not be injective. (issue_0184.vpr@38.13--38.153) [76558]"}
-      (forall i_5: int, i_5_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.ArrayTest__twin.ArrayTest__x[i].Ref__Integer_value might not be injective. (issue_0184.vpr@38.13--38.153) [171297]"}
+      (forall i_5_1: int, i_5_2: int ::
       
-      (((i_5 != i_5_1 && (0 <= i_5 && i_5 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]))) && (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]))) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5) != Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1)
+      (((i_5_1 != i_5_2 && (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]))) && (0 <= i_5_2 && i_5_2 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]))) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1) != Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_2)
     );
     
     // -- Define Inverse Function
-      assume (forall i_5: int ::
-        { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5) } { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5) }
-        (0 <= i_5 && i_5 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) && NoPerm < 1 / 2 ==> qpRange2(Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5)) && invRecv2(Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5)) == i_5
+      assume (forall i_5_1: int ::
+        { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1) } { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1) }
+        (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) && NoPerm < 1 / 2 ==> qpRange2(Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1)) && invRecv2(Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1)) == i_5_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        ((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) && NoPerm < 1 / 2) && qpRange2(o_4) ==> Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        ((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) && NoPerm < 1 / 2) && qpRange2(o_9) ==> Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], invRecv2(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (issue_0184.vpr@38.13--38.153) [76559]"}
-      (forall i_5: int ::
-      { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5) } { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5) }
-      0 <= i_5 && i_5 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) ==> 1 / 2 >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (issue_0184.vpr@38.13--38.153) [171298]"}
+      (forall i_5_1: int ::
+      { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1) } { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1) }
+      0 <= i_5_1 && i_5_1 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x]) ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_5: int ::
-        { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5) } { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5) }
-        (0 <= i_5 && i_5 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) && 1 / 2 > NoPerm ==> Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5) != null
+      assume (forall i_5_1: int ::
+        { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1) } { Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1) }
+        (0 <= i_5_1 && i_5_1 < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) && 1 / 2 > NoPerm ==> Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], i_5_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) && NoPerm < 1 / 2) && qpRange2(o_4) ==> (NoPerm < 1 / 2 ==> Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], invRecv2(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + 1 / 2) && (!(((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) && NoPerm < 1 / 2) && qpRange2(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) && NoPerm < 1 / 2) && qpRange2(o_9) ==> (NoPerm < 1 / 2 ==> Seq#Index(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x], invRecv2(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + 1 / 2) && (!(((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(Heap[Heap[diz, ArrayTest__twin], ArrayTest__x])) && NoPerm < 1 / 2) && qpRange2(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -948,7 +948,7 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: __flatten_1__3 := diz.ArrayTest__twin -- issue_0184.vpr@46.3--46.40
     
     // -- Check definedness of diz.ArrayTest__twin
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@46.3--46.40) [76560]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@46.3--46.40) [171299]"}
         HasDirectPerm(Mask, diz, ArrayTest__twin);
     __flatten_1__3 := Heap[diz, ArrayTest__twin];
     assume state(Heap, Mask);
@@ -956,9 +956,9 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: __flatten_2__4 := diz.ArrayTest__x[4] -- issue_0184.vpr@47.3--47.40
     
     // -- Check definedness of diz.ArrayTest__x[4]
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@47.3--47.40) [76561]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@47.3--47.40) [171300]"}
         HasDirectPerm(Mask, diz, ArrayTest__x);
-      assert {:msg "  Assignment might fail. Index diz.ArrayTest__x[4] into diz.ArrayTest__x might exceed sequence length. (issue_0184.vpr@47.3--47.40) [76562]"}
+      assert {:msg "  Assignment might fail. Index diz.ArrayTest__x[4] into diz.ArrayTest__x might exceed sequence length. (issue_0184.vpr@47.3--47.40) [171301]"}
         4 < Seq#Length(Heap[diz, ArrayTest__x]);
     __flatten_2__4 := Seq#Index(Heap[diz, ArrayTest__x], 4);
     assume state(Heap, Mask);
@@ -966,9 +966,9 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: __flatten_3__5 := __flatten_1__3.ArrayTest__x[4] -- issue_0184.vpr@48.3--48.51
     
     // -- Check definedness of __flatten_1__3.ArrayTest__x[4]
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_1__3.ArrayTest__x (issue_0184.vpr@48.3--48.51) [76563]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_1__3.ArrayTest__x (issue_0184.vpr@48.3--48.51) [171302]"}
         HasDirectPerm(Mask, __flatten_1__3, ArrayTest__x);
-      assert {:msg "  Assignment might fail. Index __flatten_1__3.ArrayTest__x[4] into __flatten_1__3.ArrayTest__x might exceed sequence length. (issue_0184.vpr@48.3--48.51) [76564]"}
+      assert {:msg "  Assignment might fail. Index __flatten_1__3.ArrayTest__x[4] into __flatten_1__3.ArrayTest__x might exceed sequence length. (issue_0184.vpr@48.3--48.51) [171303]"}
         4 < Seq#Length(Heap[__flatten_1__3, ArrayTest__x]);
     __flatten_3__5 := Seq#Index(Heap[__flatten_1__3, ArrayTest__x], 4);
     assume state(Heap, Mask);
@@ -977,9 +977,9 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
   //   __flatten_3__5.Ref__Integer_value -- issue_0184.vpr@49.3--49.82
     
     // -- Check definedness of __flatten_2__4.Ref__Integer_value + __flatten_3__5.Ref__Integer_value
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_2__4.Ref__Integer_value (issue_0184.vpr@49.3--49.82) [76565]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_2__4.Ref__Integer_value (issue_0184.vpr@49.3--49.82) [171304]"}
         HasDirectPerm(Mask, __flatten_2__4, Ref__Integer_value);
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_3__5.Ref__Integer_value (issue_0184.vpr@49.3--49.82) [76566]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_3__5.Ref__Integer_value (issue_0184.vpr@49.3--49.82) [171305]"}
         HasDirectPerm(Mask, __flatten_3__5, Ref__Integer_value);
     tmp__2 := Heap[__flatten_2__4, Ref__Integer_value] + Heap[__flatten_3__5, Ref__Integer_value];
     assume state(Heap, Mask);
@@ -987,16 +987,16 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: if (diz == diz.ArrayTest__twin) -- issue_0184.vpr@50.3--59.4
     
     // -- Check definedness of diz == diz.ArrayTest__twin
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@50.7--50.33) [76567]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.ArrayTest__twin (issue_0184.vpr@50.7--50.33) [171306]"}
         HasDirectPerm(Mask, diz, ArrayTest__twin);
     if (diz == Heap[diz, ArrayTest__twin]) {
       
       // -- Translating statement: __flatten_4__6 := diz.ArrayTest__x[4] -- issue_0184.vpr@51.5--51.42
         
         // -- Check definedness of diz.ArrayTest__x[4]
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@51.5--51.42) [76568]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.ArrayTest__x (issue_0184.vpr@51.5--51.42) [171307]"}
             HasDirectPerm(Mask, diz, ArrayTest__x);
-          assert {:msg "  Assignment might fail. Index diz.ArrayTest__x[4] into diz.ArrayTest__x might exceed sequence length. (issue_0184.vpr@51.5--51.42) [76569]"}
+          assert {:msg "  Assignment might fail. Index diz.ArrayTest__x[4] into diz.ArrayTest__x might exceed sequence length. (issue_0184.vpr@51.5--51.42) [171308]"}
             4 < Seq#Length(Heap[diz, ArrayTest__x]);
         __flatten_4__6 := Seq#Index(Heap[diz, ArrayTest__x], 4);
         assume state(Heap, Mask);
@@ -1006,7 +1006,7 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: __flatten_4__6.Ref__Integer_value := __flatten_5__7 -- issue_0184.vpr@58.5--58.56
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_4__6.Ref__Integer_value (issue_0184.vpr@58.5--58.56) [76570]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_4__6.Ref__Integer_value (issue_0184.vpr@58.5--58.56) [171309]"}
           FullPerm == Mask[__flatten_4__6, Ref__Integer_value];
         Heap := Heap[__flatten_4__6, Ref__Integer_value:=__flatten_5__7];
         assume state(Heap, Mask);

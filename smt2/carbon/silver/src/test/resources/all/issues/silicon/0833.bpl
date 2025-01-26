@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:49
+// Date:         2025-01-26 21:42:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0833.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0833-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -209,16 +209,16 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type ShStruct2DomainType T0 T1;
 
 // Translation of domain function ShStructget1of2
-function  ShStructget1of2<T0, T1>(x_8: (ShStruct2DomainType T0 T1)): T1;
+function  ShStructget1of2<T0, T1>(x_37: (ShStruct2DomainType T0 T1)): T1;
 
 // Translation of domain function ShStructget0of2
-function  ShStructget0of2<T0, T1>(x_8: (ShStruct2DomainType T0 T1)): T0;
+function  ShStructget0of2<T0, T1>(x_37: (ShStruct2DomainType T0 T1)): T0;
 
 // Translation of domain function ShStructrev1of2
-function  ShStructrev1of2<T1, T0>(v1_35: T1): ShStruct2DomainType T0 T1;
+function  ShStructrev1of2<T1, T0>(v1_25: T1): ShStruct2DomainType T0 T1;
 
 // Translation of domain function ShStructrev0of2
-function  ShStructrev0of2<T0, T1>(v0_1: T0): ShStruct2DomainType T0 T1;
+function  ShStructrev0of2<T0, T1>(v0_2: T0): ShStruct2DomainType T0 T1;
 
 // Translation of anonymous domain axiom
 axiom (forall <T0, T1> x: (ShStruct2DomainType T0 T1) ::
@@ -303,32 +303,32 @@ procedure witness_4e2a3fe_F#definedness(P0_PI0: int) returns (Result: (ShStruct2
 // ==================================================
 
 // Uninterpreted function definitions
-function  witness_rev(Heap: HeapType, s_2: (ShStruct2DomainType Ref Ref)): int;
-function  witness_rev'(Heap: HeapType, s_2: (ShStruct2DomainType Ref Ref)): int;
-axiom (forall Heap: HeapType, s_2: (ShStruct2DomainType Ref Ref) ::
-  { witness_rev(Heap, s_2) }
-  witness_rev(Heap, s_2) == witness_rev'(Heap, s_2) && dummyFunction(witness_rev#triggerStateless(s_2))
+function  witness_rev(Heap: HeapType, s_1: (ShStruct2DomainType Ref Ref)): int;
+function  witness_rev'(Heap: HeapType, s_1: (ShStruct2DomainType Ref Ref)): int;
+axiom (forall Heap: HeapType, s_1: (ShStruct2DomainType Ref Ref) ::
+  { witness_rev(Heap, s_1) }
+  witness_rev(Heap, s_1) == witness_rev'(Heap, s_1) && dummyFunction(witness_rev#triggerStateless(s_1))
 );
-axiom (forall Heap: HeapType, s_2: (ShStruct2DomainType Ref Ref) ::
-  { witness_rev'(Heap, s_2) }
-  dummyFunction(witness_rev#triggerStateless(s_2))
+axiom (forall Heap: HeapType, s_1: (ShStruct2DomainType Ref Ref) ::
+  { witness_rev'(Heap, s_1) }
+  dummyFunction(witness_rev#triggerStateless(s_1))
 );
 
 // Framing axioms
-function  witness_rev#frame(frame: FrameType, s_2: (ShStruct2DomainType Ref Ref)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (ShStruct2DomainType Ref Ref) ::
-  { state(Heap, Mask), witness_rev'(Heap, s_2) }
-  state(Heap, Mask) ==> witness_rev'(Heap, s_2) == witness_rev#frame(EmptyFrame, s_2)
+function  witness_rev#frame(frame: FrameType, s_1: (ShStruct2DomainType Ref Ref)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (ShStruct2DomainType Ref Ref) ::
+  { state(Heap, Mask), witness_rev'(Heap, s_1) }
+  state(Heap, Mask) ==> witness_rev'(Heap, s_1) == witness_rev#frame(EmptyFrame, s_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  witness_rev#trigger(frame: FrameType, s_2: (ShStruct2DomainType Ref Ref)): bool;
+function  witness_rev#trigger(frame: FrameType, s_1: (ShStruct2DomainType Ref Ref)): bool;
 
 // State-independent trigger function
-function  witness_rev#triggerStateless(s_2: (ShStruct2DomainType Ref Ref)): int;
+function  witness_rev#triggerStateless(s_1: (ShStruct2DomainType Ref Ref)): int;
 
 // Check contract well-formedness and postcondition
-procedure witness_rev#definedness(s_2: (ShStruct2DomainType Ref Ref)) returns (Result: int)
+procedure witness_rev#definedness(s_1: (ShStruct2DomainType Ref Ref)) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -411,7 +411,7 @@ procedure SharedInv_4e2a3fe_F#definedness() returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Predicate might not be well-formed. Quantified resource (ShStructget0of2(witness_4e2a3fe_F(i_V0)): Ref).Intint$$$$_E_$$$ might not be injective. (0833.vpr@37.1--48.2) [202836]"}
+    assert {:msg "  Predicate might not be well-formed. Quantified resource (ShStructget0of2(witness_4e2a3fe_F(i_V0)): Ref).Intint$$$$_E_$$$ might not be injective. (0833.vpr@37.1--48.2) [73749]"}
       (forall i_V0_3: int, i_V0_3_1: int ::
       
       (i_V0_3 != i_V0_3_1 && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (ShStructget0of2(witness_4e2a3fe_F(Heap, i_V0_3)): Ref) != (ShStructget0of2(witness_4e2a3fe_F(Heap, i_V0_3_1)): Ref)
@@ -422,12 +422,12 @@ procedure SharedInv_4e2a3fe_F#definedness() returns ()
         { (ShStructget0of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_3)): Ref) } { (ShStructget0of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_3)): Ref) }
         NoPerm < 1 / 2 ==> qpRange1((ShStructget0of2(witness_4e2a3fe_F(Heap, i_V0_3)): Ref)) && invRecv1((ShStructget0of2(witness_4e2a3fe_F(Heap, i_V0_3)): Ref)) == i_V0_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        NoPerm < 1 / 2 && qpRange1(o_4) ==> (ShStructget0of2(witness_4e2a3fe_F(Heap, invRecv1(o_4))): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        NoPerm < 1 / 2 && qpRange1(o_9) ==> (ShStructget0of2(witness_4e2a3fe_F(Heap, invRecv1(o_9))): Ref) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0833.vpr@37.1--48.2) [202837]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0833.vpr@37.1--48.2) [73750]"}
       (forall i_V0_3: int ::
       { (ShStructget0of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_3)): Ref) } { (ShStructget0of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_3)): Ref) }
       1 / 2 >= NoPerm
@@ -440,13 +440,13 @@ procedure SharedInv_4e2a3fe_F#definedness() returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Intint$$$$_E_$$$] }
-        (NoPerm < 1 / 2 && qpRange1(o_4) ==> (NoPerm < 1 / 2 ==> (ShStructget0of2(witness_4e2a3fe_F(Heap, invRecv1(o_4))): Ref) == o_4) && QPMask[o_4, Intint$$$$_E_$$$] == Mask[o_4, Intint$$$$_E_$$$] + 1 / 2) && (!(NoPerm < 1 / 2 && qpRange1(o_4)) ==> QPMask[o_4, Intint$$$$_E_$$$] == Mask[o_4, Intint$$$$_E_$$$])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Intint$$$$_E_$$$] }
+        (NoPerm < 1 / 2 && qpRange1(o_9) ==> (NoPerm < 1 / 2 ==> (ShStructget0of2(witness_4e2a3fe_F(Heap, invRecv1(o_9))): Ref) == o_9) && QPMask[o_9, Intint$$$$_E_$$$] == Mask[o_9, Intint$$$$_E_$$$] + 1 / 2) && (!(NoPerm < 1 / 2 && qpRange1(o_9)) ==> QPMask[o_9, Intint$$$$_E_$$$] == Mask[o_9, Intint$$$$_E_$$$])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Intint$$$$_E_$$$ ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Intint$$$$_E_$$$ ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -466,7 +466,7 @@ procedure SharedInv_4e2a3fe_F#definedness() returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Predicate might not be well-formed. Quantified resource (ShStructget1of2(witness_4e2a3fe_F(i_V0)): Ref).Intint$$$$_E_$$$ might not be injective. (0833.vpr@37.1--48.2) [202838]"}
+    assert {:msg "  Predicate might not be well-formed. Quantified resource (ShStructget1of2(witness_4e2a3fe_F(i_V0)): Ref).Intint$$$$_E_$$$ might not be injective. (0833.vpr@37.1--48.2) [73751]"}
       (forall i_V0_5: int, i_V0_5_1: int ::
       
       (i_V0_5 != i_V0_5_1 && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (ShStructget1of2(witness_4e2a3fe_F(Heap, i_V0_5)): Ref) != (ShStructget1of2(witness_4e2a3fe_F(Heap, i_V0_5_1)): Ref)
@@ -477,12 +477,12 @@ procedure SharedInv_4e2a3fe_F#definedness() returns ()
         { (ShStructget1of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_5)): Ref) } { (ShStructget1of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_5)): Ref) }
         NoPerm < 1 / 2 ==> qpRange2((ShStructget1of2(witness_4e2a3fe_F(Heap, i_V0_5)): Ref)) && invRecv2((ShStructget1of2(witness_4e2a3fe_F(Heap, i_V0_5)): Ref)) == i_V0_5
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        NoPerm < 1 / 2 && qpRange2(o_4) ==> (ShStructget1of2(witness_4e2a3fe_F(Heap, invRecv2(o_4))): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        NoPerm < 1 / 2 && qpRange2(o_9) ==> (ShStructget1of2(witness_4e2a3fe_F(Heap, invRecv2(o_9))): Ref) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0833.vpr@37.1--48.2) [202839]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0833.vpr@37.1--48.2) [73752]"}
       (forall i_V0_5: int ::
       { (ShStructget1of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_5)): Ref) } { (ShStructget1of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_5)): Ref) }
       1 / 2 >= NoPerm
@@ -495,13 +495,13 @@ procedure SharedInv_4e2a3fe_F#definedness() returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Intint$$$$_E_$$$] }
-        (NoPerm < 1 / 2 && qpRange2(o_4) ==> (NoPerm < 1 / 2 ==> (ShStructget1of2(witness_4e2a3fe_F(Heap, invRecv2(o_4))): Ref) == o_4) && QPMask[o_4, Intint$$$$_E_$$$] == Mask[o_4, Intint$$$$_E_$$$] + 1 / 2) && (!(NoPerm < 1 / 2 && qpRange2(o_4)) ==> QPMask[o_4, Intint$$$$_E_$$$] == Mask[o_4, Intint$$$$_E_$$$])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Intint$$$$_E_$$$] }
+        (NoPerm < 1 / 2 && qpRange2(o_9) ==> (NoPerm < 1 / 2 ==> (ShStructget1of2(witness_4e2a3fe_F(Heap, invRecv2(o_9))): Ref) == o_9) && QPMask[o_9, Intint$$$$_E_$$$] == Mask[o_9, Intint$$$$_E_$$$] + 1 / 2) && (!(NoPerm < 1 / 2 && qpRange2(o_9)) ==> QPMask[o_9, Intint$$$$_E_$$$] == Mask[o_9, Intint$$$$_E_$$$])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Intint$$$$_E_$$$ ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Intint$$$$_E_$$$ ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -544,13 +544,13 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
       }
     fn$$0 := witness_4e2a3fe_F(Heap, id_V0);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0833.vpr@51.13--55.12) [202840]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0833.vpr@51.13--55.12) [73753]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> (ShStructget0of2(fn$$0): Ref) != null;
     Mask := Mask[(ShStructget0of2(fn$$0): Ref), Intint$$$$_E_$$$:=Mask[(ShStructget0of2(fn$$0): Ref), Intint$$$$_E_$$$] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0833.vpr@51.13--55.12) [202841]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0833.vpr@51.13--55.12) [73754]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> (ShStructget1of2(fn$$0): Ref) != null;
     Mask := Mask[(ShStructget1of2(fn$$0): Ref), Intint$$$$_E_$$$:=Mask[(ShStructget1of2(fn$$0): Ref), Intint$$$$_E_$$$] + perm];
@@ -583,7 +583,7 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. There might be insufficient permission to access SharedInv_4e2a3fe_F() (0833.vpr@75.5--75.45) [202844]"}
+      assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. There might be insufficient permission to access SharedInv_4e2a3fe_F() (0833.vpr@75.5--75.45) [73757]"}
         perm <= Mask[null, SharedInv_4e2a3fe_F()];
     }
     Mask := Mask[null, SharedInv_4e2a3fe_F():=Mask[null, SharedInv_4e2a3fe_F()] - perm];
@@ -595,7 +595,7 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
       }
     assume state(Heap, Mask);
     havoc QPMask;
-    assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. Quantified resource (ShStructget0of2(witness_4e2a3fe_F(i_V0)): Ref).Intint$$$$_E_$$$ might not be injective. (0833.vpr@75.5--75.45) [202845]"}
+    assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. Quantified resource (ShStructget0of2(witness_4e2a3fe_F(i_V0)): Ref).Intint$$$$_E_$$$ might not be injective. (0833.vpr@75.5--75.45) [73758]"}
       (forall i_V0: int, i_V0_6: int ::
       
       (i_V0 != i_V0_6 && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (ShStructget0of2(witness_4e2a3fe_F(Heap, i_V0)): Ref) != (ShStructget0of2(witness_4e2a3fe_F(Heap, i_V0_6)): Ref)
@@ -606,12 +606,12 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
         { (ShStructget0of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0)): Ref) } { (ShStructget0of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0)): Ref) }
         NoPerm < 1 / 2 ==> qpRange3((ShStructget0of2(witness_4e2a3fe_F(Heap, i_V0)): Ref)) && invRecv3((ShStructget0of2(witness_4e2a3fe_F(Heap, i_V0)): Ref)) == i_V0
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        NoPerm < 1 / 2 && qpRange3(o_4) ==> (ShStructget0of2(witness_4e2a3fe_F(Heap, invRecv3(o_4))): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        NoPerm < 1 / 2 && qpRange3(o_9) ==> (ShStructget0of2(witness_4e2a3fe_F(Heap, invRecv3(o_9))): Ref) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. Fraction 1 / 2 might be negative. (0833.vpr@75.5--75.45) [202846]"}
+    assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. Fraction 1 / 2 might be negative. (0833.vpr@75.5--75.45) [73759]"}
       (forall i_V0: int ::
       { (ShStructget0of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0)): Ref) } { (ShStructget0of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0)): Ref) }
       1 / 2 >= NoPerm
@@ -624,19 +624,19 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Intint$$$$_E_$$$] }
-        (NoPerm < 1 / 2 && qpRange3(o_4) ==> (NoPerm < 1 / 2 ==> (ShStructget0of2(witness_4e2a3fe_F(Heap, invRecv3(o_4))): Ref) == o_4) && QPMask[o_4, Intint$$$$_E_$$$] == Mask[o_4, Intint$$$$_E_$$$] + 1 / 2) && (!(NoPerm < 1 / 2 && qpRange3(o_4)) ==> QPMask[o_4, Intint$$$$_E_$$$] == Mask[o_4, Intint$$$$_E_$$$])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Intint$$$$_E_$$$] }
+        (NoPerm < 1 / 2 && qpRange3(o_9) ==> (NoPerm < 1 / 2 ==> (ShStructget0of2(witness_4e2a3fe_F(Heap, invRecv3(o_9))): Ref) == o_9) && QPMask[o_9, Intint$$$$_E_$$$] == Mask[o_9, Intint$$$$_E_$$$] + 1 / 2) && (!(NoPerm < 1 / 2 && qpRange3(o_9)) ==> QPMask[o_9, Intint$$$$_E_$$$] == Mask[o_9, Intint$$$$_E_$$$])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Intint$$$$_E_$$$ ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Intint$$$$_E_$$$ ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     havoc QPMask;
-    assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. Quantified resource (ShStructget1of2(witness_4e2a3fe_F(i_V0)): Ref).Intint$$$$_E_$$$ might not be injective. (0833.vpr@75.5--75.45) [202847]"}
+    assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. Quantified resource (ShStructget1of2(witness_4e2a3fe_F(i_V0)): Ref).Intint$$$$_E_$$$ might not be injective. (0833.vpr@75.5--75.45) [73760]"}
       (forall i_V0_1: int, i_V0_1_1: int ::
       
       (i_V0_1 != i_V0_1_1 && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (ShStructget1of2(witness_4e2a3fe_F(Heap, i_V0_1)): Ref) != (ShStructget1of2(witness_4e2a3fe_F(Heap, i_V0_1_1)): Ref)
@@ -647,12 +647,12 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
         { (ShStructget1of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_1)): Ref) } { (ShStructget1of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_1)): Ref) }
         NoPerm < 1 / 2 ==> qpRange4((ShStructget1of2(witness_4e2a3fe_F(Heap, i_V0_1)): Ref)) && invRecv4((ShStructget1of2(witness_4e2a3fe_F(Heap, i_V0_1)): Ref)) == i_V0_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        NoPerm < 1 / 2 && qpRange4(o_4) ==> (ShStructget1of2(witness_4e2a3fe_F(Heap, invRecv4(o_4))): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        NoPerm < 1 / 2 && qpRange4(o_9) ==> (ShStructget1of2(witness_4e2a3fe_F(Heap, invRecv4(o_9))): Ref) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. Fraction 1 / 2 might be negative. (0833.vpr@75.5--75.45) [202848]"}
+    assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. Fraction 1 / 2 might be negative. (0833.vpr@75.5--75.45) [73761]"}
       (forall i_V0_1: int ::
       { (ShStructget1of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_1)): Ref) } { (ShStructget1of2(witness_4e2a3fe_F#frame(EmptyFrame, i_V0_1)): Ref) }
       1 / 2 >= NoPerm
@@ -665,13 +665,13 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Intint$$$$_E_$$$] }
-        (NoPerm < 1 / 2 && qpRange4(o_4) ==> (NoPerm < 1 / 2 ==> (ShStructget1of2(witness_4e2a3fe_F(Heap, invRecv4(o_4))): Ref) == o_4) && QPMask[o_4, Intint$$$$_E_$$$] == Mask[o_4, Intint$$$$_E_$$$] + 1 / 2) && (!(NoPerm < 1 / 2 && qpRange4(o_4)) ==> QPMask[o_4, Intint$$$$_E_$$$] == Mask[o_4, Intint$$$$_E_$$$])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Intint$$$$_E_$$$] }
+        (NoPerm < 1 / 2 && qpRange4(o_9) ==> (NoPerm < 1 / 2 ==> (ShStructget1of2(witness_4e2a3fe_F(Heap, invRecv4(o_9))): Ref) == o_9) && QPMask[o_9, Intint$$$$_E_$$$] == Mask[o_9, Intint$$$$_E_$$$] + 1 / 2) && (!(NoPerm < 1 / 2 && qpRange4(o_9)) ==> QPMask[o_9, Intint$$$$_E_$$$] == Mask[o_9, Intint$$$$_E_$$$])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Intint$$$$_E_$$$ ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Intint$$$$_E_$$$ ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -681,7 +681,7 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
   // -- Translating statement: assert false -- 0833.vpr@79.5--79.17
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0833.vpr@79.12--79.17) [202849]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0833.vpr@79.12--79.17) [73762]"}
       false;
     assume state(Heap, Mask);
   

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:55
+// Date:         2025-01-26 21:41:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/preventAutoImport.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/preventAutoImport-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -257,7 +257,7 @@ procedure fact#definedness(x: int) returns (Result: int)
           // Exhale precondition of function application
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function fact might not hold. Assertion x - 1 >= 0 might not hold. (preventAutoImport.vpr@17.18--17.27) [223764]"}
+          assert {:msg "  Precondition of function fact might not hold. Assertion x - 1 >= 0 might not hold. (preventAutoImport.vpr@17.18--17.27) [18087]"}
             x - 1 >= 0;
           // Stop execution
           assume false;
@@ -306,9 +306,9 @@ procedure fact_termination_proof(x: int) returns ()
       // -- Translating statement: assert (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [223765]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [18088]"}
           (decreasing(x - 1, x): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(x)): Bool) might not hold. (<no position>) [223766]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(x)): Bool) might not hold. (<no position>) [18089]"}
           (bounded(x): bool);
         assume state(Heap, Mask);
     }

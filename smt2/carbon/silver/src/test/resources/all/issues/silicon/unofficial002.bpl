@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:49
+// Date:         2025-01-26 21:42:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial002.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial002-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref, f_8: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, f_8] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_3, f_8) ==> Heap[o_3, f_8] == ExhaleHeap[o_3, f_8]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_19: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_19] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_19) ==> Heap[o_12, f_19] == ExhaleHeap[o_12, f_19]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19), ExhaleHeap[null, PredicateMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> Heap[null, PredicateMaskField(pm_f_19)] == ExhaleHeap[null, PredicateMaskField(pm_f_19)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, PredicateMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19), ExhaleHeap[null, WandMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> Heap[null, WandMaskField(pm_f_19)] == ExhaleHeap[null, WandMaskField(pm_f_19)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, WandMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, WandMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_3, $allocated] ==> ExhaleHeap[o_3, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_9: (Field A B), v: B ::
-  { Heap[o_1, f_9:=v] }
-  succHeap(Heap, Heap[o_1, f_9:=v])
+axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_51: (Field A B), v: B ::
+  { Heap[o_1, f_51:=v] }
+  succHeap(Heap, Heap[o_1, f_51:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -590,8 +590,8 @@ procedure degrees#definedness(this: Ref, last: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -619,10 +619,10 @@ procedure degrees#definedness(this: Ref, last: Ref) returns (Result: (Seq int))
         UnfoldingMask := Mask;
         assume lseg#trigger(UnfoldingHeap, lseg(this, last));
         assume UnfoldingHeap[null, lseg(this, last)] == FrameFragment((if this != last then CombineFrames(FrameFragment(UnfoldingHeap[this, sibling]), UnfoldingHeap[null, lseg(UnfoldingHeap[this, sibling], last)]) else EmptyFrame));
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lseg(this, last) (unofficial002.vpr@17.1--24.2) [200420]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lseg(this, last) (unofficial002.vpr@17.1--24.2) [56678]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(this, last)];
         if (this != last) {
           perm := FullPerm;
@@ -638,20 +638,20 @@ procedure degrees#definedness(this: Ref, last: Ref) returns (Result: (Seq int))
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.sibling (unofficial002.vpr@17.1--24.2) [200421]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.sibling (unofficial002.vpr@17.1--24.2) [56679]"}
           HasDirectPerm(UnfoldingMask, this, sibling);
         if (UnfoldingHeap[this, sibling] == null) {
         } else {
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.sibling (unofficial002.vpr@17.1--24.2) [200422]"}
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.sibling (unofficial002.vpr@17.1--24.2) [56680]"}
             HasDirectPerm(UnfoldingMask, this, sibling);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
-            assert {:msg "  Precondition of function degrees might not hold. Assertion this.sibling != null might not hold. (unofficial002.vpr@23.52--23.79) [200423]"}
+            ExhaleWellDef0Heap := UnfoldingHeap;
+            assert {:msg "  Precondition of function degrees might not hold. Assertion this.sibling != null might not hold. (unofficial002.vpr@23.52--23.79) [56681]"}
               UnfoldingHeap[this, sibling] != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function degrees might not hold. There might be insufficient permission to access lseg(this.sibling, last) (unofficial002.vpr@23.52--23.79) [200424]"}
+            assert {:msg "  Precondition of function degrees might not hold. There might be insufficient permission to access lseg(this.sibling, last) (unofficial002.vpr@23.52--23.79) [56682]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(UnfoldingHeap[this, sibling], last)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -669,9 +669,9 @@ procedure degrees#definedness(this: Ref, last: Ref) returns (Result: (Seq int))
           if (this != last) {
             Heap := Heap[null, lseg#sm(this, last):=Heap[null, lseg#sm(this, last)][this, sibling:=true]];
             havoc newPMask;
-            assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-              { newPMask[o_15, f_20] }
-              Heap[null, lseg#sm(this, last)][o_15, f_20] || Heap[null, lseg#sm(Heap[this, sibling], last)][o_15, f_20] ==> newPMask[o_15, f_20]
+            assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+              { newPMask[o_5, f_11] }
+              Heap[null, lseg#sm(this, last)][o_5, f_11] || Heap[null, lseg#sm(Heap[this, sibling], last)][o_5, f_11] ==> newPMask[o_5, f_11]
             );
             Heap := Heap[null, lseg#sm(this, last):=newPMask];
           }
@@ -687,37 +687,37 @@ procedure degrees#definedness(this: Ref, last: Ref) returns (Result: (Seq int))
 // ==================================================
 
 type PredicateType_lseg;
-function  lseg(this: Ref, end: Ref): Field PredicateType_lseg FrameType;
-function  lseg#sm(this: Ref, end: Ref): Field PredicateType_lseg PMaskType;
-axiom (forall this: Ref, end: Ref ::
-  { PredicateMaskField(lseg(this, end)) }
-  PredicateMaskField(lseg(this, end)) == lseg#sm(this, end)
+function  lseg(this: Ref, end_1: Ref): Field PredicateType_lseg FrameType;
+function  lseg#sm(this: Ref, end_1: Ref): Field PredicateType_lseg PMaskType;
+axiom (forall this: Ref, end_1: Ref ::
+  { PredicateMaskField(lseg(this, end_1)) }
+  PredicateMaskField(lseg(this, end_1)) == lseg#sm(this, end_1)
 );
-axiom (forall this: Ref, end: Ref ::
-  { lseg(this, end) }
-  IsPredicateField(lseg(this, end))
+axiom (forall this: Ref, end_1: Ref ::
+  { lseg(this, end_1) }
+  IsPredicateField(lseg(this, end_1))
 );
-axiom (forall this: Ref, end: Ref ::
-  { lseg(this, end) }
-  getPredWandId(lseg(this, end)) == 0
+axiom (forall this: Ref, end_1: Ref ::
+  { lseg(this, end_1) }
+  getPredWandId(lseg(this, end_1)) == 0
 );
 function  lseg#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  lseg#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall this: Ref, end: Ref, this2: Ref, end2: Ref ::
-  { lseg(this, end), lseg(this2, end2) }
-  lseg(this, end) == lseg(this2, end2) ==> this == this2 && end == end2
+axiom (forall this: Ref, end_1: Ref, this2: Ref, end2: Ref ::
+  { lseg(this, end_1), lseg(this2, end2) }
+  lseg(this, end_1) == lseg(this2, end2) ==> this == this2 && end_1 == end2
 );
-axiom (forall this: Ref, end: Ref, this2: Ref, end2: Ref ::
-  { lseg#sm(this, end), lseg#sm(this2, end2) }
-  lseg#sm(this, end) == lseg#sm(this2, end2) ==> this == this2 && end == end2
-);
-
-axiom (forall Heap: HeapType, this: Ref, end: Ref ::
-  { lseg#trigger(Heap, lseg(this, end)) }
-  lseg#everUsed(lseg(this, end))
+axiom (forall this: Ref, end_1: Ref, this2: Ref, end2: Ref ::
+  { lseg#sm(this, end_1), lseg#sm(this2, end2) }
+  lseg#sm(this, end_1) == lseg#sm(this2, end2) ==> this == this2 && end_1 == end2
 );
 
-procedure lseg#definedness(this: Ref, end: Ref) returns ()
+axiom (forall Heap: HeapType, this: Ref, end_1: Ref ::
+  { lseg#trigger(Heap, lseg(this, end_1)) }
+  lseg#everUsed(lseg(this, end_1))
+);
+
+procedure lseg#definedness(this: Ref, end_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -730,23 +730,23 @@ procedure lseg#definedness(this: Ref, end: Ref) returns ()
       assume AssumeFunctionsAbove == -1;
       assume AssumePermUpperBound;
       assume Heap[this, $allocated];
-      assume Heap[end, $allocated];
-    if (this != end) {
+      assume Heap[end_1, $allocated];
+    if (this != end_1) {
       perm := FullPerm;
       assume this != null;
       Mask := Mask[this, sibling:=Mask[this, sibling] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of this.sibling != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.sibling (unofficial002.vpr@10.1--15.2) [200425]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.sibling (unofficial002.vpr@10.1--15.2) [56683]"}
           HasDirectPerm(Mask, this, sibling);
       assume Heap[this, sibling] != null;
       
       // -- Check definedness of acc(lseg(this.sibling, end), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.sibling (unofficial002.vpr@10.1--15.2) [200426]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.sibling (unofficial002.vpr@10.1--15.2) [56684]"}
           HasDirectPerm(Mask, this, sibling);
       perm := FullPerm;
-      Mask := Mask[null, lseg(Heap[this, sibling], end):=Mask[null, lseg(Heap[this, sibling], end)] + perm];
+      Mask := Mask[null, lseg(Heap[this, sibling], end_1):=Mask[null, lseg(Heap[this, sibling], end_1)] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -756,16 +756,16 @@ procedure lseg#definedness(this: Ref, end: Ref) returns ()
 // Translation of method join
 // ==================================================
 
-procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
+procedure join(s1_2: Ref, m1_3: Ref, l1_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -785,35 +785,35 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[s1, $allocated];
+    assume Heap[s1_2, $allocated];
     assume Heap[m1_3, $allocated];
-    assume Heap[l1_3, $allocated];
+    assume Heap[l1_1, $allocated];
   
   // -- Checked inhaling of precondition
-    assume s1 != null;
+    assume s1_2 != null;
     assume m1_3 != null;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, lseg(s1, m1_3):=Mask[null, lseg(s1, m1_3)] + perm];
+    Mask := Mask[null, lseg(s1_2, m1_3):=Mask[null, lseg(s1_2, m1_3)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, lseg(m1_3, l1_3):=Mask[null, lseg(m1_3, l1_3)] + perm];
+    Mask := Mask[null, lseg(m1_3, l1_1):=Mask[null, lseg(m1_3, l1_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
-    PostMask := PostMask[null, lseg(s1, l1_3):=PostMask[null, lseg(s1, l1_3)] + perm];
+    PostMask := PostMask[null, lseg(s1_2, l1_1):=PostMask[null, lseg(s1_2, l1_1)] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -821,38 +821,38 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
   }
   
   // -- Translating statement: inhale s1 != m1 -- unofficial002.vpr@32.10--32.18
-    assume s1 != m1_3;
+    assume s1_2 != m1_3;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(lseg(s1, m1), write) -- unofficial002.vpr@34.3--34.27
-    assume lseg#trigger(Heap, lseg(s1, m1_3));
-    assume Heap[null, lseg(s1, m1_3)] == FrameFragment((if s1 != m1_3 then CombineFrames(FrameFragment(Heap[s1, sibling]), Heap[null, lseg(Heap[s1, sibling], m1_3)]) else EmptyFrame));
-    ExhaleWellDef0Heap := Heap;
+    assume lseg#trigger(Heap, lseg(s1_2, m1_3));
+    assume Heap[null, lseg(s1_2, m1_3)] == FrameFragment((if s1_2 != m1_3 then CombineFrames(FrameFragment(Heap[s1_2, sibling]), Heap[null, lseg(Heap[s1_2, sibling], m1_3)]) else EmptyFrame));
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding lseg(s1, m1) might fail. There might be insufficient permission to access lseg(s1, m1) (unofficial002.vpr@34.3--34.27) [200429]"}
-        perm <= Mask[null, lseg(s1, m1_3)];
+      assert {:msg "  Unfolding lseg(s1, m1) might fail. There might be insufficient permission to access lseg(s1, m1) (unofficial002.vpr@34.3--34.27) [56687]"}
+        perm <= Mask[null, lseg(s1_2, m1_3)];
     }
-    Mask := Mask[null, lseg(s1, m1_3):=Mask[null, lseg(s1, m1_3)] - perm];
+    Mask := Mask[null, lseg(s1_2, m1_3):=Mask[null, lseg(s1_2, m1_3)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, lseg(s1, m1_3))) {
+      if (!HasDirectPerm(Mask, null, lseg(s1_2, m1_3))) {
         havoc newVersion;
-        Heap := Heap[null, lseg(s1, m1_3):=newVersion];
+        Heap := Heap[null, lseg(s1_2, m1_3):=newVersion];
       }
-    if (s1 != m1_3) {
+    if (s1_2 != m1_3) {
       perm := FullPerm;
-      assume s1 != null;
-      Mask := Mask[s1, sibling:=Mask[s1, sibling] + perm];
+      assume s1_2 != null;
+      Mask := Mask[s1_2, sibling:=Mask[s1_2, sibling] + perm];
       assume state(Heap, Mask);
-      assume Heap[s1, sibling] != null;
+      assume Heap[s1_2, sibling] != null;
       perm := FullPerm;
-      Mask := Mask[null, lseg(Heap[s1, sibling], m1_3):=Mask[null, lseg(Heap[s1, sibling], m1_3)] + perm];
+      Mask := Mask[null, lseg(Heap[s1_2, sibling], m1_3):=Mask[null, lseg(Heap[s1_2, sibling], m1_3)] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(lseg(s1, m1_3), Heap[null, lseg(s1, m1_3)], lseg(Heap[s1, sibling], m1_3), Heap[null, lseg(Heap[s1, sibling], m1_3)]);
+        assume InsidePredicate(lseg(s1_2, m1_3), Heap[null, lseg(s1_2, m1_3)], lseg(Heap[s1_2, sibling], m1_3), Heap[null, lseg(Heap[s1_2, sibling], m1_3)]);
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -863,29 +863,29 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Check definedness of s1.sibling
-      assert {:msg "  Method call might fail. There might be insufficient permission to access s1.sibling (unofficial002.vpr@35.3--35.27) [200432]"}
-        HasDirectPerm(Mask, s1, sibling);
-    arg_s1 := Heap[s1, sibling];
+      assert {:msg "  Method call might fail. There might be insufficient permission to access s1.sibling (unofficial002.vpr@35.3--35.27) [56690]"}
+        HasDirectPerm(Mask, s1_2, sibling);
+    arg_s1 := Heap[s1_2, sibling];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method join might not hold. Assertion s1.sibling != null might not hold. (unofficial002.vpr@35.3--35.27) [200433]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method join might not hold. Assertion s1.sibling != null might not hold. (unofficial002.vpr@35.3--35.27) [56691]"}
         arg_s1 != null;
-      assert {:msg "  The precondition of method join might not hold. Assertion m1 != null might not hold. (unofficial002.vpr@35.3--35.27) [200434]"}
+      assert {:msg "  The precondition of method join might not hold. Assertion m1 != null might not hold. (unofficial002.vpr@35.3--35.27) [56692]"}
         m1_3 != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method join might not hold. There might be insufficient permission to access lseg(s1.sibling, m1) (unofficial002.vpr@35.3--35.27) [200435]"}
+        assert {:msg "  The precondition of method join might not hold. There might be insufficient permission to access lseg(s1.sibling, m1) (unofficial002.vpr@35.3--35.27) [56693]"}
           perm <= Mask[null, lseg(arg_s1, m1_3)];
       }
       Mask := Mask[null, lseg(arg_s1, m1_3):=Mask[null, lseg(arg_s1, m1_3)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method join might not hold. There might be insufficient permission to access lseg(m1, l1) (unofficial002.vpr@35.3--35.27) [200436]"}
-          perm <= Mask[null, lseg(m1_3, l1_3)];
+        assert {:msg "  The precondition of method join might not hold. There might be insufficient permission to access lseg(m1, l1) (unofficial002.vpr@35.3--35.27) [56694]"}
+          perm <= Mask[null, lseg(m1_3, l1_1)];
       }
-      Mask := Mask[null, lseg(m1_3, l1_3):=Mask[null, lseg(m1_3, l1_3)] - perm];
+      Mask := Mask[null, lseg(m1_3, l1_1):=Mask[null, lseg(m1_3, l1_1)] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -893,58 +893,58 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, lseg(arg_s1, l1_3):=Mask[null, lseg(arg_s1, l1_3)] + perm];
+      Mask := Mask[null, lseg(arg_s1, l1_1):=Mask[null, lseg(arg_s1, l1_1)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(lseg(s1, l1), write) -- unofficial002.vpr@36.3--36.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    if (s1 != l1_3) {
+    ExhaleWellDef0Heap := Heap;
+    if (s1_2 != l1_1) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding lseg(s1, l1) might fail. There might be insufficient permission to access s1.sibling (unofficial002.vpr@36.3--36.25) [200439]"}
-          perm <= Mask[s1, sibling];
+        assert {:msg "  Folding lseg(s1, l1) might fail. There might be insufficient permission to access s1.sibling (unofficial002.vpr@36.3--36.25) [56697]"}
+          perm <= Mask[s1_2, sibling];
       }
-      Mask := Mask[s1, sibling:=Mask[s1, sibling] - perm];
-      assert {:msg "  Folding lseg(s1, l1) might fail. Assertion s1.sibling != null might not hold. (unofficial002.vpr@36.3--36.25) [200440]"}
-        Heap[s1, sibling] != null;
+      Mask := Mask[s1_2, sibling:=Mask[s1_2, sibling] - perm];
+      assert {:msg "  Folding lseg(s1, l1) might fail. Assertion s1.sibling != null might not hold. (unofficial002.vpr@36.3--36.25) [56698]"}
+        Heap[s1_2, sibling] != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding lseg(s1, l1) might fail. There might be insufficient permission to access lseg(s1.sibling, l1) (unofficial002.vpr@36.3--36.25) [200442]"}
-          perm <= Mask[null, lseg(Heap[s1, sibling], l1_3)];
+        assert {:msg "  Folding lseg(s1, l1) might fail. There might be insufficient permission to access lseg(s1.sibling, l1) (unofficial002.vpr@36.3--36.25) [56700]"}
+          perm <= Mask[null, lseg(Heap[s1_2, sibling], l1_1)];
       }
-      Mask := Mask[null, lseg(Heap[s1, sibling], l1_3):=Mask[null, lseg(Heap[s1, sibling], l1_3)] - perm];
+      Mask := Mask[null, lseg(Heap[s1_2, sibling], l1_1):=Mask[null, lseg(Heap[s1_2, sibling], l1_1)] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(lseg(s1, l1_3), Heap[null, lseg(s1, l1_3)], lseg(Heap[s1, sibling], l1_3), Heap[null, lseg(Heap[s1, sibling], l1_3)]);
+        assume InsidePredicate(lseg(s1_2, l1_1), Heap[null, lseg(s1_2, l1_1)], lseg(Heap[s1_2, sibling], l1_1), Heap[null, lseg(Heap[s1_2, sibling], l1_1)]);
     }
     perm := FullPerm;
-    Mask := Mask[null, lseg(s1, l1_3):=Mask[null, lseg(s1, l1_3)] + perm];
+    Mask := Mask[null, lseg(s1_2, l1_1):=Mask[null, lseg(s1_2, l1_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume lseg#trigger(Heap, lseg(s1, l1_3));
-    assume Heap[null, lseg(s1, l1_3)] == FrameFragment((if s1 != l1_3 then CombineFrames(FrameFragment(Heap[s1, sibling]), Heap[null, lseg(Heap[s1, sibling], l1_3)]) else EmptyFrame));
-    if (!HasDirectPerm(Mask, null, lseg(s1, l1_3))) {
-      Heap := Heap[null, lseg#sm(s1, l1_3):=ZeroPMask];
+    assume lseg#trigger(Heap, lseg(s1_2, l1_1));
+    assume Heap[null, lseg(s1_2, l1_1)] == FrameFragment((if s1_2 != l1_1 then CombineFrames(FrameFragment(Heap[s1_2, sibling]), Heap[null, lseg(Heap[s1_2, sibling], l1_1)]) else EmptyFrame));
+    if (!HasDirectPerm(Mask, null, lseg(s1_2, l1_1))) {
+      Heap := Heap[null, lseg#sm(s1_2, l1_1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, lseg(s1, l1_3):=freshVersion];
+      Heap := Heap[null, lseg(s1_2, l1_1):=freshVersion];
     }
-    if (s1 != l1_3) {
-      Heap := Heap[null, lseg#sm(s1, l1_3):=Heap[null, lseg#sm(s1, l1_3)][s1, sibling:=true]];
+    if (s1_2 != l1_1) {
+      Heap := Heap[null, lseg#sm(s1_2, l1_1):=Heap[null, lseg#sm(s1_2, l1_1)][s1_2, sibling:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-        { newPMask[o_16, f_21] }
-        Heap[null, lseg#sm(s1, l1_3)][o_16, f_21] || Heap[null, lseg#sm(Heap[s1, sibling], l1_3)][o_16, f_21] ==> newPMask[o_16, f_21]
+      assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+        { newPMask[o_6, f_12] }
+        Heap[null, lseg#sm(s1_2, l1_1)][o_6, f_12] || Heap[null, lseg#sm(Heap[s1_2, sibling], l1_1)][o_6, f_12] ==> newPMask[o_6, f_12]
       );
-      Heap := Heap[null, lseg#sm(s1, l1_3):=newPMask];
+      Heap := Heap[null, lseg#sm(s1_2, l1_1):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale s1 != l1 -- unofficial002.vpr@38.10--38.18
-    assume s1 != l1_3;
+    assume s1_2 != l1_1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -953,13 +953,13 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
     // -- Check definedness of degrees(s1, l1)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function degrees might not hold. Assertion s1 != null might not hold. (unofficial002.vpr@40.23--40.38) [200444]"}
-          s1 != null;
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function degrees might not hold. Assertion s1 != null might not hold. (unofficial002.vpr@40.23--40.38) [56702]"}
+          s1_2 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function degrees might not hold. There might be insufficient permission to access lseg(s1, l1) (unofficial002.vpr@40.23--40.38) [200445]"}
-          NoPerm < perm ==> NoPerm < Mask[null, lseg(s1, l1_3)];
+        assert {:msg "  Precondition of function degrees might not hold. There might be insufficient permission to access lseg(s1, l1) (unofficial002.vpr@40.23--40.38) [56703]"}
+          NoPerm < perm ==> NoPerm < Mask[null, lseg(s1_2, l1_1)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -967,7 +967,7 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
         // Stop execution
         assume false;
       }
-    ys := degrees(Heap, s1, l1_3);
+    ys := degrees(Heap, s1_2, l1_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: xs := (unfolding acc(lseg(s1, l1), write) in
@@ -976,41 +976,41 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
     // -- Check definedness of (unfolding acc(lseg(s1, l1), write) in Seq(0) ++ degrees(s1.sibling, l1))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume lseg#trigger(UnfoldingHeap, lseg(s1, l1_3));
-      assume UnfoldingHeap[null, lseg(s1, l1_3)] == FrameFragment((if s1 != l1_3 then CombineFrames(FrameFragment(UnfoldingHeap[s1, sibling]), UnfoldingHeap[null, lseg(UnfoldingHeap[s1, sibling], l1_3)]) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
+      assume lseg#trigger(UnfoldingHeap, lseg(s1_2, l1_1));
+      assume UnfoldingHeap[null, lseg(s1_2, l1_1)] == FrameFragment((if s1_2 != l1_1 then CombineFrames(FrameFragment(UnfoldingHeap[s1_2, sibling]), UnfoldingHeap[null, lseg(UnfoldingHeap[s1_2, sibling], l1_1)]) else EmptyFrame));
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access lseg(s1, l1) (unofficial002.vpr@41.3--41.89) [200446]"}
-          perm <= UnfoldingMask[null, lseg(s1, l1_3)];
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access lseg(s1, l1) (unofficial002.vpr@41.3--41.89) [56704]"}
+          perm <= UnfoldingMask[null, lseg(s1_2, l1_1)];
       }
-      UnfoldingMask := UnfoldingMask[null, lseg(s1, l1_3):=UnfoldingMask[null, lseg(s1, l1_3)] - perm];
-      if (s1 != l1_3) {
+      UnfoldingMask := UnfoldingMask[null, lseg(s1_2, l1_1):=UnfoldingMask[null, lseg(s1_2, l1_1)] - perm];
+      if (s1_2 != l1_1) {
         perm := FullPerm;
-        assume s1 != null;
-        UnfoldingMask := UnfoldingMask[s1, sibling:=UnfoldingMask[s1, sibling] + perm];
+        assume s1_2 != null;
+        UnfoldingMask := UnfoldingMask[s1_2, sibling:=UnfoldingMask[s1_2, sibling] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
-        assume UnfoldingHeap[s1, sibling] != null;
+        assume UnfoldingHeap[s1_2, sibling] != null;
         perm := FullPerm;
-        UnfoldingMask := UnfoldingMask[null, lseg(UnfoldingHeap[s1, sibling], l1_3):=UnfoldingMask[null, lseg(UnfoldingHeap[s1, sibling], l1_3)] + perm];
+        UnfoldingMask := UnfoldingMask[null, lseg(UnfoldingHeap[s1_2, sibling], l1_1):=UnfoldingMask[null, lseg(UnfoldingHeap[s1_2, sibling], l1_1)] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(lseg(s1, l1_3), UnfoldingHeap[null, lseg(s1, l1_3)], lseg(UnfoldingHeap[s1, sibling], l1_3), UnfoldingHeap[null, lseg(UnfoldingHeap[s1, sibling], l1_3)]);
+          assume InsidePredicate(lseg(s1_2, l1_1), UnfoldingHeap[null, lseg(s1_2, l1_1)], lseg(UnfoldingHeap[s1_2, sibling], l1_1), UnfoldingHeap[null, lseg(UnfoldingHeap[s1_2, sibling], l1_1)]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access s1.sibling (unofficial002.vpr@41.3--41.89) [200447]"}
-        HasDirectPerm(UnfoldingMask, s1, sibling);
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access s1.sibling (unofficial002.vpr@41.3--41.89) [56705]"}
+        HasDirectPerm(UnfoldingMask, s1_2, sibling);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
-        assert {:msg "  Precondition of function degrees might not hold. Assertion s1.sibling != null might not hold. (unofficial002.vpr@41.65--41.88) [200448]"}
-          UnfoldingHeap[s1, sibling] != null;
+        ExhaleWellDef0Heap := UnfoldingHeap;
+        assert {:msg "  Precondition of function degrees might not hold. Assertion s1.sibling != null might not hold. (unofficial002.vpr@41.65--41.88) [56706]"}
+          UnfoldingHeap[s1_2, sibling] != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function degrees might not hold. There might be insufficient permission to access lseg(s1.sibling, l1) (unofficial002.vpr@41.65--41.88) [200449]"}
-          NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(UnfoldingHeap[s1, sibling], l1_3)];
+        assert {:msg "  Precondition of function degrees might not hold. There might be insufficient permission to access lseg(s1.sibling, l1) (unofficial002.vpr@41.65--41.88) [56707]"}
+          NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(UnfoldingHeap[s1_2, sibling], l1_1)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(UnfoldingHeap, ExhaleHeap, UnfoldingMask);
@@ -1020,35 +1020,35 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
       }
       
       // -- Free assumptions (exp module)
-        if (s1 != l1_3) {
-          Heap := Heap[null, lseg#sm(s1, l1_3):=Heap[null, lseg#sm(s1, l1_3)][s1, sibling:=true]];
+        if (s1_2 != l1_1) {
+          Heap := Heap[null, lseg#sm(s1_2, l1_1):=Heap[null, lseg#sm(s1_2, l1_1)][s1_2, sibling:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-            { newPMask[o_52, f_55] }
-            Heap[null, lseg#sm(s1, l1_3)][o_52, f_55] || Heap[null, lseg#sm(Heap[s1, sibling], l1_3)][o_52, f_55] ==> newPMask[o_52, f_55]
+          assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+            { newPMask[o_40, f_52] }
+            Heap[null, lseg#sm(s1_2, l1_1)][o_40, f_52] || Heap[null, lseg#sm(Heap[s1_2, sibling], l1_1)][o_40, f_52] ==> newPMask[o_40, f_52]
           );
-          Heap := Heap[null, lseg#sm(s1, l1_3):=newPMask];
+          Heap := Heap[null, lseg#sm(s1_2, l1_1):=newPMask];
         }
         assume state(Heap, Mask);
-    xs := Seq#Append(Seq#Singleton(0), degrees(Heap, Heap[s1, sibling], l1_3));
+    xs := Seq#Append(Seq#Singleton(0), degrees(Heap, Heap[s1_2, sibling], l1_1));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert xs == ys -- unofficial002.vpr@43.3--43.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion xs == ys might not hold. (unofficial002.vpr@43.10--43.18) [200450]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion xs == ys might not hold. (unofficial002.vpr@43.10--43.18) [56708]"}
       Seq#Equal(xs, ys);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of join might not hold. There might be insufficient permission to access lseg(s1, l1) (unofficial002.vpr@30.12--30.29) [200451]"}
-        perm <= Mask[null, lseg(s1, l1_3)];
+      assert {:msg "  Postcondition of join might not hold. There might be insufficient permission to access lseg(s1, l1) (unofficial002.vpr@30.12--30.29) [56709]"}
+        perm <= Mask[null, lseg(s1_2, l1_1)];
     }
-    Mask := Mask[null, lseg(s1, l1_3):=Mask[null, lseg(s1, l1_3)] - perm];
+    Mask := Mask[null, lseg(s1_2, l1_1):=Mask[null, lseg(s1_2, l1_1)] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

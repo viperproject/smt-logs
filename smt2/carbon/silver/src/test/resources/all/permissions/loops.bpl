@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:18
+// Date:         2025-01-26 21:43:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/loops.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/loops-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,7 +185,7 @@ axiom !IsWandField(f_7);
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref) returns ()
+procedure test_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -212,7 +212,7 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f != 3
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (loops.vpr@7.12--7.32) [189727]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (loops.vpr@7.12--7.32) [95538]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] != 3;
     assume state(Heap, Mask);
@@ -234,9 +234,9 @@ procedure test(x: Ref) returns ()
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x != null might not hold. (loops.vpr@14.15--14.36) [189728]"}
+        assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x != null might not hold. (loops.vpr@14.15--14.36) [95539]"}
           x != null;
-        assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x.f != 3 might not hold. (loops.vpr@14.15--14.36) [189729]"}
+        assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x.f != 3 might not hold. (loops.vpr@14.15--14.36) [95540]"}
           Heap[x, f_7] != 3;
     
     // -- Havoc loop written variables (except locals)
@@ -247,7 +247,7 @@ procedure test(x: Ref) returns ()
         assume x != null;
         
         // -- Check definedness of x.f != 3
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (loops.vpr@14.15--14.36) [189730]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (loops.vpr@14.15--14.36) [95541]"}
             HasDirectPerm(Mask, x, f_7);
         assume Heap[x, f_7] != 3;
         assume state(Heap, Mask);
@@ -272,7 +272,7 @@ procedure test(x: Ref) returns ()
         // -- Translate loop body
           
           // -- Translating statement: x.f := 4 -- loops.vpr@17.5--17.13
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (loops.vpr@17.5--17.13) [189731]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (loops.vpr@17.5--17.13) [95542]"}
               FullPerm == Mask[x, f_7];
             Heap := Heap[x, f_7:=4];
             assume state(Heap, Mask);
@@ -283,9 +283,9 @@ procedure test(x: Ref) returns ()
         // Exhale invariant
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x != null might not hold. (loops.vpr@14.15--14.36) [189732]"}
+        assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x != null might not hold. (loops.vpr@14.15--14.36) [95543]"}
           x != null;
-        assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x.f != 3 might not hold. (loops.vpr@14.15--14.36) [189733]"}
+        assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x.f != 3 might not hold. (loops.vpr@14.15--14.36) [95544]"}
           Heap[x, f_7] != 3;
         // Terminate execution
         assume false;
@@ -304,7 +304,7 @@ procedure test(x: Ref) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(x: Ref) returns ()
+procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -346,7 +346,7 @@ procedure test2(x: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(x.f, write) might not hold on entry. There might be insufficient permission to access x.f (loops.vpr@27.15--27.23) [189734]"}
+          assert {:msg "  Loop invariant acc(x.f, write) might not hold on entry. There might be insufficient permission to access x.f (loops.vpr@27.15--27.23) [95545]"}
             perm <= Mask[x, f_7];
         }
         Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -381,7 +381,7 @@ procedure test2(x: Ref) returns ()
         // Check and assume guard
         
         // -- Check definedness of x.f < 3
-          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (loops.vpr@26.10--26.17) [189735]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (loops.vpr@26.10--26.17) [95546]"}
             HasDirectPerm(Mask, x, f_7);
         assume Heap[x, f_7] < 3;
         assume state(Heap, Mask);
@@ -390,7 +390,7 @@ procedure test2(x: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(x.f, write) might not be preserved. There might be insufficient permission to access x.f (loops.vpr@27.15--27.23) [189736]"}
+          assert {:msg "  Loop invariant acc(x.f, write) might not be preserved. There might be insufficient permission to access x.f (loops.vpr@27.15--27.23) [95547]"}
             perm <= Mask[x, f_7];
         }
         Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -417,7 +417,7 @@ procedure test2(x: Ref) returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3(x: Ref) returns ()
+procedure test3_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -466,7 +466,7 @@ procedure test3(x: Ref) returns ()
         // Check and assume guard
         
         // -- Check definedness of x.f < 3
-          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (loops.vpr@36.10--36.17) [189737]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (loops.vpr@36.10--36.17) [95548]"}
             HasDirectPerm(Mask, x, f_7);
         assume Heap[x, f_7] < 3;
         assume state(Heap, Mask);
@@ -485,7 +485,7 @@ procedure test3(x: Ref) returns ()
 // Translation of method test4
 // ==================================================
 
-procedure test4(x: Ref) returns ()
+procedure test4_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -524,7 +524,7 @@ procedure test4(x: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(x.f, write) might not hold on entry. There might be insufficient permission to access x.f (loops.vpr@46.15--46.23) [189738]"}
+          assert {:msg "  Loop invariant acc(x.f, write) might not hold on entry. There might be insufficient permission to access x.f (loops.vpr@46.15--46.23) [95549]"}
             perm <= Mask[x, f_7];
         }
         Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -559,7 +559,7 @@ procedure test4(x: Ref) returns ()
         // Check and assume guard
         
         // -- Check definedness of x.f < 3
-          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (loops.vpr@44.10--44.17) [189739]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (loops.vpr@44.10--44.17) [95550]"}
             HasDirectPerm(Mask, x, f_7);
         assume Heap[x, f_7] < 3;
         assume state(Heap, Mask);
@@ -568,7 +568,7 @@ procedure test4(x: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(x.f, write) might not be preserved. There might be insufficient permission to access x.f (loops.vpr@46.15--46.23) [189740]"}
+          assert {:msg "  Loop invariant acc(x.f, write) might not be preserved. There might be insufficient permission to access x.f (loops.vpr@46.15--46.23) [95551]"}
             perm <= Mask[x, f_7];
         }
         Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -595,7 +595,7 @@ procedure test4(x: Ref) returns ()
 // Translation of method test5
 // ==================================================
 
-procedure test5(x: Ref) returns ()
+procedure test5_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -637,7 +637,7 @@ procedure test5(x: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(x.f, write) might not hold on entry. There might be insufficient permission to access x.f (loops.vpr@56.15--56.23) [189741]"}
+          assert {:msg "  Loop invariant acc(x.f, write) might not hold on entry. There might be insufficient permission to access x.f (loops.vpr@56.15--56.23) [95552]"}
             perm <= Mask[x, f_7];
         }
         Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -672,7 +672,7 @@ procedure test5(x: Ref) returns ()
         // Check and assume guard
         
         // -- Check definedness of x.f < 3
-          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (loops.vpr@54.10--54.17) [189742]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (loops.vpr@54.10--54.17) [95553]"}
             HasDirectPerm(Mask, x, f_7);
         assume Heap[x, f_7] < 3;
         assume state(Heap, Mask);
@@ -684,7 +684,7 @@ procedure test5(x: Ref) returns ()
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (loops.vpr@58.12--58.20) [189743]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (loops.vpr@58.12--58.20) [95554]"}
                 perm <= Mask[x, f_7];
             }
             Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -698,7 +698,7 @@ procedure test5(x: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(x.f, write) might not be preserved. There might be insufficient permission to access x.f (loops.vpr@56.15--56.23) [189744]"}
+          assert {:msg "  Loop invariant acc(x.f, write) might not be preserved. There might be insufficient permission to access x.f (loops.vpr@56.15--56.23) [95555]"}
             perm <= Mask[x, f_7];
         }
         Mask := Mask[x, f_7:=Mask[x, f_7] - perm];

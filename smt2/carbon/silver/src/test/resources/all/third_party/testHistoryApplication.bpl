@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:17:23
+// Date:         2025-01-26 21:41:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/testHistoryApplication.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/testHistoryApplication-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -196,7 +196,7 @@ function  p_incr(): ProcessDomainType;
 function  p_single(n_84: int): ProcessDomainType;
 
 // Translation of domain function p_dual
-function  p_dual(n_84: int, m_18: int): ProcessDomainType;
+function  p_dual(n_84: int, m_19: int): ProcessDomainType;
 
 // Translation of domain axiom empty_1L
 axiom (forall p_1: ProcessDomainType ::
@@ -223,9 +223,9 @@ axiom (forall n: int ::
 );
 
 // Translation of domain axiom dual_def
-axiom (forall n: int, m_17: int ::
-  { (p_single(n): ProcessDomainType), (p_dual(n, m_17): ProcessDomainType) } { (p_single(m_17): ProcessDomainType), (p_dual(n, m_17): ProcessDomainType) } { (p_merge((p_single(n): ProcessDomainType), (p_single(m_17): ProcessDomainType)): ProcessDomainType) } { (p_dual(n, m_17): ProcessDomainType) }
-  (p_merge((p_single(n): ProcessDomainType), (p_single(m_17): ProcessDomainType)): ProcessDomainType) == (p_dual(n, m_17): ProcessDomainType)
+axiom (forall n: int, m_18: int ::
+  { (p_single(n): ProcessDomainType), (p_dual(n, m_18): ProcessDomainType) } { (p_single(m_18): ProcessDomainType), (p_dual(n, m_18): ProcessDomainType) } { (p_merge((p_single(n): ProcessDomainType), (p_single(m_18): ProcessDomainType)): ProcessDomainType) } { (p_dual(n, m_18): ProcessDomainType) }
+  (p_merge((p_single(n): ProcessDomainType), (p_single(m_18): ProcessDomainType)): ProcessDomainType) == (p_dual(n, m_18): ProcessDomainType)
 );
 
 // ==================================================
@@ -396,19 +396,19 @@ procedure Ref__hist_incr#definedness(diz: Ref, ref: Ref, p_1: ProcessDomainType)
 // Translation of method Ref__do_incr
 // ==================================================
 
-procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
+procedure Ref__do_incr(diz: Ref, h_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_p: ProcessDomainType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var __flatten_49: int;
   var __flatten_18: int;
@@ -421,7 +421,7 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
   
   // -- Assumptions about method arguments
     assume Heap[diz, $allocated];
-    assume Heap[h_2, $allocated];
+    assume Heap[h_1, $allocated];
   
   // -- Checked inhaling of precondition
     assume diz != null;
@@ -431,18 +431,18 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume h_2 != null;
+    assume h_1 != null;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_empty(): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_empty(): ProcessDomainType))] + perm];
+    Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_empty(): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_empty(): ProcessDomainType))] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -453,10 +453,10 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     PostMask := PostMask[diz, Ref__x:=PostMask[diz, Ref__x] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
-    assume h_2 != null;
+    assume h_1 != null;
     assume state(PostHeap, PostMask);
     perm := FullPerm;
-    PostMask := PostMask[null, Ref__hist_idle(h_2, diz, (p_single(1): ProcessDomainType)):=PostMask[null, Ref__hist_idle(h_2, diz, (p_single(1): ProcessDomainType))] + perm];
+    PostMask := PostMask[null, Ref__hist_idle(h_1, diz, (p_single(1): ProcessDomainType)):=PostMask[null, Ref__hist_idle(h_1, diz, (p_single(1): ProcessDomainType))] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -469,19 +469,19 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     arg_p := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Ref__incr_begin might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@69.3--69.37) [158267]"}
-        h_2 != null;
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Ref__incr_begin might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@69.3--69.37) [43980]"}
+        h_1 != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access Ref__hist_idle(h, diz, p_empty()) (testHistoryApplication.vpr@69.3--69.37) [158268]"}
-          perm <= Mask[null, Ref__hist_idle(h_2, diz, arg_p)];
+        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access Ref__hist_idle(h, diz, p_empty()) (testHistoryApplication.vpr@69.3--69.37) [43981]"}
+          perm <= Mask[null, Ref__hist_idle(h_1, diz, arg_p)];
       }
-      Mask := Mask[null, Ref__hist_idle(h_2, diz, arg_p):=Mask[null, Ref__hist_idle(h_2, diz, arg_p)] - perm];
+      Mask := Mask[null, Ref__hist_idle(h_1, diz, arg_p):=Mask[null, Ref__hist_idle(h_1, diz, arg_p)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@69.3--69.37) [158269]"}
+        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@69.3--69.37) [43982]"}
           perm <= Mask[diz, Ref__x];
       }
       Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] - perm];
@@ -492,7 +492,7 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, Ref__hist_incr(h_2, diz, arg_p):=Mask[null, Ref__hist_incr(h_2, diz, arg_p)] + perm];
+      Mask := Mask[null, Ref__hist_incr(h_1, diz, arg_p):=Mask[null, Ref__hist_incr(h_1, diz, arg_p)] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume diz != null;
@@ -500,19 +500,19 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
       assume state(Heap, Mask);
       assume Heap[diz, Ref__x] == PreCallHeap[diz, Ref__x];
       perm := 1 / 2;
-      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@69.3--69.37) [158270]"}
+      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@69.3--69.37) [43983]"}
         perm >= NoPerm;
-      assume perm > NoPerm ==> h_2 != null;
-      Mask := Mask[h_2, Ref__x_old:=Mask[h_2, Ref__x_old] + perm];
+      assume perm > NoPerm ==> h_1 != null;
+      Mask := Mask[h_1, Ref__x_old:=Mask[h_1, Ref__x_old] + perm];
       assume state(Heap, Mask);
-      assume Heap[diz, Ref__x] == Heap[h_2, Ref__x_old];
+      assume Heap[diz, Ref__x] == Heap[h_1, Ref__x_old];
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_49 := diz.Ref__x + 1 -- testHistoryApplication.vpr@70.3--70.33
     
     // -- Check definedness of diz.Ref__x + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@70.3--70.33) [158271]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@70.3--70.33) [43984]"}
         HasDirectPerm(Mask, diz, Ref__x);
     __flatten_49 := Heap[diz, Ref__x] + 1;
     assume state(Heap, Mask);
@@ -522,7 +522,7 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Ref__x := __flatten_18 -- testHistoryApplication.vpr@72.3--72.29
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@72.3--72.29) [158272]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@72.3--72.29) [43985]"}
       FullPerm == Mask[diz, Ref__x];
     Heap := Heap[diz, Ref__x:=__flatten_18];
     assume state(Heap, Mask);
@@ -533,32 +533,32 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     arg_p_1 := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@73.3--73.38) [158273]"}
-        h_2 != null;
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@73.3--73.38) [43986]"}
+        h_1 != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access Ref__hist_incr(h, diz, p_empty()) (testHistoryApplication.vpr@73.3--73.38) [158274]"}
-          perm <= Mask[null, Ref__hist_incr(h_2, diz, arg_p_1)];
+        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access Ref__hist_incr(h, diz, p_empty()) (testHistoryApplication.vpr@73.3--73.38) [43987]"}
+          perm <= Mask[null, Ref__hist_incr(h_1, diz, arg_p_1)];
       }
-      Mask := Mask[null, Ref__hist_incr(h_2, diz, arg_p_1):=Mask[null, Ref__hist_incr(h_2, diz, arg_p_1)] - perm];
+      Mask := Mask[null, Ref__hist_incr(h_1, diz, arg_p_1):=Mask[null, Ref__hist_incr(h_1, diz, arg_p_1)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@73.3--73.38) [158275]"}
+        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@73.3--73.38) [43988]"}
           perm <= Mask[diz, Ref__x];
       }
       Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] - perm];
       perm := 1 / 2;
-      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@73.3--73.38) [158276]"}
+      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@73.3--73.38) [43989]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access h.Ref__x_old (testHistoryApplication.vpr@73.3--73.38) [158277]"}
-          perm <= Mask[h_2, Ref__x_old];
+        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access h.Ref__x_old (testHistoryApplication.vpr@73.3--73.38) [43990]"}
+          perm <= Mask[h_1, Ref__x_old];
       }
-      Mask := Mask[h_2, Ref__x_old:=Mask[h_2, Ref__x_old] - perm];
-      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion diz.Ref__x == h.Ref__x_old + 1 might not hold. (testHistoryApplication.vpr@73.3--73.38) [158278]"}
-        Heap[diz, Ref__x] == Heap[h_2, Ref__x_old] + 1;
+      Mask := Mask[h_1, Ref__x_old:=Mask[h_1, Ref__x_old] - perm];
+      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion diz.Ref__x == h.Ref__x_old + 1 might not hold. (testHistoryApplication.vpr@73.3--73.38) [43991]"}
+        Heap[diz, Ref__x] == Heap[h_1, Ref__x_old] + 1;
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -566,7 +566,7 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_seq(arg_p_1, (p_incr(): ProcessDomainType)): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_seq(arg_p_1, (p_incr(): ProcessDomainType)): ProcessDomainType))] + perm];
+      Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_seq(arg_p_1, (p_incr(): ProcessDomainType)): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_seq(arg_p_1, (p_incr(): ProcessDomainType)): ProcessDomainType))] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume diz != null;
@@ -577,22 +577,22 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__do_incr might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@62.11--62.33) [158279]"}
+      assert {:msg "  Postcondition of Ref__do_incr might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@62.11--62.33) [43992]"}
         perm <= Mask[diz, Ref__x];
     }
     Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] - perm];
-    assert {:msg "  Postcondition of Ref__do_incr might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@63.11--63.20) [158280]"}
-      h_2 != null;
+    assert {:msg "  Postcondition of Ref__do_incr might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@63.11--63.20) [43993]"}
+      h_1 != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__do_incr might not hold. There might be insufficient permission to access Ref__hist_idle(h, diz, p_single(1)) (testHistoryApplication.vpr@64.11--64.58) [158281]"}
-        perm <= Mask[null, Ref__hist_idle(h_2, diz, (p_single(1): ProcessDomainType))];
+      assert {:msg "  Postcondition of Ref__do_incr might not hold. There might be insufficient permission to access Ref__hist_idle(h, diz, p_single(1)) (testHistoryApplication.vpr@64.11--64.58) [43994]"}
+        perm <= Mask[null, Ref__hist_idle(h_1, diz, (p_single(1): ProcessDomainType))];
     }
-    Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_single(1): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_single(1): ProcessDomainType))] - perm];
+    Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_single(1): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_single(1): ProcessDomainType))] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -603,19 +603,19 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
 // Translation of method Ref__do_incr_twice
 // ==================================================
 
-procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
+procedure Ref__do_incr_twice(diz: Ref, h_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_p: ProcessDomainType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var __flatten_54: int;
   var __flatten_23: int;
@@ -632,7 +632,7 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
   
   // -- Assumptions about method arguments
     assume Heap[diz, $allocated];
-    assume Heap[h_2, $allocated];
+    assume Heap[h_1, $allocated];
   
   // -- Checked inhaling of precondition
     assume diz != null;
@@ -642,18 +642,18 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume h_2 != null;
+    assume h_1 != null;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_empty(): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_empty(): ProcessDomainType))] + perm];
+    Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_empty(): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_empty(): ProcessDomainType))] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -664,10 +664,10 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     PostMask := PostMask[diz, Ref__x:=PostMask[diz, Ref__x] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
-    assume h_2 != null;
+    assume h_1 != null;
     assume state(PostHeap, PostMask);
     perm := FullPerm;
-    PostMask := PostMask[null, Ref__hist_idle(h_2, diz, (p_single(2): ProcessDomainType)):=PostMask[null, Ref__hist_idle(h_2, diz, (p_single(2): ProcessDomainType))] + perm];
+    PostMask := PostMask[null, Ref__hist_idle(h_1, diz, (p_single(2): ProcessDomainType)):=PostMask[null, Ref__hist_idle(h_1, diz, (p_single(2): ProcessDomainType))] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -680,19 +680,19 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     arg_p := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Ref__incr_begin might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@90.3--90.37) [158282]"}
-        h_2 != null;
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Ref__incr_begin might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@90.3--90.37) [43995]"}
+        h_1 != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access Ref__hist_idle(h, diz, p_empty()) (testHistoryApplication.vpr@90.3--90.37) [158283]"}
-          perm <= Mask[null, Ref__hist_idle(h_2, diz, arg_p)];
+        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access Ref__hist_idle(h, diz, p_empty()) (testHistoryApplication.vpr@90.3--90.37) [43996]"}
+          perm <= Mask[null, Ref__hist_idle(h_1, diz, arg_p)];
       }
-      Mask := Mask[null, Ref__hist_idle(h_2, diz, arg_p):=Mask[null, Ref__hist_idle(h_2, diz, arg_p)] - perm];
+      Mask := Mask[null, Ref__hist_idle(h_1, diz, arg_p):=Mask[null, Ref__hist_idle(h_1, diz, arg_p)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@90.3--90.37) [158284]"}
+        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@90.3--90.37) [43997]"}
           perm <= Mask[diz, Ref__x];
       }
       Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] - perm];
@@ -703,7 +703,7 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, Ref__hist_incr(h_2, diz, arg_p):=Mask[null, Ref__hist_incr(h_2, diz, arg_p)] + perm];
+      Mask := Mask[null, Ref__hist_incr(h_1, diz, arg_p):=Mask[null, Ref__hist_incr(h_1, diz, arg_p)] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume diz != null;
@@ -711,19 +711,19 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
       assume state(Heap, Mask);
       assume Heap[diz, Ref__x] == PreCallHeap[diz, Ref__x];
       perm := 1 / 2;
-      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@90.3--90.37) [158285]"}
+      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@90.3--90.37) [43998]"}
         perm >= NoPerm;
-      assume perm > NoPerm ==> h_2 != null;
-      Mask := Mask[h_2, Ref__x_old:=Mask[h_2, Ref__x_old] + perm];
+      assume perm > NoPerm ==> h_1 != null;
+      Mask := Mask[h_1, Ref__x_old:=Mask[h_1, Ref__x_old] + perm];
       assume state(Heap, Mask);
-      assume Heap[diz, Ref__x] == Heap[h_2, Ref__x_old];
+      assume Heap[diz, Ref__x] == Heap[h_1, Ref__x_old];
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_54 := diz.Ref__x + 1 -- testHistoryApplication.vpr@91.3--91.33
     
     // -- Check definedness of diz.Ref__x + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@91.3--91.33) [158286]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@91.3--91.33) [43999]"}
         HasDirectPerm(Mask, diz, Ref__x);
     __flatten_54 := Heap[diz, Ref__x] + 1;
     assume state(Heap, Mask);
@@ -733,7 +733,7 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Ref__x := __flatten_23 -- testHistoryApplication.vpr@93.3--93.29
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@93.3--93.29) [158287]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@93.3--93.29) [44000]"}
       FullPerm == Mask[diz, Ref__x];
     Heap := Heap[diz, Ref__x:=__flatten_23];
     assume state(Heap, Mask);
@@ -744,32 +744,32 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     arg_p_1 := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@94.3--94.38) [158288]"}
-        h_2 != null;
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@94.3--94.38) [44001]"}
+        h_1 != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access Ref__hist_incr(h, diz, p_empty()) (testHistoryApplication.vpr@94.3--94.38) [158289]"}
-          perm <= Mask[null, Ref__hist_incr(h_2, diz, arg_p_1)];
+        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access Ref__hist_incr(h, diz, p_empty()) (testHistoryApplication.vpr@94.3--94.38) [44002]"}
+          perm <= Mask[null, Ref__hist_incr(h_1, diz, arg_p_1)];
       }
-      Mask := Mask[null, Ref__hist_incr(h_2, diz, arg_p_1):=Mask[null, Ref__hist_incr(h_2, diz, arg_p_1)] - perm];
+      Mask := Mask[null, Ref__hist_incr(h_1, diz, arg_p_1):=Mask[null, Ref__hist_incr(h_1, diz, arg_p_1)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@94.3--94.38) [158290]"}
+        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@94.3--94.38) [44003]"}
           perm <= Mask[diz, Ref__x];
       }
       Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] - perm];
       perm := 1 / 2;
-      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@94.3--94.38) [158291]"}
+      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@94.3--94.38) [44004]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access h.Ref__x_old (testHistoryApplication.vpr@94.3--94.38) [158292]"}
-          perm <= Mask[h_2, Ref__x_old];
+        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access h.Ref__x_old (testHistoryApplication.vpr@94.3--94.38) [44005]"}
+          perm <= Mask[h_1, Ref__x_old];
       }
-      Mask := Mask[h_2, Ref__x_old:=Mask[h_2, Ref__x_old] - perm];
-      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion diz.Ref__x == h.Ref__x_old + 1 might not hold. (testHistoryApplication.vpr@94.3--94.38) [158293]"}
-        Heap[diz, Ref__x] == Heap[h_2, Ref__x_old] + 1;
+      Mask := Mask[h_1, Ref__x_old:=Mask[h_1, Ref__x_old] - perm];
+      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion diz.Ref__x == h.Ref__x_old + 1 might not hold. (testHistoryApplication.vpr@94.3--94.38) [44006]"}
+        Heap[diz, Ref__x] == Heap[h_1, Ref__x_old] + 1;
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -777,7 +777,7 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_seq(arg_p_1, (p_incr(): ProcessDomainType)): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_seq(arg_p_1, (p_incr(): ProcessDomainType)): ProcessDomainType))] + perm];
+      Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_seq(arg_p_1, (p_incr(): ProcessDomainType)): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_seq(arg_p_1, (p_incr(): ProcessDomainType)): ProcessDomainType))] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume diz != null;
@@ -793,19 +793,19 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     arg_p_2 := (p_single(1): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Ref__incr_begin might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@95.3--95.39) [158294]"}
-        h_2 != null;
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Ref__incr_begin might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@95.3--95.39) [44007]"}
+        h_1 != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access Ref__hist_idle(h, diz, p_single(1)) (testHistoryApplication.vpr@95.3--95.39) [158295]"}
-          perm <= Mask[null, Ref__hist_idle(h_2, diz, arg_p_2)];
+        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access Ref__hist_idle(h, diz, p_single(1)) (testHistoryApplication.vpr@95.3--95.39) [44008]"}
+          perm <= Mask[null, Ref__hist_idle(h_1, diz, arg_p_2)];
       }
-      Mask := Mask[null, Ref__hist_idle(h_2, diz, arg_p_2):=Mask[null, Ref__hist_idle(h_2, diz, arg_p_2)] - perm];
+      Mask := Mask[null, Ref__hist_idle(h_1, diz, arg_p_2):=Mask[null, Ref__hist_idle(h_1, diz, arg_p_2)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@95.3--95.39) [158296]"}
+        assert {:msg "  The precondition of method Ref__incr_begin might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@95.3--95.39) [44009]"}
           perm <= Mask[diz, Ref__x];
       }
       Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] - perm];
@@ -816,7 +816,7 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, Ref__hist_incr(h_2, diz, arg_p_2):=Mask[null, Ref__hist_incr(h_2, diz, arg_p_2)] + perm];
+      Mask := Mask[null, Ref__hist_incr(h_1, diz, arg_p_2):=Mask[null, Ref__hist_incr(h_1, diz, arg_p_2)] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume diz != null;
@@ -824,19 +824,19 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
       assume state(Heap, Mask);
       assume Heap[diz, Ref__x] == PreCallHeap[diz, Ref__x];
       perm := 1 / 2;
-      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@95.3--95.39) [158297]"}
+      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@95.3--95.39) [44010]"}
         perm >= NoPerm;
-      assume perm > NoPerm ==> h_2 != null;
-      Mask := Mask[h_2, Ref__x_old:=Mask[h_2, Ref__x_old] + perm];
+      assume perm > NoPerm ==> h_1 != null;
+      Mask := Mask[h_1, Ref__x_old:=Mask[h_1, Ref__x_old] + perm];
       assume state(Heap, Mask);
-      assume Heap[diz, Ref__x] == Heap[h_2, Ref__x_old];
+      assume Heap[diz, Ref__x] == Heap[h_1, Ref__x_old];
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_59 := diz.Ref__x + 1 -- testHistoryApplication.vpr@96.3--96.33
     
     // -- Check definedness of diz.Ref__x + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@96.3--96.33) [158298]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@96.3--96.33) [44011]"}
         HasDirectPerm(Mask, diz, Ref__x);
     __flatten_59 := Heap[diz, Ref__x] + 1;
     assume state(Heap, Mask);
@@ -846,7 +846,7 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Ref__x := __flatten_28 -- testHistoryApplication.vpr@98.3--98.29
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@98.3--98.29) [158299]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@98.3--98.29) [44012]"}
       FullPerm == Mask[diz, Ref__x];
     Heap := Heap[diz, Ref__x:=__flatten_28];
     assume state(Heap, Mask);
@@ -857,32 +857,32 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     arg_p_3 := (p_single(1): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@99.3--99.40) [158300]"}
-        h_2 != null;
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@99.3--99.40) [44013]"}
+        h_1 != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access Ref__hist_incr(h, diz, p_single(1)) (testHistoryApplication.vpr@99.3--99.40) [158301]"}
-          perm <= Mask[null, Ref__hist_incr(h_2, diz, arg_p_3)];
+        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access Ref__hist_incr(h, diz, p_single(1)) (testHistoryApplication.vpr@99.3--99.40) [44014]"}
+          perm <= Mask[null, Ref__hist_incr(h_1, diz, arg_p_3)];
       }
-      Mask := Mask[null, Ref__hist_incr(h_2, diz, arg_p_3):=Mask[null, Ref__hist_incr(h_2, diz, arg_p_3)] - perm];
+      Mask := Mask[null, Ref__hist_incr(h_1, diz, arg_p_3):=Mask[null, Ref__hist_incr(h_1, diz, arg_p_3)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@99.3--99.40) [158302]"}
+        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@99.3--99.40) [44015]"}
           perm <= Mask[diz, Ref__x];
       }
       Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] - perm];
       perm := 1 / 2;
-      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@99.3--99.40) [158303]"}
+      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@99.3--99.40) [44016]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access h.Ref__x_old (testHistoryApplication.vpr@99.3--99.40) [158304]"}
-          perm <= Mask[h_2, Ref__x_old];
+        assert {:msg "  The precondition of method Ref__incr_commit might not hold. There might be insufficient permission to access h.Ref__x_old (testHistoryApplication.vpr@99.3--99.40) [44017]"}
+          perm <= Mask[h_1, Ref__x_old];
       }
-      Mask := Mask[h_2, Ref__x_old:=Mask[h_2, Ref__x_old] - perm];
-      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion diz.Ref__x == h.Ref__x_old + 1 might not hold. (testHistoryApplication.vpr@99.3--99.40) [158305]"}
-        Heap[diz, Ref__x] == Heap[h_2, Ref__x_old] + 1;
+      Mask := Mask[h_1, Ref__x_old:=Mask[h_1, Ref__x_old] - perm];
+      assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion diz.Ref__x == h.Ref__x_old + 1 might not hold. (testHistoryApplication.vpr@99.3--99.40) [44018]"}
+        Heap[diz, Ref__x] == Heap[h_1, Ref__x_old] + 1;
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -890,7 +890,7 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_seq(arg_p_3, (p_incr(): ProcessDomainType)): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_seq(arg_p_3, (p_incr(): ProcessDomainType)): ProcessDomainType))] + perm];
+      Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_seq(arg_p_3, (p_incr(): ProcessDomainType)): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_seq(arg_p_3, (p_incr(): ProcessDomainType)): ProcessDomainType))] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
       assume diz != null;
@@ -901,22 +901,22 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__do_incr_twice might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@81.11--81.33) [158306]"}
+      assert {:msg "  Postcondition of Ref__do_incr_twice might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@81.11--81.33) [44019]"}
         perm <= Mask[diz, Ref__x];
     }
     Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] - perm];
-    assert {:msg "  Postcondition of Ref__do_incr_twice might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@82.11--82.20) [158307]"}
-      h_2 != null;
+    assert {:msg "  Postcondition of Ref__do_incr_twice might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@82.11--82.20) [44020]"}
+      h_1 != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__do_incr_twice might not hold. There might be insufficient permission to access Ref__hist_idle(h, diz, p_single(2)) (testHistoryApplication.vpr@83.11--83.58) [158308]"}
-        perm <= Mask[null, Ref__hist_idle(h_2, diz, (p_single(2): ProcessDomainType))];
+      assert {:msg "  Postcondition of Ref__do_incr_twice might not hold. There might be insufficient permission to access Ref__hist_idle(h, diz, p_single(2)) (testHistoryApplication.vpr@83.11--83.58) [44021]"}
+        perm <= Mask[null, Ref__hist_idle(h_1, diz, (p_single(2): ProcessDomainType))];
     }
-    Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_single(2): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_single(2): ProcessDomainType))] - perm];
+    Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_single(2): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_single(2): ProcessDomainType))] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -931,13 +931,13 @@ procedure Ref__main_og(diz: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var hh: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -960,7 +960,7 @@ procedure Ref__main_og(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Ref__x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@105.12--105.27) [158309]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@105.12--105.27) [44022]"}
         HasDirectPerm(Mask, diz, Ref__x);
     assume Heap[diz, Ref__x] == 0;
     assume state(Heap, Mask);
@@ -968,8 +968,8 @@ procedure Ref__main_og(diz: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -982,7 +982,7 @@ procedure Ref__main_og(diz: Ref) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__x == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@107.11--107.26) [158310]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@107.11--107.26) [44023]"}
         HasDirectPerm(PostMask, diz, Ref__x);
     assume PostHeap[diz, Ref__x] == 1;
     assume state(PostHeap, PostMask);
@@ -994,13 +994,13 @@ procedure Ref__main_og(diz: Ref) returns ()
     assume Heap[hh, $allocated];
   
   // -- Translating statement: assert diz.Ref__x == 0 -- testHistoryApplication.vpr@111.3--111.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of diz.Ref__x == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@111.10--111.25) [158311]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@111.10--111.25) [44024]"}
         HasDirectPerm(ExhaleWellDef0Mask, diz, Ref__x);
-    assert {:msg "  Assert might fail. Assertion diz.Ref__x == 0 might not hold. (testHistoryApplication.vpr@111.10--111.25) [158312]"}
+    assert {:msg "  Assert might fail. Assertion diz.Ref__x == 0 might not hold. (testHistoryApplication.vpr@111.10--111.25) [44025]"}
       Heap[diz, Ref__x] == 0;
     assume state(Heap, Mask);
   
@@ -1017,21 +1017,21 @@ procedure Ref__main_og(diz: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Ref__do_incr might not hold. Assertion diz != null might not hold. (testHistoryApplication.vpr@113.3--113.24) [158314]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Ref__do_incr might not hold. Assertion diz != null might not hold. (testHistoryApplication.vpr@113.3--113.24) [44027]"}
         diz != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__do_incr might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@113.3--113.24) [158315]"}
+        assert {:msg "  The precondition of method Ref__do_incr might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@113.3--113.24) [44028]"}
           perm <= Mask[diz, Ref__x];
       }
       Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] - perm];
-      assert {:msg "  The precondition of method Ref__do_incr might not hold. Assertion hh != null might not hold. (testHistoryApplication.vpr@113.3--113.24) [158316]"}
+      assert {:msg "  The precondition of method Ref__do_incr might not hold. Assertion hh != null might not hold. (testHistoryApplication.vpr@113.3--113.24) [44029]"}
         hh != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Ref__do_incr might not hold. There might be insufficient permission to access Ref__hist_idle(hh, diz, p_empty()) (testHistoryApplication.vpr@113.3--113.24) [158317]"}
+        assert {:msg "  The precondition of method Ref__do_incr might not hold. There might be insufficient permission to access Ref__hist_idle(hh, diz, p_empty()) (testHistoryApplication.vpr@113.3--113.24) [44030]"}
           perm <= Mask[null, Ref__hist_idle(hh, diz, (p_empty(): ProcessDomainType))];
       }
       Mask := Mask[null, Ref__hist_idle(hh, diz, (p_empty(): ProcessDomainType)):=Mask[null, Ref__hist_idle(hh, diz, (p_empty(): ProcessDomainType))] - perm];
@@ -1053,13 +1053,13 @@ procedure Ref__main_og(diz: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale hh != null && acc(Ref__hist_idle(hh, diz, p_single(1)), write) -- testHistoryApplication.vpr@114.3--114.74
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Exhale might fail. Assertion hh != null might not hold. (testHistoryApplication.vpr@114.10--114.74) [158318]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Exhale might fail. Assertion hh != null might not hold. (testHistoryApplication.vpr@114.10--114.74) [44031]"}
       hh != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access Ref__hist_idle(hh, diz, p_single(1)) (testHistoryApplication.vpr@114.10--114.74) [158320]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access Ref__hist_idle(hh, diz, p_single(1)) (testHistoryApplication.vpr@114.10--114.74) [44033]"}
         perm <= Mask[null, Ref__hist_idle(hh, diz, (p_single(1): ProcessDomainType))];
     }
     Mask := Mask[null, Ref__hist_idle(hh, diz, (p_single(1): ProcessDomainType)):=Mask[null, Ref__hist_idle(hh, diz, (p_single(1): ProcessDomainType))] - perm];
@@ -1072,22 +1072,22 @@ procedure Ref__main_og(diz: Ref) returns ()
   // -- Translating statement: inhale diz.Ref__x == 1 -- testHistoryApplication.vpr@115.3--115.25
     
     // -- Check definedness of diz.Ref__x == 1
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@115.10--115.25) [158321]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@115.10--115.25) [44034]"}
         HasDirectPerm(Mask, diz, Ref__x);
     assume Heap[diz, Ref__x] == 1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__main_og might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@106.11--106.33) [158322]"}
+      assert {:msg "  Postcondition of Ref__main_og might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@106.11--106.33) [44035]"}
         perm <= Mask[diz, Ref__x];
     }
     Mask := Mask[diz, Ref__x:=Mask[diz, Ref__x] - perm];
-    assert {:msg "  Postcondition of Ref__main_og might not hold. Assertion diz.Ref__x == 1 might not hold. (testHistoryApplication.vpr@107.11--107.26) [158323]"}
+    assert {:msg "  Postcondition of Ref__main_og might not hold. Assertion diz.Ref__x == 1 might not hold. (testHistoryApplication.vpr@107.11--107.26) [44036]"}
       Heap[diz, Ref__x] == 1;
     // Finish exhale
     havoc ExhaleHeap;
@@ -1102,8 +1102,8 @@ procedure Ref__main_og(diz: Ref) returns ()
 procedure Ref__Ref() returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -1112,8 +1112,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
   var freshObj: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1124,8 +1124,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1139,7 +1139,7 @@ procedure Ref__Ref() returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Ref__x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Ref__x (testHistoryApplication.vpr@120.11--120.70) [158324]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Ref__x (testHistoryApplication.vpr@120.11--120.70) [44037]"}
         HasDirectPerm(PostMask, sys__result, Ref__x);
     assume PostHeap[sys__result, Ref__x] == 0;
     assume state(PostHeap, PostMask);
@@ -1166,7 +1166,7 @@ procedure Ref__Ref() returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Ref__x := 0 -- testHistoryApplication.vpr@126.3--126.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@126.3--126.18) [158325]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@126.3--126.18) [44038]"}
       FullPerm == Mask[diz, Ref__x];
     Heap := Heap[diz, Ref__x:=0];
     assume state(Heap, Mask);
@@ -1179,21 +1179,21 @@ procedure Ref__Ref() returns (sys__result: Ref)
   //   (acc(sys__result.Ref__x, write) && sys__result.Ref__x == 0) -- testHistoryApplication.vpr@128.3--128.96
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryApplication.vpr@128.10--128.96) [158326]"}
+    ExhaleWellDef0Heap := AssertHeap;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryApplication.vpr@128.10--128.96) [44039]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Ref__x (testHistoryApplication.vpr@128.10--128.96) [158328]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Ref__x (testHistoryApplication.vpr@128.10--128.96) [44041]"}
         perm <= AssertMask[sys__result, Ref__x];
     }
     AssertMask := AssertMask[sys__result, Ref__x:=AssertMask[sys__result, Ref__x] - perm];
     
     // -- Check definedness of sys__result.Ref__x == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Ref__x (testHistoryApplication.vpr@128.10--128.96) [158329]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Ref__x (testHistoryApplication.vpr@128.10--128.96) [44042]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Ref__x);
-    assert {:msg "  Assert might fail. Assertion sys__result.Ref__x == 0 might not hold. (testHistoryApplication.vpr@128.10--128.96) [158330]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Ref__x == 0 might not hold. (testHistoryApplication.vpr@128.10--128.96) [44043]"}
       AssertHeap[sys__result, Ref__x] == 0;
     assume state(Heap, Mask);
   
@@ -1203,17 +1203,17 @@ procedure Ref__Ref() returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testHistoryApplication.vpr@119.11--119.30) [158331]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testHistoryApplication.vpr@119.11--119.30) [44044]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__Ref might not hold. There might be insufficient permission to access sys__result.Ref__x (testHistoryApplication.vpr@120.11--120.70) [158332]"}
+      assert {:msg "  Postcondition of Ref__Ref might not hold. There might be insufficient permission to access sys__result.Ref__x (testHistoryApplication.vpr@120.11--120.70) [44045]"}
         perm <= Mask[sys__result, Ref__x];
     }
     Mask := Mask[sys__result, Ref__x:=Mask[sys__result, Ref__x] - perm];
-    assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result.Ref__x == 0 might not hold. (testHistoryApplication.vpr@120.11--120.70) [158333]"}
+    assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result.Ref__x == 0 might not hold. (testHistoryApplication.vpr@120.11--120.70) [44046]"}
       Heap[sys__result, Ref__x] == 0;
     // Finish exhale
     havoc ExhaleHeap;
@@ -1229,12 +1229,12 @@ procedure Ref__empty_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1262,8 +1262,8 @@ procedure Ref__empty_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1280,14 +1280,14 @@ procedure Ref__empty_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of ref.Ref__x == old(ref.Ref__x)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@138.11--138.40) [158334]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@138.11--138.40) [44047]"}
         HasDirectPerm(PostMask, ref, Ref__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@138.11--138.40) [158335]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@138.11--138.40) [44048]"}
         HasDirectPerm(oldMask, ref, Ref__x);
     assume PostHeap[ref, Ref__x] == oldHeap[ref, Ref__x];
     assume state(PostHeap, PostMask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@139.11--139.37) [158336]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@139.11--139.37) [44049]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     PostMask := PostMask[diz, Ref__x_old:=PostMask[diz, Ref__x_old] + perm];
@@ -1295,9 +1295,9 @@ procedure Ref__empty_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of ref.Ref__x == diz.Ref__x_old
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@140.11--140.39) [158337]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@140.11--140.39) [44050]"}
         HasDirectPerm(PostMask, ref, Ref__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@140.11--140.39) [158338]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@140.11--140.39) [44051]"}
         HasDirectPerm(PostMask, diz, Ref__x_old);
     assume PostHeap[ref, Ref__x] == PostHeap[diz, Ref__x_old];
     assume state(PostHeap, PostMask);
@@ -1311,31 +1311,31 @@ procedure Ref__empty_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__empty_begin might not hold. There might be insufficient permission to access Ref__hist_empty(diz, ref, p) (testHistoryApplication.vpr@136.11--136.51) [158339]"}
+      assert {:msg "  Postcondition of Ref__empty_begin might not hold. There might be insufficient permission to access Ref__hist_empty(diz, ref, p) (testHistoryApplication.vpr@136.11--136.51) [44052]"}
         perm <= Mask[null, Ref__hist_empty(diz, ref, p_1)];
     }
     Mask := Mask[null, Ref__hist_empty(diz, ref, p_1):=Mask[null, Ref__hist_empty(diz, ref, p_1)] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__empty_begin might not hold. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@137.11--137.33) [158340]"}
+      assert {:msg "  Postcondition of Ref__empty_begin might not hold. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@137.11--137.33) [44053]"}
         perm <= Mask[ref, Ref__x];
     }
     Mask := Mask[ref, Ref__x:=Mask[ref, Ref__x] - perm];
-    assert {:msg "  Postcondition of Ref__empty_begin might not hold. Assertion ref.Ref__x == old(ref.Ref__x) might not hold. (testHistoryApplication.vpr@138.11--138.40) [158341]"}
+    assert {:msg "  Postcondition of Ref__empty_begin might not hold. Assertion ref.Ref__x == old(ref.Ref__x) might not hold. (testHistoryApplication.vpr@138.11--138.40) [44054]"}
       Heap[ref, Ref__x] == oldHeap[ref, Ref__x];
     perm := 1 / 2;
-    assert {:msg "  Postcondition of Ref__empty_begin might not hold. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@139.11--139.37) [158342]"}
+    assert {:msg "  Postcondition of Ref__empty_begin might not hold. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@139.11--139.37) [44055]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__empty_begin might not hold. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@139.11--139.37) [158343]"}
+      assert {:msg "  Postcondition of Ref__empty_begin might not hold. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@139.11--139.37) [44056]"}
         perm <= Mask[diz, Ref__x_old];
     }
     Mask := Mask[diz, Ref__x_old:=Mask[diz, Ref__x_old] - perm];
-    assert {:msg "  Postcondition of Ref__empty_begin might not hold. Assertion ref.Ref__x == diz.Ref__x_old might not hold. (testHistoryApplication.vpr@140.11--140.39) [158344]"}
+    assert {:msg "  Postcondition of Ref__empty_begin might not hold. Assertion ref.Ref__x == diz.Ref__x_old might not hold. (testHistoryApplication.vpr@140.11--140.39) [44057]"}
       Heap[ref, Ref__x] == Heap[diz, Ref__x_old];
     // Finish exhale
     havoc ExhaleHeap;
@@ -1351,12 +1351,12 @@ procedure Ref__empty_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1381,7 +1381,7 @@ procedure Ref__empty_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns 
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@149.12--149.38) [158345]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@149.12--149.38) [44058]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     Mask := Mask[diz, Ref__x_old:=Mask[diz, Ref__x_old] + perm];
@@ -1389,9 +1389,9 @@ procedure Ref__empty_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns 
     assume state(Heap, Mask);
     
     // -- Check definedness of ref.Ref__x == diz.Ref__x_old
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@150.12--150.40) [158346]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@150.12--150.40) [44059]"}
         HasDirectPerm(Mask, ref, Ref__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@150.12--150.40) [158347]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@150.12--150.40) [44060]"}
         HasDirectPerm(Mask, diz, Ref__x_old);
     assume Heap[ref, Ref__x] == Heap[diz, Ref__x_old];
     assume state(Heap, Mask);
@@ -1399,8 +1399,8 @@ procedure Ref__empty_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1417,9 +1417,9 @@ procedure Ref__empty_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns 
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of ref.Ref__x == old(ref.Ref__x)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@153.11--153.40) [158348]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@153.11--153.40) [44061]"}
         HasDirectPerm(PostMask, ref, Ref__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@153.11--153.40) [158349]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@153.11--153.40) [44062]"}
         HasDirectPerm(oldMask, ref, Ref__x);
     assume PostHeap[ref, Ref__x] == oldHeap[ref, Ref__x];
     assume state(PostHeap, PostMask);
@@ -1433,21 +1433,21 @@ procedure Ref__empty_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__empty_commit might not hold. There might be insufficient permission to access Ref__hist_idle(diz, ref, p_seq(p, p_empty())) (testHistoryApplication.vpr@151.11--151.68) [158350]"}
+      assert {:msg "  Postcondition of Ref__empty_commit might not hold. There might be insufficient permission to access Ref__hist_idle(diz, ref, p_seq(p, p_empty())) (testHistoryApplication.vpr@151.11--151.68) [44063]"}
         perm <= Mask[null, Ref__hist_idle(diz, ref, (p_seq(p_1, (p_empty(): ProcessDomainType)): ProcessDomainType))];
     }
     Mask := Mask[null, Ref__hist_idle(diz, ref, (p_seq(p_1, (p_empty(): ProcessDomainType)): ProcessDomainType)):=Mask[null, Ref__hist_idle(diz, ref, (p_seq(p_1, (p_empty(): ProcessDomainType)): ProcessDomainType))] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__empty_commit might not hold. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@152.11--152.33) [158351]"}
+      assert {:msg "  Postcondition of Ref__empty_commit might not hold. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@152.11--152.33) [44064]"}
         perm <= Mask[ref, Ref__x];
     }
     Mask := Mask[ref, Ref__x:=Mask[ref, Ref__x] - perm];
-    assert {:msg "  Postcondition of Ref__empty_commit might not hold. Assertion ref.Ref__x == old(ref.Ref__x) might not hold. (testHistoryApplication.vpr@153.11--153.40) [158352]"}
+    assert {:msg "  Postcondition of Ref__empty_commit might not hold. Assertion ref.Ref__x == old(ref.Ref__x) might not hold. (testHistoryApplication.vpr@153.11--153.40) [44065]"}
       Heap[ref, Ref__x] == oldHeap[ref, Ref__x];
     // Finish exhale
     havoc ExhaleHeap;
@@ -1463,12 +1463,12 @@ procedure Ref__incr_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1496,8 +1496,8 @@ procedure Ref__incr_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1514,14 +1514,14 @@ procedure Ref__incr_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of ref.Ref__x == old(ref.Ref__x)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@164.11--164.40) [158353]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@164.11--164.40) [44066]"}
         HasDirectPerm(PostMask, ref, Ref__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@164.11--164.40) [158354]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@164.11--164.40) [44067]"}
         HasDirectPerm(oldMask, ref, Ref__x);
     assume PostHeap[ref, Ref__x] == oldHeap[ref, Ref__x];
     assume state(PostHeap, PostMask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@165.11--165.37) [158355]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@165.11--165.37) [44068]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     PostMask := PostMask[diz, Ref__x_old:=PostMask[diz, Ref__x_old] + perm];
@@ -1529,9 +1529,9 @@ procedure Ref__incr_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of ref.Ref__x == diz.Ref__x_old
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@166.11--166.39) [158356]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@166.11--166.39) [44069]"}
         HasDirectPerm(PostMask, ref, Ref__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@166.11--166.39) [158357]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@166.11--166.39) [44070]"}
         HasDirectPerm(PostMask, diz, Ref__x_old);
     assume PostHeap[ref, Ref__x] == PostHeap[diz, Ref__x_old];
     assume state(PostHeap, PostMask);
@@ -1545,31 +1545,31 @@ procedure Ref__incr_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__incr_begin might not hold. There might be insufficient permission to access Ref__hist_incr(diz, ref, p) (testHistoryApplication.vpr@162.11--162.50) [158358]"}
+      assert {:msg "  Postcondition of Ref__incr_begin might not hold. There might be insufficient permission to access Ref__hist_incr(diz, ref, p) (testHistoryApplication.vpr@162.11--162.50) [44071]"}
         perm <= Mask[null, Ref__hist_incr(diz, ref, p_1)];
     }
     Mask := Mask[null, Ref__hist_incr(diz, ref, p_1):=Mask[null, Ref__hist_incr(diz, ref, p_1)] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__incr_begin might not hold. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@163.11--163.33) [158359]"}
+      assert {:msg "  Postcondition of Ref__incr_begin might not hold. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@163.11--163.33) [44072]"}
         perm <= Mask[ref, Ref__x];
     }
     Mask := Mask[ref, Ref__x:=Mask[ref, Ref__x] - perm];
-    assert {:msg "  Postcondition of Ref__incr_begin might not hold. Assertion ref.Ref__x == old(ref.Ref__x) might not hold. (testHistoryApplication.vpr@164.11--164.40) [158360]"}
+    assert {:msg "  Postcondition of Ref__incr_begin might not hold. Assertion ref.Ref__x == old(ref.Ref__x) might not hold. (testHistoryApplication.vpr@164.11--164.40) [44073]"}
       Heap[ref, Ref__x] == oldHeap[ref, Ref__x];
     perm := 1 / 2;
-    assert {:msg "  Postcondition of Ref__incr_begin might not hold. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@165.11--165.37) [158361]"}
+    assert {:msg "  Postcondition of Ref__incr_begin might not hold. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@165.11--165.37) [44074]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__incr_begin might not hold. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@165.11--165.37) [158362]"}
+      assert {:msg "  Postcondition of Ref__incr_begin might not hold. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@165.11--165.37) [44075]"}
         perm <= Mask[diz, Ref__x_old];
     }
     Mask := Mask[diz, Ref__x_old:=Mask[diz, Ref__x_old] - perm];
-    assert {:msg "  Postcondition of Ref__incr_begin might not hold. Assertion ref.Ref__x == diz.Ref__x_old might not hold. (testHistoryApplication.vpr@166.11--166.39) [158363]"}
+    assert {:msg "  Postcondition of Ref__incr_begin might not hold. Assertion ref.Ref__x == diz.Ref__x_old might not hold. (testHistoryApplication.vpr@166.11--166.39) [44076]"}
       Heap[ref, Ref__x] == Heap[diz, Ref__x_old];
     // Finish exhale
     havoc ExhaleHeap;
@@ -1585,12 +1585,12 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1615,7 +1615,7 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@175.12--175.38) [158364]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryApplication.vpr@175.12--175.38) [44077]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     Mask := Mask[diz, Ref__x_old:=Mask[diz, Ref__x_old] + perm];
@@ -1623,9 +1623,9 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
     assume state(Heap, Mask);
     
     // -- Check definedness of ref.Ref__x == diz.Ref__x_old + 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@176.12--176.44) [158365]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@176.12--176.44) [44078]"}
         HasDirectPerm(Mask, ref, Ref__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@176.12--176.44) [158366]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__x_old (testHistoryApplication.vpr@176.12--176.44) [44079]"}
         HasDirectPerm(Mask, diz, Ref__x_old);
     assume Heap[ref, Ref__x] == Heap[diz, Ref__x_old] + 1;
     assume state(Heap, Mask);
@@ -1633,8 +1633,8 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1651,9 +1651,9 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of ref.Ref__x == old(ref.Ref__x)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@179.11--179.40) [158367]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@179.11--179.40) [44080]"}
         HasDirectPerm(PostMask, ref, Ref__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@179.11--179.40) [158368]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@179.11--179.40) [44081]"}
         HasDirectPerm(oldMask, ref, Ref__x);
     assume PostHeap[ref, Ref__x] == oldHeap[ref, Ref__x];
     assume state(PostHeap, PostMask);
@@ -1667,21 +1667,21 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__incr_commit might not hold. There might be insufficient permission to access Ref__hist_idle(diz, ref, p_seq(p, p_incr())) (testHistoryApplication.vpr@177.11--177.67) [158369]"}
+      assert {:msg "  Postcondition of Ref__incr_commit might not hold. There might be insufficient permission to access Ref__hist_idle(diz, ref, p_seq(p, p_incr())) (testHistoryApplication.vpr@177.11--177.67) [44082]"}
         perm <= Mask[null, Ref__hist_idle(diz, ref, (p_seq(p_1, (p_incr(): ProcessDomainType)): ProcessDomainType))];
     }
     Mask := Mask[null, Ref__hist_idle(diz, ref, (p_seq(p_1, (p_incr(): ProcessDomainType)): ProcessDomainType)):=Mask[null, Ref__hist_idle(diz, ref, (p_seq(p_1, (p_incr(): ProcessDomainType)): ProcessDomainType))] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__incr_commit might not hold. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@178.11--178.33) [158370]"}
+      assert {:msg "  Postcondition of Ref__incr_commit might not hold. There might be insufficient permission to access ref.Ref__x (testHistoryApplication.vpr@178.11--178.33) [44083]"}
         perm <= Mask[ref, Ref__x];
     }
     Mask := Mask[ref, Ref__x:=Mask[ref, Ref__x] - perm];
-    assert {:msg "  Postcondition of Ref__incr_commit might not hold. Assertion ref.Ref__x == old(ref.Ref__x) might not hold. (testHistoryApplication.vpr@179.11--179.40) [158371]"}
+    assert {:msg "  Postcondition of Ref__incr_commit might not hold. Assertion ref.Ref__x == old(ref.Ref__x) might not hold. (testHistoryApplication.vpr@179.11--179.40) [44084]"}
       Heap[ref, Ref__x] == oldHeap[ref, Ref__x];
     // Finish exhale
     havoc ExhaleHeap;
@@ -1696,8 +1696,8 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
 procedure Ref__if_any_random(diz: Ref) returns (sys__result: bool)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1714,8 +1714,8 @@ procedure Ref__if_any_random(diz: Ref) returns (sys__result: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- testHistoryApplication.vpr@187.3--187.15
     assume false;

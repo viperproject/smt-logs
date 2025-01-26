@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:07
+// Date:         2025-01-26 21:43:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0045.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0045-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -192,11 +192,11 @@ axiom !IsWandField(g);
 // ==================================================
 
 // Uninterpreted function definitions
-function  sum(Heap: HeapType, p_1: Ref): int;
+function  sum_1(Heap: HeapType, p_1: Ref): int;
 function  sum'(Heap: HeapType, p_1: Ref): int;
 axiom (forall Heap: HeapType, p_1: Ref ::
-  { sum(Heap, p_1) }
-  sum(Heap, p_1) == sum'(Heap, p_1) && dummyFunction(sum#triggerStateless(p_1))
+  { sum_1(Heap, p_1) }
+  sum_1(Heap, p_1) == sum'(Heap, p_1) && dummyFunction(sum#triggerStateless(p_1))
 );
 axiom (forall Heap: HeapType, p_1: Ref ::
   { sum'(Heap, p_1) }
@@ -205,8 +205,8 @@ axiom (forall Heap: HeapType, p_1: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, p_1: Ref ::
-  { state(Heap, Mask), sum(Heap, p_1) } { state(Heap, Mask), sum#triggerStateless(p_1), Pair#trigger(Heap, Pair(p_1)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> sum(Heap, p_1) == Heap[p_1, f_7] + Heap[p_1, g]
+  { state(Heap, Mask), sum_1(Heap, p_1) } { state(Heap, Mask), sum#triggerStateless(p_1), Pair#trigger(Heap, Pair(p_1)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> sum_1(Heap, p_1) == Heap[p_1, f_7] + Heap[p_1, g]
 );
 
 // Framing axioms
@@ -229,8 +229,8 @@ procedure sum#definedness(p_1: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -252,10 +252,10 @@ procedure sum#definedness(p_1: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Pair#trigger(UnfoldingHeap, Pair(p_1));
       assume UnfoldingHeap[null, Pair(p_1)] == CombineFrames(FrameFragment(UnfoldingHeap[p_1, f_7]), FrameFragment(UnfoldingHeap[p_1, g]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Pair(p) (0045.vpr@11.1--15.2) [194216]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Pair(p) (0045.vpr@11.1--15.2) [83109]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Pair(p_1)];
       perm := FullPerm;
       assume p_1 != null;
@@ -266,9 +266,9 @@ procedure sum#definedness(p_1: Ref) returns (Result: int)
       UnfoldingMask := UnfoldingMask[p_1, g:=UnfoldingMask[p_1, g] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access p.f (0045.vpr@11.1--15.2) [194217]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access p.f (0045.vpr@11.1--15.2) [83110]"}
         HasDirectPerm(UnfoldingMask, p_1, f_7);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access p.g (0045.vpr@11.1--15.2) [194218]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access p.g (0045.vpr@11.1--15.2) [83111]"}
         HasDirectPerm(UnfoldingMask, p_1, g);
       
       // -- Free assumptions (exp module)
@@ -347,16 +347,16 @@ procedure test08(p_1: Ref, r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var x: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -381,18 +381,18 @@ procedure test08(p_1: Ref, r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := sum(p) -- 0045.vpr@21.3--21.14
     
     // -- Check definedness of sum(p)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Pair(p) (0045.vpr@21.8--21.14) [194219]"}
+        assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Pair(p) (0045.vpr@21.8--21.14) [83112]"}
           NoPerm < perm ==> NoPerm < Mask[null, Pair(p_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -401,15 +401,15 @@ procedure test08(p_1: Ref, r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    x := sum(Heap, p_1);
+    x := sum_1(Heap, p_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- 0045.vpr@22.3--22.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (0045.vpr@22.10--22.18) [194221]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (0045.vpr@22.10--22.18) [83114]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -420,19 +420,19 @@ procedure test08(p_1: Ref, r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (unfolding acc(Pair(p), write) in p.f + p.g == x) -- 0045.vpr@23.3--23.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (unfolding acc(Pair(p), write) in p.f + p.g == x)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume Pair#trigger(UnfoldingHeap, Pair(p_1));
       assume UnfoldingHeap[null, Pair(p_1)] == CombineFrames(FrameFragment(UnfoldingHeap[p_1, f_7]), FrameFragment(UnfoldingHeap[p_1, g]));
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access Pair(p) (0045.vpr@23.11--23.44) [194222]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access Pair(p) (0045.vpr@23.11--23.44) [83115]"}
           perm <= UnfoldingMask[null, Pair(p_1)];
       }
       UnfoldingMask := UnfoldingMask[null, Pair(p_1):=UnfoldingMask[null, Pair(p_1)] - perm];
@@ -445,16 +445,16 @@ procedure test08(p_1: Ref, r_1: Ref) returns ()
       UnfoldingMask := UnfoldingMask[p_1, g:=UnfoldingMask[p_1, g] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access p.f (0045.vpr@23.11--23.44) [194223]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access p.f (0045.vpr@23.11--23.44) [83116]"}
         HasDirectPerm(UnfoldingMask, p_1, f_7);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access p.g (0045.vpr@23.11--23.44) [194224]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access p.g (0045.vpr@23.11--23.44) [83117]"}
         HasDirectPerm(UnfoldingMask, p_1, g);
       
       // -- Free assumptions (exp module)
         Heap := Heap[null, Pair#sm(p_1):=Heap[null, Pair#sm(p_1)][p_1, f_7:=true]];
         Heap := Heap[null, Pair#sm(p_1):=Heap[null, Pair#sm(p_1)][p_1, g:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Assert might fail. Assertion p.f + p.g == x might not hold. (0045.vpr@23.11--23.44) [194225]"}
+    assert {:msg "  Assert might fail. Assertion p.f + p.g == x might not hold. (0045.vpr@23.11--23.44) [83118]"}
       Heap[p_1, f_7] + Heap[p_1, g] == x;
     
     // -- Free assumptions (exhale module)

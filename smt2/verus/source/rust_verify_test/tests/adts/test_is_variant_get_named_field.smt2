@@ -682,13 +682,13 @@
 (declare-const fuel%impl&%0.get_Ok_t. FuelId)
 (declare-const fuel%impl&%0.is_Err. FuelId)
 (declare-const fuel%impl&%0.get_Err_v. FuelId)
-(declare-const fuel%impl&%1.arrow_t. FuelId)
 (declare-const fuel%impl&%1.arrow_v. FuelId)
+(declare-const fuel%impl&%1.arrow_t. FuelId)
 (declare-const fuel%impl&%1.arrow_Ok_t. FuelId)
 (declare-const fuel%impl&%1.arrow_Err_v. FuelId)
 (assert
  (distinct fuel%impl&%0.is_Ok. fuel%impl&%0.get_Ok_t. fuel%impl&%0.is_Err. fuel%impl&%0.get_Err_v.
-  fuel%impl&%1.arrow_t. fuel%impl&%1.arrow_v. fuel%impl&%1.arrow_Ok_t. fuel%impl&%1.arrow_Err_v.
+  fuel%impl&%1.arrow_v. fuel%impl&%1.arrow_t. fuel%impl&%1.arrow_Ok_t. fuel%impl&%1.arrow_Err_v.
 ))
 
 ;; Datatypes
@@ -823,11 +823,11 @@
 ;; Function-Decl crate::Res::get_Err_v
 (declare-fun impl&%0.get_Err_v.? (Dcr Type Poly) Int)
 
-;; Function-Decl crate::Res::arrow_t
-(declare-fun impl&%1.arrow_t.? (Dcr Type Poly) Poly)
-
 ;; Function-Decl crate::Res::arrow_v
 (declare-fun impl&%1.arrow_v.? (Dcr Type Poly) Int)
+
+;; Function-Decl crate::Res::arrow_t
+(declare-fun impl&%1.arrow_t.? (Dcr Type Poly) Poly)
 
 ;; Function-Decl crate::Res::arrow_Ok_t
 (declare-fun impl&%1.arrow_Ok_t.? (Dcr Type Poly) Poly)
@@ -911,30 +911,6 @@
    :skolemid skolem_internal_impl&__0.get_Err_v.?_pre_post_definition
 )))
 
-;; Function-Axioms crate::Res::arrow_t
-(assert
- (fuel_bool_default fuel%impl&%1.arrow_t.)
-)
-(assert
- (=>
-  (fuel_bool fuel%impl&%1.arrow_t.)
-  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
-    (= (impl&%1.arrow_t.? T&. T& self!) (Res./Ok/t (%Poly%Res. self!)))
-    :pattern ((impl&%1.arrow_t.? T&. T& self!))
-    :qid internal_impl&__1.arrow_t.?_definition
-    :skolemid skolem_internal_impl&__1.arrow_t.?_definition
-))))
-(assert
- (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
-   (=>
-    (has_type self! (TYPE%Res. T&. T&))
-    (has_type (impl&%1.arrow_t.? T&. T& self!) T&)
-   )
-   :pattern ((impl&%1.arrow_t.? T&. T& self!))
-   :qid internal_impl&__1.arrow_t.?_pre_post_definition
-   :skolemid skolem_internal_impl&__1.arrow_t.?_pre_post_definition
-)))
-
 ;; Function-Axioms crate::Res::arrow_v
 (assert
  (fuel_bool_default fuel%impl&%1.arrow_v.)
@@ -957,6 +933,30 @@
    :pattern ((impl&%1.arrow_v.? T&. T& self!))
    :qid internal_impl&__1.arrow_v.?_pre_post_definition
    :skolemid skolem_internal_impl&__1.arrow_v.?_pre_post_definition
+)))
+
+;; Function-Axioms crate::Res::arrow_t
+(assert
+ (fuel_bool_default fuel%impl&%1.arrow_t.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%impl&%1.arrow_t.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (impl&%1.arrow_t.? T&. T& self!) (Res./Ok/t (%Poly%Res. self!)))
+    :pattern ((impl&%1.arrow_t.? T&. T& self!))
+    :qid internal_impl&__1.arrow_t.?_definition
+    :skolemid skolem_internal_impl&__1.arrow_t.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+   (=>
+    (has_type self! (TYPE%Res. T&. T&))
+    (has_type (impl&%1.arrow_t.? T&. T& self!) T&)
+   )
+   :pattern ((impl&%1.arrow_t.? T&. T& self!))
+   :qid internal_impl&__1.arrow_t.?_pre_post_definition
+   :skolemid skolem_internal_impl&__1.arrow_t.?_pre_post_definition
 )))
 
 ;; Function-Axioms crate::Res::arrow_Ok_t

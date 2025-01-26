@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:51
+// Date:         2025-01-26 21:42:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0161.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0161-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,20 +189,20 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of function pre
 // ==================================================
 
 // Uninterpreted function definitions
-function  pre_1(Heap: HeapType, this: Ref): int;
+function  pre(Heap: HeapType, this: Ref): int;
 function  pre'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { pre_1(Heap, this) }
-  pre_1(Heap, this) == pre'(Heap, this) && dummyFunction(pre#triggerStateless(this))
+  { pre(Heap, this) }
+  pre(Heap, this) == pre'(Heap, this) && dummyFunction(pre#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { pre'(Heap, this) }
@@ -211,8 +211,8 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), pre_1(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 8 ==> this != null && Heap[this, x_36] == 0 ==> pre_1(Heap, this) == 1
+  { state(Heap, Mask), pre(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 8 ==> this != null && Heap[this, x_42] == 0 ==> pre(Heap, this) == 1
 );
 
 // Framing axioms
@@ -244,9 +244,9 @@ procedure pre#definedness(this: Ref) returns (Result: int)
     assume this != null;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@8.12--8.39) [200498]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@8.12--8.39) [77970]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
   
   // -- Translate function body
@@ -272,7 +272,7 @@ axiom (forall Heap: HeapType, this: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), body(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 9 ==> this != null ==> body(Heap, this) == Heap[this, x_36]
+  state(Heap, Mask) && AssumeFunctionsAbove < 9 ==> this != null ==> body(Heap, this) == Heap[this, x_42]
 );
 
 // Framing axioms
@@ -307,11 +307,11 @@ procedure body#definedness(this: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of this.x
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@14.1--18.2) [200499]"}
-        HasDirectPerm(Mask, this, x_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@14.1--18.2) [77971]"}
+        HasDirectPerm(Mask, this, x_42);
   
   // -- Translate function body
-    Result := Heap[this, x_36];
+    Result := Heap[this, x_42];
 }
 
 // ==================================================
@@ -333,7 +333,7 @@ axiom (forall Heap: HeapType, this: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), pre1(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 6 ==> this != null && Heap[this, x_36] == 0 ==> pre1(Heap, this) == 1
+  state(Heap, Mask) && AssumeFunctionsAbove < 6 ==> this != null && Heap[this, x_42] == 0 ==> pre1(Heap, this) == 1
 );
 
 // Framing axioms
@@ -365,9 +365,9 @@ procedure pre1#definedness(this: Ref) returns (Result: int)
     assume this != null;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@26.12--26.39) [200500]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@26.12--26.39) [77972]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
   
   // -- Translate function body
@@ -419,9 +419,9 @@ procedure pre1Abstract#definedness(this: Ref) returns (Result: int)
     assume this != null;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@33.12--33.39) [200501]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@33.12--33.39) [77973]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
 }
 
@@ -444,7 +444,7 @@ axiom (forall Heap: HeapType, this: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), pre2(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> this != null && Heap[this, x_36] == 0 ==> pre2(Heap, this) == 1
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> this != null && Heap[this, x_42] == 0 ==> pre2(Heap, this) == 1
 );
 
 // Framing axioms
@@ -476,9 +476,9 @@ procedure pre2#definedness(this: Ref) returns (Result: int)
     assume this != null;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@38.12--39.23) [200502]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@38.12--39.23) [77974]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
   
   // -- Translate function body
@@ -530,9 +530,9 @@ procedure pre2Abstract#definedness(this: Ref) returns (Result: int)
     assume this != null;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@46.12--47.23) [200503]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@46.12--47.23) [77975]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
 }
 
@@ -555,7 +555,7 @@ axiom (forall Heap: HeapType, this: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), pre3(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> this != null && Heap[this, x_36] == 0 ==> pre3(Heap, this) == 1
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> this != null && Heap[this, x_42] == 0 ==> pre3(Heap, this) == 1
 );
 
 // Framing axioms
@@ -588,9 +588,9 @@ procedure pre3#definedness(this: Ref) returns (Result: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@53.12--53.23) [200504]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@53.12--53.23) [77976]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
   
   // -- Translate function body
@@ -643,9 +643,9 @@ procedure pre3Abstract#definedness(this: Ref) returns (Result: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@61.12--61.23) [200505]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@61.12--61.23) [77977]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
 }
 
@@ -675,7 +675,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), post1Abstract'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 5 || post1Abstract#trigger(EmptyFrame, this)) ==> this != null ==> Heap[this, x_36] == 0
+  state(Heap, Mask) && (AssumeFunctionsAbove < 5 || post1Abstract#trigger(EmptyFrame, this)) ==> this != null ==> Heap[this, x_42] == 0
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -703,9 +703,9 @@ procedure post1Abstract#definedness(this: Ref) returns (Result: int)
   // -- Checking definedness of postcondition (no body)
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@66.11--66.22) [200506]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@66.11--66.22) [77978]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
 }
 
@@ -735,7 +735,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), post2Abstract'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 2 || post2Abstract#trigger(EmptyFrame, this)) ==> this != null ==> this != null && Heap[this, x_36] == 0
+  state(Heap, Mask) && (AssumeFunctionsAbove < 2 || post2Abstract#trigger(EmptyFrame, this)) ==> this != null ==> this != null && Heap[this, x_42] == 0
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -764,8 +764,8 @@ procedure post2Abstract#definedness(this: Ref) returns (Result: int)
     assume this != null;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@71.11--72.22) [200507]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0161.vpr@71.11--72.22) [77979]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
 }

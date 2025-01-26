@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:22
+// Date:         2025-01-26 21:43:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/swap.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/swap-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,15 +188,15 @@ axiom !IsWandField(G);
 // Translation of method m
 // ==================================================
 
-procedure m(this: Ref, a_2: int, b_24: int) returns (x: int, y: int)
+procedure m_17(this: Ref, a_2: int, b_24: int) returns (x: int, y: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -209,8 +209,8 @@ procedure m(this: Ref, a_2: int, b_24: int) returns (x: int, y: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -232,11 +232,11 @@ procedure m(this: Ref, a_2: int, b_24: int) returns (x: int, y: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of m might not hold. Assertion x == a might not hold. (swap.vpr@5.13--5.41) [147187]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of m might not hold. Assertion x == a might not hold. (swap.vpr@5.13--5.41) [86794]"}
       x == a_2;
-    assert {:msg "  Postcondition of m might not hold. Assertion y == b might not hold. (swap.vpr@5.13--5.41) [147188]"}
+    assert {:msg "  Postcondition of m might not hold. Assertion y == b might not hold. (swap.vpr@5.13--5.41) [86795]"}
       y == b_24;
 }
 
@@ -244,17 +244,17 @@ procedure m(this: Ref, a_2: int, b_24: int) returns (x: int, y: int)
 // Translation of method n
 // ==================================================
 
-procedure n_12(this: Ref) returns ()
+procedure n_83(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -279,8 +279,8 @@ procedure n_12(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -297,16 +297,16 @@ procedure n_12(this: Ref) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.F == old(this.G)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.F (swap.vpr@15.13--15.71) [147189]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.F (swap.vpr@15.13--15.71) [86796]"}
         HasDirectPerm(PostMask, this, F);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.G (swap.vpr@15.13--15.71) [147190]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.G (swap.vpr@15.13--15.71) [86797]"}
         HasDirectPerm(oldMask, this, G);
     assume PostHeap[this, F] == oldHeap[this, G];
     
     // -- Check definedness of this.G == old(this.F)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.G (swap.vpr@15.13--15.71) [147191]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.G (swap.vpr@15.13--15.71) [86798]"}
         HasDirectPerm(PostMask, this, G);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.F (swap.vpr@15.13--15.71) [147192]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.F (swap.vpr@15.13--15.71) [86799]"}
         HasDirectPerm(oldMask, this, F);
     assume PostHeap[this, G] == oldHeap[this, F];
     assume state(PostHeap, PostMask);
@@ -317,7 +317,7 @@ procedure n_12(this: Ref) returns ()
   // -- Translating statement: tmp := this.F -- swap.vpr@17.5--17.27
     
     // -- Check definedness of this.F
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.F (swap.vpr@17.5--17.27) [147193]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.F (swap.vpr@17.5--17.27) [86800]"}
         HasDirectPerm(Mask, this, F);
     tmp := Heap[this, F];
     assume state(Heap, Mask);
@@ -325,37 +325,37 @@ procedure n_12(this: Ref) returns ()
   // -- Translating statement: this.F := this.G -- swap.vpr@18.5--18.21
     
     // -- Check definedness of this.G
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.G (swap.vpr@18.5--18.21) [147194]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.G (swap.vpr@18.5--18.21) [86801]"}
         HasDirectPerm(Mask, this, G);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.F (swap.vpr@18.5--18.21) [147195]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.F (swap.vpr@18.5--18.21) [86802]"}
       FullPerm == Mask[this, F];
     Heap := Heap[this, F:=Heap[this, G]];
     assume state(Heap, Mask);
   
   // -- Translating statement: this.G := tmp -- swap.vpr@19.5--19.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.G (swap.vpr@19.5--19.18) [147196]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.G (swap.vpr@19.5--19.18) [86803]"}
       FullPerm == Mask[this, G];
     Heap := Heap[this, G:=tmp];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of n might not hold. There might be insufficient permission to access this.F (swap.vpr@14.13--14.53) [147197]"}
+      assert {:msg "  Postcondition of n might not hold. There might be insufficient permission to access this.F (swap.vpr@14.13--14.53) [86804]"}
         perm <= Mask[this, F];
     }
     Mask := Mask[this, F:=Mask[this, F] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of n might not hold. There might be insufficient permission to access this.G (swap.vpr@14.13--14.53) [147198]"}
+      assert {:msg "  Postcondition of n might not hold. There might be insufficient permission to access this.G (swap.vpr@14.13--14.53) [86805]"}
         perm <= Mask[this, G];
     }
     Mask := Mask[this, G:=Mask[this, G] - perm];
-    assert {:msg "  Postcondition of n might not hold. Assertion this.F == old(this.G) might not hold. (swap.vpr@15.13--15.71) [147199]"}
+    assert {:msg "  Postcondition of n might not hold. Assertion this.F == old(this.G) might not hold. (swap.vpr@15.13--15.71) [86806]"}
       Heap[this, F] == oldHeap[this, G];
-    assert {:msg "  Postcondition of n might not hold. Assertion this.G == old(this.F) might not hold. (swap.vpr@15.13--15.71) [147200]"}
+    assert {:msg "  Postcondition of n might not hold. Assertion this.G == old(this.F) might not hold. (swap.vpr@15.13--15.71) [86807]"}
       Heap[this, G] == oldHeap[this, F];
     // Finish exhale
     havoc ExhaleHeap;

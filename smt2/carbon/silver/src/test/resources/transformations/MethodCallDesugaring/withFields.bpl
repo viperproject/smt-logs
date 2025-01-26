@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:59:10
+// Date:         2025-01-26 21:44:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/MethodCallDesugaring/withFields.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/MethodCallDesugaring/withFields-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,14 +188,14 @@ axiom !IsWandField(f_7);
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: Ref;
   var freshObj: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var res: int;
@@ -209,8 +209,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -224,7 +224,7 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: a.f := 5 -- withFields.vpr@11.5--11.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access a.f (withFields.vpr@11.5--11.13) [92686]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access a.f (withFields.vpr@11.5--11.13) [198236]"}
       FullPerm == Mask[a_2, f_7];
     Heap := Heap[a_2, f_7:=5];
     assume state(Heap, Mask);
@@ -234,15 +234,15 @@ procedure main() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method foo might not hold. There might be insufficient permission to access a.f (withFields.vpr@12.5--12.21) [92687]"}
+        assert {:msg "  The precondition of method foo might not hold. There might be insufficient permission to access a.f (withFields.vpr@12.5--12.21) [198237]"}
           perm <= Mask[a_2, f_7];
       }
       Mask := Mask[a_2, f_7:=Mask[a_2, f_7] - perm];
-      assert {:msg "  The precondition of method foo might not hold. Assertion a.f == 5 might not hold. (withFields.vpr@12.5--12.21) [92688]"}
+      assert {:msg "  The precondition of method foo might not hold. Assertion a.f == 5 might not hold. (withFields.vpr@12.5--12.21) [198238]"}
         Heap[a_2, f_7] == 5;
       // Finish exhale
       havoc ExhaleHeap;
@@ -264,13 +264,13 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a.f == res -- withFields.vpr@14.5--14.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a.f == res
-      assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (withFields.vpr@14.12--14.22) [92689]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (withFields.vpr@14.12--14.22) [198239]"}
         HasDirectPerm(ExhaleWellDef0Mask, a_2, f_7);
-    assert {:msg "  Assert might fail. Assertion a.f == res might not hold. (withFields.vpr@14.12--14.22) [92690]"}
+    assert {:msg "  Assert might fail. Assertion a.f == res might not hold. (withFields.vpr@14.12--14.22) [198240]"}
       Heap[a_2, f_7] == res;
     assume state(Heap, Mask);
 }
@@ -279,17 +279,17 @@ procedure main() returns ()
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref, y: int) returns (r1: int)
+procedure foo_3(x: Ref, y: int) returns (r1: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -307,7 +307,7 @@ procedure foo_1(x: Ref, y: int) returns (r1: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 5
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (withFields.vpr@18.14--18.34) [92691]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (withFields.vpr@18.14--18.34) [198241]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 5;
     assume state(Heap, Mask);
@@ -315,8 +315,8 @@ procedure foo_1(x: Ref, y: int) returns (r1: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -331,7 +331,7 @@ procedure foo_1(x: Ref, y: int) returns (r1: int)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.f == r1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (withFields.vpr@20.13--20.44) [92692]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (withFields.vpr@20.13--20.44) [198242]"}
         HasDirectPerm(PostMask, x, f_7);
     assume PostHeap[x, f_7] == r1;
     assume state(PostHeap, PostMask);
@@ -344,22 +344,22 @@ procedure foo_1(x: Ref, y: int) returns (r1: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := r1 -- withFields.vpr@23.5--23.14
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (withFields.vpr@23.5--23.14) [92693]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (withFields.vpr@23.5--23.14) [198243]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=r1];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of foo might not hold. Assertion r1 == y might not hold. (withFields.vpr@19.13--19.20) [92694]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of foo might not hold. Assertion r1 == y might not hold. (withFields.vpr@19.13--19.20) [198244]"}
       r1 == y;
-    assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access x.f (withFields.vpr@20.13--20.44) [92695]"}
+    assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access x.f (withFields.vpr@20.13--20.44) [198245]"}
       Mask[x, f_7] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x, f_7];
     Mask := Mask[x, f_7:=Mask[x, f_7] - wildcard];
-    assert {:msg "  Postcondition of foo might not hold. Assertion x.f == r1 might not hold. (withFields.vpr@20.13--20.44) [92696]"}
+    assert {:msg "  Postcondition of foo might not hold. Assertion x.f == r1 might not hold. (withFields.vpr@20.13--20.44) [198246]"}
       Heap[x, f_7] == r1;
     // Finish exhale
     havoc ExhaleHeap;

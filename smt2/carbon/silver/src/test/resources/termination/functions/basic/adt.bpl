@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:58
+// Date:         2025-01-26 21:41:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/adt.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/adt-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -211,7 +211,7 @@ function  is_Nil(xs_1: listDomainType): bool;
 function  is_Cons(xs_1: listDomainType): bool;
 
 // Translation of domain function size
-function  size_3(xs_1: listDomainType): int;
+function  size(xs_1: listDomainType): int;
 
 // Translation of domain axiom eitherConsorNil
 axiom (forall xs: listDomainType ::
@@ -221,8 +221,8 @@ axiom (forall xs: listDomainType ::
 
 // Translation of domain axiom numberOfElem
 axiom (forall xs: listDomainType ::
-  { (is_Nil(xs): bool) } { (size_3(xs): int) } { (is_Cons(xs): bool) } { (size_3((tail_Cons(xs): listDomainType)): int) }
-  (is_Nil(xs): bool) == ((size_3(xs): int) == 0) && ((is_Cons(xs): bool) == ((size_3(xs): int) > 0) && ((is_Cons(xs): bool) == ((size_3(xs): int) > (size_3((tail_Cons(xs): listDomainType)): int)) && (is_Cons(xs): bool) == ((size_3(xs): int) == 1 + (size_3((tail_Cons(xs): listDomainType)): int))))
+  { (is_Nil(xs): bool) } { (size(xs): int) } { (is_Cons(xs): bool) } { (size((tail_Cons(xs): listDomainType)): int) }
+  (is_Nil(xs): bool) == ((size(xs): int) == 0) && ((is_Cons(xs): bool) == ((size(xs): int) > 0) && ((is_Cons(xs): bool) == ((size(xs): int) > (size((tail_Cons(xs): listDomainType)): int)) && (is_Cons(xs): bool) == ((size(xs): int) == 1 + (size((tail_Cons(xs): listDomainType)): int))))
 );
 
 // Translation of domain axiom destruct_over_construct_Cons
@@ -315,7 +315,7 @@ axiom (forall Heap: HeapType, xs: listDomainType ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, xs: listDomainType ::
   { state(Heap, Mask), f_6(Heap, xs) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> (size_3(xs): int) >= 0 ==> f_6(Heap, xs) == (if (size_3(xs): int) > 0 then f'(Heap, (tail_Cons(xs): listDomainType)) else 6)
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> (size(xs): int) >= 0 ==> f_6(Heap, xs) == (if (size(xs): int) > 0 then f'(Heap, (tail_Cons(xs): listDomainType)) else 6)
 );
 
 // Framing axioms
@@ -345,19 +345,19 @@ procedure f#definedness(xs: listDomainType) returns (Result: int)
     assume AssumeFunctionsAbove == 0;
   
   // -- Inhaling precondition (with checking)
-    assume (size_3(xs): int) >= 0;
+    assume (size(xs): int) >= 0;
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of (size(xs) > 0 ? f(tail_Cons(xs)) : 6)
-      if ((size_3(xs): int) > 0) {
+      if ((size(xs): int) > 0) {
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function f might not hold. Assertion size(tail_Cons(xs)) >= 0 might not hold. (adt.vpr@83.20--83.36) [223905]"}
-            (size_3((tail_Cons(xs): listDomainType)): int) >= 0;
+          assert {:msg "  Precondition of function f might not hold. Assertion size(tail_Cons(xs)) >= 0 might not hold. (adt.vpr@83.20--83.36) [18069]"}
+            (size((tail_Cons(xs): listDomainType)): int) >= 0;
           // Stop execution
           assume false;
         } else {
@@ -367,7 +367,7 @@ procedure f#definedness(xs: listDomainType) returns (Result: int)
       }
   
   // -- Translate function body
-    Result := (if (size_3(xs): int) > 0 then f_6(Heap, (tail_Cons(xs): listDomainType)) else 6);
+    Result := (if (size(xs): int) > 0 then f_6(Heap, (tail_Cons(xs): listDomainType)) else 6);
 }
 
 // ==================================================
@@ -389,7 +389,7 @@ procedure f_termination_proof(xs: listDomainType) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume (size_3(xs): int) >= 0;
+    assume (size(xs): int) >= 0;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -399,16 +399,16 @@ procedure f_termination_proof(xs: listDomainType) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: if (size(xs) > 0) -- <no position>
-    if ((size_3(xs): int) > 0) {
+    if ((size(xs): int) > 0) {
       
       // -- Translating statement: assert (decreasing(size(tail_Cons(xs)), old(size(xs))): Bool) &&
   //   (bounded(old(size(xs))): Bool) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(size(tail_Cons(xs)), old(size(xs))): Bool) might not hold. (<no position>) [223906]"}
-          (decreasing((size_3((tail_Cons(xs): listDomainType)): int), (size_3(xs): int)): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(size(xs))): Bool) might not hold. (<no position>) [223907]"}
-          (bounded((size_3(xs): int)): bool);
+        assert {:msg "  Assert might fail. Assertion (decreasing(size(tail_Cons(xs)), old(size(xs))): Bool) might not hold. (<no position>) [18070]"}
+          (decreasing((size((tail_Cons(xs): listDomainType)): int), (size(xs): int)): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(size(xs))): Bool) might not hold. (<no position>) [18071]"}
+          (bounded((size(xs): int)): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);

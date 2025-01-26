@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:03:44
+// Date:         2025-01-26 21:45:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/refute/complex.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/refute/complex-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,11 +189,11 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo_2(Heap: HeapType, x: Ref): bool;
+function  foo_1(Heap: HeapType, x: Ref): bool;
 function  foo'(Heap: HeapType, x: Ref): bool;
 axiom (forall Heap: HeapType, x: Ref ::
-  { foo_2(Heap, x) }
-  foo_2(Heap, x) == foo'(Heap, x) && dummyFunction(foo#triggerStateless(x))
+  { foo_1(Heap, x) }
+  foo_1(Heap, x) == foo'(Heap, x) && dummyFunction(foo#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { foo'(Heap, x) }
@@ -202,8 +202,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), foo_2(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_2(Heap, x) == (Heap[x, f_7] == Heap[x, f_7])
+  { state(Heap, Mask), foo_1(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_1(Heap, x) == (Heap[x, f_7] == Heap[x, f_7])
 );
 
 // Framing axioms
@@ -214,7 +214,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
 );
 
 // Trigger function (controlling recursive postconditions)
-function  foo#trigger(frame: FrameType, x: Ref): bool;
+function  foo#trigger_1(frame: FrameType, x: Ref): bool;
 
 // State-independent trigger function
 function  foo#triggerStateless(x: Ref): bool;
@@ -242,9 +242,9 @@ procedure foo#definedness(x: Ref) returns (Result: bool)
   // -- Check definedness of function body
     
     // -- Check definedness of x.f == x.f
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (complex.vpr@3.1--4.37) [119891]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (complex.vpr@3.1--4.37) [225319]"}
         HasDirectPerm(Mask, x, f_7);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (complex.vpr@3.1--4.37) [119892]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (complex.vpr@3.1--4.37) [225320]"}
         HasDirectPerm(Mask, x, f_7);
   
   // -- Translate function body
@@ -255,7 +255,7 @@ procedure foo#definedness(x: Ref) returns (Result: bool)
 // Translation of method bar
 // ==================================================
 
-procedure bar_1(y: int) returns ()
+procedure bar_2(y: int) returns ()
   modifies Heap, Mask;
 {
   var l_lblGuard: bool;
@@ -308,7 +308,7 @@ procedure bar_1(y: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: label l -- complex.vpr@11.5--11.12
-    l_9:
+    l_8:
     LabellMask := Mask;
     LabellHeap := Heap;
     l_lblGuard := true;
@@ -323,12 +323,12 @@ procedure bar_1(y: int) returns ()
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(x.f, write) && (old[l](x.f >= y) ==> x.f >= y) might not hold on entry. There might be insufficient permission to access x.f (complex.vpr@13.19--13.62) [119894]"}
+          assert {:msg "  Loop invariant acc(x.f, write) && (old[l](x.f >= y) ==> x.f >= y) might not hold on entry. There might be insufficient permission to access x.f (complex.vpr@13.19--13.62) [225322]"}
             perm <= Mask[x, f_7];
         }
         Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
         if (LabellHeap[x, f_7] >= y) {
-          assert {:msg "  Loop invariant acc(x.f, write) && (old[l](x.f >= y) ==> x.f >= y) might not hold on entry. Assertion x.f >= y might not hold. (complex.vpr@13.19--13.62) [119895]"}
+          assert {:msg "  Loop invariant acc(x.f, write) && (old[l](x.f >= y) ==> x.f >= y) might not hold on entry. Assertion x.f >= y might not hold. (complex.vpr@13.19--13.62) [225323]"}
             Heap[x, f_7] >= y;
         }
         // Finish exhale
@@ -344,14 +344,14 @@ procedure bar_1(y: int) returns ()
         assume state(Heap, Mask);
         
         // -- Check definedness of old[l](x.f >= y)
-          assert {:msg "  Contract might not be well-formed. Did not reach labelled state l required to evaluate old[l](x.f >= y). (complex.vpr@13.19--13.62) [119896]"}
+          assert {:msg "  Contract might not be well-formed. Did not reach labelled state l required to evaluate old[l](x.f >= y). (complex.vpr@13.19--13.62) [225324]"}
             l_lblGuard;
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (complex.vpr@13.19--13.62) [119897]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (complex.vpr@13.19--13.62) [225325]"}
             HasDirectPerm(LabellMask, x, f_7);
         if (LabellHeap[x, f_7] >= y) {
           
           // -- Check definedness of x.f >= y
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (complex.vpr@13.19--13.62) [119898]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (complex.vpr@13.19--13.62) [225326]"}
               HasDirectPerm(Mask, x, f_7);
           assume Heap[x, f_7] >= y;
         }
@@ -378,7 +378,7 @@ procedure bar_1(y: int) returns ()
         // Check and assume guard
         
         // -- Check definedness of x.f > y
-          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (complex.vpr@12.12--12.19) [119899]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (complex.vpr@12.12--12.19) [225327]"}
             HasDirectPerm(Mask, x, f_7);
         assume Heap[x, f_7] > y;
         assume state(Heap, Mask);
@@ -393,9 +393,9 @@ procedure bar_1(y: int) returns ()
                 ExhaleWellDef0Heap := Heap;
                 
                 // -- Check definedness of x.f < y
-                  assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (complex.vpr@15.16--15.23) [119900]"}
+                  assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (complex.vpr@15.16--15.23) [225328]"}
                     HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-                assert {:msg "  Assert might fail. Assertion x.f < y might not hold. (complex.vpr@15.16--15.23) [119901]"}
+                assert {:msg "  Assert might fail. Assertion x.f < y might not hold. (complex.vpr@15.16--15.23) [225329]"}
                   Heap[x, f_7] < y;
                 assume state(Heap, Mask);
               
@@ -409,9 +409,9 @@ procedure bar_1(y: int) returns ()
           // -- Translating statement: x.f := x.f - 1 -- complex.vpr@16.9--16.23
             
             // -- Check definedness of x.f - 1
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (complex.vpr@16.9--16.23) [119902]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (complex.vpr@16.9--16.23) [225330]"}
                 HasDirectPerm(Mask, x, f_7);
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (complex.vpr@16.9--16.23) [119903]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (complex.vpr@16.9--16.23) [225331]"}
               FullPerm == Mask[x, f_7];
             Heap := Heap[x, f_7:=Heap[x, f_7] - 1];
             assume state(Heap, Mask);
@@ -429,7 +429,7 @@ procedure bar_1(y: int) returns ()
                     ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                     perm := FullPerm;
-                    assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (complex.vpr@18.16--18.22) [119904]"}
+                    assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (complex.vpr@18.16--18.22) [225332]"}
                       NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
                     // Finish exhale
                     havoc ExhaleHeap;
@@ -438,8 +438,8 @@ procedure bar_1(y: int) returns ()
                     // Stop execution
                     assume false;
                   }
-                assert {:msg "  Assert might fail. Assertion foo(x) might not hold. (complex.vpr@18.16--18.22) [119905]"}
-                  foo_2(Heap, x);
+                assert {:msg "  Assert might fail. Assertion foo(x) might not hold. (complex.vpr@18.16--18.22) [225333]"}
+                  foo_1(Heap, x);
                 assume state(Heap, Mask);
               
               // -- Translating statement: inhale false -- complex.vpr@18.9--18.22
@@ -453,12 +453,12 @@ procedure bar_1(y: int) returns ()
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(x.f, write) && (old[l](x.f >= y) ==> x.f >= y) might not be preserved. There might be insufficient permission to access x.f (complex.vpr@13.19--13.62) [119906]"}
+          assert {:msg "  Loop invariant acc(x.f, write) && (old[l](x.f >= y) ==> x.f >= y) might not be preserved. There might be insufficient permission to access x.f (complex.vpr@13.19--13.62) [225334]"}
             perm <= Mask[x, f_7];
         }
         Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
         if (LabellHeap[x, f_7] >= y) {
-          assert {:msg "  Loop invariant acc(x.f, write) && (old[l](x.f >= y) ==> x.f >= y) might not be preserved. Assertion x.f >= y might not hold. (complex.vpr@13.19--13.62) [119907]"}
+          assert {:msg "  Loop invariant acc(x.f, write) && (old[l](x.f >= y) ==> x.f >= y) might not be preserved. Assertion x.f >= y might not hold. (complex.vpr@13.19--13.62) [225335]"}
             Heap[x, f_7] >= y;
         }
         // Finish exhale
@@ -490,9 +490,9 @@ procedure bar_1(y: int) returns ()
         ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of x.f == y
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (complex.vpr@20.12--20.20) [119908]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (complex.vpr@20.12--20.20) [225336]"}
             HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-        assert {:msg "  Assert might fail. Assertion x.f == y might not hold. (complex.vpr@20.12--20.20) [119909]"}
+        assert {:msg "  Assert might fail. Assertion x.f == y might not hold. (complex.vpr@20.12--20.20) [225337]"}
           Heap[x, f_7] == y;
         assume state(Heap, Mask);
       
@@ -537,7 +537,7 @@ procedure bar_1(y: int) returns ()
       // -- Translating statement: assert z == 10 -- complex.vpr@33.5--33.19
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion z == 10 might not hold. (complex.vpr@33.12--33.19) [119910]"}
+        assert {:msg "  Assert might fail. Assertion z == 10 might not hold. (complex.vpr@33.12--33.19) [225338]"}
           z == 10;
         assume state(Heap, Mask);
       
@@ -554,7 +554,7 @@ procedure bar_1(y: int) returns ()
       // -- Translating statement: assert z < 9 || z > 10 -- complex.vpr@35.5--35.27
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion z < 9 || z > 10 might not hold. (complex.vpr@35.12--35.27) [119911]"}
+        assert {:msg "  Assert might fail. Assertion z < 9 || z > 10 might not hold. (complex.vpr@35.12--35.27) [225339]"}
           z < 9 || z > 10;
         assume state(Heap, Mask);
       

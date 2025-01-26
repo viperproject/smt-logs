@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:21
+// Date:         2025-01-26 21:41:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0464.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0464-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -541,14 +541,14 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // Translation of method m
 // ==================================================
 
-procedure m(l_2: (Seq bool)) returns ()
+procedure m_17(l_1: (Seq bool)) returns ()
   modifies Heap, Mask;
 {
-  var i_14: int;
-  var oldMask: MaskType;
+  var i_18: int;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -556,52 +556,52 @@ procedure m(l_2: (Seq bool)) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume Seq#Length(l_2) == 3;
+    assume Seq#Length(l_1) == 3;
     
     // -- Check definedness of (forall i: Int :: { l[i] } 0 <= i && i < |l| ==> l[i])
       if (*) {
-        if (0 <= i_14 && i_14 < Seq#Length(l_2)) {
-          assert {:msg "  Contract might not be well-formed. Index l[i] into l might be negative. (0464.vpr@5.12--5.69) [219750]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index l[i] into l might exceed sequence length. (0464.vpr@5.12--5.69) [219751]"}
-            i_14 < Seq#Length(l_2);
+        if (0 <= i_18 && i_18 < Seq#Length(l_1)) {
+          assert {:msg "  Contract might not be well-formed. Index l[i] into l might be negative. (0464.vpr@5.12--5.69) [53918]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index l[i] into l might exceed sequence length. (0464.vpr@5.12--5.69) [53919]"}
+            i_18 < Seq#Length(l_1);
         }
         assume false;
       }
     assume (forall i_1: int ::
-      { Seq#Index(l_2, i_1) }
-      0 <= i_1 && i_1 < Seq#Length(l_2) ==> Seq#Index(l_2, i_1)
+      { Seq#Index(l_1, i_1) }
+      0 <= i_1 && i_1 < Seq#Length(l_1) ==> Seq#Index(l_1, i_1)
     );
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert l[((exists i: Int :: i == 0) ? 1 : 2)] -- 0464.vpr@7.3--7.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of l[((exists i: Int :: i == 0) ? 1 : 2)]
       if (*) {
         assume false;
       }
-      assert {:msg "  Assert might fail. Index l[((exists i: Int :: i == 0) ? 1 : 2)] into l might be negative. (0464.vpr@7.10--7.46) [219752]"}
+      assert {:msg "  Assert might fail. Index l[((exists i: Int :: i == 0) ? 1 : 2)] into l might be negative. (0464.vpr@7.10--7.46) [53920]"}
         (if (exists i_4_1: int ::
         
         i_4_1 == 0
       ) then 1 else 2) >= 0;
-      assert {:msg "  Assert might fail. Index l[((exists i: Int :: i == 0) ? 1 : 2)] into l might exceed sequence length. (0464.vpr@7.10--7.46) [219753]"}
+      assert {:msg "  Assert might fail. Index l[((exists i: Int :: i == 0) ? 1 : 2)] into l might exceed sequence length. (0464.vpr@7.10--7.46) [53921]"}
         (if (exists i_4_1: int ::
         
         i_4_1 == 0
-      ) then 1 else 2) < Seq#Length(l_2);
-    assert {:msg "  Assert might fail. Assertion l[((exists i: Int :: i == 0) ? 1 : 2)] might not hold. (0464.vpr@7.10--7.46) [219754]"}
-      Seq#Index(l_2, (if (exists i_5: int ::
+      ) then 1 else 2) < Seq#Length(l_1);
+    assert {:msg "  Assert might fail. Assertion l[((exists i: Int :: i == 0) ? 1 : 2)] might not hold. (0464.vpr@7.10--7.46) [53922]"}
+      Seq#Index(l_1, (if (exists i_5_1: int ::
       
-      i_5 == 0
+      i_5_1 == 0
     ) then 1 else 2));
     assume state(Heap, Mask);
 }
@@ -610,14 +610,14 @@ procedure m(l_2: (Seq bool)) returns ()
 // Translation of method n
 // ==================================================
 
-procedure n_12(l_2: (Seq bool)) returns ()
+procedure n_83(l_1: (Seq bool)) returns ()
   modifies Heap, Mask;
 {
   var i_4: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -625,52 +625,52 @@ procedure n_12(l_2: (Seq bool)) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume Seq#Length(l_2) == 3;
+    assume Seq#Length(l_1) == 3;
     
     // -- Check definedness of (forall i: Int :: { l[i] } 0 <= i && i < |l| ==> l[i])
       if (*) {
-        if (0 <= i_4 && i_4 < Seq#Length(l_2)) {
-          assert {:msg "  Contract might not be well-formed. Index l[i] into l might be negative. (0464.vpr@11.12--11.69) [219755]"}
+        if (0 <= i_4 && i_4 < Seq#Length(l_1)) {
+          assert {:msg "  Contract might not be well-formed. Index l[i] into l might be negative. (0464.vpr@11.12--11.69) [53923]"}
             i_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index l[i] into l might exceed sequence length. (0464.vpr@11.12--11.69) [219756]"}
-            i_4 < Seq#Length(l_2);
+          assert {:msg "  Contract might not be well-formed. Index l[i] into l might exceed sequence length. (0464.vpr@11.12--11.69) [53924]"}
+            i_4 < Seq#Length(l_1);
         }
         assume false;
       }
     assume (forall i_1: int ::
-      { Seq#Index(l_2, i_1) }
-      0 <= i_1 && i_1 < Seq#Length(l_2) ==> Seq#Index(l_2, i_1)
+      { Seq#Index(l_1, i_1) }
+      0 <= i_1 && i_1 < Seq#Length(l_1) ==> Seq#Index(l_1, i_1)
     );
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert l[((forall i: Int ::i == i) ? 1 : 2)] -- 0464.vpr@13.3--13.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of l[((forall i: Int ::i == i) ? 1 : 2)]
       if (*) {
         assume false;
       }
-      assert {:msg "  Assert might fail. Index l[((forall i: Int ::i == i) ? 1 : 2)] into l might be negative. (0464.vpr@13.10--13.46) [219757]"}
+      assert {:msg "  Assert might fail. Index l[((forall i: Int ::i == i) ? 1 : 2)] into l might be negative. (0464.vpr@13.10--13.46) [53925]"}
         (if (forall i_4_1: int ::
         
         i_4_1 == i_4_1
       ) then 1 else 2) >= 0;
-      assert {:msg "  Assert might fail. Index l[((forall i: Int ::i == i) ? 1 : 2)] into l might exceed sequence length. (0464.vpr@13.10--13.46) [219758]"}
+      assert {:msg "  Assert might fail. Index l[((forall i: Int ::i == i) ? 1 : 2)] into l might exceed sequence length. (0464.vpr@13.10--13.46) [53926]"}
         (if (forall i_4_1: int ::
         
         i_4_1 == i_4_1
-      ) then 1 else 2) < Seq#Length(l_2);
-    assert {:msg "  Assert might fail. Assertion l[((forall i: Int ::i == i) ? 1 : 2)] might not hold. (0464.vpr@13.10--13.46) [219759]"}
-      Seq#Index(l_2, (if (forall i_5: int ::
+      ) then 1 else 2) < Seq#Length(l_1);
+    assert {:msg "  Assert might fail. Assertion l[((forall i: Int ::i == i) ? 1 : 2)] might not hold. (0464.vpr@13.10--13.46) [53927]"}
+      Seq#Index(l_1, (if (forall i_5_1: int ::
       
-      i_5 == i_5
+      i_5_1 == i_5_1
     ) then 1 else 2));
     assume state(Heap, Mask);
 }

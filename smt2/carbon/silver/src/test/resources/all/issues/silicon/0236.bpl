@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:40
+// Date:         2025-01-26 21:42:24
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0236.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0236-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -380,32 +380,32 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo_2(Heap: HeapType, s_2: (Set Ref)): Ref;
-function  foo'(Heap: HeapType, s_2: (Set Ref)): Ref;
-axiom (forall Heap: HeapType, s_2: (Set Ref) ::
-  { foo_2(Heap, s_2) }
-  foo_2(Heap, s_2) == foo'(Heap, s_2) && dummyFunction(foo#triggerStateless(s_2))
+function  foo_1(Heap: HeapType, s_1: (Set Ref)): Ref;
+function  foo'(Heap: HeapType, s_1: (Set Ref)): Ref;
+axiom (forall Heap: HeapType, s_1: (Set Ref) ::
+  { foo_1(Heap, s_1) }
+  foo_1(Heap, s_1) == foo'(Heap, s_1) && dummyFunction(foo#triggerStateless(s_1))
 );
-axiom (forall Heap: HeapType, s_2: (Set Ref) ::
-  { foo'(Heap, s_2) }
-  dummyFunction(foo#triggerStateless(s_2))
+axiom (forall Heap: HeapType, s_1: (Set Ref) ::
+  { foo'(Heap, s_1) }
+  dummyFunction(foo#triggerStateless(s_1))
 );
 
 // Framing axioms
-function  foo#frame(frame: FrameType, s_2: (Set Ref)): Ref;
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (Set Ref) ::
-  { state(Heap, Mask), foo'(Heap, s_2) }
-  state(Heap, Mask) ==> foo'(Heap, s_2) == foo#frame(EmptyFrame, s_2)
+function  foo#frame(frame: FrameType, s_1: (Set Ref)): Ref;
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (Set Ref) ::
+  { state(Heap, Mask), foo'(Heap, s_1) }
+  state(Heap, Mask) ==> foo'(Heap, s_1) == foo#frame(EmptyFrame, s_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  foo#trigger(frame: FrameType, s_2: (Set Ref)): bool;
+function  foo#trigger_1(frame: FrameType, s_1: (Set Ref)): bool;
 
 // State-independent trigger function
-function  foo#triggerStateless(s_2: (Set Ref)): Ref;
+function  foo#triggerStateless(s_1: (Set Ref)): Ref;
 
 // Check contract well-formedness and postcondition
-procedure foo#definedness(s_2: (Set Ref)) returns (Result: Ref)
+procedure foo#definedness(s_1: (Set Ref)) returns (Result: Ref)
   modifies Heap, Mask;
 {
   
@@ -421,47 +421,47 @@ procedure foo#definedness(s_2: (Set Ref)) returns (Result: Ref)
 // ==================================================
 
 type PredicateType_P;
-function  P(s_2: (Set int)): Field PredicateType_P FrameType;
-function  P#sm(s_2: (Set int)): Field PredicateType_P PMaskType;
-axiom (forall s_2: (Set int) ::
-  { PredicateMaskField(P(s_2)) }
-  PredicateMaskField(P(s_2)) == P#sm(s_2)
+function  P(s_1: (Set int)): Field PredicateType_P FrameType;
+function  P#sm(s_1: (Set int)): Field PredicateType_P PMaskType;
+axiom (forall s_1: (Set int) ::
+  { PredicateMaskField(P(s_1)) }
+  PredicateMaskField(P(s_1)) == P#sm(s_1)
 );
-axiom (forall s_2: (Set int) ::
-  { P(s_2) }
-  IsPredicateField(P(s_2))
+axiom (forall s_1: (Set int) ::
+  { P(s_1) }
+  IsPredicateField(P(s_1))
 );
-axiom (forall s_2: (Set int) ::
-  { P(s_2) }
-  getPredWandId(P(s_2)) == 0
+axiom (forall s_1: (Set int) ::
+  { P(s_1) }
+  getPredWandId(P(s_1)) == 0
 );
 function  P#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  P#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall s_2: (Set int), s2: (Set int) ::
-  { P(s_2), P(s2) }
-  P(s_2) == P(s2) ==> s_2 == s2
+axiom (forall s_1: (Set int), s2_2: (Set int) ::
+  { P(s_1), P(s2_2) }
+  P(s_1) == P(s2_2) ==> s_1 == s2_2
 );
-axiom (forall s_2: (Set int), s2: (Set int) ::
-  { P#sm(s_2), P#sm(s2) }
-  P#sm(s_2) == P#sm(s2) ==> s_2 == s2
+axiom (forall s_1: (Set int), s2_2: (Set int) ::
+  { P#sm(s_1), P#sm(s2_2) }
+  P#sm(s_1) == P#sm(s2_2) ==> s_1 == s2_2
 );
 
-axiom (forall Heap: HeapType, s_2: (Set int) ::
-  { P#trigger(Heap, P(s_2)) }
-  P#everUsed(P(s_2))
+axiom (forall Heap: HeapType, s_1: (Set int) ::
+  { P#trigger(Heap, P(s_1)) }
+  P#everUsed(P(s_1))
 );
 
 // ==================================================
 // Translation of method test
 // ==================================================
 
-procedure test() returns ()
+procedure test_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -472,11 +472,11 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert true -- 0236.vpr@7.3--7.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
 }

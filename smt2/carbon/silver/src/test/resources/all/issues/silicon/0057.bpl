@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:41
+// Date:         2025-01-26 21:42:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0057.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0057-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,15 +185,15 @@ axiom !IsWandField(f_7);
 // Translation of method m
 // ==================================================
 
-procedure m(o_193: Ref) returns ()
+procedure m_17(o_61: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -204,20 +204,20 @@ procedure m(o_193: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[o_193, $allocated];
+    assume Heap[o_61, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    assume o_193 != null;
-    Mask := Mask[o_193, f_7:=Mask[o_193, f_7] + perm];
+    assume o_61 != null;
+    Mask := Mask[o_61, f_7:=Mask[o_61, f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 0 -- 0057.vpr@9.3--9.17
     i := 0;
@@ -228,14 +228,14 @@ procedure m(o_193: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(o.f, write) might not hold on entry. There might be insufficient permission to access o.f (0057.vpr@11.15--11.30) [218236]"}
-            perm <= Mask[o_193, f_7];
+          assert {:msg "  Loop invariant acc(o.f, write) might not hold on entry. There might be insufficient permission to access o.f (0057.vpr@11.15--11.30) [61832]"}
+            perm <= Mask[o_61, f_7];
         }
-        Mask := Mask[o_193, f_7:=Mask[o_193, f_7] - perm];
+        Mask := Mask[o_61, f_7:=Mask[o_61, f_7] - perm];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -247,8 +247,8 @@ procedure m(o_193: Ref) returns ()
     // -- Check definedness of invariant
       if (*) {
         perm := FullPerm;
-        assume o_193 != null;
-        Mask := Mask[o_193, f_7:=Mask[o_193, f_7] + perm];
+        assume o_61 != null;
+        Mask := Mask[o_61, f_7:=Mask[o_61, f_7] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume false;
@@ -263,8 +263,8 @@ procedure m(o_193: Ref) returns ()
         assume state(Heap, Mask);
         // Inhale invariant
         perm := FullPerm;
-        assume o_193 != null;
-        Mask := Mask[o_193, f_7:=Mask[o_193, f_7] + perm];
+        assume o_61 != null;
+        Mask := Mask[o_61, f_7:=Mask[o_61, f_7] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         // Check and assume guard
@@ -278,19 +278,19 @@ procedure m(o_193: Ref) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: o.f := 5 -- 0057.vpr@14.5--14.13
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access o.f (0057.vpr@14.5--14.13) [218237]"}
-              FullPerm == Mask[o_193, f_7];
-            Heap := Heap[o_193, f_7:=5];
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access o.f (0057.vpr@14.5--14.13) [61833]"}
+              FullPerm == Mask[o_61, f_7];
+            Heap := Heap[o_61, f_7:=5];
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(o.f, write) might not be preserved. There might be insufficient permission to access o.f (0057.vpr@11.15--11.30) [218238]"}
-            perm <= Mask[o_193, f_7];
+          assert {:msg "  Loop invariant acc(o.f, write) might not be preserved. There might be insufficient permission to access o.f (0057.vpr@11.15--11.30) [61834]"}
+            perm <= Mask[o_61, f_7];
         }
-        Mask := Mask[o_193, f_7:=Mask[o_193, f_7] - perm];
+        Mask := Mask[o_61, f_7:=Mask[o_61, f_7] - perm];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -303,22 +303,22 @@ procedure m(o_193: Ref) returns ()
       assume !(i < 5);
       assume state(Heap, Mask);
       perm := FullPerm;
-      assume o_193 != null;
-      Mask := Mask[o_193, f_7:=Mask[o_193, f_7] + perm];
+      assume o_61 != null;
+      Mask := Mask[o_61, f_7:=Mask[o_61, f_7] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert o.f == old(o.f) -- 0057.vpr@17.3--17.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of o.f == old(o.f)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access o.f (0057.vpr@17.11--17.26) [218239]"}
-        HasDirectPerm(ExhaleWellDef0Mask, o_193, f_7);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access o.f (0057.vpr@17.11--17.26) [218240]"}
-        HasDirectPerm(oldMask, o_193, f_7);
-    assert {:msg "  Assert might fail. Assertion o.f == old(o.f) might not hold. (0057.vpr@17.11--17.26) [218241]"}
-      Heap[o_193, f_7] == oldHeap[o_193, f_7];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access o.f (0057.vpr@17.11--17.26) [61835]"}
+        HasDirectPerm(ExhaleWellDef0Mask, o_61, f_7);
+      assert {:msg "  Assert might fail. There might be insufficient permission to access o.f (0057.vpr@17.11--17.26) [61836]"}
+        HasDirectPerm(oldMask, o_61, f_7);
+    assert {:msg "  Assert might fail. Assertion o.f == old(o.f) might not hold. (0057.vpr@17.11--17.26) [61837]"}
+      Heap[o_61, f_7] == oldHeap[o_61, f_7];
     assume state(Heap, Mask);
 }

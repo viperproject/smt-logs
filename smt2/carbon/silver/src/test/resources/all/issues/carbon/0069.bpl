@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:44
+// Date:         2025-01-26 21:43:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0069.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0069-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,9 +181,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of function postFunction
@@ -217,7 +217,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), postFunction'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || postFunction#trigger(EmptyFrame, this)) ==> this != null ==> Heap[this, x_36] == 0
+  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || postFunction#trigger(EmptyFrame, this)) ==> this != null ==> Heap[this, x_42] == 0
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -230,8 +230,8 @@ function  postFunction#triggerStateless(this: Ref): int;
 procedure postFunction#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -248,14 +248,14 @@ procedure postFunction#definedness(this: Ref) returns (Result: int)
     Result := 1;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0069.vpr@12.11--12.22) [193042]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Postcondition of postFunction might not hold. Assertion this.x == 0 might not hold. (0069.vpr@12.11--12.22) [193043]"}
-      Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0069.vpr@12.11--12.22) [82093]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Postcondition of postFunction might not hold. Assertion this.x == 0 might not hold. (0069.vpr@12.11--12.22) [82094]"}
+      Heap[this, x_42] == 0;
 }
 
 // ==================================================
@@ -284,13 +284,13 @@ axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
 function  postFunction2#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), postFunction2'(Heap, this) }
-  state(Heap, Mask) ==> postFunction2'(Heap, this) == postFunction2#frame(FrameFragment(Heap[this, x_36]), this)
+  state(Heap, Mask) ==> postFunction2'(Heap, this) == postFunction2#frame(FrameFragment(Heap[this, x_42]), this)
 );
 
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), postFunction2'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || postFunction2#trigger(FrameFragment(Heap[this, x_36]), this)) ==> this != null ==> Heap[this, x_36] == 0
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || postFunction2#trigger(FrameFragment(Heap[this, x_42]), this)) ==> this != null ==> Heap[this, x_42] == 0
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -304,8 +304,8 @@ procedure postFunction2#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -318,7 +318,7 @@ procedure postFunction2#definedness(this: Ref) returns (Result: int)
     assume this != null;
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -326,14 +326,14 @@ procedure postFunction2#definedness(this: Ref) returns (Result: int)
     Result := 1;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0069.vpr@29.11--29.22) [193044]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Postcondition of postFunction2 might not hold. Assertion this.x == 0 might not hold. (0069.vpr@29.11--29.22) [193045]"}
-      Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0069.vpr@29.11--29.22) [82095]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Postcondition of postFunction2 might not hold. Assertion this.x == 0 might not hold. (0069.vpr@29.11--29.22) [82096]"}
+      Heap[this, x_42] == 0;
 }
 
 // ==================================================
@@ -343,12 +343,12 @@ procedure postFunction2#definedness(this: Ref) returns (Result: int)
 procedure postMethod(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -366,8 +366,8 @@ procedure postMethod(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -375,17 +375,17 @@ procedure postMethod(this: Ref) returns ()
     // Checked inhaling of postcondition to check definedness
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0069.vpr@22.11--22.22) [193046]"}
-        HasDirectPerm(PostMask, this, x_36);
-    assume PostHeap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0069.vpr@22.11--22.22) [82097]"}
+        HasDirectPerm(PostMask, this, x_42);
+    assume PostHeap[this, x_42] == 0;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of postMethod might not hold. Assertion this.x == 0 might not hold. (0069.vpr@22.11--22.22) [193047]"}
-      Heap[this, x_36] == 0;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of postMethod might not hold. Assertion this.x == 0 might not hold. (0069.vpr@22.11--22.22) [82098]"}
+      Heap[this, x_42] == 0;
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:38
+// Date:         2025-01-26 21:42:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0006.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0006-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -247,7 +247,7 @@ procedure bar#definedness(x: Ref) returns (Result: bool)
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref) returns ()
+procedure foo_3(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -290,7 +290,7 @@ procedure foo_1(x: Ref) returns ()
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function bar might not hold. There might be insufficient permission to access x.f (0006.vpr@9.11--9.17) [199589]"}
+        assert {:msg "  Precondition of function bar might not hold. There might be insufficient permission to access x.f (0006.vpr@9.11--9.17) [74015]"}
           NoPerm < perm ==> NoPerm < PostMask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -308,6 +308,6 @@ procedure foo_1(x: Ref) returns ()
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of foo might not hold. Assertion bar(x) might not hold. (0006.vpr@9.11--9.17) [199590]"}
+    assert {:msg "  Postcondition of foo might not hold. Assertion bar(x) might not hold. (0006.vpr@9.11--9.17) [74016]"}
       bar(Heap, x);
 }

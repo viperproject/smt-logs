@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:49
+// Date:         2025-01-26 21:42:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0264.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0264-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -423,43 +423,43 @@ procedure getWSet#definedness(ref: Ref) returns (Result: (Set Ref))
 // ==================================================
 
 // Uninterpreted function definitions
-function  validList(Heap: HeapType, root: Ref, nodes_1: (Set Ref)): bool;
-function  validList'(Heap: HeapType, root: Ref, nodes_1: (Set Ref)): bool;
-axiom (forall Heap: HeapType, root: Ref, nodes_1: (Set Ref) ::
-  { validList(Heap, root, nodes_1) }
-  validList(Heap, root, nodes_1) == validList'(Heap, root, nodes_1) && dummyFunction(validList#triggerStateless(root, nodes_1))
+function  validList(Heap: HeapType, root: Ref, nodes: (Set Ref)): bool;
+function  validList'(Heap: HeapType, root: Ref, nodes: (Set Ref)): bool;
+axiom (forall Heap: HeapType, root: Ref, nodes: (Set Ref) ::
+  { validList(Heap, root, nodes) }
+  validList(Heap, root, nodes) == validList'(Heap, root, nodes) && dummyFunction(validList#triggerStateless(root, nodes))
 );
-axiom (forall Heap: HeapType, root: Ref, nodes_1: (Set Ref) ::
-  { validList'(Heap, root, nodes_1) }
-  dummyFunction(validList#triggerStateless(root, nodes_1))
+axiom (forall Heap: HeapType, root: Ref, nodes: (Set Ref) ::
+  { validList'(Heap, root, nodes) }
+  dummyFunction(validList#triggerStateless(root, nodes))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, root: Ref, nodes_1: (Set Ref) ::
-  { state(Heap, Mask), validList(Heap, root, nodes_1) } { state(Heap, Mask), validList#triggerStateless(root, nodes_1), RefGuard#trigger(Heap, RefGuard(root)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> Set#Subset(nodes_1, getWSet(Heap, root)) ==> validList(Heap, root, nodes_1)
+axiom (forall Heap: HeapType, Mask: MaskType, root: Ref, nodes: (Set Ref) ::
+  { state(Heap, Mask), validList(Heap, root, nodes) } { state(Heap, Mask), validList#triggerStateless(root, nodes), RefGuard#trigger(Heap, RefGuard(root)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> Set#Subset(nodes, getWSet(Heap, root)) ==> validList(Heap, root, nodes)
 );
 
 // Framing axioms
-function  validList#frame(frame: FrameType, root: Ref, nodes_1: (Set Ref)): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, root: Ref, nodes_1: (Set Ref) ::
-  { state(Heap, Mask), validList'(Heap, root, nodes_1) }
-  state(Heap, Mask) ==> validList'(Heap, root, nodes_1) == validList#frame(Heap[null, RefGuard(root)], root, nodes_1)
+function  validList#frame(frame: FrameType, root: Ref, nodes: (Set Ref)): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, root: Ref, nodes: (Set Ref) ::
+  { state(Heap, Mask), validList'(Heap, root, nodes) }
+  state(Heap, Mask) ==> validList'(Heap, root, nodes) == validList#frame(Heap[null, RefGuard(root)], root, nodes)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  validList#trigger(frame: FrameType, root: Ref, nodes_1: (Set Ref)): bool;
+function  validList#trigger(frame: FrameType, root: Ref, nodes: (Set Ref)): bool;
 
 // State-independent trigger function
-function  validList#triggerStateless(root: Ref, nodes_1: (Set Ref)): bool;
+function  validList#triggerStateless(root: Ref, nodes: (Set Ref)): bool;
 
 // Check contract well-formedness and postcondition
-procedure validList#definedness(root: Ref, nodes_1: (Set Ref)) returns (Result: bool)
+procedure validList#definedness(root: Ref, nodes: (Set Ref)) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -479,10 +479,10 @@ procedure validList#definedness(root: Ref, nodes_1: (Set Ref)) returns (Result: 
     // -- Check definedness of (nodes subset getWSet(root))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function getWSet might not hold. There might be insufficient permission to access RefGuard(root) (0264.vpr@11.25--11.38) [196378]"}
+        assert {:msg "  Precondition of function getWSet might not hold. There might be insufficient permission to access RefGuard(root) (0264.vpr@11.25--11.38) [64239]"}
           NoPerm < perm ==> NoPerm < Mask[null, RefGuard(root)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -491,7 +491,7 @@ procedure validList#definedness(root: Ref, nodes_1: (Set Ref)) returns (Result: 
         // Stop execution
         assume false;
       }
-    assume Set#Subset(nodes_1, getWSet(Heap, root));
+    assume Set#Subset(nodes, getWSet(Heap, root));
     assume state(Heap, Mask);
   
   // -- Translate function body
@@ -503,37 +503,37 @@ procedure validList#definedness(root: Ref, nodes_1: (Set Ref)) returns (Result: 
 // ==================================================
 
 // Uninterpreted function definitions
-function  validList_abstract(Heap: HeapType, root: Ref, nodes_1: (Set Ref)): bool;
-function  validList_abstract'(Heap: HeapType, root: Ref, nodes_1: (Set Ref)): bool;
-axiom (forall Heap: HeapType, root: Ref, nodes_1: (Set Ref) ::
-  { validList_abstract(Heap, root, nodes_1) }
-  validList_abstract(Heap, root, nodes_1) == validList_abstract'(Heap, root, nodes_1) && dummyFunction(validList_abstract#triggerStateless(root, nodes_1))
+function  validList_abstract(Heap: HeapType, root: Ref, nodes: (Set Ref)): bool;
+function  validList_abstract'(Heap: HeapType, root: Ref, nodes: (Set Ref)): bool;
+axiom (forall Heap: HeapType, root: Ref, nodes: (Set Ref) ::
+  { validList_abstract(Heap, root, nodes) }
+  validList_abstract(Heap, root, nodes) == validList_abstract'(Heap, root, nodes) && dummyFunction(validList_abstract#triggerStateless(root, nodes))
 );
-axiom (forall Heap: HeapType, root: Ref, nodes_1: (Set Ref) ::
-  { validList_abstract'(Heap, root, nodes_1) }
-  dummyFunction(validList_abstract#triggerStateless(root, nodes_1))
+axiom (forall Heap: HeapType, root: Ref, nodes: (Set Ref) ::
+  { validList_abstract'(Heap, root, nodes) }
+  dummyFunction(validList_abstract#triggerStateless(root, nodes))
 );
 
 // Framing axioms
-function  validList_abstract#frame(frame: FrameType, root: Ref, nodes_1: (Set Ref)): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, root: Ref, nodes_1: (Set Ref) ::
-  { state(Heap, Mask), validList_abstract'(Heap, root, nodes_1) }
-  state(Heap, Mask) ==> validList_abstract'(Heap, root, nodes_1) == validList_abstract#frame(Heap[null, RefGuard(root)], root, nodes_1)
+function  validList_abstract#frame(frame: FrameType, root: Ref, nodes: (Set Ref)): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, root: Ref, nodes: (Set Ref) ::
+  { state(Heap, Mask), validList_abstract'(Heap, root, nodes) }
+  state(Heap, Mask) ==> validList_abstract'(Heap, root, nodes) == validList_abstract#frame(Heap[null, RefGuard(root)], root, nodes)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  validList_abstract#trigger(frame: FrameType, root: Ref, nodes_1: (Set Ref)): bool;
+function  validList_abstract#trigger(frame: FrameType, root: Ref, nodes: (Set Ref)): bool;
 
 // State-independent trigger function
-function  validList_abstract#triggerStateless(root: Ref, nodes_1: (Set Ref)): bool;
+function  validList_abstract#triggerStateless(root: Ref, nodes: (Set Ref)): bool;
 
 // Check contract well-formedness and postcondition
-procedure validList_abstract#definedness(root: Ref, nodes_1: (Set Ref)) returns (Result: bool)
+procedure validList_abstract#definedness(root: Ref, nodes: (Set Ref)) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -553,10 +553,10 @@ procedure validList_abstract#definedness(root: Ref, nodes_1: (Set Ref)) returns 
     // -- Check definedness of (nodes subset getWSet(root))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function getWSet might not hold. There might be insufficient permission to access RefGuard(root) (0264.vpr@21.25--21.38) [196379]"}
+        assert {:msg "  Precondition of function getWSet might not hold. There might be insufficient permission to access RefGuard(root) (0264.vpr@21.25--21.38) [64240]"}
           NoPerm < perm ==> NoPerm < Mask[null, RefGuard(root)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -565,7 +565,7 @@ procedure validList_abstract#definedness(root: Ref, nodes_1: (Set Ref)) returns 
         // Stop execution
         assume false;
       }
-    assume Set#Subset(nodes_1, getWSet(Heap, root));
+    assume Set#Subset(nodes, getWSet(Heap, root));
     assume state(Heap, Mask);
 }
 
@@ -608,15 +608,15 @@ axiom (forall Heap: HeapType, ref: Ref ::
 // Translation of method validList_method
 // ==================================================
 
-procedure validList_method(root: Ref, nodes_1: (Set Ref)) returns (r_1: bool)
+procedure validList_method(root: Ref, nodes: (Set Ref)) returns (r_1: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -637,10 +637,10 @@ procedure validList_method(root: Ref, nodes_1: (Set Ref)) returns (r_1: bool)
     // -- Check definedness of (nodes subset getWSet(root))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function getWSet might not hold. There might be insufficient permission to access RefGuard(root) (0264.vpr@16.25--16.38) [196380]"}
+        assert {:msg "  Precondition of function getWSet might not hold. There might be insufficient permission to access RefGuard(root) (0264.vpr@16.25--16.38) [64241]"}
           NoPerm < perm ==> NoPerm < Mask[null, RefGuard(root)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -649,14 +649,14 @@ procedure validList_method(root: Ref, nodes_1: (Set Ref)) returns (r_1: bool)
         // Stop execution
         assume false;
       }
-    assume Set#Subset(nodes_1, getWSet(Heap, root));
+    assume Set#Subset(nodes, getWSet(Heap, root));
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: r := true -- 0264.vpr@17.3--17.12
     r_1 := true;

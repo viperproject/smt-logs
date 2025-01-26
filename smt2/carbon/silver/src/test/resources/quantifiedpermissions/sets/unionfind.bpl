@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:49:42
+// Date:         2025-01-26 21:44:24
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/unionfind.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/unionfind-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_13: Ref, f_18: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_13, f_18] }
-  Heap[o_13, $allocated] ==> Heap[Heap[o_13, f_18], $allocated]
+axiom (forall o_20: Ref, f_29: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_20, f_29] }
+  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_29], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_14: Ref, f_19: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_14, f_19] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_14, f_19) ==> Heap[o_14, f_19] == ExhaleHeap[o_14, f_19]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_18: Ref, f_26: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_18, f_26] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_18, f_26) ==> Heap[o_18, f_26] == ExhaleHeap[o_18, f_26]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6), ExhaleHeap[null, PredicateMaskField(pm_f_6)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> Heap[null, PredicateMaskField(pm_f_6)] == ExhaleHeap[null, PredicateMaskField(pm_f_6)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_8), ExhaleHeap[null, PredicateMaskField(pm_f_8)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsPredicateField(pm_f_8) ==> Heap[null, PredicateMaskField(pm_f_8)] == ExhaleHeap[null, PredicateMaskField(pm_f_8)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_19: (Field A B) ::
-    { ExhaleHeap[o2_6, f_19] }
-    Heap[null, PredicateMaskField(pm_f_6)][o2_6, f_19] ==> Heap[o2_6, f_19] == ExhaleHeap[o2_6, f_19]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_8) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsPredicateField(pm_f_8) ==> (forall <A, B> o2_8: Ref, f_26: (Field A B) ::
+    { ExhaleHeap[o2_8, f_26] }
+    Heap[null, PredicateMaskField(pm_f_8)][o2_8, f_26] ==> Heap[o2_8, f_26] == ExhaleHeap[o2_8, f_26]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6), ExhaleHeap[null, WandMaskField(pm_f_6)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> Heap[null, WandMaskField(pm_f_6)] == ExhaleHeap[null, WandMaskField(pm_f_6)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_8), ExhaleHeap[null, WandMaskField(pm_f_8)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsWandField(pm_f_8) ==> Heap[null, WandMaskField(pm_f_8)] == ExhaleHeap[null, WandMaskField(pm_f_8)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_19: (Field A B) ::
-    { ExhaleHeap[o2_6, f_19] }
-    Heap[null, WandMaskField(pm_f_6)][o2_6, f_19] ==> Heap[o2_6, f_19] == ExhaleHeap[o2_6, f_19]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_8) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsWandField(pm_f_8) ==> (forall <A, B> o2_8: Ref, f_26: (Field A B) ::
+    { ExhaleHeap[o2_8, f_26] }
+    Heap[null, WandMaskField(pm_f_8)][o2_8, f_26] ==> Heap[o2_8, f_26] == ExhaleHeap[o2_8, f_26]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_14: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_14, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_14, $allocated] ==> ExhaleHeap[o_14, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_18: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_18, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_18, $allocated] ==> ExhaleHeap[o_18, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_13: Ref, f_13: (Field A B), v: B ::
-  { Heap[o_13, f_13:=v] }
-  succHeap(Heap, Heap[o_13, f_13:=v])
+axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_30: (Field A B), v: B ::
+  { Heap[o_20, f_30:=v] }
+  succHeap(Heap, Heap[o_20, f_30:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -420,9 +420,9 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 const unique parent: Field NormalField Ref;
 axiom !IsPredicateField(parent);
 axiom !IsWandField(parent);
-const unique nodes: Field NormalField (Set Ref);
-axiom !IsPredicateField(nodes);
-axiom !IsWandField(nodes);
+const unique nodes_1: Field NormalField (Set Ref);
+axiom !IsPredicateField(nodes_1);
+axiom !IsWandField(nodes_1);
 
 // ==================================================
 // Translation of function find
@@ -475,15 +475,15 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
   var QPMask: MaskType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -507,10 +507,10 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
     // -- Check definedness of (this in allNodes(struct))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@11.20--11.36) [2449]"}
+        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@11.20--11.36) [181629]"}
           NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -528,75 +528,75 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(struct));
-      assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
-      ExhaleWellDef0Mask := UnfoldingMask;
+      assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes_1]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access inv(struct) (unionfind.vpr@8.1--16.2) [2450]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access inv(struct) (unionfind.vpr@8.1--16.2) [181630]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, inv(struct)];
       havoc wildcard;
       perm := wildcard;
       assume struct != null;
-      UnfoldingMask := UnfoldingMask[struct, nodes:=UnfoldingMask[struct, nodes] + perm];
+      UnfoldingMask := UnfoldingMask[struct, nodes_1:=UnfoldingMask[struct, nodes_1] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume !UnfoldingHeap[struct, nodes][null];
+      assume !UnfoldingHeap[struct, nodes_1][null];
       havoc QPMask;
-      assert {:msg "  Function might not be well-formed. Quantified resource n.parent might not be injective. (unionfind.vpr@8.1--16.2) [2451]"}
-        (forall n: Ref, n_4: Ref ::
+      assert {:msg "  Function might not be well-formed. Quantified resource n.parent might not be injective. (unionfind.vpr@8.1--16.2) [181631]"}
+        (forall n: Ref, n_89: Ref ::
         
-        (((n != n_4 && UnfoldingHeap[struct, nodes][n]) && UnfoldingHeap[struct, nodes][n_4]) && NoPerm < wildcard) && NoPerm < wildcard ==> n != n_4
+        (((n != n_89 && UnfoldingHeap[struct, nodes_1][n]) && UnfoldingHeap[struct, nodes_1][n_89]) && NoPerm < wildcard) && NoPerm < wildcard ==> n != n_89
       );
       
       // -- Define Inverse Function
         assume (forall n: Ref ::
-          { UnfoldingHeap[n, parent] } { QPMask[n, parent] } { UnfoldingHeap[struct, nodes][n] }
-          UnfoldingHeap[struct, nodes][n] ==> qpRange1(n) && invRecv1(n) == n
+          { UnfoldingHeap[n, parent] } { QPMask[n, parent] } { UnfoldingHeap[struct, nodes_1][n] }
+          UnfoldingHeap[struct, nodes_1][n] ==> qpRange1(n) && invRecv1(n) == n
         );
-        assume (forall o_4: Ref ::
-          { invRecv1(o_4) }
-          UnfoldingHeap[struct, nodes][invRecv1(o_4)] && qpRange1(o_4) ==> invRecv1(o_4) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv1(o_9) }
+          UnfoldingHeap[struct, nodes_1][invRecv1(o_9)] && qpRange1(o_9) ==> invRecv1(o_9) == o_9
         );
       
       // -- Assume set of fields is nonNull
         assume (forall n: Ref ::
-          { UnfoldingHeap[n, parent] } { QPMask[n, parent] } { UnfoldingHeap[struct, nodes][n] }
-          UnfoldingHeap[struct, nodes][n] && wildcard > NoPerm ==> n != null
+          { UnfoldingHeap[n, parent] } { QPMask[n, parent] } { UnfoldingHeap[struct, nodes_1][n] }
+          UnfoldingHeap[struct, nodes_1][n] && wildcard > NoPerm ==> n != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, parent] }
-          (UnfoldingHeap[struct, nodes][invRecv1(o_4)] && qpRange1(o_4) ==> invRecv1(o_4) == o_4 && UnfoldingMask[o_4, parent] < QPMask[o_4, parent]) && (!(UnfoldingHeap[struct, nodes][invRecv1(o_4)] && qpRange1(o_4)) ==> QPMask[o_4, parent] == UnfoldingMask[o_4, parent])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, parent] }
+          (UnfoldingHeap[struct, nodes_1][invRecv1(o_9)] && qpRange1(o_9) ==> invRecv1(o_9) == o_9 && UnfoldingMask[o_9, parent] < QPMask[o_9, parent]) && (!(UnfoldingHeap[struct, nodes_1][invRecv1(o_9)] && qpRange1(o_9)) ==> QPMask[o_9, parent] == UnfoldingMask[o_9, parent])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != parent ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != parent ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
       assume (forall q_1: Ref ::
-        { UnfoldingHeap[struct, nodes][q_1] } { UnfoldingHeap[struct, nodes][UnfoldingHeap[q_1, parent]] }
-        UnfoldingHeap[struct, nodes][q_1] ==> UnfoldingHeap[struct, nodes][UnfoldingHeap[q_1, parent]]
+        { UnfoldingHeap[struct, nodes_1][q_1] } { UnfoldingHeap[struct, nodes_1][UnfoldingHeap[q_1, parent]] }
+        UnfoldingHeap[struct, nodes_1][q_1] ==> UnfoldingHeap[struct, nodes_1][UnfoldingHeap[q_1, parent]]
       );
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.parent (unionfind.vpr@8.1--16.2) [2452]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.parent (unionfind.vpr@8.1--16.2) [181632]"}
         HasDirectPerm(UnfoldingMask, this, parent);
       if (this == UnfoldingHeap[this, parent]) {
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.parent (unionfind.vpr@8.1--16.2) [2453]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.parent (unionfind.vpr@8.1--16.2) [181633]"}
           HasDirectPerm(UnfoldingMask, this, parent);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
-          assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@15.72--15.97) [2454]"}
+          ExhaleWellDef0Mask := UnfoldingMask;
+          assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@15.72--15.97) [181634]"}
             struct != null;
-          assert {:msg "  Precondition of function find might not hold. Assertion this.parent != null might not hold. (unionfind.vpr@15.72--15.97) [2455]"}
+          assert {:msg "  Precondition of function find might not hold. Assertion this.parent != null might not hold. (unionfind.vpr@15.72--15.97) [181635]"}
             UnfoldingHeap[this, parent] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@15.72--15.97) [2456]"}
+          assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@15.72--15.97) [181636]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, inv(struct)];
-          assert {:msg "  Precondition of function find might not hold. Assertion (this.parent in allNodes(struct)) might not hold. (unionfind.vpr@15.72--15.97) [2457]"}
+          assert {:msg "  Precondition of function find might not hold. Assertion (this.parent in allNodes(struct)) might not hold. (unionfind.vpr@15.72--15.97) [181637]"}
             allNodes(UnfoldingHeap, struct)[UnfoldingHeap[this, parent]];
           // Finish exhale
           havoc ExhaleHeap;
@@ -611,16 +611,16 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
       }
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes:=true]];
+        Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes_1:=true]];
         // register all known folded permissions guarded by predicate inv
         havoc newPMask;
-        assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-          { newPMask[o_15, f_20] }
-          Heap[null, inv#sm(struct)][o_15, f_20] ==> newPMask[o_15, f_20]
+        assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+          { newPMask[o_5, f_11] }
+          Heap[null, inv#sm(struct)][o_5, f_11] ==> newPMask[o_5, f_11]
         );
         assume (forall n_1: Ref ::
           
-          Heap[struct, nodes][n_1] ==> newPMask[n_1, parent]
+          Heap[struct, nodes_1][n_1] ==> newPMask[n_1, parent]
         );
         Heap := Heap[null, inv#sm(struct):=newPMask];
         assume state(Heap, Mask);
@@ -629,18 +629,18 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
     Result := (if this == Heap[this, parent] then this else find(Heap, struct, Heap[this, parent]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of find might not hold. Assertion result != null might not hold. (unionfind.vpr@12.11--12.25) [2458]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of find might not hold. Assertion result != null might not hold. (unionfind.vpr@12.11--12.25) [181638]"}
       Result != null;
     
     // -- Check definedness of (result in allNodes(struct))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@13.21--13.37) [2459]"}
+        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@13.21--13.37) [181639]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, inv(struct)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -649,7 +649,7 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
         // Stop execution
         assume false;
       }
-    assert {:msg "  Postcondition of find might not hold. Assertion (result in allNodes(struct)) might not hold. (unionfind.vpr@13.11--13.37) [2460]"}
+    assert {:msg "  Postcondition of find might not hold. Assertion (result in allNodes(struct)) might not hold. (unionfind.vpr@13.11--13.37) [181640]"}
       allNodes(Heap, struct)[Result];
 }
 
@@ -672,7 +672,7 @@ axiom (forall Heap: HeapType, this: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), allNodes(Heap, this) } { state(Heap, Mask), allNodes#triggerStateless(this), inv#trigger(Heap, inv(this)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> allNodes(Heap, this) == Heap[this, nodes]
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> allNodes(Heap, this) == Heap[this, nodes_1]
 );
 
 // Framing axioms
@@ -696,8 +696,8 @@ procedure allNodes#definedness(this: Ref) returns (Result: (Set Ref))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var newPMask: PMaskType;
   
@@ -721,77 +721,77 @@ procedure allNodes#definedness(this: Ref) returns (Result: (Set Ref))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(this));
-      assume UnfoldingHeap[null, inv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, this)));
-      ExhaleWellDef0Mask := UnfoldingMask;
+      assume UnfoldingHeap[null, inv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, nodes_1]), FrameFragment(inv#condqp1(UnfoldingHeap, this)));
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access inv(this) (unionfind.vpr@119.1--123.2) [2461]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access inv(this) (unionfind.vpr@119.1--123.2) [181641]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, inv(this)];
       havoc wildcard;
       perm := wildcard;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, nodes:=UnfoldingMask[this, nodes] + perm];
+      UnfoldingMask := UnfoldingMask[this, nodes_1:=UnfoldingMask[this, nodes_1] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume !UnfoldingHeap[this, nodes][null];
+      assume !UnfoldingHeap[this, nodes_1][null];
       havoc QPMask;
-      assert {:msg "  Function might not be well-formed. Quantified resource n.parent might not be injective. (unionfind.vpr@119.1--123.2) [2462]"}
-        (forall n: Ref, n_4: Ref ::
+      assert {:msg "  Function might not be well-formed. Quantified resource n.parent might not be injective. (unionfind.vpr@119.1--123.2) [181642]"}
+        (forall n: Ref, n_89: Ref ::
         
-        (((n != n_4 && UnfoldingHeap[this, nodes][n]) && UnfoldingHeap[this, nodes][n_4]) && NoPerm < wildcard) && NoPerm < wildcard ==> n != n_4
+        (((n != n_89 && UnfoldingHeap[this, nodes_1][n]) && UnfoldingHeap[this, nodes_1][n_89]) && NoPerm < wildcard) && NoPerm < wildcard ==> n != n_89
       );
       
       // -- Define Inverse Function
         assume (forall n: Ref ::
-          { UnfoldingHeap[n, parent] } { QPMask[n, parent] } { UnfoldingHeap[this, nodes][n] }
-          UnfoldingHeap[this, nodes][n] ==> qpRange2(n) && invRecv2(n) == n
+          { UnfoldingHeap[n, parent] } { QPMask[n, parent] } { UnfoldingHeap[this, nodes_1][n] }
+          UnfoldingHeap[this, nodes_1][n] ==> qpRange2(n) && invRecv2(n) == n
         );
-        assume (forall o_4: Ref ::
-          { invRecv2(o_4) }
-          UnfoldingHeap[this, nodes][invRecv2(o_4)] && qpRange2(o_4) ==> invRecv2(o_4) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv2(o_9) }
+          UnfoldingHeap[this, nodes_1][invRecv2(o_9)] && qpRange2(o_9) ==> invRecv2(o_9) == o_9
         );
       
       // -- Assume set of fields is nonNull
         assume (forall n: Ref ::
-          { UnfoldingHeap[n, parent] } { QPMask[n, parent] } { UnfoldingHeap[this, nodes][n] }
-          UnfoldingHeap[this, nodes][n] && wildcard > NoPerm ==> n != null
+          { UnfoldingHeap[n, parent] } { QPMask[n, parent] } { UnfoldingHeap[this, nodes_1][n] }
+          UnfoldingHeap[this, nodes_1][n] && wildcard > NoPerm ==> n != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, parent] }
-          (UnfoldingHeap[this, nodes][invRecv2(o_4)] && qpRange2(o_4) ==> invRecv2(o_4) == o_4 && UnfoldingMask[o_4, parent] < QPMask[o_4, parent]) && (!(UnfoldingHeap[this, nodes][invRecv2(o_4)] && qpRange2(o_4)) ==> QPMask[o_4, parent] == UnfoldingMask[o_4, parent])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, parent] }
+          (UnfoldingHeap[this, nodes_1][invRecv2(o_9)] && qpRange2(o_9) ==> invRecv2(o_9) == o_9 && UnfoldingMask[o_9, parent] < QPMask[o_9, parent]) && (!(UnfoldingHeap[this, nodes_1][invRecv2(o_9)] && qpRange2(o_9)) ==> QPMask[o_9, parent] == UnfoldingMask[o_9, parent])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != parent ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != parent ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
       assume (forall q_1: Ref ::
-        { UnfoldingHeap[this, nodes][q_1] } { UnfoldingHeap[this, nodes][UnfoldingHeap[q_1, parent]] }
-        UnfoldingHeap[this, nodes][q_1] ==> UnfoldingHeap[this, nodes][UnfoldingHeap[q_1, parent]]
+        { UnfoldingHeap[this, nodes_1][q_1] } { UnfoldingHeap[this, nodes_1][UnfoldingHeap[q_1, parent]] }
+        UnfoldingHeap[this, nodes_1][q_1] ==> UnfoldingHeap[this, nodes_1][UnfoldingHeap[q_1, parent]]
       );
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.nodes (unionfind.vpr@119.1--123.2) [2463]"}
-        HasDirectPerm(UnfoldingMask, this, nodes);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.nodes (unionfind.vpr@119.1--123.2) [181643]"}
+        HasDirectPerm(UnfoldingMask, this, nodes_1);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, inv#sm(this):=Heap[null, inv#sm(this)][this, nodes:=true]];
+        Heap := Heap[null, inv#sm(this):=Heap[null, inv#sm(this)][this, nodes_1:=true]];
         // register all known folded permissions guarded by predicate inv
         havoc newPMask;
-        assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-          { newPMask[o_16, f_21] }
-          Heap[null, inv#sm(this)][o_16, f_21] ==> newPMask[o_16, f_21]
+        assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+          { newPMask[o_6, f_12] }
+          Heap[null, inv#sm(this)][o_6, f_12] ==> newPMask[o_6, f_12]
         );
         assume (forall n_1: Ref ::
           
-          Heap[this, nodes][n_1] ==> newPMask[n_1, parent]
+          Heap[this, nodes_1][n_1] ==> newPMask[n_1, parent]
         );
         Heap := Heap[null, inv#sm(this):=newPMask];
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := Heap[this, nodes];
+    Result := Heap[this, nodes_1];
 }
 
 // ==================================================
@@ -837,7 +837,7 @@ function  inv#condqp1(Heap: HeapType, this_2_1: Ref): int;
 function  sk_inv#condqp1(fnAppH1: int, fnAppH2: int): Ref;
 axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, this: Ref ::
   { inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (Heap2Heap[this, nodes][sk_inv#condqp1(inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this))] && NoPerm < FullPerm <==> Heap1Heap[this, nodes][sk_inv#condqp1(inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this))] && NoPerm < FullPerm) && (Heap2Heap[this, nodes][sk_inv#condqp1(inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this))] && NoPerm < FullPerm ==> Heap2Heap[sk_inv#condqp1(inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this)), parent] == Heap1Heap[sk_inv#condqp1(inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this)), parent]) ==> inv#condqp1(Heap2Heap, this) == inv#condqp1(Heap1Heap, this)
+  (Heap2Heap[this, nodes_1][sk_inv#condqp1(inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this))] && NoPerm < FullPerm <==> Heap1Heap[this, nodes_1][sk_inv#condqp1(inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this))] && NoPerm < FullPerm) && (Heap2Heap[this, nodes_1][sk_inv#condqp1(inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this))] && NoPerm < FullPerm ==> Heap2Heap[sk_inv#condqp1(inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this)), parent] == Heap1Heap[sk_inv#condqp1(inv#condqp1(Heap2Heap, this), inv#condqp1(Heap1Heap, this)), parent]) ==> inv#condqp1(Heap2Heap, this) == inv#condqp1(Heap1Heap, this)
 );
 
 procedure inv#definedness(this: Ref) returns ()
@@ -845,7 +845,7 @@ procedure inv#definedness(this: Ref) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var q_2: Ref;
+  var q_11: Ref;
   
   // -- Check definedness of predicate body of inv
     
@@ -857,70 +857,70 @@ procedure inv#definedness(this: Ref) returns ()
       assume Heap[this, $allocated];
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, nodes:=Mask[this, nodes] + perm];
+    Mask := Mask[this, nodes_1:=Mask[this, nodes_1] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of !((null in this.nodes))
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (unionfind.vpr@112.1--117.2) [2464]"}
-        HasDirectPerm(Mask, this, nodes);
-    assume !Heap[this, nodes][null];
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (unionfind.vpr@112.1--117.2) [181644]"}
+        HasDirectPerm(Mask, this, nodes_1);
+    assume !Heap[this, nodes_1][null];
     
     // -- Check definedness of (forall n: Ref :: { (n in this.nodes) } (n in this.nodes) ==> acc(n.parent, write))
       if (*) {
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (unionfind.vpr@112.1--117.2) [2465]"}
-          HasDirectPerm(Mask, this, nodes);
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (unionfind.vpr@112.1--117.2) [181645]"}
+          HasDirectPerm(Mask, this, nodes_1);
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Predicate might not be well-formed. Quantified resource n.parent might not be injective. (unionfind.vpr@112.1--117.2) [2466]"}
+    assert {:msg "  Predicate might not be well-formed. Quantified resource n.parent might not be injective. (unionfind.vpr@112.1--117.2) [181646]"}
       (forall n_2: Ref, n_2_1: Ref ::
       
-      (((n_2 != n_2_1 && Heap[this, nodes][n_2]) && Heap[this, nodes][n_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_2 != n_2_1
+      (((n_2 != n_2_1 && Heap[this, nodes_1][n_2]) && Heap[this, nodes_1][n_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_2 != n_2_1
     );
     
     // -- Define Inverse Function
       assume (forall n_2: Ref ::
-        { Heap[n_2, parent] } { QPMask[n_2, parent] } { Heap[this, nodes][n_2] }
-        Heap[this, nodes][n_2] && NoPerm < FullPerm ==> qpRange3(n_2) && invRecv3(n_2) == n_2
+        { Heap[n_2, parent] } { QPMask[n_2, parent] } { Heap[this, nodes_1][n_2] }
+        Heap[this, nodes_1][n_2] && NoPerm < FullPerm ==> qpRange3(n_2) && invRecv3(n_2) == n_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (Heap[this, nodes][invRecv3(o_4)] && NoPerm < FullPerm) && qpRange3(o_4) ==> invRecv3(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (Heap[this, nodes_1][invRecv3(o_9)] && NoPerm < FullPerm) && qpRange3(o_9) ==> invRecv3(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall n_2: Ref ::
-        { Heap[n_2, parent] } { QPMask[n_2, parent] } { Heap[this, nodes][n_2] }
-        Heap[this, nodes][n_2] ==> n_2 != null
+        { Heap[n_2, parent] } { QPMask[n_2, parent] } { Heap[this, nodes_1][n_2] }
+        Heap[this, nodes_1][n_2] ==> n_2 != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, parent] }
-        ((Heap[this, nodes][invRecv3(o_4)] && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> invRecv3(o_4) == o_4) && QPMask[o_4, parent] == Mask[o_4, parent] + FullPerm) && (!((Heap[this, nodes][invRecv3(o_4)] && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, parent] == Mask[o_4, parent])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, parent] }
+        ((Heap[this, nodes_1][invRecv3(o_9)] && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> invRecv3(o_9) == o_9) && QPMask[o_9, parent] == Mask[o_9, parent] + FullPerm) && (!((Heap[this, nodes_1][invRecv3(o_9)] && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, parent] == Mask[o_9, parent])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != parent ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != parent ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall q: Ref :: { (q in this.nodes) } { (q.parent in this.nodes) } (q in this.nodes) ==> (q.parent in this.nodes))
       if (*) {
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (unionfind.vpr@112.1--117.2) [2467]"}
-          HasDirectPerm(Mask, this, nodes);
-        if (Heap[this, nodes][q_2]) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access q.parent (unionfind.vpr@112.1--117.2) [2468]"}
-            HasDirectPerm(Mask, q_2, parent);
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (unionfind.vpr@112.1--117.2) [2469]"}
-            HasDirectPerm(Mask, this, nodes);
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (unionfind.vpr@112.1--117.2) [181647]"}
+          HasDirectPerm(Mask, this, nodes_1);
+        if (Heap[this, nodes_1][q_11]) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access q.parent (unionfind.vpr@112.1--117.2) [181648]"}
+            HasDirectPerm(Mask, q_11, parent);
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.nodes (unionfind.vpr@112.1--117.2) [181649]"}
+            HasDirectPerm(Mask, this, nodes_1);
         }
         assume false;
       }
     assume (forall q_1_1: Ref ::
-      { Heap[this, nodes][q_1_1] } { Heap[this, nodes][Heap[q_1_1, parent]] }
-      Heap[this, nodes][q_1_1] ==> Heap[this, nodes][Heap[q_1_1, parent]]
+      { Heap[this, nodes_1][q_1_1] } { Heap[this, nodes_1][Heap[q_1_1, parent]] }
+      Heap[this, nodes_1][q_1_1] ==> Heap[this, nodes_1][Heap[q_1_1, parent]]
     );
     assume state(Heap, Mask);
 }
@@ -929,18 +929,18 @@ procedure inv#definedness(this: Ref) returns ()
 // Translation of method add
 // ==================================================
 
-procedure add(struct: Ref, this: Ref) returns ()
+procedure add_3(struct: Ref, this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var o_17: Ref;
+  var o_149: Ref;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var q_1_1: Ref;
@@ -948,11 +948,11 @@ procedure add(struct: Ref, this: Ref) returns ()
   var newPMask: PMaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
-  var x_2: Ref;
+  var ExhaleWellDef1Mask: MaskType;
+  var x_53: Ref;
   var x_1: Ref;
-  var o_21: Ref;
+  var o_150: Ref;
   var o_2_1: Ref;
   
   // -- Initializing the state
@@ -972,7 +972,7 @@ procedure add(struct: Ref, this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.parent == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.parent (unionfind.vpr@21.12--21.58) [2470]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.parent (unionfind.vpr@21.12--21.58) [181650]"}
         HasDirectPerm(Mask, this, parent);
     assume Heap[this, parent] == null;
     assume state(Heap, Mask);
@@ -985,8 +985,8 @@ procedure add(struct: Ref, this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1001,10 +1001,10 @@ procedure add(struct: Ref, this: Ref) returns ()
     // -- Check definedness of allNodes(struct) == (old(allNodes(struct)) union Set(this))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@24.11--24.27) [2471]"}
+        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@24.11--24.27) [181651]"}
           NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1015,10 +1015,10 @@ procedure add(struct: Ref, this: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@24.35--24.51) [2472]"}
+        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@24.35--24.51) [181652]"}
           NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
         // Finish exhale
         // Stop execution
@@ -1031,16 +1031,16 @@ procedure add(struct: Ref, this: Ref) returns ()
     // -- Check definedness of this == find(struct, this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@25.19--25.37) [2473]"}
+        ExhaleWellDef0Mask := PostMask;
+        assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@25.19--25.37) [181653]"}
           struct != null;
-        assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@25.19--25.37) [2474]"}
+        assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@25.19--25.37) [181654]"}
           this != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@25.19--25.37) [2475]"}
+        assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@25.19--25.37) [181655]"}
           NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
-        assert {:msg "  Precondition of function find might not hold. Assertion (this in allNodes(struct)) might not hold. (unionfind.vpr@25.19--25.37) [2476]"}
+        assert {:msg "  Precondition of function find might not hold. Assertion (this in allNodes(struct)) might not hold. (unionfind.vpr@25.19--25.37) [181656]"}
           allNodes(PostHeap, struct)[this];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1057,29 +1057,29 @@ procedure add(struct: Ref, this: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@31.37--31.53) [2477]"}
+          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@31.37--31.53) [181657]"}
             NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
           // Finish exhale
           // Stop execution
           assume false;
         }
-        if (allNodes(oldHeap, struct)[o_17]) {
+        if (allNodes(oldHeap, struct)[o_149]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@31.59--31.74) [2478]"}
+            ExhaleWellDef0Mask := PostMask;
+            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@31.59--31.74) [181658]"}
               struct != null;
-            assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@31.59--31.74) [2479]"}
-              o_17 != null;
+            assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@31.59--31.74) [181659]"}
+              o_149 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@31.59--31.74) [2480]"}
+            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@31.59--31.74) [181660]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
-            assert {:msg "  Precondition of function find might not hold. Assertion (o in allNodes(struct)) might not hold. (unionfind.vpr@31.59--31.74) [2481]"}
-              allNodes(PostHeap, struct)[o_17];
+            assert {:msg "  Precondition of function find might not hold. Assertion (o in allNodes(struct)) might not hold. (unionfind.vpr@31.59--31.74) [181661]"}
+              allNodes(PostHeap, struct)[o_149];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1089,17 +1089,17 @@ procedure add(struct: Ref, this: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
-            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@31.82--31.97) [2482]"}
+            ExhaleWellDef0Mask := oldMask;
+            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@31.82--31.97) [181662]"}
               struct != null;
-            assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@31.82--31.97) [2483]"}
-              o_17 != null;
+            assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@31.82--31.97) [181663]"}
+              o_149 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@31.82--31.97) [2484]"}
+            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@31.82--31.97) [181664]"}
               NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-            assert {:msg "  Precondition of function find might not hold. Assertion (o in allNodes(struct)) might not hold. (unionfind.vpr@31.82--31.97) [2485]"}
-              allNodes(oldHeap, struct)[o_17];
+            assert {:msg "  Precondition of function find might not hold. Assertion (o in allNodes(struct)) might not hold. (unionfind.vpr@31.82--31.97) [181665]"}
+              allNodes(oldHeap, struct)[o_149];
             // Finish exhale
             // Stop execution
             assume false;
@@ -1118,12 +1118,12 @@ procedure add(struct: Ref, this: Ref) returns ()
   
   // -- Translating statement: unfold acc(inv(struct), write) -- unionfind.vpr@33.5--33.35
     assume inv#trigger(Heap, inv(struct));
-    assume Heap[null, inv(struct)] == CombineFrames(FrameFragment(Heap[struct, nodes]), FrameFragment(inv#condqp1(Heap, struct)));
-    ExhaleWellDef0Mask := Mask;
+    assume Heap[null, inv(struct)] == CombineFrames(FrameFragment(Heap[struct, nodes_1]), FrameFragment(inv#condqp1(Heap, struct)));
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding inv(struct) might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@33.5--33.35) [2488]"}
+      assert {:msg "  Unfolding inv(struct) might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@33.5--33.35) [181668]"}
         perm <= Mask[null, inv(struct)];
     }
     Mask := Mask[null, inv(struct):=Mask[null, inv(struct)] - perm];
@@ -1135,52 +1135,52 @@ procedure add(struct: Ref, this: Ref) returns ()
       }
     perm := FullPerm;
     assume struct != null;
-    Mask := Mask[struct, nodes:=Mask[struct, nodes] + perm];
+    Mask := Mask[struct, nodes_1:=Mask[struct, nodes_1] + perm];
     assume state(Heap, Mask);
-    assume !Heap[struct, nodes][null];
+    assume !Heap[struct, nodes_1][null];
     havoc QPMask;
-    assert {:msg "  Unfolding inv(struct) might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@33.5--33.35) [2490]"}
-      (forall n: Ref, n_4: Ref ::
+    assert {:msg "  Unfolding inv(struct) might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@33.5--33.35) [181670]"}
+      (forall n: Ref, n_89: Ref ::
       
-      (((n != n_4 && Heap[struct, nodes][n]) && Heap[struct, nodes][n_4]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n != n_4
+      (((n != n_89 && Heap[struct, nodes_1][n]) && Heap[struct, nodes_1][n_89]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n != n_89
     );
     
     // -- Define Inverse Function
       assume (forall n: Ref ::
-        { Heap[n, parent] } { QPMask[n, parent] } { Heap[struct, nodes][n] }
-        Heap[struct, nodes][n] && NoPerm < FullPerm ==> qpRange4(n) && invRecv4(n) == n
+        { Heap[n, parent] } { QPMask[n, parent] } { Heap[struct, nodes_1][n] }
+        Heap[struct, nodes_1][n] && NoPerm < FullPerm ==> qpRange4(n) && invRecv4(n) == n
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        (Heap[struct, nodes][invRecv4(o_4)] && NoPerm < FullPerm) && qpRange4(o_4) ==> invRecv4(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        (Heap[struct, nodes_1][invRecv4(o_9)] && NoPerm < FullPerm) && qpRange4(o_9) ==> invRecv4(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall n: Ref ::
-        { Heap[n, parent] } { QPMask[n, parent] } { Heap[struct, nodes][n] }
-        Heap[struct, nodes][n] ==> n != null
+        { Heap[n, parent] } { QPMask[n, parent] } { Heap[struct, nodes_1][n] }
+        Heap[struct, nodes_1][n] ==> n != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, parent] }
-        ((Heap[struct, nodes][invRecv4(o_4)] && NoPerm < FullPerm) && qpRange4(o_4) ==> (NoPerm < FullPerm ==> invRecv4(o_4) == o_4) && QPMask[o_4, parent] == Mask[o_4, parent] + FullPerm) && (!((Heap[struct, nodes][invRecv4(o_4)] && NoPerm < FullPerm) && qpRange4(o_4)) ==> QPMask[o_4, parent] == Mask[o_4, parent])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, parent] }
+        ((Heap[struct, nodes_1][invRecv4(o_9)] && NoPerm < FullPerm) && qpRange4(o_9) ==> (NoPerm < FullPerm ==> invRecv4(o_9) == o_9) && QPMask[o_9, parent] == Mask[o_9, parent] + FullPerm) && (!((Heap[struct, nodes_1][invRecv4(o_9)] && NoPerm < FullPerm) && qpRange4(o_9)) ==> QPMask[o_9, parent] == Mask[o_9, parent])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != parent ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != parent ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     assume (forall q_1: Ref ::
-      { Heap[struct, nodes][q_1] } { Heap[struct, nodes][Heap[q_1, parent]] }
-      Heap[struct, nodes][q_1] ==> Heap[struct, nodes][Heap[q_1, parent]]
+      { Heap[struct, nodes_1][q_1] } { Heap[struct, nodes_1][Heap[q_1, parent]] }
+      Heap[struct, nodes_1][q_1] ==> Heap[struct, nodes_1][Heap[q_1, parent]]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: this.parent := this -- unionfind.vpr@34.5--34.24
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.parent (unionfind.vpr@34.5--34.24) [2491]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.parent (unionfind.vpr@34.5--34.24) [181671]"}
       FullPerm == Mask[this, parent];
     Heap := Heap[this, parent:=this];
     assume state(Heap, Mask);
@@ -1188,97 +1188,97 @@ procedure add(struct: Ref, this: Ref) returns ()
   // -- Translating statement: struct.nodes := (struct.nodes union Set(this)) -- unionfind.vpr@35.5--35.49
     
     // -- Check definedness of (struct.nodes union Set(this))
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access struct.nodes (unionfind.vpr@35.5--35.49) [2492]"}
-        HasDirectPerm(Mask, struct, nodes);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access struct.nodes (unionfind.vpr@35.5--35.49) [2493]"}
-      FullPerm == Mask[struct, nodes];
-    Heap := Heap[struct, nodes:=Set#Union(Heap[struct, nodes], Set#Singleton(this))];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access struct.nodes (unionfind.vpr@35.5--35.49) [181672]"}
+        HasDirectPerm(Mask, struct, nodes_1);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access struct.nodes (unionfind.vpr@35.5--35.49) [181673]"}
+      FullPerm == Mask[struct, nodes_1];
+    Heap := Heap[struct, nodes_1:=Set#Union(Heap[struct, nodes_1], Set#Singleton(this))];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(inv(struct), write) -- unionfind.vpr@36.5--36.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding inv(struct) might fail. There might be insufficient permission to access struct.nodes (unionfind.vpr@36.5--36.33) [2496]"}
-        perm <= Mask[struct, nodes];
+      assert {:msg "  Folding inv(struct) might fail. There might be insufficient permission to access struct.nodes (unionfind.vpr@36.5--36.33) [181676]"}
+        perm <= Mask[struct, nodes_1];
     }
-    Mask := Mask[struct, nodes:=Mask[struct, nodes] - perm];
-    assert {:msg "  Folding inv(struct) might fail. Assertion !((null in struct.nodes)) might not hold. (unionfind.vpr@36.5--36.33) [2497]"}
-      !Heap[struct, nodes][null];
+    Mask := Mask[struct, nodes_1:=Mask[struct, nodes_1] - perm];
+    assert {:msg "  Folding inv(struct) might fail. Assertion !((null in struct.nodes)) might not hold. (unionfind.vpr@36.5--36.33) [181677]"}
+      !Heap[struct, nodes_1][null];
     havoc QPMask;
     
     // -- check that the permission amount is positive
       
     
     // -- check if receiver n is injective
-      assert {:msg "  Folding inv(struct) might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@36.5--36.33) [2499]"}
+      assert {:msg "  Folding inv(struct) might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@36.5--36.33) [181679]"}
         (forall n_1: Ref, n_1_1: Ref ::
         { neverTriggered5(n_1), neverTriggered5(n_1_1) }
-        (((n_1 != n_1_1 && Heap[struct, nodes][n_1]) && Heap[struct, nodes][n_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_1 != n_1_1
+        (((n_1 != n_1_1 && Heap[struct, nodes_1][n_1]) && Heap[struct, nodes_1][n_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_1 != n_1_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Folding inv(struct) might fail. There might be insufficient permission to access n.parent (unionfind.vpr@36.5--36.33) [2500]"}
+      assert {:msg "  Folding inv(struct) might fail. There might be insufficient permission to access n.parent (unionfind.vpr@36.5--36.33) [181680]"}
         (forall n_1: Ref ::
-        { Heap[n_1, parent] } { QPMask[n_1, parent] } { Heap[struct, nodes][n_1] }
-        Heap[struct, nodes][n_1] ==> Mask[n_1, parent] >= FullPerm
+        { Heap[n_1, parent] } { QPMask[n_1, parent] } { Heap[struct, nodes_1][n_1] }
+        Heap[struct, nodes_1][n_1] ==> Mask[n_1, parent] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver n
       assume (forall n_1: Ref ::
-        { Heap[n_1, parent] } { QPMask[n_1, parent] } { Heap[struct, nodes][n_1] }
-        Heap[struct, nodes][n_1] && NoPerm < FullPerm ==> qpRange5(n_1) && invRecv5(n_1) == n_1
+        { Heap[n_1, parent] } { QPMask[n_1, parent] } { Heap[struct, nodes_1][n_1] }
+        Heap[struct, nodes_1][n_1] && NoPerm < FullPerm ==> qpRange5(n_1) && invRecv5(n_1) == n_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        Heap[struct, nodes][invRecv5(o_4)] && (NoPerm < FullPerm && qpRange5(o_4)) ==> invRecv5(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        Heap[struct, nodes_1][invRecv5(o_9)] && (NoPerm < FullPerm && qpRange5(o_9)) ==> invRecv5(o_9) == o_9
       );
     
     // -- assume permission updates for field parent
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, parent] }
-        (Heap[struct, nodes][invRecv5(o_4)] && (NoPerm < FullPerm && qpRange5(o_4)) ==> invRecv5(o_4) == o_4 && QPMask[o_4, parent] == Mask[o_4, parent] - FullPerm) && (!(Heap[struct, nodes][invRecv5(o_4)] && (NoPerm < FullPerm && qpRange5(o_4))) ==> QPMask[o_4, parent] == Mask[o_4, parent])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, parent] }
+        (Heap[struct, nodes_1][invRecv5(o_9)] && (NoPerm < FullPerm && qpRange5(o_9)) ==> invRecv5(o_9) == o_9 && QPMask[o_9, parent] == Mask[o_9, parent] - FullPerm) && (!(Heap[struct, nodes_1][invRecv5(o_9)] && (NoPerm < FullPerm && qpRange5(o_9))) ==> QPMask[o_9, parent] == Mask[o_9, parent])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != parent ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != parent ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (Heap[struct, nodes][q_1_1]) {
-        assert {:msg "  Folding inv(struct) might fail. Assertion (q.parent in struct.nodes) might not hold. (unionfind.vpr@36.5--36.33) [2501]"}
-          Heap[struct, nodes][Heap[q_1_1, parent]];
+      if (Heap[struct, nodes_1][q_1_1]) {
+        assert {:msg "  Folding inv(struct) might fail. Assertion (q.parent in struct.nodes) might not hold. (unionfind.vpr@36.5--36.33) [181681]"}
+          Heap[struct, nodes_1][Heap[q_1_1, parent]];
       }
       assume false;
     }
-    assume (forall q_2_1: Ref ::
-      { Heap[struct, nodes][q_2_1] } { Heap[struct, nodes][Heap[q_2_1, parent]] }
-      Heap[struct, nodes][q_2_1] ==> Heap[struct, nodes][Heap[q_2_1, parent]]
+    assume (forall q_2_1_1: Ref ::
+      { Heap[struct, nodes_1][q_2_1_1] } { Heap[struct, nodes_1][Heap[q_2_1_1, parent]] }
+      Heap[struct, nodes_1][q_2_1_1] ==> Heap[struct, nodes_1][Heap[q_2_1_1, parent]]
     );
     perm := FullPerm;
     Mask := Mask[null, inv(struct):=Mask[null, inv(struct)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume inv#trigger(Heap, inv(struct));
-    assume Heap[null, inv(struct)] == CombineFrames(FrameFragment(Heap[struct, nodes]), FrameFragment(inv#condqp1(Heap, struct)));
+    assume Heap[null, inv(struct)] == CombineFrames(FrameFragment(Heap[struct, nodes_1]), FrameFragment(inv#condqp1(Heap, struct)));
     if (!HasDirectPerm(Mask, null, inv(struct))) {
       Heap := Heap[null, inv#sm(struct):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, inv(struct):=freshVersion];
     }
-    Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes:=true]];
+    Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes_1:=true]];
     // register all known folded permissions guarded by predicate inv
     havoc newPMask;
-    assume (forall <A, B> o_18: Ref, f_22: (Field A B) ::
-      { newPMask[o_18, f_22] }
-      Heap[null, inv#sm(struct)][o_18, f_22] ==> newPMask[o_18, f_22]
+    assume (forall <A, B> o_65: Ref, f_74: (Field A B) ::
+      { newPMask[o_65, f_74] }
+      Heap[null, inv#sm(struct)][o_65, f_74] ==> newPMask[o_65, f_74]
     );
     assume (forall n_2: Ref ::
       
-      Heap[struct, nodes][n_2] ==> newPMask[n_2, parent]
+      Heap[struct, nodes_1][n_2] ==> newPMask[n_2, parent]
     );
     Heap := Heap[null, inv#sm(struct):=newPMask];
     assume state(Heap, Mask);
@@ -1290,73 +1290,73 @@ procedure add(struct: Ref, this: Ref) returns ()
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(struct));
-      assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
-      ExhaleWellDef0Mask := UnfoldingMask;
+      assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes_1]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Inhale might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@38.9--38.65) [2503]"}
+        assert {:msg "  Inhale might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@38.9--38.65) [181683]"}
           perm <= UnfoldingMask[null, inv(struct)];
       }
       UnfoldingMask := UnfoldingMask[null, inv(struct):=UnfoldingMask[null, inv(struct)] - perm];
       perm := FullPerm;
       assume struct != null;
-      UnfoldingMask := UnfoldingMask[struct, nodes:=UnfoldingMask[struct, nodes] + perm];
+      UnfoldingMask := UnfoldingMask[struct, nodes_1:=UnfoldingMask[struct, nodes_1] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume !UnfoldingHeap[struct, nodes][null];
+      assume !UnfoldingHeap[struct, nodes_1][null];
       havoc QPMask;
-      assert {:msg "  Inhale might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@38.9--38.65) [2504]"}
+      assert {:msg "  Inhale might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@38.9--38.65) [181684]"}
         (forall n_3: Ref, n_3_1: Ref ::
         
-        (((n_3 != n_3_1 && UnfoldingHeap[struct, nodes][n_3]) && UnfoldingHeap[struct, nodes][n_3_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_3 != n_3_1
+        (((n_3 != n_3_1 && UnfoldingHeap[struct, nodes_1][n_3]) && UnfoldingHeap[struct, nodes_1][n_3_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_3 != n_3_1
       );
       
       // -- Define Inverse Function
         assume (forall n_3: Ref ::
-          { UnfoldingHeap[n_3, parent] } { QPMask[n_3, parent] } { UnfoldingHeap[struct, nodes][n_3] }
-          UnfoldingHeap[struct, nodes][n_3] && NoPerm < FullPerm ==> qpRange6(n_3) && invRecv6(n_3) == n_3
+          { UnfoldingHeap[n_3, parent] } { QPMask[n_3, parent] } { UnfoldingHeap[struct, nodes_1][n_3] }
+          UnfoldingHeap[struct, nodes_1][n_3] && NoPerm < FullPerm ==> qpRange6(n_3) && invRecv6(n_3) == n_3
         );
-        assume (forall o_4: Ref ::
-          { invRecv6(o_4) }
-          (UnfoldingHeap[struct, nodes][invRecv6(o_4)] && NoPerm < FullPerm) && qpRange6(o_4) ==> invRecv6(o_4) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv6(o_9) }
+          (UnfoldingHeap[struct, nodes_1][invRecv6(o_9)] && NoPerm < FullPerm) && qpRange6(o_9) ==> invRecv6(o_9) == o_9
         );
       
       // -- Assume set of fields is nonNull
         assume (forall n_3: Ref ::
-          { UnfoldingHeap[n_3, parent] } { QPMask[n_3, parent] } { UnfoldingHeap[struct, nodes][n_3] }
-          UnfoldingHeap[struct, nodes][n_3] ==> n_3 != null
+          { UnfoldingHeap[n_3, parent] } { QPMask[n_3, parent] } { UnfoldingHeap[struct, nodes_1][n_3] }
+          UnfoldingHeap[struct, nodes_1][n_3] ==> n_3 != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, parent] }
-          ((UnfoldingHeap[struct, nodes][invRecv6(o_4)] && NoPerm < FullPerm) && qpRange6(o_4) ==> (NoPerm < FullPerm ==> invRecv6(o_4) == o_4) && QPMask[o_4, parent] == UnfoldingMask[o_4, parent] + FullPerm) && (!((UnfoldingHeap[struct, nodes][invRecv6(o_4)] && NoPerm < FullPerm) && qpRange6(o_4)) ==> QPMask[o_4, parent] == UnfoldingMask[o_4, parent])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, parent] }
+          ((UnfoldingHeap[struct, nodes_1][invRecv6(o_9)] && NoPerm < FullPerm) && qpRange6(o_9) ==> (NoPerm < FullPerm ==> invRecv6(o_9) == o_9) && QPMask[o_9, parent] == UnfoldingMask[o_9, parent] + FullPerm) && (!((UnfoldingHeap[struct, nodes_1][invRecv6(o_9)] && NoPerm < FullPerm) && qpRange6(o_9)) ==> QPMask[o_9, parent] == UnfoldingMask[o_9, parent])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != parent ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != parent ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
       assume (forall q_3: Ref ::
-        { UnfoldingHeap[struct, nodes][q_3] } { UnfoldingHeap[struct, nodes][UnfoldingHeap[q_3, parent]] }
-        UnfoldingHeap[struct, nodes][q_3] ==> UnfoldingHeap[struct, nodes][UnfoldingHeap[q_3, parent]]
+        { UnfoldingHeap[struct, nodes_1][q_3] } { UnfoldingHeap[struct, nodes_1][UnfoldingHeap[q_3, parent]] }
+        UnfoldingHeap[struct, nodes_1][q_3] ==> UnfoldingHeap[struct, nodes_1][UnfoldingHeap[q_3, parent]]
       );
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.parent (unionfind.vpr@38.9--38.65) [2505]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.parent (unionfind.vpr@38.9--38.65) [181685]"}
         HasDirectPerm(UnfoldingMask, this, parent);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes:=true]];
+        Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes_1:=true]];
         // register all known folded permissions guarded by predicate inv
         havoc newPMask;
-        assume (forall <A, B> o_19: Ref, f_23: (Field A B) ::
-          { newPMask[o_19, f_23] }
-          Heap[null, inv#sm(struct)][o_19, f_23] ==> newPMask[o_19, f_23]
+        assume (forall <A, B> o_74: Ref, f_83: (Field A B) ::
+          { newPMask[o_74, f_83] }
+          Heap[null, inv#sm(struct)][o_74, f_83] ==> newPMask[o_74, f_83]
         );
-        assume (forall n_4_1: Ref ::
+        assume (forall n_4: Ref ::
           
-          Heap[struct, nodes][n_4_1] ==> newPMask[n_4_1, parent]
+          Heap[struct, nodes_1][n_4] ==> newPMask[n_4, parent]
         );
         Heap := Heap[null, inv#sm(struct):=newPMask];
         assume state(Heap, Mask);
@@ -1365,48 +1365,48 @@ procedure add(struct: Ref, this: Ref) returns ()
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(struct));
-      assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
-      ExhaleWellDef0Mask := UnfoldingMask;
+      assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes_1]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, inv(struct):=UnfoldingMask[null, inv(struct)] - perm];
       perm := FullPerm;
       assume struct != null;
-      UnfoldingMask := UnfoldingMask[struct, nodes:=UnfoldingMask[struct, nodes] + perm];
+      UnfoldingMask := UnfoldingMask[struct, nodes_1:=UnfoldingMask[struct, nodes_1] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume !UnfoldingHeap[struct, nodes][null];
+      assume !UnfoldingHeap[struct, nodes_1][null];
       havoc QPMask;
       
       // -- Define Inverse Function
         assume (forall n_5: Ref ::
-          { UnfoldingHeap[n_5, parent] } { QPMask[n_5, parent] } { UnfoldingHeap[struct, nodes][n_5] }
-          UnfoldingHeap[struct, nodes][n_5] && NoPerm < FullPerm ==> qpRange7(n_5) && invRecv7(n_5) == n_5
+          { UnfoldingHeap[n_5, parent] } { QPMask[n_5, parent] } { UnfoldingHeap[struct, nodes_1][n_5] }
+          UnfoldingHeap[struct, nodes_1][n_5] && NoPerm < FullPerm ==> qpRange7(n_5) && invRecv7(n_5) == n_5
         );
-        assume (forall o_4: Ref ::
-          { invRecv7(o_4) }
-          (UnfoldingHeap[struct, nodes][invRecv7(o_4)] && NoPerm < FullPerm) && qpRange7(o_4) ==> invRecv7(o_4) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv7(o_9) }
+          (UnfoldingHeap[struct, nodes_1][invRecv7(o_9)] && NoPerm < FullPerm) && qpRange7(o_9) ==> invRecv7(o_9) == o_9
         );
       
       // -- Assume set of fields is nonNull
         assume (forall n_5: Ref ::
-          { UnfoldingHeap[n_5, parent] } { QPMask[n_5, parent] } { UnfoldingHeap[struct, nodes][n_5] }
-          UnfoldingHeap[struct, nodes][n_5] ==> n_5 != null
+          { UnfoldingHeap[n_5, parent] } { QPMask[n_5, parent] } { UnfoldingHeap[struct, nodes_1][n_5] }
+          UnfoldingHeap[struct, nodes_1][n_5] ==> n_5 != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, parent] }
-          ((UnfoldingHeap[struct, nodes][invRecv7(o_4)] && NoPerm < FullPerm) && qpRange7(o_4) ==> (NoPerm < FullPerm ==> invRecv7(o_4) == o_4) && QPMask[o_4, parent] == UnfoldingMask[o_4, parent] + FullPerm) && (!((UnfoldingHeap[struct, nodes][invRecv7(o_4)] && NoPerm < FullPerm) && qpRange7(o_4)) ==> QPMask[o_4, parent] == UnfoldingMask[o_4, parent])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, parent] }
+          ((UnfoldingHeap[struct, nodes_1][invRecv7(o_9)] && NoPerm < FullPerm) && qpRange7(o_9) ==> (NoPerm < FullPerm ==> invRecv7(o_9) == o_9) && QPMask[o_9, parent] == UnfoldingMask[o_9, parent] + FullPerm) && (!((UnfoldingHeap[struct, nodes_1][invRecv7(o_9)] && NoPerm < FullPerm) && qpRange7(o_9)) ==> QPMask[o_9, parent] == UnfoldingMask[o_9, parent])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != parent ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != parent ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume (forall q_4: Ref ::
-        { UnfoldingHeap[struct, nodes][q_4] } { UnfoldingHeap[struct, nodes][UnfoldingHeap[q_4, parent]] }
-        UnfoldingHeap[struct, nodes][q_4] ==> UnfoldingHeap[struct, nodes][UnfoldingHeap[q_4, parent]]
+      assume (forall q_4_1: Ref ::
+        { UnfoldingHeap[struct, nodes_1][q_4_1] } { UnfoldingHeap[struct, nodes_1][UnfoldingHeap[q_4_1, parent]] }
+        UnfoldingHeap[struct, nodes_1][q_4_1] ==> UnfoldingHeap[struct, nodes_1][UnfoldingHeap[q_4_1, parent]]
       );
       assume state(UnfoldingHeap, UnfoldingMask);
     assume Heap[this, parent] == this;
@@ -1418,166 +1418,166 @@ procedure add(struct: Ref, this: Ref) returns ()
   //     (x in old(allNodes(struct))) ==>
   //     (unfolding acc(inv(struct), write) in x.parent) ==
   //     old((unfolding acc(inv(struct), write) in x.parent))) -- unionfind.vpr@40.2--40.158
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { (x in old(allNodes(struct))) } (x in old(allNodes(struct))) ==> (unfolding acc(inv(struct), write) in x.parent) == old((unfolding acc(inv(struct), write) in x.parent)))
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := oldMask;
           ExhaleWellDef1Heap := oldHeap;
+          ExhaleWellDef1Mask := oldMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@40.35--40.51) [2506]"}
+          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@40.35--40.51) [181686]"}
             NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
           // Finish exhale
           // Stop execution
           assume false;
         }
-        if (allNodes(oldHeap, struct)[x_2]) {
+        if (allNodes(oldHeap, struct)[x_53]) {
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume inv#trigger(UnfoldingHeap, inv(struct));
-          assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
-          ExhaleWellDef1Mask := UnfoldingMask;
+          assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes_1]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@40.9--40.158) [2507]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@40.9--40.158) [181687]"}
               perm <= UnfoldingMask[null, inv(struct)];
           }
           UnfoldingMask := UnfoldingMask[null, inv(struct):=UnfoldingMask[null, inv(struct)] - perm];
           perm := FullPerm;
           assume struct != null;
-          UnfoldingMask := UnfoldingMask[struct, nodes:=UnfoldingMask[struct, nodes] + perm];
+          UnfoldingMask := UnfoldingMask[struct, nodes_1:=UnfoldingMask[struct, nodes_1] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
-          assume !UnfoldingHeap[struct, nodes][null];
+          assume !UnfoldingHeap[struct, nodes_1][null];
           havoc QPMask;
-          assert {:msg "  Assert might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@40.9--40.158) [2508]"}
+          assert {:msg "  Assert might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@40.9--40.158) [181688]"}
             (forall n_6: Ref, n_6_1: Ref ::
             
-            (((n_6 != n_6_1 && UnfoldingHeap[struct, nodes][n_6]) && UnfoldingHeap[struct, nodes][n_6_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_6 != n_6_1
+            (((n_6 != n_6_1 && UnfoldingHeap[struct, nodes_1][n_6]) && UnfoldingHeap[struct, nodes_1][n_6_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_6 != n_6_1
           );
           
           // -- Define Inverse Function
             assume (forall n_6: Ref ::
-              { UnfoldingHeap[n_6, parent] } { QPMask[n_6, parent] } { UnfoldingHeap[struct, nodes][n_6] }
-              UnfoldingHeap[struct, nodes][n_6] && NoPerm < FullPerm ==> qpRange8(n_6) && invRecv8(n_6) == n_6
+              { UnfoldingHeap[n_6, parent] } { QPMask[n_6, parent] } { UnfoldingHeap[struct, nodes_1][n_6] }
+              UnfoldingHeap[struct, nodes_1][n_6] && NoPerm < FullPerm ==> qpRange8(n_6) && invRecv8(n_6) == n_6
             );
-            assume (forall o_4: Ref ::
-              { invRecv8(o_4) }
-              (UnfoldingHeap[struct, nodes][invRecv8(o_4)] && NoPerm < FullPerm) && qpRange8(o_4) ==> invRecv8(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv8(o_9) }
+              (UnfoldingHeap[struct, nodes_1][invRecv8(o_9)] && NoPerm < FullPerm) && qpRange8(o_9) ==> invRecv8(o_9) == o_9
             );
           
           // -- Assume set of fields is nonNull
             assume (forall n_6: Ref ::
-              { UnfoldingHeap[n_6, parent] } { QPMask[n_6, parent] } { UnfoldingHeap[struct, nodes][n_6] }
-              UnfoldingHeap[struct, nodes][n_6] ==> n_6 != null
+              { UnfoldingHeap[n_6, parent] } { QPMask[n_6, parent] } { UnfoldingHeap[struct, nodes_1][n_6] }
+              UnfoldingHeap[struct, nodes_1][n_6] ==> n_6 != null
             );
           
           // -- Define permissions
-            assume (forall o_4: Ref ::
-              { QPMask[o_4, parent] }
-              ((UnfoldingHeap[struct, nodes][invRecv8(o_4)] && NoPerm < FullPerm) && qpRange8(o_4) ==> (NoPerm < FullPerm ==> invRecv8(o_4) == o_4) && QPMask[o_4, parent] == UnfoldingMask[o_4, parent] + FullPerm) && (!((UnfoldingHeap[struct, nodes][invRecv8(o_4)] && NoPerm < FullPerm) && qpRange8(o_4)) ==> QPMask[o_4, parent] == UnfoldingMask[o_4, parent])
+            assume (forall o_9: Ref ::
+              { QPMask[o_9, parent] }
+              ((UnfoldingHeap[struct, nodes_1][invRecv8(o_9)] && NoPerm < FullPerm) && qpRange8(o_9) ==> (NoPerm < FullPerm ==> invRecv8(o_9) == o_9) && QPMask[o_9, parent] == UnfoldingMask[o_9, parent] + FullPerm) && (!((UnfoldingHeap[struct, nodes_1][invRecv8(o_9)] && NoPerm < FullPerm) && qpRange8(o_9)) ==> QPMask[o_9, parent] == UnfoldingMask[o_9, parent])
             );
-            assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-              { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-              f_5 != parent ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+            assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+              { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+              f_5 != parent ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
             );
           UnfoldingMask := QPMask;
           assume state(UnfoldingHeap, UnfoldingMask);
           assume (forall q_5: Ref ::
-            { UnfoldingHeap[struct, nodes][q_5] } { UnfoldingHeap[struct, nodes][UnfoldingHeap[q_5, parent]] }
-            UnfoldingHeap[struct, nodes][q_5] ==> UnfoldingHeap[struct, nodes][UnfoldingHeap[q_5, parent]]
+            { UnfoldingHeap[struct, nodes_1][q_5] } { UnfoldingHeap[struct, nodes_1][UnfoldingHeap[q_5, parent]] }
+            UnfoldingHeap[struct, nodes_1][q_5] ==> UnfoldingHeap[struct, nodes_1][UnfoldingHeap[q_5, parent]]
           );
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.parent (unionfind.vpr@40.9--40.158) [2509]"}
-            HasDirectPerm(UnfoldingMask, x_2, parent);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.parent (unionfind.vpr@40.9--40.158) [181689]"}
+            HasDirectPerm(UnfoldingMask, x_53, parent);
           
           // -- Free assumptions (exp module)
-            Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes:=true]];
+            Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes_1:=true]];
             // register all known folded permissions guarded by predicate inv
             havoc newPMask;
-            assume (forall <A, B> o_5: Ref, f: (Field A B) ::
-              { newPMask[o_5, f] }
-              Heap[null, inv#sm(struct)][o_5, f] ==> newPMask[o_5, f]
+            assume (forall <A, B> o_56: Ref, f: (Field A B) ::
+              { newPMask[o_56, f] }
+              Heap[null, inv#sm(struct)][o_56, f] ==> newPMask[o_56, f]
             );
             assume (forall n_7: Ref ::
               
-              Heap[struct, nodes][n_7] ==> newPMask[n_7, parent]
+              Heap[struct, nodes_1][n_7] ==> newPMask[n_7, parent]
             );
             Heap := Heap[null, inv#sm(struct):=newPMask];
             assume state(Heap, Mask);
           UnfoldingHeap := oldHeap;
           UnfoldingMask := oldMask;
           assume inv#trigger(UnfoldingHeap, inv(struct));
-          assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
-          ExhaleWellDef1Mask := UnfoldingMask;
+          assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes_1]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@40.9--40.158) [2510]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@40.9--40.158) [181690]"}
               perm <= UnfoldingMask[null, inv(struct)];
           }
           UnfoldingMask := UnfoldingMask[null, inv(struct):=UnfoldingMask[null, inv(struct)] - perm];
           perm := FullPerm;
           assume struct != null;
-          UnfoldingMask := UnfoldingMask[struct, nodes:=UnfoldingMask[struct, nodes] + perm];
+          UnfoldingMask := UnfoldingMask[struct, nodes_1:=UnfoldingMask[struct, nodes_1] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
-          assume !UnfoldingHeap[struct, nodes][null];
+          assume !UnfoldingHeap[struct, nodes_1][null];
           havoc QPMask;
-          assert {:msg "  Assert might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@40.9--40.158) [2511]"}
+          assert {:msg "  Assert might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@40.9--40.158) [181691]"}
             (forall n_8: Ref, n_8_1: Ref ::
             
-            (((n_8 != n_8_1 && UnfoldingHeap[struct, nodes][n_8]) && UnfoldingHeap[struct, nodes][n_8_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_8 != n_8_1
+            (((n_8 != n_8_1 && UnfoldingHeap[struct, nodes_1][n_8]) && UnfoldingHeap[struct, nodes_1][n_8_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_8 != n_8_1
           );
           
           // -- Define Inverse Function
             assume (forall n_8: Ref ::
-              { UnfoldingHeap[n_8, parent] } { QPMask[n_8, parent] } { UnfoldingHeap[struct, nodes][n_8] }
-              UnfoldingHeap[struct, nodes][n_8] && NoPerm < FullPerm ==> qpRange9(n_8) && invRecv9(n_8) == n_8
+              { UnfoldingHeap[n_8, parent] } { QPMask[n_8, parent] } { UnfoldingHeap[struct, nodes_1][n_8] }
+              UnfoldingHeap[struct, nodes_1][n_8] && NoPerm < FullPerm ==> qpRange9(n_8) && invRecv9(n_8) == n_8
             );
-            assume (forall o_4: Ref ::
-              { invRecv9(o_4) }
-              (UnfoldingHeap[struct, nodes][invRecv9(o_4)] && NoPerm < FullPerm) && qpRange9(o_4) ==> invRecv9(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv9(o_9) }
+              (UnfoldingHeap[struct, nodes_1][invRecv9(o_9)] && NoPerm < FullPerm) && qpRange9(o_9) ==> invRecv9(o_9) == o_9
             );
           
           // -- Assume set of fields is nonNull
             assume (forall n_8: Ref ::
-              { UnfoldingHeap[n_8, parent] } { QPMask[n_8, parent] } { UnfoldingHeap[struct, nodes][n_8] }
-              UnfoldingHeap[struct, nodes][n_8] ==> n_8 != null
+              { UnfoldingHeap[n_8, parent] } { QPMask[n_8, parent] } { UnfoldingHeap[struct, nodes_1][n_8] }
+              UnfoldingHeap[struct, nodes_1][n_8] ==> n_8 != null
             );
           
           // -- Define permissions
-            assume (forall o_4: Ref ::
-              { QPMask[o_4, parent] }
-              ((UnfoldingHeap[struct, nodes][invRecv9(o_4)] && NoPerm < FullPerm) && qpRange9(o_4) ==> (NoPerm < FullPerm ==> invRecv9(o_4) == o_4) && QPMask[o_4, parent] == UnfoldingMask[o_4, parent] + FullPerm) && (!((UnfoldingHeap[struct, nodes][invRecv9(o_4)] && NoPerm < FullPerm) && qpRange9(o_4)) ==> QPMask[o_4, parent] == UnfoldingMask[o_4, parent])
+            assume (forall o_9: Ref ::
+              { QPMask[o_9, parent] }
+              ((UnfoldingHeap[struct, nodes_1][invRecv9(o_9)] && NoPerm < FullPerm) && qpRange9(o_9) ==> (NoPerm < FullPerm ==> invRecv9(o_9) == o_9) && QPMask[o_9, parent] == UnfoldingMask[o_9, parent] + FullPerm) && (!((UnfoldingHeap[struct, nodes_1][invRecv9(o_9)] && NoPerm < FullPerm) && qpRange9(o_9)) ==> QPMask[o_9, parent] == UnfoldingMask[o_9, parent])
             );
-            assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-              { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-              f_5 != parent ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+            assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+              { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+              f_5 != parent ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
             );
           UnfoldingMask := QPMask;
           assume state(UnfoldingHeap, UnfoldingMask);
-          assume (forall q_6: Ref ::
-            { UnfoldingHeap[struct, nodes][q_6] } { UnfoldingHeap[struct, nodes][UnfoldingHeap[q_6, parent]] }
-            UnfoldingHeap[struct, nodes][q_6] ==> UnfoldingHeap[struct, nodes][UnfoldingHeap[q_6, parent]]
+          assume (forall q_6_1: Ref ::
+            { UnfoldingHeap[struct, nodes_1][q_6_1] } { UnfoldingHeap[struct, nodes_1][UnfoldingHeap[q_6_1, parent]] }
+            UnfoldingHeap[struct, nodes_1][q_6_1] ==> UnfoldingHeap[struct, nodes_1][UnfoldingHeap[q_6_1, parent]]
           );
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.parent (unionfind.vpr@40.9--40.158) [2512]"}
-            HasDirectPerm(UnfoldingMask, x_2, parent);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.parent (unionfind.vpr@40.9--40.158) [181692]"}
+            HasDirectPerm(UnfoldingMask, x_53, parent);
           
           // -- Free assumptions (exp module)
-            Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes:=true]];
+            Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes_1:=true]];
             // register all known folded permissions guarded by predicate inv
             havoc newPMask;
-            assume (forall <A, B> o_20: Ref, f_10: (Field A B) ::
-              { newPMask[o_20, f_10] }
-              Heap[null, inv#sm(struct)][o_20, f_10] ==> newPMask[o_20, f_10]
+            assume (forall <A, B> o_54: Ref, f_22: (Field A B) ::
+              { newPMask[o_54, f_22] }
+              Heap[null, inv#sm(struct)][o_54, f_22] ==> newPMask[o_54, f_22]
             );
             assume (forall n_9: Ref ::
               
-              Heap[struct, nodes][n_9] ==> newPMask[n_9, parent]
+              Heap[struct, nodes_1][n_9] ==> newPMask[n_9, parent]
             );
             Heap := Heap[null, inv#sm(struct):=newPMask];
             assume state(Heap, Mask);
@@ -1586,7 +1586,7 @@ procedure add(struct: Ref, this: Ref) returns ()
       }
     if (*) {
       if (allNodes(oldHeap, struct)[x_1]) {
-        assert {:msg "  Assert might fail. Assertion (unfolding acc(inv(struct), write) in x.parent) == old((unfolding acc(inv(struct), write) in x.parent)) might not hold. (unionfind.vpr@40.9--40.158) [2513]"}
+        assert {:msg "  Assert might fail. Assertion (unfolding acc(inv(struct), write) in x.parent) == old((unfolding acc(inv(struct), write) in x.parent)) might not hold. (unionfind.vpr@40.9--40.158) [181693]"}
           Heap[x_1, parent] == oldHeap[x_1, parent];
       }
       assume false;
@@ -1608,29 +1608,29 @@ procedure add(struct: Ref, this: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@42.35--42.51) [2514]"}
+          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@42.35--42.51) [181694]"}
             NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
           // Finish exhale
           // Stop execution
           assume false;
         }
-        if (allNodes(oldHeap, struct)[o_21]) {
+        if (allNodes(oldHeap, struct)[o_150]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@42.57--42.72) [2515]"}
+            ExhaleWellDef0Mask := Mask;
+            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@42.57--42.72) [181695]"}
               struct != null;
-            assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@42.57--42.72) [2516]"}
-              o_21 != null;
+            assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@42.57--42.72) [181696]"}
+              o_150 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@42.57--42.72) [2517]"}
+            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@42.57--42.72) [181697]"}
               NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
-            assert {:msg "  Precondition of function find might not hold. Assertion (o in allNodes(struct)) might not hold. (unionfind.vpr@42.57--42.72) [2518]"}
-              allNodes(Heap, struct)[o_21];
+            assert {:msg "  Precondition of function find might not hold. Assertion (o in allNodes(struct)) might not hold. (unionfind.vpr@42.57--42.72) [181698]"}
+              allNodes(Heap, struct)[o_150];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1640,17 +1640,17 @@ procedure add(struct: Ref, this: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
-            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@42.80--42.95) [2519]"}
+            ExhaleWellDef0Mask := oldMask;
+            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@42.80--42.95) [181699]"}
               struct != null;
-            assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@42.80--42.95) [2520]"}
-              o_21 != null;
+            assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@42.80--42.95) [181700]"}
+              o_150 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@42.80--42.95) [2521]"}
+            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@42.80--42.95) [181701]"}
               NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-            assert {:msg "  Precondition of function find might not hold. Assertion (o in allNodes(struct)) might not hold. (unionfind.vpr@42.80--42.95) [2522]"}
-              allNodes(oldHeap, struct)[o_21];
+            assert {:msg "  Precondition of function find might not hold. Assertion (o in allNodes(struct)) might not hold. (unionfind.vpr@42.80--42.95) [181702]"}
+              allNodes(oldHeap, struct)[o_150];
             // Finish exhale
             // Stop execution
             assume false;
@@ -1666,21 +1666,21 @@ procedure add(struct: Ref, this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of add might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@23.11--23.34) [2523]"}
+      assert {:msg "  Postcondition of add might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@23.11--23.34) [181703]"}
         perm <= Mask[null, inv(struct)];
     }
     Mask := Mask[null, inv(struct):=Mask[null, inv(struct)] - perm];
-    assert {:msg "  Postcondition of add might not hold. Assertion allNodes(struct) == (old(allNodes(struct)) union Set(this)) might not hold. (unionfind.vpr@24.11--24.68) [2524]"}
+    assert {:msg "  Postcondition of add might not hold. Assertion allNodes(struct) == (old(allNodes(struct)) union Set(this)) might not hold. (unionfind.vpr@24.11--24.68) [181704]"}
       Set#Equal(allNodes(Heap, struct), Set#Union(allNodes(oldHeap, struct), Set#Singleton(this)));
-    assert {:msg "  Postcondition of add might not hold. Assertion this == find(struct, this) might not hold. (unionfind.vpr@25.11--25.37) [2525]"}
+    assert {:msg "  Postcondition of add might not hold. Assertion this == find(struct, this) might not hold. (unionfind.vpr@25.11--25.37) [181705]"}
       this == find(Heap, struct, this);
     if (*) {
       if (allNodes(oldHeap, struct)[o_2_1]) {
-        assert {:msg "  Postcondition of add might not hold. Assertion find(struct, o) == old(find(struct, o)) might not hold. (unionfind.vpr@31.11--31.98) [2526]"}
+        assert {:msg "  Postcondition of add might not hold. Assertion find(struct, o) == old(find(struct, o)) might not hold. (unionfind.vpr@31.11--31.98) [181706]"}
           find(Heap, struct, o_2_1) == find(oldHeap, struct, o_2_1);
       }
       assume false;
@@ -1703,34 +1703,34 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var p_2: Ref;
-  var q_7: Ref;
-  var p_3: Ref;
-  var q_8: Ref;
-  var p_4: Ref;
-  var q_9: Ref;
+  var p_14: Ref;
+  var q_12: Ref;
+  var p_15: Ref;
+  var q_13: Ref;
+  var p_16: Ref;
+  var q_14: Ref;
   var this1: Ref;
   var other1: Ref;
   var newVersion: FrameType;
   var QPMask: MaskType;
-  var q_13: Ref;
+  var q_13_1: Ref;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
+  var p_17: Ref;
+  var p_18: Ref;
   var p_6: Ref;
-  var p_7: Ref;
-  var p_6_1: Ref;
-  var q_6: Ref;
+  var q_6_1: Ref;
   var p_8: Ref;
   var q_8_1: Ref;
-  var p_10: Ref;
-  var q_10: Ref;
+  var p_10_1: Ref;
+  var q_10_1: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1755,10 +1755,10 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     // -- Check definedness of (this in allNodes(struct))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@83.36--83.52) [2527]"}
+        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@83.36--83.52) [181707]"}
           NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1775,10 +1775,10 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     // -- Check definedness of (other in allNodes(struct))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@84.38--84.54) [2528]"}
+        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@84.38--84.54) [181708]"}
           NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1793,8 +1793,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1809,10 +1809,10 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     // -- Check definedness of allNodes(struct) == old(allNodes(struct))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@86.11--86.27) [2529]"}
+        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@86.11--86.27) [181709]"}
           NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1823,10 +1823,10 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@86.35--86.51) [2530]"}
+        assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@86.35--86.51) [181710]"}
           NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
         // Finish exhale
         // Stop execution
@@ -1840,10 +1840,10 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.41--90.57) [2531]"}
+          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.41--90.57) [181711]"}
             NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1852,13 +1852,13 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           // Stop execution
           assume false;
         }
-        if (allNodes(PostHeap, struct)[p_2]) {
+        if (allNodes(PostHeap, struct)[p_14]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.66--90.82) [2532]"}
+            assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.66--90.82) [181712]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1867,57 +1867,57 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             // Stop execution
             assume false;
           }
-          if (allNodes(PostHeap, struct)[q_7]) {
+          if (allNodes(PostHeap, struct)[q_12]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
-              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.90--90.105) [2533]"}
+              ExhaleWellDef0Mask := oldMask;
+              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.90--90.105) [181713]"}
                 struct != null;
-              assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@90.90--90.105) [2534]"}
-                p_2 != null;
+              assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@90.90--90.105) [181714]"}
+                p_14 != null;
               perm := FullPerm;
-              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.90--90.105) [2535]"}
+              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.90--90.105) [181715]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-              assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@90.90--90.105) [2536]"}
-                allNodes(oldHeap, struct)[p_2];
+              assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@90.90--90.105) [181716]"}
+                allNodes(oldHeap, struct)[p_14];
               // Finish exhale
               // Stop execution
               assume false;
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
-              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.109--90.124) [2537]"}
+              ExhaleWellDef0Mask := oldMask;
+              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.109--90.124) [181717]"}
                 struct != null;
-              assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@90.109--90.124) [2538]"}
-                q_7 != null;
+              assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@90.109--90.124) [181718]"}
+                q_12 != null;
               perm := FullPerm;
-              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.109--90.124) [2539]"}
+              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.109--90.124) [181719]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-              assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@90.109--90.124) [2540]"}
-                allNodes(oldHeap, struct)[q_7];
+              assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@90.109--90.124) [181720]"}
+                allNodes(oldHeap, struct)[q_12];
               // Finish exhale
               // Stop execution
               assume false;
             }
           }
         }
-        if (allNodes(PostHeap, struct)[p_2] && (allNodes(PostHeap, struct)[q_7] && find(oldHeap, struct, p_2) == find(oldHeap, struct, q_7))) {
+        if (allNodes(PostHeap, struct)[p_14] && (allNodes(PostHeap, struct)[q_12] && find(oldHeap, struct, p_14) == find(oldHeap, struct, q_12))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.130--90.145) [2541]"}
+            ExhaleWellDef0Mask := PostMask;
+            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.130--90.145) [181721]"}
               struct != null;
-            assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@90.130--90.145) [2542]"}
-              p_2 != null;
+            assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@90.130--90.145) [181722]"}
+              p_14 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.130--90.145) [2543]"}
+            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.130--90.145) [181723]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
-            assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@90.130--90.145) [2544]"}
-              allNodes(PostHeap, struct)[p_2];
+            assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@90.130--90.145) [181724]"}
+              allNodes(PostHeap, struct)[p_14];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1927,17 +1927,17 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.149--90.164) [2545]"}
+            ExhaleWellDef0Mask := PostMask;
+            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.149--90.164) [181725]"}
               struct != null;
-            assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@90.149--90.164) [2546]"}
-              q_7 != null;
+            assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@90.149--90.164) [181726]"}
+              q_12 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.149--90.164) [2547]"}
+            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.149--90.164) [181727]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
-            assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@90.149--90.164) [2548]"}
-              allNodes(PostHeap, struct)[q_7];
+            assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@90.149--90.164) [181728]"}
+              allNodes(PostHeap, struct)[q_12];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1959,10 +1959,10 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.41--91.57) [2549]"}
+          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.41--91.57) [181729]"}
             NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1971,13 +1971,13 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           // Stop execution
           assume false;
         }
-        if (allNodes(PostHeap, struct)[p_3]) {
+        if (allNodes(PostHeap, struct)[p_15]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.66--91.82) [2550]"}
+            assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.66--91.82) [181730]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1986,71 +1986,71 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             // Stop execution
             assume false;
           }
-          if (allNodes(PostHeap, struct)[q_8]) {
+          if (allNodes(PostHeap, struct)[q_13]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
-              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.90--91.105) [2551]"}
+              ExhaleWellDef0Mask := oldMask;
+              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.90--91.105) [181731]"}
                 struct != null;
-              assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@91.90--91.105) [2552]"}
-                p_3 != null;
+              assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@91.90--91.105) [181732]"}
+                p_15 != null;
               perm := FullPerm;
-              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.90--91.105) [2553]"}
+              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.90--91.105) [181733]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-              assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@91.90--91.105) [2554]"}
-                allNodes(oldHeap, struct)[p_3];
+              assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@91.90--91.105) [181734]"}
+                allNodes(oldHeap, struct)[p_15];
               // Finish exhale
               // Stop execution
               assume false;
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
-              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.109--91.127) [2555]"}
+              ExhaleWellDef0Mask := oldMask;
+              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.109--91.127) [181735]"}
                 struct != null;
-              assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@91.109--91.127) [2556]"}
+              assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@91.109--91.127) [181736]"}
                 this != null;
               perm := FullPerm;
-              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.109--91.127) [2557]"}
+              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.109--91.127) [181737]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-              assert {:msg "  Precondition of function find might not hold. Assertion (this in allNodes(struct)) might not hold. (unionfind.vpr@91.109--91.127) [2558]"}
+              assert {:msg "  Precondition of function find might not hold. Assertion (this in allNodes(struct)) might not hold. (unionfind.vpr@91.109--91.127) [181738]"}
                 allNodes(oldHeap, struct)[this];
               // Finish exhale
               // Stop execution
               assume false;
             }
-            if (find(oldHeap, struct, p_3) == find(oldHeap, struct, this)) {
+            if (find(oldHeap, struct, p_15) == find(oldHeap, struct, this)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
-                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.136--91.151) [2559]"}
+                ExhaleWellDef0Mask := oldMask;
+                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.136--91.151) [181739]"}
                   struct != null;
-                assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@91.136--91.151) [2560]"}
-                  q_8 != null;
+                assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@91.136--91.151) [181740]"}
+                  q_13 != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.136--91.151) [2561]"}
+                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.136--91.151) [181741]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-                assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@91.136--91.151) [2562]"}
-                  allNodes(oldHeap, struct)[q_8];
+                assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@91.136--91.151) [181742]"}
+                  allNodes(oldHeap, struct)[q_13];
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
-                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.155--91.174) [2563]"}
+                ExhaleWellDef0Mask := oldMask;
+                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.155--91.174) [181743]"}
                   struct != null;
-                assert {:msg "  Precondition of function find might not hold. Assertion other != null might not hold. (unionfind.vpr@91.155--91.174) [2564]"}
+                assert {:msg "  Precondition of function find might not hold. Assertion other != null might not hold. (unionfind.vpr@91.155--91.174) [181744]"}
                   other != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.155--91.174) [2565]"}
+                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.155--91.174) [181745]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-                assert {:msg "  Precondition of function find might not hold. Assertion (other in allNodes(struct)) might not hold. (unionfind.vpr@91.155--91.174) [2566]"}
+                assert {:msg "  Precondition of function find might not hold. Assertion (other in allNodes(struct)) might not hold. (unionfind.vpr@91.155--91.174) [181746]"}
                   allNodes(oldHeap, struct)[other];
                 // Finish exhale
                 // Stop execution
@@ -2059,20 +2059,20 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             }
           }
         }
-        if (allNodes(PostHeap, struct)[p_3] && (allNodes(PostHeap, struct)[q_8] && (find(oldHeap, struct, p_3) == find(oldHeap, struct, this) && find(oldHeap, struct, q_8) == find(oldHeap, struct, other)))) {
+        if (allNodes(PostHeap, struct)[p_15] && (allNodes(PostHeap, struct)[q_13] && (find(oldHeap, struct, p_15) == find(oldHeap, struct, this) && find(oldHeap, struct, q_13) == find(oldHeap, struct, other)))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.180--91.195) [2567]"}
+            ExhaleWellDef0Mask := PostMask;
+            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.180--91.195) [181747]"}
               struct != null;
-            assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@91.180--91.195) [2568]"}
-              p_3 != null;
+            assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@91.180--91.195) [181748]"}
+              p_15 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.180--91.195) [2569]"}
+            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.180--91.195) [181749]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
-            assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@91.180--91.195) [2570]"}
-              allNodes(PostHeap, struct)[p_3];
+            assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@91.180--91.195) [181750]"}
+              allNodes(PostHeap, struct)[p_15];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -2082,17 +2082,17 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.199--91.214) [2571]"}
+            ExhaleWellDef0Mask := PostMask;
+            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.199--91.214) [181751]"}
               struct != null;
-            assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@91.199--91.214) [2572]"}
-              q_8 != null;
+            assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@91.199--91.214) [181752]"}
+              q_13 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.199--91.214) [2573]"}
+            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.199--91.214) [181753]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
-            assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@91.199--91.214) [2574]"}
-              allNodes(PostHeap, struct)[q_8];
+            assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@91.199--91.214) [181754]"}
+              allNodes(PostHeap, struct)[q_13];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -2103,9 +2103,9 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
         }
         assume false;
       }
-    assume (forall p_3_1: Ref, q_3: Ref ::
-      { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_3_1], allNodes#frame(PostHeap[null, inv(struct)], struct)[q_3] } { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_3_1], find#frame(oldHeap[null, inv(struct)], struct, q_3) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_3_1], find#frame(PostHeap[null, inv(struct)], struct, q_3) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[q_3], find#frame(oldHeap[null, inv(struct)], struct, p_3_1) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[q_3], find#frame(PostHeap[null, inv(struct)], struct, p_3_1) } { find#frame(oldHeap[null, inv(struct)], struct, p_3_1), find#frame(oldHeap[null, inv(struct)], struct, q_3) } { find#frame(oldHeap[null, inv(struct)], struct, p_3_1), find#frame(PostHeap[null, inv(struct)], struct, q_3) } { find#frame(oldHeap[null, inv(struct)], struct, q_3), find#frame(PostHeap[null, inv(struct)], struct, p_3_1) }
-      allNodes(PostHeap, struct)[p_3_1] && (allNodes(PostHeap, struct)[q_3] && (find(oldHeap, struct, p_3_1) == find(oldHeap, struct, this) && find(oldHeap, struct, q_3) == find(oldHeap, struct, other))) ==> find(PostHeap, struct, p_3_1) == find(PostHeap, struct, q_3)
+    assume (forall p_3_2: Ref, q_3: Ref ::
+      { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_3_2], allNodes#frame(PostHeap[null, inv(struct)], struct)[q_3] } { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_3_2], find#frame(oldHeap[null, inv(struct)], struct, q_3) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_3_2], find#frame(PostHeap[null, inv(struct)], struct, q_3) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[q_3], find#frame(oldHeap[null, inv(struct)], struct, p_3_2) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[q_3], find#frame(PostHeap[null, inv(struct)], struct, p_3_2) } { find#frame(oldHeap[null, inv(struct)], struct, p_3_2), find#frame(oldHeap[null, inv(struct)], struct, q_3) } { find#frame(oldHeap[null, inv(struct)], struct, p_3_2), find#frame(PostHeap[null, inv(struct)], struct, q_3) } { find#frame(oldHeap[null, inv(struct)], struct, q_3), find#frame(PostHeap[null, inv(struct)], struct, p_3_2) }
+      allNodes(PostHeap, struct)[p_3_2] && (allNodes(PostHeap, struct)[q_3] && (find(oldHeap, struct, p_3_2) == find(oldHeap, struct, this) && find(oldHeap, struct, q_3) == find(oldHeap, struct, other))) ==> find(PostHeap, struct, p_3_2) == find(PostHeap, struct, q_3)
     );
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
@@ -2114,10 +2114,10 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.10--93.26) [2575]"}
+          assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.10--93.26) [181755]"}
             NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2126,13 +2126,13 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           // Stop execution
           assume false;
         }
-        if (allNodes(PostHeap, struct)[p_4]) {
+        if (allNodes(PostHeap, struct)[p_16]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.35--93.51) [2576]"}
+            assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.35--93.51) [181756]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -2141,107 +2141,107 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             // Stop execution
             assume false;
           }
-          if (allNodes(PostHeap, struct)[q_9]) {
+          if (allNodes(PostHeap, struct)[q_14]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
-              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.59--93.74) [2577]"}
+              ExhaleWellDef0Mask := oldMask;
+              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.59--93.74) [181757]"}
                 struct != null;
-              assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@93.59--93.74) [2578]"}
-                p_4 != null;
+              assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@93.59--93.74) [181758]"}
+                p_16 != null;
               perm := FullPerm;
-              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.59--93.74) [2579]"}
+              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.59--93.74) [181759]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-              assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@93.59--93.74) [2580]"}
-                allNodes(oldHeap, struct)[p_4];
+              assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@93.59--93.74) [181760]"}
+                allNodes(oldHeap, struct)[p_16];
               // Finish exhale
               // Stop execution
               assume false;
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
-              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.78--93.96) [2581]"}
+              ExhaleWellDef0Mask := oldMask;
+              assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.78--93.96) [181761]"}
                 struct != null;
-              assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@93.78--93.96) [2582]"}
+              assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@93.78--93.96) [181762]"}
                 this != null;
               perm := FullPerm;
-              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.78--93.96) [2583]"}
+              assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.78--93.96) [181763]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-              assert {:msg "  Precondition of function find might not hold. Assertion (this in allNodes(struct)) might not hold. (unionfind.vpr@93.78--93.96) [2584]"}
+              assert {:msg "  Precondition of function find might not hold. Assertion (this in allNodes(struct)) might not hold. (unionfind.vpr@93.78--93.96) [181764]"}
                 allNodes(oldHeap, struct)[this];
               // Finish exhale
               // Stop execution
               assume false;
             }
-            if (find(oldHeap, struct, p_4) != find(oldHeap, struct, this)) {
+            if (find(oldHeap, struct, p_16) != find(oldHeap, struct, this)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
-                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.105--93.120) [2585]"}
+                ExhaleWellDef0Mask := oldMask;
+                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.105--93.120) [181765]"}
                   struct != null;
-                assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@93.105--93.120) [2586]"}
-                  q_9 != null;
+                assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@93.105--93.120) [181766]"}
+                  q_14 != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.105--93.120) [2587]"}
+                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.105--93.120) [181767]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-                assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@93.105--93.120) [2588]"}
-                  allNodes(oldHeap, struct)[q_9];
+                assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@93.105--93.120) [181768]"}
+                  allNodes(oldHeap, struct)[q_14];
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
-                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.124--93.143) [2589]"}
+                ExhaleWellDef0Mask := oldMask;
+                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.124--93.143) [181769]"}
                   struct != null;
-                assert {:msg "  Precondition of function find might not hold. Assertion other != null might not hold. (unionfind.vpr@93.124--93.143) [2590]"}
+                assert {:msg "  Precondition of function find might not hold. Assertion other != null might not hold. (unionfind.vpr@93.124--93.143) [181770]"}
                   other != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.124--93.143) [2591]"}
+                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.124--93.143) [181771]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-                assert {:msg "  Precondition of function find might not hold. Assertion (other in allNodes(struct)) might not hold. (unionfind.vpr@93.124--93.143) [2592]"}
+                assert {:msg "  Precondition of function find might not hold. Assertion (other in allNodes(struct)) might not hold. (unionfind.vpr@93.124--93.143) [181772]"}
                   allNodes(oldHeap, struct)[other];
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
-              if (find(oldHeap, struct, q_9) != find(oldHeap, struct, other)) {
+              if (find(oldHeap, struct, q_14) != find(oldHeap, struct, other)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
-                  assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.152--93.167) [2593]"}
+                  ExhaleWellDef0Mask := oldMask;
+                  assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.152--93.167) [181773]"}
                     struct != null;
-                  assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@93.152--93.167) [2594]"}
-                    p_4 != null;
+                  assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@93.152--93.167) [181774]"}
+                    p_16 != null;
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.152--93.167) [2595]"}
+                  assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.152--93.167) [181775]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-                  assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@93.152--93.167) [2596]"}
-                    allNodes(oldHeap, struct)[p_4];
+                  assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@93.152--93.167) [181776]"}
+                    allNodes(oldHeap, struct)[p_16];
                   // Finish exhale
                   // Stop execution
                   assume false;
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
-                  assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.171--93.186) [2597]"}
+                  ExhaleWellDef0Mask := oldMask;
+                  assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.171--93.186) [181777]"}
                     struct != null;
-                  assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@93.171--93.186) [2598]"}
-                    q_9 != null;
+                  assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@93.171--93.186) [181778]"}
+                    q_14 != null;
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.171--93.186) [2599]"}
+                  assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.171--93.186) [181779]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-                  assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@93.171--93.186) [2600]"}
-                    allNodes(oldHeap, struct)[q_9];
+                  assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@93.171--93.186) [181780]"}
+                    allNodes(oldHeap, struct)[q_14];
                   // Finish exhale
                   // Stop execution
                   assume false;
@@ -2250,20 +2250,20 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             }
           }
         }
-        if (allNodes(PostHeap, struct)[p_4] && (allNodes(PostHeap, struct)[q_9] && (find(oldHeap, struct, p_4) != find(oldHeap, struct, this) && (find(oldHeap, struct, q_9) != find(oldHeap, struct, other) && find(oldHeap, struct, p_4) == find(oldHeap, struct, q_9))))) {
+        if (allNodes(PostHeap, struct)[p_16] && (allNodes(PostHeap, struct)[q_14] && (find(oldHeap, struct, p_16) != find(oldHeap, struct, this) && (find(oldHeap, struct, q_14) != find(oldHeap, struct, other) && find(oldHeap, struct, p_16) == find(oldHeap, struct, q_14))))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.192--93.207) [2601]"}
+            ExhaleWellDef0Mask := PostMask;
+            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.192--93.207) [181781]"}
               struct != null;
-            assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@93.192--93.207) [2602]"}
-              p_4 != null;
+            assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@93.192--93.207) [181782]"}
+              p_16 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.192--93.207) [2603]"}
+            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.192--93.207) [181783]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
-            assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@93.192--93.207) [2604]"}
-              allNodes(PostHeap, struct)[p_4];
+            assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@93.192--93.207) [181784]"}
+              allNodes(PostHeap, struct)[p_16];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -2273,17 +2273,17 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.211--93.226) [2605]"}
+            ExhaleWellDef0Mask := PostMask;
+            assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.211--93.226) [181785]"}
               struct != null;
-            assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@93.211--93.226) [2606]"}
-              q_9 != null;
+            assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@93.211--93.226) [181786]"}
+              q_14 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.211--93.226) [2607]"}
+            assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.211--93.226) [181787]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
-            assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@93.211--93.226) [2608]"}
-              allNodes(PostHeap, struct)[q_9];
+            assert {:msg "  Precondition of function find might not hold. Assertion (q in allNodes(struct)) might not hold. (unionfind.vpr@93.211--93.226) [181788]"}
+              allNodes(PostHeap, struct)[q_14];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -2294,9 +2294,9 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
         }
         assume false;
       }
-    assume (forall p_5: Ref, q_5: Ref ::
-      { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_5], allNodes#frame(PostHeap[null, inv(struct)], struct)[q_5] } { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_5], find#frame(oldHeap[null, inv(struct)], struct, q_5) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_5], find#frame(PostHeap[null, inv(struct)], struct, q_5) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[q_5], find#frame(oldHeap[null, inv(struct)], struct, p_5) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[q_5], find#frame(PostHeap[null, inv(struct)], struct, p_5) } { find#frame(oldHeap[null, inv(struct)], struct, p_5), find#frame(oldHeap[null, inv(struct)], struct, q_5) } { find#frame(oldHeap[null, inv(struct)], struct, p_5), find#frame(PostHeap[null, inv(struct)], struct, q_5) } { find#frame(oldHeap[null, inv(struct)], struct, q_5), find#frame(oldHeap[null, inv(struct)], struct, p_5) } { find#frame(oldHeap[null, inv(struct)], struct, q_5), find#frame(PostHeap[null, inv(struct)], struct, p_5) }
-      allNodes(PostHeap, struct)[p_5] && (allNodes(PostHeap, struct)[q_5] && (find(oldHeap, struct, p_5) != find(oldHeap, struct, this) && (find(oldHeap, struct, q_5) != find(oldHeap, struct, other) && find(oldHeap, struct, p_5) == find(oldHeap, struct, q_5)))) ==> find(PostHeap, struct, p_5) == find(PostHeap, struct, q_5)
+    assume (forall p_5_2: Ref, q_5: Ref ::
+      { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_5_2], allNodes#frame(PostHeap[null, inv(struct)], struct)[q_5] } { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_5_2], find#frame(oldHeap[null, inv(struct)], struct, q_5) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[p_5_2], find#frame(PostHeap[null, inv(struct)], struct, q_5) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[q_5], find#frame(oldHeap[null, inv(struct)], struct, p_5_2) } { allNodes#frame(PostHeap[null, inv(struct)], struct)[q_5], find#frame(PostHeap[null, inv(struct)], struct, p_5_2) } { find#frame(oldHeap[null, inv(struct)], struct, p_5_2), find#frame(oldHeap[null, inv(struct)], struct, q_5) } { find#frame(oldHeap[null, inv(struct)], struct, p_5_2), find#frame(PostHeap[null, inv(struct)], struct, q_5) } { find#frame(oldHeap[null, inv(struct)], struct, q_5), find#frame(oldHeap[null, inv(struct)], struct, p_5_2) } { find#frame(oldHeap[null, inv(struct)], struct, q_5), find#frame(PostHeap[null, inv(struct)], struct, p_5_2) }
+      allNodes(PostHeap, struct)[p_5_2] && (allNodes(PostHeap, struct)[q_5] && (find(oldHeap, struct, p_5_2) != find(oldHeap, struct, this) && (find(oldHeap, struct, q_5) != find(oldHeap, struct, other) && find(oldHeap, struct, p_5_2) == find(oldHeap, struct, q_5)))) ==> find(PostHeap, struct, p_5_2) == find(PostHeap, struct, q_5)
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -2312,16 +2312,16 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     // -- Check definedness of find(struct, this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@95.19--95.37) [2609]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@95.19--95.37) [181789]"}
           struct != null;
-        assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@95.19--95.37) [2610]"}
+        assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@95.19--95.37) [181790]"}
           this != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@95.19--95.37) [2611]"}
+        assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@95.19--95.37) [181791]"}
           NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
-        assert {:msg "  Precondition of function find might not hold. Assertion (this in allNodes(struct)) might not hold. (unionfind.vpr@95.19--95.37) [2612]"}
+        assert {:msg "  Precondition of function find might not hold. Assertion (this in allNodes(struct)) might not hold. (unionfind.vpr@95.19--95.37) [181792]"}
           allNodes(Heap, struct)[this];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2338,16 +2338,16 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     // -- Check definedness of find(struct, other)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@96.20--96.39) [2613]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@96.20--96.39) [181793]"}
           struct != null;
-        assert {:msg "  Precondition of function find might not hold. Assertion other != null might not hold. (unionfind.vpr@96.20--96.39) [2614]"}
+        assert {:msg "  Precondition of function find might not hold. Assertion other != null might not hold. (unionfind.vpr@96.20--96.39) [181794]"}
           other != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@96.20--96.39) [2615]"}
+        assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@96.20--96.39) [181795]"}
           NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
-        assert {:msg "  Precondition of function find might not hold. Assertion (other in allNodes(struct)) might not hold. (unionfind.vpr@96.20--96.39) [2616]"}
+        assert {:msg "  Precondition of function find might not hold. Assertion (other in allNodes(struct)) might not hold. (unionfind.vpr@96.20--96.39) [181796]"}
           allNodes(Heap, struct)[other];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2364,12 +2364,12 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
       
       // -- Translating statement: unfold acc(inv(struct), write) -- unionfind.vpr@99.4--99.34
         assume inv#trigger(Heap, inv(struct));
-        assume Heap[null, inv(struct)] == CombineFrames(FrameFragment(Heap[struct, nodes]), FrameFragment(inv#condqp1(Heap, struct)));
-        ExhaleWellDef0Mask := Mask;
+        assume Heap[null, inv(struct)] == CombineFrames(FrameFragment(Heap[struct, nodes_1]), FrameFragment(inv#condqp1(Heap, struct)));
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Unfolding inv(struct) might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@99.4--99.34) [2619]"}
+          assert {:msg "  Unfolding inv(struct) might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@99.4--99.34) [181799]"}
             perm <= Mask[null, inv(struct)];
         }
         Mask := Mask[null, inv(struct):=Mask[null, inv(struct)] - perm];
@@ -2381,140 +2381,140 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           }
         perm := FullPerm;
         assume struct != null;
-        Mask := Mask[struct, nodes:=Mask[struct, nodes] + perm];
+        Mask := Mask[struct, nodes_1:=Mask[struct, nodes_1] + perm];
         assume state(Heap, Mask);
-        assume !Heap[struct, nodes][null];
+        assume !Heap[struct, nodes_1][null];
         havoc QPMask;
-        assert {:msg "  Unfolding inv(struct) might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@99.4--99.34) [2621]"}
-          (forall n: Ref, n_4: Ref ::
+        assert {:msg "  Unfolding inv(struct) might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@99.4--99.34) [181801]"}
+          (forall n: Ref, n_89: Ref ::
           
-          (((n != n_4 && Heap[struct, nodes][n]) && Heap[struct, nodes][n_4]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n != n_4
+          (((n != n_89 && Heap[struct, nodes_1][n]) && Heap[struct, nodes_1][n_89]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n != n_89
         );
         
         // -- Define Inverse Function
           assume (forall n: Ref ::
-            { Heap[n, parent] } { QPMask[n, parent] } { Heap[struct, nodes][n] }
-            Heap[struct, nodes][n] && NoPerm < FullPerm ==> qpRange10(n) && invRecv10(n) == n
+            { Heap[n, parent] } { QPMask[n, parent] } { Heap[struct, nodes_1][n] }
+            Heap[struct, nodes_1][n] && NoPerm < FullPerm ==> qpRange10(n) && invRecv10(n) == n
           );
-          assume (forall o_4: Ref ::
-            { invRecv10(o_4) }
-            (Heap[struct, nodes][invRecv10(o_4)] && NoPerm < FullPerm) && qpRange10(o_4) ==> invRecv10(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv10(o_9) }
+            (Heap[struct, nodes_1][invRecv10(o_9)] && NoPerm < FullPerm) && qpRange10(o_9) ==> invRecv10(o_9) == o_9
           );
         
         // -- Assume set of fields is nonNull
           assume (forall n: Ref ::
-            { Heap[n, parent] } { QPMask[n, parent] } { Heap[struct, nodes][n] }
-            Heap[struct, nodes][n] ==> n != null
+            { Heap[n, parent] } { QPMask[n, parent] } { Heap[struct, nodes_1][n] }
+            Heap[struct, nodes_1][n] ==> n != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, parent] }
-            ((Heap[struct, nodes][invRecv10(o_4)] && NoPerm < FullPerm) && qpRange10(o_4) ==> (NoPerm < FullPerm ==> invRecv10(o_4) == o_4) && QPMask[o_4, parent] == Mask[o_4, parent] + FullPerm) && (!((Heap[struct, nodes][invRecv10(o_4)] && NoPerm < FullPerm) && qpRange10(o_4)) ==> QPMask[o_4, parent] == Mask[o_4, parent])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, parent] }
+            ((Heap[struct, nodes_1][invRecv10(o_9)] && NoPerm < FullPerm) && qpRange10(o_9) ==> (NoPerm < FullPerm ==> invRecv10(o_9) == o_9) && QPMask[o_9, parent] == Mask[o_9, parent] + FullPerm) && (!((Heap[struct, nodes_1][invRecv10(o_9)] && NoPerm < FullPerm) && qpRange10(o_9)) ==> QPMask[o_9, parent] == Mask[o_9, parent])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != parent ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != parent ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
-        assume (forall q_12: Ref ::
-          { Heap[struct, nodes][q_12] } { Heap[struct, nodes][Heap[q_12, parent]] }
-          Heap[struct, nodes][q_12] ==> Heap[struct, nodes][Heap[q_12, parent]]
+        assume (forall q_12_1: Ref ::
+          { Heap[struct, nodes_1][q_12_1] } { Heap[struct, nodes_1][Heap[q_12_1, parent]] }
+          Heap[struct, nodes_1][q_12_1] ==> Heap[struct, nodes_1][Heap[q_12_1, parent]]
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
       
       // -- Translating statement: this1.parent := other1 -- unionfind.vpr@100.4--100.26
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access this1.parent (unionfind.vpr@100.4--100.26) [2622]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access this1.parent (unionfind.vpr@100.4--100.26) [181802]"}
           FullPerm == Mask[this1, parent];
         Heap := Heap[this1, parent:=other1];
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(inv(struct), write) -- unionfind.vpr@101.4--101.32
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding inv(struct) might fail. There might be insufficient permission to access struct.nodes (unionfind.vpr@101.4--101.32) [2625]"}
-            perm <= Mask[struct, nodes];
+          assert {:msg "  Folding inv(struct) might fail. There might be insufficient permission to access struct.nodes (unionfind.vpr@101.4--101.32) [181805]"}
+            perm <= Mask[struct, nodes_1];
         }
-        Mask := Mask[struct, nodes:=Mask[struct, nodes] - perm];
-        assert {:msg "  Folding inv(struct) might fail. Assertion !((null in struct.nodes)) might not hold. (unionfind.vpr@101.4--101.32) [2626]"}
-          !Heap[struct, nodes][null];
+        Mask := Mask[struct, nodes_1:=Mask[struct, nodes_1] - perm];
+        assert {:msg "  Folding inv(struct) might fail. Assertion !((null in struct.nodes)) might not hold. (unionfind.vpr@101.4--101.32) [181806]"}
+          !Heap[struct, nodes_1][null];
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Folding inv(struct) might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@101.4--101.32) [2628]"}
+          assert {:msg "  Folding inv(struct) might fail. Quantified resource n.parent might not be injective. (unionfind.vpr@101.4--101.32) [181808]"}
             (forall n_1: Ref, n_1_1: Ref ::
             { neverTriggered11(n_1), neverTriggered11(n_1_1) }
-            (((n_1 != n_1_1 && Heap[struct, nodes][n_1]) && Heap[struct, nodes][n_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_1 != n_1_1
+            (((n_1 != n_1_1 && Heap[struct, nodes_1][n_1]) && Heap[struct, nodes_1][n_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_1 != n_1_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Folding inv(struct) might fail. There might be insufficient permission to access n.parent (unionfind.vpr@101.4--101.32) [2629]"}
+          assert {:msg "  Folding inv(struct) might fail. There might be insufficient permission to access n.parent (unionfind.vpr@101.4--101.32) [181809]"}
             (forall n_1: Ref ::
-            { Heap[n_1, parent] } { QPMask[n_1, parent] } { Heap[struct, nodes][n_1] }
-            Heap[struct, nodes][n_1] ==> Mask[n_1, parent] >= FullPerm
+            { Heap[n_1, parent] } { QPMask[n_1, parent] } { Heap[struct, nodes_1][n_1] }
+            Heap[struct, nodes_1][n_1] ==> Mask[n_1, parent] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver n
           assume (forall n_1: Ref ::
-            { Heap[n_1, parent] } { QPMask[n_1, parent] } { Heap[struct, nodes][n_1] }
-            Heap[struct, nodes][n_1] && NoPerm < FullPerm ==> qpRange11(n_1) && invRecv11(n_1) == n_1
+            { Heap[n_1, parent] } { QPMask[n_1, parent] } { Heap[struct, nodes_1][n_1] }
+            Heap[struct, nodes_1][n_1] && NoPerm < FullPerm ==> qpRange11(n_1) && invRecv11(n_1) == n_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv11(o_4) }
-            Heap[struct, nodes][invRecv11(o_4)] && (NoPerm < FullPerm && qpRange11(o_4)) ==> invRecv11(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv11(o_9) }
+            Heap[struct, nodes_1][invRecv11(o_9)] && (NoPerm < FullPerm && qpRange11(o_9)) ==> invRecv11(o_9) == o_9
           );
         
         // -- assume permission updates for field parent
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, parent] }
-            (Heap[struct, nodes][invRecv11(o_4)] && (NoPerm < FullPerm && qpRange11(o_4)) ==> invRecv11(o_4) == o_4 && QPMask[o_4, parent] == Mask[o_4, parent] - FullPerm) && (!(Heap[struct, nodes][invRecv11(o_4)] && (NoPerm < FullPerm && qpRange11(o_4))) ==> QPMask[o_4, parent] == Mask[o_4, parent])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, parent] }
+            (Heap[struct, nodes_1][invRecv11(o_9)] && (NoPerm < FullPerm && qpRange11(o_9)) ==> invRecv11(o_9) == o_9 && QPMask[o_9, parent] == Mask[o_9, parent] - FullPerm) && (!(Heap[struct, nodes_1][invRecv11(o_9)] && (NoPerm < FullPerm && qpRange11(o_9))) ==> QPMask[o_9, parent] == Mask[o_9, parent])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != parent ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != parent ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         if (*) {
-          if (Heap[struct, nodes][q_13]) {
-            assert {:msg "  Folding inv(struct) might fail. Assertion (q.parent in struct.nodes) might not hold. (unionfind.vpr@101.4--101.32) [2630]"}
-              Heap[struct, nodes][Heap[q_13, parent]];
+          if (Heap[struct, nodes_1][q_13_1]) {
+            assert {:msg "  Folding inv(struct) might fail. Assertion (q.parent in struct.nodes) might not hold. (unionfind.vpr@101.4--101.32) [181810]"}
+              Heap[struct, nodes_1][Heap[q_13_1, parent]];
           }
           assume false;
         }
         assume (forall q_14_1: Ref ::
-          { Heap[struct, nodes][q_14_1] } { Heap[struct, nodes][Heap[q_14_1, parent]] }
-          Heap[struct, nodes][q_14_1] ==> Heap[struct, nodes][Heap[q_14_1, parent]]
+          { Heap[struct, nodes_1][q_14_1] } { Heap[struct, nodes_1][Heap[q_14_1, parent]] }
+          Heap[struct, nodes_1][q_14_1] ==> Heap[struct, nodes_1][Heap[q_14_1, parent]]
         );
         perm := FullPerm;
         Mask := Mask[null, inv(struct):=Mask[null, inv(struct)] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume inv#trigger(Heap, inv(struct));
-        assume Heap[null, inv(struct)] == CombineFrames(FrameFragment(Heap[struct, nodes]), FrameFragment(inv#condqp1(Heap, struct)));
+        assume Heap[null, inv(struct)] == CombineFrames(FrameFragment(Heap[struct, nodes_1]), FrameFragment(inv#condqp1(Heap, struct)));
         if (!HasDirectPerm(Mask, null, inv(struct))) {
           Heap := Heap[null, inv#sm(struct):=ZeroPMask];
           havoc freshVersion;
           Heap := Heap[null, inv(struct):=freshVersion];
         }
-        Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes:=true]];
+        Heap := Heap[null, inv#sm(struct):=Heap[null, inv#sm(struct)][struct, nodes_1:=true]];
         // register all known folded permissions guarded by predicate inv
         havoc newPMask;
-        assume (forall <A, B> o_22: Ref, f_24: (Field A B) ::
-          { newPMask[o_22, f_24] }
-          Heap[null, inv#sm(struct)][o_22, f_24] ==> newPMask[o_22, f_24]
+        assume (forall <A, B> o_4: Ref, f_54: (Field A B) ::
+          { newPMask[o_4, f_54] }
+          Heap[null, inv#sm(struct)][o_4, f_54] ==> newPMask[o_4, f_54]
         );
         assume (forall n_2: Ref ::
           
-          Heap[struct, nodes][n_2] ==> newPMask[n_2, parent]
+          Heap[struct, nodes_1][n_2] ==> newPMask[n_2, parent]
         );
         Heap := Heap[null, inv#sm(struct):=newPMask];
         assume state(Heap, Mask);
@@ -2531,10 +2531,10 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           if (*) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@104.36--104.52) [2632]"}
+              assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@104.36--104.52) [181812]"}
                 NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
               // Finish exhale
               havoc ExhaleHeap;
@@ -2543,39 +2543,39 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
               // Stop execution
               assume false;
             }
-            if (allNodes(Heap, struct)[p_6]) {
+            if (allNodes(Heap, struct)[p_17]) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
-                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@104.60--104.75) [2633]"}
+                ExhaleWellDef0Mask := oldMask;
+                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@104.60--104.75) [181813]"}
                   struct != null;
-                assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@104.60--104.75) [2634]"}
-                  p_6 != null;
+                assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@104.60--104.75) [181814]"}
+                  p_17 != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@104.60--104.75) [2635]"}
+                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@104.60--104.75) [181815]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-                assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@104.60--104.75) [2636]"}
-                  allNodes(oldHeap, struct)[p_6];
+                assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@104.60--104.75) [181816]"}
+                  allNodes(oldHeap, struct)[p_17];
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
             }
-            if (allNodes(Heap, struct)[p_6] && find(oldHeap, struct, p_6) == this1) {
+            if (allNodes(Heap, struct)[p_17] && find(oldHeap, struct, p_17) == this1) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@104.90--104.105) [2637]"}
+                ExhaleWellDef0Mask := Mask;
+                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@104.90--104.105) [181817]"}
                   struct != null;
-                assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@104.90--104.105) [2638]"}
-                  p_6 != null;
+                assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@104.90--104.105) [181818]"}
+                  p_17 != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@104.90--104.105) [2639]"}
+                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@104.90--104.105) [181819]"}
                   NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
-                assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@104.90--104.105) [2640]"}
-                  allNodes(Heap, struct)[p_6];
+                assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@104.90--104.105) [181820]"}
+                  allNodes(Heap, struct)[p_17];
                 // Finish exhale
                 havoc ExhaleHeap;
                 assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -2586,9 +2586,9 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             }
             assume false;
           }
-        assume (forall p_13: Ref ::
-          { allNodes#frame(Heap[null, inv(struct)], struct)[p_13] } { find#frame(oldHeap[null, inv(struct)], struct, p_13) }
-          allNodes(Heap, struct)[p_13] && find(oldHeap, struct, p_13) == this1 ==> find(Heap, struct, p_13) == other1
+        assume (forall p_13_1: Ref ::
+          { allNodes#frame(Heap[null, inv(struct)], struct)[p_13_1] } { find#frame(oldHeap[null, inv(struct)], struct, p_13_1) }
+          allNodes(Heap, struct)[p_13_1] && find(oldHeap, struct, p_13_1) == this1 ==> find(Heap, struct, p_13_1) == other1
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -2604,10 +2604,10 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           if (*) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@105.36--105.52) [2641]"}
+              assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@105.36--105.52) [181821]"}
                 NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
               // Finish exhale
               havoc ExhaleHeap;
@@ -2616,39 +2616,39 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
               // Stop execution
               assume false;
             }
-            if (allNodes(Heap, struct)[p_7]) {
+            if (allNodes(Heap, struct)[p_18]) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
-                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@105.60--105.75) [2642]"}
+                ExhaleWellDef0Mask := oldMask;
+                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@105.60--105.75) [181822]"}
                   struct != null;
-                assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@105.60--105.75) [2643]"}
-                  p_7 != null;
+                assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@105.60--105.75) [181823]"}
+                  p_18 != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@105.60--105.75) [2644]"}
+                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@105.60--105.75) [181824]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-                assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@105.60--105.75) [2645]"}
-                  allNodes(oldHeap, struct)[p_7];
+                assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@105.60--105.75) [181825]"}
+                  allNodes(oldHeap, struct)[p_18];
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
             }
-            if (allNodes(Heap, struct)[p_7] && find(oldHeap, struct, p_7) != this1) {
+            if (allNodes(Heap, struct)[p_18] && find(oldHeap, struct, p_18) != this1) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@105.90--105.105) [2646]"}
+                ExhaleWellDef0Mask := Mask;
+                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@105.90--105.105) [181826]"}
                   struct != null;
-                assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@105.90--105.105) [2647]"}
-                  p_7 != null;
+                assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@105.90--105.105) [181827]"}
+                  p_18 != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@105.90--105.105) [2648]"}
+                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@105.90--105.105) [181828]"}
                   NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
-                assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@105.90--105.105) [2649]"}
-                  allNodes(Heap, struct)[p_7];
+                assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@105.90--105.105) [181829]"}
+                  allNodes(Heap, struct)[p_18];
                 // Finish exhale
                 havoc ExhaleHeap;
                 assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -2658,17 +2658,17 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
-                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@105.113--105.128) [2650]"}
+                ExhaleWellDef0Mask := oldMask;
+                assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@105.113--105.128) [181830]"}
                   struct != null;
-                assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@105.113--105.128) [2651]"}
-                  p_7 != null;
+                assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@105.113--105.128) [181831]"}
+                  p_18 != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@105.113--105.128) [2652]"}
+                assert {:msg "  Precondition of function find might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@105.113--105.128) [181832]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
-                assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@105.113--105.128) [2653]"}
-                  allNodes(oldHeap, struct)[p_7];
+                assert {:msg "  Precondition of function find might not hold. Assertion (p in allNodes(struct)) might not hold. (unionfind.vpr@105.113--105.128) [181833]"}
+                  allNodes(oldHeap, struct)[p_18];
                 // Finish exhale
                 // Stop execution
                 assume false;
@@ -2676,9 +2676,9 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             }
             assume false;
           }
-        assume (forall p_15: Ref ::
-          { allNodes#frame(Heap[null, inv(struct)], struct)[p_15] } { find#frame(oldHeap[null, inv(struct)], struct, p_15) }
-          allNodes(Heap, struct)[p_15] && find(oldHeap, struct, p_15) != this1 ==> find(Heap, struct, p_15) == find(oldHeap, struct, p_15)
+        assume (forall p_15_1: Ref ::
+          { allNodes#frame(Heap[null, inv(struct)], struct)[p_15_1] } { find#frame(oldHeap[null, inv(struct)], struct, p_15_1) }
+          allNodes(Heap, struct)[p_15_1] && find(oldHeap, struct, p_15_1) != this1 ==> find(Heap, struct, p_15_1) == find(oldHeap, struct, p_15_1)
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -2686,42 +2686,42 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of unionn might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@85.11--85.34) [2654]"}
+      assert {:msg "  Postcondition of unionn might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@85.11--85.34) [181834]"}
         perm <= Mask[null, inv(struct)];
     }
     Mask := Mask[null, inv(struct):=Mask[null, inv(struct)] - perm];
-    assert {:msg "  Postcondition of unionn might not hold. Assertion allNodes(struct) == old(allNodes(struct)) might not hold. (unionfind.vpr@86.11--86.52) [2655]"}
+    assert {:msg "  Postcondition of unionn might not hold. Assertion allNodes(struct) == old(allNodes(struct)) might not hold. (unionfind.vpr@86.11--86.52) [181835]"}
       Set#Equal(allNodes(Heap, struct), allNodes(oldHeap, struct));
     if (*) {
-      if (allNodes(Heap, struct)[p_6_1] && (allNodes(Heap, struct)[q_6] && find(oldHeap, struct, p_6_1) == find(oldHeap, struct, q_6))) {
-        assert {:msg "  Postcondition of unionn might not hold. Assertion find(struct, p) == find(struct, q) might not hold. (unionfind.vpr@90.11--90.164) [2656]"}
-          find(Heap, struct, p_6_1) == find(Heap, struct, q_6);
+      if (allNodes(Heap, struct)[p_6] && (allNodes(Heap, struct)[q_6_1] && find(oldHeap, struct, p_6) == find(oldHeap, struct, q_6_1))) {
+        assert {:msg "  Postcondition of unionn might not hold. Assertion find(struct, p) == find(struct, q) might not hold. (unionfind.vpr@90.11--90.164) [181836]"}
+          find(Heap, struct, p_6) == find(Heap, struct, q_6_1);
       }
       assume false;
     }
-    assume (forall p_7_1: Ref, q_7_1: Ref ::
-      { allNodes#frame(Heap[null, inv(struct)], struct)[p_7_1], allNodes#frame(Heap[null, inv(struct)], struct)[q_7_1] } { allNodes#frame(Heap[null, inv(struct)], struct)[p_7_1], find#frame(oldHeap[null, inv(struct)], struct, q_7_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[p_7_1], find#frame(Heap[null, inv(struct)], struct, q_7_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[q_7_1], find#frame(oldHeap[null, inv(struct)], struct, p_7_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[q_7_1], find#frame(Heap[null, inv(struct)], struct, p_7_1) } { find#frame(oldHeap[null, inv(struct)], struct, p_7_1), find#frame(oldHeap[null, inv(struct)], struct, q_7_1) } { find#frame(oldHeap[null, inv(struct)], struct, p_7_1), find#frame(Heap[null, inv(struct)], struct, q_7_1) } { find#frame(oldHeap[null, inv(struct)], struct, q_7_1), find#frame(Heap[null, inv(struct)], struct, p_7_1) }
-      allNodes(Heap, struct)[p_7_1] && (allNodes(Heap, struct)[q_7_1] && find(oldHeap, struct, p_7_1) == find(oldHeap, struct, q_7_1)) ==> find(Heap, struct, p_7_1) == find(Heap, struct, q_7_1)
+    assume (forall p_7_1_1: Ref, q_7_1: Ref ::
+      { allNodes#frame(Heap[null, inv(struct)], struct)[p_7_1_1], allNodes#frame(Heap[null, inv(struct)], struct)[q_7_1] } { allNodes#frame(Heap[null, inv(struct)], struct)[p_7_1_1], find#frame(oldHeap[null, inv(struct)], struct, q_7_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[p_7_1_1], find#frame(Heap[null, inv(struct)], struct, q_7_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[q_7_1], find#frame(oldHeap[null, inv(struct)], struct, p_7_1_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[q_7_1], find#frame(Heap[null, inv(struct)], struct, p_7_1_1) } { find#frame(oldHeap[null, inv(struct)], struct, p_7_1_1), find#frame(oldHeap[null, inv(struct)], struct, q_7_1) } { find#frame(oldHeap[null, inv(struct)], struct, p_7_1_1), find#frame(Heap[null, inv(struct)], struct, q_7_1) } { find#frame(oldHeap[null, inv(struct)], struct, q_7_1), find#frame(Heap[null, inv(struct)], struct, p_7_1_1) }
+      allNodes(Heap, struct)[p_7_1_1] && (allNodes(Heap, struct)[q_7_1] && find(oldHeap, struct, p_7_1_1) == find(oldHeap, struct, q_7_1)) ==> find(Heap, struct, p_7_1_1) == find(Heap, struct, q_7_1)
     );
     if (*) {
       if (allNodes(Heap, struct)[p_8] && (allNodes(Heap, struct)[q_8_1] && (find(oldHeap, struct, p_8) == find(oldHeap, struct, this) && find(oldHeap, struct, q_8_1) == find(oldHeap, struct, other)))) {
-        assert {:msg "  Postcondition of unionn might not hold. Assertion find(struct, p) == find(struct, q) might not hold. (unionfind.vpr@91.11--91.214) [2657]"}
+        assert {:msg "  Postcondition of unionn might not hold. Assertion find(struct, p) == find(struct, q) might not hold. (unionfind.vpr@91.11--91.214) [181837]"}
           find(Heap, struct, p_8) == find(Heap, struct, q_8_1);
       }
       assume false;
     }
-    assume (forall p_9_1: Ref, q_9_1: Ref ::
-      { allNodes#frame(Heap[null, inv(struct)], struct)[p_9_1], allNodes#frame(Heap[null, inv(struct)], struct)[q_9_1] } { allNodes#frame(Heap[null, inv(struct)], struct)[p_9_1], find#frame(oldHeap[null, inv(struct)], struct, q_9_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[p_9_1], find#frame(Heap[null, inv(struct)], struct, q_9_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[q_9_1], find#frame(oldHeap[null, inv(struct)], struct, p_9_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[q_9_1], find#frame(Heap[null, inv(struct)], struct, p_9_1) } { find#frame(oldHeap[null, inv(struct)], struct, p_9_1), find#frame(oldHeap[null, inv(struct)], struct, q_9_1) } { find#frame(oldHeap[null, inv(struct)], struct, p_9_1), find#frame(Heap[null, inv(struct)], struct, q_9_1) } { find#frame(oldHeap[null, inv(struct)], struct, q_9_1), find#frame(Heap[null, inv(struct)], struct, p_9_1) }
-      allNodes(Heap, struct)[p_9_1] && (allNodes(Heap, struct)[q_9_1] && (find(oldHeap, struct, p_9_1) == find(oldHeap, struct, this) && find(oldHeap, struct, q_9_1) == find(oldHeap, struct, other))) ==> find(Heap, struct, p_9_1) == find(Heap, struct, q_9_1)
+    assume (forall p_9_1_1: Ref, q_9_1: Ref ::
+      { allNodes#frame(Heap[null, inv(struct)], struct)[p_9_1_1], allNodes#frame(Heap[null, inv(struct)], struct)[q_9_1] } { allNodes#frame(Heap[null, inv(struct)], struct)[p_9_1_1], find#frame(oldHeap[null, inv(struct)], struct, q_9_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[p_9_1_1], find#frame(Heap[null, inv(struct)], struct, q_9_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[q_9_1], find#frame(oldHeap[null, inv(struct)], struct, p_9_1_1) } { allNodes#frame(Heap[null, inv(struct)], struct)[q_9_1], find#frame(Heap[null, inv(struct)], struct, p_9_1_1) } { find#frame(oldHeap[null, inv(struct)], struct, p_9_1_1), find#frame(oldHeap[null, inv(struct)], struct, q_9_1) } { find#frame(oldHeap[null, inv(struct)], struct, p_9_1_1), find#frame(Heap[null, inv(struct)], struct, q_9_1) } { find#frame(oldHeap[null, inv(struct)], struct, q_9_1), find#frame(Heap[null, inv(struct)], struct, p_9_1_1) }
+      allNodes(Heap, struct)[p_9_1_1] && (allNodes(Heap, struct)[q_9_1] && (find(oldHeap, struct, p_9_1_1) == find(oldHeap, struct, this) && find(oldHeap, struct, q_9_1) == find(oldHeap, struct, other))) ==> find(Heap, struct, p_9_1_1) == find(Heap, struct, q_9_1)
     );
     if (*) {
-      if (allNodes(Heap, struct)[p_10] && (allNodes(Heap, struct)[q_10] && (find(oldHeap, struct, p_10) != find(oldHeap, struct, this) && (find(oldHeap, struct, q_10) != find(oldHeap, struct, other) && find(oldHeap, struct, p_10) == find(oldHeap, struct, q_10))))) {
-        assert {:msg "  Postcondition of unionn might not hold. Assertion find(struct, p) == find(struct, q) might not hold. (unionfind.vpr@92.11--93.226) [2658]"}
-          find(Heap, struct, p_10) == find(Heap, struct, q_10);
+      if (allNodes(Heap, struct)[p_10_1] && (allNodes(Heap, struct)[q_10_1] && (find(oldHeap, struct, p_10_1) != find(oldHeap, struct, this) && (find(oldHeap, struct, q_10_1) != find(oldHeap, struct, other) && find(oldHeap, struct, p_10_1) == find(oldHeap, struct, q_10_1))))) {
+        assert {:msg "  Postcondition of unionn might not hold. Assertion find(struct, p) == find(struct, q) might not hold. (unionfind.vpr@92.11--93.226) [181838]"}
+          find(Heap, struct, p_10_1) == find(Heap, struct, q_10_1);
       }
       assume false;
     }

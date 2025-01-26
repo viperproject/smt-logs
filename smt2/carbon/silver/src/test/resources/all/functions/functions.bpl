@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:50
+// Date:         2025-01-26 21:41:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/functions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/functions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -263,9 +263,9 @@ procedure fun1#definedness(x: Ref, y: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of y.f + x.g
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.f (functions.vpr@8.1--11.14) [154765]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.f (functions.vpr@8.1--11.14) [51418]"}
         HasDirectPerm(Mask, y, f_7);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (functions.vpr@8.1--11.14) [154766]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (functions.vpr@8.1--11.14) [51419]"}
         HasDirectPerm(Mask, x, g);
   
   // -- Translate function body
@@ -336,9 +336,9 @@ procedure fun2#definedness(x: Ref, y: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of y.f + x.g
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.f (functions.vpr@13.1--15.14) [154767]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.f (functions.vpr@13.1--15.14) [51420]"}
         HasDirectPerm(Mask, y, f_7);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (functions.vpr@13.1--15.14) [154768]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (functions.vpr@13.1--15.14) [51421]"}
         HasDirectPerm(Mask, x, g);
   
   // -- Translate function body
@@ -387,8 +387,8 @@ procedure fun3#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -410,17 +410,17 @@ procedure fun3#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, g]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (functions.vpr@21.1--23.31) [154769]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (functions.vpr@21.1--23.31) [51422]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
       perm := FullPerm;
       assume x != null;
       UnfoldingMask := UnfoldingMask[x, g:=UnfoldingMask[x, g] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (functions.vpr@21.1--23.31) [154770]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (functions.vpr@21.1--23.31) [51423]"}
         HasDirectPerm(UnfoldingMask, x, g);
       
       // -- Free assumptions (exp module)
@@ -473,8 +473,8 @@ procedure fun4#definedness(x: Ref, y: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -499,23 +499,23 @@ procedure fun4#definedness(x: Ref, y: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of y.f + (unfolding acc(P(x), write) in y.g)
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.f (functions.vpr@25.1--28.37) [154771]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.f (functions.vpr@25.1--28.37) [51424]"}
         HasDirectPerm(Mask, y, f_7);
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, g]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (functions.vpr@25.1--28.37) [154772]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (functions.vpr@25.1--28.37) [51425]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
       perm := FullPerm;
       assume x != null;
       UnfoldingMask := UnfoldingMask[x, g:=UnfoldingMask[x, g] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.g (functions.vpr@25.1--28.37) [154773]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.g (functions.vpr@25.1--28.37) [51426]"}
         HasDirectPerm(UnfoldingMask, y, g);
       
       // -- Free assumptions (exp module)
@@ -591,7 +591,7 @@ procedure fun6#definedness(b_24: bool, x: Ref) returns (Result: int)
     
     // -- Check definedness of (b ? x.f : 0)
       if (b_24) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (functions.vpr@30.1--32.16) [154774]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (functions.vpr@30.1--32.16) [51427]"}
           HasDirectPerm(Mask, x, f_7);
       }
   
@@ -641,8 +641,8 @@ procedure fun5#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -664,10 +664,10 @@ procedure fun5#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Q#trigger(UnfoldingHeap, Q(x));
       assume UnfoldingHeap[null, Q(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), CombineFrames(FrameFragment(UnfoldingHeap[x, h]), FrameFragment((if UnfoldingHeap[x, h] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[x, h], g]) else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Q(x) (functions.vpr@38.1--40.59) [154775]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Q(x) (functions.vpr@38.1--40.59) [51428]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Q(x)];
       perm := FullPerm;
       assume x != null;
@@ -684,15 +684,15 @@ procedure fun5#definedness(x: Ref) returns (Result: int)
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (functions.vpr@38.1--40.59) [154776]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (functions.vpr@38.1--40.59) [51429]"}
         HasDirectPerm(UnfoldingMask, x, f_7);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.h (functions.vpr@38.1--40.59) [154777]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.h (functions.vpr@38.1--40.59) [51430]"}
         HasDirectPerm(UnfoldingMask, x, h);
       if (UnfoldingHeap[x, h] == null) {
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.h (functions.vpr@38.1--40.59) [154778]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.h (functions.vpr@38.1--40.59) [51431]"}
           HasDirectPerm(UnfoldingMask, x, h);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.h.g (functions.vpr@38.1--40.59) [154779]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.h.g (functions.vpr@38.1--40.59) [51432]"}
           HasDirectPerm(UnfoldingMask, UnfoldingHeap[x, h], g);
       }
       
@@ -759,7 +759,7 @@ procedure err1#definedness(x: Ref) returns (Result: int)
   // -- Inhaling precondition (with checking)
     
     // -- Check definedness of acc(x.h.f, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.h (functions.vpr@46.12--46.22) [154780]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.h (functions.vpr@46.12--46.22) [51433]"}
         HasDirectPerm(Mask, x, h);
     perm := FullPerm;
     assume Heap[x, h] != null;
@@ -811,8 +811,8 @@ procedure err2#definedness(x: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -833,10 +833,10 @@ procedure err2#definedness(x: Ref) returns (Result: int)
     // -- Check definedness of err1(x) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function err1 might not hold. There might be insufficient permission to access x.h.f (functions.vpr@52.12--52.19) [154781]"}
+        assert {:msg "  Precondition of function err1 might not hold. There might be insufficient permission to access x.h.f (functions.vpr@52.12--52.19) [51434]"}
           NoPerm < perm ==> NoPerm < Mask[Heap[x, h], f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -915,9 +915,9 @@ procedure er3#definedness(x: Ref, y: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of y.f + x.g
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.f (functions.vpr@56.1--58.14) [154782]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.f (functions.vpr@56.1--58.14) [51435]"}
         HasDirectPerm(Mask, y, f_7);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (functions.vpr@56.1--58.14) [154783]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (functions.vpr@56.1--58.14) [51436]"}
         HasDirectPerm(Mask, x, g);
   
   // -- Translate function body
@@ -1037,12 +1037,12 @@ procedure Q#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.h != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.h (functions.vpr@34.1--36.2) [154784]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.h (functions.vpr@34.1--36.2) [51437]"}
         HasDirectPerm(Mask, x, h);
     if (Heap[x, h] != null) {
       
       // -- Check definedness of acc(x.h.g, write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.h (functions.vpr@34.1--36.2) [154785]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.h (functions.vpr@34.1--36.2) [51438]"}
           HasDirectPerm(Mask, x, h);
       perm := FullPerm;
       assume Heap[x, h] != null;

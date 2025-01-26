@@ -84,7 +84,6 @@
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
  :pattern ( ($Box T@@1 x@@5))
 )))
-(assert (= BoundedInts.__default.TWO__TO__THE__64 (LitInt 18446744073709551616)))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
@@ -109,6 +108,7 @@
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
+(assert (= BoundedInts.__default.TWO__TO__THE__64 (LitInt 18446744073709551616)))
 (assert (forall ((v T@U) ) (! ($Is intType v TInt)
  :pattern ( ($Is intType v TInt))
 )))

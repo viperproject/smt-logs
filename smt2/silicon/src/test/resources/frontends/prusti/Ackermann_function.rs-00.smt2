@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:29:37
+; Started: 2025-01-26 21:21:19
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -189,11 +189,11 @@
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-661|)))
+  :qid |quant-u-132|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-662|)))
+  :qid |quant-u-133|)))
 ; ---------- FUNCTION builtin$unreach_int__$TY$__$int$----------
 (declare-fun result@1@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -206,11 +206,11 @@
     (builtin$unreach_int__$TY$__$int$%limited s@$)
     (builtin$unreach_int__$TY$__$int$ s@$))
   :pattern ((builtin$unreach_int__$TY$__$int$ s@$))
-  :qid |quant-u-663|)))
+  :qid |quant-u-134|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$unreach_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-664|)))
+  :qid |quant-u-135|)))
 ; ---------- FUNCTION read$----------
 (declare-fun result@2@00 () $Perm)
 ; ----- Well-definedness of specifications -----
@@ -227,25 +227,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-665|)))
+  :qid |quant-u-136|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-666|)))
+  :qid |quant-u-137|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@2@00) (< result@2@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-669|)))
+  :qid |quant-u-140|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-670|)))
+  :qid |quant-u-141|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-671|)))
+  :qid |quant-u-142|)))
 ; ---------- FUNCTION m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$----------
 (declare-fun _pure_1@3@00 () Int)
 (declare-fun _pure_2@4@00 () Int)
@@ -282,11 +282,11 @@
     (m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00)
     (m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@3@00 _pure_2@4@00))
   :pattern ((m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-667|)))
+  :qid |quant-u-138|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 Int) (_pure_2@4@00 Int)) (!
   (m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%stateless _pure_1@3@00 _pure_2@4@00)
   :pattern ((m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-668|)))
+  :qid |quant-u-139|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 Int) (_pure_2@4@00 Int)) (!
   (let ((result@5@00 (m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))) (=>
     (m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%precondition s@$ _pure_1@3@00 _pure_2@4@00)
@@ -296,15 +296,15 @@
         result@5@00
         (mirror$m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$__$TY$__$int$$$int$$$int$<Int> _pure_1@3@00 _pure_2@4@00)))))
   :pattern ((m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-672|)))
+  :qid |quant-u-143|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 Int) (_pure_2@4@00 Int)) (!
   (let ((result@5@00 (m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))) true)
   :pattern ((m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-673|)))
+  :qid |quant-u-144|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 Int) (_pure_2@4@00 Int)) (!
   (let ((result@5@00 (m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))) true)
   :pattern ((m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%limited s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-674|)))
+  :qid |quant-u-145|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -595,7 +595,7 @@
             ($Snap.combine $Snap.unit $Snap.unit)) (- _pure_1@3@00 1) 1))
         (+ _pure_2@4@00 1))))
   :pattern ((m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-675|)))
+  :qid |quant-u-146|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 Int) (_pure_2@4@00 Int)) (!
   (=>
     (m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$%precondition s@$ _pure_1@3@00 _pure_2@4@00)
@@ -621,7 +621,7 @@
           ($Snap.combine $Snap.unit $Snap.unit)) (- _pure_1@3@00 1) 1))
       true))
   :pattern ((m_Ackermann_function$$ack_pure$opensqu$0$closesqu$__$TY$__$int$$$int$$$int$ s@$ _pure_1@3@00 _pure_2@4@00))
-  :qid |quant-u-676|)))
+  :qid |quant-u-147|)))
 ; ---------- DeadBorrowToken$ ----------
 (declare-const borrow@8@00 Int)
 ; ---------- bool ----------

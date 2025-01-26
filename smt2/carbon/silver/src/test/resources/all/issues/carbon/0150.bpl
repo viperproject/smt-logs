@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:26
+// Date:         2025-01-26 21:43:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0150.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0150-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -229,7 +229,7 @@ procedure Tree_valid#definedness(self: Ref) returns ()
       assume AssumePermUpperBound;
       assume Heap[self, $allocated];
     perm := 1 / 10;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 10 might be negative. (0150.vpr@6.1--8.2) [195162]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 10 might be negative. (0150.vpr@6.1--8.2) [83542]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> self != null;
     Mask := Mask[self, Tree_height:=Mask[self, Tree_height] + perm];
@@ -247,10 +247,10 @@ procedure callee(self: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var oldHeap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -271,22 +271,22 @@ procedure callee(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
       assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Tree_valid(self) (0150.vpr@12.13--12.76) [195163]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Tree_valid(self) (0150.vpr@12.13--12.76) [83543]"}
           perm <= UnfoldingMask[null, Tree_valid(self)];
       }
       UnfoldingMask := UnfoldingMask[null, Tree_valid(self):=UnfoldingMask[null, Tree_valid(self)] - perm];
       perm := 1 / 10;
-      assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (0150.vpr@12.13--12.76) [195164]"}
+      assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (0150.vpr@12.13--12.76) [83544]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> self != null;
       UnfoldingMask := UnfoldingMask[self, Tree_height:=UnfoldingMask[self, Tree_height] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self.Tree_height (0150.vpr@12.13--12.76) [195165]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self.Tree_height (0150.vpr@12.13--12.76) [83545]"}
         HasDirectPerm(UnfoldingMask, self, Tree_height);
       
       // -- Free assumptions (exp module)
@@ -298,8 +298,8 @@ procedure callee(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
       assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, Tree_valid(self):=UnfoldingMask[null, Tree_valid(self)] - perm];
       perm := 1 / 10;
@@ -313,29 +313,29 @@ procedure callee(self: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method test
 // ==================================================
 
-procedure test(self: Ref) returns ()
+procedure test_1(self: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -355,17 +355,17 @@ procedure test(self: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(Tree_valid(self), write) -- 0150.vpr@19.5--19.40
     assume Tree_valid#trigger(Heap, Tree_valid(self));
     assume Heap[null, Tree_valid(self)] == FrameFragment(Heap[self, Tree_height]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Tree_valid(self) might fail. There might be insufficient permission to access Tree_valid(self) (0150.vpr@19.5--19.40) [195168]"}
+      assert {:msg "  Unfolding Tree_valid(self) might fail. There might be insufficient permission to access Tree_valid(self) (0150.vpr@19.5--19.40) [83548]"}
         perm <= Mask[null, Tree_valid(self)];
     }
     Mask := Mask[null, Tree_valid(self):=Mask[null, Tree_valid(self)] - perm];
@@ -376,7 +376,7 @@ procedure test(self: Ref) returns ()
         Heap := Heap[null, Tree_valid(self):=newVersion];
       }
     perm := 1 / 10;
-    assert {:msg "  Unfolding Tree_valid(self) might fail. Fraction 1 / 10 might be negative. (0150.vpr@19.5--19.40) [195169]"}
+    assert {:msg "  Unfolding Tree_valid(self) might fail. Fraction 1 / 10 might be negative. (0150.vpr@19.5--19.40) [83549]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> self != null;
     Mask := Mask[self, Tree_height:=Mask[self, Tree_height] + perm];
@@ -395,16 +395,16 @@ procedure test(self: Ref) returns ()
         UnfoldingMask := Mask;
         assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
         assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  The precondition of method callee might not hold. There might be insufficient permission to access Tree_valid(self) (0150.vpr@21.5--21.17) [195170]"}
+          assert {:msg "  The precondition of method callee might not hold. There might be insufficient permission to access Tree_valid(self) (0150.vpr@21.5--21.17) [83550]"}
             perm <= UnfoldingMask[null, Tree_valid(self)];
         }
         UnfoldingMask := UnfoldingMask[null, Tree_valid(self):=UnfoldingMask[null, Tree_valid(self)] - perm];
         perm := 1 / 10;
-        assert {:msg "  The precondition of method callee might not hold. Fraction 1 / 10 might be negative. (0150.vpr@21.5--21.17) [195171]"}
+        assert {:msg "  The precondition of method callee might not hold. Fraction 1 / 10 might be negative. (0150.vpr@21.5--21.17) [83551]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> self != null;
         UnfoldingMask := UnfoldingMask[self, Tree_height:=UnfoldingMask[self, Tree_height] + perm];
@@ -414,11 +414,11 @@ procedure test(self: Ref) returns ()
         // -- Free assumptions (exp module)
           Heap := Heap[null, Tree_valid#sm(self):=Heap[null, Tree_valid#sm(self)][self, Tree_height:=true]];
           assume state(Heap, Mask);
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method callee might not hold. There might be insufficient permission to access Tree_valid(self) (0150.vpr@21.5--21.17) [195172]"}
+        assert {:msg "  The precondition of method callee might not hold. There might be insufficient permission to access Tree_valid(self) (0150.vpr@21.5--21.17) [83552]"}
           perm <= Mask[null, Tree_valid(self)];
       }
       Mask := Mask[null, Tree_valid(self):=Mask[null, Tree_valid(self)] - perm];
@@ -428,22 +428,22 @@ procedure test(self: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
         assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-        ExhaleWellDef1Heap := UnfoldingHeap;
         ExhaleWellDef1Mask := UnfoldingMask;
+        ExhaleWellDef1Heap := UnfoldingHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  The precondition of method callee might not hold. There might be insufficient permission to access Tree_valid(self) (0150.vpr@21.5--21.17) [195173]"}
+          assert {:msg "  The precondition of method callee might not hold. There might be insufficient permission to access Tree_valid(self) (0150.vpr@21.5--21.17) [83553]"}
             perm <= UnfoldingMask[null, Tree_valid(self)];
         }
         UnfoldingMask := UnfoldingMask[null, Tree_valid(self):=UnfoldingMask[null, Tree_valid(self)] - perm];
         perm := 1 / 10;
-        assert {:msg "  The precondition of method callee might not hold. Fraction 1 / 10 might be negative. (0150.vpr@21.5--21.17) [195174]"}
+        assert {:msg "  The precondition of method callee might not hold. Fraction 1 / 10 might be negative. (0150.vpr@21.5--21.17) [83554]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> self != null;
         UnfoldingMask := UnfoldingMask[self, Tree_height:=UnfoldingMask[self, Tree_height] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  The precondition of method callee might not hold. Assertion self.Tree_height == 0 might not hold. (0150.vpr@21.5--21.17) [195175]"}
+      assert {:msg "  The precondition of method callee might not hold. Assertion self.Tree_height == 0 might not hold. (0150.vpr@21.5--21.17) [83555]"}
         Heap[self, Tree_height] == 0;
       
       // -- Free assumptions (exhale module)

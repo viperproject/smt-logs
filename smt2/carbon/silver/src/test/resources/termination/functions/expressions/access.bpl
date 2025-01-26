@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:47
+// Date:         2025-01-26 21:41:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/access.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/access-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -207,11 +207,11 @@ axiom !IsWandField(g);
 // ==================================================
 
 // Uninterpreted function definitions
-function  test1_1(Heap: HeapType, x: Ref): bool;
+function  test1(Heap: HeapType, x: Ref): bool;
 function  test1'(Heap: HeapType, x: Ref): bool;
 axiom (forall Heap: HeapType, x: Ref ::
-  { test1_1(Heap, x) }
-  test1_1(Heap, x) == test1'(Heap, x) && dummyFunction(test1#triggerStateless(x))
+  { test1(Heap, x) }
+  test1(Heap, x) == test1'(Heap, x) && dummyFunction(test1#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { test1'(Heap, x) }
@@ -220,8 +220,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), test1_1(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> test1_1(Heap, x) == nonTerminating(Heap, x)
+  { state(Heap, Mask), test1(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> test1(Heap, x) == nonTerminating(Heap, x)
 );
 
 // Framing axioms
@@ -278,11 +278,11 @@ procedure test1#definedness(x: Ref) returns (Result: bool)
 // ==================================================
 
 // Uninterpreted function definitions
-function  test2_1(Heap: HeapType, x: Ref): bool;
+function  test2(Heap: HeapType, x: Ref): bool;
 function  test2'(Heap: HeapType, x: Ref): bool;
 axiom (forall Heap: HeapType, x: Ref ::
-  { test2_1(Heap, x) }
-  test2_1(Heap, x) == test2'(Heap, x) && dummyFunction(test2#triggerStateless(x))
+  { test2(Heap, x) }
+  test2(Heap, x) == test2'(Heap, x) && dummyFunction(test2#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { test2'(Heap, x) }
@@ -291,8 +291,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), test2_1(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test2_1(Heap, x) == nonTerminating(Heap, x)
+  { state(Heap, Mask), test2(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test2(Heap, x) == nonTerminating(Heap, x)
 );
 
 // Framing axioms
@@ -432,7 +432,7 @@ procedure test1_termination_proof(x: Ref) returns ()
   // -- Translating statement: assert false -- <no position>
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223199]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [17990]"}
       false;
     assume state(Heap, Mask);
 }
@@ -546,7 +546,7 @@ procedure test2_termination_proof(x: Ref) returns ()
   // -- Translating statement: assert false -- <no position>
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223203]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [17994]"}
       false;
     assume state(Heap, Mask);
 }

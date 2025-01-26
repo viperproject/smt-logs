@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:06:12
+// Date:         2025-01-26 21:45:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/shorthand_define.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/shorthand_define-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -289,16 +289,16 @@ axiom !IsWandField(f_7);
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   
@@ -310,14 +310,14 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert true --* true -- shorthand_define.vpr@11.3--11.17
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of true --* true
       if (*) {
@@ -327,8 +327,8 @@ procedure test01() returns ()
         
         // -- Translating statement: label lhs1 -- shorthand_define.vpr@11.10--11.17
           lhs1:
-          Labellhs1Mask := WandDefLHSMask;
           Labellhs1Heap := WandDefLHSHeap;
+          Labellhs1Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -336,7 +336,7 @@ procedure test01() returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Assert might fail. Magic wand instance not found. (shorthand_define.vpr@11.10--11.17) [126377]"}
+    assert {:msg "  Assert might fail. Magic wand instance not found. (shorthand_define.vpr@11.10--11.17) [214757]"}
       FullPerm <= AssertMask[null, wand(true, true)];
     AssertMask := AssertMask[null, wand(true, true):=AssertMask[null, wand(true, true)] - FullPerm];
     assume state(Heap, Mask);
@@ -349,29 +349,29 @@ procedure test01() returns ()
 procedure test02() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs2Mask: MaskType;
   var Labellhs2Heap: HeapType;
+  var Labellhs2Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs5Mask: MaskType;
   var Labellhs5Heap: HeapType;
+  var Labellhs5Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   
@@ -383,8 +383,8 @@ procedure test02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package true --* true {
   // } -- shorthand_define.vpr@19.3--19.18
@@ -402,8 +402,8 @@ procedure test02() returns ()
     
     // -- Translating statement: label lhs2 -- shorthand_define.vpr@19.11--19.18
       lhs2:
-      Labellhs2Mask := Ops_1Mask;
       Labellhs2Heap := Ops_1Heap;
+      Labellhs2Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationtrue
@@ -418,17 +418,17 @@ procedure test02() returns ()
   // -- Translating statement: apply true --* true -- shorthand_define.vpr@20.3--20.16
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_define.vpr@20.3--20.16) [126379]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_define.vpr@20.3--20.16) [214759]"}
         FullPerm <= Mask[null, wand(true, true)];
       Mask := Mask[null, wand(true, true):=Mask[null, wand(true, true)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -442,8 +442,8 @@ procedure test02() returns ()
   // -- Translating statement: assert true --* true -- shorthand_define.vpr@23.3--23.17
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of true --* true
       if (*) {
@@ -453,8 +453,8 @@ procedure test02() returns ()
         
         // -- Translating statement: label lhs5 -- shorthand_define.vpr@23.10--23.17
           lhs5:
-          Labellhs5Mask := WandDefLHSMask;
           Labellhs5Heap := WandDefLHSHeap;
+          Labellhs5Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -462,7 +462,7 @@ procedure test02() returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Assert might fail. Magic wand instance not found. (shorthand_define.vpr@23.10--23.17) [126381]"}
+    assert {:msg "  Assert might fail. Magic wand instance not found. (shorthand_define.vpr@23.10--23.17) [214761]"}
       FullPerm <= AssertMask[null, wand(true, true)];
     AssertMask := AssertMask[null, wand(true, true):=AssertMask[null, wand(true, true)] - FullPerm];
     assume state(Heap, Mask);
@@ -476,22 +476,22 @@ procedure test03(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_4: bool;
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_3: bool;
-  var Labellhs6Mask: MaskType;
   var Labellhs6Heap: HeapType;
+  var Labellhs6Mask: MaskType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_5: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -512,8 +512,8 @@ procedure test03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(x.f, write) --* true {
   // } -- shorthand_define.vpr@31.3--31.18
@@ -534,8 +534,8 @@ procedure test03(x: Ref) returns ()
     
     // -- Translating statement: label lhs6 -- shorthand_define.vpr@31.11--31.18
       lhs6:
-      Labellhs6Mask := Ops_3Mask;
       Labellhs6Heap := Ops_3Heap;
+      Labellhs6Mask := Ops_3Mask;
       b_4 := b_4 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationtrue
@@ -550,17 +550,17 @@ procedure test03(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(x.f, write) -- shorthand_define.vpr@34.3--34.16
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_define.vpr@34.3--34.16) [126383]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_define.vpr@34.3--34.16) [214763]"}
         FullPerm <= Mask[null, wand_2(true, x, FullPerm)];
       Mask := Mask[null, wand_2(true, x, FullPerm):=Mask[null, wand_2(true, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -583,14 +583,14 @@ procedure test03(x: Ref) returns ()
 procedure test04(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: Ref;
   var z: Ref;
   var perm: Perm;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -604,8 +604,8 @@ procedure test04(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -618,7 +618,7 @@ procedure test04(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == null
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (shorthand_define.vpr@41.10--41.20) [126387]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (shorthand_define.vpr@41.10--41.20) [214767]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == null;
     assume state(Heap, Mask);
@@ -637,33 +637,33 @@ procedure test04(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: y.f := z -- shorthand_define.vpr@45.3--45.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (shorthand_define.vpr@45.3--45.11) [126388]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (shorthand_define.vpr@45.3--45.11) [214768]"}
       FullPerm == Mask[y, f_7];
     Heap := Heap[y, f_7:=z];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(y.f, write) && y.f == z && acc(y.f.f, write) -- shorthand_define.vpr@46.3--46.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (shorthand_define.vpr@46.10--46.31) [126390]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (shorthand_define.vpr@46.10--46.31) [214770]"}
         perm <= Mask[y, f_7];
     }
     Mask := Mask[y, f_7:=Mask[y, f_7] - perm];
     
     // -- Check definedness of y.f == z
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (shorthand_define.vpr@46.10--46.31) [126391]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (shorthand_define.vpr@46.10--46.31) [214771]"}
         HasDirectPerm(ExhaleWellDef0Mask, y, f_7);
-    assert {:msg "  Exhale might fail. Assertion y.f == z might not hold. (shorthand_define.vpr@46.10--46.31) [126392]"}
+    assert {:msg "  Exhale might fail. Assertion y.f == z might not hold. (shorthand_define.vpr@46.10--46.31) [214772]"}
       Heap[y, f_7] == z;
     
     // -- Check definedness of acc(y.f.f, write)
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (shorthand_define.vpr@46.10--46.31) [126393]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (shorthand_define.vpr@46.10--46.31) [214773]"}
         HasDirectPerm(ExhaleWellDef0Mask, y, f_7);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f.f (shorthand_define.vpr@46.10--46.31) [126395]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f.f (shorthand_define.vpr@46.10--46.31) [214775]"}
         perm <= Mask[Heap[y, f_7], f_7];
     }
     Mask := Mask[Heap[y, f_7], f_7:=Mask[Heap[y, f_7], f_7] - perm];

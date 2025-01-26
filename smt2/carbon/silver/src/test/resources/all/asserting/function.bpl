@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:34
+// Date:         2025-01-26 21:43:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/function.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/function-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -253,11 +253,11 @@ procedure fplusone#definedness(x: Ref, y: Ref) returns (Result: int)
       // Exhale assertion of asserting
       ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
-      assert {:msg "  Function might not be well-formed. Assertion x != null might not hold. (function.vpr@6.1--10.2) [153265]"}
+      assert {:msg "  Function might not be well-formed. Assertion x != null might not hold. (function.vpr@6.1--10.2) [101861]"}
         x != null;
       
       // -- Check definedness of x.f + 1
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (function.vpr@6.1--10.2) [153266]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (function.vpr@6.1--10.2) [101862]"}
           HasDirectPerm(Mask, x, f_7);
   
   // -- Translate function body
@@ -332,11 +332,11 @@ procedure fplusone2#definedness(x: Ref, y: Ref) returns (Result: int)
       // Exhale assertion of asserting
       ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
-      assert {:msg "  Function might not be well-formed. Assertion x != y might not hold. (function.vpr@13.1--17.2) [153267]"}
+      assert {:msg "  Function might not be well-formed. Assertion x != y might not hold. (function.vpr@13.1--17.2) [101863]"}
         x != y;
       
       // -- Check definedness of x.f + 1
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (function.vpr@13.1--17.2) [153268]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (function.vpr@13.1--17.2) [101864]"}
           HasDirectPerm(Mask, x, f_7);
   
   // -- Translate function body
@@ -393,7 +393,7 @@ procedure main() returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fplusone might not hold. There might be insufficient permission to access x.f (function.vpr@25.10--25.24) [153269]"}
+        assert {:msg "  Precondition of function fplusone might not hold. There might be insufficient permission to access x.f (function.vpr@25.10--25.24) [101865]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -411,7 +411,7 @@ procedure main() returns ()
     // -- Check definedness of (asserting (hmm == x.f + 1) in hmm)
       
       // -- Check definedness of hmm == x.f + 1
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (function.vpr@26.3--26.43) [153270]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (function.vpr@26.3--26.43) [101866]"}
           HasDirectPerm(Mask, x, f_7);
       assertingHeap := Heap;
       assertingMask := Mask;
@@ -420,9 +420,9 @@ procedure main() returns ()
       ExhaleWellDef0Mask := assertingMask;
       
       // -- Check definedness of hmm == x.f + 1
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (function.vpr@26.3--26.43) [153271]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (function.vpr@26.3--26.43) [101867]"}
           HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Assignment might fail. Assertion hmm == x.f + 1 might not hold. (function.vpr@26.3--26.43) [153272]"}
+      assert {:msg "  Assignment might fail. Assertion hmm == x.f + 1 might not hold. (function.vpr@26.3--26.43) [101868]"}
         hmm == assertingHeap[x, f_7] + 1;
     hmm := hmm;
     assume state(Heap, Mask);
@@ -478,7 +478,7 @@ procedure main2() returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fplusone might not hold. There might be insufficient permission to access x.f (function.vpr@35.10--35.24) [153273]"}
+        assert {:msg "  Precondition of function fplusone might not hold. There might be insufficient permission to access x.f (function.vpr@35.10--35.24) [101869]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -496,7 +496,7 @@ procedure main2() returns ()
     // -- Check definedness of (asserting (hmm == x.f) in hmm)
       
       // -- Check definedness of hmm == x.f
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (function.vpr@37.3--37.39) [153274]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (function.vpr@37.3--37.39) [101870]"}
           HasDirectPerm(Mask, x, f_7);
       assertingHeap := Heap;
       assertingMask := Mask;
@@ -505,9 +505,9 @@ procedure main2() returns ()
       ExhaleWellDef0Mask := assertingMask;
       
       // -- Check definedness of hmm == x.f
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (function.vpr@37.3--37.39) [153275]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (function.vpr@37.3--37.39) [101871]"}
           HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Assignment might fail. Assertion hmm == x.f might not hold. (function.vpr@37.3--37.39) [153276]"}
+      assert {:msg "  Assignment might fail. Assertion hmm == x.f might not hold. (function.vpr@37.3--37.39) [101872]"}
         hmm == assertingHeap[x, f_7];
     hmm := hmm;
     assume state(Heap, Mask);

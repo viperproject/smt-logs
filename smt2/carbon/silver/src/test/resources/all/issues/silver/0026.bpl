@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:57
+// Date:         2025-01-26 21:42:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0026.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0026-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -398,7 +398,7 @@ procedure test0() returns ()
 // Translation of method test1
 // ==================================================
 
-procedure test1() returns ()
+procedure test1_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -429,7 +429,7 @@ procedure test1() returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2() returns ()
+procedure test2_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -459,7 +459,7 @@ procedure test2() returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3(in_something: int) returns ()
+procedure test3_1(in_something: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -481,7 +481,7 @@ procedure test3(in_something: int) returns ()
 // Translation of method test4
 // ==================================================
 
-procedure test4(inSomething: int) returns ()
+procedure test4_1(inSomething: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -503,7 +503,7 @@ procedure test4(inSomething: int) returns ()
 // Translation of method test5
 // ==================================================
 
-procedure test5() returns ()
+procedure test5_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;

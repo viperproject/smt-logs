@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:59:20
+// Date:         2025-01-26 21:44:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/ManyToOneAssert/interruptedRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/ManyToOneAssert/interruptedRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -214,9 +214,9 @@ procedure main() returns ()
   // -- Translating statement: assert b && (b && true) -- interruptedRef.vpr@9.5--9.27
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (interruptedRef.vpr@9.12--9.26) [92799]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (interruptedRef.vpr@9.12--9.26) [198591]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (interruptedRef.vpr@9.12--9.26) [92800]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (interruptedRef.vpr@9.12--9.26) [198592]"}
       b_24;
     assume state(Heap, Mask);
 }

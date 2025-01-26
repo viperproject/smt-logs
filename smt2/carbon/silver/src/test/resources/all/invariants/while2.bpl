@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:14:04
+// Date:         2025-01-26 21:43:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/while2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/while2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,10 +189,10 @@ procedure test00(x: Ref) returns (b_24: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -215,22 +215,22 @@ procedure test00(x: Ref) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (b) -- while2.vpr@9.3--13.4
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (b_24) {
           perm := 1 / 2;
-          assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (while2.vpr@10.15--10.34) [141699]"}
+          assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (while2.vpr@10.15--10.34) [86726]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not hold on entry. There might be insufficient permission to access x.f (while2.vpr@10.15--10.34) [141700]"}
+            assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not hold on entry. There might be insufficient permission to access x.f (while2.vpr@10.15--10.34) [86727]"}
               perm <= Mask[x, f_7];
           }
           Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -247,7 +247,7 @@ procedure test00(x: Ref) returns (b_24: bool)
       if (*) {
         if (b_24) {
           perm := 1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (while2.vpr@10.15--10.34) [141701]"}
+          assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (while2.vpr@10.15--10.34) [86728]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> x != null;
           Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -267,7 +267,7 @@ procedure test00(x: Ref) returns (b_24: bool)
         // Inhale invariant
         if (b_24) {
           perm := 1 / 2;
-          assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (while2.vpr@10.15--10.34) [141702]"}
+          assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (while2.vpr@10.15--10.34) [86729]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> x != null;
           Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -284,14 +284,14 @@ procedure test00(x: Ref) returns (b_24: bool)
             b_24 := !b_24;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (b_24) {
           perm := 1 / 2;
-          assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (while2.vpr@10.15--10.34) [141703]"}
+          assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (while2.vpr@10.15--10.34) [86730]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not be preserved. There might be insufficient permission to access x.f (while2.vpr@10.15--10.34) [141704]"}
+            assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not be preserved. There might be insufficient permission to access x.f (while2.vpr@10.15--10.34) [86731]"}
               perm <= Mask[x, f_7];
           }
           Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -309,7 +309,7 @@ procedure test00(x: Ref) returns (b_24: bool)
       assume state(Heap, Mask);
       if (b_24) {
         perm := 1 / 2;
-        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (while2.vpr@10.15--10.34) [141705]"}
+        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (while2.vpr@10.15--10.34) [86732]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> x != null;
         Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -319,9 +319,9 @@ procedure test00(x: Ref) returns (b_24: bool)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- while2.vpr@16.3--16.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (while2.vpr@16.10--16.15) [141706]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (while2.vpr@16.10--16.15) [86733]"}
       false;
     assume state(Heap, Mask);
 }
@@ -334,12 +334,12 @@ procedure test03(x: Ref) returns (b_24: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -362,8 +362,8 @@ procedure test03(x: Ref) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -383,14 +383,14 @@ procedure test03(x: Ref) returns (b_24: bool)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (b_24) {
           perm := 1 / 2;
-          assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (while2.vpr@25.15--25.34) [141707]"}
+          assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (while2.vpr@25.15--25.34) [86734]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not hold on entry. There might be insufficient permission to access x.f (while2.vpr@25.15--25.34) [141708]"}
+            assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not hold on entry. There might be insufficient permission to access x.f (while2.vpr@25.15--25.34) [86735]"}
               perm <= Mask[x, f_7];
           }
           Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -407,7 +407,7 @@ procedure test03(x: Ref) returns (b_24: bool)
       if (*) {
         if (b_24) {
           perm := 1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (while2.vpr@25.15--25.34) [141709]"}
+          assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (while2.vpr@25.15--25.34) [86736]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> x != null;
           Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -427,7 +427,7 @@ procedure test03(x: Ref) returns (b_24: bool)
         // Inhale invariant
         if (b_24) {
           perm := 1 / 2;
-          assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (while2.vpr@25.15--25.34) [141710]"}
+          assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (while2.vpr@25.15--25.34) [86737]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> x != null;
           Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -441,13 +441,13 @@ procedure test03(x: Ref) returns (b_24: bool)
         // -- Translate loop body
           
           // -- Translating statement: exhale acc(x.f, 1 / 2) -- while2.vpr@27.5--27.25
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := 1 / 2;
-            assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (while2.vpr@27.12--27.25) [141711]"}
+            assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (while2.vpr@27.12--27.25) [86738]"}
               perm >= NoPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (while2.vpr@27.12--27.25) [141712]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (while2.vpr@27.12--27.25) [86739]"}
                 perm <= Mask[x, f_7];
             }
             Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -461,14 +461,14 @@ procedure test03(x: Ref) returns (b_24: bool)
             b_24 := !b_24;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (b_24) {
           perm := 1 / 2;
-          assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (while2.vpr@25.15--25.34) [141713]"}
+          assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (while2.vpr@25.15--25.34) [86740]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not be preserved. There might be insufficient permission to access x.f (while2.vpr@25.15--25.34) [141714]"}
+            assert {:msg "  Loop invariant b ==> acc(x.f, 1 / 2) might not be preserved. There might be insufficient permission to access x.f (while2.vpr@25.15--25.34) [86741]"}
               perm <= Mask[x, f_7];
           }
           Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -486,7 +486,7 @@ procedure test03(x: Ref) returns (b_24: bool)
       assume state(Heap, Mask);
       if (b_24) {
         perm := 1 / 2;
-        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (while2.vpr@25.15--25.34) [141715]"}
+        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (while2.vpr@25.15--25.34) [86742]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> x != null;
         Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -496,11 +496,11 @@ procedure test03(x: Ref) returns (b_24: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of test03 might not hold. There might be insufficient permission to access x.f (while2.vpr@22.12--22.20) [141716]"}
+      assert {:msg "  Postcondition of test03 might not hold. There might be insufficient permission to access x.f (while2.vpr@22.12--22.20) [86743]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -518,10 +518,10 @@ procedure test01(x: Ref) returns (b_24: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -535,14 +535,14 @@ procedure test01(x: Ref) returns (b_24: bool)
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (while2.vpr@33.12--33.36) [141717]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (while2.vpr@33.12--33.36) [86744]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f > 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (while2.vpr@33.12--33.36) [141718]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (while2.vpr@33.12--33.36) [86745]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] > 0;
     assume state(Heap, Mask);
@@ -550,17 +550,17 @@ procedure test01(x: Ref) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (b) -- while2.vpr@35.3--42.4
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant x.f > 0 might not hold on entry. Assertion x.f > 0 might not hold. (while2.vpr@38.15--38.22) [141719]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant x.f > 0 might not hold on entry. Assertion x.f > 0 might not hold. (while2.vpr@38.15--38.22) [86746]"}
           Heap[x, f_7] > 0;
     
     // -- Havoc loop written variables (except locals)
@@ -570,7 +570,7 @@ procedure test01(x: Ref) returns (b_24: bool)
       if (*) {
         
         // -- Check definedness of x.f > 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (while2.vpr@38.15--38.22) [141720]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (while2.vpr@38.15--38.22) [86747]"}
             HasDirectPerm(Mask, x, f_7);
         assume Heap[x, f_7] > 0;
         assume state(Heap, Mask);
@@ -595,7 +595,7 @@ procedure test01(x: Ref) returns (b_24: bool)
           
           // -- Translating statement: inhale acc(x.f, 1 / 2) -- while2.vpr@40.5--40.25
             perm := 1 / 2;
-            assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (while2.vpr@40.12--40.25) [141721]"}
+            assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (while2.vpr@40.12--40.25) [86748]"}
               perm >= NoPerm;
             assume perm > NoPerm ==> x != null;
             Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -607,9 +607,9 @@ procedure test01(x: Ref) returns (b_24: bool)
             b_24 := !b_24;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant x.f > 0 might not be preserved. Assertion x.f > 0 might not hold. (while2.vpr@38.15--38.22) [141722]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant x.f > 0 might not be preserved. Assertion x.f > 0 might not hold. (while2.vpr@38.15--38.22) [86749]"}
           Heap[x, f_7] > 0;
         // Terminate execution
         assume false;
@@ -631,10 +631,10 @@ procedure test02(x: Ref) returns (b_24: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -656,11 +656,11 @@ procedure test02(x: Ref) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x.f := 1 -- while2.vpr@48.3--48.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (while2.vpr@48.3--48.11) [141723]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (while2.vpr@48.3--48.11) [86750]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=1];
     assume state(Heap, Mask);
@@ -670,8 +670,8 @@ procedure test02(x: Ref) returns (b_24: bool)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
     
     // -- Havoc loop written variables (except locals)
       havoc b_24;
@@ -694,7 +694,7 @@ procedure test02(x: Ref) returns (b_24: bool)
         // Check and assume guard
         
         // -- Check definedness of x.f > 0
-          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (while2.vpr@51.10--51.17) [141724]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access x.f (while2.vpr@51.10--51.17) [86751]"}
             HasDirectPerm(Mask, x, f_7);
         assume Heap[x, f_7] > 0;
         assume state(Heap, Mask);
@@ -705,8 +705,8 @@ procedure test02(x: Ref) returns (b_24: bool)
             b_24 := !b_24;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         // Terminate execution
         assume false;
       }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:14:16
+// Date:         2025-01-26 21:41:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/forpermFields.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/forpermFields-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_9: Ref, f_13: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_9, f_13] }
-  Heap[o_9, $allocated] ==> Heap[Heap[o_9, f_13], $allocated]
+axiom (forall o_49: Ref, f_30: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_49, f_30] }
+  Heap[o_49, $allocated] ==> Heap[Heap[o_49, f_30], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_10: Ref, f_14: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_10, f_14] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_10, f_14) ==> Heap[o_10, f_14] == ExhaleHeap[o_10, f_14]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_59: Ref, f_28: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_59, f_28] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_59, f_28) ==> Heap[o_59, f_28] == ExhaleHeap[o_59, f_28]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4), ExhaleHeap[null, PredicateMaskField(pm_f_4)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> Heap[null, PredicateMaskField(pm_f_4)] == ExhaleHeap[null, PredicateMaskField(pm_f_4)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_31), ExhaleHeap[null, PredicateMaskField(pm_f_31)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsPredicateField(pm_f_31) ==> Heap[null, PredicateMaskField(pm_f_31)] == ExhaleHeap[null, PredicateMaskField(pm_f_31)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_14: (Field A B) ::
-    { ExhaleHeap[o2_4, f_14] }
-    Heap[null, PredicateMaskField(pm_f_4)][o2_4, f_14] ==> Heap[o2_4, f_14] == ExhaleHeap[o2_4, f_14]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_31) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsPredicateField(pm_f_31) ==> (forall <A, B> o2_31: Ref, f_28: (Field A B) ::
+    { ExhaleHeap[o2_31, f_28] }
+    Heap[null, PredicateMaskField(pm_f_31)][o2_31, f_28] ==> Heap[o2_31, f_28] == ExhaleHeap[o2_31, f_28]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4), ExhaleHeap[null, WandMaskField(pm_f_4)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> Heap[null, WandMaskField(pm_f_4)] == ExhaleHeap[null, WandMaskField(pm_f_4)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_31), ExhaleHeap[null, WandMaskField(pm_f_31)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsWandField(pm_f_31) ==> Heap[null, WandMaskField(pm_f_31)] == ExhaleHeap[null, WandMaskField(pm_f_31)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_14: (Field A B) ::
-    { ExhaleHeap[o2_4, f_14] }
-    Heap[null, WandMaskField(pm_f_4)][o2_4, f_14] ==> Heap[o2_4, f_14] == ExhaleHeap[o2_4, f_14]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_31) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsWandField(pm_f_31) ==> (forall <A, B> o2_31: Ref, f_28: (Field A B) ::
+    { ExhaleHeap[o2_31, f_28] }
+    Heap[null, WandMaskField(pm_f_31)][o2_31, f_28] ==> Heap[o2_31, f_28] == ExhaleHeap[o2_31, f_28]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_10: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_10, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_10, $allocated] ==> ExhaleHeap[o_10, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_59: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_59, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_59, $allocated] ==> ExhaleHeap[o_59, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_9: Ref, f_15: (Field A B), v: B ::
-  { Heap[o_9, f_15:=v] }
-  succHeap(Heap, Heap[o_9, f_15:=v])
+axiom (forall <A, B> Heap: HeapType, o_49: Ref, f_70: (Field A B), v: B ::
+  { Heap[o_49, f_70:=v] }
+  succHeap(Heap, Heap[o_49, f_70:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -177,15 +177,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique f1_1: Field NormalField int;
-axiom !IsPredicateField(f1_1);
-axiom !IsWandField(f1_1);
-const unique f2_1: Field NormalField int;
-axiom !IsPredicateField(f2_1);
-axiom !IsWandField(f2_1);
-const unique f3: Field NormalField int;
-axiom !IsPredicateField(f3);
-axiom !IsWandField(f3);
+const unique f1_2: Field NormalField int;
+axiom !IsPredicateField(f1_2);
+axiom !IsWandField(f1_2);
+const unique f2_2: Field NormalField int;
+axiom !IsPredicateField(f2_2);
+axiom !IsWandField(f2_2);
+const unique f3_1: Field NormalField int;
+axiom !IsPredicateField(f3_1);
+axiom !IsWandField(f3_1);
 
 // ==================================================
 // Translation of method noFields
@@ -200,12 +200,12 @@ procedure noFields() returns ()
   var r2: Ref;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var r_36: Ref;
-  var r_27: Ref;
-  var r_28: Ref;
-  var r_38: Ref;
   var r_12: Ref;
-  var r_41: Ref;
+  var r_14: Ref;
+  var r_16: Ref;
+  var r_18: Ref;
+  var r_20: Ref;
+  var r_22: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -228,18 +228,18 @@ procedure noFields() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_36, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@12.10--12.43) [142611]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_36, f1_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@12.10--12.43) [142612]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_36, f1_1);
+        if (HasDirectPerm(Mask, r_12, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@12.10--12.43) [53472]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_12, f1_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@12.10--12.43) [53473]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_12, f1_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0) might not hold. (forpermFields.vpr@12.10--12.43) [142613]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0) might not hold. (forpermFields.vpr@12.10--12.43) [53474]"}
       (forall r_1_1: Ref ::
-      { Mask[r_1_1, f1_1] } { Heap[r_1_1, f1_1] }
-      HasDirectPerm(Mask, r_1_1, f1_1) ==> Heap[r_1_1, f1_1] > 0
+      { Mask[r_1_1, f1_2] } { Heap[r_1_1, f1_2] }
+      HasDirectPerm(Mask, r_1_1, f1_2) ==> Heap[r_1_1, f1_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -249,18 +249,18 @@ procedure noFields() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_27, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@13.10--13.43) [142614]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_27, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@13.10--13.43) [142615]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_27, f1_1);
+        if (HasDirectPerm(Mask, r_14, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@13.10--13.43) [53475]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_14, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@13.10--13.43) [53476]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_14, f1_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0) might not hold. (forpermFields.vpr@13.10--13.43) [142616]"}
-      (forall r_3_2: Ref ::
-      { Mask[r_3_2, f2_1] } { Heap[r_3_2, f2_1] }
-      HasDirectPerm(Mask, r_3_2, f2_1) ==> Heap[r_3_2, f1_1] > 0
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0) might not hold. (forpermFields.vpr@13.10--13.43) [53477]"}
+      (forall r_3: Ref ::
+      { Mask[r_3, f2_2] } { Heap[r_3, f2_2] }
+      HasDirectPerm(Mask, r_3, f2_2) ==> Heap[r_3, f1_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -270,18 +270,18 @@ procedure noFields() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f2 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_28, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@14.10--14.43) [142617]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_28, f1_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@14.10--14.43) [142618]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_28, f2_1);
+        if (HasDirectPerm(Mask, r_16, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@14.10--14.43) [53478]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_16, f1_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@14.10--14.43) [53479]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_16, f2_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f2 > 0) might not hold. (forpermFields.vpr@14.10--14.43) [142619]"}
-      (forall r_5: Ref ::
-      { Mask[r_5, f1_1] } { Heap[r_5, f1_1] }
-      HasDirectPerm(Mask, r_5, f1_1) ==> Heap[r_5, f2_1] > 0
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f2 > 0) might not hold. (forpermFields.vpr@14.10--14.43) [53480]"}
+      (forall r_5_1: Ref ::
+      { Mask[r_5_1, f1_2] } { Heap[r_5_1, f1_2] }
+      HasDirectPerm(Mask, r_5_1, f1_2) ==> Heap[r_5_1, f2_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -291,18 +291,18 @@ procedure noFields() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f2 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_38, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@15.10--15.43) [142620]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_38, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@15.10--15.43) [142621]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_38, f2_1);
+        if (HasDirectPerm(Mask, r_18, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@15.10--15.43) [53481]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_18, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@15.10--15.43) [53482]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_18, f2_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f2 > 0) might not hold. (forpermFields.vpr@15.10--15.43) [142622]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f2 > 0) might not hold. (forpermFields.vpr@15.10--15.43) [53483]"}
       (forall r_7: Ref ::
-      { Mask[r_7, f2_1] } { Heap[r_7, f2_1] }
-      HasDirectPerm(Mask, r_7, f2_1) ==> Heap[r_7, f2_1] > 0
+      { Mask[r_7, f2_2] } { Heap[r_7, f2_2] }
+      HasDirectPerm(Mask, r_7, f2_2) ==> Heap[r_7, f2_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -312,22 +312,22 @@ procedure noFields() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_12, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@16.10--16.55) [142623]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_12, f1_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@16.10--16.55) [142624]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_12, f1_1);
-          if (Heap[r_12, f1_1] > 0) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@16.10--16.55) [142625]"}
-              HasDirectPerm(ExhaleWellDef0Mask, r_12, f2_1);
+        if (HasDirectPerm(Mask, r_20, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@16.10--16.55) [53484]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_20, f1_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@16.10--16.55) [53485]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_20, f1_2);
+          if (Heap[r_20, f1_2] > 0) {
+            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@16.10--16.55) [53486]"}
+              HasDirectPerm(ExhaleWellDef0Mask, r_20, f2_2);
           }
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 > 0) might not hold. (forpermFields.vpr@16.10--16.55) [142626]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 > 0) might not hold. (forpermFields.vpr@16.10--16.55) [53487]"}
       (forall r_9: Ref ::
-      { Mask[r_9, f1_1] } { Heap[r_9, f1_1] }
-      HasDirectPerm(Mask, r_9, f1_1) ==> Heap[r_9, f1_1] > 0 && Heap[r_9, f2_1] > 0
+      { Mask[r_9, f1_2] } { Heap[r_9, f1_2] }
+      HasDirectPerm(Mask, r_9, f1_2) ==> Heap[r_9, f1_2] > 0 && Heap[r_9, f2_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -337,22 +337,22 @@ procedure noFields() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_41, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@17.10--17.55) [142627]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_41, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@17.10--17.55) [142628]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_41, f1_1);
-          if (Heap[r_41, f1_1] > 0) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@17.10--17.55) [142629]"}
-              HasDirectPerm(ExhaleWellDef0Mask, r_41, f2_1);
+        if (HasDirectPerm(Mask, r_22, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@17.10--17.55) [53488]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_22, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@17.10--17.55) [53489]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_22, f1_2);
+          if (Heap[r_22, f1_2] > 0) {
+            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@17.10--17.55) [53490]"}
+              HasDirectPerm(ExhaleWellDef0Mask, r_22, f2_2);
           }
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 > 0) might not hold. (forpermFields.vpr@17.10--17.55) [142630]"}
-      (forall r_11_2: Ref ::
-      { Mask[r_11_2, f2_1] } { Heap[r_11_2, f2_1] }
-      HasDirectPerm(Mask, r_11_2, f2_1) ==> Heap[r_11_2, f1_1] > 0 && Heap[r_11_2, f2_1] > 0
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 > 0) might not hold. (forpermFields.vpr@17.10--17.55) [53491]"}
+      (forall r_11_1: Ref ::
+      { Mask[r_11_1, f2_2] } { Heap[r_11_1, f2_2] }
+      HasDirectPerm(Mask, r_11_1, f2_2) ==> Heap[r_11_1, f1_2] > 0 && Heap[r_11_1, f2_2] > 0
     );
     assume state(Heap, Mask);
 }
@@ -371,12 +371,12 @@ procedure noFields2() returns ()
   var perm: Perm;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var r_24: Ref;
+  var r_26: Ref;
+  var r_28: Ref;
   var r_30: Ref;
   var r_32: Ref;
-  var r_42: Ref;
-  var r_13: Ref;
-  var r_15: Ref;
-  var r_45: Ref;
+  var r_34: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -396,7 +396,7 @@ procedure noFields2() returns ()
   // -- Translating statement: inhale acc(r1.f3, write) -- forpermFields.vpr@24.3--24.20
     perm := FullPerm;
     assume r1 != null;
-    Mask := Mask[r1, f3:=Mask[r1, f3] + perm];
+    Mask := Mask[r1, f3_1:=Mask[r1, f3_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -407,18 +407,18 @@ procedure noFields2() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_30, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@25.10--25.43) [142632]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_30, f1_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@25.10--25.43) [142633]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_30, f1_1);
+        if (HasDirectPerm(Mask, r_24, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@25.10--25.43) [53493]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_24, f1_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@25.10--25.43) [53494]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_24, f1_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0) might not hold. (forpermFields.vpr@25.10--25.43) [142634]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0) might not hold. (forpermFields.vpr@25.10--25.43) [53495]"}
       (forall r_1_1: Ref ::
-      { Mask[r_1_1, f1_1] } { Heap[r_1_1, f1_1] }
-      HasDirectPerm(Mask, r_1_1, f1_1) ==> Heap[r_1_1, f1_1] > 0
+      { Mask[r_1_1, f1_2] } { Heap[r_1_1, f1_2] }
+      HasDirectPerm(Mask, r_1_1, f1_2) ==> Heap[r_1_1, f1_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -428,18 +428,18 @@ procedure noFields2() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_32, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@26.10--26.43) [142635]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_32, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@26.10--26.43) [142636]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_32, f1_1);
+        if (HasDirectPerm(Mask, r_26, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@26.10--26.43) [53496]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_26, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@26.10--26.43) [53497]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_26, f1_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0) might not hold. (forpermFields.vpr@26.10--26.43) [142637]"}
-      (forall r_3_2: Ref ::
-      { Mask[r_3_2, f2_1] } { Heap[r_3_2, f2_1] }
-      HasDirectPerm(Mask, r_3_2, f2_1) ==> Heap[r_3_2, f1_1] > 0
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0) might not hold. (forpermFields.vpr@26.10--26.43) [53498]"}
+      (forall r_3: Ref ::
+      { Mask[r_3, f2_2] } { Heap[r_3, f2_2] }
+      HasDirectPerm(Mask, r_3, f2_2) ==> Heap[r_3, f1_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -449,18 +449,18 @@ procedure noFields2() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f2 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_42, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@27.10--27.43) [142638]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_42, f1_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@27.10--27.43) [142639]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_42, f2_1);
+        if (HasDirectPerm(Mask, r_28, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@27.10--27.43) [53499]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_28, f1_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@27.10--27.43) [53500]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_28, f2_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f2 > 0) might not hold. (forpermFields.vpr@27.10--27.43) [142640]"}
-      (forall r_5: Ref ::
-      { Mask[r_5, f1_1] } { Heap[r_5, f1_1] }
-      HasDirectPerm(Mask, r_5, f1_1) ==> Heap[r_5, f2_1] > 0
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f2 > 0) might not hold. (forpermFields.vpr@27.10--27.43) [53501]"}
+      (forall r_5_1: Ref ::
+      { Mask[r_5_1, f1_2] } { Heap[r_5_1, f1_2] }
+      HasDirectPerm(Mask, r_5_1, f1_2) ==> Heap[r_5_1, f2_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -470,18 +470,18 @@ procedure noFields2() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f2 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_13, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@28.10--28.43) [142641]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_13, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@28.10--28.43) [142642]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_13, f2_1);
+        if (HasDirectPerm(Mask, r_30, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@28.10--28.43) [53502]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_30, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@28.10--28.43) [53503]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_30, f2_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f2 > 0) might not hold. (forpermFields.vpr@28.10--28.43) [142643]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f2 > 0) might not hold. (forpermFields.vpr@28.10--28.43) [53504]"}
       (forall r_7: Ref ::
-      { Mask[r_7, f2_1] } { Heap[r_7, f2_1] }
-      HasDirectPerm(Mask, r_7, f2_1) ==> Heap[r_7, f2_1] > 0
+      { Mask[r_7, f2_2] } { Heap[r_7, f2_2] }
+      HasDirectPerm(Mask, r_7, f2_2) ==> Heap[r_7, f2_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -491,22 +491,22 @@ procedure noFields2() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_15, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@29.10--29.55) [142644]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_15, f1_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@29.10--29.55) [142645]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_15, f1_1);
-          if (Heap[r_15, f1_1] > 0) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@29.10--29.55) [142646]"}
-              HasDirectPerm(ExhaleWellDef0Mask, r_15, f2_1);
+        if (HasDirectPerm(Mask, r_32, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@29.10--29.55) [53505]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_32, f1_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@29.10--29.55) [53506]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_32, f1_2);
+          if (Heap[r_32, f1_2] > 0) {
+            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@29.10--29.55) [53507]"}
+              HasDirectPerm(ExhaleWellDef0Mask, r_32, f2_2);
           }
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 > 0) might not hold. (forpermFields.vpr@29.10--29.55) [142647]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 > 0) might not hold. (forpermFields.vpr@29.10--29.55) [53508]"}
       (forall r_9: Ref ::
-      { Mask[r_9, f1_1] } { Heap[r_9, f1_1] }
-      HasDirectPerm(Mask, r_9, f1_1) ==> Heap[r_9, f1_1] > 0 && Heap[r_9, f2_1] > 0
+      { Mask[r_9, f1_2] } { Heap[r_9, f1_2] }
+      HasDirectPerm(Mask, r_9, f1_2) ==> Heap[r_9, f1_2] > 0 && Heap[r_9, f2_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -516,22 +516,22 @@ procedure noFields2() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_45, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@30.10--30.55) [142648]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_45, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@30.10--30.55) [142649]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_45, f1_1);
-          if (Heap[r_45, f1_1] > 0) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@30.10--30.55) [142650]"}
-              HasDirectPerm(ExhaleWellDef0Mask, r_45, f2_1);
+        if (HasDirectPerm(Mask, r_34, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@30.10--30.55) [53509]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_34, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@30.10--30.55) [53510]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_34, f1_2);
+          if (Heap[r_34, f1_2] > 0) {
+            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@30.10--30.55) [53511]"}
+              HasDirectPerm(ExhaleWellDef0Mask, r_34, f2_2);
           }
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 > 0) might not hold. (forpermFields.vpr@30.10--30.55) [142651]"}
-      (forall r_11_2: Ref ::
-      { Mask[r_11_2, f2_1] } { Heap[r_11_2, f2_1] }
-      HasDirectPerm(Mask, r_11_2, f2_1) ==> Heap[r_11_2, f1_1] > 0 && Heap[r_11_2, f2_1] > 0
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 > 0) might not hold. (forpermFields.vpr@30.10--30.55) [53512]"}
+      (forall r_11_1: Ref ::
+      { Mask[r_11_1, f2_2] } { Heap[r_11_1, f2_2] }
+      HasDirectPerm(Mask, r_11_1, f2_2) ==> Heap[r_11_1, f1_2] > 0 && Heap[r_11_1, f2_2] > 0
     );
     assume state(Heap, Mask);
 }
@@ -550,9 +550,9 @@ procedure permOnlyOneField() returns ()
   var perm: Perm;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var r_18: Ref;
-  var r_46: Ref;
-  var r_21: Ref;
+  var r_36: Ref;
+  var r_38: Ref;
+  var r_40: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -572,13 +572,13 @@ procedure permOnlyOneField() returns ()
   // -- Translating statement: inhale acc(r1.f1, write) && r1.f1 > 0 -- forpermFields.vpr@37.3--37.33
     perm := FullPerm;
     assume r1 != null;
-    Mask := Mask[r1, f1_1:=Mask[r1, f1_1] + perm];
+    Mask := Mask[r1, f1_2:=Mask[r1, f1_2] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of r1.f1 > 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f1 (forpermFields.vpr@37.10--37.33) [142653]"}
-        HasDirectPerm(Mask, r1, f1_1);
-    assume Heap[r1, f1_1] > 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f1 (forpermFields.vpr@37.10--37.33) [53514]"}
+        HasDirectPerm(Mask, r1, f1_2);
+    assume Heap[r1, f1_2] > 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -588,18 +588,18 @@ procedure permOnlyOneField() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_18, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@38.10--38.43) [142654]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_18, f1_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@38.10--38.43) [142655]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_18, f1_1);
+        if (HasDirectPerm(Mask, r_36, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@38.10--38.43) [53515]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_36, f1_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@38.10--38.43) [53516]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_36, f1_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0) might not hold. (forpermFields.vpr@38.10--38.43) [142656]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0) might not hold. (forpermFields.vpr@38.10--38.43) [53517]"}
       (forall r_1_1: Ref ::
-      { Mask[r_1_1, f1_1] } { Heap[r_1_1, f1_1] }
-      HasDirectPerm(Mask, r_1_1, f1_1) ==> Heap[r_1_1, f1_1] > 0
+      { Mask[r_1_1, f1_2] } { Heap[r_1_1, f1_2] }
+      HasDirectPerm(Mask, r_1_1, f1_2) ==> Heap[r_1_1, f1_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -609,18 +609,18 @@ procedure permOnlyOneField() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f2 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_46, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@39.10--39.43) [142657]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_46, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@39.10--39.43) [142658]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_46, f2_1);
+        if (HasDirectPerm(Mask, r_38, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@39.10--39.43) [53518]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_38, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@39.10--39.43) [53519]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_38, f2_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f2 > 0) might not hold. (forpermFields.vpr@39.10--39.43) [142659]"}
-      (forall r_3_2: Ref ::
-      { Mask[r_3_2, f2_1] } { Heap[r_3_2, f2_1] }
-      HasDirectPerm(Mask, r_3_2, f2_1) ==> Heap[r_3_2, f2_1] > 0
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f2 > 0) might not hold. (forpermFields.vpr@39.10--39.43) [53520]"}
+      (forall r_3: Ref ::
+      { Mask[r_3, f2_2] } { Heap[r_3, f2_2] }
+      HasDirectPerm(Mask, r_3, f2_2) ==> Heap[r_3, f2_2] > 0
     );
     assume state(Heap, Mask);
   
@@ -630,18 +630,18 @@ procedure permOnlyOneField() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0)
       if (*) {
-        if (HasDirectPerm(Mask, r_21, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@40.10--40.43) [142660]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_21, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@40.10--40.43) [142661]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_21, f1_1);
+        if (HasDirectPerm(Mask, r_40, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@40.10--40.43) [53521]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_40, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@40.10--40.43) [53522]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_40, f1_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0) might not hold. (forpermFields.vpr@40.10--40.43) [142662]"}
-      (forall r_5: Ref ::
-      { Mask[r_5, f2_1] } { Heap[r_5, f2_1] }
-      HasDirectPerm(Mask, r_5, f2_1) ==> Heap[r_5, f1_1] > 0
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0) might not hold. (forpermFields.vpr@40.10--40.43) [53523]"}
+      (forall r_5_1: Ref ::
+      { Mask[r_5_1, f2_2] } { Heap[r_5_1, f2_2] }
+      HasDirectPerm(Mask, r_5_1, f2_2) ==> Heap[r_5_1, f1_2] > 0
     );
     assume state(Heap, Mask);
 }
@@ -660,8 +660,8 @@ procedure permOnlyOneField1() returns ()
   var perm: Perm;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var r_50: Ref;
-  var r_23: Ref;
+  var r_42: Ref;
+  var r_44: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -681,13 +681,13 @@ procedure permOnlyOneField1() returns ()
   // -- Translating statement: inhale acc(r1.f1, write) && r1.f1 > 0 -- forpermFields.vpr@47.3--47.33
     perm := FullPerm;
     assume r1 != null;
-    Mask := Mask[r1, f1_1:=Mask[r1, f1_1] + perm];
+    Mask := Mask[r1, f1_2:=Mask[r1, f1_2] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of r1.f1 > 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f1 (forpermFields.vpr@47.10--47.33) [142664]"}
-        HasDirectPerm(Mask, r1, f1_1);
-    assume Heap[r1, f1_1] > 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f1 (forpermFields.vpr@47.10--47.33) [53525]"}
+        HasDirectPerm(Mask, r1, f1_2);
+    assume Heap[r1, f1_2] > 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -697,20 +697,20 @@ procedure permOnlyOneField1() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f2 >= r.f2)
       if (*) {
-        if (HasDirectPerm(Mask, r_50, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@49.10--49.47) [142665]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_50, f1_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@49.10--49.47) [142666]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_50, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@49.10--49.47) [142667]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_50, f2_1);
+        if (HasDirectPerm(Mask, r_42, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@49.10--49.47) [53526]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_42, f1_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@49.10--49.47) [53527]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_42, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@49.10--49.47) [53528]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_42, f2_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f2 >= r.f2) might not hold. (forpermFields.vpr@49.10--49.47) [142668]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f2 >= r.f2) might not hold. (forpermFields.vpr@49.10--49.47) [53529]"}
       (forall r_1_1: Ref ::
-      { Mask[r_1_1, f1_1] } { Heap[r_1_1, f1_1] }
-      HasDirectPerm(Mask, r_1_1, f1_1) ==> Heap[r_1_1, f2_1] >= Heap[r_1_1, f2_1]
+      { Mask[r_1_1, f1_2] } { Heap[r_1_1, f1_2] }
+      HasDirectPerm(Mask, r_1_1, f1_2) ==> Heap[r_1_1, f2_2] >= Heap[r_1_1, f2_2]
     );
     assume state(Heap, Mask);
   
@@ -720,20 +720,20 @@ procedure permOnlyOneField1() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f2 >= r.f2)
       if (*) {
-        if (HasDirectPerm(Mask, r_23, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@50.10--50.47) [142669]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_23, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@50.10--50.47) [142670]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_23, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@50.10--50.47) [142671]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_23, f2_1);
+        if (HasDirectPerm(Mask, r_44, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@50.10--50.47) [53530]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_44, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@50.10--50.47) [53531]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_44, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@50.10--50.47) [53532]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_44, f2_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f2 >= r.f2) might not hold. (forpermFields.vpr@50.10--50.47) [142672]"}
-      (forall r_3_2: Ref ::
-      { Mask[r_3_2, f2_1] } { Heap[r_3_2, f2_1] }
-      HasDirectPerm(Mask, r_3_2, f2_1) ==> Heap[r_3_2, f2_1] >= Heap[r_3_2, f2_1]
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f2 >= r.f2) might not hold. (forpermFields.vpr@50.10--50.47) [53533]"}
+      (forall r_3: Ref ::
+      { Mask[r_3, f2_2] } { Heap[r_3, f2_2] }
+      HasDirectPerm(Mask, r_3, f2_2) ==> Heap[r_3, f2_2] >= Heap[r_3, f2_2]
     );
     assume state(Heap, Mask);
 }
@@ -752,8 +752,8 @@ procedure permOnlyOneField2() returns ()
   var perm: Perm;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var r_5: Ref;
   var r_10: Ref;
-  var r_11: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -773,13 +773,13 @@ procedure permOnlyOneField2() returns ()
   // -- Translating statement: inhale acc(r1.f1, write) && r1.f1 > 0 -- forpermFields.vpr@57.3--57.33
     perm := FullPerm;
     assume r1 != null;
-    Mask := Mask[r1, f1_1:=Mask[r1, f1_1] + perm];
+    Mask := Mask[r1, f1_2:=Mask[r1, f1_2] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of r1.f1 > 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f1 (forpermFields.vpr@57.10--57.33) [142674]"}
-        HasDirectPerm(Mask, r1, f1_1);
-    assume Heap[r1, f1_1] > 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f1 (forpermFields.vpr@57.10--57.33) [53535]"}
+        HasDirectPerm(Mask, r1, f1_2);
+    assume Heap[r1, f1_2] > 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -789,24 +789,24 @@ procedure permOnlyOneField2() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 >= r.f2)
       if (*) {
-        if (HasDirectPerm(Mask, r_10, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@59.10--59.59) [142675]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_10, f1_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@59.10--59.59) [142676]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_10, f1_1);
-          if (Heap[r_10, f1_1] > 0) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@59.10--59.59) [142677]"}
-              HasDirectPerm(ExhaleWellDef0Mask, r_10, f2_1);
-            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@59.10--59.59) [142678]"}
-              HasDirectPerm(ExhaleWellDef0Mask, r_10, f2_1);
+        if (HasDirectPerm(Mask, r_5, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@59.10--59.59) [53536]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_5, f1_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@59.10--59.59) [53537]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_5, f1_2);
+          if (Heap[r_5, f1_2] > 0) {
+            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@59.10--59.59) [53538]"}
+              HasDirectPerm(ExhaleWellDef0Mask, r_5, f2_2);
+            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@59.10--59.59) [53539]"}
+              HasDirectPerm(ExhaleWellDef0Mask, r_5, f2_2);
           }
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 >= r.f2) might not hold. (forpermFields.vpr@59.10--59.59) [142679]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 >= r.f2) might not hold. (forpermFields.vpr@59.10--59.59) [53540]"}
       (forall r_1_1: Ref ::
-      { Mask[r_1_1, f1_1] } { Heap[r_1_1, f1_1] }
-      HasDirectPerm(Mask, r_1_1, f1_1) ==> Heap[r_1_1, f1_1] > 0 && Heap[r_1_1, f2_1] >= Heap[r_1_1, f2_1]
+      { Mask[r_1_1, f1_2] } { Heap[r_1_1, f1_2] }
+      HasDirectPerm(Mask, r_1_1, f1_2) ==> Heap[r_1_1, f1_2] > 0 && Heap[r_1_1, f2_2] >= Heap[r_1_1, f2_2]
     );
     assume state(Heap, Mask);
   
@@ -816,24 +816,24 @@ procedure permOnlyOneField2() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 >= r.f2)
       if (*) {
-        if (HasDirectPerm(Mask, r_11, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@60.10--60.59) [142680]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_11, f2_1);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@60.10--60.59) [142681]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_11, f1_1);
-          if (Heap[r_11, f1_1] > 0) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@60.10--60.59) [142682]"}
-              HasDirectPerm(ExhaleWellDef0Mask, r_11, f2_1);
-            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@60.10--60.59) [142683]"}
-              HasDirectPerm(ExhaleWellDef0Mask, r_11, f2_1);
+        if (HasDirectPerm(Mask, r_10, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@60.10--60.59) [53541]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_10, f2_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@60.10--60.59) [53542]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_10, f1_2);
+          if (Heap[r_10, f1_2] > 0) {
+            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@60.10--60.59) [53543]"}
+              HasDirectPerm(ExhaleWellDef0Mask, r_10, f2_2);
+            assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@60.10--60.59) [53544]"}
+              HasDirectPerm(ExhaleWellDef0Mask, r_10, f2_2);
           }
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 >= r.f2) might not hold. (forpermFields.vpr@60.10--60.59) [142684]"}
-      (forall r_3_2: Ref ::
-      { Mask[r_3_2, f2_1] } { Heap[r_3_2, f2_1] }
-      HasDirectPerm(Mask, r_3_2, f2_1) ==> Heap[r_3_2, f1_1] > 0 && Heap[r_3_2, f2_1] >= Heap[r_3_2, f2_1]
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 >= r.f2) might not hold. (forpermFields.vpr@60.10--60.59) [53545]"}
+      (forall r_3: Ref ::
+      { Mask[r_3, f2_2] } { Heap[r_3, f2_2] }
+      HasDirectPerm(Mask, r_3, f2_2) ==> Heap[r_3, f1_2] > 0 && Heap[r_3, f2_2] >= Heap[r_3, f2_2]
     );
     assume state(Heap, Mask);
 }
@@ -851,8 +851,8 @@ procedure permCheck1() returns ()
   var r2: Ref;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var r_24: Ref;
-  var r_26: Ref;
+  var r_45: Ref;
+  var r_46: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -875,16 +875,16 @@ procedure permCheck1() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: false)
       if (*) {
-        if (HasDirectPerm(Mask, r_24, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@67.10--67.40) [142685]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_24, f1_1);
+        if (HasDirectPerm(Mask, r_45, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@67.10--67.40) [53546]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_45, f1_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: false) might not hold. (forpermFields.vpr@67.10--67.40) [142686]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: false) might not hold. (forpermFields.vpr@67.10--67.40) [53547]"}
       (forall r_1_1: Ref ::
-      { Mask[r_1_1, f1_1] } { Heap[r_1_1, f1_1] }
-      HasDirectPerm(Mask, r_1_1, f1_1) ==> false
+      { Mask[r_1_1, f1_2] } { Heap[r_1_1, f1_2] }
+      HasDirectPerm(Mask, r_1_1, f1_2) ==> false
     );
     assume state(Heap, Mask);
   
@@ -894,16 +894,16 @@ procedure permCheck1() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: false)
       if (*) {
-        if (HasDirectPerm(Mask, r_26, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@68.10--68.40) [142687]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_26, f2_1);
+        if (HasDirectPerm(Mask, r_46, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@68.10--68.40) [53548]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_46, f2_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: false) might not hold. (forpermFields.vpr@68.10--68.40) [142688]"}
-      (forall r_3_2: Ref ::
-      { Mask[r_3_2, f2_1] } { Heap[r_3_2, f2_1] }
-      HasDirectPerm(Mask, r_3_2, f2_1) ==> false
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: false) might not hold. (forpermFields.vpr@68.10--68.40) [53549]"}
+      (forall r_3: Ref ::
+      { Mask[r_3, f2_2] } { Heap[r_3, f2_2] }
+      HasDirectPerm(Mask, r_3, f2_2) ==> false
     );
     assume state(Heap, Mask);
 }
@@ -922,8 +922,8 @@ procedure permCheck2() returns ()
   var perm: Perm;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var r_53: Ref;
-  var r_56: Ref;
+  var r_47: Ref;
+  var r_48: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -943,7 +943,7 @@ procedure permCheck2() returns ()
   // -- Translating statement: inhale acc(r1.f1, write) -- forpermFields.vpr@75.3--75.20
     perm := FullPerm;
     assume r1 != null;
-    Mask := Mask[r1, f1_1:=Mask[r1, f1_1] + perm];
+    Mask := Mask[r1, f1_2:=Mask[r1, f1_2] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -954,16 +954,16 @@ procedure permCheck2() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: false)
       if (*) {
-        if (HasDirectPerm(Mask, r_53, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@77.10--77.40) [142690]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_53, f1_1);
+        if (HasDirectPerm(Mask, r_47, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@77.10--77.40) [53551]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_47, f1_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: false) might not hold. (forpermFields.vpr@77.10--77.40) [142691]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: false) might not hold. (forpermFields.vpr@77.10--77.40) [53552]"}
       (forall r_1_1: Ref ::
-      { Mask[r_1_1, f1_1] } { Heap[r_1_1, f1_1] }
-      HasDirectPerm(Mask, r_1_1, f1_1) ==> false
+      { Mask[r_1_1, f1_2] } { Heap[r_1_1, f1_2] }
+      HasDirectPerm(Mask, r_1_1, f1_2) ==> false
     );
     assume state(Heap, Mask);
   
@@ -973,16 +973,16 @@ procedure permCheck2() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: false)
       if (*) {
-        if (HasDirectPerm(Mask, r_56, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@78.10--78.40) [142692]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_56, f2_1);
+        if (HasDirectPerm(Mask, r_48, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@78.10--78.40) [53553]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_48, f2_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: false) might not hold. (forpermFields.vpr@78.10--78.40) [142693]"}
-      (forall r_3_2: Ref ::
-      { Mask[r_3_2, f2_1] } { Heap[r_3_2, f2_1] }
-      HasDirectPerm(Mask, r_3_2, f2_1) ==> false
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: false) might not hold. (forpermFields.vpr@78.10--78.40) [53554]"}
+      (forall r_3: Ref ::
+      { Mask[r_3, f2_2] } { Heap[r_3, f2_2] }
+      HasDirectPerm(Mask, r_3, f2_2) ==> false
     );
     assume state(Heap, Mask);
 }
@@ -1002,8 +1002,8 @@ procedure permCheck3() returns ()
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var r_59: Ref;
-  var r_61: Ref;
+  var r_49: Ref;
+  var r_50: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1023,7 +1023,7 @@ procedure permCheck3() returns ()
   // -- Translating statement: inhale acc(r1.f1, write) -- forpermFields.vpr@85.3--85.20
     perm := FullPerm;
     assume r1 != null;
-    Mask := Mask[r1, f1_1:=Mask[r1, f1_1] + perm];
+    Mask := Mask[r1, f1_2:=Mask[r1, f1_2] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1033,10 +1033,10 @@ procedure permCheck3() returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f1 (forpermFields.vpr@86.10--86.20) [142696]"}
-        perm <= Mask[r1, f1_1];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f1 (forpermFields.vpr@86.10--86.20) [53557]"}
+        perm <= Mask[r1, f1_2];
     }
-    Mask := Mask[r1, f1_1:=Mask[r1, f1_1] - perm];
+    Mask := Mask[r1, f1_2:=Mask[r1, f1_2] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1049,16 +1049,16 @@ procedure permCheck3() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: false)
       if (*) {
-        if (HasDirectPerm(Mask, r_59, f1_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@87.10--87.40) [142697]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_59, f1_1);
+        if (HasDirectPerm(Mask, r_49, f1_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f1 (forpermFields.vpr@87.10--87.40) [53558]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_49, f1_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: false) might not hold. (forpermFields.vpr@87.10--87.40) [142698]"}
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f1] :: false) might not hold. (forpermFields.vpr@87.10--87.40) [53559]"}
       (forall r_1_1: Ref ::
-      { Mask[r_1_1, f1_1] } { Heap[r_1_1, f1_1] }
-      HasDirectPerm(Mask, r_1_1, f1_1) ==> false
+      { Mask[r_1_1, f1_2] } { Heap[r_1_1, f1_2] }
+      HasDirectPerm(Mask, r_1_1, f1_2) ==> false
     );
     assume state(Heap, Mask);
   
@@ -1068,16 +1068,16 @@ procedure permCheck3() returns ()
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: false)
       if (*) {
-        if (HasDirectPerm(Mask, r_61, f2_1)) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@88.10--88.40) [142699]"}
-            HasDirectPerm(ExhaleWellDef0Mask, r_61, f2_1);
+        if (HasDirectPerm(Mask, r_50, f2_2)) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access r.f2 (forpermFields.vpr@88.10--88.40) [53560]"}
+            HasDirectPerm(ExhaleWellDef0Mask, r_50, f2_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: false) might not hold. (forpermFields.vpr@88.10--88.40) [142700]"}
-      (forall r_3_2: Ref ::
-      { Mask[r_3_2, f2_1] } { Heap[r_3_2, f2_1] }
-      HasDirectPerm(Mask, r_3_2, f2_1) ==> false
+    assert {:msg "  Assert might fail. Assertion (forperm r: Ref [r.f2] :: false) might not hold. (forpermFields.vpr@88.10--88.40) [53561]"}
+      (forall r_3: Ref ::
+      { Mask[r_3, f2_2] } { Heap[r_3, f2_2] }
+      HasDirectPerm(Mask, r_3, f2_2) ==> false
     );
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:13
+// Date:         2025-01-26 21:43:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0067.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0067-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,15 +177,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of method t1
 // ==================================================
 
-procedure t1(this: Ref) returns ()
+procedure t1_2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -208,9 +208,9 @@ procedure t1(this: Ref) returns ()
         assume this != null;
         
         // -- Check definedness of this.x == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0067.vpr@16.12--16.47) [192348]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 0;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0067.vpr@16.12--16.47) [83211]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 0;
         assume state(Heap, Mask);
         assume false;
       }
@@ -218,7 +218,7 @@ procedure t1(this: Ref) returns ()
     // -- Normally inhale the inhale part.
       perm := FullPerm;
       assume this != null;
-      Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+      Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
       assume state(Heap, Mask);
@@ -269,7 +269,7 @@ procedure t3(this: Ref) returns ()
       if (*) {
         perm := FullPerm;
         assume this != null;
-        PostMask := PostMask[this, x_36:=PostMask[this, x_36] + perm];
+        PostMask := PostMask[this, x_42:=PostMask[this, x_42] + perm];
         assume state(PostHeap, PostMask);
         assume state(PostHeap, PostMask);
         assume state(PostHeap, PostMask);
@@ -281,9 +281,9 @@ procedure t3(this: Ref) returns ()
       assume this != null;
       
       // -- Check definedness of this.x == 0
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0067.vpr@30.11--30.46) [192349]"}
-          HasDirectPerm(PostMask, this, x_36);
-      assume PostHeap[this, x_36] == 0;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0067.vpr@30.11--30.46) [83212]"}
+          HasDirectPerm(PostMask, this, x_42);
+      assume PostHeap[this, x_42] == 0;
       assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -292,23 +292,23 @@ procedure t3(this: Ref) returns ()
   // -- Translating statement: inhale acc(this.x, write) && this.x == 0 -- 0067.vpr@32.3--32.36
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (0067.vpr@32.10--32.36) [192351]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 0;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.x (0067.vpr@32.10--32.36) [83214]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 0;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of t3 might not hold. Assertion this != null might not hold. (0067.vpr@30.11--30.46) [192352]"}
+    assert {:msg "  Postcondition of t3 might not hold. Assertion this != null might not hold. (0067.vpr@30.11--30.46) [83215]"}
       this != null;
-    assert {:msg "  Postcondition of t3 might not hold. Assertion this.x == 0 might not hold. (0067.vpr@30.11--30.46) [192353]"}
-      Heap[this, x_36] == 0;
+    assert {:msg "  Postcondition of t3 might not hold. Assertion this.x == 0 might not hold. (0067.vpr@30.11--30.46) [83216]"}
+      Heap[this, x_42] == 0;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

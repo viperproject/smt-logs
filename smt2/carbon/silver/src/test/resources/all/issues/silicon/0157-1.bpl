@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:18
+// Date:         2025-01-26 21:42:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0157-1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0157-1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -325,7 +325,7 @@ procedure Testfoo$(this: Ref, k$: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding TestV$(this) might fail. There might be insufficient permission to access TestV$(this) (0157-1.vpr@36.3--36.34) [204560]"}
+      assert {:msg "  Unfolding TestV$(this) might fail. There might be insufficient permission to access TestV$(this) (0157-1.vpr@36.3--36.34) [58214]"}
         perm <= Mask[null, TestV$(this)];
     }
     Mask := Mask[null, TestV$(this):=Mask[null, TestV$(this)] - perm];
@@ -345,9 +345,9 @@ procedure Testfoo$(this: Ref, k$: Perm) returns ()
   // -- Translating statement: this.Testx$ := this.Testx$ + 1 -- 0157-1.vpr@37.3--37.33
     
     // -- Check definedness of this.Testx$ + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.Testx$ (0157-1.vpr@37.3--37.33) [204562]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.Testx$ (0157-1.vpr@37.3--37.33) [58216]"}
         HasDirectPerm(Mask, this, Testx$);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.Testx$ (0157-1.vpr@37.3--37.33) [204563]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.Testx$ (0157-1.vpr@37.3--37.33) [58217]"}
       FullPerm == Mask[this, Testx$];
     Heap := Heap[this, Testx$:=Heap[this, Testx$] + 1];
     assume state(Heap, Mask);
@@ -357,7 +357,7 @@ procedure Testfoo$(this: Ref, k$: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding TestV$(this) might fail. There might be insufficient permission to access this.Testx$ (0157-1.vpr@38.3--38.32) [204566]"}
+      assert {:msg "  Folding TestV$(this) might fail. There might be insufficient permission to access this.Testx$ (0157-1.vpr@38.3--38.32) [58220]"}
         perm <= Mask[this, Testx$];
     }
     Mask := Mask[this, Testx$:=Mask[this, Testx$] - perm];
@@ -381,7 +381,7 @@ procedure Testfoo$(this: Ref, k$: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Testfoo$ might not hold. There might be insufficient permission to access TestV$(this) (0157-1.vpr@34.11--34.35) [204568]"}
+      assert {:msg "  Postcondition of Testfoo$ might not hold. There might be insufficient permission to access TestV$(this) (0157-1.vpr@34.11--34.35) [58222]"}
         perm <= Mask[null, TestV$(this)];
     }
     Mask := Mask[null, TestV$(this):=Mask[null, TestV$(this)] - perm];
@@ -419,12 +419,12 @@ procedure TestBug(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Testtk$ != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@42.12--42.126) [204569]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@42.12--42.126) [58223]"}
         HasDirectPerm(Mask, this, Testtk$);
     assume Heap[this, Testtk$] != null;
     
     // -- Check definedness of acc(this.Testtk$.joinable$, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@42.12--42.126) [204570]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@42.12--42.126) [58224]"}
         HasDirectPerm(Mask, this, Testtk$);
     perm := FullPerm;
     assume Heap[this, Testtk$] != null;
@@ -432,9 +432,9 @@ procedure TestBug(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Testtk$.joinable$
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@42.12--42.126) [204571]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@42.12--42.126) [58225]"}
         HasDirectPerm(Mask, this, Testtk$);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$.joinable$ (0157-1.vpr@42.12--42.126) [204572]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$.joinable$ (0157-1.vpr@42.12--42.126) [58226]"}
         HasDirectPerm(Mask, Heap[this, Testtk$], joinable$);
     assume Heap[Heap[this, Testtk$], joinable$];
     assume state(Heap, Mask);
@@ -448,7 +448,7 @@ procedure TestBug(this: Ref, k$_1: Perm) returns ()
   // -- Translating statement: assert false -- 0157-1.vpr@45.3--45.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0157-1.vpr@45.10--45.15) [204573]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0157-1.vpr@45.10--45.15) [58227]"}
       false;
     assume state(Heap, Mask);
 }
@@ -481,13 +481,13 @@ procedure TestBug1(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Testtk$ != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@49.12--49.62) [204574]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@49.12--49.62) [58228]"}
         HasDirectPerm(Mask, this, Testtk$);
     assume Heap[this, Testtk$] != null;
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(this.Testtk$.joinable$, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@50.12--50.72) [204575]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@50.12--50.72) [58229]"}
         HasDirectPerm(Mask, this, Testtk$);
     perm := FullPerm;
     assume Heap[this, Testtk$] != null;
@@ -495,9 +495,9 @@ procedure TestBug1(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Testtk$.joinable$
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@50.12--50.72) [204576]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@50.12--50.72) [58230]"}
         HasDirectPerm(Mask, this, Testtk$);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$.joinable$ (0157-1.vpr@50.12--50.72) [204577]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$.joinable$ (0157-1.vpr@50.12--50.72) [58231]"}
         HasDirectPerm(Mask, Heap[this, Testtk$], joinable$);
     assume Heap[Heap[this, Testtk$], joinable$];
     assume state(Heap, Mask);
@@ -511,7 +511,7 @@ procedure TestBug1(this: Ref, k$_1: Perm) returns ()
   // -- Translating statement: assert false -- 0157-1.vpr@53.3--53.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0157-1.vpr@53.10--53.15) [204578]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0157-1.vpr@53.10--53.15) [58232]"}
       false;
     assume state(Heap, Mask);
 }
@@ -555,12 +555,12 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Testtk$ != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@60.12--60.126) [204579]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@60.12--60.126) [58233]"}
         HasDirectPerm(Mask, this, Testtk$);
     assume Heap[this, Testtk$] != null;
     
     // -- Check definedness of acc(this.Testtk$.joinable$, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@60.12--60.126) [204580]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@60.12--60.126) [58234]"}
         HasDirectPerm(Mask, this, Testtk$);
     perm := FullPerm;
     assume Heap[this, Testtk$] != null;
@@ -568,9 +568,9 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.Testtk$.joinable$
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@60.12--60.126) [204581]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@60.12--60.126) [58235]"}
         HasDirectPerm(Mask, this, Testtk$);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$.joinable$ (0157-1.vpr@60.12--60.126) [204582]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.Testtk$.joinable$ (0157-1.vpr@60.12--60.126) [58236]"}
         HasDirectPerm(Mask, Heap[this, Testtk$], joinable$);
     assume Heap[Heap[this, Testtk$], joinable$];
     assume state(Heap, Mask);
@@ -598,20 +598,20 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.Testtk$.joinable$
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@63.10--63.32) [204583]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@63.10--63.32) [58237]"}
         HasDirectPerm(ExhaleWellDef0Mask, this, Testtk$);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.Testtk$.joinable$ (0157-1.vpr@63.10--63.32) [204584]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.Testtk$.joinable$ (0157-1.vpr@63.10--63.32) [58238]"}
         HasDirectPerm(ExhaleWellDef0Mask, Heap[this, Testtk$], joinable$);
-    assert {:msg "  Assert might fail. Assertion this.Testtk$.joinable$ might not hold. (0157-1.vpr@63.10--63.32) [204585]"}
+    assert {:msg "  Assert might fail. Assertion this.Testtk$.joinable$ might not hold. (0157-1.vpr@63.10--63.32) [58239]"}
       Heap[Heap[this, Testtk$], joinable$];
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale true && acc(TestV$(this.Testtk$.par$Testfoo$this$_2), write) -- 0157-1.vpr@65.3--65.70
     
     // -- Check definedness of acc(TestV$(this.Testtk$.par$Testfoo$this$_2), write)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@65.10--65.70) [204586]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@65.10--65.70) [58240]"}
         HasDirectPerm(Mask, this, Testtk$);
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.Testtk$.par$Testfoo$this$_2 (0157-1.vpr@65.10--65.70) [204587]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.Testtk$.par$Testfoo$this$_2 (0157-1.vpr@65.10--65.70) [58241]"}
         HasDirectPerm(Mask, Heap[this, Testtk$], par$Testfoo$this$_2);
     perm := FullPerm;
     Mask := Mask[null, TestV$(Heap[Heap[this, Testtk$], par$Testfoo$this$_2]):=Mask[null, TestV$(Heap[Heap[this, Testtk$], par$Testfoo$this$_2])] + perm];
@@ -622,9 +622,9 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
   // -- Translating statement: this.Testtk$.joinable$ := false -- 0157-1.vpr@66.3--66.34
     
     // -- Check definedness of this.Testtk$
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@66.3--66.34) [204589]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@66.3--66.34) [58243]"}
         HasDirectPerm(Mask, this, Testtk$);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.Testtk$.joinable$ (0157-1.vpr@66.3--66.34) [204590]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.Testtk$.joinable$ (0157-1.vpr@66.3--66.34) [58244]"}
       FullPerm == Mask[Heap[this, Testtk$], joinable$];
     Heap := Heap[Heap[this, Testtk$], joinable$:=false];
     assume state(Heap, Mask);
@@ -636,7 +636,7 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
     ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access TestV$(this) (0157-1.vpr@67.10--67.34) [204592]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access TestV$(this) (0157-1.vpr@67.10--67.34) [58246]"}
         perm <= AssertMask[null, TestV$(this)];
     }
     AssertMask := AssertMask[null, TestV$(this):=AssertMask[null, TestV$(this)] - perm];
@@ -647,7 +647,7 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of TestjoinTk$ might not hold. There might be insufficient permission to access TestV$(this) (0157-1.vpr@61.11--61.35) [204593]"}
+      assert {:msg "  Postcondition of TestjoinTk$ might not hold. There might be insufficient permission to access TestV$(this) (0157-1.vpr@61.11--61.35) [58247]"}
         perm <= Mask[null, TestV$(this)];
     }
     Mask := Mask[null, TestV$(this):=Mask[null, TestV$(this)] - perm];

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:45
+// Date:         2025-01-26 21:43:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/func2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/func2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -194,11 +194,11 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 // Uninterpreted function definitions
-function  f1_3(Heap: HeapType, r_1: Ref): int;
+function  f1(Heap: HeapType, r_1: Ref): int;
 function  f1'(Heap: HeapType, r_1: Ref): int;
 axiom (forall Heap: HeapType, r_1: Ref ::
-  { f1_3(Heap, r_1) }
-  f1_3(Heap, r_1) == f1'(Heap, r_1) && dummyFunction(f1#triggerStateless(r_1))
+  { f1(Heap, r_1) }
+  f1(Heap, r_1) == f1'(Heap, r_1) && dummyFunction(f1#triggerStateless(r_1))
 );
 axiom (forall Heap: HeapType, r_1: Ref ::
   { f1'(Heap, r_1) }
@@ -207,8 +207,8 @@ axiom (forall Heap: HeapType, r_1: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, r_1: Ref ::
-  { state(Heap, Mask), f1_3(Heap, r_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> f1_3(Heap, r_1) == Heap[r_1, f_7]
+  { state(Heap, Mask), f1(Heap, r_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> f1(Heap, r_1) == Heap[r_1, f_7]
 );
 
 // Framing axioms
@@ -249,7 +249,7 @@ procedure f1#definedness(r_1: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of r.f
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (func2.vpr@6.1--8.8) [186696]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (func2.vpr@6.1--8.8) [99182]"}
         HasDirectPerm(Mask, r_1, f_7);
   
   // -- Translate function body
@@ -306,7 +306,7 @@ procedure f3_a#definedness(r_1: Ref) returns (Result: int)
   // -- Inhaling precondition (with checking)
     
     // -- Check definedness of r.f == 2
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (func2.vpr@12.13--12.23) [186697]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (func2.vpr@12.13--12.23) [99183]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] == 2;
     assume state(Heap, Mask);
@@ -367,7 +367,7 @@ procedure f3_b#definedness(r_1: Ref) returns (Result: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f == 2
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (func2.vpr@18.13--18.23) [186698]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (func2.vpr@18.13--18.23) [99184]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] == 2;
     assume state(Heap, Mask);
@@ -381,11 +381,11 @@ procedure f3_b#definedness(r_1: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  f4_1(Heap: HeapType, r_1: Ref): int;
+function  f4(Heap: HeapType, r_1: Ref): int;
 function  f4'(Heap: HeapType, r_1: Ref): int;
 axiom (forall Heap: HeapType, r_1: Ref ::
-  { f4_1(Heap, r_1) }
-  f4_1(Heap, r_1) == f4'(Heap, r_1) && dummyFunction(f4#triggerStateless(r_1))
+  { f4(Heap, r_1) }
+  f4(Heap, r_1) == f4'(Heap, r_1) && dummyFunction(f4#triggerStateless(r_1))
 );
 axiom (forall Heap: HeapType, r_1: Ref ::
   { f4'(Heap, r_1) }
@@ -394,8 +394,8 @@ axiom (forall Heap: HeapType, r_1: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, r_1: Ref ::
-  { state(Heap, Mask), f4_1(Heap, r_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> Heap[r_1, f_7] == 2 ==> f4_1(Heap, r_1) == 2
+  { state(Heap, Mask), f4(Heap, r_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> Heap[r_1, f_7] == 2 ==> f4(Heap, r_1) == 2
 );
 
 // Framing axioms
@@ -432,7 +432,7 @@ procedure f4#definedness(r_1: Ref) returns (Result: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f == 2
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (func2.vpr@23.12--23.22) [186699]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (func2.vpr@23.12--23.22) [99185]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] == 2;
     assume state(Heap, Mask);
@@ -446,11 +446,11 @@ procedure f4#definedness(r_1: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  f5_1(Heap: HeapType, r_1: Ref): int;
+function  f5(Heap: HeapType, r_1: Ref): int;
 function  f5'(Heap: HeapType, r_1: Ref): int;
 axiom (forall Heap: HeapType, r_1: Ref ::
-  { f5_1(Heap, r_1) }
-  f5_1(Heap, r_1) == f5'(Heap, r_1) && dummyFunction(f5#triggerStateless(r_1))
+  { f5(Heap, r_1) }
+  f5(Heap, r_1) == f5'(Heap, r_1) && dummyFunction(f5#triggerStateless(r_1))
 );
 axiom (forall Heap: HeapType, r_1: Ref ::
   { f5'(Heap, r_1) }
@@ -459,8 +459,8 @@ axiom (forall Heap: HeapType, r_1: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, r_1: Ref ::
-  { state(Heap, Mask), f5_1(Heap, r_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> r_1 != null ==> f5_1(Heap, r_1) == Heap[r_1, f_7]
+  { state(Heap, Mask), f5(Heap, r_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> r_1 != null ==> f5(Heap, r_1) == Heap[r_1, f_7]
 );
 
 // Framing axioms
@@ -495,7 +495,7 @@ procedure f5#definedness(r_1: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of r.f
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (func2.vpr@27.1--29.8) [186700]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (func2.vpr@27.1--29.8) [99186]"}
         HasDirectPerm(Mask, r_1, f_7);
   
   // -- Translate function body
@@ -507,11 +507,11 @@ procedure f5#definedness(r_1: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  f6_1(Heap: HeapType, r_1: Ref): int;
+function  f6(Heap: HeapType, r_1: Ref): int;
 function  f6'(Heap: HeapType, r_1: Ref): int;
 axiom (forall Heap: HeapType, r_1: Ref ::
-  { f6_1(Heap, r_1) }
-  f6_1(Heap, r_1) == f6'(Heap, r_1) && dummyFunction(f6#triggerStateless(r_1))
+  { f6(Heap, r_1) }
+  f6(Heap, r_1) == f6'(Heap, r_1) && dummyFunction(f6#triggerStateless(r_1))
 );
 axiom (forall Heap: HeapType, r_1: Ref ::
   { f6'(Heap, r_1) }
@@ -520,8 +520,8 @@ axiom (forall Heap: HeapType, r_1: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, r_1: Ref ::
-  { state(Heap, Mask), f6_1(Heap, r_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> r_1 != null ==> f6_1(Heap, r_1) == f4_1(Heap, r_1)
+  { state(Heap, Mask), f6(Heap, r_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> r_1 != null ==> f6(Heap, r_1) == f4(Heap, r_1)
 );
 
 // Framing axioms
@@ -541,8 +541,8 @@ function  f6#triggerStateless(r_1: Ref): int;
 procedure f6#definedness(r_1: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -562,12 +562,12 @@ procedure f6#definedness(r_1: Ref) returns (Result: int)
     // -- Check definedness of f4(r)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function f4 might not hold. There might be insufficient permission to access r.f (func2.vpr@35.3--35.8) [186701]"}
+        assert {:msg "  Precondition of function f4 might not hold. There might be insufficient permission to access r.f (func2.vpr@35.3--35.8) [99187]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
-        assert {:msg "  Precondition of function f4 might not hold. Assertion r.f == 2 might not hold. (func2.vpr@35.3--35.8) [186702]"}
+        assert {:msg "  Precondition of function f4 might not hold. Assertion r.f == 2 might not hold. (func2.vpr@35.3--35.8) [99188]"}
           Heap[r_1, f_7] == 2;
         // Finish exhale
         havoc ExhaleHeap;
@@ -578,23 +578,23 @@ procedure f6#definedness(r_1: Ref) returns (Result: int)
       }
   
   // -- Translate function body
-    Result := f4_1(Heap, r_1);
+    Result := f4(Heap, r_1);
 }
 
 // ==================================================
 // Translation of method t1
 // ==================================================
 
-procedure t1(r_1: Ref) returns ()
+procedure t1_2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -616,26 +616,26 @@ procedure t1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: r.f := 1 -- func2.vpr@41.3--41.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (func2.vpr@41.3--41.11) [186703]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (func2.vpr@41.3--41.11) [99189]"}
       FullPerm == Mask[r_1, f_7];
     Heap := Heap[r_1, f_7:=1];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert f1(r) == 1 -- func2.vpr@42.3--42.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of f1(r) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function f1 might not hold. There might be insufficient permission to access r.f (func2.vpr@42.10--42.15) [186704]"}
+        assert {:msg "  Precondition of function f1 might not hold. There might be insufficient permission to access r.f (func2.vpr@42.10--42.15) [99190]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -644,23 +644,23 @@ procedure t1(r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion f1(r) == 1 might not hold. (func2.vpr@42.10--42.20) [186705]"}
-      f1_3(Heap, r_1) == 1;
+    assert {:msg "  Assert might fail. Assertion f1(r) == 1 might not hold. (func2.vpr@42.10--42.20) [99191]"}
+      f1(Heap, r_1) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert f4(r) > 0 -- func2.vpr@46.3--46.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of f4(r) > 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function f4 might not hold. There might be insufficient permission to access r.f (func2.vpr@46.10--46.15) [186706]"}
+        assert {:msg "  Precondition of function f4 might not hold. There might be insufficient permission to access r.f (func2.vpr@46.10--46.15) [99192]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, f_7];
-        assert {:msg "  Precondition of function f4 might not hold. Assertion r.f == 2 might not hold. (func2.vpr@46.10--46.15) [186707]"}
+        assert {:msg "  Precondition of function f4 might not hold. Assertion r.f == 2 might not hold. (func2.vpr@46.10--46.15) [99193]"}
           ExhaleWellDef0Heap[r_1, f_7] == 2;
         // Finish exhale
         havoc ExhaleHeap;
@@ -669,7 +669,7 @@ procedure t1(r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion f4(r) > 0 might not hold. (func2.vpr@46.10--46.19) [186708]"}
-      f4_1(Heap, r_1) > 0;
+    assert {:msg "  Assert might fail. Assertion f4(r) > 0 might not hold. (func2.vpr@46.10--46.19) [99194]"}
+      f4(Heap, r_1) > 0;
     assume state(Heap, Mask);
 }

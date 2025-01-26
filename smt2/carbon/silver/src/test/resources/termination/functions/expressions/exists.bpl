@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:46
+// Date:         2025-01-26 21:41:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/exists.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/exists-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_6: Ref, f_9: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_6, f_9] }
-  Heap[o_6, $allocated] ==> Heap[Heap[o_6, f_9], $allocated]
+axiom (forall o_38: Ref, f_51: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_38, f_51] }
+  Heap[o_38, $allocated] ==> Heap[Heap[o_38, f_51], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_30: Ref, f_35: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_30, f_35] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_30, f_35) ==> Heap[o_30, f_35] == ExhaleHeap[o_30, f_35]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_39: Ref, f_21: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_39, f_21] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_39, f_21) ==> Heap[o_39, f_21] == ExhaleHeap[o_39, f_21]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_34), ExhaleHeap[null, PredicateMaskField(pm_f_34)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsPredicateField(pm_f_34) ==> Heap[null, PredicateMaskField(pm_f_34)] == ExhaleHeap[null, PredicateMaskField(pm_f_34)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18), ExhaleHeap[null, PredicateMaskField(pm_f_18)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> Heap[null, PredicateMaskField(pm_f_18)] == ExhaleHeap[null, PredicateMaskField(pm_f_18)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_34) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsPredicateField(pm_f_34) ==> (forall <A, B> o2_34: Ref, f_35: (Field A B) ::
-    { ExhaleHeap[o2_34, f_35] }
-    Heap[null, PredicateMaskField(pm_f_34)][o2_34, f_35] ==> Heap[o2_34, f_35] == ExhaleHeap[o2_34, f_35]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_21: (Field A B) ::
+    { ExhaleHeap[o2_18, f_21] }
+    Heap[null, PredicateMaskField(pm_f_18)][o2_18, f_21] ==> Heap[o2_18, f_21] == ExhaleHeap[o2_18, f_21]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_34), ExhaleHeap[null, WandMaskField(pm_f_34)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsWandField(pm_f_34) ==> Heap[null, WandMaskField(pm_f_34)] == ExhaleHeap[null, WandMaskField(pm_f_34)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18), ExhaleHeap[null, WandMaskField(pm_f_18)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> Heap[null, WandMaskField(pm_f_18)] == ExhaleHeap[null, WandMaskField(pm_f_18)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_34) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsWandField(pm_f_34) ==> (forall <A, B> o2_34: Ref, f_35: (Field A B) ::
-    { ExhaleHeap[o2_34, f_35] }
-    Heap[null, WandMaskField(pm_f_34)][o2_34, f_35] ==> Heap[o2_34, f_35] == ExhaleHeap[o2_34, f_35]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_21: (Field A B) ::
+    { ExhaleHeap[o2_18, f_21] }
+    Heap[null, WandMaskField(pm_f_18)][o2_18, f_21] ==> Heap[o2_18, f_21] == ExhaleHeap[o2_18, f_21]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_30: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_30, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_30, $allocated] ==> ExhaleHeap[o_30, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_39: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_39, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_39, $allocated] ==> ExhaleHeap[o_39, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_6: Ref, f_16: (Field A B), v: B ::
-  { Heap[o_6, f_16:=v] }
-  succHeap(Heap, Heap[o_6, f_16:=v])
+axiom (forall <A, B> Heap: HeapType, o_38: Ref, f_23: (Field A B), v: B ::
+  { Heap[o_38, f_23:=v] }
+  succHeap(Heap, Heap[o_38, f_23:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -208,11 +208,11 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 // Uninterpreted function definitions
-function  test_2(Heap: HeapType, x: Ref): bool;
+function  test(Heap: HeapType, x: Ref): bool;
 function  test'(Heap: HeapType, x: Ref): bool;
 axiom (forall Heap: HeapType, x: Ref ::
-  { test_2(Heap, x) }
-  test_2(Heap, x) == test'(Heap, x) && dummyFunction(test#triggerStateless(x))
+  { test(Heap, x) }
+  test(Heap, x) == test'(Heap, x) && dummyFunction(test#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { test'(Heap, x) }
@@ -221,8 +221,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), test_2(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> test_2(Heap, x) == (exists x2: Ref ::
+  { state(Heap, Mask), test(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> test(Heap, x) == (exists x2: Ref ::
     { nonTerminating#frame(EmptyFrame, x2) }
     x == x2 && nonTerminating(Heap, x2)
   )
@@ -245,7 +245,7 @@ function  test#triggerStateless(x: Ref): bool;
 procedure test#definedness(x: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
-  var x2_26: Ref;
+  var x2_1: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -258,7 +258,7 @@ procedure test#definedness(x: Ref) returns (Result: bool)
     
     // -- Check definedness of (exists x2: Ref :: { nonTerminating(x2) } x == x2 && nonTerminating(x2))
       if (*) {
-        if (x == x2_26) {
+        if (x == x2_1) {
           if (*) {
             // Stop execution
             assume false;
@@ -268,9 +268,9 @@ procedure test#definedness(x: Ref) returns (Result: bool)
       }
   
   // -- Translate function body
-    Result := (exists x2_2_1: Ref ::
-      { nonTerminating#frame(EmptyFrame, x2_2_1) }
-      x == x2_2_1 && nonTerminating(Heap, x2_2_1)
+    Result := (exists x2_2: Ref ::
+      { nonTerminating#frame(EmptyFrame, x2_2) }
+      x == x2_2 && nonTerminating(Heap, x2_2)
     );
 }
 
@@ -279,11 +279,11 @@ procedure test#definedness(x: Ref) returns (Result: bool)
 // ==================================================
 
 // Uninterpreted function definitions
-function  test2_1(Heap: HeapType): bool;
+function  test2(Heap: HeapType): bool;
 function  test2'(Heap: HeapType): bool;
 axiom (forall Heap: HeapType ::
-  { test2_1(Heap) }
-  test2_1(Heap) == test2'(Heap) && dummyFunction(test2#triggerStateless())
+  { test2(Heap) }
+  test2(Heap) == test2'(Heap) && dummyFunction(test2#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { test2'(Heap) }
@@ -292,8 +292,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), test2_1(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test2_1(Heap) == (exists x2: int ::
+  { state(Heap, Mask), test2(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test2(Heap) == (exists x2: int ::
     { partiallyTerminating#frame(EmptyFrame, x2) }
     partiallyTerminating(Heap, x2)
   )
@@ -335,9 +335,9 @@ procedure test2#definedness() returns (Result: bool)
       }
   
   // -- Translate function body
-    Result := (exists x2_2_1: int ::
-      { partiallyTerminating#frame(EmptyFrame, x2_2_1) }
-      partiallyTerminating(Heap, x2_2_1)
+    Result := (exists x2_2: int ::
+      { partiallyTerminating#frame(EmptyFrame, x2_2) }
+      partiallyTerminating(Heap, x2_2)
     );
 }
 
@@ -346,11 +346,11 @@ procedure test2#definedness() returns (Result: bool)
 // ==================================================
 
 // Uninterpreted function definitions
-function  test3_1(Heap: HeapType, x: int): bool;
+function  test3(Heap: HeapType, x: int): bool;
 function  test3'(Heap: HeapType, x: int): bool;
 axiom (forall Heap: HeapType, x: int ::
-  { test3_1(Heap, x) }
-  test3_1(Heap, x) == test3'(Heap, x) && dummyFunction(test3#triggerStateless(x))
+  { test3(Heap, x) }
+  test3(Heap, x) == test3'(Heap, x) && dummyFunction(test3#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: int ::
   { test3'(Heap, x) }
@@ -359,8 +359,8 @@ axiom (forall Heap: HeapType, x: int ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: int ::
-  { state(Heap, Mask), test3_1(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> x == 42 ==> test3_1(Heap, x) == (exists x2: int ::
+  { state(Heap, Mask), test3(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> x == 42 ==> test3(Heap, x) == (exists x2: int ::
     { partiallyTerminating#frame(EmptyFrame, x2) }
     x == x2 && partiallyTerminating(Heap, x2)
   )
@@ -383,7 +383,7 @@ function  test3#triggerStateless(x: int): bool;
 procedure test3#definedness(x: int) returns (Result: bool)
   modifies Heap, Mask;
 {
-  var x2_1: int;
+  var x2_3: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -399,7 +399,7 @@ procedure test3#definedness(x: int) returns (Result: bool)
     
     // -- Check definedness of (exists x2: Int :: { partiallyTerminating(x2) } x == x2 && partiallyTerminating(x2))
       if (*) {
-        if (x == x2_1) {
+        if (x == x2_3) {
           if (*) {
             // Stop execution
             assume false;
@@ -409,9 +409,9 @@ procedure test3#definedness(x: int) returns (Result: bool)
       }
   
   // -- Translate function body
-    Result := (exists x2_2_1: int ::
-      { partiallyTerminating#frame(EmptyFrame, x2_2_1) }
-      x == x2_2_1 && partiallyTerminating(Heap, x2_2_1)
+    Result := (exists x2_2: int ::
+      { partiallyTerminating#frame(EmptyFrame, x2_2) }
+      x == x2_2 && partiallyTerminating(Heap, x2_2)
     );
 }
 
@@ -420,11 +420,11 @@ procedure test3#definedness(x: int) returns (Result: bool)
 // ==================================================
 
 // Uninterpreted function definitions
-function  test4_1(Heap: HeapType, x: int): bool;
+function  test4(Heap: HeapType, x: int): bool;
 function  test4'(Heap: HeapType, x: int): bool;
 axiom (forall Heap: HeapType, x: int ::
-  { test4_1(Heap, x) }
-  test4_1(Heap, x) == test4'(Heap, x) && dummyFunction(test4#triggerStateless(x))
+  { test4(Heap, x) }
+  test4(Heap, x) == test4'(Heap, x) && dummyFunction(test4#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: int ::
   { test4'(Heap, x) }
@@ -433,8 +433,8 @@ axiom (forall Heap: HeapType, x: int ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: int ::
-  { state(Heap, Mask), test4_1(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> test4_1(Heap, x) == ((exists x2: int ::
+  { state(Heap, Mask), test4(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> test4(Heap, x) == ((exists x2: int ::
     
     x == x2
   ) && partiallyTerminating(Heap, x))
@@ -470,9 +470,9 @@ procedure test4#definedness(x: int) returns (Result: bool)
       if (*) {
         assume false;
       }
-      if ((exists x2_2_1: int ::
+      if ((exists x2_2: int ::
         
-        x == x2_2_1
+        x == x2_2
       )) {
         if (*) {
           // Stop execution
@@ -481,9 +481,9 @@ procedure test4#definedness(x: int) returns (Result: bool)
       }
   
   // -- Translate function body
-    Result := (exists x2_3: int ::
+    Result := (exists x2_3_1: int ::
       
-      x == x2_3
+      x == x2_3_1
     ) && partiallyTerminating(Heap, x);
 }
 
@@ -492,11 +492,11 @@ procedure test4#definedness(x: int) returns (Result: bool)
 // ==================================================
 
 // Uninterpreted function definitions
-function  test5_1(Heap: HeapType, x: int): bool;
+function  test5(Heap: HeapType, x: int): bool;
 function  test5'(Heap: HeapType, x: int): bool;
 axiom (forall Heap: HeapType, x: int ::
-  { test5_1(Heap, x) }
-  test5_1(Heap, x) == test5'(Heap, x) && dummyFunction(test5#triggerStateless(x))
+  { test5(Heap, x) }
+  test5(Heap, x) == test5'(Heap, x) && dummyFunction(test5#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: int ::
   { test5'(Heap, x) }
@@ -505,8 +505,8 @@ axiom (forall Heap: HeapType, x: int ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: int ::
-  { state(Heap, Mask), test5_1(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> test5_1(Heap, x) == ((exists x2: int ::
+  { state(Heap, Mask), test5(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> test5(Heap, x) == ((exists x2: int ::
     
     x == x2 && x != x2
   ) && partiallyTerminating(Heap, x))
@@ -542,9 +542,9 @@ procedure test5#definedness(x: int) returns (Result: bool)
       if (*) {
         assume false;
       }
-      if ((exists x2_2_1: int ::
+      if ((exists x2_2: int ::
         
-        x == x2_2_1 && x != x2_2_1
+        x == x2_2 && x != x2_2
       )) {
         if (*) {
           // Stop execution
@@ -553,9 +553,9 @@ procedure test5#definedness(x: int) returns (Result: bool)
       }
   
   // -- Translate function body
-    Result := (exists x2_3: int ::
+    Result := (exists x2_3_1: int ::
       
-      x == x2_3 && x != x2_3
+      x == x2_3_1 && x != x2_3_1
     ) && partiallyTerminating(Heap, x);
 }
 
@@ -649,11 +649,11 @@ procedure partiallyTerminating#definedness(x: int) returns (Result: bool)
 procedure test_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x21: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -667,8 +667,8 @@ procedure test_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x21, $allocated];
@@ -690,9 +690,9 @@ procedure test_termination_proof(x: Ref) returns ()
     if (x == x21) {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223164]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [18005]"}
           false;
         assume state(Heap, Mask);
     }
@@ -706,11 +706,11 @@ procedure test_termination_proof(x: Ref) returns ()
 procedure test2_termination_proof() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x22: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -721,8 +721,8 @@ procedure test2_termination_proof() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale partiallyTerminating(x22) -- exists.vpr@20.5--20.47
     assume state(Heap, Mask);
@@ -737,9 +737,9 @@ procedure test2_termination_proof() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x22 == 42 -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion x22 == 42 might not hold. (exists.vpr@50.18--50.25) [223165]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion x22 == 42 might not hold. (exists.vpr@50.18--50.25) [18006]"}
       x22 == 42;
     assume state(Heap, Mask);
 }
@@ -751,11 +751,11 @@ procedure test2_termination_proof() returns ()
 procedure test3_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x23: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -770,8 +770,8 @@ procedure test3_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale x == x23 && partiallyTerminating(x23) -- exists.vpr@28.5--28.58
     assume x == x23;
@@ -790,9 +790,9 @@ procedure test3_termination_proof(x: int) returns ()
     if (x == x23) {
       
       // -- Translating statement: assert x23 == 42 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion x23 == 42 might not hold. (exists.vpr@50.18--50.25) [223166]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion x23 == 42 might not hold. (exists.vpr@50.18--50.25) [18007]"}
           x23 == 42;
         assume state(Heap, Mask);
     }
@@ -806,11 +806,11 @@ procedure test3_termination_proof(x: int) returns ()
 procedure test4_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x24: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -821,8 +821,8 @@ procedure test4_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale x == x24 -- exists.vpr@36.6--36.31
     assume x == x24;
@@ -841,9 +841,9 @@ procedure test4_termination_proof(x: int) returns ()
     )) {
       
       // -- Translating statement: assert x == 42 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion x == 42 might not hold. (exists.vpr@50.18--50.25) [223167]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion x == 42 might not hold. (exists.vpr@50.18--50.25) [18008]"}
           x == 42;
         assume state(Heap, Mask);
     }
@@ -857,11 +857,11 @@ procedure test4_termination_proof(x: int) returns ()
 procedure test5_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x25: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -872,8 +872,8 @@ procedure test5_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale x == x25 && x != x25 -- exists.vpr@43.6--43.42
     assume x == x25;
@@ -893,9 +893,9 @@ procedure test5_termination_proof(x: int) returns ()
     )) {
       
       // -- Translating statement: assert x == 42 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion x == 42 might not hold. (exists.vpr@50.18--50.25) [223168]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion x == 42 might not hold. (exists.vpr@50.18--50.25) [18009]"}
           x == 42;
         assume state(Heap, Mask);
     }

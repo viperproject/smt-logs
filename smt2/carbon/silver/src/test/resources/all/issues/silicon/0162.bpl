@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:52
+// Date:         2025-01-26 21:42:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0162.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0162-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,9 +181,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of function post1
@@ -217,7 +217,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), post1'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || post1#trigger(EmptyFrame, this)) ==> this != null ==> Heap[this, x_36] == 0
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || post1#trigger(EmptyFrame, this)) ==> this != null ==> Heap[this, x_42] == 0
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -252,10 +252,10 @@ procedure post1#definedness(this: Ref) returns (Result: int)
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0162.vpr@12.11--12.22) [200520]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Postcondition of post1 might not hold. Assertion this.x == 0 might not hold. (0162.vpr@12.11--12.22) [200521]"}
-      Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0162.vpr@12.11--12.22) [59153]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Postcondition of post1 might not hold. Assertion this.x == 0 might not hold. (0162.vpr@12.11--12.22) [59154]"}
+      Heap[this, x_42] == 0;
 }
 
 // ==================================================
@@ -290,7 +290,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), post2'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || post2#trigger(EmptyFrame, this)) ==> this != null ==> this != null && Heap[this, x_36] == 0
+  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || post2#trigger(EmptyFrame, this)) ==> this != null ==> this != null && Heap[this, x_42] == 0
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -323,12 +323,12 @@ procedure post2#definedness(this: Ref) returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of post2 might not hold. Assertion this != null might not hold. (0162.vpr@23.11--24.22) [200522]"}
+    assert {:msg "  Postcondition of post2 might not hold. Assertion this != null might not hold. (0162.vpr@23.11--24.22) [59155]"}
       this != null;
     
     // -- Check definedness of this.x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0162.vpr@23.11--24.22) [200523]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Postcondition of post2 might not hold. Assertion this.x == 0 might not hold. (0162.vpr@23.11--24.22) [200524]"}
-      Heap[this, x_36] == 0;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0162.vpr@23.11--24.22) [59156]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Postcondition of post2 might not hold. Assertion this.x == 0 might not hold. (0162.vpr@23.11--24.22) [59157]"}
+      Heap[this, x_42] == 0;
 }

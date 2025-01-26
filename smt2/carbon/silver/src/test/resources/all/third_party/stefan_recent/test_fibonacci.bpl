@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:19:18
+// Date:         2025-01-26 21:41:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_fibonacci.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_fibonacci-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -324,7 +324,7 @@ procedure Fib__forkOperator(diz: Ref, current_thread_id: int) returns ()
     assume current_thread_id >= 0;
     assume state(Heap, Mask);
     perm := 1 / 10;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@18.12--18.39) [178024]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@18.12--18.39) [23487]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     Mask := Mask[diz, Fib__input:=Mask[diz, Fib__input] + perm];
@@ -364,7 +364,7 @@ procedure Fib__forkOperator(diz: Ref, current_thread_id: int) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Fib__forkOperator might not hold. There might be insufficient permission to access Fib__joinToken(diz) (test_fibonacci.vpr@20.11--20.42) [178025]"}
+      assert {:msg "  Postcondition of Fib__forkOperator might not hold. There might be insufficient permission to access Fib__joinToken(diz) (test_fibonacci.vpr@20.11--20.42) [23488]"}
         perm <= Mask[null, Fib__joinToken(diz)];
     }
     Mask := Mask[null, Fib__joinToken(diz):=Mask[null, Fib__joinToken(diz)] - perm];
@@ -420,7 +420,7 @@ procedure Fib__joinOperator(diz: Ref, current_thread_id: int) returns ()
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := 1 / 10;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@29.11--29.38) [178026]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@29.11--29.38) [23489]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     PostMask := PostMask[diz, Fib__input:=PostMask[diz, Fib__input] + perm];
@@ -434,9 +434,9 @@ procedure Fib__joinOperator(diz: Ref, current_thread_id: int) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Fib__output == Fib__fib(diz.Fib__input)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@31.11--31.54) [178027]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@31.11--31.54) [23490]"}
         HasDirectPerm(PostMask, diz, Fib__output);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@31.11--31.54) [178028]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@31.11--31.54) [23491]"}
         HasDirectPerm(PostMask, diz, Fib__input);
       if (*) {
         // Stop execution
@@ -457,20 +457,20 @@ procedure Fib__joinOperator(diz: Ref, current_thread_id: int) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     perm := 1 / 10;
-    assert {:msg "  Postcondition of Fib__joinOperator might not hold. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@29.11--29.38) [178029]"}
+    assert {:msg "  Postcondition of Fib__joinOperator might not hold. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@29.11--29.38) [23492]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Fib__joinOperator might not hold. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@29.11--29.38) [178030]"}
+      assert {:msg "  Postcondition of Fib__joinOperator might not hold. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@29.11--29.38) [23493]"}
         perm <= Mask[diz, Fib__input];
     }
     Mask := Mask[diz, Fib__input:=Mask[diz, Fib__input] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Fib__joinOperator might not hold. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@30.11--30.38) [178031]"}
+      assert {:msg "  Postcondition of Fib__joinOperator might not hold. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@30.11--30.38) [23494]"}
         perm <= Mask[diz, Fib__output];
     }
     Mask := Mask[diz, Fib__output:=Mask[diz, Fib__output] - perm];
-    assert {:msg "  Postcondition of Fib__joinOperator might not hold. Assertion diz.Fib__output == Fib__fib(diz.Fib__input) might not hold. (test_fibonacci.vpr@31.11--31.54) [178032]"}
+    assert {:msg "  Postcondition of Fib__joinOperator might not hold. Assertion diz.Fib__output == Fib__fib(diz.Fib__input) might not hold. (test_fibonacci.vpr@31.11--31.54) [23495]"}
       Heap[diz, Fib__output] == Fib__fib(Heap, Heap[diz, Fib__input]);
     // Finish exhale
     havoc ExhaleHeap;
@@ -490,8 +490,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
   var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var f2: Ref;
-  var f1: Ref;
+  var f2_1: Ref;
+  var f1_1: Ref;
   var __flatten_2: Ref;
   var __flatten_3: Ref;
   var __flatten_1: int;
@@ -521,7 +521,7 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
     assume current_thread_id >= 0;
     assume state(Heap, Mask);
     perm := 1 / 10;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@39.12--39.39) [178033]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@39.12--39.39) [23496]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     Mask := Mask[diz, Fib__input:=Mask[diz, Fib__input] + perm];
@@ -544,7 +544,7 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := 1 / 10;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@41.11--41.38) [178034]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@41.11--41.38) [23497]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     PostMask := PostMask[diz, Fib__input:=PostMask[diz, Fib__input] + perm];
@@ -558,9 +558,9 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Fib__output == Fib__fib(diz.Fib__input)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@43.11--43.54) [178035]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@43.11--43.54) [23498]"}
         HasDirectPerm(PostMask, diz, Fib__output);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@43.11--43.54) [178036]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@43.11--43.54) [23499]"}
         HasDirectPerm(PostMask, diz, Fib__input);
       if (*) {
         // Stop execution
@@ -573,15 +573,15 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
   }
   
   // -- Assumptions about local variables
-    assume Heap[f2, $allocated];
-    assume Heap[f1, $allocated];
+    assume Heap[f2_1, $allocated];
+    assume Heap[f1_1, $allocated];
     assume Heap[__flatten_2, $allocated];
     assume Heap[__flatten_3, $allocated];
   
   // -- Translating statement: if (diz.Fib__input < 2) -- test_fibonacci.vpr@53.3--69.4
     
     // -- Check definedness of diz.Fib__input < 2
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@53.7--53.25) [178037]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@53.7--53.25) [23500]"}
         HasDirectPerm(Mask, diz, Fib__input);
     if (Heap[diz, Fib__input] < 2) {
       
@@ -594,7 +594,7 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: diz.Fib__output := __flatten_10 -- test_fibonacci.vpr@56.5--56.36
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@56.5--56.36) [178038]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@56.5--56.36) [23501]"}
           FullPerm == Mask[diz, Fib__output];
         Heap := Heap[diz, Fib__output:=__flatten_10];
         assume state(Heap, Mask);
@@ -605,14 +605,14 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         PreCallMask := Mask;
         
         // -- Check definedness of diz.Fib__input - 1
-          assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@58.5--58.67) [178039]"}
+          assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@58.5--58.67) [23502]"}
             HasDirectPerm(Mask, diz, Fib__input);
         arg_n := Heap[diz, Fib__input] - 1;
         
         // -- Exhaling precondition
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method Fib__Fib might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@58.5--58.67) [178040]"}
+          assert {:msg "  The precondition of method Fib__Fib might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@58.5--58.67) [23503]"}
             current_thread_id >= 0;
         
         // -- Havocing target variables
@@ -634,7 +634,7 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: f1 := __flatten_2 -- test_fibonacci.vpr@59.5--59.22
-        f1 := __flatten_2;
+        f1_1 := __flatten_2;
         assume state(Heap, Mask);
       
       // -- Translating statement: __flatten_3 := Fib__Fib(current_thread_id, diz.Fib__input - 2) -- test_fibonacci.vpr@60.5--60.67
@@ -642,14 +642,14 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         PreCallMask := Mask;
         
         // -- Check definedness of diz.Fib__input - 2
-          assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@60.5--60.67) [178041]"}
+          assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@60.5--60.67) [23504]"}
             HasDirectPerm(Mask, diz, Fib__input);
         arg_n_1 := Heap[diz, Fib__input] - 2;
         
         // -- Exhaling precondition
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method Fib__Fib might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@60.5--60.67) [178042]"}
+          assert {:msg "  The precondition of method Fib__Fib might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@60.5--60.67) [23505]"}
             current_thread_id >= 0;
         
         // -- Havocing target variables
@@ -671,7 +671,7 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: f2 := __flatten_3 -- test_fibonacci.vpr@61.5--61.22
-        f2 := __flatten_3;
+        f2_1 := __flatten_3;
         assume state(Heap, Mask);
       
       // -- Translating statement: Fib__forkOperator(f1, current_thread_id) -- test_fibonacci.vpr@62.5--62.45
@@ -681,24 +681,24 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         // -- Exhaling precondition
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion f1 != null might not hold. (test_fibonacci.vpr@62.5--62.45) [178043]"}
-            f1 != null;
-          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@62.5--62.45) [178044]"}
+          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion f1 != null might not hold. (test_fibonacci.vpr@62.5--62.45) [23506]"}
+            f1_1 != null;
+          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@62.5--62.45) [23507]"}
             current_thread_id >= 0;
           perm := 1 / 10;
-          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@62.5--62.45) [178045]"}
+          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@62.5--62.45) [23508]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Fib__forkOperator might not hold. There might be insufficient permission to access f1.Fib__input (test_fibonacci.vpr@62.5--62.45) [178046]"}
-              perm <= Mask[f1, Fib__input];
+            assert {:msg "  The precondition of method Fib__forkOperator might not hold. There might be insufficient permission to access f1.Fib__input (test_fibonacci.vpr@62.5--62.45) [23509]"}
+              perm <= Mask[f1_1, Fib__input];
           }
-          Mask := Mask[f1, Fib__input:=Mask[f1, Fib__input] - perm];
+          Mask := Mask[f1_1, Fib__input:=Mask[f1_1, Fib__input] - perm];
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Fib__forkOperator might not hold. There might be insufficient permission to access f1.Fib__output (test_fibonacci.vpr@62.5--62.45) [178047]"}
-              perm <= Mask[f1, Fib__output];
+            assert {:msg "  The precondition of method Fib__forkOperator might not hold. There might be insufficient permission to access f1.Fib__output (test_fibonacci.vpr@62.5--62.45) [23510]"}
+              perm <= Mask[f1_1, Fib__output];
           }
-          Mask := Mask[f1, Fib__output:=Mask[f1, Fib__output] - perm];
+          Mask := Mask[f1_1, Fib__output:=Mask[f1_1, Fib__output] - perm];
           // Finish exhale
           havoc ExhaleHeap;
           assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -706,7 +706,7 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         
         // -- Inhaling postcondition
           perm := FullPerm;
-          Mask := Mask[null, Fib__joinToken(f1):=Mask[null, Fib__joinToken(f1)] + perm];
+          Mask := Mask[null, Fib__joinToken(f1_1):=Mask[null, Fib__joinToken(f1_1)] + perm];
           assume state(Heap, Mask);
           assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -718,24 +718,24 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         // -- Exhaling precondition
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion f2 != null might not hold. (test_fibonacci.vpr@63.5--63.45) [178048]"}
-            f2 != null;
-          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@63.5--63.45) [178049]"}
+          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion f2 != null might not hold. (test_fibonacci.vpr@63.5--63.45) [23511]"}
+            f2_1 != null;
+          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@63.5--63.45) [23512]"}
             current_thread_id >= 0;
           perm := 1 / 10;
-          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@63.5--63.45) [178050]"}
+          assert {:msg "  The precondition of method Fib__forkOperator might not hold. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@63.5--63.45) [23513]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Fib__forkOperator might not hold. There might be insufficient permission to access f2.Fib__input (test_fibonacci.vpr@63.5--63.45) [178051]"}
-              perm <= Mask[f2, Fib__input];
+            assert {:msg "  The precondition of method Fib__forkOperator might not hold. There might be insufficient permission to access f2.Fib__input (test_fibonacci.vpr@63.5--63.45) [23514]"}
+              perm <= Mask[f2_1, Fib__input];
           }
-          Mask := Mask[f2, Fib__input:=Mask[f2, Fib__input] - perm];
+          Mask := Mask[f2_1, Fib__input:=Mask[f2_1, Fib__input] - perm];
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Fib__forkOperator might not hold. There might be insufficient permission to access f2.Fib__output (test_fibonacci.vpr@63.5--63.45) [178052]"}
-              perm <= Mask[f2, Fib__output];
+            assert {:msg "  The precondition of method Fib__forkOperator might not hold. There might be insufficient permission to access f2.Fib__output (test_fibonacci.vpr@63.5--63.45) [23515]"}
+              perm <= Mask[f2_1, Fib__output];
           }
-          Mask := Mask[f2, Fib__output:=Mask[f2, Fib__output] - perm];
+          Mask := Mask[f2_1, Fib__output:=Mask[f2_1, Fib__output] - perm];
           // Finish exhale
           havoc ExhaleHeap;
           assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -743,7 +743,7 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         
         // -- Inhaling postcondition
           perm := FullPerm;
-          Mask := Mask[null, Fib__joinToken(f2):=Mask[null, Fib__joinToken(f2)] + perm];
+          Mask := Mask[null, Fib__joinToken(f2_1):=Mask[null, Fib__joinToken(f2_1)] + perm];
           assume state(Heap, Mask);
           assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -755,16 +755,16 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         // -- Exhaling precondition
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion f1 != null might not hold. (test_fibonacci.vpr@64.5--64.45) [178053]"}
-            f1 != null;
-          assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@64.5--64.45) [178054]"}
+          assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion f1 != null might not hold. (test_fibonacci.vpr@64.5--64.45) [23516]"}
+            f1_1 != null;
+          assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@64.5--64.45) [23517]"}
             current_thread_id >= 0;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Fib__joinOperator might not hold. There might be insufficient permission to access Fib__joinToken(f1) (test_fibonacci.vpr@64.5--64.45) [178055]"}
-              perm <= Mask[null, Fib__joinToken(f1)];
+            assert {:msg "  The precondition of method Fib__joinOperator might not hold. There might be insufficient permission to access Fib__joinToken(f1) (test_fibonacci.vpr@64.5--64.45) [23518]"}
+              perm <= Mask[null, Fib__joinToken(f1_1)];
           }
-          Mask := Mask[null, Fib__joinToken(f1):=Mask[null, Fib__joinToken(f1)] - perm];
+          Mask := Mask[null, Fib__joinToken(f1_1):=Mask[null, Fib__joinToken(f1_1)] - perm];
           // Finish exhale
           havoc ExhaleHeap;
           assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -772,17 +772,17 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         
         // -- Inhaling postcondition
           perm := 1 / 10;
-          assert {:msg "  Method call might fail. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@64.5--64.45) [178056]"}
+          assert {:msg "  Method call might fail. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@64.5--64.45) [23519]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> f1 != null;
-          Mask := Mask[f1, Fib__input:=Mask[f1, Fib__input] + perm];
+          assume perm > NoPerm ==> f1_1 != null;
+          Mask := Mask[f1_1, Fib__input:=Mask[f1_1, Fib__input] + perm];
           assume state(Heap, Mask);
           perm := FullPerm;
-          assume f1 != null;
-          Mask := Mask[f1, Fib__output:=Mask[f1, Fib__output] + perm];
+          assume f1_1 != null;
+          Mask := Mask[f1_1, Fib__output:=Mask[f1_1, Fib__output] + perm];
           assume state(Heap, Mask);
           assume state(Heap, Mask);
-          assume Heap[f1, Fib__output] == Fib__fib(Heap, Heap[f1, Fib__input]);
+          assume Heap[f1_1, Fib__output] == Fib__fib(Heap, Heap[f1_1, Fib__input]);
           assume state(Heap, Mask);
         assume state(Heap, Mask);
       
@@ -793,16 +793,16 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         // -- Exhaling precondition
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion f2 != null might not hold. (test_fibonacci.vpr@65.5--65.45) [178057]"}
-            f2 != null;
-          assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@65.5--65.45) [178058]"}
+          assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion f2 != null might not hold. (test_fibonacci.vpr@65.5--65.45) [23520]"}
+            f2_1 != null;
+          assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@65.5--65.45) [23521]"}
             current_thread_id >= 0;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Fib__joinOperator might not hold. There might be insufficient permission to access Fib__joinToken(f2) (test_fibonacci.vpr@65.5--65.45) [178059]"}
-              perm <= Mask[null, Fib__joinToken(f2)];
+            assert {:msg "  The precondition of method Fib__joinOperator might not hold. There might be insufficient permission to access Fib__joinToken(f2) (test_fibonacci.vpr@65.5--65.45) [23522]"}
+              perm <= Mask[null, Fib__joinToken(f2_1)];
           }
-          Mask := Mask[null, Fib__joinToken(f2):=Mask[null, Fib__joinToken(f2)] - perm];
+          Mask := Mask[null, Fib__joinToken(f2_1):=Mask[null, Fib__joinToken(f2_1)] - perm];
           // Finish exhale
           havoc ExhaleHeap;
           assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -810,28 +810,28 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         
         // -- Inhaling postcondition
           perm := 1 / 10;
-          assert {:msg "  Method call might fail. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@65.5--65.45) [178060]"}
+          assert {:msg "  Method call might fail. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@65.5--65.45) [23523]"}
             perm >= NoPerm;
-          assume perm > NoPerm ==> f2 != null;
-          Mask := Mask[f2, Fib__input:=Mask[f2, Fib__input] + perm];
+          assume perm > NoPerm ==> f2_1 != null;
+          Mask := Mask[f2_1, Fib__input:=Mask[f2_1, Fib__input] + perm];
           assume state(Heap, Mask);
           perm := FullPerm;
-          assume f2 != null;
-          Mask := Mask[f2, Fib__output:=Mask[f2, Fib__output] + perm];
+          assume f2_1 != null;
+          Mask := Mask[f2_1, Fib__output:=Mask[f2_1, Fib__output] + perm];
           assume state(Heap, Mask);
           assume state(Heap, Mask);
-          assume Heap[f2, Fib__output] == Fib__fib(Heap, Heap[f2, Fib__input]);
+          assume Heap[f2_1, Fib__output] == Fib__fib(Heap, Heap[f2_1, Fib__input]);
           assume state(Heap, Mask);
         assume state(Heap, Mask);
       
       // -- Translating statement: __flatten_8 := f1.Fib__output + f2.Fib__output -- test_fibonacci.vpr@66.5--66.51
         
         // -- Check definedness of f1.Fib__output + f2.Fib__output
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access f1.Fib__output (test_fibonacci.vpr@66.5--66.51) [178061]"}
-            HasDirectPerm(Mask, f1, Fib__output);
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access f2.Fib__output (test_fibonacci.vpr@66.5--66.51) [178062]"}
-            HasDirectPerm(Mask, f2, Fib__output);
-        __flatten_8 := Heap[f1, Fib__output] + Heap[f2, Fib__output];
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access f1.Fib__output (test_fibonacci.vpr@66.5--66.51) [23524]"}
+            HasDirectPerm(Mask, f1_1, Fib__output);
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access f2.Fib__output (test_fibonacci.vpr@66.5--66.51) [23525]"}
+            HasDirectPerm(Mask, f2_1, Fib__output);
+        __flatten_8 := Heap[f1_1, Fib__output] + Heap[f2_1, Fib__output];
         assume state(Heap, Mask);
       
       // -- Translating statement: __flatten_17 := __flatten_8 -- test_fibonacci.vpr@67.5--67.32
@@ -839,7 +839,7 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: diz.Fib__output := __flatten_17 -- test_fibonacci.vpr@68.5--68.36
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@68.5--68.36) [178063]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@68.5--68.36) [23526]"}
           FullPerm == Mask[diz, Fib__output];
         Heap := Heap[diz, Fib__output:=__flatten_17];
         assume state(Heap, Mask);
@@ -850,20 +850,20 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     perm := 1 / 10;
-    assert {:msg "  Postcondition of Fib__run might not hold. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@41.11--41.38) [178064]"}
+    assert {:msg "  Postcondition of Fib__run might not hold. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@41.11--41.38) [23527]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Fib__run might not hold. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@41.11--41.38) [178065]"}
+      assert {:msg "  Postcondition of Fib__run might not hold. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@41.11--41.38) [23528]"}
         perm <= Mask[diz, Fib__input];
     }
     Mask := Mask[diz, Fib__input:=Mask[diz, Fib__input] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Fib__run might not hold. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@42.11--42.38) [178066]"}
+      assert {:msg "  Postcondition of Fib__run might not hold. There might be insufficient permission to access diz.Fib__output (test_fibonacci.vpr@42.11--42.38) [23529]"}
         perm <= Mask[diz, Fib__output];
     }
     Mask := Mask[diz, Fib__output:=Mask[diz, Fib__output] - perm];
-    assert {:msg "  Postcondition of Fib__run might not hold. Assertion diz.Fib__output == Fib__fib(diz.Fib__input) might not hold. (test_fibonacci.vpr@43.11--43.54) [178067]"}
+    assert {:msg "  Postcondition of Fib__run might not hold. Assertion diz.Fib__output == Fib__fib(diz.Fib__input) might not hold. (test_fibonacci.vpr@43.11--43.54) [23530]"}
       Heap[diz, Fib__output] == Fib__fib(Heap, Heap[diz, Fib__input]);
     // Finish exhale
     havoc ExhaleHeap;
@@ -927,7 +927,7 @@ procedure Fib__Fib(current_thread_id: int, n: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Fib__input == n
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Fib__input (test_fibonacci.vpr@77.11--77.38) [178068]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Fib__input (test_fibonacci.vpr@77.11--77.38) [23531]"}
         HasDirectPerm(PostMask, sys__result, Fib__input);
     assume PostHeap[sys__result, Fib__input] == n;
     assume state(PostHeap, PostMask);
@@ -956,7 +956,7 @@ procedure Fib__Fib(current_thread_id: int, n: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Fib__input := __flatten_18 -- test_fibonacci.vpr@85.3--85.33
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@85.3--85.33) [178069]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Fib__input (test_fibonacci.vpr@85.3--85.33) [23532]"}
       FullPerm == Mask[diz, Fib__input];
     Heap := Heap[diz, Fib__input:=__flatten_18];
     assume state(Heap, Mask);
@@ -972,25 +972,25 @@ procedure Fib__Fib(current_thread_id: int, n: int) returns (sys__result: Ref)
     AssertMask := Mask;
     ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_fibonacci.vpr@87.10--87.141) [178070]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_fibonacci.vpr@87.10--87.141) [23533]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Fib__input (test_fibonacci.vpr@87.10--87.141) [178072]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Fib__input (test_fibonacci.vpr@87.10--87.141) [23535]"}
         perm <= AssertMask[sys__result, Fib__input];
     }
     AssertMask := AssertMask[sys__result, Fib__input:=AssertMask[sys__result, Fib__input] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Fib__output (test_fibonacci.vpr@87.10--87.141) [178074]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Fib__output (test_fibonacci.vpr@87.10--87.141) [23537]"}
         perm <= AssertMask[sys__result, Fib__output];
     }
     AssertMask := AssertMask[sys__result, Fib__output:=AssertMask[sys__result, Fib__output] - perm];
     
     // -- Check definedness of sys__result.Fib__input == n
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Fib__input (test_fibonacci.vpr@87.10--87.141) [178075]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Fib__input (test_fibonacci.vpr@87.10--87.141) [23538]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Fib__input);
-    assert {:msg "  Assert might fail. Assertion sys__result.Fib__input == n might not hold. (test_fibonacci.vpr@87.10--87.141) [178076]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Fib__input == n might not hold. (test_fibonacci.vpr@87.10--87.141) [23539]"}
       AssertHeap[sys__result, Fib__input] == n;
     assume state(Heap, Mask);
   
@@ -1002,21 +1002,21 @@ procedure Fib__Fib(current_thread_id: int, n: int) returns (sys__result: Ref)
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Fib__Fib might not hold. Assertion sys__result != null might not hold. (test_fibonacci.vpr@74.11--74.30) [178077]"}
+    assert {:msg "  Postcondition of Fib__Fib might not hold. Assertion sys__result != null might not hold. (test_fibonacci.vpr@74.11--74.30) [23540]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Fib__Fib might not hold. There might be insufficient permission to access sys__result.Fib__input (test_fibonacci.vpr@75.11--75.45) [178078]"}
+      assert {:msg "  Postcondition of Fib__Fib might not hold. There might be insufficient permission to access sys__result.Fib__input (test_fibonacci.vpr@75.11--75.45) [23541]"}
         perm <= Mask[sys__result, Fib__input];
     }
     Mask := Mask[sys__result, Fib__input:=Mask[sys__result, Fib__input] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Fib__Fib might not hold. There might be insufficient permission to access sys__result.Fib__output (test_fibonacci.vpr@76.11--76.46) [178079]"}
+      assert {:msg "  Postcondition of Fib__Fib might not hold. There might be insufficient permission to access sys__result.Fib__output (test_fibonacci.vpr@76.11--76.46) [23542]"}
         perm <= Mask[sys__result, Fib__output];
     }
     Mask := Mask[sys__result, Fib__output:=Mask[sys__result, Fib__output] - perm];
-    assert {:msg "  Postcondition of Fib__Fib might not hold. Assertion sys__result.Fib__input == n might not hold. (test_fibonacci.vpr@77.11--77.38) [178080]"}
+    assert {:msg "  Postcondition of Fib__Fib might not hold. Assertion sys__result.Fib__input == n might not hold. (test_fibonacci.vpr@77.11--77.38) [23543]"}
       Heap[sys__result, Fib__input] == n;
     // Finish exhale
     havoc ExhaleHeap;

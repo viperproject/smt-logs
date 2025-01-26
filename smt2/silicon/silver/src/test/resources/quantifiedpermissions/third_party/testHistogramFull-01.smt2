@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:36:27
+; Started: 2025-01-26 21:38:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1215,11 +1215,11 @@
     (count_list%limited s@$ i@0@00 hi@1@00 ar@2@00 v@3@00)
     (count_list s@$ i@0@00 hi@1@00 ar@2@00 v@3@00))
   :pattern ((count_list s@$ i@0@00 hi@1@00 ar@2@00 v@3@00))
-  :qid |quant-u-6721|)))
+  :qid |quant-u-18060|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int) (hi@1@00 Int) (ar@2@00 Seq<Int>) (v@3@00 Int)) (!
   (count_list%stateless i@0@00 hi@1@00 ar@2@00 v@3@00)
   :pattern ((count_list%limited s@$ i@0@00 hi@1@00 ar@2@00 v@3@00))
-  :qid |quant-u-6722|)))
+  :qid |quant-u-18061|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int) (hi@1@00 Int) (ar@2@00 Seq<Int>) (v@3@00 Int)) (!
   (=>
     (count_list%precondition s@$ i@0@00 hi@1@00 ar@2@00 v@3@00)
@@ -1234,7 +1234,7 @@
             ($Snap.combine $Snap.unit $Snap.unit)) (+ i@0@00 1) hi@1@00 ar@2@00 v@3@00))
         0)))
   :pattern ((count_list s@$ i@0@00 hi@1@00 ar@2@00 v@3@00))
-  :qid |quant-u-6735|)))
+  :qid |quant-u-18074|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int) (hi@1@00 Int) (ar@2@00 Seq<Int>) (v@3@00 Int)) (!
   (=>
     (count_list%precondition s@$ i@0@00 hi@1@00 ar@2@00 v@3@00)
@@ -1245,17 +1245,17 @@
         ($Snap.combine $Snap.unit $Snap.unit)) (+ i@0@00 1) hi@1@00 ar@2@00 v@3@00)
       true))
   :pattern ((count_list s@$ i@0@00 hi@1@00 ar@2@00 v@3@00))
-  :qid |quant-u-6736|)))
+  :qid |quant-u-18075|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int) (hi@6@00 Int) (ar@7@00 Seq<Int>)) (!
   (=
     (sum_list%limited s@$ i@5@00 hi@6@00 ar@7@00)
     (sum_list s@$ i@5@00 hi@6@00 ar@7@00))
   :pattern ((sum_list s@$ i@5@00 hi@6@00 ar@7@00))
-  :qid |quant-u-6723|)))
+  :qid |quant-u-18062|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int) (hi@6@00 Int) (ar@7@00 Seq<Int>)) (!
   (sum_list%stateless i@5@00 hi@6@00 ar@7@00)
   :pattern ((sum_list%limited s@$ i@5@00 hi@6@00 ar@7@00))
-  :qid |quant-u-6724|)))
+  :qid |quant-u-18063|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int) (hi@6@00 Int) (ar@7@00 Seq<Int>)) (!
   (=>
     (sum_list%precondition s@$ i@5@00 hi@6@00 ar@7@00)
@@ -1270,7 +1270,7 @@
             ($Snap.combine $Snap.unit $Snap.unit)) (+ i@5@00 1) hi@6@00 ar@7@00))
         0)))
   :pattern ((sum_list s@$ i@5@00 hi@6@00 ar@7@00))
-  :qid |quant-u-6737|)))
+  :qid |quant-u-18076|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int) (hi@6@00 Int) (ar@7@00 Seq<Int>)) (!
   (=>
     (sum_list%precondition s@$ i@5@00 hi@6@00 ar@7@00)
@@ -1281,17 +1281,17 @@
         ($Snap.combine $Snap.unit $Snap.unit)) (+ i@5@00 1) hi@6@00 ar@7@00)
       true))
   :pattern ((sum_list s@$ i@5@00 hi@6@00 ar@7@00))
-  :qid |quant-u-6738|)))
+  :qid |quant-u-18077|)))
 (assert (forall ((s@$ $Snap) (N0@31@00 Int) (N1@32@00 Int) (i0@33@00 Int) (i1@34@00 Int)) (!
   (=
     (Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00)
     (Ref__multidim_index_2 s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))
   :pattern ((Ref__multidim_index_2 s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))
-  :qid |quant-u-6731|)))
+  :qid |quant-u-18070|)))
 (assert (forall ((s@$ $Snap) (N0@31@00 Int) (N1@32@00 Int) (i0@33@00 Int) (i1@34@00 Int)) (!
   (Ref__multidim_index_2%stateless N0@31@00 N1@32@00 i0@33@00 i1@34@00)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))
-  :qid |quant-u-6732|)))
+  :qid |quant-u-18071|)))
 (assert (forall ((s@$ $Snap) (N0@31@00 Int) (N1@32@00 Int) (i0@33@00 Int) (i1@34@00 Int)) (!
   (let ((result@35@00 (Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))) (=>
     (Ref__multidim_index_2%precondition s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00)
@@ -1302,27 +1302,27 @@
       (= (mod result@35@00 N1@32@00) i1@34@00)
       (< (mod result@35@00 N1@32@00) N0@31@00))))
   :pattern ((Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))
-  :qid |quant-u-6739|)))
+  :qid |quant-u-18078|)))
 (assert (forall ((s@$ $Snap) (N0@31@00 Int) (N1@32@00 Int) (i0@33@00 Int) (i1@34@00 Int)) (!
   (let ((result@35@00 (Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))
-  :qid |quant-u-6740|)))
+  :qid |quant-u-18079|)))
 (assert (forall ((s@$ $Snap) (N0@31@00 Int) (N1@32@00 Int) (i0@33@00 Int) (i1@34@00 Int)) (!
   (let ((result@35@00 (Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))
-  :qid |quant-u-6741|)))
+  :qid |quant-u-18080|)))
 (assert (forall ((s@$ $Snap) (N0@31@00 Int) (N1@32@00 Int) (i0@33@00 Int) (i1@34@00 Int)) (!
   (let ((result@35@00 (Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))
-  :qid |quant-u-6742|)))
+  :qid |quant-u-18081|)))
 (assert (forall ((s@$ $Snap) (N0@31@00 Int) (N1@32@00 Int) (i0@33@00 Int) (i1@34@00 Int)) (!
   (let ((result@35@00 (Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))
-  :qid |quant-u-6743|)))
+  :qid |quant-u-18082|)))
 (assert (forall ((s@$ $Snap) (N0@31@00 Int) (N1@32@00 Int) (i0@33@00 Int) (i1@34@00 Int)) (!
   (let ((result@35@00 (Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@31@00 N1@32@00 i0@33@00 i1@34@00))
-  :qid |quant-u-6744|)))
+  :qid |quant-u-18083|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Ref__loop_main_87 ----------

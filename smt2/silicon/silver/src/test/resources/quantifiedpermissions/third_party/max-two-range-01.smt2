@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:36:24
+; Started: 2025-01-26 21:38:14
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1922,7 +1922,7 @@
       (= (/ (to_real 1) (to_real gsize@8@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@8@01)))))
   
-  :qid |quant-u-6539|))))
+  :qid |quant-u-17945|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -1972,7 +1972,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
     i@17@01))
-  :qid |quant-u-6540|)))
+  :qid |quant-u-17946|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2335,7 +2335,7 @@
       (= (/ (to_real 1) (to_real gsize@8@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@8@01)))))
   
-  :qid |quant-u-6541|))))
+  :qid |quant-u-17947|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2385,7 +2385,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@21@01)))))))
     i@24@01))
-  :qid |quant-u-6542|)))
+  :qid |quant-u-17948|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -3209,7 +3209,7 @@
         tid@9@01))
     (= (- $Perm.Write (pTaken@39@01 r)) $Perm.No))
   
-  :qid |quant-u-6545|))))
+  :qid |quant-u-17951|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -3593,15 +3593,15 @@
 ; 0.00s
 ; (get-info :all-statistics)
 ; [exec]
-; assert (forall __rw_i1: Int ::
-;     { this.src[__rw_i1] }
+; assert (forall __rw_i6: Int ::
+;     { this.src[__rw_i6] }
 ;     true ==>
-;     0 <= __rw_i1 - offset && __rw_i1 - offset < k ==>
-;     this.dst[tid].Integer_value >= this.src[__rw_i1].Integer_value)
-; [eval] (forall __rw_i1: Int :: { this.src[__rw_i1] } true ==> 0 <= __rw_i1 - offset && __rw_i1 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i1].Integer_value)
-(declare-const __rw_i1@44@01 Int)
+;     0 <= __rw_i6 - offset && __rw_i6 - offset < k ==>
+;     this.dst[tid].Integer_value >= this.src[__rw_i6].Integer_value)
+; [eval] (forall __rw_i6: Int :: { this.src[__rw_i6] } true ==> 0 <= __rw_i6 - offset && __rw_i6 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i6].Integer_value)
+(declare-const __rw_i6@44@01 Int)
 (push) ; 4
-; [eval] true ==> 0 <= __rw_i1 - offset && __rw_i1 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i1].Integer_value
+; [eval] true ==> 0 <= __rw_i6 - offset && __rw_i6 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i6].Integer_value
 (push) ; 5
 (push) ; 6
 (set-option :timeout 10)
@@ -3616,36 +3616,36 @@
 (set-option :timeout 0)
 (push) ; 6
 ; [then-branch: 12 | True]
-; [eval] 0 <= __rw_i1 - offset && __rw_i1 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i1].Integer_value
-; [eval] 0 <= __rw_i1 - offset && __rw_i1 - offset < k
-; [eval] 0 <= __rw_i1 - offset
-; [eval] __rw_i1 - offset
+; [eval] 0 <= __rw_i6 - offset && __rw_i6 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i6].Integer_value
+; [eval] 0 <= __rw_i6 - offset && __rw_i6 - offset < k
+; [eval] 0 <= __rw_i6 - offset
+; [eval] __rw_i6 - offset
 (push) ; 7
-; [then-branch: 13 | !(0 <= __rw_i1@44@01 - offset@36@01) | live]
-; [else-branch: 13 | 0 <= __rw_i1@44@01 - offset@36@01 | live]
+; [then-branch: 13 | !(0 <= __rw_i6@44@01 - offset@36@01) | live]
+; [else-branch: 13 | 0 <= __rw_i6@44@01 - offset@36@01 | live]
 (push) ; 8
-; [then-branch: 13 | !(0 <= __rw_i1@44@01 - offset@36@01)]
-(assert (not (<= 0 (- __rw_i1@44@01 offset@36@01))))
+; [then-branch: 13 | !(0 <= __rw_i6@44@01 - offset@36@01)]
+(assert (not (<= 0 (- __rw_i6@44@01 offset@36@01))))
 (pop) ; 8
 (push) ; 8
-; [else-branch: 13 | 0 <= __rw_i1@44@01 - offset@36@01]
-(assert (<= 0 (- __rw_i1@44@01 offset@36@01)))
-; [eval] __rw_i1 - offset < k
-; [eval] __rw_i1 - offset
+; [else-branch: 13 | 0 <= __rw_i6@44@01 - offset@36@01]
+(assert (<= 0 (- __rw_i6@44@01 offset@36@01)))
+; [eval] __rw_i6 - offset < k
+; [eval] __rw_i6 - offset
 (pop) ; 8
 (pop) ; 7
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (<= 0 (- __rw_i1@44@01 offset@36@01))
-  (not (<= 0 (- __rw_i1@44@01 offset@36@01)))))
+  (<= 0 (- __rw_i6@44@01 offset@36@01))
+  (not (<= 0 (- __rw_i6@44@01 offset@36@01)))))
 (push) ; 7
-; [then-branch: 14 | 0 <= __rw_i1@44@01 - offset@36@01 && __rw_i1@44@01 - offset@36@01 < 0 | live]
-; [else-branch: 14 | !(0 <= __rw_i1@44@01 - offset@36@01 && __rw_i1@44@01 - offset@36@01 < 0) | live]
+; [then-branch: 14 | 0 <= __rw_i6@44@01 - offset@36@01 && __rw_i6@44@01 - offset@36@01 < 0 | live]
+; [else-branch: 14 | !(0 <= __rw_i6@44@01 - offset@36@01 && __rw_i6@44@01 - offset@36@01 < 0) | live]
 (push) ; 8
-; [then-branch: 14 | 0 <= __rw_i1@44@01 - offset@36@01 && __rw_i1@44@01 - offset@36@01 < 0]
-(assert (and (<= 0 (- __rw_i1@44@01 offset@36@01)) (< (- __rw_i1@44@01 offset@36@01) 0)))
-; [eval] this.dst[tid].Integer_value >= this.src[__rw_i1].Integer_value
+; [then-branch: 14 | 0 <= __rw_i6@44@01 - offset@36@01 && __rw_i6@44@01 - offset@36@01 < 0]
+(assert (and (<= 0 (- __rw_i6@44@01 offset@36@01)) (< (- __rw_i6@44@01 offset@36@01) 0)))
+; [eval] this.dst[tid].Integer_value >= this.src[__rw_i6].Integer_value
 ; [eval] this.dst[tid]
 (push) ; 9
 (set-option :timeout 10)
@@ -3730,7 +3730,7 @@
 (pop) ; 9
 ; 0.00s
 ; (get-info :all-statistics)
-; [eval] this.src[__rw_i1]
+; [eval] this.src[__rw_i6]
 (push) ; 9
 (set-option :timeout 10)
 (assert (not (< $Perm.No $k@13@01)))
@@ -3741,7 +3741,7 @@
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
-(assert (not (>= __rw_i1@44@01 0)))
+(assert (not (>= __rw_i6@44@01 0)))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -3749,7 +3749,7 @@
 ; (get-info :all-statistics)
 (push) ; 9
 (assert (not (<
-  __rw_i1@44@01
+  __rw_i6@44@01
   (Seq_length
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))))))
 (check-sat)
@@ -3791,7 +3791,7 @@
       (=
         (Seq_index
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-          __rw_i1@44@01)
+          __rw_i6@44@01)
         (Seq_index
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))))
           tid@9@01))
@@ -3801,12 +3801,12 @@
       (and
         (img@19@01 (Seq_index
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-          __rw_i1@44@01))
+          __rw_i6@44@01))
         (Seq_contains
           (Seq_range 0 gsize@8@01)
           (inv@18@01 (Seq_index
             ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-            __rw_i1@44@01))))
+            __rw_i6@44@01))))
       (/ (to_real 1) (to_real gsize@8@01))
       $Perm.No)))))
 (check-sat)
@@ -3816,11 +3816,11 @@
 ; (get-info :all-statistics)
 (pop) ; 8
 (push) ; 8
-; [else-branch: 14 | !(0 <= __rw_i1@44@01 - offset@36@01 && __rw_i1@44@01 - offset@36@01 < 0)]
+; [else-branch: 14 | !(0 <= __rw_i6@44@01 - offset@36@01 && __rw_i6@44@01 - offset@36@01 < 0)]
 (assert (not
   (and
-    (<= 0 (- __rw_i1@44@01 offset@36@01))
-    (< (- __rw_i1@44@01 offset@36@01) 0))))
+    (<= 0 (- __rw_i6@44@01 offset@36@01))
+    (< (- __rw_i6@44@01 offset@36@01) 0))))
 (pop) ; 8
 (pop) ; 7
 ; Joined path conditions
@@ -3853,11 +3853,11 @@
 (assert (or
   (not
     (and
-      (<= 0 (- __rw_i1@44@01 offset@36@01))
-      (< (- __rw_i1@44@01 offset@36@01) 0)))
+      (<= 0 (- __rw_i6@44@01 offset@36@01))
+      (< (- __rw_i6@44@01 offset@36@01) 0)))
   (and
-    (<= 0 (- __rw_i1@44@01 offset@36@01))
-    (< (- __rw_i1@44@01 offset@36@01) 0))))
+    (<= 0 (- __rw_i6@44@01 offset@36@01))
+    (< (- __rw_i6@44@01 offset@36@01) 0))))
 (pop) ; 6
 (pop) ; 5
 ; Joined path conditions
@@ -3888,16 +3888,16 @@
   :qid |qp.fvfValDef7|)))
 (assert (and
   (or
-    (<= 0 (- __rw_i1@44@01 offset@36@01))
-    (not (<= 0 (- __rw_i1@44@01 offset@36@01))))
+    (<= 0 (- __rw_i6@44@01 offset@36@01))
+    (not (<= 0 (- __rw_i6@44@01 offset@36@01))))
   (or
     (not
       (and
-        (<= 0 (- __rw_i1@44@01 offset@36@01))
-        (< (- __rw_i1@44@01 offset@36@01) 0)))
+        (<= 0 (- __rw_i6@44@01 offset@36@01))
+        (< (- __rw_i6@44@01 offset@36@01) 0)))
     (and
-      (<= 0 (- __rw_i1@44@01 offset@36@01))
-      (< (- __rw_i1@44@01 offset@36@01) 0)))))
+      (<= 0 (- __rw_i6@44@01 offset@36@01))
+      (< (- __rw_i6@44@01 offset@36@01) 0)))))
 (pop) ; 4
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -3926,60 +3926,60 @@
   :pattern (($FVF.lookup_Integer_value ($SortWrappers.$SnapTo$FVF<Integer_value> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))))))))) r))
   :qid |qp.fvfValDef7|)))
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((__rw_i1@44@01 Int)) (!
+(assert (forall ((__rw_i6@44@01 Int)) (!
   (and
     (or
-      (<= 0 (- __rw_i1@44@01 offset@36@01))
-      (not (<= 0 (- __rw_i1@44@01 offset@36@01))))
+      (<= 0 (- __rw_i6@44@01 offset@36@01))
+      (not (<= 0 (- __rw_i6@44@01 offset@36@01))))
     (or
       (not
         (and
-          (<= 0 (- __rw_i1@44@01 offset@36@01))
-          (< (- __rw_i1@44@01 offset@36@01) 0)))
+          (<= 0 (- __rw_i6@44@01 offset@36@01))
+          (< (- __rw_i6@44@01 offset@36@01) 0)))
       (and
-        (<= 0 (- __rw_i1@44@01 offset@36@01))
-        (< (- __rw_i1@44@01 offset@36@01) 0))))
+        (<= 0 (- __rw_i6@44@01 offset@36@01))
+        (< (- __rw_i6@44@01 offset@36@01) 0))))
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-    __rw_i1@44@01))
+    __rw_i6@44@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.vpr@56@13@56@121-aux|)))
 (push) ; 4
-(assert (not (forall ((__rw_i1@44@01 Int)) (!
+(assert (not (forall ((__rw_i6@44@01 Int)) (!
   (=>
     (and
-      (<= 0 (- __rw_i1@44@01 offset@36@01))
-      (< (- __rw_i1@44@01 offset@36@01) 0))
+      (<= 0 (- __rw_i6@44@01 offset@36@01))
+      (< (- __rw_i6@44@01 offset@36@01) 0))
     (>=
       ($FVF.lookup_Integer_value (as sm@42@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))))
         tid@9@01))
       ($FVF.lookup_Integer_value (as sm@42@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-        __rw_i1@44@01))))
+        __rw_i6@44@01))))
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-    __rw_i1@44@01))
+    __rw_i6@44@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.vpr@56@13@56@121|))))
 (check-sat)
 ; unsat
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (forall ((__rw_i1@44@01 Int)) (!
+(assert (forall ((__rw_i6@44@01 Int)) (!
   (=>
     (and
-      (<= 0 (- __rw_i1@44@01 offset@36@01))
-      (< (- __rw_i1@44@01 offset@36@01) 0))
+      (<= 0 (- __rw_i6@44@01 offset@36@01))
+      (< (- __rw_i6@44@01 offset@36@01) 0))
     (>=
       ($FVF.lookup_Integer_value (as sm@42@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))))
         tid@9@01))
       ($FVF.lookup_Integer_value (as sm@42@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-        __rw_i1@44@01))))
+        __rw_i6@44@01))))
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-    __rw_i1@44@01))
+    __rw_i6@44@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.vpr@56@13@56@121|)))
 (declare-const k@45@01 Int)
 (push) ; 4
@@ -4496,7 +4496,7 @@
       (= (/ (to_real 1) (to_real gsize@8@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@8@01)))))
   
-  :qid |quant-u-6546|))))
+  :qid |quant-u-17952|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -4546,7 +4546,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
     i@51@01))
-  :qid |quant-u-6547|)))
+  :qid |quant-u-17953|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -4741,10 +4741,10 @@
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))))))))))))))
   $Snap.unit))
-; [eval] (forall __rw_i2: Int :: { this.src[__rw_i2] } true ==> 0 <= __rw_i2 - offset && __rw_i2 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i2].Integer_value)
-(declare-const __rw_i2@55@01 Int)
+; [eval] (forall __rw_i7: Int :: { this.src[__rw_i7] } true ==> 0 <= __rw_i7 - offset && __rw_i7 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i7].Integer_value)
+(declare-const __rw_i7@55@01 Int)
 (push) ; 7
-; [eval] true ==> 0 <= __rw_i2 - offset && __rw_i2 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i2].Integer_value
+; [eval] true ==> 0 <= __rw_i7 - offset && __rw_i7 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i7].Integer_value
 (push) ; 8
 (push) ; 9
 (set-option :timeout 10)
@@ -4759,38 +4759,38 @@
 (set-option :timeout 0)
 (push) ; 9
 ; [then-branch: 24 | True]
-; [eval] 0 <= __rw_i2 - offset && __rw_i2 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i2].Integer_value
-; [eval] 0 <= __rw_i2 - offset && __rw_i2 - offset < k
-; [eval] 0 <= __rw_i2 - offset
-; [eval] __rw_i2 - offset
+; [eval] 0 <= __rw_i7 - offset && __rw_i7 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i7].Integer_value
+; [eval] 0 <= __rw_i7 - offset && __rw_i7 - offset < k
+; [eval] 0 <= __rw_i7 - offset
+; [eval] __rw_i7 - offset
 (push) ; 10
-; [then-branch: 25 | !(0 <= __rw_i2@55@01 - offset@36@01) | live]
-; [else-branch: 25 | 0 <= __rw_i2@55@01 - offset@36@01 | live]
+; [then-branch: 25 | !(0 <= __rw_i7@55@01 - offset@36@01) | live]
+; [else-branch: 25 | 0 <= __rw_i7@55@01 - offset@36@01 | live]
 (push) ; 11
-; [then-branch: 25 | !(0 <= __rw_i2@55@01 - offset@36@01)]
-(assert (not (<= 0 (- __rw_i2@55@01 offset@36@01))))
+; [then-branch: 25 | !(0 <= __rw_i7@55@01 - offset@36@01)]
+(assert (not (<= 0 (- __rw_i7@55@01 offset@36@01))))
 (pop) ; 11
 (push) ; 11
-; [else-branch: 25 | 0 <= __rw_i2@55@01 - offset@36@01]
-(assert (<= 0 (- __rw_i2@55@01 offset@36@01)))
-; [eval] __rw_i2 - offset < k
-; [eval] __rw_i2 - offset
+; [else-branch: 25 | 0 <= __rw_i7@55@01 - offset@36@01]
+(assert (<= 0 (- __rw_i7@55@01 offset@36@01)))
+; [eval] __rw_i7 - offset < k
+; [eval] __rw_i7 - offset
 (pop) ; 11
 (pop) ; 10
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (<= 0 (- __rw_i2@55@01 offset@36@01))
-  (not (<= 0 (- __rw_i2@55@01 offset@36@01)))))
+  (<= 0 (- __rw_i7@55@01 offset@36@01))
+  (not (<= 0 (- __rw_i7@55@01 offset@36@01)))))
 (push) ; 10
-; [then-branch: 26 | 0 <= __rw_i2@55@01 - offset@36@01 && __rw_i2@55@01 - offset@36@01 < k@45@01 | live]
-; [else-branch: 26 | !(0 <= __rw_i2@55@01 - offset@36@01 && __rw_i2@55@01 - offset@36@01 < k@45@01) | live]
+; [then-branch: 26 | 0 <= __rw_i7@55@01 - offset@36@01 && __rw_i7@55@01 - offset@36@01 < k@45@01 | live]
+; [else-branch: 26 | !(0 <= __rw_i7@55@01 - offset@36@01 && __rw_i7@55@01 - offset@36@01 < k@45@01) | live]
 (push) ; 11
-; [then-branch: 26 | 0 <= __rw_i2@55@01 - offset@36@01 && __rw_i2@55@01 - offset@36@01 < k@45@01]
+; [then-branch: 26 | 0 <= __rw_i7@55@01 - offset@36@01 && __rw_i7@55@01 - offset@36@01 < k@45@01]
 (assert (and
-  (<= 0 (- __rw_i2@55@01 offset@36@01))
-  (< (- __rw_i2@55@01 offset@36@01) k@45@01)))
-; [eval] this.dst[tid].Integer_value >= this.src[__rw_i2].Integer_value
+  (<= 0 (- __rw_i7@55@01 offset@36@01))
+  (< (- __rw_i7@55@01 offset@36@01) k@45@01)))
+; [eval] this.dst[tid].Integer_value >= this.src[__rw_i7].Integer_value
 ; [eval] this.dst[tid]
 (push) ; 12
 (set-option :timeout 10)
@@ -4875,7 +4875,7 @@
 (pop) ; 12
 ; 0.00s
 ; (get-info :all-statistics)
-; [eval] this.src[__rw_i2]
+; [eval] this.src[__rw_i7]
 (push) ; 12
 (set-option :timeout 10)
 (assert (not (< $Perm.No $k@47@01)))
@@ -4886,7 +4886,7 @@
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 12
-(assert (not (>= __rw_i2@55@01 0)))
+(assert (not (>= __rw_i7@55@01 0)))
 (check-sat)
 ; unsat
 (pop) ; 12
@@ -4894,7 +4894,7 @@
 ; (get-info :all-statistics)
 (push) ; 12
 (assert (not (<
-  __rw_i2@55@01
+  __rw_i7@55@01
   (Seq_length
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))))))
 (check-sat)
@@ -4936,19 +4936,19 @@
       (and
         (img@53@01 (Seq_index
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
-          __rw_i2@55@01))
+          __rw_i7@55@01))
         (Seq_contains
           (Seq_range 0 gsize@8@01)
           (inv@52@01 (Seq_index
             ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
-            __rw_i2@55@01))))
+            __rw_i7@55@01))))
       (/ (to_real 1) (to_real gsize@8@01))
       $Perm.No)
     (ite
       (=
         (Seq_index
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
-          __rw_i2@55@01)
+          __rw_i7@55@01)
         (Seq_index
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))))
           tid@9@01))
@@ -4961,11 +4961,11 @@
 ; (get-info :all-statistics)
 (pop) ; 11
 (push) ; 11
-; [else-branch: 26 | !(0 <= __rw_i2@55@01 - offset@36@01 && __rw_i2@55@01 - offset@36@01 < k@45@01)]
+; [else-branch: 26 | !(0 <= __rw_i7@55@01 - offset@36@01 && __rw_i7@55@01 - offset@36@01 < k@45@01)]
 (assert (not
   (and
-    (<= 0 (- __rw_i2@55@01 offset@36@01))
-    (< (- __rw_i2@55@01 offset@36@01) k@45@01))))
+    (<= 0 (- __rw_i7@55@01 offset@36@01))
+    (< (- __rw_i7@55@01 offset@36@01) k@45@01))))
 (pop) ; 11
 (pop) ; 10
 ; Joined path conditions
@@ -5016,11 +5016,11 @@
 (assert (or
   (not
     (and
-      (<= 0 (- __rw_i2@55@01 offset@36@01))
-      (< (- __rw_i2@55@01 offset@36@01) k@45@01)))
+      (<= 0 (- __rw_i7@55@01 offset@36@01))
+      (< (- __rw_i7@55@01 offset@36@01) k@45@01)))
   (and
-    (<= 0 (- __rw_i2@55@01 offset@36@01))
-    (< (- __rw_i2@55@01 offset@36@01) k@45@01))))
+    (<= 0 (- __rw_i7@55@01 offset@36@01))
+    (< (- __rw_i7@55@01 offset@36@01) k@45@01))))
 (pop) ; 9
 (pop) ; 8
 ; Joined path conditions
@@ -5069,16 +5069,16 @@
   :qid |qp.resPrmSumDef11|)))
 (assert (and
   (or
-    (<= 0 (- __rw_i2@55@01 offset@36@01))
-    (not (<= 0 (- __rw_i2@55@01 offset@36@01))))
+    (<= 0 (- __rw_i7@55@01 offset@36@01))
+    (not (<= 0 (- __rw_i7@55@01 offset@36@01))))
   (or
     (not
       (and
-        (<= 0 (- __rw_i2@55@01 offset@36@01))
-        (< (- __rw_i2@55@01 offset@36@01) k@45@01)))
+        (<= 0 (- __rw_i7@55@01 offset@36@01))
+        (< (- __rw_i7@55@01 offset@36@01) k@45@01)))
     (and
-      (<= 0 (- __rw_i2@55@01 offset@36@01))
-      (< (- __rw_i2@55@01 offset@36@01) k@45@01)))))
+      (<= 0 (- __rw_i7@55@01 offset@36@01))
+      (< (- __rw_i7@55@01 offset@36@01) k@45@01)))))
 (pop) ; 7
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -5125,38 +5125,38 @@
   :pattern (($FVF.perm_Integer_value (as pm@57@01  $FPM) r))
   :qid |qp.resPrmSumDef11|)))
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((__rw_i2@55@01 Int)) (!
+(assert (forall ((__rw_i7@55@01 Int)) (!
   (and
     (or
-      (<= 0 (- __rw_i2@55@01 offset@36@01))
-      (not (<= 0 (- __rw_i2@55@01 offset@36@01))))
+      (<= 0 (- __rw_i7@55@01 offset@36@01))
+      (not (<= 0 (- __rw_i7@55@01 offset@36@01))))
     (or
       (not
         (and
-          (<= 0 (- __rw_i2@55@01 offset@36@01))
-          (< (- __rw_i2@55@01 offset@36@01) k@45@01)))
+          (<= 0 (- __rw_i7@55@01 offset@36@01))
+          (< (- __rw_i7@55@01 offset@36@01) k@45@01)))
       (and
-        (<= 0 (- __rw_i2@55@01 offset@36@01))
-        (< (- __rw_i2@55@01 offset@36@01) k@45@01))))
+        (<= 0 (- __rw_i7@55@01 offset@36@01))
+        (< (- __rw_i7@55@01 offset@36@01) k@45@01))))
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
-    __rw_i2@55@01))
+    __rw_i7@55@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.vpr@76@18@76@126-aux|)))
-(assert (forall ((__rw_i2@55@01 Int)) (!
+(assert (forall ((__rw_i7@55@01 Int)) (!
   (=>
     (and
-      (<= 0 (- __rw_i2@55@01 offset@36@01))
-      (< (- __rw_i2@55@01 offset@36@01) k@45@01))
+      (<= 0 (- __rw_i7@55@01 offset@36@01))
+      (< (- __rw_i7@55@01 offset@36@01) k@45@01))
     (>=
       ($FVF.lookup_Integer_value (as sm@56@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))))
         tid@9@01))
       ($FVF.lookup_Integer_value (as sm@56@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
-        __rw_i2@55@01))))
+        __rw_i7@55@01))))
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
-    __rw_i2@55@01))
+    __rw_i7@55@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.vpr@76@18@76@126|)))
 (pop) ; 6
 (pop) ; 5
@@ -5622,7 +5622,7 @@
       (= (/ (to_real 1) (to_real gsize@8@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@8@01)))))
   
-  :qid |quant-u-6548|))))
+  :qid |quant-u-17954|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -5745,7 +5745,7 @@
       (pTaken@65@01 r))
     $Perm.No)
   
-  :qid |quant-u-6550|))))
+  :qid |quant-u-17956|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -5767,7 +5767,7 @@
           (inv@63@01 r))))
     (= (- (/ (to_real 1) (to_real gsize@8@01)) (pTaken@65@01 r)) $Perm.No))
   
-  :qid |quant-u-6551|))))
+  :qid |quant-u-17957|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -5899,7 +5899,7 @@
         tid@9@01))
     (= (- $Perm.Write (pTaken@67@01 r)) $Perm.No))
   
-  :qid |quant-u-6554|))))
+  :qid |quant-u-17960|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -5918,10 +5918,10 @@
 ; 0.00s
 ; (get-info :all-statistics)
 (assert (<= 0 half@35@01))
-; [eval] (forall __rw_i2: Int :: { this.src[__rw_i2] } true ==> 0 <= __rw_i2 - offset && __rw_i2 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i2].Integer_value)
-(declare-const __rw_i2@68@01 Int)
+; [eval] (forall __rw_i7: Int :: { this.src[__rw_i7] } true ==> 0 <= __rw_i7 - offset && __rw_i7 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i7].Integer_value)
+(declare-const __rw_i7@68@01 Int)
 (push) ; 7
-; [eval] true ==> 0 <= __rw_i2 - offset && __rw_i2 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i2].Integer_value
+; [eval] true ==> 0 <= __rw_i7 - offset && __rw_i7 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i7].Integer_value
 (push) ; 8
 (push) ; 9
 (set-option :timeout 10)
@@ -5936,36 +5936,36 @@
 (set-option :timeout 0)
 (push) ; 9
 ; [then-branch: 36 | True]
-; [eval] 0 <= __rw_i2 - offset && __rw_i2 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i2].Integer_value
-; [eval] 0 <= __rw_i2 - offset && __rw_i2 - offset < k
-; [eval] 0 <= __rw_i2 - offset
-; [eval] __rw_i2 - offset
+; [eval] 0 <= __rw_i7 - offset && __rw_i7 - offset < k ==> this.dst[tid].Integer_value >= this.src[__rw_i7].Integer_value
+; [eval] 0 <= __rw_i7 - offset && __rw_i7 - offset < k
+; [eval] 0 <= __rw_i7 - offset
+; [eval] __rw_i7 - offset
 (push) ; 10
-; [then-branch: 37 | !(0 <= __rw_i2@68@01 - offset@36@01) | live]
-; [else-branch: 37 | 0 <= __rw_i2@68@01 - offset@36@01 | live]
+; [then-branch: 37 | !(0 <= __rw_i7@68@01 - offset@36@01) | live]
+; [else-branch: 37 | 0 <= __rw_i7@68@01 - offset@36@01 | live]
 (push) ; 11
-; [then-branch: 37 | !(0 <= __rw_i2@68@01 - offset@36@01)]
-(assert (not (<= 0 (- __rw_i2@68@01 offset@36@01))))
+; [then-branch: 37 | !(0 <= __rw_i7@68@01 - offset@36@01)]
+(assert (not (<= 0 (- __rw_i7@68@01 offset@36@01))))
 (pop) ; 11
 (push) ; 11
-; [else-branch: 37 | 0 <= __rw_i2@68@01 - offset@36@01]
-(assert (<= 0 (- __rw_i2@68@01 offset@36@01)))
-; [eval] __rw_i2 - offset < k
-; [eval] __rw_i2 - offset
+; [else-branch: 37 | 0 <= __rw_i7@68@01 - offset@36@01]
+(assert (<= 0 (- __rw_i7@68@01 offset@36@01)))
+; [eval] __rw_i7 - offset < k
+; [eval] __rw_i7 - offset
 (pop) ; 11
 (pop) ; 10
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (<= 0 (- __rw_i2@68@01 offset@36@01))
-  (not (<= 0 (- __rw_i2@68@01 offset@36@01)))))
+  (<= 0 (- __rw_i7@68@01 offset@36@01))
+  (not (<= 0 (- __rw_i7@68@01 offset@36@01)))))
 (push) ; 10
-; [then-branch: 38 | 0 <= __rw_i2@68@01 - offset@36@01 && __rw_i2@68@01 - offset@36@01 < 0 | live]
-; [else-branch: 38 | !(0 <= __rw_i2@68@01 - offset@36@01 && __rw_i2@68@01 - offset@36@01 < 0) | live]
+; [then-branch: 38 | 0 <= __rw_i7@68@01 - offset@36@01 && __rw_i7@68@01 - offset@36@01 < 0 | live]
+; [else-branch: 38 | !(0 <= __rw_i7@68@01 - offset@36@01 && __rw_i7@68@01 - offset@36@01 < 0) | live]
 (push) ; 11
-; [then-branch: 38 | 0 <= __rw_i2@68@01 - offset@36@01 && __rw_i2@68@01 - offset@36@01 < 0]
-(assert (and (<= 0 (- __rw_i2@68@01 offset@36@01)) (< (- __rw_i2@68@01 offset@36@01) 0)))
-; [eval] this.dst[tid].Integer_value >= this.src[__rw_i2].Integer_value
+; [then-branch: 38 | 0 <= __rw_i7@68@01 - offset@36@01 && __rw_i7@68@01 - offset@36@01 < 0]
+(assert (and (<= 0 (- __rw_i7@68@01 offset@36@01)) (< (- __rw_i7@68@01 offset@36@01) 0)))
+; [eval] this.dst[tid].Integer_value >= this.src[__rw_i7].Integer_value
 ; [eval] this.dst[tid]
 (push) ; 12
 (set-option :timeout 10)
@@ -6050,7 +6050,7 @@
 (pop) ; 12
 ; 0.00s
 ; (get-info :all-statistics)
-; [eval] this.src[__rw_i2]
+; [eval] this.src[__rw_i7]
 (push) ; 12
 (set-option :timeout 10)
 (assert (not (< $Perm.No $k@13@01)))
@@ -6061,7 +6061,7 @@
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 12
-(assert (not (>= __rw_i2@68@01 0)))
+(assert (not (>= __rw_i7@68@01 0)))
 (check-sat)
 ; unsat
 (pop) ; 12
@@ -6069,7 +6069,7 @@
 ; (get-info :all-statistics)
 (push) ; 12
 (assert (not (<
-  __rw_i2@68@01
+  __rw_i7@68@01
   (Seq_length
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))))))
 (check-sat)
@@ -6111,7 +6111,7 @@
       (=
         (Seq_index
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-          __rw_i2@68@01)
+          __rw_i7@68@01)
         (Seq_index
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))))
           tid@9@01))
@@ -6121,12 +6121,12 @@
       (and
         (img@19@01 (Seq_index
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-          __rw_i2@68@01))
+          __rw_i7@68@01))
         (Seq_contains
           (Seq_range 0 gsize@8@01)
           (inv@18@01 (Seq_index
             ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-            __rw_i2@68@01))))
+            __rw_i7@68@01))))
       (/ (to_real 1) (to_real gsize@8@01))
       $Perm.No)))))
 (check-sat)
@@ -6136,11 +6136,11 @@
 ; (get-info :all-statistics)
 (pop) ; 11
 (push) ; 11
-; [else-branch: 38 | !(0 <= __rw_i2@68@01 - offset@36@01 && __rw_i2@68@01 - offset@36@01 < 0)]
+; [else-branch: 38 | !(0 <= __rw_i7@68@01 - offset@36@01 && __rw_i7@68@01 - offset@36@01 < 0)]
 (assert (not
   (and
-    (<= 0 (- __rw_i2@68@01 offset@36@01))
-    (< (- __rw_i2@68@01 offset@36@01) 0))))
+    (<= 0 (- __rw_i7@68@01 offset@36@01))
+    (< (- __rw_i7@68@01 offset@36@01) 0))))
 (pop) ; 11
 (pop) ; 10
 ; Joined path conditions
@@ -6173,11 +6173,11 @@
 (assert (or
   (not
     (and
-      (<= 0 (- __rw_i2@68@01 offset@36@01))
-      (< (- __rw_i2@68@01 offset@36@01) 0)))
+      (<= 0 (- __rw_i7@68@01 offset@36@01))
+      (< (- __rw_i7@68@01 offset@36@01) 0)))
   (and
-    (<= 0 (- __rw_i2@68@01 offset@36@01))
-    (< (- __rw_i2@68@01 offset@36@01) 0))))
+    (<= 0 (- __rw_i7@68@01 offset@36@01))
+    (< (- __rw_i7@68@01 offset@36@01) 0))))
 (pop) ; 9
 (pop) ; 8
 ; Joined path conditions
@@ -6208,16 +6208,16 @@
   :qid |qp.fvfValDef7|)))
 (assert (and
   (or
-    (<= 0 (- __rw_i2@68@01 offset@36@01))
-    (not (<= 0 (- __rw_i2@68@01 offset@36@01))))
+    (<= 0 (- __rw_i7@68@01 offset@36@01))
+    (not (<= 0 (- __rw_i7@68@01 offset@36@01))))
   (or
     (not
       (and
-        (<= 0 (- __rw_i2@68@01 offset@36@01))
-        (< (- __rw_i2@68@01 offset@36@01) 0)))
+        (<= 0 (- __rw_i7@68@01 offset@36@01))
+        (< (- __rw_i7@68@01 offset@36@01) 0)))
     (and
-      (<= 0 (- __rw_i2@68@01 offset@36@01))
-      (< (- __rw_i2@68@01 offset@36@01) 0)))))
+      (<= 0 (- __rw_i7@68@01 offset@36@01))
+      (< (- __rw_i7@68@01 offset@36@01) 0)))))
 (pop) ; 7
 ; Nested auxiliary terms: globals (aux)
 (assert (forall ((r $Ref)) (!
@@ -6246,60 +6246,60 @@
   :pattern (($FVF.lookup_Integer_value ($SortWrappers.$SnapTo$FVF<Integer_value> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))))))))) r))
   :qid |qp.fvfValDef7|)))
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((__rw_i2@68@01 Int)) (!
+(assert (forall ((__rw_i7@68@01 Int)) (!
   (and
     (or
-      (<= 0 (- __rw_i2@68@01 offset@36@01))
-      (not (<= 0 (- __rw_i2@68@01 offset@36@01))))
+      (<= 0 (- __rw_i7@68@01 offset@36@01))
+      (not (<= 0 (- __rw_i7@68@01 offset@36@01))))
     (or
       (not
         (and
-          (<= 0 (- __rw_i2@68@01 offset@36@01))
-          (< (- __rw_i2@68@01 offset@36@01) 0)))
+          (<= 0 (- __rw_i7@68@01 offset@36@01))
+          (< (- __rw_i7@68@01 offset@36@01) 0)))
       (and
-        (<= 0 (- __rw_i2@68@01 offset@36@01))
-        (< (- __rw_i2@68@01 offset@36@01) 0))))
+        (<= 0 (- __rw_i7@68@01 offset@36@01))
+        (< (- __rw_i7@68@01 offset@36@01) 0))))
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-    __rw_i2@68@01))
+    __rw_i7@68@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.vpr@76@18@76@126-aux|)))
 (push) ; 7
-(assert (not (forall ((__rw_i2@68@01 Int)) (!
+(assert (not (forall ((__rw_i7@68@01 Int)) (!
   (=>
     (and
-      (<= 0 (- __rw_i2@68@01 offset@36@01))
-      (< (- __rw_i2@68@01 offset@36@01) 0))
+      (<= 0 (- __rw_i7@68@01 offset@36@01))
+      (< (- __rw_i7@68@01 offset@36@01) 0))
     (>=
       ($FVF.lookup_Integer_value (as sm@42@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))))
         tid@9@01))
       ($FVF.lookup_Integer_value (as sm@42@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-        __rw_i2@68@01))))
+        __rw_i7@68@01))))
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-    __rw_i2@68@01))
+    __rw_i7@68@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.vpr@76@18@76@126|))))
 (check-sat)
 ; unsat
 (pop) ; 7
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (forall ((__rw_i2@68@01 Int)) (!
+(assert (forall ((__rw_i7@68@01 Int)) (!
   (=>
     (and
-      (<= 0 (- __rw_i2@68@01 offset@36@01))
-      (< (- __rw_i2@68@01 offset@36@01) 0))
+      (<= 0 (- __rw_i7@68@01 offset@36@01))
+      (< (- __rw_i7@68@01 offset@36@01) 0))
     (>=
       ($FVF.lookup_Integer_value (as sm@42@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))))
         tid@9@01))
       ($FVF.lookup_Integer_value (as sm@42@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-        __rw_i2@68@01))))
+        __rw_i7@68@01))))
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01)))))))
-    __rw_i2@68@01))
+    __rw_i7@68@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.vpr@76@18@76@126|)))
 ; Loop head block: Execute statements of loop head block (in invariant state)
 (push) ; 7
@@ -6410,38 +6410,38 @@
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))))))))))))))
   $Snap.unit))
-(assert (forall ((__rw_i2@55@01 Int)) (!
+(assert (forall ((__rw_i7@55@01 Int)) (!
   (and
     (or
-      (<= 0 (- __rw_i2@55@01 offset@36@01))
-      (not (<= 0 (- __rw_i2@55@01 offset@36@01))))
+      (<= 0 (- __rw_i7@55@01 offset@36@01))
+      (not (<= 0 (- __rw_i7@55@01 offset@36@01))))
     (or
       (not
         (and
-          (<= 0 (- __rw_i2@55@01 offset@36@01))
-          (< (- __rw_i2@55@01 offset@36@01) k@45@01)))
+          (<= 0 (- __rw_i7@55@01 offset@36@01))
+          (< (- __rw_i7@55@01 offset@36@01) k@45@01)))
       (and
-        (<= 0 (- __rw_i2@55@01 offset@36@01))
-        (< (- __rw_i2@55@01 offset@36@01) k@45@01))))
+        (<= 0 (- __rw_i7@55@01 offset@36@01))
+        (< (- __rw_i7@55@01 offset@36@01) k@45@01))))
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
-    __rw_i2@55@01))
+    __rw_i7@55@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.vpr@76@18@76@126-aux|)))
-(assert (forall ((__rw_i2@55@01 Int)) (!
+(assert (forall ((__rw_i7@55@01 Int)) (!
   (=>
     (and
-      (<= 0 (- __rw_i2@55@01 offset@36@01))
-      (< (- __rw_i2@55@01 offset@36@01) k@45@01))
+      (<= 0 (- __rw_i7@55@01 offset@36@01))
+      (< (- __rw_i7@55@01 offset@36@01) k@45@01))
     (>=
       ($FVF.lookup_Integer_value (as sm@56@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))))
         tid@9@01))
       ($FVF.lookup_Integer_value (as sm@56@01  $FVF<Integer_value>) (Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
-        __rw_i2@55@01))))
+        __rw_i7@55@01))))
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
-    __rw_i2@55@01))
+    __rw_i7@55@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.vpr@76@18@76@126|)))
 (assert (=
   ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01))))))))))))))))
@@ -6482,7 +6482,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@46@01)))))))
     i@51@01))
-  :qid |quant-u-6547|)))
+  :qid |quant-u-17953|)))
 (assert (forall ((i@51@01 Int)) (!
   (<= $Perm.No (/ (to_real 1) (to_real gsize@8@01)))
   :pattern ((Seq_index
@@ -7433,7 +7433,7 @@
       (= (/ (to_real 1) (to_real gsize@85@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@85@01)))))
   
-  :qid |quant-u-6555|))))
+  :qid |quant-u-17961|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -7483,7 +7483,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@95@01))))))))
     i@100@01))
-  :qid |quant-u-6556|)))
+  :qid |quant-u-17962|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -8090,7 +8090,7 @@
       (= (/ (to_real 1) (to_real gsize@85@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@85@01)))))
   
-  :qid |quant-u-6557|))))
+  :qid |quant-u-17963|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -8140,7 +8140,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@105@01)))))))
     i@108@01))
-  :qid |quant-u-6558|)))
+  :qid |quant-u-17964|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -9025,7 +9025,7 @@
       (= (/ (to_real 1) (to_real gsize@85@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@85@01)))))
   
-  :qid |quant-u-6559|))))
+  :qid |quant-u-17965|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -9075,7 +9075,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@114@01)))))))
     i@117@01))
-  :qid |quant-u-6560|)))
+  :qid |quant-u-17966|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -10824,7 +10824,7 @@
       (= (/ (to_real 1) (to_real gsize@85@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@85@01)))))
   
-  :qid |quant-u-6561|))))
+  :qid |quant-u-17967|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -10874,7 +10874,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@126@01)))))))
     i@129@01))
-  :qid |quant-u-6562|)))
+  :qid |quant-u-17968|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -13007,7 +13007,7 @@
       (= (/ (to_real 1) (to_real gsize@85@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@85@01)))))
   
-  :qid |quant-u-6563|))))
+  :qid |quant-u-17969|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -13057,7 +13057,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@139@01)))))))
     i@142@01))
-  :qid |quant-u-6564|)))
+  :qid |quant-u-17970|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -14164,7 +14164,7 @@
       (= (/ (to_real 1) (to_real gsize@157@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@157@01)))))
   
-  :qid |quant-u-6565|))))
+  :qid |quant-u-17971|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -14214,7 +14214,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second $t@162@01))))
     i@167@01))
-  :qid |quant-u-6566|)))
+  :qid |quant-u-17972|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -14642,7 +14642,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@162@01))))))
     tid@172@01))
-  :qid |quant-u-6568|)))
+  :qid |quant-u-17974|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -14696,7 +14696,7 @@
         (img@169@01 r)
         (Seq_contains (Seq_range 0 gsize@157@01) (inv@168@01 r)))))
   
-  :qid |quant-u-6569|))))
+  :qid |quant-u-17975|))))
 (check-sat)
 ; unknown
 (pop) ; 2
@@ -14923,7 +14923,7 @@
       (= (/ (to_real 1) (to_real gsize@157@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@157@01)))))
   
-  :qid |quant-u-6570|))))
+  :qid |quant-u-17976|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -14973,7 +14973,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second $t@175@01))))
     i@178@01))
-  :qid |quant-u-6571|)))
+  :qid |quant-u-17977|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -15419,7 +15419,7 @@
       (= (/ (to_real 1) (to_real gsize@157@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@157@01)))))
   
-  :qid |quant-u-6572|))))
+  :qid |quant-u-17978|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -15495,7 +15495,7 @@
       ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@162@01))))))
       i@185@01))
   
-  :qid |quant-u-6573|))))
+  :qid |quant-u-17979|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -15562,7 +15562,7 @@
       (pTaken@188@01 r))
     $Perm.No)
   
-  :qid |quant-u-6575|))))
+  :qid |quant-u-17981|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -15584,7 +15584,7 @@
           (inv@186@01 r))))
     (= (- (/ (to_real 1) (to_real gsize@157@01)) (pTaken@188@01 r)) $Perm.No))
   
-  :qid |quant-u-6576|))))
+  :qid |quant-u-17982|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -15697,7 +15697,7 @@
       (pTaken@190@01 r))
     $Perm.No)
   
-  :qid |quant-u-6578|))))
+  :qid |quant-u-17984|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -15709,7 +15709,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@190@01 r) $Perm.No)
   
-  :qid |quant-u-6579|))))
+  :qid |quant-u-17985|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -15728,7 +15728,7 @@
         0))
     (= (- $Perm.Write (pTaken@190@01 r)) $Perm.No))
   
-  :qid |quant-u-6580|))))
+  :qid |quant-u-17986|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -15839,7 +15839,7 @@
       (pTaken@191@01 r))
     $Perm.No)
   
-  :qid |quant-u-6582|))))
+  :qid |quant-u-17988|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -15851,7 +15851,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@191@01 r) $Perm.No)
   
-  :qid |quant-u-6583|))))
+  :qid |quant-u-17989|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -15870,7 +15870,7 @@
         1))
     (= (- $Perm.Write (pTaken@191@01 r)) $Perm.No))
   
-  :qid |quant-u-6584|))))
+  :qid |quant-u-17990|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -16389,7 +16389,7 @@
       (= (/ (to_real 1) (to_real gsize@203@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@203@01)))))
   
-  :qid |quant-u-6585|))))
+  :qid |quant-u-17991|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -16439,7 +16439,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@210@01)))))))
     i@215@01))
-  :qid |quant-u-6586|)))
+  :qid |quant-u-17992|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -16865,7 +16865,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@210@01)))))))))
     _x_tid@220@01))
-  :qid |quant-u-6588|)))
+  :qid |quant-u-17994|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@222@01 r) (Seq_contains (Seq_range 0 gsize@203@01) (inv@221@01 r)))
@@ -16911,7 +16911,7 @@
         (img@217@01 r)
         (Seq_contains (Seq_range 0 gsize@203@01) (inv@216@01 r)))))
   
-  :qid |quant-u-6589|))))
+  :qid |quant-u-17995|))))
 (check-sat)
 ; unknown
 (pop) ; 2
@@ -17960,7 +17960,7 @@
       (= (/ (to_real 1) (to_real gsize@203@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@203@01)))))
   
-  :qid |quant-u-6590|))))
+  :qid |quant-u-17996|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -18010,7 +18010,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@227@01)))))))
     i@230@01))
-  :qid |quant-u-6591|)))
+  :qid |quant-u-17997|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -19436,7 +19436,7 @@
       (= (/ (to_real 1) (to_real gsize@203@01)) $Perm.No)
       (< $Perm.No (/ (to_real 1) (to_real gsize@203@01)))))
   
-  :qid |quant-u-6592|))))
+  :qid |quant-u-17998|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19512,7 +19512,7 @@
       ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@210@01)))))))))
       i@241@01))
   
-  :qid |quant-u-6593|))))
+  :qid |quant-u-17999|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -19577,7 +19577,7 @@
       (pTaken@244@01 r))
     $Perm.No)
   
-  :qid |quant-u-6595|))))
+  :qid |quant-u-18001|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19599,7 +19599,7 @@
           (inv@242@01 r))))
     (= (- (/ (to_real 1) (to_real gsize@203@01)) (pTaken@244@01 r)) $Perm.No))
   
-  :qid |quant-u-6596|))))
+  :qid |quant-u-18002|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19690,7 +19690,7 @@
       (pTaken@246@01 r))
     $Perm.No)
   
-  :qid |quant-u-6598|))))
+  :qid |quant-u-18004|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -19702,7 +19702,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@246@01 r) $Perm.No)
   
-  :qid |quant-u-6599|))))
+  :qid |quant-u-18005|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -19721,7 +19721,7 @@
         0))
     (= (- $Perm.Write (pTaken@246@01 r)) $Perm.No))
   
-  :qid |quant-u-6600|))))
+  :qid |quant-u-18006|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -19802,7 +19802,7 @@
       (pTaken@247@01 r))
     $Perm.No)
   
-  :qid |quant-u-6602|))))
+  :qid |quant-u-18008|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -19814,7 +19814,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@247@01 r) $Perm.No)
   
-  :qid |quant-u-6603|))))
+  :qid |quant-u-18009|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -19833,7 +19833,7 @@
         1))
     (= (- $Perm.Write (pTaken@247@01 r)) $Perm.No))
   
-  :qid |quant-u-6604|))))
+  :qid |quant-u-18010|))))
 (check-sat)
 ; unsat
 (pop) ; 5

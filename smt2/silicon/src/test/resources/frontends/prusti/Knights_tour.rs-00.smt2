@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:28:20
+; Started: 2025-01-26 21:21:41
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1014,25 +1014,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-190|)))
+  :qid |quant-u-245|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-191|)))
+  :qid |quant-u-246|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-210|)))
+  :qid |quant-u-265|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-211|)))
+  :qid |quant-u-266|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-212|)))
+  :qid |quant-u-267|)))
 ; ---------- FUNCTION m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$----------
 (declare-fun result@1@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -1050,21 +1050,21 @@
     (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$%limited s@$)
     (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ s@$))
   :pattern ((m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ s@$))
-  :qid |quant-u-192|)))
+  :qid |quant-u-247|)))
 (assert (forall ((s@$ $Snap)) (!
   (as m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$%stateless  Bool)
   :pattern ((m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-193|)))
+  :qid |quant-u-248|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@1@00 (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$%limited s@$))) (=>
     (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$%precondition s@$)
     (= result@1@00 8)))
   :pattern ((m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-213|)))
+  :qid |quant-u-268|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@1@00 (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$%limited s@$))) true)
   :pattern ((m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-214|)))
+  :qid |quant-u-269|)))
 ; ---------- FUNCTION m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$----------
 (declare-fun _pure_1@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -1100,25 +1100,25 @@
     (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@2@00)
     (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@2@00))
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@2@00))
-  :qid |quant-u-194|)))
+  :qid |quant-u-249|)))
 (assert (forall ((s@$ $Snap) (_pure_1@2@00 $Ref)) (!
   (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@2@00)
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@2@00))
-  :qid |quant-u-195|)))
+  :qid |quant-u-250|)))
 (assert (forall ((s@$ $Snap) (_pure_1@2@00 $Ref)) (!
   (let ((result@3@00 (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@2@00))) (=>
     (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@2@00)
     (and (>= result@3@00 0) (<= 0 result@3@00))))
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@2@00))
-  :qid |quant-u-215|)))
+  :qid |quant-u-270|)))
 (assert (forall ((s@$ $Snap) (_pure_1@2@00 $Ref)) (!
   (let ((result@3@00 (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@2@00))) true)
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@2@00))
-  :qid |quant-u-216|)))
+  :qid |quant-u-271|)))
 (assert (forall ((s@$ $Snap) (_pure_1@2@00 $Ref)) (!
   (let ((result@3@00 (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@2@00))) true)
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecCandidates$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@2@00))
-  :qid |quant-u-217|)))
+  :qid |quant-u-272|)))
 ; ---------- FUNCTION m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$----------
 (declare-fun _pure_1@4@00 () $Ref)
 (declare-fun result@5@00 () Int)
@@ -1154,25 +1154,25 @@
     (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00)
     (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@4@00))
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@4@00))
-  :qid |quant-u-196|)))
+  :qid |quant-u-251|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@4@00)
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))
-  :qid |quant-u-197|)))
+  :qid |quant-u-252|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (let ((result@5@00 (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))) (=>
     (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@4@00)
     (and (>= result@5@00 0) (<= 0 result@5@00))))
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))
-  :qid |quant-u-218|)))
+  :qid |quant-u-273|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (let ((result@5@00 (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))) true)
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))
-  :qid |quant-u-219|)))
+  :qid |quant-u-274|)))
 (assert (forall ((s@$ $Snap) (_pure_1@4@00 $Ref)) (!
   (let ((result@5@00 (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))) true)
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecWrapperI32I32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@4@00))
-  :qid |quant-u-220|)))
+  :qid |quant-u-275|)))
 ; ---------- FUNCTION m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$----------
 (declare-fun _pure_1@6@00 () $Ref)
 (declare-fun _pure_2@7@00 () Int)
@@ -1252,19 +1252,19 @@
     (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00 _pure_3@8@00)
     (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00 _pure_3@8@00))
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ s@$ _pure_1@6@00 _pure_2@7@00 _pure_3@8@00))
-  :qid |quant-u-198|)))
+  :qid |quant-u-253|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref) (_pure_2@7@00 Int) (_pure_3@8@00 Int)) (!
   (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%stateless _pure_1@6@00 _pure_2@7@00 _pure_3@8@00)
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00 _pure_3@8@00))
-  :qid |quant-u-199|)))
+  :qid |quant-u-254|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref) (_pure_2@7@00 Int) (_pure_3@8@00 Int)) (!
   (let ((result@9@00 (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00 _pure_3@8@00))) true)
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00 _pure_3@8@00))
-  :qid |quant-u-221|)))
+  :qid |quant-u-276|)))
 (assert (forall ((s@$ $Snap) (_pure_1@6@00 $Ref) (_pure_2@7@00 Int) (_pure_3@8@00 Int)) (!
   (let ((result@9@00 (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00 _pure_3@8@00))) true)
   :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited s@$ _pure_1@6@00 _pure_2@7@00 _pure_3@8@00))
-  :qid |quant-u-222|)))
+  :qid |quant-u-277|)))
 ; ---------- FUNCTION builtin$unreach_bool__$TY$__$bool$----------
 (declare-fun result@10@00 () Bool)
 ; ----- Well-definedness of specifications -----
@@ -1277,11 +1277,11 @@
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-200|)))
+  :qid |quant-u-255|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-201|)))
+  :qid |quant-u-256|)))
 ; ---------- FUNCTION m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$----------
 (declare-fun self@11@00 () $Ref)
 (declare-fun result@12@00 () Int)
@@ -1315,21 +1315,21 @@
     (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@11@00)
     (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$ s@$ self@11@00))
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$ s@$ self@11@00))
-  :qid |quant-u-202|)))
+  :qid |quant-u-257|)))
 (assert (forall ((s@$ $Snap) (self@11@00 $Ref)) (!
   (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%stateless self@11@00)
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@11@00))
-  :qid |quant-u-203|)))
+  :qid |quant-u-258|)))
 (assert (forall ((s@$ $Snap) (self@11@00 $Ref)) (!
   (let ((result@12@00 (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@11@00))) (=>
     (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%precondition s@$ self@11@00)
     (and (<= 0 result@12@00) (<= result@12@00 1))))
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@11@00))
-  :qid |quant-u-223|)))
+  :qid |quant-u-278|)))
 (assert (forall ((s@$ $Snap) (self@11@00 $Ref)) (!
   (let ((result@12@00 (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@11@00))) true)
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@11@00))
-  :qid |quant-u-224|)))
+  :qid |quant-u-279|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (read$%precondition $Snap.unit))
@@ -1577,11 +1577,11 @@
       (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$ s@$ self@11@00)
       ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$ s@$ self@11@00))
-  :qid |quant-u-225|)))
+  :qid |quant-u-280|)))
 (assert (forall ((s@$ $Snap) (self@11@00 $Ref)) (!
   true
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$ s@$ self@11@00))
-  :qid |quant-u-226|)))
+  :qid |quant-u-281|)))
 ; ---------- FUNCTION builtin$undef_bool__$TY$__$bool$----------
 (declare-fun result@13@00 () Bool)
 ; ----- Well-definedness of specifications -----
@@ -1592,11 +1592,11 @@
     (builtin$undef_bool__$TY$__$bool$%limited s@$)
     (builtin$undef_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$undef_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-204|)))
+  :qid |quant-u-259|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$undef_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$undef_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-205|)))
+  :qid |quant-u-260|)))
 ; ---------- FUNCTION m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$----------
 (declare-fun self@14@00 () $Ref)
 (declare-fun result@15@00 () Int)
@@ -1630,21 +1630,21 @@
     (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@14@00)
     (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$ s@$ self@14@00))
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$ s@$ self@14@00))
-  :qid |quant-u-206|)))
+  :qid |quant-u-261|)))
 (assert (forall ((s@$ $Snap) (self@14@00 $Ref)) (!
   (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%stateless self@14@00)
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@14@00))
-  :qid |quant-u-207|)))
+  :qid |quant-u-262|)))
 (assert (forall ((s@$ $Snap) (self@14@00 $Ref)) (!
   (let ((result@15@00 (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@14@00))) (=>
     (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%precondition s@$ self@14@00)
     (and (<= 0 result@15@00) (<= result@15@00 1))))
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@14@00))
-  :qid |quant-u-227|)))
+  :qid |quant-u-282|)))
 (assert (forall ((s@$ $Snap) (self@14@00 $Ref)) (!
   (let ((result@15@00 (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@14@00))) true)
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$%limited s@$ self@14@00))
-  :qid |quant-u-228|)))
+  :qid |quant-u-283|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (read$%precondition $Snap.unit))
@@ -1892,11 +1892,11 @@
       (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$ s@$ self@14@00)
       ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$ s@$ self@14@00))
-  :qid |quant-u-229|)))
+  :qid |quant-u-284|)))
 (assert (forall ((s@$ $Snap) (self@14@00 $Ref)) (!
   true
   :pattern ((m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$discriminant$$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$m_Knights_tour$$Board$opensqu$0$closesqu$$_beg_$_end_$_end_$$int$ s@$ self@14@00))
-  :qid |quant-u-230|)))
+  :qid |quant-u-285|)))
 ; ---------- FUNCTION m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$----------
 (declare-fun _pure_1@16@00 () $Ref)
 (declare-fun result@17@00 () Bool)
@@ -1926,19 +1926,19 @@
     (m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$%limited s@$ _pure_1@16@00)
     (m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$ s@$ _pure_1@16@00))
   :pattern ((m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$ s@$ _pure_1@16@00))
-  :qid |quant-u-208|)))
+  :qid |quant-u-263|)))
 (assert (forall ((s@$ $Snap) (_pure_1@16@00 $Ref)) (!
   (m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$%stateless _pure_1@16@00)
   :pattern ((m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$%limited s@$ _pure_1@16@00))
-  :qid |quant-u-209|)))
+  :qid |quant-u-264|)))
 (assert (forall ((s@$ $Snap) (_pure_1@16@00 $Ref)) (!
   (let ((result@17@00 (m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$%limited s@$ _pure_1@16@00))) true)
   :pattern ((m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$%limited s@$ _pure_1@16@00))
-  :qid |quant-u-231|)))
+  :qid |quant-u-286|)))
 (assert (forall ((s@$ $Snap) (_pure_1@16@00 $Ref)) (!
   (let ((result@17@00 (m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$%limited s@$ _pure_1@16@00))) true)
   :pattern ((m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$%limited s@$ _pure_1@16@00))
-  :qid |quant-u-232|)))
+  :qid |quant-u-287|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -5477,7 +5477,7 @@
                         $Snap.unit))))))))))))
   :pattern ((m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$ s@$ _pure_1@16@00))
   :pattern ((m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$%stateless _pure_1@16@00) (m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_%trigger ($Snap.first s@$) _pure_1@16@00))
-  :qid |quant-u-233|)))
+  :qid |quant-u-288|)))
 (assert (forall ((s@$ $Snap) (_pure_1@16@00 $Ref)) (!
   (=>
     (and
@@ -5532,7 +5532,7 @@
               $Snap.unit
               $Snap.unit)))))))
   :pattern ((m_Knights_tour$$valid$opensqu$0$closesqu$__$TY$__m_core$$option$opensqu$0$closesqu$$$Option$opensqu$0$closesqu$$_beg_$tuple2$i32$m_Knights_tour$$Point$opensqu$0$closesqu$$_beg_$_end_$_end_$$bool$ s@$ _pure_1@16@00))
-  :qid |quant-u-234|)))
+  :qid |quant-u-289|)))
 ; ---------- DeadBorrowToken$ ----------
 (declare-const borrow@29@00 Int)
 ; ---------- bool ----------

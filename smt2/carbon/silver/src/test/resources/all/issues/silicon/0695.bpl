@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:52
+// Date:         2025-01-26 21:42:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0695.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0695-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_38: Ref, f_44: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_38, f_44] }
-  Heap[o_38, $allocated] ==> Heap[Heap[o_38, f_44], $allocated]
+axiom (forall o_47: Ref, f_65: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_47, f_65] }
+  Heap[o_47, $allocated] ==> Heap[Heap[o_47, f_65], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_39: Ref, f_45: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_39, f_45] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_39, f_45) ==> Heap[o_39, f_45] == ExhaleHeap[o_39, f_45]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_36: Ref, f_50: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_36, f_50] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_36, f_50) ==> Heap[o_36, f_50] == ExhaleHeap[o_36, f_50]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_15: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_15), ExhaleHeap[null, PredicateMaskField(pm_f_15)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_15) && IsPredicateField(pm_f_15) ==> Heap[null, PredicateMaskField(pm_f_15)] == ExhaleHeap[null, PredicateMaskField(pm_f_15)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_28), ExhaleHeap[null, PredicateMaskField(pm_f_28)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsPredicateField(pm_f_28) ==> Heap[null, PredicateMaskField(pm_f_28)] == ExhaleHeap[null, PredicateMaskField(pm_f_28)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_15: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_15) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_15) && IsPredicateField(pm_f_15) ==> (forall <A, B> o2_15: Ref, f_45: (Field A B) ::
-    { ExhaleHeap[o2_15, f_45] }
-    Heap[null, PredicateMaskField(pm_f_15)][o2_15, f_45] ==> Heap[o2_15, f_45] == ExhaleHeap[o2_15, f_45]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_28) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsPredicateField(pm_f_28) ==> (forall <A, B> o2_28: Ref, f_50: (Field A B) ::
+    { ExhaleHeap[o2_28, f_50] }
+    Heap[null, PredicateMaskField(pm_f_28)][o2_28, f_50] ==> Heap[o2_28, f_50] == ExhaleHeap[o2_28, f_50]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_15: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_15), ExhaleHeap[null, WandMaskField(pm_f_15)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_15) && IsWandField(pm_f_15) ==> Heap[null, WandMaskField(pm_f_15)] == ExhaleHeap[null, WandMaskField(pm_f_15)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_28), ExhaleHeap[null, WandMaskField(pm_f_28)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsWandField(pm_f_28) ==> Heap[null, WandMaskField(pm_f_28)] == ExhaleHeap[null, WandMaskField(pm_f_28)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_15: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_15) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_15) && IsWandField(pm_f_15) ==> (forall <A, B> o2_15: Ref, f_45: (Field A B) ::
-    { ExhaleHeap[o2_15, f_45] }
-    Heap[null, WandMaskField(pm_f_15)][o2_15, f_45] ==> Heap[o2_15, f_45] == ExhaleHeap[o2_15, f_45]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_28: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_28) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_28) && IsWandField(pm_f_28) ==> (forall <A, B> o2_28: Ref, f_50: (Field A B) ::
+    { ExhaleHeap[o2_28, f_50] }
+    Heap[null, WandMaskField(pm_f_28)][o2_28, f_50] ==> Heap[o2_28, f_50] == ExhaleHeap[o2_28, f_50]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_39: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_39, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_39, $allocated] ==> ExhaleHeap[o_39, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_36: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_36, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_36, $allocated] ==> ExhaleHeap[o_36, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_38: Ref, f_40: (Field A B), v: B ::
-  { Heap[o_38, f_40:=v] }
-  succHeap(Heap, Heap[o_38, f_40:=v])
+axiom (forall <A, B> Heap: HeapType, o_47: Ref, f_20: (Field A B), v: B ::
+  { Heap[o_47, f_20:=v] }
+  succHeap(Heap, Heap[o_47, f_20:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,11 +145,11 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(x$0_2: Ref): bool;
-function  neverTriggered2(x$0_6: Ref): bool;
+function  neverTriggered2(x$0_6_1: Ref): bool;
 function  neverTriggered3(x_7: Ref): bool;
 function  neverTriggered4(x_15_2: Ref): bool;
 function  neverTriggered5(x$0_2: Ref): bool;
-function  neverTriggered6(x$0_6: Ref): bool;
+function  neverTriggered6(x$0_6_1: Ref): bool;
 function  neverTriggered7(x$0_12: Ref): bool;
 function  neverTriggered8(x$0_17: Ref): bool;
 function  neverTriggered9(x_1: Ref): bool;
@@ -164,7 +164,7 @@ function  invRecv4(x_16_1_1: Ref): Ref;
 function  invRecv5(x_1_1_1: Ref): Ref;
 function  invRecv6(x_2_1: Ref): Ref;
 function  invRecv7(x_3_1_1: Ref): Ref;
-function  invRecv8(x_4_1_1: Ref): Ref;
+function  invRecv8(x_4_1: Ref): Ref;
 function  invRecv9(x_2_1: Ref): Ref;
 // ==================================================
 // Functions used to represent the range of the projection of each QP instance onto its receiver expressions for quantified permissions during inhale and exhale
@@ -177,7 +177,7 @@ function  qpRange4(x_16_1_1: Ref): bool;
 function  qpRange5(x_1_1_1: Ref): bool;
 function  qpRange6(x_2_1: Ref): bool;
 function  qpRange7(x_3_1_1: Ref): bool;
-function  qpRange8(x_4_1_1: Ref): bool;
+function  qpRange8(x_4_1: Ref): bool;
 function  qpRange9(x_2_1: Ref): bool;
 
 // ==================================================
@@ -589,47 +589,47 @@ axiom !IsWandField(ref_2);
 const unique f_7: Field NormalField Ref;
 axiom !IsPredicateField(f_7);
 axiom !IsWandField(f_7);
-const unique n_10: Field NormalField Ref;
-axiom !IsPredicateField(n_10);
-axiom !IsWandField(n_10);
+const unique n_85: Field NormalField Ref;
+axiom !IsPredicateField(n_85);
+axiom !IsWandField(n_85);
 
 // ==================================================
 // Translation of function valid_lft
 // ==================================================
 
 // Uninterpreted function definitions
-function  valid_lft(Heap: HeapType, lft_1: (Map int (Map Ref Perm))): bool;
-function  valid_lft'(Heap: HeapType, lft_1: (Map int (Map Ref Perm))): bool;
-axiom (forall Heap: HeapType, lft_1: (Map int (Map Ref Perm)) ::
-  { valid_lft(Heap, lft_1) }
-  valid_lft(Heap, lft_1) == valid_lft'(Heap, lft_1) && dummyFunction(valid_lft#triggerStateless(lft_1))
+function  valid_lft(Heap: HeapType, lft: (Map int (Map Ref Perm))): bool;
+function  valid_lft'(Heap: HeapType, lft: (Map int (Map Ref Perm))): bool;
+axiom (forall Heap: HeapType, lft: (Map int (Map Ref Perm)) ::
+  { valid_lft(Heap, lft) }
+  valid_lft(Heap, lft) == valid_lft'(Heap, lft) && dummyFunction(valid_lft#triggerStateless(lft))
 );
-axiom (forall Heap: HeapType, lft_1: (Map int (Map Ref Perm)) ::
-  { valid_lft'(Heap, lft_1) }
-  dummyFunction(valid_lft#triggerStateless(lft_1))
+axiom (forall Heap: HeapType, lft: (Map int (Map Ref Perm)) ::
+  { valid_lft'(Heap, lft) }
+  dummyFunction(valid_lft#triggerStateless(lft))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, lft_1: (Map int (Map Ref Perm)) ::
-  { state(Heap, Mask), valid_lft(Heap, lft_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> valid_lft(Heap, lft_1) == (Map#Domain(lft_1)[0] && Map#Domain(lft_1)[1])
+axiom (forall Heap: HeapType, Mask: MaskType, lft: (Map int (Map Ref Perm)) ::
+  { state(Heap, Mask), valid_lft(Heap, lft) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> valid_lft(Heap, lft) == (Map#Domain(lft)[0] && Map#Domain(lft)[1])
 );
 
 // Framing axioms
-function  valid_lft#frame(frame: FrameType, lft_1: (Map int (Map Ref Perm))): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, lft_1: (Map int (Map Ref Perm)) ::
-  { state(Heap, Mask), valid_lft'(Heap, lft_1) }
-  state(Heap, Mask) ==> valid_lft'(Heap, lft_1) == valid_lft#frame(EmptyFrame, lft_1)
+function  valid_lft#frame(frame: FrameType, lft: (Map int (Map Ref Perm))): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, lft: (Map int (Map Ref Perm)) ::
+  { state(Heap, Mask), valid_lft'(Heap, lft) }
+  state(Heap, Mask) ==> valid_lft'(Heap, lft) == valid_lft#frame(EmptyFrame, lft)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  valid_lft#trigger(frame: FrameType, lft_1: (Map int (Map Ref Perm))): bool;
+function  valid_lft#trigger(frame: FrameType, lft: (Map int (Map Ref Perm))): bool;
 
 // State-independent trigger function
-function  valid_lft#triggerStateless(lft_1: (Map int (Map Ref Perm))): bool;
+function  valid_lft#triggerStateless(lft: (Map int (Map Ref Perm))): bool;
 
 // Check contract well-formedness and postcondition
-procedure valid_lft#definedness(lft_1: (Map int (Map Ref Perm))) returns (Result: bool)
+procedure valid_lft#definedness(lft: (Map int (Map Ref Perm))) returns (Result: bool)
   modifies Heap, Mask;
 {
   
@@ -640,7 +640,7 @@ procedure valid_lft#definedness(lft_1: (Map int (Map Ref Perm))) returns (Result
     assume AssumeFunctionsAbove == 1;
   
   // -- Translate function body
-    Result := Map#Domain(lft_1)[0] && Map#Domain(lft_1)[1];
+    Result := Map#Domain(lft)[0] && Map#Domain(lft)[1];
 }
 
 // ==================================================
@@ -648,38 +648,38 @@ procedure valid_lft#definedness(lft_1: (Map int (Map Ref Perm))) returns (Result
 // ==================================================
 
 // Uninterpreted function definitions
-function  get_disc(Heap: HeapType, x: Ref, lft_1: (Map int (Map Ref Perm))): Ref;
-function  get_disc'(Heap: HeapType, x: Ref, lft_1: (Map int (Map Ref Perm))): Ref;
-axiom (forall Heap: HeapType, x: Ref, lft_1: (Map int (Map Ref Perm)) ::
-  { get_disc(Heap, x, lft_1) }
-  get_disc(Heap, x, lft_1) == get_disc'(Heap, x, lft_1) && dummyFunction(get_disc#triggerStateless(x, lft_1))
+function  get_disc(Heap: HeapType, x: Ref, lft: (Map int (Map Ref Perm))): Ref;
+function  get_disc'(Heap: HeapType, x: Ref, lft: (Map int (Map Ref Perm))): Ref;
+axiom (forall Heap: HeapType, x: Ref, lft: (Map int (Map Ref Perm)) ::
+  { get_disc(Heap, x, lft) }
+  get_disc(Heap, x, lft) == get_disc'(Heap, x, lft) && dummyFunction(get_disc#triggerStateless(x, lft))
 );
-axiom (forall Heap: HeapType, x: Ref, lft_1: (Map int (Map Ref Perm)) ::
-  { get_disc'(Heap, x, lft_1) }
-  dummyFunction(get_disc#triggerStateless(x, lft_1))
+axiom (forall Heap: HeapType, x: Ref, lft: (Map int (Map Ref Perm)) ::
+  { get_disc'(Heap, x, lft) }
+  dummyFunction(get_disc#triggerStateless(x, lft))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, x: Ref, lft_1: (Map int (Map Ref Perm)) ::
-  { state(Heap, Mask), get_disc(Heap, x, lft_1) } { state(Heap, Mask), get_disc#triggerStateless(x, lft_1), LifetimeP#trigger(Heap, LifetimeP(lft_1)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> valid_lft(Heap, lft_1) && (valid_lft(Heap, lft_1) && Map#Domain(Map#Elements(lft_1)[1])[x]) ==> get_disc(Heap, x, lft_1) == Heap[x, ref_2]
+axiom (forall Heap: HeapType, Mask: MaskType, x: Ref, lft: (Map int (Map Ref Perm)) ::
+  { state(Heap, Mask), get_disc(Heap, x, lft) } { state(Heap, Mask), get_disc#triggerStateless(x, lft), LifetimeP#trigger(Heap, LifetimeP(lft)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> valid_lft(Heap, lft) && (valid_lft(Heap, lft) && Map#Domain(Map#Elements(lft)[1])[x]) ==> get_disc(Heap, x, lft) == Heap[x, ref_2]
 );
 
 // Framing axioms
-function  get_disc#frame(frame: FrameType, x: Ref, lft_1: (Map int (Map Ref Perm))): Ref;
-axiom (forall Heap: HeapType, Mask: MaskType, x: Ref, lft_1: (Map int (Map Ref Perm)) ::
-  { state(Heap, Mask), get_disc'(Heap, x, lft_1) }
-  state(Heap, Mask) ==> get_disc'(Heap, x, lft_1) == get_disc#frame(CombineFrames(Heap[null, LifetimeP(lft_1)], FrameFragment(EmptyFrame)), x, lft_1)
+function  get_disc#frame(frame: FrameType, x: Ref, lft: (Map int (Map Ref Perm))): Ref;
+axiom (forall Heap: HeapType, Mask: MaskType, x: Ref, lft: (Map int (Map Ref Perm)) ::
+  { state(Heap, Mask), get_disc'(Heap, x, lft) }
+  state(Heap, Mask) ==> get_disc'(Heap, x, lft) == get_disc#frame(CombineFrames(Heap[null, LifetimeP(lft)], FrameFragment(EmptyFrame)), x, lft)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  get_disc#trigger(frame: FrameType, x: Ref, lft_1: (Map int (Map Ref Perm))): bool;
+function  get_disc#trigger(frame: FrameType, x: Ref, lft: (Map int (Map Ref Perm))): bool;
 
 // State-independent trigger function
-function  get_disc#triggerStateless(x: Ref, lft_1: (Map int (Map Ref Perm))): Ref;
+function  get_disc#triggerStateless(x: Ref, lft: (Map int (Map Ref Perm))): Ref;
 
 // Check contract well-formedness and postcondition
-procedure get_disc#definedness(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (Result: Ref)
+procedure get_disc#definedness(x: Ref, lft: (Map int (Map Ref Perm))) returns (Result: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -708,9 +708,9 @@ procedure get_disc#definedness(x: Ref, lft_1: (Map int (Map Ref Perm))) returns 
         // Stop execution
         assume false;
       }
-    assume valid_lft(Heap, lft_1);
+    assume valid_lft(Heap, lft);
     perm := FullPerm;
-    Mask := Mask[null, LifetimeP(lft_1):=Mask[null, LifetimeP(lft_1)] + perm];
+    Mask := Mask[null, LifetimeP(lft):=Mask[null, LifetimeP(lft)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -720,12 +720,12 @@ procedure get_disc#definedness(x: Ref, lft_1: (Map int (Map Ref Perm))) returns 
         // Stop execution
         assume false;
       }
-    assume valid_lft(Heap, lft_1);
+    assume valid_lft(Heap, lft);
     
     // -- Check definedness of (x in lft[1])
-      assert {:msg "  Contract might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@41.12--41.35) [207855]"}
-        Map#Domain(lft_1)[1];
-    assume Map#Domain(Map#Elements(lft_1)[1])[x];
+      assert {:msg "  Contract might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@41.12--41.35) [70280]"}
+        Map#Domain(lft)[1];
+    assume Map#Domain(Map#Elements(lft)[1])[x];
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
@@ -733,112 +733,112 @@ procedure get_disc#definedness(x: Ref, lft_1: (Map int (Map Ref Perm))) returns 
     // -- Check definedness of (unfolding acc(LifetimeP(lft), write) in (unfolding acc(lft_List(x), wildcard) in x.ref))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume LifetimeP#trigger(UnfoldingHeap, LifetimeP(lft_1));
-      assume UnfoldingHeap[null, LifetimeP(lft_1)] == CombineFrames(FrameFragment(LifetimeP#condqp1(UnfoldingHeap, lft_1)), FrameFragment(LifetimeP#condqp2(UnfoldingHeap, lft_1)));
+      assume LifetimeP#trigger(UnfoldingHeap, LifetimeP(lft));
+      assume UnfoldingHeap[null, LifetimeP(lft)] == CombineFrames(FrameFragment(LifetimeP#condqp1(UnfoldingHeap, lft)), FrameFragment(LifetimeP#condqp2(UnfoldingHeap, lft)));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access LifetimeP(lft) (0695.vpr@39.1--44.2) [207856]"}
-        NoPerm < perm ==> NoPerm < UnfoldingMask[null, LifetimeP(lft_1)];
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access LifetimeP(lft) (0695.vpr@39.1--44.2) [70281]"}
+        NoPerm < perm ==> NoPerm < UnfoldingMask[null, LifetimeP(lft)];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume valid_lft(UnfoldingHeap, lft_1);
+      assume valid_lft(UnfoldingHeap, lft);
       assume (forall x$0: Ref ::
-        { Map#Domain(Map#Elements(lft_1)[0])[x$0] } { Map#Elements(Map#Elements(lft_1)[0])[x$0] }
-        Map#Domain(Map#Elements(lft_1)[0])[x$0] ==> 0 / 1 < Map#Elements(Map#Elements(lft_1)[0])[x$0]
+        { Map#Domain(Map#Elements(lft)[0])[x$0] } { Map#Elements(Map#Elements(lft)[0])[x$0] }
+        Map#Domain(Map#Elements(lft)[0])[x$0] ==> 0 / 1 < Map#Elements(Map#Elements(lft)[0])[x$0]
       );
       assume (forall x$0_1: Ref ::
-        { Map#Domain(Map#Elements(lft_1)[0])[x$0_1] } { Map#Elements(Map#Elements(lft_1)[0])[x$0_1] }
-        Map#Domain(Map#Elements(lft_1)[0])[x$0_1] ==> Map#Elements(Map#Elements(lft_1)[0])[x$0_1] <= 1 / 1
+        { Map#Domain(Map#Elements(lft)[0])[x$0_1] } { Map#Elements(Map#Elements(lft)[0])[x$0_1] }
+        Map#Domain(Map#Elements(lft)[0])[x$0_1] ==> Map#Elements(Map#Elements(lft)[0])[x$0_1] <= 1 / 1
       );
       havoc QPMask;
       
       // -- check if receiver acc(lft_T(x$0), lft[0][x$0]) is injective
-        assert {:msg "  Function might not be well-formed. Quantified resource lft_T(x$0) might not be injective. (0695.vpr@39.1--44.2) [207857]"}
+        assert {:msg "  Function might not be well-formed. Quantified resource lft_T(x$0) might not be injective. (0695.vpr@39.1--44.2) [70282]"}
           (forall x$0_2: Ref, x$0_2_1: Ref ::
           { neverTriggered1(x$0_2), neverTriggered1(x$0_2_1) }
-          (((x$0_2 != x$0_2_1 && Map#Domain(Map#Elements(lft_1)[0])[x$0_2]) && Map#Domain(Map#Elements(lft_1)[0])[x$0_2_1]) && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[x$0_2]) && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[x$0_2_1] ==> x$0_2 != x$0_2_1
+          (((x$0_2 != x$0_2_1 && Map#Domain(Map#Elements(lft)[0])[x$0_2]) && Map#Domain(Map#Elements(lft)[0])[x$0_2_1]) && NoPerm < Map#Elements(Map#Elements(lft)[0])[x$0_2]) && NoPerm < Map#Elements(Map#Elements(lft)[0])[x$0_2_1] ==> x$0_2 != x$0_2_1
         );
       
       // -- Define Inverse Function
         assume (forall x$0_2: Ref ::
-          { UnfoldingHeap[null, lft_T(x$0_2)] } { UnfoldingMask[null, lft_T(x$0_2)] } { Map#Domain(Map#Elements(lft_1)[0])[x$0_2] } { Map#Elements(Map#Elements(lft_1)[0])[x$0_2] }
-          Map#Domain(Map#Elements(lft_1)[0])[x$0_2] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[x$0_2] ==> invRecv1(x$0_2) == x$0_2 && qpRange1(x$0_2)
+          { UnfoldingHeap[null, lft_T(x$0_2)] } { UnfoldingMask[null, lft_T(x$0_2)] } { Map#Domain(Map#Elements(lft)[0])[x$0_2] } { Map#Elements(Map#Elements(lft)[0])[x$0_2] }
+          Map#Domain(Map#Elements(lft)[0])[x$0_2] && NoPerm < Map#Elements(Map#Elements(lft)[0])[x$0_2] ==> invRecv1(x$0_2) == x$0_2 && qpRange1(x$0_2)
         );
         assume (forall x_2_1: Ref ::
           { invRecv1(x_2_1) }
-          (Map#Domain(Map#Elements(lft_1)[0])[invRecv1(x_2_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[invRecv1(x_2_1)]) && qpRange1(x_2_1) ==> invRecv1(x_2_1) == x_2_1
+          (Map#Domain(Map#Elements(lft)[0])[invRecv1(x_2_1)] && NoPerm < Map#Elements(Map#Elements(lft)[0])[invRecv1(x_2_1)]) && qpRange1(x_2_1) ==> invRecv1(x_2_1) == x_2_1
         );
       // Check that permission expression is non-negative for all fields
-      assert {:msg "  Function might not be well-formed. Fraction lft[0][x$0] might be negative. (0695.vpr@39.1--44.2) [207858]"}
+      assert {:msg "  Function might not be well-formed. Fraction lft[0][x$0] might be negative. (0695.vpr@39.1--44.2) [70283]"}
         (forall x$0_2: Ref ::
-        { UnfoldingHeap[null, lft_T(x$0_2)] } { UnfoldingMask[null, lft_T(x$0_2)] } { Map#Domain(Map#Elements(lft_1)[0])[x$0_2] } { Map#Elements(Map#Elements(lft_1)[0])[x$0_2] }
-        Map#Domain(Map#Elements(lft_1)[0])[x$0_2] ==> Map#Elements(Map#Elements(lft_1)[0])[x$0_2] >= NoPerm
+        { UnfoldingHeap[null, lft_T(x$0_2)] } { UnfoldingMask[null, lft_T(x$0_2)] } { Map#Domain(Map#Elements(lft)[0])[x$0_2] } { Map#Elements(Map#Elements(lft)[0])[x$0_2] }
+        Map#Domain(Map#Elements(lft)[0])[x$0_2] ==> Map#Elements(Map#Elements(lft)[0])[x$0_2] >= NoPerm
       );
       
       // -- Define updated permissions
         assume (forall x_2_1: Ref ::
           { QPMask[null, lft_T(x_2_1)] }
-          (Map#Domain(Map#Elements(lft_1)[0])[invRecv1(x_2_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[invRecv1(x_2_1)]) && qpRange1(x_2_1) ==> (NoPerm < Map#Elements(Map#Elements(lft_1)[0])[invRecv1(x_2_1)] ==> invRecv1(x_2_1) == x_2_1) && QPMask[null, lft_T(x_2_1)] == UnfoldingMask[null, lft_T(x_2_1)] + Map#Elements(Map#Elements(lft_1)[0])[invRecv1(x_2_1)]
+          (Map#Domain(Map#Elements(lft)[0])[invRecv1(x_2_1)] && NoPerm < Map#Elements(Map#Elements(lft)[0])[invRecv1(x_2_1)]) && qpRange1(x_2_1) ==> (NoPerm < Map#Elements(Map#Elements(lft)[0])[invRecv1(x_2_1)] ==> invRecv1(x_2_1) == x_2_1) && QPMask[null, lft_T(x_2_1)] == UnfoldingMask[null, lft_T(x_2_1)] + Map#Elements(Map#Elements(lft)[0])[invRecv1(x_2_1)]
         );
       
       // -- Define independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
         assume (forall x_2_1: Ref ::
           { QPMask[null, lft_T(x_2_1)] }
-          !((Map#Domain(Map#Elements(lft_1)[0])[invRecv1(x_2_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[invRecv1(x_2_1)]) && qpRange1(x_2_1)) ==> QPMask[null, lft_T(x_2_1)] == UnfoldingMask[null, lft_T(x_2_1)]
+          !((Map#Domain(Map#Elements(lft)[0])[invRecv1(x_2_1)] && NoPerm < Map#Elements(Map#Elements(lft)[0])[invRecv1(x_2_1)]) && qpRange1(x_2_1)) ==> QPMask[null, lft_T(x_2_1)] == UnfoldingMask[null, lft_T(x_2_1)]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
       assume (forall x$0_4: Ref ::
-        { Map#Domain(Map#Elements(lft_1)[1])[x$0_4] } { Map#Elements(Map#Elements(lft_1)[1])[x$0_4] }
-        Map#Domain(Map#Elements(lft_1)[1])[x$0_4] ==> 0 / 1 < Map#Elements(Map#Elements(lft_1)[1])[x$0_4]
+        { Map#Domain(Map#Elements(lft)[1])[x$0_4] } { Map#Elements(Map#Elements(lft)[1])[x$0_4] }
+        Map#Domain(Map#Elements(lft)[1])[x$0_4] ==> 0 / 1 < Map#Elements(Map#Elements(lft)[1])[x$0_4]
       );
       assume (forall x$0_5: Ref ::
-        { Map#Domain(Map#Elements(lft_1)[1])[x$0_5] } { Map#Elements(Map#Elements(lft_1)[1])[x$0_5] }
-        Map#Domain(Map#Elements(lft_1)[1])[x$0_5] ==> Map#Elements(Map#Elements(lft_1)[1])[x$0_5] <= 1 / 1
+        { Map#Domain(Map#Elements(lft)[1])[x$0_5] } { Map#Elements(Map#Elements(lft)[1])[x$0_5] }
+        Map#Domain(Map#Elements(lft)[1])[x$0_5] ==> Map#Elements(Map#Elements(lft)[1])[x$0_5] <= 1 / 1
       );
       havoc QPMask;
       
       // -- check if receiver acc(lft_List(x$0), lft[1][x$0]) is injective
-        assert {:msg "  Function might not be well-formed. Quantified resource lft_List(x$0) might not be injective. (0695.vpr@39.1--44.2) [207859]"}
-          (forall x$0_6: Ref, x$0_6_1: Ref ::
-          { neverTriggered2(x$0_6), neverTriggered2(x$0_6_1) }
-          (((x$0_6 != x$0_6_1 && Map#Domain(Map#Elements(lft_1)[1])[x$0_6]) && Map#Domain(Map#Elements(lft_1)[1])[x$0_6_1]) && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[x$0_6]) && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[x$0_6_1] ==> x$0_6 != x$0_6_1
+        assert {:msg "  Function might not be well-formed. Quantified resource lft_List(x$0) might not be injective. (0695.vpr@39.1--44.2) [70284]"}
+          (forall x$0_6_1: Ref, x$0_6_2: Ref ::
+          { neverTriggered2(x$0_6_1), neverTriggered2(x$0_6_2) }
+          (((x$0_6_1 != x$0_6_2 && Map#Domain(Map#Elements(lft)[1])[x$0_6_1]) && Map#Domain(Map#Elements(lft)[1])[x$0_6_2]) && NoPerm < Map#Elements(Map#Elements(lft)[1])[x$0_6_1]) && NoPerm < Map#Elements(Map#Elements(lft)[1])[x$0_6_2] ==> x$0_6_1 != x$0_6_2
         );
       
       // -- Define Inverse Function
-        assume (forall x$0_6: Ref ::
-          { UnfoldingHeap[null, lft_List(x$0_6)] } { UnfoldingMask[null, lft_List(x$0_6)] } { Map#Domain(Map#Elements(lft_1)[1])[x$0_6] } { Map#Elements(Map#Elements(lft_1)[1])[x$0_6] }
-          Map#Domain(Map#Elements(lft_1)[1])[x$0_6] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[x$0_6] ==> invRecv2(x$0_6) == x$0_6 && qpRange2(x$0_6)
+        assume (forall x$0_6_1: Ref ::
+          { UnfoldingHeap[null, lft_List(x$0_6_1)] } { UnfoldingMask[null, lft_List(x$0_6_1)] } { Map#Domain(Map#Elements(lft)[1])[x$0_6_1] } { Map#Elements(Map#Elements(lft)[1])[x$0_6_1] }
+          Map#Domain(Map#Elements(lft)[1])[x$0_6_1] && NoPerm < Map#Elements(Map#Elements(lft)[1])[x$0_6_1] ==> invRecv2(x$0_6_1) == x$0_6_1 && qpRange2(x$0_6_1)
         );
         assume (forall x_3_1_1: Ref ::
           { invRecv2(x_3_1_1) }
-          (Map#Domain(Map#Elements(lft_1)[1])[invRecv2(x_3_1_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[invRecv2(x_3_1_1)]) && qpRange2(x_3_1_1) ==> invRecv2(x_3_1_1) == x_3_1_1
+          (Map#Domain(Map#Elements(lft)[1])[invRecv2(x_3_1_1)] && NoPerm < Map#Elements(Map#Elements(lft)[1])[invRecv2(x_3_1_1)]) && qpRange2(x_3_1_1) ==> invRecv2(x_3_1_1) == x_3_1_1
         );
       // Check that permission expression is non-negative for all fields
-      assert {:msg "  Function might not be well-formed. Fraction lft[1][x$0] might be negative. (0695.vpr@39.1--44.2) [207860]"}
-        (forall x$0_6: Ref ::
-        { UnfoldingHeap[null, lft_List(x$0_6)] } { UnfoldingMask[null, lft_List(x$0_6)] } { Map#Domain(Map#Elements(lft_1)[1])[x$0_6] } { Map#Elements(Map#Elements(lft_1)[1])[x$0_6] }
-        Map#Domain(Map#Elements(lft_1)[1])[x$0_6] ==> Map#Elements(Map#Elements(lft_1)[1])[x$0_6] >= NoPerm
+      assert {:msg "  Function might not be well-formed. Fraction lft[1][x$0] might be negative. (0695.vpr@39.1--44.2) [70285]"}
+        (forall x$0_6_1: Ref ::
+        { UnfoldingHeap[null, lft_List(x$0_6_1)] } { UnfoldingMask[null, lft_List(x$0_6_1)] } { Map#Domain(Map#Elements(lft)[1])[x$0_6_1] } { Map#Elements(Map#Elements(lft)[1])[x$0_6_1] }
+        Map#Domain(Map#Elements(lft)[1])[x$0_6_1] ==> Map#Elements(Map#Elements(lft)[1])[x$0_6_1] >= NoPerm
       );
       
       // -- Define updated permissions
         assume (forall x_3_1_1: Ref ::
           { QPMask[null, lft_List(x_3_1_1)] }
-          (Map#Domain(Map#Elements(lft_1)[1])[invRecv2(x_3_1_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[invRecv2(x_3_1_1)]) && qpRange2(x_3_1_1) ==> (NoPerm < Map#Elements(Map#Elements(lft_1)[1])[invRecv2(x_3_1_1)] ==> invRecv2(x_3_1_1) == x_3_1_1) && QPMask[null, lft_List(x_3_1_1)] == UnfoldingMask[null, lft_List(x_3_1_1)] + Map#Elements(Map#Elements(lft_1)[1])[invRecv2(x_3_1_1)]
+          (Map#Domain(Map#Elements(lft)[1])[invRecv2(x_3_1_1)] && NoPerm < Map#Elements(Map#Elements(lft)[1])[invRecv2(x_3_1_1)]) && qpRange2(x_3_1_1) ==> (NoPerm < Map#Elements(Map#Elements(lft)[1])[invRecv2(x_3_1_1)] ==> invRecv2(x_3_1_1) == x_3_1_1) && QPMask[null, lft_List(x_3_1_1)] == UnfoldingMask[null, lft_List(x_3_1_1)] + Map#Elements(Map#Elements(lft)[1])[invRecv2(x_3_1_1)]
         );
       
       // -- Define independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
         assume (forall x_3_1_1: Ref ::
           { QPMask[null, lft_List(x_3_1_1)] }
-          !((Map#Domain(Map#Elements(lft_1)[1])[invRecv2(x_3_1_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[invRecv2(x_3_1_1)]) && qpRange2(x_3_1_1)) ==> QPMask[null, lft_List(x_3_1_1)] == UnfoldingMask[null, lft_List(x_3_1_1)]
+          !((Map#Domain(Map#Elements(lft)[1])[invRecv2(x_3_1_1)] && NoPerm < Map#Elements(Map#Elements(lft)[1])[invRecv2(x_3_1_1)]) && qpRange2(x_3_1_1)) ==> QPMask[null, lft_List(x_3_1_1)] == UnfoldingMask[null, lft_List(x_3_1_1)]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
@@ -850,7 +850,7 @@ procedure get_disc#definedness(x: Ref, lft_1: (Map int (Map Ref Perm))) returns 
       ExhaleWellDef0Heap := Unfolding1Heap;
       ExhaleWellDef0Mask := Unfolding1Mask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lft_List(x) (0695.vpr@39.1--44.2) [207861]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lft_List(x) (0695.vpr@39.1--44.2) [70286]"}
         NoPerm < perm ==> NoPerm < Unfolding1Mask[null, lft_List(x)];
       havoc wildcard;
       perm := wildcard;
@@ -865,15 +865,15 @@ procedure get_disc#definedness(x: Ref, lft_1: (Map int (Map Ref Perm))) returns 
         assume InsidePredicate(lft_List(x), Unfolding1Heap[null, lft_List(x)], List(Unfolding1Heap[x, ref_2]), Unfolding1Heap[null, List(Unfolding1Heap[x, ref_2])]);
       assume state(Unfolding1Heap, Unfolding1Mask);
       assume state(Unfolding1Heap, Unfolding1Mask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@39.1--44.2) [207862]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@39.1--44.2) [70287]"}
         HasDirectPerm(Unfolding1Mask, x, ref_2);
       
       // -- Free assumptions (exp module)
         UnfoldingHeap := UnfoldingHeap[null, lft_List#sm(x):=UnfoldingHeap[null, lft_List#sm(x)][x, ref_2:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-          { newPMask[o_15, f_20] }
-          UnfoldingHeap[null, lft_List#sm(x)][o_15, f_20] || UnfoldingHeap[null, List#sm(UnfoldingHeap[x, ref_2])][o_15, f_20] ==> newPMask[o_15, f_20]
+        assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+          { newPMask[o_5, f_11] }
+          UnfoldingHeap[null, lft_List#sm(x)][o_5, f_11] || UnfoldingHeap[null, List#sm(UnfoldingHeap[x, ref_2])][o_5, f_11] ==> newPMask[o_5, f_11]
         );
         UnfoldingHeap := UnfoldingHeap[null, lft_List#sm(x):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -882,9 +882,9 @@ procedure get_disc#definedness(x: Ref, lft_1: (Map int (Map Ref Perm))) returns 
         assume state(Heap, Mask);
         Heap := Heap[null, lft_List#sm(x):=Heap[null, lft_List#sm(x)][x, ref_2:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-          { newPMask[o_16, f_21] }
-          Heap[null, lft_List#sm(x)][o_16, f_21] || Heap[null, List#sm(Heap[x, ref_2])][o_16, f_21] ==> newPMask[o_16, f_21]
+        assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+          { newPMask[o_6, f_12] }
+          Heap[null, lft_List#sm(x)][o_6, f_12] || Heap[null, List#sm(Heap[x, ref_2])][o_6, f_12] ==> newPMask[o_6, f_12]
         );
         Heap := Heap[null, lft_List#sm(x):=newPMask];
         assume state(Heap, Mask);
@@ -948,7 +948,7 @@ procedure List#definedness(x: Ref) returns ()
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(Node(x.ref), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@8.1--10.2) [207863]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@8.1--10.2) [70288]"}
           HasDirectPerm(Mask, x, ref_2);
       perm := FullPerm;
       Mask := Mask[null, Node(Heap[x, ref_2]):=Mask[null, Node(Heap[x, ref_2])] + perm];
@@ -997,37 +997,37 @@ axiom (forall Heap: HeapType, x: Ref ::
 // ==================================================
 
 type PredicateType_ListRef;
-function  ListRef(x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool): Field PredicateType_ListRef FrameType;
-function  ListRef#sm(x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool): Field PredicateType_ListRef PMaskType;
-axiom (forall x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool ::
-  { PredicateMaskField(ListRef(x, lft_1, mut)) }
-  PredicateMaskField(ListRef(x, lft_1, mut)) == ListRef#sm(x, lft_1, mut)
+function  ListRef(x: Ref, lft: (Map int (Map Ref Perm)), mut: bool): Field PredicateType_ListRef FrameType;
+function  ListRef#sm(x: Ref, lft: (Map int (Map Ref Perm)), mut: bool): Field PredicateType_ListRef PMaskType;
+axiom (forall x: Ref, lft: (Map int (Map Ref Perm)), mut: bool ::
+  { PredicateMaskField(ListRef(x, lft, mut)) }
+  PredicateMaskField(ListRef(x, lft, mut)) == ListRef#sm(x, lft, mut)
 );
-axiom (forall x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool ::
-  { ListRef(x, lft_1, mut) }
-  IsPredicateField(ListRef(x, lft_1, mut))
+axiom (forall x: Ref, lft: (Map int (Map Ref Perm)), mut: bool ::
+  { ListRef(x, lft, mut) }
+  IsPredicateField(ListRef(x, lft, mut))
 );
-axiom (forall x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool ::
-  { ListRef(x, lft_1, mut) }
-  getPredWandId(ListRef(x, lft_1, mut)) == 4
+axiom (forall x: Ref, lft: (Map int (Map Ref Perm)), mut: bool ::
+  { ListRef(x, lft, mut) }
+  getPredWandId(ListRef(x, lft, mut)) == 4
 );
 function  ListRef#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  ListRef#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool, x2: Ref, lft2: (Map int (Map Ref Perm)), mut2: bool ::
-  { ListRef(x, lft_1, mut), ListRef(x2, lft2, mut2) }
-  ListRef(x, lft_1, mut) == ListRef(x2, lft2, mut2) ==> x == x2 && (lft_1 == lft2 && mut == mut2)
+axiom (forall x: Ref, lft: (Map int (Map Ref Perm)), mut: bool, x2: Ref, lft2: (Map int (Map Ref Perm)), mut2: bool ::
+  { ListRef(x, lft, mut), ListRef(x2, lft2, mut2) }
+  ListRef(x, lft, mut) == ListRef(x2, lft2, mut2) ==> x == x2 && (lft == lft2 && mut == mut2)
 );
-axiom (forall x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool, x2: Ref, lft2: (Map int (Map Ref Perm)), mut2: bool ::
-  { ListRef#sm(x, lft_1, mut), ListRef#sm(x2, lft2, mut2) }
-  ListRef#sm(x, lft_1, mut) == ListRef#sm(x2, lft2, mut2) ==> x == x2 && (lft_1 == lft2 && mut == mut2)
-);
-
-axiom (forall Heap: HeapType, x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool ::
-  { ListRef#trigger(Heap, ListRef(x, lft_1, mut)) }
-  ListRef#everUsed(ListRef(x, lft_1, mut))
+axiom (forall x: Ref, lft: (Map int (Map Ref Perm)), mut: bool, x2: Ref, lft2: (Map int (Map Ref Perm)), mut2: bool ::
+  { ListRef#sm(x, lft, mut), ListRef#sm(x2, lft2, mut2) }
+  ListRef#sm(x, lft, mut) == ListRef#sm(x2, lft2, mut2) ==> x == x2 && (lft == lft2 && mut == mut2)
 );
 
-procedure ListRef#definedness(x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool) returns ()
+axiom (forall Heap: HeapType, x: Ref, lft: (Map int (Map Ref Perm)), mut: bool ::
+  { ListRef#trigger(Heap, ListRef(x, lft, mut)) }
+  ListRef#everUsed(ListRef(x, lft, mut))
+);
+
+procedure ListRef#definedness(x: Ref, lft: (Map int (Map Ref Perm)), mut: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -1047,10 +1047,10 @@ procedure ListRef#definedness(x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(NodeRef(x.ref, lft, mut), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@15.1--17.2) [207864]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@15.1--17.2) [70289]"}
           HasDirectPerm(Mask, x, ref_2);
       perm := FullPerm;
-      Mask := Mask[null, NodeRef(Heap[x, ref_2], lft_1, mut):=Mask[null, NodeRef(Heap[x, ref_2], lft_1, mut)] + perm];
+      Mask := Mask[null, NodeRef(Heap[x, ref_2], lft, mut):=Mask[null, NodeRef(Heap[x, ref_2], lft, mut)] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1061,34 +1061,34 @@ procedure ListRef#definedness(x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool
 // ==================================================
 
 type PredicateType_NodeRef;
-function  NodeRef(x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool): Field PredicateType_NodeRef FrameType;
-function  NodeRef#sm(x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool): Field PredicateType_NodeRef PMaskType;
-axiom (forall x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool ::
-  { PredicateMaskField(NodeRef(x, lft_1, mut)) }
-  PredicateMaskField(NodeRef(x, lft_1, mut)) == NodeRef#sm(x, lft_1, mut)
+function  NodeRef(x: Ref, lft: (Map int (Map Ref Perm)), mut: bool): Field PredicateType_NodeRef FrameType;
+function  NodeRef#sm(x: Ref, lft: (Map int (Map Ref Perm)), mut: bool): Field PredicateType_NodeRef PMaskType;
+axiom (forall x: Ref, lft: (Map int (Map Ref Perm)), mut: bool ::
+  { PredicateMaskField(NodeRef(x, lft, mut)) }
+  PredicateMaskField(NodeRef(x, lft, mut)) == NodeRef#sm(x, lft, mut)
 );
-axiom (forall x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool ::
-  { NodeRef(x, lft_1, mut) }
-  IsPredicateField(NodeRef(x, lft_1, mut))
+axiom (forall x: Ref, lft: (Map int (Map Ref Perm)), mut: bool ::
+  { NodeRef(x, lft, mut) }
+  IsPredicateField(NodeRef(x, lft, mut))
 );
-axiom (forall x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool ::
-  { NodeRef(x, lft_1, mut) }
-  getPredWandId(NodeRef(x, lft_1, mut)) == 5
+axiom (forall x: Ref, lft: (Map int (Map Ref Perm)), mut: bool ::
+  { NodeRef(x, lft, mut) }
+  getPredWandId(NodeRef(x, lft, mut)) == 5
 );
 function  NodeRef#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  NodeRef#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool, x2: Ref, lft2: (Map int (Map Ref Perm)), mut2: bool ::
-  { NodeRef(x, lft_1, mut), NodeRef(x2, lft2, mut2) }
-  NodeRef(x, lft_1, mut) == NodeRef(x2, lft2, mut2) ==> x == x2 && (lft_1 == lft2 && mut == mut2)
+axiom (forall x: Ref, lft: (Map int (Map Ref Perm)), mut: bool, x2: Ref, lft2: (Map int (Map Ref Perm)), mut2: bool ::
+  { NodeRef(x, lft, mut), NodeRef(x2, lft2, mut2) }
+  NodeRef(x, lft, mut) == NodeRef(x2, lft2, mut2) ==> x == x2 && (lft == lft2 && mut == mut2)
 );
-axiom (forall x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool, x2: Ref, lft2: (Map int (Map Ref Perm)), mut2: bool ::
-  { NodeRef#sm(x, lft_1, mut), NodeRef#sm(x2, lft2, mut2) }
-  NodeRef#sm(x, lft_1, mut) == NodeRef#sm(x2, lft2, mut2) ==> x == x2 && (lft_1 == lft2 && mut == mut2)
+axiom (forall x: Ref, lft: (Map int (Map Ref Perm)), mut: bool, x2: Ref, lft2: (Map int (Map Ref Perm)), mut2: bool ::
+  { NodeRef#sm(x, lft, mut), NodeRef#sm(x2, lft2, mut2) }
+  NodeRef#sm(x, lft, mut) == NodeRef#sm(x2, lft2, mut2) ==> x == x2 && (lft == lft2 && mut == mut2)
 );
 
-axiom (forall Heap: HeapType, x: Ref, lft_1: (Map int (Map Ref Perm)), mut: bool ::
-  { NodeRef#trigger(Heap, NodeRef(x, lft_1, mut)) }
-  NodeRef#everUsed(NodeRef(x, lft_1, mut))
+axiom (forall Heap: HeapType, x: Ref, lft: (Map int (Map Ref Perm)), mut: bool ::
+  { NodeRef#trigger(Heap, NodeRef(x, lft, mut)) }
+  NodeRef#everUsed(NodeRef(x, lft, mut))
 );
 
 // ==================================================
@@ -1180,7 +1180,7 @@ procedure lft_List#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(List(x.ref), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@25.1--27.2) [207865]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@25.1--27.2) [70290]"}
         HasDirectPerm(Mask, x, ref_2);
     perm := FullPerm;
     Mask := Mask[null, List(Heap[x, ref_2]):=Mask[null, List(Heap[x, ref_2])] + perm];
@@ -1193,34 +1193,34 @@ procedure lft_List#definedness(x: Ref) returns ()
 // ==================================================
 
 type PredicateType_LifetimeP;
-function  LifetimeP(lft_1: (Map int (Map Ref Perm))): Field PredicateType_LifetimeP FrameType;
-function  LifetimeP#sm(lft_1: (Map int (Map Ref Perm))): Field PredicateType_LifetimeP PMaskType;
-axiom (forall lft_1: (Map int (Map Ref Perm)) ::
-  { PredicateMaskField(LifetimeP(lft_1)) }
-  PredicateMaskField(LifetimeP(lft_1)) == LifetimeP#sm(lft_1)
+function  LifetimeP(lft: (Map int (Map Ref Perm))): Field PredicateType_LifetimeP FrameType;
+function  LifetimeP#sm(lft: (Map int (Map Ref Perm))): Field PredicateType_LifetimeP PMaskType;
+axiom (forall lft: (Map int (Map Ref Perm)) ::
+  { PredicateMaskField(LifetimeP(lft)) }
+  PredicateMaskField(LifetimeP(lft)) == LifetimeP#sm(lft)
 );
-axiom (forall lft_1: (Map int (Map Ref Perm)) ::
-  { LifetimeP(lft_1) }
-  IsPredicateField(LifetimeP(lft_1))
+axiom (forall lft: (Map int (Map Ref Perm)) ::
+  { LifetimeP(lft) }
+  IsPredicateField(LifetimeP(lft))
 );
-axiom (forall lft_1: (Map int (Map Ref Perm)) ::
-  { LifetimeP(lft_1) }
-  getPredWandId(LifetimeP(lft_1)) == 6
+axiom (forall lft: (Map int (Map Ref Perm)) ::
+  { LifetimeP(lft) }
+  getPredWandId(LifetimeP(lft)) == 6
 );
 function  LifetimeP#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  LifetimeP#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall lft_1: (Map int (Map Ref Perm)), lft2: (Map int (Map Ref Perm)) ::
-  { LifetimeP(lft_1), LifetimeP(lft2) }
-  LifetimeP(lft_1) == LifetimeP(lft2) ==> lft_1 == lft2
+axiom (forall lft: (Map int (Map Ref Perm)), lft2: (Map int (Map Ref Perm)) ::
+  { LifetimeP(lft), LifetimeP(lft2) }
+  LifetimeP(lft) == LifetimeP(lft2) ==> lft == lft2
 );
-axiom (forall lft_1: (Map int (Map Ref Perm)), lft2: (Map int (Map Ref Perm)) ::
-  { LifetimeP#sm(lft_1), LifetimeP#sm(lft2) }
-  LifetimeP#sm(lft_1) == LifetimeP#sm(lft2) ==> lft_1 == lft2
+axiom (forall lft: (Map int (Map Ref Perm)), lft2: (Map int (Map Ref Perm)) ::
+  { LifetimeP#sm(lft), LifetimeP#sm(lft2) }
+  LifetimeP#sm(lft) == LifetimeP#sm(lft2) ==> lft == lft2
 );
 
-axiom (forall Heap: HeapType, lft_1: (Map int (Map Ref Perm)) ::
-  { LifetimeP#trigger(Heap, LifetimeP(lft_1)) }
-  LifetimeP#everUsed(LifetimeP(lft_1))
+axiom (forall Heap: HeapType, lft: (Map int (Map Ref Perm)) ::
+  { LifetimeP#trigger(Heap, LifetimeP(lft)) }
+  LifetimeP#everUsed(LifetimeP(lft))
 );
 
 // ==================================================
@@ -1229,9 +1229,9 @@ axiom (forall Heap: HeapType, lft_1: (Map int (Map Ref Perm)) ::
 
 function  LifetimeP#condqp1(Heap: HeapType, lft_2_1: (Map int (Map Ref Perm))): int;
 function  sk_LifetimeP#condqp1(fnAppH1: int, fnAppH2: int): Ref;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, lft_1: (Map int (Map Ref Perm)) ::
-  { LifetimeP#condqp1(Heap2Heap, lft_1), LifetimeP#condqp1(Heap1Heap, lft_1), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (Map#Domain(Map#Elements(lft_1)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft_1), LifetimeP#condqp1(Heap1Heap, lft_1))] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft_1), LifetimeP#condqp1(Heap1Heap, lft_1))] <==> Map#Domain(Map#Elements(lft_1)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft_1), LifetimeP#condqp1(Heap1Heap, lft_1))] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft_1), LifetimeP#condqp1(Heap1Heap, lft_1))]) && (Map#Domain(Map#Elements(lft_1)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft_1), LifetimeP#condqp1(Heap1Heap, lft_1))] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft_1), LifetimeP#condqp1(Heap1Heap, lft_1))] ==> Heap2Heap[null, lft_T(sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft_1), LifetimeP#condqp1(Heap1Heap, lft_1)))] == Heap1Heap[null, lft_T(sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft_1), LifetimeP#condqp1(Heap1Heap, lft_1)))]) ==> LifetimeP#condqp1(Heap2Heap, lft_1) == LifetimeP#condqp1(Heap1Heap, lft_1)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, lft: (Map int (Map Ref Perm)) ::
+  { LifetimeP#condqp1(Heap2Heap, lft), LifetimeP#condqp1(Heap1Heap, lft), succHeapTrans(Heap2Heap, Heap1Heap) }
+  (Map#Domain(Map#Elements(lft)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft), LifetimeP#condqp1(Heap1Heap, lft))] && NoPerm < Map#Elements(Map#Elements(lft)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft), LifetimeP#condqp1(Heap1Heap, lft))] <==> Map#Domain(Map#Elements(lft)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft), LifetimeP#condqp1(Heap1Heap, lft))] && NoPerm < Map#Elements(Map#Elements(lft)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft), LifetimeP#condqp1(Heap1Heap, lft))]) && (Map#Domain(Map#Elements(lft)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft), LifetimeP#condqp1(Heap1Heap, lft))] && NoPerm < Map#Elements(Map#Elements(lft)[0])[sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft), LifetimeP#condqp1(Heap1Heap, lft))] ==> Heap2Heap[null, lft_T(sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft), LifetimeP#condqp1(Heap1Heap, lft)))] == Heap1Heap[null, lft_T(sk_LifetimeP#condqp1(LifetimeP#condqp1(Heap2Heap, lft), LifetimeP#condqp1(Heap1Heap, lft)))]) ==> LifetimeP#condqp1(Heap2Heap, lft) == LifetimeP#condqp1(Heap1Heap, lft)
 );
 
 // ==================================================
@@ -1240,21 +1240,21 @@ axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, lft_1: (Map int (Map Ref
 
 function  LifetimeP#condqp2(Heap: HeapType, lft_2_1: (Map int (Map Ref Perm))): int;
 function  sk_LifetimeP#condqp2(fnAppH1_1: int, fnAppH2_1: int): Ref;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, lft_1: (Map int (Map Ref Perm)) ::
-  { LifetimeP#condqp2(Heap2Heap, lft_1), LifetimeP#condqp2(Heap1Heap, lft_1), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (Map#Domain(Map#Elements(lft_1)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft_1), LifetimeP#condqp2(Heap1Heap, lft_1))] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft_1), LifetimeP#condqp2(Heap1Heap, lft_1))] <==> Map#Domain(Map#Elements(lft_1)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft_1), LifetimeP#condqp2(Heap1Heap, lft_1))] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft_1), LifetimeP#condqp2(Heap1Heap, lft_1))]) && (Map#Domain(Map#Elements(lft_1)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft_1), LifetimeP#condqp2(Heap1Heap, lft_1))] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft_1), LifetimeP#condqp2(Heap1Heap, lft_1))] ==> Heap2Heap[null, lft_List(sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft_1), LifetimeP#condqp2(Heap1Heap, lft_1)))] == Heap1Heap[null, lft_List(sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft_1), LifetimeP#condqp2(Heap1Heap, lft_1)))]) ==> LifetimeP#condqp2(Heap2Heap, lft_1) == LifetimeP#condqp2(Heap1Heap, lft_1)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, lft: (Map int (Map Ref Perm)) ::
+  { LifetimeP#condqp2(Heap2Heap, lft), LifetimeP#condqp2(Heap1Heap, lft), succHeapTrans(Heap2Heap, Heap1Heap) }
+  (Map#Domain(Map#Elements(lft)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft), LifetimeP#condqp2(Heap1Heap, lft))] && NoPerm < Map#Elements(Map#Elements(lft)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft), LifetimeP#condqp2(Heap1Heap, lft))] <==> Map#Domain(Map#Elements(lft)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft), LifetimeP#condqp2(Heap1Heap, lft))] && NoPerm < Map#Elements(Map#Elements(lft)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft), LifetimeP#condqp2(Heap1Heap, lft))]) && (Map#Domain(Map#Elements(lft)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft), LifetimeP#condqp2(Heap1Heap, lft))] && NoPerm < Map#Elements(Map#Elements(lft)[1])[sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft), LifetimeP#condqp2(Heap1Heap, lft))] ==> Heap2Heap[null, lft_List(sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft), LifetimeP#condqp2(Heap1Heap, lft)))] == Heap1Heap[null, lft_List(sk_LifetimeP#condqp2(LifetimeP#condqp2(Heap2Heap, lft), LifetimeP#condqp2(Heap1Heap, lft)))]) ==> LifetimeP#condqp2(Heap2Heap, lft) == LifetimeP#condqp2(Heap1Heap, lft)
 );
 
-procedure LifetimeP#definedness(lft_1: (Map int (Map Ref Perm))) returns ()
+procedure LifetimeP#definedness(lft: (Map int (Map Ref Perm))) returns ()
   modifies Heap, Mask;
 {
-  var x_38: Ref;
-  var x_32: Ref;
-  var x_12: Ref;
-  var QPMask: MaskType;
-  var x_18: Ref;
-  var x_42: Ref;
   var x_13: Ref;
+  var x_28: Ref;
+  var x_50: Ref;
+  var QPMask: MaskType;
+  var x_15: Ref;
+  var x_29: Ref;
+  var x_18: Ref;
   
   // -- Check definedness of predicate body of LifetimeP
     
@@ -1270,182 +1270,182 @@ procedure LifetimeP#definedness(lft_1: (Map int (Map Ref Perm))) returns ()
         // Stop execution
         assume false;
       }
-    assume valid_lft(Heap, lft_1);
+    assume valid_lft(Heap, lft);
     
     // -- Check definedness of (forall x: Ref :: { (x in lft[0]) } { lft[0][x] } (x in lft[0]) ==> lft[0][x] > 0 / 1)
       if (*) {
-        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [207866]"}
-          Map#Domain(lft_1)[0];
-        if (Map#Domain(Map#Elements(lft_1)[0])[x_38]) {
-          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [207867]"}
-            Map#Domain(lft_1)[0];
-          assert {:msg "  Predicate might not be well-formed. Map lft[0] might not contain an entry at key x. (0695.vpr@30.1--34.2) [207868]"}
-            Map#Domain(Map#Elements(lft_1)[0])[x_38];
+        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [70291]"}
+          Map#Domain(lft)[0];
+        if (Map#Domain(Map#Elements(lft)[0])[x_13]) {
+          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [70292]"}
+            Map#Domain(lft)[0];
+          assert {:msg "  Predicate might not be well-formed. Map lft[0] might not contain an entry at key x. (0695.vpr@30.1--34.2) [70293]"}
+            Map#Domain(Map#Elements(lft)[0])[x_13];
         }
         assume false;
       }
     assume (forall x_3: Ref ::
-      { Map#Domain(Map#Elements(lft_1)[0])[x_3] } { Map#Elements(Map#Elements(lft_1)[0])[x_3] }
-      Map#Domain(Map#Elements(lft_1)[0])[x_3] ==> 0 / 1 < Map#Elements(Map#Elements(lft_1)[0])[x_3]
+      { Map#Domain(Map#Elements(lft)[0])[x_3] } { Map#Elements(Map#Elements(lft)[0])[x_3] }
+      Map#Domain(Map#Elements(lft)[0])[x_3] ==> 0 / 1 < Map#Elements(Map#Elements(lft)[0])[x_3]
     );
     
     // -- Check definedness of (forall x: Ref :: { (x in lft[0]) } { lft[0][x] } (x in lft[0]) ==> lft[0][x] <= 1 / 1)
       if (*) {
-        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [207869]"}
-          Map#Domain(lft_1)[0];
-        if (Map#Domain(Map#Elements(lft_1)[0])[x_32]) {
-          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [207870]"}
-            Map#Domain(lft_1)[0];
-          assert {:msg "  Predicate might not be well-formed. Map lft[0] might not contain an entry at key x. (0695.vpr@30.1--34.2) [207871]"}
-            Map#Domain(Map#Elements(lft_1)[0])[x_32];
+        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [70294]"}
+          Map#Domain(lft)[0];
+        if (Map#Domain(Map#Elements(lft)[0])[x_28]) {
+          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [70295]"}
+            Map#Domain(lft)[0];
+          assert {:msg "  Predicate might not be well-formed. Map lft[0] might not contain an entry at key x. (0695.vpr@30.1--34.2) [70296]"}
+            Map#Domain(Map#Elements(lft)[0])[x_28];
         }
         assume false;
       }
     assume (forall x_5: Ref ::
-      { Map#Domain(Map#Elements(lft_1)[0])[x_5] } { Map#Elements(Map#Elements(lft_1)[0])[x_5] }
-      Map#Domain(Map#Elements(lft_1)[0])[x_5] ==> Map#Elements(Map#Elements(lft_1)[0])[x_5] <= 1 / 1
+      { Map#Domain(Map#Elements(lft)[0])[x_5] } { Map#Elements(Map#Elements(lft)[0])[x_5] }
+      Map#Domain(Map#Elements(lft)[0])[x_5] ==> Map#Elements(Map#Elements(lft)[0])[x_5] <= 1 / 1
     );
     
     // -- Check definedness of (forall x: Ref :: { (x in lft[0]) } { lft[0][x] } (x in lft[0]) ==> acc(lft_T(x), lft[0][x]))
       if (*) {
-        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [207872]"}
-          Map#Domain(lft_1)[0];
-        if (Map#Domain(Map#Elements(lft_1)[0])[x_12]) {
-          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [207873]"}
-            Map#Domain(lft_1)[0];
-          assert {:msg "  Predicate might not be well-formed. Map lft[0] might not contain an entry at key x. (0695.vpr@30.1--34.2) [207874]"}
-            Map#Domain(Map#Elements(lft_1)[0])[x_12];
+        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [70297]"}
+          Map#Domain(lft)[0];
+        if (Map#Domain(Map#Elements(lft)[0])[x_50]) {
+          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 0. (0695.vpr@30.1--34.2) [70298]"}
+            Map#Domain(lft)[0];
+          assert {:msg "  Predicate might not be well-formed. Map lft[0] might not contain an entry at key x. (0695.vpr@30.1--34.2) [70299]"}
+            Map#Domain(Map#Elements(lft)[0])[x_50];
         }
         assume false;
       }
     havoc QPMask;
     
     // -- check if receiver acc(lft_T(x), lft[0][x]) is injective
-      assert {:msg "  Predicate might not be well-formed. Quantified resource lft_T(x) might not be injective. (0695.vpr@30.1--34.2) [207875]"}
+      assert {:msg "  Predicate might not be well-formed. Quantified resource lft_T(x) might not be injective. (0695.vpr@30.1--34.2) [70300]"}
         (forall x_7: Ref, x_7_1: Ref ::
         { neverTriggered3(x_7), neverTriggered3(x_7_1) }
-        (((x_7 != x_7_1 && Map#Domain(Map#Elements(lft_1)[0])[x_7]) && Map#Domain(Map#Elements(lft_1)[0])[x_7_1]) && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[x_7]) && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[x_7_1] ==> x_7 != x_7_1
+        (((x_7 != x_7_1 && Map#Domain(Map#Elements(lft)[0])[x_7]) && Map#Domain(Map#Elements(lft)[0])[x_7_1]) && NoPerm < Map#Elements(Map#Elements(lft)[0])[x_7]) && NoPerm < Map#Elements(Map#Elements(lft)[0])[x_7_1] ==> x_7 != x_7_1
       );
     
     // -- Define Inverse Function
       assume (forall x_7: Ref ::
-        { Heap[null, lft_T(x_7)] } { Mask[null, lft_T(x_7)] } { Map#Domain(Map#Elements(lft_1)[0])[x_7] } { Map#Elements(Map#Elements(lft_1)[0])[x_7] }
-        Map#Domain(Map#Elements(lft_1)[0])[x_7] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[x_7] ==> invRecv3(x_7) == x_7 && qpRange3(x_7)
+        { Heap[null, lft_T(x_7)] } { Mask[null, lft_T(x_7)] } { Map#Domain(Map#Elements(lft)[0])[x_7] } { Map#Elements(Map#Elements(lft)[0])[x_7] }
+        Map#Domain(Map#Elements(lft)[0])[x_7] && NoPerm < Map#Elements(Map#Elements(lft)[0])[x_7] ==> invRecv3(x_7) == x_7 && qpRange3(x_7)
       );
       assume (forall x_8_1_1: Ref ::
         { invRecv3(x_8_1_1) }
-        (Map#Domain(Map#Elements(lft_1)[0])[invRecv3(x_8_1_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[invRecv3(x_8_1_1)]) && qpRange3(x_8_1_1) ==> invRecv3(x_8_1_1) == x_8_1_1
+        (Map#Domain(Map#Elements(lft)[0])[invRecv3(x_8_1_1)] && NoPerm < Map#Elements(Map#Elements(lft)[0])[invRecv3(x_8_1_1)]) && qpRange3(x_8_1_1) ==> invRecv3(x_8_1_1) == x_8_1_1
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Predicate might not be well-formed. Fraction lft[0][x] might be negative. (0695.vpr@30.1--34.2) [207876]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction lft[0][x] might be negative. (0695.vpr@30.1--34.2) [70301]"}
       (forall x_7: Ref ::
-      { Heap[null, lft_T(x_7)] } { Mask[null, lft_T(x_7)] } { Map#Domain(Map#Elements(lft_1)[0])[x_7] } { Map#Elements(Map#Elements(lft_1)[0])[x_7] }
-      Map#Domain(Map#Elements(lft_1)[0])[x_7] ==> Map#Elements(Map#Elements(lft_1)[0])[x_7] >= NoPerm
+      { Heap[null, lft_T(x_7)] } { Mask[null, lft_T(x_7)] } { Map#Domain(Map#Elements(lft)[0])[x_7] } { Map#Elements(Map#Elements(lft)[0])[x_7] }
+      Map#Domain(Map#Elements(lft)[0])[x_7] ==> Map#Elements(Map#Elements(lft)[0])[x_7] >= NoPerm
     );
     
     // -- Define updated permissions
       assume (forall x_8_1_1: Ref ::
         { QPMask[null, lft_T(x_8_1_1)] }
-        (Map#Domain(Map#Elements(lft_1)[0])[invRecv3(x_8_1_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[invRecv3(x_8_1_1)]) && qpRange3(x_8_1_1) ==> (NoPerm < Map#Elements(Map#Elements(lft_1)[0])[invRecv3(x_8_1_1)] ==> invRecv3(x_8_1_1) == x_8_1_1) && QPMask[null, lft_T(x_8_1_1)] == Mask[null, lft_T(x_8_1_1)] + Map#Elements(Map#Elements(lft_1)[0])[invRecv3(x_8_1_1)]
+        (Map#Domain(Map#Elements(lft)[0])[invRecv3(x_8_1_1)] && NoPerm < Map#Elements(Map#Elements(lft)[0])[invRecv3(x_8_1_1)]) && qpRange3(x_8_1_1) ==> (NoPerm < Map#Elements(Map#Elements(lft)[0])[invRecv3(x_8_1_1)] ==> invRecv3(x_8_1_1) == x_8_1_1) && QPMask[null, lft_T(x_8_1_1)] == Mask[null, lft_T(x_8_1_1)] + Map#Elements(Map#Elements(lft)[0])[invRecv3(x_8_1_1)]
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall x_8_1_1: Ref ::
         { QPMask[null, lft_T(x_8_1_1)] }
-        !((Map#Domain(Map#Elements(lft_1)[0])[invRecv3(x_8_1_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[0])[invRecv3(x_8_1_1)]) && qpRange3(x_8_1_1)) ==> QPMask[null, lft_T(x_8_1_1)] == Mask[null, lft_T(x_8_1_1)]
+        !((Map#Domain(Map#Elements(lft)[0])[invRecv3(x_8_1_1)] && NoPerm < Map#Elements(Map#Elements(lft)[0])[invRecv3(x_8_1_1)]) && qpRange3(x_8_1_1)) ==> QPMask[null, lft_T(x_8_1_1)] == Mask[null, lft_T(x_8_1_1)]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall x: Ref :: { (x in lft[1]) } { lft[1][x] } (x in lft[1]) ==> lft[1][x] > 0 / 1)
       if (*) {
-        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [207877]"}
-          Map#Domain(lft_1)[1];
-        if (Map#Domain(Map#Elements(lft_1)[1])[x_18]) {
-          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [207878]"}
-            Map#Domain(lft_1)[1];
-          assert {:msg "  Predicate might not be well-formed. Map lft[1] might not contain an entry at key x. (0695.vpr@30.1--34.2) [207879]"}
-            Map#Domain(Map#Elements(lft_1)[1])[x_18];
+        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [70302]"}
+          Map#Domain(lft)[1];
+        if (Map#Domain(Map#Elements(lft)[1])[x_15]) {
+          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [70303]"}
+            Map#Domain(lft)[1];
+          assert {:msg "  Predicate might not be well-formed. Map lft[1] might not contain an entry at key x. (0695.vpr@30.1--34.2) [70304]"}
+            Map#Domain(Map#Elements(lft)[1])[x_15];
         }
         assume false;
       }
-    assume (forall x_11_1: Ref ::
-      { Map#Domain(Map#Elements(lft_1)[1])[x_11_1] } { Map#Elements(Map#Elements(lft_1)[1])[x_11_1] }
-      Map#Domain(Map#Elements(lft_1)[1])[x_11_1] ==> 0 / 1 < Map#Elements(Map#Elements(lft_1)[1])[x_11_1]
+    assume (forall x_11: Ref ::
+      { Map#Domain(Map#Elements(lft)[1])[x_11] } { Map#Elements(Map#Elements(lft)[1])[x_11] }
+      Map#Domain(Map#Elements(lft)[1])[x_11] ==> 0 / 1 < Map#Elements(Map#Elements(lft)[1])[x_11]
     );
     
     // -- Check definedness of (forall x: Ref :: { (x in lft[1]) } { lft[1][x] } (x in lft[1]) ==> lft[1][x] <= 1 / 1)
       if (*) {
-        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [207880]"}
-          Map#Domain(lft_1)[1];
-        if (Map#Domain(Map#Elements(lft_1)[1])[x_42]) {
-          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [207881]"}
-            Map#Domain(lft_1)[1];
-          assert {:msg "  Predicate might not be well-formed. Map lft[1] might not contain an entry at key x. (0695.vpr@30.1--34.2) [207882]"}
-            Map#Domain(Map#Elements(lft_1)[1])[x_42];
+        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [70305]"}
+          Map#Domain(lft)[1];
+        if (Map#Domain(Map#Elements(lft)[1])[x_29]) {
+          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [70306]"}
+            Map#Domain(lft)[1];
+          assert {:msg "  Predicate might not be well-formed. Map lft[1] might not contain an entry at key x. (0695.vpr@30.1--34.2) [70307]"}
+            Map#Domain(Map#Elements(lft)[1])[x_29];
         }
         assume false;
       }
     assume (forall x_13_2: Ref ::
-      { Map#Domain(Map#Elements(lft_1)[1])[x_13_2] } { Map#Elements(Map#Elements(lft_1)[1])[x_13_2] }
-      Map#Domain(Map#Elements(lft_1)[1])[x_13_2] ==> Map#Elements(Map#Elements(lft_1)[1])[x_13_2] <= 1 / 1
+      { Map#Domain(Map#Elements(lft)[1])[x_13_2] } { Map#Elements(Map#Elements(lft)[1])[x_13_2] }
+      Map#Domain(Map#Elements(lft)[1])[x_13_2] ==> Map#Elements(Map#Elements(lft)[1])[x_13_2] <= 1 / 1
     );
     
     // -- Check definedness of (forall x: Ref :: { (x in lft[1]) } { lft[1][x] } (x in lft[1]) ==> acc(lft_List(x), lft[1][x]))
       if (*) {
-        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [207883]"}
-          Map#Domain(lft_1)[1];
-        if (Map#Domain(Map#Elements(lft_1)[1])[x_13]) {
-          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [207884]"}
-            Map#Domain(lft_1)[1];
-          assert {:msg "  Predicate might not be well-formed. Map lft[1] might not contain an entry at key x. (0695.vpr@30.1--34.2) [207885]"}
-            Map#Domain(Map#Elements(lft_1)[1])[x_13];
+        assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [70308]"}
+          Map#Domain(lft)[1];
+        if (Map#Domain(Map#Elements(lft)[1])[x_18]) {
+          assert {:msg "  Predicate might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@30.1--34.2) [70309]"}
+            Map#Domain(lft)[1];
+          assert {:msg "  Predicate might not be well-formed. Map lft[1] might not contain an entry at key x. (0695.vpr@30.1--34.2) [70310]"}
+            Map#Domain(Map#Elements(lft)[1])[x_18];
         }
         assume false;
       }
     havoc QPMask;
     
     // -- check if receiver acc(lft_List(x), lft[1][x]) is injective
-      assert {:msg "  Predicate might not be well-formed. Quantified resource lft_List(x) might not be injective. (0695.vpr@30.1--34.2) [207886]"}
+      assert {:msg "  Predicate might not be well-formed. Quantified resource lft_List(x) might not be injective. (0695.vpr@30.1--34.2) [70311]"}
         (forall x_15_2: Ref, x_15_3: Ref ::
         { neverTriggered4(x_15_2), neverTriggered4(x_15_3) }
-        (((x_15_2 != x_15_3 && Map#Domain(Map#Elements(lft_1)[1])[x_15_2]) && Map#Domain(Map#Elements(lft_1)[1])[x_15_3]) && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[x_15_2]) && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[x_15_3] ==> x_15_2 != x_15_3
+        (((x_15_2 != x_15_3 && Map#Domain(Map#Elements(lft)[1])[x_15_2]) && Map#Domain(Map#Elements(lft)[1])[x_15_3]) && NoPerm < Map#Elements(Map#Elements(lft)[1])[x_15_2]) && NoPerm < Map#Elements(Map#Elements(lft)[1])[x_15_3] ==> x_15_2 != x_15_3
       );
     
     // -- Define Inverse Function
       assume (forall x_15_2: Ref ::
-        { Heap[null, lft_List(x_15_2)] } { Mask[null, lft_List(x_15_2)] } { Map#Domain(Map#Elements(lft_1)[1])[x_15_2] } { Map#Elements(Map#Elements(lft_1)[1])[x_15_2] }
-        Map#Domain(Map#Elements(lft_1)[1])[x_15_2] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[x_15_2] ==> invRecv4(x_15_2) == x_15_2 && qpRange4(x_15_2)
+        { Heap[null, lft_List(x_15_2)] } { Mask[null, lft_List(x_15_2)] } { Map#Domain(Map#Elements(lft)[1])[x_15_2] } { Map#Elements(Map#Elements(lft)[1])[x_15_2] }
+        Map#Domain(Map#Elements(lft)[1])[x_15_2] && NoPerm < Map#Elements(Map#Elements(lft)[1])[x_15_2] ==> invRecv4(x_15_2) == x_15_2 && qpRange4(x_15_2)
       );
       assume (forall x_16_1_1: Ref ::
         { invRecv4(x_16_1_1) }
-        (Map#Domain(Map#Elements(lft_1)[1])[invRecv4(x_16_1_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[invRecv4(x_16_1_1)]) && qpRange4(x_16_1_1) ==> invRecv4(x_16_1_1) == x_16_1_1
+        (Map#Domain(Map#Elements(lft)[1])[invRecv4(x_16_1_1)] && NoPerm < Map#Elements(Map#Elements(lft)[1])[invRecv4(x_16_1_1)]) && qpRange4(x_16_1_1) ==> invRecv4(x_16_1_1) == x_16_1_1
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Predicate might not be well-formed. Fraction lft[1][x] might be negative. (0695.vpr@30.1--34.2) [207887]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction lft[1][x] might be negative. (0695.vpr@30.1--34.2) [70312]"}
       (forall x_15_2: Ref ::
-      { Heap[null, lft_List(x_15_2)] } { Mask[null, lft_List(x_15_2)] } { Map#Domain(Map#Elements(lft_1)[1])[x_15_2] } { Map#Elements(Map#Elements(lft_1)[1])[x_15_2] }
-      Map#Domain(Map#Elements(lft_1)[1])[x_15_2] ==> Map#Elements(Map#Elements(lft_1)[1])[x_15_2] >= NoPerm
+      { Heap[null, lft_List(x_15_2)] } { Mask[null, lft_List(x_15_2)] } { Map#Domain(Map#Elements(lft)[1])[x_15_2] } { Map#Elements(Map#Elements(lft)[1])[x_15_2] }
+      Map#Domain(Map#Elements(lft)[1])[x_15_2] ==> Map#Elements(Map#Elements(lft)[1])[x_15_2] >= NoPerm
     );
     
     // -- Define updated permissions
       assume (forall x_16_1_1: Ref ::
         { QPMask[null, lft_List(x_16_1_1)] }
-        (Map#Domain(Map#Elements(lft_1)[1])[invRecv4(x_16_1_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[invRecv4(x_16_1_1)]) && qpRange4(x_16_1_1) ==> (NoPerm < Map#Elements(Map#Elements(lft_1)[1])[invRecv4(x_16_1_1)] ==> invRecv4(x_16_1_1) == x_16_1_1) && QPMask[null, lft_List(x_16_1_1)] == Mask[null, lft_List(x_16_1_1)] + Map#Elements(Map#Elements(lft_1)[1])[invRecv4(x_16_1_1)]
+        (Map#Domain(Map#Elements(lft)[1])[invRecv4(x_16_1_1)] && NoPerm < Map#Elements(Map#Elements(lft)[1])[invRecv4(x_16_1_1)]) && qpRange4(x_16_1_1) ==> (NoPerm < Map#Elements(Map#Elements(lft)[1])[invRecv4(x_16_1_1)] ==> invRecv4(x_16_1_1) == x_16_1_1) && QPMask[null, lft_List(x_16_1_1)] == Mask[null, lft_List(x_16_1_1)] + Map#Elements(Map#Elements(lft)[1])[invRecv4(x_16_1_1)]
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall x_16_1_1: Ref ::
         { QPMask[null, lft_List(x_16_1_1)] }
-        !((Map#Domain(Map#Elements(lft_1)[1])[invRecv4(x_16_1_1)] && NoPerm < Map#Elements(Map#Elements(lft_1)[1])[invRecv4(x_16_1_1)]) && qpRange4(x_16_1_1)) ==> QPMask[null, lft_List(x_16_1_1)] == Mask[null, lft_List(x_16_1_1)]
+        !((Map#Domain(Map#Elements(lft)[1])[invRecv4(x_16_1_1)] && NoPerm < Map#Elements(Map#Elements(lft)[1])[invRecv4(x_16_1_1)]) && qpRange4(x_16_1_1)) ==> QPMask[null, lft_List(x_16_1_1)] == Mask[null, lft_List(x_16_1_1)]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1506,7 +1506,7 @@ procedure P#definedness(x: Ref) returns ()
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_lft: (Map int (Map Ref Perm)))
+procedure foo_3(x: Ref, lft: (Map int (Map Ref Perm))) returns (res: Ref, new_lft: (Map int (Map Ref Perm)))
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -1556,9 +1556,9 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
         // Stop execution
         assume false;
       }
-    assume valid_lft(Heap, lft_1);
+    assume valid_lft(Heap, lft);
     perm := FullPerm;
-    Mask := Mask[null, LifetimeP(lft_1):=Mask[null, LifetimeP(lft_1)] + perm];
+    Mask := Mask[null, LifetimeP(lft):=Mask[null, LifetimeP(lft)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
@@ -1572,14 +1572,14 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
         // Stop execution
         assume false;
       }
-    assume valid_lft(Heap, lft_1);
+    assume valid_lft(Heap, lft);
     
     // -- Check definedness of (x.ref in lft[1])
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@48.12--48.53) [207888]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@48.12--48.53) [70313]"}
         HasDirectPerm(Mask, x, ref_2);
-      assert {:msg "  Contract might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@48.12--48.53) [207889]"}
-        Map#Domain(lft_1)[1];
-    assume Map#Domain(Map#Elements(lft_1)[1])[Heap[x, ref_2]];
+      assert {:msg "  Contract might not be well-formed. Map lft might not contain an entry at key 1. (0695.vpr@48.12--48.53) [70314]"}
+        Map#Domain(lft)[1];
+    assume Map#Domain(Map#Elements(lft)[1])[Heap[x, ref_2]];
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1610,7 +1610,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(ListRef(res.ref, new_lft, false), write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res.ref (0695.vpr@50.11--50.59) [207890]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res.ref (0695.vpr@50.11--50.59) [70315]"}
         HasDirectPerm(PostMask, res, ref_2);
     perm := FullPerm;
     PostMask := PostMask[null, ListRef(PostHeap[res, ref_2], new_lft, false):=PostMask[null, ListRef(PostHeap[res, ref_2], new_lft, false)] + perm];
@@ -1621,7 +1621,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
   }
   
   // -- Translating statement: new_lft := lft -- 0695.vpr@52.3--52.17
-    new_lft := lft_1;
+    new_lft := lft;
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale valid_lft(new_lft) && acc(LifetimeP(new_lft), write) --*
@@ -1659,14 +1659,14 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             // Stop execution
             assume false;
           }
-        assume valid_lft(WandDefRHSHeap, lft_1);
+        assume valid_lft(WandDefRHSHeap, lft);
         perm := FullPerm;
-        WandDefRHSMask := WandDefRHSMask[null, LifetimeP(lft_1):=WandDefRHSMask[null, LifetimeP(lft_1)] + perm];
+        WandDefRHSMask := WandDefRHSMask[null, LifetimeP(lft):=WandDefRHSMask[null, LifetimeP(lft)] + perm];
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume false;
       }
-    Mask := Mask[null, wand(valid_lft(Heap, new_lft), new_lft, valid_lft(Heap, lft_1), lft_1):=Mask[null, wand(valid_lft(Heap, new_lft), new_lft, valid_lft(Heap, lft_1), lft_1)] + FullPerm];
+    Mask := Mask[null, wand(valid_lft(Heap, new_lft), new_lft, valid_lft(Heap, lft), lft):=Mask[null, wand(valid_lft(Heap, new_lft), new_lft, valid_lft(Heap, lft), lft)] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1680,7 +1680,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
     assume state(Heap, Mask);
   
   // -- Translating statement: res.ref := null -- 0695.vpr@56.3--56.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access res.ref (0695.vpr@56.3--56.18) [207892]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access res.ref (0695.vpr@56.3--56.18) [70317]"}
       FullPerm == Mask[res, ref_2];
     Heap := Heap[res, ref_2:=null];
     assume state(Heap, Mask);
@@ -1688,20 +1688,20 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
   // -- Translating statement: fold acc(ListRef(res.ref, new_lft, false), write) -- 0695.vpr@57.3--57.40
     
     // -- Check definedness of acc(ListRef(res.ref, new_lft, false), write)
-      assert {:msg "  Folding ListRef(res.ref, new_lft, false) might fail. There might be insufficient permission to access res.ref (0695.vpr@57.3--57.40) [207893]"}
+      assert {:msg "  Folding ListRef(res.ref, new_lft, false) might fail. There might be insufficient permission to access res.ref (0695.vpr@57.3--57.40) [70318]"}
         HasDirectPerm(Mask, res, ref_2);
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     if (Heap[res, ref_2] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding ListRef(res.ref, new_lft, false) might fail. There might be insufficient permission to access res.ref.ref (0695.vpr@57.3--57.40) [207896]"}
+        assert {:msg "  Folding ListRef(res.ref, new_lft, false) might fail. There might be insufficient permission to access res.ref.ref (0695.vpr@57.3--57.40) [70321]"}
           perm <= Mask[Heap[res, ref_2], ref_2];
       }
       Mask := Mask[Heap[res, ref_2], ref_2:=Mask[Heap[res, ref_2], ref_2] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding ListRef(res.ref, new_lft, false) might fail. There might be insufficient permission to access NodeRef(res.ref.ref, new_lft, false) (0695.vpr@57.3--57.40) [207898]"}
+        assert {:msg "  Folding ListRef(res.ref, new_lft, false) might fail. There might be insufficient permission to access NodeRef(res.ref.ref, new_lft, false) (0695.vpr@57.3--57.40) [70323]"}
           perm <= Mask[null, NodeRef(Heap[Heap[res, ref_2], ref_2], new_lft, false)];
       }
       Mask := Mask[null, NodeRef(Heap[Heap[res, ref_2], ref_2], new_lft, false):=Mask[null, NodeRef(Heap[Heap[res, ref_2], ref_2], new_lft, false)] - perm];
@@ -1723,9 +1723,9 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
     if (Heap[res, ref_2] != null) {
       Heap := Heap[null, ListRef#sm(Heap[res, ref_2], new_lft, false):=Heap[null, ListRef#sm(Heap[res, ref_2], new_lft, false)][Heap[res, ref_2], ref_2:=true]];
       havoc newPMask;
-      assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-        { newPMask[o, f_85] }
-        Heap[null, ListRef#sm(Heap[res, ref_2], new_lft, false)][o, f_85] || Heap[null, NodeRef#sm(Heap[Heap[res, ref_2], ref_2], new_lft, false)][o, f_85] ==> newPMask[o, f_85]
+      assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+        { newPMask[o, f_61] }
+        Heap[null, ListRef#sm(Heap[res, ref_2], new_lft, false)][o, f_61] || Heap[null, NodeRef#sm(Heap[Heap[res, ref_2], ref_2], new_lft, false)][o, f_61] ==> newPMask[o, f_61]
       );
       Heap := Heap[null, ListRef#sm(Heap[res, ref_2], new_lft, false):=newPMask];
     }
@@ -1739,33 +1739,33 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant valid_lft(new_lft) && acc(LifetimeP(new_lft), write) might not hold on entry. Assertion valid_lft(new_lft) might not hold. (0695.vpr@60.15--60.32) [207900]"}
+        assert {:msg "  Loop invariant valid_lft(new_lft) && acc(LifetimeP(new_lft), write) might not hold on entry. Assertion valid_lft(new_lft) might not hold. (0695.vpr@60.15--60.32) [70325]"}
           valid_lft(Heap, new_lft);
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant valid_lft(new_lft) && acc(LifetimeP(new_lft), write) might not hold on entry. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@60.15--60.32) [207901]"}
+          assert {:msg "  Loop invariant valid_lft(new_lft) && acc(LifetimeP(new_lft), write) might not hold on entry. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@60.15--60.32) [70326]"}
             perm <= Mask[null, LifetimeP(new_lft)];
         }
         Mask := Mask[null, LifetimeP(new_lft):=Mask[null, LifetimeP(new_lft)] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not hold on entry. There might be insufficient permission to access x.ref (0695.vpr@61.15--61.60) [207902]"}
+          assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not hold on entry. There might be insufficient permission to access x.ref (0695.vpr@61.15--61.60) [70327]"}
             perm <= Mask[x, ref_2];
         }
         Mask := Mask[x, ref_2:=Mask[x, ref_2] - perm];
-        assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not hold on entry. Assertion valid_lft(new_lft) might not hold. (0695.vpr@61.15--61.60) [207903]"}
+        assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not hold on entry. Assertion valid_lft(new_lft) might not hold. (0695.vpr@61.15--61.60) [70328]"}
           valid_lft(Heap, new_lft);
-        assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not hold on entry. Assertion (x.ref in new_lft[1]) might not hold. (0695.vpr@61.15--61.60) [207904]"}
+        assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not hold on entry. Assertion (x.ref in new_lft[1]) might not hold. (0695.vpr@61.15--61.60) [70329]"}
           Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(res.ref, write) && acc(ListRef(res.ref, new_lft, false), write) might not hold on entry. There might be insufficient permission to access res.ref (0695.vpr@62.15--62.63) [207905]"}
+          assert {:msg "  Loop invariant acc(res.ref, write) && acc(ListRef(res.ref, new_lft, false), write) might not hold on entry. There might be insufficient permission to access res.ref (0695.vpr@62.15--62.63) [70330]"}
             perm <= Mask[res, ref_2];
         }
         Mask := Mask[res, ref_2:=Mask[res, ref_2] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(res.ref, write) && acc(ListRef(res.ref, new_lft, false), write) might not hold on entry. There might be insufficient permission to access ListRef(res.ref, new_lft, false) (0695.vpr@62.15--62.63) [207906]"}
+          assert {:msg "  Loop invariant acc(res.ref, write) && acc(ListRef(res.ref, new_lft, false), write) might not hold on entry. There might be insufficient permission to access ListRef(res.ref, new_lft, false) (0695.vpr@62.15--62.63) [70331]"}
             perm <= Mask[null, ListRef(Heap[res, ref_2], new_lft, false)];
         }
         Mask := Mask[null, ListRef(Heap[res, ref_2], new_lft, false):=Mask[null, ListRef(Heap[res, ref_2], new_lft, false)] - perm];
@@ -1805,9 +1805,9 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
         assume valid_lft(Heap, new_lft);
         
         // -- Check definedness of (x.ref in new_lft[1])
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@61.15--61.60) [207907]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.ref (0695.vpr@61.15--61.60) [70332]"}
             HasDirectPerm(Mask, x, ref_2);
-          assert {:msg "  Contract might not be well-formed. Map new_lft might not contain an entry at key 1. (0695.vpr@61.15--61.60) [207908]"}
+          assert {:msg "  Contract might not be well-formed. Map new_lft might not contain an entry at key 1. (0695.vpr@61.15--61.60) [70333]"}
             Map#Domain(new_lft)[1];
         assume Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
         assume state(Heap, Mask);
@@ -1817,7 +1817,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
         assume state(Heap, Mask);
         
         // -- Check definedness of acc(ListRef(res.ref, new_lft, false), write)
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res.ref (0695.vpr@62.15--62.63) [207909]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res.ref (0695.vpr@62.15--62.63) [70334]"}
             HasDirectPerm(Mask, res, ref_2);
         perm := FullPerm;
         Mask := Mask[null, ListRef(Heap[res, ref_2], new_lft, false):=Mask[null, ListRef(Heap[res, ref_2], new_lft, false)] + perm];
@@ -1857,20 +1857,20 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
         // Check and assume guard
         
         // -- Check definedness of get_disc(x.ref, new_lft) != null
-          assert {:msg "  While statement might fail. There might be insufficient permission to access x.ref (0695.vpr@59.10--59.42) [207910]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access x.ref (0695.vpr@59.10--59.42) [70335]"}
             HasDirectPerm(Mask, x, ref_2);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function get_disc might not hold. Assertion valid_lft(new_lft) might not hold. (0695.vpr@59.10--59.34) [207911]"}
+            assert {:msg "  Precondition of function get_disc might not hold. Assertion valid_lft(new_lft) might not hold. (0695.vpr@59.10--59.34) [70336]"}
               valid_lft(Heap, new_lft);
             perm := FullPerm;
-            assert {:msg "  Precondition of function get_disc might not hold. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@59.10--59.34) [207912]"}
+            assert {:msg "  Precondition of function get_disc might not hold. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@59.10--59.34) [70337]"}
               NoPerm < perm ==> NoPerm < Mask[null, LifetimeP(new_lft)];
-            assert {:msg "  Precondition of function get_disc might not hold. Assertion valid_lft(new_lft) might not hold. (0695.vpr@59.10--59.34) [207913]"}
+            assert {:msg "  Precondition of function get_disc might not hold. Assertion valid_lft(new_lft) might not hold. (0695.vpr@59.10--59.34) [70338]"}
               valid_lft(Heap, new_lft);
-            assert {:msg "  Precondition of function get_disc might not hold. Assertion (x.ref in new_lft[1]) might not hold. (0695.vpr@59.10--59.34) [207914]"}
+            assert {:msg "  Precondition of function get_disc might not hold. Assertion (x.ref in new_lft[1]) might not hold. (0695.vpr@59.10--59.34) [70339]"}
               Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1894,7 +1894,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding LifetimeP(new_lft) might fail. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@64.5--64.30) [207915]"}
+              assert {:msg "  Unfolding LifetimeP(new_lft) might fail. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@64.5--64.30) [70340]"}
                 perm <= Mask[null, LifetimeP(new_lft)];
             }
             Mask := Mask[null, LifetimeP(new_lft):=Mask[null, LifetimeP(new_lft)] - perm];
@@ -1917,7 +1917,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             havoc QPMask;
             
             // -- check if receiver acc(lft_T(x$0), new_lft[0][x$0]) is injective
-              assert {:msg "  Unfolding LifetimeP(new_lft) might fail. Quantified resource lft_T(x$0) might not be injective. (0695.vpr@64.5--64.30) [207916]"}
+              assert {:msg "  Unfolding LifetimeP(new_lft) might fail. Quantified resource lft_T(x$0) might not be injective. (0695.vpr@64.5--64.30) [70341]"}
                 (forall x$0_2: Ref, x$0_2_1: Ref ::
                 { neverTriggered5(x$0_2), neverTriggered5(x$0_2_1) }
                 (((x$0_2 != x$0_2_1 && Map#Domain(Map#Elements(new_lft)[0])[x$0_2]) && Map#Domain(Map#Elements(new_lft)[0])[x$0_2_1]) && NoPerm < Map#Elements(Map#Elements(new_lft)[0])[x$0_2]) && NoPerm < Map#Elements(Map#Elements(new_lft)[0])[x$0_2_1] ==> x$0_2 != x$0_2_1
@@ -1933,7 +1933,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
                 (Map#Domain(Map#Elements(new_lft)[0])[invRecv5(x_1_1_1)] && NoPerm < Map#Elements(Map#Elements(new_lft)[0])[invRecv5(x_1_1_1)]) && qpRange5(x_1_1_1) ==> invRecv5(x_1_1_1) == x_1_1_1
               );
             // Check that permission expression is non-negative for all fields
-            assert {:msg "  Unfolding LifetimeP(new_lft) might fail. Fraction new_lft[0][x$0] might be negative. (0695.vpr@64.5--64.30) [207917]"}
+            assert {:msg "  Unfolding LifetimeP(new_lft) might fail. Fraction new_lft[0][x$0] might be negative. (0695.vpr@64.5--64.30) [70342]"}
               (forall x$0_2: Ref ::
               { Heap[null, lft_T(x$0_2)] } { Mask[null, lft_T(x$0_2)] } { Map#Domain(Map#Elements(new_lft)[0])[x$0_2] } { Map#Elements(Map#Elements(new_lft)[0])[x$0_2] }
               Map#Domain(Map#Elements(new_lft)[0])[x$0_2] ==> Map#Elements(Map#Elements(new_lft)[0])[x$0_2] >= NoPerm
@@ -1946,9 +1946,9 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
               );
             
             // -- Define independent locations
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
               assume (forall x_1_1_1: Ref ::
                 { QPMask[null, lft_T(x_1_1_1)] }
@@ -1967,26 +1967,26 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             havoc QPMask;
             
             // -- check if receiver acc(lft_List(x$0), new_lft[1][x$0]) is injective
-              assert {:msg "  Unfolding LifetimeP(new_lft) might fail. Quantified resource lft_List(x$0) might not be injective. (0695.vpr@64.5--64.30) [207918]"}
-                (forall x$0_6: Ref, x$0_6_1: Ref ::
-                { neverTriggered6(x$0_6), neverTriggered6(x$0_6_1) }
-                (((x$0_6 != x$0_6_1 && Map#Domain(Map#Elements(new_lft)[1])[x$0_6]) && Map#Domain(Map#Elements(new_lft)[1])[x$0_6_1]) && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[x$0_6]) && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[x$0_6_1] ==> x$0_6 != x$0_6_1
+              assert {:msg "  Unfolding LifetimeP(new_lft) might fail. Quantified resource lft_List(x$0) might not be injective. (0695.vpr@64.5--64.30) [70343]"}
+                (forall x$0_6_1: Ref, x$0_6_2: Ref ::
+                { neverTriggered6(x$0_6_1), neverTriggered6(x$0_6_2) }
+                (((x$0_6_1 != x$0_6_2 && Map#Domain(Map#Elements(new_lft)[1])[x$0_6_1]) && Map#Domain(Map#Elements(new_lft)[1])[x$0_6_2]) && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[x$0_6_1]) && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[x$0_6_2] ==> x$0_6_1 != x$0_6_2
               );
             
             // -- Define Inverse Function
-              assume (forall x$0_6: Ref ::
-                { Heap[null, lft_List(x$0_6)] } { Mask[null, lft_List(x$0_6)] } { Map#Domain(Map#Elements(new_lft)[1])[x$0_6] } { Map#Elements(Map#Elements(new_lft)[1])[x$0_6] }
-                Map#Domain(Map#Elements(new_lft)[1])[x$0_6] && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[x$0_6] ==> invRecv6(x$0_6) == x$0_6 && qpRange6(x$0_6)
+              assume (forall x$0_6_1: Ref ::
+                { Heap[null, lft_List(x$0_6_1)] } { Mask[null, lft_List(x$0_6_1)] } { Map#Domain(Map#Elements(new_lft)[1])[x$0_6_1] } { Map#Elements(Map#Elements(new_lft)[1])[x$0_6_1] }
+                Map#Domain(Map#Elements(new_lft)[1])[x$0_6_1] && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[x$0_6_1] ==> invRecv6(x$0_6_1) == x$0_6_1 && qpRange6(x$0_6_1)
               );
               assume (forall x_2_1: Ref ::
                 { invRecv6(x_2_1) }
                 (Map#Domain(Map#Elements(new_lft)[1])[invRecv6(x_2_1)] && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[invRecv6(x_2_1)]) && qpRange6(x_2_1) ==> invRecv6(x_2_1) == x_2_1
               );
             // Check that permission expression is non-negative for all fields
-            assert {:msg "  Unfolding LifetimeP(new_lft) might fail. Fraction new_lft[1][x$0] might be negative. (0695.vpr@64.5--64.30) [207919]"}
-              (forall x$0_6: Ref ::
-              { Heap[null, lft_List(x$0_6)] } { Mask[null, lft_List(x$0_6)] } { Map#Domain(Map#Elements(new_lft)[1])[x$0_6] } { Map#Elements(Map#Elements(new_lft)[1])[x$0_6] }
-              Map#Domain(Map#Elements(new_lft)[1])[x$0_6] ==> Map#Elements(Map#Elements(new_lft)[1])[x$0_6] >= NoPerm
+            assert {:msg "  Unfolding LifetimeP(new_lft) might fail. Fraction new_lft[1][x$0] might be negative. (0695.vpr@64.5--64.30) [70344]"}
+              (forall x$0_6_1: Ref ::
+              { Heap[null, lft_List(x$0_6_1)] } { Mask[null, lft_List(x$0_6_1)] } { Map#Domain(Map#Elements(new_lft)[1])[x$0_6_1] } { Map#Elements(Map#Elements(new_lft)[1])[x$0_6_1] }
+              Map#Domain(Map#Elements(new_lft)[1])[x$0_6_1] ==> Map#Elements(Map#Elements(new_lft)[1])[x$0_6_1] >= NoPerm
             );
             
             // -- Define updated permissions
@@ -1996,9 +1996,9 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
               );
             
             // -- Define independent locations
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
               assume (forall x_2_1: Ref ::
                 { QPMask[null, lft_List(x_2_1)] }
@@ -2014,44 +2014,44 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of (x.ref in new_lft[1])
-              assert {:msg "  Assert might fail. There might be insufficient permission to access x.ref (0695.vpr@65.12--65.37) [207920]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access x.ref (0695.vpr@65.12--65.37) [70345]"}
                 HasDirectPerm(ExhaleWellDef0Mask, x, ref_2);
-              assert {:msg "  Assert might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@65.12--65.37) [207921]"}
+              assert {:msg "  Assert might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@65.12--65.37) [70346]"}
                 Map#Domain(new_lft)[1];
-            assert {:msg "  Assert might fail. Assertion (x.ref in new_lft[1]) might not hold. (0695.vpr@65.12--65.37) [207922]"}
+            assert {:msg "  Assert might fail. Assertion (x.ref in new_lft[1]) might not hold. (0695.vpr@65.12--65.37) [70347]"}
               Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             assume state(Heap, Mask);
           
           // -- Translating statement: unfold acc(lft_List(x.ref), new_lft[1][x.ref]) -- 0695.vpr@66.5--66.57
             
             // -- Check definedness of acc(lft_List(x.ref), new_lft[1][x.ref])
-              assert {:msg "  Unfolding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@66.5--66.57) [207923]"}
+              assert {:msg "  Unfolding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@66.5--66.57) [70348]"}
                 HasDirectPerm(Mask, x, ref_2);
-              assert {:msg "  Unfolding lft_List(x.ref) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@66.5--66.57) [207924]"}
+              assert {:msg "  Unfolding lft_List(x.ref) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@66.5--66.57) [70349]"}
                 Map#Domain(new_lft)[1];
-              assert {:msg "  Unfolding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@66.5--66.57) [207925]"}
+              assert {:msg "  Unfolding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@66.5--66.57) [70350]"}
                 HasDirectPerm(Mask, x, ref_2);
-              assert {:msg "  Unfolding lft_List(x.ref) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@66.5--66.57) [207926]"}
+              assert {:msg "  Unfolding lft_List(x.ref) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@66.5--66.57) [70351]"}
                 Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             
             // -- Check definedness of new_lft[1][x.ref]
-              assert {:msg "  Unfolding lft_List(x.ref) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@66.5--66.57) [207927]"}
+              assert {:msg "  Unfolding lft_List(x.ref) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@66.5--66.57) [70352]"}
                 Map#Domain(new_lft)[1];
-              assert {:msg "  Unfolding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@66.5--66.57) [207928]"}
+              assert {:msg "  Unfolding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@66.5--66.57) [70353]"}
                 HasDirectPerm(Mask, x, ref_2);
-              assert {:msg "  Unfolding lft_List(x.ref) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@66.5--66.57) [207929]"}
+              assert {:msg "  Unfolding lft_List(x.ref) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@66.5--66.57) [70354]"}
                 Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
-            assert {:msg "  Unfolding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] might not be positive. (0695.vpr@66.5--66.57) [207930]"}
+            assert {:msg "  Unfolding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] might not be positive. (0695.vpr@66.5--66.57) [70355]"}
               Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]] > NoPerm;
             assume lft_List#trigger(Heap, lft_List(Heap[x, ref_2]));
             assume Heap[null, lft_List(Heap[x, ref_2])] == CombineFrames(FrameFragment(Heap[Heap[x, ref_2], ref_2]), Heap[null, List(Heap[Heap[x, ref_2], ref_2])]);
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
-            assert {:msg "  Unfolding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@66.5--66.57) [207931]"}
+            assert {:msg "  Unfolding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@66.5--66.57) [70356]"}
               perm >= NoPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding lft_List(x.ref) might fail. There might be insufficient permission to access lft_List(x.ref) (0695.vpr@66.5--66.57) [207932]"}
+              assert {:msg "  Unfolding lft_List(x.ref) might fail. There might be insufficient permission to access lft_List(x.ref) (0695.vpr@66.5--66.57) [70357]"}
                 perm <= Mask[null, lft_List(Heap[x, ref_2])];
             }
             Mask := Mask[null, lft_List(Heap[x, ref_2]):=Mask[null, lft_List(Heap[x, ref_2])] - perm];
@@ -2062,13 +2062,13 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
                 Heap := Heap[null, lft_List(Heap[x, ref_2]):=newVersion];
               }
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
-            assert {:msg "  Unfolding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@66.5--66.57) [207933]"}
+            assert {:msg "  Unfolding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@66.5--66.57) [70358]"}
               perm >= NoPerm;
             assume perm > NoPerm ==> Heap[x, ref_2] != null;
             Mask := Mask[Heap[x, ref_2], ref_2:=Mask[Heap[x, ref_2], ref_2] + perm];
             assume state(Heap, Mask);
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
-            assert {:msg "  Unfolding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@66.5--66.57) [207934]"}
+            assert {:msg "  Unfolding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@66.5--66.57) [70359]"}
               perm >= NoPerm;
             Mask := Mask[null, List(Heap[Heap[x, ref_2], ref_2]):=Mask[null, List(Heap[Heap[x, ref_2], ref_2])] + perm];
             
@@ -2083,15 +2083,15 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             PreCallMask := Mask;
             
             // -- Check definedness of x.ref
-              assert {:msg "  Method call might fail. There might be insufficient permission to access x.ref (0695.vpr@68.5--68.55) [207935]"}
+              assert {:msg "  Method call might fail. There might be insufficient permission to access x.ref (0695.vpr@68.5--68.55) [70360]"}
                 HasDirectPerm(Mask, x, ref_2);
             
             // -- Check definedness of new_lft[1][x.ref]
-              assert {:msg "  Method call might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@68.5--68.55) [207936]"}
+              assert {:msg "  Method call might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@68.5--68.55) [70361]"}
                 Map#Domain(new_lft)[1];
-              assert {:msg "  Method call might fail. There might be insufficient permission to access x.ref (0695.vpr@68.5--68.55) [207937]"}
+              assert {:msg "  Method call might fail. There might be insufficient permission to access x.ref (0695.vpr@68.5--68.55) [70362]"}
                 HasDirectPerm(Mask, x, ref_2);
-              assert {:msg "  Method call might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@68.5--68.55) [207938]"}
+              assert {:msg "  Method call might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@68.5--68.55) [70363]"}
                 Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             arg_a := Heap[x, ref_2];
             arg_p := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
@@ -2099,13 +2099,13 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             // -- Exhaling precondition
               ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
-              assert {:msg "  The precondition of method sh_borrow might not hold. Assertion new_lft[1][x.ref] > 0 / 1 might not hold. (0695.vpr@68.5--68.55) [207939]"}
+              assert {:msg "  The precondition of method sh_borrow might not hold. Assertion new_lft[1][x.ref] > 0 / 1 might not hold. (0695.vpr@68.5--68.55) [70364]"}
                 0 / 1 < arg_p;
               perm := arg_p;
-              assert {:msg "  The precondition of method sh_borrow might not hold. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@68.5--68.55) [207940]"}
+              assert {:msg "  The precondition of method sh_borrow might not hold. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@68.5--68.55) [70365]"}
                 perm >= NoPerm;
               if (perm != NoPerm) {
-                assert {:msg "  The precondition of method sh_borrow might not hold. There might be insufficient permission to access x.ref.ref (0695.vpr@68.5--68.55) [207941]"}
+                assert {:msg "  The precondition of method sh_borrow might not hold. There might be insufficient permission to access x.ref.ref (0695.vpr@68.5--68.55) [70366]"}
                   perm <= Mask[arg_a, ref_2];
               }
               Mask := Mask[arg_a, ref_2:=Mask[arg_a, ref_2] - perm];
@@ -2119,14 +2119,14 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             
             // -- Inhaling postcondition
               perm := arg_p / 2;
-              assert {:msg "  Method call might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@68.5--68.55) [207942]"}
+              assert {:msg "  Method call might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@68.5--68.55) [70367]"}
                 perm >= NoPerm;
               assume perm > NoPerm ==> arg_a != null;
               Mask := Mask[arg_a, ref_2:=Mask[arg_a, ref_2] + perm];
               assume state(Heap, Mask);
               assume Heap[arg_a, ref_2] == PreCallHeap[arg_a, ref_2];
               perm := arg_p / 2;
-              assert {:msg "  Method call might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@68.5--68.55) [207943]"}
+              assert {:msg "  Method call might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@68.5--68.55) [70368]"}
                 perm >= NoPerm;
               assume perm > NoPerm ==> x_nxt != null;
               Mask := Mask[x_nxt, ref_2:=Mask[x_nxt, ref_2] + perm];
@@ -2141,52 +2141,52 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of x_nxt.ref == x.ref.ref
-              assert {:msg "  Assert might fail. There might be insufficient permission to access x_nxt.ref (0695.vpr@69.12--69.34) [207944]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access x_nxt.ref (0695.vpr@69.12--69.34) [70369]"}
                 HasDirectPerm(ExhaleWellDef0Mask, x_nxt, ref_2);
-              assert {:msg "  Assert might fail. There might be insufficient permission to access x.ref (0695.vpr@69.12--69.34) [207945]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access x.ref (0695.vpr@69.12--69.34) [70370]"}
                 HasDirectPerm(ExhaleWellDef0Mask, x, ref_2);
-              assert {:msg "  Assert might fail. There might be insufficient permission to access x.ref.ref (0695.vpr@69.12--69.34) [207946]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access x.ref.ref (0695.vpr@69.12--69.34) [70371]"}
                 HasDirectPerm(ExhaleWellDef0Mask, Heap[x, ref_2], ref_2);
-            assert {:msg "  Assert might fail. Assertion x_nxt.ref == x.ref.ref might not hold. (0695.vpr@69.12--69.34) [207947]"}
+            assert {:msg "  Assert might fail. Assertion x_nxt.ref == x.ref.ref might not hold. (0695.vpr@69.12--69.34) [70372]"}
               Heap[x_nxt, ref_2] == Heap[Heap[x, ref_2], ref_2];
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(lft_List(x.ref), new_lft[1][x.ref] / 2) -- 0695.vpr@71.5--71.57
             
             // -- Check definedness of acc(lft_List(x.ref), new_lft[1][x.ref] / 2)
-              assert {:msg "  Folding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@71.5--71.57) [207948]"}
+              assert {:msg "  Folding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@71.5--71.57) [70373]"}
                 HasDirectPerm(Mask, x, ref_2);
-              assert {:msg "  Folding lft_List(x.ref) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@71.5--71.57) [207949]"}
+              assert {:msg "  Folding lft_List(x.ref) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@71.5--71.57) [70374]"}
                 Map#Domain(new_lft)[1];
-              assert {:msg "  Folding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@71.5--71.57) [207950]"}
+              assert {:msg "  Folding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@71.5--71.57) [70375]"}
                 HasDirectPerm(Mask, x, ref_2);
-              assert {:msg "  Folding lft_List(x.ref) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@71.5--71.57) [207951]"}
+              assert {:msg "  Folding lft_List(x.ref) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@71.5--71.57) [70376]"}
                 Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             
             // -- Check definedness of new_lft[1][x.ref] / 2
-              assert {:msg "  Folding lft_List(x.ref) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@71.5--71.57) [207952]"}
+              assert {:msg "  Folding lft_List(x.ref) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@71.5--71.57) [70377]"}
                 Map#Domain(new_lft)[1];
-              assert {:msg "  Folding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@71.5--71.57) [207953]"}
+              assert {:msg "  Folding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref (0695.vpr@71.5--71.57) [70378]"}
                 HasDirectPerm(Mask, x, ref_2);
-              assert {:msg "  Folding lft_List(x.ref) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@71.5--71.57) [207954]"}
+              assert {:msg "  Folding lft_List(x.ref) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@71.5--71.57) [70379]"}
                 Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
-            assert {:msg "  Folding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] / 2 might not be positive. (0695.vpr@71.5--71.57) [207955]"}
+            assert {:msg "  Folding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] / 2 might not be positive. (0695.vpr@71.5--71.57) [70380]"}
               Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]] > NoPerm;
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]] / 2;
-            assert {:msg "  Folding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@71.5--71.57) [207956]"}
+            assert {:msg "  Folding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@71.5--71.57) [70381]"}
               perm >= NoPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref.ref (0695.vpr@71.5--71.57) [207957]"}
+              assert {:msg "  Folding lft_List(x.ref) might fail. There might be insufficient permission to access x.ref.ref (0695.vpr@71.5--71.57) [70382]"}
                 perm <= Mask[Heap[x, ref_2], ref_2];
             }
             Mask := Mask[Heap[x, ref_2], ref_2:=Mask[Heap[x, ref_2], ref_2] - perm];
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]] / 2;
-            assert {:msg "  Folding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@71.5--71.57) [207958]"}
+            assert {:msg "  Folding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@71.5--71.57) [70383]"}
               perm >= NoPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding lft_List(x.ref) might fail. There might be insufficient permission to access List(x.ref.ref) (0695.vpr@71.5--71.57) [207959]"}
+              assert {:msg "  Folding lft_List(x.ref) might fail. There might be insufficient permission to access List(x.ref.ref) (0695.vpr@71.5--71.57) [70384]"}
                 perm <= Mask[null, List(Heap[Heap[x, ref_2], ref_2])];
             }
             Mask := Mask[null, List(Heap[Heap[x, ref_2], ref_2]):=Mask[null, List(Heap[Heap[x, ref_2], ref_2])] - perm];
@@ -2194,7 +2194,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             // -- Record predicate instance information
               assume InsidePredicate(lft_List(Heap[x, ref_2]), Heap[null, lft_List(Heap[x, ref_2])], List(Heap[Heap[x, ref_2], ref_2]), Heap[null, List(Heap[Heap[x, ref_2], ref_2])]);
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]] / 2;
-            assert {:msg "  Folding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@71.5--71.57) [207960]"}
+            assert {:msg "  Folding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@71.5--71.57) [70385]"}
               perm >= NoPerm;
             Mask := Mask[null, lft_List(Heap[x, ref_2]):=Mask[null, lft_List(Heap[x, ref_2])] + perm];
             assume state(Heap, Mask);
@@ -2208,9 +2208,9 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             }
             Heap := Heap[null, lft_List#sm(Heap[x, ref_2]):=Heap[null, lft_List#sm(Heap[x, ref_2])][Heap[x, ref_2], ref_2:=true]];
             havoc newPMask;
-            assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-              { newPMask[o_11, f_3] }
-              Heap[null, lft_List#sm(Heap[x, ref_2])][o_11, f_3] || Heap[null, List#sm(Heap[Heap[x, ref_2], ref_2])][o_11, f_3] ==> newPMask[o_11, f_3]
+            assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+              { newPMask[o_14, f_3] }
+              Heap[null, lft_List#sm(Heap[x, ref_2])][o_14, f_3] || Heap[null, List#sm(Heap[Heap[x, ref_2], ref_2])][o_14, f_3] ==> newPMask[o_14, f_3]
             );
             Heap := Heap[null, lft_List#sm(Heap[x, ref_2]):=newPMask];
             assume state(Heap, Mask);
@@ -2219,11 +2219,11 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
           // -- Translating statement: fold acc(LifetimeP(new_lft), write) -- 0695.vpr@74.5--74.28
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion valid_lft(new_lft) might not hold. (0695.vpr@74.5--74.28) [207961]"}
+            assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion valid_lft(new_lft) might not hold. (0695.vpr@74.5--74.28) [70386]"}
               valid_lft(Heap, new_lft);
             if (*) {
               if (Map#Domain(Map#Elements(new_lft)[0])[x$0_8]) {
-                assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion new_lft[0][x$0] > 0 / 1 might not hold. (0695.vpr@74.5--74.28) [207962]"}
+                assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion new_lft[0][x$0] > 0 / 1 might not hold. (0695.vpr@74.5--74.28) [70387]"}
                   0 / 1 < Map#Elements(Map#Elements(new_lft)[0])[x$0_8];
               }
               assume false;
@@ -2234,7 +2234,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             );
             if (*) {
               if (Map#Domain(Map#Elements(new_lft)[0])[x$0_10]) {
-                assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion new_lft[0][x$0] <= 1 / 1 might not hold. (0695.vpr@74.5--74.28) [207963]"}
+                assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion new_lft[0][x$0] <= 1 / 1 might not hold. (0695.vpr@74.5--74.28) [70388]"}
                   Map#Elements(Map#Elements(new_lft)[0])[x$0_10] <= 1 / 1;
               }
               assume false;
@@ -2246,21 +2246,21 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Folding LifetimeP(new_lft) might fail. Fraction new_lft[0][x$0] might be negative. (0695.vpr@74.5--74.28) [207964]"}
+              assert {:msg "  Folding LifetimeP(new_lft) might fail. Fraction new_lft[0][x$0] might be negative. (0695.vpr@74.5--74.28) [70389]"}
                 (forall x_3_1_1: Ref ::
                 { invRecv7(x_3_1_1) }
                 Map#Domain(Map#Elements(new_lft)[0])[invRecv7(x_3_1_1)] && qpRange7(x_3_1_1) ==> Map#Elements(Map#Elements(new_lft)[0])[invRecv7(x_3_1_1)] >= NoPerm
               );
             
             // -- check if receiver acc(lft_T(x$0), new_lft[0][x$0]) is injective
-              assert {:msg "  Folding LifetimeP(new_lft) might fail. Quantified resource lft_T(x$0) might not be injective. (0695.vpr@74.5--74.28) [207965]"}
+              assert {:msg "  Folding LifetimeP(new_lft) might fail. Quantified resource lft_T(x$0) might not be injective. (0695.vpr@74.5--74.28) [70390]"}
                 (forall x$0_12: Ref, x$0_12_1: Ref ::
                 { neverTriggered7(x$0_12), neverTriggered7(x$0_12_1) }
                 (((x$0_12 != x$0_12_1 && Map#Domain(Map#Elements(new_lft)[0])[x$0_12]) && Map#Domain(Map#Elements(new_lft)[0])[x$0_12_1]) && NoPerm < Map#Elements(Map#Elements(new_lft)[0])[x$0_12]) && NoPerm < Map#Elements(Map#Elements(new_lft)[0])[x$0_12_1] ==> x$0_12 != x$0_12_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Folding LifetimeP(new_lft) might fail. There might be insufficient permission to access lft_T(x$0) (0695.vpr@74.5--74.28) [207966]"}
+              assert {:msg "  Folding LifetimeP(new_lft) might fail. There might be insufficient permission to access lft_T(x$0) (0695.vpr@74.5--74.28) [70391]"}
                 (forall x$0_12: Ref ::
                 { Heap[null, lft_T(x$0_12)] } { Mask[null, lft_T(x$0_12)] } { Map#Domain(Map#Elements(new_lft)[0])[x$0_12] } { Map#Elements(Map#Elements(new_lft)[0])[x$0_12] }
                 Map#Domain(Map#Elements(new_lft)[0])[x$0_12] ==> Mask[null, lft_T(x$0_12)] >= Map#Elements(Map#Elements(new_lft)[0])[x$0_12]
@@ -2287,14 +2287,14 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
               );
             
             // -- assume permission updates for independent locations 
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
             Mask := QPMask;
             if (*) {
               if (Map#Domain(Map#Elements(new_lft)[1])[x$0_13]) {
-                assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion new_lft[1][x$0] > 0 / 1 might not hold. (0695.vpr@74.5--74.28) [207967]"}
+                assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion new_lft[1][x$0] > 0 / 1 might not hold. (0695.vpr@74.5--74.28) [70392]"}
                   0 / 1 < Map#Elements(Map#Elements(new_lft)[1])[x$0_13];
               }
               assume false;
@@ -2305,7 +2305,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             );
             if (*) {
               if (Map#Domain(Map#Elements(new_lft)[1])[x$0_15]) {
-                assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion new_lft[1][x$0] <= 1 / 1 might not hold. (0695.vpr@74.5--74.28) [207968]"}
+                assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion new_lft[1][x$0] <= 1 / 1 might not hold. (0695.vpr@74.5--74.28) [70393]"}
                   Map#Elements(Map#Elements(new_lft)[1])[x$0_15] <= 1 / 1;
               }
               assume false;
@@ -2317,21 +2317,21 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             havoc QPMask;
             
             // -- check that the permission amount is positive
-              assert {:msg "  Folding LifetimeP(new_lft) might fail. Fraction new_lft[1][x$0] might be negative. (0695.vpr@74.5--74.28) [207969]"}
-                (forall x_4_1_1: Ref ::
-                { invRecv8(x_4_1_1) }
-                Map#Domain(Map#Elements(new_lft)[1])[invRecv8(x_4_1_1)] && qpRange8(x_4_1_1) ==> Map#Elements(Map#Elements(new_lft)[1])[invRecv8(x_4_1_1)] >= NoPerm
+              assert {:msg "  Folding LifetimeP(new_lft) might fail. Fraction new_lft[1][x$0] might be negative. (0695.vpr@74.5--74.28) [70394]"}
+                (forall x_4_1: Ref ::
+                { invRecv8(x_4_1) }
+                Map#Domain(Map#Elements(new_lft)[1])[invRecv8(x_4_1)] && qpRange8(x_4_1) ==> Map#Elements(Map#Elements(new_lft)[1])[invRecv8(x_4_1)] >= NoPerm
               );
             
             // -- check if receiver acc(lft_List(x$0), new_lft[1][x$0]) is injective
-              assert {:msg "  Folding LifetimeP(new_lft) might fail. Quantified resource lft_List(x$0) might not be injective. (0695.vpr@74.5--74.28) [207970]"}
+              assert {:msg "  Folding LifetimeP(new_lft) might fail. Quantified resource lft_List(x$0) might not be injective. (0695.vpr@74.5--74.28) [70395]"}
                 (forall x$0_17: Ref, x$0_17_1: Ref ::
                 { neverTriggered8(x$0_17), neverTriggered8(x$0_17_1) }
                 (((x$0_17 != x$0_17_1 && Map#Domain(Map#Elements(new_lft)[1])[x$0_17]) && Map#Domain(Map#Elements(new_lft)[1])[x$0_17_1]) && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[x$0_17]) && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[x$0_17_1] ==> x$0_17 != x$0_17_1
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Folding LifetimeP(new_lft) might fail. There might be insufficient permission to access lft_List(x$0) (0695.vpr@74.5--74.28) [207971]"}
+              assert {:msg "  Folding LifetimeP(new_lft) might fail. There might be insufficient permission to access lft_List(x$0) (0695.vpr@74.5--74.28) [70396]"}
                 (forall x$0_17: Ref ::
                 { Heap[null, lft_List(x$0_17)] } { Mask[null, lft_List(x$0_17)] } { Map#Domain(Map#Elements(new_lft)[1])[x$0_17] } { Map#Elements(Map#Elements(new_lft)[1])[x$0_17] }
                 Map#Domain(Map#Elements(new_lft)[1])[x$0_17] ==> Mask[null, lft_List(x$0_17)] >= Map#Elements(Map#Elements(new_lft)[1])[x$0_17]
@@ -2342,25 +2342,25 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
                 { Heap[null, lft_List(x$0_17)] } { Mask[null, lft_List(x$0_17)] } { Map#Domain(Map#Elements(new_lft)[1])[x$0_17] } { Map#Elements(Map#Elements(new_lft)[1])[x$0_17] }
                 Map#Domain(Map#Elements(new_lft)[1])[x$0_17] && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[x$0_17] ==> invRecv8(x$0_17) == x$0_17 && qpRange8(x$0_17)
               );
-              assume (forall x_4_1_1: Ref ::
-                { invRecv8(x_4_1_1) }
-                (Map#Domain(Map#Elements(new_lft)[1])[invRecv8(x_4_1_1)] && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[invRecv8(x_4_1_1)]) && qpRange8(x_4_1_1) ==> invRecv8(x_4_1_1) == x_4_1_1
+              assume (forall x_4_1: Ref ::
+                { invRecv8(x_4_1) }
+                (Map#Domain(Map#Elements(new_lft)[1])[invRecv8(x_4_1)] && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[invRecv8(x_4_1)]) && qpRange8(x_4_1) ==> invRecv8(x_4_1) == x_4_1
               );
             
             // -- assume permission updates
-              assume (forall x_4_1_1: Ref ::
-                { QPMask[null, lft_List(x_4_1_1)] }
-                (Map#Domain(Map#Elements(new_lft)[1])[invRecv8(x_4_1_1)] && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[invRecv8(x_4_1_1)]) && qpRange8(x_4_1_1) ==> invRecv8(x_4_1_1) == x_4_1_1 && QPMask[null, lft_List(x_4_1_1)] == Mask[null, lft_List(x_4_1_1)] - Map#Elements(Map#Elements(new_lft)[1])[invRecv8(x_4_1_1)]
+              assume (forall x_4_1: Ref ::
+                { QPMask[null, lft_List(x_4_1)] }
+                (Map#Domain(Map#Elements(new_lft)[1])[invRecv8(x_4_1)] && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[invRecv8(x_4_1)]) && qpRange8(x_4_1) ==> invRecv8(x_4_1) == x_4_1 && QPMask[null, lft_List(x_4_1)] == Mask[null, lft_List(x_4_1)] - Map#Elements(Map#Elements(new_lft)[1])[invRecv8(x_4_1)]
               );
-              assume (forall x_4_1_1: Ref ::
-                { QPMask[null, lft_List(x_4_1_1)] }
-                !((Map#Domain(Map#Elements(new_lft)[1])[invRecv8(x_4_1_1)] && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[invRecv8(x_4_1_1)]) && qpRange8(x_4_1_1)) ==> QPMask[null, lft_List(x_4_1_1)] == Mask[null, lft_List(x_4_1_1)]
+              assume (forall x_4_1: Ref ::
+                { QPMask[null, lft_List(x_4_1)] }
+                !((Map#Domain(Map#Elements(new_lft)[1])[invRecv8(x_4_1)] && NoPerm < Map#Elements(Map#Elements(new_lft)[1])[invRecv8(x_4_1)]) && qpRange8(x_4_1)) ==> QPMask[null, lft_List(x_4_1)] == Mask[null, lft_List(x_4_1)]
               );
             
             // -- assume permission updates for independent locations 
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
             Mask := QPMask;
             perm := FullPerm;
@@ -2380,37 +2380,37 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
           // -- Translating statement: fold acc(lft_List(x_nxt), new_lft[1][x.ref]) -- 0695.vpr@76.5--76.55
             
             // -- Check definedness of acc(lft_List(x_nxt), new_lft[1][x.ref])
-              assert {:msg "  Folding lft_List(x_nxt) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@76.5--76.55) [207972]"}
+              assert {:msg "  Folding lft_List(x_nxt) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@76.5--76.55) [70397]"}
                 Map#Domain(new_lft)[1];
-              assert {:msg "  Folding lft_List(x_nxt) might fail. There might be insufficient permission to access x.ref (0695.vpr@76.5--76.55) [207973]"}
+              assert {:msg "  Folding lft_List(x_nxt) might fail. There might be insufficient permission to access x.ref (0695.vpr@76.5--76.55) [70398]"}
                 HasDirectPerm(Mask, x, ref_2);
-              assert {:msg "  Folding lft_List(x_nxt) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@76.5--76.55) [207974]"}
+              assert {:msg "  Folding lft_List(x_nxt) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@76.5--76.55) [70399]"}
                 Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             
             // -- Check definedness of new_lft[1][x.ref]
-              assert {:msg "  Folding lft_List(x_nxt) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@76.5--76.55) [207975]"}
+              assert {:msg "  Folding lft_List(x_nxt) might fail. Map new_lft might not contain an entry at key 1. (0695.vpr@76.5--76.55) [70400]"}
                 Map#Domain(new_lft)[1];
-              assert {:msg "  Folding lft_List(x_nxt) might fail. There might be insufficient permission to access x.ref (0695.vpr@76.5--76.55) [207976]"}
+              assert {:msg "  Folding lft_List(x_nxt) might fail. There might be insufficient permission to access x.ref (0695.vpr@76.5--76.55) [70401]"}
                 HasDirectPerm(Mask, x, ref_2);
-              assert {:msg "  Folding lft_List(x_nxt) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@76.5--76.55) [207977]"}
+              assert {:msg "  Folding lft_List(x_nxt) might fail. Map new_lft[1] might not contain an entry at key x.ref. (0695.vpr@76.5--76.55) [70402]"}
                 Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
-            assert {:msg "  Folding lft_List(x_nxt) might fail. Fraction new_lft[1][x.ref] might not be positive. (0695.vpr@76.5--76.55) [207978]"}
+            assert {:msg "  Folding lft_List(x_nxt) might fail. Fraction new_lft[1][x.ref] might not be positive. (0695.vpr@76.5--76.55) [70403]"}
               Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]] > NoPerm;
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
-            assert {:msg "  Folding lft_List(x_nxt) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@76.5--76.55) [207979]"}
+            assert {:msg "  Folding lft_List(x_nxt) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@76.5--76.55) [70404]"}
               perm >= NoPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding lft_List(x_nxt) might fail. There might be insufficient permission to access x_nxt.ref (0695.vpr@76.5--76.55) [207980]"}
+              assert {:msg "  Folding lft_List(x_nxt) might fail. There might be insufficient permission to access x_nxt.ref (0695.vpr@76.5--76.55) [70405]"}
                 perm <= Mask[x_nxt, ref_2];
             }
             Mask := Mask[x_nxt, ref_2:=Mask[x_nxt, ref_2] - perm];
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
-            assert {:msg "  Folding lft_List(x_nxt) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@76.5--76.55) [207981]"}
+            assert {:msg "  Folding lft_List(x_nxt) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@76.5--76.55) [70406]"}
               perm >= NoPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding lft_List(x_nxt) might fail. There might be insufficient permission to access List(x_nxt.ref) (0695.vpr@76.5--76.55) [207982]"}
+              assert {:msg "  Folding lft_List(x_nxt) might fail. There might be insufficient permission to access List(x_nxt.ref) (0695.vpr@76.5--76.55) [70407]"}
                 perm <= Mask[null, List(Heap[x_nxt, ref_2])];
             }
             Mask := Mask[null, List(Heap[x_nxt, ref_2]):=Mask[null, List(Heap[x_nxt, ref_2])] - perm];
@@ -2418,7 +2418,7 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             // -- Record predicate instance information
               assume InsidePredicate(lft_List(x_nxt), Heap[null, lft_List(x_nxt)], List(Heap[x_nxt, ref_2]), Heap[null, List(Heap[x_nxt, ref_2])]);
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
-            assert {:msg "  Folding lft_List(x_nxt) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@76.5--76.55) [207983]"}
+            assert {:msg "  Folding lft_List(x_nxt) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@76.5--76.55) [70408]"}
               perm >= NoPerm;
             Mask := Mask[null, lft_List(x_nxt):=Mask[null, lft_List(x_nxt)] + perm];
             assume state(Heap, Mask);
@@ -2432,9 +2432,9 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             }
             Heap := Heap[null, lft_List#sm(x_nxt):=Heap[null, lft_List#sm(x_nxt)][x_nxt, ref_2:=true]];
             havoc newPMask;
-            assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-              { newPMask[o_35, f_17] }
-              Heap[null, lft_List#sm(x_nxt)][o_35, f_17] || Heap[null, List#sm(Heap[x_nxt, ref_2])][o_35, f_17] ==> newPMask[o_35, f_17]
+            assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+              { newPMask[o_3, f_24] }
+              Heap[null, lft_List#sm(x_nxt)][o_3, f_24] || Heap[null, List#sm(Heap[x_nxt, ref_2])][o_3, f_24] ==> newPMask[o_3, f_24]
             );
             Heap := Heap[null, lft_List#sm(x_nxt):=newPMask];
             assume state(Heap, Mask);
@@ -2446,33 +2446,33 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
         // Exhale invariant
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant valid_lft(new_lft) && acc(LifetimeP(new_lft), write) might not be preserved. Assertion valid_lft(new_lft) might not hold. (0695.vpr@60.15--60.32) [207984]"}
+        assert {:msg "  Loop invariant valid_lft(new_lft) && acc(LifetimeP(new_lft), write) might not be preserved. Assertion valid_lft(new_lft) might not hold. (0695.vpr@60.15--60.32) [70409]"}
           valid_lft(Heap, new_lft);
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant valid_lft(new_lft) && acc(LifetimeP(new_lft), write) might not be preserved. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@60.15--60.32) [207985]"}
+          assert {:msg "  Loop invariant valid_lft(new_lft) && acc(LifetimeP(new_lft), write) might not be preserved. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@60.15--60.32) [70410]"}
             perm <= Mask[null, LifetimeP(new_lft)];
         }
         Mask := Mask[null, LifetimeP(new_lft):=Mask[null, LifetimeP(new_lft)] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not be preserved. There might be insufficient permission to access x.ref (0695.vpr@61.15--61.60) [207986]"}
+          assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not be preserved. There might be insufficient permission to access x.ref (0695.vpr@61.15--61.60) [70411]"}
             perm <= Mask[x, ref_2];
         }
         Mask := Mask[x, ref_2:=Mask[x, ref_2] - perm];
-        assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not be preserved. Assertion valid_lft(new_lft) might not hold. (0695.vpr@61.15--61.60) [207987]"}
+        assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not be preserved. Assertion valid_lft(new_lft) might not hold. (0695.vpr@61.15--61.60) [70412]"}
           valid_lft(Heap, new_lft);
-        assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not be preserved. Assertion (x.ref in new_lft[1]) might not hold. (0695.vpr@61.15--61.60) [207988]"}
+        assert {:msg "  Loop invariant acc(x.ref, write) && (valid_lft(new_lft) && ((x.ref in new_lft[1]) && (false ==> new_lft[1][x.ref] == 1 / 1))) might not be preserved. Assertion (x.ref in new_lft[1]) might not hold. (0695.vpr@61.15--61.60) [70413]"}
           Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(res.ref, write) && acc(ListRef(res.ref, new_lft, false), write) might not be preserved. There might be insufficient permission to access res.ref (0695.vpr@62.15--62.63) [207989]"}
+          assert {:msg "  Loop invariant acc(res.ref, write) && acc(ListRef(res.ref, new_lft, false), write) might not be preserved. There might be insufficient permission to access res.ref (0695.vpr@62.15--62.63) [70414]"}
             perm <= Mask[res, ref_2];
         }
         Mask := Mask[res, ref_2:=Mask[res, ref_2] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(res.ref, write) && acc(ListRef(res.ref, new_lft, false), write) might not be preserved. There might be insufficient permission to access ListRef(res.ref, new_lft, false) (0695.vpr@62.15--62.63) [207990]"}
+          assert {:msg "  Loop invariant acc(res.ref, write) && acc(ListRef(res.ref, new_lft, false), write) might not be preserved. There might be insufficient permission to access ListRef(res.ref, new_lft, false) (0695.vpr@62.15--62.63) [70415]"}
             perm <= Mask[null, ListRef(Heap[res, ref_2], new_lft, false)];
         }
         Mask := Mask[null, ListRef(Heap[res, ref_2], new_lft, false):=Mask[null, ListRef(Heap[res, ref_2], new_lft, false)] - perm];
@@ -2512,23 +2512,23 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of foo might not hold. Assertion valid_lft(new_lft) might not hold. (0695.vpr@49.11--49.28) [207991]"}
+    assert {:msg "  Postcondition of foo might not hold. Assertion valid_lft(new_lft) might not hold. (0695.vpr@49.11--49.28) [70416]"}
       valid_lft(Heap, new_lft);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@49.11--49.28) [207992]"}
+      assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@49.11--49.28) [70417]"}
         perm <= Mask[null, LifetimeP(new_lft)];
     }
     Mask := Mask[null, LifetimeP(new_lft):=Mask[null, LifetimeP(new_lft)] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access res.ref (0695.vpr@50.11--50.59) [207993]"}
+      assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access res.ref (0695.vpr@50.11--50.59) [70418]"}
         perm <= Mask[res, ref_2];
     }
     Mask := Mask[res, ref_2:=Mask[res, ref_2] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access ListRef(res.ref, new_lft, false) (0695.vpr@50.11--50.59) [207994]"}
+      assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access ListRef(res.ref, new_lft, false) (0695.vpr@50.11--50.59) [70419]"}
         perm <= Mask[null, ListRef(Heap[res, ref_2], new_lft, false)];
     }
     Mask := Mask[null, ListRef(Heap[res, ref_2], new_lft, false):=Mask[null, ListRef(Heap[res, ref_2], new_lft, false)] - perm];
@@ -2587,7 +2587,7 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
   // -- Checked inhaling of precondition
     assume 0 / 1 < p_1;
     perm := p_1;
-    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (0695.vpr@83.12--83.36) [207995]"}
+    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (0695.vpr@83.12--83.36) [70420]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> a_2 != null;
     Mask := Mask[a_2, ref_2:=Mask[a_2, ref_2] + perm];
@@ -2605,30 +2605,30 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := p_1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction p / 2 might be negative. (0695.vpr@84.11--84.49) [207996]"}
+    assert {:msg "  Contract might not be well-formed. Fraction p / 2 might be negative. (0695.vpr@84.11--84.49) [70421]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> a_2 != null;
     PostMask := PostMask[a_2, ref_2:=PostMask[a_2, ref_2] + perm];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of a.ref == old(a.ref)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.ref (0695.vpr@84.11--84.49) [207997]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.ref (0695.vpr@84.11--84.49) [70422]"}
         HasDirectPerm(PostMask, a_2, ref_2);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.ref (0695.vpr@84.11--84.49) [207998]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.ref (0695.vpr@84.11--84.49) [70423]"}
         HasDirectPerm(oldMask, a_2, ref_2);
     assume PostHeap[a_2, ref_2] == oldHeap[a_2, ref_2];
     assume state(PostHeap, PostMask);
     perm := p_1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction p / 2 might be negative. (0695.vpr@85.11--85.46) [207999]"}
+    assert {:msg "  Contract might not be well-formed. Fraction p / 2 might be negative. (0695.vpr@85.11--85.46) [70424]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> bw != null;
     PostMask := PostMask[bw, ref_2:=PostMask[bw, ref_2] + perm];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of bw.ref == a.ref
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access bw.ref (0695.vpr@85.11--85.46) [208000]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access bw.ref (0695.vpr@85.11--85.46) [70425]"}
         HasDirectPerm(PostMask, bw, ref_2);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.ref (0695.vpr@85.11--85.46) [208001]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a.ref (0695.vpr@85.11--85.46) [70426]"}
         HasDirectPerm(PostMask, a_2, ref_2);
     assume PostHeap[bw, ref_2] == PostHeap[a_2, ref_2];
     assume state(PostHeap, PostMask);
@@ -2652,7 +2652,7 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
     // Inhaling left hand side of current wand into hypothetical state
     if (b_1_1) {
       perm := p_1 / 2;
-      assert {:msg "  Packaging wand might fail. Fraction p / 2 might be negative. (0695.vpr@88.3--88.76) [208002]"}
+      assert {:msg "  Packaging wand might fail. Fraction p / 2 might be negative. (0695.vpr@88.3--88.76) [70427]"}
         perm >= NoPerm;
       b_1_1 := b_1_1 && (perm > NoPerm ==> bw != null);
       Ops_1Mask := Ops_1Mask[bw, ref_2:=Ops_1Mask[bw, ref_2] + perm];
@@ -2675,7 +2675,7 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
       rcvLocal := a_2;
       neededTransfer := p_1 / 2;
       initNeededTransfer := Used_1Mask[rcvLocal, ref_2] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(a.ref, p / 2) might be negative. (0695.vpr@88.3--88.76) [208003]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(a.ref, p / 2) might be negative. (0695.vpr@88.3--88.76) [70428]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -2718,7 +2718,7 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
             Heap := Heap[null, wand_1#sm(bw, p_1 / 2, a_2, p_1 / 2, bw, a_2):=Heap[null, wand_1#sm(bw, p_1 / 2, a_2, p_1 / 2, bw, a_2)][a_2, ref_2:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access a.ref (0695.vpr@88.3--88.76) [208004]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access a.ref (0695.vpr@88.3--88.76) [70429]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, ref_2] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -2732,13 +2732,13 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
       if (b_1_1) {
         
         // -- Check definedness of old[lhs](bw.ref) == a.ref
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access bw.ref (0695.vpr@88.3--88.76) [208005]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access bw.ref (0695.vpr@88.3--88.76) [70430]"}
             HasDirectPerm(Labellhs2Mask, bw, ref_2);
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access a.ref (0695.vpr@88.3--88.76) [208006]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access a.ref (0695.vpr@88.3--88.76) [70431]"}
             HasDirectPerm(ResultMask, a_2, ref_2);
       }
     }
-    assert {:msg "  Packaging wand might fail. Assertion old[lhs](bw.ref) == a.ref might not hold. (0695.vpr@88.3--88.76) [208007]"}
+    assert {:msg "  Packaging wand might fail. Assertion old[lhs](bw.ref) == a.ref might not hold. (0695.vpr@88.3--88.76) [70432]"}
       (b_1_1 && b_1_1) && b_2_1 ==> Labellhs2Heap[bw, ref_2] == ResultHeap[a_2, ref_2];
     Mask := Mask[null, wand_1(bw, p_1 / 2, a_2, p_1 / 2, bw, a_2):=Mask[null, wand_1(bw, p_1 / 2, a_2, p_1 / 2, bw, a_2)] + FullPerm];
     assume state(Heap, Mask);
@@ -2749,24 +2749,24 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := p_1 / 2;
-    assert {:msg "  Postcondition of sh_borrow might not hold. Fraction p / 2 might be negative. (0695.vpr@84.11--84.49) [208008]"}
+    assert {:msg "  Postcondition of sh_borrow might not hold. Fraction p / 2 might be negative. (0695.vpr@84.11--84.49) [70433]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of sh_borrow might not hold. There might be insufficient permission to access a.ref (0695.vpr@84.11--84.49) [208009]"}
+      assert {:msg "  Postcondition of sh_borrow might not hold. There might be insufficient permission to access a.ref (0695.vpr@84.11--84.49) [70434]"}
         perm <= Mask[a_2, ref_2];
     }
     Mask := Mask[a_2, ref_2:=Mask[a_2, ref_2] - perm];
-    assert {:msg "  Postcondition of sh_borrow might not hold. Assertion a.ref == old(a.ref) might not hold. (0695.vpr@84.11--84.49) [208010]"}
+    assert {:msg "  Postcondition of sh_borrow might not hold. Assertion a.ref == old(a.ref) might not hold. (0695.vpr@84.11--84.49) [70435]"}
       Heap[a_2, ref_2] == oldHeap[a_2, ref_2];
     perm := p_1 / 2;
-    assert {:msg "  Postcondition of sh_borrow might not hold. Fraction p / 2 might be negative. (0695.vpr@85.11--85.46) [208011]"}
+    assert {:msg "  Postcondition of sh_borrow might not hold. Fraction p / 2 might be negative. (0695.vpr@85.11--85.46) [70436]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of sh_borrow might not hold. There might be insufficient permission to access bw.ref (0695.vpr@85.11--85.46) [208012]"}
+      assert {:msg "  Postcondition of sh_borrow might not hold. There might be insufficient permission to access bw.ref (0695.vpr@85.11--85.46) [70437]"}
         perm <= Mask[bw, ref_2];
     }
     Mask := Mask[bw, ref_2:=Mask[bw, ref_2] - perm];
-    assert {:msg "  Postcondition of sh_borrow might not hold. Assertion bw.ref == a.ref might not hold. (0695.vpr@85.11--85.46) [208013]"}
+    assert {:msg "  Postcondition of sh_borrow might not hold. Assertion bw.ref == a.ref might not hold. (0695.vpr@85.11--85.46) [70438]"}
       Heap[bw, ref_2] == Heap[a_2, ref_2];
     // Finish exhale
     havoc ExhaleHeap;
@@ -2810,7 +2810,7 @@ procedure simple() returns ()
   
   // -- Translating statement: inhale acc(z.f, 1 / 2) -- 0695.vpr@97.3--97.23
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (0695.vpr@97.10--97.23) [208014]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (0695.vpr@97.10--97.23) [70439]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> z != null;
     Mask := Mask[z, f_7:=Mask[z, f_7] + perm];
@@ -2822,7 +2822,7 @@ procedure simple() returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
-    assert {:msg "  Folding P(y) might fail. Fraction 1 / 2 might be negative. (0695.vpr@98.3--98.22) [208017]"}
+    assert {:msg "  Folding P(y) might fail. Fraction 1 / 2 might be negative. (0695.vpr@98.3--98.22) [70442]"}
       perm >= NoPerm;
     Mask := Mask[null, P(y):=Mask[null, P(y)] + perm];
     assume state(Heap, Mask);
@@ -2842,7 +2842,7 @@ procedure simple() returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access z.f (0695.vpr@101.10--101.18) [208019]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access z.f (0695.vpr@101.10--101.18) [70444]"}
         perm <= Mask[z, f_7];
     }
     Mask := Mask[z, f_7:=Mask[z, f_7] - perm];
@@ -2868,7 +2868,7 @@ procedure simple() returns ()
     havoc QPMask;
     
     // -- check if receiver acc(P(x), write) is injective
-      assert {:msg "  Inhale might fail. Quantified resource P(x) might not be injective. (0695.vpr@105.10--105.56) [208020]"}
+      assert {:msg "  Inhale might fail. Quantified resource P(x) might not be injective. (0695.vpr@105.10--105.56) [70445]"}
         (forall x_1: Ref, x_1_1: Ref ::
         { neverTriggered9(x_1), neverTriggered9(x_1_1) }
         (((x_1 != x_1_1 && (Set#Empty(): Set Ref)[x_1]) && (Set#Empty(): Set Ref)[x_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_1 != x_1_1
@@ -2891,9 +2891,9 @@ procedure simple() returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall x_2_1: Ref ::
         { QPMask[null, P(x_2_1)] }

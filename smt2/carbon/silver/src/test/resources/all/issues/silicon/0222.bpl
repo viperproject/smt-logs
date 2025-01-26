@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:00
+// Date:         2025-01-26 21:42:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0222.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0222-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,7 +181,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type D1DomainType;
 
 // Translation of domain unique function f1
-const unique f1_2: D1DomainType;
+const unique f1_3: D1DomainType;
 
 // ==================================================
 // Translation of domain D2
@@ -191,7 +191,7 @@ const unique f1_2: D1DomainType;
 type D2DomainType;
 
 // Translation of domain unique function f2
-const unique f2_2: D2DomainType;
+const unique f2_3: D2DomainType;
 
 // ==================================================
 // Translation of domain whatever
@@ -201,4 +201,4 @@ const unique f2_2: D2DomainType;
 type whateverDomainType;
 
 // Translation of domain unique function f3
-const unique f3_1: D2DomainType;
+const unique f3_2: D2DomainType;

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:57:36
+// Date:         2025-01-26 21:43:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc8.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc8-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,15 +185,15 @@ axiom !IsWandField(f_7);
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref, y: Ref, z: Ref) returns ()
+procedure foo_3(x: Ref, y: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm_temp_quasihavoc_: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -208,13 +208,13 @@ procedure foo_1(x: Ref, y: Ref, z: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (havoc8.vpr@7.14--7.44) [77950]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (havoc8.vpr@7.14--7.44) [102371]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (havoc8.vpr@7.14--7.44) [77951]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (havoc8.vpr@7.14--7.44) [102372]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> y != null;
     Mask := Mask[y, f_7:=Mask[y, f_7] + perm];
@@ -222,12 +222,12 @@ procedure foo_1(x: Ref, y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 42
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (havoc8.vpr@8.14--8.36) [77952]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (havoc8.vpr@8.14--8.36) [102373]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 42;
     
     // -- Check definedness of y.f == 42
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access y.f (havoc8.vpr@8.14--8.36) [77953]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access y.f (havoc8.vpr@8.14--8.36) [102374]"}
         HasDirectPerm(Mask, y, f_7);
     assume Heap[y, f_7] == 42;
     assume state(Heap, Mask);
@@ -237,21 +237,21 @@ procedure foo_1(x: Ref, y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: perm_temp_quasihavoc_ := perm(z.f) -- <no position>
     perm_temp_quasihavoc_ := Mask[z, f_7];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(z.f, perm_temp_quasihavoc_) -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := perm_temp_quasihavoc_;
-    assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77954]"}
+    assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102375]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access z.f (<no position>) [77955]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access z.f (<no position>) [102376]"}
         perm <= Mask[z, f_7];
     }
     Mask := Mask[z, f_7:=Mask[z, f_7] - perm];
@@ -263,7 +263,7 @@ procedure foo_1(x: Ref, y: Ref, z: Ref) returns ()
   
   // -- Translating statement: inhale acc(z.f, perm_temp_quasihavoc_) -- <no position>
     perm := perm_temp_quasihavoc_;
-    assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77956]"}
+    assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102377]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> z != null;
     Mask := Mask[z, f_7:=Mask[z, f_7] + perm];
@@ -277,17 +277,17 @@ procedure foo_1(x: Ref, y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 42 || y.f == 42 -- havoc8.vpr@14.5--14.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 42 || y.f == 42
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (havoc8.vpr@14.12--14.34) [77957]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (havoc8.vpr@14.12--14.34) [102378]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
       if (!(Heap[x, f_7] == 42)) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (havoc8.vpr@14.12--14.34) [77958]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (havoc8.vpr@14.12--14.34) [102379]"}
           HasDirectPerm(ExhaleWellDef0Mask, y, f_7);
       }
-    assert {:msg "  Assert might fail. Assertion x.f == 42 || y.f == 42 might not hold. (havoc8.vpr@14.12--14.34) [77959]"}
+    assert {:msg "  Assert might fail. Assertion x.f == 42 || y.f == 42 might not hold. (havoc8.vpr@14.12--14.34) [102380]"}
       Heap[x, f_7] == 42 || Heap[y, f_7] == 42;
     assume state(Heap, Mask);
 }

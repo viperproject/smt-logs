@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:01
+// Date:         2025-01-26 21:42:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0832.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0832-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_12: Ref, f_16: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_12, f_16] }
-  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_16], $allocated]
+axiom (forall o_15: Ref, f_23: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_15, f_23] }
+  Heap[o_15, $allocated] ==> Heap[Heap[o_15, f_23], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref, f_37: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, f_37] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_46, f_37) ==> Heap[o_46, f_37] == ExhaleHeap[o_46, f_37]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_53: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_53] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_53) ==> Heap[o_41, f_53] == ExhaleHeap[o_41, f_53]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> Heap[null, PredicateMaskField(pm_f_22)] == ExhaleHeap[null, PredicateMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> Heap[null, PredicateMaskField(pm_f_20)] == ExhaleHeap[null, PredicateMaskField(pm_f_20)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> Heap[null, WandMaskField(pm_f_22)] == ExhaleHeap[null, WandMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> Heap[null, WandMaskField(pm_f_20)] == ExhaleHeap[null, WandMaskField(pm_f_20)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_46, $allocated] ==> ExhaleHeap[o_46, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_24: (Field A B), v: B ::
-  { Heap[o_12, f_24:=v] }
-  succHeap(Heap, Heap[o_12, f_24:=v])
+axiom (forall <A, B> Heap: HeapType, o_15: Ref, f_54: (Field A B), v: B ::
+  { Heap[o_15, f_54:=v] }
+  succHeap(Heap, Heap[o_15, f_54:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,7 +144,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(i_2_1: int): bool;
+function  neverTriggered1(i_2: int): bool;
 function  neverTriggered2(j_1: int): bool;
 function  neverTriggered3(i: int): bool;
 // ==================================================
@@ -205,7 +205,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type ArrayDomainType;
 
 // Translation of domain function array_loc
-function  array_loc(a_3: ArrayDomainType, i_79: int): Ref;
+function  array_loc(a_3: ArrayDomainType, i_6: int): Ref;
 
 // Translation of domain function alen
 function  alen(a_3: ArrayDomainType): int;
@@ -285,8 +285,8 @@ function  aloc#triggerStateless(a_2: ArrayDomainType, i: int): Ref;
 procedure aloc#definedness(a_2: ArrayDomainType, i: int) returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -304,11 +304,11 @@ procedure aloc#definedness(a_2: ArrayDomainType, i: int) returns (Result: Ref)
     Result := (array_loc(a_2, i): Ref);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of aloc might not hold. Assertion loc_inv_1(result) == a might not hold. (0832.vpr@48.11--48.33) [216473]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of aloc might not hold. Assertion loc_inv_1(result) == a might not hold. (0832.vpr@48.11--48.33) [63897]"}
       (loc_inv_1(Result): ArrayDomainType) == a_2;
-    assert {:msg "  Postcondition of aloc might not hold. Assertion loc_inv_2(result) == i might not hold. (0832.vpr@49.11--49.33) [216474]"}
+    assert {:msg "  Postcondition of aloc might not hold. Assertion loc_inv_2(result) == i might not hold. (0832.vpr@49.11--49.33) [63898]"}
       (loc_inv_2(Result): int) == i;
 }
 
@@ -350,8 +350,8 @@ axiom (forall Heap: HeapType, x: int, a_2: ArrayDomainType, n: int ::
 procedure arrR#definedness(x: int, a_2: ArrayDomainType, n: int) returns ()
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   
   // -- Check definedness of predicate body of arrR
@@ -369,11 +369,11 @@ procedure arrR#definedness(x: int, a_2: ArrayDomainType, n: int) returns ()
     // -- Check definedness of acc(aloc(a, x).int, write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= x might not hold. (0832.vpr@18.42--18.52) [216475]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= x might not hold. (0832.vpr@18.42--18.52) [63899]"}
           0 <= x;
-        assert {:msg "  Precondition of function aloc might not hold. Assertion x < alen(a) might not hold. (0832.vpr@18.42--18.52) [216476]"}
+        assert {:msg "  Precondition of function aloc might not hold. Assertion x < alen(a) might not hold. (0832.vpr@18.42--18.52) [63900]"}
           x < (alen(a_2): int);
         // Stop execution
         assume false;
@@ -434,9 +434,9 @@ axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, a_2: ArrayDomainType, n:
 procedure arr#definedness(a_2: ArrayDomainType, n: int) returns ()
   modifies Heap, Mask;
 {
-  var i_14: int;
-  var ExhaleWellDef0Mask: MaskType;
+  var i_18: int;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   
   // -- Check definedness of predicate body of arr
@@ -451,15 +451,15 @@ procedure arr#definedness(a_2: ArrayDomainType, n: int) returns ()
     
     // -- Check definedness of (forall i: Int :: { aloc(a, i) } 0 <= i && i < alen(a) ==> acc(aloc(a, i).int, write))
       if (*) {
-        if (0 <= i_14 && i_14 < (alen(a_2): int)) {
+        if (0 <= i_18 && i_18 < (alen(a_2): int)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0832.vpr@22.82--22.92) [216477]"}
-              0 <= i_14;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(a) might not hold. (0832.vpr@22.82--22.92) [216478]"}
-              i_14 < (alen(a_2): int);
+            ExhaleWellDef0Mask := Mask;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0832.vpr@22.82--22.92) [63901]"}
+              0 <= i_18;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(a) might not hold. (0832.vpr@22.82--22.92) [63902]"}
+              i_18 < (alen(a_2): int);
             // Stop execution
             assume false;
           }
@@ -467,36 +467,36 @@ procedure arr#definedness(a_2: ArrayDomainType, n: int) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Predicate might not be well-formed. Quantified resource aloc(a, i).int might not be injective. (0832.vpr@21.1--23.2) [216479]"}
-      (forall i_2_1: int, i_2_2: int ::
+    assert {:msg "  Predicate might not be well-formed. Quantified resource aloc(a, i).int might not be injective. (0832.vpr@21.1--23.2) [63903]"}
+      (forall i_2: int, i_2_2: int ::
       
-      (((i_2_1 != i_2_2 && (0 <= i_2_1 && i_2_1 < (alen(a_2): int))) && (0 <= i_2_2 && i_2_2 < (alen(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, a_2, i_2_1) != aloc_1(Heap, a_2, i_2_2)
+      (((i_2 != i_2_2 && (0 <= i_2 && i_2 < (alen(a_2): int))) && (0 <= i_2_2 && i_2_2 < (alen(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> aloc_1(Heap, a_2, i_2) != aloc_1(Heap, a_2, i_2_2)
     );
     
     // -- Define Inverse Function
-      assume (forall i_2_1: int ::
-        { aloc#frame(EmptyFrame, a_2, i_2_1) } { aloc#frame(EmptyFrame, a_2, i_2_1) }
-        (0 <= i_2_1 && i_2_1 < (alen(a_2): int)) && NoPerm < FullPerm ==> qpRange1(aloc_1(Heap, a_2, i_2_1)) && invRecv1(aloc_1(Heap, a_2, i_2_1)) == i_2_1
+      assume (forall i_2: int ::
+        { aloc#frame(EmptyFrame, a_2, i_2) } { aloc#frame(EmptyFrame, a_2, i_2) }
+        (0 <= i_2 && i_2 < (alen(a_2): int)) && NoPerm < FullPerm ==> qpRange1(aloc_1(Heap, a_2, i_2)) && invRecv1(aloc_1(Heap, a_2, i_2)) == i_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && invRecv1(o_4) < (alen(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_4) ==> aloc_1(Heap, a_2, invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && invRecv1(o_9) < (alen(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_9) ==> aloc_1(Heap, a_2, invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_2_1: int ::
-        { aloc#frame(EmptyFrame, a_2, i_2_1) } { aloc#frame(EmptyFrame, a_2, i_2_1) }
-        0 <= i_2_1 && i_2_1 < (alen(a_2): int) ==> aloc_1(Heap, a_2, i_2_1) != null
+      assume (forall i_2: int ::
+        { aloc#frame(EmptyFrame, a_2, i_2) } { aloc#frame(EmptyFrame, a_2, i_2) }
+        0 <= i_2 && i_2 < (alen(a_2): int) ==> aloc_1(Heap, a_2, i_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, vint_1] }
-        (((0 <= invRecv1(o_4) && invRecv1(o_4) < (alen(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> aloc_1(Heap, a_2, invRecv1(o_4)) == o_4) && QPMask[o_4, vint_1] == Mask[o_4, vint_1] + FullPerm) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < (alen(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, vint_1] == Mask[o_4, vint_1])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, vint_1] }
+        (((0 <= invRecv1(o_9) && invRecv1(o_9) < (alen(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> aloc_1(Heap, a_2, invRecv1(o_9)) == o_9) && QPMask[o_9, vint_1] == Mask[o_9, vint_1] + FullPerm) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < (alen(a_2): int)) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, vint_1] == Mask[o_9, vint_1])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != vint_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != vint_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -507,22 +507,22 @@ procedure arr#definedness(a_2: ArrayDomainType, n: int) returns ()
 // Translation of method test
 // ==================================================
 
-procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
+procedure test_1(x0: ArrayDomainType, x1: ArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
   var perm: Perm;
-  var j_10: int;
+  var j_4: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
-  var j_4: int;
-  var oldMask: MaskType;
+  var j_17: int;
   var oldHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -539,7 +539,7 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
     havoc QPMask;
     
     // -- check if receiver acc(arrR(j, x0, 10), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource arrR(j, x0, 10) might not be injective. (0832.vpr@6.13--6.84) [216480]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource arrR(j, x0, 10) might not be injective. (0832.vpr@6.13--6.84) [63904]"}
         (forall j_1: int, j_1_1: int ::
         { neverTriggered2(j_1), neverTriggered2(j_1_1) }
         (((j_1 != j_1_1 && (0 <= j_1 && j_1 < 10)) && (0 <= j_1_1 && j_1_1 < 10)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> j_1 != j_1_1 || x0 != x0
@@ -562,9 +562,9 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall x: int, a_2: ArrayDomainType, n: int ::
         { QPMask[null, arrR(x, a_2, n)] }
@@ -574,192 +574,192 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, arr_1(x1_2, 10):=Mask[null, arr_1(x1_2, 10)] + perm];
+    Mask := Mask[null, arr_1(x1, 10):=Mask[null, arr_1(x1, 10)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j: Int :: { aloc(x1, j) } 0 <= j && j < 10 ==> (unfolding acc(arr(x1, 10), write / 2) in aloc(x1, j).int) == j)
       if (*) {
-        if (0 <= j_10 && j_10 < 10) {
+        if (0 <= j_4 && j_4 < 10) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assume arr#trigger(UnfoldingHeap, arr_1(x1_2, 10));
-          assume UnfoldingHeap[null, arr_1(x1_2, 10)] == FrameFragment(arr#condqp1(UnfoldingHeap, x1_2, 10));
-          ExhaleWellDef0Mask := UnfoldingMask;
+          assume arr#trigger(UnfoldingHeap, arr_1(x1, 10));
+          assume UnfoldingHeap[null, arr_1(x1, 10)] == FrameFragment(arr#condqp1(UnfoldingHeap, x1, 10));
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction write / 2 might be negative. (0832.vpr@8.13--9.87) [216481]"}
+          assert {:msg "  Contract might not be well-formed. Fraction write / 2 might be negative. (0832.vpr@8.13--9.87) [63905]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access arr(x1, 10) (0832.vpr@8.13--9.87) [216482]"}
-              perm <= UnfoldingMask[null, arr_1(x1_2, 10)];
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access arr(x1, 10) (0832.vpr@8.13--9.87) [63906]"}
+              perm <= UnfoldingMask[null, arr_1(x1, 10)];
           }
-          UnfoldingMask := UnfoldingMask[null, arr_1(x1_2, 10):=UnfoldingMask[null, arr_1(x1_2, 10)] - perm];
-          assume (alen(x1_2): int) == 10;
+          UnfoldingMask := UnfoldingMask[null, arr_1(x1, 10):=UnfoldingMask[null, arr_1(x1, 10)] - perm];
+          assume (alen(x1): int) == 10;
           assume state(UnfoldingHeap, UnfoldingMask);
           havoc QPMask;
-          assert {:msg "  Contract might not be well-formed. Quantified resource aloc(x1, i).int might not be injective. (0832.vpr@8.13--9.87) [216483]"}
-            (forall i: int, i_77: int ::
+          assert {:msg "  Contract might not be well-formed. Quantified resource aloc(x1, i).int might not be injective. (0832.vpr@8.13--9.87) [63907]"}
+            (forall i: int, i_22: int ::
             
-            (((i != i_77 && (0 <= i && i < (alen(x1_2): int))) && (0 <= i_77 && i_77 < (alen(x1_2): int))) && NoPerm < FullPerm * (FullPerm / 2)) && NoPerm < FullPerm * (FullPerm / 2) ==> aloc_1(UnfoldingHeap, x1_2, i) != aloc_1(UnfoldingHeap, x1_2, i_77)
+            (((i != i_22 && (0 <= i && i < (alen(x1): int))) && (0 <= i_22 && i_22 < (alen(x1): int))) && NoPerm < FullPerm * (FullPerm / 2)) && NoPerm < FullPerm * (FullPerm / 2) ==> aloc_1(UnfoldingHeap, x1, i) != aloc_1(UnfoldingHeap, x1, i_22)
           );
           
           // -- Define Inverse Function
             assume (forall i: int ::
-              { aloc#frame(EmptyFrame, x1_2, i) } { aloc#frame(EmptyFrame, x1_2, i) }
-              (0 <= i && i < (alen(x1_2): int)) && NoPerm < FullPerm * (FullPerm / 2) ==> qpRange3(aloc_1(UnfoldingHeap, x1_2, i)) && invRecv3(aloc_1(UnfoldingHeap, x1_2, i)) == i
+              { aloc#frame(EmptyFrame, x1, i) } { aloc#frame(EmptyFrame, x1, i) }
+              (0 <= i && i < (alen(x1): int)) && NoPerm < FullPerm * (FullPerm / 2) ==> qpRange3(aloc_1(UnfoldingHeap, x1, i)) && invRecv3(aloc_1(UnfoldingHeap, x1, i)) == i
             );
-            assume (forall o_4: Ref ::
-              { invRecv3(o_4) }
-              ((0 <= invRecv3(o_4) && invRecv3(o_4) < (alen(x1_2): int)) && NoPerm < FullPerm * (FullPerm / 2)) && qpRange3(o_4) ==> aloc_1(UnfoldingHeap, x1_2, invRecv3(o_4)) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv3(o_9) }
+              ((0 <= invRecv3(o_9) && invRecv3(o_9) < (alen(x1): int)) && NoPerm < FullPerm * (FullPerm / 2)) && qpRange3(o_9) ==> aloc_1(UnfoldingHeap, x1, invRecv3(o_9)) == o_9
             );
           // Check that permission expression is non-negative for all fields
-          assert {:msg "  Contract might not be well-formed. Fraction write * (write / 2) might be negative. (0832.vpr@8.13--9.87) [216484]"}
+          assert {:msg "  Contract might not be well-formed. Fraction write * (write / 2) might be negative. (0832.vpr@8.13--9.87) [63908]"}
             (forall i: int ::
-            { aloc#frame(EmptyFrame, x1_2, i) } { aloc#frame(EmptyFrame, x1_2, i) }
-            0 <= i && i < (alen(x1_2): int) ==> FullPerm * (FullPerm / 2) >= NoPerm
+            { aloc#frame(EmptyFrame, x1, i) } { aloc#frame(EmptyFrame, x1, i) }
+            0 <= i && i < (alen(x1): int) ==> FullPerm * (FullPerm / 2) >= NoPerm
           );
           
           // -- Assume set of fields is nonNull
             assume (forall i: int ::
-              { aloc#frame(EmptyFrame, x1_2, i) } { aloc#frame(EmptyFrame, x1_2, i) }
-              (0 <= i && i < (alen(x1_2): int)) && FullPerm * (FullPerm / 2) > NoPerm ==> aloc_1(UnfoldingHeap, x1_2, i) != null
+              { aloc#frame(EmptyFrame, x1, i) } { aloc#frame(EmptyFrame, x1, i) }
+              (0 <= i && i < (alen(x1): int)) && FullPerm * (FullPerm / 2) > NoPerm ==> aloc_1(UnfoldingHeap, x1, i) != null
             );
           
           // -- Define permissions
-            assume (forall o_4: Ref ::
-              { QPMask[o_4, vint_1] }
-              (((0 <= invRecv3(o_4) && invRecv3(o_4) < (alen(x1_2): int)) && NoPerm < FullPerm * (FullPerm / 2)) && qpRange3(o_4) ==> (NoPerm < FullPerm * (FullPerm / 2) ==> aloc_1(UnfoldingHeap, x1_2, invRecv3(o_4)) == o_4) && QPMask[o_4, vint_1] == UnfoldingMask[o_4, vint_1] + FullPerm * (FullPerm / 2)) && (!(((0 <= invRecv3(o_4) && invRecv3(o_4) < (alen(x1_2): int)) && NoPerm < FullPerm * (FullPerm / 2)) && qpRange3(o_4)) ==> QPMask[o_4, vint_1] == UnfoldingMask[o_4, vint_1])
+            assume (forall o_9: Ref ::
+              { QPMask[o_9, vint_1] }
+              (((0 <= invRecv3(o_9) && invRecv3(o_9) < (alen(x1): int)) && NoPerm < FullPerm * (FullPerm / 2)) && qpRange3(o_9) ==> (NoPerm < FullPerm * (FullPerm / 2) ==> aloc_1(UnfoldingHeap, x1, invRecv3(o_9)) == o_9) && QPMask[o_9, vint_1] == UnfoldingMask[o_9, vint_1] + FullPerm * (FullPerm / 2)) && (!(((0 <= invRecv3(o_9) && invRecv3(o_9) < (alen(x1): int)) && NoPerm < FullPerm * (FullPerm / 2)) && qpRange3(o_9)) ==> QPMask[o_9, vint_1] == UnfoldingMask[o_9, vint_1])
             );
-            assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-              { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-              f_5 != vint_1 ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+            assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+              { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+              f_5 != vint_1 ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
             );
           UnfoldingMask := QPMask;
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= j might not hold. (0832.vpr@9.66--9.77) [216485]"}
-              0 <= j_10;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion j < alen(x1) might not hold. (0832.vpr@9.66--9.77) [216486]"}
-              j_10 < (alen(x1_2): int);
+            ExhaleWellDef0Mask := UnfoldingMask;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= j might not hold. (0832.vpr@9.66--9.77) [63909]"}
+              0 <= j_4;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion j < alen(x1) might not hold. (0832.vpr@9.66--9.77) [63910]"}
+              j_4 < (alen(x1): int);
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(x1, j).int (0832.vpr@8.13--9.87) [216487]"}
-            HasDirectPerm(UnfoldingMask, aloc_1(UnfoldingHeap, x1_2, j_10), vint_1);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(x1, j).int (0832.vpr@8.13--9.87) [63911]"}
+            HasDirectPerm(UnfoldingMask, aloc_1(UnfoldingHeap, x1, j_4), vint_1);
           
           // -- Free assumptions (exp module)
             // register all known folded permissions guarded by predicate arr
             havoc newPMask;
-            assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-              { newPMask[o_16, f_21] }
-              Heap[null, arr#sm(x1_2, 10)][o_16, f_21] ==> newPMask[o_16, f_21]
+            assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+              { newPMask[o_6, f_12] }
+              Heap[null, arr#sm(x1, 10)][o_6, f_12] ==> newPMask[o_6, f_12]
             );
             assume (forall i_1: int ::
               
-              0 <= i_1 && i_1 < (alen(x1_2): int) ==> newPMask[aloc_1(Heap, x1_2, i_1), vint_1]
+              0 <= i_1 && i_1 < (alen(x1): int) ==> newPMask[aloc_1(Heap, x1, i_1), vint_1]
             );
-            Heap := Heap[null, arr#sm(x1_2, 10):=newPMask];
+            Heap := Heap[null, arr#sm(x1, 10):=newPMask];
             assume state(Heap, Mask);
           
           // -- Free assumptions (exp module)
             // register all known folded permissions guarded by predicate arr
             havoc newPMask;
-            assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-              { newPMask[o_52, f_55] }
-              Heap[null, arr#sm(x1_2, 10)][o_52, f_55] ==> newPMask[o_52, f_55]
+            assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+              { newPMask[o_40, f_52] }
+              Heap[null, arr#sm(x1, 10)][o_40, f_52] ==> newPMask[o_40, f_52]
             );
-            assume (forall i_2_1: int ::
+            assume (forall i_2: int ::
               
-              0 <= i_2_1 && i_2_1 < (alen(x1_2): int) ==> newPMask[aloc_1(Heap, x1_2, i_2_1), vint_1]
+              0 <= i_2 && i_2 < (alen(x1): int) ==> newPMask[aloc_1(Heap, x1, i_2), vint_1]
             );
-            Heap := Heap[null, arr#sm(x1_2, 10):=newPMask];
+            Heap := Heap[null, arr#sm(x1, 10):=newPMask];
             assume state(Heap, Mask);
         }
         assume false;
       }
     assume (forall j_4_1: int ::
-      { aloc#frame(EmptyFrame, x1_2, j_4_1) }
-      0 <= j_4_1 && j_4_1 < 10 ==> Heap[aloc_1(Heap, x1_2, j_4_1), vint_1] == j_4_1
+      { aloc#frame(EmptyFrame, x1, j_4_1) }
+      0 <= j_4_1 && j_4_1 < 10 ==> Heap[aloc_1(Heap, x1, j_4_1), vint_1] == j_4_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j: Int :: { aloc(x0, j) } 0 <= j && j < 10 ==> (unfolding acc(arrR(j, x0, 10), write) in aloc(x0, j).int == 3 * j))
       if (*) {
-        if (0 <= j_4 && j_4 < 10) {
+        if (0 <= j_17 && j_17 < 10) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assume arrR#trigger(UnfoldingHeap, arrR(j_4, x0, 10));
-          assume UnfoldingHeap[null, arrR(j_4, x0, 10)] == FrameFragment(UnfoldingHeap[aloc_1(UnfoldingHeap, x0, j_4), vint_1]);
-          ExhaleWellDef0Mask := UnfoldingMask;
+          assume arrR#trigger(UnfoldingHeap, arrR(j_17, x0, 10));
+          assume UnfoldingHeap[null, arrR(j_17, x0, 10)] == FrameFragment(UnfoldingHeap[aloc_1(UnfoldingHeap, x0, j_17), vint_1]);
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access arrR(j, x0, 10) (0832.vpr@10.13--11.81) [216488]"}
-              perm <= UnfoldingMask[null, arrR(j_4, x0, 10)];
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access arrR(j, x0, 10) (0832.vpr@10.13--11.81) [63912]"}
+              perm <= UnfoldingMask[null, arrR(j_17, x0, 10)];
           }
-          UnfoldingMask := UnfoldingMask[null, arrR(j_4, x0, 10):=UnfoldingMask[null, arrR(j_4, x0, 10)] - perm];
+          UnfoldingMask := UnfoldingMask[null, arrR(j_17, x0, 10):=UnfoldingMask[null, arrR(j_17, x0, 10)] - perm];
           assume (alen(x0): int) == 10;
-          assume 0 <= j_4;
-          assume j_4 < 10;
+          assume 0 <= j_17;
+          assume j_17 < 10;
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := FullPerm;
-          assume aloc_1(UnfoldingHeap, x0, j_4) != null;
-          UnfoldingMask := UnfoldingMask[aloc_1(UnfoldingHeap, x0, j_4), vint_1:=UnfoldingMask[aloc_1(UnfoldingHeap, x0, j_4), vint_1] + perm];
+          assume aloc_1(UnfoldingHeap, x0, j_17) != null;
+          UnfoldingMask := UnfoldingMask[aloc_1(UnfoldingHeap, x0, j_17), vint_1:=UnfoldingMask[aloc_1(UnfoldingHeap, x0, j_17), vint_1] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= j might not hold. (0832.vpr@11.56--11.67) [216489]"}
-              0 <= j_4;
-            assert {:msg "  Precondition of function aloc might not hold. Assertion j < alen(x0) might not hold. (0832.vpr@11.56--11.67) [216490]"}
-              j_4 < (alen(x0): int);
+            ExhaleWellDef0Mask := UnfoldingMask;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= j might not hold. (0832.vpr@11.56--11.67) [63913]"}
+              0 <= j_17;
+            assert {:msg "  Precondition of function aloc might not hold. Assertion j < alen(x0) might not hold. (0832.vpr@11.56--11.67) [63914]"}
+              j_17 < (alen(x0): int);
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(x0, j).int (0832.vpr@10.13--11.81) [216491]"}
-            HasDirectPerm(UnfoldingMask, aloc_1(UnfoldingHeap, x0, j_4), vint_1);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access aloc(x0, j).int (0832.vpr@10.13--11.81) [63915]"}
+            HasDirectPerm(UnfoldingMask, aloc_1(UnfoldingHeap, x0, j_17), vint_1);
           
           // -- Free assumptions (exp module)
-            Heap := Heap[null, arrR#sm(j_4, x0, 10):=Heap[null, arrR#sm(j_4, x0, 10)][aloc_1(Heap, x0, j_4), vint_1:=true]];
+            Heap := Heap[null, arrR#sm(j_17, x0, 10):=Heap[null, arrR#sm(j_17, x0, 10)][aloc_1(Heap, x0, j_17), vint_1:=true]];
             assume state(Heap, Mask);
         }
         assume false;
       }
-    assume (forall j_6_1: int ::
-      { aloc#frame(EmptyFrame, x0, j_6_1) }
-      0 <= j_6_1 && j_6_1 < 10 ==> Heap[aloc_1(Heap, x0, j_6_1), vint_1] == 3 * j_6_1
+    assume (forall j_6_2: int ::
+      { aloc#frame(EmptyFrame, x0, j_6_2) }
+      0 <= j_6_2 && j_6_2 < 10 ==> Heap[aloc_1(Heap, x0, j_6_2), vint_1] == 3 * j_6_2
     );
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (unfolding acc(arrR(0, x0, 10), write) in aloc(x0, 0).int == 3 * 0) -- 0832.vpr@13.3--14.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(arrR(0, x0, 10), write) in aloc(x0, 0).int == 3 * 0)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume arrR#trigger(UnfoldingHeap, arrR(0, x0, 10));
       assume UnfoldingHeap[null, arrR(0, x0, 10)] == FrameFragment(UnfoldingHeap[aloc_1(UnfoldingHeap, x0, 0), vint_1]);
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access arrR(0, x0, 10) (0832.vpr@13.11--14.37) [216492]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access arrR(0, x0, 10) (0832.vpr@13.11--14.37) [63916]"}
           perm <= UnfoldingMask[null, arrR(0, x0, 10)];
       }
       UnfoldingMask := UnfoldingMask[null, arrR(0, x0, 10):=UnfoldingMask[null, arrR(0, x0, 10)] - perm];
@@ -772,20 +772,20 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
-        assert {:msg "  Precondition of function aloc might not hold. Assertion 0 < alen(x0) might not hold. (0832.vpr@14.13--14.24) [216493]"}
+        ExhaleWellDef1Mask := UnfoldingMask;
+        assert {:msg "  Precondition of function aloc might not hold. Assertion 0 < alen(x0) might not hold. (0832.vpr@14.13--14.24) [63917]"}
           0 < (alen(x0): int);
         // Stop execution
         assume false;
       }
-      assert {:msg "  Assert might fail. There might be insufficient permission to access aloc(x0, 0).int (0832.vpr@13.11--14.37) [216494]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access aloc(x0, 0).int (0832.vpr@13.11--14.37) [63918]"}
         HasDirectPerm(UnfoldingMask, aloc_1(Heap, x0, 0), vint_1);
       
       // -- Free assumptions (exp module)
         Heap := Heap[null, arrR#sm(0, x0, 10):=Heap[null, arrR#sm(0, x0, 10)][aloc_1(Heap, x0, 0), vint_1:=true]];
         assume state(Heap, Mask);
-    assert {:msg "  Assert might fail. Assertion aloc(x0, 0).int == 3 * 0 might not hold. (0832.vpr@13.11--14.37) [216495]"}
+    assert {:msg "  Assert might fail. Assertion aloc(x0, 0).int == 3 * 0 might not hold. (0832.vpr@13.11--14.37) [63919]"}
       Heap[aloc_1(Heap, x0, 0), vint_1] == 0;
     
     // -- Free assumptions (exhale module)
@@ -801,8 +801,8 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
 procedure aloc_pres_termination_proof(a_2: ArrayDomainType, i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b_24: bool;
   
   // -- Initializing the state
@@ -814,8 +814,8 @@ procedure aloc_pres_termination_proof(a_2: ArrayDomainType, i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b) -- 0832.vpr@45.12--45.18
     if (b_24) {

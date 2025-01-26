@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:33
+// Date:         2025-01-26 21:43:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0135.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0135-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -184,7 +184,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type UnknownDomainType;
 
 // Translation of domain function unknown
-function  unknown(x_8: int): Perm;
+function  unknown(x_37: int): Perm;
 
 // ==================================================
 // Translation of all fields
@@ -255,7 +255,7 @@ procedure fun01#definedness(x: int) returns (Result: Perm)
           assume fun01#trigger(EmptyFrame, x + 1);
         }
       } else {
-        assert {:msg "  Function might not be well-formed. Divisor x might be zero. (0135.vpr@17.1--18.34) [214783]"}
+        assert {:msg "  Function might not be well-formed. Divisor x might be zero. (0135.vpr@17.1--18.34) [79983]"}
           x != 0;
       }
   
@@ -319,15 +319,15 @@ procedure token#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of unknown(diz.unknown_x) >= none
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.unknown_x (0135.vpr@26.1--28.2) [214784]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.unknown_x (0135.vpr@26.1--28.2) [79984]"}
         HasDirectPerm(Mask, diz, unknown_x);
     assume NoPerm <= (unknown(Heap[diz, unknown_x]): Perm);
     
     // -- Check definedness of acc(diz.unknown_y, unknown(diz.unknown_x))
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.unknown_x (0135.vpr@26.1--28.2) [214785]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.unknown_x (0135.vpr@26.1--28.2) [79985]"}
         HasDirectPerm(Mask, diz, unknown_x);
     perm := (unknown(Heap[diz, unknown_x]): Perm);
-    assert {:msg "  Predicate might not be well-formed. Fraction unknown(diz.unknown_x) might be negative. (0135.vpr@26.1--28.2) [214786]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction unknown(diz.unknown_x) might be negative. (0135.vpr@26.1--28.2) [79986]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     Mask := Mask[diz, unknown_y:=Mask[diz, unknown_y] + perm];
@@ -362,7 +362,7 @@ procedure test02(x: int) returns ()
   // -- Translating statement: assert unknown(x) >= none -- 0135.vpr@14.3--14.28
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion unknown(x) >= none might not hold. (0135.vpr@14.10--14.28) [214787]"}
+    assert {:msg "  Assert might fail. Assertion unknown(x) >= none might not hold. (0135.vpr@14.10--14.28) [79987]"}
       NoPerm <= (unknown(x): Perm);
     assume state(Heap, Mask);
 }
@@ -400,7 +400,7 @@ procedure test03(x: int) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun01(x) >= none might not hold. (0135.vpr@23.10--23.26) [214788]"}
+    assert {:msg "  Assert might fail. Assertion fun01(x) >= none might not hold. (0135.vpr@23.10--23.26) [79988]"}
       NoPerm <= fun01(Heap, x);
     assume state(Heap, Mask);
 }
@@ -464,7 +464,7 @@ procedure test01(diz: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding token(diz) might fail. There might be insufficient permission to access token(diz) (0135.vpr@34.3--34.25) [214791]"}
+      assert {:msg "  Unfolding token(diz) might fail. There might be insufficient permission to access token(diz) (0135.vpr@34.3--34.25) [79991]"}
         perm <= Mask[null, token(diz)];
     }
     Mask := Mask[null, token(diz):=Mask[null, token(diz)] - perm];
@@ -481,7 +481,7 @@ procedure test01(diz: Ref) returns ()
     assume state(Heap, Mask);
     assume NoPerm <= (unknown(Heap[diz, unknown_x]): Perm);
     perm := (unknown(Heap[diz, unknown_x]): Perm);
-    assert {:msg "  Unfolding token(diz) might fail. Fraction unknown(diz.unknown_x) might be negative. (0135.vpr@34.3--34.25) [214792]"}
+    assert {:msg "  Unfolding token(diz) might fail. Fraction unknown(diz.unknown_x) might be negative. (0135.vpr@34.3--34.25) [79992]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     Mask := Mask[diz, unknown_y:=Mask[diz, unknown_y] + perm];
@@ -492,18 +492,18 @@ procedure test01(diz: Ref) returns ()
   // -- Translating statement: fold acc(token(diz), write) -- 0135.vpr@35.3--35.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Folding token(diz) might fail. There might be insufficient permission to access diz.unknown_x (0135.vpr@35.3--35.23) [214794]"}
+    assert {:msg "  Folding token(diz) might fail. There might be insufficient permission to access diz.unknown_x (0135.vpr@35.3--35.23) [79994]"}
       Mask[diz, unknown_x] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, unknown_x];
     Mask := Mask[diz, unknown_x:=Mask[diz, unknown_x] - wildcard];
-    assert {:msg "  Folding token(diz) might fail. Assertion unknown(diz.unknown_x) >= none might not hold. (0135.vpr@35.3--35.23) [214795]"}
+    assert {:msg "  Folding token(diz) might fail. Assertion unknown(diz.unknown_x) >= none might not hold. (0135.vpr@35.3--35.23) [79995]"}
       NoPerm <= (unknown(Heap[diz, unknown_x]): Perm);
     perm := (unknown(Heap[diz, unknown_x]): Perm);
-    assert {:msg "  Folding token(diz) might fail. Fraction unknown(diz.unknown_x) might be negative. (0135.vpr@35.3--35.23) [214796]"}
+    assert {:msg "  Folding token(diz) might fail. Fraction unknown(diz.unknown_x) might be negative. (0135.vpr@35.3--35.23) [79996]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding token(diz) might fail. There might be insufficient permission to access diz.unknown_y (0135.vpr@35.3--35.23) [214797]"}
+      assert {:msg "  Folding token(diz) might fail. There might be insufficient permission to access diz.unknown_y (0135.vpr@35.3--35.23) [79997]"}
         perm <= Mask[diz, unknown_y];
     }
     Mask := Mask[diz, unknown_y:=Mask[diz, unknown_y] - perm];
@@ -526,18 +526,18 @@ procedure test01(diz: Ref) returns ()
   // -- Translating statement: fold acc(token(diz), write) -- 0135.vpr@37.3--37.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Folding token(diz) might fail. There might be insufficient permission to access diz.unknown_x (0135.vpr@37.3--37.23) [214800]"}
+    assert {:msg "  Folding token(diz) might fail. There might be insufficient permission to access diz.unknown_x (0135.vpr@37.3--37.23) [80000]"}
       Mask[diz, unknown_x] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, unknown_x];
     Mask := Mask[diz, unknown_x:=Mask[diz, unknown_x] - wildcard];
-    assert {:msg "  Folding token(diz) might fail. Assertion unknown(diz.unknown_x) >= none might not hold. (0135.vpr@37.3--37.23) [214801]"}
+    assert {:msg "  Folding token(diz) might fail. Assertion unknown(diz.unknown_x) >= none might not hold. (0135.vpr@37.3--37.23) [80001]"}
       NoPerm <= (unknown(Heap[diz, unknown_x]): Perm);
     perm := (unknown(Heap[diz, unknown_x]): Perm);
-    assert {:msg "  Folding token(diz) might fail. Fraction unknown(diz.unknown_x) might be negative. (0135.vpr@37.3--37.23) [214802]"}
+    assert {:msg "  Folding token(diz) might fail. Fraction unknown(diz.unknown_x) might be negative. (0135.vpr@37.3--37.23) [80002]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding token(diz) might fail. There might be insufficient permission to access diz.unknown_y (0135.vpr@37.3--37.23) [214803]"}
+      assert {:msg "  Folding token(diz) might fail. There might be insufficient permission to access diz.unknown_y (0135.vpr@37.3--37.23) [80003]"}
         perm <= Mask[diz, unknown_y];
     }
     Mask := Mask[diz, unknown_y:=Mask[diz, unknown_y] - perm];
@@ -562,7 +562,7 @@ procedure test01(diz: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access token(diz) (0135.vpr@32.12--32.27) [214805]"}
+      assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access token(diz) (0135.vpr@32.12--32.27) [80005]"}
         perm <= Mask[null, token(diz)];
     }
     Mask := Mask[null, token(diz):=Mask[null, token(diz)] - perm];

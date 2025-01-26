@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:34:18
+// Date:         2025-01-26 21:41:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/basic/specOrder.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/basic/specOrder-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -257,7 +257,7 @@ procedure m1(x: int, y: int) returns (res: int)
       // -- Translating statement: assert false -- <no position>
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [225341]"}
+        assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [20122]"}
           false;
         assume state(Heap, Mask);
       
@@ -268,9 +268,9 @@ procedure m1(x: int, y: int) returns (res: int)
         // -- Exhaling precondition
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method m1 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@18.5--18.20) [225342]"}
+          assert {:msg "  The precondition of method m1 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@18.5--18.20) [20123]"}
             y > 0;
-          assert {:msg "  The precondition of method m1 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@18.5--18.20) [225343]"}
+          assert {:msg "  The precondition of method m1 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@18.5--18.20) [20124]"}
             y > 0;
         
         // -- Havocing target variables
@@ -339,7 +339,7 @@ procedure m2(x: int, y: int) returns (res: int)
       // -- Translating statement: assert false -- <no position>
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [225344]"}
+        assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [20125]"}
           false;
         assume state(Heap, Mask);
       
@@ -350,9 +350,9 @@ procedure m2(x: int, y: int) returns (res: int)
         // -- Exhaling precondition
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method m2 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@31.5--31.20) [225345]"}
+          assert {:msg "  The precondition of method m2 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@31.5--31.20) [20126]"}
             y > 0;
-          assert {:msg "  The precondition of method m2 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@31.5--31.20) [225346]"}
+          assert {:msg "  The precondition of method m2 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@31.5--31.20) [20127]"}
             y > 0;
         
         // -- Havocing target variables
@@ -421,7 +421,7 @@ procedure m3(x: int, y: int) returns (res: int)
       // -- Translating statement: assert false -- <no position>
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [225347]"}
+        assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [20128]"}
           false;
         assume state(Heap, Mask);
       
@@ -432,9 +432,9 @@ procedure m3(x: int, y: int) returns (res: int)
         // -- Exhaling precondition
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method m3 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@44.5--44.20) [225348]"}
+          assert {:msg "  The precondition of method m3 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@44.5--44.20) [20129]"}
             y > 0;
-          assert {:msg "  The precondition of method m3 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@44.5--44.20) [225349]"}
+          assert {:msg "  The precondition of method m3 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@44.5--44.20) [20130]"}
             y > 0;
         
         // -- Havocing target variables
@@ -503,7 +503,7 @@ procedure m4(x: int, y: int) returns (res: int)
       // -- Translating statement: assert !old(y < x) || y < y -- <no position>
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion !old(y < x) || y < y might not hold. (<no position>) [225350]"}
+        assert {:msg "  Assert might fail. Assertion !old(y < x) || y < y might not hold. (<no position>) [20131]"}
           !(y < x) || y < y;
         assume state(Heap, Mask);
       
@@ -513,7 +513,7 @@ procedure m4(x: int, y: int) returns (res: int)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         if (y < x) {
-          assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [225351]"}
+          assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [20132]"}
             (decreasing(y, x): bool) && (bounded(x): bool);
         }
         assume state(Heap, Mask);
@@ -525,9 +525,9 @@ procedure m4(x: int, y: int) returns (res: int)
         // -- Exhaling precondition
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method m4 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@62.5--62.20) [225352]"}
+          assert {:msg "  The precondition of method m4 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@62.5--62.20) [20133]"}
             y > 0;
-          assert {:msg "  The precondition of method m4 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@62.5--62.20) [225353]"}
+          assert {:msg "  The precondition of method m4 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@62.5--62.20) [20134]"}
             y > 0;
         
         // -- Havocing target variables
@@ -596,7 +596,7 @@ procedure m5(x: int, y: int) returns (res: int)
       // -- Translating statement: assert !old(y < x) || y < y -- <no position>
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion !old(y < x) || y < y might not hold. (<no position>) [225354]"}
+        assert {:msg "  Assert might fail. Assertion !old(y < x) || y < y might not hold. (<no position>) [20135]"}
           !(y < x) || y < y;
         assume state(Heap, Mask);
       
@@ -606,7 +606,7 @@ procedure m5(x: int, y: int) returns (res: int)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         if (y < x) {
-          assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [225355]"}
+          assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [20136]"}
             (decreasing(y, x): bool) && (bounded(x): bool);
         }
         assume state(Heap, Mask);
@@ -618,9 +618,9 @@ procedure m5(x: int, y: int) returns (res: int)
         // -- Exhaling precondition
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method m5 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@76.5--76.20) [225356]"}
+          assert {:msg "  The precondition of method m5 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@76.5--76.20) [20137]"}
             y > 0;
-          assert {:msg "  The precondition of method m5 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@76.5--76.20) [225357]"}
+          assert {:msg "  The precondition of method m5 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@76.5--76.20) [20138]"}
             y > 0;
         
         // -- Havocing target variables
@@ -689,7 +689,7 @@ procedure m6(x: int, y: int) returns (res: int)
       // -- Translating statement: assert !old(y < x) || y < y -- <no position>
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion !old(y < x) || y < y might not hold. (<no position>) [225358]"}
+        assert {:msg "  Assert might fail. Assertion !old(y < x) || y < y might not hold. (<no position>) [20139]"}
           !(y < x) || y < y;
         assume state(Heap, Mask);
       
@@ -699,7 +699,7 @@ procedure m6(x: int, y: int) returns (res: int)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         if (y < x) {
-          assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [225359]"}
+          assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [20140]"}
             (decreasing(y, x): bool) && (bounded(x): bool);
         }
         assume state(Heap, Mask);
@@ -711,9 +711,9 @@ procedure m6(x: int, y: int) returns (res: int)
         // -- Exhaling precondition
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method m6 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@90.5--90.20) [225360]"}
+          assert {:msg "  The precondition of method m6 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@90.5--90.20) [20141]"}
             y > 0;
-          assert {:msg "  The precondition of method m6 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@90.5--90.20) [225361]"}
+          assert {:msg "  The precondition of method m6 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@90.5--90.20) [20142]"}
             y > 0;
         
         // -- Havocing target variables

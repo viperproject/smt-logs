@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:59:49
+// Date:         2025-01-26 21:44:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/FoldConstants/complex.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/FoldConstants/complex-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -183,7 +183,7 @@ procedure main() returns ()
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var i: int;
-  var j_9: int;
+  var j: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
@@ -205,13 +205,13 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: j := 2 -- complex.vpr@7.5--7.19
-    j_9 := 2;
+    j := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i == 5 + 8 + 6 + 4 + 4 \ 2 * 3 - 28 -- complex.vpr@9.5--9.50
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion i == 5 + 8 + 6 + 4 + 4 \ 2 * 3 - 28 might not hold. (complex.vpr@9.12--9.49) [92937]"}
+    assert {:msg "  Assert might fail. Assertion i == 5 + 8 + 6 + 4 + 4 \ 2 * 3 - 28 might not hold. (complex.vpr@9.12--9.49) [198691]"}
       i == 1;
     assume state(Heap, Mask);
   
@@ -232,14 +232,14 @@ procedure main() returns ()
         // Inhale invariant
         assume state(Heap, Mask);
         // Check and assume guard
-        assume j_9 != 3;
+        assume j != 3;
         assume state(Heap, Mask);
         // Terminate execution
         assume false;
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(j_9 != 3);
+      assume !(j != 3);
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:15
+// Date:         2025-01-26 21:41:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0170.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0170-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,7 +185,7 @@ axiom !IsWandField(f_7);
 // Translation of method m
 // ==================================================
 
-procedure m(r_1: Ref) returns ()
+procedure m_17(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -202,7 +202,7 @@ procedure m(r_1: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0170.vpr@10.14--10.33) [220821]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0170.vpr@10.14--10.33) [53935]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] + perm];
@@ -210,7 +210,7 @@ procedure m(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > 3
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (0170.vpr@11.14--11.27) [220822]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (0170.vpr@11.14--11.27) [53936]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > 3;
     assume state(Heap, Mask);

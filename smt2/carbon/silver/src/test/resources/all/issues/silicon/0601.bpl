@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:54
+// Date:         2025-01-26 21:42:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0601.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0601-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -544,10 +544,10 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 procedure test00() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -557,19 +557,19 @@ procedure test00() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert Seq(111)[0] != Seq(222)[0] -- 0601.vpr@5.2--5.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of Seq(111)[0] != Seq(222)[0]
-      assert {:msg "  Assert might fail. Index Seq(111)[0] into Seq(111) might exceed sequence length. (0601.vpr@5.9--5.35) [215615]"}
+      assert {:msg "  Assert might fail. Index Seq(111)[0] into Seq(111) might exceed sequence length. (0601.vpr@5.9--5.35) [60008]"}
         0 < Seq#Length(Seq#Singleton(111));
-      assert {:msg "  Assert might fail. Index Seq(222)[0] into Seq(222) might exceed sequence length. (0601.vpr@5.9--5.35) [215616]"}
+      assert {:msg "  Assert might fail. Index Seq(222)[0] into Seq(222) might exceed sequence length. (0601.vpr@5.9--5.35) [60009]"}
         0 < Seq#Length(Seq#Singleton(222));
-    assert {:msg "  Assert might fail. Assertion Seq(111)[0] != Seq(222)[0] might not hold. (0601.vpr@5.9--5.35) [215617]"}
+    assert {:msg "  Assert might fail. Assertion Seq(111)[0] != Seq(222)[0] might not hold. (0601.vpr@5.9--5.35) [60010]"}
       Seq#Index(Seq#Singleton(111), 0) != Seq#Index(Seq#Singleton(222), 0);
     assume state(Heap, Mask);
 }
@@ -581,10 +581,10 @@ procedure test00() returns ()
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -594,20 +594,20 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert Seq(555) != Seq(666) -- 0601.vpr@9.2--9.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion Seq(555) != Seq(666) might not hold. (0601.vpr@9.9--9.29) [215618]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion Seq(555) != Seq(666) might not hold. (0601.vpr@9.9--9.29) [60011]"}
       !Seq#Equal(Seq#Singleton(555), Seq#Singleton(666));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0601.vpr@12.2--12.14
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0601.vpr@12.9--12.14) [215619]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0601.vpr@12.9--12.14) [60012]"}
       false;
     assume state(Heap, Mask);
 }
@@ -619,10 +619,10 @@ procedure test01() returns ()
 procedure test02() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -632,13 +632,13 @@ procedure test02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert Seq(555, 10) != Seq(666, 10) -- 0601.vpr@16.2--16.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion Seq(555, 10) != Seq(666, 10) might not hold. (0601.vpr@16.9--16.37) [215620]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion Seq(555, 10) != Seq(666, 10) might not hold. (0601.vpr@16.9--16.37) [60013]"}
       !Seq#Equal(Seq#Append(Seq#Singleton(555), Seq#Singleton(10)), Seq#Append(Seq#Singleton(666), Seq#Singleton(10)));
     assume state(Heap, Mask);
 }

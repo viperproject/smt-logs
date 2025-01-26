@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:53
+// Date:         2025-01-26 21:41:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10QPpred.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10QPpred-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_28: Ref, f_32: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_28, f_32] }
-  Heap[o_28, $allocated] ==> Heap[Heap[o_28, f_32], $allocated]
+axiom (forall o_11: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_11, f_17] }
+  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_17], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_29: Ref, f_33: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_29, f_33] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_29, f_33) ==> Heap[o_29, f_33] == ExhaleHeap[o_29, f_33]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_43: Ref, f_56: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_43, f_56] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_43, f_56) ==> Heap[o_43, f_56] == ExhaleHeap[o_43, f_56]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10), ExhaleHeap[null, PredicateMaskField(pm_f_10)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> Heap[null, PredicateMaskField(pm_f_10)] == ExhaleHeap[null, PredicateMaskField(pm_f_10)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_21), ExhaleHeap[null, PredicateMaskField(pm_f_21)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsPredicateField(pm_f_21) ==> Heap[null, PredicateMaskField(pm_f_21)] == ExhaleHeap[null, PredicateMaskField(pm_f_21)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_10) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsPredicateField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_33: (Field A B) ::
-    { ExhaleHeap[o2_10, f_33] }
-    Heap[null, PredicateMaskField(pm_f_10)][o2_10, f_33] ==> Heap[o2_10, f_33] == ExhaleHeap[o2_10, f_33]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_21) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsPredicateField(pm_f_21) ==> (forall <A, B> o2_21: Ref, f_56: (Field A B) ::
+    { ExhaleHeap[o2_21, f_56] }
+    Heap[null, PredicateMaskField(pm_f_21)][o2_21, f_56] ==> Heap[o2_21, f_56] == ExhaleHeap[o2_21, f_56]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10), ExhaleHeap[null, WandMaskField(pm_f_10)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> Heap[null, WandMaskField(pm_f_10)] == ExhaleHeap[null, WandMaskField(pm_f_10)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_21), ExhaleHeap[null, WandMaskField(pm_f_21)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsWandField(pm_f_21) ==> Heap[null, WandMaskField(pm_f_21)] == ExhaleHeap[null, WandMaskField(pm_f_21)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_10: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_10) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_10) && IsWandField(pm_f_10) ==> (forall <A, B> o2_10: Ref, f_33: (Field A B) ::
-    { ExhaleHeap[o2_10, f_33] }
-    Heap[null, WandMaskField(pm_f_10)][o2_10, f_33] ==> Heap[o2_10, f_33] == ExhaleHeap[o2_10, f_33]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_21) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsWandField(pm_f_21) ==> (forall <A, B> o2_21: Ref, f_56: (Field A B) ::
+    { ExhaleHeap[o2_21, f_56] }
+    Heap[null, WandMaskField(pm_f_21)][o2_21, f_56] ==> Heap[o2_21, f_56] == ExhaleHeap[o2_21, f_56]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_29: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_29, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_29, $allocated] ==> ExhaleHeap[o_29, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_43: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_43, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_43, $allocated] ==> ExhaleHeap[o_43, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_28: Ref, f_34: (Field A B), v: B ::
-  { Heap[o_28, f_34:=v] }
-  succHeap(Heap, Heap[o_28, f_34:=v])
+axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_57: (Field A B), v: B ::
+  { Heap[o_11, f_57:=v] }
+  succHeap(Heap, Heap[o_11, f_57:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -149,14 +149,14 @@ function  neverTriggered3(x_1: Ref, y_1: Ref, z_1: Ref): bool;
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
 
-function  invRecv1(x_2_1: Ref, y_2_1_1: Ref, z_2_1_1: Ref): Ref;
-function  invRecv2(x_2_1: Ref, y_2_1_1: Ref, z_2_1_1: Ref): Ref;
-function  invRecv3(x_2_1: Ref, y_2_1_1: Ref, z_2_1_1: Ref): Ref;
+function  invRecv1(x_2_1: Ref, y_2_1_1: Ref, z_2_1: Ref): Ref;
+function  invRecv2(x_2_1: Ref, y_2_1_1: Ref, z_2_1: Ref): Ref;
+function  invRecv3(x_2_1: Ref, y_2_1_1: Ref, z_2_1: Ref): Ref;
 // ==================================================
 // Functions used to represent the range of the projection of each QP instance onto its receiver expressions for quantified permissions during inhale and exhale
 // ==================================================
 
-function  qpRange3(x_2_1: Ref, y_2_1_1: Ref, z_2_1_1: Ref): bool;
+function  qpRange3(x_2_1: Ref, y_2_1_1: Ref, z_2_1: Ref): bool;
 
 // ==================================================
 // Preamble of Function and predicate module.
@@ -389,13 +389,13 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 type Inverse_45DomainType;
 
 // Translation of domain function inv_45_0
-function  inv_45_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_45_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_45_1
-function  inv_45_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_45_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_45_2
-function  inv_45_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_45_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain Inverse_46
@@ -405,13 +405,13 @@ function  inv_45_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type Inverse_46DomainType;
 
 // Translation of domain function inv_46_0
-function  inv_46_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_46_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_46_1
-function  inv_46_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_46_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_46_2
-function  inv_46_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_46_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain Inverse_47
@@ -421,13 +421,13 @@ function  inv_46_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type Inverse_47DomainType;
 
 // Translation of domain function inv_47_0
-function  inv_47_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_47_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_47_1
-function  inv_47_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_47_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_47_2
-function  inv_47_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_47_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain Inverse_48
@@ -437,13 +437,13 @@ function  inv_47_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type Inverse_48DomainType;
 
 // Translation of domain function inv_48_0
-function  inv_48_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_48_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_48_1
-function  inv_48_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_48_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_48_2
-function  inv_48_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_48_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain Inverse_49
@@ -453,13 +453,13 @@ function  inv_48_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type Inverse_49DomainType;
 
 // Translation of domain function inv_49_0
-function  inv_49_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_49_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_49_1
-function  inv_49_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_49_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_49_2
-function  inv_49_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_49_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain Inverse_50
@@ -469,13 +469,13 @@ function  inv_49_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type Inverse_50DomainType;
 
 // Translation of domain function inv_50_0
-function  inv_50_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_50_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_50_1
-function  inv_50_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_50_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_50_2
-function  inv_50_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_50_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain Inverse_51
@@ -485,13 +485,13 @@ function  inv_50_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type Inverse_51DomainType;
 
 // Translation of domain function inv_51_0
-function  inv_51_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_51_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_51_1
-function  inv_51_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_51_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_51_2
-function  inv_51_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_51_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain Inverse_52
@@ -501,13 +501,13 @@ function  inv_51_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type Inverse_52DomainType;
 
 // Translation of domain function inv_52_0
-function  inv_52_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_52_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_52_1
-function  inv_52_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_52_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_52_2
-function  inv_52_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_52_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain Inverse_53
@@ -517,13 +517,13 @@ function  inv_52_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type Inverse_53DomainType;
 
 // Translation of domain function inv_53_0
-function  inv_53_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_53_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_53_1
-function  inv_53_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_53_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_53_2
-function  inv_53_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_53_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain Inverse_54
@@ -533,13 +533,13 @@ function  inv_53_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type Inverse_54DomainType;
 
 // Translation of domain function inv_54_0
-function  inv_54_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_54_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_54_1
-function  inv_54_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_54_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_54_2
-function  inv_54_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_54_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain Inverse_55
@@ -549,13 +549,13 @@ function  inv_54_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type Inverse_55DomainType;
 
 // Translation of domain function inv_55_0
-function  inv_55_0(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_55_0(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_55_1
-function  inv_55_1(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_55_1(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // Translation of domain function inv_55_2
-function  inv_55_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
+function  inv_55_2(x_37: Ref, y_2: Ref, z_11: Ref): Ref;
 
 // ==================================================
 // Translation of domain __ns__impure_assume_rewriter
@@ -565,34 +565,34 @@ function  inv_55_2(x_8: Ref, y_6: Ref, z_26: Ref): Ref;
 type __ns__impure_assume_rewriterDomainType;
 
 // Translation of domain function __iar__assume_helper_1
-function  __iar__assume_helper_1(c_1_2: bool, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_1(c_1_2: bool, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_2
-function  __iar__assume_helper_2(c_2_2: bool, c_1_2: bool, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_2(c_2_1: bool, c_1_2: bool, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_3
-function  __iar__assume_helper_3(c_3_2: bool, c_2_2: bool, c_1_2: bool, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_3(c_3_2: bool, c_2_1: bool, c_1_2: bool, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_4
-function  __iar__assume_helper_4(c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_4(c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_5
-function  __iar__assume_helper_5(c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_5(c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_6
-function  __iar__assume_helper_6(c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_6(c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_7
-function  __iar__assume_helper_7(c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_7(c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_8
-function  __iar__assume_helper_8(c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_8_1: Perm, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_8(c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_8_1: Perm, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_9
-function  __iar__assume_helper_9(c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_9_2: Perm, p_8_1: Perm, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_9(c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_9: Perm, p_8_1: Perm, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_10
-function  __iar__assume_helper_10(c_10_1: bool, c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_10_1: Perm, p_9_2: Perm, p_8_1: Perm, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_10(c_10: bool, c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_10: Perm, p_9: Perm, p_8_1: Perm, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain axiom __iar__assume_helper_1_axiom
 axiom (forall c_1: bool, p_1_1: Perm, p_0_1: Perm ::
@@ -601,57 +601,57 @@ axiom (forall c_1: bool, p_1_1: Perm, p_0_1: Perm ::
 );
 
 // Translation of domain axiom __iar__assume_helper_2_axiom
-axiom (forall c_2: bool, c_1: bool, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_2(c_2, c_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_2(c_2, c_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm)
+axiom (forall c_2_2: bool, c_1: bool, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_2(c_2_2, c_1, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_2(c_2_2, c_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_3_axiom
-axiom (forall c_3: bool, c_2: bool, c_1: bool, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_3(c_3, c_2, c_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_3(c_3, c_2, c_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm)
+axiom (forall c_3: bool, c_2_2: bool, c_1: bool, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_3(c_3, c_2_2, c_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_3(c_3, c_2_2, c_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_4_axiom
-axiom (forall c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_4(c_4_2, c_3, c_2, c_1, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_4(c_4_2, c_3, c_2, c_1, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm)
+axiom (forall c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_4(c_4_2, c_3, c_2_2, c_1, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_4(c_4_2, c_3, c_2_2, c_1, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_5_axiom
-axiom (forall c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_5(c_5_1, c_4_2, c_3, c_2, c_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_5(c_5_1, c_4_2, c_3, c_2, c_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm)
+axiom (forall c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_5(c_5, c_4_2, c_3, c_2_2, c_1, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_5(c_5, c_4_2, c_3, c_2_2, c_1, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_6_axiom
-axiom (forall c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_6(c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_6(c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm)
+axiom (forall c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_6(c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_6(c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_7_axiom
-axiom (forall c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_7(c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_7(c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm)
+axiom (forall c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_7(c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_7(c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_8_axiom
-axiom (forall c_8: bool, c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_8: Perm, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_8(c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_8(c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm) + (if c_8 then p_8 else NoPerm)
+axiom (forall c_8: bool, c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_8: Perm, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_8(c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_8(c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm) + (if c_8 then p_8 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_9_axiom
-axiom (forall c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_9_3: Perm, p_8: Perm, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_3 else NoPerm)
+axiom (forall c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_9_1: Perm, p_8: Perm, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_1 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_10_axiom
-axiom (forall c_10_2: bool, c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_10: Perm, p_9_3: Perm, p_8: Perm, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_10(c_10_2, c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_10, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_10(c_10_2, c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_10, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_3 else NoPerm) + (if c_10_2 then p_10 else NoPerm)
+axiom (forall c_10_1: bool, c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_10_1: Perm, p_9_1: Perm, p_8: Perm, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_10(c_10_1, c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_10_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_10(c_10_1, c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_10_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_1 else NoPerm) + (if c_10_1 then p_10_1 else NoPerm)
 );
 
 // ==================================================
@@ -667,25 +667,25 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 type PredicateType_p;
-function  p_14(x: Ref, y: Ref, z: Ref): Field PredicateType_p FrameType;
+function  p_2(x: Ref, y: Ref, z: Ref): Field PredicateType_p FrameType;
 function  p#sm(x: Ref, y: Ref, z: Ref): Field PredicateType_p PMaskType;
 axiom (forall x: Ref, y: Ref, z: Ref ::
-  { PredicateMaskField(p_14(x, y, z)) }
-  PredicateMaskField(p_14(x, y, z)) == p#sm(x, y, z)
+  { PredicateMaskField(p_2(x, y, z)) }
+  PredicateMaskField(p_2(x, y, z)) == p#sm(x, y, z)
 );
 axiom (forall x: Ref, y: Ref, z: Ref ::
-  { p_14(x, y, z) }
-  IsPredicateField(p_14(x, y, z))
+  { p_2(x, y, z) }
+  IsPredicateField(p_2(x, y, z))
 );
 axiom (forall x: Ref, y: Ref, z: Ref ::
-  { p_14(x, y, z) }
-  getPredWandId(p_14(x, y, z)) == 0
+  { p_2(x, y, z) }
+  getPredWandId(p_2(x, y, z)) == 0
 );
 function  p#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  p#everUsed<A>(pred: (Field A FrameType)): bool;
 axiom (forall x: Ref, y: Ref, z: Ref, x2: Ref, y2: Ref, z2: Ref ::
-  { p_14(x, y, z), p_14(x2, y2, z2) }
-  p_14(x, y, z) == p_14(x2, y2, z2) ==> x == x2 && (y == y2 && z == z2)
+  { p_2(x, y, z), p_2(x2, y2, z2) }
+  p_2(x, y, z) == p_2(x2, y2, z2) ==> x == x2 && (y == y2 && z == z2)
 );
 axiom (forall x: Ref, y: Ref, z: Ref, x2: Ref, y2: Ref, z2: Ref ::
   { p#sm(x, y, z), p#sm(x2, y2, z2) }
@@ -693,27 +693,27 @@ axiom (forall x: Ref, y: Ref, z: Ref, x2: Ref, y2: Ref, z2: Ref ::
 );
 
 axiom (forall Heap: HeapType, x: Ref, y: Ref, z: Ref ::
-  { p#trigger(Heap, p_14(x, y, z)) }
-  p#everUsed(p_14(x, y, z))
+  { p#trigger(Heap, p_2(x, y, z)) }
+  p#everUsed(p_2(x, y, z))
 );
 
 // ==================================================
 // Translation of method m
 // ==================================================
 
-procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5: (Set Ref), xs6: (Set Ref), xs7: (Set Ref), xs8: (Set Ref), xs9: (Set Ref), xs10: (Set Ref), xs11: (Set Ref), ys1: (Set Ref), ys2: (Set Ref), ys3: (Set Ref), ys4: (Set Ref), ys5: (Set Ref), ys6: (Set Ref), ys7: (Set Ref), ys8: (Set Ref), ys9: (Set Ref), ys10: (Set Ref), ys11: (Set Ref), zs1: (Set Ref), zs2: (Set Ref), zs3: (Set Ref), zs4: (Set Ref), zs5: (Set Ref), zs6: (Set Ref), zs7: (Set Ref), zs8: (Set Ref), zs9: (Set Ref), zs10: (Set Ref), zs11: (Set Ref), xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm) returns ()
+procedure m_17(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5: (Set Ref), xs6: (Set Ref), xs7: (Set Ref), xs8: (Set Ref), xs9: (Set Ref), xs10: (Set Ref), xs11: (Set Ref), ys1: (Set Ref), ys2: (Set Ref), ys3: (Set Ref), ys4: (Set Ref), ys5: (Set Ref), ys6: (Set Ref), ys7: (Set Ref), ys8: (Set Ref), ys9: (Set Ref), ys10: (Set Ref), ys11: (Set Ref), zs1: (Set Ref), zs2: (Set Ref), zs3: (Set Ref), zs4: (Set Ref), zs5: (Set Ref), zs6: (Set Ref), zs7: (Set Ref), zs8: (Set Ref), zs9: (Set Ref), zs10: (Set Ref), zs11: (Set Ref), xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: Ref;
   var b_24: Ref;
   var c: Ref;
   var QPMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -724,8 +724,8 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -748,7 +748,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
     havoc QPMask;
     
     // -- check if receiver acc(p(x, y, z), q) is injective
-      assert {:msg "  Inhale might fail. Quantified resource p(x, y, z) might not be injective. (assume10QPpred.vpr@16.10--17.65) [149709]"}
+      assert {:msg "  Inhale might fail. Quantified resource p(x, y, z) might not be injective. (assume10QPpred.vpr@16.10--17.65) [20755]"}
         (forall x_1: Ref, y_1: Ref, z_1: Ref, x_1_1: Ref, y_1_1: Ref, z_1_1: Ref ::
         { neverTriggered3(x_1, y_1, z_1), neverTriggered3(x_1_1, y_1_1, z_1_1) }
         (((((x_1 != x_1_1 && y_1 != y_1_1) && z_1 != z_1_1) && (xs[x_1] && (ys[y_1] && zs[z_1]))) && (xs[x_1_1] && (ys[y_1_1] && zs[z_1_1]))) && NoPerm < q_1) && NoPerm < q_1 ==> (x_1 != x_1_1 || y_1 != y_1_1) || z_1 != z_1_1
@@ -756,34 +756,34 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
     
     // -- Define Inverse Function
       assume (forall x_1: Ref, y_1: Ref, z_1: Ref ::
-        { Heap[null, p_14(x_1, y_1, z_1)] } { Mask[null, p_14(x_1, y_1, z_1)] } { xs[x_1], ys[y_1], zs[z_1] }
+        { Heap[null, p_2(x_1, y_1, z_1)] } { Mask[null, p_2(x_1, y_1, z_1)] } { xs[x_1], ys[y_1], zs[z_1] }
         (xs[x_1] && (ys[y_1] && zs[z_1])) && NoPerm < q_1 ==> ((invRecv1(x_1, y_1, z_1) == x_1 && invRecv2(x_1, y_1, z_1) == y_1) && invRecv3(x_1, y_1, z_1) == z_1) && qpRange3(x_1, y_1, z_1)
       );
-      assume (forall x_2_1: Ref, y_2_1_1: Ref, z_2_1_1: Ref ::
-        { invRecv1(x_2_1, y_2_1_1, z_2_1_1), invRecv2(x_2_1, y_2_1_1, z_2_1_1), invRecv3(x_2_1, y_2_1_1, z_2_1_1) }
-        ((xs[invRecv1(x_2_1, y_2_1_1, z_2_1_1)] && (ys[invRecv2(x_2_1, y_2_1_1, z_2_1_1)] && zs[invRecv3(x_2_1, y_2_1_1, z_2_1_1)])) && NoPerm < q_1) && qpRange3(x_2_1, y_2_1_1, z_2_1_1) ==> (invRecv1(x_2_1, y_2_1_1, z_2_1_1) == x_2_1 && invRecv2(x_2_1, y_2_1_1, z_2_1_1) == y_2_1_1) && invRecv3(x_2_1, y_2_1_1, z_2_1_1) == z_2_1_1
+      assume (forall x_2_1: Ref, y_2_1_1: Ref, z_2_1: Ref ::
+        { invRecv1(x_2_1, y_2_1_1, z_2_1), invRecv2(x_2_1, y_2_1_1, z_2_1), invRecv3(x_2_1, y_2_1_1, z_2_1) }
+        ((xs[invRecv1(x_2_1, y_2_1_1, z_2_1)] && (ys[invRecv2(x_2_1, y_2_1_1, z_2_1)] && zs[invRecv3(x_2_1, y_2_1_1, z_2_1)])) && NoPerm < q_1) && qpRange3(x_2_1, y_2_1_1, z_2_1) ==> (invRecv1(x_2_1, y_2_1_1, z_2_1) == x_2_1 && invRecv2(x_2_1, y_2_1_1, z_2_1) == y_2_1_1) && invRecv3(x_2_1, y_2_1_1, z_2_1) == z_2_1
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Inhale might fail. Fraction q might be negative. (assume10QPpred.vpr@16.10--17.65) [149710]"}
+    assert {:msg "  Inhale might fail. Fraction q might be negative. (assume10QPpred.vpr@16.10--17.65) [20756]"}
       (forall x_1: Ref, y_1: Ref, z_1: Ref ::
-      { Heap[null, p_14(x_1, y_1, z_1)] } { Mask[null, p_14(x_1, y_1, z_1)] } { xs[x_1], ys[y_1], zs[z_1] }
+      { Heap[null, p_2(x_1, y_1, z_1)] } { Mask[null, p_2(x_1, y_1, z_1)] } { xs[x_1], ys[y_1], zs[z_1] }
       xs[x_1] && (ys[y_1] && zs[z_1]) ==> q_1 >= NoPerm
     );
     
     // -- Define updated permissions
-      assume (forall x_2_1: Ref, y_2_1_1: Ref, z_2_1_1: Ref ::
-        { QPMask[null, p_14(x_2_1, y_2_1_1, z_2_1_1)] }
-        ((xs[invRecv1(x_2_1, y_2_1_1, z_2_1_1)] && (ys[invRecv2(x_2_1, y_2_1_1, z_2_1_1)] && zs[invRecv3(x_2_1, y_2_1_1, z_2_1_1)])) && NoPerm < q_1) && qpRange3(x_2_1, y_2_1_1, z_2_1_1) ==> (NoPerm < q_1 ==> (invRecv1(x_2_1, y_2_1_1, z_2_1_1) == x_2_1 && invRecv2(x_2_1, y_2_1_1, z_2_1_1) == y_2_1_1) && invRecv3(x_2_1, y_2_1_1, z_2_1_1) == z_2_1_1) && QPMask[null, p_14(x_2_1, y_2_1_1, z_2_1_1)] == Mask[null, p_14(x_2_1, y_2_1_1, z_2_1_1)] + q_1
+      assume (forall x_2_1: Ref, y_2_1_1: Ref, z_2_1: Ref ::
+        { QPMask[null, p_2(x_2_1, y_2_1_1, z_2_1)] }
+        ((xs[invRecv1(x_2_1, y_2_1_1, z_2_1)] && (ys[invRecv2(x_2_1, y_2_1_1, z_2_1)] && zs[invRecv3(x_2_1, y_2_1_1, z_2_1)])) && NoPerm < q_1) && qpRange3(x_2_1, y_2_1_1, z_2_1) ==> (NoPerm < q_1 ==> (invRecv1(x_2_1, y_2_1_1, z_2_1) == x_2_1 && invRecv2(x_2_1, y_2_1_1, z_2_1) == y_2_1_1) && invRecv3(x_2_1, y_2_1_1, z_2_1) == z_2_1) && QPMask[null, p_2(x_2_1, y_2_1_1, z_2_1)] == Mask[null, p_2(x_2_1, y_2_1_1, z_2_1)] + q_1
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
-      assume (forall x_2_1: Ref, y_2_1_1: Ref, z_2_1_1: Ref ::
-        { QPMask[null, p_14(x_2_1, y_2_1_1, z_2_1_1)] }
-        !(((xs[invRecv1(x_2_1, y_2_1_1, z_2_1_1)] && (ys[invRecv2(x_2_1, y_2_1_1, z_2_1_1)] && zs[invRecv3(x_2_1, y_2_1_1, z_2_1_1)])) && NoPerm < q_1) && qpRange3(x_2_1, y_2_1_1, z_2_1_1)) ==> QPMask[null, p_14(x_2_1, y_2_1_1, z_2_1_1)] == Mask[null, p_14(x_2_1, y_2_1_1, z_2_1_1)]
+      assume (forall x_2_1: Ref, y_2_1_1: Ref, z_2_1: Ref ::
+        { QPMask[null, p_2(x_2_1, y_2_1_1, z_2_1)] }
+        !(((xs[invRecv1(x_2_1, y_2_1_1, z_2_1)] && (ys[invRecv2(x_2_1, y_2_1_1, z_2_1)] && zs[invRecv3(x_2_1, y_2_1_1, z_2_1)])) && NoPerm < q_1) && qpRange3(x_2_1, y_2_1_1, z_2_1)) ==> QPMask[null, p_2(x_2_1, y_2_1_1, z_2_1)] == Mask[null, p_2(x_2_1, y_2_1_1, z_2_1)]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -801,7 +801,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
         assume false;
       }
     assume (forall x1_1: Ref, y1_1: Ref, z1_1: Ref ::
-      { Heap[null, p_14(x1_1, y1_1, z1_1)] }
+      { Heap[null, p_2(x1_1, y1_1, z1_1)] }
       xs1[x1_1] && (ys1[y1_1] && zs1[z1_1]) ==> ((inv_45_0(x1_1, y1_1, z1_1): Ref) == x1_1 && (inv_45_1(x1_1, y1_1, z1_1): Ref) == y1_1) && (inv_45_2(x1_1, y1_1, z1_1): Ref) == z1_1
     );
     assume state(Heap, Mask);
@@ -835,9 +835,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_7: Ref, y_7_2: Ref, z_7: Ref ::
-      { (inv_45_0(x_7, y_7_2, z_7): Ref), (inv_45_1(x_7, y_7_2, z_7): Ref), (inv_45_2(x_7, y_7_2, z_7): Ref) }
-      xs1[(inv_45_0(x_7, y_7_2, z_7): Ref)] && (ys1[(inv_45_1(x_7, y_7_2, z_7): Ref)] && zs1[(inv_45_2(x_7, y_7_2, z_7): Ref)]) ==> q_1 <= Mask[null, p_14(x_7, y_7_2, z_7)]
+    assume (forall x_7: Ref, y_7: Ref, z_7: Ref ::
+      { (inv_45_0(x_7, y_7, z_7): Ref), (inv_45_1(x_7, y_7, z_7): Ref), (inv_45_2(x_7, y_7, z_7): Ref) }
+      xs1[(inv_45_0(x_7, y_7, z_7): Ref)] && (ys1[(inv_45_1(x_7, y_7, z_7): Ref)] && zs1[(inv_45_2(x_7, y_7, z_7): Ref)]) ==> q_1 <= Mask[null, p_2(x_7, y_7, z_7)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -853,7 +853,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
         assume false;
       }
     assume (forall x2_1_1: Ref, y2_1: Ref, z2_1: Ref ::
-      { Heap[null, p_14(x2_1_1, y2_1, z2_1)] }
+      { Heap[null, p_2(x2_1_1, y2_1, z2_1)] }
       xs2[x2_1_1] && (ys2[y2_1] && zs2[z2_1]) ==> ((inv_46_0(x2_1_1, y2_1, z2_1): Ref) == x2_1_1 && (inv_46_1(x2_1_1, y2_1, z2_1): Ref) == y2_1) && (inv_46_2(x2_1_1, y2_1, z2_1): Ref) == z2_1
     );
     assume state(Heap, Mask);
@@ -870,9 +870,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_9_2: Ref, y_9_1: Ref, z_9_1: Ref ::
-      { (inv_46_0(x_9_2, y_9_1, z_9_1): Ref), (inv_46_1(x_9_2, y_9_1, z_9_1): Ref), (inv_46_2(x_9_2, y_9_1, z_9_1): Ref) }
-      xs2[(inv_46_0(x_9_2, y_9_1, z_9_1): Ref)] && (ys2[(inv_46_1(x_9_2, y_9_1, z_9_1): Ref)] && zs2[(inv_46_2(x_9_2, y_9_1, z_9_1): Ref)]) ==> ((inv_46_0(x_9_2, y_9_1, z_9_1): Ref) == x_9_2 && (inv_46_1(x_9_2, y_9_1, z_9_1): Ref) == y_9_1) && (inv_46_2(x_9_2, y_9_1, z_9_1): Ref) == z_9_1
+    assume (forall x_9: Ref, y_9: Ref, z_9: Ref ::
+      { (inv_46_0(x_9, y_9, z_9): Ref), (inv_46_1(x_9, y_9, z_9): Ref), (inv_46_2(x_9, y_9, z_9): Ref) }
+      xs2[(inv_46_0(x_9, y_9, z_9): Ref)] && (ys2[(inv_46_1(x_9, y_9, z_9): Ref)] && zs2[(inv_46_2(x_9, y_9, z_9): Ref)]) ==> ((inv_46_0(x_9, y_9, z_9): Ref) == x_9 && (inv_46_1(x_9, y_9, z_9): Ref) == y_9) && (inv_46_2(x_9, y_9, z_9): Ref) == z_9
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -890,9 +890,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_11_1: Ref, y_11_1: Ref, z_11_2: Ref ::
-      { (inv_46_0(x_11_1, y_11_1, z_11_2): Ref), (inv_46_1(x_11_1, y_11_1, z_11_2): Ref), (inv_46_2(x_11_1, y_11_1, z_11_2): Ref) }
-      xs2[(inv_46_0(x_11_1, y_11_1, z_11_2): Ref)] && (ys2[(inv_46_1(x_11_1, y_11_1, z_11_2): Ref)] && zs2[(inv_46_2(x_11_1, y_11_1, z_11_2): Ref)]) ==> (__iar__assume_helper_1((xs1[(inv_45_0(x_11_1, y_11_1, z_11_2): Ref)] && (ys1[(inv_45_1(x_11_1, y_11_1, z_11_2): Ref)] && zs1[(inv_45_2(x_11_1, y_11_1, z_11_2): Ref)])) && ((x_11_1 == x_11_1 && y_11_1 == y_11_1) && z_11_2 == z_11_2), q_1, q_1): Perm) <= Mask[null, p_14(x_11_1, y_11_1, z_11_2)]
+    assume (forall x_11: Ref, y_11: Ref, z_11_1: Ref ::
+      { (inv_46_0(x_11, y_11, z_11_1): Ref), (inv_46_1(x_11, y_11, z_11_1): Ref), (inv_46_2(x_11, y_11, z_11_1): Ref) }
+      xs2[(inv_46_0(x_11, y_11, z_11_1): Ref)] && (ys2[(inv_46_1(x_11, y_11, z_11_1): Ref)] && zs2[(inv_46_2(x_11, y_11, z_11_1): Ref)]) ==> (__iar__assume_helper_1((xs1[(inv_45_0(x_11, y_11, z_11_1): Ref)] && (ys1[(inv_45_1(x_11, y_11, z_11_1): Ref)] && zs1[(inv_45_2(x_11, y_11, z_11_1): Ref)])) && ((x_11 == x_11 && y_11 == y_11) && z_11_1 == z_11_1), q_1, q_1): Perm) <= Mask[null, p_2(x_11, y_11, z_11_1)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -907,9 +907,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x3_1_1: Ref, y3_1: Ref, z3_1: Ref ::
-      { Heap[null, p_14(x3_1_1, y3_1, z3_1)] }
-      xs3[x3_1_1] && (ys3[y3_1] && zs3[z3_1]) ==> ((inv_47_0(x3_1_1, y3_1, z3_1): Ref) == x3_1_1 && (inv_47_1(x3_1_1, y3_1, z3_1): Ref) == y3_1) && (inv_47_2(x3_1_1, y3_1, z3_1): Ref) == z3_1
+    assume (forall x3_1: Ref, y3_1: Ref, z3_1: Ref ::
+      { Heap[null, p_2(x3_1, y3_1, z3_1)] }
+      xs3[x3_1] && (ys3[y3_1] && zs3[z3_1]) ==> ((inv_47_0(x3_1, y3_1, z3_1): Ref) == x3_1 && (inv_47_1(x3_1, y3_1, z3_1): Ref) == y3_1) && (inv_47_2(x3_1, y3_1, z3_1): Ref) == z3_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -925,9 +925,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_13_2: Ref, y_13_1: Ref, z_13_1: Ref ::
-      { (inv_47_0(x_13_2, y_13_1, z_13_1): Ref), (inv_47_1(x_13_2, y_13_1, z_13_1): Ref), (inv_47_2(x_13_2, y_13_1, z_13_1): Ref) }
-      xs3[(inv_47_0(x_13_2, y_13_1, z_13_1): Ref)] && (ys3[(inv_47_1(x_13_2, y_13_1, z_13_1): Ref)] && zs3[(inv_47_2(x_13_2, y_13_1, z_13_1): Ref)]) ==> ((inv_47_0(x_13_2, y_13_1, z_13_1): Ref) == x_13_2 && (inv_47_1(x_13_2, y_13_1, z_13_1): Ref) == y_13_1) && (inv_47_2(x_13_2, y_13_1, z_13_1): Ref) == z_13_1
+    assume (forall x_13_2: Ref, y_13: Ref, z_13: Ref ::
+      { (inv_47_0(x_13_2, y_13, z_13): Ref), (inv_47_1(x_13_2, y_13, z_13): Ref), (inv_47_2(x_13_2, y_13, z_13): Ref) }
+      xs3[(inv_47_0(x_13_2, y_13, z_13): Ref)] && (ys3[(inv_47_1(x_13_2, y_13, z_13): Ref)] && zs3[(inv_47_2(x_13_2, y_13, z_13): Ref)]) ==> ((inv_47_0(x_13_2, y_13, z_13): Ref) == x_13_2 && (inv_47_1(x_13_2, y_13, z_13): Ref) == y_13) && (inv_47_2(x_13_2, y_13, z_13): Ref) == z_13
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -947,9 +947,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_15_2: Ref, y_15_1: Ref, z_15_1: Ref ::
-      { (inv_47_0(x_15_2, y_15_1, z_15_1): Ref), (inv_47_1(x_15_2, y_15_1, z_15_1): Ref), (inv_47_2(x_15_2, y_15_1, z_15_1): Ref) }
-      xs3[(inv_47_0(x_15_2, y_15_1, z_15_1): Ref)] && (ys3[(inv_47_1(x_15_2, y_15_1, z_15_1): Ref)] && zs3[(inv_47_2(x_15_2, y_15_1, z_15_1): Ref)]) ==> (__iar__assume_helper_2((xs1[(inv_45_0(x_15_2, y_15_1, z_15_1): Ref)] && (ys1[(inv_45_1(x_15_2, y_15_1, z_15_1): Ref)] && zs1[(inv_45_2(x_15_2, y_15_1, z_15_1): Ref)])) && ((x_15_2 == x_15_2 && y_15_1 == y_15_1) && z_15_1 == z_15_1), (xs2[(inv_46_0(x_15_2, y_15_1, z_15_1): Ref)] && (ys2[(inv_46_1(x_15_2, y_15_1, z_15_1): Ref)] && zs2[(inv_46_2(x_15_2, y_15_1, z_15_1): Ref)])) && ((x_15_2 == x_15_2 && y_15_1 == y_15_1) && z_15_1 == z_15_1), q_1, q_1, q_1): Perm) <= Mask[null, p_14(x_15_2, y_15_1, z_15_1)]
+    assume (forall x_15_2: Ref, y_15: Ref, z_15: Ref ::
+      { (inv_47_0(x_15_2, y_15, z_15): Ref), (inv_47_1(x_15_2, y_15, z_15): Ref), (inv_47_2(x_15_2, y_15, z_15): Ref) }
+      xs3[(inv_47_0(x_15_2, y_15, z_15): Ref)] && (ys3[(inv_47_1(x_15_2, y_15, z_15): Ref)] && zs3[(inv_47_2(x_15_2, y_15, z_15): Ref)]) ==> (__iar__assume_helper_2((xs1[(inv_45_0(x_15_2, y_15, z_15): Ref)] && (ys1[(inv_45_1(x_15_2, y_15, z_15): Ref)] && zs1[(inv_45_2(x_15_2, y_15, z_15): Ref)])) && ((x_15_2 == x_15_2 && y_15 == y_15) && z_15 == z_15), (xs2[(inv_46_0(x_15_2, y_15, z_15): Ref)] && (ys2[(inv_46_1(x_15_2, y_15, z_15): Ref)] && zs2[(inv_46_2(x_15_2, y_15, z_15): Ref)])) && ((x_15_2 == x_15_2 && y_15 == y_15) && z_15 == z_15), q_1, q_1, q_1): Perm) <= Mask[null, p_2(x_15_2, y_15, z_15)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -964,9 +964,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x4_1_1: Ref, y4_1: Ref, z4_1: Ref ::
-      { Heap[null, p_14(x4_1_1, y4_1, z4_1)] }
-      xs4[x4_1_1] && (ys4[y4_1] && zs4[z4_1]) ==> ((inv_48_0(x4_1_1, y4_1, z4_1): Ref) == x4_1_1 && (inv_48_1(x4_1_1, y4_1, z4_1): Ref) == y4_1) && (inv_48_2(x4_1_1, y4_1, z4_1): Ref) == z4_1
+    assume (forall x4_1: Ref, y4_1: Ref, z4_1: Ref ::
+      { Heap[null, p_2(x4_1, y4_1, z4_1)] }
+      xs4[x4_1] && (ys4[y4_1] && zs4[z4_1]) ==> ((inv_48_0(x4_1, y4_1, z4_1): Ref) == x4_1 && (inv_48_1(x4_1, y4_1, z4_1): Ref) == y4_1) && (inv_48_2(x4_1, y4_1, z4_1): Ref) == z4_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -982,9 +982,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_17_1: Ref, y_17: Ref, z_17_2: Ref ::
-      { (inv_48_0(x_17_1, y_17, z_17_2): Ref), (inv_48_1(x_17_1, y_17, z_17_2): Ref), (inv_48_2(x_17_1, y_17, z_17_2): Ref) }
-      xs4[(inv_48_0(x_17_1, y_17, z_17_2): Ref)] && (ys4[(inv_48_1(x_17_1, y_17, z_17_2): Ref)] && zs4[(inv_48_2(x_17_1, y_17, z_17_2): Ref)]) ==> ((inv_48_0(x_17_1, y_17, z_17_2): Ref) == x_17_1 && (inv_48_1(x_17_1, y_17, z_17_2): Ref) == y_17) && (inv_48_2(x_17_1, y_17, z_17_2): Ref) == z_17_2
+    assume (forall x_17: Ref, y_17: Ref, z_17: Ref ::
+      { (inv_48_0(x_17, y_17, z_17): Ref), (inv_48_1(x_17, y_17, z_17): Ref), (inv_48_2(x_17, y_17, z_17): Ref) }
+      xs4[(inv_48_0(x_17, y_17, z_17): Ref)] && (ys4[(inv_48_1(x_17, y_17, z_17): Ref)] && zs4[(inv_48_2(x_17, y_17, z_17): Ref)]) ==> ((inv_48_0(x_17, y_17, z_17): Ref) == x_17 && (inv_48_1(x_17, y_17, z_17): Ref) == y_17) && (inv_48_2(x_17, y_17, z_17): Ref) == z_17
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1006,9 +1006,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_19_1: Ref, y_19: Ref, z_19_1: Ref ::
-      { (inv_48_0(x_19_1, y_19, z_19_1): Ref), (inv_48_1(x_19_1, y_19, z_19_1): Ref), (inv_48_2(x_19_1, y_19, z_19_1): Ref) }
-      xs4[(inv_48_0(x_19_1, y_19, z_19_1): Ref)] && (ys4[(inv_48_1(x_19_1, y_19, z_19_1): Ref)] && zs4[(inv_48_2(x_19_1, y_19, z_19_1): Ref)]) ==> (__iar__assume_helper_3((xs1[(inv_45_0(x_19_1, y_19, z_19_1): Ref)] && (ys1[(inv_45_1(x_19_1, y_19, z_19_1): Ref)] && zs1[(inv_45_2(x_19_1, y_19, z_19_1): Ref)])) && ((x_19_1 == x_19_1 && y_19 == y_19) && z_19_1 == z_19_1), (xs2[(inv_46_0(x_19_1, y_19, z_19_1): Ref)] && (ys2[(inv_46_1(x_19_1, y_19, z_19_1): Ref)] && zs2[(inv_46_2(x_19_1, y_19, z_19_1): Ref)])) && ((x_19_1 == x_19_1 && y_19 == y_19) && z_19_1 == z_19_1), (xs3[(inv_47_0(x_19_1, y_19, z_19_1): Ref)] && (ys3[(inv_47_1(x_19_1, y_19, z_19_1): Ref)] && zs3[(inv_47_2(x_19_1, y_19, z_19_1): Ref)])) && ((x_19_1 == x_19_1 && y_19 == y_19) && z_19_1 == z_19_1), q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_14(x_19_1, y_19, z_19_1)]
+    assume (forall x_19_1: Ref, y_19: Ref, z_19: Ref ::
+      { (inv_48_0(x_19_1, y_19, z_19): Ref), (inv_48_1(x_19_1, y_19, z_19): Ref), (inv_48_2(x_19_1, y_19, z_19): Ref) }
+      xs4[(inv_48_0(x_19_1, y_19, z_19): Ref)] && (ys4[(inv_48_1(x_19_1, y_19, z_19): Ref)] && zs4[(inv_48_2(x_19_1, y_19, z_19): Ref)]) ==> (__iar__assume_helper_3((xs1[(inv_45_0(x_19_1, y_19, z_19): Ref)] && (ys1[(inv_45_1(x_19_1, y_19, z_19): Ref)] && zs1[(inv_45_2(x_19_1, y_19, z_19): Ref)])) && ((x_19_1 == x_19_1 && y_19 == y_19) && z_19 == z_19), (xs2[(inv_46_0(x_19_1, y_19, z_19): Ref)] && (ys2[(inv_46_1(x_19_1, y_19, z_19): Ref)] && zs2[(inv_46_2(x_19_1, y_19, z_19): Ref)])) && ((x_19_1 == x_19_1 && y_19 == y_19) && z_19 == z_19), (xs3[(inv_47_0(x_19_1, y_19, z_19): Ref)] && (ys3[(inv_47_1(x_19_1, y_19, z_19): Ref)] && zs3[(inv_47_2(x_19_1, y_19, z_19): Ref)])) && ((x_19_1 == x_19_1 && y_19 == y_19) && z_19 == z_19), q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_2(x_19_1, y_19, z_19)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1023,9 +1023,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x5_1_1: Ref, y5_1: Ref, z5_1: Ref ::
-      { Heap[null, p_14(x5_1_1, y5_1, z5_1)] }
-      xs5[x5_1_1] && (ys5[y5_1] && zs5[z5_1]) ==> ((inv_49_0(x5_1_1, y5_1, z5_1): Ref) == x5_1_1 && (inv_49_1(x5_1_1, y5_1, z5_1): Ref) == y5_1) && (inv_49_2(x5_1_1, y5_1, z5_1): Ref) == z5_1
+    assume (forall x5_1: Ref, y5_1: Ref, z5_1: Ref ::
+      { Heap[null, p_2(x5_1, y5_1, z5_1)] }
+      xs5[x5_1] && (ys5[y5_1] && zs5[z5_1]) ==> ((inv_49_0(x5_1, y5_1, z5_1): Ref) == x5_1 && (inv_49_1(x5_1, y5_1, z5_1): Ref) == y5_1) && (inv_49_2(x5_1, y5_1, z5_1): Ref) == z5_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1067,9 +1067,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_23_1: Ref, y_23: Ref, z_23: Ref ::
-      { (inv_49_0(x_23_1, y_23, z_23): Ref), (inv_49_1(x_23_1, y_23, z_23): Ref), (inv_49_2(x_23_1, y_23, z_23): Ref) }
-      xs5[(inv_49_0(x_23_1, y_23, z_23): Ref)] && (ys5[(inv_49_1(x_23_1, y_23, z_23): Ref)] && zs5[(inv_49_2(x_23_1, y_23, z_23): Ref)]) ==> (__iar__assume_helper_4((xs1[(inv_45_0(x_23_1, y_23, z_23): Ref)] && (ys1[(inv_45_1(x_23_1, y_23, z_23): Ref)] && zs1[(inv_45_2(x_23_1, y_23, z_23): Ref)])) && ((x_23_1 == x_23_1 && y_23 == y_23) && z_23 == z_23), (xs2[(inv_46_0(x_23_1, y_23, z_23): Ref)] && (ys2[(inv_46_1(x_23_1, y_23, z_23): Ref)] && zs2[(inv_46_2(x_23_1, y_23, z_23): Ref)])) && ((x_23_1 == x_23_1 && y_23 == y_23) && z_23 == z_23), (xs3[(inv_47_0(x_23_1, y_23, z_23): Ref)] && (ys3[(inv_47_1(x_23_1, y_23, z_23): Ref)] && zs3[(inv_47_2(x_23_1, y_23, z_23): Ref)])) && ((x_23_1 == x_23_1 && y_23 == y_23) && z_23 == z_23), (xs4[(inv_48_0(x_23_1, y_23, z_23): Ref)] && (ys4[(inv_48_1(x_23_1, y_23, z_23): Ref)] && zs4[(inv_48_2(x_23_1, y_23, z_23): Ref)])) && ((x_23_1 == x_23_1 && y_23 == y_23) && z_23 == z_23), q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_14(x_23_1, y_23, z_23)]
+    assume (forall x_23_2: Ref, y_23: Ref, z_23: Ref ::
+      { (inv_49_0(x_23_2, y_23, z_23): Ref), (inv_49_1(x_23_2, y_23, z_23): Ref), (inv_49_2(x_23_2, y_23, z_23): Ref) }
+      xs5[(inv_49_0(x_23_2, y_23, z_23): Ref)] && (ys5[(inv_49_1(x_23_2, y_23, z_23): Ref)] && zs5[(inv_49_2(x_23_2, y_23, z_23): Ref)]) ==> (__iar__assume_helper_4((xs1[(inv_45_0(x_23_2, y_23, z_23): Ref)] && (ys1[(inv_45_1(x_23_2, y_23, z_23): Ref)] && zs1[(inv_45_2(x_23_2, y_23, z_23): Ref)])) && ((x_23_2 == x_23_2 && y_23 == y_23) && z_23 == z_23), (xs2[(inv_46_0(x_23_2, y_23, z_23): Ref)] && (ys2[(inv_46_1(x_23_2, y_23, z_23): Ref)] && zs2[(inv_46_2(x_23_2, y_23, z_23): Ref)])) && ((x_23_2 == x_23_2 && y_23 == y_23) && z_23 == z_23), (xs3[(inv_47_0(x_23_2, y_23, z_23): Ref)] && (ys3[(inv_47_1(x_23_2, y_23, z_23): Ref)] && zs3[(inv_47_2(x_23_2, y_23, z_23): Ref)])) && ((x_23_2 == x_23_2 && y_23 == y_23) && z_23 == z_23), (xs4[(inv_48_0(x_23_2, y_23, z_23): Ref)] && (ys4[(inv_48_1(x_23_2, y_23, z_23): Ref)] && zs4[(inv_48_2(x_23_2, y_23, z_23): Ref)])) && ((x_23_2 == x_23_2 && y_23 == y_23) && z_23 == z_23), q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_2(x_23_2, y_23, z_23)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1084,9 +1084,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x6_1_1: Ref, y6_1: Ref, z6_1: Ref ::
-      { Heap[null, p_14(x6_1_1, y6_1, z6_1)] }
-      xs6[x6_1_1] && (ys6[y6_1] && zs6[z6_1]) ==> ((inv_50_0(x6_1_1, y6_1, z6_1): Ref) == x6_1_1 && (inv_50_1(x6_1_1, y6_1, z6_1): Ref) == y6_1) && (inv_50_2(x6_1_1, y6_1, z6_1): Ref) == z6_1
+    assume (forall x6_1: Ref, y6_1: Ref, z6_1: Ref ::
+      { Heap[null, p_2(x6_1, y6_1, z6_1)] }
+      xs6[x6_1] && (ys6[y6_1] && zs6[z6_1]) ==> ((inv_50_0(x6_1, y6_1, z6_1): Ref) == x6_1 && (inv_50_1(x6_1, y6_1, z6_1): Ref) == y6_1) && (inv_50_2(x6_1, y6_1, z6_1): Ref) == z6_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1102,9 +1102,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_25_2: Ref, y_25: Ref, z_25_1: Ref ::
-      { (inv_50_0(x_25_2, y_25, z_25_1): Ref), (inv_50_1(x_25_2, y_25, z_25_1): Ref), (inv_50_2(x_25_2, y_25, z_25_1): Ref) }
-      xs6[(inv_50_0(x_25_2, y_25, z_25_1): Ref)] && (ys6[(inv_50_1(x_25_2, y_25, z_25_1): Ref)] && zs6[(inv_50_2(x_25_2, y_25, z_25_1): Ref)]) ==> ((inv_50_0(x_25_2, y_25, z_25_1): Ref) == x_25_2 && (inv_50_1(x_25_2, y_25, z_25_1): Ref) == y_25) && (inv_50_2(x_25_2, y_25, z_25_1): Ref) == z_25_1
+    assume (forall x_25_2: Ref, y_25: Ref, z_25: Ref ::
+      { (inv_50_0(x_25_2, y_25, z_25): Ref), (inv_50_1(x_25_2, y_25, z_25): Ref), (inv_50_2(x_25_2, y_25, z_25): Ref) }
+      xs6[(inv_50_0(x_25_2, y_25, z_25): Ref)] && (ys6[(inv_50_1(x_25_2, y_25, z_25): Ref)] && zs6[(inv_50_2(x_25_2, y_25, z_25): Ref)]) ==> ((inv_50_0(x_25_2, y_25, z_25): Ref) == x_25_2 && (inv_50_1(x_25_2, y_25, z_25): Ref) == y_25) && (inv_50_2(x_25_2, y_25, z_25): Ref) == z_25
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1132,7 +1132,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       }
     assume (forall x_27_1: Ref, y_27: Ref, z_27: Ref ::
       { (inv_50_0(x_27_1, y_27, z_27): Ref), (inv_50_1(x_27_1, y_27, z_27): Ref), (inv_50_2(x_27_1, y_27, z_27): Ref) }
-      xs6[(inv_50_0(x_27_1, y_27, z_27): Ref)] && (ys6[(inv_50_1(x_27_1, y_27, z_27): Ref)] && zs6[(inv_50_2(x_27_1, y_27, z_27): Ref)]) ==> (__iar__assume_helper_5((xs1[(inv_45_0(x_27_1, y_27, z_27): Ref)] && (ys1[(inv_45_1(x_27_1, y_27, z_27): Ref)] && zs1[(inv_45_2(x_27_1, y_27, z_27): Ref)])) && ((x_27_1 == x_27_1 && y_27 == y_27) && z_27 == z_27), (xs2[(inv_46_0(x_27_1, y_27, z_27): Ref)] && (ys2[(inv_46_1(x_27_1, y_27, z_27): Ref)] && zs2[(inv_46_2(x_27_1, y_27, z_27): Ref)])) && ((x_27_1 == x_27_1 && y_27 == y_27) && z_27 == z_27), (xs3[(inv_47_0(x_27_1, y_27, z_27): Ref)] && (ys3[(inv_47_1(x_27_1, y_27, z_27): Ref)] && zs3[(inv_47_2(x_27_1, y_27, z_27): Ref)])) && ((x_27_1 == x_27_1 && y_27 == y_27) && z_27 == z_27), (xs4[(inv_48_0(x_27_1, y_27, z_27): Ref)] && (ys4[(inv_48_1(x_27_1, y_27, z_27): Ref)] && zs4[(inv_48_2(x_27_1, y_27, z_27): Ref)])) && ((x_27_1 == x_27_1 && y_27 == y_27) && z_27 == z_27), (xs5[(inv_49_0(x_27_1, y_27, z_27): Ref)] && (ys5[(inv_49_1(x_27_1, y_27, z_27): Ref)] && zs5[(inv_49_2(x_27_1, y_27, z_27): Ref)])) && ((x_27_1 == x_27_1 && y_27 == y_27) && z_27 == z_27), q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_14(x_27_1, y_27, z_27)]
+      xs6[(inv_50_0(x_27_1, y_27, z_27): Ref)] && (ys6[(inv_50_1(x_27_1, y_27, z_27): Ref)] && zs6[(inv_50_2(x_27_1, y_27, z_27): Ref)]) ==> (__iar__assume_helper_5((xs1[(inv_45_0(x_27_1, y_27, z_27): Ref)] && (ys1[(inv_45_1(x_27_1, y_27, z_27): Ref)] && zs1[(inv_45_2(x_27_1, y_27, z_27): Ref)])) && ((x_27_1 == x_27_1 && y_27 == y_27) && z_27 == z_27), (xs2[(inv_46_0(x_27_1, y_27, z_27): Ref)] && (ys2[(inv_46_1(x_27_1, y_27, z_27): Ref)] && zs2[(inv_46_2(x_27_1, y_27, z_27): Ref)])) && ((x_27_1 == x_27_1 && y_27 == y_27) && z_27 == z_27), (xs3[(inv_47_0(x_27_1, y_27, z_27): Ref)] && (ys3[(inv_47_1(x_27_1, y_27, z_27): Ref)] && zs3[(inv_47_2(x_27_1, y_27, z_27): Ref)])) && ((x_27_1 == x_27_1 && y_27 == y_27) && z_27 == z_27), (xs4[(inv_48_0(x_27_1, y_27, z_27): Ref)] && (ys4[(inv_48_1(x_27_1, y_27, z_27): Ref)] && zs4[(inv_48_2(x_27_1, y_27, z_27): Ref)])) && ((x_27_1 == x_27_1 && y_27 == y_27) && z_27 == z_27), (xs5[(inv_49_0(x_27_1, y_27, z_27): Ref)] && (ys5[(inv_49_1(x_27_1, y_27, z_27): Ref)] && zs5[(inv_49_2(x_27_1, y_27, z_27): Ref)])) && ((x_27_1 == x_27_1 && y_27 == y_27) && z_27 == z_27), q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_2(x_27_1, y_27, z_27)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1148,7 +1148,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
         assume false;
       }
     assume (forall x7_1: Ref, y7_1: Ref, z7_1: Ref ::
-      { Heap[null, p_14(x7_1, y7_1, z7_1)] }
+      { Heap[null, p_2(x7_1, y7_1, z7_1)] }
       xs7[x7_1] && (ys7[y7_1] && zs7[z7_1]) ==> ((inv_51_0(x7_1, y7_1, z7_1): Ref) == x7_1 && (inv_51_1(x7_1, y7_1, z7_1): Ref) == y7_1) && (inv_51_2(x7_1, y7_1, z7_1): Ref) == z7_1
     );
     assume state(Heap, Mask);
@@ -1197,7 +1197,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       }
     assume (forall x_31_1: Ref, y_31: Ref, z_31: Ref ::
       { (inv_51_0(x_31_1, y_31, z_31): Ref), (inv_51_1(x_31_1, y_31, z_31): Ref), (inv_51_2(x_31_1, y_31, z_31): Ref) }
-      xs7[(inv_51_0(x_31_1, y_31, z_31): Ref)] && (ys7[(inv_51_1(x_31_1, y_31, z_31): Ref)] && zs7[(inv_51_2(x_31_1, y_31, z_31): Ref)]) ==> (__iar__assume_helper_6((xs1[(inv_45_0(x_31_1, y_31, z_31): Ref)] && (ys1[(inv_45_1(x_31_1, y_31, z_31): Ref)] && zs1[(inv_45_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), (xs2[(inv_46_0(x_31_1, y_31, z_31): Ref)] && (ys2[(inv_46_1(x_31_1, y_31, z_31): Ref)] && zs2[(inv_46_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), (xs3[(inv_47_0(x_31_1, y_31, z_31): Ref)] && (ys3[(inv_47_1(x_31_1, y_31, z_31): Ref)] && zs3[(inv_47_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), (xs4[(inv_48_0(x_31_1, y_31, z_31): Ref)] && (ys4[(inv_48_1(x_31_1, y_31, z_31): Ref)] && zs4[(inv_48_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), (xs5[(inv_49_0(x_31_1, y_31, z_31): Ref)] && (ys5[(inv_49_1(x_31_1, y_31, z_31): Ref)] && zs5[(inv_49_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), (xs6[(inv_50_0(x_31_1, y_31, z_31): Ref)] && (ys6[(inv_50_1(x_31_1, y_31, z_31): Ref)] && zs6[(inv_50_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), q_1, q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_14(x_31_1, y_31, z_31)]
+      xs7[(inv_51_0(x_31_1, y_31, z_31): Ref)] && (ys7[(inv_51_1(x_31_1, y_31, z_31): Ref)] && zs7[(inv_51_2(x_31_1, y_31, z_31): Ref)]) ==> (__iar__assume_helper_6((xs1[(inv_45_0(x_31_1, y_31, z_31): Ref)] && (ys1[(inv_45_1(x_31_1, y_31, z_31): Ref)] && zs1[(inv_45_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), (xs2[(inv_46_0(x_31_1, y_31, z_31): Ref)] && (ys2[(inv_46_1(x_31_1, y_31, z_31): Ref)] && zs2[(inv_46_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), (xs3[(inv_47_0(x_31_1, y_31, z_31): Ref)] && (ys3[(inv_47_1(x_31_1, y_31, z_31): Ref)] && zs3[(inv_47_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), (xs4[(inv_48_0(x_31_1, y_31, z_31): Ref)] && (ys4[(inv_48_1(x_31_1, y_31, z_31): Ref)] && zs4[(inv_48_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), (xs5[(inv_49_0(x_31_1, y_31, z_31): Ref)] && (ys5[(inv_49_1(x_31_1, y_31, z_31): Ref)] && zs5[(inv_49_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), (xs6[(inv_50_0(x_31_1, y_31, z_31): Ref)] && (ys6[(inv_50_1(x_31_1, y_31, z_31): Ref)] && zs6[(inv_50_2(x_31_1, y_31, z_31): Ref)])) && ((x_31_1 == x_31_1 && y_31 == y_31) && z_31 == z_31), q_1, q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_2(x_31_1, y_31, z_31)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1213,7 +1213,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
         assume false;
       }
     assume (forall x8_1: Ref, y8_1: Ref, z8_1: Ref ::
-      { Heap[null, p_14(x8_1, y8_1, z8_1)] }
+      { Heap[null, p_2(x8_1, y8_1, z8_1)] }
       xs8[x8_1] && (ys8[y8_1] && zs8[z8_1]) ==> ((inv_52_0(x8_1, y8_1, z8_1): Ref) == x8_1 && (inv_52_1(x8_1, y8_1, z8_1): Ref) == y8_1) && (inv_52_2(x8_1, y8_1, z8_1): Ref) == z8_1
     );
     assume state(Heap, Mask);
@@ -1230,9 +1230,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_33_2: Ref, y_33: Ref, z_33: Ref ::
-      { (inv_52_0(x_33_2, y_33, z_33): Ref), (inv_52_1(x_33_2, y_33, z_33): Ref), (inv_52_2(x_33_2, y_33, z_33): Ref) }
-      xs8[(inv_52_0(x_33_2, y_33, z_33): Ref)] && (ys8[(inv_52_1(x_33_2, y_33, z_33): Ref)] && zs8[(inv_52_2(x_33_2, y_33, z_33): Ref)]) ==> ((inv_52_0(x_33_2, y_33, z_33): Ref) == x_33_2 && (inv_52_1(x_33_2, y_33, z_33): Ref) == y_33) && (inv_52_2(x_33_2, y_33, z_33): Ref) == z_33
+    assume (forall x_33_1: Ref, y_33: Ref, z_33: Ref ::
+      { (inv_52_0(x_33_1, y_33, z_33): Ref), (inv_52_1(x_33_1, y_33, z_33): Ref), (inv_52_2(x_33_1, y_33, z_33): Ref) }
+      xs8[(inv_52_0(x_33_1, y_33, z_33): Ref)] && (ys8[(inv_52_1(x_33_1, y_33, z_33): Ref)] && zs8[(inv_52_2(x_33_1, y_33, z_33): Ref)]) ==> ((inv_52_0(x_33_1, y_33, z_33): Ref) == x_33_1 && (inv_52_1(x_33_1, y_33, z_33): Ref) == y_33) && (inv_52_2(x_33_1, y_33, z_33): Ref) == z_33
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1262,9 +1262,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_35_2: Ref, y_35: Ref, z_35: Ref ::
-      { (inv_52_0(x_35_2, y_35, z_35): Ref), (inv_52_1(x_35_2, y_35, z_35): Ref), (inv_52_2(x_35_2, y_35, z_35): Ref) }
-      xs8[(inv_52_0(x_35_2, y_35, z_35): Ref)] && (ys8[(inv_52_1(x_35_2, y_35, z_35): Ref)] && zs8[(inv_52_2(x_35_2, y_35, z_35): Ref)]) ==> (__iar__assume_helper_7((xs1[(inv_45_0(x_35_2, y_35, z_35): Ref)] && (ys1[(inv_45_1(x_35_2, y_35, z_35): Ref)] && zs1[(inv_45_2(x_35_2, y_35, z_35): Ref)])) && ((x_35_2 == x_35_2 && y_35 == y_35) && z_35 == z_35), (xs2[(inv_46_0(x_35_2, y_35, z_35): Ref)] && (ys2[(inv_46_1(x_35_2, y_35, z_35): Ref)] && zs2[(inv_46_2(x_35_2, y_35, z_35): Ref)])) && ((x_35_2 == x_35_2 && y_35 == y_35) && z_35 == z_35), (xs3[(inv_47_0(x_35_2, y_35, z_35): Ref)] && (ys3[(inv_47_1(x_35_2, y_35, z_35): Ref)] && zs3[(inv_47_2(x_35_2, y_35, z_35): Ref)])) && ((x_35_2 == x_35_2 && y_35 == y_35) && z_35 == z_35), (xs4[(inv_48_0(x_35_2, y_35, z_35): Ref)] && (ys4[(inv_48_1(x_35_2, y_35, z_35): Ref)] && zs4[(inv_48_2(x_35_2, y_35, z_35): Ref)])) && ((x_35_2 == x_35_2 && y_35 == y_35) && z_35 == z_35), (xs5[(inv_49_0(x_35_2, y_35, z_35): Ref)] && (ys5[(inv_49_1(x_35_2, y_35, z_35): Ref)] && zs5[(inv_49_2(x_35_2, y_35, z_35): Ref)])) && ((x_35_2 == x_35_2 && y_35 == y_35) && z_35 == z_35), (xs6[(inv_50_0(x_35_2, y_35, z_35): Ref)] && (ys6[(inv_50_1(x_35_2, y_35, z_35): Ref)] && zs6[(inv_50_2(x_35_2, y_35, z_35): Ref)])) && ((x_35_2 == x_35_2 && y_35 == y_35) && z_35 == z_35), (xs7[(inv_51_0(x_35_2, y_35, z_35): Ref)] && (ys7[(inv_51_1(x_35_2, y_35, z_35): Ref)] && zs7[(inv_51_2(x_35_2, y_35, z_35): Ref)])) && ((x_35_2 == x_35_2 && y_35 == y_35) && z_35 == z_35), q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_14(x_35_2, y_35, z_35)]
+    assume (forall x_35_1: Ref, y_35: Ref, z_35: Ref ::
+      { (inv_52_0(x_35_1, y_35, z_35): Ref), (inv_52_1(x_35_1, y_35, z_35): Ref), (inv_52_2(x_35_1, y_35, z_35): Ref) }
+      xs8[(inv_52_0(x_35_1, y_35, z_35): Ref)] && (ys8[(inv_52_1(x_35_1, y_35, z_35): Ref)] && zs8[(inv_52_2(x_35_1, y_35, z_35): Ref)]) ==> (__iar__assume_helper_7((xs1[(inv_45_0(x_35_1, y_35, z_35): Ref)] && (ys1[(inv_45_1(x_35_1, y_35, z_35): Ref)] && zs1[(inv_45_2(x_35_1, y_35, z_35): Ref)])) && ((x_35_1 == x_35_1 && y_35 == y_35) && z_35 == z_35), (xs2[(inv_46_0(x_35_1, y_35, z_35): Ref)] && (ys2[(inv_46_1(x_35_1, y_35, z_35): Ref)] && zs2[(inv_46_2(x_35_1, y_35, z_35): Ref)])) && ((x_35_1 == x_35_1 && y_35 == y_35) && z_35 == z_35), (xs3[(inv_47_0(x_35_1, y_35, z_35): Ref)] && (ys3[(inv_47_1(x_35_1, y_35, z_35): Ref)] && zs3[(inv_47_2(x_35_1, y_35, z_35): Ref)])) && ((x_35_1 == x_35_1 && y_35 == y_35) && z_35 == z_35), (xs4[(inv_48_0(x_35_1, y_35, z_35): Ref)] && (ys4[(inv_48_1(x_35_1, y_35, z_35): Ref)] && zs4[(inv_48_2(x_35_1, y_35, z_35): Ref)])) && ((x_35_1 == x_35_1 && y_35 == y_35) && z_35 == z_35), (xs5[(inv_49_0(x_35_1, y_35, z_35): Ref)] && (ys5[(inv_49_1(x_35_1, y_35, z_35): Ref)] && zs5[(inv_49_2(x_35_1, y_35, z_35): Ref)])) && ((x_35_1 == x_35_1 && y_35 == y_35) && z_35 == z_35), (xs6[(inv_50_0(x_35_1, y_35, z_35): Ref)] && (ys6[(inv_50_1(x_35_1, y_35, z_35): Ref)] && zs6[(inv_50_2(x_35_1, y_35, z_35): Ref)])) && ((x_35_1 == x_35_1 && y_35 == y_35) && z_35 == z_35), (xs7[(inv_51_0(x_35_1, y_35, z_35): Ref)] && (ys7[(inv_51_1(x_35_1, y_35, z_35): Ref)] && zs7[(inv_51_2(x_35_1, y_35, z_35): Ref)])) && ((x_35_1 == x_35_1 && y_35 == y_35) && z_35 == z_35), q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_2(x_35_1, y_35, z_35)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1280,7 +1280,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
         assume false;
       }
     assume (forall x9_1: Ref, y9_1: Ref, z9_1: Ref ::
-      { Heap[null, p_14(x9_1, y9_1, z9_1)] }
+      { Heap[null, p_2(x9_1, y9_1, z9_1)] }
       xs9[x9_1] && (ys9[y9_1] && zs9[z9_1]) ==> ((inv_53_0(x9_1, y9_1, z9_1): Ref) == x9_1 && (inv_53_1(x9_1, y9_1, z9_1): Ref) == y9_1) && (inv_53_2(x9_1, y9_1, z9_1): Ref) == z9_1
     );
     assume state(Heap, Mask);
@@ -1297,9 +1297,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_37_2: Ref, y_37: Ref, z_37: Ref ::
-      { (inv_53_0(x_37_2, y_37, z_37): Ref), (inv_53_1(x_37_2, y_37, z_37): Ref), (inv_53_2(x_37_2, y_37, z_37): Ref) }
-      xs9[(inv_53_0(x_37_2, y_37, z_37): Ref)] && (ys9[(inv_53_1(x_37_2, y_37, z_37): Ref)] && zs9[(inv_53_2(x_37_2, y_37, z_37): Ref)]) ==> ((inv_53_0(x_37_2, y_37, z_37): Ref) == x_37_2 && (inv_53_1(x_37_2, y_37, z_37): Ref) == y_37) && (inv_53_2(x_37_2, y_37, z_37): Ref) == z_37
+    assume (forall x_37_1: Ref, y_37: Ref, z_37: Ref ::
+      { (inv_53_0(x_37_1, y_37, z_37): Ref), (inv_53_1(x_37_1, y_37, z_37): Ref), (inv_53_2(x_37_1, y_37, z_37): Ref) }
+      xs9[(inv_53_0(x_37_1, y_37, z_37): Ref)] && (ys9[(inv_53_1(x_37_1, y_37, z_37): Ref)] && zs9[(inv_53_2(x_37_1, y_37, z_37): Ref)]) ==> ((inv_53_0(x_37_1, y_37, z_37): Ref) == x_37_1 && (inv_53_1(x_37_1, y_37, z_37): Ref) == y_37) && (inv_53_2(x_37_1, y_37, z_37): Ref) == z_37
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1331,9 +1331,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_39_1: Ref, y_39: Ref, z_39: Ref ::
-      { (inv_53_0(x_39_1, y_39, z_39): Ref), (inv_53_1(x_39_1, y_39, z_39): Ref), (inv_53_2(x_39_1, y_39, z_39): Ref) }
-      xs9[(inv_53_0(x_39_1, y_39, z_39): Ref)] && (ys9[(inv_53_1(x_39_1, y_39, z_39): Ref)] && zs9[(inv_53_2(x_39_1, y_39, z_39): Ref)]) ==> (__iar__assume_helper_8((xs1[(inv_45_0(x_39_1, y_39, z_39): Ref)] && (ys1[(inv_45_1(x_39_1, y_39, z_39): Ref)] && zs1[(inv_45_2(x_39_1, y_39, z_39): Ref)])) && ((x_39_1 == x_39_1 && y_39 == y_39) && z_39 == z_39), (xs2[(inv_46_0(x_39_1, y_39, z_39): Ref)] && (ys2[(inv_46_1(x_39_1, y_39, z_39): Ref)] && zs2[(inv_46_2(x_39_1, y_39, z_39): Ref)])) && ((x_39_1 == x_39_1 && y_39 == y_39) && z_39 == z_39), (xs3[(inv_47_0(x_39_1, y_39, z_39): Ref)] && (ys3[(inv_47_1(x_39_1, y_39, z_39): Ref)] && zs3[(inv_47_2(x_39_1, y_39, z_39): Ref)])) && ((x_39_1 == x_39_1 && y_39 == y_39) && z_39 == z_39), (xs4[(inv_48_0(x_39_1, y_39, z_39): Ref)] && (ys4[(inv_48_1(x_39_1, y_39, z_39): Ref)] && zs4[(inv_48_2(x_39_1, y_39, z_39): Ref)])) && ((x_39_1 == x_39_1 && y_39 == y_39) && z_39 == z_39), (xs5[(inv_49_0(x_39_1, y_39, z_39): Ref)] && (ys5[(inv_49_1(x_39_1, y_39, z_39): Ref)] && zs5[(inv_49_2(x_39_1, y_39, z_39): Ref)])) && ((x_39_1 == x_39_1 && y_39 == y_39) && z_39 == z_39), (xs6[(inv_50_0(x_39_1, y_39, z_39): Ref)] && (ys6[(inv_50_1(x_39_1, y_39, z_39): Ref)] && zs6[(inv_50_2(x_39_1, y_39, z_39): Ref)])) && ((x_39_1 == x_39_1 && y_39 == y_39) && z_39 == z_39), (xs7[(inv_51_0(x_39_1, y_39, z_39): Ref)] && (ys7[(inv_51_1(x_39_1, y_39, z_39): Ref)] && zs7[(inv_51_2(x_39_1, y_39, z_39): Ref)])) && ((x_39_1 == x_39_1 && y_39 == y_39) && z_39 == z_39), (xs8[(inv_52_0(x_39_1, y_39, z_39): Ref)] && (ys8[(inv_52_1(x_39_1, y_39, z_39): Ref)] && zs8[(inv_52_2(x_39_1, y_39, z_39): Ref)])) && ((x_39_1 == x_39_1 && y_39 == y_39) && z_39 == z_39), q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_14(x_39_1, y_39, z_39)]
+    assume (forall x_39: Ref, y_39: Ref, z_39: Ref ::
+      { (inv_53_0(x_39, y_39, z_39): Ref), (inv_53_1(x_39, y_39, z_39): Ref), (inv_53_2(x_39, y_39, z_39): Ref) }
+      xs9[(inv_53_0(x_39, y_39, z_39): Ref)] && (ys9[(inv_53_1(x_39, y_39, z_39): Ref)] && zs9[(inv_53_2(x_39, y_39, z_39): Ref)]) ==> (__iar__assume_helper_8((xs1[(inv_45_0(x_39, y_39, z_39): Ref)] && (ys1[(inv_45_1(x_39, y_39, z_39): Ref)] && zs1[(inv_45_2(x_39, y_39, z_39): Ref)])) && ((x_39 == x_39 && y_39 == y_39) && z_39 == z_39), (xs2[(inv_46_0(x_39, y_39, z_39): Ref)] && (ys2[(inv_46_1(x_39, y_39, z_39): Ref)] && zs2[(inv_46_2(x_39, y_39, z_39): Ref)])) && ((x_39 == x_39 && y_39 == y_39) && z_39 == z_39), (xs3[(inv_47_0(x_39, y_39, z_39): Ref)] && (ys3[(inv_47_1(x_39, y_39, z_39): Ref)] && zs3[(inv_47_2(x_39, y_39, z_39): Ref)])) && ((x_39 == x_39 && y_39 == y_39) && z_39 == z_39), (xs4[(inv_48_0(x_39, y_39, z_39): Ref)] && (ys4[(inv_48_1(x_39, y_39, z_39): Ref)] && zs4[(inv_48_2(x_39, y_39, z_39): Ref)])) && ((x_39 == x_39 && y_39 == y_39) && z_39 == z_39), (xs5[(inv_49_0(x_39, y_39, z_39): Ref)] && (ys5[(inv_49_1(x_39, y_39, z_39): Ref)] && zs5[(inv_49_2(x_39, y_39, z_39): Ref)])) && ((x_39 == x_39 && y_39 == y_39) && z_39 == z_39), (xs6[(inv_50_0(x_39, y_39, z_39): Ref)] && (ys6[(inv_50_1(x_39, y_39, z_39): Ref)] && zs6[(inv_50_2(x_39, y_39, z_39): Ref)])) && ((x_39 == x_39 && y_39 == y_39) && z_39 == z_39), (xs7[(inv_51_0(x_39, y_39, z_39): Ref)] && (ys7[(inv_51_1(x_39, y_39, z_39): Ref)] && zs7[(inv_51_2(x_39, y_39, z_39): Ref)])) && ((x_39 == x_39 && y_39 == y_39) && z_39 == z_39), (xs8[(inv_52_0(x_39, y_39, z_39): Ref)] && (ys8[(inv_52_1(x_39, y_39, z_39): Ref)] && zs8[(inv_52_2(x_39, y_39, z_39): Ref)])) && ((x_39 == x_39 && y_39 == y_39) && z_39 == z_39), q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_2(x_39, y_39, z_39)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1349,7 +1349,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
         assume false;
       }
     assume (forall x10_1: Ref, y10_1: Ref, z10_1: Ref ::
-      { Heap[null, p_14(x10_1, y10_1, z10_1)] }
+      { Heap[null, p_2(x10_1, y10_1, z10_1)] }
       xs10[x10_1] && (ys10[y10_1] && zs10[z10_1]) ==> ((inv_54_0(x10_1, y10_1, z10_1): Ref) == x10_1 && (inv_54_1(x10_1, y10_1, z10_1): Ref) == y10_1) && (inv_54_2(x10_1, y10_1, z10_1): Ref) == z10_1
     );
     assume state(Heap, Mask);
@@ -1366,9 +1366,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_41_1: Ref, y_41: Ref, z_41: Ref ::
-      { (inv_54_0(x_41_1, y_41, z_41): Ref), (inv_54_1(x_41_1, y_41, z_41): Ref), (inv_54_2(x_41_1, y_41, z_41): Ref) }
-      xs10[(inv_54_0(x_41_1, y_41, z_41): Ref)] && (ys10[(inv_54_1(x_41_1, y_41, z_41): Ref)] && zs10[(inv_54_2(x_41_1, y_41, z_41): Ref)]) ==> ((inv_54_0(x_41_1, y_41, z_41): Ref) == x_41_1 && (inv_54_1(x_41_1, y_41, z_41): Ref) == y_41) && (inv_54_2(x_41_1, y_41, z_41): Ref) == z_41
+    assume (forall x_41: Ref, y_41: Ref, z_41: Ref ::
+      { (inv_54_0(x_41, y_41, z_41): Ref), (inv_54_1(x_41, y_41, z_41): Ref), (inv_54_2(x_41, y_41, z_41): Ref) }
+      xs10[(inv_54_0(x_41, y_41, z_41): Ref)] && (ys10[(inv_54_1(x_41, y_41, z_41): Ref)] && zs10[(inv_54_2(x_41, y_41, z_41): Ref)]) ==> ((inv_54_0(x_41, y_41, z_41): Ref) == x_41 && (inv_54_1(x_41, y_41, z_41): Ref) == y_41) && (inv_54_2(x_41, y_41, z_41): Ref) == z_41
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1402,9 +1402,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_43_1: Ref, y_43: Ref, z_43: Ref ::
-      { (inv_54_0(x_43_1, y_43, z_43): Ref), (inv_54_1(x_43_1, y_43, z_43): Ref), (inv_54_2(x_43_1, y_43, z_43): Ref) }
-      xs10[(inv_54_0(x_43_1, y_43, z_43): Ref)] && (ys10[(inv_54_1(x_43_1, y_43, z_43): Ref)] && zs10[(inv_54_2(x_43_1, y_43, z_43): Ref)]) ==> (__iar__assume_helper_9((xs1[(inv_45_0(x_43_1, y_43, z_43): Ref)] && (ys1[(inv_45_1(x_43_1, y_43, z_43): Ref)] && zs1[(inv_45_2(x_43_1, y_43, z_43): Ref)])) && ((x_43_1 == x_43_1 && y_43 == y_43) && z_43 == z_43), (xs2[(inv_46_0(x_43_1, y_43, z_43): Ref)] && (ys2[(inv_46_1(x_43_1, y_43, z_43): Ref)] && zs2[(inv_46_2(x_43_1, y_43, z_43): Ref)])) && ((x_43_1 == x_43_1 && y_43 == y_43) && z_43 == z_43), (xs3[(inv_47_0(x_43_1, y_43, z_43): Ref)] && (ys3[(inv_47_1(x_43_1, y_43, z_43): Ref)] && zs3[(inv_47_2(x_43_1, y_43, z_43): Ref)])) && ((x_43_1 == x_43_1 && y_43 == y_43) && z_43 == z_43), (xs4[(inv_48_0(x_43_1, y_43, z_43): Ref)] && (ys4[(inv_48_1(x_43_1, y_43, z_43): Ref)] && zs4[(inv_48_2(x_43_1, y_43, z_43): Ref)])) && ((x_43_1 == x_43_1 && y_43 == y_43) && z_43 == z_43), (xs5[(inv_49_0(x_43_1, y_43, z_43): Ref)] && (ys5[(inv_49_1(x_43_1, y_43, z_43): Ref)] && zs5[(inv_49_2(x_43_1, y_43, z_43): Ref)])) && ((x_43_1 == x_43_1 && y_43 == y_43) && z_43 == z_43), (xs6[(inv_50_0(x_43_1, y_43, z_43): Ref)] && (ys6[(inv_50_1(x_43_1, y_43, z_43): Ref)] && zs6[(inv_50_2(x_43_1, y_43, z_43): Ref)])) && ((x_43_1 == x_43_1 && y_43 == y_43) && z_43 == z_43), (xs7[(inv_51_0(x_43_1, y_43, z_43): Ref)] && (ys7[(inv_51_1(x_43_1, y_43, z_43): Ref)] && zs7[(inv_51_2(x_43_1, y_43, z_43): Ref)])) && ((x_43_1 == x_43_1 && y_43 == y_43) && z_43 == z_43), (xs8[(inv_52_0(x_43_1, y_43, z_43): Ref)] && (ys8[(inv_52_1(x_43_1, y_43, z_43): Ref)] && zs8[(inv_52_2(x_43_1, y_43, z_43): Ref)])) && ((x_43_1 == x_43_1 && y_43 == y_43) && z_43 == z_43), (xs9[(inv_53_0(x_43_1, y_43, z_43): Ref)] && (ys9[(inv_53_1(x_43_1, y_43, z_43): Ref)] && zs9[(inv_53_2(x_43_1, y_43, z_43): Ref)])) && ((x_43_1 == x_43_1 && y_43 == y_43) && z_43 == z_43), q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_14(x_43_1, y_43, z_43)]
+    assume (forall x_43: Ref, y_43: Ref, z_43: Ref ::
+      { (inv_54_0(x_43, y_43, z_43): Ref), (inv_54_1(x_43, y_43, z_43): Ref), (inv_54_2(x_43, y_43, z_43): Ref) }
+      xs10[(inv_54_0(x_43, y_43, z_43): Ref)] && (ys10[(inv_54_1(x_43, y_43, z_43): Ref)] && zs10[(inv_54_2(x_43, y_43, z_43): Ref)]) ==> (__iar__assume_helper_9((xs1[(inv_45_0(x_43, y_43, z_43): Ref)] && (ys1[(inv_45_1(x_43, y_43, z_43): Ref)] && zs1[(inv_45_2(x_43, y_43, z_43): Ref)])) && ((x_43 == x_43 && y_43 == y_43) && z_43 == z_43), (xs2[(inv_46_0(x_43, y_43, z_43): Ref)] && (ys2[(inv_46_1(x_43, y_43, z_43): Ref)] && zs2[(inv_46_2(x_43, y_43, z_43): Ref)])) && ((x_43 == x_43 && y_43 == y_43) && z_43 == z_43), (xs3[(inv_47_0(x_43, y_43, z_43): Ref)] && (ys3[(inv_47_1(x_43, y_43, z_43): Ref)] && zs3[(inv_47_2(x_43, y_43, z_43): Ref)])) && ((x_43 == x_43 && y_43 == y_43) && z_43 == z_43), (xs4[(inv_48_0(x_43, y_43, z_43): Ref)] && (ys4[(inv_48_1(x_43, y_43, z_43): Ref)] && zs4[(inv_48_2(x_43, y_43, z_43): Ref)])) && ((x_43 == x_43 && y_43 == y_43) && z_43 == z_43), (xs5[(inv_49_0(x_43, y_43, z_43): Ref)] && (ys5[(inv_49_1(x_43, y_43, z_43): Ref)] && zs5[(inv_49_2(x_43, y_43, z_43): Ref)])) && ((x_43 == x_43 && y_43 == y_43) && z_43 == z_43), (xs6[(inv_50_0(x_43, y_43, z_43): Ref)] && (ys6[(inv_50_1(x_43, y_43, z_43): Ref)] && zs6[(inv_50_2(x_43, y_43, z_43): Ref)])) && ((x_43 == x_43 && y_43 == y_43) && z_43 == z_43), (xs7[(inv_51_0(x_43, y_43, z_43): Ref)] && (ys7[(inv_51_1(x_43, y_43, z_43): Ref)] && zs7[(inv_51_2(x_43, y_43, z_43): Ref)])) && ((x_43 == x_43 && y_43 == y_43) && z_43 == z_43), (xs8[(inv_52_0(x_43, y_43, z_43): Ref)] && (ys8[(inv_52_1(x_43, y_43, z_43): Ref)] && zs8[(inv_52_2(x_43, y_43, z_43): Ref)])) && ((x_43 == x_43 && y_43 == y_43) && z_43 == z_43), (xs9[(inv_53_0(x_43, y_43, z_43): Ref)] && (ys9[(inv_53_1(x_43, y_43, z_43): Ref)] && zs9[(inv_53_2(x_43, y_43, z_43): Ref)])) && ((x_43 == x_43 && y_43 == y_43) && z_43 == z_43), q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_2(x_43, y_43, z_43)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1420,7 +1420,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
         assume false;
       }
     assume (forall x11_1: Ref, y11_1: Ref, z11_1: Ref ::
-      { Heap[null, p_14(x11_1, y11_1, z11_1)] }
+      { Heap[null, p_2(x11_1, y11_1, z11_1)] }
       xs11[x11_1] && (ys11[y11_1] && zs11[z11_1]) ==> ((inv_55_0(x11_1, y11_1, z11_1): Ref) == x11_1 && (inv_55_1(x11_1, y11_1, z11_1): Ref) == y11_1) && (inv_55_2(x11_1, y11_1, z11_1): Ref) == z11_1
     );
     assume state(Heap, Mask);
@@ -1437,9 +1437,9 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       if (*) {
         assume false;
       }
-    assume (forall x_45_2: Ref, y_45: Ref, z_45: Ref ::
-      { (inv_55_0(x_45_2, y_45, z_45): Ref), (inv_55_1(x_45_2, y_45, z_45): Ref), (inv_55_2(x_45_2, y_45, z_45): Ref) }
-      xs11[(inv_55_0(x_45_2, y_45, z_45): Ref)] && (ys11[(inv_55_1(x_45_2, y_45, z_45): Ref)] && zs11[(inv_55_2(x_45_2, y_45, z_45): Ref)]) ==> ((inv_55_0(x_45_2, y_45, z_45): Ref) == x_45_2 && (inv_55_1(x_45_2, y_45, z_45): Ref) == y_45) && (inv_55_2(x_45_2, y_45, z_45): Ref) == z_45
+    assume (forall x_45: Ref, y_45: Ref, z_45: Ref ::
+      { (inv_55_0(x_45, y_45, z_45): Ref), (inv_55_1(x_45, y_45, z_45): Ref), (inv_55_2(x_45, y_45, z_45): Ref) }
+      xs11[(inv_55_0(x_45, y_45, z_45): Ref)] && (ys11[(inv_55_1(x_45, y_45, z_45): Ref)] && zs11[(inv_55_2(x_45, y_45, z_45): Ref)]) ==> ((inv_55_0(x_45, y_45, z_45): Ref) == x_45 && (inv_55_1(x_45, y_45, z_45): Ref) == y_45) && (inv_55_2(x_45, y_45, z_45): Ref) == z_45
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1477,7 +1477,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
       }
     assume (forall x_47: Ref, y_47: Ref, z_47: Ref ::
       { (inv_55_0(x_47, y_47, z_47): Ref), (inv_55_1(x_47, y_47, z_47): Ref), (inv_55_2(x_47, y_47, z_47): Ref) }
-      xs11[(inv_55_0(x_47, y_47, z_47): Ref)] && (ys11[(inv_55_1(x_47, y_47, z_47): Ref)] && zs11[(inv_55_2(x_47, y_47, z_47): Ref)]) ==> (__iar__assume_helper_10((xs1[(inv_45_0(x_47, y_47, z_47): Ref)] && (ys1[(inv_45_1(x_47, y_47, z_47): Ref)] && zs1[(inv_45_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs2[(inv_46_0(x_47, y_47, z_47): Ref)] && (ys2[(inv_46_1(x_47, y_47, z_47): Ref)] && zs2[(inv_46_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs3[(inv_47_0(x_47, y_47, z_47): Ref)] && (ys3[(inv_47_1(x_47, y_47, z_47): Ref)] && zs3[(inv_47_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs4[(inv_48_0(x_47, y_47, z_47): Ref)] && (ys4[(inv_48_1(x_47, y_47, z_47): Ref)] && zs4[(inv_48_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs5[(inv_49_0(x_47, y_47, z_47): Ref)] && (ys5[(inv_49_1(x_47, y_47, z_47): Ref)] && zs5[(inv_49_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs6[(inv_50_0(x_47, y_47, z_47): Ref)] && (ys6[(inv_50_1(x_47, y_47, z_47): Ref)] && zs6[(inv_50_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs7[(inv_51_0(x_47, y_47, z_47): Ref)] && (ys7[(inv_51_1(x_47, y_47, z_47): Ref)] && zs7[(inv_51_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs8[(inv_52_0(x_47, y_47, z_47): Ref)] && (ys8[(inv_52_1(x_47, y_47, z_47): Ref)] && zs8[(inv_52_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs9[(inv_53_0(x_47, y_47, z_47): Ref)] && (ys9[(inv_53_1(x_47, y_47, z_47): Ref)] && zs9[(inv_53_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs10[(inv_54_0(x_47, y_47, z_47): Ref)] && (ys10[(inv_54_1(x_47, y_47, z_47): Ref)] && zs10[(inv_54_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_14(x_47, y_47, z_47)]
+      xs11[(inv_55_0(x_47, y_47, z_47): Ref)] && (ys11[(inv_55_1(x_47, y_47, z_47): Ref)] && zs11[(inv_55_2(x_47, y_47, z_47): Ref)]) ==> (__iar__assume_helper_10((xs1[(inv_45_0(x_47, y_47, z_47): Ref)] && (ys1[(inv_45_1(x_47, y_47, z_47): Ref)] && zs1[(inv_45_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs2[(inv_46_0(x_47, y_47, z_47): Ref)] && (ys2[(inv_46_1(x_47, y_47, z_47): Ref)] && zs2[(inv_46_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs3[(inv_47_0(x_47, y_47, z_47): Ref)] && (ys3[(inv_47_1(x_47, y_47, z_47): Ref)] && zs3[(inv_47_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs4[(inv_48_0(x_47, y_47, z_47): Ref)] && (ys4[(inv_48_1(x_47, y_47, z_47): Ref)] && zs4[(inv_48_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs5[(inv_49_0(x_47, y_47, z_47): Ref)] && (ys5[(inv_49_1(x_47, y_47, z_47): Ref)] && zs5[(inv_49_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs6[(inv_50_0(x_47, y_47, z_47): Ref)] && (ys6[(inv_50_1(x_47, y_47, z_47): Ref)] && zs6[(inv_50_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs7[(inv_51_0(x_47, y_47, z_47): Ref)] && (ys7[(inv_51_1(x_47, y_47, z_47): Ref)] && zs7[(inv_51_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs8[(inv_52_0(x_47, y_47, z_47): Ref)] && (ys8[(inv_52_1(x_47, y_47, z_47): Ref)] && zs8[(inv_52_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs9[(inv_53_0(x_47, y_47, z_47): Ref)] && (ys9[(inv_53_1(x_47, y_47, z_47): Ref)] && zs9[(inv_53_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), (xs10[(inv_54_0(x_47, y_47, z_47): Ref)] && (ys10[(inv_54_1(x_47, y_47, z_47): Ref)] && zs10[(inv_54_2(x_47, y_47, z_47): Ref)])) && ((x_47 == x_47 && y_47 == y_47) && z_47 == z_47), q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1, q_1): Perm) <= Mask[null, p_2(x_47, y_47, z_47)]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1515,23 +1515,23 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
   // -- Translating statement: assert acc(p(a, b, c), q) -- assume10QPpred.vpr@40.3--40.26
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := q_1;
-    assert {:msg "  Assert might fail. Fraction q might be negative. (assume10QPpred.vpr@40.10--40.26) [149711]"}
+    assert {:msg "  Assert might fail. Fraction q might be negative. (assume10QPpred.vpr@40.10--40.26) [20757]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access p(a, b, c) (assume10QPpred.vpr@40.10--40.26) [149712]"}
-        perm <= AssertMask[null, p_14(a_2, b_24, c)];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access p(a, b, c) (assume10QPpred.vpr@40.10--40.26) [20758]"}
+        perm <= AssertMask[null, p_2(a_2, b_24, c)];
     }
-    AssertMask := AssertMask[null, p_14(a_2, b_24, c):=AssertMask[null, p_14(a_2, b_24, c)] - perm];
+    AssertMask := AssertMask[null, p_2(a_2, b_24, c):=AssertMask[null, p_2(a_2, b_24, c)] - perm];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert q > none ==> false -- assume10QPpred.vpr@43.3--43.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (NoPerm < q_1) {
-      assert {:msg "  Assert might fail. Assertion false might not hold. (assume10QPpred.vpr@43.10--43.28) [149713]"}
+      assert {:msg "  Assert might fail. Assertion false might not hold. (assume10QPpred.vpr@43.10--43.28) [20759]"}
         false;
     }
     assume state(Heap, Mask);

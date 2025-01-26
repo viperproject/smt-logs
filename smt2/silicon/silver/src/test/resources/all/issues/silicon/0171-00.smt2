@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:30
+; Started: 2025-01-26 21:34:21
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -425,9 +425,9 @@
 (push) ; 1
 (declare-const $t@4@00 $Snap)
 (assert (= $t@4@00 $Snap.unit))
-; [eval] (forall k: Int, fresh__182: Int :: { (k in [x..fresh__182)) } (k in [x..x + 1)) ==> (y in [0..length(a))))
+; [eval] (forall k: Int, fresh__73: Int :: { (k in [x..fresh__73)) } (k in [x..x + 1)) ==> (y in [0..length(a))))
 (declare-const k@5@00 Int)
-(declare-const fresh__182@6@00 Int)
+(declare-const fresh__73@6@00 Int)
 (push) ; 2
 ; [eval] (k in [x..x + 1)) ==> (y in [0..length(a)))
 ; [eval] (k in [x..x + 1))
@@ -453,54 +453,54 @@
 (assert (or
   (not (Seq_contains (Seq_range x@1@00 (+ x@1@00 1)) k@5@00))
   (Seq_contains (Seq_range x@1@00 (+ x@1@00 1)) k@5@00)))
-; [eval] (k in [x..fresh__182))
-; [eval] [x..fresh__182)
+; [eval] (k in [x..fresh__73))
+; [eval] [x..fresh__73)
 (pop) ; 2
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((k@5@00 Int) (fresh__182@6@00 Int)) (!
+(assert (forall ((k@5@00 Int) (fresh__73@6@00 Int)) (!
   (or
     (not (Seq_contains (Seq_range x@1@00 (+ x@1@00 1)) k@5@00))
     (Seq_contains (Seq_range x@1@00 (+ x@1@00 1)) k@5@00))
-  :pattern ((Seq_contains (Seq_range x@1@00 fresh__182@6@00) k@5@00))
-  :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__182@6@00) k@5@00))
+  :pattern ((Seq_contains (Seq_range x@1@00 fresh__73@6@00) k@5@00))
+  :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__73@6@00) k@5@00))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/silicon/0171.vpr@11@11@11@65-aux|)))
-(assert (forall ((k@5@00 Int) (fresh__182@6@00 Int)) (!
+(assert (forall ((k@5@00 Int) (fresh__73@6@00 Int)) (!
   (or
     (not (Seq_contains (Seq_range x@1@00 (+ x@1@00 1)) k@5@00))
     (Seq_contains (Seq_range x@1@00 (+ x@1@00 1)) k@5@00))
-  :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__182@6@00) k@5@00))
+  :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__73@6@00) k@5@00))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/silicon/0171.vpr@11@11@11@65-aux|)))
-(assert (forall ((k@5@00 Int) (fresh__182@6@00 Int)) (!
+(assert (forall ((k@5@00 Int) (fresh__73@6@00 Int)) (!
   (=>
     (Seq_contains (Seq_range x@1@00 (+ x@1@00 1)) k@5@00)
     (Seq_contains (Seq_range 0 (length<Int> a@0@00)) y@2@00))
-  :pattern ((Seq_contains (Seq_range x@1@00 fresh__182@6@00) k@5@00))
-  :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__182@6@00) k@5@00))
+  :pattern ((Seq_contains (Seq_range x@1@00 fresh__73@6@00) k@5@00))
+  :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__73@6@00) k@5@00))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/silicon/0171.vpr@11@11@11@65|)))
 (pop) ; 1
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (= (f_lcp%limited s@$ a@0@00 x@1@00 y@2@00) (f_lcp s@$ a@0@00 x@1@00 y@2@00))
   :pattern ((f_lcp s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23807|)))
+  :qid |quant-u-11020|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (f_lcp%stateless a@0@00 x@1@00 y@2@00)
   :pattern ((f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23808|)))
+  :qid |quant-u-11021|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (let ((result@3@00 (f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))) (=>
     (f_lcp%precondition s@$ a@0@00 x@1@00 y@2@00)
-    (forall ((k Int) (fresh__182 Int)) (!
+    (forall ((k Int) (fresh__73 Int)) (!
       (=>
         (Seq_contains (Seq_range x@1@00 (+ x@1@00 1)) k)
         (Seq_contains (Seq_range 0 (length<Int> a@0@00)) y@2@00))
-      :pattern ((Seq_contains (Seq_range x@1@00 fresh__182) k))
-      :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__182) k))
-      :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__182) k))
+      :pattern ((Seq_contains (Seq_range x@1@00 fresh__73) k))
+      :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__73) k))
+      :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__73) k))
       ))))
   :pattern ((f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23809|)))
+  :qid |quant-u-11022|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (let ((result@3@00 (f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))) true)
   :pattern ((f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23810|)))
+  :qid |quant-u-11023|)))

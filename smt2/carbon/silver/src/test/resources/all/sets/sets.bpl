@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:13:48
+// Date:         2025-01-26 21:43:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/sets/sets.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/sets/sets-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -368,7 +368,7 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 // Translation of method t1
 // ==================================================
 
-procedure t1(x: int, xs: (Set int)) returns ()
+procedure t1_2(x: int, xs: (Set int)) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -395,21 +395,21 @@ procedure t1(x: int, xs: (Set int)) returns ()
   // -- Translating statement: assert |n| == 0 -- sets.vpr@7.5--7.20
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion |n| == 0 might not hold. (sets.vpr@7.12--7.20) [140337]"}
+    assert {:msg "  Assert might fail. Assertion |n| == 0 might not hold. (sets.vpr@7.12--7.20) [93110]"}
       Set#Card(n) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert n != Set(x) -- sets.vpr@8.5--8.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion n != Set(x) might not hold. (sets.vpr@8.12--8.23) [140338]"}
+    assert {:msg "  Assert might fail. Assertion n != Set(x) might not hold. (sets.vpr@8.12--8.23) [93111]"}
       !Set#Equal(n, Set#Singleton(x));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |Set(1)| == 1 -- sets.vpr@9.5--9.25
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion |Set(1)| == 1 might not hold. (sets.vpr@9.12--9.25) [140339]"}
+    assert {:msg "  Assert might fail. Assertion |Set(1)| == 1 might not hold. (sets.vpr@9.12--9.25) [93112]"}
       Set#Card(Set#Singleton(1)) == 1;
     assume state(Heap, Mask);
 }
@@ -418,7 +418,7 @@ procedure t1(x: int, xs: (Set int)) returns ()
 // Translation of method t2
 // ==================================================
 
-procedure t2() returns ()
+procedure t2_2() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -442,7 +442,7 @@ procedure t2() returns ()
   // -- Translating statement: assert (1 in Set(1, 2, 3)) -- sets.vpr@13.5--13.27
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (1 in Set(1, 2, 3)) might not hold. (sets.vpr@13.12--13.27) [140340]"}
+    assert {:msg "  Assert might fail. Assertion (1 in Set(1, 2, 3)) might not hold. (sets.vpr@13.12--13.27) [93113]"}
       Set#UnionOne(Set#UnionOne(Set#Singleton(3), 2), 1)[1];
     assume state(Heap, Mask);
   
@@ -457,21 +457,21 @@ procedure t2() returns ()
   // -- Translating statement: assert (a union b) == Set(1, 2) -- sets.vpr@16.5--16.35
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (a union b) == Set(1, 2) might not hold. (sets.vpr@16.12--16.35) [140341]"}
+    assert {:msg "  Assert might fail. Assertion (a union b) == Set(1, 2) might not hold. (sets.vpr@16.12--16.35) [93114]"}
       Set#Equal(Set#Union(a_2, b_24), Set#UnionOne(Set#Singleton(2), 1));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Set(1) union Set(1)) == Set(1) -- sets.vpr@17.5--17.47
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Set(1) union Set(1)) == Set(1) might not hold. (sets.vpr@17.12--17.47) [140342]"}
+    assert {:msg "  Assert might fail. Assertion (Set(1) union Set(1)) == Set(1) might not hold. (sets.vpr@17.12--17.47) [93115]"}
       Set#Equal(Set#Union(Set#Singleton(1), Set#Singleton(1)), Set#Singleton(1));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (1 in (Set(1, 2) intersection Set(100, 1))) -- sets.vpr@19.5--19.55
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (1 in (Set(1, 2) intersection Set(100, 1))) might not hold. (sets.vpr@19.12--19.55) [140343]"}
+    assert {:msg "  Assert might fail. Assertion (1 in (Set(1, 2) intersection Set(100, 1))) might not hold. (sets.vpr@19.12--19.55) [93116]"}
       Set#Intersection(Set#UnionOne(Set#Singleton(2), 1), Set#UnionOne(Set#Singleton(1), 100))[1];
     assume state(Heap, Mask);
 }

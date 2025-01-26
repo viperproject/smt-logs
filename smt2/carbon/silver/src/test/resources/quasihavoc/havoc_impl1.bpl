@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:57:31
+// Date:         2025-01-26 21:43:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_impl1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_impl1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,11 +189,11 @@ procedure foo1(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm_temp_quasihavoc_: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -212,7 +212,7 @@ procedure foo1(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 2
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (havoc_impl1.vpr@4.14--4.34) [77771]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (havoc_impl1.vpr@4.14--4.34) [102522]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 2;
     assume state(Heap, Mask);
@@ -220,8 +220,8 @@ procedure foo1(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x != y) -- <no position>
     if (x != y) {
@@ -231,13 +231,13 @@ procedure foo1(x: Ref, y: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(y.f, perm_temp_quasihavoc_) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := perm_temp_quasihavoc_;
-        assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77772]"}
+        assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102523]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (<no position>) [77773]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (<no position>) [102524]"}
             perm <= Mask[y, f_7];
         }
         Mask := Mask[y, f_7:=Mask[y, f_7] - perm];
@@ -249,7 +249,7 @@ procedure foo1(x: Ref, y: Ref) returns ()
       
       // -- Translating statement: inhale acc(y.f, perm_temp_quasihavoc_) -- <no position>
         perm := perm_temp_quasihavoc_;
-        assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77774]"}
+        assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102525]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> y != null;
         Mask := Mask[y, f_7:=Mask[y, f_7] + perm];
@@ -260,13 +260,13 @@ procedure foo1(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 2 -- havoc_impl1.vpr@10.5--10.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 2
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (havoc_impl1.vpr@10.12--10.20) [77775]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (havoc_impl1.vpr@10.12--10.20) [102526]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == 2 might not hold. (havoc_impl1.vpr@10.12--10.20) [77776]"}
+    assert {:msg "  Assert might fail. Assertion x.f == 2 might not hold. (havoc_impl1.vpr@10.12--10.20) [102527]"}
       Heap[x, f_7] == 2;
     assume state(Heap, Mask);
 }
@@ -275,15 +275,15 @@ procedure foo1(x: Ref, y: Ref) returns ()
 // Translation of method foo2
 // ==================================================
 
-procedure foo2(y: Ref, x0: Ref, x1_2: Ref) returns ()
+procedure foo2_1(y: Ref, x0: Ref, x1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm_temp_quasihavoc_: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var perm_temp_quasihavoc__1: Perm;
   
@@ -295,7 +295,7 @@ procedure foo2(y: Ref, x0: Ref, x1_2: Ref) returns ()
   // -- Assumptions about method arguments
     assume Heap[y, $allocated];
     assume Heap[x0, $allocated];
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
@@ -304,7 +304,7 @@ procedure foo2(y: Ref, x0: Ref, x1_2: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of y.f == 42
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access y.f (havoc_impl1.vpr@14.14--14.35) [77777]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access y.f (havoc_impl1.vpr@14.14--14.35) [102528]"}
         HasDirectPerm(Mask, y, f_7);
     assume Heap[y, f_7] == 42;
     assume state(Heap, Mask);
@@ -312,8 +312,8 @@ procedure foo2(y: Ref, x0: Ref, x1_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (y == x0) -- <no position>
     if (y == x0) {
@@ -323,13 +323,13 @@ procedure foo2(y: Ref, x0: Ref, x1_2: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(y.f, perm_temp_quasihavoc_) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := perm_temp_quasihavoc_;
-        assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77778]"}
+        assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102529]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (<no position>) [77779]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (<no position>) [102530]"}
             perm <= Mask[y, f_7];
         }
         Mask := Mask[y, f_7:=Mask[y, f_7] - perm];
@@ -341,7 +341,7 @@ procedure foo2(y: Ref, x0: Ref, x1_2: Ref) returns ()
       
       // -- Translating statement: inhale acc(y.f, perm_temp_quasihavoc_) -- <no position>
         perm := perm_temp_quasihavoc_;
-        assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77780]"}
+        assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102531]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> y != null;
         Mask := Mask[y, f_7:=Mask[y, f_7] + perm];
@@ -352,20 +352,20 @@ procedure foo2(y: Ref, x0: Ref, x1_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: if (y == x1) -- <no position>
-    if (y == x1_2) {
+    if (y == x1) {
       
       // -- Translating statement: perm_temp_quasihavoc_ := perm(y.f) -- <no position>
         perm_temp_quasihavoc__1 := Mask[y, f_7];
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(y.f, perm_temp_quasihavoc_) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := perm_temp_quasihavoc__1;
-        assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77781]"}
+        assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102532]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (<no position>) [77782]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (<no position>) [102533]"}
             perm <= Mask[y, f_7];
         }
         Mask := Mask[y, f_7:=Mask[y, f_7] - perm];
@@ -377,7 +377,7 @@ procedure foo2(y: Ref, x0: Ref, x1_2: Ref) returns ()
       
       // -- Translating statement: inhale acc(y.f, perm_temp_quasihavoc_) -- <no position>
         perm := perm_temp_quasihavoc__1;
-        assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77783]"}
+        assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [102534]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> y != null;
         Mask := Mask[y, f_7:=Mask[y, f_7] + perm];
@@ -393,18 +393,18 @@ procedure foo2(y: Ref, x0: Ref, x1_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale y != x1 -- havoc_impl1.vpr@19.23--19.30
-    assume y != x1_2;
+    assume y != x1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f == 42 -- havoc_impl1.vpr@20.5--20.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of y.f == 42
-      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (havoc_impl1.vpr@20.12--20.21) [77784]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (havoc_impl1.vpr@20.12--20.21) [102535]"}
         HasDirectPerm(ExhaleWellDef0Mask, y, f_7);
-    assert {:msg "  Assert might fail. Assertion y.f == 42 might not hold. (havoc_impl1.vpr@20.12--20.21) [77785]"}
+    assert {:msg "  Assert might fail. Assertion y.f == 42 might not hold. (havoc_impl1.vpr@20.12--20.21) [102536]"}
       Heap[y, f_7] == 42;
     assume state(Heap, Mask);
 }

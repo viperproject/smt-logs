@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:04:02
+// Date:         2025-01-26 21:44:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/conditionals.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/conditionals-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -353,7 +353,7 @@ procedure conditionals01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (conditionals.vpr@26.3--26.18) [121456]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (conditionals.vpr@26.3--26.18) [207193]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -396,7 +396,7 @@ procedure conditionals01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (conditionals.vpr@26.3--26.18) [121457]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (conditionals.vpr@26.3--26.18) [207194]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -413,7 +413,7 @@ procedure conditionals01(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_1Mask[rcvLocal, g] + neededTransfer;
-          assert {:msg "  Packaging wand might fail. Fraction acc(x.g, write) might be negative. (conditionals.vpr@26.3--26.18) [121458]"}
+          assert {:msg "  Packaging wand might fail. Fraction acc(x.g, write) might be negative. (conditionals.vpr@26.3--26.18) [207195]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -456,7 +456,7 @@ procedure conditionals01(x: Ref) returns ()
                 Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, x, FullPerm)][x, g:=true]];
               }
             }
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.g (conditionals.vpr@26.3--26.18) [121459]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.g (conditionals.vpr@26.3--26.18) [207196]"}
             (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, g] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -479,7 +479,7 @@ procedure conditionals01(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (conditionals.vpr@33.3--33.16) [121460]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (conditionals.vpr@33.3--33.16) [207197]"}
         FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm, x, x, FullPerm)];
       Mask := Mask[null, wand(x, FullPerm, x, FullPerm, x, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm, x, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
@@ -489,7 +489,7 @@ procedure conditionals01(x: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (conditionals.vpr@33.3--33.16) [121462]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (conditionals.vpr@33.3--33.16) [207199]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -516,7 +516,7 @@ procedure conditionals01(x: Ref) returns ()
   // -- Translating statement: if (x.f) -- conditionals.vpr@46.3--51.4
     
     // -- Check definedness of x.f
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.f (conditionals.vpr@46.7--46.10) [121465]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.f (conditionals.vpr@46.7--46.10) [207202]"}
         HasDirectPerm(Mask, x, f_7);
     if (Heap[x, f_7]) {
       
@@ -527,7 +527,7 @@ procedure conditionals01(x: Ref) returns ()
         ExhaleWellDef0Heap := AssertHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (conditionals.vpr@50.12--50.20) [121467]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (conditionals.vpr@50.12--50.20) [207204]"}
             perm <= AssertMask[x, g];
         }
         AssertMask := AssertMask[x, g:=AssertMask[x, g] - perm];
@@ -641,7 +641,7 @@ procedure conditionals02(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (conditionals.vpr@68.3--68.18) [121468]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (conditionals.vpr@68.3--68.18) [207205]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -684,7 +684,7 @@ procedure conditionals02(x: Ref) returns ()
             Heap := Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, x, FullPerm, x, FullPerm):=Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (conditionals.vpr@68.3--68.18) [121469]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (conditionals.vpr@68.3--68.18) [207206]"}
         (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -701,7 +701,7 @@ procedure conditionals02(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_3Mask[rcvLocal, g] + neededTransfer;
-          assert {:msg "  Packaging wand might fail. Fraction acc(x.g, write) might be negative. (conditionals.vpr@68.3--68.18) [121470]"}
+          assert {:msg "  Packaging wand might fail. Fraction acc(x.g, write) might be negative. (conditionals.vpr@68.3--68.18) [207207]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -744,7 +744,7 @@ procedure conditionals02(x: Ref) returns ()
                 Heap := Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, x, FullPerm, x, FullPerm):=Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, x, FullPerm, x, FullPerm)][x, g:=true]];
               }
             }
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.g (conditionals.vpr@68.3--68.18) [121471]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.g (conditionals.vpr@68.3--68.18) [207208]"}
             (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, g] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -760,7 +760,7 @@ procedure conditionals02(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_3Mask[rcvLocal, h] + neededTransfer;
-          assert {:msg "  Packaging wand might fail. Fraction acc(x.h, write) might be negative. (conditionals.vpr@68.3--68.18) [121472]"}
+          assert {:msg "  Packaging wand might fail. Fraction acc(x.h, write) might be negative. (conditionals.vpr@68.3--68.18) [207209]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -803,7 +803,7 @@ procedure conditionals02(x: Ref) returns ()
                 Heap := Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, x, FullPerm, x, FullPerm):=Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, x, FullPerm, x, FullPerm)][x, h:=true]];
               }
             }
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.h (conditionals.vpr@68.3--68.18) [121473]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.h (conditionals.vpr@68.3--68.18) [207210]"}
             (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, h] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -827,7 +827,7 @@ procedure conditionals02(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (conditionals.vpr@75.3--75.16) [121474]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (conditionals.vpr@75.3--75.16) [207211]"}
         FullPerm <= Mask[null, wand_1(x, FullPerm, x, FullPerm, x, x, FullPerm, x, FullPerm)];
       Mask := Mask[null, wand_1(x, FullPerm, x, FullPerm, x, x, FullPerm, x, FullPerm):=Mask[null, wand_1(x, FullPerm, x, FullPerm, x, x, FullPerm, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
@@ -837,7 +837,7 @@ procedure conditionals02(x: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (conditionals.vpr@75.3--75.16) [121476]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (conditionals.vpr@75.3--75.16) [207213]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -873,19 +873,19 @@ procedure conditionals02(x: Ref) returns ()
     ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (conditionals.vpr@109.10--109.42) [121481]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (conditionals.vpr@109.10--109.42) [207218]"}
         perm <= AssertMask[x, f_7];
     }
     AssertMask := AssertMask[x, f_7:=AssertMask[x, f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (conditionals.vpr@109.10--109.42) [121483]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (conditionals.vpr@109.10--109.42) [207220]"}
         perm <= AssertMask[x, g];
     }
     AssertMask := AssertMask[x, g:=AssertMask[x, g] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.h (conditionals.vpr@109.10--109.42) [121485]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.h (conditionals.vpr@109.10--109.42) [207222]"}
         perm <= AssertMask[x, h];
     }
     AssertMask := AssertMask[x, h:=AssertMask[x, h] - perm];

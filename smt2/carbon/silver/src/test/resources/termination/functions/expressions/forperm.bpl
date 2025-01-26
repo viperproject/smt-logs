@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:44
+// Date:         2025-01-26 21:41:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/forperm.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/forperm-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -204,11 +204,11 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 // Uninterpreted function definitions
-function  test_2(Heap: HeapType, x: Ref): bool;
+function  test(Heap: HeapType, x: Ref): bool;
 function  test'(Heap: HeapType, x: Ref): bool;
 axiom (forall Heap: HeapType, x: Ref ::
-  { test_2(Heap, x) }
-  test_2(Heap, x) == test'(Heap, x) && dummyFunction(test#triggerStateless(x))
+  { test(Heap, x) }
+  test(Heap, x) == test'(Heap, x) && dummyFunction(test#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { test'(Heap, x) }
@@ -217,8 +217,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), test_2(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> test_2(Heap, x)
+  { state(Heap, Mask), test(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> test(Heap, x)
 );
 
 // Framing axioms
@@ -239,7 +239,7 @@ procedure test#definedness(x: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var x2_26: Ref;
+  var x2_1: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -271,11 +271,11 @@ procedure test#definedness(x: Ref) returns (Result: bool)
       
       // -- Check definedness of (forperm x2: Ref [x2.f] :: nonTerminating(x2.f))
         if (*) {
-          if (HasDirectPerm(Mask, x2_26, f_7)) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x2.f (forperm.vpr@12.14--12.68) [223124]"}
-              HasDirectPerm(Mask, x2_26, f_7);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x2.f (forperm.vpr@12.14--12.68) [223125]"}
-              HasDirectPerm(Mask, x2_26, f_7);
+          if (HasDirectPerm(Mask, x2_1, f_7)) {
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x2.f (forperm.vpr@12.14--12.68) [18040]"}
+              HasDirectPerm(Mask, x2_1, f_7);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x2.f (forperm.vpr@12.14--12.68) [18041]"}
+              HasDirectPerm(Mask, x2_1, f_7);
             if (*) {
               // Stop execution
               assume false;
@@ -298,11 +298,11 @@ procedure test#definedness(x: Ref) returns (Result: bool)
 // ==================================================
 
 // Uninterpreted function definitions
-function  test2_1(Heap: HeapType, x: Ref): bool;
+function  test2(Heap: HeapType, x: Ref): bool;
 function  test2'(Heap: HeapType, x: Ref): bool;
 axiom (forall Heap: HeapType, x: Ref ::
-  { test2_1(Heap, x) }
-  test2_1(Heap, x) == test2'(Heap, x) && dummyFunction(test2#triggerStateless(x))
+  { test2(Heap, x) }
+  test2(Heap, x) == test2'(Heap, x) && dummyFunction(test2#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { test2'(Heap, x) }
@@ -311,8 +311,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), test2_1(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test2_1(Heap, x)
+  { state(Heap, Mask), test2(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test2(Heap, x)
 );
 
 // Framing axioms
@@ -332,7 +332,7 @@ function  test2#triggerStateless(x: Ref): bool;
 procedure test2#definedness(x: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
-  var x2_24: Ref;
+  var x2_4: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -354,11 +354,11 @@ procedure test2#definedness(x: Ref) returns (Result: bool)
       
       // -- Check definedness of (forperm x2: Ref [x2.f] :: nonTerminating(x2.f))
         if (*) {
-          if (HasDirectPerm(Mask, x2_24, f_7)) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x2.f (forperm.vpr@20.14--20.68) [223126]"}
-              HasDirectPerm(Mask, x2_24, f_7);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x2.f (forperm.vpr@20.14--20.68) [223127]"}
-              HasDirectPerm(Mask, x2_24, f_7);
+          if (HasDirectPerm(Mask, x2_4, f_7)) {
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x2.f (forperm.vpr@20.14--20.68) [18042]"}
+              HasDirectPerm(Mask, x2_4, f_7);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x2.f (forperm.vpr@20.14--20.68) [18043]"}
+              HasDirectPerm(Mask, x2_4, f_7);
             if (*) {
               // Stop execution
               assume false;
@@ -424,14 +424,14 @@ procedure nonTerminating#definedness(v_2: int) returns (Result: bool)
 procedure test_pres_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b_24: bool;
   var perm: Perm;
   var $condInEx: bool;
   var x21: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -445,8 +445,8 @@ procedure test_pres_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (b) -- forperm.vpr@10.14--10.22
     if (b_24) {
@@ -485,9 +485,9 @@ procedure test_pres_termination_proof(x: Ref) returns ()
         if (Mask[x21, f_7] > NoPerm) {
           
           // -- Translating statement: assert false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223130]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [18046]"}
               false;
             assume state(Heap, Mask);
           
@@ -508,12 +508,12 @@ procedure test_pres_termination_proof(x: Ref) returns ()
 procedure test2_pres_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var $condInEx: bool;
   var x22: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -527,8 +527,8 @@ procedure test2_pres_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if ($condInEx) -- <no position>
     if ($condInEx) {
@@ -540,9 +540,9 @@ procedure test2_pres_termination_proof(x: Ref) returns ()
         if (Mask[x22, f_7] > NoPerm) {
           
           // -- Translating statement: assert false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223131]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [18047]"}
               false;
             assume state(Heap, Mask);
           

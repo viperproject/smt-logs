@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:46:09
+; Started: 2025-01-26 21:33:44
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -135,21 +135,21 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (= (length%limited s@$ xs@0@00) (length s@$ xs@0@00))
   :pattern ((length s@$ xs@0@00))
-  :qid |quant-u-24564|)))
+  :qid |quant-u-10336|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (length%stateless xs@0@00)
   :pattern ((length%limited s@$ xs@0@00))
-  :qid |quant-u-24565|)))
+  :qid |quant-u-10337|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (let ((result@1@00 (length%limited s@$ xs@0@00))) (=>
     (length%precondition s@$ xs@0@00)
     (> result@1@00 0)))
   :pattern ((length%limited s@$ xs@0@00))
-  :qid |quant-u-24570|)))
+  :qid |quant-u-10342|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (let ((result@1@00 (length%limited s@$ xs@0@00))) true)
   :pattern ((length%limited s@$ xs@0@00))
-  :qid |quant-u-24571|)))
+  :qid |quant-u-10343|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -559,7 +559,7 @@
           (length%limited ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))))
   :pattern ((length s@$ xs@0@00))
   :pattern ((length%stateless xs@0@00) (SortedList%trigger s@$ xs@0@00))
-  :qid |quant-u-24572|)))
+  :qid |quant-u-10344|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (=>
     (length%precondition s@$ xs@0@00)
@@ -568,7 +568,7 @@
       true
       (length%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((length s@$ xs@0@00))
-  :qid |quant-u-24573|)))
+  :qid |quant-u-10345|)))
 ; ---------- FUNCTION itemAt----------
 (declare-fun xs@2@00 () $Ref)
 (declare-fun i@3@00 () Int)
@@ -597,11 +597,11 @@
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref) (i@3@00 Int)) (!
   (= (itemAt%limited s@$ xs@2@00 i@3@00) (itemAt s@$ xs@2@00 i@3@00))
   :pattern ((itemAt s@$ xs@2@00 i@3@00))
-  :qid |quant-u-24566|)))
+  :qid |quant-u-10338|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref) (i@3@00 Int)) (!
   (itemAt%stateless xs@2@00 i@3@00)
   :pattern ((itemAt%limited s@$ xs@2@00 i@3@00))
-  :qid |quant-u-24567|)))
+  :qid |quant-u-10339|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1166,7 +1166,7 @@
           1)))))
   :pattern ((itemAt s@$ xs@2@00 i@3@00))
   :pattern ((itemAt%stateless xs@2@00 i@3@00) (SortedList%trigger ($Snap.first s@$) xs@2@00))
-  :qid |quant-u-24574|)))
+  :qid |quant-u-10346|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref) (i@3@00 Int)) (!
   (=>
     (itemAt%precondition s@$ xs@2@00 i@3@00)
@@ -1179,7 +1179,7 @@
         i@3@00
         1))))
   :pattern ((itemAt s@$ xs@2@00 i@3@00))
-  :qid |quant-u-24575|)))
+  :qid |quant-u-10347|)))
 ; ---------- FUNCTION ascending----------
 (declare-fun xs@5@00 () $Ref)
 (declare-fun result@6@00 () Bool)
@@ -1189,11 +1189,11 @@
 (assert (forall ((s@$ $Snap) (xs@5@00 $Ref)) (!
   (= (ascending%limited s@$ xs@5@00) (ascending s@$ xs@5@00))
   :pattern ((ascending s@$ xs@5@00))
-  :qid |quant-u-24568|)))
+  :qid |quant-u-10340|)))
 (assert (forall ((s@$ $Snap) (xs@5@00 $Ref)) (!
   (ascending%stateless xs@5@00)
   :pattern ((ascending%limited s@$ xs@5@00))
-  :qid |quant-u-24569|)))
+  :qid |quant-u-10341|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1421,7 +1421,7 @@
           ($Snap.combine $Snap.unit $Snap.unit)) xs@5@00 j))
         ))))
   :pattern ((ascending s@$ xs@5@00))
-  :qid |quant-u-24576|)))
+  :qid |quant-u-10348|)))
 (assert (forall ((s@$ $Snap) (xs@5@00 $Ref)) (!
   (=>
     (ascending%precondition s@$ xs@5@00)
@@ -1444,7 +1444,7 @@
         ($Snap.combine $Snap.unit $Snap.unit)) xs@5@00 j))
       )))
   :pattern ((ascending s@$ xs@5@00))
-  :qid |quant-u-24577|)))
+  :qid |quant-u-10349|)))
 ; ---------- SortedList ----------
 (declare-const xs@12@00 $Ref)
 (push) ; 1

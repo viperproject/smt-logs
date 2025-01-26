@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:12
+// Date:         2025-01-26 21:43:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0070.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0070-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,7 +185,7 @@ axiom !IsWandField(f_7);
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref) returns ()
+procedure test_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -212,7 +212,7 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f != 3
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0070.vpr@7.12--7.32) [194385]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0070.vpr@7.12--7.32) [81237]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] != 3;
     assume state(Heap, Mask);
@@ -234,9 +234,9 @@ procedure test(x: Ref) returns ()
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x != null might not hold. (0070.vpr@14.15--14.36) [194386]"}
+        assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x != null might not hold. (0070.vpr@14.15--14.36) [81238]"}
           x != null;
-        assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x.f != 3 might not hold. (0070.vpr@14.15--14.36) [194387]"}
+        assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x.f != 3 might not hold. (0070.vpr@14.15--14.36) [81239]"}
           Heap[x, f_7] != 3;
     
     // -- Havoc loop written variables (except locals)
@@ -247,7 +247,7 @@ procedure test(x: Ref) returns ()
         assume x != null;
         
         // -- Check definedness of x.f != 3
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0070.vpr@14.15--14.36) [194388]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (0070.vpr@14.15--14.36) [81240]"}
             HasDirectPerm(Mask, x, f_7);
         assume Heap[x, f_7] != 3;
         assume state(Heap, Mask);
@@ -272,7 +272,7 @@ procedure test(x: Ref) returns ()
         // -- Translate loop body
           
           // -- Translating statement: x.f := 4 -- 0070.vpr@17.5--17.13
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (0070.vpr@17.5--17.13) [194389]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (0070.vpr@17.5--17.13) [81241]"}
               FullPerm == Mask[x, f_7];
             Heap := Heap[x, f_7:=4];
             assume state(Heap, Mask);
@@ -283,9 +283,9 @@ procedure test(x: Ref) returns ()
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x != null might not hold. (0070.vpr@14.15--14.36) [194390]"}
+        assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x != null might not hold. (0070.vpr@14.15--14.36) [81242]"}
           x != null;
-        assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x.f != 3 might not hold. (0070.vpr@14.15--14.36) [194391]"}
+        assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x.f != 3 might not hold. (0070.vpr@14.15--14.36) [81243]"}
           Heap[x, f_7] != 3;
         // Terminate execution
         assume false;

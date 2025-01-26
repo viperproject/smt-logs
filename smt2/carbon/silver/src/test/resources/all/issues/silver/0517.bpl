@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:36
+// Date:         2025-01-26 21:42:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0517.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0517-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -545,20 +545,20 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 type EitherDomainType T V;
 
 // Translation of domain function left
-function  left_2<T, V>(t_9: T): EitherDomainType T V;
+function  left_1<T, V>(t_3: T): EitherDomainType T V;
 
 // Translation of domain function right
-function  right_2<V, T>(v_4: V): EitherDomainType T V;
+function  right<V, T>(v_29: V): EitherDomainType T V;
 
 // ==================================================
 // Translation of method client
 // ==================================================
 
-procedure client(s_2: (Seq int)) returns ()
+procedure client(s_1: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: (EitherDomainType (Seq int) Ref);
   
   // -- Initializing the state
@@ -569,18 +569,18 @@ procedure client(s_2: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := (left(s): Either[Seq[Int], Ref]) -- 0517.vpr@10.3--10.40
-    x := (left_2(s_2): EitherDomainType (Seq int) Ref);
+    x := (left_1(s_1): EitherDomainType (Seq int) Ref);
     assume state(Heap, Mask);
   
   // -- Translating statement: x := (left(Seq[Int]()): Either[Seq[Int], Ref]) -- 0517.vpr@11.3--11.26
-    x := (left_2((Seq#Empty(): Seq int)): EitherDomainType (Seq int) Ref);
+    x := (left_1((Seq#Empty(): Seq int)): EitherDomainType (Seq int) Ref);
     assume state(Heap, Mask);
   
   // -- Translating statement: x := (left(Seq[Int]()): Either[Seq[Int], Ref]) -- 0517.vpr@13.3--13.49
-    x := (left_2((Seq#Empty(): Seq int)): EitherDomainType (Seq int) Ref);
+    x := (left_1((Seq#Empty(): Seq int)): EitherDomainType (Seq int) Ref);
     assume state(Heap, Mask);
 }

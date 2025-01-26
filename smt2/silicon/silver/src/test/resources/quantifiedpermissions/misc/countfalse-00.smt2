@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:37:32
+; Started: 2025-01-26 21:38:53
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -743,7 +743,7 @@
       (= (inv@8@00 s@$ a@0@00 from@1@00 (loc<Ref> a@0@00 z@7@00)) z@7@00)
       (img@9@00 s@$ a@0@00 from@1@00 (loc<Ref> a@0@00 z@7@00))))
   :pattern ((loc<Ref> a@0@00 z@7@00))
-  :qid |quant-u-11984|)))
+  :qid |quant-u-20536|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -768,11 +768,11 @@
     (countFalseX%limited s@$ a@0@00 from@1@00)
     (countFalseX s@$ a@0@00 from@1@00))
   :pattern ((countFalseX s@$ a@0@00 from@1@00))
-  :qid |quant-u-11979|)))
+  :qid |quant-u-20531|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (from@1@00 Int)) (!
   (countFalseX%stateless a@0@00 from@1@00)
   :pattern ((countFalseX%limited s@$ a@0@00 from@1@00))
-  :qid |quant-u-11980|)))
+  :qid |quant-u-20532|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -792,7 +792,7 @@
       (= (inv@8@00 s@$ a@0@00 from@1@00 (loc<Ref> a@0@00 z@7@00)) z@7@00)
       (img@9@00 s@$ a@0@00 from@1@00 (loc<Ref> a@0@00 z@7@00))))
   :pattern ((loc<Ref> a@0@00 z@7@00))
-  :qid |quant-u-11984|)))
+  :qid |quant-u-20536|)))
 (assert (forall ((z@7@00 Int)) (!
   (=>
     (and (<= from@1@00 z@7@00) (< z@7@00 (length<Int> a@0@00)))
@@ -962,7 +962,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-11986|))))
+  :qid |quant-u-20538|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -1189,7 +1189,7 @@
           (= (inv@8@00 s@$ a@0@00 from@1@00 (loc<Ref> a@0@00 z@7@00)) z@7@00)
           (img@9@00 s@$ a@0@00 from@1@00 (loc<Ref> a@0@00 z@7@00))))
       :pattern ((loc<Ref> a@0@00 z@7@00))
-      :qid |quant-u-11984|))
+      :qid |quant-u-20536|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1270,7 +1270,7 @@
             from@1@00
             1))))))
   :pattern ((countFalseX s@$ a@0@00 from@1@00))
-  :qid |quant-u-11987|)))
+  :qid |quant-u-20539|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (from@1@00 Int)) (!
   (=>
     (countFalseX%precondition s@$ a@0@00 from@1@00)
@@ -1285,7 +1285,7 @@
         from@1@00
         1))))
   :pattern ((countFalseX s@$ a@0@00 from@1@00))
-  :qid |quant-u-11988|)))
+  :qid |quant-u-20540|)))
 ; ---------- FUNCTION countFalse----------
 (declare-fun a@3@00 () Array_)
 (declare-fun from@4@00 () Int)
@@ -1373,7 +1373,7 @@
         z@14@00)
       (img@16@00 s@$ a@3@00 from@4@00 to@5@00 (loc<Ref> a@3@00 z@14@00))))
   :pattern ((loc<Ref> a@3@00 z@14@00))
-  :qid |quant-u-11990|)))
+  :qid |quant-u-20542|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1398,11 +1398,11 @@
     (countFalse%limited s@$ a@3@00 from@4@00 to@5@00)
     (countFalse s@$ a@3@00 from@4@00 to@5@00))
   :pattern ((countFalse s@$ a@3@00 from@4@00 to@5@00))
-  :qid |quant-u-11981|)))
+  :qid |quant-u-20533|)))
 (assert (forall ((s@$ $Snap) (a@3@00 Array_) (from@4@00 Int) (to@5@00 Int)) (!
   (countFalse%stateless a@3@00 from@4@00 to@5@00)
   :pattern ((countFalse%limited s@$ a@3@00 from@4@00 to@5@00))
-  :qid |quant-u-11982|)))
+  :qid |quant-u-20534|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -1424,7 +1424,7 @@
         z@14@00)
       (img@16@00 s@$ a@3@00 from@4@00 to@5@00 (loc<Ref> a@3@00 z@14@00))))
   :pattern ((loc<Ref> a@3@00 z@14@00))
-  :qid |quant-u-11990|)))
+  :qid |quant-u-20542|)))
 (assert (forall ((z@14@00 Int)) (!
   (=>
     (and (<= from@4@00 z@14@00) (< z@14@00 to@5@00))
@@ -1658,7 +1658,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-11992|))))
+  :qid |quant-u-20544|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -1908,7 +1908,7 @@
             z@14@00)
           (img@16@00 s@$ a@3@00 from@4@00 to@5@00 (loc<Ref> a@3@00 z@14@00))))
       :pattern ((loc<Ref> a@3@00 z@14@00))
-      :qid |quant-u-11990|))
+      :qid |quant-u-20542|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1998,7 +1998,7 @@
               from@4@00
               1) to@5@00))))))
   :pattern ((countFalse s@$ a@3@00 from@4@00 to@5@00))
-  :qid |quant-u-11993|)))
+  :qid |quant-u-20545|)))
 (assert (forall ((s@$ $Snap) (a@3@00 Array_) (from@4@00 Int) (to@5@00 Int)) (!
   (=>
     (countFalse%precondition s@$ a@3@00 from@4@00 to@5@00)
@@ -2015,4 +2015,4 @@
         from@4@00
         1) to@5@00)))
   :pattern ((countFalse s@$ a@3@00 from@4@00 to@5@00))
-  :qid |quant-u-11994|)))
+  :qid |quant-u-20546|)))

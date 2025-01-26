@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:52:41
+// Date:         2025-01-26 21:44:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testNestedSingleIC.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testNestedSingleIC-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_34: Ref, f_40: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_34, f_40] }
-  Heap[o_34, $allocated] ==> Heap[Heap[o_34, f_40], $allocated]
+axiom (forall o_13: Ref, f_20: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_13, f_20] }
+  Heap[o_13, $allocated] ==> Heap[Heap[o_13, f_20], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref, f_18: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, f_18] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_13, f_18) ==> Heap[o_13, f_18] == ExhaleHeap[o_13, f_18]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_20: Ref, f_29: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_20, f_29] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_20, f_29) ==> Heap[o_20, f_29] == ExhaleHeap[o_20, f_29]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_12), ExhaleHeap[null, PredicateMaskField(pm_f_12)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsPredicateField(pm_f_12) ==> Heap[null, PredicateMaskField(pm_f_12)] == ExhaleHeap[null, PredicateMaskField(pm_f_12)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_37), ExhaleHeap[null, PredicateMaskField(pm_f_37)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsPredicateField(pm_f_37) ==> Heap[null, PredicateMaskField(pm_f_37)] == ExhaleHeap[null, PredicateMaskField(pm_f_37)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_12) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsPredicateField(pm_f_12) ==> (forall <A, B> o2_12: Ref, f_18: (Field A B) ::
-    { ExhaleHeap[o2_12, f_18] }
-    Heap[null, PredicateMaskField(pm_f_12)][o2_12, f_18] ==> Heap[o2_12, f_18] == ExhaleHeap[o2_12, f_18]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_37) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsPredicateField(pm_f_37) ==> (forall <A, B> o2_37: Ref, f_29: (Field A B) ::
+    { ExhaleHeap[o2_37, f_29] }
+    Heap[null, PredicateMaskField(pm_f_37)][o2_37, f_29] ==> Heap[o2_37, f_29] == ExhaleHeap[o2_37, f_29]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_12), ExhaleHeap[null, WandMaskField(pm_f_12)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsWandField(pm_f_12) ==> Heap[null, WandMaskField(pm_f_12)] == ExhaleHeap[null, WandMaskField(pm_f_12)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_37), ExhaleHeap[null, WandMaskField(pm_f_37)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsWandField(pm_f_37) ==> Heap[null, WandMaskField(pm_f_37)] == ExhaleHeap[null, WandMaskField(pm_f_37)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_12) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsWandField(pm_f_12) ==> (forall <A, B> o2_12: Ref, f_18: (Field A B) ::
-    { ExhaleHeap[o2_12, f_18] }
-    Heap[null, WandMaskField(pm_f_12)][o2_12, f_18] ==> Heap[o2_12, f_18] == ExhaleHeap[o2_12, f_18]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_37) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsWandField(pm_f_37) ==> (forall <A, B> o2_37: Ref, f_29: (Field A B) ::
+    { ExhaleHeap[o2_37, f_29] }
+    Heap[null, WandMaskField(pm_f_37)][o2_37, f_29] ==> Heap[o2_37, f_29] == ExhaleHeap[o2_37, f_29]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_13, $allocated] ==> ExhaleHeap[o_13, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_20: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_20, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_20, $allocated] ==> ExhaleHeap[o_20, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_34: Ref, f_36: (Field A B), v: B ::
-  { Heap[o_34, f_36:=v] }
-  succHeap(Heap, Heap[o_34, f_36:=v])
+axiom (forall <A, B> Heap: HeapType, o_13: Ref, f_66: (Field A B), v: B ::
+  { Heap[o_13, f_66:=v] }
+  succHeap(Heap, Heap[o_13, f_66:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -152,14 +152,14 @@ function  neverTriggered5(k_8: int): bool;
 function  neverTriggered6(k_11: int): bool;
 function  neverTriggered7(k_8: int): bool;
 function  neverTriggered8(k_11: int): bool;
-function  neverTriggered9(j_3_1: int): bool;
-function  neverTriggered10(j_5_1: int): bool;
-function  neverTriggered11(j_8: int): bool;
+function  neverTriggered9(j_3: int): bool;
+function  neverTriggered10(j_5: int): bool;
+function  neverTriggered11(j_8_2: int): bool;
 function  neverTriggered12(k_3: int): bool;
 function  neverTriggered13(k_5: int): bool;
 function  neverTriggered14(k_8: int): bool;
 function  neverTriggered15(j_4_1: int): bool;
-function  neverTriggered16(j_5_1: int): bool;
+function  neverTriggered16(j_5: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -618,38 +618,38 @@ axiom !IsWandField(Ref__Integer_value);
 // ==================================================
 
 // Uninterpreted function definitions
-function  sum_list(Heap: HeapType, i: int, hi: int, ar: (Seq int)): int;
-function  sum_list'(Heap: HeapType, i: int, hi: int, ar: (Seq int)): int;
-axiom (forall Heap: HeapType, i: int, hi: int, ar: (Seq int) ::
-  { sum_list(Heap, i, hi, ar) }
-  sum_list(Heap, i, hi, ar) == sum_list'(Heap, i, hi, ar) && dummyFunction(sum_list#triggerStateless(i, hi, ar))
+function  sum_list(Heap: HeapType, i: int, hi: int, ar_1: (Seq int)): int;
+function  sum_list'(Heap: HeapType, i: int, hi: int, ar_1: (Seq int)): int;
+axiom (forall Heap: HeapType, i: int, hi: int, ar_1: (Seq int) ::
+  { sum_list(Heap, i, hi, ar_1) }
+  sum_list(Heap, i, hi, ar_1) == sum_list'(Heap, i, hi, ar_1) && dummyFunction(sum_list#triggerStateless(i, hi, ar_1))
 );
-axiom (forall Heap: HeapType, i: int, hi: int, ar: (Seq int) ::
-  { sum_list'(Heap, i, hi, ar) }
-  dummyFunction(sum_list#triggerStateless(i, hi, ar))
+axiom (forall Heap: HeapType, i: int, hi: int, ar_1: (Seq int) ::
+  { sum_list'(Heap, i, hi, ar_1) }
+  dummyFunction(sum_list#triggerStateless(i, hi, ar_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar: (Seq int) ::
-  { state(Heap, Mask), sum_list(Heap, i, hi, ar) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> (0 <= i && i <= hi) && hi <= Seq#Length(ar) ==> sum_list(Heap, i, hi, ar) == (if i < hi then Seq#Index(ar, i) + sum_list'(Heap, i + 1, hi, ar) else 0)
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar_1: (Seq int) ::
+  { state(Heap, Mask), sum_list(Heap, i, hi, ar_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> (0 <= i && i <= hi) && hi <= Seq#Length(ar_1) ==> sum_list(Heap, i, hi, ar_1) == (if i < hi then Seq#Index(ar_1, i) + sum_list'(Heap, i + 1, hi, ar_1) else 0)
 );
 
 // Framing axioms
-function  sum_list#frame(frame: FrameType, i: int, hi: int, ar: (Seq int)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar: (Seq int) ::
-  { state(Heap, Mask), sum_list'(Heap, i, hi, ar) }
-  state(Heap, Mask) ==> sum_list'(Heap, i, hi, ar) == sum_list#frame(EmptyFrame, i, hi, ar)
+function  sum_list#frame(frame: FrameType, i: int, hi: int, ar_1: (Seq int)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar_1: (Seq int) ::
+  { state(Heap, Mask), sum_list'(Heap, i, hi, ar_1) }
+  state(Heap, Mask) ==> sum_list'(Heap, i, hi, ar_1) == sum_list#frame(EmptyFrame, i, hi, ar_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  sum_list#trigger(frame: FrameType, i: int, hi: int, ar: (Seq int)): bool;
+function  sum_list#trigger(frame: FrameType, i: int, hi: int, ar_1: (Seq int)): bool;
 
 // State-independent trigger function
-function  sum_list#triggerStateless(i: int, hi: int, ar: (Seq int)): int;
+function  sum_list#triggerStateless(i: int, hi: int, ar_1: (Seq int)): int;
 
 // Check contract well-formedness and postcondition
-procedure sum_list#definedness(i: int, hi: int, ar: (Seq int)) returns (Result: int)
+procedure sum_list#definedness(i: int, hi: int, ar_1: (Seq int)) returns (Result: int)
   modifies Heap, Mask;
 {
   var ExhaleWellDef0Heap: HeapType;
@@ -665,37 +665,37 @@ procedure sum_list#definedness(i: int, hi: int, ar: (Seq int)) returns (Result: 
     assume 0 <= i;
     assume i <= hi;
     assume state(Heap, Mask);
-    assume hi <= Seq#Length(ar);
+    assume hi <= Seq#Length(ar_1);
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of (i < hi ? ar[i] + sum_list(i + 1, hi, ar) : 0)
       if (i < hi) {
-        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@6.1--11.2) [29449]"}
+        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@6.1--11.2) [139623]"}
           i >= 0;
-        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@6.1--11.2) [29450]"}
-          i < Seq#Length(ar);
+        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@6.1--11.2) [139624]"}
+          i < Seq#Length(ar_1);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function sum_list might not hold. Assertion 0 <= i + 1 might not hold. (testNestedSingleIC.vpr@10.21--10.44) [29451]"}
+          assert {:msg "  Precondition of function sum_list might not hold. Assertion 0 <= i + 1 might not hold. (testNestedSingleIC.vpr@10.21--10.44) [139625]"}
             0 <= i + 1;
-          assert {:msg "  Precondition of function sum_list might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@10.21--10.44) [29452]"}
+          assert {:msg "  Precondition of function sum_list might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@10.21--10.44) [139626]"}
             i + 1 <= hi;
-          assert {:msg "  Precondition of function sum_list might not hold. Assertion hi <= |ar| might not hold. (testNestedSingleIC.vpr@10.21--10.44) [29453]"}
-            hi <= Seq#Length(ar);
+          assert {:msg "  Precondition of function sum_list might not hold. Assertion hi <= |ar| might not hold. (testNestedSingleIC.vpr@10.21--10.44) [139627]"}
+            hi <= Seq#Length(ar_1);
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume sum_list#trigger(EmptyFrame, i + 1, hi, ar);
+          assume sum_list#trigger(EmptyFrame, i + 1, hi, ar_1);
         }
       }
   
   // -- Translate function body
-    Result := (if i < hi then Seq#Index(ar, i) + sum_list(Heap, i + 1, hi, ar) else 0);
+    Result := (if i < hi then Seq#Index(ar_1, i) + sum_list(Heap, i + 1, hi, ar_1) else 0);
 }
 
 // ==================================================
@@ -703,31 +703,31 @@ procedure sum_list#definedness(i: int, hi: int, ar: (Seq int)) returns (Result: 
 // ==================================================
 
 // Uninterpreted function definitions
-function  sum_array(Heap: HeapType, i: int, lo: int, hi: int, ar: (Seq Ref)): int;
-function  sum_array'(Heap: HeapType, i: int, lo: int, hi: int, ar: (Seq Ref)): int;
-axiom (forall Heap: HeapType, i: int, lo: int, hi: int, ar: (Seq Ref) ::
-  { sum_array(Heap, i, lo, hi, ar) }
-  sum_array(Heap, i, lo, hi, ar) == sum_array'(Heap, i, lo, hi, ar) && dummyFunction(sum_array#triggerStateless(i, lo, hi, ar))
+function  sum_array(Heap: HeapType, i: int, lo: int, hi: int, ar_1: (Seq Ref)): int;
+function  sum_array'(Heap: HeapType, i: int, lo: int, hi: int, ar_1: (Seq Ref)): int;
+axiom (forall Heap: HeapType, i: int, lo: int, hi: int, ar_1: (Seq Ref) ::
+  { sum_array(Heap, i, lo, hi, ar_1) }
+  sum_array(Heap, i, lo, hi, ar_1) == sum_array'(Heap, i, lo, hi, ar_1) && dummyFunction(sum_array#triggerStateless(i, lo, hi, ar_1))
 );
-axiom (forall Heap: HeapType, i: int, lo: int, hi: int, ar: (Seq Ref) ::
-  { sum_array'(Heap, i, lo, hi, ar) }
-  dummyFunction(sum_array#triggerStateless(i, lo, hi, ar))
+axiom (forall Heap: HeapType, i: int, lo: int, hi: int, ar_1: (Seq Ref) ::
+  { sum_array'(Heap, i, lo, hi, ar_1) }
+  dummyFunction(sum_array#triggerStateless(i, lo, hi, ar_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, ar: (Seq Ref) ::
-  { state(Heap, Mask), sum_array(Heap, i, lo, hi, ar) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> ((0 <= lo && (lo <= i && i <= hi)) && hi <= Seq#Length(ar)) && (forall j_9: int, k: int ::
-    { Seq#Index(ar, j_9), Seq#Index(ar, k) }
-    0 <= j_9 && (j_9 < hi && (0 <= k && (k < hi && j_9 != k))) ==> Seq#Index(ar, j_9) != Seq#Index(ar, k)
-  ) ==> sum_array(Heap, i, lo, hi, ar) == (if i < hi then Heap[Seq#Index(ar, i), Ref__Integer_value] + sum_array'(Heap, i + 1, lo, hi, ar) else 0)
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, ar_1: (Seq Ref) ::
+  { state(Heap, Mask), sum_array(Heap, i, lo, hi, ar_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> ((0 <= lo && (lo <= i && i <= hi)) && hi <= Seq#Length(ar_1)) && (forall j: int, k: int ::
+    { Seq#Index(ar_1, j), Seq#Index(ar_1, k) }
+    0 <= j && (j < hi && (0 <= k && (k < hi && j != k))) ==> Seq#Index(ar_1, j) != Seq#Index(ar_1, k)
+  ) ==> sum_array(Heap, i, lo, hi, ar_1) == (if i < hi then Heap[Seq#Index(ar_1, i), Ref__Integer_value] + sum_array'(Heap, i + 1, lo, hi, ar_1) else 0)
 );
 
 // Framing axioms
-function  sum_array#frame(frame: FrameType, i: int, lo: int, hi: int, ar: (Seq Ref)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, ar: (Seq Ref) ::
-  { state(Heap, Mask), sum_array'(Heap, i, lo, hi, ar) }
-  state(Heap, Mask) ==> sum_array'(Heap, i, lo, hi, ar) == sum_array#frame(FrameFragment(sum_array#condqp1(Heap, i, lo, hi, ar)), i, lo, hi, ar)
+function  sum_array#frame(frame: FrameType, i: int, lo: int, hi: int, ar_1: (Seq Ref)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, ar_1: (Seq Ref) ::
+  { state(Heap, Mask), sum_array'(Heap, i, lo, hi, ar_1) }
+  state(Heap, Mask) ==> sum_array'(Heap, i, lo, hi, ar_1) == sum_array#frame(FrameFragment(sum_array#condqp1(Heap, i, lo, hi, ar_1)), i, lo, hi, ar_1)
 );
 // ==================================================
 // Function used for framing of quantified permission (forall k: Int :: { ar[k] } lo <= k && k < hi ==> acc(ar[k].Ref__Integer_value, wildcard)) in function sum_array
@@ -735,30 +735,30 @@ axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, ar: (Seq
 
 function  sum_array#condqp1(Heap: HeapType, i_1_1_1: int, lo_1_1: int, hi_1_1: int, ar_1_1: (Seq Ref)): int;
 function  sk_sum_array#condqp1(fnAppH1: int, fnAppH2: int): int;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, i: int, lo: int, hi: int, ar: (Seq Ref) ::
-  { sum_array#condqp1(Heap2Heap, i, lo, hi, ar), sum_array#condqp1(Heap1Heap, i, lo, hi, ar), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (lo <= sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar), sum_array#condqp1(Heap1Heap, i, lo, hi, ar)) && sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar), sum_array#condqp1(Heap1Heap, i, lo, hi, ar)) < hi <==> lo <= sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar), sum_array#condqp1(Heap1Heap, i, lo, hi, ar)) && sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar), sum_array#condqp1(Heap1Heap, i, lo, hi, ar)) < hi) && (lo <= sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar), sum_array#condqp1(Heap1Heap, i, lo, hi, ar)) && sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar), sum_array#condqp1(Heap1Heap, i, lo, hi, ar)) < hi ==> Heap2Heap[Seq#Index(ar, sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar), sum_array#condqp1(Heap1Heap, i, lo, hi, ar))), Ref__Integer_value] == Heap1Heap[Seq#Index(ar, sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar), sum_array#condqp1(Heap1Heap, i, lo, hi, ar))), Ref__Integer_value]) ==> sum_array#condqp1(Heap2Heap, i, lo, hi, ar) == sum_array#condqp1(Heap1Heap, i, lo, hi, ar)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, i: int, lo: int, hi: int, ar_1: (Seq Ref) ::
+  { sum_array#condqp1(Heap2Heap, i, lo, hi, ar_1), sum_array#condqp1(Heap1Heap, i, lo, hi, ar_1), succHeapTrans(Heap2Heap, Heap1Heap) }
+  (lo <= sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar_1), sum_array#condqp1(Heap1Heap, i, lo, hi, ar_1)) && sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar_1), sum_array#condqp1(Heap1Heap, i, lo, hi, ar_1)) < hi <==> lo <= sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar_1), sum_array#condqp1(Heap1Heap, i, lo, hi, ar_1)) && sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar_1), sum_array#condqp1(Heap1Heap, i, lo, hi, ar_1)) < hi) && (lo <= sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar_1), sum_array#condqp1(Heap1Heap, i, lo, hi, ar_1)) && sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar_1), sum_array#condqp1(Heap1Heap, i, lo, hi, ar_1)) < hi ==> Heap2Heap[Seq#Index(ar_1, sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar_1), sum_array#condqp1(Heap1Heap, i, lo, hi, ar_1))), Ref__Integer_value] == Heap1Heap[Seq#Index(ar_1, sk_sum_array#condqp1(sum_array#condqp1(Heap2Heap, i, lo, hi, ar_1), sum_array#condqp1(Heap1Heap, i, lo, hi, ar_1))), Ref__Integer_value]) ==> sum_array#condqp1(Heap2Heap, i, lo, hi, ar_1) == sum_array#condqp1(Heap1Heap, i, lo, hi, ar_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  sum_array#trigger(frame: FrameType, i: int, lo: int, hi: int, ar: (Seq Ref)): bool;
+function  sum_array#trigger(frame: FrameType, i: int, lo: int, hi: int, ar_1: (Seq Ref)): bool;
 
 // State-independent trigger function
-function  sum_array#triggerStateless(i: int, lo: int, hi: int, ar: (Seq Ref)): int;
+function  sum_array#triggerStateless(i: int, lo: int, hi: int, ar_1: (Seq Ref)): int;
 
 // Check contract well-formedness and postcondition
-procedure sum_array#definedness(i: int, lo: int, hi: int, ar: (Seq Ref)) returns (Result: int)
+procedure sum_array#definedness(i: int, lo: int, hi: int, ar_1: (Seq Ref)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var j_5: int;
-  var k_1: int;
-  var k_2: int;
+  var j_14: int;
+  var k_16: int;
+  var k_6: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
-  var k_9: int;
+  var k_9_1: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -772,70 +772,70 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar: (Seq Ref)) returns
     assume lo <= i;
     assume i <= hi;
     assume state(Heap, Mask);
-    assume hi <= Seq#Length(ar);
+    assume hi <= Seq#Length(ar_1);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j: Int, k: Int :: { ar[j], ar[k] } 0 <= j && (j < hi && (0 <= k && (k < hi && j != k))) ==> ar[j] != ar[k])
       if (*) {
-        if (0 <= j_5 && (j_5 < hi && (0 <= k_1 && (k_1 < hi && j_5 != k_1)))) {
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@16.12--16.102) [29454]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@16.12--16.102) [29455]"}
-            j_5 < Seq#Length(ar);
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@16.12--16.102) [29456]"}
-            k_1 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@16.12--16.102) [29457]"}
-            k_1 < Seq#Length(ar);
+        if (0 <= j_14 && (j_14 < hi && (0 <= k_16 && (k_16 < hi && j_14 != k_16)))) {
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@16.12--16.102) [139628]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@16.12--16.102) [139629]"}
+            j_14 < Seq#Length(ar_1);
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@16.12--16.102) [139630]"}
+            k_16 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@16.12--16.102) [139631]"}
+            k_16 < Seq#Length(ar_1);
         }
         assume false;
       }
-    assume (forall j_3_1: int, k_6: int ::
-      { Seq#Index(ar, j_3_1), Seq#Index(ar, k_6) }
-      0 <= j_3_1 && (j_3_1 < hi && (0 <= k_6 && (k_6 < hi && j_3_1 != k_6))) ==> Seq#Index(ar, j_3_1) != Seq#Index(ar, k_6)
+    assume (forall j_3: int, k_6_2: int ::
+      { Seq#Index(ar_1, j_3), Seq#Index(ar_1, k_6_2) }
+      0 <= j_3 && (j_3 < hi && (0 <= k_6_2 && (k_6_2 < hi && j_3 != k_6_2))) ==> Seq#Index(ar_1, j_3) != Seq#Index(ar_1, k_6_2)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall k: Int :: { ar[k] } lo <= k && k < hi ==> acc(ar[k].Ref__Integer_value, wildcard))
       if (*) {
-        if (lo <= k_2 && k_2 < hi) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@17.13--17.95) [29458]"}
-            k_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@17.13--17.95) [29459]"}
-            k_2 < Seq#Length(ar);
+        if (lo <= k_6 && k_6 < hi) {
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@17.13--17.95) [139632]"}
+            k_6 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@17.13--17.95) [139633]"}
+            k_6 < Seq#Length(ar_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@17.13--17.95) [29460]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@17.13--17.95) [139634]"}
       (forall k_8: int, k_8_1: int ::
       
-      (((k_8 != k_8_1 && (lo <= k_8 && k_8 < hi)) && (lo <= k_8_1 && k_8_1 < hi)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_8) != Seq#Index(ar, k_8_1)
+      (((k_8 != k_8_1 && (lo <= k_8 && k_8 < hi)) && (lo <= k_8_1 && k_8_1 < hi)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_8) != Seq#Index(ar_1, k_8_1)
     );
     
     // -- Define Inverse Function
       assume (forall k_8: int ::
-        { Seq#Index(ar, k_8) } { Seq#Index(ar, k_8) }
-        lo <= k_8 && k_8 < hi ==> qpRange1(Seq#Index(ar, k_8)) && invRecv1(Seq#Index(ar, k_8)) == k_8
+        { Seq#Index(ar_1, k_8) } { Seq#Index(ar_1, k_8) }
+        lo <= k_8 && k_8 < hi ==> qpRange1(Seq#Index(ar_1, k_8)) && invRecv1(Seq#Index(ar_1, k_8)) == k_8
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (lo <= invRecv1(o_4) && invRecv1(o_4) < hi) && qpRange1(o_4) ==> Seq#Index(ar, invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (lo <= invRecv1(o_9) && invRecv1(o_9) < hi) && qpRange1(o_9) ==> Seq#Index(ar_1, invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall k_8: int ::
-        { Seq#Index(ar, k_8) } { Seq#Index(ar, k_8) }
-        lo <= k_8 && k_8 < hi ==> Seq#Index(ar, k_8) != null
+        { Seq#Index(ar_1, k_8) } { Seq#Index(ar_1, k_8) }
+        lo <= k_8 && k_8 < hi ==> Seq#Index(ar_1, k_8) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((lo <= invRecv1(o_4) && invRecv1(o_4) < hi) && qpRange1(o_4) ==> Seq#Index(ar, invRecv1(o_4)) == o_4 && Mask[o_4, Ref__Integer_value] < QPMask[o_4, Ref__Integer_value]) && (!((lo <= invRecv1(o_4) && invRecv1(o_4) < hi) && qpRange1(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((lo <= invRecv1(o_9) && invRecv1(o_9) < hi) && qpRange1(o_9) ==> Seq#Index(ar_1, invRecv1(o_9)) == o_9 && Mask[o_9, Ref__Integer_value] < QPMask[o_9, Ref__Integer_value]) && (!((lo <= invRecv1(o_9) && invRecv1(o_9) < hi) && qpRange1(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -845,77 +845,77 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar: (Seq Ref)) returns
     
     // -- Check definedness of (i < hi ? ar[i].Ref__Integer_value + sum_array(i + 1, lo, hi, ar) : 0)
       if (i < hi) {
-        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@13.1--20.2) [29461]"}
+        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@13.1--20.2) [139635]"}
           i >= 0;
-        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@13.1--20.2) [29462]"}
-          i < Seq#Length(ar);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ar[i].Ref__Integer_value (testNestedSingleIC.vpr@13.1--20.2) [29463]"}
-          HasDirectPerm(Mask, Seq#Index(ar, i), Ref__Integer_value);
+        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@13.1--20.2) [139636]"}
+          i < Seq#Length(ar_1);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ar[i].Ref__Integer_value (testNestedSingleIC.vpr@13.1--20.2) [139637]"}
+          HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function sum_array might not hold. Assertion 0 <= lo might not hold. (testNestedSingleIC.vpr@19.40--19.68) [29464]"}
+          assert {:msg "  Precondition of function sum_array might not hold. Assertion 0 <= lo might not hold. (testNestedSingleIC.vpr@19.40--19.68) [139638]"}
             0 <= lo;
-          assert {:msg "  Precondition of function sum_array might not hold. Assertion lo <= i + 1 might not hold. (testNestedSingleIC.vpr@19.40--19.68) [29465]"}
+          assert {:msg "  Precondition of function sum_array might not hold. Assertion lo <= i + 1 might not hold. (testNestedSingleIC.vpr@19.40--19.68) [139639]"}
             lo <= i + 1;
-          assert {:msg "  Precondition of function sum_array might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@19.40--19.68) [29466]"}
+          assert {:msg "  Precondition of function sum_array might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@19.40--19.68) [139640]"}
             i + 1 <= hi;
-          assert {:msg "  Precondition of function sum_array might not hold. Assertion hi <= |ar| might not hold. (testNestedSingleIC.vpr@19.40--19.68) [29467]"}
-            hi <= Seq#Length(ar);
+          assert {:msg "  Precondition of function sum_array might not hold. Assertion hi <= |ar| might not hold. (testNestedSingleIC.vpr@19.40--19.68) [139641]"}
+            hi <= Seq#Length(ar_1);
           if (*) {
-            if (0 <= j_4_1 && (j_4_1 < hi && (0 <= k_9 && (k_9 < hi && j_4_1 != k_9)))) {
-              assert {:msg "  Precondition of function sum_array might not hold. Assertion ar[j] != ar[k] might not hold. (testNestedSingleIC.vpr@19.40--19.68) [29468]"}
-                Seq#Index(ar, j_4_1) != Seq#Index(ar, k_9);
+            if (0 <= j_4_1 && (j_4_1 < hi && (0 <= k_9_1 && (k_9_1 < hi && j_4_1 != k_9_1)))) {
+              assert {:msg "  Precondition of function sum_array might not hold. Assertion ar[j] != ar[k] might not hold. (testNestedSingleIC.vpr@19.40--19.68) [139642]"}
+                Seq#Index(ar_1, j_4_1) != Seq#Index(ar_1, k_9_1);
             }
             assume false;
           }
           assume (forall j_5_1_1: int, k_10_1: int ::
-            { Seq#Index(ar, j_5_1_1), Seq#Index(ar, k_10_1) }
-            0 <= j_5_1_1 && (j_5_1_1 < hi && (0 <= k_10_1 && (k_10_1 < hi && j_5_1_1 != k_10_1))) ==> Seq#Index(ar, j_5_1_1) != Seq#Index(ar, k_10_1)
+            { Seq#Index(ar_1, j_5_1_1), Seq#Index(ar_1, k_10_1) }
+            0 <= j_5_1_1 && (j_5_1_1 < hi && (0 <= k_10_1 && (k_10_1 < hi && j_5_1_1 != k_10_1))) ==> Seq#Index(ar_1, j_5_1_1) != Seq#Index(ar_1, k_10_1)
           );
           havoc QPMask;
           // wild card assumptions
           havoc wildcard;
-          assert {:msg "  Precondition of function sum_array might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@19.40--19.68) [29469]"}
+          assert {:msg "  Precondition of function sum_array might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@19.40--19.68) [139643]"}
             (forall k_11: int ::
             
-            lo <= k_11 && k_11 < hi ==> Mask[Seq#Index(ar, k_11), Ref__Integer_value] > NoPerm
+            lo <= k_11 && k_11 < hi ==> Mask[Seq#Index(ar_1, k_11), Ref__Integer_value] > NoPerm
           );
           assume (forall k_11: int ::
             
-            lo <= k_11 && k_11 < hi ==> wildcard < Mask[Seq#Index(ar, k_11), Ref__Integer_value]
+            lo <= k_11 && k_11 < hi ==> wildcard < Mask[Seq#Index(ar_1, k_11), Ref__Integer_value]
           );
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function sum_array might not hold. Fraction wildcard might be negative. (testNestedSingleIC.vpr@19.40--19.68) [29470]"}
+            assert {:msg "  Precondition of function sum_array might not hold. Fraction wildcard might be negative. (testNestedSingleIC.vpr@19.40--19.68) [139644]"}
               (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              (lo <= k_11 && k_11 < hi) && dummyFunction(Heap[Seq#Index(ar, k_11), Ref__Integer_value]) ==> wildcard >= NoPerm
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              (lo <= k_11 && k_11 < hi) && dummyFunction(Heap[Seq#Index(ar_1, k_11), Ref__Integer_value]) ==> wildcard >= NoPerm
             );
           
           // -- check if receiver ar[k] is injective
-            assert {:msg "  Precondition of function sum_array might not hold. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@19.40--19.68) [29471]"}
+            assert {:msg "  Precondition of function sum_array might not hold. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@19.40--19.68) [139645]"}
               (forall k_11: int, k_11_1: int ::
               { neverTriggered2(k_11), neverTriggered2(k_11_1) }
-              (((k_11 != k_11_1 && (lo <= k_11 && k_11 < hi)) && (lo <= k_11_1 && k_11_1 < hi)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_11) != Seq#Index(ar, k_11_1)
+              (((k_11 != k_11_1 && (lo <= k_11 && k_11 < hi)) && (lo <= k_11_1 && k_11_1 < hi)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_11) != Seq#Index(ar_1, k_11_1)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function sum_array might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@19.40--19.68) [29472]"}
+            assert {:msg "  Precondition of function sum_array might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@19.40--19.68) [139646]"}
               (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              lo <= k_11 && k_11 < hi ==> wildcard > NoPerm ==> Mask[Seq#Index(ar, k_11), Ref__Integer_value] > NoPerm
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              lo <= k_11 && k_11 < hi ==> wildcard > NoPerm ==> Mask[Seq#Index(ar_1, k_11), Ref__Integer_value] > NoPerm
             );
           
           // -- assumptions for inverse of receiver ar[k]
             assume (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              (lo <= k_11 && k_11 < hi) && NoPerm < wildcard ==> qpRange2(Seq#Index(ar, k_11)) && invRecv2(Seq#Index(ar, k_11)) == k_11
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              (lo <= k_11 && k_11 < hi) && NoPerm < wildcard ==> qpRange2(Seq#Index(ar_1, k_11)) && invRecv2(Seq#Index(ar_1, k_11)) == k_11
             );
-            assume (forall o_4: Ref ::
-              { invRecv2(o_4) }
-              (lo <= invRecv2(o_4) && invRecv2(o_4) < hi) && (NoPerm < wildcard && qpRange2(o_4)) ==> Seq#Index(ar, invRecv2(o_4)) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv2(o_9) }
+              (lo <= invRecv2(o_9) && invRecv2(o_9) < hi) && (NoPerm < wildcard && qpRange2(o_9)) ==> Seq#Index(ar_1, invRecv2(o_9)) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -925,12 +925,12 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar: (Seq Ref)) returns
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume sum_array#trigger(FrameFragment(sum_array#condqp1(Heap, i + 1, lo, hi, ar)), i + 1, lo, hi, ar);
+          assume sum_array#trigger(FrameFragment(sum_array#condqp1(Heap, i + 1, lo, hi, ar_1)), i + 1, lo, hi, ar_1);
         }
       }
   
   // -- Translate function body
-    Result := (if i < hi then Heap[Seq#Index(ar, i), Ref__Integer_value] + sum_array(Heap, i + 1, lo, hi, ar) else 0);
+    Result := (if i < hi then Heap[Seq#Index(ar_1, i), Ref__Integer_value] + sum_array(Heap, i + 1, lo, hi, ar_1) else 0);
 }
 
 // ==================================================
@@ -938,31 +938,31 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar: (Seq Ref)) returns
 // ==================================================
 
 // Uninterpreted function definitions
-function  sum_square(Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref)): int;
-function  sum_square'(Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref)): int;
-axiom (forall Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref) ::
-  { sum_square(Heap, i, lo, hi, step, vmin, vmax, ar) }
-  sum_square(Heap, i, lo, hi, step, vmin, vmax, ar) == sum_square'(Heap, i, lo, hi, step, vmin, vmax, ar) && dummyFunction(sum_square#triggerStateless(i, lo, hi, step, vmin, vmax, ar))
+function  sum_square(Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref)): int;
+function  sum_square'(Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref)): int;
+axiom (forall Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref) ::
+  { sum_square(Heap, i, lo, hi, step, vmin, vmax_1, ar_1) }
+  sum_square(Heap, i, lo, hi, step, vmin, vmax_1, ar_1) == sum_square'(Heap, i, lo, hi, step, vmin, vmax_1, ar_1) && dummyFunction(sum_square#triggerStateless(i, lo, hi, step, vmin, vmax_1, ar_1))
 );
-axiom (forall Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref) ::
-  { sum_square'(Heap, i, lo, hi, step, vmin, vmax, ar) }
-  dummyFunction(sum_square#triggerStateless(i, lo, hi, step, vmin, vmax, ar))
+axiom (forall Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref) ::
+  { sum_square'(Heap, i, lo, hi, step, vmin, vmax_1, ar_1) }
+  dummyFunction(sum_square#triggerStateless(i, lo, hi, step, vmin, vmax_1, ar_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref) ::
-  { state(Heap, Mask), sum_square(Heap, i, lo, hi, step, vmin, vmax, ar) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> (((0 <= lo && (lo <= hi && (hi <= step && step > 0))) && (0 <= vmin && (vmin <= i && i <= vmax))) && vmax <= Seq#Length(ar)) && (forall j_9: int, k: int ::
-    { Seq#Index(ar, j_9), Seq#Index(ar, k) }
-    0 <= j_9 && (j_9 < vmax && (0 <= k && (k < vmax && j_9 != k))) ==> Seq#Index(ar, j_9) != Seq#Index(ar, k)
-  ) ==> sum_square(Heap, i, lo, hi, step, vmin, vmax, ar) == (if i < vmax then (if lo <= i mod step && i mod step < hi then Heap[Seq#Index(ar, i), Ref__Integer_value] else 0) + sum_square'(Heap, i + 1, lo, hi, step, vmin, vmax, ar) else 0)
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref) ::
+  { state(Heap, Mask), sum_square(Heap, i, lo, hi, step, vmin, vmax_1, ar_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> (((0 <= lo && (lo <= hi && (hi <= step && step > 0))) && (0 <= vmin && (vmin <= i && i <= vmax_1))) && vmax_1 <= Seq#Length(ar_1)) && (forall j: int, k: int ::
+    { Seq#Index(ar_1, j), Seq#Index(ar_1, k) }
+    0 <= j && (j < vmax_1 && (0 <= k && (k < vmax_1 && j != k))) ==> Seq#Index(ar_1, j) != Seq#Index(ar_1, k)
+  ) ==> sum_square(Heap, i, lo, hi, step, vmin, vmax_1, ar_1) == (if i < vmax_1 then (if lo <= i mod step && i mod step < hi then Heap[Seq#Index(ar_1, i), Ref__Integer_value] else 0) + sum_square'(Heap, i + 1, lo, hi, step, vmin, vmax_1, ar_1) else 0)
 );
 
 // Framing axioms
-function  sum_square#frame(frame: FrameType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref) ::
-  { state(Heap, Mask), sum_square'(Heap, i, lo, hi, step, vmin, vmax, ar) }
-  state(Heap, Mask) ==> sum_square'(Heap, i, lo, hi, step, vmin, vmax, ar) == sum_square#frame(FrameFragment(sum_square#condqp2(Heap, i, lo, hi, step, vmin, vmax, ar)), i, lo, hi, step, vmin, vmax, ar)
+function  sum_square#frame(frame: FrameType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref) ::
+  { state(Heap, Mask), sum_square'(Heap, i, lo, hi, step, vmin, vmax_1, ar_1) }
+  state(Heap, Mask) ==> sum_square'(Heap, i, lo, hi, step, vmin, vmax_1, ar_1) == sum_square#frame(FrameFragment(sum_square#condqp2(Heap, i, lo, hi, step, vmin, vmax_1, ar_1)), i, lo, hi, step, vmin, vmax_1, ar_1)
 );
 // ==================================================
 // Function used for framing of quantified permission (forall k: Int :: { ar[k] } min <= k && (k < max && (lo <= k % step && k % step < hi)) ==> acc(ar[k].Ref__Integer_value, wildcard)) in function sum_square
@@ -970,30 +970,30 @@ axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, step: in
 
 function  sum_square#condqp2(Heap: HeapType, i_1_1_1: int, lo_1_1: int, hi_1_1: int, step_1_1: int, vmin_1_1: int, vmax_1_1: int, ar_1_1: (Seq Ref)): int;
 function  sk_sum_square#condqp2(fnAppH1: int, fnAppH2: int): int;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref) ::
-  { sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (vmin <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) && (sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) < vmax && (lo <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) mod step && sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) mod step < hi)) <==> vmin <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) && (sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) < vmax && (lo <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) mod step && sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) mod step < hi))) && (vmin <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) && (sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) < vmax && (lo <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) mod step && sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)) mod step < hi)) ==> Heap2Heap[Seq#Index(ar, sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar))), Ref__Integer_value] == Heap1Heap[Seq#Index(ar, sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar))), Ref__Integer_value]) ==> sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax, ar) == sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax, ar)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref) ::
+  { sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1), succHeapTrans(Heap2Heap, Heap1Heap) }
+  (vmin <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) && (sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) < vmax_1 && (lo <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) mod step && sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) mod step < hi)) <==> vmin <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) && (sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) < vmax_1 && (lo <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) mod step && sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) mod step < hi))) && (vmin <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) && (sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) < vmax_1 && (lo <= sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) mod step && sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)) mod step < hi)) ==> Heap2Heap[Seq#Index(ar_1, sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1))), Ref__Integer_value] == Heap1Heap[Seq#Index(ar_1, sk_sum_square#condqp2(sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1), sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1))), Ref__Integer_value]) ==> sum_square#condqp2(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1) == sum_square#condqp2(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  sum_square#trigger(frame: FrameType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref)): bool;
+function  sum_square#trigger(frame: FrameType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref)): bool;
 
 // State-independent trigger function
-function  sum_square#triggerStateless(i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref)): int;
+function  sum_square#triggerStateless(i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref)): int;
 
 // Check contract well-formedness and postcondition
-procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref)) returns (Result: int)
+procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var j_6: int;
-  var k_4: int;
+  var j_12: int;
+  var k_19: int;
   var k_7: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
-  var k_9: int;
+  var k_9_1: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1010,82 +1010,82 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
     assume state(Heap, Mask);
     assume 0 <= vmin;
     assume vmin <= i;
-    assume i <= vmax;
+    assume i <= vmax_1;
     assume state(Heap, Mask);
-    assume vmax <= Seq#Length(ar);
+    assume vmax_1 <= Seq#Length(ar_1);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j: Int, k: Int :: { ar[j], ar[k] } 0 <= j && (j < max && (0 <= k && (k < max && j != k))) ==> ar[j] != ar[k])
       if (*) {
-        if (0 <= j_6 && (j_6 < vmax && (0 <= k_4 && (k_4 < vmax && j_6 != k_4)))) {
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@26.12--26.104) [29473]"}
-            j_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@26.12--26.104) [29474]"}
-            j_6 < Seq#Length(ar);
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@26.12--26.104) [29475]"}
-            k_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@26.12--26.104) [29476]"}
-            k_4 < Seq#Length(ar);
+        if (0 <= j_12 && (j_12 < vmax_1 && (0 <= k_19 && (k_19 < vmax_1 && j_12 != k_19)))) {
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@26.12--26.104) [139647]"}
+            j_12 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@26.12--26.104) [139648]"}
+            j_12 < Seq#Length(ar_1);
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@26.12--26.104) [139649]"}
+            k_19 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@26.12--26.104) [139650]"}
+            k_19 < Seq#Length(ar_1);
         }
         assume false;
       }
-    assume (forall j_3_1: int, k_6: int ::
-      { Seq#Index(ar, j_3_1), Seq#Index(ar, k_6) }
-      0 <= j_3_1 && (j_3_1 < vmax && (0 <= k_6 && (k_6 < vmax && j_3_1 != k_6))) ==> Seq#Index(ar, j_3_1) != Seq#Index(ar, k_6)
+    assume (forall j_3: int, k_6_2: int ::
+      { Seq#Index(ar_1, j_3), Seq#Index(ar_1, k_6_2) }
+      0 <= j_3 && (j_3 < vmax_1 && (0 <= k_6_2 && (k_6_2 < vmax_1 && j_3 != k_6_2))) ==> Seq#Index(ar_1, j_3) != Seq#Index(ar_1, k_6_2)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall k: Int :: { ar[k] } min <= k && (k < max && (lo <= k % step && k % step < hi)) ==> acc(ar[k].Ref__Integer_value, wildcard))
       if (*) {
         if (vmin <= k_7) {
-          if (k_7 < vmax) {
-            assert {:msg "  Contract might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@27.13--27.136) [29477]"}
+          if (k_7 < vmax_1) {
+            assert {:msg "  Contract might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@27.13--27.136) [139651]"}
               step != 0;
             if (lo <= k_7 mod step) {
-              assert {:msg "  Contract might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@27.13--27.136) [29478]"}
+              assert {:msg "  Contract might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@27.13--27.136) [139652]"}
                 step != 0;
             }
           }
         }
-        if (vmin <= k_7 && (k_7 < vmax && (lo <= k_7 mod step && k_7 mod step < hi))) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@27.13--27.136) [29479]"}
+        if (vmin <= k_7 && (k_7 < vmax_1 && (lo <= k_7 mod step && k_7 mod step < hi))) {
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@27.13--27.136) [139653]"}
             k_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@27.13--27.136) [29480]"}
-            k_7 < Seq#Length(ar);
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@27.13--27.136) [139654]"}
+            k_7 < Seq#Length(ar_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@27.13--27.136) [29481]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@27.13--27.136) [139655]"}
       (forall k_8: int, k_8_1: int ::
       
-      (((k_8 != k_8_1 && (vmin <= k_8 && (k_8 < vmax && (lo <= k_8 mod step && k_8 mod step < hi)))) && (vmin <= k_8_1 && (k_8_1 < vmax && (lo <= k_8_1 mod step && k_8_1 mod step < hi)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_8) != Seq#Index(ar, k_8_1)
+      (((k_8 != k_8_1 && (vmin <= k_8 && (k_8 < vmax_1 && (lo <= k_8 mod step && k_8 mod step < hi)))) && (vmin <= k_8_1 && (k_8_1 < vmax_1 && (lo <= k_8_1 mod step && k_8_1 mod step < hi)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_8) != Seq#Index(ar_1, k_8_1)
     );
     
     // -- Define Inverse Function
       assume (forall k_8: int ::
-        { Seq#Index(ar, k_8) } { Seq#Index(ar, k_8) }
-        vmin <= k_8 && (k_8 < vmax && (lo <= k_8 mod step && k_8 mod step < hi)) ==> qpRange3(Seq#Index(ar, k_8)) && invRecv3(Seq#Index(ar, k_8)) == k_8
+        { Seq#Index(ar_1, k_8) } { Seq#Index(ar_1, k_8) }
+        vmin <= k_8 && (k_8 < vmax_1 && (lo <= k_8 mod step && k_8 mod step < hi)) ==> qpRange3(Seq#Index(ar_1, k_8)) && invRecv3(Seq#Index(ar_1, k_8)) == k_8
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (vmin <= invRecv3(o_4) && (invRecv3(o_4) < vmax && (lo <= invRecv3(o_4) mod step && invRecv3(o_4) mod step < hi))) && qpRange3(o_4) ==> Seq#Index(ar, invRecv3(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (vmin <= invRecv3(o_9) && (invRecv3(o_9) < vmax_1 && (lo <= invRecv3(o_9) mod step && invRecv3(o_9) mod step < hi))) && qpRange3(o_9) ==> Seq#Index(ar_1, invRecv3(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall k_8: int ::
-        { Seq#Index(ar, k_8) } { Seq#Index(ar, k_8) }
-        vmin <= k_8 && (k_8 < vmax && (lo <= k_8 mod step && k_8 mod step < hi)) ==> Seq#Index(ar, k_8) != null
+        { Seq#Index(ar_1, k_8) } { Seq#Index(ar_1, k_8) }
+        vmin <= k_8 && (k_8 < vmax_1 && (lo <= k_8 mod step && k_8 mod step < hi)) ==> Seq#Index(ar_1, k_8) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((vmin <= invRecv3(o_4) && (invRecv3(o_4) < vmax && (lo <= invRecv3(o_4) mod step && invRecv3(o_4) mod step < hi))) && qpRange3(o_4) ==> Seq#Index(ar, invRecv3(o_4)) == o_4 && Mask[o_4, Ref__Integer_value] < QPMask[o_4, Ref__Integer_value]) && (!((vmin <= invRecv3(o_4) && (invRecv3(o_4) < vmax && (lo <= invRecv3(o_4) mod step && invRecv3(o_4) mod step < hi))) && qpRange3(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((vmin <= invRecv3(o_9) && (invRecv3(o_9) < vmax_1 && (lo <= invRecv3(o_9) mod step && invRecv3(o_9) mod step < hi))) && qpRange3(o_9) ==> Seq#Index(ar_1, invRecv3(o_9)) == o_9 && Mask[o_9, Ref__Integer_value] < QPMask[o_9, Ref__Integer_value]) && (!((vmin <= invRecv3(o_9) && (invRecv3(o_9) < vmax_1 && (lo <= invRecv3(o_9) mod step && invRecv3(o_9) mod step < hi))) && qpRange3(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1094,94 +1094,94 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
   // -- Check definedness of function body
     
     // -- Check definedness of (i < max ? (lo <= i % step && i % step < hi ? ar[i].Ref__Integer_value : 0) + sum_square(i + 1, lo, hi, step, min, max, ar) : 0)
-      if (i < vmax) {
-        assert {:msg "  Function might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@22.1--30.2) [29482]"}
+      if (i < vmax_1) {
+        assert {:msg "  Function might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@22.1--30.2) [139656]"}
           step != 0;
         if (lo <= i mod step) {
-          assert {:msg "  Function might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@22.1--30.2) [29483]"}
+          assert {:msg "  Function might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@22.1--30.2) [139657]"}
             step != 0;
         }
         if (lo <= i mod step && i mod step < hi) {
-          assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@22.1--30.2) [29484]"}
+          assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@22.1--30.2) [139658]"}
             i >= 0;
-          assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@22.1--30.2) [29485]"}
-            i < Seq#Length(ar);
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ar[i].Ref__Integer_value (testNestedSingleIC.vpr@22.1--30.2) [29486]"}
-            HasDirectPerm(Mask, Seq#Index(ar, i), Ref__Integer_value);
+          assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@22.1--30.2) [139659]"}
+            i < Seq#Length(ar_1);
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ar[i].Ref__Integer_value (testNestedSingleIC.vpr@22.1--30.2) [139660]"}
+            HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         }
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function sum_square might not hold. Assertion 0 <= lo might not hold. (testNestedSingleIC.vpr@29.85--29.130) [29487]"}
+          assert {:msg "  Precondition of function sum_square might not hold. Assertion 0 <= lo might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139661]"}
             0 <= lo;
-          assert {:msg "  Precondition of function sum_square might not hold. Assertion lo <= hi might not hold. (testNestedSingleIC.vpr@29.85--29.130) [29488]"}
+          assert {:msg "  Precondition of function sum_square might not hold. Assertion lo <= hi might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139662]"}
             lo <= hi;
-          assert {:msg "  Precondition of function sum_square might not hold. Assertion hi <= step might not hold. (testNestedSingleIC.vpr@29.85--29.130) [29489]"}
+          assert {:msg "  Precondition of function sum_square might not hold. Assertion hi <= step might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139663]"}
             hi <= step;
-          assert {:msg "  Precondition of function sum_square might not hold. Assertion step > 0 might not hold. (testNestedSingleIC.vpr@29.85--29.130) [29490]"}
+          assert {:msg "  Precondition of function sum_square might not hold. Assertion step > 0 might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139664]"}
             step > 0;
-          assert {:msg "  Precondition of function sum_square might not hold. Assertion 0 <= min might not hold. (testNestedSingleIC.vpr@29.85--29.130) [29491]"}
+          assert {:msg "  Precondition of function sum_square might not hold. Assertion 0 <= min might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139665]"}
             0 <= vmin;
-          assert {:msg "  Precondition of function sum_square might not hold. Assertion min <= i + 1 might not hold. (testNestedSingleIC.vpr@29.85--29.130) [29492]"}
+          assert {:msg "  Precondition of function sum_square might not hold. Assertion min <= i + 1 might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139666]"}
             vmin <= i + 1;
-          assert {:msg "  Precondition of function sum_square might not hold. Assertion i + 1 <= max might not hold. (testNestedSingleIC.vpr@29.85--29.130) [29493]"}
-            i + 1 <= vmax;
-          assert {:msg "  Precondition of function sum_square might not hold. Assertion max <= |ar| might not hold. (testNestedSingleIC.vpr@29.85--29.130) [29494]"}
-            vmax <= Seq#Length(ar);
+          assert {:msg "  Precondition of function sum_square might not hold. Assertion i + 1 <= max might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139667]"}
+            i + 1 <= vmax_1;
+          assert {:msg "  Precondition of function sum_square might not hold. Assertion max <= |ar| might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139668]"}
+            vmax_1 <= Seq#Length(ar_1);
           if (*) {
-            if (0 <= j_4_1 && (j_4_1 < vmax && (0 <= k_9 && (k_9 < vmax && j_4_1 != k_9)))) {
-              assert {:msg "  Precondition of function sum_square might not hold. Assertion ar[j] != ar[k] might not hold. (testNestedSingleIC.vpr@29.85--29.130) [29495]"}
-                Seq#Index(ar, j_4_1) != Seq#Index(ar, k_9);
+            if (0 <= j_4_1 && (j_4_1 < vmax_1 && (0 <= k_9_1 && (k_9_1 < vmax_1 && j_4_1 != k_9_1)))) {
+              assert {:msg "  Precondition of function sum_square might not hold. Assertion ar[j] != ar[k] might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139669]"}
+                Seq#Index(ar_1, j_4_1) != Seq#Index(ar_1, k_9_1);
             }
             assume false;
           }
           assume (forall j_5_1_1: int, k_10_1: int ::
-            { Seq#Index(ar, j_5_1_1), Seq#Index(ar, k_10_1) }
-            0 <= j_5_1_1 && (j_5_1_1 < vmax && (0 <= k_10_1 && (k_10_1 < vmax && j_5_1_1 != k_10_1))) ==> Seq#Index(ar, j_5_1_1) != Seq#Index(ar, k_10_1)
+            { Seq#Index(ar_1, j_5_1_1), Seq#Index(ar_1, k_10_1) }
+            0 <= j_5_1_1 && (j_5_1_1 < vmax_1 && (0 <= k_10_1 && (k_10_1 < vmax_1 && j_5_1_1 != k_10_1))) ==> Seq#Index(ar_1, j_5_1_1) != Seq#Index(ar_1, k_10_1)
           );
           havoc QPMask;
           // wild card assumptions
           havoc wildcard;
-          assert {:msg "  Precondition of function sum_square might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@29.85--29.130) [29496]"}
+          assert {:msg "  Precondition of function sum_square might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@29.85--29.130) [139670]"}
             (forall k_11: int ::
             
-            vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi)) ==> Mask[Seq#Index(ar, k_11), Ref__Integer_value] > NoPerm
+            vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi)) ==> Mask[Seq#Index(ar_1, k_11), Ref__Integer_value] > NoPerm
           );
           assume (forall k_11: int ::
             
-            vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi)) ==> wildcard < Mask[Seq#Index(ar, k_11), Ref__Integer_value]
+            vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi)) ==> wildcard < Mask[Seq#Index(ar_1, k_11), Ref__Integer_value]
           );
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function sum_square might not hold. Fraction wildcard might be negative. (testNestedSingleIC.vpr@29.85--29.130) [29497]"}
+            assert {:msg "  Precondition of function sum_square might not hold. Fraction wildcard might be negative. (testNestedSingleIC.vpr@29.85--29.130) [139671]"}
               (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              (vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi))) && dummyFunction(Heap[Seq#Index(ar, k_11), Ref__Integer_value]) ==> wildcard >= NoPerm
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              (vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi))) && dummyFunction(Heap[Seq#Index(ar_1, k_11), Ref__Integer_value]) ==> wildcard >= NoPerm
             );
           
           // -- check if receiver ar[k] is injective
-            assert {:msg "  Precondition of function sum_square might not hold. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@29.85--29.130) [29498]"}
+            assert {:msg "  Precondition of function sum_square might not hold. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@29.85--29.130) [139672]"}
               (forall k_11: int, k_11_1: int ::
               { neverTriggered4(k_11), neverTriggered4(k_11_1) }
-              (((k_11 != k_11_1 && (vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi)))) && (vmin <= k_11_1 && (k_11_1 < vmax && (lo <= k_11_1 mod step && k_11_1 mod step < hi)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_11) != Seq#Index(ar, k_11_1)
+              (((k_11 != k_11_1 && (vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi)))) && (vmin <= k_11_1 && (k_11_1 < vmax_1 && (lo <= k_11_1 mod step && k_11_1 mod step < hi)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_11) != Seq#Index(ar_1, k_11_1)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function sum_square might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@29.85--29.130) [29499]"}
+            assert {:msg "  Precondition of function sum_square might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@29.85--29.130) [139673]"}
               (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi)) ==> wildcard > NoPerm ==> Mask[Seq#Index(ar, k_11), Ref__Integer_value] > NoPerm
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi)) ==> wildcard > NoPerm ==> Mask[Seq#Index(ar_1, k_11), Ref__Integer_value] > NoPerm
             );
           
           // -- assumptions for inverse of receiver ar[k]
             assume (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              (vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi))) && NoPerm < wildcard ==> qpRange4(Seq#Index(ar, k_11)) && invRecv4(Seq#Index(ar, k_11)) == k_11
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              (vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi))) && NoPerm < wildcard ==> qpRange4(Seq#Index(ar_1, k_11)) && invRecv4(Seq#Index(ar_1, k_11)) == k_11
             );
-            assume (forall o_4: Ref ::
-              { invRecv4(o_4) }
-              (vmin <= invRecv4(o_4) && (invRecv4(o_4) < vmax && (lo <= invRecv4(o_4) mod step && invRecv4(o_4) mod step < hi))) && (NoPerm < wildcard && qpRange4(o_4)) ==> Seq#Index(ar, invRecv4(o_4)) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv4(o_9) }
+              (vmin <= invRecv4(o_9) && (invRecv4(o_9) < vmax_1 && (lo <= invRecv4(o_9) mod step && invRecv4(o_9) mod step < hi))) && (NoPerm < wildcard && qpRange4(o_9)) ==> Seq#Index(ar_1, invRecv4(o_9)) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -1191,12 +1191,12 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume sum_square#trigger(FrameFragment(sum_square#condqp2(Heap, i + 1, lo, hi, step, vmin, vmax, ar)), i + 1, lo, hi, step, vmin, vmax, ar);
+          assume sum_square#trigger(FrameFragment(sum_square#condqp2(Heap, i + 1, lo, hi, step, vmin, vmax_1, ar_1)), i + 1, lo, hi, step, vmin, vmax_1, ar_1);
         }
       }
   
   // -- Translate function body
-    Result := (if i < vmax then (if lo <= i mod step && i mod step < hi then Heap[Seq#Index(ar, i), Ref__Integer_value] else 0) + sum_square(Heap, i + 1, lo, hi, step, vmin, vmax, ar) else 0);
+    Result := (if i < vmax_1 then (if lo <= i mod step && i mod step < hi then Heap[Seq#Index(ar_1, i), Ref__Integer_value] else 0) + sum_square(Heap, i + 1, lo, hi, step, vmin, vmax_1, ar_1) else 0);
 }
 
 // ==================================================
@@ -1204,31 +1204,31 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
 // ==================================================
 
 // Uninterpreted function definitions
-function  count_square(Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int): int;
-function  count_square'(Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int): int;
-axiom (forall Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int ::
-  { count_square(Heap, i, lo, hi, step, vmin, vmax, ar, v_2) }
-  count_square(Heap, i, lo, hi, step, vmin, vmax, ar, v_2) == count_square'(Heap, i, lo, hi, step, vmin, vmax, ar, v_2) && dummyFunction(count_square#triggerStateless(i, lo, hi, step, vmin, vmax, ar, v_2))
+function  count_square(Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int): int;
+function  count_square'(Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int): int;
+axiom (forall Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int ::
+  { count_square(Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2) }
+  count_square(Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2) == count_square'(Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2) && dummyFunction(count_square#triggerStateless(i, lo, hi, step, vmin, vmax_1, ar_1, v_2))
 );
-axiom (forall Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int ::
-  { count_square'(Heap, i, lo, hi, step, vmin, vmax, ar, v_2) }
-  dummyFunction(count_square#triggerStateless(i, lo, hi, step, vmin, vmax, ar, v_2))
+axiom (forall Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int ::
+  { count_square'(Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2) }
+  dummyFunction(count_square#triggerStateless(i, lo, hi, step, vmin, vmax_1, ar_1, v_2))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int ::
-  { state(Heap, Mask), count_square(Heap, i, lo, hi, step, vmin, vmax, ar, v_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> (((0 <= lo && (lo <= hi && (hi <= step && step > 0))) && (0 <= vmin && (vmin <= i && i <= vmax))) && vmax <= Seq#Length(ar)) && (forall j_9: int, k: int ::
-    { Seq#Index(ar, j_9), Seq#Index(ar, k) }
-    0 <= j_9 && (j_9 < vmax && (0 <= k && (k < vmax && j_9 != k))) ==> Seq#Index(ar, j_9) != Seq#Index(ar, k)
-  ) ==> count_square(Heap, i, lo, hi, step, vmin, vmax, ar, v_2) == (if i < vmax then (if lo <= i mod step && (i mod step < hi && Heap[Seq#Index(ar, i), Ref__Integer_value] == v_2) then 1 else 0) + count_square'(Heap, i + 1, lo, hi, step, vmin, vmax, ar, v_2) else 0)
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int ::
+  { state(Heap, Mask), count_square(Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> (((0 <= lo && (lo <= hi && (hi <= step && step > 0))) && (0 <= vmin && (vmin <= i && i <= vmax_1))) && vmax_1 <= Seq#Length(ar_1)) && (forall j: int, k: int ::
+    { Seq#Index(ar_1, j), Seq#Index(ar_1, k) }
+    0 <= j && (j < vmax_1 && (0 <= k && (k < vmax_1 && j != k))) ==> Seq#Index(ar_1, j) != Seq#Index(ar_1, k)
+  ) ==> count_square(Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2) == (if i < vmax_1 then (if lo <= i mod step && (i mod step < hi && Heap[Seq#Index(ar_1, i), Ref__Integer_value] == v_2) then 1 else 0) + count_square'(Heap, i + 1, lo, hi, step, vmin, vmax_1, ar_1, v_2) else 0)
 );
 
 // Framing axioms
-function  count_square#frame(frame: FrameType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int ::
-  { state(Heap, Mask), count_square'(Heap, i, lo, hi, step, vmin, vmax, ar, v_2) }
-  state(Heap, Mask) ==> count_square'(Heap, i, lo, hi, step, vmin, vmax, ar, v_2) == count_square#frame(FrameFragment(count_square#condqp3(Heap, i, lo, hi, step, vmin, vmax, ar, v_2)), i, lo, hi, step, vmin, vmax, ar, v_2)
+function  count_square#frame(frame: FrameType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int ::
+  { state(Heap, Mask), count_square'(Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2) }
+  state(Heap, Mask) ==> count_square'(Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2) == count_square#frame(FrameFragment(count_square#condqp3(Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)), i, lo, hi, step, vmin, vmax_1, ar_1, v_2)
 );
 // ==================================================
 // Function used for framing of quantified permission (forall k: Int :: { ar[k] } min <= k && (k < max && (lo <= k % step && k % step < hi)) ==> acc(ar[k].Ref__Integer_value, wildcard)) in function count_square
@@ -1236,30 +1236,30 @@ axiom (forall Heap: HeapType, Mask: MaskType, i: int, lo: int, hi: int, step: in
 
 function  count_square#condqp3(Heap: HeapType, i_1_1_1: int, lo_1_1: int, hi_1_1: int, step_1_1: int, vmin_1_1: int, vmax_1_1: int, ar_1_1: (Seq Ref), v_1_1_1: int): int;
 function  sk_count_square#condqp3(fnAppH1: int, fnAppH2: int): int;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int ::
-  { count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (vmin <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) && (sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) < vmax && (lo <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) mod step && sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) mod step < hi)) <==> vmin <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) && (sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) < vmax && (lo <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) mod step && sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) mod step < hi))) && (vmin <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) && (sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) < vmax && (lo <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) mod step && sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)) mod step < hi)) ==> Heap2Heap[Seq#Index(ar, sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2))), Ref__Integer_value] == Heap1Heap[Seq#Index(ar, sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2))), Ref__Integer_value]) ==> count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax, ar, v_2) == count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax, ar, v_2)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int ::
+  { count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), succHeapTrans(Heap2Heap, Heap1Heap) }
+  (vmin <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) && (sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) < vmax_1 && (lo <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) mod step && sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) mod step < hi)) <==> vmin <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) && (sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) < vmax_1 && (lo <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) mod step && sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) mod step < hi))) && (vmin <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) && (sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) < vmax_1 && (lo <= sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) mod step && sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)) mod step < hi)) ==> Heap2Heap[Seq#Index(ar_1, sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2))), Ref__Integer_value] == Heap1Heap[Seq#Index(ar_1, sk_count_square#condqp3(count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2), count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2))), Ref__Integer_value]) ==> count_square#condqp3(Heap2Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2) == count_square#condqp3(Heap1Heap, i, lo, hi, step, vmin, vmax_1, ar_1, v_2)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  count_square#trigger(frame: FrameType, i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int): bool;
+function  count_square#trigger(frame: FrameType, i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int): bool;
 
 // State-independent trigger function
-function  count_square#triggerStateless(i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int): int;
+function  count_square#triggerStateless(i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int): int;
 
 // Check contract well-formedness and postcondition
-procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int, vmax: int, ar: (Seq Ref), v_2: int) returns (Result: int)
+procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int, vmax_1: int, ar_1: (Seq Ref), v_2: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var j_7: int;
-  var k_10: int;
-  var k_12: int;
+  var j_2: int;
+  var k_4: int;
+  var k_14: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
-  var k_9: int;
+  var k_9_1: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1276,82 +1276,82 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
     assume state(Heap, Mask);
     assume 0 <= vmin;
     assume vmin <= i;
-    assume i <= vmax;
+    assume i <= vmax_1;
     assume state(Heap, Mask);
-    assume vmax <= Seq#Length(ar);
+    assume vmax_1 <= Seq#Length(ar_1);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j: Int, k: Int :: { ar[j], ar[k] } 0 <= j && (j < max && (0 <= k && (k < max && j != k))) ==> ar[j] != ar[k])
       if (*) {
-        if (0 <= j_7 && (j_7 < vmax && (0 <= k_10 && (k_10 < vmax && j_7 != k_10)))) {
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@36.12--36.104) [29500]"}
-            j_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@36.12--36.104) [29501]"}
-            j_7 < Seq#Length(ar);
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@36.12--36.104) [29502]"}
-            k_10 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@36.12--36.104) [29503]"}
-            k_10 < Seq#Length(ar);
+        if (0 <= j_2 && (j_2 < vmax_1 && (0 <= k_4 && (k_4 < vmax_1 && j_2 != k_4)))) {
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@36.12--36.104) [139674]"}
+            j_2 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@36.12--36.104) [139675]"}
+            j_2 < Seq#Length(ar_1);
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@36.12--36.104) [139676]"}
+            k_4 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@36.12--36.104) [139677]"}
+            k_4 < Seq#Length(ar_1);
         }
         assume false;
       }
-    assume (forall j_3_1: int, k_6: int ::
-      { Seq#Index(ar, j_3_1), Seq#Index(ar, k_6) }
-      0 <= j_3_1 && (j_3_1 < vmax && (0 <= k_6 && (k_6 < vmax && j_3_1 != k_6))) ==> Seq#Index(ar, j_3_1) != Seq#Index(ar, k_6)
+    assume (forall j_3: int, k_6_2: int ::
+      { Seq#Index(ar_1, j_3), Seq#Index(ar_1, k_6_2) }
+      0 <= j_3 && (j_3 < vmax_1 && (0 <= k_6_2 && (k_6_2 < vmax_1 && j_3 != k_6_2))) ==> Seq#Index(ar_1, j_3) != Seq#Index(ar_1, k_6_2)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall k: Int :: { ar[k] } min <= k && (k < max && (lo <= k % step && k % step < hi)) ==> acc(ar[k].Ref__Integer_value, wildcard))
       if (*) {
-        if (vmin <= k_12) {
-          if (k_12 < vmax) {
-            assert {:msg "  Contract might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@37.13--37.136) [29504]"}
+        if (vmin <= k_14) {
+          if (k_14 < vmax_1) {
+            assert {:msg "  Contract might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@37.13--37.136) [139678]"}
               step != 0;
-            if (lo <= k_12 mod step) {
-              assert {:msg "  Contract might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@37.13--37.136) [29505]"}
+            if (lo <= k_14 mod step) {
+              assert {:msg "  Contract might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@37.13--37.136) [139679]"}
                 step != 0;
             }
           }
         }
-        if (vmin <= k_12 && (k_12 < vmax && (lo <= k_12 mod step && k_12 mod step < hi))) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@37.13--37.136) [29506]"}
-            k_12 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@37.13--37.136) [29507]"}
-            k_12 < Seq#Length(ar);
+        if (vmin <= k_14 && (k_14 < vmax_1 && (lo <= k_14 mod step && k_14 mod step < hi))) {
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@37.13--37.136) [139680]"}
+            k_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@37.13--37.136) [139681]"}
+            k_14 < Seq#Length(ar_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@37.13--37.136) [29508]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@37.13--37.136) [139682]"}
       (forall k_8: int, k_8_1: int ::
       
-      (((k_8 != k_8_1 && (vmin <= k_8 && (k_8 < vmax && (lo <= k_8 mod step && k_8 mod step < hi)))) && (vmin <= k_8_1 && (k_8_1 < vmax && (lo <= k_8_1 mod step && k_8_1 mod step < hi)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_8) != Seq#Index(ar, k_8_1)
+      (((k_8 != k_8_1 && (vmin <= k_8 && (k_8 < vmax_1 && (lo <= k_8 mod step && k_8 mod step < hi)))) && (vmin <= k_8_1 && (k_8_1 < vmax_1 && (lo <= k_8_1 mod step && k_8_1 mod step < hi)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_8) != Seq#Index(ar_1, k_8_1)
     );
     
     // -- Define Inverse Function
       assume (forall k_8: int ::
-        { Seq#Index(ar, k_8) } { Seq#Index(ar, k_8) }
-        vmin <= k_8 && (k_8 < vmax && (lo <= k_8 mod step && k_8 mod step < hi)) ==> qpRange5(Seq#Index(ar, k_8)) && invRecv5(Seq#Index(ar, k_8)) == k_8
+        { Seq#Index(ar_1, k_8) } { Seq#Index(ar_1, k_8) }
+        vmin <= k_8 && (k_8 < vmax_1 && (lo <= k_8 mod step && k_8 mod step < hi)) ==> qpRange5(Seq#Index(ar_1, k_8)) && invRecv5(Seq#Index(ar_1, k_8)) == k_8
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        (vmin <= invRecv5(o_4) && (invRecv5(o_4) < vmax && (lo <= invRecv5(o_4) mod step && invRecv5(o_4) mod step < hi))) && qpRange5(o_4) ==> Seq#Index(ar, invRecv5(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        (vmin <= invRecv5(o_9) && (invRecv5(o_9) < vmax_1 && (lo <= invRecv5(o_9) mod step && invRecv5(o_9) mod step < hi))) && qpRange5(o_9) ==> Seq#Index(ar_1, invRecv5(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall k_8: int ::
-        { Seq#Index(ar, k_8) } { Seq#Index(ar, k_8) }
-        vmin <= k_8 && (k_8 < vmax && (lo <= k_8 mod step && k_8 mod step < hi)) ==> Seq#Index(ar, k_8) != null
+        { Seq#Index(ar_1, k_8) } { Seq#Index(ar_1, k_8) }
+        vmin <= k_8 && (k_8 < vmax_1 && (lo <= k_8 mod step && k_8 mod step < hi)) ==> Seq#Index(ar_1, k_8) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((vmin <= invRecv5(o_4) && (invRecv5(o_4) < vmax && (lo <= invRecv5(o_4) mod step && invRecv5(o_4) mod step < hi))) && qpRange5(o_4) ==> Seq#Index(ar, invRecv5(o_4)) == o_4 && Mask[o_4, Ref__Integer_value] < QPMask[o_4, Ref__Integer_value]) && (!((vmin <= invRecv5(o_4) && (invRecv5(o_4) < vmax && (lo <= invRecv5(o_4) mod step && invRecv5(o_4) mod step < hi))) && qpRange5(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((vmin <= invRecv5(o_9) && (invRecv5(o_9) < vmax_1 && (lo <= invRecv5(o_9) mod step && invRecv5(o_9) mod step < hi))) && qpRange5(o_9) ==> Seq#Index(ar_1, invRecv5(o_9)) == o_9 && Mask[o_9, Ref__Integer_value] < QPMask[o_9, Ref__Integer_value]) && (!((vmin <= invRecv5(o_9) && (invRecv5(o_9) < vmax_1 && (lo <= invRecv5(o_9) mod step && invRecv5(o_9) mod step < hi))) && qpRange5(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1360,94 +1360,94 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
   // -- Check definedness of function body
     
     // -- Check definedness of (i < max ? (lo <= i % step && (i % step < hi && ar[i].Ref__Integer_value == v) ? 1 : 0) + count_square(i + 1, lo, hi, step, min, max, ar, v) : 0)
-      if (i < vmax) {
-        assert {:msg "  Function might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@32.1--40.2) [29509]"}
+      if (i < vmax_1) {
+        assert {:msg "  Function might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@32.1--40.2) [139683]"}
           step != 0;
         if (lo <= i mod step) {
-          assert {:msg "  Function might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@32.1--40.2) [29510]"}
+          assert {:msg "  Function might not be well-formed. Divisor step might be zero. (testNestedSingleIC.vpr@32.1--40.2) [139684]"}
             step != 0;
           if (i mod step < hi) {
-            assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@32.1--40.2) [29511]"}
+            assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@32.1--40.2) [139685]"}
               i >= 0;
-            assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@32.1--40.2) [29512]"}
-              i < Seq#Length(ar);
-            assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ar[i].Ref__Integer_value (testNestedSingleIC.vpr@32.1--40.2) [29513]"}
-              HasDirectPerm(Mask, Seq#Index(ar, i), Ref__Integer_value);
+            assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@32.1--40.2) [139686]"}
+              i < Seq#Length(ar_1);
+            assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ar[i].Ref__Integer_value (testNestedSingleIC.vpr@32.1--40.2) [139687]"}
+              HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
           }
         }
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function count_square might not hold. Assertion 0 <= lo might not hold. (testNestedSingleIC.vpr@39.97--39.147) [29514]"}
+          assert {:msg "  Precondition of function count_square might not hold. Assertion 0 <= lo might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139688]"}
             0 <= lo;
-          assert {:msg "  Precondition of function count_square might not hold. Assertion lo <= hi might not hold. (testNestedSingleIC.vpr@39.97--39.147) [29515]"}
+          assert {:msg "  Precondition of function count_square might not hold. Assertion lo <= hi might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139689]"}
             lo <= hi;
-          assert {:msg "  Precondition of function count_square might not hold. Assertion hi <= step might not hold. (testNestedSingleIC.vpr@39.97--39.147) [29516]"}
+          assert {:msg "  Precondition of function count_square might not hold. Assertion hi <= step might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139690]"}
             hi <= step;
-          assert {:msg "  Precondition of function count_square might not hold. Assertion step > 0 might not hold. (testNestedSingleIC.vpr@39.97--39.147) [29517]"}
+          assert {:msg "  Precondition of function count_square might not hold. Assertion step > 0 might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139691]"}
             step > 0;
-          assert {:msg "  Precondition of function count_square might not hold. Assertion 0 <= min might not hold. (testNestedSingleIC.vpr@39.97--39.147) [29518]"}
+          assert {:msg "  Precondition of function count_square might not hold. Assertion 0 <= min might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139692]"}
             0 <= vmin;
-          assert {:msg "  Precondition of function count_square might not hold. Assertion min <= i + 1 might not hold. (testNestedSingleIC.vpr@39.97--39.147) [29519]"}
+          assert {:msg "  Precondition of function count_square might not hold. Assertion min <= i + 1 might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139693]"}
             vmin <= i + 1;
-          assert {:msg "  Precondition of function count_square might not hold. Assertion i + 1 <= max might not hold. (testNestedSingleIC.vpr@39.97--39.147) [29520]"}
-            i + 1 <= vmax;
-          assert {:msg "  Precondition of function count_square might not hold. Assertion max <= |ar| might not hold. (testNestedSingleIC.vpr@39.97--39.147) [29521]"}
-            vmax <= Seq#Length(ar);
+          assert {:msg "  Precondition of function count_square might not hold. Assertion i + 1 <= max might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139694]"}
+            i + 1 <= vmax_1;
+          assert {:msg "  Precondition of function count_square might not hold. Assertion max <= |ar| might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139695]"}
+            vmax_1 <= Seq#Length(ar_1);
           if (*) {
-            if (0 <= j_4_1 && (j_4_1 < vmax && (0 <= k_9 && (k_9 < vmax && j_4_1 != k_9)))) {
-              assert {:msg "  Precondition of function count_square might not hold. Assertion ar[j] != ar[k] might not hold. (testNestedSingleIC.vpr@39.97--39.147) [29522]"}
-                Seq#Index(ar, j_4_1) != Seq#Index(ar, k_9);
+            if (0 <= j_4_1 && (j_4_1 < vmax_1 && (0 <= k_9_1 && (k_9_1 < vmax_1 && j_4_1 != k_9_1)))) {
+              assert {:msg "  Precondition of function count_square might not hold. Assertion ar[j] != ar[k] might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139696]"}
+                Seq#Index(ar_1, j_4_1) != Seq#Index(ar_1, k_9_1);
             }
             assume false;
           }
           assume (forall j_5_1_1: int, k_10_1: int ::
-            { Seq#Index(ar, j_5_1_1), Seq#Index(ar, k_10_1) }
-            0 <= j_5_1_1 && (j_5_1_1 < vmax && (0 <= k_10_1 && (k_10_1 < vmax && j_5_1_1 != k_10_1))) ==> Seq#Index(ar, j_5_1_1) != Seq#Index(ar, k_10_1)
+            { Seq#Index(ar_1, j_5_1_1), Seq#Index(ar_1, k_10_1) }
+            0 <= j_5_1_1 && (j_5_1_1 < vmax_1 && (0 <= k_10_1 && (k_10_1 < vmax_1 && j_5_1_1 != k_10_1))) ==> Seq#Index(ar_1, j_5_1_1) != Seq#Index(ar_1, k_10_1)
           );
           havoc QPMask;
           // wild card assumptions
           havoc wildcard;
-          assert {:msg "  Precondition of function count_square might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@39.97--39.147) [29523]"}
+          assert {:msg "  Precondition of function count_square might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@39.97--39.147) [139697]"}
             (forall k_11: int ::
             
-            vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi)) ==> Mask[Seq#Index(ar, k_11), Ref__Integer_value] > NoPerm
+            vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi)) ==> Mask[Seq#Index(ar_1, k_11), Ref__Integer_value] > NoPerm
           );
           assume (forall k_11: int ::
             
-            vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi)) ==> wildcard < Mask[Seq#Index(ar, k_11), Ref__Integer_value]
+            vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi)) ==> wildcard < Mask[Seq#Index(ar_1, k_11), Ref__Integer_value]
           );
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function count_square might not hold. Fraction wildcard might be negative. (testNestedSingleIC.vpr@39.97--39.147) [29524]"}
+            assert {:msg "  Precondition of function count_square might not hold. Fraction wildcard might be negative. (testNestedSingleIC.vpr@39.97--39.147) [139698]"}
               (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              (vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi))) && dummyFunction(Heap[Seq#Index(ar, k_11), Ref__Integer_value]) ==> wildcard >= NoPerm
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              (vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi))) && dummyFunction(Heap[Seq#Index(ar_1, k_11), Ref__Integer_value]) ==> wildcard >= NoPerm
             );
           
           // -- check if receiver ar[k] is injective
-            assert {:msg "  Precondition of function count_square might not hold. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@39.97--39.147) [29525]"}
+            assert {:msg "  Precondition of function count_square might not hold. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@39.97--39.147) [139699]"}
               (forall k_11: int, k_11_1: int ::
               { neverTriggered6(k_11), neverTriggered6(k_11_1) }
-              (((k_11 != k_11_1 && (vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi)))) && (vmin <= k_11_1 && (k_11_1 < vmax && (lo <= k_11_1 mod step && k_11_1 mod step < hi)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_11) != Seq#Index(ar, k_11_1)
+              (((k_11 != k_11_1 && (vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi)))) && (vmin <= k_11_1 && (k_11_1 < vmax_1 && (lo <= k_11_1 mod step && k_11_1 mod step < hi)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_11) != Seq#Index(ar_1, k_11_1)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function count_square might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@39.97--39.147) [29526]"}
+            assert {:msg "  Precondition of function count_square might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@39.97--39.147) [139700]"}
               (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi)) ==> wildcard > NoPerm ==> Mask[Seq#Index(ar, k_11), Ref__Integer_value] > NoPerm
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi)) ==> wildcard > NoPerm ==> Mask[Seq#Index(ar_1, k_11), Ref__Integer_value] > NoPerm
             );
           
           // -- assumptions for inverse of receiver ar[k]
             assume (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              (vmin <= k_11 && (k_11 < vmax && (lo <= k_11 mod step && k_11 mod step < hi))) && NoPerm < wildcard ==> qpRange6(Seq#Index(ar, k_11)) && invRecv6(Seq#Index(ar, k_11)) == k_11
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              (vmin <= k_11 && (k_11 < vmax_1 && (lo <= k_11 mod step && k_11 mod step < hi))) && NoPerm < wildcard ==> qpRange6(Seq#Index(ar_1, k_11)) && invRecv6(Seq#Index(ar_1, k_11)) == k_11
             );
-            assume (forall o_4: Ref ::
-              { invRecv6(o_4) }
-              (vmin <= invRecv6(o_4) && (invRecv6(o_4) < vmax && (lo <= invRecv6(o_4) mod step && invRecv6(o_4) mod step < hi))) && (NoPerm < wildcard && qpRange6(o_4)) ==> Seq#Index(ar, invRecv6(o_4)) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv6(o_9) }
+              (vmin <= invRecv6(o_9) && (invRecv6(o_9) < vmax_1 && (lo <= invRecv6(o_9) mod step && invRecv6(o_9) mod step < hi))) && (NoPerm < wildcard && qpRange6(o_9)) ==> Seq#Index(ar_1, invRecv6(o_9)) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -1457,12 +1457,12 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume count_square#trigger(FrameFragment(count_square#condqp3(Heap, i + 1, lo, hi, step, vmin, vmax, ar, v_2)), i + 1, lo, hi, step, vmin, vmax, ar, v_2);
+          assume count_square#trigger(FrameFragment(count_square#condqp3(Heap, i + 1, lo, hi, step, vmin, vmax_1, ar_1, v_2)), i + 1, lo, hi, step, vmin, vmax_1, ar_1, v_2);
         }
       }
   
   // -- Translate function body
-    Result := (if i < vmax then (if lo <= i mod step && (i mod step < hi && Heap[Seq#Index(ar, i), Ref__Integer_value] == v_2) then 1 else 0) + count_square(Heap, i + 1, lo, hi, step, vmin, vmax, ar, v_2) else 0);
+    Result := (if i < vmax_1 then (if lo <= i mod step && (i mod step < hi && Heap[Seq#Index(ar_1, i), Ref__Integer_value] == v_2) then 1 else 0) + count_square(Heap, i + 1, lo, hi, step, vmin, vmax_1, ar_1, v_2) else 0);
 }
 
 // ==================================================
@@ -1470,38 +1470,38 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
 // ==================================================
 
 // Uninterpreted function definitions
-function  count_list(Heap: HeapType, i: int, hi: int, ar: (Seq int), v_2: int): int;
-function  count_list'(Heap: HeapType, i: int, hi: int, ar: (Seq int), v_2: int): int;
-axiom (forall Heap: HeapType, i: int, hi: int, ar: (Seq int), v_2: int ::
-  { count_list(Heap, i, hi, ar, v_2) }
-  count_list(Heap, i, hi, ar, v_2) == count_list'(Heap, i, hi, ar, v_2) && dummyFunction(count_list#triggerStateless(i, hi, ar, v_2))
+function  count_list(Heap: HeapType, i: int, hi: int, ar_1: (Seq int), v_2: int): int;
+function  count_list'(Heap: HeapType, i: int, hi: int, ar_1: (Seq int), v_2: int): int;
+axiom (forall Heap: HeapType, i: int, hi: int, ar_1: (Seq int), v_2: int ::
+  { count_list(Heap, i, hi, ar_1, v_2) }
+  count_list(Heap, i, hi, ar_1, v_2) == count_list'(Heap, i, hi, ar_1, v_2) && dummyFunction(count_list#triggerStateless(i, hi, ar_1, v_2))
 );
-axiom (forall Heap: HeapType, i: int, hi: int, ar: (Seq int), v_2: int ::
-  { count_list'(Heap, i, hi, ar, v_2) }
-  dummyFunction(count_list#triggerStateless(i, hi, ar, v_2))
+axiom (forall Heap: HeapType, i: int, hi: int, ar_1: (Seq int), v_2: int ::
+  { count_list'(Heap, i, hi, ar_1, v_2) }
+  dummyFunction(count_list#triggerStateless(i, hi, ar_1, v_2))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar: (Seq int), v_2: int ::
-  { state(Heap, Mask), count_list(Heap, i, hi, ar, v_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> (0 <= i && i <= hi) && hi <= Seq#Length(ar) ==> count_list(Heap, i, hi, ar, v_2) == (if i < hi then (if Seq#Index(ar, i) == v_2 then 1 else 0) + count_list'(Heap, i + 1, hi, ar, v_2) else 0)
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar_1: (Seq int), v_2: int ::
+  { state(Heap, Mask), count_list(Heap, i, hi, ar_1, v_2) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> (0 <= i && i <= hi) && hi <= Seq#Length(ar_1) ==> count_list(Heap, i, hi, ar_1, v_2) == (if i < hi then (if Seq#Index(ar_1, i) == v_2 then 1 else 0) + count_list'(Heap, i + 1, hi, ar_1, v_2) else 0)
 );
 
 // Framing axioms
-function  count_list#frame(frame: FrameType, i: int, hi: int, ar: (Seq int), v_2: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar: (Seq int), v_2: int ::
-  { state(Heap, Mask), count_list'(Heap, i, hi, ar, v_2) }
-  state(Heap, Mask) ==> count_list'(Heap, i, hi, ar, v_2) == count_list#frame(EmptyFrame, i, hi, ar, v_2)
+function  count_list#frame(frame: FrameType, i: int, hi: int, ar_1: (Seq int), v_2: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar_1: (Seq int), v_2: int ::
+  { state(Heap, Mask), count_list'(Heap, i, hi, ar_1, v_2) }
+  state(Heap, Mask) ==> count_list'(Heap, i, hi, ar_1, v_2) == count_list#frame(EmptyFrame, i, hi, ar_1, v_2)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  count_list#trigger(frame: FrameType, i: int, hi: int, ar: (Seq int), v_2: int): bool;
+function  count_list#trigger(frame: FrameType, i: int, hi: int, ar_1: (Seq int), v_2: int): bool;
 
 // State-independent trigger function
-function  count_list#triggerStateless(i: int, hi: int, ar: (Seq int), v_2: int): int;
+function  count_list#triggerStateless(i: int, hi: int, ar_1: (Seq int), v_2: int): int;
 
 // Check contract well-formedness and postcondition
-procedure count_list#definedness(i: int, hi: int, ar: (Seq int), v_2: int) returns (Result: int)
+procedure count_list#definedness(i: int, hi: int, ar_1: (Seq int), v_2: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var ExhaleWellDef0Heap: HeapType;
@@ -1517,37 +1517,37 @@ procedure count_list#definedness(i: int, hi: int, ar: (Seq int), v_2: int) retur
     assume 0 <= i;
     assume i <= hi;
     assume state(Heap, Mask);
-    assume hi <= Seq#Length(ar);
+    assume hi <= Seq#Length(ar_1);
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of (i < hi ? (ar[i] == v ? 1 : 0) + count_list(i + 1, hi, ar, v) : 0)
       if (i < hi) {
-        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@42.1--47.2) [29527]"}
+        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@42.1--47.2) [139701]"}
           i >= 0;
-        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@42.1--47.2) [29528]"}
-          i < Seq#Length(ar);
+        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@42.1--47.2) [139702]"}
+          i < Seq#Length(ar_1);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function count_list might not hold. Assertion 0 <= i + 1 might not hold. (testNestedSingleIC.vpr@46.36--46.64) [29529]"}
+          assert {:msg "  Precondition of function count_list might not hold. Assertion 0 <= i + 1 might not hold. (testNestedSingleIC.vpr@46.36--46.64) [139703]"}
             0 <= i + 1;
-          assert {:msg "  Precondition of function count_list might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@46.36--46.64) [29530]"}
+          assert {:msg "  Precondition of function count_list might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@46.36--46.64) [139704]"}
             i + 1 <= hi;
-          assert {:msg "  Precondition of function count_list might not hold. Assertion hi <= |ar| might not hold. (testNestedSingleIC.vpr@46.36--46.64) [29531]"}
-            hi <= Seq#Length(ar);
+          assert {:msg "  Precondition of function count_list might not hold. Assertion hi <= |ar| might not hold. (testNestedSingleIC.vpr@46.36--46.64) [139705]"}
+            hi <= Seq#Length(ar_1);
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume count_list#trigger(EmptyFrame, i + 1, hi, ar, v_2);
+          assume count_list#trigger(EmptyFrame, i + 1, hi, ar_1, v_2);
         }
       }
   
   // -- Translate function body
-    Result := (if i < hi then (if Seq#Index(ar, i) == v_2 then 1 else 0) + count_list(Heap, i + 1, hi, ar, v_2) else 0);
+    Result := (if i < hi then (if Seq#Index(ar_1, i) == v_2 then 1 else 0) + count_list(Heap, i + 1, hi, ar_1, v_2) else 0);
 }
 
 // ==================================================
@@ -1555,31 +1555,31 @@ procedure count_list#definedness(i: int, hi: int, ar: (Seq int), v_2: int) retur
 // ==================================================
 
 // Uninterpreted function definitions
-function  count_array(Heap: HeapType, i: int, hi: int, ar: (Seq Ref), v_2: int): int;
-function  count_array'(Heap: HeapType, i: int, hi: int, ar: (Seq Ref), v_2: int): int;
-axiom (forall Heap: HeapType, i: int, hi: int, ar: (Seq Ref), v_2: int ::
-  { count_array(Heap, i, hi, ar, v_2) }
-  count_array(Heap, i, hi, ar, v_2) == count_array'(Heap, i, hi, ar, v_2) && dummyFunction(count_array#triggerStateless(i, hi, ar, v_2))
+function  count_array(Heap: HeapType, i: int, hi: int, ar_1: (Seq Ref), v_2: int): int;
+function  count_array'(Heap: HeapType, i: int, hi: int, ar_1: (Seq Ref), v_2: int): int;
+axiom (forall Heap: HeapType, i: int, hi: int, ar_1: (Seq Ref), v_2: int ::
+  { count_array(Heap, i, hi, ar_1, v_2) }
+  count_array(Heap, i, hi, ar_1, v_2) == count_array'(Heap, i, hi, ar_1, v_2) && dummyFunction(count_array#triggerStateless(i, hi, ar_1, v_2))
 );
-axiom (forall Heap: HeapType, i: int, hi: int, ar: (Seq Ref), v_2: int ::
-  { count_array'(Heap, i, hi, ar, v_2) }
-  dummyFunction(count_array#triggerStateless(i, hi, ar, v_2))
+axiom (forall Heap: HeapType, i: int, hi: int, ar_1: (Seq Ref), v_2: int ::
+  { count_array'(Heap, i, hi, ar_1, v_2) }
+  dummyFunction(count_array#triggerStateless(i, hi, ar_1, v_2))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar: (Seq Ref), v_2: int ::
-  { state(Heap, Mask), count_array(Heap, i, hi, ar, v_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> ((0 <= i && i <= hi) && hi <= Seq#Length(ar)) && (forall j_9: int, k: int ::
-    { Seq#Index(ar, j_9), Seq#Index(ar, k) }
-    0 <= j_9 && (j_9 < hi && (0 <= k && (k < hi && j_9 != k))) ==> Seq#Index(ar, j_9) != Seq#Index(ar, k)
-  ) ==> count_array(Heap, i, hi, ar, v_2) == (if i < hi then (if Heap[Seq#Index(ar, i), Ref__Integer_value] == v_2 then 1 else 0) + count_array'(Heap, i + 1, hi, ar, v_2) else 0)
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar_1: (Seq Ref), v_2: int ::
+  { state(Heap, Mask), count_array(Heap, i, hi, ar_1, v_2) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> ((0 <= i && i <= hi) && hi <= Seq#Length(ar_1)) && (forall j: int, k: int ::
+    { Seq#Index(ar_1, j), Seq#Index(ar_1, k) }
+    0 <= j && (j < hi && (0 <= k && (k < hi && j != k))) ==> Seq#Index(ar_1, j) != Seq#Index(ar_1, k)
+  ) ==> count_array(Heap, i, hi, ar_1, v_2) == (if i < hi then (if Heap[Seq#Index(ar_1, i), Ref__Integer_value] == v_2 then 1 else 0) + count_array'(Heap, i + 1, hi, ar_1, v_2) else 0)
 );
 
 // Framing axioms
-function  count_array#frame(frame: FrameType, i: int, hi: int, ar: (Seq Ref), v_2: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar: (Seq Ref), v_2: int ::
-  { state(Heap, Mask), count_array'(Heap, i, hi, ar, v_2) }
-  state(Heap, Mask) ==> count_array'(Heap, i, hi, ar, v_2) == count_array#frame(FrameFragment(count_array#condqp4(Heap, i, hi, ar, v_2)), i, hi, ar, v_2)
+function  count_array#frame(frame: FrameType, i: int, hi: int, ar_1: (Seq Ref), v_2: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar_1: (Seq Ref), v_2: int ::
+  { state(Heap, Mask), count_array'(Heap, i, hi, ar_1, v_2) }
+  state(Heap, Mask) ==> count_array'(Heap, i, hi, ar_1, v_2) == count_array#frame(FrameFragment(count_array#condqp4(Heap, i, hi, ar_1, v_2)), i, hi, ar_1, v_2)
 );
 // ==================================================
 // Function used for framing of quantified permission (forall k: Int :: { ar[k] } 0 <= k && k < hi ==> acc(ar[k].Ref__Integer_value, wildcard)) in function count_array
@@ -1587,30 +1587,30 @@ axiom (forall Heap: HeapType, Mask: MaskType, i: int, hi: int, ar: (Seq Ref), v_
 
 function  count_array#condqp4(Heap: HeapType, i_1_1_1: int, hi_1_1: int, ar_1_1: (Seq Ref), v_1_1_1: int): int;
 function  sk_count_array#condqp4(fnAppH1: int, fnAppH2: int): int;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, i: int, hi: int, ar: (Seq Ref), v_2: int ::
-  { count_array#condqp4(Heap2Heap, i, hi, ar, v_2), count_array#condqp4(Heap1Heap, i, hi, ar, v_2), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (0 <= sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar, v_2), count_array#condqp4(Heap1Heap, i, hi, ar, v_2)) && sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar, v_2), count_array#condqp4(Heap1Heap, i, hi, ar, v_2)) < hi <==> 0 <= sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar, v_2), count_array#condqp4(Heap1Heap, i, hi, ar, v_2)) && sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar, v_2), count_array#condqp4(Heap1Heap, i, hi, ar, v_2)) < hi) && (0 <= sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar, v_2), count_array#condqp4(Heap1Heap, i, hi, ar, v_2)) && sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar, v_2), count_array#condqp4(Heap1Heap, i, hi, ar, v_2)) < hi ==> Heap2Heap[Seq#Index(ar, sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar, v_2), count_array#condqp4(Heap1Heap, i, hi, ar, v_2))), Ref__Integer_value] == Heap1Heap[Seq#Index(ar, sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar, v_2), count_array#condqp4(Heap1Heap, i, hi, ar, v_2))), Ref__Integer_value]) ==> count_array#condqp4(Heap2Heap, i, hi, ar, v_2) == count_array#condqp4(Heap1Heap, i, hi, ar, v_2)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, i: int, hi: int, ar_1: (Seq Ref), v_2: int ::
+  { count_array#condqp4(Heap2Heap, i, hi, ar_1, v_2), count_array#condqp4(Heap1Heap, i, hi, ar_1, v_2), succHeapTrans(Heap2Heap, Heap1Heap) }
+  (0 <= sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar_1, v_2), count_array#condqp4(Heap1Heap, i, hi, ar_1, v_2)) && sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar_1, v_2), count_array#condqp4(Heap1Heap, i, hi, ar_1, v_2)) < hi <==> 0 <= sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar_1, v_2), count_array#condqp4(Heap1Heap, i, hi, ar_1, v_2)) && sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar_1, v_2), count_array#condqp4(Heap1Heap, i, hi, ar_1, v_2)) < hi) && (0 <= sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar_1, v_2), count_array#condqp4(Heap1Heap, i, hi, ar_1, v_2)) && sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar_1, v_2), count_array#condqp4(Heap1Heap, i, hi, ar_1, v_2)) < hi ==> Heap2Heap[Seq#Index(ar_1, sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar_1, v_2), count_array#condqp4(Heap1Heap, i, hi, ar_1, v_2))), Ref__Integer_value] == Heap1Heap[Seq#Index(ar_1, sk_count_array#condqp4(count_array#condqp4(Heap2Heap, i, hi, ar_1, v_2), count_array#condqp4(Heap1Heap, i, hi, ar_1, v_2))), Ref__Integer_value]) ==> count_array#condqp4(Heap2Heap, i, hi, ar_1, v_2) == count_array#condqp4(Heap1Heap, i, hi, ar_1, v_2)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  count_array#trigger(frame: FrameType, i: int, hi: int, ar: (Seq Ref), v_2: int): bool;
+function  count_array#trigger(frame: FrameType, i: int, hi: int, ar_1: (Seq Ref), v_2: int): bool;
 
 // State-independent trigger function
-function  count_array#triggerStateless(i: int, hi: int, ar: (Seq Ref), v_2: int): int;
+function  count_array#triggerStateless(i: int, hi: int, ar_1: (Seq Ref), v_2: int): int;
 
 // Check contract well-formedness and postcondition
-procedure count_array#definedness(i: int, hi: int, ar: (Seq Ref), v_2: int) returns (Result: int)
+procedure count_array#definedness(i: int, hi: int, ar_1: (Seq Ref), v_2: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var j_10: int;
-  var k_15: int;
-  var k_16: int;
+  var j_4: int;
+  var k_9: int;
+  var k_2: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
-  var k_9: int;
+  var k_9_1: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1623,70 +1623,70 @@ procedure count_array#definedness(i: int, hi: int, ar: (Seq Ref), v_2: int) retu
     assume 0 <= i;
     assume i <= hi;
     assume state(Heap, Mask);
-    assume hi <= Seq#Length(ar);
+    assume hi <= Seq#Length(ar_1);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j: Int, k: Int :: { ar[j], ar[k] } 0 <= j && (j < hi && (0 <= k && (k < hi && j != k))) ==> ar[j] != ar[k])
       if (*) {
-        if (0 <= j_10 && (j_10 < hi && (0 <= k_15 && (k_15 < hi && j_10 != k_15)))) {
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@52.12--52.102) [29532]"}
-            j_10 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@52.12--52.102) [29533]"}
-            j_10 < Seq#Length(ar);
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@52.12--52.102) [29534]"}
-            k_15 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@52.12--52.102) [29535]"}
-            k_15 < Seq#Length(ar);
+        if (0 <= j_4 && (j_4 < hi && (0 <= k_9 && (k_9 < hi && j_4 != k_9)))) {
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@52.12--52.102) [139706]"}
+            j_4 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@52.12--52.102) [139707]"}
+            j_4 < Seq#Length(ar_1);
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@52.12--52.102) [139708]"}
+            k_9 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@52.12--52.102) [139709]"}
+            k_9 < Seq#Length(ar_1);
         }
         assume false;
       }
-    assume (forall j_3_1: int, k_6: int ::
-      { Seq#Index(ar, j_3_1), Seq#Index(ar, k_6) }
-      0 <= j_3_1 && (j_3_1 < hi && (0 <= k_6 && (k_6 < hi && j_3_1 != k_6))) ==> Seq#Index(ar, j_3_1) != Seq#Index(ar, k_6)
+    assume (forall j_3: int, k_6_2: int ::
+      { Seq#Index(ar_1, j_3), Seq#Index(ar_1, k_6_2) }
+      0 <= j_3 && (j_3 < hi && (0 <= k_6_2 && (k_6_2 < hi && j_3 != k_6_2))) ==> Seq#Index(ar_1, j_3) != Seq#Index(ar_1, k_6_2)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall k: Int :: { ar[k] } 0 <= k && k < hi ==> acc(ar[k].Ref__Integer_value, wildcard))
       if (*) {
-        if (0 <= k_16 && k_16 < hi) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@53.13--53.94) [29536]"}
-            k_16 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@53.13--53.94) [29537]"}
-            k_16 < Seq#Length(ar);
+        if (0 <= k_2 && k_2 < hi) {
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@53.13--53.94) [139710]"}
+            k_2 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@53.13--53.94) [139711]"}
+            k_2 < Seq#Length(ar_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@53.13--53.94) [29538]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@53.13--53.94) [139712]"}
       (forall k_8: int, k_8_1: int ::
       
-      (((k_8 != k_8_1 && (0 <= k_8 && k_8 < hi)) && (0 <= k_8_1 && k_8_1 < hi)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_8) != Seq#Index(ar, k_8_1)
+      (((k_8 != k_8_1 && (0 <= k_8 && k_8 < hi)) && (0 <= k_8_1 && k_8_1 < hi)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_8) != Seq#Index(ar_1, k_8_1)
     );
     
     // -- Define Inverse Function
       assume (forall k_8: int ::
-        { Seq#Index(ar, k_8) } { Seq#Index(ar, k_8) }
-        0 <= k_8 && k_8 < hi ==> qpRange7(Seq#Index(ar, k_8)) && invRecv7(Seq#Index(ar, k_8)) == k_8
+        { Seq#Index(ar_1, k_8) } { Seq#Index(ar_1, k_8) }
+        0 <= k_8 && k_8 < hi ==> qpRange7(Seq#Index(ar_1, k_8)) && invRecv7(Seq#Index(ar_1, k_8)) == k_8
       );
-      assume (forall o_4: Ref ::
-        { invRecv7(o_4) }
-        (0 <= invRecv7(o_4) && invRecv7(o_4) < hi) && qpRange7(o_4) ==> Seq#Index(ar, invRecv7(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv7(o_9) }
+        (0 <= invRecv7(o_9) && invRecv7(o_9) < hi) && qpRange7(o_9) ==> Seq#Index(ar_1, invRecv7(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall k_8: int ::
-        { Seq#Index(ar, k_8) } { Seq#Index(ar, k_8) }
-        0 <= k_8 && k_8 < hi ==> Seq#Index(ar, k_8) != null
+        { Seq#Index(ar_1, k_8) } { Seq#Index(ar_1, k_8) }
+        0 <= k_8 && k_8 < hi ==> Seq#Index(ar_1, k_8) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((0 <= invRecv7(o_4) && invRecv7(o_4) < hi) && qpRange7(o_4) ==> Seq#Index(ar, invRecv7(o_4)) == o_4 && Mask[o_4, Ref__Integer_value] < QPMask[o_4, Ref__Integer_value]) && (!((0 <= invRecv7(o_4) && invRecv7(o_4) < hi) && qpRange7(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((0 <= invRecv7(o_9) && invRecv7(o_9) < hi) && qpRange7(o_9) ==> Seq#Index(ar_1, invRecv7(o_9)) == o_9 && Mask[o_9, Ref__Integer_value] < QPMask[o_9, Ref__Integer_value]) && (!((0 <= invRecv7(o_9) && invRecv7(o_9) < hi) && qpRange7(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1696,75 +1696,75 @@ procedure count_array#definedness(i: int, hi: int, ar: (Seq Ref), v_2: int) retu
     
     // -- Check definedness of (i < hi ? (ar[i].Ref__Integer_value == v ? 1 : 0) + count_array(i + 1, hi, ar, v) : 0)
       if (i < hi) {
-        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@49.1--56.2) [29539]"}
+        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (testNestedSingleIC.vpr@49.1--56.2) [139713]"}
           i >= 0;
-        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@49.1--56.2) [29540]"}
-          i < Seq#Length(ar);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ar[i].Ref__Integer_value (testNestedSingleIC.vpr@49.1--56.2) [29541]"}
-          HasDirectPerm(Mask, Seq#Index(ar, i), Ref__Integer_value);
+        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (testNestedSingleIC.vpr@49.1--56.2) [139714]"}
+          i < Seq#Length(ar_1);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ar[i].Ref__Integer_value (testNestedSingleIC.vpr@49.1--56.2) [139715]"}
+          HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function count_array might not hold. Assertion 0 <= i + 1 might not hold. (testNestedSingleIC.vpr@55.55--55.84) [29542]"}
+          assert {:msg "  Precondition of function count_array might not hold. Assertion 0 <= i + 1 might not hold. (testNestedSingleIC.vpr@55.55--55.84) [139716]"}
             0 <= i + 1;
-          assert {:msg "  Precondition of function count_array might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@55.55--55.84) [29543]"}
+          assert {:msg "  Precondition of function count_array might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@55.55--55.84) [139717]"}
             i + 1 <= hi;
-          assert {:msg "  Precondition of function count_array might not hold. Assertion hi <= |ar| might not hold. (testNestedSingleIC.vpr@55.55--55.84) [29544]"}
-            hi <= Seq#Length(ar);
+          assert {:msg "  Precondition of function count_array might not hold. Assertion hi <= |ar| might not hold. (testNestedSingleIC.vpr@55.55--55.84) [139718]"}
+            hi <= Seq#Length(ar_1);
           if (*) {
-            if (0 <= j_4_1 && (j_4_1 < hi && (0 <= k_9 && (k_9 < hi && j_4_1 != k_9)))) {
-              assert {:msg "  Precondition of function count_array might not hold. Assertion ar[j] != ar[k] might not hold. (testNestedSingleIC.vpr@55.55--55.84) [29545]"}
-                Seq#Index(ar, j_4_1) != Seq#Index(ar, k_9);
+            if (0 <= j_4_1 && (j_4_1 < hi && (0 <= k_9_1 && (k_9_1 < hi && j_4_1 != k_9_1)))) {
+              assert {:msg "  Precondition of function count_array might not hold. Assertion ar[j] != ar[k] might not hold. (testNestedSingleIC.vpr@55.55--55.84) [139719]"}
+                Seq#Index(ar_1, j_4_1) != Seq#Index(ar_1, k_9_1);
             }
             assume false;
           }
           assume (forall j_5_1_1: int, k_10_1: int ::
-            { Seq#Index(ar, j_5_1_1), Seq#Index(ar, k_10_1) }
-            0 <= j_5_1_1 && (j_5_1_1 < hi && (0 <= k_10_1 && (k_10_1 < hi && j_5_1_1 != k_10_1))) ==> Seq#Index(ar, j_5_1_1) != Seq#Index(ar, k_10_1)
+            { Seq#Index(ar_1, j_5_1_1), Seq#Index(ar_1, k_10_1) }
+            0 <= j_5_1_1 && (j_5_1_1 < hi && (0 <= k_10_1 && (k_10_1 < hi && j_5_1_1 != k_10_1))) ==> Seq#Index(ar_1, j_5_1_1) != Seq#Index(ar_1, k_10_1)
           );
           havoc QPMask;
           // wild card assumptions
           havoc wildcard;
-          assert {:msg "  Precondition of function count_array might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@55.55--55.84) [29546]"}
+          assert {:msg "  Precondition of function count_array might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@55.55--55.84) [139720]"}
             (forall k_11: int ::
             
-            0 <= k_11 && k_11 < hi ==> Mask[Seq#Index(ar, k_11), Ref__Integer_value] > NoPerm
+            0 <= k_11 && k_11 < hi ==> Mask[Seq#Index(ar_1, k_11), Ref__Integer_value] > NoPerm
           );
           assume (forall k_11: int ::
             
-            0 <= k_11 && k_11 < hi ==> wildcard < Mask[Seq#Index(ar, k_11), Ref__Integer_value]
+            0 <= k_11 && k_11 < hi ==> wildcard < Mask[Seq#Index(ar_1, k_11), Ref__Integer_value]
           );
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function count_array might not hold. Fraction wildcard might be negative. (testNestedSingleIC.vpr@55.55--55.84) [29547]"}
+            assert {:msg "  Precondition of function count_array might not hold. Fraction wildcard might be negative. (testNestedSingleIC.vpr@55.55--55.84) [139721]"}
               (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              (0 <= k_11 && k_11 < hi) && dummyFunction(Heap[Seq#Index(ar, k_11), Ref__Integer_value]) ==> wildcard >= NoPerm
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              (0 <= k_11 && k_11 < hi) && dummyFunction(Heap[Seq#Index(ar_1, k_11), Ref__Integer_value]) ==> wildcard >= NoPerm
             );
           
           // -- check if receiver ar[k] is injective
-            assert {:msg "  Precondition of function count_array might not hold. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@55.55--55.84) [29548]"}
+            assert {:msg "  Precondition of function count_array might not hold. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@55.55--55.84) [139722]"}
               (forall k_11: int, k_11_1: int ::
               { neverTriggered8(k_11), neverTriggered8(k_11_1) }
-              (((k_11 != k_11_1 && (0 <= k_11 && k_11 < hi)) && (0 <= k_11_1 && k_11_1 < hi)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_11) != Seq#Index(ar, k_11_1)
+              (((k_11 != k_11_1 && (0 <= k_11 && k_11 < hi)) && (0 <= k_11_1 && k_11_1 < hi)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_11) != Seq#Index(ar_1, k_11_1)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function count_array might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@55.55--55.84) [29549]"}
+            assert {:msg "  Precondition of function count_array might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@55.55--55.84) [139723]"}
               (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              0 <= k_11 && k_11 < hi ==> wildcard > NoPerm ==> Mask[Seq#Index(ar, k_11), Ref__Integer_value] > NoPerm
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              0 <= k_11 && k_11 < hi ==> wildcard > NoPerm ==> Mask[Seq#Index(ar_1, k_11), Ref__Integer_value] > NoPerm
             );
           
           // -- assumptions for inverse of receiver ar[k]
             assume (forall k_11: int ::
-              { Seq#Index(ar, k_11) } { Seq#Index(ar, k_11) }
-              (0 <= k_11 && k_11 < hi) && NoPerm < wildcard ==> qpRange8(Seq#Index(ar, k_11)) && invRecv8(Seq#Index(ar, k_11)) == k_11
+              { Seq#Index(ar_1, k_11) } { Seq#Index(ar_1, k_11) }
+              (0 <= k_11 && k_11 < hi) && NoPerm < wildcard ==> qpRange8(Seq#Index(ar_1, k_11)) && invRecv8(Seq#Index(ar_1, k_11)) == k_11
             );
-            assume (forall o_4: Ref ::
-              { invRecv8(o_4) }
-              (0 <= invRecv8(o_4) && invRecv8(o_4) < hi) && (NoPerm < wildcard && qpRange8(o_4)) ==> Seq#Index(ar, invRecv8(o_4)) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv8(o_9) }
+              (0 <= invRecv8(o_9) && invRecv8(o_9) < hi) && (NoPerm < wildcard && qpRange8(o_9)) ==> Seq#Index(ar_1, invRecv8(o_9)) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -1774,31 +1774,31 @@ procedure count_array#definedness(i: int, hi: int, ar: (Seq Ref), v_2: int) retu
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume count_array#trigger(FrameFragment(count_array#condqp4(Heap, i + 1, hi, ar, v_2)), i + 1, hi, ar, v_2);
+          assume count_array#trigger(FrameFragment(count_array#condqp4(Heap, i + 1, hi, ar_1, v_2)), i + 1, hi, ar_1, v_2);
         }
       }
   
   // -- Translate function body
-    Result := (if i < hi then (if Heap[Seq#Index(ar, i), Ref__Integer_value] == v_2 then 1 else 0) + count_array(Heap, i + 1, hi, ar, v_2) else 0);
+    Result := (if i < hi then (if Heap[Seq#Index(ar_1, i), Ref__Integer_value] == v_2 then 1 else 0) + count_array(Heap, i + 1, hi, ar_1, v_2) else 0);
 }
 
 // ==================================================
 // Translation of method Ref__loop_main_20
 // ==================================================
 
-procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), N: int, M: int) returns ()
+procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), N: int, M_1: int) returns ()
   modifies Heap, Mask;
 {
-  var j_25: int;
-  var k_18: int;
-  var j_18: int;
+  var j_10: int;
+  var k_22: int;
+  var j_7: int;
   var QPMask: MaskType;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var j_12: int;
-  var j_13: int;
+  var j_22: int;
+  var j_9: int;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var i_4_1: int;
@@ -1826,73 +1826,73 @@ procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), N: 
       }
     assume (forall i_1: int ::
       
-      0 <= i_1 && (i_1 < M && 0 < N) ==> M * N == Seq#Length(ar)
+      0 <= i_1 && (i_1 < M_1 && 0 < N) ==> M_1 * N == Seq#Length(ar_1)
     );
     assume state(Heap, Mask);
-    assume M * N <= Seq#Length(ar);
+    assume M_1 * N <= Seq#Length(ar_1);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j: Int, k: Int :: { ar[j], ar[k] } 0 <= j && (j < M * N && (0 <= k && (k < M * N && j != k))) ==> ar[j] != ar[k])
       if (*) {
-        if (0 <= j_25 && (j_25 < M * N && (0 <= k_18 && (k_18 < M * N && j_25 != k_18)))) {
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@63.12--63.104) [29550]"}
-            j_25 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@63.12--63.104) [29551]"}
-            j_25 < Seq#Length(ar);
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@63.12--63.104) [29552]"}
-            k_18 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@63.12--63.104) [29553]"}
-            k_18 < Seq#Length(ar);
+        if (0 <= j_10 && (j_10 < M_1 * N && (0 <= k_22 && (k_22 < M_1 * N && j_10 != k_22)))) {
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@63.12--63.104) [139724]"}
+            j_10 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@63.12--63.104) [139725]"}
+            j_10 < Seq#Length(ar_1);
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@63.12--63.104) [139726]"}
+            k_22 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@63.12--63.104) [139727]"}
+            k_22 < Seq#Length(ar_1);
         }
         assume false;
       }
-    assume (forall j_1: int, k_1_1: int ::
-      { Seq#Index(ar, j_1), Seq#Index(ar, k_1_1) }
-      0 <= j_1 && (j_1 < M * N && (0 <= k_1_1 && (k_1_1 < M * N && j_1 != k_1_1))) ==> Seq#Index(ar, j_1) != Seq#Index(ar, k_1_1)
+    assume (forall j_1: int, k_1: int ::
+      { Seq#Index(ar_1, j_1), Seq#Index(ar_1, k_1) }
+      0 <= j_1 && (j_1 < M_1 * N && (0 <= k_1 && (k_1 < M_1 * N && j_1 != k_1))) ==> Seq#Index(ar_1, j_1) != Seq#Index(ar_1, k_1)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j: Int :: { ar[j] } 0 <= j && j < M * N ==> acc(ar[j].Ref__Integer_value, write))
       if (*) {
-        if (0 <= j_18 && j_18 < M * N) {
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@64.13--64.94) [29554]"}
-            j_18 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@64.13--64.94) [29555]"}
-            j_18 < Seq#Length(ar);
+        if (0 <= j_7 && j_7 < M_1 * N) {
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@64.13--64.94) [139728]"}
+            j_7 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@64.13--64.94) [139729]"}
+            j_7 < Seq#Length(ar_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ar[j].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@64.13--64.94) [29556]"}
-      (forall j_3_1: int, j_3_2: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource ar[j].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@64.13--64.94) [139730]"}
+      (forall j_3: int, j_3_1: int ::
       
-      (((j_3_1 != j_3_2 && (0 <= j_3_1 && j_3_1 < M * N)) && (0 <= j_3_2 && j_3_2 < M * N)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar, j_3_1) != Seq#Index(ar, j_3_2)
+      (((j_3 != j_3_1 && (0 <= j_3 && j_3 < M_1 * N)) && (0 <= j_3_1 && j_3_1 < M_1 * N)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar_1, j_3) != Seq#Index(ar_1, j_3_1)
     );
     
     // -- Define Inverse Function
-      assume (forall j_3_1: int ::
-        { Seq#Index(ar, j_3_1) } { Seq#Index(ar, j_3_1) }
-        (0 <= j_3_1 && j_3_1 < M * N) && NoPerm < FullPerm ==> qpRange9(Seq#Index(ar, j_3_1)) && invRecv9(Seq#Index(ar, j_3_1)) == j_3_1
+      assume (forall j_3: int ::
+        { Seq#Index(ar_1, j_3) } { Seq#Index(ar_1, j_3) }
+        (0 <= j_3 && j_3 < M_1 * N) && NoPerm < FullPerm ==> qpRange9(Seq#Index(ar_1, j_3)) && invRecv9(Seq#Index(ar_1, j_3)) == j_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv9(o_4) }
-        ((0 <= invRecv9(o_4) && invRecv9(o_4) < M * N) && NoPerm < FullPerm) && qpRange9(o_4) ==> Seq#Index(ar, invRecv9(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv9(o_9) }
+        ((0 <= invRecv9(o_9) && invRecv9(o_9) < M_1 * N) && NoPerm < FullPerm) && qpRange9(o_9) ==> Seq#Index(ar_1, invRecv9(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall j_3_1: int ::
-        { Seq#Index(ar, j_3_1) } { Seq#Index(ar, j_3_1) }
-        0 <= j_3_1 && j_3_1 < M * N ==> Seq#Index(ar, j_3_1) != null
+      assume (forall j_3: int ::
+        { Seq#Index(ar_1, j_3) } { Seq#Index(ar_1, j_3) }
+        0 <= j_3 && j_3 < M_1 * N ==> Seq#Index(ar_1, j_3) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv9(o_4) && invRecv9(o_4) < M * N) && NoPerm < FullPerm) && qpRange9(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(ar, invRecv9(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv9(o_4) && invRecv9(o_4) < M * N) && NoPerm < FullPerm) && qpRange9(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv9(o_9) && invRecv9(o_9) < M_1 * N) && NoPerm < FullPerm) && qpRange9(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(ar_1, invRecv9(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv9(o_9) && invRecv9(o_9) < M_1 * N) && NoPerm < FullPerm) && qpRange9(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1913,53 +1913,53 @@ procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), N: 
       if (*) {
         assume false;
       }
-    assume (forall i_3: int ::
+    assume (forall i_3_2: int ::
       
-      0 <= i_3 && (i_3 < M && 0 < N) ==> M * N == Seq#Length(ar)
+      0 <= i_3_2 && (i_3_2 < M_1 && 0 < N) ==> M_1 * N == Seq#Length(ar_1)
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall j: Int :: { ar[j] } 0 <= j && j < M * N ==> acc(ar[j].Ref__Integer_value, write))
       if (*) {
-        if (0 <= j_12 && j_12 < M * N) {
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@66.12--66.93) [29557]"}
-            j_12 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@66.12--66.93) [29558]"}
-            j_12 < Seq#Length(ar);
+        if (0 <= j_22 && j_22 < M_1 * N) {
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@66.12--66.93) [139731]"}
+            j_22 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@66.12--66.93) [139732]"}
+            j_22 < Seq#Length(ar_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ar[j].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@66.12--66.93) [29559]"}
-      (forall j_5_1: int, j_5_2: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource ar[j].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@66.12--66.93) [139733]"}
+      (forall j_5: int, j_5_1: int ::
       
-      (((j_5_1 != j_5_2 && (0 <= j_5_1 && j_5_1 < M * N)) && (0 <= j_5_2 && j_5_2 < M * N)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar, j_5_1) != Seq#Index(ar, j_5_2)
+      (((j_5 != j_5_1 && (0 <= j_5 && j_5 < M_1 * N)) && (0 <= j_5_1 && j_5_1 < M_1 * N)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar_1, j_5) != Seq#Index(ar_1, j_5_1)
     );
     
     // -- Define Inverse Function
-      assume (forall j_5_1: int ::
-        { Seq#Index(ar, j_5_1) } { Seq#Index(ar, j_5_1) }
-        (0 <= j_5_1 && j_5_1 < M * N) && NoPerm < FullPerm ==> qpRange10(Seq#Index(ar, j_5_1)) && invRecv10(Seq#Index(ar, j_5_1)) == j_5_1
+      assume (forall j_5: int ::
+        { Seq#Index(ar_1, j_5) } { Seq#Index(ar_1, j_5) }
+        (0 <= j_5 && j_5 < M_1 * N) && NoPerm < FullPerm ==> qpRange10(Seq#Index(ar_1, j_5)) && invRecv10(Seq#Index(ar_1, j_5)) == j_5
       );
-      assume (forall o_4: Ref ::
-        { invRecv10(o_4) }
-        ((0 <= invRecv10(o_4) && invRecv10(o_4) < M * N) && NoPerm < FullPerm) && qpRange10(o_4) ==> Seq#Index(ar, invRecv10(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv10(o_9) }
+        ((0 <= invRecv10(o_9) && invRecv10(o_9) < M_1 * N) && NoPerm < FullPerm) && qpRange10(o_9) ==> Seq#Index(ar_1, invRecv10(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall j_5_1: int ::
-        { Seq#Index(ar, j_5_1) } { Seq#Index(ar, j_5_1) }
-        0 <= j_5_1 && j_5_1 < M * N ==> Seq#Index(ar, j_5_1) != null
+      assume (forall j_5: int ::
+        { Seq#Index(ar_1, j_5) } { Seq#Index(ar_1, j_5) }
+        0 <= j_5 && j_5 < M_1 * N ==> Seq#Index(ar_1, j_5) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv10(o_4) && invRecv10(o_4) < M * N) && NoPerm < FullPerm) && qpRange10(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(ar, invRecv10(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv10(o_4) && invRecv10(o_4) < M * N) && NoPerm < FullPerm) && qpRange10(o_4)) ==> QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv10(o_9) && invRecv10(o_9) < M_1 * N) && NoPerm < FullPerm) && qpRange10(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(ar_1, invRecv10(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv10(o_9) && invRecv10(o_9) < M_1 * N) && NoPerm < FullPerm) && qpRange10(o_9)) ==> QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -1967,19 +1967,19 @@ procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), N: 
     
     // -- Check definedness of (forall j: Int :: { ar[j] } 0 <= j && j < M * N ==> ar[j].Ref__Integer_value == 0)
       if (*) {
-        if (0 <= j_13 && j_13 < M * N) {
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@67.12--67.88) [29560]"}
-            j_13 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@67.12--67.88) [29561]"}
-            j_13 < Seq#Length(ar);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ar[j].Ref__Integer_value (testNestedSingleIC.vpr@67.12--67.88) [29562]"}
-            HasDirectPerm(PostMask, Seq#Index(ar, j_13), Ref__Integer_value);
+        if (0 <= j_9 && j_9 < M_1 * N) {
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@67.12--67.88) [139734]"}
+            j_9 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@67.12--67.88) [139735]"}
+            j_9 < Seq#Length(ar_1);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ar[j].Ref__Integer_value (testNestedSingleIC.vpr@67.12--67.88) [139736]"}
+            HasDirectPerm(PostMask, Seq#Index(ar_1, j_9), Ref__Integer_value);
         }
         assume false;
       }
     assume (forall j_7_1: int ::
-      { Seq#Index(ar, j_7_1) }
-      0 <= j_7_1 && j_7_1 < M * N ==> PostHeap[Seq#Index(ar, j_7_1), Ref__Integer_value] == 0
+      { Seq#Index(ar_1, j_7_1) }
+      0 <= j_7_1 && j_7_1 < M_1 * N ==> PostHeap[Seq#Index(ar_1, j_7_1), Ref__Integer_value] == 0
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -1995,15 +1995,15 @@ procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), N: 
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     if (*) {
-      if (0 <= i_4_1 && (i_4_1 < M && 0 < N)) {
-        assert {:msg "  Postcondition of Ref__loop_main_20 might not hold. Assertion M * N == |ar| might not hold. (testNestedSingleIC.vpr@65.12--65.79) [29563]"}
-          M * N == Seq#Length(ar);
+      if (0 <= i_4_1 && (i_4_1 < M_1 && 0 < N)) {
+        assert {:msg "  Postcondition of Ref__loop_main_20 might not hold. Assertion M * N == |ar| might not hold. (testNestedSingleIC.vpr@65.12--65.79) [139737]"}
+          M_1 * N == Seq#Length(ar_1);
       }
       assume false;
     }
     assume (forall i_5_1_1: int ::
       
-      0 <= i_5_1_1 && (i_5_1_1 < M && 0 < N) ==> M * N == Seq#Length(ar)
+      0 <= i_5_1_1 && (i_5_1_1 < M_1 && 0 < N) ==> M_1 * N == Seq#Length(ar_1)
     );
     havoc QPMask;
     
@@ -2011,51 +2011,51 @@ procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), N: 
       
     
     // -- check if receiver ar[j] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource ar[j].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@66.12--66.93) [29564]"}
-        (forall j_8: int, j_8_1: int ::
-        { neverTriggered11(j_8), neverTriggered11(j_8_1) }
-        (((j_8 != j_8_1 && (0 <= j_8 && j_8 < M * N)) && (0 <= j_8_1 && j_8_1 < M * N)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar, j_8) != Seq#Index(ar, j_8_1)
+      assert {:msg "  Contract might not be well-formed. Quantified resource ar[j].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@66.12--66.93) [139738]"}
+        (forall j_8_2: int, j_8_3: int ::
+        { neverTriggered11(j_8_2), neverTriggered11(j_8_3) }
+        (((j_8_2 != j_8_3 && (0 <= j_8_2 && j_8_2 < M_1 * N)) && (0 <= j_8_3 && j_8_3 < M_1 * N)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar_1, j_8_2) != Seq#Index(ar_1, j_8_3)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of Ref__loop_main_20 might not hold. There might be insufficient permission to access ar[j].Ref__Integer_value (testNestedSingleIC.vpr@66.12--66.93) [29565]"}
-        (forall j_8: int ::
-        { Seq#Index(ar, j_8) } { Seq#Index(ar, j_8) }
-        0 <= j_8 && j_8 < M * N ==> Mask[Seq#Index(ar, j_8), Ref__Integer_value] >= FullPerm
+      assert {:msg "  Postcondition of Ref__loop_main_20 might not hold. There might be insufficient permission to access ar[j].Ref__Integer_value (testNestedSingleIC.vpr@66.12--66.93) [139739]"}
+        (forall j_8_2: int ::
+        { Seq#Index(ar_1, j_8_2) } { Seq#Index(ar_1, j_8_2) }
+        0 <= j_8_2 && j_8_2 < M_1 * N ==> Mask[Seq#Index(ar_1, j_8_2), Ref__Integer_value] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver ar[j]
-      assume (forall j_8: int ::
-        { Seq#Index(ar, j_8) } { Seq#Index(ar, j_8) }
-        (0 <= j_8 && j_8 < M * N) && NoPerm < FullPerm ==> qpRange11(Seq#Index(ar, j_8)) && invRecv11(Seq#Index(ar, j_8)) == j_8
+      assume (forall j_8_2: int ::
+        { Seq#Index(ar_1, j_8_2) } { Seq#Index(ar_1, j_8_2) }
+        (0 <= j_8_2 && j_8_2 < M_1 * N) && NoPerm < FullPerm ==> qpRange11(Seq#Index(ar_1, j_8_2)) && invRecv11(Seq#Index(ar_1, j_8_2)) == j_8_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv11(o_4) }
-        (0 <= invRecv11(o_4) && invRecv11(o_4) < M * N) && (NoPerm < FullPerm && qpRange11(o_4)) ==> Seq#Index(ar, invRecv11(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv11(o_9) }
+        (0 <= invRecv11(o_9) && invRecv11(o_9) < M_1 * N) && (NoPerm < FullPerm && qpRange11(o_9)) ==> Seq#Index(ar_1, invRecv11(o_9)) == o_9
       );
     
     // -- assume permission updates for field Ref__Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((0 <= invRecv11(o_4) && invRecv11(o_4) < M * N) && (NoPerm < FullPerm && qpRange11(o_4)) ==> Seq#Index(ar, invRecv11(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!((0 <= invRecv11(o_4) && invRecv11(o_4) < M * N) && (NoPerm < FullPerm && qpRange11(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((0 <= invRecv11(o_9) && invRecv11(o_9) < M_1 * N) && (NoPerm < FullPerm && qpRange11(o_9)) ==> Seq#Index(ar_1, invRecv11(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!((0 <= invRecv11(o_9) && invRecv11(o_9) < M_1 * N) && (NoPerm < FullPerm && qpRange11(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (0 <= j_9_1 && j_9_1 < M * N) {
-        assert {:msg "  Postcondition of Ref__loop_main_20 might not hold. Assertion ar[j].Ref__Integer_value == 0 might not hold. (testNestedSingleIC.vpr@67.12--67.88) [29566]"}
-          Heap[Seq#Index(ar, j_9_1), Ref__Integer_value] == 0;
+      if (0 <= j_9_1 && j_9_1 < M_1 * N) {
+        assert {:msg "  Postcondition of Ref__loop_main_20 might not hold. Assertion ar[j].Ref__Integer_value == 0 might not hold. (testNestedSingleIC.vpr@67.12--67.88) [139740]"}
+          Heap[Seq#Index(ar_1, j_9_1), Ref__Integer_value] == 0;
       }
       assume false;
     }
     assume (forall j_10_1: int ::
-      { Seq#Index(ar, j_10_1) }
-      0 <= j_10_1 && j_10_1 < M * N ==> Heap[Seq#Index(ar, j_10_1), Ref__Integer_value] == 0
+      { Seq#Index(ar_1, j_10_1) }
+      0 <= j_10_1 && j_10_1 < M_1 * N ==> Heap[Seq#Index(ar_1, j_10_1), Ref__Integer_value] == 0
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -2067,7 +2067,7 @@ procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), N: 
 // Translation of method Ref__loop_body_20
 // ==================================================
 
-procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), j_9: int, i: int, N: int, M: int) returns ()
+procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), j: int, i: int, N: int, M_1: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -2096,23 +2096,23 @@ procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), j_9
     assume current_thread_id >= 0;
     assume state(Heap, Mask);
     assume 0 <= i;
-    assume i < M;
-    assume 0 <= j_9;
-    assume j_9 < N;
+    assume i < M_1;
+    assume 0 <= j;
+    assume j < N;
     assume state(Heap, Mask);
-    assume M * N == Seq#Length(ar);
+    assume M_1 * N == Seq#Length(ar_1);
     assume state(Heap, Mask);
-    assume i * N + j_9 < Seq#Length(ar);
+    assume i * N + j < Seq#Length(ar_1);
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(ar[i * N + j].Ref__Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might be negative. (testNestedSingleIC.vpr@78.12--78.56) [29567]"}
-        i * N + j_9 >= 0;
-      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might exceed sequence length. (testNestedSingleIC.vpr@78.12--78.56) [29568]"}
-        i * N + j_9 < Seq#Length(ar);
+      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might be negative. (testNestedSingleIC.vpr@78.12--78.56) [139741]"}
+        i * N + j >= 0;
+      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might exceed sequence length. (testNestedSingleIC.vpr@78.12--78.56) [139742]"}
+        i * N + j < Seq#Length(ar_1);
     perm := FullPerm;
-    assume Seq#Index(ar, i * N + j_9) != null;
-    Mask := Mask[Seq#Index(ar, i * N + j_9), Ref__Integer_value:=Mask[Seq#Index(ar, i * N + j_9), Ref__Integer_value] + perm];
+    assume Seq#Index(ar_1, i * N + j) != null;
+    Mask := Mask[Seq#Index(ar_1, i * N + j), Ref__Integer_value:=Mask[Seq#Index(ar_1, i * N + j), Ref__Integer_value] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -2127,32 +2127,32 @@ procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), j_9
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     assume 0 <= i;
-    assume i < M;
-    assume 0 <= j_9;
-    assume j_9 < N;
+    assume i < M_1;
+    assume 0 <= j;
+    assume j < N;
     assume state(PostHeap, PostMask);
-    assume M * N == Seq#Length(ar);
+    assume M_1 * N == Seq#Length(ar_1);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(ar[i * N + j].Ref__Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might be negative. (testNestedSingleIC.vpr@81.11--81.55) [29569]"}
-        i * N + j_9 >= 0;
-      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might exceed sequence length. (testNestedSingleIC.vpr@81.11--81.55) [29570]"}
-        i * N + j_9 < Seq#Length(ar);
+      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might be negative. (testNestedSingleIC.vpr@81.11--81.55) [139743]"}
+        i * N + j >= 0;
+      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might exceed sequence length. (testNestedSingleIC.vpr@81.11--81.55) [139744]"}
+        i * N + j < Seq#Length(ar_1);
     perm := FullPerm;
-    assume Seq#Index(ar, i * N + j_9) != null;
-    PostMask := PostMask[Seq#Index(ar, i * N + j_9), Ref__Integer_value:=PostMask[Seq#Index(ar, i * N + j_9), Ref__Integer_value] + perm];
+    assume Seq#Index(ar_1, i * N + j) != null;
+    PostMask := PostMask[Seq#Index(ar_1, i * N + j), Ref__Integer_value:=PostMask[Seq#Index(ar_1, i * N + j), Ref__Integer_value] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of ar[i * N + j].Ref__Integer_value == 0
-      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might be negative. (testNestedSingleIC.vpr@82.11--82.48) [29571]"}
-        i * N + j_9 >= 0;
-      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might exceed sequence length. (testNestedSingleIC.vpr@82.11--82.48) [29572]"}
-        i * N + j_9 < Seq#Length(ar);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ar[i * N + j].Ref__Integer_value (testNestedSingleIC.vpr@82.11--82.48) [29573]"}
-        HasDirectPerm(PostMask, Seq#Index(ar, i * N + j_9), Ref__Integer_value);
-    assume PostHeap[Seq#Index(ar, i * N + j_9), Ref__Integer_value] == 0;
+      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might be negative. (testNestedSingleIC.vpr@82.11--82.48) [139745]"}
+        i * N + j >= 0;
+      assert {:msg "  Contract might not be well-formed. Index ar[i * N + j] into ar might exceed sequence length. (testNestedSingleIC.vpr@82.11--82.48) [139746]"}
+        i * N + j < Seq#Length(ar_1);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ar[i * N + j].Ref__Integer_value (testNestedSingleIC.vpr@82.11--82.48) [139747]"}
+        HasDirectPerm(PostMask, Seq#Index(ar_1, i * N + j), Ref__Integer_value);
+    assume PostHeap[Seq#Index(ar_1, i * N + j), Ref__Integer_value] == 0;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -2164,11 +2164,11 @@ procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), j_9
   // -- Translating statement: __flatten_2 := ar[i * N + j] -- testNestedSingleIC.vpr@86.3--86.31
     
     // -- Check definedness of ar[i * N + j]
-      assert {:msg "  Assignment might fail. Index ar[i * N + j] into ar might be negative. (testNestedSingleIC.vpr@86.3--86.31) [29574]"}
-        i * N + j_9 >= 0;
-      assert {:msg "  Assignment might fail. Index ar[i * N + j] into ar might exceed sequence length. (testNestedSingleIC.vpr@86.3--86.31) [29575]"}
-        i * N + j_9 < Seq#Length(ar);
-    __flatten_2 := Seq#Index(ar, i * N + j_9);
+      assert {:msg "  Assignment might fail. Index ar[i * N + j] into ar might be negative. (testNestedSingleIC.vpr@86.3--86.31) [139748]"}
+        i * N + j >= 0;
+      assert {:msg "  Assignment might fail. Index ar[i * N + j] into ar might exceed sequence length. (testNestedSingleIC.vpr@86.3--86.31) [139749]"}
+        i * N + j < Seq#Length(ar_1);
+    __flatten_2 := Seq#Index(ar_1, i * N + j);
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_3 := 0 -- testNestedSingleIC.vpr@87.3--87.19
@@ -2176,7 +2176,7 @@ procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), j_9
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_2.Ref__Integer_value := __flatten_3 -- testNestedSingleIC.vpr@88.3--88.48
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_2.Ref__Integer_value (testNestedSingleIC.vpr@88.3--88.48) [29576]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_2.Ref__Integer_value (testNestedSingleIC.vpr@88.3--88.48) [139750]"}
       FullPerm == Mask[__flatten_2, Ref__Integer_value];
     Heap := Heap[__flatten_2, Ref__Integer_value:=__flatten_3];
     assume state(Heap, Mask);
@@ -2184,24 +2184,24 @@ procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), j_9
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion 0 <= i might not hold. (testNestedSingleIC.vpr@79.11--79.55) [29577]"}
+    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion 0 <= i might not hold. (testNestedSingleIC.vpr@79.11--79.55) [139751]"}
       0 <= i;
-    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion i < M might not hold. (testNestedSingleIC.vpr@79.11--79.55) [29578]"}
-      i < M;
-    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion 0 <= j might not hold. (testNestedSingleIC.vpr@79.11--79.55) [29579]"}
-      0 <= j_9;
-    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion j < N might not hold. (testNestedSingleIC.vpr@79.11--79.55) [29580]"}
-      j_9 < N;
-    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion M * N == |ar| might not hold. (testNestedSingleIC.vpr@80.11--80.24) [29581]"}
-      M * N == Seq#Length(ar);
+    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion i < M might not hold. (testNestedSingleIC.vpr@79.11--79.55) [139752]"}
+      i < M_1;
+    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion 0 <= j might not hold. (testNestedSingleIC.vpr@79.11--79.55) [139753]"}
+      0 <= j;
+    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion j < N might not hold. (testNestedSingleIC.vpr@79.11--79.55) [139754]"}
+      j < N;
+    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion M * N == |ar| might not hold. (testNestedSingleIC.vpr@80.11--80.24) [139755]"}
+      M_1 * N == Seq#Length(ar_1);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. There might be insufficient permission to access ar[i * N + j].Ref__Integer_value (testNestedSingleIC.vpr@81.11--81.55) [29582]"}
-        perm <= Mask[Seq#Index(ar, i * N + j_9), Ref__Integer_value];
+      assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. There might be insufficient permission to access ar[i * N + j].Ref__Integer_value (testNestedSingleIC.vpr@81.11--81.55) [139756]"}
+        perm <= Mask[Seq#Index(ar_1, i * N + j), Ref__Integer_value];
     }
-    Mask := Mask[Seq#Index(ar, i * N + j_9), Ref__Integer_value:=Mask[Seq#Index(ar, i * N + j_9), Ref__Integer_value] - perm];
-    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion ar[i * N + j].Ref__Integer_value == 0 might not hold. (testNestedSingleIC.vpr@82.11--82.48) [29583]"}
-      Heap[Seq#Index(ar, i * N + j_9), Ref__Integer_value] == 0;
+    Mask := Mask[Seq#Index(ar_1, i * N + j), Ref__Integer_value:=Mask[Seq#Index(ar_1, i * N + j), Ref__Integer_value] - perm];
+    assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion ar[i * N + j].Ref__Integer_value == 0 might not hold. (testNestedSingleIC.vpr@82.11--82.48) [139757]"}
+      Heap[Seq#Index(ar_1, i * N + j), Ref__Integer_value] == 0;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -2212,28 +2212,28 @@ procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar: (Seq Ref), j_9
 // Translation of method Ref__zero_array
 // ==================================================
 
-procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref), M: int, N: int) returns ()
+procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), M_1: int, N: int) returns ()
   modifies Heap, Mask;
 {
-  var j_14: int;
-  var k_31: int;
-  var k_32: int;
+  var j_23: int;
+  var k_24: int;
+  var k_21: int;
   var QPMask: MaskType;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var k_22: int;
-  var k_23: int;
+  var k_32: int;
+  var k_37: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var i: int;
-  var j_2_1: int;
+  var j_2_2: int;
   var k_11: int;
   var ExhaleHeap: HeapType;
-  var k_9: int;
+  var k_9_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2249,74 +2249,74 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref), M: in
     assume state(Heap, Mask);
     assume current_thread_id >= 0;
     assume state(Heap, Mask);
-    assume M > 0;
+    assume M_1 > 0;
     assume state(Heap, Mask);
     assume N > 0;
     assume state(Heap, Mask);
-    assume M * N == Seq#Length(ar);
+    assume M_1 * N == Seq#Length(ar_1);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j: Int, k: Int :: { ar[j], ar[k] } 0 <= j && (j < |ar| && (0 <= k && (k < |ar| && j != k))) ==> ar[j] != ar[k])
       if (*) {
-        if (0 <= j_14 && (j_14 < Seq#Length(ar) && (0 <= k_31 && (k_31 < Seq#Length(ar) && j_14 != k_31)))) {
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@97.12--97.106) [29584]"}
-            j_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@97.12--97.106) [29585]"}
-            j_14 < Seq#Length(ar);
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@97.12--97.106) [29586]"}
-            k_31 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@97.12--97.106) [29587]"}
-            k_31 < Seq#Length(ar);
+        if (0 <= j_23 && (j_23 < Seq#Length(ar_1) && (0 <= k_24 && (k_24 < Seq#Length(ar_1) && j_23 != k_24)))) {
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might be negative. (testNestedSingleIC.vpr@97.12--97.106) [139758]"}
+            j_23 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[j] into ar might exceed sequence length. (testNestedSingleIC.vpr@97.12--97.106) [139759]"}
+            j_23 < Seq#Length(ar_1);
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@97.12--97.106) [139760]"}
+            k_24 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@97.12--97.106) [139761]"}
+            k_24 < Seq#Length(ar_1);
         }
         assume false;
       }
-    assume (forall j_1: int, k_1_1: int ::
-      { Seq#Index(ar, j_1), Seq#Index(ar, k_1_1) }
-      0 <= j_1 && (j_1 < Seq#Length(ar) && (0 <= k_1_1 && (k_1_1 < Seq#Length(ar) && j_1 != k_1_1))) ==> Seq#Index(ar, j_1) != Seq#Index(ar, k_1_1)
+    assume (forall j_1: int, k_1: int ::
+      { Seq#Index(ar_1, j_1), Seq#Index(ar_1, k_1) }
+      0 <= j_1 && (j_1 < Seq#Length(ar_1) && (0 <= k_1 && (k_1 < Seq#Length(ar_1) && j_1 != k_1))) ==> Seq#Index(ar_1, j_1) != Seq#Index(ar_1, k_1)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall k: Int :: { ar[k] } 0 <= k && k < |ar| ==> acc(ar[k].Ref__Integer_value, write))
       if (*) {
-        if (0 <= k_32 && k_32 < Seq#Length(ar)) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@98.13--98.93) [29588]"}
-            k_32 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@98.13--98.93) [29589]"}
-            k_32 < Seq#Length(ar);
+        if (0 <= k_21 && k_21 < Seq#Length(ar_1)) {
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@98.13--98.93) [139762]"}
+            k_21 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@98.13--98.93) [139763]"}
+            k_21 < Seq#Length(ar_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@98.13--98.93) [29590]"}
-      (forall k_3: int, k_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@98.13--98.93) [139764]"}
+      (forall k_3: int, k_3_2: int ::
       
-      (((k_3 != k_3_1 && (0 <= k_3 && k_3 < Seq#Length(ar))) && (0 <= k_3_1 && k_3_1 < Seq#Length(ar))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar, k_3) != Seq#Index(ar, k_3_1)
+      (((k_3 != k_3_2 && (0 <= k_3 && k_3 < Seq#Length(ar_1))) && (0 <= k_3_2 && k_3_2 < Seq#Length(ar_1))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar_1, k_3) != Seq#Index(ar_1, k_3_2)
     );
     
     // -- Define Inverse Function
       assume (forall k_3: int ::
-        { Seq#Index(ar, k_3) } { Seq#Index(ar, k_3) }
-        (0 <= k_3 && k_3 < Seq#Length(ar)) && NoPerm < FullPerm ==> qpRange12(Seq#Index(ar, k_3)) && invRecv12(Seq#Index(ar, k_3)) == k_3
+        { Seq#Index(ar_1, k_3) } { Seq#Index(ar_1, k_3) }
+        (0 <= k_3 && k_3 < Seq#Length(ar_1)) && NoPerm < FullPerm ==> qpRange12(Seq#Index(ar_1, k_3)) && invRecv12(Seq#Index(ar_1, k_3)) == k_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv12(o_4) }
-        ((0 <= invRecv12(o_4) && invRecv12(o_4) < Seq#Length(ar)) && NoPerm < FullPerm) && qpRange12(o_4) ==> Seq#Index(ar, invRecv12(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv12(o_9) }
+        ((0 <= invRecv12(o_9) && invRecv12(o_9) < Seq#Length(ar_1)) && NoPerm < FullPerm) && qpRange12(o_9) ==> Seq#Index(ar_1, invRecv12(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall k_3: int ::
-        { Seq#Index(ar, k_3) } { Seq#Index(ar, k_3) }
-        0 <= k_3 && k_3 < Seq#Length(ar) ==> Seq#Index(ar, k_3) != null
+        { Seq#Index(ar_1, k_3) } { Seq#Index(ar_1, k_3) }
+        0 <= k_3 && k_3 < Seq#Length(ar_1) ==> Seq#Index(ar_1, k_3) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv12(o_4) && invRecv12(o_4) < Seq#Length(ar)) && NoPerm < FullPerm) && qpRange12(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(ar, invRecv12(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv12(o_4) && invRecv12(o_4) < Seq#Length(ar)) && NoPerm < FullPerm) && qpRange12(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv12(o_9) && invRecv12(o_9) < Seq#Length(ar_1)) && NoPerm < FullPerm) && qpRange12(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(ar_1, invRecv12(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv12(o_9) && invRecv12(o_9) < Seq#Length(ar_1)) && NoPerm < FullPerm) && qpRange12(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -2335,45 +2335,45 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref), M: in
     
     // -- Check definedness of (forall k: Int :: { ar[k] } 0 <= k && k < |ar| ==> acc(ar[k].Ref__Integer_value, write))
       if (*) {
-        if (0 <= k_22 && k_22 < Seq#Length(ar)) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@99.12--99.92) [29591]"}
-            k_22 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@99.12--99.92) [29592]"}
-            k_22 < Seq#Length(ar);
+        if (0 <= k_32 && k_32 < Seq#Length(ar_1)) {
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@99.12--99.92) [139765]"}
+            k_32 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@99.12--99.92) [139766]"}
+            k_32 < Seq#Length(ar_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@99.12--99.92) [29593]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@99.12--99.92) [139767]"}
       (forall k_5: int, k_5_1: int ::
       
-      (((k_5 != k_5_1 && (0 <= k_5 && k_5 < Seq#Length(ar))) && (0 <= k_5_1 && k_5_1 < Seq#Length(ar))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar, k_5) != Seq#Index(ar, k_5_1)
+      (((k_5 != k_5_1 && (0 <= k_5 && k_5 < Seq#Length(ar_1))) && (0 <= k_5_1 && k_5_1 < Seq#Length(ar_1))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar_1, k_5) != Seq#Index(ar_1, k_5_1)
     );
     
     // -- Define Inverse Function
       assume (forall k_5: int ::
-        { Seq#Index(ar, k_5) } { Seq#Index(ar, k_5) }
-        (0 <= k_5 && k_5 < Seq#Length(ar)) && NoPerm < FullPerm ==> qpRange13(Seq#Index(ar, k_5)) && invRecv13(Seq#Index(ar, k_5)) == k_5
+        { Seq#Index(ar_1, k_5) } { Seq#Index(ar_1, k_5) }
+        (0 <= k_5 && k_5 < Seq#Length(ar_1)) && NoPerm < FullPerm ==> qpRange13(Seq#Index(ar_1, k_5)) && invRecv13(Seq#Index(ar_1, k_5)) == k_5
       );
-      assume (forall o_4: Ref ::
-        { invRecv13(o_4) }
-        ((0 <= invRecv13(o_4) && invRecv13(o_4) < Seq#Length(ar)) && NoPerm < FullPerm) && qpRange13(o_4) ==> Seq#Index(ar, invRecv13(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv13(o_9) }
+        ((0 <= invRecv13(o_9) && invRecv13(o_9) < Seq#Length(ar_1)) && NoPerm < FullPerm) && qpRange13(o_9) ==> Seq#Index(ar_1, invRecv13(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall k_5: int ::
-        { Seq#Index(ar, k_5) } { Seq#Index(ar, k_5) }
-        0 <= k_5 && k_5 < Seq#Length(ar) ==> Seq#Index(ar, k_5) != null
+        { Seq#Index(ar_1, k_5) } { Seq#Index(ar_1, k_5) }
+        0 <= k_5 && k_5 < Seq#Length(ar_1) ==> Seq#Index(ar_1, k_5) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv13(o_4) && invRecv13(o_4) < Seq#Length(ar)) && NoPerm < FullPerm) && qpRange13(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(ar, invRecv13(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv13(o_4) && invRecv13(o_4) < Seq#Length(ar)) && NoPerm < FullPerm) && qpRange13(o_4)) ==> QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv13(o_9) && invRecv13(o_9) < Seq#Length(ar_1)) && NoPerm < FullPerm) && qpRange13(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(ar_1, invRecv13(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv13(o_9) && invRecv13(o_9) < Seq#Length(ar_1)) && NoPerm < FullPerm) && qpRange13(o_9)) ==> QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -2381,19 +2381,19 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref), M: in
     
     // -- Check definedness of (forall k: Int :: { ar[k] } 0 <= k && k < |ar| ==> ar[k].Ref__Integer_value == 0)
       if (*) {
-        if (0 <= k_23 && k_23 < Seq#Length(ar)) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@100.12--100.87) [29594]"}
-            k_23 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@100.12--100.87) [29595]"}
-            k_23 < Seq#Length(ar);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@100.12--100.87) [29596]"}
-            HasDirectPerm(PostMask, Seq#Index(ar, k_23), Ref__Integer_value);
+        if (0 <= k_37 && k_37 < Seq#Length(ar_1)) {
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (testNestedSingleIC.vpr@100.12--100.87) [139768]"}
+            k_37 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (testNestedSingleIC.vpr@100.12--100.87) [139769]"}
+            k_37 < Seq#Length(ar_1);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@100.12--100.87) [139770]"}
+            HasDirectPerm(PostMask, Seq#Index(ar_1, k_37), Ref__Integer_value);
         }
         assume false;
       }
     assume (forall k_7_1: int ::
-      { Seq#Index(ar, k_7_1) }
-      0 <= k_7_1 && k_7_1 < Seq#Length(ar) ==> PostHeap[Seq#Index(ar, k_7_1), Ref__Integer_value] == 0
+      { Seq#Index(ar_1, k_7_1) }
+      0 <= k_7_1 && k_7_1 < Seq#Length(ar_1) ==> PostHeap[Seq#Index(ar_1, k_7_1), Ref__Integer_value] == 0
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -2407,33 +2407,33 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref), M: in
     // -- Exhaling precondition
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion diz != null might not hold. (testNestedSingleIC.vpr@102.3--102.54) [29597]"}
+      assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion diz != null might not hold. (testNestedSingleIC.vpr@102.3--102.54) [139771]"}
         diz != null;
-      assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion current_thread_id >= 0 might not hold. (testNestedSingleIC.vpr@102.3--102.54) [29598]"}
+      assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion current_thread_id >= 0 might not hold. (testNestedSingleIC.vpr@102.3--102.54) [139772]"}
         current_thread_id >= 0;
       if (*) {
-        if (0 <= i && (i < M && 0 < N)) {
-          assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion M * N == |ar| might not hold. (testNestedSingleIC.vpr@102.3--102.54) [29599]"}
-            M * N == Seq#Length(ar);
+        if (0 <= i && (i < M_1 && 0 < N)) {
+          assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion M * N == |ar| might not hold. (testNestedSingleIC.vpr@102.3--102.54) [139773]"}
+            M_1 * N == Seq#Length(ar_1);
         }
         assume false;
       }
       assume (forall i_1_1_1: int ::
         
-        0 <= i_1_1_1 && (i_1_1_1 < M && 0 < N) ==> M * N == Seq#Length(ar)
+        0 <= i_1_1_1 && (i_1_1_1 < M_1 && 0 < N) ==> M_1 * N == Seq#Length(ar_1)
       );
-      assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion M * N <= |ar| might not hold. (testNestedSingleIC.vpr@102.3--102.54) [29600]"}
-        M * N <= Seq#Length(ar);
+      assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion M * N <= |ar| might not hold. (testNestedSingleIC.vpr@102.3--102.54) [139774]"}
+        M_1 * N <= Seq#Length(ar_1);
       if (*) {
-        if (0 <= j_2_1 && (j_2_1 < M * N && (0 <= k_11 && (k_11 < M * N && j_2_1 != k_11)))) {
-          assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion ar[j] != ar[k] might not hold. (testNestedSingleIC.vpr@102.3--102.54) [29601]"}
-            Seq#Index(ar, j_2_1) != Seq#Index(ar, k_11);
+        if (0 <= j_2_2 && (j_2_2 < M_1 * N && (0 <= k_11 && (k_11 < M_1 * N && j_2_2 != k_11)))) {
+          assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion ar[j] != ar[k] might not hold. (testNestedSingleIC.vpr@102.3--102.54) [139775]"}
+            Seq#Index(ar_1, j_2_2) != Seq#Index(ar_1, k_11);
         }
         assume false;
       }
       assume (forall j_3_1_1: int, k_12_1: int ::
-        { Seq#Index(ar, j_3_1_1), Seq#Index(ar, k_12_1) }
-        0 <= j_3_1_1 && (j_3_1_1 < M * N && (0 <= k_12_1 && (k_12_1 < M * N && j_3_1_1 != k_12_1))) ==> Seq#Index(ar, j_3_1_1) != Seq#Index(ar, k_12_1)
+        { Seq#Index(ar_1, j_3_1_1), Seq#Index(ar_1, k_12_1) }
+        0 <= j_3_1_1 && (j_3_1_1 < M_1 * N && (0 <= k_12_1 && (k_12_1 < M_1 * N && j_3_1_1 != k_12_1))) ==> Seq#Index(ar_1, j_3_1_1) != Seq#Index(ar_1, k_12_1)
       );
       havoc QPMask;
       
@@ -2441,39 +2441,39 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref), M: in
         
       
       // -- check if receiver ar[j] is injective
-        assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Quantified resource ar[j].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@102.3--102.54) [29602]"}
+        assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Quantified resource ar[j].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@102.3--102.54) [139776]"}
           (forall j_4_1: int, j_4_2: int ::
           { neverTriggered15(j_4_1), neverTriggered15(j_4_2) }
-          (((j_4_1 != j_4_2 && (0 <= j_4_1 && j_4_1 < M * N)) && (0 <= j_4_2 && j_4_2 < M * N)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar, j_4_1) != Seq#Index(ar, j_4_2)
+          (((j_4_1 != j_4_2 && (0 <= j_4_1 && j_4_1 < M_1 * N)) && (0 <= j_4_2 && j_4_2 < M_1 * N)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar_1, j_4_1) != Seq#Index(ar_1, j_4_2)
         );
       
       // -- check if sufficient permission is held
-        assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. There might be insufficient permission to access ar[j].Ref__Integer_value (testNestedSingleIC.vpr@102.3--102.54) [29603]"}
+        assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. There might be insufficient permission to access ar[j].Ref__Integer_value (testNestedSingleIC.vpr@102.3--102.54) [139777]"}
           (forall j_4_1: int ::
-          { Seq#Index(ar, j_4_1) } { Seq#Index(ar, j_4_1) }
-          0 <= j_4_1 && j_4_1 < M * N ==> Mask[Seq#Index(ar, j_4_1), Ref__Integer_value] >= FullPerm
+          { Seq#Index(ar_1, j_4_1) } { Seq#Index(ar_1, j_4_1) }
+          0 <= j_4_1 && j_4_1 < M_1 * N ==> Mask[Seq#Index(ar_1, j_4_1), Ref__Integer_value] >= FullPerm
         );
       
       // -- assumptions for inverse of receiver ar[j]
         assume (forall j_4_1: int ::
-          { Seq#Index(ar, j_4_1) } { Seq#Index(ar, j_4_1) }
-          (0 <= j_4_1 && j_4_1 < M * N) && NoPerm < FullPerm ==> qpRange15(Seq#Index(ar, j_4_1)) && invRecv15(Seq#Index(ar, j_4_1)) == j_4_1
+          { Seq#Index(ar_1, j_4_1) } { Seq#Index(ar_1, j_4_1) }
+          (0 <= j_4_1 && j_4_1 < M_1 * N) && NoPerm < FullPerm ==> qpRange15(Seq#Index(ar_1, j_4_1)) && invRecv15(Seq#Index(ar_1, j_4_1)) == j_4_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv15(o_4) }
-          (0 <= invRecv15(o_4) && invRecv15(o_4) < M * N) && (NoPerm < FullPerm && qpRange15(o_4)) ==> Seq#Index(ar, invRecv15(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv15(o_9) }
+          (0 <= invRecv15(o_9) && invRecv15(o_9) < M_1 * N) && (NoPerm < FullPerm && qpRange15(o_9)) ==> Seq#Index(ar_1, invRecv15(o_9)) == o_9
         );
       
       // -- assume permission updates for field Ref__Integer_value
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, Ref__Integer_value] }
-          ((0 <= invRecv15(o_4) && invRecv15(o_4) < M * N) && (NoPerm < FullPerm && qpRange15(o_4)) ==> Seq#Index(ar, invRecv15(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!((0 <= invRecv15(o_4) && invRecv15(o_4) < M * N) && (NoPerm < FullPerm && qpRange15(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, Ref__Integer_value] }
+          ((0 <= invRecv15(o_9) && invRecv15(o_9) < M_1 * N) && (NoPerm < FullPerm && qpRange15(o_9)) ==> Seq#Index(ar_1, invRecv15(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!((0 <= invRecv15(o_9) && invRecv15(o_9) < M_1 * N) && (NoPerm < FullPerm && qpRange15(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
         );
       
       // -- assume permission updates for independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { QPMask[o_4, f_5] }
-          f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { QPMask[o_9, f_5] }
+          f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       // Finish exhale
@@ -2482,47 +2482,47 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref), M: in
       Heap := ExhaleHeap;
     
     // -- Inhaling postcondition
-      assume (forall i_2_1: int ::
+      assume (forall i_2: int ::
         
-        0 <= i_2_1 && (i_2_1 < M && 0 < N) ==> M * N == Seq#Length(ar)
+        0 <= i_2 && (i_2 < M_1 && 0 < N) ==> M_1 * N == Seq#Length(ar_1)
       );
       havoc QPMask;
-      assert {:msg "  Method call might fail. Quantified resource ar[j].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@102.3--102.54) [29604]"}
-        (forall j_5_1: int, j_5_2: int ::
+      assert {:msg "  Method call might fail. Quantified resource ar[j].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@102.3--102.54) [139778]"}
+        (forall j_5: int, j_5_1: int ::
         
-        (((j_5_1 != j_5_2 && (0 <= j_5_1 && j_5_1 < M * N)) && (0 <= j_5_2 && j_5_2 < M * N)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar, j_5_1) != Seq#Index(ar, j_5_2)
+        (((j_5 != j_5_1 && (0 <= j_5 && j_5 < M_1 * N)) && (0 <= j_5_1 && j_5_1 < M_1 * N)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar_1, j_5) != Seq#Index(ar_1, j_5_1)
       );
       
       // -- Define Inverse Function
-        assume (forall j_5_1: int ::
-          { Seq#Index(ar, j_5_1) } { Seq#Index(ar, j_5_1) }
-          (0 <= j_5_1 && j_5_1 < M * N) && NoPerm < FullPerm ==> qpRange16(Seq#Index(ar, j_5_1)) && invRecv16(Seq#Index(ar, j_5_1)) == j_5_1
+        assume (forall j_5: int ::
+          { Seq#Index(ar_1, j_5) } { Seq#Index(ar_1, j_5) }
+          (0 <= j_5 && j_5 < M_1 * N) && NoPerm < FullPerm ==> qpRange16(Seq#Index(ar_1, j_5)) && invRecv16(Seq#Index(ar_1, j_5)) == j_5
         );
-        assume (forall o_4: Ref ::
-          { invRecv16(o_4) }
-          ((0 <= invRecv16(o_4) && invRecv16(o_4) < M * N) && NoPerm < FullPerm) && qpRange16(o_4) ==> Seq#Index(ar, invRecv16(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv16(o_9) }
+          ((0 <= invRecv16(o_9) && invRecv16(o_9) < M_1 * N) && NoPerm < FullPerm) && qpRange16(o_9) ==> Seq#Index(ar_1, invRecv16(o_9)) == o_9
         );
       
       // -- Assume set of fields is nonNull
-        assume (forall j_5_1: int ::
-          { Seq#Index(ar, j_5_1) } { Seq#Index(ar, j_5_1) }
-          0 <= j_5_1 && j_5_1 < M * N ==> Seq#Index(ar, j_5_1) != null
+        assume (forall j_5: int ::
+          { Seq#Index(ar_1, j_5) } { Seq#Index(ar_1, j_5) }
+          0 <= j_5 && j_5 < M_1 * N ==> Seq#Index(ar_1, j_5) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, Ref__Integer_value] }
-          (((0 <= invRecv16(o_4) && invRecv16(o_4) < M * N) && NoPerm < FullPerm) && qpRange16(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(ar, invRecv16(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv16(o_4) && invRecv16(o_4) < M * N) && NoPerm < FullPerm) && qpRange16(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, Ref__Integer_value] }
+          (((0 <= invRecv16(o_9) && invRecv16(o_9) < M_1 * N) && NoPerm < FullPerm) && qpRange16(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(ar_1, invRecv16(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv16(o_9) && invRecv16(o_9) < M_1 * N) && NoPerm < FullPerm) && qpRange16(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
-      assume (forall j_6_1: int ::
-        { Seq#Index(ar, j_6_1) }
-        0 <= j_6_1 && j_6_1 < M * N ==> Heap[Seq#Index(ar, j_6_1), Ref__Integer_value] == 0
+      assume (forall j_6_2: int ::
+        { Seq#Index(ar_1, j_6_2) }
+        0 <= j_6_2 && j_6_2 < M_1 * N ==> Heap[Seq#Index(ar_1, j_6_2), Ref__Integer_value] == 0
       );
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -2536,51 +2536,51 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref), M: in
       
     
     // -- check if receiver ar[k] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@99.12--99.92) [29605]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].Ref__Integer_value might not be injective. (testNestedSingleIC.vpr@99.12--99.92) [139779]"}
         (forall k_8: int, k_8_1: int ::
         { neverTriggered14(k_8), neverTriggered14(k_8_1) }
-        (((k_8 != k_8_1 && (0 <= k_8 && k_8 < Seq#Length(ar))) && (0 <= k_8_1 && k_8_1 < Seq#Length(ar))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar, k_8) != Seq#Index(ar, k_8_1)
+        (((k_8 != k_8_1 && (0 <= k_8 && k_8 < Seq#Length(ar_1))) && (0 <= k_8_1 && k_8_1 < Seq#Length(ar_1))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ar_1, k_8) != Seq#Index(ar_1, k_8_1)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of Ref__zero_array might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@99.12--99.92) [29606]"}
+      assert {:msg "  Postcondition of Ref__zero_array might not hold. There might be insufficient permission to access ar[k].Ref__Integer_value (testNestedSingleIC.vpr@99.12--99.92) [139780]"}
         (forall k_8: int ::
-        { Seq#Index(ar, k_8) } { Seq#Index(ar, k_8) }
-        0 <= k_8 && k_8 < Seq#Length(ar) ==> Mask[Seq#Index(ar, k_8), Ref__Integer_value] >= FullPerm
+        { Seq#Index(ar_1, k_8) } { Seq#Index(ar_1, k_8) }
+        0 <= k_8 && k_8 < Seq#Length(ar_1) ==> Mask[Seq#Index(ar_1, k_8), Ref__Integer_value] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver ar[k]
       assume (forall k_8: int ::
-        { Seq#Index(ar, k_8) } { Seq#Index(ar, k_8) }
-        (0 <= k_8 && k_8 < Seq#Length(ar)) && NoPerm < FullPerm ==> qpRange14(Seq#Index(ar, k_8)) && invRecv14(Seq#Index(ar, k_8)) == k_8
+        { Seq#Index(ar_1, k_8) } { Seq#Index(ar_1, k_8) }
+        (0 <= k_8 && k_8 < Seq#Length(ar_1)) && NoPerm < FullPerm ==> qpRange14(Seq#Index(ar_1, k_8)) && invRecv14(Seq#Index(ar_1, k_8)) == k_8
       );
-      assume (forall o_4: Ref ::
-        { invRecv14(o_4) }
-        (0 <= invRecv14(o_4) && invRecv14(o_4) < Seq#Length(ar)) && (NoPerm < FullPerm && qpRange14(o_4)) ==> Seq#Index(ar, invRecv14(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv14(o_9) }
+        (0 <= invRecv14(o_9) && invRecv14(o_9) < Seq#Length(ar_1)) && (NoPerm < FullPerm && qpRange14(o_9)) ==> Seq#Index(ar_1, invRecv14(o_9)) == o_9
       );
     
     // -- assume permission updates for field Ref__Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((0 <= invRecv14(o_4) && invRecv14(o_4) < Seq#Length(ar)) && (NoPerm < FullPerm && qpRange14(o_4)) ==> Seq#Index(ar, invRecv14(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!((0 <= invRecv14(o_4) && invRecv14(o_4) < Seq#Length(ar)) && (NoPerm < FullPerm && qpRange14(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((0 <= invRecv14(o_9) && invRecv14(o_9) < Seq#Length(ar_1)) && (NoPerm < FullPerm && qpRange14(o_9)) ==> Seq#Index(ar_1, invRecv14(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!((0 <= invRecv14(o_9) && invRecv14(o_9) < Seq#Length(ar_1)) && (NoPerm < FullPerm && qpRange14(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (0 <= k_9 && k_9 < Seq#Length(ar)) {
-        assert {:msg "  Postcondition of Ref__zero_array might not hold. Assertion ar[k].Ref__Integer_value == 0 might not hold. (testNestedSingleIC.vpr@100.12--100.87) [29607]"}
-          Heap[Seq#Index(ar, k_9), Ref__Integer_value] == 0;
+      if (0 <= k_9_1 && k_9_1 < Seq#Length(ar_1)) {
+        assert {:msg "  Postcondition of Ref__zero_array might not hold. Assertion ar[k].Ref__Integer_value == 0 might not hold. (testNestedSingleIC.vpr@100.12--100.87) [139781]"}
+          Heap[Seq#Index(ar_1, k_9_1), Ref__Integer_value] == 0;
       }
       assume false;
     }
     assume (forall k_10_1: int ::
-      { Seq#Index(ar, k_10_1) }
-      0 <= k_10_1 && k_10_1 < Seq#Length(ar) ==> Heap[Seq#Index(ar, k_10_1), Ref__Integer_value] == 0
+      { Seq#Index(ar_1, k_10_1) }
+      0 <= k_10_1 && k_10_1 < Seq#Length(ar_1) ==> Heap[Seq#Index(ar_1, k_10_1), Ref__Integer_value] == 0
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -2648,7 +2648,7 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
   // -- Translating statement: assert sys__result != null -- testNestedSingleIC.vpr@112.3--112.29
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testNestedSingleIC.vpr@112.10--112.29) [29608]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testNestedSingleIC.vpr@112.10--112.29) [139782]"}
       sys__result != null;
     assume state(Heap, Mask);
   
@@ -2660,6 +2660,6 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testNestedSingleIC.vpr@107.11--107.30) [29609]"}
+    assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testNestedSingleIC.vpr@107.11--107.30) [139783]"}
       sys__result != null;
 }

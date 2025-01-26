@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:50
+// Date:         2025-01-26 21:43:15
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0059-3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0059-3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,9 +177,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of predicate P
@@ -230,7 +230,7 @@ procedure P#definedness(this: Ref) returns ()
       assume Heap[this, $allocated];
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
 }
@@ -283,44 +283,44 @@ procedure Testsuccess5(this: Ref) returns ()
       UnfoldingHeap := PostHeap;
       UnfoldingMask := PostMask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access P(this) (0059-3.vpr@13.11--13.48) [193282]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access P(this) (0059-3.vpr@13.11--13.48) [85659]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0059-3.vpr@13.11--13.48) [193283]"}
-        HasDirectPerm(UnfoldingMask, this, x_36);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0059-3.vpr@13.11--13.48) [193284]"}
-        HasDirectPerm(UnfoldingMask, this, x_36);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0059-3.vpr@13.11--13.48) [85660]"}
+        HasDirectPerm(UnfoldingMask, this, x_42);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0059-3.vpr@13.11--13.48) [85661]"}
+        HasDirectPerm(UnfoldingMask, this, x_42);
       
       // -- Free assumptions (exp module)
-        PostHeap := PostHeap[null, P#sm(this):=PostHeap[null, P#sm(this)][this, x_36:=true]];
+        PostHeap := PostHeap[null, P#sm(this):=PostHeap[null, P#sm(this)][this, x_42:=true]];
         assume state(PostHeap, PostMask);
     
     // -- Execute unfolding (for extra information)
       UnfoldingHeap := PostHeap;
       UnfoldingMask := PostMask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-    assume PostHeap[this, x_36] >= PostHeap[this, x_36];
+    assume PostHeap[this, x_42] >= PostHeap[this, x_42];
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -334,24 +334,24 @@ procedure Testsuccess5(this: Ref) returns ()
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
+      assume UnfoldingHeap[null, P(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
       ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of Testsuccess5 might not hold. There might be insufficient permission to access P(this) (0059-3.vpr@13.11--13.48) [193285]"}
+        assert {:msg "  Postcondition of Testsuccess5 might not hold. There might be insufficient permission to access P(this) (0059-3.vpr@13.11--13.48) [85662]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, x_36:=UnfoldingMask[this, x_36] + perm];
+      UnfoldingMask := UnfoldingMask[this, x_42:=UnfoldingMask[this, x_42] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-    assert {:msg "  Postcondition of Testsuccess5 might not hold. Assertion this.x >= this.x might not hold. (0059-3.vpr@13.11--13.48) [193286]"}
-      Heap[this, x_36] >= Heap[this, x_36];
+    assert {:msg "  Postcondition of Testsuccess5 might not hold. Assertion this.x >= this.x might not hold. (0059-3.vpr@13.11--13.48) [85663]"}
+      Heap[this, x_42] >= Heap[this, x_42];
     
     // -- Free assumptions (exhale module)
-      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_36:=true]];
+      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, x_42:=true]];
       assume state(Heap, Mask);
 }

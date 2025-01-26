@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:13
+// Date:         2025-01-26 21:43:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0223.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0223-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -148,7 +148,7 @@ function  neverTriggered1(w_4_1: Ref): bool;
 function  neverTriggered2(w_2: Ref): bool;
 function  neverTriggered3(r_1_1: Ref): bool;
 function  neverTriggered4(w_2: Ref): bool;
-function  neverTriggered5(w_1: Ref): bool;
+function  neverTriggered5(w_1_1: Ref): bool;
 function  neverTriggered6(w_2_2: Ref): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
@@ -159,7 +159,7 @@ function  invRecv2(x_1_1_1: Ref): Ref;
 function  invRecv3(x_1_1_1: Ref): Ref;
 function  invRecv4(x_2_1: Ref): Ref;
 function  invRecv5(x_3_1_1: Ref): Ref;
-function  invRecv6(x_4_1_1: Ref): Ref;
+function  invRecv6(x_4_1: Ref): Ref;
 // ==================================================
 // Functions used to represent the range of the projection of each QP instance onto its receiver expressions for quantified permissions during inhale and exhale
 // ==================================================
@@ -169,7 +169,7 @@ function  qpRange2(x_1_1_1: Ref): bool;
 function  qpRange3(x_1_1_1: Ref): bool;
 function  qpRange4(x_2_1: Ref): bool;
 function  qpRange5(x_3_1_1: Ref): bool;
-function  qpRange6(x_4_1_1: Ref): bool;
+function  qpRange6(x_4_1: Ref): bool;
 
 // ==================================================
 // Preamble of Function and predicate module.
@@ -441,7 +441,7 @@ function  get#condqp1(Heap: HeapType, x_1_1_1: Ref): int;
 function  sk_get#condqp1(fnAppH1: int, fnAppH2: int): Ref;
 axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, x: Ref ::
   { get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (Set#Singleton(x)[sk_get#condqp1(get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x))] && NoPerm < FullPerm <==> Set#Singleton(x)[sk_get#condqp1(get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x))] && NoPerm < FullPerm) && (Set#Singleton(x)[sk_get#condqp1(get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x))] && NoPerm < FullPerm ==> Heap2Heap[null, bar_2(sk_get#condqp1(get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x)))] == Heap1Heap[null, bar_2(sk_get#condqp1(get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x)))]) ==> get#condqp1(Heap2Heap, x) == get#condqp1(Heap1Heap, x)
+  (Set#Singleton(x)[sk_get#condqp1(get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x))] && NoPerm < FullPerm <==> Set#Singleton(x)[sk_get#condqp1(get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x))] && NoPerm < FullPerm) && (Set#Singleton(x)[sk_get#condqp1(get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x))] && NoPerm < FullPerm ==> Heap2Heap[null, bar_3(sk_get#condqp1(get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x)))] == Heap1Heap[null, bar_3(sk_get#condqp1(get#condqp1(Heap2Heap, x), get#condqp1(Heap1Heap, x)))]) ==> get#condqp1(Heap2Heap, x) == get#condqp1(Heap1Heap, x)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -479,7 +479,7 @@ procedure get#definedness(x: Ref) returns (Result: int)
     havoc QPMask;
     
     // -- check if receiver acc(bar(w), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource bar(w) might not be injective. (0223.vpr@12.12--12.69) [192447]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource bar(w) might not be injective. (0223.vpr@12.12--12.69) [81831]"}
         (forall w_4_1: Ref, w_4_2: Ref ::
         { neverTriggered1(w_4_1), neverTriggered1(w_4_2) }
         (((w_4_1 != w_4_2 && Set#Singleton(x)[w_4_1]) && Set#Singleton(x)[w_4_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> w_4_1 != w_4_2
@@ -487,7 +487,7 @@ procedure get#definedness(x: Ref) returns (Result: int)
     
     // -- Define Inverse Function
       assume (forall w_4_1: Ref ::
-        { Heap[null, bar_2(w_4_1)] } { Mask[null, bar_2(w_4_1)] } { Set#Singleton(x)[w_4_1] }
+        { Heap[null, bar_3(w_4_1)] } { Mask[null, bar_3(w_4_1)] } { Set#Singleton(x)[w_4_1] }
         Set#Singleton(x)[w_4_1] && NoPerm < FullPerm ==> invRecv1(w_4_1) == w_4_1 && qpRange1(w_4_1)
       );
       assume (forall x_2_1: Ref ::
@@ -497,18 +497,18 @@ procedure get#definedness(x: Ref) returns (Result: int)
     
     // -- Define updated permissions
       assume (forall x_2_1: Ref ::
-        { QPMask[null, bar_2(x_2_1)] }
-        (Set#Singleton(x)[invRecv1(x_2_1)] && NoPerm < FullPerm) && qpRange1(x_2_1) ==> (NoPerm < FullPerm ==> invRecv1(x_2_1) == x_2_1) && QPMask[null, bar_2(x_2_1)] == Mask[null, bar_2(x_2_1)] + FullPerm
+        { QPMask[null, bar_3(x_2_1)] }
+        (Set#Singleton(x)[invRecv1(x_2_1)] && NoPerm < FullPerm) && qpRange1(x_2_1) ==> (NoPerm < FullPerm ==> invRecv1(x_2_1) == x_2_1) && QPMask[null, bar_3(x_2_1)] == Mask[null, bar_3(x_2_1)] + FullPerm
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall x_2_1: Ref ::
-        { QPMask[null, bar_2(x_2_1)] }
-        !((Set#Singleton(x)[invRecv1(x_2_1)] && NoPerm < FullPerm) && qpRange1(x_2_1)) ==> QPMask[null, bar_2(x_2_1)] == Mask[null, bar_2(x_2_1)]
+        { QPMask[null, bar_3(x_2_1)] }
+        !((Set#Singleton(x)[invRecv1(x_2_1)] && NoPerm < FullPerm) && qpRange1(x_2_1)) ==> QPMask[null, bar_3(x_2_1)] == Mask[null, bar_3(x_2_1)]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -522,25 +522,25 @@ procedure get#definedness(x: Ref) returns (Result: int)
       // Exhale assertion of asserting
       ExhaleWellDef0Mask := assertingMask;
       ExhaleWellDef0Heap := assertingHeap;
-      assert {:msg "  Function might not be well-formed. Assertion (x in Set(x)) might not hold. (0223.vpr@11.1--15.4) [192448]"}
+      assert {:msg "  Function might not be well-formed. Assertion (x in Set(x)) might not hold. (0223.vpr@11.1--15.4) [81832]"}
         Set#Singleton(x)[x];
       
       // -- Check definedness of (unfolding acc(bar(x), write) in x.val)
         UnfoldingHeap := Heap;
         UnfoldingMask := Mask;
-        assume bar#trigger_1(UnfoldingHeap, bar_2(x));
-        assume UnfoldingHeap[null, bar_2(x)] == FrameFragment(UnfoldingHeap[x, val]);
+        assume bar#trigger_1(UnfoldingHeap, bar_3(x));
+        assume UnfoldingHeap[null, bar_3(x)] == FrameFragment(UnfoldingHeap[x, val]);
         ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access bar(x) (0223.vpr@11.1--15.4) [192449]"}
-          NoPerm < perm ==> NoPerm < UnfoldingMask[null, bar_2(x)];
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access bar(x) (0223.vpr@11.1--15.4) [81833]"}
+          NoPerm < perm ==> NoPerm < UnfoldingMask[null, bar_3(x)];
         perm := FullPerm;
         assume x != null;
         UnfoldingMask := UnfoldingMask[x, val:=UnfoldingMask[x, val] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.val (0223.vpr@11.1--15.4) [192450]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.val (0223.vpr@11.1--15.4) [81834]"}
           HasDirectPerm(UnfoldingMask, x, val);
         
         // -- Free assumptions (exp module)
@@ -556,25 +556,25 @@ procedure get#definedness(x: Ref) returns (Result: int)
 // ==================================================
 
 type PredicateType_bar;
-function  bar_2(x: Ref): Field PredicateType_bar FrameType;
+function  bar_3(x: Ref): Field PredicateType_bar FrameType;
 function  bar#sm(x: Ref): Field PredicateType_bar PMaskType;
 axiom (forall x: Ref ::
-  { PredicateMaskField(bar_2(x)) }
-  PredicateMaskField(bar_2(x)) == bar#sm(x)
+  { PredicateMaskField(bar_3(x)) }
+  PredicateMaskField(bar_3(x)) == bar#sm(x)
 );
 axiom (forall x: Ref ::
-  { bar_2(x) }
-  IsPredicateField(bar_2(x))
+  { bar_3(x) }
+  IsPredicateField(bar_3(x))
 );
 axiom (forall x: Ref ::
-  { bar_2(x) }
-  getPredWandId(bar_2(x)) == 0
+  { bar_3(x) }
+  getPredWandId(bar_3(x)) == 0
 );
 function  bar#trigger_1<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  bar#everUsed<A>(pred: (Field A FrameType)): bool;
 axiom (forall x: Ref, x2: Ref ::
-  { bar_2(x), bar_2(x2) }
-  bar_2(x) == bar_2(x2) ==> x == x2
+  { bar_3(x), bar_3(x2) }
+  bar_3(x) == bar_3(x2) ==> x == x2
 );
 axiom (forall x: Ref, x2: Ref ::
   { bar#sm(x), bar#sm(x2) }
@@ -582,8 +582,8 @@ axiom (forall x: Ref, x2: Ref ::
 );
 
 axiom (forall Heap: HeapType, x: Ref ::
-  { bar#trigger_1(Heap, bar_2(x)) }
-  bar#everUsed(bar_2(x))
+  { bar#trigger_1(Heap, bar_3(x)) }
+  bar#everUsed(bar_3(x))
 );
 
 procedure bar#definedness(x: Ref) returns ()
@@ -610,7 +610,7 @@ procedure bar#definedness(x: Ref) returns ()
 // Translation of method set
 // ==================================================
 
-procedure set(x: Ref, i: int) returns ()
+procedure set_3(x: Ref, i: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -634,7 +634,7 @@ procedure set(x: Ref, i: int) returns ()
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    Mask := Mask[null, bar_2(x):=Mask[null, bar_2(x)] + perm];
+    Mask := Mask[null, bar_3(x):=Mask[null, bar_3(x)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -649,7 +649,7 @@ procedure set(x: Ref, i: int) returns ()
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
-    PostMask := PostMask[null, bar_2(x):=PostMask[null, bar_2(x)] + perm];
+    PostMask := PostMask[null, bar_3(x):=PostMask[null, bar_3(x)] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
@@ -664,22 +664,22 @@ procedure set(x: Ref, i: int) returns ()
           
         
         // -- check if receiver acc(bar(w), write) is injective
-          assert {:msg "  Precondition of function get might not hold. Quantified resource bar(w) might not be injective. (0223.vpr@19.21--19.27) [192451]"}
-            (forall w_2: Ref, w_13: Ref ::
-            { neverTriggered2(w_2), neverTriggered2(w_13) }
-            (((w_2 != w_13 && Set#Singleton(x)[w_2]) && Set#Singleton(x)[w_13]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> w_2 != w_13
+          assert {:msg "  Precondition of function get might not hold. Quantified resource bar(w) might not be injective. (0223.vpr@19.21--19.27) [81835]"}
+            (forall w_2: Ref, w_12: Ref ::
+            { neverTriggered2(w_2), neverTriggered2(w_12) }
+            (((w_2 != w_12 && Set#Singleton(x)[w_2]) && Set#Singleton(x)[w_12]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> w_2 != w_12
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access bar(w) (0223.vpr@19.21--19.27) [192452]"}
+          assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access bar(w) (0223.vpr@19.21--19.27) [81836]"}
             (forall w_2: Ref ::
-            { PostHeap[null, bar_2(w_2)] } { PostMask[null, bar_2(w_2)] } { Set#Singleton(x)[w_2] }
-            Set#Singleton(x)[w_2] ==> FullPerm > NoPerm ==> PostMask[null, bar_2(w_2)] > NoPerm
+            { PostHeap[null, bar_3(w_2)] } { PostMask[null, bar_3(w_2)] } { Set#Singleton(x)[w_2] }
+            Set#Singleton(x)[w_2] ==> FullPerm > NoPerm ==> PostMask[null, bar_3(w_2)] > NoPerm
           );
         
         // -- assumptions for inverse of receiver acc(bar(w), write)
           assume (forall w_2: Ref ::
-            { PostHeap[null, bar_2(w_2)] } { PostMask[null, bar_2(w_2)] } { Set#Singleton(x)[w_2] }
+            { PostHeap[null, bar_3(w_2)] } { PostMask[null, bar_3(w_2)] } { Set#Singleton(x)[w_2] }
             Set#Singleton(x)[w_2] && NoPerm < FullPerm ==> invRecv2(w_2) == w_2 && qpRange2(w_2)
           );
           assume (forall x_1_1_1: Ref ::
@@ -709,11 +709,11 @@ procedure set(x: Ref, i: int) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of set might not hold. There might be insufficient permission to access bar(x) (0223.vpr@19.11--19.32) [192453]"}
-        perm <= Mask[null, bar_2(x)];
+      assert {:msg "  Postcondition of set might not hold. There might be insufficient permission to access bar(x) (0223.vpr@19.11--19.32) [81837]"}
+        perm <= Mask[null, bar_3(x)];
     }
-    Mask := Mask[null, bar_2(x):=Mask[null, bar_2(x)] - perm];
-    assert {:msg "  Postcondition of set might not hold. Assertion get(x) == i might not hold. (0223.vpr@19.11--19.32) [192454]"}
+    Mask := Mask[null, bar_3(x):=Mask[null, bar_3(x)] - perm];
+    assert {:msg "  Postcondition of set might not hold. Assertion get(x) == i might not hold. (0223.vpr@19.11--19.32) [81838]"}
       get(Heap, x) == i;
     // Finish exhale
     havoc ExhaleHeap;
@@ -725,7 +725,7 @@ procedure set(x: Ref, i: int) returns ()
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref, z: Ref) returns ()
+procedure test_1(x: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
@@ -759,7 +759,7 @@ procedure test(x: Ref, z: Ref) returns ()
     havoc QPMask;
     
     // -- check if receiver acc(bar(r), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource bar(r) might not be injective. (0223.vpr@22.12--22.52) [192455]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource bar(r) might not be injective. (0223.vpr@22.12--22.52) [81839]"}
         (forall r_1_1: Ref, r_1_2: Ref ::
         { neverTriggered3(r_1_1), neverTriggered3(r_1_2) }
         (((r_1_1 != r_1_2 && Set#UnionOne(Set#Singleton(z), x)[r_1_1]) && Set#UnionOne(Set#Singleton(z), x)[r_1_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> r_1_1 != r_1_2
@@ -767,7 +767,7 @@ procedure test(x: Ref, z: Ref) returns ()
     
     // -- Define Inverse Function
       assume (forall r_1_1: Ref ::
-        { Heap[null, bar_2(r_1_1)] } { Mask[null, bar_2(r_1_1)] } { Set#UnionOne(Set#Singleton(z), x)[r_1_1] }
+        { Heap[null, bar_3(r_1_1)] } { Mask[null, bar_3(r_1_1)] } { Set#UnionOne(Set#Singleton(z), x)[r_1_1] }
         Set#UnionOne(Set#Singleton(z), x)[r_1_1] && NoPerm < FullPerm ==> invRecv3(r_1_1) == r_1_1 && qpRange3(r_1_1)
       );
       assume (forall x_1_1_1: Ref ::
@@ -777,18 +777,18 @@ procedure test(x: Ref, z: Ref) returns ()
     
     // -- Define updated permissions
       assume (forall x_1_1_1: Ref ::
-        { QPMask[null, bar_2(x_1_1_1)] }
-        (Set#UnionOne(Set#Singleton(z), x)[invRecv3(x_1_1_1)] && NoPerm < FullPerm) && qpRange3(x_1_1_1) ==> (NoPerm < FullPerm ==> invRecv3(x_1_1_1) == x_1_1_1) && QPMask[null, bar_2(x_1_1_1)] == Mask[null, bar_2(x_1_1_1)] + FullPerm
+        { QPMask[null, bar_3(x_1_1_1)] }
+        (Set#UnionOne(Set#Singleton(z), x)[invRecv3(x_1_1_1)] && NoPerm < FullPerm) && qpRange3(x_1_1_1) ==> (NoPerm < FullPerm ==> invRecv3(x_1_1_1) == x_1_1_1) && QPMask[null, bar_3(x_1_1_1)] == Mask[null, bar_3(x_1_1_1)] + FullPerm
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall x_1_1_1: Ref ::
-        { QPMask[null, bar_2(x_1_1_1)] }
-        !((Set#UnionOne(Set#Singleton(z), x)[invRecv3(x_1_1_1)] && NoPerm < FullPerm) && qpRange3(x_1_1_1)) ==> QPMask[null, bar_2(x_1_1_1)] == Mask[null, bar_2(x_1_1_1)]
+        { QPMask[null, bar_3(x_1_1_1)] }
+        !((Set#UnionOne(Set#Singleton(z), x)[invRecv3(x_1_1_1)] && NoPerm < FullPerm) && qpRange3(x_1_1_1)) ==> QPMask[null, bar_3(x_1_1_1)] == Mask[null, bar_3(x_1_1_1)]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -811,10 +811,10 @@ procedure test(x: Ref, z: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access bar(x) (0223.vpr@25.3--25.11) [192456]"}
-          perm <= Mask[null, bar_2(x)];
+        assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access bar(x) (0223.vpr@25.3--25.11) [81840]"}
+          perm <= Mask[null, bar_3(x)];
       }
-      Mask := Mask[null, bar_2(x):=Mask[null, bar_2(x)] - perm];
+      Mask := Mask[null, bar_3(x):=Mask[null, bar_3(x)] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -822,7 +822,7 @@ procedure test(x: Ref, z: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, bar_2(x):=Mask[null, bar_2(x)] + perm];
+      Mask := Mask[null, bar_3(x):=Mask[null, bar_3(x)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
       assume get(Heap, x) == 4;
@@ -844,22 +844,22 @@ procedure test(x: Ref, z: Ref) returns ()
           
         
         // -- check if receiver acc(bar(w), write) is injective
-          assert {:msg "  Precondition of function get might not hold. Quantified resource bar(w) might not be injective. (0223.vpr@26.10--26.16) [192457]"}
-            (forall w_2: Ref, w_13: Ref ::
-            { neverTriggered4(w_2), neverTriggered4(w_13) }
-            (((w_2 != w_13 && Set#Singleton(x)[w_2]) && Set#Singleton(x)[w_13]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> w_2 != w_13
+          assert {:msg "  Precondition of function get might not hold. Quantified resource bar(w) might not be injective. (0223.vpr@26.10--26.16) [81841]"}
+            (forall w_2: Ref, w_12: Ref ::
+            { neverTriggered4(w_2), neverTriggered4(w_12) }
+            (((w_2 != w_12 && Set#Singleton(x)[w_2]) && Set#Singleton(x)[w_12]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> w_2 != w_12
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access bar(w) (0223.vpr@26.10--26.16) [192458]"}
+          assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access bar(w) (0223.vpr@26.10--26.16) [81842]"}
             (forall w_2: Ref ::
-            { ExhaleWellDef0Heap[null, bar_2(w_2)] } { ExhaleWellDef0Mask[null, bar_2(w_2)] } { Set#Singleton(x)[w_2] }
-            Set#Singleton(x)[w_2] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[null, bar_2(w_2)] > NoPerm
+            { ExhaleWellDef0Heap[null, bar_3(w_2)] } { ExhaleWellDef0Mask[null, bar_3(w_2)] } { Set#Singleton(x)[w_2] }
+            Set#Singleton(x)[w_2] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[null, bar_3(w_2)] > NoPerm
           );
         
         // -- assumptions for inverse of receiver acc(bar(w), write)
           assume (forall w_2: Ref ::
-            { ExhaleWellDef0Heap[null, bar_2(w_2)] } { ExhaleWellDef0Mask[null, bar_2(w_2)] } { Set#Singleton(x)[w_2] }
+            { ExhaleWellDef0Heap[null, bar_3(w_2)] } { ExhaleWellDef0Mask[null, bar_3(w_2)] } { Set#Singleton(x)[w_2] }
             Set#Singleton(x)[w_2] && NoPerm < FullPerm ==> invRecv4(w_2) == w_2 && qpRange4(w_2)
           );
           assume (forall x_2_1: Ref ::
@@ -873,7 +873,7 @@ procedure test(x: Ref, z: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion get(x) == 4 might not hold. (0223.vpr@26.10--26.21) [192459]"}
+    assert {:msg "  Assert might fail. Assertion get(x) == 4 might not hold. (0223.vpr@26.10--26.21) [81843]"}
       get(Heap, x) == 4;
     assume state(Heap, Mask);
   
@@ -886,10 +886,10 @@ procedure test(x: Ref, z: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access bar(z) (0223.vpr@27.3--27.11) [192460]"}
-          perm <= Mask[null, bar_2(z)];
+        assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access bar(z) (0223.vpr@27.3--27.11) [81844]"}
+          perm <= Mask[null, bar_3(z)];
       }
-      Mask := Mask[null, bar_2(z):=Mask[null, bar_2(z)] - perm];
+      Mask := Mask[null, bar_3(z):=Mask[null, bar_3(z)] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -897,7 +897,7 @@ procedure test(x: Ref, z: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, bar_2(z):=Mask[null, bar_2(z)] + perm];
+      Mask := Mask[null, bar_3(z):=Mask[null, bar_3(z)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
       assume get(Heap, z) == 3;
@@ -919,23 +919,23 @@ procedure test(x: Ref, z: Ref) returns ()
           
         
         // -- check if receiver acc(bar(w), write) is injective
-          assert {:msg "  Precondition of function get might not hold. Quantified resource bar(w) might not be injective. (0223.vpr@28.10--28.16) [192461]"}
-            (forall w_1: Ref, w_1_1: Ref ::
-            { neverTriggered5(w_1), neverTriggered5(w_1_1) }
-            (((w_1 != w_1_1 && Set#Singleton(x)[w_1]) && Set#Singleton(x)[w_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> w_1 != w_1_1
+          assert {:msg "  Precondition of function get might not hold. Quantified resource bar(w) might not be injective. (0223.vpr@28.10--28.16) [81845]"}
+            (forall w_1_1: Ref, w_1_2: Ref ::
+            { neverTriggered5(w_1_1), neverTriggered5(w_1_2) }
+            (((w_1_1 != w_1_2 && Set#Singleton(x)[w_1_1]) && Set#Singleton(x)[w_1_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> w_1_1 != w_1_2
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access bar(w) (0223.vpr@28.10--28.16) [192462]"}
-            (forall w_1: Ref ::
-            { ExhaleWellDef0Heap[null, bar_2(w_1)] } { ExhaleWellDef0Mask[null, bar_2(w_1)] } { Set#Singleton(x)[w_1] }
-            Set#Singleton(x)[w_1] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[null, bar_2(w_1)] > NoPerm
+          assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access bar(w) (0223.vpr@28.10--28.16) [81846]"}
+            (forall w_1_1: Ref ::
+            { ExhaleWellDef0Heap[null, bar_3(w_1_1)] } { ExhaleWellDef0Mask[null, bar_3(w_1_1)] } { Set#Singleton(x)[w_1_1] }
+            Set#Singleton(x)[w_1_1] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[null, bar_3(w_1_1)] > NoPerm
           );
         
         // -- assumptions for inverse of receiver acc(bar(w), write)
-          assume (forall w_1: Ref ::
-            { ExhaleWellDef0Heap[null, bar_2(w_1)] } { ExhaleWellDef0Mask[null, bar_2(w_1)] } { Set#Singleton(x)[w_1] }
-            Set#Singleton(x)[w_1] && NoPerm < FullPerm ==> invRecv5(w_1) == w_1 && qpRange5(w_1)
+          assume (forall w_1_1: Ref ::
+            { ExhaleWellDef0Heap[null, bar_3(w_1_1)] } { ExhaleWellDef0Mask[null, bar_3(w_1_1)] } { Set#Singleton(x)[w_1_1] }
+            Set#Singleton(x)[w_1_1] && NoPerm < FullPerm ==> invRecv5(w_1_1) == w_1_1 && qpRange5(w_1_1)
           );
           assume (forall x_3_1_1: Ref ::
             { invRecv5(x_3_1_1) }
@@ -948,7 +948,7 @@ procedure test(x: Ref, z: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion get(x) == 4 might not hold. (0223.vpr@28.10--28.21) [192463]"}
+    assert {:msg "  Assert might fail. Assertion get(x) == 4 might not hold. (0223.vpr@28.10--28.21) [81847]"}
       get(Heap, x) == 4;
     assume state(Heap, Mask);
   
@@ -961,10 +961,10 @@ procedure test(x: Ref, z: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access bar(x) (0223.vpr@29.3--29.11) [192464]"}
-          perm <= Mask[null, bar_2(x)];
+        assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access bar(x) (0223.vpr@29.3--29.11) [81848]"}
+          perm <= Mask[null, bar_3(x)];
       }
-      Mask := Mask[null, bar_2(x):=Mask[null, bar_2(x)] - perm];
+      Mask := Mask[null, bar_3(x):=Mask[null, bar_3(x)] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -972,7 +972,7 @@ procedure test(x: Ref, z: Ref) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, bar_2(x):=Mask[null, bar_2(x)] + perm];
+      Mask := Mask[null, bar_3(x):=Mask[null, bar_3(x)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
       assume get(Heap, x) == 3;
@@ -994,27 +994,27 @@ procedure test(x: Ref, z: Ref) returns ()
           
         
         // -- check if receiver acc(bar(w), write) is injective
-          assert {:msg "  Precondition of function get might not hold. Quantified resource bar(w) might not be injective. (0223.vpr@32.10--32.16) [192465]"}
+          assert {:msg "  Precondition of function get might not hold. Quantified resource bar(w) might not be injective. (0223.vpr@32.10--32.16) [81849]"}
             (forall w_2_2: Ref, w_2_3: Ref ::
             { neverTriggered6(w_2_2), neverTriggered6(w_2_3) }
             (((w_2_2 != w_2_3 && Set#Singleton(x)[w_2_2]) && Set#Singleton(x)[w_2_3]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> w_2_2 != w_2_3
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access bar(w) (0223.vpr@32.10--32.16) [192466]"}
+          assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access bar(w) (0223.vpr@32.10--32.16) [81850]"}
             (forall w_2_2: Ref ::
-            { ExhaleWellDef0Heap[null, bar_2(w_2_2)] } { ExhaleWellDef0Mask[null, bar_2(w_2_2)] } { Set#Singleton(x)[w_2_2] }
-            Set#Singleton(x)[w_2_2] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[null, bar_2(w_2_2)] > NoPerm
+            { ExhaleWellDef0Heap[null, bar_3(w_2_2)] } { ExhaleWellDef0Mask[null, bar_3(w_2_2)] } { Set#Singleton(x)[w_2_2] }
+            Set#Singleton(x)[w_2_2] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[null, bar_3(w_2_2)] > NoPerm
           );
         
         // -- assumptions for inverse of receiver acc(bar(w), write)
           assume (forall w_2_2: Ref ::
-            { ExhaleWellDef0Heap[null, bar_2(w_2_2)] } { ExhaleWellDef0Mask[null, bar_2(w_2_2)] } { Set#Singleton(x)[w_2_2] }
+            { ExhaleWellDef0Heap[null, bar_3(w_2_2)] } { ExhaleWellDef0Mask[null, bar_3(w_2_2)] } { Set#Singleton(x)[w_2_2] }
             Set#Singleton(x)[w_2_2] && NoPerm < FullPerm ==> invRecv6(w_2_2) == w_2_2 && qpRange6(w_2_2)
           );
-          assume (forall x_4_1_1: Ref ::
-            { invRecv6(x_4_1_1) }
-            (Set#Singleton(x)[invRecv6(x_4_1_1)] && NoPerm < FullPerm) && qpRange6(x_4_1_1) ==> invRecv6(x_4_1_1) == x_4_1_1
+          assume (forall x_4_1: Ref ::
+            { invRecv6(x_4_1) }
+            (Set#Singleton(x)[invRecv6(x_4_1)] && NoPerm < FullPerm) && qpRange6(x_4_1) ==> invRecv6(x_4_1) == x_4_1
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -1023,7 +1023,7 @@ procedure test(x: Ref, z: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion get(x) == 4 might not hold. (0223.vpr@32.10--32.21) [192467]"}
+    assert {:msg "  Assert might fail. Assertion get(x) == 4 might not hold. (0223.vpr@32.10--32.21) [81851]"}
       get(Heap, x) == 4;
     assume state(Heap, Mask);
 }

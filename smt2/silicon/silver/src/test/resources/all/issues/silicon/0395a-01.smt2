@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:46:27
+; Started: 2025-01-26 21:33:46
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -483,19 +483,19 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (isInt%limited s@$ i@0@00) (isInt s@$ i@0@00))
   :pattern ((isInt s@$ i@0@00))
-  :qid |quant-u-25084|)))
+  :qid |quant-u-10400|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (isInt%stateless i@0@00)
   :pattern ((isInt%limited s@$ i@0@00))
-  :qid |quant-u-25085|)))
+  :qid |quant-u-10401|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (=> (isInt%precondition s@$ i@0@00) (= (isInt s@$ i@0@00) true))
   :pattern ((isInt s@$ i@0@00))
-  :qid |quant-u-25086|)))
+  :qid |quant-u-10402|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   true
   :pattern ((isInt s@$ i@0@00))
-  :qid |quant-u-25087|)))
+  :qid |quant-u-10403|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test1 ----------
@@ -576,7 +576,7 @@
       ($SortWrappers.IntTo$Snap a@2@01)
       ($SortWrappers.IntTo$Snap i@3@01))
     ($SortWrappers.IntTo$Snap j@4@01))))
-  :qid |quant-u-25089|)))
+  :qid |quant-u-10405|)))
 (assert (forall ((msg_sender Int) (amount Int) (parameter Int)) (!
   (=>
     (and
@@ -632,7 +632,7 @@
         ($SortWrappers.IntTo$Snap amount))
       ($SortWrappers.IntTo$Snap parameter))))
   :pattern ((inv@8@01 msg_sender amount parameter) (inv@10@01 msg_sender amount parameter) (inv@12@01 msg_sender amount parameter))
-  :qid |quant-u-25090|)))
+  :qid |quant-u-10406|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -891,7 +891,7 @@
       ($SortWrappers.IntTo$Snap a@19@01)
       ($SortWrappers.IntTo$Snap i@20@01))
     ($SortWrappers.IntTo$Snap j@21@01))))
-  :qid |quant-u-25092|)))
+  :qid |quant-u-10408|)))
 (assert (forall ((msg_sender Int) (amount Int) (parameter Int)) (!
   (=>
     (and
@@ -930,7 +930,7 @@
       ($SortWrappers.IntTo$Snap a@19@01)
       ($SortWrappers.IntTo$Snap i@20@01))
     ($SortWrappers.IntTo$Snap j@21@01))))
-  :qid |quant-u-25092|)))
+  :qid |quant-u-10408|)))
 (assert (forall ((msg_sender Int) (amount Int) (parameter Int)) (!
   (=>
     (and
@@ -998,7 +998,7 @@
         ($SortWrappers.IntTo$Snap amount))
       ($SortWrappers.IntTo$Snap parameter))))
   :pattern ((inv@25@01 msg_sender amount parameter) (inv@27@01 msg_sender amount parameter) (inv@29@01 msg_sender amount parameter))
-  :qid |quant-u-25093|)))
+  :qid |quant-u-10409|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)

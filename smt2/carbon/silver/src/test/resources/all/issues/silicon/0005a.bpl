@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:57
+// Date:         2025-01-26 21:42:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0005a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0005a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -327,20 +327,20 @@ procedure P#definedness() returns ()
 // Translation of method test
 // ==================================================
 
-procedure test(flag_1: bool) returns ()
+procedure test_1(flag: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var a_21: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
+  var a_5: int;
   var a_4: int;
-  var a_4_2: int;
   var b_4_1: int;
   
   // -- Initializing the state
@@ -360,10 +360,10 @@ procedure test(flag_1: bool) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@16.46--16.60) [219058]"}
+          assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@16.46--16.60) [63121]"}
             NoPerm < perm ==> NoPerm < Mask[null, P()];
           // Finish exhale
           havoc ExhaleHeap;
@@ -372,13 +372,13 @@ procedure test(flag_1: bool) returns ()
           // Stop execution
           assume false;
         }
-        if (trigG(Heap, a_21, flag_1)) {
+        if (trigG(Heap, a_21, flag)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@16.64--16.75) [219059]"}
+            assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@16.64--16.75) [63122]"}
               NoPerm < perm ==> NoPerm < Mask[null, P()];
             // Finish exhale
             havoc ExhaleHeap;
@@ -391,16 +391,16 @@ procedure test(flag_1: bool) returns ()
         assume false;
       }
     assume (forall a_1_1: int, b_1_2: int ::
-      { trigG#frame(Heap[null, P()], a_1_1, flag_1), trigF#frame(Heap[null, P()], a_1_1, b_1_2) } { trigF#frame(Heap[null, P()], a_1_1, b_1_2) }
-      trigG(Heap, a_1_1, flag_1) && trigF(Heap, a_1_1, b_1_2)
+      { trigG#frame(Heap[null, P()], a_1_1, flag), trigF#frame(Heap[null, P()], a_1_1, b_1_2) } { trigF#frame(Heap[null, P()], a_1_1, b_1_2) }
+      trigG(Heap, a_1_1, flag) && trigF(Heap, a_1_1, b_1_2)
     );
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -416,10 +416,10 @@ procedure test(flag_1: bool) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@19.45--19.59) [219060]"}
+          assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@19.45--19.59) [63123]"}
             NoPerm < perm ==> NoPerm < PostMask[null, P()];
           // Finish exhale
           havoc ExhaleHeap;
@@ -428,13 +428,13 @@ procedure test(flag_1: bool) returns ()
           // Stop execution
           assume false;
         }
-        if (trigG(PostHeap, a_4, flag_1)) {
+        if (trigG(PostHeap, a_5, flag)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@19.63--19.74) [219061]"}
+            assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@19.63--19.74) [63124]"}
               NoPerm < perm ==> NoPerm < PostMask[null, P()];
             // Finish exhale
             havoc ExhaleHeap;
@@ -446,9 +446,9 @@ procedure test(flag_1: bool) returns ()
         }
         assume false;
       }
-    assume (forall a_3_1: int, b_3_2: int ::
-      { trigG#frame(PostHeap[null, P()], a_3_1, flag_1), trigF#frame(PostHeap[null, P()], a_3_1, b_3_2) } { trigF#frame(PostHeap[null, P()], a_3_1, b_3_2) }
-      trigG(PostHeap, a_3_1, flag_1) && trigF(PostHeap, a_3_1, b_3_2)
+    assume (forall a_3_1: int, b_3_1: int ::
+      { trigG#frame(PostHeap[null, P()], a_3_1, flag), trigF#frame(PostHeap[null, P()], a_3_1, b_3_1) } { trigF#frame(PostHeap[null, P()], a_3_1, b_3_1) }
+      trigG(PostHeap, a_3_1, flag) && trigF(PostHeap, a_3_1, b_3_1)
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -456,24 +456,24 @@ procedure test(flag_1: bool) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of test might not hold. There might be insufficient permission to access P() (0005a.vpr@17.12--17.20) [219062]"}
+      assert {:msg "  Postcondition of test might not hold. There might be insufficient permission to access P() (0005a.vpr@17.12--17.20) [63125]"}
         perm <= Mask[null, P()];
     }
     Mask := Mask[null, P():=Mask[null, P()] - perm];
     if (*) {
-      assert {:msg "  Postcondition of test might not hold. Assertion trigG(a, flag) might not hold. (0005a.vpr@19.11--19.74) [219063]"}
-        trigG(Heap, a_4_2, flag_1);
-      assert {:msg "  Postcondition of test might not hold. Assertion trigF(a, b) might not hold. (0005a.vpr@19.11--19.74) [219064]"}
-        trigF(Heap, a_4_2, b_4_1);
+      assert {:msg "  Postcondition of test might not hold. Assertion trigG(a, flag) might not hold. (0005a.vpr@19.11--19.74) [63126]"}
+        trigG(Heap, a_4, flag);
+      assert {:msg "  Postcondition of test might not hold. Assertion trigF(a, b) might not hold. (0005a.vpr@19.11--19.74) [63127]"}
+        trigF(Heap, a_4, b_4_1);
       assume false;
     }
     assume (forall a_5_1_1: int, b_5_1: int ::
-      { trigG#frame(Heap[null, P()], a_5_1_1, flag_1), trigF#frame(Heap[null, P()], a_5_1_1, b_5_1) } { trigF#frame(Heap[null, P()], a_5_1_1, b_5_1) }
-      trigG(Heap, a_5_1_1, flag_1) && trigF(Heap, a_5_1_1, b_5_1)
+      { trigG#frame(Heap[null, P()], a_5_1_1, flag), trigF#frame(Heap[null, P()], a_5_1_1, b_5_1) } { trigF#frame(Heap[null, P()], a_5_1_1, b_5_1) }
+      trigG(Heap, a_5_1_1, flag) && trigF(Heap, a_5_1_1, b_5_1)
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -485,21 +485,21 @@ procedure test(flag_1: bool) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(flag_1: bool) returns ()
+procedure test2_1(flag: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var a_5: int;
-  var oldHeap: HeapType;
+  var a_6: int;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var a_8: int;
-  var b_99: int;
-  var a_4_2: int;
+  var b_30: int;
+  var a_4: int;
   var b_4_1: int;
   
   // -- Initializing the state
@@ -519,10 +519,10 @@ procedure test2(flag_1: bool) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@26.46--26.60) [219065]"}
+          assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@26.46--26.60) [63128]"}
             NoPerm < perm ==> NoPerm < Mask[null, P()];
           // Finish exhale
           havoc ExhaleHeap;
@@ -531,13 +531,13 @@ procedure test2(flag_1: bool) returns ()
           // Stop execution
           assume false;
         }
-        if (trigG(Heap, a_5, flag_1)) {
+        if (trigG(Heap, a_6, flag)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@26.64--26.75) [219066]"}
+            assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@26.64--26.75) [63129]"}
               NoPerm < perm ==> NoPerm < Mask[null, P()];
             // Finish exhale
             havoc ExhaleHeap;
@@ -550,16 +550,16 @@ procedure test2(flag_1: bool) returns ()
         assume false;
       }
     assume (forall a_1_1: int, b_1_2: int ::
-      { trigG#frame(Heap[null, P()], a_1_1, flag_1), trigF#frame(Heap[null, P()], a_1_1, b_1_2) } { trigF#frame(Heap[null, P()], a_1_1, b_1_2) }
-      trigG(Heap, a_1_1, flag_1) && trigF(Heap, a_1_1, b_1_2)
+      { trigG#frame(Heap[null, P()], a_1_1, flag), trigF#frame(Heap[null, P()], a_1_1, b_1_2) } { trigF#frame(Heap[null, P()], a_1_1, b_1_2) }
+      trigG(Heap, a_1_1, flag) && trigF(Heap, a_1_1, b_1_2)
     );
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -575,10 +575,10 @@ procedure test2(flag_1: bool) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@28.46--28.56) [219067]"}
+          assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@28.46--28.56) [63130]"}
             NoPerm < perm ==> NoPerm < PostMask[null, P()];
           // Finish exhale
           havoc ExhaleHeap;
@@ -587,13 +587,13 @@ procedure test2(flag_1: bool) returns ()
           // Stop execution
           assume false;
         }
-        if (trigF(PostHeap, a_8, b_99)) {
+        if (trigF(PostHeap, a_8, b_30)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@28.61--28.75) [219068]"}
+            assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@28.61--28.75) [63131]"}
               NoPerm < perm ==> NoPerm < PostMask[null, P()];
             // Finish exhale
             havoc ExhaleHeap;
@@ -603,13 +603,13 @@ procedure test2(flag_1: bool) returns ()
             assume false;
           }
         }
-        if (trigF(PostHeap, a_8, b_99) ==> trigG(PostHeap, a_8, flag_1)) {
+        if (trigF(PostHeap, a_8, b_30) ==> trigG(PostHeap, a_8, flag)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@28.80--28.91) [219069]"}
+            assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@28.80--28.91) [63132]"}
               NoPerm < perm ==> NoPerm < PostMask[null, P()];
             // Finish exhale
             havoc ExhaleHeap;
@@ -621,9 +621,9 @@ procedure test2(flag_1: bool) returns ()
         }
         assume false;
       }
-    assume (forall a_3_1: int, b_3_2: int ::
-      { trigF#frame(PostHeap[null, P()], a_3_1, b_3_2) } { trigG#frame(PostHeap[null, P()], a_3_1, flag_1), trigF#frame(PostHeap[null, P()], a_3_1, b_3_2) }
-      (trigF(PostHeap, a_3_1, b_3_2) ==> trigG(PostHeap, a_3_1, flag_1)) && trigF(PostHeap, a_3_1, b_3_2)
+    assume (forall a_3_1: int, b_3_1: int ::
+      { trigF#frame(PostHeap[null, P()], a_3_1, b_3_1) } { trigG#frame(PostHeap[null, P()], a_3_1, flag), trigF#frame(PostHeap[null, P()], a_3_1, b_3_1) }
+      (trigF(PostHeap, a_3_1, b_3_1) ==> trigG(PostHeap, a_3_1, flag)) && trigF(PostHeap, a_3_1, b_3_1)
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -631,26 +631,26 @@ procedure test2(flag_1: bool) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of test2 might not hold. There might be insufficient permission to access P() (0005a.vpr@27.12--27.20) [219070]"}
+      assert {:msg "  Postcondition of test2 might not hold. There might be insufficient permission to access P() (0005a.vpr@27.12--27.20) [63133]"}
         perm <= Mask[null, P()];
     }
     Mask := Mask[null, P():=Mask[null, P()] - perm];
     if (*) {
-      if (trigF(Heap, a_4_2, b_4_1)) {
-        assert {:msg "  Postcondition of test2 might not hold. Assertion trigG(a, flag) might not hold. (0005a.vpr@28.11--28.91) [219071]"}
-          trigG(Heap, a_4_2, flag_1);
+      if (trigF(Heap, a_4, b_4_1)) {
+        assert {:msg "  Postcondition of test2 might not hold. Assertion trigG(a, flag) might not hold. (0005a.vpr@28.11--28.91) [63134]"}
+          trigG(Heap, a_4, flag);
       }
-      assert {:msg "  Postcondition of test2 might not hold. Assertion trigF(a, b) might not hold. (0005a.vpr@28.11--28.91) [219072]"}
-        trigF(Heap, a_4_2, b_4_1);
+      assert {:msg "  Postcondition of test2 might not hold. Assertion trigF(a, b) might not hold. (0005a.vpr@28.11--28.91) [63135]"}
+        trigF(Heap, a_4, b_4_1);
       assume false;
     }
     assume (forall a_5_1_1: int, b_5_1: int ::
-      { trigF#frame(Heap[null, P()], a_5_1_1, b_5_1) } { trigG#frame(Heap[null, P()], a_5_1_1, flag_1), trigF#frame(Heap[null, P()], a_5_1_1, b_5_1) }
-      (trigF(Heap, a_5_1_1, b_5_1) ==> trigG(Heap, a_5_1_1, flag_1)) && trigF(Heap, a_5_1_1, b_5_1)
+      { trigF#frame(Heap[null, P()], a_5_1_1, b_5_1) } { trigG#frame(Heap[null, P()], a_5_1_1, flag), trigF#frame(Heap[null, P()], a_5_1_1, b_5_1) }
+      (trigF(Heap, a_5_1_1, b_5_1) ==> trigG(Heap, a_5_1_1, flag)) && trigF(Heap, a_5_1_1, b_5_1)
     );
     // Finish exhale
     havoc ExhaleHeap;

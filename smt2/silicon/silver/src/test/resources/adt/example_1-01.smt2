@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:48:21
+; Started: 2025-01-26 21:36:51
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -176,11 +176,11 @@
     (allNodesGreaterThan%limited s@$ t@0@00 value@1@00)
     (allNodesGreaterThan s@$ t@0@00 value@1@00))
   :pattern ((allNodesGreaterThan s@$ t@0@00 value@1@00))
-  :qid |quant-u-26429|)))
+  :qid |quant-u-13803|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree) (value@1@00 Int)) (!
   (allNodesGreaterThan%stateless t@0@00 value@1@00)
   :pattern ((allNodesGreaterThan%limited s@$ t@0@00 value@1@00))
-  :qid |quant-u-26430|)))
+  :qid |quant-u-13804|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree) (value@1@00 Int)) (!
   (=>
     (allNodesGreaterThan%precondition s@$ t@0@00 value@1@00)
@@ -195,7 +195,7 @@
             (allNodesGreaterThan%limited $Snap.unit (get_Tree_left<Tree> t@0@00) value@1@00)
             (allNodesGreaterThan%limited $Snap.unit (get_Tree_right<Tree> t@0@00) value@1@00))))))
   :pattern ((allNodesGreaterThan s@$ t@0@00 value@1@00))
-  :qid |quant-u-26435|)))
+  :qid |quant-u-13809|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree) (value@1@00 Int)) (!
   (=>
     (allNodesGreaterThan%precondition s@$ t@0@00 value@1@00)
@@ -210,17 +210,17 @@
             (allNodesGreaterThan%limited $Snap.unit (get_Tree_left<Tree> t@0@00) value@1@00)
             (allNodesGreaterThan%precondition $Snap.unit (get_Tree_right<Tree> t@0@00) value@1@00))))))
   :pattern ((allNodesGreaterThan s@$ t@0@00 value@1@00))
-  :qid |quant-u-26436|)))
+  :qid |quant-u-13810|)))
 (assert (forall ((s@$ $Snap) (t@3@00 Tree) (value@4@00 Int)) (!
   (=
     (allNodesLessThan%limited s@$ t@3@00 value@4@00)
     (allNodesLessThan s@$ t@3@00 value@4@00))
   :pattern ((allNodesLessThan s@$ t@3@00 value@4@00))
-  :qid |quant-u-26431|)))
+  :qid |quant-u-13805|)))
 (assert (forall ((s@$ $Snap) (t@3@00 Tree) (value@4@00 Int)) (!
   (allNodesLessThan%stateless t@3@00 value@4@00)
   :pattern ((allNodesLessThan%limited s@$ t@3@00 value@4@00))
-  :qid |quant-u-26432|)))
+  :qid |quant-u-13806|)))
 (assert (forall ((s@$ $Snap) (t@3@00 Tree) (value@4@00 Int)) (!
   (=>
     (allNodesLessThan%precondition s@$ t@3@00 value@4@00)
@@ -235,7 +235,7 @@
             (allNodesLessThan%limited $Snap.unit (get_Tree_right<Tree> t@3@00) value@4@00)
             (allNodesLessThan%limited $Snap.unit (get_Tree_left<Tree> t@3@00) value@4@00))))))
   :pattern ((allNodesLessThan s@$ t@3@00 value@4@00))
-  :qid |quant-u-26437|)))
+  :qid |quant-u-13811|)))
 (assert (forall ((s@$ $Snap) (t@3@00 Tree) (value@4@00 Int)) (!
   (=>
     (allNodesLessThan%precondition s@$ t@3@00 value@4@00)
@@ -250,15 +250,15 @@
             (allNodesLessThan%limited $Snap.unit (get_Tree_right<Tree> t@3@00) value@4@00)
             (allNodesLessThan%precondition $Snap.unit (get_Tree_left<Tree> t@3@00) value@4@00))))))
   :pattern ((allNodesLessThan s@$ t@3@00 value@4@00))
-  :qid |quant-u-26438|)))
+  :qid |quant-u-13812|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (= (isBST%limited s@$ t@6@00) (isBST s@$ t@6@00))
   :pattern ((isBST s@$ t@6@00))
-  :qid |quant-u-26433|)))
+  :qid |quant-u-13807|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (isBST%stateless t@6@00)
   :pattern ((isBST%limited s@$ t@6@00))
-  :qid |quant-u-26434|)))
+  :qid |quant-u-13808|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (=>
     (isBST%precondition s@$ t@6@00)
@@ -275,7 +275,7 @@
               (allNodesGreaterThan $Snap.unit (get_Tree_right<Tree> t@6@00) (get_Tree_v<Int> t@6@00))
               (isBST%limited $Snap.unit (get_Tree_right<Tree> t@6@00))))))))
   :pattern ((isBST s@$ t@6@00))
-  :qid |quant-u-26439|)))
+  :qid |quant-u-13813|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (=>
     (isBST%precondition s@$ t@6@00)
@@ -296,7 +296,7 @@
                   (allNodesGreaterThan $Snap.unit (get_Tree_right<Tree> t@6@00) (get_Tree_v<Int> t@6@00))
                   (isBST%precondition $Snap.unit (get_Tree_right<Tree> t@6@00))))))))))
   :pattern ((isBST s@$ t@6@00))
-  :qid |quant-u-26440|)))
+  :qid |quant-u-13814|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- insertValue ----------

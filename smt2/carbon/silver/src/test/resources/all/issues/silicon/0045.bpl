@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:52
+// Date:         2025-01-26 21:42:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0045.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0045-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_6: Ref, f_9: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_6, f_9] }
-  Heap[o_6, $allocated] ==> Heap[Heap[o_6, f_9], $allocated]
+axiom (forall o_38: Ref, f_51: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_38, f_51] }
+  Heap[o_38, $allocated] ==> Heap[Heap[o_38, f_51], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_30: Ref, f_35: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_30, f_35] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_30, f_35) ==> Heap[o_30, f_35] == ExhaleHeap[o_30, f_35]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_39: Ref, f_21: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_39, f_21] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_39, f_21) ==> Heap[o_39, f_21] == ExhaleHeap[o_39, f_21]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_34), ExhaleHeap[null, PredicateMaskField(pm_f_34)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsPredicateField(pm_f_34) ==> Heap[null, PredicateMaskField(pm_f_34)] == ExhaleHeap[null, PredicateMaskField(pm_f_34)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18), ExhaleHeap[null, PredicateMaskField(pm_f_18)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> Heap[null, PredicateMaskField(pm_f_18)] == ExhaleHeap[null, PredicateMaskField(pm_f_18)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_34) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsPredicateField(pm_f_34) ==> (forall <A, B> o2_34: Ref, f_35: (Field A B) ::
-    { ExhaleHeap[o2_34, f_35] }
-    Heap[null, PredicateMaskField(pm_f_34)][o2_34, f_35] ==> Heap[o2_34, f_35] == ExhaleHeap[o2_34, f_35]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_21: (Field A B) ::
+    { ExhaleHeap[o2_18, f_21] }
+    Heap[null, PredicateMaskField(pm_f_18)][o2_18, f_21] ==> Heap[o2_18, f_21] == ExhaleHeap[o2_18, f_21]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_34), ExhaleHeap[null, WandMaskField(pm_f_34)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsWandField(pm_f_34) ==> Heap[null, WandMaskField(pm_f_34)] == ExhaleHeap[null, WandMaskField(pm_f_34)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18), ExhaleHeap[null, WandMaskField(pm_f_18)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> Heap[null, WandMaskField(pm_f_18)] == ExhaleHeap[null, WandMaskField(pm_f_18)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_34) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsWandField(pm_f_34) ==> (forall <A, B> o2_34: Ref, f_35: (Field A B) ::
-    { ExhaleHeap[o2_34, f_35] }
-    Heap[null, WandMaskField(pm_f_34)][o2_34, f_35] ==> Heap[o2_34, f_35] == ExhaleHeap[o2_34, f_35]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_21: (Field A B) ::
+    { ExhaleHeap[o2_18, f_21] }
+    Heap[null, WandMaskField(pm_f_18)][o2_18, f_21] ==> Heap[o2_18, f_21] == ExhaleHeap[o2_18, f_21]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_30: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_30, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_30, $allocated] ==> ExhaleHeap[o_30, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_39: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_39, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_39, $allocated] ==> ExhaleHeap[o_39, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_6: Ref, f_16: (Field A B), v: B ::
-  { Heap[o_6, f_16:=v] }
-  succHeap(Heap, Heap[o_6, f_16:=v])
+axiom (forall <A, B> Heap: HeapType, o_38: Ref, f_23: (Field A B), v: B ::
+  { Heap[o_38, f_23:=v] }
+  succHeap(Heap, Heap[o_38, f_23:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -181,7 +181,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type NaturalDomainType;
 
 // Translation of domain function zero
-function  zero_1(): NaturalDomainType;
+function  zero(): NaturalDomainType;
 
 // Translation of domain function successor
 function  successor(n_84: NaturalDomainType): NaturalDomainType;
@@ -190,25 +190,25 @@ function  successor(n_84: NaturalDomainType): NaturalDomainType;
 function  isZeroOrSuccessor(n_84: NaturalDomainType): bool;
 
 // Translation of domain function lessEqual
-function  lessEqual(l_11: NaturalDomainType, r_3: NaturalDomainType): bool;
+function  lessEqual(l_2: NaturalDomainType, r_4: NaturalDomainType): bool;
 
 // Translation of domain function less
-function  less(l_11: NaturalDomainType, r_3: NaturalDomainType): bool;
+function  less(l_2: NaturalDomainType, r_4: NaturalDomainType): bool;
 
 // Translation of domain function plus
-function  plus(l_11: NaturalDomainType, r_3: NaturalDomainType): NaturalDomainType;
+function  plus(l_2: NaturalDomainType, r_4: NaturalDomainType): NaturalDomainType;
 
 // Translation of domain function minus
-function  minus(l_11: NaturalDomainType, r_3: NaturalDomainType): NaturalDomainType;
+function  minus(l_2: NaturalDomainType, r_4: NaturalDomainType): NaturalDomainType;
 
 // Translation of domain function times
-function  times(l_11: NaturalDomainType, r_3: NaturalDomainType): NaturalDomainType;
+function  times(l_2: NaturalDomainType, r_4: NaturalDomainType): NaturalDomainType;
 
 // Translation of domain function minimum
-function  minimum(l_11: NaturalDomainType, r_3: NaturalDomainType): NaturalDomainType;
+function  minimum(l_2: NaturalDomainType, r_4: NaturalDomainType): NaturalDomainType;
 
 // Translation of domain function maximum
-function  maximum(l_11: NaturalDomainType, r_3: NaturalDomainType): NaturalDomainType;
+function  maximum(l_2: NaturalDomainType, r_4: NaturalDomainType): NaturalDomainType;
 
 // Translation of domain axiom zeroOrSuccessor
 axiom (forall n: NaturalDomainType ::
@@ -219,25 +219,25 @@ axiom (forall n: NaturalDomainType ::
 // Translation of domain axiom isZeroOrSuccessorNatural
 axiom (forall n: NaturalDomainType ::
   { (isZeroOrSuccessor(n): bool) }
-  (isZeroOrSuccessor(n): bool) == (n == (zero_1(): NaturalDomainType) || (exists p_1: NaturalDomainType ::
+  (isZeroOrSuccessor(n): bool) == (n == (zero(): NaturalDomainType) || (exists p_1: NaturalDomainType ::
     { (successor(p_1): NaturalDomainType) }
     n == (successor(p_1): NaturalDomainType)
   ))
 );
 
 // Translation of domain axiom equalZeroZero
-axiom (zero_1(): NaturalDomainType) == (zero_1(): NaturalDomainType);
+axiom (zero(): NaturalDomainType) == (zero(): NaturalDomainType);
 
 // Translation of domain axiom equalZeroSuccessor
 axiom (forall n: NaturalDomainType ::
   { (successor(n): NaturalDomainType) }
-  (zero_1(): NaturalDomainType) != (successor(n): NaturalDomainType)
+  (zero(): NaturalDomainType) != (successor(n): NaturalDomainType)
 );
 
 // Translation of domain axiom equalSuccessorZero
 axiom (forall n: NaturalDomainType ::
   { (successor(n): NaturalDomainType) }
-  (successor(n): NaturalDomainType) != (zero_1(): NaturalDomainType)
+  (successor(n): NaturalDomainType) != (zero(): NaturalDomainType)
 );
 
 // Translation of domain axiom equalSuccessorSuccessor
@@ -248,14 +248,14 @@ axiom (forall x: NaturalDomainType, y: NaturalDomainType ::
 
 // Translation of domain axiom lessEqualZeroNatural
 axiom (forall n: NaturalDomainType ::
-  { (lessEqual((zero_1(): NaturalDomainType), n): bool) }
-  (lessEqual((zero_1(): NaturalDomainType), n): bool)
+  { (lessEqual((zero(): NaturalDomainType), n): bool) }
+  (lessEqual((zero(): NaturalDomainType), n): bool)
 );
 
 // Translation of domain axiom lessEqualSuccessorZero
 axiom (forall n: NaturalDomainType ::
-  { (lessEqual((successor(n): NaturalDomainType), (zero_1(): NaturalDomainType)): bool) }
-  !(lessEqual((successor(n): NaturalDomainType), (zero_1(): NaturalDomainType)): bool)
+  { (lessEqual((successor(n): NaturalDomainType), (zero(): NaturalDomainType)): bool) }
+  !(lessEqual((successor(n): NaturalDomainType), (zero(): NaturalDomainType)): bool)
 );
 
 // Translation of domain axiom lessEqualSuccessorSuccessor
@@ -266,14 +266,14 @@ axiom (forall x: NaturalDomainType, y: NaturalDomainType ::
 
 // Translation of domain axiom lessNaturalZero
 axiom (forall n: NaturalDomainType ::
-  { (less(n, (zero_1(): NaturalDomainType)): bool) }
-  !(less(n, (zero_1(): NaturalDomainType)): bool)
+  { (less(n, (zero(): NaturalDomainType)): bool) }
+  !(less(n, (zero(): NaturalDomainType)): bool)
 );
 
 // Translation of domain axiom lessZeroSuccessor
 axiom (forall n: NaturalDomainType ::
-  { (less((zero_1(): NaturalDomainType), (successor(n): NaturalDomainType)): bool) }
-  (less((zero_1(): NaturalDomainType), (successor(n): NaturalDomainType)): bool)
+  { (less((zero(): NaturalDomainType), (successor(n): NaturalDomainType)): bool) }
+  (less((zero(): NaturalDomainType), (successor(n): NaturalDomainType)): bool)
 );
 
 // Translation of domain axiom lessSuccessorSuccessor
@@ -284,8 +284,8 @@ axiom (forall x: NaturalDomainType, y: NaturalDomainType ::
 
 // Translation of domain axiom plusZeroNatural
 axiom (forall y: NaturalDomainType ::
-  { (plus((zero_1(): NaturalDomainType), y): NaturalDomainType) }
-  (plus((zero_1(): NaturalDomainType), y): NaturalDomainType) == y
+  { (plus((zero(): NaturalDomainType), y): NaturalDomainType) }
+  (plus((zero(): NaturalDomainType), y): NaturalDomainType) == y
 );
 
 // Translation of domain axiom plusSuccessorNatural
@@ -296,14 +296,14 @@ axiom (forall x: NaturalDomainType, y: NaturalDomainType ::
 
 // Translation of domain axiom minusZeroNatural
 axiom (forall n: NaturalDomainType ::
-  { (minus((zero_1(): NaturalDomainType), n): NaturalDomainType) }
-  (minus((zero_1(): NaturalDomainType), n): NaturalDomainType) == (zero_1(): NaturalDomainType)
+  { (minus((zero(): NaturalDomainType), n): NaturalDomainType) }
+  (minus((zero(): NaturalDomainType), n): NaturalDomainType) == (zero(): NaturalDomainType)
 );
 
 // Translation of domain axiom minusNaturalZero
 axiom (forall x: NaturalDomainType ::
-  { (minus(x, (zero_1(): NaturalDomainType)): NaturalDomainType) }
-  (minus(x, (zero_1(): NaturalDomainType)): NaturalDomainType) == x
+  { (minus(x, (zero(): NaturalDomainType)): NaturalDomainType) }
+  (minus(x, (zero(): NaturalDomainType)): NaturalDomainType) == x
 );
 
 // Translation of domain axiom minusSuccessorSuccessor
@@ -314,8 +314,8 @@ axiom (forall x: NaturalDomainType, y: NaturalDomainType ::
 
 // Translation of domain axiom timesZeroNatural
 axiom (forall n: NaturalDomainType ::
-  { (times((zero_1(): NaturalDomainType), n): NaturalDomainType) }
-  (times((zero_1(): NaturalDomainType), n): NaturalDomainType) == (zero_1(): NaturalDomainType)
+  { (times((zero(): NaturalDomainType), n): NaturalDomainType) }
+  (times((zero(): NaturalDomainType), n): NaturalDomainType) == (zero(): NaturalDomainType)
 );
 
 // Translation of domain axiom timesSuccessorNatural
@@ -326,14 +326,14 @@ axiom (forall x: NaturalDomainType, y: NaturalDomainType ::
 
 // Translation of domain axiom minimumZeroNatural
 axiom (forall y: NaturalDomainType ::
-  { (minimum((zero_1(): NaturalDomainType), y): NaturalDomainType) }
-  (minimum((zero_1(): NaturalDomainType), y): NaturalDomainType) == (zero_1(): NaturalDomainType)
+  { (minimum((zero(): NaturalDomainType), y): NaturalDomainType) }
+  (minimum((zero(): NaturalDomainType), y): NaturalDomainType) == (zero(): NaturalDomainType)
 );
 
 // Translation of domain axiom minimumNaturalZero
 axiom (forall x: NaturalDomainType ::
-  { (minimum(x, (zero_1(): NaturalDomainType)): NaturalDomainType) }
-  (minimum(x, (zero_1(): NaturalDomainType)): NaturalDomainType) == (zero_1(): NaturalDomainType)
+  { (minimum(x, (zero(): NaturalDomainType)): NaturalDomainType) }
+  (minimum(x, (zero(): NaturalDomainType)): NaturalDomainType) == (zero(): NaturalDomainType)
 );
 
 // Translation of domain axiom minimumSuccessorSuccessor
@@ -344,14 +344,14 @@ axiom (forall x: NaturalDomainType, y: NaturalDomainType ::
 
 // Translation of domain axiom maximumZeroNatural
 axiom (forall y: NaturalDomainType ::
-  { (maximum((zero_1(): NaturalDomainType), y): NaturalDomainType) }
-  (maximum((zero_1(): NaturalDomainType), y): NaturalDomainType) == y
+  { (maximum((zero(): NaturalDomainType), y): NaturalDomainType) }
+  (maximum((zero(): NaturalDomainType), y): NaturalDomainType) == y
 );
 
 // Translation of domain axiom maximumNaturalZero
 axiom (forall x: NaturalDomainType ::
-  { (maximum(x, (zero_1(): NaturalDomainType)): NaturalDomainType) }
-  (maximum(x, (zero_1(): NaturalDomainType)): NaturalDomainType) == x
+  { (maximum(x, (zero(): NaturalDomainType)): NaturalDomainType) }
+  (maximum(x, (zero(): NaturalDomainType)): NaturalDomainType) == x
 );
 
 // Translation of domain axiom maximumSuccessorSuccessor
@@ -368,90 +368,90 @@ axiom (forall x: NaturalDomainType, y: NaturalDomainType ::
 type ListDomainType A;
 
 // Translation of domain function nil
-function  nil<A>(t_9: A): ListDomainType A;
+function  nil<A>(t_3: A): ListDomainType A;
 
 // Translation of domain function cons
-function  cons<A>(e: A, l_11: (ListDomainType A)): ListDomainType A;
+function  cons<A>(e: A, l_2: (ListDomainType A)): ListDomainType A;
 
 // Translation of domain function isNilOrCons
-function  isNilOrCons<A>(l_11: (ListDomainType A)): bool;
+function  isNilOrCons<A>(l_2: (ListDomainType A)): bool;
 
 // Translation of domain function empty
-function  empty<A>(l_11: (ListDomainType A)): bool;
+function  empty<A>(l_2: (ListDomainType A)): bool;
 
 // Translation of domain function concatenate
-function  concatenate<A>(l_11: (ListDomainType A), r_3: (ListDomainType A)): ListDomainType A;
+function  concatenate<A>(l_2: (ListDomainType A), r_4: (ListDomainType A)): ListDomainType A;
 
 // Translation of domain function reverse
-function  reverse_1<A>(l_11: (ListDomainType A)): ListDomainType A;
+function  reverse_1<A>(l_2: (ListDomainType A)): ListDomainType A;
 
 // Translation of domain function delete
-function  delete(n_84: NaturalDomainType, l_11: (ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType;
+function  delete(n_84: NaturalDomainType, l_2: (ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType;
 
 // Translation of domain function length
-function  length_1<A>(l_11: (ListDomainType A)): NaturalDomainType;
+function  length_2<A>(l_2: (ListDomainType A)): NaturalDomainType;
 
 // Translation of domain function element
-function  element_1(n_84: NaturalDomainType, l_11: (ListDomainType NaturalDomainType)): bool;
+function  element_1(n_84: NaturalDomainType, l_2: (ListDomainType NaturalDomainType)): bool;
 
 // Translation of domain function drop
-function  drop<A>(n_84: NaturalDomainType, l_11: (ListDomainType A)): ListDomainType A;
+function  drop<A>(n_84: NaturalDomainType, l_2: (ListDomainType A)): ListDomainType A;
 
 // Translation of domain function take
-function  take<A>(n_84: NaturalDomainType, l_11: (ListDomainType A)): ListDomainType A;
+function  take<A>(n_84: NaturalDomainType, l_2: (ListDomainType A)): ListDomainType A;
 
 // Translation of domain function count
-function  count_2(n_84: NaturalDomainType, l_11: (ListDomainType NaturalDomainType)): NaturalDomainType;
+function  count_1(n_84: NaturalDomainType, l_2: (ListDomainType NaturalDomainType)): NaturalDomainType;
 
 // Translation of domain function butLast
-function  butLast<A>(l_11: (ListDomainType A)): ListDomainType A;
+function  butLast<A>(l_2: (ListDomainType A)): ListDomainType A;
 
 // Translation of domain function last
-function  last_2(l_11: (ListDomainType NaturalDomainType)): NaturalDomainType;
+function  last_2(l_2: (ListDomainType NaturalDomainType)): NaturalDomainType;
 
 // Translation of domain function sorted
-function  sorted_1(l_11: (ListDomainType NaturalDomainType)): bool;
+function  sorted(l_2: (ListDomainType NaturalDomainType)): bool;
 
 // Translation of domain function insertSorting
-function  insertSorting(n_84: NaturalDomainType, l_11: (ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType;
+function  insertSorting(n_84: NaturalDomainType, l_2: (ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType;
 
 // Translation of domain function insert
-function  insert_1(n_84: NaturalDomainType, l_11: (ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType;
+function  insert_1(n_84: NaturalDomainType, l_2: (ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType;
 
 // Translation of domain function insertUnlessPresent
-function  insertUnlessPresent(n_84: NaturalDomainType, l_11: (ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType;
+function  insertUnlessPresent(n_84: NaturalDomainType, l_2: (ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType;
 
 // Translation of domain function sort
-function  sort(l_11: (ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType;
+function  sort(l_2: (ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType;
 
 // Translation of domain function sum
-function  sum_2(l_11: (ListDomainType NaturalDomainType)): NaturalDomainType;
+function  sum_2(l_2: (ListDomainType NaturalDomainType)): NaturalDomainType;
 
 // Translation of domain function hasMultiple
-function  hasMultiple(l_11: (ListDomainType NaturalDomainType)): bool;
+function  hasMultiple(l_2: (ListDomainType NaturalDomainType)): bool;
 
 // Translation of domain axiom nilOrCons
-axiom (forall <A> l_2: (ListDomainType A) ::
-  { (isNilOrCons(l_2): bool) }
-  (isNilOrCons(l_2): bool)
+axiom (forall <A> l_1: (ListDomainType A) ::
+  { (isNilOrCons(l_1): bool) }
+  (isNilOrCons(l_1): bool)
 );
 
 // Translation of domain axiom isNilOrConsList
-axiom (forall <A> l_2: (ListDomainType A) ::
-  { (isNilOrCons(l_2): bool) }
-  (isNilOrCons(l_2): bool) == ((exists t_2: A ::
+axiom (forall <A> l_1: (ListDomainType A) ::
+  { (isNilOrCons(l_1): bool) }
+  (isNilOrCons(l_1): bool) == ((exists t_2: A ::
     { (nil(t_2): ListDomainType A) }
-    l_2 == (nil(t_2): ListDomainType A)
+    l_1 == (nil(t_2): ListDomainType A)
   ) || (exists e_1: A, r_1: (ListDomainType A) ::
     { (cons(e_1, r_1): ListDomainType A) }
-    l_2 == (cons(e_1, r_1): ListDomainType A)
+    l_1 == (cons(e_1, r_1): ListDomainType A)
   ))
 );
 
 // Translation of domain axiom equalNilNil
-axiom (forall l_2: NaturalDomainType, r_1: NaturalDomainType ::
-  { (nil(l_2): ListDomainType NaturalDomainType), (nil(r_1): ListDomainType NaturalDomainType) }
-  (nil(l_2): ListDomainType NaturalDomainType) == (nil(r_1): ListDomainType NaturalDomainType)
+axiom (forall l_1: NaturalDomainType, r_1: NaturalDomainType ::
+  { (nil(l_1): ListDomainType NaturalDomainType), (nil(r_1): ListDomainType NaturalDomainType) }
+  (nil(l_1): ListDomainType NaturalDomainType) == (nil(r_1): ListDomainType NaturalDomainType)
 );
 
 // Translation of domain axiom equalConsNil
@@ -479,9 +479,9 @@ axiom (forall <A> t_2: A ::
 );
 
 // Translation of domain axiom emptyCons
-axiom (forall <A> e_1: A, l_2: (ListDomainType A) ::
-  { (empty((cons(e_1, l_2): ListDomainType A)): bool) }
-  !(empty((cons(e_1, l_2): ListDomainType A)): bool)
+axiom (forall <A> e_1: A, l_1: (ListDomainType A) ::
+  { (empty((cons(e_1, l_1): ListDomainType A)): bool) }
+  !(empty((cons(e_1, l_1): ListDomainType A)): bool)
 );
 
 // Translation of domain axiom concatenateNilList
@@ -522,14 +522,14 @@ axiom (forall n: NaturalDomainType, x: NaturalDomainType, xs: (ListDomainType Na
 
 // Translation of domain axiom lengthNil
 axiom (forall <A> t_2: A ::
-  { (length_1((nil(t_2): ListDomainType A)): NaturalDomainType) }
-  (length_1((nil(t_2): ListDomainType A)): NaturalDomainType) == (zero_1(): NaturalDomainType)
+  { (length_2((nil(t_2): ListDomainType A)): NaturalDomainType) }
+  (length_2((nil(t_2): ListDomainType A)): NaturalDomainType) == (zero(): NaturalDomainType)
 );
 
 // Translation of domain axiom lengthCons
 axiom (forall <A> e_1: A, xs: (ListDomainType A) ::
-  { (length_1((cons(e_1, xs): ListDomainType A)): NaturalDomainType) }
-  (length_1((cons(e_1, xs): ListDomainType A)): NaturalDomainType) == (successor((length_1(xs): NaturalDomainType)): NaturalDomainType)
+  { (length_2((cons(e_1, xs): ListDomainType A)): NaturalDomainType) }
+  (length_2((cons(e_1, xs): ListDomainType A)): NaturalDomainType) == (successor((length_2(xs): NaturalDomainType)): NaturalDomainType)
 );
 
 // Translation of domain axiom elementNil
@@ -546,8 +546,8 @@ axiom (forall n: NaturalDomainType, x: NaturalDomainType, xs: (ListDomainType Na
 
 // Translation of domain axiom dropZeroList
 axiom (forall <A> xs: (ListDomainType A) ::
-  { (drop((zero_1(): NaturalDomainType), xs): ListDomainType A) }
-  (drop((zero_1(): NaturalDomainType), xs): ListDomainType A) == xs
+  { (drop((zero(): NaturalDomainType), xs): ListDomainType A) }
+  (drop((zero(): NaturalDomainType), xs): ListDomainType A) == xs
 );
 
 // Translation of domain axiom dropNaturalNil
@@ -563,11 +563,11 @@ axiom (forall <A> x: NaturalDomainType, e_1: A, xs: (ListDomainType A) ::
 );
 
 // Translation of domain axiom takeZeroList
-axiom (forall <A> l_2: (ListDomainType A) ::
-  { (take((zero_1(): NaturalDomainType), l_2): ListDomainType A) }
+axiom (forall <A> l_1: (ListDomainType A) ::
+  { (take((zero(): NaturalDomainType), l_1): ListDomainType A) }
   (exists t_2: A ::
     { (nil(t_2): ListDomainType A) }
-    (take((zero_1(): NaturalDomainType), l_2): ListDomainType A) == (nil(t_2): ListDomainType A)
+    (take((zero(): NaturalDomainType), l_1): ListDomainType A) == (nil(t_2): ListDomainType A)
   )
 );
 
@@ -585,14 +585,14 @@ axiom (forall <A> x: NaturalDomainType, y: A, ys: (ListDomainType A) ::
 
 // Translation of domain axiom countNaturalNil
 axiom (forall x: NaturalDomainType, t_2: NaturalDomainType ::
-  { (count_2(x, (nil(t_2): ListDomainType NaturalDomainType)): NaturalDomainType) }
-  (count_2(x, (nil(t_2): ListDomainType NaturalDomainType)): NaturalDomainType) == (zero_1(): NaturalDomainType)
+  { (count_1(x, (nil(t_2): ListDomainType NaturalDomainType)): NaturalDomainType) }
+  (count_1(x, (nil(t_2): ListDomainType NaturalDomainType)): NaturalDomainType) == (zero(): NaturalDomainType)
 );
 
 // Translation of domain axiom countNaturalCons
 axiom (forall x: NaturalDomainType, y: NaturalDomainType, ys: (ListDomainType NaturalDomainType) ::
-  { (cons(y, ys): ListDomainType NaturalDomainType), (count_2(x, ys): NaturalDomainType) } { (cons(y, ys): ListDomainType NaturalDomainType), (successor((count_2(x, ys): NaturalDomainType)): NaturalDomainType) } { (count_2(x, (cons(y, ys): ListDomainType NaturalDomainType)): NaturalDomainType) }
-  (count_2(x, (cons(y, ys): ListDomainType NaturalDomainType)): NaturalDomainType) == (if x == y then (successor((count_2(x, ys): NaturalDomainType)): NaturalDomainType) else (count_2(x, ys): NaturalDomainType))
+  { (cons(y, ys): ListDomainType NaturalDomainType), (count_1(x, ys): NaturalDomainType) } { (cons(y, ys): ListDomainType NaturalDomainType), (successor((count_1(x, ys): NaturalDomainType)): NaturalDomainType) } { (count_1(x, (cons(y, ys): ListDomainType NaturalDomainType)): NaturalDomainType) }
+  (count_1(x, (cons(y, ys): ListDomainType NaturalDomainType)): NaturalDomainType) == (if x == y then (successor((count_1(x, ys): NaturalDomainType)): NaturalDomainType) else (count_1(x, ys): NaturalDomainType))
 );
 
 // Translation of domain axiom butLastNil
@@ -608,15 +608,15 @@ axiom (forall <A> x: A, t_2: A ::
 );
 
 // Translation of domain axiom butLastConsCons
-axiom (forall <A> x: A, e_1: A, l_2: (ListDomainType A) ::
-  { (cons(x, (cons(e_1, l_2): ListDomainType A)): ListDomainType A) } { (cons(x, (butLast((cons(e_1, l_2): ListDomainType A)): ListDomainType A)): ListDomainType A) }
-  (cons(x, (cons(e_1, l_2): ListDomainType A)): ListDomainType A) == (cons(x, (butLast((cons(e_1, l_2): ListDomainType A)): ListDomainType A)): ListDomainType A)
+axiom (forall <A> x: A, e_1: A, l_1: (ListDomainType A) ::
+  { (cons(x, (cons(e_1, l_1): ListDomainType A)): ListDomainType A) } { (cons(x, (butLast((cons(e_1, l_1): ListDomainType A)): ListDomainType A)): ListDomainType A) }
+  (cons(x, (cons(e_1, l_1): ListDomainType A)): ListDomainType A) == (cons(x, (butLast((cons(e_1, l_1): ListDomainType A)): ListDomainType A)): ListDomainType A)
 );
 
 // Translation of domain axiom lastNil
 axiom (forall t_2: NaturalDomainType ::
   { (last_2((nil(t_2): ListDomainType NaturalDomainType)): NaturalDomainType) }
-  (last_2((nil(t_2): ListDomainType NaturalDomainType)): NaturalDomainType) == (zero_1(): NaturalDomainType)
+  (last_2((nil(t_2): ListDomainType NaturalDomainType)): NaturalDomainType) == (zero(): NaturalDomainType)
 );
 
 // Translation of domain axiom lastConsNil
@@ -626,27 +626,27 @@ axiom (forall x: NaturalDomainType, t_2: NaturalDomainType ::
 );
 
 // Translation of domain axiom lastConsCons
-axiom (forall x: NaturalDomainType, n: NaturalDomainType, l_2: (ListDomainType NaturalDomainType) ::
-  { (last_2((cons(x, (cons(n, l_2): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): NaturalDomainType) }
-  (last_2((cons(x, (cons(n, l_2): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): NaturalDomainType) == (last_2((cons(n, l_2): ListDomainType NaturalDomainType)): NaturalDomainType)
+axiom (forall x: NaturalDomainType, n: NaturalDomainType, l_1: (ListDomainType NaturalDomainType) ::
+  { (last_2((cons(x, (cons(n, l_1): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): NaturalDomainType) }
+  (last_2((cons(x, (cons(n, l_1): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): NaturalDomainType) == (last_2((cons(n, l_1): ListDomainType NaturalDomainType)): NaturalDomainType)
 );
 
 // Translation of domain axiom sortedNil
 axiom (forall t_2: NaturalDomainType ::
-  { (sorted_1((nil(t_2): ListDomainType NaturalDomainType)): bool) }
-  (sorted_1((nil(t_2): ListDomainType NaturalDomainType)): bool)
+  { (sorted((nil(t_2): ListDomainType NaturalDomainType)): bool) }
+  (sorted((nil(t_2): ListDomainType NaturalDomainType)): bool)
 );
 
 // Translation of domain axiom sortedConsNil
 axiom (forall x: NaturalDomainType, t_2: NaturalDomainType ::
-  { (sorted_1((cons(x, (nil(t_2): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): bool) }
-  (sorted_1((cons(x, (nil(t_2): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): bool)
+  { (sorted((cons(x, (nil(t_2): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): bool) }
+  (sorted((cons(x, (nil(t_2): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): bool)
 );
 
 // Translation of domain axiom sortedConsCons
 axiom (forall x: NaturalDomainType, y: NaturalDomainType, ys: (ListDomainType NaturalDomainType) ::
-  { (cons(y, ys): ListDomainType NaturalDomainType), (lessEqual(x, y): bool) } { (sorted_1((cons(x, (cons(y, ys): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): bool) } { (lessEqual(x, y): bool), (cons(y, ys): ListDomainType NaturalDomainType) } { (lessEqual(x, y): bool), (sorted_1((cons(y, ys): ListDomainType NaturalDomainType)): bool) }
-  (sorted_1((cons(x, (cons(y, ys): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): bool) == ((lessEqual(x, y): bool) && (sorted_1((cons(y, ys): ListDomainType NaturalDomainType)): bool))
+  { (cons(y, ys): ListDomainType NaturalDomainType), (lessEqual(x, y): bool) } { (sorted((cons(x, (cons(y, ys): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): bool) } { (lessEqual(x, y): bool), (cons(y, ys): ListDomainType NaturalDomainType) } { (lessEqual(x, y): bool), (sorted((cons(y, ys): ListDomainType NaturalDomainType)): bool) }
+  (sorted((cons(x, (cons(y, ys): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): bool) == ((lessEqual(x, y): bool) && (sorted((cons(y, ys): ListDomainType NaturalDomainType)): bool))
 );
 
 // Translation of domain axiom insertSortingNil
@@ -700,13 +700,13 @@ axiom (forall x: NaturalDomainType, xs: (ListDomainType NaturalDomainType) ::
 // Translation of domain axiom sumNil
 axiom (forall t_2: NaturalDomainType ::
   { (sum_2((nil(t_2): ListDomainType NaturalDomainType)): NaturalDomainType) }
-  (sum_2((nil(t_2): ListDomainType NaturalDomainType)): NaturalDomainType) == (zero_1(): NaturalDomainType)
+  (sum_2((nil(t_2): ListDomainType NaturalDomainType)): NaturalDomainType) == (zero(): NaturalDomainType)
 );
 
 // Translation of domain axiom sumCons
-axiom (forall n: NaturalDomainType, l_2: (ListDomainType NaturalDomainType) ::
-  { (sum_2((cons(n, l_2): ListDomainType NaturalDomainType)): NaturalDomainType) } { (plus(n, (sum_2(l_2): NaturalDomainType)): NaturalDomainType) }
-  (sum_2((cons(n, l_2): ListDomainType NaturalDomainType)): NaturalDomainType) == (plus(n, (sum_2(l_2): NaturalDomainType)): NaturalDomainType)
+axiom (forall n: NaturalDomainType, l_1: (ListDomainType NaturalDomainType) ::
+  { (sum_2((cons(n, l_1): ListDomainType NaturalDomainType)): NaturalDomainType) } { (plus(n, (sum_2(l_1): NaturalDomainType)): NaturalDomainType) }
+  (sum_2((cons(n, l_1): ListDomainType NaturalDomainType)): NaturalDomainType) == (plus(n, (sum_2(l_1): NaturalDomainType)): NaturalDomainType)
 );
 
 // Translation of domain axiom hasMultipleNil
@@ -716,9 +716,9 @@ axiom (forall t_2: NaturalDomainType ::
 );
 
 // Translation of domain axiom hasMultipleCons
-axiom (forall n: NaturalDomainType, l_2: (ListDomainType NaturalDomainType) ::
-  { (hasMultiple((cons(n, l_2): ListDomainType NaturalDomainType)): bool) } { (less((successor((zero_1(): NaturalDomainType)): NaturalDomainType), n): bool), (hasMultiple(l_2): bool) }
-  (hasMultiple((cons(n, l_2): ListDomainType NaturalDomainType)): bool) == ((less((successor((zero_1(): NaturalDomainType)): NaturalDomainType), n): bool) || (hasMultiple(l_2): bool))
+axiom (forall n: NaturalDomainType, l_1: (ListDomainType NaturalDomainType) ::
+  { (hasMultiple((cons(n, l_1): ListDomainType NaturalDomainType)): bool) } { (less((successor((zero(): NaturalDomainType)): NaturalDomainType), n): bool), (hasMultiple(l_1): bool) }
+  (hasMultiple((cons(n, l_1): ListDomainType NaturalDomainType)): bool) == ((less((successor((zero(): NaturalDomainType)): NaturalDomainType), n): bool) || (hasMultiple(l_1): bool))
 );
 
 // ==================================================
@@ -729,19 +729,19 @@ axiom (forall n: NaturalDomainType, l_2: (ListDomainType NaturalDomainType) ::
 type TreeDomainType A;
 
 // Translation of domain function leaf
-function  leaf<A>(t_9: A): TreeDomainType A;
+function  leaf<A>(t_3: A): TreeDomainType A;
 
 // Translation of domain function node
-function  node_1<A>(l_11: (TreeDomainType A), e: A, r_3: (TreeDomainType A)): TreeDomainType A;
+function  node_5<A>(l_2: (TreeDomainType A), e: A, r_4: (TreeDomainType A)): TreeDomainType A;
 
 // Translation of domain function isLeafOrNode
-function  isLeafOrNode<A>(t_9: (TreeDomainType A)): bool;
+function  isLeafOrNode<A>(t_3: (TreeDomainType A)): bool;
 
 // Translation of domain function height
-function  height<A>(t_9: (TreeDomainType A)): NaturalDomainType;
+function  height_1<A>(t_3: (TreeDomainType A)): NaturalDomainType;
 
 // Translation of domain function mirror
-function  mirror<A>(t_9: (TreeDomainType A)): TreeDomainType A;
+function  mirror<A>(t_3: (TreeDomainType A)): TreeDomainType A;
 
 // Translation of domain axiom leafOrNode
 axiom (forall <A> t_2: (TreeDomainType A) ::
@@ -755,22 +755,22 @@ axiom (forall <A> t_2: (TreeDomainType A) ::
   (isLeafOrNode(t_2): bool) == ((exists a_2: A ::
     { (leaf(a_2): TreeDomainType A) }
     t_2 == (leaf(a_2): TreeDomainType A)
-  ) || (exists l_2: (TreeDomainType A), e_1: A, r_1: (TreeDomainType A) ::
-    { (node_1(l_2, e_1, r_1): TreeDomainType A) }
-    t_2 == (node_1(l_2, e_1, r_1): TreeDomainType A)
+  ) || (exists l_1: (TreeDomainType A), e_1: A, r_1: (TreeDomainType A) ::
+    { (node_5(l_1, e_1, r_1): TreeDomainType A) }
+    t_2 == (node_5(l_1, e_1, r_1): TreeDomainType A)
   ))
 );
 
 // Translation of domain axiom heightLeaf
 axiom (forall <A> t_2: A ::
-  { (height((leaf(t_2): TreeDomainType A)): NaturalDomainType) }
-  (height((leaf(t_2): TreeDomainType A)): NaturalDomainType) == (zero_1(): NaturalDomainType)
+  { (height_1((leaf(t_2): TreeDomainType A)): NaturalDomainType) }
+  (height_1((leaf(t_2): TreeDomainType A)): NaturalDomainType) == (zero(): NaturalDomainType)
 );
 
 // Translation of domain axiom heightNode
-axiom (forall <A> l_2: (TreeDomainType A), x: A, r_1: (TreeDomainType A) ::
-  { (height((node_1(l_2, x, r_1): TreeDomainType A)): NaturalDomainType) }
-  (height((node_1(l_2, x, r_1): TreeDomainType A)): NaturalDomainType) == (successor((maximum((height(l_2): NaturalDomainType), (height(r_1): NaturalDomainType)): NaturalDomainType)): NaturalDomainType)
+axiom (forall <A> l_1: (TreeDomainType A), x: A, r_1: (TreeDomainType A) ::
+  { (height_1((node_5(l_1, x, r_1): TreeDomainType A)): NaturalDomainType) }
+  (height_1((node_5(l_1, x, r_1): TreeDomainType A)): NaturalDomainType) == (successor((maximum((height_1(l_1): NaturalDomainType), (height_1(r_1): NaturalDomainType)): NaturalDomainType)): NaturalDomainType)
 );
 
 // Translation of domain axiom mirrorLeaf
@@ -780,9 +780,9 @@ axiom (forall <A> t_2: A ::
 );
 
 // Translation of domain axiom mirrorNode
-axiom (forall <A> l_2: (TreeDomainType A), x: A, r_1: (TreeDomainType A) ::
-  { (mirror((node_1(l_2, x, r_1): TreeDomainType A)): TreeDomainType A) } { (node_1((mirror(r_1): TreeDomainType A), x, (mirror(l_2): TreeDomainType A)): TreeDomainType A) }
-  (mirror((node_1(l_2, x, r_1): TreeDomainType A)): TreeDomainType A) == (node_1((mirror(r_1): TreeDomainType A), x, (mirror(l_2): TreeDomainType A)): TreeDomainType A)
+axiom (forall <A> l_1: (TreeDomainType A), x: A, r_1: (TreeDomainType A) ::
+  { (mirror((node_5(l_1, x, r_1): TreeDomainType A)): TreeDomainType A) } { (node_5((mirror(r_1): TreeDomainType A), x, (mirror(l_1): TreeDomainType A)): TreeDomainType A) }
+  (mirror((node_5(l_1, x, r_1): TreeDomainType A)): TreeDomainType A) == (node_5((mirror(r_1): TreeDomainType A), x, (mirror(l_1): TreeDomainType A)): TreeDomainType A)
 );
 
 // ==================================================
@@ -799,14 +799,14 @@ type AnyDomainType;
 procedure property01() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var l_0: (ListDomainType NaturalDomainType);
   var e_0: NaturalDomainType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var n_3_2: NaturalDomainType;
   var t_0_2: NaturalDomainType;
   var l_0_2: (ListDomainType NaturalDomainType);
@@ -821,8 +821,8 @@ procedure property01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -885,9 +885,9 @@ procedure property01() returns ()
         }
       assume (forall l_0_1: (ListDomainType NaturalDomainType) ::
         { (isNilOrCons(l_0_1): bool) }
-        (isNilOrCons(l_0_1): bool) ==> (forall n_4_2_1: NaturalDomainType ::
-          { (concatenate((take(n_4_2_1, l_0_1): ListDomainType NaturalDomainType), (drop(n_4_2_1, l_0_1): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType) }
-          (concatenate((take(n_4_2_1, l_0_1): ListDomainType NaturalDomainType), (drop(n_4_2_1, l_0_1): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType) == l_0_1
+        (isNilOrCons(l_0_1): bool) ==> (forall n_4_2: NaturalDomainType ::
+          { (concatenate((take(n_4_2, l_0_1): ListDomainType NaturalDomainType), (drop(n_4_2, l_0_1): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType) }
+          (concatenate((take(n_4_2, l_0_1): ListDomainType NaturalDomainType), (drop(n_4_2, l_0_1): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType) == l_0_1
         ) ==> (forall e_0_1: NaturalDomainType ::
           { (isZeroOrSuccessor(e_0_1): bool) } { (cons(e_0_1, l_0_1): ListDomainType NaturalDomainType) }
           (isZeroOrSuccessor(e_0_1): bool) ==> (forall n_5_1_1: NaturalDomainType ::
@@ -902,11 +902,11 @@ procedure property01() returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (*) {
       if (*) {
-        assert {:msg "  Postcondition of property01 might not hold. Assertion (concatenate((take(n_3, (nil(t_0): List[Natural])): List[Natural]), (drop(n_3, (nil(t_0): List[Natural])): List[Natural])): List[Natural]) == (nil(t_0): List[Natural]) might not hold. (0045.vpr@438.11--459.74) [215594]"}
+        assert {:msg "  Postcondition of property01 might not hold. Assertion (concatenate((take(n_3, (nil(t_0): List[Natural])): List[Natural]), (drop(n_3, (nil(t_0): List[Natural])): List[Natural])): List[Natural]) == (nil(t_0): List[Natural]) might not hold. (0045.vpr@438.11--459.74) [71052]"}
           (concatenate((take(n_3_2, (nil(t_0_2): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType), (drop(n_3_2, (nil(t_0_2): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType) == (nil(t_0_2): ListDomainType NaturalDomainType);
         assume false;
       }
@@ -933,7 +933,7 @@ procedure property01() returns ()
             if ((isZeroOrSuccessor(e_0_2): bool)) {
               if (*) {
                 if ((isZeroOrSuccessor(n_5_2): bool)) {
-                  assert {:msg "  Postcondition of property01 might not hold. Assertion (concatenate((take(n_5, (cons(e_0, l_0): List[Natural])): List[Natural]), (drop(n_5, (cons(e_0, l_0): List[Natural])): List[Natural])): List[Natural]) == (cons(e_0, l_0): List[Natural]) might not hold. (0045.vpr@438.11--459.74) [215595]"}
+                  assert {:msg "  Postcondition of property01 might not hold. Assertion (concatenate((take(n_5, (cons(e_0, l_0): List[Natural])): List[Natural]), (drop(n_5, (cons(e_0, l_0): List[Natural])): List[Natural])): List[Natural]) == (cons(e_0, l_0): List[Natural]) might not hold. (0045.vpr@438.11--459.74) [71053]"}
                     (concatenate((take(n_5_2, (cons(e_0_2, l_0_2): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType), (drop(n_5_2, (cons(e_0_2, l_0_2): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType)): ListDomainType NaturalDomainType) == (cons(e_0_2, l_0_2): ListDomainType NaturalDomainType);
                 }
                 assume false;

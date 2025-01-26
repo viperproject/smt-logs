@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:50
+// Date:         2025-01-26 21:42:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0467.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0467-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,13 +177,13 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of method foo
 // ==================================================
 
-procedure foo_1() returns ()
+procedure foo_3() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var x: Perm;
   var x_2_2: Perm;
   
@@ -195,18 +195,18 @@ procedure foo_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (let x ==
   //     (2 / 1) in
   //     x == x) -- 0467.vpr@6.3--6.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (let x == (2 / 1) in x == x)
       x := 2 / 1;
-    assert {:msg "  Assert might fail. Assertion (let x == (2 / 1) in x == x) might not hold. (0467.vpr@6.10--6.36) [220427]"}
+    assert {:msg "  Assert might fail. Assertion (let x == (2 / 1) in x == x) might not hold. (0467.vpr@6.10--6.36) [54781]"}
       2 / 1 == 2 / 1;
     
     // -- Free assumptions (exhale module)

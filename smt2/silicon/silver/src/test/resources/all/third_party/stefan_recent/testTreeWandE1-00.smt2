@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:44:01
+; Started: 2025-01-26 21:31:17
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -466,11 +466,11 @@
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (= (Tree__tolist%limited s@$ t@0@00) (Tree__tolist s@$ t@0@00))
   :pattern ((Tree__tolist s@$ t@0@00))
-  :qid |quant-u-22482|)))
+  :qid |quant-u-8673|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (Tree__tolist%stateless t@0@00)
   :pattern ((Tree__tolist%limited s@$ t@0@00))
-  :qid |quant-u-22483|)))
+  :qid |quant-u-8674|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= t@0@00 $Ref.null)))
@@ -1413,7 +1413,7 @@
             $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((Tree__tolist s@$ t@0@00))
   :pattern ((Tree__tolist%stateless t@0@00) (Tree__state%trigger s@$ t@0@00))
-  :qid |quant-u-22496|)))
+  :qid |quant-u-8687|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (=>
     (Tree__tolist%precondition s@$ t@0@00)
@@ -1436,7 +1436,7 @@
           ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))
           $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))))
   :pattern ((Tree__tolist s@$ t@0@00))
-  :qid |quant-u-22497|)))
+  :qid |quant-u-8688|)))
 ; ---------- FUNCTION Tree__sorted_list----------
 (declare-fun s@2@00 () Seq<Int>)
 (declare-fun result@3@00 () Bool)
@@ -1446,11 +1446,11 @@
 (assert (forall ((s@$ $Snap) (s@2@00 Seq<Int>)) (!
   (= (Tree__sorted_list%limited s@$ s@2@00) (Tree__sorted_list s@$ s@2@00))
   :pattern ((Tree__sorted_list s@$ s@2@00))
-  :qid |quant-u-22484|)))
+  :qid |quant-u-8675|)))
 (assert (forall ((s@$ $Snap) (s@2@00 Seq<Int>)) (!
   (Tree__sorted_list%stateless s@2@00)
   :pattern ((Tree__sorted_list%limited s@$ s@2@00))
-  :qid |quant-u-22485|)))
+  :qid |quant-u-8676|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1596,11 +1596,11 @@
         :pattern ((Seq_index s@2@00 i) (Seq_index s@2@00 j))
         ))))
   :pattern ((Tree__sorted_list s@$ s@2@00))
-  :qid |quant-u-22498|)))
+  :qid |quant-u-8689|)))
 (assert (forall ((s@$ $Snap) (s@2@00 Seq<Int>)) (!
   true
   :pattern ((Tree__sorted_list s@$ s@2@00))
-  :qid |quant-u-22499|)))
+  :qid |quant-u-8690|)))
 ; ---------- FUNCTION Wand_state_contains_for_state_contains__get_in_1_0----------
 (declare-fun diz@4@00 () $Ref)
 (declare-fun result@5@00 () Seq<Int>)
@@ -1616,11 +1616,11 @@
     (Wand_state_contains_for_state_contains__get_in_1_0%limited s@$ diz@4@00)
     (Wand_state_contains_for_state_contains__get_in_1_0 s@$ diz@4@00))
   :pattern ((Wand_state_contains_for_state_contains__get_in_1_0 s@$ diz@4@00))
-  :qid |quant-u-22486|)))
+  :qid |quant-u-8677|)))
 (assert (forall ((s@$ $Snap) (diz@4@00 $Ref)) (!
   (Wand_state_contains_for_state_contains__get_in_1_0%stateless diz@4@00)
   :pattern ((Wand_state_contains_for_state_contains__get_in_1_0%limited s@$ diz@4@00))
-  :qid |quant-u-22487|)))
+  :qid |quant-u-8678|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -4681,11 +4681,11 @@
         (Wand_state_contains_for_state_contains__get_in_1_0 s@$ diz@4@00)
         ($SortWrappers.$SnapToSeq<Int> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))
   :pattern ((Wand_state_contains_for_state_contains__get_in_1_0 s@$ diz@4@00))
-  :qid |quant-u-22500|)))
+  :qid |quant-u-8691|)))
 (assert (forall ((s@$ $Snap) (diz@4@00 $Ref)) (!
   true
   :pattern ((Wand_state_contains_for_state_contains__get_in_1_0 s@$ diz@4@00))
-  :qid |quant-u-22501|)))
+  :qid |quant-u-8692|)))
 ; ---------- FUNCTION Wand_state_contains_for_state_contains__get_out_1_0----------
 (declare-fun diz@6@00 () $Ref)
 (declare-fun result@7@00 () Seq<Int>)
@@ -4702,11 +4702,11 @@
     (Wand_state_contains_for_state_contains__get_out_1_0%limited s@$ diz@6@00)
     (Wand_state_contains_for_state_contains__get_out_1_0 s@$ diz@6@00))
   :pattern ((Wand_state_contains_for_state_contains__get_out_1_0 s@$ diz@6@00))
-  :qid |quant-u-22488|)))
+  :qid |quant-u-8679|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   (Wand_state_contains_for_state_contains__get_out_1_0%stateless diz@6@00)
   :pattern ((Wand_state_contains_for_state_contains__get_out_1_0%limited s@$ diz@6@00))
-  :qid |quant-u-22489|)))
+  :qid |quant-u-8680|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -7767,11 +7767,11 @@
         (Wand_state_contains_for_state_contains__get_out_1_0 s@$ diz@6@00)
         ($SortWrappers.$SnapToSeq<Int> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))
   :pattern ((Wand_state_contains_for_state_contains__get_out_1_0 s@$ diz@6@00))
-  :qid |quant-u-22502|)))
+  :qid |quant-u-8693|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   true
   :pattern ((Wand_state_contains_for_state_contains__get_out_1_0 s@$ diz@6@00))
-  :qid |quant-u-22503|)))
+  :qid |quant-u-8694|)))
 ; ---------- FUNCTION Wand_state_contains_for_state_contains__get_in_1----------
 (declare-fun diz@8@00 () $Ref)
 (declare-fun result@9@00 () $Ref)
@@ -7792,21 +7792,21 @@
     (Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00)
     (Wand_state_contains_for_state_contains__get_in_1 s@$ diz@8@00))
   :pattern ((Wand_state_contains_for_state_contains__get_in_1 s@$ diz@8@00))
-  :qid |quant-u-22490|)))
+  :qid |quant-u-8681|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (Wand_state_contains_for_state_contains__get_in_1%stateless diz@8@00)
   :pattern ((Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00))
-  :qid |quant-u-22491|)))
+  :qid |quant-u-8682|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (let ((result@9@00 (Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00))) (=>
     (Wand_state_contains_for_state_contains__get_in_1%precondition s@$ diz@8@00)
     (not (= result@9@00 $Ref.null))))
   :pattern ((Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00))
-  :qid |quant-u-22504|)))
+  :qid |quant-u-8695|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (let ((result@9@00 (Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00))) true)
   :pattern ((Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00))
-  :qid |quant-u-22505|)))
+  :qid |quant-u-8696|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -10877,11 +10877,11 @@
         (Wand_state_contains_for_state_contains__get_in_1 s@$ diz@8@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$))))))))
   :pattern ((Wand_state_contains_for_state_contains__get_in_1 s@$ diz@8@00))
-  :qid |quant-u-22506|)))
+  :qid |quant-u-8697|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   true
   :pattern ((Wand_state_contains_for_state_contains__get_in_1 s@$ diz@8@00))
-  :qid |quant-u-22507|)))
+  :qid |quant-u-8698|)))
 ; ---------- FUNCTION Wand_state_contains_for_state_contains__get_out_1----------
 (declare-fun diz@10@00 () $Ref)
 (declare-fun result@11@00 () $Ref)
@@ -10901,21 +10901,21 @@
     (Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00)
     (Wand_state_contains_for_state_contains__get_out_1 s@$ diz@10@00))
   :pattern ((Wand_state_contains_for_state_contains__get_out_1 s@$ diz@10@00))
-  :qid |quant-u-22492|)))
+  :qid |quant-u-8683|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (Wand_state_contains_for_state_contains__get_out_1%stateless diz@10@00)
   :pattern ((Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00))
-  :qid |quant-u-22493|)))
+  :qid |quant-u-8684|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (let ((result@11@00 (Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00))) (=>
     (Wand_state_contains_for_state_contains__get_out_1%precondition s@$ diz@10@00)
     (not (= result@11@00 $Ref.null))))
   :pattern ((Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00))
-  :qid |quant-u-22508|)))
+  :qid |quant-u-8699|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (let ((result@11@00 (Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00))) true)
   :pattern ((Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00))
-  :qid |quant-u-22509|)))
+  :qid |quant-u-8700|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -13986,11 +13986,11 @@
         (Wand_state_contains_for_state_contains__get_out_1 s@$ diz@10@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))
   :pattern ((Wand_state_contains_for_state_contains__get_out_1 s@$ diz@10@00))
-  :qid |quant-u-22510|)))
+  :qid |quant-u-8701|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   true
   :pattern ((Wand_state_contains_for_state_contains__get_out_1 s@$ diz@10@00))
-  :qid |quant-u-22511|)))
+  :qid |quant-u-8702|)))
 ; ---------- FUNCTION Tree__sorted----------
 (declare-fun t@12@00 () $Ref)
 (declare-fun result@13@00 () Bool)
@@ -14030,11 +14030,11 @@
 (assert (forall ((s@$ $Snap) (t@12@00 $Ref)) (!
   (= (Tree__sorted%limited s@$ t@12@00) (Tree__sorted s@$ t@12@00))
   :pattern ((Tree__sorted s@$ t@12@00))
-  :qid |quant-u-22494|)))
+  :qid |quant-u-8685|)))
 (assert (forall ((s@$ $Snap) (t@12@00 $Ref)) (!
   (Tree__sorted%stateless t@12@00)
   :pattern ((Tree__sorted%limited s@$ t@12@00))
-  :qid |quant-u-22495|)))
+  :qid |quant-u-8686|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= t@12@00 $Ref.null)))
@@ -14110,7 +14110,7 @@
         s@$
         $Snap.unit) t@12@00))))
   :pattern ((Tree__sorted s@$ t@12@00))
-  :qid |quant-u-22512|)))
+  :qid |quant-u-8703|)))
 (assert (forall ((s@$ $Snap) (t@12@00 $Ref)) (!
   (=>
     (Tree__sorted%precondition s@$ t@12@00)
@@ -14121,7 +14121,7 @@
         s@$
         $Snap.unit) t@12@00))))
   :pattern ((Tree__sorted s@$ t@12@00))
-  :qid |quant-u-22513|)))
+  :qid |quant-u-8704|)))
 ; ---------- Wand_state_contains_for_state_contains__valid_wand ----------
 (declare-const diz@111@00 $Ref)
 (push) ; 1

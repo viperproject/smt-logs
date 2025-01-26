@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:33:01
+; Started: 2025-01-26 21:24:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -2384,11 +2384,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (= ($pure$success_get%limited s@$ x@0@00) ($pure$success_get s@$ x@0@00))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1838|)))
+  :qid |quant-u-1287|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   ($pure$success_get%stateless x@0@00)
   :pattern (($pure$success_get%limited s@$ x@0@00))
-  :qid |quant-u-1839|)))
+  :qid |quant-u-1288|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (=>
     ($pure$success_get%precondition s@$ x@0@00)
@@ -2396,37 +2396,37 @@
       ($pure$success_get s@$ x@0@00)
       ($struct_get<Bool> ($struct_loc<Int> x@0@00 0))))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1844|)))
+  :qid |quant-u-1293|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   true
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1845|)))
+  :qid |quant-u-1294|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (= ($pure$return_get%limited s@$ x@2@00) ($pure$return_get s@$ x@2@00))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1840|)))
+  :qid |quant-u-1289|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   ($pure$return_get%stateless x@2@00)
   :pattern (($pure$return_get%limited s@$ x@2@00))
-  :qid |quant-u-1841|)))
+  :qid |quant-u-1290|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (=>
     ($pure$return_get%precondition s@$ x@2@00)
     (= ($pure$return_get s@$ x@2@00) ($struct_loc<Int> x@2@00 1)))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1846|)))
+  :qid |quant-u-1295|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   true
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1847|)))
+  :qid |quant-u-1296|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (= ($range_sum%limited s@$ $x@4@00 $y@5@00) ($range_sum s@$ $x@4@00 $y@5@00))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1842|)))
+  :qid |quant-u-1291|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   ($range_sum%stateless $x@4@00 $y@5@00)
   :pattern (($range_sum%limited s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1843|)))
+  :qid |quant-u-1292|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@4@00 $y@5@00)
@@ -2446,7 +2446,7 @@
           (+ (- $y_exclusive $x_exclusive) $x@4@00)
           (+ (- (- $y_exclusive $y@5@00) $x_exclusive) $x@4@00)))))))))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1848|)))
+  :qid |quant-u-1297|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@4@00 $y@5@00)
@@ -2458,7 +2458,7 @@
       (div (* (- $y@5@00 1) $y@5@00) 2)
       (div (* (- (- 0 $y@5@00) 1) (- 0 $y@5@00)) 2)))) true)))))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1849|)))
+  :qid |quant-u-1298|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- $transitivity_check ----------
@@ -9219,7 +9219,7 @@
 (check-sat)
 ; unknown
 (pop) ; 5
-; 0.08s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 41 | True | live]
 ; [else-branch: 41 | False | dead]
@@ -16527,7 +16527,7 @@
             ($SortWrappers.IntTo$Snap $arg1@499@01))
           ($SortWrappers.IntTo$Snap $arg2@500@01))))))
   
-  :qid |quant-u-1850|))))
+  :qid |quant-u-1299|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -16688,7 +16688,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@504@01 $arg0 $arg1 $arg2) (inv@506@01 $arg0 $arg1 $arg2) (inv@508@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1851|)))
+  :qid |quant-u-1300|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -16724,7 +16724,7 @@
         ($SortWrappers.IntTo$Snap (inv@508@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1852|))))
+  :qid |quant-u-1301|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -16889,7 +16889,7 @@
             ($SortWrappers.IntTo$Snap $arg1@511@01))
           ($SortWrappers.IntTo$Snap $arg2@512@01))))))
   
-  :qid |quant-u-1853|))))
+  :qid |quant-u-1302|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -17050,7 +17050,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@516@01 $arg0 $arg1 $arg2) (inv@518@01 $arg0 $arg1 $arg2) (inv@520@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1854|)))
+  :qid |quant-u-1303|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -17086,7 +17086,7 @@
         ($SortWrappers.IntTo$Snap (inv@520@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1855|))))
+  :qid |quant-u-1304|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -17159,7 +17159,7 @@
         $Perm.No
         ($PSF.perm_e$OpenMinter (as pm@523@01  $PPM) ($SortWrappers.IntTo$Snap $arg0@522@01)))))
   
-  :qid |quant-u-1856|))))
+  :qid |quant-u-1305|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -17232,7 +17232,7 @@
       $Perm.No)
     ($PSF.loc_e$OpenMinter ($PSF.lookup_e$OpenMinter (as sm@491@01  $PSF<e$OpenMinter>) ($SortWrappers.IntTo$Snap $arg0)) ($SortWrappers.IntTo$Snap $arg0)))
   :pattern ((inv@524@01 $arg0))
-  :qid |quant-u-1857|)))
+  :qid |quant-u-1306|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -17254,7 +17254,7 @@
       ($PSF.perm_e$OpenMinter (as pm@523@01  $PPM) ($SortWrappers.IntTo$Snap (inv@524@01 $arg0)))
       $Perm.No))
   
-  :qid |quant-u-1858|))))
+  :qid |quant-u-1307|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -17327,7 +17327,7 @@
         $Perm.No
         ($PSF.perm_e$CloseMinter (as pm@527@01  $PPM) ($SortWrappers.IntTo$Snap $arg0@526@01)))))
   
-  :qid |quant-u-1859|))))
+  :qid |quant-u-1308|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -17400,7 +17400,7 @@
       $Perm.No)
     ($PSF.loc_e$CloseMinter ($PSF.lookup_e$CloseMinter (as sm@495@01  $PSF<e$CloseMinter>) ($SortWrappers.IntTo$Snap $arg0)) ($SortWrappers.IntTo$Snap $arg0)))
   :pattern ((inv@528@01 $arg0))
-  :qid |quant-u-1860|)))
+  :qid |quant-u-1309|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -17422,7 +17422,7 @@
       ($PSF.perm_e$CloseMinter (as pm@527@01  $PPM) ($SortWrappers.IntTo$Snap (inv@528@01 $arg0)))
       $Perm.No))
   
-  :qid |quant-u-1861|))))
+  :qid |quant-u-1310|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -19430,7 +19430,7 @@
             ($SortWrappers.IntTo$Snap $arg1@543@01))
           ($SortWrappers.IntTo$Snap $arg2@544@01))))))
   
-  :qid |quant-u-1862|))))
+  :qid |quant-u-1311|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -19591,7 +19591,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@546@01 $arg0 $arg1 $arg2) (inv@548@01 $arg0 $arg1 $arg2) (inv@550@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1863|)))
+  :qid |quant-u-1312|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -19627,7 +19627,7 @@
         ($SortWrappers.IntTo$Snap (inv@550@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1864|))))
+  :qid |quant-u-1313|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -19790,7 +19790,7 @@
             ($SortWrappers.IntTo$Snap $arg1@553@01))
           ($SortWrappers.IntTo$Snap $arg2@554@01))))))
   
-  :qid |quant-u-1865|))))
+  :qid |quant-u-1314|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -19951,7 +19951,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@556@01 $arg0 $arg1 $arg2) (inv@558@01 $arg0 $arg1 $arg2) (inv@560@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1866|)))
+  :qid |quant-u-1315|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -19987,7 +19987,7 @@
         ($SortWrappers.IntTo$Snap (inv@560@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1867|))))
+  :qid |quant-u-1316|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -20060,7 +20060,7 @@
         $Perm.No
         ($PSF.perm_e$OpenMinter (as pm@563@01  $PPM) ($SortWrappers.IntTo$Snap $arg0@562@01)))))
   
-  :qid |quant-u-1868|))))
+  :qid |quant-u-1317|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -20133,7 +20133,7 @@
       $Perm.No)
     ($PSF.loc_e$OpenMinter ($PSF.lookup_e$OpenMinter (as sm@491@01  $PSF<e$OpenMinter>) ($SortWrappers.IntTo$Snap $arg0)) ($SortWrappers.IntTo$Snap $arg0)))
   :pattern ((inv@564@01 $arg0))
-  :qid |quant-u-1869|)))
+  :qid |quant-u-1318|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -20155,7 +20155,7 @@
       ($PSF.perm_e$OpenMinter (as pm@563@01  $PPM) ($SortWrappers.IntTo$Snap (inv@564@01 $arg0)))
       $Perm.No))
   
-  :qid |quant-u-1870|))))
+  :qid |quant-u-1319|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -20228,7 +20228,7 @@
         $Perm.No
         ($PSF.perm_e$CloseMinter (as pm@567@01  $PPM) ($SortWrappers.IntTo$Snap $arg0@566@01)))))
   
-  :qid |quant-u-1871|))))
+  :qid |quant-u-1320|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -20301,7 +20301,7 @@
       $Perm.No)
     ($PSF.loc_e$CloseMinter ($PSF.lookup_e$CloseMinter (as sm@495@01  $PSF<e$CloseMinter>) ($SortWrappers.IntTo$Snap $arg0)) ($SortWrappers.IntTo$Snap $arg0)))
   :pattern ((inv@568@01 $arg0))
-  :qid |quant-u-1872|)))
+  :qid |quant-u-1321|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -20323,7 +20323,7 @@
       ($PSF.perm_e$CloseMinter (as pm@567@01  $PPM) ($SortWrappers.IntTo$Snap (inv@568@01 $arg0)))
       $Perm.No))
   
-  :qid |quant-u-1873|))))
+  :qid |quant-u-1322|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -29809,7 +29809,7 @@
             ($SortWrappers.IntTo$Snap $arg1@704@01))
           ($SortWrappers.IntTo$Snap $arg2@705@01))))))
   
-  :qid |quant-u-1874|))))
+  :qid |quant-u-1323|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -29970,7 +29970,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@709@01 $arg0 $arg1 $arg2) (inv@711@01 $arg0 $arg1 $arg2) (inv@713@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1875|)))
+  :qid |quant-u-1324|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -30006,7 +30006,7 @@
         ($SortWrappers.IntTo$Snap (inv@713@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1876|))))
+  :qid |quant-u-1325|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -30171,7 +30171,7 @@
             ($SortWrappers.IntTo$Snap $arg1@716@01))
           ($SortWrappers.IntTo$Snap $arg2@717@01))))))
   
-  :qid |quant-u-1877|))))
+  :qid |quant-u-1326|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -30332,7 +30332,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@721@01 $arg0 $arg1 $arg2) (inv@723@01 $arg0 $arg1 $arg2) (inv@725@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1878|)))
+  :qid |quant-u-1327|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -30368,7 +30368,7 @@
         ($SortWrappers.IntTo$Snap (inv@725@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1879|))))
+  :qid |quant-u-1328|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -30441,7 +30441,7 @@
         $Perm.No
         ($PSF.perm_e$OpenMinter (as pm@728@01  $PPM) ($SortWrappers.IntTo$Snap $arg0@727@01)))))
   
-  :qid |quant-u-1880|))))
+  :qid |quant-u-1329|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -30514,7 +30514,7 @@
       $Perm.No)
     ($PSF.loc_e$OpenMinter ($PSF.lookup_e$OpenMinter (as sm@696@01  $PSF<e$OpenMinter>) ($SortWrappers.IntTo$Snap $arg0)) ($SortWrappers.IntTo$Snap $arg0)))
   :pattern ((inv@729@01 $arg0))
-  :qid |quant-u-1881|)))
+  :qid |quant-u-1330|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -30536,7 +30536,7 @@
       ($PSF.perm_e$OpenMinter (as pm@728@01  $PPM) ($SortWrappers.IntTo$Snap (inv@729@01 $arg0)))
       $Perm.No))
   
-  :qid |quant-u-1882|))))
+  :qid |quant-u-1331|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -30609,7 +30609,7 @@
         $Perm.No
         ($PSF.perm_e$CloseMinter (as pm@732@01  $PPM) ($SortWrappers.IntTo$Snap $arg0@731@01)))))
   
-  :qid |quant-u-1883|))))
+  :qid |quant-u-1332|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -30682,7 +30682,7 @@
       $Perm.No)
     ($PSF.loc_e$CloseMinter ($PSF.lookup_e$CloseMinter (as sm@700@01  $PSF<e$CloseMinter>) ($SortWrappers.IntTo$Snap $arg0)) ($SortWrappers.IntTo$Snap $arg0)))
   :pattern ((inv@733@01 $arg0))
-  :qid |quant-u-1884|)))
+  :qid |quant-u-1333|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -30704,7 +30704,7 @@
       ($PSF.perm_e$CloseMinter (as pm@732@01  $PPM) ($SortWrappers.IntTo$Snap (inv@733@01 $arg0)))
       $Perm.No))
   
-  :qid |quant-u-1885|))))
+  :qid |quant-u-1334|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -32712,7 +32712,7 @@
             ($SortWrappers.IntTo$Snap $arg1@748@01))
           ($SortWrappers.IntTo$Snap $arg2@749@01))))))
   
-  :qid |quant-u-1886|))))
+  :qid |quant-u-1335|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -32873,7 +32873,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@751@01 $arg0 $arg1 $arg2) (inv@753@01 $arg0 $arg1 $arg2) (inv@755@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1887|)))
+  :qid |quant-u-1336|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -32909,7 +32909,7 @@
         ($SortWrappers.IntTo$Snap (inv@755@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1888|))))
+  :qid |quant-u-1337|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -33072,7 +33072,7 @@
             ($SortWrappers.IntTo$Snap $arg1@758@01))
           ($SortWrappers.IntTo$Snap $arg2@759@01))))))
   
-  :qid |quant-u-1889|))))
+  :qid |quant-u-1338|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -33233,7 +33233,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@761@01 $arg0 $arg1 $arg2) (inv@763@01 $arg0 $arg1 $arg2) (inv@765@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1890|)))
+  :qid |quant-u-1339|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -33269,7 +33269,7 @@
         ($SortWrappers.IntTo$Snap (inv@765@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1891|))))
+  :qid |quant-u-1340|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -33342,7 +33342,7 @@
         $Perm.No
         ($PSF.perm_e$OpenMinter (as pm@768@01  $PPM) ($SortWrappers.IntTo$Snap $arg0@767@01)))))
   
-  :qid |quant-u-1892|))))
+  :qid |quant-u-1341|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -33415,7 +33415,7 @@
       $Perm.No)
     ($PSF.loc_e$OpenMinter ($PSF.lookup_e$OpenMinter (as sm@696@01  $PSF<e$OpenMinter>) ($SortWrappers.IntTo$Snap $arg0)) ($SortWrappers.IntTo$Snap $arg0)))
   :pattern ((inv@769@01 $arg0))
-  :qid |quant-u-1893|)))
+  :qid |quant-u-1342|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -33437,7 +33437,7 @@
       ($PSF.perm_e$OpenMinter (as pm@768@01  $PPM) ($SortWrappers.IntTo$Snap (inv@769@01 $arg0)))
       $Perm.No))
   
-  :qid |quant-u-1894|))))
+  :qid |quant-u-1343|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -33510,7 +33510,7 @@
         $Perm.No
         ($PSF.perm_e$CloseMinter (as pm@772@01  $PPM) ($SortWrappers.IntTo$Snap $arg0@771@01)))))
   
-  :qid |quant-u-1895|))))
+  :qid |quant-u-1344|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -33583,7 +33583,7 @@
       $Perm.No)
     ($PSF.loc_e$CloseMinter ($PSF.lookup_e$CloseMinter (as sm@700@01  $PSF<e$CloseMinter>) ($SortWrappers.IntTo$Snap $arg0)) ($SortWrappers.IntTo$Snap $arg0)))
   :pattern ((inv@773@01 $arg0))
-  :qid |quant-u-1896|)))
+  :qid |quant-u-1345|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -33605,7 +33605,7 @@
       ($PSF.perm_e$CloseMinter (as pm@772@01  $PPM) ($SortWrappers.IntTo$Snap (inv@773@01 $arg0)))
       $Perm.No))
   
-  :qid |quant-u-1897|))))
+  :qid |quant-u-1346|))))
 (check-sat)
 ; unsat
 (pop) ; 5

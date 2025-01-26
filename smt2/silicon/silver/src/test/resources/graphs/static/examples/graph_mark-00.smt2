@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:39:07
+; Started: 2025-01-26 21:30:24
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -818,21 +818,21 @@
 (assert (forall ((s@$ $Snap) (s@0@00 Set<$Ref>)) (!
   (= (get%limited s@$ s@0@00) (get s@$ s@0@00))
   :pattern ((get s@$ s@0@00))
-  :qid |quant-u-14866|)))
+  :qid |quant-u-7947|)))
 (assert (forall ((s@$ $Snap) (s@0@00 Set<$Ref>)) (!
   (get%stateless s@0@00)
   :pattern ((get%limited s@$ s@0@00))
-  :qid |quant-u-14867|)))
+  :qid |quant-u-7948|)))
 (assert (forall ((s@$ $Snap) (s@0@00 Set<$Ref>)) (!
   (let ((result@1@00 (get%limited s@$ s@0@00))) (=>
     (get%precondition s@$ s@0@00)
     (Set_in result@1@00 s@0@00)))
   :pattern ((get%limited s@$ s@0@00))
-  :qid |quant-u-14870|)))
+  :qid |quant-u-7951|)))
 (assert (forall ((s@$ $Snap) (s@0@00 Set<$Ref>)) (!
   (let ((result@1@00 (get%limited s@$ s@0@00))) true)
   :pattern ((get%limited s@$ s@0@00))
-  :qid |quant-u-14871|)))
+  :qid |quant-u-7952|)))
 ; ---------- FUNCTION $$----------
 (declare-fun refs@2@00 () Set<$Ref>)
 (declare-fun result@3@00 () Set<Edge>)
@@ -880,7 +880,7 @@
       (= (inv@7@00 s@$ refs@2@00 n@5@00) n@5@00)
       (img@8@00 s@$ refs@2@00 n@5@00)))
   :pattern (($FVF.loc_car ($FVF.lookup_car ($SortWrappers.$SnapTo$FVF<car> ($Snap.first ($Snap.second s@$))) n@5@00) n@5@00))
-  :qid |quant-u-14873|)))
+  :qid |quant-u-7954|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -917,7 +917,7 @@
     (Set_in (inv@7@00 s@$ refs@2@00 r) refs@2@00)
     ($FVF.loc_car ($FVF.lookup_car (sm@9@00 s@$ refs@2@00) r) r))
   :pattern ((inv@7@00 s@$ refs@2@00 r))
-  :qid |quant-u-14874|)))
+  :qid |quant-u-7955|)))
 (declare-const n$0@10@00 $Ref)
 (push) ; 2
 ; [eval] (n$0 in refs)
@@ -953,7 +953,7 @@
       (= (inv@12@00 s@$ refs@2@00 n$0@10@00) n$0@10@00)
       (img@13@00 s@$ refs@2@00 n$0@10@00)))
   :pattern (($FVF.loc_cdr ($FVF.lookup_cdr ($SortWrappers.$SnapTo$FVF<cdr> ($Snap.second ($Snap.second s@$))) n$0@10@00) n$0@10@00))
-  :qid |quant-u-14876|)))
+  :qid |quant-u-7957|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -990,7 +990,7 @@
     (Set_in (inv@12@00 s@$ refs@2@00 r) refs@2@00)
     ($FVF.loc_cdr ($FVF.lookup_cdr (sm@14@00 s@$ refs@2@00) r) r))
   :pattern ((inv@12@00 s@$ refs@2@00 r))
-  :qid |quant-u-14877|)))
+  :qid |quant-u-7958|)))
 (declare-const $t@15@00 $Snap)
 (assert (= $t@15@00 $Snap.unit))
 ; [eval] (forall p: Ref, s: Ref :: { (create_edge(p, s) in result) } ((p in refs) && ((s in refs) && (p.car == s || p.cdr == s))) == (create_edge(p, s) in result))
@@ -1289,11 +1289,11 @@
 (assert (forall ((s@$ $Snap) (refs@2@00 Set<$Ref>)) (!
   (= ($$%limited s@$ refs@2@00) ($$ s@$ refs@2@00))
   :pattern (($$ s@$ refs@2@00))
-  :qid |quant-u-14868|)))
+  :qid |quant-u-7949|)))
 (assert (forall ((s@$ $Snap) (refs@2@00 Set<$Ref>)) (!
   ($$%stateless refs@2@00)
   :pattern (($$%limited s@$ refs@2@00))
-  :qid |quant-u-14869|)))
+  :qid |quant-u-7950|)))
 (assert (forall ((s@$ $Snap) (refs@2@00 Set<$Ref>)) (!
   (let ((result@3@00 ($$%limited s@$ refs@2@00))) (and
     (forall ((n@5@00 $Ref)) (!
@@ -1303,7 +1303,7 @@
           (= (inv@7@00 s@$ refs@2@00 n@5@00) n@5@00)
           (img@8@00 s@$ refs@2@00 n@5@00)))
       :pattern (($FVF.loc_car ($FVF.lookup_car ($SortWrappers.$SnapTo$FVF<car> ($Snap.first ($Snap.second s@$))) n@5@00) n@5@00))
-      :qid |quant-u-14873|))
+      :qid |quant-u-7954|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1319,7 +1319,7 @@
           (= (inv@12@00 s@$ refs@2@00 n$0@10@00) n$0@10@00)
           (img@13@00 s@$ refs@2@00 n$0@10@00)))
       :pattern (($FVF.loc_cdr ($FVF.lookup_cdr ($SortWrappers.$SnapTo$FVF<cdr> ($Snap.second ($Snap.second s@$))) n$0@10@00) n$0@10@00))
-      :qid |quant-u-14876|))
+      :qid |quant-u-7957|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1381,8 +1381,8 @@
         :pattern ((Set_in (create_edge<Edge> p s) result@3@00))
         )))))
   :pattern (($$%limited s@$ refs@2@00))
-  :qid |quant-u-14878|)))
+  :qid |quant-u-7959|)))
 (assert (forall ((s@$ $Snap) (refs@2@00 Set<$Ref>)) (!
   (let ((result@3@00 ($$%limited s@$ refs@2@00))) true)
   :pattern (($$%limited s@$ refs@2@00))
-  :qid |quant-u-14879|)))
+  :qid |quant-u-7960|)))

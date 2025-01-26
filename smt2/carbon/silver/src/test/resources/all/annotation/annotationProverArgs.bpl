@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:28
+// Date:         2025-01-26 21:43:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/annotationProverArgs.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/annotationProverArgs-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,13 +177,13 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of method m1
 // ==================================================
 
-procedure m1(i: int, i2_1: int) returns ()
+procedure m1(i: int, i2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -193,20 +193,20 @@ procedure m1(i: int, i2_1: int) returns ()
   // -- Checked inhaling of precondition
     assume i >= 0;
     assume state(Heap, Mask);
-    assume i2_1 >= 0;
+    assume i2 >= 0;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert i * i2 >= 0 -- annotationProverArgs.vpr@13.5--13.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion i * i2 >= 0 might not hold. (annotationProverArgs.vpr@13.12--13.23) [153018]"}
-      i * i2_1 >= 0;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion i * i2 >= 0 might not hold. (annotationProverArgs.vpr@13.12--13.23) [96716]"}
+      i * i2 >= 0;
     assume state(Heap, Mask);
 }
 
@@ -214,13 +214,13 @@ procedure m1(i: int, i2_1: int) returns ()
 // Translation of method m2
 // ==================================================
 
-procedure m2(i: int, i2_1: int) returns ()
+procedure m2(i: int, i2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -230,20 +230,20 @@ procedure m2(i: int, i2_1: int) returns ()
   // -- Checked inhaling of precondition
     assume i >= 0;
     assume state(Heap, Mask);
-    assume i2_1 >= 0;
+    assume i2 >= 0;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert i * i2 >= 0 -- annotationProverArgs.vpr@22.5--22.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion i * i2 >= 0 might not hold. (annotationProverArgs.vpr@22.12--22.23) [153019]"}
-      i * i2_1 >= 0;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion i * i2 >= 0 might not hold. (annotationProverArgs.vpr@22.12--22.23) [96717]"}
+      i * i2 >= 0;
     assume state(Heap, Mask);
 }
 
@@ -251,13 +251,13 @@ procedure m2(i: int, i2_1: int) returns ()
 // Translation of method m3
 // ==================================================
 
-procedure m3(i: int, i2_1: int) returns ()
+procedure m3(i: int, i2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -267,19 +267,19 @@ procedure m3(i: int, i2_1: int) returns ()
   // -- Checked inhaling of precondition
     assume i >= 0;
     assume state(Heap, Mask);
-    assume i2_1 >= 0;
+    assume i2 >= 0;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert i * i2 >= 0 -- annotationProverArgs.vpr@30.5--30.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion i * i2 >= 0 might not hold. (annotationProverArgs.vpr@30.12--30.23) [153020]"}
-      i * i2_1 >= 0;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion i * i2 >= 0 might not hold. (annotationProverArgs.vpr@30.12--30.23) [96718]"}
+      i * i2 >= 0;
     assume state(Heap, Mask);
 }

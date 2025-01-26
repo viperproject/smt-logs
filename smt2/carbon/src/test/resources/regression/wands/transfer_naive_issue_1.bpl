@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:49:31
+// Date:         2025-01-26 21:41:13
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/transfer_naive_issue_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/transfer_naive_issue_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -225,8 +225,8 @@ axiom !IsWandField(f_7);
 procedure t01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -234,8 +234,8 @@ procedure t01(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -264,8 +264,8 @@ procedure t01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, write) && acc(x.f.f, write) --*
   // acc(x.f, write) && acc(x.f.f, write) {
@@ -288,7 +288,7 @@ procedure t01(x: Ref) returns ()
         if (b_1_1) {
           
           // -- Check definedness of acc(x.f.f, write)
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (transfer_naive_issue_1.vpr@8.1--8.54) [1022]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (transfer_naive_issue_1.vpr@8.1--8.54) [737]"}
               HasDirectPerm(Ops_1Mask, x, f_7);
         }
         perm := FullPerm;
@@ -301,8 +301,8 @@ procedure t01(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- transfer_naive_issue_1.vpr@8.9--8.54
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, write) && acc(x.f.f, write)
@@ -314,7 +314,7 @@ procedure t01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (transfer_naive_issue_1.vpr@8.1--8.54) [1023]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (transfer_naive_issue_1.vpr@8.1--8.54) [738]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -357,7 +357,7 @@ procedure t01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (transfer_naive_issue_1.vpr@8.1--8.54) [1024]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (transfer_naive_issue_1.vpr@8.1--8.54) [739]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -375,14 +375,14 @@ procedure t01(x: Ref) returns ()
           if (b_1_1) {
             
             // -- Check definedness of acc(x.f.f, write)
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (transfer_naive_issue_1.vpr@8.1--8.54) [1025]"}
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (transfer_naive_issue_1.vpr@8.1--8.54) [740]"}
                 HasDirectPerm(ResultMask, x, f_7);
           }
         }
       rcvLocal := ResultHeap[x, f_7];
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f.f, write) might be negative. (transfer_naive_issue_1.vpr@8.1--8.54) [1026]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f.f, write) might be negative. (transfer_naive_issue_1.vpr@8.1--8.54) [741]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -425,7 +425,7 @@ procedure t01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)][Heap[x, f_7], f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f.f (transfer_naive_issue_1.vpr@8.1--8.54) [1027]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f.f (transfer_naive_issue_1.vpr@8.1--8.54) [742]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states

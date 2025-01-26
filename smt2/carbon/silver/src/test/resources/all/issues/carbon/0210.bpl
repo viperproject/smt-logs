@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:05
+// Date:         2025-01-26 21:43:13
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0210.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0210-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_30: Ref, f_35: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_30, f_35] }
-  Heap[o_30, $allocated] ==> Heap[Heap[o_30, f_35], $allocated]
+axiom (forall o_39: Ref, f_21: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_39, f_21] }
+  Heap[o_39, $allocated] ==> Heap[Heap[o_39, f_21], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_31: Ref, f_36: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_31, f_36] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_31, f_36) ==> Heap[o_31, f_36] == ExhaleHeap[o_31, f_36]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_48: Ref, f_66: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_48, f_66] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_48, f_66) ==> Heap[o_48, f_66] == ExhaleHeap[o_48, f_66]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_11), ExhaleHeap[null, PredicateMaskField(pm_f_11)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsPredicateField(pm_f_11) ==> Heap[null, PredicateMaskField(pm_f_11)] == ExhaleHeap[null, PredicateMaskField(pm_f_11)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_45: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_45), ExhaleHeap[null, PredicateMaskField(pm_f_45)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_45) && IsPredicateField(pm_f_45) ==> Heap[null, PredicateMaskField(pm_f_45)] == ExhaleHeap[null, PredicateMaskField(pm_f_45)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_11) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsPredicateField(pm_f_11) ==> (forall <A, B> o2_11: Ref, f_36: (Field A B) ::
-    { ExhaleHeap[o2_11, f_36] }
-    Heap[null, PredicateMaskField(pm_f_11)][o2_11, f_36] ==> Heap[o2_11, f_36] == ExhaleHeap[o2_11, f_36]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_45: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_45) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_45) && IsPredicateField(pm_f_45) ==> (forall <A, B> o2_45: Ref, f_66: (Field A B) ::
+    { ExhaleHeap[o2_45, f_66] }
+    Heap[null, PredicateMaskField(pm_f_45)][o2_45, f_66] ==> Heap[o2_45, f_66] == ExhaleHeap[o2_45, f_66]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_11), ExhaleHeap[null, WandMaskField(pm_f_11)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsWandField(pm_f_11) ==> Heap[null, WandMaskField(pm_f_11)] == ExhaleHeap[null, WandMaskField(pm_f_11)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_45: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_45), ExhaleHeap[null, WandMaskField(pm_f_45)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_45) && IsWandField(pm_f_45) ==> Heap[null, WandMaskField(pm_f_45)] == ExhaleHeap[null, WandMaskField(pm_f_45)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_11) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsWandField(pm_f_11) ==> (forall <A, B> o2_11: Ref, f_36: (Field A B) ::
-    { ExhaleHeap[o2_11, f_36] }
-    Heap[null, WandMaskField(pm_f_11)][o2_11, f_36] ==> Heap[o2_11, f_36] == ExhaleHeap[o2_11, f_36]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_45: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_45) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_45) && IsWandField(pm_f_45) ==> (forall <A, B> o2_45: Ref, f_66: (Field A B) ::
+    { ExhaleHeap[o2_45, f_66] }
+    Heap[null, WandMaskField(pm_f_45)][o2_45, f_66] ==> Heap[o2_45, f_66] == ExhaleHeap[o2_45, f_66]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_31: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_31, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_31, $allocated] ==> ExhaleHeap[o_31, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_48: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_48, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_48, $allocated] ==> ExhaleHeap[o_48, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_30: Ref, f_37: (Field A B), v: B ::
-  { Heap[o_30, f_37:=v] }
-  succHeap(Heap, Heap[o_30, f_37:=v])
+axiom (forall <A, B> Heap: HeapType, o_39: Ref, f_53: (Field A B), v: B ::
+  { Heap[o_39, f_53:=v] }
+  succHeap(Heap, Heap[o_39, f_53:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -149,24 +149,24 @@ function  neverTriggered2(n_1: Ref): bool;
 function  neverTriggered3(n$1_1: Ref): bool;
 function  neverTriggered4(n_2: Ref): bool;
 function  neverTriggered5(n_3: Ref): bool;
-function  neverTriggered6(n_4_1: Ref): bool;
+function  neverTriggered6(n_4: Ref): bool;
 function  neverTriggered7(n_5: Ref): bool;
 function  neverTriggered8(n_6: Ref): bool;
 function  neverTriggered9(n_7: Ref): bool;
 function  neverTriggered10(n$1_2: Ref): bool;
 function  neverTriggered11(n_1: Ref): bool;
 function  neverTriggered12(n_2: Ref): bool;
-function  neverTriggered13(n$1_12: Ref): bool;
+function  neverTriggered13(n$1: Ref): bool;
 function  neverTriggered14(n_3: Ref): bool;
-function  neverTriggered15(n_4_1: Ref): bool;
+function  neverTriggered15(n_4: Ref): bool;
 function  neverTriggered16(n_5: Ref): bool;
 function  neverTriggered17(n_6: Ref): bool;
 function  neverTriggered18(n_7: Ref): bool;
 function  neverTriggered19(n_8: Ref): bool;
 function  neverTriggered20(n_9: Ref): bool;
 function  neverTriggered21(n_10_1: Ref): bool;
-function  neverTriggered22(n_11_1: Ref): bool;
-function  neverTriggered23(n_12_1: Ref): bool;
+function  neverTriggered22(n_11_2: Ref): bool;
+function  neverTriggered23(n_12: Ref): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -456,7 +456,7 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 type FoobarDomainType;
 
 // Translation of domain function foo
-function  foo(S_2: (Set int), x_8: Ref, y_6: Ref): bool;
+function  foo_2(S_1: (Set int), x_37: Ref, y_2: Ref): bool;
 
 // ==================================================
 // Translation of all fields
@@ -510,7 +510,7 @@ procedure hfun#definedness(g_1: (Set Ref)) returns (Result: (Set int))
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var n$0_43: Ref;
+  var n$0_38: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -526,7 +526,7 @@ procedure hfun#definedness(g_1: (Set Ref)) returns (Result: (Set int))
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (0210.vpr@21.14--21.22) [194050]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (0210.vpr@21.14--21.22) [84497]"}
       (forall n_3: Ref, n_3_1: Ref ::
       
       (((n_3 != n_3_1 && g_1[n_3]) && g_1[n_3_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_3 != n_3_1
@@ -537,9 +537,9 @@ procedure hfun#definedness(g_1: (Set Ref)) returns (Result: (Set int))
         { Heap[n_3, next] } { QPMask[n_3, next] } { Heap[n_3, next] }
         g_1[n_3] && NoPerm < FullPerm ==> qpRange1(n_3) && invRecv1(n_3) == n_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (g_1[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4) ==> invRecv1(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (g_1[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9) ==> invRecv1(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -549,32 +549,32 @@ procedure hfun#definedness(g_1: (Set Ref)) returns (Result: (Set int))
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g_1[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> invRecv1(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!((g_1[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g_1[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> invRecv1(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!((g_1[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n$0: Ref :: { (n$0.next in g) } { (n$0 in g), n$0.next } (n$0 in g) && n$0.next != null ==> (n$0.next in g))
       if (*) {
-        if (g_1[n$0_43]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@21.14--21.22) [194051]"}
-            HasDirectPerm(Mask, n$0_43, next);
+        if (g_1[n$0_38]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@21.14--21.22) [84498]"}
+            HasDirectPerm(Mask, n$0_38, next);
         }
-        if (g_1[n$0_43] && Heap[n$0_43, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@21.14--21.22) [194052]"}
-            HasDirectPerm(Mask, n$0_43, next);
+        if (g_1[n$0_38] && Heap[n$0_38, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@21.14--21.22) [84499]"}
+            HasDirectPerm(Mask, n$0_38, next);
         }
         assume false;
       }
-    assume (forall n$0_2_1: Ref ::
-      { g_1[Heap[n$0_2_1, next]] } { g_1[n$0_2_1], Heap[n$0_2_1, next] }
-      g_1[n$0_2_1] && Heap[n$0_2_1, next] != null ==> g_1[Heap[n$0_2_1, next]]
+    assume (forall n$0_2: Ref ::
+      { g_1[Heap[n$0_2, next]] } { g_1[n$0_2], Heap[n$0_2, next] }
+      g_1[n$0_2] && Heap[n$0_2, next] != null ==> g_1[Heap[n$0_2, next]]
     );
     assume state(Heap, Mask);
 }
@@ -587,26 +587,26 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var n$0_33: Ref;
+  var n$0: Ref;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var n$2_35: Ref;
+  var n$2: Ref;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var n$0_2_1: Ref;
+  var n$0_2: Ref;
   var ExhaleHeap: HeapType;
   var n$0_4: Ref;
   var n$0_6: Ref;
   var n$0_8: Ref;
-  var n$0_10: Ref;
-  var n$0_12: Ref;
+  var n$0_10_1: Ref;
+  var n$0_12_1: Ref;
   var n$2_2: Ref;
-  var x_4: Ref;
+  var x_4_2: Ref;
   var y_4_1: Ref;
   var x_6: Ref;
-  var y_6_2: Ref;
+  var y_6: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -622,7 +622,7 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (0210.vpr@24.14--24.22) [194053]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (0210.vpr@24.14--24.22) [84500]"}
       (forall n_1: Ref, n_1_1: Ref ::
       
       (((n_1 != n_1_1 && g_1[n_1]) && g_1[n_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_1 != n_1_1
@@ -633,9 +633,9 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         { Heap[n_1, next] } { QPMask[n_1, next] } { Heap[n_1, next] }
         g_1[n_1] && NoPerm < FullPerm ==> qpRange2(n_1) && invRecv2(n_1) == n_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        (g_1[invRecv2(o_4)] && NoPerm < FullPerm) && qpRange2(o_4) ==> invRecv2(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        (g_1[invRecv2(o_9)] && NoPerm < FullPerm) && qpRange2(o_9) ==> invRecv2(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -645,26 +645,26 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g_1[invRecv2(o_4)] && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> invRecv2(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!((g_1[invRecv2(o_4)] && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g_1[invRecv2(o_9)] && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> invRecv2(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!((g_1[invRecv2(o_9)] && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n$0: Ref :: { (n$0.next in g) } { (n$0 in g), n$0.next } (n$0 in g) && n$0.next != null ==> (n$0.next in g))
       if (*) {
-        if (g_1[n$0_33]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@24.14--24.22) [194054]"}
-            HasDirectPerm(Mask, n$0_33, next);
+        if (g_1[n$0]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@24.14--24.22) [84501]"}
+            HasDirectPerm(Mask, n$0, next);
         }
-        if (g_1[n$0_33] && Heap[n$0_33, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@24.14--24.22) [194055]"}
-            HasDirectPerm(Mask, n$0_33, next);
+        if (g_1[n$0] && Heap[n$0, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@24.14--24.22) [84502]"}
+            HasDirectPerm(Mask, n$0, next);
         }
         assume false;
       }
@@ -691,7 +691,7 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (0210.vpr@25.13--25.21) [194056]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (0210.vpr@25.13--25.21) [84503]"}
       (forall n$1_1: Ref, n$1_1_1: Ref ::
       
       (((n$1_1 != n$1_1_1 && g_1[n$1_1]) && g_1[n$1_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$1_1 != n$1_1_1
@@ -702,9 +702,9 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         { PostHeap[n$1_1, next] } { QPMask[n$1_1, next] } { PostHeap[n$1_1, next] }
         g_1[n$1_1] && NoPerm < FullPerm ==> qpRange3(n$1_1) && invRecv3(n$1_1) == n$1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (g_1[invRecv3(o_4)] && NoPerm < FullPerm) && qpRange3(o_4) ==> invRecv3(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (g_1[invRecv3(o_9)] && NoPerm < FullPerm) && qpRange3(o_9) ==> invRecv3(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -714,32 +714,32 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g_1[invRecv3(o_4)] && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> invRecv3(o_4) == o_4) && QPMask[o_4, next] == PostMask[o_4, next] + FullPerm) && (!((g_1[invRecv3(o_4)] && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, next] == PostMask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g_1[invRecv3(o_9)] && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> invRecv3(o_9) == o_9) && QPMask[o_9, next] == PostMask[o_9, next] + FullPerm) && (!((g_1[invRecv3(o_9)] && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, next] == PostMask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall n$2: Ref :: { (n$2.next in g) } { (n$2 in g), n$2.next } (n$2 in g) && n$2.next != null ==> (n$2.next in g))
       if (*) {
-        if (g_1[n$2_35]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (0210.vpr@25.13--25.21) [194057]"}
-            HasDirectPerm(PostMask, n$2_35, next);
+        if (g_1[n$2]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (0210.vpr@25.13--25.21) [84504]"}
+            HasDirectPerm(PostMask, n$2, next);
         }
-        if (g_1[n$2_35] && PostHeap[n$2_35, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (0210.vpr@25.13--25.21) [194058]"}
-            HasDirectPerm(PostMask, n$2_35, next);
+        if (g_1[n$2] && PostHeap[n$2, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$2.next (0210.vpr@25.13--25.21) [84505]"}
+            HasDirectPerm(PostMask, n$2, next);
         }
         assume false;
       }
-    assume (forall n$2_1_1: Ref ::
-      { g_1[PostHeap[n$2_1_1, next]] } { g_1[n$2_1_1], PostHeap[n$2_1_1, next] }
-      g_1[n$2_1_1] && PostHeap[n$2_1_1, next] != null ==> g_1[PostHeap[n$2_1_1, next]]
+    assume (forall n$2_1: Ref ::
+      { g_1[PostHeap[n$2_1, next]] } { g_1[n$2_1], PostHeap[n$2_1, next] }
+      g_1[n$2_1] && PostHeap[n$2_1, next] != null ==> g_1[PostHeap[n$2_1, next]]
     );
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
@@ -750,7 +750,7 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
           // Exhale precondition of function application
           ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
-          assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@26.40--26.47) [194059]"}
+          assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@26.40--26.47) [84506]"}
             !g_1[null];
           havoc QPMask;
           
@@ -758,14 +758,14 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
             
           
           // -- check if receiver n is injective
-            assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@26.40--26.47) [194060]"}
+            assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@26.40--26.47) [84507]"}
               (forall n_2: Ref, n_2_1: Ref ::
               { neverTriggered4(n_2), neverTriggered4(n_2_1) }
               (((n_2 != n_2_1 && g_1[n_2]) && g_1[n_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_2 != n_2_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@26.40--26.47) [194061]"}
+            assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@26.40--26.47) [84508]"}
               (forall n_2: Ref ::
               { PostHeap[n_2, next] } { QPMask[n_2, next] } { PostHeap[n_2, next] }
               g_1[n_2] ==> FullPerm > NoPerm ==> PostMask[n_2, next] > NoPerm
@@ -776,20 +776,20 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
               { PostHeap[n_2, next] } { QPMask[n_2, next] } { PostHeap[n_2, next] }
               g_1[n_2] && NoPerm < FullPerm ==> qpRange4(n_2) && invRecv4(n_2) == n_2
             );
-            assume (forall o_4: Ref ::
-              { invRecv4(o_4) }
-              g_1[invRecv4(o_4)] && (NoPerm < FullPerm && qpRange4(o_4)) ==> invRecv4(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv4(o_9) }
+              g_1[invRecv4(o_9)] && (NoPerm < FullPerm && qpRange4(o_9)) ==> invRecv4(o_9) == o_9
             );
           if (*) {
-            if (g_1[n$0_2_1] && PostHeap[n$0_2_1, next] != null) {
-              assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@26.40--26.47) [194062]"}
-                g_1[PostHeap[n$0_2_1, next]];
+            if (g_1[n$0_2] && PostHeap[n$0_2, next] != null) {
+              assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@26.40--26.47) [84509]"}
+                g_1[PostHeap[n$0_2, next]];
             }
             assume false;
           }
-          assume (forall n$0_3_1: Ref ::
-            { g_1[PostHeap[n$0_3_1, next]] } { g_1[n$0_3_1], PostHeap[n$0_3_1, next] }
-            g_1[n$0_3_1] && PostHeap[n$0_3_1, next] != null ==> g_1[PostHeap[n$0_3_1, next]]
+          assume (forall n$0_3_1_1: Ref ::
+            { g_1[PostHeap[n$0_3_1_1, next]] } { g_1[n$0_3_1_1], PostHeap[n$0_3_1_1, next] }
+            g_1[n$0_3_1_1] && PostHeap[n$0_3_1_1, next] != null ==> g_1[PostHeap[n$0_3_1_1, next]]
           );
           // Finish exhale
           havoc ExhaleHeap;
@@ -802,7 +802,7 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
           // Exhale precondition of function application
           ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
-          assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@26.64--26.71) [194063]"}
+          assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@26.64--26.71) [84510]"}
             !g_1[null];
           havoc QPMask;
           
@@ -810,14 +810,14 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
             
           
           // -- check if receiver n is injective
-            assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@26.64--26.71) [194064]"}
+            assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@26.64--26.71) [84511]"}
               (forall n_3: Ref, n_3_1: Ref ::
               { neverTriggered5(n_3), neverTriggered5(n_3_1) }
               (((n_3 != n_3_1 && g_1[n_3]) && g_1[n_3_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_3 != n_3_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@26.64--26.71) [194065]"}
+            assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@26.64--26.71) [84512]"}
               (forall n_3: Ref ::
               { oldHeap[n_3, next] } { QPMask[n_3, next] } { oldHeap[n_3, next] }
               g_1[n_3] ==> FullPerm > NoPerm ==> oldMask[n_3, next] > NoPerm
@@ -828,20 +828,20 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
               { oldHeap[n_3, next] } { QPMask[n_3, next] } { oldHeap[n_3, next] }
               g_1[n_3] && NoPerm < FullPerm ==> qpRange5(n_3) && invRecv5(n_3) == n_3
             );
-            assume (forall o_4: Ref ::
-              { invRecv5(o_4) }
-              g_1[invRecv5(o_4)] && (NoPerm < FullPerm && qpRange5(o_4)) ==> invRecv5(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv5(o_9) }
+              g_1[invRecv5(o_9)] && (NoPerm < FullPerm && qpRange5(o_9)) ==> invRecv5(o_9) == o_9
             );
           if (*) {
             if (g_1[n$0_4] && oldHeap[n$0_4, next] != null) {
-              assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@26.64--26.71) [194066]"}
+              assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@26.64--26.71) [84513]"}
                 g_1[oldHeap[n$0_4, next]];
             }
             assume false;
           }
-          assume (forall n$0_5_1: Ref ::
-            { g_1[oldHeap[n$0_5_1, next]] } { g_1[n$0_5_1], oldHeap[n$0_5_1, next] }
-            g_1[n$0_5_1] && oldHeap[n$0_5_1, next] != null ==> g_1[oldHeap[n$0_5_1, next]]
+          assume (forall n$0_5_1_1: Ref ::
+            { g_1[oldHeap[n$0_5_1_1, next]] } { g_1[n$0_5_1_1], oldHeap[n$0_5_1_1, next] }
+            g_1[n$0_5_1_1] && oldHeap[n$0_5_1_1, next] != null ==> g_1[oldHeap[n$0_5_1_1, next]]
           );
           // Finish exhale
           // Stop execution
@@ -850,8 +850,8 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         assume false;
       }
     assume (forall x_1: Ref, y_1: Ref ::
-      { (foo(hfun#frame(FrameFragment(hfun#condqp1(PostHeap, g_1)), g_1), x_1, y_1): bool) } { (foo(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), y_1, x_1): bool) }
-      (foo(hfun(PostHeap, g_1), x_1, y_1): bool) == (foo(hfun(oldHeap, g_1), y_1, x_1): bool)
+      { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(PostHeap, g_1)), g_1), x_1, y_1): bool) } { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), y_1, x_1): bool) }
+      (foo_2(hfun(PostHeap, g_1), x_1, y_1): bool) == (foo_2(hfun(oldHeap, g_1), y_1, x_1): bool)
     );
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
@@ -862,7 +862,7 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
           // Exhale precondition of function application
           ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
-          assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@27.40--27.47) [194067]"}
+          assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@27.40--27.47) [84514]"}
             !g_1[null];
           havoc QPMask;
           
@@ -870,38 +870,38 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
             
           
           // -- check if receiver n is injective
-            assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@27.40--27.47) [194068]"}
-              (forall n_4_1: Ref, n_4_2: Ref ::
-              { neverTriggered6(n_4_1), neverTriggered6(n_4_2) }
-              (((n_4_1 != n_4_2 && g_1[n_4_1]) && g_1[n_4_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_4_1 != n_4_2
+            assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@27.40--27.47) [84515]"}
+              (forall n_4: Ref, n_4_1: Ref ::
+              { neverTriggered6(n_4), neverTriggered6(n_4_1) }
+              (((n_4 != n_4_1 && g_1[n_4]) && g_1[n_4_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_4 != n_4_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@27.40--27.47) [194069]"}
-              (forall n_4_1: Ref ::
-              { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-              g_1[n_4_1] ==> FullPerm > NoPerm ==> PostMask[n_4_1, next] > NoPerm
+            assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@27.40--27.47) [84516]"}
+              (forall n_4: Ref ::
+              { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+              g_1[n_4] ==> FullPerm > NoPerm ==> PostMask[n_4, next] > NoPerm
             );
           
           // -- assumptions for inverse of receiver n
-            assume (forall n_4_1: Ref ::
-              { PostHeap[n_4_1, next] } { QPMask[n_4_1, next] } { PostHeap[n_4_1, next] }
-              g_1[n_4_1] && NoPerm < FullPerm ==> qpRange6(n_4_1) && invRecv6(n_4_1) == n_4_1
+            assume (forall n_4: Ref ::
+              { PostHeap[n_4, next] } { QPMask[n_4, next] } { PostHeap[n_4, next] }
+              g_1[n_4] && NoPerm < FullPerm ==> qpRange6(n_4) && invRecv6(n_4) == n_4
             );
-            assume (forall o_4: Ref ::
-              { invRecv6(o_4) }
-              g_1[invRecv6(o_4)] && (NoPerm < FullPerm && qpRange6(o_4)) ==> invRecv6(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv6(o_9) }
+              g_1[invRecv6(o_9)] && (NoPerm < FullPerm && qpRange6(o_9)) ==> invRecv6(o_9) == o_9
             );
           if (*) {
             if (g_1[n$0_6] && PostHeap[n$0_6, next] != null) {
-              assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@27.40--27.47) [194070]"}
+              assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@27.40--27.47) [84517]"}
                 g_1[PostHeap[n$0_6, next]];
             }
             assume false;
           }
-          assume (forall n$0_7_1: Ref ::
-            { g_1[PostHeap[n$0_7_1, next]] } { g_1[n$0_7_1], PostHeap[n$0_7_1, next] }
-            g_1[n$0_7_1] && PostHeap[n$0_7_1, next] != null ==> g_1[PostHeap[n$0_7_1, next]]
+          assume (forall n$0_7_1_1: Ref ::
+            { g_1[PostHeap[n$0_7_1_1, next]] } { g_1[n$0_7_1_1], PostHeap[n$0_7_1_1, next] }
+            g_1[n$0_7_1_1] && PostHeap[n$0_7_1_1, next] != null ==> g_1[PostHeap[n$0_7_1_1, next]]
           );
           // Finish exhale
           havoc ExhaleHeap;
@@ -914,7 +914,7 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
           // Exhale precondition of function application
           ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
-          assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@27.64--27.71) [194071]"}
+          assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@27.64--27.71) [84518]"}
             !g_1[null];
           havoc QPMask;
           
@@ -922,14 +922,14 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
             
           
           // -- check if receiver n is injective
-            assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@27.64--27.71) [194072]"}
+            assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@27.64--27.71) [84519]"}
               (forall n_5: Ref, n_5_1: Ref ::
               { neverTriggered7(n_5), neverTriggered7(n_5_1) }
               (((n_5 != n_5_1 && g_1[n_5]) && g_1[n_5_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_5 != n_5_1
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@27.64--27.71) [194073]"}
+            assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@27.64--27.71) [84520]"}
               (forall n_5: Ref ::
               { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
               g_1[n_5] ==> FullPerm > NoPerm ==> oldMask[n_5, next] > NoPerm
@@ -940,20 +940,20 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
               { oldHeap[n_5, next] } { QPMask[n_5, next] } { oldHeap[n_5, next] }
               g_1[n_5] && NoPerm < FullPerm ==> qpRange7(n_5) && invRecv7(n_5) == n_5
             );
-            assume (forall o_4: Ref ::
-              { invRecv7(o_4) }
-              g_1[invRecv7(o_4)] && (NoPerm < FullPerm && qpRange7(o_4)) ==> invRecv7(o_4) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv7(o_9) }
+              g_1[invRecv7(o_9)] && (NoPerm < FullPerm && qpRange7(o_9)) ==> invRecv7(o_9) == o_9
             );
           if (*) {
             if (g_1[n$0_8] && oldHeap[n$0_8, next] != null) {
-              assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@27.64--27.71) [194074]"}
+              assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@27.64--27.71) [84521]"}
                 g_1[oldHeap[n$0_8, next]];
             }
             assume false;
           }
-          assume (forall n$0_9_1: Ref ::
-            { g_1[oldHeap[n$0_9_1, next]] } { g_1[n$0_9_1], oldHeap[n$0_9_1, next] }
-            g_1[n$0_9_1] && oldHeap[n$0_9_1, next] != null ==> g_1[oldHeap[n$0_9_1, next]]
+          assume (forall n$0_9_1_1: Ref ::
+            { g_1[oldHeap[n$0_9_1_1, next]] } { g_1[n$0_9_1_1], oldHeap[n$0_9_1_1, next] }
+            g_1[n$0_9_1_1] && oldHeap[n$0_9_1_1, next] != null ==> g_1[oldHeap[n$0_9_1_1, next]]
           );
           // Finish exhale
           // Stop execution
@@ -962,8 +962,8 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         assume false;
       }
     assume (forall x_3: Ref, y_3_2: Ref ::
-      { (foo(hfun#frame(FrameFragment(hfun#condqp1(PostHeap, g_1)), g_1), x_3, y_3_2): bool) } { (foo(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), x_3, y_3_2): bool) }
-      (foo(hfun(PostHeap, g_1), x_3, y_3_2): bool) != (foo(hfun(oldHeap, g_1), x_3, y_3_2): bool)
+      { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(PostHeap, g_1)), g_1), x_3, y_3_2): bool) } { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), x_3, y_3_2): bool) }
+      (foo_2(hfun(PostHeap, g_1), x_3, y_3_2): bool) != (foo_2(hfun(oldHeap, g_1), x_3, y_3_2): bool)
     );
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
@@ -973,7 +973,7 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@28.13--28.20) [194075]"}
+        assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@28.13--28.20) [84522]"}
           !g_1[null];
         havoc QPMask;
         
@@ -981,14 +981,14 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@28.13--28.20) [194076]"}
+          assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@28.13--28.20) [84523]"}
             (forall n_6: Ref, n_6_1: Ref ::
             { neverTriggered8(n_6), neverTriggered8(n_6_1) }
             (((n_6 != n_6_1 && g_1[n_6]) && g_1[n_6_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_6 != n_6_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@28.13--28.20) [194077]"}
+          assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@28.13--28.20) [84524]"}
             (forall n_6: Ref ::
             { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
             g_1[n_6] ==> FullPerm > NoPerm ==> PostMask[n_6, next] > NoPerm
@@ -999,14 +999,14 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
             { PostHeap[n_6, next] } { QPMask[n_6, next] } { PostHeap[n_6, next] }
             g_1[n_6] && NoPerm < FullPerm ==> qpRange8(n_6) && invRecv8(n_6) == n_6
           );
-          assume (forall o_4: Ref ::
-            { invRecv8(o_4) }
-            g_1[invRecv8(o_4)] && (NoPerm < FullPerm && qpRange8(o_4)) ==> invRecv8(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv8(o_9) }
+            g_1[invRecv8(o_9)] && (NoPerm < FullPerm && qpRange8(o_9)) ==> invRecv8(o_9) == o_9
           );
         if (*) {
-          if (g_1[n$0_10] && PostHeap[n$0_10, next] != null) {
-            assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@28.13--28.20) [194078]"}
-              g_1[PostHeap[n$0_10, next]];
+          if (g_1[n$0_10_1] && PostHeap[n$0_10_1, next] != null) {
+            assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@28.13--28.20) [84525]"}
+              g_1[PostHeap[n$0_10_1, next]];
           }
           assume false;
         }
@@ -1025,7 +1025,7 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
-        assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@28.29--28.36) [194079]"}
+        assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@28.29--28.36) [84526]"}
           !g_1[null];
         havoc QPMask;
         
@@ -1033,14 +1033,14 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
           
         
         // -- check if receiver n is injective
-          assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@28.29--28.36) [194080]"}
+          assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@28.29--28.36) [84527]"}
             (forall n_7: Ref, n_7_1: Ref ::
             { neverTriggered9(n_7), neverTriggered9(n_7_1) }
             (((n_7 != n_7_1 && g_1[n_7]) && g_1[n_7_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_7 != n_7_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@28.29--28.36) [194081]"}
+          assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@28.29--28.36) [84528]"}
             (forall n_7: Ref ::
             { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
             g_1[n_7] ==> FullPerm > NoPerm ==> oldMask[n_7, next] > NoPerm
@@ -1051,20 +1051,20 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
             { oldHeap[n_7, next] } { QPMask[n_7, next] } { oldHeap[n_7, next] }
             g_1[n_7] && NoPerm < FullPerm ==> qpRange9(n_7) && invRecv9(n_7) == n_7
           );
-          assume (forall o_4: Ref ::
-            { invRecv9(o_4) }
-            g_1[invRecv9(o_4)] && (NoPerm < FullPerm && qpRange9(o_4)) ==> invRecv9(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv9(o_9) }
+            g_1[invRecv9(o_9)] && (NoPerm < FullPerm && qpRange9(o_9)) ==> invRecv9(o_9) == o_9
           );
         if (*) {
-          if (g_1[n$0_12] && oldHeap[n$0_12, next] != null) {
-            assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@28.29--28.36) [194082]"}
-              g_1[oldHeap[n$0_12, next]];
+          if (g_1[n$0_12_1] && oldHeap[n$0_12_1, next] != null) {
+            assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@28.29--28.36) [84529]"}
+              g_1[oldHeap[n$0_12_1, next]];
           }
           assume false;
         }
-        assume (forall n$0_13_1: Ref ::
-          { g_1[oldHeap[n$0_13_1, next]] } { g_1[n$0_13_1], oldHeap[n$0_13_1, next] }
-          g_1[n$0_13_1] && oldHeap[n$0_13_1, next] != null ==> g_1[oldHeap[n$0_13_1, next]]
+        assume (forall n$0_13_1_1: Ref ::
+          { g_1[oldHeap[n$0_13_1_1, next]] } { g_1[n$0_13_1_1], oldHeap[n$0_13_1_1, next] }
+          g_1[n$0_13_1_1] && oldHeap[n$0_13_1_1, next] != null ==> g_1[oldHeap[n$0_13_1_1, next]]
         );
         // Finish exhale
         // Stop execution
@@ -1084,7 +1084,7 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of reverse_impl might not hold. Assertion !((null in g)) might not hold. (0210.vpr@25.13--25.21) [194083]"}
+    assert {:msg "  Postcondition of reverse_impl might not hold. Assertion !((null in g)) might not hold. (0210.vpr@25.13--25.21) [84530]"}
       !g_1[null];
     havoc QPMask;
     
@@ -1092,14 +1092,14 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
       
     
     // -- check if receiver n$1 is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (0210.vpr@25.13--25.21) [194084]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource n$1.next might not be injective. (0210.vpr@25.13--25.21) [84531]"}
         (forall n$1_2: Ref, n$1_2_1: Ref ::
         { neverTriggered10(n$1_2), neverTriggered10(n$1_2_1) }
         (((n$1_2 != n$1_2_1 && g_1[n$1_2]) && g_1[n$1_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$1_2 != n$1_2_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of reverse_impl might not hold. There might be insufficient permission to access n$1.next (0210.vpr@25.13--25.21) [194085]"}
+      assert {:msg "  Postcondition of reverse_impl might not hold. There might be insufficient permission to access n$1.next (0210.vpr@25.13--25.21) [84532]"}
         (forall n$1_2: Ref ::
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         g_1[n$1_2] ==> Mask[n$1_2, next] >= FullPerm
@@ -1110,26 +1110,26 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         { Heap[n$1_2, next] } { QPMask[n$1_2, next] } { Heap[n$1_2, next] }
         g_1[n$1_2] && NoPerm < FullPerm ==> qpRange10(n$1_2) && invRecv10(n$1_2) == n$1_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv10(o_4) }
-        g_1[invRecv10(o_4)] && (NoPerm < FullPerm && qpRange10(o_4)) ==> invRecv10(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv10(o_9) }
+        g_1[invRecv10(o_9)] && (NoPerm < FullPerm && qpRange10(o_9)) ==> invRecv10(o_9) == o_9
       );
     
     // -- assume permission updates for field next
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        (g_1[invRecv10(o_4)] && (NoPerm < FullPerm && qpRange10(o_4)) ==> invRecv10(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - FullPerm) && (!(g_1[invRecv10(o_4)] && (NoPerm < FullPerm && qpRange10(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        (g_1[invRecv10(o_9)] && (NoPerm < FullPerm && qpRange10(o_9)) ==> invRecv10(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - FullPerm) && (!(g_1[invRecv10(o_9)] && (NoPerm < FullPerm && qpRange10(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
       if (g_1[n$2_2] && Heap[n$2_2, next] != null) {
-        assert {:msg "  Postcondition of reverse_impl might not hold. Assertion (n$2.next in g) might not hold. (0210.vpr@25.13--25.21) [194086]"}
+        assert {:msg "  Postcondition of reverse_impl might not hold. Assertion (n$2.next in g) might not hold. (0210.vpr@25.13--25.21) [84533]"}
           g_1[Heap[n$2_2, next]];
       }
       assume false;
@@ -1139,24 +1139,24 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
       g_1[n$2_3_1] && Heap[n$2_3_1, next] != null ==> g_1[Heap[n$2_3_1, next]]
     );
     if (*) {
-      assert {:msg "  Postcondition of reverse_impl might not hold. Assertion foo(hfun(g), x, y) == foo(old(hfun(g)), y, x) might not hold. (0210.vpr@26.13--26.77) [194087]"}
-        (foo(hfun(Heap, g_1), x_4, y_4_1): bool) == (foo(hfun(oldHeap, g_1), y_4_1, x_4): bool);
+      assert {:msg "  Postcondition of reverse_impl might not hold. Assertion foo(hfun(g), x, y) == foo(old(hfun(g)), y, x) might not hold. (0210.vpr@26.13--26.77) [84534]"}
+        (foo_2(hfun(Heap, g_1), x_4_2, y_4_1): bool) == (foo_2(hfun(oldHeap, g_1), y_4_1, x_4_2): bool);
       assume false;
     }
     assume (forall x_5_1_1: Ref, y_5_1: Ref ::
-      { (foo(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_5_1_1, y_5_1): bool) } { (foo(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), y_5_1, x_5_1_1): bool) }
-      (foo(hfun(Heap, g_1), x_5_1_1, y_5_1): bool) == (foo(hfun(oldHeap, g_1), y_5_1, x_5_1_1): bool)
+      { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_5_1_1, y_5_1): bool) } { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), y_5_1, x_5_1_1): bool) }
+      (foo_2(hfun(Heap, g_1), x_5_1_1, y_5_1): bool) == (foo_2(hfun(oldHeap, g_1), y_5_1, x_5_1_1): bool)
     );
     if (*) {
-      assert {:msg "  Postcondition of reverse_impl might not hold. Assertion foo(hfun(g), x, y) != foo(old(hfun(g)), x, y) might not hold. (0210.vpr@27.13--27.77) [194088]"}
-        (foo(hfun(Heap, g_1), x_6, y_6_2): bool) != (foo(hfun(oldHeap, g_1), x_6, y_6_2): bool);
+      assert {:msg "  Postcondition of reverse_impl might not hold. Assertion foo(hfun(g), x, y) != foo(old(hfun(g)), x, y) might not hold. (0210.vpr@27.13--27.77) [84535]"}
+        (foo_2(hfun(Heap, g_1), x_6, y_6): bool) != (foo_2(hfun(oldHeap, g_1), x_6, y_6): bool);
       assume false;
     }
     assume (forall x_7_1_1: Ref, y_7_1: Ref ::
-      { (foo(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_7_1_1, y_7_1): bool) } { (foo(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), x_7_1_1, y_7_1): bool) }
-      (foo(hfun(Heap, g_1), x_7_1_1, y_7_1): bool) != (foo(hfun(oldHeap, g_1), x_7_1_1, y_7_1): bool)
+      { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_7_1_1, y_7_1): bool) } { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), x_7_1_1, y_7_1): bool) }
+      (foo_2(hfun(Heap, g_1), x_7_1_1, y_7_1): bool) != (foo_2(hfun(oldHeap, g_1), x_7_1_1, y_7_1): bool)
     );
-    assert {:msg "  Postcondition of reverse_impl might not hold. Assertion hfun(g) != old(hfun(g)) might not hold. (0210.vpr@28.13--28.38) [194089]"}
+    assert {:msg "  Postcondition of reverse_impl might not hold. Assertion hfun(g) != old(hfun(g)) might not hold. (0210.vpr@28.13--28.38) [84536]"}
       !Set#Equal(hfun(Heap, g_1), hfun(oldHeap, g_1));
     // Finish exhale
     havoc ExhaleHeap;
@@ -1172,14 +1172,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var n$0_34: Ref;
+  var n$0_10: Ref;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var n$0_2_1: Ref;
+  var n$0_2: Ref;
   var ExhaleHeap: HeapType;
   var b1: bool;
   var ExhaleWellDef1Mask: MaskType;
@@ -1190,17 +1190,17 @@ procedure reverse(g_1: (Set Ref)) returns ()
   var y_3_2: Ref;
   var b2: bool;
   var n$0_8: Ref;
-  var n$0_10: Ref;
+  var n$0_10_1: Ref;
   var x_6: Ref;
-  var y_6_2: Ref;
-  var n$0_12: Ref;
-  var n$0_14: Ref;
-  var n$0_16: Ref;
-  var n$0_18: Ref;
-  var n$0_20: Ref;
+  var y_6: Ref;
+  var n$0_12_1: Ref;
+  var n$0_14_1: Ref;
+  var n$0_16_1: Ref;
+  var n$0_18_1: Ref;
+  var n$0_20_1: Ref;
   var n$0_22_1: Ref;
-  var x_9_2: Ref;
-  var y_9_1: Ref;
+  var x_9: Ref;
+  var y_9: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1216,7 +1216,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (0210.vpr@31.14--31.22) [194090]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.next might not be injective. (0210.vpr@31.14--31.22) [84537]"}
       (forall n_1: Ref, n_1_1: Ref ::
       
       (((n_1 != n_1_1 && g_1[n_1]) && g_1[n_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_1 != n_1_1
@@ -1227,9 +1227,9 @@ procedure reverse(g_1: (Set Ref)) returns ()
         { Heap[n_1, next] } { QPMask[n_1, next] } { Heap[n_1, next] }
         g_1[n_1] && NoPerm < FullPerm ==> qpRange11(n_1) && invRecv11(n_1) == n_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv11(o_4) }
-        (g_1[invRecv11(o_4)] && NoPerm < FullPerm) && qpRange11(o_4) ==> invRecv11(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv11(o_9) }
+        (g_1[invRecv11(o_9)] && NoPerm < FullPerm) && qpRange11(o_9) ==> invRecv11(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1239,26 +1239,26 @@ procedure reverse(g_1: (Set Ref)) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, next] }
-        ((g_1[invRecv11(o_4)] && NoPerm < FullPerm) && qpRange11(o_4) ==> (NoPerm < FullPerm ==> invRecv11(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!((g_1[invRecv11(o_4)] && NoPerm < FullPerm) && qpRange11(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, next] }
+        ((g_1[invRecv11(o_9)] && NoPerm < FullPerm) && qpRange11(o_9) ==> (NoPerm < FullPerm ==> invRecv11(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!((g_1[invRecv11(o_9)] && NoPerm < FullPerm) && qpRange11(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall n$0: Ref :: { (n$0.next in g) } { (n$0 in g), n$0.next } (n$0 in g) && n$0.next != null ==> (n$0.next in g))
       if (*) {
-        if (g_1[n$0_34]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@31.14--31.22) [194091]"}
-            HasDirectPerm(Mask, n$0_34, next);
+        if (g_1[n$0_10]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@31.14--31.22) [84538]"}
+            HasDirectPerm(Mask, n$0_10, next);
         }
-        if (g_1[n$0_34] && Heap[n$0_34, next] != null) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@31.14--31.22) [194092]"}
-            HasDirectPerm(Mask, n$0_34, next);
+        if (g_1[n$0_10] && Heap[n$0_10, next] != null) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access n$0.next (0210.vpr@31.14--31.22) [84539]"}
+            HasDirectPerm(Mask, n$0_10, next);
         }
         assume false;
       }
@@ -1281,7 +1281,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
     // -- Exhaling precondition
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method reverse_impl might not hold. Assertion !((null in g)) might not hold. (0210.vpr@34.5--34.20) [194093]"}
+      assert {:msg "  The precondition of method reverse_impl might not hold. Assertion !((null in g)) might not hold. (0210.vpr@34.5--34.20) [84540]"}
         !g_1[null];
       havoc QPMask;
       
@@ -1289,14 +1289,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
         
       
       // -- check if receiver n is injective
-        assert {:msg "  The precondition of method reverse_impl might not hold. Quantified resource n.next might not be injective. (0210.vpr@34.5--34.20) [194094]"}
+        assert {:msg "  The precondition of method reverse_impl might not hold. Quantified resource n.next might not be injective. (0210.vpr@34.5--34.20) [84541]"}
           (forall n_2: Ref, n_2_1: Ref ::
           { neverTriggered12(n_2), neverTriggered12(n_2_1) }
           (((n_2 != n_2_1 && g_1[n_2]) && g_1[n_2_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_2 != n_2_1
         );
       
       // -- check if sufficient permission is held
-        assert {:msg "  The precondition of method reverse_impl might not hold. There might be insufficient permission to access n.next (0210.vpr@34.5--34.20) [194095]"}
+        assert {:msg "  The precondition of method reverse_impl might not hold. There might be insufficient permission to access n.next (0210.vpr@34.5--34.20) [84542]"}
           (forall n_2: Ref ::
           { Heap[n_2, next] } { QPMask[n_2, next] } { Heap[n_2, next] }
           g_1[n_2] ==> Mask[n_2, next] >= FullPerm
@@ -1307,33 +1307,33 @@ procedure reverse(g_1: (Set Ref)) returns ()
           { Heap[n_2, next] } { QPMask[n_2, next] } { Heap[n_2, next] }
           g_1[n_2] && NoPerm < FullPerm ==> qpRange12(n_2) && invRecv12(n_2) == n_2
         );
-        assume (forall o_4: Ref ::
-          { invRecv12(o_4) }
-          g_1[invRecv12(o_4)] && (NoPerm < FullPerm && qpRange12(o_4)) ==> invRecv12(o_4) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv12(o_9) }
+          g_1[invRecv12(o_9)] && (NoPerm < FullPerm && qpRange12(o_9)) ==> invRecv12(o_9) == o_9
         );
       
       // -- assume permission updates for field next
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, next] }
-          (g_1[invRecv12(o_4)] && (NoPerm < FullPerm && qpRange12(o_4)) ==> invRecv12(o_4) == o_4 && QPMask[o_4, next] == Mask[o_4, next] - FullPerm) && (!(g_1[invRecv12(o_4)] && (NoPerm < FullPerm && qpRange12(o_4))) ==> QPMask[o_4, next] == Mask[o_4, next])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, next] }
+          (g_1[invRecv12(o_9)] && (NoPerm < FullPerm && qpRange12(o_9)) ==> invRecv12(o_9) == o_9 && QPMask[o_9, next] == Mask[o_9, next] - FullPerm) && (!(g_1[invRecv12(o_9)] && (NoPerm < FullPerm && qpRange12(o_9))) ==> QPMask[o_9, next] == Mask[o_9, next])
         );
       
       // -- assume permission updates for independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { QPMask[o_4, f_5] }
-          f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { QPMask[o_9, f_5] }
+          f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       if (*) {
-        if (g_1[n$0_2_1] && Heap[n$0_2_1, next] != null) {
-          assert {:msg "  The precondition of method reverse_impl might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@34.5--34.20) [194096]"}
-            g_1[Heap[n$0_2_1, next]];
+        if (g_1[n$0_2] && Heap[n$0_2, next] != null) {
+          assert {:msg "  The precondition of method reverse_impl might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@34.5--34.20) [84543]"}
+            g_1[Heap[n$0_2, next]];
         }
         assume false;
       }
-      assume (forall n$0_3_1: Ref ::
-        { g_1[Heap[n$0_3_1, next]] } { g_1[n$0_3_1], Heap[n$0_3_1, next] }
-        g_1[n$0_3_1] && Heap[n$0_3_1, next] != null ==> g_1[Heap[n$0_3_1, next]]
+      assume (forall n$0_3_1_1: Ref ::
+        { g_1[Heap[n$0_3_1_1, next]] } { g_1[n$0_3_1_1], Heap[n$0_3_1_1, next] }
+        g_1[n$0_3_1_1] && Heap[n$0_3_1_1, next] != null ==> g_1[Heap[n$0_3_1_1, next]]
       );
       // Finish exhale
       havoc ExhaleHeap;
@@ -1343,52 +1343,52 @@ procedure reverse(g_1: (Set Ref)) returns ()
     // -- Inhaling postcondition
       assume !g_1[null];
       havoc QPMask;
-      assert {:msg "  Method call might fail. Quantified resource n$1.next might not be injective. (0210.vpr@34.5--34.20) [194097]"}
-        (forall n$1_12: Ref, n$1_24: Ref ::
+      assert {:msg "  Method call might fail. Quantified resource n$1.next might not be injective. (0210.vpr@34.5--34.20) [84544]"}
+        (forall n$1: Ref, n$1_7: Ref ::
         
-        (((n$1_12 != n$1_24 && g_1[n$1_12]) && g_1[n$1_24]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$1_12 != n$1_24
+        (((n$1 != n$1_7 && g_1[n$1]) && g_1[n$1_7]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$1 != n$1_7
       );
       
       // -- Define Inverse Function
-        assume (forall n$1_12: Ref ::
-          { Heap[n$1_12, next] } { QPMask[n$1_12, next] } { Heap[n$1_12, next] }
-          g_1[n$1_12] && NoPerm < FullPerm ==> qpRange13(n$1_12) && invRecv13(n$1_12) == n$1_12
+        assume (forall n$1: Ref ::
+          { Heap[n$1, next] } { QPMask[n$1, next] } { Heap[n$1, next] }
+          g_1[n$1] && NoPerm < FullPerm ==> qpRange13(n$1) && invRecv13(n$1) == n$1
         );
-        assume (forall o_4: Ref ::
-          { invRecv13(o_4) }
-          (g_1[invRecv13(o_4)] && NoPerm < FullPerm) && qpRange13(o_4) ==> invRecv13(o_4) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv13(o_9) }
+          (g_1[invRecv13(o_9)] && NoPerm < FullPerm) && qpRange13(o_9) ==> invRecv13(o_9) == o_9
         );
       
       // -- Assume set of fields is nonNull
-        assume (forall n$1_12: Ref ::
-          { Heap[n$1_12, next] } { QPMask[n$1_12, next] } { Heap[n$1_12, next] }
-          g_1[n$1_12] ==> n$1_12 != null
+        assume (forall n$1: Ref ::
+          { Heap[n$1, next] } { QPMask[n$1, next] } { Heap[n$1, next] }
+          g_1[n$1] ==> n$1 != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, next] }
-          ((g_1[invRecv13(o_4)] && NoPerm < FullPerm) && qpRange13(o_4) ==> (NoPerm < FullPerm ==> invRecv13(o_4) == o_4) && QPMask[o_4, next] == Mask[o_4, next] + FullPerm) && (!((g_1[invRecv13(o_4)] && NoPerm < FullPerm) && qpRange13(o_4)) ==> QPMask[o_4, next] == Mask[o_4, next])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, next] }
+          ((g_1[invRecv13(o_9)] && NoPerm < FullPerm) && qpRange13(o_9) ==> (NoPerm < FullPerm ==> invRecv13(o_9) == o_9) && QPMask[o_9, next] == Mask[o_9, next] + FullPerm) && (!((g_1[invRecv13(o_9)] && NoPerm < FullPerm) && qpRange13(o_9)) ==> QPMask[o_9, next] == Mask[o_9, next])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != next ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != next ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
-      assume (forall n$2: Ref ::
-        { g_1[Heap[n$2, next]] } { g_1[n$2], Heap[n$2, next] }
-        g_1[n$2] && Heap[n$2, next] != null ==> g_1[Heap[n$2, next]]
+      assume (forall n$2_6: Ref ::
+        { g_1[Heap[n$2_6, next]] } { g_1[n$2_6], Heap[n$2_6, next] }
+        g_1[n$2_6] && Heap[n$2_6, next] != null ==> g_1[Heap[n$2_6, next]]
       );
       assume state(Heap, Mask);
       assume (forall x: Ref, y: Ref ::
-        { (foo(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x, y): bool) } { (foo(hfun#frame(FrameFragment(hfun#condqp1(PreCallHeap, g_1)), g_1), y, x): bool) }
-        (foo(hfun(Heap, g_1), x, y): bool) == (foo(hfun(PreCallHeap, g_1), y, x): bool)
+        { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x, y): bool) } { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(PreCallHeap, g_1)), g_1), y, x): bool) }
+        (foo_2(hfun(Heap, g_1), x, y): bool) == (foo_2(hfun(PreCallHeap, g_1), y, x): bool)
       );
       assume state(Heap, Mask);
       assume (forall x_1: Ref, y_1: Ref ::
-        { (foo(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_1, y_1): bool) } { (foo(hfun#frame(FrameFragment(hfun#condqp1(PreCallHeap, g_1)), g_1), x_1, y_1): bool) }
-        (foo(hfun(Heap, g_1), x_1, y_1): bool) != (foo(hfun(PreCallHeap, g_1), x_1, y_1): bool)
+        { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_1, y_1): bool) } { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(PreCallHeap, g_1)), g_1), x_1, y_1): bool) }
+        (foo_2(hfun(Heap, g_1), x_1, y_1): bool) != (foo_2(hfun(PreCallHeap, g_1), x_1, y_1): bool)
       );
       assume state(Heap, Mask);
       assume !Set#Equal(hfun(Heap, g_1), hfun(PreCallHeap, g_1));
@@ -1411,7 +1411,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
               // Exhale precondition of function application
               ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-              assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@42.43--42.50) [194098]"}
+              assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@42.43--42.50) [84545]"}
                 !g_1[null];
               havoc QPMask;
               
@@ -1419,14 +1419,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 
               
               // -- check if receiver n is injective
-                assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@42.43--42.50) [194099]"}
+                assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@42.43--42.50) [84546]"}
                   (forall n_3: Ref, n_3_1: Ref ::
                   { neverTriggered14(n_3), neverTriggered14(n_3_1) }
                   (((n_3 != n_3_1 && g_1[n_3]) && g_1[n_3_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_3 != n_3_1
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@42.43--42.50) [194100]"}
+                assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@42.43--42.50) [84547]"}
                   (forall n_3: Ref ::
                   { ExhaleWellDef0Heap[n_3, next] } { QPMask[n_3, next] } { ExhaleWellDef0Heap[n_3, next] }
                   g_1[n_3] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[n_3, next] > NoPerm
@@ -1437,20 +1437,20 @@ procedure reverse(g_1: (Set Ref)) returns ()
                   { ExhaleWellDef0Heap[n_3, next] } { QPMask[n_3, next] } { ExhaleWellDef0Heap[n_3, next] }
                   g_1[n_3] && NoPerm < FullPerm ==> qpRange14(n_3) && invRecv14(n_3) == n_3
                 );
-                assume (forall o_4: Ref ::
-                  { invRecv14(o_4) }
-                  g_1[invRecv14(o_4)] && (NoPerm < FullPerm && qpRange14(o_4)) ==> invRecv14(o_4) == o_4
+                assume (forall o_9: Ref ::
+                  { invRecv14(o_9) }
+                  g_1[invRecv14(o_9)] && (NoPerm < FullPerm && qpRange14(o_9)) ==> invRecv14(o_9) == o_9
                 );
               if (*) {
                 if (g_1[n$0_4] && ExhaleWellDef0Heap[n$0_4, next] != null) {
-                  assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@42.43--42.50) [194101]"}
+                  assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@42.43--42.50) [84548]"}
                     g_1[ExhaleWellDef0Heap[n$0_4, next]];
                 }
                 assume false;
               }
-              assume (forall n$0_5_1: Ref ::
-                { g_1[ExhaleWellDef0Heap[n$0_5_1, next]] } { g_1[n$0_5_1], ExhaleWellDef0Heap[n$0_5_1, next] }
-                g_1[n$0_5_1] && ExhaleWellDef0Heap[n$0_5_1, next] != null ==> g_1[ExhaleWellDef0Heap[n$0_5_1, next]]
+              assume (forall n$0_5_1_1: Ref ::
+                { g_1[ExhaleWellDef0Heap[n$0_5_1_1, next]] } { g_1[n$0_5_1_1], ExhaleWellDef0Heap[n$0_5_1_1, next] }
+                g_1[n$0_5_1_1] && ExhaleWellDef0Heap[n$0_5_1_1, next] != null ==> g_1[ExhaleWellDef0Heap[n$0_5_1_1, next]]
               );
               // Finish exhale
               havoc ExhaleHeap;
@@ -1463,7 +1463,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
               // Exhale precondition of function application
               ExhaleWellDef1Mask := oldMask;
               ExhaleWellDef1Heap := oldHeap;
-              assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@42.67--42.74) [194102]"}
+              assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@42.67--42.74) [84549]"}
                 !g_1[null];
               havoc QPMask;
               
@@ -1471,38 +1471,38 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 
               
               // -- check if receiver n is injective
-                assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@42.67--42.74) [194103]"}
-                  (forall n_4_1: Ref, n_4_2: Ref ::
-                  { neverTriggered15(n_4_1), neverTriggered15(n_4_2) }
-                  (((n_4_1 != n_4_2 && g_1[n_4_1]) && g_1[n_4_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_4_1 != n_4_2
+                assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@42.67--42.74) [84550]"}
+                  (forall n_4: Ref, n_4_1: Ref ::
+                  { neverTriggered15(n_4), neverTriggered15(n_4_1) }
+                  (((n_4 != n_4_1 && g_1[n_4]) && g_1[n_4_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_4 != n_4_1
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@42.67--42.74) [194104]"}
-                  (forall n_4_1: Ref ::
-                  { oldHeap[n_4_1, next] } { QPMask[n_4_1, next] } { oldHeap[n_4_1, next] }
-                  g_1[n_4_1] ==> FullPerm > NoPerm ==> oldMask[n_4_1, next] > NoPerm
+                assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@42.67--42.74) [84551]"}
+                  (forall n_4: Ref ::
+                  { oldHeap[n_4, next] } { QPMask[n_4, next] } { oldHeap[n_4, next] }
+                  g_1[n_4] ==> FullPerm > NoPerm ==> oldMask[n_4, next] > NoPerm
                 );
               
               // -- assumptions for inverse of receiver n
-                assume (forall n_4_1: Ref ::
-                  { oldHeap[n_4_1, next] } { QPMask[n_4_1, next] } { oldHeap[n_4_1, next] }
-                  g_1[n_4_1] && NoPerm < FullPerm ==> qpRange15(n_4_1) && invRecv15(n_4_1) == n_4_1
+                assume (forall n_4: Ref ::
+                  { oldHeap[n_4, next] } { QPMask[n_4, next] } { oldHeap[n_4, next] }
+                  g_1[n_4] && NoPerm < FullPerm ==> qpRange15(n_4) && invRecv15(n_4) == n_4
                 );
-                assume (forall o_4: Ref ::
-                  { invRecv15(o_4) }
-                  g_1[invRecv15(o_4)] && (NoPerm < FullPerm && qpRange15(o_4)) ==> invRecv15(o_4) == o_4
+                assume (forall o_9: Ref ::
+                  { invRecv15(o_9) }
+                  g_1[invRecv15(o_9)] && (NoPerm < FullPerm && qpRange15(o_9)) ==> invRecv15(o_9) == o_9
                 );
               if (*) {
                 if (g_1[n$0_6] && oldHeap[n$0_6, next] != null) {
-                  assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@42.67--42.74) [194105]"}
+                  assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@42.67--42.74) [84552]"}
                     g_1[oldHeap[n$0_6, next]];
                 }
                 assume false;
               }
-              assume (forall n$0_7_1: Ref ::
-                { g_1[oldHeap[n$0_7_1, next]] } { g_1[n$0_7_1], oldHeap[n$0_7_1, next] }
-                g_1[n$0_7_1] && oldHeap[n$0_7_1, next] != null ==> g_1[oldHeap[n$0_7_1, next]]
+              assume (forall n$0_7_1_1: Ref ::
+                { g_1[oldHeap[n$0_7_1_1, next]] } { g_1[n$0_7_1_1], oldHeap[n$0_7_1_1, next] }
+                g_1[n$0_7_1_1] && oldHeap[n$0_7_1_1, next] != null ==> g_1[oldHeap[n$0_7_1_1, next]]
               );
               // Finish exhale
               // Stop execution
@@ -1511,13 +1511,13 @@ procedure reverse(g_1: (Set Ref)) returns ()
             assume false;
           }
         if (*) {
-          assert {:msg "  Assert might fail. Assertion foo(hfun(g), x, y) == foo(old(hfun(g)), y, x) might not hold. (0210.vpr@42.16--42.80) [194106]"}
-            (foo(hfun(Heap, g_1), x_3, y_3_2): bool) == (foo(hfun(oldHeap, g_1), y_3_2, x_3): bool);
+          assert {:msg "  Assert might fail. Assertion foo(hfun(g), x, y) == foo(old(hfun(g)), y, x) might not hold. (0210.vpr@42.16--42.80) [84553]"}
+            (foo_2(hfun(Heap, g_1), x_3, y_3_2): bool) == (foo_2(hfun(oldHeap, g_1), y_3_2, x_3): bool);
           assume false;
         }
-        assume (forall x_4_1_1: Ref, y_4_1_1: Ref ::
-          { (foo(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_4_1_1, y_4_1_1): bool) } { (foo(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), y_4_1_1, x_4_1_1): bool) }
-          (foo(hfun(Heap, g_1), x_4_1_1, y_4_1_1): bool) == (foo(hfun(oldHeap, g_1), y_4_1_1, x_4_1_1): bool)
+        assume (forall x_4_1: Ref, y_4_1_1: Ref ::
+          { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_4_1, y_4_1_1): bool) } { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), y_4_1_1, x_4_1): bool) }
+          (foo_2(hfun(Heap, g_1), x_4_1, y_4_1_1): bool) == (foo_2(hfun(oldHeap, g_1), y_4_1_1, x_4_1): bool)
         );
         assume state(Heap, Mask);
       
@@ -1543,7 +1543,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
                   // Exhale precondition of function application
                   ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                   ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-                  assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@51.43--51.50) [194107]"}
+                  assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@51.43--51.50) [84554]"}
                     !g_1[null];
                   havoc QPMask;
                   
@@ -1551,14 +1551,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                     
                   
                   // -- check if receiver n is injective
-                    assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@51.43--51.50) [194108]"}
+                    assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@51.43--51.50) [84555]"}
                       (forall n_5: Ref, n_5_1: Ref ::
                       { neverTriggered16(n_5), neverTriggered16(n_5_1) }
                       (((n_5 != n_5_1 && g_1[n_5]) && g_1[n_5_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_5 != n_5_1
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@51.43--51.50) [194109]"}
+                    assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@51.43--51.50) [84556]"}
                       (forall n_5: Ref ::
                       { ExhaleWellDef0Heap[n_5, next] } { QPMask[n_5, next] } { ExhaleWellDef0Heap[n_5, next] }
                       g_1[n_5] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[n_5, next] > NoPerm
@@ -1569,20 +1569,20 @@ procedure reverse(g_1: (Set Ref)) returns ()
                       { ExhaleWellDef0Heap[n_5, next] } { QPMask[n_5, next] } { ExhaleWellDef0Heap[n_5, next] }
                       g_1[n_5] && NoPerm < FullPerm ==> qpRange16(n_5) && invRecv16(n_5) == n_5
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv16(o_4) }
-                      g_1[invRecv16(o_4)] && (NoPerm < FullPerm && qpRange16(o_4)) ==> invRecv16(o_4) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv16(o_9) }
+                      g_1[invRecv16(o_9)] && (NoPerm < FullPerm && qpRange16(o_9)) ==> invRecv16(o_9) == o_9
                     );
                   if (*) {
                     if (g_1[n$0_8] && ExhaleWellDef0Heap[n$0_8, next] != null) {
-                      assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@51.43--51.50) [194110]"}
+                      assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@51.43--51.50) [84557]"}
                         g_1[ExhaleWellDef0Heap[n$0_8, next]];
                     }
                     assume false;
                   }
-                  assume (forall n$0_9_1: Ref ::
-                    { g_1[ExhaleWellDef0Heap[n$0_9_1, next]] } { g_1[n$0_9_1], ExhaleWellDef0Heap[n$0_9_1, next] }
-                    g_1[n$0_9_1] && ExhaleWellDef0Heap[n$0_9_1, next] != null ==> g_1[ExhaleWellDef0Heap[n$0_9_1, next]]
+                  assume (forall n$0_9_1_1: Ref ::
+                    { g_1[ExhaleWellDef0Heap[n$0_9_1_1, next]] } { g_1[n$0_9_1_1], ExhaleWellDef0Heap[n$0_9_1_1, next] }
+                    g_1[n$0_9_1_1] && ExhaleWellDef0Heap[n$0_9_1_1, next] != null ==> g_1[ExhaleWellDef0Heap[n$0_9_1_1, next]]
                   );
                   // Finish exhale
                   havoc ExhaleHeap;
@@ -1595,7 +1595,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
                   // Exhale precondition of function application
                   ExhaleWellDef1Mask := oldMask;
                   ExhaleWellDef1Heap := oldHeap;
-                  assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@51.67--51.74) [194111]"}
+                  assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@51.67--51.74) [84558]"}
                     !g_1[null];
                   havoc QPMask;
                   
@@ -1603,14 +1603,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                     
                   
                   // -- check if receiver n is injective
-                    assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@51.67--51.74) [194112]"}
+                    assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@51.67--51.74) [84559]"}
                       (forall n_6: Ref, n_6_1: Ref ::
                       { neverTriggered17(n_6), neverTriggered17(n_6_1) }
                       (((n_6 != n_6_1 && g_1[n_6]) && g_1[n_6_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_6 != n_6_1
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@51.67--51.74) [194113]"}
+                    assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@51.67--51.74) [84560]"}
                       (forall n_6: Ref ::
                       { oldHeap[n_6, next] } { QPMask[n_6, next] } { oldHeap[n_6, next] }
                       g_1[n_6] ==> FullPerm > NoPerm ==> oldMask[n_6, next] > NoPerm
@@ -1621,14 +1621,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                       { oldHeap[n_6, next] } { QPMask[n_6, next] } { oldHeap[n_6, next] }
                       g_1[n_6] && NoPerm < FullPerm ==> qpRange17(n_6) && invRecv17(n_6) == n_6
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv17(o_4) }
-                      g_1[invRecv17(o_4)] && (NoPerm < FullPerm && qpRange17(o_4)) ==> invRecv17(o_4) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv17(o_9) }
+                      g_1[invRecv17(o_9)] && (NoPerm < FullPerm && qpRange17(o_9)) ==> invRecv17(o_9) == o_9
                     );
                   if (*) {
-                    if (g_1[n$0_10] && oldHeap[n$0_10, next] != null) {
-                      assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@51.67--51.74) [194114]"}
-                        g_1[oldHeap[n$0_10, next]];
+                    if (g_1[n$0_10_1] && oldHeap[n$0_10_1, next] != null) {
+                      assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@51.67--51.74) [84561]"}
+                        g_1[oldHeap[n$0_10_1, next]];
                     }
                     assume false;
                   }
@@ -1643,13 +1643,13 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 assume false;
               }
             if (*) {
-              assert {:msg "  Assert might fail. Assertion foo(hfun(g), x, y) == foo(old(hfun(g)), x, y) might not hold. (0210.vpr@51.16--51.80) [194115]"}
-                (foo(hfun(Heap, g_1), x_6, y_6_2): bool) == (foo(hfun(oldHeap, g_1), x_6, y_6_2): bool);
+              assert {:msg "  Assert might fail. Assertion foo(hfun(g), x, y) == foo(old(hfun(g)), x, y) might not hold. (0210.vpr@51.16--51.80) [84562]"}
+                (foo_2(hfun(Heap, g_1), x_6, y_6): bool) == (foo_2(hfun(oldHeap, g_1), x_6, y_6): bool);
               assume false;
             }
             assume (forall x_7_1_1: Ref, y_7_1: Ref ::
-              { (foo(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_7_1_1, y_7_1): bool) } { (foo(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), x_7_1_1, y_7_1): bool) }
-              (foo(hfun(Heap, g_1), x_7_1_1, y_7_1): bool) == (foo(hfun(oldHeap, g_1), x_7_1_1, y_7_1): bool)
+              { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_7_1_1, y_7_1): bool) } { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), x_7_1_1, y_7_1): bool) }
+              (foo_2(hfun(Heap, g_1), x_7_1_1, y_7_1): bool) == (foo_2(hfun(oldHeap, g_1), x_7_1_1, y_7_1): bool)
             );
             assume state(Heap, Mask);
           
@@ -1662,7 +1662,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 // Exhale precondition of function application
                 ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-                assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@57.16--57.23) [194116]"}
+                assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@57.16--57.23) [84563]"}
                   !g_1[null];
                 havoc QPMask;
                 
@@ -1670,14 +1670,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                   
                 
                 // -- check if receiver n is injective
-                  assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@57.16--57.23) [194117]"}
+                  assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@57.16--57.23) [84564]"}
                     (forall n_7: Ref, n_7_1: Ref ::
                     { neverTriggered18(n_7), neverTriggered18(n_7_1) }
                     (((n_7 != n_7_1 && g_1[n_7]) && g_1[n_7_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_7 != n_7_1
                   );
                 
                 // -- check if sufficient permission is held
-                  assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@57.16--57.23) [194118]"}
+                  assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@57.16--57.23) [84565]"}
                     (forall n_7: Ref ::
                     { ExhaleWellDef0Heap[n_7, next] } { QPMask[n_7, next] } { ExhaleWellDef0Heap[n_7, next] }
                     g_1[n_7] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[n_7, next] > NoPerm
@@ -1688,20 +1688,20 @@ procedure reverse(g_1: (Set Ref)) returns ()
                     { ExhaleWellDef0Heap[n_7, next] } { QPMask[n_7, next] } { ExhaleWellDef0Heap[n_7, next] }
                     g_1[n_7] && NoPerm < FullPerm ==> qpRange18(n_7) && invRecv18(n_7) == n_7
                   );
-                  assume (forall o_4: Ref ::
-                    { invRecv18(o_4) }
-                    g_1[invRecv18(o_4)] && (NoPerm < FullPerm && qpRange18(o_4)) ==> invRecv18(o_4) == o_4
+                  assume (forall o_9: Ref ::
+                    { invRecv18(o_9) }
+                    g_1[invRecv18(o_9)] && (NoPerm < FullPerm && qpRange18(o_9)) ==> invRecv18(o_9) == o_9
                   );
                 if (*) {
-                  if (g_1[n$0_12] && ExhaleWellDef0Heap[n$0_12, next] != null) {
-                    assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@57.16--57.23) [194119]"}
-                      g_1[ExhaleWellDef0Heap[n$0_12, next]];
+                  if (g_1[n$0_12_1] && ExhaleWellDef0Heap[n$0_12_1, next] != null) {
+                    assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@57.16--57.23) [84566]"}
+                      g_1[ExhaleWellDef0Heap[n$0_12_1, next]];
                   }
                   assume false;
                 }
-                assume (forall n$0_13_1: Ref ::
-                  { g_1[ExhaleWellDef0Heap[n$0_13_1, next]] } { g_1[n$0_13_1], ExhaleWellDef0Heap[n$0_13_1, next] }
-                  g_1[n$0_13_1] && ExhaleWellDef0Heap[n$0_13_1, next] != null ==> g_1[ExhaleWellDef0Heap[n$0_13_1, next]]
+                assume (forall n$0_13_1_1: Ref ::
+                  { g_1[ExhaleWellDef0Heap[n$0_13_1_1, next]] } { g_1[n$0_13_1_1], ExhaleWellDef0Heap[n$0_13_1_1, next] }
+                  g_1[n$0_13_1_1] && ExhaleWellDef0Heap[n$0_13_1_1, next] != null ==> g_1[ExhaleWellDef0Heap[n$0_13_1_1, next]]
                 );
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -1714,7 +1714,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 // Exhale precondition of function application
                 ExhaleWellDef1Mask := oldMask;
                 ExhaleWellDef1Heap := oldHeap;
-                assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@57.32--57.39) [194120]"}
+                assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@57.32--57.39) [84567]"}
                   !g_1[null];
                 havoc QPMask;
                 
@@ -1722,14 +1722,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                   
                 
                 // -- check if receiver n is injective
-                  assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@57.32--57.39) [194121]"}
+                  assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@57.32--57.39) [84568]"}
                     (forall n_8: Ref, n_8_1: Ref ::
                     { neverTriggered19(n_8), neverTriggered19(n_8_1) }
                     (((n_8 != n_8_1 && g_1[n_8]) && g_1[n_8_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_8 != n_8_1
                   );
                 
                 // -- check if sufficient permission is held
-                  assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@57.32--57.39) [194122]"}
+                  assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@57.32--57.39) [84569]"}
                     (forall n_8: Ref ::
                     { oldHeap[n_8, next] } { QPMask[n_8, next] } { oldHeap[n_8, next] }
                     g_1[n_8] ==> FullPerm > NoPerm ==> oldMask[n_8, next] > NoPerm
@@ -1740,14 +1740,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                     { oldHeap[n_8, next] } { QPMask[n_8, next] } { oldHeap[n_8, next] }
                     g_1[n_8] && NoPerm < FullPerm ==> qpRange19(n_8) && invRecv19(n_8) == n_8
                   );
-                  assume (forall o_4: Ref ::
-                    { invRecv19(o_4) }
-                    g_1[invRecv19(o_4)] && (NoPerm < FullPerm && qpRange19(o_4)) ==> invRecv19(o_4) == o_4
+                  assume (forall o_9: Ref ::
+                    { invRecv19(o_9) }
+                    g_1[invRecv19(o_9)] && (NoPerm < FullPerm && qpRange19(o_9)) ==> invRecv19(o_9) == o_9
                   );
                 if (*) {
-                  if (g_1[n$0_14] && oldHeap[n$0_14, next] != null) {
-                    assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@57.32--57.39) [194123]"}
-                      g_1[oldHeap[n$0_14, next]];
+                  if (g_1[n$0_14_1] && oldHeap[n$0_14_1, next] != null) {
+                    assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@57.32--57.39) [84570]"}
+                      g_1[oldHeap[n$0_14_1, next]];
                   }
                   assume false;
                 }
@@ -1759,7 +1759,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 // Stop execution
                 assume false;
               }
-            assert {:msg "  Assert might fail. Assertion hfun(g) == old(hfun(g)) might not hold. (0210.vpr@57.16--57.41) [194124]"}
+            assert {:msg "  Assert might fail. Assertion hfun(g) == old(hfun(g)) might not hold. (0210.vpr@57.16--57.41) [84571]"}
               Set#Equal(hfun(Heap, g_1), hfun(oldHeap, g_1));
             assume state(Heap, Mask);
           
@@ -1772,7 +1772,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 // Exhale precondition of function application
                 ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-                assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@60.16--60.23) [194125]"}
+                assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@60.16--60.23) [84572]"}
                   !g_1[null];
                 havoc QPMask;
                 
@@ -1780,14 +1780,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                   
                 
                 // -- check if receiver n is injective
-                  assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@60.16--60.23) [194126]"}
+                  assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@60.16--60.23) [84573]"}
                     (forall n_9: Ref, n_9_1: Ref ::
                     { neverTriggered20(n_9), neverTriggered20(n_9_1) }
                     (((n_9 != n_9_1 && g_1[n_9]) && g_1[n_9_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_9 != n_9_1
                   );
                 
                 // -- check if sufficient permission is held
-                  assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@60.16--60.23) [194127]"}
+                  assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@60.16--60.23) [84574]"}
                     (forall n_9: Ref ::
                     { ExhaleWellDef0Heap[n_9, next] } { QPMask[n_9, next] } { ExhaleWellDef0Heap[n_9, next] }
                     g_1[n_9] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[n_9, next] > NoPerm
@@ -1798,14 +1798,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                     { ExhaleWellDef0Heap[n_9, next] } { QPMask[n_9, next] } { ExhaleWellDef0Heap[n_9, next] }
                     g_1[n_9] && NoPerm < FullPerm ==> qpRange20(n_9) && invRecv20(n_9) == n_9
                   );
-                  assume (forall o_4: Ref ::
-                    { invRecv20(o_4) }
-                    g_1[invRecv20(o_4)] && (NoPerm < FullPerm && qpRange20(o_4)) ==> invRecv20(o_4) == o_4
+                  assume (forall o_9: Ref ::
+                    { invRecv20(o_9) }
+                    g_1[invRecv20(o_9)] && (NoPerm < FullPerm && qpRange20(o_9)) ==> invRecv20(o_9) == o_9
                   );
                 if (*) {
-                  if (g_1[n$0_16] && ExhaleWellDef0Heap[n$0_16, next] != null) {
-                    assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@60.16--60.23) [194128]"}
-                      g_1[ExhaleWellDef0Heap[n$0_16, next]];
+                  if (g_1[n$0_16_1] && ExhaleWellDef0Heap[n$0_16_1, next] != null) {
+                    assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@60.16--60.23) [84575]"}
+                      g_1[ExhaleWellDef0Heap[n$0_16_1, next]];
                   }
                   assume false;
                 }
@@ -1824,7 +1824,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 // Exhale precondition of function application
                 ExhaleWellDef1Mask := oldMask;
                 ExhaleWellDef1Heap := oldHeap;
-                assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@60.32--60.39) [194129]"}
+                assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@60.32--60.39) [84576]"}
                   !g_1[null];
                 havoc QPMask;
                 
@@ -1832,14 +1832,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                   
                 
                 // -- check if receiver n is injective
-                  assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@60.32--60.39) [194130]"}
+                  assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@60.32--60.39) [84577]"}
                     (forall n_10_1: Ref, n_10_2: Ref ::
                     { neverTriggered21(n_10_1), neverTriggered21(n_10_2) }
                     (((n_10_1 != n_10_2 && g_1[n_10_1]) && g_1[n_10_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_10_1 != n_10_2
                   );
                 
                 // -- check if sufficient permission is held
-                  assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@60.32--60.39) [194131]"}
+                  assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@60.32--60.39) [84578]"}
                     (forall n_10_1: Ref ::
                     { oldHeap[n_10_1, next] } { QPMask[n_10_1, next] } { oldHeap[n_10_1, next] }
                     g_1[n_10_1] ==> FullPerm > NoPerm ==> oldMask[n_10_1, next] > NoPerm
@@ -1850,14 +1850,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
                     { oldHeap[n_10_1, next] } { QPMask[n_10_1, next] } { oldHeap[n_10_1, next] }
                     g_1[n_10_1] && NoPerm < FullPerm ==> qpRange21(n_10_1) && invRecv21(n_10_1) == n_10_1
                   );
-                  assume (forall o_4: Ref ::
-                    { invRecv21(o_4) }
-                    g_1[invRecv21(o_4)] && (NoPerm < FullPerm && qpRange21(o_4)) ==> invRecv21(o_4) == o_4
+                  assume (forall o_9: Ref ::
+                    { invRecv21(o_9) }
+                    g_1[invRecv21(o_9)] && (NoPerm < FullPerm && qpRange21(o_9)) ==> invRecv21(o_9) == o_9
                   );
                 if (*) {
-                  if (g_1[n$0_18] && oldHeap[n$0_18, next] != null) {
-                    assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@60.32--60.39) [194132]"}
-                      g_1[oldHeap[n$0_18, next]];
+                  if (g_1[n$0_18_1] && oldHeap[n$0_18_1, next] != null) {
+                    assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@60.32--60.39) [84579]"}
+                      g_1[oldHeap[n$0_18_1, next]];
                   }
                   assume false;
                 }
@@ -1869,7 +1869,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 // Stop execution
                 assume false;
               }
-            assert {:msg "  Assert might fail. Assertion hfun(g) != old(hfun(g)) might not hold. (0210.vpr@60.16--60.41) [194133]"}
+            assert {:msg "  Assert might fail. Assertion hfun(g) != old(hfun(g)) might not hold. (0210.vpr@60.16--60.41) [84580]"}
               !Set#Equal(hfun(Heap, g_1), hfun(oldHeap, g_1));
             assume state(Heap, Mask);
           
@@ -1886,7 +1886,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
                   // Exhale precondition of function application
                   ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                   ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-                  assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@63.43--63.50) [194134]"}
+                  assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@63.43--63.50) [84581]"}
                     !g_1[null];
                   havoc QPMask;
                   
@@ -1894,32 +1894,32 @@ procedure reverse(g_1: (Set Ref)) returns ()
                     
                   
                   // -- check if receiver n is injective
-                    assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@63.43--63.50) [194135]"}
-                      (forall n_11_1: Ref, n_11_2: Ref ::
-                      { neverTriggered22(n_11_1), neverTriggered22(n_11_2) }
-                      (((n_11_1 != n_11_2 && g_1[n_11_1]) && g_1[n_11_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_11_1 != n_11_2
+                    assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@63.43--63.50) [84582]"}
+                      (forall n_11_2: Ref, n_11_3: Ref ::
+                      { neverTriggered22(n_11_2), neverTriggered22(n_11_3) }
+                      (((n_11_2 != n_11_3 && g_1[n_11_2]) && g_1[n_11_3]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_11_2 != n_11_3
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@63.43--63.50) [194136]"}
-                      (forall n_11_1: Ref ::
-                      { ExhaleWellDef0Heap[n_11_1, next] } { QPMask[n_11_1, next] } { ExhaleWellDef0Heap[n_11_1, next] }
-                      g_1[n_11_1] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[n_11_1, next] > NoPerm
+                    assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@63.43--63.50) [84583]"}
+                      (forall n_11_2: Ref ::
+                      { ExhaleWellDef0Heap[n_11_2, next] } { QPMask[n_11_2, next] } { ExhaleWellDef0Heap[n_11_2, next] }
+                      g_1[n_11_2] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[n_11_2, next] > NoPerm
                     );
                   
                   // -- assumptions for inverse of receiver n
-                    assume (forall n_11_1: Ref ::
-                      { ExhaleWellDef0Heap[n_11_1, next] } { QPMask[n_11_1, next] } { ExhaleWellDef0Heap[n_11_1, next] }
-                      g_1[n_11_1] && NoPerm < FullPerm ==> qpRange22(n_11_1) && invRecv22(n_11_1) == n_11_1
+                    assume (forall n_11_2: Ref ::
+                      { ExhaleWellDef0Heap[n_11_2, next] } { QPMask[n_11_2, next] } { ExhaleWellDef0Heap[n_11_2, next] }
+                      g_1[n_11_2] && NoPerm < FullPerm ==> qpRange22(n_11_2) && invRecv22(n_11_2) == n_11_2
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv22(o_4) }
-                      g_1[invRecv22(o_4)] && (NoPerm < FullPerm && qpRange22(o_4)) ==> invRecv22(o_4) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv22(o_9) }
+                      g_1[invRecv22(o_9)] && (NoPerm < FullPerm && qpRange22(o_9)) ==> invRecv22(o_9) == o_9
                     );
                   if (*) {
-                    if (g_1[n$0_20] && ExhaleWellDef0Heap[n$0_20, next] != null) {
-                      assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@63.43--63.50) [194137]"}
-                        g_1[ExhaleWellDef0Heap[n$0_20, next]];
+                    if (g_1[n$0_20_1] && ExhaleWellDef0Heap[n$0_20_1, next] != null) {
+                      assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@63.43--63.50) [84584]"}
+                        g_1[ExhaleWellDef0Heap[n$0_20_1, next]];
                     }
                     assume false;
                   }
@@ -1938,7 +1938,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
                   // Exhale precondition of function application
                   ExhaleWellDef1Mask := oldMask;
                   ExhaleWellDef1Heap := oldHeap;
-                  assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@63.67--63.74) [194138]"}
+                  assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@63.67--63.74) [84585]"}
                     !g_1[null];
                   havoc QPMask;
                   
@@ -1946,31 +1946,31 @@ procedure reverse(g_1: (Set Ref)) returns ()
                     
                   
                   // -- check if receiver n is injective
-                    assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@63.67--63.74) [194139]"}
-                      (forall n_12_1: Ref, n_12_2: Ref ::
-                      { neverTriggered23(n_12_1), neverTriggered23(n_12_2) }
-                      (((n_12_1 != n_12_2 && g_1[n_12_1]) && g_1[n_12_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_12_1 != n_12_2
+                    assert {:msg "  Precondition of function hfun might not hold. Quantified resource n.next might not be injective. (0210.vpr@63.67--63.74) [84586]"}
+                      (forall n_12: Ref, n_12_1: Ref ::
+                      { neverTriggered23(n_12), neverTriggered23(n_12_1) }
+                      (((n_12 != n_12_1 && g_1[n_12]) && g_1[n_12_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_12 != n_12_1
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@63.67--63.74) [194140]"}
-                      (forall n_12_1: Ref ::
-                      { oldHeap[n_12_1, next] } { QPMask[n_12_1, next] } { oldHeap[n_12_1, next] }
-                      g_1[n_12_1] ==> FullPerm > NoPerm ==> oldMask[n_12_1, next] > NoPerm
+                    assert {:msg "  Precondition of function hfun might not hold. There might be insufficient permission to access n.next (0210.vpr@63.67--63.74) [84587]"}
+                      (forall n_12: Ref ::
+                      { oldHeap[n_12, next] } { QPMask[n_12, next] } { oldHeap[n_12, next] }
+                      g_1[n_12] ==> FullPerm > NoPerm ==> oldMask[n_12, next] > NoPerm
                     );
                   
                   // -- assumptions for inverse of receiver n
-                    assume (forall n_12_1: Ref ::
-                      { oldHeap[n_12_1, next] } { QPMask[n_12_1, next] } { oldHeap[n_12_1, next] }
-                      g_1[n_12_1] && NoPerm < FullPerm ==> qpRange23(n_12_1) && invRecv23(n_12_1) == n_12_1
+                    assume (forall n_12: Ref ::
+                      { oldHeap[n_12, next] } { QPMask[n_12, next] } { oldHeap[n_12, next] }
+                      g_1[n_12] && NoPerm < FullPerm ==> qpRange23(n_12) && invRecv23(n_12) == n_12
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv23(o_4) }
-                      g_1[invRecv23(o_4)] && (NoPerm < FullPerm && qpRange23(o_4)) ==> invRecv23(o_4) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv23(o_9) }
+                      g_1[invRecv23(o_9)] && (NoPerm < FullPerm && qpRange23(o_9)) ==> invRecv23(o_9) == o_9
                     );
                   if (*) {
                     if (g_1[n$0_22_1] && oldHeap[n$0_22_1, next] != null) {
-                      assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@63.67--63.74) [194141]"}
+                      assert {:msg "  Precondition of function hfun might not hold. Assertion (n$0.next in g) might not hold. (0210.vpr@63.67--63.74) [84588]"}
                         g_1[oldHeap[n$0_22_1, next]];
                     }
                     assume false;
@@ -1986,20 +1986,20 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 assume false;
               }
             if (*) {
-              assert {:msg "  Assert might fail. Assertion foo(hfun(g), x, y) != foo(old(hfun(g)), x, y) might not hold. (0210.vpr@63.16--63.80) [194142]"}
-                (foo(hfun(Heap, g_1), x_9_2, y_9_1): bool) != (foo(hfun(oldHeap, g_1), x_9_2, y_9_1): bool);
+              assert {:msg "  Assert might fail. Assertion foo(hfun(g), x, y) != foo(old(hfun(g)), x, y) might not hold. (0210.vpr@63.16--63.80) [84589]"}
+                (foo_2(hfun(Heap, g_1), x_9, y_9): bool) != (foo_2(hfun(oldHeap, g_1), x_9, y_9): bool);
               assume false;
             }
-            assume (forall x_10_1_1: Ref, y_10_1: Ref ::
-              { (foo(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_10_1_1, y_10_1): bool) } { (foo(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), x_10_1_1, y_10_1): bool) }
-              (foo(hfun(Heap, g_1), x_10_1_1, y_10_1): bool) != (foo(hfun(oldHeap, g_1), x_10_1_1, y_10_1): bool)
+            assume (forall x_10_1: Ref, y_10_1: Ref ::
+              { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(Heap, g_1)), g_1), x_10_1, y_10_1): bool) } { (foo_2(hfun#frame(FrameFragment(hfun#condqp1(oldHeap, g_1)), g_1), x_10_1, y_10_1): bool) }
+              (foo_2(hfun(Heap, g_1), x_10_1, y_10_1): bool) != (foo_2(hfun(oldHeap, g_1), x_10_1, y_10_1): bool)
             );
             assume state(Heap, Mask);
           
           // -- Translating statement: assert false -- 0210.vpr@66.9--66.21
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion false might not hold. (0210.vpr@66.16--66.21) [194143]"}
+            assert {:msg "  Assert might fail. Assertion false might not hold. (0210.vpr@66.16--66.21) [84590]"}
               false;
             assume state(Heap, Mask);
           
@@ -2015,7 +2015,7 @@ procedure reverse(g_1: (Set Ref)) returns ()
   // -- Translating statement: assert false -- 0210.vpr@75.4--75.16
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0210.vpr@75.11--75.16) [194144]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0210.vpr@75.11--75.16) [84591]"}
       false;
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:05:36
+// Date:         2025-01-26 21:45:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue015.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue015-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_12: Ref, f_16: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_12, f_16] }
-  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_16], $allocated]
+axiom (forall o_15: Ref, f_23: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_15, f_23] }
+  Heap[o_15, $allocated] ==> Heap[Heap[o_15, f_23], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref, f_37: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, f_37] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_46, f_37) ==> Heap[o_46, f_37] == ExhaleHeap[o_46, f_37]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_53: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_53] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_53) ==> Heap[o_41, f_53] == ExhaleHeap[o_41, f_53]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> Heap[null, PredicateMaskField(pm_f_22)] == ExhaleHeap[null, PredicateMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> Heap[null, PredicateMaskField(pm_f_20)] == ExhaleHeap[null, PredicateMaskField(pm_f_20)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> Heap[null, WandMaskField(pm_f_22)] == ExhaleHeap[null, WandMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> Heap[null, WandMaskField(pm_f_20)] == ExhaleHeap[null, WandMaskField(pm_f_20)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_46, $allocated] ==> ExhaleHeap[o_46, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_24: (Field A B), v: B ::
-  { Heap[o_12, f_24:=v] }
-  succHeap(Heap, Heap[o_12, f_24:=v])
+axiom (forall <A, B> Heap: HeapType, o_15: Ref, f_54: (Field A B), v: B ::
+  { Heap[o_15, f_54:=v] }
+  succHeap(Heap, Heap[o_15, f_54:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -271,7 +271,7 @@ procedure P#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(Q(x.next), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (issue015.vpr@6.1--8.2) [125604]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (issue015.vpr@6.1--8.2) [216555]"}
         HasDirectPerm(Mask, x, next);
     perm := FullPerm;
     Mask := Mask[null, Q(Heap[x, next]):=Mask[null, Q(Heap[x, next])] + perm];
@@ -332,12 +332,12 @@ procedure Q#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(Q(x.next), (x.next != null ? write : none))
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (issue015.vpr@11.1--11.84) [125605]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (issue015.vpr@11.1--11.84) [216556]"}
         HasDirectPerm(Mask, x, next);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (issue015.vpr@11.1--11.84) [125606]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (issue015.vpr@11.1--11.84) [216557]"}
         HasDirectPerm(Mask, x, next);
     perm := (if Heap[x, next] != null then FullPerm else NoPerm);
-    assert {:msg "  Predicate might not be well-formed. Fraction (x.next != null ? write : none) might be negative. (issue015.vpr@11.1--11.84) [125607]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction (x.next != null ? write : none) might be negative. (issue015.vpr@11.1--11.84) [216558]"}
       perm >= NoPerm;
     Mask := Mask[null, Q(Heap[x, next]):=Mask[null, Q(Heap[x, next])] + perm];
     assume state(Heap, Mask);
@@ -348,11 +348,11 @@ procedure Q#definedness(x: Ref) returns ()
 // Translation of method m
 // ==================================================
 
-procedure m(l_2: Ref) returns ()
+procedure m_17(l_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -360,15 +360,15 @@ procedure m(l_2: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
-  var arg_1: Ref;
+  var arg: Ref;
   var neededTransfer: Perm;
   var initNeededTransfer: Perm;
   var accVar2: bool;
@@ -386,7 +386,7 @@ procedure m(l_2: Ref) returns ()
   var b_5: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var arg_1_1: Ref;
+  var arg_1_13: Ref;
   var b_6: bool;
   var Result_2Heap: HeapType;
   var Result_2Mask: MaskType;
@@ -394,7 +394,7 @@ procedure m(l_2: Ref) returns ()
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_7: bool;
-  var arg_2: Ref;
+  var arg_2_13: Ref;
   var b_8: bool;
   var Result_3Heap: HeapType;
   var Result_3Mask: MaskType;
@@ -407,13 +407,13 @@ procedure m(l_2: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(P(l), write) --* acc(Q(l), write) {
   //   unfold acc(P(l), write)
@@ -429,33 +429,33 @@ procedure m(l_2: Ref) returns ()
     if (b_1_1) {
       perm := FullPerm;
       b_1_1 := b_1_1;
-      Ops_1Mask := Ops_1Mask[null, P(l_2):=Ops_1Mask[null, P(l_2)] + perm];
+      Ops_1Mask := Ops_1Mask[null, P(l_1):=Ops_1Mask[null, P(l_1)] + perm];
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     }
     b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     
     // -- Translating statement: label lhs1 -- issue015.vpr@14.11--14.36
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: unfold acc(P(l), write) -- issue015.vpr@15.7--15.18
-        assume P#trigger(Ops_1Heap, P(l_2));
-        assume Ops_1Heap[null, P(l_2)] == CombineFrames(FrameFragment(Ops_1Heap[l_2, next]), Ops_1Heap[null, Q(Ops_1Heap[l_2, next])]);
-        ExhaleWellDef0Heap := Ops_1Heap;
+        assume P#trigger(Ops_1Heap, P(l_1));
+        assume Ops_1Heap[null, P(l_1)] == CombineFrames(FrameFragment(Ops_1Heap[l_1, next]), Ops_1Heap[null, Q(Ops_1Heap[l_1, next])]);
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
         
         // -- Transfer of acc(P(l), write)
-          arg_1 := l_2;
+          arg := l_1;
           neededTransfer := FullPerm;
-          initNeededTransfer := Used_1Mask[null, P(arg_1)] + neededTransfer;
-          assert {:msg "  Unfolding P(l) might fail. Fraction acc(P(l), write) might be negative. (issue015.vpr@15.7--15.18) [125609]"}
+          initNeededTransfer := Used_1Mask[null, P(arg)] + neededTransfer;
+          assert {:msg "  Unfolding P(l) might fail. Fraction acc(P(l), write) might be negative. (issue015.vpr@15.7--15.18) [216560]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -463,7 +463,7 @@ procedure m(l_2: Ref) returns ()
             accVar2 := true;
             // actual code for the transfer from current state on stack
             if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-              maskTransfer := Ops_1Mask[null, P(arg_1)];
+              maskTransfer := Ops_1Mask[null, P(arg)];
               if (neededTransfer <= maskTransfer) {
                 takeTransfer := neededTransfer;
               } else {
@@ -471,11 +471,11 @@ procedure m(l_2: Ref) returns ()
               }
               if (takeTransfer > 0.000000000) {
                 neededTransfer := neededTransfer - takeTransfer;
-                Used_1Mask := Used_1Mask[null, P(arg_1):=Used_1Mask[null, P(arg_1)] + takeTransfer];
+                Used_1Mask := Used_1Mask[null, P(arg):=Used_1Mask[null, P(arg)] + takeTransfer];
                 b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                TempMask := ZeroMask[null, P(arg_1):=FullPerm];
+                TempMask := ZeroMask[null, P(arg):=FullPerm];
                 b_2_1 := b_2_1 && IdenticalOnKnownLocations(Ops_1Heap, Used_1Heap, TempMask);
-                Ops_1Mask := Ops_1Mask[null, P(arg_1):=Ops_1Mask[null, P(arg_1)] - takeTransfer];
+                Ops_1Mask := Ops_1Mask[null, P(arg):=Ops_1Mask[null, P(arg)] - takeTransfer];
               }
             }
           
@@ -484,7 +484,7 @@ procedure m(l_2: Ref) returns ()
             accVar2 := true;
             // actual code for the transfer from current state on stack
             if (((b_1_1 && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-              maskTransfer := Mask[null, P(arg_1)];
+              maskTransfer := Mask[null, P(arg)];
               if (neededTransfer <= maskTransfer) {
                 takeTransfer := neededTransfer;
               } else {
@@ -492,21 +492,21 @@ procedure m(l_2: Ref) returns ()
               }
               if (takeTransfer > 0.000000000) {
                 neededTransfer := neededTransfer - takeTransfer;
-                Used_1Mask := Used_1Mask[null, P(arg_1):=Used_1Mask[null, P(arg_1)] + takeTransfer];
+                Used_1Mask := Used_1Mask[null, P(arg):=Used_1Mask[null, P(arg)] + takeTransfer];
                 b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-                TempMask := ZeroMask[null, P(arg_1):=FullPerm];
+                TempMask := ZeroMask[null, P(arg):=FullPerm];
                 b_2_1 := b_2_1 && IdenticalOnKnownLocations(Heap, Used_1Heap, TempMask);
-                Mask := Mask[null, P(arg_1):=Mask[null, P(arg_1)] - takeTransfer];
+                Mask := Mask[null, P(arg):=Mask[null, P(arg)] - takeTransfer];
                 havoc newPMask;
-                assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-                  { newPMask[o_15, f_20] }
-                  Heap[null, wand#sm(l_2, l_2)][o_15, f_20] || Heap[null, P#sm(l_2)][o_15, f_20] ==> newPMask[o_15, f_20]
+                assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+                  { newPMask[o_5, f_11] }
+                  Heap[null, wand#sm(l_1, l_1)][o_5, f_11] || Heap[null, P#sm(l_1)][o_5, f_11] ==> newPMask[o_5, f_11]
                 );
-                Heap := Heap[null, wand#sm(l_2, l_2):=newPMask];
+                Heap := Heap[null, wand#sm(l_1, l_1):=newPMask];
               }
             }
-          assert {:msg "  Unfolding P(l) might fail. There might be insufficient permission to access P(l) (issue015.vpr@15.7--15.18) [125610]"}
-            b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, P(arg_1)] == initNeededTransfer;
+          assert {:msg "  Unfolding P(l) might fail. There might be insufficient permission to access P(l) (issue015.vpr@15.7--15.18) [216561]"}
+            b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, P(arg)] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
             b_3 := b_1_1 && b_2_1;
@@ -518,15 +518,15 @@ procedure m(l_2: Ref) returns ()
         b_1_1 := b_1_1 && b_2_1;
         b_1_1 := b_1_1 && Used_1Heap == Ops_1Heap;
         perm := FullPerm;
-        b_1_1 := b_1_1 && l_2 != null;
-        Ops_1Mask := Ops_1Mask[l_2, next:=Ops_1Mask[l_2, next] + perm];
+        b_1_1 := b_1_1 && l_1 != null;
+        Ops_1Mask := Ops_1Mask[l_1, next:=Ops_1Mask[l_1, next] + perm];
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
         perm := FullPerm;
         b_1_1 := b_1_1;
-        Ops_1Mask := Ops_1Mask[null, Q(Ops_1Heap[l_2, next]):=Ops_1Mask[null, Q(Ops_1Heap[l_2, next])] + perm];
+        Ops_1Mask := Ops_1Mask[null, Q(Ops_1Heap[l_1, next]):=Ops_1Mask[null, Q(Ops_1Heap[l_1, next])] + perm];
         
         // -- Extra unfolding of predicate
-          b_1_1 := b_1_1 && InsidePredicate(P(l_2), Ops_1Heap[null, P(l_2)], Q(Ops_1Heap[l_2, next]), Ops_1Heap[null, Q(Ops_1Heap[l_2, next])]);
+          b_1_1 := b_1_1 && InsidePredicate(P(l_1), Ops_1Heap[null, P(l_1)], Q(Ops_1Heap[l_1, next]), Ops_1Heap[null, Q(Ops_1Heap[l_1, next])]);
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
@@ -534,17 +534,17 @@ procedure m(l_2: Ref) returns ()
     if (b_1_1) {
       
       // -- Translating statement: fold acc(Q(l), write) -- issue015.vpr@16.7--16.16
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_2Heap;
         Used_2Mask := ZeroMask;
         b_4 := b_4 && state(Used_2Heap, Used_2Mask);
         
         // -- Transfer of acc(l.next, write)
-          rcvLocal := l_2;
+          rcvLocal := l_1;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_2Mask[rcvLocal, next] + neededTransfer;
-          assert {:msg "  Folding Q(l) might fail. Fraction acc(l.next, write) might be negative. (issue015.vpr@16.7--16.16) [125614]"}
+          assert {:msg "  Folding Q(l) might fail. Fraction acc(l.next, write) might be negative. (issue015.vpr@16.7--16.16) [216565]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -584,10 +584,10 @@ procedure m(l_2: Ref) returns ()
                 b_4 := b_4 && state(Used_2Heap, Used_2Mask);
                 b_4 := b_4 && Heap[rcvLocal, next] == Used_2Heap[rcvLocal, next];
                 Mask := Mask[rcvLocal, next:=Mask[rcvLocal, next] - takeTransfer];
-                Heap := Heap[null, wand#sm(l_2, l_2):=Heap[null, wand#sm(l_2, l_2)][l_2, next:=true]];
+                Heap := Heap[null, wand#sm(l_1, l_1):=Heap[null, wand#sm(l_1, l_1)][l_1, next:=true]];
               }
             }
-          assert {:msg "  Folding Q(l) might fail. There might be insufficient permission to access l.next (issue015.vpr@16.7--16.16) [125615]"}
+          assert {:msg "  Folding Q(l) might fail. There might be insufficient permission to access l.next (issue015.vpr@16.7--16.16) [216566]"}
             b_1_1 && b_4 ==> neededTransfer == 0.000000000 && Used_2Mask[rcvLocal, next] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -607,16 +607,16 @@ procedure m(l_2: Ref) returns ()
               if (b_1_1) {
                 
                 // -- Check definedness of acc(Q(l.next), (l.next != null ? write : none))
-                  assert {:msg "  Folding Q(l) might fail. There might be insufficient permission to access l.next (issue015.vpr@16.7--16.16) [125616]"}
-                    HasDirectPerm(Result_1Mask, l_2, next);
-                  assert {:msg "  Folding Q(l) might fail. There might be insufficient permission to access l.next (issue015.vpr@16.7--16.16) [125617]"}
-                    HasDirectPerm(Result_1Mask, l_2, next);
+                  assert {:msg "  Folding Q(l) might fail. There might be insufficient permission to access l.next (issue015.vpr@16.7--16.16) [216567]"}
+                    HasDirectPerm(Result_1Mask, l_1, next);
+                  assert {:msg "  Folding Q(l) might fail. There might be insufficient permission to access l.next (issue015.vpr@16.7--16.16) [216568]"}
+                    HasDirectPerm(Result_1Mask, l_1, next);
               }
             }
-          arg_1_1 := Result_1Heap[l_2, next];
-          neededTransfer := (if Used_2Heap[l_2, next] != null then FullPerm else NoPerm);
-          initNeededTransfer := Used_2Mask[null, Q(arg_1_1)] + neededTransfer;
-          assert {:msg "  Folding Q(l) might fail. Fraction acc(Q(l.next), (l.next != null ? write : none)) might be negative. (issue015.vpr@16.7--16.16) [125618]"}
+          arg_1_13 := Result_1Heap[l_1, next];
+          neededTransfer := (if Used_2Heap[l_1, next] != null then FullPerm else NoPerm);
+          initNeededTransfer := Used_2Mask[null, Q(arg_1_13)] + neededTransfer;
+          assert {:msg "  Folding Q(l) might fail. Fraction acc(Q(l.next), (l.next != null ? write : none)) might be negative. (issue015.vpr@16.7--16.16) [216569]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -624,7 +624,7 @@ procedure m(l_2: Ref) returns ()
             accVar2 := true;
             // actual code for the transfer from current state on stack
             if (((b_1_1 && b_4) && accVar2) && neededTransfer > 0.000000000) {
-              maskTransfer := Ops_1Mask[null, Q(arg_1_1)];
+              maskTransfer := Ops_1Mask[null, Q(arg_1_13)];
               if (neededTransfer <= maskTransfer) {
                 takeTransfer := neededTransfer;
               } else {
@@ -632,11 +632,11 @@ procedure m(l_2: Ref) returns ()
               }
               if (takeTransfer > 0.000000000) {
                 neededTransfer := neededTransfer - takeTransfer;
-                Used_2Mask := Used_2Mask[null, Q(arg_1_1):=Used_2Mask[null, Q(arg_1_1)] + takeTransfer];
+                Used_2Mask := Used_2Mask[null, Q(arg_1_13):=Used_2Mask[null, Q(arg_1_13)] + takeTransfer];
                 b_4 := b_4 && state(Used_2Heap, Used_2Mask);
-                TempMask := ZeroMask[null, Q(arg_1_1):=FullPerm];
+                TempMask := ZeroMask[null, Q(arg_1_13):=FullPerm];
                 b_4 := b_4 && IdenticalOnKnownLocations(Ops_1Heap, Used_2Heap, TempMask);
-                Ops_1Mask := Ops_1Mask[null, Q(arg_1_1):=Ops_1Mask[null, Q(arg_1_1)] - takeTransfer];
+                Ops_1Mask := Ops_1Mask[null, Q(arg_1_13):=Ops_1Mask[null, Q(arg_1_13)] - takeTransfer];
               }
             }
           
@@ -645,7 +645,7 @@ procedure m(l_2: Ref) returns ()
             accVar2 := true;
             // actual code for the transfer from current state on stack
             if (((b_1_1 && b_4) && accVar2) && neededTransfer > 0.000000000) {
-              maskTransfer := Mask[null, Q(arg_1_1)];
+              maskTransfer := Mask[null, Q(arg_1_13)];
               if (neededTransfer <= maskTransfer) {
                 takeTransfer := neededTransfer;
               } else {
@@ -653,21 +653,21 @@ procedure m(l_2: Ref) returns ()
               }
               if (takeTransfer > 0.000000000) {
                 neededTransfer := neededTransfer - takeTransfer;
-                Used_2Mask := Used_2Mask[null, Q(arg_1_1):=Used_2Mask[null, Q(arg_1_1)] + takeTransfer];
+                Used_2Mask := Used_2Mask[null, Q(arg_1_13):=Used_2Mask[null, Q(arg_1_13)] + takeTransfer];
                 b_4 := b_4 && state(Used_2Heap, Used_2Mask);
-                TempMask := ZeroMask[null, Q(arg_1_1):=FullPerm];
+                TempMask := ZeroMask[null, Q(arg_1_13):=FullPerm];
                 b_4 := b_4 && IdenticalOnKnownLocations(Heap, Used_2Heap, TempMask);
-                Mask := Mask[null, Q(arg_1_1):=Mask[null, Q(arg_1_1)] - takeTransfer];
+                Mask := Mask[null, Q(arg_1_13):=Mask[null, Q(arg_1_13)] - takeTransfer];
                 havoc newPMask;
-                assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-                  { newPMask[o_16, f_21] }
-                  Heap[null, wand#sm(l_2, l_2)][o_16, f_21] || Heap[null, Q#sm(Heap[l_2, next])][o_16, f_21] ==> newPMask[o_16, f_21]
+                assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+                  { newPMask[o_6, f_12] }
+                  Heap[null, wand#sm(l_1, l_1)][o_6, f_12] || Heap[null, Q#sm(Heap[l_1, next])][o_6, f_12] ==> newPMask[o_6, f_12]
                 );
-                Heap := Heap[null, wand#sm(l_2, l_2):=newPMask];
+                Heap := Heap[null, wand#sm(l_1, l_1):=newPMask];
               }
             }
-          assert {:msg "  Folding Q(l) might fail. There might be insufficient permission to access Q(l.next) (issue015.vpr@16.7--16.16) [125619]"}
-            b_1_1 && b_4 ==> neededTransfer == 0.000000000 && Used_2Mask[null, Q(arg_1_1)] == initNeededTransfer;
+          assert {:msg "  Folding Q(l) might fail. There might be insufficient permission to access Q(l.next) (issue015.vpr@16.7--16.16) [216570]"}
+            b_1_1 && b_4 ==> neededTransfer == 0.000000000 && Used_2Mask[null, Q(arg_1_13)] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
             b_6 := b_1_1 && b_4;
@@ -680,23 +680,23 @@ procedure m(l_2: Ref) returns ()
         b_1_1 := b_1_1 && Used_2Heap == Ops_1Heap;
         perm := FullPerm;
         b_1_1 := b_1_1;
-        Ops_1Mask := Ops_1Mask[null, Q(l_2):=Ops_1Mask[null, Q(l_2)] + perm];
+        Ops_1Mask := Ops_1Mask[null, Q(l_1):=Ops_1Mask[null, Q(l_1)] + perm];
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
-        assume Q#trigger(Ops_1Heap, Q(l_2));
-        assume Ops_1Heap[null, Q(l_2)] == CombineFrames(FrameFragment(Ops_1Heap[l_2, next]), ConditionalFrame((if Ops_1Heap[l_2, next] != null then FullPerm else NoPerm), Ops_1Heap[null, Q(Ops_1Heap[l_2, next])]));
-        if (!HasDirectPerm(Ops_1Mask, null, Q(l_2))) {
-          Ops_1Heap := Ops_1Heap[null, Q#sm(l_2):=ZeroPMask];
+        assume Q#trigger(Ops_1Heap, Q(l_1));
+        assume Ops_1Heap[null, Q(l_1)] == CombineFrames(FrameFragment(Ops_1Heap[l_1, next]), ConditionalFrame((if Ops_1Heap[l_1, next] != null then FullPerm else NoPerm), Ops_1Heap[null, Q(Ops_1Heap[l_1, next])]));
+        if (!HasDirectPerm(Ops_1Mask, null, Q(l_1))) {
+          Ops_1Heap := Ops_1Heap[null, Q#sm(l_1):=ZeroPMask];
           havoc freshVersion;
-          Ops_1Heap := Ops_1Heap[null, Q(l_2):=freshVersion];
+          Ops_1Heap := Ops_1Heap[null, Q(l_1):=freshVersion];
         }
-        Ops_1Heap := Ops_1Heap[null, Q#sm(l_2):=Ops_1Heap[null, Q#sm(l_2)][l_2, next:=true]];
+        Ops_1Heap := Ops_1Heap[null, Q#sm(l_1):=Ops_1Heap[null, Q#sm(l_1)][l_1, next:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-          { newPMask[o_52, f_55] }
-          Ops_1Heap[null, Q#sm(l_2)][o_52, f_55] || Ops_1Heap[null, Q#sm(Ops_1Heap[l_2, next])][o_52, f_55] ==> newPMask[o_52, f_55]
+        assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+          { newPMask[o_40, f_52] }
+          Ops_1Heap[null, Q#sm(l_1)][o_40, f_52] || Ops_1Heap[null, Q#sm(Ops_1Heap[l_1, next])][o_40, f_52] ==> newPMask[o_40, f_52]
         );
-        Ops_1Heap := Ops_1Heap[null, Q#sm(l_2):=newPMask];
+        Ops_1Heap := Ops_1Heap[null, Q#sm(l_1):=newPMask];
         assume state(Ops_1Heap, Ops_1Mask);
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     }
@@ -706,10 +706,10 @@ procedure m(l_2: Ref) returns ()
     b_7 := b_7 && state(Used_3Heap, Used_3Mask);
     
     // -- Transfer of acc(Q(l), write)
-      arg_2 := l_2;
+      arg_2_13 := l_1;
       neededTransfer := FullPerm;
-      initNeededTransfer := Used_3Mask[null, Q(arg_2)] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(Q(l), write) might be negative. (issue015.vpr@14.3--17.4) [125621]"}
+      initNeededTransfer := Used_3Mask[null, Q(arg_2_13)] + neededTransfer;
+      assert {:msg "  Packaging wand might fail. Fraction acc(Q(l), write) might be negative. (issue015.vpr@14.3--17.4) [216572]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -717,7 +717,7 @@ procedure m(l_2: Ref) returns ()
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_1_1 && b_1_1) && b_7) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Ops_1Mask[null, Q(arg_2)];
+          maskTransfer := Ops_1Mask[null, Q(arg_2_13)];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -725,11 +725,11 @@ procedure m(l_2: Ref) returns ()
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_3Mask := Used_3Mask[null, Q(arg_2):=Used_3Mask[null, Q(arg_2)] + takeTransfer];
+            Used_3Mask := Used_3Mask[null, Q(arg_2_13):=Used_3Mask[null, Q(arg_2_13)] + takeTransfer];
             b_7 := b_7 && state(Used_3Heap, Used_3Mask);
-            TempMask := ZeroMask[null, Q(arg_2):=FullPerm];
+            TempMask := ZeroMask[null, Q(arg_2_13):=FullPerm];
             b_7 := b_7 && IdenticalOnKnownLocations(Ops_1Heap, Used_3Heap, TempMask);
-            Ops_1Mask := Ops_1Mask[null, Q(arg_2):=Ops_1Mask[null, Q(arg_2)] - takeTransfer];
+            Ops_1Mask := Ops_1Mask[null, Q(arg_2_13):=Ops_1Mask[null, Q(arg_2_13)] - takeTransfer];
           }
         }
       
@@ -738,7 +738,7 @@ procedure m(l_2: Ref) returns ()
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_1_1 && b_1_1) && b_7) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Mask[null, Q(arg_2)];
+          maskTransfer := Mask[null, Q(arg_2_13)];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -746,21 +746,21 @@ procedure m(l_2: Ref) returns ()
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_3Mask := Used_3Mask[null, Q(arg_2):=Used_3Mask[null, Q(arg_2)] + takeTransfer];
+            Used_3Mask := Used_3Mask[null, Q(arg_2_13):=Used_3Mask[null, Q(arg_2_13)] + takeTransfer];
             b_7 := b_7 && state(Used_3Heap, Used_3Mask);
-            TempMask := ZeroMask[null, Q(arg_2):=FullPerm];
+            TempMask := ZeroMask[null, Q(arg_2_13):=FullPerm];
             b_7 := b_7 && IdenticalOnKnownLocations(Heap, Used_3Heap, TempMask);
-            Mask := Mask[null, Q(arg_2):=Mask[null, Q(arg_2)] - takeTransfer];
+            Mask := Mask[null, Q(arg_2_13):=Mask[null, Q(arg_2_13)] - takeTransfer];
             havoc newPMask;
-            assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-              { newPMask[o_53, f_56] }
-              Heap[null, wand#sm(l_2, l_2)][o_53, f_56] || Heap[null, Q#sm(l_2)][o_53, f_56] ==> newPMask[o_53, f_56]
+            assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+              { newPMask[o_42, f_55] }
+              Heap[null, wand#sm(l_1, l_1)][o_42, f_55] || Heap[null, Q#sm(l_1)][o_42, f_55] ==> newPMask[o_42, f_55]
             );
-            Heap := Heap[null, wand#sm(l_2, l_2):=newPMask];
+            Heap := Heap[null, wand#sm(l_1, l_1):=newPMask];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access Q(l) (issue015.vpr@14.3--17.4) [125622]"}
-        (b_1_1 && b_1_1) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[null, Q(arg_2)] == initNeededTransfer;
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access Q(l) (issue015.vpr@14.3--17.4) [216573]"}
+        (b_1_1 && b_1_1) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[null, Q(arg_2_13)] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
         b_8 := b_1_1 && b_7;
@@ -769,14 +769,14 @@ procedure m(l_2: Ref) returns ()
         b_8 := (b_8 && IdenticalOnKnownLocations(Ops_1Heap, Result_3Heap, Ops_1Mask)) && IdenticalOnKnownLocations(Used_3Heap, Result_3Heap, Used_3Mask);
         b_8 := b_8 && state(Result_3Heap, Result_3Mask);
       b_1_1 := b_1_1 && b_8;
-    Mask := Mask[null, wand(l_2, l_2):=Mask[null, wand(l_2, l_2)] + FullPerm];
+    Mask := Mask[null, wand(l_1, l_1):=Mask[null, wand(l_1, l_1)] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale acc(P(l), write) -- issue015.vpr@19.3--19.19
     perm := FullPerm;
-    Mask := Mask[null, P(l_2):=Mask[null, P(l_2)] + perm];
+    Mask := Mask[null, P(l_1):=Mask[null, P(l_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -784,28 +784,28 @@ procedure m(l_2: Ref) returns ()
   // -- Translating statement: apply acc(P(l), write) --* acc(Q(l), write) -- issue015.vpr@20.3--20.32
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue015.vpr@20.3--20.32) [125624]"}
-        FullPerm <= Mask[null, wand(l_2, l_2)];
-      Mask := Mask[null, wand(l_2, l_2):=Mask[null, wand(l_2, l_2)] - FullPerm];
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue015.vpr@20.3--20.32) [216575]"}
+        FullPerm <= Mask[null, wand(l_1, l_1)];
+      Mask := Mask[null, wand(l_1, l_1):=Mask[null, wand(l_1, l_1)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access P(l) (issue015.vpr@20.3--20.32) [125626]"}
-          perm <= Mask[null, P(l_2)];
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access P(l) (issue015.vpr@20.3--20.32) [216577]"}
+          perm <= Mask[null, P(l_1)];
       }
-      Mask := Mask[null, P(l_2):=Mask[null, P(l_2)] - perm];
+      Mask := Mask[null, P(l_1):=Mask[null, P(l_1)] - perm];
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
       perm := FullPerm;
-      Mask := Mask[null, Q(l_2):=Mask[null, Q(l_2)] + perm];
+      Mask := Mask[null, Q(l_1):=Mask[null, Q(l_1)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     havoc ExhaleHeap;
@@ -815,41 +815,41 @@ procedure m(l_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(Q(l), write) -- issue015.vpr@22.3--22.19
-    assume Q#trigger(Heap, Q(l_2));
-    assume Heap[null, Q(l_2)] == CombineFrames(FrameFragment(Heap[l_2, next]), ConditionalFrame((if Heap[l_2, next] != null then FullPerm else NoPerm), Heap[null, Q(Heap[l_2, next])]));
-    ExhaleWellDef0Heap := Heap;
+    assume Q#trigger(Heap, Q(l_1));
+    assume Heap[null, Q(l_1)] == CombineFrames(FrameFragment(Heap[l_1, next]), ConditionalFrame((if Heap[l_1, next] != null then FullPerm else NoPerm), Heap[null, Q(Heap[l_1, next])]));
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Q(l) might fail. There might be insufficient permission to access Q(l) (issue015.vpr@22.3--22.19) [125630]"}
-        perm <= Mask[null, Q(l_2)];
+      assert {:msg "  Unfolding Q(l) might fail. There might be insufficient permission to access Q(l) (issue015.vpr@22.3--22.19) [216581]"}
+        perm <= Mask[null, Q(l_1)];
     }
-    Mask := Mask[null, Q(l_2):=Mask[null, Q(l_2)] - perm];
+    Mask := Mask[null, Q(l_1):=Mask[null, Q(l_1)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, Q(l_2))) {
+      if (!HasDirectPerm(Mask, null, Q(l_1))) {
         havoc newVersion;
-        Heap := Heap[null, Q(l_2):=newVersion];
+        Heap := Heap[null, Q(l_1):=newVersion];
       }
     perm := FullPerm;
-    assume l_2 != null;
-    Mask := Mask[l_2, next:=Mask[l_2, next] + perm];
+    assume l_1 != null;
+    Mask := Mask[l_1, next:=Mask[l_1, next] + perm];
     assume state(Heap, Mask);
-    perm := (if Heap[l_2, next] != null then FullPerm else NoPerm);
-    assert {:msg "  Unfolding Q(l) might fail. Fraction (l.next != null ? write : none) might be negative. (issue015.vpr@22.3--22.19) [125632]"}
+    perm := (if Heap[l_1, next] != null then FullPerm else NoPerm);
+    assert {:msg "  Unfolding Q(l) might fail. Fraction (l.next != null ? write : none) might be negative. (issue015.vpr@22.3--22.19) [216583]"}
       perm >= NoPerm;
-    Mask := Mask[null, Q(Heap[l_2, next]):=Mask[null, Q(Heap[l_2, next])] + perm];
+    Mask := Mask[null, Q(Heap[l_1, next]):=Mask[null, Q(Heap[l_1, next])] + perm];
     
     // -- Extra unfolding of predicate
-      assume InsidePredicate(Q(l_2), Heap[null, Q(l_2)], Q(Heap[l_2, next]), Heap[null, Q(Heap[l_2, next])]);
+      assume InsidePredicate(Q(l_1), Heap[null, Q(l_1)], Q(Heap[l_1, next]), Heap[null, Q(Heap[l_1, next])]);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- issue015.vpr@25.3--25.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (issue015.vpr@25.10--25.15) [125633]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (issue015.vpr@25.10--25.15) [216584]"}
       false;
     assume state(Heap, Mask);
 }

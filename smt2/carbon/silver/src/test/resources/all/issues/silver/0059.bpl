@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:21
+// Date:         2025-01-26 21:42:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0059.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0059-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_12: Ref, f_16: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_12, f_16] }
-  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_16], $allocated]
+axiom (forall o_15: Ref, f_23: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_15, f_23] }
+  Heap[o_15, $allocated] ==> Heap[Heap[o_15, f_23], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref, f_37: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, f_37] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_46, f_37) ==> Heap[o_46, f_37] == ExhaleHeap[o_46, f_37]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_53: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_53] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_53) ==> Heap[o_41, f_53] == ExhaleHeap[o_41, f_53]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> Heap[null, PredicateMaskField(pm_f_22)] == ExhaleHeap[null, PredicateMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> Heap[null, PredicateMaskField(pm_f_20)] == ExhaleHeap[null, PredicateMaskField(pm_f_20)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> Heap[null, WandMaskField(pm_f_22)] == ExhaleHeap[null, WandMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> Heap[null, WandMaskField(pm_f_20)] == ExhaleHeap[null, WandMaskField(pm_f_20)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_46, $allocated] ==> ExhaleHeap[o_46, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_24: (Field A B), v: B ::
-  { Heap[o_12, f_24:=v] }
-  succHeap(Heap, Heap[o_12, f_24:=v])
+axiom (forall <A, B> Heap: HeapType, o_15: Ref, f_54: (Field A B), v: B ::
+  { Heap[o_15, f_54:=v] }
+  succHeap(Heap, Heap[o_15, f_54:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -541,18 +541,18 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // Translation of method m
 // ==================================================
 
-procedure m(a_2: (Seq int)) returns ()
+procedure m_17(a_2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var j: int;
-  var j_2: int;
+  var j_15: int;
+  var j_13: int;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var j_3: int;
-  var j_4: int;
-  var j_11_2: int;
+  var j_16: int;
+  var j_17: int;
+  var j_11_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -573,34 +573,34 @@ procedure m(a_2: (Seq int)) returns ()
     
     // -- Check definedness of (exists j: Int :: { a[j] } 0 <= j && j < |a| && a[j] > 0)
       if (*) {
-        if (0 <= j && j < Seq#Length(a_2)) {
-          assert {:msg "  Contract might not be well-formed. Index a[j] into a might be negative. (0059.vpr@6.13--6.63) [220878]"}
-            j >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a[j] into a might exceed sequence length. (0059.vpr@6.13--6.63) [220879]"}
-            j < Seq#Length(a_2);
+        if (0 <= j_15 && j_15 < Seq#Length(a_2)) {
+          assert {:msg "  Contract might not be well-formed. Index a[j] into a might be negative. (0059.vpr@6.13--6.63) [54604]"}
+            j_15 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a[j] into a might exceed sequence length. (0059.vpr@6.13--6.63) [54605]"}
+            j_15 < Seq#Length(a_2);
         }
         assume false;
       }
-    assume (exists j_3_1: int ::
-      { Seq#Index(a_2, j_3_1) }
-      (0 <= j_3_1 && j_3_1 < Seq#Length(a_2)) && Seq#Index(a_2, j_3_1) > 0
+    assume (exists j_3: int ::
+      { Seq#Index(a_2, j_3) }
+      (0 <= j_3 && j_3 < Seq#Length(a_2)) && Seq#Index(a_2, j_3) > 0
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j: Int :: { (j in a) } (j in a) ==> (exists k: Int :: { (k in a) } (k in a) && k > 0))
       if (*) {
-        if (Seq#Contains(a_2, j_2)) {
+        if (Seq#Contains(a_2, j_13)) {
           if (*) {
             assume false;
           }
         }
         assume false;
       }
-    assume (forall j_5_1: int ::
-      { Seq#ContainsTrigger(a_2, j_5_1) } { Seq#Contains(a_2, j_5_1) }
-      Seq#Contains(a_2, j_5_1) ==> (exists k_1_1: int ::
-        { Seq#ContainsTrigger(a_2, k_1_1) } { Seq#Contains(a_2, k_1_1) }
-        Seq#Contains(a_2, k_1_1) && k_1_1 > 0
+    assume (forall j_5: int ::
+      { Seq#ContainsTrigger(a_2, j_5) } { Seq#Contains(a_2, j_5) }
+      Seq#Contains(a_2, j_5) ==> (exists k_1: int ::
+        { Seq#ContainsTrigger(a_2, k_1) } { Seq#Contains(a_2, k_1) }
+        Seq#Contains(a_2, k_1) && k_1 > 0
       )
     );
     assume state(Heap, Mask);
@@ -619,7 +619,7 @@ procedure m(a_2: (Seq int)) returns ()
       if (*) {
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (exists j: Int :: { (j in a) } (j in a) && j > 0) might not hold. (0059.vpr@9.11--9.43) [220880]"}
+    assert {:msg "  Assert might fail. Assertion (exists j: Int :: { (j in a) } (j in a) && j > 0) might not hold. (0059.vpr@9.11--9.43) [54606]"}
       (exists j_7_1: int ::
       { Seq#ContainsTrigger(a_2, j_7_1) } { Seq#Contains(a_2, j_7_1) }
       Seq#Contains(a_2, j_7_1) && j_7_1 > 0
@@ -632,15 +632,15 @@ procedure m(a_2: (Seq int)) returns ()
     
     // -- Check definedness of (exists j: Int :: { a[j] } 0 <= j && j < |a| && a[j] > 0)
       if (*) {
-        if (0 <= j_3 && j_3 < Seq#Length(a_2)) {
-          assert {:msg "  Assert might fail. Index a[j] into a might be negative. (0059.vpr@10.11--10.61) [220881]"}
-            j_3 >= 0;
-          assert {:msg "  Assert might fail. Index a[j] into a might exceed sequence length. (0059.vpr@10.11--10.61) [220882]"}
-            j_3 < Seq#Length(a_2);
+        if (0 <= j_16 && j_16 < Seq#Length(a_2)) {
+          assert {:msg "  Assert might fail. Index a[j] into a might be negative. (0059.vpr@10.11--10.61) [54607]"}
+            j_16 >= 0;
+          assert {:msg "  Assert might fail. Index a[j] into a might exceed sequence length. (0059.vpr@10.11--10.61) [54608]"}
+            j_16 < Seq#Length(a_2);
         }
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (exists j: Int :: { a[j] } 0 <= j && j < |a| && a[j] > 0) might not hold. (0059.vpr@10.11--10.61) [220883]"}
+    assert {:msg "  Assert might fail. Assertion (exists j: Int :: { a[j] } 0 <= j && j < |a| && a[j] > 0) might not hold. (0059.vpr@10.11--10.61) [54609]"}
       (exists j_9_1: int ::
       { Seq#Index(a_2, j_9_1) }
       (0 <= j_9_1 && j_9_1 < Seq#Length(a_2)) && Seq#Index(a_2, j_9_1) > 0
@@ -655,7 +655,7 @@ procedure m(a_2: (Seq int)) returns ()
     
     // -- Check definedness of (forall j: Int :: { (j in a) } (j in a) ==> (exists k: Int :: { (k in a) } (k in a) && k > 0))
       if (*) {
-        if (Seq#Contains(a_2, j_4)) {
+        if (Seq#Contains(a_2, j_17)) {
           if (*) {
             assume false;
           }
@@ -663,8 +663,8 @@ procedure m(a_2: (Seq int)) returns ()
         assume false;
       }
     if (*) {
-      if (Seq#Contains(a_2, j_11_2)) {
-        assert {:msg "  Assert might fail. Assertion (exists k: Int :: { (k in a) } (k in a) && k > 0) might not hold. (0059.vpr@11.11--11.73) [220884]"}
+      if (Seq#Contains(a_2, j_11_1)) {
+        assert {:msg "  Assert might fail. Assertion (exists k: Int :: { (k in a) } (k in a) && k > 0) might not hold. (0059.vpr@11.11--11.73) [54610]"}
           (exists k_3: int ::
           { Seq#ContainsTrigger(a_2, k_3) } { Seq#Contains(a_2, k_3) }
           Seq#Contains(a_2, k_3) && k_3 > 0
@@ -674,9 +674,9 @@ procedure m(a_2: (Seq int)) returns ()
     }
     assume (forall j_12_1: int ::
       { Seq#ContainsTrigger(a_2, j_12_1) } { Seq#Contains(a_2, j_12_1) }
-      Seq#Contains(a_2, j_12_1) ==> (exists k_4_1: int ::
-        { Seq#ContainsTrigger(a_2, k_4_1) } { Seq#Contains(a_2, k_4_1) }
-        Seq#Contains(a_2, k_4_1) && k_4_1 > 0
+      Seq#Contains(a_2, j_12_1) ==> (exists k_4_2: int ::
+        { Seq#ContainsTrigger(a_2, k_4_2) } { Seq#Contains(a_2, k_4_2) }
+        Seq#Contains(a_2, k_4_2) && k_4_2 > 0
       )
     );
     assume state(Heap, Mask);

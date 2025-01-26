@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:37
+// Date:         2025-01-26 21:43:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/demo/demo.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/demo/demo-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -196,11 +196,11 @@ axiom !IsWandField(_balance);
 // ==================================================
 
 // Uninterpreted function definitions
-function  length(Heap: HeapType, this: Ref): int;
+function  length_1(Heap: HeapType, this: Ref): int;
 function  length'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { length(Heap, this) }
-  length(Heap, this) == length'(Heap, this) && dummyFunction(length#triggerStateless(this))
+  { length_1(Heap, this) }
+  length_1(Heap, this) == length'(Heap, this) && dummyFunction(length#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { length'(Heap, this) }
@@ -245,11 +245,11 @@ procedure length#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  balance(Heap: HeapType, this: Ref): int;
+function  balance_1(Heap: HeapType, this: Ref): int;
 function  balance'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { balance(Heap, this) }
-  balance(Heap, this) == balance'(Heap, this) && dummyFunction(balance#triggerStateless(this))
+  { balance_1(Heap, this) }
+  balance_1(Heap, this) == balance'(Heap, this) && dummyFunction(balance#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { balance'(Heap, this) }
@@ -363,7 +363,7 @@ axiom (forall Heap: HeapType, this: Ref ::
 // Translation of method demo
 // ==================================================
 
-procedure demo(a_2: Ref, l_2: Ref) returns ()
+procedure demo(a_2: Ref, l_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -386,14 +386,14 @@ procedure demo(a_2: Ref, l_2: Ref) returns ()
   
   // -- Assumptions about method arguments
     assume Heap[a_2, $allocated];
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
     Mask := Mask[null, account(a_2):=Mask[null, account(a_2)] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, list(l_2):=Mask[null, list(l_2)] + perm];
+    Mask := Mask[null, list(l_1):=Mask[null, list(l_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -411,8 +411,8 @@ procedure demo(a_2: Ref, l_2: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access list(l) (demo.vpr@15.10--15.19) [149377]"}
-          NoPerm < perm ==> NoPerm < Mask[null, list(l_2)];
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access list(l) (demo.vpr@15.10--15.19) [93196]"}
+          NoPerm < perm ==> NoPerm < Mask[null, list(l_1)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -420,7 +420,7 @@ procedure demo(a_2: Ref, l_2: Ref) returns ()
         // Stop execution
         assume false;
       }
-    tmp := length(Heap, l_2);
+    tmp := length_1(Heap, l_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: deposit(a, 200) -- demo.vpr@16.3--16.18
@@ -432,7 +432,7 @@ procedure demo(a_2: Ref, l_2: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method deposit might not hold. There might be insufficient permission to access account(a) (demo.vpr@16.3--16.18) [149378]"}
+        assert {:msg "  The precondition of method deposit might not hold. There might be insufficient permission to access account(a) (demo.vpr@16.3--16.18) [93197]"}
           perm <= Mask[null, account(a_2)];
       }
       Mask := Mask[null, account(a_2):=Mask[null, account(a_2)] - perm];
@@ -446,7 +446,7 @@ procedure demo(a_2: Ref, l_2: Ref) returns ()
       Mask := Mask[null, account(a_2):=Mask[null, account(a_2)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
-      assume balance(Heap, a_2) == balance(PreCallHeap, a_2) + 200;
+      assume balance_1(Heap, a_2) == balance_1(PreCallHeap, a_2) + 200;
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -460,8 +460,8 @@ procedure demo(a_2: Ref, l_2: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access list(l) (demo.vpr@17.17--17.26) [149379]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(l_2)];
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access list(l) (demo.vpr@17.17--17.26) [93198]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(l_1)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -469,8 +469,8 @@ procedure demo(a_2: Ref, l_2: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == length(l) might not hold. (demo.vpr@17.10--17.26) [149380]"}
-      tmp == length(Heap, l_2);
+    assert {:msg "  Assert might fail. Assertion tmp == length(l) might not hold. (demo.vpr@17.10--17.26) [93199]"}
+      tmp == length_1(Heap, l_1);
     assume state(Heap, Mask);
 }
 
@@ -528,7 +528,7 @@ procedure deposit(this: Ref, n: int) returns ()
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function balance might not hold. There might be insufficient permission to access account(this) (account.vpr@18.12--18.25) [149381]"}
+        assert {:msg "  Precondition of function balance might not hold. There might be insufficient permission to access account(this) (account.vpr@18.12--18.25) [93200]"}
           NoPerm < perm ==> NoPerm < PostMask[null, account(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -542,13 +542,13 @@ procedure deposit(this: Ref, n: int) returns ()
         ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function balance might not hold. There might be insufficient permission to access account(this) (account.vpr@18.33--18.46) [149382]"}
+        assert {:msg "  Precondition of function balance might not hold. There might be insufficient permission to access account(this) (account.vpr@18.33--18.46) [93201]"}
           NoPerm < perm ==> NoPerm < oldMask[null, account(this)];
         // Finish exhale
         // Stop execution
         assume false;
       }
-    assume balance(PostHeap, this) == balance(oldHeap, this) + n;
+    assume balance_1(PostHeap, this) == balance_1(oldHeap, this) + n;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -564,12 +564,12 @@ procedure deposit(this: Ref, n: int) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of deposit might not hold. There might be insufficient permission to access account(this) (account.vpr@17.12--17.30) [149383]"}
+      assert {:msg "  Postcondition of deposit might not hold. There might be insufficient permission to access account(this) (account.vpr@17.12--17.30) [93202]"}
         perm <= Mask[null, account(this)];
     }
     Mask := Mask[null, account(this):=Mask[null, account(this)] - perm];
-    assert {:msg "  Postcondition of deposit might not hold. Assertion balance(this) == old(balance(this)) + n might not hold. (account.vpr@18.12--18.51) [149384]"}
-      balance(Heap, this) == balance(oldHeap, this) + n;
+    assert {:msg "  Postcondition of deposit might not hold. Assertion balance(this) == old(balance(this)) + n might not hold. (account.vpr@18.12--18.51) [93203]"}
+      balance_1(Heap, this) == balance_1(oldHeap, this) + n;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

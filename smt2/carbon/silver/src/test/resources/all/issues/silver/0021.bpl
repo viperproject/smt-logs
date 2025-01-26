@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:39
+// Date:         2025-01-26 21:42:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0021.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0021-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -368,7 +368,7 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 // Translation of method test
 // ==================================================
 
-procedure test(x: int, S: (Set int)) returns ()
+procedure test_1(x: int, S: (Set int)) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -399,7 +399,7 @@ procedure test(x: int, S: (Set int)) returns ()
       // -- Translating statement: assert x > 0 -- 0021.vpr@8.5--8.17
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion x > 0 might not hold. (0021.vpr@8.12--8.17) [220091]"}
+        assert {:msg "  Assert might fail. Assertion x > 0 might not hold. (0021.vpr@8.12--8.17) [56511]"}
           x > 0;
         assume state(Heap, Mask);
     }
@@ -411,7 +411,7 @@ procedure test(x: int, S: (Set int)) returns ()
       // -- Translating statement: assert !((x in S)) -- 0021.vpr@12.5--12.21
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion !((x in S)) might not hold. (0021.vpr@12.12--12.21) [220092]"}
+        assert {:msg "  Assert might fail. Assertion !((x in S)) might not hold. (0021.vpr@12.12--12.21) [56512]"}
           !S[x];
         assume state(Heap, Mask);
     }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:49:27
+// Date:         2025-01-26 21:41:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/wand_conjunction.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/wand_conjunction-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -322,7 +322,7 @@ procedure t01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (wand_conjunction.vpr@8.3--8.32) [938]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (wand_conjunction.vpr@8.3--8.32) [1069]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -365,7 +365,7 @@ procedure t01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@8.3--8.32) [939]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@8.3--8.32) [1070]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -412,7 +412,7 @@ procedure t01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (wand_conjunction.vpr@9.3--9.32) [940]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (wand_conjunction.vpr@9.3--9.32) [1071]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -455,7 +455,7 @@ procedure t01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@9.3--9.32) [941]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@9.3--9.32) [1072]"}
         (b_5 && b_5) && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -500,7 +500,7 @@ procedure t01(x: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (wand_conjunction.vpr@11.10--11.60) [942]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (wand_conjunction.vpr@11.10--11.60) [1073]"}
       FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm)];
     Mask := Mask[null, wand(x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm)] - FullPerm];
     
@@ -529,7 +529,7 @@ procedure t01(x: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (wand_conjunction.vpr@11.10--11.60) [943]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (wand_conjunction.vpr@11.10--11.60) [1074]"}
       FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm)];
     Mask := Mask[null, wand(x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm)] - FullPerm];
     // Finish exhale
@@ -541,7 +541,7 @@ procedure t01(x: Ref) returns ()
   // -- Translating statement: assert false -- wand_conjunction.vpr@14.3--14.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (wand_conjunction.vpr@14.10--14.15) [944]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (wand_conjunction.vpr@14.10--14.15) [1075]"}
       false;
     assume state(Heap, Mask);
 }
@@ -640,7 +640,7 @@ procedure t02(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_5Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (wand_conjunction.vpr@21.3--21.32) [945]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (wand_conjunction.vpr@21.3--21.32) [1076]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -683,7 +683,7 @@ procedure t02(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@21.3--21.32) [946]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@21.3--21.32) [1077]"}
         (b_9 && b_9) && b_10 ==> neededTransfer == 0.000000000 && Used_5Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -703,7 +703,7 @@ procedure t02(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@22.10--22.43) [948]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@22.10--22.43) [1079]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -733,7 +733,7 @@ procedure t02(x: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (wand_conjunction.vpr@22.10--22.43) [949]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (wand_conjunction.vpr@22.10--22.43) [1080]"}
       FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm)];
     Mask := Mask[null, wand(x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm)] - FullPerm];
     // Finish exhale
@@ -745,7 +745,7 @@ procedure t02(x: Ref) returns ()
   // -- Translating statement: assert false -- wand_conjunction.vpr@25.3--25.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (wand_conjunction.vpr@25.10--25.15) [950]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (wand_conjunction.vpr@25.10--25.15) [1081]"}
       false;
     assume state(Heap, Mask);
 }
@@ -844,7 +844,7 @@ procedure t03(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_7Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (wand_conjunction.vpr@31.3--31.32) [951]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (wand_conjunction.vpr@31.3--31.32) [1082]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -887,7 +887,7 @@ procedure t03(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@31.3--31.32) [952]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@31.3--31.32) [1083]"}
         (b_13 && b_13) && b_14 ==> neededTransfer == 0.000000000 && Used_7Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -931,12 +931,12 @@ procedure t03(x: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (wand_conjunction.vpr@32.10--32.43) [953]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (wand_conjunction.vpr@32.10--32.43) [1084]"}
       FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm)];
     Mask := Mask[null, wand(x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm)] - FullPerm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@32.10--32.43) [955]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (wand_conjunction.vpr@32.10--32.43) [1086]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -949,7 +949,7 @@ procedure t03(x: Ref) returns ()
   // -- Translating statement: assert false -- wand_conjunction.vpr@35.3--35.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (wand_conjunction.vpr@35.10--35.15) [956]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (wand_conjunction.vpr@35.10--35.15) [1087]"}
       false;
     assume state(Heap, Mask);
 }

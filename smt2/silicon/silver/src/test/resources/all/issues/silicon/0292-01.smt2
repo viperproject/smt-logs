@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:47:00
+; Started: 2025-01-26 21:34:35
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -768,19 +768,19 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (is_int%limited s@$ r@0@00) (is_int_ s@$ r@0@00))
   :pattern ((is_int_ s@$ r@0@00))
-  :qid |quant-u-25689|)))
+  :qid |quant-u-11362|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (is_int%stateless r@0@00)
   :pattern ((is_int%limited s@$ r@0@00))
-  :qid |quant-u-25690|)))
+  :qid |quant-u-11363|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (SCIONPath_get_iof%limited s@$ self@2@00) (SCIONPath_get_iof s@$ self@2@00))
   :pattern ((SCIONPath_get_iof s@$ self@2@00))
-  :qid |quant-u-25691|)))
+  :qid |quant-u-11364|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (SCIONPath_get_iof%stateless self@2@00)
   :pattern ((SCIONPath_get_iof%limited s@$ self@2@00))
-  :qid |quant-u-25692|)))
+  :qid |quant-u-11365|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (and
     (forall ((x@8@00 $Ref)) (!
@@ -799,7 +799,7 @@
       :pattern ((Seq_contains_trigger
         (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
         x@8@00))
-      :qid |quant-u-25696|))
+      :qid |quant-u-11369|))
     (forall ((self $Ref)) (!
       (=>
         (and
@@ -818,20 +818,20 @@
       (SCIONPath_get_iof%precondition s@$ self@2@00)
       (= (SCIONPath_get_iof s@$ self@2@00) $Ref.null)))
   :pattern ((SCIONPath_get_iof s@$ self@2@00))
-  :qid |quant-u-25697|)))
+  :qid |quant-u-11370|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   true
   :pattern ((SCIONPath_get_iof s@$ self@2@00))
-  :qid |quant-u-25698|)))
+  :qid |quant-u-11371|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (=
     (OpaqueFieldList_contents%limited s@$ self@4@00)
     (OpaqueFieldList_contents s@$ self@4@00))
   :pattern ((OpaqueFieldList_contents s@$ self@4@00))
-  :qid |quant-u-25693|)))
+  :qid |quant-u-11366|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (OpaqueFieldList_contents%stateless self@4@00)
   :pattern ((OpaqueFieldList_contents%limited s@$ self@4@00))
-  :qid |quant-u-25694|)))
+  :qid |quant-u-11367|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

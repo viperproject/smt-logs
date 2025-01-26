@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:23
+// Date:         2025-01-26 21:43:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/opaque.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/opaque-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -261,7 +261,7 @@ procedure isGreaterOne#definedness(i: int) returns (Result: bool)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     if (i > 60) {
-      assert {:msg "  Postcondition of isGreaterOne might not hold. Assertion result might not hold. (opaque.vpr@9.13--9.32) [152706]"}
+      assert {:msg "  Postcondition of isGreaterOne might not hold. Assertion result might not hold. (opaque.vpr@9.13--9.32) [96490]"}
         Result;
     }
 }
@@ -329,7 +329,7 @@ procedure isGreaterOne2#definedness(r_1: Ref) returns (Result: bool)
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -38
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@14.14--14.35) [152707]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@14.14--14.35) [96491]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -38;
     assume state(Heap, Mask);
@@ -337,13 +337,13 @@ procedure isGreaterOne2#definedness(r_1: Ref) returns (Result: bool)
   // -- Check definedness of function body
     
     // -- Check definedness of isGreaterOne(r.f)
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@12.1--16.22) [152708]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@12.1--16.22) [96492]"}
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@16.3--16.20) [152709]"}
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@16.3--16.20) [96493]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
         assume false;
@@ -357,10 +357,10 @@ procedure isGreaterOne2#definedness(r_1: Ref) returns (Result: bool)
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@15.13--15.34) [152710]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@15.13--15.34) [96494]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
     if (Heap[r_1, f_7] > 60) {
-      assert {:msg "  Postcondition of isGreaterOne2 might not hold. Assertion result might not hold. (opaque.vpr@15.13--15.34) [152711]"}
+      assert {:msg "  Postcondition of isGreaterOne2 might not hold. Assertion result might not hold. (opaque.vpr@15.13--15.34) [96495]"}
         Result;
     }
 }
@@ -432,7 +432,7 @@ procedure isGreaterOne22#definedness(r_1: Ref) returns (Result: bool)
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -38
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@20.14--20.35) [152712]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@20.14--20.35) [96496]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -38;
     assume state(Heap, Mask);
@@ -440,13 +440,13 @@ procedure isGreaterOne22#definedness(r_1: Ref) returns (Result: bool)
   // -- Check definedness of function body
     
     // -- Check definedness of isGreaterOne(r.f)
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@18.1--24.22) [152713]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@18.1--24.22) [96497]"}
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@24.3--24.20) [152714]"}
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@24.3--24.20) [96498]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
         assume false;
@@ -460,17 +460,17 @@ procedure isGreaterOne22#definedness(r_1: Ref) returns (Result: bool)
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@21.13--21.34) [152715]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@21.13--21.34) [96499]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
     if (Heap[r_1, f_7] > 60) {
-      assert {:msg "  Postcondition of isGreaterOne22 might not hold. Assertion result might not hold. (opaque.vpr@21.13--21.34) [152716]"}
+      assert {:msg "  Postcondition of isGreaterOne22 might not hold. Assertion result might not hold. (opaque.vpr@21.13--21.34) [96500]"}
         Result;
     }
     
     // -- Check definedness of result == r.f > 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@23.13--23.30) [152717]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@23.13--23.30) [96501]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Postcondition of isGreaterOne22 might not hold. Assertion result == r.f > 1 might not hold. (opaque.vpr@23.13--23.30) [152718]"}
+    assert {:msg "  Postcondition of isGreaterOne22 might not hold. Assertion result == r.f > 1 might not hold. (opaque.vpr@23.13--23.30) [96502]"}
       Result == (Heap[r_1, f_7] > 1);
 }
 
@@ -537,7 +537,7 @@ procedure isGreaterOne3#definedness(r_1: Ref) returns (Result: bool)
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -38
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@28.14--28.35) [152719]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@28.14--28.35) [96503]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -38;
     assume state(Heap, Mask);
@@ -545,13 +545,13 @@ procedure isGreaterOne3#definedness(r_1: Ref) returns (Result: bool)
   // -- Check definedness of function body
     
     // -- Check definedness of @reveal() (isGreaterOne(r.f))
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@26.1--30.32) [152720]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@26.1--30.32) [96504]"}
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@30.3--30.30) [152721]"}
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@30.3--30.30) [96505]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
         assume false;
@@ -565,10 +565,10 @@ procedure isGreaterOne3#definedness(r_1: Ref) returns (Result: bool)
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@29.13--29.34) [152722]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@29.13--29.34) [96506]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
     if (Heap[r_1, f_7] > 60) {
-      assert {:msg "  Postcondition of isGreaterOne3 might not hold. Assertion result might not hold. (opaque.vpr@29.13--29.34) [152723]"}
+      assert {:msg "  Postcondition of isGreaterOne3 might not hold. Assertion result might not hold. (opaque.vpr@29.13--29.34) [96507]"}
         Result;
     }
 }
@@ -640,7 +640,7 @@ procedure isGreaterOne32#definedness(r_1: Ref) returns (Result: bool)
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -38
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@34.14--34.35) [152724]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@34.14--34.35) [96508]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -38;
     assume state(Heap, Mask);
@@ -648,13 +648,13 @@ procedure isGreaterOne32#definedness(r_1: Ref) returns (Result: bool)
   // -- Check definedness of function body
     
     // -- Check definedness of @reveal() (isGreaterOne(r.f))
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@32.1--37.32) [152725]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@32.1--37.32) [96509]"}
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@37.3--37.30) [152726]"}
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@37.3--37.30) [96510]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
         assume false;
@@ -668,17 +668,17 @@ procedure isGreaterOne32#definedness(r_1: Ref) returns (Result: bool)
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@35.13--35.34) [152727]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@35.13--35.34) [96511]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
     if (Heap[r_1, f_7] > 60) {
-      assert {:msg "  Postcondition of isGreaterOne32 might not hold. Assertion result might not hold. (opaque.vpr@35.13--35.34) [152728]"}
+      assert {:msg "  Postcondition of isGreaterOne32 might not hold. Assertion result might not hold. (opaque.vpr@35.13--35.34) [96512]"}
         Result;
     }
     
     // -- Check definedness of result == r.f > 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@36.13--36.30) [152729]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@36.13--36.30) [96513]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Postcondition of isGreaterOne32 might not hold. Assertion result == r.f > 1 might not hold. (opaque.vpr@36.13--36.30) [152730]"}
+    assert {:msg "  Postcondition of isGreaterOne32 might not hold. Assertion result == r.f > 1 might not hold. (opaque.vpr@36.13--36.30) [96514]"}
       Result == (Heap[r_1, f_7] > 1);
 }
 
@@ -748,13 +748,13 @@ procedure isGreaterOne33#definedness(r_1: Ref) returns (Result: bool)
   // -- Check definedness of function body
     
     // -- Check definedness of @reveal() (isGreaterOne(r.f))
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@39.1--44.32) [152731]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@39.1--44.32) [96515]"}
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@44.3--44.30) [152732]"}
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@44.3--44.30) [96516]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
         assume false;
@@ -768,10 +768,10 @@ procedure isGreaterOne33#definedness(r_1: Ref) returns (Result: bool)
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@42.13--42.34) [152733]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@42.13--42.34) [96517]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
     if (Heap[r_1, f_7] > 60) {
-      assert {:msg "  Postcondition of isGreaterOne33 might not hold. Assertion result might not hold. (opaque.vpr@42.13--42.34) [152734]"}
+      assert {:msg "  Postcondition of isGreaterOne33 might not hold. Assertion result might not hold. (opaque.vpr@42.13--42.34) [96518]"}
         Result;
     }
 }
@@ -839,7 +839,7 @@ procedure isGreaterOne34#definedness(r_1: Ref) returns (Result: bool)
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -38
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@47.14--47.35) [152735]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@47.14--47.35) [96519]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -38;
     assume state(Heap, Mask);
@@ -847,13 +847,13 @@ procedure isGreaterOne34#definedness(r_1: Ref) returns (Result: bool)
   // -- Check definedness of function body
     
     // -- Check definedness of @reveal() (isGreaterOne(r.f))
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@46.1--49.32) [152736]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@46.1--49.32) [96520]"}
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@49.3--49.30) [152737]"}
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@49.3--49.30) [96521]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
         assume false;
@@ -867,10 +867,10 @@ procedure isGreaterOne34#definedness(r_1: Ref) returns (Result: bool)
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@48.13--48.34) [152738]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@48.13--48.34) [96522]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
     if (Heap[r_1, f_7] > 60) {
-      assert {:msg "  Postcondition of isGreaterOne34 might not hold. Assertion result might not hold. (opaque.vpr@48.13--48.34) [152739]"}
+      assert {:msg "  Postcondition of isGreaterOne34 might not hold. Assertion result might not hold. (opaque.vpr@48.13--48.34) [96523]"}
         Result;
     }
 }
@@ -938,7 +938,7 @@ procedure isGreaterOne35#definedness(r_1: Ref) returns (Result: bool)
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -38
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@52.14--52.35) [152740]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@52.14--52.35) [96524]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -38;
     assume state(Heap, Mask);
@@ -946,13 +946,13 @@ procedure isGreaterOne35#definedness(r_1: Ref) returns (Result: bool)
   // -- Check definedness of function body
     
     // -- Check definedness of isGreaterOne(r.f)
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@51.1--54.22) [152741]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@51.1--54.22) [96525]"}
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@54.3--54.20) [152742]"}
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@54.3--54.20) [96526]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
         assume false;
@@ -966,10 +966,10 @@ procedure isGreaterOne35#definedness(r_1: Ref) returns (Result: bool)
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@53.13--53.34) [152743]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@53.13--53.34) [96527]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
     if (Heap[r_1, f_7] > 60) {
-      assert {:msg "  Postcondition of isGreaterOne35 might not hold. Assertion result might not hold. (opaque.vpr@53.13--53.34) [152744]"}
+      assert {:msg "  Postcondition of isGreaterOne35 might not hold. Assertion result might not hold. (opaque.vpr@53.13--53.34) [96528]"}
         Result;
     }
 }
@@ -1234,14 +1234,14 @@ procedure funP#definedness(x: Ref) returns (Result: int)
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (opaque.vpr@298.1--303.2) [152745]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (opaque.vpr@298.1--303.2) [96529]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
       perm := FullPerm;
       assume x != null;
       UnfoldingMask := UnfoldingMask[x, f_7:=UnfoldingMask[x, f_7] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (opaque.vpr@298.1--303.2) [152746]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (opaque.vpr@298.1--303.2) [96530]"}
         HasDirectPerm(UnfoldingMask, x, f_7);
       
       // -- Free assumptions (exp module)
@@ -1320,14 +1320,14 @@ procedure funP2#definedness(x: Ref) returns (Result: int)
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (opaque.vpr@305.1--309.2) [152747]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (opaque.vpr@305.1--309.2) [96531]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
       perm := FullPerm;
       assume x != null;
       UnfoldingMask := UnfoldingMask[x, f_7:=UnfoldingMask[x, f_7] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (opaque.vpr@305.1--309.2) [152748]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (opaque.vpr@305.1--309.2) [96532]"}
         HasDirectPerm(UnfoldingMask, x, f_7);
       
       // -- Free assumptions (exp module)
@@ -1397,7 +1397,7 @@ procedure P#definedness(x: Ref) returns ()
 // Translation of method mPre
 // ==================================================
 
-procedure mPre(j_9: int) returns ()
+procedure mPre(j: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -1425,12 +1425,12 @@ procedure mPre(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@61.12--61.27) [152749]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@61.12--61.27) [96533]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    tmp := isGreaterOne'(Heap, j_9);
+    tmp := isGreaterOne'(Heap, j);
     assume state(Heap, Mask);
 }
 
@@ -1438,7 +1438,7 @@ procedure mPre(j_9: int) returns ()
 // Translation of method mPre2
 // ==================================================
 
-procedure mPre2(j_9: int) returns ()
+procedure mPre2(j: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -1467,12 +1467,12 @@ procedure mPre2(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@68.12--68.37) [152750]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@68.12--68.37) [96534]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    tmp := isGreaterOne(Heap, j_9);
+    tmp := isGreaterOne(Heap, j);
     assume state(Heap, Mask);
 }
 
@@ -1517,7 +1517,7 @@ procedure mPost() returns ()
   // -- Translating statement: assert tmp -- opaque.vpr@75.5--75.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion tmp might not hold. (opaque.vpr@75.12--75.15) [152751]"}
+    assert {:msg "  Assert might fail. Assertion tmp might not hold. (opaque.vpr@75.12--75.15) [96535]"}
       tmp;
     assume state(Heap, Mask);
 }
@@ -1564,7 +1564,7 @@ procedure mPost2() returns ()
   // -- Translating statement: assert tmp -- opaque.vpr@82.5--82.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion tmp might not hold. (opaque.vpr@82.12--82.15) [152752]"}
+    assert {:msg "  Assert might fail. Assertion tmp might not hold. (opaque.vpr@82.12--82.15) [96536]"}
       tmp;
     assume state(Heap, Mask);
 }
@@ -1573,7 +1573,7 @@ procedure mPost2() returns ()
 // Translation of method mDef
 // ==================================================
 
-procedure mDef(j_9: int) returns ()
+procedure mDef(j: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -1588,7 +1588,7 @@ procedure mDef(j_9: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume j_9 > -50;
+    assume j > -50;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1605,20 +1605,20 @@ procedure mDef(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@88.12--88.27) [152753]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@88.12--88.27) [96537]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    assume isGreaterOne'(Heap, j_9);
+    assume isGreaterOne'(Heap, j);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j > 1 -- opaque.vpr@90.5--90.17
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@90.12--90.17) [152754]"}
-      j_9 > 1;
+    assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@90.12--90.17) [96538]"}
+      j > 1;
     assume state(Heap, Mask);
 }
 
@@ -1626,7 +1626,7 @@ procedure mDef(j_9: int) returns ()
 // Translation of method mDef2
 // ==================================================
 
-procedure mDef2(j_9: int) returns ()
+procedure mDef2(j: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -1641,7 +1641,7 @@ procedure mDef2(j_9: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume j_9 > -50;
+    assume j > -50;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1660,20 +1660,20 @@ procedure mDef2(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@96.12--96.37) [152755]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@96.12--96.37) [96539]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    assume isGreaterOne(Heap, j_9);
+    assume isGreaterOne(Heap, j);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j > 1 -- opaque.vpr@97.5--97.17
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@97.12--97.17) [152756]"}
-      j_9 > 1;
+    assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@97.12--97.17) [96540]"}
+      j > 1;
     assume state(Heap, Mask);
 }
 
@@ -1681,7 +1681,7 @@ procedure mDef2(j_9: int) returns ()
 // Translation of method mProveFun
 // ==================================================
 
-procedure mProveFun(j_9: int) returns ()
+procedure mProveFun(j: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -1698,7 +1698,7 @@ procedure mProveFun(j_9: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume j_9 > 1;
+    assume j > 1;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1716,13 +1716,13 @@ procedure mProveFun(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@104.12--104.27) [152757]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@104.12--104.27) [96541]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion isGreaterOne(j) might not hold. (opaque.vpr@104.12--104.27) [152758]"}
-      isGreaterOne'(Heap, j_9);
+    assert {:msg "  Assert might fail. Assertion isGreaterOne(j) might not hold. (opaque.vpr@104.12--104.27) [96542]"}
+      isGreaterOne'(Heap, j);
     assume state(Heap, Mask);
 }
 
@@ -1730,7 +1730,7 @@ procedure mProveFun(j_9: int) returns ()
 // Translation of method mProveFun2
 // ==================================================
 
-procedure mProveFun2(j_9: int) returns ()
+procedure mProveFun2(j: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -1747,7 +1747,7 @@ procedure mProveFun2(j_9: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume j_9 > 1;
+    assume j > 1;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1766,13 +1766,13 @@ procedure mProveFun2(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@110.12--110.37) [152759]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@110.12--110.37) [96543]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion @reveal() (isGreaterOne(j)) might not hold. (opaque.vpr@110.12--110.37) [152760]"}
-      isGreaterOne(Heap, j_9);
+    assert {:msg "  Assert might fail. Assertion @reveal() (isGreaterOne(j)) might not hold. (opaque.vpr@110.12--110.37) [96544]"}
+      isGreaterOne(Heap, j);
     assume state(Heap, Mask);
 }
 
@@ -1780,7 +1780,7 @@ procedure mProveFun2(j_9: int) returns ()
 // Translation of method mProveRevealed
 // ==================================================
 
-procedure mProveRevealed(j_9: int) returns ()
+procedure mProveRevealed(j: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -1797,7 +1797,7 @@ procedure mProveRevealed(j_9: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume j_9 > -40;
+    assume j > -40;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1814,12 +1814,12 @@ procedure mProveRevealed(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@116.12--116.27) [152761]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@116.12--116.27) [96545]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    assume isGreaterOne'(Heap, j_9);
+    assume isGreaterOne'(Heap, j);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1833,20 +1833,20 @@ procedure mProveRevealed(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@117.12--117.37) [152762]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@117.12--117.37) [96546]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion @reveal() (isGreaterOne(j)) might not hold. (opaque.vpr@117.12--117.37) [152763]"}
-      isGreaterOne(Heap, j_9);
+    assert {:msg "  Assert might fail. Assertion @reveal() (isGreaterOne(j)) might not hold. (opaque.vpr@117.12--117.37) [96547]"}
+      isGreaterOne(Heap, j);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j > 1 -- opaque.vpr@118.5--118.17
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@118.12--118.17) [152764]"}
-      j_9 > 1;
+    assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@118.12--118.17) [96548]"}
+      j > 1;
     assume state(Heap, Mask);
 }
 
@@ -1854,7 +1854,7 @@ procedure mProveRevealed(j_9: int) returns ()
 // Translation of method mProveRevealed2
 // ==================================================
 
-procedure mProveRevealed2(j_9: int) returns ()
+procedure mProveRevealed2(j: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -1869,7 +1869,7 @@ procedure mProveRevealed2(j_9: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume j_9 > -40;
+    assume j > -40;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1886,20 +1886,20 @@ procedure mProveRevealed2(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@124.12--124.27) [152765]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@124.12--124.27) [96549]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    assume isGreaterOne'(Heap, j_9);
+    assume isGreaterOne'(Heap, j);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j > 1 -- opaque.vpr@126.5--126.17
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@126.12--126.17) [152766]"}
-      j_9 > 1;
+    assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@126.12--126.17) [96550]"}
+      j > 1;
     assume state(Heap, Mask);
 }
 
@@ -1907,7 +1907,7 @@ procedure mProveRevealed2(j_9: int) returns ()
 // Translation of method mProveOpaque
 // ==================================================
 
-procedure mProveOpaque(j_9: int) returns ()
+procedure mProveOpaque(j: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -1924,7 +1924,7 @@ procedure mProveOpaque(j_9: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume j_9 > -40;
+    assume j > -40;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1943,12 +1943,12 @@ procedure mProveOpaque(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@132.12--132.37) [152767]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@132.12--132.37) [96551]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    assume isGreaterOne(Heap, j_9);
+    assume isGreaterOne(Heap, j);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1961,19 +1961,19 @@ procedure mProveOpaque(j_9: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@133.12--133.27) [152768]"}
-          j_9 > -60;
+        assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@133.12--133.27) [96552]"}
+          j > -60;
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion isGreaterOne(j) might not hold. (opaque.vpr@133.12--133.27) [152769]"}
-      isGreaterOne'(Heap, j_9);
+    assert {:msg "  Assert might fail. Assertion isGreaterOne(j) might not hold. (opaque.vpr@133.12--133.27) [96553]"}
+      isGreaterOne'(Heap, j);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- opaque.vpr@135.5--135.17
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (opaque.vpr@135.12--135.17) [152770]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (opaque.vpr@135.12--135.17) [96554]"}
       false;
     assume state(Heap, Mask);
 }
@@ -2008,7 +2008,7 @@ procedure mNestedFunc(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -20
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@139.14--139.35) [152771]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@139.14--139.35) [96555]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -20;
     assume state(Heap, Mask);
@@ -2028,9 +2028,9 @@ procedure mNestedFunc(r_1: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function isGreaterOne2 might not hold. There might be insufficient permission to access r.f (opaque.vpr@141.12--141.28) [152772]"}
+        assert {:msg "  Precondition of function isGreaterOne2 might not hold. There might be insufficient permission to access r.f (opaque.vpr@141.12--141.28) [96556]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
-        assert {:msg "  Precondition of function isGreaterOne2 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@141.12--141.28) [152773]"}
+        assert {:msg "  Precondition of function isGreaterOne2 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@141.12--141.28) [96557]"}
           Heap[r_1, f_7] > -38;
         // Finish exhale
         havoc ExhaleHeap;
@@ -2048,9 +2048,9 @@ procedure mNestedFunc(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@143.12--143.19) [152774]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@143.12--143.19) [96558]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@143.12--143.19) [152775]"}
+    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@143.12--143.19) [96559]"}
       Heap[r_1, f_7] > 1;
     assume state(Heap, Mask);
 }
@@ -2085,7 +2085,7 @@ procedure mNestedFunc2(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -20
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@147.14--147.35) [152776]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@147.14--147.35) [96560]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -20;
     assume state(Heap, Mask);
@@ -2107,9 +2107,9 @@ procedure mNestedFunc2(r_1: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function isGreaterOne2 might not hold. There might be insufficient permission to access r.f (opaque.vpr@149.12--149.38) [152777]"}
+        assert {:msg "  Precondition of function isGreaterOne2 might not hold. There might be insufficient permission to access r.f (opaque.vpr@149.12--149.38) [96561]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
-        assert {:msg "  Precondition of function isGreaterOne2 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@149.12--149.38) [152778]"}
+        assert {:msg "  Precondition of function isGreaterOne2 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@149.12--149.38) [96562]"}
           Heap[r_1, f_7] > -38;
         // Finish exhale
         havoc ExhaleHeap;
@@ -2127,9 +2127,9 @@ procedure mNestedFunc2(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@151.12--151.19) [152779]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@151.12--151.19) [96563]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@151.12--151.19) [152780]"}
+    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@151.12--151.19) [96564]"}
       Heap[r_1, f_7] > 1;
     assume state(Heap, Mask);
 }
@@ -2164,7 +2164,7 @@ procedure mNestedFunc3(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -20
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@155.14--155.35) [152781]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@155.14--155.35) [96565]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -20;
     assume state(Heap, Mask);
@@ -2184,9 +2184,9 @@ procedure mNestedFunc3(r_1: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function isGreaterOne3 might not hold. There might be insufficient permission to access r.f (opaque.vpr@157.12--157.28) [152782]"}
+        assert {:msg "  Precondition of function isGreaterOne3 might not hold. There might be insufficient permission to access r.f (opaque.vpr@157.12--157.28) [96566]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
-        assert {:msg "  Precondition of function isGreaterOne3 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@157.12--157.28) [152783]"}
+        assert {:msg "  Precondition of function isGreaterOne3 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@157.12--157.28) [96567]"}
           Heap[r_1, f_7] > -38;
         // Finish exhale
         havoc ExhaleHeap;
@@ -2204,9 +2204,9 @@ procedure mNestedFunc3(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@159.12--159.19) [152784]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@159.12--159.19) [96568]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@159.12--159.19) [152785]"}
+    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@159.12--159.19) [96569]"}
       Heap[r_1, f_7] > 1;
     assume state(Heap, Mask);
 }
@@ -2241,7 +2241,7 @@ procedure mNestedFunc4(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -20
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@163.14--163.35) [152786]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@163.14--163.35) [96570]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -20;
     assume state(Heap, Mask);
@@ -2263,9 +2263,9 @@ procedure mNestedFunc4(r_1: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function isGreaterOne3 might not hold. There might be insufficient permission to access r.f (opaque.vpr@165.12--165.38) [152787]"}
+        assert {:msg "  Precondition of function isGreaterOne3 might not hold. There might be insufficient permission to access r.f (opaque.vpr@165.12--165.38) [96571]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
-        assert {:msg "  Precondition of function isGreaterOne3 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@165.12--165.38) [152788]"}
+        assert {:msg "  Precondition of function isGreaterOne3 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@165.12--165.38) [96572]"}
           Heap[r_1, f_7] > -38;
         // Finish exhale
         havoc ExhaleHeap;
@@ -2283,9 +2283,9 @@ procedure mNestedFunc4(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@166.12--166.19) [152789]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@166.12--166.19) [96573]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@166.12--166.19) [152790]"}
+    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@166.12--166.19) [96574]"}
       Heap[r_1, f_7] > 1;
     assume state(Heap, Mask);
 }
@@ -2320,7 +2320,7 @@ procedure mNestedFunc5(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -20
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@170.14--170.35) [152791]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@170.14--170.35) [96575]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -20;
     assume state(Heap, Mask);
@@ -2340,9 +2340,9 @@ procedure mNestedFunc5(r_1: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function isGreaterOne34 might not hold. There might be insufficient permission to access r.f (opaque.vpr@172.12--172.29) [152792]"}
+        assert {:msg "  Precondition of function isGreaterOne34 might not hold. There might be insufficient permission to access r.f (opaque.vpr@172.12--172.29) [96576]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
-        assert {:msg "  Precondition of function isGreaterOne34 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@172.12--172.29) [152793]"}
+        assert {:msg "  Precondition of function isGreaterOne34 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@172.12--172.29) [96577]"}
           Heap[r_1, f_7] > -38;
         // Finish exhale
         havoc ExhaleHeap;
@@ -2360,9 +2360,9 @@ procedure mNestedFunc5(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@173.12--173.19) [152794]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@173.12--173.19) [96578]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@173.12--173.19) [152795]"}
+    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@173.12--173.19) [96579]"}
       Heap[r_1, f_7] > 1;
     assume state(Heap, Mask);
 }
@@ -2397,7 +2397,7 @@ procedure mNestedFunc6(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > -20
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@177.14--177.35) [152796]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@177.14--177.35) [96580]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > -20;
     assume state(Heap, Mask);
@@ -2417,9 +2417,9 @@ procedure mNestedFunc6(r_1: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function isGreaterOne35 might not hold. There might be insufficient permission to access r.f (opaque.vpr@179.12--179.29) [152797]"}
+        assert {:msg "  Precondition of function isGreaterOne35 might not hold. There might be insufficient permission to access r.f (opaque.vpr@179.12--179.29) [96581]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
-        assert {:msg "  Precondition of function isGreaterOne35 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@179.12--179.29) [152798]"}
+        assert {:msg "  Precondition of function isGreaterOne35 might not hold. Assertion r.f > -38 might not hold. (opaque.vpr@179.12--179.29) [96582]"}
           Heap[r_1, f_7] > -38;
         // Finish exhale
         havoc ExhaleHeap;
@@ -2437,9 +2437,9 @@ procedure mNestedFunc6(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@181.12--181.19) [152799]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@181.12--181.19) [96583]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@181.12--181.19) [152800]"}
+    assert {:msg "  Assert might fail. Assertion r.f > 1 might not hold. (opaque.vpr@181.12--181.19) [96584]"}
       Heap[r_1, f_7] > 1;
     assume state(Heap, Mask);
 }
@@ -2482,7 +2482,7 @@ procedure mFac1_1() returns ()
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@206.5--206.20
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@206.12--206.20) [152801]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@206.12--206.20) [96585]"}
       tmp == 6;
     assume state(Heap, Mask);
 }
@@ -2531,7 +2531,7 @@ procedure mFac1_2() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * fac1(2) might not hold. (opaque.vpr@213.12--213.30) [152802]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * fac1(2) might not hold. (opaque.vpr@213.12--213.30) [96586]"}
       tmp == 3 * fac1(Heap, 2);
     assume state(Heap, Mask);
   
@@ -2544,14 +2544,14 @@ procedure mFac1_2() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * 2 * fac1(1) might not hold. (opaque.vpr@214.12--214.34) [152803]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * 2 * fac1(1) might not hold. (opaque.vpr@214.12--214.34) [96587]"}
       tmp == 6 * fac1(Heap, 1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@215.5--215.20
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@215.12--215.20) [152804]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@215.12--215.20) [96588]"}
       tmp == 6;
     assume state(Heap, Mask);
 }
@@ -2594,7 +2594,7 @@ procedure mFac2_1() returns ()
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@223.5--223.20
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@223.12--223.20) [152805]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@223.12--223.20) [96589]"}
       tmp == 6;
     assume state(Heap, Mask);
 }
@@ -2643,7 +2643,7 @@ procedure mFac2_2() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * fac2(2) might not hold. (opaque.vpr@231.12--231.30) [152806]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * fac2(2) might not hold. (opaque.vpr@231.12--231.30) [96590]"}
       tmp == 3 * fac2'(Heap, 2);
     assume state(Heap, Mask);
 }
@@ -2693,7 +2693,7 @@ procedure mFac2_3() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * @reveal() (fac2(2)) might not hold. (opaque.vpr@238.12--238.40) [152807]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * @reveal() (fac2(2)) might not hold. (opaque.vpr@238.12--238.40) [96591]"}
       tmp == 3 * fac2(Heap, 2);
     assume state(Heap, Mask);
   
@@ -2706,14 +2706,14 @@ procedure mFac2_3() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * 2 * @reveal() (fac2(1)) might not hold. (opaque.vpr@239.12--239.44) [152808]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * 2 * @reveal() (fac2(1)) might not hold. (opaque.vpr@239.12--239.44) [96592]"}
       tmp == 6 * fac2(Heap, 1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@240.5--240.20
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@240.12--240.20) [152809]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@240.12--240.20) [96593]"}
       tmp == 6;
     assume state(Heap, Mask);
 }
@@ -2763,7 +2763,7 @@ procedure mFac2_4() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * fac2(2) might not hold. (opaque.vpr@247.12--247.30) [152810]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * fac2(2) might not hold. (opaque.vpr@247.12--247.30) [96594]"}
       tmp == 3 * fac2'(Heap, 2);
     assume state(Heap, Mask);
   
@@ -2776,7 +2776,7 @@ procedure mFac2_4() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * 2 * fac2(1) might not hold. (opaque.vpr@249.12--249.34) [152811]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * 2 * fac2(1) might not hold. (opaque.vpr@249.12--249.34) [96595]"}
       tmp == 6 * fac2'(Heap, 1);
     assume state(Heap, Mask);
 }
@@ -2819,7 +2819,7 @@ procedure mFac3_1() returns ()
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@257.5--257.20
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@257.12--257.20) [152812]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@257.12--257.20) [96596]"}
       tmp == 6;
     assume state(Heap, Mask);
 }
@@ -2868,7 +2868,7 @@ procedure mFac3_2() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * fac3(2) might not hold. (opaque.vpr@265.12--265.30) [152813]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * fac3(2) might not hold. (opaque.vpr@265.12--265.30) [96597]"}
       tmp == 3 * fac3'(Heap, 2);
     assume state(Heap, Mask);
 }
@@ -2918,7 +2918,7 @@ procedure mFac3_3() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * @reveal() (fac3(2)) might not hold. (opaque.vpr@272.12--272.40) [152814]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * @reveal() (fac3(2)) might not hold. (opaque.vpr@272.12--272.40) [96598]"}
       tmp == 3 * fac3(Heap, 2);
     assume state(Heap, Mask);
   
@@ -2931,14 +2931,14 @@ procedure mFac3_3() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * 2 * @reveal() (fac3(1)) might not hold. (opaque.vpr@273.12--273.44) [152815]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * 2 * @reveal() (fac3(1)) might not hold. (opaque.vpr@273.12--273.44) [96599]"}
       tmp == 6 * fac3(Heap, 1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@274.5--274.20
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@274.12--274.20) [152816]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@274.12--274.20) [96600]"}
       tmp == 6;
     assume state(Heap, Mask);
 }
@@ -2988,7 +2988,7 @@ procedure mFac3_4() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * fac3(2) might not hold. (opaque.vpr@281.12--281.30) [152817]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * fac3(2) might not hold. (opaque.vpr@281.12--281.30) [96601]"}
       tmp == 3 * fac3'(Heap, 2);
     assume state(Heap, Mask);
   
@@ -3001,7 +3001,7 @@ procedure mFac3_4() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion tmp == 3 * 2 * fac3(1) might not hold. (opaque.vpr@283.12--283.34) [152818]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 3 * 2 * fac3(1) might not hold. (opaque.vpr@283.12--283.34) [96602]"}
       tmp == 6 * fac3'(Heap, 1);
     assume state(Heap, Mask);
 }
@@ -3045,7 +3045,7 @@ procedure mFac3_5() returns ()
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@291.5--291.20
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@291.12--291.20) [152819]"}
+    assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@291.12--291.20) [96603]"}
       tmp == 6;
     assume state(Heap, Mask);
 }
@@ -3093,7 +3093,7 @@ procedure mFold(r_1: Ref) returns ()
   // -- Translating statement: tmp := r.f -- opaque.vpr@315.5--315.15
     
     // -- Check definedness of r.f
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (opaque.vpr@315.5--315.15) [152820]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (opaque.vpr@315.5--315.15) [96604]"}
         HasDirectPerm(Mask, r_1, f_7);
     tmp := Heap[r_1, f_7];
     assume state(Heap, Mask);
@@ -3103,7 +3103,7 @@ procedure mFold(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding P(r) might fail. There might be insufficient permission to access r.f (opaque.vpr@316.5--316.14) [152823]"}
+      assert {:msg "  Folding P(r) might fail. There might be insufficient permission to access r.f (opaque.vpr@316.5--316.14) [96607]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -3132,7 +3132,7 @@ procedure mFold(r_1: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function funP might not hold. There might be insufficient permission to access P(r) (opaque.vpr@318.12--318.19) [152825]"}
+        assert {:msg "  Precondition of function funP might not hold. There might be insufficient permission to access P(r) (opaque.vpr@318.12--318.19) [96609]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(r_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -3141,7 +3141,7 @@ procedure mFold(r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion funP(r) == tmp might not hold. (opaque.vpr@318.12--318.26) [152826]"}
+    assert {:msg "  Assert might fail. Assertion funP(r) == tmp might not hold. (opaque.vpr@318.12--318.26) [96610]"}
       funP'(Heap, r_1) == tmp;
     assume state(Heap, Mask);
 }
@@ -3189,7 +3189,7 @@ procedure mFold2(r_1: Ref) returns ()
   // -- Translating statement: tmp := r.f -- opaque.vpr@325.5--325.15
     
     // -- Check definedness of r.f
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (opaque.vpr@325.5--325.15) [152827]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (opaque.vpr@325.5--325.15) [96611]"}
         HasDirectPerm(Mask, r_1, f_7);
     tmp := Heap[r_1, f_7];
     assume state(Heap, Mask);
@@ -3199,7 +3199,7 @@ procedure mFold2(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding P(r) might fail. There might be insufficient permission to access r.f (opaque.vpr@326.5--326.14) [152830]"}
+      assert {:msg "  Folding P(r) might fail. There might be insufficient permission to access r.f (opaque.vpr@326.5--326.14) [96614]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -3228,7 +3228,7 @@ procedure mFold2(r_1: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function funP might not hold. There might be insufficient permission to access P(r) (opaque.vpr@327.12--327.29) [152832]"}
+        assert {:msg "  Precondition of function funP might not hold. There might be insufficient permission to access P(r) (opaque.vpr@327.12--327.29) [96616]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(r_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -3237,7 +3237,7 @@ procedure mFold2(r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion @reveal() (funP(r)) == tmp might not hold. (opaque.vpr@327.12--327.36) [152833]"}
+    assert {:msg "  Assert might fail. Assertion @reveal() (funP(r)) == tmp might not hold. (opaque.vpr@327.12--327.36) [96617]"}
       funP(Heap, r_1) == tmp;
     assume state(Heap, Mask);
 }
@@ -3285,7 +3285,7 @@ procedure mFold3(r_1: Ref) returns ()
   // -- Translating statement: tmp := r.f -- opaque.vpr@334.5--334.15
     
     // -- Check definedness of r.f
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (opaque.vpr@334.5--334.15) [152834]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (opaque.vpr@334.5--334.15) [96618]"}
         HasDirectPerm(Mask, r_1, f_7);
     tmp := Heap[r_1, f_7];
     assume state(Heap, Mask);
@@ -3295,7 +3295,7 @@ procedure mFold3(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding P(r) might fail. There might be insufficient permission to access r.f (opaque.vpr@335.5--335.14) [152837]"}
+      assert {:msg "  Folding P(r) might fail. There might be insufficient permission to access r.f (opaque.vpr@335.5--335.14) [96621]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -3324,7 +3324,7 @@ procedure mFold3(r_1: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function funP2 might not hold. There might be insufficient permission to access P(r) (opaque.vpr@336.12--336.20) [152839]"}
+        assert {:msg "  Precondition of function funP2 might not hold. There might be insufficient permission to access P(r) (opaque.vpr@336.12--336.20) [96623]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(r_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -3333,7 +3333,7 @@ procedure mFold3(r_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion funP2(r) == tmp might not hold. (opaque.vpr@336.12--336.27) [152840]"}
+    assert {:msg "  Assert might fail. Assertion funP2(r) == tmp might not hold. (opaque.vpr@336.12--336.27) [96624]"}
       funP2(Heap, r_1) == tmp;
     assume state(Heap, Mask);
 }

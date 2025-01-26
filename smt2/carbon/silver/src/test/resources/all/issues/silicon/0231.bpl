@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:26
+// Date:         2025-01-26 21:42:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0231.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0231-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_20: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_20, f_17] }
-  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_17], $allocated]
+axiom (forall o_54: Ref, f_24: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_54, f_24] }
+  Heap[o_54, $allocated] ==> Heap[Heap[o_54, f_24], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref, f_24: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, f_24] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_27, f_24) ==> Heap[o_27, f_24] == ExhaleHeap[o_27, f_24]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref, f_54: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, f_54] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_55, f_54) ==> Heap[o_55, f_54] == ExhaleHeap[o_55, f_54]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9), ExhaleHeap[null, PredicateMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> Heap[null, PredicateMaskField(pm_f_9)] == ExhaleHeap[null, PredicateMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32), ExhaleHeap[null, PredicateMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> Heap[null, PredicateMaskField(pm_f_32)] == ExhaleHeap[null, PredicateMaskField(pm_f_32)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, PredicateMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, PredicateMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9), ExhaleHeap[null, WandMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> Heap[null, WandMaskField(pm_f_9)] == ExhaleHeap[null, WandMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32), ExhaleHeap[null, WandMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> Heap[null, WandMaskField(pm_f_32)] == ExhaleHeap[null, WandMaskField(pm_f_32)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, WandMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, WandMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_27, $allocated] ==> ExhaleHeap[o_27, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_55, $allocated] ==> ExhaleHeap[o_55, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_31: (Field A B), v: B ::
-  { Heap[o_20, f_31:=v] }
-  succHeap(Heap, Heap[o_20, f_31:=v])
+axiom (forall <A, B> Heap: HeapType, o_54: Ref, f_8: (Field A B), v: B ::
+  { Heap[o_54, f_8:=v] }
+  succHeap(Heap, Heap[o_54, f_8:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -216,10 +216,10 @@ procedure test01(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -239,22 +239,22 @@ procedure test01(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: exhale perm(P(this)) == write &&
   //   (acc(P(this), write) && perm(P(this)) == none) -- 0231.vpr@9.3--11.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Exhale might fail. Assertion perm(P(this)) == write might not hold. (0231.vpr@9.10--11.31) [217345]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Exhale might fail. Assertion perm(P(this)) == write might not hold. (0231.vpr@9.10--11.31) [59679]"}
       Mask[null, P(this)] == FullPerm;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@9.10--11.31) [217347]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@9.10--11.31) [59681]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
-    assert {:msg "  Exhale might fail. Assertion perm(P(this)) == none might not hold. (0231.vpr@9.10--11.31) [217348]"}
+    assert {:msg "  Exhale might fail. Assertion perm(P(this)) == none might not hold. (0231.vpr@9.10--11.31) [59682]"}
       Mask[null, P(this)] == NoPerm;
     // Finish exhale
     havoc ExhaleHeap;
@@ -271,12 +271,12 @@ procedure test02a(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var r_36: Ref;
-  var r_27: Ref;
+  var ExhaleWellDef0Heap: HeapType;
+  var r_12: Ref;
+  var r_14: Ref;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -296,46 +296,46 @@ procedure test02a(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: exhale (forperm r: Ref [P(r)] :: false) &&
   //   (acc(P(this), write) && (forperm r: Ref [P(r)] :: false)) -- 0231.vpr@18.3--20.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [P(r)] :: false)
       if (*) {
-        if (HasDirectPerm(Mask, null, P(r_36))) {
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access P(r) (0231.vpr@18.10--20.42) [217349]"}
-            HasDirectPerm(ExhaleWellDef0Mask, null, P(r_36));
+        if (HasDirectPerm(Mask, null, P(r_12))) {
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access P(r) (0231.vpr@18.10--20.42) [59683]"}
+            HasDirectPerm(ExhaleWellDef0Mask, null, P(r_12));
         }
         assume false;
       }
-    assert {:msg "  Exhale might fail. Assertion (forperm r: Ref [P(r)] :: false) might not hold. (0231.vpr@18.10--20.42) [217350]"}
+    assert {:msg "  Exhale might fail. Assertion (forperm r: Ref [P(r)] :: false) might not hold. (0231.vpr@18.10--20.42) [59684]"}
       (forall r_1_1: Ref ::
       { Mask[null, P(r_1_1)] } { Heap[null, P(r_1_1)] }
       HasDirectPerm(Mask, null, P(r_1_1)) ==> false
     );
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@18.10--20.42) [217352]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@18.10--20.42) [59686]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
     
     // -- Check definedness of (forperm r: Ref [P(r)] :: false)
       if (*) {
-        if (HasDirectPerm(Mask, null, P(r_27))) {
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access P(r) (0231.vpr@18.10--20.42) [217353]"}
-            HasDirectPerm(ExhaleWellDef0Mask, null, P(r_27));
+        if (HasDirectPerm(Mask, null, P(r_14))) {
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access P(r) (0231.vpr@18.10--20.42) [59687]"}
+            HasDirectPerm(ExhaleWellDef0Mask, null, P(r_14));
         }
         assume false;
       }
-    assert {:msg "  Exhale might fail. Assertion (forperm r: Ref [P(r)] :: false) might not hold. (0231.vpr@18.10--20.42) [217354]"}
-      (forall r_3_2: Ref ::
-      { Mask[null, P(r_3_2)] } { Heap[null, P(r_3_2)] }
-      HasDirectPerm(Mask, null, P(r_3_2)) ==> false
+    assert {:msg "  Exhale might fail. Assertion (forperm r: Ref [P(r)] :: false) might not hold. (0231.vpr@18.10--20.42) [59688]"}
+      (forall r_3: Ref ::
+      { Mask[null, P(r_3)] } { Heap[null, P(r_3)] }
+      HasDirectPerm(Mask, null, P(r_3)) ==> false
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -352,11 +352,11 @@ procedure test02b(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var r_28: Ref;
+  var ExhaleWellDef0Heap: HeapType;
+  var r_16: Ref;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -376,28 +376,28 @@ procedure test02b(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: exhale acc(P(this), write) && (forperm r: Ref [P(r)] :: false) -- 0231.vpr@26.3--28.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@27.10--28.42) [217356]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@27.10--28.42) [59690]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
     
     // -- Check definedness of (forperm r: Ref [P(r)] :: false)
       if (*) {
-        if (HasDirectPerm(Mask, null, P(r_28))) {
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access P(r) (0231.vpr@27.10--28.42) [217357]"}
-            HasDirectPerm(ExhaleWellDef0Mask, null, P(r_28));
+        if (HasDirectPerm(Mask, null, P(r_16))) {
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access P(r) (0231.vpr@27.10--28.42) [59691]"}
+            HasDirectPerm(ExhaleWellDef0Mask, null, P(r_16));
         }
         assume false;
       }
-    assert {:msg "  Exhale might fail. Assertion (forperm r: Ref [P(r)] :: false) might not hold. (0231.vpr@27.10--28.42) [217358]"}
+    assert {:msg "  Exhale might fail. Assertion (forperm r: Ref [P(r)] :: false) might not hold. (0231.vpr@27.10--28.42) [59692]"}
       (forall r_1_1: Ref ::
       { Mask[null, P(r_1_1)] } { Heap[null, P(r_1_1)] }
       HasDirectPerm(Mask, null, P(r_1_1)) ==> false
@@ -416,11 +416,11 @@ procedure test02b(this: Ref) returns ()
 procedure test04a(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -434,8 +434,8 @@ procedure test04a(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(P(this), write) -- 0231.vpr@33.3--33.22
     perm := FullPerm;
@@ -445,15 +445,15 @@ procedure test04a(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(P(this), write) && perm(P(this)) >= write -- 0231.vpr@36.3--36.48
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@36.10--36.48) [217361]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@36.10--36.48) [59695]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
-    assert {:msg "  Exhale might fail. Assertion perm(P(this)) >= write might not hold. (0231.vpr@36.10--36.48) [217362]"}
+    assert {:msg "  Exhale might fail. Assertion perm(P(this)) >= write might not hold. (0231.vpr@36.10--36.48) [59696]"}
       FullPerm <= Mask[null, P(this)];
     // Finish exhale
     havoc ExhaleHeap;
@@ -469,11 +469,11 @@ procedure test04a(this: Ref) returns ()
 procedure test04b(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -487,8 +487,8 @@ procedure test04b(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(P(this), write) -- 0231.vpr@40.3--40.22
     perm := FullPerm;
@@ -498,11 +498,11 @@ procedure test04b(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(P(this), write) -- 0231.vpr@42.3--42.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@42.10--42.22) [217365]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@42.10--42.22) [59699]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -513,12 +513,12 @@ procedure test04b(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale perm(P(this)) >= write ==> acc(P(this), write) -- 0231.vpr@43.3--43.51
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (FullPerm <= Mask[null, P(this)]) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@43.11--43.50) [217367]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@43.11--43.50) [59701]"}
           perm <= Mask[null, P(this)];
       }
       Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -537,11 +537,11 @@ procedure test04b(this: Ref) returns ()
 procedure test04c(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -555,8 +555,8 @@ procedure test04c(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(P(this), write) -- 0231.vpr@47.3--47.22
     perm := FullPerm;
@@ -567,18 +567,18 @@ procedure test04c(this: Ref) returns ()
   
   // -- Translating statement: exhale acc(P(this), write) &&
   //   (perm(P(this)) >= write ==> acc(P(this), write)) -- 0231.vpr@49.3--49.67
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@49.10--49.67) [217370]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@49.10--49.67) [59704]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
     if (FullPerm <= Mask[null, P(this)]) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@49.10--49.67) [217372]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@49.10--49.67) [59706]"}
           perm <= Mask[null, P(this)];
       }
       Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -597,10 +597,10 @@ procedure test04c(this: Ref) returns ()
 procedure test03a(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -617,20 +617,20 @@ procedure test03a(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (true) -- 0231.vpr@55.3--59.5
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (NoPerm < Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant [true, perm(P(this)) > none ==> acc(P(this), write)] might not hold on entry. There might be insufficient permission to access P(this) (0231.vpr@57.15--57.62) [217373]"}
+            assert {:msg "  Loop invariant [true, perm(P(this)) > none ==> acc(P(this), write)] might not hold on entry. There might be insufficient permission to access P(this) (0231.vpr@57.15--57.62) [59707]"}
               perm <= Mask[null, P(this)];
           }
           Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -638,7 +638,7 @@ procedure test03a(this: Ref) returns ()
         if (FullPerm <= Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant [true, perm(P(this)) >= write ==> acc(P(this), write)] might not hold on entry. There might be insufficient permission to access P(this) (0231.vpr@58.15--58.64) [217374]"}
+            assert {:msg "  Loop invariant [true, perm(P(this)) >= write ==> acc(P(this), write)] might not hold on entry. There might be insufficient permission to access P(this) (0231.vpr@58.15--58.64) [59708]"}
               perm <= Mask[null, P(this)];
           }
           Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -674,12 +674,12 @@ procedure test03a(this: Ref) returns ()
         // Check and assume guard
         assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (NoPerm < Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant [true, perm(P(this)) > none ==> acc(P(this), write)] might not be preserved. There might be insufficient permission to access P(this) (0231.vpr@57.15--57.62) [217375]"}
+            assert {:msg "  Loop invariant [true, perm(P(this)) > none ==> acc(P(this), write)] might not be preserved. There might be insufficient permission to access P(this) (0231.vpr@57.15--57.62) [59709]"}
               perm <= Mask[null, P(this)];
           }
           Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -687,7 +687,7 @@ procedure test03a(this: Ref) returns ()
         if (FullPerm <= Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant [true, perm(P(this)) >= write ==> acc(P(this), write)] might not be preserved. There might be insufficient permission to access P(this) (0231.vpr@58.15--58.64) [217376]"}
+            assert {:msg "  Loop invariant [true, perm(P(this)) >= write ==> acc(P(this), write)] might not be preserved. There might be insufficient permission to access P(this) (0231.vpr@58.15--58.64) [59710]"}
               perm <= Mask[null, P(this)];
           }
           Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -717,10 +717,10 @@ procedure test03a(this: Ref) returns ()
 procedure test03b(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -737,20 +737,20 @@ procedure test03b(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (true) -- 0231.vpr@65.3--71.4
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (NoPerm < Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant [true, perm(P(this)) > none ==> acc(P(this), write)] might not hold on entry. There might be insufficient permission to access P(this) (0231.vpr@67.15--67.62) [217377]"}
+            assert {:msg "  Loop invariant [true, perm(P(this)) > none ==> acc(P(this), write)] might not hold on entry. There might be insufficient permission to access P(this) (0231.vpr@67.15--67.62) [59711]"}
               perm <= Mask[null, P(this)];
           }
           Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -758,7 +758,7 @@ procedure test03b(this: Ref) returns ()
         if (FullPerm <= Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant [true, perm(P(this)) >= write ==> acc(P(this), write)] might not hold on entry. There might be insufficient permission to access P(this) (0231.vpr@68.15--68.64) [217378]"}
+            assert {:msg "  Loop invariant [true, perm(P(this)) >= write ==> acc(P(this), write)] might not hold on entry. There might be insufficient permission to access P(this) (0231.vpr@68.15--68.64) [59712]"}
               perm <= Mask[null, P(this)];
           }
           Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -797,11 +797,11 @@ procedure test03b(this: Ref) returns ()
         // -- Translate loop body
           
           // -- Translating statement: exhale acc(P(this), write) -- 0231.vpr@70.5--70.24
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@70.12--70.24) [217379]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@70.12--70.24) [59713]"}
                 perm <= Mask[null, P(this)];
             }
             Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -811,12 +811,12 @@ procedure test03b(this: Ref) returns ()
             Heap := ExhaleHeap;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (NoPerm < Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant [true, perm(P(this)) > none ==> acc(P(this), write)] might not be preserved. There might be insufficient permission to access P(this) (0231.vpr@67.15--67.62) [217380]"}
+            assert {:msg "  Loop invariant [true, perm(P(this)) > none ==> acc(P(this), write)] might not be preserved. There might be insufficient permission to access P(this) (0231.vpr@67.15--67.62) [59714]"}
               perm <= Mask[null, P(this)];
           }
           Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -824,7 +824,7 @@ procedure test03b(this: Ref) returns ()
         if (FullPerm <= Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant [true, perm(P(this)) >= write ==> acc(P(this), write)] might not be preserved. There might be insufficient permission to access P(this) (0231.vpr@68.15--68.64) [217381]"}
+            assert {:msg "  Loop invariant [true, perm(P(this)) >= write ==> acc(P(this), write)] might not be preserved. There might be insufficient permission to access P(this) (0231.vpr@68.15--68.64) [59715]"}
               perm <= Mask[null, P(this)];
           }
           Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];

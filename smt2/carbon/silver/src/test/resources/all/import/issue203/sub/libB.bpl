@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:45
+// Date:         2025-01-26 21:43:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/issue203/sub/libB.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/issue203/sub/libB-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,10 +181,10 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type DDomainType;
 
 // Translation of domain function b1
-function  b1_2(): bool;
+function  b1_1(): bool;
 
 // Translation of domain function b2
-function  b2_2(): bool;
+function  b2_1(): bool;
 
 // Translation of domain axiom bothTrue
-axiom (b1_2(): bool) && (b2_2(): bool);
+axiom (b1_1(): bool) && (b2_1(): bool);

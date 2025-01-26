@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:58
+// Date:         2025-01-26 21:44:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/ImplicationsToDisjunction/traverseEverything.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/ImplicationsToDisjunction/traverseEverything-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -228,8 +228,8 @@ function  fun#triggerStateless(): bool;
 procedure fun#definedness() returns (Result: bool)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -244,8 +244,8 @@ procedure fun#definedness() returns (Result: bool)
     Result := true;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -253,17 +253,17 @@ procedure fun#definedness() returns (Result: bool)
 // ==================================================
 
 type PredicateType_pred;
-function  pred_3(): Field PredicateType_pred FrameType;
+function  pred_1(): Field PredicateType_pred FrameType;
 function  pred#sm(): Field PredicateType_pred PMaskType;
-axiom PredicateMaskField(pred_3()) == pred#sm();
-axiom IsPredicateField(pred_3());
-axiom getPredWandId(pred_3()) == 0;
+axiom PredicateMaskField(pred_1()) == pred#sm();
+axiom IsPredicateField(pred_1());
+axiom getPredWandId(pred_1()) == 0;
 function  pred#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  pred#everUsed<A>(pred: (Field A FrameType)): bool;
 
 axiom (forall Heap: HeapType ::
-  { pred#trigger(Heap, pred_3()) }
-  pred#everUsed(pred_3())
+  { pred#trigger(Heap, pred_1()) }
+  pred#everUsed(pred_1())
 );
 
 procedure pred#definedness() returns ()
@@ -287,12 +287,12 @@ procedure pred#definedness() returns ()
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var b_24: bool;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -309,8 +309,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -322,8 +322,8 @@ procedure main() returns ()
   }
   
   // -- Translating statement: assert true ==> true -- traverseEverything.vpr@9.4--9.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (true ==> true) -- traverseEverything.vpr@11.4--15.5
@@ -331,8 +331,8 @@ procedure main() returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
     
     // -- Havoc loop written variables (except locals)
       havoc b_24;
@@ -361,8 +361,8 @@ procedure main() returns ()
             b_24 := true;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         // Terminate execution
         assume false;
       }
@@ -374,6 +374,6 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }

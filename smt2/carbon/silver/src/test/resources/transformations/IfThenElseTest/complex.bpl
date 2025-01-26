@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:54
+// Date:         2025-01-26 21:44:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/IfThenElseTest/complex.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/IfThenElseTest/complex-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,12 +180,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
   var y: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_i: int;
@@ -198,8 +198,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 0 -- complex.vpr@6.4--6.19
     x := 0;
@@ -210,8 +210,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 1 + 2 * 3 + 4 * 5 == 1 + 2 * 3 + 4 * 5 -- complex.vpr@9.4--9.34
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: foo(1 + 3) -- complex.vpr@10.4--10.12
@@ -228,11 +228,11 @@ procedure main() returns ()
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(i: int) returns ()
+procedure foo_3(i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -242,6 +242,6 @@ procedure foo_1(i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }

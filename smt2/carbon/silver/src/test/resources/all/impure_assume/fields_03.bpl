@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:59
+// Date:         2025-01-26 21:41:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/fields_03.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/fields_03-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,7 +181,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type __ns__impure_assume_rewriterDomainType;
 
 // Translation of domain function __iar__assume_helper_1
-function  __iar__assume_helper_1(c_1_2: bool, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_1(c_1_2: bool, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain axiom __iar__assume_helper_1_axiom
 axiom (forall c_1: bool, p_1_1: Perm, p_0_1: Perm ::
@@ -225,7 +225,7 @@ procedure test01(a_2: Ref, x: Ref, y: Ref, p_1: Perm, q_1: Perm) returns ()
     assume NoPerm <= p_1;
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (fields_03.vpr@8.12--8.25) [150029]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (fields_03.vpr@8.12--8.25) [20991]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> a_2 != null;
     Mask := Mask[a_2, f_7:=Mask[a_2, f_7] + perm];
@@ -251,18 +251,18 @@ procedure test01(a_2: Ref, x: Ref, y: Ref, p_1: Perm, q_1: Perm) returns ()
   // -- Translating statement: assert none <= p && p <= 1 / 2 -- fields_03.vpr@12.3--12.31
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion none <= p might not hold. (fields_03.vpr@12.10--12.31) [150030]"}
+    assert {:msg "  Assert might fail. Assertion none <= p might not hold. (fields_03.vpr@12.10--12.31) [20992]"}
       NoPerm <= p_1;
-    assert {:msg "  Assert might fail. Assertion p <= 1 / 2 might not hold. (fields_03.vpr@12.10--12.31) [150031]"}
+    assert {:msg "  Assert might fail. Assertion p <= 1 / 2 might not hold. (fields_03.vpr@12.10--12.31) [20993]"}
       p_1 <= 1 / 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert none <= q && q <= 1 / 2 -- fields_03.vpr@13.3--13.31
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion none <= q might not hold. (fields_03.vpr@13.10--13.31) [150032]"}
+    assert {:msg "  Assert might fail. Assertion none <= q might not hold. (fields_03.vpr@13.10--13.31) [20994]"}
       NoPerm <= q_1;
-    assert {:msg "  Assert might fail. Assertion q <= 1 / 2 might not hold. (fields_03.vpr@13.10--13.31) [150033]"}
+    assert {:msg "  Assert might fail. Assertion q <= 1 / 2 might not hold. (fields_03.vpr@13.10--13.31) [20995]"}
       q_1 <= 1 / 2;
     assume state(Heap, Mask);
   
@@ -270,9 +270,9 @@ procedure test01(a_2: Ref, x: Ref, y: Ref, p_1: Perm, q_1: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     if (x == y) {
-      assert {:msg "  Assert might fail. Assertion none <= q might not hold. (fields_03.vpr@14.10--14.44) [150034]"}
+      assert {:msg "  Assert might fail. Assertion none <= q might not hold. (fields_03.vpr@14.10--14.44) [20996]"}
         NoPerm <= q_1;
-      assert {:msg "  Assert might fail. Assertion q <= 1 / 2 - p might not hold. (fields_03.vpr@14.10--14.44) [150035]"}
+      assert {:msg "  Assert might fail. Assertion q <= 1 / 2 - p might not hold. (fields_03.vpr@14.10--14.44) [20997]"}
         q_1 <= 1 / 2 - p_1;
     }
     assume state(Heap, Mask);
@@ -281,9 +281,9 @@ procedure test01(a_2: Ref, x: Ref, y: Ref, p_1: Perm, q_1: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     if (x == y) {
-      assert {:msg "  Assert might fail. Assertion none <= q might not hold. (fields_03.vpr@17.10--17.40) [150036]"}
+      assert {:msg "  Assert might fail. Assertion none <= q might not hold. (fields_03.vpr@17.10--17.40) [20998]"}
         NoPerm <= q_1;
-      assert {:msg "  Assert might fail. Assertion q <= p might not hold. (fields_03.vpr@17.10--17.40) [150037]"}
+      assert {:msg "  Assert might fail. Assertion q <= p might not hold. (fields_03.vpr@17.10--17.40) [20999]"}
         q_1 <= p_1;
     }
     assume state(Heap, Mask);
@@ -344,7 +344,7 @@ procedure test02(a_2: Ref, x: Ref, y: Ref, b1: bool, b2: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     if (b1) {
-      assert {:msg "  Assert might fail. Assertion x == a might not hold. (fields_03.vpr@25.10--25.23) [150038]"}
+      assert {:msg "  Assert might fail. Assertion x == a might not hold. (fields_03.vpr@25.10--25.23) [21000]"}
         x == a_2;
     }
     assume state(Heap, Mask);
@@ -353,7 +353,7 @@ procedure test02(a_2: Ref, x: Ref, y: Ref, b1: bool, b2: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     if (b2) {
-      assert {:msg "  Assert might fail. Assertion y == a might not hold. (fields_03.vpr@26.10--26.23) [150039]"}
+      assert {:msg "  Assert might fail. Assertion y == a might not hold. (fields_03.vpr@26.10--26.23) [21001]"}
         y == a_2;
     }
     assume state(Heap, Mask);
@@ -362,7 +362,7 @@ procedure test02(a_2: Ref, x: Ref, y: Ref, b1: bool, b2: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     if (b1 && b2) {
-      assert {:msg "  Assert might fail. Assertion false might not hold. (fields_03.vpr@27.10--27.28) [150040]"}
+      assert {:msg "  Assert might fail. Assertion false might not hold. (fields_03.vpr@27.10--27.28) [21002]"}
         false;
     }
     assume state(Heap, Mask);
@@ -423,7 +423,7 @@ procedure test03(a_2: Ref, x: Ref, y: Ref, b1: bool, b2: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     if (b2) {
-      assert {:msg "  Assert might fail. Assertion false might not hold. (fields_03.vpr@36.10--36.22) [150041]"}
+      assert {:msg "  Assert might fail. Assertion false might not hold. (fields_03.vpr@36.10--36.22) [21003]"}
         false;
     }
     assume state(Heap, Mask);

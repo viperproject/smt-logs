@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:14:30
+// Date:         2025-01-26 21:43:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/axiom_call_func.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/axiom_call_func-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -184,7 +184,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type dDomainType;
 
 // Translation of domain function unint
-function  unint(i_79: int): int;
+function  unint(i_6: int): int;
 
 // Translation of anonymous domain axiom
 axiom (forall i: int ::
@@ -246,7 +246,7 @@ procedure interp#definedness(i: int) returns (Result: int)
 // Translation of method huh
 // ==================================================
 
-procedure huh() returns ()
+procedure huh_1() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -269,14 +269,14 @@ procedure huh() returns ()
   // -- Translating statement: assert unint(4) == 6 -- axiom_call_func.vpr@19.3--19.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion unint(4) == 6 might not hold. (axiom_call_func.vpr@19.10--19.23) [142860]"}
+    assert {:msg "  Assert might fail. Assertion unint(4) == 6 might not hold. (axiom_call_func.vpr@19.10--19.23) [93414]"}
       (unint(4): int) == 6;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert unint(14) == 14 -- axiom_call_func.vpr@22.3--22.25
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion unint(14) == 14 might not hold. (axiom_call_func.vpr@22.10--22.25) [142861]"}
+    assert {:msg "  Assert might fail. Assertion unint(14) == 14 might not hold. (axiom_call_func.vpr@22.10--22.25) [93415]"}
       (unint(14): int) == 14;
     assume state(Heap, Mask);
 }

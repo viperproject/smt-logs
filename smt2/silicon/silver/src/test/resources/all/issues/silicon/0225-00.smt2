@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:46:28
+; Started: 2025-01-26 21:34:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -142,11 +142,11 @@
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   (= (f4%limited s@$ j@0@00) (f4 s@$ j@0@00))
   :pattern ((f4 s@$ j@0@00))
-  :qid |quant-u-25132|)))
+  :qid |quant-u-11104|)))
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   (f4%stateless j@0@00)
   :pattern ((f4%limited s@$ j@0@00))
-  :qid |quant-u-25133|)))
+  :qid |quant-u-11105|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -158,11 +158,11 @@
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   (=> (f4%precondition s@$ j@0@00) (= (f4 s@$ j@0@00) true))
   :pattern ((f4 s@$ j@0@00))
-  :qid |quant-u-25136|)))
+  :qid |quant-u-11108|)))
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   true
   :pattern ((f4 s@$ j@0@00))
-  :qid |quant-u-25137|)))
+  :qid |quant-u-11109|)))
 ; ---------- FUNCTION f2----------
 (declare-fun x@2@00 () $Ref)
 (declare-fun y@3@00 () Int)
@@ -175,11 +175,11 @@
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (y@3@00 Int)) (!
   (= (f2%limited s@$ x@2@00 y@3@00) (f2 s@$ x@2@00 y@3@00))
   :pattern ((f2 s@$ x@2@00 y@3@00))
-  :qid |quant-u-25134|)))
+  :qid |quant-u-11106|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (y@3@00 Int)) (!
   (f2%stateless x@2@00 y@3@00)
   :pattern ((f2%limited s@$ x@2@00 y@3@00))
-  :qid |quant-u-25135|)))
+  :qid |quant-u-11107|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= x@2@00 $Ref.null)))
@@ -192,9 +192,9 @@
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (y@3@00 Int)) (!
   (=> (f2%precondition s@$ x@2@00 y@3@00) (= (f2 s@$ x@2@00 y@3@00) y@3@00))
   :pattern ((f2 s@$ x@2@00 y@3@00))
-  :qid |quant-u-25138|)))
+  :qid |quant-u-11110|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (y@3@00 Int)) (!
   true
   :pattern ((f2 s@$ x@2@00 y@3@00))
-  :qid |quant-u-25139|)))
+  :qid |quant-u-11111|)))
 ; ---------- P ----------

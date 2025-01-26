@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:31
+// Date:         2025-01-26 21:43:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0200.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0200-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -206,14 +206,14 @@ axiom (forall Heap: HeapType, self: Ref ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, self: Ref ::
   { state(Heap, Mask), SCIONPath_get_hof(Heap, self) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> SCIONPath_get_hof(Heap, self) == (if unbox(Heap, box(Heap, false)) then null else null)
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> SCIONPath_get_hof(Heap, self) == (if unbox(Heap, box_1(Heap, false)) then null else null)
 );
 
 // Framing axioms
 function  SCIONPath_get_hof#frame(frame: FrameType, self: Ref): Ref;
 axiom (forall Heap: HeapType, Mask: MaskType, self: Ref ::
   { state(Heap, Mask), SCIONPath_get_hof'(Heap, self) }
-  state(Heap, Mask) ==> SCIONPath_get_hof'(Heap, self) == SCIONPath_get_hof#frame(Heap[null, outer(self)], self)
+  state(Heap, Mask) ==> SCIONPath_get_hof'(Heap, self) == SCIONPath_get_hof#frame(Heap[null, outer_1(self)], self)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -230,8 +230,8 @@ procedure SCIONPath_get_hof#definedness(self: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var idx_0_1: int;
   
   // -- Initializing the state
@@ -244,7 +244,7 @@ procedure SCIONPath_get_hof#definedness(self: Ref) returns (Result: Ref)
   // -- Inhaling precondition (with checking)
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, outer(self):=Mask[null, outer(self)] + perm];
+    Mask := Mask[null, outer_1(self):=Mask[null, outer_1(self)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -253,20 +253,20 @@ procedure SCIONPath_get_hof#definedness(self: Ref) returns (Result: Ref)
     // -- Check definedness of (let idx_0 == ((unfolding acc(outer(self), wildcard) in self.whatever)) in (unbox(box(false)) ? null : null))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume outer#trigger(UnfoldingHeap, outer(self));
-      assume UnfoldingHeap[null, outer(self)] == FrameFragment(UnfoldingHeap[self, whatever]);
-      ExhaleWellDef0Mask := UnfoldingMask;
+      assume outer#trigger_1(UnfoldingHeap, outer_1(self));
+      assume UnfoldingHeap[null, outer_1(self)] == FrameFragment(UnfoldingHeap[self, whatever]);
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access outer(self) (0200.vpr@4.1--12.2) [195306]"}
-        NoPerm < perm ==> NoPerm < UnfoldingMask[null, outer(self)];
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access outer(self) (0200.vpr@4.1--12.2) [82464]"}
+        NoPerm < perm ==> NoPerm < UnfoldingMask[null, outer_1(self)];
       havoc wildcard;
       perm := wildcard;
       assume self != null;
       UnfoldingMask := UnfoldingMask[self, whatever:=UnfoldingMask[self, whatever] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.whatever (0200.vpr@4.1--12.2) [195307]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access self.whatever (0200.vpr@4.1--12.2) [82465]"}
         HasDirectPerm(UnfoldingMask, self, whatever);
       
       // -- Free assumptions (exp module)
@@ -279,16 +279,16 @@ procedure SCIONPath_get_hof#definedness(self: Ref) returns (Result: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function unbox might not hold. Assertion isBool(box(false)) might not hold. (0200.vpr@11.4--11.21) [195308]"}
-          isBool(Heap, box(Heap, false));
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function unbox might not hold. Assertion isBool(box(false)) might not hold. (0200.vpr@11.4--11.21) [82466]"}
+          isBool(Heap, box_1(Heap, false));
         // Stop execution
         assume false;
       }
   
   // -- Translate function body
-    Result := (if unbox(Heap, box(Heap, false)) then null else null);
+    Result := (if unbox(Heap, box_1(Heap, false)) then null else null);
 }
 
 // ==================================================
@@ -338,11 +338,11 @@ procedure isBool#definedness(r_1: Ref) returns (Result: bool)
 // ==================================================
 
 // Uninterpreted function definitions
-function  box(Heap: HeapType, b_24: bool): Ref;
+function  box_1(Heap: HeapType, b_24: bool): Ref;
 function  box'(Heap: HeapType, b_24: bool): Ref;
 axiom (forall Heap: HeapType, b_24: bool ::
-  { box(Heap, b_24) }
-  box(Heap, b_24) == box'(Heap, b_24) && dummyFunction(box#triggerStateless(b_24))
+  { box_1(Heap, b_24) }
+  box_1(Heap, b_24) == box'(Heap, b_24) && dummyFunction(box#triggerStateless(b_24))
 );
 axiom (forall Heap: HeapType, b_24: bool ::
   { box'(Heap, b_24) }
@@ -449,25 +449,25 @@ procedure unbox#definedness(r_1: Ref) returns (Result: bool)
 // ==================================================
 
 type PredicateType_outer;
-function  outer(r_1: Ref): Field PredicateType_outer FrameType;
+function  outer_1(r_1: Ref): Field PredicateType_outer FrameType;
 function  outer#sm(r_1: Ref): Field PredicateType_outer PMaskType;
 axiom (forall r_1: Ref ::
-  { PredicateMaskField(outer(r_1)) }
-  PredicateMaskField(outer(r_1)) == outer#sm(r_1)
+  { PredicateMaskField(outer_1(r_1)) }
+  PredicateMaskField(outer_1(r_1)) == outer#sm(r_1)
 );
 axiom (forall r_1: Ref ::
-  { outer(r_1) }
-  IsPredicateField(outer(r_1))
+  { outer_1(r_1) }
+  IsPredicateField(outer_1(r_1))
 );
 axiom (forall r_1: Ref ::
-  { outer(r_1) }
-  getPredWandId(outer(r_1)) == 0
+  { outer_1(r_1) }
+  getPredWandId(outer_1(r_1)) == 0
 );
-function  outer#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
+function  outer#trigger_1<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  outer#everUsed<A>(pred: (Field A FrameType)): bool;
 axiom (forall r_1: Ref, r2: Ref ::
-  { outer(r_1), outer(r2) }
-  outer(r_1) == outer(r2) ==> r_1 == r2
+  { outer_1(r_1), outer_1(r2) }
+  outer_1(r_1) == outer_1(r2) ==> r_1 == r2
 );
 axiom (forall r_1: Ref, r2: Ref ::
   { outer#sm(r_1), outer#sm(r2) }
@@ -475,8 +475,8 @@ axiom (forall r_1: Ref, r2: Ref ::
 );
 
 axiom (forall Heap: HeapType, r_1: Ref ::
-  { outer#trigger(Heap, outer(r_1)) }
-  outer#everUsed(outer(r_1))
+  { outer#trigger_1(Heap, outer_1(r_1)) }
+  outer#everUsed(outer_1(r_1))
 );
 
 procedure outer#definedness(r_1: Ref) returns ()

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:14:09
+// Date:         2025-01-26 21:41:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/permWandApply.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/permWandApply-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -225,7 +225,7 @@ axiom !IsWandField(g);
 // Translation of method m
 // ==================================================
 
-procedure m(x: Ref, y: Ref) returns ()
+procedure m_17(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -327,7 +327,7 @@ procedure m(x: Ref, y: Ref) returns ()
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion perm(acc(x.f, write) --* acc(x.g, write)) == write might not hold. (permWandApply.vpr@11.12--11.48) [141953]"}
+    assert {:msg "  Assert might fail. Assertion perm(acc(x.f, write) --* acc(x.g, write)) == write might not hold. (permWandApply.vpr@11.12--11.48) [52641]"}
       Mask[null, wand(x, FullPerm, x, FullPerm)] == FullPerm;
     assume state(Heap, Mask);
   
@@ -337,7 +337,7 @@ procedure m(x: Ref, y: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (permWandApply.vpr@12.5--12.32) [141954]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (permWandApply.vpr@12.5--12.32) [52642]"}
         FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm)];
       Mask := Mask[null, wand(x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
@@ -347,7 +347,7 @@ procedure m(x: Ref, y: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (permWandApply.vpr@12.5--12.32) [141956]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (permWandApply.vpr@12.5--12.32) [52644]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -393,7 +393,7 @@ procedure m(x: Ref, y: Ref) returns ()
         assume state(WandDefRHSHeap, WandDefRHSMask);
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion perm(acc(x.f, write) --* acc(x.g, write)) == none might not hold. (permWandApply.vpr@13.12--13.48) [141958]"}
+    assert {:msg "  Assert might fail. Assertion perm(acc(x.f, write) --* acc(x.g, write)) == none might not hold. (permWandApply.vpr@13.12--13.48) [52646]"}
       Mask[null, wand(x, FullPerm, x, FullPerm)] == NoPerm;
     assume state(Heap, Mask);
 }

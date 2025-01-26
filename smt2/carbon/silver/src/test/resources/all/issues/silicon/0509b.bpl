@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:49
+// Date:         2025-01-26 21:42:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0509b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0509b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_20: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_20, f_17] }
-  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_17], $allocated]
+axiom (forall o_54: Ref, f_24: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_54, f_24] }
+  Heap[o_54, $allocated] ==> Heap[Heap[o_54, f_24], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref, f_24: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, f_24] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_27, f_24) ==> Heap[o_27, f_24] == ExhaleHeap[o_27, f_24]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref, f_54: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, f_54] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_55, f_54) ==> Heap[o_55, f_54] == ExhaleHeap[o_55, f_54]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9), ExhaleHeap[null, PredicateMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> Heap[null, PredicateMaskField(pm_f_9)] == ExhaleHeap[null, PredicateMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32), ExhaleHeap[null, PredicateMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> Heap[null, PredicateMaskField(pm_f_32)] == ExhaleHeap[null, PredicateMaskField(pm_f_32)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, PredicateMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, PredicateMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9), ExhaleHeap[null, WandMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> Heap[null, WandMaskField(pm_f_9)] == ExhaleHeap[null, WandMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32), ExhaleHeap[null, WandMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> Heap[null, WandMaskField(pm_f_32)] == ExhaleHeap[null, WandMaskField(pm_f_32)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, WandMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, WandMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_27, $allocated] ==> ExhaleHeap[o_27, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_55, $allocated] ==> ExhaleHeap[o_55, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_31: (Field A B), v: B ::
-  { Heap[o_20, f_31:=v] }
-  succHeap(Heap, Heap[o_20, f_31:=v])
+axiom (forall <A, B> Heap: HeapType, o_54: Ref, f_8: (Field A B), v: B ::
+  { Heap[o_54, f_8:=v] }
+  succHeap(Heap, Heap[o_54, f_8:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -381,11 +381,11 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 // Uninterpreted function definitions
-function  lookup_1(Heap: HeapType, r_1: Ref, i: int): int;
+function  lookup(Heap: HeapType, r_1: Ref, i: int): int;
 function  lookup'(Heap: HeapType, r_1: Ref, i: int): int;
 axiom (forall Heap: HeapType, r_1: Ref, i: int ::
-  { lookup_1(Heap, r_1, i) }
-  lookup_1(Heap, r_1, i) == lookup'(Heap, r_1, i) && dummyFunction(lookup#triggerStateless(r_1, i))
+  { lookup(Heap, r_1, i) }
+  lookup(Heap, r_1, i) == lookup'(Heap, r_1, i) && dummyFunction(lookup#triggerStateless(r_1, i))
 );
 axiom (forall Heap: HeapType, r_1: Ref, i: int ::
   { lookup'(Heap, r_1, i) }
@@ -485,16 +485,16 @@ procedure main(r1: Ref, r2: Ref) returns ()
 {
   var before_lblGuard: bool;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var s_2: (Set Ref);
-  var LabelbeforeMask: MaskType;
+  var s_1: (Set Ref);
   var LabelbeforeHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var LabelbeforeMask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -521,30 +521,30 @@ procedure main(r1: Ref, r2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale r1.f == 1 -- 0509b.vpr@16.10--16.19
     
     // -- Check definedness of r1.f == 1
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@16.10--16.19) [207029]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@16.10--16.19) [73911]"}
         HasDirectPerm(Mask, r1, f_7);
     assume Heap[r1, f_7] == 1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@17.3--17.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@17.10--17.32) [207031]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@17.10--17.32) [73913]"}
         perm <= Mask[r1, f_7];
     }
     Mask := Mask[r1, f_7:=Mask[r1, f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@17.10--17.32) [207033]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@17.10--17.32) [73915]"}
         perm <= Mask[r2, f_7];
     }
     Mask := Mask[r2, f_7:=Mask[r2, f_7] - perm];
@@ -569,14 +569,14 @@ procedure main(r1: Ref, r2: Ref) returns ()
   // -- Translating statement: inhale r1.f == 3 -- 0509b.vpr@19.10--19.19
     
     // -- Check definedness of r1.f == 3
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@19.10--19.19) [207036]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@19.10--19.19) [73918]"}
         HasDirectPerm(Mask, r1, f_7);
     assume Heap[r1, f_7] == 3;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: s := Set(r1, r2) -- 0509b.vpr@21.3--21.19
-    s_2 := Set#UnionOne(Set#Singleton(r2), r1);
+    s_1 := Set#UnionOne(Set#Singleton(r2), r1);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale lookup(r1, 5) > 3 -- 0509b.vpr@22.10--22.27
@@ -585,10 +585,10 @@ procedure main(r1: Ref, r2: Ref) returns ()
     // -- Check definedness of lookup(r1, 5) > 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@22.10--22.23) [207037]"}
+        assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@22.10--22.23) [73919]"}
           NoPerm < perm ==> NoPerm < Mask[r1, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -597,29 +597,29 @@ procedure main(r1: Ref, r2: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assume lookup_1(Heap, r1, 5) > 3;
+    assume lookup(Heap, r1, 5) > 3;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: label before -- 0509b.vpr@23.3--23.15
-    before_1:
-    LabelbeforeMask := Mask;
+    before:
     LabelbeforeHeap := Heap;
+    LabelbeforeMask := Mask;
     before_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@24.3--24.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@24.10--24.32) [207039]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@24.10--24.32) [73921]"}
         perm <= Mask[r1, f_7];
     }
     Mask := Mask[r1, f_7:=Mask[r1, f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@24.10--24.32) [207041]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@24.10--24.32) [73923]"}
         perm <= Mask[r2, f_7];
     }
     Mask := Mask[r2, f_7:=Mask[r2, f_7] - perm];
@@ -644,7 +644,7 @@ procedure main(r1: Ref, r2: Ref) returns ()
   // -- Translating statement: inhale r1.f == 4 -- 0509b.vpr@26.10--26.19
     
     // -- Check definedness of r1.f == 4
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@26.10--26.19) [207044]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@26.10--26.19) [73926]"}
         HasDirectPerm(Mask, r1, f_7);
     assume Heap[r1, f_7] == 4;
     assume state(Heap, Mask);
@@ -659,10 +659,10 @@ procedure main(r1: Ref, r2: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@27.58--27.72) [207045]"}
+          assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@27.58--27.72) [73927]"}
             NoPerm < perm ==> NoPerm < Mask[r1, f_7];
           // Finish exhale
           havoc ExhaleHeap;
@@ -671,14 +671,14 @@ procedure main(r1: Ref, r2: Ref) returns ()
           // Stop execution
           assume false;
         }
-        assert {:msg "  Inhale might fail. Did not reach labelled state before required to evaluate old[before](lookup(r1, i)). (0509b.vpr@27.10--27.102) [207046]"}
+        assert {:msg "  Inhale might fail. Did not reach labelled state before required to evaluate old[before](lookup(r1, i)). (0509b.vpr@27.10--27.102) [73928]"}
           before_lblGuard;
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := LabelbeforeMask;
           ExhaleWellDef0Heap := LabelbeforeHeap;
+          ExhaleWellDef0Mask := LabelbeforeMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@27.88--27.101) [207047]"}
+          assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@27.88--27.101) [73929]"}
             NoPerm < perm ==> NoPerm < LabelbeforeMask[r1, f_7];
           // Finish exhale
           havoc ExhaleHeap;
@@ -691,22 +691,22 @@ procedure main(r1: Ref, r2: Ref) returns ()
       }
     assume (forall i_1: int ::
       { lookup#frame(FrameFragment(LabelbeforeHeap[r1, f_7]), r1, i_1) }
-      lookup2(Heap, r1, i_1) == lookup_1(LabelbeforeHeap, r1, i_1)
+      lookup2(Heap, r1, i_1) == lookup(LabelbeforeHeap, r1, i_1)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert lookup2(r1, 5) > 2 -- 0509b.vpr@29.3--29.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of lookup2(r1, 5) > 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@29.10--29.24) [207048]"}
+        assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@29.10--29.24) [73930]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r1, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -715,7 +715,7 @@ procedure main(r1: Ref, r2: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion lookup2(r1, 5) > 2 might not hold. (0509b.vpr@29.10--29.28) [207049]"}
+    assert {:msg "  Assert might fail. Assertion lookup2(r1, 5) > 2 might not hold. (0509b.vpr@29.10--29.28) [73931]"}
       lookup2(Heap, r1, 5) > 2;
     assume state(Heap, Mask);
 }
@@ -729,16 +729,16 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
 {
   var before_lblGuard: bool;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var s_2: (Set Ref);
-  var LabelbeforeMask: MaskType;
+  var s_1: (Set Ref);
   var LabelbeforeHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var LabelbeforeMask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -765,30 +765,30 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale r1.f == 1 -- 0509b.vpr@35.10--35.19
     
     // -- Check definedness of r1.f == 1
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@35.10--35.19) [207050]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@35.10--35.19) [73932]"}
         HasDirectPerm(Mask, r1, f_7);
     assume Heap[r1, f_7] == 1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@36.3--36.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@36.10--36.32) [207052]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@36.10--36.32) [73934]"}
         perm <= Mask[r1, f_7];
     }
     Mask := Mask[r1, f_7:=Mask[r1, f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@36.10--36.32) [207054]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@36.10--36.32) [73936]"}
         perm <= Mask[r2, f_7];
     }
     Mask := Mask[r2, f_7:=Mask[r2, f_7] - perm];
@@ -813,14 +813,14 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
   // -- Translating statement: inhale r1.f == 3 -- 0509b.vpr@38.10--38.19
     
     // -- Check definedness of r1.f == 3
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@38.10--38.19) [207057]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@38.10--38.19) [73939]"}
         HasDirectPerm(Mask, r1, f_7);
     assume Heap[r1, f_7] == 3;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: s := Set(r1, r2) -- 0509b.vpr@40.3--40.19
-    s_2 := Set#UnionOne(Set#Singleton(r2), r1);
+    s_1 := Set#UnionOne(Set#Singleton(r2), r1);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale lookup(r1, 5) > 3 -- 0509b.vpr@41.10--41.27
@@ -829,10 +829,10 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
     // -- Check definedness of lookup(r1, 5) > 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@41.10--41.23) [207058]"}
+        assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@41.10--41.23) [73940]"}
           NoPerm < perm ==> NoPerm < Mask[r1, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -841,29 +841,29 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assume lookup_1(Heap, r1, 5) > 3;
+    assume lookup(Heap, r1, 5) > 3;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: label before -- 0509b.vpr@42.3--42.15
-    before_1:
-    LabelbeforeMask := Mask;
+    before:
     LabelbeforeHeap := Heap;
+    LabelbeforeMask := Mask;
     before_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@43.3--43.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@43.10--43.32) [207060]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@43.10--43.32) [73942]"}
         perm <= Mask[r1, f_7];
     }
     Mask := Mask[r1, f_7:=Mask[r1, f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@43.10--43.32) [207062]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@43.10--43.32) [73944]"}
         perm <= Mask[r2, f_7];
     }
     Mask := Mask[r2, f_7:=Mask[r2, f_7] - perm];
@@ -888,7 +888,7 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
   // -- Translating statement: inhale r1.f == 4 -- 0509b.vpr@45.10--45.19
     
     // -- Check definedness of r1.f == 4
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@45.10--45.19) [207065]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@45.10--45.19) [73947]"}
         HasDirectPerm(Mask, r1, f_7);
     assume Heap[r1, f_7] == 4;
     assume state(Heap, Mask);
@@ -903,10 +903,10 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@46.45--46.59) [207066]"}
+          assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@46.45--46.59) [73948]"}
             NoPerm < perm ==> NoPerm < Mask[r1, f_7];
           // Finish exhale
           havoc ExhaleHeap;
@@ -915,14 +915,14 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
           // Stop execution
           assume false;
         }
-        assert {:msg "  Inhale might fail. Did not reach labelled state before required to evaluate old[before](lookup(r1, i)). (0509b.vpr@46.10--46.89) [207067]"}
+        assert {:msg "  Inhale might fail. Did not reach labelled state before required to evaluate old[before](lookup(r1, i)). (0509b.vpr@46.10--46.89) [73949]"}
           before_lblGuard;
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := LabelbeforeMask;
           ExhaleWellDef0Heap := LabelbeforeHeap;
+          ExhaleWellDef0Mask := LabelbeforeMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@46.75--46.88) [207068]"}
+          assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@46.75--46.88) [73950]"}
             NoPerm < perm ==> NoPerm < LabelbeforeMask[r1, f_7];
           // Finish exhale
           havoc ExhaleHeap;
@@ -935,22 +935,22 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
       }
     assume (forall i_1: int ::
       { lookup#frame(FrameFragment(Heap[r1, f_7]), r1, i_1) }
-      lookup2(Heap, r1, i_1) == lookup_1(LabelbeforeHeap, r1, i_1)
+      lookup2(Heap, r1, i_1) == lookup(LabelbeforeHeap, r1, i_1)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert lookup2(r1, 5) > 2 -- 0509b.vpr@49.3--49.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of lookup2(r1, 5) > 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@49.10--49.24) [207069]"}
+        assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@49.10--49.24) [73951]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r1, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -959,7 +959,7 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion lookup2(r1, 5) > 2 might not hold. (0509b.vpr@49.10--49.28) [207070]"}
+    assert {:msg "  Assert might fail. Assertion lookup2(r1, 5) > 2 might not hold. (0509b.vpr@49.10--49.28) [73952]"}
       lookup2(Heap, r1, 5) > 2;
     assume state(Heap, Mask);
 }
@@ -973,16 +973,16 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
 {
   var before_lblGuard: bool;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var s_2: (Set Ref);
-  var LabelbeforeMask: MaskType;
+  var s_1: (Set Ref);
   var LabelbeforeHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var LabelbeforeMask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1009,30 +1009,30 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale r1.f == 1 -- 0509b.vpr@55.10--55.19
     
     // -- Check definedness of r1.f == 1
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@55.10--55.19) [207071]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@55.10--55.19) [73953]"}
         HasDirectPerm(Mask, r1, f_7);
     assume Heap[r1, f_7] == 1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@56.3--56.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@56.10--56.32) [207073]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@56.10--56.32) [73955]"}
         perm <= Mask[r1, f_7];
     }
     Mask := Mask[r1, f_7:=Mask[r1, f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@56.10--56.32) [207075]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@56.10--56.32) [73957]"}
         perm <= Mask[r2, f_7];
     }
     Mask := Mask[r2, f_7:=Mask[r2, f_7] - perm];
@@ -1057,14 +1057,14 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
   // -- Translating statement: inhale r1.f == 3 -- 0509b.vpr@58.10--58.19
     
     // -- Check definedness of r1.f == 3
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@58.10--58.19) [207078]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@58.10--58.19) [73960]"}
         HasDirectPerm(Mask, r1, f_7);
     assume Heap[r1, f_7] == 3;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: s := Set(r1, r2) -- 0509b.vpr@60.3--60.19
-    s_2 := Set#UnionOne(Set#Singleton(r2), r1);
+    s_1 := Set#UnionOne(Set#Singleton(r2), r1);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale lookup(r1, 5) > 3 -- 0509b.vpr@61.10--61.27
@@ -1073,10 +1073,10 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
     // -- Check definedness of lookup(r1, 5) > 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@61.10--61.23) [207079]"}
+        assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@61.10--61.23) [73961]"}
           NoPerm < perm ==> NoPerm < Mask[r1, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1085,29 +1085,29 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assume lookup_1(Heap, r1, 5) > 3;
+    assume lookup(Heap, r1, 5) > 3;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: label before -- 0509b.vpr@62.3--62.15
-    before_1:
-    LabelbeforeMask := Mask;
+    before:
     LabelbeforeHeap := Heap;
+    LabelbeforeMask := Mask;
     before_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@63.3--63.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@63.10--63.32) [207081]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@63.10--63.32) [73963]"}
         perm <= Mask[r1, f_7];
     }
     Mask := Mask[r1, f_7:=Mask[r1, f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@63.10--63.32) [207083]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r2.f (0509b.vpr@63.10--63.32) [73965]"}
         perm <= Mask[r2, f_7];
     }
     Mask := Mask[r2, f_7:=Mask[r2, f_7] - perm];
@@ -1132,7 +1132,7 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
   // -- Translating statement: inhale r1.f == 4 -- 0509b.vpr@65.10--65.19
     
     // -- Check definedness of r1.f == 4
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@65.10--65.19) [207086]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@65.10--65.19) [73968]"}
         HasDirectPerm(Mask, r1, f_7);
     assume Heap[r1, f_7] == 4;
     assume state(Heap, Mask);
@@ -1147,10 +1147,10 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@66.50--66.64) [207087]"}
+          assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@66.50--66.64) [73969]"}
             NoPerm < perm ==> NoPerm < Mask[r1, f_7];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1159,14 +1159,14 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
           // Stop execution
           assume false;
         }
-        assert {:msg "  Inhale might fail. Did not reach labelled state before required to evaluate old[before](lookup(r1, i)). (0509b.vpr@66.10--66.94) [207088]"}
+        assert {:msg "  Inhale might fail. Did not reach labelled state before required to evaluate old[before](lookup(r1, i)). (0509b.vpr@66.10--66.94) [73970]"}
           before_lblGuard;
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := LabelbeforeMask;
           ExhaleWellDef0Heap := LabelbeforeHeap;
+          ExhaleWellDef0Mask := LabelbeforeMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@66.80--66.93) [207089]"}
+          assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@66.80--66.93) [73971]"}
             NoPerm < perm ==> NoPerm < LabelbeforeMask[r1, f_7];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1179,22 +1179,22 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
       }
     assume (forall i_1: int ::
       { lookup#frame(FrameFragment(oldHeap[r1, f_7]), r1, i_1) }
-      lookup2(Heap, r1, i_1) == lookup_1(LabelbeforeHeap, r1, i_1)
+      lookup2(Heap, r1, i_1) == lookup(LabelbeforeHeap, r1, i_1)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert lookup2(r1, 5) > 2 -- 0509b.vpr@69.3--69.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of lookup2(r1, 5) > 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@69.10--69.24) [207090]"}
+        assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@69.10--69.24) [73972]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r1, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1203,7 +1203,7 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion lookup2(r1, 5) > 2 might not hold. (0509b.vpr@69.10--69.28) [207091]"}
+    assert {:msg "  Assert might fail. Assertion lookup2(r1, 5) > 2 might not hold. (0509b.vpr@69.10--69.28) [73973]"}
       lookup2(Heap, r1, 5) > 2;
     assume state(Heap, Mask);
 }

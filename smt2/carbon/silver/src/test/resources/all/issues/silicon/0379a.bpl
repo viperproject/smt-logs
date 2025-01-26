@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:59
+// Date:         2025-01-26 21:42:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0379a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0379a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_29: Ref, f_33: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_29, f_33] }
-  Heap[o_29, $allocated] ==> Heap[Heap[o_29, f_33], $allocated]
+axiom (forall o_43: Ref, f_56: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_43, f_56] }
+  Heap[o_43, $allocated] ==> Heap[Heap[o_43, f_56], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_63: Ref, f_65: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_63, f_65] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_63, f_65) ==> Heap[o_63, f_65] == ExhaleHeap[o_63, f_65]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_67: Ref, f_131: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_67, f_131] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_67, f_131) ==> Heap[o_67, f_131] == ExhaleHeap[o_67, f_131]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_33: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_33), ExhaleHeap[null, PredicateMaskField(pm_f_33)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_33) && IsPredicateField(pm_f_33) ==> Heap[null, PredicateMaskField(pm_f_33)] == ExhaleHeap[null, PredicateMaskField(pm_f_33)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_42: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_42), ExhaleHeap[null, PredicateMaskField(pm_f_42)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_42) && IsPredicateField(pm_f_42) ==> Heap[null, PredicateMaskField(pm_f_42)] == ExhaleHeap[null, PredicateMaskField(pm_f_42)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_33: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_33) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_33) && IsPredicateField(pm_f_33) ==> (forall <A, B> o2_33: Ref, f_65: (Field A B) ::
-    { ExhaleHeap[o2_33, f_65] }
-    Heap[null, PredicateMaskField(pm_f_33)][o2_33, f_65] ==> Heap[o2_33, f_65] == ExhaleHeap[o2_33, f_65]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_42: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_42) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_42) && IsPredicateField(pm_f_42) ==> (forall <A, B> o2_42: Ref, f_131: (Field A B) ::
+    { ExhaleHeap[o2_42, f_131] }
+    Heap[null, PredicateMaskField(pm_f_42)][o2_42, f_131] ==> Heap[o2_42, f_131] == ExhaleHeap[o2_42, f_131]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_33: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_33), ExhaleHeap[null, WandMaskField(pm_f_33)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_33) && IsWandField(pm_f_33) ==> Heap[null, WandMaskField(pm_f_33)] == ExhaleHeap[null, WandMaskField(pm_f_33)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_42: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_42), ExhaleHeap[null, WandMaskField(pm_f_42)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_42) && IsWandField(pm_f_42) ==> Heap[null, WandMaskField(pm_f_42)] == ExhaleHeap[null, WandMaskField(pm_f_42)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_33: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_33) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_33) && IsWandField(pm_f_33) ==> (forall <A, B> o2_33: Ref, f_65: (Field A B) ::
-    { ExhaleHeap[o2_33, f_65] }
-    Heap[null, WandMaskField(pm_f_33)][o2_33, f_65] ==> Heap[o2_33, f_65] == ExhaleHeap[o2_33, f_65]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_42: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_42) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_42) && IsWandField(pm_f_42) ==> (forall <A, B> o2_42: Ref, f_131: (Field A B) ::
+    { ExhaleHeap[o2_42, f_131] }
+    Heap[null, WandMaskField(pm_f_42)][o2_42, f_131] ==> Heap[o2_42, f_131] == ExhaleHeap[o2_42, f_131]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_63: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_63, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_63, $allocated] ==> ExhaleHeap[o_63, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_67: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_67, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_67, $allocated] ==> ExhaleHeap[o_67, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_29: Ref, f_52: (Field A B), v: B ::
-  { Heap[o_29, f_52:=v] }
-  succHeap(Heap, Heap[o_29, f_52:=v])
+axiom (forall <A, B> Heap: HeapType, o_43: Ref, f_75: (Field A B), v: B ::
+  { Heap[o_43, f_75:=v] }
+  succHeap(Heap, Heap[o_43, f_75:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -190,9 +190,9 @@ axiom !IsWandField(f$m5);
 const unique val_int: Field NormalField int;
 axiom !IsPredicateField(val_int);
 axiom !IsWandField(val_int);
-const unique val_ref: Field NormalField Ref;
-axiom !IsPredicateField(val_ref);
-axiom !IsWandField(val_ref);
+const unique val_ref_1: Field NormalField Ref;
+axiom !IsPredicateField(val_ref_1);
+axiom !IsWandField(val_ref_1);
 
 // ==================================================
 // Translation of function f
@@ -258,7 +258,7 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         assume false;
       }
     perm := read$(Heap);
-    assert {:msg "  Contract might not be well-formed. Fraction read$() might be negative. (0379a.vpr@10.12--10.36) [203345]"}
+    assert {:msg "  Contract might not be well-formed. Fraction read$() might be negative. (0379a.vpr@10.12--10.36) [78230]"}
       perm >= NoPerm;
     Mask := Mask[null, P(_pure_1):=Mask[null, P(_pure_1)] + perm];
     assume state(Heap, Mask);
@@ -269,27 +269,27 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
     // -- Check definedness of ((unfolding acc(P(_pure_1), read$()) in (unfolding acc(u32(_pure_1.f$m2), read$()) in _pure_1.f$m2.val_int)) >= 0 || (unfolding acc(P(_pure_1), read$()) in (unfolding acc(u32(_pure_1.f$m2), read$()) in _pure_1.f$m2.val_int)) % 2 == 0 ? (unfolding acc(P(_pure_1), read$()) in (unfolding acc(u32(_pure_1.f$m2), read$()) in _pure_1.f$m2.val_int)) % 2 : 0) == 0
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [203346]"}
+      assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [78231]"}
         read$(UnfoldingHeap) > NoPerm;
       assume P#trigger(UnfoldingHeap, P(_pure_1));
       assume UnfoldingHeap[null, P(_pure_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m2]), CombineFrames(UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m2])], CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m5]), UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m5])])));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := read$(UnfoldingHeap);
-      assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203347]"}
+      assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [78232]"}
         perm >= NoPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(_pure_1) (0379a.vpr@9.1--17.2) [203348]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(_pure_1) (0379a.vpr@9.1--17.2) [78233]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(_pure_1)];
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := FullPerm * read$(UnfoldingHeap);
-      assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203349]"}
+      assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78234]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> _pure_1 != null;
       UnfoldingMask := UnfoldingMask[_pure_1, f$m2:=UnfoldingMask[_pure_1, f$m2] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := FullPerm * read$(UnfoldingHeap);
-      assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203350]"}
+      assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78235]"}
         perm >= NoPerm;
       UnfoldingMask := UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m2]):=UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m2])] + perm];
       
@@ -298,14 +298,14 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := FullPerm * read$(UnfoldingHeap);
-      assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203351]"}
+      assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78236]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> _pure_1 != null;
       UnfoldingMask := UnfoldingMask[_pure_1, f$m5:=UnfoldingMask[_pure_1, f$m5] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := FullPerm * read$(UnfoldingHeap);
-      assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203352]"}
+      assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78237]"}
         perm >= NoPerm;
       UnfoldingMask := UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m5]):=UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m5])] + perm];
       
@@ -319,35 +319,35 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
       }
       Unfolding1Heap := UnfoldingHeap;
       Unfolding1Mask := UnfoldingMask;
-      assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [203353]"}
+      assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [78238]"}
         read$(Unfolding1Heap) > NoPerm;
       assume u32#trigger(Unfolding1Heap, u32(Unfolding1Heap[_pure_1, f$m2]));
       assume Unfolding1Heap[null, u32(Unfolding1Heap[_pure_1, f$m2])] == FrameFragment(Unfolding1Heap[Unfolding1Heap[_pure_1, f$m2], val_int]);
       ExhaleWellDef0Heap := Unfolding1Heap;
       ExhaleWellDef0Mask := Unfolding1Mask;
       perm := read$(Unfolding1Heap);
-      assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203354]"}
+      assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [78239]"}
         perm >= NoPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access u32(_pure_1.f$m2) (0379a.vpr@9.1--17.2) [203355]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access u32(_pure_1.f$m2) (0379a.vpr@9.1--17.2) [78240]"}
         NoPerm < perm ==> NoPerm < Unfolding1Mask[null, u32(Unfolding1Heap[_pure_1, f$m2])];
       assume state(Unfolding1Heap, Unfolding1Mask);
       perm := FullPerm * read$(Unfolding1Heap);
-      assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203356]"}
+      assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78241]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Unfolding1Heap[_pure_1, f$m2] != null;
       Unfolding1Mask := Unfolding1Mask[Unfolding1Heap[_pure_1, f$m2], val_int:=Unfolding1Mask[Unfolding1Heap[_pure_1, f$m2], val_int] + perm];
       assume state(Unfolding1Heap, Unfolding1Mask);
       assume 0 <= Unfolding1Heap[Unfolding1Heap[_pure_1, f$m2], val_int];
       assume state(Unfolding1Heap, Unfolding1Mask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [203357]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [78242]"}
         HasDirectPerm(Unfolding1Mask, _pure_1, f$m2);
       if (*) {
         // Stop execution
         assume false;
       }
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [203358]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [78243]"}
         HasDirectPerm(Unfolding1Mask, _pure_1, f$m2);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2.val_int (0379a.vpr@9.1--17.2) [203359]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2.val_int (0379a.vpr@9.1--17.2) [78244]"}
         HasDirectPerm(Unfolding1Mask, Unfolding1Heap[_pure_1, f$m2], val_int);
       
       // -- Free assumptions (exp module)
@@ -357,16 +357,16 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
       // -- Free assumptions (exp module)
         Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m2:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-          { newPMask[o_15, f_20] }
-          Heap[null, P#sm(_pure_1)][o_15, f_20] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_15, f_20] ==> newPMask[o_15, f_20]
+        assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+          { newPMask[o_5, f_11] }
+          Heap[null, P#sm(_pure_1)][o_5, f_11] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_5, f_11] ==> newPMask[o_5, f_11]
         );
         Heap := Heap[null, P#sm(_pure_1):=newPMask];
         Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m5:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-          { newPMask[o_16, f_21] }
-          Heap[null, P#sm(_pure_1)][o_16, f_21] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_16, f_21] ==> newPMask[o_16, f_21]
+        assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+          { newPMask[o_6, f_12] }
+          Heap[null, P#sm(_pure_1)][o_6, f_12] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_6, f_12] ==> newPMask[o_6, f_12]
         );
         Heap := Heap[null, P#sm(_pure_1):=newPMask];
         assume state(Heap, Mask);
@@ -376,16 +376,16 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
       // -- Free assumptions (exp module)
         Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m2:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-          { newPMask[o_52, f_55] }
-          Heap[null, P#sm(_pure_1)][o_52, f_55] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_52, f_55] ==> newPMask[o_52, f_55]
+        assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+          { newPMask[o_40, f_52] }
+          Heap[null, P#sm(_pure_1)][o_40, f_52] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_40, f_52] ==> newPMask[o_40, f_52]
         );
         Heap := Heap[null, P#sm(_pure_1):=newPMask];
         Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m5:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-          { newPMask[o_53, f_56] }
-          Heap[null, P#sm(_pure_1)][o_53, f_56] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_53, f_56] ==> newPMask[o_53, f_56]
+        assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+          { newPMask[o_42, f_55] }
+          Heap[null, P#sm(_pure_1)][o_42, f_55] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_42, f_55] ==> newPMask[o_42, f_55]
         );
         Heap := Heap[null, P#sm(_pure_1):=newPMask];
         assume state(Heap, Mask);
@@ -394,27 +394,27 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
       if (!(Heap[Heap[_pure_1, f$m2], val_int] >= 0)) {
         UnfoldingHeap := Heap;
         UnfoldingMask := Mask;
-        assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [203360]"}
+        assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [78245]"}
           read$(UnfoldingHeap) > NoPerm;
         assume P#trigger(UnfoldingHeap, P(_pure_1));
         assume UnfoldingHeap[null, P(_pure_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m2]), CombineFrames(UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m2])], CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m5]), UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m5])])));
         ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
         perm := read$(UnfoldingHeap);
-        assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203361]"}
+        assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [78246]"}
           perm >= NoPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(_pure_1) (0379a.vpr@9.1--17.2) [203362]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(_pure_1) (0379a.vpr@9.1--17.2) [78247]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(_pure_1)];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm * read$(UnfoldingHeap);
-        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203363]"}
+        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78248]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> _pure_1 != null;
         UnfoldingMask := UnfoldingMask[_pure_1, f$m2:=UnfoldingMask[_pure_1, f$m2] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm * read$(UnfoldingHeap);
-        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203364]"}
+        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78249]"}
           perm >= NoPerm;
         UnfoldingMask := UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m2]):=UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m2])] + perm];
         
@@ -423,14 +423,14 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         assume state(UnfoldingHeap, UnfoldingMask);
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm * read$(UnfoldingHeap);
-        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203365]"}
+        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78250]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> _pure_1 != null;
         UnfoldingMask := UnfoldingMask[_pure_1, f$m5:=UnfoldingMask[_pure_1, f$m5] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm * read$(UnfoldingHeap);
-        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203366]"}
+        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78251]"}
           perm >= NoPerm;
         UnfoldingMask := UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m5]):=UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m5])] + perm];
         
@@ -444,35 +444,35 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         }
         Unfolding1Heap := UnfoldingHeap;
         Unfolding1Mask := UnfoldingMask;
-        assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [203367]"}
+        assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [78252]"}
           read$(Unfolding1Heap) > NoPerm;
         assume u32#trigger(Unfolding1Heap, u32(Unfolding1Heap[_pure_1, f$m2]));
         assume Unfolding1Heap[null, u32(Unfolding1Heap[_pure_1, f$m2])] == FrameFragment(Unfolding1Heap[Unfolding1Heap[_pure_1, f$m2], val_int]);
         ExhaleWellDef0Heap := Unfolding1Heap;
         ExhaleWellDef0Mask := Unfolding1Mask;
         perm := read$(Unfolding1Heap);
-        assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203368]"}
+        assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [78253]"}
           perm >= NoPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access u32(_pure_1.f$m2) (0379a.vpr@9.1--17.2) [203369]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access u32(_pure_1.f$m2) (0379a.vpr@9.1--17.2) [78254]"}
           NoPerm < perm ==> NoPerm < Unfolding1Mask[null, u32(Unfolding1Heap[_pure_1, f$m2])];
         assume state(Unfolding1Heap, Unfolding1Mask);
         perm := FullPerm * read$(Unfolding1Heap);
-        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203370]"}
+        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78255]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> Unfolding1Heap[_pure_1, f$m2] != null;
         Unfolding1Mask := Unfolding1Mask[Unfolding1Heap[_pure_1, f$m2], val_int:=Unfolding1Mask[Unfolding1Heap[_pure_1, f$m2], val_int] + perm];
         assume state(Unfolding1Heap, Unfolding1Mask);
         assume 0 <= Unfolding1Heap[Unfolding1Heap[_pure_1, f$m2], val_int];
         assume state(Unfolding1Heap, Unfolding1Mask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [203371]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [78256]"}
           HasDirectPerm(Unfolding1Mask, _pure_1, f$m2);
         if (*) {
           // Stop execution
           assume false;
         }
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [203372]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [78257]"}
           HasDirectPerm(Unfolding1Mask, _pure_1, f$m2);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2.val_int (0379a.vpr@9.1--17.2) [203373]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2.val_int (0379a.vpr@9.1--17.2) [78258]"}
           HasDirectPerm(Unfolding1Mask, Unfolding1Heap[_pure_1, f$m2], val_int);
         
         // -- Free assumptions (exp module)
@@ -482,16 +482,16 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         // -- Free assumptions (exp module)
           Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m2:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-            { newPMask[o_26, f_29] }
-            Heap[null, P#sm(_pure_1)][o_26, f_29] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_26, f_29] ==> newPMask[o_26, f_29]
+          assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+            { newPMask[o_46, f_60] }
+            Heap[null, P#sm(_pure_1)][o_46, f_60] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_46, f_60] ==> newPMask[o_46, f_60]
           );
           Heap := Heap[null, P#sm(_pure_1):=newPMask];
           Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m5:=true]];
           havoc newPMask;
-          assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-            { newPMask[o, f_85] }
-            Heap[null, P#sm(_pure_1)][o, f_85] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o, f_85] ==> newPMask[o, f_85]
+          assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+            { newPMask[o, f_61] }
+            Heap[null, P#sm(_pure_1)][o, f_61] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o, f_61] ==> newPMask[o, f_61]
           );
           Heap := Heap[null, P#sm(_pure_1):=newPMask];
           assume state(Heap, Mask);
@@ -501,16 +501,16 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         // -- Free assumptions (exp module)
           Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m2:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-            { newPMask[o_11, f_3] }
-            Heap[null, P#sm(_pure_1)][o_11, f_3] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_11, f_3] ==> newPMask[o_11, f_3]
+          assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+            { newPMask[o_14, f_3] }
+            Heap[null, P#sm(_pure_1)][o_14, f_3] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_14, f_3] ==> newPMask[o_14, f_3]
           );
           Heap := Heap[null, P#sm(_pure_1):=newPMask];
           Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m5:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-            { newPMask[o_35, f_17] }
-            Heap[null, P#sm(_pure_1)][o_35, f_17] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_35, f_17] ==> newPMask[o_35, f_17]
+          assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+            { newPMask[o_3, f_24] }
+            Heap[null, P#sm(_pure_1)][o_3, f_24] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_3, f_24] ==> newPMask[o_3, f_24]
           );
           Heap := Heap[null, P#sm(_pure_1):=newPMask];
           assume state(Heap, Mask);
@@ -520,16 +520,16 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         // -- Free assumptions (exp module)
           Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m2:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_1: Ref, f_11: (Field A B) ::
-            { newPMask[o_1, f_11] }
-            Heap[null, P#sm(_pure_1)][o_1, f_11] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_1, f_11] ==> newPMask[o_1, f_11]
+          assume (forall <A, B> o_1: Ref, f_10: (Field A B) ::
+            { newPMask[o_1, f_10] }
+            Heap[null, P#sm(_pure_1)][o_1, f_10] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_1, f_10] ==> newPMask[o_1, f_10]
           );
           Heap := Heap[null, P#sm(_pure_1):=newPMask];
           Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m5:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_12: Ref, f_9: (Field A B) ::
-            { newPMask[o_12, f_9] }
-            Heap[null, P#sm(_pure_1)][o_12, f_9] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_12, f_9] ==> newPMask[o_12, f_9]
+          assume (forall <A, B> o_15: Ref, f_51: (Field A B) ::
+            { newPMask[o_15, f_51] }
+            Heap[null, P#sm(_pure_1)][o_15, f_51] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_15, f_51] ==> newPMask[o_15, f_51]
           );
           Heap := Heap[null, P#sm(_pure_1):=newPMask];
           assume state(Heap, Mask);
@@ -539,27 +539,27 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
       if (Heap[Heap[_pure_1, f$m2], val_int] >= 0 || Heap[Heap[_pure_1, f$m2], val_int] mod 2 == 0) {
         UnfoldingHeap := Heap;
         UnfoldingMask := Mask;
-        assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [203374]"}
+        assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [78259]"}
           read$(UnfoldingHeap) > NoPerm;
         assume P#trigger(UnfoldingHeap, P(_pure_1));
         assume UnfoldingHeap[null, P(_pure_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m2]), CombineFrames(UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m2])], CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m5]), UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m5])])));
         ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
         perm := read$(UnfoldingHeap);
-        assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203375]"}
+        assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [78260]"}
           perm >= NoPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(_pure_1) (0379a.vpr@9.1--17.2) [203376]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(_pure_1) (0379a.vpr@9.1--17.2) [78261]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(_pure_1)];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm * read$(UnfoldingHeap);
-        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203377]"}
+        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78262]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> _pure_1 != null;
         UnfoldingMask := UnfoldingMask[_pure_1, f$m2:=UnfoldingMask[_pure_1, f$m2] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm * read$(UnfoldingHeap);
-        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203378]"}
+        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78263]"}
           perm >= NoPerm;
         UnfoldingMask := UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m2]):=UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m2])] + perm];
         
@@ -568,14 +568,14 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         assume state(UnfoldingHeap, UnfoldingMask);
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm * read$(UnfoldingHeap);
-        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203379]"}
+        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78264]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> _pure_1 != null;
         UnfoldingMask := UnfoldingMask[_pure_1, f$m5:=UnfoldingMask[_pure_1, f$m5] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm * read$(UnfoldingHeap);
-        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203380]"}
+        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78265]"}
           perm >= NoPerm;
         UnfoldingMask := UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m5]):=UnfoldingMask[null, u32(UnfoldingHeap[_pure_1, f$m5])] + perm];
         
@@ -589,35 +589,35 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         }
         Unfolding1Heap := UnfoldingHeap;
         Unfolding1Mask := UnfoldingMask;
-        assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [203381]"}
+        assert {:msg "  Function might not be well-formed. Fraction read$() might not be positive. (0379a.vpr@9.1--17.2) [78266]"}
           read$(Unfolding1Heap) > NoPerm;
         assume u32#trigger(Unfolding1Heap, u32(Unfolding1Heap[_pure_1, f$m2]));
         assume Unfolding1Heap[null, u32(Unfolding1Heap[_pure_1, f$m2])] == FrameFragment(Unfolding1Heap[Unfolding1Heap[_pure_1, f$m2], val_int]);
         ExhaleWellDef0Heap := Unfolding1Heap;
         ExhaleWellDef0Mask := Unfolding1Mask;
         perm := read$(Unfolding1Heap);
-        assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203382]"}
+        assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [78267]"}
           perm >= NoPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access u32(_pure_1.f$m2) (0379a.vpr@9.1--17.2) [203383]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access u32(_pure_1.f$m2) (0379a.vpr@9.1--17.2) [78268]"}
           NoPerm < perm ==> NoPerm < Unfolding1Mask[null, u32(Unfolding1Heap[_pure_1, f$m2])];
         assume state(Unfolding1Heap, Unfolding1Mask);
         perm := FullPerm * read$(Unfolding1Heap);
-        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [203384]"}
+        assert {:msg "  Function might not be well-formed. Fraction write * read$() might be negative. (0379a.vpr@9.1--17.2) [78269]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> Unfolding1Heap[_pure_1, f$m2] != null;
         Unfolding1Mask := Unfolding1Mask[Unfolding1Heap[_pure_1, f$m2], val_int:=Unfolding1Mask[Unfolding1Heap[_pure_1, f$m2], val_int] + perm];
         assume state(Unfolding1Heap, Unfolding1Mask);
         assume 0 <= Unfolding1Heap[Unfolding1Heap[_pure_1, f$m2], val_int];
         assume state(Unfolding1Heap, Unfolding1Mask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [203385]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [78270]"}
           HasDirectPerm(Unfolding1Mask, _pure_1, f$m2);
         if (*) {
           // Stop execution
           assume false;
         }
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [203386]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2 (0379a.vpr@9.1--17.2) [78271]"}
           HasDirectPerm(Unfolding1Mask, _pure_1, f$m2);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2.val_int (0379a.vpr@9.1--17.2) [203387]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access _pure_1.f$m2.val_int (0379a.vpr@9.1--17.2) [78272]"}
           HasDirectPerm(Unfolding1Mask, Unfolding1Heap[_pure_1, f$m2], val_int);
         
         // -- Free assumptions (exp module)
@@ -627,16 +627,16 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         // -- Free assumptions (exp module)
           Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m2:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_22: Ref, f_24: (Field A B) ::
-            { newPMask[o_22, f_24] }
-            Heap[null, P#sm(_pure_1)][o_22, f_24] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_22, f_24] ==> newPMask[o_22, f_24]
+          assume (forall <A, B> o_4: Ref, f_54: (Field A B) ::
+            { newPMask[o_4, f_54] }
+            Heap[null, P#sm(_pure_1)][o_4, f_54] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_4, f_54] ==> newPMask[o_4, f_54]
           );
           Heap := Heap[null, P#sm(_pure_1):=newPMask];
           Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m5:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_3: Ref, f_12: (Field A B) ::
-            { newPMask[o_3, f_12] }
-            Heap[null, P#sm(_pure_1)][o_3, f_12] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_3, f_12] ==> newPMask[o_3, f_12]
+          assume (forall <A, B> o_12: Ref, f_25: (Field A B) ::
+            { newPMask[o_12, f_25] }
+            Heap[null, P#sm(_pure_1)][o_12, f_25] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_12, f_25] ==> newPMask[o_12, f_25]
           );
           Heap := Heap[null, P#sm(_pure_1):=newPMask];
           assume state(Heap, Mask);
@@ -646,16 +646,16 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         // -- Free assumptions (exp module)
           Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m2:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_46: Ref, f_35: (Field A B) ::
-            { newPMask[o_46, f_35] }
-            Heap[null, P#sm(_pure_1)][o_46, f_35] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_46, f_35] ==> newPMask[o_46, f_35]
+          assume (forall <A, B> o_41: Ref, f_21: (Field A B) ::
+            { newPMask[o_41, f_21] }
+            Heap[null, P#sm(_pure_1)][o_41, f_21] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_41, f_21] ==> newPMask[o_41, f_21]
           );
           Heap := Heap[null, P#sm(_pure_1):=newPMask];
           Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m5:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_41: Ref, f_25: (Field A B) ::
-            { newPMask[o_41, f_25] }
-            Heap[null, P#sm(_pure_1)][o_41, f_25] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_41, f_25] ==> newPMask[o_41, f_25]
+          assume (forall <A, B> o_23: Ref, f_13: (Field A B) ::
+            { newPMask[o_23, f_13] }
+            Heap[null, P#sm(_pure_1)][o_23, f_13] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_23, f_13] ==> newPMask[o_23, f_13]
           );
           Heap := Heap[null, P#sm(_pure_1):=newPMask];
           assume state(Heap, Mask);
@@ -666,16 +666,16 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
       // -- Free assumptions (exp module)
         Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m2:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_34: Ref, f_44: (Field A B) ::
-          { newPMask[o_34, f_44] }
-          Heap[null, P#sm(_pure_1)][o_34, f_44] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_34, f_44] ==> newPMask[o_34, f_44]
+        assume (forall <A, B> o_13: Ref, f_65: (Field A B) ::
+          { newPMask[o_13, f_65] }
+          Heap[null, P#sm(_pure_1)][o_13, f_65] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_13, f_65] ==> newPMask[o_13, f_65]
         );
         Heap := Heap[null, P#sm(_pure_1):=newPMask];
         Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m5:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_55: Ref, f_36: (Field A B) ::
-          { newPMask[o_55, f_36] }
-          Heap[null, P#sm(_pure_1)][o_55, f_36] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_55, f_36] ==> newPMask[o_55, f_36]
+        assume (forall <A, B> o_51: Ref, f_66: (Field A B) ::
+          { newPMask[o_51, f_66] }
+          Heap[null, P#sm(_pure_1)][o_51, f_66] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_51, f_66] ==> newPMask[o_51, f_66]
         );
         Heap := Heap[null, P#sm(_pure_1):=newPMask];
         assume state(Heap, Mask);
@@ -683,16 +683,16 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         assume state(Heap, Mask);
         Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m2:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_42: Ref, f_26: (Field A B) ::
-          { newPMask[o_42, f_26] }
-          Heap[null, P#sm(_pure_1)][o_42, f_26] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_42, f_26] ==> newPMask[o_42, f_26]
+        assume (forall <A, B> o_52: Ref, f_14: (Field A B) ::
+          { newPMask[o_52, f_14] }
+          Heap[null, P#sm(_pure_1)][o_52, f_14] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_52, f_14] ==> newPMask[o_52, f_14]
         );
         Heap := Heap[null, P#sm(_pure_1):=newPMask];
         Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m5:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_13: Ref, f_45: (Field A B) ::
-          { newPMask[o_13, f_45] }
-          Heap[null, P#sm(_pure_1)][o_13, f_45] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_13, f_45] ==> newPMask[o_13, f_45]
+        assume (forall <A, B> o_20: Ref, f_50: (Field A B) ::
+          { newPMask[o_20, f_50] }
+          Heap[null, P#sm(_pure_1)][o_20, f_50] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_20, f_50] ==> newPMask[o_20, f_50]
         );
         Heap := Heap[null, P#sm(_pure_1):=newPMask];
         assume state(Heap, Mask);
@@ -700,16 +700,16 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         assume state(Heap, Mask);
         Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m2:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_43: Ref, f_13: (Field A B) ::
-          { newPMask[o_43, f_13] }
-          Heap[null, P#sm(_pure_1)][o_43, f_13] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_43, f_13] ==> newPMask[o_43, f_13]
+        assume (forall <A, B> o_58: Ref, f_30: (Field A B) ::
+          { newPMask[o_58, f_30] }
+          Heap[null, P#sm(_pure_1)][o_58, f_30] || Heap[null, u32#sm(Heap[_pure_1, f$m2])][o_58, f_30] ==> newPMask[o_58, f_30]
         );
         Heap := Heap[null, P#sm(_pure_1):=newPMask];
         Heap := Heap[null, P#sm(_pure_1):=Heap[null, P#sm(_pure_1)][_pure_1, f$m5:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_47: Ref, f_41: (Field A B) ::
-          { newPMask[o_47, f_41] }
-          Heap[null, P#sm(_pure_1)][o_47, f_41] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_47, f_41] ==> newPMask[o_47, f_41]
+        assume (forall <A, B> o_10: Ref, f_67: (Field A B) ::
+          { newPMask[o_10, f_67] }
+          Heap[null, P#sm(_pure_1)][o_10, f_67] || Heap[null, u32#sm(Heap[_pure_1, f$m5])][o_10, f_67] ==> newPMask[o_10, f_67]
         );
         Heap := Heap[null, P#sm(_pure_1):=newPMask];
         assume state(Heap, Mask);
@@ -825,7 +825,7 @@ procedure P#definedness(self: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(u32(self.f$m2), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.f$m2 (0379a.vpr@22.1--24.2) [203388]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.f$m2 (0379a.vpr@22.1--24.2) [78273]"}
         HasDirectPerm(Mask, self, f$m2);
     perm := FullPerm;
     Mask := Mask[null, u32(Heap[self, f$m2]):=Mask[null, u32(Heap[self, f$m2])] + perm];
@@ -836,7 +836,7 @@ procedure P#definedness(self: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(u32(self.f$m5), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.f$m5 (0379a.vpr@22.1--24.2) [203389]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.f$m5 (0379a.vpr@22.1--24.2) [78274]"}
         HasDirectPerm(Mask, self, f$m5);
     perm := FullPerm;
     Mask := Mask[null, u32(Heap[self, f$m5]):=Mask[null, u32(Heap[self, f$m5])] + perm];
@@ -898,7 +898,7 @@ procedure u32#definedness(self: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of 0 <= self.val_int
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.val_int (0379a.vpr@26.1--28.2) [203390]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.val_int (0379a.vpr@26.1--28.2) [78275]"}
         HasDirectPerm(Mask, self, val_int);
     assume 0 <= Heap[self, val_int];
     assume state(Heap, Mask);

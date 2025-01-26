@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:46
+// Date:         2025-01-26 21:41:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/nested.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/nested-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,8 +233,8 @@ procedure fun3#definedness(x: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -260,10 +260,10 @@ procedure fun3#definedness(x: Ref) returns (Result: int)
     // -- Check definedness of 1 + fun2(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access x.f (nested.vpr@9.7--9.14) [154088]"}
+        assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access x.f (nested.vpr@9.7--9.14) [49645]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -317,8 +317,8 @@ procedure fun1#definedness(x: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -340,7 +340,7 @@ procedure fun1#definedness(x: Ref) returns (Result: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.g.f, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.g (nested.vpr@13.12--13.22) [154089]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.g (nested.vpr@13.12--13.22) [49646]"}
         HasDirectPerm(Mask, x, g);
     perm := FullPerm;
     assume Heap[x, g] != null;
@@ -351,16 +351,16 @@ procedure fun1#definedness(x: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of x.f + fun2(x.g)
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (nested.vpr@11.1--14.20) [154090]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (nested.vpr@11.1--14.20) [49647]"}
         HasDirectPerm(Mask, x, f_7);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (nested.vpr@11.1--14.20) [154091]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (nested.vpr@11.1--14.20) [49648]"}
         HasDirectPerm(Mask, x, g);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access x.g.f (nested.vpr@14.9--14.18) [154092]"}
+        assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access x.g.f (nested.vpr@14.9--14.18) [49649]"}
           NoPerm < perm ==> NoPerm < Mask[Heap[x, g], f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -432,7 +432,7 @@ procedure fun2#definedness(x: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of -x.f
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (nested.vpr@16.1--18.9) [154093]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (nested.vpr@16.1--18.9) [49650]"}
         HasDirectPerm(Mask, x, f_7);
   
   // -- Translate function body
@@ -479,8 +479,8 @@ procedure fun4#definedness(b_24: bool, x: Ref, y: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -504,7 +504,7 @@ procedure fun4#definedness(b_24: bool, x: Ref, y: Ref) returns (Result: int)
     if (b_24) {
       
       // -- Check definedness of acc(x.g.f, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.g (nested.vpr@41.12--41.28) [154094]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.g (nested.vpr@41.12--41.28) [49651]"}
           HasDirectPerm(Mask, x, g);
       perm := FullPerm;
       assume Heap[x, g] != null;
@@ -521,10 +521,10 @@ procedure fun4#definedness(b_24: bool, x: Ref, y: Ref) returns (Result: int)
       if (!b_24) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access y.f (nested.vpr@43.13--43.20) [154095]"}
+          assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access y.f (nested.vpr@43.13--43.20) [49652]"}
             NoPerm < perm ==> NoPerm < Mask[y, f_7];
           // Finish exhale
           havoc ExhaleHeap;
@@ -536,16 +536,16 @@ procedure fun4#definedness(b_24: bool, x: Ref, y: Ref) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access y.f (nested.vpr@43.23--43.30) [154096]"}
+          assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access y.f (nested.vpr@43.23--43.30) [49653]"}
             NoPerm < perm ==> NoPerm < Mask[y, f_7];
           perm := FullPerm;
-          assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access y.g (nested.vpr@43.23--43.30) [154097]"}
+          assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access y.g (nested.vpr@43.23--43.30) [49654]"}
             NoPerm < perm ==> NoPerm < Mask[y, g];
           perm := FullPerm;
-          assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access y.g.f (nested.vpr@43.23--43.30) [154098]"}
+          assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access y.g.f (nested.vpr@43.23--43.30) [49655]"}
             NoPerm < perm ==> NoPerm < Mask[Heap[y, g], f_7];
           // Finish exhale
           havoc ExhaleHeap;
@@ -556,9 +556,9 @@ procedure fun4#definedness(b_24: bool, x: Ref, y: Ref) returns (Result: int)
         }
       }
       if (b_24) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.g (nested.vpr@39.1--43.52) [154099]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.g (nested.vpr@39.1--43.52) [49656]"}
           HasDirectPerm(Mask, y, g);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.g.f (nested.vpr@39.1--43.52) [154100]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access y.g.f (nested.vpr@39.1--43.52) [49657]"}
           HasDirectPerm(Mask, Heap[y, g], f_7);
       }
   
@@ -606,8 +606,8 @@ procedure fun5#definedness(x: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -629,13 +629,13 @@ procedure fun5#definedness(x: Ref) returns (Result: int)
     // -- Check definedness of fun3(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun3 might not hold. There might be insufficient permission to access x.f (nested.vpr@63.3--63.10) [154101]"}
+        assert {:msg "  Precondition of function fun3 might not hold. There might be insufficient permission to access x.f (nested.vpr@63.3--63.10) [49658]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun3 might not hold. There might be insufficient permission to access x.g (nested.vpr@63.3--63.10) [154102]"}
+        assert {:msg "  Precondition of function fun3 might not hold. There might be insufficient permission to access x.g (nested.vpr@63.3--63.10) [49659]"}
           NoPerm < perm ==> NoPerm < Mask[x, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -695,8 +695,8 @@ procedure fun6#definedness(x: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -718,10 +718,10 @@ procedure fun6#definedness(x: Ref) returns (Result: int)
     // -- Check definedness of fun7(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun7 might not hold. There might be insufficient permission to access x.f (nested.vpr@68.3--68.10) [154103]"}
+        assert {:msg "  Precondition of function fun7 might not hold. There might be insufficient permission to access x.f (nested.vpr@68.3--68.10) [49660]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -735,9 +735,9 @@ procedure fun6#definedness(x: Ref) returns (Result: int)
     Result := fun7(Heap, x);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of fun6 might not hold. Assertion result >= 0 might not hold. (nested.vpr@67.11--67.22) [154104]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of fun6 might not hold. Assertion result >= 0 might not hold. (nested.vpr@67.11--67.22) [49661]"}
       Result >= 0;
 }
 
@@ -787,8 +787,8 @@ procedure fun7#definedness(x: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -807,13 +807,13 @@ procedure fun7#definedness(x: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (x.f < 0 ? -x.f : x.f)
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (nested.vpr@70.1--73.25) [154105]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (nested.vpr@70.1--73.25) [49662]"}
         HasDirectPerm(Mask, x, f_7);
       if (Heap[x, f_7] < 0) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (nested.vpr@70.1--73.25) [154106]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (nested.vpr@70.1--73.25) [49663]"}
           HasDirectPerm(Mask, x, f_7);
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (nested.vpr@70.1--73.25) [154107]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (nested.vpr@70.1--73.25) [49664]"}
           HasDirectPerm(Mask, x, f_7);
       }
   
@@ -821,9 +821,9 @@ procedure fun7#definedness(x: Ref) returns (Result: int)
     Result := (if Heap[x, f_7] < 0 then -Heap[x, f_7] else Heap[x, f_7]);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of fun7 might not hold. Assertion result >= 0 might not hold. (nested.vpr@72.11--72.22) [154108]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of fun7 might not hold. Assertion result >= 0 might not hold. (nested.vpr@72.11--72.22) [49665]"}
       Result >= 0;
 }
 
@@ -834,14 +834,14 @@ procedure fun7#definedness(x: Ref) returns (Result: int)
 procedure test02() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -854,8 +854,8 @@ procedure test02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -870,25 +870,25 @@ procedure test02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := 1 -- nested.vpr@23.3--23.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (nested.vpr@23.3--23.11) [154109]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (nested.vpr@23.3--23.11) [49666]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=1];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun3(x) == 0 -- nested.vpr@25.3--25.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun3(x) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun3 might not hold. There might be insufficient permission to access x.f (nested.vpr@25.10--25.17) [154110]"}
+        assert {:msg "  Precondition of function fun3 might not hold. There might be insufficient permission to access x.f (nested.vpr@25.10--25.17) [49667]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun3 might not hold. There might be insufficient permission to access x.g (nested.vpr@25.10--25.17) [154111]"}
+        assert {:msg "  Precondition of function fun3 might not hold. There might be insufficient permission to access x.g (nested.vpr@25.10--25.17) [49668]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         // Finish exhale
         havoc ExhaleHeap;
@@ -897,7 +897,7 @@ procedure test02() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun3(x) == 0 might not hold. (nested.vpr@25.10--25.22) [154112]"}
+    assert {:msg "  Assert might fail. Assertion fun3(x) == 0 might not hold. (nested.vpr@25.10--25.22) [49669]"}
       fun3(Heap, x) == 0;
     assume state(Heap, Mask);
 }
@@ -909,15 +909,15 @@ procedure test02() returns ()
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var y: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -930,8 +930,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -956,13 +956,13 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := 3 -- nested.vpr@32.3--32.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (nested.vpr@32.3--32.11) [154113]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (nested.vpr@32.3--32.11) [49670]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=3];
     assume state(Heap, Mask);
   
   // -- Translating statement: x.g := y -- nested.vpr@33.3--33.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (nested.vpr@33.3--33.11) [154114]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (nested.vpr@33.3--33.11) [49671]"}
       FullPerm == Mask[x, g];
     Heap := Heap[x, g:=y];
     assume state(Heap, Mask);
@@ -970,30 +970,30 @@ procedure test01() returns ()
   // -- Translating statement: x.g.f := 9 -- nested.vpr@34.3--34.13
     
     // -- Check definedness of x.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (nested.vpr@34.3--34.13) [154115]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (nested.vpr@34.3--34.13) [49672]"}
         HasDirectPerm(Mask, x, g);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g.f (nested.vpr@34.3--34.13) [154116]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g.f (nested.vpr@34.3--34.13) [49673]"}
       FullPerm == Mask[Heap[x, g], f_7];
     Heap := Heap[Heap[x, g], f_7:=9];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun1(x) == -6 -- nested.vpr@36.3--36.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun1(x) == -6
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access x.f (nested.vpr@36.10--36.17) [154117]"}
+        assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access x.f (nested.vpr@36.10--36.17) [49674]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access x.g (nested.vpr@36.10--36.17) [154118]"}
+        assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access x.g (nested.vpr@36.10--36.17) [49675]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access x.g.f (nested.vpr@36.10--36.17) [154119]"}
+        assert {:msg "  Precondition of function fun1 might not hold. There might be insufficient permission to access x.g.f (nested.vpr@36.10--36.17) [49676]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[ExhaleWellDef0Heap[x, g], f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1002,7 +1002,7 @@ procedure test01() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun1(x) == -6 might not hold. (nested.vpr@36.10--36.23) [154120]"}
+    assert {:msg "  Assert might fail. Assertion fun1(x) == -6 might not hold. (nested.vpr@36.10--36.23) [49677]"}
       fun1(Heap, x) == -6;
     assume state(Heap, Mask);
 }
@@ -1014,15 +1014,15 @@ procedure test01() returns ()
 procedure test03() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var y: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -1035,8 +1035,8 @@ procedure test03() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -1061,13 +1061,13 @@ procedure test03() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := 3 -- nested.vpr@49.3--49.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (nested.vpr@49.3--49.11) [154121]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (nested.vpr@49.3--49.11) [49678]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=3];
     assume state(Heap, Mask);
   
   // -- Translating statement: x.g := y -- nested.vpr@50.3--50.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (nested.vpr@50.3--50.11) [154122]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (nested.vpr@50.3--50.11) [49679]"}
       FullPerm == Mask[x, g];
     Heap := Heap[x, g:=y];
     assume state(Heap, Mask);
@@ -1075,32 +1075,32 @@ procedure test03() returns ()
   // -- Translating statement: x.g.f := 17 -- nested.vpr@51.3--51.14
     
     // -- Check definedness of x.g
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (nested.vpr@51.3--51.14) [154123]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (nested.vpr@51.3--51.14) [49680]"}
         HasDirectPerm(Mask, x, g);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g.f (nested.vpr@51.3--51.14) [154124]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g.f (nested.vpr@51.3--51.14) [49681]"}
       FullPerm == Mask[Heap[x, g], f_7];
     Heap := Heap[Heap[x, g], f_7:=17];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun4(true, x, x) == 7 - 3 + 17 + 17 -- nested.vpr@53.3--53.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun4(true, x, x) == 7 - 3 + 17 + 17
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access x.f (nested.vpr@53.10--53.26) [154125]"}
+        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access x.f (nested.vpr@53.10--53.26) [49682]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access x.g (nested.vpr@53.10--53.26) [154126]"}
+        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access x.g (nested.vpr@53.10--53.26) [49683]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access x.g.f (nested.vpr@53.10--53.26) [154127]"}
+        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access x.g.f (nested.vpr@53.10--53.26) [49684]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[ExhaleWellDef0Heap[x, g], f_7];
-        assert {:msg "  Precondition of function fun4 might not hold. Assertion x == x might not hold. (nested.vpr@53.10--53.26) [154128]"}
+        assert {:msg "  Precondition of function fun4 might not hold. Assertion x == x might not hold. (nested.vpr@53.10--53.26) [49685]"}
           x == x;
         // Finish exhale
         havoc ExhaleHeap;
@@ -1109,26 +1109,26 @@ procedure test03() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun4(true, x, x) == 7 - 3 + 17 + 17 might not hold. (nested.vpr@53.10--53.45) [154129]"}
+    assert {:msg "  Assert might fail. Assertion fun4(true, x, x) == 7 - 3 + 17 + 17 might not hold. (nested.vpr@53.10--53.45) [49686]"}
       fun4(Heap, true, x, x) == 38;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun4(false, x, x) == 7 + 3 + 99 -- nested.vpr@54.3--54.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun4(false, x, x) == 7 + 3 + 99
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access x.f (nested.vpr@54.10--54.27) [154130]"}
+        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access x.f (nested.vpr@54.10--54.27) [49687]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access x.g (nested.vpr@54.10--54.27) [154131]"}
+        assert {:msg "  Precondition of function fun4 might not hold. There might be insufficient permission to access x.g (nested.vpr@54.10--54.27) [49688]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];
-        assert {:msg "  Precondition of function fun4 might not hold. Assertion x == x might not hold. (nested.vpr@54.10--54.27) [154132]"}
+        assert {:msg "  Precondition of function fun4 might not hold. Assertion x == x might not hold. (nested.vpr@54.10--54.27) [49689]"}
           x == x;
         // Finish exhale
         havoc ExhaleHeap;
@@ -1137,14 +1137,14 @@ procedure test03() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun4(false, x, x) == 7 + 3 + 99 might not hold. (nested.vpr@54.10--54.41) [154133]"}
+    assert {:msg "  Assert might fail. Assertion fun4(false, x, x) == 7 + 3 + 99 might not hold. (nested.vpr@54.10--54.41) [49690]"}
       fun4(Heap, false, x, x) == 109;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- nested.vpr@57.3--57.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (nested.vpr@57.10--57.15) [154134]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (nested.vpr@57.10--57.15) [49691]"}
       false;
     assume state(Heap, Mask);
 }

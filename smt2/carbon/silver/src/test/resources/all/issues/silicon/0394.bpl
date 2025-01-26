@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:31
+// Date:         2025-01-26 21:42:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0394.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0394-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -372,15 +372,15 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 type test10DomainType;
 
 // Translation of domain function foo
-function  foo(i_79: int): MultiSet int;
+function  foo_2(i_6: int): MultiSet int;
 
 // Translation of domain function bar
-function  bar_3(a_3: int, b_102: int): bool;
+function  bar_1(a_3: int, b_33: int): bool;
 
 // Translation of domain axiom foobar
 axiom (forall a_2: int, b_24: int ::
-  { (bar_3(a_2, b_24): bool) }
-  (bar_3(a_2, b_24): bool) == MultiSet#Subset((foo(a_2): MultiSet int), (foo(b_24): MultiSet int))
+  { (bar_1(a_2, b_24): bool) }
+  (bar_1(a_2, b_24): bool) == MultiSet#Subset((foo_2(a_2): MultiSet int), (foo_2(b_24): MultiSet int))
 );
 
 // ==================================================
@@ -390,10 +390,10 @@ axiom (forall a_2: int, b_24: int ::
 procedure test11(a_2: int, b_24: int, c: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -401,33 +401,33 @@ procedure test11(a_2: int, b_24: int, c: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume MultiSet#Equal(MultiSet#Union((foo(a_2): MultiSet int), (foo(b_24): MultiSet int)), (foo(c): MultiSet int));
+    assume MultiSet#Equal(MultiSet#Union((foo_2(a_2): MultiSet int), (foo_2(b_24): MultiSet int)), (foo_2(c): MultiSet int));
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert bar(a, c) -- 0394.vpr@13.3--13.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion bar(a, c) might not hold. (0394.vpr@13.10--13.18) [217744]"}
-      (bar_3(a_2, c): bool);
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion bar(a, c) might not hold. (0394.vpr@13.10--13.18) [64210]"}
+      (bar_1(a_2, c): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar(b, c) -- 0394.vpr@14.3--14.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion bar(b, c) might not hold. (0394.vpr@14.10--14.18) [217745]"}
-      (bar_3(b_24, c): bool);
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion bar(b, c) might not hold. (0394.vpr@14.10--14.18) [64211]"}
+      (bar_1(b_24, c): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar(a, b) -- 0394.vpr@16.3--16.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion bar(a, b) might not hold. (0394.vpr@16.10--16.18) [217746]"}
-      (bar_3(a_2, b_24): bool);
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion bar(a, b) might not hold. (0394.vpr@16.10--16.18) [64212]"}
+      (bar_1(a_2, b_24): bool);
     assume state(Heap, Mask);
 }

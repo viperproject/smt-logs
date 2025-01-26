@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:39
+// Date:         2025-01-26 21:43:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/demo/account.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/demo/account-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,11 +189,11 @@ axiom !IsWandField(_balance);
 // ==================================================
 
 // Uninterpreted function definitions
-function  balance(Heap: HeapType, this: Ref): int;
+function  balance_1(Heap: HeapType, this: Ref): int;
 function  balance'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { balance(Heap, this) }
-  balance(Heap, this) == balance'(Heap, this) && dummyFunction(balance#triggerStateless(this))
+  { balance_1(Heap, this) }
+  balance_1(Heap, this) == balance'(Heap, this) && dummyFunction(balance#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { balance'(Heap, this) }
@@ -276,12 +276,12 @@ procedure deposit(this: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -303,8 +303,8 @@ procedure deposit(this: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -319,10 +319,10 @@ procedure deposit(this: Ref, n: int) returns ()
     // -- Check definedness of balance(this) == old(balance(this)) + n
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function balance might not hold. There might be insufficient permission to access account(this) (account.vpr@18.12--18.25) [149411]"}
+        assert {:msg "  Precondition of function balance might not hold. There might be insufficient permission to access account(this) (account.vpr@18.12--18.25) [93143]"}
           NoPerm < perm ==> NoPerm < PostMask[null, account(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -333,16 +333,16 @@ procedure deposit(this: Ref, n: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function balance might not hold. There might be insufficient permission to access account(this) (account.vpr@18.33--18.46) [149412]"}
+        assert {:msg "  Precondition of function balance might not hold. There might be insufficient permission to access account(this) (account.vpr@18.33--18.46) [93144]"}
           NoPerm < perm ==> NoPerm < oldMask[null, account(this)];
         // Finish exhale
         // Stop execution
         assume false;
       }
-    assume balance(PostHeap, this) == balance(oldHeap, this) + n;
+    assume balance_1(PostHeap, this) == balance_1(oldHeap, this) + n;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -354,16 +354,16 @@ procedure deposit(this: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of deposit might not hold. There might be insufficient permission to access account(this) (account.vpr@17.12--17.30) [149413]"}
+      assert {:msg "  Postcondition of deposit might not hold. There might be insufficient permission to access account(this) (account.vpr@17.12--17.30) [93145]"}
         perm <= Mask[null, account(this)];
     }
     Mask := Mask[null, account(this):=Mask[null, account(this)] - perm];
-    assert {:msg "  Postcondition of deposit might not hold. Assertion balance(this) == old(balance(this)) + n might not hold. (account.vpr@18.12--18.51) [149414]"}
-      balance(Heap, this) == balance(oldHeap, this) + n;
+    assert {:msg "  Postcondition of deposit might not hold. Assertion balance(this) == old(balance(this)) + n might not hold. (account.vpr@18.12--18.51) [93146]"}
+      balance_1(Heap, this) == balance_1(oldHeap, this) + n;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

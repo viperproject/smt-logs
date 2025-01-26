@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:01
+// Date:         2025-01-26 21:43:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/sequences/nil.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/sequences/nil-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -544,12 +544,12 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var bs1: (Seq bool);
   var bs2: (Seq bool);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -559,8 +559,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: bs1 := Seq[Bool]() -- nil.vpr@5.3--5.36
     bs1 := (Seq#Empty(): Seq bool);
@@ -571,16 +571,16 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bs1 == bs2 -- nil.vpr@8.3--8.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion bs1 == bs2 might not hold. (nil.vpr@8.10--8.20) [183622]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion bs1 == bs2 might not hold. (nil.vpr@8.10--8.20) [95144]"}
       Seq#Equal(bs1, bs2);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |bs1| == 0 -- nil.vpr@9.3--9.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion |bs1| == 0 might not hold. (nil.vpr@9.10--9.20) [183623]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion |bs1| == 0 might not hold. (nil.vpr@9.10--9.20) [95145]"}
       Seq#Length(bs1) == 0;
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:04:21
+// Date:         2025-01-26 21:44:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/potential_unsoundness.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/potential_unsoundness-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -301,7 +301,7 @@ procedure t01(x: Ref, y: Ref) returns ()
     if (b_1_1) {
       if (b_1_1) {
         perm := 1 / 2;
-        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@15.3--15.62) [122642]"}
+        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@15.3--15.62) [207715]"}
           perm >= NoPerm;
         b_1_1 := b_1_1 && (perm > NoPerm ==> x != null);
         Ops_1Mask := Ops_1Mask[x, f_7:=Ops_1Mask[x, f_7] + perm];
@@ -311,7 +311,7 @@ procedure t01(x: Ref, y: Ref) returns ()
         if (b_1_1) {
           
           // -- Check definedness of x.f == 2
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@15.3--15.62) [122643]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@15.3--15.62) [207716]"}
               HasDirectPerm(Ops_1Mask, x, f_7);
         }
         b_1_1 := b_1_1 && Ops_1Heap[x, f_7] == 2;
@@ -334,7 +334,7 @@ procedure t01(x: Ref, y: Ref) returns ()
       rcvLocal := x;
       neededTransfer := 3 / 4;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 3 / 4) might be negative. (potential_unsoundness.vpr@15.3--15.62) [122644]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 3 / 4) might be negative. (potential_unsoundness.vpr@15.3--15.62) [207717]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -377,7 +377,7 @@ procedure t01(x: Ref, y: Ref) returns ()
             Heap := Heap[null, wand#sm(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2):=Heap[null, wand#sm(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@15.3--15.62) [122645]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@15.3--15.62) [207718]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -392,7 +392,7 @@ procedure t01(x: Ref, y: Ref) returns ()
       rcvLocal := y;
       neededTransfer := 1 / 2;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(y.f, 1 / 2) might be negative. (potential_unsoundness.vpr@15.3--15.62) [122646]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(y.f, 1 / 2) might be negative. (potential_unsoundness.vpr@15.3--15.62) [207719]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -435,7 +435,7 @@ procedure t01(x: Ref, y: Ref) returns ()
             Heap := Heap[null, wand#sm(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2):=Heap[null, wand#sm(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2)][y, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access y.f (potential_unsoundness.vpr@15.3--15.62) [122647]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access y.f (potential_unsoundness.vpr@15.3--15.62) [207720]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -452,7 +452,7 @@ procedure t01(x: Ref, y: Ref) returns ()
   
   // -- Translating statement: inhale acc(y.f, 1 / 2) -- potential_unsoundness.vpr@17.3--17.22
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@17.10--17.22) [122648]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@17.10--17.22) [207721]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> y != null;
     Mask := Mask[y, f_7:=Mask[y, f_7] + perm];
@@ -465,16 +465,16 @@ procedure t01(x: Ref, y: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == 2
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@19.10--19.18) [122649]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@19.10--19.18) [207722]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == 2 might not hold. (potential_unsoundness.vpr@19.10--19.18) [122650]"}
+    assert {:msg "  Assert might fail. Assertion x.f == 2 might not hold. (potential_unsoundness.vpr@19.10--19.18) [207723]"}
       Heap[x, f_7] == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- potential_unsoundness.vpr@22.3--22.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (potential_unsoundness.vpr@22.10--22.15) [122651]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (potential_unsoundness.vpr@22.10--22.15) [207724]"}
       false;
     assume state(Heap, Mask);
 }
@@ -566,7 +566,7 @@ procedure t02(x: Ref, y: Ref) returns ()
     if (b_6) {
       if (b_6) {
         perm := 1 / 2;
-        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@31.3--31.62) [122654]"}
+        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@31.3--31.62) [207727]"}
           perm >= NoPerm;
         b_6 := b_6 && (perm > NoPerm ==> x != null);
         Ops_3Mask := Ops_3Mask[x, f_7:=Ops_3Mask[x, f_7] + perm];
@@ -576,7 +576,7 @@ procedure t02(x: Ref, y: Ref) returns ()
         if (b_6) {
           
           // -- Check definedness of x.f == 2
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@31.3--31.62) [122655]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@31.3--31.62) [207728]"}
               HasDirectPerm(Ops_3Mask, x, f_7);
         }
         b_6 := b_6 && Ops_3Heap[x, f_7] == 2;
@@ -599,7 +599,7 @@ procedure t02(x: Ref, y: Ref) returns ()
       rcvLocal := x;
       neededTransfer := 3 / 4;
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 3 / 4) might be negative. (potential_unsoundness.vpr@31.3--31.62) [122656]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, 3 / 4) might be negative. (potential_unsoundness.vpr@31.3--31.62) [207729]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -642,7 +642,7 @@ procedure t02(x: Ref, y: Ref) returns ()
             Heap := Heap[null, wand#sm(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2):=Heap[null, wand#sm(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@31.3--31.62) [122657]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@31.3--31.62) [207730]"}
         (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -657,7 +657,7 @@ procedure t02(x: Ref, y: Ref) returns ()
       rcvLocal := y;
       neededTransfer := 1 / 2;
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(y.f, 1 / 2) might be negative. (potential_unsoundness.vpr@31.3--31.62) [122658]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(y.f, 1 / 2) might be negative. (potential_unsoundness.vpr@31.3--31.62) [207731]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -700,7 +700,7 @@ procedure t02(x: Ref, y: Ref) returns ()
             Heap := Heap[null, wand#sm(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2):=Heap[null, wand#sm(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2)][y, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access y.f (potential_unsoundness.vpr@31.3--31.62) [122659]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access y.f (potential_unsoundness.vpr@31.3--31.62) [207732]"}
         (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -724,14 +724,14 @@ procedure t02(x: Ref, y: Ref) returns ()
         havoc WandDefLHSHeap;
         WandDefLHSMask := ZeroMask;
         perm := 1 / 2;
-        assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@33.10--33.61) [122660]"}
+        assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@33.10--33.61) [207733]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> x != null;
         WandDefLHSMask := WandDefLHSMask[x, f_7:=WandDefLHSMask[x, f_7] + perm];
         assume state(WandDefLHSHeap, WandDefLHSMask);
         
         // -- Check definedness of x.f == 2
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@33.10--33.61) [122661]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@33.10--33.61) [207734]"}
             HasDirectPerm(WandDefLHSMask, x, f_7);
         assume WandDefLHSHeap[x, f_7] == 2;
         assume state(WandDefLHSHeap, WandDefLHSMask);
@@ -744,13 +744,13 @@ procedure t02(x: Ref, y: Ref) returns ()
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
         perm := 3 / 4;
-        assert {:msg "  Exhale might fail. Fraction 3 / 4 might be negative. (potential_unsoundness.vpr@33.10--33.61) [122662]"}
+        assert {:msg "  Exhale might fail. Fraction 3 / 4 might be negative. (potential_unsoundness.vpr@33.10--33.61) [207735]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> x != null;
         WandDefRHSMask := WandDefRHSMask[x, f_7:=WandDefRHSMask[x, f_7] + perm];
         assume state(WandDefRHSHeap, WandDefRHSMask);
         perm := 1 / 2;
-        assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@33.10--33.61) [122663]"}
+        assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@33.10--33.61) [207736]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> y != null;
         WandDefRHSMask := WandDefRHSMask[y, f_7:=WandDefRHSMask[y, f_7] + perm];
@@ -759,7 +759,7 @@ procedure t02(x: Ref, y: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (potential_unsoundness.vpr@33.10--33.61) [122664]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (potential_unsoundness.vpr@33.10--33.61) [207737]"}
       FullPerm <= Mask[null, wand(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2)];
     Mask := Mask[null, wand(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2):=Mask[null, wand(x, 1 / 2, x, 2, x, 3 / 4, y, 1 / 2)] - FullPerm];
     // Finish exhale
@@ -770,7 +770,7 @@ procedure t02(x: Ref, y: Ref) returns ()
   
   // -- Translating statement: inhale acc(y.f, 1 / 2) -- potential_unsoundness.vpr@35.3--35.22
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@35.10--35.22) [122665]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (potential_unsoundness.vpr@35.10--35.22) [207738]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> y != null;
     Mask := Mask[y, f_7:=Mask[y, f_7] + perm];
@@ -783,16 +783,16 @@ procedure t02(x: Ref, y: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == 2
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@37.10--37.18) [122666]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (potential_unsoundness.vpr@37.10--37.18) [207739]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == 2 might not hold. (potential_unsoundness.vpr@37.10--37.18) [122667]"}
+    assert {:msg "  Assert might fail. Assertion x.f == 2 might not hold. (potential_unsoundness.vpr@37.10--37.18) [207740]"}
       Heap[x, f_7] == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- potential_unsoundness.vpr@40.3--40.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (potential_unsoundness.vpr@40.10--40.15) [122668]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (potential_unsoundness.vpr@40.10--40.15) [207741]"}
       false;
     assume state(Heap, Mask);
 }

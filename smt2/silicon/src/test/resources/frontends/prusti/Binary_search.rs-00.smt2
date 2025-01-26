@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:28:58
+; Started: 2025-01-26 21:22:29
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -998,25 +998,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-352|)))
+  :qid |quant-u-553|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-353|)))
+  :qid |quant-u-554|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-376|)))
+  :qid |quant-u-577|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-377|)))
+  :qid |quant-u-578|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-378|)))
+  :qid |quant-u-579|)))
 ; ---------- FUNCTION m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$----------
 (declare-fun _pure_1@1@00 () $Ref)
 (declare-fun result@2@00 () Bool)
@@ -1046,19 +1046,19 @@
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00)
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@1@00))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@1@00))
-  :qid |quant-u-354|)))
+  :qid |quant-u-555|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _pure_1@1@00)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-355|)))
+  :qid |quant-u-556|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-379|)))
+  :qid |quant-u-580|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (let ((result@2@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-380|)))
+  :qid |quant-u-581|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1305,11 +1305,11 @@
       (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@1@00)
       (= ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first s@$))) 0)))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@1@00))
-  :qid |quant-u-381|)))
+  :qid |quant-u-582|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   true
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_some$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@1@00))
-  :qid |quant-u-382|)))
+  :qid |quant-u-583|)))
 ; ---------- FUNCTION m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$----------
 (declare-fun _pure_1@3@00 () $Ref)
 (declare-fun result@4@00 () Int)
@@ -1352,29 +1352,29 @@
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@3@00)
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@3@00))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@3@00))
-  :qid |quant-u-356|)))
+  :qid |quant-u-557|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref)) (!
   (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@3@00)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@3@00))
-  :qid |quant-u-357|)))
+  :qid |quant-u-558|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref)) (!
   (let ((result@4@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@3@00))) (=>
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@3@00)
     (and (<= 0 result@4@00) (<= result@4@00 18446744073709551615))))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@3@00))
-  :qid |quant-u-383|)))
+  :qid |quant-u-584|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref)) (!
   (let ((result@4@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@3@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@3@00))
-  :qid |quant-u-384|)))
+  :qid |quant-u-585|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref)) (!
   (let ((result@4@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@3@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@3@00))
-  :qid |quant-u-385|)))
+  :qid |quant-u-586|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 $Ref)) (!
   (let ((result@4@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@3@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@3@00))
-  :qid |quant-u-386|)))
+  :qid |quant-u-587|)))
 ; ---------- FUNCTION builtin$unreach_int__$TY$__$int$----------
 (declare-fun result@5@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -1387,11 +1387,11 @@
     (builtin$unreach_int__$TY$__$int$%limited s@$)
     (builtin$unreach_int__$TY$__$int$ s@$))
   :pattern ((builtin$unreach_int__$TY$__$int$ s@$))
-  :qid |quant-u-358|)))
+  :qid |quant-u-559|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$unreach_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-359|)))
+  :qid |quant-u-560|)))
 ; ---------- FUNCTION m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$----------
 (declare-fun self@6@00 () $Ref)
 (declare-fun result@7@00 () Int)
@@ -1425,21 +1425,21 @@
     (m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@6@00)
     (m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@6@00))
   :pattern ((m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@6@00))
-  :qid |quant-u-360|)))
+  :qid |quant-u-561|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless self@6@00)
   :pattern ((m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@6@00))
-  :qid |quant-u-361|)))
+  :qid |quant-u-562|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@6@00))) (=>
     (m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ self@6@00)
     (and (<= 0 result@7@00) (<= result@7@00 2))))
   :pattern ((m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@6@00))
-  :qid |quant-u-387|)))
+  :qid |quant-u-588|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@6@00))) true)
   :pattern ((m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@6@00))
-  :qid |quant-u-388|)))
+  :qid |quant-u-589|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (read$%precondition $Snap.unit))
@@ -1565,11 +1565,11 @@
       (m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@6@00)
       ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@6@00))
-  :qid |quant-u-389|)))
+  :qid |quant-u-590|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   true
   :pattern ((m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$Ordering$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@6@00))
-  :qid |quant-u-390|)))
+  :qid |quant-u-591|)))
 ; ---------- FUNCTION builtin$undef_int__$TY$__$int$----------
 (declare-fun result@8@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -1580,11 +1580,11 @@
     (builtin$undef_int__$TY$__$int$%limited s@$)
     (builtin$undef_int__$TY$__$int$ s@$))
   :pattern ((builtin$undef_int__$TY$__$int$ s@$))
-  :qid |quant-u-362|)))
+  :qid |quant-u-563|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$undef_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$undef_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-363|)))
+  :qid |quant-u-564|)))
 ; ---------- FUNCTION builtin$unreach_bool__$TY$__$bool$----------
 (declare-fun result@9@00 () Bool)
 ; ----- Well-definedness of specifications -----
@@ -1597,11 +1597,11 @@
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-364|)))
+  :qid |quant-u-565|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-365|)))
+  :qid |quant-u-566|)))
 ; ---------- FUNCTION builtin$undef_bool__$TY$__$bool$----------
 (declare-fun result@10@00 () Bool)
 ; ----- Well-definedness of specifications -----
@@ -1612,11 +1612,11 @@
     (builtin$undef_bool__$TY$__$bool$%limited s@$)
     (builtin$undef_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$undef_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-366|)))
+  :qid |quant-u-567|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$undef_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$undef_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-367|)))
+  :qid |quant-u-568|)))
 ; ---------- FUNCTION m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$----------
 (declare-fun _pure_1@11@00 () $Ref)
 (declare-fun result@12@00 () Bool)
@@ -1646,19 +1646,19 @@
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00)
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@11@00))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@11@00))
-  :qid |quant-u-368|)))
+  :qid |quant-u-569|)))
 (assert (forall ((s@$ $Snap) (_pure_1@11@00 $Ref)) (!
   (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless _pure_1@11@00)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00))
-  :qid |quant-u-369|)))
+  :qid |quant-u-570|)))
 (assert (forall ((s@$ $Snap) (_pure_1@11@00 $Ref)) (!
   (let ((result@12@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00))
-  :qid |quant-u-391|)))
+  :qid |quant-u-592|)))
 (assert (forall ((s@$ $Snap) (_pure_1@11@00 $Ref)) (!
   (let ((result@12@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ _pure_1@11@00))
-  :qid |quant-u-392|)))
+  :qid |quant-u-593|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1717,7 +1717,7 @@
           ($Snap.first s@$)
           $Snap.unit) _pure_1@11@00))))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@11@00))
-  :qid |quant-u-393|)))
+  :qid |quant-u-594|)))
 (assert (forall ((s@$ $Snap) (_pure_1@11@00 $Ref)) (!
   (=>
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ _pure_1@11@00)
@@ -1725,7 +1725,7 @@
       ($Snap.first s@$)
       $Snap.unit) _pure_1@11@00))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ _pure_1@11@00))
-  :qid |quant-u-394|)))
+  :qid |quant-u-595|)))
 ; ---------- FUNCTION m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$----------
 (declare-fun _pure_1@13@00 () $Ref)
 (declare-fun _pure_2@14@00 () Int)
@@ -1828,29 +1828,29 @@
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@13@00 _pure_2@14@00)
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@13@00 _pure_2@14@00))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$ s@$ _pure_1@13@00 _pure_2@14@00))
-  :qid |quant-u-370|)))
+  :qid |quant-u-571|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref) (_pure_2@14@00 Int)) (!
   (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%stateless _pure_1@13@00 _pure_2@14@00)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@13@00 _pure_2@14@00))
-  :qid |quant-u-371|)))
+  :qid |quant-u-572|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref) (_pure_2@14@00 Int)) (!
   (let ((result@15@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@13@00 _pure_2@14@00))) (=>
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%precondition s@$ _pure_1@13@00 _pure_2@14@00)
     (and (<= (- 0 2147483648) result@15@00) (<= result@15@00 2147483647))))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@13@00 _pure_2@14@00))
-  :qid |quant-u-395|)))
+  :qid |quant-u-596|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref) (_pure_2@14@00 Int)) (!
   (let ((result@15@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@13@00 _pure_2@14@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@13@00 _pure_2@14@00))
-  :qid |quant-u-396|)))
+  :qid |quant-u-597|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref) (_pure_2@14@00 Int)) (!
   (let ((result@15@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@13@00 _pure_2@14@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@13@00 _pure_2@14@00))
-  :qid |quant-u-397|)))
+  :qid |quant-u-598|)))
 (assert (forall ((s@$ $Snap) (_pure_1@13@00 $Ref) (_pure_2@14@00 Int)) (!
   (let ((result@15@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@13@00 _pure_2@14@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Binary_search$$VecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$%limited s@$ _pure_1@13@00 _pure_2@14@00))
-  :qid |quant-u-398|)))
+  :qid |quant-u-599|)))
 ; ---------- FUNCTION m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$----------
 (declare-fun self@16@00 () $Ref)
 (declare-fun result@17@00 () Int)
@@ -1885,21 +1885,21 @@
     (m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@16@00)
     (m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@16@00))
   :pattern ((m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@16@00))
-  :qid |quant-u-372|)))
+  :qid |quant-u-573|)))
 (assert (forall ((s@$ $Snap) (self@16@00 $Ref)) (!
   (m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless self@16@00)
   :pattern ((m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@16@00))
-  :qid |quant-u-373|)))
+  :qid |quant-u-574|)))
 (assert (forall ((s@$ $Snap) (self@16@00 $Ref)) (!
   (let ((result@17@00 (m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@16@00))) (=>
     (m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ self@16@00)
     (and (<= 0 result@17@00) (<= result@17@00 1))))
   :pattern ((m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@16@00))
-  :qid |quant-u-399|)))
+  :qid |quant-u-600|)))
 (assert (forall ((s@$ $Snap) (self@16@00 $Ref)) (!
   (let ((result@17@00 (m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@16@00))) true)
   :pattern ((m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ self@16@00))
-  :qid |quant-u-400|)))
+  :qid |quant-u-601|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (read$%precondition $Snap.unit))
@@ -2147,11 +2147,11 @@
       (m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@16@00)
       ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@16@00))
-  :qid |quant-u-401|)))
+  :qid |quant-u-602|)))
 (assert (forall ((s@$ $Snap) (self@16@00 $Ref)) (!
   true
   :pattern ((m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$discriminant$$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ self@16@00))
-  :qid |quant-u-402|)))
+  :qid |quant-u-603|)))
 ; ---------- FUNCTION m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$----------
 (declare-fun _pure_1@18@00 () $Ref)
 (declare-fun result@19@00 () Int)
@@ -2225,29 +2225,29 @@
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@18@00)
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@18@00))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@18@00))
-  :qid |quant-u-374|)))
+  :qid |quant-u-575|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref)) (!
   (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@18@00)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@18@00))
-  :qid |quant-u-375|)))
+  :qid |quant-u-576|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref)) (!
   (let ((result@19@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@18@00))) (=>
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@18@00)
     (and (<= 0 result@19@00) (<= result@19@00 18446744073709551615))))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@18@00))
-  :qid |quant-u-403|)))
+  :qid |quant-u-604|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref)) (!
   (let ((result@19@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@18@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@18@00))
-  :qid |quant-u-404|)))
+  :qid |quant-u-605|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref)) (!
   (let ((result@19@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@18@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@18@00))
-  :qid |quant-u-405|)))
+  :qid |quant-u-606|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref)) (!
   (let ((result@19@00 (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@18@00))) true)
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%limited s@$ _pure_1@18@00))
-  :qid |quant-u-406|)))
+  :qid |quant-u-607|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -2865,7 +2865,7 @@
         (builtin$unreach_int__$TY$__$int$ $unresolved@30@00))))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@18@00))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%stateless _pure_1@18@00) (m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_%trigger ($Snap.first s@$) _pure_1@18@00))
-  :qid |quant-u-407|)))
+  :qid |quant-u-608|)))
 (assert (forall ((s@$ $Snap) (_pure_1@18@00 $Ref)) (!
   (=>
     (m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$%precondition s@$ _pure_1@18@00)
@@ -2874,7 +2874,7 @@
       true
       (builtin$unreach_int__$TY$__$int$%precondition $unresolved@30@00)))
   :pattern ((m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$peek$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$int$ s@$ _pure_1@18@00))
-  :qid |quant-u-408|)))
+  :qid |quant-u-609|)))
 ; ---------- DeadBorrowToken$ ----------
 (declare-const borrow@31@00 Int)
 ; ---------- bool ----------

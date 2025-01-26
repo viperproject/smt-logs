@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:55:45
+// Date:         2025-01-26 21:44:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/array.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/array-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,9 +145,9 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(k_3: int): bool;
-function  neverTriggered2(k_6: int): bool;
-function  neverTriggered3(k_10_2: int): bool;
-function  neverTriggered4(k_1_1: int): bool;
+function  neverTriggered2(k_6_2: int): bool;
+function  neverTriggered3(k_10: int): bool;
+function  neverTriggered4(k_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -568,12 +568,12 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // Translation of all fields
 // ==================================================
 
-const unique value: Field NormalField int;
-axiom !IsPredicateField(value);
-axiom !IsWandField(value);
-const unique array: Field NormalField (Seq Ref);
-axiom !IsPredicateField(array);
-axiom !IsWandField(array);
+const unique value_1: Field NormalField int;
+axiom !IsPredicateField(value_1);
+axiom !IsWandField(value_1);
+const unique array_1: Field NormalField (Seq Ref);
+axiom !IsPredicateField(array_1);
+axiom !IsWandField(array_1);
 
 // ==================================================
 // Translation of function get
@@ -594,14 +594,14 @@ axiom (forall Heap: HeapType, this: Ref, i: int ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, i: int ::
   { state(Heap, Mask), get(Heap, this, i) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> 0 <= i && i < Seq#Length(Heap[this, array]) ==> get(Heap, this, i) == Heap[Seq#Index(Heap[this, array], i), value]
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> 0 <= i && i < Seq#Length(Heap[this, array_1]) ==> get(Heap, this, i) == Heap[Seq#Index(Heap[this, array_1], i), value_1]
 );
 
 // Framing axioms
 function  get#frame(frame: FrameType, this: Ref, i: int): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, i: int ::
   { state(Heap, Mask), get'(Heap, this, i) }
-  state(Heap, Mask) ==> get'(Heap, this, i) == get#frame(CombineFrames(FrameFragment(Heap[this, array]), FrameFragment(Heap[Seq#Index(Heap[this, array], i), value])), this, i)
+  state(Heap, Mask) ==> get'(Heap, this, i) == get#frame(CombineFrames(FrameFragment(Heap[this, array_1]), FrameFragment(Heap[Seq#Index(Heap[this, array_1], i), value_1])), this, i)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -628,45 +628,45 @@ procedure get#definedness(this: Ref, i: int) returns (Result: int)
     havoc wildcard;
     perm := wildcard;
     assume this != null;
-    Mask := Mask[this, array:=Mask[this, array] + perm];
+    Mask := Mask[this, array_1:=Mask[this, array_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume 0 <= i;
     
     // -- Check definedness of i < |this.array|
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@34.10--34.36) [61884]"}
-        HasDirectPerm(Mask, this, array);
-    assume i < Seq#Length(Heap[this, array]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@34.10--34.36) [183287]"}
+        HasDirectPerm(Mask, this, array_1);
+    assume i < Seq#Length(Heap[this, array_1]);
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(this.array[i].value, wildcard)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@35.10--35.44) [61885]"}
-        HasDirectPerm(Mask, this, array);
-      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might be negative. (array.vpr@35.10--35.44) [61886]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@35.10--35.44) [183288]"}
+        HasDirectPerm(Mask, this, array_1);
+      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might be negative. (array.vpr@35.10--35.44) [183289]"}
         i >= 0;
-      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might exceed sequence length. (array.vpr@35.10--35.44) [61887]"}
-        i < Seq#Length(Heap[this, array]);
+      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might exceed sequence length. (array.vpr@35.10--35.44) [183290]"}
+        i < Seq#Length(Heap[this, array_1]);
     havoc wildcard;
     perm := wildcard;
-    assume Seq#Index(Heap[this, array], i) != null;
-    Mask := Mask[Seq#Index(Heap[this, array], i), value:=Mask[Seq#Index(Heap[this, array], i), value] + perm];
+    assume Seq#Index(Heap[this, array_1], i) != null;
+    Mask := Mask[Seq#Index(Heap[this, array_1], i), value_1:=Mask[Seq#Index(Heap[this, array_1], i), value_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of this.array[i].value
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.array (array.vpr@32.1--38.2) [61888]"}
-        HasDirectPerm(Mask, this, array);
-      assert {:msg "  Function might not be well-formed. Index this.array[i] into this.array might be negative. (array.vpr@32.1--38.2) [61889]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.array (array.vpr@32.1--38.2) [183291]"}
+        HasDirectPerm(Mask, this, array_1);
+      assert {:msg "  Function might not be well-formed. Index this.array[i] into this.array might be negative. (array.vpr@32.1--38.2) [183292]"}
         i >= 0;
-      assert {:msg "  Function might not be well-formed. Index this.array[i] into this.array might exceed sequence length. (array.vpr@32.1--38.2) [61890]"}
-        i < Seq#Length(Heap[this, array]);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.array[i].value (array.vpr@32.1--38.2) [61891]"}
-        HasDirectPerm(Mask, Seq#Index(Heap[this, array], i), value);
+      assert {:msg "  Function might not be well-formed. Index this.array[i] into this.array might exceed sequence length. (array.vpr@32.1--38.2) [183293]"}
+        i < Seq#Length(Heap[this, array_1]);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.array[i].value (array.vpr@32.1--38.2) [183294]"}
+        HasDirectPerm(Mask, Seq#Index(Heap[this, array_1], i), value_1);
   
   // -- Translate function body
-    Result := Heap[Seq#Index(Heap[this, array], i), value];
+    Result := Heap[Seq#Index(Heap[this, array_1], i), value_1];
 }
 
 // ==================================================
@@ -682,17 +682,17 @@ procedure init(this: Ref, i: int) returns ()
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
-  var k_1: int;
-  var j_5: int;
-  var k_2: int;
+  var k_16: int;
+  var j_14: int;
+  var k_6: int;
   var QPMask: MaskType;
-  var k_4: int;
-  var j_6: int;
+  var k_19: int;
+  var j_12: int;
   var k_7: int;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var k_4_1: int;
-  var j_2_1: int;
+  var k_4_2: int;
+  var j_2_2: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -707,7 +707,7 @@ procedure init(this: Ref, i: int) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, array:=Mask[this, array] + perm];
+    Mask := Mask[this, array_1:=Mask[this, array_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -724,83 +724,83 @@ procedure init(this: Ref, i: int) returns ()
     havoc wildcard;
     perm := wildcard;
     assume this != null;
-    PostMask := PostMask[this, array:=PostMask[this, array] + perm];
+    PostMask := PostMask[this, array_1:=PostMask[this, array_1] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |this.array| == i
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@10.9--10.26) [61892]"}
-        HasDirectPerm(PostMask, this, array);
-    assume Seq#Length(PostHeap[this, array]) == i;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@10.9--10.26) [183295]"}
+        HasDirectPerm(PostMask, this, array_1);
+    assume Seq#Length(PostHeap[this, array_1]) == i;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall k: Int, j: Int :: { (k in [0..i)), (j in [0..i)) } { (k in [0..i)), this.array[j] } { (j in [0..i)), this.array[k] } { this.array[k], this.array[j] } (k in [0..i)) && ((j in [0..i)) && k != j) ==> this.array[k] != this.array[j])
       if (*) {
-        if (Seq#Contains(Seq#Range(0, i), k_1) && (Seq#Contains(Seq#Range(0, i), j_5) && k_1 != j_5)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@11.9--11.105) [61893]"}
-            HasDirectPerm(PostMask, this, array);
-          assert {:msg "  Contract might not be well-formed. Index this.array[k] into this.array might be negative. (array.vpr@11.9--11.105) [61894]"}
-            k_1 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.array[k] into this.array might exceed sequence length. (array.vpr@11.9--11.105) [61895]"}
-            k_1 < Seq#Length(PostHeap[this, array]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@11.9--11.105) [61896]"}
-            HasDirectPerm(PostMask, this, array);
-          assert {:msg "  Contract might not be well-formed. Index this.array[j] into this.array might be negative. (array.vpr@11.9--11.105) [61897]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.array[j] into this.array might exceed sequence length. (array.vpr@11.9--11.105) [61898]"}
-            j_5 < Seq#Length(PostHeap[this, array]);
+        if (Seq#Contains(Seq#Range(0, i), k_16) && (Seq#Contains(Seq#Range(0, i), j_14) && k_16 != j_14)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@11.9--11.105) [183296]"}
+            HasDirectPerm(PostMask, this, array_1);
+          assert {:msg "  Contract might not be well-formed. Index this.array[k] into this.array might be negative. (array.vpr@11.9--11.105) [183297]"}
+            k_16 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.array[k] into this.array might exceed sequence length. (array.vpr@11.9--11.105) [183298]"}
+            k_16 < Seq#Length(PostHeap[this, array_1]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@11.9--11.105) [183299]"}
+            HasDirectPerm(PostMask, this, array_1);
+          assert {:msg "  Contract might not be well-formed. Index this.array[j] into this.array might be negative. (array.vpr@11.9--11.105) [183300]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.array[j] into this.array might exceed sequence length. (array.vpr@11.9--11.105) [183301]"}
+            j_14 < Seq#Length(PostHeap[this, array_1]);
         }
         assume false;
       }
-    assume (forall k_1_1: int, j_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, i), k_1_1), Seq#ContainsTrigger(Seq#Range(0, i), j_1) } { Seq#ContainsTrigger(Seq#Range(0, i), k_1_1), Seq#Contains(Seq#Range(0, i), j_1) } { Seq#Contains(Seq#Range(0, i), k_1_1), Seq#ContainsTrigger(Seq#Range(0, i), j_1) } { Seq#Contains(Seq#Range(0, i), k_1_1), Seq#Contains(Seq#Range(0, i), j_1) } { Seq#ContainsTrigger(Seq#Range(0, i), k_1_1), Seq#Index(PostHeap[this, array], j_1) } { Seq#Contains(Seq#Range(0, i), k_1_1), Seq#Index(PostHeap[this, array], j_1) } { Seq#ContainsTrigger(Seq#Range(0, i), j_1), Seq#Index(PostHeap[this, array], k_1_1) } { Seq#Contains(Seq#Range(0, i), j_1), Seq#Index(PostHeap[this, array], k_1_1) } { Seq#Index(PostHeap[this, array], k_1_1), Seq#Index(PostHeap[this, array], j_1) }
-      Seq#Contains(Seq#Range(0, i), k_1_1) && (Seq#Contains(Seq#Range(0, i), j_1) && k_1_1 != j_1) ==> Seq#Index(PostHeap[this, array], k_1_1) != Seq#Index(PostHeap[this, array], j_1)
+    assume (forall k_1: int, j_1: int ::
+      { Seq#ContainsTrigger(Seq#Range(0, i), k_1), Seq#ContainsTrigger(Seq#Range(0, i), j_1) } { Seq#ContainsTrigger(Seq#Range(0, i), k_1), Seq#Contains(Seq#Range(0, i), j_1) } { Seq#Contains(Seq#Range(0, i), k_1), Seq#ContainsTrigger(Seq#Range(0, i), j_1) } { Seq#Contains(Seq#Range(0, i), k_1), Seq#Contains(Seq#Range(0, i), j_1) } { Seq#ContainsTrigger(Seq#Range(0, i), k_1), Seq#Index(PostHeap[this, array_1], j_1) } { Seq#Contains(Seq#Range(0, i), k_1), Seq#Index(PostHeap[this, array_1], j_1) } { Seq#ContainsTrigger(Seq#Range(0, i), j_1), Seq#Index(PostHeap[this, array_1], k_1) } { Seq#Contains(Seq#Range(0, i), j_1), Seq#Index(PostHeap[this, array_1], k_1) } { Seq#Index(PostHeap[this, array_1], k_1), Seq#Index(PostHeap[this, array_1], j_1) }
+      Seq#Contains(Seq#Range(0, i), k_1) && (Seq#Contains(Seq#Range(0, i), j_1) && k_1 != j_1) ==> Seq#Index(PostHeap[this, array_1], k_1) != Seq#Index(PostHeap[this, array_1], j_1)
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall k: Int :: { (k in [0..i)) } { this.array[k] } (k in [0..i)) ==> acc(this.array[k].value, write))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, i), k_2)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@12.9--12.72) [61899]"}
-            HasDirectPerm(PostMask, this, array);
-          assert {:msg "  Contract might not be well-formed. Index this.array[k] into this.array might be negative. (array.vpr@12.9--12.72) [61900]"}
-            k_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index this.array[k] into this.array might exceed sequence length. (array.vpr@12.9--12.72) [61901]"}
-            k_2 < Seq#Length(PostHeap[this, array]);
+        if (Seq#Contains(Seq#Range(0, i), k_6)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@12.9--12.72) [183302]"}
+            HasDirectPerm(PostMask, this, array_1);
+          assert {:msg "  Contract might not be well-formed. Index this.array[k] into this.array might be negative. (array.vpr@12.9--12.72) [183303]"}
+            k_6 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index this.array[k] into this.array might exceed sequence length. (array.vpr@12.9--12.72) [183304]"}
+            k_6 < Seq#Length(PostHeap[this, array_1]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource this.array[k].value might not be injective. (array.vpr@12.9--12.72) [61902]"}
-      (forall k_3: int, k_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource this.array[k].value might not be injective. (array.vpr@12.9--12.72) [183305]"}
+      (forall k_3: int, k_3_2: int ::
       
-      (((k_3 != k_3_1 && Seq#Contains(Seq#Range(0, i), k_3)) && Seq#Contains(Seq#Range(0, i), k_3_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(PostHeap[this, array], k_3) != Seq#Index(PostHeap[this, array], k_3_1)
+      (((k_3 != k_3_2 && Seq#Contains(Seq#Range(0, i), k_3)) && Seq#Contains(Seq#Range(0, i), k_3_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(PostHeap[this, array_1], k_3) != Seq#Index(PostHeap[this, array_1], k_3_2)
     );
     
     // -- Define Inverse Function
       assume (forall k_3: int ::
-        { Seq#Index(PostHeap[this, array], k_3) } { Seq#ContainsTrigger(Seq#Range(0, i), k_3) } { Seq#Contains(Seq#Range(0, i), k_3) } { Seq#Index(PostHeap[this, array], k_3) }
-        Seq#Contains(Seq#Range(0, i), k_3) && NoPerm < FullPerm ==> qpRange1(Seq#Index(PostHeap[this, array], k_3)) && invRecv1(Seq#Index(PostHeap[this, array], k_3)) == k_3
+        { Seq#Index(PostHeap[this, array_1], k_3) } { Seq#ContainsTrigger(Seq#Range(0, i), k_3) } { Seq#Contains(Seq#Range(0, i), k_3) } { Seq#Index(PostHeap[this, array_1], k_3) }
+        Seq#Contains(Seq#Range(0, i), k_3) && NoPerm < FullPerm ==> qpRange1(Seq#Index(PostHeap[this, array_1], k_3)) && invRecv1(Seq#Index(PostHeap[this, array_1], k_3)) == k_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (Seq#Contains(Seq#Range(0, i), invRecv1(o_4)) && NoPerm < FullPerm) && qpRange1(o_4) ==> Seq#Index(PostHeap[this, array], invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (Seq#Contains(Seq#Range(0, i), invRecv1(o_9)) && NoPerm < FullPerm) && qpRange1(o_9) ==> Seq#Index(PostHeap[this, array_1], invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall k_3: int ::
-        { Seq#Index(PostHeap[this, array], k_3) } { Seq#ContainsTrigger(Seq#Range(0, i), k_3) } { Seq#Contains(Seq#Range(0, i), k_3) } { Seq#Index(PostHeap[this, array], k_3) }
-        Seq#Contains(Seq#Range(0, i), k_3) ==> Seq#Index(PostHeap[this, array], k_3) != null
+        { Seq#Index(PostHeap[this, array_1], k_3) } { Seq#ContainsTrigger(Seq#Range(0, i), k_3) } { Seq#Contains(Seq#Range(0, i), k_3) } { Seq#Index(PostHeap[this, array_1], k_3) }
+        Seq#Contains(Seq#Range(0, i), k_3) ==> Seq#Index(PostHeap[this, array_1], k_3) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, value] }
-        ((Seq#Contains(Seq#Range(0, i), invRecv1(o_4)) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(PostHeap[this, array], invRecv1(o_4)) == o_4) && QPMask[o_4, value] == PostMask[o_4, value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, i), invRecv1(o_4)) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, value] == PostMask[o_4, value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, value_1] }
+        ((Seq#Contains(Seq#Range(0, i), invRecv1(o_9)) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(PostHeap[this, array_1], invRecv1(o_9)) == o_9) && QPMask[o_9, value_1] == PostMask[o_9, value_1] + FullPerm) && (!((Seq#Contains(Seq#Range(0, i), invRecv1(o_9)) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, value_1] == PostMask[o_9, value_1])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != value_1 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -823,76 +823,76 @@ procedure init(this: Ref, i: int) returns ()
   //     (k in [0..i)) ==> acc(this.array[k].value, write))) -- array.vpr@14.5--16.73
     
     // -- Check definedness of |this.array| == i
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.array (array.vpr@14.12--16.73) [61903]"}
-        HasDirectPerm(Mask, this, array);
-    assume Seq#Length(Heap[this, array]) == i;
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access this.array (array.vpr@14.12--16.73) [183306]"}
+        HasDirectPerm(Mask, this, array_1);
+    assume Seq#Length(Heap[this, array_1]) == i;
     
     // -- Check definedness of (forall k: Int, j: Int :: { (k in [0..i)), (j in [0..i)) } { (k in [0..i)), this.array[j] } { (j in [0..i)), this.array[k] } { this.array[k], this.array[j] } (k in [0..i)) && ((j in [0..i)) && k != j) ==> this.array[k] != this.array[j])
       if (*) {
-        if (Seq#Contains(Seq#Range(0, i), k_4) && (Seq#Contains(Seq#Range(0, i), j_6) && k_4 != j_6)) {
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.array (array.vpr@14.12--16.73) [61904]"}
-            HasDirectPerm(Mask, this, array);
-          assert {:msg "  Inhale might fail. Index this.array[k] into this.array might be negative. (array.vpr@14.12--16.73) [61905]"}
-            k_4 >= 0;
-          assert {:msg "  Inhale might fail. Index this.array[k] into this.array might exceed sequence length. (array.vpr@14.12--16.73) [61906]"}
-            k_4 < Seq#Length(Heap[this, array]);
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.array (array.vpr@14.12--16.73) [61907]"}
-            HasDirectPerm(Mask, this, array);
-          assert {:msg "  Inhale might fail. Index this.array[j] into this.array might be negative. (array.vpr@14.12--16.73) [61908]"}
-            j_6 >= 0;
-          assert {:msg "  Inhale might fail. Index this.array[j] into this.array might exceed sequence length. (array.vpr@14.12--16.73) [61909]"}
-            j_6 < Seq#Length(Heap[this, array]);
+        if (Seq#Contains(Seq#Range(0, i), k_19) && (Seq#Contains(Seq#Range(0, i), j_12) && k_19 != j_12)) {
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.array (array.vpr@14.12--16.73) [183307]"}
+            HasDirectPerm(Mask, this, array_1);
+          assert {:msg "  Inhale might fail. Index this.array[k] into this.array might be negative. (array.vpr@14.12--16.73) [183308]"}
+            k_19 >= 0;
+          assert {:msg "  Inhale might fail. Index this.array[k] into this.array might exceed sequence length. (array.vpr@14.12--16.73) [183309]"}
+            k_19 < Seq#Length(Heap[this, array_1]);
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.array (array.vpr@14.12--16.73) [183310]"}
+            HasDirectPerm(Mask, this, array_1);
+          assert {:msg "  Inhale might fail. Index this.array[j] into this.array might be negative. (array.vpr@14.12--16.73) [183311]"}
+            j_12 >= 0;
+          assert {:msg "  Inhale might fail. Index this.array[j] into this.array might exceed sequence length. (array.vpr@14.12--16.73) [183312]"}
+            j_12 < Seq#Length(Heap[this, array_1]);
         }
         assume false;
       }
-    assume (forall k_8: int, j_5_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, i), k_8), Seq#ContainsTrigger(Seq#Range(0, i), j_5_1) } { Seq#ContainsTrigger(Seq#Range(0, i), k_8), Seq#Contains(Seq#Range(0, i), j_5_1) } { Seq#Contains(Seq#Range(0, i), k_8), Seq#ContainsTrigger(Seq#Range(0, i), j_5_1) } { Seq#Contains(Seq#Range(0, i), k_8), Seq#Contains(Seq#Range(0, i), j_5_1) } { Seq#ContainsTrigger(Seq#Range(0, i), k_8), Seq#Index(Heap[this, array], j_5_1) } { Seq#Contains(Seq#Range(0, i), k_8), Seq#Index(Heap[this, array], j_5_1) } { Seq#ContainsTrigger(Seq#Range(0, i), j_5_1), Seq#Index(Heap[this, array], k_8) } { Seq#Contains(Seq#Range(0, i), j_5_1), Seq#Index(Heap[this, array], k_8) } { Seq#Index(Heap[this, array], k_8), Seq#Index(Heap[this, array], j_5_1) }
-      Seq#Contains(Seq#Range(0, i), k_8) && (Seq#Contains(Seq#Range(0, i), j_5_1) && k_8 != j_5_1) ==> Seq#Index(Heap[this, array], k_8) != Seq#Index(Heap[this, array], j_5_1)
+    assume (forall k_8: int, j_5: int ::
+      { Seq#ContainsTrigger(Seq#Range(0, i), k_8), Seq#ContainsTrigger(Seq#Range(0, i), j_5) } { Seq#ContainsTrigger(Seq#Range(0, i), k_8), Seq#Contains(Seq#Range(0, i), j_5) } { Seq#Contains(Seq#Range(0, i), k_8), Seq#ContainsTrigger(Seq#Range(0, i), j_5) } { Seq#Contains(Seq#Range(0, i), k_8), Seq#Contains(Seq#Range(0, i), j_5) } { Seq#ContainsTrigger(Seq#Range(0, i), k_8), Seq#Index(Heap[this, array_1], j_5) } { Seq#Contains(Seq#Range(0, i), k_8), Seq#Index(Heap[this, array_1], j_5) } { Seq#ContainsTrigger(Seq#Range(0, i), j_5), Seq#Index(Heap[this, array_1], k_8) } { Seq#Contains(Seq#Range(0, i), j_5), Seq#Index(Heap[this, array_1], k_8) } { Seq#Index(Heap[this, array_1], k_8), Seq#Index(Heap[this, array_1], j_5) }
+      Seq#Contains(Seq#Range(0, i), k_8) && (Seq#Contains(Seq#Range(0, i), j_5) && k_8 != j_5) ==> Seq#Index(Heap[this, array_1], k_8) != Seq#Index(Heap[this, array_1], j_5)
     );
     
     // -- Check definedness of (forall k: Int :: { (k in [0..i)) } { this.array[k] } (k in [0..i)) ==> acc(this.array[k].value, write))
       if (*) {
         if (Seq#Contains(Seq#Range(0, i), k_7)) {
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.array (array.vpr@14.12--16.73) [61910]"}
-            HasDirectPerm(Mask, this, array);
-          assert {:msg "  Inhale might fail. Index this.array[k] into this.array might be negative. (array.vpr@14.12--16.73) [61911]"}
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.array (array.vpr@14.12--16.73) [183313]"}
+            HasDirectPerm(Mask, this, array_1);
+          assert {:msg "  Inhale might fail. Index this.array[k] into this.array might be negative. (array.vpr@14.12--16.73) [183314]"}
             k_7 >= 0;
-          assert {:msg "  Inhale might fail. Index this.array[k] into this.array might exceed sequence length. (array.vpr@14.12--16.73) [61912]"}
-            k_7 < Seq#Length(Heap[this, array]);
+          assert {:msg "  Inhale might fail. Index this.array[k] into this.array might exceed sequence length. (array.vpr@14.12--16.73) [183315]"}
+            k_7 < Seq#Length(Heap[this, array_1]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Inhale might fail. Quantified resource this.array[k].value might not be injective. (array.vpr@14.12--16.73) [61913]"}
-      (forall k_10_2: int, k_10_3: int ::
+    assert {:msg "  Inhale might fail. Quantified resource this.array[k].value might not be injective. (array.vpr@14.12--16.73) [183316]"}
+      (forall k_10: int, k_10_2: int ::
       
-      (((k_10_2 != k_10_3 && Seq#Contains(Seq#Range(0, i), k_10_2)) && Seq#Contains(Seq#Range(0, i), k_10_3)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, array], k_10_2) != Seq#Index(Heap[this, array], k_10_3)
+      (((k_10 != k_10_2 && Seq#Contains(Seq#Range(0, i), k_10)) && Seq#Contains(Seq#Range(0, i), k_10_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, array_1], k_10) != Seq#Index(Heap[this, array_1], k_10_2)
     );
     
     // -- Define Inverse Function
-      assume (forall k_10_2: int ::
-        { Seq#Index(Heap[this, array], k_10_2) } { Seq#ContainsTrigger(Seq#Range(0, i), k_10_2) } { Seq#Contains(Seq#Range(0, i), k_10_2) } { Seq#Index(Heap[this, array], k_10_2) }
-        Seq#Contains(Seq#Range(0, i), k_10_2) && NoPerm < FullPerm ==> qpRange3(Seq#Index(Heap[this, array], k_10_2)) && invRecv3(Seq#Index(Heap[this, array], k_10_2)) == k_10_2
+      assume (forall k_10: int ::
+        { Seq#Index(Heap[this, array_1], k_10) } { Seq#ContainsTrigger(Seq#Range(0, i), k_10) } { Seq#Contains(Seq#Range(0, i), k_10) } { Seq#Index(Heap[this, array_1], k_10) }
+        Seq#Contains(Seq#Range(0, i), k_10) && NoPerm < FullPerm ==> qpRange3(Seq#Index(Heap[this, array_1], k_10)) && invRecv3(Seq#Index(Heap[this, array_1], k_10)) == k_10
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (Seq#Contains(Seq#Range(0, i), invRecv3(o_4)) && NoPerm < FullPerm) && qpRange3(o_4) ==> Seq#Index(Heap[this, array], invRecv3(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (Seq#Contains(Seq#Range(0, i), invRecv3(o_9)) && NoPerm < FullPerm) && qpRange3(o_9) ==> Seq#Index(Heap[this, array_1], invRecv3(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall k_10_2: int ::
-        { Seq#Index(Heap[this, array], k_10_2) } { Seq#ContainsTrigger(Seq#Range(0, i), k_10_2) } { Seq#Contains(Seq#Range(0, i), k_10_2) } { Seq#Index(Heap[this, array], k_10_2) }
-        Seq#Contains(Seq#Range(0, i), k_10_2) ==> Seq#Index(Heap[this, array], k_10_2) != null
+      assume (forall k_10: int ::
+        { Seq#Index(Heap[this, array_1], k_10) } { Seq#ContainsTrigger(Seq#Range(0, i), k_10) } { Seq#Contains(Seq#Range(0, i), k_10) } { Seq#Index(Heap[this, array_1], k_10) }
+        Seq#Contains(Seq#Range(0, i), k_10) ==> Seq#Index(Heap[this, array_1], k_10) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, value] }
-        ((Seq#Contains(Seq#Range(0, i), invRecv3(o_4)) && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, array], invRecv3(o_4)) == o_4) && QPMask[o_4, value] == Mask[o_4, value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, i), invRecv3(o_4)) && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, value] == Mask[o_4, value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, value_1] }
+        ((Seq#Contains(Seq#Range(0, i), invRecv3(o_9)) && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[this, array_1], invRecv3(o_9)) == o_9) && QPMask[o_9, value_1] == Mask[o_9, value_1] + FullPerm) && (!((Seq#Contains(Seq#Range(0, i), invRecv3(o_9)) && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, value_1] == Mask[o_9, value_1])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != value_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -902,23 +902,23 @@ procedure init(this: Ref, i: int) returns ()
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of init might not hold. There might be insufficient permission to access this.array (array.vpr@9.9--9.34) [61914]"}
-      Mask[this, array] > NoPerm;
+    assert {:msg "  Postcondition of init might not hold. There might be insufficient permission to access this.array (array.vpr@9.9--9.34) [183317]"}
+      Mask[this, array_1] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[this, array];
-    Mask := Mask[this, array:=Mask[this, array] - wildcard];
-    assert {:msg "  Postcondition of init might not hold. Assertion |this.array| == i might not hold. (array.vpr@10.9--10.26) [61915]"}
-      Seq#Length(Heap[this, array]) == i;
+    assume wildcard < Mask[this, array_1];
+    Mask := Mask[this, array_1:=Mask[this, array_1] - wildcard];
+    assert {:msg "  Postcondition of init might not hold. Assertion |this.array| == i might not hold. (array.vpr@10.9--10.26) [183318]"}
+      Seq#Length(Heap[this, array_1]) == i;
     if (*) {
-      if (Seq#Contains(Seq#Range(0, i), k_4_1) && (Seq#Contains(Seq#Range(0, i), j_2_1) && k_4_1 != j_2_1)) {
-        assert {:msg "  Postcondition of init might not hold. Assertion this.array[k] != this.array[j] might not hold. (array.vpr@11.9--11.105) [61916]"}
-          Seq#Index(Heap[this, array], k_4_1) != Seq#Index(Heap[this, array], j_2_1);
+      if (Seq#Contains(Seq#Range(0, i), k_4_2) && (Seq#Contains(Seq#Range(0, i), j_2_2) && k_4_2 != j_2_2)) {
+        assert {:msg "  Postcondition of init might not hold. Assertion this.array[k] != this.array[j] might not hold. (array.vpr@11.9--11.105) [183319]"}
+          Seq#Index(Heap[this, array_1], k_4_2) != Seq#Index(Heap[this, array_1], j_2_2);
       }
       assume false;
     }
     assume (forall k_5_1_1: int, j_3_1_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, i), k_5_1_1), Seq#ContainsTrigger(Seq#Range(0, i), j_3_1_1) } { Seq#ContainsTrigger(Seq#Range(0, i), k_5_1_1), Seq#Contains(Seq#Range(0, i), j_3_1_1) } { Seq#Contains(Seq#Range(0, i), k_5_1_1), Seq#ContainsTrigger(Seq#Range(0, i), j_3_1_1) } { Seq#Contains(Seq#Range(0, i), k_5_1_1), Seq#Contains(Seq#Range(0, i), j_3_1_1) } { Seq#ContainsTrigger(Seq#Range(0, i), k_5_1_1), Seq#Index(Heap[this, array], j_3_1_1) } { Seq#Contains(Seq#Range(0, i), k_5_1_1), Seq#Index(Heap[this, array], j_3_1_1) } { Seq#ContainsTrigger(Seq#Range(0, i), j_3_1_1), Seq#Index(Heap[this, array], k_5_1_1) } { Seq#Contains(Seq#Range(0, i), j_3_1_1), Seq#Index(Heap[this, array], k_5_1_1) } { Seq#Index(Heap[this, array], k_5_1_1), Seq#Index(Heap[this, array], j_3_1_1) }
-      Seq#Contains(Seq#Range(0, i), k_5_1_1) && (Seq#Contains(Seq#Range(0, i), j_3_1_1) && k_5_1_1 != j_3_1_1) ==> Seq#Index(Heap[this, array], k_5_1_1) != Seq#Index(Heap[this, array], j_3_1_1)
+      { Seq#ContainsTrigger(Seq#Range(0, i), k_5_1_1), Seq#ContainsTrigger(Seq#Range(0, i), j_3_1_1) } { Seq#ContainsTrigger(Seq#Range(0, i), k_5_1_1), Seq#Contains(Seq#Range(0, i), j_3_1_1) } { Seq#Contains(Seq#Range(0, i), k_5_1_1), Seq#ContainsTrigger(Seq#Range(0, i), j_3_1_1) } { Seq#Contains(Seq#Range(0, i), k_5_1_1), Seq#Contains(Seq#Range(0, i), j_3_1_1) } { Seq#ContainsTrigger(Seq#Range(0, i), k_5_1_1), Seq#Index(Heap[this, array_1], j_3_1_1) } { Seq#Contains(Seq#Range(0, i), k_5_1_1), Seq#Index(Heap[this, array_1], j_3_1_1) } { Seq#ContainsTrigger(Seq#Range(0, i), j_3_1_1), Seq#Index(Heap[this, array_1], k_5_1_1) } { Seq#Contains(Seq#Range(0, i), j_3_1_1), Seq#Index(Heap[this, array_1], k_5_1_1) } { Seq#Index(Heap[this, array_1], k_5_1_1), Seq#Index(Heap[this, array_1], j_3_1_1) }
+      Seq#Contains(Seq#Range(0, i), k_5_1_1) && (Seq#Contains(Seq#Range(0, i), j_3_1_1) && k_5_1_1 != j_3_1_1) ==> Seq#Index(Heap[this, array_1], k_5_1_1) != Seq#Index(Heap[this, array_1], j_3_1_1)
     );
     havoc QPMask;
     
@@ -926,39 +926,39 @@ procedure init(this: Ref, i: int) returns ()
       
     
     // -- check if receiver this.array[k] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource this.array[k].value might not be injective. (array.vpr@12.9--12.72) [61917]"}
-        (forall k_6: int, k_6_1: int ::
-        { neverTriggered2(k_6), neverTriggered2(k_6_1) }
-        (((k_6 != k_6_1 && Seq#Contains(Seq#Range(0, i), k_6)) && Seq#Contains(Seq#Range(0, i), k_6_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, array], k_6) != Seq#Index(Heap[this, array], k_6_1)
+      assert {:msg "  Contract might not be well-formed. Quantified resource this.array[k].value might not be injective. (array.vpr@12.9--12.72) [183320]"}
+        (forall k_6_2: int, k_6_3: int ::
+        { neverTriggered2(k_6_2), neverTriggered2(k_6_3) }
+        (((k_6_2 != k_6_3 && Seq#Contains(Seq#Range(0, i), k_6_2)) && Seq#Contains(Seq#Range(0, i), k_6_3)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[this, array_1], k_6_2) != Seq#Index(Heap[this, array_1], k_6_3)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of init might not hold. There might be insufficient permission to access this.array[k].value (array.vpr@12.9--12.72) [61918]"}
-        (forall k_6: int ::
-        { Seq#Index(Heap[this, array], k_6) } { Seq#ContainsTrigger(Seq#Range(0, i), k_6) } { Seq#Contains(Seq#Range(0, i), k_6) } { Seq#Index(Heap[this, array], k_6) }
-        Seq#Contains(Seq#Range(0, i), k_6) ==> Mask[Seq#Index(Heap[this, array], k_6), value] >= FullPerm
+      assert {:msg "  Postcondition of init might not hold. There might be insufficient permission to access this.array[k].value (array.vpr@12.9--12.72) [183321]"}
+        (forall k_6_2: int ::
+        { Seq#Index(Heap[this, array_1], k_6_2) } { Seq#ContainsTrigger(Seq#Range(0, i), k_6_2) } { Seq#Contains(Seq#Range(0, i), k_6_2) } { Seq#Index(Heap[this, array_1], k_6_2) }
+        Seq#Contains(Seq#Range(0, i), k_6_2) ==> Mask[Seq#Index(Heap[this, array_1], k_6_2), value_1] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver this.array[k]
-      assume (forall k_6: int ::
-        { Seq#Index(Heap[this, array], k_6) } { Seq#ContainsTrigger(Seq#Range(0, i), k_6) } { Seq#Contains(Seq#Range(0, i), k_6) } { Seq#Index(Heap[this, array], k_6) }
-        Seq#Contains(Seq#Range(0, i), k_6) && NoPerm < FullPerm ==> qpRange2(Seq#Index(Heap[this, array], k_6)) && invRecv2(Seq#Index(Heap[this, array], k_6)) == k_6
+      assume (forall k_6_2: int ::
+        { Seq#Index(Heap[this, array_1], k_6_2) } { Seq#ContainsTrigger(Seq#Range(0, i), k_6_2) } { Seq#Contains(Seq#Range(0, i), k_6_2) } { Seq#Index(Heap[this, array_1], k_6_2) }
+        Seq#Contains(Seq#Range(0, i), k_6_2) && NoPerm < FullPerm ==> qpRange2(Seq#Index(Heap[this, array_1], k_6_2)) && invRecv2(Seq#Index(Heap[this, array_1], k_6_2)) == k_6_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        Seq#Contains(Seq#Range(0, i), invRecv2(o_4)) && (NoPerm < FullPerm && qpRange2(o_4)) ==> Seq#Index(Heap[this, array], invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        Seq#Contains(Seq#Range(0, i), invRecv2(o_9)) && (NoPerm < FullPerm && qpRange2(o_9)) ==> Seq#Index(Heap[this, array_1], invRecv2(o_9)) == o_9
       );
     
     // -- assume permission updates for field value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, value] }
-        (Seq#Contains(Seq#Range(0, i), invRecv2(o_4)) && (NoPerm < FullPerm && qpRange2(o_4)) ==> Seq#Index(Heap[this, array], invRecv2(o_4)) == o_4 && QPMask[o_4, value] == Mask[o_4, value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, i), invRecv2(o_4)) && (NoPerm < FullPerm && qpRange2(o_4))) ==> QPMask[o_4, value] == Mask[o_4, value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, value_1] }
+        (Seq#Contains(Seq#Range(0, i), invRecv2(o_9)) && (NoPerm < FullPerm && qpRange2(o_9)) ==> Seq#Index(Heap[this, array_1], invRecv2(o_9)) == o_9 && QPMask[o_9, value_1] == Mask[o_9, value_1] - FullPerm) && (!(Seq#Contains(Seq#Range(0, i), invRecv2(o_9)) && (NoPerm < FullPerm && qpRange2(o_9))) ==> QPMask[o_9, value_1] == Mask[o_9, value_1])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != value_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale
@@ -971,7 +971,7 @@ procedure init(this: Ref, i: int) returns ()
 // Translation of method set
 // ==================================================
 
-procedure set(this: Ref, i: int, val_1: int) returns ()
+procedure set_3(this: Ref, i: int, val_2: int) returns ()
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
@@ -997,27 +997,27 @@ procedure set(this: Ref, i: int, val_1: int) returns ()
     havoc wildcard;
     perm := wildcard;
     assume this != null;
-    Mask := Mask[this, array:=Mask[this, array] + perm];
+    Mask := Mask[this, array_1:=Mask[this, array_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume 0 <= i;
     
     // -- Check definedness of i < |this.array|
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@21.10--21.36) [61919]"}
-        HasDirectPerm(Mask, this, array);
-    assume i < Seq#Length(Heap[this, array]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@21.10--21.36) [183322]"}
+        HasDirectPerm(Mask, this, array_1);
+    assume i < Seq#Length(Heap[this, array_1]);
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(this.array[i].value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@22.10--22.41) [61920]"}
-        HasDirectPerm(Mask, this, array);
-      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might be negative. (array.vpr@22.10--22.41) [61921]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@22.10--22.41) [183323]"}
+        HasDirectPerm(Mask, this, array_1);
+      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might be negative. (array.vpr@22.10--22.41) [183324]"}
         i >= 0;
-      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might exceed sequence length. (array.vpr@22.10--22.41) [61922]"}
-        i < Seq#Length(Heap[this, array]);
+      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might exceed sequence length. (array.vpr@22.10--22.41) [183325]"}
+        i < Seq#Length(Heap[this, array_1]);
     perm := FullPerm;
-    assume Seq#Index(Heap[this, array], i) != null;
-    Mask := Mask[Seq#Index(Heap[this, array], i), value:=Mask[Seq#Index(Heap[this, array], i), value] + perm];
+    assume Seq#Index(Heap[this, array_1], i) != null;
+    Mask := Mask[Seq#Index(Heap[this, array_1], i), value_1:=Mask[Seq#Index(Heap[this, array_1], i), value_1] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1034,47 +1034,47 @@ procedure set(this: Ref, i: int, val_1: int) returns ()
     havoc wildcard;
     perm := wildcard;
     assume this != null;
-    PostMask := PostMask[this, array:=PostMask[this, array] + perm];
+    PostMask := PostMask[this, array_1:=PostMask[this, array_1] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     assume 0 <= i;
     
     // -- Check definedness of i < |this.array|
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@24.9--24.35) [61923]"}
-        HasDirectPerm(PostMask, this, array);
-    assume i < Seq#Length(PostHeap[this, array]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@24.9--24.35) [183326]"}
+        HasDirectPerm(PostMask, this, array_1);
+    assume i < Seq#Length(PostHeap[this, array_1]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(this.array[i].value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@25.9--25.40) [61924]"}
-        HasDirectPerm(PostMask, this, array);
-      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might be negative. (array.vpr@25.9--25.40) [61925]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@25.9--25.40) [183327]"}
+        HasDirectPerm(PostMask, this, array_1);
+      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might be negative. (array.vpr@25.9--25.40) [183328]"}
         i >= 0;
-      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might exceed sequence length. (array.vpr@25.9--25.40) [61926]"}
-        i < Seq#Length(PostHeap[this, array]);
+      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might exceed sequence length. (array.vpr@25.9--25.40) [183329]"}
+        i < Seq#Length(PostHeap[this, array_1]);
     perm := FullPerm;
-    assume Seq#Index(PostHeap[this, array], i) != null;
-    PostMask := PostMask[Seq#Index(PostHeap[this, array], i), value:=PostMask[Seq#Index(PostHeap[this, array], i), value] + perm];
+    assume Seq#Index(PostHeap[this, array_1], i) != null;
+    PostMask := PostMask[Seq#Index(PostHeap[this, array_1], i), value_1:=PostMask[Seq#Index(PostHeap[this, array_1], i), value_1] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     assume 0 <= i;
     
     // -- Check definedness of i < |this.array|
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@26.9--26.35) [61927]"}
-        HasDirectPerm(PostMask, this, array);
-    assume i < Seq#Length(PostHeap[this, array]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@26.9--26.35) [183330]"}
+        HasDirectPerm(PostMask, this, array_1);
+    assume i < Seq#Length(PostHeap[this, array_1]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.array[i].value == val
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@27.9--27.35) [61928]"}
-        HasDirectPerm(PostMask, this, array);
-      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might be negative. (array.vpr@27.9--27.35) [61929]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array (array.vpr@27.9--27.35) [183331]"}
+        HasDirectPerm(PostMask, this, array_1);
+      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might be negative. (array.vpr@27.9--27.35) [183332]"}
         i >= 0;
-      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might exceed sequence length. (array.vpr@27.9--27.35) [61930]"}
-        i < Seq#Length(PostHeap[this, array]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array[i].value (array.vpr@27.9--27.35) [61931]"}
-        HasDirectPerm(PostMask, Seq#Index(PostHeap[this, array], i), value);
-    assume PostHeap[Seq#Index(PostHeap[this, array], i), value] == val_1;
+      assert {:msg "  Contract might not be well-formed. Index this.array[i] into this.array might exceed sequence length. (array.vpr@27.9--27.35) [183333]"}
+        i < Seq#Length(PostHeap[this, array_1]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.array[i].value (array.vpr@27.9--27.35) [183334]"}
+        HasDirectPerm(PostMask, Seq#Index(PostHeap[this, array_1], i), value_1);
+    assume PostHeap[Seq#Index(PostHeap[this, array_1], i), value_1] == val_2;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -1083,41 +1083,41 @@ procedure set(this: Ref, i: int, val_1: int) returns ()
   // -- Translating statement: this.array[i].value := val -- array.vpr@29.5--29.31
     
     // -- Check definedness of this.array[i]
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.array (array.vpr@29.5--29.31) [61932]"}
-        HasDirectPerm(Mask, this, array);
-      assert {:msg "  Assignment might fail. Index this.array[i] into this.array might be negative. (array.vpr@29.5--29.31) [61933]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.array (array.vpr@29.5--29.31) [183335]"}
+        HasDirectPerm(Mask, this, array_1);
+      assert {:msg "  Assignment might fail. Index this.array[i] into this.array might be negative. (array.vpr@29.5--29.31) [183336]"}
         i >= 0;
-      assert {:msg "  Assignment might fail. Index this.array[i] into this.array might exceed sequence length. (array.vpr@29.5--29.31) [61934]"}
-        i < Seq#Length(Heap[this, array]);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.array[i].value (array.vpr@29.5--29.31) [61935]"}
-      FullPerm == Mask[Seq#Index(Heap[this, array], i), value];
-    Heap := Heap[Seq#Index(Heap[this, array], i), value:=val_1];
+      assert {:msg "  Assignment might fail. Index this.array[i] into this.array might exceed sequence length. (array.vpr@29.5--29.31) [183337]"}
+        i < Seq#Length(Heap[this, array_1]);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.array[i].value (array.vpr@29.5--29.31) [183338]"}
+      FullPerm == Mask[Seq#Index(Heap[this, array_1], i), value_1];
+    Heap := Heap[Seq#Index(Heap[this, array_1], i), value_1:=val_2];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of set might not hold. There might be insufficient permission to access this.array (array.vpr@23.9--23.34) [61936]"}
-      Mask[this, array] > NoPerm;
+    assert {:msg "  Postcondition of set might not hold. There might be insufficient permission to access this.array (array.vpr@23.9--23.34) [183339]"}
+      Mask[this, array_1] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[this, array];
-    Mask := Mask[this, array:=Mask[this, array] - wildcard];
-    assert {:msg "  Postcondition of set might not hold. Assertion 0 <= i might not hold. (array.vpr@24.9--24.35) [61937]"}
+    assume wildcard < Mask[this, array_1];
+    Mask := Mask[this, array_1:=Mask[this, array_1] - wildcard];
+    assert {:msg "  Postcondition of set might not hold. Assertion 0 <= i might not hold. (array.vpr@24.9--24.35) [183340]"}
       0 <= i;
-    assert {:msg "  Postcondition of set might not hold. Assertion i < |this.array| might not hold. (array.vpr@24.9--24.35) [61938]"}
-      i < Seq#Length(Heap[this, array]);
+    assert {:msg "  Postcondition of set might not hold. Assertion i < |this.array| might not hold. (array.vpr@24.9--24.35) [183341]"}
+      i < Seq#Length(Heap[this, array_1]);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of set might not hold. There might be insufficient permission to access this.array[i].value (array.vpr@25.9--25.40) [61939]"}
-        perm <= Mask[Seq#Index(Heap[this, array], i), value];
+      assert {:msg "  Postcondition of set might not hold. There might be insufficient permission to access this.array[i].value (array.vpr@25.9--25.40) [183342]"}
+        perm <= Mask[Seq#Index(Heap[this, array_1], i), value_1];
     }
-    Mask := Mask[Seq#Index(Heap[this, array], i), value:=Mask[Seq#Index(Heap[this, array], i), value] - perm];
-    assert {:msg "  Postcondition of set might not hold. Assertion 0 <= i might not hold. (array.vpr@26.9--26.35) [61940]"}
+    Mask := Mask[Seq#Index(Heap[this, array_1], i), value_1:=Mask[Seq#Index(Heap[this, array_1], i), value_1] - perm];
+    assert {:msg "  Postcondition of set might not hold. Assertion 0 <= i might not hold. (array.vpr@26.9--26.35) [183343]"}
       0 <= i;
-    assert {:msg "  Postcondition of set might not hold. Assertion i < |this.array| might not hold. (array.vpr@26.9--26.35) [61941]"}
-      i < Seq#Length(Heap[this, array]);
-    assert {:msg "  Postcondition of set might not hold. Assertion this.array[i].value == val might not hold. (array.vpr@27.9--27.35) [61942]"}
-      Heap[Seq#Index(Heap[this, array], i), value] == val_1;
+    assert {:msg "  Postcondition of set might not hold. Assertion i < |this.array| might not hold. (array.vpr@26.9--26.35) [183344]"}
+      i < Seq#Length(Heap[this, array_1]);
+    assert {:msg "  Postcondition of set might not hold. Assertion this.array[i].value == val might not hold. (array.vpr@27.9--27.35) [183345]"}
+      Heap[Seq#Index(Heap[this, array_1], i), value_1] == val_2;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1166,7 +1166,7 @@ procedure caller() returns ()
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     mutableArray := freshObj;
-    Mask := Mask[mutableArray, array:=Mask[mutableArray, array] + FullPerm];
+    Mask := Mask[mutableArray, array_1:=Mask[mutableArray, array_1] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: init(mutableArray, 5) -- array.vpr@44.5--44.26
@@ -1178,10 +1178,10 @@ procedure caller() returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method init might not hold. There might be insufficient permission to access mutableArray.array (array.vpr@44.5--44.26) [61943]"}
-          perm <= Mask[mutableArray, array];
+        assert {:msg "  The precondition of method init might not hold. There might be insufficient permission to access mutableArray.array (array.vpr@44.5--44.26) [183346]"}
+          perm <= Mask[mutableArray, array_1];
       }
-      Mask := Mask[mutableArray, array:=Mask[mutableArray, array] - perm];
+      Mask := Mask[mutableArray, array_1:=Mask[mutableArray, array_1] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1191,44 +1191,44 @@ procedure caller() returns ()
       havoc wildcard;
       perm := wildcard;
       assume mutableArray != null;
-      Mask := Mask[mutableArray, array:=Mask[mutableArray, array] + perm];
+      Mask := Mask[mutableArray, array_1:=Mask[mutableArray, array_1] + perm];
       assume state(Heap, Mask);
-      assume Seq#Length(Heap[mutableArray, array]) == 5;
-      assume (forall k: int, j_9: int ::
-        { Seq#ContainsTrigger(Seq#Range(0, 5), k), Seq#ContainsTrigger(Seq#Range(0, 5), j_9) } { Seq#ContainsTrigger(Seq#Range(0, 5), k), Seq#Contains(Seq#Range(0, 5), j_9) } { Seq#Contains(Seq#Range(0, 5), k), Seq#ContainsTrigger(Seq#Range(0, 5), j_9) } { Seq#Contains(Seq#Range(0, 5), k), Seq#Contains(Seq#Range(0, 5), j_9) } { Seq#ContainsTrigger(Seq#Range(0, 5), k), Seq#Index(Heap[mutableArray, array], j_9) } { Seq#Contains(Seq#Range(0, 5), k), Seq#Index(Heap[mutableArray, array], j_9) } { Seq#ContainsTrigger(Seq#Range(0, 5), j_9), Seq#Index(Heap[mutableArray, array], k) } { Seq#Contains(Seq#Range(0, 5), j_9), Seq#Index(Heap[mutableArray, array], k) } { Seq#Index(Heap[mutableArray, array], k), Seq#Index(Heap[mutableArray, array], j_9) }
-        Seq#Contains(Seq#Range(0, 5), k) && (Seq#Contains(Seq#Range(0, 5), j_9) && k != j_9) ==> Seq#Index(Heap[mutableArray, array], k) != Seq#Index(Heap[mutableArray, array], j_9)
+      assume Seq#Length(Heap[mutableArray, array_1]) == 5;
+      assume (forall k: int, j: int ::
+        { Seq#ContainsTrigger(Seq#Range(0, 5), k), Seq#ContainsTrigger(Seq#Range(0, 5), j) } { Seq#ContainsTrigger(Seq#Range(0, 5), k), Seq#Contains(Seq#Range(0, 5), j) } { Seq#Contains(Seq#Range(0, 5), k), Seq#ContainsTrigger(Seq#Range(0, 5), j) } { Seq#Contains(Seq#Range(0, 5), k), Seq#Contains(Seq#Range(0, 5), j) } { Seq#ContainsTrigger(Seq#Range(0, 5), k), Seq#Index(Heap[mutableArray, array_1], j) } { Seq#Contains(Seq#Range(0, 5), k), Seq#Index(Heap[mutableArray, array_1], j) } { Seq#ContainsTrigger(Seq#Range(0, 5), j), Seq#Index(Heap[mutableArray, array_1], k) } { Seq#Contains(Seq#Range(0, 5), j), Seq#Index(Heap[mutableArray, array_1], k) } { Seq#Index(Heap[mutableArray, array_1], k), Seq#Index(Heap[mutableArray, array_1], j) }
+        Seq#Contains(Seq#Range(0, 5), k) && (Seq#Contains(Seq#Range(0, 5), j) && k != j) ==> Seq#Index(Heap[mutableArray, array_1], k) != Seq#Index(Heap[mutableArray, array_1], j)
       );
       havoc QPMask;
-      assert {:msg "  Method call might fail. Quantified resource mutableArray.array[k].value might not be injective. (array.vpr@44.5--44.26) [61944]"}
-        (forall k_1_1: int, k_1_2: int ::
+      assert {:msg "  Method call might fail. Quantified resource mutableArray.array[k].value might not be injective. (array.vpr@44.5--44.26) [183347]"}
+        (forall k_1: int, k_1_1: int ::
         
-        (((k_1_1 != k_1_2 && Seq#Contains(Seq#Range(0, 5), k_1_1)) && Seq#Contains(Seq#Range(0, 5), k_1_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[mutableArray, array], k_1_1) != Seq#Index(Heap[mutableArray, array], k_1_2)
+        (((k_1 != k_1_1 && Seq#Contains(Seq#Range(0, 5), k_1)) && Seq#Contains(Seq#Range(0, 5), k_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[mutableArray, array_1], k_1) != Seq#Index(Heap[mutableArray, array_1], k_1_1)
       );
       
       // -- Define Inverse Function
-        assume (forall k_1_1: int ::
-          { Seq#Index(Heap[mutableArray, array], k_1_1) } { Seq#ContainsTrigger(Seq#Range(0, 5), k_1_1) } { Seq#Contains(Seq#Range(0, 5), k_1_1) } { Seq#Index(Heap[mutableArray, array], k_1_1) }
-          Seq#Contains(Seq#Range(0, 5), k_1_1) && NoPerm < FullPerm ==> qpRange4(Seq#Index(Heap[mutableArray, array], k_1_1)) && invRecv4(Seq#Index(Heap[mutableArray, array], k_1_1)) == k_1_1
+        assume (forall k_1: int ::
+          { Seq#Index(Heap[mutableArray, array_1], k_1) } { Seq#ContainsTrigger(Seq#Range(0, 5), k_1) } { Seq#Contains(Seq#Range(0, 5), k_1) } { Seq#Index(Heap[mutableArray, array_1], k_1) }
+          Seq#Contains(Seq#Range(0, 5), k_1) && NoPerm < FullPerm ==> qpRange4(Seq#Index(Heap[mutableArray, array_1], k_1)) && invRecv4(Seq#Index(Heap[mutableArray, array_1], k_1)) == k_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv4(o_4) }
-          (Seq#Contains(Seq#Range(0, 5), invRecv4(o_4)) && NoPerm < FullPerm) && qpRange4(o_4) ==> Seq#Index(Heap[mutableArray, array], invRecv4(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv4(o_9) }
+          (Seq#Contains(Seq#Range(0, 5), invRecv4(o_9)) && NoPerm < FullPerm) && qpRange4(o_9) ==> Seq#Index(Heap[mutableArray, array_1], invRecv4(o_9)) == o_9
         );
       
       // -- Assume set of fields is nonNull
-        assume (forall k_1_1: int ::
-          { Seq#Index(Heap[mutableArray, array], k_1_1) } { Seq#ContainsTrigger(Seq#Range(0, 5), k_1_1) } { Seq#Contains(Seq#Range(0, 5), k_1_1) } { Seq#Index(Heap[mutableArray, array], k_1_1) }
-          Seq#Contains(Seq#Range(0, 5), k_1_1) ==> Seq#Index(Heap[mutableArray, array], k_1_1) != null
+        assume (forall k_1: int ::
+          { Seq#Index(Heap[mutableArray, array_1], k_1) } { Seq#ContainsTrigger(Seq#Range(0, 5), k_1) } { Seq#Contains(Seq#Range(0, 5), k_1) } { Seq#Index(Heap[mutableArray, array_1], k_1) }
+          Seq#Contains(Seq#Range(0, 5), k_1) ==> Seq#Index(Heap[mutableArray, array_1], k_1) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, value] }
-          ((Seq#Contains(Seq#Range(0, 5), invRecv4(o_4)) && NoPerm < FullPerm) && qpRange4(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[mutableArray, array], invRecv4(o_4)) == o_4) && QPMask[o_4, value] == Mask[o_4, value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, 5), invRecv4(o_4)) && NoPerm < FullPerm) && qpRange4(o_4)) ==> QPMask[o_4, value] == Mask[o_4, value])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, value_1] }
+          ((Seq#Contains(Seq#Range(0, 5), invRecv4(o_9)) && NoPerm < FullPerm) && qpRange4(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[mutableArray, array_1], invRecv4(o_9)) == o_9) && QPMask[o_9, value_1] == Mask[o_9, value_1] + FullPerm) && (!((Seq#Contains(Seq#Range(0, 5), invRecv4(o_9)) && NoPerm < FullPerm) && qpRange4(o_9)) ==> QPMask[o_9, value_1] == Mask[o_9, value_1])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != value_1 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
@@ -1242,19 +1242,19 @@ procedure caller() returns ()
     // -- Exhaling precondition
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access mutableArray.array (array.vpr@45.5--45.28) [61945]"}
-        Mask[mutableArray, array] > NoPerm;
+      assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access mutableArray.array (array.vpr@45.5--45.28) [183348]"}
+        Mask[mutableArray, array_1] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[mutableArray, array];
-      Mask := Mask[mutableArray, array:=Mask[mutableArray, array] - wildcard];
-      assert {:msg "  The precondition of method set might not hold. Assertion 0 < |mutableArray.array| might not hold. (array.vpr@45.5--45.28) [61946]"}
-        0 < Seq#Length(Heap[mutableArray, array]);
+      assume wildcard < Mask[mutableArray, array_1];
+      Mask := Mask[mutableArray, array_1:=Mask[mutableArray, array_1] - wildcard];
+      assert {:msg "  The precondition of method set might not hold. Assertion 0 < |mutableArray.array| might not hold. (array.vpr@45.5--45.28) [183349]"}
+        0 < Seq#Length(Heap[mutableArray, array_1]);
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access mutableArray.array[0].value (array.vpr@45.5--45.28) [61947]"}
-          perm <= Mask[Seq#Index(Heap[mutableArray, array], 0), value];
+        assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access mutableArray.array[0].value (array.vpr@45.5--45.28) [183350]"}
+          perm <= Mask[Seq#Index(Heap[mutableArray, array_1], 0), value_1];
       }
-      Mask := Mask[Seq#Index(Heap[mutableArray, array], 0), value:=Mask[Seq#Index(Heap[mutableArray, array], 0), value] - perm];
+      Mask := Mask[Seq#Index(Heap[mutableArray, array_1], 0), value_1:=Mask[Seq#Index(Heap[mutableArray, array_1], 0), value_1] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1264,15 +1264,15 @@ procedure caller() returns ()
       havoc wildcard;
       perm := wildcard;
       assume mutableArray != null;
-      Mask := Mask[mutableArray, array:=Mask[mutableArray, array] + perm];
+      Mask := Mask[mutableArray, array_1:=Mask[mutableArray, array_1] + perm];
       assume state(Heap, Mask);
-      assume 0 < Seq#Length(Heap[mutableArray, array]);
+      assume 0 < Seq#Length(Heap[mutableArray, array_1]);
       perm := FullPerm;
-      assume Seq#Index(Heap[mutableArray, array], 0) != null;
-      Mask := Mask[Seq#Index(Heap[mutableArray, array], 0), value:=Mask[Seq#Index(Heap[mutableArray, array], 0), value] + perm];
+      assume Seq#Index(Heap[mutableArray, array_1], 0) != null;
+      Mask := Mask[Seq#Index(Heap[mutableArray, array_1], 0), value_1:=Mask[Seq#Index(Heap[mutableArray, array_1], 0), value_1] + perm];
       assume state(Heap, Mask);
-      assume 0 < Seq#Length(Heap[mutableArray, array]);
-      assume Heap[Seq#Index(Heap[mutableArray, array], 0), value] == 2;
+      assume 0 < Seq#Length(Heap[mutableArray, array_1]);
+      assume Heap[Seq#Index(Heap[mutableArray, array_1], 0), value_1] == 2;
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1286,13 +1286,13 @@ procedure caller() returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access mutableArray.array (array.vpr@46.12--46.32) [61948]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[mutableArray, array];
-        assert {:msg "  Precondition of function get might not hold. Assertion 0 < |mutableArray.array| might not hold. (array.vpr@46.12--46.32) [61949]"}
-          0 < Seq#Length(ExhaleWellDef0Heap[mutableArray, array]);
+        assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access mutableArray.array (array.vpr@46.12--46.32) [183351]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[mutableArray, array_1];
+        assert {:msg "  Precondition of function get might not hold. Assertion 0 < |mutableArray.array| might not hold. (array.vpr@46.12--46.32) [183352]"}
+          0 < Seq#Length(ExhaleWellDef0Heap[mutableArray, array_1]);
         perm := FullPerm;
-        assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access mutableArray.array[0].value (array.vpr@46.12--46.32) [61950]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[Seq#Index(ExhaleWellDef0Heap[mutableArray, array], 0), value];
+        assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access mutableArray.array[0].value (array.vpr@46.12--46.32) [183353]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[Seq#Index(ExhaleWellDef0Heap[mutableArray, array_1], 0), value_1];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1300,7 +1300,7 @@ procedure caller() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion get(mutableArray, 0) == 2 might not hold. (array.vpr@46.12--46.37) [61951]"}
+    assert {:msg "  Assert might fail. Assertion get(mutableArray, 0) == 2 might not hold. (array.vpr@46.12--46.37) [183354]"}
       get(Heap, mutableArray, 0) == 2;
     assume state(Heap, Mask);
 }

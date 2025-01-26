@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:41:50
+; Started: 2025-01-26 21:40:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -138,11 +138,11 @@
 (assert (forall ((s@$ $Snap) (ys@0@00 $Ref)) (!
   (= (sum_rec%limited s@$ ys@0@00) (sum_rec s@$ ys@0@00))
   :pattern ((sum_rec s@$ ys@0@00))
-  :qid |quant-u-19546|)))
+  :qid |quant-u-25008|)))
 (assert (forall ((s@$ $Snap) (ys@0@00 $Ref)) (!
   (sum_rec%stateless ys@0@00)
   :pattern ((sum_rec%limited s@$ ys@0@00))
-  :qid |quant-u-19547|)))
+  :qid |quant-u-25009|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -313,7 +313,7 @@
           (sum_rec%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))))
   :pattern ((sum_rec s@$ ys@0@00))
   :pattern ((sum_rec%stateless ys@0@00) (List%trigger s@$ ys@0@00))
-  :qid |quant-u-19548|)))
+  :qid |quant-u-25010|)))
 (assert (forall ((s@$ $Snap) (ys@0@00 $Ref)) (!
   (=>
     (sum_rec%precondition s@$ ys@0@00)
@@ -322,7 +322,7 @@
       true
       (sum_rec%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((sum_rec s@$ ys@0@00))
-  :qid |quant-u-19549|)))
+  :qid |quant-u-25011|)))
 ; ---------- List ----------
 (declare-const ys@3@00 $Ref)
 (push) ; 1

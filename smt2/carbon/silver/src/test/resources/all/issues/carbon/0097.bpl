@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:33
+// Date:         2025-01-26 21:43:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0097.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0097-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -194,38 +194,38 @@ axiom !IsWandField(List__Node__0);
 // ==================================================
 
 // Uninterpreted function definitions
-function  sum_fail(Heap: HeapType, l_2: Ref): int;
-function  sum_fail'(Heap: HeapType, l_2: Ref): int;
-axiom (forall Heap: HeapType, l_2: Ref ::
-  { sum_fail(Heap, l_2) }
-  sum_fail(Heap, l_2) == sum_fail'(Heap, l_2) && dummyFunction(sum_fail#triggerStateless(l_2))
+function  sum_fail(Heap: HeapType, l_1: Ref): int;
+function  sum_fail'(Heap: HeapType, l_1: Ref): int;
+axiom (forall Heap: HeapType, l_1: Ref ::
+  { sum_fail(Heap, l_1) }
+  sum_fail(Heap, l_1) == sum_fail'(Heap, l_1) && dummyFunction(sum_fail#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: Ref ::
-  { sum_fail'(Heap, l_2) }
-  dummyFunction(sum_fail#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: Ref ::
+  { sum_fail'(Heap, l_1) }
+  dummyFunction(sum_fail#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: Ref ::
-  { state(Heap, Mask), sum_fail(Heap, l_2) } { state(Heap, Mask), sum_fail#triggerStateless(l_2), valid__List#trigger(Heap, valid__List(l_2)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> sum_fail(Heap, l_2) == Heap[Heap[l_2, List__Node__0], Int__v]
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: Ref ::
+  { state(Heap, Mask), sum_fail(Heap, l_1) } { state(Heap, Mask), sum_fail#triggerStateless(l_1), valid__List#trigger(Heap, valid__List(l_1)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> sum_fail(Heap, l_1) == Heap[Heap[l_1, List__Node__0], Int__v]
 );
 
 // Framing axioms
-function  sum_fail#frame(frame: FrameType, l_2: Ref): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: Ref ::
-  { state(Heap, Mask), sum_fail'(Heap, l_2) }
-  state(Heap, Mask) ==> sum_fail'(Heap, l_2) == sum_fail#frame(Heap[null, valid__List(l_2)], l_2)
+function  sum_fail#frame(frame: FrameType, l_1: Ref): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: Ref ::
+  { state(Heap, Mask), sum_fail'(Heap, l_1) }
+  state(Heap, Mask) ==> sum_fail'(Heap, l_1) == sum_fail#frame(Heap[null, valid__List(l_1)], l_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  sum_fail#trigger(frame: FrameType, l_2: Ref): bool;
+function  sum_fail#trigger(frame: FrameType, l_1: Ref): bool;
 
 // State-independent trigger function
-function  sum_fail#triggerStateless(l_2: Ref): int;
+function  sum_fail#triggerStateless(l_1: Ref): int;
 
 // Check contract well-formedness and postcondition
-procedure sum_fail#definedness(l_2: Ref) returns (Result: int)
+procedure sum_fail#definedness(l_1: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
@@ -235,19 +235,19 @@ procedure sum_fail#definedness(l_2: Ref) returns (Result: int)
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var c_1: Ref;
-  var c_2: Ref;
+  var c_2_2: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
     assume AssumeFunctionsAbove == 1;
   
   // -- Inhaling precondition (with checking)
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, valid__List(l_2):=Mask[null, valid__List(l_2)] + perm];
+    Mask := Mask[null, valid__List(l_1):=Mask[null, valid__List(l_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -256,38 +256,38 @@ procedure sum_fail#definedness(l_2: Ref) returns (Result: int)
     // -- Check definedness of (unfolding acc(valid__List(l), wildcard) in (let c == (l.List__Node__0) in c.Int__v))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume valid__List#trigger(UnfoldingHeap, valid__List(l_2));
-      assume UnfoldingHeap[null, valid__List(l_2)] == CombineFrames(FrameFragment(UnfoldingHeap[l_2, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_2, List__Node__0], Int__v]));
+      assume valid__List#trigger(UnfoldingHeap, valid__List(l_1));
+      assume UnfoldingHeap[null, valid__List(l_1)] == CombineFrames(FrameFragment(UnfoldingHeap[l_1, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_1, List__Node__0], Int__v]));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid__List(l) (0097.vpr@4.1--9.2) [195486]"}
-        NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid__List(l_2)];
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid__List(l) (0097.vpr@4.1--9.2) [82431]"}
+        NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid__List(l_1)];
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      UnfoldingMask := UnfoldingMask[l_2, List__Node__0:=UnfoldingMask[l_2, List__Node__0] + perm];
+      assume l_1 != null;
+      UnfoldingMask := UnfoldingMask[l_1, List__Node__0:=UnfoldingMask[l_1, List__Node__0] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       havoc wildcard;
       perm := wildcard;
-      assume UnfoldingHeap[l_2, List__Node__0] != null;
-      UnfoldingMask := UnfoldingMask[UnfoldingHeap[l_2, List__Node__0], Int__v:=UnfoldingMask[UnfoldingHeap[l_2, List__Node__0], Int__v] + perm];
+      assume UnfoldingHeap[l_1, List__Node__0] != null;
+      UnfoldingMask := UnfoldingMask[UnfoldingHeap[l_1, List__Node__0], Int__v:=UnfoldingMask[UnfoldingHeap[l_1, List__Node__0], Int__v] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access l.List__Node__0 (0097.vpr@4.1--9.2) [195487]"}
-        HasDirectPerm(UnfoldingMask, l_2, List__Node__0);
-      c_1 := UnfoldingHeap[l_2, List__Node__0];
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access c.Int__v (0097.vpr@4.1--9.2) [195488]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access l.List__Node__0 (0097.vpr@4.1--9.2) [82432]"}
+        HasDirectPerm(UnfoldingMask, l_1, List__Node__0);
+      c_1 := UnfoldingHeap[l_1, List__Node__0];
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access c.Int__v (0097.vpr@4.1--9.2) [82433]"}
         HasDirectPerm(UnfoldingMask, c_1, Int__v);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, valid__List#sm(l_2):=Heap[null, valid__List#sm(l_2)][l_2, List__Node__0:=true]];
-        Heap := Heap[null, valid__List#sm(l_2):=Heap[null, valid__List#sm(l_2)][Heap[l_2, List__Node__0], Int__v:=true]];
+        Heap := Heap[null, valid__List#sm(l_1):=Heap[null, valid__List#sm(l_1)][l_1, List__Node__0:=true]];
+        Heap := Heap[null, valid__List#sm(l_1):=Heap[null, valid__List#sm(l_1)][Heap[l_1, List__Node__0], Int__v:=true]];
         assume state(Heap, Mask);
-        c_2 := Heap[l_2, List__Node__0];
+        c_2_2 := Heap[l_1, List__Node__0];
   
   // -- Translate function body
-    Result := Heap[Heap[l_2, List__Node__0], Int__v];
+    Result := Heap[Heap[l_1, List__Node__0], Int__v];
 }
 
 // ==================================================
@@ -295,38 +295,38 @@ procedure sum_fail#definedness(l_2: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  sum_ok(Heap: HeapType, l_2: Ref): Ref;
-function  sum_ok'(Heap: HeapType, l_2: Ref): Ref;
-axiom (forall Heap: HeapType, l_2: Ref ::
-  { sum_ok(Heap, l_2) }
-  sum_ok(Heap, l_2) == sum_ok'(Heap, l_2) && dummyFunction(sum_ok#triggerStateless(l_2))
+function  sum_ok(Heap: HeapType, l_1: Ref): Ref;
+function  sum_ok'(Heap: HeapType, l_1: Ref): Ref;
+axiom (forall Heap: HeapType, l_1: Ref ::
+  { sum_ok(Heap, l_1) }
+  sum_ok(Heap, l_1) == sum_ok'(Heap, l_1) && dummyFunction(sum_ok#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: Ref ::
-  { sum_ok'(Heap, l_2) }
-  dummyFunction(sum_ok#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: Ref ::
+  { sum_ok'(Heap, l_1) }
+  dummyFunction(sum_ok#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: Ref ::
-  { state(Heap, Mask), sum_ok(Heap, l_2) } { state(Heap, Mask), sum_ok#triggerStateless(l_2), valid__List#trigger(Heap, valid__List(l_2)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> sum_ok(Heap, l_2) == Heap[l_2, List__Node__0]
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: Ref ::
+  { state(Heap, Mask), sum_ok(Heap, l_1) } { state(Heap, Mask), sum_ok#triggerStateless(l_1), valid__List#trigger(Heap, valid__List(l_1)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> sum_ok(Heap, l_1) == Heap[l_1, List__Node__0]
 );
 
 // Framing axioms
-function  sum_ok#frame(frame: FrameType, l_2: Ref): Ref;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: Ref ::
-  { state(Heap, Mask), sum_ok'(Heap, l_2) }
-  state(Heap, Mask) ==> sum_ok'(Heap, l_2) == sum_ok#frame(Heap[null, valid__List(l_2)], l_2)
+function  sum_ok#frame(frame: FrameType, l_1: Ref): Ref;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: Ref ::
+  { state(Heap, Mask), sum_ok'(Heap, l_1) }
+  state(Heap, Mask) ==> sum_ok'(Heap, l_1) == sum_ok#frame(Heap[null, valid__List(l_1)], l_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  sum_ok#trigger(frame: FrameType, l_2: Ref): bool;
+function  sum_ok#trigger(frame: FrameType, l_1: Ref): bool;
 
 // State-independent trigger function
-function  sum_ok#triggerStateless(l_2: Ref): Ref;
+function  sum_ok#triggerStateless(l_1: Ref): Ref;
 
 // Check contract well-formedness and postcondition
-procedure sum_ok#definedness(l_2: Ref) returns (Result: Ref)
+procedure sum_ok#definedness(l_1: Ref) returns (Result: Ref)
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
@@ -336,19 +336,19 @@ procedure sum_ok#definedness(l_2: Ref) returns (Result: Ref)
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var c_1: Ref;
-  var c_2: Ref;
+  var c_2_2: Ref;
   
   // -- Initializing the state
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
     assume AssumeFunctionsAbove == 2;
   
   // -- Inhaling precondition (with checking)
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, valid__List(l_2):=Mask[null, valid__List(l_2)] + perm];
+    Mask := Mask[null, valid__List(l_1):=Mask[null, valid__List(l_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -357,36 +357,36 @@ procedure sum_ok#definedness(l_2: Ref) returns (Result: Ref)
     // -- Check definedness of (unfolding acc(valid__List(l), wildcard) in (let c == (l.List__Node__0) in c))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume valid__List#trigger(UnfoldingHeap, valid__List(l_2));
-      assume UnfoldingHeap[null, valid__List(l_2)] == CombineFrames(FrameFragment(UnfoldingHeap[l_2, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_2, List__Node__0], Int__v]));
+      assume valid__List#trigger(UnfoldingHeap, valid__List(l_1));
+      assume UnfoldingHeap[null, valid__List(l_1)] == CombineFrames(FrameFragment(UnfoldingHeap[l_1, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_1, List__Node__0], Int__v]));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid__List(l) (0097.vpr@11.1--16.2) [195489]"}
-        NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid__List(l_2)];
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid__List(l) (0097.vpr@11.1--16.2) [82434]"}
+        NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid__List(l_1)];
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      UnfoldingMask := UnfoldingMask[l_2, List__Node__0:=UnfoldingMask[l_2, List__Node__0] + perm];
+      assume l_1 != null;
+      UnfoldingMask := UnfoldingMask[l_1, List__Node__0:=UnfoldingMask[l_1, List__Node__0] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       havoc wildcard;
       perm := wildcard;
-      assume UnfoldingHeap[l_2, List__Node__0] != null;
-      UnfoldingMask := UnfoldingMask[UnfoldingHeap[l_2, List__Node__0], Int__v:=UnfoldingMask[UnfoldingHeap[l_2, List__Node__0], Int__v] + perm];
+      assume UnfoldingHeap[l_1, List__Node__0] != null;
+      UnfoldingMask := UnfoldingMask[UnfoldingHeap[l_1, List__Node__0], Int__v:=UnfoldingMask[UnfoldingHeap[l_1, List__Node__0], Int__v] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access l.List__Node__0 (0097.vpr@11.1--16.2) [195490]"}
-        HasDirectPerm(UnfoldingMask, l_2, List__Node__0);
-      c_1 := UnfoldingHeap[l_2, List__Node__0];
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access l.List__Node__0 (0097.vpr@11.1--16.2) [82435]"}
+        HasDirectPerm(UnfoldingMask, l_1, List__Node__0);
+      c_1 := UnfoldingHeap[l_1, List__Node__0];
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, valid__List#sm(l_2):=Heap[null, valid__List#sm(l_2)][l_2, List__Node__0:=true]];
-        Heap := Heap[null, valid__List#sm(l_2):=Heap[null, valid__List#sm(l_2)][Heap[l_2, List__Node__0], Int__v:=true]];
+        Heap := Heap[null, valid__List#sm(l_1):=Heap[null, valid__List#sm(l_1)][l_1, List__Node__0:=true]];
+        Heap := Heap[null, valid__List#sm(l_1):=Heap[null, valid__List#sm(l_1)][Heap[l_1, List__Node__0], Int__v:=true]];
         assume state(Heap, Mask);
-        c_2 := Heap[l_2, List__Node__0];
+        c_2_2 := Heap[l_1, List__Node__0];
   
   // -- Translate function body
-    Result := Heap[l_2, List__Node__0];
+    Result := Heap[l_1, List__Node__0];
 }
 
 // ==================================================
@@ -457,7 +457,7 @@ procedure func3#definedness(x: int, y: int, z: bool) returns (Result: bool)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of func3 might not hold. Assertion result == (x != y) might not hold. (0097.vpr@35.11--35.29) [195491]"}
+    assert {:msg "  Postcondition of func3 might not hold. Assertion result == (x != y) might not hold. (0097.vpr@35.11--35.29) [82436]"}
       Result == (x != y);
 }
 
@@ -515,7 +515,7 @@ procedure valid__List#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(this.List__Node__0.Int__v, write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.List__Node__0 (0097.vpr@28.1--31.2) [195492]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.List__Node__0 (0097.vpr@28.1--31.2) [82437]"}
         HasDirectPerm(Mask, this, List__Node__0);
     perm := FullPerm;
     assume Heap[this, List__Node__0] != null;
@@ -528,7 +528,7 @@ procedure valid__List#definedness(this: Ref) returns ()
 // Translation of method test
 // ==================================================
 
-procedure test(l_2: Ref) returns ()
+procedure test_1(l_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
@@ -549,72 +549,72 @@ procedure test(l_2: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
   
   // -- Checked inhaling of precondition
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, valid__List(l_2):=Mask[null, valid__List(l_2)] + perm];
+    Mask := Mask[null, valid__List(l_1):=Mask[null, valid__List(l_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of (unfolding acc(valid__List(l), wildcard) in (let c == (l.List__Node__0) in c.Int__v == 0))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume valid__List#trigger(UnfoldingHeap, valid__List(l_2));
-      assume UnfoldingHeap[null, valid__List(l_2)] == CombineFrames(FrameFragment(UnfoldingHeap[l_2, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_2, List__Node__0], Int__v]));
+      assume valid__List#trigger(UnfoldingHeap, valid__List(l_1));
+      assume UnfoldingHeap[null, valid__List(l_1)] == CombineFrames(FrameFragment(UnfoldingHeap[l_1, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_1, List__Node__0], Int__v]));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__List(l) (0097.vpr@21.13--22.62) [195493]"}
-        UnfoldingMask[null, valid__List(l_2)] > NoPerm;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__List(l) (0097.vpr@21.13--22.62) [82438]"}
+        UnfoldingMask[null, valid__List(l_1)] > NoPerm;
       havoc wildcard;
-      assume wildcard < UnfoldingMask[null, valid__List(l_2)];
-      UnfoldingMask := UnfoldingMask[null, valid__List(l_2):=UnfoldingMask[null, valid__List(l_2)] - wildcard];
-      havoc wildcard;
-      perm := wildcard;
-      assume l_2 != null;
-      UnfoldingMask := UnfoldingMask[l_2, List__Node__0:=UnfoldingMask[l_2, List__Node__0] + perm];
-      assume state(UnfoldingHeap, UnfoldingMask);
+      assume wildcard < UnfoldingMask[null, valid__List(l_1)];
+      UnfoldingMask := UnfoldingMask[null, valid__List(l_1):=UnfoldingMask[null, valid__List(l_1)] - wildcard];
       havoc wildcard;
       perm := wildcard;
-      assume UnfoldingHeap[l_2, List__Node__0] != null;
-      UnfoldingMask := UnfoldingMask[UnfoldingHeap[l_2, List__Node__0], Int__v:=UnfoldingMask[UnfoldingHeap[l_2, List__Node__0], Int__v] + perm];
+      assume l_1 != null;
+      UnfoldingMask := UnfoldingMask[l_1, List__Node__0:=UnfoldingMask[l_1, List__Node__0] + perm];
+      assume state(UnfoldingHeap, UnfoldingMask);
+      havoc wildcard;
+      perm := wildcard;
+      assume UnfoldingHeap[l_1, List__Node__0] != null;
+      UnfoldingMask := UnfoldingMask[UnfoldingHeap[l_1, List__Node__0], Int__v:=UnfoldingMask[UnfoldingHeap[l_1, List__Node__0], Int__v] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access l.List__Node__0 (0097.vpr@21.13--22.62) [195494]"}
-        HasDirectPerm(UnfoldingMask, l_2, List__Node__0);
-      c := UnfoldingHeap[l_2, List__Node__0];
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access c.Int__v (0097.vpr@21.13--22.62) [195495]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access l.List__Node__0 (0097.vpr@21.13--22.62) [82439]"}
+        HasDirectPerm(UnfoldingMask, l_1, List__Node__0);
+      c := UnfoldingHeap[l_1, List__Node__0];
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access c.Int__v (0097.vpr@21.13--22.62) [82440]"}
         HasDirectPerm(UnfoldingMask, c, Int__v);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, valid__List#sm(l_2):=Heap[null, valid__List#sm(l_2)][l_2, List__Node__0:=true]];
-        Heap := Heap[null, valid__List#sm(l_2):=Heap[null, valid__List#sm(l_2)][Heap[l_2, List__Node__0], Int__v:=true]];
+        Heap := Heap[null, valid__List#sm(l_1):=Heap[null, valid__List#sm(l_1)][l_1, List__Node__0:=true]];
+        Heap := Heap[null, valid__List#sm(l_1):=Heap[null, valid__List#sm(l_1)][Heap[l_1, List__Node__0], Int__v:=true]];
         assume state(Heap, Mask);
-        c_1 := Heap[l_2, List__Node__0];
+        c_1 := Heap[l_1, List__Node__0];
     
     // -- Execute unfolding (for extra information)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume valid__List#trigger(UnfoldingHeap, valid__List(l_2));
-      assume UnfoldingHeap[null, valid__List(l_2)] == CombineFrames(FrameFragment(UnfoldingHeap[l_2, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_2, List__Node__0], Int__v]));
+      assume valid__List#trigger(UnfoldingHeap, valid__List(l_1));
+      assume UnfoldingHeap[null, valid__List(l_1)] == CombineFrames(FrameFragment(UnfoldingHeap[l_1, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_1, List__Node__0], Int__v]));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       havoc wildcard;
-      assume wildcard < UnfoldingMask[null, valid__List(l_2)];
-      UnfoldingMask := UnfoldingMask[null, valid__List(l_2):=UnfoldingMask[null, valid__List(l_2)] - wildcard];
+      assume wildcard < UnfoldingMask[null, valid__List(l_1)];
+      UnfoldingMask := UnfoldingMask[null, valid__List(l_1):=UnfoldingMask[null, valid__List(l_1)] - wildcard];
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      UnfoldingMask := UnfoldingMask[l_2, List__Node__0:=UnfoldingMask[l_2, List__Node__0] + perm];
+      assume l_1 != null;
+      UnfoldingMask := UnfoldingMask[l_1, List__Node__0:=UnfoldingMask[l_1, List__Node__0] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       havoc wildcard;
       perm := wildcard;
-      assume UnfoldingHeap[l_2, List__Node__0] != null;
-      UnfoldingMask := UnfoldingMask[UnfoldingHeap[l_2, List__Node__0], Int__v:=UnfoldingMask[UnfoldingHeap[l_2, List__Node__0], Int__v] + perm];
+      assume UnfoldingHeap[l_1, List__Node__0] != null;
+      UnfoldingMask := UnfoldingMask[UnfoldingHeap[l_1, List__Node__0], Int__v:=UnfoldingMask[UnfoldingHeap[l_1, List__Node__0], Int__v] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-    assume Heap[Heap[l_2, List__Node__0], Int__v] == 0;
+    assume Heap[Heap[l_1, List__Node__0], Int__v] == 0;
     assume state(Heap, Mask);
   
   // -- Initializing of old state

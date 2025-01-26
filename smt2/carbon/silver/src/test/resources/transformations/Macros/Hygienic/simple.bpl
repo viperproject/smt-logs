@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:00:05
+// Date:         2025-01-26 21:44:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/simple.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/simple-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,11 +180,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var x$0: bool;
   
   // -- Initializing the state
@@ -195,17 +195,17 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: x := true -- simple.vpr@5.5--5.24
     x := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x -- simple.vpr@6.5--6.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion x might not hold. (simple.vpr@6.12--6.13) [101697]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion x might not hold. (simple.vpr@6.12--6.13) [198906]"}
       x;
     assume state(Heap, Mask);
   
@@ -214,9 +214,9 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x$0 -- simple.vpr@6.5--6.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion x$0 might not hold. (simple.vpr@6.12--6.13) [101698]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion x$0 might not hold. (simple.vpr@6.12--6.13) [198907]"}
       x$0;
     assume state(Heap, Mask);
 }

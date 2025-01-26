@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:19
+// Date:         2025-01-26 21:43:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/negative_amounts.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/negative_amounts-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,9 +180,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 const unique f_7: Field NormalField Ref;
 axiom !IsPredicateField(f_7);
 axiom !IsWandField(f_7);
-const unique p_14: Field NormalField Perm;
-axiom !IsPredicateField(p_14);
-axiom !IsWandField(p_14);
+const unique p_2: Field NormalField Perm;
+axiom !IsPredicateField(p_2);
+axiom !IsWandField(p_2);
 
 // ==================================================
 // Translation of method test01
@@ -227,10 +227,10 @@ procedure test01(x: Ref, k: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     perm := k;
-    assert {:msg "  Exhale might fail. Fraction k might be negative. (negative_amounts.vpr@13.10--13.21) [189754]"}
+    assert {:msg "  Exhale might fail. Fraction k might be negative. (negative_amounts.vpr@13.10--13.21) [96122]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (negative_amounts.vpr@13.10--13.21) [189755]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (negative_amounts.vpr@13.10--13.21) [96123]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -293,7 +293,7 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: assert none < k -- negative_amounts.vpr@23.3--23.18
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion none < k might not hold. (negative_amounts.vpr@23.10--23.18) [189756]"}
+    assert {:msg "  Assert might fail. Assertion none < k might not hold. (negative_amounts.vpr@23.10--23.18) [96124]"}
       NoPerm < k;
     assume state(Heap, Mask);
 }
@@ -327,7 +327,7 @@ procedure test03(x: Ref, k: Perm) returns ()
   
   // -- Translating statement: inhale acc(x.f, k) -- negative_amounts.vpr@28.3--28.21
     perm := k;
-    assert {:msg "  Inhale might fail. Fraction k might be negative. (negative_amounts.vpr@28.10--28.21) [189757]"}
+    assert {:msg "  Inhale might fail. Fraction k might be negative. (negative_amounts.vpr@28.10--28.21) [96125]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -338,7 +338,7 @@ procedure test03(x: Ref, k: Perm) returns ()
   // -- Translating statement: assert k >= none -- negative_amounts.vpr@29.3--29.19
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion k >= none might not hold. (negative_amounts.vpr@29.10--29.19) [189758]"}
+    assert {:msg "  Assert might fail. Assertion k >= none might not hold. (negative_amounts.vpr@29.10--29.19) [96126]"}
       NoPerm <= k;
     assume state(Heap, Mask);
 }

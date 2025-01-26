@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:35
+// Date:         2025-01-26 21:42:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0267a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0267a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -291,8 +291,8 @@ function  ANOTHER_GLOBAL_VAR#triggerStateless(): Ref;
 procedure ANOTHER_GLOBAL_VAR#definedness() returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -312,9 +312,9 @@ procedure ANOTHER_GLOBAL_VAR#definedness() returns (Result: Ref)
     Result := __prim__bool___box__(Heap, true);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of ANOTHER_GLOBAL_VAR might not hold. Assertion issubtype(typeof(result), bool()) might not hold. (0267a.vpr@15.11--15.44) [202097]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of ANOTHER_GLOBAL_VAR might not hold. Assertion issubtype(typeof(result), bool()) might not hold. (0267a.vpr@15.11--15.44) [71276]"}
       (issubtype((typeof(Result): PyTypeDomainType), vbool): bool);
     
     // -- Check definedness of result == __prim__bool___box__(true)
@@ -322,7 +322,7 @@ procedure ANOTHER_GLOBAL_VAR#definedness() returns (Result: Ref)
         // Stop execution
         assume false;
       }
-    assert {:msg "  Postcondition of ANOTHER_GLOBAL_VAR might not hold. Assertion result == __prim__bool___box__(true) might not hold. (0267a.vpr@16.11--16.47) [202098]"}
+    assert {:msg "  Postcondition of ANOTHER_GLOBAL_VAR might not hold. Assertion result == __prim__bool___box__(true) might not hold. (0267a.vpr@16.11--16.47) [71277]"}
       Result == __prim__bool___box__(Heap, true);
 }
 
@@ -375,8 +375,8 @@ function  SO_MANY_GLOBAL_VARS#triggerStateless(): Ref;
 procedure SO_MANY_GLOBAL_VARS#definedness() returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -411,9 +411,9 @@ procedure SO_MANY_GLOBAL_VARS#definedness() returns (Result: Ref)
     Result := (if bool___unbox__(Heap, ANOTHER_GLOBAL_VAR(Heap)) then OTHER_GLOBAL_VAR(Heap) else __prim__int___box__(Heap, 44));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of SO_MANY_GLOBAL_VARS might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0267a.vpr@23.11--23.43) [202099]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of SO_MANY_GLOBAL_VARS might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0267a.vpr@23.11--23.43) [71278]"}
       (issubtype((typeof(Result): PyTypeDomainType), vint): bool);
     
     // -- Check definedness of result == (bool___unbox__(ANOTHER_GLOBAL_VAR()) ? OTHER_GLOBAL_VAR() : __prim__int___box__(44))
@@ -436,7 +436,7 @@ procedure SO_MANY_GLOBAL_VARS#definedness() returns (Result: Ref)
           assume false;
         }
       }
-    assert {:msg "  Postcondition of SO_MANY_GLOBAL_VARS might not hold. Assertion result == (bool___unbox__(ANOTHER_GLOBAL_VAR()) ? OTHER_GLOBAL_VAR() : __prim__int___box__(44)) might not hold. (0267a.vpr@24.11--24.106) [202100]"}
+    assert {:msg "  Postcondition of SO_MANY_GLOBAL_VARS might not hold. Assertion result == (bool___unbox__(ANOTHER_GLOBAL_VAR()) ? OTHER_GLOBAL_VAR() : __prim__int___box__(44)) might not hold. (0267a.vpr@24.11--24.106) [71279]"}
       Result == (if bool___unbox__(Heap, ANOTHER_GLOBAL_VAR(Heap)) then OTHER_GLOBAL_VAR(Heap) else __prim__int___box__(Heap, 44));
 }
 
@@ -486,32 +486,32 @@ procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
 // ==================================================
 
 // Uninterpreted function definitions
-function  int___unbox__(Heap: HeapType, box_1: Ref): int;
-function  int___unbox__'(Heap: HeapType, box_1: Ref): int;
-axiom (forall Heap: HeapType, box_1: Ref ::
-  { int___unbox__(Heap, box_1) }
-  int___unbox__(Heap, box_1) == int___unbox__'(Heap, box_1) && dummyFunction(int___unbox__#triggerStateless(box_1))
+function  int___unbox__(Heap: HeapType, box: Ref): int;
+function  int___unbox__'(Heap: HeapType, box: Ref): int;
+axiom (forall Heap: HeapType, box: Ref ::
+  { int___unbox__(Heap, box) }
+  int___unbox__(Heap, box) == int___unbox__'(Heap, box) && dummyFunction(int___unbox__#triggerStateless(box))
 );
-axiom (forall Heap: HeapType, box_1: Ref ::
-  { int___unbox__'(Heap, box_1) }
-  dummyFunction(int___unbox__#triggerStateless(box_1))
+axiom (forall Heap: HeapType, box: Ref ::
+  { int___unbox__'(Heap, box) }
+  dummyFunction(int___unbox__#triggerStateless(box))
 );
 
 // Framing axioms
-function  int___unbox__#frame(frame: FrameType, box_1: Ref): int;
-axiom (forall Heap: HeapType, Mask: MaskType, box_1: Ref ::
-  { state(Heap, Mask), int___unbox__'(Heap, box_1) }
-  state(Heap, Mask) ==> int___unbox__'(Heap, box_1) == int___unbox__#frame(EmptyFrame, box_1)
+function  int___unbox__#frame(frame: FrameType, box: Ref): int;
+axiom (forall Heap: HeapType, Mask: MaskType, box: Ref ::
+  { state(Heap, Mask), int___unbox__'(Heap, box) }
+  state(Heap, Mask) ==> int___unbox__'(Heap, box) == int___unbox__#frame(EmptyFrame, box)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  int___unbox__#trigger(frame: FrameType, box_1: Ref): bool;
+function  int___unbox__#trigger(frame: FrameType, box: Ref): bool;
 
 // State-independent trigger function
-function  int___unbox__#triggerStateless(box_1: Ref): int;
+function  int___unbox__#triggerStateless(box: Ref): int;
 
 // Check contract well-formedness and postcondition
-procedure int___unbox__#definedness(box_1: Ref) returns (Result: int)
+procedure int___unbox__#definedness(box: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -519,7 +519,7 @@ procedure int___unbox__#definedness(box_1: Ref) returns (Result: int)
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
-    assume Heap[box_1, $allocated];
+    assume Heap[box, $allocated];
     assume AssumeFunctionsAbove == 6;
 }
 
@@ -605,32 +605,32 @@ procedure __prim__bool___box__#definedness(prim: bool) returns (Result: Ref)
 // ==================================================
 
 // Uninterpreted function definitions
-function  bool___unbox__(Heap: HeapType, box_1: Ref): bool;
-function  bool___unbox__'(Heap: HeapType, box_1: Ref): bool;
-axiom (forall Heap: HeapType, box_1: Ref ::
-  { bool___unbox__(Heap, box_1) }
-  bool___unbox__(Heap, box_1) == bool___unbox__'(Heap, box_1) && dummyFunction(bool___unbox__#triggerStateless(box_1))
+function  bool___unbox__(Heap: HeapType, box: Ref): bool;
+function  bool___unbox__'(Heap: HeapType, box: Ref): bool;
+axiom (forall Heap: HeapType, box: Ref ::
+  { bool___unbox__(Heap, box) }
+  bool___unbox__(Heap, box) == bool___unbox__'(Heap, box) && dummyFunction(bool___unbox__#triggerStateless(box))
 );
-axiom (forall Heap: HeapType, box_1: Ref ::
-  { bool___unbox__'(Heap, box_1) }
-  dummyFunction(bool___unbox__#triggerStateless(box_1))
+axiom (forall Heap: HeapType, box: Ref ::
+  { bool___unbox__'(Heap, box) }
+  dummyFunction(bool___unbox__#triggerStateless(box))
 );
 
 // Framing axioms
-function  bool___unbox__#frame(frame: FrameType, box_1: Ref): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, box_1: Ref ::
-  { state(Heap, Mask), bool___unbox__'(Heap, box_1) }
-  state(Heap, Mask) ==> bool___unbox__'(Heap, box_1) == bool___unbox__#frame(EmptyFrame, box_1)
+function  bool___unbox__#frame(frame: FrameType, box: Ref): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, box: Ref ::
+  { state(Heap, Mask), bool___unbox__'(Heap, box) }
+  state(Heap, Mask) ==> bool___unbox__'(Heap, box) == bool___unbox__#frame(EmptyFrame, box)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  bool___unbox__#trigger(frame: FrameType, box_1: Ref): bool;
+function  bool___unbox__#trigger(frame: FrameType, box: Ref): bool;
 
 // State-independent trigger function
-function  bool___unbox__#triggerStateless(box_1: Ref): bool;
+function  bool___unbox__#triggerStateless(box: Ref): bool;
 
 // Check contract well-formedness and postcondition
-procedure bool___unbox__#definedness(box_1: Ref) returns (Result: bool)
+procedure bool___unbox__#definedness(box: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   
@@ -638,6 +638,6 @@ procedure bool___unbox__#definedness(box_1: Ref) returns (Result: bool)
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
-    assume Heap[box_1, $allocated];
+    assume Heap[box, $allocated];
     assume AssumeFunctionsAbove == 5;
 }

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:43:31
+; Started: 2025-01-26 21:31:53
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -720,8 +720,8 @@
 (declare-const Ref__x_old@45@01 Int)
 (declare-const Ref__Integer_value@46@01 Int)
 (assert (not (= __flatten_63@43@01 __flatten_63@42@01)))
-(assert (not (= __flatten_63@43@01 diz@41@01)))
 (assert (not (= __flatten_63@43@01 sys__result@39@01)))
+(assert (not (= __flatten_63@43@01 diz@41@01)))
 ; [exec]
 ; diz := __flatten_63
 ; [exec]

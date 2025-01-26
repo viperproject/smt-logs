@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:26
+// Date:         2025-01-26 21:43:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_5.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_5-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -736,7 +736,7 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 type SizeDomainDomainType T;
 
 // Translation of domain function size
-function  size_3<T>(collection_1: T): int;
+function  size<T>(collection: T): int;
 
 // ==================================================
 // Translation of domain AddDomain
@@ -746,7 +746,7 @@ function  size_3<T>(collection_1: T): int;
 type AddDomainDomainType T;
 
 // Translation of domain function add
-function  add_3<T>(a_3: T, b_102: T): T;
+function  add_2<T>(a_3: T, b_33: T): T;
 
 // ==================================================
 // Translation of domain ToSeqDomain
@@ -756,7 +756,7 @@ function  add_3<T>(a_3: T, b_102: T): T;
 type ToSeqDomainDomainType A B;
 
 // Translation of domain function toSeq
-function  toSeq<A, B>(collection_1: A): Seq B;
+function  toSeq<A, B>(collection: A): Seq B;
 
 // ==================================================
 // Translation of domain IntUtility
@@ -766,9 +766,9 @@ function  toSeq<A, B>(collection_1: A): Seq B;
 type IntUtilityDomainType;
 
 // Translation of anonymous domain axiom
-axiom (forall o1: int, o2_62: int ::
-  { (add_3(o1, o2_62): int) }
-  (add_3(o1, o2_62): int) == o1 + o2_62
+axiom (forall o1: int, o2_48: int ::
+  { (add_2(o1, o2_48): int) }
+  (add_2(o1, o2_48): int) == o1 + o2_48
 );
 
 // ==================================================
@@ -779,15 +779,15 @@ axiom (forall o1: int, o2_62: int ::
 type SetUtilityDomainType T;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> set_2: (Set T) ::
-  { (size_3(set_2): int) }
-  (size_3(set_2): int) == Set#Card(set_2)
+axiom (forall <T> set_1: (Set T) ::
+  { (size(set_1): int) }
+  (size(set_1): int) == Set#Card(set_1)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> o1: (Set T), o2_62: (Set T) ::
-  { (add_3(o1, o2_62): Set T) }
-  Set#Equal((add_3(o1, o2_62): Set T), (Set#Union(o1, o2_62): Set T))
+axiom (forall <T> o1: (Set T), o2_48: (Set T) ::
+  { (add_2(o1, o2_48): Set T) }
+  Set#Equal((add_2(o1, o2_48): Set T), (Set#Union(o1, o2_48): Set T))
 );
 
 // ==================================================
@@ -798,15 +798,15 @@ axiom (forall <T> o1: (Set T), o2_62: (Set T) ::
 type SeqUtilityDomainType T;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> o1: (Seq T), o2_62: (Seq T) ::
-  { (add_3(o1, o2_62): Seq T) }
-  Seq#Equal((add_3(o1, o2_62): Seq T), (Seq#Append(o1, o2_62): Seq T))
+axiom (forall <T> o1: (Seq T), o2_48: (Seq T) ::
+  { (add_2(o1, o2_48): Seq T) }
+  Seq#Equal((add_2(o1, o2_48): Seq T), (Seq#Append(o1, o2_48): Seq T))
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> seq_1: (Seq T) ::
-  { (size_3(seq_1): int) }
-  (size_3(seq_1): int) == Seq#Length(seq_1)
+axiom (forall <T> seq: (Seq T) ::
+  { (size(seq): int) }
+  (size(seq): int) == Seq#Length(seq)
 );
 
 // ==================================================
@@ -839,30 +839,30 @@ type DAGDomainType T;
 function  Node_1<T>(value_2: T, successor: (Seq (DAGDomainType T))): DAGDomainType T;
 
 // Translation of domain function get_DAG_value
-function  get_DAG_value<T>(t_9: (DAGDomainType T)): T;
+function  get_DAG_value<T>(t_3: (DAGDomainType T)): T;
 
 // Translation of domain function get_DAG_successor
-function  get_DAG_successor<T>(t_9: (DAGDomainType T)): Seq (DAGDomainType T);
+function  get_DAG_successor<T>(t_3: (DAGDomainType T)): Seq (DAGDomainType T);
 
 // Translation of domain function DAG_tag
-function  DAG_tag<T>(t_9: (DAGDomainType T)): int;
+function  DAG_tag<T>(t_3: (DAGDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, successor_1: (Seq (DAGDomainType T)) ::
-  { (Node_1(value_1, successor_1): DAGDomainType T) }
-  value_1 == (get_DAG_value((Node_1(value_1, successor_1): DAGDomainType T)): T)
+axiom (forall <T> value: T, successor_1: (Seq (DAGDomainType T)) ::
+  { (Node_1(value, successor_1): DAGDomainType T) }
+  value == (get_DAG_value((Node_1(value, successor_1): DAGDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, successor_1: (Seq (DAGDomainType T)) ::
-  { (Node_1(value_1, successor_1): DAGDomainType T) }
-  Seq#Equal(successor_1, (get_DAG_successor((Node_1(value_1, successor_1): DAGDomainType T)): Seq (DAGDomainType T)))
+axiom (forall <T> value: T, successor_1: (Seq (DAGDomainType T)) ::
+  { (Node_1(value, successor_1): DAGDomainType T) }
+  Seq#Equal(successor_1, (get_DAG_successor((Node_1(value, successor_1): DAGDomainType T)): Seq (DAGDomainType T)))
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, successor_1: (Seq (DAGDomainType T)) ::
-  { (Node_1(value_1, successor_1): DAGDomainType T) }
-  (DAG_tag((Node_1(value_1, successor_1): DAGDomainType T)): int) == 0
+axiom (forall <T> value: T, successor_1: (Seq (DAGDomainType T)) ::
+  { (Node_1(value, successor_1): DAGDomainType T) }
+  (DAG_tag((Node_1(value, successor_1): DAGDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -878,11 +878,11 @@ axiom (forall <T> t_2: (DAGDomainType T) ::
 procedure client() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var dag: (DAGDomainType int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -892,8 +892,8 @@ procedure client() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: dag := (Node(1, Seq((Node(2, Seq((Node(3, Seq[DAG[Int]]()): DAG[Int]))): DAG[Int]),
   //   (Node(2, Seq((Node(3, Seq[DAG[Int]]()): DAG[Int]))): DAG[Int]), (Node(2, Seq[DAG[Int]]()): DAG[Int]),
@@ -903,16 +903,16 @@ procedure client() returns ()
   
   // -- Translating statement: assert (toSeq(dag): Seq[Int]) ==
   //   Seq(1) ++ (toSeq((get_DAG_successor(dag): Seq[DAG[Int]])): Seq[Int]) -- example_5.vpr@68.4--68.55
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (toSeq(dag): Seq[Int]) == Seq(1) ++ (toSeq((get_DAG_successor(dag): Seq[DAG[Int]])): Seq[Int]) might not hold. (example_5.vpr@68.11--68.55) [222880]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (toSeq(dag): Seq[Int]) == Seq(1) ++ (toSeq((get_DAG_successor(dag): Seq[DAG[Int]])): Seq[Int]) might not hold. (example_5.vpr@68.11--68.55) [103958]"}
       Seq#Equal((toSeq(dag): Seq int), Seq#Append(Seq#Singleton(1), (toSeq((get_DAG_successor(dag): Seq (DAGDomainType int))): Seq int)));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (toSeq(dag): Seq[Int]) == Seq(1, 2, 3, 2, 3, 2, 2, 2) -- example_5.vpr@70.4--70.52
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (toSeq(dag): Seq[Int]) == Seq(1, 2, 3, 2, 3, 2, 2, 2) might not hold. (example_5.vpr@70.11--70.52) [222881]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (toSeq(dag): Seq[Int]) == Seq(1, 2, 3, 2, 3, 2, 2, 2) might not hold. (example_5.vpr@70.11--70.52) [103959]"}
       Seq#Equal((toSeq(dag): Seq int), Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(2)), Seq#Singleton(3)), Seq#Singleton(2)), Seq#Singleton(3)), Seq#Singleton(2)), Seq#Singleton(2)), Seq#Singleton(2)));
     assume state(Heap, Mask);
 }

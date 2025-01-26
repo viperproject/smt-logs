@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:49:30
+// Date:         2025-01-26 21:41:13
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/apply_potential_incompleteness.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/apply_potential_incompleteness-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -299,7 +299,7 @@ procedure t_1(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (apply_potential_incompleteness.vpr@7.3--7.32) [978]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (apply_potential_incompleteness.vpr@7.3--7.32) [764]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -342,7 +342,7 @@ procedure t_1(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (apply_potential_incompleteness.vpr@7.3--7.32) [979]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (apply_potential_incompleteness.vpr@7.3--7.32) [765]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -364,7 +364,7 @@ procedure t_1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 2
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (apply_potential_incompleteness.vpr@8.10--8.26) [981]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (apply_potential_incompleteness.vpr@8.10--8.26) [767]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 2;
     assume state(Heap, Mask);
@@ -376,7 +376,7 @@ procedure t_1(x: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (apply_potential_incompleteness.vpr@9.3--9.30) [982]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (apply_potential_incompleteness.vpr@9.3--9.30) [768]"}
         FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm)];
       Mask := Mask[null, wand(x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
@@ -386,7 +386,7 @@ procedure t_1(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (apply_potential_incompleteness.vpr@9.3--9.30) [984]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (apply_potential_incompleteness.vpr@9.3--9.30) [770]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -409,16 +409,16 @@ procedure t_1(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 2
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (apply_potential_incompleteness.vpr@11.10--11.16) [986]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (apply_potential_incompleteness.vpr@11.10--11.16) [772]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == 2 might not hold. (apply_potential_incompleteness.vpr@11.10--11.16) [987]"}
+    assert {:msg "  Assert might fail. Assertion x.f == 2 might not hold. (apply_potential_incompleteness.vpr@11.10--11.16) [773]"}
       Heap[x, f_7] == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- apply_potential_incompleteness.vpr@14.3--14.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (apply_potential_incompleteness.vpr@14.10--14.15) [988]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (apply_potential_incompleteness.vpr@14.10--14.15) [774]"}
       false;
     assume state(Heap, Mask);
 }

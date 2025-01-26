@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:59:09
+// Date:         2025-01-26 21:44:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/MethodCallDesugaring/withArgs.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/MethodCallDesugaring/withArgs-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,13 +180,13 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -196,8 +196,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: a := 2 -- withArgs.vpr@6.5--6.20
     a_2 := 2;
@@ -208,11 +208,11 @@ procedure main() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method foo might not hold. Assertion a <= 2 might not hold. (withArgs.vpr@7.5--7.14) [92659]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method foo might not hold. Assertion a <= 2 might not hold. (withArgs.vpr@7.5--7.14) [198209]"}
         a_2 <= 2;
-      assert {:msg "  The precondition of method foo might not hold. Assertion a + 5 < 5 + a + 1 might not hold. (withArgs.vpr@7.5--7.14) [92660]"}
+      assert {:msg "  The precondition of method foo might not hold. Assertion a + 5 < 5 + a + 1 might not hold. (withArgs.vpr@7.5--7.14) [198210]"}
         a_2 + 5 < 5 + a_2 + 1;
     
     // -- Inhaling postcondition
@@ -224,15 +224,15 @@ procedure main() returns ()
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: int, y: int) returns ()
+procedure foo_3(x: int, y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -249,8 +249,8 @@ procedure foo_1(x: int, y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -263,6 +263,6 @@ procedure foo_1(x: int, y: int) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:54:46
+// Date:         2025-01-26 21:44:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testAccessSubmatrix.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testAccessSubmatrix-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -568,54 +568,54 @@ axiom !IsWandField(Ref__Integer_value);
 // ==================================================
 
 // Uninterpreted function definitions
-function  Ref__multidim_index_2(Heap: HeapType, N0: int, N1: int, i0: int, i1: int): int;
-function  Ref__multidim_index_2'(Heap: HeapType, N0: int, N1: int, i0: int, i1: int): int;
-axiom (forall Heap: HeapType, N0: int, N1: int, i0: int, i1: int ::
-  { Ref__multidim_index_2(Heap, N0, N1, i0, i1) }
-  Ref__multidim_index_2(Heap, N0, N1, i0, i1) == Ref__multidim_index_2'(Heap, N0, N1, i0, i1) && dummyFunction(Ref__multidim_index_2#triggerStateless(N0, N1, i0, i1))
+function  Ref__multidim_index_2(Heap: HeapType, N0: int, N1: int, i0_3: int, i1_9: int): int;
+function  Ref__multidim_index_2'(Heap: HeapType, N0: int, N1: int, i0_3: int, i1_9: int): int;
+axiom (forall Heap: HeapType, N0: int, N1: int, i0_3: int, i1_9: int ::
+  { Ref__multidim_index_2(Heap, N0, N1, i0_3, i1_9) }
+  Ref__multidim_index_2(Heap, N0, N1, i0_3, i1_9) == Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) && dummyFunction(Ref__multidim_index_2#triggerStateless(N0, N1, i0_3, i1_9))
 );
-axiom (forall Heap: HeapType, N0: int, N1: int, i0: int, i1: int ::
-  { Ref__multidim_index_2'(Heap, N0, N1, i0, i1) }
-  dummyFunction(Ref__multidim_index_2#triggerStateless(N0, N1, i0, i1))
+axiom (forall Heap: HeapType, N0: int, N1: int, i0_3: int, i1_9: int ::
+  { Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) }
+  dummyFunction(Ref__multidim_index_2#triggerStateless(N0, N1, i0_3, i1_9))
 );
 
 // Framing axioms
-function  Ref__multidim_index_2#frame(frame: FrameType, N0: int, N1: int, i0: int, i1: int): int;
-axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0: int, i1: int ::
-  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0, i1) }
-  state(Heap, Mask) ==> Ref__multidim_index_2'(Heap, N0, N1, i0, i1) == Ref__multidim_index_2#frame(EmptyFrame, N0, N1, i0, i1)
+function  Ref__multidim_index_2#frame(frame: FrameType, N0: int, N1: int, i0_3: int, i1_9: int): int;
+axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0_3: int, i1_9: int ::
+  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) }
+  state(Heap, Mask) ==> Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) == Ref__multidim_index_2#frame(EmptyFrame, N0, N1, i0_3, i1_9)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0: int, i1: int ::
-  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0, i1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Ref__multidim_index_2#trigger(EmptyFrame, N0, N1, i0, i1)) ==> ((((0 <= i0 && i0 < N0) && 0 <= N0) && 0 <= i1) && i1 < N1) && 0 <= N1 ==> 0 <= Ref__multidim_index_2'(Heap, N0, N1, i0, i1)
+axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0_3: int, i1_9: int ::
+  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Ref__multidim_index_2#trigger(EmptyFrame, N0, N1, i0_3, i1_9)) ==> ((((0 <= i0_3 && i0_3 < N0) && 0 <= N0) && 0 <= i1_9) && i1_9 < N1) && 0 <= N1 ==> 0 <= Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9)
 );
-axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0: int, i1: int ::
-  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0, i1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Ref__multidim_index_2#trigger(EmptyFrame, N0, N1, i0, i1)) ==> ((((0 <= i0 && i0 < N0) && 0 <= N0) && 0 <= i1) && i1 < N1) && 0 <= N1 ==> Ref__multidim_index_2'(Heap, N0, N1, i0, i1) < N0 * N1
+axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0_3: int, i1_9: int ::
+  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Ref__multidim_index_2#trigger(EmptyFrame, N0, N1, i0_3, i1_9)) ==> ((((0 <= i0_3 && i0_3 < N0) && 0 <= N0) && 0 <= i1_9) && i1_9 < N1) && 0 <= N1 ==> Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) < N0 * N1
 );
-axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0: int, i1: int ::
-  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0, i1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Ref__multidim_index_2#trigger(EmptyFrame, N0, N1, i0, i1)) ==> ((((0 <= i0 && i0 < N0) && 0 <= N0) && 0 <= i1) && i1 < N1) && 0 <= N1 ==> Ref__multidim_index_2'(Heap, N0, N1, i0, i1) == i0 * N1 + i1
+axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0_3: int, i1_9: int ::
+  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Ref__multidim_index_2#trigger(EmptyFrame, N0, N1, i0_3, i1_9)) ==> ((((0 <= i0_3 && i0_3 < N0) && 0 <= N0) && 0 <= i1_9) && i1_9 < N1) && 0 <= N1 ==> Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) == i0_3 * N1 + i1_9
 );
-axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0: int, i1: int ::
-  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0, i1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Ref__multidim_index_2#trigger(EmptyFrame, N0, N1, i0, i1)) ==> ((((0 <= i0 && i0 < N0) && 0 <= N0) && 0 <= i1) && i1 < N1) && 0 <= N1 ==> Ref__multidim_index_2'(Heap, N0, N1, i0, i1) mod N1 == i1
+axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0_3: int, i1_9: int ::
+  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Ref__multidim_index_2#trigger(EmptyFrame, N0, N1, i0_3, i1_9)) ==> ((((0 <= i0_3 && i0_3 < N0) && 0 <= N0) && 0 <= i1_9) && i1_9 < N1) && 0 <= N1 ==> Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) mod N1 == i1_9
 );
-axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0: int, i1: int ::
-  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0, i1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Ref__multidim_index_2#trigger(EmptyFrame, N0, N1, i0, i1)) ==> ((((0 <= i0 && i0 < N0) && 0 <= N0) && 0 <= i1) && i1 < N1) && 0 <= N1 ==> Ref__multidim_index_2'(Heap, N0, N1, i0, i1) mod N1 < N0
+axiom (forall Heap: HeapType, Mask: MaskType, N0: int, N1: int, i0_3: int, i1_9: int ::
+  { state(Heap, Mask), Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Ref__multidim_index_2#trigger(EmptyFrame, N0, N1, i0_3, i1_9)) ==> ((((0 <= i0_3 && i0_3 < N0) && 0 <= N0) && 0 <= i1_9) && i1_9 < N1) && 0 <= N1 ==> Ref__multidim_index_2'(Heap, N0, N1, i0_3, i1_9) mod N1 < N0
 );
 
 // Trigger function (controlling recursive postconditions)
-function  Ref__multidim_index_2#trigger(frame: FrameType, N0: int, N1: int, i0: int, i1: int): bool;
+function  Ref__multidim_index_2#trigger(frame: FrameType, N0: int, N1: int, i0_3: int, i1_9: int): bool;
 
 // State-independent trigger function
-function  Ref__multidim_index_2#triggerStateless(N0: int, N1: int, i0: int, i1: int): int;
+function  Ref__multidim_index_2#triggerStateless(N0: int, N1: int, i0_3: int, i1_9: int): int;
 
 // Check contract well-formedness and postcondition
-procedure Ref__multidim_index_2#definedness(N0: int, N1: int, i0: int, i1: int) returns (Result: int)
+procedure Ref__multidim_index_2#definedness(N0: int, N1: int, i0_3: int, i1_9: int) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -626,15 +626,15 @@ procedure Ref__multidim_index_2#definedness(N0: int, N1: int, i0: int, i1: int) 
     assume AssumeFunctionsAbove == 0;
   
   // -- Inhaling precondition (with checking)
-    assume 0 <= i0;
+    assume 0 <= i0_3;
     assume state(Heap, Mask);
-    assume i0 < N0;
+    assume i0_3 < N0;
     assume state(Heap, Mask);
     assume 0 <= N0;
     assume state(Heap, Mask);
-    assume 0 <= i1;
+    assume 0 <= i1_9;
     assume state(Heap, Mask);
-    assume i1 < N1;
+    assume i1_9 < N1;
     assume state(Heap, Mask);
     assume 0 <= N1;
     assume state(Heap, Mask);
@@ -644,17 +644,17 @@ procedure Ref__multidim_index_2#definedness(N0: int, N1: int, i0: int, i1: int) 
     assume state(Heap, Mask);
     assume Result < N0 * N1;
     assume state(Heap, Mask);
-    assume Result == i0 * N1 + i1;
+    assume Result == i0_3 * N1 + i1_9;
     assume state(Heap, Mask);
     
     // -- Check definedness of result % N1 == i1
-      assert {:msg "  Contract might not be well-formed. Divisor N1 might be zero. (testAccessSubmatrix.vpr@16.11--16.28) [50637]"}
+      assert {:msg "  Contract might not be well-formed. Divisor N1 might be zero. (testAccessSubmatrix.vpr@16.11--16.28) [153783]"}
         N1 != 0;
-    assume Result mod N1 == i1;
+    assume Result mod N1 == i1_9;
     assume state(Heap, Mask);
     
     // -- Check definedness of result % N1 < N0
-      assert {:msg "  Contract might not be well-formed. Divisor N1 might be zero. (testAccessSubmatrix.vpr@17.11--17.27) [50638]"}
+      assert {:msg "  Contract might not be well-formed. Divisor N1 might be zero. (testAccessSubmatrix.vpr@17.11--17.27) [153784]"}
         N1 != 0;
     assume Result mod N1 < N0;
     assume state(Heap, Mask);
@@ -664,12 +664,12 @@ procedure Ref__multidim_index_2#definedness(N0: int, N1: int, i0: int, i1: int) 
 // Translation of method Ref__zero
 // ==================================================
 
-procedure Ref__zero(diz: Ref, current_thread_id: int, M: int, N: int, step: int, matrix: (Seq Ref)) returns ()
+procedure Ref__zero(diz: Ref, current_thread_id: int, M_1: int, N: int, step: int, matrix_1: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var i_14: int;
-  var j_5: int;
-  var j1_11: int;
+  var i_18: int;
+  var j_14: int;
+  var j1_7: int;
   var QPMask: MaskType;
   var oldMask: MaskType;
   var oldHeap: HeapType;
@@ -694,82 +694,82 @@ procedure Ref__zero(diz: Ref, current_thread_id: int, M: int, N: int, step: int,
     assume state(Heap, Mask);
     assume current_thread_id >= 0;
     assume state(Heap, Mask);
-    assume M > 0;
+    assume M_1 > 0;
     assume N > 0;
     assume step > N;
     assume state(Heap, Mask);
     assume N <= step;
     assume state(Heap, Mask);
-    assume M * step <= Seq#Length(matrix);
+    assume M_1 * step <= Seq#Length(matrix_1);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { matrix[i], matrix[j] } 0 <= i && (i < |matrix| && (0 <= j && (j < |matrix| && i != j))) ==> matrix[i] != matrix[j])
       if (*) {
-        if (0 <= i_14 && (i_14 < Seq#Length(matrix) && (0 <= j_5 && (j_5 < Seq#Length(matrix) && i_14 != j_5)))) {
-          assert {:msg "  Contract might not be well-formed. Index matrix[i] into matrix might be negative. (testAccessSubmatrix.vpr@26.12--26.122) [50639]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index matrix[i] into matrix might exceed sequence length. (testAccessSubmatrix.vpr@26.12--26.122) [50640]"}
-            i_14 < Seq#Length(matrix);
-          assert {:msg "  Contract might not be well-formed. Index matrix[j] into matrix might be negative. (testAccessSubmatrix.vpr@26.12--26.122) [50641]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index matrix[j] into matrix might exceed sequence length. (testAccessSubmatrix.vpr@26.12--26.122) [50642]"}
-            j_5 < Seq#Length(matrix);
+        if (0 <= i_18 && (i_18 < Seq#Length(matrix_1) && (0 <= j_14 && (j_14 < Seq#Length(matrix_1) && i_18 != j_14)))) {
+          assert {:msg "  Contract might not be well-formed. Index matrix[i] into matrix might be negative. (testAccessSubmatrix.vpr@26.12--26.122) [153785]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index matrix[i] into matrix might exceed sequence length. (testAccessSubmatrix.vpr@26.12--26.122) [153786]"}
+            i_18 < Seq#Length(matrix_1);
+          assert {:msg "  Contract might not be well-formed. Index matrix[j] into matrix might be negative. (testAccessSubmatrix.vpr@26.12--26.122) [153787]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index matrix[j] into matrix might exceed sequence length. (testAccessSubmatrix.vpr@26.12--26.122) [153788]"}
+            j_14 < Seq#Length(matrix_1);
         }
         assume false;
       }
     assume (forall i_1: int, j_1: int ::
-      { Seq#Index(matrix, i_1), Seq#Index(matrix, j_1) }
-      0 <= i_1 && (i_1 < Seq#Length(matrix) && (0 <= j_1 && (j_1 < Seq#Length(matrix) && i_1 != j_1))) ==> Seq#Index(matrix, i_1) != Seq#Index(matrix, j_1)
+      { Seq#Index(matrix_1, i_1), Seq#Index(matrix_1, j_1) }
+      0 <= i_1 && (i_1 < Seq#Length(matrix_1) && (0 <= j_1 && (j_1 < Seq#Length(matrix_1) && i_1 != j_1))) ==> Seq#Index(matrix_1, i_1) != Seq#Index(matrix_1, j_1)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall j1: Int :: { matrix[j1] } 0 <= j1 && (j1 < M * step && j1 % step < N) ==> acc(matrix[j1].Ref__Integer_value, write))
       if (*) {
-        if (0 <= j1_11) {
-          if (j1_11 < M * step) {
-            assert {:msg "  Contract might not be well-formed. Divisor step might be zero. (testAccessSubmatrix.vpr@27.13--27.124) [50643]"}
+        if (0 <= j1_7) {
+          if (j1_7 < M_1 * step) {
+            assert {:msg "  Contract might not be well-formed. Divisor step might be zero. (testAccessSubmatrix.vpr@27.13--27.124) [153789]"}
               step != 0;
           }
         }
-        if (0 <= j1_11 && (j1_11 < M * step && j1_11 mod step < N)) {
-          assert {:msg "  Contract might not be well-formed. Index matrix[j1] into matrix might be negative. (testAccessSubmatrix.vpr@27.13--27.124) [50644]"}
-            j1_11 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index matrix[j1] into matrix might exceed sequence length. (testAccessSubmatrix.vpr@27.13--27.124) [50645]"}
-            j1_11 < Seq#Length(matrix);
+        if (0 <= j1_7 && (j1_7 < M_1 * step && j1_7 mod step < N)) {
+          assert {:msg "  Contract might not be well-formed. Index matrix[j1] into matrix might be negative. (testAccessSubmatrix.vpr@27.13--27.124) [153790]"}
+            j1_7 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index matrix[j1] into matrix might exceed sequence length. (testAccessSubmatrix.vpr@27.13--27.124) [153791]"}
+            j1_7 < Seq#Length(matrix_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource matrix[j1].Ref__Integer_value might not be injective. (testAccessSubmatrix.vpr@27.13--27.124) [50646]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource matrix[j1].Ref__Integer_value might not be injective. (testAccessSubmatrix.vpr@27.13--27.124) [153792]"}
       (forall j1_1: int, j1_1_1: int ::
       
-      (((j1_1 != j1_1_1 && (0 <= j1_1 && (j1_1 < M * step && j1_1 mod step < N))) && (0 <= j1_1_1 && (j1_1_1 < M * step && j1_1_1 mod step < N))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(matrix, j1_1) != Seq#Index(matrix, j1_1_1)
+      (((j1_1 != j1_1_1 && (0 <= j1_1 && (j1_1 < M_1 * step && j1_1 mod step < N))) && (0 <= j1_1_1 && (j1_1_1 < M_1 * step && j1_1_1 mod step < N))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(matrix_1, j1_1) != Seq#Index(matrix_1, j1_1_1)
     );
     
     // -- Define Inverse Function
       assume (forall j1_1: int ::
-        { Seq#Index(matrix, j1_1) } { Seq#Index(matrix, j1_1) }
-        (0 <= j1_1 && (j1_1 < M * step && j1_1 mod step < N)) && NoPerm < FullPerm ==> qpRange1(Seq#Index(matrix, j1_1)) && invRecv1(Seq#Index(matrix, j1_1)) == j1_1
+        { Seq#Index(matrix_1, j1_1) } { Seq#Index(matrix_1, j1_1) }
+        (0 <= j1_1 && (j1_1 < M_1 * step && j1_1 mod step < N)) && NoPerm < FullPerm ==> qpRange1(Seq#Index(matrix_1, j1_1)) && invRecv1(Seq#Index(matrix_1, j1_1)) == j1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && (invRecv1(o_4) < M * step && invRecv1(o_4) mod step < N)) && NoPerm < FullPerm) && qpRange1(o_4) ==> Seq#Index(matrix, invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && (invRecv1(o_9) < M_1 * step && invRecv1(o_9) mod step < N)) && NoPerm < FullPerm) && qpRange1(o_9) ==> Seq#Index(matrix_1, invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall j1_1: int ::
-        { Seq#Index(matrix, j1_1) } { Seq#Index(matrix, j1_1) }
-        0 <= j1_1 && (j1_1 < M * step && j1_1 mod step < N) ==> Seq#Index(matrix, j1_1) != null
+        { Seq#Index(matrix_1, j1_1) } { Seq#Index(matrix_1, j1_1) }
+        0 <= j1_1 && (j1_1 < M_1 * step && j1_1 mod step < N) ==> Seq#Index(matrix_1, j1_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((0 <= invRecv1(o_4) && (invRecv1(o_4) < M * step && invRecv1(o_4) mod step < N)) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(matrix, invRecv1(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv1(o_4) && (invRecv1(o_4) < M * step && invRecv1(o_4) mod step < N)) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((0 <= invRecv1(o_9) && (invRecv1(o_9) < M_1 * step && invRecv1(o_9) mod step < N)) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(matrix_1, invRecv1(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((0 <= invRecv1(o_9) && (invRecv1(o_9) < M_1 * step && invRecv1(o_9) mod step < N)) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -791,18 +791,18 @@ procedure Ref__zero(diz: Ref, current_thread_id: int, M: int, N: int, step: int,
         // Exhale precondition of function application
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 < M might not hold. (testAccessSubmatrix.vpr@33.18--33.54) [50647]"}
-          0 < M;
-        assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= M might not hold. (testAccessSubmatrix.vpr@33.18--33.54) [50648]"}
-          0 <= M;
-        assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 < step might not hold. (testAccessSubmatrix.vpr@33.18--33.54) [50649]"}
+        assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 < M might not hold. (testAccessSubmatrix.vpr@33.18--33.54) [153793]"}
+          0 < M_1;
+        assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= M might not hold. (testAccessSubmatrix.vpr@33.18--33.54) [153794]"}
+          0 <= M_1;
+        assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 < step might not hold. (testAccessSubmatrix.vpr@33.18--33.54) [153795]"}
           0 < step;
-        assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= step might not hold. (testAccessSubmatrix.vpr@33.18--33.54) [50650]"}
+        assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= step might not hold. (testAccessSubmatrix.vpr@33.18--33.54) [153796]"}
           0 <= step;
         // Stop execution
         assume false;
       }
-    __flatten_2 := Ref__multidim_index_2(Heap, M, step, 0, 0);
+    __flatten_2 := Ref__multidim_index_2(Heap, M_1, step, 0, 0);
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_1 := __flatten_2 -- testAccessSubmatrix.vpr@34.3--34.29
@@ -812,11 +812,11 @@ procedure Ref__zero(diz: Ref, current_thread_id: int, M: int, N: int, step: int,
   // -- Translating statement: __flatten_3 := matrix[__flatten_1] -- testAccessSubmatrix.vpr@35.3--35.37
     
     // -- Check definedness of matrix[__flatten_1]
-      assert {:msg "  Assignment might fail. Index matrix[__flatten_1] into matrix might be negative. (testAccessSubmatrix.vpr@35.3--35.37) [50651]"}
+      assert {:msg "  Assignment might fail. Index matrix[__flatten_1] into matrix might be negative. (testAccessSubmatrix.vpr@35.3--35.37) [153797]"}
         __flatten_1 >= 0;
-      assert {:msg "  Assignment might fail. Index matrix[__flatten_1] into matrix might exceed sequence length. (testAccessSubmatrix.vpr@35.3--35.37) [50652]"}
-        __flatten_1 < Seq#Length(matrix);
-    __flatten_3 := Seq#Index(matrix, __flatten_1);
+      assert {:msg "  Assignment might fail. Index matrix[__flatten_1] into matrix might exceed sequence length. (testAccessSubmatrix.vpr@35.3--35.37) [153798]"}
+        __flatten_1 < Seq#Length(matrix_1);
+    __flatten_3 := Seq#Index(matrix_1, __flatten_1);
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_4 := 0 -- testAccessSubmatrix.vpr@36.3--36.19
@@ -824,7 +824,7 @@ procedure Ref__zero(diz: Ref, current_thread_id: int, M: int, N: int, step: int,
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_3.Ref__Integer_value := __flatten_4 -- testAccessSubmatrix.vpr@37.3--37.48
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_3.Ref__Integer_value (testAccessSubmatrix.vpr@37.3--37.48) [50653]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_3.Ref__Integer_value (testAccessSubmatrix.vpr@37.3--37.48) [153799]"}
       FullPerm == Mask[__flatten_3, Ref__Integer_value];
     Heap := Heap[__flatten_3, Ref__Integer_value:=__flatten_4];
     assume state(Heap, Mask);

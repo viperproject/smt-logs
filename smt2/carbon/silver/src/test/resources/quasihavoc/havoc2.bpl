@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:57:29
+// Date:         2025-01-26 21:43:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,15 +185,15 @@ axiom !IsWandField(f_7);
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref) returns ()
+procedure foo_3(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm_temp_quasihavoc_: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -212,7 +212,7 @@ procedure foo_1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 42
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (havoc2.vpr@5.14--5.23) [77706]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (havoc2.vpr@5.14--5.23) [103161]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 42;
     assume state(Heap, Mask);
@@ -220,21 +220,21 @@ procedure foo_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: perm_temp_quasihavoc_ := perm(x.f) -- <no position>
     perm_temp_quasihavoc_ := Mask[x, f_7];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, perm_temp_quasihavoc_) -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := perm_temp_quasihavoc_;
-    assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77707]"}
+    assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [103162]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (<no position>) [77708]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (<no position>) [103163]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -246,7 +246,7 @@ procedure foo_1(x: Ref) returns ()
   
   // -- Translating statement: inhale acc(x.f, perm_temp_quasihavoc_) -- <no position>
     perm := perm_temp_quasihavoc_;
-    assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77709]"}
+    assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [103164]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -255,13 +255,13 @@ procedure foo_1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 42 -- havoc2.vpr@9.5--9.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 42
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (havoc2.vpr@9.12--9.21) [77710]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (havoc2.vpr@9.12--9.21) [103165]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == 42 might not hold. (havoc2.vpr@9.12--9.21) [77711]"}
+    assert {:msg "  Assert might fail. Assertion x.f == 42 might not hold. (havoc2.vpr@9.12--9.21) [103166]"}
       Heap[x, f_7] == 42;
     assume state(Heap, Mask);
 }

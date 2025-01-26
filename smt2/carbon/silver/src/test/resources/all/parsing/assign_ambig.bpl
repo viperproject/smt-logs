@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:32
+// Date:         2025-01-26 21:43:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/parsing/assign_ambig.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/parsing/assign_ambig-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -549,7 +549,7 @@ axiom !IsWandField(f_7);
 // Translation of method bar
 // ==================================================
 
-procedure bar_1(a_2: bool, b_24: (Seq Ref)) returns ()
+procedure bar_2(a_2: bool, b_24: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -565,7 +565,7 @@ procedure bar_1(a_2: bool, b_24: (Seq Ref)) returns ()
     assume Seq#Length(b_24) > 0;
     
     // -- Check definedness of acc(b[0].f, write)
-      assert {:msg "  Contract might not be well-formed. Index b[0] into b might exceed sequence length. (assign_ambig.vpr@3.14--3.36) [222455]"}
+      assert {:msg "  Contract might not be well-formed. Index b[0] into b might exceed sequence length. (assign_ambig.vpr@3.14--3.36) [93265]"}
         0 < Seq#Length(b_24);
     perm := FullPerm;
     assume Seq#Index(b_24, 0) != null;
@@ -587,9 +587,9 @@ procedure bar_1(a_2: bool, b_24: (Seq Ref)) returns ()
   // -- Translating statement: b[..1][0].f := a -- assign_ambig.vpr@6.3--6.21
     
     // -- Check definedness of b[..1][0]
-      assert {:msg "  Assignment might fail. Index b[..1][0] into b[..1] might exceed sequence length. (assign_ambig.vpr@6.3--6.21) [222456]"}
+      assert {:msg "  Assignment might fail. Index b[..1][0] into b[..1] might exceed sequence length. (assign_ambig.vpr@6.3--6.21) [93266]"}
         0 < Seq#Length(Seq#Take(b_24, 1));
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access b[..1][0].f (assign_ambig.vpr@6.3--6.21) [222457]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access b[..1][0].f (assign_ambig.vpr@6.3--6.21) [93267]"}
       FullPerm == Mask[Seq#Index(Seq#Take(b_24, 1), 0), f_7];
     Heap := Heap[Seq#Index(Seq#Take(b_24, 1), 0), f_7:=a_2];
     assume state(Heap, Mask);

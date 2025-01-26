@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:17:49
+// Date:         2025-01-26 21:41:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testHistoryThreadsApplication.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testHistoryThreadsApplication-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_41: Ref, f_27: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_41, f_27] }
-  Heap[o_41, $allocated] ==> Heap[Heap[o_41, f_27], $allocated]
+axiom (forall o_23: Ref, f_15: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_23, f_15] }
+  Heap[o_23, $allocated] ==> Heap[Heap[o_23, f_15], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_42: Ref, f_48: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_42, f_48] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_42, f_48) ==> Heap[o_42, f_48] == ExhaleHeap[o_42, f_48]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_52: Ref, f_63: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_52, f_63] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_52, f_63) ==> Heap[o_52, f_63] == ExhaleHeap[o_52, f_63]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18), ExhaleHeap[null, PredicateMaskField(pm_f_18)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> Heap[null, PredicateMaskField(pm_f_18)] == ExhaleHeap[null, PredicateMaskField(pm_f_18)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_24), ExhaleHeap[null, PredicateMaskField(pm_f_24)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsPredicateField(pm_f_24) ==> Heap[null, PredicateMaskField(pm_f_24)] == ExhaleHeap[null, PredicateMaskField(pm_f_24)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_18) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsPredicateField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_48: (Field A B) ::
-    { ExhaleHeap[o2_18, f_48] }
-    Heap[null, PredicateMaskField(pm_f_18)][o2_18, f_48] ==> Heap[o2_18, f_48] == ExhaleHeap[o2_18, f_48]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_24) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsPredicateField(pm_f_24) ==> (forall <A, B> o2_24: Ref, f_63: (Field A B) ::
+    { ExhaleHeap[o2_24, f_63] }
+    Heap[null, PredicateMaskField(pm_f_24)][o2_24, f_63] ==> Heap[o2_24, f_63] == ExhaleHeap[o2_24, f_63]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18), ExhaleHeap[null, WandMaskField(pm_f_18)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> Heap[null, WandMaskField(pm_f_18)] == ExhaleHeap[null, WandMaskField(pm_f_18)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_24), ExhaleHeap[null, WandMaskField(pm_f_24)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsWandField(pm_f_24) ==> Heap[null, WandMaskField(pm_f_24)] == ExhaleHeap[null, WandMaskField(pm_f_24)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_18: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_18) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_18) && IsWandField(pm_f_18) ==> (forall <A, B> o2_18: Ref, f_48: (Field A B) ::
-    { ExhaleHeap[o2_18, f_48] }
-    Heap[null, WandMaskField(pm_f_18)][o2_18, f_48] ==> Heap[o2_18, f_48] == ExhaleHeap[o2_18, f_48]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_24: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_24) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_24) && IsWandField(pm_f_24) ==> (forall <A, B> o2_24: Ref, f_63: (Field A B) ::
+    { ExhaleHeap[o2_24, f_63] }
+    Heap[null, WandMaskField(pm_f_24)][o2_24, f_63] ==> Heap[o2_24, f_63] == ExhaleHeap[o2_24, f_63]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_42: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_42, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_42, $allocated] ==> ExhaleHeap[o_42, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_52: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_52, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_52, $allocated] ==> ExhaleHeap[o_52, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_41: Ref, f_44: (Field A B), v: B ::
-  { Heap[o_41, f_44:=v] }
-  succHeap(Heap, Heap[o_41, f_44:=v])
+axiom (forall <A, B> Heap: HeapType, o_23: Ref, f_65: (Field A B), v: B ::
+  { Heap[o_23, f_65:=v] }
+  succHeap(Heap, Heap[o_23, f_65:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -203,10 +203,10 @@ function  class_Worker(): TYPEDomainType;
 function  class_Main(): TYPEDomainType;
 
 // Translation of domain function instanceof
-function  instanceof(t1_5: TYPEDomainType, t2_2: TYPEDomainType): bool;
+function  instanceof(t1: TYPEDomainType, t2: TYPEDomainType): bool;
 
 // Translation of domain function type_of
-function  type_of(val_3: Ref): TYPEDomainType;
+function  type_of(val_1: Ref): TYPEDomainType;
 
 // Translation of domain axiom object_top
 axiom (forall t_2: TYPEDomainType ::
@@ -237,7 +237,7 @@ function  p_incr(): ProcessDomainType;
 function  p_single(n_84: int): ProcessDomainType;
 
 // Translation of domain function p_dual
-function  p_dual(n_84: int, m_18: int): ProcessDomainType;
+function  p_dual(n_84: int, m_19: int): ProcessDomainType;
 
 // Translation of domain axiom empty_1L
 axiom (forall p_1: ProcessDomainType ::
@@ -262,9 +262,9 @@ axiom (forall p1_2: ProcessDomainType ::
   
   (forall p2_1: ProcessDomainType ::
     { (p_seq(p1_2, p2_1): ProcessDomainType) }
-    (forall p3_1: ProcessDomainType ::
-      { (p_seq((p_seq(p1_2, p2_1): ProcessDomainType), p3_1): ProcessDomainType) } { (p_seq(p1_2, (p_seq(p2_1, p3_1): ProcessDomainType)): ProcessDomainType) }
-      (p_seq((p_seq(p1_2, p2_1): ProcessDomainType), p3_1): ProcessDomainType) == (p_seq(p1_2, (p_seq(p2_1, p3_1): ProcessDomainType)): ProcessDomainType)
+    (forall p3: ProcessDomainType ::
+      { (p_seq((p_seq(p1_2, p2_1): ProcessDomainType), p3): ProcessDomainType) } { (p_seq(p1_2, (p_seq(p2_1, p3): ProcessDomainType)): ProcessDomainType) }
+      (p_seq((p_seq(p1_2, p2_1): ProcessDomainType), p3): ProcessDomainType) == (p_seq(p1_2, (p_seq(p2_1, p3): ProcessDomainType)): ProcessDomainType)
     )
   )
 );
@@ -276,9 +276,9 @@ axiom (forall n: int ::
 );
 
 // Translation of domain axiom dual_def
-axiom (forall n: int, m_17: int ::
-  { (p_dual(n, m_17): ProcessDomainType) }
-  (p_merge((p_single(n): ProcessDomainType), (p_single(m_17): ProcessDomainType)): ProcessDomainType) == (p_dual(n, m_17): ProcessDomainType)
+axiom (forall n: int, m_18: int ::
+  { (p_dual(n, m_18): ProcessDomainType) }
+  (p_merge((p_single(n): ProcessDomainType), (p_single(m_18): ProcessDomainType)): ProcessDomainType) == (p_dual(n, m_18): ProcessDomainType)
 );
 
 // Translation of domain axiom lemma_post
@@ -288,9 +288,9 @@ axiom (forall n: int ::
 );
 
 // Translation of domain axiom single_axiom_post
-axiom (forall m_17: int, n: int ::
-  { (p_seq((p_single(m_17): ProcessDomainType), (p_single(n): ProcessDomainType)): ProcessDomainType) }
-  (p_seq((p_single(m_17): ProcessDomainType), (p_single(n): ProcessDomainType)): ProcessDomainType) == (p_single(m_17 + n): ProcessDomainType)
+axiom (forall m_18: int, n: int ::
+  { (p_seq((p_single(m_18): ProcessDomainType), (p_single(n): ProcessDomainType)): ProcessDomainType) }
+  (p_seq((p_single(m_18): ProcessDomainType), (p_single(n): ProcessDomainType)): ProcessDomainType) == (p_single(m_18 + n): ProcessDomainType)
 );
 
 // ==================================================
@@ -381,7 +381,7 @@ procedure History__free_get_x#definedness(diz: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of diz.History__x_hist_value
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@90.1--95.2) [162526]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@90.1--95.2) [39011]"}
         HasDirectPerm(Mask, diz, History__x_hist_value);
   
   // -- Translate function body
@@ -450,7 +450,7 @@ procedure History__hist_get_x#definedness(diz: Ref) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of diz.History__x_hist_value
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@97.1--102.2) [162527]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@97.1--102.2) [39012]"}
         HasDirectPerm(Mask, diz, History__x_hist_value);
   
   // -- Translate function body
@@ -515,7 +515,7 @@ procedure History__inv#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.History__x_hist_mode == 1
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@104.1--106.2) [162528]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@104.1--106.2) [39013]"}
         HasDirectPerm(Mask, diz, History__x_hist_mode);
     assume Heap[diz, History__x_hist_mode] == 1;
     assume state(Heap, Mask);
@@ -647,7 +647,7 @@ procedure SubjectLock__inv#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(History__inv(diz.SubjectLock__subject), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.SubjectLock__subject (testHistoryThreadsApplication.vpr@112.1--114.2) [162529]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.SubjectLock__subject (testHistoryThreadsApplication.vpr@112.1--114.2) [39014]"}
         HasDirectPerm(Mask, diz, SubjectLock__subject);
     perm := FullPerm;
     Mask := Mask[null, History__inv(Heap[diz, SubjectLock__subject]):=Mask[null, History__inv(Heap[diz, SubjectLock__subject])] + perm];
@@ -695,34 +695,34 @@ axiom (forall Heap: HeapType, diz: Ref ::
 // ==================================================
 
 type PredicateType_SubjectLock__locked;
-function  SubjectLock__locked(diz: Ref, p_1: Perm, count_1: int): Field PredicateType_SubjectLock__locked FrameType;
-function  SubjectLock__locked#sm(diz: Ref, p_1: Perm, count_1: int): Field PredicateType_SubjectLock__locked PMaskType;
-axiom (forall diz: Ref, p_1: Perm, count_1: int ::
-  { PredicateMaskField(SubjectLock__locked(diz, p_1, count_1)) }
-  PredicateMaskField(SubjectLock__locked(diz, p_1, count_1)) == SubjectLock__locked#sm(diz, p_1, count_1)
+function  SubjectLock__locked(diz: Ref, p_1: Perm, count: int): Field PredicateType_SubjectLock__locked FrameType;
+function  SubjectLock__locked#sm(diz: Ref, p_1: Perm, count: int): Field PredicateType_SubjectLock__locked PMaskType;
+axiom (forall diz: Ref, p_1: Perm, count: int ::
+  { PredicateMaskField(SubjectLock__locked(diz, p_1, count)) }
+  PredicateMaskField(SubjectLock__locked(diz, p_1, count)) == SubjectLock__locked#sm(diz, p_1, count)
 );
-axiom (forall diz: Ref, p_1: Perm, count_1: int ::
-  { SubjectLock__locked(diz, p_1, count_1) }
-  IsPredicateField(SubjectLock__locked(diz, p_1, count_1))
+axiom (forall diz: Ref, p_1: Perm, count: int ::
+  { SubjectLock__locked(diz, p_1, count) }
+  IsPredicateField(SubjectLock__locked(diz, p_1, count))
 );
-axiom (forall diz: Ref, p_1: Perm, count_1: int ::
-  { SubjectLock__locked(diz, p_1, count_1) }
-  getPredWandId(SubjectLock__locked(diz, p_1, count_1)) == 5
+axiom (forall diz: Ref, p_1: Perm, count: int ::
+  { SubjectLock__locked(diz, p_1, count) }
+  getPredWandId(SubjectLock__locked(diz, p_1, count)) == 5
 );
 function  SubjectLock__locked#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  SubjectLock__locked#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall diz: Ref, p_1: Perm, count_1: int, diz2: Ref, p2_1: Perm, count2: int ::
-  { SubjectLock__locked(diz, p_1, count_1), SubjectLock__locked(diz2, p2_1, count2) }
-  SubjectLock__locked(diz, p_1, count_1) == SubjectLock__locked(diz2, p2_1, count2) ==> diz == diz2 && (p_1 == p2_1 && count_1 == count2)
+axiom (forall diz: Ref, p_1: Perm, count: int, diz2: Ref, p2_1: Perm, count2: int ::
+  { SubjectLock__locked(diz, p_1, count), SubjectLock__locked(diz2, p2_1, count2) }
+  SubjectLock__locked(diz, p_1, count) == SubjectLock__locked(diz2, p2_1, count2) ==> diz == diz2 && (p_1 == p2_1 && count == count2)
 );
-axiom (forall diz: Ref, p_1: Perm, count_1: int, diz2: Ref, p2_1: Perm, count2: int ::
-  { SubjectLock__locked#sm(diz, p_1, count_1), SubjectLock__locked#sm(diz2, p2_1, count2) }
-  SubjectLock__locked#sm(diz, p_1, count_1) == SubjectLock__locked#sm(diz2, p2_1, count2) ==> diz == diz2 && (p_1 == p2_1 && count_1 == count2)
+axiom (forall diz: Ref, p_1: Perm, count: int, diz2: Ref, p2_1: Perm, count2: int ::
+  { SubjectLock__locked#sm(diz, p_1, count), SubjectLock__locked#sm(diz2, p2_1, count2) }
+  SubjectLock__locked#sm(diz, p_1, count) == SubjectLock__locked#sm(diz2, p2_1, count2) ==> diz == diz2 && (p_1 == p2_1 && count == count2)
 );
 
-axiom (forall Heap: HeapType, diz: Ref, p_1: Perm, count_1: int ::
-  { SubjectLock__locked#trigger(Heap, SubjectLock__locked(diz, p_1, count_1)) }
-  SubjectLock__locked#everUsed(SubjectLock__locked(diz, p_1, count_1))
+axiom (forall Heap: HeapType, diz: Ref, p_1: Perm, count: int ::
+  { SubjectLock__locked#trigger(Heap, SubjectLock__locked(diz, p_1, count)) }
+  SubjectLock__locked#everUsed(SubjectLock__locked(diz, p_1, count))
 );
 
 // ==================================================
@@ -1529,7 +1529,7 @@ procedure Worker__preFork_at_Worker#definedness(diz: Ref, p_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(diz.Worker__l.SubjectLock__subject, wildcard)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@168.1--170.2) [162530]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@168.1--170.2) [39015]"}
         HasDirectPerm(Mask, diz, Worker__l);
     havoc wildcard;
     perm := wildcard;
@@ -1543,25 +1543,25 @@ procedure Worker__preFork_at_Worker#definedness(diz: Ref, p_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Worker__l.SubjectLock__subject == diz.Worker__s
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@168.1--170.2) [162531]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@168.1--170.2) [39016]"}
         HasDirectPerm(Mask, diz, Worker__l);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@168.1--170.2) [162532]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@168.1--170.2) [39017]"}
         HasDirectPerm(Mask, Heap[diz, Worker__l], SubjectLock__subject);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@168.1--170.2) [162533]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@168.1--170.2) [39018]"}
         HasDirectPerm(Mask, diz, Worker__s);
     assume Heap[Heap[diz, Worker__l], SubjectLock__subject] == Heap[diz, Worker__s];
     
     // -- Check definedness of acc(SubjectLock__valid(diz.Worker__l), 1 / 2)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@168.1--170.2) [162534]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@168.1--170.2) [39019]"}
         HasDirectPerm(Mask, diz, Worker__l);
     perm := 1 / 2;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@168.1--170.2) [162535]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@168.1--170.2) [39020]"}
       perm >= NoPerm;
     Mask := Mask[null, SubjectLock__valid(Heap[diz, Worker__l]):=Mask[null, SubjectLock__valid(Heap[diz, Worker__l])] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(History__hist_idle(diz.Worker__s, 1 / 2, p_empty()), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@168.1--170.2) [162536]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@168.1--170.2) [39021]"}
         HasDirectPerm(Mask, diz, Worker__s);
     perm := FullPerm;
     Mask := Mask[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType))] + perm];
@@ -1629,7 +1629,7 @@ procedure Worker__postJoin_at_Worker#definedness(diz: Ref, p_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(diz.Worker__l.SubjectLock__subject, wildcard)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@172.1--174.2) [162537]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@172.1--174.2) [39022]"}
         HasDirectPerm(Mask, diz, Worker__l);
     havoc wildcard;
     perm := wildcard;
@@ -1643,25 +1643,25 @@ procedure Worker__postJoin_at_Worker#definedness(diz: Ref, p_1: Perm) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Worker__l.SubjectLock__subject == diz.Worker__s
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@172.1--174.2) [162538]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@172.1--174.2) [39023]"}
         HasDirectPerm(Mask, diz, Worker__l);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@172.1--174.2) [162539]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@172.1--174.2) [39024]"}
         HasDirectPerm(Mask, Heap[diz, Worker__l], SubjectLock__subject);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@172.1--174.2) [162540]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@172.1--174.2) [39025]"}
         HasDirectPerm(Mask, diz, Worker__s);
     assume Heap[Heap[diz, Worker__l], SubjectLock__subject] == Heap[diz, Worker__s];
     
     // -- Check definedness of acc(SubjectLock__valid(diz.Worker__l), 1 / 2)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@172.1--174.2) [162541]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@172.1--174.2) [39026]"}
         HasDirectPerm(Mask, diz, Worker__l);
     perm := 1 / 2;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@172.1--174.2) [162542]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@172.1--174.2) [39027]"}
       perm >= NoPerm;
     Mask := Mask[null, SubjectLock__valid(Heap[diz, Worker__l]):=Mask[null, SubjectLock__valid(Heap[diz, Worker__l])] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@172.1--174.2) [162543]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@172.1--174.2) [39028]"}
         HasDirectPerm(Mask, diz, Worker__s);
     perm := FullPerm;
     Mask := Mask[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType)):=Mask[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))] + perm];
@@ -1677,12 +1677,12 @@ procedure History__incr_begin(diz: Ref, current_thread_id: int, frac: Perm, proc
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1716,7 +1716,7 @@ procedure History__incr_begin(diz: Ref, current_thread_id: int, frac: Perm, proc
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.History__x_hist_mode == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@182.12--182.83) [162544]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@182.12--182.83) [39029]"}
         HasDirectPerm(Mask, diz, History__x_hist_mode);
     assume Heap[diz, History__x_hist_mode] == 1;
     assume state(Heap, Mask);
@@ -1724,8 +1724,8 @@ procedure History__incr_begin(diz: Ref, current_thread_id: int, frac: Perm, proc
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1748,15 +1748,15 @@ procedure History__incr_begin(diz: Ref, current_thread_id: int, frac: Perm, proc
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_mode == 2
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@186.11--186.82) [162545]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@186.11--186.82) [39030]"}
         HasDirectPerm(PostMask, diz, History__x_hist_mode);
     assume PostHeap[diz, History__x_hist_mode] == 2;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_value == old(diz.History__x_hist_value)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@187.11--187.70) [162546]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@187.11--187.70) [39031]"}
         HasDirectPerm(PostMask, diz, History__x_hist_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@187.11--187.70) [162547]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@187.11--187.70) [39032]"}
         HasDirectPerm(oldMask, diz, History__x_hist_value);
     assume PostHeap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_value];
     assume state(PostHeap, PostMask);
@@ -1767,9 +1767,9 @@ procedure History__incr_begin(diz: Ref, current_thread_id: int, frac: Perm, proc
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_value == diz.History__x_hist_act
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@189.11--189.63) [162548]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@189.11--189.63) [39033]"}
         HasDirectPerm(PostMask, diz, History__x_hist_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_act (testHistoryThreadsApplication.vpr@189.11--189.63) [162549]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_act (testHistoryThreadsApplication.vpr@189.11--189.63) [39034]"}
         HasDirectPerm(PostMask, diz, History__x_hist_act);
     assume PostHeap[diz, History__x_hist_value] == PostHeap[diz, History__x_hist_act];
     assume state(PostHeap, PostMask);
@@ -1783,39 +1783,39 @@ procedure History__incr_begin(diz: Ref, current_thread_id: int, frac: Perm, proc
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of History__incr_begin might not hold. Assertion frac != none might not hold. (testHistoryThreadsApplication.vpr@183.11--183.23) [162550]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of History__incr_begin might not hold. Assertion frac != none might not hold. (testHistoryThreadsApplication.vpr@183.11--183.23) [39035]"}
       frac != NoPerm;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__incr_begin might not hold. There might be insufficient permission to access History__hist_do_incr(diz, frac, proc) (testHistoryThreadsApplication.vpr@184.11--184.61) [162551]"}
+      assert {:msg "  Postcondition of History__incr_begin might not hold. There might be insufficient permission to access History__hist_do_incr(diz, frac, proc) (testHistoryThreadsApplication.vpr@184.11--184.61) [39036]"}
         perm <= Mask[null, History__hist_do_incr(diz, frac, proc)];
     }
     Mask := Mask[null, History__hist_do_incr(diz, frac, proc):=Mask[null, History__hist_do_incr(diz, frac, proc)] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__incr_begin might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@185.11--185.48) [162552]"}
+      assert {:msg "  Postcondition of History__incr_begin might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@185.11--185.48) [39037]"}
         perm <= Mask[diz, History__x_hist_value];
     }
     Mask := Mask[diz, History__x_hist_value:=Mask[diz, History__x_hist_value] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__incr_begin might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@186.11--186.82) [162553]"}
+      assert {:msg "  Postcondition of History__incr_begin might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@186.11--186.82) [39038]"}
         perm <= Mask[diz, History__x_hist_mode];
     }
     Mask := Mask[diz, History__x_hist_mode:=Mask[diz, History__x_hist_mode] - perm];
-    assert {:msg "  Postcondition of History__incr_begin might not hold. Assertion diz.History__x_hist_mode == 2 might not hold. (testHistoryThreadsApplication.vpr@186.11--186.82) [162554]"}
+    assert {:msg "  Postcondition of History__incr_begin might not hold. Assertion diz.History__x_hist_mode == 2 might not hold. (testHistoryThreadsApplication.vpr@186.11--186.82) [39039]"}
       Heap[diz, History__x_hist_mode] == 2;
-    assert {:msg "  Postcondition of History__incr_begin might not hold. Assertion diz.History__x_hist_value == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@187.11--187.70) [162555]"}
+    assert {:msg "  Postcondition of History__incr_begin might not hold. Assertion diz.History__x_hist_value == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@187.11--187.70) [39040]"}
       Heap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_value];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__incr_begin might not hold. There might be insufficient permission to access diz.History__x_hist_act (testHistoryThreadsApplication.vpr@188.11--188.46) [162556]"}
+      assert {:msg "  Postcondition of History__incr_begin might not hold. There might be insufficient permission to access diz.History__x_hist_act (testHistoryThreadsApplication.vpr@188.11--188.46) [39041]"}
         perm <= Mask[diz, History__x_hist_act];
     }
     Mask := Mask[diz, History__x_hist_act:=Mask[diz, History__x_hist_act] - perm];
-    assert {:msg "  Postcondition of History__incr_begin might not hold. Assertion diz.History__x_hist_value == diz.History__x_hist_act might not hold. (testHistoryThreadsApplication.vpr@189.11--189.63) [162557]"}
+    assert {:msg "  Postcondition of History__incr_begin might not hold. Assertion diz.History__x_hist_value == diz.History__x_hist_act might not hold. (testHistoryThreadsApplication.vpr@189.11--189.63) [39042]"}
       Heap[diz, History__x_hist_value] == Heap[diz, History__x_hist_act];
     // Finish exhale
     havoc ExhaleHeap;
@@ -1831,12 +1831,12 @@ procedure History__incr_commit(diz: Ref, current_thread_id: int, frac: Perm, pro
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1875,15 +1875,15 @@ procedure History__incr_commit(diz: Ref, current_thread_id: int, frac: Perm, pro
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.History__x_hist_mode == 2
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@201.12--201.83) [162558]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@201.12--201.83) [39043]"}
         HasDirectPerm(Mask, diz, History__x_hist_mode);
     assume Heap[diz, History__x_hist_mode] == 2;
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.History__x_hist_value == diz.History__x_hist_act + 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@202.12--202.68) [162559]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@202.12--202.68) [39044]"}
         HasDirectPerm(Mask, diz, History__x_hist_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_act (testHistoryThreadsApplication.vpr@202.12--202.68) [162560]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_act (testHistoryThreadsApplication.vpr@202.12--202.68) [39045]"}
         HasDirectPerm(Mask, diz, History__x_hist_act);
     assume Heap[diz, History__x_hist_value] == Heap[diz, History__x_hist_act] + 1;
     assume state(Heap, Mask);
@@ -1891,8 +1891,8 @@ procedure History__incr_commit(diz: Ref, current_thread_id: int, frac: Perm, pro
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1915,15 +1915,15 @@ procedure History__incr_commit(diz: Ref, current_thread_id: int, frac: Perm, pro
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_mode == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@206.11--206.82) [162561]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@206.11--206.82) [39046]"}
         HasDirectPerm(PostMask, diz, History__x_hist_mode);
     assume PostHeap[diz, History__x_hist_mode] == 1;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_value == old(diz.History__x_hist_value)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@207.11--207.70) [162562]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@207.11--207.70) [39047]"}
         HasDirectPerm(PostMask, diz, History__x_hist_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@207.11--207.70) [162563]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@207.11--207.70) [39048]"}
         HasDirectPerm(oldMask, diz, History__x_hist_value);
     assume PostHeap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_value];
     assume state(PostHeap, PostMask);
@@ -1937,31 +1937,31 @@ procedure History__incr_commit(diz: Ref, current_thread_id: int, frac: Perm, pro
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of History__incr_commit might not hold. Assertion frac != none might not hold. (testHistoryThreadsApplication.vpr@203.11--203.23) [162564]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of History__incr_commit might not hold. Assertion frac != none might not hold. (testHistoryThreadsApplication.vpr@203.11--203.23) [39049]"}
       frac != NoPerm;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__incr_commit might not hold. There might be insufficient permission to access History__hist_idle(diz, frac, p_seq(proc, p_incr())) (testHistoryThreadsApplication.vpr@204.11--204.75) [162565]"}
+      assert {:msg "  Postcondition of History__incr_commit might not hold. There might be insufficient permission to access History__hist_idle(diz, frac, p_seq(proc, p_incr())) (testHistoryThreadsApplication.vpr@204.11--204.75) [39050]"}
         perm <= Mask[null, History__hist_idle(diz, frac, (p_seq(proc, (p_incr(): ProcessDomainType)): ProcessDomainType))];
     }
     Mask := Mask[null, History__hist_idle(diz, frac, (p_seq(proc, (p_incr(): ProcessDomainType)): ProcessDomainType)):=Mask[null, History__hist_idle(diz, frac, (p_seq(proc, (p_incr(): ProcessDomainType)): ProcessDomainType))] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__incr_commit might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@205.11--205.48) [162566]"}
+      assert {:msg "  Postcondition of History__incr_commit might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@205.11--205.48) [39051]"}
         perm <= Mask[diz, History__x_hist_value];
     }
     Mask := Mask[diz, History__x_hist_value:=Mask[diz, History__x_hist_value] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__incr_commit might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@206.11--206.82) [162567]"}
+      assert {:msg "  Postcondition of History__incr_commit might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@206.11--206.82) [39052]"}
         perm <= Mask[diz, History__x_hist_mode];
     }
     Mask := Mask[diz, History__x_hist_mode:=Mask[diz, History__x_hist_mode] - perm];
-    assert {:msg "  Postcondition of History__incr_commit might not hold. Assertion diz.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@206.11--206.82) [162568]"}
+    assert {:msg "  Postcondition of History__incr_commit might not hold. Assertion diz.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@206.11--206.82) [39053]"}
       Heap[diz, History__x_hist_mode] == 1;
-    assert {:msg "  Postcondition of History__incr_commit might not hold. Assertion diz.History__x_hist_value == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@207.11--207.70) [162569]"}
+    assert {:msg "  Postcondition of History__incr_commit might not hold. Assertion diz.History__x_hist_value == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@207.11--207.70) [39054]"}
       Heap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_value];
     // Finish exhale
     havoc ExhaleHeap;
@@ -1973,16 +1973,16 @@ procedure History__incr_commit(diz: Ref, current_thread_id: int, frac: Perm, pro
 // Translation of method History__free_set_x
 // ==================================================
 
-procedure History__free_set_x(diz: Ref, current_thread_id: int, value_1: int) returns (sys__thrown: Ref)
+procedure History__free_set_x(diz: Ref, current_thread_id: int, value: int) returns (sys__thrown: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2005,14 +2005,14 @@ procedure History__free_set_x(diz: Ref, current_thread_id: int, value_1: int) re
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@216.12--216.83) [162570]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@216.12--216.83) [39055]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     Mask := Mask[diz, History__x_hist_mode:=Mask[diz, History__x_hist_mode] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.History__x_hist_mode == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@216.12--216.83) [162571]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@216.12--216.83) [39056]"}
         HasDirectPerm(Mask, diz, History__x_hist_mode);
     assume Heap[diz, History__x_hist_mode] == 0;
     assume state(Heap, Mask);
@@ -2020,8 +2020,8 @@ procedure History__free_set_x(diz: Ref, current_thread_id: int, value_1: int) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2033,19 +2033,19 @@ procedure History__free_set_x(diz: Ref, current_thread_id: int, value_1: int) re
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_value == value
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@217.11--217.88) [162572]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@217.11--217.88) [39057]"}
         HasDirectPerm(PostMask, diz, History__x_hist_value);
-    assume PostHeap[diz, History__x_hist_value] == value_1;
+    assume PostHeap[diz, History__x_hist_value] == value;
     assume state(PostHeap, PostMask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@218.11--218.82) [162573]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@218.11--218.82) [39058]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     PostMask := PostMask[diz, History__x_hist_mode:=PostMask[diz, History__x_hist_mode] + perm];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_mode == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@218.11--218.82) [162574]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@218.11--218.82) [39059]"}
         HasDirectPerm(PostMask, diz, History__x_hist_mode);
     assume PostHeap[diz, History__x_hist_mode] == 0;
     assume state(PostHeap, PostMask);
@@ -2059,25 +2059,25 @@ procedure History__free_set_x(diz: Ref, current_thread_id: int, value_1: int) re
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__free_set_x might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@217.11--217.88) [162575]"}
+      assert {:msg "  Postcondition of History__free_set_x might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@217.11--217.88) [39060]"}
         perm <= Mask[diz, History__x_hist_value];
     }
     Mask := Mask[diz, History__x_hist_value:=Mask[diz, History__x_hist_value] - perm];
-    assert {:msg "  Postcondition of History__free_set_x might not hold. Assertion diz.History__x_hist_value == value might not hold. (testHistoryThreadsApplication.vpr@217.11--217.88) [162576]"}
-      Heap[diz, History__x_hist_value] == value_1;
+    assert {:msg "  Postcondition of History__free_set_x might not hold. Assertion diz.History__x_hist_value == value might not hold. (testHistoryThreadsApplication.vpr@217.11--217.88) [39061]"}
+      Heap[diz, History__x_hist_value] == value;
     perm := 1 / 2;
-    assert {:msg "  Postcondition of History__free_set_x might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@218.11--218.82) [162577]"}
+    assert {:msg "  Postcondition of History__free_set_x might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@218.11--218.82) [39062]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__free_set_x might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@218.11--218.82) [162578]"}
+      assert {:msg "  Postcondition of History__free_set_x might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@218.11--218.82) [39063]"}
         perm <= Mask[diz, History__x_hist_mode];
     }
     Mask := Mask[diz, History__x_hist_mode:=Mask[diz, History__x_hist_mode] - perm];
-    assert {:msg "  Postcondition of History__free_set_x might not hold. Assertion diz.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@218.11--218.82) [162579]"}
+    assert {:msg "  Postcondition of History__free_set_x might not hold. Assertion diz.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@218.11--218.82) [39064]"}
       Heap[diz, History__x_hist_mode] == 0;
     // Finish exhale
     havoc ExhaleHeap;
@@ -2089,16 +2089,16 @@ procedure History__free_set_x(diz: Ref, current_thread_id: int, value_1: int) re
 // Translation of method History__hist_set_x
 // ==================================================
 
-procedure History__hist_set_x(diz: Ref, current_thread_id: int, value_1: int) returns (sys__thrown: Ref)
+procedure History__hist_set_x(diz: Ref, current_thread_id: int, value: int) returns (sys__thrown: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2121,14 +2121,14 @@ procedure History__hist_set_x(diz: Ref, current_thread_id: int, value_1: int) re
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@227.12--227.83) [162580]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@227.12--227.83) [39065]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     Mask := Mask[diz, History__x_hist_mode:=Mask[diz, History__x_hist_mode] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.History__x_hist_mode == 2
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@227.12--227.83) [162581]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@227.12--227.83) [39066]"}
         HasDirectPerm(Mask, diz, History__x_hist_mode);
     assume Heap[diz, History__x_hist_mode] == 2;
     assume state(Heap, Mask);
@@ -2136,8 +2136,8 @@ procedure History__hist_set_x(diz: Ref, current_thread_id: int, value_1: int) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2149,19 +2149,19 @@ procedure History__hist_set_x(diz: Ref, current_thread_id: int, value_1: int) re
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_value == value
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@228.11--228.88) [162582]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@228.11--228.88) [39067]"}
         HasDirectPerm(PostMask, diz, History__x_hist_value);
-    assume PostHeap[diz, History__x_hist_value] == value_1;
+    assume PostHeap[diz, History__x_hist_value] == value;
     assume state(PostHeap, PostMask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@229.11--229.82) [162583]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@229.11--229.82) [39068]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     PostMask := PostMask[diz, History__x_hist_mode:=PostMask[diz, History__x_hist_mode] + perm];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_mode == 2
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@229.11--229.82) [162584]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@229.11--229.82) [39069]"}
         HasDirectPerm(PostMask, diz, History__x_hist_mode);
     assume PostHeap[diz, History__x_hist_mode] == 2;
     assume state(PostHeap, PostMask);
@@ -2175,25 +2175,25 @@ procedure History__hist_set_x(diz: Ref, current_thread_id: int, value_1: int) re
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__hist_set_x might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@228.11--228.88) [162585]"}
+      assert {:msg "  Postcondition of History__hist_set_x might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@228.11--228.88) [39070]"}
         perm <= Mask[diz, History__x_hist_value];
     }
     Mask := Mask[diz, History__x_hist_value:=Mask[diz, History__x_hist_value] - perm];
-    assert {:msg "  Postcondition of History__hist_set_x might not hold. Assertion diz.History__x_hist_value == value might not hold. (testHistoryThreadsApplication.vpr@228.11--228.88) [162586]"}
-      Heap[diz, History__x_hist_value] == value_1;
+    assert {:msg "  Postcondition of History__hist_set_x might not hold. Assertion diz.History__x_hist_value == value might not hold. (testHistoryThreadsApplication.vpr@228.11--228.88) [39071]"}
+      Heap[diz, History__x_hist_value] == value;
     perm := 1 / 2;
-    assert {:msg "  Postcondition of History__hist_set_x might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@229.11--229.82) [162587]"}
+    assert {:msg "  Postcondition of History__hist_set_x might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@229.11--229.82) [39072]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__hist_set_x might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@229.11--229.82) [162588]"}
+      assert {:msg "  Postcondition of History__hist_set_x might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@229.11--229.82) [39073]"}
         perm <= Mask[diz, History__x_hist_mode];
     }
     Mask := Mask[diz, History__x_hist_mode:=Mask[diz, History__x_hist_mode] - perm];
-    assert {:msg "  Postcondition of History__hist_set_x might not hold. Assertion diz.History__x_hist_mode == 2 might not hold. (testHistoryThreadsApplication.vpr@229.11--229.82) [162589]"}
+    assert {:msg "  Postcondition of History__hist_set_x might not hold. Assertion diz.History__x_hist_mode == 2 might not hold. (testHistoryThreadsApplication.vpr@229.11--229.82) [39074]"}
       Heap[diz, History__x_hist_mode] == 2;
     // Finish exhale
     havoc ExhaleHeap;
@@ -2209,12 +2209,12 @@ procedure History__begin_hist(diz: Ref, current_thread_id: int) returns (sys__th
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2242,7 +2242,7 @@ procedure History__begin_hist(diz: Ref, current_thread_id: int) returns (sys__th
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.History__x_hist_mode == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@238.12--238.83) [162590]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@238.12--238.83) [39075]"}
         HasDirectPerm(Mask, diz, History__x_hist_mode);
     assume Heap[diz, History__x_hist_mode] == 0;
     assume state(Heap, Mask);
@@ -2260,8 +2260,8 @@ procedure History__begin_hist(diz: Ref, current_thread_id: int) returns (sys__th
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2278,7 +2278,7 @@ procedure History__begin_hist(diz: Ref, current_thread_id: int) returns (sys__th
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_mode == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@242.11--242.82) [162591]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@242.11--242.82) [39076]"}
         HasDirectPerm(PostMask, diz, History__x_hist_mode);
     assume PostHeap[diz, History__x_hist_mode] == 1;
     assume state(PostHeap, PostMask);
@@ -2289,17 +2289,17 @@ procedure History__begin_hist(diz: Ref, current_thread_id: int) returns (sys__th
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_value == old(diz.History__x_hist_value)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@244.11--244.70) [162592]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@244.11--244.70) [39077]"}
         HasDirectPerm(PostMask, diz, History__x_hist_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@244.11--244.70) [162593]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@244.11--244.70) [39078]"}
         HasDirectPerm(oldMask, diz, History__x_hist_value);
     assume PostHeap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_value];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_init == old(diz.History__x_hist_value)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@245.11--245.69) [162594]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@245.11--245.69) [39079]"}
         HasDirectPerm(PostMask, diz, History__x_hist_init);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@245.11--245.69) [162595]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@245.11--245.69) [39080]"}
         HasDirectPerm(oldMask, diz, History__x_hist_value);
     assume PostHeap[diz, History__x_hist_init] == oldHeap[diz, History__x_hist_value];
     assume state(PostHeap, PostMask);
@@ -2317,35 +2317,35 @@ procedure History__begin_hist(diz: Ref, current_thread_id: int) returns (sys__th
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__begin_hist might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@241.11--241.48) [162596]"}
+      assert {:msg "  Postcondition of History__begin_hist might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@241.11--241.48) [39081]"}
         perm <= Mask[diz, History__x_hist_value];
     }
     Mask := Mask[diz, History__x_hist_value:=Mask[diz, History__x_hist_value] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__begin_hist might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@242.11--242.82) [162597]"}
+      assert {:msg "  Postcondition of History__begin_hist might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@242.11--242.82) [39082]"}
         perm <= Mask[diz, History__x_hist_mode];
     }
     Mask := Mask[diz, History__x_hist_mode:=Mask[diz, History__x_hist_mode] - perm];
-    assert {:msg "  Postcondition of History__begin_hist might not hold. Assertion diz.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@242.11--242.82) [162598]"}
+    assert {:msg "  Postcondition of History__begin_hist might not hold. Assertion diz.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@242.11--242.82) [39083]"}
       Heap[diz, History__x_hist_mode] == 1;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__begin_hist might not hold. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@243.11--243.47) [162599]"}
+      assert {:msg "  Postcondition of History__begin_hist might not hold. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@243.11--243.47) [39084]"}
         perm <= Mask[diz, History__x_hist_init];
     }
     Mask := Mask[diz, History__x_hist_init:=Mask[diz, History__x_hist_init] - perm];
-    assert {:msg "  Postcondition of History__begin_hist might not hold. Assertion diz.History__x_hist_value == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@244.11--244.70) [162600]"}
+    assert {:msg "  Postcondition of History__begin_hist might not hold. Assertion diz.History__x_hist_value == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@244.11--244.70) [39085]"}
       Heap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_value];
-    assert {:msg "  Postcondition of History__begin_hist might not hold. Assertion diz.History__x_hist_init == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@245.11--245.69) [162601]"}
+    assert {:msg "  Postcondition of History__begin_hist might not hold. Assertion diz.History__x_hist_init == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@245.11--245.69) [39086]"}
       Heap[diz, History__x_hist_init] == oldHeap[diz, History__x_hist_value];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__begin_hist might not hold. There might be insufficient permission to access History__hist_idle(diz, write, p_empty()) (testHistoryThreadsApplication.vpr@246.11--246.64) [162602]"}
+      assert {:msg "  Postcondition of History__begin_hist might not hold. There might be insufficient permission to access History__hist_idle(diz, write, p_empty()) (testHistoryThreadsApplication.vpr@246.11--246.64) [39087]"}
         perm <= Mask[null, History__hist_idle(diz, FullPerm, (p_empty(): ProcessDomainType))];
     }
     Mask := Mask[null, History__hist_idle(diz, FullPerm, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(diz, FullPerm, (p_empty(): ProcessDomainType))] - perm];
@@ -2363,12 +2363,12 @@ procedure History__split(diz: Ref, current_thread_id: int, frac1: Perm, proc1: P
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2393,8 +2393,8 @@ procedure History__split(diz: Ref, current_thread_id: int, frac1: Perm, proc1: P
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2418,17 +2418,17 @@ procedure History__split(diz: Ref, current_thread_id: int, frac1: Perm, proc1: P
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__split might not hold. There might be insufficient permission to access History__hist_idle(diz, frac1, proc1) (testHistoryThreadsApplication.vpr@255.11--255.60) [162603]"}
+      assert {:msg "  Postcondition of History__split might not hold. There might be insufficient permission to access History__hist_idle(diz, frac1, proc1) (testHistoryThreadsApplication.vpr@255.11--255.60) [39088]"}
         perm <= Mask[null, History__hist_idle(diz, frac1, proc1)];
     }
     Mask := Mask[null, History__hist_idle(diz, frac1, proc1):=Mask[null, History__hist_idle(diz, frac1, proc1)] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__split might not hold. There might be insufficient permission to access History__hist_idle(diz, frac2, proc2) (testHistoryThreadsApplication.vpr@256.11--256.60) [162604]"}
+      assert {:msg "  Postcondition of History__split might not hold. There might be insufficient permission to access History__hist_idle(diz, frac2, proc2) (testHistoryThreadsApplication.vpr@256.11--256.60) [39089]"}
         perm <= Mask[null, History__hist_idle(diz, frac2, proc2)];
     }
     Mask := Mask[null, History__hist_idle(diz, frac2, proc2):=Mask[null, History__hist_idle(diz, frac2, proc2)] - perm];
@@ -2446,12 +2446,12 @@ procedure History__merge(diz: Ref, current_thread_id: int, frac1: Perm, proc1: P
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2480,8 +2480,8 @@ procedure History__merge(diz: Ref, current_thread_id: int, frac1: Perm, proc1: P
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2501,11 +2501,11 @@ procedure History__merge(diz: Ref, current_thread_id: int, frac1: Perm, proc1: P
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__merge might not hold. There might be insufficient permission to access History__hist_idle(diz, frac1 + frac2, p_merge(proc1, proc2)) (testHistoryThreadsApplication.vpr@266.11--266.84) [162605]"}
+      assert {:msg "  Postcondition of History__merge might not hold. There might be insufficient permission to access History__hist_idle(diz, frac1 + frac2, p_merge(proc1, proc2)) (testHistoryThreadsApplication.vpr@266.11--266.84) [39090]"}
         perm <= Mask[null, History__hist_idle(diz, frac1 + frac2, (p_merge(proc1, proc2): ProcessDomainType))];
     }
     Mask := Mask[null, History__hist_idle(diz, frac1 + frac2, (p_merge(proc1, proc2): ProcessDomainType)):=Mask[null, History__hist_idle(diz, frac1 + frac2, (p_merge(proc1, proc2): ProcessDomainType))] - perm];
@@ -2522,8 +2522,8 @@ procedure History__merge(diz: Ref, current_thread_id: int, frac1: Perm, proc1: P
 procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -2539,8 +2539,8 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
   var __flatten_104: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2556,8 +2556,8 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2571,7 +2571,7 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.History__x_hist_value == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.History__x_hist_value (testHistoryThreadsApplication.vpr@274.11--274.100) [162606]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.History__x_hist_value (testHistoryThreadsApplication.vpr@274.11--274.100) [39091]"}
         HasDirectPerm(PostMask, sys__result, History__x_hist_value);
     assume PostHeap[sys__result, History__x_hist_value] == 0;
     assume state(PostHeap, PostMask);
@@ -2581,7 +2581,7 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.History__x_hist_mode == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.History__x_hist_mode (testHistoryThreadsApplication.vpr@275.11--275.98) [162607]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.History__x_hist_mode (testHistoryThreadsApplication.vpr@275.11--275.98) [39092]"}
         HasDirectPerm(PostMask, sys__result, History__x_hist_mode);
     assume PostHeap[sys__result, History__x_hist_mode] == 0;
     assume state(PostHeap, PostMask);
@@ -2591,7 +2591,7 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.History__x_hist_init == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.History__x_hist_init (testHistoryThreadsApplication.vpr@276.11--276.98) [162608]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.History__x_hist_init (testHistoryThreadsApplication.vpr@276.11--276.98) [39093]"}
         HasDirectPerm(PostMask, sys__result, History__x_hist_init);
     assume PostHeap[sys__result, History__x_hist_init] == 0;
     assume state(PostHeap, PostMask);
@@ -2601,7 +2601,7 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.History__x_hist_act == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.History__x_hist_act (testHistoryThreadsApplication.vpr@277.11--277.96) [162609]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.History__x_hist_act (testHistoryThreadsApplication.vpr@277.11--277.96) [39094]"}
         HasDirectPerm(PostMask, sys__result, History__x_hist_act);
     assume PostHeap[sys__result, History__x_hist_act] == 0;
     assume state(PostHeap, PostMask);
@@ -2632,7 +2632,7 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.History__x_hist_value := __flatten_101 -- testHistoryThreadsApplication.vpr@291.3--291.45
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@291.3--291.45) [162610]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@291.3--291.45) [39095]"}
       FullPerm == Mask[diz, History__x_hist_value];
     Heap := Heap[diz, History__x_hist_value:=__flatten_101];
     assume state(Heap, Mask);
@@ -2646,7 +2646,7 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.History__x_hist_mode := __flatten_102 -- testHistoryThreadsApplication.vpr@294.3--294.44
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@294.3--294.44) [162611]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@294.3--294.44) [39096]"}
       FullPerm == Mask[diz, History__x_hist_mode];
     Heap := Heap[diz, History__x_hist_mode:=__flatten_102];
     assume state(Heap, Mask);
@@ -2660,7 +2660,7 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.History__x_hist_init := __flatten_103 -- testHistoryThreadsApplication.vpr@297.3--297.44
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@297.3--297.44) [162612]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@297.3--297.44) [39097]"}
       FullPerm == Mask[diz, History__x_hist_init];
     Heap := Heap[diz, History__x_hist_init:=__flatten_103];
     assume state(Heap, Mask);
@@ -2674,7 +2674,7 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.History__x_hist_act := __flatten_104 -- testHistoryThreadsApplication.vpr@300.3--300.43
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.History__x_hist_act (testHistoryThreadsApplication.vpr@300.3--300.43) [162613]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.History__x_hist_act (testHistoryThreadsApplication.vpr@300.3--300.43) [39098]"}
       FullPerm == Mask[diz, History__x_hist_act];
     Heap := Heap[diz, History__x_hist_act:=__flatten_104];
     assume state(Heap, Mask);
@@ -2694,57 +2694,57 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
   //   sys__result.History__x_hist_act == 0)))) -- testHistoryThreadsApplication.vpr@302.3--302.403
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@302.10--302.403) [162614]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@302.10--302.403) [39099]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_value (testHistoryThreadsApplication.vpr@302.10--302.403) [162616]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_value (testHistoryThreadsApplication.vpr@302.10--302.403) [39101]"}
         perm <= AssertMask[sys__result, History__x_hist_value];
     }
     AssertMask := AssertMask[sys__result, History__x_hist_value:=AssertMask[sys__result, History__x_hist_value] - perm];
     
     // -- Check definedness of sys__result.History__x_hist_value == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_value (testHistoryThreadsApplication.vpr@302.10--302.403) [162617]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_value (testHistoryThreadsApplication.vpr@302.10--302.403) [39102]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, History__x_hist_value);
-    assert {:msg "  Assert might fail. Assertion sys__result.History__x_hist_value == 0 might not hold. (testHistoryThreadsApplication.vpr@302.10--302.403) [162618]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.History__x_hist_value == 0 might not hold. (testHistoryThreadsApplication.vpr@302.10--302.403) [39103]"}
       AssertHeap[sys__result, History__x_hist_value] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_mode (testHistoryThreadsApplication.vpr@302.10--302.403) [162620]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_mode (testHistoryThreadsApplication.vpr@302.10--302.403) [39105]"}
         perm <= AssertMask[sys__result, History__x_hist_mode];
     }
     AssertMask := AssertMask[sys__result, History__x_hist_mode:=AssertMask[sys__result, History__x_hist_mode] - perm];
     
     // -- Check definedness of sys__result.History__x_hist_mode == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_mode (testHistoryThreadsApplication.vpr@302.10--302.403) [162621]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_mode (testHistoryThreadsApplication.vpr@302.10--302.403) [39106]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, History__x_hist_mode);
-    assert {:msg "  Assert might fail. Assertion sys__result.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@302.10--302.403) [162622]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@302.10--302.403) [39107]"}
       AssertHeap[sys__result, History__x_hist_mode] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_init (testHistoryThreadsApplication.vpr@302.10--302.403) [162624]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_init (testHistoryThreadsApplication.vpr@302.10--302.403) [39109]"}
         perm <= AssertMask[sys__result, History__x_hist_init];
     }
     AssertMask := AssertMask[sys__result, History__x_hist_init:=AssertMask[sys__result, History__x_hist_init] - perm];
     
     // -- Check definedness of sys__result.History__x_hist_init == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_init (testHistoryThreadsApplication.vpr@302.10--302.403) [162625]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_init (testHistoryThreadsApplication.vpr@302.10--302.403) [39110]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, History__x_hist_init);
-    assert {:msg "  Assert might fail. Assertion sys__result.History__x_hist_init == 0 might not hold. (testHistoryThreadsApplication.vpr@302.10--302.403) [162626]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.History__x_hist_init == 0 might not hold. (testHistoryThreadsApplication.vpr@302.10--302.403) [39111]"}
       AssertHeap[sys__result, History__x_hist_init] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_act (testHistoryThreadsApplication.vpr@302.10--302.403) [162628]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_act (testHistoryThreadsApplication.vpr@302.10--302.403) [39113]"}
         perm <= AssertMask[sys__result, History__x_hist_act];
     }
     AssertMask := AssertMask[sys__result, History__x_hist_act:=AssertMask[sys__result, History__x_hist_act] - perm];
     
     // -- Check definedness of sys__result.History__x_hist_act == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_act (testHistoryThreadsApplication.vpr@302.10--302.403) [162629]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.History__x_hist_act (testHistoryThreadsApplication.vpr@302.10--302.403) [39114]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, History__x_hist_act);
-    assert {:msg "  Assert might fail. Assertion sys__result.History__x_hist_act == 0 might not hold. (testHistoryThreadsApplication.vpr@302.10--302.403) [162630]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.History__x_hist_act == 0 might not hold. (testHistoryThreadsApplication.vpr@302.10--302.403) [39115]"}
       AssertHeap[sys__result, History__x_hist_act] == 0;
     assume state(Heap, Mask);
   
@@ -2754,41 +2754,41 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of History__History might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@273.11--273.30) [162631]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of History__History might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@273.11--273.30) [39116]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__History might not hold. There might be insufficient permission to access sys__result.History__x_hist_value (testHistoryThreadsApplication.vpr@274.11--274.100) [162632]"}
+      assert {:msg "  Postcondition of History__History might not hold. There might be insufficient permission to access sys__result.History__x_hist_value (testHistoryThreadsApplication.vpr@274.11--274.100) [39117]"}
         perm <= Mask[sys__result, History__x_hist_value];
     }
     Mask := Mask[sys__result, History__x_hist_value:=Mask[sys__result, History__x_hist_value] - perm];
-    assert {:msg "  Postcondition of History__History might not hold. Assertion sys__result.History__x_hist_value == 0 might not hold. (testHistoryThreadsApplication.vpr@274.11--274.100) [162633]"}
+    assert {:msg "  Postcondition of History__History might not hold. Assertion sys__result.History__x_hist_value == 0 might not hold. (testHistoryThreadsApplication.vpr@274.11--274.100) [39118]"}
       Heap[sys__result, History__x_hist_value] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__History might not hold. There might be insufficient permission to access sys__result.History__x_hist_mode (testHistoryThreadsApplication.vpr@275.11--275.98) [162634]"}
+      assert {:msg "  Postcondition of History__History might not hold. There might be insufficient permission to access sys__result.History__x_hist_mode (testHistoryThreadsApplication.vpr@275.11--275.98) [39119]"}
         perm <= Mask[sys__result, History__x_hist_mode];
     }
     Mask := Mask[sys__result, History__x_hist_mode:=Mask[sys__result, History__x_hist_mode] - perm];
-    assert {:msg "  Postcondition of History__History might not hold. Assertion sys__result.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@275.11--275.98) [162635]"}
+    assert {:msg "  Postcondition of History__History might not hold. Assertion sys__result.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@275.11--275.98) [39120]"}
       Heap[sys__result, History__x_hist_mode] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__History might not hold. There might be insufficient permission to access sys__result.History__x_hist_init (testHistoryThreadsApplication.vpr@276.11--276.98) [162636]"}
+      assert {:msg "  Postcondition of History__History might not hold. There might be insufficient permission to access sys__result.History__x_hist_init (testHistoryThreadsApplication.vpr@276.11--276.98) [39121]"}
         perm <= Mask[sys__result, History__x_hist_init];
     }
     Mask := Mask[sys__result, History__x_hist_init:=Mask[sys__result, History__x_hist_init] - perm];
-    assert {:msg "  Postcondition of History__History might not hold. Assertion sys__result.History__x_hist_init == 0 might not hold. (testHistoryThreadsApplication.vpr@276.11--276.98) [162637]"}
+    assert {:msg "  Postcondition of History__History might not hold. Assertion sys__result.History__x_hist_init == 0 might not hold. (testHistoryThreadsApplication.vpr@276.11--276.98) [39122]"}
       Heap[sys__result, History__x_hist_init] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__History might not hold. There might be insufficient permission to access sys__result.History__x_hist_act (testHistoryThreadsApplication.vpr@277.11--277.96) [162638]"}
+      assert {:msg "  Postcondition of History__History might not hold. There might be insufficient permission to access sys__result.History__x_hist_act (testHistoryThreadsApplication.vpr@277.11--277.96) [39123]"}
         perm <= Mask[sys__result, History__x_hist_act];
     }
     Mask := Mask[sys__result, History__x_hist_act:=Mask[sys__result, History__x_hist_act] - perm];
-    assert {:msg "  Postcondition of History__History might not hold. Assertion sys__result.History__x_hist_act == 0 might not hold. (testHistoryThreadsApplication.vpr@277.11--277.96) [162639]"}
+    assert {:msg "  Postcondition of History__History might not hold. Assertion sys__result.History__x_hist_act == 0 might not hold. (testHistoryThreadsApplication.vpr@277.11--277.96) [39124]"}
       Heap[sys__result, History__x_hist_act] == 0;
     // Finish exhale
     havoc ExhaleHeap;
@@ -2800,16 +2800,16 @@ procedure History__History(current_thread_id: int) returns (sys__thrown: Ref, sy
 // Translation of method History__end_hist_1
 // ==================================================
 
-procedure History__end_hist_1(diz: Ref, current_thread_id: int, n: int, m_17: int) returns (sys__thrown: Ref)
+procedure History__end_hist_1(diz: Ref, current_thread_id: int, n: int, m_18: int) returns (sys__thrown: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2837,7 +2837,7 @@ procedure History__end_hist_1(diz: Ref, current_thread_id: int, n: int, m_17: in
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.History__x_hist_mode == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@310.12--310.83) [162640]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@310.12--310.83) [39125]"}
         HasDirectPerm(Mask, diz, History__x_hist_mode);
     assume Heap[diz, History__x_hist_mode] == 1;
     assume state(Heap, Mask);
@@ -2850,8 +2850,8 @@ procedure History__end_hist_1(diz: Ref, current_thread_id: int, n: int, m_17: in
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2868,7 +2868,7 @@ procedure History__end_hist_1(diz: Ref, current_thread_id: int, n: int, m_17: in
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_mode == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@313.11--313.82) [162641]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@313.11--313.82) [39126]"}
         HasDirectPerm(PostMask, diz, History__x_hist_mode);
     assume PostHeap[diz, History__x_hist_mode] == 0;
     assume state(PostHeap, PostMask);
@@ -2884,27 +2884,27 @@ procedure History__end_hist_1(diz: Ref, current_thread_id: int, n: int, m_17: in
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_value == old(diz.History__x_hist_value)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@316.11--316.70) [162642]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@316.11--316.70) [39127]"}
         HasDirectPerm(PostMask, diz, History__x_hist_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@316.11--316.70) [162643]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@316.11--316.70) [39128]"}
         HasDirectPerm(oldMask, diz, History__x_hist_value);
     assume PostHeap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_value];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_init == old(diz.History__x_hist_value)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@317.11--317.69) [162644]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@317.11--317.69) [39129]"}
         HasDirectPerm(PostMask, diz, History__x_hist_init);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@317.11--317.69) [162645]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@317.11--317.69) [39130]"}
         HasDirectPerm(oldMask, diz, History__x_hist_value);
     assume PostHeap[diz, History__x_hist_init] == oldHeap[diz, History__x_hist_value];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.History__x_hist_value == old(diz.History__x_hist_init) + n + m
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@318.11--318.77) [162646]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@318.11--318.77) [39131]"}
         HasDirectPerm(PostMask, diz, History__x_hist_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@318.11--318.77) [162647]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@318.11--318.77) [39132]"}
         HasDirectPerm(oldMask, diz, History__x_hist_init);
-    assume PostHeap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_init] + n + m_17;
+    assume PostHeap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_init] + n + m_18;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -2916,40 +2916,40 @@ procedure History__end_hist_1(diz: Ref, current_thread_id: int, n: int, m_17: in
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__end_hist_1 might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@312.11--312.48) [162648]"}
+      assert {:msg "  Postcondition of History__end_hist_1 might not hold. There might be insufficient permission to access diz.History__x_hist_value (testHistoryThreadsApplication.vpr@312.11--312.48) [39133]"}
         perm <= Mask[diz, History__x_hist_value];
     }
     Mask := Mask[diz, History__x_hist_value:=Mask[diz, History__x_hist_value] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__end_hist_1 might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@313.11--313.82) [162649]"}
+      assert {:msg "  Postcondition of History__end_hist_1 might not hold. There might be insufficient permission to access diz.History__x_hist_mode (testHistoryThreadsApplication.vpr@313.11--313.82) [39134]"}
         perm <= Mask[diz, History__x_hist_mode];
     }
     Mask := Mask[diz, History__x_hist_mode:=Mask[diz, History__x_hist_mode] - perm];
-    assert {:msg "  Postcondition of History__end_hist_1 might not hold. Assertion diz.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@313.11--313.82) [162650]"}
+    assert {:msg "  Postcondition of History__end_hist_1 might not hold. Assertion diz.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@313.11--313.82) [39135]"}
       Heap[diz, History__x_hist_mode] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__end_hist_1 might not hold. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@314.11--314.47) [162651]"}
+      assert {:msg "  Postcondition of History__end_hist_1 might not hold. There might be insufficient permission to access diz.History__x_hist_init (testHistoryThreadsApplication.vpr@314.11--314.47) [39136]"}
         perm <= Mask[diz, History__x_hist_init];
     }
     Mask := Mask[diz, History__x_hist_init:=Mask[diz, History__x_hist_init] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of History__end_hist_1 might not hold. There might be insufficient permission to access diz.History__x_hist_act (testHistoryThreadsApplication.vpr@315.11--315.46) [162652]"}
+      assert {:msg "  Postcondition of History__end_hist_1 might not hold. There might be insufficient permission to access diz.History__x_hist_act (testHistoryThreadsApplication.vpr@315.11--315.46) [39137]"}
         perm <= Mask[diz, History__x_hist_act];
     }
     Mask := Mask[diz, History__x_hist_act:=Mask[diz, History__x_hist_act] - perm];
-    assert {:msg "  Postcondition of History__end_hist_1 might not hold. Assertion diz.History__x_hist_value == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@316.11--316.70) [162653]"}
+    assert {:msg "  Postcondition of History__end_hist_1 might not hold. Assertion diz.History__x_hist_value == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@316.11--316.70) [39138]"}
       Heap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_value];
-    assert {:msg "  Postcondition of History__end_hist_1 might not hold. Assertion diz.History__x_hist_init == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@317.11--317.69) [162654]"}
+    assert {:msg "  Postcondition of History__end_hist_1 might not hold. Assertion diz.History__x_hist_init == old(diz.History__x_hist_value) might not hold. (testHistoryThreadsApplication.vpr@317.11--317.69) [39139]"}
       Heap[diz, History__x_hist_init] == oldHeap[diz, History__x_hist_value];
-    assert {:msg "  Postcondition of History__end_hist_1 might not hold. Assertion diz.History__x_hist_value == old(diz.History__x_hist_init) + n + m might not hold. (testHistoryThreadsApplication.vpr@318.11--318.77) [162655]"}
-      Heap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_init] + n + m_17;
+    assert {:msg "  Postcondition of History__end_hist_1 might not hold. Assertion diz.History__x_hist_value == old(diz.History__x_hist_init) + n + m might not hold. (testHistoryThreadsApplication.vpr@318.11--318.77) [39140]"}
+      Heap[diz, History__x_hist_value] == oldHeap[diz, History__x_hist_init] + n + m_18;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -2963,8 +2963,8 @@ procedure History__end_hist_1(diz: Ref, current_thread_id: int, n: int, m_17: in
 procedure History__if_any_random(diz: Ref, current_thread_id: int) returns (sys__thrown: Ref, sys__result: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2984,8 +2984,8 @@ procedure History__if_any_random(diz: Ref, current_thread_id: int) returns (sys_
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryThreadsApplication.vpr@327.3--327.15
     assume false;
@@ -2997,11 +2997,11 @@ procedure History__if_any_random(diz: Ref, current_thread_id: int) returns (sys_
 // Translation of method SubjectLock__SubjectLock
 // ==================================================
 
-procedure SubjectLock__SubjectLock(current_thread_id: int, s_2: Ref) returns (sys__thrown: Ref, sys__result: Ref)
+procedure SubjectLock__SubjectLock(current_thread_id: int, s_1: Ref) returns (sys__thrown: Ref, sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
@@ -3012,8 +3012,8 @@ procedure SubjectLock__SubjectLock(current_thread_id: int, s_2: Ref) returns (sy
   var freshObj: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3023,7 +3023,7 @@ procedure SubjectLock__SubjectLock(current_thread_id: int, s_2: Ref) returns (sy
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[s_2, $allocated];
+    assume Heap[s_1, $allocated];
   
   // -- Checked inhaling of precondition
     assume current_thread_id >= 0;
@@ -3032,8 +3032,8 @@ procedure SubjectLock__SubjectLock(current_thread_id: int, s_2: Ref) returns (sy
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3051,9 +3051,9 @@ procedure SubjectLock__SubjectLock(current_thread_id: int, s_2: Ref) returns (sy
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.SubjectLock__subject == s
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.SubjectLock__subject (testHistoryThreadsApplication.vpr@335.11--335.48) [162656]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.SubjectLock__subject (testHistoryThreadsApplication.vpr@335.11--335.48) [39141]"}
         HasDirectPerm(PostMask, sys__result, SubjectLock__subject);
-    assume PostHeap[sys__result, SubjectLock__subject] == s_2;
+    assume PostHeap[sys__result, SubjectLock__subject] == s_1;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -3078,7 +3078,7 @@ procedure SubjectLock__SubjectLock(current_thread_id: int, s_2: Ref) returns (sy
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_37 := s -- testHistoryThreadsApplication.vpr@342.3--342.20
-    __flatten_37 := s_2;
+    __flatten_37 := s_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_105 := __flatten_37 -- testHistoryThreadsApplication.vpr@343.3--343.32
@@ -3086,7 +3086,7 @@ procedure SubjectLock__SubjectLock(current_thread_id: int, s_2: Ref) returns (sy
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.SubjectLock__subject := __flatten_105 -- testHistoryThreadsApplication.vpr@344.3--344.44
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.SubjectLock__subject (testHistoryThreadsApplication.vpr@344.3--344.44) [162657]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.SubjectLock__subject (testHistoryThreadsApplication.vpr@344.3--344.44) [39142]"}
       FullPerm == Mask[diz, SubjectLock__subject];
     Heap := Heap[diz, SubjectLock__subject:=__flatten_105];
     assume state(Heap, Mask);
@@ -3101,23 +3101,23 @@ procedure SubjectLock__SubjectLock(current_thread_id: int, s_2: Ref) returns (sy
   //   sys__result.SubjectLock__subject == s)) -- testHistoryThreadsApplication.vpr@346.3--346.174
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@346.10--346.174) [162658]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@346.10--346.174) [39143]"}
       sys__result != null;
-    assert {:msg "  Assert might fail. Assertion type_of(sys__result) == class_SubjectLock() might not hold. (testHistoryThreadsApplication.vpr@346.10--346.174) [162659]"}
+    assert {:msg "  Assert might fail. Assertion type_of(sys__result) == class_SubjectLock() might not hold. (testHistoryThreadsApplication.vpr@346.10--346.174) [39144]"}
       (type_of(sys__result): TYPEDomainType) == (class_SubjectLock(): TYPEDomainType);
-    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.SubjectLock__subject (testHistoryThreadsApplication.vpr@346.10--346.174) [162660]"}
+    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.SubjectLock__subject (testHistoryThreadsApplication.vpr@346.10--346.174) [39145]"}
       AssertMask[sys__result, SubjectLock__subject] > NoPerm;
     havoc wildcard;
     assume wildcard < AssertMask[sys__result, SubjectLock__subject];
     AssertMask := AssertMask[sys__result, SubjectLock__subject:=AssertMask[sys__result, SubjectLock__subject] - wildcard];
     
     // -- Check definedness of sys__result.SubjectLock__subject == s
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.SubjectLock__subject (testHistoryThreadsApplication.vpr@346.10--346.174) [162661]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.SubjectLock__subject (testHistoryThreadsApplication.vpr@346.10--346.174) [39146]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, SubjectLock__subject);
-    assert {:msg "  Assert might fail. Assertion sys__result.SubjectLock__subject == s might not hold. (testHistoryThreadsApplication.vpr@346.10--346.174) [162662]"}
-      AssertHeap[sys__result, SubjectLock__subject] == s_2;
+    assert {:msg "  Assert might fail. Assertion sys__result.SubjectLock__subject == s might not hold. (testHistoryThreadsApplication.vpr@346.10--346.174) [39147]"}
+      AssertHeap[sys__result, SubjectLock__subject] == s_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale false -- testHistoryThreadsApplication.vpr@347.3--347.15
@@ -3126,19 +3126,19 @@ procedure SubjectLock__SubjectLock(current_thread_id: int, s_2: Ref) returns (sy
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of SubjectLock__SubjectLock might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@332.11--332.30) [162663]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of SubjectLock__SubjectLock might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@332.11--332.30) [39148]"}
       sys__result != null;
-    assert {:msg "  Postcondition of SubjectLock__SubjectLock might not hold. Assertion type_of(sys__result) == class_SubjectLock() might not hold. (testHistoryThreadsApplication.vpr@333.11--333.54) [162664]"}
+    assert {:msg "  Postcondition of SubjectLock__SubjectLock might not hold. Assertion type_of(sys__result) == class_SubjectLock() might not hold. (testHistoryThreadsApplication.vpr@333.11--333.54) [39149]"}
       (type_of(sys__result): TYPEDomainType) == (class_SubjectLock(): TYPEDomainType);
-    assert {:msg "  Postcondition of SubjectLock__SubjectLock might not hold. There might be insufficient permission to access sys__result.SubjectLock__subject (testHistoryThreadsApplication.vpr@334.11--334.58) [162665]"}
+    assert {:msg "  Postcondition of SubjectLock__SubjectLock might not hold. There might be insufficient permission to access sys__result.SubjectLock__subject (testHistoryThreadsApplication.vpr@334.11--334.58) [39150]"}
       Mask[sys__result, SubjectLock__subject] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, SubjectLock__subject];
     Mask := Mask[sys__result, SubjectLock__subject:=Mask[sys__result, SubjectLock__subject] - wildcard];
-    assert {:msg "  Postcondition of SubjectLock__SubjectLock might not hold. Assertion sys__result.SubjectLock__subject == s might not hold. (testHistoryThreadsApplication.vpr@335.11--335.48) [162666]"}
-      Heap[sys__result, SubjectLock__subject] == s_2;
+    assert {:msg "  Postcondition of SubjectLock__SubjectLock might not hold. Assertion sys__result.SubjectLock__subject == s might not hold. (testHistoryThreadsApplication.vpr@335.11--335.48) [39151]"}
+      Heap[sys__result, SubjectLock__subject] == s_1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -3153,12 +3153,12 @@ procedure SubjectLock__commit(diz: Ref, current_thread_id: int) returns (sys__th
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3183,8 +3183,8 @@ procedure SubjectLock__commit(diz: Ref, current_thread_id: int) returns (sys__th
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3204,11 +3204,11 @@ procedure SubjectLock__commit(diz: Ref, current_thread_id: int) returns (sys__th
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of SubjectLock__commit might not hold. There might be insufficient permission to access SubjectLock__valid(diz) (testHistoryThreadsApplication.vpr@354.11--354.46) [162667]"}
+      assert {:msg "  Postcondition of SubjectLock__commit might not hold. There might be insufficient permission to access SubjectLock__valid(diz) (testHistoryThreadsApplication.vpr@354.11--354.46) [39152]"}
         perm <= Mask[null, SubjectLock__valid(diz)];
     }
     Mask := Mask[null, SubjectLock__valid(diz):=Mask[null, SubjectLock__valid(diz)] - perm];
@@ -3226,12 +3226,12 @@ procedure SubjectLock__uncommit(diz: Ref, current_thread_id: int) returns (sys__
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3256,8 +3256,8 @@ procedure SubjectLock__uncommit(diz: Ref, current_thread_id: int) returns (sys__
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3277,11 +3277,11 @@ procedure SubjectLock__uncommit(diz: Ref, current_thread_id: int) returns (sys__
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of SubjectLock__uncommit might not hold. There might be insufficient permission to access SubjectLock__inv(diz) (testHistoryThreadsApplication.vpr@363.11--363.44) [162668]"}
+      assert {:msg "  Postcondition of SubjectLock__uncommit might not hold. There might be insufficient permission to access SubjectLock__inv(diz) (testHistoryThreadsApplication.vpr@363.11--363.44) [39153]"}
         perm <= Mask[null, SubjectLock__inv(diz)];
     }
     Mask := Mask[null, SubjectLock__inv(diz):=Mask[null, SubjectLock__inv(diz)] - perm];
@@ -3295,16 +3295,16 @@ procedure SubjectLock__uncommit(diz: Ref, current_thread_id: int) returns (sys__
 // Translation of method SubjectLock__lock
 // ==================================================
 
-procedure SubjectLock__lock(diz: Ref, current_thread_id: int, count_1: int, p_1: Perm) returns (sys__thrown: Ref)
+procedure SubjectLock__lock(diz: Ref, current_thread_id: int, count: int, p_1: Perm) returns (sys__thrown: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3321,17 +3321,17 @@ procedure SubjectLock__lock(diz: Ref, current_thread_id: int, count_1: int, p_1:
     assume state(Heap, Mask);
     assume current_thread_id >= 0;
     assume state(Heap, Mask);
-    assume count_1 >= 0;
+    assume count >= 0;
     assume state(Heap, Mask);
     assume NoPerm <= p_1;
     assume state(Heap, Mask);
-    if (count_1 > 0) {
+    if (count > 0) {
       perm := FullPerm;
-      Mask := Mask[null, SubjectLock__locked(diz, p_1, count_1):=Mask[null, SubjectLock__locked(diz, p_1, count_1)] + perm];
+      Mask := Mask[null, SubjectLock__locked(diz, p_1, count):=Mask[null, SubjectLock__locked(diz, p_1, count)] + perm];
       assume state(Heap, Mask);
     } else {
       perm := p_1;
-      assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (testHistoryThreadsApplication.vpr@373.13--373.105) [162669]"}
+      assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (testHistoryThreadsApplication.vpr@373.13--373.105) [39154]"}
         perm >= NoPerm;
       Mask := Mask[null, SubjectLock__valid(diz):=Mask[null, SubjectLock__valid(diz)] + perm];
       assume state(Heap, Mask);
@@ -3341,18 +3341,18 @@ procedure SubjectLock__lock(diz: Ref, current_thread_id: int, count_1: int, p_1:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
-    PostMask := PostMask[null, SubjectLock__locked(diz, p_1, count_1 + 1):=PostMask[null, SubjectLock__locked(diz, p_1, count_1 + 1)] + perm];
+    PostMask := PostMask[null, SubjectLock__locked(diz, p_1, count + 1):=PostMask[null, SubjectLock__locked(diz, p_1, count + 1)] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
-    if (count_1 == 0) {
+    if (count == 0) {
       perm := FullPerm;
       PostMask := PostMask[null, SubjectLock__inv(diz):=PostMask[null, SubjectLock__inv(diz)] + perm];
       assume state(PostHeap, PostMask);
@@ -3368,18 +3368,18 @@ procedure SubjectLock__lock(diz: Ref, current_thread_id: int, count_1: int, p_1:
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of SubjectLock__lock might not hold. There might be insufficient permission to access SubjectLock__locked(diz, p, count + 1) (testHistoryThreadsApplication.vpr@374.11--374.61) [162670]"}
-        perm <= Mask[null, SubjectLock__locked(diz, p_1, count_1 + 1)];
+      assert {:msg "  Postcondition of SubjectLock__lock might not hold. There might be insufficient permission to access SubjectLock__locked(diz, p, count + 1) (testHistoryThreadsApplication.vpr@374.11--374.61) [39155]"}
+        perm <= Mask[null, SubjectLock__locked(diz, p_1, count + 1)];
     }
-    Mask := Mask[null, SubjectLock__locked(diz, p_1, count_1 + 1):=Mask[null, SubjectLock__locked(diz, p_1, count_1 + 1)] - perm];
-    if (count_1 == 0) {
+    Mask := Mask[null, SubjectLock__locked(diz, p_1, count + 1):=Mask[null, SubjectLock__locked(diz, p_1, count + 1)] - perm];
+    if (count == 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of SubjectLock__lock might not hold. There might be insufficient permission to access SubjectLock__inv(diz) (testHistoryThreadsApplication.vpr@375.11--375.61) [162671]"}
+        assert {:msg "  Postcondition of SubjectLock__lock might not hold. There might be insufficient permission to access SubjectLock__inv(diz) (testHistoryThreadsApplication.vpr@375.11--375.61) [39156]"}
           perm <= Mask[null, SubjectLock__inv(diz)];
       }
       Mask := Mask[null, SubjectLock__inv(diz):=Mask[null, SubjectLock__inv(diz)] - perm];
@@ -3394,16 +3394,16 @@ procedure SubjectLock__lock(diz: Ref, current_thread_id: int, count_1: int, p_1:
 // Translation of method SubjectLock__unlock
 // ==================================================
 
-procedure SubjectLock__unlock(diz: Ref, current_thread_id: int, count_1: int, p_1: Perm) returns (sys__thrown: Ref)
+procedure SubjectLock__unlock(diz: Ref, current_thread_id: int, count: int, p_1: Perm) returns (sys__thrown: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3420,13 +3420,13 @@ procedure SubjectLock__unlock(diz: Ref, current_thread_id: int, count_1: int, p_
     assume state(Heap, Mask);
     assume current_thread_id >= 0;
     assume state(Heap, Mask);
-    assume count_1 > 0;
+    assume count > 0;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, SubjectLock__locked(diz, p_1, count_1):=Mask[null, SubjectLock__locked(diz, p_1, count_1)] + perm];
+    Mask := Mask[null, SubjectLock__locked(diz, p_1, count):=Mask[null, SubjectLock__locked(diz, p_1, count)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    if (count_1 == 1) {
+    if (count == 1) {
       perm := FullPerm;
       Mask := Mask[null, SubjectLock__inv(diz):=Mask[null, SubjectLock__inv(diz)] + perm];
       assume state(Heap, Mask);
@@ -3438,22 +3438,22 @@ procedure SubjectLock__unlock(diz: Ref, current_thread_id: int, count_1: int, p_
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
-    if (count_1 == 1) {
+    if (count == 1) {
       perm := p_1;
-      assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (testHistoryThreadsApplication.vpr@387.12--387.109) [162672]"}
+      assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (testHistoryThreadsApplication.vpr@387.12--387.109) [39157]"}
         perm >= NoPerm;
       PostMask := PostMask[null, SubjectLock__valid(diz):=PostMask[null, SubjectLock__valid(diz)] + perm];
       assume state(PostHeap, PostMask);
     } else {
       perm := FullPerm;
-      PostMask := PostMask[null, SubjectLock__locked(diz, p_1, count_1 - 1):=PostMask[null, SubjectLock__locked(diz, p_1, count_1 - 1)] + perm];
+      PostMask := PostMask[null, SubjectLock__locked(diz, p_1, count - 1):=PostMask[null, SubjectLock__locked(diz, p_1, count - 1)] + perm];
       assume state(PostHeap, PostMask);
     }
     assume state(PostHeap, PostMask);
@@ -3467,24 +3467,24 @@ procedure SubjectLock__unlock(diz: Ref, current_thread_id: int, count_1: int, p_
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    if (count_1 == 1) {
+    ExhaleWellDef0Mask := Mask;
+    if (count == 1) {
       perm := p_1;
-      assert {:msg "  Postcondition of SubjectLock__unlock might not hold. Fraction p might be negative. (testHistoryThreadsApplication.vpr@387.12--387.109) [162673]"}
+      assert {:msg "  Postcondition of SubjectLock__unlock might not hold. Fraction p might be negative. (testHistoryThreadsApplication.vpr@387.12--387.109) [39158]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of SubjectLock__unlock might not hold. There might be insufficient permission to access SubjectLock__valid(diz) (testHistoryThreadsApplication.vpr@387.12--387.109) [162674]"}
+        assert {:msg "  Postcondition of SubjectLock__unlock might not hold. There might be insufficient permission to access SubjectLock__valid(diz) (testHistoryThreadsApplication.vpr@387.12--387.109) [39159]"}
           perm <= Mask[null, SubjectLock__valid(diz)];
       }
       Mask := Mask[null, SubjectLock__valid(diz):=Mask[null, SubjectLock__valid(diz)] - perm];
     } else {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of SubjectLock__unlock might not hold. There might be insufficient permission to access SubjectLock__locked(diz, p, count - 1) (testHistoryThreadsApplication.vpr@387.12--387.109) [162675]"}
-          perm <= Mask[null, SubjectLock__locked(diz, p_1, count_1 - 1)];
+        assert {:msg "  Postcondition of SubjectLock__unlock might not hold. There might be insufficient permission to access SubjectLock__locked(diz, p, count - 1) (testHistoryThreadsApplication.vpr@387.12--387.109) [39160]"}
+          perm <= Mask[null, SubjectLock__locked(diz, p_1, count - 1)];
       }
-      Mask := Mask[null, SubjectLock__locked(diz, p_1, count_1 - 1):=Mask[null, SubjectLock__locked(diz, p_1, count_1 - 1)] - perm];
+      Mask := Mask[null, SubjectLock__locked(diz, p_1, count - 1):=Mask[null, SubjectLock__locked(diz, p_1, count - 1)] - perm];
     }
     // Finish exhale
     havoc ExhaleHeap;
@@ -3499,8 +3499,8 @@ procedure SubjectLock__unlock(diz: Ref, current_thread_id: int, count_1: int, p_
 procedure SubjectLock__if_any_random(diz: Ref, current_thread_id: int) returns (sys__thrown: Ref, sys__result: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3520,8 +3520,8 @@ procedure SubjectLock__if_any_random(diz: Ref, current_thread_id: int) returns (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryThreadsApplication.vpr@396.3--396.15
     assume false;
@@ -3537,12 +3537,12 @@ procedure Thread__run(diz: Ref, current_thread_id: int) returns (sys__thrown: Re
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3567,8 +3567,8 @@ procedure Thread__run(diz: Ref, current_thread_id: int) returns (sys__thrown: Re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3588,11 +3588,11 @@ procedure Thread__run(diz: Ref, current_thread_id: int) returns (sys__thrown: Re
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Thread__run might not hold. There might be insufficient permission to access Thread__postJoin(diz, write) (testHistoryThreadsApplication.vpr@403.11--403.51) [162676]"}
+      assert {:msg "  Postcondition of Thread__run might not hold. There might be insufficient permission to access Thread__postJoin(diz, write) (testHistoryThreadsApplication.vpr@403.11--403.51) [39161]"}
         perm <= Mask[null, Thread__postJoin(diz, FullPerm)];
     }
     Mask := Mask[null, Thread__postJoin(diz, FullPerm):=Mask[null, Thread__postJoin(diz, FullPerm)] - perm];
@@ -3610,12 +3610,12 @@ procedure Thread__start(diz: Ref, current_thread_id: int) returns (sys__thrown: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3640,8 +3640,8 @@ procedure Thread__start(diz: Ref, current_thread_id: int) returns (sys__thrown: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3661,11 +3661,11 @@ procedure Thread__start(diz: Ref, current_thread_id: int) returns (sys__thrown: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Thread__start might not hold. There might be insufficient permission to access Thread__joinToken(diz, write) (testHistoryThreadsApplication.vpr@412.11--412.52) [162677]"}
+      assert {:msg "  Postcondition of Thread__start might not hold. There might be insufficient permission to access Thread__joinToken(diz, write) (testHistoryThreadsApplication.vpr@412.11--412.52) [39162]"}
         perm <= Mask[null, Thread__joinToken(diz, FullPerm)];
     }
     Mask := Mask[null, Thread__joinToken(diz, FullPerm):=Mask[null, Thread__joinToken(diz, FullPerm)] - perm];
@@ -3683,12 +3683,12 @@ procedure Thread__join(diz: Ref, current_thread_id: int, p_1: Perm) returns (sys
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3713,8 +3713,8 @@ procedure Thread__join(diz: Ref, current_thread_id: int, p_1: Perm) returns (sys
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3734,11 +3734,11 @@ procedure Thread__join(diz: Ref, current_thread_id: int, p_1: Perm) returns (sys
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Thread__join might not hold. There might be insufficient permission to access Thread__postJoin(diz, p) (testHistoryThreadsApplication.vpr@421.11--421.47) [162678]"}
+      assert {:msg "  Postcondition of Thread__join might not hold. There might be insufficient permission to access Thread__postJoin(diz, p) (testHistoryThreadsApplication.vpr@421.11--421.47) [39163]"}
         perm <= Mask[null, Thread__postJoin(diz, p_1)];
     }
     Mask := Mask[null, Thread__postJoin(diz, p_1):=Mask[null, Thread__postJoin(diz, p_1)] - perm];
@@ -3756,12 +3756,12 @@ procedure Thread__open_joinToken_at_Thread(diz: Ref, current_thread_id: int, p_1
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3790,8 +3790,8 @@ procedure Thread__open_joinToken_at_Thread(diz: Ref, current_thread_id: int, p_1
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3811,11 +3811,11 @@ procedure Thread__open_joinToken_at_Thread(diz: Ref, current_thread_id: int, p_1
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Thread__open_joinToken_at_Thread might not hold. There might be insufficient permission to access Thread__joinToken_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@431.11--431.58) [162679]"}
+      assert {:msg "  Postcondition of Thread__open_joinToken_at_Thread might not hold. There might be insufficient permission to access Thread__joinToken_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@431.11--431.58) [39164]"}
         perm <= Mask[null, Thread__joinToken_at_Thread(diz, p_1)];
     }
     Mask := Mask[null, Thread__joinToken_at_Thread(diz, p_1):=Mask[null, Thread__joinToken_at_Thread(diz, p_1)] - perm];
@@ -3833,12 +3833,12 @@ procedure Thread__open_preFork_at_Thread(diz: Ref, current_thread_id: int, p_1: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3867,8 +3867,8 @@ procedure Thread__open_preFork_at_Thread(diz: Ref, current_thread_id: int, p_1: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3888,11 +3888,11 @@ procedure Thread__open_preFork_at_Thread(diz: Ref, current_thread_id: int, p_1: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Thread__open_preFork_at_Thread might not hold. There might be insufficient permission to access Thread__preFork_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@441.11--441.56) [162680]"}
+      assert {:msg "  Postcondition of Thread__open_preFork_at_Thread might not hold. There might be insufficient permission to access Thread__preFork_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@441.11--441.56) [39165]"}
         perm <= Mask[null, Thread__preFork_at_Thread(diz, p_1)];
     }
     Mask := Mask[null, Thread__preFork_at_Thread(diz, p_1):=Mask[null, Thread__preFork_at_Thread(diz, p_1)] - perm];
@@ -3910,12 +3910,12 @@ procedure Thread__open_postJoin_at_Thread(diz: Ref, current_thread_id: int, p_1:
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3944,8 +3944,8 @@ procedure Thread__open_postJoin_at_Thread(diz: Ref, current_thread_id: int, p_1:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3965,11 +3965,11 @@ procedure Thread__open_postJoin_at_Thread(diz: Ref, current_thread_id: int, p_1:
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Thread__open_postJoin_at_Thread might not hold. There might be insufficient permission to access Thread__postJoin_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@451.11--451.57) [162681]"}
+      assert {:msg "  Postcondition of Thread__open_postJoin_at_Thread might not hold. There might be insufficient permission to access Thread__postJoin_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@451.11--451.57) [39166]"}
         perm <= Mask[null, Thread__postJoin_at_Thread(diz, p_1)];
     }
     Mask := Mask[null, Thread__postJoin_at_Thread(diz, p_1):=Mask[null, Thread__postJoin_at_Thread(diz, p_1)] - perm];
@@ -3986,13 +3986,13 @@ procedure Thread__open_postJoin_at_Thread(diz: Ref, current_thread_id: int, p_1:
 procedure Thread__Thread(current_thread_id: int) returns (sys__thrown: Ref, sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4008,8 +4008,8 @@ procedure Thread__Thread(current_thread_id: int) returns (sys__thrown: Ref, sys_
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4033,15 +4033,15 @@ procedure Thread__Thread(current_thread_id: int) returns (sys__thrown: Ref, sys_
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Thread__Thread might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@458.11--458.30) [162682]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Thread__Thread might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@458.11--458.30) [39167]"}
       sys__result != null;
-    assert {:msg "  Postcondition of Thread__Thread might not hold. Assertion type_of(sys__result) == class_Thread() might not hold. (testHistoryThreadsApplication.vpr@459.11--459.49) [162683]"}
+    assert {:msg "  Postcondition of Thread__Thread might not hold. Assertion type_of(sys__result) == class_Thread() might not hold. (testHistoryThreadsApplication.vpr@459.11--459.49) [39168]"}
       (type_of(sys__result): TYPEDomainType) == (class_Thread(): TYPEDomainType);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Thread__Thread might not hold. There might be insufficient permission to access Thread__is_a_Thread(sys__result) (testHistoryThreadsApplication.vpr@460.11--460.55) [162684]"}
+      assert {:msg "  Postcondition of Thread__Thread might not hold. There might be insufficient permission to access Thread__is_a_Thread(sys__result) (testHistoryThreadsApplication.vpr@460.11--460.55) [39169]"}
         perm <= Mask[null, Thread__is_a_Thread(sys__result)];
     }
     Mask := Mask[null, Thread__is_a_Thread(sys__result):=Mask[null, Thread__is_a_Thread(sys__result)] - perm];
@@ -4058,14 +4058,14 @@ procedure Thread__Thread(current_thread_id: int) returns (sys__thrown: Ref, sys_
 procedure Thread__Thread_at_Thread(current_thread_id: int) returns (sys__thrown: Ref, sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -4080,8 +4080,8 @@ procedure Thread__Thread_at_Thread(current_thread_id: int) returns (sys__thrown:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4120,11 +4120,11 @@ procedure Thread__Thread_at_Thread(current_thread_id: int) returns (sys__thrown:
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null && type_of(sys__result) == class_Thread() -- testHistoryThreadsApplication.vpr@475.3--475.75
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@475.10--475.75) [162685]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@475.10--475.75) [39170]"}
       sys__result != null;
-    assert {:msg "  Assert might fail. Assertion type_of(sys__result) == class_Thread() might not hold. (testHistoryThreadsApplication.vpr@475.10--475.75) [162686]"}
+    assert {:msg "  Assert might fail. Assertion type_of(sys__result) == class_Thread() might not hold. (testHistoryThreadsApplication.vpr@475.10--475.75) [39171]"}
       (type_of(sys__result): TYPEDomainType) == (class_Thread(): TYPEDomainType);
     assume state(Heap, Mask);
   
@@ -4134,11 +4134,11 @@ procedure Thread__Thread_at_Thread(current_thread_id: int) returns (sys__thrown:
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Thread__Thread_at_Thread might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@467.11--467.30) [162687]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Thread__Thread_at_Thread might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@467.11--467.30) [39172]"}
       sys__result != null;
-    assert {:msg "  Postcondition of Thread__Thread_at_Thread might not hold. Assertion type_of(sys__result) == class_Thread() might not hold. (testHistoryThreadsApplication.vpr@468.11--468.49) [162688]"}
+    assert {:msg "  Postcondition of Thread__Thread_at_Thread might not hold. Assertion type_of(sys__result) == class_Thread() might not hold. (testHistoryThreadsApplication.vpr@468.11--468.49) [39173]"}
       (type_of(sys__result): TYPEDomainType) == (class_Thread(): TYPEDomainType);
 }
 
@@ -4150,12 +4150,12 @@ procedure Thread__run_at_Thread(diz: Ref, current_thread_id: int) returns (sys__
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4180,8 +4180,8 @@ procedure Thread__run_at_Thread(diz: Ref, current_thread_id: int) returns (sys__
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4201,11 +4201,11 @@ procedure Thread__run_at_Thread(diz: Ref, current_thread_id: int) returns (sys__
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Thread__run_at_Thread might not hold. There might be insufficient permission to access Thread__postJoin_at_Thread(diz, write) (testHistoryThreadsApplication.vpr@483.11--483.61) [162689]"}
+      assert {:msg "  Postcondition of Thread__run_at_Thread might not hold. There might be insufficient permission to access Thread__postJoin_at_Thread(diz, write) (testHistoryThreadsApplication.vpr@483.11--483.61) [39174]"}
         perm <= Mask[null, Thread__postJoin_at_Thread(diz, FullPerm)];
     }
     Mask := Mask[null, Thread__postJoin_at_Thread(diz, FullPerm):=Mask[null, Thread__postJoin_at_Thread(diz, FullPerm)] - perm];
@@ -4223,12 +4223,12 @@ procedure Thread__start_at_Thread(diz: Ref, current_thread_id: int) returns (sys
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4253,8 +4253,8 @@ procedure Thread__start_at_Thread(diz: Ref, current_thread_id: int) returns (sys
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4274,11 +4274,11 @@ procedure Thread__start_at_Thread(diz: Ref, current_thread_id: int) returns (sys
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Thread__start_at_Thread might not hold. There might be insufficient permission to access Thread__joinToken(diz, write) (testHistoryThreadsApplication.vpr@492.11--492.52) [162690]"}
+      assert {:msg "  Postcondition of Thread__start_at_Thread might not hold. There might be insufficient permission to access Thread__joinToken(diz, write) (testHistoryThreadsApplication.vpr@492.11--492.52) [39175]"}
         perm <= Mask[null, Thread__joinToken(diz, FullPerm)];
     }
     Mask := Mask[null, Thread__joinToken(diz, FullPerm):=Mask[null, Thread__joinToken(diz, FullPerm)] - perm];
@@ -4296,12 +4296,12 @@ procedure Thread__join_at_Thread(diz: Ref, current_thread_id: int, p_1: Perm) re
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4326,8 +4326,8 @@ procedure Thread__join_at_Thread(diz: Ref, current_thread_id: int, p_1: Perm) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4347,11 +4347,11 @@ procedure Thread__join_at_Thread(diz: Ref, current_thread_id: int, p_1: Perm) re
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Thread__join_at_Thread might not hold. There might be insufficient permission to access Thread__postJoin(diz, p) (testHistoryThreadsApplication.vpr@501.11--501.47) [162691]"}
+      assert {:msg "  Postcondition of Thread__join_at_Thread might not hold. There might be insufficient permission to access Thread__postJoin(diz, p) (testHistoryThreadsApplication.vpr@501.11--501.47) [39176]"}
         perm <= Mask[null, Thread__postJoin(diz, p_1)];
     }
     Mask := Mask[null, Thread__postJoin(diz, p_1):=Mask[null, Thread__postJoin(diz, p_1)] - perm];
@@ -4368,8 +4368,8 @@ procedure Thread__join_at_Thread(diz: Ref, current_thread_id: int, p_1: Perm) re
 procedure Thread__if_any_random(diz: Ref, current_thread_id: int) returns (sys__thrown: Ref, sys__result: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -4389,8 +4389,8 @@ procedure Thread__if_any_random(diz: Ref, current_thread_id: int) returns (sys__
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryThreadsApplication.vpr@510.3--510.15
     assume false;
@@ -4406,12 +4406,12 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns (sys__thrown: Re
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4436,8 +4436,8 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns (sys__thrown: Re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4457,11 +4457,11 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns (sys__thrown: Re
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__run might not hold. There might be insufficient permission to access Worker__postJoin(diz, write) (testHistoryThreadsApplication.vpr@517.11--517.51) [162692]"}
+      assert {:msg "  Postcondition of Worker__run might not hold. There might be insufficient permission to access Worker__postJoin(diz, write) (testHistoryThreadsApplication.vpr@517.11--517.51) [39177]"}
         perm <= Mask[null, Worker__postJoin(diz, FullPerm)];
     }
     Mask := Mask[null, Worker__postJoin(diz, FullPerm):=Mask[null, Worker__postJoin(diz, FullPerm)] - perm];
@@ -4479,12 +4479,12 @@ procedure Worker__start(diz: Ref, current_thread_id: int) returns (sys__thrown: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4509,8 +4509,8 @@ procedure Worker__start(diz: Ref, current_thread_id: int) returns (sys__thrown: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4530,11 +4530,11 @@ procedure Worker__start(diz: Ref, current_thread_id: int) returns (sys__thrown: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__start might not hold. There might be insufficient permission to access Worker__joinToken(diz, write) (testHistoryThreadsApplication.vpr@526.11--526.52) [162693]"}
+      assert {:msg "  Postcondition of Worker__start might not hold. There might be insufficient permission to access Worker__joinToken(diz, write) (testHistoryThreadsApplication.vpr@526.11--526.52) [39178]"}
         perm <= Mask[null, Worker__joinToken(diz, FullPerm)];
     }
     Mask := Mask[null, Worker__joinToken(diz, FullPerm):=Mask[null, Worker__joinToken(diz, FullPerm)] - perm];
@@ -4552,12 +4552,12 @@ procedure Worker__join(diz: Ref, current_thread_id: int, p_1: Perm) returns (sys
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4582,8 +4582,8 @@ procedure Worker__join(diz: Ref, current_thread_id: int, p_1: Perm) returns (sys
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4603,11 +4603,11 @@ procedure Worker__join(diz: Ref, current_thread_id: int, p_1: Perm) returns (sys
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__join might not hold. There might be insufficient permission to access Worker__postJoin(diz, p) (testHistoryThreadsApplication.vpr@535.11--535.47) [162694]"}
+      assert {:msg "  Postcondition of Worker__join might not hold. There might be insufficient permission to access Worker__postJoin(diz, p) (testHistoryThreadsApplication.vpr@535.11--535.47) [39179]"}
         perm <= Mask[null, Worker__postJoin(diz, p_1)];
     }
     Mask := Mask[null, Worker__postJoin(diz, p_1):=Mask[null, Worker__postJoin(diz, p_1)] - perm];
@@ -4625,12 +4625,12 @@ procedure Worker__open_joinToken_at_Thread(diz: Ref, current_thread_id: int, p_1
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4659,8 +4659,8 @@ procedure Worker__open_joinToken_at_Thread(diz: Ref, current_thread_id: int, p_1
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4680,11 +4680,11 @@ procedure Worker__open_joinToken_at_Thread(diz: Ref, current_thread_id: int, p_1
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__open_joinToken_at_Thread might not hold. There might be insufficient permission to access Worker__joinToken_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@545.11--545.58) [162695]"}
+      assert {:msg "  Postcondition of Worker__open_joinToken_at_Thread might not hold. There might be insufficient permission to access Worker__joinToken_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@545.11--545.58) [39180]"}
         perm <= Mask[null, Worker__joinToken_at_Thread(diz, p_1)];
     }
     Mask := Mask[null, Worker__joinToken_at_Thread(diz, p_1):=Mask[null, Worker__joinToken_at_Thread(diz, p_1)] - perm];
@@ -4702,12 +4702,12 @@ procedure Worker__open_preFork_at_Thread(diz: Ref, current_thread_id: int, p_1: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4736,8 +4736,8 @@ procedure Worker__open_preFork_at_Thread(diz: Ref, current_thread_id: int, p_1: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4757,11 +4757,11 @@ procedure Worker__open_preFork_at_Thread(diz: Ref, current_thread_id: int, p_1: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__open_preFork_at_Thread might not hold. There might be insufficient permission to access Worker__preFork_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@555.11--555.56) [162696]"}
+      assert {:msg "  Postcondition of Worker__open_preFork_at_Thread might not hold. There might be insufficient permission to access Worker__preFork_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@555.11--555.56) [39181]"}
         perm <= Mask[null, Worker__preFork_at_Thread(diz, p_1)];
     }
     Mask := Mask[null, Worker__preFork_at_Thread(diz, p_1):=Mask[null, Worker__preFork_at_Thread(diz, p_1)] - perm];
@@ -4779,12 +4779,12 @@ procedure Worker__open_postJoin_at_Thread(diz: Ref, current_thread_id: int, p_1:
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4813,8 +4813,8 @@ procedure Worker__open_postJoin_at_Thread(diz: Ref, current_thread_id: int, p_1:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4834,11 +4834,11 @@ procedure Worker__open_postJoin_at_Thread(diz: Ref, current_thread_id: int, p_1:
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__open_postJoin_at_Thread might not hold. There might be insufficient permission to access Worker__postJoin_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@565.11--565.57) [162697]"}
+      assert {:msg "  Postcondition of Worker__open_postJoin_at_Thread might not hold. There might be insufficient permission to access Worker__postJoin_at_Thread(diz, p) (testHistoryThreadsApplication.vpr@565.11--565.57) [39182]"}
         perm <= Mask[null, Worker__postJoin_at_Thread(diz, p_1)];
     }
     Mask := Mask[null, Worker__postJoin_at_Thread(diz, p_1):=Mask[null, Worker__postJoin_at_Thread(diz, p_1)] - perm];
@@ -4855,13 +4855,13 @@ procedure Worker__open_postJoin_at_Thread(diz: Ref, current_thread_id: int, p_1:
 procedure Worker__Thread(current_thread_id: int) returns (sys__thrown: Ref, sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -4877,8 +4877,8 @@ procedure Worker__Thread(current_thread_id: int) returns (sys__thrown: Ref, sys_
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4902,15 +4902,15 @@ procedure Worker__Thread(current_thread_id: int) returns (sys__thrown: Ref, sys_
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Worker__Thread might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@572.11--572.30) [162698]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Worker__Thread might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@572.11--572.30) [39183]"}
       sys__result != null;
-    assert {:msg "  Postcondition of Worker__Thread might not hold. Assertion type_of(sys__result) == class_Thread() might not hold. (testHistoryThreadsApplication.vpr@573.11--573.49) [162699]"}
+    assert {:msg "  Postcondition of Worker__Thread might not hold. Assertion type_of(sys__result) == class_Thread() might not hold. (testHistoryThreadsApplication.vpr@573.11--573.49) [39184]"}
       (type_of(sys__result): TYPEDomainType) == (class_Thread(): TYPEDomainType);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__Thread might not hold. There might be insufficient permission to access Worker__is_a_Thread(sys__result) (testHistoryThreadsApplication.vpr@574.11--574.55) [162700]"}
+      assert {:msg "  Postcondition of Worker__Thread might not hold. There might be insufficient permission to access Worker__is_a_Thread(sys__result) (testHistoryThreadsApplication.vpr@574.11--574.55) [39185]"}
         perm <= Mask[null, Worker__is_a_Thread(sys__result)];
     }
     Mask := Mask[null, Worker__is_a_Thread(sys__result):=Mask[null, Worker__is_a_Thread(sys__result)] - perm];
@@ -4927,12 +4927,12 @@ procedure Worker__Thread(current_thread_id: int) returns (sys__thrown: Ref, sys_
 procedure Worker__Thread_at_Thread(current_thread_id: int) returns (sys__thrown: Ref, sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -4947,8 +4947,8 @@ procedure Worker__Thread_at_Thread(current_thread_id: int) returns (sys__thrown:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4968,11 +4968,11 @@ procedure Worker__Thread_at_Thread(current_thread_id: int) returns (sys__thrown:
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Worker__Thread_at_Thread might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@581.11--581.30) [162701]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Worker__Thread_at_Thread might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@581.11--581.30) [39186]"}
       sys__result != null;
-    assert {:msg "  Postcondition of Worker__Thread_at_Thread might not hold. Assertion type_of(sys__result) == class_Thread() might not hold. (testHistoryThreadsApplication.vpr@582.11--582.49) [162702]"}
+    assert {:msg "  Postcondition of Worker__Thread_at_Thread might not hold. Assertion type_of(sys__result) == class_Thread() might not hold. (testHistoryThreadsApplication.vpr@582.11--582.49) [39187]"}
       (type_of(sys__result): TYPEDomainType) == (class_Thread(): TYPEDomainType);
 }
 
@@ -4984,12 +4984,12 @@ procedure Worker__run_at_Thread(diz: Ref, current_thread_id: int) returns (sys__
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -5014,8 +5014,8 @@ procedure Worker__run_at_Thread(diz: Ref, current_thread_id: int) returns (sys__
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5035,11 +5035,11 @@ procedure Worker__run_at_Thread(diz: Ref, current_thread_id: int) returns (sys__
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__run_at_Thread might not hold. There might be insufficient permission to access Worker__postJoin_at_Thread(diz, write) (testHistoryThreadsApplication.vpr@591.11--591.61) [162703]"}
+      assert {:msg "  Postcondition of Worker__run_at_Thread might not hold. There might be insufficient permission to access Worker__postJoin_at_Thread(diz, write) (testHistoryThreadsApplication.vpr@591.11--591.61) [39188]"}
         perm <= Mask[null, Worker__postJoin_at_Thread(diz, FullPerm)];
     }
     Mask := Mask[null, Worker__postJoin_at_Thread(diz, FullPerm):=Mask[null, Worker__postJoin_at_Thread(diz, FullPerm)] - perm];
@@ -5057,12 +5057,12 @@ procedure Worker__start_at_Thread(diz: Ref, current_thread_id: int) returns (sys
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -5087,8 +5087,8 @@ procedure Worker__start_at_Thread(diz: Ref, current_thread_id: int) returns (sys
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5108,11 +5108,11 @@ procedure Worker__start_at_Thread(diz: Ref, current_thread_id: int) returns (sys
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__start_at_Thread might not hold. There might be insufficient permission to access Worker__joinToken(diz, write) (testHistoryThreadsApplication.vpr@600.11--600.52) [162704]"}
+      assert {:msg "  Postcondition of Worker__start_at_Thread might not hold. There might be insufficient permission to access Worker__joinToken(diz, write) (testHistoryThreadsApplication.vpr@600.11--600.52) [39189]"}
         perm <= Mask[null, Worker__joinToken(diz, FullPerm)];
     }
     Mask := Mask[null, Worker__joinToken(diz, FullPerm):=Mask[null, Worker__joinToken(diz, FullPerm)] - perm];
@@ -5130,12 +5130,12 @@ procedure Worker__join_at_Thread(diz: Ref, current_thread_id: int, p_1: Perm) re
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -5160,8 +5160,8 @@ procedure Worker__join_at_Thread(diz: Ref, current_thread_id: int, p_1: Perm) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5181,11 +5181,11 @@ procedure Worker__join_at_Thread(diz: Ref, current_thread_id: int, p_1: Perm) re
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__join_at_Thread might not hold. There might be insufficient permission to access Worker__postJoin(diz, p) (testHistoryThreadsApplication.vpr@609.11--609.47) [162705]"}
+      assert {:msg "  Postcondition of Worker__join_at_Thread might not hold. There might be insufficient permission to access Worker__postJoin(diz, p) (testHistoryThreadsApplication.vpr@609.11--609.47) [39190]"}
         perm <= Mask[null, Worker__postJoin(diz, p_1)];
     }
     Mask := Mask[null, Worker__postJoin(diz, p_1):=Mask[null, Worker__postJoin(diz, p_1)] - perm];
@@ -5203,12 +5203,12 @@ procedure Worker__open_preFork_at_Worker(diz: Ref, current_thread_id: int, p_1: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -5237,8 +5237,8 @@ procedure Worker__open_preFork_at_Worker(diz: Ref, current_thread_id: int, p_1: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5258,11 +5258,11 @@ procedure Worker__open_preFork_at_Worker(diz: Ref, current_thread_id: int, p_1: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__open_preFork_at_Worker might not hold. There might be insufficient permission to access Worker__preFork_at_Worker(diz, p) (testHistoryThreadsApplication.vpr@619.11--619.56) [162706]"}
+      assert {:msg "  Postcondition of Worker__open_preFork_at_Worker might not hold. There might be insufficient permission to access Worker__preFork_at_Worker(diz, p) (testHistoryThreadsApplication.vpr@619.11--619.56) [39191]"}
         perm <= Mask[null, Worker__preFork_at_Worker(diz, p_1)];
     }
     Mask := Mask[null, Worker__preFork_at_Worker(diz, p_1):=Mask[null, Worker__preFork_at_Worker(diz, p_1)] - perm];
@@ -5280,12 +5280,12 @@ procedure Worker__open_postJoin_at_Worker(diz: Ref, current_thread_id: int, p_1:
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -5314,8 +5314,8 @@ procedure Worker__open_postJoin_at_Worker(diz: Ref, current_thread_id: int, p_1:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5335,11 +5335,11 @@ procedure Worker__open_postJoin_at_Worker(diz: Ref, current_thread_id: int, p_1:
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__open_postJoin_at_Worker might not hold. There might be insufficient permission to access Worker__postJoin_at_Worker(diz, p) (testHistoryThreadsApplication.vpr@629.11--629.57) [162707]"}
+      assert {:msg "  Postcondition of Worker__open_postJoin_at_Worker might not hold. There might be insufficient permission to access Worker__postJoin_at_Worker(diz, p) (testHistoryThreadsApplication.vpr@629.11--629.57) [39192]"}
         perm <= Mask[null, Worker__postJoin_at_Worker(diz, p_1)];
     }
     Mask := Mask[null, Worker__postJoin_at_Worker(diz, p_1):=Mask[null, Worker__postJoin_at_Worker(diz, p_1)] - perm];
@@ -5353,17 +5353,17 @@ procedure Worker__open_postJoin_at_Worker(diz: Ref, current_thread_id: int, p_1:
 // Translation of method Worker__Worker
 // ==================================================
 
-procedure Worker__Worker(current_thread_id: int, s_2: Ref, l_2: Ref) returns (sys__thrown: Ref, sys__result: Ref)
+procedure Worker__Worker(current_thread_id: int, s_1: Ref, l_1: Ref) returns (sys__thrown: Ref, sys__result: Ref)
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -5373,40 +5373,40 @@ procedure Worker__Worker(current_thread_id: int, s_2: Ref, l_2: Ref) returns (sy
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[s_2, $allocated];
-    assume Heap[l_2, $allocated];
+    assume Heap[s_1, $allocated];
+    assume Heap[l_1, $allocated];
   
   // -- Checked inhaling of precondition
     assume current_thread_id >= 0;
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume l_2 != null;
-    Mask := Mask[l_2, SubjectLock__subject:=Mask[l_2, SubjectLock__subject] + perm];
+    assume l_1 != null;
+    Mask := Mask[l_1, SubjectLock__subject:=Mask[l_1, SubjectLock__subject] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of l.SubjectLock__subject == s
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access l.SubjectLock__subject (testHistoryThreadsApplication.vpr@637.12--637.39) [162708]"}
-        HasDirectPerm(Mask, l_2, SubjectLock__subject);
-    assume Heap[l_2, SubjectLock__subject] == s_2;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access l.SubjectLock__subject (testHistoryThreadsApplication.vpr@637.12--637.39) [39193]"}
+        HasDirectPerm(Mask, l_1, SubjectLock__subject);
+    assume Heap[l_1, SubjectLock__subject] == s_1;
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@638.12--638.45) [162709]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@638.12--638.45) [39194]"}
       perm >= NoPerm;
-    Mask := Mask[null, SubjectLock__valid(l_2):=Mask[null, SubjectLock__valid(l_2)] + perm];
+    Mask := Mask[null, SubjectLock__valid(l_1):=Mask[null, SubjectLock__valid(l_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, History__hist_idle(s_2, 1 / 2, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(s_2, 1 / 2, (p_empty(): ProcessDomainType))] + perm];
+    Mask := Mask[null, History__hist_idle(s_1, 1 / 2, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(s_1, 1 / 2, (p_empty(): ProcessDomainType))] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5424,9 +5424,9 @@ procedure Worker__Worker(current_thread_id: int, s_2: Ref, l_2: Ref) returns (sy
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Worker__l == l
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@643.11--643.37) [162710]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@643.11--643.37) [39195]"}
         HasDirectPerm(PostMask, sys__result, Worker__l);
-    assume PostHeap[sys__result, Worker__l] == l_2;
+    assume PostHeap[sys__result, Worker__l] == l_1;
     assume state(PostHeap, PostMask);
     havoc wildcard;
     perm := wildcard;
@@ -5436,9 +5436,9 @@ procedure Worker__Worker(current_thread_id: int, s_2: Ref, l_2: Ref) returns (sy
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Worker__s == s
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@645.11--645.37) [162711]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@645.11--645.37) [39196]"}
         HasDirectPerm(PostMask, sys__result, Worker__s);
-    assume PostHeap[sys__result, Worker__s] == s_2;
+    assume PostHeap[sys__result, Worker__s] == s_1;
     assume state(PostHeap, PostMask);
     perm := FullPerm;
     PostMask := PostMask[null, Worker__preFork(sys__result, FullPerm):=PostMask[null, Worker__preFork(sys__result, FullPerm)] + perm];
@@ -5458,35 +5458,35 @@ procedure Worker__Worker(current_thread_id: int, s_2: Ref, l_2: Ref) returns (sy
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@640.11--640.30) [162712]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@640.11--640.30) [39197]"}
       sys__result != null;
-    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion type_of(sys__result) == class_Worker() might not hold. (testHistoryThreadsApplication.vpr@641.11--641.49) [162713]"}
+    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion type_of(sys__result) == class_Worker() might not hold. (testHistoryThreadsApplication.vpr@641.11--641.49) [39198]"}
       (type_of(sys__result): TYPEDomainType) == (class_Worker(): TYPEDomainType);
-    assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@642.11--642.47) [162714]"}
+    assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@642.11--642.47) [39199]"}
       Mask[sys__result, Worker__l] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, Worker__l];
     Mask := Mask[sys__result, Worker__l:=Mask[sys__result, Worker__l] - wildcard];
-    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result.Worker__l == l might not hold. (testHistoryThreadsApplication.vpr@643.11--643.37) [162715]"}
-      Heap[sys__result, Worker__l] == l_2;
-    assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@644.11--644.47) [162716]"}
+    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result.Worker__l == l might not hold. (testHistoryThreadsApplication.vpr@643.11--643.37) [39200]"}
+      Heap[sys__result, Worker__l] == l_1;
+    assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@644.11--644.47) [39201]"}
       Mask[sys__result, Worker__s] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, Worker__s];
     Mask := Mask[sys__result, Worker__s:=Mask[sys__result, Worker__s] - wildcard];
-    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result.Worker__s == s might not hold. (testHistoryThreadsApplication.vpr@645.11--645.37) [162717]"}
-      Heap[sys__result, Worker__s] == s_2;
+    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result.Worker__s == s might not hold. (testHistoryThreadsApplication.vpr@645.11--645.37) [39202]"}
+      Heap[sys__result, Worker__s] == s_1;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access Worker__preFork(sys__result, write) (testHistoryThreadsApplication.vpr@646.11--646.58) [162718]"}
+      assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access Worker__preFork(sys__result, write) (testHistoryThreadsApplication.vpr@646.11--646.58) [39203]"}
         perm <= Mask[null, Worker__preFork(sys__result, FullPerm)];
     }
     Mask := Mask[null, Worker__preFork(sys__result, FullPerm):=Mask[null, Worker__preFork(sys__result, FullPerm)] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access Worker__is_a_Worker(sys__result) (testHistoryThreadsApplication.vpr@647.11--647.55) [162719]"}
+      assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access Worker__is_a_Worker(sys__result) (testHistoryThreadsApplication.vpr@647.11--647.55) [39204]"}
         perm <= Mask[null, Worker__is_a_Worker(sys__result)];
     }
     Mask := Mask[null, Worker__is_a_Worker(sys__result):=Mask[null, Worker__is_a_Worker(sys__result)] - perm];
@@ -5500,13 +5500,13 @@ procedure Worker__Worker(current_thread_id: int, s_2: Ref, l_2: Ref) returns (sy
 // Translation of method Worker__Worker_at_Worker
 // ==================================================
 
-procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) returns (sys__thrown: Ref, sys__result: Ref)
+procedure Worker__Worker_at_Worker(current_thread_id: int, s_1: Ref, l_1: Ref) returns (sys__thrown: Ref, sys__result: Ref)
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
@@ -5515,8 +5515,8 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
   var __flatten_106: Ref;
   var __flatten_107: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var AssertHeap: HeapType;
@@ -5530,40 +5530,40 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[s_2, $allocated];
-    assume Heap[l_2, $allocated];
+    assume Heap[s_1, $allocated];
+    assume Heap[l_1, $allocated];
   
   // -- Checked inhaling of precondition
     assume current_thread_id >= 0;
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume l_2 != null;
-    Mask := Mask[l_2, SubjectLock__subject:=Mask[l_2, SubjectLock__subject] + perm];
+    assume l_1 != null;
+    Mask := Mask[l_1, SubjectLock__subject:=Mask[l_1, SubjectLock__subject] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of l.SubjectLock__subject == s
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access l.SubjectLock__subject (testHistoryThreadsApplication.vpr@655.12--655.39) [162720]"}
-        HasDirectPerm(Mask, l_2, SubjectLock__subject);
-    assume Heap[l_2, SubjectLock__subject] == s_2;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access l.SubjectLock__subject (testHistoryThreadsApplication.vpr@655.12--655.39) [39205]"}
+        HasDirectPerm(Mask, l_1, SubjectLock__subject);
+    assume Heap[l_1, SubjectLock__subject] == s_1;
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@656.12--656.45) [162721]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@656.12--656.45) [39206]"}
       perm >= NoPerm;
-    Mask := Mask[null, SubjectLock__valid(l_2):=Mask[null, SubjectLock__valid(l_2)] + perm];
+    Mask := Mask[null, SubjectLock__valid(l_1):=Mask[null, SubjectLock__valid(l_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, History__hist_idle(s_2, 1 / 2, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(s_2, 1 / 2, (p_empty(): ProcessDomainType))] + perm];
+    Mask := Mask[null, History__hist_idle(s_1, 1 / 2, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(s_1, 1 / 2, (p_empty(): ProcessDomainType))] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5581,9 +5581,9 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Worker__l == l
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@661.11--661.37) [162722]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@661.11--661.37) [39207]"}
         HasDirectPerm(PostMask, sys__result, Worker__l);
-    assume PostHeap[sys__result, Worker__l] == l_2;
+    assume PostHeap[sys__result, Worker__l] == l_1;
     assume state(PostHeap, PostMask);
     havoc wildcard;
     perm := wildcard;
@@ -5593,9 +5593,9 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Worker__s == s
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@663.11--663.37) [162723]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@663.11--663.37) [39208]"}
         HasDirectPerm(PostMask, sys__result, Worker__s);
-    assume PostHeap[sys__result, Worker__s] == s_2;
+    assume PostHeap[sys__result, Worker__s] == s_1;
     assume state(PostHeap, PostMask);
     perm := FullPerm;
     PostMask := PostMask[null, Worker__preFork_at_Worker(sys__result, FullPerm):=PostMask[null, Worker__preFork_at_Worker(sys__result, FullPerm)] + perm];
@@ -5627,7 +5627,7 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_38 := l -- testHistoryThreadsApplication.vpr@673.3--673.20
-    __flatten_38 := l_2;
+    __flatten_38 := l_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_106 := __flatten_38 -- testHistoryThreadsApplication.vpr@674.3--674.32
@@ -5635,13 +5635,13 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Worker__l := __flatten_106 -- testHistoryThreadsApplication.vpr@675.3--675.33
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@675.3--675.33) [162724]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@675.3--675.33) [39209]"}
       FullPerm == Mask[diz, Worker__l];
     Heap := Heap[diz, Worker__l:=__flatten_106];
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_39 := s -- testHistoryThreadsApplication.vpr@676.3--676.20
-    __flatten_39 := s_2;
+    __flatten_39 := s_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_107 := __flatten_39 -- testHistoryThreadsApplication.vpr@677.3--677.32
@@ -5649,14 +5649,14 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Worker__s := __flatten_107 -- testHistoryThreadsApplication.vpr@678.3--678.33
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@678.3--678.33) [162725]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@678.3--678.33) [39210]"}
       FullPerm == Mask[diz, Worker__s];
     Heap := Heap[diz, Worker__s:=__flatten_107];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Worker__preFork_at_Thread(diz, write), write) -- testHistoryThreadsApplication.vpr@679.3--679.57
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     Mask := Mask[null, Worker__preFork_at_Thread(diz, FullPerm):=Mask[null, Worker__preFork_at_Thread(diz, FullPerm)] + perm];
     assume state(Heap, Mask);
@@ -5672,41 +5672,41 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Worker__preFork_at_Worker(diz, write), write) -- testHistoryThreadsApplication.vpr@680.3--680.57
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access Worker__preFork_at_Thread(diz, write) (testHistoryThreadsApplication.vpr@680.3--680.57) [162731]"}
+      assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access Worker__preFork_at_Thread(diz, write) (testHistoryThreadsApplication.vpr@680.3--680.57) [39216]"}
         perm <= Mask[null, Worker__preFork_at_Thread(diz, FullPerm)];
     }
     Mask := Mask[null, Worker__preFork_at_Thread(diz, FullPerm):=Mask[null, Worker__preFork_at_Thread(diz, FullPerm)] - perm];
     
     // -- Record predicate instance information
       assume InsidePredicate(Worker__preFork_at_Worker(diz, FullPerm), Heap[null, Worker__preFork_at_Worker(diz, FullPerm)], Worker__preFork_at_Thread(diz, FullPerm), Heap[null, Worker__preFork_at_Thread(diz, FullPerm)]);
-    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. Assertion write == write might not hold. (testHistoryThreadsApplication.vpr@680.3--680.57) [162732]"}
+    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. Assertion write == write might not hold. (testHistoryThreadsApplication.vpr@680.3--680.57) [39217]"}
       FullPerm == FullPerm;
-    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@680.3--680.57) [162733]"}
+    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@680.3--680.57) [39218]"}
       Mask[diz, Worker__l] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Worker__l];
     Mask := Mask[diz, Worker__l:=Mask[diz, Worker__l] - wildcard];
-    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@680.3--680.57) [162734]"}
+    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@680.3--680.57) [39219]"}
       Mask[Heap[diz, Worker__l], SubjectLock__subject] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[Heap[diz, Worker__l], SubjectLock__subject];
     Mask := Mask[Heap[diz, Worker__l], SubjectLock__subject:=Mask[Heap[diz, Worker__l], SubjectLock__subject] - wildcard];
-    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@680.3--680.57) [162735]"}
+    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@680.3--680.57) [39220]"}
       Mask[diz, Worker__s] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Worker__s];
     Mask := Mask[diz, Worker__s:=Mask[diz, Worker__s] - wildcard];
-    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. Assertion diz.Worker__l.SubjectLock__subject == diz.Worker__s might not hold. (testHistoryThreadsApplication.vpr@680.3--680.57) [162736]"}
+    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. Assertion diz.Worker__l.SubjectLock__subject == diz.Worker__s might not hold. (testHistoryThreadsApplication.vpr@680.3--680.57) [39221]"}
       Heap[Heap[diz, Worker__l], SubjectLock__subject] == Heap[diz, Worker__s];
     perm := 1 / 2;
-    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@680.3--680.57) [162737]"}
+    assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@680.3--680.57) [39222]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access SubjectLock__valid(diz.Worker__l) (testHistoryThreadsApplication.vpr@680.3--680.57) [162738]"}
+      assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access SubjectLock__valid(diz.Worker__l) (testHistoryThreadsApplication.vpr@680.3--680.57) [39223]"}
         perm <= Mask[null, SubjectLock__valid(Heap[diz, Worker__l])];
     }
     Mask := Mask[null, SubjectLock__valid(Heap[diz, Worker__l]):=Mask[null, SubjectLock__valid(Heap[diz, Worker__l])] - perm];
@@ -5715,7 +5715,7 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
       assume InsidePredicate(Worker__preFork_at_Worker(diz, FullPerm), Heap[null, Worker__preFork_at_Worker(diz, FullPerm)], SubjectLock__valid(Heap[diz, Worker__l]), Heap[null, SubjectLock__valid(Heap[diz, Worker__l])]);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@680.3--680.57) [162740]"}
+      assert {:msg "  Folding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@680.3--680.57) [39225]"}
         perm <= Mask[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType))];
     }
     Mask := Mask[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType))] - perm];
@@ -5734,24 +5734,24 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
       Heap := Heap[null, Worker__preFork_at_Worker(diz, FullPerm):=freshVersion];
     }
     havoc newPMask;
-    assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-      { newPMask[o_15, f_20] }
-      Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm)][o_15, f_20] || Heap[null, Worker__preFork_at_Thread#sm(diz, FullPerm)][o_15, f_20] ==> newPMask[o_15, f_20]
+    assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+      { newPMask[o_5, f_11] }
+      Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm)][o_5, f_11] || Heap[null, Worker__preFork_at_Thread#sm(diz, FullPerm)][o_5, f_11] ==> newPMask[o_5, f_11]
     );
     Heap := Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm):=newPMask];
     Heap := Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm):=Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm)][diz, Worker__l:=true]];
     Heap := Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm):=Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm)][Heap[diz, Worker__l], SubjectLock__subject:=true]];
     Heap := Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm):=Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm)][diz, Worker__s:=true]];
     havoc newPMask;
-    assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-      { newPMask[o_16, f_21] }
-      Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm)][o_16, f_21] || Heap[null, SubjectLock__valid#sm(Heap[diz, Worker__l])][o_16, f_21] ==> newPMask[o_16, f_21]
+    assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+      { newPMask[o_6, f_12] }
+      Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm)][o_6, f_12] || Heap[null, SubjectLock__valid#sm(Heap[diz, Worker__l])][o_6, f_12] ==> newPMask[o_6, f_12]
     );
     Heap := Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm):=newPMask];
     havoc newPMask;
-    assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-      { newPMask[o_52, f_55] }
-      Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm)][o_52, f_55] || Heap[null, History__hist_idle#sm(Heap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType))][o_52, f_55] ==> newPMask[o_52, f_55]
+    assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+      { newPMask[o_40, f_52] }
+      Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm)][o_40, f_52] || Heap[null, History__hist_idle#sm(Heap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType))][o_40, f_52] ==> newPMask[o_40, f_52]
     );
     Heap := Heap[null, Worker__preFork_at_Worker#sm(diz, FullPerm):=newPMask];
     assume state(Heap, Mask);
@@ -5770,37 +5770,37 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
   //   acc(Worker__preFork_at_Worker(sys__result, write), write)))))) -- testHistoryThreadsApplication.vpr@682.3--682.280
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@682.10--682.280) [162742]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@682.10--682.280) [39227]"}
       sys__result != null;
-    assert {:msg "  Assert might fail. Assertion type_of(sys__result) == class_Worker() might not hold. (testHistoryThreadsApplication.vpr@682.10--682.280) [162743]"}
+    assert {:msg "  Assert might fail. Assertion type_of(sys__result) == class_Worker() might not hold. (testHistoryThreadsApplication.vpr@682.10--682.280) [39228]"}
       (type_of(sys__result): TYPEDomainType) == (class_Worker(): TYPEDomainType);
-    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@682.10--682.280) [162744]"}
+    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@682.10--682.280) [39229]"}
       AssertMask[sys__result, Worker__l] > NoPerm;
     havoc wildcard;
     assume wildcard < AssertMask[sys__result, Worker__l];
     AssertMask := AssertMask[sys__result, Worker__l:=AssertMask[sys__result, Worker__l] - wildcard];
     
     // -- Check definedness of sys__result.Worker__l == l
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@682.10--682.280) [162745]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@682.10--682.280) [39230]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Worker__l);
-    assert {:msg "  Assert might fail. Assertion sys__result.Worker__l == l might not hold. (testHistoryThreadsApplication.vpr@682.10--682.280) [162746]"}
-      AssertHeap[sys__result, Worker__l] == l_2;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@682.10--682.280) [162747]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Worker__l == l might not hold. (testHistoryThreadsApplication.vpr@682.10--682.280) [39231]"}
+      AssertHeap[sys__result, Worker__l] == l_1;
+    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@682.10--682.280) [39232]"}
       AssertMask[sys__result, Worker__s] > NoPerm;
     havoc wildcard;
     assume wildcard < AssertMask[sys__result, Worker__s];
     AssertMask := AssertMask[sys__result, Worker__s:=AssertMask[sys__result, Worker__s] - wildcard];
     
     // -- Check definedness of sys__result.Worker__s == s
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@682.10--682.280) [162748]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@682.10--682.280) [39233]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Worker__s);
-    assert {:msg "  Assert might fail. Assertion sys__result.Worker__s == s might not hold. (testHistoryThreadsApplication.vpr@682.10--682.280) [162749]"}
-      AssertHeap[sys__result, Worker__s] == s_2;
+    assert {:msg "  Assert might fail. Assertion sys__result.Worker__s == s might not hold. (testHistoryThreadsApplication.vpr@682.10--682.280) [39234]"}
+      AssertHeap[sys__result, Worker__s] == s_1;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Worker__preFork_at_Worker(sys__result, write) (testHistoryThreadsApplication.vpr@682.10--682.280) [162751]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Worker__preFork_at_Worker(sys__result, write) (testHistoryThreadsApplication.vpr@682.10--682.280) [39236]"}
         perm <= AssertMask[null, Worker__preFork_at_Worker(sys__result, FullPerm)];
     }
     AssertMask := AssertMask[null, Worker__preFork_at_Worker(sys__result, FullPerm):=AssertMask[null, Worker__preFork_at_Worker(sys__result, FullPerm)] - perm];
@@ -5812,29 +5812,29 @@ procedure Worker__Worker_at_Worker(current_thread_id: int, s_2: Ref, l_2: Ref) r
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@658.11--658.30) [162752]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@658.11--658.30) [39237]"}
       sys__result != null;
-    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. Assertion type_of(sys__result) == class_Worker() might not hold. (testHistoryThreadsApplication.vpr@659.11--659.49) [162753]"}
+    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. Assertion type_of(sys__result) == class_Worker() might not hold. (testHistoryThreadsApplication.vpr@659.11--659.49) [39238]"}
       (type_of(sys__result): TYPEDomainType) == (class_Worker(): TYPEDomainType);
-    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@660.11--660.47) [162754]"}
+    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. There might be insufficient permission to access sys__result.Worker__l (testHistoryThreadsApplication.vpr@660.11--660.47) [39239]"}
       Mask[sys__result, Worker__l] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, Worker__l];
     Mask := Mask[sys__result, Worker__l:=Mask[sys__result, Worker__l] - wildcard];
-    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. Assertion sys__result.Worker__l == l might not hold. (testHistoryThreadsApplication.vpr@661.11--661.37) [162755]"}
-      Heap[sys__result, Worker__l] == l_2;
-    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@662.11--662.47) [162756]"}
+    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. Assertion sys__result.Worker__l == l might not hold. (testHistoryThreadsApplication.vpr@661.11--661.37) [39240]"}
+      Heap[sys__result, Worker__l] == l_1;
+    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. There might be insufficient permission to access sys__result.Worker__s (testHistoryThreadsApplication.vpr@662.11--662.47) [39241]"}
       Mask[sys__result, Worker__s] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, Worker__s];
     Mask := Mask[sys__result, Worker__s:=Mask[sys__result, Worker__s] - wildcard];
-    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. Assertion sys__result.Worker__s == s might not hold. (testHistoryThreadsApplication.vpr@663.11--663.37) [162757]"}
-      Heap[sys__result, Worker__s] == s_2;
+    assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. Assertion sys__result.Worker__s == s might not hold. (testHistoryThreadsApplication.vpr@663.11--663.37) [39242]"}
+      Heap[sys__result, Worker__s] == s_1;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. There might be insufficient permission to access Worker__preFork_at_Worker(sys__result, write) (testHistoryThreadsApplication.vpr@664.11--664.68) [162758]"}
+      assert {:msg "  Postcondition of Worker__Worker_at_Worker might not hold. There might be insufficient permission to access Worker__preFork_at_Worker(sys__result, write) (testHistoryThreadsApplication.vpr@664.11--664.68) [39243]"}
         perm <= Mask[null, Worker__preFork_at_Worker(sys__result, FullPerm)];
     }
     Mask := Mask[null, Worker__preFork_at_Worker(sys__result, FullPerm):=Mask[null, Worker__preFork_at_Worker(sys__result, FullPerm)] - perm];
@@ -5852,13 +5852,13 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_43: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var wildcard: real where wildcard > NoPerm;
   var PreCallHeap: HeapType;
@@ -5903,8 +5903,8 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5924,11 +5924,11 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   // -- Translating statement: unfold acc(Worker__preFork_at_Worker(diz, write), write) -- testHistoryThreadsApplication.vpr@694.3--694.59
     assume Worker__preFork_at_Worker#trigger(Heap, Worker__preFork_at_Worker(diz, FullPerm));
     assume Heap[null, Worker__preFork_at_Worker(diz, FullPerm)] == CombineFrames(Heap[null, Worker__preFork_at_Thread(diz, FullPerm)], CombineFrames(FrameFragment(Heap[diz, Worker__l]), CombineFrames(FrameFragment(Heap[Heap[diz, Worker__l], SubjectLock__subject]), CombineFrames(FrameFragment(Heap[diz, Worker__s]), CombineFrames(Heap[null, SubjectLock__valid(Heap[diz, Worker__l])], Heap[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType))])))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access Worker__preFork_at_Worker(diz, write) (testHistoryThreadsApplication.vpr@694.3--694.59) [162761]"}
+      assert {:msg "  Unfolding Worker__preFork_at_Worker(diz, write) might fail. There might be insufficient permission to access Worker__preFork_at_Worker(diz, write) (testHistoryThreadsApplication.vpr@694.3--694.59) [39246]"}
         perm <= Mask[null, Worker__preFork_at_Worker(diz, FullPerm)];
     }
     Mask := Mask[null, Worker__preFork_at_Worker(diz, FullPerm):=Mask[null, Worker__preFork_at_Worker(diz, FullPerm)] - perm];
@@ -5962,7 +5962,7 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
     assume state(Heap, Mask);
     assume Heap[Heap[diz, Worker__l], SubjectLock__subject] == Heap[diz, Worker__s];
     perm := 1 / 2;
-    assert {:msg "  Unfolding Worker__preFork_at_Worker(diz, write) might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@694.3--694.59) [162763]"}
+    assert {:msg "  Unfolding Worker__preFork_at_Worker(diz, write) might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@694.3--694.59) [39248]"}
       perm >= NoPerm;
     Mask := Mask[null, SubjectLock__valid(Heap[diz, Worker__l]):=Mask[null, SubjectLock__valid(Heap[diz, Worker__l])] + perm];
     
@@ -5983,25 +5983,25 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
     PreCallMask := Mask;
     
     // -- Check definedness of diz.Worker__l
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@695.3--695.79) [162765]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@695.3--695.79) [39250]"}
         HasDirectPerm(Mask, diz, Worker__l);
     arg_diz := Heap[diz, Worker__l];
     arg_p := 1 / 2;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method SubjectLock__lock might not hold. Assertion diz.Worker__l != null might not hold. (testHistoryThreadsApplication.vpr@695.3--695.79) [162766]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method SubjectLock__lock might not hold. Assertion diz.Worker__l != null might not hold. (testHistoryThreadsApplication.vpr@695.3--695.79) [39251]"}
         arg_diz != null;
-      assert {:msg "  The precondition of method SubjectLock__lock might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@695.3--695.79) [162767]"}
+      assert {:msg "  The precondition of method SubjectLock__lock might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@695.3--695.79) [39252]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method SubjectLock__lock might not hold. Assertion 1 / 2 >= none might not hold. (testHistoryThreadsApplication.vpr@695.3--695.79) [162768]"}
+      assert {:msg "  The precondition of method SubjectLock__lock might not hold. Assertion 1 / 2 >= none might not hold. (testHistoryThreadsApplication.vpr@695.3--695.79) [39253]"}
         NoPerm <= arg_p;
       perm := arg_p;
-      assert {:msg "  The precondition of method SubjectLock__lock might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@695.3--695.79) [162769]"}
+      assert {:msg "  The precondition of method SubjectLock__lock might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@695.3--695.79) [39254]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method SubjectLock__lock might not hold. There might be insufficient permission to access SubjectLock__valid(diz.Worker__l) (testHistoryThreadsApplication.vpr@695.3--695.79) [162770]"}
+        assert {:msg "  The precondition of method SubjectLock__lock might not hold. There might be insufficient permission to access SubjectLock__valid(diz.Worker__l) (testHistoryThreadsApplication.vpr@695.3--695.79) [39255]"}
           perm <= Mask[null, SubjectLock__valid(arg_diz)];
       }
       Mask := Mask[null, SubjectLock__valid(arg_diz):=Mask[null, SubjectLock__valid(arg_diz)] - perm];
@@ -6027,15 +6027,15 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   // -- Translating statement: unfold acc(SubjectLock__inv(diz.Worker__l), write) -- testHistoryThreadsApplication.vpr@696.3--696.53
     
     // -- Check definedness of acc(SubjectLock__inv(diz.Worker__l), write)
-      assert {:msg "  Unfolding SubjectLock__inv(diz.Worker__l) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@696.3--696.53) [162771]"}
+      assert {:msg "  Unfolding SubjectLock__inv(diz.Worker__l) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@696.3--696.53) [39256]"}
         HasDirectPerm(Mask, diz, Worker__l);
     assume SubjectLock__inv#trigger(Heap, SubjectLock__inv(Heap[diz, Worker__l]));
     assume Heap[null, SubjectLock__inv(Heap[diz, Worker__l])] == CombineFrames(FrameFragment(Heap[Heap[diz, Worker__l], SubjectLock__subject]), Heap[null, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject])]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding SubjectLock__inv(diz.Worker__l) might fail. There might be insufficient permission to access SubjectLock__inv(diz.Worker__l) (testHistoryThreadsApplication.vpr@696.3--696.53) [162774]"}
+      assert {:msg "  Unfolding SubjectLock__inv(diz.Worker__l) might fail. There might be insufficient permission to access SubjectLock__inv(diz.Worker__l) (testHistoryThreadsApplication.vpr@696.3--696.53) [39259]"}
         perm <= Mask[null, SubjectLock__inv(Heap[diz, Worker__l])];
     }
     Mask := Mask[null, SubjectLock__inv(Heap[diz, Worker__l]):=Mask[null, SubjectLock__inv(Heap[diz, Worker__l])] - perm];
@@ -6062,17 +6062,17 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   // -- Translating statement: unfold acc(History__inv(diz.Worker__l.SubjectLock__subject), write) -- testHistoryThreadsApplication.vpr@697.3--697.70
     
     // -- Check definedness of acc(History__inv(diz.Worker__l.SubjectLock__subject), write)
-      assert {:msg "  Unfolding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@697.3--697.70) [162776]"}
+      assert {:msg "  Unfolding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@697.3--697.70) [39261]"}
         HasDirectPerm(Mask, diz, Worker__l);
-      assert {:msg "  Unfolding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@697.3--697.70) [162777]"}
+      assert {:msg "  Unfolding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@697.3--697.70) [39262]"}
         HasDirectPerm(Mask, Heap[diz, Worker__l], SubjectLock__subject);
     assume History__inv#trigger(Heap, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject]));
     assume Heap[null, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject])] == CombineFrames(FrameFragment(Heap[Heap[Heap[diz, Worker__l], SubjectLock__subject], History__x_hist_value]), FrameFragment(Heap[Heap[Heap[diz, Worker__l], SubjectLock__subject], History__x_hist_mode]));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access History__inv(diz.Worker__l.SubjectLock__subject) (testHistoryThreadsApplication.vpr@697.3--697.70) [162780]"}
+      assert {:msg "  Unfolding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access History__inv(diz.Worker__l.SubjectLock__subject) (testHistoryThreadsApplication.vpr@697.3--697.70) [39265]"}
         perm <= Mask[null, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject])];
     }
     Mask := Mask[null, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject]):=Mask[null, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject])] - perm];
@@ -6097,15 +6097,15 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   // -- Translating statement: assert acc(History__hist_idle(diz.Worker__s, 1 / 2, p_empty()), write) -- testHistoryThreadsApplication.vpr@698.3--698.73
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of acc(History__hist_idle(diz.Worker__s, 1 / 2, p_empty()), write)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@698.10--698.73) [162783]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@698.10--698.73) [39268]"}
         HasDirectPerm(ExhaleWellDef0Mask, diz, Worker__s);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@698.10--698.73) [162785]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@698.10--698.73) [39270]"}
         perm <= AssertMask[null, History__hist_idle(AssertHeap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType))];
     }
     AssertMask := AssertMask[null, History__hist_idle(AssertHeap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType)):=AssertMask[null, History__hist_idle(AssertHeap[diz, Worker__s], 1 / 2, (p_empty(): ProcessDomainType))] - perm];
@@ -6117,40 +6117,40 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
     PreCallMask := Mask;
     
     // -- Check definedness of diz.Worker__s
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@699.3--699.89) [162786]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@699.3--699.89) [39271]"}
         HasDirectPerm(Mask, diz, Worker__s);
     arg_diz_1 := Heap[diz, Worker__s];
     arg_frac := 1 / 2;
     arg_proc := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method History__incr_begin might not hold. Assertion diz.Worker__s != null might not hold. (testHistoryThreadsApplication.vpr@699.3--699.89) [162787]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method History__incr_begin might not hold. Assertion diz.Worker__s != null might not hold. (testHistoryThreadsApplication.vpr@699.3--699.89) [39272]"}
         arg_diz_1 != null;
-      assert {:msg "  The precondition of method History__incr_begin might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@699.3--699.89) [162788]"}
+      assert {:msg "  The precondition of method History__incr_begin might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@699.3--699.89) [39273]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method History__incr_begin might not hold. Assertion 1 / 2 != none might not hold. (testHistoryThreadsApplication.vpr@699.3--699.89) [162789]"}
+      assert {:msg "  The precondition of method History__incr_begin might not hold. Assertion 1 / 2 != none might not hold. (testHistoryThreadsApplication.vpr@699.3--699.89) [39274]"}
         arg_frac != NoPerm;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__incr_begin might not hold. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@699.3--699.89) [162790]"}
+        assert {:msg "  The precondition of method History__incr_begin might not hold. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@699.3--699.89) [39275]"}
           perm <= Mask[null, History__hist_idle(arg_diz_1, arg_frac, arg_proc)];
       }
       Mask := Mask[null, History__hist_idle(arg_diz_1, arg_frac, arg_proc):=Mask[null, History__hist_idle(arg_diz_1, arg_frac, arg_proc)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__incr_begin might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_value (testHistoryThreadsApplication.vpr@699.3--699.89) [162791]"}
+        assert {:msg "  The precondition of method History__incr_begin might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_value (testHistoryThreadsApplication.vpr@699.3--699.89) [39276]"}
           perm <= Mask[arg_diz_1, History__x_hist_value];
       }
       Mask := Mask[arg_diz_1, History__x_hist_value:=Mask[arg_diz_1, History__x_hist_value] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__incr_begin might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_mode (testHistoryThreadsApplication.vpr@699.3--699.89) [162792]"}
+        assert {:msg "  The precondition of method History__incr_begin might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_mode (testHistoryThreadsApplication.vpr@699.3--699.89) [39277]"}
           perm <= Mask[arg_diz_1, History__x_hist_mode];
       }
       Mask := Mask[arg_diz_1, History__x_hist_mode:=Mask[arg_diz_1, History__x_hist_mode] - perm];
-      assert {:msg "  The precondition of method History__incr_begin might not hold. Assertion diz.Worker__s.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@699.3--699.89) [162793]"}
+      assert {:msg "  The precondition of method History__incr_begin might not hold. Assertion diz.Worker__s.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@699.3--699.89) [39278]"}
         Heap[arg_diz_1, History__x_hist_mode] == 1;
       // Finish exhale
       havoc ExhaleHeap;
@@ -6187,7 +6187,7 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   // -- Translating statement: __flatten_43 := diz.Worker__s -- testHistoryThreadsApplication.vpr@700.3--700.32
     
     // -- Check definedness of diz.Worker__s
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@700.3--700.32) [162794]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@700.3--700.32) [39279]"}
         HasDirectPerm(Mask, diz, Worker__s);
     __flatten_43 := Heap[diz, Worker__s];
     assume state(Heap, Mask);
@@ -6198,37 +6198,37 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
     PreCallMask := Mask;
     
     // -- Check definedness of diz.Worker__s
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@701.3--701.111) [162795]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@701.3--701.111) [39280]"}
         HasDirectPerm(Mask, diz, Worker__s);
     
     // -- Check definedness of __flatten_43.History__x_hist_value + 1
-      assert {:msg "  Method call might fail. There might be insufficient permission to access __flatten_43.History__x_hist_value (testHistoryThreadsApplication.vpr@701.3--701.111) [162796]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access __flatten_43.History__x_hist_value (testHistoryThreadsApplication.vpr@701.3--701.111) [39281]"}
         HasDirectPerm(Mask, __flatten_43, History__x_hist_value);
     arg_diz_2 := Heap[diz, Worker__s];
     arg_value := Heap[__flatten_43, History__x_hist_value] + 1;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method History__hist_set_x might not hold. Assertion diz.Worker__s != null might not hold. (testHistoryThreadsApplication.vpr@701.3--701.111) [162797]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method History__hist_set_x might not hold. Assertion diz.Worker__s != null might not hold. (testHistoryThreadsApplication.vpr@701.3--701.111) [39282]"}
         arg_diz_2 != null;
-      assert {:msg "  The precondition of method History__hist_set_x might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@701.3--701.111) [162798]"}
+      assert {:msg "  The precondition of method History__hist_set_x might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@701.3--701.111) [39283]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__hist_set_x might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_value (testHistoryThreadsApplication.vpr@701.3--701.111) [162799]"}
+        assert {:msg "  The precondition of method History__hist_set_x might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_value (testHistoryThreadsApplication.vpr@701.3--701.111) [39284]"}
           perm <= Mask[arg_diz_2, History__x_hist_value];
       }
       Mask := Mask[arg_diz_2, History__x_hist_value:=Mask[arg_diz_2, History__x_hist_value] - perm];
       perm := 1 / 2;
-      assert {:msg "  The precondition of method History__hist_set_x might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@701.3--701.111) [162800]"}
+      assert {:msg "  The precondition of method History__hist_set_x might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@701.3--701.111) [39285]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__hist_set_x might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_mode (testHistoryThreadsApplication.vpr@701.3--701.111) [162801]"}
+        assert {:msg "  The precondition of method History__hist_set_x might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_mode (testHistoryThreadsApplication.vpr@701.3--701.111) [39286]"}
           perm <= Mask[arg_diz_2, History__x_hist_mode];
       }
       Mask := Mask[arg_diz_2, History__x_hist_mode:=Mask[arg_diz_2, History__x_hist_mode] - perm];
-      assert {:msg "  The precondition of method History__hist_set_x might not hold. Assertion diz.Worker__s.History__x_hist_mode == 2 might not hold. (testHistoryThreadsApplication.vpr@701.3--701.111) [162802]"}
+      assert {:msg "  The precondition of method History__hist_set_x might not hold. Assertion diz.Worker__s.History__x_hist_mode == 2 might not hold. (testHistoryThreadsApplication.vpr@701.3--701.111) [39287]"}
         Heap[arg_diz_2, History__x_hist_mode] == 2;
       // Finish exhale
       havoc ExhaleHeap;
@@ -6245,7 +6245,7 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
       assume state(Heap, Mask);
       assume Heap[arg_diz_2, History__x_hist_value] == arg_value;
       perm := 1 / 2;
-      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@701.3--701.111) [162803]"}
+      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@701.3--701.111) [39288]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> arg_diz_2 != null;
       Mask := Mask[arg_diz_2, History__x_hist_mode:=Mask[arg_diz_2, History__x_hist_mode] + perm];
@@ -6261,48 +6261,48 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
     PreCallMask := Mask;
     
     // -- Check definedness of diz.Worker__s
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@702.3--702.90) [162804]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@702.3--702.90) [39289]"}
         HasDirectPerm(Mask, diz, Worker__s);
     arg_diz_3 := Heap[diz, Worker__s];
     arg_frac_1 := 1 / 2;
     arg_proc_1 := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method History__incr_commit might not hold. Assertion diz.Worker__s != null might not hold. (testHistoryThreadsApplication.vpr@702.3--702.90) [162805]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method History__incr_commit might not hold. Assertion diz.Worker__s != null might not hold. (testHistoryThreadsApplication.vpr@702.3--702.90) [39290]"}
         arg_diz_3 != null;
-      assert {:msg "  The precondition of method History__incr_commit might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@702.3--702.90) [162806]"}
+      assert {:msg "  The precondition of method History__incr_commit might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@702.3--702.90) [39291]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method History__incr_commit might not hold. Assertion 1 / 2 != none might not hold. (testHistoryThreadsApplication.vpr@702.3--702.90) [162807]"}
+      assert {:msg "  The precondition of method History__incr_commit might not hold. Assertion 1 / 2 != none might not hold. (testHistoryThreadsApplication.vpr@702.3--702.90) [39292]"}
         arg_frac_1 != NoPerm;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__incr_commit might not hold. There might be insufficient permission to access History__hist_do_incr(diz.Worker__s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@702.3--702.90) [162808]"}
+        assert {:msg "  The precondition of method History__incr_commit might not hold. There might be insufficient permission to access History__hist_do_incr(diz.Worker__s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@702.3--702.90) [39293]"}
           perm <= Mask[null, History__hist_do_incr(arg_diz_3, arg_frac_1, arg_proc_1)];
       }
       Mask := Mask[null, History__hist_do_incr(arg_diz_3, arg_frac_1, arg_proc_1):=Mask[null, History__hist_do_incr(arg_diz_3, arg_frac_1, arg_proc_1)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__incr_commit might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_act (testHistoryThreadsApplication.vpr@702.3--702.90) [162809]"}
+        assert {:msg "  The precondition of method History__incr_commit might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_act (testHistoryThreadsApplication.vpr@702.3--702.90) [39294]"}
           perm <= Mask[arg_diz_3, History__x_hist_act];
       }
       Mask := Mask[arg_diz_3, History__x_hist_act:=Mask[arg_diz_3, History__x_hist_act] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__incr_commit might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_value (testHistoryThreadsApplication.vpr@702.3--702.90) [162810]"}
+        assert {:msg "  The precondition of method History__incr_commit might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_value (testHistoryThreadsApplication.vpr@702.3--702.90) [39295]"}
           perm <= Mask[arg_diz_3, History__x_hist_value];
       }
       Mask := Mask[arg_diz_3, History__x_hist_value:=Mask[arg_diz_3, History__x_hist_value] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__incr_commit might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_mode (testHistoryThreadsApplication.vpr@702.3--702.90) [162811]"}
+        assert {:msg "  The precondition of method History__incr_commit might not hold. There might be insufficient permission to access diz.Worker__s.History__x_hist_mode (testHistoryThreadsApplication.vpr@702.3--702.90) [39296]"}
           perm <= Mask[arg_diz_3, History__x_hist_mode];
       }
       Mask := Mask[arg_diz_3, History__x_hist_mode:=Mask[arg_diz_3, History__x_hist_mode] - perm];
-      assert {:msg "  The precondition of method History__incr_commit might not hold. Assertion diz.Worker__s.History__x_hist_mode == 2 might not hold. (testHistoryThreadsApplication.vpr@702.3--702.90) [162812]"}
+      assert {:msg "  The precondition of method History__incr_commit might not hold. Assertion diz.Worker__s.History__x_hist_mode == 2 might not hold. (testHistoryThreadsApplication.vpr@702.3--702.90) [39297]"}
         Heap[arg_diz_3, History__x_hist_mode] == 2;
-      assert {:msg "  The precondition of method History__incr_commit might not hold. Assertion diz.Worker__s.History__x_hist_value == diz.Worker__s.History__x_hist_act + 1 might not hold. (testHistoryThreadsApplication.vpr@702.3--702.90) [162813]"}
+      assert {:msg "  The precondition of method History__incr_commit might not hold. Assertion diz.Worker__s.History__x_hist_value == diz.Worker__s.History__x_hist_act + 1 might not hold. (testHistoryThreadsApplication.vpr@702.3--702.90) [39298]"}
         Heap[arg_diz_3, History__x_hist_value] == Heap[arg_diz_3, History__x_hist_act] + 1;
       // Finish exhale
       havoc ExhaleHeap;
@@ -6334,15 +6334,15 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   // -- Translating statement: assert acc(History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)), write) -- testHistoryThreadsApplication.vpr@703.3--703.75
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of acc(History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)), write)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@703.10--703.75) [162814]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@703.10--703.75) [39299]"}
         HasDirectPerm(ExhaleWellDef0Mask, diz, Worker__s);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)) (testHistoryThreadsApplication.vpr@703.10--703.75) [162816]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)) (testHistoryThreadsApplication.vpr@703.10--703.75) [39301]"}
         perm <= AssertMask[null, History__hist_idle(AssertHeap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))];
     }
     AssertMask := AssertMask[null, History__hist_idle(AssertHeap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType)):=AssertMask[null, History__hist_idle(AssertHeap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))] - perm];
@@ -6351,25 +6351,25 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   // -- Translating statement: fold acc(History__inv(diz.Worker__l.SubjectLock__subject), write) -- testHistoryThreadsApplication.vpr@704.3--704.68
     
     // -- Check definedness of acc(History__inv(diz.Worker__l.SubjectLock__subject), write)
-      assert {:msg "  Folding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@704.3--704.68) [162817]"}
+      assert {:msg "  Folding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@704.3--704.68) [39302]"}
         HasDirectPerm(Mask, diz, Worker__l);
-      assert {:msg "  Folding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@704.3--704.68) [162818]"}
+      assert {:msg "  Folding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@704.3--704.68) [39303]"}
         HasDirectPerm(Mask, Heap[diz, Worker__l], SubjectLock__subject);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject.History__x_hist_value (testHistoryThreadsApplication.vpr@704.3--704.68) [162821]"}
+      assert {:msg "  Folding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject.History__x_hist_value (testHistoryThreadsApplication.vpr@704.3--704.68) [39306]"}
         perm <= Mask[Heap[Heap[diz, Worker__l], SubjectLock__subject], History__x_hist_value];
     }
     Mask := Mask[Heap[Heap[diz, Worker__l], SubjectLock__subject], History__x_hist_value:=Mask[Heap[Heap[diz, Worker__l], SubjectLock__subject], History__x_hist_value] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject.History__x_hist_mode (testHistoryThreadsApplication.vpr@704.3--704.68) [162823]"}
+      assert {:msg "  Folding History__inv(diz.Worker__l.SubjectLock__subject) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject.History__x_hist_mode (testHistoryThreadsApplication.vpr@704.3--704.68) [39308]"}
         perm <= Mask[Heap[Heap[diz, Worker__l], SubjectLock__subject], History__x_hist_mode];
     }
     Mask := Mask[Heap[Heap[diz, Worker__l], SubjectLock__subject], History__x_hist_mode:=Mask[Heap[Heap[diz, Worker__l], SubjectLock__subject], History__x_hist_mode] - perm];
-    assert {:msg "  Folding History__inv(diz.Worker__l.SubjectLock__subject) might fail. Assertion diz.Worker__l.SubjectLock__subject.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@704.3--704.68) [162824]"}
+    assert {:msg "  Folding History__inv(diz.Worker__l.SubjectLock__subject) might fail. Assertion diz.Worker__l.SubjectLock__subject.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@704.3--704.68) [39309]"}
       Heap[Heap[Heap[diz, Worker__l], SubjectLock__subject], History__x_hist_mode] == 1;
     perm := FullPerm;
     Mask := Mask[null, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject]):=Mask[null, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject])] + perm];
@@ -6390,18 +6390,18 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   // -- Translating statement: fold acc(SubjectLock__inv(diz.Worker__l), write) -- testHistoryThreadsApplication.vpr@705.3--705.51
     
     // -- Check definedness of acc(SubjectLock__inv(diz.Worker__l), write)
-      assert {:msg "  Folding SubjectLock__inv(diz.Worker__l) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@705.3--705.51) [162826]"}
+      assert {:msg "  Folding SubjectLock__inv(diz.Worker__l) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@705.3--705.51) [39311]"}
         HasDirectPerm(Mask, diz, Worker__l);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Folding SubjectLock__inv(diz.Worker__l) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@705.3--705.51) [162828]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Folding SubjectLock__inv(diz.Worker__l) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@705.3--705.51) [39313]"}
       Mask[Heap[diz, Worker__l], SubjectLock__subject] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[Heap[diz, Worker__l], SubjectLock__subject];
     Mask := Mask[Heap[diz, Worker__l], SubjectLock__subject:=Mask[Heap[diz, Worker__l], SubjectLock__subject] - wildcard];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding SubjectLock__inv(diz.Worker__l) might fail. There might be insufficient permission to access History__inv(diz.Worker__l.SubjectLock__subject) (testHistoryThreadsApplication.vpr@705.3--705.51) [162830]"}
+      assert {:msg "  Folding SubjectLock__inv(diz.Worker__l) might fail. There might be insufficient permission to access History__inv(diz.Worker__l.SubjectLock__subject) (testHistoryThreadsApplication.vpr@705.3--705.51) [39315]"}
         perm <= Mask[null, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject])];
     }
     Mask := Mask[null, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject]):=Mask[null, History__inv(Heap[Heap[diz, Worker__l], SubjectLock__subject])] - perm];
@@ -6421,9 +6421,9 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
     }
     Heap := Heap[null, SubjectLock__inv#sm(Heap[diz, Worker__l]):=Heap[null, SubjectLock__inv#sm(Heap[diz, Worker__l])][Heap[diz, Worker__l], SubjectLock__subject:=true]];
     havoc newPMask;
-    assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-      { newPMask[o_53, f_56] }
-      Heap[null, SubjectLock__inv#sm(Heap[diz, Worker__l])][o_53, f_56] || Heap[null, History__inv#sm(Heap[Heap[diz, Worker__l], SubjectLock__subject])][o_53, f_56] ==> newPMask[o_53, f_56]
+    assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+      { newPMask[o_42, f_55] }
+      Heap[null, SubjectLock__inv#sm(Heap[diz, Worker__l])][o_42, f_55] || Heap[null, History__inv#sm(Heap[Heap[diz, Worker__l], SubjectLock__subject])][o_42, f_55] ==> newPMask[o_42, f_55]
     );
     Heap := Heap[null, SubjectLock__inv#sm(Heap[diz, Worker__l]):=newPMask];
     assume state(Heap, Mask);
@@ -6435,31 +6435,31 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
     PreCallMask := Mask;
     
     // -- Check definedness of diz.Worker__l
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@706.3--706.81) [162832]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@706.3--706.81) [39317]"}
         HasDirectPerm(Mask, diz, Worker__l);
     arg_diz_4 := Heap[diz, Worker__l];
     arg_p_1 := 1 / 2;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method SubjectLock__unlock might not hold. Assertion diz.Worker__l != null might not hold. (testHistoryThreadsApplication.vpr@706.3--706.81) [162833]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method SubjectLock__unlock might not hold. Assertion diz.Worker__l != null might not hold. (testHistoryThreadsApplication.vpr@706.3--706.81) [39318]"}
         arg_diz_4 != null;
-      assert {:msg "  The precondition of method SubjectLock__unlock might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@706.3--706.81) [162834]"}
+      assert {:msg "  The precondition of method SubjectLock__unlock might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@706.3--706.81) [39319]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method SubjectLock__unlock might not hold. There might be insufficient permission to access SubjectLock__locked(diz.Worker__l, 1 / 2, 1) (testHistoryThreadsApplication.vpr@706.3--706.81) [162835]"}
+        assert {:msg "  The precondition of method SubjectLock__unlock might not hold. There might be insufficient permission to access SubjectLock__locked(diz.Worker__l, 1 / 2, 1) (testHistoryThreadsApplication.vpr@706.3--706.81) [39320]"}
           perm <= Mask[null, SubjectLock__locked(arg_diz_4, arg_p_1, 1)];
       }
       Mask := Mask[null, SubjectLock__locked(arg_diz_4, arg_p_1, 1):=Mask[null, SubjectLock__locked(arg_diz_4, arg_p_1, 1)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method SubjectLock__unlock might not hold. There might be insufficient permission to access SubjectLock__inv(diz.Worker__l) (testHistoryThreadsApplication.vpr@706.3--706.81) [162836]"}
+        assert {:msg "  The precondition of method SubjectLock__unlock might not hold. There might be insufficient permission to access SubjectLock__inv(diz.Worker__l) (testHistoryThreadsApplication.vpr@706.3--706.81) [39321]"}
           perm <= Mask[null, SubjectLock__inv(arg_diz_4)];
       }
       Mask := Mask[null, SubjectLock__inv(arg_diz_4):=Mask[null, SubjectLock__inv(arg_diz_4)] - perm];
-      assert {:msg "  The precondition of method SubjectLock__unlock might not hold. Assertion 1 / 2 >= none might not hold. (testHistoryThreadsApplication.vpr@706.3--706.81) [162837]"}
+      assert {:msg "  The precondition of method SubjectLock__unlock might not hold. Assertion 1 / 2 >= none might not hold. (testHistoryThreadsApplication.vpr@706.3--706.81) [39322]"}
         NoPerm <= arg_p_1;
       // Finish exhale
       havoc ExhaleHeap;
@@ -6471,7 +6471,7 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
     
     // -- Inhaling postcondition
       perm := arg_p_1;
-      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@706.3--706.81) [162838]"}
+      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@706.3--706.81) [39323]"}
         perm >= NoPerm;
       Mask := Mask[null, SubjectLock__valid(arg_diz_4):=Mask[null, SubjectLock__valid(arg_diz_4)] + perm];
       assume state(Heap, Mask);
@@ -6482,23 +6482,23 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
   // -- Translating statement: assert acc(History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)), write) -- testHistoryThreadsApplication.vpr@707.3--707.75
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of acc(History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)), write)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@707.10--707.75) [162839]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@707.10--707.75) [39324]"}
         HasDirectPerm(ExhaleWellDef0Mask, diz, Worker__s);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)) (testHistoryThreadsApplication.vpr@707.10--707.75) [162841]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)) (testHistoryThreadsApplication.vpr@707.10--707.75) [39326]"}
         perm <= AssertMask[null, History__hist_idle(AssertHeap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))];
     }
     AssertMask := AssertMask[null, History__hist_idle(AssertHeap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType)):=AssertMask[null, History__hist_idle(AssertHeap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))] - perm];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Worker__postJoin_at_Thread(diz, write), write) -- testHistoryThreadsApplication.vpr@708.3--708.58
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     Mask := Mask[null, Worker__postJoin_at_Thread(diz, FullPerm):=Mask[null, Worker__postJoin_at_Thread(diz, FullPerm)] + perm];
     assume state(Heap, Mask);
@@ -6514,41 +6514,41 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Worker__postJoin_at_Worker(diz, write), write) -- testHistoryThreadsApplication.vpr@709.3--709.58
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access Worker__postJoin_at_Thread(diz, write) (testHistoryThreadsApplication.vpr@709.3--709.58) [162847]"}
+      assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access Worker__postJoin_at_Thread(diz, write) (testHistoryThreadsApplication.vpr@709.3--709.58) [39332]"}
         perm <= Mask[null, Worker__postJoin_at_Thread(diz, FullPerm)];
     }
     Mask := Mask[null, Worker__postJoin_at_Thread(diz, FullPerm):=Mask[null, Worker__postJoin_at_Thread(diz, FullPerm)] - perm];
     
     // -- Record predicate instance information
       assume InsidePredicate(Worker__postJoin_at_Worker(diz, FullPerm), Heap[null, Worker__postJoin_at_Worker(diz, FullPerm)], Worker__postJoin_at_Thread(diz, FullPerm), Heap[null, Worker__postJoin_at_Thread(diz, FullPerm)]);
-    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. Assertion write == write might not hold. (testHistoryThreadsApplication.vpr@709.3--709.58) [162848]"}
+    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. Assertion write == write might not hold. (testHistoryThreadsApplication.vpr@709.3--709.58) [39333]"}
       FullPerm == FullPerm;
-    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@709.3--709.58) [162849]"}
+    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__l (testHistoryThreadsApplication.vpr@709.3--709.58) [39334]"}
       Mask[diz, Worker__l] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Worker__l];
     Mask := Mask[diz, Worker__l:=Mask[diz, Worker__l] - wildcard];
-    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@709.3--709.58) [162850]"}
+    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__l.SubjectLock__subject (testHistoryThreadsApplication.vpr@709.3--709.58) [39335]"}
       Mask[Heap[diz, Worker__l], SubjectLock__subject] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[Heap[diz, Worker__l], SubjectLock__subject];
     Mask := Mask[Heap[diz, Worker__l], SubjectLock__subject:=Mask[Heap[diz, Worker__l], SubjectLock__subject] - wildcard];
-    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@709.3--709.58) [162851]"}
+    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access diz.Worker__s (testHistoryThreadsApplication.vpr@709.3--709.58) [39336]"}
       Mask[diz, Worker__s] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Worker__s];
     Mask := Mask[diz, Worker__s:=Mask[diz, Worker__s] - wildcard];
-    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. Assertion diz.Worker__l.SubjectLock__subject == diz.Worker__s might not hold. (testHistoryThreadsApplication.vpr@709.3--709.58) [162852]"}
+    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. Assertion diz.Worker__l.SubjectLock__subject == diz.Worker__s might not hold. (testHistoryThreadsApplication.vpr@709.3--709.58) [39337]"}
       Heap[Heap[diz, Worker__l], SubjectLock__subject] == Heap[diz, Worker__s];
     perm := 1 / 2;
-    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@709.3--709.58) [162853]"}
+    assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@709.3--709.58) [39338]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access SubjectLock__valid(diz.Worker__l) (testHistoryThreadsApplication.vpr@709.3--709.58) [162854]"}
+      assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access SubjectLock__valid(diz.Worker__l) (testHistoryThreadsApplication.vpr@709.3--709.58) [39339]"}
         perm <= Mask[null, SubjectLock__valid(Heap[diz, Worker__l])];
     }
     Mask := Mask[null, SubjectLock__valid(Heap[diz, Worker__l]):=Mask[null, SubjectLock__valid(Heap[diz, Worker__l])] - perm];
@@ -6557,7 +6557,7 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
       assume InsidePredicate(Worker__postJoin_at_Worker(diz, FullPerm), Heap[null, Worker__postJoin_at_Worker(diz, FullPerm)], SubjectLock__valid(Heap[diz, Worker__l]), Heap[null, SubjectLock__valid(Heap[diz, Worker__l])]);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)) (testHistoryThreadsApplication.vpr@709.3--709.58) [162856]"}
+      assert {:msg "  Folding Worker__postJoin_at_Worker(diz, write) might fail. There might be insufficient permission to access History__hist_idle(diz.Worker__s, 1 / 2, p_single(1)) (testHistoryThreadsApplication.vpr@709.3--709.58) [39341]"}
         perm <= Mask[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))];
     }
     Mask := Mask[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType)):=Mask[null, History__hist_idle(Heap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))] - perm];
@@ -6576,35 +6576,35 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
       Heap := Heap[null, Worker__postJoin_at_Worker(diz, FullPerm):=freshVersion];
     }
     havoc newPMask;
-    assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-      { newPMask[o_26, f_29] }
-      Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm)][o_26, f_29] || Heap[null, Worker__postJoin_at_Thread#sm(diz, FullPerm)][o_26, f_29] ==> newPMask[o_26, f_29]
+    assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+      { newPMask[o_46, f_60] }
+      Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm)][o_46, f_60] || Heap[null, Worker__postJoin_at_Thread#sm(diz, FullPerm)][o_46, f_60] ==> newPMask[o_46, f_60]
     );
     Heap := Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm):=newPMask];
     Heap := Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm):=Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm)][diz, Worker__l:=true]];
     Heap := Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm):=Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm)][Heap[diz, Worker__l], SubjectLock__subject:=true]];
     Heap := Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm):=Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm)][diz, Worker__s:=true]];
     havoc newPMask;
-    assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-      { newPMask[o, f_85] }
-      Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm)][o, f_85] || Heap[null, SubjectLock__valid#sm(Heap[diz, Worker__l])][o, f_85] ==> newPMask[o, f_85]
+    assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+      { newPMask[o, f_61] }
+      Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm)][o, f_61] || Heap[null, SubjectLock__valid#sm(Heap[diz, Worker__l])][o, f_61] ==> newPMask[o, f_61]
     );
     Heap := Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm):=newPMask];
     havoc newPMask;
-    assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-      { newPMask[o_11, f_3] }
-      Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm)][o_11, f_3] || Heap[null, History__hist_idle#sm(Heap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))][o_11, f_3] ==> newPMask[o_11, f_3]
+    assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+      { newPMask[o_14, f_3] }
+      Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm)][o_14, f_3] || Heap[null, History__hist_idle#sm(Heap[diz, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))][o_14, f_3] ==> newPMask[o_14, f_3]
     );
     Heap := Heap[null, Worker__postJoin_at_Worker#sm(diz, FullPerm):=newPMask];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__run_at_Worker might not hold. There might be insufficient permission to access Worker__postJoin_at_Worker(diz, write) (testHistoryThreadsApplication.vpr@690.11--690.61) [162858]"}
+      assert {:msg "  Postcondition of Worker__run_at_Worker might not hold. There might be insufficient permission to access Worker__postJoin_at_Worker(diz, write) (testHistoryThreadsApplication.vpr@690.11--690.61) [39343]"}
         perm <= Mask[null, Worker__postJoin_at_Worker(diz, FullPerm)];
     }
     Mask := Mask[null, Worker__postJoin_at_Worker(diz, FullPerm):=Mask[null, Worker__postJoin_at_Worker(diz, FullPerm)] - perm];
@@ -6621,8 +6621,8 @@ procedure Worker__run_at_Worker(diz: Ref, current_thread_id: int) returns (sys__
 procedure Worker__if_any_random(diz: Ref, current_thread_id: int) returns (sys__thrown: Ref, sys__result: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -6642,8 +6642,8 @@ procedure Worker__if_any_random(diz: Ref, current_thread_id: int) returns (sys__
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryThreadsApplication.vpr@716.3--716.15
     assume false;
@@ -6658,9 +6658,9 @@ procedure Worker__if_any_random(diz: Ref, current_thread_id: int) returns (sys__
 procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var s_2: Ref;
+  var oldMask: MaskType;
+  var s_1: Ref;
   var __flatten_48: Ref;
   var lock: Ref;
   var __flatten_54: Ref;
@@ -6670,8 +6670,8 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
   var __flatten_57: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var arg_frac1: Perm;
@@ -6704,11 +6704,11 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
-    assume Heap[s_2, $allocated];
+    assume Heap[s_1, $allocated];
     assume Heap[__flatten_48, $allocated];
     assume Heap[lock, $allocated];
     assume Heap[__flatten_54, $allocated];
@@ -6722,9 +6722,9 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method History__History might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@731.3--731.67) [162859]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method History__History might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@731.3--731.67) [39344]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -6758,7 +6758,7 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: s := __flatten_48 -- testHistoryThreadsApplication.vpr@732.3--732.20
-    s_2 := __flatten_48;
+    s_1 := __flatten_48;
     assume state(Heap, Mask);
   
   // -- Translating statement: sys__thrown := History__free_set_x(s, current_thread_id, 37) -- testHistoryThreadsApplication.vpr@733.3--733.63
@@ -6766,28 +6766,28 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method History__free_set_x might not hold. Assertion s != null might not hold. (testHistoryThreadsApplication.vpr@733.3--733.63) [162860]"}
-        s_2 != null;
-      assert {:msg "  The precondition of method History__free_set_x might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@733.3--733.63) [162861]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method History__free_set_x might not hold. Assertion s != null might not hold. (testHistoryThreadsApplication.vpr@733.3--733.63) [39345]"}
+        s_1 != null;
+      assert {:msg "  The precondition of method History__free_set_x might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@733.3--733.63) [39346]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__free_set_x might not hold. There might be insufficient permission to access s.History__x_hist_value (testHistoryThreadsApplication.vpr@733.3--733.63) [162862]"}
-          perm <= Mask[s_2, History__x_hist_value];
+        assert {:msg "  The precondition of method History__free_set_x might not hold. There might be insufficient permission to access s.History__x_hist_value (testHistoryThreadsApplication.vpr@733.3--733.63) [39347]"}
+          perm <= Mask[s_1, History__x_hist_value];
       }
-      Mask := Mask[s_2, History__x_hist_value:=Mask[s_2, History__x_hist_value] - perm];
+      Mask := Mask[s_1, History__x_hist_value:=Mask[s_1, History__x_hist_value] - perm];
       perm := 1 / 2;
-      assert {:msg "  The precondition of method History__free_set_x might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@733.3--733.63) [162863]"}
+      assert {:msg "  The precondition of method History__free_set_x might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@733.3--733.63) [39348]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__free_set_x might not hold. There might be insufficient permission to access s.History__x_hist_mode (testHistoryThreadsApplication.vpr@733.3--733.63) [162864]"}
-          perm <= Mask[s_2, History__x_hist_mode];
+        assert {:msg "  The precondition of method History__free_set_x might not hold. There might be insufficient permission to access s.History__x_hist_mode (testHistoryThreadsApplication.vpr@733.3--733.63) [39349]"}
+          perm <= Mask[s_1, History__x_hist_mode];
       }
-      Mask := Mask[s_2, History__x_hist_mode:=Mask[s_2, History__x_hist_mode] - perm];
-      assert {:msg "  The precondition of method History__free_set_x might not hold. Assertion s.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@733.3--733.63) [162865]"}
-        Heap[s_2, History__x_hist_mode] == 0;
+      Mask := Mask[s_1, History__x_hist_mode:=Mask[s_1, History__x_hist_mode] - perm];
+      assert {:msg "  The precondition of method History__free_set_x might not hold. Assertion s.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@733.3--733.63) [39350]"}
+        Heap[s_1, History__x_hist_mode] == 0;
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -6798,17 +6798,17 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      assume s_2 != null;
-      Mask := Mask[s_2, History__x_hist_value:=Mask[s_2, History__x_hist_value] + perm];
+      assume s_1 != null;
+      Mask := Mask[s_1, History__x_hist_value:=Mask[s_1, History__x_hist_value] + perm];
       assume state(Heap, Mask);
-      assume Heap[s_2, History__x_hist_value] == 37;
+      assume Heap[s_1, History__x_hist_value] == 37;
       perm := 1 / 2;
-      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@733.3--733.63) [162866]"}
+      assert {:msg "  Method call might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@733.3--733.63) [39351]"}
         perm >= NoPerm;
-      assume perm > NoPerm ==> s_2 != null;
-      Mask := Mask[s_2, History__x_hist_mode:=Mask[s_2, History__x_hist_mode] + perm];
+      assume perm > NoPerm ==> s_1 != null;
+      Mask := Mask[s_1, History__x_hist_mode:=Mask[s_1, History__x_hist_mode] + perm];
       assume state(Heap, Mask);
-      assume Heap[s_2, History__x_hist_mode] == 0;
+      assume Heap[s_1, History__x_hist_mode] == 0;
       assume state(Heap, Mask);
     assume Heap[sys__thrown, $allocated];
     assume state(Heap, Mask);
@@ -6818,38 +6818,38 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method History__begin_hist might not hold. Assertion s != null might not hold. (testHistoryThreadsApplication.vpr@734.3--734.59) [162867]"}
-        s_2 != null;
-      assert {:msg "  The precondition of method History__begin_hist might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@734.3--734.59) [162868]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method History__begin_hist might not hold. Assertion s != null might not hold. (testHistoryThreadsApplication.vpr@734.3--734.59) [39352]"}
+        s_1 != null;
+      assert {:msg "  The precondition of method History__begin_hist might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@734.3--734.59) [39353]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__begin_hist might not hold. There might be insufficient permission to access s.History__x_hist_value (testHistoryThreadsApplication.vpr@734.3--734.59) [162869]"}
-          perm <= Mask[s_2, History__x_hist_value];
+        assert {:msg "  The precondition of method History__begin_hist might not hold. There might be insufficient permission to access s.History__x_hist_value (testHistoryThreadsApplication.vpr@734.3--734.59) [39354]"}
+          perm <= Mask[s_1, History__x_hist_value];
       }
-      Mask := Mask[s_2, History__x_hist_value:=Mask[s_2, History__x_hist_value] - perm];
+      Mask := Mask[s_1, History__x_hist_value:=Mask[s_1, History__x_hist_value] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__begin_hist might not hold. There might be insufficient permission to access s.History__x_hist_mode (testHistoryThreadsApplication.vpr@734.3--734.59) [162870]"}
-          perm <= Mask[s_2, History__x_hist_mode];
+        assert {:msg "  The precondition of method History__begin_hist might not hold. There might be insufficient permission to access s.History__x_hist_mode (testHistoryThreadsApplication.vpr@734.3--734.59) [39355]"}
+          perm <= Mask[s_1, History__x_hist_mode];
       }
-      Mask := Mask[s_2, History__x_hist_mode:=Mask[s_2, History__x_hist_mode] - perm];
-      assert {:msg "  The precondition of method History__begin_hist might not hold. Assertion s.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@734.3--734.59) [162871]"}
-        Heap[s_2, History__x_hist_mode] == 0;
+      Mask := Mask[s_1, History__x_hist_mode:=Mask[s_1, History__x_hist_mode] - perm];
+      assert {:msg "  The precondition of method History__begin_hist might not hold. Assertion s.History__x_hist_mode == 0 might not hold. (testHistoryThreadsApplication.vpr@734.3--734.59) [39356]"}
+        Heap[s_1, History__x_hist_mode] == 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__begin_hist might not hold. There might be insufficient permission to access s.History__x_hist_init (testHistoryThreadsApplication.vpr@734.3--734.59) [162872]"}
-          perm <= Mask[s_2, History__x_hist_init];
+        assert {:msg "  The precondition of method History__begin_hist might not hold. There might be insufficient permission to access s.History__x_hist_init (testHistoryThreadsApplication.vpr@734.3--734.59) [39357]"}
+          perm <= Mask[s_1, History__x_hist_init];
       }
-      Mask := Mask[s_2, History__x_hist_init:=Mask[s_2, History__x_hist_init] - perm];
+      Mask := Mask[s_1, History__x_hist_init:=Mask[s_1, History__x_hist_init] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__begin_hist might not hold. There might be insufficient permission to access s.History__x_hist_act (testHistoryThreadsApplication.vpr@734.3--734.59) [162873]"}
-          perm <= Mask[s_2, History__x_hist_act];
+        assert {:msg "  The precondition of method History__begin_hist might not hold. There might be insufficient permission to access s.History__x_hist_act (testHistoryThreadsApplication.vpr@734.3--734.59) [39358]"}
+          perm <= Mask[s_1, History__x_hist_act];
       }
-      Mask := Mask[s_2, History__x_hist_act:=Mask[s_2, History__x_hist_act] - perm];
+      Mask := Mask[s_1, History__x_hist_act:=Mask[s_1, History__x_hist_act] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -6860,22 +6860,22 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      assume s_2 != null;
-      Mask := Mask[s_2, History__x_hist_value:=Mask[s_2, History__x_hist_value] + perm];
+      assume s_1 != null;
+      Mask := Mask[s_1, History__x_hist_value:=Mask[s_1, History__x_hist_value] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      assume s_2 != null;
-      Mask := Mask[s_2, History__x_hist_mode:=Mask[s_2, History__x_hist_mode] + perm];
+      assume s_1 != null;
+      Mask := Mask[s_1, History__x_hist_mode:=Mask[s_1, History__x_hist_mode] + perm];
       assume state(Heap, Mask);
-      assume Heap[s_2, History__x_hist_mode] == 1;
+      assume Heap[s_1, History__x_hist_mode] == 1;
       perm := FullPerm;
-      assume s_2 != null;
-      Mask := Mask[s_2, History__x_hist_init:=Mask[s_2, History__x_hist_init] + perm];
+      assume s_1 != null;
+      Mask := Mask[s_1, History__x_hist_init:=Mask[s_1, History__x_hist_init] + perm];
       assume state(Heap, Mask);
-      assume Heap[s_2, History__x_hist_value] == PreCallHeap[s_2, History__x_hist_value];
-      assume Heap[s_2, History__x_hist_init] == PreCallHeap[s_2, History__x_hist_value];
+      assume Heap[s_1, History__x_hist_value] == PreCallHeap[s_1, History__x_hist_value];
+      assume Heap[s_1, History__x_hist_init] == PreCallHeap[s_1, History__x_hist_value];
       perm := FullPerm;
-      Mask := Mask[null, History__hist_idle(s_2, FullPerm, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(s_2, FullPerm, (p_empty(): ProcessDomainType))] + perm];
+      Mask := Mask[null, History__hist_idle(s_1, FullPerm, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(s_1, FullPerm, (p_empty(): ProcessDomainType))] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume Heap[sys__thrown, $allocated];
@@ -6891,18 +6891,18 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     arg_proc2 := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method History__split might not hold. Assertion s != null might not hold. (testHistoryThreadsApplication.vpr@735.3--735.90) [162874]"}
-        s_2 != null;
-      assert {:msg "  The precondition of method History__split might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@735.3--735.90) [162875]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method History__split might not hold. Assertion s != null might not hold. (testHistoryThreadsApplication.vpr@735.3--735.90) [39359]"}
+        s_1 != null;
+      assert {:msg "  The precondition of method History__split might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@735.3--735.90) [39360]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__split might not hold. There might be insufficient permission to access History__hist_idle(s, 1 / 2 + 1 / 2, p_merge(p_empty(), p_empty())) (testHistoryThreadsApplication.vpr@735.3--735.90) [162876]"}
-          perm <= Mask[null, History__hist_idle(s_2, arg_frac1 + arg_frac2, (p_merge(arg_proc1, arg_proc2): ProcessDomainType))];
+        assert {:msg "  The precondition of method History__split might not hold. There might be insufficient permission to access History__hist_idle(s, 1 / 2 + 1 / 2, p_merge(p_empty(), p_empty())) (testHistoryThreadsApplication.vpr@735.3--735.90) [39361]"}
+          perm <= Mask[null, History__hist_idle(s_1, arg_frac1 + arg_frac2, (p_merge(arg_proc1, arg_proc2): ProcessDomainType))];
       }
-      Mask := Mask[null, History__hist_idle(s_2, arg_frac1 + arg_frac2, (p_merge(arg_proc1, arg_proc2): ProcessDomainType)):=Mask[null, History__hist_idle(s_2, arg_frac1 + arg_frac2, (p_merge(arg_proc1, arg_proc2): ProcessDomainType))] - perm];
+      Mask := Mask[null, History__hist_idle(s_1, arg_frac1 + arg_frac2, (p_merge(arg_proc1, arg_proc2): ProcessDomainType)):=Mask[null, History__hist_idle(s_1, arg_frac1 + arg_frac2, (p_merge(arg_proc1, arg_proc2): ProcessDomainType))] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -6913,45 +6913,45 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, History__hist_idle(s_2, arg_frac1, arg_proc1):=Mask[null, History__hist_idle(s_2, arg_frac1, arg_proc1)] + perm];
+      Mask := Mask[null, History__hist_idle(s_1, arg_frac1, arg_proc1):=Mask[null, History__hist_idle(s_1, arg_frac1, arg_proc1)] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      Mask := Mask[null, History__hist_idle(s_2, arg_frac2, arg_proc2):=Mask[null, History__hist_idle(s_2, arg_frac2, arg_proc2)] + perm];
+      Mask := Mask[null, History__hist_idle(s_1, arg_frac2, arg_proc2):=Mask[null, History__hist_idle(s_1, arg_frac2, arg_proc2)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume Heap[sys__thrown, $allocated];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(History__inv(s), write) -- testHistoryThreadsApplication.vpr@736.3--736.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding History__inv(s) might fail. There might be insufficient permission to access s.History__x_hist_value (testHistoryThreadsApplication.vpr@736.3--736.35) [162879]"}
-        perm <= Mask[s_2, History__x_hist_value];
+      assert {:msg "  Folding History__inv(s) might fail. There might be insufficient permission to access s.History__x_hist_value (testHistoryThreadsApplication.vpr@736.3--736.35) [39364]"}
+        perm <= Mask[s_1, History__x_hist_value];
     }
-    Mask := Mask[s_2, History__x_hist_value:=Mask[s_2, History__x_hist_value] - perm];
+    Mask := Mask[s_1, History__x_hist_value:=Mask[s_1, History__x_hist_value] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding History__inv(s) might fail. There might be insufficient permission to access s.History__x_hist_mode (testHistoryThreadsApplication.vpr@736.3--736.35) [162881]"}
-        perm <= Mask[s_2, History__x_hist_mode];
+      assert {:msg "  Folding History__inv(s) might fail. There might be insufficient permission to access s.History__x_hist_mode (testHistoryThreadsApplication.vpr@736.3--736.35) [39366]"}
+        perm <= Mask[s_1, History__x_hist_mode];
     }
-    Mask := Mask[s_2, History__x_hist_mode:=Mask[s_2, History__x_hist_mode] - perm];
-    assert {:msg "  Folding History__inv(s) might fail. Assertion s.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@736.3--736.35) [162882]"}
-      Heap[s_2, History__x_hist_mode] == 1;
+    Mask := Mask[s_1, History__x_hist_mode:=Mask[s_1, History__x_hist_mode] - perm];
+    assert {:msg "  Folding History__inv(s) might fail. Assertion s.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@736.3--736.35) [39367]"}
+      Heap[s_1, History__x_hist_mode] == 1;
     perm := FullPerm;
-    Mask := Mask[null, History__inv(s_2):=Mask[null, History__inv(s_2)] + perm];
+    Mask := Mask[null, History__inv(s_1):=Mask[null, History__inv(s_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume History__inv#trigger(Heap, History__inv(s_2));
-    assume Heap[null, History__inv(s_2)] == CombineFrames(FrameFragment(Heap[s_2, History__x_hist_value]), FrameFragment(Heap[s_2, History__x_hist_mode]));
-    if (!HasDirectPerm(Mask, null, History__inv(s_2))) {
-      Heap := Heap[null, History__inv#sm(s_2):=ZeroPMask];
+    assume History__inv#trigger(Heap, History__inv(s_1));
+    assume Heap[null, History__inv(s_1)] == CombineFrames(FrameFragment(Heap[s_1, History__x_hist_value]), FrameFragment(Heap[s_1, History__x_hist_mode]));
+    if (!HasDirectPerm(Mask, null, History__inv(s_1))) {
+      Heap := Heap[null, History__inv#sm(s_1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, History__inv(s_2):=freshVersion];
+      Heap := Heap[null, History__inv(s_1):=freshVersion];
     }
-    Heap := Heap[null, History__inv#sm(s_2):=Heap[null, History__inv#sm(s_2)][s_2, History__x_hist_value:=true]];
-    Heap := Heap[null, History__inv#sm(s_2):=Heap[null, History__inv#sm(s_2)][s_2, History__x_hist_mode:=true]];
+    Heap := Heap[null, History__inv#sm(s_1):=Heap[null, History__inv#sm(s_1)][s_1, History__x_hist_value:=true]];
+    Heap := Heap[null, History__inv#sm(s_1):=Heap[null, History__inv#sm(s_1)][s_1, History__x_hist_mode:=true]];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -6960,9 +6960,9 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method SubjectLock__SubjectLock might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@737.3--737.78) [162884]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method SubjectLock__SubjectLock might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@737.3--737.78) [39369]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -6976,7 +6976,7 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
       assume __flatten_54 != null;
       Mask := Mask[__flatten_54, SubjectLock__subject:=Mask[__flatten_54, SubjectLock__subject] + perm];
       assume state(Heap, Mask);
-      assume Heap[__flatten_54, SubjectLock__subject] == s_2;
+      assume Heap[__flatten_54, SubjectLock__subject] == s_1;
       assume state(Heap, Mask);
     assume Heap[sys__thrown, $allocated];
     assume Heap[__flatten_54, $allocated];
@@ -6987,16 +6987,16 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(SubjectLock__inv(lock), write) -- testHistoryThreadsApplication.vpr@739.3--739.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Folding SubjectLock__inv(lock) might fail. There might be insufficient permission to access lock.SubjectLock__subject (testHistoryThreadsApplication.vpr@739.3--739.42) [162886]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Folding SubjectLock__inv(lock) might fail. There might be insufficient permission to access lock.SubjectLock__subject (testHistoryThreadsApplication.vpr@739.3--739.42) [39371]"}
       Mask[lock, SubjectLock__subject] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[lock, SubjectLock__subject];
     Mask := Mask[lock, SubjectLock__subject:=Mask[lock, SubjectLock__subject] - wildcard];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding SubjectLock__inv(lock) might fail. There might be insufficient permission to access History__inv(lock.SubjectLock__subject) (testHistoryThreadsApplication.vpr@739.3--739.42) [162888]"}
+      assert {:msg "  Folding SubjectLock__inv(lock) might fail. There might be insufficient permission to access History__inv(lock.SubjectLock__subject) (testHistoryThreadsApplication.vpr@739.3--739.42) [39373]"}
         perm <= Mask[null, History__inv(Heap[lock, SubjectLock__subject])];
     }
     Mask := Mask[null, History__inv(Heap[lock, SubjectLock__subject]):=Mask[null, History__inv(Heap[lock, SubjectLock__subject])] - perm];
@@ -7016,9 +7016,9 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     }
     Heap := Heap[null, SubjectLock__inv#sm(lock):=Heap[null, SubjectLock__inv#sm(lock)][lock, SubjectLock__subject:=true]];
     havoc newPMask;
-    assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-      { newPMask[o_35, f_17] }
-      Heap[null, SubjectLock__inv#sm(lock)][o_35, f_17] || Heap[null, History__inv#sm(Heap[lock, SubjectLock__subject])][o_35, f_17] ==> newPMask[o_35, f_17]
+    assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+      { newPMask[o_3, f_24] }
+      Heap[null, SubjectLock__inv#sm(lock)][o_3, f_24] || Heap[null, History__inv#sm(Heap[lock, SubjectLock__subject])][o_3, f_24] ==> newPMask[o_3, f_24]
     );
     Heap := Heap[null, SubjectLock__inv#sm(lock):=newPMask];
     assume state(Heap, Mask);
@@ -7029,15 +7029,15 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method SubjectLock__commit might not hold. Assertion lock != null might not hold. (testHistoryThreadsApplication.vpr@740.3--740.62) [162890]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method SubjectLock__commit might not hold. Assertion lock != null might not hold. (testHistoryThreadsApplication.vpr@740.3--740.62) [39375]"}
         lock != null;
-      assert {:msg "  The precondition of method SubjectLock__commit might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@740.3--740.62) [162891]"}
+      assert {:msg "  The precondition of method SubjectLock__commit might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@740.3--740.62) [39376]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method SubjectLock__commit might not hold. There might be insufficient permission to access SubjectLock__inv(lock) (testHistoryThreadsApplication.vpr@740.3--740.62) [162892]"}
+        assert {:msg "  The precondition of method SubjectLock__commit might not hold. There might be insufficient permission to access SubjectLock__inv(lock) (testHistoryThreadsApplication.vpr@740.3--740.62) [39377]"}
           perm <= Mask[null, SubjectLock__inv(lock)];
       }
       Mask := Mask[null, SubjectLock__inv(lock):=Mask[null, SubjectLock__inv(lock)] - perm];
@@ -7062,31 +7062,31 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@741.3--741.74) [162893]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@741.3--741.74) [39378]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access lock.SubjectLock__subject (testHistoryThreadsApplication.vpr@741.3--741.74) [162894]"}
+      assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access lock.SubjectLock__subject (testHistoryThreadsApplication.vpr@741.3--741.74) [39379]"}
         Mask[lock, SubjectLock__subject] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[lock, SubjectLock__subject];
       Mask := Mask[lock, SubjectLock__subject:=Mask[lock, SubjectLock__subject] - wildcard];
-      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion lock.SubjectLock__subject == s might not hold. (testHistoryThreadsApplication.vpr@741.3--741.74) [162895]"}
-        Heap[lock, SubjectLock__subject] == s_2;
+      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion lock.SubjectLock__subject == s might not hold. (testHistoryThreadsApplication.vpr@741.3--741.74) [39380]"}
+        Heap[lock, SubjectLock__subject] == s_1;
       perm := 1 / 2;
-      assert {:msg "  The precondition of method Worker__Worker might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@741.3--741.74) [162896]"}
+      assert {:msg "  The precondition of method Worker__Worker might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@741.3--741.74) [39381]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access SubjectLock__valid(lock) (testHistoryThreadsApplication.vpr@741.3--741.74) [162897]"}
+        assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access SubjectLock__valid(lock) (testHistoryThreadsApplication.vpr@741.3--741.74) [39382]"}
           perm <= Mask[null, SubjectLock__valid(lock)];
       }
       Mask := Mask[null, SubjectLock__valid(lock):=Mask[null, SubjectLock__valid(lock)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access History__hist_idle(s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@741.3--741.74) [162898]"}
-          perm <= Mask[null, History__hist_idle(s_2, 1 / 2, (p_empty(): ProcessDomainType))];
+        assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access History__hist_idle(s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@741.3--741.74) [39383]"}
+          perm <= Mask[null, History__hist_idle(s_1, 1 / 2, (p_empty(): ProcessDomainType))];
       }
-      Mask := Mask[null, History__hist_idle(s_2, 1 / 2, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(s_2, 1 / 2, (p_empty(): ProcessDomainType))] - perm];
+      Mask := Mask[null, History__hist_idle(s_1, 1 / 2, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(s_1, 1 / 2, (p_empty(): ProcessDomainType))] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -7109,7 +7109,7 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
       assume __flatten_56 != null;
       Mask := Mask[__flatten_56, Worker__s:=Mask[__flatten_56, Worker__s] + perm];
       assume state(Heap, Mask);
-      assume Heap[__flatten_56, Worker__s] == s_2;
+      assume Heap[__flatten_56, Worker__s] == s_1;
       perm := FullPerm;
       Mask := Mask[null, Worker__preFork(__flatten_56, FullPerm):=Mask[null, Worker__preFork(__flatten_56, FullPerm)] + perm];
       assume state(Heap, Mask);
@@ -7130,31 +7130,31 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@743.3--743.74) [162899]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@743.3--743.74) [39384]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access lock.SubjectLock__subject (testHistoryThreadsApplication.vpr@743.3--743.74) [162900]"}
+      assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access lock.SubjectLock__subject (testHistoryThreadsApplication.vpr@743.3--743.74) [39385]"}
         Mask[lock, SubjectLock__subject] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[lock, SubjectLock__subject];
       Mask := Mask[lock, SubjectLock__subject:=Mask[lock, SubjectLock__subject] - wildcard];
-      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion lock.SubjectLock__subject == s might not hold. (testHistoryThreadsApplication.vpr@743.3--743.74) [162901]"}
-        Heap[lock, SubjectLock__subject] == s_2;
+      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion lock.SubjectLock__subject == s might not hold. (testHistoryThreadsApplication.vpr@743.3--743.74) [39386]"}
+        Heap[lock, SubjectLock__subject] == s_1;
       perm := 1 / 2;
-      assert {:msg "  The precondition of method Worker__Worker might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@743.3--743.74) [162902]"}
+      assert {:msg "  The precondition of method Worker__Worker might not hold. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@743.3--743.74) [39387]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access SubjectLock__valid(lock) (testHistoryThreadsApplication.vpr@743.3--743.74) [162903]"}
+        assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access SubjectLock__valid(lock) (testHistoryThreadsApplication.vpr@743.3--743.74) [39388]"}
           perm <= Mask[null, SubjectLock__valid(lock)];
       }
       Mask := Mask[null, SubjectLock__valid(lock):=Mask[null, SubjectLock__valid(lock)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access History__hist_idle(s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@743.3--743.74) [162904]"}
-          perm <= Mask[null, History__hist_idle(s_2, 1 / 2, (p_empty(): ProcessDomainType))];
+        assert {:msg "  The precondition of method Worker__Worker might not hold. There might be insufficient permission to access History__hist_idle(s, 1 / 2, p_empty()) (testHistoryThreadsApplication.vpr@743.3--743.74) [39389]"}
+          perm <= Mask[null, History__hist_idle(s_1, 1 / 2, (p_empty(): ProcessDomainType))];
       }
-      Mask := Mask[null, History__hist_idle(s_2, 1 / 2, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(s_2, 1 / 2, (p_empty(): ProcessDomainType))] - perm];
+      Mask := Mask[null, History__hist_idle(s_1, 1 / 2, (p_empty(): ProcessDomainType)):=Mask[null, History__hist_idle(s_1, 1 / 2, (p_empty(): ProcessDomainType))] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -7177,7 +7177,7 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
       assume __flatten_57 != null;
       Mask := Mask[__flatten_57, Worker__s:=Mask[__flatten_57, Worker__s] + perm];
       assume state(Heap, Mask);
-      assume Heap[__flatten_57, Worker__s] == s_2;
+      assume Heap[__flatten_57, Worker__s] == s_1;
       perm := FullPerm;
       Mask := Mask[null, Worker__preFork(__flatten_57, FullPerm):=Mask[null, Worker__preFork(__flatten_57, FullPerm)] + perm];
       assume state(Heap, Mask);
@@ -7198,15 +7198,15 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__start might not hold. Assertion w1 != null might not hold. (testHistoryThreadsApplication.vpr@745.3--745.54) [162905]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__start might not hold. Assertion w1 != null might not hold. (testHistoryThreadsApplication.vpr@745.3--745.54) [39390]"}
         w1 != null;
-      assert {:msg "  The precondition of method Worker__start might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@745.3--745.54) [162906]"}
+      assert {:msg "  The precondition of method Worker__start might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@745.3--745.54) [39391]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__start might not hold. There might be insufficient permission to access Worker__preFork(w1, write) (testHistoryThreadsApplication.vpr@745.3--745.54) [162907]"}
+        assert {:msg "  The precondition of method Worker__start might not hold. There might be insufficient permission to access Worker__preFork(w1, write) (testHistoryThreadsApplication.vpr@745.3--745.54) [39392]"}
           perm <= Mask[null, Worker__preFork(w1, FullPerm)];
       }
       Mask := Mask[null, Worker__preFork(w1, FullPerm):=Mask[null, Worker__preFork(w1, FullPerm)] - perm];
@@ -7231,15 +7231,15 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__start might not hold. Assertion w2 != null might not hold. (testHistoryThreadsApplication.vpr@746.3--746.54) [162908]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__start might not hold. Assertion w2 != null might not hold. (testHistoryThreadsApplication.vpr@746.3--746.54) [39393]"}
         w2 != null;
-      assert {:msg "  The precondition of method Worker__start might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@746.3--746.54) [162909]"}
+      assert {:msg "  The precondition of method Worker__start might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@746.3--746.54) [39394]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__start might not hold. There might be insufficient permission to access Worker__preFork(w2, write) (testHistoryThreadsApplication.vpr@746.3--746.54) [162910]"}
+        assert {:msg "  The precondition of method Worker__start might not hold. There might be insufficient permission to access Worker__preFork(w2, write) (testHistoryThreadsApplication.vpr@746.3--746.54) [39395]"}
           perm <= Mask[null, Worker__preFork(w2, FullPerm)];
       }
       Mask := Mask[null, Worker__preFork(w2, FullPerm):=Mask[null, Worker__preFork(w2, FullPerm)] - perm];
@@ -7265,15 +7265,15 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     arg_p := FullPerm;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__join might not hold. Assertion w1 != null might not hold. (testHistoryThreadsApplication.vpr@747.3--747.60) [162911]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__join might not hold. Assertion w1 != null might not hold. (testHistoryThreadsApplication.vpr@747.3--747.60) [39396]"}
         w1 != null;
-      assert {:msg "  The precondition of method Worker__join might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@747.3--747.60) [162912]"}
+      assert {:msg "  The precondition of method Worker__join might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@747.3--747.60) [39397]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__join might not hold. There might be insufficient permission to access Worker__joinToken(w1, write) (testHistoryThreadsApplication.vpr@747.3--747.60) [162913]"}
+        assert {:msg "  The precondition of method Worker__join might not hold. There might be insufficient permission to access Worker__joinToken(w1, write) (testHistoryThreadsApplication.vpr@747.3--747.60) [39398]"}
           perm <= Mask[null, Worker__joinToken(w1, arg_p)];
       }
       Mask := Mask[null, Worker__joinToken(w1, arg_p):=Mask[null, Worker__joinToken(w1, arg_p)] - perm];
@@ -7299,15 +7299,15 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     arg_p_1 := FullPerm;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__join might not hold. Assertion w2 != null might not hold. (testHistoryThreadsApplication.vpr@748.3--748.60) [162914]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__join might not hold. Assertion w2 != null might not hold. (testHistoryThreadsApplication.vpr@748.3--748.60) [39399]"}
         w2 != null;
-      assert {:msg "  The precondition of method Worker__join might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@748.3--748.60) [162915]"}
+      assert {:msg "  The precondition of method Worker__join might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@748.3--748.60) [39400]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__join might not hold. There might be insufficient permission to access Worker__joinToken(w2, write) (testHistoryThreadsApplication.vpr@748.3--748.60) [162916]"}
+        assert {:msg "  The precondition of method Worker__join might not hold. There might be insufficient permission to access Worker__joinToken(w2, write) (testHistoryThreadsApplication.vpr@748.3--748.60) [39401]"}
           perm <= Mask[null, Worker__joinToken(w2, arg_p_1)];
       }
       Mask := Mask[null, Worker__joinToken(w2, arg_p_1):=Mask[null, Worker__joinToken(w2, arg_p_1)] - perm];
@@ -7333,21 +7333,21 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     arg_p_2 := FullPerm;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. Assertion w1 != null might not hold. (testHistoryThreadsApplication.vpr@749.3--749.79) [162917]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. Assertion w1 != null might not hold. (testHistoryThreadsApplication.vpr@749.3--749.79) [39402]"}
         w1 != null;
-      assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@749.3--749.79) [162918]"}
+      assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@749.3--749.79) [39403]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. There might be insufficient permission to access Worker__postJoin(w1, write) (testHistoryThreadsApplication.vpr@749.3--749.79) [162919]"}
+        assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. There might be insufficient permission to access Worker__postJoin(w1, write) (testHistoryThreadsApplication.vpr@749.3--749.79) [39404]"}
           perm <= Mask[null, Worker__postJoin(w1, arg_p_2)];
       }
       Mask := Mask[null, Worker__postJoin(w1, arg_p_2):=Mask[null, Worker__postJoin(w1, arg_p_2)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. There might be insufficient permission to access Worker__is_a_Worker(w1) (testHistoryThreadsApplication.vpr@749.3--749.79) [162920]"}
+        assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. There might be insufficient permission to access Worker__is_a_Worker(w1) (testHistoryThreadsApplication.vpr@749.3--749.79) [39405]"}
           perm <= Mask[null, Worker__is_a_Worker(w1)];
       }
       Mask := Mask[null, Worker__is_a_Worker(w1):=Mask[null, Worker__is_a_Worker(w1)] - perm];
@@ -7373,21 +7373,21 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     arg_p_3 := FullPerm;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. Assertion w2 != null might not hold. (testHistoryThreadsApplication.vpr@750.3--750.79) [162921]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. Assertion w2 != null might not hold. (testHistoryThreadsApplication.vpr@750.3--750.79) [39406]"}
         w2 != null;
-      assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@750.3--750.79) [162922]"}
+      assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@750.3--750.79) [39407]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. There might be insufficient permission to access Worker__postJoin(w2, write) (testHistoryThreadsApplication.vpr@750.3--750.79) [162923]"}
+        assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. There might be insufficient permission to access Worker__postJoin(w2, write) (testHistoryThreadsApplication.vpr@750.3--750.79) [39408]"}
           perm <= Mask[null, Worker__postJoin(w2, arg_p_3)];
       }
       Mask := Mask[null, Worker__postJoin(w2, arg_p_3):=Mask[null, Worker__postJoin(w2, arg_p_3)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. There might be insufficient permission to access Worker__is_a_Worker(w2) (testHistoryThreadsApplication.vpr@750.3--750.79) [162924]"}
+        assert {:msg "  The precondition of method Worker__open_postJoin_at_Worker might not hold. There might be insufficient permission to access Worker__is_a_Worker(w2) (testHistoryThreadsApplication.vpr@750.3--750.79) [39409]"}
           perm <= Mask[null, Worker__is_a_Worker(w2)];
       }
       Mask := Mask[null, Worker__is_a_Worker(w2):=Mask[null, Worker__is_a_Worker(w2)] - perm];
@@ -7410,11 +7410,11 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
   // -- Translating statement: unfold acc(Worker__postJoin_at_Worker(w1, write), write) -- testHistoryThreadsApplication.vpr@751.3--751.59
     assume Worker__postJoin_at_Worker#trigger(Heap, Worker__postJoin_at_Worker(w1, FullPerm));
     assume Heap[null, Worker__postJoin_at_Worker(w1, FullPerm)] == CombineFrames(Heap[null, Worker__postJoin_at_Thread(w1, FullPerm)], CombineFrames(FrameFragment(Heap[w1, Worker__l]), CombineFrames(FrameFragment(Heap[Heap[w1, Worker__l], SubjectLock__subject]), CombineFrames(FrameFragment(Heap[w1, Worker__s]), CombineFrames(Heap[null, SubjectLock__valid(Heap[w1, Worker__l])], Heap[null, History__hist_idle(Heap[w1, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))])))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Worker__postJoin_at_Worker(w1, write) might fail. There might be insufficient permission to access Worker__postJoin_at_Worker(w1, write) (testHistoryThreadsApplication.vpr@751.3--751.59) [162927]"}
+      assert {:msg "  Unfolding Worker__postJoin_at_Worker(w1, write) might fail. There might be insufficient permission to access Worker__postJoin_at_Worker(w1, write) (testHistoryThreadsApplication.vpr@751.3--751.59) [39412]"}
         perm <= Mask[null, Worker__postJoin_at_Worker(w1, FullPerm)];
     }
     Mask := Mask[null, Worker__postJoin_at_Worker(w1, FullPerm):=Mask[null, Worker__postJoin_at_Worker(w1, FullPerm)] - perm];
@@ -7448,7 +7448,7 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     assume state(Heap, Mask);
     assume Heap[Heap[w1, Worker__l], SubjectLock__subject] == Heap[w1, Worker__s];
     perm := 1 / 2;
-    assert {:msg "  Unfolding Worker__postJoin_at_Worker(w1, write) might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@751.3--751.59) [162929]"}
+    assert {:msg "  Unfolding Worker__postJoin_at_Worker(w1, write) might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@751.3--751.59) [39414]"}
       perm >= NoPerm;
     Mask := Mask[null, SubjectLock__valid(Heap[w1, Worker__l]):=Mask[null, SubjectLock__valid(Heap[w1, Worker__l])] + perm];
     
@@ -7467,11 +7467,11 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
   // -- Translating statement: unfold acc(Worker__postJoin_at_Worker(w2, write), write) -- testHistoryThreadsApplication.vpr@752.3--752.59
     assume Worker__postJoin_at_Worker#trigger(Heap, Worker__postJoin_at_Worker(w2, FullPerm));
     assume Heap[null, Worker__postJoin_at_Worker(w2, FullPerm)] == CombineFrames(Heap[null, Worker__postJoin_at_Thread(w2, FullPerm)], CombineFrames(FrameFragment(Heap[w2, Worker__l]), CombineFrames(FrameFragment(Heap[Heap[w2, Worker__l], SubjectLock__subject]), CombineFrames(FrameFragment(Heap[w2, Worker__s]), CombineFrames(Heap[null, SubjectLock__valid(Heap[w2, Worker__l])], Heap[null, History__hist_idle(Heap[w2, Worker__s], 1 / 2, (p_single(1): ProcessDomainType))])))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Worker__postJoin_at_Worker(w2, write) might fail. There might be insufficient permission to access Worker__postJoin_at_Worker(w2, write) (testHistoryThreadsApplication.vpr@752.3--752.59) [162933]"}
+      assert {:msg "  Unfolding Worker__postJoin_at_Worker(w2, write) might fail. There might be insufficient permission to access Worker__postJoin_at_Worker(w2, write) (testHistoryThreadsApplication.vpr@752.3--752.59) [39418]"}
         perm <= Mask[null, Worker__postJoin_at_Worker(w2, FullPerm)];
     }
     Mask := Mask[null, Worker__postJoin_at_Worker(w2, FullPerm):=Mask[null, Worker__postJoin_at_Worker(w2, FullPerm)] - perm];
@@ -7505,7 +7505,7 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     assume state(Heap, Mask);
     assume Heap[Heap[w2, Worker__l], SubjectLock__subject] == Heap[w2, Worker__s];
     perm := 1 / 2;
-    assert {:msg "  Unfolding Worker__postJoin_at_Worker(w2, write) might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@752.3--752.59) [162935]"}
+    assert {:msg "  Unfolding Worker__postJoin_at_Worker(w2, write) might fail. Fraction 1 / 2 might be negative. (testHistoryThreadsApplication.vpr@752.3--752.59) [39420]"}
       perm >= NoPerm;
     Mask := Mask[null, SubjectLock__valid(Heap[w2, Worker__l]):=Mask[null, SubjectLock__valid(Heap[w2, Worker__l])] + perm];
     
@@ -7526,15 +7526,15 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method SubjectLock__uncommit might not hold. Assertion lock != null might not hold. (testHistoryThreadsApplication.vpr@753.3--753.64) [162937]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method SubjectLock__uncommit might not hold. Assertion lock != null might not hold. (testHistoryThreadsApplication.vpr@753.3--753.64) [39422]"}
         lock != null;
-      assert {:msg "  The precondition of method SubjectLock__uncommit might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@753.3--753.64) [162938]"}
+      assert {:msg "  The precondition of method SubjectLock__uncommit might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@753.3--753.64) [39423]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method SubjectLock__uncommit might not hold. There might be insufficient permission to access SubjectLock__valid(lock) (testHistoryThreadsApplication.vpr@753.3--753.64) [162939]"}
+        assert {:msg "  The precondition of method SubjectLock__uncommit might not hold. There might be insufficient permission to access SubjectLock__valid(lock) (testHistoryThreadsApplication.vpr@753.3--753.64) [39424]"}
           perm <= Mask[null, SubjectLock__valid(lock)];
       }
       Mask := Mask[null, SubjectLock__valid(lock):=Mask[null, SubjectLock__valid(lock)] - perm];
@@ -7557,11 +7557,11 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
   // -- Translating statement: unfold acc(SubjectLock__inv(lock), write) -- testHistoryThreadsApplication.vpr@754.3--754.44
     assume SubjectLock__inv#trigger(Heap, SubjectLock__inv(lock));
     assume Heap[null, SubjectLock__inv(lock)] == CombineFrames(FrameFragment(Heap[lock, SubjectLock__subject]), Heap[null, History__inv(Heap[lock, SubjectLock__subject])]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding SubjectLock__inv(lock) might fail. There might be insufficient permission to access SubjectLock__inv(lock) (testHistoryThreadsApplication.vpr@754.3--754.44) [162942]"}
+      assert {:msg "  Unfolding SubjectLock__inv(lock) might fail. There might be insufficient permission to access SubjectLock__inv(lock) (testHistoryThreadsApplication.vpr@754.3--754.44) [39427]"}
         perm <= Mask[null, SubjectLock__inv(lock)];
     }
     Mask := Mask[null, SubjectLock__inv(lock):=Mask[null, SubjectLock__inv(lock)] - perm];
@@ -7586,31 +7586,31 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(History__inv(s), write) -- testHistoryThreadsApplication.vpr@755.3--755.37
-    assume History__inv#trigger(Heap, History__inv(s_2));
-    assume Heap[null, History__inv(s_2)] == CombineFrames(FrameFragment(Heap[s_2, History__x_hist_value]), FrameFragment(Heap[s_2, History__x_hist_mode]));
-    ExhaleWellDef0Mask := Mask;
+    assume History__inv#trigger(Heap, History__inv(s_1));
+    assume Heap[null, History__inv(s_1)] == CombineFrames(FrameFragment(Heap[s_1, History__x_hist_value]), FrameFragment(Heap[s_1, History__x_hist_mode]));
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding History__inv(s) might fail. There might be insufficient permission to access History__inv(s) (testHistoryThreadsApplication.vpr@755.3--755.37) [162946]"}
-        perm <= Mask[null, History__inv(s_2)];
+      assert {:msg "  Unfolding History__inv(s) might fail. There might be insufficient permission to access History__inv(s) (testHistoryThreadsApplication.vpr@755.3--755.37) [39431]"}
+        perm <= Mask[null, History__inv(s_1)];
     }
-    Mask := Mask[null, History__inv(s_2):=Mask[null, History__inv(s_2)] - perm];
+    Mask := Mask[null, History__inv(s_1):=Mask[null, History__inv(s_1)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, History__inv(s_2))) {
+      if (!HasDirectPerm(Mask, null, History__inv(s_1))) {
         havoc newVersion;
-        Heap := Heap[null, History__inv(s_2):=newVersion];
+        Heap := Heap[null, History__inv(s_1):=newVersion];
       }
     perm := FullPerm;
-    assume s_2 != null;
-    Mask := Mask[s_2, History__x_hist_value:=Mask[s_2, History__x_hist_value] + perm];
+    assume s_1 != null;
+    Mask := Mask[s_1, History__x_hist_value:=Mask[s_1, History__x_hist_value] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
-    assume s_2 != null;
-    Mask := Mask[s_2, History__x_hist_mode:=Mask[s_2, History__x_hist_mode] + perm];
+    assume s_1 != null;
+    Mask := Mask[s_1, History__x_hist_mode:=Mask[s_1, History__x_hist_mode] + perm];
     assume state(Heap, Mask);
-    assume Heap[s_2, History__x_hist_mode] == 1;
+    assume Heap[s_1, History__x_hist_mode] == 1;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -7624,24 +7624,24 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     arg_proc2_1 := (p_single(1): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method History__merge might not hold. Assertion s != null might not hold. (testHistoryThreadsApplication.vpr@756.3--756.94) [162949]"}
-        s_2 != null;
-      assert {:msg "  The precondition of method History__merge might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@756.3--756.94) [162950]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method History__merge might not hold. Assertion s != null might not hold. (testHistoryThreadsApplication.vpr@756.3--756.94) [39434]"}
+        s_1 != null;
+      assert {:msg "  The precondition of method History__merge might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@756.3--756.94) [39435]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__merge might not hold. There might be insufficient permission to access History__hist_idle(s, 1 / 2, p_single(1)) (testHistoryThreadsApplication.vpr@756.3--756.94) [162951]"}
-          perm <= Mask[null, History__hist_idle(s_2, arg_frac1_1, arg_proc1_1)];
+        assert {:msg "  The precondition of method History__merge might not hold. There might be insufficient permission to access History__hist_idle(s, 1 / 2, p_single(1)) (testHistoryThreadsApplication.vpr@756.3--756.94) [39436]"}
+          perm <= Mask[null, History__hist_idle(s_1, arg_frac1_1, arg_proc1_1)];
       }
-      Mask := Mask[null, History__hist_idle(s_2, arg_frac1_1, arg_proc1_1):=Mask[null, History__hist_idle(s_2, arg_frac1_1, arg_proc1_1)] - perm];
+      Mask := Mask[null, History__hist_idle(s_1, arg_frac1_1, arg_proc1_1):=Mask[null, History__hist_idle(s_1, arg_frac1_1, arg_proc1_1)] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__merge might not hold. There might be insufficient permission to access History__hist_idle(s, 1 / 2, p_single(1)) (testHistoryThreadsApplication.vpr@756.3--756.94) [162952]"}
-          perm <= Mask[null, History__hist_idle(s_2, arg_frac2_1, arg_proc2_1)];
+        assert {:msg "  The precondition of method History__merge might not hold. There might be insufficient permission to access History__hist_idle(s, 1 / 2, p_single(1)) (testHistoryThreadsApplication.vpr@756.3--756.94) [39437]"}
+          perm <= Mask[null, History__hist_idle(s_1, arg_frac2_1, arg_proc2_1)];
       }
-      Mask := Mask[null, History__hist_idle(s_2, arg_frac2_1, arg_proc2_1):=Mask[null, History__hist_idle(s_2, arg_frac2_1, arg_proc2_1)] - perm];
+      Mask := Mask[null, History__hist_idle(s_1, arg_frac2_1, arg_proc2_1):=Mask[null, History__hist_idle(s_1, arg_frac2_1, arg_proc2_1)] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -7652,7 +7652,7 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, History__hist_idle(s_2, arg_frac1_1 + arg_frac2_1, (p_merge(arg_proc1_1, arg_proc2_1): ProcessDomainType)):=Mask[null, History__hist_idle(s_2, arg_frac1_1 + arg_frac2_1, (p_merge(arg_proc1_1, arg_proc2_1): ProcessDomainType))] + perm];
+      Mask := Mask[null, History__hist_idle(s_1, arg_frac1_1 + arg_frac2_1, (p_merge(arg_proc1_1, arg_proc2_1): ProcessDomainType)):=Mask[null, History__hist_idle(s_1, arg_frac1_1 + arg_frac2_1, (p_merge(arg_proc1_1, arg_proc2_1): ProcessDomainType))] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume Heap[sys__thrown, $allocated];
@@ -7663,32 +7663,32 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method History__end_hist_1 might not hold. Assertion s != null might not hold. (testHistoryThreadsApplication.vpr@757.3--757.65) [162953]"}
-        s_2 != null;
-      assert {:msg "  The precondition of method History__end_hist_1 might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@757.3--757.65) [162954]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method History__end_hist_1 might not hold. Assertion s != null might not hold. (testHistoryThreadsApplication.vpr@757.3--757.65) [39438]"}
+        s_1 != null;
+      assert {:msg "  The precondition of method History__end_hist_1 might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryThreadsApplication.vpr@757.3--757.65) [39439]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__end_hist_1 might not hold. There might be insufficient permission to access s.History__x_hist_value (testHistoryThreadsApplication.vpr@757.3--757.65) [162955]"}
-          perm <= Mask[s_2, History__x_hist_value];
+        assert {:msg "  The precondition of method History__end_hist_1 might not hold. There might be insufficient permission to access s.History__x_hist_value (testHistoryThreadsApplication.vpr@757.3--757.65) [39440]"}
+          perm <= Mask[s_1, History__x_hist_value];
       }
-      Mask := Mask[s_2, History__x_hist_value:=Mask[s_2, History__x_hist_value] - perm];
+      Mask := Mask[s_1, History__x_hist_value:=Mask[s_1, History__x_hist_value] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__end_hist_1 might not hold. There might be insufficient permission to access s.History__x_hist_mode (testHistoryThreadsApplication.vpr@757.3--757.65) [162956]"}
-          perm <= Mask[s_2, History__x_hist_mode];
+        assert {:msg "  The precondition of method History__end_hist_1 might not hold. There might be insufficient permission to access s.History__x_hist_mode (testHistoryThreadsApplication.vpr@757.3--757.65) [39441]"}
+          perm <= Mask[s_1, History__x_hist_mode];
       }
-      Mask := Mask[s_2, History__x_hist_mode:=Mask[s_2, History__x_hist_mode] - perm];
-      assert {:msg "  The precondition of method History__end_hist_1 might not hold. Assertion s.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@757.3--757.65) [162957]"}
-        Heap[s_2, History__x_hist_mode] == 1;
+      Mask := Mask[s_1, History__x_hist_mode:=Mask[s_1, History__x_hist_mode] - perm];
+      assert {:msg "  The precondition of method History__end_hist_1 might not hold. Assertion s.History__x_hist_mode == 1 might not hold. (testHistoryThreadsApplication.vpr@757.3--757.65) [39442]"}
+        Heap[s_1, History__x_hist_mode] == 1;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method History__end_hist_1 might not hold. There might be insufficient permission to access s.History__x_hist_init (testHistoryThreadsApplication.vpr@757.3--757.65) [162958]"}
-          perm <= Mask[s_2, History__x_hist_init];
+        assert {:msg "  The precondition of method History__end_hist_1 might not hold. There might be insufficient permission to access s.History__x_hist_init (testHistoryThreadsApplication.vpr@757.3--757.65) [39443]"}
+          perm <= Mask[s_1, History__x_hist_init];
       }
-      Mask := Mask[s_2, History__x_hist_init:=Mask[s_2, History__x_hist_init] - perm];
+      Mask := Mask[s_1, History__x_hist_init:=Mask[s_1, History__x_hist_init] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -7699,38 +7699,38 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      assume s_2 != null;
-      Mask := Mask[s_2, History__x_hist_value:=Mask[s_2, History__x_hist_value] + perm];
+      assume s_1 != null;
+      Mask := Mask[s_1, History__x_hist_value:=Mask[s_1, History__x_hist_value] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      assume s_2 != null;
-      Mask := Mask[s_2, History__x_hist_mode:=Mask[s_2, History__x_hist_mode] + perm];
+      assume s_1 != null;
+      Mask := Mask[s_1, History__x_hist_mode:=Mask[s_1, History__x_hist_mode] + perm];
       assume state(Heap, Mask);
-      assume Heap[s_2, History__x_hist_mode] == 0;
+      assume Heap[s_1, History__x_hist_mode] == 0;
       perm := FullPerm;
-      assume s_2 != null;
-      Mask := Mask[s_2, History__x_hist_init:=Mask[s_2, History__x_hist_init] + perm];
+      assume s_1 != null;
+      Mask := Mask[s_1, History__x_hist_init:=Mask[s_1, History__x_hist_init] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      assume s_2 != null;
-      Mask := Mask[s_2, History__x_hist_act:=Mask[s_2, History__x_hist_act] + perm];
+      assume s_1 != null;
+      Mask := Mask[s_1, History__x_hist_act:=Mask[s_1, History__x_hist_act] + perm];
       assume state(Heap, Mask);
-      assume Heap[s_2, History__x_hist_value] == PreCallHeap[s_2, History__x_hist_value];
-      assume Heap[s_2, History__x_hist_init] == PreCallHeap[s_2, History__x_hist_value];
-      assume Heap[s_2, History__x_hist_value] == PreCallHeap[s_2, History__x_hist_init] + 1 + 1;
+      assume Heap[s_1, History__x_hist_value] == PreCallHeap[s_1, History__x_hist_value];
+      assume Heap[s_1, History__x_hist_init] == PreCallHeap[s_1, History__x_hist_value];
+      assume Heap[s_1, History__x_hist_value] == PreCallHeap[s_1, History__x_hist_init] + 1 + 1;
       assume state(Heap, Mask);
     assume Heap[sys__thrown, $allocated];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert s.History__x_hist_value == 39 -- testHistoryThreadsApplication.vpr@758.3--758.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of s.History__x_hist_value == 39
-      assert {:msg "  Assert might fail. There might be insufficient permission to access s.History__x_hist_value (testHistoryThreadsApplication.vpr@758.10--758.39) [162959]"}
-        HasDirectPerm(ExhaleWellDef0Mask, s_2, History__x_hist_value);
-    assert {:msg "  Assert might fail. Assertion s.History__x_hist_value == 39 might not hold. (testHistoryThreadsApplication.vpr@758.10--758.39) [162960]"}
-      Heap[s_2, History__x_hist_value] == 39;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access s.History__x_hist_value (testHistoryThreadsApplication.vpr@758.10--758.39) [39444]"}
+        HasDirectPerm(ExhaleWellDef0Mask, s_1, History__x_hist_value);
+    assert {:msg "  Assert might fail. Assertion s.History__x_hist_value == 39 might not hold. (testHistoryThreadsApplication.vpr@758.10--758.39) [39445]"}
+      Heap[s_1, History__x_hist_value] == 39;
     assume state(Heap, Mask);
 }
 
@@ -7741,14 +7741,14 @@ procedure Main__main(current_thread_id: int) returns (sys__thrown: Ref)
 procedure Main__Main(current_thread_id: int) returns (sys__thrown: Ref, sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -7763,8 +7763,8 @@ procedure Main__Main(current_thread_id: int) returns (sys__thrown: Ref, sys__res
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -7798,11 +7798,11 @@ procedure Main__Main(current_thread_id: int) returns (sys__thrown: Ref, sys__res
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null && type_of(sys__result) == class_Main() -- testHistoryThreadsApplication.vpr@770.3--770.73
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@770.10--770.73) [162961]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@770.10--770.73) [39446]"}
       sys__result != null;
-    assert {:msg "  Assert might fail. Assertion type_of(sys__result) == class_Main() might not hold. (testHistoryThreadsApplication.vpr@770.10--770.73) [162962]"}
+    assert {:msg "  Assert might fail. Assertion type_of(sys__result) == class_Main() might not hold. (testHistoryThreadsApplication.vpr@770.10--770.73) [39447]"}
       (type_of(sys__result): TYPEDomainType) == (class_Main(): TYPEDomainType);
     assume state(Heap, Mask);
   
@@ -7812,11 +7812,11 @@ procedure Main__Main(current_thread_id: int) returns (sys__thrown: Ref, sys__res
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@763.11--763.30) [162963]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result != null might not hold. (testHistoryThreadsApplication.vpr@763.11--763.30) [39448]"}
       sys__result != null;
-    assert {:msg "  Postcondition of Main__Main might not hold. Assertion type_of(sys__result) == class_Main() might not hold. (testHistoryThreadsApplication.vpr@764.11--764.47) [162964]"}
+    assert {:msg "  Postcondition of Main__Main might not hold. Assertion type_of(sys__result) == class_Main() might not hold. (testHistoryThreadsApplication.vpr@764.11--764.47) [39449]"}
       (type_of(sys__result): TYPEDomainType) == (class_Main(): TYPEDomainType);
 }
 
@@ -7827,8 +7827,8 @@ procedure Main__Main(current_thread_id: int) returns (sys__thrown: Ref, sys__res
 procedure Main__if_any_random(diz: Ref, current_thread_id: int) returns (sys__thrown: Ref, sys__result: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -7848,8 +7848,8 @@ procedure Main__if_any_random(diz: Ref, current_thread_id: int) returns (sys__th
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryThreadsApplication.vpr@778.3--778.15
     assume false;

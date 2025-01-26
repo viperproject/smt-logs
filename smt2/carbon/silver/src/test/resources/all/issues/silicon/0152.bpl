@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:27:20
+// Date:         2025-01-26 21:42:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0152.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0152-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,24 +177,24 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of method m
 // ==================================================
 
-procedure m(this: Ref, z: int) returns ()
+procedure m_17(this: Ref, z: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -209,15 +209,15 @@ procedure m(this: Ref, z: int) returns ()
     assume state(Heap, Mask);
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -225,25 +225,25 @@ procedure m(this: Ref, z: int) returns ()
     // Checked inhaling of postcondition to check definedness
     
     // -- Check definedness of this.x == z
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0152.vpr@10.11--10.22) [208681]"}
-        HasDirectPerm(PostMask, this, x_36);
-    assume PostHeap[this, x_36] == z;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (0152.vpr@10.11--10.22) [76177]"}
+        HasDirectPerm(PostMask, this, x_42);
+    assume PostHeap[this, x_42] == z;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
   }
   
   // -- Translating statement: this.x := z -- 0152.vpr@12.3--12.14
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (0152.vpr@12.3--12.14) [208682]"}
-      FullPerm == Mask[this, x_36];
-    Heap := Heap[this, x_36:=z];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.x (0152.vpr@12.3--12.14) [76178]"}
+      FullPerm == Mask[this, x_42];
+    Heap := Heap[this, x_42:=z];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of m might not hold. Assertion this.x == z might not hold. (0152.vpr@10.11--10.22) [208683]"}
-      Heap[this, x_36] == z;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of m might not hold. Assertion this.x == z might not hold. (0152.vpr@10.11--10.22) [76179]"}
+      Heap[this, x_42] == z;
 }
 
 // ==================================================
@@ -254,12 +254,12 @@ procedure caller(this: Ref, z: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -275,38 +275,38 @@ procedure caller(this: Ref, z: int) returns ()
     assume state(Heap, Mask);
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: m(this, z) -- 0152.vpr@20.3--20.13
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method m might not hold. Assertion this != null might not hold. (0152.vpr@20.3--20.13) [208684]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method m might not hold. Assertion this != null might not hold. (0152.vpr@20.3--20.13) [76180]"}
         this != null;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method m might not hold. There might be insufficient permission to access this.x (0152.vpr@20.3--20.13) [208685]"}
-          perm <= Mask[this, x_36];
+        assert {:msg "  The precondition of method m might not hold. There might be insufficient permission to access this.x (0152.vpr@20.3--20.13) [76181]"}
+          perm <= Mask[this, x_42];
       }
-      Mask := Mask[this, x_36:=Mask[this, x_36] - perm];
+      Mask := Mask[this, x_42:=Mask[this, x_42] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
       Heap := ExhaleHeap;
     
     // -- Inhaling postcondition
-      assume Heap[this, x_36] == z;
+      assume Heap[this, x_42] == z;
       assume state(Heap, Mask);
     assume state(Heap, Mask);
 }

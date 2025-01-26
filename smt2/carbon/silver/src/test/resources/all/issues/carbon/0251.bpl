@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:55
+// Date:         2025-01-26 21:43:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0251.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0251-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,7 +185,7 @@ axiom !IsWandField(f_7);
 // Translation of method m
 // ==================================================
 
-procedure m(r_1: Ref) returns ()
+procedure m_17(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var r2: Ref;
@@ -209,7 +209,7 @@ procedure m(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of r2.f > 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r2.f (0251.vpr@7.11--7.51) [191810]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r2.f (0251.vpr@7.11--7.51) [82739]"}
         HasDirectPerm(Mask, r2, f_7);
     assume Heap[r2, f_7] > 0;
     assume state(Heap, Mask);

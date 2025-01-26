@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:18:03
+// Date:         2025-01-26 21:41:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_zero_err.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_zero_err-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -601,17 +601,17 @@ procedure zero__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.zero__x| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@18.12--18.35) [163354]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@18.12--18.35) [42957]"}
         HasDirectPerm(Mask, diz, zero__x);
     assume Seq#Length(Heap[diz, zero__x]) == tcount;
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(diz.zero__x[tid].Ref__Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@19.12--19.59) [163355]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@19.12--19.59) [42958]"}
         HasDirectPerm(Mask, diz, zero__x);
-      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@19.12--19.59) [163356]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@19.12--19.59) [42959]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@19.12--19.59) [163357]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@19.12--19.59) [42960]"}
         tid < Seq#Length(Heap[diz, zero__x]);
     perm := FullPerm;
     assume Seq#Index(Heap[diz, zero__x], tid) != null;
@@ -649,25 +649,25 @@ procedure zero__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.zero__x| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@27.11--27.34) [163358]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@27.11--27.34) [42961]"}
         HasDirectPerm(PostMask, diz, zero__x);
     assume Seq#Length(PostHeap[diz, zero__x]) == tcount;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.zero__x == old(diz.zero__x)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@28.11--28.42) [163359]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@28.11--28.42) [42962]"}
         HasDirectPerm(PostMask, diz, zero__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@28.11--28.42) [163360]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@28.11--28.42) [42963]"}
         HasDirectPerm(oldMask, diz, zero__x);
     assume Seq#Equal(PostHeap[diz, zero__x], oldHeap[diz, zero__x]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(diz.zero__x[tid].Ref__Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@29.11--29.58) [163361]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@29.11--29.58) [42964]"}
         HasDirectPerm(PostMask, diz, zero__x);
-      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@29.11--29.58) [163362]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@29.11--29.58) [42965]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@29.11--29.58) [163363]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@29.11--29.58) [42966]"}
         tid < Seq#Length(PostHeap[diz, zero__x]);
     perm := FullPerm;
     assume Seq#Index(PostHeap[diz, zero__x], tid) != null;
@@ -676,13 +676,13 @@ procedure zero__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.zero__x[tid].Ref__Integer_value == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@32.11--32.51) [163364]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@32.11--32.51) [42967]"}
         HasDirectPerm(PostMask, diz, zero__x);
-      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@32.11--32.51) [163365]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@32.11--32.51) [42968]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@32.11--32.51) [163366]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@32.11--32.51) [42969]"}
         tid < Seq#Length(PostHeap[diz, zero__x]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x[tid].Ref__Integer_value (test_zero_err.vpr@32.11--32.51) [163367]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x[tid].Ref__Integer_value (test_zero_err.vpr@32.11--32.51) [42970]"}
         HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, zero__x], tid), Ref__Integer_value);
     assume PostHeap[Seq#Index(PostHeap[diz, zero__x], tid), Ref__Integer_value] == 0;
     assume state(PostHeap, PostMask);
@@ -700,11 +700,11 @@ procedure zero__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
   // -- Translating statement: __flatten_1 := diz.zero__x[tid] -- test_zero_err.vpr@38.3--38.34
     
     // -- Check definedness of diz.zero__x[tid]
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@38.3--38.34) [163368]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@38.3--38.34) [42971]"}
         HasDirectPerm(Mask, diz, zero__x);
-      assert {:msg "  Assignment might fail. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@38.3--38.34) [163369]"}
+      assert {:msg "  Assignment might fail. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@38.3--38.34) [42972]"}
         tid >= 0;
-      assert {:msg "  Assignment might fail. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@38.3--38.34) [163370]"}
+      assert {:msg "  Assignment might fail. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@38.3--38.34) [42973]"}
         tid < Seq#Length(Heap[diz, zero__x]);
     __flatten_1 := Seq#Index(Heap[diz, zero__x], tid);
     assume state(Heap, Mask);
@@ -714,7 +714,7 @@ procedure zero__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_1.Ref__Integer_value := __flatten_2 -- test_zero_err.vpr@40.3--40.48
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_1.Ref__Integer_value (test_zero_err.vpr@40.3--40.48) [163371]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_1.Ref__Integer_value (test_zero_err.vpr@40.3--40.48) [42974]"}
       FullPerm == Mask[__flatten_1, Ref__Integer_value];
     Heap := Heap[__flatten_1, Ref__Integer_value:=__flatten_2];
     assume state(Heap, Mask);
@@ -722,34 +722,34 @@ procedure zero__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion 0 <= tid might not hold. (test_zero_err.vpr@20.11--20.19) [163372]"}
+    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion 0 <= tid might not hold. (test_zero_err.vpr@20.11--20.19) [42975]"}
       0 <= tid;
-    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion tid < tcount might not hold. (test_zero_err.vpr@21.11--21.23) [163373]"}
+    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion tid < tcount might not hold. (test_zero_err.vpr@21.11--21.23) [42976]"}
       tid < tcount;
-    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion 0 <= lid might not hold. (test_zero_err.vpr@22.11--22.19) [163374]"}
+    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion 0 <= lid might not hold. (test_zero_err.vpr@22.11--22.19) [42977]"}
       0 <= lid;
-    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion lid < gsize might not hold. (test_zero_err.vpr@23.11--23.22) [163375]"}
+    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion lid < gsize might not hold. (test_zero_err.vpr@23.11--23.22) [42978]"}
       lid < gsize;
-    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion 0 <= gid might not hold. (test_zero_err.vpr@24.11--24.19) [163376]"}
+    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion 0 <= gid might not hold. (test_zero_err.vpr@24.11--24.19) [42979]"}
       0 <= gid;
-    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion tid == lid + gid * gsize might not hold. (test_zero_err.vpr@25.11--25.35) [163377]"}
+    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion tid == lid + gid * gsize might not hold. (test_zero_err.vpr@25.11--25.35) [42980]"}
       tid == lid + gid * gsize;
-    assert {:msg "  Postcondition of zero__main_main might not hold. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@26.11--26.37) [163378]"}
+    assert {:msg "  Postcondition of zero__main_main might not hold. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@26.11--26.37) [42981]"}
       Mask[diz, zero__x] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, zero__x];
     Mask := Mask[diz, zero__x:=Mask[diz, zero__x] - wildcard];
-    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion |diz.zero__x| == tcount might not hold. (test_zero_err.vpr@27.11--27.34) [163379]"}
+    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion |diz.zero__x| == tcount might not hold. (test_zero_err.vpr@27.11--27.34) [42982]"}
       Seq#Length(Heap[diz, zero__x]) == tcount;
-    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion diz.zero__x == old(diz.zero__x) might not hold. (test_zero_err.vpr@28.11--28.42) [163380]"}
+    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion diz.zero__x == old(diz.zero__x) might not hold. (test_zero_err.vpr@28.11--28.42) [42983]"}
       Seq#Equal(Heap[diz, zero__x], oldHeap[diz, zero__x]);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of zero__main_main might not hold. There might be insufficient permission to access diz.zero__x[tid].Ref__Integer_value (test_zero_err.vpr@29.11--29.58) [163381]"}
+      assert {:msg "  Postcondition of zero__main_main might not hold. There might be insufficient permission to access diz.zero__x[tid].Ref__Integer_value (test_zero_err.vpr@29.11--29.58) [42984]"}
         perm <= Mask[Seq#Index(Heap[diz, zero__x], tid), Ref__Integer_value];
     }
     Mask := Mask[Seq#Index(Heap[diz, zero__x], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, zero__x], tid), Ref__Integer_value] - perm];
-    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion diz.zero__x[tid].Ref__Integer_value == 0 might not hold. (test_zero_err.vpr@32.11--32.51) [163382]"}
+    assert {:msg "  Postcondition of zero__main_main might not hold. Assertion diz.zero__x[tid].Ref__Integer_value == 0 might not hold. (test_zero_err.vpr@32.11--32.51) [42985]"}
       Heap[Seq#Index(Heap[diz, zero__x], tid), Ref__Integer_value] == 0;
     // Finish exhale
     havoc ExhaleHeap;
@@ -807,18 +807,18 @@ procedure zero__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.zero__x| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@53.12--53.35) [163383]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@53.12--53.35) [42986]"}
         HasDirectPerm(Mask, diz, zero__x);
     assume Seq#Length(Heap[diz, zero__x]) == tcount;
     assume state(Heap, Mask);
     if (last_barrier == 0) {
       
       // -- Check definedness of acc(diz.zero__x[tid].Ref__Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@54.12--54.83) [163384]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@54.12--54.83) [42987]"}
           HasDirectPerm(Mask, diz, zero__x);
-        assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@54.12--54.83) [163385]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@54.12--54.83) [42988]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@54.12--54.83) [163386]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@54.12--54.83) [42989]"}
           tid < Seq#Length(Heap[diz, zero__x]);
       perm := FullPerm;
       assume Seq#Index(Heap[diz, zero__x], tid) != null;
@@ -857,26 +857,26 @@ procedure zero__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.zero__x| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@62.11--62.34) [163387]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@62.11--62.34) [42990]"}
         HasDirectPerm(PostMask, diz, zero__x);
     assume Seq#Length(PostHeap[diz, zero__x]) == tcount;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.zero__x == old(diz.zero__x)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@63.11--63.42) [163388]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@63.11--63.42) [42991]"}
         HasDirectPerm(PostMask, diz, zero__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@63.11--63.42) [163389]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@63.11--63.42) [42992]"}
         HasDirectPerm(oldMask, diz, zero__x);
     assume Seq#Equal(PostHeap[diz, zero__x], oldHeap[diz, zero__x]);
     assume state(PostHeap, PostMask);
     if (sys__result == 0) {
       
       // -- Check definedness of acc(diz.zero__x[tid].Ref__Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@64.11--64.81) [163390]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@64.11--64.81) [42993]"}
           HasDirectPerm(PostMask, diz, zero__x);
-        assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@64.11--64.81) [163391]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might be negative. (test_zero_err.vpr@64.11--64.81) [42994]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@64.11--64.81) [163392]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.zero__x[tid] into diz.zero__x might exceed sequence length. (test_zero_err.vpr@64.11--64.81) [42995]"}
           tid < Seq#Length(PostHeap[diz, zero__x]);
       perm := FullPerm;
       assume Seq#Index(PostHeap[diz, zero__x], tid) != null;
@@ -898,36 +898,36 @@ procedure zero__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion 0 <= tid might not hold. (test_zero_err.vpr@55.11--55.19) [163393]"}
+    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion 0 <= tid might not hold. (test_zero_err.vpr@55.11--55.19) [42996]"}
       0 <= tid;
-    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion tid < tcount might not hold. (test_zero_err.vpr@56.11--56.23) [163394]"}
+    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion tid < tcount might not hold. (test_zero_err.vpr@56.11--56.23) [42997]"}
       tid < tcount;
-    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion 0 <= lid might not hold. (test_zero_err.vpr@57.11--57.19) [163395]"}
+    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion 0 <= lid might not hold. (test_zero_err.vpr@57.11--57.19) [42998]"}
       0 <= lid;
-    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion lid < gsize might not hold. (test_zero_err.vpr@58.11--58.22) [163396]"}
+    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion lid < gsize might not hold. (test_zero_err.vpr@58.11--58.22) [42999]"}
       lid < gsize;
-    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion 0 <= gid might not hold. (test_zero_err.vpr@59.11--59.19) [163397]"}
+    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion 0 <= gid might not hold. (test_zero_err.vpr@59.11--59.19) [43000]"}
       0 <= gid;
-    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion tid == lid + gid * gsize might not hold. (test_zero_err.vpr@60.11--60.35) [163398]"}
+    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion tid == lid + gid * gsize might not hold. (test_zero_err.vpr@60.11--60.35) [43001]"}
       tid == lid + gid * gsize;
-    assert {:msg "  Postcondition of zero__main_barrier might not hold. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@61.11--61.37) [163399]"}
+    assert {:msg "  Postcondition of zero__main_barrier might not hold. There might be insufficient permission to access diz.zero__x (test_zero_err.vpr@61.11--61.37) [43002]"}
       Mask[diz, zero__x] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, zero__x];
     Mask := Mask[diz, zero__x:=Mask[diz, zero__x] - wildcard];
-    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion |diz.zero__x| == tcount might not hold. (test_zero_err.vpr@62.11--62.34) [163400]"}
+    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion |diz.zero__x| == tcount might not hold. (test_zero_err.vpr@62.11--62.34) [43003]"}
       Seq#Length(Heap[diz, zero__x]) == tcount;
-    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion diz.zero__x == old(diz.zero__x) might not hold. (test_zero_err.vpr@63.11--63.42) [163401]"}
+    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion diz.zero__x == old(diz.zero__x) might not hold. (test_zero_err.vpr@63.11--63.42) [43004]"}
       Seq#Equal(Heap[diz, zero__x], oldHeap[diz, zero__x]);
     if (sys__result == 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of zero__main_barrier might not hold. There might be insufficient permission to access diz.zero__x[tid].Ref__Integer_value (test_zero_err.vpr@64.11--64.81) [163402]"}
+        assert {:msg "  Postcondition of zero__main_barrier might not hold. There might be insufficient permission to access diz.zero__x[tid].Ref__Integer_value (test_zero_err.vpr@64.11--64.81) [43005]"}
           perm <= Mask[Seq#Index(Heap[diz, zero__x], tid), Ref__Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[diz, zero__x], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, zero__x], tid), Ref__Integer_value] - perm];
     }
-    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion sys__result == this_barrier might not hold. (test_zero_err.vpr@65.11--65.38) [163403]"}
+    assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion sys__result == this_barrier might not hold. (test_zero_err.vpr@65.11--65.38) [43006]"}
       sys__result == this_barrier;
     // Finish exhale
     havoc ExhaleHeap;

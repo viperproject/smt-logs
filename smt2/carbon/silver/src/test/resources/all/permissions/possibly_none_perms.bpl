@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:21
+// Date:         2025-01-26 21:43:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/possibly_none_perms.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/possibly_none_perms-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -203,7 +203,7 @@ procedure test01(x: Ref, b_24: bool) returns ()
   
   // -- Checked inhaling of precondition
     perm := (if b_24 then FullPerm else NoPerm);
-    assert {:msg "  Contract might not be well-formed. Fraction (b ? write : none) might be negative. (possibly_none_perms.vpr@7.12--7.38) [189904]"}
+    assert {:msg "  Contract might not be well-formed. Fraction (b ? write : none) might be negative. (possibly_none_perms.vpr@7.12--7.38) [95316]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -219,7 +219,7 @@ procedure test01(x: Ref, b_24: bool) returns ()
   // -- Translating statement: a := x.f -- possibly_none_perms.vpr@10.3--10.20
     
     // -- Check definedness of x.f
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@10.3--10.20) [189905]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@10.3--10.20) [95317]"}
         HasDirectPerm(Mask, x, f_7);
     a_2 := Heap[x, f_7];
     assume state(Heap, Mask);
@@ -252,7 +252,7 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 5;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 5 might be negative. (possibly_none_perms.vpr@14.12--14.25) [189906]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 5 might be negative. (possibly_none_perms.vpr@14.12--14.25) [95318]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -268,7 +268,7 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   // -- Translating statement: a1 := x.f -- possibly_none_perms.vpr@16.3--16.21
     
     // -- Check definedness of x.f
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@16.3--16.21) [189907]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@16.3--16.21) [95319]"}
         HasDirectPerm(Mask, x, f_7);
     a1 := Heap[x, f_7];
     assume state(Heap, Mask);
@@ -277,10 +277,10 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := (if b1 then 1 / 5 else NoPerm);
-    assert {:msg "  Exhale might fail. Fraction (b1 ? 1 / 5 : none) might be negative. (possibly_none_perms.vpr@18.10--18.35) [189908]"}
+    assert {:msg "  Exhale might fail. Fraction (b1 ? 1 / 5 : none) might be negative. (possibly_none_perms.vpr@18.10--18.35) [95320]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@18.10--18.35) [189909]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@18.10--18.35) [95321]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -292,7 +292,7 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   
   // -- Translating statement: inhale acc(x.f, 1 / 5) -- possibly_none_perms.vpr@19.3--19.23
     perm := 1 / 5;
-    assert {:msg "  Inhale might fail. Fraction 1 / 5 might be negative. (possibly_none_perms.vpr@19.10--19.23) [189910]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 5 might be negative. (possibly_none_perms.vpr@19.10--19.23) [95322]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -308,7 +308,7 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   // -- Translating statement: a2 := x.f -- possibly_none_perms.vpr@21.3--21.21
     
     // -- Check definedness of x.f
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@21.3--21.21) [189912]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@21.3--21.21) [95324]"}
         HasDirectPerm(Mask, x, f_7);
     a2 := Heap[x, f_7];
     assume state(Heap, Mask);
@@ -317,10 +317,10 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := (if b2 then 1 / 5 else NoPerm);
-    assert {:msg "  Exhale might fail. Fraction (b2 ? 1 / 5 : none) might be negative. (possibly_none_perms.vpr@23.10--23.35) [189913]"}
+    assert {:msg "  Exhale might fail. Fraction (b2 ? 1 / 5 : none) might be negative. (possibly_none_perms.vpr@23.10--23.35) [95325]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@23.10--23.35) [189914]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@23.10--23.35) [95326]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -332,7 +332,7 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   
   // -- Translating statement: inhale acc(x.f, 1 / 5) -- possibly_none_perms.vpr@24.3--24.23
     perm := 1 / 5;
-    assert {:msg "  Inhale might fail. Fraction 1 / 5 might be negative. (possibly_none_perms.vpr@24.10--24.23) [189915]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 5 might be negative. (possibly_none_perms.vpr@24.10--24.23) [95327]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -348,7 +348,7 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   // -- Translating statement: a3 := x.f -- possibly_none_perms.vpr@26.3--26.21
     
     // -- Check definedness of x.f
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@26.3--26.21) [189917]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@26.3--26.21) [95329]"}
         HasDirectPerm(Mask, x, f_7);
     a3 := Heap[x, f_7];
     assume state(Heap, Mask);
@@ -357,9 +357,9 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     if (!b1) {
-      assert {:msg "  Assert might fail. Assertion a1 == a2 might not hold. (possibly_none_perms.vpr@28.10--28.38) [189918]"}
+      assert {:msg "  Assert might fail. Assertion a1 == a2 might not hold. (possibly_none_perms.vpr@28.10--28.38) [95330]"}
         a1 == a2;
-      assert {:msg "  Assert might fail. Assertion a2 == a3 might not hold. (possibly_none_perms.vpr@28.10--28.38) [189919]"}
+      assert {:msg "  Assert might fail. Assertion a2 == a3 might not hold. (possibly_none_perms.vpr@28.10--28.38) [95331]"}
         a2 == a3;
     }
     assume state(Heap, Mask);
@@ -368,7 +368,7 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     if (!b2) {
-      assert {:msg "  Assert might fail. Assertion a2 == a3 might not hold. (possibly_none_perms.vpr@29.10--29.26) [189920]"}
+      assert {:msg "  Assert might fail. Assertion a2 == a3 might not hold. (possibly_none_perms.vpr@29.10--29.26) [95332]"}
         a2 == a3;
     }
     assume state(Heap, Mask);
@@ -376,7 +376,7 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   // -- Translating statement: assert a1 == a3 || (a1 == a2 || a2 == a3) -- possibly_none_perms.vpr@32.3--32.42
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion a1 == a3 || (a1 == a2 || a2 == a3) might not hold. (possibly_none_perms.vpr@32.10--32.42) [189921]"}
+    assert {:msg "  Assert might fail. Assertion a1 == a3 || (a1 == a2 || a2 == a3) might not hold. (possibly_none_perms.vpr@32.10--32.42) [95333]"}
       a1 == a3 || (a1 == a2 || a2 == a3);
     assume state(Heap, Mask);
 }
@@ -406,7 +406,7 @@ procedure test03(x: Ref, b_24: bool) returns ()
   
   // -- Checked inhaling of precondition
     perm := (if b_24 then FullPerm else NoPerm);
-    assert {:msg "  Contract might not be well-formed. Fraction (b ? write : none) might be negative. (possibly_none_perms.vpr@36.12--36.38) [189922]"}
+    assert {:msg "  Contract might not be well-formed. Fraction (b ? write : none) might be negative. (possibly_none_perms.vpr@36.12--36.38) [95334]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -422,7 +422,7 @@ procedure test03(x: Ref, b_24: bool) returns ()
   // -- Translating statement: exhale acc(x.f, wildcard) -- possibly_none_perms.vpr@39.3--39.28
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@39.10--39.28) [189923]"}
+    assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@39.10--39.28) [95335]"}
       Mask[x, f_7] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x, f_7];

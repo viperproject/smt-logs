@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:00:04
+// Date:         2025-01-26 21:44:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/CountAdditions/traverseEverything.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/CountAdditions/traverseEverything-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -253,17 +253,17 @@ procedure fun#definedness() returns (Result: bool)
 // ==================================================
 
 type PredicateType_pred;
-function  pred_3(): Field PredicateType_pred FrameType;
+function  pred_1(): Field PredicateType_pred FrameType;
 function  pred#sm(): Field PredicateType_pred PMaskType;
-axiom PredicateMaskField(pred_3()) == pred#sm();
-axiom IsPredicateField(pred_3());
-axiom getPredWandId(pred_3()) == 0;
+axiom PredicateMaskField(pred_1()) == pred#sm();
+axiom IsPredicateField(pred_1());
+axiom getPredWandId(pred_1()) == 0;
 function  pred#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  pred#everUsed<A>(pred: (Field A FrameType)): bool;
 
 axiom (forall Heap: HeapType ::
-  { pred#trigger(Heap, pred_3()) }
-  pred#everUsed(pred_3())
+  { pred#trigger(Heap, pred_1()) }
+  pred#everUsed(pred_1())
 );
 
 procedure pred#definedness() returns ()
@@ -328,7 +328,7 @@ procedure main() returns ()
   // -- Translating statement: assert b + 4 == 9 + 1 -- traverseEverything.vpr@9.4--9.27
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion b + 4 == 9 + 1 might not hold. (traverseEverything.vpr@9.11--9.26) [101692]"}
+    assert {:msg "  Assert might fail. Assertion b + 4 == 9 + 1 might not hold. (traverseEverything.vpr@9.11--9.26) [189366]"}
       b_24 + 4 == 10;
     assume state(Heap, Mask);
   
@@ -339,7 +339,7 @@ procedure main() returns ()
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant b == 6 might not hold on entry. Assertion b == 6 might not hold. (traverseEverything.vpr@12.15--12.22) [101693]"}
+        assert {:msg "  Loop invariant b == 6 might not hold on entry. Assertion b == 6 might not hold. (traverseEverything.vpr@12.15--12.22) [189367]"}
           b_24 == 6;
     
     // -- Havoc loop written variables (except locals)
@@ -373,7 +373,7 @@ procedure main() returns ()
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant b == 6 might not be preserved. Assertion b == 6 might not hold. (traverseEverything.vpr@12.15--12.22) [101694]"}
+        assert {:msg "  Loop invariant b == 6 might not be preserved. Assertion b == 6 might not hold. (traverseEverything.vpr@12.15--12.22) [189368]"}
           b_24 == 6;
         // Terminate execution
         assume false;

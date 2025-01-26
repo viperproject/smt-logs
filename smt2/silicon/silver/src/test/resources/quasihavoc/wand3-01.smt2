@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:38:05
+; Started: 2025-01-26 21:36:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -194,7 +194,7 @@
 (assert (forall (($t@5@01 $Snap)) (!
   (= (MWSF_apply mwsf@6@01 $t@5@01) ($Snap.first $t@4@01))
   :pattern ((MWSF_apply mwsf@6@01 $t@5@01))
-  :qid |quant-u-13345|)))
+  :qid |quant-u-13541|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -205,7 +205,7 @@
       ($SortWrappers.$SnapToInt ($Snap.first $t@4@01)))
     (= (MWSF_apply mwsf@6@01 $t@5@01) ($Snap.first $t@4@01)))
   :pattern ((MWSF_apply mwsf@6@01 $t@5@01))
-  :qid |quant-u-13346|)))
+  :qid |quant-u-13542|)))
 ; [exec]
 ; assert acc(x.f, 1 / 2) && x.f == 3
 ; [eval] x.f == 3

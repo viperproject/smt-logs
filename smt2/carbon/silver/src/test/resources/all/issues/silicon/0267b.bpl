@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:14
+// Date:         2025-01-26 21:42:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0267b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0267b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,7 +144,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(n_4_1: Ref): bool;
+function  neverTriggered1(n_4: Ref): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -391,15 +391,15 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 type NodeDomainType;
 
 // Translation of domain function lookup
-function  lookup(ref_1: Ref): NodeDomainType;
+function  lookup_1(ref_1: Ref): NodeDomainType;
 
 // ==================================================
 // Translation of all fields
 // ==================================================
 
-const unique m_22: Field NormalField int;
-axiom !IsPredicateField(m_22);
-axiom !IsWandField(m_22);
+const unique m_20: Field NormalField int;
+axiom !IsPredicateField(m_20);
+axiom !IsWandField(m_20);
 
 // ==================================================
 // Translation of function $
@@ -421,7 +421,7 @@ axiom (forall Heap: HeapType, n: Ref ::
 function  $#frame(frame: FrameType, n: Ref): NodeDomainType;
 axiom (forall Heap: HeapType, Mask: MaskType, n: Ref ::
   { state(Heap, Mask), $'(Heap, n) }
-  state(Heap, Mask) ==> $'(Heap, n) == $#frame(FrameFragment(Heap[n, m_22]), n)
+  state(Heap, Mask) ==> $'(Heap, n) == $#frame(FrameFragment(Heap[n, m_20]), n)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -446,7 +446,7 @@ procedure $#definedness(n: Ref) returns (Result: NodeDomainType)
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
     assume n != null;
-    Mask := Mask[n, m_22:=Mask[n, m_22] + perm];
+    Mask := Mask[n, m_20:=Mask[n, m_20] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
 }
@@ -456,22 +456,22 @@ procedure $#definedness(n: Ref) returns (Result: NodeDomainType)
 // ==================================================
 
 // Uninterpreted function definitions
-function  purify_graph(Heap: HeapType, nodes_1: (Set Ref)): Set NodeDomainType;
-function  purify_graph'(Heap: HeapType, nodes_1: (Set Ref)): Set NodeDomainType;
-axiom (forall Heap: HeapType, nodes_1: (Set Ref) ::
-  { purify_graph(Heap, nodes_1) }
-  purify_graph(Heap, nodes_1) == purify_graph'(Heap, nodes_1) && dummyFunction(purify_graph#triggerStateless(nodes_1))
+function  purify_graph(Heap: HeapType, nodes: (Set Ref)): Set NodeDomainType;
+function  purify_graph'(Heap: HeapType, nodes: (Set Ref)): Set NodeDomainType;
+axiom (forall Heap: HeapType, nodes: (Set Ref) ::
+  { purify_graph(Heap, nodes) }
+  purify_graph(Heap, nodes) == purify_graph'(Heap, nodes) && dummyFunction(purify_graph#triggerStateless(nodes))
 );
-axiom (forall Heap: HeapType, nodes_1: (Set Ref) ::
-  { purify_graph'(Heap, nodes_1) }
-  dummyFunction(purify_graph#triggerStateless(nodes_1))
+axiom (forall Heap: HeapType, nodes: (Set Ref) ::
+  { purify_graph'(Heap, nodes) }
+  dummyFunction(purify_graph#triggerStateless(nodes))
 );
 
 // Framing axioms
-function  purify_graph#frame(frame: FrameType, nodes_1: (Set Ref)): Set NodeDomainType;
-axiom (forall Heap: HeapType, Mask: MaskType, nodes_1: (Set Ref) ::
-  { state(Heap, Mask), purify_graph'(Heap, nodes_1) }
-  state(Heap, Mask) ==> purify_graph'(Heap, nodes_1) == purify_graph#frame(FrameFragment(purify_graph#condqp1(Heap, nodes_1)), nodes_1)
+function  purify_graph#frame(frame: FrameType, nodes: (Set Ref)): Set NodeDomainType;
+axiom (forall Heap: HeapType, Mask: MaskType, nodes: (Set Ref) ::
+  { state(Heap, Mask), purify_graph'(Heap, nodes) }
+  state(Heap, Mask) ==> purify_graph'(Heap, nodes) == purify_graph#frame(FrameFragment(purify_graph#condqp1(Heap, nodes)), nodes)
 );
 // ==================================================
 // Function used for framing of quantified permission (forall n: Ref :: { (n in nodes) } (n in nodes) ==> acc(n.m, write)) in function purify_graph
@@ -479,34 +479,34 @@ axiom (forall Heap: HeapType, Mask: MaskType, nodes_1: (Set Ref) ::
 
 function  purify_graph#condqp1(Heap: HeapType, nodes_1_1: (Set Ref)): int;
 function  sk_purify_graph#condqp1(fnAppH1: int, fnAppH2: int): Ref;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, nodes_1: (Set Ref) ::
-  { purify_graph#condqp1(Heap2Heap, nodes_1), purify_graph#condqp1(Heap1Heap, nodes_1), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (nodes_1[sk_purify_graph#condqp1(purify_graph#condqp1(Heap2Heap, nodes_1), purify_graph#condqp1(Heap1Heap, nodes_1))] && NoPerm < FullPerm <==> nodes_1[sk_purify_graph#condqp1(purify_graph#condqp1(Heap2Heap, nodes_1), purify_graph#condqp1(Heap1Heap, nodes_1))] && NoPerm < FullPerm) && (nodes_1[sk_purify_graph#condqp1(purify_graph#condqp1(Heap2Heap, nodes_1), purify_graph#condqp1(Heap1Heap, nodes_1))] && NoPerm < FullPerm ==> Heap2Heap[sk_purify_graph#condqp1(purify_graph#condqp1(Heap2Heap, nodes_1), purify_graph#condqp1(Heap1Heap, nodes_1)), m_22] == Heap1Heap[sk_purify_graph#condqp1(purify_graph#condqp1(Heap2Heap, nodes_1), purify_graph#condqp1(Heap1Heap, nodes_1)), m_22]) ==> purify_graph#condqp1(Heap2Heap, nodes_1) == purify_graph#condqp1(Heap1Heap, nodes_1)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, nodes: (Set Ref) ::
+  { purify_graph#condqp1(Heap2Heap, nodes), purify_graph#condqp1(Heap1Heap, nodes), succHeapTrans(Heap2Heap, Heap1Heap) }
+  (nodes[sk_purify_graph#condqp1(purify_graph#condqp1(Heap2Heap, nodes), purify_graph#condqp1(Heap1Heap, nodes))] && NoPerm < FullPerm <==> nodes[sk_purify_graph#condqp1(purify_graph#condqp1(Heap2Heap, nodes), purify_graph#condqp1(Heap1Heap, nodes))] && NoPerm < FullPerm) && (nodes[sk_purify_graph#condqp1(purify_graph#condqp1(Heap2Heap, nodes), purify_graph#condqp1(Heap1Heap, nodes))] && NoPerm < FullPerm ==> Heap2Heap[sk_purify_graph#condqp1(purify_graph#condqp1(Heap2Heap, nodes), purify_graph#condqp1(Heap1Heap, nodes)), m_20] == Heap1Heap[sk_purify_graph#condqp1(purify_graph#condqp1(Heap2Heap, nodes), purify_graph#condqp1(Heap1Heap, nodes)), m_20]) ==> purify_graph#condqp1(Heap2Heap, nodes) == purify_graph#condqp1(Heap1Heap, nodes)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, nodes_1: (Set Ref) ::
-  { state(Heap, Mask), purify_graph'(Heap, nodes_1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || purify_graph#trigger(FrameFragment(purify_graph#condqp1(Heap, nodes_1)), nodes_1)) ==> (forall n_2: Ref ::
-    { nodes_1[n_2] } { purify_graph'(Heap, nodes_1)[$#frame(FrameFragment(Heap[n_2, m_22]), n_2)] }
-    nodes_1[n_2] ==> purify_graph'(Heap, nodes_1)[$(Heap, n_2)]
+axiom (forall Heap: HeapType, Mask: MaskType, nodes: (Set Ref) ::
+  { state(Heap, Mask), purify_graph'(Heap, nodes) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || purify_graph#trigger(FrameFragment(purify_graph#condqp1(Heap, nodes)), nodes)) ==> (forall n_2: Ref ::
+    { nodes[n_2] } { purify_graph'(Heap, nodes)[$#frame(FrameFragment(Heap[n_2, m_20]), n_2)] }
+    nodes[n_2] ==> purify_graph'(Heap, nodes)[$(Heap, n_2)]
   )
 );
 
 // Trigger function (controlling recursive postconditions)
-function  purify_graph#trigger(frame: FrameType, nodes_1: (Set Ref)): bool;
+function  purify_graph#trigger(frame: FrameType, nodes: (Set Ref)): bool;
 
 // State-independent trigger function
-function  purify_graph#triggerStateless(nodes_1: (Set Ref)): Set NodeDomainType;
+function  purify_graph#triggerStateless(nodes: (Set Ref)): Set NodeDomainType;
 
 // Check contract well-formedness and postcondition
-procedure purify_graph#definedness(nodes_1: (Set Ref)) returns (Result: (Set NodeDomainType))
+procedure purify_graph#definedness(nodes: (Set Ref)) returns (Result: (Set NodeDomainType))
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var n_85: Ref;
-  var ExhaleWellDef0Mask: MaskType;
+  var n_86: Ref;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -523,36 +523,36 @@ procedure purify_graph#definedness(nodes_1: (Set Ref)) returns (Result: (Set Nod
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource n.m might not be injective. (0267b.vpr@12.14--12.54) [216694]"}
-      (forall n_4_1: Ref, n_4_2: Ref ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource n.m might not be injective. (0267b.vpr@12.14--12.54) [70531]"}
+      (forall n_4: Ref, n_4_1: Ref ::
       
-      (((n_4_1 != n_4_2 && nodes_1[n_4_1]) && nodes_1[n_4_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_4_1 != n_4_2
+      (((n_4 != n_4_1 && nodes[n_4]) && nodes[n_4_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_4 != n_4_1
     );
     
     // -- Define Inverse Function
-      assume (forall n_4_1: Ref ::
-        { Heap[n_4_1, m_22] } { QPMask[n_4_1, m_22] } { nodes_1[n_4_1] }
-        nodes_1[n_4_1] && NoPerm < FullPerm ==> qpRange1(n_4_1) && invRecv1(n_4_1) == n_4_1
+      assume (forall n_4: Ref ::
+        { Heap[n_4, m_20] } { QPMask[n_4, m_20] } { nodes[n_4] }
+        nodes[n_4] && NoPerm < FullPerm ==> qpRange1(n_4) && invRecv1(n_4) == n_4
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (nodes_1[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4) ==> invRecv1(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (nodes[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9) ==> invRecv1(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall n_4_1: Ref ::
-        { Heap[n_4_1, m_22] } { QPMask[n_4_1, m_22] } { nodes_1[n_4_1] }
-        nodes_1[n_4_1] ==> n_4_1 != null
+      assume (forall n_4: Ref ::
+        { Heap[n_4, m_20] } { QPMask[n_4, m_20] } { nodes[n_4] }
+        nodes[n_4] ==> n_4 != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, m_22] }
-        ((nodes_1[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> invRecv1(o_4) == o_4) && QPMask[o_4, m_22] == Mask[o_4, m_22] + FullPerm) && (!((nodes_1[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, m_22] == Mask[o_4, m_22])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, m_20] }
+        ((nodes[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> invRecv1(o_9) == o_9) && QPMask[o_9, m_20] == Mask[o_9, m_20] + FullPerm) && (!((nodes[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, m_20] == Mask[o_9, m_20])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != m_22 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != m_20 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -563,14 +563,14 @@ procedure purify_graph#definedness(nodes_1: (Set Ref)) returns (Result: (Set Nod
     
     // -- Check definedness of (forall n: Ref :: { (n in nodes) } { ($(n) in result) } (n in nodes) ==> ($(n) in result))
       if (*) {
-        if (nodes_1[n_85]) {
+        if (nodes[n_86]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function $ might not hold. There might be insufficient permission to access n.m (0267b.vpr@13.45--13.49) [216695]"}
-              NoPerm < perm ==> NoPerm < Mask[n_85, m_22];
+            assert {:msg "  Precondition of function $ might not hold. There might be insufficient permission to access n.m (0267b.vpr@13.45--13.49) [70532]"}
+              NoPerm < perm ==> NoPerm < Mask[n_86, m_20];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -582,8 +582,8 @@ procedure purify_graph#definedness(nodes_1: (Set Ref)) returns (Result: (Set Nod
         assume false;
       }
     assume (forall n_6: Ref ::
-      { nodes_1[n_6] } { Result[$#frame(FrameFragment(Heap[n_6, m_22]), n_6)] }
-      nodes_1[n_6] ==> Result[$(Heap, n_6)]
+      { nodes[n_6] } { Result[$#frame(FrameFragment(Heap[n_6, m_20]), n_6)] }
+      nodes[n_6] ==> Result[$(Heap, n_6)]
     );
     assume state(Heap, Mask);
 }

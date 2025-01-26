@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:53
+// Date:         2025-01-26 21:43:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0054.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0054-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -243,13 +243,13 @@ procedure Test02test04$(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -273,8 +273,8 @@ procedure Test02test04$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -297,13 +297,13 @@ procedure Test02test04$(this: Ref) returns ()
   // -- Translating statement: unfold acc(V(this), 20 / 100) -- 0054.vpr@18.3--18.32
     assume V#trigger(Heap, V_12(this));
     assume Heap[null, V_12(this)] == FrameFragment(Heap[this, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 20 / 100;
-    assert {:msg "  Unfolding V(this) might fail. Fraction 20 / 100 might be negative. (0054.vpr@18.3--18.32) [191784]"}
+    assert {:msg "  Unfolding V(this) might fail. Fraction 20 / 100 might be negative. (0054.vpr@18.3--18.32) [83165]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding V(this) might fail. There might be insufficient permission to access V(this) (0054.vpr@18.3--18.32) [191785]"}
+      assert {:msg "  Unfolding V(this) might fail. There might be insufficient permission to access V(this) (0054.vpr@18.3--18.32) [83166]"}
         perm <= Mask[null, V_12(this)];
     }
     Mask := Mask[null, V_12(this):=Mask[null, V_12(this)] - perm];
@@ -314,7 +314,7 @@ procedure Test02test04$(this: Ref) returns ()
         Heap := Heap[null, V_12(this):=newVersion];
       }
     perm := FullPerm * (20 / 100);
-    assert {:msg "  Unfolding V(this) might fail. Fraction write * (20 / 100) might be negative. (0054.vpr@18.3--18.32) [191786]"}
+    assert {:msg "  Unfolding V(this) might fail. Fraction write * (20 / 100) might be negative. (0054.vpr@18.3--18.32) [83167]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     Mask := Mask[this, f_7:=Mask[this, f_7] + perm];
@@ -325,13 +325,13 @@ procedure Test02test04$(this: Ref) returns ()
   // -- Translating statement: unfold acc(V(this), 30 / 100) -- 0054.vpr@19.3--19.32
     assume V#trigger(Heap, V_12(this));
     assume Heap[null, V_12(this)] == FrameFragment(Heap[this, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 30 / 100;
-    assert {:msg "  Unfolding V(this) might fail. Fraction 30 / 100 might be negative. (0054.vpr@19.3--19.32) [191788]"}
+    assert {:msg "  Unfolding V(this) might fail. Fraction 30 / 100 might be negative. (0054.vpr@19.3--19.32) [83169]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding V(this) might fail. There might be insufficient permission to access V(this) (0054.vpr@19.3--19.32) [191789]"}
+      assert {:msg "  Unfolding V(this) might fail. There might be insufficient permission to access V(this) (0054.vpr@19.3--19.32) [83170]"}
         perm <= Mask[null, V_12(this)];
     }
     Mask := Mask[null, V_12(this):=Mask[null, V_12(this)] - perm];
@@ -342,7 +342,7 @@ procedure Test02test04$(this: Ref) returns ()
         Heap := Heap[null, V_12(this):=newVersion];
       }
     perm := FullPerm * (30 / 100);
-    assert {:msg "  Unfolding V(this) might fail. Fraction write * (30 / 100) might be negative. (0054.vpr@19.3--19.32) [191790]"}
+    assert {:msg "  Unfolding V(this) might fail. Fraction write * (30 / 100) might be negative. (0054.vpr@19.3--19.32) [83171]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     Mask := Mask[this, f_7:=Mask[this, f_7] + perm];
@@ -351,18 +351,18 @@ procedure Test02test04$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(V(this), 50 / 100) -- 0054.vpr@20.3--20.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm * (50 / 100);
-    assert {:msg "  Folding V(this) might fail. Fraction write * (50 / 100) might be negative. (0054.vpr@20.3--20.30) [191792]"}
+    assert {:msg "  Folding V(this) might fail. Fraction write * (50 / 100) might be negative. (0054.vpr@20.3--20.30) [83173]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding V(this) might fail. There might be insufficient permission to access this.f (0054.vpr@20.3--20.30) [191793]"}
+      assert {:msg "  Folding V(this) might fail. There might be insufficient permission to access this.f (0054.vpr@20.3--20.30) [83174]"}
         perm <= Mask[this, f_7];
     }
     Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
     perm := 50 / 100;
-    assert {:msg "  Folding V(this) might fail. Fraction 50 / 100 might be negative. (0054.vpr@20.3--20.30) [191794]"}
+    assert {:msg "  Folding V(this) might fail. Fraction 50 / 100 might be negative. (0054.vpr@20.3--20.30) [83175]"}
       perm >= NoPerm;
     Mask := Mask[null, V_12(this):=Mask[null, V_12(this)] + perm];
     assume state(Heap, Mask);
@@ -379,15 +379,15 @@ procedure Test02test04$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Test02test04$ might not hold. There might be insufficient permission to access V(this) (0054.vpr@14.11--14.30) [191795]"}
+      assert {:msg "  Postcondition of Test02test04$ might not hold. There might be insufficient permission to access V(this) (0054.vpr@14.11--14.30) [83176]"}
         perm <= Mask[null, V_12(this)];
     }
     Mask := Mask[null, V_12(this):=Mask[null, V_12(this)] - perm];
-    assert {:msg "  Postcondition of Test02test04$ might not hold. There might be insufficient permission to access this.f (0054.vpr@16.11--16.32) [191796]"}
+    assert {:msg "  Postcondition of Test02test04$ might not hold. There might be insufficient permission to access this.f (0054.vpr@16.11--16.32) [83177]"}
       Mask[this, f_7] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, f_7];

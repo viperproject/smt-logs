@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:08
+// Date:         2025-01-26 21:41:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/functions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/functions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -191,20 +191,20 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of function inhaleTrue1
 // ==================================================
 
 // Uninterpreted function definitions
-function  inhaleTrue1(Heap: HeapType, this: Ref): int;
+function  inhaleTrue1_1(Heap: HeapType, this: Ref): int;
 function  inhaleTrue1'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { inhaleTrue1(Heap, this) }
-  inhaleTrue1(Heap, this) == inhaleTrue1'(Heap, this) && dummyFunction(inhaleTrue1#triggerStateless(this))
+  { inhaleTrue1_1(Heap, this) }
+  inhaleTrue1_1(Heap, this) == inhaleTrue1'(Heap, this) && dummyFunction(inhaleTrue1#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { inhaleTrue1'(Heap, this) }
@@ -213,15 +213,15 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), inhaleTrue1(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 10 ==> Heap[this, x_36] == 1 ==> inhaleTrue1(Heap, this) == 0
+  { state(Heap, Mask), inhaleTrue1_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 10 ==> Heap[this, x_42] == 1 ==> inhaleTrue1_1(Heap, this) == 0
 );
 
 // Framing axioms
 function  inhaleTrue1#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), inhaleTrue1'(Heap, this) }
-  state(Heap, Mask) ==> inhaleTrue1'(Heap, this) == inhaleTrue1#frame(FrameFragment(Heap[this, x_36]), this)
+  state(Heap, Mask) ==> inhaleTrue1'(Heap, this) == inhaleTrue1#frame(FrameFragment(Heap[this, x_42]), this)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -249,13 +249,13 @@ procedure inhaleTrue1#definedness(this: Ref) returns (Result: int)
       if (*) {
         perm := FullPerm;
         assume this != null;
-        Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
         assume state(Heap, Mask);
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@9.12--9.46) [188878]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@9.12--9.46) [52565]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 1;
         assume state(Heap, Mask);
         assume false;
       }
@@ -272,11 +272,11 @@ procedure inhaleTrue1#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  inhaleTrue2(Heap: HeapType, this: Ref): int;
+function  inhaleTrue2_1(Heap: HeapType, this: Ref): int;
 function  inhaleTrue2'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { inhaleTrue2(Heap, this) }
-  inhaleTrue2(Heap, this) == inhaleTrue2'(Heap, this) && dummyFunction(inhaleTrue2#triggerStateless(this))
+  { inhaleTrue2_1(Heap, this) }
+  inhaleTrue2_1(Heap, this) == inhaleTrue2'(Heap, this) && dummyFunction(inhaleTrue2#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { inhaleTrue2'(Heap, this) }
@@ -285,15 +285,15 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), inhaleTrue2(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 6 ==> Heap[this, x_36] == 1 ==> inhaleTrue2(Heap, this) == 0
+  { state(Heap, Mask), inhaleTrue2_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 6 ==> Heap[this, x_42] == 1 ==> inhaleTrue2_1(Heap, this) == 0
 );
 
 // Framing axioms
 function  inhaleTrue2#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), inhaleTrue2'(Heap, this) }
-  state(Heap, Mask) ==> inhaleTrue2'(Heap, this) == inhaleTrue2#frame(FrameFragment(Heap[this, x_36]), this)
+  state(Heap, Mask) ==> inhaleTrue2'(Heap, this) == inhaleTrue2#frame(FrameFragment(Heap[this, x_42]), this)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -321,13 +321,13 @@ procedure inhaleTrue2#definedness(this: Ref) returns (Result: int)
       if (*) {
         perm := FullPerm;
         assume this != null;
-        Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
         assume state(Heap, Mask);
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@15.12--15.54) [188879]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@15.12--15.54) [52566]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 1;
         assume state(Heap, Mask);
         assume false;
       }
@@ -344,11 +344,11 @@ procedure inhaleTrue2#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  inhaleTrue3(Heap: HeapType, this: Ref): int;
+function  inhaleTrue3_1(Heap: HeapType, this: Ref): int;
 function  inhaleTrue3'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { inhaleTrue3(Heap, this) }
-  inhaleTrue3(Heap, this) == inhaleTrue3'(Heap, this) && dummyFunction(inhaleTrue3#triggerStateless(this))
+  { inhaleTrue3_1(Heap, this) }
+  inhaleTrue3_1(Heap, this) == inhaleTrue3'(Heap, this) && dummyFunction(inhaleTrue3#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { inhaleTrue3'(Heap, this) }
@@ -357,15 +357,15 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), inhaleTrue3(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> Heap[this, x_36] == 1 ==> inhaleTrue3(Heap, this) == 0
+  { state(Heap, Mask), inhaleTrue3_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> Heap[this, x_42] == 1 ==> inhaleTrue3_1(Heap, this) == 0
 );
 
 // Framing axioms
 function  inhaleTrue3#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), inhaleTrue3'(Heap, this) }
-  state(Heap, Mask) ==> inhaleTrue3'(Heap, this) == inhaleTrue3#frame(FrameFragment(Heap[this, x_36]), this)
+  state(Heap, Mask) ==> inhaleTrue3'(Heap, this) == inhaleTrue3#frame(FrameFragment(Heap[this, x_42]), this)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -393,14 +393,14 @@ procedure inhaleTrue3#definedness(this: Ref) returns (Result: int)
       if (*) {
         perm := FullPerm;
         assume this != null;
-        Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+        Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@22.12--22.31) [188880]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@22.12--22.31) [52567]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 1;
         assume state(Heap, Mask);
         assume false;
       }
@@ -418,11 +418,11 @@ procedure inhaleTrue3#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  inhaleExpression1(Heap: HeapType, this: Ref): int;
+function  inhaleExpression1_1(Heap: HeapType, this: Ref): int;
 function  inhaleExpression1'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { inhaleExpression1(Heap, this) }
-  inhaleExpression1(Heap, this) == inhaleExpression1'(Heap, this) && dummyFunction(inhaleExpression1#triggerStateless(this))
+  { inhaleExpression1_1(Heap, this) }
+  inhaleExpression1_1(Heap, this) == inhaleExpression1'(Heap, this) && dummyFunction(inhaleExpression1#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { inhaleExpression1'(Heap, this) }
@@ -431,8 +431,8 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), inhaleExpression1(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 7 ==> inhaleExpression1(Heap, this) == Heap[this, x_36]
+  { state(Heap, Mask), inhaleExpression1_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 7 ==> inhaleExpression1_1(Heap, this) == Heap[this, x_42]
 );
 
 // Framing axioms
@@ -480,28 +480,28 @@ procedure inhaleExpression1#definedness(this: Ref) returns (Result: int)
     // -- Normally inhale the inhale part.
       perm := FullPerm;
       assume this != null;
-      Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+      Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@45.12--45.46) [188881]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@45.12--45.46) [52568]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 1;
       assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of this.x
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@44.1--49.2) [188882]"}
-        HasDirectPerm(Mask, this, x_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@44.1--49.2) [52569]"}
+        HasDirectPerm(Mask, this, x_42);
   
   // -- Translate function body
-    Result := Heap[this, x_36];
+    Result := Heap[this, x_42];
   
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of inhaleExpression1 might not hold. Assertion result == 1 might not hold. (functions.vpr@46.11--46.22) [188883]"}
+    assert {:msg "  Postcondition of inhaleExpression1 might not hold. Assertion result == 1 might not hold. (functions.vpr@46.11--46.22) [52570]"}
       Result == 1;
 }
 
@@ -510,11 +510,11 @@ procedure inhaleExpression1#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  inhaleExpression2(Heap: HeapType, this: Ref): int;
+function  inhaleExpression2_1(Heap: HeapType, this: Ref): int;
 function  inhaleExpression2'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { inhaleExpression2(Heap, this) }
-  inhaleExpression2(Heap, this) == inhaleExpression2'(Heap, this) && dummyFunction(inhaleExpression2#triggerStateless(this))
+  { inhaleExpression2_1(Heap, this) }
+  inhaleExpression2_1(Heap, this) == inhaleExpression2'(Heap, this) && dummyFunction(inhaleExpression2#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { inhaleExpression2'(Heap, this) }
@@ -523,8 +523,8 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), inhaleExpression2(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 8 ==> inhaleExpression2(Heap, this) == Heap[this, x_36]
+  { state(Heap, Mask), inhaleExpression2_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 8 ==> inhaleExpression2_1(Heap, this) == Heap[this, x_42]
 );
 
 // Framing axioms
@@ -572,28 +572,28 @@ procedure inhaleExpression2#definedness(this: Ref) returns (Result: int)
     // -- Normally inhale the inhale part.
       perm := FullPerm;
       assume this != null;
-      Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+      Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@52.12--52.54) [188884]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@52.12--52.54) [52571]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 1;
       assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of this.x
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@51.1--56.2) [188885]"}
-        HasDirectPerm(Mask, this, x_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@51.1--56.2) [52572]"}
+        HasDirectPerm(Mask, this, x_42);
   
   // -- Translate function body
-    Result := Heap[this, x_36];
+    Result := Heap[this, x_42];
   
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of inhaleExpression2 might not hold. Assertion result == 1 might not hold. (functions.vpr@53.11--53.22) [188886]"}
+    assert {:msg "  Postcondition of inhaleExpression2 might not hold. Assertion result == 1 might not hold. (functions.vpr@53.11--53.22) [52573]"}
       Result == 1;
 }
 
@@ -602,11 +602,11 @@ procedure inhaleExpression2#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  inhaleExpression3(Heap: HeapType, this: Ref): int;
+function  inhaleExpression3_1(Heap: HeapType, this: Ref): int;
 function  inhaleExpression3'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { inhaleExpression3(Heap, this) }
-  inhaleExpression3(Heap, this) == inhaleExpression3'(Heap, this) && dummyFunction(inhaleExpression3#triggerStateless(this))
+  { inhaleExpression3_1(Heap, this) }
+  inhaleExpression3_1(Heap, this) == inhaleExpression3'(Heap, this) && dummyFunction(inhaleExpression3#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { inhaleExpression3'(Heap, this) }
@@ -615,8 +615,8 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), inhaleExpression3(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> inhaleExpression3(Heap, this) == Heap[this, x_36]
+  { state(Heap, Mask), inhaleExpression3_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> inhaleExpression3_1(Heap, this) == Heap[this, x_42]
 );
 
 // Framing axioms
@@ -665,29 +665,29 @@ procedure inhaleExpression3#definedness(this: Ref) returns (Result: int)
     // -- Normally inhale the inhale part.
       perm := FullPerm;
       assume this != null;
-      Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+      Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@60.12--60.31) [188887]"}
-          HasDirectPerm(Mask, this, x_36);
-      assume Heap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@60.12--60.31) [52574]"}
+          HasDirectPerm(Mask, this, x_42);
+      assume Heap[this, x_42] == 1;
       assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of this.x
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@58.1--64.2) [188888]"}
-        HasDirectPerm(Mask, this, x_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@58.1--64.2) [52575]"}
+        HasDirectPerm(Mask, this, x_42);
   
   // -- Translate function body
-    Result := Heap[this, x_36];
+    Result := Heap[this, x_42];
   
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of inhaleExpression3 might not hold. Assertion result == 1 might not hold. (functions.vpr@61.11--61.22) [188889]"}
+    assert {:msg "  Postcondition of inhaleExpression3 might not hold. Assertion result == 1 might not hold. (functions.vpr@61.11--61.22) [52576]"}
       Result == 1;
 }
 
@@ -696,11 +696,11 @@ procedure inhaleExpression3#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  exhaleTrue1(Heap: HeapType, this: Ref): int;
+function  exhaleTrue1_1(Heap: HeapType, this: Ref): int;
 function  exhaleTrue1'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { exhaleTrue1(Heap, this) }
-  exhaleTrue1(Heap, this) == exhaleTrue1'(Heap, this) && dummyFunction(exhaleTrue1#triggerStateless(this))
+  { exhaleTrue1_1(Heap, this) }
+  exhaleTrue1_1(Heap, this) == exhaleTrue1'(Heap, this) && dummyFunction(exhaleTrue1#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { exhaleTrue1'(Heap, this) }
@@ -709,21 +709,21 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), exhaleTrue1(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> exhaleTrue1(Heap, this) == 0
+  { state(Heap, Mask), exhaleTrue1_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> exhaleTrue1_1(Heap, this) == 0
 );
 
 // Framing axioms
 function  exhaleTrue1#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), exhaleTrue1'(Heap, this) }
-  state(Heap, Mask) ==> exhaleTrue1'(Heap, this) == exhaleTrue1#frame(FrameFragment(Heap[this, x_36]), this)
+  state(Heap, Mask) ==> exhaleTrue1'(Heap, this) == exhaleTrue1#frame(FrameFragment(Heap[this, x_42]), this)
 );
 
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), exhaleTrue1'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 3 || exhaleTrue1#trigger(FrameFragment(Heap[this, x_36]), this)) ==> Heap[this, x_36] == 1
+  state(Heap, Mask) && (AssumeFunctionsAbove < 3 || exhaleTrue1#trigger(FrameFragment(Heap[this, x_42]), this)) ==> Heap[this, x_42] == 1
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -750,7 +750,7 @@ procedure exhaleTrue1#definedness(this: Ref) returns (Result: int)
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -763,9 +763,9 @@ procedure exhaleTrue1#definedness(this: Ref) returns (Result: int)
       if (*) {
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@73.11--73.30) [188890]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@73.11--73.30) [52577]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 1;
         assume state(Heap, Mask);
         assume false;
       }
@@ -780,11 +780,11 @@ procedure exhaleTrue1#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  exhaleTrue2(Heap: HeapType, this: Ref): int;
+function  exhaleTrue2_1(Heap: HeapType, this: Ref): int;
 function  exhaleTrue2'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { exhaleTrue2(Heap, this) }
-  exhaleTrue2(Heap, this) == exhaleTrue2'(Heap, this) && dummyFunction(exhaleTrue2#triggerStateless(this))
+  { exhaleTrue2_1(Heap, this) }
+  exhaleTrue2_1(Heap, this) == exhaleTrue2'(Heap, this) && dummyFunction(exhaleTrue2#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { exhaleTrue2'(Heap, this) }
@@ -793,21 +793,21 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), exhaleTrue2(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 11 ==> exhaleTrue2(Heap, this) == 0
+  { state(Heap, Mask), exhaleTrue2_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 11 ==> exhaleTrue2_1(Heap, this) == 0
 );
 
 // Framing axioms
 function  exhaleTrue2#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), exhaleTrue2'(Heap, this) }
-  state(Heap, Mask) ==> exhaleTrue2'(Heap, this) == exhaleTrue2#frame(FrameFragment(Heap[this, x_36]), this)
+  state(Heap, Mask) ==> exhaleTrue2'(Heap, this) == exhaleTrue2#frame(FrameFragment(Heap[this, x_42]), this)
 );
 
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), exhaleTrue2'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 11 || exhaleTrue2#trigger(FrameFragment(Heap[this, x_36]), this)) ==> this != null && Heap[this, x_36] == 1
+  state(Heap, Mask) && (AssumeFunctionsAbove < 11 || exhaleTrue2#trigger(FrameFragment(Heap[this, x_42]), this)) ==> this != null && Heap[this, x_42] == 1
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -834,7 +834,7 @@ procedure exhaleTrue2#definedness(this: Ref) returns (Result: int)
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -848,9 +848,9 @@ procedure exhaleTrue2#definedness(this: Ref) returns (Result: int)
         assume this != null;
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@80.11--80.54) [188891]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@80.11--80.54) [52578]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 1;
         assume state(Heap, Mask);
         assume false;
       }
@@ -865,11 +865,11 @@ procedure exhaleTrue2#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  exhaleTrue3(Heap: HeapType, this: Ref): int;
+function  exhaleTrue3_1(Heap: HeapType, this: Ref): int;
 function  exhaleTrue3'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { exhaleTrue3(Heap, this) }
-  exhaleTrue3(Heap, this) == exhaleTrue3'(Heap, this) && dummyFunction(exhaleTrue3#triggerStateless(this))
+  { exhaleTrue3_1(Heap, this) }
+  exhaleTrue3_1(Heap, this) == exhaleTrue3'(Heap, this) && dummyFunction(exhaleTrue3#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { exhaleTrue3'(Heap, this) }
@@ -878,25 +878,25 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), exhaleTrue3(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 9 ==> exhaleTrue3(Heap, this) == 0
+  { state(Heap, Mask), exhaleTrue3_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 9 ==> exhaleTrue3_1(Heap, this) == 0
 );
 
 // Framing axioms
 function  exhaleTrue3#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), exhaleTrue3'(Heap, this) }
-  state(Heap, Mask) ==> exhaleTrue3'(Heap, this) == exhaleTrue3#frame(FrameFragment(Heap[this, x_36]), this)
+  state(Heap, Mask) ==> exhaleTrue3'(Heap, this) == exhaleTrue3#frame(FrameFragment(Heap[this, x_42]), this)
 );
 
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), exhaleTrue3'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 9 || exhaleTrue3#trigger(FrameFragment(Heap[this, x_36]), this)) ==> this != null
+  state(Heap, Mask) && (AssumeFunctionsAbove < 9 || exhaleTrue3#trigger(FrameFragment(Heap[this, x_42]), this)) ==> this != null
 );
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), exhaleTrue3'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 9 || exhaleTrue3#trigger(FrameFragment(Heap[this, x_36]), this)) ==> Heap[this, x_36] == 1
+  state(Heap, Mask) && (AssumeFunctionsAbove < 9 || exhaleTrue3#trigger(FrameFragment(Heap[this, x_42]), this)) ==> Heap[this, x_42] == 1
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -923,7 +923,7 @@ procedure exhaleTrue3#definedness(this: Ref) returns (Result: int)
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -938,9 +938,9 @@ procedure exhaleTrue3#definedness(this: Ref) returns (Result: int)
         assume state(Heap, Mask);
         
         // -- Check definedness of this.x == 1
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@88.11--88.30) [188892]"}
-            HasDirectPerm(Mask, this, x_36);
-        assume Heap[this, x_36] == 1;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@88.11--88.30) [52579]"}
+            HasDirectPerm(Mask, this, x_42);
+        assume Heap[this, x_42] == 1;
         assume state(Heap, Mask);
         assume false;
       }
@@ -955,11 +955,11 @@ procedure exhaleTrue3#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  exhaleExpression1WithRequires(Heap: HeapType, this: Ref): int;
+function  exhaleExpression1WithRequires_1(Heap: HeapType, this: Ref): int;
 function  exhaleExpression1WithRequires'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { exhaleExpression1WithRequires(Heap, this) }
-  exhaleExpression1WithRequires(Heap, this) == exhaleExpression1WithRequires'(Heap, this) && dummyFunction(exhaleExpression1WithRequires#triggerStateless(this))
+  { exhaleExpression1WithRequires_1(Heap, this) }
+  exhaleExpression1WithRequires_1(Heap, this) == exhaleExpression1WithRequires'(Heap, this) && dummyFunction(exhaleExpression1WithRequires#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { exhaleExpression1WithRequires'(Heap, this) }
@@ -968,15 +968,15 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), exhaleExpression1WithRequires(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> Heap[this, x_36] == 1 ==> exhaleExpression1WithRequires(Heap, this) == Heap[this, x_36]
+  { state(Heap, Mask), exhaleExpression1WithRequires_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> Heap[this, x_42] == 1 ==> exhaleExpression1WithRequires_1(Heap, this) == Heap[this, x_42]
 );
 
 // Framing axioms
 function  exhaleExpression1WithRequires#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), exhaleExpression1WithRequires'(Heap, this) }
-  state(Heap, Mask) ==> exhaleExpression1WithRequires'(Heap, this) == exhaleExpression1WithRequires#frame(FrameFragment(Heap[this, x_36]), this)
+  state(Heap, Mask) ==> exhaleExpression1WithRequires'(Heap, this) == exhaleExpression1WithRequires#frame(FrameFragment(Heap[this, x_42]), this)
 );
 
 // Postcondition axioms
@@ -1006,23 +1006,23 @@ procedure exhaleExpression1WithRequires#definedness(this: Ref) returns (Result: 
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@101.12--101.38) [188893]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@101.12--101.38) [52580]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of this.x
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@100.1--105.2) [188894]"}
-        HasDirectPerm(Mask, this, x_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@100.1--105.2) [52581]"}
+        HasDirectPerm(Mask, this, x_42);
   
   // -- Translate function body
-    Result := Heap[this, x_36];
+    Result := Heap[this, x_42];
   
   // -- Exhaling postcondition (with checking)
     
@@ -1037,10 +1037,10 @@ procedure exhaleExpression1WithRequires#definedness(this: Ref) returns (Result: 
       ExhaleWellDef0Mask := Mask;
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@102.11--102.30) [188895]"}
-          HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-      assert {:msg "  Postcondition of exhaleExpression1WithRequires might not hold. Assertion this.x == 1 might not hold. (functions.vpr@102.11--102.30) [188896]"}
-        Heap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@102.11--102.30) [52582]"}
+          HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+      assert {:msg "  Postcondition of exhaleExpression1WithRequires might not hold. Assertion this.x == 1 might not hold. (functions.vpr@102.11--102.30) [52583]"}
+        Heap[this, x_42] == 1;
 }
 
 // ==================================================
@@ -1048,11 +1048,11 @@ procedure exhaleExpression1WithRequires#definedness(this: Ref) returns (Result: 
 // ==================================================
 
 // Uninterpreted function definitions
-function  exhaleExpression2WithRequires(Heap: HeapType, this: Ref): int;
+function  exhaleExpression2WithRequires_1(Heap: HeapType, this: Ref): int;
 function  exhaleExpression2WithRequires'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { exhaleExpression2WithRequires(Heap, this) }
-  exhaleExpression2WithRequires(Heap, this) == exhaleExpression2WithRequires'(Heap, this) && dummyFunction(exhaleExpression2WithRequires#triggerStateless(this))
+  { exhaleExpression2WithRequires_1(Heap, this) }
+  exhaleExpression2WithRequires_1(Heap, this) == exhaleExpression2WithRequires'(Heap, this) && dummyFunction(exhaleExpression2WithRequires#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { exhaleExpression2WithRequires'(Heap, this) }
@@ -1061,15 +1061,15 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), exhaleExpression2WithRequires(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> Heap[this, x_36] == 1 ==> exhaleExpression2WithRequires(Heap, this) == Heap[this, x_36]
+  { state(Heap, Mask), exhaleExpression2WithRequires_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> Heap[this, x_42] == 1 ==> exhaleExpression2WithRequires_1(Heap, this) == Heap[this, x_42]
 );
 
 // Framing axioms
 function  exhaleExpression2WithRequires#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), exhaleExpression2WithRequires'(Heap, this) }
-  state(Heap, Mask) ==> exhaleExpression2WithRequires'(Heap, this) == exhaleExpression2WithRequires#frame(FrameFragment(Heap[this, x_36]), this)
+  state(Heap, Mask) ==> exhaleExpression2WithRequires'(Heap, this) == exhaleExpression2WithRequires#frame(FrameFragment(Heap[this, x_42]), this)
 );
 
 // Postcondition axioms
@@ -1099,23 +1099,23 @@ procedure exhaleExpression2WithRequires#definedness(this: Ref) returns (Result: 
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@108.12--108.38) [188897]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@108.12--108.38) [52584]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of this.x
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@107.1--112.2) [188898]"}
-        HasDirectPerm(Mask, this, x_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@107.1--112.2) [52585]"}
+        HasDirectPerm(Mask, this, x_42);
   
   // -- Translate function body
-    Result := Heap[this, x_36];
+    Result := Heap[this, x_42];
   
   // -- Exhaling postcondition (with checking)
     
@@ -1128,14 +1128,14 @@ procedure exhaleExpression2WithRequires#definedness(this: Ref) returns (Result: 
     // -- Normally exhale the exhale part.
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  Postcondition of exhaleExpression2WithRequires might not hold. Assertion this != null might not hold. (functions.vpr@109.11--109.54) [188899]"}
+      assert {:msg "  Postcondition of exhaleExpression2WithRequires might not hold. Assertion this != null might not hold. (functions.vpr@109.11--109.54) [52586]"}
         this != null;
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@109.11--109.54) [188900]"}
-          HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-      assert {:msg "  Postcondition of exhaleExpression2WithRequires might not hold. Assertion this.x == 1 might not hold. (functions.vpr@109.11--109.54) [188901]"}
-        Heap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@109.11--109.54) [52587]"}
+          HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+      assert {:msg "  Postcondition of exhaleExpression2WithRequires might not hold. Assertion this.x == 1 might not hold. (functions.vpr@109.11--109.54) [52588]"}
+        Heap[this, x_42] == 1;
 }
 
 // ==================================================
@@ -1143,11 +1143,11 @@ procedure exhaleExpression2WithRequires#definedness(this: Ref) returns (Result: 
 // ==================================================
 
 // Uninterpreted function definitions
-function  exhaleExpression3WithRequires(Heap: HeapType, this: Ref): int;
+function  exhaleExpression3WithRequires_1(Heap: HeapType, this: Ref): int;
 function  exhaleExpression3WithRequires'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { exhaleExpression3WithRequires(Heap, this) }
-  exhaleExpression3WithRequires(Heap, this) == exhaleExpression3WithRequires'(Heap, this) && dummyFunction(exhaleExpression3WithRequires#triggerStateless(this))
+  { exhaleExpression3WithRequires_1(Heap, this) }
+  exhaleExpression3WithRequires_1(Heap, this) == exhaleExpression3WithRequires'(Heap, this) && dummyFunction(exhaleExpression3WithRequires#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { exhaleExpression3WithRequires'(Heap, this) }
@@ -1156,15 +1156,15 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), exhaleExpression3WithRequires(Heap, this) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> Heap[this, x_36] == 1 ==> exhaleExpression3WithRequires(Heap, this) == Heap[this, x_36]
+  { state(Heap, Mask), exhaleExpression3WithRequires_1(Heap, this) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 5 ==> Heap[this, x_42] == 1 ==> exhaleExpression3WithRequires_1(Heap, this) == Heap[this, x_42]
 );
 
 // Framing axioms
 function  exhaleExpression3WithRequires#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), exhaleExpression3WithRequires'(Heap, this) }
-  state(Heap, Mask) ==> exhaleExpression3WithRequires'(Heap, this) == exhaleExpression3WithRequires#frame(FrameFragment(Heap[this, x_36]), this)
+  state(Heap, Mask) ==> exhaleExpression3WithRequires'(Heap, this) == exhaleExpression3WithRequires#frame(FrameFragment(Heap[this, x_42]), this)
 );
 
 // Postcondition axioms
@@ -1195,23 +1195,23 @@ procedure exhaleExpression3WithRequires#definedness(this: Ref) returns (Result: 
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@115.12--115.38) [188902]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@115.12--115.38) [52589]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of this.x
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@114.1--120.2) [188903]"}
-        HasDirectPerm(Mask, this, x_36);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@114.1--120.2) [52590]"}
+        HasDirectPerm(Mask, this, x_42);
   
   // -- Translate function body
-    Result := Heap[this, x_36];
+    Result := Heap[this, x_42];
   
   // -- Exhaling postcondition (with checking)
     
@@ -1225,14 +1225,14 @@ procedure exhaleExpression3WithRequires#definedness(this: Ref) returns (Result: 
     // -- Normally exhale the exhale part.
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  Postcondition of exhaleExpression3WithRequires might not hold. Assertion this != null might not hold. (functions.vpr@116.11--116.31) [188904]"}
+      assert {:msg "  Postcondition of exhaleExpression3WithRequires might not hold. Assertion this != null might not hold. (functions.vpr@116.11--116.31) [52591]"}
         this != null;
       
       // -- Check definedness of this.x == 1
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@117.11--117.30) [188905]"}
-          HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-      assert {:msg "  Postcondition of exhaleExpression3WithRequires might not hold. Assertion this.x == 1 might not hold. (functions.vpr@117.11--117.30) [188906]"}
-        Heap[this, x_36] == 1;
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@117.11--117.30) [52592]"}
+          HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+      assert {:msg "  Postcondition of exhaleExpression3WithRequires might not hold. Assertion this.x == 1 might not hold. (functions.vpr@117.11--117.30) [52593]"}
+        Heap[this, x_42] == 1;
 }
 
 // ==================================================
@@ -1280,10 +1280,10 @@ procedure inhaleTrue1Method1(this: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function inhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@32.10--32.27) [188907]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_36];
-        assert {:msg "  Precondition of function inhaleTrue1 might not hold. Assertion this.x == 1 might not hold. (functions.vpr@32.10--32.27) [188908]"}
-          ExhaleWellDef0Heap[this, x_36] == 1;
+        assert {:msg "  Precondition of function inhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@32.10--32.27) [52594]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_42];
+        assert {:msg "  Precondition of function inhaleTrue1 might not hold. Assertion this.x == 1 might not hold. (functions.vpr@32.10--32.27) [52595]"}
+          ExhaleWellDef0Heap[this, x_42] == 1;
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1291,8 +1291,8 @@ procedure inhaleTrue1Method1(this: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion inhaleTrue1(this) == 0 might not hold. (functions.vpr@32.10--32.32) [188909]"}
-      inhaleTrue1(Heap, this) == 0;
+    assert {:msg "  Assert might fail. Assertion inhaleTrue1(this) == 0 might not hold. (functions.vpr@32.10--32.32) [52596]"}
+      inhaleTrue1_1(Heap, this) == 0;
     assume state(Heap, Mask);
 }
 
@@ -1326,13 +1326,13 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@36.12--36.38) [188910]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@36.12--36.38) [52597]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1351,10 +1351,10 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function inhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@38.10--38.27) [188911]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_36];
-        assert {:msg "  Precondition of function inhaleTrue1 might not hold. Assertion this.x == 1 might not hold. (functions.vpr@38.10--38.27) [188912]"}
-          ExhaleWellDef0Heap[this, x_36] == 1;
+        assert {:msg "  Precondition of function inhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@38.10--38.27) [52598]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_42];
+        assert {:msg "  Precondition of function inhaleTrue1 might not hold. Assertion this.x == 1 might not hold. (functions.vpr@38.10--38.27) [52599]"}
+          ExhaleWellDef0Heap[this, x_42] == 1;
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1362,8 +1362,8 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion inhaleTrue1(this) == 0 might not hold. (functions.vpr@38.10--38.32) [188913]"}
-      inhaleTrue1(Heap, this) == 0;
+    assert {:msg "  Assert might fail. Assertion inhaleTrue1(this) == 0 might not hold. (functions.vpr@38.10--38.32) [52600]"}
+      inhaleTrue1_1(Heap, this) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert acc(this.x, write) && this.x == 1 -- functions.vpr@39.3--39.36
@@ -1373,16 +1373,16 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
     ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@39.10--39.36) [188915]"}
-        perm <= AssertMask[this, x_36];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@39.10--39.36) [52602]"}
+        perm <= AssertMask[this, x_42];
     }
-    AssertMask := AssertMask[this, x_36:=AssertMask[this, x_36] - perm];
+    AssertMask := AssertMask[this, x_42:=AssertMask[this, x_42] - perm];
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@39.10--39.36) [188916]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (functions.vpr@39.10--39.36) [188917]"}
-      AssertHeap[this, x_36] == 1;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@39.10--39.36) [52603]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (functions.vpr@39.10--39.36) [52604]"}
+      AssertHeap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale inhaleTrue1(this) == 0 -- functions.vpr@40.3--40.32
@@ -1395,10 +1395,10 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function inhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@40.10--40.27) [188918]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_36];
-        assert {:msg "  Precondition of function inhaleTrue1 might not hold. Assertion this.x == 1 might not hold. (functions.vpr@40.10--40.27) [188919]"}
-          ExhaleWellDef0Heap[this, x_36] == 1;
+        assert {:msg "  Precondition of function inhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@40.10--40.27) [52605]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_42];
+        assert {:msg "  Precondition of function inhaleTrue1 might not hold. Assertion this.x == 1 might not hold. (functions.vpr@40.10--40.27) [52606]"}
+          ExhaleWellDef0Heap[this, x_42] == 1;
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1406,8 +1406,8 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Exhale might fail. Assertion inhaleTrue1(this) == 0 might not hold. (functions.vpr@40.10--40.32) [188920]"}
-      inhaleTrue1(Heap, this) == 0;
+    assert {:msg "  Exhale might fail. Assertion inhaleTrue1(this) == 0 might not hold. (functions.vpr@40.10--40.32) [52607]"}
+      inhaleTrue1_1(Heap, this) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert acc(this.x, write) && this.x == 1 -- functions.vpr@41.3--41.36
@@ -1417,16 +1417,16 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
     ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@41.10--41.36) [188922]"}
-        perm <= AssertMask[this, x_36];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@41.10--41.36) [52609]"}
+        perm <= AssertMask[this, x_42];
     }
-    AssertMask := AssertMask[this, x_36:=AssertMask[this, x_36] - perm];
+    AssertMask := AssertMask[this, x_42:=AssertMask[this, x_42] - perm];
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@41.10--41.36) [188923]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (functions.vpr@41.10--41.36) [188924]"}
-      AssertHeap[this, x_36] == 1;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@41.10--41.36) [52610]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (functions.vpr@41.10--41.36) [52611]"}
+      AssertHeap[this, x_42] == 1;
     assume state(Heap, Mask);
 }
 
@@ -1476,8 +1476,8 @@ procedure inhaleExpression1Method(this: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion inhaleExpression1(this) == 1 might not hold. (functions.vpr@68.10--68.38) [188925]"}
-      inhaleExpression1(Heap, this) == 1;
+    assert {:msg "  Assert might fail. Assertion inhaleExpression1(this) == 1 might not hold. (functions.vpr@68.10--68.38) [52612]"}
+      inhaleExpression1_1(Heap, this) == 1;
     assume state(Heap, Mask);
 }
 
@@ -1509,7 +1509,7 @@ procedure exhaleTrue1Method(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1529,8 +1529,8 @@ procedure exhaleTrue1Method(this: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function exhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@96.10--96.27) [188926]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_36];
+        assert {:msg "  Precondition of function exhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@96.10--96.27) [52613]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_42];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1538,8 +1538,8 @@ procedure exhaleTrue1Method(this: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion exhaleTrue1(this) == 0 might not hold. (functions.vpr@96.10--96.32) [188927]"}
-      exhaleTrue1(Heap, this) == 0;
+    assert {:msg "  Assert might fail. Assertion exhaleTrue1(this) == 0 might not hold. (functions.vpr@96.10--96.32) [52614]"}
+      exhaleTrue1_1(Heap, this) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.x == 1 -- functions.vpr@97.3--97.21
@@ -1547,10 +1547,10 @@ procedure exhaleTrue1Method(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@97.10--97.21) [188928]"}
-        HasDirectPerm(ExhaleWellDef0Mask, this, x_36);
-    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (functions.vpr@97.10--97.21) [188929]"}
-      Heap[this, x_36] == 1;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@97.10--97.21) [52615]"}
+        HasDirectPerm(ExhaleWellDef0Mask, this, x_42);
+    assert {:msg "  Assert might fail. Assertion this.x == 1 might not hold. (functions.vpr@97.10--97.21) [52616]"}
+      Heap[this, x_42] == 1;
     assume state(Heap, Mask);
 }
 
@@ -1582,13 +1582,13 @@ procedure exhaleExpression1WithRequiresMethod(this: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, x_36:=Mask[this, x_36] + perm];
+    Mask := Mask[this, x_42:=Mask[this, x_42] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.x == 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@123.12--123.38) [188930]"}
-        HasDirectPerm(Mask, this, x_36);
-    assume Heap[this, x_36] == 1;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@123.12--123.38) [52617]"}
+        HasDirectPerm(Mask, this, x_42);
+    assume Heap[this, x_42] == 1;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1607,10 +1607,10 @@ procedure exhaleExpression1WithRequiresMethod(this: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function exhaleExpression1WithRequires might not hold. There might be insufficient permission to access this.x (functions.vpr@125.10--125.45) [188931]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_36];
-        assert {:msg "  Precondition of function exhaleExpression1WithRequires might not hold. Assertion this.x == 1 might not hold. (functions.vpr@125.10--125.45) [188932]"}
-          ExhaleWellDef0Heap[this, x_36] == 1;
+        assert {:msg "  Precondition of function exhaleExpression1WithRequires might not hold. There might be insufficient permission to access this.x (functions.vpr@125.10--125.45) [52618]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_42];
+        assert {:msg "  Precondition of function exhaleExpression1WithRequires might not hold. Assertion this.x == 1 might not hold. (functions.vpr@125.10--125.45) [52619]"}
+          ExhaleWellDef0Heap[this, x_42] == 1;
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1618,7 +1618,7 @@ procedure exhaleExpression1WithRequiresMethod(this: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion exhaleExpression1WithRequires(this) == 1 might not hold. (functions.vpr@125.10--125.50) [188933]"}
-      exhaleExpression1WithRequires(Heap, this) == 1;
+    assert {:msg "  Assert might fail. Assertion exhaleExpression1WithRequires(this) == 1 might not hold. (functions.vpr@125.10--125.50) [52620]"}
+      exhaleExpression1WithRequires_1(Heap, this) == 1;
     assume state(Heap, Mask);
 }

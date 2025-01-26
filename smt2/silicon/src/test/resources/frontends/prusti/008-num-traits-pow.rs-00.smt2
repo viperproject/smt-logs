@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:29:24
+; Started: 2025-01-26 21:22:49
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -233,25 +233,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-563|)))
+  :qid |quant-u-698|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-564|)))
+  :qid |quant-u-699|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-605|)))
+  :qid |quant-u-740|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-606|)))
+  :qid |quant-u-741|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-607|)))
+  :qid |quant-u-742|)))
 ; ---------- FUNCTION i64$$memory_eq$$__$TY$__i64$i64$$bool$----------
 (declare-fun self@1@00 () $Ref)
 (declare-fun other@2@00 () $Ref)
@@ -298,11 +298,11 @@
     (i64$$memory_eq$$__$TY$__i64$i64$$bool$%limited s@$ self@1@00 other@2@00)
     (i64$$memory_eq$$__$TY$__i64$i64$$bool$ s@$ self@1@00 other@2@00))
   :pattern ((i64$$memory_eq$$__$TY$__i64$i64$$bool$ s@$ self@1@00 other@2@00))
-  :qid |quant-u-565|)))
+  :qid |quant-u-700|)))
 (assert (forall ((s@$ $Snap) (self@1@00 $Ref) (other@2@00 $Ref)) (!
   (i64$$memory_eq$$__$TY$__i64$i64$$bool$%stateless self@1@00 other@2@00)
   :pattern ((i64$$memory_eq$$__$TY$__i64$i64$$bool$%limited s@$ self@1@00 other@2@00))
-  :qid |quant-u-566|)))
+  :qid |quant-u-701|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -438,11 +438,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first s@$))
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((i64$$memory_eq$$__$TY$__i64$i64$$bool$ s@$ self@1@00 other@2@00))
-  :qid |quant-u-608|)))
+  :qid |quant-u-743|)))
 (assert (forall ((s@$ $Snap) (self@1@00 $Ref) (other@2@00 $Ref)) (!
   true
   :pattern ((i64$$memory_eq$$__$TY$__i64$i64$$bool$ s@$ self@1@00 other@2@00))
-  :qid |quant-u-609|)))
+  :qid |quant-u-744|)))
 ; ---------- FUNCTION i32$$memory_eq$$__$TY$__i32$i32$$bool$----------
 (declare-fun self@4@00 () $Ref)
 (declare-fun other@5@00 () $Ref)
@@ -490,11 +490,11 @@
     (i32$$memory_eq$$__$TY$__i32$i32$$bool$%limited s@$ self@4@00 other@5@00)
     (i32$$memory_eq$$__$TY$__i32$i32$$bool$ s@$ self@4@00 other@5@00))
   :pattern ((i32$$memory_eq$$__$TY$__i32$i32$$bool$ s@$ self@4@00 other@5@00))
-  :qid |quant-u-567|)))
+  :qid |quant-u-702|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref) (other@5@00 $Ref)) (!
   (i32$$memory_eq$$__$TY$__i32$i32$$bool$%stateless self@4@00 other@5@00)
   :pattern ((i32$$memory_eq$$__$TY$__i32$i32$$bool$%limited s@$ self@4@00 other@5@00))
-  :qid |quant-u-568|)))
+  :qid |quant-u-703|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -630,11 +630,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first s@$))
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((i32$$memory_eq$$__$TY$__i32$i32$$bool$ s@$ self@4@00 other@5@00))
-  :qid |quant-u-610|)))
+  :qid |quant-u-745|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref) (other@5@00 $Ref)) (!
   true
   :pattern ((i32$$memory_eq$$__$TY$__i32$i32$$bool$ s@$ self@4@00 other@5@00))
-  :qid |quant-u-611|)))
+  :qid |quant-u-746|)))
 ; ---------- FUNCTION u16$$memory_eq$$__$TY$__u16$u16$$bool$----------
 (declare-fun self@7@00 () $Ref)
 (declare-fun other@8@00 () $Ref)
@@ -682,11 +682,11 @@
     (u16$$memory_eq$$__$TY$__u16$u16$$bool$%limited s@$ self@7@00 other@8@00)
     (u16$$memory_eq$$__$TY$__u16$u16$$bool$ s@$ self@7@00 other@8@00))
   :pattern ((u16$$memory_eq$$__$TY$__u16$u16$$bool$ s@$ self@7@00 other@8@00))
-  :qid |quant-u-569|)))
+  :qid |quant-u-704|)))
 (assert (forall ((s@$ $Snap) (self@7@00 $Ref) (other@8@00 $Ref)) (!
   (u16$$memory_eq$$__$TY$__u16$u16$$bool$%stateless self@7@00 other@8@00)
   :pattern ((u16$$memory_eq$$__$TY$__u16$u16$$bool$%limited s@$ self@7@00 other@8@00))
-  :qid |quant-u-570|)))
+  :qid |quant-u-705|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -877,11 +877,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first s@$)))
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$))))))
   :pattern ((u16$$memory_eq$$__$TY$__u16$u16$$bool$ s@$ self@7@00 other@8@00))
-  :qid |quant-u-612|)))
+  :qid |quant-u-747|)))
 (assert (forall ((s@$ $Snap) (self@7@00 $Ref) (other@8@00 $Ref)) (!
   true
   :pattern ((u16$$memory_eq$$__$TY$__u16$u16$$bool$ s@$ self@7@00 other@8@00))
-  :qid |quant-u-613|)))
+  :qid |quant-u-748|)))
 ; ---------- FUNCTION u32$$memory_eq$$__$TY$__u32$u32$$bool$----------
 (declare-fun self@10@00 () $Ref)
 (declare-fun other@11@00 () $Ref)
@@ -929,11 +929,11 @@
     (u32$$memory_eq$$__$TY$__u32$u32$$bool$%limited s@$ self@10@00 other@11@00)
     (u32$$memory_eq$$__$TY$__u32$u32$$bool$ s@$ self@10@00 other@11@00))
   :pattern ((u32$$memory_eq$$__$TY$__u32$u32$$bool$ s@$ self@10@00 other@11@00))
-  :qid |quant-u-571|)))
+  :qid |quant-u-706|)))
 (assert (forall ((s@$ $Snap) (self@10@00 $Ref) (other@11@00 $Ref)) (!
   (u32$$memory_eq$$__$TY$__u32$u32$$bool$%stateless self@10@00 other@11@00)
   :pattern ((u32$$memory_eq$$__$TY$__u32$u32$$bool$%limited s@$ self@10@00 other@11@00))
-  :qid |quant-u-572|)))
+  :qid |quant-u-707|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -1124,11 +1124,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first s@$)))
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$))))))
   :pattern ((u32$$memory_eq$$__$TY$__u32$u32$$bool$ s@$ self@10@00 other@11@00))
-  :qid |quant-u-614|)))
+  :qid |quant-u-749|)))
 (assert (forall ((s@$ $Snap) (self@10@00 $Ref) (other@11@00 $Ref)) (!
   true
   :pattern ((u32$$memory_eq$$__$TY$__u32$u32$$bool$ s@$ self@10@00 other@11@00))
-  :qid |quant-u-615|)))
+  :qid |quant-u-750|)))
 ; ---------- FUNCTION u64$$memory_eq$$__$TY$__u64$u64$$bool$----------
 (declare-fun self@13@00 () $Ref)
 (declare-fun other@14@00 () $Ref)
@@ -1176,11 +1176,11 @@
     (u64$$memory_eq$$__$TY$__u64$u64$$bool$%limited s@$ self@13@00 other@14@00)
     (u64$$memory_eq$$__$TY$__u64$u64$$bool$ s@$ self@13@00 other@14@00))
   :pattern ((u64$$memory_eq$$__$TY$__u64$u64$$bool$ s@$ self@13@00 other@14@00))
-  :qid |quant-u-573|)))
+  :qid |quant-u-708|)))
 (assert (forall ((s@$ $Snap) (self@13@00 $Ref) (other@14@00 $Ref)) (!
   (u64$$memory_eq$$__$TY$__u64$u64$$bool$%stateless self@13@00 other@14@00)
   :pattern ((u64$$memory_eq$$__$TY$__u64$u64$$bool$%limited s@$ self@13@00 other@14@00))
-  :qid |quant-u-574|)))
+  :qid |quant-u-709|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -1371,11 +1371,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first s@$)))
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$))))))
   :pattern ((u64$$memory_eq$$__$TY$__u64$u64$$bool$ s@$ self@13@00 other@14@00))
-  :qid |quant-u-616|)))
+  :qid |quant-u-751|)))
 (assert (forall ((s@$ $Snap) (self@13@00 $Ref) (other@14@00 $Ref)) (!
   true
   :pattern ((u64$$memory_eq$$__$TY$__u64$u64$$bool$ s@$ self@13@00 other@14@00))
-  :qid |quant-u-617|)))
+  :qid |quant-u-752|)))
 ; ---------- FUNCTION isize$$memory_eq$$__$TY$__isize$isize$$bool$----------
 (declare-fun self@16@00 () $Ref)
 (declare-fun other@17@00 () $Ref)
@@ -1423,11 +1423,11 @@
     (isize$$memory_eq$$__$TY$__isize$isize$$bool$%limited s@$ self@16@00 other@17@00)
     (isize$$memory_eq$$__$TY$__isize$isize$$bool$ s@$ self@16@00 other@17@00))
   :pattern ((isize$$memory_eq$$__$TY$__isize$isize$$bool$ s@$ self@16@00 other@17@00))
-  :qid |quant-u-575|)))
+  :qid |quant-u-710|)))
 (assert (forall ((s@$ $Snap) (self@16@00 $Ref) (other@17@00 $Ref)) (!
   (isize$$memory_eq$$__$TY$__isize$isize$$bool$%stateless self@16@00 other@17@00)
   :pattern ((isize$$memory_eq$$__$TY$__isize$isize$$bool$%limited s@$ self@16@00 other@17@00))
-  :qid |quant-u-576|)))
+  :qid |quant-u-711|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -1563,11 +1563,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first s@$))
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((isize$$memory_eq$$__$TY$__isize$isize$$bool$ s@$ self@16@00 other@17@00))
-  :qid |quant-u-618|)))
+  :qid |quant-u-753|)))
 (assert (forall ((s@$ $Snap) (self@16@00 $Ref) (other@17@00 $Ref)) (!
   true
   :pattern ((isize$$memory_eq$$__$TY$__isize$isize$$bool$ s@$ self@16@00 other@17@00))
-  :qid |quant-u-619|)))
+  :qid |quant-u-754|)))
 ; ---------- FUNCTION i8$$memory_eq$$__$TY$__i8$i8$$bool$----------
 (declare-fun self@19@00 () $Ref)
 (declare-fun other@20@00 () $Ref)
@@ -1615,11 +1615,11 @@
     (i8$$memory_eq$$__$TY$__i8$i8$$bool$%limited s@$ self@19@00 other@20@00)
     (i8$$memory_eq$$__$TY$__i8$i8$$bool$ s@$ self@19@00 other@20@00))
   :pattern ((i8$$memory_eq$$__$TY$__i8$i8$$bool$ s@$ self@19@00 other@20@00))
-  :qid |quant-u-577|)))
+  :qid |quant-u-712|)))
 (assert (forall ((s@$ $Snap) (self@19@00 $Ref) (other@20@00 $Ref)) (!
   (i8$$memory_eq$$__$TY$__i8$i8$$bool$%stateless self@19@00 other@20@00)
   :pattern ((i8$$memory_eq$$__$TY$__i8$i8$$bool$%limited s@$ self@19@00 other@20@00))
-  :qid |quant-u-578|)))
+  :qid |quant-u-713|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -1755,11 +1755,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first s@$))
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((i8$$memory_eq$$__$TY$__i8$i8$$bool$ s@$ self@19@00 other@20@00))
-  :qid |quant-u-620|)))
+  :qid |quant-u-755|)))
 (assert (forall ((s@$ $Snap) (self@19@00 $Ref) (other@20@00 $Ref)) (!
   true
   :pattern ((i8$$memory_eq$$__$TY$__i8$i8$$bool$ s@$ self@19@00 other@20@00))
-  :qid |quant-u-621|)))
+  :qid |quant-u-756|)))
 ; ---------- FUNCTION i16$$memory_eq$$__$TY$__i16$i16$$bool$----------
 (declare-fun self@22@00 () $Ref)
 (declare-fun other@23@00 () $Ref)
@@ -1807,11 +1807,11 @@
     (i16$$memory_eq$$__$TY$__i16$i16$$bool$%limited s@$ self@22@00 other@23@00)
     (i16$$memory_eq$$__$TY$__i16$i16$$bool$ s@$ self@22@00 other@23@00))
   :pattern ((i16$$memory_eq$$__$TY$__i16$i16$$bool$ s@$ self@22@00 other@23@00))
-  :qid |quant-u-579|)))
+  :qid |quant-u-714|)))
 (assert (forall ((s@$ $Snap) (self@22@00 $Ref) (other@23@00 $Ref)) (!
   (i16$$memory_eq$$__$TY$__i16$i16$$bool$%stateless self@22@00 other@23@00)
   :pattern ((i16$$memory_eq$$__$TY$__i16$i16$$bool$%limited s@$ self@22@00 other@23@00))
-  :qid |quant-u-580|)))
+  :qid |quant-u-715|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -1947,11 +1947,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first s@$))
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((i16$$memory_eq$$__$TY$__i16$i16$$bool$ s@$ self@22@00 other@23@00))
-  :qid |quant-u-622|)))
+  :qid |quant-u-757|)))
 (assert (forall ((s@$ $Snap) (self@22@00 $Ref) (other@23@00 $Ref)) (!
   true
   :pattern ((i16$$memory_eq$$__$TY$__i16$i16$$bool$ s@$ self@22@00 other@23@00))
-  :qid |quant-u-623|)))
+  :qid |quant-u-758|)))
 ; ---------- FUNCTION usize$$memory_eq$$__$TY$__usize$usize$$bool$----------
 (declare-fun self@25@00 () $Ref)
 (declare-fun other@26@00 () $Ref)
@@ -1999,11 +1999,11 @@
     (usize$$memory_eq$$__$TY$__usize$usize$$bool$%limited s@$ self@25@00 other@26@00)
     (usize$$memory_eq$$__$TY$__usize$usize$$bool$ s@$ self@25@00 other@26@00))
   :pattern ((usize$$memory_eq$$__$TY$__usize$usize$$bool$ s@$ self@25@00 other@26@00))
-  :qid |quant-u-581|)))
+  :qid |quant-u-716|)))
 (assert (forall ((s@$ $Snap) (self@25@00 $Ref) (other@26@00 $Ref)) (!
   (usize$$memory_eq$$__$TY$__usize$usize$$bool$%stateless self@25@00 other@26@00)
   :pattern ((usize$$memory_eq$$__$TY$__usize$usize$$bool$%limited s@$ self@25@00 other@26@00))
-  :qid |quant-u-582|)))
+  :qid |quant-u-717|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -2194,11 +2194,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first s@$)))
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$))))))
   :pattern ((usize$$memory_eq$$__$TY$__usize$usize$$bool$ s@$ self@25@00 other@26@00))
-  :qid |quant-u-624|)))
+  :qid |quant-u-759|)))
 (assert (forall ((s@$ $Snap) (self@25@00 $Ref) (other@26@00 $Ref)) (!
   true
   :pattern ((usize$$memory_eq$$__$TY$__usize$usize$$bool$ s@$ self@25@00 other@26@00))
-  :qid |quant-u-625|)))
+  :qid |quant-u-760|)))
 ; ---------- FUNCTION u8$$memory_eq$$__$TY$__u8$u8$$bool$----------
 (declare-fun self@28@00 () $Ref)
 (declare-fun other@29@00 () $Ref)
@@ -2246,11 +2246,11 @@
     (u8$$memory_eq$$__$TY$__u8$u8$$bool$%limited s@$ self@28@00 other@29@00)
     (u8$$memory_eq$$__$TY$__u8$u8$$bool$ s@$ self@28@00 other@29@00))
   :pattern ((u8$$memory_eq$$__$TY$__u8$u8$$bool$ s@$ self@28@00 other@29@00))
-  :qid |quant-u-583|)))
+  :qid |quant-u-718|)))
 (assert (forall ((s@$ $Snap) (self@28@00 $Ref) (other@29@00 $Ref)) (!
   (u8$$memory_eq$$__$TY$__u8$u8$$bool$%stateless self@28@00 other@29@00)
   :pattern ((u8$$memory_eq$$__$TY$__u8$u8$$bool$%limited s@$ self@28@00 other@29@00))
-  :qid |quant-u-584|)))
+  :qid |quant-u-719|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -2441,11 +2441,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first s@$)))
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$))))))
   :pattern ((u8$$memory_eq$$__$TY$__u8$u8$$bool$ s@$ self@28@00 other@29@00))
-  :qid |quant-u-626|)))
+  :qid |quant-u-761|)))
 (assert (forall ((s@$ $Snap) (self@28@00 $Ref) (other@29@00 $Ref)) (!
   true
   :pattern ((u8$$memory_eq$$__$TY$__u8$u8$$bool$ s@$ self@28@00 other@29@00))
-  :qid |quant-u-627|)))
+  :qid |quant-u-762|)))
 ; ---------- FUNCTION m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$bool$----------
 (declare-fun self@31@00 () $Ref)
 (declare-fun other@32@00 () $Ref)
@@ -2493,11 +2493,11 @@
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$bool$%limited s@$ self@31@00 other@32@00)
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$bool$ s@$ self@31@00 other@32@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$bool$ s@$ self@31@00 other@32@00))
-  :qid |quant-u-585|)))
+  :qid |quant-u-720|)))
 (assert (forall ((s@$ $Snap) (self@31@00 $Ref) (other@32@00 $Ref)) (!
   (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$bool$%stateless self@31@00 other@32@00)
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$bool$%limited s@$ self@31@00 other@32@00))
-  :qid |quant-u-586|)))
+  :qid |quant-u-721|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -2743,7 +2743,7 @@
         ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$bool$ s@$ self@31@00 other@32@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$bool$%stateless self@31@00 other@32@00) (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_%trigger ($Snap.first s@$) self@31@00))
-  :qid |quant-u-628|)))
+  :qid |quant-u-763|)))
 (assert (forall ((s@$ $Snap) (self@31@00 $Ref) (other@32@00 $Ref)) (!
   (=>
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$bool$%precondition s@$ self@31@00 other@32@00)
@@ -2751,7 +2751,7 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i64$_end_$$bool$ s@$ self@31@00 other@32@00))
-  :qid |quant-u-629|)))
+  :qid |quant-u-764|)))
 ; ---------- FUNCTION m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$bool$----------
 (declare-fun self@34@00 () $Ref)
 (declare-fun other@35@00 () $Ref)
@@ -2799,11 +2799,11 @@
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$bool$%limited s@$ self@34@00 other@35@00)
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$bool$ s@$ self@34@00 other@35@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$bool$ s@$ self@34@00 other@35@00))
-  :qid |quant-u-587|)))
+  :qid |quant-u-722|)))
 (assert (forall ((s@$ $Snap) (self@34@00 $Ref) (other@35@00 $Ref)) (!
   (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$bool$%stateless self@34@00 other@35@00)
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$bool$%limited s@$ self@34@00 other@35@00))
-  :qid |quant-u-588|)))
+  :qid |quant-u-723|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -3049,7 +3049,7 @@
         ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$bool$ s@$ self@34@00 other@35@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$bool$%stateless self@34@00 other@35@00) (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_%trigger ($Snap.first s@$) self@34@00))
-  :qid |quant-u-630|)))
+  :qid |quant-u-765|)))
 (assert (forall ((s@$ $Snap) (self@34@00 $Ref) (other@35@00 $Ref)) (!
   (=>
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$bool$%precondition s@$ self@34@00 other@35@00)
@@ -3057,7 +3057,7 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i32$_end_$$bool$ s@$ self@34@00 other@35@00))
-  :qid |quant-u-631|)))
+  :qid |quant-u-766|)))
 ; ---------- FUNCTION m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$bool$----------
 (declare-fun self@37@00 () $Ref)
 (declare-fun other@38@00 () $Ref)
@@ -3105,11 +3105,11 @@
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$bool$%limited s@$ self@37@00 other@38@00)
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$bool$ s@$ self@37@00 other@38@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$bool$ s@$ self@37@00 other@38@00))
-  :qid |quant-u-589|)))
+  :qid |quant-u-724|)))
 (assert (forall ((s@$ $Snap) (self@37@00 $Ref) (other@38@00 $Ref)) (!
   (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$bool$%stateless self@37@00 other@38@00)
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$bool$%limited s@$ self@37@00 other@38@00))
-  :qid |quant-u-590|)))
+  :qid |quant-u-725|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -3355,7 +3355,7 @@
         ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$bool$ s@$ self@37@00 other@38@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$bool$%stateless self@37@00 other@38@00) (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_%trigger ($Snap.first s@$) self@37@00))
-  :qid |quant-u-632|)))
+  :qid |quant-u-767|)))
 (assert (forall ((s@$ $Snap) (self@37@00 $Ref) (other@38@00 $Ref)) (!
   (=>
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$bool$%precondition s@$ self@37@00 other@38@00)
@@ -3363,7 +3363,7 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u16$_end_$$bool$ s@$ self@37@00 other@38@00))
-  :qid |quant-u-633|)))
+  :qid |quant-u-768|)))
 ; ---------- FUNCTION m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$bool$----------
 (declare-fun self@40@00 () $Ref)
 (declare-fun other@41@00 () $Ref)
@@ -3411,11 +3411,11 @@
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$bool$%limited s@$ self@40@00 other@41@00)
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$bool$ s@$ self@40@00 other@41@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$bool$ s@$ self@40@00 other@41@00))
-  :qid |quant-u-591|)))
+  :qid |quant-u-726|)))
 (assert (forall ((s@$ $Snap) (self@40@00 $Ref) (other@41@00 $Ref)) (!
   (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$bool$%stateless self@40@00 other@41@00)
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$bool$%limited s@$ self@40@00 other@41@00))
-  :qid |quant-u-592|)))
+  :qid |quant-u-727|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -3661,7 +3661,7 @@
         ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$bool$ s@$ self@40@00 other@41@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$bool$%stateless self@40@00 other@41@00) (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_%trigger ($Snap.first s@$) self@40@00))
-  :qid |quant-u-634|)))
+  :qid |quant-u-769|)))
 (assert (forall ((s@$ $Snap) (self@40@00 $Ref) (other@41@00 $Ref)) (!
   (=>
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$bool$%precondition s@$ self@40@00 other@41@00)
@@ -3669,7 +3669,7 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u32$_end_$$bool$ s@$ self@40@00 other@41@00))
-  :qid |quant-u-635|)))
+  :qid |quant-u-770|)))
 ; ---------- FUNCTION m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$bool$----------
 (declare-fun self@43@00 () $Ref)
 (declare-fun other@44@00 () $Ref)
@@ -3717,11 +3717,11 @@
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$bool$%limited s@$ self@43@00 other@44@00)
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$bool$ s@$ self@43@00 other@44@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$bool$ s@$ self@43@00 other@44@00))
-  :qid |quant-u-593|)))
+  :qid |quant-u-728|)))
 (assert (forall ((s@$ $Snap) (self@43@00 $Ref) (other@44@00 $Ref)) (!
   (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$bool$%stateless self@43@00 other@44@00)
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$bool$%limited s@$ self@43@00 other@44@00))
-  :qid |quant-u-594|)))
+  :qid |quant-u-729|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -3967,7 +3967,7 @@
         ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$bool$ s@$ self@43@00 other@44@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$bool$%stateless self@43@00 other@44@00) (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_%trigger ($Snap.first s@$) self@43@00))
-  :qid |quant-u-636|)))
+  :qid |quant-u-771|)))
 (assert (forall ((s@$ $Snap) (self@43@00 $Ref) (other@44@00 $Ref)) (!
   (=>
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$bool$%precondition s@$ self@43@00 other@44@00)
@@ -3975,7 +3975,7 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u64$_end_$$bool$ s@$ self@43@00 other@44@00))
-  :qid |quant-u-637|)))
+  :qid |quant-u-772|)))
 ; ---------- FUNCTION m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$----------
 (declare-fun self@46@00 () $Ref)
 (declare-fun other@47@00 () $Ref)
@@ -4023,11 +4023,11 @@
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%limited s@$ self@46@00 other@47@00)
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$ s@$ self@46@00 other@47@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$ s@$ self@46@00 other@47@00))
-  :qid |quant-u-595|)))
+  :qid |quant-u-730|)))
 (assert (forall ((s@$ $Snap) (self@46@00 $Ref) (other@47@00 $Ref)) (!
   (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%stateless self@46@00 other@47@00)
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%limited s@$ self@46@00 other@47@00))
-  :qid |quant-u-596|)))
+  :qid |quant-u-731|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -4273,7 +4273,7 @@
         ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$ s@$ self@46@00 other@47@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%stateless self@46@00 other@47@00) (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_%trigger ($Snap.first s@$) self@46@00))
-  :qid |quant-u-638|)))
+  :qid |quant-u-773|)))
 (assert (forall ((s@$ $Snap) (self@46@00 $Ref) (other@47@00 $Ref)) (!
   (=>
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%precondition s@$ self@46@00 other@47@00)
@@ -4281,7 +4281,7 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$ s@$ self@46@00 other@47@00))
-  :qid |quant-u-639|)))
+  :qid |quant-u-774|)))
 ; ---------- FUNCTION m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$bool$----------
 (declare-fun self@49@00 () $Ref)
 (declare-fun other@50@00 () $Ref)
@@ -4329,11 +4329,11 @@
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$bool$%limited s@$ self@49@00 other@50@00)
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$bool$ s@$ self@49@00 other@50@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$bool$ s@$ self@49@00 other@50@00))
-  :qid |quant-u-597|)))
+  :qid |quant-u-732|)))
 (assert (forall ((s@$ $Snap) (self@49@00 $Ref) (other@50@00 $Ref)) (!
   (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$bool$%stateless self@49@00 other@50@00)
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$bool$%limited s@$ self@49@00 other@50@00))
-  :qid |quant-u-598|)))
+  :qid |quant-u-733|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -4579,7 +4579,7 @@
         ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$bool$ s@$ self@49@00 other@50@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$bool$%stateless self@49@00 other@50@00) (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_%trigger ($Snap.first s@$) self@49@00))
-  :qid |quant-u-640|)))
+  :qid |quant-u-775|)))
 (assert (forall ((s@$ $Snap) (self@49@00 $Ref) (other@50@00 $Ref)) (!
   (=>
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$bool$%precondition s@$ self@49@00 other@50@00)
@@ -4587,7 +4587,7 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i8$_end_$$bool$ s@$ self@49@00 other@50@00))
-  :qid |quant-u-641|)))
+  :qid |quant-u-776|)))
 ; ---------- FUNCTION m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$bool$----------
 (declare-fun self@52@00 () $Ref)
 (declare-fun other@53@00 () $Ref)
@@ -4635,11 +4635,11 @@
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$bool$%limited s@$ self@52@00 other@53@00)
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$bool$ s@$ self@52@00 other@53@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$bool$ s@$ self@52@00 other@53@00))
-  :qid |quant-u-599|)))
+  :qid |quant-u-734|)))
 (assert (forall ((s@$ $Snap) (self@52@00 $Ref) (other@53@00 $Ref)) (!
   (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$bool$%stateless self@52@00 other@53@00)
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$bool$%limited s@$ self@52@00 other@53@00))
-  :qid |quant-u-600|)))
+  :qid |quant-u-735|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -4885,7 +4885,7 @@
         ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$bool$ s@$ self@52@00 other@53@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$bool$%stateless self@52@00 other@53@00) (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_%trigger ($Snap.first s@$) self@52@00))
-  :qid |quant-u-642|)))
+  :qid |quant-u-777|)))
 (assert (forall ((s@$ $Snap) (self@52@00 $Ref) (other@53@00 $Ref)) (!
   (=>
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$bool$%precondition s@$ self@52@00 other@53@00)
@@ -4893,7 +4893,7 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$i16$_end_$$bool$ s@$ self@52@00 other@53@00))
-  :qid |quant-u-643|)))
+  :qid |quant-u-778|)))
 ; ---------- FUNCTION m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$bool$----------
 (declare-fun self@55@00 () $Ref)
 (declare-fun other@56@00 () $Ref)
@@ -4941,11 +4941,11 @@
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$bool$%limited s@$ self@55@00 other@56@00)
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$bool$ s@$ self@55@00 other@56@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$bool$ s@$ self@55@00 other@56@00))
-  :qid |quant-u-601|)))
+  :qid |quant-u-736|)))
 (assert (forall ((s@$ $Snap) (self@55@00 $Ref) (other@56@00 $Ref)) (!
   (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$bool$%stateless self@55@00 other@56@00)
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$bool$%limited s@$ self@55@00 other@56@00))
-  :qid |quant-u-602|)))
+  :qid |quant-u-737|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -5191,7 +5191,7 @@
         ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$bool$ s@$ self@55@00 other@56@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$bool$%stateless self@55@00 other@56@00) (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_%trigger ($Snap.first s@$) self@55@00))
-  :qid |quant-u-644|)))
+  :qid |quant-u-779|)))
 (assert (forall ((s@$ $Snap) (self@55@00 $Ref) (other@56@00 $Ref)) (!
   (=>
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$bool$%precondition s@$ self@55@00 other@56@00)
@@ -5199,7 +5199,7 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$usize$_end_$$bool$ s@$ self@55@00 other@56@00))
-  :qid |quant-u-645|)))
+  :qid |quant-u-780|)))
 ; ---------- FUNCTION m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$bool$----------
 (declare-fun self@58@00 () $Ref)
 (declare-fun other@59@00 () $Ref)
@@ -5247,11 +5247,11 @@
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$bool$%limited s@$ self@58@00 other@59@00)
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$bool$ s@$ self@58@00 other@59@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$bool$ s@$ self@58@00 other@59@00))
-  :qid |quant-u-603|)))
+  :qid |quant-u-738|)))
 (assert (forall ((s@$ $Snap) (self@58@00 $Ref) (other@59@00 $Ref)) (!
   (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$bool$%stateless self@58@00 other@59@00)
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$bool$%limited s@$ self@58@00 other@59@00))
-  :qid |quant-u-604|)))
+  :qid |quant-u-739|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -5497,7 +5497,7 @@
         ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$bool$ s@$ self@58@00 other@59@00))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$bool$%stateless self@58@00 other@59@00) (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_%trigger ($Snap.first s@$) self@58@00))
-  :qid |quant-u-646|)))
+  :qid |quant-u-781|)))
 (assert (forall ((s@$ $Snap) (self@58@00 $Ref) (other@59@00 $Ref)) (!
   (=>
     (m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$bool$%precondition s@$ self@58@00 other@59@00)
@@ -5505,7 +5505,7 @@
       ($Snap.second ($Snap.first s@$))
       ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$memory_eq$$__$TY$__m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$m_core$$num$opensqu$0$closesqu$$$Wrapping$opensqu$0$closesqu$$_beg_$u8$_end_$$bool$ s@$ self@58@00 other@59@00))
-  :qid |quant-u-647|)))
+  :qid |quant-u-782|)))
 ; ---------- DeadBorrowToken$ ----------
 (declare-const borrow@62@00 Int)
 ; ---------- __TYPARAM__$T$__ ----------

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:48:48
+// Date:         2025-01-26 21:41:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/unfolding_ambiguity.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/unfolding_ambiguity-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -364,7 +364,7 @@ procedure t_1(x: Ref, y: Ref) returns ()
       rcvLocal := y;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(y.f, write) might be negative. (unfolding_ambiguity.vpr@8.3--8.69) [287]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(y.f, write) might be negative. (unfolding_ambiguity.vpr@8.3--8.69) [932]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -407,7 +407,7 @@ procedure t_1(x: Ref, y: Ref) returns ()
             Heap := Heap[null, wand#sm(y, FullPerm, x, y, FullPerm, x, true):=Heap[null, wand#sm(y, FullPerm, x, y, FullPerm, x, true)][y, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access y.f (unfolding_ambiguity.vpr@8.3--8.69) [288]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access y.f (unfolding_ambiguity.vpr@8.3--8.69) [933]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -429,7 +429,7 @@ procedure t_1(x: Ref, y: Ref) returns ()
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access P(x) (unfolding_ambiguity.vpr@8.3--8.69) [289]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access P(x) (unfolding_ambiguity.vpr@8.3--8.69) [934]"}
               perm <= UnfoldingMask[null, P(x)];
           }
           UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
@@ -452,7 +452,7 @@ procedure t_1(x: Ref, y: Ref) returns ()
   // -- Translating statement: assert false -- unfolding_ambiguity.vpr@11.3--11.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (unfolding_ambiguity.vpr@11.10--11.15) [291]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (unfolding_ambiguity.vpr@11.10--11.15) [936]"}
       false;
     assume state(Heap, Mask);
 }

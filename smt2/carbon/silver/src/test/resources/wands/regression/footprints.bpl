@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:09:23
+// Date:         2025-01-26 21:44:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/footprints.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/footprints-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -278,18 +278,18 @@ axiom (forall arg1: bool, arg2: Ref, arg1_2: bool, arg2_2: Ref ::
 // Translation of all fields
 // ==================================================
 
-const unique v_36: Field NormalField bool;
-axiom !IsPredicateField(v_36);
-axiom !IsWandField(v_36);
-const unique l_8: Field NormalField Ref;
-axiom !IsPredicateField(l_8);
-axiom !IsWandField(l_8);
+const unique v_35: Field NormalField bool;
+axiom !IsPredicateField(v_35);
+axiom !IsWandField(v_35);
+const unique l: Field NormalField Ref;
+axiom !IsPredicateField(l);
+axiom !IsWandField(l);
 
 // ==================================================
 // Translation of method test1
 // ==================================================
 
-procedure test1(x: Ref) returns ()
+procedure test1_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -333,15 +333,15 @@ procedure test1(x: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, l_8:=Mask[x, l_8] + perm];
+    Mask := Mask[x, l:=Mask[x, l] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.l.v, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.l (footprints.vpr@8.12--8.34) [131522]"}
-        HasDirectPerm(Mask, x, l_8);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.l (footprints.vpr@8.12--8.34) [210537]"}
+        HasDirectPerm(Mask, x, l);
     perm := FullPerm;
-    assume Heap[x, l_8] != null;
-    Mask := Mask[Heap[x, l_8], v_36:=Mask[Heap[x, l_8], v_36] + perm];
+    assume Heap[x, l] != null;
+    Mask := Mask[Heap[x, l], v_35:=Mask[Heap[x, l], v_35] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -356,10 +356,10 @@ procedure test1(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.l != null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.l (footprints.vpr@10.10--10.21) [131523]"}
-        HasDirectPerm(ExhaleWellDef0Mask, x, l_8);
-    assert {:msg "  Assert might fail. Assertion x.l != null might not hold. (footprints.vpr@10.10--10.21) [131524]"}
-      Heap[x, l_8] != null;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.l (footprints.vpr@10.10--10.21) [210538]"}
+        HasDirectPerm(ExhaleWellDef0Mask, x, l);
+    assert {:msg "  Assert might fail. Assertion x.l != null might not hold. (footprints.vpr@10.10--10.21) [210539]"}
+      Heap[x, l] != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: package acc(x.l, write) --* acc(x.l, write) && acc(x.l.v, write) {
@@ -374,7 +374,7 @@ procedure test1(x: Ref) returns ()
     if (b_1_1) {
       perm := FullPerm;
       b_1_1 := b_1_1 && x != null;
-      Ops_1Mask := Ops_1Mask[x, l_8:=Ops_1Mask[x, l_8] + perm];
+      Ops_1Mask := Ops_1Mask[x, l:=Ops_1Mask[x, l] + perm];
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     }
     b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
@@ -393,8 +393,8 @@ procedure test1(x: Ref) returns ()
     // -- Transfer of acc(x.l, write)
       rcvLocal := x;
       neededTransfer := FullPerm;
-      initNeededTransfer := Used_1Mask[rcvLocal, l_8] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.l, write) might be negative. (footprints.vpr@13.3--13.46) [131525]"}
+      initNeededTransfer := Used_1Mask[rcvLocal, l] + neededTransfer;
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.l, write) might be negative. (footprints.vpr@13.3--13.46) [210540]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -402,7 +402,7 @@ procedure test1(x: Ref) returns ()
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_1_1 && b_1_1) && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Ops_1Mask[rcvLocal, l_8];
+          maskTransfer := Ops_1Mask[rcvLocal, l];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -410,10 +410,10 @@ procedure test1(x: Ref) returns ()
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_1Mask := Used_1Mask[rcvLocal, l_8:=Used_1Mask[rcvLocal, l_8] + takeTransfer];
+            Used_1Mask := Used_1Mask[rcvLocal, l:=Used_1Mask[rcvLocal, l] + takeTransfer];
             b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-            b_2_1 := b_2_1 && Ops_1Heap[rcvLocal, l_8] == Used_1Heap[rcvLocal, l_8];
-            Ops_1Mask := Ops_1Mask[rcvLocal, l_8:=Ops_1Mask[rcvLocal, l_8] - takeTransfer];
+            b_2_1 := b_2_1 && Ops_1Heap[rcvLocal, l] == Used_1Heap[rcvLocal, l];
+            Ops_1Mask := Ops_1Mask[rcvLocal, l:=Ops_1Mask[rcvLocal, l] - takeTransfer];
           }
         }
       
@@ -422,7 +422,7 @@ procedure test1(x: Ref) returns ()
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_1_1 && b_1_1) && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Mask[rcvLocal, l_8];
+          maskTransfer := Mask[rcvLocal, l];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -430,15 +430,15 @@ procedure test1(x: Ref) returns ()
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_1Mask := Used_1Mask[rcvLocal, l_8:=Used_1Mask[rcvLocal, l_8] + takeTransfer];
+            Used_1Mask := Used_1Mask[rcvLocal, l:=Used_1Mask[rcvLocal, l] + takeTransfer];
             b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-            b_2_1 := b_2_1 && Heap[rcvLocal, l_8] == Used_1Heap[rcvLocal, l_8];
-            Mask := Mask[rcvLocal, l_8:=Mask[rcvLocal, l_8] - takeTransfer];
-            Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm)][x, l_8:=true]];
+            b_2_1 := b_2_1 && Heap[rcvLocal, l] == Used_1Heap[rcvLocal, l];
+            Mask := Mask[rcvLocal, l:=Mask[rcvLocal, l] - takeTransfer];
+            Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm)][x, l:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l (footprints.vpr@13.3--13.46) [131526]"}
-        (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, l_8] == initNeededTransfer;
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l (footprints.vpr@13.3--13.46) [210541]"}
+        (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, l] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
         b_3 := b_1_1 && b_2_1;
@@ -455,14 +455,14 @@ procedure test1(x: Ref) returns ()
           if (b_1_1) {
             
             // -- Check definedness of acc(x.l.v, write)
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l (footprints.vpr@13.3--13.46) [131527]"}
-                HasDirectPerm(ResultMask, x, l_8);
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l (footprints.vpr@13.3--13.46) [210542]"}
+                HasDirectPerm(ResultMask, x, l);
           }
         }
-      rcvLocal := ResultHeap[x, l_8];
+      rcvLocal := ResultHeap[x, l];
       neededTransfer := FullPerm;
-      initNeededTransfer := Used_1Mask[rcvLocal, v_36] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.l.v, write) might be negative. (footprints.vpr@13.3--13.46) [131528]"}
+      initNeededTransfer := Used_1Mask[rcvLocal, v_35] + neededTransfer;
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.l.v, write) might be negative. (footprints.vpr@13.3--13.46) [210543]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -470,7 +470,7 @@ procedure test1(x: Ref) returns ()
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_1_1 && b_1_1) && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Ops_1Mask[rcvLocal, v_36];
+          maskTransfer := Ops_1Mask[rcvLocal, v_35];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -478,10 +478,10 @@ procedure test1(x: Ref) returns ()
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_1Mask := Used_1Mask[rcvLocal, v_36:=Used_1Mask[rcvLocal, v_36] + takeTransfer];
+            Used_1Mask := Used_1Mask[rcvLocal, v_35:=Used_1Mask[rcvLocal, v_35] + takeTransfer];
             b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-            b_2_1 := b_2_1 && Ops_1Heap[rcvLocal, v_36] == Used_1Heap[rcvLocal, v_36];
-            Ops_1Mask := Ops_1Mask[rcvLocal, v_36:=Ops_1Mask[rcvLocal, v_36] - takeTransfer];
+            b_2_1 := b_2_1 && Ops_1Heap[rcvLocal, v_35] == Used_1Heap[rcvLocal, v_35];
+            Ops_1Mask := Ops_1Mask[rcvLocal, v_35:=Ops_1Mask[rcvLocal, v_35] - takeTransfer];
           }
         }
       
@@ -490,7 +490,7 @@ procedure test1(x: Ref) returns ()
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_1_1 && b_1_1) && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Mask[rcvLocal, v_36];
+          maskTransfer := Mask[rcvLocal, v_35];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -498,15 +498,15 @@ procedure test1(x: Ref) returns ()
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_1Mask := Used_1Mask[rcvLocal, v_36:=Used_1Mask[rcvLocal, v_36] + takeTransfer];
+            Used_1Mask := Used_1Mask[rcvLocal, v_35:=Used_1Mask[rcvLocal, v_35] + takeTransfer];
             b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-            b_2_1 := b_2_1 && Heap[rcvLocal, v_36] == Used_1Heap[rcvLocal, v_36];
-            Mask := Mask[rcvLocal, v_36:=Mask[rcvLocal, v_36] - takeTransfer];
-            Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm)][Heap[x, l_8], v_36:=true]];
+            b_2_1 := b_2_1 && Heap[rcvLocal, v_35] == Used_1Heap[rcvLocal, v_35];
+            Mask := Mask[rcvLocal, v_35:=Mask[rcvLocal, v_35] - takeTransfer];
+            Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm)][Heap[x, l], v_35:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l.v (footprints.vpr@13.3--13.46) [131529]"}
-        (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, v_36] == initNeededTransfer;
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l.v (footprints.vpr@13.3--13.46) [210544]"}
+        (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, v_35] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
         b_4 := b_1_1 && b_2_1;
@@ -525,7 +525,7 @@ procedure test1(x: Ref) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(x: Ref) returns ()
+procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -569,23 +569,23 @@ procedure test2(x: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, l_8:=Mask[x, l_8] + perm];
+    Mask := Mask[x, l:=Mask[x, l] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.l.v, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.l (footprints.vpr@18.12--18.43) [131530]"}
-        HasDirectPerm(Mask, x, l_8);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.l (footprints.vpr@18.12--18.43) [210545]"}
+        HasDirectPerm(Mask, x, l);
     perm := FullPerm;
-    assume Heap[x, l_8] != null;
-    Mask := Mask[Heap[x, l_8], v_36:=Mask[Heap[x, l_8], v_36] + perm];
+    assume Heap[x, l] != null;
+    Mask := Mask[Heap[x, l], v_35:=Mask[Heap[x, l], v_35] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of x.l.v
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.l (footprints.vpr@18.12--18.43) [131531]"}
-        HasDirectPerm(Mask, x, l_8);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.l.v (footprints.vpr@18.12--18.43) [131532]"}
-        HasDirectPerm(Mask, Heap[x, l_8], v_36);
-    assume Heap[Heap[x, l_8], v_36];
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.l (footprints.vpr@18.12--18.43) [210546]"}
+        HasDirectPerm(Mask, x, l);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.l.v (footprints.vpr@18.12--18.43) [210547]"}
+        HasDirectPerm(Mask, Heap[x, l], v_35);
+    assume Heap[Heap[x, l], v_35];
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -599,10 +599,10 @@ procedure test2(x: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.l != null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.l (footprints.vpr@20.10--20.21) [131533]"}
-        HasDirectPerm(ExhaleWellDef0Mask, x, l_8);
-    assert {:msg "  Assert might fail. Assertion x.l != null might not hold. (footprints.vpr@20.10--20.21) [131534]"}
-      Heap[x, l_8] != null;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.l (footprints.vpr@20.10--20.21) [210548]"}
+        HasDirectPerm(ExhaleWellDef0Mask, x, l);
+    assert {:msg "  Assert might fail. Assertion x.l != null might not hold. (footprints.vpr@20.10--20.21) [210549]"}
+      Heap[x, l] != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: package acc(x.l, write) && x.l != null --*
@@ -619,17 +619,17 @@ procedure test2(x: Ref) returns ()
       if (b_6) {
         perm := FullPerm;
         b_6 := b_6 && x != null;
-        Ops_3Mask := Ops_3Mask[x, l_8:=Ops_3Mask[x, l_8] + perm];
+        Ops_3Mask := Ops_3Mask[x, l:=Ops_3Mask[x, l] + perm];
         b_6 := b_6 && state(Ops_3Heap, Ops_3Mask);
       }
       if (b_6) {
         if (b_6) {
           
           // -- Check definedness of x.l != null
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l (footprints.vpr@23.3--23.61) [131535]"}
-              HasDirectPerm(Ops_3Mask, x, l_8);
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l (footprints.vpr@23.3--23.61) [210550]"}
+              HasDirectPerm(Ops_3Mask, x, l);
         }
-        b_6 := b_6 && Ops_3Heap[x, l_8] != null;
+        b_6 := b_6 && Ops_3Heap[x, l] != null;
       }
     }
     b_6 := b_6 && state(Ops_3Heap, Ops_3Mask);
@@ -648,8 +648,8 @@ procedure test2(x: Ref) returns ()
     // -- Transfer of acc(x.l, write)
       rcvLocal := x;
       neededTransfer := FullPerm;
-      initNeededTransfer := Used_3Mask[rcvLocal, l_8] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.l, write) might be negative. (footprints.vpr@23.3--23.61) [131536]"}
+      initNeededTransfer := Used_3Mask[rcvLocal, l] + neededTransfer;
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.l, write) might be negative. (footprints.vpr@23.3--23.61) [210551]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -657,7 +657,7 @@ procedure test2(x: Ref) returns ()
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_6 && b_6) && b_7) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Ops_3Mask[rcvLocal, l_8];
+          maskTransfer := Ops_3Mask[rcvLocal, l];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -665,10 +665,10 @@ procedure test2(x: Ref) returns ()
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_3Mask := Used_3Mask[rcvLocal, l_8:=Used_3Mask[rcvLocal, l_8] + takeTransfer];
+            Used_3Mask := Used_3Mask[rcvLocal, l:=Used_3Mask[rcvLocal, l] + takeTransfer];
             b_7 := b_7 && state(Used_3Heap, Used_3Mask);
-            b_7 := b_7 && Ops_3Heap[rcvLocal, l_8] == Used_3Heap[rcvLocal, l_8];
-            Ops_3Mask := Ops_3Mask[rcvLocal, l_8:=Ops_3Mask[rcvLocal, l_8] - takeTransfer];
+            b_7 := b_7 && Ops_3Heap[rcvLocal, l] == Used_3Heap[rcvLocal, l];
+            Ops_3Mask := Ops_3Mask[rcvLocal, l:=Ops_3Mask[rcvLocal, l] - takeTransfer];
           }
         }
       
@@ -677,7 +677,7 @@ procedure test2(x: Ref) returns ()
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_6 && b_6) && b_7) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Mask[rcvLocal, l_8];
+          maskTransfer := Mask[rcvLocal, l];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -685,15 +685,15 @@ procedure test2(x: Ref) returns ()
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_3Mask := Used_3Mask[rcvLocal, l_8:=Used_3Mask[rcvLocal, l_8] + takeTransfer];
+            Used_3Mask := Used_3Mask[rcvLocal, l:=Used_3Mask[rcvLocal, l] + takeTransfer];
             b_7 := b_7 && state(Used_3Heap, Used_3Mask);
-            b_7 := b_7 && Heap[rcvLocal, l_8] == Used_3Heap[rcvLocal, l_8];
-            Mask := Mask[rcvLocal, l_8:=Mask[rcvLocal, l_8] - takeTransfer];
-            Heap := Heap[null, wand_1#sm(x, FullPerm, x, null, x, FullPerm, x, FullPerm):=Heap[null, wand_1#sm(x, FullPerm, x, null, x, FullPerm, x, FullPerm)][x, l_8:=true]];
+            b_7 := b_7 && Heap[rcvLocal, l] == Used_3Heap[rcvLocal, l];
+            Mask := Mask[rcvLocal, l:=Mask[rcvLocal, l] - takeTransfer];
+            Heap := Heap[null, wand_1#sm(x, FullPerm, x, null, x, FullPerm, x, FullPerm):=Heap[null, wand_1#sm(x, FullPerm, x, null, x, FullPerm, x, FullPerm)][x, l:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l (footprints.vpr@23.3--23.61) [131537]"}
-        (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, l_8] == initNeededTransfer;
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l (footprints.vpr@23.3--23.61) [210552]"}
+        (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, l] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
         b_8 := b_6 && b_7;
@@ -710,14 +710,14 @@ procedure test2(x: Ref) returns ()
           if (b_6) {
             
             // -- Check definedness of acc(x.l.v, write)
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l (footprints.vpr@23.3--23.61) [131538]"}
-                HasDirectPerm(Result_2Mask, x, l_8);
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l (footprints.vpr@23.3--23.61) [210553]"}
+                HasDirectPerm(Result_2Mask, x, l);
           }
         }
-      rcvLocal := Result_2Heap[x, l_8];
+      rcvLocal := Result_2Heap[x, l];
       neededTransfer := FullPerm;
-      initNeededTransfer := Used_3Mask[rcvLocal, v_36] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.l.v, write) might be negative. (footprints.vpr@23.3--23.61) [131539]"}
+      initNeededTransfer := Used_3Mask[rcvLocal, v_35] + neededTransfer;
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.l.v, write) might be negative. (footprints.vpr@23.3--23.61) [210554]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -725,7 +725,7 @@ procedure test2(x: Ref) returns ()
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_6 && b_6) && b_7) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Ops_3Mask[rcvLocal, v_36];
+          maskTransfer := Ops_3Mask[rcvLocal, v_35];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -733,10 +733,10 @@ procedure test2(x: Ref) returns ()
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_3Mask := Used_3Mask[rcvLocal, v_36:=Used_3Mask[rcvLocal, v_36] + takeTransfer];
+            Used_3Mask := Used_3Mask[rcvLocal, v_35:=Used_3Mask[rcvLocal, v_35] + takeTransfer];
             b_7 := b_7 && state(Used_3Heap, Used_3Mask);
-            b_7 := b_7 && Ops_3Heap[rcvLocal, v_36] == Used_3Heap[rcvLocal, v_36];
-            Ops_3Mask := Ops_3Mask[rcvLocal, v_36:=Ops_3Mask[rcvLocal, v_36] - takeTransfer];
+            b_7 := b_7 && Ops_3Heap[rcvLocal, v_35] == Used_3Heap[rcvLocal, v_35];
+            Ops_3Mask := Ops_3Mask[rcvLocal, v_35:=Ops_3Mask[rcvLocal, v_35] - takeTransfer];
           }
         }
       
@@ -745,7 +745,7 @@ procedure test2(x: Ref) returns ()
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_6 && b_6) && b_7) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Mask[rcvLocal, v_36];
+          maskTransfer := Mask[rcvLocal, v_35];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -753,15 +753,15 @@ procedure test2(x: Ref) returns ()
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_3Mask := Used_3Mask[rcvLocal, v_36:=Used_3Mask[rcvLocal, v_36] + takeTransfer];
+            Used_3Mask := Used_3Mask[rcvLocal, v_35:=Used_3Mask[rcvLocal, v_35] + takeTransfer];
             b_7 := b_7 && state(Used_3Heap, Used_3Mask);
-            b_7 := b_7 && Heap[rcvLocal, v_36] == Used_3Heap[rcvLocal, v_36];
-            Mask := Mask[rcvLocal, v_36:=Mask[rcvLocal, v_36] - takeTransfer];
-            Heap := Heap[null, wand_1#sm(x, FullPerm, x, null, x, FullPerm, x, FullPerm):=Heap[null, wand_1#sm(x, FullPerm, x, null, x, FullPerm, x, FullPerm)][Heap[x, l_8], v_36:=true]];
+            b_7 := b_7 && Heap[rcvLocal, v_35] == Used_3Heap[rcvLocal, v_35];
+            Mask := Mask[rcvLocal, v_35:=Mask[rcvLocal, v_35] - takeTransfer];
+            Heap := Heap[null, wand_1#sm(x, FullPerm, x, null, x, FullPerm, x, FullPerm):=Heap[null, wand_1#sm(x, FullPerm, x, null, x, FullPerm, x, FullPerm)][Heap[x, l], v_35:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l.v (footprints.vpr@23.3--23.61) [131540]"}
-        (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, v_36] == initNeededTransfer;
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.l.v (footprints.vpr@23.3--23.61) [210555]"}
+        (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, v_35] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
         b_9 := b_6 && b_7;
@@ -780,7 +780,7 @@ procedure test2(x: Ref) returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3(x: Ref) returns ()
+procedure test3_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -813,7 +813,7 @@ procedure test3(x: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, v_36:=Mask[x, v_36] + perm];
+    Mask := Mask[x, v_35:=Mask[x, v_35] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -824,9 +824,9 @@ procedure test3(x: Ref) returns ()
       oldMask := Mask;
   
   // -- Translating statement: x.v := true -- footprints.vpr@33.3--33.14
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.v (footprints.vpr@33.3--33.14) [131541]"}
-      FullPerm == Mask[x, v_36];
-    Heap := Heap[x, v_36:=true];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.v (footprints.vpr@33.3--33.14) [210556]"}
+      FullPerm == Mask[x, v_35];
+    Heap := Heap[x, v_35:=true];
     assume state(Heap, Mask);
   
   // -- Translating statement: package true --* x.v {
@@ -857,21 +857,21 @@ procedure test3(x: Ref) returns ()
       if (b_11) {
         
         // -- Check definedness of x.v
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.v (footprints.vpr@39.3--39.23) [131542]"}
-            HasDirectPerm(Ops_5Mask, x, v_36);
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.v (footprints.vpr@39.3--39.23) [210557]"}
+            HasDirectPerm(Ops_5Mask, x, v_35);
       }
     }
-    assert {:msg "  Packaging wand might fail. Assertion x.v might not hold. (footprints.vpr@39.3--39.23) [131543]"}
-      (b_11 && b_11) && b_12 ==> Ops_5Heap[x, v_36];
+    assert {:msg "  Packaging wand might fail. Assertion x.v might not hold. (footprints.vpr@39.3--39.23) [210558]"}
+      (b_11 && b_11) && b_12 ==> Ops_5Heap[x, v_35];
     Mask := Mask[null, wand_2(true, x):=Mask[null, wand_2(true, x)] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: x.v := false -- footprints.vpr@42.3--42.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.v (footprints.vpr@42.3--42.15) [131544]"}
-      FullPerm == Mask[x, v_36];
-    Heap := Heap[x, v_36:=false];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.v (footprints.vpr@42.3--42.15) [210559]"}
+      FullPerm == Mask[x, v_35];
+    Heap := Heap[x, v_35:=false];
     assume state(Heap, Mask);
   
   // -- Translating statement: apply true --* x.v -- footprints.vpr@43.3--43.21
@@ -880,7 +880,7 @@ procedure test3(x: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (footprints.vpr@43.3--43.21) [131545]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (footprints.vpr@43.3--43.21) [210560]"}
         FullPerm <= Mask[null, wand_2(true, x)];
       Mask := Mask[null, wand_2(true, x):=Mask[null, wand_2(true, x)] - FullPerm];
     assume state(Heap, Mask);
@@ -891,7 +891,7 @@ procedure test3(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
-      assume Heap[x, v_36];
+      assume Heap[x, v_35];
       assume state(Heap, Mask);
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -902,7 +902,7 @@ procedure test3(x: Ref) returns ()
   // -- Translating statement: assert false -- footprints.vpr@44.3--44.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (footprints.vpr@44.10--44.15) [131547]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (footprints.vpr@44.10--44.15) [210562]"}
       false;
     assume state(Heap, Mask);
 }

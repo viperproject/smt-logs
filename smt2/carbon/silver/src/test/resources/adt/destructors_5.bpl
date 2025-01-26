@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:37
+// Date:         2025-01-26 21:43:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/destructors_5.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/destructors_5-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -187,24 +187,24 @@ function  Nil<T>(): ListDomainType T;
 function  Cons<T>(value_2: T, tail: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function get_List_value
-function  get_List_value<T>(t_9: (ListDomainType T)): T;
+function  get_List_value<T>(t_3: (ListDomainType T)): T;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<T>(t_9: (ListDomainType T)): ListDomainType T;
+function  get_List_tail<T>(t_3: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function List_tag
-function  List_tag<T>(t_9: (ListDomainType T)): int;
+function  List_tag<T>(t_3: (ListDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType T)): T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType T)): ListDomainType T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType T)): ListDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -214,9 +214,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType T)): int) == 0
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (List_tag((Cons(value, tail_1): ListDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -236,36 +236,36 @@ type TreeDomainType T;
 function  Leaf<T>(): TreeDomainType T;
 
 // Translation of domain function Node
-function  Node_1<T>(value_2: T, left_2: (TreeDomainType T), right_2: (TreeDomainType T)): TreeDomainType T;
+function  Node_1<T>(value_2: T, left_1: (TreeDomainType T), right: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function get_Tree_value
-function  get_Tree_value<T>(t_9: (TreeDomainType T)): T;
+function  get_Tree_value<T>(t_3: (TreeDomainType T)): T;
 
 // Translation of domain function get_Tree_left
-function  get_Tree_left<T>(t_9: (TreeDomainType T)): TreeDomainType T;
+function  get_Tree_left<T>(t_3: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function get_Tree_right
-function  get_Tree_right<T>(t_9: (TreeDomainType T)): TreeDomainType T;
+function  get_Tree_right<T>(t_3: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function Tree_tag
-function  Tree_tag<T>(t_9: (TreeDomainType T)): int;
+function  Tree_tag<T>(t_3: (TreeDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  value_1 == (get_Tree_value((Node_1(value_1, left_1, right): TreeDomainType T)): T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  value == (get_Tree_value((Node_1(value, left, right_2): TreeDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  left_1 == (get_Tree_left((Node_1(value_1, left_1, right): TreeDomainType T)): TreeDomainType T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  left == (get_Tree_left((Node_1(value, left, right_2): TreeDomainType T)): TreeDomainType T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  right == (get_Tree_right((Node_1(value_1, left_1, right): TreeDomainType T)): TreeDomainType T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  right_2 == (get_Tree_right((Node_1(value, left, right_2): TreeDomainType T)): TreeDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -275,9 +275,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  (Tree_tag((Node_1(value_1, left_1, right): TreeDomainType T)): int) == 1
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  (Tree_tag((Node_1(value, left, right_2): TreeDomainType T)): int) == 1
 );
 
 // Translation of anonymous domain axiom
@@ -312,7 +312,7 @@ procedure destructors_5a() returns ()
   // -- Translating statement: assert (get_List_value((Nil(): List[Int])): Int) == 1 -- destructors_5.vpr@17.5--17.28
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (get_List_value((Nil(): List[Int])): Int) == 1 might not hold. (destructors_5.vpr@17.12--17.28) [222999]"}
+    assert {:msg "  Assert might fail. Assertion (get_List_value((Nil(): List[Int])): Int) == 1 might not hold. (destructors_5.vpr@17.12--17.28) [104067]"}
       (get_List_value((Nil(): ListDomainType int)): int) == 1;
     assume state(Heap, Mask);
 }
@@ -343,7 +343,7 @@ procedure destructors_5b() returns ()
   // -- Translating statement: assert (get_List_value((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 2 -- destructors_5.vpr@23.5--23.37
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (get_List_value((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 2 might not hold. (destructors_5.vpr@23.12--23.37) [223000]"}
+    assert {:msg "  Assert might fail. Assertion (get_List_value((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 2 might not hold. (destructors_5.vpr@23.12--23.37) [104068]"}
       (get_List_value((Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): int) == 2;
     assume state(Heap, Mask);
 }
@@ -375,7 +375,7 @@ procedure destructors_5c() returns ()
   //   (Nil(): List[Int]) -- destructors_5.vpr@29.5--29.49
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (get_List_tail((Cons(1, (Cons(1, (Nil(): List[Int])): List[Int])): List[Int])): List[Int]) == (Nil(): List[Int]) might not hold. (destructors_5.vpr@29.12--29.49) [223001]"}
+    assert {:msg "  Assert might fail. Assertion (get_List_tail((Cons(1, (Cons(1, (Nil(): List[Int])): List[Int])): List[Int])): List[Int]) == (Nil(): List[Int]) might not hold. (destructors_5.vpr@29.12--29.49) [104069]"}
       (get_List_tail((Cons(1, (Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): ListDomainType int)): ListDomainType int) == (Nil(): ListDomainType int);
     assume state(Heap, Mask);
 }

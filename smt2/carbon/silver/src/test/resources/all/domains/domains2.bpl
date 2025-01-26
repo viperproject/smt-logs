@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:14:32
+// Date:         2025-01-26 21:43:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,16 +181,16 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type D1DomainType T;
 
 // Translation of domain function g1
-function  g1_1<T>(t_9: T): D1DomainType T;
+function  g1_1<T>(t_3: T): D1DomainType T;
 
 // Translation of domain function g2
-function  g2<T>(t_9: (D1DomainType T)): D1DomainType T;
+function  g2<T>(t_3: (D1DomainType T)): D1DomainType T;
 
 // Translation of domain function g3
-function  g3<T>(t_9: (D1DomainType T)): D1DomainType T;
+function  g3<T>(t_3: (D1DomainType T)): D1DomainType T;
 
 // Translation of domain function g4
-function  g4<T>(t_9: (D1DomainType (D1DomainType T))): D1DomainType T;
+function  g4<T>(t_3: (D1DomainType (D1DomainType T))): D1DomainType T;
 
 // ==================================================
 // Translation of domain D2
@@ -210,10 +210,10 @@ function  h2<A, B>(): D3DomainType A B;
 type D3DomainType A B;
 
 // Translation of domain function i2
-function  i2_32<A, B>(): D2DomainType A B;
+function  i2_9<A, B>(): D2DomainType A B;
 
 // Translation of domain function i3
-function  i3_13<B, A>(): D2DomainType B A;
+function  i3_2<B, A>(): D2DomainType B A;
 
 // Translation of domain function i4
 function  i4<A, B>(): D2DomainType (D3DomainType A B) A;
@@ -233,7 +233,7 @@ type DDDomainType A;
 type D10DomainType A B C D E F G H;
 
 // Translation of domain function pp1
-function  pp1<B, A, C, D, E, F, G, H>(a_3: (D10DomainType B A C D E F G H), b_102: (D10DomainType A C B D E F G H), c_11: (D10DomainType A B D C E F G H), d_2: (D10DomainType A B C E D F G H), e: (D10DomainType A B C D F E G H), f_198: (D10DomainType A B C D E G F H), g_2: (D10DomainType A B C D E F H G), h_1: (D10DomainType A A C D E F H G), i_79: (D10DomainType (DDDomainType A) B C D E F H G)): D10DomainType int B C D E F G H;
+function  pp1<B, A, C, D, E, F, G, H>(a_3: (D10DomainType B A C D E F G H), b_33: (D10DomainType A C B D E F G H), c_11: (D10DomainType A B D C E F G H), d_3: (D10DomainType A B C E D F G H), e: (D10DomainType A B C D F E G H), f_68: (D10DomainType A B C D E G F H), g_3: (D10DomainType A B C D E F H G), h_3: (D10DomainType A A C D E F H G), i_6: (D10DomainType (DDDomainType A) B C D E F H G)): D10DomainType int B C D E F G H;
 
 // ==================================================
 // Translation of domain DR
@@ -243,7 +243,7 @@ function  pp1<B, A, C, D, E, F, G, H>(a_3: (D10DomainType B A C D E F G H), b_10
 type DRDomainType A B;
 
 // Translation of domain function fr
-function  fr<B, A>(x_8: (DDDomainType (DRDomainType (DDDomainType (DDDomainType (DDDomainType (DDDomainType (DDDomainType (DRDomainType B A)))))) (DDDomainType (DDDomainType (DRDomainType B A)))))): DRDomainType (DRDomainType A B) (DRDomainType B A);
+function  fr<B, A>(x_37: (DDDomainType (DRDomainType (DDDomainType (DDDomainType (DDDomainType (DDDomainType (DDDomainType (DRDomainType B A)))))) (DDDomainType (DDDomainType (DRDomainType B A)))))): DRDomainType (DRDomainType A B) (DRDomainType B A);
 
 // ==================================================
 // Translation of method m1
@@ -252,8 +252,8 @@ function  fr<B, A>(x_8: (DDDomainType (DRDomainType (DDDomainType (DDDomainType 
 procedure m1(x: int) returns (r_1: (D10DomainType int int int int int int int int))
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -263,19 +263,19 @@ procedure m1(x: int) returns (r_1: (D10DomainType int int int int int int int in
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
 // Translation of method m
 // ==================================================
 
-procedure m(x: (D2DomainType int bool)) returns (r_1: (D3DomainType bool bool))
+procedure m_17(x: (D2DomainType int bool)) returns (r_1: (D3DomainType bool bool))
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -285,6 +285,6 @@ procedure m(x: (D2DomainType int bool)) returns (r_1: (D3DomainType bool bool))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }

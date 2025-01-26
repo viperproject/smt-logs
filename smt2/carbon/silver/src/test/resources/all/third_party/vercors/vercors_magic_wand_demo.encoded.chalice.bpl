@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:17:29
+// Date:         2025-01-26 21:41:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/vercors/vercors_magic_wand_demo.encoded.chalice.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/vercors/vercors_magic_wand_demo.encoded.chalice-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -311,8 +311,8 @@ procedure Wand_readonly_for_writeonlyget_in_1$#definedness(this$_1: Ref) returns
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -337,10 +337,10 @@ procedure Wand_readonly_for_writeonlyget_in_1$#definedness(this$_1: Ref) returns
       UnfoldingMask := Mask;
       assume Wand_readonly_for_writeonlyvalid_wand$#trigger(UnfoldingHeap, Wand_readonly_for_writeonlyvalid_wand$(this$_1));
       assume UnfoldingHeap[null, Wand_readonly_for_writeonlyvalid_wand$(this$_1)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_1, Wand_readonly_for_writeonlylemma$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_1, Wand_readonly_for_writeonlyin_1$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_1, Wand_readonly_for_writeonlyout_1$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_1, Wand_readonly_for_writeonlythis_1$]), FrameFragment((if UnfoldingHeap[this$_1, Wand_readonly_for_writeonlylemma$] == 1 then FrameFragment(UnfoldingHeap[UnfoldingHeap[this$_1, Wand_readonly_for_writeonlythis_1$], WandDemox$]) else EmptyFrame))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_1) (vercors_magic_wand_demo.encoded.chalice.vpr@61.1--67.2) [159586]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_1) (vercors_magic_wand_demo.encoded.chalice.vpr@61.1--67.2) [43230]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_1)];
       havoc wildcard;
       perm := wildcard;
@@ -375,7 +375,7 @@ procedure Wand_readonly_for_writeonlyget_in_1$#definedness(this$_1: Ref) returns
       }
       assume UnfoldingHeap[this$_1, Wand_readonly_for_writeonlylemma$] <= 1;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_1.Wand_readonly_for_writeonlyin_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@61.1--67.2) [159587]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_1.Wand_readonly_for_writeonlyin_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@61.1--67.2) [43231]"}
         HasDirectPerm(UnfoldingMask, this$_1, Wand_readonly_for_writeonlyin_1$);
       
       // -- Free assumptions (exp module)
@@ -435,8 +435,8 @@ procedure Wand_readonly_for_writeonlyget_out_1$#definedness(this$_2: Ref) return
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -461,10 +461,10 @@ procedure Wand_readonly_for_writeonlyget_out_1$#definedness(this$_2: Ref) return
       UnfoldingMask := Mask;
       assume Wand_readonly_for_writeonlyvalid_wand$#trigger(UnfoldingHeap, Wand_readonly_for_writeonlyvalid_wand$(this$_2));
       assume UnfoldingHeap[null, Wand_readonly_for_writeonlyvalid_wand$(this$_2)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Wand_readonly_for_writeonlylemma$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Wand_readonly_for_writeonlyin_1$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Wand_readonly_for_writeonlyout_1$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Wand_readonly_for_writeonlythis_1$]), FrameFragment((if UnfoldingHeap[this$_2, Wand_readonly_for_writeonlylemma$] == 1 then FrameFragment(UnfoldingHeap[UnfoldingHeap[this$_2, Wand_readonly_for_writeonlythis_1$], WandDemox$]) else EmptyFrame))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_2) (vercors_magic_wand_demo.encoded.chalice.vpr@69.1--75.2) [159588]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_2) (vercors_magic_wand_demo.encoded.chalice.vpr@69.1--75.2) [43232]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_2)];
       havoc wildcard;
       perm := wildcard;
@@ -499,7 +499,7 @@ procedure Wand_readonly_for_writeonlyget_out_1$#definedness(this$_2: Ref) return
       }
       assume UnfoldingHeap[this$_2, Wand_readonly_for_writeonlylemma$] <= 1;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_2.Wand_readonly_for_writeonlyout_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@69.1--75.2) [159589]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_2.Wand_readonly_for_writeonlyout_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@69.1--75.2) [43233]"}
         HasDirectPerm(UnfoldingMask, this$_2, Wand_readonly_for_writeonlyout_1$);
       
       // -- Free assumptions (exp module)
@@ -559,8 +559,8 @@ procedure WandDemoget$#definedness(this$_9: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -585,10 +585,10 @@ procedure WandDemoget$#definedness(this$_9: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume WandDemoreadonly$#trigger(UnfoldingHeap, WandDemoreadonly$(this$_9));
       assume UnfoldingHeap[null, WandDemoreadonly$(this$_9)] == FrameFragment(UnfoldingHeap[this$_9, WandDemox$]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access WandDemoreadonly$(this$_9) (vercors_magic_wand_demo.encoded.chalice.vpr@77.1--82.2) [159590]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access WandDemoreadonly$(this$_9) (vercors_magic_wand_demo.encoded.chalice.vpr@77.1--82.2) [43234]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, WandDemoreadonly$(this$_9)];
       havoc wildcard;
       perm := wildcard;
@@ -596,7 +596,7 @@ procedure WandDemoget$#definedness(this$_9: Ref) returns (Result: int)
       UnfoldingMask := UnfoldingMask[this$_9, WandDemox$:=UnfoldingMask[this$_9, WandDemox$] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_9.WandDemox$ (vercors_magic_wand_demo.encoded.chalice.vpr@77.1--82.2) [159591]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_9.WandDemox$ (vercors_magic_wand_demo.encoded.chalice.vpr@77.1--82.2) [43235]"}
         HasDirectPerm(UnfoldingMask, this$_9, WandDemox$);
       
       // -- Free assumptions (exp module)
@@ -713,7 +713,7 @@ procedure Wand_readonly_for_writeonlyvalid_wand$#definedness(this$_4: Ref) retur
     assume state(Heap, Mask);
     
     // -- Check definedness of 1 <= this$_4.Wand_readonly_for_writeonlylemma$
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [159592]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [43236]"}
         HasDirectPerm(Mask, this$_4, Wand_readonly_for_writeonlylemma$);
     assume 1 <= Heap[this$_4, Wand_readonly_for_writeonlylemma$];
     havoc wildcard;
@@ -733,42 +733,42 @@ procedure Wand_readonly_for_writeonlyvalid_wand$#definedness(this$_4: Ref) retur
     assume state(Heap, Mask);
     
     // -- Check definedness of this$_4.Wand_readonly_for_writeonlylemma$ == 1
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [159593]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [43237]"}
         HasDirectPerm(Mask, this$_4, Wand_readonly_for_writeonlylemma$);
     if (Heap[this$_4, Wand_readonly_for_writeonlylemma$] == 1) {
       
       // -- Check definedness of this$_4.Wand_readonly_for_writeonlythis_1$ != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [159594]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [43238]"}
           HasDirectPerm(Mask, this$_4, Wand_readonly_for_writeonlythis_1$);
       assume Heap[this$_4, Wand_readonly_for_writeonlythis_1$] != null;
       
       // -- Check definedness of acc(this$_4.Wand_readonly_for_writeonlythis_1$.WandDemox$, 75 / 100)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [159595]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [43239]"}
           HasDirectPerm(Mask, this$_4, Wand_readonly_for_writeonlythis_1$);
       perm := 75 / 100;
-      assert {:msg "  Predicate might not be well-formed. Fraction 75 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [159596]"}
+      assert {:msg "  Predicate might not be well-formed. Fraction 75 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [43240]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Heap[this$_4, Wand_readonly_for_writeonlythis_1$] != null;
       Mask := Mask[Heap[this$_4, Wand_readonly_for_writeonlythis_1$], WandDemox$:=Mask[Heap[this$_4, Wand_readonly_for_writeonlythis_1$], WandDemox$] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of this$_4.Wand_readonly_for_writeonlyin_1$ == this$_4.Wand_readonly_for_writeonlythis_1$
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlyin_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [159597]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlyin_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [43241]"}
           HasDirectPerm(Mask, this$_4, Wand_readonly_for_writeonlyin_1$);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [159598]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [43242]"}
           HasDirectPerm(Mask, this$_4, Wand_readonly_for_writeonlythis_1$);
       assume Heap[this$_4, Wand_readonly_for_writeonlyin_1$] == Heap[this$_4, Wand_readonly_for_writeonlythis_1$];
       
       // -- Check definedness of this$_4.Wand_readonly_for_writeonlyout_1$ == this$_4.Wand_readonly_for_writeonlythis_1$
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlyout_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [159599]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlyout_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [43243]"}
           HasDirectPerm(Mask, this$_4, Wand_readonly_for_writeonlyout_1$);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [159600]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [43244]"}
           HasDirectPerm(Mask, this$_4, Wand_readonly_for_writeonlythis_1$);
       assume Heap[this$_4, Wand_readonly_for_writeonlyout_1$] == Heap[this$_4, Wand_readonly_for_writeonlythis_1$];
     }
     
     // -- Check definedness of this$_4.Wand_readonly_for_writeonlylemma$ <= 1
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [159601]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_4.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@88.1--90.2) [43245]"}
         HasDirectPerm(Mask, this$_4, Wand_readonly_for_writeonlylemma$);
     assume Heap[this$_4, Wand_readonly_for_writeonlylemma$] <= 1;
     assume state(Heap, Mask);
@@ -873,7 +873,7 @@ procedure WandDemoreadonly$#definedness(this$_7: Ref) returns ()
       assume AssumePermUpperBound;
       assume Heap[this$_7, $allocated];
     perm := 25 / 100;
-    assert {:msg "  Predicate might not be well-formed. Fraction 25 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@96.1--98.2) [159602]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 25 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@96.1--98.2) [43246]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_7 != null;
     Mask := Mask[this$_7, WandDemox$:=Mask[this$_7, WandDemox$] + perm];
@@ -930,7 +930,7 @@ procedure WandDemowriteonly$#definedness(this$_8: Ref) returns ()
       assume AssumePermUpperBound;
       assume Heap[this$_8, $allocated];
     perm := 100 / 100;
-    assert {:msg "  Predicate might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@100.1--102.2) [159603]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@100.1--102.2) [43247]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_8 != null;
     Mask := Mask[this$_8, WandDemox$:=Mask[this$_8, WandDemox$] + perm];
@@ -946,11 +946,11 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$: Ref;
@@ -983,12 +983,12 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     // -- Check definedness of Wand_readonly_for_writeonlyget_in_1$(this$_3) != null
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_in_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@109.12--109.57) [159604]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_in_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@109.12--109.57) [43248]"}
           this$_3 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_in_1$ might not hold. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@109.12--109.57) [159605]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_in_1$ might not hold. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@109.12--109.57) [43249]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_3)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1004,12 +1004,12 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     // -- Check definedness of acc(WandDemoreadonly$(Wand_readonly_for_writeonlyget_in_1$(this$_3)), write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_in_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@110.34--110.79) [159606]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_in_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@110.34--110.79) [43250]"}
           this$_3 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_in_1$ might not hold. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@110.34--110.79) [159607]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_in_1$ might not hold. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@110.34--110.79) [43251]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_3)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1027,12 +1027,12 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     // -- Check definedness of Wand_readonly_for_writeonlyget_out_1$(this$_3) != null
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_out_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@111.12--111.58) [159608]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_out_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@111.12--111.58) [43252]"}
           this$_3 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_out_1$ might not hold. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@111.12--111.58) [159609]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_out_1$ might not hold. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@111.12--111.58) [43253]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_3)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1047,8 +1047,8 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1059,12 +1059,12 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     // -- Check definedness of acc(WandDemowriteonly$(old(Wand_readonly_for_writeonlyget_out_1$(this$_3))), write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_out_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@112.38--112.84) [159610]"}
+        ExhaleWellDef0Heap := oldHeap;
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_out_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@112.38--112.84) [43254]"}
           this$_3 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_out_1$ might not hold. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@112.38--112.84) [159611]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_out_1$ might not hold. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@112.38--112.84) [43255]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_3)];
         // Finish exhale
         // Stop execution
@@ -1084,11 +1084,11 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
   // -- Translating statement: unfold acc(Wand_readonly_for_writeonlyvalid_wand$(this$_3), write) -- vercors_magic_wand_demo.encoded.chalice.vpr@115.3--115.69
     assume Wand_readonly_for_writeonlyvalid_wand$#trigger(Heap, Wand_readonly_for_writeonlyvalid_wand$(this$_3));
     assume Heap[null, Wand_readonly_for_writeonlyvalid_wand$(this$_3)] == CombineFrames(FrameFragment(Heap[this$_3, Wand_readonly_for_writeonlylemma$]), CombineFrames(FrameFragment(Heap[this$_3, Wand_readonly_for_writeonlyin_1$]), CombineFrames(FrameFragment(Heap[this$_3, Wand_readonly_for_writeonlyout_1$]), CombineFrames(FrameFragment(Heap[this$_3, Wand_readonly_for_writeonlythis_1$]), FrameFragment((if Heap[this$_3, Wand_readonly_for_writeonlylemma$] == 1 then FrameFragment(Heap[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$]) else EmptyFrame))))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Wand_readonly_for_writeonlyvalid_wand$(this$_3) might fail. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@115.3--115.69) [159614]"}
+      assert {:msg "  Unfolding Wand_readonly_for_writeonlyvalid_wand$(this$_3) might fail. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@115.3--115.69) [43258]"}
         perm <= Mask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_3)];
     }
     Mask := Mask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_3):=Mask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_3)] - perm];
@@ -1122,7 +1122,7 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     if (Heap[this$_3, Wand_readonly_for_writeonlylemma$] == 1) {
       assume Heap[this$_3, Wand_readonly_for_writeonlythis_1$] != null;
       perm := 75 / 100;
-      assert {:msg "  Unfolding Wand_readonly_for_writeonlyvalid_wand$(this$_3) might fail. Fraction 75 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@115.3--115.69) [159615]"}
+      assert {:msg "  Unfolding Wand_readonly_for_writeonlyvalid_wand$(this$_3) might fail. Fraction 75 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@115.3--115.69) [43259]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Heap[this$_3, Wand_readonly_for_writeonlythis_1$] != null;
       Mask := Mask[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$:=Mask[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$] + perm];
@@ -1137,22 +1137,22 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
   // -- Translating statement: if (this$_3.Wand_readonly_for_writeonlylemma$ == 1) -- vercors_magic_wand_demo.encoded.chalice.vpr@116.3--119.4
     
     // -- Check definedness of this$_3.Wand_readonly_for_writeonlylemma$ == 1
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this$_3.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@116.7--116.53) [159616]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this$_3.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@116.7--116.53) [43260]"}
         HasDirectPerm(Mask, this$_3, Wand_readonly_for_writeonlylemma$);
     if (Heap[this$_3, Wand_readonly_for_writeonlylemma$] == 1) {
       
       // -- Translating statement: unfold acc(WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$), write) -- vercors_magic_wand_demo.encoded.chalice.vpr@117.5--117.85
         
         // -- Check definedness of acc(WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$), write)
-          assert {:msg "  Unfolding WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. There might be insufficient permission to access this$_3.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@117.5--117.85) [159617]"}
+          assert {:msg "  Unfolding WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. There might be insufficient permission to access this$_3.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@117.5--117.85) [43261]"}
             HasDirectPerm(Mask, this$_3, Wand_readonly_for_writeonlythis_1$);
         assume WandDemoreadonly$#trigger(Heap, WandDemoreadonly$(Heap[this$_3, Wand_readonly_for_writeonlythis_1$]));
         assume Heap[null, WandDemoreadonly$(Heap[this$_3, Wand_readonly_for_writeonlythis_1$])] == FrameFragment(Heap[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$]);
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Unfolding WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. There might be insufficient permission to access WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$) (vercors_magic_wand_demo.encoded.chalice.vpr@117.5--117.85) [159620]"}
+          assert {:msg "  Unfolding WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. There might be insufficient permission to access WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$) (vercors_magic_wand_demo.encoded.chalice.vpr@117.5--117.85) [43264]"}
             perm <= Mask[null, WandDemoreadonly$(Heap[this$_3, Wand_readonly_for_writeonlythis_1$])];
         }
         Mask := Mask[null, WandDemoreadonly$(Heap[this$_3, Wand_readonly_for_writeonlythis_1$]):=Mask[null, WandDemoreadonly$(Heap[this$_3, Wand_readonly_for_writeonlythis_1$])] - perm];
@@ -1163,7 +1163,7 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
             Heap := Heap[null, WandDemoreadonly$(Heap[this$_3, Wand_readonly_for_writeonlythis_1$]):=newVersion];
           }
         perm := 25 / 100;
-        assert {:msg "  Unfolding WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. Fraction 25 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@117.5--117.85) [159621]"}
+        assert {:msg "  Unfolding WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. Fraction 25 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@117.5--117.85) [43265]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> Heap[this$_3, Wand_readonly_for_writeonlythis_1$] != null;
         Mask := Mask[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$:=Mask[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$] + perm];
@@ -1174,15 +1174,15 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
       // -- Translating statement: fold acc(WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$), write) -- vercors_magic_wand_demo.encoded.chalice.vpr@118.5--118.84
         
         // -- Check definedness of acc(WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$), write)
-          assert {:msg "  Folding WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. There might be insufficient permission to access this$_3.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@118.5--118.84) [159622]"}
+          assert {:msg "  Folding WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. There might be insufficient permission to access this$_3.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@118.5--118.84) [43266]"}
             HasDirectPerm(Mask, this$_3, Wand_readonly_for_writeonlythis_1$);
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 100 / 100;
-        assert {:msg "  Folding WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@118.5--118.84) [159624]"}
+        assert {:msg "  Folding WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@118.5--118.84) [43268]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. There might be insufficient permission to access this$_3.Wand_readonly_for_writeonlythis_1$.WandDemox$ (vercors_magic_wand_demo.encoded.chalice.vpr@118.5--118.84) [159625]"}
+          assert {:msg "  Folding WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. There might be insufficient permission to access this$_3.Wand_readonly_for_writeonlythis_1$.WandDemox$ (vercors_magic_wand_demo.encoded.chalice.vpr@118.5--118.84) [43269]"}
             perm <= Mask[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$];
         }
         Mask := Mask[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$:=Mask[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$] - perm];
@@ -1204,11 +1204,11 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_readonly_for_writeonlyapply$ might not hold. There might be insufficient permission to access WandDemowriteonly$(old(Wand_readonly_for_writeonlyget_out_1$(this$_3))) (vercors_magic_wand_demo.encoded.chalice.vpr@112.11--112.94) [159627]"}
+      assert {:msg "  Postcondition of Wand_readonly_for_writeonlyapply$ might not hold. There might be insufficient permission to access WandDemowriteonly$(old(Wand_readonly_for_writeonlyget_out_1$(this$_3))) (vercors_magic_wand_demo.encoded.chalice.vpr@112.11--112.94) [43271]"}
         perm <= Mask[null, WandDemowriteonly$(Wand_readonly_for_writeonlyget_out_1$(oldHeap, this$_3))];
     }
     Mask := Mask[null, WandDemowriteonly$(Wand_readonly_for_writeonlyget_out_1$(oldHeap, this$_3)):=Mask[null, WandDemowriteonly$(Wand_readonly_for_writeonlyget_out_1$(oldHeap, this$_3))] - perm];
@@ -1226,13 +1226,13 @@ procedure Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$(this$_5: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$_1: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1252,28 +1252,28 @@ procedure Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$(this$_5: 
     assume k$_1 < FullPerm;
     assume state(Heap, Mask);
     perm := 100 / 100;
-    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@126.12--126.69) [159628]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@126.12--126.69) [43272]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_5 != null;
     Mask := Mask[this$_5, Wand_readonly_for_writeonlylemma$:=Mask[this$_5, Wand_readonly_for_writeonlylemma$] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := 100 / 100;
-    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@127.12--127.68) [159629]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@127.12--127.68) [43273]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_5 != null;
     Mask := Mask[this$_5, Wand_readonly_for_writeonlyin_1$:=Mask[this$_5, Wand_readonly_for_writeonlyin_1$] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := 100 / 100;
-    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@128.12--128.69) [159630]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@128.12--128.69) [43274]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_5 != null;
     Mask := Mask[this$_5, Wand_readonly_for_writeonlyout_1$:=Mask[this$_5, Wand_readonly_for_writeonlyout_1$] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := 100 / 100;
-    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@129.12--129.70) [159631]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@129.12--129.70) [43275]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_5 != null;
     Mask := Mask[this$_5, Wand_readonly_for_writeonlythis_1$:=Mask[this$_5, Wand_readonly_for_writeonlythis_1$] + perm];
@@ -1283,58 +1283,58 @@ procedure Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$(this$_5: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := 100 / 100;
-    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [159632]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [43276]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_5 != null;
     PostMask := PostMask[this$_5, Wand_readonly_for_writeonlylemma$:=PostMask[this$_5, Wand_readonly_for_writeonlylemma$] + perm];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this$_5.Wand_readonly_for_writeonlylemma$ == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [159633]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [43277]"}
         HasDirectPerm(PostMask, this$_5, Wand_readonly_for_writeonlylemma$);
     assume PostHeap[this$_5, Wand_readonly_for_writeonlylemma$] == 0;
     assume state(PostHeap, PostMask);
     perm := 100 / 100;
-    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@131.11--131.121) [159634]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@131.11--131.121) [43278]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_5 != null;
     PostMask := PostMask[this$_5, Wand_readonly_for_writeonlyin_1$:=PostMask[this$_5, Wand_readonly_for_writeonlyin_1$] + perm];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this$_5.Wand_readonly_for_writeonlyin_1$ == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyin_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@131.11--131.121) [159635]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyin_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@131.11--131.121) [43279]"}
         HasDirectPerm(PostMask, this$_5, Wand_readonly_for_writeonlyin_1$);
     assume PostHeap[this$_5, Wand_readonly_for_writeonlyin_1$] == null;
     assume state(PostHeap, PostMask);
     perm := 100 / 100;
-    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@133.11--133.123) [159636]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@133.11--133.123) [43280]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_5 != null;
     PostMask := PostMask[this$_5, Wand_readonly_for_writeonlyout_1$:=PostMask[this$_5, Wand_readonly_for_writeonlyout_1$] + perm];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this$_5.Wand_readonly_for_writeonlyout_1$ == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyout_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@133.11--133.123) [159637]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyout_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@133.11--133.123) [43281]"}
         HasDirectPerm(PostMask, this$_5, Wand_readonly_for_writeonlyout_1$);
     assume PostHeap[this$_5, Wand_readonly_for_writeonlyout_1$] == null;
     assume state(PostHeap, PostMask);
     perm := 100 / 100;
-    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@134.11--134.125) [159638]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@134.11--134.125) [43282]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_5 != null;
     PostMask := PostMask[this$_5, Wand_readonly_for_writeonlythis_1$:=PostMask[this$_5, Wand_readonly_for_writeonlythis_1$] + perm];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this$_5.Wand_readonly_for_writeonlythis_1$ == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@134.11--134.125) [159639]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@134.11--134.125) [43283]"}
         HasDirectPerm(PostMask, this$_5, Wand_readonly_for_writeonlythis_1$);
     assume PostHeap[this$_5, Wand_readonly_for_writeonlythis_1$] == null;
     assume state(PostHeap, PostMask);
@@ -1346,71 +1346,71 @@ procedure Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$(this$_5: 
     assume Heap[n$_1, $allocated];
   
   // -- Translating statement: this$_5.Wand_readonly_for_writeonlylemma$ := 0 -- vercors_magic_wand_demo.encoded.chalice.vpr@137.3--137.49
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@137.3--137.49) [159640]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@137.3--137.49) [43284]"}
       FullPerm == Mask[this$_5, Wand_readonly_for_writeonlylemma$];
     Heap := Heap[this$_5, Wand_readonly_for_writeonlylemma$:=0];
     assume state(Heap, Mask);
   
   // -- Translating statement: this$_5.Wand_readonly_for_writeonlyin_1$ := null -- vercors_magic_wand_demo.encoded.chalice.vpr@138.3--138.51
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyin_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@138.3--138.51) [159641]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyin_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@138.3--138.51) [43285]"}
       FullPerm == Mask[this$_5, Wand_readonly_for_writeonlyin_1$];
     Heap := Heap[this$_5, Wand_readonly_for_writeonlyin_1$:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: this$_5.Wand_readonly_for_writeonlyout_1$ := null -- vercors_magic_wand_demo.encoded.chalice.vpr@139.3--139.52
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyout_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@139.3--139.52) [159642]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyout_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@139.3--139.52) [43286]"}
       FullPerm == Mask[this$_5, Wand_readonly_for_writeonlyout_1$];
     Heap := Heap[this$_5, Wand_readonly_for_writeonlyout_1$:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: this$_5.Wand_readonly_for_writeonlythis_1$ := null -- vercors_magic_wand_demo.encoded.chalice.vpr@140.3--140.53
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@140.3--140.53) [159643]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@140.3--140.53) [43287]"}
       FullPerm == Mask[this$_5, Wand_readonly_for_writeonlythis_1$];
     Heap := Heap[this$_5, Wand_readonly_for_writeonlythis_1$:=null];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 100 / 100;
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [159644]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [43288]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [159645]"}
+      assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlylemma$ (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [43289]"}
         perm <= Mask[this$_5, Wand_readonly_for_writeonlylemma$];
     }
     Mask := Mask[this$_5, Wand_readonly_for_writeonlylemma$:=Mask[this$_5, Wand_readonly_for_writeonlylemma$] - perm];
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Assertion this$_5.Wand_readonly_for_writeonlylemma$ == 0 might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [159646]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Assertion this$_5.Wand_readonly_for_writeonlylemma$ == 0 might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [43290]"}
       Heap[this$_5, Wand_readonly_for_writeonlylemma$] == 0;
     perm := 100 / 100;
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@131.11--131.121) [159647]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@131.11--131.121) [43291]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyin_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@131.11--131.121) [159648]"}
+      assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyin_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@131.11--131.121) [43292]"}
         perm <= Mask[this$_5, Wand_readonly_for_writeonlyin_1$];
     }
     Mask := Mask[this$_5, Wand_readonly_for_writeonlyin_1$:=Mask[this$_5, Wand_readonly_for_writeonlyin_1$] - perm];
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Assertion this$_5.Wand_readonly_for_writeonlyin_1$ == null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@131.11--131.121) [159649]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Assertion this$_5.Wand_readonly_for_writeonlyin_1$ == null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@131.11--131.121) [43293]"}
       Heap[this$_5, Wand_readonly_for_writeonlyin_1$] == null;
     perm := 100 / 100;
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@133.11--133.123) [159650]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@133.11--133.123) [43294]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyout_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@133.11--133.123) [159651]"}
+      assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlyout_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@133.11--133.123) [43295]"}
         perm <= Mask[this$_5, Wand_readonly_for_writeonlyout_1$];
     }
     Mask := Mask[this$_5, Wand_readonly_for_writeonlyout_1$:=Mask[this$_5, Wand_readonly_for_writeonlyout_1$] - perm];
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Assertion this$_5.Wand_readonly_for_writeonlyout_1$ == null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@133.11--133.123) [159652]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Assertion this$_5.Wand_readonly_for_writeonlyout_1$ == null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@133.11--133.123) [43296]"}
       Heap[this$_5, Wand_readonly_for_writeonlyout_1$] == null;
     perm := 100 / 100;
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@134.11--134.125) [159653]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@134.11--134.125) [43297]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@134.11--134.125) [159654]"}
+      assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. There might be insufficient permission to access this$_5.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@134.11--134.125) [43298]"}
         perm <= Mask[this$_5, Wand_readonly_for_writeonlythis_1$];
     }
     Mask := Mask[this$_5, Wand_readonly_for_writeonlythis_1$:=Mask[this$_5, Wand_readonly_for_writeonlythis_1$] - perm];
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Assertion this$_5.Wand_readonly_for_writeonlythis_1$ == null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@134.11--134.125) [159655]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Assertion this$_5.Wand_readonly_for_writeonlythis_1$ == null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@134.11--134.125) [43299]"}
       Heap[this$_5, Wand_readonly_for_writeonlythis_1$] == null;
     // Finish exhale
     havoc ExhaleHeap;
@@ -1426,13 +1426,13 @@ procedure WandDemoWandDemo_init$(this$_10: Ref, k$_2: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$_2: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -1453,7 +1453,7 @@ procedure WandDemoWandDemo_init$(this$_10: Ref, k$_2: Perm) returns ()
     assume k$_2 < FullPerm;
     assume state(Heap, Mask);
     perm := 100 / 100;
-    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@147.12--147.47) [159656]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@147.12--147.47) [43300]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_10 != null;
     Mask := Mask[this$_10, WandDemox$:=Mask[this$_10, WandDemox$] + perm];
@@ -1463,8 +1463,8 @@ procedure WandDemoWandDemo_init$(this$_10: Ref, k$_2: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1482,13 +1482,13 @@ procedure WandDemoWandDemo_init$(this$_10: Ref, k$_2: Perm) returns ()
     assume Heap[n$_2, $allocated];
   
   // -- Translating statement: fold acc(WandDemowriteonly$(this$_10), write) -- vercors_magic_wand_demo.encoded.chalice.vpr@151.3--151.48
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 100 / 100;
-    assert {:msg "  Folding WandDemowriteonly$(this$_10) might fail. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@151.3--151.48) [159658]"}
+    assert {:msg "  Folding WandDemowriteonly$(this$_10) might fail. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@151.3--151.48) [43302]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding WandDemowriteonly$(this$_10) might fail. There might be insufficient permission to access this$_10.WandDemox$ (vercors_magic_wand_demo.encoded.chalice.vpr@151.3--151.48) [159659]"}
+      assert {:msg "  Folding WandDemowriteonly$(this$_10) might fail. There might be insufficient permission to access this$_10.WandDemox$ (vercors_magic_wand_demo.encoded.chalice.vpr@151.3--151.48) [43303]"}
         perm <= Mask[this$_10, WandDemox$];
     }
     Mask := Mask[this$_10, WandDemox$:=Mask[this$_10, WandDemox$] - perm];
@@ -1508,11 +1508,11 @@ procedure WandDemoWandDemo_init$(this$_10: Ref, k$_2: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of WandDemoWandDemo_init$ might not hold. There might be insufficient permission to access WandDemowriteonly$(this$_10) (vercors_magic_wand_demo.encoded.chalice.vpr@148.11--148.51) [159661]"}
+      assert {:msg "  Postcondition of WandDemoWandDemo_init$ might not hold. There might be insufficient permission to access WandDemowriteonly$(this$_10) (vercors_magic_wand_demo.encoded.chalice.vpr@148.11--148.51) [43305]"}
         perm <= Mask[null, WandDemowriteonly$(this$_10)];
     }
     Mask := Mask[null, WandDemowriteonly$(this$_10):=Mask[null, WandDemowriteonly$(this$_10)] - perm];

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:55
+// Date:         2025-01-26 21:42:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0769.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0769-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -474,9 +474,9 @@ axiom (forall<U, V> m: Map U V, m': Map U V ::
 const unique values_1: Field NormalField (Map int Ref);
 axiom !IsPredicateField(values_1);
 axiom !IsWandField(values_1);
-const unique value: Field NormalField int;
-axiom !IsPredicateField(value);
-axiom !IsWandField(value);
+const unique value_1: Field NormalField int;
+axiom !IsPredicateField(value_1);
+axiom !IsWandField(value_1);
 
 // ==================================================
 // Translation of method main
@@ -485,12 +485,12 @@ axiom !IsWandField(value);
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -500,8 +500,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -515,30 +515,30 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x.values := Map[Int,Ref]() -- 0769.vpr@13.3--13.20
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.values (0769.vpr@13.3--13.20) [197044]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.values (0769.vpr@13.3--13.20) [64441]"}
       FullPerm == Mask[x, values_1];
     Heap := Heap[x, values_1:=(Map#Empty(): Map int Ref)];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.values[1].value > 0 -- 0769.vpr@15.3--15.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.values[1].value > 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.values (0769.vpr@15.10--15.31) [197045]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.values (0769.vpr@15.10--15.31) [64442]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, values_1);
-      assert {:msg "  Assert might fail. Map x.values might not contain an entry at key 1. (0769.vpr@15.10--15.31) [197046]"}
+      assert {:msg "  Assert might fail. Map x.values might not contain an entry at key 1. (0769.vpr@15.10--15.31) [64443]"}
         Map#Domain(Heap[x, values_1])[1];
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.values[1].value (0769.vpr@15.10--15.31) [197047]"}
-        HasDirectPerm(ExhaleWellDef0Mask, Map#Elements(Heap[x, values_1])[1], value);
-    assert {:msg "  Assert might fail. Assertion x.values[1].value > 0 might not hold. (0769.vpr@15.10--15.31) [197048]"}
-      Heap[Map#Elements(Heap[x, values_1])[1], value] > 0;
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.values[1].value (0769.vpr@15.10--15.31) [64444]"}
+        HasDirectPerm(ExhaleWellDef0Mask, Map#Elements(Heap[x, values_1])[1], value_1);
+    assert {:msg "  Assert might fail. Assertion x.values[1].value > 0 might not hold. (0769.vpr@15.10--15.31) [64445]"}
+      Heap[Map#Elements(Heap[x, values_1])[1], value_1] > 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0769.vpr@16.3--16.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0769.vpr@16.10--16.15) [197049]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0769.vpr@16.10--16.15) [64446]"}
       false;
     assume state(Heap, Mask);
 }

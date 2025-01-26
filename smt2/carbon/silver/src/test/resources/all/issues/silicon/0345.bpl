@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:39
+// Date:         2025-01-26 21:42:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0345.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0345-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -222,9 +222,9 @@ procedure t0() returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of c.f != c
-      assert {:msg "  Assert might fail. There might be insufficient permission to access c.f (0345.vpr@13.12--13.20) [199605]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access c.f (0345.vpr@13.12--13.20) [58392]"}
         HasDirectPerm(ExhaleWellDef0Mask, c, f_7);
-    assert {:msg "  Assert might fail. Assertion c.f != c might not hold. (0345.vpr@13.12--13.20) [199606]"}
+    assert {:msg "  Assert might fail. Assertion c.f != c might not hold. (0345.vpr@13.12--13.20) [58393]"}
       Heap[c, f_7] != c;
     assume state(Heap, Mask);
 }
@@ -278,9 +278,9 @@ procedure separately() returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of c.f != c
-      assert {:msg "  Assert might fail. There might be insufficient permission to access c.f (0345.vpr@23.12--23.20) [199608]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access c.f (0345.vpr@23.12--23.20) [58395]"}
         HasDirectPerm(ExhaleWellDef0Mask, c, f_7);
-    assert {:msg "  Assert might fail. Assertion c.f != c might not hold. (0345.vpr@23.12--23.20) [199609]"}
+    assert {:msg "  Assert might fail. Assertion c.f != c might not hold. (0345.vpr@23.12--23.20) [58396]"}
       Heap[c, f_7] != c;
     assume state(Heap, Mask);
 }
@@ -289,7 +289,7 @@ procedure separately() returns ()
 // Translation of method t1
 // ==================================================
 
-procedure t1() returns ()
+procedure t1_2() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -335,17 +335,17 @@ procedure t1() returns ()
   // -- Translating statement: assert c != d && (c.f != c || c.f != d) -- 0345.vpr@34.5--34.44
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion c != d might not hold. (0345.vpr@34.12--34.44) [199611]"}
+    assert {:msg "  Assert might fail. Assertion c != d might not hold. (0345.vpr@34.12--34.44) [58398]"}
       c != d;
     
     // -- Check definedness of c.f != c || c.f != d
-      assert {:msg "  Assert might fail. There might be insufficient permission to access c.f (0345.vpr@34.12--34.44) [199612]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access c.f (0345.vpr@34.12--34.44) [58399]"}
         HasDirectPerm(ExhaleWellDef0Mask, c, f_7);
       if (!(Heap[c, f_7] != c)) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access c.f (0345.vpr@34.12--34.44) [199613]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access c.f (0345.vpr@34.12--34.44) [58400]"}
           HasDirectPerm(ExhaleWellDef0Mask, c, f_7);
       }
-    assert {:msg "  Assert might fail. Assertion c.f != c || c.f != d might not hold. (0345.vpr@34.12--34.44) [199614]"}
+    assert {:msg "  Assert might fail. Assertion c.f != c || c.f != d might not hold. (0345.vpr@34.12--34.44) [58401]"}
       Heap[c, f_7] != c || Heap[c, f_7] != d;
     assume state(Heap, Mask);
 }

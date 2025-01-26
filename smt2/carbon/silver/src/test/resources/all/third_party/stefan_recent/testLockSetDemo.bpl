@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:17:35
+// Date:         2025-01-26 21:41:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testLockSetDemo.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testLockSetDemo-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -476,7 +476,7 @@ procedure Client__inv#definedness(diz: Ref, p_1: Perm) returns ()
       assume Heap[diz, $allocated];
     assume NoPerm <= p_1;
     perm := p_1;
-    assert {:msg "  Predicate might not be well-formed. Fraction p might be negative. (testLockSetDemo.vpr@14.1--16.2) [159962]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction p might be negative. (testLockSetDemo.vpr@14.1--16.2) [23141]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     Mask := Mask[diz, Client__x:=Mask[diz, Client__x] + perm];
@@ -491,8 +491,8 @@ procedure Client__inv#definedness(diz: Ref, p_1: Perm) returns ()
 procedure LockSet__LockSet(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -500,8 +500,8 @@ procedure LockSet__LockSet(current_thread_id: int) returns (sys__result: Ref)
   var freshObj: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -516,8 +516,8 @@ procedure LockSet__LockSet(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -556,13 +556,13 @@ procedure LockSet__LockSet(current_thread_id: int) returns (sys__result: Ref)
   //   acc(LockSet__lockset(sys__result, Multiset[Ref]()), write) -- testLockSetDemo.vpr@27.3--27.93
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@27.10--27.93) [159963]"}
+    ExhaleWellDef0Heap := AssertHeap;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@27.10--27.93) [23142]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access LockSet__lockset(sys__result, Multiset[Ref]()) (testLockSetDemo.vpr@27.10--27.93) [159965]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access LockSet__lockset(sys__result, Multiset[Ref]()) (testLockSetDemo.vpr@27.10--27.93) [23144]"}
         perm <= AssertMask[null, LockSet__lockset(sys__result, (MultiSet#Empty(): MultiSet Ref))];
     }
     AssertMask := AssertMask[null, LockSet__lockset(sys__result, (MultiSet#Empty(): MultiSet Ref)):=AssertMask[null, LockSet__lockset(sys__result, (MultiSet#Empty(): MultiSet Ref))] - perm];
@@ -574,13 +574,13 @@ procedure LockSet__LockSet(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of LockSet__LockSet might not hold. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@20.11--20.30) [159966]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of LockSet__LockSet might not hold. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@20.11--20.30) [23145]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of LockSet__LockSet might not hold. There might be insufficient permission to access LockSet__lockset(sys__result, Multiset[Ref]()) (testLockSetDemo.vpr@21.11--21.69) [159967]"}
+      assert {:msg "  Postcondition of LockSet__LockSet might not hold. There might be insufficient permission to access LockSet__lockset(sys__result, Multiset[Ref]()) (testLockSetDemo.vpr@21.11--21.69) [23146]"}
         perm <= Mask[null, LockSet__lockset(sys__result, (MultiSet#Empty(): MultiSet Ref))];
     }
     Mask := Mask[null, LockSet__lockset(sys__result, (MultiSet#Empty(): MultiSet Ref)):=Mask[null, LockSet__lockset(sys__result, (MultiSet#Empty(): MultiSet Ref))] - perm];
@@ -599,12 +599,12 @@ procedure Lock__lock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) return
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -634,7 +634,7 @@ procedure Lock__lock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) return
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(LockSet__lockset(diz.Lock__owner, S), write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@36.12--36.60) [159968]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@36.12--36.60) [23147]"}
         HasDirectPerm(Mask, diz, Lock__owner);
     perm := FullPerm;
     Mask := Mask[null, LockSet__lockset(Heap[diz, Lock__owner], S):=Mask[null, LockSet__lockset(Heap[diz, Lock__owner], S)] + perm];
@@ -644,8 +644,8 @@ procedure Lock__lock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) return
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -666,7 +666,7 @@ procedure Lock__lock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) return
     if (MultiSet#Select(S, diz) == 0) {
       
       // -- Check definedness of acc(Client__inv(diz.Lock__user, write), write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__user (testLockSetDemo.vpr@39.11--39.79) [159969]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__user (testLockSetDemo.vpr@39.11--39.79) [23148]"}
           HasDirectPerm(PostMask, diz, Lock__user);
       perm := FullPerm;
       PostMask := PostMask[null, Client__inv(PostHeap[diz, Lock__user], FullPerm):=PostMask[null, Client__inv(PostHeap[diz, Lock__user], FullPerm)] + perm];
@@ -675,7 +675,7 @@ procedure Lock__lock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) return
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(LockSet__lockset(diz.Lock__owner, (S union Multiset(diz))), write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@40.11--40.79) [159970]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@40.11--40.79) [23149]"}
         HasDirectPerm(PostMask, diz, Lock__owner);
     perm := FullPerm;
     PostMask := PostMask[null, LockSet__lockset(PostHeap[diz, Lock__owner], MultiSet#Union(S, MultiSet#Singleton(diz))):=PostMask[null, LockSet__lockset(PostHeap[diz, Lock__owner], MultiSet#Union(S, MultiSet#Singleton(diz)))] + perm];
@@ -691,14 +691,14 @@ procedure Lock__lock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) return
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Lock__lock might not hold. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@37.11--37.41) [159971]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of Lock__lock might not hold. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@37.11--37.41) [23150]"}
       Mask[diz, Lock__owner] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Lock__owner];
     Mask := Mask[diz, Lock__owner:=Mask[diz, Lock__owner] - wildcard];
-    assert {:msg "  Postcondition of Lock__lock might not hold. There might be insufficient permission to access diz.Lock__user (testLockSetDemo.vpr@38.11--38.40) [159972]"}
+    assert {:msg "  Postcondition of Lock__lock might not hold. There might be insufficient permission to access diz.Lock__user (testLockSetDemo.vpr@38.11--38.40) [23151]"}
       Mask[diz, Lock__user] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Lock__user];
@@ -706,14 +706,14 @@ procedure Lock__lock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) return
     if (MultiSet#Select(S, diz) == 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of Lock__lock might not hold. There might be insufficient permission to access Client__inv(diz.Lock__user, write) (testLockSetDemo.vpr@39.11--39.79) [159973]"}
+        assert {:msg "  Postcondition of Lock__lock might not hold. There might be insufficient permission to access Client__inv(diz.Lock__user, write) (testLockSetDemo.vpr@39.11--39.79) [23152]"}
           perm <= Mask[null, Client__inv(Heap[diz, Lock__user], FullPerm)];
       }
       Mask := Mask[null, Client__inv(Heap[diz, Lock__user], FullPerm):=Mask[null, Client__inv(Heap[diz, Lock__user], FullPerm)] - perm];
     }
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Lock__lock might not hold. There might be insufficient permission to access LockSet__lockset(diz.Lock__owner, (S union Multiset(diz))) (testLockSetDemo.vpr@40.11--40.79) [159974]"}
+      assert {:msg "  Postcondition of Lock__lock might not hold. There might be insufficient permission to access LockSet__lockset(diz.Lock__owner, (S union Multiset(diz))) (testLockSetDemo.vpr@40.11--40.79) [23153]"}
         perm <= Mask[null, LockSet__lockset(Heap[diz, Lock__owner], MultiSet#Union(S, MultiSet#Singleton(diz)))];
     }
     Mask := Mask[null, LockSet__lockset(Heap[diz, Lock__owner], MultiSet#Union(S, MultiSet#Singleton(diz))):=Mask[null, LockSet__lockset(Heap[diz, Lock__owner], MultiSet#Union(S, MultiSet#Singleton(diz)))] - perm];
@@ -732,12 +732,12 @@ procedure Lock__unlock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) retu
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -767,7 +767,7 @@ procedure Lock__unlock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) retu
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(LockSet__lockset(diz.Lock__owner, (S union Multiset(diz))), write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@50.12--50.80) [159975]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@50.12--50.80) [23154]"}
         HasDirectPerm(Mask, diz, Lock__owner);
     perm := FullPerm;
     Mask := Mask[null, LockSet__lockset(Heap[diz, Lock__owner], MultiSet#Union(S, MultiSet#Singleton(diz))):=Mask[null, LockSet__lockset(Heap[diz, Lock__owner], MultiSet#Union(S, MultiSet#Singleton(diz)))] + perm];
@@ -776,7 +776,7 @@ procedure Lock__unlock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) retu
     if (MultiSet#Select(S, diz) == 0) {
       
       // -- Check definedness of acc(Client__inv(diz.Lock__user, write), write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__user (testLockSetDemo.vpr@51.12--51.80) [159976]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__user (testLockSetDemo.vpr@51.12--51.80) [23155]"}
           HasDirectPerm(Mask, diz, Lock__user);
       perm := FullPerm;
       Mask := Mask[null, Client__inv(Heap[diz, Lock__user], FullPerm):=Mask[null, Client__inv(Heap[diz, Lock__user], FullPerm)] + perm];
@@ -787,8 +787,8 @@ procedure Lock__unlock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) retu
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -808,7 +808,7 @@ procedure Lock__unlock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) retu
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(LockSet__lockset(diz.Lock__owner, S), write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@54.11--54.59) [159977]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@54.11--54.59) [23156]"}
         HasDirectPerm(PostMask, diz, Lock__owner);
     perm := FullPerm;
     PostMask := PostMask[null, LockSet__lockset(PostHeap[diz, Lock__owner], S):=PostMask[null, LockSet__lockset(PostHeap[diz, Lock__owner], S)] + perm];
@@ -824,21 +824,21 @@ procedure Lock__unlock(diz: Ref, current_thread_id: int, S: (MultiSet Ref)) retu
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Lock__unlock might not hold. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@52.11--52.41) [159978]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of Lock__unlock might not hold. There might be insufficient permission to access diz.Lock__owner (testLockSetDemo.vpr@52.11--52.41) [23157]"}
       Mask[diz, Lock__owner] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Lock__owner];
     Mask := Mask[diz, Lock__owner:=Mask[diz, Lock__owner] - wildcard];
-    assert {:msg "  Postcondition of Lock__unlock might not hold. There might be insufficient permission to access diz.Lock__user (testLockSetDemo.vpr@53.11--53.40) [159979]"}
+    assert {:msg "  Postcondition of Lock__unlock might not hold. There might be insufficient permission to access diz.Lock__user (testLockSetDemo.vpr@53.11--53.40) [23158]"}
       Mask[diz, Lock__user] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Lock__user];
     Mask := Mask[diz, Lock__user:=Mask[diz, Lock__user] - wildcard];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Lock__unlock might not hold. There might be insufficient permission to access LockSet__lockset(diz.Lock__owner, S) (testLockSetDemo.vpr@54.11--54.59) [159980]"}
+      assert {:msg "  Postcondition of Lock__unlock might not hold. There might be insufficient permission to access LockSet__lockset(diz.Lock__owner, S) (testLockSetDemo.vpr@54.11--54.59) [23159]"}
         perm <= Mask[null, LockSet__lockset(Heap[diz, Lock__owner], S)];
     }
     Mask := Mask[null, LockSet__lockset(Heap[diz, Lock__owner], S):=Mask[null, LockSet__lockset(Heap[diz, Lock__owner], S)] - perm];
@@ -856,8 +856,8 @@ procedure Lock__Lock(current_thread_id: int, owner: Ref, user: Ref) returns (sys
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
@@ -865,8 +865,8 @@ procedure Lock__Lock(current_thread_id: int, owner: Ref, user: Ref) returns (sys
   var freshObj: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -889,8 +889,8 @@ procedure Lock__Lock(current_thread_id: int, owner: Ref, user: Ref) returns (sys
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -912,13 +912,13 @@ procedure Lock__Lock(current_thread_id: int, owner: Ref, user: Ref) returns (sys
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Lock__owner == owner
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Lock__owner (testLockSetDemo.vpr@65.11--65.43) [159981]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Lock__owner (testLockSetDemo.vpr@65.11--65.43) [23160]"}
         HasDirectPerm(PostMask, sys__result, Lock__owner);
     assume PostHeap[sys__result, Lock__owner] == owner;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Lock__user == user
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Lock__user (testLockSetDemo.vpr@66.11--66.41) [159982]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Lock__user (testLockSetDemo.vpr@66.11--66.41) [23161]"}
         HasDirectPerm(PostMask, sys__result, Lock__user);
     assume PostHeap[sys__result, Lock__user] == user;
     assume state(PostHeap, PostMask);
@@ -953,31 +953,31 @@ procedure Lock__Lock(current_thread_id: int, owner: Ref, user: Ref) returns (sys
   //   (sys__result.Lock__owner == owner && sys__result.Lock__user == user))) -- testLockSetDemo.vpr@72.3--72.188
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@72.10--72.188) [159983]"}
+    ExhaleWellDef0Heap := AssertHeap;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@72.10--72.188) [23162]"}
       sys__result != null;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Lock__owner (testLockSetDemo.vpr@72.10--72.188) [159984]"}
+    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Lock__owner (testLockSetDemo.vpr@72.10--72.188) [23163]"}
       AssertMask[sys__result, Lock__owner] > NoPerm;
     havoc wildcard;
     assume wildcard < AssertMask[sys__result, Lock__owner];
     AssertMask := AssertMask[sys__result, Lock__owner:=AssertMask[sys__result, Lock__owner] - wildcard];
-    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Lock__user (testLockSetDemo.vpr@72.10--72.188) [159985]"}
+    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Lock__user (testLockSetDemo.vpr@72.10--72.188) [23164]"}
       AssertMask[sys__result, Lock__user] > NoPerm;
     havoc wildcard;
     assume wildcard < AssertMask[sys__result, Lock__user];
     AssertMask := AssertMask[sys__result, Lock__user:=AssertMask[sys__result, Lock__user] - wildcard];
     
     // -- Check definedness of sys__result.Lock__owner == owner
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Lock__owner (testLockSetDemo.vpr@72.10--72.188) [159986]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Lock__owner (testLockSetDemo.vpr@72.10--72.188) [23165]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Lock__owner);
-    assert {:msg "  Assert might fail. Assertion sys__result.Lock__owner == owner might not hold. (testLockSetDemo.vpr@72.10--72.188) [159987]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Lock__owner == owner might not hold. (testLockSetDemo.vpr@72.10--72.188) [23166]"}
       AssertHeap[sys__result, Lock__owner] == owner;
     
     // -- Check definedness of sys__result.Lock__user == user
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Lock__user (testLockSetDemo.vpr@72.10--72.188) [159988]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Lock__user (testLockSetDemo.vpr@72.10--72.188) [23167]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Lock__user);
-    assert {:msg "  Assert might fail. Assertion sys__result.Lock__user == user might not hold. (testLockSetDemo.vpr@72.10--72.188) [159989]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Lock__user == user might not hold. (testLockSetDemo.vpr@72.10--72.188) [23168]"}
       AssertHeap[sys__result, Lock__user] == user;
     assume state(Heap, Mask);
   
@@ -987,23 +987,23 @@ procedure Lock__Lock(current_thread_id: int, owner: Ref, user: Ref) returns (sys
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Lock__Lock might not hold. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@62.11--62.30) [159990]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of Lock__Lock might not hold. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@62.11--62.30) [23169]"}
       sys__result != null;
-    assert {:msg "  Postcondition of Lock__Lock might not hold. There might be insufficient permission to access sys__result.Lock__owner (testLockSetDemo.vpr@63.11--63.49) [159991]"}
+    assert {:msg "  Postcondition of Lock__Lock might not hold. There might be insufficient permission to access sys__result.Lock__owner (testLockSetDemo.vpr@63.11--63.49) [23170]"}
       Mask[sys__result, Lock__owner] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, Lock__owner];
     Mask := Mask[sys__result, Lock__owner:=Mask[sys__result, Lock__owner] - wildcard];
-    assert {:msg "  Postcondition of Lock__Lock might not hold. There might be insufficient permission to access sys__result.Lock__user (testLockSetDemo.vpr@64.11--64.48) [159992]"}
+    assert {:msg "  Postcondition of Lock__Lock might not hold. There might be insufficient permission to access sys__result.Lock__user (testLockSetDemo.vpr@64.11--64.48) [23171]"}
       Mask[sys__result, Lock__user] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, Lock__user];
     Mask := Mask[sys__result, Lock__user:=Mask[sys__result, Lock__user] - wildcard];
-    assert {:msg "  Postcondition of Lock__Lock might not hold. Assertion sys__result.Lock__owner == owner might not hold. (testLockSetDemo.vpr@65.11--65.43) [159993]"}
+    assert {:msg "  Postcondition of Lock__Lock might not hold. Assertion sys__result.Lock__owner == owner might not hold. (testLockSetDemo.vpr@65.11--65.43) [23172]"}
       Heap[sys__result, Lock__owner] == owner;
-    assert {:msg "  Postcondition of Lock__Lock might not hold. Assertion sys__result.Lock__user == user might not hold. (testLockSetDemo.vpr@66.11--66.41) [159994]"}
+    assert {:msg "  Postcondition of Lock__Lock might not hold. Assertion sys__result.Lock__user == user might not hold. (testLockSetDemo.vpr@66.11--66.41) [23173]"}
       Heap[sys__result, Lock__user] == user;
     // Finish exhale
     havoc ExhaleHeap;
@@ -1019,16 +1019,16 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var ls: Ref;
   var __flatten_1: Ref;
-  var l_2: Ref;
+  var l_1: Ref;
   var __flatten_2: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var freshVersion: FrameType;
@@ -1070,13 +1070,13 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[ls, $allocated];
     assume Heap[__flatten_1, $allocated];
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
     assume Heap[__flatten_2, $allocated];
   
   // -- Translating statement: __flatten_1 := LockSet__LockSet(current_thread_id) -- testLockSetDemo.vpr@93.3--93.53
@@ -1084,9 +1084,9 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method LockSet__LockSet might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@93.3--93.53) [159995]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method LockSet__LockSet might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@93.3--93.53) [23174]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -1108,24 +1108,24 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: assert acc(LockSet__lockset(ls, Multiset[Ref]()), write) -- testLockSetDemo.vpr@95.3--95.59
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access LockSet__lockset(ls, Multiset[Ref]()) (testLockSetDemo.vpr@95.10--95.59) [159997]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access LockSet__lockset(ls, Multiset[Ref]()) (testLockSetDemo.vpr@95.10--95.59) [23176]"}
         perm <= AssertMask[null, LockSet__lockset(ls, (MultiSet#Empty(): MultiSet Ref))];
     }
     AssertMask := AssertMask[null, LockSet__lockset(ls, (MultiSet#Empty(): MultiSet Ref)):=AssertMask[null, LockSet__lockset(ls, (MultiSet#Empty(): MultiSet Ref))] - perm];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Client__inv(diz, write), write) -- testLockSetDemo.vpr@96.3--96.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding Client__inv(diz, write) might fail. Assertion write >= none might not hold. (testLockSetDemo.vpr@96.3--96.43) [159999]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding Client__inv(diz, write) might fail. Assertion write >= none might not hold. (testLockSetDemo.vpr@96.3--96.43) [23178]"}
       NoPerm <= FullPerm;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Client__inv(diz, write) might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@96.3--96.43) [160001]"}
+      assert {:msg "  Folding Client__inv(diz, write) might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@96.3--96.43) [23180]"}
         perm <= Mask[diz, Client__x];
     }
     Mask := Mask[diz, Client__x:=Mask[diz, Client__x] - perm];
@@ -1149,13 +1149,13 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Lock__Lock might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@97.3--97.56) [160003]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Lock__Lock might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@97.3--97.56) [23182]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Lock__Lock might not hold. There might be insufficient permission to access Client__inv(diz, write) (testLockSetDemo.vpr@97.3--97.56) [160004]"}
+        assert {:msg "  The precondition of method Lock__Lock might not hold. There might be insufficient permission to access Client__inv(diz, write) (testLockSetDemo.vpr@97.3--97.56) [23183]"}
           perm <= Mask[null, Client__inv(diz, FullPerm)];
       }
       Mask := Mask[null, Client__inv(diz, FullPerm):=Mask[null, Client__inv(diz, FullPerm)] - perm];
@@ -1186,7 +1186,7 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: l := __flatten_2 -- testLockSetDemo.vpr@98.3--98.19
-    l_2 := __flatten_2;
+    l_1 := __flatten_2;
     assume state(Heap, Mask);
   
   // -- Translating statement: Lock__lock(l, current_thread_id, Multiset[Ref]()) -- testLockSetDemo.vpr@99.3--99.52
@@ -1195,28 +1195,28 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     arg_S := (MultiSet#Empty(): MultiSet Ref);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Lock__lock might not hold. Assertion l != null might not hold. (testLockSetDemo.vpr@99.3--99.52) [160005]"}
-        l_2 != null;
-      assert {:msg "  The precondition of method Lock__lock might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@99.3--99.52) [160006]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Lock__lock might not hold. Assertion l != null might not hold. (testLockSetDemo.vpr@99.3--99.52) [23184]"}
+        l_1 != null;
+      assert {:msg "  The precondition of method Lock__lock might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@99.3--99.52) [23185]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access l.Lock__owner (testLockSetDemo.vpr@99.3--99.52) [160007]"}
-        Mask[l_2, Lock__owner] > NoPerm;
+      assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access l.Lock__owner (testLockSetDemo.vpr@99.3--99.52) [23186]"}
+        Mask[l_1, Lock__owner] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[l_2, Lock__owner];
-      Mask := Mask[l_2, Lock__owner:=Mask[l_2, Lock__owner] - wildcard];
-      assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access l.Lock__user (testLockSetDemo.vpr@99.3--99.52) [160008]"}
-        Mask[l_2, Lock__user] > NoPerm;
+      assume wildcard < Mask[l_1, Lock__owner];
+      Mask := Mask[l_1, Lock__owner:=Mask[l_1, Lock__owner] - wildcard];
+      assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access l.Lock__user (testLockSetDemo.vpr@99.3--99.52) [23187]"}
+        Mask[l_1, Lock__user] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[l_2, Lock__user];
-      Mask := Mask[l_2, Lock__user:=Mask[l_2, Lock__user] - wildcard];
+      assume wildcard < Mask[l_1, Lock__user];
+      Mask := Mask[l_1, Lock__user:=Mask[l_1, Lock__user] - wildcard];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access LockSet__lockset(l.Lock__owner, Multiset[Ref]()) (testLockSetDemo.vpr@99.3--99.52) [160009]"}
-          perm <= Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], arg_S)];
+        assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access LockSet__lockset(l.Lock__owner, Multiset[Ref]()) (testLockSetDemo.vpr@99.3--99.52) [23188]"}
+          perm <= Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], arg_S)];
       }
-      Mask := Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], arg_S):=Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], arg_S)] - perm];
+      Mask := Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], arg_S):=Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], arg_S)] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1225,21 +1225,21 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     // -- Inhaling postcondition
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      Mask := Mask[l_2, Lock__owner:=Mask[l_2, Lock__owner] + perm];
+      assume l_1 != null;
+      Mask := Mask[l_1, Lock__owner:=Mask[l_1, Lock__owner] + perm];
       assume state(Heap, Mask);
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      Mask := Mask[l_2, Lock__user:=Mask[l_2, Lock__user] + perm];
+      assume l_1 != null;
+      Mask := Mask[l_1, Lock__user:=Mask[l_1, Lock__user] + perm];
       assume state(Heap, Mask);
-      if (MultiSet#Select(arg_S, l_2) == 0) {
+      if (MultiSet#Select(arg_S, l_1) == 0) {
         perm := FullPerm;
-        Mask := Mask[null, Client__inv(Heap[l_2, Lock__user], FullPerm):=Mask[null, Client__inv(Heap[l_2, Lock__user], FullPerm)] + perm];
+        Mask := Mask[null, Client__inv(Heap[l_1, Lock__user], FullPerm):=Mask[null, Client__inv(Heap[l_1, Lock__user], FullPerm)] + perm];
         assume state(Heap, Mask);
       }
       perm := FullPerm;
-      Mask := Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], MultiSet#Union(arg_S, MultiSet#Singleton(l_2))):=Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], MultiSet#Union(arg_S, MultiSet#Singleton(l_2)))] + perm];
+      Mask := Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], MultiSet#Union(arg_S, MultiSet#Singleton(l_1))):=Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], MultiSet#Union(arg_S, MultiSet#Singleton(l_1)))] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1247,11 +1247,11 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: unfold acc(Client__inv(diz, write), write) -- testLockSetDemo.vpr@100.3--100.45
     assume Client__inv#trigger(Heap, Client__inv(diz, FullPerm));
     assume Heap[null, Client__inv(diz, FullPerm)] == ConditionalFrame(FullPerm, FrameFragment(Heap[diz, Client__x]));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Client__inv(diz, write) might fail. There might be insufficient permission to access Client__inv(diz, write) (testLockSetDemo.vpr@100.3--100.45) [160012]"}
+      assert {:msg "  Unfolding Client__inv(diz, write) might fail. There might be insufficient permission to access Client__inv(diz, write) (testLockSetDemo.vpr@100.3--100.45) [23191]"}
         perm <= Mask[null, Client__inv(diz, FullPerm)];
     }
     Mask := Mask[null, Client__inv(diz, FullPerm):=Mask[null, Client__inv(diz, FullPerm)] - perm];
@@ -1278,7 +1278,7 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Client__x := __flatten_15 -- testLockSetDemo.vpr@103.3--103.32
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@103.3--103.32) [160014]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@103.3--103.32) [23193]"}
       FullPerm == Mask[diz, Client__x];
     Heap := Heap[diz, Client__x:=__flatten_15];
     assume state(Heap, Mask);
@@ -1286,31 +1286,31 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: Lock__lock(l, current_thread_id, Multiset(l)) -- testLockSetDemo.vpr@105.3--105.48
     PreCallHeap := Heap;
     PreCallMask := Mask;
-    arg_S_1 := MultiSet#Singleton(l_2);
+    arg_S_1 := MultiSet#Singleton(l_1);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Lock__lock might not hold. Assertion l != null might not hold. (testLockSetDemo.vpr@105.3--105.48) [160015]"}
-        l_2 != null;
-      assert {:msg "  The precondition of method Lock__lock might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@105.3--105.48) [160016]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Lock__lock might not hold. Assertion l != null might not hold. (testLockSetDemo.vpr@105.3--105.48) [23194]"}
+        l_1 != null;
+      assert {:msg "  The precondition of method Lock__lock might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@105.3--105.48) [23195]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access l.Lock__owner (testLockSetDemo.vpr@105.3--105.48) [160017]"}
-        Mask[l_2, Lock__owner] > NoPerm;
+      assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access l.Lock__owner (testLockSetDemo.vpr@105.3--105.48) [23196]"}
+        Mask[l_1, Lock__owner] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[l_2, Lock__owner];
-      Mask := Mask[l_2, Lock__owner:=Mask[l_2, Lock__owner] - wildcard];
-      assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access l.Lock__user (testLockSetDemo.vpr@105.3--105.48) [160018]"}
-        Mask[l_2, Lock__user] > NoPerm;
+      assume wildcard < Mask[l_1, Lock__owner];
+      Mask := Mask[l_1, Lock__owner:=Mask[l_1, Lock__owner] - wildcard];
+      assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access l.Lock__user (testLockSetDemo.vpr@105.3--105.48) [23197]"}
+        Mask[l_1, Lock__user] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[l_2, Lock__user];
-      Mask := Mask[l_2, Lock__user:=Mask[l_2, Lock__user] - wildcard];
+      assume wildcard < Mask[l_1, Lock__user];
+      Mask := Mask[l_1, Lock__user:=Mask[l_1, Lock__user] - wildcard];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access LockSet__lockset(l.Lock__owner, Multiset(l)) (testLockSetDemo.vpr@105.3--105.48) [160019]"}
-          perm <= Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], arg_S_1)];
+        assert {:msg "  The precondition of method Lock__lock might not hold. There might be insufficient permission to access LockSet__lockset(l.Lock__owner, Multiset(l)) (testLockSetDemo.vpr@105.3--105.48) [23198]"}
+          perm <= Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], arg_S_1)];
       }
-      Mask := Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], arg_S_1):=Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], arg_S_1)] - perm];
+      Mask := Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], arg_S_1):=Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], arg_S_1)] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1319,21 +1319,21 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     // -- Inhaling postcondition
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      Mask := Mask[l_2, Lock__owner:=Mask[l_2, Lock__owner] + perm];
+      assume l_1 != null;
+      Mask := Mask[l_1, Lock__owner:=Mask[l_1, Lock__owner] + perm];
       assume state(Heap, Mask);
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      Mask := Mask[l_2, Lock__user:=Mask[l_2, Lock__user] + perm];
+      assume l_1 != null;
+      Mask := Mask[l_1, Lock__user:=Mask[l_1, Lock__user] + perm];
       assume state(Heap, Mask);
-      if (MultiSet#Select(arg_S_1, l_2) == 0) {
+      if (MultiSet#Select(arg_S_1, l_1) == 0) {
         perm := FullPerm;
-        Mask := Mask[null, Client__inv(Heap[l_2, Lock__user], FullPerm):=Mask[null, Client__inv(Heap[l_2, Lock__user], FullPerm)] + perm];
+        Mask := Mask[null, Client__inv(Heap[l_1, Lock__user], FullPerm):=Mask[null, Client__inv(Heap[l_1, Lock__user], FullPerm)] + perm];
         assume state(Heap, Mask);
       }
       perm := FullPerm;
-      Mask := Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], MultiSet#Union(arg_S_1, MultiSet#Singleton(l_2))):=Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], MultiSet#Union(arg_S_1, MultiSet#Singleton(l_2)))] + perm];
+      Mask := Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], MultiSet#Union(arg_S_1, MultiSet#Singleton(l_1))):=Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], MultiSet#Union(arg_S_1, MultiSet#Singleton(l_1)))] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1347,7 +1347,7 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Client__x := __flatten_17 -- testLockSetDemo.vpr@108.3--108.32
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@108.3--108.32) [160020]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@108.3--108.32) [23199]"}
       FullPerm == Mask[diz, Client__x];
     Heap := Heap[diz, Client__x:=__flatten_17];
     assume state(Heap, Mask);
@@ -1355,38 +1355,38 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: Lock__unlock(l, current_thread_id, Multiset(l)) -- testLockSetDemo.vpr@109.3--109.50
     PreCallHeap := Heap;
     PreCallMask := Mask;
-    arg_S_2 := MultiSet#Singleton(l_2);
+    arg_S_2 := MultiSet#Singleton(l_1);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Lock__unlock might not hold. Assertion l != null might not hold. (testLockSetDemo.vpr@109.3--109.50) [160021]"}
-        l_2 != null;
-      assert {:msg "  The precondition of method Lock__unlock might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@109.3--109.50) [160022]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Lock__unlock might not hold. Assertion l != null might not hold. (testLockSetDemo.vpr@109.3--109.50) [23200]"}
+        l_1 != null;
+      assert {:msg "  The precondition of method Lock__unlock might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@109.3--109.50) [23201]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access l.Lock__owner (testLockSetDemo.vpr@109.3--109.50) [160023]"}
-        Mask[l_2, Lock__owner] > NoPerm;
+      assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access l.Lock__owner (testLockSetDemo.vpr@109.3--109.50) [23202]"}
+        Mask[l_1, Lock__owner] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[l_2, Lock__owner];
-      Mask := Mask[l_2, Lock__owner:=Mask[l_2, Lock__owner] - wildcard];
-      assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access l.Lock__user (testLockSetDemo.vpr@109.3--109.50) [160024]"}
-        Mask[l_2, Lock__user] > NoPerm;
+      assume wildcard < Mask[l_1, Lock__owner];
+      Mask := Mask[l_1, Lock__owner:=Mask[l_1, Lock__owner] - wildcard];
+      assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access l.Lock__user (testLockSetDemo.vpr@109.3--109.50) [23203]"}
+        Mask[l_1, Lock__user] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[l_2, Lock__user];
-      Mask := Mask[l_2, Lock__user:=Mask[l_2, Lock__user] - wildcard];
+      assume wildcard < Mask[l_1, Lock__user];
+      Mask := Mask[l_1, Lock__user:=Mask[l_1, Lock__user] - wildcard];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access LockSet__lockset(l.Lock__owner, (Multiset(l) union Multiset(l))) (testLockSetDemo.vpr@109.3--109.50) [160025]"}
-          perm <= Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], MultiSet#Union(arg_S_2, MultiSet#Singleton(l_2)))];
+        assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access LockSet__lockset(l.Lock__owner, (Multiset(l) union Multiset(l))) (testLockSetDemo.vpr@109.3--109.50) [23204]"}
+          perm <= Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], MultiSet#Union(arg_S_2, MultiSet#Singleton(l_1)))];
       }
-      Mask := Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], MultiSet#Union(arg_S_2, MultiSet#Singleton(l_2))):=Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], MultiSet#Union(arg_S_2, MultiSet#Singleton(l_2)))] - perm];
-      if (MultiSet#Select(arg_S_2, l_2) == 0) {
+      Mask := Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], MultiSet#Union(arg_S_2, MultiSet#Singleton(l_1))):=Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], MultiSet#Union(arg_S_2, MultiSet#Singleton(l_1)))] - perm];
+      if (MultiSet#Select(arg_S_2, l_1) == 0) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access Client__inv(l.Lock__user, write) (testLockSetDemo.vpr@109.3--109.50) [160026]"}
-            perm <= Mask[null, Client__inv(Heap[l_2, Lock__user], FullPerm)];
+          assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access Client__inv(l.Lock__user, write) (testLockSetDemo.vpr@109.3--109.50) [23205]"}
+            perm <= Mask[null, Client__inv(Heap[l_1, Lock__user], FullPerm)];
         }
-        Mask := Mask[null, Client__inv(Heap[l_2, Lock__user], FullPerm):=Mask[null, Client__inv(Heap[l_2, Lock__user], FullPerm)] - perm];
+        Mask := Mask[null, Client__inv(Heap[l_1, Lock__user], FullPerm):=Mask[null, Client__inv(Heap[l_1, Lock__user], FullPerm)] - perm];
       }
       // Finish exhale
       havoc ExhaleHeap;
@@ -1396,16 +1396,16 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     // -- Inhaling postcondition
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      Mask := Mask[l_2, Lock__owner:=Mask[l_2, Lock__owner] + perm];
+      assume l_1 != null;
+      Mask := Mask[l_1, Lock__owner:=Mask[l_1, Lock__owner] + perm];
       assume state(Heap, Mask);
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      Mask := Mask[l_2, Lock__user:=Mask[l_2, Lock__user] + perm];
+      assume l_1 != null;
+      Mask := Mask[l_1, Lock__user:=Mask[l_1, Lock__user] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      Mask := Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], arg_S_2):=Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], arg_S_2)] + perm];
+      Mask := Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], arg_S_2):=Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], arg_S_2)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1419,19 +1419,19 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Client__x := __flatten_19 -- testLockSetDemo.vpr@112.3--112.32
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@112.3--112.32) [160027]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@112.3--112.32) [23206]"}
       FullPerm == Mask[diz, Client__x];
     Heap := Heap[diz, Client__x:=__flatten_19];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Client__inv(diz, write), write) -- testLockSetDemo.vpr@113.3--113.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding Client__inv(diz, write) might fail. Assertion write >= none might not hold. (testLockSetDemo.vpr@113.3--113.43) [160029]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding Client__inv(diz, write) might fail. Assertion write >= none might not hold. (testLockSetDemo.vpr@113.3--113.43) [23208]"}
       NoPerm <= FullPerm;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Client__inv(diz, write) might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@113.3--113.43) [160031]"}
+      assert {:msg "  Folding Client__inv(diz, write) might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@113.3--113.43) [23210]"}
         perm <= Mask[diz, Client__x];
     }
     Mask := Mask[diz, Client__x:=Mask[diz, Client__x] - perm];
@@ -1456,35 +1456,35 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     arg_S_3 := (MultiSet#Empty(): MultiSet Ref);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Lock__unlock might not hold. Assertion l != null might not hold. (testLockSetDemo.vpr@114.3--114.54) [160033]"}
-        l_2 != null;
-      assert {:msg "  The precondition of method Lock__unlock might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@114.3--114.54) [160034]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method Lock__unlock might not hold. Assertion l != null might not hold. (testLockSetDemo.vpr@114.3--114.54) [23212]"}
+        l_1 != null;
+      assert {:msg "  The precondition of method Lock__unlock might not hold. Assertion current_thread_id >= 0 might not hold. (testLockSetDemo.vpr@114.3--114.54) [23213]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access l.Lock__owner (testLockSetDemo.vpr@114.3--114.54) [160035]"}
-        Mask[l_2, Lock__owner] > NoPerm;
+      assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access l.Lock__owner (testLockSetDemo.vpr@114.3--114.54) [23214]"}
+        Mask[l_1, Lock__owner] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[l_2, Lock__owner];
-      Mask := Mask[l_2, Lock__owner:=Mask[l_2, Lock__owner] - wildcard];
-      assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access l.Lock__user (testLockSetDemo.vpr@114.3--114.54) [160036]"}
-        Mask[l_2, Lock__user] > NoPerm;
+      assume wildcard < Mask[l_1, Lock__owner];
+      Mask := Mask[l_1, Lock__owner:=Mask[l_1, Lock__owner] - wildcard];
+      assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access l.Lock__user (testLockSetDemo.vpr@114.3--114.54) [23215]"}
+        Mask[l_1, Lock__user] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[l_2, Lock__user];
-      Mask := Mask[l_2, Lock__user:=Mask[l_2, Lock__user] - wildcard];
+      assume wildcard < Mask[l_1, Lock__user];
+      Mask := Mask[l_1, Lock__user:=Mask[l_1, Lock__user] - wildcard];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access LockSet__lockset(l.Lock__owner, (Multiset[Ref]() union Multiset(l))) (testLockSetDemo.vpr@114.3--114.54) [160037]"}
-          perm <= Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], MultiSet#Union(arg_S_3, MultiSet#Singleton(l_2)))];
+        assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access LockSet__lockset(l.Lock__owner, (Multiset[Ref]() union Multiset(l))) (testLockSetDemo.vpr@114.3--114.54) [23216]"}
+          perm <= Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], MultiSet#Union(arg_S_3, MultiSet#Singleton(l_1)))];
       }
-      Mask := Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], MultiSet#Union(arg_S_3, MultiSet#Singleton(l_2))):=Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], MultiSet#Union(arg_S_3, MultiSet#Singleton(l_2)))] - perm];
-      if (MultiSet#Select(arg_S_3, l_2) == 0) {
+      Mask := Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], MultiSet#Union(arg_S_3, MultiSet#Singleton(l_1))):=Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], MultiSet#Union(arg_S_3, MultiSet#Singleton(l_1)))] - perm];
+      if (MultiSet#Select(arg_S_3, l_1) == 0) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access Client__inv(l.Lock__user, write) (testLockSetDemo.vpr@114.3--114.54) [160038]"}
-            perm <= Mask[null, Client__inv(Heap[l_2, Lock__user], FullPerm)];
+          assert {:msg "  The precondition of method Lock__unlock might not hold. There might be insufficient permission to access Client__inv(l.Lock__user, write) (testLockSetDemo.vpr@114.3--114.54) [23217]"}
+            perm <= Mask[null, Client__inv(Heap[l_1, Lock__user], FullPerm)];
         }
-        Mask := Mask[null, Client__inv(Heap[l_2, Lock__user], FullPerm):=Mask[null, Client__inv(Heap[l_2, Lock__user], FullPerm)] - perm];
+        Mask := Mask[null, Client__inv(Heap[l_1, Lock__user], FullPerm):=Mask[null, Client__inv(Heap[l_1, Lock__user], FullPerm)] - perm];
       }
       // Finish exhale
       havoc ExhaleHeap;
@@ -1494,16 +1494,16 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     // -- Inhaling postcondition
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      Mask := Mask[l_2, Lock__owner:=Mask[l_2, Lock__owner] + perm];
+      assume l_1 != null;
+      Mask := Mask[l_1, Lock__owner:=Mask[l_1, Lock__owner] + perm];
       assume state(Heap, Mask);
       havoc wildcard;
       perm := wildcard;
-      assume l_2 != null;
-      Mask := Mask[l_2, Lock__user:=Mask[l_2, Lock__user] + perm];
+      assume l_1 != null;
+      Mask := Mask[l_1, Lock__user:=Mask[l_1, Lock__user] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      Mask := Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], arg_S_3):=Mask[null, LockSet__lockset(Heap[l_2, Lock__owner], arg_S_3)] + perm];
+      Mask := Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], arg_S_3):=Mask[null, LockSet__lockset(Heap[l_1, Lock__owner], arg_S_3)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1511,11 +1511,11 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: unfold acc(Client__inv(diz, write), write) -- testLockSetDemo.vpr@117.3--117.45
     assume Client__inv#trigger(Heap, Client__inv(diz, FullPerm));
     assume Heap[null, Client__inv(diz, FullPerm)] == ConditionalFrame(FullPerm, FrameFragment(Heap[diz, Client__x]));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Client__inv(diz, write) might fail. There might be insufficient permission to access Client__inv(diz, write) (testLockSetDemo.vpr@117.3--117.45) [160041]"}
+      assert {:msg "  Unfolding Client__inv(diz, write) might fail. There might be insufficient permission to access Client__inv(diz, write) (testLockSetDemo.vpr@117.3--117.45) [23220]"}
         perm <= Mask[null, Client__inv(diz, FullPerm)];
     }
     Mask := Mask[null, Client__inv(diz, FullPerm):=Mask[null, Client__inv(diz, FullPerm)] - perm];
@@ -1542,7 +1542,7 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Client__x := __flatten_21 -- testLockSetDemo.vpr@120.3--120.32
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@120.3--120.32) [160043]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@120.3--120.32) [23222]"}
       FullPerm == Mask[diz, Client__x];
     Heap := Heap[diz, Client__x:=__flatten_21];
     assume state(Heap, Mask);
@@ -1555,8 +1555,8 @@ procedure Client__main(diz: Ref, current_thread_id: int) returns ()
 procedure Client__Client(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -1566,8 +1566,8 @@ procedure Client__Client(current_thread_id: int) returns (sys__result: Ref)
   var __flatten_22: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1582,8 +1582,8 @@ procedure Client__Client(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1597,7 +1597,7 @@ procedure Client__Client(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Client__x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Client__x (testLockSetDemo.vpr@126.11--126.76) [160044]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Client__x (testLockSetDemo.vpr@126.11--126.76) [23223]"}
         HasDirectPerm(PostMask, sys__result, Client__x);
     assume PostHeap[sys__result, Client__x] == 0;
     assume state(PostHeap, PostMask);
@@ -1625,7 +1625,7 @@ procedure Client__Client(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Client__x := __flatten_22 -- testLockSetDemo.vpr@134.3--134.32
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@134.3--134.32) [160045]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Client__x (testLockSetDemo.vpr@134.3--134.32) [23224]"}
       FullPerm == Mask[diz, Client__x];
     Heap := Heap[diz, Client__x:=__flatten_22];
     assume state(Heap, Mask);
@@ -1638,21 +1638,21 @@ procedure Client__Client(current_thread_id: int) returns (sys__result: Ref)
   //   (acc(sys__result.Client__x, write) && sys__result.Client__x == 0) -- testLockSetDemo.vpr@136.3--136.102
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@136.10--136.102) [160046]"}
+    ExhaleWellDef0Heap := AssertHeap;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@136.10--136.102) [23225]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Client__x (testLockSetDemo.vpr@136.10--136.102) [160048]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Client__x (testLockSetDemo.vpr@136.10--136.102) [23227]"}
         perm <= AssertMask[sys__result, Client__x];
     }
     AssertMask := AssertMask[sys__result, Client__x:=AssertMask[sys__result, Client__x] - perm];
     
     // -- Check definedness of sys__result.Client__x == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Client__x (testLockSetDemo.vpr@136.10--136.102) [160049]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Client__x (testLockSetDemo.vpr@136.10--136.102) [23228]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Client__x);
-    assert {:msg "  Assert might fail. Assertion sys__result.Client__x == 0 might not hold. (testLockSetDemo.vpr@136.10--136.102) [160050]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Client__x == 0 might not hold. (testLockSetDemo.vpr@136.10--136.102) [23229]"}
       AssertHeap[sys__result, Client__x] == 0;
     assume state(Heap, Mask);
   
@@ -1662,17 +1662,17 @@ procedure Client__Client(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Client__Client might not hold. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@125.11--125.30) [160051]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of Client__Client might not hold. Assertion sys__result != null might not hold. (testLockSetDemo.vpr@125.11--125.30) [23230]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Client__Client might not hold. There might be insufficient permission to access sys__result.Client__x (testLockSetDemo.vpr@126.11--126.76) [160052]"}
+      assert {:msg "  Postcondition of Client__Client might not hold. There might be insufficient permission to access sys__result.Client__x (testLockSetDemo.vpr@126.11--126.76) [23231]"}
         perm <= Mask[sys__result, Client__x];
     }
     Mask := Mask[sys__result, Client__x:=Mask[sys__result, Client__x] - perm];
-    assert {:msg "  Postcondition of Client__Client might not hold. Assertion sys__result.Client__x == 0 might not hold. (testLockSetDemo.vpr@126.11--126.76) [160053]"}
+    assert {:msg "  Postcondition of Client__Client might not hold. Assertion sys__result.Client__x == 0 might not hold. (testLockSetDemo.vpr@126.11--126.76) [23232]"}
       Heap[sys__result, Client__x] == 0;
     // Finish exhale
     havoc ExhaleHeap;

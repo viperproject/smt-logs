@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:48
+// Date:         2025-01-26 21:43:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0056.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0056-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -309,7 +309,7 @@ procedure PhilosophergetLeft$#definedness(this$_3: Ref) returns (Result: Ref)
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Philosophervalid$(this$_3) (0056.vpr@38.1--44.2) [191677]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Philosophervalid$(this$_3) (0056.vpr@38.1--44.2) [85394]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Philosophervalid$(this$_3)];
       havoc wildcard;
       perm := wildcard;
@@ -324,7 +324,7 @@ procedure PhilosophergetLeft$#definedness(this$_3: Ref) returns (Result: Ref)
       assume UnfoldingHeap[this$_3, Philosopherleft$] != null;
       assume UnfoldingHeap[this$_3, Philosopherright$] != null;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_3.Philosopherleft$ (0056.vpr@38.1--44.2) [191678]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_3.Philosopherleft$ (0056.vpr@38.1--44.2) [85395]"}
         HasDirectPerm(UnfoldingMask, this$_3, Philosopherleft$);
       
       // -- Free assumptions (exp module)
@@ -338,7 +338,7 @@ procedure PhilosophergetLeft$#definedness(this$_3: Ref) returns (Result: Ref)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of PhilosophergetLeft$ might not hold. Assertion result != null might not hold. (0056.vpr@41.11--41.25) [191679]"}
+    assert {:msg "  Postcondition of PhilosophergetLeft$ might not hold. Assertion result != null might not hold. (0056.vpr@41.11--41.25) [85396]"}
       Result != null;
 }
 
@@ -420,7 +420,7 @@ procedure PhilosophergetRight$#definedness(this$_4: Ref) returns (Result: Ref)
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Philosophervalid$(this$_4) (0056.vpr@46.1--52.2) [191680]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Philosophervalid$(this$_4) (0056.vpr@46.1--52.2) [85397]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Philosophervalid$(this$_4)];
       havoc wildcard;
       perm := wildcard;
@@ -435,7 +435,7 @@ procedure PhilosophergetRight$#definedness(this$_4: Ref) returns (Result: Ref)
       assume UnfoldingHeap[this$_4, Philosopherleft$] != null;
       assume UnfoldingHeap[this$_4, Philosopherright$] != null;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_4.Philosopherright$ (0056.vpr@46.1--52.2) [191681]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_4.Philosopherright$ (0056.vpr@46.1--52.2) [85398]"}
         HasDirectPerm(UnfoldingMask, this$_4, Philosopherright$);
       
       // -- Free assumptions (exp module)
@@ -449,7 +449,7 @@ procedure PhilosophergetRight$#definedness(this$_4: Ref) returns (Result: Ref)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of PhilosophergetRight$ might not hold. Assertion result != null might not hold. (0056.vpr@49.11--49.25) [191682]"}
+    assert {:msg "  Postcondition of PhilosophergetRight$ might not hold. Assertion result != null might not hold. (0056.vpr@49.11--49.25) [85399]"}
       Result != null;
 }
 
@@ -561,12 +561,12 @@ procedure Philosophervalid$#definedness(this$_5: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this$_5.Philosopherleft$ != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_5.Philosopherleft$ (0056.vpr@58.1--60.2) [191683]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_5.Philosopherleft$ (0056.vpr@58.1--60.2) [85400]"}
         HasDirectPerm(Mask, this$_5, Philosopherleft$);
     assume Heap[this$_5, Philosopherleft$] != null;
     
     // -- Check definedness of this$_5.Philosopherright$ != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_5.Philosopherright$ (0056.vpr@58.1--60.2) [191684]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_5.Philosopherright$ (0056.vpr@58.1--60.2) [85401]"}
         HasDirectPerm(Mask, this$_5, Philosopherright$);
     assume Heap[this$_5, Philosopherright$] != null;
     assume state(Heap, Mask);
@@ -676,7 +676,7 @@ procedure Program$MonitorInvariant#definedness(this$_7: Ref) returns ()
 // Translation of method Philosopherinit$
 // ==================================================
 
-procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1: Ref, f2: Ref) returns ()
+procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1_1: Ref, f2_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -701,8 +701,8 @@ procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1: Ref, f2: Ref) returns ()
   
   // -- Assumptions about method arguments
     assume Heap[this$_1, $allocated];
-    assume Heap[f1, $allocated];
-    assume Heap[f2, $allocated];
+    assume Heap[f1_1, $allocated];
+    assume Heap[f2_1, $allocated];
   
   // -- Checked inhaling of precondition
     assume this$_1 != null;
@@ -711,8 +711,8 @@ procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1: Ref, f2: Ref) returns ()
     assume state(Heap, Mask);
     assume k$ < FullPerm;
     assume state(Heap, Mask);
-    assume f1 != null;
-    assume f2 != null;
+    assume f1_1 != null;
+    assume f2_1 != null;
     assume state(Heap, Mask);
     perm := FullPerm;
     assume this$_1 != null;
@@ -745,10 +745,10 @@ procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1: Ref, f2: Ref) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function PhilosophergetLeft$ might not hold. Assertion this$_1 != null might not hold. (0056.vpr@77.12--77.40) [191685]"}
+        assert {:msg "  Precondition of function PhilosophergetLeft$ might not hold. Assertion this$_1 != null might not hold. (0056.vpr@77.12--77.40) [85402]"}
           this$_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PhilosophergetLeft$ might not hold. There might be insufficient permission to access Philosophervalid$(this$_1) (0056.vpr@77.12--77.40) [191686]"}
+        assert {:msg "  Precondition of function PhilosophergetLeft$ might not hold. There might be insufficient permission to access Philosophervalid$(this$_1) (0056.vpr@77.12--77.40) [85403]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Philosophervalid$(this$_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -757,7 +757,7 @@ procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1: Ref, f2: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assume PhilosophergetLeft$(PostHeap, this$_1) == f1;
+    assume PhilosophergetLeft$(PostHeap, this$_1) == f1_1;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of PhilosophergetRight$(this$_1) == f2
@@ -765,10 +765,10 @@ procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1: Ref, f2: Ref) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function PhilosophergetRight$ might not hold. Assertion this$_1 != null might not hold. (0056.vpr@77.52--77.81) [191687]"}
+        assert {:msg "  Precondition of function PhilosophergetRight$ might not hold. Assertion this$_1 != null might not hold. (0056.vpr@77.52--77.81) [85404]"}
           this$_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PhilosophergetRight$ might not hold. There might be insufficient permission to access Philosophervalid$(this$_1) (0056.vpr@77.52--77.81) [191688]"}
+        assert {:msg "  Precondition of function PhilosophergetRight$ might not hold. There might be insufficient permission to access Philosophervalid$(this$_1) (0056.vpr@77.52--77.81) [85405]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Philosophervalid$(this$_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -777,7 +777,7 @@ procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1: Ref, f2: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assume PhilosophergetRight$(PostHeap, this$_1) == f2;
+    assume PhilosophergetRight$(PostHeap, this$_1) == f2_1;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -790,15 +790,15 @@ procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1: Ref, f2: Ref) returns ()
     assume Heap[c$, $allocated];
   
   // -- Translating statement: this$_1.Philosopherleft$ := f1 -- 0056.vpr@83.3--83.33
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_1.Philosopherleft$ (0056.vpr@83.3--83.33) [191689]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_1.Philosopherleft$ (0056.vpr@83.3--83.33) [85406]"}
       FullPerm == Mask[this$_1, Philosopherleft$];
-    Heap := Heap[this$_1, Philosopherleft$:=f1];
+    Heap := Heap[this$_1, Philosopherleft$:=f1_1];
     assume state(Heap, Mask);
   
   // -- Translating statement: this$_1.Philosopherright$ := f2 -- 0056.vpr@84.3--84.34
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_1.Philosopherright$ (0056.vpr@84.3--84.34) [191690]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this$_1.Philosopherright$ (0056.vpr@84.3--84.34) [85407]"}
       FullPerm == Mask[this$_1, Philosopherright$];
-    Heap := Heap[this$_1, Philosopherright$:=f2];
+    Heap := Heap[this$_1, Philosopherright$:=f2_1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Philosophervalid$(this$_1), write) -- 0056.vpr@85.3--85.46
@@ -806,19 +806,19 @@ procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1: Ref, f2: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Philosophervalid$(this$_1) might fail. There might be insufficient permission to access this$_1.Philosopherleft$ (0056.vpr@85.3--85.46) [191693]"}
+      assert {:msg "  Folding Philosophervalid$(this$_1) might fail. There might be insufficient permission to access this$_1.Philosopherleft$ (0056.vpr@85.3--85.46) [85410]"}
         perm <= Mask[this$_1, Philosopherleft$];
     }
     Mask := Mask[this$_1, Philosopherleft$:=Mask[this$_1, Philosopherleft$] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Philosophervalid$(this$_1) might fail. There might be insufficient permission to access this$_1.Philosopherright$ (0056.vpr@85.3--85.46) [191695]"}
+      assert {:msg "  Folding Philosophervalid$(this$_1) might fail. There might be insufficient permission to access this$_1.Philosopherright$ (0056.vpr@85.3--85.46) [85412]"}
         perm <= Mask[this$_1, Philosopherright$];
     }
     Mask := Mask[this$_1, Philosopherright$:=Mask[this$_1, Philosopherright$] - perm];
-    assert {:msg "  Folding Philosophervalid$(this$_1) might fail. Assertion this$_1.Philosopherleft$ != null might not hold. (0056.vpr@85.3--85.46) [191696]"}
+    assert {:msg "  Folding Philosophervalid$(this$_1) might fail. Assertion this$_1.Philosopherleft$ != null might not hold. (0056.vpr@85.3--85.46) [85413]"}
       Heap[this$_1, Philosopherleft$] != null;
-    assert {:msg "  Folding Philosophervalid$(this$_1) might fail. Assertion this$_1.Philosopherright$ != null might not hold. (0056.vpr@85.3--85.46) [191697]"}
+    assert {:msg "  Folding Philosophervalid$(this$_1) might fail. Assertion this$_1.Philosopherright$ != null might not hold. (0056.vpr@85.3--85.46) [85414]"}
       Heap[this$_1, Philosopherright$] != null;
     perm := FullPerm;
     Mask := Mask[null, Philosophervalid$(this$_1):=Mask[null, Philosophervalid$(this$_1)] + perm];
@@ -841,14 +841,14 @@ procedure Philosopherinit$(this$_1: Ref, k$: Perm, f1: Ref, f2: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Philosopherinit$ might not hold. There might be insufficient permission to access Philosophervalid$(this$_1) (0056.vpr@76.11--76.49) [191699]"}
+      assert {:msg "  Postcondition of Philosopherinit$ might not hold. There might be insufficient permission to access Philosophervalid$(this$_1) (0056.vpr@76.11--76.49) [85416]"}
         perm <= Mask[null, Philosophervalid$(this$_1)];
     }
     Mask := Mask[null, Philosophervalid$(this$_1):=Mask[null, Philosophervalid$(this$_1)] - perm];
-    assert {:msg "  Postcondition of Philosopherinit$ might not hold. Assertion PhilosophergetLeft$(this$_1) == f1 might not hold. (0056.vpr@77.11--77.88) [191700]"}
-      PhilosophergetLeft$(Heap, this$_1) == f1;
-    assert {:msg "  Postcondition of Philosopherinit$ might not hold. Assertion PhilosophergetRight$(this$_1) == f2 might not hold. (0056.vpr@77.11--77.88) [191701]"}
-      PhilosophergetRight$(Heap, this$_1) == f2;
+    assert {:msg "  Postcondition of Philosopherinit$ might not hold. Assertion PhilosophergetLeft$(this$_1) == f1 might not hold. (0056.vpr@77.11--77.88) [85417]"}
+      PhilosophergetLeft$(Heap, this$_1) == f1_1;
+    assert {:msg "  Postcondition of Philosopherinit$ might not hold. Assertion PhilosophergetRight$(this$_1) == f2 might not hold. (0056.vpr@77.11--77.88) [85418]"}
+      PhilosophergetRight$(Heap, this$_1) == f2_1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -924,7 +924,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(Philosophervalid$(this$_2), write) && (true && (true && (true && (true && true)))) might not hold on entry. There might be insufficient permission to access Philosophervalid$(this$_2) (0056.vpr@104.15--104.93) [191702]"}
+          assert {:msg "  Loop invariant acc(Philosophervalid$(this$_2), write) && (true && (true && (true && (true && true)))) might not hold on entry. There might be insufficient permission to access Philosophervalid$(this$_2) (0056.vpr@104.15--104.93) [85419]"}
             perm <= Mask[null, Philosophervalid$(this$_2)];
         }
         Mask := Mask[null, Philosophervalid$(this$_2):=Mask[null, Philosophervalid$(this$_2)] - perm];
@@ -966,7 +966,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding Philosophervalid$(this$_2) might fail. There might be insufficient permission to access Philosophervalid$(this$_2) (0056.vpr@106.5--106.50) [191703]"}
+              assert {:msg "  Unfolding Philosophervalid$(this$_2) might fail. There might be insufficient permission to access Philosophervalid$(this$_2) (0056.vpr@106.5--106.50) [85420]"}
                 perm <= Mask[null, Philosophervalid$(this$_2)];
             }
             Mask := Mask[null, Philosophervalid$(this$_2):=Mask[null, Philosophervalid$(this$_2)] - perm];
@@ -992,7 +992,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
           // -- Translating statement: inhale acc(Fork$MonitorInvariant(this$_2.Philosopherleft$), write) -- 0056.vpr@107.5--107.71
             
             // -- Check definedness of acc(Fork$MonitorInvariant(this$_2.Philosopherleft$), write)
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access this$_2.Philosopherleft$ (0056.vpr@107.12--107.71) [191704]"}
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access this$_2.Philosopherleft$ (0056.vpr@107.12--107.71) [85421]"}
                 HasDirectPerm(Mask, this$_2, Philosopherleft$);
             perm := FullPerm;
             Mask := Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherleft$]):=Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherleft$])] + perm];
@@ -1003,7 +1003,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
           // -- Translating statement: unfold acc(Fork$MonitorInvariant(this$_2.Philosopherleft$), write) -- 0056.vpr@108.5--108.71
             
             // -- Check definedness of acc(Fork$MonitorInvariant(this$_2.Philosopherleft$), write)
-              assert {:msg "  Unfolding Fork$MonitorInvariant(this$_2.Philosopherleft$) might fail. There might be insufficient permission to access this$_2.Philosopherleft$ (0056.vpr@108.5--108.71) [191705]"}
+              assert {:msg "  Unfolding Fork$MonitorInvariant(this$_2.Philosopherleft$) might fail. There might be insufficient permission to access this$_2.Philosopherleft$ (0056.vpr@108.5--108.71) [85422]"}
                 HasDirectPerm(Mask, this$_2, Philosopherleft$);
             assume Fork$MonitorInvariant#trigger(Heap, Fork$MonitorInvariant(Heap[this$_2, Philosopherleft$]));
             assume Heap[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherleft$])] == EmptyFrame;
@@ -1011,7 +1011,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding Fork$MonitorInvariant(this$_2.Philosopherleft$) might fail. There might be insufficient permission to access Fork$MonitorInvariant(this$_2.Philosopherleft$) (0056.vpr@108.5--108.71) [191706]"}
+              assert {:msg "  Unfolding Fork$MonitorInvariant(this$_2.Philosopherleft$) might fail. There might be insufficient permission to access Fork$MonitorInvariant(this$_2.Philosopherleft$) (0056.vpr@108.5--108.71) [85423]"}
                 perm <= Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherleft$])];
             }
             Mask := Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherleft$]):=Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherleft$])] - perm];
@@ -1027,7 +1027,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
           // -- Translating statement: inhale acc(Fork$MonitorInvariant(this$_2.Philosopherright$), write) -- 0056.vpr@109.5--109.72
             
             // -- Check definedness of acc(Fork$MonitorInvariant(this$_2.Philosopherright$), write)
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access this$_2.Philosopherright$ (0056.vpr@109.12--109.72) [191707]"}
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access this$_2.Philosopherright$ (0056.vpr@109.12--109.72) [85424]"}
                 HasDirectPerm(Mask, this$_2, Philosopherright$);
             perm := FullPerm;
             Mask := Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherright$]):=Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherright$])] + perm];
@@ -1038,7 +1038,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
           // -- Translating statement: unfold acc(Fork$MonitorInvariant(this$_2.Philosopherright$), write) -- 0056.vpr@110.5--110.72
             
             // -- Check definedness of acc(Fork$MonitorInvariant(this$_2.Philosopherright$), write)
-              assert {:msg "  Unfolding Fork$MonitorInvariant(this$_2.Philosopherright$) might fail. There might be insufficient permission to access this$_2.Philosopherright$ (0056.vpr@110.5--110.72) [191708]"}
+              assert {:msg "  Unfolding Fork$MonitorInvariant(this$_2.Philosopherright$) might fail. There might be insufficient permission to access this$_2.Philosopherright$ (0056.vpr@110.5--110.72) [85425]"}
                 HasDirectPerm(Mask, this$_2, Philosopherright$);
             assume Fork$MonitorInvariant#trigger(Heap, Fork$MonitorInvariant(Heap[this$_2, Philosopherright$]));
             assume Heap[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherright$])] == EmptyFrame;
@@ -1046,7 +1046,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding Fork$MonitorInvariant(this$_2.Philosopherright$) might fail. There might be insufficient permission to access Fork$MonitorInvariant(this$_2.Philosopherright$) (0056.vpr@110.5--110.72) [191709]"}
+              assert {:msg "  Unfolding Fork$MonitorInvariant(this$_2.Philosopherright$) might fail. There might be insufficient permission to access Fork$MonitorInvariant(this$_2.Philosopherright$) (0056.vpr@110.5--110.72) [85426]"}
                 perm <= Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherright$])];
             }
             Mask := Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherright$]):=Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherright$])] - perm];
@@ -1062,7 +1062,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
           // -- Translating statement: fold acc(Fork$MonitorInvariant(this$_2.Philosopherleft$), write) -- 0056.vpr@111.5--111.69
             
             // -- Check definedness of acc(Fork$MonitorInvariant(this$_2.Philosopherleft$), write)
-              assert {:msg "  Folding Fork$MonitorInvariant(this$_2.Philosopherleft$) might fail. There might be insufficient permission to access this$_2.Philosopherleft$ (0056.vpr@111.5--111.69) [191710]"}
+              assert {:msg "  Folding Fork$MonitorInvariant(this$_2.Philosopherleft$) might fail. There might be insufficient permission to access this$_2.Philosopherleft$ (0056.vpr@111.5--111.69) [85427]"}
                 HasDirectPerm(Mask, this$_2, Philosopherleft$);
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
@@ -1085,11 +1085,11 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
             ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of acc(Fork$MonitorInvariant(this$_2.Philosopherleft$), write)
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access this$_2.Philosopherleft$ (0056.vpr@112.12--112.71) [191711]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access this$_2.Philosopherleft$ (0056.vpr@112.12--112.71) [85428]"}
                 HasDirectPerm(ExhaleWellDef0Mask, this$_2, Philosopherleft$);
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access Fork$MonitorInvariant(this$_2.Philosopherleft$) (0056.vpr@112.12--112.71) [191712]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access Fork$MonitorInvariant(this$_2.Philosopherleft$) (0056.vpr@112.12--112.71) [85429]"}
                 perm <= Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherleft$])];
             }
             Mask := Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherleft$]):=Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherleft$])] - perm];
@@ -1102,7 +1102,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
           // -- Translating statement: fold acc(Fork$MonitorInvariant(this$_2.Philosopherright$), write) -- 0056.vpr@113.5--113.70
             
             // -- Check definedness of acc(Fork$MonitorInvariant(this$_2.Philosopherright$), write)
-              assert {:msg "  Folding Fork$MonitorInvariant(this$_2.Philosopherright$) might fail. There might be insufficient permission to access this$_2.Philosopherright$ (0056.vpr@113.5--113.70) [191713]"}
+              assert {:msg "  Folding Fork$MonitorInvariant(this$_2.Philosopherright$) might fail. There might be insufficient permission to access this$_2.Philosopherright$ (0056.vpr@113.5--113.70) [85430]"}
                 HasDirectPerm(Mask, this$_2, Philosopherright$);
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
@@ -1125,11 +1125,11 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
             ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of acc(Fork$MonitorInvariant(this$_2.Philosopherright$), write)
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access this$_2.Philosopherright$ (0056.vpr@114.12--114.72) [191714]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access this$_2.Philosopherright$ (0056.vpr@114.12--114.72) [85431]"}
                 HasDirectPerm(ExhaleWellDef0Mask, this$_2, Philosopherright$);
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access Fork$MonitorInvariant(this$_2.Philosopherright$) (0056.vpr@114.12--114.72) [191715]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access Fork$MonitorInvariant(this$_2.Philosopherright$) (0056.vpr@114.12--114.72) [85432]"}
                 perm <= Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherright$])];
             }
             Mask := Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherright$]):=Mask[null, Fork$MonitorInvariant(Heap[this$_2, Philosopherright$])] - perm];
@@ -1144,19 +1144,19 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding Philosophervalid$(this$_2) might fail. There might be insufficient permission to access this$_2.Philosopherleft$ (0056.vpr@115.5--115.48) [191716]"}
+              assert {:msg "  Folding Philosophervalid$(this$_2) might fail. There might be insufficient permission to access this$_2.Philosopherleft$ (0056.vpr@115.5--115.48) [85433]"}
                 perm <= Mask[this$_2, Philosopherleft$];
             }
             Mask := Mask[this$_2, Philosopherleft$:=Mask[this$_2, Philosopherleft$] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding Philosophervalid$(this$_2) might fail. There might be insufficient permission to access this$_2.Philosopherright$ (0056.vpr@115.5--115.48) [191717]"}
+              assert {:msg "  Folding Philosophervalid$(this$_2) might fail. There might be insufficient permission to access this$_2.Philosopherright$ (0056.vpr@115.5--115.48) [85434]"}
                 perm <= Mask[this$_2, Philosopherright$];
             }
             Mask := Mask[this$_2, Philosopherright$:=Mask[this$_2, Philosopherright$] - perm];
-            assert {:msg "  Folding Philosophervalid$(this$_2) might fail. Assertion this$_2.Philosopherleft$ != null might not hold. (0056.vpr@115.5--115.48) [191718]"}
+            assert {:msg "  Folding Philosophervalid$(this$_2) might fail. Assertion this$_2.Philosopherleft$ != null might not hold. (0056.vpr@115.5--115.48) [85435]"}
               Heap[this$_2, Philosopherleft$] != null;
-            assert {:msg "  Folding Philosophervalid$(this$_2) might fail. Assertion this$_2.Philosopherright$ != null might not hold. (0056.vpr@115.5--115.48) [191719]"}
+            assert {:msg "  Folding Philosophervalid$(this$_2) might fail. Assertion this$_2.Philosopherright$ != null might not hold. (0056.vpr@115.5--115.48) [85436]"}
               Heap[this$_2, Philosopherright$] != null;
             perm := FullPerm;
             Mask := Mask[null, Philosophervalid$(this$_2):=Mask[null, Philosophervalid$(this$_2)] + perm];
@@ -1178,7 +1178,7 @@ procedure Philosopherrun$(this$_2: Ref, k$_1: Perm) returns ()
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(Philosophervalid$(this$_2), write) && (true && (true && (true && (true && true)))) might not be preserved. There might be insufficient permission to access Philosophervalid$(this$_2) (0056.vpr@104.15--104.93) [191720]"}
+          assert {:msg "  Loop invariant acc(Philosophervalid$(this$_2), write) && (true && (true && (true && (true && true)))) might not be preserved. There might be insufficient permission to access Philosophervalid$(this$_2) (0056.vpr@104.15--104.93) [85437]"}
             perm <= Mask[null, Philosophervalid$(this$_2)];
         }
         Mask := Mask[null, Philosophervalid$(this$_2):=Mask[null, Philosophervalid$(this$_2)] - perm];

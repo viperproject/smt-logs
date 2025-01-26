@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:12:04
+// Date:         2025-01-26 21:45:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/Perm.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/Perm-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -278,12 +278,12 @@ axiom (forall arg1: Ref, arg2: Perm, arg3: Ref, arg4: Perm, arg5: bool, arg1_2: 
 // Translation of all fields
 // ==================================================
 
-const unique a_6: Field NormalField int;
-axiom !IsPredicateField(a_6);
-axiom !IsWandField(a_6);
-const unique b_94: Field NormalField int;
-axiom !IsPredicateField(b_94);
-axiom !IsWandField(b_94);
+const unique a_26: Field NormalField int;
+axiom !IsPredicateField(a_26);
+axiom !IsWandField(a_26);
+const unique b_32: Field NormalField int;
+axiom !IsPredicateField(b_32);
+axiom !IsWandField(b_32);
 
 // ==================================================
 // Translation of method test0
@@ -293,19 +293,19 @@ procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -325,18 +325,18 @@ procedure test0(x: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (Perm.vpr@8.10--8.23) [138396]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (Perm.vpr@8.10--8.23) [223399]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, a_6:=Mask[x, a_6] + perm];
+    Mask := Mask[x, a_26:=Mask[x, a_26] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(x.b, 1 / 2) --* true {
   //   assert perm(x.a) == perm(x.b)
@@ -350,30 +350,30 @@ procedure test0(x: Ref) returns ()
     // Inhaling left hand side of current wand into hypothetical state
     if (b_1_1) {
       perm := 1 / 2;
-      assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (Perm.vpr@9.5--12.6) [138397]"}
+      assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (Perm.vpr@9.5--12.6) [223400]"}
         perm >= NoPerm;
       b_1_1 := b_1_1 && (perm > NoPerm ==> x != null);
-      Ops_1Mask := Ops_1Mask[x, b_94:=Ops_1Mask[x, b_94] + perm];
+      Ops_1Mask := Ops_1Mask[x, b_32:=Ops_1Mask[x, b_32] + perm];
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     }
     b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     
     // -- Translating statement: label lhs1 -- Perm.vpr@9.13--9.35
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: assert perm(x.a) == perm(x.b) -- Perm.vpr@11.9--11.38
-        ExhaleWellDef0Mask := Ops_1Mask;
         ExhaleWellDef0Heap := Ops_1Heap;
+        ExhaleWellDef0Mask := Ops_1Mask;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-        assert {:msg "  Assert might fail. Assertion perm(x.a) == perm(x.b) might not hold. (Perm.vpr@11.16--11.38) [138398]"}
-          b_1_1 && b_2_1 ==> Ops_1Mask[x, a_6] == Ops_1Mask[x, b_94];
+        assert {:msg "  Assert might fail. Assertion perm(x.a) == perm(x.b) might not hold. (Perm.vpr@11.16--11.38) [223401]"}
+          b_1_1 && b_2_1 ==> Ops_1Mask[x, a_26] == Ops_1Mask[x, b_32];
         b_1_1 := b_1_1 && b_2_1;
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     }
@@ -389,16 +389,16 @@ procedure test0(x: Ref) returns ()
   // -- Translating statement: assert acc(x.a, 1 / 2) -- Perm.vpr@13.5--13.25
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 1 / 2;
-    assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (Perm.vpr@13.12--13.25) [138400]"}
+    assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (Perm.vpr@13.12--13.25) [223403]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.a (Perm.vpr@13.12--13.25) [138401]"}
-        perm <= AssertMask[x, a_6];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.a (Perm.vpr@13.12--13.25) [223404]"}
+        perm <= AssertMask[x, a_26];
     }
-    AssertMask := AssertMask[x, a_6:=AssertMask[x, a_6] - perm];
+    AssertMask := AssertMask[x, a_26:=AssertMask[x, a_26] - perm];
     assume state(Heap, Mask);
 }
 
@@ -406,11 +406,11 @@ procedure test0(x: Ref) returns ()
 // Translation of method test1
 // ==================================================
 
-procedure test1(x: Ref) returns ()
+procedure test1_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_5: bool;
@@ -418,11 +418,11 @@ procedure test1(x: Ref) returns ()
   var Used_3Mask: MaskType;
   var b_4: bool;
   var perm: Perm;
-  var Labellhs4Mask: MaskType;
   var Labellhs4Heap: HeapType;
+  var Labellhs4Mask: MaskType;
   var boolCur_1: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_6: bool;
@@ -432,8 +432,8 @@ procedure test1(x: Ref) returns ()
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
   var b_7: bool;
-  var Labellhs6Mask: MaskType;
   var Labellhs6Heap: HeapType;
+  var Labellhs6Mask: MaskType;
   var boolCur_2: bool;
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
@@ -446,8 +446,8 @@ procedure test1(x: Ref) returns ()
   var b_11: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs8Mask: MaskType;
   var Labellhs8Heap: HeapType;
+  var Labellhs8Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var neededTransfer: Perm;
@@ -470,8 +470,8 @@ procedure test1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(x.a, 1 / 2) && acc(x.b, 1 / 2) --*
   // acc(x.a, 1 / 2) && acc(x.b, write) --* true {
@@ -490,18 +490,18 @@ procedure test1(x: Ref) returns ()
     if (b_5) {
       if (b_5) {
         perm := 1 / 2;
-        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (Perm.vpr@17.5--23.6) [138402]"}
+        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (Perm.vpr@17.5--23.6) [223405]"}
           perm >= NoPerm;
         b_5 := b_5 && (perm > NoPerm ==> x != null);
-        Ops_3Mask := Ops_3Mask[x, a_6:=Ops_3Mask[x, a_6] + perm];
+        Ops_3Mask := Ops_3Mask[x, a_26:=Ops_3Mask[x, a_26] + perm];
         b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
       }
       if (b_5) {
         perm := 1 / 2;
-        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (Perm.vpr@17.5--23.6) [138403]"}
+        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (Perm.vpr@17.5--23.6) [223406]"}
           perm >= NoPerm;
         b_5 := b_5 && (perm > NoPerm ==> x != null);
-        Ops_3Mask := Ops_3Mask[x, b_94:=Ops_3Mask[x, b_94] + perm];
+        Ops_3Mask := Ops_3Mask[x, b_32:=Ops_3Mask[x, b_32] + perm];
         b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
       }
     }
@@ -509,20 +509,20 @@ procedure test1(x: Ref) returns ()
     
     // -- Translating statement: label lhs4 -- Perm.vpr@17.13--17.84
       lhs4:
-      Labellhs4Mask := Ops_3Mask;
       Labellhs4Heap := Ops_3Heap;
+      Labellhs4Mask := Ops_3Mask;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_5) {
       
       // -- Translating statement: assert perm(x.a) == perm(x.b) -- Perm.vpr@18.9--18.38
-        ExhaleWellDef0Mask := Ops_3Mask;
         ExhaleWellDef0Heap := Ops_3Heap;
+        ExhaleWellDef0Mask := Ops_3Mask;
         havoc Used_4Heap;
         Used_4Mask := ZeroMask;
         b_6 := b_6 && state(Used_4Heap, Used_4Mask);
-        assert {:msg "  Assert might fail. Assertion perm(x.a) == perm(x.b) might not hold. (Perm.vpr@18.16--18.38) [138404]"}
-          b_5 && b_6 ==> Ops_3Mask[x, a_6] == Ops_3Mask[x, b_94];
+        assert {:msg "  Assert might fail. Assertion perm(x.a) == perm(x.b) might not hold. (Perm.vpr@18.16--18.38) [223407]"}
+          b_5 && b_6 ==> Ops_3Mask[x, a_26] == Ops_3Mask[x, b_32];
         b_5 := b_5 && b_6;
         b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     }
@@ -541,16 +541,16 @@ procedure test1(x: Ref) returns ()
         if (b_8) {
           if (b_8) {
             perm := 1 / 2;
-            assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (Perm.vpr@19.9--22.10) [138405]"}
+            assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (Perm.vpr@19.9--22.10) [223408]"}
               perm >= NoPerm;
             b_8 := b_8 && (perm > NoPerm ==> x != null);
-            Ops_5Mask := Ops_5Mask[x, a_6:=Ops_5Mask[x, a_6] + perm];
+            Ops_5Mask := Ops_5Mask[x, a_26:=Ops_5Mask[x, a_26] + perm];
             b_8 := b_8 && state(Ops_5Heap, Ops_5Mask);
           }
           if (b_8) {
             perm := FullPerm;
             b_8 := b_8 && x != null;
-            Ops_5Mask := Ops_5Mask[x, b_94:=Ops_5Mask[x, b_94] + perm];
+            Ops_5Mask := Ops_5Mask[x, b_32:=Ops_5Mask[x, b_32] + perm];
             b_8 := b_8 && state(Ops_5Heap, Ops_5Mask);
           }
         }
@@ -558,20 +558,20 @@ procedure test1(x: Ref) returns ()
         
         // -- Translating statement: label lhs6 -- Perm.vpr@19.17--19.51
           lhs6:
-          Labellhs6Mask := Ops_5Mask;
           Labellhs6Heap := Ops_5Heap;
+          Labellhs6Mask := Ops_5Mask;
           b_8 := b_8 && state(Ops_5Heap, Ops_5Mask);
         boolCur_2 := true;
         if (b_8 && b_5) {
           
           // -- Translating statement: assert perm(x.a) == perm(x.b) -- Perm.vpr@21.13--21.42
-            ExhaleWellDef0Mask := Ops_5Mask;
             ExhaleWellDef0Heap := Ops_5Heap;
+            ExhaleWellDef0Mask := Ops_5Mask;
             havoc Used_6Heap;
             Used_6Mask := ZeroMask;
             b_9 := b_9 && state(Used_6Heap, Used_6Mask);
-            assert {:msg "  Assert might fail. Assertion perm(x.a) == perm(x.b) might not hold. (Perm.vpr@21.20--21.42) [138406]"}
-              b_8 && b_9 ==> Ops_5Mask[x, a_6] == Ops_5Mask[x, b_94];
+            assert {:msg "  Assert might fail. Assertion perm(x.a) == perm(x.b) might not hold. (Perm.vpr@21.20--21.42) [223409]"}
+              b_8 && b_9 ==> Ops_5Mask[x, a_26] == Ops_5Mask[x, b_32];
             b_8 := b_8 && b_9;
             b_8 := b_8 && state(Ops_5Heap, Ops_5Mask);
         }
@@ -600,21 +600,21 @@ procedure test1(x: Ref) returns ()
                 havoc WandDefLHSHeap;
                 WandDefLHSMask := ZeroMask;
                 perm := 1 / 2;
-                assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (Perm.vpr@17.5--23.6) [138408]"}
+                assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (Perm.vpr@17.5--23.6) [223411]"}
                   perm >= NoPerm;
                 assume perm > NoPerm ==> x != null;
-                WandDefLHSMask := WandDefLHSMask[x, a_6:=WandDefLHSMask[x, a_6] + perm];
+                WandDefLHSMask := WandDefLHSMask[x, a_26:=WandDefLHSMask[x, a_26] + perm];
                 assume state(WandDefLHSHeap, WandDefLHSMask);
                 perm := FullPerm;
                 assume x != null;
-                WandDefLHSMask := WandDefLHSMask[x, b_94:=WandDefLHSMask[x, b_94] + perm];
+                WandDefLHSMask := WandDefLHSMask[x, b_32:=WandDefLHSMask[x, b_32] + perm];
                 assume state(WandDefLHSHeap, WandDefLHSMask);
                 assume state(WandDefLHSHeap, WandDefLHSMask);
                 
                 // -- Translating statement: label lhs8 -- Perm.vpr@17.49--17.83
                   lhs8:
-                  Labellhs8Mask := WandDefLHSMask;
                   Labellhs8Heap := WandDefLHSHeap;
+                  Labellhs8Mask := WandDefLHSMask;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -625,7 +625,7 @@ procedure test1(x: Ref) returns ()
         }
       neededTransfer := 1.000000000;
       initNeededTransfer := Used_8Mask[null, wand_2(x, 1 / 2, x, FullPerm, true)] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.a, 1 / 2) && acc(x.b, write) --* true might be negative. (Perm.vpr@17.5--23.6) [138409]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.a, 1 / 2) && acc(x.b, write) --* true might be negative. (Perm.vpr@17.5--23.6) [223412]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -665,7 +665,7 @@ procedure test1(x: Ref) returns ()
             Mask := Mask[null, wand_2(x, 1 / 2, x, FullPerm, true):=Mask[null, wand_2(x, 1 / 2, x, FullPerm, true)] - takeTransfer];
           }
         }
-      assert {:msg "  Packaging wand might fail. Magic wand instance not found. (Perm.vpr@17.5--23.6) [138410]"}
+      assert {:msg "  Packaging wand might fail. Magic wand instance not found. (Perm.vpr@17.5--23.6) [223413]"}
         (b_5 && b_5) && b_11 ==> neededTransfer == 0.000000000 && Used_8Mask[null, wand_2(x, 1 / 2, x, FullPerm, true)] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states

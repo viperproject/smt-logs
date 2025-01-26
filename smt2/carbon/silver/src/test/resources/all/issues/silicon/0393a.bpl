@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:01
+// Date:         2025-01-26 21:42:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0393a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0393a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_5: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_5, f_3] }
-  Heap[o_5, $allocated] ==> Heap[Heap[o_5, f_3], $allocated]
+axiom (forall o_56: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_56, f_3] }
+  Heap[o_56, $allocated] ==> Heap[Heap[o_56, f_3], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref, f_9: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, f_9] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_6, f_9) ==> Heap[o_6, f_9] == ExhaleHeap[o_6, f_9]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref, f_51: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, f_51] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_38, f_51) ==> Heap[o_38, f_51] == ExhaleHeap[o_38, f_51]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2), ExhaleHeap[null, PredicateMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> Heap[null, PredicateMaskField(pm_f_2)] == ExhaleHeap[null, PredicateMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26), ExhaleHeap[null, PredicateMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> Heap[null, PredicateMaskField(pm_f_26)] == ExhaleHeap[null, PredicateMaskField(pm_f_26)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, PredicateMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, PredicateMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2), ExhaleHeap[null, WandMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> Heap[null, WandMaskField(pm_f_2)] == ExhaleHeap[null, WandMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26), ExhaleHeap[null, WandMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> Heap[null, WandMaskField(pm_f_26)] == ExhaleHeap[null, WandMaskField(pm_f_26)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, WandMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, WandMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_6, $allocated] ==> ExhaleHeap[o_6, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_38, $allocated] ==> ExhaleHeap[o_38, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_5: Ref, f_10: (Field A B), v: B ::
-  { Heap[o_5, f_10:=v] }
-  succHeap(Heap, Heap[o_5, f_10:=v])
+axiom (forall <A, B> Heap: HeapType, o_56: Ref, f_22: (Field A B), v: B ::
+  { Heap[o_56, f_22:=v] }
+  succHeap(Heap, Heap[o_56, f_22:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -544,15 +544,15 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // Translation of all fields
 // ==================================================
 
-const unique id_3: Field NormalField int;
-axiom !IsPredicateField(id_3);
-axiom !IsWandField(id_3);
+const unique id_2: Field NormalField int;
+axiom !IsPredicateField(id_2);
+axiom !IsWandField(id_2);
 const unique neighbors: Field NormalField (Seq int);
 axiom !IsPredicateField(neighbors);
 axiom !IsWandField(neighbors);
-const unique value: Field NormalField bool;
-axiom !IsPredicateField(value);
-axiom !IsWandField(value);
+const unique value_1: Field NormalField bool;
+axiom !IsPredicateField(value_1);
+axiom !IsWandField(value_1);
 
 // ==================================================
 // Translation of function peek_neighbors
@@ -612,9 +612,9 @@ procedure peek_neighbors#definedness(graph: (Seq Ref), i: int) returns (Result: 
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(Node(graph[i]), wildcard)
-      assert {:msg "  Contract might not be well-formed. Index graph[i] into graph might be negative. (0393a.vpr@22.14--22.43) [210693]"}
+      assert {:msg "  Contract might not be well-formed. Index graph[i] into graph might be negative. (0393a.vpr@22.14--22.43) [68831]"}
         i >= 0;
-      assert {:msg "  Contract might not be well-formed. Index graph[i] into graph might exceed sequence length. (0393a.vpr@22.14--22.43) [210694]"}
+      assert {:msg "  Contract might not be well-formed. Index graph[i] into graph might exceed sequence length. (0393a.vpr@22.14--22.43) [68832]"}
         i < Seq#Length(graph);
     havoc wildcard;
     perm := wildcard;
@@ -628,34 +628,34 @@ procedure peek_neighbors#definedness(graph: (Seq Ref), i: int) returns (Result: 
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume Node#trigger(UnfoldingHeap, Node(Seq#Index(graph, i)));
-      assume UnfoldingHeap[null, Node(Seq#Index(graph, i))] == CombineFrames(FrameFragment(UnfoldingHeap[Seq#Index(graph, i), id_3]), FrameFragment(UnfoldingHeap[Seq#Index(graph, i), neighbors]));
+      assume UnfoldingHeap[null, Node(Seq#Index(graph, i))] == CombineFrames(FrameFragment(UnfoldingHeap[Seq#Index(graph, i), id_2]), FrameFragment(UnfoldingHeap[Seq#Index(graph, i), neighbors]));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node(graph[i]) (0393a.vpr@20.1--26.1) [210695]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node(graph[i]) (0393a.vpr@20.1--26.1) [68833]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node(Seq#Index(graph, i))];
       havoc wildcard;
       perm := wildcard;
       assume Seq#Index(graph, i) != null;
-      UnfoldingMask := UnfoldingMask[Seq#Index(graph, i), id_3:=UnfoldingMask[Seq#Index(graph, i), id_3] + perm];
+      UnfoldingMask := UnfoldingMask[Seq#Index(graph, i), id_2:=UnfoldingMask[Seq#Index(graph, i), id_2] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       havoc wildcard;
       perm := wildcard;
       assume Seq#Index(graph, i) != null;
       UnfoldingMask := UnfoldingMask[Seq#Index(graph, i), neighbors:=UnfoldingMask[Seq#Index(graph, i), neighbors] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume (forall i$0: int, j_9: int ::
-        { Seq#Index(UnfoldingHeap[Seq#Index(graph, i), neighbors], i$0), Seq#Index(UnfoldingHeap[Seq#Index(graph, i), neighbors], j_9) }
-        (0 <= i$0 && i$0 < Seq#Length(UnfoldingHeap[Seq#Index(graph, i), neighbors])) && ((0 <= j_9 && j_9 < Seq#Length(UnfoldingHeap[Seq#Index(graph, i), neighbors])) && i$0 != j_9) ==> Seq#Index(UnfoldingHeap[Seq#Index(graph, i), neighbors], i$0) != Seq#Index(UnfoldingHeap[Seq#Index(graph, i), neighbors], j_9)
+      assume (forall i$0: int, j: int ::
+        { Seq#Index(UnfoldingHeap[Seq#Index(graph, i), neighbors], i$0), Seq#Index(UnfoldingHeap[Seq#Index(graph, i), neighbors], j) }
+        (0 <= i$0 && i$0 < Seq#Length(UnfoldingHeap[Seq#Index(graph, i), neighbors])) && ((0 <= j && j < Seq#Length(UnfoldingHeap[Seq#Index(graph, i), neighbors])) && i$0 != j) ==> Seq#Index(UnfoldingHeap[Seq#Index(graph, i), neighbors], i$0) != Seq#Index(UnfoldingHeap[Seq#Index(graph, i), neighbors], j)
       );
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. Index graph[i] into graph might be negative. (0393a.vpr@20.1--26.1) [210696]"}
+      assert {:msg "  Function might not be well-formed. Index graph[i] into graph might be negative. (0393a.vpr@20.1--26.1) [68834]"}
         i >= 0;
-      assert {:msg "  Function might not be well-formed. Index graph[i] into graph might exceed sequence length. (0393a.vpr@20.1--26.1) [210697]"}
+      assert {:msg "  Function might not be well-formed. Index graph[i] into graph might exceed sequence length. (0393a.vpr@20.1--26.1) [68835]"}
         i < Seq#Length(graph);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, Node#sm(Seq#Index(graph, i)):=Heap[null, Node#sm(Seq#Index(graph, i))][Seq#Index(graph, i), id_3:=true]];
+        Heap := Heap[null, Node#sm(Seq#Index(graph, i)):=Heap[null, Node#sm(Seq#Index(graph, i))][Seq#Index(graph, i), id_2:=true]];
         Heap := Heap[null, Node#sm(Seq#Index(graph, i)):=Heap[null, Node#sm(Seq#Index(graph, i))][Seq#Index(graph, i), neighbors:=true]];
         assume state(Heap, Mask);
   
@@ -702,8 +702,8 @@ procedure Node#definedness(self: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var i_14: int;
-  var j_5: int;
+  var i_18: int;
+  var j_14: int;
   
   // -- Check definedness of predicate body of Node
     
@@ -715,7 +715,7 @@ procedure Node#definedness(self: Ref) returns ()
       assume Heap[self, $allocated];
     perm := FullPerm;
     assume self != null;
-    Mask := Mask[self, id_3:=Mask[self, id_3] + perm];
+    Mask := Mask[self, id_2:=Mask[self, id_2] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
     assume self != null;
@@ -724,29 +724,29 @@ procedure Node#definedness(self: Ref) returns ()
     
     // -- Check definedness of (forall i: Int, j: Int :: { self.neighbors[i], self.neighbors[j] } 0 <= i && i < |self.neighbors| && (0 <= j && j < |self.neighbors| && i != j) ==> self.neighbors[i] != self.neighbors[j])
       if (*) {
-        if (0 <= i_14) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.neighbors (0393a.vpr@15.1--18.2) [210698]"}
+        if (0 <= i_18) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.neighbors (0393a.vpr@15.1--18.2) [68836]"}
             HasDirectPerm(Mask, self, neighbors);
         }
-        if (0 <= i_14 && i_14 < Seq#Length(Heap[self, neighbors])) {
-          if (0 <= j_5) {
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.neighbors (0393a.vpr@15.1--18.2) [210699]"}
+        if (0 <= i_18 && i_18 < Seq#Length(Heap[self, neighbors])) {
+          if (0 <= j_14) {
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.neighbors (0393a.vpr@15.1--18.2) [68837]"}
               HasDirectPerm(Mask, self, neighbors);
           }
         }
-        if ((0 <= i_14 && i_14 < Seq#Length(Heap[self, neighbors])) && ((0 <= j_5 && j_5 < Seq#Length(Heap[self, neighbors])) && i_14 != j_5)) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.neighbors (0393a.vpr@15.1--18.2) [210700]"}
+        if ((0 <= i_18 && i_18 < Seq#Length(Heap[self, neighbors])) && ((0 <= j_14 && j_14 < Seq#Length(Heap[self, neighbors])) && i_18 != j_14)) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.neighbors (0393a.vpr@15.1--18.2) [68838]"}
             HasDirectPerm(Mask, self, neighbors);
-          assert {:msg "  Predicate might not be well-formed. Index self.neighbors[i] into self.neighbors might be negative. (0393a.vpr@15.1--18.2) [210701]"}
-            i_14 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index self.neighbors[i] into self.neighbors might exceed sequence length. (0393a.vpr@15.1--18.2) [210702]"}
-            i_14 < Seq#Length(Heap[self, neighbors]);
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.neighbors (0393a.vpr@15.1--18.2) [210703]"}
+          assert {:msg "  Predicate might not be well-formed. Index self.neighbors[i] into self.neighbors might be negative. (0393a.vpr@15.1--18.2) [68839]"}
+            i_18 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index self.neighbors[i] into self.neighbors might exceed sequence length. (0393a.vpr@15.1--18.2) [68840]"}
+            i_18 < Seq#Length(Heap[self, neighbors]);
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.neighbors (0393a.vpr@15.1--18.2) [68841]"}
             HasDirectPerm(Mask, self, neighbors);
-          assert {:msg "  Predicate might not be well-formed. Index self.neighbors[j] into self.neighbors might be negative. (0393a.vpr@15.1--18.2) [210704]"}
-            j_5 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index self.neighbors[j] into self.neighbors might exceed sequence length. (0393a.vpr@15.1--18.2) [210705]"}
-            j_5 < Seq#Length(Heap[self, neighbors]);
+          assert {:msg "  Predicate might not be well-formed. Index self.neighbors[j] into self.neighbors might be negative. (0393a.vpr@15.1--18.2) [68842]"}
+            j_14 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index self.neighbors[j] into self.neighbors might exceed sequence length. (0393a.vpr@15.1--18.2) [68843]"}
+            j_14 < Seq#Length(Heap[self, neighbors]);
         }
         assume false;
       }

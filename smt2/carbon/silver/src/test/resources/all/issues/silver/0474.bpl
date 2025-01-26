@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:47
+// Date:         2025-01-26 21:42:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0474.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0474-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -191,7 +191,7 @@ function  add1<T>(add1_param_3: T, add1_param_4: T): T;
 type MixedNamedAndNamelessParameters1DomainType T;
 
 // Translation of domain function add2
-function  add2<T>(add2_param_2: T, right_2: T): T;
+function  add2<T>(add2_param_2: T, right: T): T;
 
 // ==================================================
 // Translation of domain MixedNamedAndNamelessParameters2
@@ -201,7 +201,7 @@ function  add2<T>(add2_param_2: T, right_2: T): T;
 type MixedNamedAndNamelessParameters2DomainType T;
 
 // Translation of domain function add3
-function  add3_1<T>(left_2: T, add3_param_2: T): T;
+function  add3_1<T>(left_1: T, add3_param_2: T): T;
 
 // ==================================================
 // Translation of domain NamedParameters
@@ -211,4 +211,4 @@ function  add3_1<T>(left_2: T, add3_param_2: T): T;
 type NamedParametersDomainType T;
 
 // Translation of domain function add4
-function  add4<T>(left_2: T, right_2: T): T;
+function  add4<T>(left_1: T, right: T): T;

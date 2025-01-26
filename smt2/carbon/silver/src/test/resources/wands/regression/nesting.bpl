@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:09:55
+// Date:         2025-01-26 21:44:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/nesting.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/nesting-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -381,7 +381,7 @@ procedure test01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (nesting.vpr@15.3--15.25) [132845]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (nesting.vpr@15.3--15.25) [210808]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -424,7 +424,7 @@ procedure test01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (nesting.vpr@15.3--15.25) [132846]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (nesting.vpr@15.3--15.25) [210809]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -439,7 +439,7 @@ procedure test01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, g] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.g, write) might be negative. (nesting.vpr@15.3--15.25) [132847]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.g, write) might be negative. (nesting.vpr@15.3--15.25) [210810]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -482,7 +482,7 @@ procedure test01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm, x, FullPerm)][x, g:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.g (nesting.vpr@15.3--15.25) [132848]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.g (nesting.vpr@15.3--15.25) [210811]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, g] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -530,7 +530,7 @@ procedure test01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_3Mask[rcvLocal, h] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.h, write) might be negative. (nesting.vpr@16.3--16.40) [132849]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.h, write) might be negative. (nesting.vpr@16.3--16.40) [210812]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -573,7 +573,7 @@ procedure test01(x: Ref) returns ()
             Heap := Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm):=Heap[null, wand_1#sm(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)][x, h:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.h (nesting.vpr@16.3--16.40) [132850]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.h (nesting.vpr@16.3--16.40) [210813]"}
         (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, h] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -622,7 +622,7 @@ procedure test01(x: Ref) returns ()
         }
       neededTransfer := 1.000000000;
       initNeededTransfer := Used_3Mask[null, wand(x, FullPerm, x, FullPerm, x, FullPerm)] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) --* acc(x.f, write) && acc(x.g, write) might be negative. (nesting.vpr@16.3--16.40) [132851]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) --* acc(x.f, write) && acc(x.g, write) might be negative. (nesting.vpr@16.3--16.40) [210814]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -662,7 +662,7 @@ procedure test01(x: Ref) returns ()
             Mask := Mask[null, wand(x, FullPerm, x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm, x, FullPerm)] - takeTransfer];
           }
         }
-      assert {:msg "  Packaging wand might fail. Magic wand instance not found. (nesting.vpr@16.3--16.40) [132852]"}
+      assert {:msg "  Packaging wand might fail. Magic wand instance not found. (nesting.vpr@16.3--16.40) [210815]"}
         (b_6 && b_6) && b_7 ==> neededTransfer == 0.000000000 && Used_3Mask[null, wand(x, FullPerm, x, FullPerm, x, FullPerm)] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -685,18 +685,18 @@ procedure test01(x: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  The precondition of method test02 might not hold. Magic wand instance not found. (nesting.vpr@18.3--18.12) [132853]"}
+      assert {:msg "  The precondition of method test02 might not hold. Magic wand instance not found. (nesting.vpr@18.3--18.12) [210816]"}
         FullPerm <= Mask[null, wand_1(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)];
       Mask := Mask[null, wand_1(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm):=Mask[null, wand_1(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)] - FullPerm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method test02 might not hold. There might be insufficient permission to access x.h (nesting.vpr@18.3--18.12) [132854]"}
+        assert {:msg "  The precondition of method test02 might not hold. There might be insufficient permission to access x.h (nesting.vpr@18.3--18.12) [210817]"}
           perm <= Mask[x, h];
       }
       Mask := Mask[x, h:=Mask[x, h] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method test02 might not hold. There might be insufficient permission to access x.f (nesting.vpr@18.3--18.12) [132855]"}
+        assert {:msg "  The precondition of method test02 might not hold. There might be insufficient permission to access x.f (nesting.vpr@18.3--18.12) [210818]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -826,7 +826,7 @@ procedure test02(x: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (nesting.vpr@25.3--25.108) [132856]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (nesting.vpr@25.3--25.108) [210819]"}
         FullPerm <= Mask[null, wand_1(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)];
       Mask := Mask[null, wand_1(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm):=Mask[null, wand_1(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
@@ -836,7 +836,7 @@ procedure test02(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.h (nesting.vpr@25.3--25.108) [132858]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.h (nesting.vpr@25.3--25.108) [210821]"}
           perm <= Mask[x, h];
       }
       Mask := Mask[x, h:=Mask[x, h] - perm];
@@ -862,7 +862,7 @@ procedure test02(x: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (nesting.vpr@26.3--26.65) [132860]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (nesting.vpr@26.3--26.65) [210823]"}
         FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm, x, FullPerm)];
       Mask := Mask[null, wand(x, FullPerm, x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
@@ -872,7 +872,7 @@ procedure test02(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (nesting.vpr@26.3--26.65) [132862]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (nesting.vpr@26.3--26.65) [210825]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -901,7 +901,7 @@ procedure test02(x: Ref) returns ()
     ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (nesting.vpr@28.10--28.25) [132866]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (nesting.vpr@28.10--28.25) [210829]"}
         perm <= AssertMask[x, g];
     }
     AssertMask := AssertMask[x, g:=AssertMask[x, g] - perm];

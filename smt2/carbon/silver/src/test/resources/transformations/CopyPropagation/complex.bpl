@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:47
+// Date:         2025-01-26 21:44:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/CopyPropagation/complex.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/CopyPropagation/complex-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,19 +180,19 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
-  var j_9: int;
+  var j: int;
   var k: int;
-  var l_2: int;
-  var m_17: int;
+  var l_1: int;
+  var m_18: int;
   var n: int;
   var z: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -202,15 +202,15 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 1 -- complex.vpr@6.5--6.20
     i := 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: j := 2 -- complex.vpr@7.5--7.20
-    j_9 := 2;
+    j := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: k := 3 -- complex.vpr@8.5--8.20
@@ -218,11 +218,11 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: l := 4 -- complex.vpr@9.5--9.20
-    l_2 := 4;
+    l_1 := 4;
     assume state(Heap, Mask);
   
   // -- Translating statement: m := 5 -- complex.vpr@10.5--10.20
-    m_17 := 5;
+    m_18 := 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: n := 7 -- complex.vpr@11.5--11.20
@@ -249,7 +249,7 @@ procedure main() returns ()
         // Inhale invariant
         assume state(Heap, Mask);
         // Check and assume guard
-        assume m_17 == n;
+        assume m_18 == n;
         assume state(Heap, Mask);
         
         // -- Translate loop body
@@ -257,24 +257,24 @@ procedure main() returns ()
           // -- Translating statement: z := (i + j * k) \ n + 2 -- complex.vpr@15.9--15.33
             
             // -- Check definedness of (i + j * k) \ n + 2
-              assert {:msg "  Assignment might fail. Divisor n might be zero. (complex.vpr@15.9--15.33) [92277]"}
+              assert {:msg "  Assignment might fail. Divisor n might be zero. (complex.vpr@15.9--15.33) [198133]"}
                 n != 0;
-            z := (i + j_9 * k) div n + 2;
+            z := (i + j * k) div n + 2;
             assume state(Heap, Mask);
         // Terminate execution
         assume false;
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(m_17 == n);
+      assume !(m_18 == n);
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert l + k + j + n == 100 - n - 20 * k - 7 * j - (n - 1) \ 2 -- complex.vpr@17.5--17.69
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion l + k + j + n == 100 - n - 20 * k - 7 * j - (n - 1) \ 2 might not hold. (complex.vpr@17.12--17.67) [92278]"}
-      l_2 + k + j_9 + n == 100 - n - 20 * k - 7 * j_9 - (n - 1) div 2;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion l + k + j + n == 100 - n - 20 * k - 7 * j - (n - 1) \ 2 might not hold. (complex.vpr@17.12--17.67) [198134]"}
+      l_1 + k + j + n == 100 - n - 20 * k - 7 * j - (n - 1) div 2;
     assume state(Heap, Mask);
 }

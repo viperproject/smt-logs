@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:11
+// Date:         2025-01-26 21:43:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/termination_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/termination_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -213,24 +213,24 @@ function  Nil<V>(): ListDomainType V;
 function  Cons<V>(value_2: V, tail: (ListDomainType V)): ListDomainType V;
 
 // Translation of domain function get_List_value
-function  get_List_value<V>(t_9: (ListDomainType V)): V;
+function  get_List_value<V>(t_3: (ListDomainType V)): V;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<V>(t_9: (ListDomainType V)): ListDomainType V;
+function  get_List_tail<V>(t_3: (ListDomainType V)): ListDomainType V;
 
 // Translation of domain function List_tag
-function  List_tag<V>(t_9: (ListDomainType V)): int;
+function  List_tag<V>(t_3: (ListDomainType V)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <V> value_1: V, tail_1: (ListDomainType V) ::
-  { (Cons(value_1, tail_1): ListDomainType V) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType V)): V)
+axiom (forall <V> value: V, tail_1: (ListDomainType V) ::
+  { (Cons(value, tail_1): ListDomainType V) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType V)): V)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <V> value_1: V, tail_1: (ListDomainType V) ::
-  { (Cons(value_1, tail_1): ListDomainType V) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType V)): ListDomainType V)
+axiom (forall <V> value: V, tail_1: (ListDomainType V) ::
+  { (Cons(value, tail_1): ListDomainType V) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType V)): ListDomainType V)
 );
 
 // Translation of anonymous domain axiom
@@ -240,9 +240,9 @@ axiom (forall <V>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <V> value_1: V, tail_1: (ListDomainType V) ::
-  { (Cons(value_1, tail_1): ListDomainType V) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType V)): int) == 0
+axiom (forall <V> value: V, tail_1: (ListDomainType V) ::
+  { (Cons(value, tail_1): ListDomainType V) }
+  (List_tag((Cons(value, tail_1): ListDomainType V)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -262,9 +262,9 @@ type ListWellFoundedOrderDomainType V;
 axiom true;
 
 // Translation of anonymous domain axiom
-axiom (forall <V> tail_0: (ListDomainType V), value_1: V ::
-  { (Cons(value_1, tail_0): ListDomainType V) }
-  (decreasing(tail_0, (Cons(value_1, tail_0): ListDomainType V)): bool)
+axiom (forall <V> tail_0: (ListDomainType V), value: V ::
+  { (Cons(value, tail_0): ListDomainType V) }
+  (decreasing(tail_0, (Cons(value, tail_0): ListDomainType V)): bool)
 );
 
 // Translation of anonymous domain axiom
@@ -284,48 +284,48 @@ axiom (forall <V> x: (ListDomainType V) ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  len_3(Heap: HeapType, l_2: (ListDomainType ValDomainType)): int;
-function  len'(Heap: HeapType, l_2: (ListDomainType ValDomainType)): int;
-axiom (forall Heap: HeapType, l_2: (ListDomainType ValDomainType) ::
-  { len_3(Heap, l_2) }
-  len_3(Heap, l_2) == len'(Heap, l_2) && dummyFunction(len#triggerStateless(l_2))
+function  len_1(Heap: HeapType, l_1: (ListDomainType ValDomainType)): int;
+function  len'(Heap: HeapType, l_1: (ListDomainType ValDomainType)): int;
+axiom (forall Heap: HeapType, l_1: (ListDomainType ValDomainType) ::
+  { len_1(Heap, l_1) }
+  len_1(Heap, l_1) == len'(Heap, l_1) && dummyFunction(len#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: (ListDomainType ValDomainType) ::
-  { len'(Heap, l_2) }
-  dummyFunction(len#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: (ListDomainType ValDomainType) ::
+  { len'(Heap, l_1) }
+  dummyFunction(len#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), len_3(Heap, l_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> len_3(Heap, l_2) == (if (List_tag(l_2): int) == 1 then 0 else 1 + len'(Heap, (get_List_tail(l_2): ListDomainType ValDomainType)))
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), len_1(Heap, l_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 2 ==> len_1(Heap, l_1) == (if (List_tag(l_1): int) == 1 then 0 else 1 + len'(Heap, (get_List_tail(l_1): ListDomainType ValDomainType)))
 );
 
 // Framing axioms
-function  len#frame(frame: FrameType, l_2: (ListDomainType ValDomainType)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), len'(Heap, l_2) }
-  state(Heap, Mask) ==> len'(Heap, l_2) == len#frame(EmptyFrame, l_2)
+function  len#frame(frame: FrameType, l_1: (ListDomainType ValDomainType)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), len'(Heap, l_1) }
+  state(Heap, Mask) ==> len'(Heap, l_1) == len#frame(EmptyFrame, l_1)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), len'(Heap, l_2) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 2 || len#trigger(EmptyFrame, l_2)) ==> len'(Heap, l_2) >= 0
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), len'(Heap, l_1) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 2 || len#trigger(EmptyFrame, l_1)) ==> len'(Heap, l_1) >= 0
 );
 
 // Trigger function (controlling recursive postconditions)
-function  len#trigger(frame: FrameType, l_2: (ListDomainType ValDomainType)): bool;
+function  len#trigger(frame: FrameType, l_1: (ListDomainType ValDomainType)): bool;
 
 // State-independent trigger function
-function  len#triggerStateless(l_2: (ListDomainType ValDomainType)): int;
+function  len#triggerStateless(l_1: (ListDomainType ValDomainType)): int;
 
 // Check contract well-formedness and postcondition
-procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: int)
+procedure len#definedness(l_1: (ListDomainType ValDomainType)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -336,24 +336,24 @@ procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: 
   // -- Check definedness of function body
     
     // -- Check definedness of ((List_tag(l): Int) == 1 ? 0 : 1 + len((get_List_tail(l): List[Val])))
-      if ((List_tag(l_2): int) == 1) {
+      if ((List_tag(l_1): int) == 1) {
       } else {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume len#trigger(EmptyFrame, (get_List_tail(l_2): ListDomainType ValDomainType));
+          assume len#trigger(EmptyFrame, (get_List_tail(l_1): ListDomainType ValDomainType));
         }
       }
   
   // -- Translate function body
-    Result := (if (List_tag(l_2): int) == 1 then 0 else 1 + len_3(Heap, (get_List_tail(l_2): ListDomainType ValDomainType)));
+    Result := (if (List_tag(l_1): int) == 1 then 0 else 1 + len_1(Heap, (get_List_tail(l_1): ListDomainType ValDomainType)));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of len might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@17.11--17.22) [222846]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of len might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@17.11--17.22) [103678]"}
       Result >= 0;
 }
 
@@ -362,48 +362,48 @@ procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: 
 // ==================================================
 
 // Uninterpreted function definitions
-function  len2(Heap: HeapType, l_2: (ListDomainType ValDomainType)): int;
-function  len2'(Heap: HeapType, l_2: (ListDomainType ValDomainType)): int;
-axiom (forall Heap: HeapType, l_2: (ListDomainType ValDomainType) ::
-  { len2(Heap, l_2) }
-  len2(Heap, l_2) == len2'(Heap, l_2) && dummyFunction(len2#triggerStateless(l_2))
+function  len2(Heap: HeapType, l_1: (ListDomainType ValDomainType)): int;
+function  len2'(Heap: HeapType, l_1: (ListDomainType ValDomainType)): int;
+axiom (forall Heap: HeapType, l_1: (ListDomainType ValDomainType) ::
+  { len2(Heap, l_1) }
+  len2(Heap, l_1) == len2'(Heap, l_1) && dummyFunction(len2#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: (ListDomainType ValDomainType) ::
-  { len2'(Heap, l_2) }
-  dummyFunction(len2#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: (ListDomainType ValDomainType) ::
+  { len2'(Heap, l_1) }
+  dummyFunction(len2#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), len2(Heap, l_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> len2(Heap, l_2) == (if (List_tag(l_2): int) == 1 then 0 else (if (List_tag((get_List_tail(l_2): ListDomainType ValDomainType)): int) == 1 then 1 else 2 + len2'(Heap, (get_List_tail((get_List_tail(l_2): ListDomainType ValDomainType)): ListDomainType ValDomainType))))
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), len2(Heap, l_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> len2(Heap, l_1) == (if (List_tag(l_1): int) == 1 then 0 else (if (List_tag((get_List_tail(l_1): ListDomainType ValDomainType)): int) == 1 then 1 else 2 + len2'(Heap, (get_List_tail((get_List_tail(l_1): ListDomainType ValDomainType)): ListDomainType ValDomainType))))
 );
 
 // Framing axioms
-function  len2#frame(frame: FrameType, l_2: (ListDomainType ValDomainType)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), len2'(Heap, l_2) }
-  state(Heap, Mask) ==> len2'(Heap, l_2) == len2#frame(EmptyFrame, l_2)
+function  len2#frame(frame: FrameType, l_1: (ListDomainType ValDomainType)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), len2'(Heap, l_1) }
+  state(Heap, Mask) ==> len2'(Heap, l_1) == len2#frame(EmptyFrame, l_1)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), len2'(Heap, l_2) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || len2#trigger(EmptyFrame, l_2)) ==> len2'(Heap, l_2) >= 0
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), len2'(Heap, l_1) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 1 || len2#trigger(EmptyFrame, l_1)) ==> len2'(Heap, l_1) >= 0
 );
 
 // Trigger function (controlling recursive postconditions)
-function  len2#trigger(frame: FrameType, l_2: (ListDomainType ValDomainType)): bool;
+function  len2#trigger(frame: FrameType, l_1: (ListDomainType ValDomainType)): bool;
 
 // State-independent trigger function
-function  len2#triggerStateless(l_2: (ListDomainType ValDomainType)): int;
+function  len2#triggerStateless(l_1: (ListDomainType ValDomainType)): int;
 
 // Check contract well-formedness and postcondition
-procedure len2#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: int)
+procedure len2#definedness(l_1: (ListDomainType ValDomainType)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -414,27 +414,27 @@ procedure len2#definedness(l_2: (ListDomainType ValDomainType)) returns (Result:
   // -- Check definedness of function body
     
     // -- Check definedness of ((List_tag(l): Int) == 1 ? 0 : ((List_tag((get_List_tail(l): List[Val])): Int) == 1 ? 1 : 2 + len2((get_List_tail((get_List_tail(l): List[Val])): List[Val]))))
-      if ((List_tag(l_2): int) == 1) {
+      if ((List_tag(l_1): int) == 1) {
       } else {
-        if ((List_tag((get_List_tail(l_2): ListDomainType ValDomainType)): int) == 1) {
+        if ((List_tag((get_List_tail(l_1): ListDomainType ValDomainType)): int) == 1) {
         } else {
           if (*) {
             // Stop execution
             assume false;
           } else {
             // Enable postcondition for recursive call
-            assume len2#trigger(EmptyFrame, (get_List_tail((get_List_tail(l_2): ListDomainType ValDomainType)): ListDomainType ValDomainType));
+            assume len2#trigger(EmptyFrame, (get_List_tail((get_List_tail(l_1): ListDomainType ValDomainType)): ListDomainType ValDomainType));
           }
         }
       }
   
   // -- Translate function body
-    Result := (if (List_tag(l_2): int) == 1 then 0 else (if (List_tag((get_List_tail(l_2): ListDomainType ValDomainType)): int) == 1 then 1 else 2 + len2(Heap, (get_List_tail((get_List_tail(l_2): ListDomainType ValDomainType)): ListDomainType ValDomainType))));
+    Result := (if (List_tag(l_1): int) == 1 then 0 else (if (List_tag((get_List_tail(l_1): ListDomainType ValDomainType)): int) == 1 then 1 else 2 + len2(Heap, (get_List_tail((get_List_tail(l_1): ListDomainType ValDomainType)): ListDomainType ValDomainType))));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of len2 might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@24.11--24.22) [222847]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of len2 might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@24.11--24.22) [103679]"}
       Result >= 0;
 }
 
@@ -443,48 +443,48 @@ procedure len2#definedness(l_2: (ListDomainType ValDomainType)) returns (Result:
 // ==================================================
 
 // Uninterpreted function definitions
-function  lenBad(Heap: HeapType, l_2: (ListDomainType ValDomainType), v_2: ValDomainType): int;
-function  lenBad'(Heap: HeapType, l_2: (ListDomainType ValDomainType), v_2: ValDomainType): int;
-axiom (forall Heap: HeapType, l_2: (ListDomainType ValDomainType), v_2: ValDomainType ::
-  { lenBad(Heap, l_2, v_2) }
-  lenBad(Heap, l_2, v_2) == lenBad'(Heap, l_2, v_2) && dummyFunction(lenBad#triggerStateless(l_2, v_2))
+function  lenBad(Heap: HeapType, l_1: (ListDomainType ValDomainType), v_2: ValDomainType): int;
+function  lenBad'(Heap: HeapType, l_1: (ListDomainType ValDomainType), v_2: ValDomainType): int;
+axiom (forall Heap: HeapType, l_1: (ListDomainType ValDomainType), v_2: ValDomainType ::
+  { lenBad(Heap, l_1, v_2) }
+  lenBad(Heap, l_1, v_2) == lenBad'(Heap, l_1, v_2) && dummyFunction(lenBad#triggerStateless(l_1, v_2))
 );
-axiom (forall Heap: HeapType, l_2: (ListDomainType ValDomainType), v_2: ValDomainType ::
-  { lenBad'(Heap, l_2, v_2) }
-  dummyFunction(lenBad#triggerStateless(l_2, v_2))
+axiom (forall Heap: HeapType, l_1: (ListDomainType ValDomainType), v_2: ValDomainType ::
+  { lenBad'(Heap, l_1, v_2) }
+  dummyFunction(lenBad#triggerStateless(l_1, v_2))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType), v_2: ValDomainType ::
-  { state(Heap, Mask), lenBad(Heap, l_2, v_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> lenBad(Heap, l_2, v_2) == lenBad'(Heap, (Cons(v_2, (Nil(): ListDomainType ValDomainType)): ListDomainType ValDomainType), v_2)
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType), v_2: ValDomainType ::
+  { state(Heap, Mask), lenBad(Heap, l_1, v_2) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> lenBad(Heap, l_1, v_2) == lenBad'(Heap, (Cons(v_2, (Nil(): ListDomainType ValDomainType)): ListDomainType ValDomainType), v_2)
 );
 
 // Framing axioms
-function  lenBad#frame(frame: FrameType, l_2: (ListDomainType ValDomainType), v_2: ValDomainType): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType), v_2: ValDomainType ::
-  { state(Heap, Mask), lenBad'(Heap, l_2, v_2) }
-  state(Heap, Mask) ==> lenBad'(Heap, l_2, v_2) == lenBad#frame(EmptyFrame, l_2, v_2)
+function  lenBad#frame(frame: FrameType, l_1: (ListDomainType ValDomainType), v_2: ValDomainType): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType), v_2: ValDomainType ::
+  { state(Heap, Mask), lenBad'(Heap, l_1, v_2) }
+  state(Heap, Mask) ==> lenBad'(Heap, l_1, v_2) == lenBad#frame(EmptyFrame, l_1, v_2)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType), v_2: ValDomainType ::
-  { state(Heap, Mask), lenBad'(Heap, l_2, v_2) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 3 || lenBad#trigger(EmptyFrame, l_2, v_2)) ==> lenBad'(Heap, l_2, v_2) >= 0
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType), v_2: ValDomainType ::
+  { state(Heap, Mask), lenBad'(Heap, l_1, v_2) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 3 || lenBad#trigger(EmptyFrame, l_1, v_2)) ==> lenBad'(Heap, l_1, v_2) >= 0
 );
 
 // Trigger function (controlling recursive postconditions)
-function  lenBad#trigger(frame: FrameType, l_2: (ListDomainType ValDomainType), v_2: ValDomainType): bool;
+function  lenBad#trigger(frame: FrameType, l_1: (ListDomainType ValDomainType), v_2: ValDomainType): bool;
 
 // State-independent trigger function
-function  lenBad#triggerStateless(l_2: (ListDomainType ValDomainType), v_2: ValDomainType): int;
+function  lenBad#triggerStateless(l_1: (ListDomainType ValDomainType), v_2: ValDomainType): int;
 
 // Check contract well-formedness and postcondition
-procedure lenBad#definedness(l_2: (ListDomainType ValDomainType), v_2: ValDomainType) returns (Result: int)
+procedure lenBad#definedness(l_1: (ListDomainType ValDomainType), v_2: ValDomainType) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -507,9 +507,9 @@ procedure lenBad#definedness(l_2: (ListDomainType ValDomainType), v_2: ValDomain
     Result := lenBad(Heap, (Cons(v_2, (Nil(): ListDomainType ValDomainType)): ListDomainType ValDomainType), v_2);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of lenBad might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@31.10--31.21) [222848]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of lenBad might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@31.10--31.21) [103680]"}
       Result >= 0;
 }
 
@@ -518,48 +518,48 @@ procedure lenBad#definedness(l_2: (ListDomainType ValDomainType), v_2: ValDomain
 // ==================================================
 
 // Uninterpreted function definitions
-function  lenBad2(Heap: HeapType, l_2: (ListDomainType ValDomainType)): int;
-function  lenBad2'(Heap: HeapType, l_2: (ListDomainType ValDomainType)): int;
-axiom (forall Heap: HeapType, l_2: (ListDomainType ValDomainType) ::
-  { lenBad2(Heap, l_2) }
-  lenBad2(Heap, l_2) == lenBad2'(Heap, l_2) && dummyFunction(lenBad2#triggerStateless(l_2))
+function  lenBad2(Heap: HeapType, l_1: (ListDomainType ValDomainType)): int;
+function  lenBad2'(Heap: HeapType, l_1: (ListDomainType ValDomainType)): int;
+axiom (forall Heap: HeapType, l_1: (ListDomainType ValDomainType) ::
+  { lenBad2(Heap, l_1) }
+  lenBad2(Heap, l_1) == lenBad2'(Heap, l_1) && dummyFunction(lenBad2#triggerStateless(l_1))
 );
-axiom (forall Heap: HeapType, l_2: (ListDomainType ValDomainType) ::
-  { lenBad2'(Heap, l_2) }
-  dummyFunction(lenBad2#triggerStateless(l_2))
+axiom (forall Heap: HeapType, l_1: (ListDomainType ValDomainType) ::
+  { lenBad2'(Heap, l_1) }
+  dummyFunction(lenBad2#triggerStateless(l_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), lenBad2(Heap, l_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> lenBad2(Heap, l_2) == 1 + lenBad2'(Heap, l_2)
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), lenBad2(Heap, l_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> lenBad2(Heap, l_1) == 1 + lenBad2'(Heap, l_1)
 );
 
 // Framing axioms
-function  lenBad2#frame(frame: FrameType, l_2: (ListDomainType ValDomainType)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), lenBad2'(Heap, l_2) }
-  state(Heap, Mask) ==> lenBad2'(Heap, l_2) == lenBad2#frame(EmptyFrame, l_2)
+function  lenBad2#frame(frame: FrameType, l_1: (ListDomainType ValDomainType)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), lenBad2'(Heap, l_1) }
+  state(Heap, Mask) ==> lenBad2'(Heap, l_1) == lenBad2#frame(EmptyFrame, l_1)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: (ListDomainType ValDomainType) ::
-  { state(Heap, Mask), lenBad2'(Heap, l_2) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || lenBad2#trigger(EmptyFrame, l_2)) ==> lenBad2'(Heap, l_2) >= 0
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: (ListDomainType ValDomainType) ::
+  { state(Heap, Mask), lenBad2'(Heap, l_1) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || lenBad2#trigger(EmptyFrame, l_1)) ==> lenBad2'(Heap, l_1) >= 0
 );
 
 // Trigger function (controlling recursive postconditions)
-function  lenBad2#trigger(frame: FrameType, l_2: (ListDomainType ValDomainType)): bool;
+function  lenBad2#trigger(frame: FrameType, l_1: (ListDomainType ValDomainType)): bool;
 
 // State-independent trigger function
-function  lenBad2#triggerStateless(l_2: (ListDomainType ValDomainType)): int;
+function  lenBad2#triggerStateless(l_1: (ListDomainType ValDomainType)): int;
 
 // Check contract well-formedness and postcondition
-procedure lenBad2#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: int)
+procedure lenBad2#definedness(l_1: (ListDomainType ValDomainType)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -575,16 +575,16 @@ procedure lenBad2#definedness(l_2: (ListDomainType ValDomainType)) returns (Resu
         assume false;
       } else {
         // Enable postcondition for recursive call
-        assume lenBad2#trigger(EmptyFrame, l_2);
+        assume lenBad2#trigger(EmptyFrame, l_1);
       }
   
   // -- Translate function body
-    Result := 1 + lenBad2(Heap, l_2);
+    Result := 1 + lenBad2(Heap, l_1);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of lenBad2 might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@39.10--39.21) [222849]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of lenBad2 might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@39.10--39.21) [103681]"}
       Result >= 0;
 }
 
@@ -592,13 +592,13 @@ procedure lenBad2#definedness(l_2: (ListDomainType ValDomainType)) returns (Resu
 // Translation of method len_termination_proof
 // ==================================================
 
-procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
+procedure len_termination_proof(l_1: (ListDomainType ValDomainType)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -609,21 +609,21 @@ procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if ((List_tag(l): Int) == 1) -- <no position>
-    if ((List_tag(l_2): int) == 1) {
+    if ((List_tag(l_1): int) == 1) {
     } else {
       
       // -- Translating statement: assert (decreasing((get_List_tail(l): List[Val]), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion (decreasing((get_List_tail(l): List[Val]), old(l)): Bool) might not hold. (<no position>) [222850]"}
-          (decreasing((get_List_tail(l_2): ListDomainType ValDomainType), l_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222851]"}
-          (bounded(l_2): bool);
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Assert might fail. Assertion (decreasing((get_List_tail(l): List[Val]), old(l)): Bool) might not hold. (<no position>) [103682]"}
+          (decreasing((get_List_tail(l_1): ListDomainType ValDomainType), l_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [103683]"}
+          (bounded(l_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -633,13 +633,13 @@ procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
 // Translation of method len2_termination_proof
 // ==================================================
 
-procedure len2_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
+procedure len2_termination_proof(l_1: (ListDomainType ValDomainType)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -650,26 +650,26 @@ procedure len2_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if ((List_tag(l): Int) == 1) -- <no position>
-    if ((List_tag(l_2): int) == 1) {
+    if ((List_tag(l_1): int) == 1) {
     } else {
       
       // -- Translating statement: if ((List_tag((get_List_tail(l): List[Val])): Int) == 1) -- <no position>
-        if ((List_tag((get_List_tail(l_2): ListDomainType ValDomainType)): int) == 1) {
+        if ((List_tag((get_List_tail(l_1): ListDomainType ValDomainType)): int) == 1) {
         } else {
           
           // -- Translating statement: assert (decreasing((get_List_tail((get_List_tail(l): List[Val])): List[Val]),
   //   old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Assert might fail. Assertion (decreasing((get_List_tail((get_List_tail(l): List[Val])): List[Val]), old(l)): Bool) might not hold. (<no position>) [222852]"}
-              (decreasing((get_List_tail((get_List_tail(l_2): ListDomainType ValDomainType)): ListDomainType ValDomainType), l_2): bool);
-            assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222853]"}
-              (bounded(l_2): bool);
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Assert might fail. Assertion (decreasing((get_List_tail((get_List_tail(l): List[Val])): List[Val]), old(l)): Bool) might not hold. (<no position>) [103684]"}
+              (decreasing((get_List_tail((get_List_tail(l_1): ListDomainType ValDomainType)): ListDomainType ValDomainType), l_1): bool);
+            assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [103685]"}
+              (bounded(l_1): bool);
             assume state(Heap, Mask);
         }
         assume state(Heap, Mask);
@@ -681,13 +681,13 @@ procedure len2_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
 // Translation of method lenBad_termination_proof
 // ==================================================
 
-procedure lenBad_termination_proof(l_2: (ListDomainType ValDomainType), v_2: ValDomainType) returns ()
+procedure lenBad_termination_proof(l_1: (ListDomainType ValDomainType), v_2: ValDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -698,17 +698,17 @@ procedure lenBad_termination_proof(l_2: (ListDomainType ValDomainType), v_2: Val
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (decreasing((Cons(v, (Nil(): List[Val])): List[Val]), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (decreasing((Cons(v, (Nil(): List[Val])): List[Val]), old(l)): Bool) might not hold. (<no position>) [222854]"}
-      (decreasing((Cons(v_2, (Nil(): ListDomainType ValDomainType)): ListDomainType ValDomainType), l_2): bool);
-    assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222855]"}
-      (bounded(l_2): bool);
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (decreasing((Cons(v, (Nil(): List[Val])): List[Val]), old(l)): Bool) might not hold. (<no position>) [103686]"}
+      (decreasing((Cons(v_2, (Nil(): ListDomainType ValDomainType)): ListDomainType ValDomainType), l_1): bool);
+    assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [103687]"}
+      (bounded(l_1): bool);
     assume state(Heap, Mask);
 }
 
@@ -716,13 +716,13 @@ procedure lenBad_termination_proof(l_2: (ListDomainType ValDomainType), v_2: Val
 // Translation of method lenBad2_termination_proof
 // ==================================================
 
-procedure lenBad2_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
+procedure lenBad2_termination_proof(l_1: (ListDomainType ValDomainType)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -733,15 +733,15 @@ procedure lenBad2_termination_proof(l_2: (ListDomainType ValDomainType)) returns
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (decreasing(l, old(l)): Bool) && (bounded(old(l)): Bool) -- <no position>
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (decreasing(l, old(l)): Bool) might not hold. (<no position>) [222856]"}
-      (decreasing(l_2, l_2): bool);
-    assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222857]"}
-      (bounded(l_2): bool);
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (decreasing(l, old(l)): Bool) might not hold. (<no position>) [103688]"}
+      (decreasing(l_1, l_1): bool);
+    assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [103689]"}
+      (bounded(l_1): bool);
     assume state(Heap, Mask);
 }

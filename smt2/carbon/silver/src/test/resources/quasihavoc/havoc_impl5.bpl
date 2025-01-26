@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:57:37
+// Date:         2025-01-26 21:43:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_impl5.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_impl5-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,7 +185,7 @@ axiom !IsWandField(f_7);
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref, b1: bool, b2: bool, b3: bool) returns ()
+procedure foo_3(x: Ref, b1: bool, b2: bool, b3: bool) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -221,10 +221,10 @@ procedure foo_1(x: Ref, b1: bool, b2: bool, b3: bool) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := perm_temp_quasihavoc_;
-        assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77963]"}
+        assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [103059]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (<no position>) [77964]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (<no position>) [103060]"}
             perm <= Mask[x, f_7];
         }
         Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -236,7 +236,7 @@ procedure foo_1(x: Ref, b1: bool, b2: bool, b3: bool) returns ()
       
       // -- Translating statement: inhale acc(x.f, perm_temp_quasihavoc_) -- <no position>
         perm := perm_temp_quasihavoc_;
-        assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77965]"}
+        assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [103061]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> x != null;
         Mask := Mask[x, f_7:=Mask[x, f_7] + perm];

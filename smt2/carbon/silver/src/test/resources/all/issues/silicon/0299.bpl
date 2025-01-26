@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:40
+// Date:         2025-01-26 21:42:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0299.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0299-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_20: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_20, f_17] }
-  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_17], $allocated]
+axiom (forall o_54: Ref, f_24: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_54, f_24] }
+  Heap[o_54, $allocated] ==> Heap[Heap[o_54, f_24], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref, f_24: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, f_24] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_27, f_24) ==> Heap[o_27, f_24] == ExhaleHeap[o_27, f_24]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref, f_54: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, f_54] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_55, f_54) ==> Heap[o_55, f_54] == ExhaleHeap[o_55, f_54]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9), ExhaleHeap[null, PredicateMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> Heap[null, PredicateMaskField(pm_f_9)] == ExhaleHeap[null, PredicateMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32), ExhaleHeap[null, PredicateMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> Heap[null, PredicateMaskField(pm_f_32)] == ExhaleHeap[null, PredicateMaskField(pm_f_32)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, PredicateMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, PredicateMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9), ExhaleHeap[null, WandMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> Heap[null, WandMaskField(pm_f_9)] == ExhaleHeap[null, WandMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32), ExhaleHeap[null, WandMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> Heap[null, WandMaskField(pm_f_32)] == ExhaleHeap[null, WandMaskField(pm_f_32)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, WandMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, WandMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_27, $allocated] ==> ExhaleHeap[o_27, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_55, $allocated] ==> ExhaleHeap[o_55, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_31: (Field A B), v: B ::
-  { Heap[o_20, f_31:=v] }
-  succHeap(Heap, Heap[o_20, f_31:=v])
+axiom (forall <A, B> Heap: HeapType, o_54: Ref, f_8: (Field A B), v: B ::
+  { Heap[o_54, f_8:=v] }
+  succHeap(Heap, Heap[o_54, f_8:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,7 +145,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(i_1: int): bool;
-function  neverTriggered2(i_3: int): bool;
+function  neverTriggered2(i_3_2: int): bool;
 function  neverTriggered3(i_4_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
@@ -569,27 +569,27 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 type ArrayDomainType;
 
 // Translation of domain function loc
-function  loc(a_3: ArrayDomainType, i_79: int): Ref;
+function  loc(a_3: ArrayDomainType, i_6: int): Ref;
 
 // Translation of domain function len
-function  len_1(a_3: ArrayDomainType): int;
+function  len(a_3: ArrayDomainType): int;
 
 // Translation of domain function first
-function  first(r_3: Ref): ArrayDomainType;
+function  first_1(r_4: Ref): ArrayDomainType;
 
 // Translation of domain function second
-function  second(r_3: Ref): int;
+function  second_1(r_4: Ref): int;
 
 // Translation of domain axiom all_diff
 axiom (forall a_2: ArrayDomainType, i: int ::
   { (loc(a_2, i): Ref) }
-  (first((loc(a_2, i): Ref)): ArrayDomainType) == a_2 && (second((loc(a_2, i): Ref)): int) == i
+  (first_1((loc(a_2, i): Ref)): ArrayDomainType) == a_2 && (second_1((loc(a_2, i): Ref)): int) == i
 );
 
 // Translation of domain axiom length_nonneg
 axiom (forall a_2: ArrayDomainType ::
-  { (len_1(a_2): int) }
-  (len_1(a_2): int) >= 0
+  { (len(a_2): int) }
+  (len(a_2): int) >= 0
 );
 
 // ==================================================
@@ -605,11 +605,11 @@ axiom !IsWandField(val);
 // ==================================================
 
 // Uninterpreted function definitions
-function  dummy(Heap: HeapType, x: int): bool;
+function  dummy_1(Heap: HeapType, x: int): bool;
 function  dummy'(Heap: HeapType, x: int): bool;
 axiom (forall Heap: HeapType, x: int ::
-  { dummy(Heap, x) }
-  dummy(Heap, x) == dummy'(Heap, x) && dummyFunction(dummy#triggerStateless(x))
+  { dummy_1(Heap, x) }
+  dummy_1(Heap, x) == dummy'(Heap, x) && dummyFunction(dummy#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: int ::
   { dummy'(Heap, x) }
@@ -618,8 +618,8 @@ axiom (forall Heap: HeapType, x: int ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: int ::
-  { state(Heap, Mask), dummy(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> dummy(Heap, x)
+  { state(Heap, Mask), dummy_1(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> dummy_1(Heap, x)
 );
 
 // Framing axioms
@@ -658,16 +658,16 @@ procedure quicksort_rec(a_2: ArrayDomainType, lo: int, hi: int) returns (permuta
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i$0_8: int;
-  var j_6: int;
-  var ExhaleWellDef0Mask: MaskType;
+  var i$0_4: int;
+  var j_12: int;
   var ExhaleWellDef0Heap: HeapType;
-  var i$0_2: int;
-  var j_2_1: int;
+  var ExhaleWellDef0Mask: MaskType;
+  var i$0_2_1: int;
+  var j_2_2: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -685,7 +685,7 @@ procedure quicksort_rec(a_2: ArrayDomainType, lo: int, hi: int) returns (permuta
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (0299.vpr@30.12--30.86) [206232]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (0299.vpr@30.12--30.86) [73998]"}
       (forall i_1: int, i_1_1: int ::
       
       (((i_1 != i_1_1 && (lo <= i_1 && i_1 <= hi)) && (lo <= i_1_1 && i_1_1 <= hi)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
@@ -696,9 +696,9 @@ procedure quicksort_rec(a_2: ArrayDomainType, lo: int, hi: int) returns (permuta
         { (loc(a_2, i_1): Ref) } { Heap[(loc(a_2, i_1): Ref), val] }
         (lo <= i_1 && i_1 <= hi) && NoPerm < FullPerm ==> qpRange1((loc(a_2, i_1): Ref)) && invRecv1((loc(a_2, i_1): Ref)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((lo <= invRecv1(o_4) && invRecv1(o_4) <= hi) && NoPerm < FullPerm) && qpRange1(o_4) ==> (loc(a_2, invRecv1(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((lo <= invRecv1(o_9) && invRecv1(o_9) <= hi) && NoPerm < FullPerm) && qpRange1(o_9) ==> (loc(a_2, invRecv1(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -708,13 +708,13 @@ procedure quicksort_rec(a_2: ArrayDomainType, lo: int, hi: int) returns (permuta
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((lo <= invRecv1(o_4) && invRecv1(o_4) <= hi) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv1(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((lo <= invRecv1(o_4) && invRecv1(o_4) <= hi) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((lo <= invRecv1(o_9) && invRecv1(o_9) <= hi) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv1(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((lo <= invRecv1(o_9) && invRecv1(o_9) <= hi) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -723,8 +723,8 @@ procedure quicksort_rec(a_2: ArrayDomainType, lo: int, hi: int) returns (permuta
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -736,36 +736,36 @@ procedure quicksort_rec(a_2: ArrayDomainType, lo: int, hi: int) returns (permuta
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (0299.vpr@32.11--32.85) [206233]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (0299.vpr@32.11--32.85) [73999]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && (lo <= i_3 && i_3 <= hi)) && (lo <= i_3_1 && i_3_1 <= hi)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_3): Ref) != (loc(a_2, i_3_1): Ref)
+      (((i_3_2 != i_3_3 && (lo <= i_3_2 && i_3_2 <= hi)) && (lo <= i_3_3 && i_3_3 <= hi)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_3_2): Ref) != (loc(a_2, i_3_3): Ref)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { (loc(a_2, i_3): Ref) } { PostHeap[(loc(a_2, i_3): Ref), val] }
-        (lo <= i_3 && i_3 <= hi) && NoPerm < FullPerm ==> qpRange2((loc(a_2, i_3): Ref)) && invRecv2((loc(a_2, i_3): Ref)) == i_3
+      assume (forall i_3_2: int ::
+        { (loc(a_2, i_3_2): Ref) } { PostHeap[(loc(a_2, i_3_2): Ref), val] }
+        (lo <= i_3_2 && i_3_2 <= hi) && NoPerm < FullPerm ==> qpRange2((loc(a_2, i_3_2): Ref)) && invRecv2((loc(a_2, i_3_2): Ref)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        ((lo <= invRecv2(o_4) && invRecv2(o_4) <= hi) && NoPerm < FullPerm) && qpRange2(o_4) ==> (loc(a_2, invRecv2(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        ((lo <= invRecv2(o_9) && invRecv2(o_9) <= hi) && NoPerm < FullPerm) && qpRange2(o_9) ==> (loc(a_2, invRecv2(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { (loc(a_2, i_3): Ref) } { PostHeap[(loc(a_2, i_3): Ref), val] }
-        lo <= i_3 && i_3 <= hi ==> (loc(a_2, i_3): Ref) != null
+      assume (forall i_3_2: int ::
+        { (loc(a_2, i_3_2): Ref) } { PostHeap[(loc(a_2, i_3_2): Ref), val] }
+        lo <= i_3_2 && i_3_2 <= hi ==> (loc(a_2, i_3_2): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((lo <= invRecv2(o_4) && invRecv2(o_4) <= hi) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv2(o_4)): Ref) == o_4) && QPMask[o_4, val] == PostMask[o_4, val] + FullPerm) && (!(((lo <= invRecv2(o_4) && invRecv2(o_4) <= hi) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, val] == PostMask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((lo <= invRecv2(o_9) && invRecv2(o_9) <= hi) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv2(o_9)): Ref) == o_9) && QPMask[o_9, val] == PostMask[o_9, val] + FullPerm) && (!(((lo <= invRecv2(o_9) && invRecv2(o_9) <= hi) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, val] == PostMask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -773,11 +773,11 @@ procedure quicksort_rec(a_2: ArrayDomainType, lo: int, hi: int) returns (permuta
     
     // -- Check definedness of (forall i$0: Int, j: Int :: { loc(a, i$0).val, loc(a, j).val } lo <= i$0 && (i$0 <= j && j <= hi) ==> loc(a, i$0).val <= loc(a, j).val)
       if (*) {
-        if (lo <= i$0_8 && (i$0_8 <= j_6 && j_6 <= hi)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i$0).val (0299.vpr@34.11--34.28) [206234]"}
-            HasDirectPerm(PostMask, (loc(a_2, i$0_8): Ref), val);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, j).val (0299.vpr@34.11--34.28) [206235]"}
-            HasDirectPerm(PostMask, (loc(a_2, j_6): Ref), val);
+        if (lo <= i$0_4 && (i$0_4 <= j_12 && j_12 <= hi)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i$0).val (0299.vpr@34.11--34.28) [74000]"}
+            HasDirectPerm(PostMask, (loc(a_2, i$0_4): Ref), val);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, j).val (0299.vpr@34.11--34.28) [74001]"}
+            HasDirectPerm(PostMask, (loc(a_2, j_12): Ref), val);
         }
         assume false;
       }
@@ -791,22 +791,22 @@ procedure quicksort_rec(a_2: ArrayDomainType, lo: int, hi: int) returns (permuta
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
       
     
     // -- check if receiver loc(a, i) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (0299.vpr@32.11--32.85) [206236]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (0299.vpr@32.11--32.85) [74002]"}
         (forall i_4_1: int, i_4_2: int ::
         { neverTriggered3(i_4_1), neverTriggered3(i_4_2) }
         (((i_4_1 != i_4_2 && (lo <= i_4_1 && i_4_1 <= hi)) && (lo <= i_4_2 && i_4_2 <= hi)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_4_1): Ref) != (loc(a_2, i_4_2): Ref)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of quicksort_rec might not hold. There might be insufficient permission to access loc(a, i).val (0299.vpr@32.11--32.85) [206237]"}
+      assert {:msg "  Postcondition of quicksort_rec might not hold. There might be insufficient permission to access loc(a, i).val (0299.vpr@32.11--32.85) [74003]"}
         (forall i_4_1: int ::
         { (loc(a_2, i_4_1): Ref) } { Heap[(loc(a_2, i_4_1): Ref), val] }
         lo <= i_4_1 && i_4_1 <= hi ==> Mask[(loc(a_2, i_4_1): Ref), val] >= FullPerm
@@ -817,33 +817,33 @@ procedure quicksort_rec(a_2: ArrayDomainType, lo: int, hi: int) returns (permuta
         { (loc(a_2, i_4_1): Ref) } { Heap[(loc(a_2, i_4_1): Ref), val] }
         (lo <= i_4_1 && i_4_1 <= hi) && NoPerm < FullPerm ==> qpRange3((loc(a_2, i_4_1): Ref)) && invRecv3((loc(a_2, i_4_1): Ref)) == i_4_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (lo <= invRecv3(o_4) && invRecv3(o_4) <= hi) && (NoPerm < FullPerm && qpRange3(o_4)) ==> (loc(a_2, invRecv3(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (lo <= invRecv3(o_9) && invRecv3(o_9) <= hi) && (NoPerm < FullPerm && qpRange3(o_9)) ==> (loc(a_2, invRecv3(o_9)): Ref) == o_9
       );
     
     // -- assume permission updates for field val
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((lo <= invRecv3(o_4) && invRecv3(o_4) <= hi) && (NoPerm < FullPerm && qpRange3(o_4)) ==> (loc(a_2, invRecv3(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((lo <= invRecv3(o_4) && invRecv3(o_4) <= hi) && (NoPerm < FullPerm && qpRange3(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((lo <= invRecv3(o_9) && invRecv3(o_9) <= hi) && (NoPerm < FullPerm && qpRange3(o_9)) ==> (loc(a_2, invRecv3(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((lo <= invRecv3(o_9) && invRecv3(o_9) <= hi) && (NoPerm < FullPerm && qpRange3(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (lo <= i$0_2 && (i$0_2 <= j_2_1 && j_2_1 <= hi)) {
-        assert {:msg "  Postcondition of quicksort_rec might not hold. Assertion loc(a, i$0).val <= loc(a, j).val might not hold. (0299.vpr@34.11--34.28) [206238]"}
-          Heap[(loc(a_2, i$0_2): Ref), val] <= Heap[(loc(a_2, j_2_1): Ref), val];
+      if (lo <= i$0_2_1 && (i$0_2_1 <= j_2_2 && j_2_2 <= hi)) {
+        assert {:msg "  Postcondition of quicksort_rec might not hold. Assertion loc(a, i$0).val <= loc(a, j).val might not hold. (0299.vpr@34.11--34.28) [74004]"}
+          Heap[(loc(a_2, i$0_2_1): Ref), val] <= Heap[(loc(a_2, j_2_2): Ref), val];
       }
       assume false;
     }
-    assume (forall i$0_3_1_1: int, j_3_1_1: int ::
-      { Heap[(loc(a_2, i$0_3_1_1): Ref), val], Heap[(loc(a_2, j_3_1_1): Ref), val] }
-      lo <= i$0_3_1_1 && (i$0_3_1_1 <= j_3_1_1 && j_3_1_1 <= hi) ==> Heap[(loc(a_2, i$0_3_1_1): Ref), val] <= Heap[(loc(a_2, j_3_1_1): Ref), val]
+    assume (forall i$0_3_1: int, j_3_1_1: int ::
+      { Heap[(loc(a_2, i$0_3_1): Ref), val], Heap[(loc(a_2, j_3_1_1): Ref), val] }
+      lo <= i$0_3_1 && (i$0_3_1 <= j_3_1_1 && j_3_1_1 <= hi) ==> Heap[(loc(a_2, i$0_3_1): Ref), val] <= Heap[(loc(a_2, j_3_1_1): Ref), val]
     );
     // Finish exhale
     havoc ExhaleHeap;

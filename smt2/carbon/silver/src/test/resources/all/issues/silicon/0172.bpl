@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:07
+// Date:         2025-01-26 21:42:49
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0172.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0172-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_131: Ref, f_205: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_131, f_205] }
-  Heap[o_131, $allocated] ==> Heap[Heap[o_131, f_205], $allocated]
+axiom (forall o_91: Ref, f_102: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_91, f_102] }
+  Heap[o_91, $allocated] ==> Heap[Heap[o_91, f_102], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_134: Ref, f_206: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_134, f_206] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_134, f_206) ==> Heap[o_134, f_206] == ExhaleHeap[o_134, f_206]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_92: Ref, f_103: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_92, f_103] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_92, f_103) ==> Heap[o_92, f_103] == ExhaleHeap[o_92, f_103]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_58: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_58), ExhaleHeap[null, PredicateMaskField(pm_f_58)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_58) && IsPredicateField(pm_f_58) ==> Heap[null, PredicateMaskField(pm_f_58)] == ExhaleHeap[null, PredicateMaskField(pm_f_58)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_40: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_40), ExhaleHeap[null, PredicateMaskField(pm_f_40)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_40) && IsPredicateField(pm_f_40) ==> Heap[null, PredicateMaskField(pm_f_40)] == ExhaleHeap[null, PredicateMaskField(pm_f_40)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_58: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_58) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_58) && IsPredicateField(pm_f_58) ==> (forall <A, B> o2_58: Ref, f_206: (Field A B) ::
-    { ExhaleHeap[o2_58, f_206] }
-    Heap[null, PredicateMaskField(pm_f_58)][o2_58, f_206] ==> Heap[o2_58, f_206] == ExhaleHeap[o2_58, f_206]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_40: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_40) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_40) && IsPredicateField(pm_f_40) ==> (forall <A, B> o2_40: Ref, f_103: (Field A B) ::
+    { ExhaleHeap[o2_40, f_103] }
+    Heap[null, PredicateMaskField(pm_f_40)][o2_40, f_103] ==> Heap[o2_40, f_103] == ExhaleHeap[o2_40, f_103]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_58: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_58), ExhaleHeap[null, WandMaskField(pm_f_58)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_58) && IsWandField(pm_f_58) ==> Heap[null, WandMaskField(pm_f_58)] == ExhaleHeap[null, WandMaskField(pm_f_58)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_40: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_40), ExhaleHeap[null, WandMaskField(pm_f_40)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_40) && IsWandField(pm_f_40) ==> Heap[null, WandMaskField(pm_f_40)] == ExhaleHeap[null, WandMaskField(pm_f_40)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_58: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_58) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_58) && IsWandField(pm_f_58) ==> (forall <A, B> o2_58: Ref, f_206: (Field A B) ::
-    { ExhaleHeap[o2_58, f_206] }
-    Heap[null, WandMaskField(pm_f_58)][o2_58, f_206] ==> Heap[o2_58, f_206] == ExhaleHeap[o2_58, f_206]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_40: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_40) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_40) && IsWandField(pm_f_40) ==> (forall <A, B> o2_40: Ref, f_103: (Field A B) ::
+    { ExhaleHeap[o2_40, f_103] }
+    Heap[null, WandMaskField(pm_f_40)][o2_40, f_103] ==> Heap[o2_40, f_103] == ExhaleHeap[o2_40, f_103]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_134: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_134, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_134, $allocated] ==> ExhaleHeap[o_134, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_92: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_92, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_92, $allocated] ==> ExhaleHeap[o_92, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_131: Ref, f_133: (Field A B), v: B ::
-  { Heap[o_131, f_133:=v] }
-  succHeap(Heap, Heap[o_131, f_133:=v])
+axiom (forall <A, B> Heap: HeapType, o_91: Ref, f_104: (Field A B), v: B ::
+  { Heap[o_91, f_104:=v] }
+  succHeap(Heap, Heap[o_91, f_104:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -205,13 +205,13 @@ axiom (forall x: Ref, i: int ::
 );
 function  LL#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  LL#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall x: Ref, i: int, x2: Ref, i2_1: int ::
-  { LL(x, i), LL(x2, i2_1) }
-  LL(x, i) == LL(x2, i2_1) ==> x == x2 && i == i2_1
+axiom (forall x: Ref, i: int, x2: Ref, i2: int ::
+  { LL(x, i), LL(x2, i2) }
+  LL(x, i) == LL(x2, i2) ==> x == x2 && i == i2
 );
-axiom (forall x: Ref, i: int, x2: Ref, i2_1: int ::
-  { LL#sm(x, i), LL#sm(x2, i2_1) }
-  LL#sm(x, i) == LL#sm(x2, i2_1) ==> x == x2 && i == i2_1
+axiom (forall x: Ref, i: int, x2: Ref, i2: int ::
+  { LL#sm(x, i), LL#sm(x2, i2) }
+  LL#sm(x, i) == LL#sm(x2, i2) ==> x == x2 && i == i2
 );
 
 axiom (forall Heap: HeapType, x: Ref, i: int ::
@@ -239,7 +239,7 @@ procedure LL#definedness(x: Ref, i: int) returns ()
       assume AssumePermUpperBound;
       assume Heap[x, $allocated];
     perm := 1 / 2;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [201434]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [73175]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, data:=Mask[x, data] + perm];
@@ -250,17 +250,17 @@ procedure LL#definedness(x: Ref, i: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.next.data, 1 / 2)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@7.1--15.2) [201435]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@7.1--15.2) [73176]"}
         HasDirectPerm(Mask, x, next);
     perm := 1 / 2;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [201436]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [73177]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Heap[x, next] != null;
     Mask := Mask[Heap[x, next], data:=Mask[Heap[x, next], data] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(LL(x.next, i + 1), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@7.1--15.2) [201437]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@7.1--15.2) [73178]"}
         HasDirectPerm(Mask, x, next);
     perm := FullPerm;
     Mask := Mask[null, LL(Heap[x, next], i + 1):=Mask[null, LL(Heap[x, next], i + 1)] + perm];
@@ -275,12 +275,12 @@ procedure LL#definedness(x: Ref, i: int) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access LL(x.next, i + 1) (0172.vpr@7.1--15.2) [201438]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access LL(x.next, i + 1) (0172.vpr@7.1--15.2) [73179]"}
           perm <= UnfoldingMask[null, LL(UnfoldingHeap[x, next], i + 1)];
       }
       UnfoldingMask := UnfoldingMask[null, LL(UnfoldingHeap[x, next], i + 1):=UnfoldingMask[null, LL(UnfoldingHeap[x, next], i + 1)] - perm];
       perm := 1 / 2;
-      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [201439]"}
+      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [73180]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> UnfoldingHeap[x, next] != null;
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[x, next], data:=UnfoldingMask[UnfoldingHeap[x, next], data] + perm];
@@ -290,7 +290,7 @@ procedure LL#definedness(x: Ref, i: int) returns ()
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[x, next], next:=UnfoldingMask[UnfoldingHeap[x, next], next] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := 1 / 2;
-      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [201440]"}
+      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [73181]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> UnfoldingHeap[UnfoldingHeap[x, next], next] != null;
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[UnfoldingHeap[x, next], next], data:=UnfoldingMask[UnfoldingHeap[UnfoldingHeap[x, next], next], data] + perm];
@@ -336,9 +336,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-            { newPMask[o_16, f_21] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_16, f_21] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_16, f_21] ==> newPMask[o_16, f_21]
+          assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+            { newPMask[o_6, f_12] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_6, f_12] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_6, f_12] ==> newPMask[o_6, f_12]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -349,9 +349,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-            { newPMask[o_52, f_55] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_52, f_55] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_52, f_55] ==> newPMask[o_52, f_55]
+          assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+            { newPMask[o_40, f_52] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_40, f_52] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_40, f_52] ==> newPMask[o_40, f_52]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -363,9 +363,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[x, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-          { newPMask[o_15, f_20] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_15, f_20] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_15, f_20] ==> newPMask[o_15, f_20]
+        assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+          { newPMask[o_5, f_11] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_5, f_11] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_5, f_11] ==> newPMask[o_5, f_11]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -405,9 +405,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-            { newPMask[o_26, f_29] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_26, f_29] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_26, f_29] ==> newPMask[o_26, f_29]
+          assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+            { newPMask[o_46, f_60] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_46, f_60] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_46, f_60] ==> newPMask[o_46, f_60]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -418,9 +418,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-            { newPMask[o, f_85] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o, f_85] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o, f_85] ==> newPMask[o, f_85]
+          assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+            { newPMask[o, f_61] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o, f_61] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o, f_61] ==> newPMask[o, f_61]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -431,18 +431,18 @@ procedure LL#definedness(x: Ref, i: int) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[x, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-          { newPMask[o_53, f_56] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_53, f_56] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_53, f_56] ==> newPMask[o_53, f_56]
+        assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+          { newPMask[o_42, f_55] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_42, f_55] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_42, f_55] ==> newPMask[o_42, f_55]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@7.1--15.2) [201441]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@7.1--15.2) [73182]"}
         HasDirectPerm(UnfoldingMask, x, next);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@7.1--15.2) [201442]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@7.1--15.2) [73183]"}
         HasDirectPerm(UnfoldingMask, x, next);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next.data (0172.vpr@7.1--15.2) [201443]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next.data (0172.vpr@7.1--15.2) [73184]"}
         HasDirectPerm(UnfoldingMask, UnfoldingHeap[x, next], data);
       
       // -- Free assumptions (exp module)
@@ -450,9 +450,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
         Heap := Heap[null, LL#sm(Heap[x, next], i + 1):=Heap[null, LL#sm(Heap[x, next], i + 1)][Heap[x, next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[x, next], i + 1):=Heap[null, LL#sm(Heap[x, next], i + 1)][Heap[Heap[x, next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-          { newPMask[o_11, f_3] }
-          Heap[null, LL#sm(Heap[x, next], i + 1)][o_11, f_3] || Heap[null, LL#sm(Heap[Heap[x, next], next], i + 1 + 1)][o_11, f_3] ==> newPMask[o_11, f_3]
+        assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+          { newPMask[o_14, f_3] }
+          Heap[null, LL#sm(Heap[x, next], i + 1)][o_14, f_3] || Heap[null, LL#sm(Heap[Heap[x, next], next], i + 1 + 1)][o_14, f_3] ==> newPMask[o_14, f_3]
         );
         Heap := Heap[null, LL#sm(Heap[x, next], i + 1):=newPMask];
         assume state(Heap, Mask);
@@ -491,9 +491,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[x, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-          { newPMask[o_35, f_17] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_35, f_17] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_35, f_17] ==> newPMask[o_35, f_17]
+        assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+          { newPMask[o_3, f_24] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_3, f_24] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_3, f_24] ==> newPMask[o_3, f_24]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -504,9 +504,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[x, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_1: Ref, f_11: (Field A B) ::
-          { newPMask[o_1, f_11] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_1, f_11] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_1, f_11] ==> newPMask[o_1, f_11]
+        assume (forall <A, B> o_1: Ref, f_10: (Field A B) ::
+          { newPMask[o_1, f_10] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_1, f_10] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_1, f_10] ==> newPMask[o_1, f_10]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -514,7 +514,7 @@ procedure LL#definedness(x: Ref, i: int) returns ()
     assume Heap[Heap[x, next], data] == i + 1;
     
     // -- Check definedness of x.data == i
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.data (0172.vpr@7.1--15.2) [201444]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.data (0172.vpr@7.1--15.2) [73185]"}
         HasDirectPerm(Mask, x, data);
     assume Heap[x, data] == i;
     
@@ -527,12 +527,12 @@ procedure LL#definedness(x: Ref, i: int) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access LL(x.next, i + 1) (0172.vpr@7.1--15.2) [201445]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access LL(x.next, i + 1) (0172.vpr@7.1--15.2) [73186]"}
           perm <= UnfoldingMask[null, LL(UnfoldingHeap[x, next], i + 1)];
       }
       UnfoldingMask := UnfoldingMask[null, LL(UnfoldingHeap[x, next], i + 1):=UnfoldingMask[null, LL(UnfoldingHeap[x, next], i + 1)] - perm];
       perm := 1 / 2;
-      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [201446]"}
+      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [73187]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> UnfoldingHeap[x, next] != null;
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[x, next], data:=UnfoldingMask[UnfoldingHeap[x, next], data] + perm];
@@ -542,7 +542,7 @@ procedure LL#definedness(x: Ref, i: int) returns ()
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[x, next], next:=UnfoldingMask[UnfoldingHeap[x, next], next] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := 1 / 2;
-      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [201447]"}
+      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@7.1--15.2) [73188]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> UnfoldingHeap[UnfoldingHeap[x, next], next] != null;
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[UnfoldingHeap[x, next], next], data:=UnfoldingMask[UnfoldingHeap[UnfoldingHeap[x, next], next], data] + perm];
@@ -588,9 +588,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_22: Ref, f_24: (Field A B) ::
-            { newPMask[o_22, f_24] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_22, f_24] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_22, f_24] ==> newPMask[o_22, f_24]
+          assume (forall <A, B> o_4: Ref, f_54: (Field A B) ::
+            { newPMask[o_4, f_54] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_4, f_54] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_4, f_54] ==> newPMask[o_4, f_54]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -601,9 +601,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_3: Ref, f_12: (Field A B) ::
-            { newPMask[o_3, f_12] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_3, f_12] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_3, f_12] ==> newPMask[o_3, f_12]
+          assume (forall <A, B> o_12: Ref, f_25: (Field A B) ::
+            { newPMask[o_12, f_25] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_12, f_25] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_12, f_25] ==> newPMask[o_12, f_25]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -615,9 +615,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[x, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_12: Ref, f_9: (Field A B) ::
-          { newPMask[o_12, f_9] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_12, f_9] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_12, f_9] ==> newPMask[o_12, f_9]
+        assume (forall <A, B> o_15: Ref, f_51: (Field A B) ::
+          { newPMask[o_15, f_51] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_15, f_51] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_15, f_51] ==> newPMask[o_15, f_51]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -657,9 +657,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_41: Ref, f_25: (Field A B) ::
-            { newPMask[o_41, f_25] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_41, f_25] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_41, f_25] ==> newPMask[o_41, f_25]
+          assume (forall <A, B> o_23: Ref, f_13: (Field A B) ::
+            { newPMask[o_23, f_13] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_23, f_13] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_23, f_13] ==> newPMask[o_23, f_13]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -670,9 +670,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_34: Ref, f_44: (Field A B) ::
-            { newPMask[o_34, f_44] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_34, f_44] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_34, f_44] ==> newPMask[o_34, f_44]
+          assume (forall <A, B> o_13: Ref, f_65: (Field A B) ::
+            { newPMask[o_13, f_65] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_13, f_65] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_13, f_65] ==> newPMask[o_13, f_65]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -683,14 +683,14 @@ procedure LL#definedness(x: Ref, i: int) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[x, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_46: Ref, f_35: (Field A B) ::
-          { newPMask[o_46, f_35] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_46, f_35] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_46, f_35] ==> newPMask[o_46, f_35]
+        assume (forall <A, B> o_41: Ref, f_21: (Field A B) ::
+          { newPMask[o_41, f_21] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_41, f_21] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_41, f_21] ==> newPMask[o_41, f_21]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@7.1--15.2) [201448]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@7.1--15.2) [73189]"}
         HasDirectPerm(UnfoldingMask, x, next);
       
       // -- Free assumptions (exp module)
@@ -698,9 +698,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
         Heap := Heap[null, LL#sm(Heap[x, next], i + 1):=Heap[null, LL#sm(Heap[x, next], i + 1)][Heap[x, next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[x, next], i + 1):=Heap[null, LL#sm(Heap[x, next], i + 1)][Heap[Heap[x, next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_55: Ref, f_36: (Field A B) ::
-          { newPMask[o_55, f_36] }
-          Heap[null, LL#sm(Heap[x, next], i + 1)][o_55, f_36] || Heap[null, LL#sm(Heap[Heap[x, next], next], i + 1 + 1)][o_55, f_36] ==> newPMask[o_55, f_36]
+        assume (forall <A, B> o_51: Ref, f_66: (Field A B) ::
+          { newPMask[o_51, f_66] }
+          Heap[null, LL#sm(Heap[x, next], i + 1)][o_51, f_66] || Heap[null, LL#sm(Heap[Heap[x, next], next], i + 1 + 1)][o_51, f_66] ==> newPMask[o_51, f_66]
         );
         Heap := Heap[null, LL#sm(Heap[x, next], i + 1):=newPMask];
         assume state(Heap, Mask);
@@ -739,9 +739,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[x, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_42: Ref, f_26: (Field A B) ::
-          { newPMask[o_42, f_26] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_42, f_26] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_42, f_26] ==> newPMask[o_42, f_26]
+        assume (forall <A, B> o_52: Ref, f_14: (Field A B) ::
+          { newPMask[o_52, f_14] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_52, f_14] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_52, f_14] ==> newPMask[o_52, f_14]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -752,9 +752,9 @@ procedure LL#definedness(x: Ref, i: int) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[x, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_13: Ref, f_45: (Field A B) ::
-          { newPMask[o_13, f_45] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_13, f_45] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_13, f_45] ==> newPMask[o_13, f_45]
+        assume (forall <A, B> o_20: Ref, f_50: (Field A B) ::
+          { newPMask[o_20, f_50] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_20, f_50] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_20, f_50] ==> newPMask[o_20, f_50]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -783,13 +783,13 @@ axiom (forall x: Ref, i: int ::
 );
 function  LL2#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  LL2#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall x: Ref, i: int, x2: Ref, i2_1: int ::
-  { LL2(x, i), LL2(x2, i2_1) }
-  LL2(x, i) == LL2(x2, i2_1) ==> x == x2 && i == i2_1
+axiom (forall x: Ref, i: int, x2: Ref, i2: int ::
+  { LL2(x, i), LL2(x2, i2) }
+  LL2(x, i) == LL2(x2, i2) ==> x == x2 && i == i2
 );
-axiom (forall x: Ref, i: int, x2: Ref, i2_1: int ::
-  { LL2#sm(x, i), LL2#sm(x2, i2_1) }
-  LL2#sm(x, i) == LL2#sm(x2, i2_1) ==> x == x2 && i == i2_1
+axiom (forall x: Ref, i: int, x2: Ref, i2: int ::
+  { LL2#sm(x, i), LL2#sm(x2, i2) }
+  LL2#sm(x, i) == LL2#sm(x2, i2) ==> x == x2 && i == i2
 );
 
 axiom (forall Heap: HeapType, x: Ref, i: int ::
@@ -817,7 +817,7 @@ procedure LL2#definedness(x: Ref, i: int) returns ()
       assume AssumePermUpperBound;
       assume Heap[x, $allocated];
     perm := 1 / 2;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@43.1--50.2) [201449]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@43.1--50.2) [73190]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, data:=Mask[x, data] + perm];
@@ -828,24 +828,24 @@ procedure LL2#definedness(x: Ref, i: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.next.data, 1 / 2)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@43.1--50.2) [201450]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@43.1--50.2) [73191]"}
         HasDirectPerm(Mask, x, next);
     perm := 1 / 2;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@43.1--50.2) [201451]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@43.1--50.2) [73192]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Heap[x, next] != null;
     Mask := Mask[Heap[x, next], data:=Mask[Heap[x, next], data] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(LL2(x.next, i + 1), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@43.1--50.2) [201452]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@43.1--50.2) [73193]"}
         HasDirectPerm(Mask, x, next);
     perm := FullPerm;
     Mask := Mask[null, LL2(Heap[x, next], i + 1):=Mask[null, LL2(Heap[x, next], i + 1)] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of x.data == i
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.data (0172.vpr@43.1--50.2) [201453]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.data (0172.vpr@43.1--50.2) [73194]"}
         HasDirectPerm(Mask, x, data);
     assume Heap[x, data] == i;
     
@@ -858,12 +858,12 @@ procedure LL2#definedness(x: Ref, i: int) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access LL2(x.next, i + 1) (0172.vpr@43.1--50.2) [201454]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access LL2(x.next, i + 1) (0172.vpr@43.1--50.2) [73195]"}
           perm <= UnfoldingMask[null, LL2(UnfoldingHeap[x, next], i + 1)];
       }
       UnfoldingMask := UnfoldingMask[null, LL2(UnfoldingHeap[x, next], i + 1):=UnfoldingMask[null, LL2(UnfoldingHeap[x, next], i + 1)] - perm];
       perm := 1 / 2;
-      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@43.1--50.2) [201455]"}
+      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@43.1--50.2) [73196]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> UnfoldingHeap[x, next] != null;
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[x, next], data:=UnfoldingMask[UnfoldingHeap[x, next], data] + perm];
@@ -873,7 +873,7 @@ procedure LL2#definedness(x: Ref, i: int) returns ()
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[x, next], next:=UnfoldingMask[UnfoldingHeap[x, next], next] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := 1 / 2;
-      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@43.1--50.2) [201456]"}
+      assert {:msg "  Predicate might not be well-formed. Fraction 1 / 2 might be negative. (0172.vpr@43.1--50.2) [73197]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> UnfoldingHeap[UnfoldingHeap[x, next], next] != null;
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[UnfoldingHeap[x, next], next], data:=UnfoldingMask[UnfoldingHeap[UnfoldingHeap[x, next], next], data] + perm];
@@ -920,9 +920,9 @@ procedure LL2#definedness(x: Ref, i: int) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_47: Ref, f_41: (Field A B) ::
-            { newPMask[o_47, f_41] }
-            Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_47, f_41] || Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_47, f_41] ==> newPMask[o_47, f_41]
+          assume (forall <A, B> o_10: Ref, f_67: (Field A B) ::
+            { newPMask[o_10, f_67] }
+            Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1)][o_10, f_67] || Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], next], i + 1 + 1 + 1 + 1)][o_10, f_67] ==> newPMask[o_10, f_67]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[x, next], next], next], i + 1 + 1 + 1):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -933,14 +933,14 @@ procedure LL2#definedness(x: Ref, i: int) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[x, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_43: Ref, f_13: (Field A B) ::
-          { newPMask[o_43, f_13] }
-          UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_43, f_13] || UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_43, f_13] ==> newPMask[o_43, f_13]
+        assume (forall <A, B> o_58: Ref, f_30: (Field A B) ::
+          { newPMask[o_58, f_30] }
+          UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_58, f_30] || UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_58, f_30] ==> newPMask[o_58, f_30]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@43.1--50.2) [201457]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0172.vpr@43.1--50.2) [73198]"}
         HasDirectPerm(UnfoldingMask, x, next);
       
       // -- Free assumptions (exp module)
@@ -948,9 +948,9 @@ procedure LL2#definedness(x: Ref, i: int) returns ()
         Heap := Heap[null, LL2#sm(Heap[x, next], i + 1):=Heap[null, LL2#sm(Heap[x, next], i + 1)][Heap[x, next], next:=true]];
         Heap := Heap[null, LL2#sm(Heap[x, next], i + 1):=Heap[null, LL2#sm(Heap[x, next], i + 1)][Heap[Heap[x, next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_14: Ref, f_51: (Field A B) ::
-          { newPMask[o_14, f_51] }
-          Heap[null, LL2#sm(Heap[x, next], i + 1)][o_14, f_51] || Heap[null, LL2#sm(Heap[Heap[x, next], next], i + 1 + 1)][o_14, f_51] ==> newPMask[o_14, f_51]
+        assume (forall <A, B> o_18: Ref, f_18: (Field A B) ::
+          { newPMask[o_18, f_18] }
+          Heap[null, LL2#sm(Heap[x, next], i + 1)][o_18, f_18] || Heap[null, LL2#sm(Heap[Heap[x, next], next], i + 1 + 1)][o_18, f_18] ==> newPMask[o_18, f_18]
         );
         Heap := Heap[null, LL2#sm(Heap[x, next], i + 1):=newPMask];
         assume state(Heap, Mask);
@@ -989,9 +989,9 @@ procedure LL2#definedness(x: Ref, i: int) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[x, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_44: Ref, f_14: (Field A B) ::
-          { newPMask[o_44, f_14] }
-          UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_44, f_14] || UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_44, f_14] ==> newPMask[o_44, f_14]
+        assume (forall <A, B> o_66: Ref, f_28: (Field A B) ::
+          { newPMask[o_66, f_28] }
+          UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1)][o_66, f_28] || UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[x, next], next], next], i + 1 + 1 + 1)][o_66, f_28] ==> newPMask[o_66, f_28]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[x, next], next], i + 1 + 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -1053,12 +1053,12 @@ procedure test01(z: Ref) returns ()
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access LL(z, 0) (0172.vpr@20.10--20.53) [201459]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access LL(z, 0) (0172.vpr@20.10--20.53) [73200]"}
           perm <= UnfoldingMask[null, LL(z, 0)];
       }
       UnfoldingMask := UnfoldingMask[null, LL(z, 0):=UnfoldingMask[null, LL(z, 0)] - perm];
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@20.10--20.53) [201460]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@20.10--20.53) [73201]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> z != null;
       UnfoldingMask := UnfoldingMask[z, data:=UnfoldingMask[z, data] + perm];
@@ -1068,7 +1068,7 @@ procedure test01(z: Ref) returns ()
       UnfoldingMask := UnfoldingMask[z, next:=UnfoldingMask[z, next] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@20.10--20.53) [201461]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@20.10--20.53) [73202]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> UnfoldingHeap[z, next] != null;
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[z, next], data:=UnfoldingMask[UnfoldingHeap[z, next], data] + perm];
@@ -1114,9 +1114,9 @@ procedure test01(z: Ref) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_76: Ref, f_34: (Field A B) ::
-            { newPMask[o_76, f_34] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_76, f_34] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_76, f_34] ==> newPMask[o_76, f_34]
+          assume (forall <A, B> o_19: Ref, f_57: (Field A B) ::
+            { newPMask[o_19, f_57] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_19, f_57] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_19, f_57] ==> newPMask[o_19, f_57]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -1127,9 +1127,9 @@ procedure test01(z: Ref) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_51: Ref, f_46: (Field A B) ::
-            { newPMask[o_51, f_46] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_51, f_46] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_51, f_46] ==> newPMask[o_51, f_46]
+          assume (forall <A, B> o_21: Ref, f_58: (Field A B) ::
+            { newPMask[o_21, f_58] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_21, f_58] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_21, f_58] ==> newPMask[o_21, f_58]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -1141,9 +1141,9 @@ procedure test01(z: Ref) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][UnfoldingHeap[z, next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][UnfoldingHeap[UnfoldingHeap[z, next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_28: Ref, f_42: (Field A B) ::
-          { newPMask[o_28, f_42] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][o_28, f_42] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_28, f_42] ==> newPMask[o_28, f_42]
+        assume (forall <A, B> o_11: Ref, f_34: (Field A B) ::
+          { newPMask[o_11, f_34] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][o_11, f_34] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_11, f_34] ==> newPMask[o_11, f_34]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -1183,9 +1183,9 @@ procedure test01(z: Ref) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_77: Ref, f_52: (Field A B) ::
-            { newPMask[o_77, f_52] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_77, f_52] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_77, f_52] ==> newPMask[o_77, f_52]
+          assume (forall <A, B> o_50: Ref, f_75: (Field A B) ::
+            { newPMask[o_50, f_75] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_50, f_75] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_50, f_75] ==> newPMask[o_50, f_75]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -1196,9 +1196,9 @@ procedure test01(z: Ref) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_78: Ref, f_49: (Field A B) ::
-            { newPMask[o_78, f_49] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_78, f_49] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_78, f_49] ==> newPMask[o_78, f_49]
+          assume (forall <A, B> o_22: Ref, f_59: (Field A B) ::
+            { newPMask[o_22, f_59] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_22, f_59] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_22, f_59] ==> newPMask[o_22, f_59]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -1209,16 +1209,16 @@ procedure test01(z: Ref) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][UnfoldingHeap[z, next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][UnfoldingHeap[UnfoldingHeap[z, next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_29: Ref, f_81: (Field A B) ::
-          { newPMask[o_29, f_81] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][o_29, f_81] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_29, f_81] ==> newPMask[o_29, f_81]
+        assume (forall <A, B> o_43: Ref, f_33: (Field A B) ::
+          { newPMask[o_43, f_33] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][o_43, f_33] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_43, f_33] ==> newPMask[o_43, f_33]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@20.10--20.53) [201462]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@20.10--20.53) [73203]"}
         HasDirectPerm(UnfoldingMask, z, next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.data (0172.vpr@20.10--20.53) [201463]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.data (0172.vpr@20.10--20.53) [73204]"}
         HasDirectPerm(UnfoldingMask, Heap[z, next], data);
       
       // -- Free assumptions (exp module)
@@ -1226,13 +1226,13 @@ procedure test01(z: Ref) returns ()
         Heap := Heap[null, LL#sm(z, 0):=Heap[null, LL#sm(z, 0)][z, next:=true]];
         Heap := Heap[null, LL#sm(z, 0):=Heap[null, LL#sm(z, 0)][Heap[z, next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_63: Ref, f_86: (Field A B) ::
-          { newPMask[o_63, f_86] }
-          Heap[null, LL#sm(z, 0)][o_63, f_86] || Heap[null, LL#sm(Heap[z, next], 1)][o_63, f_86] ==> newPMask[o_63, f_86]
+        assume (forall <A, B> o_67: Ref, f_69: (Field A B) ::
+          { newPMask[o_67, f_69] }
+          Heap[null, LL#sm(z, 0)][o_67, f_69] || Heap[null, LL#sm(Heap[z, next], 1)][o_67, f_69] ==> newPMask[o_67, f_69]
         );
         Heap := Heap[null, LL#sm(z, 0):=newPMask];
         assume state(Heap, Mask);
-    assert {:msg "  Assert might fail. Assertion z.next.data == 1 might not hold. (0172.vpr@20.10--20.53) [201464]"}
+    assert {:msg "  Assert might fail. Assertion z.next.data == 1 might not hold. (0172.vpr@20.10--20.53) [73205]"}
       Heap[Heap[z, next], data] == 1;
     
     // -- Free assumptions (exhale module)
@@ -1240,9 +1240,9 @@ procedure test01(z: Ref) returns ()
       Heap := Heap[null, LL#sm(z, 0):=Heap[null, LL#sm(z, 0)][z, next:=true]];
       Heap := Heap[null, LL#sm(z, 0):=Heap[null, LL#sm(z, 0)][Heap[z, next], data:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_79: Ref, f_87: (Field A B) ::
-        { newPMask[o_79, f_87] }
-        Heap[null, LL#sm(z, 0)][o_79, f_87] || Heap[null, LL#sm(Heap[z, next], 1)][o_79, f_87] ==> newPMask[o_79, f_87]
+      assume (forall <A, B> o_68: Ref, f_76: (Field A B) ::
+        { newPMask[o_68, f_76] }
+        Heap[null, LL#sm(z, 0)][o_68, f_76] || Heap[null, LL#sm(Heap[z, next], 1)][o_68, f_76] ==> newPMask[o_68, f_76]
       );
       Heap := Heap[null, LL#sm(z, 0):=newPMask];
       assume state(Heap, Mask);
@@ -1294,7 +1294,7 @@ procedure test02(z: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding LL(z, 0) might fail. There might be insufficient permission to access LL(z, 0) (0172.vpr@26.3--26.23) [201468]"}
+      assert {:msg "  Unfolding LL(z, 0) might fail. There might be insufficient permission to access LL(z, 0) (0172.vpr@26.3--26.23) [73209]"}
         perm <= Mask[null, LL(z, 0)];
     }
     Mask := Mask[null, LL(z, 0):=Mask[null, LL(z, 0)] - perm];
@@ -1305,7 +1305,7 @@ procedure test02(z: Ref) returns ()
         Heap := Heap[null, LL(z, 0):=newVersion];
       }
     perm := 1 / 2;
-    assert {:msg "  Unfolding LL(z, 0) might fail. Fraction 1 / 2 might be negative. (0172.vpr@26.3--26.23) [201469]"}
+    assert {:msg "  Unfolding LL(z, 0) might fail. Fraction 1 / 2 might be negative. (0172.vpr@26.3--26.23) [73210]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> z != null;
     Mask := Mask[z, data:=Mask[z, data] + perm];
@@ -1315,7 +1315,7 @@ procedure test02(z: Ref) returns ()
     Mask := Mask[z, next:=Mask[z, next] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Unfolding LL(z, 0) might fail. Fraction 1 / 2 might be negative. (0172.vpr@26.3--26.23) [201471]"}
+    assert {:msg "  Unfolding LL(z, 0) might fail. Fraction 1 / 2 might be negative. (0172.vpr@26.3--26.23) [73212]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Heap[z, next] != null;
     Mask := Mask[Heap[z, next], data:=Mask[Heap[z, next], data] + perm];
@@ -1361,9 +1361,9 @@ procedure test02(z: Ref) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][UnfoldingHeap[UnfoldingHeap[z, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_81: Ref, f_57: (Field A B) ::
-          { newPMask[o_81, f_57] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_81, f_57] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], 3)][o_81, f_57] ==> newPMask[o_81, f_57]
+        assume (forall <A, B> o_70: Ref, f_78: (Field A B) ::
+          { newPMask[o_70, f_78] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_70, f_78] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], 3)][o_70, f_78] ==> newPMask[o_70, f_78]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -1374,9 +1374,9 @@ procedure test02(z: Ref) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][UnfoldingHeap[UnfoldingHeap[z, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_82: Ref, f_70: (Field A B) ::
-          { newPMask[o_82, f_70] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_82, f_70] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], 3)][o_82, f_70] ==> newPMask[o_82, f_70]
+        assume (forall <A, B> o_71: Ref, f_35: (Field A B) ::
+          { newPMask[o_71, f_35] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_71, f_35] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], 3)][o_71, f_35] ==> newPMask[o_71, f_35]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -1388,9 +1388,9 @@ procedure test02(z: Ref) returns ()
       Heap := Heap[null, LL#sm(Heap[z, next], 1):=Heap[null, LL#sm(Heap[z, next], 1)][Heap[z, next], next:=true]];
       Heap := Heap[null, LL#sm(Heap[z, next], 1):=Heap[null, LL#sm(Heap[z, next], 1)][Heap[Heap[z, next], next], data:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_80: Ref, f_88: (Field A B) ::
-        { newPMask[o_80, f_88] }
-        Heap[null, LL#sm(Heap[z, next], 1)][o_80, f_88] || Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_80, f_88] ==> newPMask[o_80, f_88]
+      assume (forall <A, B> o_69: Ref, f_77: (Field A B) ::
+        { newPMask[o_69, f_77] }
+        Heap[null, LL#sm(Heap[z, next], 1)][o_69, f_77] || Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_69, f_77] ==> newPMask[o_69, f_77]
       );
       Heap := Heap[null, LL#sm(Heap[z, next], 1):=newPMask];
       assume state(Heap, Mask);
@@ -1430,9 +1430,9 @@ procedure test02(z: Ref) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][UnfoldingHeap[UnfoldingHeap[z, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_68: Ref, f_58: (Field A B) ::
-          { newPMask[o_68, f_58] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_68, f_58] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], 3)][o_68, f_58] ==> newPMask[o_68, f_58]
+        assume (forall <A, B> o_30: Ref, f_80: (Field A B) ::
+          { newPMask[o_30, f_80] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_30, f_80] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], 3)][o_30, f_80] ==> newPMask[o_30, f_80]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -1443,9 +1443,9 @@ procedure test02(z: Ref) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][UnfoldingHeap[UnfoldingHeap[z, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_84: Ref, f_71: (Field A B) ::
-          { newPMask[o_84, f_71] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_84, f_71] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], 3)][o_84, f_71] ==> newPMask[o_84, f_71]
+        assume (forall <A, B> o_79: Ref, f_36: (Field A B) ::
+          { newPMask[o_79, f_36] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_79, f_36] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], 3)][o_79, f_36] ==> newPMask[o_79, f_36]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -1456,9 +1456,9 @@ procedure test02(z: Ref) returns ()
       Heap := Heap[null, LL#sm(Heap[z, next], 1):=Heap[null, LL#sm(Heap[z, next], 1)][Heap[z, next], next:=true]];
       Heap := Heap[null, LL#sm(Heap[z, next], 1):=Heap[null, LL#sm(Heap[z, next], 1)][Heap[Heap[z, next], next], data:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_83: Ref, f_89: (Field A B) ::
-        { newPMask[o_83, f_89] }
-        Heap[null, LL#sm(Heap[z, next], 1)][o_83, f_89] || Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_83, f_89] ==> newPMask[o_83, f_89]
+      assume (forall <A, B> o_72: Ref, f_79: (Field A B) ::
+        { newPMask[o_72, f_79] }
+        Heap[null, LL#sm(Heap[z, next], 1)][o_72, f_79] || Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_72, f_79] ==> newPMask[o_72, f_79]
       );
       Heap := Heap[null, LL#sm(Heap[z, next], 1):=newPMask];
       assume state(Heap, Mask);
@@ -1470,11 +1470,11 @@ procedure test02(z: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of z.next.data == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@27.10--27.26) [201473]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@27.10--27.26) [73214]"}
         HasDirectPerm(ExhaleWellDef0Mask, z, next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.data (0172.vpr@27.10--27.26) [201474]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.data (0172.vpr@27.10--27.26) [73215]"}
         HasDirectPerm(ExhaleWellDef0Mask, Heap[z, next], data);
-    assert {:msg "  Assert might fail. Assertion z.next.data == 1 might not hold. (0172.vpr@27.10--27.26) [201475]"}
+    assert {:msg "  Assert might fail. Assertion z.next.data == 1 might not hold. (0172.vpr@27.10--27.26) [73216]"}
       Heap[Heap[z, next], data] == 1;
     assume state(Heap, Mask);
 }
@@ -1543,12 +1543,12 @@ procedure test03(z: Ref) returns ()
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access LL(z, 0) (0172.vpr@33.10--37.41) [201477]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access LL(z, 0) (0172.vpr@33.10--37.41) [73218]"}
           perm <= UnfoldingMask[null, LL(z, 0)];
       }
       UnfoldingMask := UnfoldingMask[null, LL(z, 0):=UnfoldingMask[null, LL(z, 0)] - perm];
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [201478]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [73219]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> z != null;
       UnfoldingMask := UnfoldingMask[z, data:=UnfoldingMask[z, data] + perm];
@@ -1558,7 +1558,7 @@ procedure test03(z: Ref) returns ()
       UnfoldingMask := UnfoldingMask[z, next:=UnfoldingMask[z, next] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [201479]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [73220]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> UnfoldingHeap[z, next] != null;
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[z, next], data:=UnfoldingMask[UnfoldingHeap[z, next], data] + perm];
@@ -1604,9 +1604,9 @@ procedure test03(z: Ref) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_69: Ref, f_90: (Field A B) ::
-            { newPMask[o_69, f_90] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_69, f_90] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_69, f_90] ==> newPMask[o_69, f_90]
+          assume (forall <A, B> o_31: Ref, f_89: (Field A B) ::
+            { newPMask[o_31, f_89] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_31, f_89] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_31, f_89] ==> newPMask[o_31, f_89]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -1617,9 +1617,9 @@ procedure test03(z: Ref) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_86: Ref, f_91: (Field A B) ::
-            { newPMask[o_86, f_91] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_86, f_91] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_86, f_91] ==> newPMask[o_86, f_91]
+          assume (forall <A, B> o_81: Ref, f_90: (Field A B) ::
+            { newPMask[o_81, f_90] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_81, f_90] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_81, f_90] ==> newPMask[o_81, f_90]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -1631,9 +1631,9 @@ procedure test03(z: Ref) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][UnfoldingHeap[z, next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][UnfoldingHeap[UnfoldingHeap[z, next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_85: Ref, f_60: (Field A B) ::
-          { newPMask[o_85, f_60] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][o_85, f_60] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_85, f_60] ==> newPMask[o_85, f_60]
+        assume (forall <A, B> o_80: Ref, f_88: (Field A B) ::
+          { newPMask[o_80, f_88] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][o_80, f_88] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_80, f_88] ==> newPMask[o_80, f_88]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -1673,9 +1673,9 @@ procedure test03(z: Ref) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_88: Ref, f_78: (Field A B) ::
-            { newPMask[o_88, f_78] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_88, f_78] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_88, f_78] ==> newPMask[o_88, f_78]
+          assume (forall <A, B> o_62: Ref, f_47: (Field A B) ::
+            { newPMask[o_62, f_47] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_62, f_47] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_62, f_47] ==> newPMask[o_62, f_47]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -1686,9 +1686,9 @@ procedure test03(z: Ref) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_89: Ref, f_92: (Field A B) ::
-            { newPMask[o_89, f_92] }
-            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_89, f_92] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_89, f_92] ==> newPMask[o_89, f_92]
+          assume (forall <A, B> o_83: Ref, f_72: (Field A B) ::
+            { newPMask[o_83, f_72] }
+            Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_83, f_72] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_83, f_72] ==> newPMask[o_83, f_72]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -1699,9 +1699,9 @@ procedure test03(z: Ref) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][UnfoldingHeap[z, next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][UnfoldingHeap[UnfoldingHeap[z, next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_87: Ref, f_61: (Field A B) ::
-          { newPMask[o_87, f_61] }
-          UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][o_87, f_61] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_87, f_61] ==> newPMask[o_87, f_61]
+        assume (forall <A, B> o_82: Ref, f_91: (Field A B) ::
+          { newPMask[o_82, f_91] }
+          UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1)][o_82, f_91] || UnfoldingHeap[null, LL#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_82, f_91] ==> newPMask[o_82, f_91]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL#sm(UnfoldingHeap[z, next], 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -1714,12 +1714,12 @@ procedure test03(z: Ref) returns ()
       ExhaleWellDef1Mask := Unfolding1Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access LL(z.next, 1) (0172.vpr@33.10--37.41) [201480]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access LL(z.next, 1) (0172.vpr@33.10--37.41) [73221]"}
           perm <= Unfolding1Mask[null, LL(Unfolding1Heap[z, next], 1)];
       }
       Unfolding1Mask := Unfolding1Mask[null, LL(Unfolding1Heap[z, next], 1):=Unfolding1Mask[null, LL(Unfolding1Heap[z, next], 1)] - perm];
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [201481]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [73222]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Unfolding1Heap[z, next] != null;
       Unfolding1Mask := Unfolding1Mask[Unfolding1Heap[z, next], data:=Unfolding1Mask[Unfolding1Heap[z, next], data] + perm];
@@ -1729,7 +1729,7 @@ procedure test03(z: Ref) returns ()
       Unfolding1Mask := Unfolding1Mask[Unfolding1Heap[z, next], next:=Unfolding1Mask[Unfolding1Heap[z, next], next] + perm];
       assume state(Unfolding1Heap, Unfolding1Mask);
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [201482]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [73223]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Unfolding1Heap[Unfolding1Heap[z, next], next] != null;
       Unfolding1Mask := Unfolding1Mask[Unfolding1Heap[Unfolding1Heap[z, next], next], data:=Unfolding1Mask[Unfolding1Heap[Unfolding1Heap[z, next], next], data] + perm];
@@ -1775,9 +1775,9 @@ procedure test03(z: Ref) returns ()
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next:=true]];
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_91: Ref, f_79: (Field A B) ::
-            { newPMask[o_91, f_79] }
-            Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_91, f_79] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_91, f_79] ==> newPMask[o_91, f_79]
+          assume (forall <A, B> o_63: Ref, f_48: (Field A B) ::
+            { newPMask[o_63, f_48] }
+            Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_63, f_48] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_63, f_48] ==> newPMask[o_63, f_48]
           );
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=newPMask];
           assume state(Unfolding2Heap, Unfolding2Mask);
@@ -1788,9 +1788,9 @@ procedure test03(z: Ref) returns ()
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next:=true]];
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_64: Ref, f_94: (Field A B) ::
-            { newPMask[o_64, f_94] }
-            Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_64, f_94] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_64, f_94] ==> newPMask[o_64, f_94]
+          assume (forall <A, B> o_28: Ref, f_93: (Field A B) ::
+            { newPMask[o_28, f_93] }
+            Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_28, f_93] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_28, f_93] ==> newPMask[o_28, f_93]
           );
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=newPMask];
           assume state(Unfolding2Heap, Unfolding2Mask);
@@ -1802,9 +1802,9 @@ procedure test03(z: Ref) returns ()
         Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
         Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_90: Ref, f_93: (Field A B) ::
-          { newPMask[o_90, f_93] }
-          Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_90, f_93] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_90, f_93] ==> newPMask[o_90, f_93]
+        assume (forall <A, B> o_84: Ref, f_92: (Field A B) ::
+          { newPMask[o_84, f_92] }
+          Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_84, f_92] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_84, f_92] ==> newPMask[o_84, f_92]
         );
         Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
         assume state(Unfolding1Heap, Unfolding1Mask);
@@ -1844,9 +1844,9 @@ procedure test03(z: Ref) returns ()
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next:=true]];
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_93: Ref, f_95: (Field A B) ::
-            { newPMask[o_93, f_95] }
-            Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_93, f_95] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_93, f_95] ==> newPMask[o_93, f_95]
+          assume (forall <A, B> o_86: Ref, f_94: (Field A B) ::
+            { newPMask[o_86, f_94] }
+            Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_86, f_94] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_86, f_94] ==> newPMask[o_86, f_94]
           );
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=newPMask];
           assume state(Unfolding2Heap, Unfolding2Mask);
@@ -1857,9 +1857,9 @@ procedure test03(z: Ref) returns ()
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next:=true]];
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_65: Ref, f_96: (Field A B) ::
-            { newPMask[o_65, f_96] }
-            Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_65, f_96] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_65, f_96] ==> newPMask[o_65, f_96]
+          assume (forall <A, B> o_29: Ref, f_95: (Field A B) ::
+            { newPMask[o_29, f_95] }
+            Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_29, f_95] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_29, f_95] ==> newPMask[o_29, f_95]
           );
           Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=newPMask];
           assume state(Unfolding2Heap, Unfolding2Mask);
@@ -1870,14 +1870,14 @@ procedure test03(z: Ref) returns ()
         Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
         Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_92: Ref, f_68: (Field A B) ::
-          { newPMask[o_92, f_68] }
-          Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_92, f_68] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_92, f_68] ==> newPMask[o_92, f_68]
+        assume (forall <A, B> o_85: Ref, f_41: (Field A B) ::
+          { newPMask[o_85, f_41] }
+          Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_85, f_41] || Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_85, f_41] ==> newPMask[o_85, f_41]
         );
         Unfolding1Heap := Unfolding1Heap[null, LL#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
         assume state(Unfolding1Heap, Unfolding1Mask);
       assume state(Unfolding1Heap, Unfolding1Mask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@33.10--37.41) [201483]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@33.10--37.41) [73224]"}
         HasDirectPerm(Unfolding1Mask, z, next);
       Unfolding2Heap := Unfolding1Heap;
       Unfolding2Mask := Unfolding1Mask;
@@ -1887,12 +1887,12 @@ procedure test03(z: Ref) returns ()
       ExhaleWellDef1Mask := Unfolding2Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access LL(z.next.next, 2) (0172.vpr@33.10--37.41) [201484]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access LL(z.next.next, 2) (0172.vpr@33.10--37.41) [73225]"}
           perm <= Unfolding2Mask[null, LL(Unfolding2Heap[Unfolding2Heap[z, next], next], 2)];
       }
       Unfolding2Mask := Unfolding2Mask[null, LL(Unfolding2Heap[Unfolding2Heap[z, next], next], 2):=Unfolding2Mask[null, LL(Unfolding2Heap[Unfolding2Heap[z, next], next], 2)] - perm];
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [201485]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [73226]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Unfolding2Heap[Unfolding2Heap[z, next], next] != null;
       Unfolding2Mask := Unfolding2Mask[Unfolding2Heap[Unfolding2Heap[z, next], next], data:=Unfolding2Mask[Unfolding2Heap[Unfolding2Heap[z, next], next], data] + perm];
@@ -1902,7 +1902,7 @@ procedure test03(z: Ref) returns ()
       Unfolding2Mask := Unfolding2Mask[Unfolding2Heap[Unfolding2Heap[z, next], next], next:=Unfolding2Mask[Unfolding2Heap[Unfolding2Heap[z, next], next], next] + perm];
       assume state(Unfolding2Heap, Unfolding2Mask);
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [201486]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [73227]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next] != null;
       Unfolding2Mask := Unfolding2Mask[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], data:=Unfolding2Mask[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], data] + perm];
@@ -1948,9 +1948,9 @@ procedure test03(z: Ref) returns ()
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next:=true]];
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_95: Ref, f_98: (Field A B) ::
-            { newPMask[o_95, f_98] }
-            Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_95, f_98] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_95, f_98] ==> newPMask[o_95, f_98]
+          assume (forall <A, B> o_88: Ref, f_97: (Field A B) ::
+            { newPMask[o_88, f_97] }
+            Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_88, f_97] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_88, f_97] ==> newPMask[o_88, f_97]
           );
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=newPMask];
           assume state(Unfolding3Heap, Unfolding3Mask);
@@ -1961,9 +1961,9 @@ procedure test03(z: Ref) returns ()
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next:=true]];
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_96: Ref, f_99: (Field A B) ::
-            { newPMask[o_96, f_99] }
-            Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_96, f_99] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_96, f_99] ==> newPMask[o_96, f_99]
+          assume (forall <A, B> o_89: Ref, f_98: (Field A B) ::
+            { newPMask[o_89, f_98] }
+            Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_89, f_98] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_89, f_98] ==> newPMask[o_89, f_98]
           );
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=newPMask];
           assume state(Unfolding3Heap, Unfolding3Mask);
@@ -1975,9 +1975,9 @@ procedure test03(z: Ref) returns ()
         Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next:=true]];
         Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_94: Ref, f_97: (Field A B) ::
-          { newPMask[o_94, f_97] }
-          Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_94, f_97] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_94, f_97] ==> newPMask[o_94, f_97]
+        assume (forall <A, B> o_87: Ref, f_96: (Field A B) ::
+          { newPMask[o_87, f_96] }
+          Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_87, f_96] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_87, f_96] ==> newPMask[o_87, f_96]
         );
         Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=newPMask];
         assume state(Unfolding2Heap, Unfolding2Mask);
@@ -2017,9 +2017,9 @@ procedure test03(z: Ref) returns ()
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next:=true]];
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_98: Ref, f_101: (Field A B) ::
-            { newPMask[o_98, f_101] }
-            Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_98, f_101] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_98, f_101] ==> newPMask[o_98, f_101]
+          assume (forall <A, B> o_93: Ref, f_105: (Field A B) ::
+            { newPMask[o_93, f_105] }
+            Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_93, f_105] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_93, f_105] ==> newPMask[o_93, f_105]
           );
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=newPMask];
           assume state(Unfolding3Heap, Unfolding3Mask);
@@ -2030,9 +2030,9 @@ procedure test03(z: Ref) returns ()
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next:=true]];
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_99: Ref, f_75: (Field A B) ::
-            { newPMask[o_99, f_75] }
-            Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_99, f_75] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_99, f_75] ==> newPMask[o_99, f_75]
+          assume (forall <A, B> o_94: Ref, f_44: (Field A B) ::
+            { newPMask[o_94, f_44] }
+            Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_94, f_44] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_94, f_44] ==> newPMask[o_94, f_44]
           );
           Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=newPMask];
           assume state(Unfolding3Heap, Unfolding3Mask);
@@ -2043,16 +2043,16 @@ procedure test03(z: Ref) returns ()
         Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next:=true]];
         Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_97: Ref, f_100: (Field A B) ::
-          { newPMask[o_97, f_100] }
-          Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_97, f_100] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_97, f_100] ==> newPMask[o_97, f_100]
+        assume (forall <A, B> o_90: Ref, f_99: (Field A B) ::
+          { newPMask[o_90, f_99] }
+          Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3)][o_90, f_99] || Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], next], 4)][o_90, f_99] ==> newPMask[o_90, f_99]
         );
         Unfolding2Heap := Unfolding2Heap[null, LL#sm(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[z, next], next], next], 3):=newPMask];
         assume state(Unfolding2Heap, Unfolding2Mask);
       assume state(Unfolding2Heap, Unfolding2Mask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@33.10--37.41) [201487]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@33.10--37.41) [73228]"}
         HasDirectPerm(Unfolding2Mask, z, next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next (0172.vpr@33.10--37.41) [201488]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next (0172.vpr@33.10--37.41) [73229]"}
         HasDirectPerm(Unfolding2Mask, Heap[z, next], next);
       Unfolding3Heap := Unfolding2Heap;
       Unfolding3Mask := Unfolding2Mask;
@@ -2062,12 +2062,12 @@ procedure test03(z: Ref) returns ()
       ExhaleWellDef1Mask := Unfolding3Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access LL(z.next.next.next, 3) (0172.vpr@33.10--37.41) [201489]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access LL(z.next.next.next, 3) (0172.vpr@33.10--37.41) [73230]"}
           perm <= Unfolding3Mask[null, LL(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], 3)];
       }
       Unfolding3Mask := Unfolding3Mask[null, LL(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], 3):=Unfolding3Mask[null, LL(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], 3)] - perm];
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [201490]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [73231]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next] != null;
       Unfolding3Mask := Unfolding3Mask[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], data:=Unfolding3Mask[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], data] + perm];
@@ -2077,7 +2077,7 @@ procedure test03(z: Ref) returns ()
       Unfolding3Mask := Unfolding3Mask[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next:=Unfolding3Mask[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next] + perm];
       assume state(Unfolding3Heap, Unfolding3Mask);
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [201491]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@33.10--37.41) [73232]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next] != null;
       Unfolding3Mask := Unfolding3Mask[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], data:=Unfolding3Mask[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], data] + perm];
@@ -2123,9 +2123,9 @@ procedure test03(z: Ref) returns ()
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next:=true]];
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_101: Ref, f_103: (Field A B) ::
-            { newPMask[o_101, f_103] }
-            Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][o_101, f_103] || Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], 6)][o_101, f_103] ==> newPMask[o_101, f_103]
+          assume (forall <A, B> o_95: Ref, f_106: (Field A B) ::
+            { newPMask[o_95, f_106] }
+            Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][o_95, f_106] || Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], 6)][o_95, f_106] ==> newPMask[o_95, f_106]
           );
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=newPMask];
           assume state(Unfolding4Heap, Unfolding4Mask);
@@ -2136,9 +2136,9 @@ procedure test03(z: Ref) returns ()
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next:=true]];
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_102: Ref, f_76: (Field A B) ::
-            { newPMask[o_102, f_76] }
-            Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][o_102, f_76] || Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], 6)][o_102, f_76] ==> newPMask[o_102, f_76]
+          assume (forall <A, B> o_96: Ref, f_45: (Field A B) ::
+            { newPMask[o_96, f_45] }
+            Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][o_96, f_45] || Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], 6)][o_96, f_45] ==> newPMask[o_96, f_45]
           );
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=newPMask];
           assume state(Unfolding4Heap, Unfolding4Mask);
@@ -2150,9 +2150,9 @@ procedure test03(z: Ref) returns ()
         Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next:=true]];
         Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_100: Ref, f_102: (Field A B) ::
-          { newPMask[o_100, f_102] }
-          Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_100, f_102] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_100, f_102] ==> newPMask[o_100, f_102]
+        assume (forall <A, B> o_97: Ref, f_107: (Field A B) ::
+          { newPMask[o_97, f_107] }
+          Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_97, f_107] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_97, f_107] ==> newPMask[o_97, f_107]
         );
         Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=newPMask];
         assume state(Unfolding3Heap, Unfolding3Mask);
@@ -2192,9 +2192,9 @@ procedure test03(z: Ref) returns ()
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next:=true]];
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_104: Ref, f_105: (Field A B) ::
-            { newPMask[o_104, f_105] }
-            Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][o_104, f_105] || Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], 6)][o_104, f_105] ==> newPMask[o_104, f_105]
+          assume (forall <A, B> o_98: Ref, f_87: (Field A B) ::
+            { newPMask[o_98, f_87] }
+            Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][o_98, f_87] || Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], 6)][o_98, f_87] ==> newPMask[o_98, f_87]
           );
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=newPMask];
           assume state(Unfolding4Heap, Unfolding4Mask);
@@ -2205,9 +2205,9 @@ procedure test03(z: Ref) returns ()
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next:=true]];
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_105: Ref, f_106: (Field A B) ::
-            { newPMask[o_105, f_106] }
-            Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][o_105, f_106] || Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], 6)][o_105, f_106] ==> newPMask[o_105, f_106]
+          assume (forall <A, B> o_99: Ref, f_108: (Field A B) ::
+            { newPMask[o_99, f_108] }
+            Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5)][o_99, f_108] || Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], next], 6)][o_99, f_108] ==> newPMask[o_99, f_108]
           );
           Unfolding4Heap := Unfolding4Heap[null, LL#sm(Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[Unfolding4Heap[z, next], next], next], next], next], 5):=newPMask];
           assume state(Unfolding4Heap, Unfolding4Mask);
@@ -2218,28 +2218,28 @@ procedure test03(z: Ref) returns ()
         Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next:=true]];
         Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_103: Ref, f_104: (Field A B) ::
-          { newPMask[o_103, f_104] }
-          Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_103, f_104] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_103, f_104] ==> newPMask[o_103, f_104]
+        assume (forall <A, B> o_77: Ref, f_109: (Field A B) ::
+          { newPMask[o_77, f_109] }
+          Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4)][o_77, f_109] || Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], next], 5)][o_77, f_109] ==> newPMask[o_77, f_109]
         );
         Unfolding3Heap := Unfolding3Heap[null, LL#sm(Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[Unfolding3Heap[z, next], next], next], next], 4):=newPMask];
         assume state(Unfolding3Heap, Unfolding3Mask);
       assume state(Unfolding3Heap, Unfolding3Mask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@33.10--37.41) [201492]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@33.10--37.41) [73233]"}
         HasDirectPerm(Unfolding3Mask, z, next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next (0172.vpr@33.10--37.41) [201493]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next (0172.vpr@33.10--37.41) [73234]"}
         HasDirectPerm(Unfolding3Mask, Heap[z, next], next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next.next (0172.vpr@33.10--37.41) [201494]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next.next (0172.vpr@33.10--37.41) [73235]"}
         HasDirectPerm(Unfolding3Mask, Heap[Heap[z, next], next], next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@33.10--37.41) [201495]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@33.10--37.41) [73236]"}
         HasDirectPerm(Unfolding3Mask, z, next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next (0172.vpr@33.10--37.41) [201496]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next (0172.vpr@33.10--37.41) [73237]"}
         HasDirectPerm(Unfolding3Mask, Heap[z, next], next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next.next (0172.vpr@33.10--37.41) [201497]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next.next (0172.vpr@33.10--37.41) [73238]"}
         HasDirectPerm(Unfolding3Mask, Heap[Heap[z, next], next], next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next.next.next (0172.vpr@33.10--37.41) [201498]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next.next.next (0172.vpr@33.10--37.41) [73239]"}
         HasDirectPerm(Unfolding3Mask, Heap[Heap[Heap[z, next], next], next], next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next.next.next.data (0172.vpr@33.10--37.41) [201499]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.next.next.next.data (0172.vpr@33.10--37.41) [73240]"}
         HasDirectPerm(Unfolding3Mask, Heap[Heap[Heap[Heap[z, next], next], next], next], data);
       
       // -- Free assumptions (exp module)
@@ -2247,9 +2247,9 @@ procedure test03(z: Ref) returns ()
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][Heap[Heap[Heap[z, next], next], next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][Heap[Heap[Heap[Heap[z, next], next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_106: Ref, f_107: (Field A B) ::
-          { newPMask[o_106, f_107] }
-          Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_106, f_107] || Heap[null, LL#sm(Heap[Heap[Heap[Heap[z, next], next], next], next], 4)][o_106, f_107] ==> newPMask[o_106, f_107]
+        assume (forall <A, B> o_78: Ref, f_110: (Field A B) ::
+          { newPMask[o_78, f_110] }
+          Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_78, f_110] || Heap[null, LL#sm(Heap[Heap[Heap[Heap[z, next], next], next], next], 4)][o_78, f_110] ==> newPMask[o_78, f_110]
         );
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=newPMask];
         assume state(Heap, Mask);
@@ -2259,9 +2259,9 @@ procedure test03(z: Ref) returns ()
         Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][Heap[Heap[z, next], next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][Heap[Heap[Heap[z, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_107: Ref, f_108: (Field A B) ::
-          { newPMask[o_107, f_108] }
-          Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_107, f_108] || Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_107, f_108] ==> newPMask[o_107, f_108]
+        assume (forall <A, B> o_100: Ref, f_111: (Field A B) ::
+          { newPMask[o_100, f_111] }
+          Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_100, f_111] || Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_100, f_111] ==> newPMask[o_100, f_111]
         );
         Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=newPMask];
         assume state(Heap, Mask);
@@ -2269,9 +2269,9 @@ procedure test03(z: Ref) returns ()
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][Heap[Heap[Heap[z, next], next], next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][Heap[Heap[Heap[Heap[z, next], next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_108: Ref, f_109: (Field A B) ::
-          { newPMask[o_108, f_109] }
-          Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_108, f_109] || Heap[null, LL#sm(Heap[Heap[Heap[Heap[z, next], next], next], next], 4)][o_108, f_109] ==> newPMask[o_108, f_109]
+        assume (forall <A, B> o_101: Ref, f_112: (Field A B) ::
+          { newPMask[o_101, f_112] }
+          Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_101, f_112] || Heap[null, LL#sm(Heap[Heap[Heap[Heap[z, next], next], next], next], 4)][o_101, f_112] ==> newPMask[o_101, f_112]
         );
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=newPMask];
         assume state(Heap, Mask);
@@ -2281,9 +2281,9 @@ procedure test03(z: Ref) returns ()
         Heap := Heap[null, LL#sm(Heap[z, next], 1):=Heap[null, LL#sm(Heap[z, next], 1)][Heap[z, next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[z, next], 1):=Heap[null, LL#sm(Heap[z, next], 1)][Heap[Heap[z, next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_109: Ref, f_110: (Field A B) ::
-          { newPMask[o_109, f_110] }
-          Heap[null, LL#sm(Heap[z, next], 1)][o_109, f_110] || Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_109, f_110] ==> newPMask[o_109, f_110]
+        assume (forall <A, B> o_102: Ref, f_113: (Field A B) ::
+          { newPMask[o_102, f_113] }
+          Heap[null, LL#sm(Heap[z, next], 1)][o_102, f_113] || Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_102, f_113] ==> newPMask[o_102, f_113]
         );
         Heap := Heap[null, LL#sm(Heap[z, next], 1):=newPMask];
         assume state(Heap, Mask);
@@ -2291,9 +2291,9 @@ procedure test03(z: Ref) returns ()
         Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][Heap[Heap[z, next], next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][Heap[Heap[Heap[z, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_110: Ref, f_111: (Field A B) ::
-          { newPMask[o_110, f_111] }
-          Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_110, f_111] || Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_110, f_111] ==> newPMask[o_110, f_111]
+        assume (forall <A, B> o_103: Ref, f_114: (Field A B) ::
+          { newPMask[o_103, f_114] }
+          Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_103, f_114] || Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_103, f_114] ==> newPMask[o_103, f_114]
         );
         Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=newPMask];
         assume state(Heap, Mask);
@@ -2301,9 +2301,9 @@ procedure test03(z: Ref) returns ()
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][Heap[Heap[Heap[z, next], next], next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][Heap[Heap[Heap[Heap[z, next], next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_111: Ref, f_112: (Field A B) ::
-          { newPMask[o_111, f_112] }
-          Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_111, f_112] || Heap[null, LL#sm(Heap[Heap[Heap[Heap[z, next], next], next], next], 4)][o_111, f_112] ==> newPMask[o_111, f_112]
+        assume (forall <A, B> o_104: Ref, f_115: (Field A B) ::
+          { newPMask[o_104, f_115] }
+          Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_104, f_115] || Heap[null, LL#sm(Heap[Heap[Heap[Heap[z, next], next], next], next], 4)][o_104, f_115] ==> newPMask[o_104, f_115]
         );
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=newPMask];
         assume state(Heap, Mask);
@@ -2313,9 +2313,9 @@ procedure test03(z: Ref) returns ()
         Heap := Heap[null, LL#sm(z, 0):=Heap[null, LL#sm(z, 0)][z, next:=true]];
         Heap := Heap[null, LL#sm(z, 0):=Heap[null, LL#sm(z, 0)][Heap[z, next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_112: Ref, f_113: (Field A B) ::
-          { newPMask[o_112, f_113] }
-          Heap[null, LL#sm(z, 0)][o_112, f_113] || Heap[null, LL#sm(Heap[z, next], 1)][o_112, f_113] ==> newPMask[o_112, f_113]
+        assume (forall <A, B> o_105: Ref, f_116: (Field A B) ::
+          { newPMask[o_105, f_116] }
+          Heap[null, LL#sm(z, 0)][o_105, f_116] || Heap[null, LL#sm(Heap[z, next], 1)][o_105, f_116] ==> newPMask[o_105, f_116]
         );
         Heap := Heap[null, LL#sm(z, 0):=newPMask];
         assume state(Heap, Mask);
@@ -2323,9 +2323,9 @@ procedure test03(z: Ref) returns ()
         Heap := Heap[null, LL#sm(Heap[z, next], 1):=Heap[null, LL#sm(Heap[z, next], 1)][Heap[z, next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[z, next], 1):=Heap[null, LL#sm(Heap[z, next], 1)][Heap[Heap[z, next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_113: Ref, f_114: (Field A B) ::
-          { newPMask[o_113, f_114] }
-          Heap[null, LL#sm(Heap[z, next], 1)][o_113, f_114] || Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_113, f_114] ==> newPMask[o_113, f_114]
+        assume (forall <A, B> o_106: Ref, f_117: (Field A B) ::
+          { newPMask[o_106, f_117] }
+          Heap[null, LL#sm(Heap[z, next], 1)][o_106, f_117] || Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_106, f_117] ==> newPMask[o_106, f_117]
         );
         Heap := Heap[null, LL#sm(Heap[z, next], 1):=newPMask];
         assume state(Heap, Mask);
@@ -2333,9 +2333,9 @@ procedure test03(z: Ref) returns ()
         Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][Heap[Heap[z, next], next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][Heap[Heap[Heap[z, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_114: Ref, f_115: (Field A B) ::
-          { newPMask[o_114, f_115] }
-          Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_114, f_115] || Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_114, f_115] ==> newPMask[o_114, f_115]
+        assume (forall <A, B> o_107: Ref, f_118: (Field A B) ::
+          { newPMask[o_107, f_118] }
+          Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_107, f_118] || Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_107, f_118] ==> newPMask[o_107, f_118]
         );
         Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=newPMask];
         assume state(Heap, Mask);
@@ -2343,13 +2343,13 @@ procedure test03(z: Ref) returns ()
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][Heap[Heap[Heap[z, next], next], next], next:=true]];
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][Heap[Heap[Heap[Heap[z, next], next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_115: Ref, f_116: (Field A B) ::
-          { newPMask[o_115, f_116] }
-          Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_115, f_116] || Heap[null, LL#sm(Heap[Heap[Heap[Heap[z, next], next], next], next], 4)][o_115, f_116] ==> newPMask[o_115, f_116]
+        assume (forall <A, B> o_108: Ref, f_119: (Field A B) ::
+          { newPMask[o_108, f_119] }
+          Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_108, f_119] || Heap[null, LL#sm(Heap[Heap[Heap[Heap[z, next], next], next], next], 4)][o_108, f_119] ==> newPMask[o_108, f_119]
         );
         Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=newPMask];
         assume state(Heap, Mask);
-    assert {:msg "  Assert might fail. Assertion z.next.next.next.next.data == 4 might not hold. (0172.vpr@33.10--37.41) [201500]"}
+    assert {:msg "  Assert might fail. Assertion z.next.next.next.next.data == 4 might not hold. (0172.vpr@33.10--37.41) [73241]"}
       Heap[Heap[Heap[Heap[Heap[z, next], next], next], next], data] == 4;
     
     // -- Free assumptions (exhale module)
@@ -2357,9 +2357,9 @@ procedure test03(z: Ref) returns ()
       Heap := Heap[null, LL#sm(z, 0):=Heap[null, LL#sm(z, 0)][z, next:=true]];
       Heap := Heap[null, LL#sm(z, 0):=Heap[null, LL#sm(z, 0)][Heap[z, next], data:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_116: Ref, f_117: (Field A B) ::
-        { newPMask[o_116, f_117] }
-        Heap[null, LL#sm(z, 0)][o_116, f_117] || Heap[null, LL#sm(Heap[z, next], 1)][o_116, f_117] ==> newPMask[o_116, f_117]
+      assume (forall <A, B> o_109: Ref, f_120: (Field A B) ::
+        { newPMask[o_109, f_120] }
+        Heap[null, LL#sm(z, 0)][o_109, f_120] || Heap[null, LL#sm(Heap[z, next], 1)][o_109, f_120] ==> newPMask[o_109, f_120]
       );
       Heap := Heap[null, LL#sm(z, 0):=newPMask];
       assume state(Heap, Mask);
@@ -2367,9 +2367,9 @@ procedure test03(z: Ref) returns ()
       Heap := Heap[null, LL#sm(Heap[z, next], 1):=Heap[null, LL#sm(Heap[z, next], 1)][Heap[z, next], next:=true]];
       Heap := Heap[null, LL#sm(Heap[z, next], 1):=Heap[null, LL#sm(Heap[z, next], 1)][Heap[Heap[z, next], next], data:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_117: Ref, f_118: (Field A B) ::
-        { newPMask[o_117, f_118] }
-        Heap[null, LL#sm(Heap[z, next], 1)][o_117, f_118] || Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_117, f_118] ==> newPMask[o_117, f_118]
+      assume (forall <A, B> o_110: Ref, f_121: (Field A B) ::
+        { newPMask[o_110, f_121] }
+        Heap[null, LL#sm(Heap[z, next], 1)][o_110, f_121] || Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_110, f_121] ==> newPMask[o_110, f_121]
       );
       Heap := Heap[null, LL#sm(Heap[z, next], 1):=newPMask];
       assume state(Heap, Mask);
@@ -2377,9 +2377,9 @@ procedure test03(z: Ref) returns ()
       Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][Heap[Heap[z, next], next], next:=true]];
       Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][Heap[Heap[Heap[z, next], next], next], data:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_118: Ref, f_119: (Field A B) ::
-        { newPMask[o_118, f_119] }
-        Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_118, f_119] || Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_118, f_119] ==> newPMask[o_118, f_119]
+      assume (forall <A, B> o_111: Ref, f_122: (Field A B) ::
+        { newPMask[o_111, f_122] }
+        Heap[null, LL#sm(Heap[Heap[z, next], next], 2)][o_111, f_122] || Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_111, f_122] ==> newPMask[o_111, f_122]
       );
       Heap := Heap[null, LL#sm(Heap[Heap[z, next], next], 2):=newPMask];
       assume state(Heap, Mask);
@@ -2387,9 +2387,9 @@ procedure test03(z: Ref) returns ()
       Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][Heap[Heap[Heap[z, next], next], next], next:=true]];
       Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][Heap[Heap[Heap[Heap[z, next], next], next], next], data:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_119: Ref, f_120: (Field A B) ::
-        { newPMask[o_119, f_120] }
-        Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_119, f_120] || Heap[null, LL#sm(Heap[Heap[Heap[Heap[z, next], next], next], next], 4)][o_119, f_120] ==> newPMask[o_119, f_120]
+      assume (forall <A, B> o_112: Ref, f_123: (Field A B) ::
+        { newPMask[o_112, f_123] }
+        Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3)][o_112, f_123] || Heap[null, LL#sm(Heap[Heap[Heap[Heap[z, next], next], next], next], 4)][o_112, f_123] ==> newPMask[o_112, f_123]
       );
       Heap := Heap[null, LL#sm(Heap[Heap[Heap[z, next], next], next], 3):=newPMask];
       assume state(Heap, Mask);
@@ -2398,7 +2398,7 @@ procedure test03(z: Ref) returns ()
   // -- Translating statement: assert false -- 0172.vpr@40.3--40.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0172.vpr@40.10--40.15) [201501]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0172.vpr@40.10--40.15) [73242]"}
       false;
     assume state(Heap, Mask);
 }
@@ -2457,12 +2457,12 @@ procedure test04(z: Ref) returns ()
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access LL2(z, 0) (0172.vpr@55.10--55.54) [201503]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access LL2(z, 0) (0172.vpr@55.10--55.54) [73244]"}
           perm <= UnfoldingMask[null, LL2(z, 0)];
       }
       UnfoldingMask := UnfoldingMask[null, LL2(z, 0):=UnfoldingMask[null, LL2(z, 0)] - perm];
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@55.10--55.54) [201504]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@55.10--55.54) [73245]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> z != null;
       UnfoldingMask := UnfoldingMask[z, data:=UnfoldingMask[z, data] + perm];
@@ -2472,7 +2472,7 @@ procedure test04(z: Ref) returns ()
       UnfoldingMask := UnfoldingMask[z, next:=UnfoldingMask[z, next] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := 1 / 2;
-      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@55.10--55.54) [201505]"}
+      assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0172.vpr@55.10--55.54) [73246]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> UnfoldingHeap[z, next] != null;
       UnfoldingMask := UnfoldingMask[UnfoldingHeap[z, next], data:=UnfoldingMask[UnfoldingHeap[z, next], data] + perm];
@@ -2519,9 +2519,9 @@ procedure test04(z: Ref) returns ()
           Unfolding1Heap := Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[z, next], next], next:=true]];
           Unfolding1Heap := Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], data:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_121: Ref, f_122: (Field A B) ::
-            { newPMask[o_121, f_122] }
-            Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_121, f_122] || Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_121, f_122] ==> newPMask[o_121, f_122]
+          assume (forall <A, B> o_113: Ref, f_124: (Field A B) ::
+            { newPMask[o_113, f_124] }
+            Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2)][o_113, f_124] || Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[z, next], next], next], 3)][o_113, f_124] ==> newPMask[o_113, f_124]
           );
           Unfolding1Heap := Unfolding1Heap[null, LL2#sm(Unfolding1Heap[Unfolding1Heap[z, next], next], 2):=newPMask];
           assume state(Unfolding1Heap, Unfolding1Mask);
@@ -2532,16 +2532,16 @@ procedure test04(z: Ref) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[z, next], 1):=UnfoldingHeap[null, LL2#sm(UnfoldingHeap[z, next], 1)][UnfoldingHeap[z, next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[z, next], 1):=UnfoldingHeap[null, LL2#sm(UnfoldingHeap[z, next], 1)][UnfoldingHeap[UnfoldingHeap[z, next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_120: Ref, f_121: (Field A B) ::
-          { newPMask[o_120, f_121] }
-          UnfoldingHeap[null, LL2#sm(UnfoldingHeap[z, next], 1)][o_120, f_121] || UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_120, f_121] ==> newPMask[o_120, f_121]
+        assume (forall <A, B> o_114: Ref, f_125: (Field A B) ::
+          { newPMask[o_114, f_125] }
+          UnfoldingHeap[null, LL2#sm(UnfoldingHeap[z, next], 1)][o_114, f_125] || UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_114, f_125] ==> newPMask[o_114, f_125]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[z, next], 1):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@55.10--55.54) [201506]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@55.10--55.54) [73247]"}
         HasDirectPerm(UnfoldingMask, z, next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.data (0172.vpr@55.10--55.54) [201507]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.data (0172.vpr@55.10--55.54) [73248]"}
         HasDirectPerm(UnfoldingMask, Heap[z, next], data);
       
       // -- Free assumptions (exp module)
@@ -2549,13 +2549,13 @@ procedure test04(z: Ref) returns ()
         Heap := Heap[null, LL2#sm(z, 0):=Heap[null, LL2#sm(z, 0)][z, next:=true]];
         Heap := Heap[null, LL2#sm(z, 0):=Heap[null, LL2#sm(z, 0)][Heap[z, next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_122: Ref, f_123: (Field A B) ::
-          { newPMask[o_122, f_123] }
-          Heap[null, LL2#sm(z, 0)][o_122, f_123] || Heap[null, LL2#sm(Heap[z, next], 1)][o_122, f_123] ==> newPMask[o_122, f_123]
+        assume (forall <A, B> o_115: Ref, f_126: (Field A B) ::
+          { newPMask[o_115, f_126] }
+          Heap[null, LL2#sm(z, 0)][o_115, f_126] || Heap[null, LL2#sm(Heap[z, next], 1)][o_115, f_126] ==> newPMask[o_115, f_126]
         );
         Heap := Heap[null, LL2#sm(z, 0):=newPMask];
         assume state(Heap, Mask);
-    assert {:msg "  Assert might fail. Assertion z.next.data == 1 might not hold. (0172.vpr@55.10--55.54) [201508]"}
+    assert {:msg "  Assert might fail. Assertion z.next.data == 1 might not hold. (0172.vpr@55.10--55.54) [73249]"}
       Heap[Heap[z, next], data] == 1;
     
     // -- Free assumptions (exhale module)
@@ -2563,9 +2563,9 @@ procedure test04(z: Ref) returns ()
       Heap := Heap[null, LL2#sm(z, 0):=Heap[null, LL2#sm(z, 0)][z, next:=true]];
       Heap := Heap[null, LL2#sm(z, 0):=Heap[null, LL2#sm(z, 0)][Heap[z, next], data:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_123: Ref, f_124: (Field A B) ::
-        { newPMask[o_123, f_124] }
-        Heap[null, LL2#sm(z, 0)][o_123, f_124] || Heap[null, LL2#sm(Heap[z, next], 1)][o_123, f_124] ==> newPMask[o_123, f_124]
+      assume (forall <A, B> o_116: Ref, f_127: (Field A B) ::
+        { newPMask[o_116, f_127] }
+        Heap[null, LL2#sm(z, 0)][o_116, f_127] || Heap[null, LL2#sm(Heap[z, next], 1)][o_116, f_127] ==> newPMask[o_116, f_127]
       );
       Heap := Heap[null, LL2#sm(z, 0):=newPMask];
       assume state(Heap, Mask);
@@ -2617,7 +2617,7 @@ procedure test05(z: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding LL2(z, 0) might fail. There might be insufficient permission to access LL2(z, 0) (0172.vpr@61.3--61.24) [201512]"}
+      assert {:msg "  Unfolding LL2(z, 0) might fail. There might be insufficient permission to access LL2(z, 0) (0172.vpr@61.3--61.24) [73253]"}
         perm <= Mask[null, LL2(z, 0)];
     }
     Mask := Mask[null, LL2(z, 0):=Mask[null, LL2(z, 0)] - perm];
@@ -2628,7 +2628,7 @@ procedure test05(z: Ref) returns ()
         Heap := Heap[null, LL2(z, 0):=newVersion];
       }
     perm := 1 / 2;
-    assert {:msg "  Unfolding LL2(z, 0) might fail. Fraction 1 / 2 might be negative. (0172.vpr@61.3--61.24) [201513]"}
+    assert {:msg "  Unfolding LL2(z, 0) might fail. Fraction 1 / 2 might be negative. (0172.vpr@61.3--61.24) [73254]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> z != null;
     Mask := Mask[z, data:=Mask[z, data] + perm];
@@ -2638,7 +2638,7 @@ procedure test05(z: Ref) returns ()
     Mask := Mask[z, next:=Mask[z, next] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Unfolding LL2(z, 0) might fail. Fraction 1 / 2 might be negative. (0172.vpr@61.3--61.24) [201515]"}
+    assert {:msg "  Unfolding LL2(z, 0) might fail. Fraction 1 / 2 might be negative. (0172.vpr@61.3--61.24) [73256]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Heap[z, next] != null;
     Mask := Mask[Heap[z, next], data:=Mask[Heap[z, next], data] + perm];
@@ -2685,9 +2685,9 @@ procedure test05(z: Ref) returns ()
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][UnfoldingHeap[UnfoldingHeap[z, next], next], next:=true]];
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], data:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_125: Ref, f_126: (Field A B) ::
-          { newPMask[o_125, f_126] }
-          UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_125, f_126] || UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], 3)][o_125, f_126] ==> newPMask[o_125, f_126]
+        assume (forall <A, B> o_117: Ref, f_128: (Field A B) ::
+          { newPMask[o_117, f_128] }
+          UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2)][o_117, f_128] || UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[z, next], next], next], 3)][o_117, f_128] ==> newPMask[o_117, f_128]
         );
         UnfoldingHeap := UnfoldingHeap[null, LL2#sm(UnfoldingHeap[UnfoldingHeap[z, next], next], 2):=newPMask];
         assume state(UnfoldingHeap, UnfoldingMask);
@@ -2698,9 +2698,9 @@ procedure test05(z: Ref) returns ()
       Heap := Heap[null, LL2#sm(Heap[z, next], 1):=Heap[null, LL2#sm(Heap[z, next], 1)][Heap[z, next], next:=true]];
       Heap := Heap[null, LL2#sm(Heap[z, next], 1):=Heap[null, LL2#sm(Heap[z, next], 1)][Heap[Heap[z, next], next], data:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_124: Ref, f_125: (Field A B) ::
-        { newPMask[o_124, f_125] }
-        Heap[null, LL2#sm(Heap[z, next], 1)][o_124, f_125] || Heap[null, LL2#sm(Heap[Heap[z, next], next], 2)][o_124, f_125] ==> newPMask[o_124, f_125]
+      assume (forall <A, B> o_118: Ref, f_129: (Field A B) ::
+        { newPMask[o_118, f_129] }
+        Heap[null, LL2#sm(Heap[z, next], 1)][o_118, f_129] || Heap[null, LL2#sm(Heap[Heap[z, next], next], 2)][o_118, f_129] ==> newPMask[o_118, f_129]
       );
       Heap := Heap[null, LL2#sm(Heap[z, next], 1):=newPMask];
       assume state(Heap, Mask);
@@ -2712,11 +2712,11 @@ procedure test05(z: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of z.next.data == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@62.10--62.26) [201517]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next (0172.vpr@62.10--62.26) [73258]"}
         HasDirectPerm(ExhaleWellDef0Mask, z, next);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.data (0172.vpr@62.10--62.26) [201518]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access z.next.data (0172.vpr@62.10--62.26) [73259]"}
         HasDirectPerm(ExhaleWellDef0Mask, Heap[z, next], data);
-    assert {:msg "  Assert might fail. Assertion z.next.data == 1 might not hold. (0172.vpr@62.10--62.26) [201519]"}
+    assert {:msg "  Assert might fail. Assertion z.next.data == 1 might not hold. (0172.vpr@62.10--62.26) [73260]"}
       Heap[Heap[z, next], data] == 1;
     assume state(Heap, Mask);
 }

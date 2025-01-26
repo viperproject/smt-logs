@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:50
+// Date:         2025-01-26 21:43:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/declarations_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/declarations_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -551,33 +551,33 @@ function  SimpleNil(): SimpleListDomainType;
 function  SimpleCons(value_2: int, tail: SimpleListDomainType): SimpleListDomainType;
 
 // Translation of domain function get_SimpleList_value
-function  get_SimpleList_value(t_9: SimpleListDomainType): int;
+function  get_SimpleList_value(t_3: SimpleListDomainType): int;
 
 // Translation of domain function get_SimpleList_tail
-function  get_SimpleList_tail(t_9: SimpleListDomainType): SimpleListDomainType;
+function  get_SimpleList_tail(t_3: SimpleListDomainType): SimpleListDomainType;
 
 // Translation of domain function SimpleList_tag
-function  SimpleList_tag(t_9: SimpleListDomainType): int;
+function  SimpleList_tag(t_3: SimpleListDomainType): int;
 
 // Translation of anonymous domain axiom
-axiom (forall value_1: int, tail_1: SimpleListDomainType ::
-  { (SimpleCons(value_1, tail_1): SimpleListDomainType) }
-  value_1 == (get_SimpleList_value((SimpleCons(value_1, tail_1): SimpleListDomainType)): int)
+axiom (forall value: int, tail_1: SimpleListDomainType ::
+  { (SimpleCons(value, tail_1): SimpleListDomainType) }
+  value == (get_SimpleList_value((SimpleCons(value, tail_1): SimpleListDomainType)): int)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall value_1: int, tail_1: SimpleListDomainType ::
-  { (SimpleCons(value_1, tail_1): SimpleListDomainType) }
-  tail_1 == (get_SimpleList_tail((SimpleCons(value_1, tail_1): SimpleListDomainType)): SimpleListDomainType)
+axiom (forall value: int, tail_1: SimpleListDomainType ::
+  { (SimpleCons(value, tail_1): SimpleListDomainType) }
+  tail_1 == (get_SimpleList_tail((SimpleCons(value, tail_1): SimpleListDomainType)): SimpleListDomainType)
 );
 
 // Translation of anonymous domain axiom
 axiom (SimpleList_tag((SimpleNil(): SimpleListDomainType)): int) == 1;
 
 // Translation of anonymous domain axiom
-axiom (forall value_1: int, tail_1: SimpleListDomainType ::
-  { (SimpleCons(value_1, tail_1): SimpleListDomainType) }
-  (SimpleList_tag((SimpleCons(value_1, tail_1): SimpleListDomainType)): int) == 0
+axiom (forall value: int, tail_1: SimpleListDomainType ::
+  { (SimpleCons(value, tail_1): SimpleListDomainType) }
+  (SimpleList_tag((SimpleCons(value, tail_1): SimpleListDomainType)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -600,24 +600,24 @@ function  Nil<T>(): ListDomainType T;
 function  Cons<T>(value_2: T, tail: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function get_List_value
-function  get_List_value<T>(t_9: (ListDomainType T)): T;
+function  get_List_value<T>(t_3: (ListDomainType T)): T;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<T>(t_9: (ListDomainType T)): ListDomainType T;
+function  get_List_tail<T>(t_3: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function List_tag
-function  List_tag<T>(t_9: (ListDomainType T)): int;
+function  List_tag<T>(t_3: (ListDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType T)): T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType T)): ListDomainType T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType T)): ListDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -627,9 +627,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType T)): int) == 0
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (List_tag((Cons(value, tail_1): ListDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -649,36 +649,36 @@ type TreeDomainType T;
 function  Leaf<T>(): TreeDomainType T;
 
 // Translation of domain function Node
-function  Node_1<T>(value_2: T, left_2: (TreeDomainType T), right_2: (TreeDomainType T)): TreeDomainType T;
+function  Node_1<T>(value_2: T, left_1: (TreeDomainType T), right: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function get_Tree_value
-function  get_Tree_value<T>(t_9: (TreeDomainType T)): T;
+function  get_Tree_value<T>(t_3: (TreeDomainType T)): T;
 
 // Translation of domain function get_Tree_left
-function  get_Tree_left<T>(t_9: (TreeDomainType T)): TreeDomainType T;
+function  get_Tree_left<T>(t_3: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function get_Tree_right
-function  get_Tree_right<T>(t_9: (TreeDomainType T)): TreeDomainType T;
+function  get_Tree_right<T>(t_3: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function Tree_tag
-function  Tree_tag<T>(t_9: (TreeDomainType T)): int;
+function  Tree_tag<T>(t_3: (TreeDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  value_1 == (get_Tree_value((Node_1(value_1, left_1, right): TreeDomainType T)): T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  value == (get_Tree_value((Node_1(value, left, right_2): TreeDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  left_1 == (get_Tree_left((Node_1(value_1, left_1, right): TreeDomainType T)): TreeDomainType T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  left == (get_Tree_left((Node_1(value, left, right_2): TreeDomainType T)): TreeDomainType T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  right == (get_Tree_right((Node_1(value_1, left_1, right): TreeDomainType T)): TreeDomainType T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  right_2 == (get_Tree_right((Node_1(value, left, right_2): TreeDomainType T)): TreeDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -688,9 +688,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  (Tree_tag((Node_1(value_1, left_1, right): TreeDomainType T)): int) == 1
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  (Tree_tag((Node_1(value, left, right_2): TreeDomainType T)): int) == 1
 );
 
 // Translation of anonymous domain axiom
@@ -710,45 +710,45 @@ type Tree3DomainType T;
 function  Leaf3<T>(): Tree3DomainType T;
 
 // Translation of domain function Node3
-function  Node3<T>(value_2: T, left_2: (Tree3DomainType T), middle_1: (Tree3DomainType T), right_2: (Tree3DomainType T)): Tree3DomainType T;
+function  Node3<T>(value_2: T, left_1: (Tree3DomainType T), middle_1: (Tree3DomainType T), right: (Tree3DomainType T)): Tree3DomainType T;
 
 // Translation of domain function get_Tree3_value
-function  get_Tree3_value<T>(t_9: (Tree3DomainType T)): T;
+function  get_Tree3_value<T>(t_3: (Tree3DomainType T)): T;
 
 // Translation of domain function get_Tree3_left
-function  get_Tree3_left<T>(t_9: (Tree3DomainType T)): Tree3DomainType T;
+function  get_Tree3_left<T>(t_3: (Tree3DomainType T)): Tree3DomainType T;
 
 // Translation of domain function get_Tree3_middle
-function  get_Tree3_middle<T>(t_9: (Tree3DomainType T)): Tree3DomainType T;
+function  get_Tree3_middle<T>(t_3: (Tree3DomainType T)): Tree3DomainType T;
 
 // Translation of domain function get_Tree3_right
-function  get_Tree3_right<T>(t_9: (Tree3DomainType T)): Tree3DomainType T;
+function  get_Tree3_right<T>(t_3: (Tree3DomainType T)): Tree3DomainType T;
 
 // Translation of domain function Tree3_tag
-function  Tree3_tag<T>(t_9: (Tree3DomainType T)): int;
+function  Tree3_tag<T>(t_3: (Tree3DomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (Tree3DomainType T), middle: (Tree3DomainType T), right: (Tree3DomainType T) ::
-  { (Node3(value_1, left_1, middle, right): Tree3DomainType T) }
-  value_1 == (get_Tree3_value((Node3(value_1, left_1, middle, right): Tree3DomainType T)): T)
+axiom (forall <T> value: T, left: (Tree3DomainType T), middle: (Tree3DomainType T), right_2: (Tree3DomainType T) ::
+  { (Node3(value, left, middle, right_2): Tree3DomainType T) }
+  value == (get_Tree3_value((Node3(value, left, middle, right_2): Tree3DomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (Tree3DomainType T), middle: (Tree3DomainType T), right: (Tree3DomainType T) ::
-  { (Node3(value_1, left_1, middle, right): Tree3DomainType T) }
-  left_1 == (get_Tree3_left((Node3(value_1, left_1, middle, right): Tree3DomainType T)): Tree3DomainType T)
+axiom (forall <T> value: T, left: (Tree3DomainType T), middle: (Tree3DomainType T), right_2: (Tree3DomainType T) ::
+  { (Node3(value, left, middle, right_2): Tree3DomainType T) }
+  left == (get_Tree3_left((Node3(value, left, middle, right_2): Tree3DomainType T)): Tree3DomainType T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (Tree3DomainType T), middle: (Tree3DomainType T), right: (Tree3DomainType T) ::
-  { (Node3(value_1, left_1, middle, right): Tree3DomainType T) }
-  middle == (get_Tree3_middle((Node3(value_1, left_1, middle, right): Tree3DomainType T)): Tree3DomainType T)
+axiom (forall <T> value: T, left: (Tree3DomainType T), middle: (Tree3DomainType T), right_2: (Tree3DomainType T) ::
+  { (Node3(value, left, middle, right_2): Tree3DomainType T) }
+  middle == (get_Tree3_middle((Node3(value, left, middle, right_2): Tree3DomainType T)): Tree3DomainType T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (Tree3DomainType T), middle: (Tree3DomainType T), right: (Tree3DomainType T) ::
-  { (Node3(value_1, left_1, middle, right): Tree3DomainType T) }
-  right == (get_Tree3_right((Node3(value_1, left_1, middle, right): Tree3DomainType T)): Tree3DomainType T)
+axiom (forall <T> value: T, left: (Tree3DomainType T), middle: (Tree3DomainType T), right_2: (Tree3DomainType T) ::
+  { (Node3(value, left, middle, right_2): Tree3DomainType T) }
+  right_2 == (get_Tree3_right((Node3(value, left, middle, right_2): Tree3DomainType T)): Tree3DomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -758,9 +758,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (Tree3DomainType T), middle: (Tree3DomainType T), right: (Tree3DomainType T) ::
-  { (Node3(value_1, left_1, middle, right): Tree3DomainType T) }
-  (Tree3_tag((Node3(value_1, left_1, middle, right): Tree3DomainType T)): int) == 1
+axiom (forall <T> value: T, left: (Tree3DomainType T), middle: (Tree3DomainType T), right_2: (Tree3DomainType T) ::
+  { (Node3(value, left, middle, right_2): Tree3DomainType T) }
+  (Tree3_tag((Node3(value, left, middle, right_2): Tree3DomainType T)): int) == 1
 );
 
 // Translation of anonymous domain axiom
@@ -786,19 +786,19 @@ function  TCons<T, S>(elemT: T, tailT: (SpecialListDomainType T S)): SpecialList
 function  SCons<S, T>(elemS: S, tailS: (SpecialListDomainType T S)): SpecialListDomainType T S;
 
 // Translation of domain function get_SpecialList_elemT
-function  get_SpecialList_elemT<T, S>(t_9: (SpecialListDomainType T S)): T;
+function  get_SpecialList_elemT<T, S>(t_3: (SpecialListDomainType T S)): T;
 
 // Translation of domain function get_SpecialList_tailT
-function  get_SpecialList_tailT<T, S>(t_9: (SpecialListDomainType T S)): SpecialListDomainType T S;
+function  get_SpecialList_tailT<T, S>(t_3: (SpecialListDomainType T S)): SpecialListDomainType T S;
 
 // Translation of domain function get_SpecialList_elemS
-function  get_SpecialList_elemS<T, S>(t_9: (SpecialListDomainType T S)): S;
+function  get_SpecialList_elemS<T, S>(t_3: (SpecialListDomainType T S)): S;
 
 // Translation of domain function get_SpecialList_tailS
-function  get_SpecialList_tailS<T, S>(t_9: (SpecialListDomainType T S)): SpecialListDomainType T S;
+function  get_SpecialList_tailS<T, S>(t_3: (SpecialListDomainType T S)): SpecialListDomainType T S;
 
 // Translation of domain function SpecialList_tag
-function  SpecialList_tag<T, S>(t_9: (SpecialListDomainType T S)): int;
+function  SpecialList_tag<T, S>(t_3: (SpecialListDomainType T S)): int;
 
 // Translation of anonymous domain axiom
 axiom (forall <T, S> elemT_1: T, tailT_1: (SpecialListDomainType T S) ::
@@ -862,24 +862,24 @@ function  kLeaf<T>(): kTreeDomainType T;
 function  kNode<T>(value_2: T, children: (Seq (kTreeDomainType T))): kTreeDomainType T;
 
 // Translation of domain function get_kTree_value
-function  get_kTree_value<T>(t_9: (kTreeDomainType T)): T;
+function  get_kTree_value<T>(t_3: (kTreeDomainType T)): T;
 
 // Translation of domain function get_kTree_children
-function  get_kTree_children<T>(t_9: (kTreeDomainType T)): Seq (kTreeDomainType T);
+function  get_kTree_children<T>(t_3: (kTreeDomainType T)): Seq (kTreeDomainType T);
 
 // Translation of domain function kTree_tag
-function  kTree_tag<T>(t_9: (kTreeDomainType T)): int;
+function  kTree_tag<T>(t_3: (kTreeDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, children_1: (Seq (kTreeDomainType T)) ::
-  { (kNode(value_1, children_1): kTreeDomainType T) }
-  value_1 == (get_kTree_value((kNode(value_1, children_1): kTreeDomainType T)): T)
+axiom (forall <T> value: T, children_1: (Seq (kTreeDomainType T)) ::
+  { (kNode(value, children_1): kTreeDomainType T) }
+  value == (get_kTree_value((kNode(value, children_1): kTreeDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, children_1: (Seq (kTreeDomainType T)) ::
-  { (kNode(value_1, children_1): kTreeDomainType T) }
-  Seq#Equal(children_1, (get_kTree_children((kNode(value_1, children_1): kTreeDomainType T)): Seq (kTreeDomainType T)))
+axiom (forall <T> value: T, children_1: (Seq (kTreeDomainType T)) ::
+  { (kNode(value, children_1): kTreeDomainType T) }
+  Seq#Equal(children_1, (get_kTree_children((kNode(value, children_1): kTreeDomainType T)): Seq (kTreeDomainType T)))
 );
 
 // Translation of anonymous domain axiom
@@ -889,9 +889,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, children_1: (Seq (kTreeDomainType T)) ::
-  { (kNode(value_1, children_1): kTreeDomainType T) }
-  (kTree_tag((kNode(value_1, children_1): kTreeDomainType T)): int) == 1
+axiom (forall <T> value: T, children_1: (Seq (kTreeDomainType T)) ::
+  { (kNode(value, children_1): kTreeDomainType T) }
+  (kTree_tag((kNode(value, children_1): kTreeDomainType T)): int) == 1
 );
 
 // Translation of anonymous domain axiom
@@ -911,31 +911,31 @@ type MixedDomainType T S;
 function  Entity1<S, T>(sl: SimpleListDomainType, ls_1: (ListDomainType S), lt: (ListDomainType T)): MixedDomainType T S;
 
 // Translation of domain function Entity2
-function  Entity2<T, S>(t3_3: (Tree3DomainType T), spl1: (SpecialListDomainType T S), spl2: (SpecialListDomainType S T), kt: (kTreeDomainType T)): MixedDomainType T S;
+function  Entity2<T, S>(t3_2: (Tree3DomainType T), spl1: (SpecialListDomainType T S), spl2: (SpecialListDomainType S T), kt: (kTreeDomainType T)): MixedDomainType T S;
 
 // Translation of domain function get_Mixed_sl
-function  get_Mixed_sl<T, S>(t_9: (MixedDomainType T S)): SimpleListDomainType;
+function  get_Mixed_sl<T, S>(t_3: (MixedDomainType T S)): SimpleListDomainType;
 
 // Translation of domain function get_Mixed_ls
-function  get_Mixed_ls<T, S>(t_9: (MixedDomainType T S)): ListDomainType S;
+function  get_Mixed_ls<T, S>(t_3: (MixedDomainType T S)): ListDomainType S;
 
 // Translation of domain function get_Mixed_lt
-function  get_Mixed_lt<T, S>(t_9: (MixedDomainType T S)): ListDomainType T;
+function  get_Mixed_lt<T, S>(t_3: (MixedDomainType T S)): ListDomainType T;
 
 // Translation of domain function get_Mixed_t3
-function  get_Mixed_t3<T, S>(t_9: (MixedDomainType T S)): Tree3DomainType T;
+function  get_Mixed_t3<T, S>(t_3: (MixedDomainType T S)): Tree3DomainType T;
 
 // Translation of domain function get_Mixed_spl1
-function  get_Mixed_spl1<T, S>(t_9: (MixedDomainType T S)): SpecialListDomainType T S;
+function  get_Mixed_spl1<T, S>(t_3: (MixedDomainType T S)): SpecialListDomainType T S;
 
 // Translation of domain function get_Mixed_spl2
-function  get_Mixed_spl2<T, S>(t_9: (MixedDomainType T S)): SpecialListDomainType S T;
+function  get_Mixed_spl2<T, S>(t_3: (MixedDomainType T S)): SpecialListDomainType S T;
 
 // Translation of domain function get_Mixed_kt
-function  get_Mixed_kt<T, S>(t_9: (MixedDomainType T S)): kTreeDomainType T;
+function  get_Mixed_kt<T, S>(t_3: (MixedDomainType T S)): kTreeDomainType T;
 
 // Translation of domain function Mixed_tag
-function  Mixed_tag<T, S>(t_9: (MixedDomainType T S)): int;
+function  Mixed_tag<T, S>(t_3: (MixedDomainType T S)): int;
 
 // Translation of anonymous domain axiom
 axiom (forall <S, T> sl_1: SimpleListDomainType, ls: (ListDomainType S), lt_1: (ListDomainType T) ::
@@ -956,27 +956,27 @@ axiom (forall <S, T> sl_1: SimpleListDomainType, ls: (ListDomainType S), lt_1: (
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T, S> t3_4: (Tree3DomainType T), spl1_1: (SpecialListDomainType T S), spl2_1: (SpecialListDomainType S T), kt_1: (kTreeDomainType T) ::
-  { (Entity2(t3_4, spl1_1, spl2_1, kt_1): MixedDomainType T S) }
-  t3_4 == (get_Mixed_t3((Entity2(t3_4, spl1_1, spl2_1, kt_1): MixedDomainType T S)): Tree3DomainType T)
+axiom (forall <T, S> t3_3: (Tree3DomainType T), spl1_1: (SpecialListDomainType T S), spl2_1: (SpecialListDomainType S T), kt_1: (kTreeDomainType T) ::
+  { (Entity2(t3_3, spl1_1, spl2_1, kt_1): MixedDomainType T S) }
+  t3_3 == (get_Mixed_t3((Entity2(t3_3, spl1_1, spl2_1, kt_1): MixedDomainType T S)): Tree3DomainType T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T, S> t3_4: (Tree3DomainType T), spl1_1: (SpecialListDomainType T S), spl2_1: (SpecialListDomainType S T), kt_1: (kTreeDomainType T) ::
-  { (Entity2(t3_4, spl1_1, spl2_1, kt_1): MixedDomainType T S) }
-  spl1_1 == (get_Mixed_spl1((Entity2(t3_4, spl1_1, spl2_1, kt_1): MixedDomainType T S)): SpecialListDomainType T S)
+axiom (forall <T, S> t3_3: (Tree3DomainType T), spl1_1: (SpecialListDomainType T S), spl2_1: (SpecialListDomainType S T), kt_1: (kTreeDomainType T) ::
+  { (Entity2(t3_3, spl1_1, spl2_1, kt_1): MixedDomainType T S) }
+  spl1_1 == (get_Mixed_spl1((Entity2(t3_3, spl1_1, spl2_1, kt_1): MixedDomainType T S)): SpecialListDomainType T S)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T, S> t3_4: (Tree3DomainType T), spl1_1: (SpecialListDomainType T S), spl2_1: (SpecialListDomainType S T), kt_1: (kTreeDomainType T) ::
-  { (Entity2(t3_4, spl1_1, spl2_1, kt_1): MixedDomainType T S) }
-  spl2_1 == (get_Mixed_spl2((Entity2(t3_4, spl1_1, spl2_1, kt_1): MixedDomainType T S)): SpecialListDomainType S T)
+axiom (forall <T, S> t3_3: (Tree3DomainType T), spl1_1: (SpecialListDomainType T S), spl2_1: (SpecialListDomainType S T), kt_1: (kTreeDomainType T) ::
+  { (Entity2(t3_3, spl1_1, spl2_1, kt_1): MixedDomainType T S) }
+  spl2_1 == (get_Mixed_spl2((Entity2(t3_3, spl1_1, spl2_1, kt_1): MixedDomainType T S)): SpecialListDomainType S T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T, S> t3_4: (Tree3DomainType T), spl1_1: (SpecialListDomainType T S), spl2_1: (SpecialListDomainType S T), kt_1: (kTreeDomainType T) ::
-  { (Entity2(t3_4, spl1_1, spl2_1, kt_1): MixedDomainType T S) }
-  kt_1 == (get_Mixed_kt((Entity2(t3_4, spl1_1, spl2_1, kt_1): MixedDomainType T S)): kTreeDomainType T)
+axiom (forall <T, S> t3_3: (Tree3DomainType T), spl1_1: (SpecialListDomainType T S), spl2_1: (SpecialListDomainType S T), kt_1: (kTreeDomainType T) ::
+  { (Entity2(t3_3, spl1_1, spl2_1, kt_1): MixedDomainType T S) }
+  kt_1 == (get_Mixed_kt((Entity2(t3_3, spl1_1, spl2_1, kt_1): MixedDomainType T S)): kTreeDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -986,9 +986,9 @@ axiom (forall <S, T> sl_1: SimpleListDomainType, ls: (ListDomainType S), lt_1: (
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T, S> t3_4: (Tree3DomainType T), spl1_1: (SpecialListDomainType T S), spl2_1: (SpecialListDomainType S T), kt_1: (kTreeDomainType T) ::
-  { (Entity2(t3_4, spl1_1, spl2_1, kt_1): MixedDomainType T S) }
-  (Mixed_tag((Entity2(t3_4, spl1_1, spl2_1, kt_1): MixedDomainType T S)): int) == 1
+axiom (forall <T, S> t3_3: (Tree3DomainType T), spl1_1: (SpecialListDomainType T S), spl2_1: (SpecialListDomainType S T), kt_1: (kTreeDomainType T) ::
+  { (Entity2(t3_3, spl1_1, spl2_1, kt_1): MixedDomainType T S) }
+  (Mixed_tag((Entity2(t3_3, spl1_1, spl2_1, kt_1): MixedDomainType T S)): int) == 1
 );
 
 // Translation of anonymous domain axiom

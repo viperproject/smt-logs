@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:18
+// Date:         2025-01-26 21:42:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0352.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0352-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -184,11 +184,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo_2(Heap: HeapType): int;
+function  foo_1(Heap: HeapType): int;
 function  foo'(Heap: HeapType): int;
 axiom (forall Heap: HeapType ::
-  { foo_2(Heap) }
-  foo_2(Heap) == foo'(Heap) && dummyFunction(foo#triggerStateless())
+  { foo_1(Heap) }
+  foo_1(Heap) == foo'(Heap) && dummyFunction(foo#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { foo'(Heap) }
@@ -197,8 +197,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), foo_2(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> foo_2(Heap) == 100
+  { state(Heap, Mask), foo_1(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> foo_1(Heap) == 100
 );
 
 // Framing axioms
@@ -209,7 +209,7 @@ axiom (forall Heap: HeapType, Mask: MaskType ::
 );
 
 // Trigger function (controlling recursive postconditions)
-function  foo#trigger(frame: FrameType): bool;
+function  foo#trigger_1(frame: FrameType): bool;
 
 // State-independent trigger function
 function  foo#triggerStateless(): int;
@@ -284,11 +284,11 @@ procedure bar#definedness() returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo2_1(Heap: HeapType): int;
+function  foo2(Heap: HeapType): int;
 function  foo2'(Heap: HeapType): int;
 axiom (forall Heap: HeapType ::
-  { foo2_1(Heap) }
-  foo2_1(Heap) == foo2'(Heap) && dummyFunction(foo2#triggerStateless())
+  { foo2(Heap) }
+  foo2(Heap) == foo2'(Heap) && dummyFunction(foo2#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { foo2'(Heap) }
@@ -297,8 +297,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), foo2_1(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> foo2_1(Heap) == 1
+  { state(Heap, Mask), foo2(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> foo2(Heap) == 1
 );
 
 // Framing axioms
@@ -334,11 +334,11 @@ procedure foo2#definedness() returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo3_1(Heap: HeapType, i: int): int;
+function  foo3(Heap: HeapType, i: int): int;
 function  foo3'(Heap: HeapType, i: int): int;
 axiom (forall Heap: HeapType, i: int ::
-  { foo3_1(Heap, i) }
-  foo3_1(Heap, i) == foo3'(Heap, i) && dummyFunction(foo3#triggerStateless(i))
+  { foo3(Heap, i) }
+  foo3(Heap, i) == foo3'(Heap, i) && dummyFunction(foo3#triggerStateless(i))
 );
 axiom (forall Heap: HeapType, i: int ::
   { foo3'(Heap, i) }
@@ -347,8 +347,8 @@ axiom (forall Heap: HeapType, i: int ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, i: int ::
-  { state(Heap, Mask), foo3_1(Heap, i) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> 0 < i ==> foo3_1(Heap, i) == (if 0 < i then 1 else 1 + foo3'(Heap, i))
+  { state(Heap, Mask), foo3(Heap, i) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> 0 < i ==> foo3(Heap, i) == (if 0 < i then 1 else 1 + foo3'(Heap, i))
 );
 
 // Framing axioms
@@ -390,7 +390,7 @@ procedure foo3#definedness(i: int) returns (Result: int)
           // Exhale precondition of function application
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function foo3 might not hold. Assertion 0 < i might not hold. (0352.vpr@30.19--30.26) [201530]"}
+          assert {:msg "  Precondition of function foo3 might not hold. Assertion 0 < i might not hold. (0352.vpr@30.19--30.26) [57450]"}
             0 < i;
           // Stop execution
           assume false;
@@ -401,14 +401,14 @@ procedure foo3#definedness(i: int) returns (Result: int)
       }
   
   // -- Translate function body
-    Result := (if 0 < i then 1 else 1 + foo3_1(Heap, i));
+    Result := (if 0 < i then 1 else 1 + foo3(Heap, i));
 }
 
 // ==================================================
 // Translation of method test
 // ==================================================
 
-procedure test() returns ()
+procedure test_1() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -437,7 +437,7 @@ procedure test() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion bar() >= 0 might not hold. (0352.vpr@13.10--13.20) [201531]"}
+    assert {:msg "  Assert might fail. Assertion bar() >= 0 might not hold. (0352.vpr@13.10--13.20) [57451]"}
       bar(Heap) >= 0;
     assume state(Heap, Mask);
 }
@@ -446,7 +446,7 @@ procedure test() returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2() returns ()
+procedure test2_1() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -475,8 +475,8 @@ procedure test2() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo2() >= 0 might not hold. (0352.vpr@22.10--22.21) [201532]"}
-      foo2_1(Heap) >= 0;
+    assert {:msg "  Assert might fail. Assertion foo2() >= 0 might not hold. (0352.vpr@22.10--22.21) [57452]"}
+      foo2(Heap) >= 0;
     assume state(Heap, Mask);
 }
 
@@ -484,7 +484,7 @@ procedure test2() returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3() returns ()
+procedure test3_1() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -521,12 +521,12 @@ procedure test3() returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function foo3 might not hold. Assertion 0 < i might not hold. (0352.vpr@36.10--36.17) [201533]"}
+        assert {:msg "  Precondition of function foo3 might not hold. Assertion 0 < i might not hold. (0352.vpr@36.10--36.17) [57453]"}
           0 < i;
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo3(i) > 0 might not hold. (0352.vpr@36.10--36.21) [201534]"}
-      foo3_1(Heap, i) > 0;
+    assert {:msg "  Assert might fail. Assertion foo3(i) > 0 might not hold. (0352.vpr@36.10--36.21) [57454]"}
+      foo3(Heap, i) > 0;
     assume state(Heap, Mask);
 }

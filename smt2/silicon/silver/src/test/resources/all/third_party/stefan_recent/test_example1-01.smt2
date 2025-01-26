@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:43:38
+; Started: 2025-01-26 21:31:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -294,8 +294,8 @@
 ; diz := new()
 (declare-const diz@20@01 $Ref)
 (assert (not (= diz@20@01 $Ref.null)))
-(assert (not (= diz@20@01 diz@19@01)))
 (assert (not (= diz@20@01 sys__result@16@01)))
+(assert (not (= diz@20@01 diz@19@01)))
 ; [exec]
 ; sys__result := diz
 ; [exec]
@@ -408,8 +408,8 @@
 (declare-const diz@39@01 $Ref)
 (assert (not (= diz@39@01 $Ref.null)))
 (declare-const Counter__x@40@01 Int)
-(assert (not (= diz@39@01 sys__result@33@01)))
 (assert (not (= diz@39@01 diz@36@01)))
+(assert (not (= diz@39@01 sys__result@33@01)))
 ; [exec]
 ; __flatten_6 := 0
 ; [exec]

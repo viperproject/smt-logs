@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:04
+// Date:         2025-01-26 21:42:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0195.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0195-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -254,7 +254,7 @@ axiom !IsWandField(f_7);
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref) returns ()
+procedure test_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -350,7 +350,7 @@ procedure test(x: Ref) returns ()
         havoc Used_2Heap;
         Used_2Mask := ZeroMask;
         b_4 := b_4 && state(Used_2Heap, Used_2Mask);
-        assert {:msg "  Packaging wand might fail. Assertion false might not hold. (0195.vpr@8.7--8.35) [200992]"}
+        assert {:msg "  Packaging wand might fail. Assertion false might not hold. (0195.vpr@8.7--8.35) [77986]"}
           (b_3 && (b_3 && b_1_1)) && b_4 ==> false;
         Ops_1Mask := Ops_1Mask[null, wand_1(x, FullPerm, false):=Ops_1Mask[null, wand_1(x, FullPerm, false)] + FullPerm];
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);

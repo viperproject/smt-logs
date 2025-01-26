@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:36:35
+; Started: 2025-01-26 21:37:42
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1507,7 +1507,7 @@
       (= (inv@8@01 (Seq_index ar@3@01 i@7@01)) i@7@01)
       (img@9@01 (Seq_index ar@3@01 i@7@01))))
   :pattern ((Seq_index ar@3@01 i@7@01))
-  :qid |quant-u-7525|)))
+  :qid |quant-u-15297|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@9@01 r) (Seq_contains (Seq_range 0 len@2@01) (inv@8@01 r)))
@@ -1723,12 +1723,12 @@
   :pattern ((Seq_index ar@3@01 i@11@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@17@11@17@80|)))
 ; [exec]
-; assert (forall i: Int, fresh__70: Int ::
-;     { (i in [0..fresh__70)) }
+; assert (forall i: Int, fresh__99: Int ::
+;     { (i in [0..fresh__99)) }
 ;     (i in [0..len - 1)) ==> ar[i + 1].Integer_value == 0)
-; [eval] (forall i: Int, fresh__70: Int :: { (i in [0..fresh__70)) } (i in [0..len - 1)) ==> ar[i + 1].Integer_value == 0)
+; [eval] (forall i: Int, fresh__99: Int :: { (i in [0..fresh__99)) } (i in [0..len - 1)) ==> ar[i + 1].Integer_value == 0)
 (declare-const i@12@01 Int)
-(declare-const fresh__70@13@01 Int)
+(declare-const fresh__99@13@01 Int)
 (push) ; 3
 ; [eval] (i in [0..len - 1)) ==> ar[i + 1].Integer_value == 0
 ; [eval] (i in [0..len - 1))
@@ -1779,26 +1779,26 @@
 (assert (or
   (not (Seq_contains (Seq_range 0 (- len@2@01 1)) i@12@01))
   (Seq_contains (Seq_range 0 (- len@2@01 1)) i@12@01)))
-; [eval] (i in [0..fresh__70))
-; [eval] [0..fresh__70)
+; [eval] (i in [0..fresh__99))
+; [eval] [0..fresh__99)
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@12@01 Int) (fresh__70@13@01 Int)) (!
+(assert (forall ((i@12@01 Int) (fresh__99@13@01 Int)) (!
   (or
     (not (Seq_contains (Seq_range 0 (- len@2@01 1)) i@12@01))
     (Seq_contains (Seq_range 0 (- len@2@01 1)) i@12@01))
-  :pattern ((Seq_contains (Seq_range 0 fresh__70@13@01) i@12@01))
-  :pattern ((Seq_contains_trigger (Seq_range 0 fresh__70@13@01) i@12@01))
+  :pattern ((Seq_contains (Seq_range 0 fresh__99@13@01) i@12@01))
+  :pattern ((Seq_contains_trigger (Seq_range 0 fresh__99@13@01) i@12@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@18@11@18@80-aux|)))
-(assert (forall ((i@12@01 Int) (fresh__70@13@01 Int)) (!
+(assert (forall ((i@12@01 Int) (fresh__99@13@01 Int)) (!
   (or
     (not (Seq_contains (Seq_range 0 (- len@2@01 1)) i@12@01))
     (Seq_contains (Seq_range 0 (- len@2@01 1)) i@12@01))
-  :pattern ((Seq_contains_trigger (Seq_range 0 fresh__70@13@01) i@12@01))
+  :pattern ((Seq_contains_trigger (Seq_range 0 fresh__99@13@01) i@12@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@18@11@18@80-aux|)))
 (push) ; 3
-(assert (not (forall ((i@12@01 Int) (fresh__70@13@01 Int)) (!
+(assert (not (forall ((i@12@01 Int) (fresh__99@13@01 Int)) (!
   (=>
     (Seq_contains (Seq_range 0 (- len@2@01 1)) i@12@01)
     (=
@@ -1806,16 +1806,16 @@
         ar@3@01
         (+ i@12@01 1)))
       0))
-  :pattern ((Seq_contains (Seq_range 0 fresh__70@13@01) i@12@01))
-  :pattern ((Seq_contains_trigger (Seq_range 0 fresh__70@13@01) i@12@01))
-  :pattern ((Seq_contains_trigger (Seq_range 0 fresh__70@13@01) i@12@01))
+  :pattern ((Seq_contains (Seq_range 0 fresh__99@13@01) i@12@01))
+  :pattern ((Seq_contains_trigger (Seq_range 0 fresh__99@13@01) i@12@01))
+  :pattern ((Seq_contains_trigger (Seq_range 0 fresh__99@13@01) i@12@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@18@11@18@80|))))
 (check-sat)
 ; unsat
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (forall ((i@12@01 Int) (fresh__70@13@01 Int)) (!
+(assert (forall ((i@12@01 Int) (fresh__99@13@01 Int)) (!
   (=>
     (Seq_contains (Seq_range 0 (- len@2@01 1)) i@12@01)
     (=
@@ -1823,19 +1823,19 @@
         ar@3@01
         (+ i@12@01 1)))
       0))
-  :pattern ((Seq_contains (Seq_range 0 fresh__70@13@01) i@12@01))
-  :pattern ((Seq_contains_trigger (Seq_range 0 fresh__70@13@01) i@12@01))
+  :pattern ((Seq_contains (Seq_range 0 fresh__99@13@01) i@12@01))
+  :pattern ((Seq_contains_trigger (Seq_range 0 fresh__99@13@01) i@12@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@18@11@18@80|)))
 ; [exec]
-; assert (forall __rw_i4: Int ::
-;     { ar[__rw_i4] }
+; assert (forall __rw_i3: Int ::
+;     { ar[__rw_i3] }
 ;     true ==>
-;     0 <= __rw_i4 - 1 && __rw_i4 - 1 < len - 1 ==>
-;     ar[__rw_i4].Integer_value == 0)
-; [eval] (forall __rw_i4: Int :: { ar[__rw_i4] } true ==> 0 <= __rw_i4 - 1 && __rw_i4 - 1 < len - 1 ==> ar[__rw_i4].Integer_value == 0)
-(declare-const __rw_i4@14@01 Int)
+;     0 <= __rw_i3 - 1 && __rw_i3 - 1 < len - 1 ==>
+;     ar[__rw_i3].Integer_value == 0)
+; [eval] (forall __rw_i3: Int :: { ar[__rw_i3] } true ==> 0 <= __rw_i3 - 1 && __rw_i3 - 1 < len - 1 ==> ar[__rw_i3].Integer_value == 0)
+(declare-const __rw_i3@14@01 Int)
 (push) ; 3
-; [eval] true ==> 0 <= __rw_i4 - 1 && __rw_i4 - 1 < len - 1 ==> ar[__rw_i4].Integer_value == 0
+; [eval] true ==> 0 <= __rw_i3 - 1 && __rw_i3 - 1 < len - 1 ==> ar[__rw_i3].Integer_value == 0
 (push) ; 4
 (push) ; 5
 (set-option :timeout 10)
@@ -1850,45 +1850,45 @@
 (set-option :timeout 0)
 (push) ; 5
 ; [then-branch: 10 | True]
-; [eval] 0 <= __rw_i4 - 1 && __rw_i4 - 1 < len - 1 ==> ar[__rw_i4].Integer_value == 0
-; [eval] 0 <= __rw_i4 - 1 && __rw_i4 - 1 < len - 1
-; [eval] 0 <= __rw_i4 - 1
-; [eval] __rw_i4 - 1
+; [eval] 0 <= __rw_i3 - 1 && __rw_i3 - 1 < len - 1 ==> ar[__rw_i3].Integer_value == 0
+; [eval] 0 <= __rw_i3 - 1 && __rw_i3 - 1 < len - 1
+; [eval] 0 <= __rw_i3 - 1
+; [eval] __rw_i3 - 1
 (push) ; 6
-; [then-branch: 11 | !(0 <= __rw_i4@14@01 - 1) | live]
-; [else-branch: 11 | 0 <= __rw_i4@14@01 - 1 | live]
+; [then-branch: 11 | !(0 <= __rw_i3@14@01 - 1) | live]
+; [else-branch: 11 | 0 <= __rw_i3@14@01 - 1 | live]
 (push) ; 7
-; [then-branch: 11 | !(0 <= __rw_i4@14@01 - 1)]
-(assert (not (<= 0 (- __rw_i4@14@01 1))))
+; [then-branch: 11 | !(0 <= __rw_i3@14@01 - 1)]
+(assert (not (<= 0 (- __rw_i3@14@01 1))))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 11 | 0 <= __rw_i4@14@01 - 1]
-(assert (<= 0 (- __rw_i4@14@01 1)))
-; [eval] __rw_i4 - 1 < len - 1
-; [eval] __rw_i4 - 1
+; [else-branch: 11 | 0 <= __rw_i3@14@01 - 1]
+(assert (<= 0 (- __rw_i3@14@01 1)))
+; [eval] __rw_i3 - 1 < len - 1
+; [eval] __rw_i3 - 1
 ; [eval] len - 1
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
-(assert (or (<= 0 (- __rw_i4@14@01 1)) (not (<= 0 (- __rw_i4@14@01 1)))))
+(assert (or (<= 0 (- __rw_i3@14@01 1)) (not (<= 0 (- __rw_i3@14@01 1)))))
 (push) ; 6
-; [then-branch: 12 | 0 <= __rw_i4@14@01 - 1 && __rw_i4@14@01 - 1 < len@2@01 - 1 | live]
-; [else-branch: 12 | !(0 <= __rw_i4@14@01 - 1 && __rw_i4@14@01 - 1 < len@2@01 - 1) | live]
+; [then-branch: 12 | 0 <= __rw_i3@14@01 - 1 && __rw_i3@14@01 - 1 < len@2@01 - 1 | live]
+; [else-branch: 12 | !(0 <= __rw_i3@14@01 - 1 && __rw_i3@14@01 - 1 < len@2@01 - 1) | live]
 (push) ; 7
-; [then-branch: 12 | 0 <= __rw_i4@14@01 - 1 && __rw_i4@14@01 - 1 < len@2@01 - 1]
-(assert (and (<= 0 (- __rw_i4@14@01 1)) (< (- __rw_i4@14@01 1) (- len@2@01 1))))
-; [eval] ar[__rw_i4].Integer_value == 0
-; [eval] ar[__rw_i4]
+; [then-branch: 12 | 0 <= __rw_i3@14@01 - 1 && __rw_i3@14@01 - 1 < len@2@01 - 1]
+(assert (and (<= 0 (- __rw_i3@14@01 1)) (< (- __rw_i3@14@01 1) (- len@2@01 1))))
+; [eval] ar[__rw_i3].Integer_value == 0
+; [eval] ar[__rw_i3]
 (push) ; 8
-(assert (not (>= __rw_i4@14@01 0)))
+(assert (not (>= __rw_i3@14@01 0)))
 (check-sat)
 ; unsat
 (pop) ; 8
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 8
-(assert (not (< __rw_i4@14@01 (Seq_length ar@3@01))))
+(assert (not (< __rw_i3@14@01 (Seq_length ar@3@01))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -1896,10 +1896,10 @@
 ; (get-info :all-statistics)
 (push) ; 8
 (assert (not (and
-  (img@9@01 (Seq_index ar@3@01 __rw_i4@14@01))
+  (img@9@01 (Seq_index ar@3@01 __rw_i3@14@01))
   (Seq_contains
     (Seq_range 0 len@2@01)
-    (inv@8@01 (Seq_index ar@3@01 __rw_i4@14@01))))))
+    (inv@8@01 (Seq_index ar@3@01 __rw_i3@14@01))))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -1907,60 +1907,60 @@
 ; (get-info :all-statistics)
 (pop) ; 7
 (push) ; 7
-; [else-branch: 12 | !(0 <= __rw_i4@14@01 - 1 && __rw_i4@14@01 - 1 < len@2@01 - 1)]
-(assert (not (and (<= 0 (- __rw_i4@14@01 1)) (< (- __rw_i4@14@01 1) (- len@2@01 1)))))
+; [else-branch: 12 | !(0 <= __rw_i3@14@01 - 1 && __rw_i3@14@01 - 1 < len@2@01 - 1)]
+(assert (not (and (<= 0 (- __rw_i3@14@01 1)) (< (- __rw_i3@14@01 1) (- len@2@01 1)))))
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (and (<= 0 (- __rw_i4@14@01 1)) (< (- __rw_i4@14@01 1) (- len@2@01 1))))
-  (and (<= 0 (- __rw_i4@14@01 1)) (< (- __rw_i4@14@01 1) (- len@2@01 1)))))
+  (not (and (<= 0 (- __rw_i3@14@01 1)) (< (- __rw_i3@14@01 1) (- len@2@01 1))))
+  (and (<= 0 (- __rw_i3@14@01 1)) (< (- __rw_i3@14@01 1) (- len@2@01 1)))))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 (assert (and
-  (or (<= 0 (- __rw_i4@14@01 1)) (not (<= 0 (- __rw_i4@14@01 1))))
+  (or (<= 0 (- __rw_i3@14@01 1)) (not (<= 0 (- __rw_i3@14@01 1))))
   (or
-    (not (and (<= 0 (- __rw_i4@14@01 1)) (< (- __rw_i4@14@01 1) (- len@2@01 1))))
-    (and (<= 0 (- __rw_i4@14@01 1)) (< (- __rw_i4@14@01 1) (- len@2@01 1))))))
+    (not (and (<= 0 (- __rw_i3@14@01 1)) (< (- __rw_i3@14@01 1) (- len@2@01 1))))
+    (and (<= 0 (- __rw_i3@14@01 1)) (< (- __rw_i3@14@01 1) (- len@2@01 1))))))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((__rw_i4@14@01 Int)) (!
+(assert (forall ((__rw_i3@14@01 Int)) (!
   (and
-    (or (<= 0 (- __rw_i4@14@01 1)) (not (<= 0 (- __rw_i4@14@01 1))))
+    (or (<= 0 (- __rw_i3@14@01 1)) (not (<= 0 (- __rw_i3@14@01 1))))
     (or
       (not
-        (and (<= 0 (- __rw_i4@14@01 1)) (< (- __rw_i4@14@01 1) (- len@2@01 1))))
-      (and (<= 0 (- __rw_i4@14@01 1)) (< (- __rw_i4@14@01 1) (- len@2@01 1)))))
-  :pattern ((Seq_index ar@3@01 __rw_i4@14@01))
+        (and (<= 0 (- __rw_i3@14@01 1)) (< (- __rw_i3@14@01 1) (- len@2@01 1))))
+      (and (<= 0 (- __rw_i3@14@01 1)) (< (- __rw_i3@14@01 1) (- len@2@01 1)))))
+  :pattern ((Seq_index ar@3@01 __rw_i3@14@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@19@11@19@86-aux|)))
 (push) ; 3
-(assert (not (forall ((__rw_i4@14@01 Int)) (!
+(assert (not (forall ((__rw_i3@14@01 Int)) (!
   (=>
-    (and (<= 0 (- __rw_i4@14@01 1)) (< (- __rw_i4@14@01 1) (- len@2@01 1)))
+    (and (<= 0 (- __rw_i3@14@01 1)) (< (- __rw_i3@14@01 1) (- len@2@01 1)))
     (=
       ($FVF.lookup_Integer_value ($SortWrappers.$SnapTo$FVF<Integer_value> ($Snap.first ($Snap.second ($Snap.second $t@4@01)))) (Seq_index
         ar@3@01
-        __rw_i4@14@01))
+        __rw_i3@14@01))
       0))
-  :pattern ((Seq_index ar@3@01 __rw_i4@14@01))
+  :pattern ((Seq_index ar@3@01 __rw_i3@14@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@19@11@19@86|))))
 (check-sat)
 ; unsat
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (forall ((__rw_i4@14@01 Int)) (!
+(assert (forall ((__rw_i3@14@01 Int)) (!
   (=>
-    (and (<= 0 (- __rw_i4@14@01 1)) (< (- __rw_i4@14@01 1) (- len@2@01 1)))
+    (and (<= 0 (- __rw_i3@14@01 1)) (< (- __rw_i3@14@01 1) (- len@2@01 1)))
     (=
       ($FVF.lookup_Integer_value ($SortWrappers.$SnapTo$FVF<Integer_value> ($Snap.first ($Snap.second ($Snap.second $t@4@01)))) (Seq_index
         ar@3@01
-        __rw_i4@14@01))
+        __rw_i3@14@01))
       0))
-  :pattern ((Seq_index ar@3@01 __rw_i4@14@01))
+  :pattern ((Seq_index ar@3@01 __rw_i3@14@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@19@11@19@86|)))
 (pop) ; 2
 (pop) ; 1
@@ -2290,7 +2290,7 @@
       (= (inv@23@01 (Seq_index ar@18@01 i@22@01)) i@22@01)
       (img@24@01 (Seq_index ar@18@01 i@22@01))))
   :pattern ((Seq_index ar@18@01 i@22@01))
-  :qid |quant-u-7527|)))
+  :qid |quant-u-15299|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@24@01 r) (Seq_contains (Seq_range 0 len@17@01) (inv@23@01 r)))
@@ -2607,15 +2607,15 @@
   :pattern ((Seq_contains_trigger (Seq_range 1 len@17@01) i@27@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@29@11@29@76|)))
 ; [exec]
-; assert (forall __rw_i5: Int ::
-;     { ar[__rw_i5] }
+; assert (forall __rw_i4: Int ::
+;     { ar[__rw_i4] }
 ;     true ==>
-;     1 <= __rw_i5 + 1 && __rw_i5 + 1 < len ==>
-;     ar[__rw_i5].Integer_value == 0)
-; [eval] (forall __rw_i5: Int :: { ar[__rw_i5] } true ==> 1 <= __rw_i5 + 1 && __rw_i5 + 1 < len ==> ar[__rw_i5].Integer_value == 0)
-(declare-const __rw_i5@28@01 Int)
+;     1 <= __rw_i4 + 1 && __rw_i4 + 1 < len ==>
+;     ar[__rw_i4].Integer_value == 0)
+; [eval] (forall __rw_i4: Int :: { ar[__rw_i4] } true ==> 1 <= __rw_i4 + 1 && __rw_i4 + 1 < len ==> ar[__rw_i4].Integer_value == 0)
+(declare-const __rw_i4@28@01 Int)
 (push) ; 3
-; [eval] true ==> 1 <= __rw_i5 + 1 && __rw_i5 + 1 < len ==> ar[__rw_i5].Integer_value == 0
+; [eval] true ==> 1 <= __rw_i4 + 1 && __rw_i4 + 1 < len ==> ar[__rw_i4].Integer_value == 0
 (push) ; 4
 (push) ; 5
 (set-option :timeout 10)
@@ -2630,44 +2630,44 @@
 (set-option :timeout 0)
 (push) ; 5
 ; [then-branch: 23 | True]
-; [eval] 1 <= __rw_i5 + 1 && __rw_i5 + 1 < len ==> ar[__rw_i5].Integer_value == 0
-; [eval] 1 <= __rw_i5 + 1 && __rw_i5 + 1 < len
-; [eval] 1 <= __rw_i5 + 1
-; [eval] __rw_i5 + 1
+; [eval] 1 <= __rw_i4 + 1 && __rw_i4 + 1 < len ==> ar[__rw_i4].Integer_value == 0
+; [eval] 1 <= __rw_i4 + 1 && __rw_i4 + 1 < len
+; [eval] 1 <= __rw_i4 + 1
+; [eval] __rw_i4 + 1
 (push) ; 6
-; [then-branch: 24 | !(1 <= __rw_i5@28@01 + 1) | live]
-; [else-branch: 24 | 1 <= __rw_i5@28@01 + 1 | live]
+; [then-branch: 24 | !(1 <= __rw_i4@28@01 + 1) | live]
+; [else-branch: 24 | 1 <= __rw_i4@28@01 + 1 | live]
 (push) ; 7
-; [then-branch: 24 | !(1 <= __rw_i5@28@01 + 1)]
-(assert (not (<= 1 (+ __rw_i5@28@01 1))))
+; [then-branch: 24 | !(1 <= __rw_i4@28@01 + 1)]
+(assert (not (<= 1 (+ __rw_i4@28@01 1))))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 24 | 1 <= __rw_i5@28@01 + 1]
-(assert (<= 1 (+ __rw_i5@28@01 1)))
-; [eval] __rw_i5 + 1 < len
-; [eval] __rw_i5 + 1
+; [else-branch: 24 | 1 <= __rw_i4@28@01 + 1]
+(assert (<= 1 (+ __rw_i4@28@01 1)))
+; [eval] __rw_i4 + 1 < len
+; [eval] __rw_i4 + 1
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
-(assert (or (<= 1 (+ __rw_i5@28@01 1)) (not (<= 1 (+ __rw_i5@28@01 1)))))
+(assert (or (<= 1 (+ __rw_i4@28@01 1)) (not (<= 1 (+ __rw_i4@28@01 1)))))
 (push) ; 6
-; [then-branch: 25 | 1 <= __rw_i5@28@01 + 1 && __rw_i5@28@01 + 1 < len@17@01 | live]
-; [else-branch: 25 | !(1 <= __rw_i5@28@01 + 1 && __rw_i5@28@01 + 1 < len@17@01) | live]
+; [then-branch: 25 | 1 <= __rw_i4@28@01 + 1 && __rw_i4@28@01 + 1 < len@17@01 | live]
+; [else-branch: 25 | !(1 <= __rw_i4@28@01 + 1 && __rw_i4@28@01 + 1 < len@17@01) | live]
 (push) ; 7
-; [then-branch: 25 | 1 <= __rw_i5@28@01 + 1 && __rw_i5@28@01 + 1 < len@17@01]
-(assert (and (<= 1 (+ __rw_i5@28@01 1)) (< (+ __rw_i5@28@01 1) len@17@01)))
-; [eval] ar[__rw_i5].Integer_value == 0
-; [eval] ar[__rw_i5]
+; [then-branch: 25 | 1 <= __rw_i4@28@01 + 1 && __rw_i4@28@01 + 1 < len@17@01]
+(assert (and (<= 1 (+ __rw_i4@28@01 1)) (< (+ __rw_i4@28@01 1) len@17@01)))
+; [eval] ar[__rw_i4].Integer_value == 0
+; [eval] ar[__rw_i4]
 (push) ; 8
-(assert (not (>= __rw_i5@28@01 0)))
+(assert (not (>= __rw_i4@28@01 0)))
 (check-sat)
 ; unsat
 (pop) ; 8
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 8
-(assert (not (< __rw_i5@28@01 (Seq_length ar@18@01))))
+(assert (not (< __rw_i4@28@01 (Seq_length ar@18@01))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -2675,10 +2675,10 @@
 ; (get-info :all-statistics)
 (push) ; 8
 (assert (not (and
-  (img@24@01 (Seq_index ar@18@01 __rw_i5@28@01))
+  (img@24@01 (Seq_index ar@18@01 __rw_i4@28@01))
   (Seq_contains
     (Seq_range 0 len@17@01)
-    (inv@23@01 (Seq_index ar@18@01 __rw_i5@28@01))))))
+    (inv@23@01 (Seq_index ar@18@01 __rw_i4@28@01))))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -2686,59 +2686,59 @@
 ; (get-info :all-statistics)
 (pop) ; 7
 (push) ; 7
-; [else-branch: 25 | !(1 <= __rw_i5@28@01 + 1 && __rw_i5@28@01 + 1 < len@17@01)]
-(assert (not (and (<= 1 (+ __rw_i5@28@01 1)) (< (+ __rw_i5@28@01 1) len@17@01))))
+; [else-branch: 25 | !(1 <= __rw_i4@28@01 + 1 && __rw_i4@28@01 + 1 < len@17@01)]
+(assert (not (and (<= 1 (+ __rw_i4@28@01 1)) (< (+ __rw_i4@28@01 1) len@17@01))))
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (not (and (<= 1 (+ __rw_i5@28@01 1)) (< (+ __rw_i5@28@01 1) len@17@01)))
-  (and (<= 1 (+ __rw_i5@28@01 1)) (< (+ __rw_i5@28@01 1) len@17@01))))
+  (not (and (<= 1 (+ __rw_i4@28@01 1)) (< (+ __rw_i4@28@01 1) len@17@01)))
+  (and (<= 1 (+ __rw_i4@28@01 1)) (< (+ __rw_i4@28@01 1) len@17@01))))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 (assert (and
-  (or (<= 1 (+ __rw_i5@28@01 1)) (not (<= 1 (+ __rw_i5@28@01 1))))
+  (or (<= 1 (+ __rw_i4@28@01 1)) (not (<= 1 (+ __rw_i4@28@01 1))))
   (or
-    (not (and (<= 1 (+ __rw_i5@28@01 1)) (< (+ __rw_i5@28@01 1) len@17@01)))
-    (and (<= 1 (+ __rw_i5@28@01 1)) (< (+ __rw_i5@28@01 1) len@17@01)))))
+    (not (and (<= 1 (+ __rw_i4@28@01 1)) (< (+ __rw_i4@28@01 1) len@17@01)))
+    (and (<= 1 (+ __rw_i4@28@01 1)) (< (+ __rw_i4@28@01 1) len@17@01)))))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((__rw_i5@28@01 Int)) (!
+(assert (forall ((__rw_i4@28@01 Int)) (!
   (and
-    (or (<= 1 (+ __rw_i5@28@01 1)) (not (<= 1 (+ __rw_i5@28@01 1))))
+    (or (<= 1 (+ __rw_i4@28@01 1)) (not (<= 1 (+ __rw_i4@28@01 1))))
     (or
-      (not (and (<= 1 (+ __rw_i5@28@01 1)) (< (+ __rw_i5@28@01 1) len@17@01)))
-      (and (<= 1 (+ __rw_i5@28@01 1)) (< (+ __rw_i5@28@01 1) len@17@01))))
-  :pattern ((Seq_index ar@18@01 __rw_i5@28@01))
+      (not (and (<= 1 (+ __rw_i4@28@01 1)) (< (+ __rw_i4@28@01 1) len@17@01)))
+      (and (<= 1 (+ __rw_i4@28@01 1)) (< (+ __rw_i4@28@01 1) len@17@01))))
+  :pattern ((Seq_index ar@18@01 __rw_i4@28@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@30@11@30@82-aux|)))
 (push) ; 3
-(assert (not (forall ((__rw_i5@28@01 Int)) (!
+(assert (not (forall ((__rw_i4@28@01 Int)) (!
   (=>
-    (and (<= 1 (+ __rw_i5@28@01 1)) (< (+ __rw_i5@28@01 1) len@17@01))
+    (and (<= 1 (+ __rw_i4@28@01 1)) (< (+ __rw_i4@28@01 1) len@17@01))
     (=
       ($FVF.lookup_Integer_value ($SortWrappers.$SnapTo$FVF<Integer_value> ($Snap.first ($Snap.second ($Snap.second $t@19@01)))) (Seq_index
         ar@18@01
-        __rw_i5@28@01))
+        __rw_i4@28@01))
       0))
-  :pattern ((Seq_index ar@18@01 __rw_i5@28@01))
+  :pattern ((Seq_index ar@18@01 __rw_i4@28@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@30@11@30@82|))))
 (check-sat)
 ; unsat
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (forall ((__rw_i5@28@01 Int)) (!
+(assert (forall ((__rw_i4@28@01 Int)) (!
   (=>
-    (and (<= 1 (+ __rw_i5@28@01 1)) (< (+ __rw_i5@28@01 1) len@17@01))
+    (and (<= 1 (+ __rw_i4@28@01 1)) (< (+ __rw_i4@28@01 1) len@17@01))
     (=
       ($FVF.lookup_Integer_value ($SortWrappers.$SnapTo$FVF<Integer_value> ($Snap.first ($Snap.second ($Snap.second $t@19@01)))) (Seq_index
         ar@18@01
-        __rw_i5@28@01))
+        __rw_i4@28@01))
       0))
-  :pattern ((Seq_index ar@18@01 __rw_i5@28@01))
+  :pattern ((Seq_index ar@18@01 __rw_i4@28@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/third_party/shift.vpr@30@11@30@82|)))
 (pop) ; 2
 (pop) ; 1

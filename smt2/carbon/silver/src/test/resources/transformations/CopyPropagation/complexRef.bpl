@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:48
+// Date:         2025-01-26 21:44:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/CopyPropagation/complexRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/CopyPropagation/complexRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -183,10 +183,10 @@ procedure main() returns ()
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var i: int;
-  var j_9: int;
+  var j: int;
   var k: int;
-  var l_2: int;
-  var m_17: int;
+  var l_1: int;
+  var m_18: int;
   var n: int;
   var z: int;
   var loopHeap: HeapType;
@@ -210,7 +210,7 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: j := 2 -- complexRef.vpr@7.5--7.20
-    j_9 := 2;
+    j := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: k := 3 -- complexRef.vpr@8.5--8.20
@@ -218,11 +218,11 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: l := 4 -- complexRef.vpr@9.5--9.20
-    l_2 := 4;
+    l_1 := 4;
     assume state(Heap, Mask);
   
   // -- Translating statement: m := 5 -- complexRef.vpr@10.5--10.20
-    m_17 := 5;
+    m_18 := 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: n := 7 -- complexRef.vpr@11.5--11.20

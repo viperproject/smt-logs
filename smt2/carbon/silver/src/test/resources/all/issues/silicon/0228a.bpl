@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:27:02
+// Date:         2025-01-26 21:43:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0228a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0228a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,9 +145,9 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(j_1: int): bool;
-function  neverTriggered2(j_3_1: int): bool;
+function  neverTriggered2(j_3: int): bool;
 function  neverTriggered3(j_1: int): bool;
-function  neverTriggered4(j_3_1: int): bool;
+function  neverTriggered4(j_3: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -205,12 +205,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type PtrDomainType;
 
 // Translation of domain function loc
-function  loc(a_3: PtrDomainType, i_79: int): Ref;
+function  loc(a_3: PtrDomainType, i_6: int): Ref;
 
 // Translation of domain axiom loc_inject
-axiom (forall a_2: PtrDomainType, i: int, j_9: int ::
-  { (loc(a_2, i): Ref), (loc(a_2, j_9): Ref) }
-  i >= 0 && (j_9 >= 0 && i != j_9) ==> (loc(a_2, i): Ref) != (loc(a_2, j_9): Ref)
+axiom (forall a_2: PtrDomainType, i: int, j: int ::
+  { (loc(a_2, i): Ref), (loc(a_2, j): Ref) }
+  i >= 0 && (j >= 0 && i != j) ==> (loc(a_2, i): Ref) != (loc(a_2, j): Ref)
 );
 
 // ==================================================
@@ -292,17 +292,17 @@ procedure valid__Array#definedness(self: Ref) returns ()
 // Translation of method ok
 // ==================================================
 
-procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
+procedure ok(self$1: Ref, len_3: int, rd$1: Perm) returns (res$1: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var j_5: int;
+  var j_14: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
-  var j: int;
+  var j_15: int;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   
@@ -318,10 +318,10 @@ procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
     assume NoPerm < rd$1;
     assume rd$1 < FullPerm;
     assume state(Heap, Mask);
-    assume len > 0;
+    assume len_3 > 0;
     assume state(Heap, Mask);
     perm := rd$1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@7.12--7.47) [208219]"}
+    assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@7.12--7.47) [80372]"}
       perm >= NoPerm;
     Mask := Mask[null, valid__Array(self$1):=Mask[null, valid__Array(self$1)] + perm];
     assume state(Heap, Mask);
@@ -329,37 +329,37 @@ procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
     
     // -- Check definedness of (forall j: Int ::0 <= j && j < len ==> acc(loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval, write))
       if (*) {
-        if (0 <= j_5 && j_5 < len) {
+        if (0 <= j_14 && j_14 < len_3) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@8.12--8.135) [208220]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@8.12--8.135) [80373]"}
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@8.12--8.135) [208221]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@8.12--8.135) [80374]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@8.12--8.135) [208222]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@8.12--8.135) [80375]"}
               perm <= UnfoldingMask[null, valid__Array(self$1)];
           }
           UnfoldingMask := UnfoldingMask[null, valid__Array(self$1):=UnfoldingMask[null, valid__Array(self$1)] - perm];
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@8.12--8.135) [208223]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@8.12--8.135) [80376]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__ptr:=UnfoldingMask[self$1, Array__ptr] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@8.12--8.135) [208224]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@8.12--8.135) [80377]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__len:=UnfoldingMask[self$1, Array__len] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__ptr (0228a.vpr@8.12--8.135) [208225]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__ptr (0228a.vpr@8.12--8.135) [80378]"}
             HasDirectPerm(UnfoldingMask, self$1, Array__ptr);
           
           // -- Free assumptions (exp module)
@@ -380,36 +380,36 @@ procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval might not be injective. (0228a.vpr@8.12--8.135) [208226]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval might not be injective. (0228a.vpr@8.12--8.135) [80379]"}
       (forall j_1: int, j_1_1: int ::
       
-      (((j_1 != j_1_1 && (0 <= j_1 && j_1 < len)) && (0 <= j_1_1 && j_1_1 < len)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[self$1, Array__ptr], j_1): Ref) != (loc(Heap[self$1, Array__ptr], j_1_1): Ref)
+      (((j_1 != j_1_1 && (0 <= j_1 && j_1 < len_3)) && (0 <= j_1_1 && j_1_1 < len_3)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[self$1, Array__ptr], j_1): Ref) != (loc(Heap[self$1, Array__ptr], j_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall j_1: int ::
         { (loc(Heap[self$1, Array__ptr], j_1): Ref) }
-        (0 <= j_1 && j_1 < len) && NoPerm < FullPerm ==> qpRange1((loc(Heap[self$1, Array__ptr], j_1): Ref)) && invRecv1((loc(Heap[self$1, Array__ptr], j_1): Ref)) == j_1
+        (0 <= j_1 && j_1 < len_3) && NoPerm < FullPerm ==> qpRange1((loc(Heap[self$1, Array__ptr], j_1): Ref)) && invRecv1((loc(Heap[self$1, Array__ptr], j_1): Ref)) == j_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && invRecv1(o_4) < len) && NoPerm < FullPerm) && qpRange1(o_4) ==> (loc(Heap[self$1, Array__ptr], invRecv1(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && invRecv1(o_9) < len_3) && NoPerm < FullPerm) && qpRange1(o_9) ==> (loc(Heap[self$1, Array__ptr], invRecv1(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall j_1: int ::
         { (loc(Heap[self$1, Array__ptr], j_1): Ref) }
-        0 <= j_1 && j_1 < len ==> (loc(Heap[self$1, Array__ptr], j_1): Ref) != null
+        0 <= j_1 && j_1 < len_3 ==> (loc(Heap[self$1, Array__ptr], j_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, pval] }
-        (((0 <= invRecv1(o_4) && invRecv1(o_4) < len) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> (loc(Heap[self$1, Array__ptr], invRecv1(o_4)): Ref) == o_4) && QPMask[o_4, pval] == Mask[o_4, pval] + FullPerm) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < len) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, pval] == Mask[o_4, pval])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, pval] }
+        (((0 <= invRecv1(o_9) && invRecv1(o_9) < len_3) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> (loc(Heap[self$1, Array__ptr], invRecv1(o_9)): Ref) == o_9) && QPMask[o_9, pval] == Mask[o_9, pval] + FullPerm) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < len_3) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, pval] == Mask[o_9, pval])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != pval ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != pval ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -417,37 +417,37 @@ procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
     
     // -- Check definedness of (forall j: Int ::0 <= j && j < len ==> acc(loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval.Int__v, write))
       if (*) {
-        if (0 <= j && j < len) {
+        if (0 <= j_15 && j_15 < len_3) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@10.12--10.142) [208227]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@10.12--10.142) [80380]"}
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@10.12--10.142) [208228]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@10.12--10.142) [80381]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@10.12--10.142) [208229]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@10.12--10.142) [80382]"}
               perm <= UnfoldingMask[null, valid__Array(self$1)];
           }
           UnfoldingMask := UnfoldingMask[null, valid__Array(self$1):=UnfoldingMask[null, valid__Array(self$1)] - perm];
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@10.12--10.142) [208230]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@10.12--10.142) [80383]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__ptr:=UnfoldingMask[self$1, Array__ptr] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@10.12--10.142) [208231]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@10.12--10.142) [80384]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__len:=UnfoldingMask[self$1, Array__len] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__ptr (0228a.vpr@10.12--10.142) [208232]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__ptr (0228a.vpr@10.12--10.142) [80385]"}
             HasDirectPerm(UnfoldingMask, self$1, Array__ptr);
           
           // -- Free assumptions (exp module)
@@ -459,8 +459,8 @@ procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
             Heap := Heap[null, valid__Array#sm(self$1):=Heap[null, valid__Array#sm(self$1)][self$1, Array__ptr:=true]];
             Heap := Heap[null, valid__Array#sm(self$1):=Heap[null, valid__Array#sm(self$1)][self$1, Array__len:=true]];
             assume state(Heap, Mask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval (0228a.vpr@10.12--10.142) [208233]"}
-            HasDirectPerm(Mask, (loc(Heap[self$1, Array__ptr], j): Ref), pval);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval (0228a.vpr@10.12--10.142) [80386]"}
+            HasDirectPerm(Mask, (loc(Heap[self$1, Array__ptr], j_15): Ref), pval);
           
           // -- Free assumptions (exp module)
             Heap := Heap[null, valid__Array#sm(self$1):=Heap[null, valid__Array#sm(self$1)][self$1, Array__ptr:=true]];
@@ -475,36 +475,36 @@ procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval.Int__v might not be injective. (0228a.vpr@10.12--10.142) [208234]"}
-      (forall j_3_1: int, j_3_2: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval.Int__v might not be injective. (0228a.vpr@10.12--10.142) [80387]"}
+      (forall j_3: int, j_3_1: int ::
       
-      (((j_3_1 != j_3_2 && (0 <= j_3_1 && j_3_1 < len)) && (0 <= j_3_2 && j_3_2 < len)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval] != Heap[(loc(Heap[self$1, Array__ptr], j_3_2): Ref), pval]
+      (((j_3 != j_3_1 && (0 <= j_3 && j_3 < len_3)) && (0 <= j_3_1 && j_3_1 < len_3)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval] != Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval]
     );
     
     // -- Define Inverse Function
-      assume (forall j_3_1: int ::
-        { Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval] }
-        (0 <= j_3_1 && j_3_1 < len) && NoPerm < FullPerm ==> qpRange2(Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval]) && invRecv2(Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval]) == j_3_1
+      assume (forall j_3: int ::
+        { Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval] }
+        (0 <= j_3 && j_3 < len_3) && NoPerm < FullPerm ==> qpRange2(Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval]) && invRecv2(Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval]) == j_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        ((0 <= invRecv2(o_4) && invRecv2(o_4) < len) && NoPerm < FullPerm) && qpRange2(o_4) ==> Heap[(loc(Heap[self$1, Array__ptr], invRecv2(o_4)): Ref), pval] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        ((0 <= invRecv2(o_9) && invRecv2(o_9) < len_3) && NoPerm < FullPerm) && qpRange2(o_9) ==> Heap[(loc(Heap[self$1, Array__ptr], invRecv2(o_9)): Ref), pval] == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall j_3_1: int ::
-        { Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval] }
-        0 <= j_3_1 && j_3_1 < len ==> Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval] != null
+      assume (forall j_3: int ::
+        { Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval] }
+        0 <= j_3 && j_3 < len_3 ==> Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval] != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Int__v] }
-        (((0 <= invRecv2(o_4) && invRecv2(o_4) < len) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> Heap[(loc(Heap[self$1, Array__ptr], invRecv2(o_4)): Ref), pval] == o_4) && QPMask[o_4, Int__v] == Mask[o_4, Int__v] + FullPerm) && (!(((0 <= invRecv2(o_4) && invRecv2(o_4) < len) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, Int__v] == Mask[o_4, Int__v])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Int__v] }
+        (((0 <= invRecv2(o_9) && invRecv2(o_9) < len_3) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> Heap[(loc(Heap[self$1, Array__ptr], invRecv2(o_9)): Ref), pval] == o_9) && QPMask[o_9, Int__v] == Mask[o_9, Int__v] + FullPerm) && (!(((0 <= invRecv2(o_9) && invRecv2(o_9) < len_3) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, Int__v] == Mask[o_9, Int__v])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Int__v ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Int__v ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -525,13 +525,13 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var j_6: int;
+  var j_12: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
-  var j_2: int;
+  var j_13: int;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   
@@ -548,7 +548,7 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
     assume rd$1 < FullPerm;
     assume state(Heap, Mask);
     perm := rd$1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@16.12--16.47) [208235]"}
+    assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@16.12--16.47) [80388]"}
       perm >= NoPerm;
     Mask := Mask[null, valid__Array(self$1):=Mask[null, valid__Array(self$1)] + perm];
     assume state(Heap, Mask);
@@ -556,37 +556,37 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
     
     // -- Check definedness of (forall j: Int ::0 <= j && j < (unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__len) ==> acc(loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval, write))
       if (*) {
-        if (0 <= j_6) {
+        if (0 <= j_12) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@17.12--17.200) [208236]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@17.12--17.200) [80389]"}
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [208237]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [80390]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@17.12--17.200) [208238]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@17.12--17.200) [80391]"}
               perm <= UnfoldingMask[null, valid__Array(self$1)];
           }
           UnfoldingMask := UnfoldingMask[null, valid__Array(self$1):=UnfoldingMask[null, valid__Array(self$1)] - perm];
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [208239]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [80392]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__ptr:=UnfoldingMask[self$1, Array__ptr] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [208240]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [80393]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__len:=UnfoldingMask[self$1, Array__len] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__len (0228a.vpr@17.12--17.200) [208241]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__len (0228a.vpr@17.12--17.200) [80394]"}
             HasDirectPerm(UnfoldingMask, self$1, Array__len);
           
           // -- Free assumptions (exp module)
@@ -599,37 +599,37 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
             Heap := Heap[null, valid__Array#sm(self$1):=Heap[null, valid__Array#sm(self$1)][self$1, Array__len:=true]];
             assume state(Heap, Mask);
         }
-        if (0 <= j_6 && j_6 < Heap[self$1, Array__len]) {
+        if (0 <= j_12 && j_12 < Heap[self$1, Array__len]) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@17.12--17.200) [208242]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@17.12--17.200) [80395]"}
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [208243]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [80396]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@17.12--17.200) [208244]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@17.12--17.200) [80397]"}
               perm <= UnfoldingMask[null, valid__Array(self$1)];
           }
           UnfoldingMask := UnfoldingMask[null, valid__Array(self$1):=UnfoldingMask[null, valid__Array(self$1)] - perm];
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [208245]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [80398]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__ptr:=UnfoldingMask[self$1, Array__ptr] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [208246]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [80399]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__len:=UnfoldingMask[self$1, Array__len] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__ptr (0228a.vpr@17.12--17.200) [208247]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__ptr (0228a.vpr@17.12--17.200) [80400]"}
             HasDirectPerm(UnfoldingMask, self$1, Array__ptr);
           
           // -- Free assumptions (exp module)
@@ -650,7 +650,7 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval might not be injective. (0228a.vpr@17.12--17.200) [208248]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval might not be injective. (0228a.vpr@17.12--17.200) [80401]"}
       (forall j_1: int, j_1_1: int ::
       
       (((j_1 != j_1_1 && (0 <= j_1 && j_1 < Heap[self$1, Array__len])) && (0 <= j_1_1 && j_1_1 < Heap[self$1, Array__len])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[self$1, Array__ptr], j_1): Ref) != (loc(Heap[self$1, Array__ptr], j_1_1): Ref)
@@ -661,9 +661,9 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
         { (loc(Heap[self$1, Array__ptr], j_1): Ref) }
         (0 <= j_1 && j_1 < Heap[self$1, Array__len]) && NoPerm < FullPerm ==> qpRange3((loc(Heap[self$1, Array__ptr], j_1): Ref)) && invRecv3((loc(Heap[self$1, Array__ptr], j_1): Ref)) == j_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        ((0 <= invRecv3(o_4) && invRecv3(o_4) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange3(o_4) ==> (loc(Heap[self$1, Array__ptr], invRecv3(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        ((0 <= invRecv3(o_9) && invRecv3(o_9) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange3(o_9) ==> (loc(Heap[self$1, Array__ptr], invRecv3(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -673,13 +673,13 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, pval] }
-        (((0 <= invRecv3(o_4) && invRecv3(o_4) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> (loc(Heap[self$1, Array__ptr], invRecv3(o_4)): Ref) == o_4) && QPMask[o_4, pval] == Mask[o_4, pval] + FullPerm) && (!(((0 <= invRecv3(o_4) && invRecv3(o_4) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, pval] == Mask[o_4, pval])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, pval] }
+        (((0 <= invRecv3(o_9) && invRecv3(o_9) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> (loc(Heap[self$1, Array__ptr], invRecv3(o_9)): Ref) == o_9) && QPMask[o_9, pval] == Mask[o_9, pval] + FullPerm) && (!(((0 <= invRecv3(o_9) && invRecv3(o_9) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, pval] == Mask[o_9, pval])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != pval ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != pval ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -687,37 +687,37 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
     
     // -- Check definedness of (forall j: Int ::0 <= j && j < (unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__len) ==> acc(loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval.Int__v, write))
       if (*) {
-        if (0 <= j_2) {
+        if (0 <= j_13) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@19.12--19.207) [208249]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@19.12--19.207) [80402]"}
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [208250]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [80403]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@19.12--19.207) [208251]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@19.12--19.207) [80404]"}
               perm <= UnfoldingMask[null, valid__Array(self$1)];
           }
           UnfoldingMask := UnfoldingMask[null, valid__Array(self$1):=UnfoldingMask[null, valid__Array(self$1)] - perm];
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [208252]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [80405]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__ptr:=UnfoldingMask[self$1, Array__ptr] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [208253]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [80406]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__len:=UnfoldingMask[self$1, Array__len] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__len (0228a.vpr@19.12--19.207) [208254]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__len (0228a.vpr@19.12--19.207) [80407]"}
             HasDirectPerm(UnfoldingMask, self$1, Array__len);
           
           // -- Free assumptions (exp module)
@@ -730,37 +730,37 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
             Heap := Heap[null, valid__Array#sm(self$1):=Heap[null, valid__Array#sm(self$1)][self$1, Array__len:=true]];
             assume state(Heap, Mask);
         }
-        if (0 <= j_2 && j_2 < Heap[self$1, Array__len]) {
+        if (0 <= j_13 && j_13 < Heap[self$1, Array__len]) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@19.12--19.207) [208255]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might not be positive. (0228a.vpr@19.12--19.207) [80408]"}
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [208256]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [80409]"}
             perm >= NoPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@19.12--19.207) [208257]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__Array(self$1) (0228a.vpr@19.12--19.207) [80410]"}
               perm <= UnfoldingMask[null, valid__Array(self$1)];
           }
           UnfoldingMask := UnfoldingMask[null, valid__Array(self$1):=UnfoldingMask[null, valid__Array(self$1)] - perm];
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [208258]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [80411]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__ptr:=UnfoldingMask[self$1, Array__ptr] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := rd$1 / 2;
-          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [208259]"}
+          assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [80412]"}
             perm >= NoPerm;
           assume perm > NoPerm ==> self$1 != null;
           UnfoldingMask := UnfoldingMask[self$1, Array__len:=UnfoldingMask[self$1, Array__len] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__ptr (0228a.vpr@19.12--19.207) [208260]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access self$1.Array__ptr (0228a.vpr@19.12--19.207) [80413]"}
             HasDirectPerm(UnfoldingMask, self$1, Array__ptr);
           
           // -- Free assumptions (exp module)
@@ -772,8 +772,8 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
             Heap := Heap[null, valid__Array#sm(self$1):=Heap[null, valid__Array#sm(self$1)][self$1, Array__ptr:=true]];
             Heap := Heap[null, valid__Array#sm(self$1):=Heap[null, valid__Array#sm(self$1)][self$1, Array__len:=true]];
             assume state(Heap, Mask);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval (0228a.vpr@19.12--19.207) [208261]"}
-            HasDirectPerm(Mask, (loc(Heap[self$1, Array__ptr], j_2): Ref), pval);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval (0228a.vpr@19.12--19.207) [80414]"}
+            HasDirectPerm(Mask, (loc(Heap[self$1, Array__ptr], j_13): Ref), pval);
           
           // -- Free assumptions (exp module)
             Heap := Heap[null, valid__Array#sm(self$1):=Heap[null, valid__Array#sm(self$1)][self$1, Array__ptr:=true]];
@@ -788,36 +788,36 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval.Int__v might not be injective. (0228a.vpr@19.12--19.207) [208262]"}
-      (forall j_3_1: int, j_3_2: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc((unfolding acc(valid__Array(self$1), rd$1 / 2) in self$1.Array__ptr), j).pval.Int__v might not be injective. (0228a.vpr@19.12--19.207) [80415]"}
+      (forall j_3: int, j_3_1: int ::
       
-      (((j_3_1 != j_3_2 && (0 <= j_3_1 && j_3_1 < Heap[self$1, Array__len])) && (0 <= j_3_2 && j_3_2 < Heap[self$1, Array__len])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval] != Heap[(loc(Heap[self$1, Array__ptr], j_3_2): Ref), pval]
+      (((j_3 != j_3_1 && (0 <= j_3 && j_3 < Heap[self$1, Array__len])) && (0 <= j_3_1 && j_3_1 < Heap[self$1, Array__len])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval] != Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval]
     );
     
     // -- Define Inverse Function
-      assume (forall j_3_1: int ::
-        { Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval] }
-        (0 <= j_3_1 && j_3_1 < Heap[self$1, Array__len]) && NoPerm < FullPerm ==> qpRange4(Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval]) && invRecv4(Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval]) == j_3_1
+      assume (forall j_3: int ::
+        { Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval] }
+        (0 <= j_3 && j_3 < Heap[self$1, Array__len]) && NoPerm < FullPerm ==> qpRange4(Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval]) && invRecv4(Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval]) == j_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        ((0 <= invRecv4(o_4) && invRecv4(o_4) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange4(o_4) ==> Heap[(loc(Heap[self$1, Array__ptr], invRecv4(o_4)): Ref), pval] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        ((0 <= invRecv4(o_9) && invRecv4(o_9) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange4(o_9) ==> Heap[(loc(Heap[self$1, Array__ptr], invRecv4(o_9)): Ref), pval] == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall j_3_1: int ::
-        { Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval] }
-        0 <= j_3_1 && j_3_1 < Heap[self$1, Array__len] ==> Heap[(loc(Heap[self$1, Array__ptr], j_3_1): Ref), pval] != null
+      assume (forall j_3: int ::
+        { Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval] }
+        0 <= j_3 && j_3 < Heap[self$1, Array__len] ==> Heap[(loc(Heap[self$1, Array__ptr], j_3): Ref), pval] != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Int__v] }
-        (((0 <= invRecv4(o_4) && invRecv4(o_4) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange4(o_4) ==> (NoPerm < FullPerm ==> Heap[(loc(Heap[self$1, Array__ptr], invRecv4(o_4)): Ref), pval] == o_4) && QPMask[o_4, Int__v] == Mask[o_4, Int__v] + FullPerm) && (!(((0 <= invRecv4(o_4) && invRecv4(o_4) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange4(o_4)) ==> QPMask[o_4, Int__v] == Mask[o_4, Int__v])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Int__v] }
+        (((0 <= invRecv4(o_9) && invRecv4(o_9) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange4(o_9) ==> (NoPerm < FullPerm ==> Heap[(loc(Heap[self$1, Array__ptr], invRecv4(o_9)): Ref), pval] == o_9) && QPMask[o_9, Int__v] == Mask[o_9, Int__v] + FullPerm) && (!(((0 <= invRecv4(o_9) && invRecv4(o_9) < Heap[self$1, Array__len]) && NoPerm < FullPerm) && qpRange4(o_9)) ==> QPMask[o_9, Int__v] == Mask[o_9, Int__v])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Int__v ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Int__v ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);

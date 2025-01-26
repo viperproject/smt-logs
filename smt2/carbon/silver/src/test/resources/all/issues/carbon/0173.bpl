@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:50
+// Date:         2025-01-26 21:43:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0173.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0173-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -221,8 +221,8 @@ function  t#triggerStateless(r_1: int): bool;
 procedure t#definedness(r_1: int) returns (Result: bool)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -238,9 +238,9 @@ procedure t#definedness(r_1: int) returns (Result: bool)
     Result := r_1 > 0;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of t might not hold. Assertion r > 0 might not hold. (0173.vpr@8.13--8.18) [191729]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of t might not hold. Assertion r > 0 might not hold. (0173.vpr@8.13--8.18) [82107]"}
       r_1 > 0;
 }
 
@@ -248,15 +248,15 @@ procedure t#definedness(r_1: int) returns (Result: bool)
 // Translation of method m
 // ==================================================
 
-procedure m() returns ()
+procedure m_17() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -267,8 +267,8 @@ procedure m() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -279,9 +279,9 @@ procedure m() returns ()
     // -- Check definedness of t(0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function t might not hold. Assertion 0 > 0 might not hold. (0173.vpr@16.13--16.17) [191730]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function t might not hold. Assertion 0 > 0 might not hold. (0173.vpr@16.13--16.17) [82108]"}
           false;
         // Stop execution
         assume false;
@@ -293,8 +293,8 @@ procedure m() returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of m might not hold. Assertion t(0) might not hold. (0173.vpr@16.13--16.17) [191731]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of m might not hold. Assertion t(0) might not hold. (0173.vpr@16.13--16.17) [82109]"}
       t(Heap, 0);
 }

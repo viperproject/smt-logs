@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:51
+// Date:         2025-01-26 21:41:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0178-2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0178-2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,7 +181,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type PointersDomainType;
 
 // Translation of domain function f
-function  f_198(x_8: Ref): Ref;
+function  f_68(x_37: Ref): Ref;
 
 // ==================================================
 // Translation of all fields
@@ -195,7 +195,7 @@ axiom !IsWandField(storedInt);
 // Translation of method strange
 // ==================================================
 
-procedure strange_1() returns ()
+procedure strange() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -219,9 +219,9 @@ procedure strange_1() returns ()
   // -- Translating statement: x.storedInt := x.storedInt -- 0178-2.vpr@17.3--17.26
     
     // -- Check definedness of x.storedInt
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.storedInt (0178-2.vpr@17.3--17.26) [220437]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.storedInt (0178-2.vpr@17.3--17.26) [53940]"}
         HasDirectPerm(Mask, x, storedInt);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.storedInt (0178-2.vpr@17.3--17.26) [220438]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.storedInt (0178-2.vpr@17.3--17.26) [53941]"}
       FullPerm == Mask[x, storedInt];
     Heap := Heap[x, storedInt:=Heap[x, storedInt]];
     assume state(Heap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:13:15
+// Date:         2025-01-26 21:45:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/Assert.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/Assert-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -322,21 +322,21 @@ procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -374,11 +374,11 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x.f := 0 -- Assert.vpr@8.5--8.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (Assert.vpr@8.5--8.13) [140076]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (Assert.vpr@8.5--8.13) [224487]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=0];
     assume state(Heap, Mask);
@@ -400,8 +400,8 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- Assert.vpr@9.13--9.26
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -409,8 +409,8 @@ procedure test0(x: Ref) returns ()
       // -- Translating statement: assert acc(x.f, write) && x.f == 0 -- Assert.vpr@10.9--10.36
         AssertHeap := Ops_1Heap;
         AssertMask := Ops_1Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -419,7 +419,7 @@ procedure test0(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (Assert.vpr@10.16--10.36) [140077]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (Assert.vpr@10.16--10.36) [224488]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -462,7 +462,7 @@ procedure test0(x: Ref) returns ()
                 Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@10.16--10.36) [140078]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@10.16--10.36) [224489]"}
             b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -479,7 +479,7 @@ procedure test0(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Ops_1Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (Assert.vpr@10.16--10.36) [140079]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (Assert.vpr@10.16--10.36) [224490]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -502,7 +502,7 @@ procedure test0(x: Ref) returns ()
                 Used_1Heap := Used_1Heap[null, wand#sm(true, true):=Used_1Heap[null, wand#sm(true, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@10.16--10.36) [140080]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@10.16--10.36) [224491]"}
             b_1_1 && b_1_1 ==> neededTransfer == 0.000000000 && Ops_1Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -516,11 +516,11 @@ procedure test0(x: Ref) returns ()
           if (b_1_1) {
             
             // -- Check definedness of x.f == 0
-              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@10.16--10.36) [140081]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@10.16--10.36) [224492]"}
                 HasDirectPerm(Result_1Mask, x, f_7);
           }
         }
-        assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (Assert.vpr@10.16--10.36) [140082]"}
+        assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (Assert.vpr@10.16--10.36) [224493]"}
           b_1_1 && b_2_1 ==> Result_1Heap[x, f_7] == 0;
         b_1_1 := b_1_1 && b_2_1;
         b_1_1 := b_1_1 && Used_1Heap == Ops_1Heap;
@@ -538,11 +538,11 @@ procedure test0(x: Ref) returns ()
   // -- Translating statement: assert acc(x.f, write) -- Assert.vpr@13.5--13.20
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@13.12--13.20) [140085]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@13.12--13.20) [224496]"}
         perm <= AssertMask[x, f_7];
     }
     AssertMask := AssertMask[x, f_7:=AssertMask[x, f_7] - perm];
@@ -553,25 +553,25 @@ procedure test0(x: Ref) returns ()
 // Translation of method test1
 // ==================================================
 
-procedure test1(x: Ref) returns ()
+procedure test1_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_7: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_6: bool;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_8: bool;
@@ -609,11 +609,11 @@ procedure test1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x.f := 0 -- Assert.vpr@18.5--18.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (Assert.vpr@18.5--18.13) [140086]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (Assert.vpr@18.5--18.13) [224497]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=0];
     assume state(Heap, Mask);
@@ -638,8 +638,8 @@ procedure test1(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- Assert.vpr@19.13--19.30
       lhs3:
-      Labellhs3Heap := Ops_3Heap;
       Labellhs3Mask := Ops_3Mask;
+      Labellhs3Heap := Ops_3Heap;
       b_7 := b_7 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_7) {
@@ -647,8 +647,8 @@ procedure test1(x: Ref) returns ()
       // -- Translating statement: assert acc(x.f, write) && x.f == 0 -- Assert.vpr@21.9--21.36
         AssertHeap := Ops_3Heap;
         AssertMask := Ops_3Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         havoc Used_4Heap;
         Used_4Mask := ZeroMask;
         b_8 := b_8 && state(Used_4Heap, Used_4Mask);
@@ -657,7 +657,7 @@ procedure test1(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_4Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (Assert.vpr@21.16--21.36) [140087]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (Assert.vpr@21.16--21.36) [224498]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -700,7 +700,7 @@ procedure test1(x: Ref) returns ()
                 Heap := Heap[null, wand_1#sm(x, FullPerm, true):=Heap[null, wand_1#sm(x, FullPerm, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@21.16--21.36) [140088]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@21.16--21.36) [224499]"}
             b_7 && b_8 ==> neededTransfer == 0.000000000 && Used_4Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -717,7 +717,7 @@ procedure test1(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Ops_3Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (Assert.vpr@21.16--21.36) [140089]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (Assert.vpr@21.16--21.36) [224500]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -740,7 +740,7 @@ procedure test1(x: Ref) returns ()
                 Used_4Heap := Used_4Heap[null, wand_1#sm(x, FullPerm, true):=Used_4Heap[null, wand_1#sm(x, FullPerm, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@21.16--21.36) [140090]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@21.16--21.36) [224501]"}
             b_7 && b_7 ==> neededTransfer == 0.000000000 && Ops_3Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -754,11 +754,11 @@ procedure test1(x: Ref) returns ()
           if (b_7) {
             
             // -- Check definedness of x.f == 0
-              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@21.16--21.36) [140091]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@21.16--21.36) [224502]"}
                 HasDirectPerm(Result_3Mask, x, f_7);
           }
         }
-        assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (Assert.vpr@21.16--21.36) [140092]"}
+        assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (Assert.vpr@21.16--21.36) [224503]"}
           b_7 && b_8 ==> Result_3Heap[x, f_7] == 0;
         b_7 := b_7 && b_8;
         b_7 := b_7 && Used_4Heap == Ops_3Heap;
@@ -776,11 +776,11 @@ procedure test1(x: Ref) returns ()
   // -- Translating statement: assert acc(x.f, write) -- Assert.vpr@23.5--23.20
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@23.12--23.20) [140095]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@23.12--23.20) [224506]"}
         perm <= AssertMask[x, f_7];
     }
     AssertMask := AssertMask[x, f_7:=AssertMask[x, f_7] - perm];
@@ -791,11 +791,11 @@ procedure test1(x: Ref) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(x: Ref) returns ()
+procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
   var b_13: bool;
@@ -803,11 +803,11 @@ procedure test2(x: Ref) returns ()
   var Used_6Mask: MaskType;
   var b_12: bool;
   var perm: Perm;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var boolCur_2: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
   var b_14: bool;
@@ -826,8 +826,8 @@ procedure test2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, write) && x.f == 0 --* true {
   //   assert x.f == 0
@@ -850,7 +850,7 @@ procedure test2(x: Ref) returns ()
         if (b_13) {
           
           // -- Check definedness of x.f == 0
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (Assert.vpr@27.5--29.6) [140096]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (Assert.vpr@27.5--29.6) [224507]"}
               HasDirectPerm(Ops_5Mask, x, f_7);
         }
         b_13 := b_13 && Ops_5Heap[x, f_7] == 0;
@@ -860,15 +860,15 @@ procedure test2(x: Ref) returns ()
     
     // -- Translating statement: label lhs5 -- Assert.vpr@27.13--27.42
       lhs5:
-      Labellhs5Heap := Ops_5Heap;
       Labellhs5Mask := Ops_5Mask;
+      Labellhs5Heap := Ops_5Heap;
       b_13 := b_13 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     if (b_13) {
       
       // -- Translating statement: assert x.f == 0 -- Assert.vpr@28.9--28.24
-        ExhaleWellDef0Heap := Ops_5Heap;
         ExhaleWellDef0Mask := Ops_5Mask;
+        ExhaleWellDef0Heap := Ops_5Heap;
         havoc Used_7Heap;
         Used_7Mask := ZeroMask;
         b_14 := b_14 && state(Used_7Heap, Used_7Mask);
@@ -876,11 +876,11 @@ procedure test2(x: Ref) returns ()
           if (b_13) {
             
             // -- Check definedness of x.f == 0
-              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@28.16--28.24) [140097]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (Assert.vpr@28.16--28.24) [224508]"}
                 HasDirectPerm(Ops_5Mask, x, f_7);
           }
         }
-        assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (Assert.vpr@28.16--28.24) [140098]"}
+        assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (Assert.vpr@28.16--28.24) [224509]"}
           b_13 && b_14 ==> Ops_5Heap[x, f_7] == 0;
         b_13 := b_13 && b_14;
         b_13 := b_13 && state(Ops_5Heap, Ops_5Mask);
@@ -899,11 +899,11 @@ procedure test2(x: Ref) returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3(x: Ref) returns ()
+procedure test3_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
   var b_17: bool;
@@ -911,11 +911,11 @@ procedure test3(x: Ref) returns ()
   var Used_9Mask: MaskType;
   var b_16: bool;
   var perm: Perm;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var boolCur_3: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_10Heap: HeapType;
   var Used_10Mask: MaskType;
   var b_18: bool;
@@ -934,8 +934,8 @@ procedure test3(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, write) && acc(x.f, write) --* false {
   //   assert false
@@ -965,19 +965,19 @@ procedure test3(x: Ref) returns ()
     
     // -- Translating statement: label lhs7 -- Assert.vpr@33.13--33.43
       lhs7:
-      Labellhs7Heap := Ops_7Heap;
       Labellhs7Mask := Ops_7Mask;
+      Labellhs7Heap := Ops_7Heap;
       b_17 := b_17 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     if (b_17) {
       
       // -- Translating statement: assert false -- Assert.vpr@34.9--34.21
-        ExhaleWellDef0Heap := Ops_7Heap;
         ExhaleWellDef0Mask := Ops_7Mask;
+        ExhaleWellDef0Heap := Ops_7Heap;
         havoc Used_10Heap;
         Used_10Mask := ZeroMask;
         b_18 := b_18 && state(Used_10Heap, Used_10Mask);
-        assert {:msg "  Assert might fail. Assertion false might not hold. (Assert.vpr@34.16--34.21) [140100]"}
+        assert {:msg "  Assert might fail. Assertion false might not hold. (Assert.vpr@34.16--34.21) [224511]"}
           b_17 && b_18 ==> false;
         b_17 := b_17 && b_18;
         b_17 := b_17 && state(Ops_7Heap, Ops_7Mask);
@@ -986,7 +986,7 @@ procedure test3(x: Ref) returns ()
     havoc Used_11Heap;
     Used_11Mask := ZeroMask;
     b_19 := b_19 && state(Used_11Heap, Used_11Mask);
-    assert {:msg "  Packaging wand might fail. Assertion false might not hold. (Assert.vpr@33.5--35.6) [140101]"}
+    assert {:msg "  Packaging wand might fail. Assertion false might not hold. (Assert.vpr@33.5--35.6) [224512]"}
       (b_17 && b_17) && b_19 ==> false;
     Mask := Mask[null, wand_3(x, FullPerm, x, FullPerm, false):=Mask[null, wand_3(x, FullPerm, x, FullPerm, false)] + FullPerm];
     assume state(Heap, Mask);

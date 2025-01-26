@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:46:31
+; Started: 2025-01-26 21:34:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1031,11 +1031,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref) (x@1@00 Int)) (!
   (= (P_state%limited s@$ r@0@00 x@1@00) (P_state s@$ r@0@00 x@1@00))
   :pattern ((P_state s@$ r@0@00 x@1@00))
-  :qid |quant-u-25192|)))
+  :qid |quant-u-10887|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref) (x@1@00 Int)) (!
   (P_state%stateless r@0@00 x@1@00)
   :pattern ((P_state%limited s@$ r@0@00 x@1@00))
-  :qid |quant-u-25193|)))
+  :qid |quant-u-10888|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test01 ----------
@@ -1135,7 +1135,7 @@
     ($SortWrappers.IntTo$Snap x@4@01))) ($Snap.combine
     ($SortWrappers.$RefTo$Snap r@3@01)
     ($SortWrappers.IntTo$Snap x@4@01))))
-  :qid |quant-u-25195|)))
+  :qid |quant-u-10890|)))
 (assert (forall ((r $Ref) (x Int)) (!
   (=>
     (and
@@ -1187,7 +1187,7 @@
       ($SortWrappers.$RefTo$Snap r)
       ($SortWrappers.IntTo$Snap x))))
   :pattern ((inv@8@01 r x) (inv@10@01 r x))
-  :qid |quant-u-25196|)))
+  :qid |quant-u-10891|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -1311,7 +1311,7 @@
         ($SortWrappers.$RefTo$Snap r@14@01)
         ($SortWrappers.IntTo$Snap x@15@01)))))
   
-  :qid |quant-u-25197|))))
+  :qid |quant-u-10892|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1393,7 +1393,7 @@
     ($SortWrappers.$RefTo$Snap r)
     ($SortWrappers.IntTo$Snap x)))
   :pattern ((inv@17@01 r x) (inv@19@01 r x))
-  :qid |quant-u-25198|)))
+  :qid |quant-u-10893|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@21@01 ((r $Ref) (x Int)) $Perm
   (ite
@@ -1436,7 +1436,7 @@
       (pTaken@21@01 r x))
     $Perm.No)
   
-  :qid |quant-u-25200|))))
+  :qid |quant-u-10895|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1459,7 +1459,7 @@
         (pTaken@21@01 r x))
       $Perm.No))
   
-  :qid |quant-u-25201|))))
+  :qid |quant-u-10896|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1587,7 +1587,7 @@
         ($SortWrappers.$RefTo$Snap r@22@01)
         ($SortWrappers.IntTo$Snap x@23@01)))))
   
-  :qid |quant-u-25202|))))
+  :qid |quant-u-10897|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1635,7 +1635,7 @@
     ($SortWrappers.IntTo$Snap x@23@01))) ($Snap.combine
     ($SortWrappers.$RefTo$Snap r@22@01)
     ($SortWrappers.IntTo$Snap x@23@01))))
-  :qid |quant-u-25203|)))
+  :qid |quant-u-10898|)))
 (assert (forall ((r $Ref) (x Int)) (!
   (=>
     (and
@@ -1696,7 +1696,7 @@
     ($SortWrappers.$RefTo$Snap r)
     ($SortWrappers.IntTo$Snap x)))
   :pattern ((inv@28@01 r x) (inv@30@01 r x))
-  :qid |quant-u-25204|)))
+  :qid |quant-u-10899|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -1813,7 +1813,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-25205|))))
+  :qid |quant-u-10900|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -2339,7 +2339,7 @@
       ($SortWrappers.$RefTo$Snap r)
       ($SortWrappers.IntTo$Snap x))))
   :pattern ((inv@41@01 r x) (inv@43@01 r x))
-  :qid |quant-u-25207|)))
+  :qid |quant-u-10902|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@45@01 ((r $Ref) (x Int)) $Perm
   (ite
@@ -2381,7 +2381,7 @@
       (pTaken@45@01 r x))
     $Perm.No)
   
-  :qid |quant-u-25209|))))
+  :qid |quant-u-10904|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -2403,7 +2403,7 @@
       (and (= r (inv@41@01 r x)) (= x (inv@43@01 r x))))
     (= (- $Perm.Write (pTaken@45@01 r x)) $Perm.No))
   
-  :qid |quant-u-25210|))))
+  :qid |quant-u-10905|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -2653,7 +2653,7 @@
       ($SortWrappers.$RefTo$Snap r)
       ($SortWrappers.IntTo$Snap x))))
   :pattern ((inv@49@01 r x) (inv@51@01 r x))
-  :qid |quant-u-25212|)))
+  :qid |quant-u-10907|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@53@01 ((r $Ref) (x Int)) $Perm
   (ite
@@ -2695,7 +2695,7 @@
       (pTaken@53@01 r x))
     $Perm.No)
   
-  :qid |quant-u-25214|))))
+  :qid |quant-u-10909|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -2717,7 +2717,7 @@
       (and (= r (inv@49@01 r x)) (= x (inv@51@01 r x))))
     (= (- $Perm.Write (pTaken@53@01 r x)) $Perm.No))
   
-  :qid |quant-u-25215|))))
+  :qid |quant-u-10910|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -2913,7 +2913,7 @@
       ($SortWrappers.$RefTo$Snap r)
       ($SortWrappers.IntTo$Snap x))))
   :pattern ((inv@56@01 r x) (inv@58@01 r x))
-  :qid |quant-u-25217|)))
+  :qid |quant-u-10912|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@60@01 ((r $Ref) (x Int)) $Perm
   (ite
@@ -2953,7 +2953,7 @@
       (pTaken@60@01 r x))
     $Perm.No)
   
-  :qid |quant-u-25219|))))
+  :qid |quant-u-10914|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -2973,7 +2973,7 @@
       (and (= r (inv@56@01 r x)) (= x (inv@58@01 r x))))
     (= (- $Perm.Write (pTaken@60@01 r x)) $Perm.No))
   
-  :qid |quant-u-25220|))))
+  :qid |quant-u-10915|))))
 (check-sat)
 ; unsat
 (pop) ; 6

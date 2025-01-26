@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:55:58
+// Date:         2025-01-26 21:44:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/bsearch.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/bsearch-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_55: Ref, f_54: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_55, f_54] }
-  Heap[o_55, $allocated] ==> Heap[Heap[o_55, f_54], $allocated]
+axiom (forall o_51: Ref, f_62: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_51, f_62] }
+  Heap[o_51, $allocated] ==> Heap[Heap[o_51, f_62], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_43: Ref, f_15: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_43, f_15] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_43, f_15) ==> Heap[o_43, f_15] == ExhaleHeap[o_43, f_15]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_58: Ref, f_70: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_58, f_70] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_58, f_70) ==> Heap[o_58, f_70] == ExhaleHeap[o_58, f_70]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_29: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_29), ExhaleHeap[null, PredicateMaskField(pm_f_29)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_29) && IsPredicateField(pm_f_29) ==> Heap[null, PredicateMaskField(pm_f_29)] == ExhaleHeap[null, PredicateMaskField(pm_f_29)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_38: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_38), ExhaleHeap[null, PredicateMaskField(pm_f_38)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_38) && IsPredicateField(pm_f_38) ==> Heap[null, PredicateMaskField(pm_f_38)] == ExhaleHeap[null, PredicateMaskField(pm_f_38)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_29: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_29) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_29) && IsPredicateField(pm_f_29) ==> (forall <A, B> o2_29: Ref, f_15: (Field A B) ::
-    { ExhaleHeap[o2_29, f_15] }
-    Heap[null, PredicateMaskField(pm_f_29)][o2_29, f_15] ==> Heap[o2_29, f_15] == ExhaleHeap[o2_29, f_15]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_38: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_38) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_38) && IsPredicateField(pm_f_38) ==> (forall <A, B> o2_38: Ref, f_70: (Field A B) ::
+    { ExhaleHeap[o2_38, f_70] }
+    Heap[null, PredicateMaskField(pm_f_38)][o2_38, f_70] ==> Heap[o2_38, f_70] == ExhaleHeap[o2_38, f_70]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_29: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_29), ExhaleHeap[null, WandMaskField(pm_f_29)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_29) && IsWandField(pm_f_29) ==> Heap[null, WandMaskField(pm_f_29)] == ExhaleHeap[null, WandMaskField(pm_f_29)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_38: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_38), ExhaleHeap[null, WandMaskField(pm_f_38)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_38) && IsWandField(pm_f_38) ==> Heap[null, WandMaskField(pm_f_38)] == ExhaleHeap[null, WandMaskField(pm_f_38)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_29: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_29) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_29) && IsWandField(pm_f_29) ==> (forall <A, B> o2_29: Ref, f_15: (Field A B) ::
-    { ExhaleHeap[o2_29, f_15] }
-    Heap[null, WandMaskField(pm_f_29)][o2_29, f_15] ==> Heap[o2_29, f_15] == ExhaleHeap[o2_29, f_15]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_38: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_38) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_38) && IsWandField(pm_f_38) ==> (forall <A, B> o2_38: Ref, f_70: (Field A B) ::
+    { ExhaleHeap[o2_38, f_70] }
+    Heap[null, WandMaskField(pm_f_38)][o2_38, f_70] ==> Heap[o2_38, f_70] == ExhaleHeap[o2_38, f_70]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_43: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_43, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_43, $allocated] ==> ExhaleHeap[o_43, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_58: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_58, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_58, $allocated] ==> ExhaleHeap[o_58, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_55: Ref, f_26: (Field A B), v: B ::
-  { Heap[o_55, f_26:=v] }
-  succHeap(Heap, Heap[o_55, f_26:=v])
+axiom (forall <A, B> Heap: HeapType, o_51: Ref, f_14: (Field A B), v: B ::
+  { Heap[o_51, f_14:=v] }
+  succHeap(Heap, Heap[o_51, f_14:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,34 +144,34 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(i_3: int): bool;
+function  neverTriggered1(i_3_2: int): bool;
 function  neverTriggered2(i_7_1: int): bool;
 function  neverTriggered3(i_10_1: int): bool;
-function  neverTriggered4(i_15: int): bool;
+function  neverTriggered4(i_15_1: int): bool;
 function  neverTriggered5(i_18_1: int): bool;
 function  neverTriggered6(i_22_1: int): bool;
-function  neverTriggered7(i_25: int): bool;
-function  neverTriggered8(i_3: int): bool;
+function  neverTriggered7(i_25_1: int): bool;
+function  neverTriggered8(i_3_2: int): bool;
 function  neverTriggered9(i_7_1: int): bool;
 function  neverTriggered10(i_10_1: int): bool;
-function  neverTriggered11(i_15: int): bool;
+function  neverTriggered11(i_15_1: int): bool;
 function  neverTriggered12(i_18_1: int): bool;
 function  neverTriggered13(i_22_1: int): bool;
-function  neverTriggered14(i_25: int): bool;
-function  neverTriggered15(i_3: int): bool;
+function  neverTriggered14(i_25_1: int): bool;
+function  neverTriggered15(i_3_2: int): bool;
 function  neverTriggered16(i_7_1: int): bool;
 function  neverTriggered17(i_10_1: int): bool;
-function  neverTriggered18(i_15: int): bool;
+function  neverTriggered18(i_15_1: int): bool;
 function  neverTriggered19(i_18_1: int): bool;
 function  neverTriggered20(i_22_1: int): bool;
-function  neverTriggered21(i_25: int): bool;
-function  neverTriggered22(i_3: int): bool;
+function  neverTriggered21(i_25_1: int): bool;
+function  neverTriggered22(i_3_2: int): bool;
 function  neverTriggered23(i_7_1: int): bool;
 function  neverTriggered24(i_10_1: int): bool;
-function  neverTriggered25(i_15: int): bool;
+function  neverTriggered25(i_15_1: int): bool;
 function  neverTriggered26(i_18_1: int): bool;
 function  neverTriggered27(i_22_1: int): bool;
-function  neverTriggered28(i_25: int): bool;
+function  neverTriggered28(i_25_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -648,17 +648,17 @@ axiom !IsWandField(f_7);
 procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   modifies Heap, Mask;
 {
-  var i_14: int;
-  var j_5: int;
-  var i_2: int;
+  var i_18: int;
+  var j_14: int;
+  var i_3: int;
   var QPMask: MaskType;
   var i_4: int;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_6: int;
-  var i_7: int;
+  var i_14: int;
+  var i_5: int;
   var k: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -666,13 +666,13 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var i_13_1: int;
-  var j_2_1: int;
+  var j_2_2: int;
   var i_16_1: int;
   var ExhaleHeap: HeapType;
   var arg_S_1: (Seq Ref);
-  var i_20_1: int;
+  var i_20_2: int;
   var j_4_1: int;
-  var i_23: int;
+  var i_23_1: int;
   var i_11_1: int;
   
   // -- Initializing the state
@@ -687,15 +687,15 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     
     // -- Check definedness of (forall i: Int, j: Int :: { (i in [0..|S|)), (j in [0..|S|)) } { (i in [0..|S|)), S[j] } { (j in [0..|S|)), S[i] } { S[i], S[j] } (i in [0..|S|)) && ((j in [0..|S|)) && i != j) ==> S[i] != S[j])
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_14) && (Seq#Contains(Seq#Range(0, Seq#Length(S)), j_5) && i_14 != j_5)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@10.12--10.94) [65957]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@10.12--10.94) [65958]"}
-            i_14 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@10.12--10.94) [65959]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@10.12--10.94) [65960]"}
-            j_5 < Seq#Length(S);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_18) && (Seq#Contains(Seq#Range(0, Seq#Length(S)), j_14) && i_18 != j_14)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@10.12--10.94) [183965]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@10.12--10.94) [183966]"}
+            i_18 < Seq#Length(S);
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@10.12--10.94) [183967]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@10.12--10.94) [183968]"}
+            j_14 < Seq#Length(S);
         }
         assume false;
       }
@@ -707,51 +707,51 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     
     // -- Check definedness of (forall i: Int :: { S[i].f } (i in [0..|S|)) ==> acc(S[i].f, p))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_2)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@11.12--11.71) [65961]"}
-            i_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@11.12--11.71) [65962]"}
-            i_2 < Seq#Length(S);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@11.12--11.71) [183969]"}
+            i_3 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@11.12--11.71) [183970]"}
+            i_3 < Seq#Length(S);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@11.12--11.71) [65963]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@11.12--11.71) [183971]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_1)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_3) != Seq#Index(S, i_3_1)
+      (((i_3_2 != i_3_3 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_3)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_3_2) != Seq#Index(S, i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(S, i_3) } { Heap[Seq#Index(S, i_3), f_7] }
-        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3) && NoPerm < p_1 ==> qpRange1(Seq#Index(S, i_3)) && invRecv1(Seq#Index(S, i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(S, i_3_2) } { Heap[Seq#Index(S, i_3_2), f_7] }
+        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2) && NoPerm < p_1 ==> qpRange1(Seq#Index(S, i_3_2)) && invRecv1(Seq#Index(S, i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv1(o_4)) && NoPerm < p_1) && qpRange1(o_4) ==> Seq#Index(S, invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv1(o_9)) && NoPerm < p_1) && qpRange1(o_9) ==> Seq#Index(S, invRecv1(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@11.12--11.71) [65964]"}
-      (forall i_3: int ::
-      { Seq#Index(S, i_3) } { Heap[Seq#Index(S, i_3), f_7] }
-      Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3) ==> p_1 >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@11.12--11.71) [183972]"}
+      (forall i_3_2: int ::
+      { Seq#Index(S, i_3_2) } { Heap[Seq#Index(S, i_3_2), f_7] }
+      Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2) ==> p_1 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(S, i_3) } { Heap[Seq#Index(S, i_3), f_7] }
-        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3) && p_1 > NoPerm ==> Seq#Index(S, i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(S, i_3_2) } { Heap[Seq#Index(S, i_3_2), f_7] }
+        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2) && p_1 > NoPerm ==> Seq#Index(S, i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv1(o_4)) && NoPerm < p_1) && qpRange1(o_4) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv1(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv1(o_4)) && NoPerm < p_1) && qpRange1(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv1(o_9)) && NoPerm < p_1) && qpRange1(o_9) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv1(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv1(o_9)) && NoPerm < p_1) && qpRange1(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -760,24 +760,24 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     // -- Check definedness of (forall i: Int :: { S[i].f } (i in [0..|S| - 1)) ==> S[i].f < S[i + 1].f)
       if (*) {
         if (Seq#Contains(Seq#Range(0, Seq#Length(S) - 1), i_4)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@12.12--12.78) [65965]"}
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@12.12--12.78) [183973]"}
             i_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@12.12--12.78) [65966]"}
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@12.12--12.78) [183974]"}
             i_4 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@12.12--12.78) [65967]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@12.12--12.78) [183975]"}
             HasDirectPerm(Mask, Seq#Index(S, i_4), f_7);
-          assert {:msg "  Contract might not be well-formed. Index S[i + 1] into S might be negative. (bsearch.vpr@12.12--12.78) [65968]"}
+          assert {:msg "  Contract might not be well-formed. Index S[i + 1] into S might be negative. (bsearch.vpr@12.12--12.78) [183976]"}
             i_4 + 1 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i + 1] into S might exceed sequence length. (bsearch.vpr@12.12--12.78) [65969]"}
+          assert {:msg "  Contract might not be well-formed. Index S[i + 1] into S might exceed sequence length. (bsearch.vpr@12.12--12.78) [183977]"}
             i_4 + 1 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i + 1].f (bsearch.vpr@12.12--12.78) [65970]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i + 1].f (bsearch.vpr@12.12--12.78) [183978]"}
             HasDirectPerm(Mask, Seq#Index(S, i_4 + 1), f_7);
         }
         assume false;
       }
-    assume (forall i_5: int ::
-      { Heap[Seq#Index(S, i_5), f_7] }
-      Seq#Contains(Seq#Range(0, Seq#Length(S) - 1), i_5) ==> Heap[Seq#Index(S, i_5), f_7] < Heap[Seq#Index(S, i_5 + 1), f_7]
+    assume (forall i_5_1: int ::
+      { Heap[Seq#Index(S, i_5_1), f_7] }
+      Seq#Contains(Seq#Range(0, Seq#Length(S) - 1), i_5_1) ==> Heap[Seq#Index(S, i_5_1), f_7] < Heap[Seq#Index(S, i_5_1 + 1), f_7]
     );
     assume state(Heap, Mask);
   
@@ -794,16 +794,16 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     
     // -- Check definedness of (forall i: Int :: { S[i].f } (i in [0..|S|)) ==> acc(S[i].f, p))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_6)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@13.11--13.69) [65971]"}
-            i_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@13.11--13.69) [65972]"}
-            i_6 < Seq#Length(S);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_14)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@13.11--13.69) [183979]"}
+            i_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@13.11--13.69) [183980]"}
+            i_14 < Seq#Length(S);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@13.11--13.69) [65973]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@13.11--13.69) [183981]"}
       (forall i_7_1: int, i_7_2: int ::
       
       (((i_7_1 != i_7_2 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_1)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_7_1) != Seq#Index(S, i_7_2)
@@ -814,12 +814,12 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
         { Seq#Index(S, i_7_1) } { PostHeap[Seq#Index(S, i_7_1), f_7] }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_1) && NoPerm < p_1 ==> qpRange2(Seq#Index(S, i_7_1)) && invRecv2(Seq#Index(S, i_7_1)) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv2(o_4)) && NoPerm < p_1) && qpRange2(o_4) ==> Seq#Index(S, invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv2(o_9)) && NoPerm < p_1) && qpRange2(o_9) ==> Seq#Index(S, invRecv2(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@13.11--13.69) [65974]"}
+    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@13.11--13.69) [183982]"}
       (forall i_7_1: int ::
       { Seq#Index(S, i_7_1) } { PostHeap[Seq#Index(S, i_7_1), f_7] }
       Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_1) ==> p_1 >= NoPerm
@@ -832,13 +832,13 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv2(o_4)) && NoPerm < p_1) && qpRange2(o_4) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv2(o_4)) == o_4) && QPMask[o_4, f_7] == PostMask[o_4, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv2(o_4)) && NoPerm < p_1) && qpRange2(o_4)) ==> QPMask[o_4, f_7] == PostMask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv2(o_9)) && NoPerm < p_1) && qpRange2(o_9) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv2(o_9)) == o_9) && QPMask[o_9, f_7] == PostMask[o_9, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv2(o_9)) && NoPerm < p_1) && qpRange2(o_9)) ==> QPMask[o_9, f_7] == PostMask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -848,11 +848,11 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     if (Seq#Contains(Seq#Range(0, Seq#Length(S)), index)) {
       
       // -- Check definedness of S[index].f == x
-        assert {:msg "  Contract might not be well-formed. Index S[index] into S might be negative. (bsearch.vpr@17.11--17.48) [65975]"}
+        assert {:msg "  Contract might not be well-formed. Index S[index] into S might be negative. (bsearch.vpr@17.11--17.48) [183983]"}
           index >= 0;
-        assert {:msg "  Contract might not be well-formed. Index S[index] into S might exceed sequence length. (bsearch.vpr@17.11--17.48) [65976]"}
+        assert {:msg "  Contract might not be well-formed. Index S[index] into S might exceed sequence length. (bsearch.vpr@17.11--17.48) [183984]"}
           index < Seq#Length(S);
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[index].f (bsearch.vpr@17.11--17.48) [65977]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[index].f (bsearch.vpr@17.11--17.48) [183985]"}
           HasDirectPerm(PostMask, Seq#Index(S, index), f_7);
       assume PostHeap[Seq#Index(S, index), f_7] == x;
     }
@@ -861,13 +861,13 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
       
       // -- Check definedness of (forall i: Int :: { S[i].f } (i in [0..|S|)) ==> S[i].f != x)
         if (*) {
-          if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7)) {
-            assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@19.11--19.84) [65978]"}
-              i_7 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@19.11--19.84) [65979]"}
-              i_7 < Seq#Length(S);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@19.11--19.84) [65980]"}
-              HasDirectPerm(PostMask, Seq#Index(S, i_7), f_7);
+          if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_5)) {
+            assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@19.11--19.84) [183986]"}
+              i_5 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@19.11--19.84) [183987]"}
+              i_5 < Seq#Length(S);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@19.11--19.84) [183988]"}
+              HasDirectPerm(PostMask, Seq#Index(S, i_5), f_7);
           }
           assume false;
         }
@@ -895,9 +895,9 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
           // -- Translating statement: index := (x == S[0].f ? 0 : -1) -- bsearch.vpr@24.5--24.34
             
             // -- Check definedness of (x == S[0].f ? 0 : -1)
-              assert {:msg "  Assignment might fail. Index S[0] into S might exceed sequence length. (bsearch.vpr@24.5--24.34) [65981]"}
+              assert {:msg "  Assignment might fail. Index S[0] into S might exceed sequence length. (bsearch.vpr@24.5--24.34) [183989]"}
                 0 < Seq#Length(S);
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access S[0].f (bsearch.vpr@24.5--24.34) [65982]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access S[0].f (bsearch.vpr@24.5--24.34) [183990]"}
                 HasDirectPerm(Mask, Seq#Index(S, 0), f_7);
             index := (if x == Heap[Seq#Index(S, 0), f_7] then 0 else -1);
             assume state(Heap, Mask);
@@ -912,11 +912,11 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
           // -- Translating statement: if (S[k].f < x) -- bsearch.vpr@29.5--33.6
             
             // -- Check definedness of S[k].f < x
-              assert {:msg "  Conditional statement might fail. Index S[k] into S might be negative. (bsearch.vpr@29.9--29.19) [65983]"}
+              assert {:msg "  Conditional statement might fail. Index S[k] into S might be negative. (bsearch.vpr@29.9--29.19) [183991]"}
                 k >= 0;
-              assert {:msg "  Conditional statement might fail. Index S[k] into S might exceed sequence length. (bsearch.vpr@29.9--29.19) [65984]"}
+              assert {:msg "  Conditional statement might fail. Index S[k] into S might exceed sequence length. (bsearch.vpr@29.9--29.19) [183992]"}
                 k < Seq#Length(S);
-              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access S[k].f (bsearch.vpr@29.9--29.19) [65985]"}
+              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access S[k].f (bsearch.vpr@29.9--29.19) [183993]"}
                 HasDirectPerm(Mask, Seq#Index(S, k), f_7);
             if (Heap[Seq#Index(S, k), f_7] < x) {
               
@@ -928,14 +928,14 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 // -- Exhaling precondition
                   ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p > none might not hold. (bsearch.vpr@30.7--30.41) [65986]"}
+                  assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p > none might not hold. (bsearch.vpr@30.7--30.41) [183994]"}
                     NoPerm < p_1;
-                  assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p < write might not hold. (bsearch.vpr@30.7--30.41) [65987]"}
+                  assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p < write might not hold. (bsearch.vpr@30.7--30.41) [183995]"}
                     p_1 < FullPerm;
                   if (*) {
-                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_13_1) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), j_2_1) && i_13_1 != j_2_1)) {
-                      assert {:msg "  The precondition of method bfind_orig might not hold. Assertion S[0..k][i] != S[0..k][j] might not hold. (bsearch.vpr@30.7--30.41) [65988]"}
-                        Seq#Index(arg_S, i_13_1) != Seq#Index(arg_S, j_2_1);
+                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_13_1) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), j_2_2) && i_13_1 != j_2_2)) {
+                      assert {:msg "  The precondition of method bfind_orig might not hold. Assertion S[0..k][i] != S[0..k][j] might not hold. (bsearch.vpr@30.7--30.41) [183996]"}
+                        Seq#Index(arg_S, i_13_1) != Seq#Index(arg_S, j_2_2);
                     }
                     assume false;
                   }
@@ -946,51 +946,51 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  The precondition of method bfind_orig might not hold. Fraction p might be negative. (bsearch.vpr@30.7--30.41) [65989]"}
-                      (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Heap[Seq#Index(arg_S, i_15), f_7] }
-                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_15) && dummyFunction(Heap[Seq#Index(arg_S, i_15), f_7]) ==> p_1 >= NoPerm
+                    assert {:msg "  The precondition of method bfind_orig might not hold. Fraction p might be negative. (bsearch.vpr@30.7--30.41) [183997]"}
+                      (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Heap[Seq#Index(arg_S, i_15_1), f_7] }
+                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_15_1) && dummyFunction(Heap[Seq#Index(arg_S, i_15_1), f_7]) ==> p_1 >= NoPerm
                     );
                   
                   // -- check if receiver arg_S[i] is injective
-                    assert {:msg "  The precondition of method bfind_orig might not hold. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@30.7--30.41) [65990]"}
-                      (forall i_15: int, i_15_1: int ::
-                      { neverTriggered4(i_15), neverTriggered4(i_15_1) }
-                      (((i_15 != i_15_1 && Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_15)) && Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_15_1)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(arg_S, i_15) != Seq#Index(arg_S, i_15_1)
+                    assert {:msg "  The precondition of method bfind_orig might not hold. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@30.7--30.41) [183998]"}
+                      (forall i_15_1: int, i_15_2: int ::
+                      { neverTriggered4(i_15_1), neverTriggered4(i_15_2) }
+                      (((i_15_1 != i_15_2 && Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_15_1)) && Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_15_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(arg_S, i_15_1) != Seq#Index(arg_S, i_15_2)
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  The precondition of method bfind_orig might not hold. There might be insufficient permission to access S[0..k][i].f (bsearch.vpr@30.7--30.41) [65991]"}
-                      (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Heap[Seq#Index(arg_S, i_15), f_7] }
-                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_15) ==> Mask[Seq#Index(arg_S, i_15), f_7] >= p_1
+                    assert {:msg "  The precondition of method bfind_orig might not hold. There might be insufficient permission to access S[0..k][i].f (bsearch.vpr@30.7--30.41) [183999]"}
+                      (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Heap[Seq#Index(arg_S, i_15_1), f_7] }
+                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_15_1) ==> Mask[Seq#Index(arg_S, i_15_1), f_7] >= p_1
                     );
                   
                   // -- assumptions for inverse of receiver arg_S[i]
-                    assume (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Heap[Seq#Index(arg_S, i_15), f_7] }
-                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_15) && NoPerm < p_1 ==> qpRange4(Seq#Index(arg_S, i_15)) && invRecv4(Seq#Index(arg_S, i_15)) == i_15
+                    assume (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Heap[Seq#Index(arg_S, i_15_1), f_7] }
+                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_15_1) && NoPerm < p_1 ==> qpRange4(Seq#Index(arg_S, i_15_1)) && invRecv4(Seq#Index(arg_S, i_15_1)) == i_15_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv4(o_4) }
-                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv4(o_4)) && (NoPerm < p_1 && qpRange4(o_4)) ==> Seq#Index(arg_S, invRecv4(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv4(o_9) }
+                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv4(o_9)) && (NoPerm < p_1 && qpRange4(o_9)) ==> Seq#Index(arg_S, invRecv4(o_9)) == o_9
                     );
                   
                   // -- assume permission updates for field f
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv4(o_4)) && (NoPerm < p_1 && qpRange4(o_4)) ==> Seq#Index(arg_S, invRecv4(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - p_1) && (!(Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv4(o_4)) && (NoPerm < p_1 && qpRange4(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv4(o_9)) && (NoPerm < p_1 && qpRange4(o_9)) ==> Seq#Index(arg_S, invRecv4(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - p_1) && (!(Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv4(o_9)) && (NoPerm < p_1 && qpRange4(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
                   
                   // -- assume permission updates for independent locations
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   if (*) {
                     if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S) - 1), i_16_1)) {
-                      assert {:msg "  The precondition of method bfind_orig might not hold. Assertion S[0..k][i].f < S[0..k][i + 1].f might not hold. (bsearch.vpr@30.7--30.41) [65992]"}
+                      assert {:msg "  The precondition of method bfind_orig might not hold. Assertion S[0..k][i].f < S[0..k][i + 1].f might not hold. (bsearch.vpr@30.7--30.41) [184000]"}
                         Heap[Seq#Index(arg_S, i_16_1), f_7] < Heap[Seq#Index(arg_S, i_16_1 + 1), f_7];
                     }
                     assume false;
@@ -1009,7 +1009,7 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 
                 // -- Inhaling postcondition
                   havoc QPMask;
-                  assert {:msg "  Method call might fail. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@30.7--30.41) [65993]"}
+                  assert {:msg "  Method call might fail. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@30.7--30.41) [184001]"}
                     (forall i_18_1: int, i_18_2: int ::
                     
                     (((i_18_1 != i_18_2 && Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_18_1)) && Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_18_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(arg_S, i_18_1) != Seq#Index(arg_S, i_18_2)
@@ -1020,12 +1020,12 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                       { Seq#Index(arg_S, i_18_1) } { Heap[Seq#Index(arg_S, i_18_1), f_7] }
                       Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_18_1) && NoPerm < p_1 ==> qpRange5(Seq#Index(arg_S, i_18_1)) && invRecv5(Seq#Index(arg_S, i_18_1)) == i_18_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv5(o_4) }
-                      (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv5(o_4)) && NoPerm < p_1) && qpRange5(o_4) ==> Seq#Index(arg_S, invRecv5(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv5(o_9) }
+                      (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv5(o_9)) && NoPerm < p_1) && qpRange5(o_9) ==> Seq#Index(arg_S, invRecv5(o_9)) == o_9
                     );
                   // Check that permission expression is non-negative for all fields
-                  assert {:msg "  Method call might fail. Fraction p might be negative. (bsearch.vpr@30.7--30.41) [65994]"}
+                  assert {:msg "  Method call might fail. Fraction p might be negative. (bsearch.vpr@30.7--30.41) [184002]"}
                     (forall i_18_1: int ::
                     { Seq#Index(arg_S, i_18_1) } { Heap[Seq#Index(arg_S, i_18_1), f_7] }
                     Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_18_1) ==> p_1 >= NoPerm
@@ -1038,13 +1038,13 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                     );
                   
                   // -- Define permissions
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      ((Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv5(o_4)) && NoPerm < p_1) && qpRange5(o_4) ==> (NoPerm < p_1 ==> Seq#Index(arg_S, invRecv5(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv5(o_4)) && NoPerm < p_1) && qpRange5(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      ((Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv5(o_9)) && NoPerm < p_1) && qpRange5(o_9) ==> (NoPerm < p_1 ==> Seq#Index(arg_S, invRecv5(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), invRecv5(o_9)) && NoPerm < p_1) && qpRange5(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   assume state(Heap, Mask);
@@ -1053,9 +1053,9 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                     assume Heap[Seq#Index(arg_S, index), f_7] == x;
                   }
                   if (index == -1) {
-                    assume (forall i_19: int ::
-                      { Heap[Seq#Index(arg_S, i_19), f_7] }
-                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_19) ==> Heap[Seq#Index(arg_S, i_19), f_7] != x
+                    assume (forall i_19_1: int ::
+                      { Heap[Seq#Index(arg_S, i_19_1), f_7] }
+                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_19_1) ==> Heap[Seq#Index(arg_S, i_19_1), f_7] != x
                     );
                   }
                   assume state(Heap, Mask);
@@ -1070,14 +1070,14 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 // -- Exhaling precondition
                   ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p > none might not hold. (bsearch.vpr@32.7--32.43) [65995]"}
+                  assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p > none might not hold. (bsearch.vpr@32.7--32.43) [184003]"}
                     NoPerm < p_1;
-                  assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p < write might not hold. (bsearch.vpr@32.7--32.43) [65996]"}
+                  assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p < write might not hold. (bsearch.vpr@32.7--32.43) [184004]"}
                     p_1 < FullPerm;
                   if (*) {
-                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_20_1) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), j_4_1) && i_20_1 != j_4_1)) {
-                      assert {:msg "  The precondition of method bfind_orig might not hold. Assertion S[k..|S|][i] != S[k..|S|][j] might not hold. (bsearch.vpr@32.7--32.43) [65997]"}
-                        Seq#Index(arg_S_1, i_20_1) != Seq#Index(arg_S_1, j_4_1);
+                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_20_2) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), j_4_1) && i_20_2 != j_4_1)) {
+                      assert {:msg "  The precondition of method bfind_orig might not hold. Assertion S[k..|S|][i] != S[k..|S|][j] might not hold. (bsearch.vpr@32.7--32.43) [184005]"}
+                        Seq#Index(arg_S_1, i_20_2) != Seq#Index(arg_S_1, j_4_1);
                     }
                     assume false;
                   }
@@ -1088,21 +1088,21 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  The precondition of method bfind_orig might not hold. Fraction p might be negative. (bsearch.vpr@32.7--32.43) [65998]"}
+                    assert {:msg "  The precondition of method bfind_orig might not hold. Fraction p might be negative. (bsearch.vpr@32.7--32.43) [184006]"}
                       (forall i_22_1: int ::
                       { Seq#Index(arg_S_1, i_22_1) } { Heap[Seq#Index(arg_S_1, i_22_1), f_7] }
                       Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_22_1) && dummyFunction(Heap[Seq#Index(arg_S_1, i_22_1), f_7]) ==> p_1 >= NoPerm
                     );
                   
                   // -- check if receiver arg_S[i] is injective
-                    assert {:msg "  The precondition of method bfind_orig might not hold. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@32.7--32.43) [65999]"}
+                    assert {:msg "  The precondition of method bfind_orig might not hold. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@32.7--32.43) [184007]"}
                       (forall i_22_1: int, i_22_2: int ::
                       { neverTriggered6(i_22_1), neverTriggered6(i_22_2) }
                       (((i_22_1 != i_22_2 && Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_22_1)) && Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_22_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(arg_S_1, i_22_1) != Seq#Index(arg_S_1, i_22_2)
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  The precondition of method bfind_orig might not hold. There might be insufficient permission to access S[k..|S|][i].f (bsearch.vpr@32.7--32.43) [66000]"}
+                    assert {:msg "  The precondition of method bfind_orig might not hold. There might be insufficient permission to access S[k..|S|][i].f (bsearch.vpr@32.7--32.43) [184008]"}
                       (forall i_22_1: int ::
                       { Seq#Index(arg_S_1, i_22_1) } { Heap[Seq#Index(arg_S_1, i_22_1), f_7] }
                       Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_22_1) ==> Mask[Seq#Index(arg_S_1, i_22_1), f_7] >= p_1
@@ -1113,27 +1113,27 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                       { Seq#Index(arg_S_1, i_22_1) } { Heap[Seq#Index(arg_S_1, i_22_1), f_7] }
                       Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_22_1) && NoPerm < p_1 ==> qpRange6(Seq#Index(arg_S_1, i_22_1)) && invRecv6(Seq#Index(arg_S_1, i_22_1)) == i_22_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv6(o_4) }
-                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv6(o_4)) && (NoPerm < p_1 && qpRange6(o_4)) ==> Seq#Index(arg_S_1, invRecv6(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv6(o_9) }
+                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv6(o_9)) && (NoPerm < p_1 && qpRange6(o_9)) ==> Seq#Index(arg_S_1, invRecv6(o_9)) == o_9
                     );
                   
                   // -- assume permission updates for field f
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv6(o_4)) && (NoPerm < p_1 && qpRange6(o_4)) ==> Seq#Index(arg_S_1, invRecv6(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - p_1) && (!(Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv6(o_4)) && (NoPerm < p_1 && qpRange6(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv6(o_9)) && (NoPerm < p_1 && qpRange6(o_9)) ==> Seq#Index(arg_S_1, invRecv6(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - p_1) && (!(Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv6(o_9)) && (NoPerm < p_1 && qpRange6(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
                   
                   // -- assume permission updates for independent locations
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   if (*) {
-                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1) - 1), i_23)) {
-                      assert {:msg "  The precondition of method bfind_orig might not hold. Assertion S[k..|S|][i].f < S[k..|S|][i + 1].f might not hold. (bsearch.vpr@32.7--32.43) [66001]"}
-                        Heap[Seq#Index(arg_S_1, i_23), f_7] < Heap[Seq#Index(arg_S_1, i_23 + 1), f_7];
+                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1) - 1), i_23_1)) {
+                      assert {:msg "  The precondition of method bfind_orig might not hold. Assertion S[k..|S|][i].f < S[k..|S|][i + 1].f might not hold. (bsearch.vpr@32.7--32.43) [184009]"}
+                        Heap[Seq#Index(arg_S_1, i_23_1), f_7] < Heap[Seq#Index(arg_S_1, i_23_1 + 1), f_7];
                     }
                     assume false;
                   }
@@ -1151,42 +1151,42 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 
                 // -- Inhaling postcondition
                   havoc QPMask;
-                  assert {:msg "  Method call might fail. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@32.7--32.43) [66002]"}
-                    (forall i_25: int, i_25_2: int ::
+                  assert {:msg "  Method call might fail. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@32.7--32.43) [184010]"}
+                    (forall i_25_1: int, i_25_2: int ::
                     
-                    (((i_25 != i_25_2 && Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_25)) && Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_25_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(arg_S_1, i_25) != Seq#Index(arg_S_1, i_25_2)
+                    (((i_25_1 != i_25_2 && Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_25_1)) && Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_25_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(arg_S_1, i_25_1) != Seq#Index(arg_S_1, i_25_2)
                   );
                   
                   // -- Define Inverse Function
-                    assume (forall i_25: int ::
-                      { Seq#Index(arg_S_1, i_25) } { Heap[Seq#Index(arg_S_1, i_25), f_7] }
-                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_25) && NoPerm < p_1 ==> qpRange7(Seq#Index(arg_S_1, i_25)) && invRecv7(Seq#Index(arg_S_1, i_25)) == i_25
+                    assume (forall i_25_1: int ::
+                      { Seq#Index(arg_S_1, i_25_1) } { Heap[Seq#Index(arg_S_1, i_25_1), f_7] }
+                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_25_1) && NoPerm < p_1 ==> qpRange7(Seq#Index(arg_S_1, i_25_1)) && invRecv7(Seq#Index(arg_S_1, i_25_1)) == i_25_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv7(o_4) }
-                      (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv7(o_4)) && NoPerm < p_1) && qpRange7(o_4) ==> Seq#Index(arg_S_1, invRecv7(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv7(o_9) }
+                      (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv7(o_9)) && NoPerm < p_1) && qpRange7(o_9) ==> Seq#Index(arg_S_1, invRecv7(o_9)) == o_9
                     );
                   // Check that permission expression is non-negative for all fields
-                  assert {:msg "  Method call might fail. Fraction p might be negative. (bsearch.vpr@32.7--32.43) [66003]"}
-                    (forall i_25: int ::
-                    { Seq#Index(arg_S_1, i_25) } { Heap[Seq#Index(arg_S_1, i_25), f_7] }
-                    Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_25) ==> p_1 >= NoPerm
+                  assert {:msg "  Method call might fail. Fraction p might be negative. (bsearch.vpr@32.7--32.43) [184011]"}
+                    (forall i_25_1: int ::
+                    { Seq#Index(arg_S_1, i_25_1) } { Heap[Seq#Index(arg_S_1, i_25_1), f_7] }
+                    Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_25_1) ==> p_1 >= NoPerm
                   );
                   
                   // -- Assume set of fields is nonNull
-                    assume (forall i_25: int ::
-                      { Seq#Index(arg_S_1, i_25) } { Heap[Seq#Index(arg_S_1, i_25), f_7] }
-                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_25) && p_1 > NoPerm ==> Seq#Index(arg_S_1, i_25) != null
+                    assume (forall i_25_1: int ::
+                      { Seq#Index(arg_S_1, i_25_1) } { Heap[Seq#Index(arg_S_1, i_25_1), f_7] }
+                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_25_1) && p_1 > NoPerm ==> Seq#Index(arg_S_1, i_25_1) != null
                     );
                   
                   // -- Define permissions
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      ((Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv7(o_4)) && NoPerm < p_1) && qpRange7(o_4) ==> (NoPerm < p_1 ==> Seq#Index(arg_S_1, invRecv7(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv7(o_4)) && NoPerm < p_1) && qpRange7(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      ((Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv7(o_9)) && NoPerm < p_1) && qpRange7(o_9) ==> (NoPerm < p_1 ==> Seq#Index(arg_S_1, invRecv7(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), invRecv7(o_9)) && NoPerm < p_1) && qpRange7(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   assume state(Heap, Mask);
@@ -1195,9 +1195,9 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                     assume Heap[Seq#Index(arg_S_1, index), f_7] == x;
                   }
                   if (index == -1) {
-                    assume (forall i_26: int ::
-                      { Heap[Seq#Index(arg_S_1, i_26), f_7] }
-                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_26) ==> Heap[Seq#Index(arg_S_1, i_26), f_7] != x
+                    assume (forall i_26_1: int ::
+                      { Heap[Seq#Index(arg_S_1, i_26_1), f_7] }
+                      Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_26_1) ==> Heap[Seq#Index(arg_S_1, i_26_1), f_7] != x
                     );
                   }
                   assume state(Heap, Mask);
@@ -1215,21 +1215,21 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of bfind_orig might not hold. Fraction p might be negative. (bsearch.vpr@13.11--13.69) [66004]"}
+      assert {:msg "  Postcondition of bfind_orig might not hold. Fraction p might be negative. (bsearch.vpr@13.11--13.69) [184012]"}
         (forall i_10_1: int ::
         { Seq#Index(S, i_10_1) } { Heap[Seq#Index(S, i_10_1), f_7] }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1) && dummyFunction(Heap[Seq#Index(S, i_10_1), f_7]) ==> p_1 >= NoPerm
       );
     
     // -- check if receiver S[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@13.11--13.69) [66005]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@13.11--13.69) [184013]"}
         (forall i_10_1: int, i_10_2: int ::
         { neverTriggered3(i_10_1), neverTriggered3(i_10_2) }
         (((i_10_1 != i_10_2 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_10_1) != Seq#Index(S, i_10_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of bfind_orig might not hold. There might be insufficient permission to access S[i].f (bsearch.vpr@13.11--13.69) [66006]"}
+      assert {:msg "  Postcondition of bfind_orig might not hold. There might be insufficient permission to access S[i].f (bsearch.vpr@13.11--13.69) [184014]"}
         (forall i_10_1: int ::
         { Seq#Index(S, i_10_1) } { Heap[Seq#Index(S, i_10_1), f_7] }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1) ==> Mask[Seq#Index(S, i_10_1), f_7] >= p_1
@@ -1240,33 +1240,33 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
         { Seq#Index(S, i_10_1) } { Heap[Seq#Index(S, i_10_1), f_7] }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1) && NoPerm < p_1 ==> qpRange3(Seq#Index(S, i_10_1)) && invRecv3(Seq#Index(S, i_10_1)) == i_10_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv3(o_4)) && (NoPerm < p_1 && qpRange3(o_4)) ==> Seq#Index(S, invRecv3(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv3(o_9)) && (NoPerm < p_1 && qpRange3(o_9)) ==> Seq#Index(S, invRecv3(o_9)) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv3(o_4)) && (NoPerm < p_1 && qpRange3(o_4)) ==> Seq#Index(S, invRecv3(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - p_1) && (!(Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv3(o_4)) && (NoPerm < p_1 && qpRange3(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv3(o_9)) && (NoPerm < p_1 && qpRange3(o_9)) ==> Seq#Index(S, invRecv3(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - p_1) && (!(Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv3(o_9)) && (NoPerm < p_1 && qpRange3(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
-    assert {:msg "  Postcondition of bfind_orig might not hold. Assertion (index in [-1..|S|)) might not hold. (bsearch.vpr@14.11--14.29) [66007]"}
+    assert {:msg "  Postcondition of bfind_orig might not hold. Assertion (index in [-1..|S|)) might not hold. (bsearch.vpr@14.11--14.29) [184015]"}
       Seq#Contains(Seq#Range(-1, Seq#Length(S)), index);
     if (Seq#Contains(Seq#Range(0, Seq#Length(S)), index)) {
-      assert {:msg "  Postcondition of bfind_orig might not hold. Assertion S[index].f == x might not hold. (bsearch.vpr@17.11--17.48) [66008]"}
+      assert {:msg "  Postcondition of bfind_orig might not hold. Assertion S[index].f == x might not hold. (bsearch.vpr@17.11--17.48) [184016]"}
         Heap[Seq#Index(S, index), f_7] == x;
     }
     if (index == -1) {
       if (*) {
         if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_11_1)) {
-          assert {:msg "  Postcondition of bfind_orig might not hold. Assertion S[i].f != x might not hold. (bsearch.vpr@19.11--19.84) [66009]"}
+          assert {:msg "  Postcondition of bfind_orig might not hold. Assertion S[i].f != x might not hold. (bsearch.vpr@19.11--19.84) [184017]"}
             Heap[Seq#Index(S, i_11_1), f_7] != x;
         }
         assume false;
@@ -1289,18 +1289,18 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
 procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   modifies Heap, Mask;
 {
-  var i_8: int;
-  var j_3: int;
-  var i_9: int;
+  var i_15: int;
+  var j_16: int;
+  var i_7: int;
   var QPMask: MaskType;
-  var i_10: int;
-  var j_4: int;
+  var i_21: int;
+  var j_17: int;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_11: int;
-  var i_12: int;
+  var i_8: int;
+  var i_19: int;
   var k: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -1311,13 +1311,13 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   var i_13_1: int;
   var j_4_1: int;
   var i_16_1: int;
-  var j_6_1: int;
+  var j_6_2: int;
   var ExhaleHeap: HeapType;
   var arg_S_1: (Seq Ref);
   var arg_p_1: Perm;
-  var i_20_1: int;
-  var j_8: int;
-  var i_23: int;
+  var i_20_2: int;
+  var j_8_2: int;
+  var i_23_1: int;
   var j_10_2: int;
   var i_11_1: int;
   
@@ -1333,15 +1333,15 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     
     // -- Check definedness of (forall i: Int, j: Int :: { (i in [0..|S|)), (j in [0..|S|)) } { (i in [0..|S|)), S[j] } { (j in [0..|S|)), S[i] } { S[i], S[j] } (i in [0..|S|)) && ((j in [0..|S|)) && i != j) ==> S[i] != S[j])
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_8) && (Seq#Contains(Seq#Range(0, Seq#Length(S)), j_3) && i_8 != j_3)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@39.12--39.94) [66010]"}
-            i_8 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@39.12--39.94) [66011]"}
-            i_8 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@39.12--39.94) [66012]"}
-            j_3 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@39.12--39.94) [66013]"}
-            j_3 < Seq#Length(S);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_15) && (Seq#Contains(Seq#Range(0, Seq#Length(S)), j_16) && i_15 != j_16)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@39.12--39.94) [184018]"}
+            i_15 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@39.12--39.94) [184019]"}
+            i_15 < Seq#Length(S);
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@39.12--39.94) [184020]"}
+            j_16 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@39.12--39.94) [184021]"}
+            j_16 < Seq#Length(S);
         }
         assume false;
       }
@@ -1353,51 +1353,51 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     
     // -- Check definedness of (forall i: Int :: { S[i] } 0 <= i && i < |S| ==> acc(S[i].f, p))
       if (*) {
-        if (0 <= i_9 && i_9 < Seq#Length(S)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@40.12--40.72) [66014]"}
-            i_9 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@40.12--40.72) [66015]"}
-            i_9 < Seq#Length(S);
+        if (0 <= i_7 && i_7 < Seq#Length(S)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@40.12--40.72) [184022]"}
+            i_7 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@40.12--40.72) [184023]"}
+            i_7 < Seq#Length(S);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@40.12--40.72) [66016]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@40.12--40.72) [184024]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && (0 <= i_3 && i_3 < Seq#Length(S))) && (0 <= i_3_1 && i_3_1 < Seq#Length(S))) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_3) != Seq#Index(S, i_3_1)
+      (((i_3_2 != i_3_3 && (0 <= i_3_2 && i_3_2 < Seq#Length(S))) && (0 <= i_3_3 && i_3_3 < Seq#Length(S))) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_3_2) != Seq#Index(S, i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(S, i_3) } { Seq#Index(S, i_3) }
-        (0 <= i_3 && i_3 < Seq#Length(S)) && NoPerm < p_1 ==> qpRange8(Seq#Index(S, i_3)) && invRecv8(Seq#Index(S, i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(S, i_3_2) } { Seq#Index(S, i_3_2) }
+        (0 <= i_3_2 && i_3_2 < Seq#Length(S)) && NoPerm < p_1 ==> qpRange8(Seq#Index(S, i_3_2)) && invRecv8(Seq#Index(S, i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv8(o_4) }
-        ((0 <= invRecv8(o_4) && invRecv8(o_4) < Seq#Length(S)) && NoPerm < p_1) && qpRange8(o_4) ==> Seq#Index(S, invRecv8(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv8(o_9) }
+        ((0 <= invRecv8(o_9) && invRecv8(o_9) < Seq#Length(S)) && NoPerm < p_1) && qpRange8(o_9) ==> Seq#Index(S, invRecv8(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@40.12--40.72) [66017]"}
-      (forall i_3: int ::
-      { Seq#Index(S, i_3) } { Seq#Index(S, i_3) }
-      0 <= i_3 && i_3 < Seq#Length(S) ==> p_1 >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@40.12--40.72) [184025]"}
+      (forall i_3_2: int ::
+      { Seq#Index(S, i_3_2) } { Seq#Index(S, i_3_2) }
+      0 <= i_3_2 && i_3_2 < Seq#Length(S) ==> p_1 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(S, i_3) } { Seq#Index(S, i_3) }
-        (0 <= i_3 && i_3 < Seq#Length(S)) && p_1 > NoPerm ==> Seq#Index(S, i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(S, i_3_2) } { Seq#Index(S, i_3_2) }
+        (0 <= i_3_2 && i_3_2 < Seq#Length(S)) && p_1 > NoPerm ==> Seq#Index(S, i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (((0 <= invRecv8(o_4) && invRecv8(o_4) < Seq#Length(S)) && NoPerm < p_1) && qpRange8(o_4) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv8(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + p_1) && (!(((0 <= invRecv8(o_4) && invRecv8(o_4) < Seq#Length(S)) && NoPerm < p_1) && qpRange8(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (((0 <= invRecv8(o_9) && invRecv8(o_9) < Seq#Length(S)) && NoPerm < p_1) && qpRange8(o_9) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv8(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + p_1) && (!(((0 <= invRecv8(o_9) && invRecv8(o_9) < Seq#Length(S)) && NoPerm < p_1) && qpRange8(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1405,25 +1405,25 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     
     // -- Check definedness of (forall i: Int, j: Int :: { S[i], S[j] } 0 <= i && (i < j && j < |S|) ==> S[i].f < S[j].f)
       if (*) {
-        if (0 <= i_10 && (i_10 < j_4 && j_4 < Seq#Length(S))) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@41.12--42.61) [66018]"}
-            i_10 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@41.12--42.61) [66019]"}
-            i_10 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@41.12--42.61) [66020]"}
-            HasDirectPerm(Mask, Seq#Index(S, i_10), f_7);
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@41.12--42.61) [66021]"}
-            j_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@41.12--42.61) [66022]"}
-            j_4 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[j].f (bsearch.vpr@41.12--42.61) [66023]"}
-            HasDirectPerm(Mask, Seq#Index(S, j_4), f_7);
+        if (0 <= i_21 && (i_21 < j_17 && j_17 < Seq#Length(S))) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@41.12--42.61) [184026]"}
+            i_21 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@41.12--42.61) [184027]"}
+            i_21 < Seq#Length(S);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@41.12--42.61) [184028]"}
+            HasDirectPerm(Mask, Seq#Index(S, i_21), f_7);
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@41.12--42.61) [184029]"}
+            j_17 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@41.12--42.61) [184030]"}
+            j_17 < Seq#Length(S);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[j].f (bsearch.vpr@41.12--42.61) [184031]"}
+            HasDirectPerm(Mask, Seq#Index(S, j_17), f_7);
         }
         assume false;
       }
-    assume (forall i_5: int, j_3_1: int ::
-      { Seq#Index(S, i_5), Seq#Index(S, j_3_1) }
-      0 <= i_5 && (i_5 < j_3_1 && j_3_1 < Seq#Length(S)) ==> Heap[Seq#Index(S, i_5), f_7] < Heap[Seq#Index(S, j_3_1), f_7]
+    assume (forall i_5_1: int, j_3: int ::
+      { Seq#Index(S, i_5_1), Seq#Index(S, j_3) }
+      0 <= i_5_1 && (i_5_1 < j_3 && j_3 < Seq#Length(S)) ==> Heap[Seq#Index(S, i_5_1), f_7] < Heap[Seq#Index(S, j_3), f_7]
     );
     assume state(Heap, Mask);
   
@@ -1440,16 +1440,16 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     
     // -- Check definedness of (forall i: Int :: { S[i] } 0 <= i && i < |S| ==> acc(S[i].f, p))
       if (*) {
-        if (0 <= i_11 && i_11 < Seq#Length(S)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@43.11--43.71) [66024]"}
-            i_11 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@43.11--43.71) [66025]"}
-            i_11 < Seq#Length(S);
+        if (0 <= i_8 && i_8 < Seq#Length(S)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@43.11--43.71) [184032]"}
+            i_8 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@43.11--43.71) [184033]"}
+            i_8 < Seq#Length(S);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@43.11--43.71) [66026]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@43.11--43.71) [184034]"}
       (forall i_7_1: int, i_7_2: int ::
       
       (((i_7_1 != i_7_2 && (0 <= i_7_1 && i_7_1 < Seq#Length(S))) && (0 <= i_7_2 && i_7_2 < Seq#Length(S))) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_7_1) != Seq#Index(S, i_7_2)
@@ -1460,12 +1460,12 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
         { Seq#Index(S, i_7_1) } { Seq#Index(S, i_7_1) }
         (0 <= i_7_1 && i_7_1 < Seq#Length(S)) && NoPerm < p_1 ==> qpRange9(Seq#Index(S, i_7_1)) && invRecv9(Seq#Index(S, i_7_1)) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv9(o_4) }
-        ((0 <= invRecv9(o_4) && invRecv9(o_4) < Seq#Length(S)) && NoPerm < p_1) && qpRange9(o_4) ==> Seq#Index(S, invRecv9(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv9(o_9) }
+        ((0 <= invRecv9(o_9) && invRecv9(o_9) < Seq#Length(S)) && NoPerm < p_1) && qpRange9(o_9) ==> Seq#Index(S, invRecv9(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@43.11--43.71) [66027]"}
+    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@43.11--43.71) [184035]"}
       (forall i_7_1: int ::
       { Seq#Index(S, i_7_1) } { Seq#Index(S, i_7_1) }
       0 <= i_7_1 && i_7_1 < Seq#Length(S) ==> p_1 >= NoPerm
@@ -1478,13 +1478,13 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (((0 <= invRecv9(o_4) && invRecv9(o_4) < Seq#Length(S)) && NoPerm < p_1) && qpRange9(o_4) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv9(o_4)) == o_4) && QPMask[o_4, f_7] == PostMask[o_4, f_7] + p_1) && (!(((0 <= invRecv9(o_4) && invRecv9(o_4) < Seq#Length(S)) && NoPerm < p_1) && qpRange9(o_4)) ==> QPMask[o_4, f_7] == PostMask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (((0 <= invRecv9(o_9) && invRecv9(o_9) < Seq#Length(S)) && NoPerm < p_1) && qpRange9(o_9) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv9(o_9)) == o_9) && QPMask[o_9, f_7] == PostMask[o_9, f_7] + p_1) && (!(((0 <= invRecv9(o_9) && invRecv9(o_9) < Seq#Length(S)) && NoPerm < p_1) && qpRange9(o_9)) ==> QPMask[o_9, f_7] == PostMask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -1495,11 +1495,11 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     if (0 <= index && index < Seq#Length(S)) {
       
       // -- Check definedness of S[index].f == x
-        assert {:msg "  Contract might not be well-formed. Index S[index] into S might be negative. (bsearch.vpr@45.11--45.56) [66028]"}
+        assert {:msg "  Contract might not be well-formed. Index S[index] into S might be negative. (bsearch.vpr@45.11--45.56) [184036]"}
           index >= 0;
-        assert {:msg "  Contract might not be well-formed. Index S[index] into S might exceed sequence length. (bsearch.vpr@45.11--45.56) [66029]"}
+        assert {:msg "  Contract might not be well-formed. Index S[index] into S might exceed sequence length. (bsearch.vpr@45.11--45.56) [184037]"}
           index < Seq#Length(S);
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[index].f (bsearch.vpr@45.11--45.56) [66030]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[index].f (bsearch.vpr@45.11--45.56) [184038]"}
           HasDirectPerm(PostMask, Seq#Index(S, index), f_7);
       assume PostHeap[Seq#Index(S, index), f_7] == x;
     }
@@ -1508,13 +1508,13 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
       
       // -- Check definedness of (forall i: Int :: { S[i] } 0 <= i && i < |S| ==> S[i].f != x)
         if (*) {
-          if (0 <= i_12 && i_12 < Seq#Length(S)) {
-            assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@46.11--46.86) [66031]"}
-              i_12 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@46.11--46.86) [66032]"}
-              i_12 < Seq#Length(S);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@46.11--46.86) [66033]"}
-              HasDirectPerm(PostMask, Seq#Index(S, i_12), f_7);
+          if (0 <= i_19 && i_19 < Seq#Length(S)) {
+            assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@46.11--46.86) [184039]"}
+              i_19 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@46.11--46.86) [184040]"}
+              i_19 < Seq#Length(S);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@46.11--46.86) [184041]"}
+              HasDirectPerm(PostMask, Seq#Index(S, i_19), f_7);
           }
           assume false;
         }
@@ -1542,9 +1542,9 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
           // -- Translating statement: index := (x == S[0].f ? 0 : -1) -- bsearch.vpr@51.5--51.34
             
             // -- Check definedness of (x == S[0].f ? 0 : -1)
-              assert {:msg "  Assignment might fail. Index S[0] into S might exceed sequence length. (bsearch.vpr@51.5--51.34) [66034]"}
+              assert {:msg "  Assignment might fail. Index S[0] into S might exceed sequence length. (bsearch.vpr@51.5--51.34) [184042]"}
                 0 < Seq#Length(S);
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access S[0].f (bsearch.vpr@51.5--51.34) [66035]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access S[0].f (bsearch.vpr@51.5--51.34) [184043]"}
                 HasDirectPerm(Mask, Seq#Index(S, 0), f_7);
             index := (if x == Heap[Seq#Index(S, 0), f_7] then 0 else -1);
             assume state(Heap, Mask);
@@ -1559,11 +1559,11 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
           // -- Translating statement: if (x < S[k].f) -- bsearch.vpr@56.5--61.6
             
             // -- Check definedness of x < S[k].f
-              assert {:msg "  Conditional statement might fail. Index S[k] into S might be negative. (bsearch.vpr@56.9--56.19) [66036]"}
+              assert {:msg "  Conditional statement might fail. Index S[k] into S might be negative. (bsearch.vpr@56.9--56.19) [184044]"}
                 k >= 0;
-              assert {:msg "  Conditional statement might fail. Index S[k] into S might exceed sequence length. (bsearch.vpr@56.9--56.19) [66037]"}
+              assert {:msg "  Conditional statement might fail. Index S[k] into S might exceed sequence length. (bsearch.vpr@56.9--56.19) [184045]"}
                 k < Seq#Length(S);
-              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access S[k].f (bsearch.vpr@56.9--56.19) [66038]"}
+              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access S[k].f (bsearch.vpr@56.9--56.19) [184046]"}
                 HasDirectPerm(Mask, Seq#Index(S, k), f_7);
             if (x < Heap[Seq#Index(S, k), f_7]) {
               
@@ -1576,13 +1576,13 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 // -- Exhaling precondition
                   ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@57.7--57.49) [66039]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@57.7--57.49) [184047]"}
                     NoPerm < arg_p;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@57.7--57.49) [66040]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@57.7--57.49) [184048]"}
                     arg_p < FullPerm;
                   if (*) {
                     if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_13_1) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), j_4_1) && i_13_1 != j_4_1)) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i] != S[0..k][j] might not hold. (bsearch.vpr@57.7--57.49) [66041]"}
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i] != S[0..k][j] might not hold. (bsearch.vpr@57.7--57.49) [184049]"}
                         Seq#Index(arg_S, i_13_1) != Seq#Index(arg_S, j_4_1);
                     }
                     assume false;
@@ -1594,52 +1594,52 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@57.7--57.49) [66042]"}
-                      (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Seq#Index(arg_S, i_15) }
-                      (0 <= i_15 && i_15 < Seq#Length(arg_S)) && dummyFunction(Heap[Seq#Index(arg_S, i_15), f_7]) ==> arg_p >= NoPerm
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@57.7--57.49) [184050]"}
+                      (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Seq#Index(arg_S, i_15_1) }
+                      (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S)) && dummyFunction(Heap[Seq#Index(arg_S, i_15_1), f_7]) ==> arg_p >= NoPerm
                     );
                   
                   // -- check if receiver arg_S[i] is injective
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@57.7--57.49) [66043]"}
-                      (forall i_15: int, i_15_1: int ::
-                      { neverTriggered11(i_15), neverTriggered11(i_15_1) }
-                      (((i_15 != i_15_1 && (0 <= i_15 && i_15 < Seq#Length(arg_S))) && (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S))) && NoPerm < arg_p) && NoPerm < arg_p ==> Seq#Index(arg_S, i_15) != Seq#Index(arg_S, i_15_1)
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@57.7--57.49) [184051]"}
+                      (forall i_15_1: int, i_15_2: int ::
+                      { neverTriggered11(i_15_1), neverTriggered11(i_15_2) }
+                      (((i_15_1 != i_15_2 && (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S))) && (0 <= i_15_2 && i_15_2 < Seq#Length(arg_S))) && NoPerm < arg_p) && NoPerm < arg_p ==> Seq#Index(arg_S, i_15_1) != Seq#Index(arg_S, i_15_2)
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[0..k][i].f (bsearch.vpr@57.7--57.49) [66044]"}
-                      (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Seq#Index(arg_S, i_15) }
-                      0 <= i_15 && i_15 < Seq#Length(arg_S) ==> Mask[Seq#Index(arg_S, i_15), f_7] >= arg_p
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[0..k][i].f (bsearch.vpr@57.7--57.49) [184052]"}
+                      (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Seq#Index(arg_S, i_15_1) }
+                      0 <= i_15_1 && i_15_1 < Seq#Length(arg_S) ==> Mask[Seq#Index(arg_S, i_15_1), f_7] >= arg_p
                     );
                   
                   // -- assumptions for inverse of receiver arg_S[i]
-                    assume (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Seq#Index(arg_S, i_15) }
-                      (0 <= i_15 && i_15 < Seq#Length(arg_S)) && NoPerm < arg_p ==> qpRange11(Seq#Index(arg_S, i_15)) && invRecv11(Seq#Index(arg_S, i_15)) == i_15
+                    assume (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Seq#Index(arg_S, i_15_1) }
+                      (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S)) && NoPerm < arg_p ==> qpRange11(Seq#Index(arg_S, i_15_1)) && invRecv11(Seq#Index(arg_S, i_15_1)) == i_15_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv11(o_4) }
-                      (0 <= invRecv11(o_4) && invRecv11(o_4) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange11(o_4)) ==> Seq#Index(arg_S, invRecv11(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv11(o_9) }
+                      (0 <= invRecv11(o_9) && invRecv11(o_9) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange11(o_9)) ==> Seq#Index(arg_S, invRecv11(o_9)) == o_9
                     );
                   
                   // -- assume permission updates for field f
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      ((0 <= invRecv11(o_4) && invRecv11(o_4) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange11(o_4)) ==> Seq#Index(arg_S, invRecv11(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - arg_p) && (!((0 <= invRecv11(o_4) && invRecv11(o_4) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange11(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      ((0 <= invRecv11(o_9) && invRecv11(o_9) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange11(o_9)) ==> Seq#Index(arg_S, invRecv11(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - arg_p) && (!((0 <= invRecv11(o_9) && invRecv11(o_9) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange11(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
                   
                   // -- assume permission updates for independent locations
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   if (*) {
-                    if (0 <= i_16_1 && (i_16_1 < j_6_1 && j_6_1 < Seq#Length(arg_S))) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i].f < S[0..k][j].f might not hold. (bsearch.vpr@57.7--57.49) [66045]"}
-                        Heap[Seq#Index(arg_S, i_16_1), f_7] < Heap[Seq#Index(arg_S, j_6_1), f_7];
+                    if (0 <= i_16_1 && (i_16_1 < j_6_2 && j_6_2 < Seq#Length(arg_S))) {
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i].f < S[0..k][j].f might not hold. (bsearch.vpr@57.7--57.49) [184053]"}
+                        Heap[Seq#Index(arg_S, i_16_1), f_7] < Heap[Seq#Index(arg_S, j_6_2), f_7];
                     }
                     assume false;
                   }
@@ -1657,7 +1657,7 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 
                 // -- Inhaling postcondition
                   havoc QPMask;
-                  assert {:msg "  Method call might fail. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@57.7--57.49) [66046]"}
+                  assert {:msg "  Method call might fail. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@57.7--57.49) [184054]"}
                     (forall i_18_1: int, i_18_2: int ::
                     
                     (((i_18_1 != i_18_2 && (0 <= i_18_1 && i_18_1 < Seq#Length(arg_S))) && (0 <= i_18_2 && i_18_2 < Seq#Length(arg_S))) && NoPerm < arg_p) && NoPerm < arg_p ==> Seq#Index(arg_S, i_18_1) != Seq#Index(arg_S, i_18_2)
@@ -1668,12 +1668,12 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                       { Seq#Index(arg_S, i_18_1) } { Seq#Index(arg_S, i_18_1) }
                       (0 <= i_18_1 && i_18_1 < Seq#Length(arg_S)) && NoPerm < arg_p ==> qpRange12(Seq#Index(arg_S, i_18_1)) && invRecv12(Seq#Index(arg_S, i_18_1)) == i_18_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv12(o_4) }
-                      ((0 <= invRecv12(o_4) && invRecv12(o_4) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange12(o_4) ==> Seq#Index(arg_S, invRecv12(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv12(o_9) }
+                      ((0 <= invRecv12(o_9) && invRecv12(o_9) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange12(o_9) ==> Seq#Index(arg_S, invRecv12(o_9)) == o_9
                     );
                   // Check that permission expression is non-negative for all fields
-                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@57.7--57.49) [66047]"}
+                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@57.7--57.49) [184055]"}
                     (forall i_18_1: int ::
                     { Seq#Index(arg_S, i_18_1) } { Seq#Index(arg_S, i_18_1) }
                     0 <= i_18_1 && i_18_1 < Seq#Length(arg_S) ==> arg_p >= NoPerm
@@ -1686,13 +1686,13 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                     );
                   
                   // -- Define permissions
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      (((0 <= invRecv12(o_4) && invRecv12(o_4) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange12(o_4) ==> (NoPerm < arg_p ==> Seq#Index(arg_S, invRecv12(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + arg_p) && (!(((0 <= invRecv12(o_4) && invRecv12(o_4) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange12(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      (((0 <= invRecv12(o_9) && invRecv12(o_9) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange12(o_9) ==> (NoPerm < arg_p ==> Seq#Index(arg_S, invRecv12(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + arg_p) && (!(((0 <= invRecv12(o_9) && invRecv12(o_9) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange12(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   assume state(Heap, Mask);
@@ -1702,9 +1702,9 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                     assume Heap[Seq#Index(arg_S, index), f_7] == x;
                   }
                   if (index == -1) {
-                    assume (forall i_19: int ::
-                      { Seq#Index(arg_S, i_19) }
-                      0 <= i_19 && i_19 < Seq#Length(arg_S) ==> Heap[Seq#Index(arg_S, i_19), f_7] != x
+                    assume (forall i_19_1: int ::
+                      { Seq#Index(arg_S, i_19_1) }
+                      0 <= i_19_1 && i_19_1 < Seq#Length(arg_S) ==> Heap[Seq#Index(arg_S, i_19_1), f_7] != x
                     );
                   }
                   assume state(Heap, Mask);
@@ -1720,14 +1720,14 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 // -- Exhaling precondition
                   ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@59.7--59.51) [66048]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@59.7--59.51) [184056]"}
                     NoPerm < arg_p_1;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@59.7--59.51) [66049]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@59.7--59.51) [184057]"}
                     arg_p_1 < FullPerm;
                   if (*) {
-                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_20_1) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), j_8) && i_20_1 != j_8)) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i] != S[k..|S|][j] might not hold. (bsearch.vpr@59.7--59.51) [66050]"}
-                        Seq#Index(arg_S_1, i_20_1) != Seq#Index(arg_S_1, j_8);
+                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_20_2) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), j_8_2) && i_20_2 != j_8_2)) {
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i] != S[k..|S|][j] might not hold. (bsearch.vpr@59.7--59.51) [184058]"}
+                        Seq#Index(arg_S_1, i_20_2) != Seq#Index(arg_S_1, j_8_2);
                     }
                     assume false;
                   }
@@ -1738,21 +1738,21 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@59.7--59.51) [66051]"}
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@59.7--59.51) [184059]"}
                       (forall i_22_1: int ::
                       { Seq#Index(arg_S_1, i_22_1) } { Seq#Index(arg_S_1, i_22_1) }
                       (0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1)) && dummyFunction(Heap[Seq#Index(arg_S_1, i_22_1), f_7]) ==> arg_p_1 >= NoPerm
                     );
                   
                   // -- check if receiver arg_S[i] is injective
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@59.7--59.51) [66052]"}
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@59.7--59.51) [184060]"}
                       (forall i_22_1: int, i_22_2: int ::
                       { neverTriggered13(i_22_1), neverTriggered13(i_22_2) }
                       (((i_22_1 != i_22_2 && (0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1))) && (0 <= i_22_2 && i_22_2 < Seq#Length(arg_S_1))) && NoPerm < arg_p_1) && NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, i_22_1) != Seq#Index(arg_S_1, i_22_2)
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[k..|S|][i].f (bsearch.vpr@59.7--59.51) [66053]"}
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[k..|S|][i].f (bsearch.vpr@59.7--59.51) [184061]"}
                       (forall i_22_1: int ::
                       { Seq#Index(arg_S_1, i_22_1) } { Seq#Index(arg_S_1, i_22_1) }
                       0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1) ==> Mask[Seq#Index(arg_S_1, i_22_1), f_7] >= arg_p_1
@@ -1763,33 +1763,33 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                       { Seq#Index(arg_S_1, i_22_1) } { Seq#Index(arg_S_1, i_22_1) }
                       (0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1)) && NoPerm < arg_p_1 ==> qpRange13(Seq#Index(arg_S_1, i_22_1)) && invRecv13(Seq#Index(arg_S_1, i_22_1)) == i_22_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv13(o_4) }
-                      (0 <= invRecv13(o_4) && invRecv13(o_4) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange13(o_4)) ==> Seq#Index(arg_S_1, invRecv13(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv13(o_9) }
+                      (0 <= invRecv13(o_9) && invRecv13(o_9) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange13(o_9)) ==> Seq#Index(arg_S_1, invRecv13(o_9)) == o_9
                     );
                   
                   // -- assume permission updates for field f
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      ((0 <= invRecv13(o_4) && invRecv13(o_4) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange13(o_4)) ==> Seq#Index(arg_S_1, invRecv13(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - arg_p_1) && (!((0 <= invRecv13(o_4) && invRecv13(o_4) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange13(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      ((0 <= invRecv13(o_9) && invRecv13(o_9) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange13(o_9)) ==> Seq#Index(arg_S_1, invRecv13(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - arg_p_1) && (!((0 <= invRecv13(o_9) && invRecv13(o_9) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange13(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
                   
                   // -- assume permission updates for independent locations
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   if (*) {
-                    if (0 <= i_23 && (i_23 < j_10_2 && j_10_2 < Seq#Length(arg_S_1))) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i].f < S[k..|S|][j].f might not hold. (bsearch.vpr@59.7--59.51) [66054]"}
-                        Heap[Seq#Index(arg_S_1, i_23), f_7] < Heap[Seq#Index(arg_S_1, j_10_2), f_7];
+                    if (0 <= i_23_1 && (i_23_1 < j_10_2 && j_10_2 < Seq#Length(arg_S_1))) {
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i].f < S[k..|S|][j].f might not hold. (bsearch.vpr@59.7--59.51) [184062]"}
+                        Heap[Seq#Index(arg_S_1, i_23_1), f_7] < Heap[Seq#Index(arg_S_1, j_10_2), f_7];
                     }
                     assume false;
                   }
-                  assume (forall i_24_1_1: int, j_11_1: int ::
-                    { Seq#Index(arg_S_1, i_24_1_1), Seq#Index(arg_S_1, j_11_1) }
-                    0 <= i_24_1_1 && (i_24_1_1 < j_11_1 && j_11_1 < Seq#Length(arg_S_1)) ==> Heap[Seq#Index(arg_S_1, i_24_1_1), f_7] < Heap[Seq#Index(arg_S_1, j_11_1), f_7]
+                  assume (forall i_24_1_1: int, j_11_1_1: int ::
+                    { Seq#Index(arg_S_1, i_24_1_1), Seq#Index(arg_S_1, j_11_1_1) }
+                    0 <= i_24_1_1 && (i_24_1_1 < j_11_1_1 && j_11_1_1 < Seq#Length(arg_S_1)) ==> Heap[Seq#Index(arg_S_1, i_24_1_1), f_7] < Heap[Seq#Index(arg_S_1, j_11_1_1), f_7]
                   );
                   // Finish exhale
                   havoc ExhaleHeap;
@@ -1801,42 +1801,42 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 
                 // -- Inhaling postcondition
                   havoc QPMask;
-                  assert {:msg "  Method call might fail. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@59.7--59.51) [66055]"}
-                    (forall i_25: int, i_25_2: int ::
+                  assert {:msg "  Method call might fail. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@59.7--59.51) [184063]"}
+                    (forall i_25_1: int, i_25_2: int ::
                     
-                    (((i_25 != i_25_2 && (0 <= i_25 && i_25 < Seq#Length(arg_S_1))) && (0 <= i_25_2 && i_25_2 < Seq#Length(arg_S_1))) && NoPerm < arg_p_1) && NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, i_25) != Seq#Index(arg_S_1, i_25_2)
+                    (((i_25_1 != i_25_2 && (0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1))) && (0 <= i_25_2 && i_25_2 < Seq#Length(arg_S_1))) && NoPerm < arg_p_1) && NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, i_25_1) != Seq#Index(arg_S_1, i_25_2)
                   );
                   
                   // -- Define Inverse Function
-                    assume (forall i_25: int ::
-                      { Seq#Index(arg_S_1, i_25) } { Seq#Index(arg_S_1, i_25) }
-                      (0 <= i_25 && i_25 < Seq#Length(arg_S_1)) && NoPerm < arg_p_1 ==> qpRange14(Seq#Index(arg_S_1, i_25)) && invRecv14(Seq#Index(arg_S_1, i_25)) == i_25
+                    assume (forall i_25_1: int ::
+                      { Seq#Index(arg_S_1, i_25_1) } { Seq#Index(arg_S_1, i_25_1) }
+                      (0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1)) && NoPerm < arg_p_1 ==> qpRange14(Seq#Index(arg_S_1, i_25_1)) && invRecv14(Seq#Index(arg_S_1, i_25_1)) == i_25_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv14(o_4) }
-                      ((0 <= invRecv14(o_4) && invRecv14(o_4) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange14(o_4) ==> Seq#Index(arg_S_1, invRecv14(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv14(o_9) }
+                      ((0 <= invRecv14(o_9) && invRecv14(o_9) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange14(o_9) ==> Seq#Index(arg_S_1, invRecv14(o_9)) == o_9
                     );
                   // Check that permission expression is non-negative for all fields
-                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@59.7--59.51) [66056]"}
-                    (forall i_25: int ::
-                    { Seq#Index(arg_S_1, i_25) } { Seq#Index(arg_S_1, i_25) }
-                    0 <= i_25 && i_25 < Seq#Length(arg_S_1) ==> arg_p_1 >= NoPerm
+                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@59.7--59.51) [184064]"}
+                    (forall i_25_1: int ::
+                    { Seq#Index(arg_S_1, i_25_1) } { Seq#Index(arg_S_1, i_25_1) }
+                    0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1) ==> arg_p_1 >= NoPerm
                   );
                   
                   // -- Assume set of fields is nonNull
-                    assume (forall i_25: int ::
-                      { Seq#Index(arg_S_1, i_25) } { Seq#Index(arg_S_1, i_25) }
-                      (0 <= i_25 && i_25 < Seq#Length(arg_S_1)) && arg_p_1 > NoPerm ==> Seq#Index(arg_S_1, i_25) != null
+                    assume (forall i_25_1: int ::
+                      { Seq#Index(arg_S_1, i_25_1) } { Seq#Index(arg_S_1, i_25_1) }
+                      (0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1)) && arg_p_1 > NoPerm ==> Seq#Index(arg_S_1, i_25_1) != null
                     );
                   
                   // -- Define permissions
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      (((0 <= invRecv14(o_4) && invRecv14(o_4) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange14(o_4) ==> (NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, invRecv14(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + arg_p_1) && (!(((0 <= invRecv14(o_4) && invRecv14(o_4) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange14(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      (((0 <= invRecv14(o_9) && invRecv14(o_9) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange14(o_9) ==> (NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, invRecv14(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + arg_p_1) && (!(((0 <= invRecv14(o_9) && invRecv14(o_9) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange14(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   assume state(Heap, Mask);
@@ -1846,9 +1846,9 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                     assume Heap[Seq#Index(arg_S_1, index), f_7] == x;
                   }
                   if (index == -1) {
-                    assume (forall i_26: int ::
-                      { Seq#Index(arg_S_1, i_26) }
-                      0 <= i_26 && i_26 < Seq#Length(arg_S_1) ==> Heap[Seq#Index(arg_S_1, i_26), f_7] != x
+                    assume (forall i_26_1: int ::
+                      { Seq#Index(arg_S_1, i_26_1) }
+                      0 <= i_26_1 && i_26_1 < Seq#Length(arg_S_1) ==> Heap[Seq#Index(arg_S_1, i_26_1), f_7] != x
                     );
                   }
                   assume state(Heap, Mask);
@@ -1870,21 +1870,21 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. Fraction p might be negative. (bsearch.vpr@43.11--43.71) [66057]"}
+      assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. Fraction p might be negative. (bsearch.vpr@43.11--43.71) [184065]"}
         (forall i_10_1: int ::
         { Seq#Index(S, i_10_1) } { Seq#Index(S, i_10_1) }
         (0 <= i_10_1 && i_10_1 < Seq#Length(S)) && dummyFunction(Heap[Seq#Index(S, i_10_1), f_7]) ==> p_1 >= NoPerm
       );
     
     // -- check if receiver S[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@43.11--43.71) [66058]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@43.11--43.71) [184066]"}
         (forall i_10_1: int, i_10_2: int ::
         { neverTriggered10(i_10_1), neverTriggered10(i_10_2) }
         (((i_10_1 != i_10_2 && (0 <= i_10_1 && i_10_1 < Seq#Length(S))) && (0 <= i_10_2 && i_10_2 < Seq#Length(S))) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_10_1) != Seq#Index(S, i_10_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. There might be insufficient permission to access S[i].f (bsearch.vpr@43.11--43.71) [66059]"}
+      assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. There might be insufficient permission to access S[i].f (bsearch.vpr@43.11--43.71) [184067]"}
         (forall i_10_1: int ::
         { Seq#Index(S, i_10_1) } { Seq#Index(S, i_10_1) }
         0 <= i_10_1 && i_10_1 < Seq#Length(S) ==> Mask[Seq#Index(S, i_10_1), f_7] >= p_1
@@ -1895,35 +1895,35 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
         { Seq#Index(S, i_10_1) } { Seq#Index(S, i_10_1) }
         (0 <= i_10_1 && i_10_1 < Seq#Length(S)) && NoPerm < p_1 ==> qpRange10(Seq#Index(S, i_10_1)) && invRecv10(Seq#Index(S, i_10_1)) == i_10_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv10(o_4) }
-        (0 <= invRecv10(o_4) && invRecv10(o_4) < Seq#Length(S)) && (NoPerm < p_1 && qpRange10(o_4)) ==> Seq#Index(S, invRecv10(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv10(o_9) }
+        (0 <= invRecv10(o_9) && invRecv10(o_9) < Seq#Length(S)) && (NoPerm < p_1 && qpRange10(o_9)) ==> Seq#Index(S, invRecv10(o_9)) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((0 <= invRecv10(o_4) && invRecv10(o_4) < Seq#Length(S)) && (NoPerm < p_1 && qpRange10(o_4)) ==> Seq#Index(S, invRecv10(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - p_1) && (!((0 <= invRecv10(o_4) && invRecv10(o_4) < Seq#Length(S)) && (NoPerm < p_1 && qpRange10(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((0 <= invRecv10(o_9) && invRecv10(o_9) < Seq#Length(S)) && (NoPerm < p_1 && qpRange10(o_9)) ==> Seq#Index(S, invRecv10(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - p_1) && (!((0 <= invRecv10(o_9) && invRecv10(o_9) < Seq#Length(S)) && (NoPerm < p_1 && qpRange10(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
-    assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. Assertion -1 <= index might not hold. (bsearch.vpr@44.11--44.37) [66060]"}
+    assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. Assertion -1 <= index might not hold. (bsearch.vpr@44.11--44.37) [184068]"}
       -1 <= index;
-    assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. Assertion index < |S| might not hold. (bsearch.vpr@44.11--44.37) [66061]"}
+    assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. Assertion index < |S| might not hold. (bsearch.vpr@44.11--44.37) [184069]"}
       index < Seq#Length(S);
     if (0 <= index && index < Seq#Length(S)) {
-      assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. Assertion S[index].f == x might not hold. (bsearch.vpr@45.11--45.56) [66062]"}
+      assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. Assertion S[index].f == x might not hold. (bsearch.vpr@45.11--45.56) [184070]"}
         Heap[Seq#Index(S, index), f_7] == x;
     }
     if (index == -1) {
       if (*) {
         if (0 <= i_11_1 && i_11_1 < Seq#Length(S)) {
-          assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. Assertion S[i].f != x might not hold. (bsearch.vpr@46.11--46.86) [66063]"}
+          assert {:msg "  Postcondition of bfind_fixed_ineq might not hold. Assertion S[i].f != x might not hold. (bsearch.vpr@46.11--46.86) [184071]"}
             Heap[Seq#Index(S, i_11_1), f_7] != x;
         }
         assume false;
@@ -1946,18 +1946,18 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
 procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   modifies Heap, Mask;
 {
-  var i_16: int;
-  var j_18: int;
-  var i_18: int;
+  var i_9: int;
+  var j_7: int;
+  var i_10: int;
   var QPMask: MaskType;
-  var j_12: int;
-  var i_13: int;
+  var j_22: int;
+  var i_17: int;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_20: int;
-  var i_22: int;
+  var i_11: int;
+  var i_12: int;
   var k: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -1968,13 +1968,13 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
   var i_13_1: int;
   var j_4_1: int;
   var i_16_1: int;
-  var j_6_1: int;
+  var j_6_2: int;
   var ExhaleHeap: HeapType;
   var arg_S_1: (Seq Ref);
   var arg_p_1: Perm;
-  var i_20_1: int;
-  var j_8: int;
-  var i_23: int;
+  var i_20_2: int;
+  var j_8_2: int;
+  var i_23_1: int;
   var j_10_2: int;
   var i_11_1: int;
   
@@ -1990,15 +1990,15 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
     
     // -- Check definedness of (forall i: Int, j: Int :: { (i in [0..|S|)), (j in [0..|S|)) } { (i in [0..|S|)), S[j] } { (j in [0..|S|)), S[i] } { S[i], S[j] } (i in [0..|S|)) && ((j in [0..|S|)) && i != j) ==> S[i] != S[j])
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_16) && (Seq#Contains(Seq#Range(0, Seq#Length(S)), j_18) && i_16 != j_18)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@70.12--70.94) [66064]"}
-            i_16 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@70.12--70.94) [66065]"}
-            i_16 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@70.12--70.94) [66066]"}
-            j_18 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@70.12--70.94) [66067]"}
-            j_18 < Seq#Length(S);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_9) && (Seq#Contains(Seq#Range(0, Seq#Length(S)), j_7) && i_9 != j_7)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@70.12--70.94) [184072]"}
+            i_9 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@70.12--70.94) [184073]"}
+            i_9 < Seq#Length(S);
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@70.12--70.94) [184074]"}
+            j_7 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@70.12--70.94) [184075]"}
+            j_7 < Seq#Length(S);
         }
         assume false;
       }
@@ -2010,51 +2010,51 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
     
     // -- Check definedness of (forall i: Int :: { S[i] } (i in [0..|S|)) ==> acc(S[i].f, p))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_18)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@71.12--71.68) [66068]"}
-            i_18 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@71.12--71.68) [66069]"}
-            i_18 < Seq#Length(S);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@71.12--71.68) [184076]"}
+            i_10 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@71.12--71.68) [184077]"}
+            i_10 < Seq#Length(S);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@71.12--71.68) [66070]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@71.12--71.68) [184078]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_1)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_3) != Seq#Index(S, i_3_1)
+      (((i_3_2 != i_3_3 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_3)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_3_2) != Seq#Index(S, i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(S, i_3) } { Seq#Index(S, i_3) }
-        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3) && NoPerm < p_1 ==> qpRange15(Seq#Index(S, i_3)) && invRecv15(Seq#Index(S, i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(S, i_3_2) } { Seq#Index(S, i_3_2) }
+        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2) && NoPerm < p_1 ==> qpRange15(Seq#Index(S, i_3_2)) && invRecv15(Seq#Index(S, i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv15(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv15(o_4)) && NoPerm < p_1) && qpRange15(o_4) ==> Seq#Index(S, invRecv15(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv15(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv15(o_9)) && NoPerm < p_1) && qpRange15(o_9) ==> Seq#Index(S, invRecv15(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@71.12--71.68) [66071]"}
-      (forall i_3: int ::
-      { Seq#Index(S, i_3) } { Seq#Index(S, i_3) }
-      Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3) ==> p_1 >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@71.12--71.68) [184079]"}
+      (forall i_3_2: int ::
+      { Seq#Index(S, i_3_2) } { Seq#Index(S, i_3_2) }
+      Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2) ==> p_1 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(S, i_3) } { Seq#Index(S, i_3) }
-        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3) && p_1 > NoPerm ==> Seq#Index(S, i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(S, i_3_2) } { Seq#Index(S, i_3_2) }
+        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2) && p_1 > NoPerm ==> Seq#Index(S, i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv15(o_4)) && NoPerm < p_1) && qpRange15(o_4) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv15(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv15(o_4)) && NoPerm < p_1) && qpRange15(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv15(o_9)) && NoPerm < p_1) && qpRange15(o_9) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv15(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv15(o_9)) && NoPerm < p_1) && qpRange15(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -2062,25 +2062,25 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
     
     // -- Check definedness of (forall i: Int, j: Int :: { S[i], S[j] } (i in [0..j)) && (j in [i..|S|)) ==> S[i].f < S[j].f)
       if (*) {
-        if (Seq#Contains(Seq#Range(0, j_12), i_13) && Seq#Contains(Seq#Range(i_13, Seq#Length(S)), j_12)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@72.12--72.98) [66072]"}
-            i_13 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@72.12--72.98) [66073]"}
-            i_13 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@72.12--72.98) [66074]"}
-            HasDirectPerm(Mask, Seq#Index(S, i_13), f_7);
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@72.12--72.98) [66075]"}
-            j_12 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@72.12--72.98) [66076]"}
-            j_12 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[j].f (bsearch.vpr@72.12--72.98) [66077]"}
-            HasDirectPerm(Mask, Seq#Index(S, j_12), f_7);
+        if (Seq#Contains(Seq#Range(0, j_22), i_17) && Seq#Contains(Seq#Range(i_17, Seq#Length(S)), j_22)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@72.12--72.98) [184080]"}
+            i_17 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@72.12--72.98) [184081]"}
+            i_17 < Seq#Length(S);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@72.12--72.98) [184082]"}
+            HasDirectPerm(Mask, Seq#Index(S, i_17), f_7);
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@72.12--72.98) [184083]"}
+            j_22 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@72.12--72.98) [184084]"}
+            j_22 < Seq#Length(S);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[j].f (bsearch.vpr@72.12--72.98) [184085]"}
+            HasDirectPerm(Mask, Seq#Index(S, j_22), f_7);
         }
         assume false;
       }
-    assume (forall i_5: int, j_3_1: int ::
-      { Seq#Index(S, i_5), Seq#Index(S, j_3_1) }
-      Seq#Contains(Seq#Range(0, j_3_1), i_5) && Seq#Contains(Seq#Range(i_5, Seq#Length(S)), j_3_1) ==> Heap[Seq#Index(S, i_5), f_7] < Heap[Seq#Index(S, j_3_1), f_7]
+    assume (forall i_5_1: int, j_3: int ::
+      { Seq#Index(S, i_5_1), Seq#Index(S, j_3) }
+      Seq#Contains(Seq#Range(0, j_3), i_5_1) && Seq#Contains(Seq#Range(i_5_1, Seq#Length(S)), j_3) ==> Heap[Seq#Index(S, i_5_1), f_7] < Heap[Seq#Index(S, j_3), f_7]
     );
     assume state(Heap, Mask);
   
@@ -2097,16 +2097,16 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
     
     // -- Check definedness of (forall i: Int :: { S[i] } (i in [0..|S|)) ==> acc(S[i].f, p))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_20)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@73.11--73.67) [66078]"}
-            i_20 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@73.11--73.67) [66079]"}
-            i_20 < Seq#Length(S);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_11)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@73.11--73.67) [184086]"}
+            i_11 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@73.11--73.67) [184087]"}
+            i_11 < Seq#Length(S);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@73.11--73.67) [66080]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@73.11--73.67) [184088]"}
       (forall i_7_1: int, i_7_2: int ::
       
       (((i_7_1 != i_7_2 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_1)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_7_1) != Seq#Index(S, i_7_2)
@@ -2117,12 +2117,12 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
         { Seq#Index(S, i_7_1) } { Seq#Index(S, i_7_1) }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_1) && NoPerm < p_1 ==> qpRange16(Seq#Index(S, i_7_1)) && invRecv16(Seq#Index(S, i_7_1)) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv16(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv16(o_4)) && NoPerm < p_1) && qpRange16(o_4) ==> Seq#Index(S, invRecv16(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv16(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv16(o_9)) && NoPerm < p_1) && qpRange16(o_9) ==> Seq#Index(S, invRecv16(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@73.11--73.67) [66081]"}
+    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@73.11--73.67) [184089]"}
       (forall i_7_1: int ::
       { Seq#Index(S, i_7_1) } { Seq#Index(S, i_7_1) }
       Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_1) ==> p_1 >= NoPerm
@@ -2135,13 +2135,13 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv16(o_4)) && NoPerm < p_1) && qpRange16(o_4) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv16(o_4)) == o_4) && QPMask[o_4, f_7] == PostMask[o_4, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv16(o_4)) && NoPerm < p_1) && qpRange16(o_4)) ==> QPMask[o_4, f_7] == PostMask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv16(o_9)) && NoPerm < p_1) && qpRange16(o_9) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv16(o_9)) == o_9) && QPMask[o_9, f_7] == PostMask[o_9, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv16(o_9)) && NoPerm < p_1) && qpRange16(o_9)) ==> QPMask[o_9, f_7] == PostMask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -2151,11 +2151,11 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
     if (Seq#Contains(Seq#Range(0, Seq#Length(S)), index)) {
       
       // -- Check definedness of S[index].f == x
-        assert {:msg "  Contract might not be well-formed. Index S[index] into S might be negative. (bsearch.vpr@75.11--75.48) [66082]"}
+        assert {:msg "  Contract might not be well-formed. Index S[index] into S might be negative. (bsearch.vpr@75.11--75.48) [184090]"}
           index >= 0;
-        assert {:msg "  Contract might not be well-formed. Index S[index] into S might exceed sequence length. (bsearch.vpr@75.11--75.48) [66083]"}
+        assert {:msg "  Contract might not be well-formed. Index S[index] into S might exceed sequence length. (bsearch.vpr@75.11--75.48) [184091]"}
           index < Seq#Length(S);
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[index].f (bsearch.vpr@75.11--75.48) [66084]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[index].f (bsearch.vpr@75.11--75.48) [184092]"}
           HasDirectPerm(PostMask, Seq#Index(S, index), f_7);
       assume PostHeap[Seq#Index(S, index), f_7] == x;
     }
@@ -2164,13 +2164,13 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
       
       // -- Check definedness of (forall i: Int :: { S[i] } (i in [0..|S|)) ==> S[i].f != x)
         if (*) {
-          if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_22)) {
-            assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@76.11--76.82) [66085]"}
-              i_22 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@76.11--76.82) [66086]"}
-              i_22 < Seq#Length(S);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@76.11--76.82) [66087]"}
-              HasDirectPerm(PostMask, Seq#Index(S, i_22), f_7);
+          if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_12)) {
+            assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@76.11--76.82) [184093]"}
+              i_12 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@76.11--76.82) [184094]"}
+              i_12 < Seq#Length(S);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@76.11--76.82) [184095]"}
+              HasDirectPerm(PostMask, Seq#Index(S, i_12), f_7);
           }
           assume false;
         }
@@ -2198,9 +2198,9 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
           // -- Translating statement: index := (x == S[0].f ? 0 : -1) -- bsearch.vpr@81.5--81.34
             
             // -- Check definedness of (x == S[0].f ? 0 : -1)
-              assert {:msg "  Assignment might fail. Index S[0] into S might exceed sequence length. (bsearch.vpr@81.5--81.34) [66088]"}
+              assert {:msg "  Assignment might fail. Index S[0] into S might exceed sequence length. (bsearch.vpr@81.5--81.34) [184096]"}
                 0 < Seq#Length(S);
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access S[0].f (bsearch.vpr@81.5--81.34) [66089]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access S[0].f (bsearch.vpr@81.5--81.34) [184097]"}
                 HasDirectPerm(Mask, Seq#Index(S, 0), f_7);
             index := (if x == Heap[Seq#Index(S, 0), f_7] then 0 else -1);
             assume state(Heap, Mask);
@@ -2215,11 +2215,11 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
           // -- Translating statement: if (x < S[k].f) -- bsearch.vpr@86.5--91.6
             
             // -- Check definedness of x < S[k].f
-              assert {:msg "  Conditional statement might fail. Index S[k] into S might be negative. (bsearch.vpr@86.9--86.19) [66090]"}
+              assert {:msg "  Conditional statement might fail. Index S[k] into S might be negative. (bsearch.vpr@86.9--86.19) [184098]"}
                 k >= 0;
-              assert {:msg "  Conditional statement might fail. Index S[k] into S might exceed sequence length. (bsearch.vpr@86.9--86.19) [66091]"}
+              assert {:msg "  Conditional statement might fail. Index S[k] into S might exceed sequence length. (bsearch.vpr@86.9--86.19) [184099]"}
                 k < Seq#Length(S);
-              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access S[k].f (bsearch.vpr@86.9--86.19) [66092]"}
+              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access S[k].f (bsearch.vpr@86.9--86.19) [184100]"}
                 HasDirectPerm(Mask, Seq#Index(S, k), f_7);
             if (x < Heap[Seq#Index(S, k), f_7]) {
               
@@ -2232,13 +2232,13 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                 // -- Exhaling precondition
                   ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@87.7--87.49) [66093]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@87.7--87.49) [184101]"}
                     NoPerm < arg_p;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@87.7--87.49) [66094]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@87.7--87.49) [184102]"}
                     arg_p < FullPerm;
                   if (*) {
                     if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_13_1) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), j_4_1) && i_13_1 != j_4_1)) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i] != S[0..k][j] might not hold. (bsearch.vpr@87.7--87.49) [66095]"}
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i] != S[0..k][j] might not hold. (bsearch.vpr@87.7--87.49) [184103]"}
                         Seq#Index(arg_S, i_13_1) != Seq#Index(arg_S, j_4_1);
                     }
                     assume false;
@@ -2250,52 +2250,52 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@87.7--87.49) [66096]"}
-                      (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Seq#Index(arg_S, i_15) }
-                      (0 <= i_15 && i_15 < Seq#Length(arg_S)) && dummyFunction(Heap[Seq#Index(arg_S, i_15), f_7]) ==> arg_p >= NoPerm
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@87.7--87.49) [184104]"}
+                      (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Seq#Index(arg_S, i_15_1) }
+                      (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S)) && dummyFunction(Heap[Seq#Index(arg_S, i_15_1), f_7]) ==> arg_p >= NoPerm
                     );
                   
                   // -- check if receiver arg_S[i] is injective
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@87.7--87.49) [66097]"}
-                      (forall i_15: int, i_15_1: int ::
-                      { neverTriggered18(i_15), neverTriggered18(i_15_1) }
-                      (((i_15 != i_15_1 && (0 <= i_15 && i_15 < Seq#Length(arg_S))) && (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S))) && NoPerm < arg_p) && NoPerm < arg_p ==> Seq#Index(arg_S, i_15) != Seq#Index(arg_S, i_15_1)
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@87.7--87.49) [184105]"}
+                      (forall i_15_1: int, i_15_2: int ::
+                      { neverTriggered18(i_15_1), neverTriggered18(i_15_2) }
+                      (((i_15_1 != i_15_2 && (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S))) && (0 <= i_15_2 && i_15_2 < Seq#Length(arg_S))) && NoPerm < arg_p) && NoPerm < arg_p ==> Seq#Index(arg_S, i_15_1) != Seq#Index(arg_S, i_15_2)
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[0..k][i].f (bsearch.vpr@87.7--87.49) [66098]"}
-                      (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Seq#Index(arg_S, i_15) }
-                      0 <= i_15 && i_15 < Seq#Length(arg_S) ==> Mask[Seq#Index(arg_S, i_15), f_7] >= arg_p
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[0..k][i].f (bsearch.vpr@87.7--87.49) [184106]"}
+                      (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Seq#Index(arg_S, i_15_1) }
+                      0 <= i_15_1 && i_15_1 < Seq#Length(arg_S) ==> Mask[Seq#Index(arg_S, i_15_1), f_7] >= arg_p
                     );
                   
                   // -- assumptions for inverse of receiver arg_S[i]
-                    assume (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Seq#Index(arg_S, i_15) }
-                      (0 <= i_15 && i_15 < Seq#Length(arg_S)) && NoPerm < arg_p ==> qpRange18(Seq#Index(arg_S, i_15)) && invRecv18(Seq#Index(arg_S, i_15)) == i_15
+                    assume (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Seq#Index(arg_S, i_15_1) }
+                      (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S)) && NoPerm < arg_p ==> qpRange18(Seq#Index(arg_S, i_15_1)) && invRecv18(Seq#Index(arg_S, i_15_1)) == i_15_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv18(o_4) }
-                      (0 <= invRecv18(o_4) && invRecv18(o_4) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange18(o_4)) ==> Seq#Index(arg_S, invRecv18(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv18(o_9) }
+                      (0 <= invRecv18(o_9) && invRecv18(o_9) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange18(o_9)) ==> Seq#Index(arg_S, invRecv18(o_9)) == o_9
                     );
                   
                   // -- assume permission updates for field f
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      ((0 <= invRecv18(o_4) && invRecv18(o_4) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange18(o_4)) ==> Seq#Index(arg_S, invRecv18(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - arg_p) && (!((0 <= invRecv18(o_4) && invRecv18(o_4) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange18(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      ((0 <= invRecv18(o_9) && invRecv18(o_9) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange18(o_9)) ==> Seq#Index(arg_S, invRecv18(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - arg_p) && (!((0 <= invRecv18(o_9) && invRecv18(o_9) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange18(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
                   
                   // -- assume permission updates for independent locations
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   if (*) {
-                    if (0 <= i_16_1 && (i_16_1 < j_6_1 && j_6_1 < Seq#Length(arg_S))) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i].f < S[0..k][j].f might not hold. (bsearch.vpr@87.7--87.49) [66099]"}
-                        Heap[Seq#Index(arg_S, i_16_1), f_7] < Heap[Seq#Index(arg_S, j_6_1), f_7];
+                    if (0 <= i_16_1 && (i_16_1 < j_6_2 && j_6_2 < Seq#Length(arg_S))) {
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i].f < S[0..k][j].f might not hold. (bsearch.vpr@87.7--87.49) [184107]"}
+                        Heap[Seq#Index(arg_S, i_16_1), f_7] < Heap[Seq#Index(arg_S, j_6_2), f_7];
                     }
                     assume false;
                   }
@@ -2313,7 +2313,7 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                 
                 // -- Inhaling postcondition
                   havoc QPMask;
-                  assert {:msg "  Method call might fail. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@87.7--87.49) [66100]"}
+                  assert {:msg "  Method call might fail. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@87.7--87.49) [184108]"}
                     (forall i_18_1: int, i_18_2: int ::
                     
                     (((i_18_1 != i_18_2 && (0 <= i_18_1 && i_18_1 < Seq#Length(arg_S))) && (0 <= i_18_2 && i_18_2 < Seq#Length(arg_S))) && NoPerm < arg_p) && NoPerm < arg_p ==> Seq#Index(arg_S, i_18_1) != Seq#Index(arg_S, i_18_2)
@@ -2324,12 +2324,12 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                       { Seq#Index(arg_S, i_18_1) } { Seq#Index(arg_S, i_18_1) }
                       (0 <= i_18_1 && i_18_1 < Seq#Length(arg_S)) && NoPerm < arg_p ==> qpRange19(Seq#Index(arg_S, i_18_1)) && invRecv19(Seq#Index(arg_S, i_18_1)) == i_18_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv19(o_4) }
-                      ((0 <= invRecv19(o_4) && invRecv19(o_4) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange19(o_4) ==> Seq#Index(arg_S, invRecv19(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv19(o_9) }
+                      ((0 <= invRecv19(o_9) && invRecv19(o_9) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange19(o_9) ==> Seq#Index(arg_S, invRecv19(o_9)) == o_9
                     );
                   // Check that permission expression is non-negative for all fields
-                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@87.7--87.49) [66101]"}
+                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@87.7--87.49) [184109]"}
                     (forall i_18_1: int ::
                     { Seq#Index(arg_S, i_18_1) } { Seq#Index(arg_S, i_18_1) }
                     0 <= i_18_1 && i_18_1 < Seq#Length(arg_S) ==> arg_p >= NoPerm
@@ -2342,13 +2342,13 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                     );
                   
                   // -- Define permissions
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      (((0 <= invRecv19(o_4) && invRecv19(o_4) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange19(o_4) ==> (NoPerm < arg_p ==> Seq#Index(arg_S, invRecv19(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + arg_p) && (!(((0 <= invRecv19(o_4) && invRecv19(o_4) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange19(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      (((0 <= invRecv19(o_9) && invRecv19(o_9) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange19(o_9) ==> (NoPerm < arg_p ==> Seq#Index(arg_S, invRecv19(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + arg_p) && (!(((0 <= invRecv19(o_9) && invRecv19(o_9) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange19(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   assume state(Heap, Mask);
@@ -2358,9 +2358,9 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                     assume Heap[Seq#Index(arg_S, index), f_7] == x;
                   }
                   if (index == -1) {
-                    assume (forall i_19: int ::
-                      { Seq#Index(arg_S, i_19) }
-                      0 <= i_19 && i_19 < Seq#Length(arg_S) ==> Heap[Seq#Index(arg_S, i_19), f_7] != x
+                    assume (forall i_19_1: int ::
+                      { Seq#Index(arg_S, i_19_1) }
+                      0 <= i_19_1 && i_19_1 < Seq#Length(arg_S) ==> Heap[Seq#Index(arg_S, i_19_1), f_7] != x
                     );
                   }
                   assume state(Heap, Mask);
@@ -2376,14 +2376,14 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                 // -- Exhaling precondition
                   ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@89.7--89.51) [66102]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@89.7--89.51) [184110]"}
                     NoPerm < arg_p_1;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@89.7--89.51) [66103]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@89.7--89.51) [184111]"}
                     arg_p_1 < FullPerm;
                   if (*) {
-                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_20_1) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), j_8) && i_20_1 != j_8)) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i] != S[k..|S|][j] might not hold. (bsearch.vpr@89.7--89.51) [66104]"}
-                        Seq#Index(arg_S_1, i_20_1) != Seq#Index(arg_S_1, j_8);
+                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_20_2) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), j_8_2) && i_20_2 != j_8_2)) {
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i] != S[k..|S|][j] might not hold. (bsearch.vpr@89.7--89.51) [184112]"}
+                        Seq#Index(arg_S_1, i_20_2) != Seq#Index(arg_S_1, j_8_2);
                     }
                     assume false;
                   }
@@ -2394,21 +2394,21 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@89.7--89.51) [66105]"}
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@89.7--89.51) [184113]"}
                       (forall i_22_1: int ::
                       { Seq#Index(arg_S_1, i_22_1) } { Seq#Index(arg_S_1, i_22_1) }
                       (0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1)) && dummyFunction(Heap[Seq#Index(arg_S_1, i_22_1), f_7]) ==> arg_p_1 >= NoPerm
                     );
                   
                   // -- check if receiver arg_S[i] is injective
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@89.7--89.51) [66106]"}
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@89.7--89.51) [184114]"}
                       (forall i_22_1: int, i_22_2: int ::
                       { neverTriggered20(i_22_1), neverTriggered20(i_22_2) }
                       (((i_22_1 != i_22_2 && (0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1))) && (0 <= i_22_2 && i_22_2 < Seq#Length(arg_S_1))) && NoPerm < arg_p_1) && NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, i_22_1) != Seq#Index(arg_S_1, i_22_2)
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[k..|S|][i].f (bsearch.vpr@89.7--89.51) [66107]"}
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[k..|S|][i].f (bsearch.vpr@89.7--89.51) [184115]"}
                       (forall i_22_1: int ::
                       { Seq#Index(arg_S_1, i_22_1) } { Seq#Index(arg_S_1, i_22_1) }
                       0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1) ==> Mask[Seq#Index(arg_S_1, i_22_1), f_7] >= arg_p_1
@@ -2419,33 +2419,33 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                       { Seq#Index(arg_S_1, i_22_1) } { Seq#Index(arg_S_1, i_22_1) }
                       (0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1)) && NoPerm < arg_p_1 ==> qpRange20(Seq#Index(arg_S_1, i_22_1)) && invRecv20(Seq#Index(arg_S_1, i_22_1)) == i_22_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv20(o_4) }
-                      (0 <= invRecv20(o_4) && invRecv20(o_4) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange20(o_4)) ==> Seq#Index(arg_S_1, invRecv20(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv20(o_9) }
+                      (0 <= invRecv20(o_9) && invRecv20(o_9) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange20(o_9)) ==> Seq#Index(arg_S_1, invRecv20(o_9)) == o_9
                     );
                   
                   // -- assume permission updates for field f
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      ((0 <= invRecv20(o_4) && invRecv20(o_4) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange20(o_4)) ==> Seq#Index(arg_S_1, invRecv20(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - arg_p_1) && (!((0 <= invRecv20(o_4) && invRecv20(o_4) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange20(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      ((0 <= invRecv20(o_9) && invRecv20(o_9) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange20(o_9)) ==> Seq#Index(arg_S_1, invRecv20(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - arg_p_1) && (!((0 <= invRecv20(o_9) && invRecv20(o_9) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange20(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
                   
                   // -- assume permission updates for independent locations
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   if (*) {
-                    if (0 <= i_23 && (i_23 < j_10_2 && j_10_2 < Seq#Length(arg_S_1))) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i].f < S[k..|S|][j].f might not hold. (bsearch.vpr@89.7--89.51) [66108]"}
-                        Heap[Seq#Index(arg_S_1, i_23), f_7] < Heap[Seq#Index(arg_S_1, j_10_2), f_7];
+                    if (0 <= i_23_1 && (i_23_1 < j_10_2 && j_10_2 < Seq#Length(arg_S_1))) {
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i].f < S[k..|S|][j].f might not hold. (bsearch.vpr@89.7--89.51) [184116]"}
+                        Heap[Seq#Index(arg_S_1, i_23_1), f_7] < Heap[Seq#Index(arg_S_1, j_10_2), f_7];
                     }
                     assume false;
                   }
-                  assume (forall i_24_1_1: int, j_11_1: int ::
-                    { Seq#Index(arg_S_1, i_24_1_1), Seq#Index(arg_S_1, j_11_1) }
-                    0 <= i_24_1_1 && (i_24_1_1 < j_11_1 && j_11_1 < Seq#Length(arg_S_1)) ==> Heap[Seq#Index(arg_S_1, i_24_1_1), f_7] < Heap[Seq#Index(arg_S_1, j_11_1), f_7]
+                  assume (forall i_24_1_1: int, j_11_1_1: int ::
+                    { Seq#Index(arg_S_1, i_24_1_1), Seq#Index(arg_S_1, j_11_1_1) }
+                    0 <= i_24_1_1 && (i_24_1_1 < j_11_1_1 && j_11_1_1 < Seq#Length(arg_S_1)) ==> Heap[Seq#Index(arg_S_1, i_24_1_1), f_7] < Heap[Seq#Index(arg_S_1, j_11_1_1), f_7]
                   );
                   // Finish exhale
                   havoc ExhaleHeap;
@@ -2457,42 +2457,42 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                 
                 // -- Inhaling postcondition
                   havoc QPMask;
-                  assert {:msg "  Method call might fail. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@89.7--89.51) [66109]"}
-                    (forall i_25: int, i_25_2: int ::
+                  assert {:msg "  Method call might fail. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@89.7--89.51) [184117]"}
+                    (forall i_25_1: int, i_25_2: int ::
                     
-                    (((i_25 != i_25_2 && (0 <= i_25 && i_25 < Seq#Length(arg_S_1))) && (0 <= i_25_2 && i_25_2 < Seq#Length(arg_S_1))) && NoPerm < arg_p_1) && NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, i_25) != Seq#Index(arg_S_1, i_25_2)
+                    (((i_25_1 != i_25_2 && (0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1))) && (0 <= i_25_2 && i_25_2 < Seq#Length(arg_S_1))) && NoPerm < arg_p_1) && NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, i_25_1) != Seq#Index(arg_S_1, i_25_2)
                   );
                   
                   // -- Define Inverse Function
-                    assume (forall i_25: int ::
-                      { Seq#Index(arg_S_1, i_25) } { Seq#Index(arg_S_1, i_25) }
-                      (0 <= i_25 && i_25 < Seq#Length(arg_S_1)) && NoPerm < arg_p_1 ==> qpRange21(Seq#Index(arg_S_1, i_25)) && invRecv21(Seq#Index(arg_S_1, i_25)) == i_25
+                    assume (forall i_25_1: int ::
+                      { Seq#Index(arg_S_1, i_25_1) } { Seq#Index(arg_S_1, i_25_1) }
+                      (0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1)) && NoPerm < arg_p_1 ==> qpRange21(Seq#Index(arg_S_1, i_25_1)) && invRecv21(Seq#Index(arg_S_1, i_25_1)) == i_25_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv21(o_4) }
-                      ((0 <= invRecv21(o_4) && invRecv21(o_4) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange21(o_4) ==> Seq#Index(arg_S_1, invRecv21(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv21(o_9) }
+                      ((0 <= invRecv21(o_9) && invRecv21(o_9) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange21(o_9) ==> Seq#Index(arg_S_1, invRecv21(o_9)) == o_9
                     );
                   // Check that permission expression is non-negative for all fields
-                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@89.7--89.51) [66110]"}
-                    (forall i_25: int ::
-                    { Seq#Index(arg_S_1, i_25) } { Seq#Index(arg_S_1, i_25) }
-                    0 <= i_25 && i_25 < Seq#Length(arg_S_1) ==> arg_p_1 >= NoPerm
+                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@89.7--89.51) [184118]"}
+                    (forall i_25_1: int ::
+                    { Seq#Index(arg_S_1, i_25_1) } { Seq#Index(arg_S_1, i_25_1) }
+                    0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1) ==> arg_p_1 >= NoPerm
                   );
                   
                   // -- Assume set of fields is nonNull
-                    assume (forall i_25: int ::
-                      { Seq#Index(arg_S_1, i_25) } { Seq#Index(arg_S_1, i_25) }
-                      (0 <= i_25 && i_25 < Seq#Length(arg_S_1)) && arg_p_1 > NoPerm ==> Seq#Index(arg_S_1, i_25) != null
+                    assume (forall i_25_1: int ::
+                      { Seq#Index(arg_S_1, i_25_1) } { Seq#Index(arg_S_1, i_25_1) }
+                      (0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1)) && arg_p_1 > NoPerm ==> Seq#Index(arg_S_1, i_25_1) != null
                     );
                   
                   // -- Define permissions
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      (((0 <= invRecv21(o_4) && invRecv21(o_4) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange21(o_4) ==> (NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, invRecv21(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + arg_p_1) && (!(((0 <= invRecv21(o_4) && invRecv21(o_4) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange21(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      (((0 <= invRecv21(o_9) && invRecv21(o_9) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange21(o_9) ==> (NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, invRecv21(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + arg_p_1) && (!(((0 <= invRecv21(o_9) && invRecv21(o_9) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange21(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   assume state(Heap, Mask);
@@ -2502,9 +2502,9 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                     assume Heap[Seq#Index(arg_S_1, index), f_7] == x;
                   }
                   if (index == -1) {
-                    assume (forall i_26: int ::
-                      { Seq#Index(arg_S_1, i_26) }
-                      0 <= i_26 && i_26 < Seq#Length(arg_S_1) ==> Heap[Seq#Index(arg_S_1, i_26), f_7] != x
+                    assume (forall i_26_1: int ::
+                      { Seq#Index(arg_S_1, i_26_1) }
+                      0 <= i_26_1 && i_26_1 < Seq#Length(arg_S_1) ==> Heap[Seq#Index(arg_S_1, i_26_1), f_7] != x
                     );
                   }
                   assume state(Heap, Mask);
@@ -2526,21 +2526,21 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of bfind_fixed_seqin might not hold. Fraction p might be negative. (bsearch.vpr@73.11--73.67) [66111]"}
+      assert {:msg "  Postcondition of bfind_fixed_seqin might not hold. Fraction p might be negative. (bsearch.vpr@73.11--73.67) [184119]"}
         (forall i_10_1: int ::
         { Seq#Index(S, i_10_1) } { Seq#Index(S, i_10_1) }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1) && dummyFunction(Heap[Seq#Index(S, i_10_1), f_7]) ==> p_1 >= NoPerm
       );
     
     // -- check if receiver S[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@73.11--73.67) [66112]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@73.11--73.67) [184120]"}
         (forall i_10_1: int, i_10_2: int ::
         { neverTriggered17(i_10_1), neverTriggered17(i_10_2) }
         (((i_10_1 != i_10_2 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_10_1) != Seq#Index(S, i_10_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of bfind_fixed_seqin might not hold. There might be insufficient permission to access S[i].f (bsearch.vpr@73.11--73.67) [66113]"}
+      assert {:msg "  Postcondition of bfind_fixed_seqin might not hold. There might be insufficient permission to access S[i].f (bsearch.vpr@73.11--73.67) [184121]"}
         (forall i_10_1: int ::
         { Seq#Index(S, i_10_1) } { Seq#Index(S, i_10_1) }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1) ==> Mask[Seq#Index(S, i_10_1), f_7] >= p_1
@@ -2551,33 +2551,33 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
         { Seq#Index(S, i_10_1) } { Seq#Index(S, i_10_1) }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1) && NoPerm < p_1 ==> qpRange17(Seq#Index(S, i_10_1)) && invRecv17(Seq#Index(S, i_10_1)) == i_10_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv17(o_4) }
-        Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv17(o_4)) && (NoPerm < p_1 && qpRange17(o_4)) ==> Seq#Index(S, invRecv17(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv17(o_9) }
+        Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv17(o_9)) && (NoPerm < p_1 && qpRange17(o_9)) ==> Seq#Index(S, invRecv17(o_9)) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv17(o_4)) && (NoPerm < p_1 && qpRange17(o_4)) ==> Seq#Index(S, invRecv17(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - p_1) && (!(Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv17(o_4)) && (NoPerm < p_1 && qpRange17(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv17(o_9)) && (NoPerm < p_1 && qpRange17(o_9)) ==> Seq#Index(S, invRecv17(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - p_1) && (!(Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv17(o_9)) && (NoPerm < p_1 && qpRange17(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
-    assert {:msg "  Postcondition of bfind_fixed_seqin might not hold. Assertion (index in [-1..|S|)) might not hold. (bsearch.vpr@74.11--74.29) [66114]"}
+    assert {:msg "  Postcondition of bfind_fixed_seqin might not hold. Assertion (index in [-1..|S|)) might not hold. (bsearch.vpr@74.11--74.29) [184122]"}
       Seq#Contains(Seq#Range(-1, Seq#Length(S)), index);
     if (Seq#Contains(Seq#Range(0, Seq#Length(S)), index)) {
-      assert {:msg "  Postcondition of bfind_fixed_seqin might not hold. Assertion S[index].f == x might not hold. (bsearch.vpr@75.11--75.48) [66115]"}
+      assert {:msg "  Postcondition of bfind_fixed_seqin might not hold. Assertion S[index].f == x might not hold. (bsearch.vpr@75.11--75.48) [184123]"}
         Heap[Seq#Index(S, index), f_7] == x;
     }
     if (index == -1) {
       if (*) {
         if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_11_1)) {
-          assert {:msg "  Postcondition of bfind_fixed_seqin might not hold. Assertion S[i].f != x might not hold. (bsearch.vpr@76.11--76.82) [66116]"}
+          assert {:msg "  Postcondition of bfind_fixed_seqin might not hold. Assertion S[i].f != x might not hold. (bsearch.vpr@76.11--76.82) [184124]"}
             Heap[Seq#Index(S, i_11_1), f_7] != x;
         }
         assume false;
@@ -2600,18 +2600,18 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
 procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   modifies Heap, Mask;
 {
-  var i_24: int;
-  var j_15: int;
-  var i_29: int;
+  var i_13: int;
+  var j_19: int;
+  var i_23: int;
   var QPMask: MaskType;
-  var j_22: int;
-  var i_30: int;
+  var j_20: int;
+  var i_24: int;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_31: int;
-  var i_32: int;
+  var i_25: int;
+  var i_27: int;
   var k: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -2622,13 +2622,13 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
   var i_13_1: int;
   var j_4_1: int;
   var i_16_1: int;
-  var j_6_1: int;
+  var j_6_2: int;
   var ExhaleHeap: HeapType;
   var arg_S_1: (Seq Ref);
   var arg_p_1: Perm;
-  var i_20_1: int;
-  var j_8: int;
-  var i_23: int;
+  var i_20_2: int;
+  var j_8_2: int;
+  var i_23_1: int;
   var j_10_2: int;
   var i_11_1: int;
   
@@ -2644,15 +2644,15 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
     
     // -- Check definedness of (forall i: Int, j: Int :: { (i in [0..|S|)), (j in [0..|S|)) } { (i in [0..|S|)), S[j] } { (j in [0..|S|)), S[i] } { S[i], S[j] } (i in [0..|S|)) && ((j in [0..|S|)) && i != j) ==> S[i] != S[j])
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_24) && (Seq#Contains(Seq#Range(0, Seq#Length(S)), j_15) && i_24 != j_15)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@100.12--100.94) [66117]"}
-            i_24 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@100.12--100.94) [66118]"}
-            i_24 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@100.12--100.94) [66119]"}
-            j_15 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@100.12--100.94) [66120]"}
-            j_15 < Seq#Length(S);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_13) && (Seq#Contains(Seq#Range(0, Seq#Length(S)), j_19) && i_13 != j_19)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@100.12--100.94) [184125]"}
+            i_13 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@100.12--100.94) [184126]"}
+            i_13 < Seq#Length(S);
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@100.12--100.94) [184127]"}
+            j_19 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@100.12--100.94) [184128]"}
+            j_19 < Seq#Length(S);
         }
         assume false;
       }
@@ -2664,51 +2664,51 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
     
     // -- Check definedness of (forall i: Int :: { S[i].f } (i in [0..|S|)) ==> acc(S[i].f, p))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_29)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@101.12--101.70) [66121]"}
-            i_29 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@101.12--101.70) [66122]"}
-            i_29 < Seq#Length(S);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_23)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@101.12--101.70) [184129]"}
+            i_23 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@101.12--101.70) [184130]"}
+            i_23 < Seq#Length(S);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@101.12--101.70) [66123]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@101.12--101.70) [184131]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_1)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_3) != Seq#Index(S, i_3_1)
+      (((i_3_2 != i_3_3 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_3)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_3_2) != Seq#Index(S, i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(S, i_3) } { Heap[Seq#Index(S, i_3), f_7] }
-        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3) && NoPerm < p_1 ==> qpRange22(Seq#Index(S, i_3)) && invRecv22(Seq#Index(S, i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(S, i_3_2) } { Heap[Seq#Index(S, i_3_2), f_7] }
+        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2) && NoPerm < p_1 ==> qpRange22(Seq#Index(S, i_3_2)) && invRecv22(Seq#Index(S, i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv22(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv22(o_4)) && NoPerm < p_1) && qpRange22(o_4) ==> Seq#Index(S, invRecv22(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv22(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv22(o_9)) && NoPerm < p_1) && qpRange22(o_9) ==> Seq#Index(S, invRecv22(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@101.12--101.70) [66124]"}
-      (forall i_3: int ::
-      { Seq#Index(S, i_3) } { Heap[Seq#Index(S, i_3), f_7] }
-      Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3) ==> p_1 >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@101.12--101.70) [184132]"}
+      (forall i_3_2: int ::
+      { Seq#Index(S, i_3_2) } { Heap[Seq#Index(S, i_3_2), f_7] }
+      Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2) ==> p_1 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(S, i_3) } { Heap[Seq#Index(S, i_3), f_7] }
-        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3) && p_1 > NoPerm ==> Seq#Index(S, i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(S, i_3_2) } { Heap[Seq#Index(S, i_3_2), f_7] }
+        Seq#Contains(Seq#Range(0, Seq#Length(S)), i_3_2) && p_1 > NoPerm ==> Seq#Index(S, i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv22(o_4)) && NoPerm < p_1) && qpRange22(o_4) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv22(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv22(o_4)) && NoPerm < p_1) && qpRange22(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv22(o_9)) && NoPerm < p_1) && qpRange22(o_9) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv22(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv22(o_9)) && NoPerm < p_1) && qpRange22(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -2716,25 +2716,25 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
     
     // -- Check definedness of (forall i: Int, j: Int :: { S[i].f, S[j].f } (i in [0..j)) && (j in [i..|S|)) ==> S[i].f < S[j].f)
       if (*) {
-        if (Seq#Contains(Seq#Range(0, j_22), i_30) && Seq#Contains(Seq#Range(i_30, Seq#Length(S)), j_22)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@102.12--102.102) [66125]"}
-            i_30 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@102.12--102.102) [66126]"}
-            i_30 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@102.12--102.102) [66127]"}
-            HasDirectPerm(Mask, Seq#Index(S, i_30), f_7);
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@102.12--102.102) [66128]"}
-            j_22 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@102.12--102.102) [66129]"}
-            j_22 < Seq#Length(S);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[j].f (bsearch.vpr@102.12--102.102) [66130]"}
-            HasDirectPerm(Mask, Seq#Index(S, j_22), f_7);
+        if (Seq#Contains(Seq#Range(0, j_20), i_24) && Seq#Contains(Seq#Range(i_24, Seq#Length(S)), j_20)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@102.12--102.102) [184133]"}
+            i_24 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@102.12--102.102) [184134]"}
+            i_24 < Seq#Length(S);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@102.12--102.102) [184135]"}
+            HasDirectPerm(Mask, Seq#Index(S, i_24), f_7);
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might be negative. (bsearch.vpr@102.12--102.102) [184136]"}
+            j_20 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[j] into S might exceed sequence length. (bsearch.vpr@102.12--102.102) [184137]"}
+            j_20 < Seq#Length(S);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[j].f (bsearch.vpr@102.12--102.102) [184138]"}
+            HasDirectPerm(Mask, Seq#Index(S, j_20), f_7);
         }
         assume false;
       }
-    assume (forall i_5: int, j_3_1: int ::
-      { Heap[Seq#Index(S, i_5), f_7], Heap[Seq#Index(S, j_3_1), f_7] }
-      Seq#Contains(Seq#Range(0, j_3_1), i_5) && Seq#Contains(Seq#Range(i_5, Seq#Length(S)), j_3_1) ==> Heap[Seq#Index(S, i_5), f_7] < Heap[Seq#Index(S, j_3_1), f_7]
+    assume (forall i_5_1: int, j_3: int ::
+      { Heap[Seq#Index(S, i_5_1), f_7], Heap[Seq#Index(S, j_3), f_7] }
+      Seq#Contains(Seq#Range(0, j_3), i_5_1) && Seq#Contains(Seq#Range(i_5_1, Seq#Length(S)), j_3) ==> Heap[Seq#Index(S, i_5_1), f_7] < Heap[Seq#Index(S, j_3), f_7]
     );
     assume state(Heap, Mask);
   
@@ -2751,16 +2751,16 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
     
     // -- Check definedness of (forall i: Int :: { S[i].f } (i in [0..|S|)) ==> acc(S[i].f, p))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_31)) {
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@103.11--103.69) [66131]"}
-            i_31 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@103.11--103.69) [66132]"}
-            i_31 < Seq#Length(S);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_25)) {
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@103.11--103.69) [184139]"}
+            i_25 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@103.11--103.69) [184140]"}
+            i_25 < Seq#Length(S);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@103.11--103.69) [66133]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@103.11--103.69) [184141]"}
       (forall i_7_1: int, i_7_2: int ::
       
       (((i_7_1 != i_7_2 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_1)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_7_1) != Seq#Index(S, i_7_2)
@@ -2771,12 +2771,12 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
         { Seq#Index(S, i_7_1) } { PostHeap[Seq#Index(S, i_7_1), f_7] }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_1) && NoPerm < p_1 ==> qpRange23(Seq#Index(S, i_7_1)) && invRecv23(Seq#Index(S, i_7_1)) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv23(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv23(o_4)) && NoPerm < p_1) && qpRange23(o_4) ==> Seq#Index(S, invRecv23(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv23(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv23(o_9)) && NoPerm < p_1) && qpRange23(o_9) ==> Seq#Index(S, invRecv23(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@103.11--103.69) [66134]"}
+    assert {:msg "  Contract might not be well-formed. Fraction p might be negative. (bsearch.vpr@103.11--103.69) [184142]"}
       (forall i_7_1: int ::
       { Seq#Index(S, i_7_1) } { PostHeap[Seq#Index(S, i_7_1), f_7] }
       Seq#Contains(Seq#Range(0, Seq#Length(S)), i_7_1) ==> p_1 >= NoPerm
@@ -2789,13 +2789,13 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv23(o_4)) && NoPerm < p_1) && qpRange23(o_4) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv23(o_4)) == o_4) && QPMask[o_4, f_7] == PostMask[o_4, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv23(o_4)) && NoPerm < p_1) && qpRange23(o_4)) ==> QPMask[o_4, f_7] == PostMask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv23(o_9)) && NoPerm < p_1) && qpRange23(o_9) ==> (NoPerm < p_1 ==> Seq#Index(S, invRecv23(o_9)) == o_9) && QPMask[o_9, f_7] == PostMask[o_9, f_7] + p_1) && (!((Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv23(o_9)) && NoPerm < p_1) && qpRange23(o_9)) ==> QPMask[o_9, f_7] == PostMask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -2805,11 +2805,11 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
     if (Seq#Contains(Seq#Range(0, Seq#Length(S)), index)) {
       
       // -- Check definedness of S[index].f == x
-        assert {:msg "  Contract might not be well-formed. Index S[index] into S might be negative. (bsearch.vpr@105.11--105.48) [66135]"}
+        assert {:msg "  Contract might not be well-formed. Index S[index] into S might be negative. (bsearch.vpr@105.11--105.48) [184143]"}
           index >= 0;
-        assert {:msg "  Contract might not be well-formed. Index S[index] into S might exceed sequence length. (bsearch.vpr@105.11--105.48) [66136]"}
+        assert {:msg "  Contract might not be well-formed. Index S[index] into S might exceed sequence length. (bsearch.vpr@105.11--105.48) [184144]"}
           index < Seq#Length(S);
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[index].f (bsearch.vpr@105.11--105.48) [66137]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[index].f (bsearch.vpr@105.11--105.48) [184145]"}
           HasDirectPerm(PostMask, Seq#Index(S, index), f_7);
       assume PostHeap[Seq#Index(S, index), f_7] == x;
     }
@@ -2818,13 +2818,13 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
       
       // -- Check definedness of (forall i: Int :: { S[i].f } (i in [0..|S|)) ==> S[i].f != x)
         if (*) {
-          if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_32)) {
-            assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@106.11--106.84) [66138]"}
-              i_32 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@106.11--106.84) [66139]"}
-              i_32 < Seq#Length(S);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@106.11--106.84) [66140]"}
-              HasDirectPerm(PostMask, Seq#Index(S, i_32), f_7);
+          if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_27)) {
+            assert {:msg "  Contract might not be well-formed. Index S[i] into S might be negative. (bsearch.vpr@106.11--106.84) [184146]"}
+              i_27 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index S[i] into S might exceed sequence length. (bsearch.vpr@106.11--106.84) [184147]"}
+              i_27 < Seq#Length(S);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access S[i].f (bsearch.vpr@106.11--106.84) [184148]"}
+              HasDirectPerm(PostMask, Seq#Index(S, i_27), f_7);
           }
           assume false;
         }
@@ -2852,9 +2852,9 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
           // -- Translating statement: index := (x == S[0].f ? 0 : -1) -- bsearch.vpr@111.5--111.34
             
             // -- Check definedness of (x == S[0].f ? 0 : -1)
-              assert {:msg "  Assignment might fail. Index S[0] into S might exceed sequence length. (bsearch.vpr@111.5--111.34) [66141]"}
+              assert {:msg "  Assignment might fail. Index S[0] into S might exceed sequence length. (bsearch.vpr@111.5--111.34) [184149]"}
                 0 < Seq#Length(S);
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access S[0].f (bsearch.vpr@111.5--111.34) [66142]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access S[0].f (bsearch.vpr@111.5--111.34) [184150]"}
                 HasDirectPerm(Mask, Seq#Index(S, 0), f_7);
             index := (if x == Heap[Seq#Index(S, 0), f_7] then 0 else -1);
             assume state(Heap, Mask);
@@ -2869,11 +2869,11 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
           // -- Translating statement: if (x < S[k].f) -- bsearch.vpr@116.5--121.6
             
             // -- Check definedness of x < S[k].f
-              assert {:msg "  Conditional statement might fail. Index S[k] into S might be negative. (bsearch.vpr@116.9--116.19) [66143]"}
+              assert {:msg "  Conditional statement might fail. Index S[k] into S might be negative. (bsearch.vpr@116.9--116.19) [184151]"}
                 k >= 0;
-              assert {:msg "  Conditional statement might fail. Index S[k] into S might exceed sequence length. (bsearch.vpr@116.9--116.19) [66144]"}
+              assert {:msg "  Conditional statement might fail. Index S[k] into S might exceed sequence length. (bsearch.vpr@116.9--116.19) [184152]"}
                 k < Seq#Length(S);
-              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access S[k].f (bsearch.vpr@116.9--116.19) [66145]"}
+              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access S[k].f (bsearch.vpr@116.9--116.19) [184153]"}
                 HasDirectPerm(Mask, Seq#Index(S, k), f_7);
             if (x < Heap[Seq#Index(S, k), f_7]) {
               
@@ -2886,13 +2886,13 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                 // -- Exhaling precondition
                   ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@117.7--117.49) [66146]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@117.7--117.49) [184154]"}
                     NoPerm < arg_p;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@117.7--117.49) [66147]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@117.7--117.49) [184155]"}
                     arg_p < FullPerm;
                   if (*) {
                     if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), i_13_1) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S)), j_4_1) && i_13_1 != j_4_1)) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i] != S[0..k][j] might not hold. (bsearch.vpr@117.7--117.49) [66148]"}
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i] != S[0..k][j] might not hold. (bsearch.vpr@117.7--117.49) [184156]"}
                         Seq#Index(arg_S, i_13_1) != Seq#Index(arg_S, j_4_1);
                     }
                     assume false;
@@ -2904,52 +2904,52 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@117.7--117.49) [66149]"}
-                      (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Seq#Index(arg_S, i_15) }
-                      (0 <= i_15 && i_15 < Seq#Length(arg_S)) && dummyFunction(Heap[Seq#Index(arg_S, i_15), f_7]) ==> arg_p >= NoPerm
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@117.7--117.49) [184157]"}
+                      (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Seq#Index(arg_S, i_15_1) }
+                      (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S)) && dummyFunction(Heap[Seq#Index(arg_S, i_15_1), f_7]) ==> arg_p >= NoPerm
                     );
                   
                   // -- check if receiver arg_S[i] is injective
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@117.7--117.49) [66150]"}
-                      (forall i_15: int, i_15_1: int ::
-                      { neverTriggered25(i_15), neverTriggered25(i_15_1) }
-                      (((i_15 != i_15_1 && (0 <= i_15 && i_15 < Seq#Length(arg_S))) && (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S))) && NoPerm < arg_p) && NoPerm < arg_p ==> Seq#Index(arg_S, i_15) != Seq#Index(arg_S, i_15_1)
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@117.7--117.49) [184158]"}
+                      (forall i_15_1: int, i_15_2: int ::
+                      { neverTriggered25(i_15_1), neverTriggered25(i_15_2) }
+                      (((i_15_1 != i_15_2 && (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S))) && (0 <= i_15_2 && i_15_2 < Seq#Length(arg_S))) && NoPerm < arg_p) && NoPerm < arg_p ==> Seq#Index(arg_S, i_15_1) != Seq#Index(arg_S, i_15_2)
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[0..k][i].f (bsearch.vpr@117.7--117.49) [66151]"}
-                      (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Seq#Index(arg_S, i_15) }
-                      0 <= i_15 && i_15 < Seq#Length(arg_S) ==> Mask[Seq#Index(arg_S, i_15), f_7] >= arg_p
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[0..k][i].f (bsearch.vpr@117.7--117.49) [184159]"}
+                      (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Seq#Index(arg_S, i_15_1) }
+                      0 <= i_15_1 && i_15_1 < Seq#Length(arg_S) ==> Mask[Seq#Index(arg_S, i_15_1), f_7] >= arg_p
                     );
                   
                   // -- assumptions for inverse of receiver arg_S[i]
-                    assume (forall i_15: int ::
-                      { Seq#Index(arg_S, i_15) } { Seq#Index(arg_S, i_15) }
-                      (0 <= i_15 && i_15 < Seq#Length(arg_S)) && NoPerm < arg_p ==> qpRange25(Seq#Index(arg_S, i_15)) && invRecv25(Seq#Index(arg_S, i_15)) == i_15
+                    assume (forall i_15_1: int ::
+                      { Seq#Index(arg_S, i_15_1) } { Seq#Index(arg_S, i_15_1) }
+                      (0 <= i_15_1 && i_15_1 < Seq#Length(arg_S)) && NoPerm < arg_p ==> qpRange25(Seq#Index(arg_S, i_15_1)) && invRecv25(Seq#Index(arg_S, i_15_1)) == i_15_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv25(o_4) }
-                      (0 <= invRecv25(o_4) && invRecv25(o_4) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange25(o_4)) ==> Seq#Index(arg_S, invRecv25(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv25(o_9) }
+                      (0 <= invRecv25(o_9) && invRecv25(o_9) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange25(o_9)) ==> Seq#Index(arg_S, invRecv25(o_9)) == o_9
                     );
                   
                   // -- assume permission updates for field f
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      ((0 <= invRecv25(o_4) && invRecv25(o_4) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange25(o_4)) ==> Seq#Index(arg_S, invRecv25(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - arg_p) && (!((0 <= invRecv25(o_4) && invRecv25(o_4) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange25(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      ((0 <= invRecv25(o_9) && invRecv25(o_9) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange25(o_9)) ==> Seq#Index(arg_S, invRecv25(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - arg_p) && (!((0 <= invRecv25(o_9) && invRecv25(o_9) < Seq#Length(arg_S)) && (NoPerm < arg_p && qpRange25(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
                   
                   // -- assume permission updates for independent locations
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   if (*) {
-                    if (0 <= i_16_1 && (i_16_1 < j_6_1 && j_6_1 < Seq#Length(arg_S))) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i].f < S[0..k][j].f might not hold. (bsearch.vpr@117.7--117.49) [66152]"}
-                        Heap[Seq#Index(arg_S, i_16_1), f_7] < Heap[Seq#Index(arg_S, j_6_1), f_7];
+                    if (0 <= i_16_1 && (i_16_1 < j_6_2 && j_6_2 < Seq#Length(arg_S))) {
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[0..k][i].f < S[0..k][j].f might not hold. (bsearch.vpr@117.7--117.49) [184160]"}
+                        Heap[Seq#Index(arg_S, i_16_1), f_7] < Heap[Seq#Index(arg_S, j_6_2), f_7];
                     }
                     assume false;
                   }
@@ -2967,7 +2967,7 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                 
                 // -- Inhaling postcondition
                   havoc QPMask;
-                  assert {:msg "  Method call might fail. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@117.7--117.49) [66153]"}
+                  assert {:msg "  Method call might fail. Quantified resource S[0..k][i].f might not be injective. (bsearch.vpr@117.7--117.49) [184161]"}
                     (forall i_18_1: int, i_18_2: int ::
                     
                     (((i_18_1 != i_18_2 && (0 <= i_18_1 && i_18_1 < Seq#Length(arg_S))) && (0 <= i_18_2 && i_18_2 < Seq#Length(arg_S))) && NoPerm < arg_p) && NoPerm < arg_p ==> Seq#Index(arg_S, i_18_1) != Seq#Index(arg_S, i_18_2)
@@ -2978,12 +2978,12 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                       { Seq#Index(arg_S, i_18_1) } { Seq#Index(arg_S, i_18_1) }
                       (0 <= i_18_1 && i_18_1 < Seq#Length(arg_S)) && NoPerm < arg_p ==> qpRange26(Seq#Index(arg_S, i_18_1)) && invRecv26(Seq#Index(arg_S, i_18_1)) == i_18_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv26(o_4) }
-                      ((0 <= invRecv26(o_4) && invRecv26(o_4) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange26(o_4) ==> Seq#Index(arg_S, invRecv26(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv26(o_9) }
+                      ((0 <= invRecv26(o_9) && invRecv26(o_9) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange26(o_9) ==> Seq#Index(arg_S, invRecv26(o_9)) == o_9
                     );
                   // Check that permission expression is non-negative for all fields
-                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@117.7--117.49) [66154]"}
+                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@117.7--117.49) [184162]"}
                     (forall i_18_1: int ::
                     { Seq#Index(arg_S, i_18_1) } { Seq#Index(arg_S, i_18_1) }
                     0 <= i_18_1 && i_18_1 < Seq#Length(arg_S) ==> arg_p >= NoPerm
@@ -2996,13 +2996,13 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                     );
                   
                   // -- Define permissions
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      (((0 <= invRecv26(o_4) && invRecv26(o_4) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange26(o_4) ==> (NoPerm < arg_p ==> Seq#Index(arg_S, invRecv26(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + arg_p) && (!(((0 <= invRecv26(o_4) && invRecv26(o_4) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange26(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      (((0 <= invRecv26(o_9) && invRecv26(o_9) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange26(o_9) ==> (NoPerm < arg_p ==> Seq#Index(arg_S, invRecv26(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + arg_p) && (!(((0 <= invRecv26(o_9) && invRecv26(o_9) < Seq#Length(arg_S)) && NoPerm < arg_p) && qpRange26(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   assume state(Heap, Mask);
@@ -3012,9 +3012,9 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                     assume Heap[Seq#Index(arg_S, index), f_7] == x;
                   }
                   if (index == -1) {
-                    assume (forall i_19: int ::
-                      { Seq#Index(arg_S, i_19) }
-                      0 <= i_19 && i_19 < Seq#Length(arg_S) ==> Heap[Seq#Index(arg_S, i_19), f_7] != x
+                    assume (forall i_19_1: int ::
+                      { Seq#Index(arg_S, i_19_1) }
+                      0 <= i_19_1 && i_19_1 < Seq#Length(arg_S) ==> Heap[Seq#Index(arg_S, i_19_1), f_7] != x
                     );
                   }
                   assume state(Heap, Mask);
@@ -3030,14 +3030,14 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                 // -- Exhaling precondition
                   ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@119.7--119.51) [66155]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@119.7--119.51) [184163]"}
                     NoPerm < arg_p_1;
-                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@119.7--119.51) [66156]"}
+                  assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@119.7--119.51) [184164]"}
                     arg_p_1 < FullPerm;
                   if (*) {
-                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_20_1) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), j_8) && i_20_1 != j_8)) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i] != S[k..|S|][j] might not hold. (bsearch.vpr@119.7--119.51) [66157]"}
-                        Seq#Index(arg_S_1, i_20_1) != Seq#Index(arg_S_1, j_8);
+                    if (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), i_20_2) && (Seq#Contains(Seq#Range(0, Seq#Length(arg_S_1)), j_8_2) && i_20_2 != j_8_2)) {
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i] != S[k..|S|][j] might not hold. (bsearch.vpr@119.7--119.51) [184165]"}
+                        Seq#Index(arg_S_1, i_20_2) != Seq#Index(arg_S_1, j_8_2);
                     }
                     assume false;
                   }
@@ -3048,21 +3048,21 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@119.7--119.51) [66158]"}
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Fraction p / 2 might be negative. (bsearch.vpr@119.7--119.51) [184166]"}
                       (forall i_22_1: int ::
                       { Seq#Index(arg_S_1, i_22_1) } { Seq#Index(arg_S_1, i_22_1) }
                       (0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1)) && dummyFunction(Heap[Seq#Index(arg_S_1, i_22_1), f_7]) ==> arg_p_1 >= NoPerm
                     );
                   
                   // -- check if receiver arg_S[i] is injective
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@119.7--119.51) [66159]"}
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@119.7--119.51) [184167]"}
                       (forall i_22_1: int, i_22_2: int ::
                       { neverTriggered27(i_22_1), neverTriggered27(i_22_2) }
                       (((i_22_1 != i_22_2 && (0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1))) && (0 <= i_22_2 && i_22_2 < Seq#Length(arg_S_1))) && NoPerm < arg_p_1) && NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, i_22_1) != Seq#Index(arg_S_1, i_22_2)
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[k..|S|][i].f (bsearch.vpr@119.7--119.51) [66160]"}
+                    assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. There might be insufficient permission to access S[k..|S|][i].f (bsearch.vpr@119.7--119.51) [184168]"}
                       (forall i_22_1: int ::
                       { Seq#Index(arg_S_1, i_22_1) } { Seq#Index(arg_S_1, i_22_1) }
                       0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1) ==> Mask[Seq#Index(arg_S_1, i_22_1), f_7] >= arg_p_1
@@ -3073,33 +3073,33 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                       { Seq#Index(arg_S_1, i_22_1) } { Seq#Index(arg_S_1, i_22_1) }
                       (0 <= i_22_1 && i_22_1 < Seq#Length(arg_S_1)) && NoPerm < arg_p_1 ==> qpRange27(Seq#Index(arg_S_1, i_22_1)) && invRecv27(Seq#Index(arg_S_1, i_22_1)) == i_22_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv27(o_4) }
-                      (0 <= invRecv27(o_4) && invRecv27(o_4) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange27(o_4)) ==> Seq#Index(arg_S_1, invRecv27(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv27(o_9) }
+                      (0 <= invRecv27(o_9) && invRecv27(o_9) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange27(o_9)) ==> Seq#Index(arg_S_1, invRecv27(o_9)) == o_9
                     );
                   
                   // -- assume permission updates for field f
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      ((0 <= invRecv27(o_4) && invRecv27(o_4) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange27(o_4)) ==> Seq#Index(arg_S_1, invRecv27(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - arg_p_1) && (!((0 <= invRecv27(o_4) && invRecv27(o_4) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange27(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      ((0 <= invRecv27(o_9) && invRecv27(o_9) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange27(o_9)) ==> Seq#Index(arg_S_1, invRecv27(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - arg_p_1) && (!((0 <= invRecv27(o_9) && invRecv27(o_9) < Seq#Length(arg_S_1)) && (NoPerm < arg_p_1 && qpRange27(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
                   
                   // -- assume permission updates for independent locations
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   if (*) {
-                    if (0 <= i_23 && (i_23 < j_10_2 && j_10_2 < Seq#Length(arg_S_1))) {
-                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i].f < S[k..|S|][j].f might not hold. (bsearch.vpr@119.7--119.51) [66161]"}
-                        Heap[Seq#Index(arg_S_1, i_23), f_7] < Heap[Seq#Index(arg_S_1, j_10_2), f_7];
+                    if (0 <= i_23_1 && (i_23_1 < j_10_2 && j_10_2 < Seq#Length(arg_S_1))) {
+                      assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion S[k..|S|][i].f < S[k..|S|][j].f might not hold. (bsearch.vpr@119.7--119.51) [184169]"}
+                        Heap[Seq#Index(arg_S_1, i_23_1), f_7] < Heap[Seq#Index(arg_S_1, j_10_2), f_7];
                     }
                     assume false;
                   }
-                  assume (forall i_24_1_1: int, j_11_1: int ::
-                    { Seq#Index(arg_S_1, i_24_1_1), Seq#Index(arg_S_1, j_11_1) }
-                    0 <= i_24_1_1 && (i_24_1_1 < j_11_1 && j_11_1 < Seq#Length(arg_S_1)) ==> Heap[Seq#Index(arg_S_1, i_24_1_1), f_7] < Heap[Seq#Index(arg_S_1, j_11_1), f_7]
+                  assume (forall i_24_1_1: int, j_11_1_1: int ::
+                    { Seq#Index(arg_S_1, i_24_1_1), Seq#Index(arg_S_1, j_11_1_1) }
+                    0 <= i_24_1_1 && (i_24_1_1 < j_11_1_1 && j_11_1_1 < Seq#Length(arg_S_1)) ==> Heap[Seq#Index(arg_S_1, i_24_1_1), f_7] < Heap[Seq#Index(arg_S_1, j_11_1_1), f_7]
                   );
                   // Finish exhale
                   havoc ExhaleHeap;
@@ -3111,42 +3111,42 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                 
                 // -- Inhaling postcondition
                   havoc QPMask;
-                  assert {:msg "  Method call might fail. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@119.7--119.51) [66162]"}
-                    (forall i_25: int, i_25_2: int ::
+                  assert {:msg "  Method call might fail. Quantified resource S[k..|S|][i].f might not be injective. (bsearch.vpr@119.7--119.51) [184170]"}
+                    (forall i_25_1: int, i_25_2: int ::
                     
-                    (((i_25 != i_25_2 && (0 <= i_25 && i_25 < Seq#Length(arg_S_1))) && (0 <= i_25_2 && i_25_2 < Seq#Length(arg_S_1))) && NoPerm < arg_p_1) && NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, i_25) != Seq#Index(arg_S_1, i_25_2)
+                    (((i_25_1 != i_25_2 && (0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1))) && (0 <= i_25_2 && i_25_2 < Seq#Length(arg_S_1))) && NoPerm < arg_p_1) && NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, i_25_1) != Seq#Index(arg_S_1, i_25_2)
                   );
                   
                   // -- Define Inverse Function
-                    assume (forall i_25: int ::
-                      { Seq#Index(arg_S_1, i_25) } { Seq#Index(arg_S_1, i_25) }
-                      (0 <= i_25 && i_25 < Seq#Length(arg_S_1)) && NoPerm < arg_p_1 ==> qpRange28(Seq#Index(arg_S_1, i_25)) && invRecv28(Seq#Index(arg_S_1, i_25)) == i_25
+                    assume (forall i_25_1: int ::
+                      { Seq#Index(arg_S_1, i_25_1) } { Seq#Index(arg_S_1, i_25_1) }
+                      (0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1)) && NoPerm < arg_p_1 ==> qpRange28(Seq#Index(arg_S_1, i_25_1)) && invRecv28(Seq#Index(arg_S_1, i_25_1)) == i_25_1
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv28(o_4) }
-                      ((0 <= invRecv28(o_4) && invRecv28(o_4) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange28(o_4) ==> Seq#Index(arg_S_1, invRecv28(o_4)) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv28(o_9) }
+                      ((0 <= invRecv28(o_9) && invRecv28(o_9) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange28(o_9) ==> Seq#Index(arg_S_1, invRecv28(o_9)) == o_9
                     );
                   // Check that permission expression is non-negative for all fields
-                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@119.7--119.51) [66163]"}
-                    (forall i_25: int ::
-                    { Seq#Index(arg_S_1, i_25) } { Seq#Index(arg_S_1, i_25) }
-                    0 <= i_25 && i_25 < Seq#Length(arg_S_1) ==> arg_p_1 >= NoPerm
+                  assert {:msg "  Method call might fail. Fraction p / 2 might be negative. (bsearch.vpr@119.7--119.51) [184171]"}
+                    (forall i_25_1: int ::
+                    { Seq#Index(arg_S_1, i_25_1) } { Seq#Index(arg_S_1, i_25_1) }
+                    0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1) ==> arg_p_1 >= NoPerm
                   );
                   
                   // -- Assume set of fields is nonNull
-                    assume (forall i_25: int ::
-                      { Seq#Index(arg_S_1, i_25) } { Seq#Index(arg_S_1, i_25) }
-                      (0 <= i_25 && i_25 < Seq#Length(arg_S_1)) && arg_p_1 > NoPerm ==> Seq#Index(arg_S_1, i_25) != null
+                    assume (forall i_25_1: int ::
+                      { Seq#Index(arg_S_1, i_25_1) } { Seq#Index(arg_S_1, i_25_1) }
+                      (0 <= i_25_1 && i_25_1 < Seq#Length(arg_S_1)) && arg_p_1 > NoPerm ==> Seq#Index(arg_S_1, i_25_1) != null
                     );
                   
                   // -- Define permissions
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, f_7] }
-                      (((0 <= invRecv28(o_4) && invRecv28(o_4) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange28(o_4) ==> (NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, invRecv28(o_4)) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + arg_p_1) && (!(((0 <= invRecv28(o_4) && invRecv28(o_4) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange28(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, f_7] }
+                      (((0 <= invRecv28(o_9) && invRecv28(o_9) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange28(o_9) ==> (NoPerm < arg_p_1 ==> Seq#Index(arg_S_1, invRecv28(o_9)) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + arg_p_1) && (!(((0 <= invRecv28(o_9) && invRecv28(o_9) < Seq#Length(arg_S_1)) && NoPerm < arg_p_1) && qpRange28(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
                     );
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                      f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                      f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   assume state(Heap, Mask);
@@ -3156,9 +3156,9 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                     assume Heap[Seq#Index(arg_S_1, index), f_7] == x;
                   }
                   if (index == -1) {
-                    assume (forall i_26: int ::
-                      { Seq#Index(arg_S_1, i_26) }
-                      0 <= i_26 && i_26 < Seq#Length(arg_S_1) ==> Heap[Seq#Index(arg_S_1, i_26), f_7] != x
+                    assume (forall i_26_1: int ::
+                      { Seq#Index(arg_S_1, i_26_1) }
+                      0 <= i_26_1 && i_26_1 < Seq#Length(arg_S_1) ==> Heap[Seq#Index(arg_S_1, i_26_1), f_7] != x
                     );
                   }
                   assume state(Heap, Mask);
@@ -3180,21 +3180,21 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
     havoc QPMask;
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of bfind_fixed_seqin_heap_dep_triggers might not hold. Fraction p might be negative. (bsearch.vpr@103.11--103.69) [66164]"}
+      assert {:msg "  Postcondition of bfind_fixed_seqin_heap_dep_triggers might not hold. Fraction p might be negative. (bsearch.vpr@103.11--103.69) [184172]"}
         (forall i_10_1: int ::
         { Seq#Index(S, i_10_1) } { Heap[Seq#Index(S, i_10_1), f_7] }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1) && dummyFunction(Heap[Seq#Index(S, i_10_1), f_7]) ==> p_1 >= NoPerm
       );
     
     // -- check if receiver S[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@103.11--103.69) [66165]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource S[i].f might not be injective. (bsearch.vpr@103.11--103.69) [184173]"}
         (forall i_10_1: int, i_10_2: int ::
         { neverTriggered24(i_10_1), neverTriggered24(i_10_2) }
         (((i_10_1 != i_10_2 && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1)) && Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_2)) && NoPerm < p_1) && NoPerm < p_1 ==> Seq#Index(S, i_10_1) != Seq#Index(S, i_10_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of bfind_fixed_seqin_heap_dep_triggers might not hold. There might be insufficient permission to access S[i].f (bsearch.vpr@103.11--103.69) [66166]"}
+      assert {:msg "  Postcondition of bfind_fixed_seqin_heap_dep_triggers might not hold. There might be insufficient permission to access S[i].f (bsearch.vpr@103.11--103.69) [184174]"}
         (forall i_10_1: int ::
         { Seq#Index(S, i_10_1) } { Heap[Seq#Index(S, i_10_1), f_7] }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1) ==> Mask[Seq#Index(S, i_10_1), f_7] >= p_1
@@ -3205,33 +3205,33 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
         { Seq#Index(S, i_10_1) } { Heap[Seq#Index(S, i_10_1), f_7] }
         Seq#Contains(Seq#Range(0, Seq#Length(S)), i_10_1) && NoPerm < p_1 ==> qpRange24(Seq#Index(S, i_10_1)) && invRecv24(Seq#Index(S, i_10_1)) == i_10_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv24(o_4) }
-        Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv24(o_4)) && (NoPerm < p_1 && qpRange24(o_4)) ==> Seq#Index(S, invRecv24(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv24(o_9) }
+        Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv24(o_9)) && (NoPerm < p_1 && qpRange24(o_9)) ==> Seq#Index(S, invRecv24(o_9)) == o_9
       );
     
     // -- assume permission updates for field f
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv24(o_4)) && (NoPerm < p_1 && qpRange24(o_4)) ==> Seq#Index(S, invRecv24(o_4)) == o_4 && QPMask[o_4, f_7] == Mask[o_4, f_7] - p_1) && (!(Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv24(o_4)) && (NoPerm < p_1 && qpRange24(o_4))) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        (Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv24(o_9)) && (NoPerm < p_1 && qpRange24(o_9)) ==> Seq#Index(S, invRecv24(o_9)) == o_9 && QPMask[o_9, f_7] == Mask[o_9, f_7] - p_1) && (!(Seq#Contains(Seq#Range(0, Seq#Length(S)), invRecv24(o_9)) && (NoPerm < p_1 && qpRange24(o_9))) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
-    assert {:msg "  Postcondition of bfind_fixed_seqin_heap_dep_triggers might not hold. Assertion (index in [-1..|S|)) might not hold. (bsearch.vpr@104.11--104.29) [66167]"}
+    assert {:msg "  Postcondition of bfind_fixed_seqin_heap_dep_triggers might not hold. Assertion (index in [-1..|S|)) might not hold. (bsearch.vpr@104.11--104.29) [184175]"}
       Seq#Contains(Seq#Range(-1, Seq#Length(S)), index);
     if (Seq#Contains(Seq#Range(0, Seq#Length(S)), index)) {
-      assert {:msg "  Postcondition of bfind_fixed_seqin_heap_dep_triggers might not hold. Assertion S[index].f == x might not hold. (bsearch.vpr@105.11--105.48) [66168]"}
+      assert {:msg "  Postcondition of bfind_fixed_seqin_heap_dep_triggers might not hold. Assertion S[index].f == x might not hold. (bsearch.vpr@105.11--105.48) [184176]"}
         Heap[Seq#Index(S, index), f_7] == x;
     }
     if (index == -1) {
       if (*) {
         if (Seq#Contains(Seq#Range(0, Seq#Length(S)), i_11_1)) {
-          assert {:msg "  Postcondition of bfind_fixed_seqin_heap_dep_triggers might not hold. Assertion S[i].f != x might not hold. (bsearch.vpr@106.11--106.84) [66169]"}
+          assert {:msg "  Postcondition of bfind_fixed_seqin_heap_dep_triggers might not hold. Assertion S[i].f != x might not hold. (bsearch.vpr@106.11--106.84) [184177]"}
             Heap[Seq#Index(S, i_11_1), f_7] != x;
         }
         assume false;

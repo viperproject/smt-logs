@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:42
+// Date:         2025-01-26 21:42:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0097.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0097-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -619,8 +619,8 @@ procedure PseudoListget$#definedness(this$_2: Ref, index: int) returns (Result: 
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -647,10 +647,10 @@ procedure PseudoListget$#definedness(this$_2: Ref, index: int) returns (Result: 
       UnfoldingMask := Mask;
       assume PseudoListinv$#trigger(UnfoldingHeap, PseudoListinv$(this$_2));
       assume UnfoldingHeap[null, PseudoListinv$(this$_2)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_2, PseudoListvalue$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_2, PseudoListnext$]), UnfoldingHeap[null, PseudoListinv$(UnfoldingHeap[this$_2, PseudoListnext$])]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access PseudoListinv$(this$_2) (0097.vpr@25.1--30.2) [218311]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access PseudoListinv$(this$_2) (0097.vpr@25.1--30.2) [67935]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, PseudoListinv$(this$_2)];
       havoc wildcard;
       perm := wildcard;
@@ -673,16 +673,16 @@ procedure PseudoListget$#definedness(this$_2: Ref, index: int) returns (Result: 
       assume state(UnfoldingHeap, UnfoldingMask);
       if (index == 0) {
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_2.PseudoListnext$ (0097.vpr@25.1--30.2) [218312]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this$_2.PseudoListnext$ (0097.vpr@25.1--30.2) [67936]"}
           HasDirectPerm(UnfoldingMask, this$_2, PseudoListnext$);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
-          assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_2.PseudoListnext$ != null might not hold. (0097.vpr@29.77--29.127) [218313]"}
+          ExhaleWellDef0Heap := UnfoldingHeap;
+          assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_2.PseudoListnext$ != null might not hold. (0097.vpr@29.77--29.127) [67937]"}
             UnfoldingHeap[this$_2, PseudoListnext$] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function PseudoListget$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_2.PseudoListnext$) (0097.vpr@29.77--29.127) [218314]"}
+          assert {:msg "  Precondition of function PseudoListget$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_2.PseudoListnext$) (0097.vpr@29.77--29.127) [67938]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, PseudoListinv$(UnfoldingHeap[this$_2, PseudoListnext$])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -700,9 +700,9 @@ procedure PseudoListget$#definedness(this$_2: Ref, index: int) returns (Result: 
         Heap := Heap[null, PseudoListinv$#sm(this$_2):=Heap[null, PseudoListinv$#sm(this$_2)][this$_2, PseudoListvalue$:=true]];
         Heap := Heap[null, PseudoListinv$#sm(this$_2):=Heap[null, PseudoListinv$#sm(this$_2)][this$_2, PseudoListnext$:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-          { newPMask[o_15, f_20] }
-          Heap[null, PseudoListinv$#sm(this$_2)][o_15, f_20] || Heap[null, PseudoListinv$#sm(Heap[this$_2, PseudoListnext$])][o_15, f_20] ==> newPMask[o_15, f_20]
+        assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+          { newPMask[o_5, f_11] }
+          Heap[null, PseudoListinv$#sm(this$_2)][o_5, f_11] || Heap[null, PseudoListinv$#sm(Heap[this$_2, PseudoListnext$])][o_5, f_11] ==> newPMask[o_5, f_11]
         );
         Heap := Heap[null, PseudoListinv$#sm(this$_2):=newPMask];
         assume state(Heap, Mask);
@@ -819,12 +819,12 @@ procedure PseudoListinv$#definedness(this$_3: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this$_3.PseudoListnext$ != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_3.PseudoListnext$ (0097.vpr@36.1--38.2) [218315]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_3.PseudoListnext$ (0097.vpr@36.1--38.2) [67939]"}
         HasDirectPerm(Mask, this$_3, PseudoListnext$);
     assume Heap[this$_3, PseudoListnext$] != null;
     
     // -- Check definedness of acc(PseudoListinv$(this$_3.PseudoListnext$), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_3.PseudoListnext$ (0097.vpr@36.1--38.2) [218316]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this$_3.PseudoListnext$ (0097.vpr@36.1--38.2) [67940]"}
         HasDirectPerm(Mask, this$_3, PseudoListnext$);
     perm := FullPerm;
     Mask := Mask[null, PseudoListinv$(Heap[this$_3, PseudoListnext$]):=Mask[null, PseudoListinv$(Heap[this$_3, PseudoListnext$])] + perm];
@@ -840,22 +840,22 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$: Ref;
   var a$: Ref;
   var b$: Ref;
   var c$: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var i_4: int;
-  var i_6: int;
-  var ExhaleWellDef1Heap: HeapType;
+  var i_14: int;
   var ExhaleWellDef1Mask: MaskType;
-  var i_3: int;
+  var ExhaleWellDef1Heap: HeapType;
+  var i_3_2: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -881,8 +881,8 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -908,12 +908,12 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
     // -- Check definedness of PseudoListget$(this$_1, 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_1 != null might not hold. (0097.vpr@51.10--51.36) [218317]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_1 != null might not hold. (0097.vpr@51.10--51.36) [67941]"}
           this$_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function PseudoListget$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_1) (0097.vpr@51.10--51.36) [218318]"}
+        assert {:msg "  Precondition of function PseudoListget$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_1) (0097.vpr@51.10--51.36) [67942]"}
           NoPerm < perm ==> NoPerm < Mask[null, PseudoListinv$(this$_1)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -937,12 +937,12 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
         if (Seq#Contains(Seq#Range(1, 4), i_4)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_1 != null might not hold. (0097.vpr@52.54--52.80) [218319]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_1 != null might not hold. (0097.vpr@52.54--52.80) [67943]"}
               this$_1 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PseudoListget$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_1) (0097.vpr@52.54--52.80) [218320]"}
+            assert {:msg "  Precondition of function PseudoListget$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_1) (0097.vpr@52.54--52.80) [67944]"}
               NoPerm < perm ==> NoPerm < Mask[null, PseudoListinv$(this$_1)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -965,20 +965,20 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
   //     { (i in [0..4)) }
   //     { PseudoListget$(this$_1, i) }
   //     true && (i in [0..4)) ==> PseudoListget$(this$_1, i)) -- 0097.vpr@53.3--53.81
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { (i in [0..4)) } { PseudoListget$(this$_1, i) } true && (i in [0..4)) ==> PseudoListget$(this$_1, i))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, 4), i_6)) {
+        if (Seq#Contains(Seq#Range(0, 4), i_14)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-            assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_1 != null might not hold. (0097.vpr@53.54--53.80) [218321]"}
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_1 != null might not hold. (0097.vpr@53.54--53.80) [67945]"}
               this$_1 != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PseudoListget$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_1) (0097.vpr@53.54--53.80) [218322]"}
+            assert {:msg "  Precondition of function PseudoListget$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_1) (0097.vpr@53.54--53.80) [67946]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, PseudoListinv$(this$_1)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -991,9 +991,9 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
         assume false;
       }
     if (*) {
-      if (Seq#Contains(Seq#Range(0, 4), i_3)) {
-        assert {:msg "  Assert might fail. Assertion PseudoListget$(this$_1, i) might not hold. (0097.vpr@53.11--53.80) [218323]"}
-          PseudoListget$(Heap, this$_1, i_3);
+      if (Seq#Contains(Seq#Range(0, 4), i_3_2)) {
+        assert {:msg "  Assert might fail. Assertion PseudoListget$(this$_1, i) might not hold. (0097.vpr@53.11--53.80) [67947]"}
+          PseudoListget$(Heap, this$_1, i_3_2);
       }
       assume false;
     }
@@ -1004,11 +1004,11 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of PseudoListstatic_range_workaround$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_1) (0097.vpr@45.11--45.46) [218324]"}
+      assert {:msg "  Postcondition of PseudoListstatic_range_workaround$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_1) (0097.vpr@45.11--45.46) [67948]"}
         perm <= Mask[null, PseudoListinv$(this$_1)];
     }
     Mask := Mask[null, PseudoListinv$(this$_1):=Mask[null, PseudoListinv$(this$_1)] - perm];

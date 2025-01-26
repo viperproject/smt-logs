@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:32
+// Date:         2025-01-26 21:42:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0207.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0207-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_20: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_20, f_17] }
-  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_17], $allocated]
+axiom (forall o_54: Ref, f_24: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_54, f_24] }
+  Heap[o_54, $allocated] ==> Heap[Heap[o_54, f_24], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref, f_24: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, f_24] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_27, f_24) ==> Heap[o_27, f_24] == ExhaleHeap[o_27, f_24]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref, f_54: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, f_54] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_55, f_54) ==> Heap[o_55, f_54] == ExhaleHeap[o_55, f_54]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9), ExhaleHeap[null, PredicateMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> Heap[null, PredicateMaskField(pm_f_9)] == ExhaleHeap[null, PredicateMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32), ExhaleHeap[null, PredicateMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> Heap[null, PredicateMaskField(pm_f_32)] == ExhaleHeap[null, PredicateMaskField(pm_f_32)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, PredicateMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, PredicateMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9), ExhaleHeap[null, WandMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> Heap[null, WandMaskField(pm_f_9)] == ExhaleHeap[null, WandMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32), ExhaleHeap[null, WandMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> Heap[null, WandMaskField(pm_f_32)] == ExhaleHeap[null, WandMaskField(pm_f_32)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, WandMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, WandMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_27, $allocated] ==> ExhaleHeap[o_27, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_55, $allocated] ==> ExhaleHeap[o_55, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_31: (Field A B), v: B ::
-  { Heap[o_20, f_31:=v] }
-  succHeap(Heap, Heap[o_20, f_31:=v])
+axiom (forall <A, B> Heap: HeapType, o_54: Ref, f_8: (Field A B), v: B ::
+  { Heap[o_54, f_8:=v] }
+  succHeap(Heap, Heap[o_54, f_8:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -181,10 +181,10 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type FooDomainType;
 
 // Translation of domain function foo
-function  foo(): FooDomainType;
+function  foo_2(): FooDomainType;
 
 // Translation of domain function bar
-function  bar_3(f_198: FooDomainType): FooDomainType;
+function  bar_1(f_68: FooDomainType): FooDomainType;
 
 // ==================================================
 // Translation of domain BST
@@ -194,36 +194,36 @@ function  bar_3(f_198: FooDomainType): FooDomainType;
 type BSTDomainType;
 
 // Translation of domain function value
-function  value_2(t_9: BSTDomainType): int;
+function  value_2(t_3: BSTDomainType): int;
 
 // Translation of domain function left
-function  left_2(t_9: BSTDomainType): BSTDomainType;
+function  left_1(t_3: BSTDomainType): BSTDomainType;
 
 // Translation of domain function right
-function  right_2(t_9: BSTDomainType): BSTDomainType;
+function  right(t_3: BSTDomainType): BSTDomainType;
 
 // Translation of domain function nullNode
 function  nullNode(): BSTDomainType;
 
 // Translation of domain function isParent
-function  isParent(p_16: BSTDomainType, c_11: BSTDomainType): bool;
+function  isParent(p_3: BSTDomainType, c_11: BSTDomainType): bool;
 
 // Translation of domain axiom left_smaller
 axiom (forall t_2: BSTDomainType ::
-  { (value_2(t_2): int), (value_2((left_2(t_2): BSTDomainType)): int) }
-  !((left_2(t_2): BSTDomainType) == (nullNode(): BSTDomainType)) ==> (value_2(t_2): int) > (value_2((left_2(t_2): BSTDomainType)): int)
+  { (value_2(t_2): int), (value_2((left_1(t_2): BSTDomainType)): int) }
+  !((left_1(t_2): BSTDomainType) == (nullNode(): BSTDomainType)) ==> (value_2(t_2): int) > (value_2((left_1(t_2): BSTDomainType)): int)
 );
 
 // Translation of domain axiom left_sub_tree_smaller
 axiom (forall t_2: BSTDomainType, c: BSTDomainType ::
-  { (value_2(t_2): int), (value_2(c): int) } { (isParent((left_2(t_2): BSTDomainType), c): bool) }
-  !(t_2 == (nullNode(): BSTDomainType)) && (!(c == (nullNode(): BSTDomainType)) && (isParent((left_2(t_2): BSTDomainType), c): bool)) ==> (value_2(c): int) < (value_2(t_2): int)
+  { (value_2(t_2): int), (value_2(c): int) } { (isParent((left_1(t_2): BSTDomainType), c): bool) }
+  !(t_2 == (nullNode(): BSTDomainType)) && (!(c == (nullNode(): BSTDomainType)) && (isParent((left_1(t_2): BSTDomainType), c): bool)) ==> (value_2(c): int) < (value_2(t_2): int)
 );
 
 // Translation of domain axiom right_sub_tree_larger
 axiom (forall t_2: BSTDomainType, c: BSTDomainType ::
   { (value_2(t_2): int), (value_2(c): int) }
-  !(t_2 == (nullNode(): BSTDomainType)) && (!(c == (nullNode(): BSTDomainType)) && (isParent((right_2(t_2): BSTDomainType), c): bool)) ==> (value_2(c): int) > (value_2(t_2): int)
+  !(t_2 == (nullNode(): BSTDomainType)) && (!(c == (nullNode(): BSTDomainType)) && (isParent((right(t_2): BSTDomainType), c): bool)) ==> (value_2(c): int) > (value_2(t_2): int)
 );
 
 // Translation of domain axiom isParent_reflexive
@@ -234,31 +234,31 @@ axiom (forall t_2: BSTDomainType ::
 
 // Translation of domain axiom isParent_base
 axiom (forall t_2: BSTDomainType ::
-  { (isParent(t_2, (left_2(t_2): BSTDomainType)): bool) } { (isParent(t_2, (right_2(t_2): BSTDomainType)): bool) }
-  (isParent(t_2, (left_2(t_2): BSTDomainType)): bool) && (isParent(t_2, (right_2(t_2): BSTDomainType)): bool)
+  { (isParent(t_2, (left_1(t_2): BSTDomainType)): bool) } { (isParent(t_2, (right(t_2): BSTDomainType)): bool) }
+  (isParent(t_2, (left_1(t_2): BSTDomainType)): bool) && (isParent(t_2, (right(t_2): BSTDomainType)): bool)
 );
 
 // Translation of domain axiom isParent_recursive
 axiom (forall p_1: BSTDomainType, c: BSTDomainType ::
-  { (isParent(p_1, (left_2(c): BSTDomainType)): bool) } { (isParent(p_1, (right_2(c): BSTDomainType)): bool) }
-  (isParent(p_1, c): bool) ==> (isParent(p_1, (left_2(c): BSTDomainType)): bool) && (isParent(p_1, (right_2(c): BSTDomainType)): bool)
+  { (isParent(p_1, (left_1(c): BSTDomainType)): bool) } { (isParent(p_1, (right(c): BSTDomainType)): bool) }
+  (isParent(p_1, c): bool) ==> (isParent(p_1, (left_1(c): BSTDomainType)): bool) && (isParent(p_1, (right(c): BSTDomainType)): bool)
 );
 
 // Translation of domain axiom isParent_left
 axiom (forall p_1: BSTDomainType, c: BSTDomainType ::
-  { (isParent((left_2(p_1): BSTDomainType), c): bool) }
-  !(p_1 == (nullNode(): BSTDomainType)) && ((isParent(p_1, c): bool) && (value_2(p_1): int) > (value_2(c): int)) ==> !((left_2(p_1): BSTDomainType) == (nullNode(): BSTDomainType)) && (isParent((left_2(p_1): BSTDomainType), c): bool)
+  { (isParent((left_1(p_1): BSTDomainType), c): bool) }
+  !(p_1 == (nullNode(): BSTDomainType)) && ((isParent(p_1, c): bool) && (value_2(p_1): int) > (value_2(c): int)) ==> !((left_1(p_1): BSTDomainType) == (nullNode(): BSTDomainType)) && (isParent((left_1(p_1): BSTDomainType), c): bool)
 );
 
 // ==================================================
 // Translation of method test
 // ==================================================
 
-procedure test(f_69: FooDomainType) returns ()
+procedure test_1(f_38: FooDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -266,14 +266,14 @@ procedure test(f_69: FooDomainType) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume (bar_3(f_69): FooDomainType) == (foo(): FooDomainType);
+    assume (bar_1(f_38): FooDomainType) == (foo_2(): FooDomainType);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;
@@ -288,18 +288,18 @@ procedure test(f_69: FooDomainType) returns ()
 procedure getMin(t_2: BSTDomainType) returns (vmin: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var currentNode: BSTDomainType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var pc: BSTDomainType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var pc_5: BSTDomainType;
-  var t1_4_1: BSTDomainType;
+  var t1_4: BSTDomainType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -323,8 +323,8 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -358,21 +358,21 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant isParent(t, currentNode) might not hold on entry. Assertion isParent(t, currentNode) might not hold. (0207.vpr@71.15--71.39) [220956]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Loop invariant isParent(t, currentNode) might not hold on entry. Assertion isParent(t, currentNode) might not hold. (0207.vpr@71.15--71.39) [56561]"}
           (isParent(t_2, currentNode): bool);
-        assert {:msg "  Loop invariant !(currentNode == nullNode()) might not hold on entry. Assertion !(currentNode == nullNode()) might not hold. (0207.vpr@72.15--72.35) [220957]"}
+        assert {:msg "  Loop invariant !(currentNode == nullNode()) might not hold on entry. Assertion !(currentNode == nullNode()) might not hold. (0207.vpr@72.15--72.35) [56562]"}
           !(currentNode == (nullNode(): BSTDomainType));
-        assert {:msg "  Loop invariant t == currentNode || value(currentNode) < value(t) might not hold on entry. Assertion t == currentNode || value(currentNode) < value(t) might not hold. (0207.vpr@73.15--73.64) [220958]"}
+        assert {:msg "  Loop invariant t == currentNode || value(currentNode) < value(t) might not hold on entry. Assertion t == currentNode || value(currentNode) < value(t) might not hold. (0207.vpr@73.15--73.64) [56563]"}
           t_2 == currentNode || (value_2(currentNode): int) < (value_2(t_2): int);
-        if (t_2 != currentNode && !((left_2(t_2): BSTDomainType) == (nullNode(): BSTDomainType))) {
-          assert {:msg "  Loop invariant t != currentNode && !(left(t) == nullNode()) ==> isParent(left(t), currentNode) might not hold on entry. Assertion isParent(left(t), currentNode) might not hold. (0207.vpr@74.15--74.86) [220959]"}
-            (isParent((left_2(t_2): BSTDomainType), currentNode): bool);
+        if (t_2 != currentNode && !((left_1(t_2): BSTDomainType) == (nullNode(): BSTDomainType))) {
+          assert {:msg "  Loop invariant t != currentNode && !(left(t) == nullNode()) ==> isParent(left(t), currentNode) might not hold on entry. Assertion isParent(left(t), currentNode) might not hold. (0207.vpr@74.15--74.86) [56564]"}
+            (isParent((left_1(t_2): BSTDomainType), currentNode): bool);
         }
         if (*) {
           if (!(pc == (nullNode(): BSTDomainType)) && (isParent(pc, currentNode): bool)) {
-            assert {:msg "  Loop invariant (forall pc: BST :: { value(pc) } !(pc == nullNode()) && isParent(pc, currentNode) ==> value(pc) >= value(currentNode)) might not hold on entry. Assertion value(pc) >= value(currentNode) might not hold. (0207.vpr@75.15--76.83) [220960]"}
+            assert {:msg "  Loop invariant (forall pc: BST :: { value(pc) } !(pc == nullNode()) && isParent(pc, currentNode) ==> value(pc) >= value(currentNode)) might not hold on entry. Assertion value(pc) >= value(currentNode) might not hold. (0207.vpr@75.15--76.83) [56565]"}
               (value_2(pc): int) >= (value_2(currentNode): int);
           }
           assume false;
@@ -393,8 +393,8 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
         assume state(Heap, Mask);
         assume t_2 == currentNode || (value_2(currentNode): int) < (value_2(t_2): int);
         assume state(Heap, Mask);
-        if (t_2 != currentNode && !((left_2(t_2): BSTDomainType) == (nullNode(): BSTDomainType))) {
-          assume (isParent((left_2(t_2): BSTDomainType), currentNode): bool);
+        if (t_2 != currentNode && !((left_1(t_2): BSTDomainType) == (nullNode(): BSTDomainType))) {
+          assume (isParent((left_1(t_2): BSTDomainType), currentNode): bool);
         }
         assume state(Heap, Mask);
         
@@ -421,8 +421,8 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
         assume (isParent(t_2, currentNode): bool);
         assume !(currentNode == (nullNode(): BSTDomainType));
         assume t_2 == currentNode || (value_2(currentNode): int) < (value_2(t_2): int);
-        if (t_2 != currentNode && !((left_2(t_2): BSTDomainType) == (nullNode(): BSTDomainType))) {
-          assume (isParent((left_2(t_2): BSTDomainType), currentNode): bool);
+        if (t_2 != currentNode && !((left_1(t_2): BSTDomainType) == (nullNode(): BSTDomainType))) {
+          assume (isParent((left_1(t_2): BSTDomainType), currentNode): bool);
         }
         assume (forall pc_4: BSTDomainType ::
           { (value_2(pc_4): int) }
@@ -430,30 +430,30 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
         );
         assume state(Heap, Mask);
         // Check and assume guard
-        assume !((left_2(currentNode): BSTDomainType) == (nullNode(): BSTDomainType));
+        assume !((left_1(currentNode): BSTDomainType) == (nullNode(): BSTDomainType));
         assume state(Heap, Mask);
         
         // -- Translate loop body
           
           // -- Translating statement: currentNode := left(currentNode) -- 0207.vpr@78.5--78.37
-            currentNode := (left_2(currentNode): BSTDomainType);
+            currentNode := (left_1(currentNode): BSTDomainType);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant isParent(t, currentNode) might not be preserved. Assertion isParent(t, currentNode) might not hold. (0207.vpr@71.15--71.39) [220961]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Loop invariant isParent(t, currentNode) might not be preserved. Assertion isParent(t, currentNode) might not hold. (0207.vpr@71.15--71.39) [56566]"}
           (isParent(t_2, currentNode): bool);
-        assert {:msg "  Loop invariant !(currentNode == nullNode()) might not be preserved. Assertion !(currentNode == nullNode()) might not hold. (0207.vpr@72.15--72.35) [220962]"}
+        assert {:msg "  Loop invariant !(currentNode == nullNode()) might not be preserved. Assertion !(currentNode == nullNode()) might not hold. (0207.vpr@72.15--72.35) [56567]"}
           !(currentNode == (nullNode(): BSTDomainType));
-        assert {:msg "  Loop invariant t == currentNode || value(currentNode) < value(t) might not be preserved. Assertion t == currentNode || value(currentNode) < value(t) might not hold. (0207.vpr@73.15--73.64) [220963]"}
+        assert {:msg "  Loop invariant t == currentNode || value(currentNode) < value(t) might not be preserved. Assertion t == currentNode || value(currentNode) < value(t) might not hold. (0207.vpr@73.15--73.64) [56568]"}
           t_2 == currentNode || (value_2(currentNode): int) < (value_2(t_2): int);
-        if (t_2 != currentNode && !((left_2(t_2): BSTDomainType) == (nullNode(): BSTDomainType))) {
-          assert {:msg "  Loop invariant t != currentNode && !(left(t) == nullNode()) ==> isParent(left(t), currentNode) might not be preserved. Assertion isParent(left(t), currentNode) might not hold. (0207.vpr@74.15--74.86) [220964]"}
-            (isParent((left_2(t_2): BSTDomainType), currentNode): bool);
+        if (t_2 != currentNode && !((left_1(t_2): BSTDomainType) == (nullNode(): BSTDomainType))) {
+          assert {:msg "  Loop invariant t != currentNode && !(left(t) == nullNode()) ==> isParent(left(t), currentNode) might not be preserved. Assertion isParent(left(t), currentNode) might not hold. (0207.vpr@74.15--74.86) [56569]"}
+            (isParent((left_1(t_2): BSTDomainType), currentNode): bool);
         }
         if (*) {
           if (!(pc_5 == (nullNode(): BSTDomainType)) && (isParent(pc_5, currentNode): bool)) {
-            assert {:msg "  Loop invariant (forall pc: BST :: { value(pc) } !(pc == nullNode()) && isParent(pc, currentNode) ==> value(pc) >= value(currentNode)) might not be preserved. Assertion value(pc) >= value(currentNode) might not hold. (0207.vpr@75.15--76.83) [220965]"}
+            assert {:msg "  Loop invariant (forall pc: BST :: { value(pc) } !(pc == nullNode()) && isParent(pc, currentNode) ==> value(pc) >= value(currentNode)) might not be preserved. Assertion value(pc) >= value(currentNode) might not hold. (0207.vpr@75.15--76.83) [56570]"}
               (value_2(pc_5): int) >= (value_2(currentNode): int);
           }
           assume false;
@@ -467,13 +467,13 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume (left_2(currentNode): BSTDomainType) == (nullNode(): BSTDomainType);
+      assume (left_1(currentNode): BSTDomainType) == (nullNode(): BSTDomainType);
       assume state(Heap, Mask);
       assume (isParent(t_2, currentNode): bool);
       assume !(currentNode == (nullNode(): BSTDomainType));
       assume t_2 == currentNode || (value_2(currentNode): int) < (value_2(t_2): int);
-      if (t_2 != currentNode && !((left_2(t_2): BSTDomainType) == (nullNode(): BSTDomainType))) {
-        assume (isParent((left_2(t_2): BSTDomainType), currentNode): bool);
+      if (t_2 != currentNode && !((left_1(t_2): BSTDomainType) == (nullNode(): BSTDomainType))) {
+        assume (isParent((left_1(t_2): BSTDomainType), currentNode): bool);
       }
       assume (forall pc_7: BSTDomainType ::
         { (value_2(pc_7): int) }
@@ -487,12 +487,12 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (*) {
-      if (!(t1_4_1 == (nullNode(): BSTDomainType)) && (isParent(t_2, t1_4_1): bool)) {
-        assert {:msg "  Postcondition of getMin might not hold. Assertion value(t1) >= min might not hold. (0207.vpr@64.11--65.56) [220966]"}
-          (value_2(t1_4_1): int) >= vmin;
+      if (!(t1_4 == (nullNode(): BSTDomainType)) && (isParent(t_2, t1_4): bool)) {
+        assert {:msg "  Postcondition of getMin might not hold. Assertion value(t1) >= min might not hold. (0207.vpr@64.11--65.56) [56571]"}
+          (value_2(t1_4): int) >= vmin;
       }
       assume false;
     }

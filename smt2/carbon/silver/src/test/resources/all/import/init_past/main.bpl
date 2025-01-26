@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:41
+// Date:         2025-01-26 21:43:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/init_past/main.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/init_past/main-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -184,12 +184,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type LibADomainType;
 
 // Translation of domain function foo
-function  foo(x_8: int): bool;
+function  foo_2(x_37: int): bool;
 
 // Translation of domain axiom bar
 axiom (forall n: int ::
-  { (foo(n): bool) }
-  (foo(n): bool)
+  { (foo_2(n): bool) }
+  (foo_2(n): bool)
 );
 
 // ==================================================
@@ -218,7 +218,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, a_2: int, b_24: bool ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, a_2: int, b_24: bool ::
   { state(Heap, Mask), LibB'(Heap, a_2, b_24) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || LibB#trigger(EmptyFrame, a_2, b_24)) ==> (foo(1): bool) ==> LibB'(Heap, a_2, b_24) == (b_24 || (foo(a_2): bool))
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || LibB#trigger(EmptyFrame, a_2, b_24)) ==> (foo_2(1): bool) ==> LibB'(Heap, a_2, b_24) == (b_24 || (foo_2(a_2): bool))
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -241,11 +241,11 @@ procedure LibB#definedness(a_2: int, b_24: bool) returns (Result: bool)
   // -- Inhaling precondition (with checking)
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume (foo(1): bool);
+    assume (foo_2(1): bool);
     assume state(Heap, Mask);
   
   // -- Checking definedness of postcondition (no body)
-    assume Result == (b_24 || (foo(a_2): bool));
+    assume Result == (b_24 || (foo_2(a_2): bool));
     assume state(Heap, Mask);
 }
 
@@ -256,12 +256,12 @@ procedure LibB#definedness(a_2: int, b_24: bool) returns (Result: bool)
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -272,24 +272,24 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert LibB(77, false) -- main.vpr@8.5--8.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of LibB(77, false)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function LibB might not hold. Assertion foo(1) might not hold. (main.vpr@8.12--8.27) [149423]"}
-          (foo(1): bool);
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function LibB might not hold. Assertion foo(1) might not hold. (main.vpr@8.12--8.27) [93224]"}
+          (foo_2(1): bool);
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion LibB(77, false) might not hold. (main.vpr@8.12--8.27) [149424]"}
+    assert {:msg "  Assert might fail. Assertion LibB(77, false) might not hold. (main.vpr@8.12--8.27) [93225]"}
       LibB(Heap, 77, false);
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:40
+// Date:         2025-01-26 21:42:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0088.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0088-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -233,8 +233,8 @@ function  fib#triggerStateless(n: int): int;
 procedure fib#definedness(n: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -253,9 +253,9 @@ procedure fib#definedness(n: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function fib might not hold. Assertion n - 1 >= 0 might not hold. (0088.vpr@10.16--10.26) [196035]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function fib might not hold. Assertion n - 1 >= 0 might not hold. (0088.vpr@10.16--10.26) [74251]"}
             n - 1 >= 0;
           // Stop execution
           assume false;
@@ -265,9 +265,9 @@ procedure fib#definedness(n: int) returns (Result: int)
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function fib might not hold. Assertion n - 2 >= 0 might not hold. (0088.vpr@10.29--10.39) [196036]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function fib might not hold. Assertion n - 2 >= 0 might not hold. (0088.vpr@10.29--10.39) [74252]"}
             n - 2 >= 0;
           // Stop execution
           assume false;
@@ -281,11 +281,11 @@ procedure fib#definedness(n: int) returns (Result: int)
     Result := (if n <= 1 then n else fib(Heap, n - 1) + fib(Heap, n - 2));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of fib might not hold. Assertion (result == 0) == (n == 0) might not hold. (0088.vpr@8.11--8.36) [196037]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of fib might not hold. Assertion (result == 0) == (n == 0) might not hold. (0088.vpr@8.11--8.36) [74253]"}
       (Result == 0) == (n == 0);
-    assert {:msg "  Postcondition of fib might not hold. Assertion result >= 0 might not hold. (0088.vpr@9.11--9.22) [196038]"}
+    assert {:msg "  Postcondition of fib might not hold. Assertion result >= 0 might not hold. (0088.vpr@9.11--9.22) [74254]"}
       Result >= 0;
 }
 
@@ -343,16 +343,16 @@ procedure P#definedness(x: Ref) returns ()
 // Translation of method test1
 // ==================================================
 
-procedure test1() returns ()
+procedure test1_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var n_87: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var n_1: int;
   
   // -- Initializing the state
@@ -364,30 +364,30 @@ procedure test1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall n: Int :: { fib(n) } n >= 1 ==> fib(n) >= fib(n + 1)) -- 0088.vpr@14.3--14.58
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall n: Int :: { fib(n) } n >= 1 ==> fib(n) >= fib(n + 1))
       if (*) {
         if (n_87 >= 1) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-            assert {:msg "  Precondition of function fib might not hold. Assertion n >= 0 might not hold. (0088.vpr@14.38--14.44) [196039]"}
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            assert {:msg "  Precondition of function fib might not hold. Assertion n >= 0 might not hold. (0088.vpr@14.38--14.44) [74255]"}
               n_87 >= 0;
             // Stop execution
             assume false;
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-            assert {:msg "  Precondition of function fib might not hold. Assertion n + 1 >= 0 might not hold. (0088.vpr@14.48--14.58) [196040]"}
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            assert {:msg "  Precondition of function fib might not hold. Assertion n + 1 >= 0 might not hold. (0088.vpr@14.48--14.58) [74256]"}
               n_87 + 1 >= 0;
             // Stop execution
             assume false;
@@ -397,7 +397,7 @@ procedure test1() returns ()
       }
     if (*) {
       if (n_1 >= 1) {
-        assert {:msg "  Assert might fail. Assertion fib(n) >= fib(n + 1) might not hold. (0088.vpr@14.10--14.58) [196041]"}
+        assert {:msg "  Assert might fail. Assertion fib(n) >= fib(n + 1) might not hold. (0088.vpr@14.10--14.58) [74257]"}
           fib(Heap, n_1) >= fib(Heap, n_1 + 1);
       }
       assume false;
@@ -413,19 +413,19 @@ procedure test1() returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(x: Ref) returns ()
+procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var n_85: int;
+  var ExhaleWellDef0Mask: MaskType;
+  var n_86: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var n_1: int;
   
   // -- Initializing the state
@@ -446,26 +446,26 @@ procedure test2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall n: Int ::n >= 1 ==>
   //     (unfolding acc(P(x), write) in n < n + 1)) -- 0088.vpr@23.3--23.70
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall n: Int ::n >= 1 ==> (unfolding acc(P(x), write) in n < n + 1))
       if (*) {
-        if (n_85 >= 1) {
+        if (n_86 >= 1) {
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume P#trigger(UnfoldingHeap, P(x));
           assume UnfoldingHeap[null, P(x)] == EmptyFrame;
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0088.vpr@23.10--23.70) [196042]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0088.vpr@23.10--23.70) [74258]"}
               perm <= UnfoldingMask[null, P(x)];
           }
           UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
@@ -484,16 +484,16 @@ procedure test2(x: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume P#trigger(UnfoldingHeap, P(x));
           assume UnfoldingHeap[null, P(x)] == EmptyFrame;
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0088.vpr@23.10--23.70) [196045]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0088.vpr@23.10--23.70) [74261]"}
               perm <= UnfoldingMask[null, P(x)];
           }
           UnfoldingMask := UnfoldingMask[null, P(x):=UnfoldingMask[null, P(x)] - perm];
           assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Assert might fail. Assertion n < n + 1 might not hold. (0088.vpr@23.10--23.70) [196046]"}
+        assert {:msg "  Assert might fail. Assertion n < n + 1 might not hold. (0088.vpr@23.10--23.70) [74262]"}
           n_1 < n_1 + 1;
       }
       assume false;

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:19:30
+// Date:         2025-01-26 21:41:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testHistoryLemmasPVL.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testHistoryLemmasPVL-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -196,7 +196,7 @@ function  p_incr(): ProcessDomainType;
 function  p_single(n_84: int): ProcessDomainType;
 
 // Translation of domain function p_dual
-function  p_dual(n_84: int, m_18: int): ProcessDomainType;
+function  p_dual(n_84: int, m_19: int): ProcessDomainType;
 
 // Translation of domain axiom empty_1L
 axiom (forall p_1: ProcessDomainType ::
@@ -221,9 +221,9 @@ axiom (forall p1_2: ProcessDomainType ::
   
   (forall p2_1: ProcessDomainType ::
     { (p_seq(p1_2, p2_1): ProcessDomainType) }
-    (forall p3_1: ProcessDomainType ::
-      { (p_seq((p_seq(p1_2, p2_1): ProcessDomainType), p3_1): ProcessDomainType) } { (p_seq(p1_2, (p_seq(p2_1, p3_1): ProcessDomainType)): ProcessDomainType) }
-      (p_seq((p_seq(p1_2, p2_1): ProcessDomainType), p3_1): ProcessDomainType) == (p_seq(p1_2, (p_seq(p2_1, p3_1): ProcessDomainType)): ProcessDomainType)
+    (forall p3: ProcessDomainType ::
+      { (p_seq((p_seq(p1_2, p2_1): ProcessDomainType), p3): ProcessDomainType) } { (p_seq(p1_2, (p_seq(p2_1, p3): ProcessDomainType)): ProcessDomainType) }
+      (p_seq((p_seq(p1_2, p2_1): ProcessDomainType), p3): ProcessDomainType) == (p_seq(p1_2, (p_seq(p2_1, p3): ProcessDomainType)): ProcessDomainType)
     )
   )
 );
@@ -235,9 +235,9 @@ axiom (forall n: int ::
 );
 
 // Translation of domain axiom dual_def
-axiom (forall n: int, m_17: int ::
-  { (p_dual(n, m_17): ProcessDomainType) }
-  (p_merge((p_single(n): ProcessDomainType), (p_single(m_17): ProcessDomainType)): ProcessDomainType) == (p_dual(n, m_17): ProcessDomainType)
+axiom (forall n: int, m_18: int ::
+  { (p_dual(n, m_18): ProcessDomainType) }
+  (p_merge((p_single(n): ProcessDomainType), (p_single(m_18): ProcessDomainType)): ProcessDomainType) == (p_dual(n, m_18): ProcessDomainType)
 );
 
 // ==================================================
@@ -300,11 +300,11 @@ procedure History__lemma(diz: Ref, current_thread_id: int, n: int) returns ()
         // -- Exhaling precondition
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method History__lemma might not hold. Assertion diz != null might not hold. (testHistoryLemmasPVL.vpr@51.5--51.50) [178754]"}
+          assert {:msg "  The precondition of method History__lemma might not hold. Assertion diz != null might not hold. (testHistoryLemmasPVL.vpr@51.5--51.50) [40282]"}
             diz != null;
-          assert {:msg "  The precondition of method History__lemma might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryLemmasPVL.vpr@51.5--51.50) [178755]"}
+          assert {:msg "  The precondition of method History__lemma might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryLemmasPVL.vpr@51.5--51.50) [40283]"}
             current_thread_id >= 0;
-          assert {:msg "  The precondition of method History__lemma might not hold. Assertion n - 2 >= 0 might not hold. (testHistoryLemmasPVL.vpr@51.5--51.50) [178756]"}
+          assert {:msg "  The precondition of method History__lemma might not hold. Assertion n - 2 >= 0 might not hold. (testHistoryLemmasPVL.vpr@51.5--51.50) [40284]"}
             arg_n >= 0;
         
         // -- Inhaling postcondition
@@ -317,7 +317,7 @@ procedure History__lemma(diz: Ref, current_thread_id: int, n: int) returns ()
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of History__lemma might not hold. Assertion p_single(n) == (n > 0 ? p_seq(p_single(n - 1), p_incr()) : p_empty()) might not hold. (testHistoryLemmasPVL.vpr@47.11--47.80) [178757]"}
+    assert {:msg "  Postcondition of History__lemma might not hold. Assertion p_single(n) == (n > 0 ? p_seq(p_single(n - 1), p_incr()) : p_empty()) might not hold. (testHistoryLemmasPVL.vpr@47.11--47.80) [40285]"}
       (p_single(n): ProcessDomainType) == (if n > 0 then (p_seq((p_single(n - 1): ProcessDomainType), (p_incr(): ProcessDomainType)): ProcessDomainType) else (p_empty(): ProcessDomainType));
 }
 
@@ -325,7 +325,7 @@ procedure History__lemma(diz: Ref, current_thread_id: int, n: int) returns ()
 // Translation of method History__single_axiom
 // ==================================================
 
-procedure History__single_axiom(diz: Ref, current_thread_id: int, m_17: int, n: int) returns ()
+procedure History__single_axiom(diz: Ref, current_thread_id: int, m_18: int, n: int) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -348,7 +348,7 @@ procedure History__single_axiom(diz: Ref, current_thread_id: int, m_17: int, n: 
     assume state(Heap, Mask);
     assume current_thread_id >= 0;
     assume state(Heap, Mask);
-    assume m_17 >= 0;
+    assume m_18 >= 0;
     assume n >= 0;
     assume state(Heap, Mask);
   
@@ -362,7 +362,7 @@ procedure History__single_axiom(diz: Ref, current_thread_id: int, m_17: int, n: 
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
-    assume (p_seq((p_single(m_17): ProcessDomainType), (p_single(n): ProcessDomainType)): ProcessDomainType) == (p_single(m_17 + n): ProcessDomainType);
+    assume (p_seq((p_single(m_18): ProcessDomainType), (p_single(n): ProcessDomainType)): ProcessDomainType) == (p_single(m_18 + n): ProcessDomainType);
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -376,8 +376,8 @@ procedure History__single_axiom(diz: Ref, current_thread_id: int, m_17: int, n: 
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of History__single_axiom might not hold. Assertion p_seq(p_single(m), p_single(n)) == p_single(m + n) might not hold. (testHistoryLemmasPVL.vpr@59.11--59.61) [178758]"}
-      (p_seq((p_single(m_17): ProcessDomainType), (p_single(n): ProcessDomainType)): ProcessDomainType) == (p_single(m_17 + n): ProcessDomainType);
+    assert {:msg "  Postcondition of History__single_axiom might not hold. Assertion p_seq(p_single(m), p_single(n)) == p_single(m + n) might not hold. (testHistoryLemmasPVL.vpr@59.11--59.61) [40286]"}
+      (p_seq((p_single(m_18): ProcessDomainType), (p_single(n): ProcessDomainType)): ProcessDomainType) == (p_single(m_18 + n): ProcessDomainType);
 }
 
 // ==================================================

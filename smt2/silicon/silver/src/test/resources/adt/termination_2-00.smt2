@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:48:17
+; Started: 2025-01-26 21:36:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -235,21 +235,21 @@
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (= (lenBad%limited s@$ l@0@00 v@1@00) (lenBad s@$ l@0@00 v@1@00))
   :pattern ((lenBad s@$ l@0@00 v@1@00))
-  :qid |quant-u-26381|)))
+  :qid |quant-u-13629|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (lenBad%stateless l@0@00 v@1@00)
   :pattern ((lenBad%limited s@$ l@0@00 v@1@00))
-  :qid |quant-u-26382|)))
+  :qid |quant-u-13630|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (let ((result@2@00 (lenBad%limited s@$ l@0@00 v@1@00))) (=>
     (lenBad%precondition s@$ l@0@00 v@1@00)
     (>= result@2@00 0)))
   :pattern ((lenBad%limited s@$ l@0@00 v@1@00))
-  :qid |quant-u-26389|)))
+  :qid |quant-u-13637|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (let ((result@2@00 (lenBad%limited s@$ l@0@00 v@1@00))) true)
   :pattern ((lenBad%limited s@$ l@0@00 v@1@00))
-  :qid |quant-u-26390|)))
+  :qid |quant-u-13638|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -285,13 +285,13 @@
       (lenBad s@$ l@0@00 v@1@00)
       (lenBad%limited $Snap.unit (Cons<List<Val>> v@1@00 (as Nil<List<Val>>  List<Val>)) v@1@00)))
   :pattern ((lenBad s@$ l@0@00 v@1@00))
-  :qid |quant-u-26391|)))
+  :qid |quant-u-13639|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (=>
     (lenBad%precondition s@$ l@0@00 v@1@00)
     (lenBad%precondition $Snap.unit (Cons<List<Val>> v@1@00 (as Nil<List<Val>>  List<Val>)) v@1@00))
   :pattern ((lenBad s@$ l@0@00 v@1@00))
-  :qid |quant-u-26392|)))
+  :qid |quant-u-13640|)))
 ; ---------- FUNCTION len----------
 (declare-fun l@3@00 () List<Val>)
 (declare-fun result@4@00 () Int)
@@ -305,21 +305,21 @@
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (= (len%limited s@$ l@3@00) (len s@$ l@3@00))
   :pattern ((len s@$ l@3@00))
-  :qid |quant-u-26383|)))
+  :qid |quant-u-13631|)))
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (len%stateless l@3@00)
   :pattern ((len%limited s@$ l@3@00))
-  :qid |quant-u-26384|)))
+  :qid |quant-u-13632|)))
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (let ((result@4@00 (len%limited s@$ l@3@00))) (=>
     (len%precondition s@$ l@3@00)
     (>= result@4@00 0)))
   :pattern ((len%limited s@$ l@3@00))
-  :qid |quant-u-26393|)))
+  :qid |quant-u-13641|)))
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (let ((result@4@00 (len%limited s@$ l@3@00))) true)
   :pattern ((len%limited s@$ l@3@00))
-  :qid |quant-u-26394|)))
+  :qid |quant-u-13642|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -402,7 +402,7 @@
         0
         (+ 1 (len%limited $Snap.unit (get_List_tail<List<Val>> l@3@00))))))
   :pattern ((len s@$ l@3@00))
-  :qid |quant-u-26395|)))
+  :qid |quant-u-13643|)))
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (=>
     (len%precondition s@$ l@3@00)
@@ -411,7 +411,7 @@
       true
       (len%precondition $Snap.unit (get_List_tail<List<Val>> l@3@00))))
   :pattern ((len s@$ l@3@00))
-  :qid |quant-u-26396|)))
+  :qid |quant-u-13644|)))
 ; ---------- FUNCTION len2----------
 (declare-fun l@5@00 () List<Val>)
 (declare-fun result@6@00 () Int)
@@ -425,21 +425,21 @@
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (= (len2%limited s@$ l@5@00) (len2 s@$ l@5@00))
   :pattern ((len2 s@$ l@5@00))
-  :qid |quant-u-26385|)))
+  :qid |quant-u-13633|)))
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (len2%stateless l@5@00)
   :pattern ((len2%limited s@$ l@5@00))
-  :qid |quant-u-26386|)))
+  :qid |quant-u-13634|)))
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (let ((result@6@00 (len2%limited s@$ l@5@00))) (=>
     (len2%precondition s@$ l@5@00)
     (>= result@6@00 0)))
   :pattern ((len2%limited s@$ l@5@00))
-  :qid |quant-u-26397|)))
+  :qid |quant-u-13645|)))
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (let ((result@6@00 (len2%limited s@$ l@5@00))) true)
   :pattern ((len2%limited s@$ l@5@00))
-  :qid |quant-u-26398|)))
+  :qid |quant-u-13646|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -584,7 +584,7 @@
             2
             (len2%limited $Snap.unit (get_List_tail<List<Val>> (get_List_tail<List<Val>> l@5@00))))))))
   :pattern ((len2 s@$ l@5@00))
-  :qid |quant-u-26399|)))
+  :qid |quant-u-13647|)))
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (=>
     (len2%precondition s@$ l@5@00)
@@ -596,7 +596,7 @@
         true
         (len2%precondition $Snap.unit (get_List_tail<List<Val>> (get_List_tail<List<Val>> l@5@00))))))
   :pattern ((len2 s@$ l@5@00))
-  :qid |quant-u-26400|)))
+  :qid |quant-u-13648|)))
 ; ---------- FUNCTION lenBad2----------
 (declare-fun l@7@00 () List<Val>)
 (declare-fun result@8@00 () Int)
@@ -610,21 +610,21 @@
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (= (lenBad2%limited s@$ l@7@00) (lenBad2 s@$ l@7@00))
   :pattern ((lenBad2 s@$ l@7@00))
-  :qid |quant-u-26387|)))
+  :qid |quant-u-13635|)))
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (lenBad2%stateless l@7@00)
   :pattern ((lenBad2%limited s@$ l@7@00))
-  :qid |quant-u-26388|)))
+  :qid |quant-u-13636|)))
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (let ((result@8@00 (lenBad2%limited s@$ l@7@00))) (=>
     (lenBad2%precondition s@$ l@7@00)
     (>= result@8@00 0)))
   :pattern ((lenBad2%limited s@$ l@7@00))
-  :qid |quant-u-26401|)))
+  :qid |quant-u-13649|)))
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (let ((result@8@00 (lenBad2%limited s@$ l@7@00))) true)
   :pattern ((lenBad2%limited s@$ l@7@00))
-  :qid |quant-u-26402|)))
+  :qid |quant-u-13650|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -655,8 +655,8 @@
     (lenBad2%precondition s@$ l@7@00)
     (= (lenBad2 s@$ l@7@00) (+ 1 (lenBad2%limited $Snap.unit l@7@00))))
   :pattern ((lenBad2 s@$ l@7@00))
-  :qid |quant-u-26403|)))
+  :qid |quant-u-13651|)))
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (=> (lenBad2%precondition s@$ l@7@00) (lenBad2%precondition $Snap.unit l@7@00))
   :pattern ((lenBad2 s@$ l@7@00))
-  :qid |quant-u-26404|)))
+  :qid |quant-u-13652|)))

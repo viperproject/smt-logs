@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:59:37
+// Date:         2025-01-26 21:44:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Imports/complex.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Imports/complex-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -182,11 +182,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo_2(Heap: HeapType, x: int): int;
+function  foo_1(Heap: HeapType, x: int): int;
 function  foo'(Heap: HeapType, x: int): int;
 axiom (forall Heap: HeapType, x: int ::
-  { foo_2(Heap, x) }
-  foo_2(Heap, x) == foo'(Heap, x) && dummyFunction(foo#triggerStateless(x))
+  { foo_1(Heap, x) }
+  foo_1(Heap, x) == foo'(Heap, x) && dummyFunction(foo#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: int ::
   { foo'(Heap, x) }
@@ -195,8 +195,8 @@ axiom (forall Heap: HeapType, x: int ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: int ::
-  { state(Heap, Mask), foo_2(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> foo_2(Heap, x) == x + 1
+  { state(Heap, Mask), foo_1(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> foo_1(Heap, x) == x + 1
 );
 
 // Framing axioms
@@ -207,7 +207,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, x: int ::
 );
 
 // Trigger function (controlling recursive postconditions)
-function  foo#trigger(frame: FrameType, x: int): bool;
+function  foo#trigger_1(frame: FrameType, x: int): bool;
 
 // State-independent trigger function
 function  foo#triggerStateless(x: int): int;
@@ -319,7 +319,7 @@ procedure main() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo(5) > bar(x - 1) might not hold. (complex.vpr@9.12--9.34) [92895]"}
-      foo_2(Heap, 5) > bar(Heap, x - 1);
+    assert {:msg "  Assert might fail. Assertion foo(5) > bar(x - 1) might not hold. (complex.vpr@9.12--9.34) [198937]"}
+      foo_1(Heap, 5) > bar(Heap, x - 1);
     assume state(Heap, Mask);
 }

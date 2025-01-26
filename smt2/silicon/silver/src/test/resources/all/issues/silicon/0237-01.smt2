@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:46:26
+; Started: 2025-01-26 21:33:30
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -782,7 +782,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (- $Perm.No (pTaken@22@01 r)) $Perm.No)
   
-  :qid |quant-u-25076|))))
+  :qid |quant-u-10090|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -797,7 +797,7 @@
     (and (img@21@01 r) (= r (loc<Ref> arr@10@01 (inv@20@01 r))))
     (= (- $Perm.No (pTaken@22@01 r)) $Perm.No))
   
-  :qid |quant-u-25077|))))
+  :qid |quant-u-10091|))))
 (check-sat)
 ; unsat
 (pop) ; 3

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:58
+// Date:         2025-01-26 21:41:49
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/basic2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/basic2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -227,7 +227,7 @@ procedure fun01#definedness() returns (Result: int)
   // -- Checking definedness of postcondition (no body)
     
     // -- Check definedness of 1 \ result != 1
-      assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (basic2.vpr@6.11--6.26) [155774]"}
+      assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (basic2.vpr@6.11--6.26) [48432]"}
         Result != 0;
     assume 1 div Result != 1;
     assume state(Heap, Mask);
@@ -288,7 +288,7 @@ procedure fun02#definedness() returns (Result: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of 1 \ result != 1
-      assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (basic2.vpr@10.11--10.26) [155775]"}
+      assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (basic2.vpr@10.11--10.26) [48433]"}
         Result != 0;
     assume 1 div Result != 1;
     assume state(Heap, Mask);
@@ -344,7 +344,7 @@ procedure fun03#definedness() returns (Result: int)
     assume Result != 0;
     
     // -- Check definedness of 1 \ result != 1
-      assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (basic2.vpr@13.11--13.41) [155776]"}
+      assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (basic2.vpr@13.11--13.41) [48434]"}
         Result != 0;
     assume 1 div Result != 1;
     assume state(Heap, Mask);

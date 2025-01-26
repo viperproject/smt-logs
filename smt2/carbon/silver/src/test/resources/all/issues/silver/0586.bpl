@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:01
+// Date:         2025-01-26 21:41:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0586.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0586-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -318,7 +318,7 @@ axiom !IsWandField(val);
 // Translation of method test1
 // ==================================================
 
-procedure test1(head_1: Ref) returns ()
+procedure test1_1(head_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -423,7 +423,7 @@ procedure test1(head_1: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (0586.vpr@13.9--13.33) [220542]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (0586.vpr@13.9--13.33) [53867]"}
       FullPerm <= Mask[null, wand(0, head_1, FullPerm, true)];
     Mask := Mask[null, wand(0, head_1, FullPerm, true):=Mask[null, wand(0, head_1, FullPerm, true)] - FullPerm];
     // Finish exhale
@@ -437,7 +437,7 @@ procedure test1(head_1: Ref) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(head_1: Ref) returns ()
+procedure test2_1(head_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -542,7 +542,7 @@ procedure test2(head_1: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (0586.vpr@19.10--19.50) [220544]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (0586.vpr@19.10--19.50) [53869]"}
       FullPerm <= Mask[null, wand_1(head_1, FullPerm, true)];
     Mask := Mask[null, wand_1(head_1, FullPerm, true):=Mask[null, wand_1(head_1, FullPerm, true)] - FullPerm];
     // Finish exhale
@@ -556,7 +556,7 @@ procedure test2(head_1: Ref) returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3(head_1: Ref) returns ()
+procedure test3_1(head_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -580,7 +580,7 @@ procedure test3(head_1: Ref) returns ()
   var ExhaleWellDef0Heap: HeapType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var y_2: int;
+  var y_2_1: int;
   var x_2_2: Ref;
   var Labellhs9Mask: MaskType;
   var Labellhs9Heap: HeapType;
@@ -648,7 +648,7 @@ procedure test3(head_1: Ref) returns ()
       if (*) {
         havoc WandDefLHSHeap;
         WandDefLHSMask := ZeroMask;
-        y_2 := 0;
+        y_2_1 := 0;
         x_2_2 := head_1;
         perm := FullPerm;
         assume x_2_2 != null;
@@ -667,7 +667,7 @@ procedure test3(head_1: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (0586.vpr@25.11--25.67) [220546]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (0586.vpr@25.11--25.67) [53871]"}
       FullPerm <= Mask[null, wand_3(0, head_1, FullPerm, true)];
     Mask := Mask[null, wand_3(0, head_1, FullPerm, true):=Mask[null, wand_3(0, head_1, FullPerm, true)] - FullPerm];
     // Finish exhale

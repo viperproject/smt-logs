@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:27
+// Date:         2025-01-26 21:43:15
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0179.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0179-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -247,7 +247,7 @@ axiom (forall Heap: HeapType, r$: Ref ::
 // Translation of method test2
 // ==================================================
 
-procedure test2() returns ()
+procedure test2_1() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -294,17 +294,17 @@ procedure test2() returns ()
     if (FullPerm <= Mask[null, P3(b_24)]) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P3(b) (0179.vpr@16.12--16.109) [195187]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P3(b) (0179.vpr@16.12--16.109) [85625]"}
           perm <= Mask[null, P3(b_24)];
       }
       Mask := Mask[null, P3(b_24):=Mask[null, P3(b_24)] - perm];
     } else {
       if (NoPerm < Mask[null, P1(b_24)]) {
         perm := FullPerm - Mask[null, P3(b_24)];
-        assert {:msg "  Exhale might fail. Fraction write - perm(P3(b)) might be negative. (0179.vpr@16.12--16.109) [195188]"}
+        assert {:msg "  Exhale might fail. Fraction write - perm(P3(b)) might be negative. (0179.vpr@16.12--16.109) [85626]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access P1(b) (0179.vpr@16.12--16.109) [195189]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access P1(b) (0179.vpr@16.12--16.109) [85627]"}
             perm <= Mask[null, P1(b_24)];
         }
         Mask := Mask[null, P1(b_24):=Mask[null, P1(b_24)] - perm];
@@ -319,7 +319,7 @@ procedure test2() returns ()
   // -- Translating statement: assert perm(P1(b)) == write -- 0179.vpr@18.5--18.32
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion perm(P1(b)) == write might not hold. (0179.vpr@18.12--18.32) [195191]"}
+    assert {:msg "  Assert might fail. Assertion perm(P1(b)) == write might not hold. (0179.vpr@18.12--18.32) [85629]"}
       Mask[null, P1(b_24)] == FullPerm;
     assume state(Heap, Mask);
 }

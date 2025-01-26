@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:43:24
+; Started: 2025-01-26 21:32:05
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -130,11 +130,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (y@1@00 $Ref)) (!
   (= (fun4%limited s@$ x@0@00 y@1@00) (fun4 s@$ x@0@00 y@1@00))
   :pattern ((fun4 s@$ x@0@00 y@1@00))
-  :qid |quant-u-22267|)))
+  :qid |quant-u-9121|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (y@1@00 $Ref)) (!
   (fun4%stateless x@0@00 y@1@00)
   :pattern ((fun4%limited s@$ x@0@00 y@1@00))
-  :qid |quant-u-22268|)))
+  :qid |quant-u-9122|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -170,11 +170,11 @@
     (fun4%precondition s@$ x@0@00 y@1@00)
     (= (fun4 s@$ x@0@00 y@1@00) ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((fun4 s@$ x@0@00 y@1@00))
-  :qid |quant-u-22271|)))
+  :qid |quant-u-9125|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (y@1@00 $Ref)) (!
   true
   :pattern ((fun4 s@$ x@0@00 y@1@00))
-  :qid |quant-u-22272|)))
+  :qid |quant-u-9126|)))
 ; ---------- FUNCTION fun3----------
 (declare-fun x@3@00 () $Ref)
 (declare-fun result@4@00 () Int)
@@ -185,11 +185,11 @@
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   (= (fun3%limited s@$ x@3@00) (fun3 s@$ x@3@00))
   :pattern ((fun3 s@$ x@3@00))
-  :qid |quant-u-22269|)))
+  :qid |quant-u-9123|)))
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   (fun3%stateless x@3@00)
   :pattern ((fun3%limited s@$ x@3@00))
-  :qid |quant-u-22270|)))
+  :qid |quant-u-9124|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -211,11 +211,11 @@
     (fun3%precondition s@$ x@3@00)
     (= (fun3 s@$ x@3@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((fun3 s@$ x@3@00))
-  :qid |quant-u-22273|)))
+  :qid |quant-u-9127|)))
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   true
   :pattern ((fun3 s@$ x@3@00))
-  :qid |quant-u-22274|)))
+  :qid |quant-u-9128|)))
 ; ---------- F ----------
 (declare-const x@5@00 $Ref)
 (push) ; 1

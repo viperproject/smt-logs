@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:47:07
+; Started: 2025-01-26 21:33:45
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -154,153 +154,153 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (otherRef%limited s@$) (otherRef s@$))
   :pattern ((otherRef s@$))
-  :qid |quant-u-25819|)))
+  :qid |quant-u-10358|)))
 (assert (forall ((s@$ $Snap)) (!
   (as otherRef%stateless  Bool)
   :pattern ((otherRef%limited s@$))
-  :qid |quant-u-25820|)))
+  :qid |quant-u-10359|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (= (helper%limited s@$ r@1@00) (helper s@$ r@1@00))
   :pattern ((helper s@$ r@1@00))
-  :qid |quant-u-25821|)))
+  :qid |quant-u-10360|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (helper%stateless r@1@00)
   :pattern ((helper%limited s@$ r@1@00))
-  :qid |quant-u-25822|)))
+  :qid |quant-u-10361|)))
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (= (postInhale%limited s@$ r@3@00) (postInhale s@$ r@3@00))
   :pattern ((postInhale s@$ r@3@00))
-  :qid |quant-u-25823|)))
+  :qid |quant-u-10362|)))
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (postInhale%stateless r@3@00)
   :pattern ((postInhale%limited s@$ r@3@00))
-  :qid |quant-u-25824|)))
+  :qid |quant-u-10363|)))
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (let ((result@4@00 (postInhale%limited s@$ r@3@00))) (=>
     (postInhale%precondition s@$ r@3@00)
     (= (helper $Snap.unit result@4@00) 2)))
   :pattern ((postInhale%limited s@$ r@3@00))
-  :qid |quant-u-25839|)))
+  :qid |quant-u-10378|)))
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (let ((result@4@00 (postInhale%limited s@$ r@3@00))) (=>
     (postInhale%precondition s@$ r@3@00)
     (helper%precondition $Snap.unit result@4@00)))
   :pattern ((postInhale%limited s@$ r@3@00))
-  :qid |quant-u-25840|)))
+  :qid |quant-u-10379|)))
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (=>
     (postInhale%precondition s@$ r@3@00)
     (= (postInhale s@$ r@3@00) (otherRef $Snap.unit)))
   :pattern ((postInhale s@$ r@3@00))
-  :qid |quant-u-25841|)))
+  :qid |quant-u-10380|)))
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (=> (postInhale%precondition s@$ r@3@00) (otherRef%precondition $Snap.unit))
   :pattern ((postInhale s@$ r@3@00))
-  :qid |quant-u-25842|)))
+  :qid |quant-u-10381|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (= (onlyWorksWithInhale%limited s@$ i@5@00) (onlyWorksWithInhale s@$ i@5@00))
   :pattern ((onlyWorksWithInhale s@$ i@5@00))
-  :qid |quant-u-25825|)))
+  :qid |quant-u-10364|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (onlyWorksWithInhale%stateless i@5@00)
   :pattern ((onlyWorksWithInhale%limited s@$ i@5@00))
-  :qid |quant-u-25826|)))
+  :qid |quant-u-10365|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (let ((result@6@00 (onlyWorksWithInhale%limited s@$ i@5@00))) (=>
     (onlyWorksWithInhale%precondition s@$ i@5@00)
     (> result@6@00 17)))
   :pattern ((onlyWorksWithInhale%limited s@$ i@5@00))
-  :qid |quant-u-25843|)))
+  :qid |quant-u-10382|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (let ((result@6@00 (onlyWorksWithInhale%limited s@$ i@5@00))) true)
   :pattern ((onlyWorksWithInhale%limited s@$ i@5@00))
-  :qid |quant-u-25844|)))
+  :qid |quant-u-10383|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (=>
     (onlyWorksWithInhale%precondition s@$ i@5@00)
     (= (onlyWorksWithInhale s@$ i@5@00) i@5@00))
   :pattern ((onlyWorksWithInhale s@$ i@5@00))
-  :qid |quant-u-25845|)))
+  :qid |quant-u-10384|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   true
   :pattern ((onlyWorksWithInhale s@$ i@5@00))
-  :qid |quant-u-25846|)))
+  :qid |quant-u-10385|)))
 (assert (forall ((s@$ $Snap) (i@7@00 Int)) (!
   (= (onlyWorksWithInhale2%limited s@$ i@7@00) (onlyWorksWithInhale2 s@$ i@7@00))
   :pattern ((onlyWorksWithInhale2 s@$ i@7@00))
-  :qid |quant-u-25827|)))
+  :qid |quant-u-10366|)))
 (assert (forall ((s@$ $Snap) (i@7@00 Int)) (!
   (onlyWorksWithInhale2%stateless i@7@00)
   :pattern ((onlyWorksWithInhale2%limited s@$ i@7@00))
-  :qid |quant-u-25828|)))
+  :qid |quant-u-10367|)))
 (assert (forall ((s@$ $Snap) (i@7@00 Int)) (!
   (let ((result@8@00 (onlyWorksWithInhale2%limited s@$ i@7@00))) (=>
     (onlyWorksWithInhale2%precondition s@$ i@7@00)
     (> result@8@00 17)))
   :pattern ((onlyWorksWithInhale2%limited s@$ i@7@00))
-  :qid |quant-u-25847|)))
+  :qid |quant-u-10386|)))
 (assert (forall ((s@$ $Snap) (i@7@00 Int)) (!
   (let ((result@8@00 (onlyWorksWithInhale2%limited s@$ i@7@00))) true)
   :pattern ((onlyWorksWithInhale2%limited s@$ i@7@00))
-  :qid |quant-u-25848|)))
+  :qid |quant-u-10387|)))
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (= (main%limited s@$ r2@9@00) (main s@$ r2@9@00))
   :pattern ((main s@$ r2@9@00))
-  :qid |quant-u-25829|)))
+  :qid |quant-u-10368|)))
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (main%stateless r2@9@00)
   :pattern ((main%limited s@$ r2@9@00))
-  :qid |quant-u-25830|)))
+  :qid |quant-u-10369|)))
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (let ((result@10@00 (main%limited s@$ r2@9@00))) (=>
     (main%precondition s@$ r2@9@00)
     (= (helper $Snap.unit result@10@00) 2)))
   :pattern ((main%limited s@$ r2@9@00))
-  :qid |quant-u-25849|)))
+  :qid |quant-u-10388|)))
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (let ((result@10@00 (main%limited s@$ r2@9@00))) (=>
     (main%precondition s@$ r2@9@00)
     (helper%precondition $Snap.unit result@10@00)))
   :pattern ((main%limited s@$ r2@9@00))
-  :qid |quant-u-25850|)))
+  :qid |quant-u-10389|)))
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (=>
     (main%precondition s@$ r2@9@00)
     (= (main s@$ r2@9@00) (postInhale $Snap.unit r2@9@00)))
   :pattern ((main s@$ r2@9@00))
-  :qid |quant-u-25851|)))
+  :qid |quant-u-10390|)))
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (=>
     (main%precondition s@$ r2@9@00)
     (postInhale%precondition $Snap.unit r2@9@00))
   :pattern ((main s@$ r2@9@00))
-  :qid |quant-u-25852|)))
+  :qid |quant-u-10391|)))
 (assert (forall ((s@$ $Snap) (this@11@00 $Ref)) (!
   (= (inhaleTrue%limited s@$ this@11@00) (inhaleTrue s@$ this@11@00))
   :pattern ((inhaleTrue s@$ this@11@00))
-  :qid |quant-u-25831|)))
+  :qid |quant-u-10370|)))
 (assert (forall ((s@$ $Snap) (this@11@00 $Ref)) (!
   (inhaleTrue%stateless this@11@00)
   :pattern ((inhaleTrue%limited s@$ this@11@00))
-  :qid |quant-u-25832|)))
+  :qid |quant-u-10371|)))
 (assert (forall ((s@$ $Snap) (this@11@00 $Ref)) (!
   (=> (inhaleTrue%precondition s@$ this@11@00) (= (inhaleTrue s@$ this@11@00) 0))
   :pattern ((inhaleTrue s@$ this@11@00))
-  :qid |quant-u-25853|)))
+  :qid |quant-u-10392|)))
 (assert (forall ((s@$ $Snap) (this@11@00 $Ref)) (!
   true
   :pattern ((inhaleTrue s@$ this@11@00))
-  :qid |quant-u-25854|)))
+  :qid |quant-u-10393|)))
 (assert (forall ((s@$ $Snap) (i2@13@00 Int)) (!
   (=
     (onlyWorksWithPreExhale%limited s@$ i2@13@00)
     (onlyWorksWithPreExhale s@$ i2@13@00))
   :pattern ((onlyWorksWithPreExhale s@$ i2@13@00))
-  :qid |quant-u-25833|)))
+  :qid |quant-u-10372|)))
 (assert (forall ((s@$ $Snap) (i2@13@00 Int)) (!
   (onlyWorksWithPreExhale%stateless i2@13@00)
   :pattern ((onlyWorksWithPreExhale%limited s@$ i2@13@00))
-  :qid |quant-u-25834|)))
+  :qid |quant-u-10373|)))
 (assert (forall ((s@$ $Snap) (i2@13@00 Int)) (!
   (=>
     (onlyWorksWithPreExhale%precondition s@$ i2@13@00)
@@ -308,52 +308,52 @@
       (onlyWorksWithPreExhale s@$ i2@13@00)
       (onlyWorksWithInhale $Snap.unit i2@13@00)))
   :pattern ((onlyWorksWithPreExhale s@$ i2@13@00))
-  :qid |quant-u-25855|)))
+  :qid |quant-u-10394|)))
 (assert (forall ((s@$ $Snap) (i2@13@00 Int)) (!
   (=>
     (onlyWorksWithPreExhale%precondition s@$ i2@13@00)
     (onlyWorksWithInhale%precondition $Snap.unit i2@13@00))
   :pattern ((onlyWorksWithPreExhale s@$ i2@13@00))
-  :qid |quant-u-25856|)))
+  :qid |quant-u-10395|)))
 (assert (forall ((s@$ $Snap) (i2@15@00 Int)) (!
   (=
     (onlyWorksWithPreExhale2%limited s@$ i2@15@00)
     (onlyWorksWithPreExhale2 s@$ i2@15@00))
   :pattern ((onlyWorksWithPreExhale2 s@$ i2@15@00))
-  :qid |quant-u-25835|)))
+  :qid |quant-u-10374|)))
 (assert (forall ((s@$ $Snap) (i2@15@00 Int)) (!
   (onlyWorksWithPreExhale2%stateless i2@15@00)
   :pattern ((onlyWorksWithPreExhale2%limited s@$ i2@15@00))
-  :qid |quant-u-25836|)))
+  :qid |quant-u-10375|)))
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (= (main2%limited s@$ i3@17@00) (main2 s@$ i3@17@00))
   :pattern ((main2 s@$ i3@17@00))
-  :qid |quant-u-25837|)))
+  :qid |quant-u-10376|)))
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (main2%stateless i3@17@00)
   :pattern ((main2%limited s@$ i3@17@00))
-  :qid |quant-u-25838|)))
+  :qid |quant-u-10377|)))
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (let ((result@18@00 (main2%limited s@$ i3@17@00))) (=>
     (main2%precondition s@$ i3@17@00)
     (> result@18@00 17)))
   :pattern ((main2%limited s@$ i3@17@00))
-  :qid |quant-u-25857|)))
+  :qid |quant-u-10396|)))
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (let ((result@18@00 (main2%limited s@$ i3@17@00))) true)
   :pattern ((main2%limited s@$ i3@17@00))
-  :qid |quant-u-25858|)))
+  :qid |quant-u-10397|)))
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (=>
     (main2%precondition s@$ i3@17@00)
     (= (main2 s@$ i3@17@00) (onlyWorksWithInhale $Snap.unit i3@17@00)))
   :pattern ((main2 s@$ i3@17@00))
-  :qid |quant-u-25859|)))
+  :qid |quant-u-10398|)))
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (=>
     (main2%precondition s@$ i3@17@00)
     (onlyWorksWithInhale%precondition $Snap.unit i3@17@00))
   :pattern ((main2 s@$ i3@17@00))
-  :qid |quant-u-25860|)))
+  :qid |quant-u-10399|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

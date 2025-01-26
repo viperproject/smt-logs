@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:06
+// Date:         2025-01-26 21:43:49
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/contains_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/contains_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,7 +181,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type ContainsDomainDomainType A B;
 
 // Translation of domain function contains
-function  contains_1<A, B>(a_3: A, b_102: B): bool;
+function  contains_1<A, B>(a_3: A, b_33: B): bool;
 
 // ==================================================
 // Translation of domain List
@@ -197,24 +197,24 @@ function  Nil<T>(): ListDomainType T;
 function  Cons<T>(value_2: T, tail: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function get_List_value
-function  get_List_value<T>(t_9: (ListDomainType T)): T;
+function  get_List_value<T>(t_3: (ListDomainType T)): T;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<T>(t_9: (ListDomainType T)): ListDomainType T;
+function  get_List_tail<T>(t_3: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function List_tag
-function  List_tag<T>(t_9: (ListDomainType T)): int;
+function  List_tag<T>(t_3: (ListDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType T)): T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType T)): ListDomainType T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType T)): ListDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -224,9 +224,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType T)): int) == 0
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (List_tag((Cons(value, tail_1): ListDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -236,9 +236,9 @@ axiom (forall <T> t_2: (ListDomainType T) ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (contains_1(tail_1, (Cons(value_1, tail_1): ListDomainType T)): bool)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (contains_1(tail_1, (Cons(value, tail_1): ListDomainType T)): bool)
 );
 
 // ==================================================
@@ -286,7 +286,7 @@ procedure contains_2a() returns ()
   // -- Translating statement: assert (contains(2, (Cons(2, (Nil(): List[Int])): List[Int])): Bool) -- contains_2.vpr@13.3--13.36
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (contains(2, (Cons(2, (Nil(): List[Int])): List[Int])): Bool) might not hold. (contains_2.vpr@13.10--13.36) [222725]"}
+    assert {:msg "  Assert might fail. Assertion (contains(2, (Cons(2, (Nil(): List[Int])): List[Int])): Bool) might not hold. (contains_2.vpr@13.10--13.36) [104038]"}
       (contains_1(2, (Cons(2, (Nil(): ListDomainType int)): ListDomainType int)): bool);
     assume state(Heap, Mask);
 }
@@ -332,28 +332,28 @@ procedure contains_2b() returns ()
   // -- Translating statement: assert (contains(a, b): Bool) -- contains_2.vpr@28.3--28.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (contains(a, b): Bool) might not hold. (contains_2.vpr@28.10--28.23) [222726]"}
+    assert {:msg "  Assert might fail. Assertion (contains(a, b): Bool) might not hold. (contains_2.vpr@28.10--28.23) [104039]"}
       (contains_1(a_2, b_24): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(b, c): Bool) -- contains_2.vpr@29.3--29.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (contains(b, c): Bool) might not hold. (contains_2.vpr@29.10--29.23) [222727]"}
+    assert {:msg "  Assert might fail. Assertion (contains(b, c): Bool) might not hold. (contains_2.vpr@29.10--29.23) [104040]"}
       (contains_1(b_24, c): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(a, c): Bool) -- contains_2.vpr@30.3--30.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (contains(a, c): Bool) might not hold. (contains_2.vpr@30.10--30.23) [222728]"}
+    assert {:msg "  Assert might fail. Assertion (contains(a, c): Bool) might not hold. (contains_2.vpr@30.10--30.23) [104041]"}
       (contains_1(a_2, c): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(2, c): Bool) -- contains_2.vpr@32.3--32.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (contains(2, c): Bool) might not hold. (contains_2.vpr@32.10--32.23) [222729]"}
+    assert {:msg "  Assert might fail. Assertion (contains(2, c): Bool) might not hold. (contains_2.vpr@32.10--32.23) [104042]"}
       (contains_1(2, c): bool);
     assume state(Heap, Mask);
 }

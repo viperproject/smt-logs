@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:43
+// Date:         2025-01-26 21:42:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0232.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0232-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -234,7 +234,7 @@ procedure P#definedness(r$: Ref) returns ()
 // Translation of method test
 // ==================================================
 
-procedure test(c: Ref, d: Ref, e_1: Ref) returns ()
+procedure test_1(c: Ref, d: Ref, e_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -279,10 +279,10 @@ procedure test(c: Ref, d: Ref, e_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     if (NoPerm < Mask[null, P(e_1)]) {
       perm := Mask[null, P(e_1)];
-      assert {:msg "  Exhale might fail. Fraction perm(P(e)) might be negative. (0232.vpr@15.11--15.59) [218399]"}
+      assert {:msg "  Exhale might fail. Fraction perm(P(e)) might be negative. (0232.vpr@15.11--15.59) [75362]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(e) (0232.vpr@15.11--15.59) [218400]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(e) (0232.vpr@15.11--15.59) [75363]"}
           perm <= Mask[null, P(e_1)];
       }
       Mask := Mask[null, P(e_1):=Mask[null, P(e_1)] - perm];
@@ -298,7 +298,7 @@ procedure test(c: Ref, d: Ref, e_1: Ref) returns ()
 // Translation of method test1
 // ==================================================
 
-procedure test1(this: Ref) returns ()
+procedure test1_1(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -333,7 +333,7 @@ procedure test1(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0232.vpr@21.10--21.28) [218403]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0232.vpr@21.10--21.28) [75366]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -347,10 +347,10 @@ procedure test1(this: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := Mask[null, P(this)];
-    assert {:msg "  Exhale might fail. Fraction perm(P(this)) might be negative. (0232.vpr@22.10--22.37) [218404]"}
+    assert {:msg "  Exhale might fail. Fraction perm(P(this)) might be negative. (0232.vpr@22.10--22.37) [75367]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0232.vpr@22.10--22.37) [218405]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0232.vpr@22.10--22.37) [75368]"}
         perm <= Mask[null, P(this)];
     }
     Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -365,7 +365,7 @@ procedure test1(this: Ref) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(this: Ref) returns ()
+procedure test2_1(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -400,10 +400,10 @@ procedure test2(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     if (NoPerm < Mask[null, P(this)]) {
       perm := Mask[null, P(this)];
-      assert {:msg "  Exhale might fail. Fraction perm(P(this)) might be negative. (0232.vpr@28.11--28.68) [218406]"}
+      assert {:msg "  Exhale might fail. Fraction perm(P(this)) might be negative. (0232.vpr@28.11--28.68) [75369]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0232.vpr@28.11--28.68) [218407]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0232.vpr@28.11--28.68) [75370]"}
           perm <= Mask[null, P(this)];
       }
       Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -419,7 +419,7 @@ procedure test2(this: Ref) returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3(this: Ref) returns ()
+procedure test3_1(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -445,7 +445,7 @@ procedure test3(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(P(this.f), write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (0232.vpr@33.12--33.33) [218409]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (0232.vpr@33.12--33.33) [75372]"}
         HasDirectPerm(Mask, this, f_7);
     perm := FullPerm;
     Mask := Mask[null, P(Heap[this, f_7]):=Mask[null, P(Heap[this, f_7])] + perm];
@@ -463,15 +463,15 @@ procedure test3(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(P(this.f), perm(P(this.f)))
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@35.10--35.41) [218410]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@35.10--35.41) [75373]"}
         HasDirectPerm(ExhaleWellDef0Mask, this, f_7);
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@35.10--35.41) [218411]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@35.10--35.41) [75374]"}
         HasDirectPerm(ExhaleWellDef0Mask, this, f_7);
     perm := Mask[null, P(Heap[this, f_7])];
-    assert {:msg "  Exhale might fail. Fraction perm(P(this.f)) might be negative. (0232.vpr@35.10--35.41) [218412]"}
+    assert {:msg "  Exhale might fail. Fraction perm(P(this.f)) might be negative. (0232.vpr@35.10--35.41) [75375]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this.f) (0232.vpr@35.10--35.41) [218413]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this.f) (0232.vpr@35.10--35.41) [75376]"}
         perm <= Mask[null, P(Heap[this, f_7])];
     }
     Mask := Mask[null, P(Heap[this, f_7]):=Mask[null, P(Heap[this, f_7])] - perm];
@@ -486,7 +486,7 @@ procedure test3(this: Ref) returns ()
 // Translation of method test4
 // ==================================================
 
-procedure test4(this: Ref) returns ()
+procedure test4_1(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -512,7 +512,7 @@ procedure test4(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(P(this.f), write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (0232.vpr@40.12--40.33) [218414]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (0232.vpr@40.12--40.33) [75377]"}
         HasDirectPerm(Mask, this, f_7);
     perm := FullPerm;
     Mask := Mask[null, P(Heap[this, f_7]):=Mask[null, P(Heap[this, f_7])] + perm];
@@ -530,20 +530,20 @@ procedure test4(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of perm(P(this.f)) > none
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@42.11--42.74) [218415]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@42.11--42.74) [75378]"}
         HasDirectPerm(ExhaleWellDef0Mask, this, f_7);
     if (NoPerm < Mask[null, P(Heap[this, f_7])]) {
       
       // -- Check definedness of acc(P(this.f), perm(P(this.f)))
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@42.11--42.74) [218416]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@42.11--42.74) [75379]"}
           HasDirectPerm(ExhaleWellDef0Mask, this, f_7);
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@42.11--42.74) [218417]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@42.11--42.74) [75380]"}
           HasDirectPerm(ExhaleWellDef0Mask, this, f_7);
       perm := Mask[null, P(Heap[this, f_7])];
-      assert {:msg "  Exhale might fail. Fraction perm(P(this.f)) might be negative. (0232.vpr@42.11--42.74) [218418]"}
+      assert {:msg "  Exhale might fail. Fraction perm(P(this.f)) might be negative. (0232.vpr@42.11--42.74) [75381]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this.f) (0232.vpr@42.11--42.74) [218419]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this.f) (0232.vpr@42.11--42.74) [75382]"}
           perm <= Mask[null, P(Heap[this, f_7])];
       }
       Mask := Mask[null, P(Heap[this, f_7]):=Mask[null, P(Heap[this, f_7])] - perm];
@@ -559,7 +559,7 @@ procedure test4(this: Ref) returns ()
 // Translation of method test5
 // ==================================================
 
-procedure test5(this: Ref, a_2: Ref) returns ()
+procedure test5_1(this: Ref, a_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -580,7 +580,7 @@ procedure test5(this: Ref, a_2: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 10;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (0232.vpr@46.12--46.29) [218421]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 10 might be negative. (0232.vpr@46.12--46.29) [75384]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     Mask := Mask[this, f_7:=Mask[this, f_7] + perm];
@@ -602,20 +602,20 @@ procedure test5(this: Ref, a_2: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of perm(P(this.f)) > none
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@49.11--49.74) [218422]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@49.11--49.74) [75385]"}
         HasDirectPerm(ExhaleWellDef0Mask, this, f_7);
     if (NoPerm < Mask[null, P(Heap[this, f_7])]) {
       
       // -- Check definedness of acc(P(this.f), perm(P(this.f)))
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@49.11--49.74) [218423]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@49.11--49.74) [75386]"}
           HasDirectPerm(ExhaleWellDef0Mask, this, f_7);
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@49.11--49.74) [218424]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access this.f (0232.vpr@49.11--49.74) [75387]"}
           HasDirectPerm(ExhaleWellDef0Mask, this, f_7);
       perm := Mask[null, P(Heap[this, f_7])];
-      assert {:msg "  Exhale might fail. Fraction perm(P(this.f)) might be negative. (0232.vpr@49.11--49.74) [218425]"}
+      assert {:msg "  Exhale might fail. Fraction perm(P(this.f)) might be negative. (0232.vpr@49.11--49.74) [75388]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this.f) (0232.vpr@49.11--49.74) [218426]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this.f) (0232.vpr@49.11--49.74) [75389]"}
           perm <= Mask[null, P(Heap[this, f_7])];
       }
       Mask := Mask[null, P(Heap[this, f_7]):=Mask[null, P(Heap[this, f_7])] - perm];
@@ -669,10 +669,10 @@ procedure test6(this: Ref, a_2: Ref, b_24: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     if (NoPerm < Mask[null, P(this)]) {
       perm := Mask[null, P(this)];
-      assert {:msg "  Exhale might fail. Fraction perm(P(this)) might be negative. (0232.vpr@55.11--55.68) [218429]"}
+      assert {:msg "  Exhale might fail. Fraction perm(P(this)) might be negative. (0232.vpr@55.11--55.68) [75392]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0232.vpr@55.11--55.68) [218430]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0232.vpr@55.11--55.68) [75393]"}
           perm <= Mask[null, P(this)];
       }
       Mask := Mask[null, P(this):=Mask[null, P(this)] - perm];
@@ -695,10 +695,10 @@ procedure test6(this: Ref, a_2: Ref, b_24: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     if (NoPerm < Mask[null, P(a_2)]) {
       perm := Mask[null, P(a_2)];
-      assert {:msg "  Exhale might fail. Fraction perm(P(a)) might be negative. (0232.vpr@57.11--57.59) [218433]"}
+      assert {:msg "  Exhale might fail. Fraction perm(P(a)) might be negative. (0232.vpr@57.11--57.59) [75396]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(a) (0232.vpr@57.11--57.59) [218434]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(a) (0232.vpr@57.11--57.59) [75397]"}
           perm <= Mask[null, P(a_2)];
       }
       Mask := Mask[null, P(a_2):=Mask[null, P(a_2)] - perm];
@@ -721,10 +721,10 @@ procedure test6(this: Ref, a_2: Ref, b_24: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     if (NoPerm < Mask[null, P(b_24)]) {
       perm := Mask[null, P(b_24)];
-      assert {:msg "  Exhale might fail. Fraction perm(P(b)) might be negative. (0232.vpr@59.11--59.59) [218437]"}
+      assert {:msg "  Exhale might fail. Fraction perm(P(b)) might be negative. (0232.vpr@59.11--59.59) [75400]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(b) (0232.vpr@59.11--59.59) [218438]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access P(b) (0232.vpr@59.11--59.59) [75401]"}
           perm <= Mask[null, P(b_24)];
       }
       Mask := Mask[null, P(b_24):=Mask[null, P(b_24)] - perm];

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:31
+// Date:         2025-01-26 21:42:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0768.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0768-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref, f_8: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, f_8] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_3, f_8) ==> Heap[o_3, f_8] == ExhaleHeap[o_3, f_8]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_19: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_19] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_19) ==> Heap[o_12, f_19] == ExhaleHeap[o_12, f_19]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19), ExhaleHeap[null, PredicateMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> Heap[null, PredicateMaskField(pm_f_19)] == ExhaleHeap[null, PredicateMaskField(pm_f_19)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, PredicateMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19), ExhaleHeap[null, WandMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> Heap[null, WandMaskField(pm_f_19)] == ExhaleHeap[null, WandMaskField(pm_f_19)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, WandMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, WandMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_3, $allocated] ==> ExhaleHeap[o_3, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_9: (Field A B), v: B ::
-  { Heap[o_1, f_9:=v] }
-  succHeap(Heap, Heap[o_1, f_9:=v])
+axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_51: (Field A B), v: B ::
+  { Heap[o_1, f_51:=v] }
+  succHeap(Heap, Heap[o_1, f_51:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -147,7 +147,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 function  neverTriggered1(i_9_1: int): bool;
 function  neverTriggered2(i_13_1: int): bool;
 function  neverTriggered3(i_1: int): bool;
-function  neverTriggered4(i_3: int): bool;
+function  neverTriggered4(i_3_2: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -576,16 +576,16 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 type blockDomainType;
 
 // Translation of domain function block_length
-function  block_length(b_102: blockDomainType): int;
+function  block_length(b_33: blockDomainType): int;
 
 // Translation of domain function loc
-function  loc(b_102: blockDomainType, i_79: int): Ref;
+function  loc(b_33: blockDomainType, i_6: int): Ref;
 
 // Translation of domain function loc_inv_1
-function  loc_inv_1(r_3: Ref): blockDomainType;
+function  loc_inv_1(r_4: Ref): blockDomainType;
 
 // Translation of domain function loc_inv_2
-function  loc_inv_2(r_3: Ref): int;
+function  loc_inv_2(r_4: Ref): int;
 
 // Translation of anonymous domain axiom
 axiom (forall b_24: blockDomainType ::
@@ -607,13 +607,13 @@ axiom (forall b_24: blockDomainType, i: int ::
 type pointerDomainType;
 
 // Translation of domain function pointer_of
-function  pointer_of(b_102: blockDomainType, offset_1: int): pointerDomainType;
+function  pointer_of(b_33: blockDomainType, offset: int): pointerDomainType;
 
 // Translation of domain function pointer_block
-function  pointer_block(p_16: pointerDomainType): blockDomainType;
+function  pointer_block(p_3: pointerDomainType): blockDomainType;
 
 // Translation of domain function pointer_offset
-function  pointer_offset(p_16: pointerDomainType): int;
+function  pointer_offset(p_3: pointerDomainType): int;
 
 // Translation of anonymous domain axiom
 axiom (forall p_1: pointerDomainType ::
@@ -622,9 +622,9 @@ axiom (forall p_1: pointerDomainType ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall b_24: blockDomainType, offset: int ::
-  { (pointer_block((pointer_of(b_24, offset): pointerDomainType)): blockDomainType), (pointer_offset((pointer_of(b_24, offset): pointerDomainType)): int) }
-  (pointer_block((pointer_of(b_24, offset): pointerDomainType)): blockDomainType) == b_24 && (pointer_offset((pointer_of(b_24, offset): pointerDomainType)): int) == offset
+axiom (forall b_24: blockDomainType, offset_1: int ::
+  { (pointer_block((pointer_of(b_24, offset_1): pointerDomainType)): blockDomainType), (pointer_offset((pointer_of(b_24, offset_1): pointerDomainType)): int) }
+  (pointer_block((pointer_of(b_24, offset_1): pointerDomainType)): blockDomainType) == b_24 && (pointer_offset((pointer_of(b_24, offset_1): pointerDomainType)): int) == offset_1
 );
 
 // ==================================================
@@ -670,54 +670,54 @@ type treeDomainType;
 function  leaf(value_2: int): treeDomainType;
 
 // Translation of domain function node
-function  node_1(left_2: treeDomainType, right_2: treeDomainType): treeDomainType;
+function  node_5(left_1: treeDomainType, right: treeDomainType): treeDomainType;
 
 // Translation of domain function get_tree_value
-function  get_tree_value(t_9: treeDomainType): int;
+function  get_tree_value(t_3: treeDomainType): int;
 
 // Translation of domain function get_tree_left
-function  get_tree_left(t_9: treeDomainType): treeDomainType;
+function  get_tree_left(t_3: treeDomainType): treeDomainType;
 
 // Translation of domain function get_tree_right
-function  get_tree_right(t_9: treeDomainType): treeDomainType;
+function  get_tree_right(t_3: treeDomainType): treeDomainType;
 
 // Translation of domain function tree_tag
-function  tree_tag(t_9: treeDomainType): int;
+function  tree_tag(t_3: treeDomainType): int;
 
 // Translation of anonymous domain axiom
-axiom (forall value_1: int ::
-  { (leaf(value_1): treeDomainType) }
-  value_1 == (get_tree_value((leaf(value_1): treeDomainType)): int)
+axiom (forall value: int ::
+  { (leaf(value): treeDomainType) }
+  value == (get_tree_value((leaf(value): treeDomainType)): int)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall left_1: treeDomainType, right: treeDomainType ::
-  { (node_1(left_1, right): treeDomainType) }
-  left_1 == (get_tree_left((node_1(left_1, right): treeDomainType)): treeDomainType)
+axiom (forall left: treeDomainType, right_2: treeDomainType ::
+  { (node_5(left, right_2): treeDomainType) }
+  left == (get_tree_left((node_5(left, right_2): treeDomainType)): treeDomainType)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall left_1: treeDomainType, right: treeDomainType ::
-  { (node_1(left_1, right): treeDomainType) }
-  right == (get_tree_right((node_1(left_1, right): treeDomainType)): treeDomainType)
+axiom (forall left: treeDomainType, right_2: treeDomainType ::
+  { (node_5(left, right_2): treeDomainType) }
+  right_2 == (get_tree_right((node_5(left, right_2): treeDomainType)): treeDomainType)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall value_1: int ::
-  { (leaf(value_1): treeDomainType) }
-  (tree_tag((leaf(value_1): treeDomainType)): int) == 0
+axiom (forall value: int ::
+  { (leaf(value): treeDomainType) }
+  (tree_tag((leaf(value): treeDomainType)): int) == 0
 );
 
 // Translation of anonymous domain axiom
-axiom (forall left_1: treeDomainType, right: treeDomainType ::
-  { (node_1(left_1, right): treeDomainType) }
-  (tree_tag((node_1(left_1, right): treeDomainType)): int) == 1
+axiom (forall left: treeDomainType, right_2: treeDomainType ::
+  { (node_5(left, right_2): treeDomainType) }
+  (tree_tag((node_5(left, right_2): treeDomainType)): int) == 1
 );
 
 // Translation of anonymous domain axiom
 axiom (forall t_2: treeDomainType ::
   { (tree_tag(t_2): int) } { (get_tree_left(t_2): treeDomainType) } { (get_tree_right(t_2): treeDomainType) }
-  t_2 == (leaf((get_tree_value(t_2): int)): treeDomainType) || t_2 == (node_1((get_tree_left(t_2): treeDomainType), (get_tree_right(t_2): treeDomainType)): treeDomainType)
+  t_2 == (leaf((get_tree_value(t_2): int)): treeDomainType) || t_2 == (node_5((get_tree_left(t_2): treeDomainType), (get_tree_right(t_2): treeDomainType)): treeDomainType)
 );
 
 // ==================================================
@@ -731,12 +731,12 @@ type treeWellFoundedOrderDomainType;
 axiom true;
 
 // Translation of anonymous domain axiom
-axiom (forall right_0: treeDomainType, left_1: treeDomainType ::
-  { (node_1(left_1, right_0): treeDomainType) }
-  (decreasing(right_0, (node_1(left_1, right_0): treeDomainType)): bool)
-) && (forall left_0: treeDomainType, right: treeDomainType ::
-  { (node_1(left_0, right): treeDomainType) }
-  (decreasing(left_0, (node_1(left_0, right): treeDomainType)): bool)
+axiom (forall right_0: treeDomainType, left: treeDomainType ::
+  { (node_5(left, right_0): treeDomainType) }
+  (decreasing(right_0, (node_5(left, right_0): treeDomainType)): bool)
+) && (forall left_0: treeDomainType, right_2: treeDomainType ::
+  { (node_5(left_0, right_2): treeDomainType) }
+  (decreasing(left_0, (node_5(left_0, right_2): treeDomainType)): bool)
 );
 
 // Translation of anonymous domain axiom
@@ -758,9 +758,9 @@ axiom (forall x: treeDomainType ::
 const unique ref_2: Field NormalField Ref;
 axiom !IsPredicateField(ref_2);
 axiom !IsWandField(ref_2);
-const unique x_36: Field NormalField int;
-axiom !IsPredicateField(x_36);
-axiom !IsWandField(x_36);
+const unique x_42: Field NormalField int;
+axiom !IsPredicateField(x_42);
+axiom !IsWandField(x_42);
 
 // ==================================================
 // Translation of function ptr_deref
@@ -817,38 +817,38 @@ procedure ptr_deref#definedness(p_1: pointerDomainType) returns (Result: Ref)
 // ==================================================
 
 // Uninterpreted function definitions
-function  ptr_add(Heap: HeapType, p_1: pointerDomainType, offset: int): pointerDomainType;
-function  ptr_add'(Heap: HeapType, p_1: pointerDomainType, offset: int): pointerDomainType;
-axiom (forall Heap: HeapType, p_1: pointerDomainType, offset: int ::
-  { ptr_add(Heap, p_1, offset) }
-  ptr_add(Heap, p_1, offset) == ptr_add'(Heap, p_1, offset) && dummyFunction(ptr_add#triggerStateless(p_1, offset))
+function  ptr_add(Heap: HeapType, p_1: pointerDomainType, offset_1: int): pointerDomainType;
+function  ptr_add'(Heap: HeapType, p_1: pointerDomainType, offset_1: int): pointerDomainType;
+axiom (forall Heap: HeapType, p_1: pointerDomainType, offset_1: int ::
+  { ptr_add(Heap, p_1, offset_1) }
+  ptr_add(Heap, p_1, offset_1) == ptr_add'(Heap, p_1, offset_1) && dummyFunction(ptr_add#triggerStateless(p_1, offset_1))
 );
-axiom (forall Heap: HeapType, p_1: pointerDomainType, offset: int ::
-  { ptr_add'(Heap, p_1, offset) }
-  dummyFunction(ptr_add#triggerStateless(p_1, offset))
+axiom (forall Heap: HeapType, p_1: pointerDomainType, offset_1: int ::
+  { ptr_add'(Heap, p_1, offset_1) }
+  dummyFunction(ptr_add#triggerStateless(p_1, offset_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, p_1: pointerDomainType, offset: int ::
-  { state(Heap, Mask), ptr_add(Heap, p_1, offset) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> 0 <= (pointer_offset(p_1): int) + offset && (pointer_offset(p_1): int) + offset < (block_length((pointer_block(p_1): blockDomainType)): int) ==> ptr_add(Heap, p_1, offset) == (pointer_of((pointer_block(p_1): blockDomainType), (pointer_offset(p_1): int) + offset): pointerDomainType)
+axiom (forall Heap: HeapType, Mask: MaskType, p_1: pointerDomainType, offset_1: int ::
+  { state(Heap, Mask), ptr_add(Heap, p_1, offset_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> 0 <= (pointer_offset(p_1): int) + offset_1 && (pointer_offset(p_1): int) + offset_1 < (block_length((pointer_block(p_1): blockDomainType)): int) ==> ptr_add(Heap, p_1, offset_1) == (pointer_of((pointer_block(p_1): blockDomainType), (pointer_offset(p_1): int) + offset_1): pointerDomainType)
 );
 
 // Framing axioms
-function  ptr_add#frame(frame: FrameType, p_1: pointerDomainType, offset: int): pointerDomainType;
-axiom (forall Heap: HeapType, Mask: MaskType, p_1: pointerDomainType, offset: int ::
-  { state(Heap, Mask), ptr_add'(Heap, p_1, offset) }
-  state(Heap, Mask) ==> ptr_add'(Heap, p_1, offset) == ptr_add#frame(EmptyFrame, p_1, offset)
+function  ptr_add#frame(frame: FrameType, p_1: pointerDomainType, offset_1: int): pointerDomainType;
+axiom (forall Heap: HeapType, Mask: MaskType, p_1: pointerDomainType, offset_1: int ::
+  { state(Heap, Mask), ptr_add'(Heap, p_1, offset_1) }
+  state(Heap, Mask) ==> ptr_add'(Heap, p_1, offset_1) == ptr_add#frame(EmptyFrame, p_1, offset_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  ptr_add#trigger(frame: FrameType, p_1: pointerDomainType, offset: int): bool;
+function  ptr_add#trigger(frame: FrameType, p_1: pointerDomainType, offset_1: int): bool;
 
 // State-independent trigger function
-function  ptr_add#triggerStateless(p_1: pointerDomainType, offset: int): pointerDomainType;
+function  ptr_add#triggerStateless(p_1: pointerDomainType, offset_1: int): pointerDomainType;
 
 // Check contract well-formedness and postcondition
-procedure ptr_add#definedness(p_1: pointerDomainType, offset: int) returns (Result: pointerDomainType)
+procedure ptr_add#definedness(p_1: pointerDomainType, offset_1: int) returns (Result: pointerDomainType)
   modifies Heap, Mask;
 {
   
@@ -859,13 +859,13 @@ procedure ptr_add#definedness(p_1: pointerDomainType, offset: int) returns (Resu
     assume AssumeFunctionsAbove == 4;
   
   // -- Inhaling precondition (with checking)
-    assume 0 <= (pointer_offset(p_1): int) + offset;
+    assume 0 <= (pointer_offset(p_1): int) + offset_1;
     assume state(Heap, Mask);
-    assume (pointer_offset(p_1): int) + offset < (block_length((pointer_block(p_1): blockDomainType)): int);
+    assume (pointer_offset(p_1): int) + offset_1 < (block_length((pointer_block(p_1): blockDomainType)): int);
     assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := (pointer_of((pointer_block(p_1): blockDomainType), (pointer_offset(p_1): int) + offset): pointerDomainType);
+    Result := (pointer_of((pointer_block(p_1): blockDomainType), (pointer_offset(p_1): int) + offset_1): pointerDomainType);
 }
 
 // ==================================================
@@ -887,9 +887,9 @@ axiom (forall Heap: HeapType, inp: pointerDomainType, n: int ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, inp: pointerDomainType, n: int ::
   { state(Heap, Mask), inp_to_seq_2(Heap, inp, n) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> n <= (block_length((pointer_block(inp): blockDomainType)): int) - (pointer_offset(inp): int) && (forall i_1: int, j_9: int ::
-    { ptr_add#frame(EmptyFrame, inp, i_1), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j_9)) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_1)), ptr_add#frame(EmptyFrame, inp, j_9) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_1)), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j_9)) }
-    0 <= i_1 && (i_1 < n && (0 <= j_9 && j_9 < n)) ==> i_1 != j_9 ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_1)), ref_2] != Heap[ptr_deref(Heap, ptr_add(Heap, inp, j_9)), ref_2]
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> n <= (block_length((pointer_block(inp): blockDomainType)): int) - (pointer_offset(inp): int) && (forall i_1: int, j: int ::
+    { ptr_add#frame(EmptyFrame, inp, i_1), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j)) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_1)), ptr_add#frame(EmptyFrame, inp, j) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_1)), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j)) }
+    0 <= i_1 && (i_1 < n && (0 <= j && j < n)) ==> i_1 != j ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_1)), ref_2] != Heap[ptr_deref(Heap, ptr_add(Heap, inp, j)), ref_2]
   ) ==> inp_to_seq_2(Heap, inp, n) == (Seq#Empty(): Seq int)
 );
 
@@ -917,7 +917,7 @@ function  inp_to_seq_2#condqp2(Heap: HeapType, inp_1_1: pointerDomainType, n_1_1
 function  sk_inp_to_seq_2#condqp2(fnAppH1_1: int, fnAppH2_1: int): int;
 axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, inp: pointerDomainType, n: int ::
   { inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n), succHeapTrans(Heap2Heap, Heap1Heap) }
-  ((0 <= sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) && sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) < n) && NoPerm < real(1) * FullPerm / 10 <==> (0 <= sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) && sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) < n) && NoPerm < real(1) * FullPerm / 10) && ((0 <= sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) && sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) < n) && NoPerm < real(1) * FullPerm / 10 ==> Heap2Heap[Heap2Heap[ptr_deref(Heap2Heap, ptr_add(Heap2Heap, inp, sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)))), ref_2], x_36] == Heap1Heap[Heap1Heap[ptr_deref(Heap1Heap, ptr_add(Heap1Heap, inp, sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)))), ref_2], x_36]) ==> inp_to_seq_2#condqp2(Heap2Heap, inp, n) == inp_to_seq_2#condqp2(Heap1Heap, inp, n)
+  ((0 <= sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) && sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) < n) && NoPerm < real(1) * FullPerm / 10 <==> (0 <= sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) && sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) < n) && NoPerm < real(1) * FullPerm / 10) && ((0 <= sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) && sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)) < n) && NoPerm < real(1) * FullPerm / 10 ==> Heap2Heap[Heap2Heap[ptr_deref(Heap2Heap, ptr_add(Heap2Heap, inp, sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)))), ref_2], x_42] == Heap1Heap[Heap1Heap[ptr_deref(Heap1Heap, ptr_add(Heap1Heap, inp, sk_inp_to_seq_2#condqp2(inp_to_seq_2#condqp2(Heap2Heap, inp, n), inp_to_seq_2#condqp2(Heap1Heap, inp, n)))), ref_2], x_42]) ==> inp_to_seq_2#condqp2(Heap2Heap, inp, n) == inp_to_seq_2#condqp2(Heap1Heap, inp, n)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -930,12 +930,12 @@ function  inp_to_seq_2#triggerStateless(inp: pointerDomainType, n: int): Seq int
 procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Result: (Seq int))
   modifies Heap, Mask;
 {
-  var i_14: int;
-  var ExhaleWellDef0Heap: HeapType;
+  var i_18: int;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
-  var i_2: int;
-  var j: int;
+  var i_3: int;
+  var j_15: int;
   var i_4: int;
   
   // -- Initializing the state
@@ -951,15 +951,15 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
     
     // -- Check definedness of (forall i: Int :: { ptr_deref(ptr_add(inp, i)).ref } 0 <= i && i < n ==> acc(ptr_deref(ptr_add(inp, i)).ref, 1 * write / 10))
       if (*) {
-        if (0 <= i_14 && i_14 < n) {
+        if (0 <= i_18 && i_18 < n) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@70.21--70.36) [202021]"}
-              0 <= (pointer_offset(inp): int) + i_14;
-            assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [202022]"}
-              (pointer_offset(inp): int) + i_14 < (block_length((pointer_block(inp): blockDomainType)): int);
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@70.21--70.36) [71430]"}
+              0 <= (pointer_offset(inp): int) + i_18;
+            assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [71431]"}
+              (pointer_offset(inp): int) + i_18 < (block_length((pointer_block(inp): blockDomainType)): int);
             // Stop execution
             assume false;
           }
@@ -971,7 +971,7 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ptr_deref(ptr_add(inp, i)).ref might not be injective. (0768.vpr@67.13--72.10) [202023]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource ptr_deref(ptr_add(inp, i)).ref might not be injective. (0768.vpr@67.13--72.10) [71432]"}
       (forall i_9_1: int, i_9_2: int ::
       
       (((i_9_1 != i_9_2 && (0 <= i_9_1 && i_9_1 < n)) && (0 <= i_9_2 && i_9_2 < n)) && NoPerm < real(1) * FullPerm / 10) && NoPerm < real(1) * FullPerm / 10 ==> ptr_deref(Heap, ptr_add(Heap, inp, i_9_1)) != ptr_deref(Heap, ptr_add(Heap, inp, i_9_2))
@@ -982,12 +982,12 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
         { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_9_1)) } { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_9_1)), ref_2] }
         (0 <= i_9_1 && i_9_1 < n) && NoPerm < real(1) * FullPerm / 10 ==> qpRange1(ptr_deref(Heap, ptr_add(Heap, inp, i_9_1))) && invRecv1(ptr_deref(Heap, ptr_add(Heap, inp, i_9_1))) == i_9_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && invRecv1(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange1(o_4) ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv1(o_4))) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && invRecv1(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange1(o_9) ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv1(o_9))) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 * write / 10 might be negative. (0768.vpr@67.13--72.10) [202024]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 * write / 10 might be negative. (0768.vpr@67.13--72.10) [71433]"}
       (forall i_9_1: int ::
       { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_9_1)) } { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_9_1)), ref_2] }
       0 <= i_9_1 && i_9_1 < n ==> real(1) * FullPerm / 10 >= NoPerm
@@ -1000,13 +1000,13 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, ref_2] }
-        (((0 <= invRecv1(o_4) && invRecv1(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange1(o_4) ==> (NoPerm < real(1) * FullPerm / 10 ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv1(o_4))) == o_4) && QPMask[o_4, ref_2] == Mask[o_4, ref_2] + real(1) * FullPerm / 10) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange1(o_4)) ==> QPMask[o_4, ref_2] == Mask[o_4, ref_2])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, ref_2] }
+        (((0 <= invRecv1(o_9) && invRecv1(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange1(o_9) ==> (NoPerm < real(1) * FullPerm / 10 ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv1(o_9))) == o_9) && QPMask[o_9, ref_2] == Mask[o_9, ref_2] + real(1) * FullPerm / 10) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange1(o_9)) ==> QPMask[o_9, ref_2] == Mask[o_9, ref_2])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != ref_2 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != ref_2 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1015,16 +1015,16 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
     
     // -- Check definedness of (forall i: Int, j: Int :: { ptr_add(inp, i), ptr_deref(ptr_add(inp, j)) } { ptr_deref(ptr_add(inp, i)), ptr_add(inp, j) } { ptr_deref(ptr_add(inp, i)), ptr_deref(ptr_add(inp, j)) } 0 <= i && (i < n && (0 <= j && j < n)) ==> i != j ==> ptr_deref(ptr_add(inp, i)).ref != ptr_deref(ptr_add(inp, j)).ref)
       if (*) {
-        if (0 <= i_2 && (i_2 < n && (0 <= j && j < n))) {
-          if (i_2 != j) {
+        if (0 <= i_3 && (i_3 < n && (0 <= j_15 && j_15 < n))) {
+          if (i_3 != j_15) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
-              assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@78.17--78.34) [202025]"}
-                0 <= (pointer_offset(inp): int) + i_2;
-              assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@78.17--78.34) [202026]"}
-                (pointer_offset(inp): int) + i_2 < (block_length((pointer_block(inp): blockDomainType)): int);
+              ExhaleWellDef0Heap := Heap;
+              assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@78.17--78.34) [71434]"}
+                0 <= (pointer_offset(inp): int) + i_3;
+              assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@78.17--78.34) [71435]"}
+                (pointer_offset(inp): int) + i_3 < (block_length((pointer_block(inp): blockDomainType)): int);
               // Stop execution
               assume false;
             }
@@ -1032,16 +1032,16 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
               // Stop execution
               assume false;
             }
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ptr_deref(ptr_add(inp, i)).ref (0768.vpr@73.13--79.39) [202027]"}
-              HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, i_2)), ref_2);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ptr_deref(ptr_add(inp, i)).ref (0768.vpr@73.13--79.39) [71436]"}
+              HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, i_3)), ref_2);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
-              assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + j might not hold. (0768.vpr@79.17--79.34) [202028]"}
-                0 <= (pointer_offset(inp): int) + j;
-              assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + j < block_length(pointer_block(inp)) might not hold. (0768.vpr@79.17--79.34) [202029]"}
-                (pointer_offset(inp): int) + j < (block_length((pointer_block(inp): blockDomainType)): int);
+              ExhaleWellDef0Heap := Heap;
+              assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + j might not hold. (0768.vpr@79.17--79.34) [71437]"}
+                0 <= (pointer_offset(inp): int) + j_15;
+              assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + j < block_length(pointer_block(inp)) might not hold. (0768.vpr@79.17--79.34) [71438]"}
+                (pointer_offset(inp): int) + j_15 < (block_length((pointer_block(inp): blockDomainType)): int);
               // Stop execution
               assume false;
             }
@@ -1049,15 +1049,15 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
               // Stop execution
               assume false;
             }
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ptr_deref(ptr_add(inp, j)).ref (0768.vpr@73.13--79.39) [202030]"}
-              HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, j)), ref_2);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ptr_deref(ptr_add(inp, j)).ref (0768.vpr@73.13--79.39) [71439]"}
+              HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, j_15)), ref_2);
           }
         }
         assume false;
       }
-    assume (forall i_11_1: int, j_3_1: int ::
-      { ptr_add#frame(EmptyFrame, inp, i_11_1), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j_3_1)) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_11_1)), ptr_add#frame(EmptyFrame, inp, j_3_1) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_11_1)), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j_3_1)) }
-      0 <= i_11_1 && (i_11_1 < n && (0 <= j_3_1 && j_3_1 < n)) ==> i_11_1 != j_3_1 ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_11_1)), ref_2] != Heap[ptr_deref(Heap, ptr_add(Heap, inp, j_3_1)), ref_2]
+    assume (forall i_11_1: int, j_3: int ::
+      { ptr_add#frame(EmptyFrame, inp, i_11_1), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j_3)) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_11_1)), ptr_add#frame(EmptyFrame, inp, j_3) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_11_1)), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j_3)) }
+      0 <= i_11_1 && (i_11_1 < n && (0 <= j_3 && j_3 < n)) ==> i_11_1 != j_3 ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_11_1)), ref_2] != Heap[ptr_deref(Heap, ptr_add(Heap, inp, j_3)), ref_2]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1067,11 +1067,11 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
         if (0 <= i_4 && i_4 < n) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@83.21--83.36) [202031]"}
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@83.21--83.36) [71440]"}
               0 <= (pointer_offset(inp): int) + i_4;
-            assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@83.21--83.36) [202032]"}
+            assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@83.21--83.36) [71441]"}
               (pointer_offset(inp): int) + i_4 < (block_length((pointer_block(inp): blockDomainType)): int);
             // Stop execution
             assume false;
@@ -1080,13 +1080,13 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ptr_deref(ptr_add(inp, i)).ref (0768.vpr@80.13--85.10) [202033]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access ptr_deref(ptr_add(inp, i)).ref (0768.vpr@80.13--85.10) [71442]"}
             HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, i_4)), ref_2);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ptr_deref(ptr_add(inp, i)).ref.x might not be injective. (0768.vpr@80.13--85.10) [202034]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource ptr_deref(ptr_add(inp, i)).ref.x might not be injective. (0768.vpr@80.13--85.10) [71443]"}
       (forall i_13_1: int, i_13_2: int ::
       
       (((i_13_1 != i_13_2 && (0 <= i_13_1 && i_13_1 < n)) && (0 <= i_13_2 && i_13_2 < n)) && NoPerm < real(1) * FullPerm / 10) && NoPerm < real(1) * FullPerm / 10 ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_13_1)), ref_2] != Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_13_2)), ref_2]
@@ -1094,34 +1094,34 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
     
     // -- Define Inverse Function
       assume (forall i_13_1: int ::
-        { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2] } { Heap[Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2], x_36] }
+        { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2] } { Heap[Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2], x_42] }
         (0 <= i_13_1 && i_13_1 < n) && NoPerm < real(1) * FullPerm / 10 ==> qpRange2(Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_13_1)), ref_2]) && invRecv2(Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_13_1)), ref_2]) == i_13_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        ((0 <= invRecv2(o_4) && invRecv2(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange2(o_4) ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, invRecv2(o_4))), ref_2] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        ((0 <= invRecv2(o_9) && invRecv2(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange2(o_9) ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, invRecv2(o_9))), ref_2] == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 * write / 10 might be negative. (0768.vpr@80.13--85.10) [202035]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 * write / 10 might be negative. (0768.vpr@80.13--85.10) [71444]"}
       (forall i_13_1: int ::
-      { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2] } { Heap[Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2], x_36] }
+      { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2] } { Heap[Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2], x_42] }
       0 <= i_13_1 && i_13_1 < n ==> real(1) * FullPerm / 10 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
       assume (forall i_13_1: int ::
-        { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2] } { Heap[Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2], x_36] }
+        { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2] } { Heap[Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_13_1)), ref_2], x_42] }
         (0 <= i_13_1 && i_13_1 < n) && real(1) * FullPerm / 10 > NoPerm ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_13_1)), ref_2] != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, x_36] }
-        (((0 <= invRecv2(o_4) && invRecv2(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange2(o_4) ==> (NoPerm < real(1) * FullPerm / 10 ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, invRecv2(o_4))), ref_2] == o_4) && QPMask[o_4, x_36] == Mask[o_4, x_36] + real(1) * FullPerm / 10) && (!(((0 <= invRecv2(o_4) && invRecv2(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange2(o_4)) ==> QPMask[o_4, x_36] == Mask[o_4, x_36])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, x_42] }
+        (((0 <= invRecv2(o_9) && invRecv2(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange2(o_9) ==> (NoPerm < real(1) * FullPerm / 10 ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, invRecv2(o_9))), ref_2] == o_9) && QPMask[o_9, x_42] == Mask[o_9, x_42] + real(1) * FullPerm / 10) && (!(((0 <= invRecv2(o_9) && invRecv2(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange2(o_9)) ==> QPMask[o_9, x_42] == Mask[o_9, x_42])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != x_36 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != x_42 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1260,11 +1260,11 @@ procedure id#definedness(i: int) returns (Result: int)
 // Translation of method ptr_add_pres_termination_proof
 // ==================================================
 
-procedure ptr_add_pres_termination_proof(p_1: pointerDomainType, offset: int) returns ()
+procedure ptr_add_pres_termination_proof(p_1: pointerDomainType, offset_1: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b1: bool;
   
   // -- Initializing the state
@@ -1276,8 +1276,8 @@ procedure ptr_add_pres_termination_proof(p_1: pointerDomainType, offset: int) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (b1) -- 0768.vpr@53.12--53.43
     if (b1) {
@@ -1289,7 +1289,7 @@ procedure ptr_add_pres_termination_proof(p_1: pointerDomainType, offset: int) re
     } else {
       
       // -- Translating statement: inhale 0 <= pointer_offset(p) + offset -- <no position>
-        assume 0 <= (pointer_offset(p_1): int) + offset;
+        assume 0 <= (pointer_offset(p_1): int) + offset_1;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
     }
@@ -1303,28 +1303,28 @@ procedure ptr_add_pres_termination_proof(p_1: pointerDomainType, offset: int) re
 procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b8: bool;
   var b4: bool;
   var b2: bool;
   var b3: bool;
-  var i1: int;
-  var ExhaleWellDef0Heap: HeapType;
+  var i1_9: int;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
-  var i_6: int;
+  var i_14: int;
   var QPMask: MaskType;
   var b5: bool;
-  var i2_1: int;
+  var i2: int;
   var b6: bool;
   var b7: bool;
-  var j1_33: int;
-  var i_7: int;
-  var i_8: int;
-  var j_3: int;
+  var j1_2: int;
+  var i_5: int;
+  var i_15: int;
+  var j_16: int;
   var b9: bool;
-  var i3_7: int;
+  var i3_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1335,8 +1335,8 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (b8) -- 0768.vpr@64.12--66.24
     if (b8) {
@@ -1370,14 +1370,14 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
             } else {
               
               // -- Translating statement: inhale 0 <= i1 -- <no position>
-                assume 0 <= i1;
+                assume 0 <= i1_9;
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
             }
             assume state(Heap, Mask);
           
           // -- Translating statement: if (0 <= i1 && i1 < n) -- <no position>
-            if (0 <= i1 && i1 < n) {
+            if (0 <= i1_9 && i1_9 < n) {
               
               // -- Translating statement: inhale acc(ptr_deref(ptr_add(inp, i1)).ref, 1 * write / 10) -- 0768.vpr@70.7--72.10
                 assume state(Heap, Mask);
@@ -1385,12 +1385,12 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
                 // -- Check definedness of acc(ptr_deref(ptr_add(inp, i1)).ref, 1 * write / 10)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
-                    assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i1 might not hold. (0768.vpr@70.21--70.36) [202036]"}
-                      0 <= (pointer_offset(inp): int) + i1;
-                    assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i1 < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [202037]"}
-                      (pointer_offset(inp): int) + i1 < (block_length((pointer_block(inp): blockDomainType)): int);
+                    ExhaleWellDef0Heap := Heap;
+                    assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i1 might not hold. (0768.vpr@70.21--70.36) [71445]"}
+                      0 <= (pointer_offset(inp): int) + i1_9;
+                    assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i1 < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [71446]"}
+                      (pointer_offset(inp): int) + i1_9 < (block_length((pointer_block(inp): blockDomainType)): int);
                     // Stop execution
                     assume false;
                   }
@@ -1399,10 +1399,10 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
                     assume false;
                   }
                 perm := real(1) * FullPerm / 10;
-                assert {:msg "  Inhale might fail. Fraction 1 * write / 10 might be negative. (0768.vpr@70.7--72.10) [202038]"}
+                assert {:msg "  Inhale might fail. Fraction 1 * write / 10 might be negative. (0768.vpr@70.7--72.10) [71447]"}
                   perm >= NoPerm;
-                assume perm > NoPerm ==> ptr_deref(Heap, ptr_add(Heap, inp, i1)) != null;
-                Mask := Mask[ptr_deref(Heap, ptr_add(Heap, inp, i1)), ref_2:=Mask[ptr_deref(Heap, ptr_add(Heap, inp, i1)), ref_2] + perm];
+                assume perm > NoPerm ==> ptr_deref(Heap, ptr_add(Heap, inp, i1_9)) != null;
+                Mask := Mask[ptr_deref(Heap, ptr_add(Heap, inp, i1_9)), ref_2:=Mask[ptr_deref(Heap, ptr_add(Heap, inp, i1_9)), ref_2] + perm];
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
@@ -1424,15 +1424,15 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
             
             // -- Check definedness of (forall i: Int :: { ptr_deref(ptr_add(inp, i)).ref } 0 <= i && i < n ==> acc(ptr_deref(ptr_add(inp, i)).ref, 1 * write / 10))
               if (*) {
-                if (0 <= i_6 && i_6 < n) {
+                if (0 <= i_14 && i_14 < n) {
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
-                    assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@70.21--70.36) [202039]"}
-                      0 <= (pointer_offset(inp): int) + i_6;
-                    assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [202040]"}
-                      (pointer_offset(inp): int) + i_6 < (block_length((pointer_block(inp): blockDomainType)): int);
+                    ExhaleWellDef0Heap := Heap;
+                    assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@70.21--70.36) [71448]"}
+                      0 <= (pointer_offset(inp): int) + i_14;
+                    assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [71449]"}
+                      (pointer_offset(inp): int) + i_14 < (block_length((pointer_block(inp): blockDomainType)): int);
                     // Stop execution
                     assume false;
                   }
@@ -1444,7 +1444,7 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
                 assume false;
               }
             havoc QPMask;
-            assert {:msg "  Inhale might fail. Quantified resource ptr_deref(ptr_add(inp, i)).ref might not be injective. (0768.vpr@64.12--66.24) [202041]"}
+            assert {:msg "  Inhale might fail. Quantified resource ptr_deref(ptr_add(inp, i)).ref might not be injective. (0768.vpr@64.12--66.24) [71450]"}
               (forall i_1: int, i_1_1: int ::
               
               (((i_1 != i_1_1 && (0 <= i_1 && i_1 < n)) && (0 <= i_1_1 && i_1_1 < n)) && NoPerm < real(1) * FullPerm / 10) && NoPerm < real(1) * FullPerm / 10 ==> ptr_deref(Heap, ptr_add(Heap, inp, i_1)) != ptr_deref(Heap, ptr_add(Heap, inp, i_1_1))
@@ -1455,12 +1455,12 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
                 { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_1)) } { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_1)), ref_2] }
                 (0 <= i_1 && i_1 < n) && NoPerm < real(1) * FullPerm / 10 ==> qpRange3(ptr_deref(Heap, ptr_add(Heap, inp, i_1))) && invRecv3(ptr_deref(Heap, ptr_add(Heap, inp, i_1))) == i_1
               );
-              assume (forall o_4: Ref ::
-                { invRecv3(o_4) }
-                ((0 <= invRecv3(o_4) && invRecv3(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange3(o_4) ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv3(o_4))) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv3(o_9) }
+                ((0 <= invRecv3(o_9) && invRecv3(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange3(o_9) ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv3(o_9))) == o_9
               );
             // Check that permission expression is non-negative for all fields
-            assert {:msg "  Inhale might fail. Fraction 1 * write / 10 might be negative. (0768.vpr@64.12--66.24) [202042]"}
+            assert {:msg "  Inhale might fail. Fraction 1 * write / 10 might be negative. (0768.vpr@64.12--66.24) [71451]"}
               (forall i_1: int ::
               { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_1)) } { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_1)), ref_2] }
               0 <= i_1 && i_1 < n ==> real(1) * FullPerm / 10 >= NoPerm
@@ -1473,13 +1473,13 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
               );
             
             // -- Define permissions
-              assume (forall o_4: Ref ::
-                { QPMask[o_4, ref_2] }
-                (((0 <= invRecv3(o_4) && invRecv3(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange3(o_4) ==> (NoPerm < real(1) * FullPerm / 10 ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv3(o_4))) == o_4) && QPMask[o_4, ref_2] == Mask[o_4, ref_2] + real(1) * FullPerm / 10) && (!(((0 <= invRecv3(o_4) && invRecv3(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange3(o_4)) ==> QPMask[o_4, ref_2] == Mask[o_4, ref_2])
+              assume (forall o_9: Ref ::
+                { QPMask[o_9, ref_2] }
+                (((0 <= invRecv3(o_9) && invRecv3(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange3(o_9) ==> (NoPerm < real(1) * FullPerm / 10 ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv3(o_9))) == o_9) && QPMask[o_9, ref_2] == Mask[o_9, ref_2] + real(1) * FullPerm / 10) && (!(((0 <= invRecv3(o_9) && invRecv3(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange3(o_9)) ==> QPMask[o_9, ref_2] == Mask[o_9, ref_2])
               );
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                f_5 != ref_2 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                f_5 != ref_2 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
             Mask := QPMask;
             assume state(Heap, Mask);
@@ -1498,7 +1498,7 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
         } else {
           
           // -- Translating statement: inhale 0 <= i2 -- <no position>
-            assume 0 <= i2_1;
+            assume 0 <= i2;
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         }
@@ -1514,7 +1514,7 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
         } else {
           
           // -- Translating statement: inhale i2 < n -- <no position>
-            assume i2_1 < n;
+            assume i2 < n;
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         }
@@ -1530,7 +1530,7 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
         } else {
           
           // -- Translating statement: inhale 0 <= j1 -- <no position>
-            assume 0 <= j1_33;
+            assume 0 <= j1_2;
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         }
@@ -1557,15 +1557,15 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
         
         // -- Check definedness of (forall i: Int :: { ptr_deref(ptr_add(inp, i)).ref } 0 <= i && i < n ==> acc(ptr_deref(ptr_add(inp, i)).ref, 1 * write / 10))
           if (*) {
-            if (0 <= i_7 && i_7 < n) {
+            if (0 <= i_5 && i_5 < n) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
-                assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@70.21--70.36) [202043]"}
-                  0 <= (pointer_offset(inp): int) + i_7;
-                assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [202044]"}
-                  (pointer_offset(inp): int) + i_7 < (block_length((pointer_block(inp): blockDomainType)): int);
+                ExhaleWellDef0Heap := Heap;
+                assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@70.21--70.36) [71452]"}
+                  0 <= (pointer_offset(inp): int) + i_5;
+                assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [71453]"}
+                  (pointer_offset(inp): int) + i_5 < (block_length((pointer_block(inp): blockDomainType)): int);
                 // Stop execution
                 assume false;
               }
@@ -1577,42 +1577,42 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Inhale might fail. Quantified resource ptr_deref(ptr_add(inp, i)).ref might not be injective. (0768.vpr@64.12--66.24) [202045]"}
-          (forall i_3: int, i_3_1: int ::
+        assert {:msg "  Inhale might fail. Quantified resource ptr_deref(ptr_add(inp, i)).ref might not be injective. (0768.vpr@64.12--66.24) [71454]"}
+          (forall i_3_2: int, i_3_3: int ::
           
-          (((i_3 != i_3_1 && (0 <= i_3 && i_3 < n)) && (0 <= i_3_1 && i_3_1 < n)) && NoPerm < real(1) * FullPerm / 10) && NoPerm < real(1) * FullPerm / 10 ==> ptr_deref(Heap, ptr_add(Heap, inp, i_3)) != ptr_deref(Heap, ptr_add(Heap, inp, i_3_1))
+          (((i_3_2 != i_3_3 && (0 <= i_3_2 && i_3_2 < n)) && (0 <= i_3_3 && i_3_3 < n)) && NoPerm < real(1) * FullPerm / 10) && NoPerm < real(1) * FullPerm / 10 ==> ptr_deref(Heap, ptr_add(Heap, inp, i_3_2)) != ptr_deref(Heap, ptr_add(Heap, inp, i_3_3))
         );
         
         // -- Define Inverse Function
-          assume (forall i_3: int ::
-            { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3)) } { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3)), ref_2] }
-            (0 <= i_3 && i_3 < n) && NoPerm < real(1) * FullPerm / 10 ==> qpRange4(ptr_deref(Heap, ptr_add(Heap, inp, i_3))) && invRecv4(ptr_deref(Heap, ptr_add(Heap, inp, i_3))) == i_3
+          assume (forall i_3_2: int ::
+            { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3_2)) } { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3_2)), ref_2] }
+            (0 <= i_3_2 && i_3_2 < n) && NoPerm < real(1) * FullPerm / 10 ==> qpRange4(ptr_deref(Heap, ptr_add(Heap, inp, i_3_2))) && invRecv4(ptr_deref(Heap, ptr_add(Heap, inp, i_3_2))) == i_3_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv4(o_4) }
-            ((0 <= invRecv4(o_4) && invRecv4(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange4(o_4) ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv4(o_4))) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv4(o_9) }
+            ((0 <= invRecv4(o_9) && invRecv4(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange4(o_9) ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv4(o_9))) == o_9
           );
         // Check that permission expression is non-negative for all fields
-        assert {:msg "  Inhale might fail. Fraction 1 * write / 10 might be negative. (0768.vpr@64.12--66.24) [202046]"}
-          (forall i_3: int ::
-          { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3)) } { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3)), ref_2] }
-          0 <= i_3 && i_3 < n ==> real(1) * FullPerm / 10 >= NoPerm
+        assert {:msg "  Inhale might fail. Fraction 1 * write / 10 might be negative. (0768.vpr@64.12--66.24) [71455]"}
+          (forall i_3_2: int ::
+          { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3_2)) } { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3_2)), ref_2] }
+          0 <= i_3_2 && i_3_2 < n ==> real(1) * FullPerm / 10 >= NoPerm
         );
         
         // -- Assume set of fields is nonNull
-          assume (forall i_3: int ::
-            { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3)) } { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3)), ref_2] }
-            (0 <= i_3 && i_3 < n) && real(1) * FullPerm / 10 > NoPerm ==> ptr_deref(Heap, ptr_add(Heap, inp, i_3)) != null
+          assume (forall i_3_2: int ::
+            { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3_2)) } { Heap[ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_3_2)), ref_2] }
+            (0 <= i_3_2 && i_3_2 < n) && real(1) * FullPerm / 10 > NoPerm ==> ptr_deref(Heap, ptr_add(Heap, inp, i_3_2)) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, ref_2] }
-            (((0 <= invRecv4(o_4) && invRecv4(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange4(o_4) ==> (NoPerm < real(1) * FullPerm / 10 ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv4(o_4))) == o_4) && QPMask[o_4, ref_2] == Mask[o_4, ref_2] + real(1) * FullPerm / 10) && (!(((0 <= invRecv4(o_4) && invRecv4(o_4) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange4(o_4)) ==> QPMask[o_4, ref_2] == Mask[o_4, ref_2])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, ref_2] }
+            (((0 <= invRecv4(o_9) && invRecv4(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange4(o_9) ==> (NoPerm < real(1) * FullPerm / 10 ==> ptr_deref(Heap, ptr_add(Heap, inp, invRecv4(o_9))) == o_9) && QPMask[o_9, ref_2] == Mask[o_9, ref_2] + real(1) * FullPerm / 10) && (!(((0 <= invRecv4(o_9) && invRecv4(o_9) < n) && NoPerm < real(1) * FullPerm / 10) && qpRange4(o_9)) ==> QPMask[o_9, ref_2] == Mask[o_9, ref_2])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != ref_2 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != ref_2 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -1620,15 +1620,15 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
         
         // -- Check definedness of (forall i: Int, j: Int :: { ptr_add(inp, i), ptr_deref(ptr_add(inp, j)) } { ptr_deref(ptr_add(inp, i)), ptr_add(inp, j) } { ptr_deref(ptr_add(inp, i)), ptr_deref(ptr_add(inp, j)) } 0 <= i && (i < n && (0 <= j && j < n)) && i != j ==> ptr_deref(ptr_add(inp, i)).ref != ptr_deref(ptr_add(inp, j)).ref)
           if (*) {
-            if ((0 <= i_8 && (i_8 < n && (0 <= j_3 && j_3 < n))) && i_8 != j_3) {
+            if ((0 <= i_15 && (i_15 < n && (0 <= j_16 && j_16 < n))) && i_15 != j_16) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
-                assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@78.17--78.34) [202047]"}
-                  0 <= (pointer_offset(inp): int) + i_8;
-                assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@78.17--78.34) [202048]"}
-                  (pointer_offset(inp): int) + i_8 < (block_length((pointer_block(inp): blockDomainType)): int);
+                ExhaleWellDef0Heap := Heap;
+                assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@78.17--78.34) [71456]"}
+                  0 <= (pointer_offset(inp): int) + i_15;
+                assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@78.17--78.34) [71457]"}
+                  (pointer_offset(inp): int) + i_15 < (block_length((pointer_block(inp): blockDomainType)): int);
                 // Stop execution
                 assume false;
               }
@@ -1636,16 +1636,16 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
                 // Stop execution
                 assume false;
               }
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access ptr_deref(ptr_add(inp, i)).ref (0768.vpr@64.12--66.24) [202049]"}
-                HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, i_8)), ref_2);
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access ptr_deref(ptr_add(inp, i)).ref (0768.vpr@64.12--66.24) [71458]"}
+                HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, i_15)), ref_2);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
-                assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + j might not hold. (0768.vpr@79.17--79.34) [202050]"}
-                  0 <= (pointer_offset(inp): int) + j_3;
-                assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + j < block_length(pointer_block(inp)) might not hold. (0768.vpr@79.17--79.34) [202051]"}
-                  (pointer_offset(inp): int) + j_3 < (block_length((pointer_block(inp): blockDomainType)): int);
+                ExhaleWellDef0Heap := Heap;
+                assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + j might not hold. (0768.vpr@79.17--79.34) [71459]"}
+                  0 <= (pointer_offset(inp): int) + j_16;
+                assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + j < block_length(pointer_block(inp)) might not hold. (0768.vpr@79.17--79.34) [71460]"}
+                  (pointer_offset(inp): int) + j_16 < (block_length((pointer_block(inp): blockDomainType)): int);
                 // Stop execution
                 assume false;
               }
@@ -1653,14 +1653,14 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
                 // Stop execution
                 assume false;
               }
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access ptr_deref(ptr_add(inp, j)).ref (0768.vpr@64.12--66.24) [202052]"}
-                HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, j_3)), ref_2);
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access ptr_deref(ptr_add(inp, j)).ref (0768.vpr@64.12--66.24) [71461]"}
+                HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, j_16)), ref_2);
             }
             assume false;
           }
-        assume (forall i_5: int, j_1: int ::
-          { ptr_add#frame(EmptyFrame, inp, i_5), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j_1)) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_5)), ptr_add#frame(EmptyFrame, inp, j_1) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_5)), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j_1)) }
-          (0 <= i_5 && (i_5 < n && (0 <= j_1 && j_1 < n))) && i_5 != j_1 ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_5)), ref_2] != Heap[ptr_deref(Heap, ptr_add(Heap, inp, j_1)), ref_2]
+        assume (forall i_5_1: int, j_1: int ::
+          { ptr_add#frame(EmptyFrame, inp, i_5_1), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j_1)) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_5_1)), ptr_add#frame(EmptyFrame, inp, j_1) } { ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, i_5_1)), ptr_deref#frame(EmptyFrame, ptr_add#frame(EmptyFrame, inp, j_1)) }
+          (0 <= i_5_1 && (i_5_1 < n && (0 <= j_1 && j_1 < n))) && i_5_1 != j_1 ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, i_5_1)), ref_2] != Heap[ptr_deref(Heap, ptr_add(Heap, inp, j_1)), ref_2]
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1677,14 +1677,14 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
     } else {
       
       // -- Translating statement: inhale 0 <= i3 -- <no position>
-        assume 0 <= i3_7;
+        assume 0 <= i3_1;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
   
   // -- Translating statement: if (0 <= i3 && i3 < n) -- <no position>
-    if (0 <= i3_7 && i3_7 < n) {
+    if (0 <= i3_1 && i3_1 < n) {
       
       // -- Translating statement: inhale acc(ptr_deref(ptr_add(inp, i3)).ref.x, 1 * write / 10) -- 0768.vpr@83.7--85.10
         assume state(Heap, Mask);
@@ -1692,12 +1692,12 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
         // -- Check definedness of acc(ptr_deref(ptr_add(inp, i3)).ref.x, 1 * write / 10)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
-            assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i3 might not hold. (0768.vpr@83.21--83.36) [202053]"}
-              0 <= (pointer_offset(inp): int) + i3_7;
-            assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i3 < block_length(pointer_block(inp)) might not hold. (0768.vpr@83.21--83.36) [202054]"}
-              (pointer_offset(inp): int) + i3_7 < (block_length((pointer_block(inp): blockDomainType)): int);
+            ExhaleWellDef0Heap := Heap;
+            assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i3 might not hold. (0768.vpr@83.21--83.36) [71462]"}
+              0 <= (pointer_offset(inp): int) + i3_1;
+            assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i3 < block_length(pointer_block(inp)) might not hold. (0768.vpr@83.21--83.36) [71463]"}
+              (pointer_offset(inp): int) + i3_1 < (block_length((pointer_block(inp): blockDomainType)): int);
             // Stop execution
             assume false;
           }
@@ -1705,13 +1705,13 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
             // Stop execution
             assume false;
           }
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access ptr_deref(ptr_add(inp, i3)).ref (0768.vpr@83.7--85.10) [202055]"}
-            HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, i3_7)), ref_2);
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access ptr_deref(ptr_add(inp, i3)).ref (0768.vpr@83.7--85.10) [71464]"}
+            HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, i3_1)), ref_2);
         perm := real(1) * FullPerm / 10;
-        assert {:msg "  Inhale might fail. Fraction 1 * write / 10 might be negative. (0768.vpr@83.7--85.10) [202056]"}
+        assert {:msg "  Inhale might fail. Fraction 1 * write / 10 might be negative. (0768.vpr@83.7--85.10) [71465]"}
           perm >= NoPerm;
-        assume perm > NoPerm ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, i3_7)), ref_2] != null;
-        Mask := Mask[Heap[ptr_deref(Heap, ptr_add(Heap, inp, i3_7)), ref_2], x_36:=Mask[Heap[ptr_deref(Heap, ptr_add(Heap, inp, i3_7)), ref_2], x_36] + perm];
+        assume perm > NoPerm ==> Heap[ptr_deref(Heap, ptr_add(Heap, inp, i3_1)), ref_2] != null;
+        Mask := Mask[Heap[ptr_deref(Heap, ptr_add(Heap, inp, i3_1)), ref_2], x_42:=Mask[Heap[ptr_deref(Heap, ptr_add(Heap, inp, i3_1)), ref_2], x_42] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1726,10 +1726,10 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
 procedure leafCount_termination_proof(t_2: treeDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1740,28 +1740,28 @@ procedure leafCount_termination_proof(t_2: treeDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (tree_tag(t) == 0 && tree_tag(t) == 0) -- <no position>
     if ((tree_tag(t_2): int) == 0 && (tree_tag(t_2): int) == 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(1, old(1)): Bool) && (bounded(old(1)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion (decreasing(1, old(1)): Bool) might not hold. (<no position>) [202057]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Assert might fail. Assertion (decreasing(1, old(1)): Bool) might not hold. (<no position>) [71466]"}
           (decreasing(1, 1): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(1)): Bool) might not hold. (<no position>) [202058]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(1)): Bool) might not hold. (<no position>) [71467]"}
           (bounded(1): bool);
         assume state(Heap, Mask);
       
       // -- Translating statement: assert (decreasing(1, old(1)): Bool) && (bounded(old(1)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Assert might fail. Assertion (decreasing(1, old(1)): Bool) might not hold. (<no position>) [202059]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Assert might fail. Assertion (decreasing(1, old(1)): Bool) might not hold. (<no position>) [71468]"}
           (decreasing(1, 1): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(1)): Bool) might not hold. (<no position>) [202060]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(1)): Bool) might not hold. (<no position>) [71469]"}
           (bounded(1): bool);
         assume state(Heap, Mask);
     }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:50
+// Date:         2025-01-26 21:44:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/nested.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/nested-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -183,7 +183,7 @@ procedure main() returns ()
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var i: int;
-  var j_9: bool;
+  var j: bool;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
@@ -205,7 +205,7 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: j := true -- nested.vpr@7.5--7.23
-    j_9 := true;
+    j := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (i < 5) -- nested.vpr@9.5--18.6
@@ -215,11 +215,11 @@ procedure main() returns ()
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant i <= 5 might not hold on entry. Assertion i <= 5 might not hold. (nested.vpr@10.19--10.25) [92308]"}
+        assert {:msg "  Loop invariant i <= 5 might not hold on entry. Assertion i <= 5 might not hold. (nested.vpr@10.19--10.25) [198995]"}
           i <= 5;
     
     // -- Havoc loop written variables (except locals)
-      havoc i, j_9;
+      havoc i, j;
     
     // -- Check definedness of invariant
       if (*) {
@@ -251,11 +251,11 @@ procedure main() returns ()
               // -- Exhale loop invariant before loop
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Loop invariant i <= 5 might not hold on entry. Assertion i <= 5 might not hold. (nested.vpr@13.23--13.29) [92309]"}
+                assert {:msg "  Loop invariant i <= 5 might not hold on entry. Assertion i <= 5 might not hold. (nested.vpr@13.23--13.29) [198996]"}
                   i <= 5;
             
             // -- Havoc loop written variables (except locals)
-              havoc j_9;
+              havoc j;
             
             // -- Check definedness of invariant
               if (*) {
@@ -275,25 +275,25 @@ procedure main() returns ()
                 assume i <= 5;
                 assume state(Heap, Mask);
                 // Check and assume guard
-                assume j_9;
+                assume j;
                 assume state(Heap, Mask);
                 
                 // -- Translate loop body
                   
                   // -- Translating statement: j := false -- nested.vpr@15.13--15.23
-                    j_9 := false;
+                    j := false;
                     assume state(Heap, Mask);
                 // Exhale invariant
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Loop invariant i <= 5 might not be preserved. Assertion i <= 5 might not hold. (nested.vpr@13.23--13.29) [92310]"}
+                assert {:msg "  Loop invariant i <= 5 might not be preserved. Assertion i <= 5 might not hold. (nested.vpr@13.23--13.29) [198997]"}
                   i <= 5;
                 // Terminate execution
                 assume false;
               }
             
             // -- Inhale loop invariant after loop, and assume guard
-              assume !j_9;
+              assume !j;
               assume state(Heap, Mask);
               assume i <= 5;
               assume state(Heap, Mask);
@@ -305,7 +305,7 @@ procedure main() returns ()
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant i <= 5 might not be preserved. Assertion i <= 5 might not hold. (nested.vpr@10.19--10.25) [92311]"}
+        assert {:msg "  Loop invariant i <= 5 might not be preserved. Assertion i <= 5 might not hold. (nested.vpr@10.19--10.25) [198998]"}
           i <= 5;
         // Terminate execution
         assume false;
@@ -321,7 +321,7 @@ procedure main() returns ()
   // -- Translating statement: assert i == 5 -- nested.vpr@20.5--20.19
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion i == 5 might not hold. (nested.vpr@20.12--20.18) [92312]"}
+    assert {:msg "  Assert might fail. Assertion i == 5 might not hold. (nested.vpr@20.12--20.18) [198999]"}
       i == 5;
     assume state(Heap, Mask);
 }

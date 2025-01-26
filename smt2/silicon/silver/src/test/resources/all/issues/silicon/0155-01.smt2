@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:42
+; Started: 2025-01-26 21:34:44
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -123,11 +123,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (x@1@00 Int) (y@2@00 Bool)) (!
   (= (i%limited s@$ this@0@00 x@1@00 y@2@00) (i s@$ this@0@00 x@1@00 y@2@00))
   :pattern ((i s@$ this@0@00 x@1@00 y@2@00))
-  :qid |quant-u-24115|)))
+  :qid |quant-u-11626|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (x@1@00 Int) (y@2@00 Bool)) (!
   (i%stateless this@0@00 x@1@00 y@2@00)
   :pattern ((i%limited s@$ this@0@00 x@1@00 y@2@00))
-  :qid |quant-u-24116|)))
+  :qid |quant-u-11627|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (x@1@00 Int) (y@2@00 Bool)) (!
   (and
     ($Perm.isReadVar $k@4@00)
@@ -143,7 +143,7 @@
           ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) x@1@00 y@2@00))))
   :pattern ((i s@$ this@0@00 x@1@00 y@2@00))
   :pattern ((i%stateless this@0@00 x@1@00 y@2@00) (valid%trigger ($Snap.second s@$) this@0@00))
-  :qid |quant-u-24117|)))
+  :qid |quant-u-11628|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (x@1@00 Int) (y@2@00 Bool)) (!
   (=>
     (i%precondition s@$ this@0@00 x@1@00 y@2@00)
@@ -151,7 +151,7 @@
       $Snap.unit
       ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) x@1@00 y@2@00))
   :pattern ((i s@$ this@0@00 x@1@00 y@2@00))
-  :qid |quant-u-24118|)))
+  :qid |quant-u-11629|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- triggersSix$ ----------
@@ -182,9 +182,9 @@
     ($Snap.first ($Snap.second ($Snap.second $t@6@01)))
     ($Snap.second ($Snap.second ($Snap.second $t@6@01))))))
 (assert (= ($Snap.second ($Snap.second ($Snap.second $t@6@01))) $Snap.unit))
-; [eval] (forall x: Int, fresh__187: Bool :: { i(this, x, fresh__187) } true ==> i(this, x, c > d))
+; [eval] (forall x: Int, fresh__75: Bool :: { i(this, x, fresh__75) } true ==> i(this, x, c > d))
 (declare-const x@7@01 Int)
-(declare-const fresh__187@8@01 Bool)
+(declare-const fresh__75@8@01 Bool)
 (push) ; 2
 ; [eval] true ==> i(this, x, c > d)
 (push) ; 3
@@ -237,7 +237,7 @@
   ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 (>
   c@4@01
   d@5@01)))
-; [eval] i(this, x, fresh__187)
+; [eval] i(this, x, fresh__75)
 (set-option :timeout 0)
 (push) ; 3
 ; [eval] this != null
@@ -253,23 +253,23 @@
 ; (get-info :all-statistics)
 (assert (i%precondition ($Snap.combine
   $Snap.unit
-  ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__187@8@01))
+  ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__75@8@01))
 (pop) ; 3
 ; Joined path conditions
 (assert ($Perm.isReadVar $k@10@01))
 (assert (i%precondition ($Snap.combine
   $Snap.unit
-  ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__187@8@01))
+  ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__75@8@01))
 (assert ($Perm.isReadVar $k@10@01))
 (assert (i%precondition ($Snap.combine
   $Snap.unit
-  ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__187@8@01))
+  ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__75@8@01))
 (pop) ; 2
 ; Nested auxiliary terms: globals (aux)
 (assert ($Perm.isReadVar $k@9@01))
 (assert ($Perm.isReadVar $k@10@01))
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((x@7@01 Int) (fresh__187@8@01 Bool)) (!
+(assert (forall ((x@7@01 Int) (fresh__75@8@01 Bool)) (!
   (and
     (i%precondition ($Snap.combine
       $Snap.unit
@@ -278,12 +278,12 @@
       d@5@01))
     (i%precondition ($Snap.combine
       $Snap.unit
-      ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__187@8@01))
+      ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__75@8@01))
   :pattern ((i ($Snap.combine
     $Snap.unit
-    ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__187@8@01))
+    ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__75@8@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/silicon/0155.vpr@22@13@22@56-aux|)))
-(assert (forall ((x@7@01 Int) (fresh__187@8@01 Bool)) (!
+(assert (forall ((x@7@01 Int) (fresh__75@8@01 Bool)) (!
   (i ($Snap.combine
     $Snap.unit
     ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 (>
@@ -291,7 +291,7 @@
     d@5@01))
   :pattern ((i ($Snap.combine
     $Snap.unit
-    ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__187@8@01))
+    ($Snap.first ($Snap.second ($Snap.second $t@6@01)))) this@3@01 x@7@01 fresh__75@8@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/silicon/0155.vpr@22@13@22@56|)))
 ; State saturation: after contract
 (set-option :timeout 50)

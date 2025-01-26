@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:08
+// Date:         2025-01-26 21:42:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0688.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0688-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,7 +185,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type Exe67DomainType;
 
 // Translation of domain function F67
-function  F67(x_8: int, y_6: int): int;
+function  F67(x_37: int, y_2: int): int;
 
 // Translation of domain function L67
 function  L67(): int;
@@ -216,7 +216,7 @@ type UnitDomainType;
 function  unit(): UnitDomainType;
 
 // Translation of domain function Unit_tag
-function  Unit_tag(t_9: UnitDomainType): int;
+function  Unit_tag(t_3: UnitDomainType): int;
 
 // Translation of anonymous domain axiom
 axiom (Unit_tag((unit(): UnitDomainType)): int) == 0;
@@ -334,6 +334,6 @@ procedure lemmaLEqualR67#definedness() returns (Result: UnitDomainType)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of lemmaLEqualR67 might not hold. Assertion L67() == R67() might not hold. (0688.vpr@23.10--23.24) [221481]"}
+    assert {:msg "  Postcondition of lemmaLEqualR67 might not hold. Assertion L67() == R67() might not hold. (0688.vpr@23.10--23.24) [54584]"}
       (L67(): int) == (R67(): int);
 }

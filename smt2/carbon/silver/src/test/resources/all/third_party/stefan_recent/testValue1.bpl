@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:18:02
+// Date:         2025-01-26 21:41:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testValue1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testValue1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,15 +185,15 @@ axiom !IsWandField(Test__next);
 // Translation of method Test__main1
 // ==================================================
 
-procedure Test__main1(diz: Ref, current_thread_id: int, t1_6: Ref, t2_1: Ref) returns ()
+procedure Test__main1(diz: Ref, current_thread_id: int, t1_1: Ref, t2_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -202,7 +202,7 @@ procedure Test__main1(diz: Ref, current_thread_id: int, t1_6: Ref, t2_1: Ref) re
   
   // -- Assumptions about method arguments
     assume Heap[diz, $allocated];
-    assume Heap[t1_6, $allocated];
+    assume Heap[t1_1, $allocated];
     assume Heap[t2_1, $allocated];
   
   // -- Checked inhaling of precondition
@@ -212,8 +212,8 @@ procedure Test__main1(diz: Ref, current_thread_id: int, t1_6: Ref, t2_1: Ref) re
     assume state(Heap, Mask);
     havoc wildcard;
     perm := wildcard;
-    assume t1_6 != null;
-    Mask := Mask[t1_6, Test__next:=Mask[t1_6, Test__next] + perm];
+    assume t1_1 != null;
+    Mask := Mask[t1_1, Test__next:=Mask[t1_1, Test__next] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     havoc wildcard;
@@ -224,13 +224,13 @@ procedure Test__main1(diz: Ref, current_thread_id: int, t1_6: Ref, t2_1: Ref) re
     assume state(Heap, Mask);
     
     // -- Check definedness of t1.Test__next != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t1.Test__next (testValue1.vpr@11.12--11.33) [163206]"}
-        HasDirectPerm(Mask, t1_6, Test__next);
-    assume Heap[t1_6, Test__next] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t1.Test__next (testValue1.vpr@11.12--11.33) [22704]"}
+        HasDirectPerm(Mask, t1_1, Test__next);
+    assume Heap[t1_1, Test__next] != null;
     assume state(Heap, Mask);
     
     // -- Check definedness of t2.Test__next != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t2.Test__next (testValue1.vpr@12.12--12.33) [163207]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access t2.Test__next (testValue1.vpr@12.12--12.33) [22705]"}
         HasDirectPerm(Mask, t2_1, Test__next);
     assume Heap[t2_1, Test__next] != null;
     assume state(Heap, Mask);
@@ -238,16 +238,16 @@ procedure Test__main1(diz: Ref, current_thread_id: int, t1_6: Ref, t2_1: Ref) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (t1 == t2) -- testValue1.vpr@14.3--18.4
-    if (t1_6 == t2_1) {
+    if (t1_1 == t2_1) {
       
       // -- Translating statement: assert false -- testValue1.vpr@17.5--17.17
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (testValue1.vpr@17.12--17.17) [163208]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion false might not hold. (testValue1.vpr@17.12--17.17) [22706]"}
           false;
         assume state(Heap, Mask);
     }
@@ -261,8 +261,8 @@ procedure Test__main1(diz: Ref, current_thread_id: int, t1_6: Ref, t2_1: Ref) re
 procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -270,8 +270,8 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
   var freshObj: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -286,8 +286,8 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -301,7 +301,7 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Test__next == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Test__next (testValue1.vpr@24.11--24.81) [163209]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Test__next (testValue1.vpr@24.11--24.81) [22707]"}
         HasDirectPerm(PostMask, sys__result, Test__next);
     assume PostHeap[sys__result, Test__next] == null;
     assume state(PostHeap, PostMask);
@@ -321,7 +321,7 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Test__next := null -- testValue1.vpr@28.3--28.25
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Test__next (testValue1.vpr@28.3--28.25) [163210]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Test__next (testValue1.vpr@28.3--28.25) [22708]"}
       FullPerm == Mask[diz, Test__next];
     Heap := Heap[diz, Test__next:=null];
     assume state(Heap, Mask);
@@ -334,21 +334,21 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
   //   (acc(sys__result.Test__next, write) && sys__result.Test__next == null) -- testValue1.vpr@30.3--30.107
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testValue1.vpr@30.10--30.107) [163211]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testValue1.vpr@30.10--30.107) [22709]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Test__next (testValue1.vpr@30.10--30.107) [163213]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Test__next (testValue1.vpr@30.10--30.107) [22711]"}
         perm <= AssertMask[sys__result, Test__next];
     }
     AssertMask := AssertMask[sys__result, Test__next:=AssertMask[sys__result, Test__next] - perm];
     
     // -- Check definedness of sys__result.Test__next == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Test__next (testValue1.vpr@30.10--30.107) [163214]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Test__next (testValue1.vpr@30.10--30.107) [22712]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Test__next);
-    assert {:msg "  Assert might fail. Assertion sys__result.Test__next == null might not hold. (testValue1.vpr@30.10--30.107) [163215]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Test__next == null might not hold. (testValue1.vpr@30.10--30.107) [22713]"}
       AssertHeap[sys__result, Test__next] == null;
     assume state(Heap, Mask);
   
@@ -358,17 +358,17 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Test__Test might not hold. Assertion sys__result != null might not hold. (testValue1.vpr@23.11--23.30) [163216]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Test__Test might not hold. Assertion sys__result != null might not hold. (testValue1.vpr@23.11--23.30) [22714]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Test__Test might not hold. There might be insufficient permission to access sys__result.Test__next (testValue1.vpr@24.11--24.81) [163217]"}
+      assert {:msg "  Postcondition of Test__Test might not hold. There might be insufficient permission to access sys__result.Test__next (testValue1.vpr@24.11--24.81) [22715]"}
         perm <= Mask[sys__result, Test__next];
     }
     Mask := Mask[sys__result, Test__next:=Mask[sys__result, Test__next] - perm];
-    assert {:msg "  Postcondition of Test__Test might not hold. Assertion sys__result.Test__next == null might not hold. (testValue1.vpr@24.11--24.81) [163218]"}
+    assert {:msg "  Postcondition of Test__Test might not hold. Assertion sys__result.Test__next == null might not hold. (testValue1.vpr@24.11--24.81) [22716]"}
       Heap[sys__result, Test__next] == null;
     // Finish exhale
     havoc ExhaleHeap;

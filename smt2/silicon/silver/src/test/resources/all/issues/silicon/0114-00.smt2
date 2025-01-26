@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:46:34
+; Started: 2025-01-26 21:33:57
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -177,11 +177,11 @@
     (fun2%limited s@$ b@0@00 x@1@00 y@2@00 j@3@00)
     (fun2 s@$ b@0@00 x@1@00 y@2@00 j@3@00))
   :pattern ((fun2 s@$ b@0@00 x@1@00 y@2@00 j@3@00))
-  :qid |quant-u-25262|)))
+  :qid |quant-u-10484|)))
 (assert (forall ((s@$ $Snap) (b@0@00 Bool) (x@1@00 $Ref) (y@2@00 $Ref) (j@3@00 Int)) (!
   (fun2%stateless b@0@00 x@1@00 y@2@00 j@3@00)
   :pattern ((fun2%limited s@$ b@0@00 x@1@00 y@2@00 j@3@00))
-  :qid |quant-u-25263|)))
+  :qid |quant-u-10485|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert b@0@00)
@@ -207,11 +207,11 @@
     (fun2%precondition s@$ b@0@00 x@1@00 y@2@00 j@3@00)
     (= (fun2 s@$ b@0@00 x@1@00 y@2@00 j@3@00) 10))
   :pattern ((fun2 s@$ b@0@00 x@1@00 y@2@00 j@3@00))
-  :qid |quant-u-25266|)))
+  :qid |quant-u-10488|)))
 (assert (forall ((s@$ $Snap) (b@0@00 Bool) (x@1@00 $Ref) (y@2@00 $Ref) (j@3@00 Int)) (!
   true
   :pattern ((fun2 s@$ b@0@00 x@1@00 y@2@00 j@3@00))
-  :qid |quant-u-25267|)))
+  :qid |quant-u-10489|)))
 ; ---------- FUNCTION fun1----------
 (declare-fun j@5@00 () Int)
 (declare-fun result@6@00 () Int)
@@ -222,11 +222,11 @@
 (assert (forall ((s@$ $Snap) (j@5@00 Int)) (!
   (= (fun1%limited s@$ j@5@00) (fun1 s@$ j@5@00))
   :pattern ((fun1 s@$ j@5@00))
-  :qid |quant-u-25264|)))
+  :qid |quant-u-10486|)))
 (assert (forall ((s@$ $Snap) (j@5@00 Int)) (!
   (fun1%stateless j@5@00)
   :pattern ((fun1%limited s@$ j@5@00))
-  :qid |quant-u-25265|)))
+  :qid |quant-u-10487|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -238,11 +238,11 @@
 (assert (forall ((s@$ $Snap) (j@5@00 Int)) (!
   (=> (fun1%precondition s@$ j@5@00) (= (fun1 s@$ j@5@00) 10))
   :pattern ((fun1 s@$ j@5@00))
-  :qid |quant-u-25268|)))
+  :qid |quant-u-10490|)))
 (assert (forall ((s@$ $Snap) (j@5@00 Int)) (!
   true
   :pattern ((fun1 s@$ j@5@00))
-  :qid |quant-u-25269|)))
+  :qid |quant-u-10491|)))
 ; ---------- P ----------
 (declare-const x@7@00 $Ref)
 (declare-const b@8@00 Bool)

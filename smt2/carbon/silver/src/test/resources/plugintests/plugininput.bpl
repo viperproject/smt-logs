@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:40
+// Date:         2025-01-26 21:41:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/plugintests/plugininput.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/plugintests/plugininput-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,12 +233,12 @@ procedure getRandomNumber#definedness() returns (Result: int)
 procedure meth(a_2: int) returns (b_24: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -253,8 +253,8 @@ procedure meth(a_2: int) returns (b_24: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -277,8 +277,8 @@ procedure meth(a_2: int) returns (b_24: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of meth might not hold. Assertion b > 0 might not hold. (plugininput.vpr@8.9--8.14) [92112]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of meth might not hold. Assertion b > 0 might not hold. (plugininput.vpr@8.9--8.14) [20218]"}
       b_24 > 0;
 }

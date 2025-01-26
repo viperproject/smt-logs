@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:08
+; Started: 2025-01-26 21:35:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -681,19 +681,19 @@
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   (= (dummy%limited s@$ j@0@00) (dummy s@$ j@0@00))
   :pattern ((dummy s@$ j@0@00))
-  :qid |quant-u-23250|)))
+  :qid |quant-u-12444|)))
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   (dummy%stateless j@0@00)
   :pattern ((dummy%limited s@$ j@0@00))
-  :qid |quant-u-23251|)))
+  :qid |quant-u-12445|)))
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   (=> (dummy%precondition s@$ j@0@00) (= (dummy s@$ j@0@00) true))
   :pattern ((dummy s@$ j@0@00))
-  :qid |quant-u-23252|)))
+  :qid |quant-u-12446|)))
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   true
   :pattern ((dummy s@$ j@0@00))
-  :qid |quant-u-23253|)))
+  :qid |quant-u-12447|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- qpTest ----------
@@ -773,7 +773,7 @@
       (= (inv@6@01 (loc<Ref> a@2@01 (+ i@5@01 2))) i@5@01)
       (img@7@01 (loc<Ref> a@2@01 (+ i@5@01 2)))))
   :pattern ((dummy $Snap.unit i@5@01))
-  :qid |quant-u-23255|)))
+  :qid |quant-u-12449|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@7@01 r) (and (<= (- 0 2) (inv@6@01 r)) (< (inv@6@01 r) 8)))
@@ -857,7 +857,7 @@
       (pTaken@9@01 r))
     $Perm.No)
   
-  :qid |quant-u-23257|))))
+  :qid |quant-u-12451|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -869,7 +869,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@9@01 r) $Perm.No)
   
-  :qid |quant-u-23258|))))
+  :qid |quant-u-12452|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -884,7 +884,7 @@
     (= r (loc<Ref> a@2@01 j@3@01))
     (= (- $Perm.Write (pTaken@9@01 r)) $Perm.No))
   
-  :qid |quant-u-23259|))))
+  :qid |quant-u-12453|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -896,13 +896,13 @@
 ; Definitional axioms for singleton-FVF's value
 (assert (= ($FVF.lookup_val (as sm@10@01  $FVF<val>) (loc<Ref> a@2@01 j@3@01)) 5))
 ; [exec]
-; assert (exists __rw_k7: Int :: { dummy(__rw_k7) } true ==>
-;     dummy(__rw_k7) && 0 <= __rw_k7 + 2)
-; [eval] (exists __rw_k7: Int :: { dummy(__rw_k7) } true ==> dummy(__rw_k7) && 0 <= __rw_k7 + 2)
-(declare-const __rw_k7@11@01 Int)
+; assert (exists __rw_k1: Int :: { dummy(__rw_k1) } true ==>
+;     dummy(__rw_k1) && 0 <= __rw_k1 + 2)
+; [eval] (exists __rw_k1: Int :: { dummy(__rw_k1) } true ==> dummy(__rw_k1) && 0 <= __rw_k1 + 2)
+(declare-const __rw_k1@11@01 Int)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] true ==> dummy(__rw_k7) && 0 <= __rw_k7 + 2
+; [eval] true ==> dummy(__rw_k1) && 0 <= __rw_k1 + 2
 (push) ; 4
 (push) ; 5
 (set-option :timeout 10)
@@ -917,68 +917,68 @@
 (set-option :timeout 0)
 (push) ; 5
 ; [then-branch: 1 | True]
-; [eval] dummy(__rw_k7) && 0 <= __rw_k7 + 2
-; [eval] dummy(__rw_k7)
+; [eval] dummy(__rw_k1) && 0 <= __rw_k1 + 2
+; [eval] dummy(__rw_k1)
 (push) ; 6
-(assert (dummy%precondition $Snap.unit __rw_k7@11@01))
+(assert (dummy%precondition $Snap.unit __rw_k1@11@01))
 (pop) ; 6
 ; Joined path conditions
-(assert (dummy%precondition $Snap.unit __rw_k7@11@01))
+(assert (dummy%precondition $Snap.unit __rw_k1@11@01))
 (push) ; 6
-; [then-branch: 2 | !(dummy(_, __rw_k7@11@01)) | live]
-; [else-branch: 2 | dummy(_, __rw_k7@11@01) | live]
+; [then-branch: 2 | !(dummy(_, __rw_k1@11@01)) | live]
+; [else-branch: 2 | dummy(_, __rw_k1@11@01) | live]
 (push) ; 7
-; [then-branch: 2 | !(dummy(_, __rw_k7@11@01))]
-(assert (not (dummy $Snap.unit __rw_k7@11@01)))
+; [then-branch: 2 | !(dummy(_, __rw_k1@11@01))]
+(assert (not (dummy $Snap.unit __rw_k1@11@01)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 2 | dummy(_, __rw_k7@11@01)]
-(assert (dummy $Snap.unit __rw_k7@11@01))
-; [eval] 0 <= __rw_k7 + 2
-; [eval] __rw_k7 + 2
+; [else-branch: 2 | dummy(_, __rw_k1@11@01)]
+(assert (dummy $Snap.unit __rw_k1@11@01))
+; [eval] 0 <= __rw_k1 + 2
+; [eval] __rw_k1 + 2
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
-(assert (or (dummy $Snap.unit __rw_k7@11@01) (not (dummy $Snap.unit __rw_k7@11@01))))
+(assert (or (dummy $Snap.unit __rw_k1@11@01) (not (dummy $Snap.unit __rw_k1@11@01))))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 (assert (and
-  (dummy%precondition $Snap.unit __rw_k7@11@01)
-  (or (dummy $Snap.unit __rw_k7@11@01) (not (dummy $Snap.unit __rw_k7@11@01)))))
+  (dummy%precondition $Snap.unit __rw_k1@11@01)
+  (or (dummy $Snap.unit __rw_k1@11@01) (not (dummy $Snap.unit __rw_k1@11@01)))))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (exists ((__rw_k7@11@01 Int)) (!
+(assert (exists ((__rw_k1@11@01 Int)) (!
   (and
-    (dummy%precondition $Snap.unit __rw_k7@11@01)
-    (or (dummy $Snap.unit __rw_k7@11@01) (not (dummy $Snap.unit __rw_k7@11@01))))
-  :pattern ((dummy%limited $Snap.unit __rw_k7@11@01))
+    (dummy%precondition $Snap.unit __rw_k1@11@01)
+    (or (dummy $Snap.unit __rw_k1@11@01) (not (dummy $Snap.unit __rw_k1@11@01))))
+  :pattern ((dummy%limited $Snap.unit __rw_k1@11@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0202.vpr@36@10@36@46-aux|)))
-(assert (forall ((__rw_k7@11@01 Int)) (!
-  (dummy%precondition $Snap.unit __rw_k7@11@01)
-  :pattern ((dummy%limited $Snap.unit __rw_k7@11@01))
+(assert (forall ((__rw_k1@11@01 Int)) (!
+  (dummy%precondition $Snap.unit __rw_k1@11@01)
+  :pattern ((dummy%limited $Snap.unit __rw_k1@11@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0202.vpr@36@10@36@46|)))
-(assert (exists ((__rw_k7@11@01 Int)) (!
-  (dummy%precondition $Snap.unit __rw_k7@11@01)
-  :pattern ((dummy%limited $Snap.unit __rw_k7@11@01))
+(assert (exists ((__rw_k1@11@01 Int)) (!
+  (dummy%precondition $Snap.unit __rw_k1@11@01)
+  :pattern ((dummy%limited $Snap.unit __rw_k1@11@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0202.vpr@36@10@36@46_precondition|)))
 (push) ; 3
-(assert (not (exists ((__rw_k7@11@01 Int)) (!
+(assert (not (exists ((__rw_k1@11@01 Int)) (!
   (=>
-    (dummy%precondition $Snap.unit __rw_k7@11@01)
-    (and (dummy $Snap.unit __rw_k7@11@01) (<= 0 (+ __rw_k7@11@01 2))))
-  :pattern ((dummy%limited $Snap.unit __rw_k7@11@01))
+    (dummy%precondition $Snap.unit __rw_k1@11@01)
+    (and (dummy $Snap.unit __rw_k1@11@01) (<= 0 (+ __rw_k1@11@01 2))))
+  :pattern ((dummy%limited $Snap.unit __rw_k1@11@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0202.vpr@36@10@36@46|))))
 (check-sat)
 ; unsat
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (exists ((__rw_k7@11@01 Int)) (!
-  (and (dummy $Snap.unit __rw_k7@11@01) (<= 0 (+ __rw_k7@11@01 2)))
-  :pattern ((dummy%limited $Snap.unit __rw_k7@11@01))
+(assert (exists ((__rw_k1@11@01 Int)) (!
+  (and (dummy $Snap.unit __rw_k1@11@01) (<= 0 (+ __rw_k1@11@01 2)))
+  :pattern ((dummy%limited $Snap.unit __rw_k1@11@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0202.vpr@36@10@36@46|)))
 (pop) ; 2
 (pop) ; 1
@@ -1050,7 +1050,7 @@
       (= (inv@18@01 (loc<Ref> a@14@01 (+ i@17@01 2))) i@17@01)
       (img@19@01 (loc<Ref> a@14@01 (+ i@17@01 2)))))
   :pattern ((other_dummy<Bool> i@17@01))
-  :qid |quant-u-23261|)))
+  :qid |quant-u-12455|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@19@01 r) (and (<= (- 0 2) (inv@18@01 r)) (< (inv@18@01 r) 8)))
@@ -1129,7 +1129,7 @@
       (pTaken@21@01 r))
     $Perm.No)
   
-  :qid |quant-u-23263|))))
+  :qid |quant-u-12457|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1141,7 +1141,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@21@01 r) $Perm.No)
   
-  :qid |quant-u-23264|))))
+  :qid |quant-u-12458|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1156,7 +1156,7 @@
     (= r (loc<Ref> a@14@01 j@15@01))
     (= (- $Perm.Write (pTaken@21@01 r)) $Perm.No))
   
-  :qid |quant-u-23265|))))
+  :qid |quant-u-12459|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1168,13 +1168,13 @@
 ; Definitional axioms for singleton-FVF's value
 (assert (= ($FVF.lookup_val (as sm@22@01  $FVF<val>) (loc<Ref> a@14@01 j@15@01)) 5))
 ; [exec]
-; assert (exists __rw_k8: Int :: { other_dummy(__rw_k8) } true ==>
-;     other_dummy(__rw_k8) ==> 0 <= __rw_k8 + 2)
-; [eval] (exists __rw_k8: Int :: { other_dummy(__rw_k8) } true ==> other_dummy(__rw_k8) ==> 0 <= __rw_k8 + 2)
-(declare-const __rw_k8@23@01 Int)
+; assert (exists __rw_k2: Int :: { other_dummy(__rw_k2) } true ==>
+;     other_dummy(__rw_k2) ==> 0 <= __rw_k2 + 2)
+; [eval] (exists __rw_k2: Int :: { other_dummy(__rw_k2) } true ==> other_dummy(__rw_k2) ==> 0 <= __rw_k2 + 2)
+(declare-const __rw_k2@23@01 Int)
 (set-option :timeout 0)
 (push) ; 3
-; [eval] true ==> other_dummy(__rw_k8) ==> 0 <= __rw_k8 + 2
+; [eval] true ==> other_dummy(__rw_k2) ==> 0 <= __rw_k2 + 2
 (push) ; 4
 (push) ; 5
 (set-option :timeout 10)
@@ -1189,49 +1189,49 @@
 (set-option :timeout 0)
 (push) ; 5
 ; [then-branch: 4 | True]
-; [eval] other_dummy(__rw_k8) ==> 0 <= __rw_k8 + 2
-; [eval] other_dummy(__rw_k8)
+; [eval] other_dummy(__rw_k2) ==> 0 <= __rw_k2 + 2
+; [eval] other_dummy(__rw_k2)
 (push) ; 6
-; [then-branch: 5 | other_dummy[Bool](__rw_k8@23@01) | live]
-; [else-branch: 5 | !(other_dummy[Bool](__rw_k8@23@01)) | live]
+; [then-branch: 5 | other_dummy[Bool](__rw_k2@23@01) | live]
+; [else-branch: 5 | !(other_dummy[Bool](__rw_k2@23@01)) | live]
 (push) ; 7
-; [then-branch: 5 | other_dummy[Bool](__rw_k8@23@01)]
-(assert (other_dummy<Bool> __rw_k8@23@01))
-; [eval] 0 <= __rw_k8 + 2
-; [eval] __rw_k8 + 2
+; [then-branch: 5 | other_dummy[Bool](__rw_k2@23@01)]
+(assert (other_dummy<Bool> __rw_k2@23@01))
+; [eval] 0 <= __rw_k2 + 2
+; [eval] __rw_k2 + 2
 (pop) ; 7
 (push) ; 7
-; [else-branch: 5 | !(other_dummy[Bool](__rw_k8@23@01))]
-(assert (not (other_dummy<Bool> __rw_k8@23@01)))
+; [else-branch: 5 | !(other_dummy[Bool](__rw_k2@23@01))]
+(assert (not (other_dummy<Bool> __rw_k2@23@01)))
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
-(assert (or (not (other_dummy<Bool> __rw_k8@23@01)) (other_dummy<Bool> __rw_k8@23@01)))
+(assert (or (not (other_dummy<Bool> __rw_k2@23@01)) (other_dummy<Bool> __rw_k2@23@01)))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
-(assert (or (not (other_dummy<Bool> __rw_k8@23@01)) (other_dummy<Bool> __rw_k8@23@01)))
+(assert (or (not (other_dummy<Bool> __rw_k2@23@01)) (other_dummy<Bool> __rw_k2@23@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (exists ((__rw_k8@23@01 Int)) (!
-  (or (not (other_dummy<Bool> __rw_k8@23@01)) (other_dummy<Bool> __rw_k8@23@01))
-  :pattern ((other_dummy<Bool> __rw_k8@23@01))
+(assert (exists ((__rw_k2@23@01 Int)) (!
+  (or (not (other_dummy<Bool> __rw_k2@23@01)) (other_dummy<Bool> __rw_k2@23@01))
+  :pattern ((other_dummy<Bool> __rw_k2@23@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0202.vpr@49@10@49@53-aux|)))
 (push) ; 3
-(assert (not (exists ((__rw_k8@23@01 Int)) (!
-  (=> (other_dummy<Bool> __rw_k8@23@01) (<= 0 (+ __rw_k8@23@01 2)))
-  :pattern ((other_dummy<Bool> __rw_k8@23@01))
+(assert (not (exists ((__rw_k2@23@01 Int)) (!
+  (=> (other_dummy<Bool> __rw_k2@23@01) (<= 0 (+ __rw_k2@23@01 2)))
+  :pattern ((other_dummy<Bool> __rw_k2@23@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0202.vpr@49@10@49@53|))))
 (check-sat)
 ; unsat
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (exists ((__rw_k8@23@01 Int)) (!
-  (=> (other_dummy<Bool> __rw_k8@23@01) (<= 0 (+ __rw_k8@23@01 2)))
-  :pattern ((other_dummy<Bool> __rw_k8@23@01))
+(assert (exists ((__rw_k2@23@01 Int)) (!
+  (=> (other_dummy<Bool> __rw_k2@23@01) (<= 0 (+ __rw_k2@23@01 2)))
+  :pattern ((other_dummy<Bool> __rw_k2@23@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/all/issues/carbon/0202.vpr@49@10@49@53|)))
 (pop) ; 2
 (pop) ; 1

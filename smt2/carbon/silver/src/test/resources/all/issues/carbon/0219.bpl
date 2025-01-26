@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:42
+// Date:         2025-01-26 21:43:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0219.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0219-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_5: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_5, f_3] }
-  Heap[o_5, $allocated] ==> Heap[Heap[o_5, f_3], $allocated]
+axiom (forall o_56: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_56, f_3] }
+  Heap[o_56, $allocated] ==> Heap[Heap[o_56, f_3], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref, f_9: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, f_9] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_6, f_9) ==> Heap[o_6, f_9] == ExhaleHeap[o_6, f_9]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref, f_51: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, f_51] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_38, f_51) ==> Heap[o_38, f_51] == ExhaleHeap[o_38, f_51]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2), ExhaleHeap[null, PredicateMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> Heap[null, PredicateMaskField(pm_f_2)] == ExhaleHeap[null, PredicateMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26), ExhaleHeap[null, PredicateMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> Heap[null, PredicateMaskField(pm_f_26)] == ExhaleHeap[null, PredicateMaskField(pm_f_26)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, PredicateMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, PredicateMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2), ExhaleHeap[null, WandMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> Heap[null, WandMaskField(pm_f_2)] == ExhaleHeap[null, WandMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26), ExhaleHeap[null, WandMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> Heap[null, WandMaskField(pm_f_26)] == ExhaleHeap[null, WandMaskField(pm_f_26)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, WandMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, WandMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_6, $allocated] ==> ExhaleHeap[o_6, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_38, $allocated] ==> ExhaleHeap[o_38, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_5: Ref, f_10: (Field A B), v: B ::
-  { Heap[o_5, f_10:=v] }
-  succHeap(Heap, Heap[o_5, f_10:=v])
+axiom (forall <A, B> Heap: HeapType, o_56: Ref, f_22: (Field A B), v: B ::
+  { Heap[o_56, f_22:=v] }
+  succHeap(Heap, Heap[o_56, f_22:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -197,18 +197,18 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type MatrixDomainType;
 
 // Translation of domain function loc
-function  loc(m_18: MatrixDomainType, i_79: int, j_41: int): Ref;
+function  loc(m_19: MatrixDomainType, i_6: int, j_18: int): Ref;
 
 // Translation of domain function width
-function  width(m_18: MatrixDomainType): int;
+function  width(m_19: MatrixDomainType): int;
 
 // Translation of domain function height
-function  height(m_18: MatrixDomainType): int;
+function  height_1(m_19: MatrixDomainType): int;
 
 // Translation of domain axiom loc_inject
-axiom (forall m_17: MatrixDomainType, i1: int, i2_1: int, j1_33: int, j2_16: int ::
-  { (loc(m_17, i1, j1_33): Ref), (loc(m_17, i2_1, j2_16): Ref) }
-  i1 >= 0 && (i2_1 >= 0 && (j1_33 >= 0 && (j2_16 >= 0 && (i1 < (width(m_17): int) && (i2_1 < (width(m_17): int) && (j1_33 < (height(m_17): int) && (j2_16 < (height(m_17): int) && (i1 != i2_1 || j1_33 != j2_16)))))))) ==> (loc(m_17, i1, j1_33): Ref) != (loc(m_17, i2_1, j2_16): Ref)
+axiom (forall m_18: MatrixDomainType, i1_9: int, i2: int, j1_2: int, j2_2: int ::
+  { (loc(m_18, i1_9, j1_2): Ref), (loc(m_18, i2, j2_2): Ref) }
+  i1_9 >= 0 && (i2 >= 0 && (j1_2 >= 0 && (j2_2 >= 0 && (i1_9 < (width(m_18): int) && (i2 < (width(m_18): int) && (j1_2 < (height_1(m_18): int) && (j2_2 < (height_1(m_18): int) && (i1_9 != i2 || j1_2 != j2_2)))))))) ==> (loc(m_18, i1_9, j1_2): Ref) != (loc(m_18, i2, j2_2): Ref)
 );
 
 // ==================================================
@@ -223,12 +223,12 @@ axiom !IsWandField(val);
 // Translation of method identity
 // ==================================================
 
-procedure identity(m_17: MatrixDomainType) returns ()
+procedure identity(m_18: MatrixDomainType) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -242,42 +242,42 @@ procedure identity(m_17: MatrixDomainType) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(m, q1, q2).val might not be injective. (0219.vpr@6.12--6.171) [193006]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(m, q1, q2).val might not be injective. (0219.vpr@6.12--6.171) [82446]"}
       (forall q1_1: int, q2_1: int, q1_1_1: int, q2_1_1: int ::
       
-      ((q1_1 != q1_1_1 && q2_1 != q2_1_1) && NoPerm < (if q2_1 >= 0 && (q2_1 < (height(m_17): int) && (q1_1 >= 0 && (q2_1 - (height(m_17): int) + 1 <= 0 && (q1_1 < (width(m_17): int) && q2_1 == q1_1)))) then FullPerm else NoPerm)) && NoPerm < (if q2_1_1 >= 0 && (q2_1_1 < (height(m_17): int) && (q1_1_1 >= 0 && (q2_1_1 - (height(m_17): int) + 1 <= 0 && (q1_1_1 < (width(m_17): int) && q2_1_1 == q1_1_1)))) then FullPerm else NoPerm) ==> (loc(m_17, q1_1, q2_1): Ref) != (loc(m_17, q1_1_1, q2_1_1): Ref)
+      ((q1_1 != q1_1_1 && q2_1 != q2_1_1) && NoPerm < (if q2_1 >= 0 && (q2_1 < (height_1(m_18): int) && (q1_1 >= 0 && (q2_1 - (height_1(m_18): int) + 1 <= 0 && (q1_1 < (width(m_18): int) && q2_1 == q1_1)))) then FullPerm else NoPerm)) && NoPerm < (if q2_1_1 >= 0 && (q2_1_1 < (height_1(m_18): int) && (q1_1_1 >= 0 && (q2_1_1 - (height_1(m_18): int) + 1 <= 0 && (q1_1_1 < (width(m_18): int) && q2_1_1 == q1_1_1)))) then FullPerm else NoPerm) ==> (loc(m_18, q1_1, q2_1): Ref) != (loc(m_18, q1_1_1, q2_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall q1_1: int, q2_1: int ::
-        { (loc(m_17, q1_1, q2_1): Ref) } { (loc(m_17, q1_1, q2_1): Ref) }
-        NoPerm < (if q2_1 >= 0 && (q2_1 < (height(m_17): int) && (q1_1 >= 0 && (q2_1 - (height(m_17): int) + 1 <= 0 && (q1_1 < (width(m_17): int) && q2_1 == q1_1)))) then FullPerm else NoPerm) ==> (qpRange2((loc(m_17, q1_1, q2_1): Ref)) && invRecv1((loc(m_17, q1_1, q2_1): Ref)) == q1_1) && invRecv2((loc(m_17, q1_1, q2_1): Ref)) == q2_1
+        { (loc(m_18, q1_1, q2_1): Ref) } { (loc(m_18, q1_1, q2_1): Ref) }
+        NoPerm < (if q2_1 >= 0 && (q2_1 < (height_1(m_18): int) && (q1_1 >= 0 && (q2_1 - (height_1(m_18): int) + 1 <= 0 && (q1_1 < (width(m_18): int) && q2_1 == q1_1)))) then FullPerm else NoPerm) ==> (qpRange2((loc(m_18, q1_1, q2_1): Ref)) && invRecv1((loc(m_18, q1_1, q2_1): Ref)) == q1_1) && invRecv2((loc(m_18, q1_1, q2_1): Ref)) == q2_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4), invRecv2(o_4) }
-        NoPerm < (if invRecv2(o_4) >= 0 && (invRecv2(o_4) < (height(m_17): int) && (invRecv1(o_4) >= 0 && (invRecv2(o_4) - (height(m_17): int) + 1 <= 0 && (invRecv1(o_4) < (width(m_17): int) && invRecv2(o_4) == invRecv1(o_4))))) then FullPerm else NoPerm) && qpRange2(o_4) ==> (loc(m_17, invRecv1(o_4), invRecv2(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9), invRecv2(o_9) }
+        NoPerm < (if invRecv2(o_9) >= 0 && (invRecv2(o_9) < (height_1(m_18): int) && (invRecv1(o_9) >= 0 && (invRecv2(o_9) - (height_1(m_18): int) + 1 <= 0 && (invRecv1(o_9) < (width(m_18): int) && invRecv2(o_9) == invRecv1(o_9))))) then FullPerm else NoPerm) && qpRange2(o_9) ==> (loc(m_18, invRecv1(o_9), invRecv2(o_9)): Ref) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction (q2 >= 0 && (q2 < height(m) && (q1 >= 0 && (q2 - height(m) + 1 <= 0 && (q1 < width(m) && q2 == q1)))) ? write : none) might be negative. (0219.vpr@6.12--6.171) [193007]"}
+    assert {:msg "  Contract might not be well-formed. Fraction (q2 >= 0 && (q2 < height(m) && (q1 >= 0 && (q2 - height(m) + 1 <= 0 && (q1 < width(m) && q2 == q1)))) ? write : none) might be negative. (0219.vpr@6.12--6.171) [82447]"}
       (forall q1_1: int, q2_1: int ::
-      { (loc(m_17, q1_1, q2_1): Ref) } { (loc(m_17, q1_1, q2_1): Ref) }
-      (if q2_1 >= 0 && (q2_1 < (height(m_17): int) && (q1_1 >= 0 && (q2_1 - (height(m_17): int) + 1 <= 0 && (q1_1 < (width(m_17): int) && q2_1 == q1_1)))) then FullPerm else NoPerm) >= NoPerm
+      { (loc(m_18, q1_1, q2_1): Ref) } { (loc(m_18, q1_1, q2_1): Ref) }
+      (if q2_1 >= 0 && (q2_1 < (height_1(m_18): int) && (q1_1 >= 0 && (q2_1 - (height_1(m_18): int) + 1 <= 0 && (q1_1 < (width(m_18): int) && q2_1 == q1_1)))) then FullPerm else NoPerm) >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
       assume (forall q1_1: int, q2_1: int ::
-        { (loc(m_17, q1_1, q2_1): Ref) } { (loc(m_17, q1_1, q2_1): Ref) }
-        (if q2_1 >= 0 && (q2_1 < (height(m_17): int) && (q1_1 >= 0 && (q2_1 - (height(m_17): int) + 1 <= 0 && (q1_1 < (width(m_17): int) && q2_1 == q1_1)))) then FullPerm else NoPerm) > NoPerm ==> (loc(m_17, q1_1, q2_1): Ref) != null
+        { (loc(m_18, q1_1, q2_1): Ref) } { (loc(m_18, q1_1, q2_1): Ref) }
+        (if q2_1 >= 0 && (q2_1 < (height_1(m_18): int) && (q1_1 >= 0 && (q2_1 - (height_1(m_18): int) + 1 <= 0 && (q1_1 < (width(m_18): int) && q2_1 == q1_1)))) then FullPerm else NoPerm) > NoPerm ==> (loc(m_18, q1_1, q2_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (NoPerm < (if invRecv2(o_4) >= 0 && (invRecv2(o_4) < (height(m_17): int) && (invRecv1(o_4) >= 0 && (invRecv2(o_4) - (height(m_17): int) + 1 <= 0 && (invRecv1(o_4) < (width(m_17): int) && invRecv2(o_4) == invRecv1(o_4))))) then FullPerm else NoPerm) && qpRange2(o_4) ==> (NoPerm < (if invRecv2(o_4) >= 0 && (invRecv2(o_4) < (height(m_17): int) && (invRecv1(o_4) >= 0 && (invRecv2(o_4) - (height(m_17): int) + 1 <= 0 && (invRecv1(o_4) < (width(m_17): int) && invRecv2(o_4) == invRecv1(o_4))))) then FullPerm else NoPerm) ==> (loc(m_17, invRecv1(o_4), invRecv2(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + (if invRecv2(o_4) >= 0 && (invRecv2(o_4) < (height(m_17): int) && (invRecv1(o_4) >= 0 && (invRecv2(o_4) - (height(m_17): int) + 1 <= 0 && (invRecv1(o_4) < (width(m_17): int) && invRecv2(o_4) == invRecv1(o_4))))) then FullPerm else NoPerm)) && (!(NoPerm < (if invRecv2(o_4) >= 0 && (invRecv2(o_4) < (height(m_17): int) && (invRecv1(o_4) >= 0 && (invRecv2(o_4) - (height(m_17): int) + 1 <= 0 && (invRecv1(o_4) < (width(m_17): int) && invRecv2(o_4) == invRecv1(o_4))))) then FullPerm else NoPerm) && qpRange2(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (NoPerm < (if invRecv2(o_9) >= 0 && (invRecv2(o_9) < (height_1(m_18): int) && (invRecv1(o_9) >= 0 && (invRecv2(o_9) - (height_1(m_18): int) + 1 <= 0 && (invRecv1(o_9) < (width(m_18): int) && invRecv2(o_9) == invRecv1(o_9))))) then FullPerm else NoPerm) && qpRange2(o_9) ==> (NoPerm < (if invRecv2(o_9) >= 0 && (invRecv2(o_9) < (height_1(m_18): int) && (invRecv1(o_9) >= 0 && (invRecv2(o_9) - (height_1(m_18): int) + 1 <= 0 && (invRecv1(o_9) < (width(m_18): int) && invRecv2(o_9) == invRecv1(o_9))))) then FullPerm else NoPerm) ==> (loc(m_18, invRecv1(o_9), invRecv2(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + (if invRecv2(o_9) >= 0 && (invRecv2(o_9) < (height_1(m_18): int) && (invRecv1(o_9) >= 0 && (invRecv2(o_9) - (height_1(m_18): int) + 1 <= 0 && (invRecv1(o_9) < (width(m_18): int) && invRecv2(o_9) == invRecv1(o_9))))) then FullPerm else NoPerm)) && (!(NoPerm < (if invRecv2(o_9) >= 0 && (invRecv2(o_9) < (height_1(m_18): int) && (invRecv1(o_9) >= 0 && (invRecv2(o_9) - (height_1(m_18): int) + 1 <= 0 && (invRecv1(o_9) < (width(m_18): int) && invRecv2(o_9) == invRecv1(o_9))))) then FullPerm else NoPerm) && qpRange2(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -286,6 +286,6 @@ procedure identity(m_17: MatrixDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }

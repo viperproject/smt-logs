@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:02:40
+// Date:         2025-01-26 21:43:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/vmcai2016/arraylist-quantified-permissions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/vmcai2016/arraylist-quantified-permissions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_9: Ref, f_13: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_9, f_13] }
-  Heap[o_9, $allocated] ==> Heap[Heap[o_9, f_13], $allocated]
+axiom (forall o_49: Ref, f_30: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_49, f_30] }
+  Heap[o_49, $allocated] ==> Heap[Heap[o_49, f_30], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_10: Ref, f_14: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_10, f_14] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_10, f_14) ==> Heap[o_10, f_14] == ExhaleHeap[o_10, f_14]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_59: Ref, f_28: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_59, f_28] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_59, f_28) ==> Heap[o_59, f_28] == ExhaleHeap[o_59, f_28]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4), ExhaleHeap[null, PredicateMaskField(pm_f_4)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> Heap[null, PredicateMaskField(pm_f_4)] == ExhaleHeap[null, PredicateMaskField(pm_f_4)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_31), ExhaleHeap[null, PredicateMaskField(pm_f_31)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsPredicateField(pm_f_31) ==> Heap[null, PredicateMaskField(pm_f_31)] == ExhaleHeap[null, PredicateMaskField(pm_f_31)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_14: (Field A B) ::
-    { ExhaleHeap[o2_4, f_14] }
-    Heap[null, PredicateMaskField(pm_f_4)][o2_4, f_14] ==> Heap[o2_4, f_14] == ExhaleHeap[o2_4, f_14]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_31) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsPredicateField(pm_f_31) ==> (forall <A, B> o2_31: Ref, f_28: (Field A B) ::
+    { ExhaleHeap[o2_31, f_28] }
+    Heap[null, PredicateMaskField(pm_f_31)][o2_31, f_28] ==> Heap[o2_31, f_28] == ExhaleHeap[o2_31, f_28]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4), ExhaleHeap[null, WandMaskField(pm_f_4)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> Heap[null, WandMaskField(pm_f_4)] == ExhaleHeap[null, WandMaskField(pm_f_4)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_31), ExhaleHeap[null, WandMaskField(pm_f_31)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsWandField(pm_f_31) ==> Heap[null, WandMaskField(pm_f_31)] == ExhaleHeap[null, WandMaskField(pm_f_31)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_14: (Field A B) ::
-    { ExhaleHeap[o2_4, f_14] }
-    Heap[null, WandMaskField(pm_f_4)][o2_4, f_14] ==> Heap[o2_4, f_14] == ExhaleHeap[o2_4, f_14]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_31) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsWandField(pm_f_31) ==> (forall <A, B> o2_31: Ref, f_28: (Field A B) ::
+    { ExhaleHeap[o2_31, f_28] }
+    Heap[null, WandMaskField(pm_f_31)][o2_31, f_28] ==> Heap[o2_31, f_28] == ExhaleHeap[o2_31, f_28]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_10: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_10, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_10, $allocated] ==> ExhaleHeap[o_10, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_59: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_59, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_59, $allocated] ==> ExhaleHeap[o_59, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_9: Ref, f_15: (Field A B), v: B ::
-  { Heap[o_9, f_15:=v] }
-  succHeap(Heap, Heap[o_9, f_15:=v])
+axiom (forall <A, B> Heap: HeapType, o_49: Ref, f_70: (Field A B), v: B ::
+  { Heap[o_49, f_70:=v] }
+  succHeap(Heap, Heap[o_49, f_70:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -146,22 +146,22 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 
 function  neverTriggered1(i: int): bool;
 function  neverTriggered2(i: int): bool;
-function  neverTriggered3(i_2_1: int): bool;
+function  neverTriggered3(i_2: int): bool;
 function  neverTriggered4(i_1: int): bool;
-function  neverTriggered5(i_2_1: int): bool;
+function  neverTriggered5(i_2: int): bool;
 function  neverTriggered6(i_4_1: int): bool;
-function  neverTriggered7(i_6_1: int): bool;
+function  neverTriggered7(i_6_2: int): bool;
 function  neverTriggered8(i_9_1: int): bool;
 function  neverTriggered9(i: int): bool;
 function  neverTriggered10(i_1: int): bool;
-function  neverTriggered11(i_3: int): bool;
-function  neverTriggered12(i_5: int): bool;
-function  neverTriggered13(i_8_2: int): bool;
+function  neverTriggered11(i_3_2: int): bool;
+function  neverTriggered12(i_5_1: int): bool;
+function  neverTriggered13(i_8_1: int): bool;
 function  neverTriggered14(i_14_1: int): bool;
-function  neverTriggered15(i_19: int): bool;
+function  neverTriggered15(i_19_1: int): bool;
 function  neverTriggered16(i_22_1: int): bool;
-function  neverTriggered17(i_27: int): bool;
-function  neverTriggered18(i_30_2: int): bool;
+function  neverTriggered17(i_27_2: int): bool;
+function  neverTriggered18(i_30: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -251,10 +251,10 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type PairDomainType T1 T2;
 
 // Translation of domain function first
-function  first<T1, T2>(p_16: (PairDomainType T1 T2)): T1;
+function  first_1<T1, T2>(p_3: (PairDomainType T1 T2)): T1;
 
 // Translation of domain function second
-function  second<T1, T2>(p_16: (PairDomainType T1 T2)): T2;
+function  second_1<T1, T2>(p_3: (PairDomainType T1 T2)): T2;
 
 // ==================================================
 // Translation of domain Array
@@ -264,24 +264,24 @@ function  second<T1, T2>(p_16: (PairDomainType T1 T2)): T2;
 type ArrayDomainType;
 
 // Translation of domain function loc
-function  loc(a_3: ArrayDomainType, i_79: int): Ref;
+function  loc(a_3: ArrayDomainType, i_6: int): Ref;
 
 // Translation of domain function len
-function  len_1(a_3: ArrayDomainType): int;
+function  len(a_3: ArrayDomainType): int;
 
 // Translation of domain function inv_loc
-function  inv_loc(r_3: Ref): PairDomainType ArrayDomainType int;
+function  inv_loc(r_4: Ref): PairDomainType ArrayDomainType int;
 
 // Translation of domain axiom loc_injective
 axiom (forall a_2: ArrayDomainType, i: int ::
   { (loc(a_2, i): Ref) }
-  0 <= i && i < (len_1(a_2): int) ==> (first((inv_loc((loc(a_2, i): Ref)): PairDomainType ArrayDomainType int)): ArrayDomainType) == a_2 && (second((inv_loc((loc(a_2, i): Ref)): PairDomainType ArrayDomainType int)): int) == i
+  0 <= i && i < (len(a_2): int) ==> (first_1((inv_loc((loc(a_2, i): Ref)): PairDomainType ArrayDomainType int)): ArrayDomainType) == a_2 && (second_1((inv_loc((loc(a_2, i): Ref)): PairDomainType ArrayDomainType int)): int) == i
 );
 
 // Translation of domain axiom length_nonneg
 axiom (forall a_2: ArrayDomainType ::
-  { (len_1(a_2): int) }
-  (len_1(a_2): int) >= 0
+  { (len(a_2): int) }
+  (len(a_2): int) >= 0
 );
 
 // ==================================================
@@ -291,23 +291,23 @@ axiom (forall a_2: ArrayDomainType ::
 const unique val: Field NormalField int;
 axiom !IsPredicateField(val);
 axiom !IsWandField(val);
-const unique elems: Field NormalField ArrayDomainType;
-axiom !IsPredicateField(elems);
-axiom !IsWandField(elems);
-const unique size: Field NormalField int;
-axiom !IsPredicateField(size);
-axiom !IsWandField(size);
+const unique elems_1: Field NormalField ArrayDomainType;
+axiom !IsPredicateField(elems_1);
+axiom !IsWandField(elems_1);
+const unique size_3: Field NormalField int;
+axiom !IsPredicateField(size_3);
+axiom !IsWandField(size_3);
 
 // ==================================================
 // Translation of function length
 // ==================================================
 
 // Uninterpreted function definitions
-function  length(Heap: HeapType, this: Ref): int;
+function  length_1(Heap: HeapType, this: Ref): int;
 function  length'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { length(Heap, this) }
-  length(Heap, this) == length'(Heap, this) && dummyFunction(length#triggerStateless(this))
+  { length_1(Heap, this) }
+  length_1(Heap, this) == length'(Heap, this) && dummyFunction(length#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { length'(Heap, this) }
@@ -316,8 +316,8 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), length(Heap, this) } { state(Heap, Mask), length#triggerStateless(this), AList#trigger(Heap, AList(this)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> length(Heap, this) == Heap[this, size]
+  { state(Heap, Mask), length_1(Heap, this) } { state(Heap, Mask), length#triggerStateless(this), AList#trigger(Heap, AList(this)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> length_1(Heap, this) == Heap[this, size_3]
 );
 
 // Framing axioms
@@ -370,84 +370,84 @@ procedure length#definedness(this: Ref) returns (Result: int)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume AList#trigger(UnfoldingHeap, AList(this));
-      assume UnfoldingHeap[null, AList(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, elems]), CombineFrames(FrameFragment(UnfoldingHeap[this, size]), FrameFragment(AList#condqp1(UnfoldingHeap, this))));
+      assume UnfoldingHeap[null, AList(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, elems_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, size_3]), FrameFragment(AList#condqp1(UnfoldingHeap, this))));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@37.1--42.2) [112850]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@37.1--42.2) [108775]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, AList(this)];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, elems:=UnfoldingMask[this, elems] + perm];
+      UnfoldingMask := UnfoldingMask[this, elems_1:=UnfoldingMask[this, elems_1] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, size:=UnfoldingMask[this, size] + perm];
+      UnfoldingMask := UnfoldingMask[this, size_3:=UnfoldingMask[this, size_3] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume 0 <= UnfoldingHeap[this, size];
-      assume UnfoldingHeap[this, size] <= (len_1(UnfoldingHeap[this, elems]): int);
-      assume 0 < (len_1(UnfoldingHeap[this, elems]): int);
+      assume 0 <= UnfoldingHeap[this, size_3];
+      assume UnfoldingHeap[this, size_3] <= (len(UnfoldingHeap[this, elems_1]): int);
+      assume 0 < (len(UnfoldingHeap[this, elems_1]): int);
       havoc QPMask;
-      assert {:msg "  Function might not be well-formed. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@37.1--42.2) [112851]"}
-        (forall i: int, i_77: int ::
+      assert {:msg "  Function might not be well-formed. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@37.1--42.2) [108776]"}
+        (forall i: int, i_22: int ::
         
-        (((i != i_77 && (0 <= i && i < (len_1(UnfoldingHeap[this, elems]): int))) && (0 <= i_77 && i_77 < (len_1(UnfoldingHeap[this, elems]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(UnfoldingHeap[this, elems], i): Ref) != (loc(UnfoldingHeap[this, elems], i_77): Ref)
+        (((i != i_22 && (0 <= i && i < (len(UnfoldingHeap[this, elems_1]): int))) && (0 <= i_22 && i_22 < (len(UnfoldingHeap[this, elems_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(UnfoldingHeap[this, elems_1], i): Ref) != (loc(UnfoldingHeap[this, elems_1], i_22): Ref)
       );
       
       // -- Define Inverse Function
         assume (forall i: int ::
-          { (loc(UnfoldingHeap[this, elems], i): Ref) } { (loc(UnfoldingHeap[this, elems], i): Ref) }
-          (0 <= i && i < (len_1(UnfoldingHeap[this, elems]): int)) && NoPerm < FullPerm ==> qpRange1((loc(UnfoldingHeap[this, elems], i): Ref)) && invRecv1((loc(UnfoldingHeap[this, elems], i): Ref)) == i
+          { (loc(UnfoldingHeap[this, elems_1], i): Ref) } { (loc(UnfoldingHeap[this, elems_1], i): Ref) }
+          (0 <= i && i < (len(UnfoldingHeap[this, elems_1]): int)) && NoPerm < FullPerm ==> qpRange1((loc(UnfoldingHeap[this, elems_1], i): Ref)) && invRecv1((loc(UnfoldingHeap[this, elems_1], i): Ref)) == i
         );
-        assume (forall o_4: Ref ::
-          { invRecv1(o_4) }
-          ((0 <= invRecv1(o_4) && invRecv1(o_4) < (len_1(UnfoldingHeap[this, elems]): int)) && NoPerm < FullPerm) && qpRange1(o_4) ==> (loc(UnfoldingHeap[this, elems], invRecv1(o_4)): Ref) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv1(o_9) }
+          ((0 <= invRecv1(o_9) && invRecv1(o_9) < (len(UnfoldingHeap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange1(o_9) ==> (loc(UnfoldingHeap[this, elems_1], invRecv1(o_9)): Ref) == o_9
         );
       
       // -- Assume set of fields is nonNull
         assume (forall i: int ::
-          { (loc(UnfoldingHeap[this, elems], i): Ref) } { (loc(UnfoldingHeap[this, elems], i): Ref) }
-          0 <= i && i < (len_1(UnfoldingHeap[this, elems]): int) ==> (loc(UnfoldingHeap[this, elems], i): Ref) != null
+          { (loc(UnfoldingHeap[this, elems_1], i): Ref) } { (loc(UnfoldingHeap[this, elems_1], i): Ref) }
+          0 <= i && i < (len(UnfoldingHeap[this, elems_1]): int) ==> (loc(UnfoldingHeap[this, elems_1], i): Ref) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, val] }
-          (((0 <= invRecv1(o_4) && invRecv1(o_4) < (len_1(UnfoldingHeap[this, elems]): int)) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> (loc(UnfoldingHeap[this, elems], invRecv1(o_4)): Ref) == o_4) && QPMask[o_4, val] == UnfoldingMask[o_4, val] + FullPerm) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < (len_1(UnfoldingHeap[this, elems]): int)) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, val] == UnfoldingMask[o_4, val])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, val] }
+          (((0 <= invRecv1(o_9) && invRecv1(o_9) < (len(UnfoldingHeap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> (loc(UnfoldingHeap[this, elems_1], invRecv1(o_9)): Ref) == o_9) && QPMask[o_9, val] == UnfoldingMask[o_9, val] + FullPerm) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < (len(UnfoldingHeap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, val] == UnfoldingMask[o_9, val])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != val ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != val ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@37.1--42.2) [112852]"}
-        HasDirectPerm(UnfoldingMask, this, size);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@37.1--42.2) [108777]"}
+        HasDirectPerm(UnfoldingMask, this, size_3);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems:=true]];
-        Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size:=true]];
+        Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems_1:=true]];
+        Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size_3:=true]];
         // register all known folded permissions guarded by predicate AList
         havoc newPMask;
-        assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-          { newPMask[o_15, f_20] }
-          Heap[null, AList#sm(this)][o_15, f_20] ==> newPMask[o_15, f_20]
+        assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+          { newPMask[o_5, f_11] }
+          Heap[null, AList#sm(this)][o_5, f_11] ==> newPMask[o_5, f_11]
         );
         assume (forall i_1: int ::
           
-          0 <= i_1 && i_1 < (len_1(Heap[this, elems]): int) ==> newPMask[(loc(Heap[this, elems], i_1): Ref), val]
+          0 <= i_1 && i_1 < (len(Heap[this, elems_1]): int) ==> newPMask[(loc(Heap[this, elems_1], i_1): Ref), val]
         );
         Heap := Heap[null, AList#sm(this):=newPMask];
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := Heap[this, size];
+    Result := Heap[this, size_3];
   
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of length might not hold. Assertion result >= 0 might not hold. (arraylist-quantified-permissions.vpr@39.11--39.22) [112853]"}
+    assert {:msg "  Postcondition of length might not hold. Assertion result >= 0 might not hold. (arraylist-quantified-permissions.vpr@39.11--39.22) [108778]"}
       Result >= 0;
 }
 
@@ -470,7 +470,7 @@ axiom (forall Heap: HeapType, this: Ref, index: int ::
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, index: int ::
   { state(Heap, Mask), itemAt(Heap, this, index) } { state(Heap, Mask), itemAt#triggerStateless(this, index), AList#trigger(Heap, AList(this)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> 0 <= index && index < length(Heap, this) ==> itemAt(Heap, this, index) == Heap[(loc(Heap[this, elems], index): Ref), val]
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> 0 <= index && index < length_1(Heap, this) ==> itemAt(Heap, this, index) == Heap[(loc(Heap[this, elems_1], index): Ref), val]
 );
 
 // Framing axioms
@@ -520,7 +520,7 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@46.34--46.46) [112854]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@46.34--46.46) [108779]"}
           NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -529,7 +529,7 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
         // Stop execution
         assume false;
       }
-    assume index < length(Heap, this);
+    assume index < length_1(Heap, this);
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
@@ -538,81 +538,81 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
       assume AList#trigger(UnfoldingHeap, AList(this));
-      assume UnfoldingHeap[null, AList(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, elems]), CombineFrames(FrameFragment(UnfoldingHeap[this, size]), FrameFragment(AList#condqp1(UnfoldingHeap, this))));
+      assume UnfoldingHeap[null, AList(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, elems_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, size_3]), FrameFragment(AList#condqp1(UnfoldingHeap, this))));
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@44.1--49.2) [112855]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@44.1--49.2) [108780]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, AList(this)];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, elems:=UnfoldingMask[this, elems] + perm];
+      UnfoldingMask := UnfoldingMask[this, elems_1:=UnfoldingMask[this, elems_1] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, size:=UnfoldingMask[this, size] + perm];
+      UnfoldingMask := UnfoldingMask[this, size_3:=UnfoldingMask[this, size_3] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assume 0 <= UnfoldingHeap[this, size];
-      assume UnfoldingHeap[this, size] <= (len_1(UnfoldingHeap[this, elems]): int);
-      assume 0 < (len_1(UnfoldingHeap[this, elems]): int);
+      assume 0 <= UnfoldingHeap[this, size_3];
+      assume UnfoldingHeap[this, size_3] <= (len(UnfoldingHeap[this, elems_1]): int);
+      assume 0 < (len(UnfoldingHeap[this, elems_1]): int);
       havoc QPMask;
-      assert {:msg "  Function might not be well-formed. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@44.1--49.2) [112856]"}
-        (forall i: int, i_77: int ::
+      assert {:msg "  Function might not be well-formed. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@44.1--49.2) [108781]"}
+        (forall i: int, i_22: int ::
         
-        (((i != i_77 && (0 <= i && i < (len_1(UnfoldingHeap[this, elems]): int))) && (0 <= i_77 && i_77 < (len_1(UnfoldingHeap[this, elems]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(UnfoldingHeap[this, elems], i): Ref) != (loc(UnfoldingHeap[this, elems], i_77): Ref)
+        (((i != i_22 && (0 <= i && i < (len(UnfoldingHeap[this, elems_1]): int))) && (0 <= i_22 && i_22 < (len(UnfoldingHeap[this, elems_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(UnfoldingHeap[this, elems_1], i): Ref) != (loc(UnfoldingHeap[this, elems_1], i_22): Ref)
       );
       
       // -- Define Inverse Function
         assume (forall i: int ::
-          { (loc(UnfoldingHeap[this, elems], i): Ref) } { (loc(UnfoldingHeap[this, elems], i): Ref) }
-          (0 <= i && i < (len_1(UnfoldingHeap[this, elems]): int)) && NoPerm < FullPerm ==> qpRange2((loc(UnfoldingHeap[this, elems], i): Ref)) && invRecv2((loc(UnfoldingHeap[this, elems], i): Ref)) == i
+          { (loc(UnfoldingHeap[this, elems_1], i): Ref) } { (loc(UnfoldingHeap[this, elems_1], i): Ref) }
+          (0 <= i && i < (len(UnfoldingHeap[this, elems_1]): int)) && NoPerm < FullPerm ==> qpRange2((loc(UnfoldingHeap[this, elems_1], i): Ref)) && invRecv2((loc(UnfoldingHeap[this, elems_1], i): Ref)) == i
         );
-        assume (forall o_4: Ref ::
-          { invRecv2(o_4) }
-          ((0 <= invRecv2(o_4) && invRecv2(o_4) < (len_1(UnfoldingHeap[this, elems]): int)) && NoPerm < FullPerm) && qpRange2(o_4) ==> (loc(UnfoldingHeap[this, elems], invRecv2(o_4)): Ref) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv2(o_9) }
+          ((0 <= invRecv2(o_9) && invRecv2(o_9) < (len(UnfoldingHeap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange2(o_9) ==> (loc(UnfoldingHeap[this, elems_1], invRecv2(o_9)): Ref) == o_9
         );
       
       // -- Assume set of fields is nonNull
         assume (forall i: int ::
-          { (loc(UnfoldingHeap[this, elems], i): Ref) } { (loc(UnfoldingHeap[this, elems], i): Ref) }
-          0 <= i && i < (len_1(UnfoldingHeap[this, elems]): int) ==> (loc(UnfoldingHeap[this, elems], i): Ref) != null
+          { (loc(UnfoldingHeap[this, elems_1], i): Ref) } { (loc(UnfoldingHeap[this, elems_1], i): Ref) }
+          0 <= i && i < (len(UnfoldingHeap[this, elems_1]): int) ==> (loc(UnfoldingHeap[this, elems_1], i): Ref) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, val] }
-          (((0 <= invRecv2(o_4) && invRecv2(o_4) < (len_1(UnfoldingHeap[this, elems]): int)) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> (loc(UnfoldingHeap[this, elems], invRecv2(o_4)): Ref) == o_4) && QPMask[o_4, val] == UnfoldingMask[o_4, val] + FullPerm) && (!(((0 <= invRecv2(o_4) && invRecv2(o_4) < (len_1(UnfoldingHeap[this, elems]): int)) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, val] == UnfoldingMask[o_4, val])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, val] }
+          (((0 <= invRecv2(o_9) && invRecv2(o_9) < (len(UnfoldingHeap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> (loc(UnfoldingHeap[this, elems_1], invRecv2(o_9)): Ref) == o_9) && QPMask[o_9, val] == UnfoldingMask[o_9, val] + FullPerm) && (!(((0 <= invRecv2(o_9) && invRecv2(o_9) < (len(UnfoldingHeap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, val] == UnfoldingMask[o_9, val])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { UnfoldingMask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != val ==> UnfoldingMask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { UnfoldingMask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != val ==> UnfoldingMask[o_9, f_5] == QPMask[o_9, f_5]
         );
       UnfoldingMask := QPMask;
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@44.1--49.2) [112857]"}
-        HasDirectPerm(UnfoldingMask, this, elems);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access loc(this.elems, index).val (arraylist-quantified-permissions.vpr@44.1--49.2) [112858]"}
-        HasDirectPerm(UnfoldingMask, (loc(UnfoldingHeap[this, elems], index): Ref), val);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@44.1--49.2) [108782]"}
+        HasDirectPerm(UnfoldingMask, this, elems_1);
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access loc(this.elems, index).val (arraylist-quantified-permissions.vpr@44.1--49.2) [108783]"}
+        HasDirectPerm(UnfoldingMask, (loc(UnfoldingHeap[this, elems_1], index): Ref), val);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems:=true]];
-        Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size:=true]];
+        Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems_1:=true]];
+        Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size_3:=true]];
         // register all known folded permissions guarded by predicate AList
         havoc newPMask;
-        assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-          { newPMask[o_16, f_21] }
-          Heap[null, AList#sm(this)][o_16, f_21] ==> newPMask[o_16, f_21]
+        assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+          { newPMask[o_6, f_12] }
+          Heap[null, AList#sm(this)][o_6, f_12] ==> newPMask[o_6, f_12]
         );
         assume (forall i_1: int ::
           
-          0 <= i_1 && i_1 < (len_1(Heap[this, elems]): int) ==> newPMask[(loc(Heap[this, elems], i_1): Ref), val]
+          0 <= i_1 && i_1 < (len(Heap[this, elems_1]): int) ==> newPMask[(loc(Heap[this, elems_1], i_1): Ref), val]
         );
         Heap := Heap[null, AList#sm(this):=newPMask];
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := Heap[(loc(Heap[this, elems], index): Ref), val];
+    Result := Heap[(loc(Heap[this, elems_1], index): Ref), val];
 }
 
 // ==================================================
@@ -658,14 +658,14 @@ function  AList#condqp1(Heap: HeapType, this_2_1: Ref): int;
 function  sk_AList#condqp1(fnAppH1: int, fnAppH2: int): int;
 axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, this: Ref ::
   { AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this), succHeapTrans(Heap2Heap, Heap1Heap) }
-  ((0 <= sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) && sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) < (len_1(Heap2Heap[this, elems]): int)) && NoPerm < FullPerm <==> (0 <= sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) && sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) < (len_1(Heap1Heap[this, elems]): int)) && NoPerm < FullPerm) && ((0 <= sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) && sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) < (len_1(Heap2Heap[this, elems]): int)) && NoPerm < FullPerm ==> Heap2Heap[(loc(Heap2Heap[this, elems], sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this))): Ref), val] == Heap1Heap[(loc(Heap1Heap[this, elems], sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this))): Ref), val]) ==> AList#condqp1(Heap2Heap, this) == AList#condqp1(Heap1Heap, this)
+  ((0 <= sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) && sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) < (len(Heap2Heap[this, elems_1]): int)) && NoPerm < FullPerm <==> (0 <= sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) && sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) < (len(Heap1Heap[this, elems_1]): int)) && NoPerm < FullPerm) && ((0 <= sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) && sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this)) < (len(Heap2Heap[this, elems_1]): int)) && NoPerm < FullPerm ==> Heap2Heap[(loc(Heap2Heap[this, elems_1], sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this))): Ref), val] == Heap1Heap[(loc(Heap1Heap[this, elems_1], sk_AList#condqp1(AList#condqp1(Heap2Heap, this), AList#condqp1(Heap1Heap, this))): Ref), val]) ==> AList#condqp1(Heap2Heap, this) == AList#condqp1(Heap1Heap, this)
 );
 
 procedure AList#definedness(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var i_7: int;
+  var i_5: int;
   var QPMask: MaskType;
   
   // -- Check definedness of predicate body of AList
@@ -678,73 +678,73 @@ procedure AList#definedness(this: Ref) returns ()
       assume Heap[this, $allocated];
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, elems:=Mask[this, elems] + perm];
+    Mask := Mask[this, elems_1:=Mask[this, elems_1] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, size:=Mask[this, size] + perm];
+    Mask := Mask[this, size_3:=Mask[this, size_3] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of 0 <= this.size
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@30.1--35.2) [112859]"}
-        HasDirectPerm(Mask, this, size);
-    assume 0 <= Heap[this, size];
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@30.1--35.2) [108784]"}
+        HasDirectPerm(Mask, this, size_3);
+    assume 0 <= Heap[this, size_3];
     
     // -- Check definedness of this.size <= len(this.elems)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@30.1--35.2) [112860]"}
-        HasDirectPerm(Mask, this, size);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@30.1--35.2) [112861]"}
-        HasDirectPerm(Mask, this, elems);
-    assume Heap[this, size] <= (len_1(Heap[this, elems]): int);
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@30.1--35.2) [108785]"}
+        HasDirectPerm(Mask, this, size_3);
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@30.1--35.2) [108786]"}
+        HasDirectPerm(Mask, this, elems_1);
+    assume Heap[this, size_3] <= (len(Heap[this, elems_1]): int);
     
     // -- Check definedness of 0 < len(this.elems)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@30.1--35.2) [112862]"}
-        HasDirectPerm(Mask, this, elems);
-    assume 0 < (len_1(Heap[this, elems]): int);
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@30.1--35.2) [108787]"}
+        HasDirectPerm(Mask, this, elems_1);
+    assume 0 < (len(Heap[this, elems_1]): int);
     
     // -- Check definedness of (forall i: Int :: { loc(this.elems, i) } 0 <= i && i < len(this.elems) ==> acc(loc(this.elems, i).val, write))
       if (*) {
-        if (0 <= i_7) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@30.1--35.2) [112863]"}
-            HasDirectPerm(Mask, this, elems);
+        if (0 <= i_5) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@30.1--35.2) [108788]"}
+            HasDirectPerm(Mask, this, elems_1);
         }
-        if (0 <= i_7 && i_7 < (len_1(Heap[this, elems]): int)) {
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@30.1--35.2) [112864]"}
-            HasDirectPerm(Mask, this, elems);
+        if (0 <= i_5 && i_5 < (len(Heap[this, elems_1]): int)) {
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@30.1--35.2) [108789]"}
+            HasDirectPerm(Mask, this, elems_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Predicate might not be well-formed. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@30.1--35.2) [112865]"}
-      (forall i_2_1: int, i_2_2: int ::
+    assert {:msg "  Predicate might not be well-formed. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@30.1--35.2) [108790]"}
+      (forall i_2: int, i_2_2: int ::
       
-      (((i_2_1 != i_2_2 && (0 <= i_2_1 && i_2_1 < (len_1(Heap[this, elems]): int))) && (0 <= i_2_2 && i_2_2 < (len_1(Heap[this, elems]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_2_1): Ref) != (loc(Heap[this, elems], i_2_2): Ref)
+      (((i_2 != i_2_2 && (0 <= i_2 && i_2 < (len(Heap[this, elems_1]): int))) && (0 <= i_2_2 && i_2_2 < (len(Heap[this, elems_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_2): Ref) != (loc(Heap[this, elems_1], i_2_2): Ref)
     );
     
     // -- Define Inverse Function
-      assume (forall i_2_1: int ::
-        { (loc(Heap[this, elems], i_2_1): Ref) } { (loc(Heap[this, elems], i_2_1): Ref) }
-        (0 <= i_2_1 && i_2_1 < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm ==> qpRange3((loc(Heap[this, elems], i_2_1): Ref)) && invRecv3((loc(Heap[this, elems], i_2_1): Ref)) == i_2_1
+      assume (forall i_2: int ::
+        { (loc(Heap[this, elems_1], i_2): Ref) } { (loc(Heap[this, elems_1], i_2): Ref) }
+        (0 <= i_2 && i_2 < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm ==> qpRange3((loc(Heap[this, elems_1], i_2): Ref)) && invRecv3((loc(Heap[this, elems_1], i_2): Ref)) == i_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        ((0 <= invRecv3(o_4) && invRecv3(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange3(o_4) ==> (loc(Heap[this, elems], invRecv3(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        ((0 <= invRecv3(o_9) && invRecv3(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange3(o_9) ==> (loc(Heap[this, elems_1], invRecv3(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_2_1: int ::
-        { (loc(Heap[this, elems], i_2_1): Ref) } { (loc(Heap[this, elems], i_2_1): Ref) }
-        0 <= i_2_1 && i_2_1 < (len_1(Heap[this, elems]): int) ==> (loc(Heap[this, elems], i_2_1): Ref) != null
+      assume (forall i_2: int ::
+        { (loc(Heap[this, elems_1], i_2): Ref) } { (loc(Heap[this, elems_1], i_2): Ref) }
+        0 <= i_2 && i_2 < (len(Heap[this, elems_1]): int) ==> (loc(Heap[this, elems_1], i_2): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv3(o_4) && invRecv3(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems], invRecv3(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv3(o_4) && invRecv3(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv3(o_9) && invRecv3(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems_1], invRecv3(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv3(o_9) && invRecv3(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -800,7 +800,7 @@ procedure create() returns (this: Ref)
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@54.11--54.23) [112866]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@54.11--54.23) [108791]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -809,7 +809,7 @@ procedure create() returns (this: Ref)
         // Stop execution
         assume false;
       }
-    assume length(PostHeap, this) == 0;
+    assume length_1(PostHeap, this) == 0;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -820,12 +820,12 @@ procedure create() returns (this: Ref)
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     this := freshObj;
-    Mask := Mask[this, elems:=Mask[this, elems] + FullPerm];
-    Mask := Mask[this, size:=Mask[this, size] + FullPerm];
+    Mask := Mask[this, elems_1:=Mask[this, elems_1] + FullPerm];
+    Mask := Mask[this, size_3:=Mask[this, size_3] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale len(a) == 10 -- arraylist-quantified-permissions.vpr@59.3--59.22
-    assume (len_1(a_2): int) == 10;
+    assume (len(a_2): int) == 10;
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -838,36 +838,36 @@ procedure create() returns (this: Ref)
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Inhale might fail. Quantified resource loc(a, i).val might not be injective. (arraylist-quantified-permissions.vpr@60.10--60.68) [112867]"}
+    assert {:msg "  Inhale might fail. Quantified resource loc(a, i).val might not be injective. (arraylist-quantified-permissions.vpr@60.10--60.68) [108792]"}
       (forall i_1: int, i_1_1: int ::
       
-      (((i_1 != i_1_1 && (0 <= i_1 && i_1 < (len_1(a_2): int))) && (0 <= i_1_1 && i_1_1 < (len_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
+      (((i_1 != i_1_1 && (0 <= i_1 && i_1 < (len(a_2): int))) && (0 <= i_1_1 && i_1_1 < (len(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        (0 <= i_1 && i_1 < (len_1(a_2): int)) && NoPerm < FullPerm ==> qpRange4((loc(a_2, i_1): Ref)) && invRecv4((loc(a_2, i_1): Ref)) == i_1
+        (0 <= i_1 && i_1 < (len(a_2): int)) && NoPerm < FullPerm ==> qpRange4((loc(a_2, i_1): Ref)) && invRecv4((loc(a_2, i_1): Ref)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        ((0 <= invRecv4(o_4) && invRecv4(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange4(o_4) ==> (loc(a_2, invRecv4(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        ((0 <= invRecv4(o_9) && invRecv4(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange4(o_9) ==> (loc(a_2, invRecv4(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        0 <= i_1 && i_1 < (len_1(a_2): int) ==> (loc(a_2, i_1): Ref) != null
+        0 <= i_1 && i_1 < (len(a_2): int) ==> (loc(a_2, i_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv4(o_4) && invRecv4(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange4(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv4(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv4(o_4) && invRecv4(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange4(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv4(o_9) && invRecv4(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange4(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv4(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv4(o_9) && invRecv4(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange4(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -875,15 +875,15 @@ procedure create() returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: this.size := 0 -- arraylist-quantified-permissions.vpr@62.3--62.17
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@62.3--62.17) [112868]"}
-      FullPerm == Mask[this, size];
-    Heap := Heap[this, size:=0];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@62.3--62.17) [108793]"}
+      FullPerm == Mask[this, size_3];
+    Heap := Heap[this, size_3:=0];
     assume state(Heap, Mask);
   
   // -- Translating statement: this.elems := a -- arraylist-quantified-permissions.vpr@63.3--63.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@63.3--63.18) [112869]"}
-      FullPerm == Mask[this, elems];
-    Heap := Heap[this, elems:=a_2];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@63.3--63.18) [108794]"}
+      FullPerm == Mask[this, elems_1];
+    Heap := Heap[this, elems_1:=a_2];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@65.3--65.24
@@ -891,61 +891,61 @@ procedure create() returns (this: Ref)
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@65.3--65.24) [112872]"}
-        perm <= Mask[this, elems];
+      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@65.3--65.24) [108797]"}
+        perm <= Mask[this, elems_1];
     }
-    Mask := Mask[this, elems:=Mask[this, elems] - perm];
+    Mask := Mask[this, elems_1:=Mask[this, elems_1] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@65.3--65.24) [112874]"}
-        perm <= Mask[this, size];
+      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@65.3--65.24) [108799]"}
+        perm <= Mask[this, size_3];
     }
-    Mask := Mask[this, size:=Mask[this, size] - perm];
-    assert {:msg "  Folding AList(this) might fail. Assertion 0 <= this.size might not hold. (arraylist-quantified-permissions.vpr@65.3--65.24) [112875]"}
-      0 <= Heap[this, size];
-    assert {:msg "  Folding AList(this) might fail. Assertion this.size <= len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@65.3--65.24) [112876]"}
-      Heap[this, size] <= (len_1(Heap[this, elems]): int);
-    assert {:msg "  Folding AList(this) might fail. Assertion 0 < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@65.3--65.24) [112877]"}
-      0 < (len_1(Heap[this, elems]): int);
+    Mask := Mask[this, size_3:=Mask[this, size_3] - perm];
+    assert {:msg "  Folding AList(this) might fail. Assertion 0 <= this.size might not hold. (arraylist-quantified-permissions.vpr@65.3--65.24) [108800]"}
+      0 <= Heap[this, size_3];
+    assert {:msg "  Folding AList(this) might fail. Assertion this.size <= len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@65.3--65.24) [108801]"}
+      Heap[this, size_3] <= (len(Heap[this, elems_1]): int);
+    assert {:msg "  Folding AList(this) might fail. Assertion 0 < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@65.3--65.24) [108802]"}
+      0 < (len(Heap[this, elems_1]): int);
     havoc QPMask;
     
     // -- check that the permission amount is positive
       
     
     // -- check if receiver loc(this.elems, i) is injective
-      assert {:msg "  Folding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@65.3--65.24) [112879]"}
-        (forall i_2_1: int, i_2_2: int ::
-        { neverTriggered5(i_2_1), neverTriggered5(i_2_2) }
-        (((i_2_1 != i_2_2 && (0 <= i_2_1 && i_2_1 < (len_1(Heap[this, elems]): int))) && (0 <= i_2_2 && i_2_2 < (len_1(Heap[this, elems]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_2_1): Ref) != (loc(Heap[this, elems], i_2_2): Ref)
+      assert {:msg "  Folding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@65.3--65.24) [108804]"}
+        (forall i_2: int, i_2_2: int ::
+        { neverTriggered5(i_2), neverTriggered5(i_2_2) }
+        (((i_2 != i_2_2 && (0 <= i_2 && i_2 < (len(Heap[this, elems_1]): int))) && (0 <= i_2_2 && i_2_2 < (len(Heap[this, elems_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_2): Ref) != (loc(Heap[this, elems_1], i_2_2): Ref)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@65.3--65.24) [112880]"}
-        (forall i_2_1: int ::
-        { (loc(Heap[this, elems], i_2_1): Ref) } { (loc(Heap[this, elems], i_2_1): Ref) }
-        0 <= i_2_1 && i_2_1 < (len_1(Heap[this, elems]): int) ==> Mask[(loc(Heap[this, elems], i_2_1): Ref), val] >= FullPerm
+      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@65.3--65.24) [108805]"}
+        (forall i_2: int ::
+        { (loc(Heap[this, elems_1], i_2): Ref) } { (loc(Heap[this, elems_1], i_2): Ref) }
+        0 <= i_2 && i_2 < (len(Heap[this, elems_1]): int) ==> Mask[(loc(Heap[this, elems_1], i_2): Ref), val] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver loc(this.elems, i)
-      assume (forall i_2_1: int ::
-        { (loc(Heap[this, elems], i_2_1): Ref) } { (loc(Heap[this, elems], i_2_1): Ref) }
-        (0 <= i_2_1 && i_2_1 < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm ==> qpRange5((loc(Heap[this, elems], i_2_1): Ref)) && invRecv5((loc(Heap[this, elems], i_2_1): Ref)) == i_2_1
+      assume (forall i_2: int ::
+        { (loc(Heap[this, elems_1], i_2): Ref) } { (loc(Heap[this, elems_1], i_2): Ref) }
+        (0 <= i_2 && i_2 < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm ==> qpRange5((loc(Heap[this, elems_1], i_2): Ref)) && invRecv5((loc(Heap[this, elems_1], i_2): Ref)) == i_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        (0 <= invRecv5(o_4) && invRecv5(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange5(o_4)) ==> (loc(Heap[this, elems], invRecv5(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        (0 <= invRecv5(o_9) && invRecv5(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange5(o_9)) ==> (loc(Heap[this, elems_1], invRecv5(o_9)): Ref) == o_9
       );
     
     // -- assume permission updates for field val
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((0 <= invRecv5(o_4) && invRecv5(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange5(o_4)) ==> (loc(Heap[this, elems], invRecv5(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((0 <= invRecv5(o_4) && invRecv5(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange5(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((0 <= invRecv5(o_9) && invRecv5(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange5(o_9)) ==> (loc(Heap[this, elems_1], invRecv5(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((0 <= invRecv5(o_9) && invRecv5(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange5(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     perm := FullPerm;
@@ -953,23 +953,23 @@ procedure create() returns (this: Ref)
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume AList#trigger(Heap, AList(this));
-    assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems]), CombineFrames(FrameFragment(Heap[this, size]), FrameFragment(AList#condqp1(Heap, this))));
+    assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems_1]), CombineFrames(FrameFragment(Heap[this, size_3]), FrameFragment(AList#condqp1(Heap, this))));
     if (!HasDirectPerm(Mask, null, AList(this))) {
       Heap := Heap[null, AList#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, AList(this):=freshVersion];
     }
-    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems:=true]];
-    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size:=true]];
+    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems_1:=true]];
+    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size_3:=true]];
     // register all known folded permissions guarded by predicate AList
     havoc newPMask;
-    assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-      { newPMask[o_53, f_56] }
-      Heap[null, AList#sm(this)][o_53, f_56] ==> newPMask[o_53, f_56]
+    assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+      { newPMask[o_42, f_55] }
+      Heap[null, AList#sm(this)][o_42, f_55] ==> newPMask[o_42, f_55]
     );
-    assume (forall i_3: int ::
+    assume (forall i_3_2: int ::
       
-      0 <= i_3 && i_3 < (len_1(Heap[this, elems]): int) ==> newPMask[(loc(Heap[this, elems], i_3): Ref), val]
+      0 <= i_3_2 && i_3_2 < (len(Heap[this, elems_1]): int) ==> newPMask[(loc(Heap[this, elems_1], i_3_2): Ref), val]
     );
     Heap := Heap[null, AList#sm(this):=newPMask];
     assume state(Heap, Mask);
@@ -980,12 +980,12 @@ procedure create() returns (this: Ref)
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of create might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@53.11--53.27) [112882]"}
+      assert {:msg "  Postcondition of create might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@53.11--53.27) [108807]"}
         perm <= Mask[null, AList(this)];
     }
     Mask := Mask[null, AList(this):=Mask[null, AList(this)] - perm];
-    assert {:msg "  Postcondition of create might not hold. Assertion length(this) == 0 might not hold. (arraylist-quantified-permissions.vpr@54.11--54.28) [112883]"}
-      length(Heap, this) == 0;
+    assert {:msg "  Postcondition of create might not hold. Assertion length(this) == 0 might not hold. (arraylist-quantified-permissions.vpr@54.11--54.28) [108808]"}
+      length_1(Heap, this) == 0;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -996,7 +996,7 @@ procedure create() returns (this: Ref)
 // Translation of method addAtEnd
 // ==================================================
 
-procedure addAtEnd(this: Ref, elem: int) returns ()
+procedure addAtEnd(this: Ref, elem_1: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -1007,14 +1007,14 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
   var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var i_11: int;
+  var i_8: int;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var a_2: ArrayDomainType;
-  var i_16: int;
+  var i_9: int;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
-  var i_2_1: int;
+  var i_2: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1037,7 +1037,7 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@71.16--71.28) [112884]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@71.16--71.28) [108809]"}
           NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1046,7 +1046,7 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         // Stop execution
         assume false;
       }
-    if (0 < length(Heap, this)) {
+    if (0 < length_1(Heap, this)) {
       assume state(Heap, Mask);
       
       // -- Check definedness of itemAt(this, length(this) - 1) <= elem
@@ -1055,7 +1055,7 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@71.46--71.58) [112885]"}
+          assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@71.46--71.58) [108810]"}
             NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -1069,12 +1069,12 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@71.33--71.63) [112886]"}
+          assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@71.33--71.63) [108811]"}
             NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
-          assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= length(this) - 1 might not hold. (arraylist-quantified-permissions.vpr@71.33--71.63) [112887]"}
-            0 <= length(Heap, this) - 1;
-          assert {:msg "  Precondition of function itemAt might not hold. Assertion length(this) - 1 < length(this) might not hold. (arraylist-quantified-permissions.vpr@71.33--71.63) [112888]"}
-            length(Heap, this) - 1 < length(Heap, this);
+          assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= length(this) - 1 might not hold. (arraylist-quantified-permissions.vpr@71.33--71.63) [108812]"}
+            0 <= length_1(Heap, this) - 1;
+          assert {:msg "  Precondition of function itemAt might not hold. Assertion length(this) - 1 < length(this) might not hold. (arraylist-quantified-permissions.vpr@71.33--71.63) [108813]"}
+            length_1(Heap, this) - 1 < length_1(Heap, this);
           // Finish exhale
           havoc ExhaleHeap;
           assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1082,7 +1082,7 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
           // Stop execution
           assume false;
         }
-      assume itemAt(Heap, this, length(Heap, this) - 1) <= elem;
+      assume itemAt(Heap, this, length_1(Heap, this) - 1) <= elem_1;
     }
     assume state(Heap, Mask);
   
@@ -1108,7 +1108,7 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@73.11--73.23) [112889]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@73.11--73.23) [108814]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1122,13 +1122,13 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@73.31--73.43) [112890]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@73.31--73.43) [108815]"}
           NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
         // Finish exhale
         // Stop execution
         assume false;
       }
-    assume length(PostHeap, this) == length(oldHeap, this) + 1;
+    assume length_1(PostHeap, this) == length_1(oldHeap, this) + 1;
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
@@ -1138,7 +1138,7 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@74.24--74.36) [112891]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@74.24--74.36) [108816]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1152,12 +1152,12 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@74.11--74.41) [112892]"}
+        assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@74.11--74.41) [108817]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
-        assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= length(this) - 1 might not hold. (arraylist-quantified-permissions.vpr@74.11--74.41) [112893]"}
-          0 <= length(PostHeap, this) - 1;
-        assert {:msg "  Precondition of function itemAt might not hold. Assertion length(this) - 1 < length(this) might not hold. (arraylist-quantified-permissions.vpr@74.11--74.41) [112894]"}
-          length(PostHeap, this) - 1 < length(PostHeap, this);
+        assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= length(this) - 1 might not hold. (arraylist-quantified-permissions.vpr@74.11--74.41) [108818]"}
+          0 <= length_1(PostHeap, this) - 1;
+        assert {:msg "  Precondition of function itemAt might not hold. Assertion length(this) - 1 < length(this) might not hold. (arraylist-quantified-permissions.vpr@74.11--74.41) [108819]"}
+          length_1(PostHeap, this) - 1 < length_1(PostHeap, this);
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1165,37 +1165,37 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         // Stop execution
         assume false;
       }
-    assume itemAt(PostHeap, this, length(PostHeap, this) - 1) == elem;
+    assume itemAt(PostHeap, this, length_1(PostHeap, this) - 1) == elem_1;
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { old(itemAt(this, i)) } 0 <= i && i < old(length(this)) ==> itemAt(this, i) == old(itemAt(this, i)))
       if (*) {
-        if (0 <= i_11) {
+        if (0 <= i_8) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@75.46--75.58) [112895]"}
+            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@75.46--75.58) [108820]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
             // Finish exhale
             // Stop execution
             assume false;
           }
         }
-        if (0 <= i_11 && i_11 < length(oldHeap, this)) {
+        if (0 <= i_8 && i_8 < length_1(oldHeap, this)) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@75.64--75.79) [112896]"}
+            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@75.64--75.79) [108821]"}
               NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i might not hold. (arraylist-quantified-permissions.vpr@75.64--75.79) [112897]"}
-              0 <= i_11;
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion i < length(this) might not hold. (arraylist-quantified-permissions.vpr@75.64--75.79) [112898]"}
-              i_11 < length(PostHeap, this);
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i might not hold. (arraylist-quantified-permissions.vpr@75.64--75.79) [108822]"}
+              0 <= i_8;
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion i < length(this) might not hold. (arraylist-quantified-permissions.vpr@75.64--75.79) [108823]"}
+              i_8 < length_1(PostHeap, this);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1208,12 +1208,12 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
             ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@75.87--75.102) [112899]"}
+            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@75.87--75.102) [108824]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i might not hold. (arraylist-quantified-permissions.vpr@75.87--75.102) [112900]"}
-              0 <= i_11;
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion i < length(this) might not hold. (arraylist-quantified-permissions.vpr@75.87--75.102) [112901]"}
-              i_11 < length(oldHeap, this);
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i might not hold. (arraylist-quantified-permissions.vpr@75.87--75.102) [108825]"}
+              0 <= i_8;
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion i < length(this) might not hold. (arraylist-quantified-permissions.vpr@75.87--75.102) [108826]"}
+              i_8 < length_1(oldHeap, this);
             // Finish exhale
             // Stop execution
             assume false;
@@ -1223,7 +1223,7 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
       }
     assume (forall i_1: int ::
       { itemAt#frame(oldHeap[null, AList(this)], this, i_1) }
-      0 <= i_1 && i_1 < length(oldHeap, this) ==> itemAt(PostHeap, this, i_1) == itemAt(oldHeap, this, i_1)
+      0 <= i_1 && i_1 < length_1(oldHeap, this) ==> itemAt(PostHeap, this, i_1) == itemAt(oldHeap, this, i_1)
     );
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
@@ -1234,7 +1234,7 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@76.28--76.40) [112902]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@76.28--76.40) [108827]"}
           NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
         // Finish exhale
         // Stop execution
@@ -1245,12 +1245,12 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@76.11--76.42) [112903]"}
+        assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@76.11--76.42) [108828]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
-        assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= old(length(this)) might not hold. (arraylist-quantified-permissions.vpr@76.11--76.42) [112904]"}
-          0 <= length(oldHeap, this);
-        assert {:msg "  Precondition of function itemAt might not hold. Assertion old(length(this)) < length(this) might not hold. (arraylist-quantified-permissions.vpr@76.11--76.42) [112905]"}
-          length(oldHeap, this) < length(PostHeap, this);
+        assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= old(length(this)) might not hold. (arraylist-quantified-permissions.vpr@76.11--76.42) [108829]"}
+          0 <= length_1(oldHeap, this);
+        assert {:msg "  Precondition of function itemAt might not hold. Assertion old(length(this)) < length(this) might not hold. (arraylist-quantified-permissions.vpr@76.11--76.42) [108830]"}
+          length_1(oldHeap, this) < length_1(PostHeap, this);
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1258,7 +1258,7 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         // Stop execution
         assume false;
       }
-    assume itemAt(PostHeap, this, length(oldHeap, this)) == elem;
+    assume itemAt(PostHeap, this, length_1(oldHeap, this)) == elem_1;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -1266,12 +1266,12 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
   
   // -- Translating statement: unfold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@78.3--78.26
     assume AList#trigger(Heap, AList(this));
-    assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems]), CombineFrames(FrameFragment(Heap[this, size]), FrameFragment(AList#condqp1(Heap, this))));
+    assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems_1]), CombineFrames(FrameFragment(Heap[this, size_3]), FrameFragment(AList#condqp1(Heap, this))));
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding AList(this) might fail. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@78.3--78.26) [112908]"}
+      assert {:msg "  Unfolding AList(this) might fail. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@78.3--78.26) [108833]"}
         perm <= Mask[null, AList(this)];
     }
     Mask := Mask[null, AList(this):=Mask[null, AList(this)] - perm];
@@ -1283,46 +1283,46 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
       }
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, elems:=Mask[this, elems] + perm];
+    Mask := Mask[this, elems_1:=Mask[this, elems_1] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, size:=Mask[this, size] + perm];
+    Mask := Mask[this, size_3:=Mask[this, size_3] + perm];
     assume state(Heap, Mask);
-    assume 0 <= Heap[this, size];
-    assume Heap[this, size] <= (len_1(Heap[this, elems]): int);
-    assume 0 < (len_1(Heap[this, elems]): int);
+    assume 0 <= Heap[this, size_3];
+    assume Heap[this, size_3] <= (len(Heap[this, elems_1]): int);
+    assume 0 < (len(Heap[this, elems_1]): int);
     havoc QPMask;
-    assert {:msg "  Unfolding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@78.3--78.26) [112911]"}
+    assert {:msg "  Unfolding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@78.3--78.26) [108836]"}
       (forall i_4_1: int, i_4_2: int ::
       
-      (((i_4_1 != i_4_2 && (0 <= i_4_1 && i_4_1 < (len_1(Heap[this, elems]): int))) && (0 <= i_4_2 && i_4_2 < (len_1(Heap[this, elems]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_4_1): Ref) != (loc(Heap[this, elems], i_4_2): Ref)
+      (((i_4_1 != i_4_2 && (0 <= i_4_1 && i_4_1 < (len(Heap[this, elems_1]): int))) && (0 <= i_4_2 && i_4_2 < (len(Heap[this, elems_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_4_1): Ref) != (loc(Heap[this, elems_1], i_4_2): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall i_4_1: int ::
-        { (loc(Heap[this, elems], i_4_1): Ref) } { (loc(Heap[this, elems], i_4_1): Ref) }
-        (0 <= i_4_1 && i_4_1 < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm ==> qpRange6((loc(Heap[this, elems], i_4_1): Ref)) && invRecv6((loc(Heap[this, elems], i_4_1): Ref)) == i_4_1
+        { (loc(Heap[this, elems_1], i_4_1): Ref) } { (loc(Heap[this, elems_1], i_4_1): Ref) }
+        (0 <= i_4_1 && i_4_1 < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm ==> qpRange6((loc(Heap[this, elems_1], i_4_1): Ref)) && invRecv6((loc(Heap[this, elems_1], i_4_1): Ref)) == i_4_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv6(o_4) }
-        ((0 <= invRecv6(o_4) && invRecv6(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange6(o_4) ==> (loc(Heap[this, elems], invRecv6(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv6(o_9) }
+        ((0 <= invRecv6(o_9) && invRecv6(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange6(o_9) ==> (loc(Heap[this, elems_1], invRecv6(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i_4_1: int ::
-        { (loc(Heap[this, elems], i_4_1): Ref) } { (loc(Heap[this, elems], i_4_1): Ref) }
-        0 <= i_4_1 && i_4_1 < (len_1(Heap[this, elems]): int) ==> (loc(Heap[this, elems], i_4_1): Ref) != null
+        { (loc(Heap[this, elems_1], i_4_1): Ref) } { (loc(Heap[this, elems_1], i_4_1): Ref) }
+        0 <= i_4_1 && i_4_1 < (len(Heap[this, elems_1]): int) ==> (loc(Heap[this, elems_1], i_4_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv6(o_4) && invRecv6(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange6(o_4) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems], invRecv6(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv6(o_4) && invRecv6(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange6(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv6(o_9) && invRecv6(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange6(o_9) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems_1], invRecv6(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv6(o_9) && invRecv6(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange6(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1332,11 +1332,11 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
   // -- Translating statement: if (this.size == len(this.elems)) -- arraylist-quantified-permissions.vpr@80.3--86.4
     
     // -- Check definedness of this.size == len(this.elems)
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@80.7--80.35) [112912]"}
-        HasDirectPerm(Mask, this, size);
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@80.7--80.35) [112913]"}
-        HasDirectPerm(Mask, this, elems);
-    if (Heap[this, size] == (len_1(Heap[this, elems]): int)) {
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@80.7--80.35) [108837]"}
+        HasDirectPerm(Mask, this, size_3);
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@80.7--80.35) [108838]"}
+        HasDirectPerm(Mask, this, elems_1);
+    if (Heap[this, size_3] == (len(Heap[this, elems_1]): int)) {
       
       // -- Translating statement: inhale len(a) == len(this.elems) * 2 &&
   //   (forall i: Int ::
@@ -1344,45 +1344,45 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
   //     0 <= i && i < len(a) ==> acc(loc(a, i).val, write)) -- arraylist-quantified-permissions.vpr@82.5--82.104
         
         // -- Check definedness of len(a) == len(this.elems) * 2
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@82.12--82.104) [112914]"}
-            HasDirectPerm(Mask, this, elems);
-        assume (len_1(a_2): int) == (len_1(Heap[this, elems]): int) * 2;
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@82.12--82.104) [108839]"}
+            HasDirectPerm(Mask, this, elems_1);
+        assume (len(a_2): int) == (len(Heap[this, elems_1]): int) * 2;
         
         // -- Check definedness of (forall i: Int :: { loc(a, i) } 0 <= i && i < len(a) ==> acc(loc(a, i).val, write))
           if (*) {
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Inhale might fail. Quantified resource loc(a, i).val might not be injective. (arraylist-quantified-permissions.vpr@82.12--82.104) [112915]"}
-          (forall i_6_1: int, i_6_2: int ::
+        assert {:msg "  Inhale might fail. Quantified resource loc(a, i).val might not be injective. (arraylist-quantified-permissions.vpr@82.12--82.104) [108840]"}
+          (forall i_6_2: int, i_6_3: int ::
           
-          (((i_6_1 != i_6_2 && (0 <= i_6_1 && i_6_1 < (len_1(a_2): int))) && (0 <= i_6_2 && i_6_2 < (len_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_6_1): Ref) != (loc(a_2, i_6_2): Ref)
+          (((i_6_2 != i_6_3 && (0 <= i_6_2 && i_6_2 < (len(a_2): int))) && (0 <= i_6_3 && i_6_3 < (len(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_6_2): Ref) != (loc(a_2, i_6_3): Ref)
         );
         
         // -- Define Inverse Function
-          assume (forall i_6_1: int ::
-            { (loc(a_2, i_6_1): Ref) } { (loc(a_2, i_6_1): Ref) }
-            (0 <= i_6_1 && i_6_1 < (len_1(a_2): int)) && NoPerm < FullPerm ==> qpRange7((loc(a_2, i_6_1): Ref)) && invRecv7((loc(a_2, i_6_1): Ref)) == i_6_1
+          assume (forall i_6_2: int ::
+            { (loc(a_2, i_6_2): Ref) } { (loc(a_2, i_6_2): Ref) }
+            (0 <= i_6_2 && i_6_2 < (len(a_2): int)) && NoPerm < FullPerm ==> qpRange7((loc(a_2, i_6_2): Ref)) && invRecv7((loc(a_2, i_6_2): Ref)) == i_6_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv7(o_4) }
-            ((0 <= invRecv7(o_4) && invRecv7(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange7(o_4) ==> (loc(a_2, invRecv7(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv7(o_9) }
+            ((0 <= invRecv7(o_9) && invRecv7(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange7(o_9) ==> (loc(a_2, invRecv7(o_9)): Ref) == o_9
           );
         
         // -- Assume set of fields is nonNull
-          assume (forall i_6_1: int ::
-            { (loc(a_2, i_6_1): Ref) } { (loc(a_2, i_6_1): Ref) }
-            0 <= i_6_1 && i_6_1 < (len_1(a_2): int) ==> (loc(a_2, i_6_1): Ref) != null
+          assume (forall i_6_2: int ::
+            { (loc(a_2, i_6_2): Ref) } { (loc(a_2, i_6_2): Ref) }
+            0 <= i_6_2 && i_6_2 < (len(a_2): int) ==> (loc(a_2, i_6_2): Ref) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            (((0 <= invRecv7(o_4) && invRecv7(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange7(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv7(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv7(o_4) && invRecv7(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange7(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            (((0 <= invRecv7(o_9) && invRecv7(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange7(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv7(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv7(o_9) && invRecv7(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange7(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -1397,31 +1397,31 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
         
         // -- Check definedness of (forall i: Int :: { loc(a, i) } { loc(this.elems, i) } 0 <= i && i < len(this.elems) ==> loc(a, i).val == loc(this.elems, i).val)
           if (*) {
-            if (0 <= i_16) {
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@84.12--84.99) [112916]"}
-                HasDirectPerm(Mask, this, elems);
+            if (0 <= i_9) {
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@84.12--84.99) [108841]"}
+                HasDirectPerm(Mask, this, elems_1);
             }
-            if (0 <= i_16 && i_16 < (len_1(Heap[this, elems]): int)) {
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i).val (arraylist-quantified-permissions.vpr@84.12--84.99) [112917]"}
-                HasDirectPerm(Mask, (loc(a_2, i_16): Ref), val);
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@84.12--84.99) [112918]"}
-                HasDirectPerm(Mask, this, elems);
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@84.12--84.99) [112919]"}
-                HasDirectPerm(Mask, (loc(Heap[this, elems], i_16): Ref), val);
+            if (0 <= i_9 && i_9 < (len(Heap[this, elems_1]): int)) {
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i).val (arraylist-quantified-permissions.vpr@84.12--84.99) [108842]"}
+                HasDirectPerm(Mask, (loc(a_2, i_9): Ref), val);
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@84.12--84.99) [108843]"}
+                HasDirectPerm(Mask, this, elems_1);
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@84.12--84.99) [108844]"}
+                HasDirectPerm(Mask, (loc(Heap[this, elems_1], i_9): Ref), val);
             }
             assume false;
           }
-        assume (forall i_8_2: int ::
-          { (loc(a_2, i_8_2): Ref) } { (loc(Heap[this, elems], i_8_2): Ref) }
-          0 <= i_8_2 && i_8_2 < (len_1(Heap[this, elems]): int) ==> Heap[(loc(a_2, i_8_2): Ref), val] == Heap[(loc(Heap[this, elems], i_8_2): Ref), val]
+        assume (forall i_8_1: int ::
+          { (loc(a_2, i_8_1): Ref) } { (loc(Heap[this, elems_1], i_8_1): Ref) }
+          0 <= i_8_1 && i_8_1 < (len(Heap[this, elems_1]): int) ==> Heap[(loc(a_2, i_8_1): Ref), val] == Heap[(loc(Heap[this, elems_1], i_8_1): Ref), val]
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
       
       // -- Translating statement: this.elems := a -- arraylist-quantified-permissions.vpr@85.5--85.20
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@85.5--85.20) [112920]"}
-          FullPerm == Mask[this, elems];
-        Heap := Heap[this, elems:=a_2];
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@85.5--85.20) [108845]"}
+          FullPerm == Mask[this, elems_1];
+        Heap := Heap[this, elems_1:=a_2];
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -1429,23 +1429,23 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
   // -- Translating statement: loc(this.elems, this.size).val := elem -- arraylist-quantified-permissions.vpr@88.3--88.41
     
     // -- Check definedness of loc(this.elems, this.size)
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@88.3--88.41) [112921]"}
-        HasDirectPerm(Mask, this, elems);
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@88.3--88.41) [112922]"}
-        HasDirectPerm(Mask, this, size);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(this.elems, this.size).val (arraylist-quantified-permissions.vpr@88.3--88.41) [112923]"}
-      FullPerm == Mask[(loc(Heap[this, elems], Heap[this, size]): Ref), val];
-    Heap := Heap[(loc(Heap[this, elems], Heap[this, size]): Ref), val:=elem];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@88.3--88.41) [108846]"}
+        HasDirectPerm(Mask, this, elems_1);
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@88.3--88.41) [108847]"}
+        HasDirectPerm(Mask, this, size_3);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(this.elems, this.size).val (arraylist-quantified-permissions.vpr@88.3--88.41) [108848]"}
+      FullPerm == Mask[(loc(Heap[this, elems_1], Heap[this, size_3]): Ref), val];
+    Heap := Heap[(loc(Heap[this, elems_1], Heap[this, size_3]): Ref), val:=elem_1];
     assume state(Heap, Mask);
   
   // -- Translating statement: this.size := this.size + 1 -- arraylist-quantified-permissions.vpr@89.3--89.29
     
     // -- Check definedness of this.size + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@89.3--89.29) [112924]"}
-        HasDirectPerm(Mask, this, size);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@89.3--89.29) [112925]"}
-      FullPerm == Mask[this, size];
-    Heap := Heap[this, size:=Heap[this, size] + 1];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@89.3--89.29) [108849]"}
+        HasDirectPerm(Mask, this, size_3);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@89.3--89.29) [108850]"}
+      FullPerm == Mask[this, size_3];
+    Heap := Heap[this, size_3:=Heap[this, size_3] + 1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@91.3--91.24
@@ -1453,61 +1453,61 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@91.3--91.24) [112928]"}
-        perm <= Mask[this, elems];
+      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@91.3--91.24) [108853]"}
+        perm <= Mask[this, elems_1];
     }
-    Mask := Mask[this, elems:=Mask[this, elems] - perm];
+    Mask := Mask[this, elems_1:=Mask[this, elems_1] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@91.3--91.24) [112930]"}
-        perm <= Mask[this, size];
+      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@91.3--91.24) [108855]"}
+        perm <= Mask[this, size_3];
     }
-    Mask := Mask[this, size:=Mask[this, size] - perm];
-    assert {:msg "  Folding AList(this) might fail. Assertion 0 <= this.size might not hold. (arraylist-quantified-permissions.vpr@91.3--91.24) [112931]"}
-      0 <= Heap[this, size];
-    assert {:msg "  Folding AList(this) might fail. Assertion this.size <= len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@91.3--91.24) [112932]"}
-      Heap[this, size] <= (len_1(Heap[this, elems]): int);
-    assert {:msg "  Folding AList(this) might fail. Assertion 0 < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@91.3--91.24) [112933]"}
-      0 < (len_1(Heap[this, elems]): int);
+    Mask := Mask[this, size_3:=Mask[this, size_3] - perm];
+    assert {:msg "  Folding AList(this) might fail. Assertion 0 <= this.size might not hold. (arraylist-quantified-permissions.vpr@91.3--91.24) [108856]"}
+      0 <= Heap[this, size_3];
+    assert {:msg "  Folding AList(this) might fail. Assertion this.size <= len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@91.3--91.24) [108857]"}
+      Heap[this, size_3] <= (len(Heap[this, elems_1]): int);
+    assert {:msg "  Folding AList(this) might fail. Assertion 0 < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@91.3--91.24) [108858]"}
+      0 < (len(Heap[this, elems_1]): int);
     havoc QPMask;
     
     // -- check that the permission amount is positive
       
     
     // -- check if receiver loc(this.elems, i) is injective
-      assert {:msg "  Folding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@91.3--91.24) [112935]"}
+      assert {:msg "  Folding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@91.3--91.24) [108860]"}
         (forall i_9_1: int, i_9_2: int ::
         { neverTriggered8(i_9_1), neverTriggered8(i_9_2) }
-        (((i_9_1 != i_9_2 && (0 <= i_9_1 && i_9_1 < (len_1(Heap[this, elems]): int))) && (0 <= i_9_2 && i_9_2 < (len_1(Heap[this, elems]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_9_1): Ref) != (loc(Heap[this, elems], i_9_2): Ref)
+        (((i_9_1 != i_9_2 && (0 <= i_9_1 && i_9_1 < (len(Heap[this, elems_1]): int))) && (0 <= i_9_2 && i_9_2 < (len(Heap[this, elems_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_9_1): Ref) != (loc(Heap[this, elems_1], i_9_2): Ref)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@91.3--91.24) [112936]"}
+      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@91.3--91.24) [108861]"}
         (forall i_9_1: int ::
-        { (loc(Heap[this, elems], i_9_1): Ref) } { (loc(Heap[this, elems], i_9_1): Ref) }
-        0 <= i_9_1 && i_9_1 < (len_1(Heap[this, elems]): int) ==> Mask[(loc(Heap[this, elems], i_9_1): Ref), val] >= FullPerm
+        { (loc(Heap[this, elems_1], i_9_1): Ref) } { (loc(Heap[this, elems_1], i_9_1): Ref) }
+        0 <= i_9_1 && i_9_1 < (len(Heap[this, elems_1]): int) ==> Mask[(loc(Heap[this, elems_1], i_9_1): Ref), val] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver loc(this.elems, i)
       assume (forall i_9_1: int ::
-        { (loc(Heap[this, elems], i_9_1): Ref) } { (loc(Heap[this, elems], i_9_1): Ref) }
-        (0 <= i_9_1 && i_9_1 < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm ==> qpRange8((loc(Heap[this, elems], i_9_1): Ref)) && invRecv8((loc(Heap[this, elems], i_9_1): Ref)) == i_9_1
+        { (loc(Heap[this, elems_1], i_9_1): Ref) } { (loc(Heap[this, elems_1], i_9_1): Ref) }
+        (0 <= i_9_1 && i_9_1 < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm ==> qpRange8((loc(Heap[this, elems_1], i_9_1): Ref)) && invRecv8((loc(Heap[this, elems_1], i_9_1): Ref)) == i_9_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv8(o_4) }
-        (0 <= invRecv8(o_4) && invRecv8(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange8(o_4)) ==> (loc(Heap[this, elems], invRecv8(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv8(o_9) }
+        (0 <= invRecv8(o_9) && invRecv8(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange8(o_9)) ==> (loc(Heap[this, elems_1], invRecv8(o_9)): Ref) == o_9
       );
     
     // -- assume permission updates for field val
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((0 <= invRecv8(o_4) && invRecv8(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange8(o_4)) ==> (loc(Heap[this, elems], invRecv8(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((0 <= invRecv8(o_4) && invRecv8(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange8(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((0 <= invRecv8(o_9) && invRecv8(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange8(o_9)) ==> (loc(Heap[this, elems_1], invRecv8(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((0 <= invRecv8(o_9) && invRecv8(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange8(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     perm := FullPerm;
@@ -1515,23 +1515,23 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume AList#trigger(Heap, AList(this));
-    assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems]), CombineFrames(FrameFragment(Heap[this, size]), FrameFragment(AList#condqp1(Heap, this))));
+    assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems_1]), CombineFrames(FrameFragment(Heap[this, size_3]), FrameFragment(AList#condqp1(Heap, this))));
     if (!HasDirectPerm(Mask, null, AList(this))) {
       Heap := Heap[null, AList#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, AList(this):=freshVersion];
     }
-    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems:=true]];
-    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size:=true]];
+    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems_1:=true]];
+    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size_3:=true]];
     // register all known folded permissions guarded by predicate AList
     havoc newPMask;
-    assume (forall <A, B> o_5: Ref, f: (Field A B) ::
-      { newPMask[o_5, f] }
-      Heap[null, AList#sm(this)][o_5, f] ==> newPMask[o_5, f]
+    assume (forall <A, B> o_56: Ref, f: (Field A B) ::
+      { newPMask[o_56, f] }
+      Heap[null, AList#sm(this)][o_56, f] ==> newPMask[o_56, f]
     );
     assume (forall i_10_1: int ::
       
-      0 <= i_10_1 && i_10_1 < (len_1(Heap[this, elems]): int) ==> newPMask[(loc(Heap[this, elems], i_10_1): Ref), val]
+      0 <= i_10_1 && i_10_1 < (len(Heap[this, elems_1]): int) ==> newPMask[(loc(Heap[this, elems_1], i_10_1): Ref), val]
     );
     Heap := Heap[null, AList#sm(this):=newPMask];
     assume state(Heap, Mask);
@@ -1542,27 +1542,27 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of addAtEnd might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@72.11--72.27) [112938]"}
+      assert {:msg "  Postcondition of addAtEnd might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@72.11--72.27) [108863]"}
         perm <= Mask[null, AList(this)];
     }
     Mask := Mask[null, AList(this):=Mask[null, AList(this)] - perm];
-    assert {:msg "  Postcondition of addAtEnd might not hold. Assertion length(this) == old(length(this)) + 1 might not hold. (arraylist-quantified-permissions.vpr@73.11--73.48) [112939]"}
-      length(Heap, this) == length(oldHeap, this) + 1;
-    assert {:msg "  Postcondition of addAtEnd might not hold. Assertion itemAt(this, length(this) - 1) == elem might not hold. (arraylist-quantified-permissions.vpr@74.11--74.49) [112940]"}
-      itemAt(Heap, this, length(Heap, this) - 1) == elem;
+    assert {:msg "  Postcondition of addAtEnd might not hold. Assertion length(this) == old(length(this)) + 1 might not hold. (arraylist-quantified-permissions.vpr@73.11--73.48) [108864]"}
+      length_1(Heap, this) == length_1(oldHeap, this) + 1;
+    assert {:msg "  Postcondition of addAtEnd might not hold. Assertion itemAt(this, length(this) - 1) == elem might not hold. (arraylist-quantified-permissions.vpr@74.11--74.49) [108865]"}
+      itemAt(Heap, this, length_1(Heap, this) - 1) == elem_1;
     if (*) {
-      if (0 <= i_2_1 && i_2_1 < length(oldHeap, this)) {
-        assert {:msg "  Postcondition of addAtEnd might not hold. Assertion itemAt(this, i) == old(itemAt(this, i)) might not hold. (arraylist-quantified-permissions.vpr@75.11--75.103) [112941]"}
-          itemAt(Heap, this, i_2_1) == itemAt(oldHeap, this, i_2_1);
+      if (0 <= i_2 && i_2 < length_1(oldHeap, this)) {
+        assert {:msg "  Postcondition of addAtEnd might not hold. Assertion itemAt(this, i) == old(itemAt(this, i)) might not hold. (arraylist-quantified-permissions.vpr@75.11--75.103) [108866]"}
+          itemAt(Heap, this, i_2) == itemAt(oldHeap, this, i_2);
       }
       assume false;
     }
-    assume (forall i_3_1_1: int ::
-      { itemAt#frame(oldHeap[null, AList(this)], this, i_3_1_1) }
-      0 <= i_3_1_1 && i_3_1_1 < length(oldHeap, this) ==> itemAt(Heap, this, i_3_1_1) == itemAt(oldHeap, this, i_3_1_1)
+    assume (forall i_3_1: int ::
+      { itemAt#frame(oldHeap[null, AList(this)], this, i_3_1) }
+      0 <= i_3_1 && i_3_1 < length_1(oldHeap, this) ==> itemAt(Heap, this, i_3_1) == itemAt(oldHeap, this, i_3_1)
     );
-    assert {:msg "  Postcondition of addAtEnd might not hold. Assertion itemAt(this, old(length(this))) == elem might not hold. (arraylist-quantified-permissions.vpr@76.11--76.50) [112942]"}
-      itemAt(Heap, this, length(oldHeap, this)) == elem;
+    assert {:msg "  Postcondition of addAtEnd might not hold. Assertion itemAt(this, old(length(this))) == elem might not hold. (arraylist-quantified-permissions.vpr@76.11--76.50) [108867]"}
+      itemAt(Heap, this, length_1(oldHeap, this)) == elem_1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1573,7 +1573,7 @@ procedure addAtEnd(this: Ref, elem: int) returns ()
 // Translation of method insert
 // ==================================================
 
-procedure insert(this: Ref, elem: int) returns (j_9: int)
+procedure insert(this: Ref, elem_1: int) returns (j: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -1584,10 +1584,10 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var k_30: int;
-  var k_31: int;
+  var k_23: int;
+  var k_24: int;
   var k_8: int;
-  var k_32: int;
+  var k_21: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var newVersion: FrameType;
@@ -1596,17 +1596,17 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
   var newPMask: PMaskType;
   var k_13: int;
   var a_2: ArrayDomainType;
-  var i_32: int;
+  var i_27: int;
   var t_2: int;
   var i_9_1: int;
   var i_11_1: int;
-  var i_33: int;
-  var i_34: int;
-  var i_35: int;
-  var i_23: int;
-  var i_25: int;
-  var k_4_1: int;
-  var k_6: int;
+  var i_16: int;
+  var i_42: int;
+  var i_51: int;
+  var i_23_1: int;
+  var i_25_1: int;
+  var k_4_2: int;
+  var k_6_2: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1637,7 +1637,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
     PostMask := PostMask[null, AList(this):=PostMask[null, AList(this)] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
-    assume 0 <= j_9;
+    assume 0 <= j;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of j < length(this)
@@ -1646,7 +1646,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@99.25--99.37) [112943]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@99.25--99.37) [108868]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1655,7 +1655,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         // Stop execution
         assume false;
       }
-    assume j_9 < length(PostHeap, this);
+    assume j < length_1(PostHeap, this);
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
@@ -1665,7 +1665,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@100.11--100.23) [112944]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@100.11--100.23) [108869]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1679,30 +1679,30 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@100.31--100.43) [112945]"}
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@100.31--100.43) [108870]"}
           NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
         // Finish exhale
         // Stop execution
         assume false;
       }
-    assume length(PostHeap, this) == length(oldHeap, this) + 1;
+    assume length_1(PostHeap, this) == length_1(oldHeap, this) + 1;
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall k: Int :: { old(itemAt(this, k)) } 0 <= k && k < j ==> itemAt(this, k) == old(itemAt(this, k)))
       if (*) {
-        if (0 <= k_30 && k_30 < j_9) {
+        if (0 <= k_23 && k_23 < j) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@101.48--101.63) [112946]"}
+            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@101.48--101.63) [108871]"}
               NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k might not hold. (arraylist-quantified-permissions.vpr@101.48--101.63) [112947]"}
-              0 <= k_30;
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion k < length(this) might not hold. (arraylist-quantified-permissions.vpr@101.48--101.63) [112948]"}
-              k_30 < length(PostHeap, this);
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k might not hold. (arraylist-quantified-permissions.vpr@101.48--101.63) [108872]"}
+              0 <= k_23;
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion k < length(this) might not hold. (arraylist-quantified-permissions.vpr@101.48--101.63) [108873]"}
+              k_23 < length_1(PostHeap, this);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1715,12 +1715,12 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@101.71--101.86) [112949]"}
+            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@101.71--101.86) [108874]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k might not hold. (arraylist-quantified-permissions.vpr@101.71--101.86) [112950]"}
-              0 <= k_30;
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion k < length(this) might not hold. (arraylist-quantified-permissions.vpr@101.71--101.86) [112951]"}
-              k_30 < length(oldHeap, this);
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k might not hold. (arraylist-quantified-permissions.vpr@101.71--101.86) [108875]"}
+              0 <= k_23;
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion k < length(this) might not hold. (arraylist-quantified-permissions.vpr@101.71--101.86) [108876]"}
+              k_23 < length_1(oldHeap, this);
             // Finish exhale
             // Stop execution
             assume false;
@@ -1728,9 +1728,9 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         }
         assume false;
       }
-    assume (forall k_1_1: int ::
-      { itemAt#frame(oldHeap[null, AList(this)], this, k_1_1) }
-      0 <= k_1_1 && k_1_1 < j_9 ==> itemAt(PostHeap, this, k_1_1) == itemAt(oldHeap, this, k_1_1)
+    assume (forall k_1: int ::
+      { itemAt#frame(oldHeap[null, AList(this)], this, k_1) }
+      0 <= k_1 && k_1 < j ==> itemAt(PostHeap, this, k_1) == itemAt(oldHeap, this, k_1)
     );
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
@@ -1741,12 +1741,12 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@102.11--102.26) [112952]"}
+        assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@102.11--102.26) [108877]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
-        assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= j might not hold. (arraylist-quantified-permissions.vpr@102.11--102.26) [112953]"}
-          0 <= j_9;
-        assert {:msg "  Precondition of function itemAt might not hold. Assertion j < length(this) might not hold. (arraylist-quantified-permissions.vpr@102.11--102.26) [112954]"}
-          j_9 < length(PostHeap, this);
+        assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= j might not hold. (arraylist-quantified-permissions.vpr@102.11--102.26) [108878]"}
+          0 <= j;
+        assert {:msg "  Precondition of function itemAt might not hold. Assertion j < length(this) might not hold. (arraylist-quantified-permissions.vpr@102.11--102.26) [108879]"}
+          j < length_1(PostHeap, this);
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1754,19 +1754,19 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         // Stop execution
         assume false;
       }
-    assume itemAt(PostHeap, this, j_9) == elem;
+    assume itemAt(PostHeap, this, j) == elem_1;
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall k: Int :: { itemAt(this, k) } j < k && k < length(this) ==> itemAt(this, k) == old(itemAt(this, k - 1)))
       if (*) {
-        if (j_9 < k_31) {
+        if (j < k_24) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@103.41--103.53) [112955]"}
+            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@103.41--103.53) [108880]"}
               NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1776,18 +1776,18 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             assume false;
           }
         }
-        if (j_9 < k_31 && k_31 < length(PostHeap, this)) {
+        if (j < k_24 && k_24 < length_1(PostHeap, this)) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@103.58--103.73) [112956]"}
+            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@103.58--103.73) [108881]"}
               NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k might not hold. (arraylist-quantified-permissions.vpr@103.58--103.73) [112957]"}
-              0 <= k_31;
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion k < length(this) might not hold. (arraylist-quantified-permissions.vpr@103.58--103.73) [112958]"}
-              k_31 < length(PostHeap, this);
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k might not hold. (arraylist-quantified-permissions.vpr@103.58--103.73) [108882]"}
+              0 <= k_24;
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion k < length(this) might not hold. (arraylist-quantified-permissions.vpr@103.58--103.73) [108883]"}
+              k_24 < length_1(PostHeap, this);
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -1800,12 +1800,12 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@103.81--103.100) [112959]"}
+            assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@103.81--103.100) [108884]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k - 1 might not hold. (arraylist-quantified-permissions.vpr@103.81--103.100) [112960]"}
-              0 <= k_31 - 1;
-            assert {:msg "  Precondition of function itemAt might not hold. Assertion k - 1 < length(this) might not hold. (arraylist-quantified-permissions.vpr@103.81--103.100) [112961]"}
-              k_31 - 1 < length(oldHeap, this);
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k - 1 might not hold. (arraylist-quantified-permissions.vpr@103.81--103.100) [108885]"}
+              0 <= k_24 - 1;
+            assert {:msg "  Precondition of function itemAt might not hold. Assertion k - 1 < length(this) might not hold. (arraylist-quantified-permissions.vpr@103.81--103.100) [108886]"}
+              k_24 - 1 < length_1(oldHeap, this);
             // Finish exhale
             // Stop execution
             assume false;
@@ -1815,7 +1815,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
       }
     assume (forall k_3: int ::
       { itemAt#frame(PostHeap[null, AList(this)], this, k_3) }
-      j_9 < k_3 && k_3 < length(PostHeap, this) ==> itemAt(PostHeap, this, k_3) == itemAt(oldHeap, this, k_3 - 1)
+      j < k_3 && k_3 < length_1(PostHeap, this) ==> itemAt(PostHeap, this, k_3) == itemAt(oldHeap, this, k_3 - 1)
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -1823,7 +1823,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
   }
   
   // -- Translating statement: j := 0 -- arraylist-quantified-permissions.vpr@105.3--105.9
-    j_9 := 0;
+    j := 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (j < length(this) && itemAt(this, j) < elem) -- arraylist-quantified-permissions.vpr@106.3--116.4
@@ -1835,30 +1835,30 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(AList(this), write) might not hold on entry. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@107.15--107.31) [112962]"}
+          assert {:msg "  Loop invariant acc(AList(this), write) might not hold on entry. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@107.15--107.31) [108887]"}
             perm <= Mask[null, AList(this)];
         }
         Mask := Mask[null, AList(this):=Mask[null, AList(this)] - perm];
-        assert {:msg "  Loop invariant 0 <= j && j <= length(this) might not hold on entry. Assertion 0 <= j might not hold. (arraylist-quantified-permissions.vpr@108.15--108.42) [112963]"}
-          0 <= j_9;
-        assert {:msg "  Loop invariant 0 <= j && j <= length(this) might not hold on entry. Assertion j <= length(this) might not hold. (arraylist-quantified-permissions.vpr@108.15--108.42) [112964]"}
-          j_9 <= length(Heap, this);
-        if (j_9 > 0) {
-          assert {:msg "  Loop invariant j > 0 ==> itemAt(this, j - 1) <= elem might not hold on entry. Assertion itemAt(this, j - 1) <= elem might not hold. (arraylist-quantified-permissions.vpr@109.15--109.49) [112965]"}
-            itemAt(Heap, this, j_9 - 1) <= elem;
+        assert {:msg "  Loop invariant 0 <= j && j <= length(this) might not hold on entry. Assertion 0 <= j might not hold. (arraylist-quantified-permissions.vpr@108.15--108.42) [108888]"}
+          0 <= j;
+        assert {:msg "  Loop invariant 0 <= j && j <= length(this) might not hold on entry. Assertion j <= length(this) might not hold. (arraylist-quantified-permissions.vpr@108.15--108.42) [108889]"}
+          j <= length_1(Heap, this);
+        if (j > 0) {
+          assert {:msg "  Loop invariant j > 0 ==> itemAt(this, j - 1) <= elem might not hold on entry. Assertion itemAt(this, j - 1) <= elem might not hold. (arraylist-quantified-permissions.vpr@109.15--109.49) [108890]"}
+            itemAt(Heap, this, j - 1) <= elem_1;
         }
-        assert {:msg "  Loop invariant length(this) == old(length(this)) might not hold on entry. Assertion length(this) == old(length(this)) might not hold. (arraylist-quantified-permissions.vpr@110.15--110.48) [112966]"}
-          length(Heap, this) == length(oldHeap, this);
+        assert {:msg "  Loop invariant length(this) == old(length(this)) might not hold on entry. Assertion length(this) == old(length(this)) might not hold. (arraylist-quantified-permissions.vpr@110.15--110.48) [108891]"}
+          length_1(Heap, this) == length_1(oldHeap, this);
         if (*) {
-          if (0 <= k_8 && k_8 < length(Heap, this)) {
-            assert {:msg "  Loop invariant (forall k: Int :: { old(itemAt(this, k)) } 0 <= k && k < length(this) ==> itemAt(this, k) == old(itemAt(this, k))) might not hold on entry. Assertion itemAt(this, k) == old(itemAt(this, k)) might not hold. (arraylist-quantified-permissions.vpr@111.15--111.122) [112967]"}
+          if (0 <= k_8 && k_8 < length_1(Heap, this)) {
+            assert {:msg "  Loop invariant (forall k: Int :: { old(itemAt(this, k)) } 0 <= k && k < length(this) ==> itemAt(this, k) == old(itemAt(this, k))) might not hold on entry. Assertion itemAt(this, k) == old(itemAt(this, k)) might not hold. (arraylist-quantified-permissions.vpr@111.15--111.122) [108892]"}
               itemAt(Heap, this, k_8) == itemAt(oldHeap, this, k_8);
           }
           assume false;
         }
-        assume (forall k_9_1: int ::
-          { itemAt#frame(oldHeap[null, AList(this)], this, k_9_1) }
-          0 <= k_9_1 && k_9_1 < length(Heap, this) ==> itemAt(Heap, this, k_9_1) == itemAt(oldHeap, this, k_9_1)
+        assume (forall k_9_1_1: int ::
+          { itemAt#frame(oldHeap[null, AList(this)], this, k_9_1_1) }
+          0 <= k_9_1_1 && k_9_1_1 < length_1(Heap, this) ==> itemAt(Heap, this, k_9_1_1) == itemAt(oldHeap, this, k_9_1_1)
         );
         // Finish exhale
         havoc ExhaleHeap;
@@ -1866,7 +1866,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         Heap := ExhaleHeap;
     
     // -- Havoc loop written variables (except locals)
-      havoc j_9;
+      havoc j;
     
     // -- Check definedness of invariant
       if (*) {
@@ -1874,7 +1874,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         Mask := Mask[null, AList(this):=Mask[null, AList(this)] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
-        assume 0 <= j_9;
+        assume 0 <= j;
         assume state(Heap, Mask);
         
         // -- Check definedness of j <= length(this)
@@ -1883,7 +1883,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@108.30--108.42) [112968]"}
+            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@108.30--108.42) [108893]"}
               NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1892,9 +1892,9 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             // Stop execution
             assume false;
           }
-        assume j_9 <= length(Heap, this);
+        assume j <= length_1(Heap, this);
         assume state(Heap, Mask);
-        if (j_9 > 0) {
+        if (j > 0) {
           assume state(Heap, Mask);
           
           // -- Check definedness of itemAt(this, j - 1) <= elem
@@ -1903,12 +1903,12 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
               ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@109.25--109.41) [112969]"}
+              assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@109.25--109.41) [108894]"}
                 NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
-              assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= j - 1 might not hold. (arraylist-quantified-permissions.vpr@109.25--109.41) [112970]"}
-                0 <= j_9 - 1;
-              assert {:msg "  Precondition of function itemAt might not hold. Assertion j - 1 < length(this) might not hold. (arraylist-quantified-permissions.vpr@109.25--109.41) [112971]"}
-                j_9 - 1 < length(Heap, this);
+              assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= j - 1 might not hold. (arraylist-quantified-permissions.vpr@109.25--109.41) [108895]"}
+                0 <= j - 1;
+              assert {:msg "  Precondition of function itemAt might not hold. Assertion j - 1 < length(this) might not hold. (arraylist-quantified-permissions.vpr@109.25--109.41) [108896]"}
+                j - 1 < length_1(Heap, this);
               // Finish exhale
               havoc ExhaleHeap;
               assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1916,7 +1916,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
               // Stop execution
               assume false;
             }
-          assume itemAt(Heap, this, j_9 - 1) <= elem;
+          assume itemAt(Heap, this, j - 1) <= elem_1;
         }
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -1927,7 +1927,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@110.15--110.27) [112972]"}
+            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@110.15--110.27) [108897]"}
               NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -1941,25 +1941,25 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@110.35--110.47) [112973]"}
+            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@110.35--110.47) [108898]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
             // Finish exhale
             // Stop execution
             assume false;
           }
-        assume length(Heap, this) == length(oldHeap, this);
+        assume length_1(Heap, this) == length_1(oldHeap, this);
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         
         // -- Check definedness of (forall k: Int :: { old(itemAt(this, k)) } 0 <= k && k < length(this) ==> itemAt(this, k) == old(itemAt(this, k)))
           if (*) {
-            if (0 <= k_32) {
+            if (0 <= k_21) {
               if (*) {
                 // Exhale precondition of function application
                 ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@111.68--111.80) [112974]"}
+                assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@111.68--111.80) [108899]"}
                   NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -1969,18 +1969,18 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
                 assume false;
               }
             }
-            if (0 <= k_32 && k_32 < length(Heap, this)) {
+            if (0 <= k_21 && k_21 < length_1(Heap, this)) {
               if (*) {
                 // Exhale precondition of function application
                 ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@111.85--111.99) [112975]"}
+                assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@111.85--111.99) [108900]"}
                   NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
-                assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k might not hold. (arraylist-quantified-permissions.vpr@111.85--111.99) [112976]"}
-                  0 <= k_32;
-                assert {:msg "  Precondition of function itemAt might not hold. Assertion k < length(this) might not hold. (arraylist-quantified-permissions.vpr@111.85--111.99) [112977]"}
-                  k_32 < length(Heap, this);
+                assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k might not hold. (arraylist-quantified-permissions.vpr@111.85--111.99) [108901]"}
+                  0 <= k_21;
+                assert {:msg "  Precondition of function itemAt might not hold. Assertion k < length(this) might not hold. (arraylist-quantified-permissions.vpr@111.85--111.99) [108902]"}
+                  k_21 < length_1(Heap, this);
                 // Finish exhale
                 havoc ExhaleHeap;
                 assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1993,12 +1993,12 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
                 ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@111.107--111.121) [112978]"}
+                assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@111.107--111.121) [108903]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
-                assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k might not hold. (arraylist-quantified-permissions.vpr@111.107--111.121) [112979]"}
-                  0 <= k_32;
-                assert {:msg "  Precondition of function itemAt might not hold. Assertion k < length(this) might not hold. (arraylist-quantified-permissions.vpr@111.107--111.121) [112980]"}
-                  k_32 < length(oldHeap, this);
+                assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= k might not hold. (arraylist-quantified-permissions.vpr@111.107--111.121) [108904]"}
+                  0 <= k_21;
+                assert {:msg "  Precondition of function itemAt might not hold. Assertion k < length(this) might not hold. (arraylist-quantified-permissions.vpr@111.107--111.121) [108905]"}
+                  k_21 < length_1(oldHeap, this);
                 // Finish exhale
                 // Stop execution
                 assume false;
@@ -2008,7 +2008,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
           }
         assume (forall k_11: int ::
           { itemAt#frame(oldHeap[null, AList(this)], this, k_11) }
-          0 <= k_11 && k_11 < length(Heap, this) ==> itemAt(Heap, this, k_11) == itemAt(oldHeap, this, k_11)
+          0 <= k_11 && k_11 < length_1(Heap, this) ==> itemAt(Heap, this, k_11) == itemAt(oldHeap, this, k_11)
         );
         assume state(Heap, Mask);
         assume false;
@@ -2025,19 +2025,19 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         perm := FullPerm;
         Mask := Mask[null, AList(this):=Mask[null, AList(this)] + perm];
         assume state(Heap, Mask);
-        assume 0 <= j_9;
+        assume 0 <= j;
         assume state(Heap, Mask);
-        assume j_9 <= length(Heap, this);
-        if (j_9 > 0) {
+        assume j <= length_1(Heap, this);
+        if (j > 0) {
           assume state(Heap, Mask);
-          assume itemAt(Heap, this, j_9 - 1) <= elem;
+          assume itemAt(Heap, this, j - 1) <= elem_1;
         }
         assume state(Heap, Mask);
-        assume length(Heap, this) == length(oldHeap, this);
+        assume length_1(Heap, this) == length_1(oldHeap, this);
         assume state(Heap, Mask);
-        assume (forall k_12_2: int ::
-          { itemAt#frame(oldHeap[null, AList(this)], this, k_12_2) }
-          0 <= k_12_2 && k_12_2 < length(Heap, this) ==> itemAt(Heap, this, k_12_2) == itemAt(oldHeap, this, k_12_2)
+        assume (forall k_12: int ::
+          { itemAt#frame(oldHeap[null, AList(this)], this, k_12) }
+          0 <= k_12 && k_12 < length_1(Heap, this) ==> itemAt(Heap, this, k_12) == itemAt(oldHeap, this, k_12)
         );
         assume state(Heap, Mask);
         // Check and assume guard
@@ -2048,7 +2048,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@106.14--106.26) [112981]"}
+            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@106.14--106.26) [108906]"}
               NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -2057,18 +2057,18 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             // Stop execution
             assume false;
           }
-          if (j_9 < length(Heap, this)) {
+          if (j < length_1(Heap, this)) {
             if (*) {
               // Exhale precondition of function application
               ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@106.30--106.44) [112982]"}
+              assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@106.30--106.44) [108907]"}
                 NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
-              assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= j might not hold. (arraylist-quantified-permissions.vpr@106.30--106.44) [112983]"}
-                0 <= j_9;
-              assert {:msg "  Precondition of function itemAt might not hold. Assertion j < length(this) might not hold. (arraylist-quantified-permissions.vpr@106.30--106.44) [112984]"}
-                j_9 < length(Heap, this);
+              assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= j might not hold. (arraylist-quantified-permissions.vpr@106.30--106.44) [108908]"}
+                0 <= j;
+              assert {:msg "  Precondition of function itemAt might not hold. Assertion j < length(this) might not hold. (arraylist-quantified-permissions.vpr@106.30--106.44) [108909]"}
+                j < length_1(Heap, this);
               // Finish exhale
               havoc ExhaleHeap;
               assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -2077,19 +2077,19 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
               assume false;
             }
           }
-        assume j_9 < length(Heap, this) && itemAt(Heap, this, j_9) < elem;
+        assume j < length_1(Heap, this) && itemAt(Heap, this, j) < elem_1;
         assume state(Heap, Mask);
         
         // -- Translate loop body
           
           // -- Translating statement: unfold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@113.5--113.28
             assume AList#trigger(Heap, AList(this));
-            assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems]), CombineFrames(FrameFragment(Heap[this, size]), FrameFragment(AList#condqp1(Heap, this))));
+            assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems_1]), CombineFrames(FrameFragment(Heap[this, size_3]), FrameFragment(AList#condqp1(Heap, this))));
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding AList(this) might fail. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@113.5--113.28) [112985]"}
+              assert {:msg "  Unfolding AList(this) might fail. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@113.5--113.28) [108910]"}
                 perm <= Mask[null, AList(this)];
             }
             Mask := Mask[null, AList(this):=Mask[null, AList(this)] - perm];
@@ -2101,46 +2101,46 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
               }
             perm := FullPerm;
             assume this != null;
-            Mask := Mask[this, elems:=Mask[this, elems] + perm];
+            Mask := Mask[this, elems_1:=Mask[this, elems_1] + perm];
             assume state(Heap, Mask);
             perm := FullPerm;
             assume this != null;
-            Mask := Mask[this, size:=Mask[this, size] + perm];
+            Mask := Mask[this, size_3:=Mask[this, size_3] + perm];
             assume state(Heap, Mask);
-            assume 0 <= Heap[this, size];
-            assume Heap[this, size] <= (len_1(Heap[this, elems]): int);
-            assume 0 < (len_1(Heap[this, elems]): int);
+            assume 0 <= Heap[this, size_3];
+            assume Heap[this, size_3] <= (len(Heap[this, elems_1]): int);
+            assume 0 < (len(Heap[this, elems_1]): int);
             havoc QPMask;
-            assert {:msg "  Unfolding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@113.5--113.28) [112986]"}
-              (forall i: int, i_77: int ::
+            assert {:msg "  Unfolding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@113.5--113.28) [108911]"}
+              (forall i: int, i_22: int ::
               
-              (((i != i_77 && (0 <= i && i < (len_1(Heap[this, elems]): int))) && (0 <= i_77 && i_77 < (len_1(Heap[this, elems]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i): Ref) != (loc(Heap[this, elems], i_77): Ref)
+              (((i != i_22 && (0 <= i && i < (len(Heap[this, elems_1]): int))) && (0 <= i_22 && i_22 < (len(Heap[this, elems_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i): Ref) != (loc(Heap[this, elems_1], i_22): Ref)
             );
             
             // -- Define Inverse Function
               assume (forall i: int ::
-                { (loc(Heap[this, elems], i): Ref) } { (loc(Heap[this, elems], i): Ref) }
-                (0 <= i && i < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm ==> qpRange9((loc(Heap[this, elems], i): Ref)) && invRecv9((loc(Heap[this, elems], i): Ref)) == i
+                { (loc(Heap[this, elems_1], i): Ref) } { (loc(Heap[this, elems_1], i): Ref) }
+                (0 <= i && i < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm ==> qpRange9((loc(Heap[this, elems_1], i): Ref)) && invRecv9((loc(Heap[this, elems_1], i): Ref)) == i
               );
-              assume (forall o_4: Ref ::
-                { invRecv9(o_4) }
-                ((0 <= invRecv9(o_4) && invRecv9(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange9(o_4) ==> (loc(Heap[this, elems], invRecv9(o_4)): Ref) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv9(o_9) }
+                ((0 <= invRecv9(o_9) && invRecv9(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange9(o_9) ==> (loc(Heap[this, elems_1], invRecv9(o_9)): Ref) == o_9
               );
             
             // -- Assume set of fields is nonNull
               assume (forall i: int ::
-                { (loc(Heap[this, elems], i): Ref) } { (loc(Heap[this, elems], i): Ref) }
-                0 <= i && i < (len_1(Heap[this, elems]): int) ==> (loc(Heap[this, elems], i): Ref) != null
+                { (loc(Heap[this, elems_1], i): Ref) } { (loc(Heap[this, elems_1], i): Ref) }
+                0 <= i && i < (len(Heap[this, elems_1]): int) ==> (loc(Heap[this, elems_1], i): Ref) != null
               );
             
             // -- Define permissions
-              assume (forall o_4: Ref ::
-                { QPMask[o_4, val] }
-                (((0 <= invRecv9(o_4) && invRecv9(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange9(o_4) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems], invRecv9(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv9(o_4) && invRecv9(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange9(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+              assume (forall o_9: Ref ::
+                { QPMask[o_9, val] }
+                (((0 <= invRecv9(o_9) && invRecv9(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange9(o_9) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems_1], invRecv9(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv9(o_9) && invRecv9(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange9(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
               );
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
             Mask := QPMask;
             assume state(Heap, Mask);
@@ -2148,7 +2148,7 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             assume state(Heap, Mask);
           
           // -- Translating statement: j := j + 1 -- arraylist-quantified-permissions.vpr@114.5--114.15
-            j_9 := j_9 + 1;
+            j := j + 1;
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@115.5--115.26
@@ -2156,61 +2156,61 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@115.5--115.26) [112987]"}
-                perm <= Mask[this, elems];
+              assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@115.5--115.26) [108912]"}
+                perm <= Mask[this, elems_1];
             }
-            Mask := Mask[this, elems:=Mask[this, elems] - perm];
+            Mask := Mask[this, elems_1:=Mask[this, elems_1] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@115.5--115.26) [112988]"}
-                perm <= Mask[this, size];
+              assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@115.5--115.26) [108913]"}
+                perm <= Mask[this, size_3];
             }
-            Mask := Mask[this, size:=Mask[this, size] - perm];
-            assert {:msg "  Folding AList(this) might fail. Assertion 0 <= this.size might not hold. (arraylist-quantified-permissions.vpr@115.5--115.26) [112989]"}
-              0 <= Heap[this, size];
-            assert {:msg "  Folding AList(this) might fail. Assertion this.size <= len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@115.5--115.26) [112990]"}
-              Heap[this, size] <= (len_1(Heap[this, elems]): int);
-            assert {:msg "  Folding AList(this) might fail. Assertion 0 < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@115.5--115.26) [112991]"}
-              0 < (len_1(Heap[this, elems]): int);
+            Mask := Mask[this, size_3:=Mask[this, size_3] - perm];
+            assert {:msg "  Folding AList(this) might fail. Assertion 0 <= this.size might not hold. (arraylist-quantified-permissions.vpr@115.5--115.26) [108914]"}
+              0 <= Heap[this, size_3];
+            assert {:msg "  Folding AList(this) might fail. Assertion this.size <= len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@115.5--115.26) [108915]"}
+              Heap[this, size_3] <= (len(Heap[this, elems_1]): int);
+            assert {:msg "  Folding AList(this) might fail. Assertion 0 < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@115.5--115.26) [108916]"}
+              0 < (len(Heap[this, elems_1]): int);
             havoc QPMask;
             
             // -- check that the permission amount is positive
               
             
             // -- check if receiver loc(this.elems, i) is injective
-              assert {:msg "  Folding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@115.5--115.26) [112992]"}
+              assert {:msg "  Folding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@115.5--115.26) [108917]"}
                 (forall i_1: int, i_1_1: int ::
                 { neverTriggered10(i_1), neverTriggered10(i_1_1) }
-                (((i_1 != i_1_1 && (0 <= i_1 && i_1 < (len_1(Heap[this, elems]): int))) && (0 <= i_1_1 && i_1_1 < (len_1(Heap[this, elems]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_1): Ref) != (loc(Heap[this, elems], i_1_1): Ref)
+                (((i_1 != i_1_1 && (0 <= i_1 && i_1 < (len(Heap[this, elems_1]): int))) && (0 <= i_1_1 && i_1_1 < (len(Heap[this, elems_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_1): Ref) != (loc(Heap[this, elems_1], i_1_1): Ref)
               );
             
             // -- check if sufficient permission is held
-              assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@115.5--115.26) [112993]"}
+              assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@115.5--115.26) [108918]"}
                 (forall i_1: int ::
-                { (loc(Heap[this, elems], i_1): Ref) } { (loc(Heap[this, elems], i_1): Ref) }
-                0 <= i_1 && i_1 < (len_1(Heap[this, elems]): int) ==> Mask[(loc(Heap[this, elems], i_1): Ref), val] >= FullPerm
+                { (loc(Heap[this, elems_1], i_1): Ref) } { (loc(Heap[this, elems_1], i_1): Ref) }
+                0 <= i_1 && i_1 < (len(Heap[this, elems_1]): int) ==> Mask[(loc(Heap[this, elems_1], i_1): Ref), val] >= FullPerm
               );
             
             // -- assumptions for inverse of receiver loc(this.elems, i)
               assume (forall i_1: int ::
-                { (loc(Heap[this, elems], i_1): Ref) } { (loc(Heap[this, elems], i_1): Ref) }
-                (0 <= i_1 && i_1 < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm ==> qpRange10((loc(Heap[this, elems], i_1): Ref)) && invRecv10((loc(Heap[this, elems], i_1): Ref)) == i_1
+                { (loc(Heap[this, elems_1], i_1): Ref) } { (loc(Heap[this, elems_1], i_1): Ref) }
+                (0 <= i_1 && i_1 < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm ==> qpRange10((loc(Heap[this, elems_1], i_1): Ref)) && invRecv10((loc(Heap[this, elems_1], i_1): Ref)) == i_1
               );
-              assume (forall o_4: Ref ::
-                { invRecv10(o_4) }
-                (0 <= invRecv10(o_4) && invRecv10(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange10(o_4)) ==> (loc(Heap[this, elems], invRecv10(o_4)): Ref) == o_4
+              assume (forall o_9: Ref ::
+                { invRecv10(o_9) }
+                (0 <= invRecv10(o_9) && invRecv10(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange10(o_9)) ==> (loc(Heap[this, elems_1], invRecv10(o_9)): Ref) == o_9
               );
             
             // -- assume permission updates for field val
-              assume (forall o_4: Ref ::
-                { QPMask[o_4, val] }
-                ((0 <= invRecv10(o_4) && invRecv10(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange10(o_4)) ==> (loc(Heap[this, elems], invRecv10(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((0 <= invRecv10(o_4) && invRecv10(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange10(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+              assume (forall o_9: Ref ::
+                { QPMask[o_9, val] }
+                ((0 <= invRecv10(o_9) && invRecv10(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange10(o_9)) ==> (loc(Heap[this, elems_1], invRecv10(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((0 <= invRecv10(o_9) && invRecv10(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange10(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
               );
             
             // -- assume permission updates for independent locations
-              assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                { QPMask[o_4, f_5] }
-                f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+              assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                { QPMask[o_9, f_5] }
+                f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
               );
             Mask := QPMask;
             perm := FullPerm;
@@ -2218,23 +2218,23 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             assume state(Heap, Mask);
             assume state(Heap, Mask);
             assume AList#trigger(Heap, AList(this));
-            assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems]), CombineFrames(FrameFragment(Heap[this, size]), FrameFragment(AList#condqp1(Heap, this))));
+            assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems_1]), CombineFrames(FrameFragment(Heap[this, size_3]), FrameFragment(AList#condqp1(Heap, this))));
             if (!HasDirectPerm(Mask, null, AList(this))) {
               Heap := Heap[null, AList#sm(this):=ZeroPMask];
               havoc freshVersion;
               Heap := Heap[null, AList(this):=freshVersion];
             }
-            Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems:=true]];
-            Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size:=true]];
+            Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems_1:=true]];
+            Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size_3:=true]];
             // register all known folded permissions guarded by predicate AList
             havoc newPMask;
-            assume (forall <A, B> o_1: Ref, f_11: (Field A B) ::
-              { newPMask[o_1, f_11] }
-              Heap[null, AList#sm(this)][o_1, f_11] ==> newPMask[o_1, f_11]
+            assume (forall <A, B> o_1: Ref, f_10: (Field A B) ::
+              { newPMask[o_1, f_10] }
+              Heap[null, AList#sm(this)][o_1, f_10] ==> newPMask[o_1, f_10]
             );
-            assume (forall i_2_1: int ::
+            assume (forall i_2: int ::
               
-              0 <= i_2_1 && i_2_1 < (len_1(Heap[this, elems]): int) ==> newPMask[(loc(Heap[this, elems], i_2_1): Ref), val]
+              0 <= i_2 && i_2 < (len(Heap[this, elems_1]): int) ==> newPMask[(loc(Heap[this, elems_1], i_2): Ref), val]
             );
             Heap := Heap[null, AList#sm(this):=newPMask];
             assume state(Heap, Mask);
@@ -2244,30 +2244,30 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(AList(this), write) might not be preserved. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@107.15--107.31) [112994]"}
+          assert {:msg "  Loop invariant acc(AList(this), write) might not be preserved. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@107.15--107.31) [108919]"}
             perm <= Mask[null, AList(this)];
         }
         Mask := Mask[null, AList(this):=Mask[null, AList(this)] - perm];
-        assert {:msg "  Loop invariant 0 <= j && j <= length(this) might not be preserved. Assertion 0 <= j might not hold. (arraylist-quantified-permissions.vpr@108.15--108.42) [112995]"}
-          0 <= j_9;
-        assert {:msg "  Loop invariant 0 <= j && j <= length(this) might not be preserved. Assertion j <= length(this) might not hold. (arraylist-quantified-permissions.vpr@108.15--108.42) [112996]"}
-          j_9 <= length(Heap, this);
-        if (j_9 > 0) {
-          assert {:msg "  Loop invariant j > 0 ==> itemAt(this, j - 1) <= elem might not be preserved. Assertion itemAt(this, j - 1) <= elem might not hold. (arraylist-quantified-permissions.vpr@109.15--109.49) [112997]"}
-            itemAt(Heap, this, j_9 - 1) <= elem;
+        assert {:msg "  Loop invariant 0 <= j && j <= length(this) might not be preserved. Assertion 0 <= j might not hold. (arraylist-quantified-permissions.vpr@108.15--108.42) [108920]"}
+          0 <= j;
+        assert {:msg "  Loop invariant 0 <= j && j <= length(this) might not be preserved. Assertion j <= length(this) might not hold. (arraylist-quantified-permissions.vpr@108.15--108.42) [108921]"}
+          j <= length_1(Heap, this);
+        if (j > 0) {
+          assert {:msg "  Loop invariant j > 0 ==> itemAt(this, j - 1) <= elem might not be preserved. Assertion itemAt(this, j - 1) <= elem might not hold. (arraylist-quantified-permissions.vpr@109.15--109.49) [108922]"}
+            itemAt(Heap, this, j - 1) <= elem_1;
         }
-        assert {:msg "  Loop invariant length(this) == old(length(this)) might not be preserved. Assertion length(this) == old(length(this)) might not hold. (arraylist-quantified-permissions.vpr@110.15--110.48) [112998]"}
-          length(Heap, this) == length(oldHeap, this);
+        assert {:msg "  Loop invariant length(this) == old(length(this)) might not be preserved. Assertion length(this) == old(length(this)) might not hold. (arraylist-quantified-permissions.vpr@110.15--110.48) [108923]"}
+          length_1(Heap, this) == length_1(oldHeap, this);
         if (*) {
-          if (0 <= k_13 && k_13 < length(Heap, this)) {
-            assert {:msg "  Loop invariant (forall k: Int :: { old(itemAt(this, k)) } 0 <= k && k < length(this) ==> itemAt(this, k) == old(itemAt(this, k))) might not be preserved. Assertion itemAt(this, k) == old(itemAt(this, k)) might not hold. (arraylist-quantified-permissions.vpr@111.15--111.122) [112999]"}
+          if (0 <= k_13 && k_13 < length_1(Heap, this)) {
+            assert {:msg "  Loop invariant (forall k: Int :: { old(itemAt(this, k)) } 0 <= k && k < length(this) ==> itemAt(this, k) == old(itemAt(this, k))) might not be preserved. Assertion itemAt(this, k) == old(itemAt(this, k)) might not hold. (arraylist-quantified-permissions.vpr@111.15--111.122) [108924]"}
               itemAt(Heap, this, k_13) == itemAt(oldHeap, this, k_13);
           }
           assume false;
         }
-        assume (forall k_14_1_1: int ::
-          { itemAt#frame(oldHeap[null, AList(this)], this, k_14_1_1) }
-          0 <= k_14_1_1 && k_14_1_1 < length(Heap, this) ==> itemAt(Heap, this, k_14_1_1) == itemAt(oldHeap, this, k_14_1_1)
+        assume (forall k_14_1: int ::
+          { itemAt#frame(oldHeap[null, AList(this)], this, k_14_1) }
+          0 <= k_14_1 && k_14_1 < length_1(Heap, this) ==> itemAt(Heap, this, k_14_1) == itemAt(oldHeap, this, k_14_1)
         );
         // Finish exhale
         havoc ExhaleHeap;
@@ -2278,36 +2278,36 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(j_9 < length(Heap, this) && itemAt(Heap, this, j_9) < elem);
+      assume !(j < length_1(Heap, this) && itemAt(Heap, this, j) < elem_1);
       assume state(Heap, Mask);
       perm := FullPerm;
       Mask := Mask[null, AList(this):=Mask[null, AList(this)] + perm];
       assume state(Heap, Mask);
-      assume 0 <= j_9;
+      assume 0 <= j;
       assume state(Heap, Mask);
-      assume j_9 <= length(Heap, this);
-      if (j_9 > 0) {
+      assume j <= length_1(Heap, this);
+      if (j > 0) {
         assume state(Heap, Mask);
-        assume itemAt(Heap, this, j_9 - 1) <= elem;
+        assume itemAt(Heap, this, j - 1) <= elem_1;
       }
       assume state(Heap, Mask);
-      assume length(Heap, this) == length(oldHeap, this);
+      assume length_1(Heap, this) == length_1(oldHeap, this);
       assume state(Heap, Mask);
-      assume (forall k_15_1: int ::
-        { itemAt#frame(oldHeap[null, AList(this)], this, k_15_1) }
-        0 <= k_15_1 && k_15_1 < length(Heap, this) ==> itemAt(Heap, this, k_15_1) == itemAt(oldHeap, this, k_15_1)
+      assume (forall k_15: int ::
+        { itemAt#frame(oldHeap[null, AList(this)], this, k_15) }
+        0 <= k_15 && k_15 < length_1(Heap, this) ==> itemAt(Heap, this, k_15) == itemAt(oldHeap, this, k_15)
       );
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@117.3--117.26
     assume AList#trigger(Heap, AList(this));
-    assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems]), CombineFrames(FrameFragment(Heap[this, size]), FrameFragment(AList#condqp1(Heap, this))));
+    assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems_1]), CombineFrames(FrameFragment(Heap[this, size_3]), FrameFragment(AList#condqp1(Heap, this))));
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding AList(this) might fail. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@117.3--117.26) [113002]"}
+      assert {:msg "  Unfolding AList(this) might fail. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@117.3--117.26) [108927]"}
         perm <= Mask[null, AList(this)];
     }
     Mask := Mask[null, AList(this):=Mask[null, AList(this)] - perm];
@@ -2319,46 +2319,46 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
       }
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, elems:=Mask[this, elems] + perm];
+    Mask := Mask[this, elems_1:=Mask[this, elems_1] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, size:=Mask[this, size] + perm];
+    Mask := Mask[this, size_3:=Mask[this, size_3] + perm];
     assume state(Heap, Mask);
-    assume 0 <= Heap[this, size];
-    assume Heap[this, size] <= (len_1(Heap[this, elems]): int);
-    assume 0 < (len_1(Heap[this, elems]): int);
+    assume 0 <= Heap[this, size_3];
+    assume Heap[this, size_3] <= (len(Heap[this, elems_1]): int);
+    assume 0 < (len(Heap[this, elems_1]): int);
     havoc QPMask;
-    assert {:msg "  Unfolding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@117.3--117.26) [113005]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Unfolding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@117.3--117.26) [108930]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && (0 <= i_3 && i_3 < (len_1(Heap[this, elems]): int))) && (0 <= i_3_1 && i_3_1 < (len_1(Heap[this, elems]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_3): Ref) != (loc(Heap[this, elems], i_3_1): Ref)
+      (((i_3_2 != i_3_3 && (0 <= i_3_2 && i_3_2 < (len(Heap[this, elems_1]): int))) && (0 <= i_3_3 && i_3_3 < (len(Heap[this, elems_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_3_2): Ref) != (loc(Heap[this, elems_1], i_3_3): Ref)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { (loc(Heap[this, elems], i_3): Ref) } { (loc(Heap[this, elems], i_3): Ref) }
-        (0 <= i_3 && i_3 < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm ==> qpRange11((loc(Heap[this, elems], i_3): Ref)) && invRecv11((loc(Heap[this, elems], i_3): Ref)) == i_3
+      assume (forall i_3_2: int ::
+        { (loc(Heap[this, elems_1], i_3_2): Ref) } { (loc(Heap[this, elems_1], i_3_2): Ref) }
+        (0 <= i_3_2 && i_3_2 < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm ==> qpRange11((loc(Heap[this, elems_1], i_3_2): Ref)) && invRecv11((loc(Heap[this, elems_1], i_3_2): Ref)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv11(o_4) }
-        ((0 <= invRecv11(o_4) && invRecv11(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange11(o_4) ==> (loc(Heap[this, elems], invRecv11(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv11(o_9) }
+        ((0 <= invRecv11(o_9) && invRecv11(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange11(o_9) ==> (loc(Heap[this, elems_1], invRecv11(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { (loc(Heap[this, elems], i_3): Ref) } { (loc(Heap[this, elems], i_3): Ref) }
-        0 <= i_3 && i_3 < (len_1(Heap[this, elems]): int) ==> (loc(Heap[this, elems], i_3): Ref) != null
+      assume (forall i_3_2: int ::
+        { (loc(Heap[this, elems_1], i_3_2): Ref) } { (loc(Heap[this, elems_1], i_3_2): Ref) }
+        0 <= i_3_2 && i_3_2 < (len(Heap[this, elems_1]): int) ==> (loc(Heap[this, elems_1], i_3_2): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv11(o_4) && invRecv11(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange11(o_4) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems], invRecv11(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv11(o_4) && invRecv11(o_4) < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm) && qpRange11(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv11(o_9) && invRecv11(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange11(o_9) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems_1], invRecv11(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv11(o_9) && invRecv11(o_9) < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm) && qpRange11(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -2368,11 +2368,11 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
   // -- Translating statement: if (this.size == len(this.elems)) -- arraylist-quantified-permissions.vpr@119.3--125.4
     
     // -- Check definedness of this.size == len(this.elems)
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@119.6--119.34) [113006]"}
-        HasDirectPerm(Mask, this, size);
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@119.6--119.34) [113007]"}
-        HasDirectPerm(Mask, this, elems);
-    if (Heap[this, size] == (len_1(Heap[this, elems]): int)) {
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@119.6--119.34) [108931]"}
+        HasDirectPerm(Mask, this, size_3);
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@119.6--119.34) [108932]"}
+        HasDirectPerm(Mask, this, elems_1);
+    if (Heap[this, size_3] == (len(Heap[this, elems_1]): int)) {
       
       // -- Translating statement: inhale len(a) == len(this.elems) * 2 &&
   //   (forall i: Int ::
@@ -2380,45 +2380,45 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
   //     0 <= i && i < len(a) ==> acc(loc(a, i).val, write)) -- arraylist-quantified-permissions.vpr@121.5--121.103
         
         // -- Check definedness of len(a) == len(this.elems) * 2
-          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@121.12--121.103) [113008]"}
-            HasDirectPerm(Mask, this, elems);
-        assume (len_1(a_2): int) == (len_1(Heap[this, elems]): int) * 2;
+          assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@121.12--121.103) [108933]"}
+            HasDirectPerm(Mask, this, elems_1);
+        assume (len(a_2): int) == (len(Heap[this, elems_1]): int) * 2;
         
         // -- Check definedness of (forall i: Int :: { loc(a, i) } 0 <= i && i < len(a) ==> acc(loc(a, i).val, write))
           if (*) {
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Inhale might fail. Quantified resource loc(a, i).val might not be injective. (arraylist-quantified-permissions.vpr@121.12--121.103) [113009]"}
-          (forall i_5: int, i_5_1: int ::
+        assert {:msg "  Inhale might fail. Quantified resource loc(a, i).val might not be injective. (arraylist-quantified-permissions.vpr@121.12--121.103) [108934]"}
+          (forall i_5_1: int, i_5_2: int ::
           
-          (((i_5 != i_5_1 && (0 <= i_5 && i_5 < (len_1(a_2): int))) && (0 <= i_5_1 && i_5_1 < (len_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_5): Ref) != (loc(a_2, i_5_1): Ref)
+          (((i_5_1 != i_5_2 && (0 <= i_5_1 && i_5_1 < (len(a_2): int))) && (0 <= i_5_2 && i_5_2 < (len(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_5_1): Ref) != (loc(a_2, i_5_2): Ref)
         );
         
         // -- Define Inverse Function
-          assume (forall i_5: int ::
-            { (loc(a_2, i_5): Ref) } { (loc(a_2, i_5): Ref) }
-            (0 <= i_5 && i_5 < (len_1(a_2): int)) && NoPerm < FullPerm ==> qpRange12((loc(a_2, i_5): Ref)) && invRecv12((loc(a_2, i_5): Ref)) == i_5
+          assume (forall i_5_1: int ::
+            { (loc(a_2, i_5_1): Ref) } { (loc(a_2, i_5_1): Ref) }
+            (0 <= i_5_1 && i_5_1 < (len(a_2): int)) && NoPerm < FullPerm ==> qpRange12((loc(a_2, i_5_1): Ref)) && invRecv12((loc(a_2, i_5_1): Ref)) == i_5_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv12(o_4) }
-            ((0 <= invRecv12(o_4) && invRecv12(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange12(o_4) ==> (loc(a_2, invRecv12(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv12(o_9) }
+            ((0 <= invRecv12(o_9) && invRecv12(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange12(o_9) ==> (loc(a_2, invRecv12(o_9)): Ref) == o_9
           );
         
         // -- Assume set of fields is nonNull
-          assume (forall i_5: int ::
-            { (loc(a_2, i_5): Ref) } { (loc(a_2, i_5): Ref) }
-            0 <= i_5 && i_5 < (len_1(a_2): int) ==> (loc(a_2, i_5): Ref) != null
+          assume (forall i_5_1: int ::
+            { (loc(a_2, i_5_1): Ref) } { (loc(a_2, i_5_1): Ref) }
+            0 <= i_5_1 && i_5_1 < (len(a_2): int) ==> (loc(a_2, i_5_1): Ref) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            (((0 <= invRecv12(o_4) && invRecv12(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange12(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv12(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv12(o_4) && invRecv12(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange12(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            (((0 <= invRecv12(o_9) && invRecv12(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange12(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv12(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv12(o_9) && invRecv12(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange12(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -2432,31 +2432,31 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         
         // -- Check definedness of (forall i: Int :: { loc(a, i).val } 0 <= i && i < len(this.elems) ==> loc(a, i).val == loc(this.elems, i).val)
           if (*) {
-            if (0 <= i_32) {
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@123.12--123.114) [113010]"}
-                HasDirectPerm(Mask, this, elems);
+            if (0 <= i_27) {
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@123.12--123.114) [108935]"}
+                HasDirectPerm(Mask, this, elems_1);
             }
-            if (0 <= i_32 && i_32 < (len_1(Heap[this, elems]): int)) {
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i).val (arraylist-quantified-permissions.vpr@123.12--123.114) [113011]"}
-                HasDirectPerm(Mask, (loc(a_2, i_32): Ref), val);
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@123.12--123.114) [113012]"}
-                HasDirectPerm(Mask, this, elems);
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@123.12--123.114) [113013]"}
-                HasDirectPerm(Mask, (loc(Heap[this, elems], i_32): Ref), val);
+            if (0 <= i_27 && i_27 < (len(Heap[this, elems_1]): int)) {
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i).val (arraylist-quantified-permissions.vpr@123.12--123.114) [108936]"}
+                HasDirectPerm(Mask, (loc(a_2, i_27): Ref), val);
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@123.12--123.114) [108937]"}
+                HasDirectPerm(Mask, this, elems_1);
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@123.12--123.114) [108938]"}
+                HasDirectPerm(Mask, (loc(Heap[this, elems_1], i_27): Ref), val);
             }
             assume false;
           }
         assume (forall i_7_1: int ::
           { Heap[(loc(a_2, i_7_1): Ref), val] }
-          0 <= i_7_1 && i_7_1 < (len_1(Heap[this, elems]): int) ==> Heap[(loc(a_2, i_7_1): Ref), val] == Heap[(loc(Heap[this, elems], i_7_1): Ref), val]
+          0 <= i_7_1 && i_7_1 < (len(Heap[this, elems_1]): int) ==> Heap[(loc(a_2, i_7_1): Ref), val] == Heap[(loc(Heap[this, elems_1], i_7_1): Ref), val]
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
       
       // -- Translating statement: this.elems := a -- arraylist-quantified-permissions.vpr@124.5--124.20
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@124.5--124.20) [113014]"}
-          FullPerm == Mask[this, elems];
-        Heap := Heap[this, elems:=a_2];
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@124.5--124.20) [108939]"}
+          FullPerm == Mask[this, elems_1];
+        Heap := Heap[this, elems_1:=a_2];
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -2464,9 +2464,9 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
   // -- Translating statement: t := this.size -- arraylist-quantified-permissions.vpr@127.3--127.27
     
     // -- Check definedness of this.size
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@127.3--127.27) [113015]"}
-        HasDirectPerm(Mask, this, size);
-    t_2 := Heap[this, size];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@127.3--127.27) [108940]"}
+        HasDirectPerm(Mask, this, size_3);
+    t_2 := Heap[this, size_3];
     assume state(Heap, Mask);
   
   // -- Translating statement: while (t > j) -- arraylist-quantified-permissions.vpr@130.3--141.4
@@ -2477,105 +2477,105 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := 1 / 2;
-        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113016]"}
+        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108941]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@131.15--131.91) [113017]"}
-            perm <= Mask[this, elems];
+          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@131.15--131.91) [108942]"}
+            perm <= Mask[this, elems_1];
         }
-        Mask := Mask[this, elems:=Mask[this, elems] - perm];
+        Mask := Mask[this, elems_1:=Mask[this, elems_1] - perm];
         perm := 1 / 2;
-        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113018]"}
+        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108943]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@131.15--131.91) [113019]"}
-            perm <= Mask[this, size];
+          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@131.15--131.91) [108944]"}
+            perm <= Mask[this, size_3];
         }
-        Mask := Mask[this, size:=Mask[this, size] - perm];
+        Mask := Mask[this, size_3:=Mask[this, size_3] - perm];
         perm := 1 / 2;
-        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113020]"}
+        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108945]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. There might be insufficient permission to access loc(this.elems, j).val (arraylist-quantified-permissions.vpr@131.15--131.91) [113021]"}
-            perm <= Mask[(loc(Heap[this, elems], j_9): Ref), val];
+          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. There might be insufficient permission to access loc(this.elems, j).val (arraylist-quantified-permissions.vpr@131.15--131.91) [108946]"}
+            perm <= Mask[(loc(Heap[this, elems_1], j): Ref), val];
         }
-        Mask := Mask[(loc(Heap[this, elems], j_9): Ref), val:=Mask[(loc(Heap[this, elems], j_9): Ref), val] - perm];
-        assert {:msg "  Loop invariant j <= t && t <= this.size might not hold on entry. Assertion j <= t might not hold. (arraylist-quantified-permissions.vpr@132.15--132.39) [113022]"}
-          j_9 <= t_2;
-        assert {:msg "  Loop invariant j <= t && t <= this.size might not hold on entry. Assertion t <= this.size might not hold. (arraylist-quantified-permissions.vpr@132.15--132.39) [113023]"}
-          t_2 <= Heap[this, size];
-        assert {:msg "  Loop invariant this.size == old(length(this)) might not hold on entry. Assertion this.size == old(length(this)) might not hold. (arraylist-quantified-permissions.vpr@133.15--133.45) [113024]"}
-          Heap[this, size] == length(oldHeap, this);
-        assert {:msg "  Loop invariant -1 <= j && this.size < len(this.elems) might not hold on entry. Assertion -1 <= j might not hold. (arraylist-quantified-permissions.vpr@134.15--134.53) [113025]"}
-          -1 <= j_9;
-        assert {:msg "  Loop invariant -1 <= j && this.size < len(this.elems) might not hold on entry. Assertion this.size < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@134.15--134.53) [113026]"}
-          Heap[this, size] < (len_1(Heap[this, elems]): int);
+        Mask := Mask[(loc(Heap[this, elems_1], j): Ref), val:=Mask[(loc(Heap[this, elems_1], j): Ref), val] - perm];
+        assert {:msg "  Loop invariant j <= t && t <= this.size might not hold on entry. Assertion j <= t might not hold. (arraylist-quantified-permissions.vpr@132.15--132.39) [108947]"}
+          j <= t_2;
+        assert {:msg "  Loop invariant j <= t && t <= this.size might not hold on entry. Assertion t <= this.size might not hold. (arraylist-quantified-permissions.vpr@132.15--132.39) [108948]"}
+          t_2 <= Heap[this, size_3];
+        assert {:msg "  Loop invariant this.size == old(length(this)) might not hold on entry. Assertion this.size == old(length(this)) might not hold. (arraylist-quantified-permissions.vpr@133.15--133.45) [108949]"}
+          Heap[this, size_3] == length_1(oldHeap, this);
+        assert {:msg "  Loop invariant -1 <= j && this.size < len(this.elems) might not hold on entry. Assertion -1 <= j might not hold. (arraylist-quantified-permissions.vpr@134.15--134.53) [108950]"}
+          -1 <= j;
+        assert {:msg "  Loop invariant -1 <= j && this.size < len(this.elems) might not hold on entry. Assertion this.size < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@134.15--134.53) [108951]"}
+          Heap[this, size_3] < (len(Heap[this, elems_1]): int);
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver loc(this.elems, i) is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> acc(loc(this.elems, i).val, write)) might not hold on entry. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@135.16--135.86) [113027]"}
-            (forall i_8_2: int, i_8_3: int ::
-            { neverTriggered13(i_8_2), neverTriggered13(i_8_3) }
-            (((i_8_2 != i_8_3 && (j_9 < i_8_2 && i_8_2 <= Heap[this, size])) && (j_9 < i_8_3 && i_8_3 <= Heap[this, size])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_8_2): Ref) != (loc(Heap[this, elems], i_8_3): Ref)
+          assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> acc(loc(this.elems, i).val, write)) might not hold on entry. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@135.16--135.86) [108952]"}
+            (forall i_8_1: int, i_8_2: int ::
+            { neverTriggered13(i_8_1), neverTriggered13(i_8_2) }
+            (((i_8_1 != i_8_2 && (j < i_8_1 && i_8_1 <= Heap[this, size_3])) && (j < i_8_2 && i_8_2 <= Heap[this, size_3])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_8_1): Ref) != (loc(Heap[this, elems_1], i_8_2): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> acc(loc(this.elems, i).val, write)) might not hold on entry. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@135.16--135.86) [113028]"}
-            (forall i_8_2: int ::
-            { (loc(Heap[this, elems], i_8_2): Ref) } { (loc(Heap[this, elems], i_8_2): Ref) }
-            j_9 < i_8_2 && i_8_2 <= Heap[this, size] ==> Mask[(loc(Heap[this, elems], i_8_2): Ref), val] >= FullPerm
+          assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> acc(loc(this.elems, i).val, write)) might not hold on entry. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@135.16--135.86) [108953]"}
+            (forall i_8_1: int ::
+            { (loc(Heap[this, elems_1], i_8_1): Ref) } { (loc(Heap[this, elems_1], i_8_1): Ref) }
+            j < i_8_1 && i_8_1 <= Heap[this, size_3] ==> Mask[(loc(Heap[this, elems_1], i_8_1): Ref), val] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver loc(this.elems, i)
-          assume (forall i_8_2: int ::
-            { (loc(Heap[this, elems], i_8_2): Ref) } { (loc(Heap[this, elems], i_8_2): Ref) }
-            (j_9 < i_8_2 && i_8_2 <= Heap[this, size]) && NoPerm < FullPerm ==> qpRange13((loc(Heap[this, elems], i_8_2): Ref)) && invRecv13((loc(Heap[this, elems], i_8_2): Ref)) == i_8_2
+          assume (forall i_8_1: int ::
+            { (loc(Heap[this, elems_1], i_8_1): Ref) } { (loc(Heap[this, elems_1], i_8_1): Ref) }
+            (j < i_8_1 && i_8_1 <= Heap[this, size_3]) && NoPerm < FullPerm ==> qpRange13((loc(Heap[this, elems_1], i_8_1): Ref)) && invRecv13((loc(Heap[this, elems_1], i_8_1): Ref)) == i_8_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv13(o_4) }
-            (j_9 < invRecv13(o_4) && invRecv13(o_4) <= Heap[this, size]) && (NoPerm < FullPerm && qpRange13(o_4)) ==> (loc(Heap[this, elems], invRecv13(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv13(o_9) }
+            (j < invRecv13(o_9) && invRecv13(o_9) <= Heap[this, size_3]) && (NoPerm < FullPerm && qpRange13(o_9)) ==> (loc(Heap[this, elems_1], invRecv13(o_9)): Ref) == o_9
           );
         
         // -- assume permission updates for field val
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            ((j_9 < invRecv13(o_4) && invRecv13(o_4) <= Heap[this, size]) && (NoPerm < FullPerm && qpRange13(o_4)) ==> (loc(Heap[this, elems], invRecv13(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((j_9 < invRecv13(o_4) && invRecv13(o_4) <= Heap[this, size]) && (NoPerm < FullPerm && qpRange13(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            ((j < invRecv13(o_9) && invRecv13(o_9) <= Heap[this, size_3]) && (NoPerm < FullPerm && qpRange13(o_9)) ==> (loc(Heap[this, elems_1], invRecv13(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((j < invRecv13(o_9) && invRecv13(o_9) <= Heap[this, size_3]) && (NoPerm < FullPerm && qpRange13(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         if (*) {
-          if (j_9 <= i_9_1 && i_9_1 <= Heap[this, size]) {
+          if (j <= i_9_1 && i_9_1 <= Heap[this, size_3]) {
             if (i_9_1 < t_2) {
-              assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j <= i && i <= this.size ==> i < t ==> loc(this.elems, i).val == old(itemAt(this, i))) might not hold on entry. Assertion loc(this.elems, i).val == old(itemAt(this, i)) might not hold. (arraylist-quantified-permissions.vpr@136.15--136.137) [113029]"}
-                Heap[(loc(Heap[this, elems], i_9_1): Ref), val] == itemAt(oldHeap, this, i_9_1);
+              assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j <= i && i <= this.size ==> i < t ==> loc(this.elems, i).val == old(itemAt(this, i))) might not hold on entry. Assertion loc(this.elems, i).val == old(itemAt(this, i)) might not hold. (arraylist-quantified-permissions.vpr@136.15--136.137) [108954]"}
+                Heap[(loc(Heap[this, elems_1], i_9_1): Ref), val] == itemAt(oldHeap, this, i_9_1);
             }
           }
           assume false;
         }
         assume (forall i_10_1_1: int ::
-          { (loc(Heap[this, elems], i_10_1_1): Ref) }
-          j_9 <= i_10_1_1 && i_10_1_1 <= Heap[this, size] ==> i_10_1_1 < t_2 ==> Heap[(loc(Heap[this, elems], i_10_1_1): Ref), val] == itemAt(oldHeap, this, i_10_1_1)
+          { (loc(Heap[this, elems_1], i_10_1_1): Ref) }
+          j <= i_10_1_1 && i_10_1_1 <= Heap[this, size_3] ==> i_10_1_1 < t_2 ==> Heap[(loc(Heap[this, elems_1], i_10_1_1): Ref), val] == itemAt(oldHeap, this, i_10_1_1)
         );
         if (*) {
-          if (j_9 < i_11_1 && i_11_1 <= Heap[this, size]) {
+          if (j < i_11_1 && i_11_1 <= Heap[this, size_3]) {
             if (i_11_1 > t_2) {
-              assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> i > t ==> loc(this.elems, i).val == old(itemAt(this, i - 1))) might not hold on entry. Assertion loc(this.elems, i).val == old(itemAt(this, i - 1)) might not hold. (arraylist-quantified-permissions.vpr@137.15--137.138) [113030]"}
-                Heap[(loc(Heap[this, elems], i_11_1): Ref), val] == itemAt(oldHeap, this, i_11_1 - 1);
+              assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> i > t ==> loc(this.elems, i).val == old(itemAt(this, i - 1))) might not hold on entry. Assertion loc(this.elems, i).val == old(itemAt(this, i - 1)) might not hold. (arraylist-quantified-permissions.vpr@137.15--137.138) [108955]"}
+                Heap[(loc(Heap[this, elems_1], i_11_1): Ref), val] == itemAt(oldHeap, this, i_11_1 - 1);
             }
           }
           assume false;
         }
         assume (forall i_12_1_1: int ::
-          { (loc(Heap[this, elems], i_12_1_1): Ref) }
-          j_9 < i_12_1_1 && i_12_1_1 <= Heap[this, size] ==> i_12_1_1 > t_2 ==> Heap[(loc(Heap[this, elems], i_12_1_1): Ref), val] == itemAt(oldHeap, this, i_12_1_1 - 1)
+          { (loc(Heap[this, elems_1], i_12_1_1): Ref) }
+          j < i_12_1_1 && i_12_1_1 <= Heap[this, size_3] ==> i_12_1_1 > t_2 ==> Heap[(loc(Heap[this, elems_1], i_12_1_1): Ref), val] == itemAt(oldHeap, this, i_12_1_1 - 1)
         );
         // Finish exhale
         havoc ExhaleHeap;
@@ -2588,106 +2588,106 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
     // -- Check definedness of invariant
       if (*) {
         perm := 1 / 2;
-        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113031]"}
+        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108956]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> this != null;
-        Mask := Mask[this, elems:=Mask[this, elems] + perm];
+        Mask := Mask[this, elems_1:=Mask[this, elems_1] + perm];
         assume state(Heap, Mask);
         perm := 1 / 2;
-        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113032]"}
+        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108957]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> this != null;
-        Mask := Mask[this, size:=Mask[this, size] + perm];
+        Mask := Mask[this, size_3:=Mask[this, size_3] + perm];
         assume state(Heap, Mask);
         
         // -- Check definedness of acc(loc(this.elems, j).val, 1 / 2)
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@131.15--131.91) [113033]"}
-            HasDirectPerm(Mask, this, elems);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@131.15--131.91) [108958]"}
+            HasDirectPerm(Mask, this, elems_1);
         perm := 1 / 2;
-        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113034]"}
+        assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108959]"}
           perm >= NoPerm;
-        assume perm > NoPerm ==> (loc(Heap[this, elems], j_9): Ref) != null;
-        Mask := Mask[(loc(Heap[this, elems], j_9): Ref), val:=Mask[(loc(Heap[this, elems], j_9): Ref), val] + perm];
+        assume perm > NoPerm ==> (loc(Heap[this, elems_1], j): Ref) != null;
+        Mask := Mask[(loc(Heap[this, elems_1], j): Ref), val:=Mask[(loc(Heap[this, elems_1], j): Ref), val] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
-        assume j_9 <= t_2;
+        assume j <= t_2;
         
         // -- Check definedness of t <= this.size
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@132.15--132.39) [113035]"}
-            HasDirectPerm(Mask, this, size);
-        assume t_2 <= Heap[this, size];
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@132.15--132.39) [108960]"}
+            HasDirectPerm(Mask, this, size_3);
+        assume t_2 <= Heap[this, size_3];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         
         // -- Check definedness of this.size == old(length(this))
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@133.15--133.45) [113036]"}
-            HasDirectPerm(Mask, this, size);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@133.15--133.45) [108961]"}
+            HasDirectPerm(Mask, this, size_3);
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@133.32--133.44) [113037]"}
+            assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@133.32--133.44) [108962]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
             // Finish exhale
             // Stop execution
             assume false;
           }
-        assume Heap[this, size] == length(oldHeap, this);
+        assume Heap[this, size_3] == length_1(oldHeap, this);
         assume state(Heap, Mask);
-        assume -1 <= j_9;
+        assume -1 <= j;
         
         // -- Check definedness of this.size < len(this.elems)
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@134.15--134.53) [113038]"}
-            HasDirectPerm(Mask, this, size);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@134.15--134.53) [113039]"}
-            HasDirectPerm(Mask, this, elems);
-        assume Heap[this, size] < (len_1(Heap[this, elems]): int);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@134.15--134.53) [108963]"}
+            HasDirectPerm(Mask, this, size_3);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@134.15--134.53) [108964]"}
+            HasDirectPerm(Mask, this, elems_1);
+        assume Heap[this, size_3] < (len(Heap[this, elems_1]): int);
         assume state(Heap, Mask);
         
         // -- Check definedness of (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> acc(loc(this.elems, i).val, write))
           if (*) {
-            if (j_9 < i_33) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@135.16--135.86) [113040]"}
-                HasDirectPerm(Mask, this, size);
+            if (j < i_16) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@135.16--135.86) [108965]"}
+                HasDirectPerm(Mask, this, size_3);
             }
-            if (j_9 < i_33 && i_33 <= Heap[this, size]) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@135.16--135.86) [113041]"}
-                HasDirectPerm(Mask, this, elems);
+            if (j < i_16 && i_16 <= Heap[this, size_3]) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@135.16--135.86) [108966]"}
+                HasDirectPerm(Mask, this, elems_1);
             }
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Contract might not be well-formed. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@135.16--135.86) [113042]"}
+        assert {:msg "  Contract might not be well-formed. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@135.16--135.86) [108967]"}
           (forall i_14_1: int, i_14_2: int ::
           
-          (((i_14_1 != i_14_2 && (j_9 < i_14_1 && i_14_1 <= Heap[this, size])) && (j_9 < i_14_2 && i_14_2 <= Heap[this, size])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_14_1): Ref) != (loc(Heap[this, elems], i_14_2): Ref)
+          (((i_14_1 != i_14_2 && (j < i_14_1 && i_14_1 <= Heap[this, size_3])) && (j < i_14_2 && i_14_2 <= Heap[this, size_3])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_14_1): Ref) != (loc(Heap[this, elems_1], i_14_2): Ref)
         );
         
         // -- Define Inverse Function
           assume (forall i_14_1: int ::
-            { (loc(Heap[this, elems], i_14_1): Ref) } { (loc(Heap[this, elems], i_14_1): Ref) }
-            (j_9 < i_14_1 && i_14_1 <= Heap[this, size]) && NoPerm < FullPerm ==> qpRange14((loc(Heap[this, elems], i_14_1): Ref)) && invRecv14((loc(Heap[this, elems], i_14_1): Ref)) == i_14_1
+            { (loc(Heap[this, elems_1], i_14_1): Ref) } { (loc(Heap[this, elems_1], i_14_1): Ref) }
+            (j < i_14_1 && i_14_1 <= Heap[this, size_3]) && NoPerm < FullPerm ==> qpRange14((loc(Heap[this, elems_1], i_14_1): Ref)) && invRecv14((loc(Heap[this, elems_1], i_14_1): Ref)) == i_14_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv14(o_4) }
-            ((j_9 < invRecv14(o_4) && invRecv14(o_4) <= Heap[this, size]) && NoPerm < FullPerm) && qpRange14(o_4) ==> (loc(Heap[this, elems], invRecv14(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv14(o_9) }
+            ((j < invRecv14(o_9) && invRecv14(o_9) <= Heap[this, size_3]) && NoPerm < FullPerm) && qpRange14(o_9) ==> (loc(Heap[this, elems_1], invRecv14(o_9)): Ref) == o_9
           );
         
         // -- Assume set of fields is nonNull
           assume (forall i_14_1: int ::
-            { (loc(Heap[this, elems], i_14_1): Ref) } { (loc(Heap[this, elems], i_14_1): Ref) }
-            j_9 < i_14_1 && i_14_1 <= Heap[this, size] ==> (loc(Heap[this, elems], i_14_1): Ref) != null
+            { (loc(Heap[this, elems_1], i_14_1): Ref) } { (loc(Heap[this, elems_1], i_14_1): Ref) }
+            j < i_14_1 && i_14_1 <= Heap[this, size_3] ==> (loc(Heap[this, elems_1], i_14_1): Ref) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            (((j_9 < invRecv14(o_4) && invRecv14(o_4) <= Heap[this, size]) && NoPerm < FullPerm) && qpRange14(o_4) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems], invRecv14(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((j_9 < invRecv14(o_4) && invRecv14(o_4) <= Heap[this, size]) && NoPerm < FullPerm) && qpRange14(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            (((j < invRecv14(o_9) && invRecv14(o_9) <= Heap[this, size_3]) && NoPerm < FullPerm) && qpRange14(o_9) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems_1], invRecv14(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((j < invRecv14(o_9) && invRecv14(o_9) <= Heap[this, size_3]) && NoPerm < FullPerm) && qpRange14(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -2696,27 +2696,27 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         
         // -- Check definedness of (forall i: Int :: { loc(this.elems, i) } j <= i && i <= this.size ==> i < t ==> loc(this.elems, i).val == old(itemAt(this, i)))
           if (*) {
-            if (j_9 <= i_34) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@136.15--136.137) [113043]"}
-                HasDirectPerm(Mask, this, size);
+            if (j <= i_42) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@136.15--136.137) [108968]"}
+                HasDirectPerm(Mask, this, size_3);
             }
-            if (j_9 <= i_34 && i_34 <= Heap[this, size]) {
-              if (i_34 < t_2) {
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@136.15--136.137) [113044]"}
-                  HasDirectPerm(Mask, this, elems);
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@136.15--136.137) [113045]"}
-                  HasDirectPerm(Mask, (loc(Heap[this, elems], i_34): Ref), val);
+            if (j <= i_42 && i_42 <= Heap[this, size_3]) {
+              if (i_42 < t_2) {
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@136.15--136.137) [108969]"}
+                  HasDirectPerm(Mask, this, elems_1);
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@136.15--136.137) [108970]"}
+                  HasDirectPerm(Mask, (loc(Heap[this, elems_1], i_42): Ref), val);
                 if (*) {
                   // Exhale precondition of function application
                   ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@136.121--136.135) [113046]"}
+                  assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@136.121--136.135) [108971]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
-                  assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i might not hold. (arraylist-quantified-permissions.vpr@136.121--136.135) [113047]"}
-                    0 <= i_34;
-                  assert {:msg "  Precondition of function itemAt might not hold. Assertion i < length(this) might not hold. (arraylist-quantified-permissions.vpr@136.121--136.135) [113048]"}
-                    i_34 < length(oldHeap, this);
+                  assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i might not hold. (arraylist-quantified-permissions.vpr@136.121--136.135) [108972]"}
+                    0 <= i_42;
+                  assert {:msg "  Precondition of function itemAt might not hold. Assertion i < length(this) might not hold. (arraylist-quantified-permissions.vpr@136.121--136.135) [108973]"}
+                    i_42 < length_1(oldHeap, this);
                   // Finish exhale
                   // Stop execution
                   assume false;
@@ -2726,35 +2726,35 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             assume false;
           }
         assume (forall i_16_1: int ::
-          { (loc(Heap[this, elems], i_16_1): Ref) }
-          j_9 <= i_16_1 && i_16_1 <= Heap[this, size] ==> i_16_1 < t_2 ==> Heap[(loc(Heap[this, elems], i_16_1): Ref), val] == itemAt(oldHeap, this, i_16_1)
+          { (loc(Heap[this, elems_1], i_16_1): Ref) }
+          j <= i_16_1 && i_16_1 <= Heap[this, size_3] ==> i_16_1 < t_2 ==> Heap[(loc(Heap[this, elems_1], i_16_1): Ref), val] == itemAt(oldHeap, this, i_16_1)
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         
         // -- Check definedness of (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> i > t ==> loc(this.elems, i).val == old(itemAt(this, i - 1)))
           if (*) {
-            if (j_9 < i_35) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@137.15--137.138) [113049]"}
-                HasDirectPerm(Mask, this, size);
+            if (j < i_51) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@137.15--137.138) [108974]"}
+                HasDirectPerm(Mask, this, size_3);
             }
-            if (j_9 < i_35 && i_35 <= Heap[this, size]) {
-              if (i_35 > t_2) {
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@137.15--137.138) [113050]"}
-                  HasDirectPerm(Mask, this, elems);
-                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@137.15--137.138) [113051]"}
-                  HasDirectPerm(Mask, (loc(Heap[this, elems], i_35): Ref), val);
+            if (j < i_51 && i_51 <= Heap[this, size_3]) {
+              if (i_51 > t_2) {
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@137.15--137.138) [108975]"}
+                  HasDirectPerm(Mask, this, elems_1);
+                assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@137.15--137.138) [108976]"}
+                  HasDirectPerm(Mask, (loc(Heap[this, elems_1], i_51): Ref), val);
                 if (*) {
                   // Exhale precondition of function application
                   ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@137.120--137.136) [113052]"}
+                  assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@137.120--137.136) [108977]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
-                  assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i - 1 might not hold. (arraylist-quantified-permissions.vpr@137.120--137.136) [113053]"}
-                    0 <= i_35 - 1;
-                  assert {:msg "  Precondition of function itemAt might not hold. Assertion i - 1 < length(this) might not hold. (arraylist-quantified-permissions.vpr@137.120--137.136) [113054]"}
-                    i_35 - 1 < length(oldHeap, this);
+                  assert {:msg "  Precondition of function itemAt might not hold. Assertion 0 <= i - 1 might not hold. (arraylist-quantified-permissions.vpr@137.120--137.136) [108978]"}
+                    0 <= i_51 - 1;
+                  assert {:msg "  Precondition of function itemAt might not hold. Assertion i - 1 < length(this) might not hold. (arraylist-quantified-permissions.vpr@137.120--137.136) [108979]"}
+                    i_51 - 1 < length_1(oldHeap, this);
                   // Finish exhale
                   // Stop execution
                   assume false;
@@ -2764,8 +2764,8 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
             assume false;
           }
         assume (forall i_18_1: int ::
-          { (loc(Heap[this, elems], i_18_1): Ref) }
-          j_9 < i_18_1 && i_18_1 <= Heap[this, size] ==> i_18_1 > t_2 ==> Heap[(loc(Heap[this, elems], i_18_1): Ref), val] == itemAt(oldHeap, this, i_18_1 - 1)
+          { (loc(Heap[this, elems_1], i_18_1): Ref) }
+          j < i_18_1 && i_18_1 <= Heap[this, size_3] ==> i_18_1 > t_2 ==> Heap[(loc(Heap[this, elems_1], i_18_1): Ref), val] == itemAt(oldHeap, this, i_18_1 - 1)
         );
         assume state(Heap, Mask);
         assume false;
@@ -2780,76 +2780,76 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         assume state(Heap, Mask);
         // Inhale invariant
         perm := 1 / 2;
-        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113055]"}
+        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108980]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> this != null;
-        Mask := Mask[this, elems:=Mask[this, elems] + perm];
+        Mask := Mask[this, elems_1:=Mask[this, elems_1] + perm];
         assume state(Heap, Mask);
         perm := 1 / 2;
-        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113056]"}
+        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108981]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> this != null;
-        Mask := Mask[this, size:=Mask[this, size] + perm];
+        Mask := Mask[this, size_3:=Mask[this, size_3] + perm];
         assume state(Heap, Mask);
         perm := 1 / 2;
-        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113057]"}
+        assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108982]"}
           perm >= NoPerm;
-        assume perm > NoPerm ==> (loc(Heap[this, elems], j_9): Ref) != null;
-        Mask := Mask[(loc(Heap[this, elems], j_9): Ref), val:=Mask[(loc(Heap[this, elems], j_9): Ref), val] + perm];
+        assume perm > NoPerm ==> (loc(Heap[this, elems_1], j): Ref) != null;
+        Mask := Mask[(loc(Heap[this, elems_1], j): Ref), val:=Mask[(loc(Heap[this, elems_1], j): Ref), val] + perm];
         assume state(Heap, Mask);
-        assume j_9 <= t_2;
-        assume t_2 <= Heap[this, size];
+        assume j <= t_2;
+        assume t_2 <= Heap[this, size_3];
         assume state(Heap, Mask);
-        assume Heap[this, size] == length(oldHeap, this);
-        assume -1 <= j_9;
-        assume Heap[this, size] < (len_1(Heap[this, elems]): int);
+        assume Heap[this, size_3] == length_1(oldHeap, this);
+        assume -1 <= j;
+        assume Heap[this, size_3] < (len(Heap[this, elems_1]): int);
         havoc QPMask;
-        assert {:msg "  While statement might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@135.16--135.86) [113058]"}
-          (forall i_19: int, i_19_1: int ::
+        assert {:msg "  While statement might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@135.16--135.86) [108983]"}
+          (forall i_19_1: int, i_19_2: int ::
           
-          (((i_19 != i_19_1 && (j_9 < i_19 && i_19 <= Heap[this, size])) && (j_9 < i_19_1 && i_19_1 <= Heap[this, size])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_19): Ref) != (loc(Heap[this, elems], i_19_1): Ref)
+          (((i_19_1 != i_19_2 && (j < i_19_1 && i_19_1 <= Heap[this, size_3])) && (j < i_19_2 && i_19_2 <= Heap[this, size_3])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_19_1): Ref) != (loc(Heap[this, elems_1], i_19_2): Ref)
         );
         
         // -- Define Inverse Function
-          assume (forall i_19: int ::
-            { (loc(Heap[this, elems], i_19): Ref) } { (loc(Heap[this, elems], i_19): Ref) }
-            (j_9 < i_19 && i_19 <= Heap[this, size]) && NoPerm < FullPerm ==> qpRange15((loc(Heap[this, elems], i_19): Ref)) && invRecv15((loc(Heap[this, elems], i_19): Ref)) == i_19
+          assume (forall i_19_1: int ::
+            { (loc(Heap[this, elems_1], i_19_1): Ref) } { (loc(Heap[this, elems_1], i_19_1): Ref) }
+            (j < i_19_1 && i_19_1 <= Heap[this, size_3]) && NoPerm < FullPerm ==> qpRange15((loc(Heap[this, elems_1], i_19_1): Ref)) && invRecv15((loc(Heap[this, elems_1], i_19_1): Ref)) == i_19_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv15(o_4) }
-            ((j_9 < invRecv15(o_4) && invRecv15(o_4) <= Heap[this, size]) && NoPerm < FullPerm) && qpRange15(o_4) ==> (loc(Heap[this, elems], invRecv15(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv15(o_9) }
+            ((j < invRecv15(o_9) && invRecv15(o_9) <= Heap[this, size_3]) && NoPerm < FullPerm) && qpRange15(o_9) ==> (loc(Heap[this, elems_1], invRecv15(o_9)): Ref) == o_9
           );
         
         // -- Assume set of fields is nonNull
-          assume (forall i_19: int ::
-            { (loc(Heap[this, elems], i_19): Ref) } { (loc(Heap[this, elems], i_19): Ref) }
-            j_9 < i_19 && i_19 <= Heap[this, size] ==> (loc(Heap[this, elems], i_19): Ref) != null
+          assume (forall i_19_1: int ::
+            { (loc(Heap[this, elems_1], i_19_1): Ref) } { (loc(Heap[this, elems_1], i_19_1): Ref) }
+            j < i_19_1 && i_19_1 <= Heap[this, size_3] ==> (loc(Heap[this, elems_1], i_19_1): Ref) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            (((j_9 < invRecv15(o_4) && invRecv15(o_4) <= Heap[this, size]) && NoPerm < FullPerm) && qpRange15(o_4) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems], invRecv15(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((j_9 < invRecv15(o_4) && invRecv15(o_4) <= Heap[this, size]) && NoPerm < FullPerm) && qpRange15(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            (((j < invRecv15(o_9) && invRecv15(o_9) <= Heap[this, size_3]) && NoPerm < FullPerm) && qpRange15(o_9) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems_1], invRecv15(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((j < invRecv15(o_9) && invRecv15(o_9) <= Heap[this, size_3]) && NoPerm < FullPerm) && qpRange15(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
-        assume (forall i_20_1: int ::
-          { (loc(Heap[this, elems], i_20_1): Ref) }
-          j_9 <= i_20_1 && i_20_1 <= Heap[this, size] ==> i_20_1 < t_2 ==> Heap[(loc(Heap[this, elems], i_20_1): Ref), val] == itemAt(oldHeap, this, i_20_1)
+        assume (forall i_20_2: int ::
+          { (loc(Heap[this, elems_1], i_20_2): Ref) }
+          j <= i_20_2 && i_20_2 <= Heap[this, size_3] ==> i_20_2 < t_2 ==> Heap[(loc(Heap[this, elems_1], i_20_2): Ref), val] == itemAt(oldHeap, this, i_20_2)
         );
         assume state(Heap, Mask);
-        assume (forall i_21: int ::
-          { (loc(Heap[this, elems], i_21): Ref) }
-          j_9 < i_21 && i_21 <= Heap[this, size] ==> i_21 > t_2 ==> Heap[(loc(Heap[this, elems], i_21): Ref), val] == itemAt(oldHeap, this, i_21 - 1)
+        assume (forall i_21_1: int ::
+          { (loc(Heap[this, elems_1], i_21_1): Ref) }
+          j < i_21_1 && i_21_1 <= Heap[this, size_3] ==> i_21_1 > t_2 ==> Heap[(loc(Heap[this, elems_1], i_21_1): Ref), val] == itemAt(oldHeap, this, i_21_1 - 1)
         );
         assume state(Heap, Mask);
         // Check and assume guard
-        assume t_2 > j_9;
+        assume t_2 > j;
         assume state(Heap, Mask);
         
         // -- Translate loop body
@@ -2857,17 +2857,17 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
           // -- Translating statement: loc(this.elems, t).val := loc(this.elems, t - 1).val -- arraylist-quantified-permissions.vpr@139.5--139.53
             
             // -- Check definedness of loc(this.elems, t)
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@139.5--139.53) [113059]"}
-                HasDirectPerm(Mask, this, elems);
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@139.5--139.53) [108984]"}
+                HasDirectPerm(Mask, this, elems_1);
             
             // -- Check definedness of loc(this.elems, t - 1).val
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@139.5--139.53) [113060]"}
-                HasDirectPerm(Mask, this, elems);
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(this.elems, t - 1).val (arraylist-quantified-permissions.vpr@139.5--139.53) [113061]"}
-                HasDirectPerm(Mask, (loc(Heap[this, elems], t_2 - 1): Ref), val);
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(this.elems, t).val (arraylist-quantified-permissions.vpr@139.5--139.53) [113062]"}
-              FullPerm == Mask[(loc(Heap[this, elems], t_2): Ref), val];
-            Heap := Heap[(loc(Heap[this, elems], t_2): Ref), val:=Heap[(loc(Heap[this, elems], t_2 - 1): Ref), val]];
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@139.5--139.53) [108985]"}
+                HasDirectPerm(Mask, this, elems_1);
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(this.elems, t - 1).val (arraylist-quantified-permissions.vpr@139.5--139.53) [108986]"}
+                HasDirectPerm(Mask, (loc(Heap[this, elems_1], t_2 - 1): Ref), val);
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(this.elems, t).val (arraylist-quantified-permissions.vpr@139.5--139.53) [108987]"}
+              FullPerm == Mask[(loc(Heap[this, elems_1], t_2): Ref), val];
+            Heap := Heap[(loc(Heap[this, elems_1], t_2): Ref), val:=Heap[(loc(Heap[this, elems_1], t_2 - 1): Ref), val]];
             assume state(Heap, Mask);
           
           // -- Translating statement: t := t - 1 -- arraylist-quantified-permissions.vpr@140.5--140.15
@@ -2877,105 +2877,105 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := 1 / 2;
-        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113063]"}
+        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108988]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@131.15--131.91) [113064]"}
-            perm <= Mask[this, elems];
+          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@131.15--131.91) [108989]"}
+            perm <= Mask[this, elems_1];
         }
-        Mask := Mask[this, elems:=Mask[this, elems] - perm];
+        Mask := Mask[this, elems_1:=Mask[this, elems_1] - perm];
         perm := 1 / 2;
-        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113065]"}
+        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108990]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@131.15--131.91) [113066]"}
-            perm <= Mask[this, size];
+          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@131.15--131.91) [108991]"}
+            perm <= Mask[this, size_3];
         }
-        Mask := Mask[this, size:=Mask[this, size] - perm];
+        Mask := Mask[this, size_3:=Mask[this, size_3] - perm];
         perm := 1 / 2;
-        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113067]"}
+        assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108992]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. There might be insufficient permission to access loc(this.elems, j).val (arraylist-quantified-permissions.vpr@131.15--131.91) [113068]"}
-            perm <= Mask[(loc(Heap[this, elems], j_9): Ref), val];
+          assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. There might be insufficient permission to access loc(this.elems, j).val (arraylist-quantified-permissions.vpr@131.15--131.91) [108993]"}
+            perm <= Mask[(loc(Heap[this, elems_1], j): Ref), val];
         }
-        Mask := Mask[(loc(Heap[this, elems], j_9): Ref), val:=Mask[(loc(Heap[this, elems], j_9): Ref), val] - perm];
-        assert {:msg "  Loop invariant j <= t && t <= this.size might not be preserved. Assertion j <= t might not hold. (arraylist-quantified-permissions.vpr@132.15--132.39) [113069]"}
-          j_9 <= t_2;
-        assert {:msg "  Loop invariant j <= t && t <= this.size might not be preserved. Assertion t <= this.size might not hold. (arraylist-quantified-permissions.vpr@132.15--132.39) [113070]"}
-          t_2 <= Heap[this, size];
-        assert {:msg "  Loop invariant this.size == old(length(this)) might not be preserved. Assertion this.size == old(length(this)) might not hold. (arraylist-quantified-permissions.vpr@133.15--133.45) [113071]"}
-          Heap[this, size] == length(oldHeap, this);
-        assert {:msg "  Loop invariant -1 <= j && this.size < len(this.elems) might not be preserved. Assertion -1 <= j might not hold. (arraylist-quantified-permissions.vpr@134.15--134.53) [113072]"}
-          -1 <= j_9;
-        assert {:msg "  Loop invariant -1 <= j && this.size < len(this.elems) might not be preserved. Assertion this.size < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@134.15--134.53) [113073]"}
-          Heap[this, size] < (len_1(Heap[this, elems]): int);
+        Mask := Mask[(loc(Heap[this, elems_1], j): Ref), val:=Mask[(loc(Heap[this, elems_1], j): Ref), val] - perm];
+        assert {:msg "  Loop invariant j <= t && t <= this.size might not be preserved. Assertion j <= t might not hold. (arraylist-quantified-permissions.vpr@132.15--132.39) [108994]"}
+          j <= t_2;
+        assert {:msg "  Loop invariant j <= t && t <= this.size might not be preserved. Assertion t <= this.size might not hold. (arraylist-quantified-permissions.vpr@132.15--132.39) [108995]"}
+          t_2 <= Heap[this, size_3];
+        assert {:msg "  Loop invariant this.size == old(length(this)) might not be preserved. Assertion this.size == old(length(this)) might not hold. (arraylist-quantified-permissions.vpr@133.15--133.45) [108996]"}
+          Heap[this, size_3] == length_1(oldHeap, this);
+        assert {:msg "  Loop invariant -1 <= j && this.size < len(this.elems) might not be preserved. Assertion -1 <= j might not hold. (arraylist-quantified-permissions.vpr@134.15--134.53) [108997]"}
+          -1 <= j;
+        assert {:msg "  Loop invariant -1 <= j && this.size < len(this.elems) might not be preserved. Assertion this.size < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@134.15--134.53) [108998]"}
+          Heap[this, size_3] < (len(Heap[this, elems_1]): int);
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver loc(this.elems, i) is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> acc(loc(this.elems, i).val, write)) might not be preserved. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@135.16--135.86) [113074]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> acc(loc(this.elems, i).val, write)) might not be preserved. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@135.16--135.86) [108999]"}
             (forall i_22_1: int, i_22_2: int ::
             { neverTriggered16(i_22_1), neverTriggered16(i_22_2) }
-            (((i_22_1 != i_22_2 && (j_9 < i_22_1 && i_22_1 <= Heap[this, size])) && (j_9 < i_22_2 && i_22_2 <= Heap[this, size])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_22_1): Ref) != (loc(Heap[this, elems], i_22_2): Ref)
+            (((i_22_1 != i_22_2 && (j < i_22_1 && i_22_1 <= Heap[this, size_3])) && (j < i_22_2 && i_22_2 <= Heap[this, size_3])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_22_1): Ref) != (loc(Heap[this, elems_1], i_22_2): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> acc(loc(this.elems, i).val, write)) might not be preserved. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@135.16--135.86) [113075]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> acc(loc(this.elems, i).val, write)) might not be preserved. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@135.16--135.86) [109000]"}
             (forall i_22_1: int ::
-            { (loc(Heap[this, elems], i_22_1): Ref) } { (loc(Heap[this, elems], i_22_1): Ref) }
-            j_9 < i_22_1 && i_22_1 <= Heap[this, size] ==> Mask[(loc(Heap[this, elems], i_22_1): Ref), val] >= FullPerm
+            { (loc(Heap[this, elems_1], i_22_1): Ref) } { (loc(Heap[this, elems_1], i_22_1): Ref) }
+            j < i_22_1 && i_22_1 <= Heap[this, size_3] ==> Mask[(loc(Heap[this, elems_1], i_22_1): Ref), val] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver loc(this.elems, i)
           assume (forall i_22_1: int ::
-            { (loc(Heap[this, elems], i_22_1): Ref) } { (loc(Heap[this, elems], i_22_1): Ref) }
-            (j_9 < i_22_1 && i_22_1 <= Heap[this, size]) && NoPerm < FullPerm ==> qpRange16((loc(Heap[this, elems], i_22_1): Ref)) && invRecv16((loc(Heap[this, elems], i_22_1): Ref)) == i_22_1
+            { (loc(Heap[this, elems_1], i_22_1): Ref) } { (loc(Heap[this, elems_1], i_22_1): Ref) }
+            (j < i_22_1 && i_22_1 <= Heap[this, size_3]) && NoPerm < FullPerm ==> qpRange16((loc(Heap[this, elems_1], i_22_1): Ref)) && invRecv16((loc(Heap[this, elems_1], i_22_1): Ref)) == i_22_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv16(o_4) }
-            (j_9 < invRecv16(o_4) && invRecv16(o_4) <= Heap[this, size]) && (NoPerm < FullPerm && qpRange16(o_4)) ==> (loc(Heap[this, elems], invRecv16(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv16(o_9) }
+            (j < invRecv16(o_9) && invRecv16(o_9) <= Heap[this, size_3]) && (NoPerm < FullPerm && qpRange16(o_9)) ==> (loc(Heap[this, elems_1], invRecv16(o_9)): Ref) == o_9
           );
         
         // -- assume permission updates for field val
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            ((j_9 < invRecv16(o_4) && invRecv16(o_4) <= Heap[this, size]) && (NoPerm < FullPerm && qpRange16(o_4)) ==> (loc(Heap[this, elems], invRecv16(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((j_9 < invRecv16(o_4) && invRecv16(o_4) <= Heap[this, size]) && (NoPerm < FullPerm && qpRange16(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            ((j < invRecv16(o_9) && invRecv16(o_9) <= Heap[this, size_3]) && (NoPerm < FullPerm && qpRange16(o_9)) ==> (loc(Heap[this, elems_1], invRecv16(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((j < invRecv16(o_9) && invRecv16(o_9) <= Heap[this, size_3]) && (NoPerm < FullPerm && qpRange16(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         if (*) {
-          if (j_9 <= i_23 && i_23 <= Heap[this, size]) {
-            if (i_23 < t_2) {
-              assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j <= i && i <= this.size ==> i < t ==> loc(this.elems, i).val == old(itemAt(this, i))) might not be preserved. Assertion loc(this.elems, i).val == old(itemAt(this, i)) might not hold. (arraylist-quantified-permissions.vpr@136.15--136.137) [113076]"}
-                Heap[(loc(Heap[this, elems], i_23): Ref), val] == itemAt(oldHeap, this, i_23);
+          if (j <= i_23_1 && i_23_1 <= Heap[this, size_3]) {
+            if (i_23_1 < t_2) {
+              assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j <= i && i <= this.size ==> i < t ==> loc(this.elems, i).val == old(itemAt(this, i))) might not be preserved. Assertion loc(this.elems, i).val == old(itemAt(this, i)) might not hold. (arraylist-quantified-permissions.vpr@136.15--136.137) [109001]"}
+                Heap[(loc(Heap[this, elems_1], i_23_1): Ref), val] == itemAt(oldHeap, this, i_23_1);
             }
           }
           assume false;
         }
         assume (forall i_24_1_1: int ::
-          { (loc(Heap[this, elems], i_24_1_1): Ref) }
-          j_9 <= i_24_1_1 && i_24_1_1 <= Heap[this, size] ==> i_24_1_1 < t_2 ==> Heap[(loc(Heap[this, elems], i_24_1_1): Ref), val] == itemAt(oldHeap, this, i_24_1_1)
+          { (loc(Heap[this, elems_1], i_24_1_1): Ref) }
+          j <= i_24_1_1 && i_24_1_1 <= Heap[this, size_3] ==> i_24_1_1 < t_2 ==> Heap[(loc(Heap[this, elems_1], i_24_1_1): Ref), val] == itemAt(oldHeap, this, i_24_1_1)
         );
         if (*) {
-          if (j_9 < i_25 && i_25 <= Heap[this, size]) {
-            if (i_25 > t_2) {
-              assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> i > t ==> loc(this.elems, i).val == old(itemAt(this, i - 1))) might not be preserved. Assertion loc(this.elems, i).val == old(itemAt(this, i - 1)) might not hold. (arraylist-quantified-permissions.vpr@137.15--137.138) [113077]"}
-                Heap[(loc(Heap[this, elems], i_25): Ref), val] == itemAt(oldHeap, this, i_25 - 1);
+          if (j < i_25_1 && i_25_1 <= Heap[this, size_3]) {
+            if (i_25_1 > t_2) {
+              assert {:msg "  Loop invariant (forall i: Int :: { loc(this.elems, i) } j < i && i <= this.size ==> i > t ==> loc(this.elems, i).val == old(itemAt(this, i - 1))) might not be preserved. Assertion loc(this.elems, i).val == old(itemAt(this, i - 1)) might not hold. (arraylist-quantified-permissions.vpr@137.15--137.138) [109002]"}
+                Heap[(loc(Heap[this, elems_1], i_25_1): Ref), val] == itemAt(oldHeap, this, i_25_1 - 1);
             }
           }
           assume false;
         }
         assume (forall i_26_1_1: int ::
-          { (loc(Heap[this, elems], i_26_1_1): Ref) }
-          j_9 < i_26_1_1 && i_26_1_1 <= Heap[this, size] ==> i_26_1_1 > t_2 ==> Heap[(loc(Heap[this, elems], i_26_1_1): Ref), val] == itemAt(oldHeap, this, i_26_1_1 - 1)
+          { (loc(Heap[this, elems_1], i_26_1_1): Ref) }
+          j < i_26_1_1 && i_26_1_1 <= Heap[this, size_3] ==> i_26_1_1 > t_2 ==> Heap[(loc(Heap[this, elems_1], i_26_1_1): Ref), val] == itemAt(oldHeap, this, i_26_1_1 - 1)
         );
         // Finish exhale
         havoc ExhaleHeap;
@@ -2986,75 +2986,75 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(t_2 > j_9);
+      assume !(t_2 > j);
       assume state(Heap, Mask);
       perm := 1 / 2;
-      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113078]"}
+      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [109003]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> this != null;
-      Mask := Mask[this, elems:=Mask[this, elems] + perm];
+      Mask := Mask[this, elems_1:=Mask[this, elems_1] + perm];
       assume state(Heap, Mask);
       perm := 1 / 2;
-      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113079]"}
+      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [109004]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> this != null;
-      Mask := Mask[this, size:=Mask[this, size] + perm];
+      Mask := Mask[this, size_3:=Mask[this, size_3] + perm];
       assume state(Heap, Mask);
       perm := 1 / 2;
-      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [113080]"}
+      assert {:msg "  While statement might fail. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [109005]"}
         perm >= NoPerm;
-      assume perm > NoPerm ==> (loc(Heap[this, elems], j_9): Ref) != null;
-      Mask := Mask[(loc(Heap[this, elems], j_9): Ref), val:=Mask[(loc(Heap[this, elems], j_9): Ref), val] + perm];
+      assume perm > NoPerm ==> (loc(Heap[this, elems_1], j): Ref) != null;
+      Mask := Mask[(loc(Heap[this, elems_1], j): Ref), val:=Mask[(loc(Heap[this, elems_1], j): Ref), val] + perm];
       assume state(Heap, Mask);
-      assume j_9 <= t_2;
-      assume t_2 <= Heap[this, size];
+      assume j <= t_2;
+      assume t_2 <= Heap[this, size_3];
       assume state(Heap, Mask);
-      assume Heap[this, size] == length(oldHeap, this);
-      assume -1 <= j_9;
-      assume Heap[this, size] < (len_1(Heap[this, elems]): int);
+      assume Heap[this, size_3] == length_1(oldHeap, this);
+      assume -1 <= j;
+      assume Heap[this, size_3] < (len(Heap[this, elems_1]): int);
       havoc QPMask;
-      assert {:msg "  While statement might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@135.16--135.86) [113081]"}
-        (forall i_27: int, i_27_1: int ::
+      assert {:msg "  While statement might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@135.16--135.86) [109006]"}
+        (forall i_27_2: int, i_27_3: int ::
         
-        (((i_27 != i_27_1 && (j_9 < i_27 && i_27 <= Heap[this, size])) && (j_9 < i_27_1 && i_27_1 <= Heap[this, size])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_27): Ref) != (loc(Heap[this, elems], i_27_1): Ref)
+        (((i_27_2 != i_27_3 && (j < i_27_2 && i_27_2 <= Heap[this, size_3])) && (j < i_27_3 && i_27_3 <= Heap[this, size_3])) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_27_2): Ref) != (loc(Heap[this, elems_1], i_27_3): Ref)
       );
       
       // -- Define Inverse Function
-        assume (forall i_27: int ::
-          { (loc(Heap[this, elems], i_27): Ref) } { (loc(Heap[this, elems], i_27): Ref) }
-          (j_9 < i_27 && i_27 <= Heap[this, size]) && NoPerm < FullPerm ==> qpRange17((loc(Heap[this, elems], i_27): Ref)) && invRecv17((loc(Heap[this, elems], i_27): Ref)) == i_27
+        assume (forall i_27_2: int ::
+          { (loc(Heap[this, elems_1], i_27_2): Ref) } { (loc(Heap[this, elems_1], i_27_2): Ref) }
+          (j < i_27_2 && i_27_2 <= Heap[this, size_3]) && NoPerm < FullPerm ==> qpRange17((loc(Heap[this, elems_1], i_27_2): Ref)) && invRecv17((loc(Heap[this, elems_1], i_27_2): Ref)) == i_27_2
         );
-        assume (forall o_4: Ref ::
-          { invRecv17(o_4) }
-          ((j_9 < invRecv17(o_4) && invRecv17(o_4) <= Heap[this, size]) && NoPerm < FullPerm) && qpRange17(o_4) ==> (loc(Heap[this, elems], invRecv17(o_4)): Ref) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv17(o_9) }
+          ((j < invRecv17(o_9) && invRecv17(o_9) <= Heap[this, size_3]) && NoPerm < FullPerm) && qpRange17(o_9) ==> (loc(Heap[this, elems_1], invRecv17(o_9)): Ref) == o_9
         );
       
       // -- Assume set of fields is nonNull
-        assume (forall i_27: int ::
-          { (loc(Heap[this, elems], i_27): Ref) } { (loc(Heap[this, elems], i_27): Ref) }
-          j_9 < i_27 && i_27 <= Heap[this, size] ==> (loc(Heap[this, elems], i_27): Ref) != null
+        assume (forall i_27_2: int ::
+          { (loc(Heap[this, elems_1], i_27_2): Ref) } { (loc(Heap[this, elems_1], i_27_2): Ref) }
+          j < i_27_2 && i_27_2 <= Heap[this, size_3] ==> (loc(Heap[this, elems_1], i_27_2): Ref) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, val] }
-          (((j_9 < invRecv17(o_4) && invRecv17(o_4) <= Heap[this, size]) && NoPerm < FullPerm) && qpRange17(o_4) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems], invRecv17(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((j_9 < invRecv17(o_4) && invRecv17(o_4) <= Heap[this, size]) && NoPerm < FullPerm) && qpRange17(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, val] }
+          (((j < invRecv17(o_9) && invRecv17(o_9) <= Heap[this, size_3]) && NoPerm < FullPerm) && qpRange17(o_9) ==> (NoPerm < FullPerm ==> (loc(Heap[this, elems_1], invRecv17(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((j < invRecv17(o_9) && invRecv17(o_9) <= Heap[this, size_3]) && NoPerm < FullPerm) && qpRange17(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
       assume state(Heap, Mask);
       assume (forall i_28: int ::
-        { (loc(Heap[this, elems], i_28): Ref) }
-        j_9 <= i_28 && i_28 <= Heap[this, size] ==> i_28 < t_2 ==> Heap[(loc(Heap[this, elems], i_28): Ref), val] == itemAt(oldHeap, this, i_28)
+        { (loc(Heap[this, elems_1], i_28): Ref) }
+        j <= i_28 && i_28 <= Heap[this, size_3] ==> i_28 < t_2 ==> Heap[(loc(Heap[this, elems_1], i_28): Ref), val] == itemAt(oldHeap, this, i_28)
       );
       assume state(Heap, Mask);
-      assume (forall i_29_1: int ::
-        { (loc(Heap[this, elems], i_29_1): Ref) }
-        j_9 < i_29_1 && i_29_1 <= Heap[this, size] ==> i_29_1 > t_2 ==> Heap[(loc(Heap[this, elems], i_29_1): Ref), val] == itemAt(oldHeap, this, i_29_1 - 1)
+      assume (forall i_29: int ::
+        { (loc(Heap[this, elems_1], i_29): Ref) }
+        j < i_29 && i_29 <= Heap[this, size_3] ==> i_29 > t_2 ==> Heap[(loc(Heap[this, elems_1], i_29): Ref), val] == itemAt(oldHeap, this, i_29 - 1)
       );
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -3062,21 +3062,21 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
   // -- Translating statement: loc(this.elems, j).val := elem -- arraylist-quantified-permissions.vpr@143.3--143.32
     
     // -- Check definedness of loc(this.elems, j)
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@143.3--143.32) [113082]"}
-        HasDirectPerm(Mask, this, elems);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(this.elems, j).val (arraylist-quantified-permissions.vpr@143.3--143.32) [113083]"}
-      FullPerm == Mask[(loc(Heap[this, elems], j_9): Ref), val];
-    Heap := Heap[(loc(Heap[this, elems], j_9): Ref), val:=elem];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@143.3--143.32) [109007]"}
+        HasDirectPerm(Mask, this, elems_1);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(this.elems, j).val (arraylist-quantified-permissions.vpr@143.3--143.32) [109008]"}
+      FullPerm == Mask[(loc(Heap[this, elems_1], j): Ref), val];
+    Heap := Heap[(loc(Heap[this, elems_1], j): Ref), val:=elem_1];
     assume state(Heap, Mask);
   
   // -- Translating statement: this.size := this.size + 1 -- arraylist-quantified-permissions.vpr@144.3--144.29
     
     // -- Check definedness of this.size + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@144.3--144.29) [113084]"}
-        HasDirectPerm(Mask, this, size);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@144.3--144.29) [113085]"}
-      FullPerm == Mask[this, size];
-    Heap := Heap[this, size:=Heap[this, size] + 1];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@144.3--144.29) [109009]"}
+        HasDirectPerm(Mask, this, size_3);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@144.3--144.29) [109010]"}
+      FullPerm == Mask[this, size_3];
+    Heap := Heap[this, size_3:=Heap[this, size_3] + 1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@146.3--146.24
@@ -3084,61 +3084,61 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@146.3--146.24) [113088]"}
-        perm <= Mask[this, elems];
+      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@146.3--146.24) [109013]"}
+        perm <= Mask[this, elems_1];
     }
-    Mask := Mask[this, elems:=Mask[this, elems] - perm];
+    Mask := Mask[this, elems_1:=Mask[this, elems_1] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@146.3--146.24) [113090]"}
-        perm <= Mask[this, size];
+      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.size (arraylist-quantified-permissions.vpr@146.3--146.24) [109015]"}
+        perm <= Mask[this, size_3];
     }
-    Mask := Mask[this, size:=Mask[this, size] - perm];
-    assert {:msg "  Folding AList(this) might fail. Assertion 0 <= this.size might not hold. (arraylist-quantified-permissions.vpr@146.3--146.24) [113091]"}
-      0 <= Heap[this, size];
-    assert {:msg "  Folding AList(this) might fail. Assertion this.size <= len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@146.3--146.24) [113092]"}
-      Heap[this, size] <= (len_1(Heap[this, elems]): int);
-    assert {:msg "  Folding AList(this) might fail. Assertion 0 < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@146.3--146.24) [113093]"}
-      0 < (len_1(Heap[this, elems]): int);
+    Mask := Mask[this, size_3:=Mask[this, size_3] - perm];
+    assert {:msg "  Folding AList(this) might fail. Assertion 0 <= this.size might not hold. (arraylist-quantified-permissions.vpr@146.3--146.24) [109016]"}
+      0 <= Heap[this, size_3];
+    assert {:msg "  Folding AList(this) might fail. Assertion this.size <= len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@146.3--146.24) [109017]"}
+      Heap[this, size_3] <= (len(Heap[this, elems_1]): int);
+    assert {:msg "  Folding AList(this) might fail. Assertion 0 < len(this.elems) might not hold. (arraylist-quantified-permissions.vpr@146.3--146.24) [109018]"}
+      0 < (len(Heap[this, elems_1]): int);
     havoc QPMask;
     
     // -- check that the permission amount is positive
       
     
     // -- check if receiver loc(this.elems, i) is injective
-      assert {:msg "  Folding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@146.3--146.24) [113095]"}
-        (forall i_30_2: int, i_30_3: int ::
-        { neverTriggered18(i_30_2), neverTriggered18(i_30_3) }
-        (((i_30_2 != i_30_3 && (0 <= i_30_2 && i_30_2 < (len_1(Heap[this, elems]): int))) && (0 <= i_30_3 && i_30_3 < (len_1(Heap[this, elems]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems], i_30_2): Ref) != (loc(Heap[this, elems], i_30_3): Ref)
+      assert {:msg "  Folding AList(this) might fail. Quantified resource loc(this.elems, i).val might not be injective. (arraylist-quantified-permissions.vpr@146.3--146.24) [109020]"}
+        (forall i_30: int, i_30_1: int ::
+        { neverTriggered18(i_30), neverTriggered18(i_30_1) }
+        (((i_30 != i_30_1 && (0 <= i_30 && i_30 < (len(Heap[this, elems_1]): int))) && (0 <= i_30_1 && i_30_1 < (len(Heap[this, elems_1]): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(Heap[this, elems_1], i_30): Ref) != (loc(Heap[this, elems_1], i_30_1): Ref)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@146.3--146.24) [113096]"}
-        (forall i_30_2: int ::
-        { (loc(Heap[this, elems], i_30_2): Ref) } { (loc(Heap[this, elems], i_30_2): Ref) }
-        0 <= i_30_2 && i_30_2 < (len_1(Heap[this, elems]): int) ==> Mask[(loc(Heap[this, elems], i_30_2): Ref), val] >= FullPerm
+      assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access loc(this.elems, i).val (arraylist-quantified-permissions.vpr@146.3--146.24) [109021]"}
+        (forall i_30: int ::
+        { (loc(Heap[this, elems_1], i_30): Ref) } { (loc(Heap[this, elems_1], i_30): Ref) }
+        0 <= i_30 && i_30 < (len(Heap[this, elems_1]): int) ==> Mask[(loc(Heap[this, elems_1], i_30): Ref), val] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver loc(this.elems, i)
-      assume (forall i_30_2: int ::
-        { (loc(Heap[this, elems], i_30_2): Ref) } { (loc(Heap[this, elems], i_30_2): Ref) }
-        (0 <= i_30_2 && i_30_2 < (len_1(Heap[this, elems]): int)) && NoPerm < FullPerm ==> qpRange18((loc(Heap[this, elems], i_30_2): Ref)) && invRecv18((loc(Heap[this, elems], i_30_2): Ref)) == i_30_2
+      assume (forall i_30: int ::
+        { (loc(Heap[this, elems_1], i_30): Ref) } { (loc(Heap[this, elems_1], i_30): Ref) }
+        (0 <= i_30 && i_30 < (len(Heap[this, elems_1]): int)) && NoPerm < FullPerm ==> qpRange18((loc(Heap[this, elems_1], i_30): Ref)) && invRecv18((loc(Heap[this, elems_1], i_30): Ref)) == i_30
       );
-      assume (forall o_4: Ref ::
-        { invRecv18(o_4) }
-        (0 <= invRecv18(o_4) && invRecv18(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange18(o_4)) ==> (loc(Heap[this, elems], invRecv18(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv18(o_9) }
+        (0 <= invRecv18(o_9) && invRecv18(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange18(o_9)) ==> (loc(Heap[this, elems_1], invRecv18(o_9)): Ref) == o_9
       );
     
     // -- assume permission updates for field val
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((0 <= invRecv18(o_4) && invRecv18(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange18(o_4)) ==> (loc(Heap[this, elems], invRecv18(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((0 <= invRecv18(o_4) && invRecv18(o_4) < (len_1(Heap[this, elems]): int)) && (NoPerm < FullPerm && qpRange18(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((0 <= invRecv18(o_9) && invRecv18(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange18(o_9)) ==> (loc(Heap[this, elems_1], invRecv18(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((0 <= invRecv18(o_9) && invRecv18(o_9) < (len(Heap[this, elems_1]): int)) && (NoPerm < FullPerm && qpRange18(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     perm := FullPerm;
@@ -3146,23 +3146,23 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume AList#trigger(Heap, AList(this));
-    assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems]), CombineFrames(FrameFragment(Heap[this, size]), FrameFragment(AList#condqp1(Heap, this))));
+    assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems_1]), CombineFrames(FrameFragment(Heap[this, size_3]), FrameFragment(AList#condqp1(Heap, this))));
     if (!HasDirectPerm(Mask, null, AList(this))) {
       Heap := Heap[null, AList#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, AList(this):=freshVersion];
     }
-    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems:=true]];
-    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size:=true]];
+    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, elems_1:=true]];
+    Heap := Heap[null, AList#sm(this):=Heap[null, AList#sm(this)][this, size_3:=true]];
     // register all known folded permissions guarded by predicate AList
     havoc newPMask;
-    assume (forall <A, B> o_30: Ref, f_8: (Field A B) ::
-      { newPMask[o_30, f_8] }
-      Heap[null, AList#sm(this)][o_30, f_8] ==> newPMask[o_30, f_8]
+    assume (forall <A, B> o_39: Ref, f_19: (Field A B) ::
+      { newPMask[o_39, f_19] }
+      Heap[null, AList#sm(this)][o_39, f_19] ==> newPMask[o_39, f_19]
     );
-    assume (forall i_31_1: int ::
+    assume (forall i_31: int ::
       
-      0 <= i_31_1 && i_31_1 < (len_1(Heap[this, elems]): int) ==> newPMask[(loc(Heap[this, elems], i_31_1): Ref), val]
+      0 <= i_31 && i_31 < (len(Heap[this, elems_1]): int) ==> newPMask[(loc(Heap[this, elems_1], i_31): Ref), val]
     );
     Heap := Heap[null, AList#sm(this):=newPMask];
     assume state(Heap, Mask);
@@ -3173,39 +3173,39 @@ procedure insert(this: Ref, elem: int) returns (j_9: int)
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of insert might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@98.11--98.27) [113098]"}
+      assert {:msg "  Postcondition of insert might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@98.11--98.27) [109023]"}
         perm <= Mask[null, AList(this)];
     }
     Mask := Mask[null, AList(this):=Mask[null, AList(this)] - perm];
-    assert {:msg "  Postcondition of insert might not hold. Assertion 0 <= j might not hold. (arraylist-quantified-permissions.vpr@99.11--99.37) [113099]"}
-      0 <= j_9;
-    assert {:msg "  Postcondition of insert might not hold. Assertion j < length(this) might not hold. (arraylist-quantified-permissions.vpr@99.11--99.37) [113100]"}
-      j_9 < length(Heap, this);
-    assert {:msg "  Postcondition of insert might not hold. Assertion length(this) == old(length(this)) + 1 might not hold. (arraylist-quantified-permissions.vpr@100.11--100.48) [113101]"}
-      length(Heap, this) == length(oldHeap, this) + 1;
+    assert {:msg "  Postcondition of insert might not hold. Assertion 0 <= j might not hold. (arraylist-quantified-permissions.vpr@99.11--99.37) [109024]"}
+      0 <= j;
+    assert {:msg "  Postcondition of insert might not hold. Assertion j < length(this) might not hold. (arraylist-quantified-permissions.vpr@99.11--99.37) [109025]"}
+      j < length_1(Heap, this);
+    assert {:msg "  Postcondition of insert might not hold. Assertion length(this) == old(length(this)) + 1 might not hold. (arraylist-quantified-permissions.vpr@100.11--100.48) [109026]"}
+      length_1(Heap, this) == length_1(oldHeap, this) + 1;
     if (*) {
-      if (0 <= k_4_1 && k_4_1 < j_9) {
-        assert {:msg "  Postcondition of insert might not hold. Assertion itemAt(this, k) == old(itemAt(this, k)) might not hold. (arraylist-quantified-permissions.vpr@101.11--101.87) [113102]"}
-          itemAt(Heap, this, k_4_1) == itemAt(oldHeap, this, k_4_1);
+      if (0 <= k_4_2 && k_4_2 < j) {
+        assert {:msg "  Postcondition of insert might not hold. Assertion itemAt(this, k) == old(itemAt(this, k)) might not hold. (arraylist-quantified-permissions.vpr@101.11--101.87) [109027]"}
+          itemAt(Heap, this, k_4_2) == itemAt(oldHeap, this, k_4_2);
       }
       assume false;
     }
     assume (forall k_5_1_1: int ::
       { itemAt#frame(oldHeap[null, AList(this)], this, k_5_1_1) }
-      0 <= k_5_1_1 && k_5_1_1 < j_9 ==> itemAt(Heap, this, k_5_1_1) == itemAt(oldHeap, this, k_5_1_1)
+      0 <= k_5_1_1 && k_5_1_1 < j ==> itemAt(Heap, this, k_5_1_1) == itemAt(oldHeap, this, k_5_1_1)
     );
-    assert {:msg "  Postcondition of insert might not hold. Assertion itemAt(this, j) == elem might not hold. (arraylist-quantified-permissions.vpr@102.11--102.34) [113103]"}
-      itemAt(Heap, this, j_9) == elem;
+    assert {:msg "  Postcondition of insert might not hold. Assertion itemAt(this, j) == elem might not hold. (arraylist-quantified-permissions.vpr@102.11--102.34) [109028]"}
+      itemAt(Heap, this, j) == elem_1;
     if (*) {
-      if (j_9 < k_6 && k_6 < length(Heap, this)) {
-        assert {:msg "  Postcondition of insert might not hold. Assertion itemAt(this, k) == old(itemAt(this, k - 1)) might not hold. (arraylist-quantified-permissions.vpr@103.11--103.101) [113104]"}
-          itemAt(Heap, this, k_6) == itemAt(oldHeap, this, k_6 - 1);
+      if (j < k_6_2 && k_6_2 < length_1(Heap, this)) {
+        assert {:msg "  Postcondition of insert might not hold. Assertion itemAt(this, k) == old(itemAt(this, k - 1)) might not hold. (arraylist-quantified-permissions.vpr@103.11--103.101) [109029]"}
+          itemAt(Heap, this, k_6_2) == itemAt(oldHeap, this, k_6_2 - 1);
       }
       assume false;
     }
     assume (forall k_7_1_1: int ::
       { itemAt#frame(Heap[null, AList(this)], this, k_7_1_1) }
-      j_9 < k_7_1_1 && k_7_1_1 < length(Heap, this) ==> itemAt(Heap, this, k_7_1_1) == itemAt(oldHeap, this, k_7_1_1 - 1)
+      j < k_7_1_1 && k_7_1_1 < length_1(Heap, this) ==> itemAt(Heap, this, k_7_1_1) == itemAt(oldHeap, this, k_7_1_1 - 1)
     );
     // Finish exhale
     havoc ExhaleHeap;

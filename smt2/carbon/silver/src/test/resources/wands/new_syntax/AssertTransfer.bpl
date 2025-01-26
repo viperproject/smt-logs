@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:12:47
+// Date:         2025-01-26 21:45:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/AssertTransfer.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/AssertTransfer-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -296,7 +296,7 @@ procedure test0(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (AssertTransfer.vpr@8.10--8.30) [139273]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (AssertTransfer.vpr@8.10--8.30) [223151]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 0;
     assume state(Heap, Mask);
@@ -340,11 +340,11 @@ procedure test0(x: Ref) returns ()
           if (b_1_1) {
             
             // -- Check definedness of x.f == 0
-              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@11.16--11.24) [139274]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@11.16--11.24) [223152]"}
                 HasDirectPerm(Ops_1Mask, x, f_7);
           }
         }
-        assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (AssertTransfer.vpr@11.16--11.24) [139275]"}
+        assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (AssertTransfer.vpr@11.16--11.24) [223153]"}
           b_1_1 && b_2_1 ==> Ops_1Heap[x, f_7] == 0;
         b_1_1 := b_1_1 && b_2_1;
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
@@ -363,7 +363,7 @@ procedure test0(x: Ref) returns ()
 // Translation of method test1
 // ==================================================
 
-procedure test1(x: Ref) returns ()
+procedure test1_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -419,7 +419,7 @@ procedure test1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (AssertTransfer.vpr@16.10--16.30) [139277]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (AssertTransfer.vpr@16.10--16.30) [223155]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 0;
     assume state(Heap, Mask);
@@ -467,7 +467,7 @@ procedure test1(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_4Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@18.16--18.24) [139278]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@18.16--18.24) [223156]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -510,7 +510,7 @@ procedure test1(x: Ref) returns ()
                 Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@18.16--18.24) [139279]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@18.16--18.24) [223157]"}
             b_5 && b_6 ==> neededTransfer == 0.000000000 && Used_4Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -527,7 +527,7 @@ procedure test1(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Ops_3Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@18.16--18.24) [139280]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@18.16--18.24) [223158]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -550,7 +550,7 @@ procedure test1(x: Ref) returns ()
                 Used_4Heap := Used_4Heap[null, wand#sm(true, true):=Used_4Heap[null, wand#sm(true, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@18.16--18.24) [139281]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@18.16--18.24) [223159]"}
             b_5 && b_5 ==> neededTransfer == 0.000000000 && Ops_3Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -574,11 +574,11 @@ procedure test1(x: Ref) returns ()
           if (b_5) {
             
             // -- Check definedness of x.f == 0
-              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@19.16--19.24) [139282]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@19.16--19.24) [223160]"}
                 HasDirectPerm(Ops_3Mask, x, f_7);
           }
         }
-        assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (AssertTransfer.vpr@19.16--19.24) [139283]"}
+        assert {:msg "  Assert might fail. Assertion x.f == 0 might not hold. (AssertTransfer.vpr@19.16--19.24) [223161]"}
           b_5 && b_9 ==> Ops_3Heap[x, f_7] == 0;
         b_5 := b_5 && b_9;
         b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
@@ -597,7 +597,7 @@ procedure test1(x: Ref) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(x: Ref) returns ()
+procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -650,7 +650,7 @@ procedure test2(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (AssertTransfer.vpr@24.10--24.30) [139285]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (AssertTransfer.vpr@24.10--24.30) [223163]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 0;
     assume state(Heap, Mask);
@@ -674,7 +674,7 @@ procedure test2(x: Ref) returns ()
     if (b_12) {
       if (b_12) {
         perm := 1 / 2;
-        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (AssertTransfer.vpr@25.5--27.6) [139286]"}
+        assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (AssertTransfer.vpr@25.5--27.6) [223164]"}
           perm >= NoPerm;
         b_12 := b_12 && (perm > NoPerm ==> x != null);
         Ops_5Mask := Ops_5Mask[x, f_7:=Ops_5Mask[x, f_7] + perm];
@@ -684,7 +684,7 @@ procedure test2(x: Ref) returns ()
         if (b_12) {
           
           // -- Check definedness of x.f == 2
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@25.5--27.6) [139287]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@25.5--27.6) [223165]"}
               HasDirectPerm(Ops_5Mask, x, f_7);
         }
         b_12 := b_12 && Ops_5Heap[x, f_7] == 2;
@@ -713,7 +713,7 @@ procedure test2(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_8Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@26.16--26.33) [139288]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@26.16--26.33) [223166]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -756,7 +756,7 @@ procedure test2(x: Ref) returns ()
                 Heap := Heap[null, wand_1#sm(x, 1 / 2, x, 2, true):=Heap[null, wand_1#sm(x, 1 / 2, x, 2, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@26.16--26.33) [139289]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@26.16--26.33) [223167]"}
             b_12 && b_13 ==> neededTransfer == 0.000000000 && Used_8Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -773,7 +773,7 @@ procedure test2(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Ops_5Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@26.16--26.33) [139290]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@26.16--26.33) [223168]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -796,7 +796,7 @@ procedure test2(x: Ref) returns ()
                 Used_8Heap := Used_8Heap[null, wand_1#sm(x, 1 / 2, x, 2, true):=Used_8Heap[null, wand_1#sm(x, 1 / 2, x, 2, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@26.16--26.33) [139291]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@26.16--26.33) [223169]"}
             b_12 && b_12 ==> neededTransfer == 0.000000000 && Ops_5Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -806,7 +806,7 @@ procedure test2(x: Ref) returns ()
             b_15 := (b_15 && IdenticalOnKnownLocations(Ops_5Heap, Result_3Heap, Ops_5Mask)) && IdenticalOnKnownLocations(Used_8Heap, Result_3Heap, Used_8Mask);
             b_15 := b_15 && state(Result_3Heap, Result_3Mask);
           b_12 := b_12 && b_15;
-        assert {:msg "  Assert might fail. Assertion false might not hold. (AssertTransfer.vpr@26.16--26.33) [139292]"}
+        assert {:msg "  Assert might fail. Assertion false might not hold. (AssertTransfer.vpr@26.16--26.33) [223170]"}
           b_12 && b_13 ==> false;
         b_12 := b_12 && b_13;
         b_12 := b_12 && Used_8Heap == Ops_5Heap;
@@ -826,7 +826,7 @@ procedure test2(x: Ref) returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3(x: Ref) returns ()
+procedure test3_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -871,7 +871,7 @@ procedure test3(x: Ref) returns ()
   var Result_8Mask: MaskType;
   var Used_12Heap: HeapType;
   var Used_12Mask: MaskType;
-  var b_25: bool;
+  var b_25_1: bool;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -888,7 +888,7 @@ procedure test3(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (AssertTransfer.vpr@31.10--31.45) [139294]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (AssertTransfer.vpr@31.10--31.45) [223172]"}
         HasDirectPerm(Mask, x, f_7);
     if (Heap[x, f_7] == 0) {
       perm := FullPerm;
@@ -945,7 +945,7 @@ procedure test3(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_11Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@33.16--33.51) [139295]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@33.16--33.51) [223173]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -988,7 +988,7 @@ procedure test3(x: Ref) returns ()
                 Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@33.16--33.51) [139296]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@33.16--33.51) [223174]"}
             b_18 && b_19 ==> neededTransfer == 0.000000000 && Used_11Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -1005,7 +1005,7 @@ procedure test3(x: Ref) returns ()
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Ops_7Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@33.16--33.51) [139297]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@33.16--33.51) [223175]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -1028,7 +1028,7 @@ procedure test3(x: Ref) returns ()
                 Used_11Heap := Used_11Heap[null, wand#sm(true, true):=Used_11Heap[null, wand#sm(true, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@33.16--33.51) [139298]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@33.16--33.51) [223176]"}
             b_18 && b_18 ==> neededTransfer == 0.000000000 && Ops_7Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -1044,7 +1044,7 @@ procedure test3(x: Ref) returns ()
             rcvLocal := x;
             neededTransfer := FullPerm;
             initNeededTransfer := Used_11Mask[rcvLocal, g] + neededTransfer;
-            assert {:msg "  Assert might fail. Fraction acc(x.g, write) might be negative. (AssertTransfer.vpr@33.16--33.51) [139299]"}
+            assert {:msg "  Assert might fail. Fraction acc(x.g, write) might be negative. (AssertTransfer.vpr@33.16--33.51) [223177]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
@@ -1087,7 +1087,7 @@ procedure test3(x: Ref) returns ()
                   Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][x, g:=true]];
                 }
               }
-            assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@33.16--33.51) [139300]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@33.16--33.51) [223178]"}
               b_18 && b_19 ==> neededTransfer == 0.000000000 && Used_11Mask[rcvLocal, g] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
@@ -1104,7 +1104,7 @@ procedure test3(x: Ref) returns ()
             rcvLocal := x;
             neededTransfer := FullPerm;
             initNeededTransfer := Ops_7Mask[rcvLocal, g] + neededTransfer;
-            assert {:msg "  Assert might fail. Fraction acc(x.g, write) might be negative. (AssertTransfer.vpr@33.16--33.51) [139301]"}
+            assert {:msg "  Assert might fail. Fraction acc(x.g, write) might be negative. (AssertTransfer.vpr@33.16--33.51) [223179]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
@@ -1127,7 +1127,7 @@ procedure test3(x: Ref) returns ()
                   Used_11Heap := Used_11Heap[null, wand#sm(true, true):=Used_11Heap[null, wand#sm(true, true)][x, g:=true]];
                 }
               }
-            assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@33.16--33.51) [139302]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@33.16--33.51) [223180]"}
               b_18 && b_18 ==> neededTransfer == 0.000000000 && Ops_7Mask[rcvLocal, g] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
@@ -1154,7 +1154,7 @@ procedure test3(x: Ref) returns ()
         if (b_18) {
           
           // -- Check definedness of x.f == 0
-            assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@34.13--34.21) [139303]"}
+            assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@34.13--34.21) [223181]"}
               HasDirectPerm(Ops_7Mask, x, f_7);
         }
         if (b_18 ==> Ops_7Heap[x, f_7] == 0) {
@@ -1163,7 +1163,7 @@ procedure test3(x: Ref) returns ()
             if (b_18) {
               
               // -- Check definedness of x.g == 0
-                assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@35.17--35.25) [139304]"}
+                assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@35.17--35.25) [223182]"}
                   HasDirectPerm(Ops_7Mask, x, g);
             }
             b_18 := b_18 && state(Ops_7Heap, Ops_7Mask);
@@ -1173,7 +1173,7 @@ procedure test3(x: Ref) returns ()
             if (b_18) {
               
               // -- Check definedness of x.g == 0
-                assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@39.17--39.25) [139305]"}
+                assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@39.17--39.25) [223183]"}
                   HasDirectPerm(Ops_7Mask, x, g);
             }
             b_18 := b_18 && state(Ops_7Heap, Ops_7Mask);
@@ -1183,7 +1183,7 @@ procedure test3(x: Ref) returns ()
     // Translating exec of non-ghost operationtrue
     havoc Used_12Heap;
     Used_12Mask := ZeroMask;
-    b_25 := b_25 && state(Used_12Heap, Used_12Mask);
+    b_25_1 := b_25_1 && state(Used_12Heap, Used_12Mask);
     Mask := Mask[null, wand(true, true):=Mask[null, wand(true, true)] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1194,7 +1194,7 @@ procedure test3(x: Ref) returns ()
 // Translation of method test4
 // ==================================================
 
-procedure test4(x: Ref) returns ()
+procedure test4_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -1202,10 +1202,10 @@ procedure test4(x: Ref) returns ()
   var oldMask: MaskType;
   var Ops_9Heap: HeapType;
   var Ops_9Mask: MaskType;
-  var b_27: bool;
+  var b_27_1: bool;
   var Used_13Heap: HeapType;
   var Used_13Mask: MaskType;
-  var b_26: bool;
+  var b_26_1: bool;
   var Labellhs9Heap: HeapType;
   var Labellhs9Mask: MaskType;
   var boolCur_4: bool;
@@ -1215,31 +1215,31 @@ procedure test4(x: Ref) returns ()
   var ExhaleWellDef0Mask: MaskType;
   var Used_14Heap: HeapType;
   var Used_14Mask: MaskType;
-  var b_28: bool;
+  var b_28_1: bool;
   var rcvLocal: Ref;
   var neededTransfer: Perm;
   var initNeededTransfer: Perm;
   var accVar2: bool;
   var maskTransfer: Perm;
   var takeTransfer: Perm;
-  var b_29: bool;
+  var b_29_1: bool;
   var Result_9Heap: HeapType;
   var Result_9Mask: MaskType;
-  var b_30: bool;
+  var b_30_1: bool;
   var Result_10Heap: HeapType;
   var Result_10Mask: MaskType;
-  var b_31: bool;
+  var b_31_1: bool;
   var Result_11Heap: HeapType;
   var Result_11Mask: MaskType;
-  var b_32: bool;
+  var b_32_1: bool;
   var Result_12Heap: HeapType;
   var Result_12Mask: MaskType;
-  var b_33: bool;
+  var b_33_1: bool;
   var Result_13Heap: HeapType;
   var Result_13Mask: MaskType;
   var Used_15Heap: HeapType;
   var Used_15Mask: MaskType;
-  var b_34: bool;
+  var b_34_1: bool;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1276,23 +1276,23 @@ procedure test4(x: Ref) returns ()
   // } -- AssertTransfer.vpr@47.5--57.6
     havoc Ops_9Heap;
     Ops_9Mask := ZeroMask;
-    b_27 := b_27 && state(Ops_9Heap, Ops_9Mask);
+    b_27_1 := b_27_1 && state(Ops_9Heap, Ops_9Mask);
     havoc Used_13Heap;
     Used_13Mask := ZeroMask;
-    b_26 := b_26 && state(Used_13Heap, Used_13Mask);
+    b_26_1 := b_26_1 && state(Used_13Heap, Used_13Mask);
     // Inhaling left hand side of current wand into hypothetical state
-    if (b_27) {
-      b_27 := b_27;
+    if (b_27_1) {
+      b_27_1 := b_27_1;
     }
-    b_27 := b_27 && state(Ops_9Heap, Ops_9Mask);
+    b_27_1 := b_27_1 && state(Ops_9Heap, Ops_9Mask);
     
     // -- Translating statement: label lhs9 -- AssertTransfer.vpr@47.13--47.26
       lhs9:
       Labellhs9Heap := Ops_9Heap;
       Labellhs9Mask := Ops_9Mask;
-      b_27 := b_27 && state(Ops_9Heap, Ops_9Mask);
+      b_27_1 := b_27_1 && state(Ops_9Heap, Ops_9Mask);
     boolCur_4 := true;
-    if (b_27) {
+    if (b_27_1) {
       
       // -- Translating statement: assert acc(x.f, write) && (x.f == 0 ==> acc(x.g, write)) -- AssertTransfer.vpr@48.9--48.51
         AssertHeap := Ops_9Heap;
@@ -1301,20 +1301,20 @@ procedure test4(x: Ref) returns ()
         ExhaleWellDef0Mask := AssertMask;
         havoc Used_14Heap;
         Used_14Mask := ZeroMask;
-        b_28 := b_28 && state(Used_14Heap, Used_14Mask);
+        b_28_1 := b_28_1 && state(Used_14Heap, Used_14Mask);
         
         // -- Transfer of acc(x.f, write)
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_14Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@48.16--48.51) [139307]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@48.16--48.51) [223185]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
             // accumulate constraints which need to be satisfied for transfer to occur
             accVar2 := true;
             // actual code for the transfer from current state on stack
-            if (((b_27 && b_28) && accVar2) && neededTransfer > 0.000000000) {
+            if (((b_27_1 && b_28_1) && accVar2) && neededTransfer > 0.000000000) {
               maskTransfer := Ops_9Mask[rcvLocal, f_7];
               if (neededTransfer <= maskTransfer) {
                 takeTransfer := neededTransfer;
@@ -1324,8 +1324,8 @@ procedure test4(x: Ref) returns ()
               if (takeTransfer > 0.000000000) {
                 neededTransfer := neededTransfer - takeTransfer;
                 Used_14Mask := Used_14Mask[rcvLocal, f_7:=Used_14Mask[rcvLocal, f_7] + takeTransfer];
-                b_28 := b_28 && state(Used_14Heap, Used_14Mask);
-                b_28 := b_28 && Ops_9Heap[rcvLocal, f_7] == Used_14Heap[rcvLocal, f_7];
+                b_28_1 := b_28_1 && state(Used_14Heap, Used_14Mask);
+                b_28_1 := b_28_1 && Ops_9Heap[rcvLocal, f_7] == Used_14Heap[rcvLocal, f_7];
                 Ops_9Mask := Ops_9Mask[rcvLocal, f_7:=Ops_9Mask[rcvLocal, f_7] - takeTransfer];
               }
             }
@@ -1334,7 +1334,7 @@ procedure test4(x: Ref) returns ()
             // accumulate constraints which need to be satisfied for transfer to occur
             accVar2 := true;
             // actual code for the transfer from current state on stack
-            if (((b_27 && b_28) && accVar2) && neededTransfer > 0.000000000) {
+            if (((b_27_1 && b_28_1) && accVar2) && neededTransfer > 0.000000000) {
               maskTransfer := Mask[rcvLocal, f_7];
               if (neededTransfer <= maskTransfer) {
                 takeTransfer := neededTransfer;
@@ -1344,37 +1344,37 @@ procedure test4(x: Ref) returns ()
               if (takeTransfer > 0.000000000) {
                 neededTransfer := neededTransfer - takeTransfer;
                 Used_14Mask := Used_14Mask[rcvLocal, f_7:=Used_14Mask[rcvLocal, f_7] + takeTransfer];
-                b_28 := b_28 && state(Used_14Heap, Used_14Mask);
-                b_28 := b_28 && Heap[rcvLocal, f_7] == Used_14Heap[rcvLocal, f_7];
+                b_28_1 := b_28_1 && state(Used_14Heap, Used_14Mask);
+                b_28_1 := b_28_1 && Heap[rcvLocal, f_7] == Used_14Heap[rcvLocal, f_7];
                 Mask := Mask[rcvLocal, f_7:=Mask[rcvLocal, f_7] - takeTransfer];
                 Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@48.16--48.51) [139308]"}
-            b_27 && b_28 ==> neededTransfer == 0.000000000 && Used_14Mask[rcvLocal, f_7] == initNeededTransfer;
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@48.16--48.51) [223186]"}
+            b_27_1 && b_28_1 ==> neededTransfer == 0.000000000 && Used_14Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
-            b_29 := b_27 && b_28;
-            b_29 := b_29 && state(Result_9Heap, Result_9Mask);
-            b_29 := b_29 && sumMask(Result_9Mask, Ops_9Mask, Used_14Mask);
-            b_29 := (b_29 && IdenticalOnKnownLocations(Ops_9Heap, Result_9Heap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_14Heap, Result_9Heap, Used_14Mask);
-            b_29 := b_29 && state(Result_9Heap, Result_9Mask);
-          b_27 := b_27 && b_29;
-        b_27 := b_27 && b_28;
-        b_27 := b_27 && Used_14Heap == Ops_9Heap;
+            b_29_1 := b_27_1 && b_28_1;
+            b_29_1 := b_29_1 && state(Result_9Heap, Result_9Mask);
+            b_29_1 := b_29_1 && sumMask(Result_9Mask, Ops_9Mask, Used_14Mask);
+            b_29_1 := (b_29_1 && IdenticalOnKnownLocations(Ops_9Heap, Result_9Heap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_14Heap, Result_9Heap, Used_14Mask);
+            b_29_1 := b_29_1 && state(Result_9Heap, Result_9Mask);
+          b_27_1 := b_27_1 && b_29_1;
+        b_27_1 := b_27_1 && b_28_1;
+        b_27_1 := b_27_1 && Used_14Heap == Ops_9Heap;
         
         // -- Transfer of acc(x.f, write)
           rcvLocal := x;
           neededTransfer := FullPerm;
           initNeededTransfer := Ops_9Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@48.16--48.51) [139309]"}
+          assert {:msg "  Assert might fail. Fraction acc(x.f, write) might be negative. (AssertTransfer.vpr@48.16--48.51) [223187]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
             // accumulate constraints which need to be satisfied for transfer to occur
             accVar2 := true;
             // actual code for the transfer from current state on stack
-            if (((b_27 && b_27) && accVar2) && neededTransfer > 0.000000000) {
+            if (((b_27_1 && b_27_1) && accVar2) && neededTransfer > 0.000000000) {
               maskTransfer := Used_14Mask[rcvLocal, f_7];
               if (neededTransfer <= maskTransfer) {
                 takeTransfer := neededTransfer;
@@ -1384,36 +1384,36 @@ procedure test4(x: Ref) returns ()
               if (takeTransfer > 0.000000000) {
                 neededTransfer := neededTransfer - takeTransfer;
                 Ops_9Mask := Ops_9Mask[rcvLocal, f_7:=Ops_9Mask[rcvLocal, f_7] + takeTransfer];
-                b_27 := b_27 && state(Ops_9Heap, Ops_9Mask);
-                b_27 := b_27 && Used_14Heap[rcvLocal, f_7] == Ops_9Heap[rcvLocal, f_7];
+                b_27_1 := b_27_1 && state(Ops_9Heap, Ops_9Mask);
+                b_27_1 := b_27_1 && Used_14Heap[rcvLocal, f_7] == Ops_9Heap[rcvLocal, f_7];
                 Used_14Mask := Used_14Mask[rcvLocal, f_7:=Used_14Mask[rcvLocal, f_7] - takeTransfer];
                 Used_14Heap := Used_14Heap[null, wand#sm(true, true):=Used_14Heap[null, wand#sm(true, true)][x, f_7:=true]];
               }
             }
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@48.16--48.51) [139310]"}
-            b_27 && b_27 ==> neededTransfer == 0.000000000 && Ops_9Mask[rcvLocal, f_7] == initNeededTransfer;
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@48.16--48.51) [223188]"}
+            b_27_1 && b_27_1 ==> neededTransfer == 0.000000000 && Ops_9Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
-            b_30 := b_27 && b_28;
-            b_30 := b_30 && state(Result_10Heap, Result_10Mask);
-            b_30 := b_30 && sumMask(Result_10Mask, Ops_9Mask, Used_14Mask);
-            b_30 := (b_30 && IdenticalOnKnownLocations(Ops_9Heap, Result_10Heap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_14Heap, Result_10Heap, Used_14Mask);
-            b_30 := b_30 && state(Result_10Heap, Result_10Mask);
-          b_27 := b_27 && b_30;
-        if (b_27 ==> Result_10Heap[x, f_7] == 0) {
+            b_30_1 := b_27_1 && b_28_1;
+            b_30_1 := b_30_1 && state(Result_10Heap, Result_10Mask);
+            b_30_1 := b_30_1 && sumMask(Result_10Mask, Ops_9Mask, Used_14Mask);
+            b_30_1 := (b_30_1 && IdenticalOnKnownLocations(Ops_9Heap, Result_10Heap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_14Heap, Result_10Heap, Used_14Mask);
+            b_30_1 := b_30_1 && state(Result_10Heap, Result_10Mask);
+          b_27_1 := b_27_1 && b_30_1;
+        if (b_27_1 ==> Result_10Heap[x, f_7] == 0) {
           
           // -- Transfer of acc(x.g, write)
             rcvLocal := x;
             neededTransfer := FullPerm;
             initNeededTransfer := Used_14Mask[rcvLocal, g] + neededTransfer;
-            assert {:msg "  Assert might fail. Fraction acc(x.g, write) might be negative. (AssertTransfer.vpr@48.16--48.51) [139311]"}
+            assert {:msg "  Assert might fail. Fraction acc(x.g, write) might be negative. (AssertTransfer.vpr@48.16--48.51) [223189]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
               // accumulate constraints which need to be satisfied for transfer to occur
               accVar2 := true;
               // actual code for the transfer from current state on stack
-              if (((b_27 && b_28) && accVar2) && neededTransfer > 0.000000000) {
+              if (((b_27_1 && b_28_1) && accVar2) && neededTransfer > 0.000000000) {
                 maskTransfer := Ops_9Mask[rcvLocal, g];
                 if (neededTransfer <= maskTransfer) {
                   takeTransfer := neededTransfer;
@@ -1423,8 +1423,8 @@ procedure test4(x: Ref) returns ()
                 if (takeTransfer > 0.000000000) {
                   neededTransfer := neededTransfer - takeTransfer;
                   Used_14Mask := Used_14Mask[rcvLocal, g:=Used_14Mask[rcvLocal, g] + takeTransfer];
-                  b_28 := b_28 && state(Used_14Heap, Used_14Mask);
-                  b_28 := b_28 && Ops_9Heap[rcvLocal, g] == Used_14Heap[rcvLocal, g];
+                  b_28_1 := b_28_1 && state(Used_14Heap, Used_14Mask);
+                  b_28_1 := b_28_1 && Ops_9Heap[rcvLocal, g] == Used_14Heap[rcvLocal, g];
                   Ops_9Mask := Ops_9Mask[rcvLocal, g:=Ops_9Mask[rcvLocal, g] - takeTransfer];
                 }
               }
@@ -1433,7 +1433,7 @@ procedure test4(x: Ref) returns ()
               // accumulate constraints which need to be satisfied for transfer to occur
               accVar2 := true;
               // actual code for the transfer from current state on stack
-              if (((b_27 && b_28) && accVar2) && neededTransfer > 0.000000000) {
+              if (((b_27_1 && b_28_1) && accVar2) && neededTransfer > 0.000000000) {
                 maskTransfer := Mask[rcvLocal, g];
                 if (neededTransfer <= maskTransfer) {
                   takeTransfer := neededTransfer;
@@ -1443,37 +1443,37 @@ procedure test4(x: Ref) returns ()
                 if (takeTransfer > 0.000000000) {
                   neededTransfer := neededTransfer - takeTransfer;
                   Used_14Mask := Used_14Mask[rcvLocal, g:=Used_14Mask[rcvLocal, g] + takeTransfer];
-                  b_28 := b_28 && state(Used_14Heap, Used_14Mask);
-                  b_28 := b_28 && Heap[rcvLocal, g] == Used_14Heap[rcvLocal, g];
+                  b_28_1 := b_28_1 && state(Used_14Heap, Used_14Mask);
+                  b_28_1 := b_28_1 && Heap[rcvLocal, g] == Used_14Heap[rcvLocal, g];
                   Mask := Mask[rcvLocal, g:=Mask[rcvLocal, g] - takeTransfer];
                   Heap := Heap[null, wand#sm(true, true):=Heap[null, wand#sm(true, true)][x, g:=true]];
                 }
               }
-            assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@48.16--48.51) [139312]"}
-              b_27 && b_28 ==> neededTransfer == 0.000000000 && Used_14Mask[rcvLocal, g] == initNeededTransfer;
+            assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@48.16--48.51) [223190]"}
+              b_27_1 && b_28_1 ==> neededTransfer == 0.000000000 && Used_14Mask[rcvLocal, g] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
-              b_31 := b_27 && b_28;
-              b_31 := b_31 && state(Result_11Heap, Result_11Mask);
-              b_31 := b_31 && sumMask(Result_11Mask, Ops_9Mask, Used_14Mask);
-              b_31 := (b_31 && IdenticalOnKnownLocations(Ops_9Heap, Result_11Heap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_14Heap, Result_11Heap, Used_14Mask);
-              b_31 := b_31 && state(Result_11Heap, Result_11Mask);
-            b_27 := b_27 && b_31;
-          b_27 := b_27 && b_28;
-          b_27 := b_27 && Used_14Heap == Ops_9Heap;
+              b_31_1 := b_27_1 && b_28_1;
+              b_31_1 := b_31_1 && state(Result_11Heap, Result_11Mask);
+              b_31_1 := b_31_1 && sumMask(Result_11Mask, Ops_9Mask, Used_14Mask);
+              b_31_1 := (b_31_1 && IdenticalOnKnownLocations(Ops_9Heap, Result_11Heap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_14Heap, Result_11Heap, Used_14Mask);
+              b_31_1 := b_31_1 && state(Result_11Heap, Result_11Mask);
+            b_27_1 := b_27_1 && b_31_1;
+          b_27_1 := b_27_1 && b_28_1;
+          b_27_1 := b_27_1 && Used_14Heap == Ops_9Heap;
           
           // -- Transfer of acc(x.g, write)
             rcvLocal := x;
             neededTransfer := FullPerm;
             initNeededTransfer := Ops_9Mask[rcvLocal, g] + neededTransfer;
-            assert {:msg "  Assert might fail. Fraction acc(x.g, write) might be negative. (AssertTransfer.vpr@48.16--48.51) [139313]"}
+            assert {:msg "  Assert might fail. Fraction acc(x.g, write) might be negative. (AssertTransfer.vpr@48.16--48.51) [223191]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
               // accumulate constraints which need to be satisfied for transfer to occur
               accVar2 := true;
               // actual code for the transfer from current state on stack
-              if (((b_27 && b_27) && accVar2) && neededTransfer > 0.000000000) {
+              if (((b_27_1 && b_27_1) && accVar2) && neededTransfer > 0.000000000) {
                 maskTransfer := Used_14Mask[rcvLocal, g];
                 if (neededTransfer <= maskTransfer) {
                   takeTransfer := neededTransfer;
@@ -1483,69 +1483,69 @@ procedure test4(x: Ref) returns ()
                 if (takeTransfer > 0.000000000) {
                   neededTransfer := neededTransfer - takeTransfer;
                   Ops_9Mask := Ops_9Mask[rcvLocal, g:=Ops_9Mask[rcvLocal, g] + takeTransfer];
-                  b_27 := b_27 && state(Ops_9Heap, Ops_9Mask);
-                  b_27 := b_27 && Used_14Heap[rcvLocal, g] == Ops_9Heap[rcvLocal, g];
+                  b_27_1 := b_27_1 && state(Ops_9Heap, Ops_9Mask);
+                  b_27_1 := b_27_1 && Used_14Heap[rcvLocal, g] == Ops_9Heap[rcvLocal, g];
                   Used_14Mask := Used_14Mask[rcvLocal, g:=Used_14Mask[rcvLocal, g] - takeTransfer];
                   Used_14Heap := Used_14Heap[null, wand#sm(true, true):=Used_14Heap[null, wand#sm(true, true)][x, g:=true]];
                 }
               }
-            assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@48.16--48.51) [139314]"}
-              b_27 && b_27 ==> neededTransfer == 0.000000000 && Ops_9Mask[rcvLocal, g] == initNeededTransfer;
+            assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@48.16--48.51) [223192]"}
+              b_27_1 && b_27_1 ==> neededTransfer == 0.000000000 && Ops_9Mask[rcvLocal, g] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
-              b_32 := b_27 && b_28;
-              b_32 := b_32 && state(Result_12Heap, Result_12Mask);
-              b_32 := b_32 && sumMask(Result_12Mask, Ops_9Mask, Used_14Mask);
-              b_32 := (b_32 && IdenticalOnKnownLocations(Ops_9Heap, Result_12Heap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_14Heap, Result_12Heap, Used_14Mask);
-              b_32 := b_32 && state(Result_12Heap, Result_12Mask);
-            b_27 := b_27 && b_32;
+              b_32_1 := b_27_1 && b_28_1;
+              b_32_1 := b_32_1 && state(Result_12Heap, Result_12Mask);
+              b_32_1 := b_32_1 && sumMask(Result_12Mask, Ops_9Mask, Used_14Mask);
+              b_32_1 := (b_32_1 && IdenticalOnKnownLocations(Ops_9Heap, Result_12Heap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_14Heap, Result_12Heap, Used_14Mask);
+              b_32_1 := b_32_1 && state(Result_12Heap, Result_12Mask);
+            b_27_1 := b_27_1 && b_32_1;
         }
         
         // -- Creating state which is the sum of the two previously built up states
-          b_33 := b_27 && b_28;
-          b_33 := b_33 && state(Result_13Heap, Result_13Mask);
-          b_33 := b_33 && sumMask(Result_13Mask, Ops_9Mask, Used_14Mask);
-          b_33 := (b_33 && IdenticalOnKnownLocations(Ops_9Heap, Result_13Heap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_14Heap, Result_13Heap, Used_14Mask);
-          b_33 := b_33 && state(Result_13Heap, Result_13Mask);
-        b_27 := b_27 && b_33;
-        b_27 := b_27 && state(Ops_9Heap, Ops_9Mask);
+          b_33_1 := b_27_1 && b_28_1;
+          b_33_1 := b_33_1 && state(Result_13Heap, Result_13Mask);
+          b_33_1 := b_33_1 && sumMask(Result_13Mask, Ops_9Mask, Used_14Mask);
+          b_33_1 := (b_33_1 && IdenticalOnKnownLocations(Ops_9Heap, Result_13Heap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_14Heap, Result_13Heap, Used_14Mask);
+          b_33_1 := b_33_1 && state(Result_13Heap, Result_13Mask);
+        b_27_1 := b_27_1 && b_33_1;
+        b_27_1 := b_27_1 && state(Ops_9Heap, Ops_9Mask);
     }
-    if (b_27) {
+    if (b_27_1) {
       
       // -- Translating statement: if (x.f == 0) -- AssertTransfer.vpr@49.9--56.10
-        if (b_27) {
+        if (b_27_1) {
           
           // -- Check definedness of x.f == 0
-            assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@49.13--49.21) [139315]"}
+            assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.f (AssertTransfer.vpr@49.13--49.21) [223193]"}
               HasDirectPerm(Ops_9Mask, x, f_7);
         }
-        if (b_27 ==> Ops_9Heap[x, f_7] == 0) {
+        if (b_27_1 ==> Ops_9Heap[x, f_7] == 0) {
           
           // -- Translating statement: if (x.g == 0) -- AssertTransfer.vpr@50.13--51.14
-            if (b_27) {
+            if (b_27_1) {
               
               // -- Check definedness of x.g == 0
-                assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@50.17--50.25) [139316]"}
+                assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@50.17--50.25) [223194]"}
                   HasDirectPerm(Ops_9Mask, x, g);
             }
-            b_27 := b_27 && state(Ops_9Heap, Ops_9Mask);
+            b_27_1 := b_27_1 && state(Ops_9Heap, Ops_9Mask);
         } else {
           
           // -- Translating statement: if (x.g == 0) -- AssertTransfer.vpr@54.13--55.14
-            if (b_27) {
+            if (b_27_1) {
               
               // -- Check definedness of x.g == 0
-                assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@54.17--54.25) [139317]"}
+                assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.g (AssertTransfer.vpr@54.17--54.25) [223195]"}
                   HasDirectPerm(Ops_9Mask, x, g);
             }
-            b_27 := b_27 && state(Ops_9Heap, Ops_9Mask);
+            b_27_1 := b_27_1 && state(Ops_9Heap, Ops_9Mask);
         }
-        b_27 := b_27 && state(Ops_9Heap, Ops_9Mask);
+        b_27_1 := b_27_1 && state(Ops_9Heap, Ops_9Mask);
     }
     // Translating exec of non-ghost operationtrue
     havoc Used_15Heap;
     Used_15Mask := ZeroMask;
-    b_34 := b_34 && state(Used_15Heap, Used_15Mask);
+    b_34_1 := b_34_1 && state(Used_15Heap, Used_15Mask);
     Mask := Mask[null, wand(true, true):=Mask[null, wand(true, true)] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);

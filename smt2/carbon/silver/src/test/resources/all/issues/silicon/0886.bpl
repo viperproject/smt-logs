@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:27:45
+// Date:         2025-01-26 21:42:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0886.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0886-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -182,11 +182,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo_2(Heap: HeapType): bool;
+function  foo_1(Heap: HeapType): bool;
 function  foo'(Heap: HeapType): bool;
 axiom (forall Heap: HeapType ::
-  { foo_2(Heap) }
-  foo_2(Heap) == foo'(Heap) && dummyFunction(foo#triggerStateless())
+  { foo_1(Heap) }
+  foo_1(Heap) == foo'(Heap) && dummyFunction(foo#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { foo'(Heap) }
@@ -201,7 +201,7 @@ axiom (forall Heap: HeapType, Mask: MaskType ::
 );
 
 // Trigger function (controlling recursive postconditions)
-function  foo#trigger(frame: FrameType): bool;
+function  foo#trigger_1(frame: FrameType): bool;
 
 // State-independent trigger function
 function  foo#triggerStateless(): bool;
@@ -244,7 +244,7 @@ axiom (forall Heap: HeapType, Mask: MaskType ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType ::
   { state(Heap, Mask), bar'(Heap) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || bar#trigger(EmptyFrame)) ==> foo_2(Heap)
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || bar#trigger(EmptyFrame)) ==> foo_1(Heap)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -275,7 +275,7 @@ procedure bar#definedness() returns (Result: int)
             // Stop execution
             assume false;
           }
-        assume foo_2(Heap);
+        assume foo_1(Heap);
         assume state(Heap, Mask);
         assume false;
       }

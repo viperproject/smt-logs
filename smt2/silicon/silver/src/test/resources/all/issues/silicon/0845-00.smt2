@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:31
+; Started: 2025-01-26 21:34:09
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -702,11 +702,11 @@
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (= (aloc%limited s@$ a@0@00 i@1@00) (aloc s@$ a@0@00 i@1@00))
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-23815|)))
+  :qid |quant-u-10699|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (aloc%stateless a@0@00 i@1@00)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-23816|)))
+  :qid |quant-u-10700|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (let ((result@2@00 (aloc%limited s@$ a@0@00 i@1@00))) (=>
     (aloc%precondition s@$ a@0@00 i@1@00)
@@ -714,15 +714,15 @@
       (= (loc_inv_1<Array> result@2@00) a@0@00)
       (= (loc_inv_2<Int> result@2@00) i@1@00))))
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-23821|)))
+  :qid |quant-u-10705|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (let ((result@2@00 (aloc%limited s@$ a@0@00 i@1@00))) true)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-23822|)))
+  :qid |quant-u-10706|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (let ((result@2@00 (aloc%limited s@$ a@0@00 i@1@00))) true)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-23823|)))
+  :qid |quant-u-10707|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -763,11 +763,11 @@
     (aloc%precondition s@$ a@0@00 i@1@00)
     (= (aloc s@$ a@0@00 i@1@00) (array_loc<Ref> a@0@00 i@1@00)))
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-23824|)))
+  :qid |quant-u-10708|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   true
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-23825|)))
+  :qid |quant-u-10709|)))
 ; ---------- FUNCTION get0----------
 (declare-fun x@3@00 () Array_)
 (declare-fun n@4@00 () Int)
@@ -901,11 +901,11 @@
 (assert (forall ((s@$ $Snap) (x@3@00 Array_) (n@4@00 Int) (i@5@00 Int)) (!
   (= (get0%limited s@$ x@3@00 n@4@00 i@5@00) (get0 s@$ x@3@00 n@4@00 i@5@00))
   :pattern ((get0 s@$ x@3@00 n@4@00 i@5@00))
-  :qid |quant-u-23817|)))
+  :qid |quant-u-10701|)))
 (assert (forall ((s@$ $Snap) (x@3@00 Array_) (n@4@00 Int) (i@5@00 Int)) (!
   (get0%stateless x@3@00 n@4@00 i@5@00)
   :pattern ((get0%limited s@$ x@3@00 n@4@00 i@5@00))
-  :qid |quant-u-23818|)))
+  :qid |quant-u-10702|)))
 (assert (forall ((s@$ $Snap) (x@3@00 Array_) (n@4@00 Int) (i@5@00 Int)) (!
   (let ((result@6@00 (get0%limited s@$ x@3@00 n@4@00 i@5@00))) (=>
     (get0%precondition s@$ x@3@00 n@4@00 i@5@00)
@@ -913,11 +913,11 @@
       result@6@00
       ($SortWrappers.$SnapToInt ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))
   :pattern ((get0%limited s@$ x@3@00 n@4@00 i@5@00))
-  :qid |quant-u-23826|)))
+  :qid |quant-u-10710|)))
 (assert (forall ((s@$ $Snap) (x@3@00 Array_) (n@4@00 Int) (i@5@00 Int)) (!
   (let ((result@6@00 (get0%limited s@$ x@3@00 n@4@00 i@5@00))) true)
   :pattern ((get0%limited s@$ x@3@00 n@4@00 i@5@00))
-  :qid |quant-u-23827|)))
+  :qid |quant-u-10711|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1075,11 +1075,11 @@
       ($SortWrappers.$SnapToInt ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((get0 s@$ x@3@00 n@4@00 i@5@00))
   :pattern ((get0%stateless x@3@00 n@4@00 i@5@00) (hide0%trigger ($Snap.second ($Snap.second s@$)) x@3@00 n@4@00 i@5@00))
-  :qid |quant-u-23828|)))
+  :qid |quant-u-10712|)))
 (assert (forall ((s@$ $Snap) (x@3@00 Array_) (n@4@00 Int) (i@5@00 Int)) (!
   true
   :pattern ((get0 s@$ x@3@00 n@4@00 i@5@00))
-  :qid |quant-u-23829|)))
+  :qid |quant-u-10713|)))
 ; ---------- FUNCTION get1----------
 (declare-fun x@7@00 () Array_)
 (declare-fun n@8@00 () Int)
@@ -1259,11 +1259,11 @@
 (assert (forall ((s@$ $Snap) (x@7@00 Array_) (n@8@00 Int) (i@9@00 Int)) (!
   (= (get1%limited s@$ x@7@00 n@8@00 i@9@00) (get1 s@$ x@7@00 n@8@00 i@9@00))
   :pattern ((get1 s@$ x@7@00 n@8@00 i@9@00))
-  :qid |quant-u-23819|)))
+  :qid |quant-u-10703|)))
 (assert (forall ((s@$ $Snap) (x@7@00 Array_) (n@8@00 Int) (i@9@00 Int)) (!
   (get1%stateless x@7@00 n@8@00 i@9@00)
   :pattern ((get1%limited s@$ x@7@00 n@8@00 i@9@00))
-  :qid |quant-u-23820|)))
+  :qid |quant-u-10704|)))
 (assert (forall ((s@$ $Snap) (x@7@00 Array_) (n@8@00 Int) (i@9@00 Int)) (!
   (let ((result@10@00 (get1%limited s@$ x@7@00 n@8@00 i@9@00))) (and
     ($Perm.isReadVar $k@13@00)
@@ -1275,11 +1275,11 @@
         result@10@00
         ($SortWrappers.$SnapToInt ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))
   :pattern ((get1%limited s@$ x@7@00 n@8@00 i@9@00))
-  :qid |quant-u-23830|)))
+  :qid |quant-u-10714|)))
 (assert (forall ((s@$ $Snap) (x@7@00 Array_) (n@8@00 Int) (i@9@00 Int)) (!
   (let ((result@10@00 (get1%limited s@$ x@7@00 n@8@00 i@9@00))) true)
   :pattern ((get1%limited s@$ x@7@00 n@8@00 i@9@00))
-  :qid |quant-u-23831|)))
+  :qid |quant-u-10715|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -1536,11 +1536,11 @@
         ($SortWrappers.$SnapToInt ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))
   :pattern ((get1 s@$ x@7@00 n@8@00 i@9@00))
   :pattern ((get1%stateless x@7@00 n@8@00 i@9@00) (hide1%trigger ($Snap.second ($Snap.second s@$)) x@7@00 n@8@00 i@9@00))
-  :qid |quant-u-23832|)))
+  :qid |quant-u-10716|)))
 (assert (forall ((s@$ $Snap) (x@7@00 Array_) (n@8@00 Int) (i@9@00 Int)) (!
   true
   :pattern ((get1 s@$ x@7@00 n@8@00 i@9@00))
-  :qid |quant-u-23833|)))
+  :qid |quant-u-10717|)))
 ; ---------- hide0 ----------
 (declare-const x@21@00 Array_)
 (declare-const n@22@00 Int)

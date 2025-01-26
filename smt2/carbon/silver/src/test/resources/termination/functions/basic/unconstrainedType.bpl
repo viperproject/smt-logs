@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:52
+// Date:         2025-01-26 21:41:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/unconstrainedType.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/unconstrainedType-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -201,42 +201,42 @@ function  bounded<T>(arg1_1: T): bool;
 // ==================================================
 
 // Uninterpreted function definitions
-function  fac(Heap: HeapType, i: int, h_2: HuhDomainType): int;
-function  fac'(Heap: HeapType, i: int, h_2: HuhDomainType): int;
-axiom (forall Heap: HeapType, i: int, h_2: HuhDomainType ::
-  { fac(Heap, i, h_2) }
-  fac(Heap, i, h_2) == fac'(Heap, i, h_2) && dummyFunction(fac#triggerStateless(i, h_2))
+function  fac(Heap: HeapType, i: int, h_1: HuhDomainType): int;
+function  fac'(Heap: HeapType, i: int, h_1: HuhDomainType): int;
+axiom (forall Heap: HeapType, i: int, h_1: HuhDomainType ::
+  { fac(Heap, i, h_1) }
+  fac(Heap, i, h_1) == fac'(Heap, i, h_1) && dummyFunction(fac#triggerStateless(i, h_1))
 );
-axiom (forall Heap: HeapType, i: int, h_2: HuhDomainType ::
-  { fac'(Heap, i, h_2) }
-  dummyFunction(fac#triggerStateless(i, h_2))
+axiom (forall Heap: HeapType, i: int, h_1: HuhDomainType ::
+  { fac'(Heap, i, h_1) }
+  dummyFunction(fac#triggerStateless(i, h_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, h_2: HuhDomainType ::
-  { state(Heap, Mask), fac(Heap, i, h_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> i >= 0 ==> fac(Heap, i, h_2) == (if i == 0 then 1 else i * fac'(Heap, i - 1, h_2))
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, h_1: HuhDomainType ::
+  { state(Heap, Mask), fac(Heap, i, h_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> i >= 0 ==> fac(Heap, i, h_1) == (if i == 0 then 1 else i * fac'(Heap, i - 1, h_1))
 );
 
 // Framing axioms
-function  fac#frame(frame: FrameType, i: int, h_2: HuhDomainType): int;
-axiom (forall Heap: HeapType, Mask: MaskType, i: int, h_2: HuhDomainType ::
-  { state(Heap, Mask), fac'(Heap, i, h_2) }
-  state(Heap, Mask) ==> fac'(Heap, i, h_2) == fac#frame(EmptyFrame, i, h_2)
+function  fac#frame(frame: FrameType, i: int, h_1: HuhDomainType): int;
+axiom (forall Heap: HeapType, Mask: MaskType, i: int, h_1: HuhDomainType ::
+  { state(Heap, Mask), fac'(Heap, i, h_1) }
+  state(Heap, Mask) ==> fac'(Heap, i, h_1) == fac#frame(EmptyFrame, i, h_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  fac#trigger(frame: FrameType, i: int, h_2: HuhDomainType): bool;
+function  fac#trigger(frame: FrameType, i: int, h_1: HuhDomainType): bool;
 
 // State-independent trigger function
-function  fac#triggerStateless(i: int, h_2: HuhDomainType): int;
+function  fac#triggerStateless(i: int, h_1: HuhDomainType): int;
 
 // Check contract well-formedness and postcondition
-procedure fac#definedness(i: int, h_2: HuhDomainType) returns (Result: int)
+procedure fac#definedness(i: int, h_1: HuhDomainType) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -255,33 +255,33 @@ procedure fac#definedness(i: int, h_2: HuhDomainType) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function fac might not hold. Assertion i - 1 >= 0 might not hold. (unconstrainedType.vpr@12.20--12.33) [223638]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function fac might not hold. Assertion i - 1 >= 0 might not hold. (unconstrainedType.vpr@12.20--12.33) [18078]"}
             i - 1 >= 0;
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume fac#trigger(EmptyFrame, i - 1, h_2);
+          assume fac#trigger(EmptyFrame, i - 1, h_1);
         }
       }
   
   // -- Translate function body
-    Result := (if i == 0 then 1 else i * fac(Heap, i - 1, h_2));
+    Result := (if i == 0 then 1 else i * fac(Heap, i - 1, h_1));
 }
 
 // ==================================================
 // Translation of method fac_termination_proof
 // ==================================================
 
-procedure fac_termination_proof(i: int, h_2: HuhDomainType) returns ()
+procedure fac_termination_proof(i: int, h_1: HuhDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -296,20 +296,20 @@ procedure fac_termination_proof(i: int, h_2: HuhDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (i == 0) -- <no position>
     if (i == 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(h, old(h)): Bool) && (bounded(old(h)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(h, old(h)): Bool) might not hold. (<no position>) [223639]"}
-          (decreasing(h_2, h_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(h)): Bool) might not hold. (<no position>) [223640]"}
-          (bounded(h_2): bool);
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(h, old(h)): Bool) might not hold. (<no position>) [18079]"}
+          (decreasing(h_1, h_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(h)): Bool) might not hold. (<no position>) [18080]"}
+          (bounded(h_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:18:33
+// Date:         2025-01-26 21:41:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testPVLLocks.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testPVLLocks-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -331,8 +331,8 @@ procedure Queue__lock_invariant#definedness(diz: Ref) returns ()
 procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
@@ -347,8 +347,8 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
   var freshObj: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var arg_diz: Ref;
   var arg_diz_1: Ref;
   var AssertHeap: HeapType;
@@ -367,8 +367,8 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -384,7 +384,7 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Main__q1 != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Main__q1 (testPVLLocks.vpr@28.11--28.39) [171081]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Main__q1 (testPVLLocks.vpr@28.11--28.39) [24888]"}
         HasDirectPerm(PostMask, sys__result, Main__q1);
     assume PostHeap[sys__result, Main__q1] != null;
     assume state(PostHeap, PostMask);
@@ -396,7 +396,7 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Main__q2 != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Main__q2 (testPVLLocks.vpr@30.11--30.39) [171082]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Main__q2 (testPVLLocks.vpr@30.11--30.39) [24889]"}
         HasDirectPerm(PostMask, sys__result, Main__q2);
     assume PostHeap[sys__result, Main__q2] != null;
     assume state(PostHeap, PostMask);
@@ -427,9 +427,9 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Queue__Queue might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@40.3--40.49) [171083]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Queue__Queue might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@40.3--40.49) [24890]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -450,7 +450,7 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Main__q1 := __flatten_24 -- testPVLLocks.vpr@43.3--43.31
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Main__q1 (testPVLLocks.vpr@43.3--43.31) [171084]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Main__q1 (testPVLLocks.vpr@43.3--43.31) [24891]"}
       FullPerm == Mask[diz, Main__q1];
     Heap := Heap[diz, Main__q1:=__flatten_24];
     assume state(Heap, Mask);
@@ -460,9 +460,9 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Queue__Queue might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@44.3--44.49) [171085]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Queue__Queue might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@44.3--44.49) [24892]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -483,7 +483,7 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Main__q2 := __flatten_26 -- testPVLLocks.vpr@47.3--47.31
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Main__q2 (testPVLLocks.vpr@47.3--47.31) [171086]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Main__q2 (testPVLLocks.vpr@47.3--47.31) [24893]"}
       FullPerm == Mask[diz, Main__q2];
     Heap := Heap[diz, Main__q2:=__flatten_26];
     assume state(Heap, Mask);
@@ -493,16 +493,16 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     PreCallMask := Mask;
     
     // -- Check definedness of diz.Main__q1
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q1 (testPVLLocks.vpr@48.3--48.49) [171087]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q1 (testPVLLocks.vpr@48.3--48.49) [24894]"}
         HasDirectPerm(Mask, diz, Main__q1);
     arg_diz := Heap[diz, Main__q1];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Queue__put might not hold. Assertion diz.Main__q1 != null might not hold. (testPVLLocks.vpr@48.3--48.49) [171088]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Queue__put might not hold. Assertion diz.Main__q1 != null might not hold. (testPVLLocks.vpr@48.3--48.49) [24895]"}
         arg_diz != null;
-      assert {:msg "  The precondition of method Queue__put might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@48.3--48.49) [171089]"}
+      assert {:msg "  The precondition of method Queue__put might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@48.3--48.49) [24896]"}
         current_thread_id >= 0;
     
     // -- Inhaling postcondition
@@ -514,16 +514,16 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     PreCallMask := Mask;
     
     // -- Check definedness of diz.Main__q2
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q2 (testPVLLocks.vpr@49.3--49.49) [171090]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q2 (testPVLLocks.vpr@49.3--49.49) [24897]"}
         HasDirectPerm(Mask, diz, Main__q2);
     arg_diz_1 := Heap[diz, Main__q2];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Queue__put might not hold. Assertion diz.Main__q2 != null might not hold. (testPVLLocks.vpr@49.3--49.49) [171091]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Queue__put might not hold. Assertion diz.Main__q2 != null might not hold. (testPVLLocks.vpr@49.3--49.49) [24898]"}
         arg_diz_1 != null;
-      assert {:msg "  The precondition of method Queue__put might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@49.3--49.49) [171092]"}
+      assert {:msg "  The precondition of method Queue__put might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@49.3--49.49) [24899]"}
         current_thread_id >= 0;
     
     // -- Inhaling postcondition
@@ -540,31 +540,31 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
   //   (acc(sys__result.Main__q2, wildcard) && sys__result.Main__q2 != null))) -- testPVLLocks.vpr@51.3--51.177
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testPVLLocks.vpr@51.10--51.177) [171093]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testPVLLocks.vpr@51.10--51.177) [24900]"}
       sys__result != null;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Main__q1 (testPVLLocks.vpr@51.10--51.177) [171094]"}
+    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Main__q1 (testPVLLocks.vpr@51.10--51.177) [24901]"}
       AssertMask[sys__result, Main__q1] > NoPerm;
     havoc wildcard;
     assume wildcard < AssertMask[sys__result, Main__q1];
     AssertMask := AssertMask[sys__result, Main__q1:=AssertMask[sys__result, Main__q1] - wildcard];
     
     // -- Check definedness of sys__result.Main__q1 != null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Main__q1 (testPVLLocks.vpr@51.10--51.177) [171095]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Main__q1 (testPVLLocks.vpr@51.10--51.177) [24902]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Main__q1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Main__q1 != null might not hold. (testPVLLocks.vpr@51.10--51.177) [171096]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Main__q1 != null might not hold. (testPVLLocks.vpr@51.10--51.177) [24903]"}
       AssertHeap[sys__result, Main__q1] != null;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Main__q2 (testPVLLocks.vpr@51.10--51.177) [171097]"}
+    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Main__q2 (testPVLLocks.vpr@51.10--51.177) [24904]"}
       AssertMask[sys__result, Main__q2] > NoPerm;
     havoc wildcard;
     assume wildcard < AssertMask[sys__result, Main__q2];
     AssertMask := AssertMask[sys__result, Main__q2:=AssertMask[sys__result, Main__q2] - wildcard];
     
     // -- Check definedness of sys__result.Main__q2 != null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Main__q2 (testPVLLocks.vpr@51.10--51.177) [171098]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Main__q2 (testPVLLocks.vpr@51.10--51.177) [24905]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Main__q2);
-    assert {:msg "  Assert might fail. Assertion sys__result.Main__q2 != null might not hold. (testPVLLocks.vpr@51.10--51.177) [171099]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Main__q2 != null might not hold. (testPVLLocks.vpr@51.10--51.177) [24906]"}
       AssertHeap[sys__result, Main__q2] != null;
     assume state(Heap, Mask);
   
@@ -574,23 +574,23 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result != null might not hold. (testPVLLocks.vpr@26.11--26.30) [171100]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result != null might not hold. (testPVLLocks.vpr@26.11--26.30) [24907]"}
       sys__result != null;
-    assert {:msg "  Postcondition of Main__Main might not hold. There might be insufficient permission to access sys__result.Main__q1 (testPVLLocks.vpr@27.11--27.46) [171101]"}
+    assert {:msg "  Postcondition of Main__Main might not hold. There might be insufficient permission to access sys__result.Main__q1 (testPVLLocks.vpr@27.11--27.46) [24908]"}
       Mask[sys__result, Main__q1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, Main__q1];
     Mask := Mask[sys__result, Main__q1:=Mask[sys__result, Main__q1] - wildcard];
-    assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result.Main__q1 != null might not hold. (testPVLLocks.vpr@28.11--28.39) [171102]"}
+    assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result.Main__q1 != null might not hold. (testPVLLocks.vpr@28.11--28.39) [24909]"}
       Heap[sys__result, Main__q1] != null;
-    assert {:msg "  Postcondition of Main__Main might not hold. There might be insufficient permission to access sys__result.Main__q2 (testPVLLocks.vpr@29.11--29.46) [171103]"}
+    assert {:msg "  Postcondition of Main__Main might not hold. There might be insufficient permission to access sys__result.Main__q2 (testPVLLocks.vpr@29.11--29.46) [24910]"}
       Mask[sys__result, Main__q2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, Main__q2];
     Mask := Mask[sys__result, Main__q2:=Mask[sys__result, Main__q2] - wildcard];
-    assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result.Main__q2 != null might not hold. (testPVLLocks.vpr@30.11--30.39) [171104]"}
+    assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result.Main__q2 != null might not hold. (testPVLLocks.vpr@30.11--30.39) [24911]"}
       Heap[sys__result, Main__q2] != null;
     // Finish exhale
     havoc ExhaleHeap;
@@ -607,8 +607,8 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var w1: Ref;
   var __flatten_7: Ref;
   var w2: Ref;
@@ -617,8 +617,8 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
   var PreCallMask: MaskType;
   var arg_q1: Ref;
   var arg_q2: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var arg_q1_1: Ref;
   var arg_q2_1: Ref;
   var ExhaleHeap: HeapType;
@@ -644,7 +644,7 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Main__q1 != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Main__q1 (testPVLLocks.vpr@59.12--59.32) [171105]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Main__q1 (testPVLLocks.vpr@59.12--59.32) [24912]"}
         HasDirectPerm(Mask, diz, Main__q1);
     assume Heap[diz, Main__q1] != null;
     assume state(Heap, Mask);
@@ -656,7 +656,7 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Main__q2 != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Main__q2 (testPVLLocks.vpr@61.12--61.32) [171106]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Main__q2 (testPVLLocks.vpr@61.12--61.32) [24913]"}
         HasDirectPerm(Mask, diz, Main__q2);
     assume Heap[diz, Main__q2] != null;
     assume state(Heap, Mask);
@@ -664,8 +664,8 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[w1, $allocated];
@@ -678,19 +678,19 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Check definedness of diz.Main__q1
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q1 (testPVLLocks.vpr@67.3--67.79) [171107]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q1 (testPVLLocks.vpr@67.3--67.79) [24914]"}
         HasDirectPerm(Mask, diz, Main__q1);
     
     // -- Check definedness of diz.Main__q2
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q2 (testPVLLocks.vpr@67.3--67.79) [171108]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q2 (testPVLLocks.vpr@67.3--67.79) [24915]"}
         HasDirectPerm(Mask, diz, Main__q2);
     arg_q1 := Heap[diz, Main__q1];
     arg_q2 := Heap[diz, Main__q2];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@67.3--67.79) [171109]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@67.3--67.79) [24916]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -723,19 +723,19 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Check definedness of diz.Main__q2
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q2 (testPVLLocks.vpr@69.3--69.79) [171110]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q2 (testPVLLocks.vpr@69.3--69.79) [24917]"}
         HasDirectPerm(Mask, diz, Main__q2);
     
     // -- Check definedness of diz.Main__q1
-      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q1 (testPVLLocks.vpr@69.3--69.79) [171111]"}
+      assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Main__q1 (testPVLLocks.vpr@69.3--69.79) [24918]"}
         HasDirectPerm(Mask, diz, Main__q1);
     arg_q1_1 := Heap[diz, Main__q2];
     arg_q2_1 := Heap[diz, Main__q1];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@69.3--69.79) [171112]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__Worker might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@69.3--69.79) [24919]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -768,25 +768,25 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w1 != null might not hold. (testPVLLocks.vpr@71.3--71.46) [171113]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w1 != null might not hold. (testPVLLocks.vpr@71.3--71.46) [24920]"}
         w1 != null;
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@71.3--71.46) [171114]"}
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@71.3--71.46) [24921]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. There might be insufficient permission to access w1.Worker__q1 (testPVLLocks.vpr@71.3--71.46) [171115]"}
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. There might be insufficient permission to access w1.Worker__q1 (testPVLLocks.vpr@71.3--71.46) [24922]"}
         Mask[w1, Worker__q1] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[w1, Worker__q1];
       Mask := Mask[w1, Worker__q1:=Mask[w1, Worker__q1] - wildcard];
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w1.Worker__q1 != null might not hold. (testPVLLocks.vpr@71.3--71.46) [171116]"}
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w1.Worker__q1 != null might not hold. (testPVLLocks.vpr@71.3--71.46) [24923]"}
         Heap[w1, Worker__q1] != null;
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. There might be insufficient permission to access w1.Worker__q2 (testPVLLocks.vpr@71.3--71.46) [171117]"}
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. There might be insufficient permission to access w1.Worker__q2 (testPVLLocks.vpr@71.3--71.46) [24924]"}
         Mask[w1, Worker__q2] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[w1, Worker__q2];
       Mask := Mask[w1, Worker__q2:=Mask[w1, Worker__q2] - wildcard];
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w1.Worker__q2 != null might not hold. (testPVLLocks.vpr@71.3--71.46) [171118]"}
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w1.Worker__q2 != null might not hold. (testPVLLocks.vpr@71.3--71.46) [24925]"}
         Heap[w1, Worker__q2] != null;
       // Finish exhale
       havoc ExhaleHeap;
@@ -805,25 +805,25 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w2 != null might not hold. (testPVLLocks.vpr@72.3--72.46) [171119]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w2 != null might not hold. (testPVLLocks.vpr@72.3--72.46) [24926]"}
         w2 != null;
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@72.3--72.46) [171120]"}
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@72.3--72.46) [24927]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. There might be insufficient permission to access w2.Worker__q1 (testPVLLocks.vpr@72.3--72.46) [171121]"}
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. There might be insufficient permission to access w2.Worker__q1 (testPVLLocks.vpr@72.3--72.46) [24928]"}
         Mask[w2, Worker__q1] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[w2, Worker__q1];
       Mask := Mask[w2, Worker__q1:=Mask[w2, Worker__q1] - wildcard];
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w2.Worker__q1 != null might not hold. (testPVLLocks.vpr@72.3--72.46) [171122]"}
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w2.Worker__q1 != null might not hold. (testPVLLocks.vpr@72.3--72.46) [24929]"}
         Heap[w2, Worker__q1] != null;
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. There might be insufficient permission to access w2.Worker__q2 (testPVLLocks.vpr@72.3--72.46) [171123]"}
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. There might be insufficient permission to access w2.Worker__q2 (testPVLLocks.vpr@72.3--72.46) [24930]"}
         Mask[w2, Worker__q2] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[w2, Worker__q2];
       Mask := Mask[w2, Worker__q2:=Mask[w2, Worker__q2] - wildcard];
-      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w2.Worker__q2 != null might not hold. (testPVLLocks.vpr@72.3--72.46) [171124]"}
+      assert {:msg "  The precondition of method Worker__forkOperator might not hold. Assertion w2.Worker__q2 != null might not hold. (testPVLLocks.vpr@72.3--72.46) [24931]"}
         Heap[w2, Worker__q2] != null;
       // Finish exhale
       havoc ExhaleHeap;
@@ -842,15 +842,15 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__joinOperator might not hold. Assertion w1 != null might not hold. (testPVLLocks.vpr@73.3--73.46) [171125]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__joinOperator might not hold. Assertion w1 != null might not hold. (testPVLLocks.vpr@73.3--73.46) [24932]"}
         w1 != null;
-      assert {:msg "  The precondition of method Worker__joinOperator might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@73.3--73.46) [171126]"}
+      assert {:msg "  The precondition of method Worker__joinOperator might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@73.3--73.46) [24933]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__joinOperator might not hold. There might be insufficient permission to access Worker__joinToken(w1) (testPVLLocks.vpr@73.3--73.46) [171127]"}
+        assert {:msg "  The precondition of method Worker__joinOperator might not hold. There might be insufficient permission to access Worker__joinToken(w1) (testPVLLocks.vpr@73.3--73.46) [24934]"}
           perm <= Mask[null, Worker__joinToken(w1)];
       }
       Mask := Mask[null, Worker__joinToken(w1):=Mask[null, Worker__joinToken(w1)] - perm];
@@ -868,15 +868,15 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Worker__joinOperator might not hold. Assertion w2 != null might not hold. (testPVLLocks.vpr@74.3--74.46) [171128]"}
+      ExhaleWellDef0Mask := Mask;
+      assert {:msg "  The precondition of method Worker__joinOperator might not hold. Assertion w2 != null might not hold. (testPVLLocks.vpr@74.3--74.46) [24935]"}
         w2 != null;
-      assert {:msg "  The precondition of method Worker__joinOperator might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@74.3--74.46) [171129]"}
+      assert {:msg "  The precondition of method Worker__joinOperator might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@74.3--74.46) [24936]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Worker__joinOperator might not hold. There might be insufficient permission to access Worker__joinToken(w2) (testPVLLocks.vpr@74.3--74.46) [171130]"}
+        assert {:msg "  The precondition of method Worker__joinOperator might not hold. There might be insufficient permission to access Worker__joinToken(w2) (testPVLLocks.vpr@74.3--74.46) [24937]"}
           perm <= Mask[null, Worker__joinToken(w2)];
       }
       Mask := Mask[null, Worker__joinToken(w2):=Mask[null, Worker__joinToken(w2)] - perm];
@@ -897,8 +897,8 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
 procedure Worker__Worker(current_thread_id: int, q1: Ref, q2: Ref) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
@@ -911,8 +911,8 @@ procedure Worker__Worker(current_thread_id: int, q1: Ref, q2: Ref) returns (sys_
   var freshObj: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -931,8 +931,8 @@ procedure Worker__Worker(current_thread_id: int, q1: Ref, q2: Ref) returns (sys_
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -948,7 +948,7 @@ procedure Worker__Worker(current_thread_id: int, q1: Ref, q2: Ref) returns (sys_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Worker__q1 == q1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__q1 (testPVLLocks.vpr@81.11--81.39) [171131]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__q1 (testPVLLocks.vpr@81.11--81.39) [24938]"}
         HasDirectPerm(PostMask, sys__result, Worker__q1);
     assume PostHeap[sys__result, Worker__q1] == q1;
     assume state(PostHeap, PostMask);
@@ -960,7 +960,7 @@ procedure Worker__Worker(current_thread_id: int, q1: Ref, q2: Ref) returns (sys_
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Worker__q2 == q2
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__q2 (testPVLLocks.vpr@83.11--83.39) [171132]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Worker__q2 (testPVLLocks.vpr@83.11--83.39) [24939]"}
         HasDirectPerm(PostMask, sys__result, Worker__q2);
     assume PostHeap[sys__result, Worker__q2] == q2;
     assume state(PostHeap, PostMask);
@@ -993,7 +993,7 @@ procedure Worker__Worker(current_thread_id: int, q1: Ref, q2: Ref) returns (sys_
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Worker__q1 := __flatten_35 -- testPVLLocks.vpr@93.3--93.33
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@93.3--93.33) [171133]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@93.3--93.33) [24940]"}
       FullPerm == Mask[diz, Worker__q1];
     Heap := Heap[diz, Worker__q1:=__flatten_35];
     assume state(Heap, Mask);
@@ -1007,7 +1007,7 @@ procedure Worker__Worker(current_thread_id: int, q1: Ref, q2: Ref) returns (sys_
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Worker__q2 := __flatten_36 -- testPVLLocks.vpr@96.3--96.33
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@96.3--96.33) [171134]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@96.3--96.33) [24941]"}
       FullPerm == Mask[diz, Worker__q2];
     Heap := Heap[diz, Worker__q2:=__flatten_36];
     assume state(Heap, Mask);
@@ -1022,31 +1022,31 @@ procedure Worker__Worker(current_thread_id: int, q1: Ref, q2: Ref) returns (sys_
   //   (acc(sys__result.Worker__q2, wildcard) && sys__result.Worker__q2 == q2))) -- testPVLLocks.vpr@98.3--98.181
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testPVLLocks.vpr@98.10--98.181) [171135]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testPVLLocks.vpr@98.10--98.181) [24942]"}
       sys__result != null;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__q1 (testPVLLocks.vpr@98.10--98.181) [171136]"}
+    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__q1 (testPVLLocks.vpr@98.10--98.181) [24943]"}
       AssertMask[sys__result, Worker__q1] > NoPerm;
     havoc wildcard;
     assume wildcard < AssertMask[sys__result, Worker__q1];
     AssertMask := AssertMask[sys__result, Worker__q1:=AssertMask[sys__result, Worker__q1] - wildcard];
     
     // -- Check definedness of sys__result.Worker__q1 == q1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__q1 (testPVLLocks.vpr@98.10--98.181) [171137]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__q1 (testPVLLocks.vpr@98.10--98.181) [24944]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Worker__q1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Worker__q1 == q1 might not hold. (testPVLLocks.vpr@98.10--98.181) [171138]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Worker__q1 == q1 might not hold. (testPVLLocks.vpr@98.10--98.181) [24945]"}
       AssertHeap[sys__result, Worker__q1] == q1;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__q2 (testPVLLocks.vpr@98.10--98.181) [171139]"}
+    assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__q2 (testPVLLocks.vpr@98.10--98.181) [24946]"}
       AssertMask[sys__result, Worker__q2] > NoPerm;
     havoc wildcard;
     assume wildcard < AssertMask[sys__result, Worker__q2];
     AssertMask := AssertMask[sys__result, Worker__q2:=AssertMask[sys__result, Worker__q2] - wildcard];
     
     // -- Check definedness of sys__result.Worker__q2 == q2
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__q2 (testPVLLocks.vpr@98.10--98.181) [171140]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Worker__q2 (testPVLLocks.vpr@98.10--98.181) [24947]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Worker__q2);
-    assert {:msg "  Assert might fail. Assertion sys__result.Worker__q2 == q2 might not hold. (testPVLLocks.vpr@98.10--98.181) [171141]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Worker__q2 == q2 might not hold. (testPVLLocks.vpr@98.10--98.181) [24948]"}
       AssertHeap[sys__result, Worker__q2] == q2;
     assume state(Heap, Mask);
   
@@ -1056,23 +1056,23 @@ procedure Worker__Worker(current_thread_id: int, q1: Ref, q2: Ref) returns (sys_
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result != null might not hold. (testPVLLocks.vpr@79.11--79.30) [171142]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result != null might not hold. (testPVLLocks.vpr@79.11--79.30) [24949]"}
       sys__result != null;
-    assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access sys__result.Worker__q1 (testPVLLocks.vpr@80.11--80.48) [171143]"}
+    assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access sys__result.Worker__q1 (testPVLLocks.vpr@80.11--80.48) [24950]"}
       Mask[sys__result, Worker__q1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, Worker__q1];
     Mask := Mask[sys__result, Worker__q1:=Mask[sys__result, Worker__q1] - wildcard];
-    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result.Worker__q1 == q1 might not hold. (testPVLLocks.vpr@81.11--81.39) [171144]"}
+    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result.Worker__q1 == q1 might not hold. (testPVLLocks.vpr@81.11--81.39) [24951]"}
       Heap[sys__result, Worker__q1] == q1;
-    assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access sys__result.Worker__q2 (testPVLLocks.vpr@82.11--82.48) [171145]"}
+    assert {:msg "  Postcondition of Worker__Worker might not hold. There might be insufficient permission to access sys__result.Worker__q2 (testPVLLocks.vpr@82.11--82.48) [24952]"}
       Mask[sys__result, Worker__q2] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[sys__result, Worker__q2];
     Mask := Mask[sys__result, Worker__q2:=Mask[sys__result, Worker__q2] - wildcard];
-    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result.Worker__q2 == q2 might not hold. (testPVLLocks.vpr@83.11--83.39) [171146]"}
+    assert {:msg "  Postcondition of Worker__Worker might not hold. Assertion sys__result.Worker__q2 == q2 might not hold. (testPVLLocks.vpr@83.11--83.39) [24953]"}
       Heap[sys__result, Worker__q2] == q2;
     // Finish exhale
     havoc ExhaleHeap;
@@ -1089,12 +1089,12 @@ procedure Worker__forkOperator(diz: Ref, current_thread_id: int) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1118,7 +1118,7 @@ procedure Worker__forkOperator(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Worker__q1 != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@106.12--106.34) [171147]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@106.12--106.34) [24954]"}
         HasDirectPerm(Mask, diz, Worker__q1);
     assume Heap[diz, Worker__q1] != null;
     assume state(Heap, Mask);
@@ -1130,7 +1130,7 @@ procedure Worker__forkOperator(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Worker__q2 != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@108.12--108.34) [171148]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@108.12--108.34) [24955]"}
         HasDirectPerm(Mask, diz, Worker__q2);
     assume Heap[diz, Worker__q2] != null;
     assume state(Heap, Mask);
@@ -1138,8 +1138,8 @@ procedure Worker__forkOperator(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1159,11 +1159,11 @@ procedure Worker__forkOperator(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Worker__forkOperator might not hold. There might be insufficient permission to access Worker__joinToken(diz) (testPVLLocks.vpr@109.11--109.45) [171149]"}
+      assert {:msg "  Postcondition of Worker__forkOperator might not hold. There might be insufficient permission to access Worker__joinToken(diz) (testPVLLocks.vpr@109.11--109.45) [24956]"}
         perm <= Mask[null, Worker__joinToken(diz)];
     }
     Mask := Mask[null, Worker__joinToken(diz):=Mask[null, Worker__joinToken(diz)] - perm];
@@ -1181,8 +1181,8 @@ procedure Worker__joinOperator(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1205,8 +1205,8 @@ procedure Worker__joinOperator(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testPVLLocks.vpr@119.3--119.15
     assume false;
@@ -1223,11 +1223,11 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   var __flatten_15: int;
@@ -1259,7 +1259,7 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Worker__q1 != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@126.12--126.34) [171150]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@126.12--126.34) [24957]"}
         HasDirectPerm(Mask, diz, Worker__q1);
     assume Heap[diz, Worker__q1] != null;
     assume state(Heap, Mask);
@@ -1271,7 +1271,7 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Worker__q2 != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@128.12--128.34) [171151]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@128.12--128.34) [24958]"}
         HasDirectPerm(Mask, diz, Worker__q2);
     assume Heap[diz, Worker__q2] != null;
     assume state(Heap, Mask);
@@ -1279,8 +1279,8 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 0 -- testPVLLocks.vpr@133.3--133.9
     i := 0;
@@ -1291,25 +1291,25 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant 0 <= i && i <= 4 might not hold on entry. Assertion 0 <= i might not hold. (testPVLLocks.vpr@135.15--135.35) [171152]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Loop invariant 0 <= i && i <= 4 might not hold on entry. Assertion 0 <= i might not hold. (testPVLLocks.vpr@135.15--135.35) [24959]"}
           0 <= i;
-        assert {:msg "  Loop invariant 0 <= i && i <= 4 might not hold on entry. Assertion i <= 4 might not hold. (testPVLLocks.vpr@135.15--135.35) [171153]"}
+        assert {:msg "  Loop invariant 0 <= i && i <= 4 might not hold on entry. Assertion i <= 4 might not hold. (testPVLLocks.vpr@135.15--135.35) [24960]"}
           i <= 4;
-        assert {:msg "  Loop invariant acc(diz.Worker__q1, wildcard) might not hold on entry. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@136.15--136.44) [171154]"}
+        assert {:msg "  Loop invariant acc(diz.Worker__q1, wildcard) might not hold on entry. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@136.15--136.44) [24961]"}
           Mask[diz, Worker__q1] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[diz, Worker__q1];
         Mask := Mask[diz, Worker__q1:=Mask[diz, Worker__q1] - wildcard];
-        assert {:msg "  Loop invariant diz.Worker__q1 != null might not hold on entry. Assertion diz.Worker__q1 != null might not hold. (testPVLLocks.vpr@137.15--137.37) [171155]"}
+        assert {:msg "  Loop invariant diz.Worker__q1 != null might not hold on entry. Assertion diz.Worker__q1 != null might not hold. (testPVLLocks.vpr@137.15--137.37) [24962]"}
           Heap[diz, Worker__q1] != null;
-        assert {:msg "  Loop invariant acc(diz.Worker__q2, wildcard) might not hold on entry. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@138.15--138.44) [171156]"}
+        assert {:msg "  Loop invariant acc(diz.Worker__q2, wildcard) might not hold on entry. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@138.15--138.44) [24963]"}
           Mask[diz, Worker__q2] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[diz, Worker__q2];
         Mask := Mask[diz, Worker__q2:=Mask[diz, Worker__q2] - wildcard];
-        assert {:msg "  Loop invariant diz.Worker__q2 != null might not hold on entry. Assertion diz.Worker__q2 != null might not hold. (testPVLLocks.vpr@139.15--139.37) [171157]"}
+        assert {:msg "  Loop invariant diz.Worker__q2 != null might not hold on entry. Assertion diz.Worker__q2 != null might not hold. (testPVLLocks.vpr@139.15--139.37) [24964]"}
           Heap[diz, Worker__q2] != null;
         // Finish exhale
         havoc ExhaleHeap;
@@ -1332,7 +1332,7 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
         assume state(Heap, Mask);
         
         // -- Check definedness of diz.Worker__q1 != null
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@137.15--137.37) [171158]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@137.15--137.37) [24965]"}
             HasDirectPerm(Mask, diz, Worker__q1);
         assume Heap[diz, Worker__q1] != null;
         assume state(Heap, Mask);
@@ -1344,7 +1344,7 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
         assume state(Heap, Mask);
         
         // -- Check definedness of diz.Worker__q2 != null
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@139.15--139.37) [171159]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@139.15--139.37) [24966]"}
             HasDirectPerm(Mask, diz, Worker__q2);
         assume Heap[diz, Worker__q2] != null;
         assume state(Heap, Mask);
@@ -1385,16 +1385,16 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
             PreCallMask := Mask;
             
             // -- Check definedness of diz.Worker__q1
-              assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@141.5--141.67) [171160]"}
+              assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@141.5--141.67) [24967]"}
                 HasDirectPerm(Mask, diz, Worker__q1);
             arg_diz := Heap[diz, Worker__q1];
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
-              assert {:msg "  The precondition of method Queue__take might not hold. Assertion diz.Worker__q1 != null might not hold. (testPVLLocks.vpr@141.5--141.67) [171161]"}
+              ExhaleWellDef0Mask := Mask;
+              assert {:msg "  The precondition of method Queue__take might not hold. Assertion diz.Worker__q1 != null might not hold. (testPVLLocks.vpr@141.5--141.67) [24968]"}
                 arg_diz != null;
-              assert {:msg "  The precondition of method Queue__take might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@141.5--141.67) [171162]"}
+              assert {:msg "  The precondition of method Queue__take might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@141.5--141.67) [24969]"}
                 current_thread_id >= 0;
             
             // -- Havocing target variables
@@ -1417,16 +1417,16 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
             PreCallMask := Mask;
             
             // -- Check definedness of diz.Worker__q2
-              assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@144.5--144.55) [171163]"}
+              assert {:msg "  Method call might fail. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@144.5--144.55) [24970]"}
                 HasDirectPerm(Mask, diz, Worker__q2);
             arg_diz_1 := Heap[diz, Worker__q2];
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
-              assert {:msg "  The precondition of method Queue__put might not hold. Assertion diz.Worker__q2 != null might not hold. (testPVLLocks.vpr@144.5--144.55) [171164]"}
+              ExhaleWellDef0Mask := Mask;
+              assert {:msg "  The precondition of method Queue__put might not hold. Assertion diz.Worker__q2 != null might not hold. (testPVLLocks.vpr@144.5--144.55) [24971]"}
                 arg_diz_1 != null;
-              assert {:msg "  The precondition of method Queue__put might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@144.5--144.55) [171165]"}
+              assert {:msg "  The precondition of method Queue__put might not hold. Assertion current_thread_id >= 0 might not hold. (testPVLLocks.vpr@144.5--144.55) [24972]"}
                 current_thread_id >= 0;
             
             // -- Inhaling postcondition
@@ -1437,25 +1437,25 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant 0 <= i && i <= 4 might not be preserved. Assertion 0 <= i might not hold. (testPVLLocks.vpr@135.15--135.35) [171166]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Loop invariant 0 <= i && i <= 4 might not be preserved. Assertion 0 <= i might not hold. (testPVLLocks.vpr@135.15--135.35) [24973]"}
           0 <= i;
-        assert {:msg "  Loop invariant 0 <= i && i <= 4 might not be preserved. Assertion i <= 4 might not hold. (testPVLLocks.vpr@135.15--135.35) [171167]"}
+        assert {:msg "  Loop invariant 0 <= i && i <= 4 might not be preserved. Assertion i <= 4 might not hold. (testPVLLocks.vpr@135.15--135.35) [24974]"}
           i <= 4;
-        assert {:msg "  Loop invariant acc(diz.Worker__q1, wildcard) might not be preserved. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@136.15--136.44) [171168]"}
+        assert {:msg "  Loop invariant acc(diz.Worker__q1, wildcard) might not be preserved. There might be insufficient permission to access diz.Worker__q1 (testPVLLocks.vpr@136.15--136.44) [24975]"}
           Mask[diz, Worker__q1] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[diz, Worker__q1];
         Mask := Mask[diz, Worker__q1:=Mask[diz, Worker__q1] - wildcard];
-        assert {:msg "  Loop invariant diz.Worker__q1 != null might not be preserved. Assertion diz.Worker__q1 != null might not hold. (testPVLLocks.vpr@137.15--137.37) [171169]"}
+        assert {:msg "  Loop invariant diz.Worker__q1 != null might not be preserved. Assertion diz.Worker__q1 != null might not hold. (testPVLLocks.vpr@137.15--137.37) [24976]"}
           Heap[diz, Worker__q1] != null;
-        assert {:msg "  Loop invariant acc(diz.Worker__q2, wildcard) might not be preserved. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@138.15--138.44) [171170]"}
+        assert {:msg "  Loop invariant acc(diz.Worker__q2, wildcard) might not be preserved. There might be insufficient permission to access diz.Worker__q2 (testPVLLocks.vpr@138.15--138.44) [24977]"}
           Mask[diz, Worker__q2] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[diz, Worker__q2];
         Mask := Mask[diz, Worker__q2:=Mask[diz, Worker__q2] - wildcard];
-        assert {:msg "  Loop invariant diz.Worker__q2 != null might not be preserved. Assertion diz.Worker__q2 != null might not hold. (testPVLLocks.vpr@139.15--139.37) [171171]"}
+        assert {:msg "  Loop invariant diz.Worker__q2 != null might not be preserved. Assertion diz.Worker__q2 != null might not hold. (testPVLLocks.vpr@139.15--139.37) [24978]"}
           Heap[diz, Worker__q2] != null;
         // Finish exhale
         havoc ExhaleHeap;
@@ -1493,8 +1493,8 @@ procedure Worker__run(diz: Ref, current_thread_id: int) returns ()
 procedure Queue__Queue(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
@@ -1503,8 +1503,8 @@ procedure Queue__Queue(current_thread_id: int) returns (sys__result: Ref)
   var __flatten_39: int;
   var __flatten_18: bool;
   var __flatten_40: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -1521,8 +1521,8 @@ procedure Queue__Queue(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1555,7 +1555,7 @@ procedure Queue__Queue(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Queue__data := __flatten_39 -- testPVLLocks.vpr@161.3--161.34
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@161.3--161.34) [171172]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@161.3--161.34) [24979]"}
       FullPerm == Mask[diz, Queue__data];
     Heap := Heap[diz, Queue__data:=__flatten_39];
     assume state(Heap, Mask);
@@ -1569,23 +1569,23 @@ procedure Queue__Queue(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Queue__used := __flatten_40 -- testPVLLocks.vpr@164.3--164.34
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@164.3--164.34) [171173]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@164.3--164.34) [24980]"}
       FullPerm == Mask[diz, Queue__used];
     Heap := Heap[diz, Queue__used:=__flatten_40];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@165.3--165.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@165.3--165.46) [171176]"}
+      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@165.3--165.46) [24983]"}
         perm <= Mask[diz, Queue__used];
     }
     Mask := Mask[diz, Queue__used:=Mask[diz, Queue__used] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@165.3--165.46) [171178]"}
+      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@165.3--165.46) [24985]"}
         perm <= Mask[diz, Queue__data];
     }
     Mask := Mask[diz, Queue__data:=Mask[diz, Queue__data] - perm];
@@ -1606,11 +1606,11 @@ procedure Queue__Queue(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@166.3--166.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@166.10--166.48) [171181]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@166.10--166.48) [24988]"}
         perm <= Mask[null, Queue__lock_invariant(diz)];
     }
     Mask := Mask[null, Queue__lock_invariant(diz):=Mask[null, Queue__lock_invariant(diz)] - perm];
@@ -1625,9 +1625,9 @@ procedure Queue__Queue(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- testPVLLocks.vpr@168.3--168.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testPVLLocks.vpr@168.10--168.29) [171182]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testPVLLocks.vpr@168.10--168.29) [24989]"}
       sys__result != null;
     assume state(Heap, Mask);
   
@@ -1637,9 +1637,9 @@ procedure Queue__Queue(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Queue__Queue might not hold. Assertion sys__result != null might not hold. (testPVLLocks.vpr@151.11--151.30) [171183]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Queue__Queue might not hold. Assertion sys__result != null might not hold. (testPVLLocks.vpr@151.11--151.30) [24990]"}
       sys__result != null;
 }
 
@@ -1650,11 +1650,11 @@ procedure Queue__Queue(current_thread_id: int) returns (sys__result: Ref)
 procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -1684,8 +1684,8 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@180.3--180.48
     perm := FullPerm;
@@ -1697,11 +1697,11 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
   // -- Translating statement: unfold acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@181.3--181.48
     assume Queue__lock_invariant#trigger(Heap, Queue__lock_invariant(diz));
     assume Heap[null, Queue__lock_invariant(diz)] == CombineFrames(FrameFragment(Heap[diz, Queue__used]), FrameFragment(Heap[diz, Queue__data]));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@181.3--181.48) [171187]"}
+      assert {:msg "  Unfolding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@181.3--181.48) [24994]"}
         perm <= Mask[null, Queue__lock_invariant(diz)];
     }
     Mask := Mask[null, Queue__lock_invariant(diz):=Mask[null, Queue__lock_invariant(diz)] - perm];
@@ -1734,23 +1734,23 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.Queue__used, write) might not hold on entry. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@184.15--184.42) [171191]"}
+          assert {:msg "  Loop invariant acc(diz.Queue__used, write) might not hold on entry. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@184.15--184.42) [24998]"}
             perm <= Mask[diz, Queue__used];
         }
         Mask := Mask[diz, Queue__used:=Mask[diz, Queue__used] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.Queue__data, write) might not hold on entry. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@185.15--185.42) [171192]"}
+          assert {:msg "  Loop invariant acc(diz.Queue__data, write) might not hold on entry. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@185.15--185.42) [24999]"}
             perm <= Mask[diz, Queue__data];
         }
         Mask := Mask[diz, Queue__data:=Mask[diz, Queue__data] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(Queue__lock_held(diz), write) might not hold on entry. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@186.15--186.48) [171193]"}
+          assert {:msg "  Loop invariant acc(Queue__lock_held(diz), write) might not hold on entry. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@186.15--186.48) [25000]"}
             perm <= Mask[null, Queue__lock_held(diz)];
         }
         Mask := Mask[null, Queue__lock_held(diz):=Mask[null, Queue__lock_held(diz)] - perm];
@@ -1801,7 +1801,7 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
         // Check and assume guard
         
         // -- Check definedness of diz.Queue__used
-          assert {:msg "  While statement might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@183.10--183.25) [171194]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@183.10--183.25) [25001]"}
             HasDirectPerm(Mask, diz, Queue__used);
         assume Heap[diz, Queue__used];
         assume state(Heap, Mask);
@@ -1809,17 +1809,17 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
         // -- Translate loop body
           
           // -- Translating statement: fold acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@188.5--188.48
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@188.5--188.48) [171195]"}
+              assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@188.5--188.48) [25002]"}
                 perm <= Mask[diz, Queue__used];
             }
             Mask := Mask[diz, Queue__used:=Mask[diz, Queue__used] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@188.5--188.48) [171196]"}
+              assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@188.5--188.48) [25003]"}
                 perm <= Mask[diz, Queue__data];
             }
             Mask := Mask[diz, Queue__data:=Mask[diz, Queue__data] - perm];
@@ -1840,11 +1840,11 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: exhale acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@189.5--189.50
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@189.12--189.50) [171197]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@189.12--189.50) [25004]"}
                 perm <= Mask[null, Queue__lock_invariant(diz)];
             }
             Mask := Mask[null, Queue__lock_invariant(diz):=Mask[null, Queue__lock_invariant(diz)] - perm];
@@ -1857,11 +1857,11 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
           // -- Translating statement: assert acc(Queue__lock_held(diz), write) -- testPVLLocks.vpr@190.5--190.45
             AssertHeap := Heap;
             AssertMask := Mask;
-            ExhaleWellDef0Mask := AssertMask;
             ExhaleWellDef0Heap := AssertHeap;
+            ExhaleWellDef0Mask := AssertMask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Assert might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@190.12--190.45) [171198]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@190.12--190.45) [25005]"}
                 perm <= AssertMask[null, Queue__lock_held(diz)];
             }
             AssertMask := AssertMask[null, Queue__lock_held(diz):=AssertMask[null, Queue__lock_held(diz)] - perm];
@@ -1877,11 +1877,11 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
           // -- Translating statement: unfold acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@192.5--192.50
             assume Queue__lock_invariant#trigger(Heap, Queue__lock_invariant(diz));
             assume Heap[null, Queue__lock_invariant(diz)] == CombineFrames(FrameFragment(Heap[diz, Queue__used]), FrameFragment(Heap[diz, Queue__data]));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@192.5--192.50) [171199]"}
+              assert {:msg "  Unfolding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@192.5--192.50) [25006]"}
                 perm <= Mask[null, Queue__lock_invariant(diz)];
             }
             Mask := Mask[null, Queue__lock_invariant(diz):=Mask[null, Queue__lock_invariant(diz)] - perm];
@@ -1902,23 +1902,23 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.Queue__used, write) might not be preserved. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@184.15--184.42) [171200]"}
+          assert {:msg "  Loop invariant acc(diz.Queue__used, write) might not be preserved. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@184.15--184.42) [25007]"}
             perm <= Mask[diz, Queue__used];
         }
         Mask := Mask[diz, Queue__used:=Mask[diz, Queue__used] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.Queue__data, write) might not be preserved. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@185.15--185.42) [171201]"}
+          assert {:msg "  Loop invariant acc(diz.Queue__data, write) might not be preserved. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@185.15--185.42) [25008]"}
             perm <= Mask[diz, Queue__data];
         }
         Mask := Mask[diz, Queue__data:=Mask[diz, Queue__data] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(Queue__lock_held(diz), write) might not be preserved. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@186.15--186.48) [171202]"}
+          assert {:msg "  Loop invariant acc(Queue__lock_held(diz), write) might not be preserved. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@186.15--186.48) [25009]"}
             perm <= Mask[null, Queue__lock_held(diz)];
         }
         Mask := Mask[null, Queue__lock_held(diz):=Mask[null, Queue__lock_held(diz)] - perm];
@@ -1956,7 +1956,7 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Queue__used := __flatten_41 -- testPVLLocks.vpr@196.3--196.34
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@196.3--196.34) [171203]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@196.3--196.34) [25010]"}
       FullPerm == Mask[diz, Queue__used];
     Heap := Heap[diz, Queue__used:=__flatten_41];
     assume state(Heap, Mask);
@@ -1970,7 +1970,7 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Queue__data := __flatten_42 -- testPVLLocks.vpr@199.3--199.34
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@199.3--199.34) [171204]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@199.3--199.34) [25011]"}
       FullPerm == Mask[diz, Queue__data];
     Heap := Heap[diz, Queue__data:=__flatten_42];
     assume state(Heap, Mask);
@@ -1978,22 +1978,22 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
   // -- Translating statement: assert acc(Queue__lock_held(diz), write) -- testPVLLocks.vpr@200.3--200.43
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@200.10--200.43) [171206]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@200.10--200.43) [25013]"}
         perm <= AssertMask[null, Queue__lock_held(diz)];
     }
     AssertMask := AssertMask[null, Queue__lock_held(diz):=AssertMask[null, Queue__lock_held(diz)] - perm];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(Queue__lock_held(diz), write) -- testPVLLocks.vpr@201.3--201.43
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@201.10--201.43) [171208]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@201.10--201.43) [25015]"}
         perm <= Mask[null, Queue__lock_held(diz)];
     }
     Mask := Mask[null, Queue__lock_held(diz):=Mask[null, Queue__lock_held(diz)] - perm];
@@ -2004,17 +2004,17 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@202.3--202.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@202.3--202.46) [171211]"}
+      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@202.3--202.46) [25018]"}
         perm <= Mask[diz, Queue__used];
     }
     Mask := Mask[diz, Queue__used:=Mask[diz, Queue__used] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@202.3--202.46) [171213]"}
+      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@202.3--202.46) [25020]"}
         perm <= Mask[diz, Queue__data];
     }
     Mask := Mask[diz, Queue__data:=Mask[diz, Queue__data] - perm];
@@ -2035,11 +2035,11 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@203.3--203.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@203.10--203.48) [171216]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@203.10--203.48) [25023]"}
         perm <= Mask[null, Queue__lock_invariant(diz)];
     }
     Mask := Mask[null, Queue__lock_invariant(diz):=Mask[null, Queue__lock_invariant(diz)] - perm];
@@ -2057,11 +2057,11 @@ procedure Queue__put(diz: Ref, current_thread_id: int, x: int) returns ()
 procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -2091,8 +2091,8 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@214.3--214.48
     perm := FullPerm;
@@ -2104,11 +2104,11 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
   // -- Translating statement: unfold acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@215.3--215.48
     assume Queue__lock_invariant#trigger(Heap, Queue__lock_invariant(diz));
     assume Heap[null, Queue__lock_invariant(diz)] == CombineFrames(FrameFragment(Heap[diz, Queue__used]), FrameFragment(Heap[diz, Queue__data]));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@215.3--215.48) [171220]"}
+      assert {:msg "  Unfolding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@215.3--215.48) [25027]"}
         perm <= Mask[null, Queue__lock_invariant(diz)];
     }
     Mask := Mask[null, Queue__lock_invariant(diz):=Mask[null, Queue__lock_invariant(diz)] - perm];
@@ -2141,23 +2141,23 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.Queue__used, write) might not hold on entry. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@218.15--218.42) [171224]"}
+          assert {:msg "  Loop invariant acc(diz.Queue__used, write) might not hold on entry. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@218.15--218.42) [25031]"}
             perm <= Mask[diz, Queue__used];
         }
         Mask := Mask[diz, Queue__used:=Mask[diz, Queue__used] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.Queue__data, write) might not hold on entry. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@219.15--219.42) [171225]"}
+          assert {:msg "  Loop invariant acc(diz.Queue__data, write) might not hold on entry. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@219.15--219.42) [25032]"}
             perm <= Mask[diz, Queue__data];
         }
         Mask := Mask[diz, Queue__data:=Mask[diz, Queue__data] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(Queue__lock_held(diz), write) might not hold on entry. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@220.15--220.48) [171226]"}
+          assert {:msg "  Loop invariant acc(Queue__lock_held(diz), write) might not hold on entry. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@220.15--220.48) [25033]"}
             perm <= Mask[null, Queue__lock_held(diz)];
         }
         Mask := Mask[null, Queue__lock_held(diz):=Mask[null, Queue__lock_held(diz)] - perm];
@@ -2208,7 +2208,7 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
         // Check and assume guard
         
         // -- Check definedness of !diz.Queue__used
-          assert {:msg "  While statement might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@217.10--217.26) [171227]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@217.10--217.26) [25034]"}
             HasDirectPerm(Mask, diz, Queue__used);
         assume !Heap[diz, Queue__used];
         assume state(Heap, Mask);
@@ -2216,17 +2216,17 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
         // -- Translate loop body
           
           // -- Translating statement: fold acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@222.5--222.48
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@222.5--222.48) [171228]"}
+              assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@222.5--222.48) [25035]"}
                 perm <= Mask[diz, Queue__used];
             }
             Mask := Mask[diz, Queue__used:=Mask[diz, Queue__used] - perm];
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@222.5--222.48) [171229]"}
+              assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@222.5--222.48) [25036]"}
                 perm <= Mask[diz, Queue__data];
             }
             Mask := Mask[diz, Queue__data:=Mask[diz, Queue__data] - perm];
@@ -2247,11 +2247,11 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
             assume state(Heap, Mask);
           
           // -- Translating statement: exhale acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@223.5--223.50
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@223.12--223.50) [171230]"}
+              assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@223.12--223.50) [25037]"}
                 perm <= Mask[null, Queue__lock_invariant(diz)];
             }
             Mask := Mask[null, Queue__lock_invariant(diz):=Mask[null, Queue__lock_invariant(diz)] - perm];
@@ -2264,11 +2264,11 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
           // -- Translating statement: assert acc(Queue__lock_held(diz), write) -- testPVLLocks.vpr@224.5--224.45
             AssertHeap := Heap;
             AssertMask := Mask;
-            ExhaleWellDef0Mask := AssertMask;
             ExhaleWellDef0Heap := AssertHeap;
+            ExhaleWellDef0Mask := AssertMask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Assert might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@224.12--224.45) [171231]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@224.12--224.45) [25038]"}
                 perm <= AssertMask[null, Queue__lock_held(diz)];
             }
             AssertMask := AssertMask[null, Queue__lock_held(diz):=AssertMask[null, Queue__lock_held(diz)] - perm];
@@ -2284,11 +2284,11 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
           // -- Translating statement: unfold acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@226.5--226.50
             assume Queue__lock_invariant#trigger(Heap, Queue__lock_invariant(diz));
             assume Heap[null, Queue__lock_invariant(diz)] == CombineFrames(FrameFragment(Heap[diz, Queue__used]), FrameFragment(Heap[diz, Queue__data]));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@226.5--226.50) [171232]"}
+              assert {:msg "  Unfolding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@226.5--226.50) [25039]"}
                 perm <= Mask[null, Queue__lock_invariant(diz)];
             }
             Mask := Mask[null, Queue__lock_invariant(diz):=Mask[null, Queue__lock_invariant(diz)] - perm];
@@ -2309,23 +2309,23 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.Queue__used, write) might not be preserved. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@218.15--218.42) [171233]"}
+          assert {:msg "  Loop invariant acc(diz.Queue__used, write) might not be preserved. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@218.15--218.42) [25040]"}
             perm <= Mask[diz, Queue__used];
         }
         Mask := Mask[diz, Queue__used:=Mask[diz, Queue__used] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.Queue__data, write) might not be preserved. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@219.15--219.42) [171234]"}
+          assert {:msg "  Loop invariant acc(diz.Queue__data, write) might not be preserved. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@219.15--219.42) [25041]"}
             perm <= Mask[diz, Queue__data];
         }
         Mask := Mask[diz, Queue__data:=Mask[diz, Queue__data] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(Queue__lock_held(diz), write) might not be preserved. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@220.15--220.48) [171235]"}
+          assert {:msg "  Loop invariant acc(Queue__lock_held(diz), write) might not be preserved. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@220.15--220.48) [25042]"}
             perm <= Mask[null, Queue__lock_held(diz)];
         }
         Mask := Mask[null, Queue__lock_held(diz):=Mask[null, Queue__lock_held(diz)] - perm];
@@ -2357,7 +2357,7 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
   // -- Translating statement: res := diz.Queue__data -- testPVLLocks.vpr@228.3--228.25
     
     // -- Check definedness of diz.Queue__data
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@228.3--228.25) [171236]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@228.3--228.25) [25043]"}
         HasDirectPerm(Mask, diz, Queue__data);
     res := Heap[diz, Queue__data];
     assume state(Heap, Mask);
@@ -2371,7 +2371,7 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Queue__used := __flatten_43 -- testPVLLocks.vpr@231.3--231.34
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@231.3--231.34) [171237]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@231.3--231.34) [25044]"}
       FullPerm == Mask[diz, Queue__used];
     Heap := Heap[diz, Queue__used:=__flatten_43];
     assume state(Heap, Mask);
@@ -2379,22 +2379,22 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
   // -- Translating statement: assert acc(Queue__lock_held(diz), write) -- testPVLLocks.vpr@232.3--232.43
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@232.10--232.43) [171239]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@232.10--232.43) [25046]"}
         perm <= AssertMask[null, Queue__lock_held(diz)];
     }
     AssertMask := AssertMask[null, Queue__lock_held(diz):=AssertMask[null, Queue__lock_held(diz)] - perm];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(Queue__lock_held(diz), write) -- testPVLLocks.vpr@233.3--233.43
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@233.10--233.43) [171241]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_held(diz) (testPVLLocks.vpr@233.10--233.43) [25048]"}
         perm <= Mask[null, Queue__lock_held(diz)];
     }
     Mask := Mask[null, Queue__lock_held(diz):=Mask[null, Queue__lock_held(diz)] - perm];
@@ -2405,17 +2405,17 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@234.3--234.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@234.3--234.46) [171244]"}
+      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__used (testPVLLocks.vpr@234.3--234.46) [25051]"}
         perm <= Mask[diz, Queue__used];
     }
     Mask := Mask[diz, Queue__used:=Mask[diz, Queue__used] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@234.3--234.46) [171246]"}
+      assert {:msg "  Folding Queue__lock_invariant(diz) might fail. There might be insufficient permission to access diz.Queue__data (testPVLLocks.vpr@234.3--234.46) [25053]"}
         perm <= Mask[diz, Queue__data];
     }
     Mask := Mask[diz, Queue__data:=Mask[diz, Queue__data] - perm];
@@ -2436,11 +2436,11 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(Queue__lock_invariant(diz), write) -- testPVLLocks.vpr@235.3--235.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@235.10--235.48) [171249]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access Queue__lock_invariant(diz) (testPVLLocks.vpr@235.10--235.48) [25056]"}
         perm <= Mask[null, Queue__lock_invariant(diz)];
     }
     Mask := Mask[null, Queue__lock_invariant(diz):=Mask[null, Queue__lock_invariant(diz)] - perm];
@@ -2459,8 +2459,8 @@ procedure Queue__take(diz: Ref, current_thread_id: int) returns (sys__result: in
     assume state(Heap, Mask);
   
   // -- Translating statement: assert true -- testPVLLocks.vpr@238.3--238.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale false -- testPVLLocks.vpr@239.3--239.15

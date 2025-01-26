@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:08:00
+// Date:         2025-01-26 21:45:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue006.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue006-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -649,7 +649,7 @@ axiom (forall arg1: Ref, arg2: Perm, arg3: Ref, arg4: Ref, arg5: Ref, arg6: Perm
 type FooDomainType;
 
 // Translation of domain function atMost
-function  atMost(x_8: int, y_6: int): bool;
+function  atMost(x_37: int, y_2: int): bool;
 
 // Translation of domain axiom atMost_def
 axiom (forall x: int, y: int ::
@@ -670,11 +670,11 @@ axiom !IsWandField(val);
 // ==================================================
 
 // Uninterpreted function definitions
-function  sum(Heap: HeapType, xs: (Seq int)): int;
+function  sum_1(Heap: HeapType, xs: (Seq int)): int;
 function  sum'(Heap: HeapType, xs: (Seq int)): int;
 axiom (forall Heap: HeapType, xs: (Seq int) ::
-  { sum(Heap, xs) }
-  sum(Heap, xs) == sum'(Heap, xs) && dummyFunction(sum#triggerStateless(xs))
+  { sum_1(Heap, xs) }
+  sum_1(Heap, xs) == sum'(Heap, xs) && dummyFunction(sum#triggerStateless(xs))
 );
 axiom (forall Heap: HeapType, xs: (Seq int) ::
   { sum'(Heap, xs) }
@@ -683,8 +683,8 @@ axiom (forall Heap: HeapType, xs: (Seq int) ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, xs: (Seq int) ::
-  { state(Heap, Mask), sum(Heap, xs) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> sum(Heap, xs) == (if Seq#Length(xs) == 0 then 0 else Seq#Index(xs, 0) + sum'(Heap, Seq#Drop(xs, 1)))
+  { state(Heap, Mask), sum_1(Heap, xs) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> sum_1(Heap, xs) == (if Seq#Length(xs) == 0 then 0 else Seq#Index(xs, 0) + sum'(Heap, Seq#Drop(xs, 1)))
 );
 
 // Framing axioms
@@ -716,7 +716,7 @@ procedure sum#definedness(xs: (Seq int)) returns (Result: int)
     // -- Check definedness of (|xs| == 0 ? 0 : xs[0] + sum(xs[1..]))
       if (Seq#Length(xs) == 0) {
       } else {
-        assert {:msg "  Function might not be well-formed. Index xs[0] into xs might exceed sequence length. (issue006.vpr@64.1--67.2) [129456]"}
+        assert {:msg "  Function might not be well-formed. Index xs[0] into xs might exceed sequence length. (issue006.vpr@64.1--67.2) [217079]"}
           0 < Seq#Length(xs);
         if (*) {
           // Stop execution
@@ -728,7 +728,7 @@ procedure sum#definedness(xs: (Seq int)) returns (Result: int)
       }
   
   // -- Translate function body
-    Result := (if Seq#Length(xs) == 0 then 0 else Seq#Index(xs, 0) + sum(Heap, Seq#Drop(xs, 1)));
+    Result := (if Seq#Length(xs) == 0 then 0 else Seq#Index(xs, 0) + sum_1(Heap, Seq#Drop(xs, 1)));
 }
 
 // ==================================================
@@ -803,7 +803,7 @@ procedure test03(x: Ref) returns ()
     havoc Used_1Heap;
     Used_1Mask := ZeroMask;
     b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-    assert {:msg "  Packaging wand might fail. Assertion x == x might not hold. (issue006.vpr@9.3--9.26) [129457]"}
+    assert {:msg "  Packaging wand might fail. Assertion x == x might not hold. (issue006.vpr@9.3--9.26) [217080]"}
       (b_1_1 && b_1_1) && b_2_1 ==> x == x;
     Mask := Mask[null, wand(true, x == x):=Mask[null, wand(true, x == x)] + FullPerm];
     assume state(Heap, Mask);
@@ -816,7 +816,7 @@ procedure test03(x: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@10.3--10.26) [129458]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@10.3--10.26) [217081]"}
         FullPerm <= Mask[null, wand(true, x == y)];
       Mask := Mask[null, wand(true, x == y):=Mask[null, wand(true, x == y)] - FullPerm];
     assume state(Heap, Mask);
@@ -917,7 +917,7 @@ procedure test04() returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@19.3--19.20) [129461]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@19.3--19.20) [217084]"}
         FullPerm <= Mask[null, wand(!b_24, true)];
       Mask := Mask[null, wand(!b_24, true):=Mask[null, wand(!b_24, true)] - FullPerm];
     assume state(Heap, Mask);
@@ -925,7 +925,7 @@ procedure test04() returns ()
     // -- check if LHS holds and remove permissions 
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  Applying wand might fail. Assertion !b might not hold. (issue006.vpr@19.3--19.20) [129462]"}
+      assert {:msg "  Applying wand might fail. Assertion !b might not hold. (issue006.vpr@19.3--19.20) [217085]"}
         !b_24;
     assume state(Heap, Mask);
     
@@ -1031,7 +1031,7 @@ procedure test05(x: int) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@27.3--27.28) [129464]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@27.3--27.28) [217087]"}
         FullPerm <= Mask[null, wand(x == a_2 - 1, true)];
       Mask := Mask[null, wand(x == a_2 - 1, true):=Mask[null, wand(x == a_2 - 1, true)] - FullPerm];
     assume state(Heap, Mask);
@@ -1039,7 +1039,7 @@ procedure test05(x: int) returns ()
     // -- check if LHS holds and remove permissions 
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  Applying wand might fail. Assertion x == a - 1 might not hold. (issue006.vpr@27.3--27.28) [129465]"}
+      assert {:msg "  Applying wand might fail. Assertion x == a - 1 might not hold. (issue006.vpr@27.3--27.28) [217088]"}
         x == a_2 - 1;
     assume state(Heap, Mask);
     
@@ -1090,7 +1090,7 @@ procedure test05(x: int) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@32.3--32.28) [129467]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@32.3--32.28) [217090]"}
         FullPerm <= Mask[null, wand(x == a_2 - 1, true)];
       Mask := Mask[null, wand(x == a_2 - 1, true):=Mask[null, wand(x == a_2 - 1, true)] - FullPerm];
     assume state(Heap, Mask);
@@ -1098,7 +1098,7 @@ procedure test05(x: int) returns ()
     // -- check if LHS holds and remove permissions 
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  Applying wand might fail. Assertion x == a - 1 might not hold. (issue006.vpr@32.3--32.28) [129468]"}
+      assert {:msg "  Applying wand might fail. Assertion x == a - 1 might not hold. (issue006.vpr@32.3--32.28) [217091]"}
         x == a_2 - 1;
     assume state(Heap, Mask);
     
@@ -1115,7 +1115,7 @@ procedure test05(x: int) returns ()
 // Translation of method test01
 // ==================================================
 
-procedure test01(l_2: Ref) returns ()
+procedure test01(l_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -1154,12 +1154,12 @@ procedure test01(l_2: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    assume l_2 != null;
-    Mask := Mask[l_2, val:=Mask[l_2, val] + perm];
+    assume l_1 != null;
+    Mask := Mask[l_1, val:=Mask[l_1, val] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1172,9 +1172,9 @@ procedure test01(l_2: Ref) returns ()
   // -- Translating statement: x := l.val -- issue006.vpr@38.3--38.22
     
     // -- Check definedness of l.val
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access l.val (issue006.vpr@38.3--38.22) [129469]"}
-        HasDirectPerm(Mask, l_2, val);
-    x := Heap[l_2, val];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access l.val (issue006.vpr@38.3--38.22) [217092]"}
+        HasDirectPerm(Mask, l_1, val);
+    x := Heap[l_1, val];
     assume state(Heap, Mask);
   
   // -- Translating statement: package acc(l.val, write) && l.val == old(l.val) --* acc(l.val, write) {
@@ -1189,20 +1189,20 @@ procedure test01(l_2: Ref) returns ()
     if (b_13) {
       if (b_13) {
         perm := FullPerm;
-        b_13 := b_13 && l_2 != null;
-        Ops_9Mask := Ops_9Mask[l_2, val:=Ops_9Mask[l_2, val] + perm];
+        b_13 := b_13 && l_1 != null;
+        Ops_9Mask := Ops_9Mask[l_1, val:=Ops_9Mask[l_1, val] + perm];
         b_13 := b_13 && state(Ops_9Heap, Ops_9Mask);
       }
       if (b_13) {
         if (b_13) {
           
           // -- Check definedness of l.val == old(l.val)
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@40.3--40.59) [129470]"}
-              HasDirectPerm(Ops_9Mask, l_2, val);
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@40.3--40.59) [129471]"}
-              HasDirectPerm(oldMask, l_2, val);
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@40.3--40.59) [217093]"}
+              HasDirectPerm(Ops_9Mask, l_1, val);
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@40.3--40.59) [217094]"}
+              HasDirectPerm(oldMask, l_1, val);
         }
-        b_13 := b_13 && Ops_9Heap[l_2, val] == oldHeap[l_2, val];
+        b_13 := b_13 && Ops_9Heap[l_1, val] == oldHeap[l_1, val];
       }
     }
     b_13 := b_13 && state(Ops_9Heap, Ops_9Mask);
@@ -1219,10 +1219,10 @@ procedure test01(l_2: Ref) returns ()
     b_14 := b_14 && state(Used_9Heap, Used_9Mask);
     
     // -- Transfer of acc(l.val, write)
-      rcvLocal := l_2;
+      rcvLocal := l_1;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_9Mask[rcvLocal, val] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(l.val, write) might be negative. (issue006.vpr@40.3--40.59) [129472]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(l.val, write) might be negative. (issue006.vpr@40.3--40.59) [217095]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -1262,10 +1262,10 @@ procedure test01(l_2: Ref) returns ()
             b_14 := b_14 && state(Used_9Heap, Used_9Mask);
             b_14 := b_14 && Heap[rcvLocal, val] == Used_9Heap[rcvLocal, val];
             Mask := Mask[rcvLocal, val:=Mask[rcvLocal, val] - takeTransfer];
-            Heap := Heap[null, wand_1#sm(l_2, FullPerm, l_2, oldHeap[l_2, val], l_2, FullPerm):=Heap[null, wand_1#sm(l_2, FullPerm, l_2, oldHeap[l_2, val], l_2, FullPerm)][l_2, val:=true]];
+            Heap := Heap[null, wand_1#sm(l_1, FullPerm, l_1, oldHeap[l_1, val], l_1, FullPerm):=Heap[null, wand_1#sm(l_1, FullPerm, l_1, oldHeap[l_1, val], l_1, FullPerm)][l_1, val:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@40.3--40.59) [129473]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@40.3--40.59) [217096]"}
         (b_13 && b_13) && b_14 ==> neededTransfer == 0.000000000 && Used_9Mask[rcvLocal, val] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -1275,7 +1275,7 @@ procedure test01(l_2: Ref) returns ()
         b_15 := (b_15 && IdenticalOnKnownLocations(Ops_9Heap, ResultHeap, Ops_9Mask)) && IdenticalOnKnownLocations(Used_9Heap, ResultHeap, Used_9Mask);
         b_15 := b_15 && state(ResultHeap, ResultMask);
       b_13 := b_13 && b_15;
-    Mask := Mask[null, wand_1(l_2, FullPerm, l_2, oldHeap[l_2, val], l_2, FullPerm):=Mask[null, wand_1(l_2, FullPerm, l_2, oldHeap[l_2, val], l_2, FullPerm)] + FullPerm];
+    Mask := Mask[null, wand_1(l_1, FullPerm, l_1, oldHeap[l_1, val], l_1, FullPerm):=Mask[null, wand_1(l_1, FullPerm, l_1, oldHeap[l_1, val], l_1, FullPerm)] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1286,9 +1286,9 @@ procedure test01(l_2: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@42.3--42.59) [129474]"}
-        FullPerm <= Mask[null, wand_1(l_2, FullPerm, l_2, x, l_2, FullPerm)];
-      Mask := Mask[null, wand_1(l_2, FullPerm, l_2, x, l_2, FullPerm):=Mask[null, wand_1(l_2, FullPerm, l_2, x, l_2, FullPerm)] - FullPerm];
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@42.3--42.59) [217097]"}
+        FullPerm <= Mask[null, wand_1(l_1, FullPerm, l_1, x, l_1, FullPerm)];
+      Mask := Mask[null, wand_1(l_1, FullPerm, l_1, x, l_1, FullPerm):=Mask[null, wand_1(l_1, FullPerm, l_1, x, l_1, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
@@ -1296,18 +1296,18 @@ procedure test01(l_2: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access l.val (issue006.vpr@42.3--42.59) [129476]"}
-          perm <= Mask[l_2, val];
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access l.val (issue006.vpr@42.3--42.59) [217099]"}
+          perm <= Mask[l_1, val];
       }
-      Mask := Mask[l_2, val:=Mask[l_2, val] - perm];
-      assert {:msg "  Applying wand might fail. Assertion l.val == x might not hold. (issue006.vpr@42.3--42.59) [129477]"}
-        Heap[l_2, val] == x;
+      Mask := Mask[l_1, val:=Mask[l_1, val] - perm];
+      assert {:msg "  Applying wand might fail. Assertion l.val == x might not hold. (issue006.vpr@42.3--42.59) [217100]"}
+        Heap[l_1, val] == x;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
       perm := FullPerm;
-      assume l_2 != null;
-      Mask := Mask[l_2, val:=Mask[l_2, val] + perm];
+      assume l_1 != null;
+      Mask := Mask[l_1, val:=Mask[l_1, val] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     havoc ExhaleHeap;
@@ -1321,7 +1321,7 @@ procedure test01(l_2: Ref) returns ()
 // Translation of method test02
 // ==================================================
 
-procedure test02(l_2: Ref) returns ()
+procedure test02(l_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -1360,12 +1360,12 @@ procedure test02(l_2: Ref) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    assume l_2 != null;
-    Mask := Mask[l_2, val:=Mask[l_2, val] + perm];
+    assume l_1 != null;
+    Mask := Mask[l_1, val:=Mask[l_1, val] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1378,9 +1378,9 @@ procedure test02(l_2: Ref) returns ()
   // -- Translating statement: x := l.val -- issue006.vpr@48.3--48.22
     
     // -- Check definedness of l.val
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access l.val (issue006.vpr@48.3--48.22) [129479]"}
-        HasDirectPerm(Mask, l_2, val);
-    x := Heap[l_2, val];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access l.val (issue006.vpr@48.3--48.22) [217102]"}
+        HasDirectPerm(Mask, l_1, val);
+    x := Heap[l_1, val];
     assume state(Heap, Mask);
   
   // -- Translating statement: package acc(l.val, write) && l.val == l.val --* acc(l.val, write) {
@@ -1395,20 +1395,20 @@ procedure test02(l_2: Ref) returns ()
     if (b_17) {
       if (b_17) {
         perm := FullPerm;
-        b_17 := b_17 && l_2 != null;
-        Ops_11Mask := Ops_11Mask[l_2, val:=Ops_11Mask[l_2, val] + perm];
+        b_17 := b_17 && l_1 != null;
+        Ops_11Mask := Ops_11Mask[l_1, val:=Ops_11Mask[l_1, val] + perm];
         b_17 := b_17 && state(Ops_11Heap, Ops_11Mask);
       }
       if (b_17) {
         if (b_17) {
           
           // -- Check definedness of l.val == l.val
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@50.3--50.54) [129480]"}
-              HasDirectPerm(Ops_11Mask, l_2, val);
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@50.3--50.54) [129481]"}
-              HasDirectPerm(Ops_11Mask, l_2, val);
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@50.3--50.54) [217103]"}
+              HasDirectPerm(Ops_11Mask, l_1, val);
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@50.3--50.54) [217104]"}
+              HasDirectPerm(Ops_11Mask, l_1, val);
         }
-        b_17 := b_17 && Ops_11Heap[l_2, val] == Ops_11Heap[l_2, val];
+        b_17 := b_17 && Ops_11Heap[l_1, val] == Ops_11Heap[l_1, val];
       }
     }
     b_17 := b_17 && state(Ops_11Heap, Ops_11Mask);
@@ -1425,10 +1425,10 @@ procedure test02(l_2: Ref) returns ()
     b_18 := b_18 && state(Used_11Heap, Used_11Mask);
     
     // -- Transfer of acc(l.val, write)
-      rcvLocal := l_2;
+      rcvLocal := l_1;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_11Mask[rcvLocal, val] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(l.val, write) might be negative. (issue006.vpr@50.3--50.54) [129482]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(l.val, write) might be negative. (issue006.vpr@50.3--50.54) [217105]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -1468,10 +1468,10 @@ procedure test02(l_2: Ref) returns ()
             b_18 := b_18 && state(Used_11Heap, Used_11Mask);
             b_18 := b_18 && Heap[rcvLocal, val] == Used_11Heap[rcvLocal, val];
             Mask := Mask[rcvLocal, val:=Mask[rcvLocal, val] - takeTransfer];
-            Heap := Heap[null, wand_2#sm(l_2, FullPerm, l_2, l_2, l_2, FullPerm):=Heap[null, wand_2#sm(l_2, FullPerm, l_2, l_2, l_2, FullPerm)][l_2, val:=true]];
+            Heap := Heap[null, wand_2#sm(l_1, FullPerm, l_1, l_1, l_1, FullPerm):=Heap[null, wand_2#sm(l_1, FullPerm, l_1, l_1, l_1, FullPerm)][l_1, val:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@50.3--50.54) [129483]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access l.val (issue006.vpr@50.3--50.54) [217106]"}
         (b_17 && b_17) && b_18 ==> neededTransfer == 0.000000000 && Used_11Mask[rcvLocal, val] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -1481,7 +1481,7 @@ procedure test02(l_2: Ref) returns ()
         b_19 := (b_19 && IdenticalOnKnownLocations(Ops_11Heap, Result_1Heap, Ops_11Mask)) && IdenticalOnKnownLocations(Used_11Heap, Result_1Heap, Used_11Mask);
         b_19 := b_19 && state(Result_1Heap, Result_1Mask);
       b_17 := b_17 && b_19;
-    Mask := Mask[null, wand_2(l_2, FullPerm, l_2, l_2, l_2, FullPerm):=Mask[null, wand_2(l_2, FullPerm, l_2, l_2, l_2, FullPerm)] + FullPerm];
+    Mask := Mask[null, wand_2(l_1, FullPerm, l_1, l_1, l_1, FullPerm):=Mask[null, wand_2(l_1, FullPerm, l_1, l_1, l_1, FullPerm)] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1492,9 +1492,9 @@ procedure test02(l_2: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@53.3--53.54) [129484]"}
-        FullPerm <= Mask[null, wand_1(l_2, FullPerm, l_2, x, l_2, FullPerm)];
-      Mask := Mask[null, wand_1(l_2, FullPerm, l_2, x, l_2, FullPerm):=Mask[null, wand_1(l_2, FullPerm, l_2, x, l_2, FullPerm)] - FullPerm];
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@53.3--53.54) [217107]"}
+        FullPerm <= Mask[null, wand_1(l_1, FullPerm, l_1, x, l_1, FullPerm)];
+      Mask := Mask[null, wand_1(l_1, FullPerm, l_1, x, l_1, FullPerm):=Mask[null, wand_1(l_1, FullPerm, l_1, x, l_1, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
@@ -1502,18 +1502,18 @@ procedure test02(l_2: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access l.val (issue006.vpr@53.3--53.54) [129486]"}
-          perm <= Mask[l_2, val];
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access l.val (issue006.vpr@53.3--53.54) [217109]"}
+          perm <= Mask[l_1, val];
       }
-      Mask := Mask[l_2, val:=Mask[l_2, val] - perm];
-      assert {:msg "  Applying wand might fail. Assertion l.val == x might not hold. (issue006.vpr@53.3--53.54) [129487]"}
-        Heap[l_2, val] == x;
+      Mask := Mask[l_1, val:=Mask[l_1, val] - perm];
+      assert {:msg "  Applying wand might fail. Assertion l.val == x might not hold. (issue006.vpr@53.3--53.54) [217110]"}
+        Heap[l_1, val] == x;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
       perm := FullPerm;
-      assume l_2 != null;
-      Mask := Mask[l_2, val:=Mask[l_2, val] + perm];
+      assume l_1 != null;
+      Mask := Mask[l_1, val:=Mask[l_1, val] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     havoc ExhaleHeap;
@@ -1589,7 +1589,7 @@ procedure test06(xs: (Seq int), n: int) returns ()
     havoc Used_13Heap;
     Used_13Mask := ZeroMask;
     b_22 := b_22 && state(Used_13Heap, Used_13Mask);
-    assert {:msg "  Packaging wand might fail. Assertion |xs| == n might not hold. (issue006.vpr@59.3--59.29) [129489]"}
+    assert {:msg "  Packaging wand might fail. Assertion |xs| == n might not hold. (issue006.vpr@59.3--59.29) [217112]"}
       (b_21 && b_21) && b_22 ==> Seq#Length(xs) == n;
     Mask := Mask[null, wand(true, Seq#Length(xs) == n):=Mask[null, wand(true, Seq#Length(xs) == n)] + FullPerm];
     assume state(Heap, Mask);
@@ -1606,7 +1606,7 @@ procedure test06(xs: (Seq int), n: int) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@61.3--61.31) [129490]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@61.3--61.31) [217113]"}
         FullPerm <= Mask[null, wand(true, Seq#Length(ys) == n + 1)];
       Mask := Mask[null, wand(true, Seq#Length(ys) == n + 1):=Mask[null, wand(true, Seq#Length(ys) == n + 1)] - FullPerm];
     assume state(Heap, Mask);
@@ -1646,7 +1646,7 @@ procedure test07(xs: (Seq int), n: int) returns ()
   var boolCur_7: bool;
   var Used_15Heap: HeapType;
   var Used_15Mask: MaskType;
-  var b_25: bool;
+  var b_25_1: bool;
   var ys: (Seq int);
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
@@ -1666,7 +1666,7 @@ procedure test07(xs: (Seq int), n: int) returns ()
         // Stop execution
         assume false;
       }
-    assume sum(Heap, xs) == n;
+    assume sum_1(Heap, xs) == n;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
@@ -1698,8 +1698,8 @@ procedure test07(xs: (Seq int), n: int) returns ()
     // Translating exec of non-ghost operationsum(xs) == n
     havoc Used_15Heap;
     Used_15Mask := ZeroMask;
-    b_25 := b_25 && state(Used_15Heap, Used_15Mask);
-    if ((b_24_1 && b_24_1) && b_25) {
+    b_25_1 := b_25_1 && state(Used_15Heap, Used_15Mask);
+    if ((b_24_1 && b_24_1) && b_25_1) {
       if (b_24_1) {
         
         // -- Check definedness of sum(xs) == n
@@ -1709,10 +1709,10 @@ procedure test07(xs: (Seq int), n: int) returns ()
           }
       }
     }
-    assert {:msg "  Packaging wand might fail. Assertion sum(xs) == n might not hold. (issue006.vpr@72.3--72.32) [129492]"}
-      (b_24_1 && b_24_1) && b_25 ==> sum(Ops_15Heap, xs) == n;
+    assert {:msg "  Packaging wand might fail. Assertion sum(xs) == n might not hold. (issue006.vpr@72.3--72.32) [217115]"}
+      (b_24_1 && b_24_1) && b_25_1 ==> sum_1(Ops_15Heap, xs) == n;
     assume state(Heap, Mask);
-    Mask := Mask[null, wand(true, sum(Heap, xs) == n):=Mask[null, wand(true, sum(Heap, xs) == n)] + FullPerm];
+    Mask := Mask[null, wand(true, sum_1(Heap, xs) == n):=Mask[null, wand(true, sum_1(Heap, xs) == n)] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1724,7 +1724,7 @@ procedure test07(xs: (Seq int), n: int) returns ()
   // -- Translating statement: assert xs == ys[1..] -- issue006.vpr@74.3--74.23
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion xs == ys[1..] might not hold. (issue006.vpr@74.10--74.23) [129493]"}
+    assert {:msg "  Assert might fail. Assertion xs == ys[1..] might not hold. (issue006.vpr@74.10--74.23) [217116]"}
       Seq#Equal(xs, Seq#Drop(ys, 1));
     assume state(Heap, Mask);
   
@@ -1734,9 +1734,9 @@ procedure test07(xs: (Seq int), n: int) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@75.3--75.32) [129494]"}
-        FullPerm <= Mask[null, wand(true, sum(Heap, ys) == 2 * n)];
-      Mask := Mask[null, wand(true, sum(Heap, ys) == 2 * n):=Mask[null, wand(true, sum(Heap, ys) == 2 * n)] - FullPerm];
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@75.3--75.32) [217117]"}
+        FullPerm <= Mask[null, wand(true, sum_1(Heap, ys) == 2 * n)];
+      Mask := Mask[null, wand(true, sum_1(Heap, ys) == 2 * n):=Mask[null, wand(true, sum_1(Heap, ys) == 2 * n)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
@@ -1746,7 +1746,7 @@ procedure test07(xs: (Seq int), n: int) returns ()
     
     // -- inhale the RHS of the wand
       assume state(Heap, Mask);
-      assume sum(Heap, ys) == 2 * n;
+      assume sum_1(Heap, ys) == 2 * n;
       assume state(Heap, Mask);
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -1766,10 +1766,10 @@ procedure test08a() returns ()
   var oldMask: MaskType;
   var Ops_17Heap: HeapType;
   var Ops_17Mask: MaskType;
-  var b_27: bool;
+  var b_27_1: bool;
   var Used_16Heap: HeapType;
   var Used_16Mask: MaskType;
-  var b_26: bool;
+  var b_26_1: bool;
   var x: int;
   var y: int;
   var Labellhs25Heap: HeapType;
@@ -1777,7 +1777,7 @@ procedure test08a() returns ()
   var boolCur_8: bool;
   var Used_17Heap: HeapType;
   var Used_17Mask: MaskType;
-  var b_28: bool;
+  var b_28_1: bool;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
@@ -1798,28 +1798,28 @@ procedure test08a() returns ()
   // } -- issue006.vpr@90.3--90.33
     havoc Ops_17Heap;
     Ops_17Mask := ZeroMask;
-    b_27 := b_27 && state(Ops_17Heap, Ops_17Mask);
+    b_27_1 := b_27_1 && state(Ops_17Heap, Ops_17Mask);
     havoc Used_16Heap;
     Used_16Mask := ZeroMask;
-    b_26 := b_26 && state(Used_16Heap, Used_16Mask);
+    b_26_1 := b_26_1 && state(Used_16Heap, Used_16Mask);
     // Inhaling left hand side of current wand into hypothetical state
-    if (b_27) {
-      b_27 := b_27 && x < y;
+    if (b_27_1) {
+      b_27_1 := b_27_1 && x < y;
     }
-    b_27 := b_27 && state(Ops_17Heap, Ops_17Mask);
+    b_27_1 := b_27_1 && state(Ops_17Heap, Ops_17Mask);
     
     // -- Translating statement: label lhs25 -- issue006.vpr@90.11--90.33
       lhs25:
       Labellhs25Heap := Ops_17Heap;
       Labellhs25Mask := Ops_17Mask;
-      b_27 := b_27 && state(Ops_17Heap, Ops_17Mask);
+      b_27_1 := b_27_1 && state(Ops_17Heap, Ops_17Mask);
     boolCur_8 := true;
     // Translating exec of non-ghost operationatMost(x, y)
     havoc Used_17Heap;
     Used_17Mask := ZeroMask;
-    b_28 := b_28 && state(Used_17Heap, Used_17Mask);
-    assert {:msg "  Packaging wand might fail. Assertion atMost(x, y) might not hold. (issue006.vpr@90.3--90.33) [129496]"}
-      (b_27 && b_27) && b_28 ==> (atMost(x, y): bool);
+    b_28_1 := b_28_1 && state(Used_17Heap, Used_17Mask);
+    assert {:msg "  Packaging wand might fail. Assertion atMost(x, y) might not hold. (issue006.vpr@90.3--90.33) [217119]"}
+      (b_27_1 && b_27_1) && b_28_1 ==> (atMost(x, y): bool);
     Mask := Mask[null, wand(x < y, (atMost(x, y): bool)):=Mask[null, wand(x < y, (atMost(x, y): bool))] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1831,7 +1831,7 @@ procedure test08a() returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@92.3--92.31) [129497]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@92.3--92.31) [217120]"}
         FullPerm <= Mask[null, wand(x < y, (atMost(x, y): bool))];
       Mask := Mask[null, wand(x < y, (atMost(x, y): bool)):=Mask[null, wand(x < y, (atMost(x, y): bool))] - FullPerm];
     assume state(Heap, Mask);
@@ -1839,7 +1839,7 @@ procedure test08a() returns ()
     // -- check if LHS holds and remove permissions 
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  Applying wand might fail. Assertion x < y might not hold. (issue006.vpr@92.3--92.31) [129498]"}
+      assert {:msg "  Applying wand might fail. Assertion x < y might not hold. (issue006.vpr@92.3--92.31) [217121]"}
         x < y;
     assume state(Heap, Mask);
     
@@ -1864,10 +1864,10 @@ procedure test08b() returns ()
   var oldMask: MaskType;
   var Ops_19Heap: HeapType;
   var Ops_19Mask: MaskType;
-  var b_30: bool;
+  var b_30_1: bool;
   var Used_18Heap: HeapType;
   var Used_18Mask: MaskType;
-  var b_29: bool;
+  var b_29_1: bool;
   var x: int;
   var y: int;
   var Labellhs28Heap: HeapType;
@@ -1875,7 +1875,7 @@ procedure test08b() returns ()
   var boolCur_9: bool;
   var Used_19Heap: HeapType;
   var Used_19Mask: MaskType;
-  var b_31: bool;
+  var b_31_1: bool;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
@@ -1896,28 +1896,28 @@ procedure test08b() returns ()
   // } -- issue006.vpr@99.3--99.34
     havoc Ops_19Heap;
     Ops_19Mask := ZeroMask;
-    b_30 := b_30 && state(Ops_19Heap, Ops_19Mask);
+    b_30_1 := b_30_1 && state(Ops_19Heap, Ops_19Mask);
     havoc Used_18Heap;
     Used_18Mask := ZeroMask;
-    b_29 := b_29 && state(Used_18Heap, Used_18Mask);
+    b_29_1 := b_29_1 && state(Used_18Heap, Used_18Mask);
     // Inhaling left hand side of current wand into hypothetical state
-    if (b_30) {
-      b_30 := b_30 && x <= y;
+    if (b_30_1) {
+      b_30_1 := b_30_1 && x <= y;
     }
-    b_30 := b_30 && state(Ops_19Heap, Ops_19Mask);
+    b_30_1 := b_30_1 && state(Ops_19Heap, Ops_19Mask);
     
     // -- Translating statement: label lhs28 -- issue006.vpr@99.11--99.34
       lhs28:
       Labellhs28Heap := Ops_19Heap;
       Labellhs28Mask := Ops_19Mask;
-      b_30 := b_30 && state(Ops_19Heap, Ops_19Mask);
+      b_30_1 := b_30_1 && state(Ops_19Heap, Ops_19Mask);
     boolCur_9 := true;
     // Translating exec of non-ghost operationatMost(x, y)
     havoc Used_19Heap;
     Used_19Mask := ZeroMask;
-    b_31 := b_31 && state(Used_19Heap, Used_19Mask);
-    assert {:msg "  Packaging wand might fail. Assertion atMost(x, y) might not hold. (issue006.vpr@99.3--99.34) [129499]"}
-      (b_30 && b_30) && b_31 ==> (atMost(x, y): bool);
+    b_31_1 := b_31_1 && state(Used_19Heap, Used_19Mask);
+    assert {:msg "  Packaging wand might fail. Assertion atMost(x, y) might not hold. (issue006.vpr@99.3--99.34) [217122]"}
+      (b_30_1 && b_30_1) && b_31_1 ==> (atMost(x, y): bool);
     Mask := Mask[null, wand(x <= y, (atMost(x, y): bool)):=Mask[null, wand(x <= y, (atMost(x, y): bool))] + FullPerm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1938,7 +1938,7 @@ procedure test08b() returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@102.3--102.32) [129500]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue006.vpr@102.3--102.32) [217123]"}
         FullPerm <= Mask[null, wand(x <= y, (atMost(x, y): bool))];
       Mask := Mask[null, wand(x <= y, (atMost(x, y): bool)):=Mask[null, wand(x <= y, (atMost(x, y): bool))] - FullPerm];
     assume state(Heap, Mask);
@@ -1946,7 +1946,7 @@ procedure test08b() returns ()
     // -- check if LHS holds and remove permissions 
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  Applying wand might fail. Assertion x <= y might not hold. (issue006.vpr@102.3--102.32) [129501]"}
+      assert {:msg "  Applying wand might fail. Assertion x <= y might not hold. (issue006.vpr@102.3--102.32) [217124]"}
         x <= y;
     assume state(Heap, Mask);
     

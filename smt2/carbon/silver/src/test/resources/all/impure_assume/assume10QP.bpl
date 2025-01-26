@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:57
+// Date:         2025-01-26 21:41:32
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10QP.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10QP-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_37: Ref, f_42: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_37, f_42] }
-  Heap[o_37, $allocated] ==> Heap[Heap[o_37, f_42], $allocated]
+axiom (forall o_24: Ref, f_34: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_24, f_34] }
+  Heap[o_24, $allocated] ==> Heap[Heap[o_24, f_34], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_60: Ref, f_81: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_60, f_81] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_60, f_81) ==> Heap[o_60, f_81] == ExhaleHeap[o_60, f_81]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_25: Ref, f_33: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_25, f_33] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_25, f_33) ==> Heap[o_25, f_33] == ExhaleHeap[o_25, f_33]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_40: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_40), ExhaleHeap[null, PredicateMaskField(pm_f_40)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_40) && IsPredicateField(pm_f_40) ==> Heap[null, PredicateMaskField(pm_f_40)] == ExhaleHeap[null, PredicateMaskField(pm_f_40)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_11), ExhaleHeap[null, PredicateMaskField(pm_f_11)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsPredicateField(pm_f_11) ==> Heap[null, PredicateMaskField(pm_f_11)] == ExhaleHeap[null, PredicateMaskField(pm_f_11)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_40: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_40) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_40) && IsPredicateField(pm_f_40) ==> (forall <A, B> o2_40: Ref, f_81: (Field A B) ::
-    { ExhaleHeap[o2_40, f_81] }
-    Heap[null, PredicateMaskField(pm_f_40)][o2_40, f_81] ==> Heap[o2_40, f_81] == ExhaleHeap[o2_40, f_81]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_11) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsPredicateField(pm_f_11) ==> (forall <A, B> o2_11: Ref, f_33: (Field A B) ::
+    { ExhaleHeap[o2_11, f_33] }
+    Heap[null, PredicateMaskField(pm_f_11)][o2_11, f_33] ==> Heap[o2_11, f_33] == ExhaleHeap[o2_11, f_33]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_40: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_40), ExhaleHeap[null, WandMaskField(pm_f_40)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_40) && IsWandField(pm_f_40) ==> Heap[null, WandMaskField(pm_f_40)] == ExhaleHeap[null, WandMaskField(pm_f_40)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_11), ExhaleHeap[null, WandMaskField(pm_f_11)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsWandField(pm_f_11) ==> Heap[null, WandMaskField(pm_f_11)] == ExhaleHeap[null, WandMaskField(pm_f_11)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_40: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_40) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_40) && IsWandField(pm_f_40) ==> (forall <A, B> o2_40: Ref, f_81: (Field A B) ::
-    { ExhaleHeap[o2_40, f_81] }
-    Heap[null, WandMaskField(pm_f_40)][o2_40, f_81] ==> Heap[o2_40, f_81] == ExhaleHeap[o2_40, f_81]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_11) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsWandField(pm_f_11) ==> (forall <A, B> o2_11: Ref, f_33: (Field A B) ::
+    { ExhaleHeap[o2_11, f_33] }
+    Heap[null, WandMaskField(pm_f_11)][o2_11, f_33] ==> Heap[o2_11, f_33] == ExhaleHeap[o2_11, f_33]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_60: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_60, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_60, $allocated] ==> ExhaleHeap[o_60, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_25: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_25, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_25, $allocated] ==> ExhaleHeap[o_25, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_37: Ref, f_32: (Field A B), v: B ::
-  { Heap[o_37, f_32:=v] }
-  succHeap(Heap, Heap[o_37, f_32:=v])
+axiom (forall <A, B> Heap: HeapType, o_24: Ref, f_17: (Field A B), v: B ::
+  { Heap[o_24, f_17:=v] }
+  succHeap(Heap, Heap[o_24, f_17:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -365,114 +365,114 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
     
 
 // ==================================================
-// Translation of domain Inverse_56
+// Translation of domain Inverse_34
 // ==================================================
 
-// The type for domain Inverse_56
-type Inverse_56DomainType;
+// The type for domain Inverse_34
+type Inverse_34DomainType;
 
-// Translation of domain function inv_56
-function  inv_56(r_3: Ref): Ref;
-
-// ==================================================
-// Translation of domain Inverse_57
-// ==================================================
-
-// The type for domain Inverse_57
-type Inverse_57DomainType;
-
-// Translation of domain function inv_57
-function  inv_57(r_3: Ref): Ref;
+// Translation of domain function inv_34
+function  inv_34(r_4: Ref): Ref;
 
 // ==================================================
-// Translation of domain Inverse_58
+// Translation of domain Inverse_35
 // ==================================================
 
-// The type for domain Inverse_58
-type Inverse_58DomainType;
+// The type for domain Inverse_35
+type Inverse_35DomainType;
 
-// Translation of domain function inv_58
-function  inv_58(r_3: Ref): Ref;
-
-// ==================================================
-// Translation of domain Inverse_59
-// ==================================================
-
-// The type for domain Inverse_59
-type Inverse_59DomainType;
-
-// Translation of domain function inv_59
-function  inv_59(r_3: Ref): Ref;
+// Translation of domain function inv_35
+function  inv_35(r_4: Ref): Ref;
 
 // ==================================================
-// Translation of domain Inverse_60
+// Translation of domain Inverse_36
 // ==================================================
 
-// The type for domain Inverse_60
-type Inverse_60DomainType;
+// The type for domain Inverse_36
+type Inverse_36DomainType;
 
-// Translation of domain function inv_60
-function  inv_60(r_3: Ref): Ref;
-
-// ==================================================
-// Translation of domain Inverse_61
-// ==================================================
-
-// The type for domain Inverse_61
-type Inverse_61DomainType;
-
-// Translation of domain function inv_61
-function  inv_61(r_3: Ref): Ref;
+// Translation of domain function inv_36
+function  inv_36(r_4: Ref): Ref;
 
 // ==================================================
-// Translation of domain Inverse_62
+// Translation of domain Inverse_37
 // ==================================================
 
-// The type for domain Inverse_62
-type Inverse_62DomainType;
+// The type for domain Inverse_37
+type Inverse_37DomainType;
 
-// Translation of domain function inv_62
-function  inv_62(r_3: Ref): Ref;
-
-// ==================================================
-// Translation of domain Inverse_63
-// ==================================================
-
-// The type for domain Inverse_63
-type Inverse_63DomainType;
-
-// Translation of domain function inv_63
-function  inv_63(r_3: Ref): Ref;
+// Translation of domain function inv_37
+function  inv_37(r_4: Ref): Ref;
 
 // ==================================================
-// Translation of domain Inverse_64
+// Translation of domain Inverse_38
 // ==================================================
 
-// The type for domain Inverse_64
-type Inverse_64DomainType;
+// The type for domain Inverse_38
+type Inverse_38DomainType;
 
-// Translation of domain function inv_64
-function  inv_64(r_3: Ref): Ref;
-
-// ==================================================
-// Translation of domain Inverse_65
-// ==================================================
-
-// The type for domain Inverse_65
-type Inverse_65DomainType;
-
-// Translation of domain function inv_65
-function  inv_65(r_3: Ref): Ref;
+// Translation of domain function inv_38
+function  inv_38(r_4: Ref): Ref;
 
 // ==================================================
-// Translation of domain Inverse_66
+// Translation of domain Inverse_39
 // ==================================================
 
-// The type for domain Inverse_66
-type Inverse_66DomainType;
+// The type for domain Inverse_39
+type Inverse_39DomainType;
 
-// Translation of domain function inv_66
-function  inv_66(r_3: Ref): Ref;
+// Translation of domain function inv_39
+function  inv_39(r_4: Ref): Ref;
+
+// ==================================================
+// Translation of domain Inverse_40
+// ==================================================
+
+// The type for domain Inverse_40
+type Inverse_40DomainType;
+
+// Translation of domain function inv_40
+function  inv_40(r_4: Ref): Ref;
+
+// ==================================================
+// Translation of domain Inverse_41
+// ==================================================
+
+// The type for domain Inverse_41
+type Inverse_41DomainType;
+
+// Translation of domain function inv_41
+function  inv_41(r_4: Ref): Ref;
+
+// ==================================================
+// Translation of domain Inverse_42
+// ==================================================
+
+// The type for domain Inverse_42
+type Inverse_42DomainType;
+
+// Translation of domain function inv_42
+function  inv_42(r_4: Ref): Ref;
+
+// ==================================================
+// Translation of domain Inverse_43
+// ==================================================
+
+// The type for domain Inverse_43
+type Inverse_43DomainType;
+
+// Translation of domain function inv_43
+function  inv_43(r_4: Ref): Ref;
+
+// ==================================================
+// Translation of domain Inverse_44
+// ==================================================
+
+// The type for domain Inverse_44
+type Inverse_44DomainType;
+
+// Translation of domain function inv_44
+function  inv_44(r_4: Ref): Ref;
 
 // ==================================================
 // Translation of domain __ns__impure_assume_rewriter
@@ -482,34 +482,34 @@ function  inv_66(r_3: Ref): Ref;
 type __ns__impure_assume_rewriterDomainType;
 
 // Translation of domain function __iar__assume_helper_1
-function  __iar__assume_helper_1(c_1_2: bool, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_1(c_1_2: bool, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_2
-function  __iar__assume_helper_2(c_2_2: bool, c_1_2: bool, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_2(c_2_1: bool, c_1_2: bool, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_3
-function  __iar__assume_helper_3(c_3_2: bool, c_2_2: bool, c_1_2: bool, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_3(c_3_2: bool, c_2_1: bool, c_1_2: bool, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_4
-function  __iar__assume_helper_4(c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_4(c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_5
-function  __iar__assume_helper_5(c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_5(c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_6
-function  __iar__assume_helper_6(c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_6(c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_7
-function  __iar__assume_helper_7(c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_7(c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_8
-function  __iar__assume_helper_8(c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_8_1: Perm, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_8(c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_8_1: Perm, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_9
-function  __iar__assume_helper_9(c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_9_2: Perm, p_8_1: Perm, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_9(c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_9: Perm, p_8_1: Perm, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain function __iar__assume_helper_10
-function  __iar__assume_helper_10(c_10_1: bool, c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_2: bool, c_4_1: bool, c_3_2: bool, c_2_2: bool, c_1_2: bool, p_10_1: Perm, p_9_2: Perm, p_8_1: Perm, p_7_2: Perm, p_6_2: Perm, p_5_1: Perm, p_4_2: Perm, p_3_2: Perm, p_2_2: Perm, p_1_3: Perm, p_0: Perm): Perm;
+function  __iar__assume_helper_10(c_10: bool, c_9_2: bool, c_8_2: bool, c_7_2: bool, c_6_2: bool, c_5_1: bool, c_4_1: bool, c_3_2: bool, c_2_1: bool, c_1_2: bool, p_10: Perm, p_9: Perm, p_8_1: Perm, p_7_1: Perm, p_6_1: Perm, p_5_1: Perm, p_4_2: Perm, p_3_1: Perm, p_2_2: Perm, p_1_2: Perm, p_0: Perm): Perm;
 
 // Translation of domain axiom __iar__assume_helper_1_axiom
 axiom (forall c_1: bool, p_1_1: Perm, p_0_1: Perm ::
@@ -518,57 +518,57 @@ axiom (forall c_1: bool, p_1_1: Perm, p_0_1: Perm ::
 );
 
 // Translation of domain axiom __iar__assume_helper_2_axiom
-axiom (forall c_2: bool, c_1: bool, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_2(c_2, c_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_2(c_2, c_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm)
+axiom (forall c_2_2: bool, c_1: bool, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_2(c_2_2, c_1, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_2(c_2_2, c_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_3_axiom
-axiom (forall c_3: bool, c_2: bool, c_1: bool, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_3(c_3, c_2, c_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_3(c_3, c_2, c_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm)
+axiom (forall c_3: bool, c_2_2: bool, c_1: bool, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_3(c_3, c_2_2, c_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_3(c_3, c_2_2, c_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_4_axiom
-axiom (forall c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_4(c_4_2, c_3, c_2, c_1, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_4(c_4_2, c_3, c_2, c_1, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm)
+axiom (forall c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_4(c_4_2, c_3, c_2_2, c_1, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_4(c_4_2, c_3, c_2_2, c_1, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_5_axiom
-axiom (forall c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_5(c_5_1, c_4_2, c_3, c_2, c_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_5(c_5_1, c_4_2, c_3, c_2, c_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm)
+axiom (forall c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_5(c_5, c_4_2, c_3, c_2_2, c_1, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_5(c_5, c_4_2, c_3, c_2_2, c_1, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_6_axiom
-axiom (forall c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_6(c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_6(c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm)
+axiom (forall c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_6(c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_6(c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_7_axiom
-axiom (forall c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_7(c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_7(c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm)
+axiom (forall c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_7(c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_7(c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_8_axiom
-axiom (forall c_8: bool, c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_8: Perm, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_8(c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_8(c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm) + (if c_8 then p_8 else NoPerm)
+axiom (forall c_8: bool, c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_8: Perm, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_8(c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_8(c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm) + (if c_8 then p_8 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_9_axiom
-axiom (forall c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_9_3: Perm, p_8: Perm, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_3 else NoPerm)
+axiom (forall c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_9_1: Perm, p_8: Perm, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_9(c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_1 else NoPerm)
 );
 
 // Translation of domain axiom __iar__assume_helper_10_axiom
-axiom (forall c_10_2: bool, c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5_1: bool, c_4_2: bool, c_3: bool, c_2: bool, c_1: bool, p_10: Perm, p_9_3: Perm, p_8: Perm, p_7_3: Perm, p_6_1: Perm, p_5: Perm, p_4_1: Perm, p_3_1: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
-  { (__iar__assume_helper_10(c_10_2, c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_10, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) }
-  (__iar__assume_helper_10(c_10_2, c_9, c_8, c_7, c_6, c_5_1, c_4_2, c_3, c_2, c_1, p_10, p_9_3, p_8, p_7_3, p_6_1, p_5, p_4_1, p_3_1, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2 then p_2_1 else NoPerm) + (if c_3 then p_3_1 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5_1 then p_5 else NoPerm) + (if c_6 then p_6_1 else NoPerm) + (if c_7 then p_7_3 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_3 else NoPerm) + (if c_10_2 then p_10 else NoPerm)
+axiom (forall c_10_1: bool, c_9: bool, c_8: bool, c_7: bool, c_6: bool, c_5: bool, c_4_2: bool, c_3: bool, c_2_2: bool, c_1: bool, p_10_1: Perm, p_9_1: Perm, p_8: Perm, p_7_2: Perm, p_6: Perm, p_5_2: Perm, p_4_1: Perm, p_3_2: Perm, p_2_1: Perm, p_1_1: Perm, p_0_1: Perm ::
+  { (__iar__assume_helper_10(c_10_1, c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_10_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) }
+  (__iar__assume_helper_10(c_10_1, c_9, c_8, c_7, c_6, c_5, c_4_2, c_3, c_2_2, c_1, p_10_1, p_9_1, p_8, p_7_2, p_6, p_5_2, p_4_1, p_3_2, p_2_1, p_1_1, p_0_1): Perm) == p_0_1 + (if c_1 then p_1_1 else NoPerm) + (if c_2_2 then p_2_1 else NoPerm) + (if c_3 then p_3_2 else NoPerm) + (if c_4_2 then p_4_1 else NoPerm) + (if c_5 then p_5_2 else NoPerm) + (if c_6 then p_6 else NoPerm) + (if c_7 then p_7_2 else NoPerm) + (if c_8 then p_8 else NoPerm) + (if c_9 then p_9_1 else NoPerm) + (if c_10_1 then p_10_1 else NoPerm)
 );
 
 // ==================================================
@@ -583,7 +583,7 @@ axiom !IsWandField(f_7);
 // Translation of method m
 // ==================================================
 
-procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5: (Set Ref), xs6: (Set Ref), xs7: (Set Ref), xs8: (Set Ref), xs9: (Set Ref), xs10: (Set Ref), xs11: (Set Ref), x: Ref, p_1: Perm) returns ()
+procedure m_17(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5: (Set Ref), xs6: (Set Ref), xs7: (Set Ref), xs8: (Set Ref), xs9: (Set Ref), xs10: (Set Ref), xs11: (Set Ref), x: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -614,7 +614,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
   
   // -- Translating statement: inhale acc(x.f, p) -- assume10QP.vpr@12.3--12.21
     perm := p_1;
-    assert {:msg "  Inhale might fail. Fraction p might be negative. (assume10QP.vpr@12.10--12.21) [149924]"}
+    assert {:msg "  Inhale might fail. Fraction p might be negative. (assume10QP.vpr@12.10--12.21) [20670]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -624,545 +624,545 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
   
   // -- Translating statement: inhale (forall x1: Ref ::
   //     { x1.f }
-  //     (x1 in xs1) ==> true && inv_56(x1) == x1) -- assume10QP.vpr@14.11--14.62
+  //     (x1 in xs1) ==> true && inv_34(x1) == x1) -- assume10QP.vpr@14.11--14.62
     
-    // -- Check definedness of (forall x1: Ref :: { x1.f } (x1 in xs1) ==> true && inv_56(x1) == x1)
+    // -- Check definedness of (forall x1: Ref :: { x1.f } (x1 in xs1) ==> true && inv_34(x1) == x1)
       if (*) {
         assume false;
       }
     assume (forall x1_1: Ref ::
       { Heap[x1_1, f_7] }
-      xs1[x1_1] ==> (inv_56(x1_1): Ref) == x1_1
+      xs1[x1_1] ==> (inv_34(x1_1): Ref) == x1_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_56(r) }
-  //     (inv_56(r) in xs1) ==> inv_56(r) == r) -- assume10QP.vpr@14.11--14.62
+  //     { inv_34(r) }
+  //     (inv_34(r) in xs1) ==> inv_34(r) == r) -- assume10QP.vpr@14.11--14.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_56(r) } (inv_56(r) in xs1) ==> inv_56(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_34(r) } (inv_34(r) in xs1) ==> inv_34(r) == r)
       if (*) {
         assume false;
       }
     assume (forall r_1_1: Ref ::
-      { (inv_56(r_1_1): Ref) }
-      xs1[(inv_56(r_1_1): Ref)] ==> (inv_56(r_1_1): Ref) == r_1_1
+      { (inv_34(r_1_1): Ref) }
+      xs1[(inv_34(r_1_1): Ref)] ==> (inv_34(r_1_1): Ref) == r_1_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_56(r) }
-  //     (inv_56(r) in xs1) ==> perm(r.f) >= p) -- assume10QP.vpr@14.11--14.62
+  //     { inv_34(r) }
+  //     (inv_34(r) in xs1) ==> perm(r.f) >= p) -- assume10QP.vpr@14.11--14.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_56(r) } (inv_56(r) in xs1) ==> perm(r.f) >= p)
+    // -- Check definedness of (forall r: Ref :: { inv_34(r) } (inv_34(r) in xs1) ==> perm(r.f) >= p)
       if (*) {
         assume false;
       }
-    assume (forall r_3_2: Ref ::
-      { (inv_56(r_3_2): Ref) }
-      xs1[(inv_56(r_3_2): Ref)] ==> p_1 <= Mask[r_3_2, f_7]
+    assume (forall r_3: Ref ::
+      { (inv_34(r_3): Ref) }
+      xs1[(inv_34(r_3): Ref)] ==> p_1 <= Mask[r_3, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall x2: Ref ::
   //     { x2.f }
-  //     (x2 in xs2) ==> true && inv_57(x2) == x2) -- assume10QP.vpr@15.11--15.62
+  //     (x2 in xs2) ==> true && inv_35(x2) == x2) -- assume10QP.vpr@15.11--15.62
     
-    // -- Check definedness of (forall x2: Ref :: { x2.f } (x2 in xs2) ==> true && inv_57(x2) == x2)
+    // -- Check definedness of (forall x2: Ref :: { x2.f } (x2 in xs2) ==> true && inv_35(x2) == x2)
       if (*) {
         assume false;
       }
     assume (forall x2_1_1: Ref ::
       { Heap[x2_1_1, f_7] }
-      xs2[x2_1_1] ==> (inv_57(x2_1_1): Ref) == x2_1_1
+      xs2[x2_1_1] ==> (inv_35(x2_1_1): Ref) == x2_1_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_57(r) }
-  //     (inv_57(r) in xs2) ==> inv_57(r) == r) -- assume10QP.vpr@15.11--15.62
+  //     { inv_35(r) }
+  //     (inv_35(r) in xs2) ==> inv_35(r) == r) -- assume10QP.vpr@15.11--15.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_57(r) } (inv_57(r) in xs2) ==> inv_57(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_35(r) } (inv_35(r) in xs2) ==> inv_35(r) == r)
       if (*) {
         assume false;
       }
-    assume (forall r_5: Ref ::
-      { (inv_57(r_5): Ref) }
-      xs2[(inv_57(r_5): Ref)] ==> (inv_57(r_5): Ref) == r_5
+    assume (forall r_5_1: Ref ::
+      { (inv_35(r_5_1): Ref) }
+      xs2[(inv_35(r_5_1): Ref)] ==> (inv_35(r_5_1): Ref) == r_5_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_57(r) }
-  //     (inv_57(r) in xs2) ==>
-  //     perm(r.f) >= __iar__assume_helper_1((inv_56(r) in xs1) && r == r, p, p)) -- assume10QP.vpr@15.11--15.62
+  //     { inv_35(r) }
+  //     (inv_35(r) in xs2) ==>
+  //     perm(r.f) >= __iar__assume_helper_1((inv_34(r) in xs1) && r == r, p, p)) -- assume10QP.vpr@15.11--15.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_57(r) } (inv_57(r) in xs2) ==> perm(r.f) >= __iar__assume_helper_1((inv_56(r) in xs1) && r == r, p, p))
+    // -- Check definedness of (forall r: Ref :: { inv_35(r) } (inv_35(r) in xs2) ==> perm(r.f) >= __iar__assume_helper_1((inv_34(r) in xs1) && r == r, p, p))
       if (*) {
         assume false;
       }
     assume (forall r_7: Ref ::
-      { (inv_57(r_7): Ref) }
-      xs2[(inv_57(r_7): Ref)] ==> (__iar__assume_helper_1(xs1[(inv_56(r_7): Ref)] && r_7 == r_7, p_1, p_1): Perm) <= Mask[r_7, f_7]
+      { (inv_35(r_7): Ref) }
+      xs2[(inv_35(r_7): Ref)] ==> (__iar__assume_helper_1(xs1[(inv_34(r_7): Ref)] && r_7 == r_7, p_1, p_1): Perm) <= Mask[r_7, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall x3: Ref ::
   //     { x3.f }
-  //     (x3 in xs3) ==> true && inv_58(x3) == x3) -- assume10QP.vpr@16.11--16.62
+  //     (x3 in xs3) ==> true && inv_36(x3) == x3) -- assume10QP.vpr@16.11--16.62
     
-    // -- Check definedness of (forall x3: Ref :: { x3.f } (x3 in xs3) ==> true && inv_58(x3) == x3)
+    // -- Check definedness of (forall x3: Ref :: { x3.f } (x3 in xs3) ==> true && inv_36(x3) == x3)
       if (*) {
         assume false;
       }
-    assume (forall x3_1_1: Ref ::
-      { Heap[x3_1_1, f_7] }
-      xs3[x3_1_1] ==> (inv_58(x3_1_1): Ref) == x3_1_1
+    assume (forall x3_1: Ref ::
+      { Heap[x3_1, f_7] }
+      xs3[x3_1] ==> (inv_36(x3_1): Ref) == x3_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_58(r) }
-  //     (inv_58(r) in xs3) ==> inv_58(r) == r) -- assume10QP.vpr@16.11--16.62
+  //     { inv_36(r) }
+  //     (inv_36(r) in xs3) ==> inv_36(r) == r) -- assume10QP.vpr@16.11--16.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_58(r) } (inv_58(r) in xs3) ==> inv_58(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_36(r) } (inv_36(r) in xs3) ==> inv_36(r) == r)
       if (*) {
         assume false;
       }
     assume (forall r_9: Ref ::
-      { (inv_58(r_9): Ref) }
-      xs3[(inv_58(r_9): Ref)] ==> (inv_58(r_9): Ref) == r_9
+      { (inv_36(r_9): Ref) }
+      xs3[(inv_36(r_9): Ref)] ==> (inv_36(r_9): Ref) == r_9
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_58(r) }
-  //     (inv_58(r) in xs3) ==>
+  //     { inv_36(r) }
+  //     (inv_36(r) in xs3) ==>
   //     perm(r.f) >=
-  //     __iar__assume_helper_2((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) &&
+  //     __iar__assume_helper_2((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) &&
   //     r == r, p, p, p)) -- assume10QP.vpr@16.11--16.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_58(r) } (inv_58(r) in xs3) ==> perm(r.f) >= __iar__assume_helper_2((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) && r == r, p, p, p))
+    // -- Check definedness of (forall r: Ref :: { inv_36(r) } (inv_36(r) in xs3) ==> perm(r.f) >= __iar__assume_helper_2((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) && r == r, p, p, p))
       if (*) {
         assume false;
       }
-    assume (forall r_11_2: Ref ::
-      { (inv_58(r_11_2): Ref) }
-      xs3[(inv_58(r_11_2): Ref)] ==> (__iar__assume_helper_2(xs1[(inv_56(r_11_2): Ref)] && r_11_2 == r_11_2, xs2[(inv_57(r_11_2): Ref)] && r_11_2 == r_11_2, p_1, p_1, p_1): Perm) <= Mask[r_11_2, f_7]
+    assume (forall r_11_1: Ref ::
+      { (inv_36(r_11_1): Ref) }
+      xs3[(inv_36(r_11_1): Ref)] ==> (__iar__assume_helper_2(xs1[(inv_34(r_11_1): Ref)] && r_11_1 == r_11_1, xs2[(inv_35(r_11_1): Ref)] && r_11_1 == r_11_1, p_1, p_1, p_1): Perm) <= Mask[r_11_1, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall x4: Ref ::
   //     { x4.f }
-  //     (x4 in xs4) ==> true && inv_59(x4) == x4) -- assume10QP.vpr@17.11--17.62
+  //     (x4 in xs4) ==> true && inv_37(x4) == x4) -- assume10QP.vpr@17.11--17.62
     
-    // -- Check definedness of (forall x4: Ref :: { x4.f } (x4 in xs4) ==> true && inv_59(x4) == x4)
+    // -- Check definedness of (forall x4: Ref :: { x4.f } (x4 in xs4) ==> true && inv_37(x4) == x4)
       if (*) {
         assume false;
       }
-    assume (forall x4_1_1: Ref ::
-      { Heap[x4_1_1, f_7] }
-      xs4[x4_1_1] ==> (inv_59(x4_1_1): Ref) == x4_1_1
+    assume (forall x4_1: Ref ::
+      { Heap[x4_1, f_7] }
+      xs4[x4_1] ==> (inv_37(x4_1): Ref) == x4_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_59(r) }
-  //     (inv_59(r) in xs4) ==> inv_59(r) == r) -- assume10QP.vpr@17.11--17.62
+  //     { inv_37(r) }
+  //     (inv_37(r) in xs4) ==> inv_37(r) == r) -- assume10QP.vpr@17.11--17.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_59(r) } (inv_59(r) in xs4) ==> inv_59(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_37(r) } (inv_37(r) in xs4) ==> inv_37(r) == r)
       if (*) {
         assume false;
       }
-    assume (forall r_13_2: Ref ::
-      { (inv_59(r_13_2): Ref) }
-      xs4[(inv_59(r_13_2): Ref)] ==> (inv_59(r_13_2): Ref) == r_13_2
+    assume (forall r_13: Ref ::
+      { (inv_37(r_13): Ref) }
+      xs4[(inv_37(r_13): Ref)] ==> (inv_37(r_13): Ref) == r_13
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_59(r) }
-  //     (inv_59(r) in xs4) ==>
+  //     { inv_37(r) }
+  //     (inv_37(r) in xs4) ==>
   //     perm(r.f) >=
-  //     __iar__assume_helper_3((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) &&
-  //     r == r, (inv_58(r) in xs3) && r == r, p, p, p, p)) -- assume10QP.vpr@17.11--17.62
+  //     __iar__assume_helper_3((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) &&
+  //     r == r, (inv_36(r) in xs3) && r == r, p, p, p, p)) -- assume10QP.vpr@17.11--17.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_59(r) } (inv_59(r) in xs4) ==> perm(r.f) >= __iar__assume_helper_3((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) && r == r, (inv_58(r) in xs3) && r == r, p, p, p, p))
+    // -- Check definedness of (forall r: Ref :: { inv_37(r) } (inv_37(r) in xs4) ==> perm(r.f) >= __iar__assume_helper_3((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) && r == r, (inv_36(r) in xs3) && r == r, p, p, p, p))
       if (*) {
         assume false;
       }
-    assume (forall r_15_2: Ref ::
-      { (inv_59(r_15_2): Ref) }
-      xs4[(inv_59(r_15_2): Ref)] ==> (__iar__assume_helper_3(xs1[(inv_56(r_15_2): Ref)] && r_15_2 == r_15_2, xs2[(inv_57(r_15_2): Ref)] && r_15_2 == r_15_2, xs3[(inv_58(r_15_2): Ref)] && r_15_2 == r_15_2, p_1, p_1, p_1, p_1): Perm) <= Mask[r_15_2, f_7]
+    assume (forall r_15: Ref ::
+      { (inv_37(r_15): Ref) }
+      xs4[(inv_37(r_15): Ref)] ==> (__iar__assume_helper_3(xs1[(inv_34(r_15): Ref)] && r_15 == r_15, xs2[(inv_35(r_15): Ref)] && r_15 == r_15, xs3[(inv_36(r_15): Ref)] && r_15 == r_15, p_1, p_1, p_1, p_1): Perm) <= Mask[r_15, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall x5: Ref ::
   //     { x5.f }
-  //     (x5 in xs5) ==> true && inv_60(x5) == x5) -- assume10QP.vpr@18.11--18.62
+  //     (x5 in xs5) ==> true && inv_38(x5) == x5) -- assume10QP.vpr@18.11--18.62
     
-    // -- Check definedness of (forall x5: Ref :: { x5.f } (x5 in xs5) ==> true && inv_60(x5) == x5)
+    // -- Check definedness of (forall x5: Ref :: { x5.f } (x5 in xs5) ==> true && inv_38(x5) == x5)
       if (*) {
         assume false;
       }
-    assume (forall x5_1_1: Ref ::
-      { Heap[x5_1_1, f_7] }
-      xs5[x5_1_1] ==> (inv_60(x5_1_1): Ref) == x5_1_1
+    assume (forall x5_1: Ref ::
+      { Heap[x5_1, f_7] }
+      xs5[x5_1] ==> (inv_38(x5_1): Ref) == x5_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_60(r) }
-  //     (inv_60(r) in xs5) ==> inv_60(r) == r) -- assume10QP.vpr@18.11--18.62
+  //     { inv_38(r) }
+  //     (inv_38(r) in xs5) ==> inv_38(r) == r) -- assume10QP.vpr@18.11--18.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_60(r) } (inv_60(r) in xs5) ==> inv_60(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_38(r) } (inv_38(r) in xs5) ==> inv_38(r) == r)
       if (*) {
         assume false;
       }
     assume (forall r_17: Ref ::
-      { (inv_60(r_17): Ref) }
-      xs5[(inv_60(r_17): Ref)] ==> (inv_60(r_17): Ref) == r_17
+      { (inv_38(r_17): Ref) }
+      xs5[(inv_38(r_17): Ref)] ==> (inv_38(r_17): Ref) == r_17
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_60(r) }
-  //     (inv_60(r) in xs5) ==>
+  //     { inv_38(r) }
+  //     (inv_38(r) in xs5) ==>
   //     perm(r.f) >=
-  //     __iar__assume_helper_4((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) &&
-  //     r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, p, p,
+  //     __iar__assume_helper_4((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) &&
+  //     r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, p, p,
   //     p, p, p)) -- assume10QP.vpr@18.11--18.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_60(r) } (inv_60(r) in xs5) ==> perm(r.f) >= __iar__assume_helper_4((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) && r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, p, p, p, p, p))
+    // -- Check definedness of (forall r: Ref :: { inv_38(r) } (inv_38(r) in xs5) ==> perm(r.f) >= __iar__assume_helper_4((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) && r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, p, p, p, p, p))
       if (*) {
         assume false;
       }
     assume (forall r_19: Ref ::
-      { (inv_60(r_19): Ref) }
-      xs5[(inv_60(r_19): Ref)] ==> (__iar__assume_helper_4(xs1[(inv_56(r_19): Ref)] && r_19 == r_19, xs2[(inv_57(r_19): Ref)] && r_19 == r_19, xs3[(inv_58(r_19): Ref)] && r_19 == r_19, xs4[(inv_59(r_19): Ref)] && r_19 == r_19, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_19, f_7]
+      { (inv_38(r_19): Ref) }
+      xs5[(inv_38(r_19): Ref)] ==> (__iar__assume_helper_4(xs1[(inv_34(r_19): Ref)] && r_19 == r_19, xs2[(inv_35(r_19): Ref)] && r_19 == r_19, xs3[(inv_36(r_19): Ref)] && r_19 == r_19, xs4[(inv_37(r_19): Ref)] && r_19 == r_19, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_19, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall x6: Ref ::
   //     { x6.f }
-  //     (x6 in xs6) ==> true && inv_61(x6) == x6) -- assume10QP.vpr@19.11--19.62
+  //     (x6 in xs6) ==> true && inv_39(x6) == x6) -- assume10QP.vpr@19.11--19.62
     
-    // -- Check definedness of (forall x6: Ref :: { x6.f } (x6 in xs6) ==> true && inv_61(x6) == x6)
+    // -- Check definedness of (forall x6: Ref :: { x6.f } (x6 in xs6) ==> true && inv_39(x6) == x6)
       if (*) {
         assume false;
       }
-    assume (forall x6_1_1: Ref ::
-      { Heap[x6_1_1, f_7] }
-      xs6[x6_1_1] ==> (inv_61(x6_1_1): Ref) == x6_1_1
+    assume (forall x6_1: Ref ::
+      { Heap[x6_1, f_7] }
+      xs6[x6_1] ==> (inv_39(x6_1): Ref) == x6_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_61(r) }
-  //     (inv_61(r) in xs6) ==> inv_61(r) == r) -- assume10QP.vpr@19.11--19.62
+  //     { inv_39(r) }
+  //     (inv_39(r) in xs6) ==> inv_39(r) == r) -- assume10QP.vpr@19.11--19.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_61(r) } (inv_61(r) in xs6) ==> inv_61(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_39(r) } (inv_39(r) in xs6) ==> inv_39(r) == r)
       if (*) {
         assume false;
       }
-    assume (forall r_21_2: Ref ::
-      { (inv_61(r_21_2): Ref) }
-      xs6[(inv_61(r_21_2): Ref)] ==> (inv_61(r_21_2): Ref) == r_21_2
+    assume (forall r_21: Ref ::
+      { (inv_39(r_21): Ref) }
+      xs6[(inv_39(r_21): Ref)] ==> (inv_39(r_21): Ref) == r_21
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_61(r) }
-  //     (inv_61(r) in xs6) ==>
+  //     { inv_39(r) }
+  //     (inv_39(r) in xs6) ==>
   //     perm(r.f) >=
-  //     __iar__assume_helper_5((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) &&
-  //     r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in
+  //     __iar__assume_helper_5((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) &&
+  //     r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in
   //     xs5) &&
   //     r == r, p, p, p, p, p, p)) -- assume10QP.vpr@19.11--19.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_61(r) } (inv_61(r) in xs6) ==> perm(r.f) >= __iar__assume_helper_5((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) && r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in xs5) && r == r, p, p, p, p, p, p))
+    // -- Check definedness of (forall r: Ref :: { inv_39(r) } (inv_39(r) in xs6) ==> perm(r.f) >= __iar__assume_helper_5((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) && r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in xs5) && r == r, p, p, p, p, p, p))
       if (*) {
         assume false;
       }
-    assume (forall r_23_2: Ref ::
-      { (inv_61(r_23_2): Ref) }
-      xs6[(inv_61(r_23_2): Ref)] ==> (__iar__assume_helper_5(xs1[(inv_56(r_23_2): Ref)] && r_23_2 == r_23_2, xs2[(inv_57(r_23_2): Ref)] && r_23_2 == r_23_2, xs3[(inv_58(r_23_2): Ref)] && r_23_2 == r_23_2, xs4[(inv_59(r_23_2): Ref)] && r_23_2 == r_23_2, xs5[(inv_60(r_23_2): Ref)] && r_23_2 == r_23_2, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_23_2, f_7]
+    assume (forall r_23: Ref ::
+      { (inv_39(r_23): Ref) }
+      xs6[(inv_39(r_23): Ref)] ==> (__iar__assume_helper_5(xs1[(inv_34(r_23): Ref)] && r_23 == r_23, xs2[(inv_35(r_23): Ref)] && r_23 == r_23, xs3[(inv_36(r_23): Ref)] && r_23 == r_23, xs4[(inv_37(r_23): Ref)] && r_23 == r_23, xs5[(inv_38(r_23): Ref)] && r_23 == r_23, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_23, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall x7: Ref ::
   //     { x7.f }
-  //     (x7 in xs7) ==> true && inv_62(x7) == x7) -- assume10QP.vpr@20.11--20.62
+  //     (x7 in xs7) ==> true && inv_40(x7) == x7) -- assume10QP.vpr@20.11--20.62
     
-    // -- Check definedness of (forall x7: Ref :: { x7.f } (x7 in xs7) ==> true && inv_62(x7) == x7)
+    // -- Check definedness of (forall x7: Ref :: { x7.f } (x7 in xs7) ==> true && inv_40(x7) == x7)
       if (*) {
         assume false;
       }
     assume (forall x7_1: Ref ::
       { Heap[x7_1, f_7] }
-      xs7[x7_1] ==> (inv_62(x7_1): Ref) == x7_1
+      xs7[x7_1] ==> (inv_40(x7_1): Ref) == x7_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_62(r) }
-  //     (inv_62(r) in xs7) ==> inv_62(r) == r) -- assume10QP.vpr@20.11--20.62
+  //     { inv_40(r) }
+  //     (inv_40(r) in xs7) ==> inv_40(r) == r) -- assume10QP.vpr@20.11--20.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_62(r) } (inv_62(r) in xs7) ==> inv_62(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_40(r) } (inv_40(r) in xs7) ==> inv_40(r) == r)
       if (*) {
         assume false;
       }
     assume (forall r_25: Ref ::
-      { (inv_62(r_25): Ref) }
-      xs7[(inv_62(r_25): Ref)] ==> (inv_62(r_25): Ref) == r_25
+      { (inv_40(r_25): Ref) }
+      xs7[(inv_40(r_25): Ref)] ==> (inv_40(r_25): Ref) == r_25
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_62(r) }
-  //     (inv_62(r) in xs7) ==>
+  //     { inv_40(r) }
+  //     (inv_40(r) in xs7) ==>
   //     perm(r.f) >=
-  //     __iar__assume_helper_6((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) &&
-  //     r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in
+  //     __iar__assume_helper_6((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) &&
+  //     r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in
   //     xs5) &&
-  //     r == r, (inv_61(r) in xs6) && r == r, p, p, p, p, p, p, p)) -- assume10QP.vpr@20.11--20.62
+  //     r == r, (inv_39(r) in xs6) && r == r, p, p, p, p, p, p, p)) -- assume10QP.vpr@20.11--20.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_62(r) } (inv_62(r) in xs7) ==> perm(r.f) >= __iar__assume_helper_6((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) && r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in xs5) && r == r, (inv_61(r) in xs6) && r == r, p, p, p, p, p, p, p))
+    // -- Check definedness of (forall r: Ref :: { inv_40(r) } (inv_40(r) in xs7) ==> perm(r.f) >= __iar__assume_helper_6((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) && r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in xs5) && r == r, (inv_39(r) in xs6) && r == r, p, p, p, p, p, p, p))
       if (*) {
         assume false;
       }
-    assume (forall r_27_1: Ref ::
-      { (inv_62(r_27_1): Ref) }
-      xs7[(inv_62(r_27_1): Ref)] ==> (__iar__assume_helper_6(xs1[(inv_56(r_27_1): Ref)] && r_27_1 == r_27_1, xs2[(inv_57(r_27_1): Ref)] && r_27_1 == r_27_1, xs3[(inv_58(r_27_1): Ref)] && r_27_1 == r_27_1, xs4[(inv_59(r_27_1): Ref)] && r_27_1 == r_27_1, xs5[(inv_60(r_27_1): Ref)] && r_27_1 == r_27_1, xs6[(inv_61(r_27_1): Ref)] && r_27_1 == r_27_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_27_1, f_7]
+    assume (forall r_27: Ref ::
+      { (inv_40(r_27): Ref) }
+      xs7[(inv_40(r_27): Ref)] ==> (__iar__assume_helper_6(xs1[(inv_34(r_27): Ref)] && r_27 == r_27, xs2[(inv_35(r_27): Ref)] && r_27 == r_27, xs3[(inv_36(r_27): Ref)] && r_27 == r_27, xs4[(inv_37(r_27): Ref)] && r_27 == r_27, xs5[(inv_38(r_27): Ref)] && r_27 == r_27, xs6[(inv_39(r_27): Ref)] && r_27 == r_27, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_27, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall x8: Ref ::
   //     { x8.f }
-  //     (x8 in xs8) ==> true && inv_63(x8) == x8) -- assume10QP.vpr@21.11--21.62
+  //     (x8 in xs8) ==> true && inv_41(x8) == x8) -- assume10QP.vpr@21.11--21.62
     
-    // -- Check definedness of (forall x8: Ref :: { x8.f } (x8 in xs8) ==> true && inv_63(x8) == x8)
+    // -- Check definedness of (forall x8: Ref :: { x8.f } (x8 in xs8) ==> true && inv_41(x8) == x8)
       if (*) {
         assume false;
       }
     assume (forall x8_1: Ref ::
       { Heap[x8_1, f_7] }
-      xs8[x8_1] ==> (inv_63(x8_1): Ref) == x8_1
+      xs8[x8_1] ==> (inv_41(x8_1): Ref) == x8_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_63(r) }
-  //     (inv_63(r) in xs8) ==> inv_63(r) == r) -- assume10QP.vpr@21.11--21.62
+  //     { inv_41(r) }
+  //     (inv_41(r) in xs8) ==> inv_41(r) == r) -- assume10QP.vpr@21.11--21.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_63(r) } (inv_63(r) in xs8) ==> inv_63(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_41(r) } (inv_41(r) in xs8) ==> inv_41(r) == r)
       if (*) {
         assume false;
       }
     assume (forall r_29: Ref ::
-      { (inv_63(r_29): Ref) }
-      xs8[(inv_63(r_29): Ref)] ==> (inv_63(r_29): Ref) == r_29
+      { (inv_41(r_29): Ref) }
+      xs8[(inv_41(r_29): Ref)] ==> (inv_41(r_29): Ref) == r_29
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_63(r) }
-  //     (inv_63(r) in xs8) ==>
+  //     { inv_41(r) }
+  //     (inv_41(r) in xs8) ==>
   //     perm(r.f) >=
-  //     __iar__assume_helper_7((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) &&
-  //     r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in
+  //     __iar__assume_helper_7((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) &&
+  //     r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in
   //     xs5) &&
-  //     r == r, (inv_61(r) in xs6) && r == r, (inv_62(r) in xs7) && r == r, p, p,
+  //     r == r, (inv_39(r) in xs6) && r == r, (inv_40(r) in xs7) && r == r, p, p,
   //     p, p, p, p, p, p)) -- assume10QP.vpr@21.11--21.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_63(r) } (inv_63(r) in xs8) ==> perm(r.f) >= __iar__assume_helper_7((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) && r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in xs5) && r == r, (inv_61(r) in xs6) && r == r, (inv_62(r) in xs7) && r == r, p, p, p, p, p, p, p, p))
+    // -- Check definedness of (forall r: Ref :: { inv_41(r) } (inv_41(r) in xs8) ==> perm(r.f) >= __iar__assume_helper_7((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) && r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in xs5) && r == r, (inv_39(r) in xs6) && r == r, (inv_40(r) in xs7) && r == r, p, p, p, p, p, p, p, p))
       if (*) {
         assume false;
       }
     assume (forall r_31: Ref ::
-      { (inv_63(r_31): Ref) }
-      xs8[(inv_63(r_31): Ref)] ==> (__iar__assume_helper_7(xs1[(inv_56(r_31): Ref)] && r_31 == r_31, xs2[(inv_57(r_31): Ref)] && r_31 == r_31, xs3[(inv_58(r_31): Ref)] && r_31 == r_31, xs4[(inv_59(r_31): Ref)] && r_31 == r_31, xs5[(inv_60(r_31): Ref)] && r_31 == r_31, xs6[(inv_61(r_31): Ref)] && r_31 == r_31, xs7[(inv_62(r_31): Ref)] && r_31 == r_31, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_31, f_7]
+      { (inv_41(r_31): Ref) }
+      xs8[(inv_41(r_31): Ref)] ==> (__iar__assume_helper_7(xs1[(inv_34(r_31): Ref)] && r_31 == r_31, xs2[(inv_35(r_31): Ref)] && r_31 == r_31, xs3[(inv_36(r_31): Ref)] && r_31 == r_31, xs4[(inv_37(r_31): Ref)] && r_31 == r_31, xs5[(inv_38(r_31): Ref)] && r_31 == r_31, xs6[(inv_39(r_31): Ref)] && r_31 == r_31, xs7[(inv_40(r_31): Ref)] && r_31 == r_31, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_31, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall x9: Ref ::
   //     { x9.f }
-  //     (x9 in xs9) ==> true && inv_64(x9) == x9) -- assume10QP.vpr@22.11--22.62
+  //     (x9 in xs9) ==> true && inv_42(x9) == x9) -- assume10QP.vpr@22.11--22.62
     
-    // -- Check definedness of (forall x9: Ref :: { x9.f } (x9 in xs9) ==> true && inv_64(x9) == x9)
+    // -- Check definedness of (forall x9: Ref :: { x9.f } (x9 in xs9) ==> true && inv_42(x9) == x9)
       if (*) {
         assume false;
       }
     assume (forall x9_1: Ref ::
       { Heap[x9_1, f_7] }
-      xs9[x9_1] ==> (inv_64(x9_1): Ref) == x9_1
+      xs9[x9_1] ==> (inv_42(x9_1): Ref) == x9_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_64(r) }
-  //     (inv_64(r) in xs9) ==> inv_64(r) == r) -- assume10QP.vpr@22.11--22.62
+  //     { inv_42(r) }
+  //     (inv_42(r) in xs9) ==> inv_42(r) == r) -- assume10QP.vpr@22.11--22.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_64(r) } (inv_64(r) in xs9) ==> inv_64(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_42(r) } (inv_42(r) in xs9) ==> inv_42(r) == r)
       if (*) {
         assume false;
       }
-    assume (forall r_33_1: Ref ::
-      { (inv_64(r_33_1): Ref) }
-      xs9[(inv_64(r_33_1): Ref)] ==> (inv_64(r_33_1): Ref) == r_33_1
+    assume (forall r_33: Ref ::
+      { (inv_42(r_33): Ref) }
+      xs9[(inv_42(r_33): Ref)] ==> (inv_42(r_33): Ref) == r_33
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_64(r) }
-  //     (inv_64(r) in xs9) ==>
+  //     { inv_42(r) }
+  //     (inv_42(r) in xs9) ==>
   //     perm(r.f) >=
-  //     __iar__assume_helper_8((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) &&
-  //     r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in
+  //     __iar__assume_helper_8((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) &&
+  //     r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in
   //     xs5) &&
-  //     r == r, (inv_61(r) in xs6) && r == r, (inv_62(r) in xs7) && r == r, (inv_63(r) in
+  //     r == r, (inv_39(r) in xs6) && r == r, (inv_40(r) in xs7) && r == r, (inv_41(r) in
   //     xs8) &&
   //     r == r, p, p, p, p, p, p, p, p, p)) -- assume10QP.vpr@22.11--22.62
     
-    // -- Check definedness of (forall r: Ref :: { inv_64(r) } (inv_64(r) in xs9) ==> perm(r.f) >= __iar__assume_helper_8((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) && r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in xs5) && r == r, (inv_61(r) in xs6) && r == r, (inv_62(r) in xs7) && r == r, (inv_63(r) in xs8) && r == r, p, p, p, p, p, p, p, p, p))
+    // -- Check definedness of (forall r: Ref :: { inv_42(r) } (inv_42(r) in xs9) ==> perm(r.f) >= __iar__assume_helper_8((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) && r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in xs5) && r == r, (inv_39(r) in xs6) && r == r, (inv_40(r) in xs7) && r == r, (inv_41(r) in xs8) && r == r, p, p, p, p, p, p, p, p, p))
       if (*) {
         assume false;
       }
     assume (forall r_35: Ref ::
-      { (inv_64(r_35): Ref) }
-      xs9[(inv_64(r_35): Ref)] ==> (__iar__assume_helper_8(xs1[(inv_56(r_35): Ref)] && r_35 == r_35, xs2[(inv_57(r_35): Ref)] && r_35 == r_35, xs3[(inv_58(r_35): Ref)] && r_35 == r_35, xs4[(inv_59(r_35): Ref)] && r_35 == r_35, xs5[(inv_60(r_35): Ref)] && r_35 == r_35, xs6[(inv_61(r_35): Ref)] && r_35 == r_35, xs7[(inv_62(r_35): Ref)] && r_35 == r_35, xs8[(inv_63(r_35): Ref)] && r_35 == r_35, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_35, f_7]
+      { (inv_42(r_35): Ref) }
+      xs9[(inv_42(r_35): Ref)] ==> (__iar__assume_helper_8(xs1[(inv_34(r_35): Ref)] && r_35 == r_35, xs2[(inv_35(r_35): Ref)] && r_35 == r_35, xs3[(inv_36(r_35): Ref)] && r_35 == r_35, xs4[(inv_37(r_35): Ref)] && r_35 == r_35, xs5[(inv_38(r_35): Ref)] && r_35 == r_35, xs6[(inv_39(r_35): Ref)] && r_35 == r_35, xs7[(inv_40(r_35): Ref)] && r_35 == r_35, xs8[(inv_41(r_35): Ref)] && r_35 == r_35, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_35, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall x10: Ref ::
   //     { x10.f }
-  //     (x10 in xs10) ==> true && inv_65(x10) == x10) -- assume10QP.vpr@23.11--23.67
+  //     (x10 in xs10) ==> true && inv_43(x10) == x10) -- assume10QP.vpr@23.11--23.67
     
-    // -- Check definedness of (forall x10: Ref :: { x10.f } (x10 in xs10) ==> true && inv_65(x10) == x10)
+    // -- Check definedness of (forall x10: Ref :: { x10.f } (x10 in xs10) ==> true && inv_43(x10) == x10)
       if (*) {
         assume false;
       }
     assume (forall x10_1: Ref ::
       { Heap[x10_1, f_7] }
-      xs10[x10_1] ==> (inv_65(x10_1): Ref) == x10_1
+      xs10[x10_1] ==> (inv_43(x10_1): Ref) == x10_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_65(r) }
-  //     (inv_65(r) in xs10) ==> inv_65(r) == r) -- assume10QP.vpr@23.11--23.67
+  //     { inv_43(r) }
+  //     (inv_43(r) in xs10) ==> inv_43(r) == r) -- assume10QP.vpr@23.11--23.67
     
-    // -- Check definedness of (forall r: Ref :: { inv_65(r) } (inv_65(r) in xs10) ==> inv_65(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_43(r) } (inv_43(r) in xs10) ==> inv_43(r) == r)
       if (*) {
         assume false;
       }
     assume (forall r_37: Ref ::
-      { (inv_65(r_37): Ref) }
-      xs10[(inv_65(r_37): Ref)] ==> (inv_65(r_37): Ref) == r_37
+      { (inv_43(r_37): Ref) }
+      xs10[(inv_43(r_37): Ref)] ==> (inv_43(r_37): Ref) == r_37
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_65(r) }
-  //     (inv_65(r) in xs10) ==>
+  //     { inv_43(r) }
+  //     (inv_43(r) in xs10) ==>
   //     perm(r.f) >=
-  //     __iar__assume_helper_9((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) &&
-  //     r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in
+  //     __iar__assume_helper_9((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) &&
+  //     r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in
   //     xs5) &&
-  //     r == r, (inv_61(r) in xs6) && r == r, (inv_62(r) in xs7) && r == r, (inv_63(r) in
+  //     r == r, (inv_39(r) in xs6) && r == r, (inv_40(r) in xs7) && r == r, (inv_41(r) in
   //     xs8) &&
-  //     r == r, (inv_64(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p)) -- assume10QP.vpr@23.11--23.67
+  //     r == r, (inv_42(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p)) -- assume10QP.vpr@23.11--23.67
     
-    // -- Check definedness of (forall r: Ref :: { inv_65(r) } (inv_65(r) in xs10) ==> perm(r.f) >= __iar__assume_helper_9((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) && r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in xs5) && r == r, (inv_61(r) in xs6) && r == r, (inv_62(r) in xs7) && r == r, (inv_63(r) in xs8) && r == r, (inv_64(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p))
+    // -- Check definedness of (forall r: Ref :: { inv_43(r) } (inv_43(r) in xs10) ==> perm(r.f) >= __iar__assume_helper_9((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) && r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in xs5) && r == r, (inv_39(r) in xs6) && r == r, (inv_40(r) in xs7) && r == r, (inv_41(r) in xs8) && r == r, (inv_42(r) in xs9) && r == r, p, p, p, p, p, p, p, p, p, p))
       if (*) {
         assume false;
       }
     assume (forall r_39: Ref ::
-      { (inv_65(r_39): Ref) }
-      xs10[(inv_65(r_39): Ref)] ==> (__iar__assume_helper_9(xs1[(inv_56(r_39): Ref)] && r_39 == r_39, xs2[(inv_57(r_39): Ref)] && r_39 == r_39, xs3[(inv_58(r_39): Ref)] && r_39 == r_39, xs4[(inv_59(r_39): Ref)] && r_39 == r_39, xs5[(inv_60(r_39): Ref)] && r_39 == r_39, xs6[(inv_61(r_39): Ref)] && r_39 == r_39, xs7[(inv_62(r_39): Ref)] && r_39 == r_39, xs8[(inv_63(r_39): Ref)] && r_39 == r_39, xs9[(inv_64(r_39): Ref)] && r_39 == r_39, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_39, f_7]
+      { (inv_43(r_39): Ref) }
+      xs10[(inv_43(r_39): Ref)] ==> (__iar__assume_helper_9(xs1[(inv_34(r_39): Ref)] && r_39 == r_39, xs2[(inv_35(r_39): Ref)] && r_39 == r_39, xs3[(inv_36(r_39): Ref)] && r_39 == r_39, xs4[(inv_37(r_39): Ref)] && r_39 == r_39, xs5[(inv_38(r_39): Ref)] && r_39 == r_39, xs6[(inv_39(r_39): Ref)] && r_39 == r_39, xs7[(inv_40(r_39): Ref)] && r_39 == r_39, xs8[(inv_41(r_39): Ref)] && r_39 == r_39, xs9[(inv_42(r_39): Ref)] && r_39 == r_39, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_39, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall x11: Ref ::
   //     { x11.f }
-  //     (x11 in xs11) ==> true && inv_66(x11) == x11) -- assume10QP.vpr@24.11--24.67
+  //     (x11 in xs11) ==> true && inv_44(x11) == x11) -- assume10QP.vpr@24.11--24.67
     
-    // -- Check definedness of (forall x11: Ref :: { x11.f } (x11 in xs11) ==> true && inv_66(x11) == x11)
+    // -- Check definedness of (forall x11: Ref :: { x11.f } (x11 in xs11) ==> true && inv_44(x11) == x11)
       if (*) {
         assume false;
       }
     assume (forall x11_1: Ref ::
       { Heap[x11_1, f_7] }
-      xs11[x11_1] ==> (inv_66(x11_1): Ref) == x11_1
+      xs11[x11_1] ==> (inv_44(x11_1): Ref) == x11_1
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_66(r) }
-  //     (inv_66(r) in xs11) ==> inv_66(r) == r) -- assume10QP.vpr@24.11--24.67
+  //     { inv_44(r) }
+  //     (inv_44(r) in xs11) ==> inv_44(r) == r) -- assume10QP.vpr@24.11--24.67
     
-    // -- Check definedness of (forall r: Ref :: { inv_66(r) } (inv_66(r) in xs11) ==> inv_66(r) == r)
+    // -- Check definedness of (forall r: Ref :: { inv_44(r) } (inv_44(r) in xs11) ==> inv_44(r) == r)
       if (*) {
         assume false;
       }
-    assume (forall r_41_2: Ref ::
-      { (inv_66(r_41_2): Ref) }
-      xs11[(inv_66(r_41_2): Ref)] ==> (inv_66(r_41_2): Ref) == r_41_2
+    assume (forall r_41: Ref ::
+      { (inv_44(r_41): Ref) }
+      xs11[(inv_44(r_41): Ref)] ==> (inv_44(r_41): Ref) == r_41
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale (forall r: Ref ::
-  //     { inv_66(r) }
-  //     (inv_66(r) in xs11) ==>
+  //     { inv_44(r) }
+  //     (inv_44(r) in xs11) ==>
   //     perm(r.f) >=
-  //     __iar__assume_helper_10((inv_56(r) in xs1) && r == r, (inv_57(r) in
+  //     __iar__assume_helper_10((inv_34(r) in xs1) && r == r, (inv_35(r) in
   //     xs2) &&
-  //     r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in
+  //     r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in
   //     xs5) &&
-  //     r == r, (inv_61(r) in xs6) && r == r, (inv_62(r) in xs7) && r == r, (inv_63(r) in
+  //     r == r, (inv_39(r) in xs6) && r == r, (inv_40(r) in xs7) && r == r, (inv_41(r) in
   //     xs8) &&
-  //     r == r, (inv_64(r) in xs9) && r == r, (inv_65(r) in xs10) && r == r, p,
+  //     r == r, (inv_42(r) in xs9) && r == r, (inv_43(r) in xs10) && r == r, p,
   //     p, p, p, p, p, p, p, p, p, p)) -- assume10QP.vpr@24.11--24.67
     
-    // -- Check definedness of (forall r: Ref :: { inv_66(r) } (inv_66(r) in xs11) ==> perm(r.f) >= __iar__assume_helper_10((inv_56(r) in xs1) && r == r, (inv_57(r) in xs2) && r == r, (inv_58(r) in xs3) && r == r, (inv_59(r) in xs4) && r == r, (inv_60(r) in xs5) && r == r, (inv_61(r) in xs6) && r == r, (inv_62(r) in xs7) && r == r, (inv_63(r) in xs8) && r == r, (inv_64(r) in xs9) && r == r, (inv_65(r) in xs10) && r == r, p, p, p, p, p, p, p, p, p, p, p))
+    // -- Check definedness of (forall r: Ref :: { inv_44(r) } (inv_44(r) in xs11) ==> perm(r.f) >= __iar__assume_helper_10((inv_34(r) in xs1) && r == r, (inv_35(r) in xs2) && r == r, (inv_36(r) in xs3) && r == r, (inv_37(r) in xs4) && r == r, (inv_38(r) in xs5) && r == r, (inv_39(r) in xs6) && r == r, (inv_40(r) in xs7) && r == r, (inv_41(r) in xs8) && r == r, (inv_42(r) in xs9) && r == r, (inv_43(r) in xs10) && r == r, p, p, p, p, p, p, p, p, p, p, p))
       if (*) {
         assume false;
       }
     assume (forall r_43: Ref ::
-      { (inv_66(r_43): Ref) }
-      xs11[(inv_66(r_43): Ref)] ==> (__iar__assume_helper_10(xs1[(inv_56(r_43): Ref)] && r_43 == r_43, xs2[(inv_57(r_43): Ref)] && r_43 == r_43, xs3[(inv_58(r_43): Ref)] && r_43 == r_43, xs4[(inv_59(r_43): Ref)] && r_43 == r_43, xs5[(inv_60(r_43): Ref)] && r_43 == r_43, xs6[(inv_61(r_43): Ref)] && r_43 == r_43, xs7[(inv_62(r_43): Ref)] && r_43 == r_43, xs8[(inv_63(r_43): Ref)] && r_43 == r_43, xs9[(inv_64(r_43): Ref)] && r_43 == r_43, xs10[(inv_65(r_43): Ref)] && r_43 == r_43, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_43, f_7]
+      { (inv_44(r_43): Ref) }
+      xs11[(inv_44(r_43): Ref)] ==> (__iar__assume_helper_10(xs1[(inv_34(r_43): Ref)] && r_43 == r_43, xs2[(inv_35(r_43): Ref)] && r_43 == r_43, xs3[(inv_36(r_43): Ref)] && r_43 == r_43, xs4[(inv_37(r_43): Ref)] && r_43 == r_43, xs5[(inv_38(r_43): Ref)] && r_43 == r_43, xs6[(inv_39(r_43): Ref)] && r_43 == r_43, xs7[(inv_40(r_43): Ref)] && r_43 == r_43, xs8[(inv_41(r_43): Ref)] && r_43 == r_43, xs9[(inv_42(r_43): Ref)] && r_43 == r_43, xs10[(inv_43(r_43): Ref)] && r_43 == r_43, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1, p_1): Perm) <= Mask[r_43, f_7]
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1183,10 +1183,10 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
     ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
     perm := p_1;
-    assert {:msg "  Assert might fail. Fraction p might be negative. (assume10QP.vpr@27.11--27.22) [149925]"}
+    assert {:msg "  Assert might fail. Fraction p might be negative. (assume10QP.vpr@27.11--27.22) [20671]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (assume10QP.vpr@27.11--27.22) [149926]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (assume10QP.vpr@27.11--27.22) [20672]"}
         perm <= AssertMask[x, f_7];
     }
     AssertMask := AssertMask[x, f_7:=AssertMask[x, f_7] - perm];
@@ -1196,7 +1196,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     if (NoPerm < p_1) {
-      assert {:msg "  Assert might fail. Assertion false might not hold. (assume10QP.vpr@30.11--30.29) [149927]"}
+      assert {:msg "  Assert might fail. Assertion false might not hold. (assume10QP.vpr@30.11--30.29) [20673]"}
         false;
     }
     assume state(Heap, Mask);
@@ -1205,7 +1205,7 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     if (Set#Card(xs1) > 0 && xs1[x]) {
-      assert {:msg "  Assert might fail. Assertion p < write might not hold. (assume10QP.vpr@31.11--31.46) [149928]"}
+      assert {:msg "  Assert might fail. Assertion p < write might not hold. (assume10QP.vpr@31.11--31.46) [20674]"}
         p_1 < FullPerm;
     }
     assume state(Heap, Mask);

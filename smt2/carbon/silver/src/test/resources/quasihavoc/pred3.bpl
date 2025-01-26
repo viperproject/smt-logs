@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:57:20
+// Date:         2025-01-26 21:43:40
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/pred3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/pred3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -186,25 +186,25 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 type PredicateType_p;
-function  p_14(x: Ref, y: Ref): Field PredicateType_p FrameType;
+function  p_2(x: Ref, y: Ref): Field PredicateType_p FrameType;
 function  p#sm(x: Ref, y: Ref): Field PredicateType_p PMaskType;
 axiom (forall x: Ref, y: Ref ::
-  { PredicateMaskField(p_14(x, y)) }
-  PredicateMaskField(p_14(x, y)) == p#sm(x, y)
+  { PredicateMaskField(p_2(x, y)) }
+  PredicateMaskField(p_2(x, y)) == p#sm(x, y)
 );
 axiom (forall x: Ref, y: Ref ::
-  { p_14(x, y) }
-  IsPredicateField(p_14(x, y))
+  { p_2(x, y) }
+  IsPredicateField(p_2(x, y))
 );
 axiom (forall x: Ref, y: Ref ::
-  { p_14(x, y) }
-  getPredWandId(p_14(x, y)) == 0
+  { p_2(x, y) }
+  getPredWandId(p_2(x, y)) == 0
 );
 function  p#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  p#everUsed<A>(pred: (Field A FrameType)): bool;
 axiom (forall x: Ref, y: Ref, x2: Ref, y2: Ref ::
-  { p_14(x, y), p_14(x2, y2) }
-  p_14(x, y) == p_14(x2, y2) ==> x == x2 && y == y2
+  { p_2(x, y), p_2(x2, y2) }
+  p_2(x, y) == p_2(x2, y2) ==> x == x2 && y == y2
 );
 axiom (forall x: Ref, y: Ref, x2: Ref, y2: Ref ::
   { p#sm(x, y), p#sm(x2, y2) }
@@ -212,8 +212,8 @@ axiom (forall x: Ref, y: Ref, x2: Ref, y2: Ref ::
 );
 
 axiom (forall Heap: HeapType, x: Ref, y: Ref ::
-  { p#trigger(Heap, p_14(x, y)) }
-  p#everUsed(p_14(x, y))
+  { p#trigger(Heap, p_2(x, y)) }
+  p#everUsed(p_2(x, y))
 );
 
 procedure p#definedness(x: Ref, y: Ref) returns ()
@@ -244,7 +244,7 @@ procedure p#definedness(x: Ref, y: Ref) returns ()
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref, y: Ref, a_2: Ref, b_24: Ref) returns ()
+procedure foo_3(x: Ref, y: Ref, a_2: Ref, b_24: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -286,13 +286,13 @@ procedure foo_1(x: Ref, y: Ref, a_2: Ref, b_24: Ref) returns ()
       oldMask := Mask;
   
   // -- Translating statement: x.f := 3 -- pred3.vpr@12.5--12.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (pred3.vpr@12.5--12.13) [77288]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (pred3.vpr@12.5--12.13) [103002]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=3];
     assume state(Heap, Mask);
   
   // -- Translating statement: y.f := 4 -- pred3.vpr@13.5--13.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (pred3.vpr@13.5--13.13) [77289]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access y.f (pred3.vpr@13.5--13.13) [103003]"}
       FullPerm == Mask[y, f_7];
     Heap := Heap[y, f_7:=4];
     assume state(Heap, Mask);
@@ -302,26 +302,26 @@ procedure foo_1(x: Ref, y: Ref, a_2: Ref, b_24: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding p(x, y) might fail. There might be insufficient permission to access x.f (pred3.vpr@15.5--15.17) [77292]"}
+      assert {:msg "  Folding p(x, y) might fail. There might be insufficient permission to access x.f (pred3.vpr@15.5--15.17) [103006]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding p(x, y) might fail. There might be insufficient permission to access y.f (pred3.vpr@15.5--15.17) [77294]"}
+      assert {:msg "  Folding p(x, y) might fail. There might be insufficient permission to access y.f (pred3.vpr@15.5--15.17) [103008]"}
         perm <= Mask[y, f_7];
     }
     Mask := Mask[y, f_7:=Mask[y, f_7] - perm];
     perm := FullPerm;
-    Mask := Mask[null, p_14(x, y):=Mask[null, p_14(x, y)] + perm];
+    Mask := Mask[null, p_2(x, y):=Mask[null, p_2(x, y)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume p#trigger(Heap, p_14(x, y));
-    assume Heap[null, p_14(x, y)] == CombineFrames(FrameFragment(Heap[x, f_7]), FrameFragment(Heap[y, f_7]));
-    if (!HasDirectPerm(Mask, null, p_14(x, y))) {
+    assume p#trigger(Heap, p_2(x, y));
+    assume Heap[null, p_2(x, y)] == CombineFrames(FrameFragment(Heap[x, f_7]), FrameFragment(Heap[y, f_7]));
+    if (!HasDirectPerm(Mask, null, p_2(x, y))) {
       Heap := Heap[null, p#sm(x, y):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, p_14(x, y):=freshVersion];
+      Heap := Heap[null, p_2(x, y):=freshVersion];
     }
     Heap := Heap[null, p#sm(x, y):=Heap[null, p#sm(x, y)][x, f_7:=true]];
     Heap := Heap[null, p#sm(x, y):=Heap[null, p#sm(x, y)][y, f_7:=true]];
@@ -329,20 +329,20 @@ procedure foo_1(x: Ref, y: Ref, a_2: Ref, b_24: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: perm_temp_quasihavoc_ := perm(p((true ? a : b), b)) -- <no position>
-    perm_temp_quasihavoc_ := Mask[null, p_14(a_2, b_24)];
+    perm_temp_quasihavoc_ := Mask[null, p_2(a_2, b_24)];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(p((true ? a : b), b), perm_temp_quasihavoc_) -- <no position>
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := perm_temp_quasihavoc_;
-    assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77296]"}
+    assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [103010]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access p((true ? a : b), b) (<no position>) [77297]"}
-        perm <= Mask[null, p_14(a_2, b_24)];
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access p((true ? a : b), b) (<no position>) [103011]"}
+        perm <= Mask[null, p_2(a_2, b_24)];
     }
-    Mask := Mask[null, p_14(a_2, b_24):=Mask[null, p_14(a_2, b_24)] - perm];
+    Mask := Mask[null, p_2(a_2, b_24):=Mask[null, p_2(a_2, b_24)] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -351,29 +351,29 @@ procedure foo_1(x: Ref, y: Ref, a_2: Ref, b_24: Ref) returns ()
   
   // -- Translating statement: inhale acc(p((true ? a : b), b), perm_temp_quasihavoc_) -- <no position>
     perm := perm_temp_quasihavoc_;
-    assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77298]"}
+    assert {:msg "  Inhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [103012]"}
       perm >= NoPerm;
-    Mask := Mask[null, p_14(a_2, b_24):=Mask[null, p_14(a_2, b_24)] + perm];
+    Mask := Mask[null, p_2(a_2, b_24):=Mask[null, p_2(a_2, b_24)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(p(x, y), write) -- pred3.vpr@19.5--19.19
-    assume p#trigger(Heap, p_14(x, y));
-    assume Heap[null, p_14(x, y)] == CombineFrames(FrameFragment(Heap[x, f_7]), FrameFragment(Heap[y, f_7]));
+    assume p#trigger(Heap, p_2(x, y));
+    assume Heap[null, p_2(x, y)] == CombineFrames(FrameFragment(Heap[x, f_7]), FrameFragment(Heap[y, f_7]));
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding p(x, y) might fail. There might be insufficient permission to access p(x, y) (pred3.vpr@19.5--19.19) [77301]"}
-        perm <= Mask[null, p_14(x, y)];
+      assert {:msg "  Unfolding p(x, y) might fail. There might be insufficient permission to access p(x, y) (pred3.vpr@19.5--19.19) [103015]"}
+        perm <= Mask[null, p_2(x, y)];
     }
-    Mask := Mask[null, p_14(x, y):=Mask[null, p_14(x, y)] - perm];
+    Mask := Mask[null, p_2(x, y):=Mask[null, p_2(x, y)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, p_14(x, y))) {
+      if (!HasDirectPerm(Mask, null, p_2(x, y))) {
         havoc newVersion;
-        Heap := Heap[null, p_14(x, y):=newVersion];
+        Heap := Heap[null, p_2(x, y):=newVersion];
       }
     perm := FullPerm;
     assume x != null;
@@ -394,15 +394,15 @@ procedure foo_1(x: Ref, y: Ref, a_2: Ref, b_24: Ref) returns ()
         ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of x.f == 3
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (pred3.vpr@22.16--22.36) [77304]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (pred3.vpr@22.16--22.36) [103018]"}
             HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-        assert {:msg "  Assert might fail. Assertion x.f == 3 might not hold. (pred3.vpr@22.16--22.36) [77305]"}
+        assert {:msg "  Assert might fail. Assertion x.f == 3 might not hold. (pred3.vpr@22.16--22.36) [103019]"}
           Heap[x, f_7] == 3;
         
         // -- Check definedness of y.f == 4
-          assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (pred3.vpr@22.16--22.36) [77306]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (pred3.vpr@22.16--22.36) [103020]"}
             HasDirectPerm(ExhaleWellDef0Mask, y, f_7);
-        assert {:msg "  Assert might fail. Assertion y.f == 4 might not hold. (pred3.vpr@22.16--22.36) [77307]"}
+        assert {:msg "  Assert might fail. Assertion y.f == 4 might not hold. (pred3.vpr@22.16--22.36) [103021]"}
           Heap[y, f_7] == 4;
         assume state(Heap, Mask);
     }

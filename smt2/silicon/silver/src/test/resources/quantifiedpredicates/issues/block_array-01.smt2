@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:41:01
+; Started: 2025-01-26 21:40:08
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -914,7 +914,7 @@
     (and (= (inv@16@01 a@11@01 j@15@01) j@15@01) (img@17@01 a@11@01 j@15@01)))
   :pattern ((inv@16@01 a@11@01 j@15@01))
   :pattern ((img@17@01 a@11@01 j@15@01))
-  :qid |quant-u-18190|)))
+  :qid |quant-u-23494|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -1042,7 +1042,7 @@
     (and (= (inv@20@01 a@11@01 j@19@01) j@19@01) (img@21@01 a@11@01 j@19@01)))
   :pattern ((inv@20@01 a@11@01 j@19@01))
   :pattern ((img@21@01 a@11@01 j@19@01))
-  :qid |quant-u-18192|)))
+  :qid |quant-u-23496|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -1274,7 +1274,7 @@
       (pTaken@25@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18195|))))
+  :qid |quant-u-23499|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1296,7 +1296,7 @@
       (and (= a a@11@01) (= i (inv@23@01 a i))))
     (= (- $Perm.Write (pTaken@25@01 a i)) $Perm.No))
   
-  :qid |quant-u-18196|))))
+  :qid |quant-u-23500|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1414,7 +1414,7 @@
     (and (= (inv@29@01 a@11@01 j@28@01) j@28@01) (img@30@01 a@11@01 j@28@01)))
   :pattern ((inv@29@01 a@11@01 j@28@01))
   :pattern ((img@30@01 a@11@01 j@28@01))
-  :qid |quant-u-18198|)))
+  :qid |quant-u-23502|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -1476,7 +1476,7 @@
       (pTaken@31@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18200|))))
+  :qid |quant-u-23504|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1488,7 +1488,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@31@01 a i) $Perm.No)
   
-  :qid |quant-u-18201|))))
+  :qid |quant-u-23505|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1503,7 +1503,7 @@
     (and (= a a@11@01) (= i i@12@01))
     (= (- $Perm.Write (pTaken@31@01 a i)) $Perm.No))
   
-  :qid |quant-u-18202|))))
+  :qid |quant-u-23506|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1825,7 +1825,7 @@
       (pTaken@39@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18205|))))
+  :qid |quant-u-23509|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -1847,7 +1847,7 @@
       (and (= a a@11@01) (= i (inv@37@01 a i))))
     (= (- $Perm.Write (pTaken@39@01 a i)) $Perm.No))
   
-  :qid |quant-u-18206|))))
+  :qid |quant-u-23510|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -1879,7 +1879,7 @@
       (and (= a a@11@01) (= i (inv@37@01 a i))))
     (= (- (- $Perm.Write (pTaken@39@01 a i)) (pTaken@40@01 a i)) $Perm.No))
   
-  :qid |quant-u-18208|))))
+  :qid |quant-u-23512|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -1966,7 +1966,7 @@
       (pTaken@41@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18210|))))
+  :qid |quant-u-23514|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1978,7 +1978,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@41@01 a i) $Perm.No)
   
-  :qid |quant-u-18211|))))
+  :qid |quant-u-23515|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1993,7 +1993,7 @@
     (and (= a a@11@01) (= i i@12@01))
     (= (- $Perm.Write (pTaken@41@01 a i)) $Perm.No))
   
-  :qid |quant-u-18212|))))
+  :qid |quant-u-23516|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2312,7 +2312,7 @@
       (pTaken@49@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18215|))))
+  :qid |quant-u-23519|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -2334,7 +2334,7 @@
       (and (= a a@11@01) (= i (inv@47@01 a i))))
     (= (- $Perm.Write (pTaken@49@01 a i)) $Perm.No))
   
-  :qid |quant-u-18216|))))
+  :qid |quant-u-23520|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -2366,7 +2366,7 @@
       (and (= a a@11@01) (= i (inv@47@01 a i))))
     (= (- (- $Perm.Write (pTaken@49@01 a i)) (pTaken@50@01 a i)) $Perm.No))
   
-  :qid |quant-u-18218|))))
+  :qid |quant-u-23522|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -2522,7 +2522,7 @@
     (and (= (inv@59@01 a@54@01 j@58@01) j@58@01) (img@60@01 a@54@01 j@58@01)))
   :pattern ((inv@59@01 a@54@01 j@58@01))
   :pattern ((img@60@01 a@54@01 j@58@01))
-  :qid |quant-u-18220|)))
+  :qid |quant-u-23524|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -2666,7 +2666,7 @@
     (and (= (inv@63@01 a@54@01 j@62@01) j@62@01) (img@64@01 a@54@01 j@62@01)))
   :pattern ((inv@63@01 a@54@01 j@62@01))
   :pattern ((img@64@01 a@54@01 j@62@01))
-  :qid |quant-u-18222|)))
+  :qid |quant-u-23526|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -2781,7 +2781,7 @@
       (pTaken@66@01 a i j@65@01))
     $Perm.No)
   
-  :qid |quant-u-18224|))))
+  :qid |quant-u-23528|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -2793,7 +2793,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@66@01 a i j@65@01) $Perm.No)
   
-  :qid |quant-u-18225|))))
+  :qid |quant-u-23529|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -2808,7 +2808,7 @@
     (and (= a a@54@01) (= i j@65@01))
     (= (- $Perm.Write (pTaken@66@01 a i j@65@01)) $Perm.No))
   
-  :qid |quant-u-18226|))))
+  :qid |quant-u-23530|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -2979,7 +2979,7 @@
       (pTaken@69@01 a i j@65@01))
     $Perm.No)
   
-  :qid |quant-u-18228|))))
+  :qid |quant-u-23532|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -2991,7 +2991,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@69@01 a i j@65@01) $Perm.No)
   
-  :qid |quant-u-18229|))))
+  :qid |quant-u-23533|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -3006,7 +3006,7 @@
     (and (= a a@54@01) (= i j@65@01))
     (= (- $Perm.Write (pTaken@69@01 a i j@65@01)) $Perm.No))
   
-  :qid |quant-u-18230|))))
+  :qid |quant-u-23534|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -3355,10 +3355,10 @@
 (assert (=
   ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@61@01))))))
   $Snap.unit))
-; [eval] (forall __rw_j6: Int :: { old(loc(a, __rw_j6)) } true ==> __rw_j6 - 1 >= 0 && (__rw_j6 - 1 < i && (__rw_j6 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val) == old((unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val)))
-(declare-const __rw_j6@72@01 Int)
+; [eval] (forall __rw_j8: Int :: { old(loc(a, __rw_j8)) } true ==> __rw_j8 - 1 >= 0 && (__rw_j8 - 1 < i && (__rw_j8 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val) == old((unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val)))
+(declare-const __rw_j8@72@01 Int)
 (push) ; 3
-; [eval] true ==> __rw_j6 - 1 >= 0 && (__rw_j6 - 1 < i && (__rw_j6 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val) == old((unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val))
+; [eval] true ==> __rw_j8 - 1 >= 0 && (__rw_j8 - 1 < i && (__rw_j8 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val) == old((unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val))
 (push) ; 4
 (push) ; 5
 (set-option :timeout 10)
@@ -3373,67 +3373,67 @@
 (set-option :timeout 0)
 (push) ; 5
 ; [then-branch: 28 | True]
-; [eval] __rw_j6 - 1 >= 0 && (__rw_j6 - 1 < i && (__rw_j6 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val) == old((unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val))
-; [eval] __rw_j6 - 1 >= 0 && (__rw_j6 - 1 < i && (__rw_j6 - 1) % 2 == 0)
-; [eval] __rw_j6 - 1 >= 0
-; [eval] __rw_j6 - 1
+; [eval] __rw_j8 - 1 >= 0 && (__rw_j8 - 1 < i && (__rw_j8 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val) == old((unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val))
+; [eval] __rw_j8 - 1 >= 0 && (__rw_j8 - 1 < i && (__rw_j8 - 1) % 2 == 0)
+; [eval] __rw_j8 - 1 >= 0
+; [eval] __rw_j8 - 1
 (push) ; 6
-; [then-branch: 29 | !(__rw_j6@72@01 - 1 >= 0) | live]
-; [else-branch: 29 | __rw_j6@72@01 - 1 >= 0 | live]
+; [then-branch: 29 | !(__rw_j8@72@01 - 1 >= 0) | live]
+; [else-branch: 29 | __rw_j8@72@01 - 1 >= 0 | live]
 (push) ; 7
-; [then-branch: 29 | !(__rw_j6@72@01 - 1 >= 0)]
-(assert (not (>= (- __rw_j6@72@01 1) 0)))
+; [then-branch: 29 | !(__rw_j8@72@01 - 1 >= 0)]
+(assert (not (>= (- __rw_j8@72@01 1) 0)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 29 | __rw_j6@72@01 - 1 >= 0]
-(assert (>= (- __rw_j6@72@01 1) 0))
-; [eval] __rw_j6 - 1 < i
-; [eval] __rw_j6 - 1
+; [else-branch: 29 | __rw_j8@72@01 - 1 >= 0]
+(assert (>= (- __rw_j8@72@01 1) 0))
+; [eval] __rw_j8 - 1 < i
+; [eval] __rw_j8 - 1
 (push) ; 8
-; [then-branch: 30 | !(__rw_j6@72@01 - 1 < i@55@01) | live]
-; [else-branch: 30 | __rw_j6@72@01 - 1 < i@55@01 | live]
+; [then-branch: 30 | !(__rw_j8@72@01 - 1 < i@55@01) | live]
+; [else-branch: 30 | __rw_j8@72@01 - 1 < i@55@01 | live]
 (push) ; 9
-; [then-branch: 30 | !(__rw_j6@72@01 - 1 < i@55@01)]
-(assert (not (< (- __rw_j6@72@01 1) i@55@01)))
+; [then-branch: 30 | !(__rw_j8@72@01 - 1 < i@55@01)]
+(assert (not (< (- __rw_j8@72@01 1) i@55@01)))
 (pop) ; 9
 (push) ; 9
-; [else-branch: 30 | __rw_j6@72@01 - 1 < i@55@01]
-(assert (< (- __rw_j6@72@01 1) i@55@01))
-; [eval] (__rw_j6 - 1) % 2 == 0
-; [eval] (__rw_j6 - 1) % 2
-; [eval] __rw_j6 - 1
+; [else-branch: 30 | __rw_j8@72@01 - 1 < i@55@01]
+(assert (< (- __rw_j8@72@01 1) i@55@01))
+; [eval] (__rw_j8 - 1) % 2 == 0
+; [eval] (__rw_j8 - 1) % 2
+; [eval] __rw_j8 - 1
 (pop) ; 9
 (pop) ; 8
 ; Joined path conditions
 ; Joined path conditions
-(assert (or (< (- __rw_j6@72@01 1) i@55@01) (not (< (- __rw_j6@72@01 1) i@55@01))))
+(assert (or (< (- __rw_j8@72@01 1) i@55@01) (not (< (- __rw_j8@72@01 1) i@55@01))))
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 ; Joined path conditions
 (assert (=>
-  (>= (- __rw_j6@72@01 1) 0)
+  (>= (- __rw_j8@72@01 1) 0)
   (and
-    (>= (- __rw_j6@72@01 1) 0)
-    (or (< (- __rw_j6@72@01 1) i@55@01) (not (< (- __rw_j6@72@01 1) i@55@01))))))
-(assert (or (>= (- __rw_j6@72@01 1) 0) (not (>= (- __rw_j6@72@01 1) 0))))
+    (>= (- __rw_j8@72@01 1) 0)
+    (or (< (- __rw_j8@72@01 1) i@55@01) (not (< (- __rw_j8@72@01 1) i@55@01))))))
+(assert (or (>= (- __rw_j8@72@01 1) 0) (not (>= (- __rw_j8@72@01 1) 0))))
 (push) ; 6
-; [then-branch: 31 | __rw_j6@72@01 - 1 >= 0 && __rw_j6@72@01 - 1 < i@55@01 && __rw_j6@72@01 - 1 % 2 == 0 | live]
-; [else-branch: 31 | !(__rw_j6@72@01 - 1 >= 0 && __rw_j6@72@01 - 1 < i@55@01 && __rw_j6@72@01 - 1 % 2 == 0) | live]
+; [then-branch: 31 | __rw_j8@72@01 - 1 >= 0 && __rw_j8@72@01 - 1 < i@55@01 && __rw_j8@72@01 - 1 % 2 == 0 | live]
+; [else-branch: 31 | !(__rw_j8@72@01 - 1 >= 0 && __rw_j8@72@01 - 1 < i@55@01 && __rw_j8@72@01 - 1 % 2 == 0) | live]
 (push) ; 7
-; [then-branch: 31 | __rw_j6@72@01 - 1 >= 0 && __rw_j6@72@01 - 1 < i@55@01 && __rw_j6@72@01 - 1 % 2 == 0]
+; [then-branch: 31 | __rw_j8@72@01 - 1 >= 0 && __rw_j8@72@01 - 1 < i@55@01 && __rw_j8@72@01 - 1 % 2 == 0]
 (assert (and
-  (>= (- __rw_j6@72@01 1) 0)
-  (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0))))
-; [eval] (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val) == old((unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val))
-; [eval] (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val)
-; [eval] __rw_j6 - 1
+  (>= (- __rw_j8@72@01 1) 0)
+  (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0))))
+; [eval] (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val) == old((unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val))
+; [eval] (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val)
+; [eval] __rw_j8 - 1
 (push) ; 8
-; [eval] __rw_j6 - 1
+; [eval] __rw_j8 - 1
 ; Precomputing data for removing quantified permissions
-(define-fun pTaken@73@01 ((a IArray) (i Int) (__rw_j6@72@01 Int)) $Perm
+(define-fun pTaken@73@01 ((a IArray) (i Int) (__rw_j8@72@01 Int)) $Perm
   (ite
-    (and (= a a@54@01) (= i (- __rw_j6@72@01 1)))
+    (and (= a a@54@01) (= i (- __rw_j8@72@01 1)))
     ($Perm.min
       (ite
         (and
@@ -3469,10 +3469,10 @@
               (= (mod (inv@63@01 a i) 2) 0))))
         $Perm.Write
         $Perm.No)
-      (pTaken@73@01 a i __rw_j6@72@01))
+      (pTaken@73@01 a i __rw_j8@72@01))
     $Perm.No)
   
-  :qid |quant-u-18232|))))
+  :qid |quant-u-23536|))))
 (check-sat)
 ; unknown
 (pop) ; 9
@@ -3482,9 +3482,9 @@
 (push) ; 9
 (set-option :timeout 10)
 (assert (not (forall ((a IArray) (i Int)) (!
-  (= (pTaken@73@01 a i __rw_j6@72@01) $Perm.No)
+  (= (pTaken@73@01 a i __rw_j8@72@01) $Perm.No)
   
-  :qid |quant-u-18233|))))
+  :qid |quant-u-23537|))))
 (check-sat)
 ; unknown
 (pop) ; 9
@@ -3496,10 +3496,10 @@
 (set-option :timeout 500)
 (assert (not (forall ((a IArray) (i Int)) (!
   (=>
-    (and (= a a@54@01) (= i (- __rw_j6@72@01 1)))
-    (= (- $Perm.Write (pTaken@73@01 a i __rw_j6@72@01)) $Perm.No))
+    (and (= a a@54@01) (= i (- __rw_j8@72@01 1)))
+    (= (- $Perm.Write (pTaken@73@01 a i __rw_j8@72@01)) $Perm.No))
   
-  :qid |quant-u-18234|))))
+  :qid |quant-u-23538|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -3510,67 +3510,67 @@
 ; Definitional axioms for snapshot map values (instantiated)
 (assert (=>
   (and
-    (img@64@01 a@54@01 (- __rw_j6@72@01 1))
+    (img@64@01 a@54@01 (- __rw_j8@72@01 1))
     (and
-      (>= (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) 0)
+      (>= (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) 0)
       (and
-        (< (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) (len<Int> a@54@01))
-        (= (mod (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) 2) 0))))
+        (< (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) (len<Int> a@54@01))
+        (= (mod (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) 2) 0))))
   (and
     (not
       (=
         ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))
         $Snap.unit))
     (=
       ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
       ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@61@01))))) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))))))
 (assert (access%trigger ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
   ($SortWrappers.IArrayTo$Snap a@54@01)
-  ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))) a@54@01 (- __rw_j6@72@01 1)))
+  ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))) a@54@01 (- __rw_j8@72@01 1)))
 ; [eval] i % 2 == 0
 ; [eval] i % 2
-; [then-branch: 32 | __rw_j6@72@01 - 1 % 2 == 0 | live]
-; [else-branch: 32 | __rw_j6@72@01 - 1 % 2 != 0 | live]
+; [then-branch: 32 | __rw_j8@72@01 - 1 % 2 == 0 | live]
+; [else-branch: 32 | __rw_j8@72@01 - 1 % 2 != 0 | live]
 (set-option :timeout 0)
 (push) ; 9
-; [then-branch: 32 | __rw_j6@72@01 - 1 % 2 == 0]
+; [then-branch: 32 | __rw_j8@72@01 - 1 % 2 == 0]
 (assert (=
   ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
   ($Snap.combine
     ($Snap.first ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))
+      ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))
     ($Snap.second ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))))))
+      ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))))))
 ; [eval] loc(a, i)
-(assert (not (= (loc<Ref> a@54@01 (- __rw_j6@72@01 1)) $Ref.null)))
+(assert (not (= (loc<Ref> a@54@01 (- __rw_j8@72@01 1)) $Ref.null)))
 ; [eval] loc(a, i + 1)
 ; [eval] i + 1
 (push) ; 10
 (set-option :timeout 10)
 (assert (not (=
-  (loc<Ref> a@54@01 (- __rw_j6@72@01 1))
-  (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)))))
+  (loc<Ref> a@54@01 (- __rw_j8@72@01 1))
+  (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)))))
 (check-sat)
 ; unknown
 (pop) ; 10
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) $Ref.null)))
-; [eval] loc(a, __rw_j6)
+(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) $Ref.null)))
+; [eval] loc(a, __rw_j8)
 (set-option :timeout 0)
 (push) ; 10
 (set-option :timeout 10)
-(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) (loc<Ref> a@54@01 __rw_j6@72@01))))
+(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) (loc<Ref> a@54@01 __rw_j8@72@01))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -3579,14 +3579,14 @@
 (pop) ; 9
 (set-option :timeout 0)
 (push) ; 9
-; [else-branch: 32 | __rw_j6@72@01 - 1 % 2 != 0]
-(assert (not (= (mod (- __rw_j6@72@01 1) 2) 0)))
+; [else-branch: 32 | __rw_j8@72@01 - 1 % 2 != 0]
+(assert (not (= (mod (- __rw_j8@72@01 1) 2) 0)))
 (assert (=
   ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
   $Snap.unit))
-; [eval] loc(a, __rw_j6)
+; [eval] loc(a, __rw_j8)
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -3595,54 +3595,54 @@
 (assert (and
   (=>
     (and
-      (img@64@01 a@54@01 (- __rw_j6@72@01 1))
+      (img@64@01 a@54@01 (- __rw_j8@72@01 1))
       (and
-        (>= (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) 0)
+        (>= (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) 0)
         (and
-          (< (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) (len<Int> a@54@01))
-          (= (mod (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) 2) 0))))
+          (< (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) (len<Int> a@54@01))
+          (= (mod (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) 2) 0))))
     (and
       (not
         (=
           ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))
           $Snap.unit))
       (=
         ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
         ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@61@01))))) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
   (access%trigger ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))) a@54@01 (- __rw_j6@72@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))) a@54@01 (- __rw_j8@72@01 1))))
 (assert (=>
-  (= (mod (- __rw_j6@72@01 1) 2) 0)
+  (= (mod (- __rw_j8@72@01 1) 2) 0)
   (and
     (=
       ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
       ($Snap.combine
         ($Snap.first ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))
         ($Snap.second ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
-    (not (= (loc<Ref> a@54@01 (- __rw_j6@72@01 1)) $Ref.null))
-    (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) $Ref.null)))))
-; [eval] old((unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val))
-; [eval] (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val)
-; [eval] __rw_j6 - 1
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
+    (not (= (loc<Ref> a@54@01 (- __rw_j8@72@01 1)) $Ref.null))
+    (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) $Ref.null)))))
+; [eval] old((unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val))
+; [eval] (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val)
+; [eval] __rw_j8 - 1
 (push) ; 8
-; [eval] __rw_j6 - 1
+; [eval] __rw_j8 - 1
 ; Precomputing data for removing quantified permissions
-(define-fun pTaken@74@01 ((a IArray) (i Int) (__rw_j6@72@01 Int)) $Perm
+(define-fun pTaken@74@01 ((a IArray) (i Int) (__rw_j8@72@01 Int)) $Perm
   (ite
-    (and (= a a@54@01) (= i (- __rw_j6@72@01 1)))
+    (and (= a a@54@01) (= i (- __rw_j8@72@01 1)))
     ($Perm.min
       (ite
         (and
@@ -3678,10 +3678,10 @@
               (= (mod (inv@59@01 a i) 2) 0))))
         $Perm.Write
         $Perm.No)
-      (pTaken@74@01 a i __rw_j6@72@01))
+      (pTaken@74@01 a i __rw_j8@72@01))
     $Perm.No)
   
-  :qid |quant-u-18236|))))
+  :qid |quant-u-23540|))))
 (check-sat)
 ; unknown
 (pop) ; 9
@@ -3691,9 +3691,9 @@
 (push) ; 9
 (set-option :timeout 10)
 (assert (not (forall ((a IArray) (i Int)) (!
-  (= (pTaken@74@01 a i __rw_j6@72@01) $Perm.No)
+  (= (pTaken@74@01 a i __rw_j8@72@01) $Perm.No)
   
-  :qid |quant-u-18237|))))
+  :qid |quant-u-23541|))))
 (check-sat)
 ; unknown
 (pop) ; 9
@@ -3705,10 +3705,10 @@
 (set-option :timeout 500)
 (assert (not (forall ((a IArray) (i Int)) (!
   (=>
-    (and (= a a@54@01) (= i (- __rw_j6@72@01 1)))
-    (= (- $Perm.Write (pTaken@74@01 a i __rw_j6@72@01)) $Perm.No))
+    (and (= a a@54@01) (= i (- __rw_j8@72@01 1)))
+    (= (- $Perm.Write (pTaken@74@01 a i __rw_j8@72@01)) $Perm.No))
   
-  :qid |quant-u-18238|))))
+  :qid |quant-u-23542|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -3719,67 +3719,67 @@
 ; Definitional axioms for snapshot map values (instantiated)
 (assert (=>
   (and
-    (img@60@01 a@54@01 (- __rw_j6@72@01 1))
+    (img@60@01 a@54@01 (- __rw_j8@72@01 1))
     (and
-      (>= (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) 0)
+      (>= (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) 0)
       (and
-        (< (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) (len<Int> a@54@01))
-        (= (mod (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) 2) 0))))
+        (< (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) (len<Int> a@54@01))
+        (= (mod (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) 2) 0))))
   (and
     (not
       (=
         ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))
         $Snap.unit))
     (=
       ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
       ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@57@01))))) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))))))
 (assert (access%trigger ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
   ($SortWrappers.IArrayTo$Snap a@54@01)
-  ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))) a@54@01 (- __rw_j6@72@01 1)))
+  ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))) a@54@01 (- __rw_j8@72@01 1)))
 ; [eval] i % 2 == 0
 ; [eval] i % 2
-; [then-branch: 33 | __rw_j6@72@01 - 1 % 2 == 0 | live]
-; [else-branch: 33 | __rw_j6@72@01 - 1 % 2 != 0 | live]
+; [then-branch: 33 | __rw_j8@72@01 - 1 % 2 == 0 | live]
+; [else-branch: 33 | __rw_j8@72@01 - 1 % 2 != 0 | live]
 (set-option :timeout 0)
 (push) ; 9
-; [then-branch: 33 | __rw_j6@72@01 - 1 % 2 == 0]
+; [then-branch: 33 | __rw_j8@72@01 - 1 % 2 == 0]
 (assert (=
   ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
   ($Snap.combine
     ($Snap.first ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))
+      ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))
     ($Snap.second ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))))))
+      ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))))))
 ; [eval] loc(a, i)
-(assert (not (= (loc<Ref> a@54@01 (- __rw_j6@72@01 1)) $Ref.null)))
+(assert (not (= (loc<Ref> a@54@01 (- __rw_j8@72@01 1)) $Ref.null)))
 ; [eval] loc(a, i + 1)
 ; [eval] i + 1
 (push) ; 10
 (set-option :timeout 10)
 (assert (not (=
-  (loc<Ref> a@54@01 (- __rw_j6@72@01 1))
-  (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)))))
+  (loc<Ref> a@54@01 (- __rw_j8@72@01 1))
+  (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)))))
 (check-sat)
 ; unknown
 (pop) ; 10
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) $Ref.null)))
-; [eval] loc(a, __rw_j6)
+(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) $Ref.null)))
+; [eval] loc(a, __rw_j8)
 (set-option :timeout 0)
 (push) ; 10
 (set-option :timeout 10)
-(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) (loc<Ref> a@54@01 __rw_j6@72@01))))
+(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) (loc<Ref> a@54@01 __rw_j8@72@01))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -3788,14 +3788,14 @@
 (pop) ; 9
 (set-option :timeout 0)
 (push) ; 9
-; [else-branch: 33 | __rw_j6@72@01 - 1 % 2 != 0]
-(assert (not (= (mod (- __rw_j6@72@01 1) 2) 0)))
+; [else-branch: 33 | __rw_j8@72@01 - 1 % 2 != 0]
+(assert (not (= (mod (- __rw_j8@72@01 1) 2) 0)))
 (assert (=
   ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
   $Snap.unit))
-; [eval] loc(a, __rw_j6)
+; [eval] loc(a, __rw_j8)
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -3804,402 +3804,402 @@
 (assert (and
   (=>
     (and
-      (img@60@01 a@54@01 (- __rw_j6@72@01 1))
+      (img@60@01 a@54@01 (- __rw_j8@72@01 1))
       (and
-        (>= (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) 0)
+        (>= (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) 0)
         (and
-          (< (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) (len<Int> a@54@01))
-          (= (mod (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) 2) 0))))
+          (< (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) (len<Int> a@54@01))
+          (= (mod (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) 2) 0))))
     (and
       (not
         (=
           ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))
           $Snap.unit))
       (=
         ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
         ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@57@01))))) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
   (access%trigger ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))) a@54@01 (- __rw_j6@72@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))) a@54@01 (- __rw_j8@72@01 1))))
 (assert (=>
-  (= (mod (- __rw_j6@72@01 1) 2) 0)
+  (= (mod (- __rw_j8@72@01 1) 2) 0)
   (and
     (=
       ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
       ($Snap.combine
         ($Snap.first ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))
         ($Snap.second ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
-    (not (= (loc<Ref> a@54@01 (- __rw_j6@72@01 1)) $Ref.null))
-    (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) $Ref.null)))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
+    (not (= (loc<Ref> a@54@01 (- __rw_j8@72@01 1)) $Ref.null))
+    (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) $Ref.null)))))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 31 | !(__rw_j6@72@01 - 1 >= 0 && __rw_j6@72@01 - 1 < i@55@01 && __rw_j6@72@01 - 1 % 2 == 0)]
+; [else-branch: 31 | !(__rw_j8@72@01 - 1 >= 0 && __rw_j8@72@01 - 1 < i@55@01 && __rw_j8@72@01 - 1 % 2 == 0)]
 (assert (not
   (and
-    (>= (- __rw_j6@72@01 1) 0)
-    (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0)))))
+    (>= (- __rw_j8@72@01 1) 0)
+    (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0)))))
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 (assert (=>
   (and
-    (>= (- __rw_j6@72@01 1) 0)
-    (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0)))
+    (>= (- __rw_j8@72@01 1) 0)
+    (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0)))
   (and
-    (>= (- __rw_j6@72@01 1) 0)
-    (< (- __rw_j6@72@01 1) i@55@01)
-    (= (mod (- __rw_j6@72@01 1) 2) 0)
+    (>= (- __rw_j8@72@01 1) 0)
+    (< (- __rw_j8@72@01 1) i@55@01)
+    (= (mod (- __rw_j8@72@01 1) 2) 0)
     (=>
       (and
-        (img@64@01 a@54@01 (- __rw_j6@72@01 1))
+        (img@64@01 a@54@01 (- __rw_j8@72@01 1))
         (and
-          (>= (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) 0)
+          (>= (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) 0)
           (and
-            (< (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) (len<Int> a@54@01))
-            (= (mod (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) 2) 0))))
+            (< (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) (len<Int> a@54@01))
+            (= (mod (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) 2) 0))))
       (and
         (not
           (=
             ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))
             $Snap.unit))
         (=
           ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
           ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@61@01))))) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
     (access%trigger ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))) a@54@01 (-
-      __rw_j6@72@01
+      ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))) a@54@01 (-
+      __rw_j8@72@01
       1))
     (=>
-      (= (mod (- __rw_j6@72@01 1) 2) 0)
+      (= (mod (- __rw_j8@72@01 1) 2) 0)
       (and
         (=
           ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
           ($Snap.combine
             ($Snap.first ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))
             ($Snap.second ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
-        (not (= (loc<Ref> a@54@01 (- __rw_j6@72@01 1)) $Ref.null))
-        (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) $Ref.null))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
+        (not (= (loc<Ref> a@54@01 (- __rw_j8@72@01 1)) $Ref.null))
+        (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) $Ref.null))))
     (=>
       (and
-        (img@60@01 a@54@01 (- __rw_j6@72@01 1))
+        (img@60@01 a@54@01 (- __rw_j8@72@01 1))
         (and
-          (>= (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) 0)
+          (>= (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) 0)
           (and
-            (< (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) (len<Int> a@54@01))
-            (= (mod (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) 2) 0))))
+            (< (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) (len<Int> a@54@01))
+            (= (mod (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) 2) 0))))
       (and
         (not
           (=
             ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))
             $Snap.unit))
         (=
           ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
           ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@57@01))))) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
     (access%trigger ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))) a@54@01 (-
-      __rw_j6@72@01
+      ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))) a@54@01 (-
+      __rw_j8@72@01
       1))
     (=>
-      (= (mod (- __rw_j6@72@01 1) 2) 0)
+      (= (mod (- __rw_j8@72@01 1) 2) 0)
       (and
         (=
           ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
           ($Snap.combine
             ($Snap.first ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))
             ($Snap.second ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
-        (not (= (loc<Ref> a@54@01 (- __rw_j6@72@01 1)) $Ref.null))
-        (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) $Ref.null)))))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
+        (not (= (loc<Ref> a@54@01 (- __rw_j8@72@01 1)) $Ref.null))
+        (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) $Ref.null)))))))
 ; Joined path conditions
 (assert (or
   (not
     (and
-      (>= (- __rw_j6@72@01 1) 0)
-      (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0))))
+      (>= (- __rw_j8@72@01 1) 0)
+      (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0))))
   (and
-    (>= (- __rw_j6@72@01 1) 0)
-    (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0)))))
+    (>= (- __rw_j8@72@01 1) 0)
+    (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0)))))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
 (assert (and
   (=>
-    (>= (- __rw_j6@72@01 1) 0)
+    (>= (- __rw_j8@72@01 1) 0)
     (and
-      (>= (- __rw_j6@72@01 1) 0)
-      (or (< (- __rw_j6@72@01 1) i@55@01) (not (< (- __rw_j6@72@01 1) i@55@01)))))
-  (or (>= (- __rw_j6@72@01 1) 0) (not (>= (- __rw_j6@72@01 1) 0)))
+      (>= (- __rw_j8@72@01 1) 0)
+      (or (< (- __rw_j8@72@01 1) i@55@01) (not (< (- __rw_j8@72@01 1) i@55@01)))))
+  (or (>= (- __rw_j8@72@01 1) 0) (not (>= (- __rw_j8@72@01 1) 0)))
   (=>
     (and
-      (>= (- __rw_j6@72@01 1) 0)
-      (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0)))
+      (>= (- __rw_j8@72@01 1) 0)
+      (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0)))
     (and
-      (>= (- __rw_j6@72@01 1) 0)
-      (< (- __rw_j6@72@01 1) i@55@01)
-      (= (mod (- __rw_j6@72@01 1) 2) 0)
+      (>= (- __rw_j8@72@01 1) 0)
+      (< (- __rw_j8@72@01 1) i@55@01)
+      (= (mod (- __rw_j8@72@01 1) 2) 0)
       (=>
         (and
-          (img@64@01 a@54@01 (- __rw_j6@72@01 1))
+          (img@64@01 a@54@01 (- __rw_j8@72@01 1))
           (and
-            (>= (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) 0)
+            (>= (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) 0)
             (and
-              (< (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) (len<Int> a@54@01))
-              (= (mod (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) 2) 0))))
+              (< (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) (len<Int> a@54@01))
+              (= (mod (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) 2) 0))))
         (and
           (not
             (=
               ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))
               $Snap.unit))
           (=
             ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
             ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@61@01))))) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
       (access%trigger ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))) a@54@01 (-
-        __rw_j6@72@01
+        ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))) a@54@01 (-
+        __rw_j8@72@01
         1))
       (=>
-        (= (mod (- __rw_j6@72@01 1) 2) 0)
+        (= (mod (- __rw_j8@72@01 1) 2) 0)
         (and
           (=
             ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
             ($Snap.combine
               ($Snap.first ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))
               ($Snap.second ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
-          (not (= (loc<Ref> a@54@01 (- __rw_j6@72@01 1)) $Ref.null))
-          (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) $Ref.null))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
+          (not (= (loc<Ref> a@54@01 (- __rw_j8@72@01 1)) $Ref.null))
+          (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) $Ref.null))))
       (=>
         (and
-          (img@60@01 a@54@01 (- __rw_j6@72@01 1))
+          (img@60@01 a@54@01 (- __rw_j8@72@01 1))
           (and
-            (>= (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) 0)
+            (>= (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) 0)
             (and
-              (< (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) (len<Int> a@54@01))
-              (= (mod (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) 2) 0))))
+              (< (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) (len<Int> a@54@01))
+              (= (mod (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) 2) 0))))
         (and
           (not
             (=
               ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))
               $Snap.unit))
           (=
             ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
             ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@57@01))))) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
       (access%trigger ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))) a@54@01 (-
-        __rw_j6@72@01
+        ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))) a@54@01 (-
+        __rw_j8@72@01
         1))
       (=>
-        (= (mod (- __rw_j6@72@01 1) 2) 0)
+        (= (mod (- __rw_j8@72@01 1) 2) 0)
         (and
           (=
             ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
             ($Snap.combine
               ($Snap.first ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))
               ($Snap.second ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
-          (not (= (loc<Ref> a@54@01 (- __rw_j6@72@01 1)) $Ref.null))
-          (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) $Ref.null))))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
+          (not (= (loc<Ref> a@54@01 (- __rw_j8@72@01 1)) $Ref.null))
+          (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) $Ref.null))))))
   (or
     (not
       (and
-        (>= (- __rw_j6@72@01 1) 0)
-        (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0))))
+        (>= (- __rw_j8@72@01 1) 0)
+        (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0))))
     (and
-      (>= (- __rw_j6@72@01 1) 0)
-      (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0))))))
-; [eval] old(loc(a, __rw_j6))
-; [eval] loc(a, __rw_j6)
+      (>= (- __rw_j8@72@01 1) 0)
+      (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0))))))
+; [eval] old(loc(a, __rw_j8))
+; [eval] loc(a, __rw_j8)
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((__rw_j6@72@01 Int)) (!
+(assert (forall ((__rw_j8@72@01 Int)) (!
   (and
     (=>
-      (>= (- __rw_j6@72@01 1) 0)
+      (>= (- __rw_j8@72@01 1) 0)
       (and
-        (>= (- __rw_j6@72@01 1) 0)
+        (>= (- __rw_j8@72@01 1) 0)
         (or
-          (< (- __rw_j6@72@01 1) i@55@01)
-          (not (< (- __rw_j6@72@01 1) i@55@01)))))
-    (or (>= (- __rw_j6@72@01 1) 0) (not (>= (- __rw_j6@72@01 1) 0)))
+          (< (- __rw_j8@72@01 1) i@55@01)
+          (not (< (- __rw_j8@72@01 1) i@55@01)))))
+    (or (>= (- __rw_j8@72@01 1) 0) (not (>= (- __rw_j8@72@01 1) 0)))
     (=>
       (and
-        (>= (- __rw_j6@72@01 1) 0)
-        (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0)))
+        (>= (- __rw_j8@72@01 1) 0)
+        (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0)))
       (and
-        (>= (- __rw_j6@72@01 1) 0)
-        (< (- __rw_j6@72@01 1) i@55@01)
-        (= (mod (- __rw_j6@72@01 1) 2) 0)
+        (>= (- __rw_j8@72@01 1) 0)
+        (< (- __rw_j8@72@01 1) i@55@01)
+        (= (mod (- __rw_j8@72@01 1) 2) 0)
         (=>
           (and
-            (img@64@01 a@54@01 (- __rw_j6@72@01 1))
+            (img@64@01 a@54@01 (- __rw_j8@72@01 1))
             (and
-              (>= (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) 0)
+              (>= (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) 0)
               (and
-                (< (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) (len<Int> a@54@01))
-                (= (mod (inv@63@01 a@54@01 (- __rw_j6@72@01 1)) 2) 0))))
+                (< (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) (len<Int> a@54@01))
+                (= (mod (inv@63@01 a@54@01 (- __rw_j8@72@01 1)) 2) 0))))
           (and
             (not
               (=
                 ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))
                 $Snap.unit))
             (=
               ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
               ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@61@01))))) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
         (access%trigger ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))) a@54@01 (-
-          __rw_j6@72@01
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))) a@54@01 (-
+          __rw_j8@72@01
           1))
         (=>
-          (= (mod (- __rw_j6@72@01 1) 2) 0)
+          (= (mod (- __rw_j8@72@01 1) 2) 0)
           (and
             (=
               ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
               ($Snap.combine
                 ($Snap.first ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))
                 ($Snap.second ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
-            (not (= (loc<Ref> a@54@01 (- __rw_j6@72@01 1)) $Ref.null))
-            (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) $Ref.null))))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
+            (not (= (loc<Ref> a@54@01 (- __rw_j8@72@01 1)) $Ref.null))
+            (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) $Ref.null))))
         (=>
           (and
-            (img@60@01 a@54@01 (- __rw_j6@72@01 1))
+            (img@60@01 a@54@01 (- __rw_j8@72@01 1))
             (and
-              (>= (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) 0)
+              (>= (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) 0)
               (and
-                (< (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) (len<Int> a@54@01))
-                (= (mod (inv@59@01 a@54@01 (- __rw_j6@72@01 1)) 2) 0))))
+                (< (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) (len<Int> a@54@01))
+                (= (mod (inv@59@01 a@54@01 (- __rw_j8@72@01 1)) 2) 0))))
           (and
             (not
               (=
                 ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))
                 $Snap.unit))
             (=
               ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
               ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@57@01))))) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
         (access%trigger ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))) a@54@01 (-
-          __rw_j6@72@01
+          ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))) a@54@01 (-
+          __rw_j8@72@01
           1))
         (=>
-          (= (mod (- __rw_j6@72@01 1) 2) 0)
+          (= (mod (- __rw_j8@72@01 1) 2) 0)
           (and
             (=
               ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))
               ($Snap.combine
                 ($Snap.first ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))
                 ($Snap.second ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1)))))))
-            (not (= (loc<Ref> a@54@01 (- __rw_j6@72@01 1)) $Ref.null))
-            (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@72@01 1) 1)) $Ref.null))))))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1)))))))
+            (not (= (loc<Ref> a@54@01 (- __rw_j8@72@01 1)) $Ref.null))
+            (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@72@01 1) 1)) $Ref.null))))))
     (or
       (not
         (and
-          (>= (- __rw_j6@72@01 1) 0)
-          (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0))))
+          (>= (- __rw_j8@72@01 1) 0)
+          (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0))))
       (and
-        (>= (- __rw_j6@72@01 1) 0)
-        (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0)))))
-  :pattern ((loc<Ref> a@54@01 __rw_j6@72@01))
+        (>= (- __rw_j8@72@01 1) 0)
+        (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0)))))
+  :pattern ((loc<Ref> a@54@01 __rw_j8@72@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpredicates/issues/block_array.vpr@51@9@51@161-aux|)))
-(assert (forall ((__rw_j6@72@01 Int)) (!
+(assert (forall ((__rw_j8@72@01 Int)) (!
   (=>
     (and
-      (>= (- __rw_j6@72@01 1) 0)
-      (and (< (- __rw_j6@72@01 1) i@55@01) (= (mod (- __rw_j6@72@01 1) 2) 0)))
+      (>= (- __rw_j8@72@01 1) 0)
+      (and (< (- __rw_j8@72@01 1) i@55@01) (= (mod (- __rw_j8@72@01 1) 2) 0)))
     (=
       ($SortWrappers.$SnapToInt ($Snap.second ($PSF.lookup_access (as sm@67@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))))
       ($SortWrappers.$SnapToInt ($Snap.second ($PSF.lookup_access (as sm@70@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@72@01 1))))))))
-  :pattern ((loc<Ref> a@54@01 __rw_j6@72@01))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@72@01 1))))))))
+  :pattern ((loc<Ref> a@54@01 __rw_j8@72@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpredicates/issues/block_array.vpr@51@9@51@161|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@61@01))))))
@@ -4253,7 +4253,7 @@
       (pTaken@75@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18240|))))
+  :qid |quant-u-23544|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -4265,7 +4265,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@75@01 a i) $Perm.No)
   
-  :qid |quant-u-18241|))))
+  :qid |quant-u-23545|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -4280,7 +4280,7 @@
     (and (= a a@54@01) (= i i@55@01))
     (= (- $Perm.Write (pTaken@75@01 a i)) $Perm.No))
   
-  :qid |quant-u-18242|))))
+  :qid |quant-u-23546|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -4454,7 +4454,7 @@
       (pTaken@76@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18244|))))
+  :qid |quant-u-23548|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -4466,7 +4466,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@76@01 a i) $Perm.No)
   
-  :qid |quant-u-18245|))))
+  :qid |quant-u-23549|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -4481,7 +4481,7 @@
     (and (= a a@54@01) (= i i@55@01))
     (= (- $Perm.Write (pTaken@76@01 a i)) $Perm.No))
   
-  :qid |quant-u-18246|))))
+  :qid |quant-u-23550|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -4588,7 +4588,7 @@
       (pTaken@77@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18248|))))
+  :qid |quant-u-23552|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4600,7 +4600,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@77@01 a i) $Perm.No)
   
-  :qid |quant-u-18249|))))
+  :qid |quant-u-23553|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4615,7 +4615,7 @@
     (and (= a a@54@01) (= i i@55@01))
     (= (- $Perm.Write (pTaken@77@01 a i)) $Perm.No))
   
-  :qid |quant-u-18250|))))
+  :qid |quant-u-23554|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -4977,7 +4977,7 @@
       (pTaken@84@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18253|))))
+  :qid |quant-u-23557|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -4999,7 +4999,7 @@
       (and (= a a@54@01) (= i (inv@82@01 a i))))
     (= (- $Perm.Write (pTaken@84@01 a i)) $Perm.No))
   
-  :qid |quant-u-18254|))))
+  :qid |quant-u-23558|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -5031,7 +5031,7 @@
       (and (= a a@54@01) (= i (inv@82@01 a i))))
     (= (- (- $Perm.Write (pTaken@84@01 a i)) (pTaken@85@01 a i)) $Perm.No))
   
-  :qid |quant-u-18256|))))
+  :qid |quant-u-23560|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -5164,7 +5164,7 @@
     (and (= (inv@88@01 a@54@01 j@87@01) j@87@01) (img@89@01 a@54@01 j@87@01)))
   :pattern ((inv@88@01 a@54@01 j@87@01))
   :pattern ((img@89@01 a@54@01 j@87@01))
-  :qid |quant-u-18258|)))
+  :qid |quant-u-23562|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -5281,7 +5281,7 @@
       (pTaken@91@01 a i j@90@01))
     $Perm.No)
   
-  :qid |quant-u-18260|))))
+  :qid |quant-u-23564|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -5293,7 +5293,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@91@01 a i j@90@01) $Perm.No)
   
-  :qid |quant-u-18261|))))
+  :qid |quant-u-23565|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -5308,7 +5308,7 @@
     (and (= a a@54@01) (= i j@90@01))
     (= (- $Perm.Write (pTaken@91@01 a i j@90@01)) $Perm.No))
   
-  :qid |quant-u-18262|))))
+  :qid |quant-u-23566|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -5494,7 +5494,7 @@
       (pTaken@94@01 a i j@90@01))
     $Perm.No)
   
-  :qid |quant-u-18264|))))
+  :qid |quant-u-23568|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -5506,7 +5506,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@94@01 a i j@90@01) $Perm.No)
   
-  :qid |quant-u-18265|))))
+  :qid |quant-u-23569|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -5521,7 +5521,7 @@
     (and (= a a@54@01) (= i j@90@01))
     (= (- $Perm.Write (pTaken@94@01 a i j@90@01)) $Perm.No))
   
-  :qid |quant-u-18266|))))
+  :qid |quant-u-23570|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -5543,7 +5543,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@95@01 a i j@90@01) $Perm.No)
   
-  :qid |quant-u-18268|))))
+  :qid |quant-u-23572|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -5560,7 +5560,7 @@
       (- (- $Perm.Write (pTaken@94@01 a i j@90@01)) (pTaken@95@01 a i j@90@01))
       $Perm.No))
   
-  :qid |quant-u-18269|))))
+  :qid |quant-u-23573|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -5992,10 +5992,10 @@
 (assert (=
   ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@86@01))))))
   $Snap.unit))
-; [eval] (forall __rw_j6: Int :: { old(loc(a, __rw_j6)) } true ==> __rw_j6 - 1 >= 0 && (__rw_j6 - 1 < i && (__rw_j6 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val) == old((unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val)))
-(declare-const __rw_j6@98@01 Int)
+; [eval] (forall __rw_j8: Int :: { old(loc(a, __rw_j8)) } true ==> __rw_j8 - 1 >= 0 && (__rw_j8 - 1 < i && (__rw_j8 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val) == old((unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val)))
+(declare-const __rw_j8@98@01 Int)
 (push) ; 6
-; [eval] true ==> __rw_j6 - 1 >= 0 && (__rw_j6 - 1 < i && (__rw_j6 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val) == old((unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val))
+; [eval] true ==> __rw_j8 - 1 >= 0 && (__rw_j8 - 1 < i && (__rw_j8 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val) == old((unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val))
 (push) ; 7
 (push) ; 8
 (set-option :timeout 10)
@@ -6010,71 +6010,71 @@
 (set-option :timeout 0)
 (push) ; 8
 ; [then-branch: 48 | True]
-; [eval] __rw_j6 - 1 >= 0 && (__rw_j6 - 1 < i && (__rw_j6 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val) == old((unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val))
-; [eval] __rw_j6 - 1 >= 0 && (__rw_j6 - 1 < i && (__rw_j6 - 1) % 2 == 0)
-; [eval] __rw_j6 - 1 >= 0
-; [eval] __rw_j6 - 1
+; [eval] __rw_j8 - 1 >= 0 && (__rw_j8 - 1 < i && (__rw_j8 - 1) % 2 == 0) ==> (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val) == old((unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val))
+; [eval] __rw_j8 - 1 >= 0 && (__rw_j8 - 1 < i && (__rw_j8 - 1) % 2 == 0)
+; [eval] __rw_j8 - 1 >= 0
+; [eval] __rw_j8 - 1
 (push) ; 9
-; [then-branch: 49 | !(__rw_j6@98@01 - 1 >= 0) | live]
-; [else-branch: 49 | __rw_j6@98@01 - 1 >= 0 | live]
+; [then-branch: 49 | !(__rw_j8@98@01 - 1 >= 0) | live]
+; [else-branch: 49 | __rw_j8@98@01 - 1 >= 0 | live]
 (push) ; 10
-; [then-branch: 49 | !(__rw_j6@98@01 - 1 >= 0)]
-(assert (not (>= (- __rw_j6@98@01 1) 0)))
+; [then-branch: 49 | !(__rw_j8@98@01 - 1 >= 0)]
+(assert (not (>= (- __rw_j8@98@01 1) 0)))
 (pop) ; 10
 (push) ; 10
-; [else-branch: 49 | __rw_j6@98@01 - 1 >= 0]
-(assert (>= (- __rw_j6@98@01 1) 0))
-; [eval] __rw_j6 - 1 < i
-; [eval] __rw_j6 - 1
+; [else-branch: 49 | __rw_j8@98@01 - 1 >= 0]
+(assert (>= (- __rw_j8@98@01 1) 0))
+; [eval] __rw_j8 - 1 < i
+; [eval] __rw_j8 - 1
 (push) ; 11
-; [then-branch: 50 | !(__rw_j6@98@01 - 1 < i@55@01 + 2) | live]
-; [else-branch: 50 | __rw_j6@98@01 - 1 < i@55@01 + 2 | live]
+; [then-branch: 50 | !(__rw_j8@98@01 - 1 < i@55@01 + 2) | live]
+; [else-branch: 50 | __rw_j8@98@01 - 1 < i@55@01 + 2 | live]
 (push) ; 12
-; [then-branch: 50 | !(__rw_j6@98@01 - 1 < i@55@01 + 2)]
-(assert (not (< (- __rw_j6@98@01 1) (+ i@55@01 2))))
+; [then-branch: 50 | !(__rw_j8@98@01 - 1 < i@55@01 + 2)]
+(assert (not (< (- __rw_j8@98@01 1) (+ i@55@01 2))))
 (pop) ; 12
 (push) ; 12
-; [else-branch: 50 | __rw_j6@98@01 - 1 < i@55@01 + 2]
-(assert (< (- __rw_j6@98@01 1) (+ i@55@01 2)))
-; [eval] (__rw_j6 - 1) % 2 == 0
-; [eval] (__rw_j6 - 1) % 2
-; [eval] __rw_j6 - 1
+; [else-branch: 50 | __rw_j8@98@01 - 1 < i@55@01 + 2]
+(assert (< (- __rw_j8@98@01 1) (+ i@55@01 2)))
+; [eval] (__rw_j8 - 1) % 2 == 0
+; [eval] (__rw_j8 - 1) % 2
+; [eval] __rw_j8 - 1
 (pop) ; 12
 (pop) ; 11
 ; Joined path conditions
 ; Joined path conditions
 (assert (or
-  (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-  (not (< (- __rw_j6@98@01 1) (+ i@55@01 2)))))
+  (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+  (not (< (- __rw_j8@98@01 1) (+ i@55@01 2)))))
 (pop) ; 10
 (pop) ; 9
 ; Joined path conditions
 ; Joined path conditions
 (assert (=>
-  (>= (- __rw_j6@98@01 1) 0)
+  (>= (- __rw_j8@98@01 1) 0)
   (and
-    (>= (- __rw_j6@98@01 1) 0)
+    (>= (- __rw_j8@98@01 1) 0)
     (or
-      (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-      (not (< (- __rw_j6@98@01 1) (+ i@55@01 2)))))))
-(assert (or (>= (- __rw_j6@98@01 1) 0) (not (>= (- __rw_j6@98@01 1) 0))))
+      (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+      (not (< (- __rw_j8@98@01 1) (+ i@55@01 2)))))))
+(assert (or (>= (- __rw_j8@98@01 1) 0) (not (>= (- __rw_j8@98@01 1) 0))))
 (push) ; 9
-; [then-branch: 51 | __rw_j6@98@01 - 1 >= 0 && __rw_j6@98@01 - 1 < i@55@01 + 2 && __rw_j6@98@01 - 1 % 2 == 0 | live]
-; [else-branch: 51 | !(__rw_j6@98@01 - 1 >= 0 && __rw_j6@98@01 - 1 < i@55@01 + 2 && __rw_j6@98@01 - 1 % 2 == 0) | live]
+; [then-branch: 51 | __rw_j8@98@01 - 1 >= 0 && __rw_j8@98@01 - 1 < i@55@01 + 2 && __rw_j8@98@01 - 1 % 2 == 0 | live]
+; [else-branch: 51 | !(__rw_j8@98@01 - 1 >= 0 && __rw_j8@98@01 - 1 < i@55@01 + 2 && __rw_j8@98@01 - 1 % 2 == 0) | live]
 (push) ; 10
-; [then-branch: 51 | __rw_j6@98@01 - 1 >= 0 && __rw_j6@98@01 - 1 < i@55@01 + 2 && __rw_j6@98@01 - 1 % 2 == 0]
+; [then-branch: 51 | __rw_j8@98@01 - 1 >= 0 && __rw_j8@98@01 - 1 < i@55@01 + 2 && __rw_j8@98@01 - 1 % 2 == 0]
 (assert (and
-  (>= (- __rw_j6@98@01 1) 0)
-  (and (< (- __rw_j6@98@01 1) (+ i@55@01 2)) (= (mod (- __rw_j6@98@01 1) 2) 0))))
-; [eval] (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val) == old((unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val))
-; [eval] (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val)
-; [eval] __rw_j6 - 1
+  (>= (- __rw_j8@98@01 1) 0)
+  (and (< (- __rw_j8@98@01 1) (+ i@55@01 2)) (= (mod (- __rw_j8@98@01 1) 2) 0))))
+; [eval] (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val) == old((unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val))
+; [eval] (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val)
+; [eval] __rw_j8 - 1
 (push) ; 11
-; [eval] __rw_j6 - 1
+; [eval] __rw_j8 - 1
 ; Precomputing data for removing quantified permissions
-(define-fun pTaken@99@01 ((a IArray) (i Int) (__rw_j6@98@01 Int)) $Perm
+(define-fun pTaken@99@01 ((a IArray) (i Int) (__rw_j8@98@01 Int)) $Perm
   (ite
-    (and (= a a@54@01) (= i (- __rw_j6@98@01 1)))
+    (and (= a a@54@01) (= i (- __rw_j8@98@01 1)))
     ($Perm.min
       (ite
         (and
@@ -6110,10 +6110,10 @@
               (= (mod (inv@88@01 a i) 2) 0))))
         $Perm.Write
         $Perm.No)
-      (pTaken@99@01 a i __rw_j6@98@01))
+      (pTaken@99@01 a i __rw_j8@98@01))
     $Perm.No)
   
-  :qid |quant-u-18271|))))
+  :qid |quant-u-23575|))))
 (check-sat)
 ; unknown
 (pop) ; 12
@@ -6123,9 +6123,9 @@
 (push) ; 12
 (set-option :timeout 10)
 (assert (not (forall ((a IArray) (i Int)) (!
-  (= (pTaken@99@01 a i __rw_j6@98@01) $Perm.No)
+  (= (pTaken@99@01 a i __rw_j8@98@01) $Perm.No)
   
-  :qid |quant-u-18272|))))
+  :qid |quant-u-23576|))))
 (check-sat)
 ; unknown
 (pop) ; 12
@@ -6137,10 +6137,10 @@
 (set-option :timeout 500)
 (assert (not (forall ((a IArray) (i Int)) (!
   (=>
-    (and (= a a@54@01) (= i (- __rw_j6@98@01 1)))
-    (= (- $Perm.Write (pTaken@99@01 a i __rw_j6@98@01)) $Perm.No))
+    (and (= a a@54@01) (= i (- __rw_j8@98@01 1)))
+    (= (- $Perm.Write (pTaken@99@01 a i __rw_j8@98@01)) $Perm.No))
   
-  :qid |quant-u-18273|))))
+  :qid |quant-u-23577|))))
 (check-sat)
 ; unsat
 (pop) ; 12
@@ -6152,67 +6152,67 @@
 ; Definitional axioms for snapshot map values (instantiated)
 (assert (=>
   (and
-    (img@89@01 a@54@01 (- __rw_j6@98@01 1))
+    (img@89@01 a@54@01 (- __rw_j8@98@01 1))
     (and
-      (>= (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) 0)
+      (>= (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) 0)
       (and
-        (< (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) (len<Int> a@54@01))
-        (= (mod (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) 2) 0))))
+        (< (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) (len<Int> a@54@01))
+        (= (mod (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) 2) 0))))
   (and
     (not
       (=
         ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
         $Snap.unit))
     (=
       ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
       ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@86@01))))) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))))))
 (assert (access%trigger ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
   ($SortWrappers.IArrayTo$Snap a@54@01)
-  ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))) a@54@01 (- __rw_j6@98@01 1)))
+  ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))) a@54@01 (- __rw_j8@98@01 1)))
 ; [eval] i % 2 == 0
 ; [eval] i % 2
-; [then-branch: 52 | __rw_j6@98@01 - 1 % 2 == 0 | live]
-; [else-branch: 52 | __rw_j6@98@01 - 1 % 2 != 0 | live]
+; [then-branch: 52 | __rw_j8@98@01 - 1 % 2 == 0 | live]
+; [else-branch: 52 | __rw_j8@98@01 - 1 % 2 != 0 | live]
 (set-option :timeout 0)
 (push) ; 12
-; [then-branch: 52 | __rw_j6@98@01 - 1 % 2 == 0]
+; [then-branch: 52 | __rw_j8@98@01 - 1 % 2 == 0]
 (assert (=
   ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
   ($Snap.combine
     ($Snap.first ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))
+      ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))
     ($Snap.second ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))))))
+      ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))))))
 ; [eval] loc(a, i)
-(assert (not (= (loc<Ref> a@54@01 (- __rw_j6@98@01 1)) $Ref.null)))
+(assert (not (= (loc<Ref> a@54@01 (- __rw_j8@98@01 1)) $Ref.null)))
 ; [eval] loc(a, i + 1)
 ; [eval] i + 1
 (push) ; 13
 (set-option :timeout 10)
 (assert (not (=
-  (loc<Ref> a@54@01 (- __rw_j6@98@01 1))
-  (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)))))
+  (loc<Ref> a@54@01 (- __rw_j8@98@01 1))
+  (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)))))
 (check-sat)
 ; unknown
 (pop) ; 13
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) $Ref.null)))
-; [eval] loc(a, __rw_j6)
+(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) $Ref.null)))
+; [eval] loc(a, __rw_j8)
 (set-option :timeout 0)
 (push) ; 13
 (set-option :timeout 10)
-(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) (loc<Ref> a@54@01 __rw_j6@98@01))))
+(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) (loc<Ref> a@54@01 __rw_j8@98@01))))
 (check-sat)
 ; unsat
 (pop) ; 13
@@ -6221,14 +6221,14 @@
 (pop) ; 12
 (set-option :timeout 0)
 (push) ; 12
-; [else-branch: 52 | __rw_j6@98@01 - 1 % 2 != 0]
-(assert (not (= (mod (- __rw_j6@98@01 1) 2) 0)))
+; [else-branch: 52 | __rw_j8@98@01 - 1 % 2 != 0]
+(assert (not (= (mod (- __rw_j8@98@01 1) 2) 0)))
 (assert (=
   ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
   $Snap.unit))
-; [eval] loc(a, __rw_j6)
+; [eval] loc(a, __rw_j8)
 (check-sat)
 ; unsat
 (pop) ; 12
@@ -6237,62 +6237,62 @@
 (assert (and
   (=>
     (and
-      (img@89@01 a@54@01 (- __rw_j6@98@01 1))
+      (img@89@01 a@54@01 (- __rw_j8@98@01 1))
       (and
-        (>= (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) 0)
+        (>= (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) 0)
         (and
-          (< (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) (len<Int> a@54@01))
-          (= (mod (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) 2) 0))))
+          (< (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) (len<Int> a@54@01))
+          (= (mod (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) 2) 0))))
     (and
       (not
         (=
           ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
           $Snap.unit))
       (=
         ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
         ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@86@01))))) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
   (access%trigger ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))) a@54@01 (- __rw_j6@98@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))) a@54@01 (- __rw_j8@98@01 1))))
 (assert (=>
-  (= (mod (- __rw_j6@98@01 1) 2) 0)
+  (= (mod (- __rw_j8@98@01 1) 2) 0)
   (and
     (=
       ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
       ($Snap.combine
         ($Snap.first ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))
         ($Snap.second ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
-    (not (= (loc<Ref> a@54@01 (- __rw_j6@98@01 1)) $Ref.null))
-    (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) $Ref.null)))))
-; [eval] old((unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val))
-; [eval] (unfolding acc(access(a, __rw_j6 - 1), write) in loc(a, __rw_j6).val)
-; [eval] __rw_j6 - 1
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
+    (not (= (loc<Ref> a@54@01 (- __rw_j8@98@01 1)) $Ref.null))
+    (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) $Ref.null)))))
+; [eval] old((unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val))
+; [eval] (unfolding acc(access(a, __rw_j8 - 1), write) in loc(a, __rw_j8).val)
+; [eval] __rw_j8 - 1
 (push) ; 11
-; [eval] __rw_j6 - 1
+; [eval] __rw_j8 - 1
 (push) ; 12
 (set-option :timeout 10)
-(assert (not (= i@55@01 (- __rw_j6@98@01 1))))
+(assert (not (= i@55@01 (- __rw_j8@98@01 1))))
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; Precomputing data for removing quantified permissions
-(define-fun pTaken@100@01 ((a IArray) (i Int) (__rw_j6@98@01 Int)) $Perm
+(define-fun pTaken@100@01 ((a IArray) (i Int) (__rw_j8@98@01 Int)) $Perm
   (ite
-    (and (= a a@54@01) (= i (- __rw_j6@98@01 1)))
+    (and (= a a@54@01) (= i (- __rw_j8@98@01 1)))
     ($Perm.min
       (ite
         (and
@@ -6306,12 +6306,12 @@
         $Perm.No)
       $Perm.Write)
     $Perm.No))
-(define-fun pTaken@101@01 ((a IArray) (i Int) (__rw_j6@98@01 Int)) $Perm
+(define-fun pTaken@101@01 ((a IArray) (i Int) (__rw_j8@98@01 Int)) $Perm
   (ite
-    (and (= a a@54@01) (= i (- __rw_j6@98@01 1)))
+    (and (= a a@54@01) (= i (- __rw_j8@98@01 1)))
     ($Perm.min
       (ite (and (= a a@54@01) (= i i@55@01)) $Perm.Write $Perm.No)
-      (- $Perm.Write (pTaken@100@01 a i __rw_j6@98@01)))
+      (- $Perm.Write (pTaken@100@01 a i __rw_j8@98@01)))
     $Perm.No))
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -6334,10 +6334,10 @@
               (= (mod (inv@59@01 a i) 2) 0))))
         (- $Perm.Write (pTaken@77@01 a i))
         $Perm.No)
-      (pTaken@100@01 a i __rw_j6@98@01))
+      (pTaken@100@01 a i __rw_j8@98@01))
     $Perm.No)
   
-  :qid |quant-u-18275|))))
+  :qid |quant-u-23579|))))
 (check-sat)
 ; unknown
 (pop) ; 12
@@ -6347,9 +6347,9 @@
 (push) ; 12
 (set-option :timeout 10)
 (assert (not (forall ((a IArray) (i Int)) (!
-  (= (pTaken@100@01 a i __rw_j6@98@01) $Perm.No)
+  (= (pTaken@100@01 a i __rw_j8@98@01) $Perm.No)
   
-  :qid |quant-u-18276|))))
+  :qid |quant-u-23580|))))
 (check-sat)
 ; unknown
 (pop) ; 12
@@ -6361,10 +6361,10 @@
 (set-option :timeout 500)
 (assert (not (forall ((a IArray) (i Int)) (!
   (=>
-    (and (= a a@54@01) (= i (- __rw_j6@98@01 1)))
-    (= (- $Perm.Write (pTaken@100@01 a i __rw_j6@98@01)) $Perm.No))
+    (and (= a a@54@01) (= i (- __rw_j8@98@01 1)))
+    (= (- $Perm.Write (pTaken@100@01 a i __rw_j8@98@01)) $Perm.No))
   
-  :qid |quant-u-18277|))))
+  :qid |quant-u-23581|))))
 (check-sat)
 ; unknown
 (pop) ; 12
@@ -6374,7 +6374,7 @@
 (set-option :timeout 0)
 (push) ; 12
 (set-option :timeout 500)
-(assert (not (= (- $Perm.Write (pTaken@101@01 a@54@01 i@55@01 __rw_j6@98@01)) $Perm.No)))
+(assert (not (= (- $Perm.Write (pTaken@101@01 a@54@01 i@55@01 __rw_j8@98@01)) $Perm.No)))
 (check-sat)
 ; unknown
 (pop) ; 12
@@ -6384,9 +6384,9 @@
 (push) ; 12
 (set-option :timeout 10)
 (assert (not (forall ((a IArray) (i Int)) (!
-  (= (pTaken@101@01 a i __rw_j6@98@01) $Perm.No)
+  (= (pTaken@101@01 a i __rw_j8@98@01) $Perm.No)
   
-  :qid |quant-u-18279|))))
+  :qid |quant-u-23583|))))
 (check-sat)
 ; unknown
 (pop) ; 12
@@ -6398,14 +6398,14 @@
 (set-option :timeout 500)
 (assert (not (forall ((a IArray) (i Int)) (!
   (=>
-    (and (= a a@54@01) (= i (- __rw_j6@98@01 1)))
+    (and (= a a@54@01) (= i (- __rw_j8@98@01 1)))
     (=
       (-
-        (- $Perm.Write (pTaken@100@01 a i __rw_j6@98@01))
-        (pTaken@101@01 a i __rw_j6@98@01))
+        (- $Perm.Write (pTaken@100@01 a i __rw_j8@98@01))
+        (pTaken@101@01 a i __rw_j8@98@01))
       $Perm.No))
   
-  :qid |quant-u-18280|))))
+  :qid |quant-u-23584|))))
 (check-sat)
 ; unsat
 (pop) ; 12
@@ -6416,87 +6416,87 @@
 ; Definitional axioms for snapshot map domain (instantiated)
 ; Definitional axioms for snapshot map values (instantiated)
 (assert (=>
-  (= (- __rw_j6@98@01 1) i@55@01)
+  (= (- __rw_j8@98@01 1) i@55@01)
   (and
     (not
       (=
         ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
         $Snap.unit))
     (=
       ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
       ($PSF.lookup_access (as sm@80@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))))))
 (assert (=>
   (ite
     (and
-      (img@60@01 a@54@01 (- __rw_j6@98@01 1))
+      (img@60@01 a@54@01 (- __rw_j8@98@01 1))
       (and
-        (>= (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) 0)
+        (>= (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) 0)
         (and
-          (< (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) (len<Int> a@54@01))
-          (= (mod (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) 2) 0))))
-    (< $Perm.No (- $Perm.Write (pTaken@77@01 a@54@01 (- __rw_j6@98@01 1))))
+          (< (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) (len<Int> a@54@01))
+          (= (mod (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) 2) 0))))
+    (< $Perm.No (- $Perm.Write (pTaken@77@01 a@54@01 (- __rw_j8@98@01 1))))
     false)
   (and
     (not
       (=
         ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
         $Snap.unit))
     (=
       ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
       ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@57@01))))) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))))))
 (assert (access%trigger ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
   ($SortWrappers.IArrayTo$Snap a@54@01)
-  ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))) a@54@01 (- __rw_j6@98@01 1)))
+  ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))) a@54@01 (- __rw_j8@98@01 1)))
 ; [eval] i % 2 == 0
 ; [eval] i % 2
-; [then-branch: 53 | __rw_j6@98@01 - 1 % 2 == 0 | live]
-; [else-branch: 53 | __rw_j6@98@01 - 1 % 2 != 0 | live]
+; [then-branch: 53 | __rw_j8@98@01 - 1 % 2 == 0 | live]
+; [else-branch: 53 | __rw_j8@98@01 - 1 % 2 != 0 | live]
 (set-option :timeout 0)
 (push) ; 12
-; [then-branch: 53 | __rw_j6@98@01 - 1 % 2 == 0]
+; [then-branch: 53 | __rw_j8@98@01 - 1 % 2 == 0]
 (assert (=
   ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
   ($Snap.combine
     ($Snap.first ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))
+      ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))
     ($Snap.second ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))))))
+      ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))))))
 ; [eval] loc(a, i)
-(assert (not (= (loc<Ref> a@54@01 (- __rw_j6@98@01 1)) $Ref.null)))
+(assert (not (= (loc<Ref> a@54@01 (- __rw_j8@98@01 1)) $Ref.null)))
 ; [eval] loc(a, i + 1)
 ; [eval] i + 1
 (push) ; 13
 (set-option :timeout 10)
 (assert (not (=
-  (loc<Ref> a@54@01 (- __rw_j6@98@01 1))
-  (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)))))
+  (loc<Ref> a@54@01 (- __rw_j8@98@01 1))
+  (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)))))
 (check-sat)
 ; unknown
 (pop) ; 13
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) $Ref.null)))
-; [eval] loc(a, __rw_j6)
+(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) $Ref.null)))
+; [eval] loc(a, __rw_j8)
 (set-option :timeout 0)
 (push) ; 13
 (set-option :timeout 10)
-(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) (loc<Ref> a@54@01 __rw_j6@98@01))))
+(assert (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) (loc<Ref> a@54@01 __rw_j8@98@01))))
 (check-sat)
 ; unsat
 (pop) ; 13
@@ -6505,14 +6505,14 @@
 (pop) ; 12
 (set-option :timeout 0)
 (push) ; 12
-; [else-branch: 53 | __rw_j6@98@01 - 1 % 2 != 0]
-(assert (not (= (mod (- __rw_j6@98@01 1) 2) 0)))
+; [else-branch: 53 | __rw_j8@98@01 - 1 % 2 != 0]
+(assert (not (= (mod (- __rw_j8@98@01 1) 2) 0)))
 (assert (=
   ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
   $Snap.unit))
-; [eval] loc(a, __rw_j6)
+; [eval] loc(a, __rw_j8)
 (check-sat)
 ; unsat
 (pop) ; 12
@@ -6520,499 +6520,499 @@
 ; Joined path conditions
 (assert (and
   (=>
-    (= (- __rw_j6@98@01 1) i@55@01)
+    (= (- __rw_j8@98@01 1) i@55@01)
     (and
       (not
         (=
           ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
           $Snap.unit))
       (=
         ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
         ($PSF.lookup_access (as sm@80@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
   (=>
     (ite
       (and
-        (img@60@01 a@54@01 (- __rw_j6@98@01 1))
+        (img@60@01 a@54@01 (- __rw_j8@98@01 1))
         (and
-          (>= (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) 0)
+          (>= (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) 0)
           (and
-            (< (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) (len<Int> a@54@01))
-            (= (mod (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) 2) 0))))
-      (< $Perm.No (- $Perm.Write (pTaken@77@01 a@54@01 (- __rw_j6@98@01 1))))
+            (< (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) (len<Int> a@54@01))
+            (= (mod (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) 2) 0))))
+      (< $Perm.No (- $Perm.Write (pTaken@77@01 a@54@01 (- __rw_j8@98@01 1))))
       false)
     (and
       (not
         (=
           ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
           $Snap.unit))
       (=
         ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
         ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@57@01))))) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
   (access%trigger ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
     ($SortWrappers.IArrayTo$Snap a@54@01)
-    ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))) a@54@01 (- __rw_j6@98@01 1))))
+    ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))) a@54@01 (- __rw_j8@98@01 1))))
 (assert (=>
-  (= (mod (- __rw_j6@98@01 1) 2) 0)
+  (= (mod (- __rw_j8@98@01 1) 2) 0)
   (and
     (=
       ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
       ($Snap.combine
         ($Snap.first ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))
         ($Snap.second ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
-    (not (= (loc<Ref> a@54@01 (- __rw_j6@98@01 1)) $Ref.null))
-    (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) $Ref.null)))))
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
+    (not (= (loc<Ref> a@54@01 (- __rw_j8@98@01 1)) $Ref.null))
+    (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) $Ref.null)))))
 (pop) ; 10
 (push) ; 10
-; [else-branch: 51 | !(__rw_j6@98@01 - 1 >= 0 && __rw_j6@98@01 - 1 < i@55@01 + 2 && __rw_j6@98@01 - 1 % 2 == 0)]
+; [else-branch: 51 | !(__rw_j8@98@01 - 1 >= 0 && __rw_j8@98@01 - 1 < i@55@01 + 2 && __rw_j8@98@01 - 1 % 2 == 0)]
 (assert (not
   (and
-    (>= (- __rw_j6@98@01 1) 0)
-    (and (< (- __rw_j6@98@01 1) (+ i@55@01 2)) (= (mod (- __rw_j6@98@01 1) 2) 0)))))
+    (>= (- __rw_j8@98@01 1) 0)
+    (and (< (- __rw_j8@98@01 1) (+ i@55@01 2)) (= (mod (- __rw_j8@98@01 1) 2) 0)))))
 (pop) ; 10
 (pop) ; 9
 ; Joined path conditions
 (assert (=>
   (and
-    (>= (- __rw_j6@98@01 1) 0)
-    (and (< (- __rw_j6@98@01 1) (+ i@55@01 2)) (= (mod (- __rw_j6@98@01 1) 2) 0)))
+    (>= (- __rw_j8@98@01 1) 0)
+    (and (< (- __rw_j8@98@01 1) (+ i@55@01 2)) (= (mod (- __rw_j8@98@01 1) 2) 0)))
   (and
-    (>= (- __rw_j6@98@01 1) 0)
-    (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-    (= (mod (- __rw_j6@98@01 1) 2) 0)
+    (>= (- __rw_j8@98@01 1) 0)
+    (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+    (= (mod (- __rw_j8@98@01 1) 2) 0)
     (=>
       (and
-        (img@89@01 a@54@01 (- __rw_j6@98@01 1))
+        (img@89@01 a@54@01 (- __rw_j8@98@01 1))
         (and
-          (>= (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) 0)
+          (>= (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) 0)
           (and
-            (< (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) (len<Int> a@54@01))
-            (= (mod (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) 2) 0))))
+            (< (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) (len<Int> a@54@01))
+            (= (mod (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) 2) 0))))
       (and
         (not
           (=
             ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
             $Snap.unit))
         (=
           ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
           ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@86@01))))) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
     (access%trigger ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))) a@54@01 (-
-      __rw_j6@98@01
+      ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))) a@54@01 (-
+      __rw_j8@98@01
       1))
     (=>
-      (= (mod (- __rw_j6@98@01 1) 2) 0)
+      (= (mod (- __rw_j8@98@01 1) 2) 0)
       (and
         (=
           ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
           ($Snap.combine
             ($Snap.first ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))
             ($Snap.second ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
-        (not (= (loc<Ref> a@54@01 (- __rw_j6@98@01 1)) $Ref.null))
-        (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) $Ref.null))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
+        (not (= (loc<Ref> a@54@01 (- __rw_j8@98@01 1)) $Ref.null))
+        (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) $Ref.null))))
     (=>
-      (= (- __rw_j6@98@01 1) i@55@01)
+      (= (- __rw_j8@98@01 1) i@55@01)
       (and
         (not
           (=
             ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
             $Snap.unit))
         (=
           ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
           ($PSF.lookup_access (as sm@80@01  $PSF<access>) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
     (=>
       (ite
         (and
-          (img@60@01 a@54@01 (- __rw_j6@98@01 1))
+          (img@60@01 a@54@01 (- __rw_j8@98@01 1))
           (and
-            (>= (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) 0)
+            (>= (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) 0)
             (and
-              (< (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) (len<Int> a@54@01))
-              (= (mod (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) 2) 0))))
-        (< $Perm.No (- $Perm.Write (pTaken@77@01 a@54@01 (- __rw_j6@98@01 1))))
+              (< (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) (len<Int> a@54@01))
+              (= (mod (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) 2) 0))))
+        (< $Perm.No (- $Perm.Write (pTaken@77@01 a@54@01 (- __rw_j8@98@01 1))))
         false)
       (and
         (not
           (=
             ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
             $Snap.unit))
         (=
           ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
           ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@57@01))))) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
     (access%trigger ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
       ($SortWrappers.IArrayTo$Snap a@54@01)
-      ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))) a@54@01 (-
-      __rw_j6@98@01
+      ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))) a@54@01 (-
+      __rw_j8@98@01
       1))
     (=>
-      (= (mod (- __rw_j6@98@01 1) 2) 0)
+      (= (mod (- __rw_j8@98@01 1) 2) 0)
       (and
         (=
           ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
             ($SortWrappers.IArrayTo$Snap a@54@01)
-            ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+            ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
           ($Snap.combine
             ($Snap.first ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))
             ($Snap.second ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
-        (not (= (loc<Ref> a@54@01 (- __rw_j6@98@01 1)) $Ref.null))
-        (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) $Ref.null)))))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
+        (not (= (loc<Ref> a@54@01 (- __rw_j8@98@01 1)) $Ref.null))
+        (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) $Ref.null)))))))
 ; Joined path conditions
 (assert (or
   (not
     (and
-      (>= (- __rw_j6@98@01 1) 0)
+      (>= (- __rw_j8@98@01 1) 0)
       (and
-        (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-        (= (mod (- __rw_j6@98@01 1) 2) 0))))
+        (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+        (= (mod (- __rw_j8@98@01 1) 2) 0))))
   (and
-    (>= (- __rw_j6@98@01 1) 0)
-    (and (< (- __rw_j6@98@01 1) (+ i@55@01 2)) (= (mod (- __rw_j6@98@01 1) 2) 0)))))
+    (>= (- __rw_j8@98@01 1) 0)
+    (and (< (- __rw_j8@98@01 1) (+ i@55@01 2)) (= (mod (- __rw_j8@98@01 1) 2) 0)))))
 (pop) ; 8
 (pop) ; 7
 ; Joined path conditions
 (assert (and
   (=>
-    (>= (- __rw_j6@98@01 1) 0)
+    (>= (- __rw_j8@98@01 1) 0)
     (and
-      (>= (- __rw_j6@98@01 1) 0)
+      (>= (- __rw_j8@98@01 1) 0)
       (or
-        (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-        (not (< (- __rw_j6@98@01 1) (+ i@55@01 2))))))
-  (or (>= (- __rw_j6@98@01 1) 0) (not (>= (- __rw_j6@98@01 1) 0)))
+        (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+        (not (< (- __rw_j8@98@01 1) (+ i@55@01 2))))))
+  (or (>= (- __rw_j8@98@01 1) 0) (not (>= (- __rw_j8@98@01 1) 0)))
   (=>
     (and
-      (>= (- __rw_j6@98@01 1) 0)
+      (>= (- __rw_j8@98@01 1) 0)
       (and
-        (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-        (= (mod (- __rw_j6@98@01 1) 2) 0)))
+        (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+        (= (mod (- __rw_j8@98@01 1) 2) 0)))
     (and
-      (>= (- __rw_j6@98@01 1) 0)
-      (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-      (= (mod (- __rw_j6@98@01 1) 2) 0)
+      (>= (- __rw_j8@98@01 1) 0)
+      (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+      (= (mod (- __rw_j8@98@01 1) 2) 0)
       (=>
         (and
-          (img@89@01 a@54@01 (- __rw_j6@98@01 1))
+          (img@89@01 a@54@01 (- __rw_j8@98@01 1))
           (and
-            (>= (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) 0)
+            (>= (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) 0)
             (and
-              (< (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) (len<Int> a@54@01))
-              (= (mod (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) 2) 0))))
+              (< (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) (len<Int> a@54@01))
+              (= (mod (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) 2) 0))))
         (and
           (not
             (=
               ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
               $Snap.unit))
           (=
             ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
             ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@86@01))))) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
       (access%trigger ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))) a@54@01 (-
-        __rw_j6@98@01
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))) a@54@01 (-
+        __rw_j8@98@01
         1))
       (=>
-        (= (mod (- __rw_j6@98@01 1) 2) 0)
+        (= (mod (- __rw_j8@98@01 1) 2) 0)
         (and
           (=
             ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
             ($Snap.combine
               ($Snap.first ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))
               ($Snap.second ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
-          (not (= (loc<Ref> a@54@01 (- __rw_j6@98@01 1)) $Ref.null))
-          (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) $Ref.null))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
+          (not (= (loc<Ref> a@54@01 (- __rw_j8@98@01 1)) $Ref.null))
+          (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) $Ref.null))))
       (=>
-        (= (- __rw_j6@98@01 1) i@55@01)
+        (= (- __rw_j8@98@01 1) i@55@01)
         (and
           (not
             (=
               ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
               $Snap.unit))
           (=
             ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
             ($PSF.lookup_access (as sm@80@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
       (=>
         (ite
           (and
-            (img@60@01 a@54@01 (- __rw_j6@98@01 1))
+            (img@60@01 a@54@01 (- __rw_j8@98@01 1))
             (and
-              (>= (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) 0)
+              (>= (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) 0)
               (and
-                (< (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) (len<Int> a@54@01))
-                (= (mod (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) 2) 0))))
-          (< $Perm.No (- $Perm.Write (pTaken@77@01 a@54@01 (- __rw_j6@98@01 1))))
+                (< (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) (len<Int> a@54@01))
+                (= (mod (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) 2) 0))))
+          (< $Perm.No (- $Perm.Write (pTaken@77@01 a@54@01 (- __rw_j8@98@01 1))))
           false)
         (and
           (not
             (=
               ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
               $Snap.unit))
           (=
             ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
             ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@57@01))))) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
       (access%trigger ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))) a@54@01 (-
-        __rw_j6@98@01
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))) a@54@01 (-
+        __rw_j8@98@01
         1))
       (=>
-        (= (mod (- __rw_j6@98@01 1) 2) 0)
+        (= (mod (- __rw_j8@98@01 1) 2) 0)
         (and
           (=
             ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
               ($SortWrappers.IArrayTo$Snap a@54@01)
-              ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+              ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
             ($Snap.combine
               ($Snap.first ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))
               ($Snap.second ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
-          (not (= (loc<Ref> a@54@01 (- __rw_j6@98@01 1)) $Ref.null))
-          (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) $Ref.null))))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
+          (not (= (loc<Ref> a@54@01 (- __rw_j8@98@01 1)) $Ref.null))
+          (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) $Ref.null))))))
   (or
     (not
       (and
-        (>= (- __rw_j6@98@01 1) 0)
+        (>= (- __rw_j8@98@01 1) 0)
         (and
-          (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-          (= (mod (- __rw_j6@98@01 1) 2) 0))))
+          (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+          (= (mod (- __rw_j8@98@01 1) 2) 0))))
     (and
-      (>= (- __rw_j6@98@01 1) 0)
+      (>= (- __rw_j8@98@01 1) 0)
       (and
-        (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-        (= (mod (- __rw_j6@98@01 1) 2) 0))))))
-; [eval] old(loc(a, __rw_j6))
-; [eval] loc(a, __rw_j6)
+        (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+        (= (mod (- __rw_j8@98@01 1) 2) 0))))))
+; [eval] old(loc(a, __rw_j8))
+; [eval] loc(a, __rw_j8)
 (pop) ; 6
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((__rw_j6@98@01 Int)) (!
+(assert (forall ((__rw_j8@98@01 Int)) (!
   (and
     (=>
-      (>= (- __rw_j6@98@01 1) 0)
+      (>= (- __rw_j8@98@01 1) 0)
       (and
-        (>= (- __rw_j6@98@01 1) 0)
+        (>= (- __rw_j8@98@01 1) 0)
         (or
-          (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-          (not (< (- __rw_j6@98@01 1) (+ i@55@01 2))))))
-    (or (>= (- __rw_j6@98@01 1) 0) (not (>= (- __rw_j6@98@01 1) 0)))
+          (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+          (not (< (- __rw_j8@98@01 1) (+ i@55@01 2))))))
+    (or (>= (- __rw_j8@98@01 1) 0) (not (>= (- __rw_j8@98@01 1) 0)))
     (=>
       (and
-        (>= (- __rw_j6@98@01 1) 0)
+        (>= (- __rw_j8@98@01 1) 0)
         (and
-          (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-          (= (mod (- __rw_j6@98@01 1) 2) 0)))
+          (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+          (= (mod (- __rw_j8@98@01 1) 2) 0)))
       (and
-        (>= (- __rw_j6@98@01 1) 0)
-        (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-        (= (mod (- __rw_j6@98@01 1) 2) 0)
+        (>= (- __rw_j8@98@01 1) 0)
+        (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+        (= (mod (- __rw_j8@98@01 1) 2) 0)
         (=>
           (and
-            (img@89@01 a@54@01 (- __rw_j6@98@01 1))
+            (img@89@01 a@54@01 (- __rw_j8@98@01 1))
             (and
-              (>= (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) 0)
+              (>= (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) 0)
               (and
-                (< (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) (len<Int> a@54@01))
-                (= (mod (inv@88@01 a@54@01 (- __rw_j6@98@01 1)) 2) 0))))
+                (< (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) (len<Int> a@54@01))
+                (= (mod (inv@88@01 a@54@01 (- __rw_j8@98@01 1)) 2) 0))))
           (and
             (not
               (=
                 ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
                 $Snap.unit))
             (=
               ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
               ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@86@01))))) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
         (access%trigger ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))) a@54@01 (-
-          __rw_j6@98@01
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))) a@54@01 (-
+          __rw_j8@98@01
           1))
         (=>
-          (= (mod (- __rw_j6@98@01 1) 2) 0)
+          (= (mod (- __rw_j8@98@01 1) 2) 0)
           (and
             (=
               ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
               ($Snap.combine
                 ($Snap.first ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))
                 ($Snap.second ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
-            (not (= (loc<Ref> a@54@01 (- __rw_j6@98@01 1)) $Ref.null))
-            (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) $Ref.null))))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
+            (not (= (loc<Ref> a@54@01 (- __rw_j8@98@01 1)) $Ref.null))
+            (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) $Ref.null))))
         (=>
-          (= (- __rw_j6@98@01 1) i@55@01)
+          (= (- __rw_j8@98@01 1) i@55@01)
           (and
             (not
               (=
                 ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
                 $Snap.unit))
             (=
               ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
               ($PSF.lookup_access (as sm@80@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
         (=>
           (ite
             (and
-              (img@60@01 a@54@01 (- __rw_j6@98@01 1))
+              (img@60@01 a@54@01 (- __rw_j8@98@01 1))
               (and
-                (>= (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) 0)
+                (>= (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) 0)
                 (and
-                  (< (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) (len<Int> a@54@01))
-                  (= (mod (inv@59@01 a@54@01 (- __rw_j6@98@01 1)) 2) 0))))
+                  (< (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) (len<Int> a@54@01))
+                  (= (mod (inv@59@01 a@54@01 (- __rw_j8@98@01 1)) 2) 0))))
             (<
               $Perm.No
-              (- $Perm.Write (pTaken@77@01 a@54@01 (- __rw_j6@98@01 1))))
+              (- $Perm.Write (pTaken@77@01 a@54@01 (- __rw_j8@98@01 1))))
             false)
           (and
             (not
               (=
                 ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))
                 $Snap.unit))
             (=
               ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
               ($PSF.lookup_access ($SortWrappers.$SnapTo$PSF<access> ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@57@01))))) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
         (access%trigger ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
           ($SortWrappers.IArrayTo$Snap a@54@01)
-          ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))) a@54@01 (-
-          __rw_j6@98@01
+          ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))) a@54@01 (-
+          __rw_j8@98@01
           1))
         (=>
-          (= (mod (- __rw_j6@98@01 1) 2) 0)
+          (= (mod (- __rw_j8@98@01 1) 2) 0)
           (and
             (=
               ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
                 ($SortWrappers.IArrayTo$Snap a@54@01)
-                ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))
+                ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))
               ($Snap.combine
                 ($Snap.first ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))
                 ($Snap.second ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
                   ($SortWrappers.IArrayTo$Snap a@54@01)
-                  ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1)))))))
-            (not (= (loc<Ref> a@54@01 (- __rw_j6@98@01 1)) $Ref.null))
-            (not (= (loc<Ref> a@54@01 (+ (- __rw_j6@98@01 1) 1)) $Ref.null))))))
+                  ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1)))))))
+            (not (= (loc<Ref> a@54@01 (- __rw_j8@98@01 1)) $Ref.null))
+            (not (= (loc<Ref> a@54@01 (+ (- __rw_j8@98@01 1) 1)) $Ref.null))))))
     (or
       (not
         (and
-          (>= (- __rw_j6@98@01 1) 0)
+          (>= (- __rw_j8@98@01 1) 0)
           (and
-            (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-            (= (mod (- __rw_j6@98@01 1) 2) 0))))
+            (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+            (= (mod (- __rw_j8@98@01 1) 2) 0))))
       (and
-        (>= (- __rw_j6@98@01 1) 0)
+        (>= (- __rw_j8@98@01 1) 0)
         (and
-          (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-          (= (mod (- __rw_j6@98@01 1) 2) 0)))))
-  :pattern ((loc<Ref> a@54@01 __rw_j6@98@01))
+          (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+          (= (mod (- __rw_j8@98@01 1) 2) 0)))))
+  :pattern ((loc<Ref> a@54@01 __rw_j8@98@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpredicates/issues/block_array.vpr@51@9@51@161-aux|)))
-(assert (forall ((__rw_j6@98@01 Int)) (!
+(assert (forall ((__rw_j8@98@01 Int)) (!
   (=>
     (and
-      (>= (- __rw_j6@98@01 1) 0)
+      (>= (- __rw_j8@98@01 1) 0)
       (and
-        (< (- __rw_j6@98@01 1) (+ i@55@01 2))
-        (= (mod (- __rw_j6@98@01 1) 2) 0)))
+        (< (- __rw_j8@98@01 1) (+ i@55@01 2))
+        (= (mod (- __rw_j8@98@01 1) 2) 0)))
     (=
       ($SortWrappers.$SnapToInt ($Snap.second ($PSF.lookup_access (as sm@92@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))))
       ($SortWrappers.$SnapToInt ($Snap.second ($PSF.lookup_access (as sm@96@01  $PSF<access>) ($Snap.combine
         ($SortWrappers.IArrayTo$Snap a@54@01)
-        ($SortWrappers.IntTo$Snap (- __rw_j6@98@01 1))))))))
-  :pattern ((loc<Ref> a@54@01 __rw_j6@98@01))
+        ($SortWrappers.IntTo$Snap (- __rw_j8@98@01 1))))))))
+  :pattern ((loc<Ref> a@54@01 __rw_j8@98@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpredicates/issues/block_array.vpr@51@9@51@161|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@86@01))))))
@@ -7066,7 +7066,7 @@
       (pTaken@102@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18282|))))
+  :qid |quant-u-23586|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7078,7 +7078,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@102@01 a i) $Perm.No)
   
-  :qid |quant-u-18283|))))
+  :qid |quant-u-23587|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7093,7 +7093,7 @@
     (and (= a a@54@01) (= i (+ i@55@01 2)))
     (= (- $Perm.Write (pTaken@102@01 a i)) $Perm.No))
   
-  :qid |quant-u-18284|))))
+  :qid |quant-u-23588|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -7268,7 +7268,7 @@
       (pTaken@103@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18286|))))
+  :qid |quant-u-23590|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7280,7 +7280,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@103@01 a i) $Perm.No)
   
-  :qid |quant-u-18287|))))
+  :qid |quant-u-23591|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7295,11 +7295,11 @@
     (and (= a a@54@01) (= i (+ i@55@01 2)))
     (= (- $Perm.Write (pTaken@103@01 a i)) $Perm.No))
   
-  :qid |quant-u-18288|))))
+  :qid |quant-u-23592|))))
 (check-sat)
 ; unsat
 (pop) ; 7
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; Final check if taken enough permissions
 ; Done removing quantified permissions
@@ -7411,7 +7411,7 @@
       (pTaken@104@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18290|))))
+  :qid |quant-u-23594|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7423,7 +7423,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@104@01 a i) $Perm.No)
   
-  :qid |quant-u-18291|))))
+  :qid |quant-u-23595|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7438,7 +7438,7 @@
     (and (= a a@54@01) (= i (+ i@55@01 2)))
     (= (- $Perm.Write (pTaken@104@01 a i)) $Perm.No))
   
-  :qid |quant-u-18292|))))
+  :qid |quant-u-23596|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -7541,7 +7541,7 @@
       (pTaken@105@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18294|))))
+  :qid |quant-u-23598|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7553,7 +7553,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@105@01 a i) $Perm.No)
   
-  :qid |quant-u-18295|))))
+  :qid |quant-u-23599|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7568,7 +7568,7 @@
     (and (= a a@54@01) (= i (+ i@55@01 2)))
     (= (- $Perm.Write (pTaken@105@01 a i)) $Perm.No))
   
-  :qid |quant-u-18296|))))
+  :qid |quant-u-23600|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -7681,7 +7681,7 @@
       (pTaken@106@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18298|))))
+  :qid |quant-u-23602|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7693,7 +7693,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@106@01 a i) $Perm.No)
   
-  :qid |quant-u-18299|))))
+  :qid |quant-u-23603|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7708,7 +7708,7 @@
     (and (= a a@54@01) (= i i@55@01))
     (= (- $Perm.Write (pTaken@106@01 a i)) $Perm.No))
   
-  :qid |quant-u-18300|))))
+  :qid |quant-u-23604|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -7886,7 +7886,7 @@
       (pTaken@107@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18302|))))
+  :qid |quant-u-23606|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7898,7 +7898,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@107@01 a i) $Perm.No)
   
-  :qid |quant-u-18303|))))
+  :qid |quant-u-23607|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -7913,7 +7913,7 @@
     (and (= a a@54@01) (= i i@55@01))
     (= (- $Perm.Write (pTaken@107@01 a i)) $Perm.No))
   
-  :qid |quant-u-18304|))))
+  :qid |quant-u-23608|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -8154,7 +8154,7 @@
       (pTaken@111@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18307|))))
+  :qid |quant-u-23611|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -8176,7 +8176,7 @@
       (and (= a a@54@01) (= i (inv@109@01 a i))))
     (= (- $Perm.Write (pTaken@111@01 a i)) $Perm.No))
   
-  :qid |quant-u-18308|))))
+  :qid |quant-u-23612|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -8278,7 +8278,7 @@
       (pTaken@113@01 a i j@112@01))
     $Perm.No)
   
-  :qid |quant-u-18310|))))
+  :qid |quant-u-23614|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -8290,7 +8290,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@113@01 a i j@112@01) $Perm.No)
   
-  :qid |quant-u-18311|))))
+  :qid |quant-u-23615|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -8305,7 +8305,7 @@
     (and (= a a@54@01) (= i j@112@01))
     (= (- $Perm.Write (pTaken@113@01 a i j@112@01)) $Perm.No))
   
-  :qid |quant-u-18312|))))
+  :qid |quant-u-23616|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -8475,7 +8475,7 @@
       (pTaken@114@01 a i j@112@01))
     $Perm.No)
   
-  :qid |quant-u-18314|))))
+  :qid |quant-u-23618|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -8487,7 +8487,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@114@01 a i j@112@01) $Perm.No)
   
-  :qid |quant-u-18315|))))
+  :qid |quant-u-23619|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -8502,7 +8502,7 @@
     (and (= a a@54@01) (= i j@112@01))
     (= (- $Perm.Write (pTaken@114@01 a i j@112@01)) $Perm.No))
   
-  :qid |quant-u-18316|))))
+  :qid |quant-u-23620|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -8978,7 +8978,7 @@
       (pTaken@116@01 a i j@115@01))
     $Perm.No)
   
-  :qid |quant-u-18318|))))
+  :qid |quant-u-23622|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -8990,7 +8990,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@116@01 a i j@115@01) $Perm.No)
   
-  :qid |quant-u-18319|))))
+  :qid |quant-u-23623|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -9005,7 +9005,7 @@
     (and (= a a@54@01) (= i j@115@01))
     (= (- $Perm.Write (pTaken@116@01 a i j@115@01)) $Perm.No))
   
-  :qid |quant-u-18320|))))
+  :qid |quant-u-23624|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -9247,7 +9247,7 @@
       (pTaken@117@01 a i j@115@01))
     $Perm.No)
   
-  :qid |quant-u-18322|))))
+  :qid |quant-u-23626|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -9259,7 +9259,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@117@01 a i j@115@01) $Perm.No)
   
-  :qid |quant-u-18323|))))
+  :qid |quant-u-23627|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -9274,7 +9274,7 @@
     (and (= a a@54@01) (= i j@115@01))
     (= (- $Perm.Write (pTaken@117@01 a i j@115@01)) $Perm.No))
   
-  :qid |quant-u-18324|))))
+  :qid |quant-u-23628|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -9389,7 +9389,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (and
   (not (= (loc<Ref> a@54@01 j@115@01) (loc<Ref> a@54@01 (+ j@115@01 1))))
@@ -9838,7 +9838,7 @@
       (pTaken@119@01 a i j@118@01))
     $Perm.No)
   
-  :qid |quant-u-18326|))))
+  :qid |quant-u-23630|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -9850,7 +9850,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@119@01 a i j@118@01) $Perm.No)
   
-  :qid |quant-u-18327|))))
+  :qid |quant-u-23631|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -9865,7 +9865,7 @@
     (and (= a a@54@01) (= i j@118@01))
     (= (- $Perm.Write (pTaken@119@01 a i j@118@01)) $Perm.No))
   
-  :qid |quant-u-18328|))))
+  :qid |quant-u-23632|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -9934,7 +9934,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (not (= (loc<Ref> a@54@01 (+ j@118@01 1)) $Ref.null)))
 ; [state consolidation]
@@ -10107,7 +10107,7 @@
       (pTaken@120@01 a i j@118@01))
     $Perm.No)
   
-  :qid |quant-u-18330|))))
+  :qid |quant-u-23634|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -10119,7 +10119,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@120@01 a i j@118@01) $Perm.No)
   
-  :qid |quant-u-18331|))))
+  :qid |quant-u-23635|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -10134,7 +10134,7 @@
     (and (= a a@54@01) (= i j@118@01))
     (= (- $Perm.Write (pTaken@120@01 a i j@118@01)) $Perm.No))
   
-  :qid |quant-u-18332|))))
+  :qid |quant-u-23636|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -10698,7 +10698,7 @@
       (pTaken@122@01 a i j@121@01))
     $Perm.No)
   
-  :qid |quant-u-18334|))))
+  :qid |quant-u-23638|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -10710,7 +10710,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@122@01 a i j@121@01) $Perm.No)
   
-  :qid |quant-u-18335|))))
+  :qid |quant-u-23639|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -10725,7 +10725,7 @@
     (and (= a a@54@01) (= i j@121@01))
     (= (- $Perm.Write (pTaken@122@01 a i j@121@01)) $Perm.No))
   
-  :qid |quant-u-18336|))))
+  :qid |quant-u-23640|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -10794,7 +10794,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (not (= (loc<Ref> a@54@01 (+ j@121@01 1)) $Ref.null)))
 ; [state consolidation]
@@ -10967,11 +10967,11 @@
       (pTaken@123@01 a i j@121@01))
     $Perm.No)
   
-  :qid |quant-u-18338|))))
+  :qid |quant-u-23642|))))
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 10
@@ -10979,7 +10979,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@123@01 a i j@121@01) $Perm.No)
   
-  :qid |quant-u-18339|))))
+  :qid |quant-u-23643|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -10994,7 +10994,7 @@
     (and (= a a@54@01) (= i j@121@01))
     (= (- $Perm.Write (pTaken@123@01 a i j@121@01)) $Perm.No))
   
-  :qid |quant-u-18340|))))
+  :qid |quant-u-23644|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -11514,7 +11514,7 @@
       (= (inv@132@01 (loc<Ref> a@127@01 j@131@01)) j@131@01)
       (img@133@01 (loc<Ref> a@127@01 j@131@01))))
   :pattern ((loc<Ref> a@127@01 j@131@01))
-  :qid |quant-u-18342|)))
+  :qid |quant-u-23646|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -11613,7 +11613,7 @@
       (= (inv@136@01 (loc<Ref> a@127@01 j@135@01)) j@135@01)
       (img@137@01 (loc<Ref> a@127@01 j@135@01))))
   :pattern ((loc<Ref> a@127@01 j@135@01))
-  :qid |quant-u-18344|)))
+  :qid |quant-u-23648|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -11856,7 +11856,7 @@
       (pTaken@144@01 r))
     $Perm.No)
   
-  :qid |quant-u-18346|))))
+  :qid |quant-u-23650|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -11868,7 +11868,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@144@01 r) $Perm.No)
   
-  :qid |quant-u-18347|))))
+  :qid |quant-u-23651|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -11883,7 +11883,7 @@
     (= r (loc<Ref> a@127@01 i@128@01))
     (= (- $Perm.Write (pTaken@144@01 r)) $Perm.No))
   
-  :qid |quant-u-18348|))))
+  :qid |quant-u-23652|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -12059,7 +12059,7 @@
       (pTaken@149@01 r))
     $Perm.No)
   
-  :qid |quant-u-18351|))))
+  :qid |quant-u-23655|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -12077,7 +12077,7 @@
       (= r (loc<Ref> a@127@01 (inv@147@01 r))))
     (= (- $Perm.Write (pTaken@149@01 r)) $Perm.No))
   
-  :qid |quant-u-18352|))))
+  :qid |quant-u-23656|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -12112,7 +12112,7 @@
       (= r (loc<Ref> a@127@01 (inv@147@01 r))))
     (= (- (- $Perm.Write (pTaken@149@01 r)) (pTaken@150@01 r)) $Perm.No))
   
-  :qid |quant-u-18354|))))
+  :qid |quant-u-23658|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -12196,7 +12196,7 @@
       (= (inv@153@01 (loc<Ref> a@127@01 j@152@01)) j@152@01)
       (img@154@01 (loc<Ref> a@127@01 j@152@01))))
   :pattern ((loc<Ref> a@127@01 j@152@01))
-  :qid |quant-u-18356|)))
+  :qid |quant-u-23660|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -12580,7 +12580,7 @@
       (pTaken@161@01 r))
     $Perm.No)
   
-  :qid |quant-u-18359|))))
+  :qid |quant-u-23663|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -12598,7 +12598,7 @@
       (= r (loc<Ref> a@127@01 (inv@159@01 r))))
     (= (- $Perm.Write (pTaken@161@01 r)) $Perm.No))
   
-  :qid |quant-u-18360|))))
+  :qid |quant-u-23664|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -12915,7 +12915,7 @@
       (pTaken@166@01 r))
     $Perm.No)
   
-  :qid |quant-u-18363|))))
+  :qid |quant-u-23667|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -12933,7 +12933,7 @@
       (= r (loc<Ref> a@127@01 (inv@164@01 r))))
     (= (- $Perm.Write (pTaken@166@01 r)) $Perm.No))
   
-  :qid |quant-u-18364|))))
+  :qid |quant-u-23668|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -12968,7 +12968,7 @@
       (= r (loc<Ref> a@127@01 (inv@164@01 r))))
     (= (- (- $Perm.Write (pTaken@166@01 r)) (pTaken@167@01 r)) $Perm.No))
   
-  :qid |quant-u-18366|))))
+  :qid |quant-u-23670|))))
 (check-sat)
 ; unsat
 (pop) ; 4

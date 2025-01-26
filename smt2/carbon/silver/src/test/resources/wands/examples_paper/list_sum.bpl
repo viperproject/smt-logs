@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:03:57
+// Date:         2025-01-26 21:44:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/list_sum.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/list_sum-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_3, f_8] }
-  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
+axiom (forall o_12: Ref, f_19: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_12, f_19] }
+  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_19], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_34: Ref, f_40: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_34, f_40] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_34, f_40) ==> Heap[o_34, f_40] == ExhaleHeap[o_34, f_40]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref, f_20: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, f_20] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_13, f_20) ==> Heap[o_13, f_20] == ExhaleHeap[o_13, f_20]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_16), ExhaleHeap[null, PredicateMaskField(pm_f_16)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsPredicateField(pm_f_16) ==> Heap[null, PredicateMaskField(pm_f_16)] == ExhaleHeap[null, PredicateMaskField(pm_f_16)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4), ExhaleHeap[null, PredicateMaskField(pm_f_4)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> Heap[null, PredicateMaskField(pm_f_4)] == ExhaleHeap[null, PredicateMaskField(pm_f_4)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_16) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsPredicateField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[o2_16, f_40] }
-    Heap[null, PredicateMaskField(pm_f_16)][o2_16, f_40] ==> Heap[o2_16, f_40] == ExhaleHeap[o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[o2_4, f_20] }
+    Heap[null, PredicateMaskField(pm_f_4)][o2_4, f_20] ==> Heap[o2_4, f_20] == ExhaleHeap[o2_4, f_20]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_16), ExhaleHeap[null, WandMaskField(pm_f_16)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsWandField(pm_f_16) ==> Heap[null, WandMaskField(pm_f_16)] == ExhaleHeap[null, WandMaskField(pm_f_16)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4), ExhaleHeap[null, WandMaskField(pm_f_4)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> Heap[null, WandMaskField(pm_f_4)] == ExhaleHeap[null, WandMaskField(pm_f_4)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_16) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsWandField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[o2_16, f_40] }
-    Heap[null, WandMaskField(pm_f_16)][o2_16, f_40] ==> Heap[o2_16, f_40] == ExhaleHeap[o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[o2_4, f_20] }
+    Heap[null, WandMaskField(pm_f_4)][o2_4, f_20] ==> Heap[o2_4, f_20] == ExhaleHeap[o2_4, f_20]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_34: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_34, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_34, $allocated] ==> ExhaleHeap[o_34, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_13, $allocated] ==> ExhaleHeap[o_13, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_35: (Field A B), v: B ::
-  { Heap[o_3, f_35:=v] }
-  succHeap(Heap, Heap[o_3, f_35:=v])
+axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_21: (Field A B), v: B ::
+  { Heap[o_12, f_21:=v] }
+  succHeap(Heap, Heap[o_12, f_21:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -294,7 +294,7 @@ procedure sum_rec#definedness(ys: Ref) returns (Result: int)
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(ys) (list_sum.vpr@20.1--22.76) [121182]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(ys) (list_sum.vpr@20.1--22.76) [207057]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(ys)];
       perm := FullPerm;
       assume ys != null;
@@ -313,20 +313,20 @@ procedure sum_rec#definedness(ys: Ref) returns (Result: int)
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ys.val (list_sum.vpr@20.1--22.76) [121183]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ys.val (list_sum.vpr@20.1--22.76) [207058]"}
         HasDirectPerm(UnfoldingMask, ys, val);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ys.next (list_sum.vpr@20.1--22.76) [121184]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ys.next (list_sum.vpr@20.1--22.76) [207059]"}
         HasDirectPerm(UnfoldingMask, ys, next);
       if (UnfoldingHeap[ys, next] == null) {
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ys.next (list_sum.vpr@20.1--22.76) [121185]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ys.next (list_sum.vpr@20.1--22.76) [207060]"}
           HasDirectPerm(UnfoldingMask, ys, next);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys.next) (list_sum.vpr@22.57--22.73) [121186]"}
+          assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys.next) (list_sum.vpr@22.57--22.73) [207061]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(UnfoldingHeap[ys, next])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -345,9 +345,9 @@ procedure sum_rec#definedness(ys: Ref) returns (Result: int)
         Heap := Heap[null, List#sm(ys):=Heap[null, List#sm(ys)][ys, next:=true]];
         if (Heap[ys, next] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, List#sm(ys)][o_15, f_20] || Heap[null, List#sm(Heap[ys, next])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, List#sm(ys)][o_5, f_11] || Heap[null, List#sm(Heap[ys, next])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, List#sm(ys):=newPMask];
         }
@@ -415,12 +415,12 @@ procedure List#definedness(ys: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of ys.next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access ys.next (list_sum.vpr@15.1--17.2) [121187]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access ys.next (list_sum.vpr@15.1--17.2) [207062]"}
         HasDirectPerm(Mask, ys, next);
     if (Heap[ys, next] != null) {
       
       // -- Check definedness of acc(List(ys.next), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access ys.next (list_sum.vpr@15.1--17.2) [121188]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access ys.next (list_sum.vpr@15.1--17.2) [207063]"}
           HasDirectPerm(Mask, ys, next);
       perm := FullPerm;
       Mask := Mask[null, List(Heap[ys, next]):=Mask[null, List(Heap[ys, next])] + perm];
@@ -433,7 +433,7 @@ procedure List#definedness(ys: Ref) returns ()
 // Translation of method sum_it
 // ==================================================
 
-procedure sum_it(ys: Ref) returns (sum_1: int)
+procedure sum_it(ys: Ref) returns (sum_3: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -458,7 +458,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
-  var arg_1: Ref;
+  var arg: Ref;
   var neededTransfer: Perm;
   var initNeededTransfer: Perm;
   var accVar2: bool;
@@ -500,7 +500,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
   var b_8: bool;
   var Result_2Heap: HeapType;
   var Result_2Mask: MaskType;
-  var arg_1_1: Ref;
+  var arg_1_13: Ref;
   var b_9: bool;
   var Result_3Heap: HeapType;
   var Result_3Mask: MaskType;
@@ -521,7 +521,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
   var b_13: bool;
-  var arg_2: Ref;
+  var arg_2_13: Ref;
   var b_14: bool;
   var Result_6Heap: HeapType;
   var Result_6Mask: MaskType;
@@ -531,7 +531,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
   var b_16: bool;
-  var arg_3: Ref;
+  var arg_3_13: Ref;
   var b_17: bool;
   var Result_8Heap: HeapType;
   var Result_8Mask: MaskType;
@@ -575,13 +575,13 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
         ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@32.22--32.33) [121189]"}
+        assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@32.22--32.33) [207064]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
         // Finish exhale
         // Stop execution
         assume false;
       }
-    assume sum_1 == sum_rec(oldHeap, ys);
+    assume sum_3 == sum_rec(oldHeap, ys);
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -595,7 +595,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: sum := 0 -- list_sum.vpr@35.3--35.11
-    sum_1 := 0;
+    sum_3 := 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: old_sum_xs := sum_rec(xs) -- list_sum.vpr@49.3--49.28
@@ -606,7 +606,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@49.17--49.28) [121190]"}
+        assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@49.17--49.28) [207065]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(xs)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -647,7 +647,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                   ExhaleWellDef0Heap := Ops_1Heap;
                   ExhaleWellDef0Mask := Ops_1Mask;
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@51.11--51.12) [121191]"}
+                  assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@51.11--51.12) [207066]"}
                     NoPerm < perm ==> NoPerm < Ops_1Mask[null, List(xs)];
                   // Finish exhale
                   havoc ExhaleHeap;
@@ -676,10 +676,10 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
     b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
     
     // -- Transfer of acc(List(ys), write)
-      arg_1 := ys;
+      arg := ys;
       neededTransfer := FullPerm;
-      initNeededTransfer := Used_1Mask[null, List(arg_1)] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(List(ys), write) might be negative. (list_sum.vpr@51.3--51.18) [121192]"}
+      initNeededTransfer := Used_1Mask[null, List(arg)] + neededTransfer;
+      assert {:msg "  Packaging wand might fail. Fraction acc(List(ys), write) might be negative. (list_sum.vpr@51.3--51.18) [207067]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -687,7 +687,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_1_1 && b_1_1) && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Ops_1Mask[null, List(arg_1)];
+          maskTransfer := Ops_1Mask[null, List(arg)];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -695,11 +695,11 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_1Mask := Used_1Mask[null, List(arg_1):=Used_1Mask[null, List(arg_1)] + takeTransfer];
+            Used_1Mask := Used_1Mask[null, List(arg):=Used_1Mask[null, List(arg)] + takeTransfer];
             b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-            TempMask := ZeroMask[null, List(arg_1):=FullPerm];
+            TempMask := ZeroMask[null, List(arg):=FullPerm];
             b_2_1 := b_2_1 && IdenticalOnKnownLocations(Ops_1Heap, Used_1Heap, TempMask);
-            Ops_1Mask := Ops_1Mask[null, List(arg_1):=Ops_1Mask[null, List(arg_1)] - takeTransfer];
+            Ops_1Mask := Ops_1Mask[null, List(arg):=Ops_1Mask[null, List(arg)] - takeTransfer];
           }
         }
       
@@ -708,7 +708,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
         accVar2 := true;
         // actual code for the transfer from current state on stack
         if ((((b_1_1 && b_1_1) && b_2_1) && accVar2) && neededTransfer > 0.000000000) {
-          maskTransfer := Mask[null, List(arg_1)];
+          maskTransfer := Mask[null, List(arg)];
           if (neededTransfer <= maskTransfer) {
             takeTransfer := neededTransfer;
           } else {
@@ -716,21 +716,21 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
           }
           if (takeTransfer > 0.000000000) {
             neededTransfer := neededTransfer - takeTransfer;
-            Used_1Mask := Used_1Mask[null, List(arg_1):=Used_1Mask[null, List(arg_1)] + takeTransfer];
+            Used_1Mask := Used_1Mask[null, List(arg):=Used_1Mask[null, List(arg)] + takeTransfer];
             b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
-            TempMask := ZeroMask[null, List(arg_1):=FullPerm];
+            TempMask := ZeroMask[null, List(arg):=FullPerm];
             b_2_1 := b_2_1 && IdenticalOnKnownLocations(Heap, Used_1Heap, TempMask);
-            Mask := Mask[null, List(arg_1):=Mask[null, List(arg_1)] - takeTransfer];
+            Mask := Mask[null, List(arg):=Mask[null, List(arg)] - takeTransfer];
             havoc newPMask;
-            assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-              { newPMask[o_16, f_21] }
-              Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))][o_16, f_21] || Heap[null, List#sm(ys)][o_16, f_21] ==> newPMask[o_16, f_21]
+            assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+              { newPMask[o_6, f_12] }
+              Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))][o_6, f_12] || Heap[null, List#sm(ys)][o_6, f_12] ==> newPMask[o_6, f_12]
             );
             Heap := Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=newPMask];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access List(ys) (list_sum.vpr@51.3--51.18) [121193]"}
-        (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, List(arg_1)] == initNeededTransfer;
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access List(ys) (list_sum.vpr@51.3--51.18) [207068]"}
+        (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, List(arg)] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
         b_3 := b_1_1 && b_2_1;
@@ -748,7 +748,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
             ExhaleWellDef0Heap := ResultHeap;
             ExhaleWellDef0Mask := ResultMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@51.17--51.18) [121194]"}
+            assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@51.17--51.18) [207069]"}
               NoPerm < perm ==> NoPerm < ResultMask[null, List(ys)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -762,7 +762,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
             ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@51.17--51.18) [121195]"}
+            assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@51.17--51.18) [207070]"}
               NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
             // Finish exhale
             // Stop execution
@@ -770,7 +770,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
           }
       }
     }
-    assert {:msg "  Packaging wand might fail. Assertion sum_rec(ys) == old(sum_rec(ys)) might not hold. (list_sum.vpr@51.3--51.18) [121196]"}
+    assert {:msg "  Packaging wand might fail. Assertion sum_rec(ys) == old(sum_rec(ys)) might not hold. (list_sum.vpr@51.3--51.18) [207071]"}
       (b_1_1 && b_1_1) && b_2_1 ==> sum_rec(ResultHeap, ys) == sum_rec(oldHeap, ys);
     assume state(Heap, Mask);
     Mask := Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))] + FullPerm];
@@ -788,17 +788,17 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
         if (xs != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant xs != null ==> acc(List(xs), write) might not hold on entry. There might be insufficient permission to access List(xs) (list_sum.vpr@63.15--63.43) [121197]"}
+            assert {:msg "  Loop invariant xs != null ==> acc(List(xs), write) might not hold on entry. There might be insufficient permission to access List(xs) (list_sum.vpr@63.15--63.43) [207072]"}
               perm <= Mask[null, List(xs)];
           }
           Mask := Mask[null, List(xs):=Mask[null, List(xs)] - perm];
         }
-        assert {:msg "  Loop invariant old_sum_xs == (xs == null ? 0 : sum_rec(xs)) might not hold on entry. Assertion old_sum_xs == (xs == null ? 0 : sum_rec(xs)) might not hold. (list_sum.vpr@64.15--64.59) [121198]"}
+        assert {:msg "  Loop invariant old_sum_xs == (xs == null ? 0 : sum_rec(xs)) might not hold on entry. Assertion old_sum_xs == (xs == null ? 0 : sum_rec(xs)) might not hold. (list_sum.vpr@64.15--64.59) [207073]"}
           old_sum_xs == (if xs == null then 0 else sum_rec(Heap, xs));
-        assert {:msg "  Loop invariant sum == old(sum_rec(ys)) - old_sum_xs might not hold on entry. Assertion sum == old(sum_rec(ys)) - old_sum_xs might not hold. (list_sum.vpr@65.15--65.51) [121199]"}
-          sum_1 == sum_rec(oldHeap, ys) - old_sum_xs;
+        assert {:msg "  Loop invariant sum == old(sum_rec(ys)) - old_sum_xs might not hold on entry. Assertion sum == old(sum_rec(ys)) - old_sum_xs might not hold. (list_sum.vpr@65.15--65.51) [207074]"}
+          sum_3 == sum_rec(oldHeap, ys) - old_sum_xs;
         // permLe
-        assert {:msg "  Loop invariant (xs != null ==> acc(List(xs), write) && sum_rec(xs) == old_sum_xs) --* acc(List(ys), write) && sum_rec(ys) == old(sum_rec(ys)) might not hold on entry. Magic wand instance not found. (list_sum.vpr@66.15--66.22) [121200]"}
+        assert {:msg "  Loop invariant (xs != null ==> acc(List(xs), write) && sum_rec(xs) == old_sum_xs) --* acc(List(ys), write) && sum_rec(ys) == old(sum_rec(ys)) might not hold on entry. Magic wand instance not found. (list_sum.vpr@66.15--66.22) [207075]"}
           FullPerm <= Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))];
         Mask := Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))] - FullPerm];
         // Finish exhale
@@ -807,7 +807,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
         Heap := ExhaleHeap;
     
     // -- Havoc loop written variables (except locals)
-      havoc old_sum_xs, xs, sum_1;
+      havoc old_sum_xs, xs, sum_3;
       assume Heap[xs, $allocated];
     
     // -- Check definedness of invariant
@@ -828,7 +828,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
               ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
-              assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@64.47--64.58) [121201]"}
+              assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@64.47--64.58) [207076]"}
                 NoPerm < perm ==> NoPerm < Mask[null, List(xs)];
               // Finish exhale
               havoc ExhaleHeap;
@@ -848,13 +848,13 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
             ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@65.26--65.37) [121202]"}
+            assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@65.26--65.37) [207077]"}
               NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
             // Finish exhale
             // Stop execution
             assume false;
           }
-        assume sum_1 == sum_rec(oldHeap, ys) - old_sum_xs;
+        assume sum_3 == sum_rec(oldHeap, ys) - old_sum_xs;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         
@@ -874,7 +874,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                   ExhaleWellDef0Heap := WandDefLHSHeap;
                   ExhaleWellDef0Mask := WandDefLHSMask;
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@66.15--66.16) [121203]"}
+                  assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@66.15--66.16) [207078]"}
                     NoPerm < perm ==> NoPerm < WandDefLHSMask[null, List(xs)];
                   // Finish exhale
                   havoc ExhaleHeap;
@@ -905,7 +905,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                 ExhaleWellDef0Heap := WandDefRHSHeap;
                 ExhaleWellDef0Mask := WandDefRHSMask;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@66.21--66.22) [121204]"}
+                assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@66.21--66.22) [207079]"}
                   NoPerm < perm ==> NoPerm < WandDefRHSMask[null, List(ys)];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -919,7 +919,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                 ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@66.21--66.22) [121205]"}
+                assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@66.21--66.22) [207080]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
                 // Finish exhale
                 // Stop execution
@@ -951,7 +951,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
         assume state(Heap, Mask);
         assume old_sum_xs == (if xs == null then 0 else sum_rec(Heap, xs));
         assume state(Heap, Mask);
-        assume sum_1 == sum_rec(oldHeap, ys) - old_sum_xs;
+        assume sum_3 == sum_rec(oldHeap, ys) - old_sum_xs;
         assume state(Heap, Mask);
         Mask := Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))] + FullPerm];
         assume state(Heap, Mask);
@@ -985,7 +985,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
             ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding List(xs) might fail. There might be insufficient permission to access List(xs) (list_sum.vpr@75.5--75.20) [121206]"}
+              assert {:msg "  Unfolding List(xs) might fail. There might be insufficient permission to access List(xs) (list_sum.vpr@75.5--75.20) [207081]"}
                 perm <= Mask[null, List(xs)];
             }
             Mask := Mask[null, List(xs):=Mask[null, List(xs)] - perm];
@@ -1017,15 +1017,15 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
           // -- Translating statement: sum := sum + xs.val -- list_sum.vpr@76.5--76.24
             
             // -- Check definedness of sum + xs.val
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.val (list_sum.vpr@76.5--76.24) [121207]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.val (list_sum.vpr@76.5--76.24) [207082]"}
                 HasDirectPerm(Mask, xs, val);
-            sum_1 := sum_1 + Heap[xs, val];
+            sum_3 := sum_3 + Heap[xs, val];
             assume state(Heap, Mask);
           
           // -- Translating statement: xs := xs.next -- list_sum.vpr@77.5--77.18
             
             // -- Check definedness of xs.next
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (list_sum.vpr@77.5--77.18) [121208]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (list_sum.vpr@77.5--77.18) [207083]"}
                 HasDirectPerm(Mask, xs, next);
             xs := Heap[xs, next];
             assume state(Heap, Mask);
@@ -1040,7 +1040,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                   ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
-                  assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@83.37--83.48) [121209]"}
+                  assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@83.37--83.48) [207084]"}
                     NoPerm < perm ==> NoPerm < Mask[null, List(xs)];
                   // Finish exhale
                   havoc ExhaleHeap;
@@ -1086,7 +1086,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                           ExhaleWellDef0Heap := Ops_3Heap;
                           ExhaleWellDef0Mask := Ops_3Mask;
                           perm := FullPerm;
-                          assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@85.14--85.15) [121210]"}
+                          assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (list_sum.vpr@85.14--85.15) [207085]"}
                             NoPerm < perm ==> NoPerm < Ops_3Mask[null, List(xs)];
                           // Finish exhale
                           havoc ExhaleHeap;
@@ -1122,7 +1122,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                   rcvLocal := zs;
                   neededTransfer := FullPerm;
                   initNeededTransfer := Used_3Mask[rcvLocal, val] + neededTransfer;
-                  assert {:msg "  Folding List(zs) might fail. Fraction acc(zs.val, write) might be negative. (list_sum.vpr@86.9--86.22) [121211]"}
+                  assert {:msg "  Folding List(zs) might fail. Fraction acc(zs.val, write) might be negative. (list_sum.vpr@86.9--86.22) [207086]"}
                     neededTransfer >= 0.000000000;
                   
                   // -- transfer code for top state of stack
@@ -1165,7 +1165,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                         Heap := Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))][zs, val:=true]];
                       }
                     }
-                  assert {:msg "  Folding List(zs) might fail. There might be insufficient permission to access zs.val (list_sum.vpr@86.9--86.22) [121212]"}
+                  assert {:msg "  Folding List(zs) might fail. There might be insufficient permission to access zs.val (list_sum.vpr@86.9--86.22) [207087]"}
                     b_5 && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, val] == initNeededTransfer;
                   
                   // -- Creating state which is the sum of the two previously built up states
@@ -1182,7 +1182,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                   rcvLocal := zs;
                   neededTransfer := FullPerm;
                   initNeededTransfer := Used_3Mask[rcvLocal, next] + neededTransfer;
-                  assert {:msg "  Folding List(zs) might fail. Fraction acc(zs.next, write) might be negative. (list_sum.vpr@86.9--86.22) [121213]"}
+                  assert {:msg "  Folding List(zs) might fail. Fraction acc(zs.next, write) might be negative. (list_sum.vpr@86.9--86.22) [207088]"}
                     neededTransfer >= 0.000000000;
                   
                   // -- transfer code for top state of stack
@@ -1225,7 +1225,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                         Heap := Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))][zs, next:=true]];
                       }
                     }
-                  assert {:msg "  Folding List(zs) might fail. There might be insufficient permission to access zs.next (list_sum.vpr@86.9--86.22) [121214]"}
+                  assert {:msg "  Folding List(zs) might fail. There might be insufficient permission to access zs.next (list_sum.vpr@86.9--86.22) [207089]"}
                     b_5 && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, next] == initNeededTransfer;
                   
                   // -- Creating state which is the sum of the two previously built up states
@@ -1246,14 +1246,14 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                         if (b_5) {
                           
                           // -- Check definedness of acc(List(zs.next), write)
-                            assert {:msg "  Folding List(zs) might fail. There might be insufficient permission to access zs.next (list_sum.vpr@86.9--86.22) [121215]"}
+                            assert {:msg "  Folding List(zs) might fail. There might be insufficient permission to access zs.next (list_sum.vpr@86.9--86.22) [207090]"}
                               HasDirectPerm(Result_2Mask, zs, next);
                         }
                       }
-                    arg_1_1 := Result_2Heap[zs, next];
+                    arg_1_13 := Result_2Heap[zs, next];
                     neededTransfer := FullPerm;
-                    initNeededTransfer := Used_3Mask[null, List(arg_1_1)] + neededTransfer;
-                    assert {:msg "  Folding List(zs) might fail. Fraction acc(List(zs.next), write) might be negative. (list_sum.vpr@86.9--86.22) [121216]"}
+                    initNeededTransfer := Used_3Mask[null, List(arg_1_13)] + neededTransfer;
+                    assert {:msg "  Folding List(zs) might fail. Fraction acc(List(zs.next), write) might be negative. (list_sum.vpr@86.9--86.22) [207091]"}
                       neededTransfer >= 0.000000000;
                     
                     // -- transfer code for top state of stack
@@ -1261,7 +1261,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                       accVar2 := true;
                       // actual code for the transfer from current state on stack
                       if (((b_5 && b_6) && accVar2) && neededTransfer > 0.000000000) {
-                        maskTransfer := Ops_3Mask[null, List(arg_1_1)];
+                        maskTransfer := Ops_3Mask[null, List(arg_1_13)];
                         if (neededTransfer <= maskTransfer) {
                           takeTransfer := neededTransfer;
                         } else {
@@ -1269,11 +1269,11 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                         }
                         if (takeTransfer > 0.000000000) {
                           neededTransfer := neededTransfer - takeTransfer;
-                          Used_3Mask := Used_3Mask[null, List(arg_1_1):=Used_3Mask[null, List(arg_1_1)] + takeTransfer];
+                          Used_3Mask := Used_3Mask[null, List(arg_1_13):=Used_3Mask[null, List(arg_1_13)] + takeTransfer];
                           b_6 := b_6 && state(Used_3Heap, Used_3Mask);
-                          TempMask := ZeroMask[null, List(arg_1_1):=FullPerm];
+                          TempMask := ZeroMask[null, List(arg_1_13):=FullPerm];
                           b_6 := b_6 && IdenticalOnKnownLocations(Ops_3Heap, Used_3Heap, TempMask);
-                          Ops_3Mask := Ops_3Mask[null, List(arg_1_1):=Ops_3Mask[null, List(arg_1_1)] - takeTransfer];
+                          Ops_3Mask := Ops_3Mask[null, List(arg_1_13):=Ops_3Mask[null, List(arg_1_13)] - takeTransfer];
                         }
                       }
                     
@@ -1282,7 +1282,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                       accVar2 := true;
                       // actual code for the transfer from current state on stack
                       if (((b_5 && b_6) && accVar2) && neededTransfer > 0.000000000) {
-                        maskTransfer := Mask[null, List(arg_1_1)];
+                        maskTransfer := Mask[null, List(arg_1_13)];
                         if (neededTransfer <= maskTransfer) {
                           takeTransfer := neededTransfer;
                         } else {
@@ -1290,21 +1290,21 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                         }
                         if (takeTransfer > 0.000000000) {
                           neededTransfer := neededTransfer - takeTransfer;
-                          Used_3Mask := Used_3Mask[null, List(arg_1_1):=Used_3Mask[null, List(arg_1_1)] + takeTransfer];
+                          Used_3Mask := Used_3Mask[null, List(arg_1_13):=Used_3Mask[null, List(arg_1_13)] + takeTransfer];
                           b_6 := b_6 && state(Used_3Heap, Used_3Mask);
-                          TempMask := ZeroMask[null, List(arg_1_1):=FullPerm];
+                          TempMask := ZeroMask[null, List(arg_1_13):=FullPerm];
                           b_6 := b_6 && IdenticalOnKnownLocations(Heap, Used_3Heap, TempMask);
-                          Mask := Mask[null, List(arg_1_1):=Mask[null, List(arg_1_1)] - takeTransfer];
+                          Mask := Mask[null, List(arg_1_13):=Mask[null, List(arg_1_13)] - takeTransfer];
                           havoc newPMask;
-                          assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-                            { newPMask[o_52, f_55] }
-                            Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))][o_52, f_55] || Heap[null, List#sm(Heap[zs, next])][o_52, f_55] ==> newPMask[o_52, f_55]
+                          assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+                            { newPMask[o_40, f_52] }
+                            Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))][o_40, f_52] || Heap[null, List#sm(Heap[zs, next])][o_40, f_52] ==> newPMask[o_40, f_52]
                           );
                           Heap := Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=newPMask];
                         }
                       }
-                    assert {:msg "  Folding List(zs) might fail. There might be insufficient permission to access List(zs.next) (list_sum.vpr@86.9--86.22) [121217]"}
-                      b_5 && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[null, List(arg_1_1)] == initNeededTransfer;
+                    assert {:msg "  Folding List(zs) might fail. There might be insufficient permission to access List(zs.next) (list_sum.vpr@86.9--86.22) [207092]"}
+                      b_5 && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[null, List(arg_1_13)] == initNeededTransfer;
                     
                     // -- Creating state which is the sum of the two previously built up states
                       b_9 := b_5 && b_6;
@@ -1340,9 +1340,9 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                 Ops_3Heap := Ops_3Heap[null, List#sm(zs):=Ops_3Heap[null, List#sm(zs)][zs, next:=true]];
                 if (Ops_3Heap[zs, next] != null) {
                   havoc newPMask;
-                  assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-                    { newPMask[o_53, f_56] }
-                    Ops_3Heap[null, List#sm(zs)][o_53, f_56] || Ops_3Heap[null, List#sm(Ops_3Heap[zs, next])][o_53, f_56] ==> newPMask[o_53, f_56]
+                  assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+                    { newPMask[o_42, f_55] }
+                    Ops_3Heap[null, List#sm(zs)][o_42, f_55] || Ops_3Heap[null, List#sm(Ops_3Heap[zs, next])][o_42, f_55] ==> newPMask[o_42, f_55]
                   );
                   Ops_3Heap := Ops_3Heap[null, List#sm(zs):=newPMask];
                 }
@@ -1384,7 +1384,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                                     ExhaleWellDef1Heap := WandDefLHSHeap;
                                     ExhaleWellDef1Mask := WandDefLHSMask;
                                     perm := FullPerm;
-                                    assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(oldXs) (list_sum.vpr@87.54--87.68) [121218]"}
+                                    assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(oldXs) (list_sum.vpr@87.54--87.68) [207093]"}
                                       NoPerm < perm ==> NoPerm < WandDefLHSMask[null, List(oldXs)];
                                     // Finish exhale
                                     havoc ExhaleHeap;
@@ -1415,7 +1415,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                                   ExhaleWellDef1Heap := WandDefRHSHeap;
                                   ExhaleWellDef1Mask := WandDefRHSMask;
                                   perm := FullPerm;
-                                  assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@88.27--88.38) [121219]"}
+                                  assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@88.27--88.38) [207094]"}
                                     NoPerm < perm ==> NoPerm < WandDefRHSMask[null, List(ys)];
                                   // Finish exhale
                                   havoc ExhaleHeap;
@@ -1429,7 +1429,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                                   ExhaleWellDef1Heap := oldHeap;
                                   ExhaleWellDef1Mask := oldMask;
                                   perm := FullPerm;
-                                  assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@88.46--88.57) [121220]"}
+                                  assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@88.46--88.57) [207095]"}
                                     NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
                                   // Finish exhale
                                   // Stop execution
@@ -1443,7 +1443,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                       }
                     neededTransfer := 1.000000000;
                     initNeededTransfer := Used_4Mask[null, wand(oldXs != null, oldXs, oldXs, oldOld_sum_xs, ys, ys, sum_rec(oldHeap, ys))] + neededTransfer;
-                    assert {:msg "  Applying wand might fail. Fraction (oldXs != null ==> acc(List(oldXs), write) && sum_rec(oldXs) == oldOld_sum_xs) --* acc(List(ys), write) && sum_rec(ys) == old(sum_rec(ys)) might be negative. (list_sum.vpr@87.9--88.59) [121221]"}
+                    assert {:msg "  Applying wand might fail. Fraction (oldXs != null ==> acc(List(oldXs), write) && sum_rec(oldXs) == oldOld_sum_xs) --* acc(List(ys), write) && sum_rec(ys) == old(sum_rec(ys)) might be negative. (list_sum.vpr@87.9--88.59) [207096]"}
                       neededTransfer >= 0.000000000;
                     
                     // -- transfer code for top state of stack
@@ -1483,7 +1483,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                           Mask := Mask[null, wand(oldXs != null, oldXs, oldXs, oldOld_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=Mask[null, wand(oldXs != null, oldXs, oldXs, oldOld_sum_xs, ys, ys, sum_rec(oldHeap, ys))] - takeTransfer];
                         }
                       }
-                    assert {:msg "  Applying wand might fail. Magic wand instance not found. (list_sum.vpr@87.9--88.59) [121222]"}
+                    assert {:msg "  Applying wand might fail. Magic wand instance not found. (list_sum.vpr@87.9--88.59) [207097]"}
                       b_5 && b_11 ==> neededTransfer == 0.000000000 && Used_4Mask[null, wand(oldXs != null, oldXs, oldXs, oldOld_sum_xs, ys, ys, sum_rec(oldHeap, ys))] == initNeededTransfer;
                     
                     // -- Creating state which is the sum of the two previously built up states
@@ -1506,10 +1506,10 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                   if (b_5 ==> oldXs != null) {
                     
                     // -- Transfer of acc(List(oldXs), write)
-                      arg_2 := oldXs;
+                      arg_2_13 := oldXs;
                       neededTransfer := FullPerm;
-                      initNeededTransfer := Used_5Mask[null, List(arg_2)] + neededTransfer;
-                      assert {:msg "  Applying wand might fail. Fraction acc(List(oldXs), write) might be negative. (list_sum.vpr@87.9--88.59) [121223]"}
+                      initNeededTransfer := Used_5Mask[null, List(arg_2_13)] + neededTransfer;
+                      assert {:msg "  Applying wand might fail. Fraction acc(List(oldXs), write) might be negative. (list_sum.vpr@87.9--88.59) [207098]"}
                         neededTransfer >= 0.000000000;
                       
                       // -- transfer code for top state of stack
@@ -1517,7 +1517,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                         accVar2 := true;
                         // actual code for the transfer from current state on stack
                         if (((b_5 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                          maskTransfer := Ops_3Mask[null, List(arg_2)];
+                          maskTransfer := Ops_3Mask[null, List(arg_2_13)];
                           if (neededTransfer <= maskTransfer) {
                             takeTransfer := neededTransfer;
                           } else {
@@ -1525,11 +1525,11 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                           }
                           if (takeTransfer > 0.000000000) {
                             neededTransfer := neededTransfer - takeTransfer;
-                            Used_5Mask := Used_5Mask[null, List(arg_2):=Used_5Mask[null, List(arg_2)] + takeTransfer];
+                            Used_5Mask := Used_5Mask[null, List(arg_2_13):=Used_5Mask[null, List(arg_2_13)] + takeTransfer];
                             b_13 := b_13 && state(Used_5Heap, Used_5Mask);
-                            TempMask := ZeroMask[null, List(arg_2):=FullPerm];
+                            TempMask := ZeroMask[null, List(arg_2_13):=FullPerm];
                             b_13 := b_13 && IdenticalOnKnownLocations(Ops_3Heap, Used_5Heap, TempMask);
-                            Ops_3Mask := Ops_3Mask[null, List(arg_2):=Ops_3Mask[null, List(arg_2)] - takeTransfer];
+                            Ops_3Mask := Ops_3Mask[null, List(arg_2_13):=Ops_3Mask[null, List(arg_2_13)] - takeTransfer];
                           }
                         }
                       
@@ -1538,7 +1538,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                         accVar2 := true;
                         // actual code for the transfer from current state on stack
                         if (((b_5 && b_13) && accVar2) && neededTransfer > 0.000000000) {
-                          maskTransfer := Mask[null, List(arg_2)];
+                          maskTransfer := Mask[null, List(arg_2_13)];
                           if (neededTransfer <= maskTransfer) {
                             takeTransfer := neededTransfer;
                           } else {
@@ -1546,21 +1546,21 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                           }
                           if (takeTransfer > 0.000000000) {
                             neededTransfer := neededTransfer - takeTransfer;
-                            Used_5Mask := Used_5Mask[null, List(arg_2):=Used_5Mask[null, List(arg_2)] + takeTransfer];
+                            Used_5Mask := Used_5Mask[null, List(arg_2_13):=Used_5Mask[null, List(arg_2_13)] + takeTransfer];
                             b_13 := b_13 && state(Used_5Heap, Used_5Mask);
-                            TempMask := ZeroMask[null, List(arg_2):=FullPerm];
+                            TempMask := ZeroMask[null, List(arg_2_13):=FullPerm];
                             b_13 := b_13 && IdenticalOnKnownLocations(Heap, Used_5Heap, TempMask);
-                            Mask := Mask[null, List(arg_2):=Mask[null, List(arg_2)] - takeTransfer];
+                            Mask := Mask[null, List(arg_2_13):=Mask[null, List(arg_2_13)] - takeTransfer];
                             havoc newPMask;
-                            assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-                              { newPMask[o_26, f_29] }
-                              Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))][o_26, f_29] || Heap[null, List#sm(oldXs)][o_26, f_29] ==> newPMask[o_26, f_29]
+                            assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+                              { newPMask[o_46, f_60] }
+                              Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))][o_46, f_60] || Heap[null, List#sm(oldXs)][o_46, f_60] ==> newPMask[o_46, f_60]
                             );
                             Heap := Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=newPMask];
                           }
                         }
-                      assert {:msg "  Applying wand might fail. There might be insufficient permission to access List(oldXs) (list_sum.vpr@87.9--88.59) [121224]"}
-                        b_5 && b_13 ==> neededTransfer == 0.000000000 && Used_5Mask[null, List(arg_2)] == initNeededTransfer;
+                      assert {:msg "  Applying wand might fail. There might be insufficient permission to access List(oldXs) (list_sum.vpr@87.9--88.59) [207099]"}
+                        b_5 && b_13 ==> neededTransfer == 0.000000000 && Used_5Mask[null, List(arg_2_13)] == initNeededTransfer;
                       
                       // -- Creating state which is the sum of the two previously built up states
                         b_14 := b_5 && b_13;
@@ -1580,7 +1580,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                             ExhaleWellDef1Heap := Result_6Heap;
                             ExhaleWellDef1Mask := Result_6Mask;
                             perm := FullPerm;
-                            assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(oldXs) (list_sum.vpr@87.54--87.68) [121225]"}
+                            assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(oldXs) (list_sum.vpr@87.54--87.68) [207100]"}
                               NoPerm < perm ==> NoPerm < Result_6Mask[null, List(oldXs)];
                             // Finish exhale
                             havoc ExhaleHeap;
@@ -1591,7 +1591,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                           }
                       }
                     }
-                    assert {:msg "  Applying wand might fail. Assertion sum_rec(oldXs) == oldOld_sum_xs might not hold. (list_sum.vpr@87.9--88.59) [121226]"}
+                    assert {:msg "  Applying wand might fail. Assertion sum_rec(oldXs) == oldOld_sum_xs might not hold. (list_sum.vpr@87.9--88.59) [207101]"}
                       b_5 && b_13 ==> sum_rec(Result_6Heap, oldXs) == oldOld_sum_xs;
                     b_5 := b_5 && b_13;
                     b_5 := b_5 && Used_5Heap == Ops_3Heap;
@@ -1626,10 +1626,10 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
             b_16 := b_16 && state(Used_6Heap, Used_6Mask);
             
             // -- Transfer of acc(List(ys), write)
-              arg_3 := ys;
+              arg_3_13 := ys;
               neededTransfer := FullPerm;
-              initNeededTransfer := Used_6Mask[null, List(arg_3)] + neededTransfer;
-              assert {:msg "  Packaging wand might fail. Fraction acc(List(ys), write) might be negative. (list_sum.vpr@85.5--89.6) [121227]"}
+              initNeededTransfer := Used_6Mask[null, List(arg_3_13)] + neededTransfer;
+              assert {:msg "  Packaging wand might fail. Fraction acc(List(ys), write) might be negative. (list_sum.vpr@85.5--89.6) [207102]"}
                 neededTransfer >= 0.000000000;
               
               // -- transfer code for top state of stack
@@ -1637,7 +1637,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                 accVar2 := true;
                 // actual code for the transfer from current state on stack
                 if ((((b_5 && b_5) && b_16) && accVar2) && neededTransfer > 0.000000000) {
-                  maskTransfer := Ops_3Mask[null, List(arg_3)];
+                  maskTransfer := Ops_3Mask[null, List(arg_3_13)];
                   if (neededTransfer <= maskTransfer) {
                     takeTransfer := neededTransfer;
                   } else {
@@ -1645,11 +1645,11 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                   }
                   if (takeTransfer > 0.000000000) {
                     neededTransfer := neededTransfer - takeTransfer;
-                    Used_6Mask := Used_6Mask[null, List(arg_3):=Used_6Mask[null, List(arg_3)] + takeTransfer];
+                    Used_6Mask := Used_6Mask[null, List(arg_3_13):=Used_6Mask[null, List(arg_3_13)] + takeTransfer];
                     b_16 := b_16 && state(Used_6Heap, Used_6Mask);
-                    TempMask := ZeroMask[null, List(arg_3):=FullPerm];
+                    TempMask := ZeroMask[null, List(arg_3_13):=FullPerm];
                     b_16 := b_16 && IdenticalOnKnownLocations(Ops_3Heap, Used_6Heap, TempMask);
-                    Ops_3Mask := Ops_3Mask[null, List(arg_3):=Ops_3Mask[null, List(arg_3)] - takeTransfer];
+                    Ops_3Mask := Ops_3Mask[null, List(arg_3_13):=Ops_3Mask[null, List(arg_3_13)] - takeTransfer];
                   }
                 }
               
@@ -1658,7 +1658,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                 accVar2 := true;
                 // actual code for the transfer from current state on stack
                 if ((((b_5 && b_5) && b_16) && accVar2) && neededTransfer > 0.000000000) {
-                  maskTransfer := Mask[null, List(arg_3)];
+                  maskTransfer := Mask[null, List(arg_3_13)];
                   if (neededTransfer <= maskTransfer) {
                     takeTransfer := neededTransfer;
                   } else {
@@ -1666,21 +1666,21 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                   }
                   if (takeTransfer > 0.000000000) {
                     neededTransfer := neededTransfer - takeTransfer;
-                    Used_6Mask := Used_6Mask[null, List(arg_3):=Used_6Mask[null, List(arg_3)] + takeTransfer];
+                    Used_6Mask := Used_6Mask[null, List(arg_3_13):=Used_6Mask[null, List(arg_3_13)] + takeTransfer];
                     b_16 := b_16 && state(Used_6Heap, Used_6Mask);
-                    TempMask := ZeroMask[null, List(arg_3):=FullPerm];
+                    TempMask := ZeroMask[null, List(arg_3_13):=FullPerm];
                     b_16 := b_16 && IdenticalOnKnownLocations(Heap, Used_6Heap, TempMask);
-                    Mask := Mask[null, List(arg_3):=Mask[null, List(arg_3)] - takeTransfer];
+                    Mask := Mask[null, List(arg_3_13):=Mask[null, List(arg_3_13)] - takeTransfer];
                     havoc newPMask;
-                    assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-                      { newPMask[o, f_85] }
-                      Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))][o, f_85] || Heap[null, List#sm(ys)][o, f_85] ==> newPMask[o, f_85]
+                    assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+                      { newPMask[o, f_61] }
+                      Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))][o, f_61] || Heap[null, List#sm(ys)][o, f_61] ==> newPMask[o, f_61]
                     );
                     Heap := Heap[null, wand#sm(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=newPMask];
                   }
                 }
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access List(ys) (list_sum.vpr@85.5--89.6) [121228]"}
-                (b_5 && b_5) && b_16 ==> neededTransfer == 0.000000000 && Used_6Mask[null, List(arg_3)] == initNeededTransfer;
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access List(ys) (list_sum.vpr@85.5--89.6) [207103]"}
+                (b_5 && b_5) && b_16 ==> neededTransfer == 0.000000000 && Used_6Mask[null, List(arg_3_13)] == initNeededTransfer;
               
               // -- Creating state which is the sum of the two previously built up states
                 b_17 := b_5 && b_16;
@@ -1698,7 +1698,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                     ExhaleWellDef0Heap := Result_8Heap;
                     ExhaleWellDef0Mask := Result_8Mask;
                     perm := FullPerm;
-                    assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@85.21--85.22) [121229]"}
+                    assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@85.21--85.22) [207104]"}
                       NoPerm < perm ==> NoPerm < Result_8Mask[null, List(ys)];
                     // Finish exhale
                     havoc ExhaleHeap;
@@ -1712,7 +1712,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                     ExhaleWellDef0Heap := oldHeap;
                     ExhaleWellDef0Mask := oldMask;
                     perm := FullPerm;
-                    assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@85.21--85.22) [121230]"}
+                    assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@85.21--85.22) [207105]"}
                       NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
                     // Finish exhale
                     // Stop execution
@@ -1720,7 +1720,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
                   }
               }
             }
-            assert {:msg "  Packaging wand might fail. Assertion sum_rec(ys) == old(sum_rec(ys)) might not hold. (list_sum.vpr@85.5--89.6) [121231]"}
+            assert {:msg "  Packaging wand might fail. Assertion sum_rec(ys) == old(sum_rec(ys)) might not hold. (list_sum.vpr@85.5--89.6) [207106]"}
               (b_5 && b_5) && b_16 ==> sum_rec(Result_8Heap, ys) == sum_rec(oldHeap, ys);
             assume state(Heap, Mask);
             Mask := Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))] + FullPerm];
@@ -1733,17 +1733,17 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
         if (xs != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Loop invariant xs != null ==> acc(List(xs), write) might not be preserved. There might be insufficient permission to access List(xs) (list_sum.vpr@63.15--63.43) [121232]"}
+            assert {:msg "  Loop invariant xs != null ==> acc(List(xs), write) might not be preserved. There might be insufficient permission to access List(xs) (list_sum.vpr@63.15--63.43) [207107]"}
               perm <= Mask[null, List(xs)];
           }
           Mask := Mask[null, List(xs):=Mask[null, List(xs)] - perm];
         }
-        assert {:msg "  Loop invariant old_sum_xs == (xs == null ? 0 : sum_rec(xs)) might not be preserved. Assertion old_sum_xs == (xs == null ? 0 : sum_rec(xs)) might not hold. (list_sum.vpr@64.15--64.59) [121233]"}
+        assert {:msg "  Loop invariant old_sum_xs == (xs == null ? 0 : sum_rec(xs)) might not be preserved. Assertion old_sum_xs == (xs == null ? 0 : sum_rec(xs)) might not hold. (list_sum.vpr@64.15--64.59) [207108]"}
           old_sum_xs == (if xs == null then 0 else sum_rec(Heap, xs));
-        assert {:msg "  Loop invariant sum == old(sum_rec(ys)) - old_sum_xs might not be preserved. Assertion sum == old(sum_rec(ys)) - old_sum_xs might not hold. (list_sum.vpr@65.15--65.51) [121234]"}
-          sum_1 == sum_rec(oldHeap, ys) - old_sum_xs;
+        assert {:msg "  Loop invariant sum == old(sum_rec(ys)) - old_sum_xs might not be preserved. Assertion sum == old(sum_rec(ys)) - old_sum_xs might not hold. (list_sum.vpr@65.15--65.51) [207109]"}
+          sum_3 == sum_rec(oldHeap, ys) - old_sum_xs;
         // permLe
-        assert {:msg "  Loop invariant (xs != null ==> acc(List(xs), write) && sum_rec(xs) == old_sum_xs) --* acc(List(ys), write) && sum_rec(ys) == old(sum_rec(ys)) might not be preserved. Magic wand instance not found. (list_sum.vpr@66.15--66.22) [121235]"}
+        assert {:msg "  Loop invariant (xs != null ==> acc(List(xs), write) && sum_rec(xs) == old_sum_xs) --* acc(List(ys), write) && sum_rec(ys) == old(sum_rec(ys)) might not be preserved. Magic wand instance not found. (list_sum.vpr@66.15--66.22) [207110]"}
           FullPerm <= Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))];
         Mask := Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))] - FullPerm];
         // Finish exhale
@@ -1765,7 +1765,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
       assume state(Heap, Mask);
       assume old_sum_xs == (if xs == null then 0 else sum_rec(Heap, xs));
       assume state(Heap, Mask);
-      assume sum_1 == sum_rec(oldHeap, ys) - old_sum_xs;
+      assume sum_3 == sum_rec(oldHeap, ys) - old_sum_xs;
       assume state(Heap, Mask);
       Mask := Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))] + FullPerm];
       assume state(Heap, Mask);
@@ -1779,7 +1779,7 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (list_sum.vpr@97.3--97.16) [121236]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (list_sum.vpr@97.3--97.16) [207111]"}
         FullPerm <= Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))];
       Mask := Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys)):=Mask[null, wand(xs != null, xs, xs, old_sum_xs, ys, ys, sum_rec(oldHeap, ys))] - FullPerm];
     assume state(Heap, Mask);
@@ -1790,11 +1790,11 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
       if (xs != null) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Applying wand might fail. There might be insufficient permission to access List(xs) (list_sum.vpr@97.3--97.16) [121238]"}
+          assert {:msg "  Applying wand might fail. There might be insufficient permission to access List(xs) (list_sum.vpr@97.3--97.16) [207113]"}
             perm <= Mask[null, List(xs)];
         }
         Mask := Mask[null, List(xs):=Mask[null, List(xs)] - perm];
-        assert {:msg "  Applying wand might fail. Assertion sum_rec(xs) == old_sum_xs might not hold. (list_sum.vpr@97.3--97.16) [121239]"}
+        assert {:msg "  Applying wand might fail. Assertion sum_rec(xs) == old_sum_xs might not hold. (list_sum.vpr@97.3--97.16) [207114]"}
           sum_rec(Heap, xs) == old_sum_xs;
       }
     assume state(Heap, Mask);
@@ -1817,12 +1817,12 @@ procedure sum_it(ys: Ref) returns (sum_1: int)
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of sum_it might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@31.11--31.24) [121241]"}
+      assert {:msg "  Postcondition of sum_it might not hold. There might be insufficient permission to access List(ys) (list_sum.vpr@31.11--31.24) [207116]"}
         perm <= Mask[null, List(ys)];
     }
     Mask := Mask[null, List(ys):=Mask[null, List(ys)] - perm];
-    assert {:msg "  Postcondition of sum_it might not hold. Assertion sum == old(sum_rec(ys)) might not hold. (list_sum.vpr@32.11--32.34) [121242]"}
-      sum_1 == sum_rec(oldHeap, ys);
+    assert {:msg "  Postcondition of sum_it might not hold. Assertion sum == old(sum_rec(ys)) might not hold. (list_sum.vpr@32.11--32.34) [207117]"}
+      sum_3 == sum_rec(oldHeap, ys);
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:26
+// Date:         2025-01-26 21:42:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0078.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0078-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -239,7 +239,7 @@ procedure fun#definedness(x: Ref) returns (Result: Perm)
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref) returns ()
+procedure test_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -267,13 +267,13 @@ procedure test(x: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of none < -1 * fun(x.f)
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0078.vpr@12.10--12.32) [220914]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0078.vpr@12.10--12.32) [54154]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
       if (*) {
         // Stop execution
         assume false;
       }
-    assert {:msg "  Exhale might fail. Assertion none < -1 * fun(x.f) might not hold. (0078.vpr@12.10--12.32) [220915]"}
+    assert {:msg "  Exhale might fail. Assertion none < -1 * fun(x.f) might not hold. (0078.vpr@12.10--12.32) [54155]"}
       NoPerm < real(-1) * fun(Heap, Heap[x, f_7]);
     assume state(Heap, Mask);
   
@@ -282,13 +282,13 @@ procedure test(x: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of none < -1 * fun(x.f)
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0078.vpr@13.10--13.30) [220916]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0078.vpr@13.10--13.30) [54156]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
       if (*) {
         // Stop execution
         assume false;
       }
-    assert {:msg "  Exhale might fail. Assertion none < -1 * fun(x.f) might not hold. (0078.vpr@13.10--13.30) [220917]"}
+    assert {:msg "  Exhale might fail. Assertion none < -1 * fun(x.f) might not hold. (0078.vpr@13.10--13.30) [54157]"}
       NoPerm < real(-1) * fun(Heap, Heap[x, f_7]);
     assume state(Heap, Mask);
 }

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:42:33
+; Started: 2025-01-26 21:40:56
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -172,14 +172,14 @@
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@4@01 $t@2@01) ($SortWrappers.IntTo$Snap $t@3@01))
   :pattern ((MWSF_apply mwsf@4@01 $t@2@01))
-  :qid |quant-u-21471|)))
+  :qid |quant-u-26147|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@4@01 $t@2@01) ($SortWrappers.IntTo$Snap $t@3@01))
   :pattern ((MWSF_apply mwsf@4@01 $t@2@01))
-  :qid |quant-u-21472|)))
+  :qid |quant-u-26148|)))
 (assert true)
 ; [exec]
 ; assert acc(x.f, write)
@@ -315,14 +315,14 @@
 (assert (forall (($t@8@01 $Snap)) (!
   (= (MWSF_apply mwsf@10@01 $t@8@01) ($SortWrappers.IntTo$Snap $t@9@01))
   :pattern ((MWSF_apply mwsf@10@01 $t@8@01))
-  :qid |quant-u-21473|)))
+  :qid |quant-u-26149|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
 (assert (forall (($t@8@01 $Snap)) (!
   (= (MWSF_apply mwsf@10@01 $t@8@01) ($SortWrappers.IntTo$Snap $t@9@01))
   :pattern ((MWSF_apply mwsf@10@01 $t@8@01))
-  :qid |quant-u-21474|)))
+  :qid |quant-u-26150|)))
 (assert true)
 ; [exec]
 ; assert acc(Cell(x), write)

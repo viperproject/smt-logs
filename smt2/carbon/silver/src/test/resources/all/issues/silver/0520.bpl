@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:24
+// Date:         2025-01-26 21:42:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0520.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0520-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,15 +177,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of method test
 // ==================================================
 
-procedure test(n: int, d: int) returns (q_1: int, r_1: int)
+procedure test_1(n: int, d: int) returns (q_1: int, r_1: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -202,8 +202,8 @@ procedure test(n: int, d: int) returns (q_1: int, r_1: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -230,11 +230,11 @@ procedure test(n: int, d: int) returns (q_1: int, r_1: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant r >= -d && n == q * d + r might not hold on entry. Assertion r >= -d might not hold. (0520.vpr@9.13--9.39) [222379]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Loop invariant r >= -d && n == q * d + r might not hold on entry. Assertion r >= -d might not hold. (0520.vpr@9.13--9.39) [54239]"}
           r_1 >= -d;
-        assert {:msg "  Loop invariant r >= -d && n == q * d + r might not hold on entry. Assertion n == q * d + r might not hold. (0520.vpr@9.13--9.39) [222380]"}
+        assert {:msg "  Loop invariant r >= -d && n == q * d + r might not hold on entry. Assertion n == q * d + r might not hold. (0520.vpr@9.13--9.39) [54240]"}
           n == q_1 * d + r_1;
     
     // -- Havoc loop written variables (except locals)
@@ -273,11 +273,11 @@ procedure test(n: int, d: int) returns (q_1: int, r_1: int)
             q_1 := q_1 + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant r >= -d && n == q * d + r might not be preserved. Assertion r >= -d might not hold. (0520.vpr@9.13--9.39) [222381]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Loop invariant r >= -d && n == q * d + r might not be preserved. Assertion r >= -d might not hold. (0520.vpr@9.13--9.39) [54241]"}
           r_1 >= -d;
-        assert {:msg "  Loop invariant r >= -d && n == q * d + r might not be preserved. Assertion n == q * d + r might not hold. (0520.vpr@9.13--9.39) [222382]"}
+        assert {:msg "  Loop invariant r >= -d && n == q * d + r might not be preserved. Assertion n == q * d + r might not hold. (0520.vpr@9.13--9.39) [54242]"}
           n == q_1 * d + r_1;
         // Terminate execution
         assume false;
@@ -300,12 +300,12 @@ procedure test(n: int, d: int) returns (q_1: int, r_1: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of test might not hold. Assertion n == q * d + r might not hold. (0520.vpr@3.10--3.43) [222383]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of test might not hold. Assertion n == q * d + r might not hold. (0520.vpr@3.10--3.43) [54243]"}
       n == q_1 * d + r_1;
-    assert {:msg "  Postcondition of test might not hold. Assertion r >= 0 might not hold. (0520.vpr@3.10--3.43) [222384]"}
+    assert {:msg "  Postcondition of test might not hold. Assertion r >= 0 might not hold. (0520.vpr@3.10--3.43) [54244]"}
       r_1 >= 0;
-    assert {:msg "  Postcondition of test might not hold. Assertion r < d might not hold. (0520.vpr@3.10--3.43) [222385]"}
+    assert {:msg "  Postcondition of test might not hold. Assertion r < d might not hold. (0520.vpr@3.10--3.43) [54245]"}
       r_1 < d;
 }

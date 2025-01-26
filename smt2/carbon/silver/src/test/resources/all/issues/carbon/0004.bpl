@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:06
+// Date:         2025-01-26 21:43:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0004.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0004-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,16 +185,16 @@ axiom !IsWandField(f_7);
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref, b_24: bool) returns ()
+procedure test_1(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -207,7 +207,7 @@ procedure test(x: Ref, b_24: bool) returns ()
   
   // -- Checked inhaling of precondition
     perm := (if b_24 then 1 / 5 else NoPerm);
-    assert {:msg "  Contract might not be well-formed. Fraction (b ? 1 / 5 : none) might be negative. (0004.vpr@7.11--7.37) [194153]"}
+    assert {:msg "  Contract might not be well-formed. Fraction (b ? 1 / 5 : none) might be negative. (0004.vpr@7.11--7.37) [81436]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -217,21 +217,21 @@ procedure test(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: test(x, b) -- 0004.vpr@9.3--9.12
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := (if b_24 then 1 / 5 else NoPerm);
-      assert {:msg "  The precondition of method test might not hold. Fraction (b ? 1 / 5 : none) might be negative. (0004.vpr@9.3--9.12) [194154]"}
+      assert {:msg "  The precondition of method test might not hold. Fraction (b ? 1 / 5 : none) might be negative. (0004.vpr@9.3--9.12) [81437]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method test might not hold. There might be insufficient permission to access x.f (0004.vpr@9.3--9.12) [194155]"}
+        assert {:msg "  The precondition of method test might not hold. There might be insufficient permission to access x.f (0004.vpr@9.3--9.12) [81438]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];

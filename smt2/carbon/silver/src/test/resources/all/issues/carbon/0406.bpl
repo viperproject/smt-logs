@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:39
+// Date:         2025-01-26 21:43:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0406.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0406-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_5: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_5, f_3] }
-  Heap[o_5, $allocated] ==> Heap[Heap[o_5, f_3], $allocated]
+axiom (forall o_56: Ref, f_3: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_56, f_3] }
+  Heap[o_56, $allocated] ==> Heap[Heap[o_56, f_3], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref, f_9: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, f_9] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_6, f_9) ==> Heap[o_6, f_9] == ExhaleHeap[o_6, f_9]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref, f_51: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, f_51] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_38, f_51) ==> Heap[o_38, f_51] == ExhaleHeap[o_38, f_51]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2), ExhaleHeap[null, PredicateMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> Heap[null, PredicateMaskField(pm_f_2)] == ExhaleHeap[null, PredicateMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26), ExhaleHeap[null, PredicateMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> Heap[null, PredicateMaskField(pm_f_26)] == ExhaleHeap[null, PredicateMaskField(pm_f_26)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsPredicateField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, PredicateMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsPredicateField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, PredicateMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2), ExhaleHeap[null, WandMaskField(pm_f_2)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> Heap[null, WandMaskField(pm_f_2)] == ExhaleHeap[null, WandMaskField(pm_f_2)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26), ExhaleHeap[null, WandMaskField(pm_f_26)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> Heap[null, WandMaskField(pm_f_26)] == ExhaleHeap[null, WandMaskField(pm_f_26)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_2: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_2) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_2) && IsWandField(pm_f_2) ==> (forall <A, B> o2_2: Ref, f_9: (Field A B) ::
-    { ExhaleHeap[o2_2, f_9] }
-    Heap[null, WandMaskField(pm_f_2)][o2_2, f_9] ==> Heap[o2_2, f_9] == ExhaleHeap[o2_2, f_9]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_26: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_26) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_26) && IsWandField(pm_f_26) ==> (forall <A, B> o2_26: Ref, f_51: (Field A B) ::
+    { ExhaleHeap[o2_26, f_51] }
+    Heap[null, WandMaskField(pm_f_26)][o2_26, f_51] ==> Heap[o2_26, f_51] == ExhaleHeap[o2_26, f_51]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_6: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_6, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_6, $allocated] ==> ExhaleHeap[o_6, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_38, $allocated] ==> ExhaleHeap[o_38, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_5: Ref, f_10: (Field A B), v: B ::
-  { Heap[o_5, f_10:=v] }
-  succHeap(Heap, Heap[o_5, f_10:=v])
+axiom (forall <A, B> Heap: HeapType, o_56: Ref, f_22: (Field A B), v: B ::
+  { Heap[o_56, f_22:=v] }
+  succHeap(Heap, Heap[o_56, f_22:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -188,14 +188,14 @@ axiom !IsWandField(f_7);
 procedure m1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: Ref;
   var z: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var x_33: Ref;
+  var ExhaleWellDef0Heap: HeapType;
+  var x_40: Ref;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -206,8 +206,8 @@ procedure m1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -227,30 +227,30 @@ procedure m1() returns ()
   
   // -- Translating statement: exhale acc(y.f, write) &&
   //   (forperm x: Ref [x.f] :: x != z ==> 0 / 0 == 0 / 0) -- 0406.vpr@7.5--7.69
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (0406.vpr@7.12--7.69) [191195]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (0406.vpr@7.12--7.69) [82773]"}
         perm <= Mask[y, f_7];
     }
     Mask := Mask[y, f_7:=Mask[y, f_7] - perm];
     
     // -- Check definedness of (forperm x: Ref [x.f] :: x != z ==> 0 / 0 == 0 / 0)
       if (*) {
-        if (HasDirectPerm(Mask, x_33, f_7)) {
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0406.vpr@7.12--7.69) [191196]"}
-            HasDirectPerm(ExhaleWellDef0Mask, x_33, f_7);
-          if (x_33 != z) {
-            assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@7.12--7.69) [191197]"}
+        if (HasDirectPerm(Mask, x_40, f_7)) {
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0406.vpr@7.12--7.69) [82774]"}
+            HasDirectPerm(ExhaleWellDef0Mask, x_40, f_7);
+          if (x_40 != z) {
+            assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@7.12--7.69) [82775]"}
               false;
-            assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@7.12--7.69) [191198]"}
+            assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@7.12--7.69) [82776]"}
               false;
           }
         }
         assume false;
       }
-    assert {:msg "  Exhale might fail. Assertion (forperm x: Ref [x.f] :: x != z ==> 0 / 0 == 0 / 0) might not hold. (0406.vpr@7.12--7.69) [191199]"}
+    assert {:msg "  Exhale might fail. Assertion (forperm x: Ref [x.f] :: x != z ==> 0 / 0 == 0 / 0) might not hold. (0406.vpr@7.12--7.69) [82777]"}
       (forall x_1: Ref ::
       { Mask[x_1, f_7] } { Heap[x_1, f_7] }
       HasDirectPerm(Mask, x_1, f_7) ==> x_1 != z ==> 0 / 0 == 0 / 0
@@ -269,12 +269,12 @@ procedure m1() returns ()
 procedure m2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -285,8 +285,8 @@ procedure m2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -300,22 +300,22 @@ procedure m2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, write) && (perm(x.f) == none ==> 0 / 0 == 0 / 0) -- 0406.vpr@16.5--16.58
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0406.vpr@16.12--16.58) [191202]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0406.vpr@16.12--16.58) [82780]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
     if (Mask[x, f_7] == NoPerm) {
       
       // -- Check definedness of 0 / 0 == 0 / 0
-        assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@16.12--16.58) [191203]"}
+        assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@16.12--16.58) [82781]"}
           false;
-        assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@16.12--16.58) [191204]"}
+        assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@16.12--16.58) [82782]"}
           false;
-      assert {:msg "  Exhale might fail. Assertion 0 / 0 == 0 / 0 might not hold. (0406.vpr@16.12--16.58) [191205]"}
+      assert {:msg "  Exhale might fail. Assertion 0 / 0 == 0 / 0 might not hold. (0406.vpr@16.12--16.58) [82783]"}
         0 / 0 == 0 / 0;
     }
     // Finish exhale
@@ -332,12 +332,12 @@ procedure m2() returns ()
 procedure m3() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -348,8 +348,8 @@ procedure m3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -363,22 +363,22 @@ procedure m3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, write) && (perm(x.f) != none ==> 0 / 0 == 0 / 0) -- 0406.vpr@23.5--23.58
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0406.vpr@23.12--23.58) [191208]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0406.vpr@23.12--23.58) [82786]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
     if (Mask[x, f_7] != NoPerm) {
       
       // -- Check definedness of 0 / 0 == 0 / 0
-        assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@23.12--23.58) [191209]"}
+        assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@23.12--23.58) [82787]"}
           false;
-        assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@23.12--23.58) [191210]"}
+        assert {:msg "  Exhale might fail. Divisor 0 might be zero. (0406.vpr@23.12--23.58) [82788]"}
           false;
-      assert {:msg "  Exhale might fail. Assertion 0 / 0 == 0 / 0 might not hold. (0406.vpr@23.12--23.58) [191211]"}
+      assert {:msg "  Exhale might fail. Assertion 0 / 0 == 0 / 0 might not hold. (0406.vpr@23.12--23.58) [82789]"}
         0 / 0 == 0 / 0;
     }
     // Finish exhale

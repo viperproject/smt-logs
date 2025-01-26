@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:17:05
+// Date:         2025-01-26 21:41:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/old/old.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/old/old-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,7 +185,7 @@ axiom !IsWandField(f_7);
 // Translation of method t1
 // ==================================================
 
-procedure t1(this: Ref) returns ()
+procedure t1_2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -228,9 +228,9 @@ procedure t1(this: Ref) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.f == old(this.f)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@9.13--9.58) [157201]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@9.13--9.58) [47333]"}
         HasDirectPerm(PostMask, this, f_7);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@9.13--9.58) [157202]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@9.13--9.58) [47334]"}
         HasDirectPerm(oldMask, this, f_7);
     assume PostHeap[this, f_7] == oldHeap[this, f_7];
     assume state(PostHeap, PostMask);
@@ -243,11 +243,11 @@ procedure t1(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t1 might not hold. There might be insufficient permission to access this.f (old.vpr@9.13--9.58) [157203]"}
+      assert {:msg "  Postcondition of t1 might not hold. There might be insufficient permission to access this.f (old.vpr@9.13--9.58) [47335]"}
         perm <= Mask[this, f_7];
     }
     Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
-    assert {:msg "  Postcondition of t1 might not hold. Assertion this.f == old(this.f) might not hold. (old.vpr@9.13--9.58) [157204]"}
+    assert {:msg "  Postcondition of t1 might not hold. Assertion this.f == old(this.f) might not hold. (old.vpr@9.13--9.58) [47336]"}
       Heap[this, f_7] == oldHeap[this, f_7];
     // Finish exhale
     havoc ExhaleHeap;
@@ -259,7 +259,7 @@ procedure t1(this: Ref) returns ()
 // Translation of method t2
 // ==================================================
 
-procedure t2(this: Ref) returns ()
+procedure t2_2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -302,9 +302,9 @@ procedure t2(this: Ref) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.f == old(this.f) + 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@15.13--15.62) [157205]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@15.13--15.62) [47337]"}
         HasDirectPerm(PostMask, this, f_7);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@15.13--15.62) [157206]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@15.13--15.62) [47338]"}
         HasDirectPerm(oldMask, this, f_7);
     assume PostHeap[this, f_7] == oldHeap[this, f_7] + 1;
     assume state(PostHeap, PostMask);
@@ -315,9 +315,9 @@ procedure t2(this: Ref) returns ()
   // -- Translating statement: this.f := this.f + 1 -- old.vpr@17.5--17.23
     
     // -- Check definedness of this.f + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (old.vpr@17.5--17.23) [157207]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (old.vpr@17.5--17.23) [47339]"}
         HasDirectPerm(Mask, this, f_7);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (old.vpr@17.5--17.23) [157208]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (old.vpr@17.5--17.23) [47340]"}
       FullPerm == Mask[this, f_7];
     Heap := Heap[this, f_7:=Heap[this, f_7] + 1];
     assume state(Heap, Mask);
@@ -327,11 +327,11 @@ procedure t2(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t2 might not hold. There might be insufficient permission to access this.f (old.vpr@15.13--15.62) [157209]"}
+      assert {:msg "  Postcondition of t2 might not hold. There might be insufficient permission to access this.f (old.vpr@15.13--15.62) [47341]"}
         perm <= Mask[this, f_7];
     }
     Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
-    assert {:msg "  Postcondition of t2 might not hold. Assertion this.f == old(this.f) + 1 might not hold. (old.vpr@15.13--15.62) [157210]"}
+    assert {:msg "  Postcondition of t2 might not hold. Assertion this.f == old(this.f) + 1 might not hold. (old.vpr@15.13--15.62) [47342]"}
       Heap[this, f_7] == oldHeap[this, f_7] + 1;
     // Finish exhale
     havoc ExhaleHeap;
@@ -386,9 +386,9 @@ procedure t2b(this: Ref) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of this.f == old(this.f) + 2
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@23.13--23.62) [157211]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@23.13--23.62) [47343]"}
         HasDirectPerm(PostMask, this, f_7);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@23.13--23.62) [157212]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (old.vpr@23.13--23.62) [47344]"}
         HasDirectPerm(oldMask, this, f_7);
     assume PostHeap[this, f_7] == oldHeap[this, f_7] + 2;
     assume state(PostHeap, PostMask);
@@ -399,9 +399,9 @@ procedure t2b(this: Ref) returns ()
   // -- Translating statement: this.f := this.f + 1 -- old.vpr@25.5--25.23
     
     // -- Check definedness of this.f + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (old.vpr@25.5--25.23) [157213]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (old.vpr@25.5--25.23) [47345]"}
         HasDirectPerm(Mask, this, f_7);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (old.vpr@25.5--25.23) [157214]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (old.vpr@25.5--25.23) [47346]"}
       FullPerm == Mask[this, f_7];
     Heap := Heap[this, f_7:=Heap[this, f_7] + 1];
     assume state(Heap, Mask);
@@ -411,11 +411,11 @@ procedure t2b(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t2b might not hold. There might be insufficient permission to access this.f (old.vpr@23.13--23.62) [157215]"}
+      assert {:msg "  Postcondition of t2b might not hold. There might be insufficient permission to access this.f (old.vpr@23.13--23.62) [47347]"}
         perm <= Mask[this, f_7];
     }
     Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
-    assert {:msg "  Postcondition of t2b might not hold. Assertion this.f == old(this.f) + 2 might not hold. (old.vpr@23.13--23.62) [157216]"}
+    assert {:msg "  Postcondition of t2b might not hold. Assertion this.f == old(this.f) + 2 might not hold. (old.vpr@23.13--23.62) [47348]"}
       Heap[this, f_7] == oldHeap[this, f_7] + 2;
     // Finish exhale
     havoc ExhaleHeap;
@@ -466,9 +466,9 @@ procedure t3(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old(r.f) > 0
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (old.vpr@33.13--33.25) [157217]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (old.vpr@33.13--33.25) [47349]"}
         HasDirectPerm(oldMask, r_1, f_7);
-    assert {:msg "  Exhale might fail. Assertion old(r.f) > 0 might not hold. (old.vpr@33.13--33.25) [157218]"}
+    assert {:msg "  Exhale might fail. Assertion old(r.f) > 0 might not hold. (old.vpr@33.13--33.25) [47350]"}
       oldHeap[r_1, f_7] > 0;
     assume state(Heap, Mask);
 }
@@ -503,7 +503,7 @@ procedure t4(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of r.f > 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (old.vpr@38.15--38.23) [157219]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (old.vpr@38.15--38.23) [47351]"}
         HasDirectPerm(Mask, r_1, f_7);
     assume Heap[r_1, f_7] > 0;
     assume state(Heap, Mask);
@@ -519,7 +519,7 @@ procedure t4(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (old.vpr@40.12--40.27) [157221]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (old.vpr@40.12--40.27) [47353]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -534,9 +534,9 @@ procedure t4(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old(r.f) > 0
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (old.vpr@43.13--43.25) [157222]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (old.vpr@43.13--43.25) [47354]"}
         HasDirectPerm(oldMask, r_1, f_7);
-    assert {:msg "  Exhale might fail. Assertion old(r.f) > 0 might not hold. (old.vpr@43.13--43.25) [157223]"}
+    assert {:msg "  Exhale might fail. Assertion old(r.f) > 0 might not hold. (old.vpr@43.13--43.25) [47355]"}
       oldHeap[r_1, f_7] > 0;
     assume state(Heap, Mask);
   
@@ -545,9 +545,9 @@ procedure t4(r_1: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 0
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (old.vpr@45.13--45.21) [157224]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (old.vpr@45.13--45.21) [47356]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Exhale might fail. Assertion r.f > 0 might not hold. (old.vpr@45.13--45.21) [157225]"}
+    assert {:msg "  Exhale might fail. Assertion r.f > 0 might not hold. (old.vpr@45.13--45.21) [47357]"}
       Heap[r_1, f_7] > 0;
     assume state(Heap, Mask);
 }
@@ -590,7 +590,7 @@ procedure t5(this: Ref) returns ()
       oldMask := Mask;
   
   // -- Translating statement: this.f := 10 -- old.vpr@51.5--51.17
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (old.vpr@51.5--51.17) [157226]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (old.vpr@51.5--51.17) [47358]"}
       FullPerm == Mask[this, f_7];
     Heap := Heap[this, f_7:=10];
     assume state(Heap, Mask);
@@ -604,7 +604,7 @@ procedure t5(this: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method t2 might not hold. There might be insufficient permission to access this.f (old.vpr@52.5--52.13) [157227]"}
+        assert {:msg "  The precondition of method t2 might not hold. There might be insufficient permission to access this.f (old.vpr@52.5--52.13) [47359]"}
           perm <= Mask[this, f_7];
       }
       Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
@@ -627,16 +627,16 @@ procedure t5(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.f == 11
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.f (old.vpr@53.12--53.26) [157228]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.f (old.vpr@53.12--53.26) [47360]"}
         HasDirectPerm(ExhaleWellDef0Mask, this, f_7);
-    assert {:msg "  Assert might fail. Assertion this.f == 11 might not hold. (old.vpr@53.12--53.26) [157229]"}
+    assert {:msg "  Assert might fail. Assertion this.f == 11 might not hold. (old.vpr@53.12--53.26) [47361]"}
       Heap[this, f_7] == 11;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- old.vpr@55.5--55.17
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (old.vpr@55.12--55.17) [157230]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (old.vpr@55.12--55.17) [47362]"}
       false;
     assume state(Heap, Mask);
 }

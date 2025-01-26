@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:05:33
+// Date:         2025-01-26 21:45:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/let.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/let-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -263,7 +263,7 @@ procedure fun#definedness(x: Ref) returns (Result: int)
       ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (let.vpr@18.1--21.41) [125511]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (let.vpr@18.1--21.41) [214118]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
       havoc wildcard;
       perm := wildcard;
@@ -272,7 +272,7 @@ procedure fun#definedness(x: Ref) returns (Result: int)
       assume state(UnfoldingHeap, UnfoldingMask);
       assume UnfoldingHeap[x, g] == 1;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (let.vpr@18.1--21.41) [125512]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.g (let.vpr@18.1--21.41) [214119]"}
         HasDirectPerm(UnfoldingMask, x, g);
       
       // -- Free assumptions (exp module)
@@ -285,7 +285,7 @@ procedure fun#definedness(x: Ref) returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of fun might not hold. Assertion result > 0 might not hold. (let.vpr@20.11--20.21) [125513]"}
+    assert {:msg "  Postcondition of fun might not hold. Assertion result > 0 might not hold. (let.vpr@20.11--20.21) [214120]"}
       Result > 0;
 }
 
@@ -343,7 +343,7 @@ procedure P#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.g == 1
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (let.vpr@16.1--16.45) [125514]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.g (let.vpr@16.1--16.45) [214121]"}
         HasDirectPerm(Mask, x, g);
     assume Heap[x, g] == 1;
     assume state(Heap, Mask);
@@ -361,7 +361,7 @@ procedure test00() returns ()
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var y: int;
-  var y_2: int;
+  var y_2_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -385,7 +385,7 @@ procedure test00() returns ()
       y := 0;
     
     // -- Free assumptions (exhale module)
-      y_2 := 0;
+      y_2_1 := 0;
     assume state(Heap, Mask);
 }
 
@@ -401,10 +401,10 @@ procedure test01(x: int) returns ()
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var y: int;
-  var y_2: int;
+  var y_2_1: int;
   var y_3_2: int;
   var y_4_1: int;
-  var y_6_2: int;
+  var y_6: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -426,11 +426,11 @@ procedure test01(x: int) returns ()
     
     // -- Check definedness of (let y == (x + x) in y == 2 * x)
       y := x + x;
-    assert {:msg "  Assert might fail. Assertion (let y == (x + x) in y == 2 * x) might not hold. (let.vpr@12.10--12.38) [125516]"}
+    assert {:msg "  Assert might fail. Assertion (let y == (x + x) in y == 2 * x) might not hold. (let.vpr@12.10--12.38) [214123]"}
       x + x == 2 * x;
     
     // -- Free assumptions (exhale module)
-      y_2 := x + x;
+      y_2_1 := x + x;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 2 * x == (let y == (x + x) in y) -- let.vpr@13.3--13.38
@@ -442,11 +442,11 @@ procedure test01(x: int) returns ()
       
       // -- Free assumptions (exp module)
         y_4_1 := x + x;
-    assert {:msg "  Assert might fail. Assertion 2 * x == (let y == (x + x) in y) might not hold. (let.vpr@13.10--13.38) [125517]"}
+    assert {:msg "  Assert might fail. Assertion 2 * x == (let y == (x + x) in y) might not hold. (let.vpr@13.10--13.38) [214124]"}
       2 * x == x + x;
     
     // -- Free assumptions (exhale module)
-      y_6_2 := x + x;
+      y_6 := x + x;
     assume state(Heap, Mask);
 }
 
@@ -466,7 +466,7 @@ procedure test02(x: Ref) returns ()
   var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var y: int;
-  var y_2: int;
+  var y_2_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -502,7 +502,7 @@ procedure test02(x: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(x) (let.vpr@25.20--25.26) [125519]"}
+        assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(x) (let.vpr@25.20--25.26) [214126]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(x)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -512,10 +512,10 @@ procedure test02(x: Ref) returns ()
         assume false;
       }
       y := fun(Heap, x);
-    assert {:msg "  Assert might fail. Assertion (let y == (fun(x)) in y * y + y > 0) might not hold. (let.vpr@25.10--25.40) [125520]"}
+    assert {:msg "  Assert might fail. Assertion (let y == (fun(x)) in y * y + y > 0) might not hold. (let.vpr@25.10--25.40) [214127]"}
       fun(Heap, x) * fun(Heap, x) + fun(Heap, x) > 0;
     
     // -- Free assumptions (exhale module)
-      y_2 := fun(Heap, x);
+      y_2_1 := fun(Heap, x);
     assume state(Heap, Mask);
 }

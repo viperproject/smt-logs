@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:52
+// Date:         2025-01-26 21:42:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0369.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0369-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,11 +181,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  test_2(Heap: HeapType): int;
+function  test(Heap: HeapType): int;
 function  test'(Heap: HeapType): int;
 axiom (forall Heap: HeapType ::
-  { test_2(Heap) }
-  test_2(Heap) == test'(Heap) && dummyFunction(test#triggerStateless())
+  { test(Heap) }
+  test(Heap) == test'(Heap) && dummyFunction(test#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { test'(Heap) }
@@ -194,8 +194,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), test_2(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test_2(Heap) == 42
+  { state(Heap, Mask), test(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test(Heap) == 42
 );
 
 // Framing axioms
@@ -236,6 +236,6 @@ procedure test#definedness() returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of test might not hold. Assertion false might not hold. (0369.vpr@6.12--6.17) [202902]"}
+    assert {:msg "  Postcondition of test might not hold. Assertion false might not hold. (0369.vpr@6.12--6.17) [60128]"}
       false;
 }

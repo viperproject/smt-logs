@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:59:47
+// Date:         2025-01-26 21:44:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/FoldConstants/simple.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/FoldConstants/simple-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -183,7 +183,7 @@ procedure main() returns ()
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var i: int;
-  var j_9: int;
+  var j: int;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   
@@ -203,20 +203,20 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: j := 2 -- simple.vpr@7.5--7.19
-    j_9 := 2;
+    j := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i == 5 + 6 - 10 -- simple.vpr@9.5--9.28
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion i == 5 + 6 - 10 might not hold. (simple.vpr@9.12--9.27) [92926]"}
+    assert {:msg "  Assert might fail. Assertion i == 5 + 6 - 10 might not hold. (simple.vpr@9.12--9.27) [198696]"}
       i == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j != (2 + 4) \ 6 -- simple.vpr@10.5--10.29
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion j != (2 + 4) \ 6 might not hold. (simple.vpr@10.12--10.28) [92927]"}
-      j_9 != 1;
+    assert {:msg "  Assert might fail. Assertion j != (2 + 4) \ 6 might not hold. (simple.vpr@10.12--10.28) [198697]"}
+      j != 1;
     assume state(Heap, Mask);
 }

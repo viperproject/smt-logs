@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:01:43
+// Date:         2025-01-26 21:44:49
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/recursive.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/recursive-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_24: Ref, f_26: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_24, f_26] }
-  Heap[o_24, $allocated] ==> Heap[Heap[o_24, f_26], $allocated]
+axiom (forall o_8: Ref, f_14: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_8, f_14] }
+  Heap[o_8, $allocated] ==> Heap[Heap[o_8, f_14], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_36: Ref, f_41: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_36, f_41] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_36, f_41) ==> Heap[o_36, f_41] == ExhaleHeap[o_36, f_41]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_53: Ref, f_67: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_53, f_67] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_53, f_67) ==> Heap[o_53, f_67] == ExhaleHeap[o_53, f_67]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32), ExhaleHeap[null, PredicateMaskField(pm_f_32)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> Heap[null, PredicateMaskField(pm_f_32)] == ExhaleHeap[null, PredicateMaskField(pm_f_32)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_25: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_25), ExhaleHeap[null, PredicateMaskField(pm_f_25)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_25) && IsPredicateField(pm_f_25) ==> Heap[null, PredicateMaskField(pm_f_25)] == ExhaleHeap[null, PredicateMaskField(pm_f_25)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_41: (Field A B) ::
-    { ExhaleHeap[o2_32, f_41] }
-    Heap[null, PredicateMaskField(pm_f_32)][o2_32, f_41] ==> Heap[o2_32, f_41] == ExhaleHeap[o2_32, f_41]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_25: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_25) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_25) && IsPredicateField(pm_f_25) ==> (forall <A, B> o2_25: Ref, f_67: (Field A B) ::
+    { ExhaleHeap[o2_25, f_67] }
+    Heap[null, PredicateMaskField(pm_f_25)][o2_25, f_67] ==> Heap[o2_25, f_67] == ExhaleHeap[o2_25, f_67]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32), ExhaleHeap[null, WandMaskField(pm_f_32)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> Heap[null, WandMaskField(pm_f_32)] == ExhaleHeap[null, WandMaskField(pm_f_32)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_25: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_25), ExhaleHeap[null, WandMaskField(pm_f_25)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_25) && IsWandField(pm_f_25) ==> Heap[null, WandMaskField(pm_f_25)] == ExhaleHeap[null, WandMaskField(pm_f_25)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_41: (Field A B) ::
-    { ExhaleHeap[o2_32, f_41] }
-    Heap[null, WandMaskField(pm_f_32)][o2_32, f_41] ==> Heap[o2_32, f_41] == ExhaleHeap[o2_32, f_41]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_25: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_25) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_25) && IsWandField(pm_f_25) ==> (forall <A, B> o2_25: Ref, f_67: (Field A B) ::
+    { ExhaleHeap[o2_25, f_67] }
+    Heap[null, WandMaskField(pm_f_25)][o2_25, f_67] ==> Heap[o2_25, f_67] == ExhaleHeap[o2_25, f_67]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_36: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_36, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_36, $allocated] ==> ExhaleHeap[o_36, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_53: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_53, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_53, $allocated] ==> ExhaleHeap[o_53, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_24: Ref, f_48: (Field A B), v: B ::
-  { Heap[o_24, f_48:=v] }
-  succHeap(Heap, Heap[o_24, f_48:=v])
+axiom (forall <A, B> Heap: HeapType, o_8: Ref, f_63: (Field A B), v: B ::
+  { Heap[o_8, f_63:=v] }
+  succHeap(Heap, Heap[o_8, f_63:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,7 +144,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(l_1: Ref): bool;
+function  neverTriggered1(l_1_2: Ref): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -411,13 +411,13 @@ axiom (forall r_1: Ref, i: int ::
 );
 function  list#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  list#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall r_1: Ref, i: int, r2: Ref, i2_1: int ::
-  { list(r_1, i), list(r2, i2_1) }
-  list(r_1, i) == list(r2, i2_1) ==> r_1 == r2 && i == i2_1
+axiom (forall r_1: Ref, i: int, r2: Ref, i2: int ::
+  { list(r_1, i), list(r2, i2) }
+  list(r_1, i) == list(r2, i2) ==> r_1 == r2 && i == i2
 );
-axiom (forall r_1: Ref, i: int, r2: Ref, i2_1: int ::
-  { list#sm(r_1, i), list#sm(r2, i2_1) }
-  list#sm(r_1, i) == list#sm(r2, i2_1) ==> r_1 == r2 && i == i2_1
+axiom (forall r_1: Ref, i: int, r2: Ref, i2: int ::
+  { list#sm(r_1, i), list#sm(r2, i2) }
+  list#sm(r_1, i) == list#sm(r2, i2) ==> r_1 == r2 && i == i2
 );
 
 axiom (forall Heap: HeapType, r_1: Ref, i: int ::
@@ -448,7 +448,7 @@ procedure list#definedness(r_1: Ref, i: int) returns ()
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(list(r.next, i - 1), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access r.next (recursive.vpr@7.1--10.2) [108567]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access r.next (recursive.vpr@7.1--10.2) [204051]"}
           HasDirectPerm(Mask, r_1, next);
       perm := FullPerm;
       Mask := Mask[null, list(Heap[r_1, next], i - 1):=Mask[null, list(Heap[r_1, next], i - 1)] + perm];
@@ -461,18 +461,18 @@ procedure list#definedness(r_1: Ref, i: int) returns ()
 // Translation of method m1
 // ==================================================
 
-procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
+procedure m1(r_1: Ref, length_3: int, v_2: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
@@ -481,8 +481,8 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
   var arg_length: int;
   var ExhaleHeap: HeapType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -493,42 +493,42 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
     assume Heap[r_1, $allocated];
   
   // -- Checked inhaling of precondition
-    assume length_2 > 0;
+    assume length_3 > 0;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, list(r_1, length_2):=Mask[null, list(r_1, length_2)] + perm];
+    Mask := Mask[null, list(r_1, length_3):=Mask[null, list(r_1, length_3)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
-    PostMask := PostMask[null, list(r_1, length_2):=PostMask[null, list(r_1, length_2)] + perm];
+    PostMask := PostMask[null, list(r_1, length_3):=PostMask[null, list(r_1, length_3)] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (unfolding acc(list(r, length), write) in r.val == v)
       UnfoldingHeap := PostHeap;
       UnfoldingMask := PostMask;
-      assume list#trigger(UnfoldingHeap, list(r_1, length_2));
-      assume UnfoldingHeap[null, list(r_1, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[r_1, val]), CombineFrames(FrameFragment(UnfoldingHeap[r_1, next]), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_2 - 1)])) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
+      assume list#trigger(UnfoldingHeap, list(r_1, length_3));
+      assume UnfoldingHeap[null, list(r_1, length_3)] == FrameFragment((if length_3 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[r_1, val]), CombineFrames(FrameFragment(UnfoldingHeap[r_1, next]), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_3 - 1)])) else EmptyFrame));
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access list(r, length) (recursive.vpr@16.9--16.50) [108568]"}
-          perm <= UnfoldingMask[null, list(r_1, length_2)];
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access list(r, length) (recursive.vpr@16.9--16.50) [204052]"}
+          perm <= UnfoldingMask[null, list(r_1, length_3)];
       }
-      UnfoldingMask := UnfoldingMask[null, list(r_1, length_2):=UnfoldingMask[null, list(r_1, length_2)] - perm];
-      if (length_2 > 0) {
+      UnfoldingMask := UnfoldingMask[null, list(r_1, length_3):=UnfoldingMask[null, list(r_1, length_3)] - perm];
+      if (length_3 > 0) {
         perm := FullPerm;
         assume r_1 != null;
         UnfoldingMask := UnfoldingMask[r_1, val:=UnfoldingMask[r_1, val] + perm];
@@ -538,39 +538,39 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
         UnfoldingMask := UnfoldingMask[r_1, next:=UnfoldingMask[r_1, next] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_2 - 1):=UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_2 - 1)] + perm];
+        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_3 - 1):=UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_3 - 1)] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(list(r_1, length_2), UnfoldingHeap[null, list(r_1, length_2)], list(UnfoldingHeap[r_1, next], length_2 - 1), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_2 - 1)]);
+          assume InsidePredicate(list(r_1, length_3), UnfoldingHeap[null, list(r_1, length_3)], list(UnfoldingHeap[r_1, next], length_3 - 1), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_3 - 1)]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.val (recursive.vpr@16.9--16.50) [108569]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.val (recursive.vpr@16.9--16.50) [204053]"}
         HasDirectPerm(UnfoldingMask, r_1, val);
       
       // -- Free assumptions (exp module)
-        if (length_2 > 0) {
-          PostHeap := PostHeap[null, list#sm(r_1, length_2):=PostHeap[null, list#sm(r_1, length_2)][r_1, val:=true]];
-          PostHeap := PostHeap[null, list#sm(r_1, length_2):=PostHeap[null, list#sm(r_1, length_2)][r_1, next:=true]];
+        if (length_3 > 0) {
+          PostHeap := PostHeap[null, list#sm(r_1, length_3):=PostHeap[null, list#sm(r_1, length_3)][r_1, val:=true]];
+          PostHeap := PostHeap[null, list#sm(r_1, length_3):=PostHeap[null, list#sm(r_1, length_3)][r_1, next:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            PostHeap[null, list#sm(r_1, length_2)][o_15, f_20] || PostHeap[null, list#sm(PostHeap[r_1, next], length_2 - 1)][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            PostHeap[null, list#sm(r_1, length_3)][o_5, f_11] || PostHeap[null, list#sm(PostHeap[r_1, next], length_3 - 1)][o_5, f_11] ==> newPMask[o_5, f_11]
           );
-          PostHeap := PostHeap[null, list#sm(r_1, length_2):=newPMask];
+          PostHeap := PostHeap[null, list#sm(r_1, length_3):=newPMask];
         }
         assume state(PostHeap, PostMask);
     
     // -- Execute unfolding (for extra information)
       UnfoldingHeap := PostHeap;
       UnfoldingMask := PostMask;
-      assume list#trigger(UnfoldingHeap, list(r_1, length_2));
-      assume UnfoldingHeap[null, list(r_1, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[r_1, val]), CombineFrames(FrameFragment(UnfoldingHeap[r_1, next]), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_2 - 1)])) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
+      assume list#trigger(UnfoldingHeap, list(r_1, length_3));
+      assume UnfoldingHeap[null, list(r_1, length_3)] == FrameFragment((if length_3 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[r_1, val]), CombineFrames(FrameFragment(UnfoldingHeap[r_1, next]), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_3 - 1)])) else EmptyFrame));
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      UnfoldingMask := UnfoldingMask[null, list(r_1, length_2):=UnfoldingMask[null, list(r_1, length_2)] - perm];
-      if (length_2 > 0) {
+      UnfoldingMask := UnfoldingMask[null, list(r_1, length_3):=UnfoldingMask[null, list(r_1, length_3)] - perm];
+      if (length_3 > 0) {
         perm := FullPerm;
         assume r_1 != null;
         UnfoldingMask := UnfoldingMask[r_1, val:=UnfoldingMask[r_1, val] + perm];
@@ -580,10 +580,10 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
         UnfoldingMask := UnfoldingMask[r_1, next:=UnfoldingMask[r_1, next] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_2 - 1):=UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_2 - 1)] + perm];
+        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_3 - 1):=UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_3 - 1)] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(list(r_1, length_2), UnfoldingHeap[null, list(r_1, length_2)], list(UnfoldingHeap[r_1, next], length_2 - 1), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_2 - 1)]);
+          assume InsidePredicate(list(r_1, length_3), UnfoldingHeap[null, list(r_1, length_3)], list(UnfoldingHeap[r_1, next], length_3 - 1), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_3 - 1)]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
@@ -594,23 +594,23 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
   }
   
   // -- Translating statement: unfold acc(list(r, length), write) -- recursive.vpr@18.5--18.27
-    assume list#trigger(Heap, list(r_1, length_2));
-    assume Heap[null, list(r_1, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(Heap[r_1, val]), CombineFrames(FrameFragment(Heap[r_1, next]), Heap[null, list(Heap[r_1, next], length_2 - 1)])) else EmptyFrame));
-    ExhaleWellDef0Heap := Heap;
+    assume list#trigger(Heap, list(r_1, length_3));
+    assume Heap[null, list(r_1, length_3)] == FrameFragment((if length_3 > 0 then CombineFrames(FrameFragment(Heap[r_1, val]), CombineFrames(FrameFragment(Heap[r_1, next]), Heap[null, list(Heap[r_1, next], length_3 - 1)])) else EmptyFrame));
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding list(r, length) might fail. There might be insufficient permission to access list(r, length) (recursive.vpr@18.5--18.27) [108572]"}
-        perm <= Mask[null, list(r_1, length_2)];
+      assert {:msg "  Unfolding list(r, length) might fail. There might be insufficient permission to access list(r, length) (recursive.vpr@18.5--18.27) [204056]"}
+        perm <= Mask[null, list(r_1, length_3)];
     }
-    Mask := Mask[null, list(r_1, length_2):=Mask[null, list(r_1, length_2)] - perm];
+    Mask := Mask[null, list(r_1, length_3):=Mask[null, list(r_1, length_3)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, list(r_1, length_2))) {
+      if (!HasDirectPerm(Mask, null, list(r_1, length_3))) {
         havoc newVersion;
-        Heap := Heap[null, list(r_1, length_2):=newVersion];
+        Heap := Heap[null, list(r_1, length_3):=newVersion];
       }
-    if (length_2 > 0) {
+    if (length_3 > 0) {
       perm := FullPerm;
       assume r_1 != null;
       Mask := Mask[r_1, val:=Mask[r_1, val] + perm];
@@ -620,42 +620,42 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
       Mask := Mask[r_1, next:=Mask[r_1, next] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      Mask := Mask[null, list(Heap[r_1, next], length_2 - 1):=Mask[null, list(Heap[r_1, next], length_2 - 1)] + perm];
+      Mask := Mask[null, list(Heap[r_1, next], length_3 - 1):=Mask[null, list(Heap[r_1, next], length_3 - 1)] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(list(r_1, length_2), Heap[null, list(r_1, length_2)], list(Heap[r_1, next], length_2 - 1), Heap[null, list(Heap[r_1, next], length_2 - 1)]);
+        assume InsidePredicate(list(r_1, length_3), Heap[null, list(r_1, length_3)], list(Heap[r_1, next], length_3 - 1), Heap[null, list(Heap[r_1, next], length_3 - 1)]);
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: r.val := v -- recursive.vpr@19.5--19.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.val (recursive.vpr@19.5--19.15) [108576]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.val (recursive.vpr@19.5--19.15) [204060]"}
       FullPerm == Mask[r_1, val];
     Heap := Heap[r_1, val:=v_2];
     assume state(Heap, Mask);
   
   // -- Translating statement: if (length - 1 > 0) -- recursive.vpr@20.5--22.6
-    if (length_2 - 1 > 0) {
+    if (length_3 - 1 > 0) {
       
       // -- Translating statement: m1(r.next, length - 1, v) -- recursive.vpr@21.9--21.32
         PreCallHeap := Heap;
         PreCallMask := Mask;
         
         // -- Check definedness of r.next
-          assert {:msg "  Method call might fail. There might be insufficient permission to access r.next (recursive.vpr@21.9--21.32) [108577]"}
+          assert {:msg "  Method call might fail. There might be insufficient permission to access r.next (recursive.vpr@21.9--21.32) [204061]"}
             HasDirectPerm(Mask, r_1, next);
         arg_r := Heap[r_1, next];
-        arg_length := length_2 - 1;
+        arg_length := length_3 - 1;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method m1 might not hold. Assertion length - 1 > 0 might not hold. (recursive.vpr@21.9--21.32) [108578]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  The precondition of method m1 might not hold. Assertion length - 1 > 0 might not hold. (recursive.vpr@21.9--21.32) [204062]"}
             arg_length > 0;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method m1 might not hold. There might be insufficient permission to access list(r.next, length - 1) (recursive.vpr@21.9--21.32) [108579]"}
+            assert {:msg "  The precondition of method m1 might not hold. There might be insufficient permission to access list(r.next, length - 1) (recursive.vpr@21.9--21.32) [204063]"}
               perm <= Mask[null, list(arg_r, arg_length)];
           }
           Mask := Mask[null, list(arg_r, arg_length):=Mask[null, list(arg_r, arg_length)] - perm];
@@ -674,8 +674,8 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
             UnfoldingMask := Mask;
             assume list#trigger(UnfoldingHeap, list(arg_r, arg_length));
             assume UnfoldingHeap[null, list(arg_r, arg_length)] == FrameFragment((if arg_length > 0 then CombineFrames(FrameFragment(UnfoldingHeap[arg_r, val]), CombineFrames(FrameFragment(UnfoldingHeap[arg_r, next]), UnfoldingHeap[null, list(UnfoldingHeap[arg_r, next], arg_length - 1)])) else EmptyFrame));
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, list(arg_r, arg_length):=UnfoldingMask[null, list(arg_r, arg_length)] - perm];
             if (arg_length > 0) {
@@ -702,9 +702,9 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
               Heap := Heap[null, list#sm(arg_r, arg_length):=Heap[null, list#sm(arg_r, arg_length)][arg_r, val:=true]];
               Heap := Heap[null, list#sm(arg_r, arg_length):=Heap[null, list#sm(arg_r, arg_length)][arg_r, next:=true]];
               havoc newPMask;
-              assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-                { newPMask[o_52, f_55] }
-                Heap[null, list#sm(arg_r, arg_length)][o_52, f_55] || Heap[null, list#sm(Heap[arg_r, next], arg_length - 1)][o_52, f_55] ==> newPMask[o_52, f_55]
+              assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+                { newPMask[o_40, f_52] }
+                Heap[null, list#sm(arg_r, arg_length)][o_40, f_52] || Heap[null, list#sm(Heap[arg_r, next], arg_length - 1)][o_40, f_52] ==> newPMask[o_40, f_52]
               );
               Heap := Heap[null, list#sm(arg_r, arg_length):=newPMask];
             }
@@ -716,11 +716,11 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
             UnfoldingMask := Mask;
             assume list#trigger(UnfoldingHeap, list(arg_r, arg_length));
             assume UnfoldingHeap[null, list(arg_r, arg_length)] == FrameFragment((if arg_length > 0 then CombineFrames(FrameFragment(UnfoldingHeap[arg_r, val]), CombineFrames(FrameFragment(UnfoldingHeap[arg_r, next]), UnfoldingHeap[null, list(UnfoldingHeap[arg_r, next], arg_length - 1)])) else EmptyFrame));
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  An internal error occurred. There might be insufficient permission to access list(r.next, length - 1) (recursive.vpr@16.9--16.50) [108580]"}
+              assert {:msg "  An internal error occurred. There might be insufficient permission to access list(r.next, length - 1) (recursive.vpr@16.9--16.50) [204064]"}
                 perm <= UnfoldingMask[null, list(arg_r, arg_length)];
             }
             UnfoldingMask := UnfoldingMask[null, list(arg_r, arg_length):=UnfoldingMask[null, list(arg_r, arg_length)] - perm];
@@ -747,9 +747,9 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
                 Heap := Heap[null, list#sm(arg_r, arg_length):=Heap[null, list#sm(arg_r, arg_length)][arg_r, val:=true]];
                 Heap := Heap[null, list#sm(arg_r, arg_length):=Heap[null, list#sm(arg_r, arg_length)][arg_r, next:=true]];
                 havoc newPMask;
-                assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-                  { newPMask[o_53, f_56] }
-                  Heap[null, list#sm(arg_r, arg_length)][o_53, f_56] || Heap[null, list#sm(Heap[arg_r, next], arg_length - 1)][o_53, f_56] ==> newPMask[o_53, f_56]
+                assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+                  { newPMask[o_42, f_55] }
+                  Heap[null, list#sm(arg_r, arg_length)][o_42, f_55] || Heap[null, list#sm(Heap[arg_r, next], arg_length - 1)][o_42, f_55] ==> newPMask[o_42, f_55]
                 );
                 Heap := Heap[null, list#sm(arg_r, arg_length):=newPMask];
               }
@@ -759,79 +759,79 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(r, length), write) -- recursive.vpr@23.5--23.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    if (length_2 > 0) {
+    ExhaleWellDef0Heap := Heap;
+    if (length_3 > 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(r, length) might fail. There might be insufficient permission to access r.val (recursive.vpr@23.5--23.25) [108583]"}
+        assert {:msg "  Folding list(r, length) might fail. There might be insufficient permission to access r.val (recursive.vpr@23.5--23.25) [204067]"}
           perm <= Mask[r_1, val];
       }
       Mask := Mask[r_1, val:=Mask[r_1, val] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(r, length) might fail. There might be insufficient permission to access r.next (recursive.vpr@23.5--23.25) [108585]"}
+        assert {:msg "  Folding list(r, length) might fail. There might be insufficient permission to access r.next (recursive.vpr@23.5--23.25) [204069]"}
           perm <= Mask[r_1, next];
       }
       Mask := Mask[r_1, next:=Mask[r_1, next] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(r, length) might fail. There might be insufficient permission to access list(r.next, length - 1) (recursive.vpr@23.5--23.25) [108587]"}
-          perm <= Mask[null, list(Heap[r_1, next], length_2 - 1)];
+        assert {:msg "  Folding list(r, length) might fail. There might be insufficient permission to access list(r.next, length - 1) (recursive.vpr@23.5--23.25) [204071]"}
+          perm <= Mask[null, list(Heap[r_1, next], length_3 - 1)];
       }
-      Mask := Mask[null, list(Heap[r_1, next], length_2 - 1):=Mask[null, list(Heap[r_1, next], length_2 - 1)] - perm];
+      Mask := Mask[null, list(Heap[r_1, next], length_3 - 1):=Mask[null, list(Heap[r_1, next], length_3 - 1)] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(r_1, length_2), Heap[null, list(r_1, length_2)], list(Heap[r_1, next], length_2 - 1), Heap[null, list(Heap[r_1, next], length_2 - 1)]);
+        assume InsidePredicate(list(r_1, length_3), Heap[null, list(r_1, length_3)], list(Heap[r_1, next], length_3 - 1), Heap[null, list(Heap[r_1, next], length_3 - 1)]);
     }
     perm := FullPerm;
-    Mask := Mask[null, list(r_1, length_2):=Mask[null, list(r_1, length_2)] + perm];
+    Mask := Mask[null, list(r_1, length_3):=Mask[null, list(r_1, length_3)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(r_1, length_2));
-    assume Heap[null, list(r_1, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(Heap[r_1, val]), CombineFrames(FrameFragment(Heap[r_1, next]), Heap[null, list(Heap[r_1, next], length_2 - 1)])) else EmptyFrame));
-    if (!HasDirectPerm(Mask, null, list(r_1, length_2))) {
-      Heap := Heap[null, list#sm(r_1, length_2):=ZeroPMask];
+    assume list#trigger(Heap, list(r_1, length_3));
+    assume Heap[null, list(r_1, length_3)] == FrameFragment((if length_3 > 0 then CombineFrames(FrameFragment(Heap[r_1, val]), CombineFrames(FrameFragment(Heap[r_1, next]), Heap[null, list(Heap[r_1, next], length_3 - 1)])) else EmptyFrame));
+    if (!HasDirectPerm(Mask, null, list(r_1, length_3))) {
+      Heap := Heap[null, list#sm(r_1, length_3):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(r_1, length_2):=freshVersion];
+      Heap := Heap[null, list(r_1, length_3):=freshVersion];
     }
-    if (length_2 > 0) {
-      Heap := Heap[null, list#sm(r_1, length_2):=Heap[null, list#sm(r_1, length_2)][r_1, val:=true]];
-      Heap := Heap[null, list#sm(r_1, length_2):=Heap[null, list#sm(r_1, length_2)][r_1, next:=true]];
+    if (length_3 > 0) {
+      Heap := Heap[null, list#sm(r_1, length_3):=Heap[null, list#sm(r_1, length_3)][r_1, val:=true]];
+      Heap := Heap[null, list#sm(r_1, length_3):=Heap[null, list#sm(r_1, length_3)][r_1, next:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-        { newPMask[o_26, f_29] }
-        Heap[null, list#sm(r_1, length_2)][o_26, f_29] || Heap[null, list#sm(Heap[r_1, next], length_2 - 1)][o_26, f_29] ==> newPMask[o_26, f_29]
+      assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+        { newPMask[o_46, f_60] }
+        Heap[null, list#sm(r_1, length_3)][o_46, f_60] || Heap[null, list#sm(Heap[r_1, next], length_3 - 1)][o_46, f_60] ==> newPMask[o_46, f_60]
       );
-      Heap := Heap[null, list#sm(r_1, length_2):=newPMask];
+      Heap := Heap[null, list#sm(r_1, length_3):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of m1 might not hold. There might be insufficient permission to access list(r, length) (recursive.vpr@15.9--15.29) [108589]"}
-        perm <= Mask[null, list(r_1, length_2)];
+      assert {:msg "  Postcondition of m1 might not hold. There might be insufficient permission to access list(r, length) (recursive.vpr@15.9--15.29) [204073]"}
+        perm <= Mask[null, list(r_1, length_3)];
     }
-    Mask := Mask[null, list(r_1, length_2):=Mask[null, list(r_1, length_2)] - perm];
+    Mask := Mask[null, list(r_1, length_3):=Mask[null, list(r_1, length_3)] - perm];
     
     // -- Execute unfolding (for extra information)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
-      assume list#trigger(UnfoldingHeap, list(r_1, length_2));
-      assume UnfoldingHeap[null, list(r_1, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[r_1, val]), CombineFrames(FrameFragment(UnfoldingHeap[r_1, next]), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_2 - 1)])) else EmptyFrame));
-      ExhaleWellDef1Heap := UnfoldingHeap;
+      assume list#trigger(UnfoldingHeap, list(r_1, length_3));
+      assume UnfoldingHeap[null, list(r_1, length_3)] == FrameFragment((if length_3 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[r_1, val]), CombineFrames(FrameFragment(UnfoldingHeap[r_1, next]), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_3 - 1)])) else EmptyFrame));
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of m1 might not hold. There might be insufficient permission to access list(r, length) (recursive.vpr@16.9--16.50) [108590]"}
-          perm <= UnfoldingMask[null, list(r_1, length_2)];
+        assert {:msg "  Postcondition of m1 might not hold. There might be insufficient permission to access list(r, length) (recursive.vpr@16.9--16.50) [204074]"}
+          perm <= UnfoldingMask[null, list(r_1, length_3)];
       }
-      UnfoldingMask := UnfoldingMask[null, list(r_1, length_2):=UnfoldingMask[null, list(r_1, length_2)] - perm];
-      if (length_2 > 0) {
+      UnfoldingMask := UnfoldingMask[null, list(r_1, length_3):=UnfoldingMask[null, list(r_1, length_3)] - perm];
+      if (length_3 > 0) {
         perm := FullPerm;
         assume r_1 != null;
         UnfoldingMask := UnfoldingMask[r_1, val:=UnfoldingMask[r_1, val] + perm];
@@ -841,26 +841,26 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
         UnfoldingMask := UnfoldingMask[r_1, next:=UnfoldingMask[r_1, next] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_2 - 1):=UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_2 - 1)] + perm];
+        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_3 - 1):=UnfoldingMask[null, list(UnfoldingHeap[r_1, next], length_3 - 1)] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(list(r_1, length_2), UnfoldingHeap[null, list(r_1, length_2)], list(UnfoldingHeap[r_1, next], length_2 - 1), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_2 - 1)]);
+          assume InsidePredicate(list(r_1, length_3), UnfoldingHeap[null, list(r_1, length_3)], list(UnfoldingHeap[r_1, next], length_3 - 1), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], length_3 - 1)]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-    assert {:msg "  Postcondition of m1 might not hold. Assertion r.val == v might not hold. (recursive.vpr@16.9--16.50) [108591]"}
+    assert {:msg "  Postcondition of m1 might not hold. Assertion r.val == v might not hold. (recursive.vpr@16.9--16.50) [204075]"}
       Heap[r_1, val] == v_2;
     
     // -- Free assumptions (exhale module)
-      if (length_2 > 0) {
-        Heap := Heap[null, list#sm(r_1, length_2):=Heap[null, list#sm(r_1, length_2)][r_1, val:=true]];
-        Heap := Heap[null, list#sm(r_1, length_2):=Heap[null, list#sm(r_1, length_2)][r_1, next:=true]];
+      if (length_3 > 0) {
+        Heap := Heap[null, list#sm(r_1, length_3):=Heap[null, list#sm(r_1, length_3)][r_1, val:=true]];
+        Heap := Heap[null, list#sm(r_1, length_3):=Heap[null, list#sm(r_1, length_3)][r_1, next:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-          { newPMask[o_16, f_21] }
-          Heap[null, list#sm(r_1, length_2)][o_16, f_21] || Heap[null, list#sm(Heap[r_1, next], length_2 - 1)][o_16, f_21] ==> newPMask[o_16, f_21]
+        assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+          { newPMask[o_6, f_12] }
+          Heap[null, list#sm(r_1, length_3)][o_6, f_12] || Heap[null, list#sm(Heap[r_1, next], length_3 - 1)][o_6, f_12] ==> newPMask[o_6, f_12]
         );
-        Heap := Heap[null, list#sm(r_1, length_2):=newPMask];
+        Heap := Heap[null, list#sm(r_1, length_3):=newPMask];
       }
       assume state(Heap, Mask);
     // Finish exhale
@@ -873,19 +873,19 @@ procedure m1(r_1: Ref, length_2: int, v_2: int) returns ()
 // Translation of method m2
 // ==================================================
 
-procedure m2(l1_3: Ref, l2_2: Ref, length_2: int, v_2: int) returns ()
+procedure m2(l1_1: Ref, l2: Ref, length_3: int, v_2: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
@@ -894,8 +894,8 @@ procedure m2(l1_3: Ref, l2_2: Ref, length_2: int, v_2: int) returns ()
   var arg_length: int;
   var ExhaleHeap: HeapType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -903,13 +903,13 @@ procedure m2(l1_3: Ref, l2_2: Ref, length_2: int, v_2: int) returns ()
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[l1_3, $allocated];
-    assume Heap[l2_2, $allocated];
+    assume Heap[l1_1, $allocated];
+    assume Heap[l2, $allocated];
   
   // -- Checked inhaling of precondition
-    assume length_2 > 0;
+    assume length_3 > 0;
     assume state(Heap, Mask);
-    assume l1_3 != l2_2;
+    assume l1_1 != l2;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall l: Ref :: { (l in Set(l1, l2)) } (l in Set(l1, l2)) ==> acc(list(l, length), write))
@@ -919,36 +919,36 @@ procedure m2(l1_3: Ref, l2_2: Ref, length_2: int, v_2: int) returns ()
     havoc QPMask;
     
     // -- check if receiver acc(list(l, length), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource list(l, length) might not be injective. (recursive.vpr@29.10--29.67) [108592]"}
-        (forall l_1: Ref, l_1_2: Ref ::
-        { neverTriggered1(l_1), neverTriggered1(l_1_2) }
-        (((l_1 != l_1_2 && Set#UnionOne(Set#Singleton(l2_2), l1_3)[l_1]) && Set#UnionOne(Set#Singleton(l2_2), l1_3)[l_1_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> l_1 != l_1_2 || length_2 != length_2
+      assert {:msg "  Contract might not be well-formed. Quantified resource list(l, length) might not be injective. (recursive.vpr@29.10--29.67) [204076]"}
+        (forall l_1_2: Ref, l_1_3: Ref ::
+        { neverTriggered1(l_1_2), neverTriggered1(l_1_3) }
+        (((l_1_2 != l_1_3 && Set#UnionOne(Set#Singleton(l2), l1_1)[l_1_2]) && Set#UnionOne(Set#Singleton(l2), l1_1)[l_1_3]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> l_1_2 != l_1_3 || length_3 != length_3
       );
     
     // -- Define Inverse Function
-      assume (forall l_1: Ref ::
-        { Heap[null, list(l_1, length_2)] } { Mask[null, list(l_1, length_2)] } { Set#UnionOne(Set#Singleton(l2_2), l1_3)[l_1] }
-        Set#UnionOne(Set#Singleton(l2_2), l1_3)[l_1] && NoPerm < FullPerm ==> invRecv1(l_1, length_2) == l_1 && qpRange1(l_1, length_2)
+      assume (forall l_1_2: Ref ::
+        { Heap[null, list(l_1_2, length_3)] } { Mask[null, list(l_1_2, length_3)] } { Set#UnionOne(Set#Singleton(l2), l1_1)[l_1_2] }
+        Set#UnionOne(Set#Singleton(l2), l1_1)[l_1_2] && NoPerm < FullPerm ==> invRecv1(l_1_2, length_3) == l_1_2 && qpRange1(l_1_2, length_3)
       );
       assume (forall r_1: Ref, i: int ::
         { invRecv1(r_1, i) }
-        (Set#UnionOne(Set#Singleton(l2_2), l1_3)[invRecv1(r_1, i)] && NoPerm < FullPerm) && qpRange1(r_1, i) ==> invRecv1(r_1, i) == r_1 && length_2 == i
+        (Set#UnionOne(Set#Singleton(l2), l1_1)[invRecv1(r_1, i)] && NoPerm < FullPerm) && qpRange1(r_1, i) ==> invRecv1(r_1, i) == r_1 && length_3 == i
       );
     
     // -- Define updated permissions
       assume (forall r_1: Ref, i: int ::
         { QPMask[null, list(r_1, i)] }
-        (Set#UnionOne(Set#Singleton(l2_2), l1_3)[invRecv1(r_1, i)] && NoPerm < FullPerm) && qpRange1(r_1, i) ==> (NoPerm < FullPerm ==> invRecv1(r_1, i) == r_1 && length_2 == i) && QPMask[null, list(r_1, i)] == Mask[null, list(r_1, i)] + FullPerm
+        (Set#UnionOne(Set#Singleton(l2), l1_1)[invRecv1(r_1, i)] && NoPerm < FullPerm) && qpRange1(r_1, i) ==> (NoPerm < FullPerm ==> invRecv1(r_1, i) == r_1 && length_3 == i) && QPMask[null, list(r_1, i)] == Mask[null, list(r_1, i)] + FullPerm
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall r_1: Ref, i: int ::
         { QPMask[null, list(r_1, i)] }
-        !((Set#UnionOne(Set#Singleton(l2_2), l1_3)[invRecv1(r_1, i)] && NoPerm < FullPerm) && qpRange1(r_1, i)) ==> QPMask[null, list(r_1, i)] == Mask[null, list(r_1, i)]
+        !((Set#UnionOne(Set#Singleton(l2), l1_1)[invRecv1(r_1, i)] && NoPerm < FullPerm) && qpRange1(r_1, i)) ==> QPMask[null, list(r_1, i)] == Mask[null, list(r_1, i)]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -957,163 +957,163 @@ procedure m2(l1_3: Ref, l2_2: Ref, length_2: int, v_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
-    PostMask := PostMask[null, list(l1_3, length_2):=PostMask[null, list(l1_3, length_2)] + perm];
+    PostMask := PostMask[null, list(l1_1, length_3):=PostMask[null, list(l1_1, length_3)] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     perm := FullPerm;
-    PostMask := PostMask[null, list(l2_2, length_2):=PostMask[null, list(l2_2, length_2)] + perm];
+    PostMask := PostMask[null, list(l2, length_3):=PostMask[null, list(l2, length_3)] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (unfolding acc(list(l1, length), write) in l1.val == v)
       UnfoldingHeap := PostHeap;
       UnfoldingMask := PostMask;
-      assume list#trigger(UnfoldingHeap, list(l1_3, length_2));
-      assume UnfoldingHeap[null, list(l1_3, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[l1_3, val]), CombineFrames(FrameFragment(UnfoldingHeap[l1_3, next]), UnfoldingHeap[null, list(UnfoldingHeap[l1_3, next], length_2 - 1)])) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
+      assume list#trigger(UnfoldingHeap, list(l1_1, length_3));
+      assume UnfoldingHeap[null, list(l1_1, length_3)] == FrameFragment((if length_3 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[l1_1, val]), CombineFrames(FrameFragment(UnfoldingHeap[l1_1, next]), UnfoldingHeap[null, list(UnfoldingHeap[l1_1, next], length_3 - 1)])) else EmptyFrame));
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access list(l1, length) (recursive.vpr@32.9--32.52) [108593]"}
-          perm <= UnfoldingMask[null, list(l1_3, length_2)];
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access list(l1, length) (recursive.vpr@32.9--32.52) [204077]"}
+          perm <= UnfoldingMask[null, list(l1_1, length_3)];
       }
-      UnfoldingMask := UnfoldingMask[null, list(l1_3, length_2):=UnfoldingMask[null, list(l1_3, length_2)] - perm];
-      if (length_2 > 0) {
+      UnfoldingMask := UnfoldingMask[null, list(l1_1, length_3):=UnfoldingMask[null, list(l1_1, length_3)] - perm];
+      if (length_3 > 0) {
         perm := FullPerm;
-        assume l1_3 != null;
-        UnfoldingMask := UnfoldingMask[l1_3, val:=UnfoldingMask[l1_3, val] + perm];
+        assume l1_1 != null;
+        UnfoldingMask := UnfoldingMask[l1_1, val:=UnfoldingMask[l1_1, val] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        assume l1_3 != null;
-        UnfoldingMask := UnfoldingMask[l1_3, next:=UnfoldingMask[l1_3, next] + perm];
+        assume l1_1 != null;
+        UnfoldingMask := UnfoldingMask[l1_1, next:=UnfoldingMask[l1_1, next] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[l1_3, next], length_2 - 1):=UnfoldingMask[null, list(UnfoldingHeap[l1_3, next], length_2 - 1)] + perm];
+        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[l1_1, next], length_3 - 1):=UnfoldingMask[null, list(UnfoldingHeap[l1_1, next], length_3 - 1)] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(list(l1_3, length_2), UnfoldingHeap[null, list(l1_3, length_2)], list(UnfoldingHeap[l1_3, next], length_2 - 1), UnfoldingHeap[null, list(UnfoldingHeap[l1_3, next], length_2 - 1)]);
+          assume InsidePredicate(list(l1_1, length_3), UnfoldingHeap[null, list(l1_1, length_3)], list(UnfoldingHeap[l1_1, next], length_3 - 1), UnfoldingHeap[null, list(UnfoldingHeap[l1_1, next], length_3 - 1)]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access l1.val (recursive.vpr@32.9--32.52) [108594]"}
-        HasDirectPerm(UnfoldingMask, l1_3, val);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access l1.val (recursive.vpr@32.9--32.52) [204078]"}
+        HasDirectPerm(UnfoldingMask, l1_1, val);
       
       // -- Free assumptions (exp module)
-        if (length_2 > 0) {
-          PostHeap := PostHeap[null, list#sm(l1_3, length_2):=PostHeap[null, list#sm(l1_3, length_2)][l1_3, val:=true]];
-          PostHeap := PostHeap[null, list#sm(l1_3, length_2):=PostHeap[null, list#sm(l1_3, length_2)][l1_3, next:=true]];
+        if (length_3 > 0) {
+          PostHeap := PostHeap[null, list#sm(l1_1, length_3):=PostHeap[null, list#sm(l1_1, length_3)][l1_1, val:=true]];
+          PostHeap := PostHeap[null, list#sm(l1_1, length_3):=PostHeap[null, list#sm(l1_1, length_3)][l1_1, next:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_5: Ref, f: (Field A B) ::
-            { newPMask[o_5, f] }
-            PostHeap[null, list#sm(l1_3, length_2)][o_5, f] || PostHeap[null, list#sm(PostHeap[l1_3, next], length_2 - 1)][o_5, f] ==> newPMask[o_5, f]
+          assume (forall <A, B> o_56: Ref, f: (Field A B) ::
+            { newPMask[o_56, f] }
+            PostHeap[null, list#sm(l1_1, length_3)][o_56, f] || PostHeap[null, list#sm(PostHeap[l1_1, next], length_3 - 1)][o_56, f] ==> newPMask[o_56, f]
           );
-          PostHeap := PostHeap[null, list#sm(l1_3, length_2):=newPMask];
+          PostHeap := PostHeap[null, list#sm(l1_1, length_3):=newPMask];
         }
         assume state(PostHeap, PostMask);
     
     // -- Execute unfolding (for extra information)
       UnfoldingHeap := PostHeap;
       UnfoldingMask := PostMask;
-      assume list#trigger(UnfoldingHeap, list(l1_3, length_2));
-      assume UnfoldingHeap[null, list(l1_3, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[l1_3, val]), CombineFrames(FrameFragment(UnfoldingHeap[l1_3, next]), UnfoldingHeap[null, list(UnfoldingHeap[l1_3, next], length_2 - 1)])) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
+      assume list#trigger(UnfoldingHeap, list(l1_1, length_3));
+      assume UnfoldingHeap[null, list(l1_1, length_3)] == FrameFragment((if length_3 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[l1_1, val]), CombineFrames(FrameFragment(UnfoldingHeap[l1_1, next]), UnfoldingHeap[null, list(UnfoldingHeap[l1_1, next], length_3 - 1)])) else EmptyFrame));
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      UnfoldingMask := UnfoldingMask[null, list(l1_3, length_2):=UnfoldingMask[null, list(l1_3, length_2)] - perm];
-      if (length_2 > 0) {
+      UnfoldingMask := UnfoldingMask[null, list(l1_1, length_3):=UnfoldingMask[null, list(l1_1, length_3)] - perm];
+      if (length_3 > 0) {
         perm := FullPerm;
-        assume l1_3 != null;
-        UnfoldingMask := UnfoldingMask[l1_3, val:=UnfoldingMask[l1_3, val] + perm];
+        assume l1_1 != null;
+        UnfoldingMask := UnfoldingMask[l1_1, val:=UnfoldingMask[l1_1, val] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        assume l1_3 != null;
-        UnfoldingMask := UnfoldingMask[l1_3, next:=UnfoldingMask[l1_3, next] + perm];
+        assume l1_1 != null;
+        UnfoldingMask := UnfoldingMask[l1_1, next:=UnfoldingMask[l1_1, next] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[l1_3, next], length_2 - 1):=UnfoldingMask[null, list(UnfoldingHeap[l1_3, next], length_2 - 1)] + perm];
+        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[l1_1, next], length_3 - 1):=UnfoldingMask[null, list(UnfoldingHeap[l1_1, next], length_3 - 1)] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(list(l1_3, length_2), UnfoldingHeap[null, list(l1_3, length_2)], list(UnfoldingHeap[l1_3, next], length_2 - 1), UnfoldingHeap[null, list(UnfoldingHeap[l1_3, next], length_2 - 1)]);
+          assume InsidePredicate(list(l1_1, length_3), UnfoldingHeap[null, list(l1_1, length_3)], list(UnfoldingHeap[l1_1, next], length_3 - 1), UnfoldingHeap[null, list(UnfoldingHeap[l1_1, next], length_3 - 1)]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-    assume PostHeap[l1_3, val] == v_2;
+    assume PostHeap[l1_1, val] == v_2;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
   }
   
   // -- Translating statement: unfold acc(list(l1, length), write) -- recursive.vpr@34.5--34.28
-    assume list#trigger(Heap, list(l1_3, length_2));
-    assume Heap[null, list(l1_3, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(Heap[l1_3, val]), CombineFrames(FrameFragment(Heap[l1_3, next]), Heap[null, list(Heap[l1_3, next], length_2 - 1)])) else EmptyFrame));
-    ExhaleWellDef0Heap := Heap;
+    assume list#trigger(Heap, list(l1_1, length_3));
+    assume Heap[null, list(l1_1, length_3)] == FrameFragment((if length_3 > 0 then CombineFrames(FrameFragment(Heap[l1_1, val]), CombineFrames(FrameFragment(Heap[l1_1, next]), Heap[null, list(Heap[l1_1, next], length_3 - 1)])) else EmptyFrame));
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding list(l1, length) might fail. There might be insufficient permission to access list(l1, length) (recursive.vpr@34.5--34.28) [108597]"}
-        perm <= Mask[null, list(l1_3, length_2)];
+      assert {:msg "  Unfolding list(l1, length) might fail. There might be insufficient permission to access list(l1, length) (recursive.vpr@34.5--34.28) [204081]"}
+        perm <= Mask[null, list(l1_1, length_3)];
     }
-    Mask := Mask[null, list(l1_3, length_2):=Mask[null, list(l1_3, length_2)] - perm];
+    Mask := Mask[null, list(l1_1, length_3):=Mask[null, list(l1_1, length_3)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, list(l1_3, length_2))) {
+      if (!HasDirectPerm(Mask, null, list(l1_1, length_3))) {
         havoc newVersion;
-        Heap := Heap[null, list(l1_3, length_2):=newVersion];
+        Heap := Heap[null, list(l1_1, length_3):=newVersion];
       }
-    if (length_2 > 0) {
+    if (length_3 > 0) {
       perm := FullPerm;
-      assume l1_3 != null;
-      Mask := Mask[l1_3, val:=Mask[l1_3, val] + perm];
+      assume l1_1 != null;
+      Mask := Mask[l1_1, val:=Mask[l1_1, val] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      assume l1_3 != null;
-      Mask := Mask[l1_3, next:=Mask[l1_3, next] + perm];
+      assume l1_1 != null;
+      Mask := Mask[l1_1, next:=Mask[l1_1, next] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      Mask := Mask[null, list(Heap[l1_3, next], length_2 - 1):=Mask[null, list(Heap[l1_3, next], length_2 - 1)] + perm];
+      Mask := Mask[null, list(Heap[l1_1, next], length_3 - 1):=Mask[null, list(Heap[l1_1, next], length_3 - 1)] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(list(l1_3, length_2), Heap[null, list(l1_3, length_2)], list(Heap[l1_3, next], length_2 - 1), Heap[null, list(Heap[l1_3, next], length_2 - 1)]);
+        assume InsidePredicate(list(l1_1, length_3), Heap[null, list(l1_1, length_3)], list(Heap[l1_1, next], length_3 - 1), Heap[null, list(Heap[l1_1, next], length_3 - 1)]);
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: l1.val := v -- recursive.vpr@35.5--35.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access l1.val (recursive.vpr@35.5--35.16) [108601]"}
-      FullPerm == Mask[l1_3, val];
-    Heap := Heap[l1_3, val:=v_2];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access l1.val (recursive.vpr@35.5--35.16) [204085]"}
+      FullPerm == Mask[l1_1, val];
+    Heap := Heap[l1_1, val:=v_2];
     assume state(Heap, Mask);
   
   // -- Translating statement: if (length - 1 > 0) -- recursive.vpr@36.5--38.6
-    if (length_2 - 1 > 0) {
+    if (length_3 - 1 > 0) {
       
       // -- Translating statement: m1(l1.next, length - 1, v) -- recursive.vpr@37.9--37.33
         PreCallHeap := Heap;
         PreCallMask := Mask;
         
         // -- Check definedness of l1.next
-          assert {:msg "  Method call might fail. There might be insufficient permission to access l1.next (recursive.vpr@37.9--37.33) [108602]"}
-            HasDirectPerm(Mask, l1_3, next);
-        arg_r := Heap[l1_3, next];
-        arg_length := length_2 - 1;
+          assert {:msg "  Method call might fail. There might be insufficient permission to access l1.next (recursive.vpr@37.9--37.33) [204086]"}
+            HasDirectPerm(Mask, l1_1, next);
+        arg_r := Heap[l1_1, next];
+        arg_length := length_3 - 1;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method m1 might not hold. Assertion length - 1 > 0 might not hold. (recursive.vpr@37.9--37.33) [108603]"}
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  The precondition of method m1 might not hold. Assertion length - 1 > 0 might not hold. (recursive.vpr@37.9--37.33) [204087]"}
             arg_length > 0;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method m1 might not hold. There might be insufficient permission to access list(l1.next, length - 1) (recursive.vpr@37.9--37.33) [108604]"}
+            assert {:msg "  The precondition of method m1 might not hold. There might be insufficient permission to access list(l1.next, length - 1) (recursive.vpr@37.9--37.33) [204088]"}
               perm <= Mask[null, list(arg_r, arg_length)];
           }
           Mask := Mask[null, list(arg_r, arg_length):=Mask[null, list(arg_r, arg_length)] - perm];
@@ -1132,8 +1132,8 @@ procedure m2(l1_3: Ref, l2_2: Ref, length_2: int, v_2: int) returns ()
             UnfoldingMask := Mask;
             assume list#trigger(UnfoldingHeap, list(arg_r, arg_length));
             assume UnfoldingHeap[null, list(arg_r, arg_length)] == FrameFragment((if arg_length > 0 then CombineFrames(FrameFragment(UnfoldingHeap[arg_r, val]), CombineFrames(FrameFragment(UnfoldingHeap[arg_r, next]), UnfoldingHeap[null, list(UnfoldingHeap[arg_r, next], arg_length - 1)])) else EmptyFrame));
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, list(arg_r, arg_length):=UnfoldingMask[null, list(arg_r, arg_length)] - perm];
             if (arg_length > 0) {
@@ -1160,9 +1160,9 @@ procedure m2(l1_3: Ref, l2_2: Ref, length_2: int, v_2: int) returns ()
               Heap := Heap[null, list#sm(arg_r, arg_length):=Heap[null, list#sm(arg_r, arg_length)][arg_r, val:=true]];
               Heap := Heap[null, list#sm(arg_r, arg_length):=Heap[null, list#sm(arg_r, arg_length)][arg_r, next:=true]];
               havoc newPMask;
-              assume (forall <A, B> o_7: Ref, f_31: (Field A B) ::
-                { newPMask[o_7, f_31] }
-                Heap[null, list#sm(arg_r, arg_length)][o_7, f_31] || Heap[null, list#sm(Heap[arg_r, next], arg_length - 1)][o_7, f_31] ==> newPMask[o_7, f_31]
+              assume (forall <A, B> o_16: Ref, f_8: (Field A B) ::
+                { newPMask[o_16, f_8] }
+                Heap[null, list#sm(arg_r, arg_length)][o_16, f_8] || Heap[null, list#sm(Heap[arg_r, next], arg_length - 1)][o_16, f_8] ==> newPMask[o_16, f_8]
               );
               Heap := Heap[null, list#sm(arg_r, arg_length):=newPMask];
             }
@@ -1174,11 +1174,11 @@ procedure m2(l1_3: Ref, l2_2: Ref, length_2: int, v_2: int) returns ()
             UnfoldingMask := Mask;
             assume list#trigger(UnfoldingHeap, list(arg_r, arg_length));
             assume UnfoldingHeap[null, list(arg_r, arg_length)] == FrameFragment((if arg_length > 0 then CombineFrames(FrameFragment(UnfoldingHeap[arg_r, val]), CombineFrames(FrameFragment(UnfoldingHeap[arg_r, next]), UnfoldingHeap[null, list(UnfoldingHeap[arg_r, next], arg_length - 1)])) else EmptyFrame));
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
-              assert {:msg "  An internal error occurred. There might be insufficient permission to access list(l1.next, length - 1) (recursive.vpr@16.9--16.50) [108605]"}
+              assert {:msg "  An internal error occurred. There might be insufficient permission to access list(l1.next, length - 1) (recursive.vpr@16.9--16.50) [204089]"}
                 perm <= UnfoldingMask[null, list(arg_r, arg_length)];
             }
             UnfoldingMask := UnfoldingMask[null, list(arg_r, arg_length):=UnfoldingMask[null, list(arg_r, arg_length)] - perm];
@@ -1205,9 +1205,9 @@ procedure m2(l1_3: Ref, l2_2: Ref, length_2: int, v_2: int) returns ()
                 Heap := Heap[null, list#sm(arg_r, arg_length):=Heap[null, list#sm(arg_r, arg_length)][arg_r, val:=true]];
                 Heap := Heap[null, list#sm(arg_r, arg_length):=Heap[null, list#sm(arg_r, arg_length)][arg_r, next:=true]];
                 havoc newPMask;
-                assume (forall <A, B> o_6: Ref, f_2: (Field A B) ::
-                  { newPMask[o_6, f_2] }
-                  Heap[null, list#sm(arg_r, arg_length)][o_6, f_2] || Heap[null, list#sm(Heap[arg_r, next], arg_length - 1)][o_6, f_2] ==> newPMask[o_6, f_2]
+                assume (forall <A, B> o_38: Ref, f_2: (Field A B) ::
+                  { newPMask[o_38, f_2] }
+                  Heap[null, list#sm(arg_r, arg_length)][o_38, f_2] || Heap[null, list#sm(Heap[arg_r, next], arg_length - 1)][o_38, f_2] ==> newPMask[o_38, f_2]
                 );
                 Heap := Heap[null, list#sm(arg_r, arg_length):=newPMask];
               }
@@ -1217,114 +1217,114 @@ procedure m2(l1_3: Ref, l2_2: Ref, length_2: int, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(l1, length), write) -- recursive.vpr@39.5--39.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    if (length_2 > 0) {
+    ExhaleWellDef0Heap := Heap;
+    if (length_3 > 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(l1, length) might fail. There might be insufficient permission to access l1.val (recursive.vpr@39.5--39.26) [108608]"}
-          perm <= Mask[l1_3, val];
+        assert {:msg "  Folding list(l1, length) might fail. There might be insufficient permission to access l1.val (recursive.vpr@39.5--39.26) [204092]"}
+          perm <= Mask[l1_1, val];
       }
-      Mask := Mask[l1_3, val:=Mask[l1_3, val] - perm];
+      Mask := Mask[l1_1, val:=Mask[l1_1, val] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(l1, length) might fail. There might be insufficient permission to access l1.next (recursive.vpr@39.5--39.26) [108610]"}
-          perm <= Mask[l1_3, next];
+        assert {:msg "  Folding list(l1, length) might fail. There might be insufficient permission to access l1.next (recursive.vpr@39.5--39.26) [204094]"}
+          perm <= Mask[l1_1, next];
       }
-      Mask := Mask[l1_3, next:=Mask[l1_3, next] - perm];
+      Mask := Mask[l1_1, next:=Mask[l1_1, next] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(l1, length) might fail. There might be insufficient permission to access list(l1.next, length - 1) (recursive.vpr@39.5--39.26) [108612]"}
-          perm <= Mask[null, list(Heap[l1_3, next], length_2 - 1)];
+        assert {:msg "  Folding list(l1, length) might fail. There might be insufficient permission to access list(l1.next, length - 1) (recursive.vpr@39.5--39.26) [204096]"}
+          perm <= Mask[null, list(Heap[l1_1, next], length_3 - 1)];
       }
-      Mask := Mask[null, list(Heap[l1_3, next], length_2 - 1):=Mask[null, list(Heap[l1_3, next], length_2 - 1)] - perm];
+      Mask := Mask[null, list(Heap[l1_1, next], length_3 - 1):=Mask[null, list(Heap[l1_1, next], length_3 - 1)] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(l1_3, length_2), Heap[null, list(l1_3, length_2)], list(Heap[l1_3, next], length_2 - 1), Heap[null, list(Heap[l1_3, next], length_2 - 1)]);
+        assume InsidePredicate(list(l1_1, length_3), Heap[null, list(l1_1, length_3)], list(Heap[l1_1, next], length_3 - 1), Heap[null, list(Heap[l1_1, next], length_3 - 1)]);
     }
     perm := FullPerm;
-    Mask := Mask[null, list(l1_3, length_2):=Mask[null, list(l1_3, length_2)] + perm];
+    Mask := Mask[null, list(l1_1, length_3):=Mask[null, list(l1_1, length_3)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(l1_3, length_2));
-    assume Heap[null, list(l1_3, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(Heap[l1_3, val]), CombineFrames(FrameFragment(Heap[l1_3, next]), Heap[null, list(Heap[l1_3, next], length_2 - 1)])) else EmptyFrame));
-    if (!HasDirectPerm(Mask, null, list(l1_3, length_2))) {
-      Heap := Heap[null, list#sm(l1_3, length_2):=ZeroPMask];
+    assume list#trigger(Heap, list(l1_1, length_3));
+    assume Heap[null, list(l1_1, length_3)] == FrameFragment((if length_3 > 0 then CombineFrames(FrameFragment(Heap[l1_1, val]), CombineFrames(FrameFragment(Heap[l1_1, next]), Heap[null, list(Heap[l1_1, next], length_3 - 1)])) else EmptyFrame));
+    if (!HasDirectPerm(Mask, null, list(l1_1, length_3))) {
+      Heap := Heap[null, list#sm(l1_1, length_3):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(l1_3, length_2):=freshVersion];
+      Heap := Heap[null, list(l1_1, length_3):=freshVersion];
     }
-    if (length_2 > 0) {
-      Heap := Heap[null, list#sm(l1_3, length_2):=Heap[null, list#sm(l1_3, length_2)][l1_3, val:=true]];
-      Heap := Heap[null, list#sm(l1_3, length_2):=Heap[null, list#sm(l1_3, length_2)][l1_3, next:=true]];
+    if (length_3 > 0) {
+      Heap := Heap[null, list#sm(l1_1, length_3):=Heap[null, list#sm(l1_1, length_3)][l1_1, val:=true]];
+      Heap := Heap[null, list#sm(l1_1, length_3):=Heap[null, list#sm(l1_1, length_3)][l1_1, next:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_27: Ref, f_16: (Field A B) ::
-        { newPMask[o_27, f_16] }
-        Heap[null, list#sm(l1_3, length_2)][o_27, f_16] || Heap[null, list#sm(Heap[l1_3, next], length_2 - 1)][o_27, f_16] ==> newPMask[o_27, f_16]
+      assume (forall <A, B> o_55: Ref, f_23: (Field A B) ::
+        { newPMask[o_55, f_23] }
+        Heap[null, list#sm(l1_1, length_3)][o_55, f_23] || Heap[null, list#sm(Heap[l1_1, next], length_3 - 1)][o_55, f_23] ==> newPMask[o_55, f_23]
       );
-      Heap := Heap[null, list#sm(l1_3, length_2):=newPMask];
+      Heap := Heap[null, list#sm(l1_1, length_3):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of m2 might not hold. There might be insufficient permission to access list(l1, length) (recursive.vpr@30.10--30.31) [108614]"}
-        perm <= Mask[null, list(l1_3, length_2)];
+      assert {:msg "  Postcondition of m2 might not hold. There might be insufficient permission to access list(l1, length) (recursive.vpr@30.10--30.31) [204098]"}
+        perm <= Mask[null, list(l1_1, length_3)];
     }
-    Mask := Mask[null, list(l1_3, length_2):=Mask[null, list(l1_3, length_2)] - perm];
+    Mask := Mask[null, list(l1_1, length_3):=Mask[null, list(l1_1, length_3)] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of m2 might not hold. There might be insufficient permission to access list(l2, length) (recursive.vpr@31.10--31.31) [108615]"}
-        perm <= Mask[null, list(l2_2, length_2)];
+      assert {:msg "  Postcondition of m2 might not hold. There might be insufficient permission to access list(l2, length) (recursive.vpr@31.10--31.31) [204099]"}
+        perm <= Mask[null, list(l2, length_3)];
     }
-    Mask := Mask[null, list(l2_2, length_2):=Mask[null, list(l2_2, length_2)] - perm];
+    Mask := Mask[null, list(l2, length_3):=Mask[null, list(l2, length_3)] - perm];
     
     // -- Execute unfolding (for extra information)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
-      assume list#trigger(UnfoldingHeap, list(l1_3, length_2));
-      assume UnfoldingHeap[null, list(l1_3, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[l1_3, val]), CombineFrames(FrameFragment(UnfoldingHeap[l1_3, next]), UnfoldingHeap[null, list(UnfoldingHeap[l1_3, next], length_2 - 1)])) else EmptyFrame));
-      ExhaleWellDef1Heap := UnfoldingHeap;
+      assume list#trigger(UnfoldingHeap, list(l1_1, length_3));
+      assume UnfoldingHeap[null, list(l1_1, length_3)] == FrameFragment((if length_3 > 0 then CombineFrames(FrameFragment(UnfoldingHeap[l1_1, val]), CombineFrames(FrameFragment(UnfoldingHeap[l1_1, next]), UnfoldingHeap[null, list(UnfoldingHeap[l1_1, next], length_3 - 1)])) else EmptyFrame));
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of m2 might not hold. There might be insufficient permission to access list(l1, length) (recursive.vpr@32.9--32.52) [108616]"}
-          perm <= UnfoldingMask[null, list(l1_3, length_2)];
+        assert {:msg "  Postcondition of m2 might not hold. There might be insufficient permission to access list(l1, length) (recursive.vpr@32.9--32.52) [204100]"}
+          perm <= UnfoldingMask[null, list(l1_1, length_3)];
       }
-      UnfoldingMask := UnfoldingMask[null, list(l1_3, length_2):=UnfoldingMask[null, list(l1_3, length_2)] - perm];
-      if (length_2 > 0) {
+      UnfoldingMask := UnfoldingMask[null, list(l1_1, length_3):=UnfoldingMask[null, list(l1_1, length_3)] - perm];
+      if (length_3 > 0) {
         perm := FullPerm;
-        assume l1_3 != null;
-        UnfoldingMask := UnfoldingMask[l1_3, val:=UnfoldingMask[l1_3, val] + perm];
+        assume l1_1 != null;
+        UnfoldingMask := UnfoldingMask[l1_1, val:=UnfoldingMask[l1_1, val] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        assume l1_3 != null;
-        UnfoldingMask := UnfoldingMask[l1_3, next:=UnfoldingMask[l1_3, next] + perm];
+        assume l1_1 != null;
+        UnfoldingMask := UnfoldingMask[l1_1, next:=UnfoldingMask[l1_1, next] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[l1_3, next], length_2 - 1):=UnfoldingMask[null, list(UnfoldingHeap[l1_3, next], length_2 - 1)] + perm];
+        UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[l1_1, next], length_3 - 1):=UnfoldingMask[null, list(UnfoldingHeap[l1_1, next], length_3 - 1)] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(list(l1_3, length_2), UnfoldingHeap[null, list(l1_3, length_2)], list(UnfoldingHeap[l1_3, next], length_2 - 1), UnfoldingHeap[null, list(UnfoldingHeap[l1_3, next], length_2 - 1)]);
+          assume InsidePredicate(list(l1_1, length_3), UnfoldingHeap[null, list(l1_1, length_3)], list(UnfoldingHeap[l1_1, next], length_3 - 1), UnfoldingHeap[null, list(UnfoldingHeap[l1_1, next], length_3 - 1)]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-    assert {:msg "  Postcondition of m2 might not hold. Assertion l1.val == v might not hold. (recursive.vpr@32.9--32.52) [108617]"}
-      Heap[l1_3, val] == v_2;
+    assert {:msg "  Postcondition of m2 might not hold. Assertion l1.val == v might not hold. (recursive.vpr@32.9--32.52) [204101]"}
+      Heap[l1_1, val] == v_2;
     
     // -- Free assumptions (exhale module)
-      if (length_2 > 0) {
-        Heap := Heap[null, list#sm(l1_3, length_2):=Heap[null, list#sm(l1_3, length_2)][l1_3, val:=true]];
-        Heap := Heap[null, list#sm(l1_3, length_2):=Heap[null, list#sm(l1_3, length_2)][l1_3, next:=true]];
+      if (length_3 > 0) {
+        Heap := Heap[null, list#sm(l1_1, length_3):=Heap[null, list#sm(l1_1, length_3)][l1_1, val:=true]];
+        Heap := Heap[null, list#sm(l1_1, length_3):=Heap[null, list#sm(l1_1, length_3)][l1_1, next:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_20: Ref, f_10: (Field A B) ::
-          { newPMask[o_20, f_10] }
-          Heap[null, list#sm(l1_3, length_2)][o_20, f_10] || Heap[null, list#sm(Heap[l1_3, next], length_2 - 1)][o_20, f_10] ==> newPMask[o_20, f_10]
+        assume (forall <A, B> o_54: Ref, f_22: (Field A B) ::
+          { newPMask[o_54, f_22] }
+          Heap[null, list#sm(l1_1, length_3)][o_54, f_22] || Heap[null, list#sm(Heap[l1_1, next], length_3 - 1)][o_54, f_22] ==> newPMask[o_54, f_22]
         );
-        Heap := Heap[null, list#sm(l1_3, length_2):=newPMask];
+        Heap := Heap[null, list#sm(l1_1, length_3):=newPMask];
       }
       assume state(Heap, Mask);
     // Finish exhale

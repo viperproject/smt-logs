@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:04
+// Date:         2025-01-26 21:42:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0212.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0212-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -541,13 +541,13 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // Translation of method m
 // ==================================================
 
-procedure m() returns ()
+procedure m_17() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a1: bool;
-  var seq_1: (Seq int);
+  var seq: (Seq int);
   var a2: bool;
   var a3: bool;
   var a5: bool;
@@ -571,66 +571,66 @@ procedure m() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a1 := seq[..33] == seq -- 0212.vpr@8.5--8.41
-    a1 := Seq#Equal(Seq#Take(seq_1, 33), seq_1);
+    a1 := Seq#Equal(Seq#Take(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a2 := seq[..33] == seq -- 0212.vpr@9.5--9.41
-    a2 := Seq#Equal(Seq#Take(seq_1, 33), seq_1);
+    a2 := Seq#Equal(Seq#Take(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a3 := seq[..33] == seq -- 0212.vpr@10.5--10.41
-    a3 := Seq#Equal(Seq#Take(seq_1, 33), seq_1);
+    a3 := Seq#Equal(Seq#Take(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a5 := seq[..33] == seq -- 0212.vpr@11.5--11.41
-    a5 := Seq#Equal(Seq#Take(seq_1, 33), seq_1);
+    a5 := Seq#Equal(Seq#Take(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a6 := seq[..33] == seq -- 0212.vpr@12.5--12.41
-    a6 := Seq#Equal(Seq#Take(seq_1, 33), seq_1);
+    a6 := Seq#Equal(Seq#Take(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a7 := seq[..33] == seq -- 0212.vpr@13.5--13.41
-    a7 := Seq#Equal(Seq#Take(seq_1, 33), seq_1);
+    a7 := Seq#Equal(Seq#Take(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a8 := seq[..33] == seq -- 0212.vpr@14.5--14.41
-    a8 := Seq#Equal(Seq#Take(seq_1, 33), seq_1);
+    a8 := Seq#Equal(Seq#Take(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a9 := seq[33..] == seq -- 0212.vpr@16.5--16.41
-    a9 := Seq#Equal(Seq#Drop(seq_1, 33), seq_1);
+    a9 := Seq#Equal(Seq#Drop(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a10 := seq[33..] == seq -- 0212.vpr@17.5--17.41
-    a10 := Seq#Equal(Seq#Drop(seq_1, 33), seq_1);
+    a10 := Seq#Equal(Seq#Drop(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a11 := seq[33..] == seq -- 0212.vpr@18.5--18.41
-    a11 := Seq#Equal(Seq#Drop(seq_1, 33), seq_1);
+    a11 := Seq#Equal(Seq#Drop(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a12 := seq[33..] == seq -- 0212.vpr@19.5--19.41
-    a12 := Seq#Equal(Seq#Drop(seq_1, 33), seq_1);
+    a12 := Seq#Equal(Seq#Drop(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a13 := seq[33..] == seq -- 0212.vpr@20.5--20.41
-    a13 := Seq#Equal(Seq#Drop(seq_1, 33), seq_1);
+    a13 := Seq#Equal(Seq#Drop(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a14 := seq[33..] == seq -- 0212.vpr@21.5--21.41
-    a14 := Seq#Equal(Seq#Drop(seq_1, 33), seq_1);
+    a14 := Seq#Equal(Seq#Drop(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a15 := seq[33..] == seq -- 0212.vpr@22.5--22.41
-    a15 := Seq#Equal(Seq#Drop(seq_1, 33), seq_1);
+    a15 := Seq#Equal(Seq#Drop(seq, 33), seq);
     assume state(Heap, Mask);
   
   // -- Translating statement: a16 := seq[33..] == seq -- 0212.vpr@23.5--23.41
-    a16 := Seq#Equal(Seq#Drop(seq_1, 33), seq_1);
+    a16 := Seq#Equal(Seq#Drop(seq, 33), seq);
     assume state(Heap, Mask);
 }

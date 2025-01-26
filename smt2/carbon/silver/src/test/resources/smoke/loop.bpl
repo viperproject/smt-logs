@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:33
+// Date:         2025-01-26 21:45:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/smoke/loop.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/smoke/loop-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,11 +181,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo_2(Heap: HeapType): bool;
+function  foo_1(Heap: HeapType): bool;
 function  foo'(Heap: HeapType): bool;
 axiom (forall Heap: HeapType ::
-  { foo_2(Heap) }
-  foo_2(Heap) == foo'(Heap) && dummyFunction(foo#triggerStateless())
+  { foo_1(Heap) }
+  foo_1(Heap) == foo'(Heap) && dummyFunction(foo#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { foo'(Heap) }
@@ -194,8 +194,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), foo_2(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> !foo_2(Heap)
+  { state(Heap, Mask), foo_1(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> !foo_1(Heap)
 );
 
 // Framing axioms
@@ -206,7 +206,7 @@ axiom (forall Heap: HeapType, Mask: MaskType ::
 );
 
 // Trigger function (controlling recursive postconditions)
-function  foo#trigger(frame: FrameType): bool;
+function  foo#trigger_1(frame: FrameType): bool;
 
 // State-independent trigger function
 function  foo#triggerStateless(): bool;
@@ -230,11 +230,11 @@ procedure foo#definedness() returns (Result: bool)
 // Translation of method test
 // ==================================================
 
-procedure test(a_2: bool) returns ()
+procedure test_1(a_2: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -247,8 +247,8 @@ procedure test(a_2: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (a) -- loop.vpr@10.5--13.6
     
@@ -280,7 +280,7 @@ procedure test(a_2: bool) returns ()
                 // Stop execution
                 assume false;
               }
-            assume foo_2(Heap);
+            assume foo_1(Heap);
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Terminate execution

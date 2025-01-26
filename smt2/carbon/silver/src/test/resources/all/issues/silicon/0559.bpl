@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:53
+// Date:         2025-01-26 21:42:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0559.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0559-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,7 +181,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type $T$_DomainType;
 
 // Translation of domain function testf
-function  testf(self_3: $T$_DomainType): int;
+function  testf(self_1: $T$_DomainType): int;
 
 // ==================================================
 // Translation of domain $S$_
@@ -191,7 +191,7 @@ function  testf(self_3: $T$_DomainType): int;
 type $S$_DomainType;
 
 // Translation of domain function testfs
-function  testfs(self_3: $S$_DomainType): int;
+function  testfs(self_1: $S$_DomainType): int;
 
 // ==================================================
 // Translation of domain $T0$_
@@ -201,7 +201,7 @@ function  testfs(self_3: $S$_DomainType): int;
 type $T0$_DomainType;
 
 // Translation of domain function testf0
-function  testf0(self_3: $T0$_DomainType): int;
+function  testf0(self_1: $T0$_DomainType): int;
 
 // ==================================================
 // Translation of domain $T1$_
@@ -211,4 +211,4 @@ function  testf0(self_3: $T0$_DomainType): int;
 type $T1$_DomainType;
 
 // Translation of domain function testf1
-function  testf1(self_3: $T1$_DomainType): int;
+function  testf1(self_1: $T1$_DomainType): int;

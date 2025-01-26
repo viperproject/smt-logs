@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:42
+// Date:         2025-01-26 21:41:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/wildcard.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/wildcard-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -202,11 +202,11 @@ axiom !IsWandField(f_7);
 // ==================================================
 
 // Uninterpreted function definitions
-function  test_2(Heap: HeapType, x: Ref): bool;
+function  test(Heap: HeapType, x: Ref): bool;
 function  test'(Heap: HeapType, x: Ref): bool;
 axiom (forall Heap: HeapType, x: Ref ::
-  { test_2(Heap, x) }
-  test_2(Heap, x) == test'(Heap, x) && dummyFunction(test#triggerStateless(x))
+  { test(Heap, x) }
+  test(Heap, x) == test'(Heap, x) && dummyFunction(test#triggerStateless(x))
 );
 axiom (forall Heap: HeapType, x: Ref ::
   { test'(Heap, x) }
@@ -215,8 +215,8 @@ axiom (forall Heap: HeapType, x: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, x: Ref ::
-  { state(Heap, Mask), test_2(Heap, x) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test_2(Heap, x)
+  { state(Heap, Mask), test(Heap, x) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> test(Heap, x)
 );
 
 // Framing axioms
@@ -265,8 +265,8 @@ procedure test#definedness(x: Ref) returns (Result: bool)
 procedure test_pres_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
   
@@ -282,8 +282,8 @@ procedure test_pres_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, wildcard) -- wildcard.vpr@10.14--10.32
     havoc wildcard;

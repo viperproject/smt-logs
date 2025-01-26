@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:19:45
+// Date:         2025-01-26 21:41:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_list.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_list-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -623,7 +623,7 @@ procedure node__contents#definedness(diz: Ref) returns (Result: (Seq int))
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access node__state(diz) (test_list.vpr@8.1--13.2) [180305]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access node__state(diz) (test_list.vpr@8.1--13.2) [24387]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, node__state(diz)];
       perm := FullPerm;
       assume diz != null;
@@ -642,24 +642,24 @@ procedure node__contents#definedness(diz: Ref) returns (Result: (Seq int))
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.node__next (test_list.vpr@8.1--13.2) [180306]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.node__next (test_list.vpr@8.1--13.2) [24388]"}
         HasDirectPerm(UnfoldingMask, diz, node__next);
       if (UnfoldingHeap[diz, node__next] == null) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.node__val (test_list.vpr@8.1--13.2) [180307]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.node__val (test_list.vpr@8.1--13.2) [24389]"}
           HasDirectPerm(UnfoldingMask, diz, node__val);
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.node__val (test_list.vpr@8.1--13.2) [180308]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.node__val (test_list.vpr@8.1--13.2) [24390]"}
           HasDirectPerm(UnfoldingMask, diz, node__val);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.node__next (test_list.vpr@8.1--13.2) [180309]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.node__next (test_list.vpr@8.1--13.2) [24391]"}
           HasDirectPerm(UnfoldingMask, diz, node__next);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
-          assert {:msg "  Precondition of function node__contents might not hold. Assertion diz.node__next != null might not hold. (test_list.vpr@12.115--12.145) [180310]"}
+          assert {:msg "  Precondition of function node__contents might not hold. Assertion diz.node__next != null might not hold. (test_list.vpr@12.115--12.145) [24392]"}
             UnfoldingHeap[diz, node__next] != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(diz.node__next) (test_list.vpr@12.115--12.145) [180311]"}
+          assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(diz.node__next) (test_list.vpr@12.115--12.145) [24393]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, node__state(UnfoldingHeap[diz, node__next])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -678,9 +678,9 @@ procedure node__contents#definedness(diz: Ref) returns (Result: (Seq int))
         Heap := Heap[null, node__state#sm(diz):=Heap[null, node__state#sm(diz)][diz, node__next:=true]];
         if (Heap[diz, node__next] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, node__state#sm(diz)][o_15, f_20] || Heap[null, node__state#sm(Heap[diz, node__next])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, node__state#sm(diz)][o_5, f_11] || Heap[null, node__state#sm(Heap[diz, node__next])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, node__state#sm(diz):=newPMask];
         }
@@ -748,12 +748,12 @@ procedure node__state#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.node__next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.node__next (test_list.vpr@15.1--17.2) [180312]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.node__next (test_list.vpr@15.1--17.2) [24394]"}
         HasDirectPerm(Mask, diz, node__next);
     if (Heap[diz, node__next] != null) {
       
       // -- Check definedness of acc(node__state(diz.node__next), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.node__next (test_list.vpr@15.1--17.2) [180313]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.node__next (test_list.vpr@15.1--17.2) [24395]"}
           HasDirectPerm(Mask, diz, node__next);
       perm := FullPerm;
       Mask := Mask[null, node__state(Heap[diz, node__next]):=Mask[null, node__state(Heap[diz, node__next])] + perm];
@@ -832,10 +832,10 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
         // Exhale precondition of function application
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function node__contents might not hold. Assertion sys__result != null might not hold. (test_list.vpr@24.11--24.38) [180314]"}
+        assert {:msg "  Precondition of function node__contents might not hold. Assertion sys__result != null might not hold. (test_list.vpr@24.11--24.38) [24396]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(sys__result) (test_list.vpr@24.11--24.38) [180315]"}
+        assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(sys__result) (test_list.vpr@24.11--24.38) [24397]"}
           NoPerm < perm ==> NoPerm < PostMask[null, node__state(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -850,10 +850,10 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
           // Exhale precondition of function application
           ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
-          assert {:msg "  Precondition of function node__contents might not hold. Assertion n != null might not hold. (test_list.vpr@24.78--24.95) [180316]"}
+          assert {:msg "  Precondition of function node__contents might not hold. Assertion n != null might not hold. (test_list.vpr@24.78--24.95) [24398]"}
             n != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(n) (test_list.vpr@24.78--24.95) [180317]"}
+          assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(n) (test_list.vpr@24.78--24.95) [24399]"}
             NoPerm < perm ==> NoPerm < oldMask[null, node__state(n)];
           // Finish exhale
           // Stop execution
@@ -889,7 +889,7 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.node__val := __flatten_4 -- test_list.vpr@34.3--34.31
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.node__val (test_list.vpr@34.3--34.31) [180318]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.node__val (test_list.vpr@34.3--34.31) [24400]"}
       FullPerm == Mask[diz, node__val];
     Heap := Heap[diz, node__val:=__flatten_4];
     assume state(Heap, Mask);
@@ -903,7 +903,7 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.node__next := __flatten_5 -- test_list.vpr@37.3--37.32
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.node__next (test_list.vpr@37.3--37.32) [180319]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.node__next (test_list.vpr@37.3--37.32) [24401]"}
       FullPerm == Mask[diz, node__next];
     Heap := Heap[diz, node__next:=__flatten_5];
     assume state(Heap, Mask);
@@ -913,20 +913,20 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding node__state(diz) might fail. There might be insufficient permission to access diz.node__val (test_list.vpr@38.3--38.36) [180322]"}
+      assert {:msg "  Folding node__state(diz) might fail. There might be insufficient permission to access diz.node__val (test_list.vpr@38.3--38.36) [24404]"}
         perm <= Mask[diz, node__val];
     }
     Mask := Mask[diz, node__val:=Mask[diz, node__val] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding node__state(diz) might fail. There might be insufficient permission to access diz.node__next (test_list.vpr@38.3--38.36) [180324]"}
+      assert {:msg "  Folding node__state(diz) might fail. There might be insufficient permission to access diz.node__next (test_list.vpr@38.3--38.36) [24406]"}
         perm <= Mask[diz, node__next];
     }
     Mask := Mask[diz, node__next:=Mask[diz, node__next] - perm];
     if (Heap[diz, node__next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding node__state(diz) might fail. There might be insufficient permission to access node__state(diz.node__next) (test_list.vpr@38.3--38.36) [180326]"}
+        assert {:msg "  Folding node__state(diz) might fail. There might be insufficient permission to access node__state(diz.node__next) (test_list.vpr@38.3--38.36) [24408]"}
           perm <= Mask[null, node__state(Heap[diz, node__next])];
       }
       Mask := Mask[null, node__state(Heap[diz, node__next]):=Mask[null, node__state(Heap[diz, node__next])] - perm];
@@ -949,9 +949,9 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
     Heap := Heap[null, node__state#sm(diz):=Heap[null, node__state#sm(diz)][diz, node__next:=true]];
     if (Heap[diz, node__next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-        { newPMask[o_16, f_21] }
-        Heap[null, node__state#sm(diz)][o_16, f_21] || Heap[null, node__state#sm(Heap[diz, node__next])][o_16, f_21] ==> newPMask[o_16, f_21]
+      assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+        { newPMask[o_6, f_12] }
+        Heap[null, node__state#sm(diz)][o_6, f_12] || Heap[null, node__state#sm(Heap[diz, node__next])][o_6, f_12] ==> newPMask[o_6, f_12]
       );
       Heap := Heap[null, node__state#sm(diz):=newPMask];
     }
@@ -970,11 +970,11 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
     AssertMask := Mask;
     ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_list.vpr@40.10--40.163) [180328]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_list.vpr@40.10--40.163) [24410]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access node__state(sys__result) (test_list.vpr@40.10--40.163) [180330]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access node__state(sys__result) (test_list.vpr@40.10--40.163) [24412]"}
         perm <= AssertMask[null, node__state(sys__result)];
     }
     AssertMask := AssertMask[null, node__state(sys__result):=AssertMask[null, node__state(sys__result)] - perm];
@@ -984,10 +984,10 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
         // Exhale precondition of function application
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function node__contents might not hold. Assertion sys__result != null might not hold. (test_list.vpr@40.76--40.103) [180331]"}
+        assert {:msg "  Precondition of function node__contents might not hold. Assertion sys__result != null might not hold. (test_list.vpr@40.76--40.103) [24413]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(sys__result) (test_list.vpr@40.76--40.103) [180332]"}
+        assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(sys__result) (test_list.vpr@40.76--40.103) [24414]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, node__state(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1002,17 +1002,17 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
           // Exhale precondition of function application
           ExhaleWellDef1Mask := oldMask;
           ExhaleWellDef1Heap := oldHeap;
-          assert {:msg "  Precondition of function node__contents might not hold. Assertion n != null might not hold. (test_list.vpr@40.143--40.160) [180333]"}
+          assert {:msg "  Precondition of function node__contents might not hold. Assertion n != null might not hold. (test_list.vpr@40.143--40.160) [24415]"}
             n != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(n) (test_list.vpr@40.143--40.160) [180334]"}
+          assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(n) (test_list.vpr@40.143--40.160) [24416]"}
             NoPerm < perm ==> NoPerm < oldMask[null, node__state(n)];
           // Finish exhale
           // Stop execution
           assume false;
         }
       }
-    assert {:msg "  Assert might fail. Assertion node__contents(sys__result) == (n == null ? Seq(v) : Seq(v) ++ old(node__contents(n))) might not hold. (test_list.vpr@40.10--40.163) [180335]"}
+    assert {:msg "  Assert might fail. Assertion node__contents(sys__result) == (n == null ? Seq(v) : Seq(v) ++ old(node__contents(n))) might not hold. (test_list.vpr@40.10--40.163) [24417]"}
       Seq#Equal(node__contents(AssertHeap, sys__result), (if n == null then Seq#Singleton(v_2) else Seq#Append(Seq#Singleton(v_2), node__contents(oldHeap, n))));
     assume state(Heap, Mask);
   
@@ -1024,15 +1024,15 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of node__node might not hold. Assertion sys__result != null might not hold. (test_list.vpr@22.11--22.30) [180336]"}
+    assert {:msg "  Postcondition of node__node might not hold. Assertion sys__result != null might not hold. (test_list.vpr@22.11--22.30) [24418]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of node__node might not hold. There might be insufficient permission to access node__state(sys__result) (test_list.vpr@23.11--23.47) [180337]"}
+      assert {:msg "  Postcondition of node__node might not hold. There might be insufficient permission to access node__state(sys__result) (test_list.vpr@23.11--23.47) [24419]"}
         perm <= Mask[null, node__state(sys__result)];
     }
     Mask := Mask[null, node__state(sys__result):=Mask[null, node__state(sys__result)] - perm];
-    assert {:msg "  Postcondition of node__node might not hold. Assertion node__contents(sys__result) == (n == null ? Seq(v) : Seq(v) ++ old(node__contents(n))) might not hold. (test_list.vpr@24.11--24.97) [180338]"}
+    assert {:msg "  Postcondition of node__node might not hold. Assertion node__contents(sys__result) == (n == null ? Seq(v) : Seq(v) ++ old(node__contents(n))) might not hold. (test_list.vpr@24.11--24.97) [24420]"}
       Seq#Equal(node__contents(Heap, sys__result), (if n == null then Seq#Singleton(v_2) else Seq#Append(Seq#Singleton(v_2), node__contents(oldHeap, n))));
     // Finish exhale
     havoc ExhaleHeap;
@@ -1049,7 +1049,7 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
 {
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var l_2: Ref;
+  var l_1: Ref;
   var __flatten_3: Ref;
   var tmp: (Seq int);
   var ExhaleWellDef0Mask: MaskType;
@@ -1083,7 +1083,7 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
       oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
     assume Heap[__flatten_3, $allocated];
   
   // -- Translating statement: tmp := Seq(1, 2, 3) -- test_list.vpr@51.3--51.22
@@ -1093,7 +1093,7 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: assert tmp == Seq(1) ++ Seq(2, 3) -- test_list.vpr@52.3--52.36
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion tmp == Seq(1) ++ Seq(2, 3) might not hold. (test_list.vpr@52.10--52.36) [180339]"}
+    assert {:msg "  Assert might fail. Assertion tmp == Seq(1) ++ Seq(2, 3) might not hold. (test_list.vpr@52.10--52.36) [24421]"}
       Seq#Equal(tmp, Seq#Append(Seq#Singleton(1), Seq#Append(Seq#Singleton(2), Seq#Singleton(3))));
     assume state(Heap, Mask);
   
@@ -1102,16 +1102,16 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of tmp[0] == 1
-      assert {:msg "  Assert might fail. Index tmp[0] into tmp might exceed sequence length. (test_list.vpr@53.10--53.21) [180340]"}
+      assert {:msg "  Assert might fail. Index tmp[0] into tmp might exceed sequence length. (test_list.vpr@53.10--53.21) [24422]"}
         0 < Seq#Length(tmp);
-    assert {:msg "  Assert might fail. Assertion tmp[0] == 1 might not hold. (test_list.vpr@53.10--53.21) [180341]"}
+    assert {:msg "  Assert might fail. Assertion tmp[0] == 1 might not hold. (test_list.vpr@53.10--53.21) [24423]"}
       Seq#Index(tmp, 0) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp[1..] == Seq(2, 3) -- test_list.vpr@54.3--54.31
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion tmp[1..] == Seq(2, 3) might not hold. (test_list.vpr@54.10--54.31) [180342]"}
+    assert {:msg "  Assert might fail. Assertion tmp[1..] == Seq(2, 3) might not hold. (test_list.vpr@54.10--54.31) [24424]"}
       Seq#Equal(Seq#Drop(tmp, 1), Seq#Append(Seq#Singleton(2), Seq#Singleton(3)));
     assume state(Heap, Mask);
   
@@ -1122,12 +1122,12 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
     // -- Exhaling precondition
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method node__node might not hold. Assertion current_thread_id >= 0 might not hold. (test_list.vpr@55.3--55.57) [180343]"}
+      assert {:msg "  The precondition of method node__node might not hold. Assertion current_thread_id >= 0 might not hold. (test_list.vpr@55.3--55.57) [24425]"}
         current_thread_id >= 0;
       if (null != null) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  The precondition of method node__node might not hold. There might be insufficient permission to access node__state(null) (test_list.vpr@55.3--55.57) [180344]"}
+          assert {:msg "  The precondition of method node__node might not hold. There might be insufficient permission to access node__state(null) (test_list.vpr@55.3--55.57) [24426]"}
             perm <= Mask[null, node__state(null)];
         }
         Mask := Mask[null, node__state(null):=Mask[null, node__state(null)] - perm];
@@ -1152,7 +1152,7 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: l := __flatten_3 -- test_list.vpr@56.3--56.19
-    l_2 := __flatten_3;
+    l_1 := __flatten_3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert node__contents(l) == Seq(37) -- test_list.vpr@57.3--57.38
@@ -1164,11 +1164,11 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function node__contents might not hold. Assertion l != null might not hold. (test_list.vpr@57.10--57.27) [180345]"}
-          l_2 != null;
+        assert {:msg "  Precondition of function node__contents might not hold. Assertion l != null might not hold. (test_list.vpr@57.10--57.27) [24427]"}
+          l_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(l) (test_list.vpr@57.10--57.27) [180346]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, node__state(l_2)];
+        assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(l) (test_list.vpr@57.10--57.27) [24428]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, node__state(l_1)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1176,8 +1176,8 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion node__contents(l) == Seq(37) might not hold. (test_list.vpr@57.10--57.38) [180347]"}
-      Seq#Equal(node__contents(Heap, l_2), Seq#Singleton(37));
+    assert {:msg "  Assert might fail. Assertion node__contents(l) == Seq(37) might not hold. (test_list.vpr@57.10--57.38) [24429]"}
+      Seq#Equal(node__contents(Heap, l_1), Seq#Singleton(37));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (37 in node__contents(l)) -- test_list.vpr@58.3--58.35
@@ -1189,11 +1189,11 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function node__contents might not hold. Assertion l != null might not hold. (test_list.vpr@58.17--58.34) [180348]"}
-          l_2 != null;
+        assert {:msg "  Precondition of function node__contents might not hold. Assertion l != null might not hold. (test_list.vpr@58.17--58.34) [24430]"}
+          l_1 != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(l) (test_list.vpr@58.17--58.34) [180349]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, node__state(l_2)];
+        assert {:msg "  Precondition of function node__contents might not hold. There might be insufficient permission to access node__state(l) (test_list.vpr@58.17--58.34) [24431]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, node__state(l_1)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1201,7 +1201,7 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion (37 in node__contents(l)) might not hold. (test_list.vpr@58.11--58.34) [180350]"}
-      Seq#Contains(node__contents(Heap, l_2), 37);
+    assert {:msg "  Assert might fail. Assertion (37 in node__contents(l)) might not hold. (test_list.vpr@58.11--58.34) [24432]"}
+      Seq#Contains(node__contents(Heap, l_1), 37);
     assume state(Heap, Mask);
 }

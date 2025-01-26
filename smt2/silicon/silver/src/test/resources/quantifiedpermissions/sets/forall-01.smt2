@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:36:07
+; Started: 2025-01-26 21:39:08
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -675,7 +675,7 @@
   :pattern ((Set_in y@5@01 xs@3@01))
   :pattern ((inv@6@01 y@5@01))
   :pattern ((img@7@01 y@5@01))
-  :qid |quant-u-5262|)))
+  :qid |quant-u-21872|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@7@01 r) (Set_in (inv@6@01 r) xs@3@01)) (= (inv@6@01 r) r))
   :pattern ((inv@6@01 r))
@@ -734,7 +734,7 @@
       (pTaken@8@01 r))
     $Perm.No)
   
-  :qid |quant-u-5264|))))
+  :qid |quant-u-21874|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -746,7 +746,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@8@01 r) $Perm.No)
   
-  :qid |quant-u-5265|))))
+  :qid |quant-u-21875|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -759,7 +759,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r x@2@01) (= (- $Perm.Write (pTaken@8@01 r)) $Perm.No))
   
-  :qid |quant-u-5266|))))
+  :qid |quant-u-21876|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -793,7 +793,7 @@
       (pTaken@9@01 r))
     $Perm.No)
   
-  :qid |quant-u-5268|))))
+  :qid |quant-u-21878|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -805,7 +805,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@9@01 r) $Perm.No)
   
-  :qid |quant-u-5269|))))
+  :qid |quant-u-21879|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -818,7 +818,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r x@2@01) (= (- $Perm.Write (pTaken@9@01 r)) $Perm.No))
   
-  :qid |quant-u-5270|))))
+  :qid |quant-u-21880|))))
 (check-sat)
 ; unsat
 (pop) ; 3

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:10:26
+// Date:         2025-01-26 21:45:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue007.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue007-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -298,7 +298,7 @@ procedure test01(x: Ref) returns ()
       oldMask := Mask;
   
   // -- Translating statement: x.f := 3 -- issue007.vpr@9.3--9.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (issue007.vpr@9.3--9.11) [133310]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (issue007.vpr@9.3--9.11) [215167]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=3];
     assume state(Heap, Mask);
@@ -331,11 +331,11 @@ procedure test01(x: Ref) returns ()
       if (b_1_1) {
         
         // -- Check definedness of x.f == 3
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (issue007.vpr@16.3--16.28) [133311]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (issue007.vpr@16.3--16.28) [215168]"}
             HasDirectPerm(Ops_1Mask, x, f_7);
       }
     }
-    assert {:msg "  Packaging wand might fail. Assertion x.f == 3 might not hold. (issue007.vpr@16.3--16.28) [133312]"}
+    assert {:msg "  Packaging wand might fail. Assertion x.f == 3 might not hold. (issue007.vpr@16.3--16.28) [215169]"}
       (b_1_1 && b_1_1) && b_2_1 ==> Ops_1Heap[x, f_7] == 3;
     Mask := Mask[null, wand(true, x, 3):=Mask[null, wand(true, x, 3)] + FullPerm];
     assume state(Heap, Mask);
@@ -345,9 +345,9 @@ procedure test01(x: Ref) returns ()
   // -- Translating statement: x.f := x.f + 1 -- issue007.vpr@17.3--17.17
     
     // -- Check definedness of x.f + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (issue007.vpr@17.3--17.17) [133313]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (issue007.vpr@17.3--17.17) [215170]"}
         HasDirectPerm(Mask, x, f_7);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (issue007.vpr@17.3--17.17) [133314]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (issue007.vpr@17.3--17.17) [215171]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=Heap[x, f_7] + 1];
     assume state(Heap, Mask);
@@ -358,7 +358,7 @@ procedure test01(x: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue007.vpr@18.3--18.26) [133315]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue007.vpr@18.3--18.26) [215172]"}
         FullPerm <= Mask[null, wand(true, x, 3)];
       Mask := Mask[null, wand(true, x, 3):=Mask[null, wand(true, x, 3)] - FullPerm];
     assume state(Heap, Mask);
@@ -380,7 +380,7 @@ procedure test01(x: Ref) returns ()
   // -- Translating statement: assert false -- issue007.vpr@19.3--19.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (issue007.vpr@19.10--19.15) [133317]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (issue007.vpr@19.10--19.15) [215174]"}
       false;
     assume state(Heap, Mask);
 }
@@ -454,7 +454,7 @@ procedure test02(x: Ref) returns ()
         if (b_4) {
           
           // -- Check definedness of x.f == 0
-            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (issue007.vpr@28.3--28.44) [133318]"}
+            assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (issue007.vpr@28.3--28.44) [215175]"}
               HasDirectPerm(Ops_3Mask, x, f_7);
         }
         b_4 := b_4 && Ops_3Heap[x, f_7] == 0;
@@ -476,11 +476,11 @@ procedure test02(x: Ref) returns ()
       if (b_4) {
         
         // -- Check definedness of x.f == 0
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (issue007.vpr@28.3--28.44) [133319]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (issue007.vpr@28.3--28.44) [215176]"}
             HasDirectPerm(Ops_3Mask, x, f_7);
       }
     }
-    assert {:msg "  Packaging wand might fail. Assertion x.f == 0 might not hold. (issue007.vpr@28.3--28.44) [133320]"}
+    assert {:msg "  Packaging wand might fail. Assertion x.f == 0 might not hold. (issue007.vpr@28.3--28.44) [215177]"}
       (b_4 && b_4) && b_5 ==> Ops_3Heap[x, f_7] == 0;
     Mask := Mask[null, wand_1(x, FullPerm, x, 0, x, 0):=Mask[null, wand_1(x, FullPerm, x, 0, x, 0)] + FullPerm];
     assume state(Heap, Mask);
@@ -488,7 +488,7 @@ procedure test02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := 0 -- issue007.vpr@29.3--29.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (issue007.vpr@29.3--29.11) [133321]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (issue007.vpr@29.3--29.11) [215178]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=0];
     assume state(Heap, Mask);
@@ -502,14 +502,14 @@ procedure test02(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method test03 might not hold. There might be insufficient permission to access x.f (issue007.vpr@31.3--31.12) [133322]"}
+        assert {:msg "  The precondition of method test03 might not hold. There might be insufficient permission to access x.f (issue007.vpr@31.3--31.12) [215179]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
-      assert {:msg "  The precondition of method test03 might not hold. Assertion x.f == 0 might not hold. (issue007.vpr@31.3--31.12) [133323]"}
+      assert {:msg "  The precondition of method test03 might not hold. Assertion x.f == 0 might not hold. (issue007.vpr@31.3--31.12) [215180]"}
         Heap[x, f_7] == 0;
       // permLe
-      assert {:msg "  The precondition of method test03 might not hold. Magic wand instance not found. (issue007.vpr@31.3--31.12) [133324]"}
+      assert {:msg "  The precondition of method test03 might not hold. Magic wand instance not found. (issue007.vpr@31.3--31.12) [215181]"}
         FullPerm <= Mask[null, wand_1(x, FullPerm, x, 0, x, 0)];
       Mask := Mask[null, wand_1(x, FullPerm, x, 0, x, 0):=Mask[null, wand_1(x, FullPerm, x, 0, x, 0)] - FullPerm];
       // Finish exhale
@@ -557,7 +557,7 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (issue007.vpr@35.12--35.32) [133325]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (issue007.vpr@35.12--35.32) [215182]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 0;
     assume state(Heap, Mask);
@@ -572,7 +572,7 @@ procedure test03(x: Ref) returns ()
         assume state(WandDefLHSHeap, WandDefLHSMask);
         
         // -- Check definedness of x.f == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (issue007.vpr@40.12--40.45) [133326]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (issue007.vpr@40.12--40.45) [215183]"}
             HasDirectPerm(WandDefLHSMask, x, f_7);
         assume WandDefLHSHeap[x, f_7] == 0;
         assume state(WandDefLHSHeap, WandDefLHSMask);
@@ -586,7 +586,7 @@ procedure test03(x: Ref) returns ()
         WandDefRHSMask := ZeroMask;
         
         // -- Check definedness of x.f == 0
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (issue007.vpr@40.12--40.45) [133327]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (issue007.vpr@40.12--40.45) [215184]"}
             HasDirectPerm(WandDefRHSMask, x, f_7);
         assume WandDefRHSHeap[x, f_7] == 0;
         assume state(WandDefRHSHeap, WandDefRHSMask);
@@ -608,7 +608,7 @@ procedure test03(x: Ref) returns ()
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue007.vpr@47.3--47.42) [133328]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue007.vpr@47.3--47.42) [215185]"}
         FullPerm <= Mask[null, wand_1(x, FullPerm, x, 0, x, 0)];
       Mask := Mask[null, wand_1(x, FullPerm, x, 0, x, 0):=Mask[null, wand_1(x, FullPerm, x, 0, x, 0)] - FullPerm];
     assume state(Heap, Mask);
@@ -618,11 +618,11 @@ procedure test03(x: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (issue007.vpr@47.3--47.42) [133330]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (issue007.vpr@47.3--47.42) [215187]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
-      assert {:msg "  Applying wand might fail. Assertion x.f == 0 might not hold. (issue007.vpr@47.3--47.42) [133331]"}
+      assert {:msg "  Applying wand might fail. Assertion x.f == 0 might not hold. (issue007.vpr@47.3--47.42) [215188]"}
         Heap[x, f_7] == 0;
     assume state(Heap, Mask);
     

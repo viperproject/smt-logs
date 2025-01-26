@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:28
+// Date:         2025-01-26 21:42:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0011.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0011-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,15 +177,15 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique b_94: Field NormalField bool;
-axiom !IsPredicateField(b_94);
-axiom !IsWandField(b_94);
-const unique c_10: Field NormalField Ref;
-axiom !IsPredicateField(c_10);
-axiom !IsWandField(c_10);
-const unique d_3: Field NormalField Ref;
-axiom !IsPredicateField(d_3);
-axiom !IsWandField(d_3);
+const unique b_32: Field NormalField bool;
+axiom !IsPredicateField(b_32);
+axiom !IsWandField(b_32);
+const unique c_12: Field NormalField Ref;
+axiom !IsPredicateField(c_12);
+axiom !IsWandField(c_12);
+const unique d_1: Field NormalField Ref;
+axiom !IsPredicateField(d_1);
+axiom !IsWandField(d_1);
 const unique f_7: Field NormalField int;
 axiom !IsPredicateField(f_7);
 axiom !IsWandField(f_7);
@@ -198,14 +198,14 @@ procedure succeeds1(k: Perm, x: Ref) returns (r_1: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -220,119 +220,119 @@ procedure succeeds1(k: Perm, x: Ref) returns (r_1: bool)
     assume NoPerm < k;
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@11.12--11.53) [205481]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@11.12--11.53) [58993]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, c_10:=Mask[x, c_10] + perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@11.12--11.53) [205482]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@11.12--11.53) [58994]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, d_3:=Mask[x, d_3] + perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@11.12--11.53) [205483]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@11.12--11.53) [58995]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, b_94:=Mask[x, b_94] + perm];
+    Mask := Mask[x, b_32:=Mask[x, b_32] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of x.c != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@12.12--12.38) [205484]"}
-        HasDirectPerm(Mask, x, c_10);
-    assume Heap[x, c_10] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@12.12--12.38) [58996]"}
+        HasDirectPerm(Mask, x, c_12);
+    assume Heap[x, c_12] != null;
     
     // -- Check definedness of x.d != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@12.12--12.38) [205485]"}
-        HasDirectPerm(Mask, x, d_3);
-    assume Heap[x, d_3] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@12.12--12.38) [58997]"}
+        HasDirectPerm(Mask, x, d_1);
+    assume Heap[x, d_1] != null;
     assume state(Heap, Mask);
     
     // -- Check definedness of x.b == (x.c == x.d)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@13.12--13.31) [205486]"}
-        HasDirectPerm(Mask, x, b_94);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@13.12--13.31) [205487]"}
-        HasDirectPerm(Mask, x, c_10);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@13.12--13.31) [205488]"}
-        HasDirectPerm(Mask, x, d_3);
-    assume Heap[x, b_94] == (Heap[x, c_10] == Heap[x, d_3]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@13.12--13.31) [58998]"}
+        HasDirectPerm(Mask, x, b_32);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@13.12--13.31) [58999]"}
+        HasDirectPerm(Mask, x, c_12);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@13.12--13.31) [59000]"}
+        HasDirectPerm(Mask, x, d_1);
+    assume Heap[x, b_32] == (Heap[x, c_12] == Heap[x, d_1]);
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.c.f, 1 / 2)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@14.12--14.46) [205489]"}
-        HasDirectPerm(Mask, x, c_10);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@14.12--14.46) [59001]"}
+        HasDirectPerm(Mask, x, c_12);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@14.12--14.46) [205490]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@14.12--14.46) [59002]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Heap[x, c_10] != null;
-    Mask := Mask[Heap[x, c_10], f_7:=Mask[Heap[x, c_10], f_7] + perm];
+    assume perm > NoPerm ==> Heap[x, c_12] != null;
+    Mask := Mask[Heap[x, c_12], f_7:=Mask[Heap[x, c_12], f_7] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.d.f, 1 / 2)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@14.12--14.46) [205491]"}
-        HasDirectPerm(Mask, x, d_3);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@14.12--14.46) [59003]"}
+        HasDirectPerm(Mask, x, d_1);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@14.12--14.46) [205492]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@14.12--14.46) [59004]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Heap[x, d_3] != null;
-    Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] + perm];
+    assume perm > NoPerm ==> Heap[x, d_1] != null;
+    Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@15.11--15.52) [205493]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@15.11--15.52) [59005]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, c_10:=PostMask[x, c_10] + perm];
+    PostMask := PostMask[x, c_12:=PostMask[x, c_12] + perm];
     assume state(PostHeap, PostMask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@15.11--15.52) [205494]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@15.11--15.52) [59006]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, d_3:=PostMask[x, d_3] + perm];
+    PostMask := PostMask[x, d_1:=PostMask[x, d_1] + perm];
     assume state(PostHeap, PostMask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@15.11--15.52) [205495]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@15.11--15.52) [59007]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, b_94:=PostMask[x, b_94] + perm];
+    PostMask := PostMask[x, b_32:=PostMask[x, b_32] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.c != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@16.11--16.37) [205496]"}
-        HasDirectPerm(PostMask, x, c_10);
-    assume PostHeap[x, c_10] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@16.11--16.37) [59008]"}
+        HasDirectPerm(PostMask, x, c_12);
+    assume PostHeap[x, c_12] != null;
     
     // -- Check definedness of x.d != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@16.11--16.37) [205497]"}
-        HasDirectPerm(PostMask, x, d_3);
-    assume PostHeap[x, d_3] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@16.11--16.37) [59009]"}
+        HasDirectPerm(PostMask, x, d_1);
+    assume PostHeap[x, d_1] != null;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.b
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@17.11--17.29) [205498]"}
-        HasDirectPerm(PostMask, x, b_94);
-    if (PostHeap[x, b_94]) {
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@17.11--17.29) [59010]"}
+        HasDirectPerm(PostMask, x, b_32);
+    if (PostHeap[x, b_32]) {
       
       // -- Check definedness of acc(x.d.f, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@17.11--17.29) [205499]"}
-          HasDirectPerm(PostMask, x, d_3);
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@17.11--17.29) [59011]"}
+          HasDirectPerm(PostMask, x, d_1);
       perm := FullPerm;
-      assume PostHeap[x, d_3] != null;
-      PostMask := PostMask[PostHeap[x, d_3], f_7:=PostMask[PostHeap[x, d_3], f_7] + perm];
+      assume PostHeap[x, d_1] != null;
+      PostMask := PostMask[PostHeap[x, d_1], f_7:=PostMask[PostHeap[x, d_1], f_7] + perm];
       assume state(PostHeap, PostMask);
     }
     assume state(PostHeap, PostMask);
@@ -345,25 +345,25 @@ procedure succeeds1(k: Perm, x: Ref) returns (r_1: bool)
   // -- Translating statement: if (x.b) -- 0011.vpr@20.3--22.4
     
     // -- Check definedness of x.b
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.b (0011.vpr@20.7--20.10) [205500]"}
-        HasDirectPerm(Mask, x, b_94);
-    if (Heap[x, b_94]) {
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.b (0011.vpr@20.7--20.10) [59012]"}
+        HasDirectPerm(Mask, x, b_32);
+    if (Heap[x, b_32]) {
       
       // -- Translating statement: assert acc(x.c.f, write) -- 0011.vpr@21.5--21.22
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         
         // -- Check definedness of acc(x.c.f, write)
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.c (0011.vpr@21.12--21.22) [205501]"}
-            HasDirectPerm(ExhaleWellDef0Mask, x, c_10);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.c (0011.vpr@21.12--21.22) [59013]"}
+            HasDirectPerm(ExhaleWellDef0Mask, x, c_12);
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.c.f (0011.vpr@21.12--21.22) [205503]"}
-            perm <= AssertMask[AssertHeap[x, c_10], f_7];
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.c.f (0011.vpr@21.12--21.22) [59015]"}
+            perm <= AssertMask[AssertHeap[x, c_12], f_7];
         }
-        AssertMask := AssertMask[AssertHeap[x, c_10], f_7:=AssertMask[AssertHeap[x, c_10], f_7] - perm];
+        AssertMask := AssertMask[AssertHeap[x, c_12], f_7:=AssertMask[AssertHeap[x, c_12], f_7] - perm];
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -371,57 +371,57 @@ procedure succeeds1(k: Perm, x: Ref) returns (r_1: bool)
   // -- Translating statement: r := (x.b ? x.c == x.d : true) -- 0011.vpr@24.3--24.31
     
     // -- Check definedness of (x.b ? x.c == x.d : true)
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.b (0011.vpr@24.3--24.31) [205504]"}
-        HasDirectPerm(Mask, x, b_94);
-      if (Heap[x, b_94]) {
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.c (0011.vpr@24.3--24.31) [205505]"}
-          HasDirectPerm(Mask, x, c_10);
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.d (0011.vpr@24.3--24.31) [205506]"}
-          HasDirectPerm(Mask, x, d_3);
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.b (0011.vpr@24.3--24.31) [59016]"}
+        HasDirectPerm(Mask, x, b_32);
+      if (Heap[x, b_32]) {
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.c (0011.vpr@24.3--24.31) [59017]"}
+          HasDirectPerm(Mask, x, c_12);
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.d (0011.vpr@24.3--24.31) [59018]"}
+          HasDirectPerm(Mask, x, d_1);
       }
-    r_1 := !Heap[x, b_94] || Heap[x, c_10] == Heap[x, d_3];
+    r_1 := !Heap[x, b_32] || Heap[x, c_12] == Heap[x, d_1];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := k;
-    assert {:msg "  Postcondition of succeeds1 might not hold. Fraction k might be negative. (0011.vpr@15.11--15.52) [205507]"}
+    assert {:msg "  Postcondition of succeeds1 might not hold. Fraction k might be negative. (0011.vpr@15.11--15.52) [59019]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of succeeds1 might not hold. There might be insufficient permission to access x.c (0011.vpr@15.11--15.52) [205508]"}
-        perm <= Mask[x, c_10];
+      assert {:msg "  Postcondition of succeeds1 might not hold. There might be insufficient permission to access x.c (0011.vpr@15.11--15.52) [59020]"}
+        perm <= Mask[x, c_12];
     }
-    Mask := Mask[x, c_10:=Mask[x, c_10] - perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] - perm];
     perm := k;
-    assert {:msg "  Postcondition of succeeds1 might not hold. Fraction k might be negative. (0011.vpr@15.11--15.52) [205509]"}
+    assert {:msg "  Postcondition of succeeds1 might not hold. Fraction k might be negative. (0011.vpr@15.11--15.52) [59021]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of succeeds1 might not hold. There might be insufficient permission to access x.d (0011.vpr@15.11--15.52) [205510]"}
-        perm <= Mask[x, d_3];
+      assert {:msg "  Postcondition of succeeds1 might not hold. There might be insufficient permission to access x.d (0011.vpr@15.11--15.52) [59022]"}
+        perm <= Mask[x, d_1];
     }
-    Mask := Mask[x, d_3:=Mask[x, d_3] - perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] - perm];
     perm := k;
-    assert {:msg "  Postcondition of succeeds1 might not hold. Fraction k might be negative. (0011.vpr@15.11--15.52) [205511]"}
+    assert {:msg "  Postcondition of succeeds1 might not hold. Fraction k might be negative. (0011.vpr@15.11--15.52) [59023]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of succeeds1 might not hold. There might be insufficient permission to access x.b (0011.vpr@15.11--15.52) [205512]"}
-        perm <= Mask[x, b_94];
+      assert {:msg "  Postcondition of succeeds1 might not hold. There might be insufficient permission to access x.b (0011.vpr@15.11--15.52) [59024]"}
+        perm <= Mask[x, b_32];
     }
-    Mask := Mask[x, b_94:=Mask[x, b_94] - perm];
-    assert {:msg "  Postcondition of succeeds1 might not hold. Assertion x.c != null might not hold. (0011.vpr@16.11--16.37) [205513]"}
-      Heap[x, c_10] != null;
-    assert {:msg "  Postcondition of succeeds1 might not hold. Assertion x.d != null might not hold. (0011.vpr@16.11--16.37) [205514]"}
-      Heap[x, d_3] != null;
-    if (Heap[x, b_94]) {
+    Mask := Mask[x, b_32:=Mask[x, b_32] - perm];
+    assert {:msg "  Postcondition of succeeds1 might not hold. Assertion x.c != null might not hold. (0011.vpr@16.11--16.37) [59025]"}
+      Heap[x, c_12] != null;
+    assert {:msg "  Postcondition of succeeds1 might not hold. Assertion x.d != null might not hold. (0011.vpr@16.11--16.37) [59026]"}
+      Heap[x, d_1] != null;
+    if (Heap[x, b_32]) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of succeeds1 might not hold. There might be insufficient permission to access x.d.f (0011.vpr@17.11--17.29) [205515]"}
-          perm <= Mask[Heap[x, d_3], f_7];
+        assert {:msg "  Postcondition of succeeds1 might not hold. There might be insufficient permission to access x.d.f (0011.vpr@17.11--17.29) [59027]"}
+          perm <= Mask[Heap[x, d_1], f_7];
       }
-      Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] - perm];
+      Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] - perm];
     }
-    assert {:msg "  Postcondition of succeeds1 might not hold. Assertion r == true might not hold. (0011.vpr@18.11--18.20) [205516]"}
+    assert {:msg "  Postcondition of succeeds1 might not hold. Assertion r == true might not hold. (0011.vpr@18.11--18.20) [59028]"}
       r_1;
     // Finish exhale
     havoc ExhaleHeap;
@@ -437,12 +437,12 @@ procedure succeeds2(k: Perm, x: Ref) returns (r_1: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -457,140 +457,140 @@ procedure succeeds2(k: Perm, x: Ref) returns (r_1: bool)
     assume NoPerm < k;
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@29.12--29.53) [205517]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@29.12--29.53) [59029]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, c_10:=Mask[x, c_10] + perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@29.12--29.53) [205518]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@29.12--29.53) [59030]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, d_3:=Mask[x, d_3] + perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@29.12--29.53) [205519]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@29.12--29.53) [59031]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, b_94:=Mask[x, b_94] + perm];
+    Mask := Mask[x, b_32:=Mask[x, b_32] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of x.c != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@30.12--30.38) [205520]"}
-        HasDirectPerm(Mask, x, c_10);
-    assume Heap[x, c_10] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@30.12--30.38) [59032]"}
+        HasDirectPerm(Mask, x, c_12);
+    assume Heap[x, c_12] != null;
     
     // -- Check definedness of x.d != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@30.12--30.38) [205521]"}
-        HasDirectPerm(Mask, x, d_3);
-    assume Heap[x, d_3] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@30.12--30.38) [59033]"}
+        HasDirectPerm(Mask, x, d_1);
+    assume Heap[x, d_1] != null;
     assume state(Heap, Mask);
     
     // -- Check definedness of x.b == (x.c == x.d)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@31.12--31.31) [205522]"}
-        HasDirectPerm(Mask, x, b_94);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@31.12--31.31) [205523]"}
-        HasDirectPerm(Mask, x, c_10);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@31.12--31.31) [205524]"}
-        HasDirectPerm(Mask, x, d_3);
-    assume Heap[x, b_94] == (Heap[x, c_10] == Heap[x, d_3]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@31.12--31.31) [59034]"}
+        HasDirectPerm(Mask, x, b_32);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@31.12--31.31) [59035]"}
+        HasDirectPerm(Mask, x, c_12);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@31.12--31.31) [59036]"}
+        HasDirectPerm(Mask, x, d_1);
+    assume Heap[x, b_32] == (Heap[x, c_12] == Heap[x, d_1]);
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.c.f, k)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@32.12--32.39) [205525]"}
-        HasDirectPerm(Mask, x, c_10);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@32.12--32.39) [59037]"}
+        HasDirectPerm(Mask, x, c_12);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@32.12--32.39) [205526]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@32.12--32.39) [59038]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Heap[x, c_10] != null;
-    Mask := Mask[Heap[x, c_10], f_7:=Mask[Heap[x, c_10], f_7] + perm];
+    assume perm > NoPerm ==> Heap[x, c_12] != null;
+    Mask := Mask[Heap[x, c_12], f_7:=Mask[Heap[x, c_12], f_7] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.d.f, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@32.12--32.39) [205527]"}
-        HasDirectPerm(Mask, x, d_3);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@32.12--32.39) [59039]"}
+        HasDirectPerm(Mask, x, d_1);
     perm := FullPerm;
-    assume Heap[x, d_3] != null;
-    Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] + perm];
+    assume Heap[x, d_1] != null;
+    Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@33.11--33.52) [205528]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@33.11--33.52) [59040]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, c_10:=PostMask[x, c_10] + perm];
+    PostMask := PostMask[x, c_12:=PostMask[x, c_12] + perm];
     assume state(PostHeap, PostMask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@33.11--33.52) [205529]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@33.11--33.52) [59041]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, d_3:=PostMask[x, d_3] + perm];
+    PostMask := PostMask[x, d_1:=PostMask[x, d_1] + perm];
     assume state(PostHeap, PostMask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@33.11--33.52) [205530]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@33.11--33.52) [59042]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, b_94:=PostMask[x, b_94] + perm];
+    PostMask := PostMask[x, b_32:=PostMask[x, b_32] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.c != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@34.11--34.37) [205531]"}
-        HasDirectPerm(PostMask, x, c_10);
-    assume PostHeap[x, c_10] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@34.11--34.37) [59043]"}
+        HasDirectPerm(PostMask, x, c_12);
+    assume PostHeap[x, c_12] != null;
     
     // -- Check definedness of x.d != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@34.11--34.37) [205532]"}
-        HasDirectPerm(PostMask, x, d_3);
-    assume PostHeap[x, d_3] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@34.11--34.37) [59044]"}
+        HasDirectPerm(PostMask, x, d_1);
+    assume PostHeap[x, d_1] != null;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(x.c.f, k)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@35.11--35.38) [205533]"}
-        HasDirectPerm(PostMask, x, c_10);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@35.11--35.38) [59045]"}
+        HasDirectPerm(PostMask, x, c_12);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@35.11--35.38) [205534]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@35.11--35.38) [59046]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> PostHeap[x, c_10] != null;
-    PostMask := PostMask[PostHeap[x, c_10], f_7:=PostMask[PostHeap[x, c_10], f_7] + perm];
+    assume perm > NoPerm ==> PostHeap[x, c_12] != null;
+    PostMask := PostMask[PostHeap[x, c_12], f_7:=PostMask[PostHeap[x, c_12], f_7] + perm];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(x.d.f, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@35.11--35.38) [205535]"}
-        HasDirectPerm(PostMask, x, d_3);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@35.11--35.38) [59047]"}
+        HasDirectPerm(PostMask, x, d_1);
     perm := FullPerm;
-    assume PostHeap[x, d_3] != null;
-    PostMask := PostMask[PostHeap[x, d_3], f_7:=PostMask[PostHeap[x, d_3], f_7] + perm];
+    assume PostHeap[x, d_1] != null;
+    PostMask := PostMask[PostHeap[x, d_1], f_7:=PostMask[PostHeap[x, d_1], f_7] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.b
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@36.11--36.33) [205536]"}
-        HasDirectPerm(PostMask, x, b_94);
-    if (PostHeap[x, b_94]) {
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@36.11--36.33) [59048]"}
+        HasDirectPerm(PostMask, x, b_32);
+    if (PostHeap[x, b_32]) {
       
       // -- Check definedness of x.c.f == x.d.f
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@36.11--36.33) [205537]"}
-          HasDirectPerm(PostMask, x, c_10);
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c.f (0011.vpr@36.11--36.33) [205538]"}
-          HasDirectPerm(PostMask, PostHeap[x, c_10], f_7);
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@36.11--36.33) [205539]"}
-          HasDirectPerm(PostMask, x, d_3);
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d.f (0011.vpr@36.11--36.33) [205540]"}
-          HasDirectPerm(PostMask, PostHeap[x, d_3], f_7);
-      assume PostHeap[PostHeap[x, c_10], f_7] == PostHeap[PostHeap[x, d_3], f_7];
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@36.11--36.33) [59049]"}
+          HasDirectPerm(PostMask, x, c_12);
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c.f (0011.vpr@36.11--36.33) [59050]"}
+          HasDirectPerm(PostMask, PostHeap[x, c_12], f_7);
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@36.11--36.33) [59051]"}
+          HasDirectPerm(PostMask, x, d_1);
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d.f (0011.vpr@36.11--36.33) [59052]"}
+          HasDirectPerm(PostMask, PostHeap[x, d_1], f_7);
+      assume PostHeap[PostHeap[x, c_12], f_7] == PostHeap[PostHeap[x, d_1], f_7];
     }
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -598,53 +598,53 @@ procedure succeeds2(k: Perm, x: Ref) returns (r_1: bool)
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := k;
-    assert {:msg "  Postcondition of succeeds2 might not hold. Fraction k might be negative. (0011.vpr@33.11--33.52) [205541]"}
+    assert {:msg "  Postcondition of succeeds2 might not hold. Fraction k might be negative. (0011.vpr@33.11--33.52) [59053]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of succeeds2 might not hold. There might be insufficient permission to access x.c (0011.vpr@33.11--33.52) [205542]"}
-        perm <= Mask[x, c_10];
+      assert {:msg "  Postcondition of succeeds2 might not hold. There might be insufficient permission to access x.c (0011.vpr@33.11--33.52) [59054]"}
+        perm <= Mask[x, c_12];
     }
-    Mask := Mask[x, c_10:=Mask[x, c_10] - perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] - perm];
     perm := k;
-    assert {:msg "  Postcondition of succeeds2 might not hold. Fraction k might be negative. (0011.vpr@33.11--33.52) [205543]"}
+    assert {:msg "  Postcondition of succeeds2 might not hold. Fraction k might be negative. (0011.vpr@33.11--33.52) [59055]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of succeeds2 might not hold. There might be insufficient permission to access x.d (0011.vpr@33.11--33.52) [205544]"}
-        perm <= Mask[x, d_3];
+      assert {:msg "  Postcondition of succeeds2 might not hold. There might be insufficient permission to access x.d (0011.vpr@33.11--33.52) [59056]"}
+        perm <= Mask[x, d_1];
     }
-    Mask := Mask[x, d_3:=Mask[x, d_3] - perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] - perm];
     perm := k;
-    assert {:msg "  Postcondition of succeeds2 might not hold. Fraction k might be negative. (0011.vpr@33.11--33.52) [205545]"}
+    assert {:msg "  Postcondition of succeeds2 might not hold. Fraction k might be negative. (0011.vpr@33.11--33.52) [59057]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of succeeds2 might not hold. There might be insufficient permission to access x.b (0011.vpr@33.11--33.52) [205546]"}
-        perm <= Mask[x, b_94];
+      assert {:msg "  Postcondition of succeeds2 might not hold. There might be insufficient permission to access x.b (0011.vpr@33.11--33.52) [59058]"}
+        perm <= Mask[x, b_32];
     }
-    Mask := Mask[x, b_94:=Mask[x, b_94] - perm];
-    assert {:msg "  Postcondition of succeeds2 might not hold. Assertion x.c != null might not hold. (0011.vpr@34.11--34.37) [205547]"}
-      Heap[x, c_10] != null;
-    assert {:msg "  Postcondition of succeeds2 might not hold. Assertion x.d != null might not hold. (0011.vpr@34.11--34.37) [205548]"}
-      Heap[x, d_3] != null;
+    Mask := Mask[x, b_32:=Mask[x, b_32] - perm];
+    assert {:msg "  Postcondition of succeeds2 might not hold. Assertion x.c != null might not hold. (0011.vpr@34.11--34.37) [59059]"}
+      Heap[x, c_12] != null;
+    assert {:msg "  Postcondition of succeeds2 might not hold. Assertion x.d != null might not hold. (0011.vpr@34.11--34.37) [59060]"}
+      Heap[x, d_1] != null;
     perm := k;
-    assert {:msg "  Postcondition of succeeds2 might not hold. Fraction k might be negative. (0011.vpr@35.11--35.38) [205549]"}
+    assert {:msg "  Postcondition of succeeds2 might not hold. Fraction k might be negative. (0011.vpr@35.11--35.38) [59061]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of succeeds2 might not hold. There might be insufficient permission to access x.c.f (0011.vpr@35.11--35.38) [205550]"}
-        perm <= Mask[Heap[x, c_10], f_7];
+      assert {:msg "  Postcondition of succeeds2 might not hold. There might be insufficient permission to access x.c.f (0011.vpr@35.11--35.38) [59062]"}
+        perm <= Mask[Heap[x, c_12], f_7];
     }
-    Mask := Mask[Heap[x, c_10], f_7:=Mask[Heap[x, c_10], f_7] - perm];
+    Mask := Mask[Heap[x, c_12], f_7:=Mask[Heap[x, c_12], f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of succeeds2 might not hold. There might be insufficient permission to access x.d.f (0011.vpr@35.11--35.38) [205551]"}
-        perm <= Mask[Heap[x, d_3], f_7];
+      assert {:msg "  Postcondition of succeeds2 might not hold. There might be insufficient permission to access x.d.f (0011.vpr@35.11--35.38) [59063]"}
+        perm <= Mask[Heap[x, d_1], f_7];
     }
-    Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] - perm];
-    if (Heap[x, b_94]) {
-      assert {:msg "  Postcondition of succeeds2 might not hold. Assertion x.c.f == x.d.f might not hold. (0011.vpr@36.11--36.33) [205552]"}
-        Heap[Heap[x, c_10], f_7] == Heap[Heap[x, d_3], f_7];
+    Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] - perm];
+    if (Heap[x, b_32]) {
+      assert {:msg "  Postcondition of succeeds2 might not hold. Assertion x.c.f == x.d.f might not hold. (0011.vpr@36.11--36.33) [59064]"}
+        Heap[Heap[x, c_12], f_7] == Heap[Heap[x, d_1], f_7];
     }
     // Finish exhale
     havoc ExhaleHeap;
@@ -660,12 +660,12 @@ procedure fails0(k: Perm, b1: bool, x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -678,13 +678,13 @@ procedure fails0(k: Perm, b1: bool, x: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@40.12--40.42) [205553]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@40.12--40.42) [59065]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@40.12--40.42) [205554]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@40.12--40.42) [59066]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -694,8 +694,8 @@ procedure fails0(k: Perm, b1: bool, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -716,17 +716,17 @@ procedure fails0(k: Perm, b1: bool, x: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of fails0 might not hold. There might be insufficient permission to access x.f (0011.vpr@41.11--41.19) [205555]"}
+      assert {:msg "  Postcondition of fails0 might not hold. There might be insufficient permission to access x.f (0011.vpr@41.11--41.19) [59067]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of fails0 might not hold. There might be insufficient permission to access x.f (0011.vpr@43.11--43.19) [205556]"}
+      assert {:msg "  Postcondition of fails0 might not hold. There might be insufficient permission to access x.f (0011.vpr@43.11--43.19) [59068]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -744,14 +744,14 @@ procedure fails1(k: Perm, x: Ref) returns (r_1: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -766,134 +766,134 @@ procedure fails1(k: Perm, x: Ref) returns (r_1: bool)
     assume NoPerm < k;
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@48.12--48.53) [205557]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@48.12--48.53) [59069]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, c_10:=Mask[x, c_10] + perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@48.12--48.53) [205558]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@48.12--48.53) [59070]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, d_3:=Mask[x, d_3] + perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@48.12--48.53) [205559]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@48.12--48.53) [59071]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, b_94:=Mask[x, b_94] + perm];
+    Mask := Mask[x, b_32:=Mask[x, b_32] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of x.c != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@49.12--49.38) [205560]"}
-        HasDirectPerm(Mask, x, c_10);
-    assume Heap[x, c_10] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@49.12--49.38) [59072]"}
+        HasDirectPerm(Mask, x, c_12);
+    assume Heap[x, c_12] != null;
     
     // -- Check definedness of x.d != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@49.12--49.38) [205561]"}
-        HasDirectPerm(Mask, x, d_3);
-    assume Heap[x, d_3] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@49.12--49.38) [59073]"}
+        HasDirectPerm(Mask, x, d_1);
+    assume Heap[x, d_1] != null;
     assume state(Heap, Mask);
     
     // -- Check definedness of x.b == (x.c == x.d)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@50.12--50.31) [205562]"}
-        HasDirectPerm(Mask, x, b_94);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@50.12--50.31) [205563]"}
-        HasDirectPerm(Mask, x, c_10);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@50.12--50.31) [205564]"}
-        HasDirectPerm(Mask, x, d_3);
-    assume Heap[x, b_94] == (Heap[x, c_10] == Heap[x, d_3]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@50.12--50.31) [59074]"}
+        HasDirectPerm(Mask, x, b_32);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@50.12--50.31) [59075]"}
+        HasDirectPerm(Mask, x, c_12);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@50.12--50.31) [59076]"}
+        HasDirectPerm(Mask, x, d_1);
+    assume Heap[x, b_32] == (Heap[x, c_12] == Heap[x, d_1]);
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.c.f, 1 / 2)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@51.12--51.46) [205565]"}
-        HasDirectPerm(Mask, x, c_10);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@51.12--51.46) [59077]"}
+        HasDirectPerm(Mask, x, c_12);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@51.12--51.46) [205566]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@51.12--51.46) [59078]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Heap[x, c_10] != null;
-    Mask := Mask[Heap[x, c_10], f_7:=Mask[Heap[x, c_10], f_7] + perm];
+    assume perm > NoPerm ==> Heap[x, c_12] != null;
+    Mask := Mask[Heap[x, c_12], f_7:=Mask[Heap[x, c_12], f_7] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.d.f, 1 / 2)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@51.12--51.46) [205567]"}
-        HasDirectPerm(Mask, x, d_3);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@51.12--51.46) [59079]"}
+        HasDirectPerm(Mask, x, d_1);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@51.12--51.46) [205568]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0011.vpr@51.12--51.46) [59080]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Heap[x, d_3] != null;
-    Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] + perm];
+    assume perm > NoPerm ==> Heap[x, d_1] != null;
+    Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@52.11--52.52) [205569]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@52.11--52.52) [59081]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, c_10:=PostMask[x, c_10] + perm];
+    PostMask := PostMask[x, c_12:=PostMask[x, c_12] + perm];
     assume state(PostHeap, PostMask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@52.11--52.52) [205570]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@52.11--52.52) [59082]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, d_3:=PostMask[x, d_3] + perm];
+    PostMask := PostMask[x, d_1:=PostMask[x, d_1] + perm];
     assume state(PostHeap, PostMask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@52.11--52.52) [205571]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@52.11--52.52) [59083]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, b_94:=PostMask[x, b_94] + perm];
+    PostMask := PostMask[x, b_32:=PostMask[x, b_32] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.c != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@53.11--53.37) [205572]"}
-        HasDirectPerm(PostMask, x, c_10);
-    assume PostHeap[x, c_10] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@53.11--53.37) [59084]"}
+        HasDirectPerm(PostMask, x, c_12);
+    assume PostHeap[x, c_12] != null;
     
     // -- Check definedness of x.d != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@53.11--53.37) [205573]"}
-        HasDirectPerm(PostMask, x, d_3);
-    assume PostHeap[x, d_3] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@53.11--53.37) [59085]"}
+        HasDirectPerm(PostMask, x, d_1);
+    assume PostHeap[x, d_1] != null;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.b
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@54.11--54.29) [205574]"}
-        HasDirectPerm(PostMask, x, b_94);
-    if (PostHeap[x, b_94]) {
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@54.11--54.29) [59086]"}
+        HasDirectPerm(PostMask, x, b_32);
+    if (PostHeap[x, b_32]) {
       
       // -- Check definedness of acc(x.d.f, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@54.11--54.29) [205575]"}
-          HasDirectPerm(PostMask, x, d_3);
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@54.11--54.29) [59087]"}
+          HasDirectPerm(PostMask, x, d_1);
       perm := FullPerm;
-      assume PostHeap[x, d_3] != null;
-      PostMask := PostMask[PostHeap[x, d_3], f_7:=PostMask[PostHeap[x, d_3], f_7] + perm];
+      assume PostHeap[x, d_1] != null;
+      PostMask := PostMask[PostHeap[x, d_1], f_7:=PostMask[PostHeap[x, d_1], f_7] + perm];
       assume state(PostHeap, PostMask);
     }
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.b
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@56.11--56.29) [205576]"}
-        HasDirectPerm(PostMask, x, b_94);
-    if (PostHeap[x, b_94]) {
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@56.11--56.29) [59088]"}
+        HasDirectPerm(PostMask, x, b_32);
+    if (PostHeap[x, b_32]) {
       
       // -- Check definedness of acc(x.c.f, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@56.11--56.29) [205577]"}
-          HasDirectPerm(PostMask, x, c_10);
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@56.11--56.29) [59089]"}
+          HasDirectPerm(PostMask, x, c_12);
       perm := FullPerm;
-      assume PostHeap[x, c_10] != null;
-      PostMask := PostMask[PostHeap[x, c_10], f_7:=PostMask[PostHeap[x, c_10], f_7] + perm];
+      assume PostHeap[x, c_12] != null;
+      PostMask := PostMask[PostHeap[x, c_12], f_7:=PostMask[PostHeap[x, c_12], f_7] + perm];
       assume state(PostHeap, PostMask);
     }
     assume state(PostHeap, PostMask);
@@ -906,25 +906,25 @@ procedure fails1(k: Perm, x: Ref) returns (r_1: bool)
   // -- Translating statement: if (x.b) -- 0011.vpr@59.3--61.4
     
     // -- Check definedness of x.b
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.b (0011.vpr@59.7--59.10) [205578]"}
-        HasDirectPerm(Mask, x, b_94);
-    if (Heap[x, b_94]) {
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access x.b (0011.vpr@59.7--59.10) [59090]"}
+        HasDirectPerm(Mask, x, b_32);
+    if (Heap[x, b_32]) {
       
       // -- Translating statement: assert acc(x.c.f, write) -- 0011.vpr@60.5--60.22
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         
         // -- Check definedness of acc(x.c.f, write)
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.c (0011.vpr@60.12--60.22) [205579]"}
-            HasDirectPerm(ExhaleWellDef0Mask, x, c_10);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.c (0011.vpr@60.12--60.22) [59091]"}
+            HasDirectPerm(ExhaleWellDef0Mask, x, c_12);
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access x.c.f (0011.vpr@60.12--60.22) [205581]"}
-            perm <= AssertMask[AssertHeap[x, c_10], f_7];
+          assert {:msg "  Assert might fail. There might be insufficient permission to access x.c.f (0011.vpr@60.12--60.22) [59093]"}
+            perm <= AssertMask[AssertHeap[x, c_12], f_7];
         }
-        AssertMask := AssertMask[AssertHeap[x, c_10], f_7:=AssertMask[AssertHeap[x, c_10], f_7] - perm];
+        AssertMask := AssertMask[AssertHeap[x, c_12], f_7:=AssertMask[AssertHeap[x, c_12], f_7] - perm];
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -932,65 +932,65 @@ procedure fails1(k: Perm, x: Ref) returns (r_1: bool)
   // -- Translating statement: r := (x.b ? x.c == x.d : true) -- 0011.vpr@63.3--63.31
     
     // -- Check definedness of (x.b ? x.c == x.d : true)
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.b (0011.vpr@63.3--63.31) [205582]"}
-        HasDirectPerm(Mask, x, b_94);
-      if (Heap[x, b_94]) {
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.c (0011.vpr@63.3--63.31) [205583]"}
-          HasDirectPerm(Mask, x, c_10);
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.d (0011.vpr@63.3--63.31) [205584]"}
-          HasDirectPerm(Mask, x, d_3);
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.b (0011.vpr@63.3--63.31) [59094]"}
+        HasDirectPerm(Mask, x, b_32);
+      if (Heap[x, b_32]) {
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.c (0011.vpr@63.3--63.31) [59095]"}
+          HasDirectPerm(Mask, x, c_12);
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.d (0011.vpr@63.3--63.31) [59096]"}
+          HasDirectPerm(Mask, x, d_1);
       }
-    r_1 := !Heap[x, b_94] || Heap[x, c_10] == Heap[x, d_3];
+    r_1 := !Heap[x, b_32] || Heap[x, c_12] == Heap[x, d_1];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := k;
-    assert {:msg "  Postcondition of fails1 might not hold. Fraction k might be negative. (0011.vpr@52.11--52.52) [205585]"}
+    assert {:msg "  Postcondition of fails1 might not hold. Fraction k might be negative. (0011.vpr@52.11--52.52) [59097]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of fails1 might not hold. There might be insufficient permission to access x.c (0011.vpr@52.11--52.52) [205586]"}
-        perm <= Mask[x, c_10];
+      assert {:msg "  Postcondition of fails1 might not hold. There might be insufficient permission to access x.c (0011.vpr@52.11--52.52) [59098]"}
+        perm <= Mask[x, c_12];
     }
-    Mask := Mask[x, c_10:=Mask[x, c_10] - perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] - perm];
     perm := k;
-    assert {:msg "  Postcondition of fails1 might not hold. Fraction k might be negative. (0011.vpr@52.11--52.52) [205587]"}
+    assert {:msg "  Postcondition of fails1 might not hold. Fraction k might be negative. (0011.vpr@52.11--52.52) [59099]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of fails1 might not hold. There might be insufficient permission to access x.d (0011.vpr@52.11--52.52) [205588]"}
-        perm <= Mask[x, d_3];
+      assert {:msg "  Postcondition of fails1 might not hold. There might be insufficient permission to access x.d (0011.vpr@52.11--52.52) [59100]"}
+        perm <= Mask[x, d_1];
     }
-    Mask := Mask[x, d_3:=Mask[x, d_3] - perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] - perm];
     perm := k;
-    assert {:msg "  Postcondition of fails1 might not hold. Fraction k might be negative. (0011.vpr@52.11--52.52) [205589]"}
+    assert {:msg "  Postcondition of fails1 might not hold. Fraction k might be negative. (0011.vpr@52.11--52.52) [59101]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of fails1 might not hold. There might be insufficient permission to access x.b (0011.vpr@52.11--52.52) [205590]"}
-        perm <= Mask[x, b_94];
+      assert {:msg "  Postcondition of fails1 might not hold. There might be insufficient permission to access x.b (0011.vpr@52.11--52.52) [59102]"}
+        perm <= Mask[x, b_32];
     }
-    Mask := Mask[x, b_94:=Mask[x, b_94] - perm];
-    assert {:msg "  Postcondition of fails1 might not hold. Assertion x.c != null might not hold. (0011.vpr@53.11--53.37) [205591]"}
-      Heap[x, c_10] != null;
-    assert {:msg "  Postcondition of fails1 might not hold. Assertion x.d != null might not hold. (0011.vpr@53.11--53.37) [205592]"}
-      Heap[x, d_3] != null;
-    if (Heap[x, b_94]) {
+    Mask := Mask[x, b_32:=Mask[x, b_32] - perm];
+    assert {:msg "  Postcondition of fails1 might not hold. Assertion x.c != null might not hold. (0011.vpr@53.11--53.37) [59103]"}
+      Heap[x, c_12] != null;
+    assert {:msg "  Postcondition of fails1 might not hold. Assertion x.d != null might not hold. (0011.vpr@53.11--53.37) [59104]"}
+      Heap[x, d_1] != null;
+    if (Heap[x, b_32]) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of fails1 might not hold. There might be insufficient permission to access x.d.f (0011.vpr@54.11--54.29) [205593]"}
-          perm <= Mask[Heap[x, d_3], f_7];
+        assert {:msg "  Postcondition of fails1 might not hold. There might be insufficient permission to access x.d.f (0011.vpr@54.11--54.29) [59105]"}
+          perm <= Mask[Heap[x, d_1], f_7];
       }
-      Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] - perm];
+      Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] - perm];
     }
-    if (Heap[x, b_94]) {
+    if (Heap[x, b_32]) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of fails1 might not hold. There might be insufficient permission to access x.c.f (0011.vpr@56.11--56.29) [205594]"}
-          perm <= Mask[Heap[x, c_10], f_7];
+        assert {:msg "  Postcondition of fails1 might not hold. There might be insufficient permission to access x.c.f (0011.vpr@56.11--56.29) [59106]"}
+          perm <= Mask[Heap[x, c_12], f_7];
       }
-      Mask := Mask[Heap[x, c_10], f_7:=Mask[Heap[x, c_10], f_7] - perm];
+      Mask := Mask[Heap[x, c_12], f_7:=Mask[Heap[x, c_12], f_7] - perm];
     }
-    assert {:msg "  Postcondition of fails1 might not hold. Assertion r == true might not hold. (0011.vpr@57.11--57.20) [205595]"}
+    assert {:msg "  Postcondition of fails1 might not hold. Assertion r == true might not hold. (0011.vpr@57.11--57.20) [59107]"}
       r_1;
     // Finish exhale
     havoc ExhaleHeap;
@@ -1006,12 +1006,12 @@ procedure fails2(k: Perm, x: Ref) returns (r_1: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1026,179 +1026,179 @@ procedure fails2(k: Perm, x: Ref) returns (r_1: bool)
     assume NoPerm < k;
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@68.12--68.53) [205596]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@68.12--68.53) [59108]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, c_10:=Mask[x, c_10] + perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@68.12--68.53) [205597]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@68.12--68.53) [59109]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, d_3:=Mask[x, d_3] + perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@68.12--68.53) [205598]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@68.12--68.53) [59110]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    Mask := Mask[x, b_94:=Mask[x, b_94] + perm];
+    Mask := Mask[x, b_32:=Mask[x, b_32] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of x.c != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@69.12--69.38) [205599]"}
-        HasDirectPerm(Mask, x, c_10);
-    assume Heap[x, c_10] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@69.12--69.38) [59111]"}
+        HasDirectPerm(Mask, x, c_12);
+    assume Heap[x, c_12] != null;
     
     // -- Check definedness of x.d != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@69.12--69.38) [205600]"}
-        HasDirectPerm(Mask, x, d_3);
-    assume Heap[x, d_3] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@69.12--69.38) [59112]"}
+        HasDirectPerm(Mask, x, d_1);
+    assume Heap[x, d_1] != null;
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.c.f, k)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@70.12--70.39) [205601]"}
-        HasDirectPerm(Mask, x, c_10);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@70.12--70.39) [59113]"}
+        HasDirectPerm(Mask, x, c_12);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@70.12--70.39) [205602]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@70.12--70.39) [59114]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> Heap[x, c_10] != null;
-    Mask := Mask[Heap[x, c_10], f_7:=Mask[Heap[x, c_10], f_7] + perm];
+    assume perm > NoPerm ==> Heap[x, c_12] != null;
+    Mask := Mask[Heap[x, c_12], f_7:=Mask[Heap[x, c_12], f_7] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(x.d.f, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@70.12--70.39) [205603]"}
-        HasDirectPerm(Mask, x, d_3);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@70.12--70.39) [59115]"}
+        HasDirectPerm(Mask, x, d_1);
     perm := FullPerm;
-    assume Heap[x, d_3] != null;
-    Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] + perm];
+    assume Heap[x, d_1] != null;
+    Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@71.11--71.52) [205604]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@71.11--71.52) [59116]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, c_10:=PostMask[x, c_10] + perm];
+    PostMask := PostMask[x, c_12:=PostMask[x, c_12] + perm];
     assume state(PostHeap, PostMask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@71.11--71.52) [205605]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@71.11--71.52) [59117]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, d_3:=PostMask[x, d_3] + perm];
+    PostMask := PostMask[x, d_1:=PostMask[x, d_1] + perm];
     assume state(PostHeap, PostMask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@71.11--71.52) [205606]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@71.11--71.52) [59118]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
-    PostMask := PostMask[x, b_94:=PostMask[x, b_94] + perm];
+    PostMask := PostMask[x, b_32:=PostMask[x, b_32] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.c != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@72.11--72.37) [205607]"}
-        HasDirectPerm(PostMask, x, c_10);
-    assume PostHeap[x, c_10] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@72.11--72.37) [59119]"}
+        HasDirectPerm(PostMask, x, c_12);
+    assume PostHeap[x, c_12] != null;
     
     // -- Check definedness of x.d != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@72.11--72.37) [205608]"}
-        HasDirectPerm(PostMask, x, d_3);
-    assume PostHeap[x, d_3] != null;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@72.11--72.37) [59120]"}
+        HasDirectPerm(PostMask, x, d_1);
+    assume PostHeap[x, d_1] != null;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(x.c.f, k)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@73.11--73.38) [205609]"}
-        HasDirectPerm(PostMask, x, c_10);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@73.11--73.38) [59121]"}
+        HasDirectPerm(PostMask, x, c_12);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@73.11--73.38) [205610]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0011.vpr@73.11--73.38) [59122]"}
       perm >= NoPerm;
-    assume perm > NoPerm ==> PostHeap[x, c_10] != null;
-    PostMask := PostMask[PostHeap[x, c_10], f_7:=PostMask[PostHeap[x, c_10], f_7] + perm];
+    assume perm > NoPerm ==> PostHeap[x, c_12] != null;
+    PostMask := PostMask[PostHeap[x, c_12], f_7:=PostMask[PostHeap[x, c_12], f_7] + perm];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(x.d.f, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@73.11--73.38) [205611]"}
-        HasDirectPerm(PostMask, x, d_3);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@73.11--73.38) [59123]"}
+        HasDirectPerm(PostMask, x, d_1);
     perm := FullPerm;
-    assume PostHeap[x, d_3] != null;
-    PostMask := PostMask[PostHeap[x, d_3], f_7:=PostMask[PostHeap[x, d_3], f_7] + perm];
+    assume PostHeap[x, d_1] != null;
+    PostMask := PostMask[PostHeap[x, d_1], f_7:=PostMask[PostHeap[x, d_1], f_7] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.b == (x.c.f == x.d.f)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@75.11--75.34) [205612]"}
-        HasDirectPerm(PostMask, x, b_94);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@75.11--75.34) [205613]"}
-        HasDirectPerm(PostMask, x, c_10);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c.f (0011.vpr@75.11--75.34) [205614]"}
-        HasDirectPerm(PostMask, PostHeap[x, c_10], f_7);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@75.11--75.34) [205615]"}
-        HasDirectPerm(PostMask, x, d_3);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d.f (0011.vpr@75.11--75.34) [205616]"}
-        HasDirectPerm(PostMask, PostHeap[x, d_3], f_7);
-    assume PostHeap[x, b_94] == (PostHeap[PostHeap[x, c_10], f_7] == PostHeap[PostHeap[x, d_3], f_7]);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0011.vpr@75.11--75.34) [59124]"}
+        HasDirectPerm(PostMask, x, b_32);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c (0011.vpr@75.11--75.34) [59125]"}
+        HasDirectPerm(PostMask, x, c_12);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.c.f (0011.vpr@75.11--75.34) [59126]"}
+        HasDirectPerm(PostMask, PostHeap[x, c_12], f_7);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d (0011.vpr@75.11--75.34) [59127]"}
+        HasDirectPerm(PostMask, x, d_1);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.d.f (0011.vpr@75.11--75.34) [59128]"}
+        HasDirectPerm(PostMask, PostHeap[x, d_1], f_7);
+    assume PostHeap[x, b_32] == (PostHeap[PostHeap[x, c_12], f_7] == PostHeap[PostHeap[x, d_1], f_7]);
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := k;
-    assert {:msg "  Postcondition of fails2 might not hold. Fraction k might be negative. (0011.vpr@71.11--71.52) [205617]"}
+    assert {:msg "  Postcondition of fails2 might not hold. Fraction k might be negative. (0011.vpr@71.11--71.52) [59129]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of fails2 might not hold. There might be insufficient permission to access x.c (0011.vpr@71.11--71.52) [205618]"}
-        perm <= Mask[x, c_10];
+      assert {:msg "  Postcondition of fails2 might not hold. There might be insufficient permission to access x.c (0011.vpr@71.11--71.52) [59130]"}
+        perm <= Mask[x, c_12];
     }
-    Mask := Mask[x, c_10:=Mask[x, c_10] - perm];
+    Mask := Mask[x, c_12:=Mask[x, c_12] - perm];
     perm := k;
-    assert {:msg "  Postcondition of fails2 might not hold. Fraction k might be negative. (0011.vpr@71.11--71.52) [205619]"}
+    assert {:msg "  Postcondition of fails2 might not hold. Fraction k might be negative. (0011.vpr@71.11--71.52) [59131]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of fails2 might not hold. There might be insufficient permission to access x.d (0011.vpr@71.11--71.52) [205620]"}
-        perm <= Mask[x, d_3];
+      assert {:msg "  Postcondition of fails2 might not hold. There might be insufficient permission to access x.d (0011.vpr@71.11--71.52) [59132]"}
+        perm <= Mask[x, d_1];
     }
-    Mask := Mask[x, d_3:=Mask[x, d_3] - perm];
+    Mask := Mask[x, d_1:=Mask[x, d_1] - perm];
     perm := k;
-    assert {:msg "  Postcondition of fails2 might not hold. Fraction k might be negative. (0011.vpr@71.11--71.52) [205621]"}
+    assert {:msg "  Postcondition of fails2 might not hold. Fraction k might be negative. (0011.vpr@71.11--71.52) [59133]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of fails2 might not hold. There might be insufficient permission to access x.b (0011.vpr@71.11--71.52) [205622]"}
-        perm <= Mask[x, b_94];
+      assert {:msg "  Postcondition of fails2 might not hold. There might be insufficient permission to access x.b (0011.vpr@71.11--71.52) [59134]"}
+        perm <= Mask[x, b_32];
     }
-    Mask := Mask[x, b_94:=Mask[x, b_94] - perm];
-    assert {:msg "  Postcondition of fails2 might not hold. Assertion x.c != null might not hold. (0011.vpr@72.11--72.37) [205623]"}
-      Heap[x, c_10] != null;
-    assert {:msg "  Postcondition of fails2 might not hold. Assertion x.d != null might not hold. (0011.vpr@72.11--72.37) [205624]"}
-      Heap[x, d_3] != null;
+    Mask := Mask[x, b_32:=Mask[x, b_32] - perm];
+    assert {:msg "  Postcondition of fails2 might not hold. Assertion x.c != null might not hold. (0011.vpr@72.11--72.37) [59135]"}
+      Heap[x, c_12] != null;
+    assert {:msg "  Postcondition of fails2 might not hold. Assertion x.d != null might not hold. (0011.vpr@72.11--72.37) [59136]"}
+      Heap[x, d_1] != null;
     perm := k;
-    assert {:msg "  Postcondition of fails2 might not hold. Fraction k might be negative. (0011.vpr@73.11--73.38) [205625]"}
+    assert {:msg "  Postcondition of fails2 might not hold. Fraction k might be negative. (0011.vpr@73.11--73.38) [59137]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of fails2 might not hold. There might be insufficient permission to access x.c.f (0011.vpr@73.11--73.38) [205626]"}
-        perm <= Mask[Heap[x, c_10], f_7];
+      assert {:msg "  Postcondition of fails2 might not hold. There might be insufficient permission to access x.c.f (0011.vpr@73.11--73.38) [59138]"}
+        perm <= Mask[Heap[x, c_12], f_7];
     }
-    Mask := Mask[Heap[x, c_10], f_7:=Mask[Heap[x, c_10], f_7] - perm];
+    Mask := Mask[Heap[x, c_12], f_7:=Mask[Heap[x, c_12], f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of fails2 might not hold. There might be insufficient permission to access x.d.f (0011.vpr@73.11--73.38) [205627]"}
-        perm <= Mask[Heap[x, d_3], f_7];
+      assert {:msg "  Postcondition of fails2 might not hold. There might be insufficient permission to access x.d.f (0011.vpr@73.11--73.38) [59139]"}
+        perm <= Mask[Heap[x, d_1], f_7];
     }
-    Mask := Mask[Heap[x, d_3], f_7:=Mask[Heap[x, d_3], f_7] - perm];
-    assert {:msg "  Postcondition of fails2 might not hold. Assertion x.b == (x.c.f == x.d.f) might not hold. (0011.vpr@75.11--75.34) [205628]"}
-      Heap[x, b_94] == (Heap[Heap[x, c_10], f_7] == Heap[Heap[x, d_3], f_7]);
+    Mask := Mask[Heap[x, d_1], f_7:=Mask[Heap[x, d_1], f_7] - perm];
+    assert {:msg "  Postcondition of fails2 might not hold. Assertion x.b == (x.c.f == x.d.f) might not hold. (0011.vpr@75.11--75.34) [59140]"}
+      Heap[x, b_32] == (Heap[Heap[x, c_12], f_7] == Heap[Heap[x, d_1], f_7]);
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

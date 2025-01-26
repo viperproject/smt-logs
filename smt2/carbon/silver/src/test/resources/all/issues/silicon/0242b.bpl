@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:26
+// Date:         2025-01-26 21:42:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0242b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0242b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref, f_8: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, f_8] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_3, f_8) ==> Heap[o_3, f_8] == ExhaleHeap[o_3, f_8]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_19: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_19] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_19) ==> Heap[o_12, f_19] == ExhaleHeap[o_12, f_19]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19), ExhaleHeap[null, PredicateMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> Heap[null, PredicateMaskField(pm_f_19)] == ExhaleHeap[null, PredicateMaskField(pm_f_19)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, PredicateMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19), ExhaleHeap[null, WandMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> Heap[null, WandMaskField(pm_f_19)] == ExhaleHeap[null, WandMaskField(pm_f_19)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, WandMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, WandMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_3, $allocated] ==> ExhaleHeap[o_3, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_9: (Field A B), v: B ::
-  { Heap[o_1, f_9:=v] }
-  succHeap(Heap, Heap[o_1, f_9:=v])
+axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_51: (Field A B), v: B ::
+  { Heap[o_1, f_51:=v] }
+  succHeap(Heap, Heap[o_1, f_51:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -406,21 +406,21 @@ function  default_node(): NodeDomainType;
 type GraphDomainType;
 
 // Translation of domain function lookup
-function  lookup(ref_1: Ref): NodeDomainType;
+function  lookup_1(ref_1: Ref): NodeDomainType;
 
 // ==================================================
 // Translation of all fields
 // ==================================================
 
-const unique m_22: Field NormalField int;
-axiom !IsPredicateField(m_22);
-axiom !IsWandField(m_22);
-const unique l_8: Field NormalField Ref;
-axiom !IsPredicateField(l_8);
-axiom !IsWandField(l_8);
-const unique r_6: Field NormalField Ref;
-axiom !IsPredicateField(r_6);
-axiom !IsWandField(r_6);
+const unique m_20: Field NormalField int;
+axiom !IsPredicateField(m_20);
+axiom !IsWandField(m_20);
+const unique l: Field NormalField Ref;
+axiom !IsPredicateField(l);
+axiom !IsWandField(l);
+const unique r_11: Field NormalField Ref;
+axiom !IsPredicateField(r_11);
+axiom !IsWandField(r_11);
 
 // ==================================================
 // Translation of function purify_node
@@ -442,13 +442,13 @@ axiom (forall Heap: HeapType, n: Ref ::
 function  purify_node#frame(frame: FrameType, n: Ref): NodeDomainType;
 axiom (forall Heap: HeapType, Mask: MaskType, n: Ref ::
   { state(Heap, Mask), purify_node'(Heap, n) }
-  state(Heap, Mask) ==> purify_node'(Heap, n) == purify_node#frame(CombineFrames(FrameFragment(Heap[n, m_22]), CombineFrames(FrameFragment(Heap[n, l_8]), FrameFragment(Heap[n, r_6]))), n)
+  state(Heap, Mask) ==> purify_node'(Heap, n) == purify_node#frame(CombineFrames(FrameFragment(Heap[n, m_20]), CombineFrames(FrameFragment(Heap[n, l]), FrameFragment(Heap[n, r_11]))), n)
 );
 
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, n: Ref ::
   { state(Heap, Mask), purify_node'(Heap, n) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || purify_node#trigger(CombineFrames(FrameFragment(Heap[n, m_22]), CombineFrames(FrameFragment(Heap[n, l_8]), FrameFragment(Heap[n, r_6]))), n)) ==> purify_node'(Heap, n) == (default_node(): NodeDomainType)
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || purify_node#trigger(CombineFrames(FrameFragment(Heap[n, m_20]), CombineFrames(FrameFragment(Heap[n, l]), FrameFragment(Heap[n, r_11]))), n)) ==> purify_node'(Heap, n) == (default_node(): NodeDomainType)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -473,17 +473,17 @@ procedure purify_node#definedness(n: Ref) returns (Result: NodeDomainType)
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
     assume n != null;
-    Mask := Mask[n, m_22:=Mask[n, m_22] + perm];
+    Mask := Mask[n, m_20:=Mask[n, m_20] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
     assume n != null;
-    Mask := Mask[n, l_8:=Mask[n, l_8] + perm];
+    Mask := Mask[n, l:=Mask[n, l] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := FullPerm;
     assume n != null;
-    Mask := Mask[n, r_6:=Mask[n, r_6] + perm];
+    Mask := Mask[n, r_11:=Mask[n, r_11] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -496,25 +496,25 @@ procedure purify_node#definedness(n: Ref) returns (Result: NodeDomainType)
 // Translation of method test
 // ==================================================
 
-procedure test() returns ()
+procedure test_1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var vroot: Ref;
   var root: Ref;
   var freshObj: Ref;
   var graph: (Set Ref);
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
-  var n$2_42: Ref;
-  var n$2_1_1: Ref;
-  var n$3_10: Ref;
-  var n$3_1_2: Ref;
-  var n_45: Ref;
+  var n$2_33: Ref;
+  var n$2_1: Ref;
+  var n$3_9: Ref;
+  var n$3_1: Ref;
+  var n_80: Ref;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -527,8 +527,8 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[vroot, $allocated];
@@ -539,21 +539,21 @@ procedure test() returns ()
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     vroot := freshObj;
-    Mask := Mask[vroot, m_22:=Mask[vroot, m_22] + FullPerm];
-    Mask := Mask[vroot, l_8:=Mask[vroot, l_8] + FullPerm];
-    Mask := Mask[vroot, r_6:=Mask[vroot, r_6] + FullPerm];
+    Mask := Mask[vroot, m_20:=Mask[vroot, m_20] + FullPerm];
+    Mask := Mask[vroot, l:=Mask[vroot, l] + FullPerm];
+    Mask := Mask[vroot, r_11:=Mask[vroot, r_11] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: vroot.l := vroot -- 0242b.vpr@35.5--35.21
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vroot.l (0242b.vpr@35.5--35.21) [199439]"}
-      FullPerm == Mask[vroot, l_8];
-    Heap := Heap[vroot, l_8:=vroot];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vroot.l (0242b.vpr@35.5--35.21) [63974]"}
+      FullPerm == Mask[vroot, l];
+    Heap := Heap[vroot, l:=vroot];
     assume state(Heap, Mask);
   
   // -- Translating statement: vroot.r := vroot -- 0242b.vpr@36.5--36.21
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vroot.r (0242b.vpr@36.5--36.21) [199440]"}
-      FullPerm == Mask[vroot, r_6];
-    Heap := Heap[vroot, r_6:=vroot];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vroot.r (0242b.vpr@36.5--36.21) [63975]"}
+      FullPerm == Mask[vroot, r_11];
+    Heap := Heap[vroot, r_11:=vroot];
     assume state(Heap, Mask);
   
   // -- Translating statement: root := new(m, l, r) -- 0242b.vpr@38.20--38.34
@@ -561,21 +561,21 @@ procedure test() returns ()
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     root := freshObj;
-    Mask := Mask[root, m_22:=Mask[root, m_22] + FullPerm];
-    Mask := Mask[root, l_8:=Mask[root, l_8] + FullPerm];
-    Mask := Mask[root, r_6:=Mask[root, r_6] + FullPerm];
+    Mask := Mask[root, m_20:=Mask[root, m_20] + FullPerm];
+    Mask := Mask[root, l:=Mask[root, l] + FullPerm];
+    Mask := Mask[root, r_11:=Mask[root, r_11] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: root.l := vroot -- 0242b.vpr@39.5--39.20
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access root.l (0242b.vpr@39.5--39.20) [199441]"}
-      FullPerm == Mask[root, l_8];
-    Heap := Heap[root, l_8:=vroot];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access root.l (0242b.vpr@39.5--39.20) [63976]"}
+      FullPerm == Mask[root, l];
+    Heap := Heap[root, l:=vroot];
     assume state(Heap, Mask);
   
   // -- Translating statement: root.r := vroot -- 0242b.vpr@40.5--40.20
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access root.r (0242b.vpr@40.5--40.20) [199442]"}
-      FullPerm == Mask[root, r_6];
-    Heap := Heap[root, r_6:=vroot];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access root.r (0242b.vpr@40.5--40.20) [63977]"}
+      FullPerm == Mask[root, r_11];
+    Heap := Heap[root, r_11:=vroot];
     assume state(Heap, Mask);
   
   // -- Translating statement: graph := Set(vroot, root) -- 0242b.vpr@42.5--42.44
@@ -600,9 +600,9 @@ procedure test() returns ()
   //     (n$3 in graph) && n$3.r != null ==> (n$3.r in graph)))))) -- 0242b.vpr@45.5--45.24
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion !((null in graph)) might not hold. (0242b.vpr@45.12--45.24) [199443]"}
+    ExhaleWellDef0Heap := AssertHeap;
+    assert {:msg "  Assert might fail. Assertion !((null in graph)) might not hold. (0242b.vpr@45.12--45.24) [63978]"}
       !graph[null];
     
     // -- Check definedness of (forall n: Ref :: { (n in graph) } (n in graph) ==> acc(n.l, write))
@@ -615,39 +615,39 @@ procedure test() returns ()
       
     
     // -- check if receiver n is injective
-      assert {:msg "  Assert might fail. Quantified resource n.l might not be injective. (0242b.vpr@45.12--45.24) [199445]"}
+      assert {:msg "  Assert might fail. Quantified resource n.l might not be injective. (0242b.vpr@45.12--45.24) [63980]"}
         (forall n_1: Ref, n_1_1: Ref ::
         { neverTriggered1(n_1), neverTriggered1(n_1_1) }
         (((n_1 != n_1_1 && graph[n_1]) && graph[n_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n_1 != n_1_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Assert might fail. There might be insufficient permission to access n.l (0242b.vpr@45.12--45.24) [199446]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access n.l (0242b.vpr@45.12--45.24) [63981]"}
         (forall n_1: Ref ::
-        { AssertHeap[n_1, l_8] } { QPMask[n_1, l_8] } { graph[n_1] }
-        graph[n_1] ==> AssertMask[n_1, l_8] >= FullPerm
+        { AssertHeap[n_1, l] } { QPMask[n_1, l] } { graph[n_1] }
+        graph[n_1] ==> AssertMask[n_1, l] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver n
       assume (forall n_1: Ref ::
-        { AssertHeap[n_1, l_8] } { QPMask[n_1, l_8] } { graph[n_1] }
+        { AssertHeap[n_1, l] } { QPMask[n_1, l] } { graph[n_1] }
         graph[n_1] && NoPerm < FullPerm ==> qpRange1(n_1) && invRecv1(n_1) == n_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        graph[invRecv1(o_4)] && (NoPerm < FullPerm && qpRange1(o_4)) ==> invRecv1(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        graph[invRecv1(o_9)] && (NoPerm < FullPerm && qpRange1(o_9)) ==> invRecv1(o_9) == o_9
       );
     
     // -- assume permission updates for field l
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, l_8] }
-        (graph[invRecv1(o_4)] && (NoPerm < FullPerm && qpRange1(o_4)) ==> invRecv1(o_4) == o_4 && QPMask[o_4, l_8] == AssertMask[o_4, l_8] - FullPerm) && (!(graph[invRecv1(o_4)] && (NoPerm < FullPerm && qpRange1(o_4))) ==> QPMask[o_4, l_8] == AssertMask[o_4, l_8])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, l] }
+        (graph[invRecv1(o_9)] && (NoPerm < FullPerm && qpRange1(o_9)) ==> invRecv1(o_9) == o_9 && QPMask[o_9, l] == AssertMask[o_9, l] - FullPerm) && (!(graph[invRecv1(o_9)] && (NoPerm < FullPerm && qpRange1(o_9))) ==> QPMask[o_9, l] == AssertMask[o_9, l])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != l_8 ==> AssertMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != l ==> AssertMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     AssertMask := QPMask;
     
@@ -661,39 +661,39 @@ procedure test() returns ()
       
     
     // -- check if receiver n$0 is injective
-      assert {:msg "  Assert might fail. Quantified resource n$0.r might not be injective. (0242b.vpr@45.12--45.24) [199448]"}
+      assert {:msg "  Assert might fail. Quantified resource n$0.r might not be injective. (0242b.vpr@45.12--45.24) [63983]"}
         (forall n$0_1: Ref, n$0_1_1: Ref ::
         { neverTriggered2(n$0_1), neverTriggered2(n$0_1_1) }
         (((n$0_1 != n$0_1_1 && graph[n$0_1]) && graph[n$0_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$0_1 != n$0_1_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Assert might fail. There might be insufficient permission to access n$0.r (0242b.vpr@45.12--45.24) [199449]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access n$0.r (0242b.vpr@45.12--45.24) [63984]"}
         (forall n$0_1: Ref ::
-        { AssertHeap[n$0_1, r_6] } { QPMask[n$0_1, r_6] } { graph[n$0_1] }
-        graph[n$0_1] ==> AssertMask[n$0_1, r_6] >= FullPerm
+        { AssertHeap[n$0_1, r_11] } { QPMask[n$0_1, r_11] } { graph[n$0_1] }
+        graph[n$0_1] ==> AssertMask[n$0_1, r_11] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver n$0
       assume (forall n$0_1: Ref ::
-        { AssertHeap[n$0_1, r_6] } { QPMask[n$0_1, r_6] } { graph[n$0_1] }
+        { AssertHeap[n$0_1, r_11] } { QPMask[n$0_1, r_11] } { graph[n$0_1] }
         graph[n$0_1] && NoPerm < FullPerm ==> qpRange2(n$0_1) && invRecv2(n$0_1) == n$0_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        graph[invRecv2(o_4)] && (NoPerm < FullPerm && qpRange2(o_4)) ==> invRecv2(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        graph[invRecv2(o_9)] && (NoPerm < FullPerm && qpRange2(o_9)) ==> invRecv2(o_9) == o_9
       );
     
     // -- assume permission updates for field r
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, r_6] }
-        (graph[invRecv2(o_4)] && (NoPerm < FullPerm && qpRange2(o_4)) ==> invRecv2(o_4) == o_4 && QPMask[o_4, r_6] == AssertMask[o_4, r_6] - FullPerm) && (!(graph[invRecv2(o_4)] && (NoPerm < FullPerm && qpRange2(o_4))) ==> QPMask[o_4, r_6] == AssertMask[o_4, r_6])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, r_11] }
+        (graph[invRecv2(o_9)] && (NoPerm < FullPerm && qpRange2(o_9)) ==> invRecv2(o_9) == o_9 && QPMask[o_9, r_11] == AssertMask[o_9, r_11] - FullPerm) && (!(graph[invRecv2(o_9)] && (NoPerm < FullPerm && qpRange2(o_9))) ==> QPMask[o_9, r_11] == AssertMask[o_9, r_11])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != r_6 ==> AssertMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != r_11 ==> AssertMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     AssertMask := QPMask;
     
@@ -707,95 +707,95 @@ procedure test() returns ()
       
     
     // -- check if receiver n$1 is injective
-      assert {:msg "  Assert might fail. Quantified resource n$1.m might not be injective. (0242b.vpr@45.12--45.24) [199451]"}
+      assert {:msg "  Assert might fail. Quantified resource n$1.m might not be injective. (0242b.vpr@45.12--45.24) [63986]"}
         (forall n$1_1: Ref, n$1_1_1: Ref ::
         { neverTriggered3(n$1_1), neverTriggered3(n$1_1_1) }
         (((n$1_1 != n$1_1_1 && graph[n$1_1]) && graph[n$1_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> n$1_1 != n$1_1_1
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Assert might fail. There might be insufficient permission to access n$1.m (0242b.vpr@45.12--45.24) [199452]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access n$1.m (0242b.vpr@45.12--45.24) [63987]"}
         (forall n$1_1: Ref ::
-        { AssertHeap[n$1_1, m_22] } { QPMask[n$1_1, m_22] } { graph[n$1_1] }
-        graph[n$1_1] ==> AssertMask[n$1_1, m_22] >= FullPerm
+        { AssertHeap[n$1_1, m_20] } { QPMask[n$1_1, m_20] } { graph[n$1_1] }
+        graph[n$1_1] ==> AssertMask[n$1_1, m_20] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver n$1
       assume (forall n$1_1: Ref ::
-        { AssertHeap[n$1_1, m_22] } { QPMask[n$1_1, m_22] } { graph[n$1_1] }
+        { AssertHeap[n$1_1, m_20] } { QPMask[n$1_1, m_20] } { graph[n$1_1] }
         graph[n$1_1] && NoPerm < FullPerm ==> qpRange3(n$1_1) && invRecv3(n$1_1) == n$1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        graph[invRecv3(o_4)] && (NoPerm < FullPerm && qpRange3(o_4)) ==> invRecv3(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        graph[invRecv3(o_9)] && (NoPerm < FullPerm && qpRange3(o_9)) ==> invRecv3(o_9) == o_9
       );
     
     // -- assume permission updates for field m
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, m_22] }
-        (graph[invRecv3(o_4)] && (NoPerm < FullPerm && qpRange3(o_4)) ==> invRecv3(o_4) == o_4 && QPMask[o_4, m_22] == AssertMask[o_4, m_22] - FullPerm) && (!(graph[invRecv3(o_4)] && (NoPerm < FullPerm && qpRange3(o_4))) ==> QPMask[o_4, m_22] == AssertMask[o_4, m_22])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, m_20] }
+        (graph[invRecv3(o_9)] && (NoPerm < FullPerm && qpRange3(o_9)) ==> invRecv3(o_9) == o_9 && QPMask[o_9, m_20] == AssertMask[o_9, m_20] - FullPerm) && (!(graph[invRecv3(o_9)] && (NoPerm < FullPerm && qpRange3(o_9))) ==> QPMask[o_9, m_20] == AssertMask[o_9, m_20])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != m_22 ==> AssertMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != m_20 ==> AssertMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     AssertMask := QPMask;
     
     // -- Check definedness of (forall n$2: Ref :: { (n$2.l in graph) } { (n$2 in graph), n$2.l } (n$2 in graph) && n$2.l != null ==> (n$2.l in graph))
       if (*) {
-        if (graph[n$2_42]) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access n$2.l (0242b.vpr@45.12--45.24) [199453]"}
-            HasDirectPerm(ExhaleWellDef0Mask, n$2_42, l_8);
+        if (graph[n$2_33]) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access n$2.l (0242b.vpr@45.12--45.24) [63988]"}
+            HasDirectPerm(ExhaleWellDef0Mask, n$2_33, l);
         }
-        if (graph[n$2_42] && AssertHeap[n$2_42, l_8] != null) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access n$2.l (0242b.vpr@45.12--45.24) [199454]"}
-            HasDirectPerm(ExhaleWellDef0Mask, n$2_42, l_8);
+        if (graph[n$2_33] && AssertHeap[n$2_33, l] != null) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access n$2.l (0242b.vpr@45.12--45.24) [63989]"}
+            HasDirectPerm(ExhaleWellDef0Mask, n$2_33, l);
         }
         assume false;
       }
     if (*) {
-      if (graph[n$2_1_1] && AssertHeap[n$2_1_1, l_8] != null) {
-        assert {:msg "  Assert might fail. Assertion (n$2.l in graph) might not hold. (0242b.vpr@45.12--45.24) [199455]"}
-          graph[AssertHeap[n$2_1_1, l_8]];
+      if (graph[n$2_1] && AssertHeap[n$2_1, l] != null) {
+        assert {:msg "  Assert might fail. Assertion (n$2.l in graph) might not hold. (0242b.vpr@45.12--45.24) [63990]"}
+          graph[AssertHeap[n$2_1, l]];
       }
       assume false;
     }
     assume (forall n$2_2_1_1: Ref ::
-      { graph[AssertHeap[n$2_2_1_1, l_8]] } { graph[n$2_2_1_1], AssertHeap[n$2_2_1_1, l_8] }
-      graph[n$2_2_1_1] && AssertHeap[n$2_2_1_1, l_8] != null ==> graph[AssertHeap[n$2_2_1_1, l_8]]
+      { graph[AssertHeap[n$2_2_1_1, l]] } { graph[n$2_2_1_1], AssertHeap[n$2_2_1_1, l] }
+      graph[n$2_2_1_1] && AssertHeap[n$2_2_1_1, l] != null ==> graph[AssertHeap[n$2_2_1_1, l]]
     );
     
     // -- Check definedness of (forall n$3: Ref :: { (n$3.r in graph) } { (n$3 in graph), n$3.r } (n$3 in graph) && n$3.r != null ==> (n$3.r in graph))
       if (*) {
-        if (graph[n$3_10]) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access n$3.r (0242b.vpr@45.12--45.24) [199456]"}
-            HasDirectPerm(ExhaleWellDef0Mask, n$3_10, r_6);
+        if (graph[n$3_9]) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access n$3.r (0242b.vpr@45.12--45.24) [63991]"}
+            HasDirectPerm(ExhaleWellDef0Mask, n$3_9, r_11);
         }
-        if (graph[n$3_10] && AssertHeap[n$3_10, r_6] != null) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access n$3.r (0242b.vpr@45.12--45.24) [199457]"}
-            HasDirectPerm(ExhaleWellDef0Mask, n$3_10, r_6);
+        if (graph[n$3_9] && AssertHeap[n$3_9, r_11] != null) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access n$3.r (0242b.vpr@45.12--45.24) [63992]"}
+            HasDirectPerm(ExhaleWellDef0Mask, n$3_9, r_11);
         }
         assume false;
       }
     if (*) {
-      if (graph[n$3_1_2] && AssertHeap[n$3_1_2, r_6] != null) {
-        assert {:msg "  Assert might fail. Assertion (n$3.r in graph) might not hold. (0242b.vpr@45.12--45.24) [199458]"}
-          graph[AssertHeap[n$3_1_2, r_6]];
+      if (graph[n$3_1] && AssertHeap[n$3_1, r_11] != null) {
+        assert {:msg "  Assert might fail. Assertion (n$3.r in graph) might not hold. (0242b.vpr@45.12--45.24) [63993]"}
+          graph[AssertHeap[n$3_1, r_11]];
       }
       assume false;
     }
     assume (forall n$3_2_1_1: Ref ::
-      { graph[AssertHeap[n$3_2_1_1, r_6]] } { graph[n$3_2_1_1], AssertHeap[n$3_2_1_1, r_6] }
-      graph[n$3_2_1_1] && AssertHeap[n$3_2_1_1, r_6] != null ==> graph[AssertHeap[n$3_2_1_1, r_6]]
+      { graph[AssertHeap[n$3_2_1_1, r_11]] } { graph[n$3_2_1_1], AssertHeap[n$3_2_1_1, r_11] }
+      graph[n$3_2_1_1] && AssertHeap[n$3_2_1_1, r_11] != null ==> graph[AssertHeap[n$3_2_1_1, r_11]]
     );
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (root in graph) -- 0242b.vpr@46.5--46.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (root in graph) might not hold. (0242b.vpr@46.12--46.25) [199459]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (root in graph) might not hold. (0242b.vpr@46.12--46.25) [63994]"}
       graph[root];
     assume state(Heap, Mask);
   
@@ -808,20 +808,20 @@ procedure test() returns ()
     
     // -- Check definedness of (forall n: Ref :: { (n in graph) } { lookup(n) } { purify_node(n) } (n in graph) ==> lookup(n) == purify_node(n))
       if (*) {
-        if (graph[n_45]) {
+        if (graph[n_80]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function purify_node might not hold. There might be insufficient permission to access n.m (0242b.vpr@47.57--47.71) [199460]"}
-              NoPerm < perm ==> NoPerm < Mask[n_45, m_22];
+            assert {:msg "  Precondition of function purify_node might not hold. There might be insufficient permission to access n.m (0242b.vpr@47.57--47.71) [63995]"}
+              NoPerm < perm ==> NoPerm < Mask[n_80, m_20];
             perm := FullPerm;
-            assert {:msg "  Precondition of function purify_node might not hold. There might be insufficient permission to access n.l (0242b.vpr@47.57--47.71) [199461]"}
-              NoPerm < perm ==> NoPerm < Mask[n_45, l_8];
+            assert {:msg "  Precondition of function purify_node might not hold. There might be insufficient permission to access n.l (0242b.vpr@47.57--47.71) [63996]"}
+              NoPerm < perm ==> NoPerm < Mask[n_80, l];
             perm := FullPerm;
-            assert {:msg "  Precondition of function purify_node might not hold. There might be insufficient permission to access n.r (0242b.vpr@47.57--47.71) [199462]"}
-              NoPerm < perm ==> NoPerm < Mask[n_45, r_6];
+            assert {:msg "  Precondition of function purify_node might not hold. There might be insufficient permission to access n.r (0242b.vpr@47.57--47.71) [63997]"}
+              NoPerm < perm ==> NoPerm < Mask[n_80, r_11];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -833,16 +833,16 @@ procedure test() returns ()
         assume false;
       }
     assume (forall n_3: Ref ::
-      { graph[n_3] } { (lookup(n_3): NodeDomainType) } { purify_node#frame(CombineFrames(FrameFragment(Heap[n_3, m_22]), CombineFrames(FrameFragment(Heap[n_3, l_8]), FrameFragment(Heap[n_3, r_6]))), n_3) }
-      graph[n_3] ==> (lookup(n_3): NodeDomainType) == purify_node(Heap, n_3)
+      { graph[n_3] } { (lookup_1(n_3): NodeDomainType) } { purify_node#frame(CombineFrames(FrameFragment(Heap[n_3, m_20]), CombineFrames(FrameFragment(Heap[n_3, l]), FrameFragment(Heap[n_3, r_11]))), n_3) }
+      graph[n_3] ==> (lookup_1(n_3): NodeDomainType) == purify_node(Heap, n_3)
     );
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0242b.vpr@50.5--50.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0242b.vpr@50.12--50.17) [199463]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0242b.vpr@50.12--50.17) [63998]"}
       false;
     assume state(Heap, Mask);
 }

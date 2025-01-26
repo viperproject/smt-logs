@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:00:06
+// Date:         2025-01-26 21:44:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/nested.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/nested-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -186,7 +186,7 @@ procedure main() returns ()
   var x$0: bool;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var x$1: bool;
+  var x$1_2: bool;
   var x$2: bool;
   
   // -- Initializing the state
@@ -211,12 +211,12 @@ procedure main() returns ()
   // -- Translating statement: assert x || x$0 -- nested.vpr@11.5--11.19
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion x || x$0 might not hold. (nested.vpr@11.12--11.18) [101701]"}
+    assert {:msg "  Assert might fail. Assertion x || x$0 might not hold. (nested.vpr@11.12--11.18) [198856]"}
       x || x$0;
     assume state(Heap, Mask);
   
   // -- Translating statement: x$1 := true -- nested.vpr@5.5--5.24
-    x$1 := true;
+    x$1_2 := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: x$2 := false -- nested.vpr@10.5--10.25
@@ -226,7 +226,7 @@ procedure main() returns ()
   // -- Translating statement: assert x$1 || x$2 -- nested.vpr@11.5--11.19
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion x$1 || x$2 might not hold. (nested.vpr@11.12--11.18) [101702]"}
-      x$1 || x$2;
+    assert {:msg "  Assert might fail. Assertion x$1 || x$2 might not hold. (nested.vpr@11.12--11.18) [198857]"}
+      x$1_2 || x$2;
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:06:25
+// Date:         2025-01-26 21:45:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/inconsistency_scenario_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/inconsistency_scenario_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -304,7 +304,7 @@ procedure t01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (inconsistency_scenario_2.vpr@10.3--10.29) [126480]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (inconsistency_scenario_2.vpr@10.3--10.29) [216596]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -347,7 +347,7 @@ procedure t01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(false, x, FullPerm):=Heap[null, wand#sm(false, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (inconsistency_scenario_2.vpr@10.3--10.29) [126481]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (inconsistency_scenario_2.vpr@10.3--10.29) [216597]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -367,7 +367,7 @@ procedure t01(x: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (inconsistency_scenario_2.vpr@12.10--12.18) [126483]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (inconsistency_scenario_2.vpr@12.10--12.18) [216599]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -380,7 +380,7 @@ procedure t01(x: Ref) returns ()
   // -- Translating statement: assert false -- inconsistency_scenario_2.vpr@15.3--15.15
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (inconsistency_scenario_2.vpr@15.10--15.15) [126484]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (inconsistency_scenario_2.vpr@15.10--15.15) [216600]"}
       false;
     assume state(Heap, Mask);
 }

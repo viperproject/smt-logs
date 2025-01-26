@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:46:48
+; Started: 2025-01-26 21:34:29
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -669,21 +669,21 @@
 (assert (forall ((s@$ $Snap) (a@0@00 array) (i@1@00 Int)) (!
   (= (aloc%limited s@$ a@0@00 i@1@00) (aloc s@$ a@0@00 i@1@00))
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25431|)))
+  :qid |quant-u-11201|)))
 (assert (forall ((s@$ $Snap) (a@0@00 array) (i@1@00 Int)) (!
   (aloc%stateless a@0@00 i@1@00)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25432|)))
+  :qid |quant-u-11202|)))
 (assert (forall ((s@$ $Snap) (a@0@00 array) (i@1@00 Int)) (!
   (=>
     (aloc%precondition s@$ a@0@00 i@1@00)
     (= (aloc s@$ a@0@00 i@1@00) (array_loc<Ref> a@0@00 i@1@00)))
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25433|)))
+  :qid |quant-u-11203|)))
 (assert (forall ((s@$ $Snap) (a@0@00 array) (i@1@00 Int)) (!
   true
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25434|)))
+  :qid |quant-u-11204|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- main ----------
@@ -818,7 +818,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second ($Snap.second $t@4@01)))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr1@2@01 i@5@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr1@2@01 i@5@01)))
-  :qid |quant-u-25436|)))
+  :qid |quant-u-11206|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@8@01 r) (and (<= 0 (inv@7@01 r)) (< (inv@7@01 r) 6)))
@@ -836,7 +836,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second ($Snap.second $t@4@01)))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr1@2@01 i@5@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr1@2@01 i@5@01)))
-  :qid |quant-u-25436|)))
+  :qid |quant-u-11206|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@8@01 r) (and (<= 0 (inv@7@01 r)) (< (inv@7@01 r) 6)))
@@ -875,7 +875,7 @@
     (and (<= 0 (inv@7@01 r)) (< (inv@7@01 r) 6))
     ($FVF.loc_int ($FVF.lookup_int (as sm@9@01  $FVF<int>) r) r))
   :pattern ((inv@7@01 r))
-  :qid |quant-u-25437|)))
+  :qid |quant-u-11207|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second $t@4@01)))
   ($Snap.combine
@@ -1156,7 +1156,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@4@01)))))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr2@3@01 i@11@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@11@01)))
-  :qid |quant-u-25439|)))
+  :qid |quant-u-11209|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@13@01 r) (and (<= 0 (inv@12@01 r)) (< (inv@12@01 r) 12)))
@@ -1174,7 +1174,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@4@01)))))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr2@3@01 i@11@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@11@01)))
-  :qid |quant-u-25439|)))
+  :qid |quant-u-11209|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@13@01 r) (and (<= 0 (inv@12@01 r)) (< (inv@12@01 r) 12)))
@@ -1206,7 +1206,7 @@
       (and (img@13@01 r) (and (<= 0 (inv@12@01 r)) (< (inv@12@01 r) 12)))
       (and (img@8@01 r) (and (<= 0 (inv@7@01 r)) (< (inv@7@01 r) 6)))))
   
-  :qid |quant-u-25440|))))
+  :qid |quant-u-11210|))))
 (check-sat)
 ; unknown
 (pop) ; 2
@@ -1243,7 +1243,7 @@
     (and (<= 0 (inv@12@01 r)) (< (inv@12@01 r) 12))
     ($FVF.loc_int ($FVF.lookup_int (as sm@14@01  $FVF<int>) r) r))
   :pattern ((inv@12@01 r))
-  :qid |quant-u-25441|)))
+  :qid |quant-u-11211|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@4@01)))))
   $Snap.unit))
@@ -1777,7 +1777,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second $t@17@01))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr2@3@01 i@18@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@18@01)))
-  :qid |quant-u-25443|)))
+  :qid |quant-u-11213|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@21@01 r) (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6)))
@@ -1795,7 +1795,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second $t@17@01))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr2@3@01 i@18@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@18@01)))
-  :qid |quant-u-25443|)))
+  :qid |quant-u-11213|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@21@01 r) (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6)))
@@ -1836,7 +1836,7 @@
     (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6))
     ($FVF.loc_int ($FVF.lookup_int (as sm@22@01  $FVF<int>) r) r))
   :pattern ((inv@20@01 r))
-  :qid |quant-u-25444|)))
+  :qid |quant-u-11214|)))
 (assert (=
   ($Snap.second ($Snap.second $t@17@01))
   ($Snap.combine
@@ -1958,7 +1958,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second ($Snap.second $t@17@01)))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr2@3@01 i@23@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@23@01)))
-  :qid |quant-u-25446|)))
+  :qid |quant-u-11216|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))
@@ -1976,7 +1976,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second ($Snap.second $t@17@01)))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr2@3@01 i@23@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@23@01)))
-  :qid |quant-u-25446|)))
+  :qid |quant-u-11216|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))
@@ -2008,7 +2008,7 @@
       (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))
       (and (img@21@01 r) (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6)))))
   
-  :qid |quant-u-25447|))))
+  :qid |quant-u-11217|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2045,7 +2045,7 @@
     (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12))
     ($FVF.loc_int ($FVF.lookup_int (as sm@26@01  $FVF<int>) r) r))
   :pattern ((inv@24@01 r))
-  :qid |quant-u-25448|)))
+  :qid |quant-u-11218|)))
 (declare-const i@27@01 Int)
 (set-option :timeout 0)
 (push) ; 4
@@ -2153,7 +2153,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.second ($Snap.second ($Snap.second $t@17@01)))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr1@2@01 i@27@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr1@2@01 i@27@01)))
-  :qid |quant-u-25450|)))
+  :qid |quant-u-11220|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@29@01 r) (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6)))
@@ -2171,7 +2171,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.second ($Snap.second ($Snap.second $t@17@01)))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr1@2@01 i@27@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr1@2@01 i@27@01)))
-  :qid |quant-u-25450|)))
+  :qid |quant-u-11220|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@29@01 r) (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6)))
@@ -2203,7 +2203,7 @@
       (and (img@29@01 r) (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6)))
       (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))))
   
-  :qid |quant-u-25451|))))
+  :qid |quant-u-11221|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2221,7 +2221,7 @@
       (and (img@29@01 r) (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6)))
       (and (img@21@01 r) (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6)))))
   
-  :qid |quant-u-25452|))))
+  :qid |quant-u-11222|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2268,7 +2268,7 @@
     (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6))
     ($FVF.loc_int ($FVF.lookup_int (as sm@30@01  $FVF<int>) r) r))
   :pattern ((inv@28@01 r))
-  :qid |quant-u-25453|)))
+  :qid |quant-u-11223|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -2443,7 +2443,7 @@
     (and (<= 0 (inv@32@01 r)) (< (inv@32@01 r) 6))
     ($FVF.loc_int ($FVF.lookup_int (as sm@14@01  $FVF<int>) r) r))
   :pattern ((inv@32@01 r))
-  :qid |quant-u-25455|)))
+  :qid |quant-u-11225|)))
 (push) ; 4
 (set-option :timeout 10)
 (assert (not (forall ((i@31@01 Int)) (!
@@ -2451,7 +2451,7 @@
     (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@31@01)
     (aloc ($Snap.combine $Snap.unit $Snap.unit) arr1@2@01 i@31@01))
   
-  :qid |quant-u-25456|))))
+  :qid |quant-u-11226|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2502,7 +2502,7 @@
       (pTaken@34@01 r))
     $Perm.No)
   
-  :qid |quant-u-25458|))))
+  :qid |quant-u-11228|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2514,7 +2514,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@34@01 r) $Perm.No)
   
-  :qid |quant-u-25459|))))
+  :qid |quant-u-11229|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2532,7 +2532,7 @@
       (= r (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 (inv@32@01 r))))
     (= (- $Perm.Write (pTaken@34@01 r)) $Perm.No))
   
-  :qid |quant-u-25460|))))
+  :qid |quant-u-11230|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2748,7 +2748,7 @@
     (and (<= 6 (inv@37@01 r)) (< (inv@37@01 r) 12))
     ($FVF.loc_int ($FVF.lookup_int (as sm@39@01  $FVF<int>) r) r))
   :pattern ((inv@37@01 r))
-  :qid |quant-u-25462|)))
+  :qid |quant-u-11232|)))
 (push) ; 4
 (set-option :timeout 10)
 (assert (not (forall ((i@36@01 Int)) (!
@@ -2756,7 +2756,7 @@
     (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@36@01)
     (aloc ($Snap.combine $Snap.unit $Snap.unit) arr1@2@01 i@36@01))
   
-  :qid |quant-u-25463|))))
+  :qid |quant-u-11233|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2807,7 +2807,7 @@
       (pTaken@40@01 r))
     $Perm.No)
   
-  :qid |quant-u-25465|))))
+  :qid |quant-u-11235|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2819,7 +2819,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@40@01 r) $Perm.No)
   
-  :qid |quant-u-25466|))))
+  :qid |quant-u-11236|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2837,7 +2837,7 @@
       (= r (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 (inv@37@01 r))))
     (= (- (/ (to_real 1) (to_real 2)) (pTaken@40@01 r)) $Perm.No))
   
-  :qid |quant-u-25467|))))
+  :qid |quant-u-11237|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -3043,7 +3043,7 @@
     (and (<= 0 (inv@43@01 r)) (< (inv@43@01 r) 6))
     ($FVF.loc_int ($FVF.lookup_int (as sm@45@01  $FVF<int>) r) r))
   :pattern ((inv@43@01 r))
-  :qid |quant-u-25469|)))
+  :qid |quant-u-11239|)))
 (push) ; 4
 (set-option :timeout 10)
 (assert (not (forall ((i@42@01 Int)) (!
@@ -3051,7 +3051,7 @@
     (aloc ($Snap.combine $Snap.unit $Snap.unit) arr1@2@01 i@42@01)
     (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@42@01))
   
-  :qid |quant-u-25470|))))
+  :qid |quant-u-11240|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -3102,7 +3102,7 @@
       (pTaken@46@01 r))
     $Perm.No)
   
-  :qid |quant-u-25472|))))
+  :qid |quant-u-11242|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -3120,7 +3120,7 @@
       (= r (aloc ($Snap.combine $Snap.unit $Snap.unit) arr1@2@01 (inv@43@01 r))))
     (= (- (/ (to_real 1) (to_real 2)) (pTaken@46@01 r)) $Perm.No))
   
-  :qid |quant-u-25473|))))
+  :qid |quant-u-11243|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -3190,7 +3190,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.second ($Snap.second ($Snap.second $t@17@01)))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr1@2@01 i@27@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr1@2@01 i@27@01)))
-  :qid |quant-u-25450|)))
+  :qid |quant-u-11220|)))
 (assert (forall ((i@27@01 Int)) (!
   (=>
     (and (<= 0 i@27@01) (< i@27@01 6))
@@ -3202,7 +3202,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.second ($Snap.second ($Snap.second $t@17@01)))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr1@2@01 i@27@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr1@2@01 i@27@01)))
-  :qid |quant-u-25450|)))
+  :qid |quant-u-11220|)))
 (assert (forall ((i@27@01 Int)) (!
   (=>
     (and (<= 0 i@27@01) (< i@27@01 6))
@@ -3219,7 +3219,7 @@
     (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6))
     ($FVF.loc_int ($FVF.lookup_int (as sm@30@01  $FVF<int>) r) r))
   :pattern ((inv@28@01 r))
-  :qid |quant-u-25453|)))
+  :qid |quant-u-11223|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))
@@ -3269,7 +3269,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second ($Snap.second $t@17@01)))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr2@3@01 i@23@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@23@01)))
-  :qid |quant-u-25446|)))
+  :qid |quant-u-11216|)))
 (assert (forall ((i@23@01 Int)) (!
   (=>
     (and (<= 6 i@23@01) (< i@23@01 12))
@@ -3281,7 +3281,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second ($Snap.second $t@17@01)))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr2@3@01 i@23@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@23@01)))
-  :qid |quant-u-25446|)))
+  :qid |quant-u-11216|)))
 (assert (forall ((i@23@01 Int)) (!
   (=>
     (and (<= 6 i@23@01) (< i@23@01 12))
@@ -3298,7 +3298,7 @@
     (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12))
     ($FVF.loc_int ($FVF.lookup_int (as sm@26@01  $FVF<int>) r) r))
   :pattern ((inv@24@01 r))
-  :qid |quant-u-25448|)))
+  :qid |quant-u-11218|)))
 (assert (forall ((i@27@01 Int)) (!
   (=>
     (and (<= 0 i@27@01) (< i@27@01 6))
@@ -3358,7 +3358,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second $t@17@01))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr2@3@01 i@18@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@18@01)))
-  :qid |quant-u-25443|)))
+  :qid |quant-u-11213|)))
 (assert (forall ((i@18@01 Int)) (!
   (=>
     (and (<= 0 i@18@01) (< i@18@01 6))
@@ -3370,7 +3370,7 @@
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> ($Snap.first ($Snap.second $t@17@01))) (aloc ($Snap.combine
     $Snap.unit
     $Snap.unit) arr2@3@01 i@18@01)) (aloc ($Snap.combine $Snap.unit $Snap.unit) arr2@3@01 i@18@01)))
-  :qid |quant-u-25443|)))
+  :qid |quant-u-11213|)))
 (assert (forall ((i@18@01 Int)) (!
   (=>
     (and (<= 0 i@18@01) (< i@18@01 6))
@@ -3387,7 +3387,7 @@
     (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6))
     ($FVF.loc_int ($FVF.lookup_int (as sm@22@01  $FVF<int>) r) r))
   :pattern ((inv@20@01 r))
-  :qid |quant-u-25444|)))
+  :qid |quant-u-11214|)))
 (assert (=
   ($Snap.second ($Snap.second $t@17@01))
   ($Snap.combine
@@ -3693,7 +3693,7 @@
       (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))
       (and (img@29@01 r) (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6)))))
   
-  :qid |quant-u-25474|))))
+  :qid |quant-u-11244|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3711,7 +3711,7 @@
       (and (img@21@01 r) (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6)))
       (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))))
   
-  :qid |quant-u-25475|))))
+  :qid |quant-u-11245|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3729,7 +3729,7 @@
       (and (img@21@01 r) (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6)))
       (and (img@29@01 r) (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6)))))
   
-  :qid |quant-u-25476|))))
+  :qid |quant-u-11246|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3796,7 +3796,7 @@
       (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))
       (and (img@29@01 r) (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6)))))
   
-  :qid |quant-u-25477|))))
+  :qid |quant-u-11247|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3814,7 +3814,7 @@
       (and (img@21@01 r) (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6)))
       (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))))
   
-  :qid |quant-u-25478|))))
+  :qid |quant-u-11248|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3832,7 +3832,7 @@
       (and (img@21@01 r) (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6)))
       (and (img@29@01 r) (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6)))))
   
-  :qid |quant-u-25479|))))
+  :qid |quant-u-11249|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3899,7 +3899,7 @@
       (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))
       (and (img@29@01 r) (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6)))))
   
-  :qid |quant-u-25480|))))
+  :qid |quant-u-11250|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3917,7 +3917,7 @@
       (and (img@21@01 r) (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6)))
       (and (img@25@01 r) (and (<= 6 (inv@24@01 r)) (< (inv@24@01 r) 12)))))
   
-  :qid |quant-u-25481|))))
+  :qid |quant-u-11251|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3935,7 +3935,7 @@
       (and (img@21@01 r) (and (<= 0 (inv@20@01 r)) (< (inv@20@01 r) 6)))
       (and (img@29@01 r) (and (<= 0 (inv@28@01 r)) (< (inv@28@01 r) 6)))))
   
-  :qid |quant-u-25482|))))
+  :qid |quant-u-11252|))))
 (check-sat)
 ; unknown
 (pop) ; 6

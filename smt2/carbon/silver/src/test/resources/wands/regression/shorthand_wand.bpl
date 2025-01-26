@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:07:26
+// Date:         2025-01-26 21:44:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/shorthand_wand.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/shorthand_wand-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -339,8 +339,8 @@ procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var Ops_1Heap: HeapType;
@@ -349,8 +349,8 @@ procedure test01(x: Ref) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -364,8 +364,8 @@ procedure test01(x: Ref) returns ()
   var b_3: bool;
   var ResultHeap: HeapType;
   var ResultMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -386,8 +386,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -418,8 +418,8 @@ procedure test01(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- shorthand_wand.vpr@12.11--12.35
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, write)
@@ -431,7 +431,7 @@ procedure test01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (shorthand_wand.vpr@12.3--12.35) [127756]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (shorthand_wand.vpr@12.3--12.35) [212732]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -474,7 +474,7 @@ procedure test01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(true, x, FullPerm):=Heap[null, wand#sm(true, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (shorthand_wand.vpr@12.3--12.35) [127757]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (shorthand_wand.vpr@12.3--12.35) [212733]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -492,17 +492,17 @@ procedure test01(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(x.f, write) -- shorthand_wand.vpr@14.3--14.33
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_wand.vpr@14.3--14.33) [127758]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_wand.vpr@14.3--14.33) [212734]"}
         FullPerm <= Mask[null, wand(true, x, FullPerm)];
       Mask := Mask[null, wand(true, x, FullPerm):=Mask[null, wand(true, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -518,11 +518,11 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access x.f (shorthand_wand.vpr@10.11--10.26) [127761]"}
+      assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access x.f (shorthand_wand.vpr@10.11--10.26) [212737]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -540,8 +540,8 @@ procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var Ops_3Heap: HeapType;
@@ -550,8 +550,8 @@ procedure test02(x: Ref) returns ()
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -565,8 +565,8 @@ procedure test02(x: Ref) returns ()
   var b_7: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -587,8 +587,8 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -619,8 +619,8 @@ procedure test02(x: Ref) returns ()
     
     // -- Translating statement: label lhs4 -- shorthand_wand.vpr@24.11--24.18
       lhs4:
-      Labellhs4Heap := Ops_3Heap;
       Labellhs4Mask := Ops_3Mask;
+      Labellhs4Heap := Ops_3Heap;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(x.f, write)
@@ -632,7 +632,7 @@ procedure test02(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (shorthand_wand.vpr@24.3--24.18) [127762]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (shorthand_wand.vpr@24.3--24.18) [212738]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -675,7 +675,7 @@ procedure test02(x: Ref) returns ()
             Heap := Heap[null, wand#sm(true, x, FullPerm):=Heap[null, wand#sm(true, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (shorthand_wand.vpr@24.3--24.18) [127763]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (shorthand_wand.vpr@24.3--24.18) [212739]"}
         (b_5 && b_5) && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -693,17 +693,17 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(x.f, write) -- shorthand_wand.vpr@26.3--26.16
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_wand.vpr@26.3--26.16) [127764]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_wand.vpr@26.3--26.16) [212740]"}
         FullPerm <= Mask[null, wand(true, x, FullPerm)];
       Mask := Mask[null, wand(true, x, FullPerm):=Mask[null, wand(true, x, FullPerm)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -719,11 +719,11 @@ procedure test02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of test02 might not hold. There might be insufficient permission to access x.f (shorthand_wand.vpr@19.11--19.26) [127767]"}
+      assert {:msg "  Postcondition of test02 might not hold. There might be insufficient permission to access x.f (shorthand_wand.vpr@19.11--19.26) [212743]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -740,8 +740,8 @@ procedure test02(x: Ref) returns ()
 procedure test03(xs: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var Ops_5Heap: HeapType;
@@ -750,8 +750,8 @@ procedure test03(xs: Ref) returns ()
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_8: bool;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var boolCur_2: bool;
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
@@ -768,8 +768,8 @@ procedure test03(xs: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (xs != null) -- shorthand_wand.vpr@30.3--32.4
     
@@ -809,8 +809,8 @@ procedure test03(xs: Ref) returns ()
             
             // -- Translating statement: label lhs7 -- shorthand_wand.vpr@31.13--31.26
               lhs7:
-              Labellhs7Heap := Ops_5Heap;
               Labellhs7Mask := Ops_5Mask;
+              Labellhs7Heap := Ops_5Heap;
               b_9 := b_9 && state(Ops_5Heap, Ops_5Mask);
             boolCur_2 := true;
             // Translating exec of non-ghost operationtrue
@@ -839,10 +839,10 @@ procedure test03(xs: Ref) returns ()
 procedure test04(xs: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -856,23 +856,23 @@ procedure test04(xs: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: apply true --* true -- shorthand_wand.vpr@38.3--38.22
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_wand.vpr@38.3--38.22) [127768]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_wand.vpr@38.3--38.22) [212744]"}
         FullPerm <= Mask[null, wand_1(true, true)];
       Mask := Mask[null, wand_1(true, true):=Mask[null, wand_1(true, true)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -891,22 +891,22 @@ procedure test04(xs: Ref) returns ()
 procedure test05(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var y: Ref;
   var ox: Ref;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
   var perm: Perm;
-  var Labellhs10Heap: HeapType;
   var Labellhs10Mask: MaskType;
+  var Labellhs10Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -920,8 +920,8 @@ procedure test05(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -941,8 +941,8 @@ procedure test05(r_1: Ref) returns ()
         
         // -- Translating statement: label lhs10 -- shorthand_wand.vpr@47.10--47.28
           lhs10:
-          Labellhs10Heap := WandDefLHSHeap;
           Labellhs10Mask := WandDefLHSMask;
+          Labellhs10Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -976,11 +976,11 @@ procedure test05(r_1: Ref) returns ()
   // -- Translating statement: assert acc(P(y), write) -- shorthand_wand.vpr@56.3--56.19
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access P(y) (shorthand_wand.vpr@56.10--56.19) [127772]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access P(y) (shorthand_wand.vpr@56.10--56.19) [212748]"}
         perm <= AssertMask[null, P(y)];
     }
     AssertMask := AssertMask[null, P(y):=AssertMask[null, P(y)] - perm];
@@ -989,20 +989,20 @@ procedure test05(r_1: Ref) returns ()
   // -- Translating statement: apply acc(P(ox), write) --* true -- shorthand_wand.vpr@57.3--57.28
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
-      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_wand.vpr@57.3--57.28) [127773]"}
+      assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_wand.vpr@57.3--57.28) [212749]"}
         FullPerm <= Mask[null, wand_2(ox, true)];
       Mask := Mask[null, wand_2(ox, true):=Mask[null, wand_2(ox, true)] - FullPerm];
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Applying wand might fail. There might be insufficient permission to access P(ox) (shorthand_wand.vpr@57.3--57.28) [127775]"}
+        assert {:msg "  Applying wand might fail. There might be insufficient permission to access P(ox) (shorthand_wand.vpr@57.3--57.28) [212751]"}
           perm <= Mask[null, P(ox)];
       }
       Mask := Mask[null, P(ox):=Mask[null, P(ox)] - perm];
@@ -1024,16 +1024,16 @@ procedure test05(r_1: Ref) returns ()
 procedure test06(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var y: Ref;
   var oldX: Ref;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
   var perm: Perm;
-  var Labellhs12Heap: HeapType;
   var Labellhs12Mask: MaskType;
+  var Labellhs12Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var Ops_7Heap: HeapType;
@@ -1042,11 +1042,11 @@ procedure test06(r_1: Ref) returns ()
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
   var b_11: bool;
-  var Labellhs13Heap: HeapType;
   var Labellhs13Mask: MaskType;
+  var Labellhs13Heap: HeapType;
   var boolCur_3: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
   var b_13: bool;
@@ -1054,8 +1054,8 @@ procedure test06(r_1: Ref) returns ()
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
   var b_14: bool;
-  var Labellhs16Heap: HeapType;
   var Labellhs16Mask: MaskType;
+  var Labellhs16Heap: HeapType;
   var neededTransfer: Perm;
   var initNeededTransfer: Perm;
   var accVar2: bool;
@@ -1067,7 +1067,7 @@ procedure test06(r_1: Ref) returns ()
   var Used_9Heap: HeapType;
   var Used_9Mask: MaskType;
   var b_16: bool;
-  var arg_1: Ref;
+  var arg: Ref;
   var TempMask: MaskType;
   var newPMask: PMaskType;
   var b_17: bool;
@@ -1089,8 +1089,8 @@ procedure test06(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -1110,8 +1110,8 @@ procedure test06(r_1: Ref) returns ()
         
         // -- Translating statement: label lhs12 -- shorthand_wand.vpr@64.10--64.28
           lhs12:
-          Labellhs12Heap := WandDefLHSHeap;
           Labellhs12Mask := WandDefLHSMask;
+          Labellhs12Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -1153,15 +1153,15 @@ procedure test06(r_1: Ref) returns ()
     
     // -- Translating statement: label lhs13 -- shorthand_wand.vpr@70.11--70.26
       lhs13:
-      Labellhs13Heap := Ops_7Heap;
       Labellhs13Mask := Ops_7Mask;
+      Labellhs13Heap := Ops_7Heap;
       b_12 := b_12 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     if (b_12) {
       
       // -- Translating statement: fold acc(P(y), write) -- shorthand_wand.vpr@71.7--71.16
-        ExhaleWellDef0Heap := Ops_7Heap;
         ExhaleWellDef0Mask := Ops_7Mask;
+        ExhaleWellDef0Heap := Ops_7Heap;
         havoc Used_7Heap;
         Used_7Mask := ZeroMask;
         b_13 := b_13 && state(Used_7Heap, Used_7Mask);
@@ -1187,8 +1187,8 @@ procedure test06(r_1: Ref) returns ()
       // -- Translating statement: apply acc(P(oldX), write) --* true -- shorthand_wand.vpr@72.7--72.34
         
         // -- check if wand is held and remove an instance
-          ExhaleWellDef0Heap := Ops_7Heap;
           ExhaleWellDef0Mask := Ops_7Mask;
+          ExhaleWellDef0Heap := Ops_7Heap;
           havoc Used_8Heap;
           Used_8Mask := ZeroMask;
           b_14 := b_14 && state(Used_8Heap, Used_8Mask);
@@ -1210,8 +1210,8 @@ procedure test06(r_1: Ref) returns ()
                       
                       // -- Translating statement: label lhs16 -- shorthand_wand.vpr@72.13--72.34
                         lhs16:
-                        Labellhs16Heap := WandDefLHSHeap;
                         Labellhs16Mask := WandDefLHSMask;
+                        Labellhs16Heap := WandDefLHSHeap;
                         assume state(WandDefLHSHeap, WandDefLHSMask);
                       havoc WandDefRHSHeap;
                       WandDefRHSMask := ZeroMask;
@@ -1222,7 +1222,7 @@ procedure test06(r_1: Ref) returns ()
               }
             neededTransfer := 1.000000000;
             initNeededTransfer := Used_8Mask[null, wand_2(oldX, true)] + neededTransfer;
-            assert {:msg "  Applying wand might fail. Fraction acc(P(oldX), write) --* true might be negative. (shorthand_wand.vpr@72.7--72.34) [127779]"}
+            assert {:msg "  Applying wand might fail. Fraction acc(P(oldX), write) --* true might be negative. (shorthand_wand.vpr@72.7--72.34) [212755]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
@@ -1262,7 +1262,7 @@ procedure test06(r_1: Ref) returns ()
                   Mask := Mask[null, wand_2(oldX, true):=Mask[null, wand_2(oldX, true)] - takeTransfer];
                 }
               }
-            assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_wand.vpr@72.7--72.34) [127780]"}
+            assert {:msg "  Applying wand might fail. Magic wand instance not found. (shorthand_wand.vpr@72.7--72.34) [212756]"}
               b_12 && b_14 ==> neededTransfer == 0.000000000 && Used_8Mask[null, wand_2(oldX, true)] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
@@ -1277,17 +1277,17 @@ procedure test06(r_1: Ref) returns ()
         b_12 := b_12 && state(Ops_7Heap, Ops_7Mask);
         
         // -- check if LHS holds and remove permissions 
-          ExhaleWellDef0Heap := Ops_7Heap;
           ExhaleWellDef0Mask := Ops_7Mask;
+          ExhaleWellDef0Heap := Ops_7Heap;
           havoc Used_9Heap;
           Used_9Mask := ZeroMask;
           b_16 := b_16 && state(Used_9Heap, Used_9Mask);
           
           // -- Transfer of acc(P(oldX), write)
-            arg_1 := oldX;
+            arg := oldX;
             neededTransfer := FullPerm;
-            initNeededTransfer := Used_9Mask[null, P(arg_1)] + neededTransfer;
-            assert {:msg "  Applying wand might fail. Fraction acc(P(oldX), write) might be negative. (shorthand_wand.vpr@72.7--72.34) [127781]"}
+            initNeededTransfer := Used_9Mask[null, P(arg)] + neededTransfer;
+            assert {:msg "  Applying wand might fail. Fraction acc(P(oldX), write) might be negative. (shorthand_wand.vpr@72.7--72.34) [212757]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
@@ -1295,7 +1295,7 @@ procedure test06(r_1: Ref) returns ()
               accVar2 := true;
               // actual code for the transfer from current state on stack
               if (((b_12 && b_16) && accVar2) && neededTransfer > 0.000000000) {
-                maskTransfer := Ops_7Mask[null, P(arg_1)];
+                maskTransfer := Ops_7Mask[null, P(arg)];
                 if (neededTransfer <= maskTransfer) {
                   takeTransfer := neededTransfer;
                 } else {
@@ -1303,11 +1303,11 @@ procedure test06(r_1: Ref) returns ()
                 }
                 if (takeTransfer > 0.000000000) {
                   neededTransfer := neededTransfer - takeTransfer;
-                  Used_9Mask := Used_9Mask[null, P(arg_1):=Used_9Mask[null, P(arg_1)] + takeTransfer];
+                  Used_9Mask := Used_9Mask[null, P(arg):=Used_9Mask[null, P(arg)] + takeTransfer];
                   b_16 := b_16 && state(Used_9Heap, Used_9Mask);
-                  TempMask := ZeroMask[null, P(arg_1):=FullPerm];
+                  TempMask := ZeroMask[null, P(arg):=FullPerm];
                   b_16 := b_16 && IdenticalOnKnownLocations(Ops_7Heap, Used_9Heap, TempMask);
-                  Ops_7Mask := Ops_7Mask[null, P(arg_1):=Ops_7Mask[null, P(arg_1)] - takeTransfer];
+                  Ops_7Mask := Ops_7Mask[null, P(arg):=Ops_7Mask[null, P(arg)] - takeTransfer];
                 }
               }
             
@@ -1316,7 +1316,7 @@ procedure test06(r_1: Ref) returns ()
               accVar2 := true;
               // actual code for the transfer from current state on stack
               if (((b_12 && b_16) && accVar2) && neededTransfer > 0.000000000) {
-                maskTransfer := Mask[null, P(arg_1)];
+                maskTransfer := Mask[null, P(arg)];
                 if (neededTransfer <= maskTransfer) {
                   takeTransfer := neededTransfer;
                 } else {
@@ -1324,21 +1324,21 @@ procedure test06(r_1: Ref) returns ()
                 }
                 if (takeTransfer > 0.000000000) {
                   neededTransfer := neededTransfer - takeTransfer;
-                  Used_9Mask := Used_9Mask[null, P(arg_1):=Used_9Mask[null, P(arg_1)] + takeTransfer];
+                  Used_9Mask := Used_9Mask[null, P(arg):=Used_9Mask[null, P(arg)] + takeTransfer];
                   b_16 := b_16 && state(Used_9Heap, Used_9Mask);
-                  TempMask := ZeroMask[null, P(arg_1):=FullPerm];
+                  TempMask := ZeroMask[null, P(arg):=FullPerm];
                   b_16 := b_16 && IdenticalOnKnownLocations(Heap, Used_9Heap, TempMask);
-                  Mask := Mask[null, P(arg_1):=Mask[null, P(arg_1)] - takeTransfer];
+                  Mask := Mask[null, P(arg):=Mask[null, P(arg)] - takeTransfer];
                   havoc newPMask;
-                  assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-                    { newPMask[o_15, f_20] }
-                    Heap[null, wand_1#sm(true, true)][o_15, f_20] || Heap[null, P#sm(oldX)][o_15, f_20] ==> newPMask[o_15, f_20]
+                  assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+                    { newPMask[o_5, f_11] }
+                    Heap[null, wand_1#sm(true, true)][o_5, f_11] || Heap[null, P#sm(oldX)][o_5, f_11] ==> newPMask[o_5, f_11]
                   );
                   Heap := Heap[null, wand_1#sm(true, true):=newPMask];
                 }
               }
-            assert {:msg "  Applying wand might fail. There might be insufficient permission to access P(oldX) (shorthand_wand.vpr@72.7--72.34) [127782]"}
-              b_12 && b_16 ==> neededTransfer == 0.000000000 && Used_9Mask[null, P(arg_1)] == initNeededTransfer;
+            assert {:msg "  Applying wand might fail. There might be insufficient permission to access P(oldX) (shorthand_wand.vpr@72.7--72.34) [212758]"}
+              b_12 && b_16 ==> neededTransfer == 0.000000000 && Used_9Mask[null, P(arg)] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
               b_17 := b_12 && b_16;

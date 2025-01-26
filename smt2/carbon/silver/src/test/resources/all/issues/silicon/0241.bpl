@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:45
+// Date:         2025-01-26 21:42:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0241.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0241-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -209,35 +209,35 @@ procedure test_right_assert() returns ()
   //   (b && (b && (b && (b && (b && (b && (b && (b && (b && (b && b))))))))))))) -- 0241.vpr@9.3--9.109
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206701]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59966]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206702]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59967]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206703]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59968]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206704]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59969]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206705]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59970]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206706]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59971]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206707]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59972]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206708]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59973]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206709]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59974]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206710]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59975]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206711]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59976]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206712]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59977]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206713]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59978]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206714]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59979]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [206715]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@9.11--9.108) [59980]"}
       b_24;
     assume state(Heap, Mask);
 }
@@ -275,35 +275,35 @@ procedure test_left_assert() returns ()
   //   b -- 0241.vpr@17.3--17.109
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206716]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59981]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206717]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59982]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206718]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59983]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206719]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59984]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206720]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59985]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206721]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59986]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206722]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59987]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206723]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59988]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206724]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59989]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206725]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59990]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206726]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59991]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206727]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59992]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206728]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59993]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206729]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59994]"}
       b_24;
-    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [206730]"}
+    assert {:msg "  Assert might fail. Assertion b might not hold. (0241.vpr@17.11--17.108) [59995]"}
       b_24;
     assume state(Heap, Mask);
 }

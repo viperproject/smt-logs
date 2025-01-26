@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:00:14
+// Date:         2025-01-26 21:44:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/nestedRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/nestedRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,13 +180,13 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: bool;
   var x$0: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var x$1: bool;
+  var ExhaleWellDef0Mask: MaskType;
+  var x$1_2: bool;
   var x$2: bool;
   
   // -- Initializing the state
@@ -197,8 +197,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: x := true -- nestedRef.vpr@16.5--16.24
     x := true;
@@ -209,14 +209,14 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x || x$0 -- nestedRef.vpr@18.5--18.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion x || x$0 might not hold. (nestedRef.vpr@18.12--18.20) [101779]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion x || x$0 might not hold. (nestedRef.vpr@18.12--18.20) [198852]"}
       x || x$0;
     assume state(Heap, Mask);
   
   // -- Translating statement: x$1 := true -- nestedRef.vpr@20.5--20.26
-    x$1 := true;
+    x$1_2 := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: x$2 := false -- nestedRef.vpr@21.5--21.27
@@ -224,9 +224,9 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x$1 || x$2 -- nestedRef.vpr@22.5--22.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion x$1 || x$2 might not hold. (nestedRef.vpr@22.12--22.22) [101780]"}
-      x$1 || x$2;
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion x$1 || x$2 might not hold. (nestedRef.vpr@22.12--22.22) [198853]"}
+      x$1_2 || x$2;
     assume state(Heap, Mask);
 }

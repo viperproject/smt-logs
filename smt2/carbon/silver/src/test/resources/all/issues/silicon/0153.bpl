@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:25
+// Date:         2025-01-26 21:43:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0153.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0153-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -234,14 +234,14 @@ procedure fun#definedness(this: Ref) returns (Result: bool)
   
   // -- Inhaling precondition (with checking)
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0153.vpr@8.12--8.46) [204925]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0153.vpr@8.12--8.46) [79785]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     Mask := Mask[this, f_7:=Mask[this, f_7] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.f != null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (0153.vpr@8.12--8.46) [204926]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (0153.vpr@8.12--8.46) [79786]"}
         HasDirectPerm(Mask, this, f_7);
     assume Heap[this, f_7] != null;
     assume state(Heap, Mask);
@@ -258,12 +258,12 @@ procedure posterr01(this: Ref, other: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -278,14 +278,14 @@ procedure posterr01(this: Ref, other: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0153.vpr@14.12--14.28) [204927]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0153.vpr@14.12--14.28) [79787]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     Mask := Mask[this, f_7:=Mask[this, f_7] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0153.vpr@15.12--15.29) [204928]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0153.vpr@15.12--15.29) [79788]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> other != null;
     Mask := Mask[other, f_7:=Mask[other, f_7] + perm];
@@ -295,22 +295,22 @@ procedure posterr01(this: Ref, other: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0153.vpr@16.12--16.28) [204929]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0153.vpr@16.12--16.28) [79789]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     PostMask := PostMask[this, f_7:=PostMask[this, f_7] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0153.vpr@17.12--17.29) [204930]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0153.vpr@17.12--17.29) [79790]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> other != null;
     PostMask := PostMask[other, f_7:=PostMask[other, f_7] + perm];
@@ -321,14 +321,14 @@ procedure posterr01(this: Ref, other: Ref) returns ()
     // -- Check definedness of fun(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function fun might not hold. Fraction 1 / 2 might be negative. (0153.vpr@20.12--20.21) [204931]"}
+        assert {:msg "  Precondition of function fun might not hold. Fraction 1 / 2 might be negative. (0153.vpr@20.12--20.21) [79791]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access this.f (0153.vpr@20.12--20.21) [204932]"}
+        assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access this.f (0153.vpr@20.12--20.21) [79792]"}
           NoPerm < perm ==> NoPerm < PostMask[this, f_7];
-        assert {:msg "  Precondition of function fun might not hold. Assertion this.f != null might not hold. (0153.vpr@20.12--20.21) [204933]"}
+        assert {:msg "  Precondition of function fun might not hold. Assertion this.f != null might not hold. (0153.vpr@20.12--20.21) [79793]"}
           PostHeap[this, f_7] != null;
         // Finish exhale
         havoc ExhaleHeap;
@@ -344,25 +344,25 @@ procedure posterr01(this: Ref, other: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
-    assert {:msg "  Postcondition of posterr01 might not hold. Fraction 1 / 2 might be negative. (0153.vpr@16.12--16.28) [204934]"}
+    assert {:msg "  Postcondition of posterr01 might not hold. Fraction 1 / 2 might be negative. (0153.vpr@16.12--16.28) [79794]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of posterr01 might not hold. There might be insufficient permission to access this.f (0153.vpr@16.12--16.28) [204935]"}
+      assert {:msg "  Postcondition of posterr01 might not hold. There might be insufficient permission to access this.f (0153.vpr@16.12--16.28) [79795]"}
         perm <= Mask[this, f_7];
     }
     Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
     perm := 1 / 2;
-    assert {:msg "  Postcondition of posterr01 might not hold. Fraction 1 / 2 might be negative. (0153.vpr@17.12--17.29) [204936]"}
+    assert {:msg "  Postcondition of posterr01 might not hold. Fraction 1 / 2 might be negative. (0153.vpr@17.12--17.29) [79796]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of posterr01 might not hold. There might be insufficient permission to access other.f (0153.vpr@17.12--17.29) [204937]"}
+      assert {:msg "  Postcondition of posterr01 might not hold. There might be insufficient permission to access other.f (0153.vpr@17.12--17.29) [79797]"}
         perm <= Mask[other, f_7];
     }
     Mask := Mask[other, f_7:=Mask[other, f_7] - perm];
-    assert {:msg "  Postcondition of posterr01 might not hold. Assertion fun(this) might not hold. (0153.vpr@20.12--20.21) [204938]"}
+    assert {:msg "  Postcondition of posterr01 might not hold. Assertion fun(this) might not hold. (0153.vpr@20.12--20.21) [79798]"}
       fun(Heap, this);
     // Finish exhale
     havoc ExhaleHeap;
@@ -378,12 +378,12 @@ procedure posterr02(this: Ref, other: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -411,8 +411,8 @@ procedure posterr02(this: Ref, other: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -433,14 +433,14 @@ procedure posterr02(this: Ref, other: Ref) returns ()
     // -- Check definedness of fun(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := 1 / 2;
-        assert {:msg "  Precondition of function fun might not hold. Fraction 1 / 2 might be negative. (0153.vpr@30.12--30.21) [204939]"}
+        assert {:msg "  Precondition of function fun might not hold. Fraction 1 / 2 might be negative. (0153.vpr@30.12--30.21) [79799]"}
           perm >= NoPerm;
-        assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access this.f (0153.vpr@30.12--30.21) [204940]"}
+        assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access this.f (0153.vpr@30.12--30.21) [79800]"}
           NoPerm < perm ==> NoPerm < PostMask[this, f_7];
-        assert {:msg "  Precondition of function fun might not hold. Assertion this.f != null might not hold. (0153.vpr@30.12--30.21) [204941]"}
+        assert {:msg "  Precondition of function fun might not hold. Assertion this.f != null might not hold. (0153.vpr@30.12--30.21) [79801]"}
           PostHeap[this, f_7] != null;
         // Finish exhale
         havoc ExhaleHeap;
@@ -456,21 +456,21 @@ procedure posterr02(this: Ref, other: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of posterr02 might not hold. There might be insufficient permission to access this.f (0153.vpr@26.12--26.23) [204942]"}
+      assert {:msg "  Postcondition of posterr02 might not hold. There might be insufficient permission to access this.f (0153.vpr@26.12--26.23) [79802]"}
         perm <= Mask[this, f_7];
     }
     Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of posterr02 might not hold. There might be insufficient permission to access other.f (0153.vpr@27.12--27.24) [204943]"}
+      assert {:msg "  Postcondition of posterr02 might not hold. There might be insufficient permission to access other.f (0153.vpr@27.12--27.24) [79803]"}
         perm <= Mask[other, f_7];
     }
     Mask := Mask[other, f_7:=Mask[other, f_7] - perm];
-    assert {:msg "  Postcondition of posterr02 might not hold. Assertion fun(this) might not hold. (0153.vpr@30.12--30.21) [204944]"}
+    assert {:msg "  Postcondition of posterr02 might not hold. Assertion fun(this) might not hold. (0153.vpr@30.12--30.21) [79804]"}
       fun(Heap, this);
     // Finish exhale
     havoc ExhaleHeap;

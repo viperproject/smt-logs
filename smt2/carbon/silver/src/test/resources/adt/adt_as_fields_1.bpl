@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:03
+// Date:         2025-01-26 21:43:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/adt_as_fields_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/adt_as_fields_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -187,24 +187,24 @@ function  Nil<T>(): ListDomainType T;
 function  Cons<T>(value_2: T, tail: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function get_List_value
-function  get_List_value<T>(t_9: (ListDomainType T)): T;
+function  get_List_value<T>(t_3: (ListDomainType T)): T;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<T>(t_9: (ListDomainType T)): ListDomainType T;
+function  get_List_tail<T>(t_3: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function List_tag
-function  List_tag<T>(t_9: (ListDomainType T)): int;
+function  List_tag<T>(t_3: (ListDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType T)): T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType T)): ListDomainType T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType T)): ListDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -214,9 +214,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType T)): int) == 0
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (List_tag((Cons(value, tail_1): ListDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -243,12 +243,12 @@ axiom !IsWandField(condtion);
 procedure adt_as_fields_1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var f_69: Ref;
+  var oldHeap: HeapType;
+  var f_38: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -258,85 +258,85 @@ procedure adt_as_fields_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[f_69, $allocated];
+    assume Heap[f_38, $allocated];
   
   // -- Translating statement: f := new(list, condtion) -- adt_as_fields_1.vpr@12.5--12.30
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    f_69 := freshObj;
-    Mask := Mask[f_69, list:=Mask[f_69, list] + FullPerm];
-    Mask := Mask[f_69, condtion:=Mask[f_69, condtion] + FullPerm];
+    f_38 := freshObj;
+    Mask := Mask[f_38, list:=Mask[f_38, list] + FullPerm];
+    Mask := Mask[f_38, condtion:=Mask[f_38, condtion] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (List_tag(f.list): Int) == 1 || (List_tag(f.list): Int) == 0 -- adt_as_fields_1.vpr@13.5--13.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (List_tag(f.list): Int) == 1 || (List_tag(f.list): Int) == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@13.12--13.41) [222704]"}
-        HasDirectPerm(ExhaleWellDef0Mask, f_69, list);
-      if (!((List_tag(Heap[f_69, list]): int) == 1)) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@13.12--13.41) [222705]"}
-          HasDirectPerm(ExhaleWellDef0Mask, f_69, list);
+      assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@13.12--13.41) [103821]"}
+        HasDirectPerm(ExhaleWellDef0Mask, f_38, list);
+      if (!((List_tag(Heap[f_38, list]): int) == 1)) {
+        assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@13.12--13.41) [103822]"}
+          HasDirectPerm(ExhaleWellDef0Mask, f_38, list);
       }
-    assert {:msg "  Assert might fail. Assertion (List_tag(f.list): Int) == 1 || (List_tag(f.list): Int) == 0 might not hold. (adt_as_fields_1.vpr@13.12--13.41) [222706]"}
-      (List_tag(Heap[f_69, list]): int) == 1 || (List_tag(Heap[f_69, list]): int) == 0;
+    assert {:msg "  Assert might fail. Assertion (List_tag(f.list): Int) == 1 || (List_tag(f.list): Int) == 0 might not hold. (adt_as_fields_1.vpr@13.12--13.41) [103823]"}
+      (List_tag(Heap[f_38, list]): int) == 1 || (List_tag(Heap[f_38, list]): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: f.list := (Cons(42, (Nil(): List[Int])): List[Int]) -- adt_as_fields_1.vpr@16.5--16.30
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@16.5--16.30) [222707]"}
-      FullPerm == Mask[f_69, list];
-    Heap := Heap[f_69, list:=(Cons(42, (Nil(): ListDomainType int)): ListDomainType int)];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@16.5--16.30) [103824]"}
+      FullPerm == Mask[f_38, list];
+    Heap := Heap[f_38, list:=(Cons(42, (Nil(): ListDomainType int)): ListDomainType int)];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((List_tag((get_List_tail(f.list): List[Int])): Int) == 0) -- adt_as_fields_1.vpr@17.5--17.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of !((List_tag((get_List_tail(f.list): List[Int])): Int) == 0)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@17.12--17.31) [222708]"}
-        HasDirectPerm(ExhaleWellDef0Mask, f_69, list);
-    assert {:msg "  Assert might fail. Assertion !((List_tag((get_List_tail(f.list): List[Int])): Int) == 0) might not hold. (adt_as_fields_1.vpr@17.12--17.31) [222709]"}
-      !((List_tag((get_List_tail(Heap[f_69, list]): ListDomainType int)): int) == 0);
+      assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@17.12--17.31) [103825]"}
+        HasDirectPerm(ExhaleWellDef0Mask, f_38, list);
+    assert {:msg "  Assert might fail. Assertion !((List_tag((get_List_tail(f.list): List[Int])): Int) == 0) might not hold. (adt_as_fields_1.vpr@17.12--17.31) [103826]"}
+      !((List_tag((get_List_tail(Heap[f_38, list]): ListDomainType int)): int) == 0);
     assume state(Heap, Mask);
   
   // -- Translating statement: f.list := (get_List_tail((Cons(42, (Nil(): List[Int])): List[Int])): List[Int]) -- adt_as_fields_1.vpr@19.5--19.35
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@19.5--19.35) [222710]"}
-      FullPerm == Mask[f_69, list];
-    Heap := Heap[f_69, list:=(get_List_tail((Cons(42, (Nil(): ListDomainType int)): ListDomainType int)): ListDomainType int)];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@19.5--19.35) [103827]"}
+      FullPerm == Mask[f_38, list];
+    Heap := Heap[f_38, list:=(get_List_tail((Cons(42, (Nil(): ListDomainType int)): ListDomainType int)): ListDomainType int)];
     assume state(Heap, Mask);
   
   // -- Translating statement: f.condtion := (List_tag((Cons(42, (Nil(): List[Int])): List[Int])): Int) ==
   //   0 -- adt_as_fields_1.vpr@20.5--20.41
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access f.condtion (adt_as_fields_1.vpr@20.5--20.41) [222711]"}
-      FullPerm == Mask[f_69, condtion];
-    Heap := Heap[f_69, condtion:=(List_tag((Cons(42, (Nil(): ListDomainType int)): ListDomainType int)): int) == 0];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access f.condtion (adt_as_fields_1.vpr@20.5--20.41) [103828]"}
+      FullPerm == Mask[f_38, condtion];
+    Heap := Heap[f_38, condtion:=(List_tag((Cons(42, (Nil(): ListDomainType int)): ListDomainType int)): int) == 0];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert f.list == (Nil(): List[Int]) -- adt_as_fields_1.vpr@22.5--22.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of f.list == (Nil(): List[Int])
-      assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@22.12--22.27) [222712]"}
-        HasDirectPerm(ExhaleWellDef0Mask, f_69, list);
-    assert {:msg "  Assert might fail. Assertion f.list == (Nil(): List[Int]) might not hold. (adt_as_fields_1.vpr@22.12--22.27) [222713]"}
-      Heap[f_69, list] == (Nil(): ListDomainType int);
+      assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@22.12--22.27) [103829]"}
+        HasDirectPerm(ExhaleWellDef0Mask, f_38, list);
+    assert {:msg "  Assert might fail. Assertion f.list == (Nil(): List[Int]) might not hold. (adt_as_fields_1.vpr@22.12--22.27) [103830]"}
+      Heap[f_38, list] == (Nil(): ListDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert f.condtion == true -- adt_as_fields_1.vpr@23.5--23.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of f.condtion == true
-      assert {:msg "  Assert might fail. There might be insufficient permission to access f.condtion (adt_as_fields_1.vpr@23.12--23.30) [222714]"}
-        HasDirectPerm(ExhaleWellDef0Mask, f_69, condtion);
-    assert {:msg "  Assert might fail. Assertion f.condtion == true might not hold. (adt_as_fields_1.vpr@23.12--23.30) [222715]"}
-      Heap[f_69, condtion];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access f.condtion (adt_as_fields_1.vpr@23.12--23.30) [103831]"}
+        HasDirectPerm(ExhaleWellDef0Mask, f_38, condtion);
+    assert {:msg "  Assert might fail. Assertion f.condtion == true might not hold. (adt_as_fields_1.vpr@23.12--23.30) [103832]"}
+      Heap[f_38, condtion];
     assume state(Heap, Mask);
 }

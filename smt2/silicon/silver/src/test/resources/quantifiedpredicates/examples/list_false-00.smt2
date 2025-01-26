@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:40:48
+; Started: 2025-01-26 21:40:11
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -737,11 +737,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref) (i@1@00 Int) (v@2@00 Int)) (!
   (= (allSet%limited s@$ r@0@00 i@1@00 v@2@00) (allSet s@$ r@0@00 i@1@00 v@2@00))
   :pattern ((allSet s@$ r@0@00 i@1@00 v@2@00))
-  :qid |quant-u-16784|)))
+  :qid |quant-u-23929|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref) (i@1@00 Int) (v@2@00 Int)) (!
   (allSet%stateless r@0@00 i@1@00 v@2@00)
   :pattern ((allSet%limited s@$ r@0@00 i@1@00 v@2@00))
-  :qid |quant-u-16785|)))
+  :qid |quant-u-23930|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -946,7 +946,7 @@
             1) v@2@00)))))
   :pattern ((allSet s@$ r@0@00 i@1@00 v@2@00))
   :pattern ((allSet%stateless r@0@00 i@1@00 v@2@00) (list%trigger s@$ r@0@00 i@1@00))
-  :qid |quant-u-16786|)))
+  :qid |quant-u-23931|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref) (i@1@00 Int) (v@2@00 Int)) (!
   (=>
     (allSet%precondition s@$ r@0@00 i@1@00 v@2@00)
@@ -959,7 +959,7 @@
           i@1@00
           1) v@2@00))))
   :pattern ((allSet s@$ r@0@00 i@1@00 v@2@00))
-  :qid |quant-u-16787|)))
+  :qid |quant-u-23932|)))
 ; ---------- list ----------
 (declare-const r@4@00 $Ref)
 (declare-const i@5@00 Int)

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:35
+// Date:         2025-01-26 21:42:40
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0200.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0200-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -225,8 +225,8 @@ axiom !IsWandField(f_7);
 procedure t01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -234,8 +234,8 @@ procedure t01(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -255,8 +255,8 @@ procedure t01(x: Ref) returns ()
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -264,16 +264,16 @@ procedure t01(x: Ref) returns ()
   var b_7: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var Labellhs6Heap: HeapType;
   var Labellhs6Mask: MaskType;
+  var Labellhs6Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -287,8 +287,8 @@ procedure t01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, write) --* acc(x.f, write) {
   // } -- 0200.vpr@8.3--8.32
@@ -309,8 +309,8 @@ procedure t01(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- 0200.vpr@8.11--8.32
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, write)
@@ -322,7 +322,7 @@ procedure t01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (0200.vpr@8.3--8.32) [217950]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (0200.vpr@8.3--8.32) [68518]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -365,7 +365,7 @@ procedure t01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (0200.vpr@8.3--8.32) [217951]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (0200.vpr@8.3--8.32) [68519]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -399,8 +399,8 @@ procedure t01(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- 0200.vpr@9.11--9.32
       lhs3:
-      Labellhs3Heap := Ops_3Heap;
       Labellhs3Mask := Ops_3Mask;
+      Labellhs3Heap := Ops_3Heap;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(x.f, write)
@@ -412,7 +412,7 @@ procedure t01(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (0200.vpr@9.3--9.32) [217952]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (0200.vpr@9.3--9.32) [68520]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -455,7 +455,7 @@ procedure t01(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (0200.vpr@9.3--9.32) [217953]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (0200.vpr@9.3--9.32) [68521]"}
         (b_5 && b_5) && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -472,8 +472,8 @@ procedure t01(x: Ref) returns ()
   
   // -- Translating statement: exhale (acc(x.f, write) --* acc(x.f, write)) &&
   //   (acc(x.f, write) --* acc(x.f, write)) -- 0200.vpr@11.3--11.60
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(x.f, write) --* acc(x.f, write)
       if (*) {
@@ -487,8 +487,8 @@ procedure t01(x: Ref) returns ()
         
         // -- Translating statement: label lhs5 -- 0200.vpr@11.11--11.32
           lhs5:
-          Labellhs5Heap := WandDefLHSHeap;
           Labellhs5Mask := WandDefLHSMask;
+          Labellhs5Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -500,7 +500,7 @@ procedure t01(x: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (0200.vpr@11.10--11.60) [217954]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (0200.vpr@11.10--11.60) [68522]"}
       FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm)];
     Mask := Mask[null, wand(x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm)] - FullPerm];
     
@@ -516,8 +516,8 @@ procedure t01(x: Ref) returns ()
         
         // -- Translating statement: label lhs6 -- 0200.vpr@11.38--11.59
           lhs6:
-          Labellhs6Heap := WandDefLHSHeap;
           Labellhs6Mask := WandDefLHSMask;
+          Labellhs6Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -529,7 +529,7 @@ procedure t01(x: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (0200.vpr@11.10--11.60) [217955]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (0200.vpr@11.10--11.60) [68523]"}
       FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm)];
     Mask := Mask[null, wand(x, FullPerm, x, FullPerm):=Mask[null, wand(x, FullPerm, x, FullPerm)] - FullPerm];
     // Finish exhale
@@ -539,9 +539,9 @@ procedure t01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0200.vpr@14.3--14.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0200.vpr@14.10--14.15) [217956]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0200.vpr@14.10--14.15) [68524]"}
       false;
     assume state(Heap, Mask);
 }

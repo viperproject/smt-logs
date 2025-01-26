@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:16
+// Date:         2025-01-26 21:43:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0125.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0125-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -239,7 +239,7 @@ procedure P#definedness(x: Ref) returns ()
 // Translation of method test1
 // ==================================================
 
-procedure test1(x: Ref) returns ()
+procedure test1_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -271,17 +271,17 @@ procedure test1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(P(x), -(1 / 2)) -- 0125.vpr@11.3--11.27
-    assert {:msg "  Unfolding P(x) might fail. Fraction -(1 / 2) might not be positive. (0125.vpr@11.3--11.27) [192490]"}
+    assert {:msg "  Unfolding P(x) might fail. Fraction -(1 / 2) might not be positive. (0125.vpr@11.3--11.27) [83474]"}
       false;
     assume P#trigger(Heap, P(x));
     assume Heap[null, P(x)] == FrameFragment(Heap[x, f_7]);
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := -(1 / 2);
-    assert {:msg "  Unfolding P(x) might fail. Fraction -(1 / 2) might be negative. (0125.vpr@11.3--11.27) [192491]"}
+    assert {:msg "  Unfolding P(x) might fail. Fraction -(1 / 2) might be negative. (0125.vpr@11.3--11.27) [83475]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding P(x) might fail. There might be insufficient permission to access P(x) (0125.vpr@11.3--11.27) [192492]"}
+      assert {:msg "  Unfolding P(x) might fail. There might be insufficient permission to access P(x) (0125.vpr@11.3--11.27) [83476]"}
         perm <= Mask[null, P(x)];
     }
     Mask := Mask[null, P(x):=Mask[null, P(x)] - perm];
@@ -292,7 +292,7 @@ procedure test1(x: Ref) returns ()
         Heap := Heap[null, P(x):=newVersion];
       }
     perm := -(1 / 2);
-    assert {:msg "  Unfolding P(x) might fail. Fraction -(1 / 2) might be negative. (0125.vpr@11.3--11.27) [192493]"}
+    assert {:msg "  Unfolding P(x) might fail. Fraction -(1 / 2) might be negative. (0125.vpr@11.3--11.27) [83477]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -305,7 +305,7 @@ procedure test1(x: Ref) returns ()
 // Translation of method test2
 // ==================================================
 
-procedure test2(x: Ref) returns ()
+procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -343,17 +343,17 @@ procedure test2(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(P(x), p) -- 0125.vpr@20.3--20.22
-    assert {:msg "  Unfolding P(x) might fail. Fraction p might not be positive. (0125.vpr@20.3--20.22) [192495]"}
+    assert {:msg "  Unfolding P(x) might fail. Fraction p might not be positive. (0125.vpr@20.3--20.22) [83479]"}
       p_1 > NoPerm;
     assume P#trigger(Heap, P(x));
     assume Heap[null, P(x)] == FrameFragment(Heap[x, f_7]);
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := p_1;
-    assert {:msg "  Unfolding P(x) might fail. Fraction p might be negative. (0125.vpr@20.3--20.22) [192496]"}
+    assert {:msg "  Unfolding P(x) might fail. Fraction p might be negative. (0125.vpr@20.3--20.22) [83480]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding P(x) might fail. There might be insufficient permission to access P(x) (0125.vpr@20.3--20.22) [192497]"}
+      assert {:msg "  Unfolding P(x) might fail. There might be insufficient permission to access P(x) (0125.vpr@20.3--20.22) [83481]"}
         perm <= Mask[null, P(x)];
     }
     Mask := Mask[null, P(x):=Mask[null, P(x)] - perm];
@@ -364,7 +364,7 @@ procedure test2(x: Ref) returns ()
         Heap := Heap[null, P(x):=newVersion];
       }
     perm := p_1;
-    assert {:msg "  Unfolding P(x) might fail. Fraction p might be negative. (0125.vpr@20.3--20.22) [192498]"}
+    assert {:msg "  Unfolding P(x) might fail. Fraction p might be negative. (0125.vpr@20.3--20.22) [83482]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -377,7 +377,7 @@ procedure test2(x: Ref) returns ()
 // Translation of method test3
 // ==================================================
 
-procedure test3() returns ()
+procedure test3_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -399,7 +399,7 @@ procedure test3() returns ()
   // -- Translating statement: assert -(1 / 2) < none -- 0125.vpr@24.3--24.23
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion -(1 / 2) < none might not hold. (0125.vpr@24.10--24.23) [192499]"}
+    assert {:msg "  Assert might fail. Assertion -(1 / 2) < none might not hold. (0125.vpr@24.10--24.23) [83483]"}
       -(1 / 2) < NoPerm;
     assume state(Heap, Mask);
 }

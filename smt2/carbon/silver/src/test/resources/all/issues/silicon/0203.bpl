@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:03
+// Date:         2025-01-26 21:42:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0203.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0203-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,18 +185,18 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type DummyDomainType;
 
 // Translation of domain function loc
-function  loc(a_3: DummyDomainType, i_79: int): bool;
+function  loc(a_3: DummyDomainType, i_6: int): bool;
 
 // ==================================================
 // Translation of function count
 // ==================================================
 
 // Uninterpreted function definitions
-function  count(Heap: HeapType, lo: int, hi: int, a_2: DummyDomainType): int;
+function  count_2(Heap: HeapType, lo: int, hi: int, a_2: DummyDomainType): int;
 function  count'(Heap: HeapType, lo: int, hi: int, a_2: DummyDomainType): int;
 axiom (forall Heap: HeapType, lo: int, hi: int, a_2: DummyDomainType ::
-  { count(Heap, lo, hi, a_2) }
-  count(Heap, lo, hi, a_2) == count'(Heap, lo, hi, a_2) && dummyFunction(count#triggerStateless(lo, hi, a_2))
+  { count_2(Heap, lo, hi, a_2) }
+  count_2(Heap, lo, hi, a_2) == count'(Heap, lo, hi, a_2) && dummyFunction(count#triggerStateless(lo, hi, a_2))
 );
 axiom (forall Heap: HeapType, lo: int, hi: int, a_2: DummyDomainType ::
   { count'(Heap, lo, hi, a_2) }
@@ -253,7 +253,7 @@ procedure count#definedness(lo: int, hi: int, a_2: DummyDomainType) returns (Res
           // Enable postcondition for recursive call
           assume count#trigger(EmptyFrame, lo, hi + 1, a_2);
         }
-      assume count(Heap, lo, hi + 1, a_2) == Result + (if (loc(a_2, hi): bool) then 0 else 1);
+      assume count_2(Heap, lo, hi + 1, a_2) == Result + (if (loc(a_2, hi): bool) then 0 else 1);
     }
     assume state(Heap, Mask);
 }
@@ -330,7 +330,7 @@ procedure recfun#definedness(x: int) returns (Result: int)
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function recfun might not hold. Assertion x > 0 might not hold. (0203.vpr@12.11--12.20) [211016]"}
+        assert {:msg "  Precondition of function recfun might not hold. Assertion x > 0 might not hold. (0203.vpr@12.11--12.20) [71286]"}
           x > 0;
         // Stop execution
         assume false;
@@ -338,6 +338,6 @@ procedure recfun#definedness(x: int) returns (Result: int)
         // Enable postcondition for recursive call
         assume recfun#trigger(EmptyFrame, x);
       }
-    assert {:msg "  Postcondition of recfun might not hold. Assertion recfun(x) < 0 might not hold. (0203.vpr@12.11--12.24) [211017]"}
+    assert {:msg "  Postcondition of recfun might not hold. Assertion recfun(x) < 0 might not hold. (0203.vpr@12.11--12.24) [71287]"}
       recfun(Heap, x) < 0;
 }

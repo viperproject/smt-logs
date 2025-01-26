@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:13:47
+// Date:         2025-01-26 21:45:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/localVarAssign.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/localVarAssign-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -225,8 +225,8 @@ axiom !IsWandField(f_7);
 procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -234,12 +234,12 @@ procedure test0(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -270,8 +270,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, write) --* acc(x.f, write) {
   //   var i: Int
@@ -299,8 +299,8 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- localVarAssign.vpr@7.13--7.34
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -309,7 +309,7 @@ procedure test0(x: Ref) returns ()
         if (b_1_1) {
           
           // -- Check definedness of x.f
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (localVarAssign.vpr@8.9--8.26) [140324]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (localVarAssign.vpr@8.9--8.26) [223876]"}
               HasDirectPerm(Ops_1Mask, x, f_7);
         }
         i := Ops_1Heap[x, f_7];
@@ -318,8 +318,8 @@ procedure test0(x: Ref) returns ()
     if (b_1_1) {
       
       // -- Translating statement: assert i == x.f -- localVarAssign.vpr@9.9--9.24
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -327,11 +327,11 @@ procedure test0(x: Ref) returns ()
           if (b_1_1) {
             
             // -- Check definedness of i == x.f
-              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (localVarAssign.vpr@9.16--9.24) [140325]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (localVarAssign.vpr@9.16--9.24) [223877]"}
                 HasDirectPerm(Ops_1Mask, x, f_7);
           }
         }
-        assert {:msg "  Assert might fail. Assertion i == x.f might not hold. (localVarAssign.vpr@9.16--9.24) [140326]"}
+        assert {:msg "  Assert might fail. Assertion i == x.f might not hold. (localVarAssign.vpr@9.16--9.24) [223878]"}
           b_1_1 && b_2_1 ==> i == Ops_1Heap[x, f_7];
         b_1_1 := b_1_1 && b_2_1;
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
@@ -350,12 +350,12 @@ procedure test0(x: Ref) returns ()
     if (b_1_1) {
       
       // -- Translating statement: assert i >= 0 -- localVarAssign.vpr@13.9--13.22
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_2Heap;
         Used_2Mask := ZeroMask;
         b_3 := b_3 && state(Used_2Heap, Used_2Mask);
-        assert {:msg "  Assert might fail. Assertion i >= 0 might not hold. (localVarAssign.vpr@13.16--13.22) [140327]"}
+        assert {:msg "  Assert might fail. Assertion i >= 0 might not hold. (localVarAssign.vpr@13.16--13.22) [223879]"}
           b_1_1 && b_3 ==> i >= 0;
         b_1_1 := b_1_1 && b_3;
         b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
@@ -369,7 +369,7 @@ procedure test0(x: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (localVarAssign.vpr@7.5--14.6) [140328]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (localVarAssign.vpr@7.5--14.6) [223880]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -412,7 +412,7 @@ procedure test0(x: Ref) returns ()
             Heap := Heap[null, wand#sm(x, FullPerm, x, FullPerm):=Heap[null, wand#sm(x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (localVarAssign.vpr@7.5--14.6) [140329]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (localVarAssign.vpr@7.5--14.6) [223881]"}
         (b_1_1 && b_1_1) && b_4 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states

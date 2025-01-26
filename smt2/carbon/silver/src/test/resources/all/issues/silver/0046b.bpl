@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:25
+// Date:         2025-01-26 21:42:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0046b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0046b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,7 +181,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type D1DomainType T;
 
 // Translation of domain function f1b
-function  f1b<T>(x_8: (D1DomainType T)): int;
+function  f1b<T>(x_37: (D1DomainType T)): int;
 
 // ==================================================
 // Translation of domain D2
@@ -191,24 +191,24 @@ function  f1b<T>(x_8: (D1DomainType T)): int;
 type D2DomainType T;
 
 // Translation of domain function f1
-function  f1_2<T>(x_8: (D1DomainType T)): D2DomainType T;
+function  f1_3<T>(x_37: (D1DomainType T)): D2DomainType T;
 
 // Translation of domain function f2
-function  f2_2<T>(x_8: (D2DomainType T)): T;
+function  f2_3<T>(x_37: (D2DomainType T)): T;
 
 // Translation of domain function f2b
-function  f2b<T>(x_8: (D2DomainType T)): int;
+function  f2b<T>(x_37: (D2DomainType T)): int;
 
 // Translation of domain axiom ax2a
 axiom (forall <T> x: (D1DomainType T) ::
-  { (f1b(x): int) } { (f2b((f1_2(x): D2DomainType T)): int) }
-  (f1b(x): int) >= 0 ==> (f2b((f1_2(x): D2DomainType T)): int) > 0
+  { (f1b(x): int) } { (f2b((f1_3(x): D2DomainType T)): int) }
+  (f1b(x): int) >= 0 ==> (f2b((f1_3(x): D2DomainType T)): int) > 0
 );
 
 // Translation of domain axiom ax2b
 axiom (forall <T> x: (D1DomainType T) ::
-  { (f2b((f1_2(x): D2DomainType T)): int) } { (f1b(x): int) }
-  (f2b((f1_2(x): D2DomainType T)): int) > 0 ==> (f1b(x): int) == 0
+  { (f2b((f1_3(x): D2DomainType T)): int) } { (f1b(x): int) }
+  (f2b((f1_3(x): D2DomainType T)): int) > 0 ==> (f1b(x): int) == 0
 );
 
 // ==================================================
@@ -218,10 +218,10 @@ axiom (forall <T> x: (D1DomainType T) ::
 procedure m1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var d1x: (D1DomainType int);
   
   // -- Initializing the state
@@ -232,14 +232,14 @@ procedure m1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (f1b(d1x): Int) >= 0 ==> (f1b(d1x): Int) == 0 -- 0046b.vpr@24.3--24.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if ((f1b(d1x): int) >= 0) {
-      assert {:msg "  Assert might fail. Assertion (f1b(d1x): Int) == 0 might not hold. (0046b.vpr@24.10--24.41) [222387]"}
+      assert {:msg "  Assert might fail. Assertion (f1b(d1x): Int) == 0 might not hold. (0046b.vpr@24.10--24.41) [55527]"}
         (f1b(d1x): int) == 0;
     }
     assume state(Heap, Mask);

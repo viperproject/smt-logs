@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:40:34
+; Started: 2025-01-26 21:39:59
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -121,11 +121,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (x$3%limited s@$) (x$3 s@$))
   :pattern ((x$3 s@$))
-  :qid |quant-u-15830|)))
+  :qid |quant-u-23031|)))
 (assert (forall ((s@$ $Snap)) (!
   (as x$3%stateless  Bool)
   :pattern ((x$3%limited s@$))
-  :qid |quant-u-15831|)))
+  :qid |quant-u-23032|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -137,8 +137,8 @@
 (assert (forall ((s@$ $Snap)) (!
   (=> (x$3%precondition s@$) (= (x$3 s@$) true))
   :pattern ((x$3 s@$))
-  :qid |quant-u-15832|)))
+  :qid |quant-u-23033|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((x$3 s@$))
-  :qid |quant-u-15833|)))
+  :qid |quant-u-23034|)))

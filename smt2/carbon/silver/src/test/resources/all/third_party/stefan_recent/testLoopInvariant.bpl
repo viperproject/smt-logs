@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:18:00
+// Date:         2025-01-26 21:41:40
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testLoopInvariant.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testLoopInvariant-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -232,7 +232,7 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Ref__res == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@13.12--13.29) [163030]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@13.12--13.29) [31117]"}
         HasDirectPerm(Mask, diz, Ref__res);
     assume Heap[diz, Ref__res] == 0;
     assume state(Heap, Mask);
@@ -254,7 +254,7 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__res == n * n
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@15.11--15.32) [163031]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@15.11--15.32) [31118]"}
         HasDirectPerm(PostMask, diz, Ref__res);
     assume PostHeap[diz, Ref__res] == n * n;
     assume state(PostHeap, PostMask);
@@ -277,7 +277,7 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Ref__res := __flatten_4 -- testLoopInvariant.vpr@27.3--27.30
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@27.3--27.30) [163032]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@27.3--27.30) [31119]"}
       FullPerm == Mask[diz, Ref__res];
     Heap := Heap[diz, Ref__res:=__flatten_4];
     assume state(Heap, Mask);
@@ -291,13 +291,13 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.Ref__res, write) might not hold on entry. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@29.15--29.39) [163033]"}
+          assert {:msg "  Loop invariant acc(diz.Ref__res, write) might not hold on entry. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@29.15--29.39) [31120]"}
             perm <= Mask[diz, Ref__res];
         }
         Mask := Mask[diz, Ref__res:=Mask[diz, Ref__res] - perm];
-        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (testLoopInvariant.vpr@30.15--30.21) [163034]"}
+        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (testLoopInvariant.vpr@30.15--30.21) [31121]"}
           i <= n;
-        assert {:msg "  Loop invariant diz.Ref__res == i * n might not hold on entry. Assertion diz.Ref__res == i * n might not hold. (testLoopInvariant.vpr@31.15--31.36) [163035]"}
+        assert {:msg "  Loop invariant diz.Ref__res == i * n might not hold on entry. Assertion diz.Ref__res == i * n might not hold. (testLoopInvariant.vpr@31.15--31.36) [31122]"}
           Heap[diz, Ref__res] == i * n;
         // Finish exhale
         havoc ExhaleHeap;
@@ -318,7 +318,7 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
         assume state(Heap, Mask);
         
         // -- Check definedness of diz.Ref__res == i * n
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@31.15--31.36) [163036]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@31.15--31.36) [31123]"}
             HasDirectPerm(Mask, diz, Ref__res);
         assume Heap[diz, Ref__res] == i * n;
         assume state(Heap, Mask);
@@ -349,7 +349,7 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
           // -- Translating statement: __flatten_2 := diz.Ref__res + n -- testLoopInvariant.vpr@33.5--33.36
             
             // -- Check definedness of diz.Ref__res + n
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@33.5--33.36) [163037]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@33.5--33.36) [31124]"}
                 HasDirectPerm(Mask, diz, Ref__res);
             __flatten_2 := Heap[diz, Ref__res] + n;
             assume state(Heap, Mask);
@@ -359,7 +359,7 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
             assume state(Heap, Mask);
           
           // -- Translating statement: diz.Ref__res := __flatten_5 -- testLoopInvariant.vpr@35.5--35.32
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@35.5--35.32) [163038]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@35.5--35.32) [31125]"}
               FullPerm == Mask[diz, Ref__res];
             Heap := Heap[diz, Ref__res:=__flatten_5];
             assume state(Heap, Mask);
@@ -372,13 +372,13 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(diz.Ref__res, write) might not be preserved. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@29.15--29.39) [163039]"}
+          assert {:msg "  Loop invariant acc(diz.Ref__res, write) might not be preserved. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@29.15--29.39) [31126]"}
             perm <= Mask[diz, Ref__res];
         }
         Mask := Mask[diz, Ref__res:=Mask[diz, Ref__res] - perm];
-        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (testLoopInvariant.vpr@30.15--30.21) [163040]"}
+        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (testLoopInvariant.vpr@30.15--30.21) [31127]"}
           i <= n;
-        assert {:msg "  Loop invariant diz.Ref__res == i * n might not be preserved. Assertion diz.Ref__res == i * n might not hold. (testLoopInvariant.vpr@31.15--31.36) [163041]"}
+        assert {:msg "  Loop invariant diz.Ref__res == i * n might not be preserved. Assertion diz.Ref__res == i * n might not hold. (testLoopInvariant.vpr@31.15--31.36) [31128]"}
           Heap[diz, Ref__res] == i * n;
         // Finish exhale
         havoc ExhaleHeap;
@@ -403,7 +403,7 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
   // -- Translating statement: __flatten_3 := diz.Ref__res -- testLoopInvariant.vpr@38.3--38.30
     
     // -- Check definedness of diz.Ref__res
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@38.3--38.30) [163042]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@38.3--38.30) [31129]"}
         HasDirectPerm(Mask, diz, Ref__res);
     __flatten_3 := Heap[diz, Ref__res];
     assume state(Heap, Mask);
@@ -419,17 +419,17 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
     ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@40.10--40.72) [163044]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@40.10--40.72) [31131]"}
         perm <= AssertMask[diz, Ref__res];
     }
     AssertMask := AssertMask[diz, Ref__res:=AssertMask[diz, Ref__res] - perm];
     
     // -- Check definedness of diz.Ref__res == n * n
-      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@40.10--40.72) [163045]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@40.10--40.72) [31132]"}
         HasDirectPerm(ExhaleWellDef0Mask, diz, Ref__res);
-    assert {:msg "  Assert might fail. Assertion diz.Ref__res == n * n might not hold. (testLoopInvariant.vpr@40.10--40.72) [163046]"}
+    assert {:msg "  Assert might fail. Assertion diz.Ref__res == n * n might not hold. (testLoopInvariant.vpr@40.10--40.72) [31133]"}
       AssertHeap[diz, Ref__res] == n * n;
-    assert {:msg "  Assert might fail. Assertion n > 0 might not hold. (testLoopInvariant.vpr@40.10--40.72) [163047]"}
+    assert {:msg "  Assert might fail. Assertion n > 0 might not hold. (testLoopInvariant.vpr@40.10--40.72) [31134]"}
       n > 0;
     assume state(Heap, Mask);
   
@@ -443,13 +443,13 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__Mul might not hold. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@14.11--14.35) [163048]"}
+      assert {:msg "  Postcondition of Ref__Mul might not hold. There might be insufficient permission to access diz.Ref__res (testLoopInvariant.vpr@14.11--14.35) [31135]"}
         perm <= Mask[diz, Ref__res];
     }
     Mask := Mask[diz, Ref__res:=Mask[diz, Ref__res] - perm];
-    assert {:msg "  Postcondition of Ref__Mul might not hold. Assertion diz.Ref__res == n * n might not hold. (testLoopInvariant.vpr@15.11--15.32) [163049]"}
+    assert {:msg "  Postcondition of Ref__Mul might not hold. Assertion diz.Ref__res == n * n might not hold. (testLoopInvariant.vpr@15.11--15.32) [31136]"}
       Heap[diz, Ref__res] == n * n;
-    assert {:msg "  Postcondition of Ref__Mul might not hold. Assertion n > 0 might not hold. (testLoopInvariant.vpr@16.11--16.16) [163050]"}
+    assert {:msg "  Postcondition of Ref__Mul might not hold. Assertion n > 0 might not hold. (testLoopInvariant.vpr@16.11--16.16) [31137]"}
       n > 0;
     // Finish exhale
     havoc ExhaleHeap;

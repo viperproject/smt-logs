@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:45
+// Date:         2025-01-26 21:42:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0290.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0290-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -225,8 +225,8 @@ procedure P#definedness(r_1: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Check definedness of predicate body of P
     
@@ -241,7 +241,7 @@ procedure P#definedness(r_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(Q(r.f), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access r.f (0290.vpr@6.1--10.2) [196330]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access r.f (0290.vpr@6.1--10.2) [60262]"}
         HasDirectPerm(Mask, r_1, f_7);
     perm := FullPerm;
     Mask := Mask[null, Q(Heap[r_1, f_7]):=Mask[null, Q(Heap[r_1, f_7])] + perm];
@@ -252,16 +252,16 @@ procedure P#definedness(r_1: Ref) returns ()
       UnfoldingMask := Mask;
       assume Q#trigger(UnfoldingHeap, Q(UnfoldingHeap[r_1, f_7]));
       assume UnfoldingHeap[null, Q(UnfoldingHeap[r_1, f_7])] == EmptyFrame;
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access Q(r.f) (0290.vpr@6.1--10.2) [196331]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access Q(r.f) (0290.vpr@6.1--10.2) [60263]"}
           perm <= UnfoldingMask[null, Q(UnfoldingHeap[r_1, f_7])];
       }
       UnfoldingMask := UnfoldingMask[null, Q(UnfoldingHeap[r_1, f_7]):=UnfoldingMask[null, Q(UnfoldingHeap[r_1, f_7])] - perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access r.f (0290.vpr@6.1--10.2) [196332]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access r.f (0290.vpr@6.1--10.2) [60264]"}
         HasDirectPerm(UnfoldingMask, r_1, f_7);
       
       // -- Free assumptions (exp module)
@@ -272,8 +272,8 @@ procedure P#definedness(r_1: Ref) returns ()
       UnfoldingMask := Mask;
       assume Q#trigger(UnfoldingHeap, Q(UnfoldingHeap[r_1, f_7]));
       assume UnfoldingHeap[null, Q(UnfoldingHeap[r_1, f_7])] == EmptyFrame;
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, Q(UnfoldingHeap[r_1, f_7]):=UnfoldingMask[null, Q(UnfoldingHeap[r_1, f_7])] - perm];
       assume state(UnfoldingHeap, UnfoldingMask);
@@ -384,12 +384,12 @@ procedure Rec#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0290.vpr@24.1--27.2) [196333]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0290.vpr@24.1--27.2) [60265]"}
         HasDirectPerm(Mask, x, f_7);
     if (Heap[x, f_7] != null) {
       
       // -- Check definedness of acc(Rec(x.f), wildcard)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0290.vpr@24.1--27.2) [196334]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.f (0290.vpr@24.1--27.2) [60266]"}
           HasDirectPerm(Mask, x, f_7);
       havoc wildcard;
       perm := wildcard;
@@ -440,8 +440,8 @@ procedure SP_State#definedness(self: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Check definedness of predicate body of SP_State
     
@@ -456,7 +456,7 @@ procedure SP_State#definedness(self: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(OFL_State(self.ofs), write)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.ofs (0290.vpr@40.1--44.2) [196335]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.ofs (0290.vpr@40.1--44.2) [60267]"}
         HasDirectPerm(Mask, self, ofs);
     perm := FullPerm;
     Mask := Mask[null, OFL_State(Heap[self, ofs]):=Mask[null, OFL_State(Heap[self, ofs])] + perm];
@@ -467,16 +467,16 @@ procedure SP_State#definedness(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume OFL_State#trigger(UnfoldingHeap, OFL_State(UnfoldingHeap[self, ofs]));
       assume UnfoldingHeap[null, OFL_State(UnfoldingHeap[self, ofs])] == EmptyFrame;
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access OFL_State(self.ofs) (0290.vpr@40.1--44.2) [196336]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access OFL_State(self.ofs) (0290.vpr@40.1--44.2) [60268]"}
           perm <= UnfoldingMask[null, OFL_State(UnfoldingHeap[self, ofs])];
       }
       UnfoldingMask := UnfoldingMask[null, OFL_State(UnfoldingHeap[self, ofs]):=UnfoldingMask[null, OFL_State(UnfoldingHeap[self, ofs])] - perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.ofs (0290.vpr@40.1--44.2) [196337]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access self.ofs (0290.vpr@40.1--44.2) [60269]"}
         HasDirectPerm(UnfoldingMask, self, ofs);
       
       // -- Free assumptions (exp module)
@@ -487,8 +487,8 @@ procedure SP_State#definedness(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume OFL_State#trigger(UnfoldingHeap, OFL_State(UnfoldingHeap[self, ofs]));
       assume UnfoldingHeap[null, OFL_State(UnfoldingHeap[self, ofs])] == EmptyFrame;
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, OFL_State(UnfoldingHeap[self, ofs]):=UnfoldingMask[null, OFL_State(UnfoldingHeap[self, ofs])] - perm];
       assume state(UnfoldingHeap, UnfoldingMask);
@@ -551,11 +551,11 @@ procedure OFL_State#definedness(self: Ref) returns ()
 procedure test01(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newVersion: FrameType;
   var UnfoldingHeap: HeapType;
@@ -572,8 +572,8 @@ procedure test01(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(r), write) -- 0290.vpr@15.3--15.19
     perm := FullPerm;
@@ -585,9 +585,9 @@ procedure test01(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(P(r), wildcard) -- 0290.vpr@16.3--16.29
     assume P#trigger(Heap, P(r_1));
     assume Heap[null, P(r_1)] == CombineFrames(FrameFragment(Heap[r_1, f_7]), Heap[null, Q(Heap[r_1, f_7])]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Unfolding P(r) might fail. There might be insufficient permission to access P(r) (0290.vpr@16.3--16.29) [196340]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Unfolding P(r) might fail. There might be insufficient permission to access P(r) (0290.vpr@16.3--16.29) [60272]"}
       Mask[null, P(r_1)] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[null, P(r_1)];
@@ -616,8 +616,8 @@ procedure test01(r_1: Ref) returns ()
       UnfoldingMask := Mask;
       assume Q#trigger(UnfoldingHeap, Q(UnfoldingHeap[r_1, f_7]));
       assume UnfoldingHeap[null, Q(UnfoldingHeap[r_1, f_7])] == EmptyFrame;
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       havoc wildcard;
       assume wildcard < UnfoldingMask[null, Q(UnfoldingHeap[r_1, f_7])];
       UnfoldingMask := UnfoldingMask[null, Q(UnfoldingHeap[r_1, f_7]):=UnfoldingMask[null, Q(UnfoldingHeap[r_1, f_7])] - wildcard];
@@ -629,9 +629,9 @@ procedure test01(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0290.vpr@19.3--19.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0290.vpr@19.10--19.15) [196341]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0290.vpr@19.10--19.15) [60273]"}
       false;
     assume state(Heap, Mask);
 }
@@ -643,14 +643,14 @@ procedure test01(r_1: Ref) returns ()
 procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: Ref;
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   
@@ -665,8 +665,8 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -685,11 +685,11 @@ procedure test02(x: Ref) returns ()
       UnfoldingMask := Mask;
       assume Rec#trigger(UnfoldingHeap, Rec(x));
       assume UnfoldingHeap[null, Rec(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), FrameFragment((if UnfoldingHeap[x, f_7] != null then UnfoldingHeap[null, Rec(UnfoldingHeap[x, f_7])] else EmptyFrame)));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access Rec(x) (0290.vpr@31.3--31.40) [196343]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access Rec(x) (0290.vpr@31.3--31.40) [60275]"}
           perm <= UnfoldingMask[null, Rec(x)];
       }
       UnfoldingMask := UnfoldingMask[null, Rec(x):=UnfoldingMask[null, Rec(x)] - perm];
@@ -708,16 +708,16 @@ procedure test02(x: Ref) returns ()
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (0290.vpr@31.3--31.40) [196344]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (0290.vpr@31.3--31.40) [60276]"}
         HasDirectPerm(UnfoldingMask, x, f_7);
       
       // -- Free assumptions (exp module)
         Heap := Heap[null, Rec#sm(x):=Heap[null, Rec#sm(x)][x, f_7:=true]];
         if (Heap[x, f_7] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, Rec#sm(x)][o_15, f_20] || Heap[null, Rec#sm(Heap[x, f_7])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, Rec#sm(x)][o_5, f_11] || Heap[null, Rec#sm(Heap[x, f_7])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, Rec#sm(x):=newPMask];
         }
@@ -736,14 +736,14 @@ procedure Router__process_data_3_3(spkt: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -755,7 +755,7 @@ procedure Router__process_data_3_3(spkt: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0290.vpr@49.12--49.36) [196345]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0290.vpr@49.12--49.36) [60277]"}
       perm >= NoPerm;
     Mask := Mask[null, SP_State(spkt):=Mask[null, SP_State(spkt)] + perm];
     assume state(Heap, Mask);
@@ -766,9 +766,9 @@ procedure Router__process_data_3_3(spkt: Ref) returns ()
       UnfoldingMask := Mask;
       assume SP_State#trigger(UnfoldingHeap, SP_State(spkt));
       assume UnfoldingHeap[null, SP_State(spkt)] == CombineFrames(FrameFragment(UnfoldingHeap[spkt, ofs]), UnfoldingHeap[null, OFL_State(UnfoldingHeap[spkt, ofs])]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access SP_State(spkt) (0290.vpr@50.13--50.60) [196346]"}
+      ExhaleWellDef0Mask := UnfoldingMask;
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access SP_State(spkt) (0290.vpr@50.13--50.60) [60278]"}
         UnfoldingMask[null, SP_State(spkt)] > NoPerm;
       havoc wildcard;
       assume wildcard < UnfoldingMask[null, SP_State(spkt)];
@@ -791,8 +791,8 @@ procedure Router__process_data_3_3(spkt: Ref) returns ()
         Unfolding1Mask := UnfoldingMask;
         assume OFL_State#trigger(Unfolding1Heap, OFL_State(Unfolding1Heap[spkt, ofs]));
         assume Unfolding1Heap[null, OFL_State(Unfolding1Heap[spkt, ofs])] == EmptyFrame;
-        ExhaleWellDef0Mask := Unfolding1Mask;
         ExhaleWellDef0Heap := Unfolding1Heap;
+        ExhaleWellDef0Mask := Unfolding1Mask;
         havoc wildcard;
         assume wildcard < Unfolding1Mask[null, OFL_State(Unfolding1Heap[spkt, ofs])];
         Unfolding1Mask := Unfolding1Mask[null, OFL_State(Unfolding1Heap[spkt, ofs]):=Unfolding1Mask[null, OFL_State(Unfolding1Heap[spkt, ofs])] - wildcard];
@@ -805,9 +805,9 @@ procedure Router__process_data_3_3(spkt: Ref) returns ()
       // -- Free assumptions (exp module)
         Heap := Heap[null, SP_State#sm(spkt):=Heap[null, SP_State#sm(spkt)][spkt, ofs:=true]];
         havoc newPMask;
-        assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-          { newPMask[o_16, f_21] }
-          Heap[null, SP_State#sm(spkt)][o_16, f_21] || Heap[null, OFL_State#sm(Heap[spkt, ofs])][o_16, f_21] ==> newPMask[o_16, f_21]
+        assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+          { newPMask[o_6, f_12] }
+          Heap[null, SP_State#sm(spkt)][o_6, f_12] || Heap[null, OFL_State#sm(Heap[spkt, ofs])][o_6, f_12] ==> newPMask[o_6, f_12]
         );
         Heap := Heap[null, SP_State#sm(spkt):=newPMask];
         assume state(Heap, Mask);
@@ -817,8 +817,8 @@ procedure Router__process_data_3_3(spkt: Ref) returns ()
       UnfoldingMask := Mask;
       assume SP_State#trigger(UnfoldingHeap, SP_State(spkt));
       assume UnfoldingHeap[null, SP_State(spkt)] == CombineFrames(FrameFragment(UnfoldingHeap[spkt, ofs]), UnfoldingHeap[null, OFL_State(UnfoldingHeap[spkt, ofs])]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       havoc wildcard;
       assume wildcard < UnfoldingMask[null, SP_State(spkt)];
       UnfoldingMask := UnfoldingMask[null, SP_State(spkt):=UnfoldingMask[null, SP_State(spkt)] - wildcard];
@@ -843,13 +843,13 @@ procedure Router__process_data_3_3(spkt: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert false -- 0290.vpr@53.3--53.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (0290.vpr@53.10--53.15) [196347]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion false might not hold. (0290.vpr@53.10--53.15) [60279]"}
       false;
     assume state(Heap, Mask);
 }

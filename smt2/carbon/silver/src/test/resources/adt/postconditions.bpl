@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:13
+// Date:         2025-01-26 21:43:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/postconditions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/postconditions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,10 +188,10 @@ type WrapDomainType;
 function  WrappedInt(data_2: int): WrapDomainType;
 
 // Translation of domain function get_Wrap_data
-function  get_Wrap_data(t_9: WrapDomainType): int;
+function  get_Wrap_data(t_3: WrapDomainType): int;
 
 // Translation of domain function Wrap_tag
-function  Wrap_tag(t_9: WrapDomainType): int;
+function  Wrap_tag(t_3: WrapDomainType): int;
 
 // Translation of anonymous domain axiom
 axiom (forall data_1: int ::
@@ -352,7 +352,7 @@ procedure wrapTest() returns ()
   // -- Translating statement: assert get_Wrap_data(x) == 1 -- postconditions.vpr@19.3--19.22
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion get_Wrap_data(x) == 1 might not hold. (postconditions.vpr@19.10--19.21) [222866]"}
+    assert {:msg "  Assert might fail. Assertion get_Wrap_data(x) == 1 might not hold. (postconditions.vpr@19.10--19.21) [103962]"}
       (get_Wrap_data(x): int) == 1;
     assume state(Heap, Mask);
   
@@ -369,7 +369,7 @@ procedure wrapTest() returns ()
   // -- Translating statement: assert get_Wrap_data(y) == 1 -- postconditions.vpr@22.3--22.22
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion get_Wrap_data(y) == 1 might not hold. (postconditions.vpr@22.10--22.21) [222867]"}
+    assert {:msg "  Assert might fail. Assertion get_Wrap_data(y) == 1 might not hold. (postconditions.vpr@22.10--22.21) [103963]"}
       (get_Wrap_data(y): int) == 1;
     assume state(Heap, Mask);
 }

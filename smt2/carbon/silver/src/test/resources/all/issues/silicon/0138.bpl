@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:21
+// Date:         2025-01-26 21:42:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0138.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0138-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -315,7 +315,7 @@ procedure test01() returns ()
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(P(), write) might not hold on entry. There might be insufficient permission to access P() (0138.vpr@11.15--11.23) [217186]"}
+          assert {:msg "  Loop invariant acc(P(), write) might not hold on entry. There might be insufficient permission to access P() (0138.vpr@11.15--11.23) [77355]"}
             perm <= Mask[null, P()];
         }
         Mask := Mask[null, P():=Mask[null, P()] - perm];
@@ -354,7 +354,7 @@ procedure test01() returns ()
           // -- Translating statement: assert false -- 0138.vpr@14.5--14.17
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion false might not hold. (0138.vpr@14.12--14.17) [217187]"}
+            assert {:msg "  Assert might fail. Assertion false might not hold. (0138.vpr@14.12--14.17) [77356]"}
               false;
             assume state(Heap, Mask);
         // Exhale invariant
@@ -362,7 +362,7 @@ procedure test01() returns ()
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(P(), write) might not be preserved. There might be insufficient permission to access P() (0138.vpr@11.15--11.23) [217188]"}
+          assert {:msg "  Loop invariant acc(P(), write) might not be preserved. There might be insufficient permission to access P() (0138.vpr@11.15--11.23) [77357]"}
             perm <= Mask[null, P()];
         }
         Mask := Mask[null, P():=Mask[null, P()] - perm];
@@ -388,7 +388,7 @@ procedure test01() returns ()
 // Translation of method Ref__do_incr_loop
 // ==================================================
 
-procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
+procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -408,7 +408,7 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
   
   // -- Assumptions about method arguments
     assume Heap[diz, $allocated];
-    assume Heap[h_2, $allocated];
+    assume Heap[h_1, $allocated];
   
   // -- Checked inhaling of precondition
     assume diz != null;
@@ -417,10 +417,10 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
     assume state(Heap, Mask);
     assume k >= 0;
     assume state(Heap, Mask);
-    assume h_2 != null;
+    assume h_1 != null;
     assume state(Heap, Mask);
     perm := FullPerm;
-    Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_single(k): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_single(k): ProcessDomainType))] + perm];
+    Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_single(k): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_single(k): ProcessDomainType))] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -441,20 +441,20 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant k >= 0 might not hold on entry. Assertion k >= 0 might not hold. (0138.vpr@40.15--40.21) [217189]"}
+        assert {:msg "  Loop invariant k >= 0 might not hold on entry. Assertion k >= 0 might not hold. (0138.vpr@40.15--40.21) [77358]"}
           k >= 0;
-        assert {:msg "  Loop invariant 0 <= i might not hold on entry. Assertion 0 <= i might not hold. (0138.vpr@41.15--41.21) [217190]"}
+        assert {:msg "  Loop invariant 0 <= i might not hold on entry. Assertion 0 <= i might not hold. (0138.vpr@41.15--41.21) [77359]"}
           0 <= i;
-        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (0138.vpr@42.15--42.21) [217191]"}
+        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (0138.vpr@42.15--42.21) [77360]"}
           i <= n;
-        assert {:msg "  Loop invariant h != null might not hold on entry. Assertion h != null might not hold. (0138.vpr@44.15--44.24) [217192]"}
-          h_2 != null;
+        assert {:msg "  Loop invariant h != null might not hold on entry. Assertion h != null might not hold. (0138.vpr@44.15--44.24) [77361]"}
+          h_1 != null;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(Ref__hist_idle(h, diz, p_single(k + i)), write) might not hold on entry. There might be insufficient permission to access Ref__hist_idle(h, diz, p_single(k + i)) (0138.vpr@45.15--45.66) [217193]"}
-            perm <= Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType))];
+          assert {:msg "  Loop invariant acc(Ref__hist_idle(h, diz, p_single(k + i)), write) might not hold on entry. There might be insufficient permission to access Ref__hist_idle(h, diz, p_single(k + i)) (0138.vpr@45.15--45.66) [77362]"}
+            perm <= Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType))];
         }
-        Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType))] - perm];
+        Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType))] - perm];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -468,10 +468,10 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
         assume state(Heap, Mask);
         assume i <= n;
         assume state(Heap, Mask);
-        assume h_2 != null;
+        assume h_1 != null;
         assume state(Heap, Mask);
         perm := FullPerm;
-        Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType))] + perm];
+        Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType))] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         assume false;
@@ -488,9 +488,9 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
         assume k >= 0;
         assume 0 <= i;
         assume i <= n;
-        assume h_2 != null;
+        assume h_1 != null;
         perm := FullPerm;
-        Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType))] + perm];
+        Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType))] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         // Check and assume guard
@@ -502,26 +502,26 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
           // -- Translating statement: assert false -- 0138.vpr@48.5--48.17
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion false might not hold. (0138.vpr@48.12--48.17) [217194]"}
+            assert {:msg "  Assert might fail. Assertion false might not hold. (0138.vpr@48.12--48.17) [77363]"}
               false;
             assume state(Heap, Mask);
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant k >= 0 might not be preserved. Assertion k >= 0 might not hold. (0138.vpr@40.15--40.21) [217195]"}
+        assert {:msg "  Loop invariant k >= 0 might not be preserved. Assertion k >= 0 might not hold. (0138.vpr@40.15--40.21) [77364]"}
           k >= 0;
-        assert {:msg "  Loop invariant 0 <= i might not be preserved. Assertion 0 <= i might not hold. (0138.vpr@41.15--41.21) [217196]"}
+        assert {:msg "  Loop invariant 0 <= i might not be preserved. Assertion 0 <= i might not hold. (0138.vpr@41.15--41.21) [77365]"}
           0 <= i;
-        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (0138.vpr@42.15--42.21) [217197]"}
+        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (0138.vpr@42.15--42.21) [77366]"}
           i <= n;
-        assert {:msg "  Loop invariant h != null might not be preserved. Assertion h != null might not hold. (0138.vpr@44.15--44.24) [217198]"}
-          h_2 != null;
+        assert {:msg "  Loop invariant h != null might not be preserved. Assertion h != null might not hold. (0138.vpr@44.15--44.24) [77367]"}
+          h_1 != null;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(Ref__hist_idle(h, diz, p_single(k + i)), write) might not be preserved. There might be insufficient permission to access Ref__hist_idle(h, diz, p_single(k + i)) (0138.vpr@45.15--45.66) [217199]"}
-            perm <= Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType))];
+          assert {:msg "  Loop invariant acc(Ref__hist_idle(h, diz, p_single(k + i)), write) might not be preserved. There might be insufficient permission to access Ref__hist_idle(h, diz, p_single(k + i)) (0138.vpr@45.15--45.66) [77368]"}
+            perm <= Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType))];
         }
-        Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType))] - perm];
+        Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType))] - perm];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -536,9 +536,9 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
       assume k >= 0;
       assume 0 <= i;
       assume i <= n;
-      assume h_2 != null;
+      assume h_1 != null;
       perm := FullPerm;
-      Mask := Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_2, diz, (p_single(k + i): ProcessDomainType))] + perm];
+      Mask := Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType)):=Mask[null, Ref__hist_idle(h_1, diz, (p_single(k + i): ProcessDomainType))] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);

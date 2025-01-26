@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:21
+// Date:         2025-01-26 21:43:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0076.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0076-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_9: Ref, f_13: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_9, f_13] }
-  Heap[o_9, $allocated] ==> Heap[Heap[o_9, f_13], $allocated]
+axiom (forall o_49: Ref, f_30: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_49, f_30] }
+  Heap[o_49, $allocated] ==> Heap[Heap[o_49, f_30], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_10: Ref, f_14: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_10, f_14] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_10, f_14) ==> Heap[o_10, f_14] == ExhaleHeap[o_10, f_14]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_59: Ref, f_28: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_59, f_28] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_59, f_28) ==> Heap[o_59, f_28] == ExhaleHeap[o_59, f_28]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4), ExhaleHeap[null, PredicateMaskField(pm_f_4)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> Heap[null, PredicateMaskField(pm_f_4)] == ExhaleHeap[null, PredicateMaskField(pm_f_4)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_31), ExhaleHeap[null, PredicateMaskField(pm_f_31)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsPredicateField(pm_f_31) ==> Heap[null, PredicateMaskField(pm_f_31)] == ExhaleHeap[null, PredicateMaskField(pm_f_31)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_14: (Field A B) ::
-    { ExhaleHeap[o2_4, f_14] }
-    Heap[null, PredicateMaskField(pm_f_4)][o2_4, f_14] ==> Heap[o2_4, f_14] == ExhaleHeap[o2_4, f_14]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_31) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsPredicateField(pm_f_31) ==> (forall <A, B> o2_31: Ref, f_28: (Field A B) ::
+    { ExhaleHeap[o2_31, f_28] }
+    Heap[null, PredicateMaskField(pm_f_31)][o2_31, f_28] ==> Heap[o2_31, f_28] == ExhaleHeap[o2_31, f_28]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4), ExhaleHeap[null, WandMaskField(pm_f_4)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> Heap[null, WandMaskField(pm_f_4)] == ExhaleHeap[null, WandMaskField(pm_f_4)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_31), ExhaleHeap[null, WandMaskField(pm_f_31)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsWandField(pm_f_31) ==> Heap[null, WandMaskField(pm_f_31)] == ExhaleHeap[null, WandMaskField(pm_f_31)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_14: (Field A B) ::
-    { ExhaleHeap[o2_4, f_14] }
-    Heap[null, WandMaskField(pm_f_4)][o2_4, f_14] ==> Heap[o2_4, f_14] == ExhaleHeap[o2_4, f_14]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_31: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_31) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_31) && IsWandField(pm_f_31) ==> (forall <A, B> o2_31: Ref, f_28: (Field A B) ::
+    { ExhaleHeap[o2_31, f_28] }
+    Heap[null, WandMaskField(pm_f_31)][o2_31, f_28] ==> Heap[o2_31, f_28] == ExhaleHeap[o2_31, f_28]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_10: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_10, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_10, $allocated] ==> ExhaleHeap[o_10, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_59: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_59, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_59, $allocated] ==> ExhaleHeap[o_59, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_9: Ref, f_15: (Field A B), v: B ::
-  { Heap[o_9, f_15:=v] }
-  succHeap(Heap, Heap[o_9, f_15:=v])
+axiom (forall <A, B> Heap: HeapType, o_49: Ref, f_70: (Field A B), v: B ::
+  { Heap[o_49, f_70:=v] }
+  succHeap(Heap, Heap[o_49, f_70:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -599,106 +599,106 @@ procedure prio#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  contentNodes(Heap: HeapType, this: Ref, end: Ref): Seq Ref;
-function  contentNodes'(Heap: HeapType, this: Ref, end: Ref): Seq Ref;
-axiom (forall Heap: HeapType, this: Ref, end: Ref ::
-  { contentNodes(Heap, this, end) }
-  contentNodes(Heap, this, end) == contentNodes'(Heap, this, end) && dummyFunction(contentNodes#triggerStateless(this, end))
+function  contentNodes(Heap: HeapType, this: Ref, end_1: Ref): Seq Ref;
+function  contentNodes'(Heap: HeapType, this: Ref, end_1: Ref): Seq Ref;
+axiom (forall Heap: HeapType, this: Ref, end_1: Ref ::
+  { contentNodes(Heap, this, end_1) }
+  contentNodes(Heap, this, end_1) == contentNodes'(Heap, this, end_1) && dummyFunction(contentNodes#triggerStateless(this, end_1))
 );
-axiom (forall Heap: HeapType, this: Ref, end: Ref ::
-  { contentNodes'(Heap, this, end) }
-  dummyFunction(contentNodes#triggerStateless(this, end))
+axiom (forall Heap: HeapType, this: Ref, end_1: Ref ::
+  { contentNodes'(Heap, this, end_1) }
+  dummyFunction(contentNodes#triggerStateless(this, end_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end: Ref ::
-  { state(Heap, Mask), contentNodes(Heap, this, end) } { state(Heap, Mask), contentNodes#triggerStateless(this, end), Lseg#trigger(Heap, Lseg(this, end)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> contentNodes(Heap, this, end) == (if this == end then (Seq#Empty(): Seq Ref) else Seq#Append(Seq#Singleton(Heap[this, data]), (if Heap[this, next] == null then (Seq#Empty(): Seq Ref) else contentNodes'(Heap, Heap[this, next], end))))
+axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end_1: Ref ::
+  { state(Heap, Mask), contentNodes(Heap, this, end_1) } { state(Heap, Mask), contentNodes#triggerStateless(this, end_1), Lseg#trigger(Heap, Lseg(this, end_1)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> contentNodes(Heap, this, end_1) == (if this == end_1 then (Seq#Empty(): Seq Ref) else Seq#Append(Seq#Singleton(Heap[this, data]), (if Heap[this, next] == null then (Seq#Empty(): Seq Ref) else contentNodes'(Heap, Heap[this, next], end_1))))
 );
 
 // Framing axioms
-function  contentNodes#frame(frame: FrameType, this: Ref, end: Ref): Seq Ref;
-axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end: Ref ::
-  { state(Heap, Mask), contentNodes'(Heap, this, end) } { state(Heap, Mask), contentNodes#triggerStateless(this, end), Lseg#trigger(Heap, Lseg(this, end)) }
-  state(Heap, Mask) ==> contentNodes'(Heap, this, end) == contentNodes#frame(Heap[null, Lseg(this, end)], this, end)
+function  contentNodes#frame(frame: FrameType, this: Ref, end_1: Ref): Seq Ref;
+axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end_1: Ref ::
+  { state(Heap, Mask), contentNodes'(Heap, this, end_1) } { state(Heap, Mask), contentNodes#triggerStateless(this, end_1), Lseg#trigger(Heap, Lseg(this, end_1)) }
+  state(Heap, Mask) ==> contentNodes'(Heap, this, end_1) == contentNodes#frame(Heap[null, Lseg(this, end_1)], this, end_1)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end: Ref ::
-  { state(Heap, Mask), contentNodes'(Heap, this, end) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || contentNodes#trigger(Heap[null, Lseg(this, end)], this, end)) ==> (this == end) == Seq#Equal(contentNodes'(Heap, this, end), (Seq#Empty(): Seq Ref))
+axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end_1: Ref ::
+  { state(Heap, Mask), contentNodes'(Heap, this, end_1) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || contentNodes#trigger(Heap[null, Lseg(this, end_1)], this, end_1)) ==> (this == end_1) == Seq#Equal(contentNodes'(Heap, this, end_1), (Seq#Empty(): Seq Ref))
 );
-axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end: Ref ::
-  { state(Heap, Mask), contentNodes'(Heap, this, end) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || contentNodes#trigger(Heap[null, Lseg(this, end)], this, end)) ==> this != end ==> 0 < Seq#Length(contentNodes'(Heap, this, end))
+axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end_1: Ref ::
+  { state(Heap, Mask), contentNodes'(Heap, this, end_1) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || contentNodes#trigger(Heap[null, Lseg(this, end_1)], this, end_1)) ==> this != end_1 ==> 0 < Seq#Length(contentNodes'(Heap, this, end_1))
 );
-axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end: Ref ::
-  { state(Heap, Mask), contentNodes'(Heap, this, end) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || contentNodes#trigger(Heap[null, Lseg(this, end)], this, end)) ==> this != end ==> Seq#Index(contentNodes'(Heap, this, end), 0) == Heap[this, data]
+axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end_1: Ref ::
+  { state(Heap, Mask), contentNodes'(Heap, this, end_1) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || contentNodes#trigger(Heap[null, Lseg(this, end_1)], this, end_1)) ==> this != end_1 ==> Seq#Index(contentNodes'(Heap, this, end_1), 0) == Heap[this, data]
 );
-axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end: Ref ::
-  { state(Heap, Mask), contentNodes'(Heap, this, end) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || contentNodes#trigger(Heap[null, Lseg(this, end)], this, end)) ==> this != end ==> (forall i: int, j_9: int ::
-    { Seq#Index(contentNodes'(Heap, this, end), i), prio#frame(EmptyFrame, Seq#Index(contentNodes'(Heap, this, end), j_9)) } { prio#frame(EmptyFrame, Seq#Index(contentNodes'(Heap, this, end), i)), Seq#Index(contentNodes'(Heap, this, end), j_9) } { prio#frame(EmptyFrame, Seq#Index(contentNodes'(Heap, this, end), i)), prio#frame(EmptyFrame, Seq#Index(contentNodes'(Heap, this, end), j_9)) }
-    0 <= i && (i < j_9 && j_9 < Seq#Length(contentNodes'(Heap, this, end))) ==> prio(Heap, Seq#Index(contentNodes'(Heap, this, end), i)) <= prio(Heap, Seq#Index(contentNodes'(Heap, this, end), j_9))
+axiom (forall Heap: HeapType, Mask: MaskType, this: Ref, end_1: Ref ::
+  { state(Heap, Mask), contentNodes'(Heap, this, end_1) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || contentNodes#trigger(Heap[null, Lseg(this, end_1)], this, end_1)) ==> this != end_1 ==> (forall i: int, j: int ::
+    { Seq#Index(contentNodes'(Heap, this, end_1), i), prio#frame(EmptyFrame, Seq#Index(contentNodes'(Heap, this, end_1), j)) } { prio#frame(EmptyFrame, Seq#Index(contentNodes'(Heap, this, end_1), i)), Seq#Index(contentNodes'(Heap, this, end_1), j) } { prio#frame(EmptyFrame, Seq#Index(contentNodes'(Heap, this, end_1), i)), prio#frame(EmptyFrame, Seq#Index(contentNodes'(Heap, this, end_1), j)) }
+    0 <= i && (i < j && j < Seq#Length(contentNodes'(Heap, this, end_1))) ==> prio(Heap, Seq#Index(contentNodes'(Heap, this, end_1), i)) <= prio(Heap, Seq#Index(contentNodes'(Heap, this, end_1), j))
   )
 );
 
 // Trigger function (controlling recursive postconditions)
-function  contentNodes#trigger(frame: FrameType, this: Ref, end: Ref): bool;
+function  contentNodes#trigger(frame: FrameType, this: Ref, end_1: Ref): bool;
 
 // State-independent trigger function
-function  contentNodes#triggerStateless(this: Ref, end: Ref): Seq Ref;
+function  contentNodes#triggerStateless(this: Ref, end_1: Ref): Seq Ref;
 
 // Check contract well-formedness and postcondition
-procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Ref))
+procedure contentNodes#definedness(this: Ref, end_1: Ref) returns (Result: (Seq Ref))
   modifies Heap, Mask;
 {
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
-  var i_22: int;
-  var j_14: int;
-  var i_2_1: int;
-  var j_2_1: int;
+  var ExhaleWellDef1Mask: MaskType;
+  var i_12: int;
+  var j_23: int;
+  var i_2: int;
+  var j_2_2: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
     assume Heap[this, $allocated];
-    assume Heap[end, $allocated];
+    assume Heap[end_1, $allocated];
     assume AssumeFunctionsAbove == 0;
   
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
-    Mask := Mask[null, Lseg(this, end):=Mask[null, Lseg(this, end)] + perm];
+    Mask := Mask[null, Lseg(this, end_1):=Mask[null, Lseg(this, end_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Check definedness of function body
     
     // -- Check definedness of (this == end ? Seq[Ref]() : (unfolding acc(Lseg(this, end), write) in Seq(this.data) ++ (this.next == null ? Seq[Ref]() : contentNodes(this.next, end))))
-      if (this == end) {
+      if (this == end_1) {
       } else {
         UnfoldingHeap := Heap;
         UnfoldingMask := Mask;
-        assume Lseg#trigger(UnfoldingHeap, Lseg(this, end));
-        assume UnfoldingHeap[null, Lseg(this, end)] == FrameFragment((if this != end then CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)] else EmptyFrame)))) else EmptyFrame));
-        ExhaleWellDef0Mask := UnfoldingMask;
+        assume Lseg#trigger(UnfoldingHeap, Lseg(this, end_1));
+        assume UnfoldingHeap[null, Lseg(this, end_1)] == FrameFragment((if this != end_1 then CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end_1)] else EmptyFrame)))) else EmptyFrame));
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Lseg(this, end) (0076.vpr@21.1--35.2) [195089]"}
-          NoPerm < perm ==> NoPerm < UnfoldingMask[null, Lseg(this, end)];
-        if (this != end) {
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Lseg(this, end) (0076.vpr@21.1--35.2) [82956]"}
+          NoPerm < perm ==> NoPerm < UnfoldingMask[null, Lseg(this, end_1)];
+        if (this != end_1) {
           perm := FullPerm;
           assume this != null;
           UnfoldingMask := UnfoldingMask[this, data:=UnfoldingMask[this, data] + perm];
@@ -709,22 +709,22 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
           assume state(UnfoldingHeap, UnfoldingMask);
           if (UnfoldingHeap[this, next] != null) {
             perm := FullPerm;
-            UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end):=UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end)] + perm];
+            UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end_1):=UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end_1)] + perm];
             
             // -- Extra unfolding of predicate
-              assume InsidePredicate(Lseg(this, end), UnfoldingHeap[null, Lseg(this, end)], Lseg(UnfoldingHeap[this, next], end), UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)]);
+              assume InsidePredicate(Lseg(this, end_1), UnfoldingHeap[null, Lseg(this, end_1)], Lseg(UnfoldingHeap[this, next], end_1), UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end_1)]);
             assume state(UnfoldingHeap, UnfoldingMask);
             assume state(UnfoldingHeap, UnfoldingMask);
             
             // -- Execute unfolding (for extra information)
               Unfolding1Heap := UnfoldingHeap;
               Unfolding1Mask := UnfoldingMask;
-              assume Lseg#trigger(Unfolding1Heap, Lseg(Unfolding1Heap[this, next], end));
-              assume Unfolding1Heap[null, Lseg(Unfolding1Heap[this, next], end)] == FrameFragment((if Unfolding1Heap[this, next] != end then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)] else EmptyFrame)))) else EmptyFrame));
-              ExhaleWellDef0Mask := Unfolding1Mask;
+              assume Lseg#trigger(Unfolding1Heap, Lseg(Unfolding1Heap[this, next], end_1));
+              assume Unfolding1Heap[null, Lseg(Unfolding1Heap[this, next], end_1)] == FrameFragment((if Unfolding1Heap[this, next] != end_1 then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)] else EmptyFrame)))) else EmptyFrame));
               ExhaleWellDef0Heap := Unfolding1Heap;
+              ExhaleWellDef0Mask := Unfolding1Mask;
               perm := FullPerm;
-              if (Unfolding1Heap[this, next] != end) {
+              if (Unfolding1Heap[this, next] != end_1) {
                 perm := FullPerm;
                 assume Unfolding1Heap[this, next] != null;
                 Unfolding1Mask := Unfolding1Mask[Unfolding1Heap[this, next], data:=Unfolding1Mask[Unfolding1Heap[this, next], data] + perm];
@@ -735,65 +735,65 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
                 assume state(Unfolding1Heap, Unfolding1Mask);
                 if (Unfolding1Heap[Unfolding1Heap[this, next], next] != null) {
                   perm := FullPerm;
-                  Unfolding1Mask := Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end):=Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)] + perm];
+                  Unfolding1Mask := Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1):=Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)] + perm];
                   
                   // -- Extra unfolding of predicate
-                    assume InsidePredicate(Lseg(Unfolding1Heap[this, next], end), Unfolding1Heap[null, Lseg(Unfolding1Heap[this, next], end)], Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end), Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)]);
+                    assume InsidePredicate(Lseg(Unfolding1Heap[this, next], end_1), Unfolding1Heap[null, Lseg(Unfolding1Heap[this, next], end_1)], Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1), Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)]);
                   assume state(Unfolding1Heap, Unfolding1Mask);
                   assume state(Unfolding1Heap, Unfolding1Mask);
-                  assume Unfolding1Heap[Unfolding1Heap[this, next], next] != end ==> prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[this, next], data]) <= prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]);
+                  assume Unfolding1Heap[Unfolding1Heap[this, next], next] != end_1 ==> prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[this, next], data]) <= prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]);
                   
                   // -- Free assumptions (inhale module)
-                    if (Unfolding1Heap[Unfolding1Heap[this, next], next] != end) {
-                      Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end)][Unfolding1Heap[Unfolding1Heap[this, next], next], data:=true]];
-                      Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end)][Unfolding1Heap[Unfolding1Heap[this, next], next], next:=true]];
+                    if (Unfolding1Heap[Unfolding1Heap[this, next], next] != end_1) {
+                      Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)][Unfolding1Heap[Unfolding1Heap[this, next], next], data:=true]];
+                      Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)][Unfolding1Heap[Unfolding1Heap[this, next], next], next:=true]];
                       if (Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != null) {
                         havoc newPMask;
-                        assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-                          { newPMask[o_16, f_21] }
-                          Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end)][o_16, f_21] || Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end)][o_16, f_21] ==> newPMask[o_16, f_21]
+                        assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+                          { newPMask[o_6, f_12] }
+                          Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)][o_6, f_12] || Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1)][o_6, f_12] ==> newPMask[o_6, f_12]
                         );
-                        Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end):=newPMask];
+                        Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1):=newPMask];
                       }
                     }
                     assume state(Unfolding1Heap, Unfolding1Mask);
                 }
               }
               assume state(Unfolding1Heap, Unfolding1Mask);
-            assume UnfoldingHeap[this, next] != end ==> prio(UnfoldingHeap, UnfoldingHeap[this, data]) <= prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[this, next], data]);
+            assume UnfoldingHeap[this, next] != end_1 ==> prio(UnfoldingHeap, UnfoldingHeap[this, data]) <= prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[this, next], data]);
             
             // -- Free assumptions (inhale module)
-              if (UnfoldingHeap[this, next] != end) {
-                UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end)][UnfoldingHeap[this, next], data:=true]];
-                UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end)][UnfoldingHeap[this, next], next:=true]];
+              if (UnfoldingHeap[this, next] != end_1) {
+                UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1)][UnfoldingHeap[this, next], data:=true]];
+                UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1)][UnfoldingHeap[this, next], next:=true]];
                 if (UnfoldingHeap[UnfoldingHeap[this, next], next] != null) {
                   havoc newPMask;
-                  assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-                    { newPMask[o_15, f_20] }
-                    UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end)][o_15, f_20] || UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end)][o_15, f_20] ==> newPMask[o_15, f_20]
+                  assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+                    { newPMask[o_5, f_11] }
+                    UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1)][o_5, f_11] || UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)][o_5, f_11] ==> newPMask[o_5, f_11]
                   );
-                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end):=newPMask];
+                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1):=newPMask];
                 }
               }
               assume state(UnfoldingHeap, UnfoldingMask);
           }
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.data (0076.vpr@21.1--35.2) [195090]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.data (0076.vpr@21.1--35.2) [82957]"}
           HasDirectPerm(UnfoldingMask, this, data);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@21.1--35.2) [195091]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@21.1--35.2) [82958]"}
           HasDirectPerm(UnfoldingMask, this, next);
         if (UnfoldingHeap[this, next] == null) {
         } else {
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@21.1--35.2) [195092]"}
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@21.1--35.2) [82959]"}
             HasDirectPerm(UnfoldingMask, this, next);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access Lseg(this.next, end) (0076.vpr@33.73--33.101) [195093]"}
-              NoPerm < perm ==> NoPerm < UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end)];
+            assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access Lseg(this.next, end) (0076.vpr@33.73--33.101) [82960]"}
+              NoPerm < perm ==> NoPerm < UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end_1)];
             // Finish exhale
             havoc ExhaleHeap;
             assume IdenticalOnKnownLocations(UnfoldingHeap, ExhaleHeap, UnfoldingMask);
@@ -802,53 +802,53 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
             assume false;
           } else {
             // Enable postcondition for recursive call
-            assume contentNodes#trigger(UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)], UnfoldingHeap[this, next], end);
+            assume contentNodes#trigger(UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end_1)], UnfoldingHeap[this, next], end_1);
           }
         }
         
         // -- Free assumptions (exp module)
-          if (this != end) {
-            Heap := Heap[null, Lseg#sm(this, end):=Heap[null, Lseg#sm(this, end)][this, data:=true]];
-            Heap := Heap[null, Lseg#sm(this, end):=Heap[null, Lseg#sm(this, end)][this, next:=true]];
+          if (this != end_1) {
+            Heap := Heap[null, Lseg#sm(this, end_1):=Heap[null, Lseg#sm(this, end_1)][this, data:=true]];
+            Heap := Heap[null, Lseg#sm(this, end_1):=Heap[null, Lseg#sm(this, end_1)][this, next:=true]];
             if (Heap[this, next] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-                { newPMask[o_52, f_55] }
-                Heap[null, Lseg#sm(this, end)][o_52, f_55] || Heap[null, Lseg#sm(Heap[this, next], end)][o_52, f_55] ==> newPMask[o_52, f_55]
+              assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+                { newPMask[o_40, f_52] }
+                Heap[null, Lseg#sm(this, end_1)][o_40, f_52] || Heap[null, Lseg#sm(Heap[this, next], end_1)][o_40, f_52] ==> newPMask[o_40, f_52]
               );
-              Heap := Heap[null, Lseg#sm(this, end):=newPMask];
+              Heap := Heap[null, Lseg#sm(this, end_1):=newPMask];
             }
           }
           assume state(Heap, Mask);
       }
   
   // -- Translate function body
-    Result := (if this == end then (Seq#Empty(): Seq Ref) else Seq#Append(Seq#Singleton(Heap[this, data]), (if Heap[this, next] == null then (Seq#Empty(): Seq Ref) else contentNodes(Heap, Heap[this, next], end))));
+    Result := (if this == end_1 then (Seq#Empty(): Seq Ref) else Seq#Append(Seq#Singleton(Heap[this, data]), (if Heap[this, next] == null then (Seq#Empty(): Seq Ref) else contentNodes(Heap, Heap[this, next], end_1))));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of contentNodes might not hold. Assertion (this == end) == (result == Seq[Ref]()) might not hold. (0076.vpr@23.12--23.49) [195094]"}
-      (this == end) == Seq#Equal(Result, (Seq#Empty(): Seq Ref));
-    if (this != end) {
-      assert {:msg "  Postcondition of contentNodes might not hold. Assertion 0 < |result| might not hold. (0076.vpr@24.12--24.40) [195095]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of contentNodes might not hold. Assertion (this == end) == (result == Seq[Ref]()) might not hold. (0076.vpr@23.12--23.49) [82961]"}
+      (this == end_1) == Seq#Equal(Result, (Seq#Empty(): Seq Ref));
+    if (this != end_1) {
+      assert {:msg "  Postcondition of contentNodes might not hold. Assertion 0 < |result| might not hold. (0076.vpr@24.12--24.40) [82962]"}
         0 < Seq#Length(Result);
     }
-    if (this != end) {
+    if (this != end_1) {
       
       // -- Check definedness of result[0] == (unfolding acc(Lseg(this, end), write) in this.data)
-        assert {:msg "  Contract might not be well-formed. Index result[0] into result might exceed sequence length. (0076.vpr@25.12--25.84) [195096]"}
+        assert {:msg "  Contract might not be well-formed. Index result[0] into result might exceed sequence length. (0076.vpr@25.12--25.84) [82963]"}
           0 < Seq#Length(Result);
         UnfoldingHeap := ExhaleWellDef0Heap;
         UnfoldingMask := ExhaleWellDef0Mask;
-        assume Lseg#trigger(UnfoldingHeap, Lseg(this, end));
-        assume UnfoldingHeap[null, Lseg(this, end)] == FrameFragment((if this != end then CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)] else EmptyFrame)))) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
+        assume Lseg#trigger(UnfoldingHeap, Lseg(this, end_1));
+        assume UnfoldingHeap[null, Lseg(this, end_1)] == FrameFragment((if this != end_1 then CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end_1)] else EmptyFrame)))) else EmptyFrame));
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Lseg(this, end) (0076.vpr@25.12--25.84) [195097]"}
-          NoPerm < perm ==> NoPerm < UnfoldingMask[null, Lseg(this, end)];
-        if (this != end) {
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Lseg(this, end) (0076.vpr@25.12--25.84) [82964]"}
+          NoPerm < perm ==> NoPerm < UnfoldingMask[null, Lseg(this, end_1)];
+        if (this != end_1) {
           perm := FullPerm;
           assume this != null;
           UnfoldingMask := UnfoldingMask[this, data:=UnfoldingMask[this, data] + perm];
@@ -859,22 +859,22 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
           assume state(UnfoldingHeap, UnfoldingMask);
           if (UnfoldingHeap[this, next] != null) {
             perm := FullPerm;
-            UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end):=UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end)] + perm];
+            UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end_1):=UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end_1)] + perm];
             
             // -- Extra unfolding of predicate
-              assume InsidePredicate(Lseg(this, end), UnfoldingHeap[null, Lseg(this, end)], Lseg(UnfoldingHeap[this, next], end), UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)]);
+              assume InsidePredicate(Lseg(this, end_1), UnfoldingHeap[null, Lseg(this, end_1)], Lseg(UnfoldingHeap[this, next], end_1), UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end_1)]);
             assume state(UnfoldingHeap, UnfoldingMask);
             assume state(UnfoldingHeap, UnfoldingMask);
             
             // -- Execute unfolding (for extra information)
               Unfolding1Heap := UnfoldingHeap;
               Unfolding1Mask := UnfoldingMask;
-              assume Lseg#trigger(Unfolding1Heap, Lseg(Unfolding1Heap[this, next], end));
-              assume Unfolding1Heap[null, Lseg(Unfolding1Heap[this, next], end)] == FrameFragment((if Unfolding1Heap[this, next] != end then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)] else EmptyFrame)))) else EmptyFrame));
-              ExhaleWellDef1Mask := Unfolding1Mask;
+              assume Lseg#trigger(Unfolding1Heap, Lseg(Unfolding1Heap[this, next], end_1));
+              assume Unfolding1Heap[null, Lseg(Unfolding1Heap[this, next], end_1)] == FrameFragment((if Unfolding1Heap[this, next] != end_1 then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)] else EmptyFrame)))) else EmptyFrame));
               ExhaleWellDef1Heap := Unfolding1Heap;
+              ExhaleWellDef1Mask := Unfolding1Mask;
               perm := FullPerm;
-              if (Unfolding1Heap[this, next] != end) {
+              if (Unfolding1Heap[this, next] != end_1) {
                 perm := FullPerm;
                 assume Unfolding1Heap[this, next] != null;
                 Unfolding1Mask := Unfolding1Mask[Unfolding1Heap[this, next], data:=Unfolding1Mask[Unfolding1Heap[this, next], data] + perm];
@@ -885,102 +885,102 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
                 assume state(Unfolding1Heap, Unfolding1Mask);
                 if (Unfolding1Heap[Unfolding1Heap[this, next], next] != null) {
                   perm := FullPerm;
-                  Unfolding1Mask := Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end):=Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)] + perm];
+                  Unfolding1Mask := Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1):=Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)] + perm];
                   
                   // -- Extra unfolding of predicate
-                    assume InsidePredicate(Lseg(Unfolding1Heap[this, next], end), Unfolding1Heap[null, Lseg(Unfolding1Heap[this, next], end)], Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end), Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)]);
+                    assume InsidePredicate(Lseg(Unfolding1Heap[this, next], end_1), Unfolding1Heap[null, Lseg(Unfolding1Heap[this, next], end_1)], Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1), Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)]);
                   assume state(Unfolding1Heap, Unfolding1Mask);
                   assume state(Unfolding1Heap, Unfolding1Mask);
-                  assume Unfolding1Heap[Unfolding1Heap[this, next], next] != end ==> prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[this, next], data]) <= prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]);
+                  assume Unfolding1Heap[Unfolding1Heap[this, next], next] != end_1 ==> prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[this, next], data]) <= prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]);
                   
                   // -- Free assumptions (inhale module)
-                    if (Unfolding1Heap[Unfolding1Heap[this, next], next] != end) {
-                      Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end)][Unfolding1Heap[Unfolding1Heap[this, next], next], data:=true]];
-                      Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end)][Unfolding1Heap[Unfolding1Heap[this, next], next], next:=true]];
+                    if (Unfolding1Heap[Unfolding1Heap[this, next], next] != end_1) {
+                      Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)][Unfolding1Heap[Unfolding1Heap[this, next], next], data:=true]];
+                      Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)][Unfolding1Heap[Unfolding1Heap[this, next], next], next:=true]];
                       if (Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != null) {
                         havoc newPMask;
-                        assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-                          { newPMask[o_26, f_29] }
-                          Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end)][o_26, f_29] || Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end)][o_26, f_29] ==> newPMask[o_26, f_29]
+                        assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+                          { newPMask[o_46, f_60] }
+                          Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)][o_46, f_60] || Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1)][o_46, f_60] ==> newPMask[o_46, f_60]
                         );
-                        Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end):=newPMask];
+                        Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1):=newPMask];
                       }
                     }
                     assume state(Unfolding1Heap, Unfolding1Mask);
                 }
               }
               assume state(Unfolding1Heap, Unfolding1Mask);
-            assume UnfoldingHeap[this, next] != end ==> prio(UnfoldingHeap, UnfoldingHeap[this, data]) <= prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[this, next], data]);
+            assume UnfoldingHeap[this, next] != end_1 ==> prio(UnfoldingHeap, UnfoldingHeap[this, data]) <= prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[this, next], data]);
             
             // -- Free assumptions (inhale module)
-              if (UnfoldingHeap[this, next] != end) {
-                UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end)][UnfoldingHeap[this, next], data:=true]];
-                UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end)][UnfoldingHeap[this, next], next:=true]];
+              if (UnfoldingHeap[this, next] != end_1) {
+                UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1)][UnfoldingHeap[this, next], data:=true]];
+                UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1)][UnfoldingHeap[this, next], next:=true]];
                 if (UnfoldingHeap[UnfoldingHeap[this, next], next] != null) {
                   havoc newPMask;
-                  assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-                    { newPMask[o_53, f_56] }
-                    UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end)][o_53, f_56] || UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end)][o_53, f_56] ==> newPMask[o_53, f_56]
+                  assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+                    { newPMask[o_42, f_55] }
+                    UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1)][o_42, f_55] || UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)][o_42, f_55] ==> newPMask[o_42, f_55]
                   );
-                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end):=newPMask];
+                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[this, next], end_1):=newPMask];
                 }
               }
               assume state(UnfoldingHeap, UnfoldingMask);
           }
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.data (0076.vpr@25.12--25.84) [195098]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.data (0076.vpr@25.12--25.84) [82965]"}
           HasDirectPerm(UnfoldingMask, this, data);
         
         // -- Free assumptions (exp module)
-          if (this != end) {
-            Heap := Heap[null, Lseg#sm(this, end):=Heap[null, Lseg#sm(this, end)][this, data:=true]];
-            Heap := Heap[null, Lseg#sm(this, end):=Heap[null, Lseg#sm(this, end)][this, next:=true]];
+          if (this != end_1) {
+            Heap := Heap[null, Lseg#sm(this, end_1):=Heap[null, Lseg#sm(this, end_1)][this, data:=true]];
+            Heap := Heap[null, Lseg#sm(this, end_1):=Heap[null, Lseg#sm(this, end_1)][this, next:=true]];
             if (Heap[this, next] != null) {
               havoc newPMask;
-              assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-                { newPMask[o, f_85] }
-                Heap[null, Lseg#sm(this, end)][o, f_85] || Heap[null, Lseg#sm(Heap[this, next], end)][o, f_85] ==> newPMask[o, f_85]
+              assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+                { newPMask[o, f_61] }
+                Heap[null, Lseg#sm(this, end_1)][o, f_61] || Heap[null, Lseg#sm(Heap[this, next], end_1)][o, f_61] ==> newPMask[o, f_61]
               );
-              Heap := Heap[null, Lseg#sm(this, end):=newPMask];
+              Heap := Heap[null, Lseg#sm(this, end_1):=newPMask];
             }
           }
           assume state(Heap, Mask);
         
         // -- Free assumptions (exp module)
-          if (this != end) {
-            Heap := Heap[null, Lseg#sm(this, end):=Heap[null, Lseg#sm(this, end)][this, data:=true]];
-            Heap := Heap[null, Lseg#sm(this, end):=Heap[null, Lseg#sm(this, end)][this, next:=true]];
+          if (this != end_1) {
+            Heap := Heap[null, Lseg#sm(this, end_1):=Heap[null, Lseg#sm(this, end_1)][this, data:=true]];
+            Heap := Heap[null, Lseg#sm(this, end_1):=Heap[null, Lseg#sm(this, end_1)][this, next:=true]];
             if (Heap[this, next] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-                { newPMask[o_11, f_3] }
-                Heap[null, Lseg#sm(this, end)][o_11, f_3] || Heap[null, Lseg#sm(Heap[this, next], end)][o_11, f_3] ==> newPMask[o_11, f_3]
+              assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+                { newPMask[o_14, f_3] }
+                Heap[null, Lseg#sm(this, end_1)][o_14, f_3] || Heap[null, Lseg#sm(Heap[this, next], end_1)][o_14, f_3] ==> newPMask[o_14, f_3]
               );
-              Heap := Heap[null, Lseg#sm(this, end):=newPMask];
+              Heap := Heap[null, Lseg#sm(this, end_1):=newPMask];
             }
           }
           assume state(Heap, Mask);
-      assert {:msg "  Postcondition of contentNodes might not hold. Assertion result[0] == (unfolding acc(Lseg(this, end), write) in this.data) might not hold. (0076.vpr@25.12--25.84) [195099]"}
+      assert {:msg "  Postcondition of contentNodes might not hold. Assertion result[0] == (unfolding acc(Lseg(this, end), write) in this.data) might not hold. (0076.vpr@25.12--25.84) [82966]"}
         Seq#Index(Result, 0) == Heap[this, data];
     }
-    if (this != end) {
+    if (this != end_1) {
       
       // -- Check definedness of (forall i: Int, j: Int :: { result[i], prio(result[j]) } { prio(result[i]), result[j] } { prio(result[i]), prio(result[j]) } 0 <= i && (i < j && j < |result|) ==> prio(result[i]) <= prio(result[j]))
         if (*) {
-          if (0 <= i_22 && (i_22 < j_14 && j_14 < Seq#Length(Result))) {
-            assert {:msg "  Contract might not be well-formed. Index result[i] into result might be negative. (0076.vpr@26.12--29.43) [195100]"}
-              i_22 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index result[i] into result might exceed sequence length. (0076.vpr@26.12--29.43) [195101]"}
-              i_22 < Seq#Length(Result);
+          if (0 <= i_12 && (i_12 < j_23 && j_23 < Seq#Length(Result))) {
+            assert {:msg "  Contract might not be well-formed. Index result[i] into result might be negative. (0076.vpr@26.12--29.43) [82967]"}
+              i_12 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index result[i] into result might exceed sequence length. (0076.vpr@26.12--29.43) [82968]"}
+              i_12 < Seq#Length(Result);
             if (*) {
               // Stop execution
               assume false;
             }
-            assert {:msg "  Contract might not be well-formed. Index result[j] into result might be negative. (0076.vpr@26.12--29.43) [195102]"}
-              j_14 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index result[j] into result might exceed sequence length. (0076.vpr@26.12--29.43) [195103]"}
-              j_14 < Seq#Length(Result);
+            assert {:msg "  Contract might not be well-formed. Index result[j] into result might be negative. (0076.vpr@26.12--29.43) [82969]"}
+              j_23 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index result[j] into result might exceed sequence length. (0076.vpr@26.12--29.43) [82970]"}
+              j_23 < Seq#Length(Result);
             if (*) {
               // Stop execution
               assume false;
@@ -989,29 +989,29 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
           assume false;
         }
       if (*) {
-        if (0 <= i_2_1 && (i_2_1 < j_2_1 && j_2_1 < Seq#Length(Result))) {
-          assert {:msg "  Postcondition of contentNodes might not hold. Assertion prio(result[i]) <= prio(result[j]) might not hold. (0076.vpr@26.12--29.43) [195104]"}
-            prio(Heap, Seq#Index(Result, i_2_1)) <= prio(Heap, Seq#Index(Result, j_2_1));
+        if (0 <= i_2 && (i_2 < j_2_2 && j_2_2 < Seq#Length(Result))) {
+          assert {:msg "  Postcondition of contentNodes might not hold. Assertion prio(result[i]) <= prio(result[j]) might not hold. (0076.vpr@26.12--29.43) [82971]"}
+            prio(Heap, Seq#Index(Result, i_2)) <= prio(Heap, Seq#Index(Result, j_2_2));
         }
         assume false;
       }
-      assume (forall i_3_1_1: int, j_3_1_1: int ::
-        { Seq#Index(Result, i_3_1_1), prio#frame(EmptyFrame, Seq#Index(Result, j_3_1_1)) } { prio#frame(EmptyFrame, Seq#Index(Result, i_3_1_1)), Seq#Index(Result, j_3_1_1) } { prio#frame(EmptyFrame, Seq#Index(Result, i_3_1_1)), prio#frame(EmptyFrame, Seq#Index(Result, j_3_1_1)) }
-        0 <= i_3_1_1 && (i_3_1_1 < j_3_1_1 && j_3_1_1 < Seq#Length(Result)) ==> prio(Heap, Seq#Index(Result, i_3_1_1)) <= prio(Heap, Seq#Index(Result, j_3_1_1))
+      assume (forall i_3_1: int, j_3_1_1: int ::
+        { Seq#Index(Result, i_3_1), prio#frame(EmptyFrame, Seq#Index(Result, j_3_1_1)) } { prio#frame(EmptyFrame, Seq#Index(Result, i_3_1)), Seq#Index(Result, j_3_1_1) } { prio#frame(EmptyFrame, Seq#Index(Result, i_3_1)), prio#frame(EmptyFrame, Seq#Index(Result, j_3_1_1)) }
+        0 <= i_3_1 && (i_3_1 < j_3_1_1 && j_3_1_1 < Seq#Length(Result)) ==> prio(Heap, Seq#Index(Result, i_3_1)) <= prio(Heap, Seq#Index(Result, j_3_1_1))
       );
     }
     
     // -- Free assumptions (exhale module)
-      if (this != end) {
-        Heap := Heap[null, Lseg#sm(this, end):=Heap[null, Lseg#sm(this, end)][this, data:=true]];
-        Heap := Heap[null, Lseg#sm(this, end):=Heap[null, Lseg#sm(this, end)][this, next:=true]];
+      if (this != end_1) {
+        Heap := Heap[null, Lseg#sm(this, end_1):=Heap[null, Lseg#sm(this, end_1)][this, data:=true]];
+        Heap := Heap[null, Lseg#sm(this, end_1):=Heap[null, Lseg#sm(this, end_1)][this, next:=true]];
         if (Heap[this, next] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_7: Ref, f_31: (Field A B) ::
-            { newPMask[o_7, f_31] }
-            Heap[null, Lseg#sm(this, end)][o_7, f_31] || Heap[null, Lseg#sm(Heap[this, next], end)][o_7, f_31] ==> newPMask[o_7, f_31]
+          assume (forall <A, B> o_16: Ref, f_8: (Field A B) ::
+            { newPMask[o_16, f_8] }
+            Heap[null, Lseg#sm(this, end_1)][o_16, f_8] || Heap[null, Lseg#sm(Heap[this, next], end_1)][o_16, f_8] ==> newPMask[o_16, f_8]
           );
-          Heap := Heap[null, Lseg#sm(this, end):=newPMask];
+          Heap := Heap[null, Lseg#sm(this, end_1):=newPMask];
         }
       }
       assume state(Heap, Mask);
@@ -1022,44 +1022,44 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
 // ==================================================
 
 type PredicateType_Lseg;
-function  Lseg(this: Ref, end: Ref): Field PredicateType_Lseg FrameType;
-function  Lseg#sm(this: Ref, end: Ref): Field PredicateType_Lseg PMaskType;
-axiom (forall this: Ref, end: Ref ::
-  { PredicateMaskField(Lseg(this, end)) }
-  PredicateMaskField(Lseg(this, end)) == Lseg#sm(this, end)
+function  Lseg(this: Ref, end_1: Ref): Field PredicateType_Lseg FrameType;
+function  Lseg#sm(this: Ref, end_1: Ref): Field PredicateType_Lseg PMaskType;
+axiom (forall this: Ref, end_1: Ref ::
+  { PredicateMaskField(Lseg(this, end_1)) }
+  PredicateMaskField(Lseg(this, end_1)) == Lseg#sm(this, end_1)
 );
-axiom (forall this: Ref, end: Ref ::
-  { Lseg(this, end) }
-  IsPredicateField(Lseg(this, end))
+axiom (forall this: Ref, end_1: Ref ::
+  { Lseg(this, end_1) }
+  IsPredicateField(Lseg(this, end_1))
 );
-axiom (forall this: Ref, end: Ref ::
-  { Lseg(this, end) }
-  getPredWandId(Lseg(this, end)) == 0
+axiom (forall this: Ref, end_1: Ref ::
+  { Lseg(this, end_1) }
+  getPredWandId(Lseg(this, end_1)) == 0
 );
 function  Lseg#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  Lseg#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall this: Ref, end: Ref, this2: Ref, end2: Ref ::
-  { Lseg(this, end), Lseg(this2, end2) }
-  Lseg(this, end) == Lseg(this2, end2) ==> this == this2 && end == end2
+axiom (forall this: Ref, end_1: Ref, this2: Ref, end2: Ref ::
+  { Lseg(this, end_1), Lseg(this2, end2) }
+  Lseg(this, end_1) == Lseg(this2, end2) ==> this == this2 && end_1 == end2
 );
-axiom (forall this: Ref, end: Ref, this2: Ref, end2: Ref ::
-  { Lseg#sm(this, end), Lseg#sm(this2, end2) }
-  Lseg#sm(this, end) == Lseg#sm(this2, end2) ==> this == this2 && end == end2
-);
-
-axiom (forall Heap: HeapType, this: Ref, end: Ref ::
-  { Lseg#trigger(Heap, Lseg(this, end)) }
-  Lseg#everUsed(Lseg(this, end))
+axiom (forall this: Ref, end_1: Ref, this2: Ref, end2: Ref ::
+  { Lseg#sm(this, end_1), Lseg#sm(this2, end2) }
+  Lseg#sm(this, end_1) == Lseg#sm(this2, end2) ==> this == this2 && end_1 == end2
 );
 
-procedure Lseg#definedness(this: Ref, end: Ref) returns ()
+axiom (forall Heap: HeapType, this: Ref, end_1: Ref ::
+  { Lseg#trigger(Heap, Lseg(this, end_1)) }
+  Lseg#everUsed(Lseg(this, end_1))
+);
+
+procedure Lseg#definedness(this: Ref, end_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -1072,8 +1072,8 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
       assume AssumeFunctionsAbove == -1;
       assume AssumePermUpperBound;
       assume Heap[this, $allocated];
-      assume Heap[end, $allocated];
-    if (this != end) {
+      assume Heap[end_1, $allocated];
+    if (this != end_1) {
       perm := FullPerm;
       assume this != null;
       Mask := Mask[this, data:=Mask[this, data] + perm];
@@ -1084,32 +1084,32 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
       assume state(Heap, Mask);
       
       // -- Check definedness of this.next != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@13.1--19.2) [195105]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@13.1--19.2) [82972]"}
           HasDirectPerm(Mask, this, next);
       if (Heap[this, next] != null) {
         
         // -- Check definedness of acc(Lseg(this.next, end), write)
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@13.1--19.2) [195106]"}
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@13.1--19.2) [82973]"}
             HasDirectPerm(Mask, this, next);
         perm := FullPerm;
-        Mask := Mask[null, Lseg(Heap[this, next], end):=Mask[null, Lseg(Heap[this, next], end)] + perm];
+        Mask := Mask[null, Lseg(Heap[this, next], end_1):=Mask[null, Lseg(Heap[this, next], end_1)] + perm];
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         
         // -- Check definedness of (unfolding acc(Lseg(this.next, end), write) in this.next != end ==> prio(this.data) <= prio(this.next.data))
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assume Lseg#trigger(UnfoldingHeap, Lseg(UnfoldingHeap[this, next], end));
-          assume UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)] == FrameFragment((if UnfoldingHeap[this, next] != end then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, next], next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end)] else EmptyFrame)))) else EmptyFrame));
-          ExhaleWellDef0Mask := UnfoldingMask;
+          assume Lseg#trigger(UnfoldingHeap, Lseg(UnfoldingHeap[this, next], end_1));
+          assume UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end_1)] == FrameFragment((if UnfoldingHeap[this, next] != end_1 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, next], next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)] else EmptyFrame)))) else EmptyFrame));
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access Lseg(this.next, end) (0076.vpr@13.1--19.2) [195107]"}
-              perm <= UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end)];
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access Lseg(this.next, end) (0076.vpr@13.1--19.2) [82974]"}
+              perm <= UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end_1)];
           }
-          UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end):=UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end)] - perm];
-          if (UnfoldingHeap[this, next] != end) {
+          UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end_1):=UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end_1)] - perm];
+          if (UnfoldingHeap[this, next] != end_1) {
             perm := FullPerm;
             assume UnfoldingHeap[this, next] != null;
             UnfoldingMask := UnfoldingMask[UnfoldingHeap[this, next], data:=UnfoldingMask[UnfoldingHeap[this, next], data] + perm];
@@ -1120,23 +1120,23 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
             assume state(UnfoldingHeap, UnfoldingMask);
             if (UnfoldingHeap[UnfoldingHeap[this, next], next] != null) {
               perm := FullPerm;
-              UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end):=UnfoldingMask[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end)] + perm];
+              UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1):=UnfoldingMask[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)] + perm];
               
               // -- Extra unfolding of predicate
-                assume InsidePredicate(Lseg(UnfoldingHeap[this, next], end), UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)], Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end), UnfoldingHeap[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end)]);
+                assume InsidePredicate(Lseg(UnfoldingHeap[this, next], end_1), UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end_1)], Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1), UnfoldingHeap[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)]);
               assume state(UnfoldingHeap, UnfoldingMask);
               assume state(UnfoldingHeap, UnfoldingMask);
               
               // -- Execute unfolding (for extra information)
                 Unfolding1Heap := UnfoldingHeap;
                 Unfolding1Mask := UnfoldingMask;
-                assume Lseg#trigger(Unfolding1Heap, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end));
-                assume Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)] == FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != end then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != null then Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end)] else EmptyFrame)))) else EmptyFrame));
-                ExhaleWellDef0Mask := Unfolding1Mask;
+                assume Lseg#trigger(Unfolding1Heap, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1));
+                assume Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)] == FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != end_1 then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != null then Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1)] else EmptyFrame)))) else EmptyFrame));
                 ExhaleWellDef0Heap := Unfolding1Heap;
+                ExhaleWellDef0Mask := Unfolding1Mask;
                 perm := FullPerm;
-                Unfolding1Mask := Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end):=Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)] - perm];
-                if (Unfolding1Heap[Unfolding1Heap[this, next], next] != end) {
+                Unfolding1Mask := Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1):=Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)] - perm];
+                if (Unfolding1Heap[Unfolding1Heap[this, next], next] != end_1) {
                   perm := FullPerm;
                   assume Unfolding1Heap[Unfolding1Heap[this, next], next] != null;
                   Unfolding1Mask := Unfolding1Mask[Unfolding1Heap[Unfolding1Heap[this, next], next], data:=Unfolding1Mask[Unfolding1Heap[Unfolding1Heap[this, next], next], data] + perm];
@@ -1147,64 +1147,64 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
                   assume state(Unfolding1Heap, Unfolding1Mask);
                   if (Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != null) {
                     perm := FullPerm;
-                    Unfolding1Mask := Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end):=Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end)] + perm];
+                    Unfolding1Mask := Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1):=Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1)] + perm];
                     
                     // -- Extra unfolding of predicate
-                      assume InsidePredicate(Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end), Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)], Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end), Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end)]);
+                      assume InsidePredicate(Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1), Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)], Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1), Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1)]);
                     assume state(Unfolding1Heap, Unfolding1Mask);
                     assume state(Unfolding1Heap, Unfolding1Mask);
-                    assume Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != end ==> prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]) <= prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], data]);
+                    assume Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != end_1 ==> prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]) <= prio(Unfolding1Heap, Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], data]);
                     
                     // -- Free assumptions (inhale module)
-                      if (Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != end) {
-                        Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], data:=true]];
-                        Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], next:=true]];
+                      if (Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != end_1) {
+                        Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], data:=true]];
+                        Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1):=Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1)][Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], next:=true]];
                         if (Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], next] != null) {
                           havoc newPMask;
-                          assume (forall <A, B> o_27: Ref, f_16: (Field A B) ::
-                            { newPMask[o_27, f_16] }
-                            Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end)][o_27, f_16] || Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], next], end)][o_27, f_16] ==> newPMask[o_27, f_16]
+                          assume (forall <A, B> o_55: Ref, f_23: (Field A B) ::
+                            { newPMask[o_55, f_23] }
+                            Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1)][o_55, f_23] || Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], next], end_1)][o_55, f_23] ==> newPMask[o_55, f_23]
                           );
-                          Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end):=newPMask];
+                          Unfolding1Heap := Unfolding1Heap[null, Lseg#sm(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1):=newPMask];
                         }
                       }
                       assume state(Unfolding1Heap, Unfolding1Mask);
                   }
                 }
                 assume state(Unfolding1Heap, Unfolding1Mask);
-              assume UnfoldingHeap[UnfoldingHeap[this, next], next] != end ==> prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[this, next], data]) <= prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, next], next], data]);
+              assume UnfoldingHeap[UnfoldingHeap[this, next], next] != end_1 ==> prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[this, next], data]) <= prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, next], next], data]);
               
               // -- Free assumptions (inhale module)
-                if (UnfoldingHeap[UnfoldingHeap[this, next], next] != end) {
-                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end)][UnfoldingHeap[UnfoldingHeap[this, next], next], data:=true]];
-                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end)][UnfoldingHeap[UnfoldingHeap[this, next], next], next:=true]];
+                if (UnfoldingHeap[UnfoldingHeap[this, next], next] != end_1) {
+                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)][UnfoldingHeap[UnfoldingHeap[this, next], next], data:=true]];
+                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)][UnfoldingHeap[UnfoldingHeap[this, next], next], next:=true]];
                   if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, next], next], next] != null) {
                     havoc newPMask;
-                    assume (forall <A, B> o_6: Ref, f_2: (Field A B) ::
-                      { newPMask[o_6, f_2] }
-                      UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end)][o_6, f_2] || UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, next], next], next], end)][o_6, f_2] ==> newPMask[o_6, f_2]
+                    assume (forall <A, B> o_38: Ref, f_2: (Field A B) ::
+                      { newPMask[o_38, f_2] }
+                      UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)][o_38, f_2] || UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, next], next], next], end_1)][o_38, f_2] ==> newPMask[o_38, f_2]
                     );
-                    UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end):=newPMask];
+                    UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1):=newPMask];
                   }
                 }
                 assume state(UnfoldingHeap, UnfoldingMask);
             }
           }
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@13.1--19.2) [195108]"}
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@13.1--19.2) [82975]"}
             HasDirectPerm(UnfoldingMask, this, next);
-          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@13.1--19.2) [195109]"}
+          assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@13.1--19.2) [82976]"}
             HasDirectPerm(UnfoldingMask, this, next);
-          if (UnfoldingHeap[this, next] != end) {
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.data (0076.vpr@13.1--19.2) [195110]"}
+          if (UnfoldingHeap[this, next] != end_1) {
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.data (0076.vpr@13.1--19.2) [82977]"}
               HasDirectPerm(UnfoldingMask, this, data);
             if (*) {
               // Stop execution
               assume false;
             }
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@13.1--19.2) [195111]"}
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0076.vpr@13.1--19.2) [82978]"}
               HasDirectPerm(UnfoldingMask, this, next);
-            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next.data (0076.vpr@13.1--19.2) [195112]"}
+            assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next.data (0076.vpr@13.1--19.2) [82979]"}
               HasDirectPerm(UnfoldingMask, UnfoldingHeap[this, next], data);
             if (*) {
               // Stop execution
@@ -1213,16 +1213,16 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
           }
           
           // -- Free assumptions (exp module)
-            if (Heap[this, next] != end) {
-              Heap := Heap[null, Lseg#sm(Heap[this, next], end):=Heap[null, Lseg#sm(Heap[this, next], end)][Heap[this, next], data:=true]];
-              Heap := Heap[null, Lseg#sm(Heap[this, next], end):=Heap[null, Lseg#sm(Heap[this, next], end)][Heap[this, next], next:=true]];
+            if (Heap[this, next] != end_1) {
+              Heap := Heap[null, Lseg#sm(Heap[this, next], end_1):=Heap[null, Lseg#sm(Heap[this, next], end_1)][Heap[this, next], data:=true]];
+              Heap := Heap[null, Lseg#sm(Heap[this, next], end_1):=Heap[null, Lseg#sm(Heap[this, next], end_1)][Heap[this, next], next:=true]];
               if (Heap[Heap[this, next], next] != null) {
                 havoc newPMask;
-                assume (forall <A, B> o_8: Ref, f_30: (Field A B) ::
-                  { newPMask[o_8, f_30] }
-                  Heap[null, Lseg#sm(Heap[this, next], end)][o_8, f_30] || Heap[null, Lseg#sm(Heap[Heap[this, next], next], end)][o_8, f_30] ==> newPMask[o_8, f_30]
+                assume (forall <A, B> o_17: Ref, f_9: (Field A B) ::
+                  { newPMask[o_17, f_9] }
+                  Heap[null, Lseg#sm(Heap[this, next], end_1)][o_17, f_9] || Heap[null, Lseg#sm(Heap[Heap[this, next], next], end_1)][o_17, f_9] ==> newPMask[o_17, f_9]
                 );
-                Heap := Heap[null, Lseg#sm(Heap[this, next], end):=newPMask];
+                Heap := Heap[null, Lseg#sm(Heap[this, next], end_1):=newPMask];
               }
             }
             assume state(Heap, Mask);
@@ -1230,13 +1230,13 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
         // -- Execute unfolding (for extra information)
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assume Lseg#trigger(UnfoldingHeap, Lseg(UnfoldingHeap[this, next], end));
-          assume UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)] == FrameFragment((if UnfoldingHeap[this, next] != end then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, next], next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end)] else EmptyFrame)))) else EmptyFrame));
-          ExhaleWellDef0Mask := UnfoldingMask;
+          assume Lseg#trigger(UnfoldingHeap, Lseg(UnfoldingHeap[this, next], end_1));
+          assume UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end_1)] == FrameFragment((if UnfoldingHeap[this, next] != end_1 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, next], next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)] else EmptyFrame)))) else EmptyFrame));
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
-          UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end):=UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end)] - perm];
-          if (UnfoldingHeap[this, next] != end) {
+          UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end_1):=UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end_1)] - perm];
+          if (UnfoldingHeap[this, next] != end_1) {
             perm := FullPerm;
             assume UnfoldingHeap[this, next] != null;
             UnfoldingMask := UnfoldingMask[UnfoldingHeap[this, next], data:=UnfoldingMask[UnfoldingHeap[this, next], data] + perm];
@@ -1247,32 +1247,32 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
             assume state(UnfoldingHeap, UnfoldingMask);
             if (UnfoldingHeap[UnfoldingHeap[this, next], next] != null) {
               perm := FullPerm;
-              UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end):=UnfoldingMask[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end)] + perm];
+              UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1):=UnfoldingMask[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)] + perm];
               
               // -- Extra unfolding of predicate
-                assume InsidePredicate(Lseg(UnfoldingHeap[this, next], end), UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)], Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end), UnfoldingHeap[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end)]);
+                assume InsidePredicate(Lseg(UnfoldingHeap[this, next], end_1), UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end_1)], Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1), UnfoldingHeap[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)]);
               assume state(UnfoldingHeap, UnfoldingMask);
               assume state(UnfoldingHeap, UnfoldingMask);
-              assume UnfoldingHeap[UnfoldingHeap[this, next], next] != end ==> prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[this, next], data]) <= prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, next], next], data]);
+              assume UnfoldingHeap[UnfoldingHeap[this, next], next] != end_1 ==> prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[this, next], data]) <= prio(UnfoldingHeap, UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, next], next], data]);
               
               // -- Free assumptions (inhale module)
-                if (UnfoldingHeap[UnfoldingHeap[this, next], next] != end) {
-                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end)][UnfoldingHeap[UnfoldingHeap[this, next], next], data:=true]];
-                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end)][UnfoldingHeap[UnfoldingHeap[this, next], next], next:=true]];
+                if (UnfoldingHeap[UnfoldingHeap[this, next], next] != end_1) {
+                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)][UnfoldingHeap[UnfoldingHeap[this, next], next], data:=true]];
+                  UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1):=UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)][UnfoldingHeap[UnfoldingHeap[this, next], next], next:=true]];
                   if (UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, next], next], next] != null) {
                     havoc newPMask;
-                    assume (forall <A, B> o_30: Ref, f_8: (Field A B) ::
-                      { newPMask[o_30, f_8] }
-                      UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end)][o_30, f_8] || UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, next], next], next], end)][o_30, f_8] ==> newPMask[o_30, f_8]
+                    assume (forall <A, B> o_39: Ref, f_19: (Field A B) ::
+                      { newPMask[o_39, f_19] }
+                      UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)][o_39, f_19] || UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, next], next], next], end_1)][o_39, f_19] ==> newPMask[o_39, f_19]
                     );
-                    UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end):=newPMask];
+                    UnfoldingHeap := UnfoldingHeap[null, Lseg#sm(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1):=newPMask];
                   }
                 }
                 assume state(UnfoldingHeap, UnfoldingMask);
             }
           }
           assume state(UnfoldingHeap, UnfoldingMask);
-        assume Heap[this, next] != end ==> prio(Heap, Heap[this, data]) <= prio(Heap, Heap[Heap[this, next], data]);
+        assume Heap[this, next] != end_1 ==> prio(Heap, Heap[this, data]) <= prio(Heap, Heap[Heap[this, next], data]);
       }
     }
     assume state(Heap, Mask);

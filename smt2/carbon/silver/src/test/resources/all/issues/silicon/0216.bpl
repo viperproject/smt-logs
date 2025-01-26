@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:26:23
+// Date:         2025-01-26 21:42:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0216.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0216-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -545,7 +545,7 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 type MultiSetDomainType T;
 
 // Translation of domain function MultiSet_FromSeq
-function  MultiSet_FromSeq<T>(seq: (Seq T)): MultiSetDomainType T;
+function  MultiSet_FromSeq<T>(seq_1: (Seq T)): MultiSetDomainType T;
 
 // ==================================================
 // Translation of domain MultiSetIntCount
@@ -555,10 +555,10 @@ function  MultiSet_FromSeq<T>(seq: (Seq T)): MultiSetDomainType T;
 type MultiSetIntCountDomainType;
 
 // Translation of domain function count
-function  count_2(s_17: (MultiSetDomainType int)): int;
+function  count_1(s: (MultiSetDomainType int)): int;
 
 // Translation of domain function c
-function  c_11(s_17: (MultiSetDomainType int)): int;
+function  c_11(s: (MultiSetDomainType int)): int;
 
 // Translation of domain function __setfilter__
 function  __setfilter__(e: int): bool;
@@ -574,10 +574,10 @@ function  __setterm__(e: int): int;
 type VectorExpressionDomainType T;
 
 // Translation of domain function vconst
-function  vconst<T>(t_9: T): VectorExpressionDomainType T;
+function  vconst<T>(t_3: T): VectorExpressionDomainType T;
 
 // Translation of domain function vseq
 function  vseq<T>(xs_1: (Seq T)): VectorExpressionDomainType T;
 
 // Translation of domain function vcmp
-function  vcmp<T>(v1_35: (VectorExpressionDomainType T), v2_36: (VectorExpressionDomainType T)): VectorExpressionDomainType bool;
+function  vcmp<T>(v1_25: (VectorExpressionDomainType T), v2_25: (VectorExpressionDomainType T)): VectorExpressionDomainType bool;

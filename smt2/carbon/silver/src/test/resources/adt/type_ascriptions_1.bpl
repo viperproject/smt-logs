@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:12
+// Date:         2025-01-26 21:43:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/type_ascriptions_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/type_ascriptions_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -187,24 +187,24 @@ function  Nil<T>(): ListDomainType T;
 function  Cons<T>(value_2: T, tail: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function get_List_value
-function  get_List_value<T>(t_9: (ListDomainType T)): T;
+function  get_List_value<T>(t_3: (ListDomainType T)): T;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<T>(t_9: (ListDomainType T)): ListDomainType T;
+function  get_List_tail<T>(t_3: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function List_tag
-function  List_tag<T>(t_9: (ListDomainType T)): int;
+function  List_tag<T>(t_3: (ListDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType T)): T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType T)): ListDomainType T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType T)): ListDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -214,9 +214,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType T)): int) == 0
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (List_tag((Cons(value, tail_1): ListDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -251,21 +251,21 @@ procedure type_ascriptions_1() returns ()
   // -- Translating statement: assert (Nil(): List[Bool]) == (Nil(): List[Bool]) -- type_ascriptions_1.vpr@9.5--9.54
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Nil(): List[Bool]) == (Nil(): List[Bool]) might not hold. (type_ascriptions_1.vpr@9.12--9.54) [222861]"}
+    assert {:msg "  Assert might fail. Assertion (Nil(): List[Bool]) == (Nil(): List[Bool]) might not hold. (type_ascriptions_1.vpr@9.12--9.54) [103536]"}
       (Nil(): ListDomainType bool) == (Nil(): ListDomainType bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Nil(): List[List[Int]]) == (Nil(): List[List[Int]]) -- type_ascriptions_1.vpr@11.5--11.64
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Nil(): List[List[Int]]) == (Nil(): List[List[Int]]) might not hold. (type_ascriptions_1.vpr@11.12--11.64) [222862]"}
+    assert {:msg "  Assert might fail. Assertion (Nil(): List[List[Int]]) == (Nil(): List[List[Int]]) might not hold. (type_ascriptions_1.vpr@11.12--11.64) [103537]"}
       (Nil(): ListDomainType (ListDomainType int)) == (Nil(): ListDomainType (ListDomainType int));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Nil(): List[Int]) == (Nil(): List[Int]) -- type_ascriptions_1.vpr@14.5--14.26
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Nil(): List[Int]) == (Nil(): List[Int]) might not hold. (type_ascriptions_1.vpr@14.12--14.26) [222863]"}
+    assert {:msg "  Assert might fail. Assertion (Nil(): List[Int]) == (Nil(): List[Int]) might not hold. (type_ascriptions_1.vpr@14.12--14.26) [103538]"}
       (Nil(): ListDomainType int) == (Nil(): ListDomainType int);
     assume state(Heap, Mask);
 }

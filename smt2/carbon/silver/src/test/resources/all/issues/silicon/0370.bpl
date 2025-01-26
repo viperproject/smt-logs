@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:50
+// Date:         2025-01-26 21:42:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0370.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0370-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_12: Ref, f_16: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_12, f_16] }
-  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_16], $allocated]
+axiom (forall o_15: Ref, f_23: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_15, f_23] }
+  Heap[o_15, $allocated] ==> Heap[Heap[o_15, f_23], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref, f_37: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, f_37] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_46, f_37) ==> Heap[o_46, f_37] == ExhaleHeap[o_46, f_37]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_53: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_53] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_53) ==> Heap[o_41, f_53] == ExhaleHeap[o_41, f_53]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> Heap[null, PredicateMaskField(pm_f_22)] == ExhaleHeap[null, PredicateMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> Heap[null, PredicateMaskField(pm_f_20)] == ExhaleHeap[null, PredicateMaskField(pm_f_20)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> Heap[null, WandMaskField(pm_f_22)] == ExhaleHeap[null, WandMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> Heap[null, WandMaskField(pm_f_20)] == ExhaleHeap[null, WandMaskField(pm_f_20)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_46, $allocated] ==> ExhaleHeap[o_46, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_24: (Field A B), v: B ::
-  { Heap[o_12, f_24:=v] }
-  succHeap(Heap, Heap[o_12, f_24:=v])
+axiom (forall <A, B> Heap: HeapType, o_15: Ref, f_54: (Field A B), v: B ::
+  { Heap[o_15, f_54:=v] }
+  succHeap(Heap, Heap[o_15, f_54:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,9 +145,9 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(tid_1: int): bool;
-function  neverTriggered2(k_1_1: int): bool;
-function  neverTriggered3(k_2_1: int): bool;
-function  neverTriggered4(k_1_1: int): bool;
+function  neverTriggered2(k_1: int): bool;
+function  neverTriggered3(k_2_2: int): bool;
+function  neverTriggered4(k_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -575,7 +575,7 @@ type VCTOptionDomainType T;
 function  VCTNone<T>(): VCTOptionDomainType T;
 
 // Translation of domain function getVCTOption
-function  getVCTOption<T>(o_194: (VCTOptionDomainType T)): T;
+function  getVCTOption<T>(o_76: (VCTOptionDomainType T)): T;
 
 // ==================================================
 // Translation of all fields
@@ -646,13 +646,13 @@ procedure getVCTOption1#definedness(x: (VCTOptionDomainType (Seq Ref))) returns 
 procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDomainType (Seq Ref))) returns ()
   modifies Heap, Mask;
 {
-  var i_14: int;
+  var i_18: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var j_5: int;
-  var tid_24: int;
+  var j_14: int;
+  var tid_2: int;
   var QPMask: MaskType;
-  var tid_20: int;
+  var tid_3: int;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PostHeap: HeapType;
@@ -660,8 +660,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
   var k_7: int;
   var wildcard: real where wildcard > 0.000000000;
   var tid_4: int;
-  var j_7: int;
-  var tid_6_1: int;
+  var j_2: int;
+  var tid_6: int;
   var j_4_1: int;
   var ExhaleHeap: HeapType;
   
@@ -681,23 +681,23 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
     
     // -- Check definedness of (forall i: Int, j: Int :: { getVCTOption1(output)[i], getVCTOption1(output)[j] } i >= 0 && (i < |getVCTOption1(output)| && (j >= 0 && (j < |getVCTOption1(output)| && i != j))) ==> getVCTOption1(output)[i] != getVCTOption1(output)[j])
       if (*) {
-        if (i_14 >= 0) {
+        if (i_18 >= 0) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.50--20.71) [196588]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.50--20.71) [59519]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          if (i_14 < Seq#Length(getVCTOption1(Heap, output))) {
-            if (j_5 >= 0) {
+          if (i_18 < Seq#Length(getVCTOption1(Heap, output))) {
+            if (j_14 >= 0) {
               if (*) {
                 // Exhale precondition of function application
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.91--20.112) [196589]"}
+                assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.91--20.112) [59520]"}
                   output != (VCTNone(): VCTOptionDomainType (Seq Ref));
                 // Stop execution
                 assume false;
@@ -705,33 +705,33 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
             }
           }
         }
-        if (i_14 >= 0 && (i_14 < Seq#Length(getVCTOption1(Heap, output)) && (j_5 >= 0 && (j_5 < Seq#Length(getVCTOption1(Heap, output)) && i_14 != j_5)))) {
+        if (i_18 >= 0 && (i_18 < Seq#Length(getVCTOption1(Heap, output)) && (j_14 >= 0 && (j_14 < Seq#Length(getVCTOption1(Heap, output)) && i_18 != j_14)))) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.128--20.149) [196590]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.128--20.149) [59521]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[i] into getVCTOption1(output) might be negative. (0370.vpr@20.12--20.180) [196591]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[i] into getVCTOption1(output) might exceed sequence length. (0370.vpr@20.12--20.180) [196592]"}
-            i_14 < Seq#Length(getVCTOption1(Heap, output));
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[i] into getVCTOption1(output) might be negative. (0370.vpr@20.12--20.180) [59522]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[i] into getVCTOption1(output) might exceed sequence length. (0370.vpr@20.12--20.180) [59523]"}
+            i_18 < Seq#Length(getVCTOption1(Heap, output));
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.156--20.177) [196593]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.156--20.177) [59524]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[j] into getVCTOption1(output) might be negative. (0370.vpr@20.12--20.180) [196594]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[j] into getVCTOption1(output) might exceed sequence length. (0370.vpr@20.12--20.180) [196595]"}
-            j_5 < Seq#Length(getVCTOption1(Heap, output));
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[j] into getVCTOption1(output) might be negative. (0370.vpr@20.12--20.180) [59525]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[j] into getVCTOption1(output) might exceed sequence length. (0370.vpr@20.12--20.180) [59526]"}
+            j_14 < Seq#Length(getVCTOption1(Heap, output));
         }
         assume false;
       }
@@ -744,36 +744,36 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
     
     // -- Check definedness of (forall tid: Int :: { getVCTOption1(output)[tid] } 0 <= tid && tid < |getVCTOption1(output)| ==> acc(getVCTOption1(output)[tid].Integer__item, write))
       if (*) {
-        if (0 <= tid_24) {
+        if (0 <= tid_2) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@21.51--21.72) [196596]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@21.51--21.72) [59527]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
         }
-        if (0 <= tid_24 && tid_24 < Seq#Length(getVCTOption1(Heap, output))) {
+        if (0 <= tid_2 && tid_2 < Seq#Length(getVCTOption1(Heap, output))) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@21.82--21.103) [196597]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@21.82--21.103) [59528]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[tid] into getVCTOption1(output) might be negative. (0370.vpr@21.13--21.130) [196598]"}
-            tid_24 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[tid] into getVCTOption1(output) might exceed sequence length. (0370.vpr@21.13--21.130) [196599]"}
-            tid_24 < Seq#Length(getVCTOption1(Heap, output));
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[tid] into getVCTOption1(output) might be negative. (0370.vpr@21.13--21.130) [59529]"}
+            tid_2 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[tid] into getVCTOption1(output) might exceed sequence length. (0370.vpr@21.13--21.130) [59530]"}
+            tid_2 < Seq#Length(getVCTOption1(Heap, output));
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource getVCTOption1(output)[tid].Integer__item might not be injective. (0370.vpr@21.13--21.130) [196600]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource getVCTOption1(output)[tid].Integer__item might not be injective. (0370.vpr@21.13--21.130) [59531]"}
       (forall tid_1: int, tid_1_1: int ::
       
       (((tid_1 != tid_1_1 && (0 <= tid_1 && tid_1 < Seq#Length(getVCTOption1(Heap, output)))) && (0 <= tid_1_1 && tid_1_1 < Seq#Length(getVCTOption1(Heap, output)))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(getVCTOption1(Heap, output), tid_1) != Seq#Index(getVCTOption1(Heap, output), tid_1_1)
@@ -784,9 +784,9 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         { Seq#Index(getVCTOption1#frame(EmptyFrame, output), tid_1) } { Seq#Index(getVCTOption1#frame(EmptyFrame, output), tid_1) }
         (0 <= tid_1 && tid_1 < Seq#Length(getVCTOption1(Heap, output))) && NoPerm < FullPerm ==> qpRange1(Seq#Index(getVCTOption1(Heap, output), tid_1)) && invRecv1(Seq#Index(getVCTOption1(Heap, output), tid_1)) == tid_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(getVCTOption1(Heap, output))) && NoPerm < FullPerm) && qpRange1(o_4) ==> Seq#Index(getVCTOption1(Heap, output), invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(getVCTOption1(Heap, output))) && NoPerm < FullPerm) && qpRange1(o_9) ==> Seq#Index(getVCTOption1(Heap, output), invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -796,13 +796,13 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer__item] }
-        (((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(getVCTOption1(Heap, output))) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(getVCTOption1(Heap, output), invRecv1(o_4)) == o_4) && QPMask[o_4, Integer__item] == Mask[o_4, Integer__item] + FullPerm) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < Seq#Length(getVCTOption1(Heap, output))) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, Integer__item] == Mask[o_4, Integer__item])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer__item] }
+        (((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(getVCTOption1(Heap, output))) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(getVCTOption1(Heap, output), invRecv1(o_9)) == o_9) && QPMask[o_9, Integer__item] == Mask[o_9, Integer__item] + FullPerm) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < Seq#Length(getVCTOption1(Heap, output))) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, Integer__item] == Mask[o_9, Integer__item])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer__item ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer__item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -811,39 +811,39 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
     
     // -- Check definedness of (forall tid: Int :: { getVCTOption1(output)[tid] } 0 <= tid && tid < |getVCTOption1(output)| ==> getVCTOption1(output)[tid].Integer__item == tid)
       if (*) {
-        if (0 <= tid_20) {
+        if (0 <= tid_3) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@22.51--22.72) [196601]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@22.51--22.72) [59532]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
         }
-        if (0 <= tid_20 && tid_20 < Seq#Length(getVCTOption1(Heap, output))) {
+        if (0 <= tid_3 && tid_3 < Seq#Length(getVCTOption1(Heap, output))) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@22.78--22.99) [196602]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@22.78--22.99) [59533]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[tid] into getVCTOption1(output) might be negative. (0370.vpr@22.13--22.125) [196603]"}
-            tid_20 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[tid] into getVCTOption1(output) might exceed sequence length. (0370.vpr@22.13--22.125) [196604]"}
-            tid_20 < Seq#Length(getVCTOption1(Heap, output));
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access getVCTOption1(output)[tid].Integer__item (0370.vpr@22.13--22.125) [196605]"}
-            HasDirectPerm(Mask, Seq#Index(getVCTOption1(Heap, output), tid_20), Integer__item);
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[tid] into getVCTOption1(output) might be negative. (0370.vpr@22.13--22.125) [59534]"}
+            tid_3 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[tid] into getVCTOption1(output) might exceed sequence length. (0370.vpr@22.13--22.125) [59535]"}
+            tid_3 < Seq#Length(getVCTOption1(Heap, output));
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access getVCTOption1(output)[tid].Integer__item (0370.vpr@22.13--22.125) [59536]"}
+            HasDirectPerm(Mask, Seq#Index(getVCTOption1(Heap, output), tid_3), Integer__item);
         }
         assume false;
       }
-    assume (forall tid_3: int ::
-      { Seq#Index(getVCTOption1#frame(EmptyFrame, output), tid_3) }
-      0 <= tid_3 && tid_3 < Seq#Length(getVCTOption1(Heap, output)) ==> Heap[Seq#Index(getVCTOption1(Heap, output), tid_3), Integer__item] == tid_3
+    assume (forall tid_3_1: int ::
+      { Seq#Index(getVCTOption1#frame(EmptyFrame, output), tid_3_1) }
+      0 <= tid_3_1 && tid_3_1 < Seq#Length(getVCTOption1(Heap, output)) ==> Heap[Seq#Index(getVCTOption1(Heap, output), tid_3_1), Integer__item] == tid_3_1
     );
     assume state(Heap, Mask);
   
@@ -868,7 +868,7 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
             // Exhale precondition of function application
             ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@24.85--24.106) [196606]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@24.85--24.106) [59537]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
@@ -879,49 +879,49 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
             // Exhale precondition of function application
             ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@24.116--24.137) [196607]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@24.116--24.137) [59538]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[k] into getVCTOption1(output) might be negative. (0370.vpr@24.12--24.165) [196608]"}
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[k] into getVCTOption1(output) might be negative. (0370.vpr@24.12--24.165) [59539]"}
             k_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[k] into getVCTOption1(output) might exceed sequence length. (0370.vpr@24.12--24.165) [196609]"}
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[k] into getVCTOption1(output) might exceed sequence length. (0370.vpr@24.12--24.165) [59540]"}
             k_7 < Seq#Length(getVCTOption1(PostHeap, output));
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource getVCTOption1(output)[k].Integer__item might not be injective. (0370.vpr@24.12--24.165) [196610]"}
-      (forall k_1_1: int, k_1_2: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource getVCTOption1(output)[k].Integer__item might not be injective. (0370.vpr@24.12--24.165) [59541]"}
+      (forall k_1: int, k_1_1: int ::
       
-      (((k_1_1 != k_1_2 && (0 <= k_1_1 && k_1_1 < Seq#Length(getVCTOption1(PostHeap, output)))) && (0 <= k_1_2 && k_1_2 < Seq#Length(getVCTOption1(PostHeap, output)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(getVCTOption1(PostHeap, output), k_1_1) != Seq#Index(getVCTOption1(PostHeap, output), k_1_2)
+      (((k_1 != k_1_1 && (0 <= k_1 && k_1 < Seq#Length(getVCTOption1(PostHeap, output)))) && (0 <= k_1_1 && k_1_1 < Seq#Length(getVCTOption1(PostHeap, output)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(getVCTOption1(PostHeap, output), k_1) != Seq#Index(getVCTOption1(PostHeap, output), k_1_1)
     );
     
     // -- Define Inverse Function
-      assume (forall k_1_1: int ::
-        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1_1) } { PostHeap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1_1), Integer__item] }
-        0 <= k_1_1 && k_1_1 < Seq#Length(getVCTOption1(PostHeap, output)) ==> qpRange2(Seq#Index(getVCTOption1(PostHeap, output), k_1_1)) && invRecv2(Seq#Index(getVCTOption1(PostHeap, output), k_1_1)) == k_1_1
+      assume (forall k_1: int ::
+        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1) } { PostHeap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1), Integer__item] }
+        0 <= k_1 && k_1 < Seq#Length(getVCTOption1(PostHeap, output)) ==> qpRange2(Seq#Index(getVCTOption1(PostHeap, output), k_1)) && invRecv2(Seq#Index(getVCTOption1(PostHeap, output), k_1)) == k_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        (0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(getVCTOption1(PostHeap, output))) && qpRange2(o_4) ==> Seq#Index(getVCTOption1(PostHeap, output), invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        (0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(getVCTOption1(PostHeap, output))) && qpRange2(o_9) ==> Seq#Index(getVCTOption1(PostHeap, output), invRecv2(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall k_1_1: int ::
-        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1_1) } { PostHeap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1_1), Integer__item] }
-        0 <= k_1_1 && k_1_1 < Seq#Length(getVCTOption1(PostHeap, output)) ==> Seq#Index(getVCTOption1(PostHeap, output), k_1_1) != null
+      assume (forall k_1: int ::
+        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1) } { PostHeap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1), Integer__item] }
+        0 <= k_1 && k_1 < Seq#Length(getVCTOption1(PostHeap, output)) ==> Seq#Index(getVCTOption1(PostHeap, output), k_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer__item] }
-        ((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(getVCTOption1(PostHeap, output))) && qpRange2(o_4) ==> Seq#Index(getVCTOption1(PostHeap, output), invRecv2(o_4)) == o_4 && PostMask[o_4, Integer__item] < QPMask[o_4, Integer__item]) && (!((0 <= invRecv2(o_4) && invRecv2(o_4) < Seq#Length(getVCTOption1(PostHeap, output))) && qpRange2(o_4)) ==> QPMask[o_4, Integer__item] == PostMask[o_4, Integer__item])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer__item] }
+        ((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(getVCTOption1(PostHeap, output))) && qpRange2(o_9) ==> Seq#Index(getVCTOption1(PostHeap, output), invRecv2(o_9)) == o_9 && PostMask[o_9, Integer__item] < QPMask[o_9, Integer__item]) && (!((0 <= invRecv2(o_9) && invRecv2(o_9) < Seq#Length(getVCTOption1(PostHeap, output))) && qpRange2(o_9)) ==> QPMask[o_9, Integer__item] == PostMask[o_9, Integer__item])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer__item ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer__item ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -935,18 +935,18 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
             // Exhale precondition of function application
             ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@25.58--25.79) [196611]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@25.58--25.79) [59542]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
           if (tid_4 < Seq#Length(getVCTOption1(PostHeap, output))) {
-            if (0 <= j_7) {
+            if (0 <= j_2) {
               if (*) {
                 // Exhale precondition of function application
                 ExhaleWellDef0Mask := PostMask;
                 ExhaleWellDef0Heap := PostHeap;
-                assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@25.100--25.121) [196612]"}
+                assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@25.100--25.121) [59543]"}
                   output != (VCTNone(): VCTOptionDomainType (Seq Ref));
                 // Stop execution
                 assume false;
@@ -954,28 +954,28 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
             }
           }
         }
-        if (0 <= tid_4 && (tid_4 < Seq#Length(getVCTOption1(PostHeap, output)) && (0 <= j_7 && j_7 < Seq#Length(getVCTOption1(PostHeap, output))))) {
+        if (0 <= tid_4 && (tid_4 < Seq#Length(getVCTOption1(PostHeap, output)) && (0 <= j_2 && j_2 < Seq#Length(getVCTOption1(PostHeap, output))))) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@25.128--25.149) [196613]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@25.128--25.149) [59544]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[j] into getVCTOption1(output) might be negative. (0370.vpr@25.12--25.173) [196614]"}
-            j_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[j] into getVCTOption1(output) might exceed sequence length. (0370.vpr@25.12--25.173) [196615]"}
-            j_7 < Seq#Length(getVCTOption1(PostHeap, output));
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access getVCTOption1(output)[j].Integer__item (0370.vpr@25.12--25.173) [196616]"}
-            HasDirectPerm(PostMask, Seq#Index(getVCTOption1(PostHeap, output), j_7), Integer__item);
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[j] into getVCTOption1(output) might be negative. (0370.vpr@25.12--25.173) [59545]"}
+            j_2 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index getVCTOption1(output)[j] into getVCTOption1(output) might exceed sequence length. (0370.vpr@25.12--25.173) [59546]"}
+            j_2 < Seq#Length(getVCTOption1(PostHeap, output));
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access getVCTOption1(output)[j].Integer__item (0370.vpr@25.12--25.173) [59547]"}
+            HasDirectPerm(PostMask, Seq#Index(getVCTOption1(PostHeap, output), j_2), Integer__item);
         }
         assume false;
       }
-    assume (forall tid_5: int, j_3_1: int ::
+    assume (forall tid_5: int, j_3: int ::
       
-      0 <= tid_5 && (tid_5 < Seq#Length(getVCTOption1(PostHeap, output)) && (0 <= j_3_1 && j_3_1 < Seq#Length(getVCTOption1(PostHeap, output)))) ==> PostHeap[Seq#Index(getVCTOption1(PostHeap, output), j_3_1), Integer__item] == tid_5
+      0 <= tid_5 && (tid_5 < Seq#Length(getVCTOption1(PostHeap, output)) && (0 <= j_3 && j_3 < Seq#Length(getVCTOption1(PostHeap, output)))) ==> PostHeap[Seq#Index(getVCTOption1(PostHeap, output), j_3), Integer__item] == tid_5
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -990,74 +990,74 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of barrier_check_2 might not hold. Assertion (VCTNone(): VCTOption[Seq[Ref]]) != output might not hold. (0370.vpr@23.11--23.30) [196617]"}
+    assert {:msg "  Postcondition of barrier_check_2 might not hold. Assertion (VCTNone(): VCTOption[Seq[Ref]]) != output might not hold. (0370.vpr@23.11--23.30) [59548]"}
       (VCTNone(): VCTOptionDomainType (Seq Ref)) != output;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
-    assert {:msg "  Postcondition of barrier_check_2 might not hold. There might be insufficient permission to access getVCTOption1(output)[k].Integer__item (0370.vpr@24.12--24.165) [196618]"}
-      (forall k_2_1: int ::
+    assert {:msg "  Postcondition of barrier_check_2 might not hold. There might be insufficient permission to access getVCTOption1(output)[k].Integer__item (0370.vpr@24.12--24.165) [59549]"}
+      (forall k_2_2: int ::
       
-      0 <= k_2_1 && k_2_1 < Seq#Length(getVCTOption1(Heap, output)) ==> Mask[Seq#Index(getVCTOption1(Heap, output), k_2_1), Integer__item] > NoPerm
+      0 <= k_2_2 && k_2_2 < Seq#Length(getVCTOption1(Heap, output)) ==> Mask[Seq#Index(getVCTOption1(Heap, output), k_2_2), Integer__item] > NoPerm
     );
-    assume (forall k_2_1: int ::
+    assume (forall k_2_2: int ::
       
-      0 <= k_2_1 && k_2_1 < Seq#Length(getVCTOption1(Heap, output)) ==> wildcard < Mask[Seq#Index(getVCTOption1(Heap, output), k_2_1), Integer__item]
+      0 <= k_2_2 && k_2_2 < Seq#Length(getVCTOption1(Heap, output)) ==> wildcard < Mask[Seq#Index(getVCTOption1(Heap, output), k_2_2), Integer__item]
     );
     
     // -- check that the permission amount is positive
-      assert {:msg "  Postcondition of barrier_check_2 might not hold. Fraction wildcard might be negative. (0370.vpr@24.12--24.165) [196619]"}
-        (forall k_2_1: int ::
-        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_1) } { Heap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_1), Integer__item] }
-        (0 <= k_2_1 && k_2_1 < Seq#Length(getVCTOption1(Heap, output))) && dummyFunction(Heap[Seq#Index(getVCTOption1(Heap, output), k_2_1), Integer__item]) ==> wildcard >= NoPerm
+      assert {:msg "  Postcondition of barrier_check_2 might not hold. Fraction wildcard might be negative. (0370.vpr@24.12--24.165) [59550]"}
+        (forall k_2_2: int ::
+        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_2) } { Heap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_2), Integer__item] }
+        (0 <= k_2_2 && k_2_2 < Seq#Length(getVCTOption1(Heap, output))) && dummyFunction(Heap[Seq#Index(getVCTOption1(Heap, output), k_2_2), Integer__item]) ==> wildcard >= NoPerm
       );
     
     // -- check if receiver getVCTOption1(output)[k] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource getVCTOption1(output)[k].Integer__item might not be injective. (0370.vpr@24.12--24.165) [196620]"}
-        (forall k_2_1: int, k_2_2: int ::
-        { neverTriggered3(k_2_1), neverTriggered3(k_2_2) }
-        (((k_2_1 != k_2_2 && (0 <= k_2_1 && k_2_1 < Seq#Length(getVCTOption1(Heap, output)))) && (0 <= k_2_2 && k_2_2 < Seq#Length(getVCTOption1(Heap, output)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(getVCTOption1(Heap, output), k_2_1) != Seq#Index(getVCTOption1(Heap, output), k_2_2)
+      assert {:msg "  Contract might not be well-formed. Quantified resource getVCTOption1(output)[k].Integer__item might not be injective. (0370.vpr@24.12--24.165) [59551]"}
+        (forall k_2_2: int, k_2_3: int ::
+        { neverTriggered3(k_2_2), neverTriggered3(k_2_3) }
+        (((k_2_2 != k_2_3 && (0 <= k_2_2 && k_2_2 < Seq#Length(getVCTOption1(Heap, output)))) && (0 <= k_2_3 && k_2_3 < Seq#Length(getVCTOption1(Heap, output)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(getVCTOption1(Heap, output), k_2_2) != Seq#Index(getVCTOption1(Heap, output), k_2_3)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of barrier_check_2 might not hold. There might be insufficient permission to access getVCTOption1(output)[k].Integer__item (0370.vpr@24.12--24.165) [196621]"}
-        (forall k_2_1: int ::
-        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_1) } { Heap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_1), Integer__item] }
-        0 <= k_2_1 && k_2_1 < Seq#Length(getVCTOption1(Heap, output)) ==> Mask[Seq#Index(getVCTOption1(Heap, output), k_2_1), Integer__item] > NoPerm
+      assert {:msg "  Postcondition of barrier_check_2 might not hold. There might be insufficient permission to access getVCTOption1(output)[k].Integer__item (0370.vpr@24.12--24.165) [59552]"}
+        (forall k_2_2: int ::
+        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_2) } { Heap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_2), Integer__item] }
+        0 <= k_2_2 && k_2_2 < Seq#Length(getVCTOption1(Heap, output)) ==> Mask[Seq#Index(getVCTOption1(Heap, output), k_2_2), Integer__item] > NoPerm
       );
     
     // -- assumptions for inverse of receiver getVCTOption1(output)[k]
-      assume (forall k_2_1: int ::
-        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_1) } { Heap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_1), Integer__item] }
-        (0 <= k_2_1 && k_2_1 < Seq#Length(getVCTOption1(Heap, output))) && NoPerm < wildcard ==> qpRange3(Seq#Index(getVCTOption1(Heap, output), k_2_1)) && invRecv3(Seq#Index(getVCTOption1(Heap, output), k_2_1)) == k_2_1
+      assume (forall k_2_2: int ::
+        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_2) } { Heap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_2_2), Integer__item] }
+        (0 <= k_2_2 && k_2_2 < Seq#Length(getVCTOption1(Heap, output))) && NoPerm < wildcard ==> qpRange3(Seq#Index(getVCTOption1(Heap, output), k_2_2)) && invRecv3(Seq#Index(getVCTOption1(Heap, output), k_2_2)) == k_2_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (0 <= invRecv3(o_4) && invRecv3(o_4) < Seq#Length(getVCTOption1(Heap, output))) && (NoPerm < wildcard && qpRange3(o_4)) ==> Seq#Index(getVCTOption1(Heap, output), invRecv3(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (0 <= invRecv3(o_9) && invRecv3(o_9) < Seq#Length(getVCTOption1(Heap, output))) && (NoPerm < wildcard && qpRange3(o_9)) ==> Seq#Index(getVCTOption1(Heap, output), invRecv3(o_9)) == o_9
       );
     
     // -- assume permission updates for field Integer__item
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer__item] }
-        ((0 <= invRecv3(o_4) && invRecv3(o_4) < Seq#Length(getVCTOption1(Heap, output))) && (NoPerm < wildcard && qpRange3(o_4)) ==> Seq#Index(getVCTOption1(Heap, output), invRecv3(o_4)) == o_4 && QPMask[o_4, Integer__item] == Mask[o_4, Integer__item] - wildcard) && (!((0 <= invRecv3(o_4) && invRecv3(o_4) < Seq#Length(getVCTOption1(Heap, output))) && (NoPerm < wildcard && qpRange3(o_4))) ==> QPMask[o_4, Integer__item] == Mask[o_4, Integer__item])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer__item] }
+        ((0 <= invRecv3(o_9) && invRecv3(o_9) < Seq#Length(getVCTOption1(Heap, output))) && (NoPerm < wildcard && qpRange3(o_9)) ==> Seq#Index(getVCTOption1(Heap, output), invRecv3(o_9)) == o_9 && QPMask[o_9, Integer__item] == Mask[o_9, Integer__item] - wildcard) && (!((0 <= invRecv3(o_9) && invRecv3(o_9) < Seq#Length(getVCTOption1(Heap, output))) && (NoPerm < wildcard && qpRange3(o_9))) ==> QPMask[o_9, Integer__item] == Mask[o_9, Integer__item])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Integer__item ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Integer__item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (0 <= tid_6_1 && (tid_6_1 < Seq#Length(getVCTOption1(Heap, output)) && (0 <= j_4_1 && j_4_1 < Seq#Length(getVCTOption1(Heap, output))))) {
-        assert {:msg "  Postcondition of barrier_check_2 might not hold. Assertion getVCTOption1(output)[j].Integer__item == tid might not hold. (0370.vpr@25.12--25.173) [196622]"}
-          Heap[Seq#Index(getVCTOption1(Heap, output), j_4_1), Integer__item] == tid_6_1;
+      if (0 <= tid_6 && (tid_6 < Seq#Length(getVCTOption1(Heap, output)) && (0 <= j_4_1 && j_4_1 < Seq#Length(getVCTOption1(Heap, output))))) {
+        assert {:msg "  Postcondition of barrier_check_2 might not hold. Assertion getVCTOption1(output)[j].Integer__item == tid might not hold. (0370.vpr@25.12--25.173) [59553]"}
+          Heap[Seq#Index(getVCTOption1(Heap, output), j_4_1), Integer__item] == tid_6;
       }
       assume false;
     }
-    assume (forall tid_7_1_1: int, j_5_1_1: int ::
+    assume (forall tid_7_1: int, j_5_1_1: int ::
       
-      0 <= tid_7_1_1 && (tid_7_1_1 < Seq#Length(getVCTOption1(Heap, output)) && (0 <= j_5_1_1 && j_5_1_1 < Seq#Length(getVCTOption1(Heap, output)))) ==> Heap[Seq#Index(getVCTOption1(Heap, output), j_5_1_1), Integer__item] == tid_7_1_1
+      0 <= tid_7_1 && (tid_7_1 < Seq#Length(getVCTOption1(Heap, output)) && (0 <= j_5_1_1 && j_5_1_1 < Seq#Length(getVCTOption1(Heap, output)))) ==> Heap[Seq#Index(getVCTOption1(Heap, output), j_5_1_1), Integer__item] == tid_7_1
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -1074,19 +1074,19 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
 {
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var i_8: int;
+  var i_15: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var j_3: int;
-  var k_15: int;
+  var j_16: int;
+  var k_9: int;
   var QPMask: MaskType;
   var wildcard: real;
-  var tid_10: int;
+  var tid_7: int;
   var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
-  var j_4: int;
+  var j_17: int;
   var tid_1: int;
-  var j_3_1: int;
+  var j_3: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1118,23 +1118,23 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
     
     // -- Check definedness of (forall i: Int, j: Int :: { getVCTOption1(output)[i], getVCTOption1(output)[j] } i >= 0 && (i < |getVCTOption1(output)| && (j >= 0 && (j < |getVCTOption1(output)| && i != j))) ==> getVCTOption1(output)[i] != getVCTOption1(output)[j])
       if (*) {
-        if (i_8 >= 0) {
+        if (i_15 >= 0) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.48--34.69) [196623]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.48--34.69) [59554]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          if (i_8 < Seq#Length(getVCTOption1(Heap, output))) {
-            if (j_3 >= 0) {
+          if (i_15 < Seq#Length(getVCTOption1(Heap, output))) {
+            if (j_16 >= 0) {
               if (*) {
                 // Exhale precondition of function application
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.89--34.110) [196624]"}
+                assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.89--34.110) [59555]"}
                   output != (VCTNone(): VCTOptionDomainType (Seq Ref));
                 // Stop execution
                 assume false;
@@ -1142,33 +1142,33 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
             }
           }
         }
-        if (i_8 >= 0 && (i_8 < Seq#Length(getVCTOption1(Heap, output)) && (j_3 >= 0 && (j_3 < Seq#Length(getVCTOption1(Heap, output)) && i_8 != j_3)))) {
+        if (i_15 >= 0 && (i_15 < Seq#Length(getVCTOption1(Heap, output)) && (j_16 >= 0 && (j_16 < Seq#Length(getVCTOption1(Heap, output)) && i_15 != j_16)))) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.126--34.147) [196625]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.126--34.147) [59556]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[i] into getVCTOption1(output) might be negative. (0370.vpr@34.10--34.178) [196626]"}
-            i_8 >= 0;
-          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[i] into getVCTOption1(output) might exceed sequence length. (0370.vpr@34.10--34.178) [196627]"}
-            i_8 < Seq#Length(getVCTOption1(Heap, output));
+          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[i] into getVCTOption1(output) might be negative. (0370.vpr@34.10--34.178) [59557]"}
+            i_15 >= 0;
+          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[i] into getVCTOption1(output) might exceed sequence length. (0370.vpr@34.10--34.178) [59558]"}
+            i_15 < Seq#Length(getVCTOption1(Heap, output));
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.154--34.175) [196628]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.154--34.175) [59559]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[j] into getVCTOption1(output) might be negative. (0370.vpr@34.10--34.178) [196629]"}
-            j_3 >= 0;
-          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[j] into getVCTOption1(output) might exceed sequence length. (0370.vpr@34.10--34.178) [196630]"}
-            j_3 < Seq#Length(getVCTOption1(Heap, output));
+          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[j] into getVCTOption1(output) might be negative. (0370.vpr@34.10--34.178) [59560]"}
+            j_16 >= 0;
+          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[j] into getVCTOption1(output) might exceed sequence length. (0370.vpr@34.10--34.178) [59561]"}
+            j_16 < Seq#Length(getVCTOption1(Heap, output));
         }
         assume false;
       }
@@ -1187,65 +1187,65 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
     
     // -- Check definedness of (forall k: Int :: { getVCTOption1(output)[k].Integer__item } 0 <= k && k < |getVCTOption1(output)| ==> acc(getVCTOption1(output)[k].Integer__item, wildcard))
       if (*) {
-        if (0 <= k_15) {
+        if (0 <= k_9) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@38.22--38.43) [196631]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@38.22--38.43) [59562]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
         }
-        if (0 <= k_15 && k_15 < Seq#Length(getVCTOption1(Heap, output))) {
+        if (0 <= k_9 && k_9 < Seq#Length(getVCTOption1(Heap, output))) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@39.13--39.34) [196632]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@39.13--39.34) [59563]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[k] into getVCTOption1(output) might be negative. (0370.vpr@37.5--39.62) [196633]"}
-            k_15 >= 0;
-          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[k] into getVCTOption1(output) might exceed sequence length. (0370.vpr@37.5--39.62) [196634]"}
-            k_15 < Seq#Length(getVCTOption1(Heap, output));
+          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[k] into getVCTOption1(output) might be negative. (0370.vpr@37.5--39.62) [59564]"}
+            k_9 >= 0;
+          assert {:msg "  Inhale might fail. Index getVCTOption1(output)[k] into getVCTOption1(output) might exceed sequence length. (0370.vpr@37.5--39.62) [59565]"}
+            k_9 < Seq#Length(getVCTOption1(Heap, output));
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Inhale might fail. Quantified resource getVCTOption1(output)[k].Integer__item might not be injective. (0370.vpr@37.5--39.62) [196635]"}
-      (forall k_1_1: int, k_1_2: int ::
+    assert {:msg "  Inhale might fail. Quantified resource getVCTOption1(output)[k].Integer__item might not be injective. (0370.vpr@37.5--39.62) [59566]"}
+      (forall k_1: int, k_1_1: int ::
       
-      (((k_1_1 != k_1_2 && (0 <= k_1_1 && k_1_1 < Seq#Length(getVCTOption1(Heap, output)))) && (0 <= k_1_2 && k_1_2 < Seq#Length(getVCTOption1(Heap, output)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(getVCTOption1(Heap, output), k_1_1) != Seq#Index(getVCTOption1(Heap, output), k_1_2)
+      (((k_1 != k_1_1 && (0 <= k_1 && k_1 < Seq#Length(getVCTOption1(Heap, output)))) && (0 <= k_1_1 && k_1_1 < Seq#Length(getVCTOption1(Heap, output)))) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(getVCTOption1(Heap, output), k_1) != Seq#Index(getVCTOption1(Heap, output), k_1_1)
     );
     
     // -- Define Inverse Function
-      assume (forall k_1_1: int ::
-        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1_1) } { Heap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1_1), Integer__item] }
-        0 <= k_1_1 && k_1_1 < Seq#Length(getVCTOption1(Heap, output)) ==> qpRange4(Seq#Index(getVCTOption1(Heap, output), k_1_1)) && invRecv4(Seq#Index(getVCTOption1(Heap, output), k_1_1)) == k_1_1
+      assume (forall k_1: int ::
+        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1) } { Heap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1), Integer__item] }
+        0 <= k_1 && k_1 < Seq#Length(getVCTOption1(Heap, output)) ==> qpRange4(Seq#Index(getVCTOption1(Heap, output), k_1)) && invRecv4(Seq#Index(getVCTOption1(Heap, output), k_1)) == k_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        (0 <= invRecv4(o_4) && invRecv4(o_4) < Seq#Length(getVCTOption1(Heap, output))) && qpRange4(o_4) ==> Seq#Index(getVCTOption1(Heap, output), invRecv4(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        (0 <= invRecv4(o_9) && invRecv4(o_9) < Seq#Length(getVCTOption1(Heap, output))) && qpRange4(o_9) ==> Seq#Index(getVCTOption1(Heap, output), invRecv4(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall k_1_1: int ::
-        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1_1) } { Heap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1_1), Integer__item] }
-        0 <= k_1_1 && k_1_1 < Seq#Length(getVCTOption1(Heap, output)) ==> Seq#Index(getVCTOption1(Heap, output), k_1_1) != null
+      assume (forall k_1: int ::
+        { Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1) } { Heap[Seq#Index(getVCTOption1#frame(EmptyFrame, output), k_1), Integer__item] }
+        0 <= k_1 && k_1 < Seq#Length(getVCTOption1(Heap, output)) ==> Seq#Index(getVCTOption1(Heap, output), k_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Integer__item] }
-        ((0 <= invRecv4(o_4) && invRecv4(o_4) < Seq#Length(getVCTOption1(Heap, output))) && qpRange4(o_4) ==> Seq#Index(getVCTOption1(Heap, output), invRecv4(o_4)) == o_4 && Mask[o_4, Integer__item] < QPMask[o_4, Integer__item]) && (!((0 <= invRecv4(o_4) && invRecv4(o_4) < Seq#Length(getVCTOption1(Heap, output))) && qpRange4(o_4)) ==> QPMask[o_4, Integer__item] == Mask[o_4, Integer__item])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Integer__item] }
+        ((0 <= invRecv4(o_9) && invRecv4(o_9) < Seq#Length(getVCTOption1(Heap, output))) && qpRange4(o_9) ==> Seq#Index(getVCTOption1(Heap, output), invRecv4(o_9)) == o_9 && Mask[o_9, Integer__item] < QPMask[o_9, Integer__item]) && (!((0 <= invRecv4(o_9) && invRecv4(o_9) < Seq#Length(getVCTOption1(Heap, output))) && qpRange4(o_9)) ==> QPMask[o_9, Integer__item] == Mask[o_9, Integer__item])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Integer__item ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Integer__item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1261,23 +1261,23 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
     
     // -- Check definedness of (forall tid: Int, j: Int ::0 <= tid && (tid < |getVCTOption1(output)| && (0 <= j && j < |getVCTOption1(output)|)) ==> getVCTOption1(output)[j].Integer__item == tid)
       if (*) {
-        if (0 <= tid_10) {
+        if (0 <= tid_7) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@44.27--44.48) [196636]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@44.27--44.48) [59567]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          if (tid_10 < Seq#Length(getVCTOption1(Heap, output))) {
-            if (0 <= j_4) {
+          if (tid_7 < Seq#Length(getVCTOption1(Heap, output))) {
+            if (0 <= j_17) {
               if (*) {
                 // Exhale precondition of function application
                 ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-                assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@45.27--45.48) [196637]"}
+                assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@45.27--45.48) [59568]"}
                   output != (VCTNone(): VCTOptionDomainType (Seq Ref));
                 // Stop execution
                 assume false;
@@ -1285,29 +1285,29 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
             }
           }
         }
-        if (0 <= tid_10 && (tid_10 < Seq#Length(getVCTOption1(Heap, output)) && (0 <= j_4 && j_4 < Seq#Length(getVCTOption1(Heap, output))))) {
+        if (0 <= tid_7 && (tid_7 < Seq#Length(getVCTOption1(Heap, output)) && (0 <= j_17 && j_17 < Seq#Length(getVCTOption1(Heap, output))))) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@46.9--46.30) [196638]"}
+            assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@46.9--46.30) [59569]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
             assume false;
           }
-          assert {:msg "  Exhale might fail. Index getVCTOption1(output)[j] into getVCTOption1(output) might be negative. (0370.vpr@43.5--46.54) [196639]"}
-            j_4 >= 0;
-          assert {:msg "  Exhale might fail. Index getVCTOption1(output)[j] into getVCTOption1(output) might exceed sequence length. (0370.vpr@43.5--46.54) [196640]"}
-            j_4 < Seq#Length(getVCTOption1(Heap, output));
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access getVCTOption1(output)[j].Integer__item (0370.vpr@43.5--46.54) [196641]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(getVCTOption1(Heap, output), j_4), Integer__item);
+          assert {:msg "  Exhale might fail. Index getVCTOption1(output)[j] into getVCTOption1(output) might be negative. (0370.vpr@43.5--46.54) [59570]"}
+            j_17 >= 0;
+          assert {:msg "  Exhale might fail. Index getVCTOption1(output)[j] into getVCTOption1(output) might exceed sequence length. (0370.vpr@43.5--46.54) [59571]"}
+            j_17 < Seq#Length(getVCTOption1(Heap, output));
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access getVCTOption1(output)[j].Integer__item (0370.vpr@43.5--46.54) [59572]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(getVCTOption1(Heap, output), j_17), Integer__item);
         }
         assume false;
       }
     if (*) {
-      if (0 <= tid_1 && (tid_1 < Seq#Length(getVCTOption1(Heap, output)) && (0 <= j_3_1 && j_3_1 < Seq#Length(getVCTOption1(Heap, output))))) {
-        assert {:msg "  Exhale might fail. Assertion getVCTOption1(output)[j].Integer__item == tid might not hold. (0370.vpr@43.5--46.54) [196642]"}
-          Heap[Seq#Index(getVCTOption1(Heap, output), j_3_1), Integer__item] == tid_1;
+      if (0 <= tid_1 && (tid_1 < Seq#Length(getVCTOption1(Heap, output)) && (0 <= j_3 && j_3 < Seq#Length(getVCTOption1(Heap, output))))) {
+        assert {:msg "  Exhale might fail. Assertion getVCTOption1(output)[j].Integer__item == tid might not hold. (0370.vpr@43.5--46.54) [59573]"}
+          Heap[Seq#Index(getVCTOption1(Heap, output), j_3), Integer__item] == tid_1;
       }
       assume false;
     }

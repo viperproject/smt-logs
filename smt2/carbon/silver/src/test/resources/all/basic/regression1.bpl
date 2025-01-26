@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:00
+// Date:         2025-01-26 21:43:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/regression1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/regression1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -213,7 +213,7 @@ function  int2Ref(vint: int): Ref;
 function  ref2Int(ref_1: Ref): int;
 
 // Translation of domain function bool2Ref
-function  bool2Ref(vbool: bool): Ref;
+function  bool2Ref_1(vbool: bool): Ref;
 
 // Translation of domain function ref2Bool
 function  ref2Bool(ref_1: Ref): bool;
@@ -226,15 +226,15 @@ axiom (forall x: int ::
 
 // Translation of domain axiom boolInverse
 axiom (forall x: bool ::
-  { (ref2Bool((bool2Ref(x): Ref)): bool) }
-  (ref2Bool((bool2Ref(x): Ref)): bool) == x
+  { (ref2Bool((bool2Ref_1(x): Ref)): bool) }
+  (ref2Bool((bool2Ref_1(x): Ref)): bool) == x
 );
 
 // ==================================================
 // Translation of method Simple_lessinitgreater
 // ==================================================
 
-procedure Simple_lessinitgreater(rd_1: Perm, this: Ref) returns (vresult: Ref)
+procedure Simple_lessinitgreater(rd: Perm, this: Ref) returns (vresult: Ref)
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -249,7 +249,7 @@ procedure Simple_lessinitgreater(rd_1: Perm, this: Ref) returns (vresult: Ref)
     assume Heap[this, $allocated];
   
   // -- Checked inhaling of precondition
-    assume NoPerm < rd_1;
+    assume NoPerm < rd;
     assume state(Heap, Mask);
     assume this != null;
     assume state(Heap, Mask);
@@ -269,7 +269,7 @@ procedure Simple_lessinitgreater(rd_1: Perm, this: Ref) returns (vresult: Ref)
 // Translation of method Simple_test2
 // ==================================================
 
-procedure Simple_test2(rd_1: Perm, this: Ref, x: int) returns (vresult: int)
+procedure Simple_test2(rd: Perm, this: Ref, x: int) returns (vresult: int)
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -288,7 +288,7 @@ procedure Simple_test2(rd_1: Perm, this: Ref, x: int) returns (vresult: int)
     assume Heap[this, $allocated];
   
   // -- Checked inhaling of precondition
-    assume NoPerm < rd_1;
+    assume NoPerm < rd;
     assume state(Heap, Mask);
     assume this != null;
     assume state(Heap, Mask);
@@ -318,6 +318,6 @@ procedure Simple_test2(rd_1: Perm, this: Ref, x: int) returns (vresult: int)
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Simple_test2 might not hold. Assertion vresult == x * x might not hold. (regression1.vpr@53.11--53.29) [188199]"}
+    assert {:msg "  Postcondition of Simple_test2 might not hold. Assertion vresult == x * x might not hold. (regression1.vpr@53.11--53.29) [100781]"}
       vresult == x * x;
 }

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:28:03
+; Started: 2025-01-26 21:22:28
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -173,11 +173,11 @@
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-26|)))
+  :qid |quant-u-532|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-27|)))
+  :qid |quant-u-533|)))
 ; ---------- FUNCTION builtin$unreach_int__$TY$__$int$----------
 (declare-fun result@1@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -190,11 +190,11 @@
     (builtin$unreach_int__$TY$__$int$%limited s@$)
     (builtin$unreach_int__$TY$__$int$ s@$))
   :pattern ((builtin$unreach_int__$TY$__$int$ s@$))
-  :qid |quant-u-28|)))
+  :qid |quant-u-534|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$unreach_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-29|)))
+  :qid |quant-u-535|)))
 ; ---------- FUNCTION read$----------
 (declare-fun result@2@00 () $Perm)
 ; ----- Well-definedness of specifications -----
@@ -211,25 +211,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-30|)))
+  :qid |quant-u-536|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-31|)))
+  :qid |quant-u-537|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@2@00) (< result@2@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-36|)))
+  :qid |quant-u-542|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-37|)))
+  :qid |quant-u-543|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-38|)))
+  :qid |quant-u-544|)))
 ; ---------- FUNCTION m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$----------
 (declare-fun _pure_1@3@00 () Int)
 (declare-fun result@4@00 () Int)
@@ -260,11 +260,11 @@
     (m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@3@00)
     (m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$ s@$ _pure_1@3@00))
   :pattern ((m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$ s@$ _pure_1@3@00))
-  :qid |quant-u-32|)))
+  :qid |quant-u-538|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 Int)) (!
   (m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%stateless _pure_1@3@00)
   :pattern ((m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@3@00))
-  :qid |quant-u-33|)))
+  :qid |quant-u-539|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 Int)) (!
   (let ((result@4@00 (m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@3@00))) (=>
     (m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%precondition s@$ _pure_1@3@00)
@@ -274,15 +274,15 @@
         result@4@00
         (mirror$m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$__$TY$__$int$$$int$<Int> _pure_1@3@00)))))
   :pattern ((m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@3@00))
-  :qid |quant-u-39|)))
+  :qid |quant-u-545|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 Int)) (!
   (let ((result@4@00 (m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@3@00))) true)
   :pattern ((m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@3@00))
-  :qid |quant-u-40|)))
+  :qid |quant-u-546|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 Int)) (!
   (let ((result@4@00 (m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@3@00))) true)
   :pattern ((m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@3@00))
-  :qid |quant-u-41|)))
+  :qid |quant-u-547|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -398,7 +398,7 @@
           _pure_1@3@00)
         0)))
   :pattern ((m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$ s@$ _pure_1@3@00))
-  :qid |quant-u-42|)))
+  :qid |quant-u-548|)))
 (assert (forall ((s@$ $Snap) (_pure_1@3@00 Int)) (!
   (=>
     (m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$%precondition s@$ _pure_1@3@00)
@@ -409,7 +409,7 @@
         $Snap.unit) (- _pure_1@3@00 1))
       true))
   :pattern ((m_fail_pc$$sum2$opensqu$0$closesqu$__$TY$__$int$$$int$ s@$ _pure_1@3@00))
-  :qid |quant-u-43|)))
+  :qid |quant-u-549|)))
 ; ---------- FUNCTION m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$----------
 (declare-fun _pure_1@5@00 () Int)
 (declare-fun result@6@00 () Int)
@@ -438,11 +438,11 @@
     (m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@5@00)
     (m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$ s@$ _pure_1@5@00))
   :pattern ((m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$ s@$ _pure_1@5@00))
-  :qid |quant-u-34|)))
+  :qid |quant-u-540|)))
 (assert (forall ((s@$ $Snap) (_pure_1@5@00 Int)) (!
   (m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$%stateless _pure_1@5@00)
   :pattern ((m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@5@00))
-  :qid |quant-u-35|)))
+  :qid |quant-u-541|)))
 (assert (forall ((s@$ $Snap) (_pure_1@5@00 Int)) (!
   (let ((result@6@00 (m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@5@00))) (=>
     (m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$%precondition s@$ _pure_1@5@00)
@@ -452,15 +452,15 @@
         result@6@00
         (mirror$m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$__$TY$__$int$$$int$<Int> _pure_1@5@00)))))
   :pattern ((m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@5@00))
-  :qid |quant-u-44|)))
+  :qid |quant-u-550|)))
 (assert (forall ((s@$ $Snap) (_pure_1@5@00 Int)) (!
   (let ((result@6@00 (m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@5@00))) true)
   :pattern ((m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@5@00))
-  :qid |quant-u-45|)))
+  :qid |quant-u-551|)))
 (assert (forall ((s@$ $Snap) (_pure_1@5@00 Int)) (!
   (let ((result@6@00 (m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@5@00))) true)
   :pattern ((m_fail_pc$$sum1$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@5@00))
-  :qid |quant-u-46|)))
+  :qid |quant-u-552|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))

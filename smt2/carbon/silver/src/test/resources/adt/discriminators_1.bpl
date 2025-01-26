@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:47
+// Date:         2025-01-26 21:43:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/discriminators_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/discriminators_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -187,24 +187,24 @@ function  Nil<T>(): ListDomainType T;
 function  Cons<T>(value_2: T, tail: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function get_List_value
-function  get_List_value<T>(t_9: (ListDomainType T)): T;
+function  get_List_value<T>(t_3: (ListDomainType T)): T;
 
 // Translation of domain function get_List_tail
-function  get_List_tail<T>(t_9: (ListDomainType T)): ListDomainType T;
+function  get_List_tail<T>(t_3: (ListDomainType T)): ListDomainType T;
 
 // Translation of domain function List_tag
-function  List_tag<T>(t_9: (ListDomainType T)): int;
+function  List_tag<T>(t_3: (ListDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  value_1 == (get_List_value((Cons(value_1, tail_1): ListDomainType T)): T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  value == (get_List_value((Cons(value, tail_1): ListDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  tail_1 == (get_List_tail((Cons(value_1, tail_1): ListDomainType T)): ListDomainType T)
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  tail_1 == (get_List_tail((Cons(value, tail_1): ListDomainType T)): ListDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -214,9 +214,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, tail_1: (ListDomainType T) ::
-  { (Cons(value_1, tail_1): ListDomainType T) }
-  (List_tag((Cons(value_1, tail_1): ListDomainType T)): int) == 0
+axiom (forall <T> value: T, tail_1: (ListDomainType T) ::
+  { (Cons(value, tail_1): ListDomainType T) }
+  (List_tag((Cons(value, tail_1): ListDomainType T)): int) == 0
 );
 
 // Translation of anonymous domain axiom
@@ -236,36 +236,36 @@ type TreeDomainType T;
 function  Leaf<T>(): TreeDomainType T;
 
 // Translation of domain function Node
-function  Node_1<T>(value_2: T, left_2: (TreeDomainType T), right_2: (TreeDomainType T)): TreeDomainType T;
+function  Node_1<T>(value_2: T, left_1: (TreeDomainType T), right: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function get_Tree_value
-function  get_Tree_value<T>(t_9: (TreeDomainType T)): T;
+function  get_Tree_value<T>(t_3: (TreeDomainType T)): T;
 
 // Translation of domain function get_Tree_left
-function  get_Tree_left<T>(t_9: (TreeDomainType T)): TreeDomainType T;
+function  get_Tree_left<T>(t_3: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function get_Tree_right
-function  get_Tree_right<T>(t_9: (TreeDomainType T)): TreeDomainType T;
+function  get_Tree_right<T>(t_3: (TreeDomainType T)): TreeDomainType T;
 
 // Translation of domain function Tree_tag
-function  Tree_tag<T>(t_9: (TreeDomainType T)): int;
+function  Tree_tag<T>(t_3: (TreeDomainType T)): int;
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  value_1 == (get_Tree_value((Node_1(value_1, left_1, right): TreeDomainType T)): T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  value == (get_Tree_value((Node_1(value, left, right_2): TreeDomainType T)): T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  left_1 == (get_Tree_left((Node_1(value_1, left_1, right): TreeDomainType T)): TreeDomainType T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  left == (get_Tree_left((Node_1(value, left, right_2): TreeDomainType T)): TreeDomainType T)
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  right == (get_Tree_right((Node_1(value_1, left_1, right): TreeDomainType T)): TreeDomainType T)
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  right_2 == (get_Tree_right((Node_1(value, left, right_2): TreeDomainType T)): TreeDomainType T)
 );
 
 // Translation of anonymous domain axiom
@@ -275,9 +275,9 @@ axiom (forall <T>  ::
 );
 
 // Translation of anonymous domain axiom
-axiom (forall <T> value_1: T, left_1: (TreeDomainType T), right: (TreeDomainType T) ::
-  { (Node_1(value_1, left_1, right): TreeDomainType T) }
-  (Tree_tag((Node_1(value_1, left_1, right): TreeDomainType T)): int) == 1
+axiom (forall <T> value: T, left: (TreeDomainType T), right_2: (TreeDomainType T) ::
+  { (Node_1(value, left, right_2): TreeDomainType T) }
+  (Tree_tag((Node_1(value, left, right_2): TreeDomainType T)): int) == 1
 );
 
 // Translation of anonymous domain axiom
@@ -317,21 +317,21 @@ procedure discriminators_1a() returns ()
   // -- Translating statement: assert (List_tag(list): Int) == 0 -- discriminators_1.vpr@18.5--18.23
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (List_tag(list): Int) == 0 might not hold. (discriminators_1.vpr@18.12--18.23) [222576]"}
+    assert {:msg "  Assert might fail. Assertion (List_tag(list): Int) == 0 might not hold. (discriminators_1.vpr@18.12--18.23) [103646]"}
       (List_tag(list_2): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (List_tag((get_List_tail(list): List[Int])): Int) == 1 -- discriminators_1.vpr@19.5--19.27
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (List_tag((get_List_tail(list): List[Int])): Int) == 1 might not hold. (discriminators_1.vpr@19.12--19.27) [222577]"}
+    assert {:msg "  Assert might fail. Assertion (List_tag((get_List_tail(list): List[Int])): Int) == 1 might not hold. (discriminators_1.vpr@19.12--19.27) [103647]"}
       (List_tag((get_List_tail(list_2): ListDomainType int)): int) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((List_tag((get_List_tail(list): List[Int])): Int) == 0) -- discriminators_1.vpr@20.5--20.29
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion !((List_tag((get_List_tail(list): List[Int])): Int) == 0) might not hold. (discriminators_1.vpr@20.12--20.29) [222578]"}
+    assert {:msg "  Assert might fail. Assertion !((List_tag((get_List_tail(list): List[Int])): Int) == 0) might not hold. (discriminators_1.vpr@20.12--20.29) [103648]"}
       !((List_tag((get_List_tail(list_2): ListDomainType int)): int) == 0);
     assume state(Heap, Mask);
 }
@@ -345,7 +345,7 @@ procedure discriminators_1b() returns ()
 {
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var tree_1: (TreeDomainType int);
+  var tree: (TreeDomainType int);
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   
@@ -362,43 +362,43 @@ procedure discriminators_1b() returns ()
   
   // -- Translating statement: tree := (Node(42, (Node(42, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]),
   //   (Node(42, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Tree[Int]) -- discriminators_1.vpr@27.5--27.73
-    tree_1 := (Node_1(42, (Node_1(42, (Leaf(): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int), (Node_1(42, (Leaf(): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int)): TreeDomainType int);
+    tree := (Node_1(42, (Node_1(42, (Leaf(): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int), (Node_1(42, (Leaf(): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int)): TreeDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((Tree_tag(tree): Int) == 0) -- discriminators_1.vpr@29.5--29.24
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion !((Tree_tag(tree): Int) == 0) might not hold. (discriminators_1.vpr@29.12--29.24) [222579]"}
-      !((Tree_tag(tree_1): int) == 0);
+    assert {:msg "  Assert might fail. Assertion !((Tree_tag(tree): Int) == 0) might not hold. (discriminators_1.vpr@29.12--29.24) [103649]"}
+      !((Tree_tag(tree): int) == 0);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Tree_tag((get_Tree_left((get_Tree_left(tree): Tree[Int])): Tree[Int])): Int) ==
   //   0 -- discriminators_1.vpr@30.5--30.33
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Tree_tag((get_Tree_left((get_Tree_left(tree): Tree[Int])): Tree[Int])): Int) == 0 might not hold. (discriminators_1.vpr@30.12--30.33) [222580]"}
-      (Tree_tag((get_Tree_left((get_Tree_left(tree_1): TreeDomainType int)): TreeDomainType int)): int) == 0;
+    assert {:msg "  Assert might fail. Assertion (Tree_tag((get_Tree_left((get_Tree_left(tree): Tree[Int])): Tree[Int])): Int) == 0 might not hold. (discriminators_1.vpr@30.12--30.33) [103650]"}
+      (Tree_tag((get_Tree_left((get_Tree_left(tree): TreeDomainType int)): TreeDomainType int)): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Tree_tag((get_Tree_right((get_Tree_left(tree): Tree[Int])): Tree[Int])): Int) ==
   //   0 -- discriminators_1.vpr@31.5--31.34
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Tree_tag((get_Tree_right((get_Tree_left(tree): Tree[Int])): Tree[Int])): Int) == 0 might not hold. (discriminators_1.vpr@31.12--31.34) [222581]"}
-      (Tree_tag((get_Tree_right((get_Tree_left(tree_1): TreeDomainType int)): TreeDomainType int)): int) == 0;
+    assert {:msg "  Assert might fail. Assertion (Tree_tag((get_Tree_right((get_Tree_left(tree): Tree[Int])): Tree[Int])): Int) == 0 might not hold. (discriminators_1.vpr@31.12--31.34) [103651]"}
+      (Tree_tag((get_Tree_right((get_Tree_left(tree): TreeDomainType int)): TreeDomainType int)): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Tree_tag((get_Tree_left(tree): Tree[Int])): Int) == 1 -- discriminators_1.vpr@32.5--32.28
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Tree_tag((get_Tree_left(tree): Tree[Int])): Int) == 1 might not hold. (discriminators_1.vpr@32.12--32.28) [222582]"}
-      (Tree_tag((get_Tree_left(tree_1): TreeDomainType int)): int) == 1;
+    assert {:msg "  Assert might fail. Assertion (Tree_tag((get_Tree_left(tree): Tree[Int])): Int) == 1 might not hold. (discriminators_1.vpr@32.12--32.28) [103652]"}
+      (Tree_tag((get_Tree_left(tree): TreeDomainType int)): int) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((Tree_tag((get_Tree_right(tree): Tree[Int])): Int) == 0) -- discriminators_1.vpr@33.5--33.30
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion !((Tree_tag((get_Tree_right(tree): Tree[Int])): Int) == 0) might not hold. (discriminators_1.vpr@33.12--33.30) [222583]"}
-      !((Tree_tag((get_Tree_right(tree_1): TreeDomainType int)): int) == 0);
+    assert {:msg "  Assert might fail. Assertion !((Tree_tag((get_Tree_right(tree): Tree[Int])): Int) == 0) might not hold. (discriminators_1.vpr@33.12--33.30) [103653]"}
+      !((Tree_tag((get_Tree_right(tree): TreeDomainType int)): int) == 0);
     assume state(Heap, Mask);
 }

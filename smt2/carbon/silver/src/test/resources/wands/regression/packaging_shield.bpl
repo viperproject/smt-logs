@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:07:05
+// Date:         2025-01-26 21:44:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/packaging_shield.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/packaging_shield-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -353,7 +353,7 @@ procedure t01(ys: Ref) returns ()
         if (b_3) {
           if (b_3) {
             perm := 1 / 2;
-            assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (packaging_shield.vpr@15.9--15.55) [127297]"}
+            assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (packaging_shield.vpr@15.9--15.55) [210717]"}
               perm >= NoPerm;
             b_3 := b_3 && (perm > NoPerm ==> ys != null);
             Ops_3Mask := Ops_3Mask[ys, f_7:=Ops_3Mask[ys, f_7] + perm];
@@ -363,7 +363,7 @@ procedure t01(ys: Ref) returns ()
             if (b_3) {
               
               // -- Check definedness of ys.f == 2
-                assert {:msg "  Packaging wand might fail. There might be insufficient permission to access ys.f (packaging_shield.vpr@15.9--15.55) [127298]"}
+                assert {:msg "  Packaging wand might fail. There might be insufficient permission to access ys.f (packaging_shield.vpr@15.9--15.55) [210718]"}
                   HasDirectPerm(Ops_3Mask, ys, f_7);
             }
             b_3 := b_3 && Ops_3Heap[ys, f_7] == 2;
@@ -386,7 +386,7 @@ procedure t01(ys: Ref) returns ()
           rcvLocal := ys;
           neededTransfer := FullPerm;
           initNeededTransfer := Used_2Mask[rcvLocal, f_7] + neededTransfer;
-          assert {:msg "  Packaging wand might fail. Fraction acc(ys.f, write) might be negative. (packaging_shield.vpr@15.9--15.55) [127299]"}
+          assert {:msg "  Packaging wand might fail. Fraction acc(ys.f, write) might be negative. (packaging_shield.vpr@15.9--15.55) [210719]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -450,7 +450,7 @@ procedure t01(ys: Ref) returns ()
                 Heap := Heap[null, wand_1#sm(ys, 1 / 2, ys, 2, ys, FullPerm):=Heap[null, wand_1#sm(ys, 1 / 2, ys, 2, ys, FullPerm)][ys, f_7:=true]];
               }
             }
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access ys.f (packaging_shield.vpr@15.9--15.55) [127300]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access ys.f (packaging_shield.vpr@15.9--15.55) [210720]"}
             (b_3 && (b_3 && b_1_1)) && b_4 ==> neededTransfer == 0.000000000 && Used_2Mask[rcvLocal, f_7] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -474,7 +474,7 @@ procedure t01(ys: Ref) returns ()
       rcvLocal := ys;
       neededTransfer := 1 / 2;
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(ys.f, 1 / 2) might be negative. (packaging_shield.vpr@14.5--16.6) [127301]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(ys.f, 1 / 2) might be negative. (packaging_shield.vpr@14.5--16.6) [210721]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -517,7 +517,7 @@ procedure t01(ys: Ref) returns ()
             Heap := Heap[null, wand#sm(ys, FullPerm, ys, 1 / 2, ys, 2):=Heap[null, wand#sm(ys, FullPerm, ys, 1 / 2, ys, 2)][ys, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access ys.f (packaging_shield.vpr@14.5--16.6) [127302]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access ys.f (packaging_shield.vpr@14.5--16.6) [210722]"}
         (b_1_1 && b_1_1) && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -531,11 +531,11 @@ procedure t01(ys: Ref) returns ()
       if (b_1_1) {
         
         // -- Check definedness of ys.f == 2
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access ys.f (packaging_shield.vpr@14.5--16.6) [127303]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access ys.f (packaging_shield.vpr@14.5--16.6) [210723]"}
             HasDirectPerm(Result_1Mask, ys, f_7);
       }
     }
-    assert {:msg "  Packaging wand might fail. Assertion ys.f == 2 might not hold. (packaging_shield.vpr@14.5--16.6) [127304]"}
+    assert {:msg "  Packaging wand might fail. Assertion ys.f == 2 might not hold. (packaging_shield.vpr@14.5--16.6) [210724]"}
       (b_1_1 && b_1_1) && b_6 ==> Result_1Heap[ys, f_7] == 2;
     Mask := Mask[null, wand(ys, FullPerm, ys, 1 / 2, ys, 2):=Mask[null, wand(ys, FullPerm, ys, 1 / 2, ys, 2)] + FullPerm];
     assume state(Heap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:24
+// Date:         2025-01-26 21:42:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0046.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0046-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -211,7 +211,7 @@ procedure test01(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.f == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (0046.vpr@7.12--7.45) [217219]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.f (0046.vpr@7.12--7.45) [71485]"}
         HasDirectPerm(Mask, this, f_7);
     assume Heap[this, f_7] == 0;
     assume state(Heap, Mask);
@@ -248,9 +248,9 @@ procedure test01(this: Ref) returns ()
             ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of old(this.f) == 0
-              assert {:msg "  Assert might fail. There might be insufficient permission to access this.f (0046.vpr@10.12--10.28) [217220]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access this.f (0046.vpr@10.12--10.28) [71486]"}
                 HasDirectPerm(oldMask, this, f_7);
-            assert {:msg "  Assert might fail. Assertion old(this.f) == 0 might not hold. (0046.vpr@10.12--10.28) [217221]"}
+            assert {:msg "  Assert might fail. Assertion old(this.f) == 0 might not hold. (0046.vpr@10.12--10.28) [71487]"}
               oldHeap[this, f_7] == 0;
             assume state(Heap, Mask);
         // Terminate execution
@@ -268,9 +268,9 @@ procedure test01(this: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old(this.f) == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.f (0046.vpr@13.10--13.26) [217222]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.f (0046.vpr@13.10--13.26) [71488]"}
         HasDirectPerm(oldMask, this, f_7);
-    assert {:msg "  Assert might fail. Assertion old(this.f) == 0 might not hold. (0046.vpr@13.10--13.26) [217223]"}
+    assert {:msg "  Assert might fail. Assertion old(this.f) == 0 might not hold. (0046.vpr@13.10--13.26) [71489]"}
       oldHeap[this, f_7] == 0;
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:50:29
+// Date:         2025-01-26 21:44:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/fmse-2015-04-16.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/fmse-2015-04-16-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_13: Ref, f_18: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_13, f_18] }
-  Heap[o_13, $allocated] ==> Heap[Heap[o_13, f_18], $allocated]
+axiom (forall o_20: Ref, f_29: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_20, f_29] }
+  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_29], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_14: Ref, f_19: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_14, f_19] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_14, f_19) ==> Heap[o_14, f_19] == ExhaleHeap[o_14, f_19]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_18: Ref, f_26: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_18, f_26] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_18, f_26) ==> Heap[o_18, f_26] == ExhaleHeap[o_18, f_26]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6), ExhaleHeap[null, PredicateMaskField(pm_f_6)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> Heap[null, PredicateMaskField(pm_f_6)] == ExhaleHeap[null, PredicateMaskField(pm_f_6)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_8), ExhaleHeap[null, PredicateMaskField(pm_f_8)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsPredicateField(pm_f_8) ==> Heap[null, PredicateMaskField(pm_f_8)] == ExhaleHeap[null, PredicateMaskField(pm_f_8)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_19: (Field A B) ::
-    { ExhaleHeap[o2_6, f_19] }
-    Heap[null, PredicateMaskField(pm_f_6)][o2_6, f_19] ==> Heap[o2_6, f_19] == ExhaleHeap[o2_6, f_19]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_8) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsPredicateField(pm_f_8) ==> (forall <A, B> o2_8: Ref, f_26: (Field A B) ::
+    { ExhaleHeap[o2_8, f_26] }
+    Heap[null, PredicateMaskField(pm_f_8)][o2_8, f_26] ==> Heap[o2_8, f_26] == ExhaleHeap[o2_8, f_26]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6), ExhaleHeap[null, WandMaskField(pm_f_6)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> Heap[null, WandMaskField(pm_f_6)] == ExhaleHeap[null, WandMaskField(pm_f_6)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_8), ExhaleHeap[null, WandMaskField(pm_f_8)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsWandField(pm_f_8) ==> Heap[null, WandMaskField(pm_f_8)] == ExhaleHeap[null, WandMaskField(pm_f_8)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_19: (Field A B) ::
-    { ExhaleHeap[o2_6, f_19] }
-    Heap[null, WandMaskField(pm_f_6)][o2_6, f_19] ==> Heap[o2_6, f_19] == ExhaleHeap[o2_6, f_19]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_8: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_8) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_8) && IsWandField(pm_f_8) ==> (forall <A, B> o2_8: Ref, f_26: (Field A B) ::
+    { ExhaleHeap[o2_8, f_26] }
+    Heap[null, WandMaskField(pm_f_8)][o2_8, f_26] ==> Heap[o2_8, f_26] == ExhaleHeap[o2_8, f_26]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_14: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_14, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_14, $allocated] ==> ExhaleHeap[o_14, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_18: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_18, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_18, $allocated] ==> ExhaleHeap[o_18, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_13: Ref, f_13: (Field A B), v: B ::
-  { Heap[o_13, f_13:=v] }
-  succHeap(Heap, Heap[o_13, f_13:=v])
+axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_30: (Field A B), v: B ::
+  { Heap[o_20, f_30:=v] }
+  succHeap(Heap, Heap[o_20, f_30:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,27 +144,27 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(i_3: int): bool;
+function  neverTriggered1(i_3_2: int): bool;
 function  neverTriggered2(i_7_1: int): bool;
 function  neverTriggered3(i_11_1: int): bool;
 function  neverTriggered4(i_13_1: int): bool;
-function  neverTriggered5(i_15: int): bool;
-function  neverTriggered6(i_17: int): bool;
-function  neverTriggered7(i_26: int): bool;
-function  neverTriggered8(i_27: int): bool;
+function  neverTriggered5(i_15_1: int): bool;
+function  neverTriggered6(i_17_1: int): bool;
+function  neverTriggered7(i_26_1: int): bool;
+function  neverTriggered8(i_27_2: int): bool;
 function  neverTriggered9(i_28: int): bool;
 function  neverTriggered10(i_37: int): bool;
 function  neverTriggered11(i_38: int): bool;
 function  neverTriggered12(i_39: int): bool;
 function  neverTriggered13(i_49: int): bool;
-function  neverTriggered14(i_51: int): bool;
-function  neverTriggered15(i_53: int): bool;
+function  neverTriggered14(i_51_2: int): bool;
+function  neverTriggered15(i_53_2: int): bool;
 function  neverTriggered16(i_62: int): bool;
-function  neverTriggered17(i_63: int): bool;
-function  neverTriggered18(i_64: int): bool;
-function  neverTriggered19(i_69: int): bool;
-function  neverTriggered20(i_70: int): bool;
-function  neverTriggered21(i_71: int): bool;
+function  neverTriggered17(i_63_1: int): bool;
+function  neverTriggered18(i_64_1: int): bool;
+function  neverTriggered19(i_69_1: int): bool;
+function  neverTriggered20(i_70_1: int): bool;
+function  neverTriggered21(i_71_1: int): bool;
 function  neverTriggered22(i_80: int): bool;
 function  neverTriggered23(i_81: int): bool;
 function  neverTriggered24(i_82: int): bool;
@@ -639,27 +639,27 @@ axiom !IsWandField(Ref__Integer_value);
 procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var i_14: int;
-  var j_5: int;
-  var i_2: int;
+  var i_18: int;
+  var j_14: int;
+  var i_3: int;
   var QPMask: MaskType;
   var i_4: int;
-  var j_6: int;
-  var i_6: int;
-  var i_7: int;
-  var j_7: int;
-  var i_8: int;
+  var j_12: int;
+  var i_14: int;
+  var i_5: int;
+  var j_2: int;
+  var i_15: int;
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
+  var i_7: int;
+  var i_21: int;
+  var i_8: int;
+  var i_19: int;
   var i_9: int;
   var i_10: int;
-  var i_11: int;
-  var i_12: int;
-  var i_16: int;
-  var i_18: int;
-  var i_13: int;
+  var i_17: int;
   var __flatten_5: Ref;
   var __flatten_6: Ref;
   var __flatten_8: Ref;
@@ -668,7 +668,7 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var i_40: int;
-  var i_42: int;
+  var i_42_1: int;
   var i_44: int;
   var i_46: int;
   var ExhaleHeap: HeapType;
@@ -678,31 +678,31 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   var __flatten_7: int;
   var __flatten_1: int;
   var __flatten_4: int;
-  var i_20: int;
-  var i_22: int;
+  var i_11: int;
+  var i_12: int;
+  var i_13: int;
+  var i_23: int;
   var i_24: int;
-  var i_29: int;
-  var i_30: int;
-  var i_31: int;
-  var i_32: int;
+  var i_25: int;
+  var i_27: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var i_72: int;
-  var i_74: int;
+  var i_72_1: int;
+  var i_74_1: int;
   var i_76: int;
   var i_78: int;
-  var i_33: int;
+  var i_16: int;
   var i_88: int;
-  var i_34: int;
+  var i_42: int;
   var i_91: int;
-  var i_35: int;
+  var i_51: int;
   var i_94: int;
-  var i_36: int;
+  var i_53: int;
   var i_97: int;
-  var i_29_1: int;
-  var i_31_1: int;
-  var i_33_1: int;
-  var i_35_1: int;
+  var i_29: int;
+  var i_31: int;
+  var i_33: int;
+  var i_35: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -722,15 +722,15 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int, j: Int :: { a[i], a[j] } 0 <= i && (i < |a| && (0 <= j && (j < |a| && i != j))) ==> a[i] != a[j])
       if (*) {
-        if (0 <= i_14 && (i_14 < Seq#Length(a_2) && (0 <= j_5 && (j_5 < Seq#Length(a_2) && i_14 != j_5)))) {
-          assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@15.12--15.102) [5974]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@15.12--15.102) [5975]"}
-            i_14 < Seq#Length(a_2);
-          assert {:msg "  Contract might not be well-formed. Index a[j] into a might be negative. (fmse-2015-04-16.vpr@15.12--15.102) [5976]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a[j] into a might exceed sequence length. (fmse-2015-04-16.vpr@15.12--15.102) [5977]"}
-            j_5 < Seq#Length(a_2);
+        if (0 <= i_18 && (i_18 < Seq#Length(a_2) && (0 <= j_14 && (j_14 < Seq#Length(a_2) && i_18 != j_14)))) {
+          assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@15.12--15.102) [165002]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@15.12--15.102) [165003]"}
+            i_18 < Seq#Length(a_2);
+          assert {:msg "  Contract might not be well-formed. Index a[j] into a might be negative. (fmse-2015-04-16.vpr@15.12--15.102) [165004]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a[j] into a might exceed sequence length. (fmse-2015-04-16.vpr@15.12--15.102) [165005]"}
+            j_14 < Seq#Length(a_2);
         }
         assume false;
       }
@@ -742,45 +742,45 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_2)) {
-          assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@16.13--16.85) [5978]"}
-            i_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@16.13--16.85) [5979]"}
-            i_2 < Seq#Length(a_2);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3)) {
+          assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@16.13--16.85) [165006]"}
+            i_3 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@16.13--16.85) [165007]"}
+            i_3 < Seq#Length(a_2);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@16.13--16.85) [5980]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@16.13--16.85) [165008]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_3) != Seq#Index(a_2, i_3_1)
+      (((i_3_2 != i_3_3 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3_2)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3_3)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_3_2) != Seq#Index(a_2, i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(a_2, i_3) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_3) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3) } { Seq#Index(a_2, i_3) }
-        Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3) && NoPerm < FullPerm ==> qpRange1(Seq#Index(a_2, i_3)) && invRecv1(Seq#Index(a_2, i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(a_2, i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_3_2) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3_2) } { Seq#Index(a_2, i_3_2) }
+        Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3_2) && NoPerm < FullPerm ==> qpRange1(Seq#Index(a_2, i_3_2)) && invRecv1(Seq#Index(a_2, i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv1(o_4)) && NoPerm < FullPerm) && qpRange1(o_4) ==> Seq#Index(a_2, invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv1(o_9)) && NoPerm < FullPerm) && qpRange1(o_9) ==> Seq#Index(a_2, invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(a_2, i_3) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_3) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3) } { Seq#Index(a_2, i_3) }
-        Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3) ==> Seq#Index(a_2, i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(a_2, i_3_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_3_2) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3_2) } { Seq#Index(a_2, i_3_2) }
+        Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_3_2) ==> Seq#Index(a_2, i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv1(o_4)) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(a_2, invRecv1(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv1(o_4)) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv1(o_9)) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(a_2, invRecv1(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv1(o_9)) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -788,36 +788,36 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int, j: Int :: { b[i], b[j] } 0 <= i && (i < |b| && (0 <= j && (j < |b| && i != j))) ==> b[i] != b[j])
       if (*) {
-        if (0 <= i_4 && (i_4 < Seq#Length(b_24) && (0 <= j_6 && (j_6 < Seq#Length(b_24) && i_4 != j_6)))) {
-          assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@17.12--17.102) [5981]"}
+        if (0 <= i_4 && (i_4 < Seq#Length(b_24) && (0 <= j_12 && (j_12 < Seq#Length(b_24) && i_4 != j_12)))) {
+          assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@17.12--17.102) [165009]"}
             i_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@17.12--17.102) [5982]"}
+          assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@17.12--17.102) [165010]"}
             i_4 < Seq#Length(b_24);
-          assert {:msg "  Contract might not be well-formed. Index b[j] into b might be negative. (fmse-2015-04-16.vpr@17.12--17.102) [5983]"}
-            j_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index b[j] into b might exceed sequence length. (fmse-2015-04-16.vpr@17.12--17.102) [5984]"}
-            j_6 < Seq#Length(b_24);
+          assert {:msg "  Contract might not be well-formed. Index b[j] into b might be negative. (fmse-2015-04-16.vpr@17.12--17.102) [165011]"}
+            j_12 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index b[j] into b might exceed sequence length. (fmse-2015-04-16.vpr@17.12--17.102) [165012]"}
+            j_12 < Seq#Length(b_24);
         }
         assume false;
       }
-    assume (forall i_5: int, j_3_1: int ::
-      { Seq#Index(b_24, i_5), Seq#Index(b_24, j_3_1) }
-      0 <= i_5 && (i_5 < Seq#Length(b_24) && (0 <= j_3_1 && (j_3_1 < Seq#Length(b_24) && i_5 != j_3_1))) ==> Seq#Index(b_24, i_5) != Seq#Index(b_24, j_3_1)
+    assume (forall i_5_1: int, j_3: int ::
+      { Seq#Index(b_24, i_5_1), Seq#Index(b_24, j_3) }
+      0 <= i_5_1 && (i_5_1 < Seq#Length(b_24) && (0 <= j_3 && (j_3 < Seq#Length(b_24) && i_5_1 != j_3))) ==> Seq#Index(b_24, i_5_1) != Seq#Index(b_24, j_3)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_6)) {
-          assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@18.13--18.85) [5985]"}
-            i_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@18.13--18.85) [5986]"}
-            i_6 < Seq#Length(b_24);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_14)) {
+          assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@18.13--18.85) [165013]"}
+            i_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@18.13--18.85) [165014]"}
+            i_14 < Seq#Length(b_24);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@18.13--18.85) [5987]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@18.13--18.85) [165015]"}
       (forall i_7_1: int, i_7_2: int ::
       
       (((i_7_1 != i_7_2 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_7_1)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_7_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_7_1) != Seq#Index(b_24, i_7_2)
@@ -828,9 +828,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         { Seq#Index(b_24, i_7_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_7_1) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_7_1) } { Seq#Index(b_24, i_7_1) }
         Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_7_1) && NoPerm < FullPerm ==> qpRange2(Seq#Index(b_24, i_7_1)) && invRecv2(Seq#Index(b_24, i_7_1)) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv2(o_4)) && NoPerm < FullPerm) && qpRange2(o_4) ==> Seq#Index(b_24, invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv2(o_9)) && NoPerm < FullPerm) && qpRange2(o_9) ==> Seq#Index(b_24, invRecv2(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -840,13 +840,13 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv2(o_4)) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(b_24, invRecv2(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv2(o_4)) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv2(o_9)) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(b_24, invRecv2(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv2(o_9)) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -854,36 +854,36 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int, j: Int :: { res[i], res[j] } 0 <= i && (i < |res| && (0 <= j && (j < |res| && i != j))) ==> res[i] != res[j])
       if (*) {
-        if (0 <= i_7 && (i_7 < Seq#Length(res) && (0 <= j_7 && (j_7 < Seq#Length(res) && i_7 != j_7)))) {
-          assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@19.12--19.110) [5988]"}
-            i_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@19.12--19.110) [5989]"}
-            i_7 < Seq#Length(res);
-          assert {:msg "  Contract might not be well-formed. Index res[j] into res might be negative. (fmse-2015-04-16.vpr@19.12--19.110) [5990]"}
-            j_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index res[j] into res might exceed sequence length. (fmse-2015-04-16.vpr@19.12--19.110) [5991]"}
-            j_7 < Seq#Length(res);
+        if (0 <= i_5 && (i_5 < Seq#Length(res) && (0 <= j_2 && (j_2 < Seq#Length(res) && i_5 != j_2)))) {
+          assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@19.12--19.110) [165016]"}
+            i_5 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@19.12--19.110) [165017]"}
+            i_5 < Seq#Length(res);
+          assert {:msg "  Contract might not be well-formed. Index res[j] into res might be negative. (fmse-2015-04-16.vpr@19.12--19.110) [165018]"}
+            j_2 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index res[j] into res might exceed sequence length. (fmse-2015-04-16.vpr@19.12--19.110) [165019]"}
+            j_2 < Seq#Length(res);
         }
         assume false;
       }
-    assume (forall i_9_1: int, j_5_1: int ::
-      { Seq#Index(res, i_9_1), Seq#Index(res, j_5_1) }
-      0 <= i_9_1 && (i_9_1 < Seq#Length(res) && (0 <= j_5_1 && (j_5_1 < Seq#Length(res) && i_9_1 != j_5_1))) ==> Seq#Index(res, i_9_1) != Seq#Index(res, j_5_1)
+    assume (forall i_9_1: int, j_5: int ::
+      { Seq#Index(res, i_9_1), Seq#Index(res, j_5) }
+      0 <= i_9_1 && (i_9_1 < Seq#Length(res) && (0 <= j_5 && (j_5 < Seq#Length(res) && i_9_1 != j_5))) ==> Seq#Index(res, i_9_1) != Seq#Index(res, j_5)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(res)), i_8)) {
-          assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@20.13--20.89) [5992]"}
-            i_8 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@20.13--20.89) [5993]"}
-            i_8 < Seq#Length(res);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(res)), i_15)) {
+          assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@20.13--20.89) [165020]"}
+            i_15 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@20.13--20.89) [165021]"}
+            i_15 < Seq#Length(res);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@20.13--20.89) [5994]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@20.13--20.89) [165022]"}
       (forall i_11_1: int, i_11_2: int ::
       
       (((i_11_1 != i_11_2 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_11_1)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_11_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_11_1) != Seq#Index(res, i_11_2)
@@ -894,9 +894,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         { Seq#Index(res, i_11_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_11_1) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_11_1) } { Seq#Index(res, i_11_1) }
         Seq#Contains(Seq#Range(0, Seq#Length(res)), i_11_1) && NoPerm < FullPerm ==> qpRange3(Seq#Index(res, i_11_1)) && invRecv3(Seq#Index(res, i_11_1)) == i_11_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv3(o_4)) && NoPerm < FullPerm) && qpRange3(o_4) ==> Seq#Index(res, invRecv3(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv3(o_9)) && NoPerm < FullPerm) && qpRange3(o_9) ==> Seq#Index(res, invRecv3(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -906,13 +906,13 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv3(o_4)) && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(res, invRecv3(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv3(o_4)) && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv3(o_9)) && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(res, invRecv3(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv3(o_9)) && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -937,16 +937,16 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_9)) {
-          assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@24.12--24.84) [5995]"}
-            i_9 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@24.12--24.84) [5996]"}
-            i_9 < Seq#Length(a_2);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_7)) {
+          assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@24.12--24.84) [165023]"}
+            i_7 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@24.12--24.84) [165024]"}
+            i_7 < Seq#Length(a_2);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@24.12--24.84) [5997]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@24.12--24.84) [165025]"}
       (forall i_13_1: int, i_13_2: int ::
       
       (((i_13_1 != i_13_2 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_13_1)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_13_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_13_1) != Seq#Index(a_2, i_13_2)
@@ -957,9 +957,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         { Seq#Index(a_2, i_13_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_13_1) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_13_1) } { Seq#Index(a_2, i_13_1) }
         Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_13_1) && NoPerm < FullPerm ==> qpRange4(Seq#Index(a_2, i_13_1)) && invRecv4(Seq#Index(a_2, i_13_1)) == i_13_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv4(o_4)) && NoPerm < FullPerm) && qpRange4(o_4) ==> Seq#Index(a_2, invRecv4(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv4(o_9)) && NoPerm < FullPerm) && qpRange4(o_9) ==> Seq#Index(a_2, invRecv4(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -969,13 +969,13 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv4(o_4)) && NoPerm < FullPerm) && qpRange4(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(a_2, invRecv4(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv4(o_4)) && NoPerm < FullPerm) && qpRange4(o_4)) ==> QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv4(o_9)) && NoPerm < FullPerm) && qpRange4(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(a_2, invRecv4(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv4(o_9)) && NoPerm < FullPerm) && qpRange4(o_9)) ==> QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -983,45 +983,45 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_10)) {
-          assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@25.12--25.84) [5998]"}
-            i_10 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@25.12--25.84) [5999]"}
-            i_10 < Seq#Length(b_24);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_21)) {
+          assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@25.12--25.84) [165026]"}
+            i_21 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@25.12--25.84) [165027]"}
+            i_21 < Seq#Length(b_24);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@25.12--25.84) [6000]"}
-      (forall i_15: int, i_15_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@25.12--25.84) [165028]"}
+      (forall i_15_1: int, i_15_2: int ::
       
-      (((i_15 != i_15_1 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_15) != Seq#Index(b_24, i_15_1)
+      (((i_15_1 != i_15_2 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15_1)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_15_1) != Seq#Index(b_24, i_15_2)
     );
     
     // -- Define Inverse Function
-      assume (forall i_15: int ::
-        { Seq#Index(b_24, i_15) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_15) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15) } { Seq#Index(b_24, i_15) }
-        Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15) && NoPerm < FullPerm ==> qpRange5(Seq#Index(b_24, i_15)) && invRecv5(Seq#Index(b_24, i_15)) == i_15
+      assume (forall i_15_1: int ::
+        { Seq#Index(b_24, i_15_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_15_1) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15_1) } { Seq#Index(b_24, i_15_1) }
+        Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15_1) && NoPerm < FullPerm ==> qpRange5(Seq#Index(b_24, i_15_1)) && invRecv5(Seq#Index(b_24, i_15_1)) == i_15_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv5(o_4)) && NoPerm < FullPerm) && qpRange5(o_4) ==> Seq#Index(b_24, invRecv5(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv5(o_9)) && NoPerm < FullPerm) && qpRange5(o_9) ==> Seq#Index(b_24, invRecv5(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_15: int ::
-        { Seq#Index(b_24, i_15) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_15) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15) } { Seq#Index(b_24, i_15) }
-        Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15) ==> Seq#Index(b_24, i_15) != null
+      assume (forall i_15_1: int ::
+        { Seq#Index(b_24, i_15_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_15_1) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15_1) } { Seq#Index(b_24, i_15_1) }
+        Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_15_1) ==> Seq#Index(b_24, i_15_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv5(o_4)) && NoPerm < FullPerm) && qpRange5(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(b_24, invRecv5(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv5(o_4)) && NoPerm < FullPerm) && qpRange5(o_4)) ==> QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv5(o_9)) && NoPerm < FullPerm) && qpRange5(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(b_24, invRecv5(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv5(o_9)) && NoPerm < FullPerm) && qpRange5(o_9)) ==> QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -1029,45 +1029,45 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(res)), i_11)) {
-          assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@26.12--26.88) [6001]"}
-            i_11 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@26.12--26.88) [6002]"}
-            i_11 < Seq#Length(res);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(res)), i_8)) {
+          assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@26.12--26.88) [165029]"}
+            i_8 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@26.12--26.88) [165030]"}
+            i_8 < Seq#Length(res);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@26.12--26.88) [6003]"}
-      (forall i_17: int, i_17_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@26.12--26.88) [165031]"}
+      (forall i_17_1: int, i_17_2: int ::
       
-      (((i_17 != i_17_1 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_17) != Seq#Index(res, i_17_1)
+      (((i_17_1 != i_17_2 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17_1)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_17_1) != Seq#Index(res, i_17_2)
     );
     
     // -- Define Inverse Function
-      assume (forall i_17: int ::
-        { Seq#Index(res, i_17) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_17) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17) } { Seq#Index(res, i_17) }
-        Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17) && NoPerm < FullPerm ==> qpRange6(Seq#Index(res, i_17)) && invRecv6(Seq#Index(res, i_17)) == i_17
+      assume (forall i_17_1: int ::
+        { Seq#Index(res, i_17_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_17_1) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17_1) } { Seq#Index(res, i_17_1) }
+        Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17_1) && NoPerm < FullPerm ==> qpRange6(Seq#Index(res, i_17_1)) && invRecv6(Seq#Index(res, i_17_1)) == i_17_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv6(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv6(o_4)) && NoPerm < FullPerm) && qpRange6(o_4) ==> Seq#Index(res, invRecv6(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv6(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv6(o_9)) && NoPerm < FullPerm) && qpRange6(o_9) ==> Seq#Index(res, invRecv6(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_17: int ::
-        { Seq#Index(res, i_17) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_17) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17) } { Seq#Index(res, i_17) }
-        Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17) ==> Seq#Index(res, i_17) != null
+      assume (forall i_17_1: int ::
+        { Seq#Index(res, i_17_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_17_1) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17_1) } { Seq#Index(res, i_17_1) }
+        Seq#Contains(Seq#Range(0, Seq#Length(res)), i_17_1) ==> Seq#Index(res, i_17_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv6(o_4)) && NoPerm < FullPerm) && qpRange6(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(res, invRecv6(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv6(o_4)) && NoPerm < FullPerm) && qpRange6(o_4)) ==> QPMask[o_4, Ref__Integer_value] == PostMask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv6(o_9)) && NoPerm < FullPerm) && qpRange6(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(res, invRecv6(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv6(o_9)) && NoPerm < FullPerm) && qpRange6(o_9)) ==> QPMask[o_9, Ref__Integer_value] == PostMask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -1075,97 +1075,97 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value)
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_12)) {
-          assert {:msg "  Contract might not be well-formed. Index res[2 * i] into res might be negative. (fmse-2015-04-16.vpr@27.12--27.107) [6004]"}
-            2 * i_12 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index res[2 * i] into res might exceed sequence length. (fmse-2015-04-16.vpr@27.12--27.107) [6005]"}
-            2 * i_12 < Seq#Length(res);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[2 * i].Ref__Integer_value (fmse-2015-04-16.vpr@27.12--27.107) [6006]"}
-            HasDirectPerm(PostMask, Seq#Index(res, 2 * i_12), Ref__Integer_value);
-          assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@27.12--27.107) [6007]"}
-            i_12 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@27.12--27.107) [6008]"}
-            i_12 < Seq#Length(a_2);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@27.12--27.107) [6009]"}
-            HasDirectPerm(PostMask, Seq#Index(a_2, i_12), Ref__Integer_value);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_19)) {
+          assert {:msg "  Contract might not be well-formed. Index res[2 * i] into res might be negative. (fmse-2015-04-16.vpr@27.12--27.107) [165032]"}
+            2 * i_19 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index res[2 * i] into res might exceed sequence length. (fmse-2015-04-16.vpr@27.12--27.107) [165033]"}
+            2 * i_19 < Seq#Length(res);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[2 * i].Ref__Integer_value (fmse-2015-04-16.vpr@27.12--27.107) [165034]"}
+            HasDirectPerm(PostMask, Seq#Index(res, 2 * i_19), Ref__Integer_value);
+          assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@27.12--27.107) [165035]"}
+            i_19 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@27.12--27.107) [165036]"}
+            i_19 < Seq#Length(a_2);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@27.12--27.107) [165037]"}
+            HasDirectPerm(PostMask, Seq#Index(a_2, i_19), Ref__Integer_value);
         }
         assume false;
       }
-    assume (forall i_19: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_19) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_19) } { Seq#Index(a_2, i_19) }
-      Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_19) ==> PostHeap[Seq#Index(res, 2 * i_19), Ref__Integer_value] == PostHeap[Seq#Index(a_2, i_19), Ref__Integer_value]
+    assume (forall i_19_1: int ::
+      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_19_1) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_19_1) } { Seq#Index(a_2, i_19_1) }
+      Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_19_1) ==> PostHeap[Seq#Index(res, 2 * i_19_1), Ref__Integer_value] == PostHeap[Seq#Index(a_2, i_19_1), Ref__Integer_value]
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 1 && i < |res|) ==> res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value)
       if (*) {
-        if (0 <= i_16 && (i_16 mod 2 == 1 && i_16 < Seq#Length(res))) {
-          assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@49.12--49.131) [6010]"}
-            i_16 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@49.12--49.131) [6011]"}
-            i_16 < Seq#Length(res);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@49.12--49.131) [6012]"}
-            HasDirectPerm(PostMask, Seq#Index(res, i_16), Ref__Integer_value);
-          assert {:msg "  Contract might not be well-formed. Index b[i \ 2] into b might be negative. (fmse-2015-04-16.vpr@49.12--49.131) [6013]"}
-            i_16 div 2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index b[i \ 2] into b might exceed sequence length. (fmse-2015-04-16.vpr@49.12--49.131) [6014]"}
-            i_16 div 2 < Seq#Length(b_24);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access b[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@49.12--49.131) [6015]"}
-            HasDirectPerm(PostMask, Seq#Index(b_24, i_16 div 2), Ref__Integer_value);
+        if (0 <= i_9 && (i_9 mod 2 == 1 && i_9 < Seq#Length(res))) {
+          assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@49.12--49.131) [165038]"}
+            i_9 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@49.12--49.131) [165039]"}
+            i_9 < Seq#Length(res);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@49.12--49.131) [165040]"}
+            HasDirectPerm(PostMask, Seq#Index(res, i_9), Ref__Integer_value);
+          assert {:msg "  Contract might not be well-formed. Index b[i \ 2] into b might be negative. (fmse-2015-04-16.vpr@49.12--49.131) [165041]"}
+            i_9 div 2 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index b[i \ 2] into b might exceed sequence length. (fmse-2015-04-16.vpr@49.12--49.131) [165042]"}
+            i_9 div 2 < Seq#Length(b_24);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access b[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@49.12--49.131) [165043]"}
+            HasDirectPerm(PostMask, Seq#Index(b_24, i_9 div 2), Ref__Integer_value);
         }
         assume false;
       }
-    assume (forall i_21: int ::
-      { Seq#Index(res, i_21) }
-      0 <= i_21 && (i_21 mod 2 == 1 && i_21 < Seq#Length(res)) ==> PostHeap[Seq#Index(res, i_21), Ref__Integer_value] == PostHeap[Seq#Index(b_24, i_21 div 2), Ref__Integer_value]
+    assume (forall i_21_1: int ::
+      { Seq#Index(res, i_21_1) }
+      0 <= i_21_1 && (i_21_1 mod 2 == 1 && i_21_1 < Seq#Length(res)) ==> PostHeap[Seq#Index(res, i_21_1), Ref__Integer_value] == PostHeap[Seq#Index(b_24, i_21_1 div 2), Ref__Integer_value]
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value)
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_18)) {
-          assert {:msg "  Contract might not be well-formed. Index res[2 * i + 1] into res might be negative. (fmse-2015-04-16.vpr@50.12--50.111) [6016]"}
-            2 * i_18 + 1 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index res[2 * i + 1] into res might exceed sequence length. (fmse-2015-04-16.vpr@50.12--50.111) [6017]"}
-            2 * i_18 + 1 < Seq#Length(res);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[2 * i + 1].Ref__Integer_value (fmse-2015-04-16.vpr@50.12--50.111) [6018]"}
-            HasDirectPerm(PostMask, Seq#Index(res, 2 * i_18 + 1), Ref__Integer_value);
-          assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@50.12--50.111) [6019]"}
-            i_18 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@50.12--50.111) [6020]"}
-            i_18 < Seq#Length(b_24);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@50.12--50.111) [6021]"}
-            HasDirectPerm(PostMask, Seq#Index(b_24, i_18), Ref__Integer_value);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_10)) {
+          assert {:msg "  Contract might not be well-formed. Index res[2 * i + 1] into res might be negative. (fmse-2015-04-16.vpr@50.12--50.111) [165044]"}
+            2 * i_10 + 1 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index res[2 * i + 1] into res might exceed sequence length. (fmse-2015-04-16.vpr@50.12--50.111) [165045]"}
+            2 * i_10 + 1 < Seq#Length(res);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[2 * i + 1].Ref__Integer_value (fmse-2015-04-16.vpr@50.12--50.111) [165046]"}
+            HasDirectPerm(PostMask, Seq#Index(res, 2 * i_10 + 1), Ref__Integer_value);
+          assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@50.12--50.111) [165047]"}
+            i_10 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@50.12--50.111) [165048]"}
+            i_10 < Seq#Length(b_24);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@50.12--50.111) [165049]"}
+            HasDirectPerm(PostMask, Seq#Index(b_24, i_10), Ref__Integer_value);
         }
         assume false;
       }
-    assume (forall i_23: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_23) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_23) } { Seq#Index(b_24, i_23) }
-      Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_23) ==> PostHeap[Seq#Index(res, 2 * i_23 + 1), Ref__Integer_value] == PostHeap[Seq#Index(b_24, i_23), Ref__Integer_value]
+    assume (forall i_23_1: int ::
+      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_23_1) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_23_1) } { Seq#Index(b_24, i_23_1) }
+      Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_23_1) ==> PostHeap[Seq#Index(res, 2 * i_23_1 + 1), Ref__Integer_value] == PostHeap[Seq#Index(b_24, i_23_1), Ref__Integer_value]
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 0 && i < |res|) ==> res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value)
       if (*) {
-        if (0 <= i_13 && (i_13 mod 2 == 0 && i_13 < Seq#Length(res))) {
-          assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@51.12--51.131) [6022]"}
-            i_13 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@51.12--51.131) [6023]"}
-            i_13 < Seq#Length(res);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@51.12--51.131) [6024]"}
-            HasDirectPerm(PostMask, Seq#Index(res, i_13), Ref__Integer_value);
-          assert {:msg "  Contract might not be well-formed. Index a[i \ 2] into a might be negative. (fmse-2015-04-16.vpr@51.12--51.131) [6025]"}
-            i_13 div 2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index a[i \ 2] into a might exceed sequence length. (fmse-2015-04-16.vpr@51.12--51.131) [6026]"}
-            i_13 div 2 < Seq#Length(a_2);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@51.12--51.131) [6027]"}
-            HasDirectPerm(PostMask, Seq#Index(a_2, i_13 div 2), Ref__Integer_value);
+        if (0 <= i_17 && (i_17 mod 2 == 0 && i_17 < Seq#Length(res))) {
+          assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@51.12--51.131) [165050]"}
+            i_17 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@51.12--51.131) [165051]"}
+            i_17 < Seq#Length(res);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@51.12--51.131) [165052]"}
+            HasDirectPerm(PostMask, Seq#Index(res, i_17), Ref__Integer_value);
+          assert {:msg "  Contract might not be well-formed. Index a[i \ 2] into a might be negative. (fmse-2015-04-16.vpr@51.12--51.131) [165053]"}
+            i_17 div 2 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index a[i \ 2] into a might exceed sequence length. (fmse-2015-04-16.vpr@51.12--51.131) [165054]"}
+            i_17 div 2 < Seq#Length(a_2);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@51.12--51.131) [165055]"}
+            HasDirectPerm(PostMask, Seq#Index(a_2, i_17 div 2), Ref__Integer_value);
         }
         assume false;
       }
-    assume (forall i_25: int ::
-      { Seq#Index(res, i_25) }
-      0 <= i_25 && (i_25 mod 2 == 0 && i_25 < Seq#Length(res)) ==> PostHeap[Seq#Index(res, i_25), Ref__Integer_value] == PostHeap[Seq#Index(a_2, i_25 div 2), Ref__Integer_value]
+    assume (forall i_25_1: int ::
+      { Seq#Index(res, i_25_1) }
+      0 <= i_25_1 && (i_25_1 mod 2 == 0 && i_25_1 < Seq#Length(res)) ==> PostHeap[Seq#Index(res, i_25_1), Ref__Integer_value] == PostHeap[Seq#Index(a_2, i_25_1 div 2), Ref__Integer_value]
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -1189,15 +1189,15 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant 0 <= k might not hold on entry. Assertion 0 <= k might not hold. (fmse-2015-04-16.vpr@66.15--66.21) [6028]"}
+        assert {:msg "  Loop invariant 0 <= k might not hold on entry. Assertion 0 <= k might not hold. (fmse-2015-04-16.vpr@66.15--66.21) [165056]"}
           0 <= k;
-        assert {:msg "  Loop invariant k % 2 == 0 might not hold on entry. Assertion k % 2 == 0 might not hold. (fmse-2015-04-16.vpr@67.15--67.25) [6029]"}
+        assert {:msg "  Loop invariant k % 2 == 0 might not hold on entry. Assertion k % 2 == 0 might not hold. (fmse-2015-04-16.vpr@67.15--67.25) [165057]"}
           k mod 2 == 0;
-        assert {:msg "  Loop invariant k <= |res| might not hold on entry. Assertion k <= |res| might not hold. (fmse-2015-04-16.vpr@68.15--68.25) [6030]"}
+        assert {:msg "  Loop invariant k <= |res| might not hold on entry. Assertion k <= |res| might not hold. (fmse-2015-04-16.vpr@68.15--68.25) [165058]"}
           k <= Seq#Length(res);
-        assert {:msg "  Loop invariant |a| == |b| might not hold on entry. Assertion |a| == |b| might not hold. (fmse-2015-04-16.vpr@69.15--69.25) [6031]"}
+        assert {:msg "  Loop invariant |a| == |b| might not hold on entry. Assertion |a| == |b| might not hold. (fmse-2015-04-16.vpr@69.15--69.25) [165059]"}
           Seq#Length(a_2) == Seq#Length(b_24);
-        assert {:msg "  Loop invariant |res| == 2 * |a| might not hold on entry. Assertion |res| == 2 * |a| might not hold. (fmse-2015-04-16.vpr@70.15--70.31) [6032]"}
+        assert {:msg "  Loop invariant |res| == 2 * |a| might not hold on entry. Assertion |res| == 2 * |a| might not hold. (fmse-2015-04-16.vpr@70.15--70.31) [165060]"}
           Seq#Length(res) == 2 * Seq#Length(a_2);
         havoc QPMask;
         
@@ -1205,14 +1205,14 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           
         
         // -- check if receiver a[i] is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write)) might not hold on entry. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@71.16--71.88) [6033]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write)) might not hold on entry. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@71.16--71.88) [165061]"}
             (forall i_37: int, i_37_1: int ::
             { neverTriggered10(i_37), neverTriggered10(i_37_1) }
             (((i_37 != i_37_1 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_37)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_37_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_37) != Seq#Index(a_2, i_37_1)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write)) might not hold on entry. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@71.16--71.88) [6034]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write)) might not hold on entry. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@71.16--71.88) [165062]"}
             (forall i_37: int ::
             { Seq#Index(a_2, i_37) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_37) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_37) } { Seq#Index(a_2, i_37) }
             Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_37) ==> Mask[Seq#Index(a_2, i_37), Ref__Integer_value] >= FullPerm
@@ -1223,21 +1223,21 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
             { Seq#Index(a_2, i_37) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_37) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_37) } { Seq#Index(a_2, i_37) }
             Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_37) && NoPerm < FullPerm ==> qpRange10(Seq#Index(a_2, i_37)) && invRecv10(Seq#Index(a_2, i_37)) == i_37
           );
-          assume (forall o_4: Ref ::
-            { invRecv10(o_4) }
-            Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv10(o_4)) && (NoPerm < FullPerm && qpRange10(o_4)) ==> Seq#Index(a_2, invRecv10(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv10(o_9) }
+            Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv10(o_9)) && (NoPerm < FullPerm && qpRange10(o_9)) ==> Seq#Index(a_2, invRecv10(o_9)) == o_9
           );
         
         // -- assume permission updates for field Ref__Integer_value
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv10(o_4)) && (NoPerm < FullPerm && qpRange10(o_4)) ==> Seq#Index(a_2, invRecv10(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv10(o_4)) && (NoPerm < FullPerm && qpRange10(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv10(o_9)) && (NoPerm < FullPerm && qpRange10(o_9)) ==> Seq#Index(a_2, invRecv10(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv10(o_9)) && (NoPerm < FullPerm && qpRange10(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         havoc QPMask;
@@ -1246,14 +1246,14 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           
         
         // -- check if receiver b[i] is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write)) might not hold on entry. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@72.16--72.88) [6035]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write)) might not hold on entry. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@72.16--72.88) [165063]"}
             (forall i_38: int, i_38_1: int ::
             { neverTriggered11(i_38), neverTriggered11(i_38_1) }
             (((i_38 != i_38_1 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_38)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_38_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_38) != Seq#Index(b_24, i_38_1)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write)) might not hold on entry. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@72.16--72.88) [6036]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write)) might not hold on entry. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@72.16--72.88) [165064]"}
             (forall i_38: int ::
             { Seq#Index(b_24, i_38) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_38) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_38) } { Seq#Index(b_24, i_38) }
             Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_38) ==> Mask[Seq#Index(b_24, i_38), Ref__Integer_value] >= FullPerm
@@ -1264,21 +1264,21 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
             { Seq#Index(b_24, i_38) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_38) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_38) } { Seq#Index(b_24, i_38) }
             Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_38) && NoPerm < FullPerm ==> qpRange11(Seq#Index(b_24, i_38)) && invRecv11(Seq#Index(b_24, i_38)) == i_38
           );
-          assume (forall o_4: Ref ::
-            { invRecv11(o_4) }
-            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv11(o_4)) && (NoPerm < FullPerm && qpRange11(o_4)) ==> Seq#Index(b_24, invRecv11(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv11(o_9) }
+            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv11(o_9)) && (NoPerm < FullPerm && qpRange11(o_9)) ==> Seq#Index(b_24, invRecv11(o_9)) == o_9
           );
         
         // -- assume permission updates for field Ref__Integer_value
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv11(o_4)) && (NoPerm < FullPerm && qpRange11(o_4)) ==> Seq#Index(b_24, invRecv11(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv11(o_4)) && (NoPerm < FullPerm && qpRange11(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv11(o_9)) && (NoPerm < FullPerm && qpRange11(o_9)) ==> Seq#Index(b_24, invRecv11(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv11(o_9)) && (NoPerm < FullPerm && qpRange11(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         havoc QPMask;
@@ -1287,14 +1287,14 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           
         
         // -- check if receiver res[i] is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write)) might not hold on entry. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@73.16--73.92) [6037]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write)) might not hold on entry. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@73.16--73.92) [165065]"}
             (forall i_39: int, i_39_1: int ::
             { neverTriggered12(i_39), neverTriggered12(i_39_1) }
             (((i_39 != i_39_1 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_39)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_39_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_39) != Seq#Index(res, i_39_1)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write)) might not hold on entry. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@73.16--73.92) [6038]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write)) might not hold on entry. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@73.16--73.92) [165066]"}
             (forall i_39: int ::
             { Seq#Index(res, i_39) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_39) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_39) } { Seq#Index(res, i_39) }
             Seq#Contains(Seq#Range(0, Seq#Length(res)), i_39) ==> Mask[Seq#Index(res, i_39), Ref__Integer_value] >= FullPerm
@@ -1305,26 +1305,26 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
             { Seq#Index(res, i_39) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_39) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_39) } { Seq#Index(res, i_39) }
             Seq#Contains(Seq#Range(0, Seq#Length(res)), i_39) && NoPerm < FullPerm ==> qpRange12(Seq#Index(res, i_39)) && invRecv12(Seq#Index(res, i_39)) == i_39
           );
-          assume (forall o_4: Ref ::
-            { invRecv12(o_4) }
-            Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv12(o_4)) && (NoPerm < FullPerm && qpRange12(o_4)) ==> Seq#Index(res, invRecv12(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv12(o_9) }
+            Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv12(o_9)) && (NoPerm < FullPerm && qpRange12(o_9)) ==> Seq#Index(res, invRecv12(o_9)) == o_9
           );
         
         // -- assume permission updates for field Ref__Integer_value
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv12(o_4)) && (NoPerm < FullPerm && qpRange12(o_4)) ==> Seq#Index(res, invRecv12(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv12(o_4)) && (NoPerm < FullPerm && qpRange12(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv12(o_9)) && (NoPerm < FullPerm && qpRange12(o_9)) ==> Seq#Index(res, invRecv12(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv12(o_9)) && (NoPerm < FullPerm && qpRange12(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         if (*) {
           if (0 <= i_40 && (i_40 mod 2 == 0 && i_40 < k)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 0 && i < k) ==> res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value) might not hold on entry. Assertion res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@74.16--74.131) [6039]"}
+            assert {:msg "  Loop invariant (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 0 && i < k) ==> res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value) might not hold on entry. Assertion res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@74.16--74.131) [165067]"}
               Heap[Seq#Index(res, i_40), Ref__Integer_value] == Heap[Seq#Index(a_2, i_40 div 2), Ref__Integer_value];
           }
           assume false;
@@ -1334,19 +1334,19 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           0 <= i_41_1 && (i_41_1 mod 2 == 0 && i_41_1 < k) ==> Heap[Seq#Index(res, i_41_1), Ref__Integer_value] == Heap[Seq#Index(a_2, i_41_1 div 2), Ref__Integer_value]
         );
         if (*) {
-          if (0 <= i_42 && (i_42 mod 2 == 1 && i_42 < k)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 1 && i < k) ==> res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value) might not hold on entry. Assertion res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@75.16--75.131) [6040]"}
-              Heap[Seq#Index(res, i_42), Ref__Integer_value] == Heap[Seq#Index(b_24, i_42 div 2), Ref__Integer_value];
+          if (0 <= i_42_1 && (i_42_1 mod 2 == 1 && i_42_1 < k)) {
+            assert {:msg "  Loop invariant (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 1 && i < k) ==> res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value) might not hold on entry. Assertion res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@75.16--75.131) [165068]"}
+              Heap[Seq#Index(res, i_42_1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_42_1 div 2), Ref__Integer_value];
           }
           assume false;
         }
-        assume (forall i_43_1: int ::
-          { Seq#Index(res, i_43_1) }
-          0 <= i_43_1 && (i_43_1 mod 2 == 1 && i_43_1 < k) ==> Heap[Seq#Index(res, i_43_1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_43_1 div 2), Ref__Integer_value]
+        assume (forall i_43_1_1: int ::
+          { Seq#Index(res, i_43_1_1) }
+          0 <= i_43_1_1 && (i_43_1_1 mod 2 == 1 && i_43_1_1 < k) ==> Heap[Seq#Index(res, i_43_1_1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_43_1_1 div 2), Ref__Integer_value]
         );
         if (*) {
           if (Seq#Contains(Seq#Range(0, k div 2), i_44)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { a[i] } (i in [0..k \ 2)) ==> res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value) might not hold on entry. Assertion res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@76.16--76.113) [6041]"}
+            assert {:msg "  Loop invariant (forall i: Int :: { a[i] } (i in [0..k \ 2)) ==> res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value) might not hold on entry. Assertion res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@76.16--76.113) [165069]"}
               Heap[Seq#Index(res, 2 * i_44), Ref__Integer_value] == Heap[Seq#Index(a_2, i_44), Ref__Integer_value];
           }
           assume false;
@@ -1357,7 +1357,7 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         );
         if (*) {
           if (Seq#Contains(Seq#Range(0, k div 2), i_46)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { b[i] } (i in [0..k \ 2)) ==> res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value) might not hold on entry. Assertion res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@77.16--77.117) [6042]"}
+            assert {:msg "  Loop invariant (forall i: Int :: { b[i] } (i in [0..k \ 2)) ==> res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value) might not hold on entry. Assertion res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@77.16--77.117) [165070]"}
               Heap[Seq#Index(res, 2 * i_46 + 1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_46), Ref__Integer_value];
           }
           assume false;
@@ -1393,16 +1393,16 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         
         // -- Check definedness of (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write))
           if (*) {
-            if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_20)) {
-              assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@71.16--71.88) [6043]"}
-                i_20 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@71.16--71.88) [6044]"}
-                i_20 < Seq#Length(a_2);
+            if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_11)) {
+              assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@71.16--71.88) [165071]"}
+                i_11 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@71.16--71.88) [165072]"}
+                i_11 < Seq#Length(a_2);
             }
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Contract might not be well-formed. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@71.16--71.88) [6045]"}
+        assert {:msg "  Contract might not be well-formed. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@71.16--71.88) [165073]"}
           (forall i_49: int, i_49_1: int ::
           
           (((i_49 != i_49_1 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_49)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_49_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_49) != Seq#Index(a_2, i_49_1)
@@ -1413,9 +1413,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
             { Seq#Index(a_2, i_49) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_49) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_49) } { Seq#Index(a_2, i_49) }
             Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_49) && NoPerm < FullPerm ==> qpRange13(Seq#Index(a_2, i_49)) && invRecv13(Seq#Index(a_2, i_49)) == i_49
           );
-          assume (forall o_4: Ref ::
-            { invRecv13(o_4) }
-            (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv13(o_4)) && NoPerm < FullPerm) && qpRange13(o_4) ==> Seq#Index(a_2, invRecv13(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv13(o_9) }
+            (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv13(o_9)) && NoPerm < FullPerm) && qpRange13(o_9) ==> Seq#Index(a_2, invRecv13(o_9)) == o_9
           );
         
         // -- Assume set of fields is nonNull
@@ -1425,13 +1425,13 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            ((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv13(o_4)) && NoPerm < FullPerm) && qpRange13(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(a_2, invRecv13(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv13(o_4)) && NoPerm < FullPerm) && qpRange13(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            ((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv13(o_9)) && NoPerm < FullPerm) && qpRange13(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(a_2, invRecv13(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv13(o_9)) && NoPerm < FullPerm) && qpRange13(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -1439,45 +1439,45 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         
         // -- Check definedness of (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write))
           if (*) {
-            if (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_22)) {
-              assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@72.16--72.88) [6046]"}
-                i_22 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@72.16--72.88) [6047]"}
-                i_22 < Seq#Length(b_24);
+            if (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_12)) {
+              assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@72.16--72.88) [165074]"}
+                i_12 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@72.16--72.88) [165075]"}
+                i_12 < Seq#Length(b_24);
             }
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Contract might not be well-formed. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@72.16--72.88) [6048]"}
-          (forall i_51: int, i_51_1: int ::
+        assert {:msg "  Contract might not be well-formed. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@72.16--72.88) [165076]"}
+          (forall i_51_2: int, i_51_3: int ::
           
-          (((i_51 != i_51_1 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_51) != Seq#Index(b_24, i_51_1)
+          (((i_51_2 != i_51_3 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51_2)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51_3)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_51_2) != Seq#Index(b_24, i_51_3)
         );
         
         // -- Define Inverse Function
-          assume (forall i_51: int ::
-            { Seq#Index(b_24, i_51) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_51) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51) } { Seq#Index(b_24, i_51) }
-            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51) && NoPerm < FullPerm ==> qpRange14(Seq#Index(b_24, i_51)) && invRecv14(Seq#Index(b_24, i_51)) == i_51
+          assume (forall i_51_2: int ::
+            { Seq#Index(b_24, i_51_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_51_2) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51_2) } { Seq#Index(b_24, i_51_2) }
+            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51_2) && NoPerm < FullPerm ==> qpRange14(Seq#Index(b_24, i_51_2)) && invRecv14(Seq#Index(b_24, i_51_2)) == i_51_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv14(o_4) }
-            (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv14(o_4)) && NoPerm < FullPerm) && qpRange14(o_4) ==> Seq#Index(b_24, invRecv14(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv14(o_9) }
+            (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv14(o_9)) && NoPerm < FullPerm) && qpRange14(o_9) ==> Seq#Index(b_24, invRecv14(o_9)) == o_9
           );
         
         // -- Assume set of fields is nonNull
-          assume (forall i_51: int ::
-            { Seq#Index(b_24, i_51) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_51) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51) } { Seq#Index(b_24, i_51) }
-            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51) ==> Seq#Index(b_24, i_51) != null
+          assume (forall i_51_2: int ::
+            { Seq#Index(b_24, i_51_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_51_2) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51_2) } { Seq#Index(b_24, i_51_2) }
+            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_51_2) ==> Seq#Index(b_24, i_51_2) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            ((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv14(o_4)) && NoPerm < FullPerm) && qpRange14(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(b_24, invRecv14(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv14(o_4)) && NoPerm < FullPerm) && qpRange14(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            ((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv14(o_9)) && NoPerm < FullPerm) && qpRange14(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(b_24, invRecv14(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv14(o_9)) && NoPerm < FullPerm) && qpRange14(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -1485,45 +1485,45 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         
         // -- Check definedness of (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write))
           if (*) {
-            if (Seq#Contains(Seq#Range(0, Seq#Length(res)), i_24)) {
-              assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@73.16--73.92) [6049]"}
-                i_24 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@73.16--73.92) [6050]"}
-                i_24 < Seq#Length(res);
+            if (Seq#Contains(Seq#Range(0, Seq#Length(res)), i_13)) {
+              assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@73.16--73.92) [165077]"}
+                i_13 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@73.16--73.92) [165078]"}
+                i_13 < Seq#Length(res);
             }
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Contract might not be well-formed. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@73.16--73.92) [6051]"}
-          (forall i_53: int, i_53_1: int ::
+        assert {:msg "  Contract might not be well-formed. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@73.16--73.92) [165079]"}
+          (forall i_53_2: int, i_53_3: int ::
           
-          (((i_53 != i_53_1 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_53) != Seq#Index(res, i_53_1)
+          (((i_53_2 != i_53_3 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53_2)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53_3)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_53_2) != Seq#Index(res, i_53_3)
         );
         
         // -- Define Inverse Function
-          assume (forall i_53: int ::
-            { Seq#Index(res, i_53) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_53) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53) } { Seq#Index(res, i_53) }
-            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53) && NoPerm < FullPerm ==> qpRange15(Seq#Index(res, i_53)) && invRecv15(Seq#Index(res, i_53)) == i_53
+          assume (forall i_53_2: int ::
+            { Seq#Index(res, i_53_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_53_2) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53_2) } { Seq#Index(res, i_53_2) }
+            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53_2) && NoPerm < FullPerm ==> qpRange15(Seq#Index(res, i_53_2)) && invRecv15(Seq#Index(res, i_53_2)) == i_53_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv15(o_4) }
-            (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv15(o_4)) && NoPerm < FullPerm) && qpRange15(o_4) ==> Seq#Index(res, invRecv15(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv15(o_9) }
+            (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv15(o_9)) && NoPerm < FullPerm) && qpRange15(o_9) ==> Seq#Index(res, invRecv15(o_9)) == o_9
           );
         
         // -- Assume set of fields is nonNull
-          assume (forall i_53: int ::
-            { Seq#Index(res, i_53) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_53) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53) } { Seq#Index(res, i_53) }
-            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53) ==> Seq#Index(res, i_53) != null
+          assume (forall i_53_2: int ::
+            { Seq#Index(res, i_53_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_53_2) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53_2) } { Seq#Index(res, i_53_2) }
+            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_53_2) ==> Seq#Index(res, i_53_2) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            ((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv15(o_4)) && NoPerm < FullPerm) && qpRange15(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(res, invRecv15(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv15(o_4)) && NoPerm < FullPerm) && qpRange15(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            ((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv15(o_9)) && NoPerm < FullPerm) && qpRange15(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(res, invRecv15(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv15(o_9)) && NoPerm < FullPerm) && qpRange15(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -1531,67 +1531,67 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         
         // -- Check definedness of (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 0 && i < k) ==> res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value)
           if (*) {
-            if (0 <= i_29 && (i_29 mod 2 == 0 && i_29 < k)) {
-              assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@74.16--74.131) [6052]"}
-                i_29 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@74.16--74.131) [6053]"}
-                i_29 < Seq#Length(res);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@74.16--74.131) [6054]"}
-                HasDirectPerm(Mask, Seq#Index(res, i_29), Ref__Integer_value);
-              assert {:msg "  Contract might not be well-formed. Index a[i \ 2] into a might be negative. (fmse-2015-04-16.vpr@74.16--74.131) [6055]"}
-                i_29 div 2 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index a[i \ 2] into a might exceed sequence length. (fmse-2015-04-16.vpr@74.16--74.131) [6056]"}
-                i_29 div 2 < Seq#Length(a_2);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@74.16--74.131) [6057]"}
-                HasDirectPerm(Mask, Seq#Index(a_2, i_29 div 2), Ref__Integer_value);
+            if (0 <= i_23 && (i_23 mod 2 == 0 && i_23 < k)) {
+              assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@74.16--74.131) [165080]"}
+                i_23 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@74.16--74.131) [165081]"}
+                i_23 < Seq#Length(res);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@74.16--74.131) [165082]"}
+                HasDirectPerm(Mask, Seq#Index(res, i_23), Ref__Integer_value);
+              assert {:msg "  Contract might not be well-formed. Index a[i \ 2] into a might be negative. (fmse-2015-04-16.vpr@74.16--74.131) [165083]"}
+                i_23 div 2 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index a[i \ 2] into a might exceed sequence length. (fmse-2015-04-16.vpr@74.16--74.131) [165084]"}
+                i_23 div 2 < Seq#Length(a_2);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@74.16--74.131) [165085]"}
+                HasDirectPerm(Mask, Seq#Index(a_2, i_23 div 2), Ref__Integer_value);
             }
             assume false;
           }
-        assume (forall i_55: int ::
-          { Seq#Index(res, i_55) }
-          0 <= i_55 && (i_55 mod 2 == 0 && i_55 < k) ==> Heap[Seq#Index(res, i_55), Ref__Integer_value] == Heap[Seq#Index(a_2, i_55 div 2), Ref__Integer_value]
+        assume (forall i_55_2: int ::
+          { Seq#Index(res, i_55_2) }
+          0 <= i_55_2 && (i_55_2 mod 2 == 0 && i_55_2 < k) ==> Heap[Seq#Index(res, i_55_2), Ref__Integer_value] == Heap[Seq#Index(a_2, i_55_2 div 2), Ref__Integer_value]
         );
         assume state(Heap, Mask);
         
         // -- Check definedness of (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 1 && i < k) ==> res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value)
           if (*) {
-            if (0 <= i_30 && (i_30 mod 2 == 1 && i_30 < k)) {
-              assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@75.16--75.131) [6058]"}
-                i_30 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@75.16--75.131) [6059]"}
-                i_30 < Seq#Length(res);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@75.16--75.131) [6060]"}
-                HasDirectPerm(Mask, Seq#Index(res, i_30), Ref__Integer_value);
-              assert {:msg "  Contract might not be well-formed. Index b[i \ 2] into b might be negative. (fmse-2015-04-16.vpr@75.16--75.131) [6061]"}
-                i_30 div 2 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index b[i \ 2] into b might exceed sequence length. (fmse-2015-04-16.vpr@75.16--75.131) [6062]"}
-                i_30 div 2 < Seq#Length(b_24);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access b[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@75.16--75.131) [6063]"}
-                HasDirectPerm(Mask, Seq#Index(b_24, i_30 div 2), Ref__Integer_value);
+            if (0 <= i_24 && (i_24 mod 2 == 1 && i_24 < k)) {
+              assert {:msg "  Contract might not be well-formed. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@75.16--75.131) [165086]"}
+                i_24 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@75.16--75.131) [165087]"}
+                i_24 < Seq#Length(res);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@75.16--75.131) [165088]"}
+                HasDirectPerm(Mask, Seq#Index(res, i_24), Ref__Integer_value);
+              assert {:msg "  Contract might not be well-formed. Index b[i \ 2] into b might be negative. (fmse-2015-04-16.vpr@75.16--75.131) [165089]"}
+                i_24 div 2 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index b[i \ 2] into b might exceed sequence length. (fmse-2015-04-16.vpr@75.16--75.131) [165090]"}
+                i_24 div 2 < Seq#Length(b_24);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access b[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@75.16--75.131) [165091]"}
+                HasDirectPerm(Mask, Seq#Index(b_24, i_24 div 2), Ref__Integer_value);
             }
             assume false;
           }
-        assume (forall i_57: int ::
-          { Seq#Index(res, i_57) }
-          0 <= i_57 && (i_57 mod 2 == 1 && i_57 < k) ==> Heap[Seq#Index(res, i_57), Ref__Integer_value] == Heap[Seq#Index(b_24, i_57 div 2), Ref__Integer_value]
+        assume (forall i_57_2: int ::
+          { Seq#Index(res, i_57_2) }
+          0 <= i_57_2 && (i_57_2 mod 2 == 1 && i_57_2 < k) ==> Heap[Seq#Index(res, i_57_2), Ref__Integer_value] == Heap[Seq#Index(b_24, i_57_2 div 2), Ref__Integer_value]
         );
         assume state(Heap, Mask);
         
         // -- Check definedness of (forall i: Int :: { a[i] } (i in [0..k \ 2)) ==> res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value)
           if (*) {
-            if (Seq#Contains(Seq#Range(0, k div 2), i_31)) {
-              assert {:msg "  Contract might not be well-formed. Index res[2 * i] into res might be negative. (fmse-2015-04-16.vpr@76.16--76.113) [6064]"}
-                2 * i_31 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index res[2 * i] into res might exceed sequence length. (fmse-2015-04-16.vpr@76.16--76.113) [6065]"}
-                2 * i_31 < Seq#Length(res);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[2 * i].Ref__Integer_value (fmse-2015-04-16.vpr@76.16--76.113) [6066]"}
-                HasDirectPerm(Mask, Seq#Index(res, 2 * i_31), Ref__Integer_value);
-              assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@76.16--76.113) [6067]"}
-                i_31 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@76.16--76.113) [6068]"}
-                i_31 < Seq#Length(a_2);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@76.16--76.113) [6069]"}
-                HasDirectPerm(Mask, Seq#Index(a_2, i_31), Ref__Integer_value);
+            if (Seq#Contains(Seq#Range(0, k div 2), i_25)) {
+              assert {:msg "  Contract might not be well-formed. Index res[2 * i] into res might be negative. (fmse-2015-04-16.vpr@76.16--76.113) [165092]"}
+                2 * i_25 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index res[2 * i] into res might exceed sequence length. (fmse-2015-04-16.vpr@76.16--76.113) [165093]"}
+                2 * i_25 < Seq#Length(res);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[2 * i].Ref__Integer_value (fmse-2015-04-16.vpr@76.16--76.113) [165094]"}
+                HasDirectPerm(Mask, Seq#Index(res, 2 * i_25), Ref__Integer_value);
+              assert {:msg "  Contract might not be well-formed. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@76.16--76.113) [165095]"}
+                i_25 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@76.16--76.113) [165096]"}
+                i_25 < Seq#Length(a_2);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@76.16--76.113) [165097]"}
+                HasDirectPerm(Mask, Seq#Index(a_2, i_25), Ref__Integer_value);
             }
             assume false;
           }
@@ -1603,19 +1603,19 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         
         // -- Check definedness of (forall i: Int :: { b[i] } (i in [0..k \ 2)) ==> res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value)
           if (*) {
-            if (Seq#Contains(Seq#Range(0, k div 2), i_32)) {
-              assert {:msg "  Contract might not be well-formed. Index res[2 * i + 1] into res might be negative. (fmse-2015-04-16.vpr@77.16--77.117) [6070]"}
-                2 * i_32 + 1 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index res[2 * i + 1] into res might exceed sequence length. (fmse-2015-04-16.vpr@77.16--77.117) [6071]"}
-                2 * i_32 + 1 < Seq#Length(res);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[2 * i + 1].Ref__Integer_value (fmse-2015-04-16.vpr@77.16--77.117) [6072]"}
-                HasDirectPerm(Mask, Seq#Index(res, 2 * i_32 + 1), Ref__Integer_value);
-              assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@77.16--77.117) [6073]"}
-                i_32 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@77.16--77.117) [6074]"}
-                i_32 < Seq#Length(b_24);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@77.16--77.117) [6075]"}
-                HasDirectPerm(Mask, Seq#Index(b_24, i_32), Ref__Integer_value);
+            if (Seq#Contains(Seq#Range(0, k div 2), i_27)) {
+              assert {:msg "  Contract might not be well-formed. Index res[2 * i + 1] into res might be negative. (fmse-2015-04-16.vpr@77.16--77.117) [165098]"}
+                2 * i_27 + 1 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index res[2 * i + 1] into res might exceed sequence length. (fmse-2015-04-16.vpr@77.16--77.117) [165099]"}
+                2 * i_27 + 1 < Seq#Length(res);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access res[2 * i + 1].Ref__Integer_value (fmse-2015-04-16.vpr@77.16--77.117) [165100]"}
+                HasDirectPerm(Mask, Seq#Index(res, 2 * i_27 + 1), Ref__Integer_value);
+              assert {:msg "  Contract might not be well-formed. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@77.16--77.117) [165101]"}
+                i_27 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@77.16--77.117) [165102]"}
+                i_27 < Seq#Length(b_24);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@77.16--77.117) [165103]"}
+                HasDirectPerm(Mask, Seq#Index(b_24, i_27), Ref__Integer_value);
             }
             assume false;
           }
@@ -1641,7 +1641,7 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         assume Seq#Length(a_2) == Seq#Length(b_24);
         assume Seq#Length(res) == 2 * Seq#Length(a_2);
         havoc QPMask;
-        assert {:msg "  While statement might fail. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@71.16--71.88) [6076]"}
+        assert {:msg "  While statement might fail. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@71.16--71.88) [165104]"}
           (forall i_62: int, i_62_1: int ::
           
           (((i_62 != i_62_1 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_62)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_62_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_62) != Seq#Index(a_2, i_62_1)
@@ -1652,9 +1652,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
             { Seq#Index(a_2, i_62) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_62) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_62) } { Seq#Index(a_2, i_62) }
             Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_62) && NoPerm < FullPerm ==> qpRange16(Seq#Index(a_2, i_62)) && invRecv16(Seq#Index(a_2, i_62)) == i_62
           );
-          assume (forall o_4: Ref ::
-            { invRecv16(o_4) }
-            (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv16(o_4)) && NoPerm < FullPerm) && qpRange16(o_4) ==> Seq#Index(a_2, invRecv16(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv16(o_9) }
+            (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv16(o_9)) && NoPerm < FullPerm) && qpRange16(o_9) ==> Seq#Index(a_2, invRecv16(o_9)) == o_9
           );
         
         // -- Assume set of fields is nonNull
@@ -1664,99 +1664,99 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            ((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv16(o_4)) && NoPerm < FullPerm) && qpRange16(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(a_2, invRecv16(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv16(o_4)) && NoPerm < FullPerm) && qpRange16(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            ((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv16(o_9)) && NoPerm < FullPerm) && qpRange16(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(a_2, invRecv16(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv16(o_9)) && NoPerm < FullPerm) && qpRange16(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
-          );
-        Mask := QPMask;
-        assume state(Heap, Mask);
-        havoc QPMask;
-        assert {:msg "  While statement might fail. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@72.16--72.88) [6077]"}
-          (forall i_63: int, i_63_1: int ::
-          
-          (((i_63 != i_63_1 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_63) != Seq#Index(b_24, i_63_1)
-        );
-        
-        // -- Define Inverse Function
-          assume (forall i_63: int ::
-            { Seq#Index(b_24, i_63) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_63) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63) } { Seq#Index(b_24, i_63) }
-            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63) && NoPerm < FullPerm ==> qpRange17(Seq#Index(b_24, i_63)) && invRecv17(Seq#Index(b_24, i_63)) == i_63
-          );
-          assume (forall o_4: Ref ::
-            { invRecv17(o_4) }
-            (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv17(o_4)) && NoPerm < FullPerm) && qpRange17(o_4) ==> Seq#Index(b_24, invRecv17(o_4)) == o_4
-          );
-        
-        // -- Assume set of fields is nonNull
-          assume (forall i_63: int ::
-            { Seq#Index(b_24, i_63) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_63) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63) } { Seq#Index(b_24, i_63) }
-            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63) ==> Seq#Index(b_24, i_63) != null
-          );
-        
-        // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            ((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv17(o_4)) && NoPerm < FullPerm) && qpRange17(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(b_24, invRecv17(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv17(o_4)) && NoPerm < FullPerm) && qpRange17(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
-          );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
         havoc QPMask;
-        assert {:msg "  While statement might fail. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@73.16--73.92) [6078]"}
-          (forall i_64: int, i_64_1: int ::
+        assert {:msg "  While statement might fail. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@72.16--72.88) [165105]"}
+          (forall i_63_1: int, i_63_2: int ::
           
-          (((i_64 != i_64_1 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_64) != Seq#Index(res, i_64_1)
+          (((i_63_1 != i_63_2 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63_1)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_63_1) != Seq#Index(b_24, i_63_2)
         );
         
         // -- Define Inverse Function
-          assume (forall i_64: int ::
-            { Seq#Index(res, i_64) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_64) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64) } { Seq#Index(res, i_64) }
-            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64) && NoPerm < FullPerm ==> qpRange18(Seq#Index(res, i_64)) && invRecv18(Seq#Index(res, i_64)) == i_64
+          assume (forall i_63_1: int ::
+            { Seq#Index(b_24, i_63_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_63_1) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63_1) } { Seq#Index(b_24, i_63_1) }
+            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63_1) && NoPerm < FullPerm ==> qpRange17(Seq#Index(b_24, i_63_1)) && invRecv17(Seq#Index(b_24, i_63_1)) == i_63_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv18(o_4) }
-            (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv18(o_4)) && NoPerm < FullPerm) && qpRange18(o_4) ==> Seq#Index(res, invRecv18(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv17(o_9) }
+            (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv17(o_9)) && NoPerm < FullPerm) && qpRange17(o_9) ==> Seq#Index(b_24, invRecv17(o_9)) == o_9
           );
         
         // -- Assume set of fields is nonNull
-          assume (forall i_64: int ::
-            { Seq#Index(res, i_64) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_64) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64) } { Seq#Index(res, i_64) }
-            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64) ==> Seq#Index(res, i_64) != null
+          assume (forall i_63_1: int ::
+            { Seq#Index(b_24, i_63_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_63_1) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63_1) } { Seq#Index(b_24, i_63_1) }
+            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_63_1) ==> Seq#Index(b_24, i_63_1) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            ((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv18(o_4)) && NoPerm < FullPerm) && qpRange18(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(res, invRecv18(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv18(o_4)) && NoPerm < FullPerm) && qpRange18(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            ((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv17(o_9)) && NoPerm < FullPerm) && qpRange17(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(b_24, invRecv17(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv17(o_9)) && NoPerm < FullPerm) && qpRange17(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
-        assume (forall i_65: int ::
-          { Seq#Index(res, i_65) }
-          0 <= i_65 && (i_65 mod 2 == 0 && i_65 < k) ==> Heap[Seq#Index(res, i_65), Ref__Integer_value] == Heap[Seq#Index(a_2, i_65 div 2), Ref__Integer_value]
+        havoc QPMask;
+        assert {:msg "  While statement might fail. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@73.16--73.92) [165106]"}
+          (forall i_64_1: int, i_64_2: int ::
+          
+          (((i_64_1 != i_64_2 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64_1)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_64_1) != Seq#Index(res, i_64_2)
         );
-        assume (forall i_66: int ::
-          { Seq#Index(res, i_66) }
-          0 <= i_66 && (i_66 mod 2 == 1 && i_66 < k) ==> Heap[Seq#Index(res, i_66), Ref__Integer_value] == Heap[Seq#Index(b_24, i_66 div 2), Ref__Integer_value]
+        
+        // -- Define Inverse Function
+          assume (forall i_64_1: int ::
+            { Seq#Index(res, i_64_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_64_1) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64_1) } { Seq#Index(res, i_64_1) }
+            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64_1) && NoPerm < FullPerm ==> qpRange18(Seq#Index(res, i_64_1)) && invRecv18(Seq#Index(res, i_64_1)) == i_64_1
+          );
+          assume (forall o_9: Ref ::
+            { invRecv18(o_9) }
+            (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv18(o_9)) && NoPerm < FullPerm) && qpRange18(o_9) ==> Seq#Index(res, invRecv18(o_9)) == o_9
+          );
+        
+        // -- Assume set of fields is nonNull
+          assume (forall i_64_1: int ::
+            { Seq#Index(res, i_64_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_64_1) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64_1) } { Seq#Index(res, i_64_1) }
+            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_64_1) ==> Seq#Index(res, i_64_1) != null
+          );
+        
+        // -- Define permissions
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            ((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv18(o_9)) && NoPerm < FullPerm) && qpRange18(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(res, invRecv18(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv18(o_9)) && NoPerm < FullPerm) && qpRange18(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
+          );
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
+          );
+        Mask := QPMask;
+        assume state(Heap, Mask);
+        assume (forall i_65_1: int ::
+          { Seq#Index(res, i_65_1) }
+          0 <= i_65_1 && (i_65_1 mod 2 == 0 && i_65_1 < k) ==> Heap[Seq#Index(res, i_65_1), Ref__Integer_value] == Heap[Seq#Index(a_2, i_65_1 div 2), Ref__Integer_value]
         );
-        assume (forall i_67: int ::
-          { Seq#Index(a_2, i_67) }
-          Seq#Contains(Seq#Range(0, k div 2), i_67) ==> Heap[Seq#Index(res, 2 * i_67), Ref__Integer_value] == Heap[Seq#Index(a_2, i_67), Ref__Integer_value]
+        assume (forall i_66_1: int ::
+          { Seq#Index(res, i_66_1) }
+          0 <= i_66_1 && (i_66_1 mod 2 == 1 && i_66_1 < k) ==> Heap[Seq#Index(res, i_66_1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_66_1 div 2), Ref__Integer_value]
         );
-        assume (forall i_68: int ::
-          { Seq#Index(b_24, i_68) }
-          Seq#Contains(Seq#Range(0, k div 2), i_68) ==> Heap[Seq#Index(res, 2 * i_68 + 1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_68), Ref__Integer_value]
+        assume (forall i_67_1: int ::
+          { Seq#Index(a_2, i_67_1) }
+          Seq#Contains(Seq#Range(0, k div 2), i_67_1) ==> Heap[Seq#Index(res, 2 * i_67_1), Ref__Integer_value] == Heap[Seq#Index(a_2, i_67_1), Ref__Integer_value]
+        );
+        assume (forall i_68_1: int ::
+          { Seq#Index(b_24, i_68_1) }
+          Seq#Contains(Seq#Range(0, k div 2), i_68_1) ==> Heap[Seq#Index(res, 2 * i_68_1 + 1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_68_1), Ref__Integer_value]
         );
         assume state(Heap, Mask);
         // Check and assume guard
@@ -1768,9 +1768,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           // -- Translating statement: __flatten_5 := a[k \ 2] -- fmse-2015-04-16.vpr@79.5--79.28
             
             // -- Check definedness of a[k \ 2]
-              assert {:msg "  Assignment might fail. Index a[k \ 2] into a might be negative. (fmse-2015-04-16.vpr@79.5--79.28) [6079]"}
+              assert {:msg "  Assignment might fail. Index a[k \ 2] into a might be negative. (fmse-2015-04-16.vpr@79.5--79.28) [165107]"}
                 k div 2 >= 0;
-              assert {:msg "  Assignment might fail. Index a[k \ 2] into a might exceed sequence length. (fmse-2015-04-16.vpr@79.5--79.28) [6080]"}
+              assert {:msg "  Assignment might fail. Index a[k \ 2] into a might exceed sequence length. (fmse-2015-04-16.vpr@79.5--79.28) [165108]"}
                 k div 2 < Seq#Length(a_2);
             __flatten_5 := Seq#Index(a_2, k div 2);
             assume state(Heap, Mask);
@@ -1778,7 +1778,7 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           // -- Translating statement: __flatten_4 := __flatten_5.Ref__Integer_value -- fmse-2015-04-16.vpr@80.5--80.50
             
             // -- Check definedness of __flatten_5.Ref__Integer_value
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_5.Ref__Integer_value (fmse-2015-04-16.vpr@80.5--80.50) [6081]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_5.Ref__Integer_value (fmse-2015-04-16.vpr@80.5--80.50) [165109]"}
                 HasDirectPerm(Mask, __flatten_5, Ref__Integer_value);
             __flatten_4 := Heap[__flatten_5, Ref__Integer_value];
             assume state(Heap, Mask);
@@ -1790,15 +1790,15 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           // -- Translating statement: __flatten_6 := res[k] -- fmse-2015-04-16.vpr@82.5--82.26
             
             // -- Check definedness of res[k]
-              assert {:msg "  Assignment might fail. Index res[k] into res might be negative. (fmse-2015-04-16.vpr@82.5--82.26) [6082]"}
+              assert {:msg "  Assignment might fail. Index res[k] into res might be negative. (fmse-2015-04-16.vpr@82.5--82.26) [165110]"}
                 k >= 0;
-              assert {:msg "  Assignment might fail. Index res[k] into res might exceed sequence length. (fmse-2015-04-16.vpr@82.5--82.26) [6083]"}
+              assert {:msg "  Assignment might fail. Index res[k] into res might exceed sequence length. (fmse-2015-04-16.vpr@82.5--82.26) [165111]"}
                 k < Seq#Length(res);
             __flatten_6 := Seq#Index(res, k);
             assume state(Heap, Mask);
           
           // -- Translating statement: __flatten_6.Ref__Integer_value := __flatten_1 -- fmse-2015-04-16.vpr@83.5--83.50
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_6.Ref__Integer_value (fmse-2015-04-16.vpr@83.5--83.50) [6084]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_6.Ref__Integer_value (fmse-2015-04-16.vpr@83.5--83.50) [165112]"}
               FullPerm == Mask[__flatten_6, Ref__Integer_value];
             Heap := Heap[__flatten_6, Ref__Integer_value:=__flatten_1];
             assume state(Heap, Mask);
@@ -1806,9 +1806,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           // -- Translating statement: __flatten_8 := b[k \ 2] -- fmse-2015-04-16.vpr@84.5--84.28
             
             // -- Check definedness of b[k \ 2]
-              assert {:msg "  Assignment might fail. Index b[k \ 2] into b might be negative. (fmse-2015-04-16.vpr@84.5--84.28) [6085]"}
+              assert {:msg "  Assignment might fail. Index b[k \ 2] into b might be negative. (fmse-2015-04-16.vpr@84.5--84.28) [165113]"}
                 k div 2 >= 0;
-              assert {:msg "  Assignment might fail. Index b[k \ 2] into b might exceed sequence length. (fmse-2015-04-16.vpr@84.5--84.28) [6086]"}
+              assert {:msg "  Assignment might fail. Index b[k \ 2] into b might exceed sequence length. (fmse-2015-04-16.vpr@84.5--84.28) [165114]"}
                 k div 2 < Seq#Length(b_24);
             __flatten_8 := Seq#Index(b_24, k div 2);
             assume state(Heap, Mask);
@@ -1816,7 +1816,7 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           // -- Translating statement: __flatten_7 := __flatten_8.Ref__Integer_value -- fmse-2015-04-16.vpr@85.5--85.50
             
             // -- Check definedness of __flatten_8.Ref__Integer_value
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_8.Ref__Integer_value (fmse-2015-04-16.vpr@85.5--85.50) [6087]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_8.Ref__Integer_value (fmse-2015-04-16.vpr@85.5--85.50) [165115]"}
                 HasDirectPerm(Mask, __flatten_8, Ref__Integer_value);
             __flatten_7 := Heap[__flatten_8, Ref__Integer_value];
             assume state(Heap, Mask);
@@ -1828,15 +1828,15 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           // -- Translating statement: __flatten_9 := res[k + 1] -- fmse-2015-04-16.vpr@87.5--87.30
             
             // -- Check definedness of res[k + 1]
-              assert {:msg "  Assignment might fail. Index res[k + 1] into res might be negative. (fmse-2015-04-16.vpr@87.5--87.30) [6088]"}
+              assert {:msg "  Assignment might fail. Index res[k + 1] into res might be negative. (fmse-2015-04-16.vpr@87.5--87.30) [165116]"}
                 k + 1 >= 0;
-              assert {:msg "  Assignment might fail. Index res[k + 1] into res might exceed sequence length. (fmse-2015-04-16.vpr@87.5--87.30) [6089]"}
+              assert {:msg "  Assignment might fail. Index res[k + 1] into res might exceed sequence length. (fmse-2015-04-16.vpr@87.5--87.30) [165117]"}
                 k + 1 < Seq#Length(res);
             __flatten_9 := Seq#Index(res, k + 1);
             assume state(Heap, Mask);
           
           // -- Translating statement: __flatten_9.Ref__Integer_value := __flatten_2 -- fmse-2015-04-16.vpr@88.5--88.50
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_9.Ref__Integer_value (fmse-2015-04-16.vpr@88.5--88.50) [6090]"}
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_9.Ref__Integer_value (fmse-2015-04-16.vpr@88.5--88.50) [165118]"}
               FullPerm == Mask[__flatten_9, Ref__Integer_value];
             Heap := Heap[__flatten_9, Ref__Integer_value:=__flatten_2];
             assume state(Heap, Mask);
@@ -1855,15 +1855,15 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant 0 <= k might not be preserved. Assertion 0 <= k might not hold. (fmse-2015-04-16.vpr@66.15--66.21) [6091]"}
+        assert {:msg "  Loop invariant 0 <= k might not be preserved. Assertion 0 <= k might not hold. (fmse-2015-04-16.vpr@66.15--66.21) [165119]"}
           0 <= k;
-        assert {:msg "  Loop invariant k % 2 == 0 might not be preserved. Assertion k % 2 == 0 might not hold. (fmse-2015-04-16.vpr@67.15--67.25) [6092]"}
+        assert {:msg "  Loop invariant k % 2 == 0 might not be preserved. Assertion k % 2 == 0 might not hold. (fmse-2015-04-16.vpr@67.15--67.25) [165120]"}
           k mod 2 == 0;
-        assert {:msg "  Loop invariant k <= |res| might not be preserved. Assertion k <= |res| might not hold. (fmse-2015-04-16.vpr@68.15--68.25) [6093]"}
+        assert {:msg "  Loop invariant k <= |res| might not be preserved. Assertion k <= |res| might not hold. (fmse-2015-04-16.vpr@68.15--68.25) [165121]"}
           k <= Seq#Length(res);
-        assert {:msg "  Loop invariant |a| == |b| might not be preserved. Assertion |a| == |b| might not hold. (fmse-2015-04-16.vpr@69.15--69.25) [6094]"}
+        assert {:msg "  Loop invariant |a| == |b| might not be preserved. Assertion |a| == |b| might not hold. (fmse-2015-04-16.vpr@69.15--69.25) [165122]"}
           Seq#Length(a_2) == Seq#Length(b_24);
-        assert {:msg "  Loop invariant |res| == 2 * |a| might not be preserved. Assertion |res| == 2 * |a| might not hold. (fmse-2015-04-16.vpr@70.15--70.31) [6095]"}
+        assert {:msg "  Loop invariant |res| == 2 * |a| might not be preserved. Assertion |res| == 2 * |a| might not hold. (fmse-2015-04-16.vpr@70.15--70.31) [165123]"}
           Seq#Length(res) == 2 * Seq#Length(a_2);
         havoc QPMask;
         
@@ -1871,39 +1871,39 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           
         
         // -- check if receiver a[i] is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write)) might not be preserved. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@71.16--71.88) [6096]"}
-            (forall i_69: int, i_69_1: int ::
-            { neverTriggered19(i_69), neverTriggered19(i_69_1) }
-            (((i_69 != i_69_1 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_69) != Seq#Index(a_2, i_69_1)
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write)) might not be preserved. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@71.16--71.88) [165124]"}
+            (forall i_69_1: int, i_69_2: int ::
+            { neverTriggered19(i_69_1), neverTriggered19(i_69_2) }
+            (((i_69_1 != i_69_2 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69_1)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_69_1) != Seq#Index(a_2, i_69_2)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write)) might not be preserved. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@71.16--71.88) [6097]"}
-            (forall i_69: int ::
-            { Seq#Index(a_2, i_69) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_69) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69) } { Seq#Index(a_2, i_69) }
-            Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69) ==> Mask[Seq#Index(a_2, i_69), Ref__Integer_value] >= FullPerm
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|a|)) } { a[i] } (i in [0..|a|)) ==> acc(a[i].Ref__Integer_value, write)) might not be preserved. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@71.16--71.88) [165125]"}
+            (forall i_69_1: int ::
+            { Seq#Index(a_2, i_69_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_69_1) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69_1) } { Seq#Index(a_2, i_69_1) }
+            Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69_1) ==> Mask[Seq#Index(a_2, i_69_1), Ref__Integer_value] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver a[i]
-          assume (forall i_69: int ::
-            { Seq#Index(a_2, i_69) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_69) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69) } { Seq#Index(a_2, i_69) }
-            Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69) && NoPerm < FullPerm ==> qpRange19(Seq#Index(a_2, i_69)) && invRecv19(Seq#Index(a_2, i_69)) == i_69
+          assume (forall i_69_1: int ::
+            { Seq#Index(a_2, i_69_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_69_1) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69_1) } { Seq#Index(a_2, i_69_1) }
+            Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_69_1) && NoPerm < FullPerm ==> qpRange19(Seq#Index(a_2, i_69_1)) && invRecv19(Seq#Index(a_2, i_69_1)) == i_69_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv19(o_4) }
-            Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv19(o_4)) && (NoPerm < FullPerm && qpRange19(o_4)) ==> Seq#Index(a_2, invRecv19(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv19(o_9) }
+            Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv19(o_9)) && (NoPerm < FullPerm && qpRange19(o_9)) ==> Seq#Index(a_2, invRecv19(o_9)) == o_9
           );
         
         // -- assume permission updates for field Ref__Integer_value
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv19(o_4)) && (NoPerm < FullPerm && qpRange19(o_4)) ==> Seq#Index(a_2, invRecv19(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv19(o_4)) && (NoPerm < FullPerm && qpRange19(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv19(o_9)) && (NoPerm < FullPerm && qpRange19(o_9)) ==> Seq#Index(a_2, invRecv19(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv19(o_9)) && (NoPerm < FullPerm && qpRange19(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         havoc QPMask;
@@ -1912,39 +1912,39 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           
         
         // -- check if receiver b[i] is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write)) might not be preserved. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@72.16--72.88) [6098]"}
-            (forall i_70: int, i_70_1: int ::
-            { neverTriggered20(i_70), neverTriggered20(i_70_1) }
-            (((i_70 != i_70_1 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_70) != Seq#Index(b_24, i_70_1)
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write)) might not be preserved. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@72.16--72.88) [165126]"}
+            (forall i_70_1: int, i_70_2: int ::
+            { neverTriggered20(i_70_1), neverTriggered20(i_70_2) }
+            (((i_70_1 != i_70_2 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70_1)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_70_1) != Seq#Index(b_24, i_70_2)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write)) might not be preserved. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@72.16--72.88) [6099]"}
-            (forall i_70: int ::
-            { Seq#Index(b_24, i_70) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_70) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70) } { Seq#Index(b_24, i_70) }
-            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70) ==> Mask[Seq#Index(b_24, i_70), Ref__Integer_value] >= FullPerm
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|b|)) } { b[i] } (i in [0..|b|)) ==> acc(b[i].Ref__Integer_value, write)) might not be preserved. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@72.16--72.88) [165127]"}
+            (forall i_70_1: int ::
+            { Seq#Index(b_24, i_70_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_70_1) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70_1) } { Seq#Index(b_24, i_70_1) }
+            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70_1) ==> Mask[Seq#Index(b_24, i_70_1), Ref__Integer_value] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver b[i]
-          assume (forall i_70: int ::
-            { Seq#Index(b_24, i_70) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_70) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70) } { Seq#Index(b_24, i_70) }
-            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70) && NoPerm < FullPerm ==> qpRange20(Seq#Index(b_24, i_70)) && invRecv20(Seq#Index(b_24, i_70)) == i_70
+          assume (forall i_70_1: int ::
+            { Seq#Index(b_24, i_70_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_70_1) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70_1) } { Seq#Index(b_24, i_70_1) }
+            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_70_1) && NoPerm < FullPerm ==> qpRange20(Seq#Index(b_24, i_70_1)) && invRecv20(Seq#Index(b_24, i_70_1)) == i_70_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv20(o_4) }
-            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv20(o_4)) && (NoPerm < FullPerm && qpRange20(o_4)) ==> Seq#Index(b_24, invRecv20(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv20(o_9) }
+            Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv20(o_9)) && (NoPerm < FullPerm && qpRange20(o_9)) ==> Seq#Index(b_24, invRecv20(o_9)) == o_9
           );
         
         // -- assume permission updates for field Ref__Integer_value
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv20(o_4)) && (NoPerm < FullPerm && qpRange20(o_4)) ==> Seq#Index(b_24, invRecv20(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv20(o_4)) && (NoPerm < FullPerm && qpRange20(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv20(o_9)) && (NoPerm < FullPerm && qpRange20(o_9)) ==> Seq#Index(b_24, invRecv20(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv20(o_9)) && (NoPerm < FullPerm && qpRange20(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         havoc QPMask;
@@ -1953,45 +1953,45 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           
         
         // -- check if receiver res[i] is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write)) might not be preserved. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@73.16--73.92) [6100]"}
-            (forall i_71: int, i_71_1: int ::
-            { neverTriggered21(i_71), neverTriggered21(i_71_1) }
-            (((i_71 != i_71_1 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_71) != Seq#Index(res, i_71_1)
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write)) might not be preserved. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@73.16--73.92) [165128]"}
+            (forall i_71_1: int, i_71_2: int ::
+            { neverTriggered21(i_71_1), neverTriggered21(i_71_2) }
+            (((i_71_1 != i_71_2 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71_1)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_71_1) != Seq#Index(res, i_71_2)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write)) might not be preserved. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@73.16--73.92) [6101]"}
-            (forall i_71: int ::
-            { Seq#Index(res, i_71) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_71) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71) } { Seq#Index(res, i_71) }
-            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71) ==> Mask[Seq#Index(res, i_71), Ref__Integer_value] >= FullPerm
+          assert {:msg "  Loop invariant (forall i: Int :: { (i in [0..|res|)) } { res[i] } (i in [0..|res|)) ==> acc(res[i].Ref__Integer_value, write)) might not be preserved. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@73.16--73.92) [165129]"}
+            (forall i_71_1: int ::
+            { Seq#Index(res, i_71_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_71_1) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71_1) } { Seq#Index(res, i_71_1) }
+            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71_1) ==> Mask[Seq#Index(res, i_71_1), Ref__Integer_value] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver res[i]
-          assume (forall i_71: int ::
-            { Seq#Index(res, i_71) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_71) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71) } { Seq#Index(res, i_71) }
-            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71) && NoPerm < FullPerm ==> qpRange21(Seq#Index(res, i_71)) && invRecv21(Seq#Index(res, i_71)) == i_71
+          assume (forall i_71_1: int ::
+            { Seq#Index(res, i_71_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_71_1) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71_1) } { Seq#Index(res, i_71_1) }
+            Seq#Contains(Seq#Range(0, Seq#Length(res)), i_71_1) && NoPerm < FullPerm ==> qpRange21(Seq#Index(res, i_71_1)) && invRecv21(Seq#Index(res, i_71_1)) == i_71_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv21(o_4) }
-            Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv21(o_4)) && (NoPerm < FullPerm && qpRange21(o_4)) ==> Seq#Index(res, invRecv21(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv21(o_9) }
+            Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv21(o_9)) && (NoPerm < FullPerm && qpRange21(o_9)) ==> Seq#Index(res, invRecv21(o_9)) == o_9
           );
         
         // -- assume permission updates for field Ref__Integer_value
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, Ref__Integer_value] }
-            (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv21(o_4)) && (NoPerm < FullPerm && qpRange21(o_4)) ==> Seq#Index(res, invRecv21(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv21(o_4)) && (NoPerm < FullPerm && qpRange21(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, Ref__Integer_value] }
+            (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv21(o_9)) && (NoPerm < FullPerm && qpRange21(o_9)) ==> Seq#Index(res, invRecv21(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv21(o_9)) && (NoPerm < FullPerm && qpRange21(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         if (*) {
-          if (0 <= i_72 && (i_72 mod 2 == 0 && i_72 < k)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 0 && i < k) ==> res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value) might not be preserved. Assertion res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@74.16--74.131) [6102]"}
-              Heap[Seq#Index(res, i_72), Ref__Integer_value] == Heap[Seq#Index(a_2, i_72 div 2), Ref__Integer_value];
+          if (0 <= i_72_1 && (i_72_1 mod 2 == 0 && i_72_1 < k)) {
+            assert {:msg "  Loop invariant (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 0 && i < k) ==> res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value) might not be preserved. Assertion res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@74.16--74.131) [165130]"}
+              Heap[Seq#Index(res, i_72_1), Ref__Integer_value] == Heap[Seq#Index(a_2, i_72_1 div 2), Ref__Integer_value];
           }
           assume false;
         }
@@ -2000,9 +2000,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           0 <= i_73_1 && (i_73_1 mod 2 == 0 && i_73_1 < k) ==> Heap[Seq#Index(res, i_73_1), Ref__Integer_value] == Heap[Seq#Index(a_2, i_73_1 div 2), Ref__Integer_value]
         );
         if (*) {
-          if (0 <= i_74 && (i_74 mod 2 == 1 && i_74 < k)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 1 && i < k) ==> res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value) might not be preserved. Assertion res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@75.16--75.131) [6103]"}
-              Heap[Seq#Index(res, i_74), Ref__Integer_value] == Heap[Seq#Index(b_24, i_74 div 2), Ref__Integer_value];
+          if (0 <= i_74_1 && (i_74_1 mod 2 == 1 && i_74_1 < k)) {
+            assert {:msg "  Loop invariant (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 1 && i < k) ==> res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value) might not be preserved. Assertion res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@75.16--75.131) [165131]"}
+              Heap[Seq#Index(res, i_74_1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_74_1 div 2), Ref__Integer_value];
           }
           assume false;
         }
@@ -2012,7 +2012,7 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         );
         if (*) {
           if (Seq#Contains(Seq#Range(0, k div 2), i_76)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { a[i] } (i in [0..k \ 2)) ==> res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value) might not be preserved. Assertion res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@76.16--76.113) [6104]"}
+            assert {:msg "  Loop invariant (forall i: Int :: { a[i] } (i in [0..k \ 2)) ==> res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value) might not be preserved. Assertion res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@76.16--76.113) [165132]"}
               Heap[Seq#Index(res, 2 * i_76), Ref__Integer_value] == Heap[Seq#Index(a_2, i_76), Ref__Integer_value];
           }
           assume false;
@@ -2023,7 +2023,7 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         );
         if (*) {
           if (Seq#Contains(Seq#Range(0, k div 2), i_78)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { b[i] } (i in [0..k \ 2)) ==> res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value) might not be preserved. Assertion res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@77.16--77.117) [6105]"}
+            assert {:msg "  Loop invariant (forall i: Int :: { b[i] } (i in [0..k \ 2)) ==> res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value) might not be preserved. Assertion res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@77.16--77.117) [165133]"}
               Heap[Seq#Index(res, 2 * i_78 + 1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_78), Ref__Integer_value];
           }
           assume false;
@@ -2049,7 +2049,7 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
       assume Seq#Length(a_2) == Seq#Length(b_24);
       assume Seq#Length(res) == 2 * Seq#Length(a_2);
       havoc QPMask;
-      assert {:msg "  While statement might fail. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@71.16--71.88) [6106]"}
+      assert {:msg "  While statement might fail. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@71.16--71.88) [165134]"}
         (forall i_80: int, i_80_1: int ::
         
         (((i_80 != i_80_1 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_80)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_80_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_80) != Seq#Index(a_2, i_80_1)
@@ -2060,9 +2060,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           { Seq#Index(a_2, i_80) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_80) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_80) } { Seq#Index(a_2, i_80) }
           Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_80) && NoPerm < FullPerm ==> qpRange22(Seq#Index(a_2, i_80)) && invRecv22(Seq#Index(a_2, i_80)) == i_80
         );
-        assume (forall o_4: Ref ::
-          { invRecv22(o_4) }
-          (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv22(o_4)) && NoPerm < FullPerm) && qpRange22(o_4) ==> Seq#Index(a_2, invRecv22(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv22(o_9) }
+          (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv22(o_9)) && NoPerm < FullPerm) && qpRange22(o_9) ==> Seq#Index(a_2, invRecv22(o_9)) == o_9
         );
       
       // -- Assume set of fields is nonNull
@@ -2072,18 +2072,18 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, Ref__Integer_value] }
-          ((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv22(o_4)) && NoPerm < FullPerm) && qpRange22(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(a_2, invRecv22(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv22(o_4)) && NoPerm < FullPerm) && qpRange22(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, Ref__Integer_value] }
+          ((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv22(o_9)) && NoPerm < FullPerm) && qpRange22(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(a_2, invRecv22(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv22(o_9)) && NoPerm < FullPerm) && qpRange22(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
       havoc QPMask;
-      assert {:msg "  While statement might fail. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@72.16--72.88) [6107]"}
+      assert {:msg "  While statement might fail. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@72.16--72.88) [165135]"}
         (forall i_81: int, i_81_1: int ::
         
         (((i_81 != i_81_1 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_81)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_81_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_81) != Seq#Index(b_24, i_81_1)
@@ -2094,9 +2094,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           { Seq#Index(b_24, i_81) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_81) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_81) } { Seq#Index(b_24, i_81) }
           Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_81) && NoPerm < FullPerm ==> qpRange23(Seq#Index(b_24, i_81)) && invRecv23(Seq#Index(b_24, i_81)) == i_81
         );
-        assume (forall o_4: Ref ::
-          { invRecv23(o_4) }
-          (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv23(o_4)) && NoPerm < FullPerm) && qpRange23(o_4) ==> Seq#Index(b_24, invRecv23(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv23(o_9) }
+          (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv23(o_9)) && NoPerm < FullPerm) && qpRange23(o_9) ==> Seq#Index(b_24, invRecv23(o_9)) == o_9
         );
       
       // -- Assume set of fields is nonNull
@@ -2106,18 +2106,18 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, Ref__Integer_value] }
-          ((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv23(o_4)) && NoPerm < FullPerm) && qpRange23(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(b_24, invRecv23(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv23(o_4)) && NoPerm < FullPerm) && qpRange23(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, Ref__Integer_value] }
+          ((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv23(o_9)) && NoPerm < FullPerm) && qpRange23(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(b_24, invRecv23(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv23(o_9)) && NoPerm < FullPerm) && qpRange23(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
       havoc QPMask;
-      assert {:msg "  While statement might fail. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@73.16--73.92) [6108]"}
+      assert {:msg "  While statement might fail. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@73.16--73.92) [165136]"}
         (forall i_82: int, i_82_1: int ::
         
         (((i_82 != i_82_1 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_82)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_82_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_82) != Seq#Index(res, i_82_1)
@@ -2128,9 +2128,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
           { Seq#Index(res, i_82) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_82) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_82) } { Seq#Index(res, i_82) }
           Seq#Contains(Seq#Range(0, Seq#Length(res)), i_82) && NoPerm < FullPerm ==> qpRange24(Seq#Index(res, i_82)) && invRecv24(Seq#Index(res, i_82)) == i_82
         );
-        assume (forall o_4: Ref ::
-          { invRecv24(o_4) }
-          (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv24(o_4)) && NoPerm < FullPerm) && qpRange24(o_4) ==> Seq#Index(res, invRecv24(o_4)) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv24(o_9) }
+          (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv24(o_9)) && NoPerm < FullPerm) && qpRange24(o_9) ==> Seq#Index(res, invRecv24(o_9)) == o_9
         );
       
       // -- Assume set of fields is nonNull
@@ -2140,13 +2140,13 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, Ref__Integer_value] }
-          ((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv24(o_4)) && NoPerm < FullPerm) && qpRange24(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(res, invRecv24(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv24(o_4)) && NoPerm < FullPerm) && qpRange24(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, Ref__Integer_value] }
+          ((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv24(o_9)) && NoPerm < FullPerm) && qpRange24(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(res, invRecv24(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!((Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv24(o_9)) && NoPerm < FullPerm) && qpRange24(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
@@ -2172,14 +2172,14 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   // -- Translating statement: assert k == |res| -- fmse-2015-04-16.vpr@93.3--93.20
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion k == |res| might not hold. (fmse-2015-04-16.vpr@93.10--93.20) [6109]"}
+    assert {:msg "  Assert might fail. Assertion k == |res| might not hold. (fmse-2015-04-16.vpr@93.10--93.20) [165137]"}
       k == Seq#Length(res);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |res| \ 2 == k \ 2 -- fmse-2015-04-16.vpr@94.3--94.28
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion |res| \ 2 == k \ 2 might not hold. (fmse-2015-04-16.vpr@94.10--94.28) [6110]"}
+    assert {:msg "  Assert might fail. Assertion |res| \ 2 == k \ 2 might not hold. (fmse-2015-04-16.vpr@94.10--94.28) [165138]"}
       Seq#Length(res) div 2 == k div 2;
     assume state(Heap, Mask);
   
@@ -2192,25 +2192,25 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int :: { a[i] } (i in [0..|res| \ 2)) ==> res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value)
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(res) div 2), i_33)) {
-          assert {:msg "  Assert might fail. Index res[2 * i] into res might be negative. (fmse-2015-04-16.vpr@95.11--95.112) [6111]"}
-            2 * i_33 >= 0;
-          assert {:msg "  Assert might fail. Index res[2 * i] into res might exceed sequence length. (fmse-2015-04-16.vpr@95.11--95.112) [6112]"}
-            2 * i_33 < Seq#Length(res);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access res[2 * i].Ref__Integer_value (fmse-2015-04-16.vpr@95.11--95.112) [6113]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(res, 2 * i_33), Ref__Integer_value);
-          assert {:msg "  Assert might fail. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@95.11--95.112) [6114]"}
-            i_33 >= 0;
-          assert {:msg "  Assert might fail. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@95.11--95.112) [6115]"}
-            i_33 < Seq#Length(a_2);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@95.11--95.112) [6116]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(a_2, i_33), Ref__Integer_value);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(res) div 2), i_16)) {
+          assert {:msg "  Assert might fail. Index res[2 * i] into res might be negative. (fmse-2015-04-16.vpr@95.11--95.112) [165139]"}
+            2 * i_16 >= 0;
+          assert {:msg "  Assert might fail. Index res[2 * i] into res might exceed sequence length. (fmse-2015-04-16.vpr@95.11--95.112) [165140]"}
+            2 * i_16 < Seq#Length(res);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access res[2 * i].Ref__Integer_value (fmse-2015-04-16.vpr@95.11--95.112) [165141]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(res, 2 * i_16), Ref__Integer_value);
+          assert {:msg "  Assert might fail. Index a[i] into a might be negative. (fmse-2015-04-16.vpr@95.11--95.112) [165142]"}
+            i_16 >= 0;
+          assert {:msg "  Assert might fail. Index a[i] into a might exceed sequence length. (fmse-2015-04-16.vpr@95.11--95.112) [165143]"}
+            i_16 < Seq#Length(a_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@95.11--95.112) [165144]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(a_2, i_16), Ref__Integer_value);
         }
         assume false;
       }
     if (*) {
       if (Seq#Contains(Seq#Range(0, Seq#Length(res) div 2), i_88)) {
-        assert {:msg "  Assert might fail. Assertion res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@95.11--95.112) [6117]"}
+        assert {:msg "  Assert might fail. Assertion res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@95.11--95.112) [165145]"}
           Heap[Seq#Index(res, 2 * i_88), Ref__Integer_value] == Heap[Seq#Index(a_2, i_88), Ref__Integer_value];
       }
       assume false;
@@ -2230,25 +2230,25 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 1 && i < |res|) ==> res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value)
       if (*) {
-        if (0 <= i_34 && (i_34 mod 2 == 1 && i_34 < Seq#Length(res))) {
-          assert {:msg "  Assert might fail. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@96.11--96.130) [6118]"}
-            i_34 >= 0;
-          assert {:msg "  Assert might fail. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@96.11--96.130) [6119]"}
-            i_34 < Seq#Length(res);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@96.11--96.130) [6120]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(res, i_34), Ref__Integer_value);
-          assert {:msg "  Assert might fail. Index b[i \ 2] into b might be negative. (fmse-2015-04-16.vpr@96.11--96.130) [6121]"}
-            i_34 div 2 >= 0;
-          assert {:msg "  Assert might fail. Index b[i \ 2] into b might exceed sequence length. (fmse-2015-04-16.vpr@96.11--96.130) [6122]"}
-            i_34 div 2 < Seq#Length(b_24);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access b[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@96.11--96.130) [6123]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(b_24, i_34 div 2), Ref__Integer_value);
+        if (0 <= i_42 && (i_42 mod 2 == 1 && i_42 < Seq#Length(res))) {
+          assert {:msg "  Assert might fail. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@96.11--96.130) [165146]"}
+            i_42 >= 0;
+          assert {:msg "  Assert might fail. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@96.11--96.130) [165147]"}
+            i_42 < Seq#Length(res);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@96.11--96.130) [165148]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(res, i_42), Ref__Integer_value);
+          assert {:msg "  Assert might fail. Index b[i \ 2] into b might be negative. (fmse-2015-04-16.vpr@96.11--96.130) [165149]"}
+            i_42 div 2 >= 0;
+          assert {:msg "  Assert might fail. Index b[i \ 2] into b might exceed sequence length. (fmse-2015-04-16.vpr@96.11--96.130) [165150]"}
+            i_42 div 2 < Seq#Length(b_24);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access b[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@96.11--96.130) [165151]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(b_24, i_42 div 2), Ref__Integer_value);
         }
         assume false;
       }
     if (*) {
       if (0 <= i_91 && (i_91 mod 2 == 1 && i_91 < Seq#Length(res))) {
-        assert {:msg "  Assert might fail. Assertion res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@96.11--96.130) [6124]"}
+        assert {:msg "  Assert might fail. Assertion res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@96.11--96.130) [165152]"}
           Heap[Seq#Index(res, i_91), Ref__Integer_value] == Heap[Seq#Index(b_24, i_91 div 2), Ref__Integer_value];
       }
       assume false;
@@ -2268,25 +2268,25 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int :: { b[i] } (i in [0..|res| \ 2)) ==> res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value)
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(res) div 2), i_35)) {
-          assert {:msg "  Assert might fail. Index res[2 * i + 1] into res might be negative. (fmse-2015-04-16.vpr@97.11--97.116) [6125]"}
-            2 * i_35 + 1 >= 0;
-          assert {:msg "  Assert might fail. Index res[2 * i + 1] into res might exceed sequence length. (fmse-2015-04-16.vpr@97.11--97.116) [6126]"}
-            2 * i_35 + 1 < Seq#Length(res);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access res[2 * i + 1].Ref__Integer_value (fmse-2015-04-16.vpr@97.11--97.116) [6127]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(res, 2 * i_35 + 1), Ref__Integer_value);
-          assert {:msg "  Assert might fail. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@97.11--97.116) [6128]"}
-            i_35 >= 0;
-          assert {:msg "  Assert might fail. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@97.11--97.116) [6129]"}
-            i_35 < Seq#Length(b_24);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@97.11--97.116) [6130]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(b_24, i_35), Ref__Integer_value);
+        if (Seq#Contains(Seq#Range(0, Seq#Length(res) div 2), i_51)) {
+          assert {:msg "  Assert might fail. Index res[2 * i + 1] into res might be negative. (fmse-2015-04-16.vpr@97.11--97.116) [165153]"}
+            2 * i_51 + 1 >= 0;
+          assert {:msg "  Assert might fail. Index res[2 * i + 1] into res might exceed sequence length. (fmse-2015-04-16.vpr@97.11--97.116) [165154]"}
+            2 * i_51 + 1 < Seq#Length(res);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access res[2 * i + 1].Ref__Integer_value (fmse-2015-04-16.vpr@97.11--97.116) [165155]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(res, 2 * i_51 + 1), Ref__Integer_value);
+          assert {:msg "  Assert might fail. Index b[i] into b might be negative. (fmse-2015-04-16.vpr@97.11--97.116) [165156]"}
+            i_51 >= 0;
+          assert {:msg "  Assert might fail. Index b[i] into b might exceed sequence length. (fmse-2015-04-16.vpr@97.11--97.116) [165157]"}
+            i_51 < Seq#Length(b_24);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@97.11--97.116) [165158]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(b_24, i_51), Ref__Integer_value);
         }
         assume false;
       }
     if (*) {
       if (Seq#Contains(Seq#Range(0, Seq#Length(res) div 2), i_94)) {
-        assert {:msg "  Assert might fail. Assertion res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@97.11--97.116) [6131]"}
+        assert {:msg "  Assert might fail. Assertion res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@97.11--97.116) [165159]"}
           Heap[Seq#Index(res, 2 * i_94 + 1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_94), Ref__Integer_value];
       }
       assume false;
@@ -2306,25 +2306,25 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     
     // -- Check definedness of (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 0 && i < |res|) ==> res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value)
       if (*) {
-        if (0 <= i_36 && (i_36 mod 2 == 0 && i_36 < Seq#Length(res))) {
-          assert {:msg "  Assert might fail. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@98.11--98.130) [6132]"}
-            i_36 >= 0;
-          assert {:msg "  Assert might fail. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@98.11--98.130) [6133]"}
-            i_36 < Seq#Length(res);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@98.11--98.130) [6134]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(res, i_36), Ref__Integer_value);
-          assert {:msg "  Assert might fail. Index a[i \ 2] into a might be negative. (fmse-2015-04-16.vpr@98.11--98.130) [6135]"}
-            i_36 div 2 >= 0;
-          assert {:msg "  Assert might fail. Index a[i \ 2] into a might exceed sequence length. (fmse-2015-04-16.vpr@98.11--98.130) [6136]"}
-            i_36 div 2 < Seq#Length(a_2);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access a[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@98.11--98.130) [6137]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(a_2, i_36 div 2), Ref__Integer_value);
+        if (0 <= i_53 && (i_53 mod 2 == 0 && i_53 < Seq#Length(res))) {
+          assert {:msg "  Assert might fail. Index res[i] into res might be negative. (fmse-2015-04-16.vpr@98.11--98.130) [165160]"}
+            i_53 >= 0;
+          assert {:msg "  Assert might fail. Index res[i] into res might exceed sequence length. (fmse-2015-04-16.vpr@98.11--98.130) [165161]"}
+            i_53 < Seq#Length(res);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@98.11--98.130) [165162]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(res, i_53), Ref__Integer_value);
+          assert {:msg "  Assert might fail. Index a[i \ 2] into a might be negative. (fmse-2015-04-16.vpr@98.11--98.130) [165163]"}
+            i_53 div 2 >= 0;
+          assert {:msg "  Assert might fail. Index a[i \ 2] into a might exceed sequence length. (fmse-2015-04-16.vpr@98.11--98.130) [165164]"}
+            i_53 div 2 < Seq#Length(a_2);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access a[i \ 2].Ref__Integer_value (fmse-2015-04-16.vpr@98.11--98.130) [165165]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(a_2, i_53 div 2), Ref__Integer_value);
         }
         assume false;
       }
     if (*) {
       if (0 <= i_97 && (i_97 mod 2 == 0 && i_97 < Seq#Length(res))) {
-        assert {:msg "  Assert might fail. Assertion res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@98.11--98.130) [6138]"}
+        assert {:msg "  Assert might fail. Assertion res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@98.11--98.130) [165166]"}
           Heap[Seq#Index(res, i_97), Ref__Integer_value] == Heap[Seq#Index(a_2, i_97 div 2), Ref__Integer_value];
       }
       assume false;
@@ -2338,11 +2338,11 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion |res| == 2 * |a| might not hold. (fmse-2015-04-16.vpr@21.11--21.27) [6139]"}
+    assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion |res| == 2 * |a| might not hold. (fmse-2015-04-16.vpr@21.11--21.27) [165167]"}
       Seq#Length(res) == 2 * Seq#Length(a_2);
-    assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion |a| == |b| might not hold. (fmse-2015-04-16.vpr@22.11--22.21) [6140]"}
+    assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion |a| == |b| might not hold. (fmse-2015-04-16.vpr@22.11--22.21) [165168]"}
       Seq#Length(a_2) == Seq#Length(b_24);
-    assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion |res| == 2 * |b| might not hold. (fmse-2015-04-16.vpr@23.11--23.27) [6141]"}
+    assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion |res| == 2 * |b| might not hold. (fmse-2015-04-16.vpr@23.11--23.27) [165169]"}
       Seq#Length(res) == 2 * Seq#Length(b_24);
     havoc QPMask;
     
@@ -2350,39 +2350,39 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
       
     
     // -- check if receiver a[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@24.12--24.84) [6142]"}
-        (forall i_26: int, i_26_1: int ::
-        { neverTriggered7(i_26), neverTriggered7(i_26_1) }
-        (((i_26 != i_26_1 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_26) != Seq#Index(a_2, i_26_1)
+      assert {:msg "  Contract might not be well-formed. Quantified resource a[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@24.12--24.84) [165170]"}
+        (forall i_26_1: int, i_26_2: int ::
+        { neverTriggered7(i_26_1), neverTriggered7(i_26_2) }
+        (((i_26_1 != i_26_2 && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26_1)) && Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(a_2, i_26_1) != Seq#Index(a_2, i_26_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of Exercise4__zip might not hold. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@24.12--24.84) [6143]"}
-        (forall i_26: int ::
-        { Seq#Index(a_2, i_26) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_26) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26) } { Seq#Index(a_2, i_26) }
-        Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26) ==> Mask[Seq#Index(a_2, i_26), Ref__Integer_value] >= FullPerm
+      assert {:msg "  Postcondition of Exercise4__zip might not hold. There might be insufficient permission to access a[i].Ref__Integer_value (fmse-2015-04-16.vpr@24.12--24.84) [165171]"}
+        (forall i_26_1: int ::
+        { Seq#Index(a_2, i_26_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_26_1) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26_1) } { Seq#Index(a_2, i_26_1) }
+        Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26_1) ==> Mask[Seq#Index(a_2, i_26_1), Ref__Integer_value] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver a[i]
-      assume (forall i_26: int ::
-        { Seq#Index(a_2, i_26) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_26) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26) } { Seq#Index(a_2, i_26) }
-        Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26) && NoPerm < FullPerm ==> qpRange7(Seq#Index(a_2, i_26)) && invRecv7(Seq#Index(a_2, i_26)) == i_26
+      assume (forall i_26_1: int ::
+        { Seq#Index(a_2, i_26_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_26_1) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26_1) } { Seq#Index(a_2, i_26_1) }
+        Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_26_1) && NoPerm < FullPerm ==> qpRange7(Seq#Index(a_2, i_26_1)) && invRecv7(Seq#Index(a_2, i_26_1)) == i_26_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv7(o_4) }
-        Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv7(o_4)) && (NoPerm < FullPerm && qpRange7(o_4)) ==> Seq#Index(a_2, invRecv7(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv7(o_9) }
+        Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv7(o_9)) && (NoPerm < FullPerm && qpRange7(o_9)) ==> Seq#Index(a_2, invRecv7(o_9)) == o_9
       );
     
     // -- assume permission updates for field Ref__Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv7(o_4)) && (NoPerm < FullPerm && qpRange7(o_4)) ==> Seq#Index(a_2, invRecv7(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv7(o_4)) && (NoPerm < FullPerm && qpRange7(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv7(o_9)) && (NoPerm < FullPerm && qpRange7(o_9)) ==> Seq#Index(a_2, invRecv7(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(a_2)), invRecv7(o_9)) && (NoPerm < FullPerm && qpRange7(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     havoc QPMask;
@@ -2391,39 +2391,39 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
       
     
     // -- check if receiver b[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@25.12--25.84) [6144]"}
-        (forall i_27: int, i_27_1: int ::
-        { neverTriggered8(i_27), neverTriggered8(i_27_1) }
-        (((i_27 != i_27_1 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_27) != Seq#Index(b_24, i_27_1)
+      assert {:msg "  Contract might not be well-formed. Quantified resource b[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@25.12--25.84) [165172]"}
+        (forall i_27_2: int, i_27_3: int ::
+        { neverTriggered8(i_27_2), neverTriggered8(i_27_3) }
+        (((i_27_2 != i_27_3 && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27_2)) && Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27_3)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(b_24, i_27_2) != Seq#Index(b_24, i_27_3)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of Exercise4__zip might not hold. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@25.12--25.84) [6145]"}
-        (forall i_27: int ::
-        { Seq#Index(b_24, i_27) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_27) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27) } { Seq#Index(b_24, i_27) }
-        Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27) ==> Mask[Seq#Index(b_24, i_27), Ref__Integer_value] >= FullPerm
+      assert {:msg "  Postcondition of Exercise4__zip might not hold. There might be insufficient permission to access b[i].Ref__Integer_value (fmse-2015-04-16.vpr@25.12--25.84) [165173]"}
+        (forall i_27_2: int ::
+        { Seq#Index(b_24, i_27_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_27_2) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27_2) } { Seq#Index(b_24, i_27_2) }
+        Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27_2) ==> Mask[Seq#Index(b_24, i_27_2), Ref__Integer_value] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver b[i]
-      assume (forall i_27: int ::
-        { Seq#Index(b_24, i_27) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_27) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27) } { Seq#Index(b_24, i_27) }
-        Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27) && NoPerm < FullPerm ==> qpRange8(Seq#Index(b_24, i_27)) && invRecv8(Seq#Index(b_24, i_27)) == i_27
+      assume (forall i_27_2: int ::
+        { Seq#Index(b_24, i_27_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(b_24)), i_27_2) } { Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27_2) } { Seq#Index(b_24, i_27_2) }
+        Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_27_2) && NoPerm < FullPerm ==> qpRange8(Seq#Index(b_24, i_27_2)) && invRecv8(Seq#Index(b_24, i_27_2)) == i_27_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv8(o_4) }
-        Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv8(o_4)) && (NoPerm < FullPerm && qpRange8(o_4)) ==> Seq#Index(b_24, invRecv8(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv8(o_9) }
+        Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv8(o_9)) && (NoPerm < FullPerm && qpRange8(o_9)) ==> Seq#Index(b_24, invRecv8(o_9)) == o_9
       );
     
     // -- assume permission updates for field Ref__Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv8(o_4)) && (NoPerm < FullPerm && qpRange8(o_4)) ==> Seq#Index(b_24, invRecv8(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv8(o_4)) && (NoPerm < FullPerm && qpRange8(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv8(o_9)) && (NoPerm < FullPerm && qpRange8(o_9)) ==> Seq#Index(b_24, invRecv8(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(b_24)), invRecv8(o_9)) && (NoPerm < FullPerm && qpRange8(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     havoc QPMask;
@@ -2432,14 +2432,14 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
       
     
     // -- check if receiver res[i] is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@26.12--26.88) [6146]"}
-        (forall i_28: int, i_28_1: int ::
-        { neverTriggered9(i_28), neverTriggered9(i_28_1) }
-        (((i_28 != i_28_1 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_28)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_28_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_28) != Seq#Index(res, i_28_1)
+      assert {:msg "  Contract might not be well-formed. Quantified resource res[i].Ref__Integer_value might not be injective. (fmse-2015-04-16.vpr@26.12--26.88) [165174]"}
+        (forall i_28: int, i_28_2: int ::
+        { neverTriggered9(i_28), neverTriggered9(i_28_2) }
+        (((i_28 != i_28_2 && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_28)) && Seq#Contains(Seq#Range(0, Seq#Length(res)), i_28_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(res, i_28) != Seq#Index(res, i_28_2)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of Exercise4__zip might not hold. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@26.12--26.88) [6147]"}
+      assert {:msg "  Postcondition of Exercise4__zip might not hold. There might be insufficient permission to access res[i].Ref__Integer_value (fmse-2015-04-16.vpr@26.12--26.88) [165175]"}
         (forall i_28: int ::
         { Seq#Index(res, i_28) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_28) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_28) } { Seq#Index(res, i_28) }
         Seq#Contains(Seq#Range(0, Seq#Length(res)), i_28) ==> Mask[Seq#Index(res, i_28), Ref__Integer_value] >= FullPerm
@@ -2450,49 +2450,49 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
         { Seq#Index(res, i_28) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(res)), i_28) } { Seq#Contains(Seq#Range(0, Seq#Length(res)), i_28) } { Seq#Index(res, i_28) }
         Seq#Contains(Seq#Range(0, Seq#Length(res)), i_28) && NoPerm < FullPerm ==> qpRange9(Seq#Index(res, i_28)) && invRecv9(Seq#Index(res, i_28)) == i_28
       );
-      assume (forall o_4: Ref ::
-        { invRecv9(o_4) }
-        Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv9(o_4)) && (NoPerm < FullPerm && qpRange9(o_4)) ==> Seq#Index(res, invRecv9(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv9(o_9) }
+        Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv9(o_9)) && (NoPerm < FullPerm && qpRange9(o_9)) ==> Seq#Index(res, invRecv9(o_9)) == o_9
       );
     
     // -- assume permission updates for field Ref__Integer_value
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv9(o_4)) && (NoPerm < FullPerm && qpRange9(o_4)) ==> Seq#Index(res, invRecv9(o_4)) == o_4 && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv9(o_4)) && (NoPerm < FullPerm && qpRange9(o_4))) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv9(o_9)) && (NoPerm < FullPerm && qpRange9(o_9)) ==> Seq#Index(res, invRecv9(o_9)) == o_9 && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] - FullPerm) && (!(Seq#Contains(Seq#Range(0, Seq#Length(res)), invRecv9(o_9)) && (NoPerm < FullPerm && qpRange9(o_9))) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_29_1)) {
-        assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@27.12--27.107) [6148]"}
-          Heap[Seq#Index(res, 2 * i_29_1), Ref__Integer_value] == Heap[Seq#Index(a_2, i_29_1), Ref__Integer_value];
+      if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_29)) {
+        assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@27.12--27.107) [165176]"}
+          Heap[Seq#Index(res, 2 * i_29), Ref__Integer_value] == Heap[Seq#Index(a_2, i_29), Ref__Integer_value];
       }
       assume false;
     }
-    assume (forall i_30_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_30_1) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_30_1) } { Seq#Index(a_2, i_30_1) }
-      Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_30_1) ==> Heap[Seq#Index(res, 2 * i_30_1), Ref__Integer_value] == Heap[Seq#Index(a_2, i_30_1), Ref__Integer_value]
+    assume (forall i_30_1_1: int ::
+      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(a_2)), i_30_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_30_1_1) } { Seq#Index(a_2, i_30_1_1) }
+      Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i_30_1_1) ==> Heap[Seq#Index(res, 2 * i_30_1_1), Ref__Integer_value] == Heap[Seq#Index(a_2, i_30_1_1), Ref__Integer_value]
     );
     if (*) {
-      if (0 <= i_31_1 && (i_31_1 mod 2 == 1 && i_31_1 < Seq#Length(res))) {
-        assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@49.12--49.131) [6149]"}
-          Heap[Seq#Index(res, i_31_1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_31_1 div 2), Ref__Integer_value];
+      if (0 <= i_31 && (i_31 mod 2 == 1 && i_31 < Seq#Length(res))) {
+        assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@49.12--49.131) [165177]"}
+          Heap[Seq#Index(res, i_31), Ref__Integer_value] == Heap[Seq#Index(b_24, i_31 div 2), Ref__Integer_value];
       }
       assume false;
     }
-    assume (forall i_32_1: int ::
-      { Seq#Index(res, i_32_1) }
-      0 <= i_32_1 && (i_32_1 mod 2 == 1 && i_32_1 < Seq#Length(res)) ==> Heap[Seq#Index(res, i_32_1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_32_1 div 2), Ref__Integer_value]
+    assume (forall i_32_1_1: int ::
+      { Seq#Index(res, i_32_1_1) }
+      0 <= i_32_1_1 && (i_32_1_1 mod 2 == 1 && i_32_1_1 < Seq#Length(res)) ==> Heap[Seq#Index(res, i_32_1_1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_32_1_1 div 2), Ref__Integer_value]
     );
     if (*) {
-      if (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_33_1)) {
-        assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@50.12--50.111) [6150]"}
-          Heap[Seq#Index(res, 2 * i_33_1 + 1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_33_1), Ref__Integer_value];
+      if (Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_33)) {
+        assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@50.12--50.111) [165178]"}
+          Heap[Seq#Index(res, 2 * i_33 + 1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_33), Ref__Integer_value];
       }
       assume false;
     }
@@ -2501,9 +2501,9 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
       Seq#Contains(Seq#Range(0, Seq#Length(b_24)), i_34_1) ==> Heap[Seq#Index(res, 2 * i_34_1 + 1), Ref__Integer_value] == Heap[Seq#Index(b_24, i_34_1), Ref__Integer_value]
     );
     if (*) {
-      if (0 <= i_35_1 && (i_35_1 mod 2 == 0 && i_35_1 < Seq#Length(res))) {
-        assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@51.12--51.131) [6151]"}
-          Heap[Seq#Index(res, i_35_1), Ref__Integer_value] == Heap[Seq#Index(a_2, i_35_1 div 2), Ref__Integer_value];
+      if (0 <= i_35 && (i_35 mod 2 == 0 && i_35 < Seq#Length(res))) {
+        assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value might not hold. (fmse-2015-04-16.vpr@51.12--51.131) [165179]"}
+          Heap[Seq#Index(res, i_35), Ref__Integer_value] == Heap[Seq#Index(a_2, i_35 div 2), Ref__Integer_value];
       }
       assume false;
     }
@@ -2578,7 +2578,7 @@ procedure Exercise4__Exercise4() returns (sys__result: Ref)
   // -- Translating statement: assert sys__result != null -- fmse-2015-04-16.vpr@109.3--109.29
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (fmse-2015-04-16.vpr@109.10--109.29) [6152]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (fmse-2015-04-16.vpr@109.10--109.29) [165180]"}
       sys__result != null;
     assume state(Heap, Mask);
   
@@ -2590,6 +2590,6 @@ procedure Exercise4__Exercise4() returns (sys__result: Ref)
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Exercise4__Exercise4 might not hold. Assertion sys__result != null might not hold. (fmse-2015-04-16.vpr@102.11--102.30) [6153]"}
+    assert {:msg "  Postcondition of Exercise4__Exercise4 might not hold. Assertion sys__result != null might not hold. (fmse-2015-04-16.vpr@102.11--102.30) [165181]"}
       sys__result != null;
 }

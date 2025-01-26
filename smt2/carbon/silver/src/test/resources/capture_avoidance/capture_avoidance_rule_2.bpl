@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:58:44
+// Date:         2025-01-26 21:43:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/capture_avoidance/capture_avoidance_rule_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/capture_avoidance/capture_avoidance_rule_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_34: Ref, f_40: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_34, f_40] }
-  Heap[o_34, $allocated] ==> Heap[Heap[o_34, f_40], $allocated]
+axiom (forall o_13: Ref, f_20: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_13, f_20] }
+  Heap[o_13, $allocated] ==> Heap[Heap[o_13, f_20], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref, f_18: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, f_18] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_13, f_18) ==> Heap[o_13, f_18] == ExhaleHeap[o_13, f_18]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_20: Ref, f_29: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_20, f_29] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_20, f_29) ==> Heap[o_20, f_29] == ExhaleHeap[o_20, f_29]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_12), ExhaleHeap[null, PredicateMaskField(pm_f_12)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsPredicateField(pm_f_12) ==> Heap[null, PredicateMaskField(pm_f_12)] == ExhaleHeap[null, PredicateMaskField(pm_f_12)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_37), ExhaleHeap[null, PredicateMaskField(pm_f_37)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsPredicateField(pm_f_37) ==> Heap[null, PredicateMaskField(pm_f_37)] == ExhaleHeap[null, PredicateMaskField(pm_f_37)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_12) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsPredicateField(pm_f_12) ==> (forall <A, B> o2_12: Ref, f_18: (Field A B) ::
-    { ExhaleHeap[o2_12, f_18] }
-    Heap[null, PredicateMaskField(pm_f_12)][o2_12, f_18] ==> Heap[o2_12, f_18] == ExhaleHeap[o2_12, f_18]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_37) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsPredicateField(pm_f_37) ==> (forall <A, B> o2_37: Ref, f_29: (Field A B) ::
+    { ExhaleHeap[o2_37, f_29] }
+    Heap[null, PredicateMaskField(pm_f_37)][o2_37, f_29] ==> Heap[o2_37, f_29] == ExhaleHeap[o2_37, f_29]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_12), ExhaleHeap[null, WandMaskField(pm_f_12)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsWandField(pm_f_12) ==> Heap[null, WandMaskField(pm_f_12)] == ExhaleHeap[null, WandMaskField(pm_f_12)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_37), ExhaleHeap[null, WandMaskField(pm_f_37)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsWandField(pm_f_37) ==> Heap[null, WandMaskField(pm_f_37)] == ExhaleHeap[null, WandMaskField(pm_f_37)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_12) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsWandField(pm_f_12) ==> (forall <A, B> o2_12: Ref, f_18: (Field A B) ::
-    { ExhaleHeap[o2_12, f_18] }
-    Heap[null, WandMaskField(pm_f_12)][o2_12, f_18] ==> Heap[o2_12, f_18] == ExhaleHeap[o2_12, f_18]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_37) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsWandField(pm_f_37) ==> (forall <A, B> o2_37: Ref, f_29: (Field A B) ::
+    { ExhaleHeap[o2_37, f_29] }
+    Heap[null, WandMaskField(pm_f_37)][o2_37, f_29] ==> Heap[o2_37, f_29] == ExhaleHeap[o2_37, f_29]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_13, $allocated] ==> ExhaleHeap[o_13, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_20: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_20, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_20, $allocated] ==> ExhaleHeap[o_20, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_34: Ref, f_36: (Field A B), v: B ::
-  { Heap[o_34, f_36:=v] }
-  succHeap(Heap, Heap[o_34, f_36:=v])
+axiom (forall <A, B> Heap: HeapType, o_13: Ref, f_66: (Field A B), v: B ::
+  { Heap[o_13, f_66:=v] }
+  succHeap(Heap, Heap[o_13, f_66:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,7 +144,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(e_4: Ref): bool;
+function  neverTriggered1(e_4_1: Ref): bool;
 function  neverTriggered2(e$0: Ref): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
@@ -747,7 +747,7 @@ function  function6#triggerStateless(z: int, w_2: int): bool;
 procedure function6#definedness(z: int, w_2: int) returns (Result: bool)
   modifies Heap, Mask;
 {
-  var x_12: int;
+  var x_50: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -759,7 +759,7 @@ procedure function6#definedness(z: int, w_2: int) returns (Result: bool)
     
     // -- Check definedness of (forall x: Int ::x == x && (forall y: Int ::y == y && z == w))
       if (*) {
-        if (x_12 == x_12) {
+        if (x_50 == x_50) {
           if (*) {
             assume false;
           }
@@ -768,9 +768,9 @@ procedure function6#definedness(z: int, w_2: int) returns (Result: bool)
       }
     assume (forall x_2_2: int ::
       
-      x_2_2 == x_2_2 && (forall y_2: int ::
+      x_2_2 == x_2_2 && (forall y_2_1: int ::
         
-        y_2 == y_2 && z == w_2
+        y_2_1 == y_2_1 && z == w_2
       )
     );
     assume state(Heap, Mask);
@@ -986,28 +986,28 @@ procedure function10#definedness(z: int) returns (Result: bool)
 // ==================================================
 
 // Uninterpreted function definitions
-function  function11(Heap: HeapType, s_2: (Set Ref)): bool;
-function  function11'(Heap: HeapType, s_2: (Set Ref)): bool;
-axiom (forall Heap: HeapType, s_2: (Set Ref) ::
-  { function11(Heap, s_2) }
-  function11(Heap, s_2) == function11'(Heap, s_2) && dummyFunction(function11#triggerStateless(s_2))
+function  function11(Heap: HeapType, s_1: (Set Ref)): bool;
+function  function11'(Heap: HeapType, s_1: (Set Ref)): bool;
+axiom (forall Heap: HeapType, s_1: (Set Ref) ::
+  { function11(Heap, s_1) }
+  function11(Heap, s_1) == function11'(Heap, s_1) && dummyFunction(function11#triggerStateless(s_1))
 );
-axiom (forall Heap: HeapType, s_2: (Set Ref) ::
-  { function11'(Heap, s_2) }
-  dummyFunction(function11#triggerStateless(s_2))
+axiom (forall Heap: HeapType, s_1: (Set Ref) ::
+  { function11'(Heap, s_1) }
+  dummyFunction(function11#triggerStateless(s_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (Set Ref) ::
-  { state(Heap, Mask), function11(Heap, s_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> function11(Heap, s_2)
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (Set Ref) ::
+  { state(Heap, Mask), function11(Heap, s_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> function11(Heap, s_1)
 );
 
 // Framing axioms
-function  function11#frame(frame: FrameType, s_2: (Set Ref)): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (Set Ref) ::
-  { state(Heap, Mask), function11'(Heap, s_2) }
-  state(Heap, Mask) ==> function11'(Heap, s_2) == function11#frame(FrameFragment(function11#condqp1(Heap, s_2)), s_2)
+function  function11#frame(frame: FrameType, s_1: (Set Ref)): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (Set Ref) ::
+  { state(Heap, Mask), function11'(Heap, s_1) }
+  state(Heap, Mask) ==> function11'(Heap, s_1) == function11#frame(FrameFragment(function11#condqp1(Heap, s_1)), s_1)
 );
 // ==================================================
 // Function used for framing of quantified permission (forall e: Ref :: { (e in s) } (e in s) ==> acc(e.f, write)) in function function11
@@ -1015,19 +1015,19 @@ axiom (forall Heap: HeapType, Mask: MaskType, s_2: (Set Ref) ::
 
 function  function11#condqp1(Heap: HeapType, s_1_1_1: (Set Ref)): int;
 function  sk_function11#condqp1(fnAppH1: int, fnAppH2: int): Ref;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, s_2: (Set Ref) ::
-  { function11#condqp1(Heap2Heap, s_2), function11#condqp1(Heap1Heap, s_2), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (s_2[sk_function11#condqp1(function11#condqp1(Heap2Heap, s_2), function11#condqp1(Heap1Heap, s_2))] && NoPerm < FullPerm <==> s_2[sk_function11#condqp1(function11#condqp1(Heap2Heap, s_2), function11#condqp1(Heap1Heap, s_2))] && NoPerm < FullPerm) && (s_2[sk_function11#condqp1(function11#condqp1(Heap2Heap, s_2), function11#condqp1(Heap1Heap, s_2))] && NoPerm < FullPerm ==> Heap2Heap[sk_function11#condqp1(function11#condqp1(Heap2Heap, s_2), function11#condqp1(Heap1Heap, s_2)), f_7] == Heap1Heap[sk_function11#condqp1(function11#condqp1(Heap2Heap, s_2), function11#condqp1(Heap1Heap, s_2)), f_7]) ==> function11#condqp1(Heap2Heap, s_2) == function11#condqp1(Heap1Heap, s_2)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, s_1: (Set Ref) ::
+  { function11#condqp1(Heap2Heap, s_1), function11#condqp1(Heap1Heap, s_1), succHeapTrans(Heap2Heap, Heap1Heap) }
+  (s_1[sk_function11#condqp1(function11#condqp1(Heap2Heap, s_1), function11#condqp1(Heap1Heap, s_1))] && NoPerm < FullPerm <==> s_1[sk_function11#condqp1(function11#condqp1(Heap2Heap, s_1), function11#condqp1(Heap1Heap, s_1))] && NoPerm < FullPerm) && (s_1[sk_function11#condqp1(function11#condqp1(Heap2Heap, s_1), function11#condqp1(Heap1Heap, s_1))] && NoPerm < FullPerm ==> Heap2Heap[sk_function11#condqp1(function11#condqp1(Heap2Heap, s_1), function11#condqp1(Heap1Heap, s_1)), f_7] == Heap1Heap[sk_function11#condqp1(function11#condqp1(Heap2Heap, s_1), function11#condqp1(Heap1Heap, s_1)), f_7]) ==> function11#condqp1(Heap2Heap, s_1) == function11#condqp1(Heap1Heap, s_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  function11#trigger(frame: FrameType, s_2: (Set Ref)): bool;
+function  function11#trigger(frame: FrameType, s_1: (Set Ref)): bool;
 
 // State-independent trigger function
-function  function11#triggerStateless(s_2: (Set Ref)): bool;
+function  function11#triggerStateless(s_1: (Set Ref)): bool;
 
 // Check contract well-formedness and postcondition
-procedure function11#definedness(s_2: (Set Ref)) returns (Result: bool)
+procedure function11#definedness(s_1: (Set Ref)) returns (Result: bool)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
@@ -1045,36 +1045,36 @@ procedure function11#definedness(s_2: (Set Ref)) returns (Result: bool)
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource e.f might not be injective. (capture_avoidance_rule_2.vpr@95.12--95.48) [92242]"}
-      (forall e_4: Ref, e_4_1: Ref ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource e.f might not be injective. (capture_avoidance_rule_2.vpr@95.12--95.48) [103443]"}
+      (forall e_4_1: Ref, e_4_2: Ref ::
       
-      (((e_4 != e_4_1 && s_2[e_4]) && s_2[e_4_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> e_4 != e_4_1
+      (((e_4_1 != e_4_2 && s_1[e_4_1]) && s_1[e_4_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> e_4_1 != e_4_2
     );
     
     // -- Define Inverse Function
-      assume (forall e_4: Ref ::
-        { Heap[e_4, f_7] } { QPMask[e_4, f_7] } { s_2[e_4] }
-        s_2[e_4] && NoPerm < FullPerm ==> qpRange1(e_4) && invRecv1(e_4) == e_4
+      assume (forall e_4_1: Ref ::
+        { Heap[e_4_1, f_7] } { QPMask[e_4_1, f_7] } { s_1[e_4_1] }
+        s_1[e_4_1] && NoPerm < FullPerm ==> qpRange1(e_4_1) && invRecv1(e_4_1) == e_4_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (s_2[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4) ==> invRecv1(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (s_1[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9) ==> invRecv1(o_9) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall e_4: Ref ::
-        { Heap[e_4, f_7] } { QPMask[e_4, f_7] } { s_2[e_4] }
-        s_2[e_4] ==> e_4 != null
+      assume (forall e_4_1: Ref ::
+        { Heap[e_4_1, f_7] } { QPMask[e_4_1, f_7] } { s_1[e_4_1] }
+        s_1[e_4_1] ==> e_4_1 != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((s_2[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> invRecv1(o_4) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + FullPerm) && (!((s_2[invRecv1(o_4)] && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((s_1[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> invRecv1(o_9) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + FullPerm) && (!((s_1[invRecv1(o_9)] && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1091,10 +1091,10 @@ procedure function11#definedness(s_2: (Set Ref)) returns (Result: bool)
 procedure client1(x: int, y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var x$0: int;
   var res: bool;
   var x$0_2: int;
@@ -1104,9 +1104,9 @@ procedure client1(x: int, y: int) returns ()
   var z$0_5: int;
   var z$0_9: int;
   var z$0_11: int;
-  var x$0_6: int;
+  var x$0_6_1: int;
   var y$0: int;
-  var z_17_2: int;
+  var z_17: int;
   var z_21: int;
   
   // -- Initializing the state
@@ -1123,24 +1123,24 @@ procedure client1(x: int, y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: res := function0() -- capture_avoidance_rule_2.vpr@78.3--78.21
     
     // -- Check definedness of function0()
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
-          assert {:msg "  Precondition of function function0 might not hold. Assertion x$0 == x$0 might not hold. (capture_avoidance_rule_2.vpr@78.10--78.21) [92243]"}
+          assert {:msg "  Precondition of function function0 might not hold. Assertion x$0 == x$0 might not hold. (capture_avoidance_rule_2.vpr@78.10--78.21) [103444]"}
             x$0 == x$0;
           assume false;
         }
-        assume (forall x$0_1_1_1: int ::
+        assume (forall x$0_1_1: int ::
           
-          x$0_1_1_1 == x$0_1_1_1
+          x$0_1_1 == x$0_1_1
         );
         // Stop execution
         assume false;
@@ -1153,18 +1153,18 @@ procedure client1(x: int, y: int) returns ()
     // -- Check definedness of function1(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
-          assert {:msg "  Precondition of function function1 might not hold. Assertion x$0 == x$0 might not hold. (capture_avoidance_rule_2.vpr@79.10--79.22) [92244]"}
+          assert {:msg "  Precondition of function function1 might not hold. Assertion x$0 == x$0 might not hold. (capture_avoidance_rule_2.vpr@79.10--79.22) [103445]"}
             x$0_2 == x$0_2;
-          assert {:msg "  Precondition of function function1 might not hold. Assertion x == 0 might not hold. (capture_avoidance_rule_2.vpr@79.10--79.22) [92245]"}
+          assert {:msg "  Precondition of function function1 might not hold. Assertion x == 0 might not hold. (capture_avoidance_rule_2.vpr@79.10--79.22) [103446]"}
             x == 0;
           assume false;
         }
-        assume (forall x$0_3_1_1: int ::
+        assume (forall x$0_3_1: int ::
           
-          x$0_3_1_1 == x$0_3_1_1 && x == 0
+          x$0_3_1 == x$0_3_1 && x == 0
         );
         // Stop execution
         assume false;
@@ -1177,12 +1177,12 @@ procedure client1(x: int, y: int) returns ()
     // -- Check definedness of function2(x, y)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
-          assert {:msg "  Precondition of function function2 might not hold. Assertion x$0 == x$0 might not hold. (capture_avoidance_rule_2.vpr@80.10--80.25) [92246]"}
+          assert {:msg "  Precondition of function function2 might not hold. Assertion x$0 == x$0 might not hold. (capture_avoidance_rule_2.vpr@80.10--80.25) [103447]"}
             x$0_4 == x$0_4;
-          assert {:msg "  Precondition of function function2 might not hold. Assertion x == y might not hold. (capture_avoidance_rule_2.vpr@80.10--80.25) [92247]"}
+          assert {:msg "  Precondition of function function2 might not hold. Assertion x == y might not hold. (capture_avoidance_rule_2.vpr@80.10--80.25) [103448]"}
             x == y;
           assume false;
         }
@@ -1204,11 +1204,11 @@ procedure client1(x: int, y: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
           if (*) {
-            assert {:msg "  Precondition of function function3 might not hold. Assertion z$0 == z$0 might not hold. (capture_avoidance_rule_2.vpr@81.10--81.44) [92248]"}
+            assert {:msg "  Precondition of function function3 might not hold. Assertion z$0 == z$0 might not hold. (capture_avoidance_rule_2.vpr@81.10--81.44) [103449]"}
               z$0 == z$0;
             assume false;
           }
@@ -1218,7 +1218,7 @@ procedure client1(x: int, y: int) returns ()
           );
           assume false;
         }
-        assume (forall z_2_1_1: int ::
+        assume (forall z_2_1: int ::
           
           (forall z$0_2: int ::
             
@@ -1245,11 +1245,11 @@ procedure client1(x: int, y: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
           if (*) {
-            assert {:msg "  Precondition of function function4 might not hold. Assertion z$0 == z$0 might not hold. (capture_avoidance_rule_2.vpr@82.10--82.69) [92249]"}
+            assert {:msg "  Precondition of function function4 might not hold. Assertion z$0 == z$0 might not hold. (capture_avoidance_rule_2.vpr@82.10--82.69) [103450]"}
               z$0_3 == z$0_3;
             assume false;
           }
@@ -1258,7 +1258,7 @@ procedure client1(x: int, y: int) returns ()
             z$0_4_1 == z$0_4_1
           );
           if (*) {
-            assert {:msg "  Precondition of function function4 might not hold. Assertion z$0 == z$0 might not hold. (capture_avoidance_rule_2.vpr@82.10--82.69) [92250]"}
+            assert {:msg "  Precondition of function function4 might not hold. Assertion z$0 == z$0 might not hold. (capture_avoidance_rule_2.vpr@82.10--82.69) [103451]"}
               z$0_5 == z$0_5;
             assume false;
           }
@@ -1268,7 +1268,7 @@ procedure client1(x: int, y: int) returns ()
           );
           assume false;
         }
-        assume (forall z_7_1_1: int ::
+        assume (forall z_7_1: int ::
           
           (forall z$0_7: int ::
             
@@ -1281,12 +1281,12 @@ procedure client1(x: int, y: int) returns ()
         // Stop execution
         assume false;
       }
-    res := function4(Heap, (forall z_8_1: int ::
+    res := function4(Heap, (forall z_8: int ::
       
-      z_8_1 == z_8_1
-    ), (forall z_9_1: int ::
+      z_8 == z_8
+    ), (forall z_9: int ::
       
-      z_9_1 == z_9_1
+      z_9 == z_9
     ));
     assume state(Heap, Mask);
   
@@ -1306,13 +1306,13 @@ procedure client1(x: int, y: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
-          assert {:msg "  Precondition of function function4 might not hold. Assertion x == 0 might not hold. (capture_avoidance_rule_2.vpr@83.10--83.89) [92251]"}
+          assert {:msg "  Precondition of function function4 might not hold. Assertion x == 0 might not hold. (capture_avoidance_rule_2.vpr@83.10--83.89) [103452]"}
             x == 0;
           if (*) {
-            assert {:msg "  Precondition of function function4 might not hold. Assertion z$0 == z$0 might not hold. (capture_avoidance_rule_2.vpr@83.10--83.89) [92252]"}
+            assert {:msg "  Precondition of function function4 might not hold. Assertion z$0 == z$0 might not hold. (capture_avoidance_rule_2.vpr@83.10--83.89) [103453]"}
               z$0_9 == z$0_9;
             assume false;
           }
@@ -1320,10 +1320,10 @@ procedure client1(x: int, y: int) returns ()
             
             z$0_10_1 == z$0_10_1
           );
-          assert {:msg "  Precondition of function function4 might not hold. Assertion y == 0 might not hold. (capture_avoidance_rule_2.vpr@83.10--83.89) [92253]"}
+          assert {:msg "  Precondition of function function4 might not hold. Assertion y == 0 might not hold. (capture_avoidance_rule_2.vpr@83.10--83.89) [103454]"}
             y == 0;
           if (*) {
-            assert {:msg "  Precondition of function function4 might not hold. Assertion z$0 == z$0 might not hold. (capture_avoidance_rule_2.vpr@83.10--83.89) [92254]"}
+            assert {:msg "  Precondition of function function4 might not hold. Assertion z$0 == z$0 might not hold. (capture_avoidance_rule_2.vpr@83.10--83.89) [103455]"}
               z$0_11 == z$0_11;
             assume false;
           }
@@ -1333,7 +1333,7 @@ procedure client1(x: int, y: int) returns ()
           );
           assume false;
         }
-        assume (forall z_13_1_1: int ::
+        assume (forall z_13_1: int ::
           
           (x == 0 && (forall z$0_13: int ::
             
@@ -1349,9 +1349,9 @@ procedure client1(x: int, y: int) returns ()
     res := function4(Heap, x == 0 && (forall z_14_1: int ::
       
       z_14_1 == z_14_1
-    ), y == 0 && (forall z_15_1: int ::
+    ), y == 0 && (forall z_15: int ::
       
-      z_15_1 == z_15_1
+      z_15 == z_15
     ));
     assume state(Heap, Mask);
   
@@ -1360,9 +1360,9 @@ procedure client1(x: int, y: int) returns ()
     // -- Check definedness of function5(y, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function function5 might not hold. Assertion y == 0 || x == 0 might not hold. (capture_avoidance_rule_2.vpr@84.10--84.25) [92255]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function function5 might not hold. Assertion y == 0 || x == 0 might not hold. (capture_avoidance_rule_2.vpr@84.10--84.25) [103456]"}
           y == 0 || x == 0;
         // Stop execution
         assume false;
@@ -1375,15 +1375,15 @@ procedure client1(x: int, y: int) returns ()
     // -- Check definedness of function6(x, y)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
-          assert {:msg "  Precondition of function function6 might not hold. Assertion x$0 == x$0 might not hold. (capture_avoidance_rule_2.vpr@85.10--85.25) [92256]"}
-            x$0_6 == x$0_6;
+          assert {:msg "  Precondition of function function6 might not hold. Assertion x$0 == x$0 might not hold. (capture_avoidance_rule_2.vpr@85.10--85.25) [103457]"}
+            x$0_6_1 == x$0_6_1;
           if (*) {
-            assert {:msg "  Precondition of function function6 might not hold. Assertion y$0 == y$0 might not hold. (capture_avoidance_rule_2.vpr@85.10--85.25) [92257]"}
+            assert {:msg "  Precondition of function function6 might not hold. Assertion y$0 == y$0 might not hold. (capture_avoidance_rule_2.vpr@85.10--85.25) [103458]"}
               y$0 == y$0;
-            assert {:msg "  Precondition of function function6 might not hold. Assertion x == y might not hold. (capture_avoidance_rule_2.vpr@85.10--85.25) [92258]"}
+            assert {:msg "  Precondition of function function6 might not hold. Assertion x == y might not hold. (capture_avoidance_rule_2.vpr@85.10--85.25) [103459]"}
               x == y;
             assume false;
           }
@@ -1414,23 +1414,23 @@ procedure client1(x: int, y: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
-          assert {:msg "  Precondition of function function7 might not hold. Assertion z == z might not hold. (capture_avoidance_rule_2.vpr@86.10--86.47) [92259]"}
-            z_17_2 == z_17_2;
+          assert {:msg "  Precondition of function function7 might not hold. Assertion z == z might not hold. (capture_avoidance_rule_2.vpr@86.10--86.47) [103460]"}
+            z_17 == z_17;
           assume false;
         }
-        assume (forall z_18_1_1: int ::
+        assume (forall z_18_1: int ::
           
-          z_18_1_1 == z_18_1_1
+          z_18_1 == z_18_1
         );
         // Stop execution
         assume false;
       }
-    res := function7(Heap, (forall z_19_1: int ::
+    res := function7(Heap, (forall z_19: int ::
       
-      z_19_1 == z_19_1
+      z_19 == z_19
     ), 5);
     assume state(Heap, Mask);
   
@@ -1442,11 +1442,11 @@ procedure client1(x: int, y: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
           if (*) {
-            assert {:msg "  Precondition of function function8 might not hold. Assertion z == z might not hold. (capture_avoidance_rule_2.vpr@87.10--87.47) [92260]"}
+            assert {:msg "  Precondition of function function8 might not hold. Assertion z == z might not hold. (capture_avoidance_rule_2.vpr@87.10--87.47) [103461]"}
               z_21 == z_21;
             assume false;
           }
@@ -1466,9 +1466,9 @@ procedure client1(x: int, y: int) returns ()
         // Stop execution
         assume false;
       }
-    res := function8(Heap, (forall z_24: int ::
+    res := function8(Heap, (forall z_24_1: int ::
       
-      z_24 == z_24
+      z_24_1 == z_24_1
     ), 5);
     assume state(Heap, Mask);
   
@@ -1477,9 +1477,9 @@ procedure client1(x: int, y: int) returns ()
     // -- Check definedness of function9()
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function function9 might not hold. Assertion (exists x$0: Int :: x$0 == x$0) might not hold. (capture_avoidance_rule_2.vpr@88.10--88.21) [92261]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function function9 might not hold. Assertion (exists x$0: Int :: x$0 == x$0) might not hold. (capture_avoidance_rule_2.vpr@88.10--88.21) [103462]"}
           (exists x$0_10: int ::
           
           x$0_10 == x$0_10
@@ -1495,9 +1495,9 @@ procedure client1(x: int, y: int) returns ()
     // -- Check definedness of function10(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function function10 might not hold. Assertion (exists x$0: Int :: x$0 == x ==> x$0 == 0) might not hold. (capture_avoidance_rule_2.vpr@89.10--89.23) [92262]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function function10 might not hold. Assertion (exists x$0: Int :: x$0 == x ==> x$0 == 0) might not hold. (capture_avoidance_rule_2.vpr@89.10--89.23) [103463]"}
           (exists x$0_11: int ::
           
           x$0_11 == x ==> x$0_11 == 0
@@ -1517,12 +1517,12 @@ procedure client2(e_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   
@@ -1545,32 +1545,32 @@ procedure client2(e_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert function11(Set(e)) -- capture_avoidance_rule_2.vpr@104.3--104.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of function11(Set(e))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver e$0 is injective
-          assert {:msg "  Precondition of function function11 might not hold. Quantified resource e$0.f might not be injective. (capture_avoidance_rule_2.vpr@104.10--104.28) [92263]"}
+          assert {:msg "  Precondition of function function11 might not hold. Quantified resource e$0.f might not be injective. (capture_avoidance_rule_2.vpr@104.10--104.28) [103464]"}
             (forall e$0: Ref, e$0_1: Ref ::
             { neverTriggered2(e$0), neverTriggered2(e$0_1) }
             (((e$0 != e$0_1 && Set#Singleton(e_1)[e$0]) && Set#Singleton(e_1)[e$0_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> e$0 != e$0_1
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function function11 might not hold. There might be insufficient permission to access e$0.f (capture_avoidance_rule_2.vpr@104.10--104.28) [92264]"}
+          assert {:msg "  Precondition of function function11 might not hold. There might be insufficient permission to access e$0.f (capture_avoidance_rule_2.vpr@104.10--104.28) [103465]"}
             (forall e$0: Ref ::
             { ExhaleWellDef0Heap[e$0, f_7] } { QPMask[e$0, f_7] } { Set#Singleton(e_1)[e$0] }
             Set#Singleton(e_1)[e$0] ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[e$0, f_7] > NoPerm
@@ -1581,9 +1581,9 @@ procedure client2(e_1: Ref) returns ()
             { ExhaleWellDef0Heap[e$0, f_7] } { QPMask[e$0, f_7] } { Set#Singleton(e_1)[e$0] }
             Set#Singleton(e_1)[e$0] && NoPerm < FullPerm ==> qpRange2(e$0) && invRecv2(e$0) == e$0
           );
-          assume (forall o_4: Ref ::
-            { invRecv2(o_4) }
-            Set#Singleton(e_1)[invRecv2(o_4)] && (NoPerm < FullPerm && qpRange2(o_4)) ==> invRecv2(o_4) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv2(o_9) }
+            Set#Singleton(e_1)[invRecv2(o_9)] && (NoPerm < FullPerm && qpRange2(o_9)) ==> invRecv2(o_9) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -1592,7 +1592,7 @@ procedure client2(e_1: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion function11(Set(e)) might not hold. (capture_avoidance_rule_2.vpr@104.10--104.28) [92265]"}
+    assert {:msg "  Assert might fail. Assertion function11(Set(e)) might not hold. (capture_avoidance_rule_2.vpr@104.10--104.28) [103466]"}
       function11(Heap, Set#Singleton(e_1));
     assume state(Heap, Mask);
 }

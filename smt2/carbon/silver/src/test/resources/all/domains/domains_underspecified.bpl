@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:14:33
+// Date:         2025-01-26 21:43:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains_underspecified.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains_underspecified-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,44 +181,44 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type DDomainType T S;
 
 // Translation of domain function f1
-function  f1_2<T, S>(t_9: T): S;
+function  f1_3<T, S>(t_3: T): S;
 
 // Translation of domain function f2
-function  f2_2<T, S>(t_9: (DDomainType T S)): DDomainType S S;
+function  f2_3<T, S>(t_3: (DDomainType T S)): DDomainType S S;
 
 // Translation of domain function f3
-function  f3_1<T, S>(t_9: (DDomainType T S)): T;
+function  f3_2<T, S>(t_3: (DDomainType T S)): T;
 
 // Translation of domain function f4
-function  f4<T, S>(t_9: T): DDomainType T S;
+function  f4_1<T, S>(t_3: T): DDomainType T S;
 
 // Translation of domain function f5
-function  f5<S, T>(t_9: S): DDomainType T S;
+function  f5_1<S, T>(t_3: S): DDomainType T S;
 
 // Translation of domain function f6
-function  f6<T, S>(): DDomainType T S;
+function  f6_1<T, S>(): DDomainType T S;
 
 // Translation of domain axiom A1
 axiom (forall <T, S> x: T ::
-  { (f3_1((f4(x): DDomainType T S)): T) }
-  (f3_1((f4(x): DDomainType T S)): T) == x
+  { (f3_2((f4_1(x): DDomainType T S)): T) }
+  (f3_2((f4_1(x): DDomainType T S)): T) == x
 );
 
 // Translation of domain axiom A2
 axiom (forall <S, T> x: S ::
-  { (f2_2((f5(x): DDomainType T S)): DDomainType S S) }
-  (f2_2((f5(x): DDomainType T S)): DDomainType S S) == (f6(): DDomainType S S)
+  { (f2_3((f5_1(x): DDomainType T S)): DDomainType S S) }
+  (f2_3((f5_1(x): DDomainType T S)): DDomainType S S) == (f6_1(): DDomainType S S)
 );
 
 // ==================================================
 // Translation of method m
 // ==================================================
 
-procedure m(x: (DDomainType int bool)) returns (r_1: (DDomainType bool int))
+procedure m_17(x: (DDomainType int bool)) returns (r_1: (DDomainType bool int))
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: int;
   
   // -- Initializing the state
@@ -229,10 +229,10 @@ procedure m(x: (DDomainType int bool)) returns (r_1: (DDomainType bool int))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: y := (f3((f5((f1(y): Int)): D[Int, Int])): Int) -- domains_underspecified.vpr@20.5--20.23
-    y := (f3_1((f5((f1_2(y): int)): DDomainType int int)): int);
+    y := (f3_2((f5_1((f1_3(y): int)): DDomainType int int)): int);
     assume state(Heap, Mask);
 }

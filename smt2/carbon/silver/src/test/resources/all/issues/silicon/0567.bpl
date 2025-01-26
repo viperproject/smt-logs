@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:56
+// Date:         2025-01-26 21:42:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0567.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0567-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref, f_8: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, f_8] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_3, f_8) ==> Heap[o_3, f_8] == ExhaleHeap[o_3, f_8]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_19: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_19] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_19) ==> Heap[o_12, f_19] == ExhaleHeap[o_12, f_19]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19), ExhaleHeap[null, PredicateMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> Heap[null, PredicateMaskField(pm_f_19)] == ExhaleHeap[null, PredicateMaskField(pm_f_19)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, PredicateMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19), ExhaleHeap[null, WandMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> Heap[null, WandMaskField(pm_f_19)] == ExhaleHeap[null, WandMaskField(pm_f_19)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, WandMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, WandMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_3, $allocated] ==> ExhaleHeap[o_3, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_9: (Field A B), v: B ::
-  { Heap[o_1, f_9:=v] }
-  succHeap(Heap, Heap[o_1, f_9:=v])
+axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_51: (Field A B), v: B ::
+  { Heap[o_1, f_51:=v] }
+  succHeap(Heap, Heap[o_1, f_51:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -299,11 +299,11 @@ procedure test01(i: int) returns ()
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of test01 might not hold. Assertion id(0) == 0 might not hold. (0567.vpr@8.12--8.36) [197066]"}
+    assert {:msg "  Postcondition of test01 might not hold. Assertion id(0) == 0 might not hold. (0567.vpr@8.12--8.36) [72723]"}
       id(Heap, 0) == 0;
-    assert {:msg "  Postcondition of test01 might not hold. Assertion id(1) == 1 might not hold. (0567.vpr@8.12--8.36) [197067]"}
+    assert {:msg "  Postcondition of test01 might not hold. Assertion id(1) == 1 might not hold. (0567.vpr@8.12--8.36) [72724]"}
       id(Heap, 1) == 1;
-    assert {:msg "  Postcondition of test01 might not hold. Assertion false might not hold. (0567.vpr@9.12--9.17) [197068]"}
+    assert {:msg "  Postcondition of test01 might not hold. Assertion false might not hold. (0567.vpr@9.12--9.17) [72725]"}
       false;
 }
 
@@ -318,10 +318,10 @@ procedure test02(i: int) returns ()
   var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var y_18: int;
+  var y_20: int;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var y_6_2: int;
+  var y_6: int;
   var y_8_1: int;
   
   // -- Initializing the state
@@ -365,7 +365,7 @@ procedure test02(i: int) returns ()
           // Stop execution
           assume false;
         }
-        if (id(PostHeap, y_18) == y_18) {
+        if (id(PostHeap, y_20) == y_20) {
           if (*) {
             // Stop execution
             assume false;
@@ -401,10 +401,10 @@ procedure test02(i: int) returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     if (*) {
-      assert {:msg "  Postcondition of test02 might not hold. Assertion id(y) == y might not hold. (0567.vpr@15.12--15.61) [197069]"}
-        id(Heap, y_6_2) == y_6_2;
-      assert {:msg "  Postcondition of test02 might not hold. Assertion id(y) == i might not hold. (0567.vpr@15.12--15.61) [197070]"}
-        id(Heap, y_6_2) == i;
+      assert {:msg "  Postcondition of test02 might not hold. Assertion id(y) == y might not hold. (0567.vpr@15.12--15.61) [72726]"}
+        id(Heap, y_6) == y_6;
+      assert {:msg "  Postcondition of test02 might not hold. Assertion id(y) == i might not hold. (0567.vpr@15.12--15.61) [72727]"}
+        id(Heap, y_6) == i;
       assume false;
     }
     assume (forall y_7_1: int ::
@@ -412,15 +412,15 @@ procedure test02(i: int) returns ()
       id(Heap, y_7_1) == y_7_1 && id(Heap, y_7_1) == i
     );
     if (*) {
-      assert {:msg "  Postcondition of test02 might not hold. Assertion id(y) == y might not hold. (0567.vpr@16.12--16.57) [197071]"}
+      assert {:msg "  Postcondition of test02 might not hold. Assertion id(y) == y might not hold. (0567.vpr@16.12--16.57) [72728]"}
         id(Heap, y_8_1) == y_8_1;
-      assert {:msg "  Postcondition of test02 might not hold. Assertion y == i might not hold. (0567.vpr@16.12--16.57) [197072]"}
+      assert {:msg "  Postcondition of test02 might not hold. Assertion y == i might not hold. (0567.vpr@16.12--16.57) [72729]"}
         y_8_1 == i;
       assume false;
     }
-    assume (forall y_9_1_1: int ::
-      { id#frame(EmptyFrame, y_9_1_1) }
-      id(Heap, y_9_1_1) == y_9_1_1 && y_9_1_1 == i
+    assume (forall y_9_1: int ::
+      { id#frame(EmptyFrame, y_9_1) }
+      id(Heap, y_9_1) == y_9_1 && y_9_1 == i
     );
 }
 
@@ -480,9 +480,9 @@ procedure test03(i: int) returns ()
         assume false;
       }
     if (*) {
-      assert {:msg "  Assert might fail. Assertion id(y) == y might not hold. (0567.vpr@22.10--22.55) [197073]"}
+      assert {:msg "  Assert might fail. Assertion id(y) == y might not hold. (0567.vpr@22.10--22.55) [72730]"}
         id(Heap, y_3_2) == y_3_2;
-      assert {:msg "  Assert might fail. Assertion y == i might not hold. (0567.vpr@22.10--22.55) [197074]"}
+      assert {:msg "  Assert might fail. Assertion y == i might not hold. (0567.vpr@22.10--22.55) [72731]"}
         y_3_2 == i;
       assume false;
     }

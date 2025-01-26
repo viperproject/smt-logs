@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:29:03
+; Started: 2025-01-26 21:22:15
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -184,45 +184,45 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-409|)))
+  :qid |quant-u-452|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-410|)))
+  :qid |quant-u-453|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-425|)))
+  :qid |quant-u-468|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-426|)))
+  :qid |quant-u-469|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-427|)))
+  :qid |quant-u-470|)))
 (assert (forall ((s@$ $Snap) (_arg@1@00 $Ref)) (!
   (=
     (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%limited s@$ _arg@1@00)
     (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__ s@$ _arg@1@00))
   :pattern ((snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__ s@$ _arg@1@00))
-  :qid |quant-u-411|)))
+  :qid |quant-u-454|)))
 (assert (forall ((s@$ $Snap) (_arg@1@00 $Ref)) (!
   (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%stateless _arg@1@00)
   :pattern ((snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%limited s@$ _arg@1@00))
-  :qid |quant-u-412|)))
+  :qid |quant-u-455|)))
 (assert (forall ((s@$ $Snap) (self@3@00 $Ref) (other@4@00 $Ref)) (!
   (=
     (isize$$memory_eq$$__$TY$__isize$isize$$bool$%limited s@$ self@3@00 other@4@00)
     (isize$$memory_eq$$__$TY$__isize$isize$$bool$ s@$ self@3@00 other@4@00))
   :pattern ((isize$$memory_eq$$__$TY$__isize$isize$$bool$ s@$ self@3@00 other@4@00))
-  :qid |quant-u-413|)))
+  :qid |quant-u-456|)))
 (assert (forall ((s@$ $Snap) (self@3@00 $Ref) (other@4@00 $Ref)) (!
   (isize$$memory_eq$$__$TY$__isize$isize$$bool$%stateless self@3@00 other@4@00)
   :pattern ((isize$$memory_eq$$__$TY$__isize$isize$$bool$%limited s@$ self@3@00 other@4@00))
-  :qid |quant-u-414|)))
+  :qid |quant-u-457|)))
 (assert (forall ((s@$ $Snap) (self@3@00 $Ref) (other@4@00 $Ref)) (!
   (=>
     (isize$$memory_eq$$__$TY$__isize$isize$$bool$%precondition s@$ self@3@00 other@4@00)
@@ -232,21 +232,21 @@
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first s@$)))
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$))))))
   :pattern ((isize$$memory_eq$$__$TY$__isize$isize$$bool$ s@$ self@3@00 other@4@00))
-  :qid |quant-u-428|)))
+  :qid |quant-u-471|)))
 (assert (forall ((s@$ $Snap) (self@3@00 $Ref) (other@4@00 $Ref)) (!
   true
   :pattern ((isize$$memory_eq$$__$TY$__isize$isize$$bool$ s@$ self@3@00 other@4@00))
-  :qid |quant-u-429|)))
+  :qid |quant-u-472|)))
 (assert (forall ((s@$ $Snap) (_left@6@00 $Ref) (_right@7@00 $Ref)) (!
   (=
     (equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$%limited s@$ _left@6@00 _right@7@00)
     (equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$ s@$ _left@6@00 _right@7@00))
   :pattern ((equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$ s@$ _left@6@00 _right@7@00))
-  :qid |quant-u-415|)))
+  :qid |quant-u-458|)))
 (assert (forall ((s@$ $Snap) (_left@6@00 $Ref) (_right@7@00 $Ref)) (!
   (equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$%stateless _left@6@00 _right@7@00)
   :pattern ((equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$%limited s@$ _left@6@00 _right@7@00))
-  :qid |quant-u-416|)))
+  :qid |quant-u-459|)))
 (assert (forall ((s@$ $Snap) (_left@6@00 $Ref) (_right@7@00 $Ref)) (!
   (=>
     (equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$%precondition s@$ _left@6@00 _right@7@00)
@@ -256,7 +256,7 @@
         (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__ $Snap.unit _left@6@00)
         (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__ $Snap.unit _right@7@00))))
   :pattern ((equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$ s@$ _left@6@00 _right@7@00))
-  :qid |quant-u-430|)))
+  :qid |quant-u-473|)))
 (assert (forall ((s@$ $Snap) (_left@6@00 $Ref) (_right@7@00 $Ref)) (!
   (=>
     (equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$%precondition s@$ _left@6@00 _right@7@00)
@@ -264,17 +264,17 @@
       (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%precondition $Snap.unit _left@6@00)
       (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%precondition $Snap.unit _right@7@00)))
   :pattern ((equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$ s@$ _left@6@00 _right@7@00))
-  :qid |quant-u-431|)))
+  :qid |quant-u-474|)))
 (assert (forall ((s@$ $Snap) (_left@9@00 $Ref) (_right@10@00 $Ref)) (!
   (=
     (equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$%limited s@$ _left@9@00 _right@10@00)
     (equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$ s@$ _left@9@00 _right@10@00))
   :pattern ((equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$ s@$ _left@9@00 _right@10@00))
-  :qid |quant-u-417|)))
+  :qid |quant-u-460|)))
 (assert (forall ((s@$ $Snap) (_left@9@00 $Ref) (_right@10@00 $Ref)) (!
   (equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$%stateless _left@9@00 _right@10@00)
   :pattern ((equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$%limited s@$ _left@9@00 _right@10@00))
-  :qid |quant-u-418|)))
+  :qid |quant-u-461|)))
 (assert (forall ((s@$ $Snap) (_left@9@00 $Ref) (_right@10@00 $Ref)) (!
   (=>
     (equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$%precondition s@$ _left@9@00 _right@10@00)
@@ -284,7 +284,7 @@
         (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
         (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))))
   :pattern ((equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$ s@$ _left@9@00 _right@10@00))
-  :qid |quant-u-432|)))
+  :qid |quant-u-475|)))
 (assert (forall ((s@$ $Snap) (_left@9@00 $Ref) (_right@10@00 $Ref)) (!
   (=>
     (equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$%precondition s@$ _left@9@00 _right@10@00)
@@ -292,17 +292,17 @@
       (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$ s@$ _left@9@00 _right@10@00))
-  :qid |quant-u-433|)))
+  :qid |quant-u-476|)))
 (assert (forall ((s@$ $Snap) (_left@12@00 $Ref) (_right@13@00 $Ref)) (!
   (=
     (not_equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$%limited s@$ _left@12@00 _right@13@00)
     (not_equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$ s@$ _left@12@00 _right@13@00))
   :pattern ((not_equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$ s@$ _left@12@00 _right@13@00))
-  :qid |quant-u-419|)))
+  :qid |quant-u-462|)))
 (assert (forall ((s@$ $Snap) (_left@12@00 $Ref) (_right@13@00 $Ref)) (!
   (not_equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$%stateless _left@12@00 _right@13@00)
   :pattern ((not_equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$%limited s@$ _left@12@00 _right@13@00))
-  :qid |quant-u-420|)))
+  :qid |quant-u-463|)))
 (assert (forall ((s@$ $Snap) (_left@12@00 $Ref) (_right@13@00 $Ref)) (!
   (=>
     (not_equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$%precondition s@$ _left@12@00 _right@13@00)
@@ -313,7 +313,7 @@
           (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
           (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((not_equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$ s@$ _left@12@00 _right@13@00))
-  :qid |quant-u-434|)))
+  :qid |quant-u-477|)))
 (assert (forall ((s@$ $Snap) (_left@12@00 $Ref) (_right@13@00 $Ref)) (!
   (=>
     (not_equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$%precondition s@$ _left@12@00 _right@13@00)
@@ -321,17 +321,17 @@
       (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((not_equals$__$TY$__ref$__TYPARAM__$S$__$ref$__TYPARAM__$S$__$$bool$ s@$ _left@12@00 _right@13@00))
-  :qid |quant-u-435|)))
+  :qid |quant-u-478|)))
 (assert (forall ((s@$ $Snap) (_left@15@00 $Ref) (_right@16@00 $Ref)) (!
   (=
     (not_equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$%limited s@$ _left@15@00 _right@16@00)
     (not_equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$ s@$ _left@15@00 _right@16@00))
   :pattern ((not_equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$ s@$ _left@15@00 _right@16@00))
-  :qid |quant-u-421|)))
+  :qid |quant-u-464|)))
 (assert (forall ((s@$ $Snap) (_left@15@00 $Ref) (_right@16@00 $Ref)) (!
   (not_equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$%stateless _left@15@00 _right@16@00)
   :pattern ((not_equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$%limited s@$ _left@15@00 _right@16@00))
-  :qid |quant-u-422|)))
+  :qid |quant-u-465|)))
 (assert (forall ((s@$ $Snap) (_left@15@00 $Ref) (_right@16@00 $Ref)) (!
   (=>
     (not_equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$%precondition s@$ _left@15@00 _right@16@00)
@@ -342,7 +342,7 @@
           (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__ $Snap.unit _left@15@00)
           (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__ $Snap.unit _right@16@00)))))
   :pattern ((not_equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$ s@$ _left@15@00 _right@16@00))
-  :qid |quant-u-436|)))
+  :qid |quant-u-479|)))
 (assert (forall ((s@$ $Snap) (_left@15@00 $Ref) (_right@16@00 $Ref)) (!
   (=>
     (not_equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$%precondition s@$ _left@15@00 _right@16@00)
@@ -350,17 +350,17 @@
       (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%precondition $Snap.unit _left@15@00)
       (snap$__$TY$____TYPARAM__$S$__$Snap$__TYPARAM__$S$__%precondition $Snap.unit _right@16@00)))
   :pattern ((not_equals$__$TY$____TYPARAM__$S$__$__TYPARAM__$S$__$$bool$ s@$ _left@15@00 _right@16@00))
-  :qid |quant-u-437|)))
+  :qid |quant-u-480|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref) (other@19@00 $Ref)) (!
   (=
     (m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%limited s@$ self@18@00 other@19@00)
     (m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$ s@$ self@18@00 other@19@00))
   :pattern ((m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$ s@$ self@18@00 other@19@00))
-  :qid |quant-u-423|)))
+  :qid |quant-u-466|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref) (other@19@00 $Ref)) (!
   (m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%stateless self@18@00 other@19@00)
   :pattern ((m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%limited s@$ self@18@00 other@19@00))
-  :qid |quant-u-424|)))
+  :qid |quant-u-467|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref) (other@19@00 $Ref)) (!
   (=>
     (m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%precondition s@$ self@18@00 other@19@00)
@@ -379,7 +379,7 @@
             ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))
   :pattern ((m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$ s@$ self@18@00 other@19@00))
   :pattern ((m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%stateless self@18@00 other@19@00) (m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_%trigger ($Snap.first s@$) self@18@00))
-  :qid |quant-u-438|)))
+  :qid |quant-u-481|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref) (other@19@00 $Ref)) (!
   (=>
     (m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$%precondition s@$ self@18@00 other@19@00)
@@ -403,7 +403,7 @@
               ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$))))))
               ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))
   :pattern ((m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$memory_eq$$__$TY$__m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$m_348_cgmath_point$$Point3$opensqu$0$closesqu$$_beg_$isize$_end_$$bool$ s@$ self@18@00 other@19@00))
-  :qid |quant-u-439|)))
+  :qid |quant-u-482|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- m_348_cgmath_point$$main$opensqu$0$closesqu$ ----------

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:58
+; Started: 2025-01-26 21:34:01
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -949,7 +949,7 @@
   :pattern ((Seq_contains_trigger S@1@01 x@2@01))
   :pattern ((inv@4@01 x@2@01))
   :pattern ((img@5@01 x@2@01))
-  :qid |quant-u-24389|)))
+  :qid |quant-u-10516|)))
 (assert (forall ((this $Ref)) (!
   (=>
     (and (img@5@01 this) (Seq_contains S@1@01 (inv@4@01 this)))

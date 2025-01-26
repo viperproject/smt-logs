@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:22
+// Date:         2025-01-26 21:41:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/non-aliasing.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/non-aliasing-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -236,12 +236,12 @@ procedure valid#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (non-aliasing.vpr@8.1--11.2) [152317]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (non-aliasing.vpr@8.1--11.2) [47156]"}
         HasDirectPerm(Mask, this, next);
     if (Heap[this, next] != null) {
       
       // -- Check definedness of acc(valid(this.next), wildcard)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (non-aliasing.vpr@8.1--11.2) [152318]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (non-aliasing.vpr@8.1--11.2) [47157]"}
           HasDirectPerm(Mask, this, next);
       havoc wildcard;
       perm := wildcard;
@@ -304,12 +304,12 @@ procedure valid2#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (non-aliasing.vpr@27.1--30.2) [152319]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (non-aliasing.vpr@27.1--30.2) [47158]"}
         HasDirectPerm(Mask, this, next);
     if (Heap[this, next] != null) {
       
       // -- Check definedness of acc(valid2(this.next), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (non-aliasing.vpr@27.1--30.2) [152320]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (non-aliasing.vpr@27.1--30.2) [47159]"}
           HasDirectPerm(Mask, this, next);
       perm := FullPerm;
       Mask := Mask[null, valid2(Heap[this, next]):=Mask[null, valid2(Heap[this, next])] + perm];
@@ -359,7 +359,7 @@ procedure testNestingUnfold(this: Ref) returns ()
     assume Heap[null, valid(this)] == CombineFrames(FrameFragment(Heap[this, next]), FrameFragment((if Heap[this, next] != null then Heap[null, valid(Heap[this, next])] else EmptyFrame)));
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Unfolding valid(this) might fail. There might be insufficient permission to access valid(this) (non-aliasing.vpr@16.3--16.36) [152322]"}
+    assert {:msg "  Unfolding valid(this) might fail. There might be insufficient permission to access valid(this) (non-aliasing.vpr@16.3--16.36) [47161]"}
       Mask[null, valid(this)] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[null, valid(this)];
@@ -392,29 +392,29 @@ procedure testNestingUnfold(this: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.next
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@17.11--17.32) [152323]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@17.11--17.32) [47162]"}
         HasDirectPerm(ExhaleWellDef0Mask, this, next);
-    assert {:msg "  Assert might fail. Assertion this != this.next might not hold. (non-aliasing.vpr@17.11--17.32) [152324]"}
+    assert {:msg "  Assert might fail. Assertion this != this.next might not hold. (non-aliasing.vpr@17.11--17.32) [47163]"}
       this != Heap[this, next];
     assume state(Heap, Mask);
   
   // -- Translating statement: if (this.next != null) -- non-aliasing.vpr@19.3--23.4
     
     // -- Check definedness of this.next != null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@19.8--19.29) [152325]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@19.8--19.29) [47164]"}
         HasDirectPerm(Mask, this, next);
     if (Heap[this, next] != null) {
       
       // -- Translating statement: unfold acc(valid(this.next), wildcard) -- non-aliasing.vpr@20.5--20.43
         
         // -- Check definedness of acc(valid(this.next), wildcard)
-          assert {:msg "  Unfolding valid(this.next) might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@20.5--20.43) [152326]"}
+          assert {:msg "  Unfolding valid(this.next) might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@20.5--20.43) [47165]"}
             HasDirectPerm(Mask, this, next);
         assume valid#trigger(Heap, valid(Heap[this, next]));
         assume Heap[null, valid(Heap[this, next])] == CombineFrames(FrameFragment(Heap[Heap[this, next], next]), FrameFragment((if Heap[Heap[this, next], next] != null then Heap[null, valid(Heap[Heap[this, next], next])] else EmptyFrame)));
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Unfolding valid(this.next) might fail. There might be insufficient permission to access valid(this.next) (non-aliasing.vpr@20.5--20.43) [152328]"}
+        assert {:msg "  Unfolding valid(this.next) might fail. There might be insufficient permission to access valid(this.next) (non-aliasing.vpr@20.5--20.43) [47167]"}
           Mask[null, valid(Heap[this, next])] > NoPerm;
         havoc wildcard;
         assume wildcard < Mask[null, valid(Heap[this, next])];
@@ -447,13 +447,13 @@ procedure testNestingUnfold(this: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this.next != this.next.next
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@21.13--21.44) [152329]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@21.13--21.44) [47168]"}
             HasDirectPerm(ExhaleWellDef0Mask, this, next);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@21.13--21.44) [152330]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@21.13--21.44) [47169]"}
             HasDirectPerm(ExhaleWellDef0Mask, this, next);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.next.next (non-aliasing.vpr@21.13--21.44) [152331]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.next.next (non-aliasing.vpr@21.13--21.44) [47170]"}
             HasDirectPerm(ExhaleWellDef0Mask, Heap[this, next], next);
-        assert {:msg "  Assert might fail. Assertion this.next != this.next.next might not hold. (non-aliasing.vpr@21.13--21.44) [152332]"}
+        assert {:msg "  Assert might fail. Assertion this.next != this.next.next might not hold. (non-aliasing.vpr@21.13--21.44) [47171]"}
           Heap[this, next] != Heap[Heap[this, next], next];
         assume state(Heap, Mask);
       
@@ -462,11 +462,11 @@ procedure testNestingUnfold(this: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this != this.next.next
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@22.13--22.39) [152333]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@22.13--22.39) [47172]"}
             HasDirectPerm(ExhaleWellDef0Mask, this, next);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access this.next.next (non-aliasing.vpr@22.13--22.39) [152334]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access this.next.next (non-aliasing.vpr@22.13--22.39) [47173]"}
             HasDirectPerm(ExhaleWellDef0Mask, Heap[this, next], next);
-        assert {:msg "  Assert might fail. Assertion this != this.next.next might not hold. (non-aliasing.vpr@22.13--22.39) [152335]"}
+        assert {:msg "  Assert might fail. Assertion this != this.next.next might not hold. (non-aliasing.vpr@22.13--22.39) [47174]"}
           this != Heap[Heap[this, next], next];
         assume state(Heap, Mask);
     }
@@ -514,7 +514,7 @@ procedure testNestingUnfold2(this: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding valid2(this) might fail. There might be insufficient permission to access valid2(this) (non-aliasing.vpr@35.3--35.27) [152338]"}
+      assert {:msg "  Unfolding valid2(this) might fail. There might be insufficient permission to access valid2(this) (non-aliasing.vpr@35.3--35.27) [47177]"}
         perm <= Mask[null, valid2(this)];
     }
     Mask := Mask[null, valid2(this):=Mask[null, valid2(this)] - perm];
@@ -544,9 +544,9 @@ procedure testNestingUnfold2(this: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.next
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@36.11--36.32) [152341]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@36.11--36.32) [47180]"}
         HasDirectPerm(ExhaleWellDef0Mask, this, next);
-    assert {:msg "  Assert might fail. Assertion this != this.next might not hold. (non-aliasing.vpr@36.11--36.32) [152342]"}
+    assert {:msg "  Assert might fail. Assertion this != this.next might not hold. (non-aliasing.vpr@36.11--36.32) [47181]"}
       this != Heap[this, next];
     assume state(Heap, Mask);
 }

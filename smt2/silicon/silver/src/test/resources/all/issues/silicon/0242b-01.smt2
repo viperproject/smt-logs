@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:44
+; Started: 2025-01-26 21:33:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -758,21 +758,21 @@
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (= (purify_node%limited s@$ n@0@00) (purify_node s@$ n@0@00))
   :pattern ((purify_node s@$ n@0@00))
-  :qid |quant-u-24150|)))
+  :qid |quant-u-10297|)))
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (purify_node%stateless n@0@00)
   :pattern ((purify_node%limited s@$ n@0@00))
-  :qid |quant-u-24151|)))
+  :qid |quant-u-10298|)))
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (let ((result@1@00 (purify_node%limited s@$ n@0@00))) (=>
     (purify_node%precondition s@$ n@0@00)
     (= result@1@00 (as default_node<Node>  Node))))
   :pattern ((purify_node%limited s@$ n@0@00))
-  :qid |quant-u-24152|)))
+  :qid |quant-u-10299|)))
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (let ((result@1@00 (purify_node%limited s@$ n@0@00))) true)
   :pattern ((purify_node%limited s@$ n@0@00))
-  :qid |quant-u-24153|)))
+  :qid |quant-u-10300|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test ----------
@@ -811,8 +811,8 @@
 (declare-const sm@9@01 $FVF<r>)
 ; Definitional axioms for singleton-FVF's value
 (assert (= ($FVF.lookup_r (as sm@9@01  $FVF<r>) vroot@3@01) r@8@01))
-(assert (not (= vroot@3@01 root@1@01)))
 (assert (not (= vroot@3@01 vroot@0@01)))
+(assert (not (= vroot@3@01 root@1@01)))
 (assert (not (Set_in vroot@3@01 graph@2@01)))
 ; [exec]
 ; vroot.l := vroot
@@ -860,7 +860,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r vroot@3@01) (= (- $Perm.Write (pTaken@11@01 r)) $Perm.No))
   
-  :qid |quant-u-24156|))))
+  :qid |quant-u-10303|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -918,7 +918,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r vroot@3@01) (= (- $Perm.Write (pTaken@14@01 r)) $Perm.No))
   
-  :qid |quant-u-24159|))))
+  :qid |quant-u-10306|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -946,10 +946,10 @@
 (declare-const sm@22@01 $FVF<r>)
 ; Definitional axioms for singleton-FVF's value
 (assert (= ($FVF.lookup_r (as sm@22@01  $FVF<r>) root@16@01) r@21@01))
-(assert (not (= root@16@01 root@1@01)))
-(assert (not (= root@16@01 vroot@3@01)))
 (assert (not (= root@16@01 ($FVF.lookup_l (as sm@12@01  $FVF<l>) vroot@3@01))))
+(assert (not (= root@16@01 vroot@3@01)))
 (assert (not (= root@16@01 ($FVF.lookup_r (as sm@15@01  $FVF<r>) vroot@3@01))))
+(assert (not (= root@16@01 root@1@01)))
 (assert (not (Set_in root@16@01 graph@2@01)))
 ; [exec]
 ; root.l := vroot
@@ -1015,7 +1015,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r root@16@01) (= (- $Perm.Write (pTaken@24@01 r)) $Perm.No))
   
-  :qid |quant-u-24162|))))
+  :qid |quant-u-10309|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1091,7 +1091,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r root@16@01) (= (- $Perm.Write (pTaken@28@01 r)) $Perm.No))
   
-  :qid |quant-u-24165|))))
+  :qid |quant-u-10312|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1205,7 +1205,7 @@
     (Set_in (inv@33@01 r) graph@31@01)
     ($FVF.loc_l ($FVF.lookup_l (as sm@35@01  $FVF<l>) r) r))
   :pattern ((inv@33@01 r))
-  :qid |quant-u-24167|)))
+  :qid |quant-u-10314|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@36@01 ((r $Ref)) $Perm
   (ite
@@ -1243,7 +1243,7 @@
     (and (Set_in (inv@33@01 r) graph@31@01) (img@34@01 r) (= r (inv@33@01 r)))
     (= (- $Perm.Write (pTaken@36@01 r)) $Perm.No))
   
-  :qid |quant-u-24170|))))
+  :qid |quant-u-10317|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1268,7 +1268,7 @@
     (and (Set_in (inv@33@01 r) graph@31@01) (img@34@01 r) (= r (inv@33@01 r)))
     (= (- (- $Perm.Write (pTaken@36@01 r)) (pTaken@37@01 r)) $Perm.No))
   
-  :qid |quant-u-24172|))))
+  :qid |quant-u-10319|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1350,7 +1350,7 @@
     (Set_in (inv@39@01 r) graph@31@01)
     ($FVF.loc_r ($FVF.lookup_r (as sm@41@01  $FVF<r>) r) r))
   :pattern ((inv@39@01 r))
-  :qid |quant-u-24174|)))
+  :qid |quant-u-10321|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@42@01 ((r $Ref)) $Perm
   (ite
@@ -1388,7 +1388,7 @@
     (and (Set_in (inv@39@01 r) graph@31@01) (img@40@01 r) (= r (inv@39@01 r)))
     (= (- $Perm.Write (pTaken@42@01 r)) $Perm.No))
   
-  :qid |quant-u-24177|))))
+  :qid |quant-u-10324|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1413,7 +1413,7 @@
     (and (Set_in (inv@39@01 r) graph@31@01) (img@40@01 r) (= r (inv@39@01 r)))
     (= (- (- $Perm.Write (pTaken@42@01 r)) (pTaken@43@01 r)) $Perm.No))
   
-  :qid |quant-u-24179|))))
+  :qid |quant-u-10326|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1497,7 +1497,7 @@
     (and (Set_in (inv@45@01 r) graph@31@01) (img@46@01 r) (= r (inv@45@01 r)))
     (= (- $Perm.Write (pTaken@47@01 r)) $Perm.No))
   
-  :qid |quant-u-24183|))))
+  :qid |quant-u-10330|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1522,7 +1522,7 @@
     (and (Set_in (inv@45@01 r) graph@31@01) (img@46@01 r) (= r (inv@45@01 r)))
     (= (- (- $Perm.Write (pTaken@47@01 r)) (pTaken@48@01 r)) $Perm.No))
   
-  :qid |quant-u-24185|))))
+  :qid |quant-u-10332|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2214,7 +2214,7 @@
         (ite (= r vroot@3@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-24186|))))
+  :qid |quant-u-10333|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -2264,7 +2264,7 @@
         (ite (= r vroot@3@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-24187|))))
+  :qid |quant-u-10334|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -2317,7 +2317,7 @@
         (ite (= r vroot@3@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-24188|))))
+  :qid |quant-u-10335|))))
 (check-sat)
 ; unsat
 (pop) ; 7

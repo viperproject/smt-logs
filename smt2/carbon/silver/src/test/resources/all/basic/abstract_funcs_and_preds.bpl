@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:41
+// Date:         2025-01-26 21:43:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/abstract_funcs_and_preds.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/abstract_funcs_and_preds-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -296,7 +296,7 @@ procedure fun02#definedness(x: Ref) returns (Result: bool)
   // -- Checking definedness of postcondition (no body)
     
     // -- Check definedness of x == x.f
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@26.11--26.30) [186525]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@26.11--26.30) [100865]"}
         HasDirectPerm(Mask, x, f_7);
     if (x == Heap[x, f_7]) {
       assume Result;
@@ -376,7 +376,7 @@ procedure fun03#definedness(x: Ref) returns (Result: bool)
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@41.4--41.12) [186526]"}
+        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@41.4--41.12) [100866]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -394,10 +394,10 @@ procedure fun03#definedness(x: Ref) returns (Result: bool)
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x == x.f
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@40.11--40.31) [186527]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@40.11--40.31) [100867]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
     if (x == Heap[x, f_7]) {
-      assert {:msg "  Postcondition of fun03 might not hold. Assertion !result might not hold. (abstract_funcs_and_preds.vpr@40.11--40.31) [186528]"}
+      assert {:msg "  Postcondition of fun03 might not hold. Assertion !result might not hold. (abstract_funcs_and_preds.vpr@40.11--40.31) [100868]"}
         !Result;
     }
 }
@@ -407,34 +407,34 @@ procedure fun03#definedness(x: Ref) returns (Result: bool)
 // ==================================================
 
 type PredicateType_file;
-function  file(id_2: int): Field PredicateType_file FrameType;
-function  file#sm(id_2: int): Field PredicateType_file PMaskType;
-axiom (forall id_2: int ::
-  { PredicateMaskField(file(id_2)) }
-  PredicateMaskField(file(id_2)) == file#sm(id_2)
+function  file(id_1: int): Field PredicateType_file FrameType;
+function  file#sm(id_1: int): Field PredicateType_file PMaskType;
+axiom (forall id_1: int ::
+  { PredicateMaskField(file(id_1)) }
+  PredicateMaskField(file(id_1)) == file#sm(id_1)
 );
-axiom (forall id_2: int ::
-  { file(id_2) }
-  IsPredicateField(file(id_2))
+axiom (forall id_1: int ::
+  { file(id_1) }
+  IsPredicateField(file(id_1))
 );
-axiom (forall id_2: int ::
-  { file(id_2) }
-  getPredWandId(file(id_2)) == 0
+axiom (forall id_1: int ::
+  { file(id_1) }
+  getPredWandId(file(id_1)) == 0
 );
 function  file#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  file#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall id_2: int, id2: int ::
-  { file(id_2), file(id2) }
-  file(id_2) == file(id2) ==> id_2 == id2
+axiom (forall id_1: int, id2: int ::
+  { file(id_1), file(id2) }
+  file(id_1) == file(id2) ==> id_1 == id2
 );
-axiom (forall id_2: int, id2: int ::
-  { file#sm(id_2), file#sm(id2) }
-  file#sm(id_2) == file#sm(id2) ==> id_2 == id2
+axiom (forall id_1: int, id2: int ::
+  { file#sm(id_1), file#sm(id2) }
+  file#sm(id_1) == file#sm(id2) ==> id_1 == id2
 );
 
-axiom (forall Heap: HeapType, id_2: int ::
-  { file#trigger(Heap, file(id_2)) }
-  file#everUsed(file(id_2))
+axiom (forall Heap: HeapType, id_1: int ::
+  { file#trigger(Heap, file(id_1)) }
+  file#everUsed(file(id_1))
 );
 
 // ==================================================
@@ -473,7 +473,7 @@ procedure test01(x: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun01(x) >= 0 might not hold. (abstract_funcs_and_preds.vpr@10.10--10.23) [186529]"}
+    assert {:msg "  Assert might fail. Assertion fun01(x) >= 0 might not hold. (abstract_funcs_and_preds.vpr@10.10--10.23) [100869]"}
       fun01(Heap, x) >= 0;
     assume state(Heap, Mask);
   
@@ -486,7 +486,7 @@ procedure test01(x: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun01(x) == 0 might not hold. (abstract_funcs_and_preds.vpr@13.10--13.23) [186530]"}
+    assert {:msg "  Assert might fail. Assertion fun01(x) == 0 might not hold. (abstract_funcs_and_preds.vpr@13.10--13.23) [100870]"}
       fun01(Heap, x) == 0;
     assume state(Heap, Mask);
 }
@@ -539,7 +539,7 @@ procedure test02(x: Ref, y: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun01(x) == r might not hold. (abstract_funcs_and_preds.vpr@18.10--18.23) [186531]"}
+    assert {:msg "  Assert might fail. Assertion fun01(x) == r might not hold. (abstract_funcs_and_preds.vpr@18.10--18.23) [100871]"}
       fun01(Heap, x) == r_1;
     assume state(Heap, Mask);
   
@@ -556,7 +556,7 @@ procedure test02(x: Ref, y: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun01(x) == fun01(y) might not hold. (abstract_funcs_and_preds.vpr@21.10--21.30) [186532]"}
+    assert {:msg "  Assert might fail. Assertion fun01(x) == fun01(y) might not hold. (abstract_funcs_and_preds.vpr@21.10--21.30) [100872]"}
       fun01(Heap, x) == fun01(Heap, y);
     assume state(Heap, Mask);
 }
@@ -604,7 +604,7 @@ procedure test03(x: Ref, y: Ref) returns ()
   // -- Translating statement: inhale x == x.f -- abstract_funcs_and_preds.vpr@30.3--30.18
     
     // -- Check definedness of x == x.f
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@30.10--30.18) [186534]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@30.10--30.18) [100874]"}
         HasDirectPerm(Mask, x, f_7);
     assume x == Heap[x, f_7];
     assume state(Heap, Mask);
@@ -620,7 +620,7 @@ procedure test03(x: Ref, y: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@31.10--31.18) [186535]"}
+        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@31.10--31.18) [100875]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -629,12 +629,12 @@ procedure test03(x: Ref, y: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun02(x) might not hold. (abstract_funcs_and_preds.vpr@31.10--31.18) [186536]"}
+    assert {:msg "  Assert might fail. Assertion fun02(x) might not hold. (abstract_funcs_and_preds.vpr@31.10--31.18) [100876]"}
       fun02(Heap, x);
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := y -- abstract_funcs_and_preds.vpr@32.3--32.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@32.3--32.11) [186537]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@32.3--32.11) [100877]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=y];
     assume state(Heap, Mask);
@@ -649,7 +649,7 @@ procedure test03(x: Ref, y: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@35.10--35.18) [186538]"}
+        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@35.10--35.18) [100878]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -658,7 +658,7 @@ procedure test03(x: Ref, y: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun02(x) might not hold. (abstract_funcs_and_preds.vpr@35.10--35.18) [186539]"}
+    assert {:msg "  Assert might fail. Assertion fun02(x) might not hold. (abstract_funcs_and_preds.vpr@35.10--35.18) [100879]"}
       fun02(Heap, x);
     assume state(Heap, Mask);
 }
@@ -706,7 +706,7 @@ procedure test04(x: Ref, y: Ref) returns ()
   // -- Translating statement: inhale x == x.f -- abstract_funcs_and_preds.vpr@45.3--45.18
     
     // -- Check definedness of x == x.f
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@45.10--45.18) [186541]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@45.10--45.18) [100881]"}
         HasDirectPerm(Mask, x, f_7);
     assume x == Heap[x, f_7];
     assume state(Heap, Mask);
@@ -722,7 +722,7 @@ procedure test04(x: Ref, y: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun03 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@46.11--46.19) [186542]"}
+        assert {:msg "  Precondition of function fun03 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@46.11--46.19) [100882]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -731,7 +731,7 @@ procedure test04(x: Ref, y: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion !fun03(x) might not hold. (abstract_funcs_and_preds.vpr@46.10--46.19) [186543]"}
+    assert {:msg "  Assert might fail. Assertion !fun03(x) might not hold. (abstract_funcs_and_preds.vpr@46.10--46.19) [100883]"}
       !fun03(Heap, x);
     assume state(Heap, Mask);
   
@@ -745,7 +745,7 @@ procedure test04(x: Ref, y: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun03 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@47.10--47.18) [186544]"}
+        assert {:msg "  Precondition of function fun03 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@47.10--47.18) [100884]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -759,7 +759,7 @@ procedure test04(x: Ref, y: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@47.23--47.31) [186545]"}
+        assert {:msg "  Precondition of function fun02 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@47.23--47.31) [100885]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -768,12 +768,12 @@ procedure test04(x: Ref, y: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion fun03(x) == !fun02(x) might not hold. (abstract_funcs_and_preds.vpr@47.10--47.31) [186546]"}
+    assert {:msg "  Assert might fail. Assertion fun03(x) == !fun02(x) might not hold. (abstract_funcs_and_preds.vpr@47.10--47.31) [100886]"}
       fun03(Heap, x) == !fun02(Heap, x);
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := y -- abstract_funcs_and_preds.vpr@48.3--48.11
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@48.3--48.11) [186547]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@48.3--48.11) [100887]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=y];
     assume state(Heap, Mask);
@@ -788,7 +788,7 @@ procedure test04(x: Ref, y: Ref) returns ()
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
-        assert {:msg "  Precondition of function fun03 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@51.11--51.19) [186548]"}
+        assert {:msg "  Precondition of function fun03 might not hold. There might be insufficient permission to access x.f (abstract_funcs_and_preds.vpr@51.11--51.19) [100888]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
         // Finish exhale
         havoc ExhaleHeap;
@@ -797,7 +797,7 @@ procedure test04(x: Ref, y: Ref) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion !fun03(x) might not hold. (abstract_funcs_and_preds.vpr@51.10--51.19) [186549]"}
+    assert {:msg "  Assert might fail. Assertion !fun03(x) might not hold. (abstract_funcs_and_preds.vpr@51.10--51.19) [100889]"}
       !fun03(Heap, x);
     assume state(Heap, Mask);
 }
@@ -806,7 +806,7 @@ procedure test04(x: Ref, y: Ref) returns ()
 // Translation of method file_open
 // ==================================================
 
-procedure file_open(id_2: int) returns ()
+procedure file_open(id_1: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -835,7 +835,7 @@ procedure file_open(id_2: int) returns ()
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
-    PostMask := PostMask[null, file(id_2):=PostMask[null, file(id_2)] + perm];
+    PostMask := PostMask[null, file(id_1):=PostMask[null, file(id_1)] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -852,10 +852,10 @@ procedure file_open(id_2: int) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of file_open might not hold. There might be insufficient permission to access file(id) (abstract_funcs_and_preds.vpr@57.11--57.24) [186550]"}
-        perm <= Mask[null, file(id_2)];
+      assert {:msg "  Postcondition of file_open might not hold. There might be insufficient permission to access file(id) (abstract_funcs_and_preds.vpr@57.11--57.24) [100890]"}
+        perm <= Mask[null, file(id_1)];
     }
-    Mask := Mask[null, file(id_2):=Mask[null, file(id_2)] - perm];
+    Mask := Mask[null, file(id_1):=Mask[null, file(id_1)] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -866,7 +866,7 @@ procedure file_open(id_2: int) returns ()
 // Translation of method file_close
 // ==================================================
 
-procedure file_close(id_2: int) returns ()
+procedure file_close(id_1: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -881,7 +881,7 @@ procedure file_close(id_2: int) returns ()
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    Mask := Mask[null, file(id_2):=Mask[null, file(id_2)] + perm];
+    Mask := Mask[null, file(id_1):=Mask[null, file(id_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -896,7 +896,7 @@ procedure file_close(id_2: int) returns ()
 // Translation of method client
 // ==================================================
 
-procedure client(id_2: int) returns ()
+procedure client(id_1: int) returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -926,7 +926,7 @@ procedure client(id_2: int) returns ()
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      Mask := Mask[null, file(id_2):=Mask[null, file(id_2)] + perm];
+      Mask := Mask[null, file(id_1):=Mask[null, file(id_1)] + perm];
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -940,10 +940,10 @@ procedure client(id_2: int) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method file_close might not hold. There might be insufficient permission to access file(id) (abstract_funcs_and_preds.vpr@66.3--66.17) [186551]"}
-          perm <= Mask[null, file(id_2)];
+        assert {:msg "  The precondition of method file_close might not hold. There might be insufficient permission to access file(id) (abstract_funcs_and_preds.vpr@66.3--66.17) [100891]"}
+          perm <= Mask[null, file(id_1)];
       }
-      Mask := Mask[null, file(id_2):=Mask[null, file(id_2)] - perm];
+      Mask := Mask[null, file(id_1):=Mask[null, file(id_1)] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -962,10 +962,10 @@ procedure client(id_2: int) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method file_close might not hold. There might be insufficient permission to access file(id) (abstract_funcs_and_preds.vpr@69.3--69.17) [186552]"}
-          perm <= Mask[null, file(id_2)];
+        assert {:msg "  The precondition of method file_close might not hold. There might be insufficient permission to access file(id) (abstract_funcs_and_preds.vpr@69.3--69.17) [100892]"}
+          perm <= Mask[null, file(id_1)];
       }
-      Mask := Mask[null, file(id_2):=Mask[null, file(id_2)] - perm];
+      Mask := Mask[null, file(id_1):=Mask[null, file(id_1)] - perm];
       // Finish exhale
       havoc ExhaleHeap;
       assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

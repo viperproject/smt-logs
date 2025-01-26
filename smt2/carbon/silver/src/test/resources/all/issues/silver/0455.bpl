@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:12
+// Date:         2025-01-26 21:42:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0455.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0455-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_88: Ref, f_80: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_88, f_80] }
-  Heap[o_88, $allocated] ==> Heap[Heap[o_88, f_80], $allocated]
+axiom (forall o_62: Ref, f_49: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_62, f_49] }
+  Heap[o_62, $allocated] ==> Heap[Heap[o_62, f_49], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_91: Ref, f_208: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_91, f_208] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_91, f_208) ==> Heap[o_91, f_208] == ExhaleHeap[o_91, f_208]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_63: Ref, f_71: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_63, f_71] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_63, f_71) ==> Heap[o_63, f_71] == ExhaleHeap[o_63, f_71]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_61: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_61), ExhaleHeap[null, PredicateMaskField(pm_f_61)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_61) && IsPredicateField(pm_f_61) ==> Heap[null, PredicateMaskField(pm_f_61)] == ExhaleHeap[null, PredicateMaskField(pm_f_61)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_33: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_33), ExhaleHeap[null, PredicateMaskField(pm_f_33)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_33) && IsPredicateField(pm_f_33) ==> Heap[null, PredicateMaskField(pm_f_33)] == ExhaleHeap[null, PredicateMaskField(pm_f_33)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_61: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_61) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_61) && IsPredicateField(pm_f_61) ==> (forall <A, B> o2_61: Ref, f_208: (Field A B) ::
-    { ExhaleHeap[o2_61, f_208] }
-    Heap[null, PredicateMaskField(pm_f_61)][o2_61, f_208] ==> Heap[o2_61, f_208] == ExhaleHeap[o2_61, f_208]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_33: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_33) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_33) && IsPredicateField(pm_f_33) ==> (forall <A, B> o2_33: Ref, f_71: (Field A B) ::
+    { ExhaleHeap[o2_33, f_71] }
+    Heap[null, PredicateMaskField(pm_f_33)][o2_33, f_71] ==> Heap[o2_33, f_71] == ExhaleHeap[o2_33, f_71]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_61: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_61), ExhaleHeap[null, WandMaskField(pm_f_61)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_61) && IsWandField(pm_f_61) ==> Heap[null, WandMaskField(pm_f_61)] == ExhaleHeap[null, WandMaskField(pm_f_61)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_33: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_33), ExhaleHeap[null, WandMaskField(pm_f_33)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_33) && IsWandField(pm_f_33) ==> Heap[null, WandMaskField(pm_f_33)] == ExhaleHeap[null, WandMaskField(pm_f_33)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_61: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_61) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_61) && IsWandField(pm_f_61) ==> (forall <A, B> o2_61: Ref, f_208: (Field A B) ::
-    { ExhaleHeap[o2_61, f_208] }
-    Heap[null, WandMaskField(pm_f_61)][o2_61, f_208] ==> Heap[o2_61, f_208] == ExhaleHeap[o2_61, f_208]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_33: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_33) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_33) && IsWandField(pm_f_33) ==> (forall <A, B> o2_33: Ref, f_71: (Field A B) ::
+    { ExhaleHeap[o2_33, f_71] }
+    Heap[null, WandMaskField(pm_f_33)][o2_33, f_71] ==> Heap[o2_33, f_71] == ExhaleHeap[o2_33, f_71]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_91: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_91, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_91, $allocated] ==> ExhaleHeap[o_91, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_63: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_63, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_63, $allocated] ==> ExhaleHeap[o_63, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_88: Ref, f_92: (Field A B), v: B ::
-  { Heap[o_88, f_92:=v] }
-  succHeap(Heap, Heap[o_88, f_92:=v])
+axiom (forall <A, B> Heap: HeapType, o_62: Ref, f_72: (Field A B), v: B ::
+  { Heap[o_62, f_72:=v] }
+  succHeap(Heap, Heap[o_62, f_72:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -159,9 +159,9 @@ function  neverTriggered10(x: Ref): bool;
 // ==================================================
 
 function  invRecv1(x_6_1_1: Ref): Ref;
-function  invRecv2(x_9_1: Ref): Ref;
+function  invRecv2(x_9_1_1: Ref): Ref;
 function  invRecv3(x_6_1_1: Ref): Ref;
-function  invRecv4(x_9_1: Ref): Ref;
+function  invRecv4(x_9_1_1: Ref): Ref;
 function  invRecv5(x_1_1_1: Ref): Ref;
 function  invRecv6(x_1_1_1: Ref): Ref;
 function  invRecv7(x_1_1_1: Ref): Ref;
@@ -173,9 +173,9 @@ function  invRecv10(x_1_1_1: Ref): Ref;
 // ==================================================
 
 function  qpRange1(x_6_1_1: Ref): bool;
-function  qpRange2(x_9_1: Ref): bool;
+function  qpRange2(x_9_1_1: Ref): bool;
 function  qpRange3(x_6_1_1: Ref): bool;
-function  qpRange4(x_9_1: Ref): bool;
+function  qpRange4(x_9_1_1: Ref): bool;
 function  qpRange5(x_1_1_1: Ref): bool;
 function  qpRange6(x_1_1_1: Ref): bool;
 function  qpRange7(x_1_1_1: Ref): bool;
@@ -416,9 +416,9 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 // Translation of all fields
 // ==================================================
 
-const unique elem_1: Field NormalField int;
-axiom !IsPredicateField(elem_1);
-axiom !IsWandField(elem_1);
+const unique elem: Field NormalField int;
+axiom !IsPredicateField(elem);
+axiom !IsWandField(elem);
 const unique next: Field NormalField Ref;
 axiom !IsPredicateField(next);
 axiom !IsWandField(next);
@@ -428,49 +428,49 @@ axiom !IsWandField(next);
 // ==================================================
 
 // Uninterpreted function definitions
-function  foo_2(Heap: HeapType, l_2: Ref, i: int): bool;
-function  foo'(Heap: HeapType, l_2: Ref, i: int): bool;
-axiom (forall Heap: HeapType, l_2: Ref, i: int ::
-  { foo_2(Heap, l_2, i) }
-  foo_2(Heap, l_2, i) == foo'(Heap, l_2, i) && dummyFunction(foo#triggerStateless(l_2, i))
+function  foo_1(Heap: HeapType, l_1: Ref, i: int): bool;
+function  foo'(Heap: HeapType, l_1: Ref, i: int): bool;
+axiom (forall Heap: HeapType, l_1: Ref, i: int ::
+  { foo_1(Heap, l_1, i) }
+  foo_1(Heap, l_1, i) == foo'(Heap, l_1, i) && dummyFunction(foo#triggerStateless(l_1, i))
 );
-axiom (forall Heap: HeapType, l_2: Ref, i: int ::
-  { foo'(Heap, l_2, i) }
-  dummyFunction(foo#triggerStateless(l_2, i))
+axiom (forall Heap: HeapType, l_1: Ref, i: int ::
+  { foo'(Heap, l_1, i) }
+  dummyFunction(foo#triggerStateless(l_1, i))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: Ref, i: int ::
-  { state(Heap, Mask), foo_2(Heap, l_2, i) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_2(Heap, l_2, i) == (forall j_9: int ::
-    { Heap[null, list2(l_2, j_9)] } { foo#frame(Heap[null, list2(Heap[l_2, next], j_9)], Heap[l_2, next], j_9) }
-    i == j_9 ==> Heap[l_2, next] == null || foo'(Heap, Heap[l_2, next], j_9)
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: Ref, i: int ::
+  { state(Heap, Mask), foo_1(Heap, l_1, i) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> foo_1(Heap, l_1, i) == (forall j: int ::
+    { Heap[null, list2(l_1, j)] } { foo#frame(Heap[null, list2(Heap[l_1, next], j)], Heap[l_1, next], j) }
+    i == j ==> Heap[l_1, next] == null || foo'(Heap, Heap[l_1, next], j)
   )
 );
 
 // Framing axioms
-function  foo#frame(frame: FrameType, l_2: Ref, i: int): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, l_2: Ref, i: int ::
-  { state(Heap, Mask), foo'(Heap, l_2, i) }
-  state(Heap, Mask) ==> foo'(Heap, l_2, i) == foo#frame(Heap[null, list2(l_2, i)], l_2, i)
+function  foo#frame(frame: FrameType, l_1: Ref, i: int): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, l_1: Ref, i: int ::
+  { state(Heap, Mask), foo'(Heap, l_1, i) }
+  state(Heap, Mask) ==> foo'(Heap, l_1, i) == foo#frame(Heap[null, list2(l_1, i)], l_1, i)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  foo#trigger(frame: FrameType, l_2: Ref, i: int): bool;
+function  foo#trigger_1(frame: FrameType, l_1: Ref, i: int): bool;
 
 // State-independent trigger function
-function  foo#triggerStateless(l_2: Ref, i: int): bool;
+function  foo#triggerStateless(l_1: Ref, i: int): bool;
 
 // Check contract well-formedness and postcondition
-procedure foo#definedness(l_2: Ref, i: int) returns (Result: bool)
+procedure foo#definedness(l_1: Ref, i: int) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var j_6: int;
+  var j_12: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -478,12 +478,12 @@ procedure foo#definedness(l_2: Ref, i: int) returns (Result: bool)
     Mask := ZeroMask;
     assume state(Heap, Mask);
     assume !AssumePermUpperBound;
-    assume Heap[l_2, $allocated];
+    assume Heap[l_1, $allocated];
     assume AssumeFunctionsAbove == 0;
   
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
-    Mask := Mask[null, list2(l_2, i):=Mask[null, list2(l_2, i)] + perm];
+    Mask := Mask[null, list2(l_1, i):=Mask[null, list2(l_1, i)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -491,46 +491,46 @@ procedure foo#definedness(l_2: Ref, i: int) returns (Result: bool)
     
     // -- Check definedness of (forall j: Int :: { list2(l, j) } { foo(l.next, j) } i == j ==> (unfolding acc(list2(l, j), write) in (l.next == null ? true : foo(l.next, j))))
       if (*) {
-        if (i == j_6) {
+        if (i == j_12) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assume list2#trigger(UnfoldingHeap, list2(l_2, j_6));
-          assume UnfoldingHeap[null, list2(l_2, j_6)] == CombineFrames(FrameFragment(UnfoldingHeap[l_2, elem_1]), CombineFrames(FrameFragment(UnfoldingHeap[l_2, next]), FrameFragment((if UnfoldingHeap[l_2, next] != null then UnfoldingHeap[null, list2(UnfoldingHeap[l_2, next], j_6)] else EmptyFrame))));
-          ExhaleWellDef0Heap := UnfoldingHeap;
+          assume list2#trigger(UnfoldingHeap, list2(l_1, j_12));
+          assume UnfoldingHeap[null, list2(l_1, j_12)] == CombineFrames(FrameFragment(UnfoldingHeap[l_1, elem]), CombineFrames(FrameFragment(UnfoldingHeap[l_1, next]), FrameFragment((if UnfoldingHeap[l_1, next] != null then UnfoldingHeap[null, list2(UnfoldingHeap[l_1, next], j_12)] else EmptyFrame))));
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list2(l, j) (0455.vpr@12.1--17.2) [222101]"}
-            NoPerm < perm ==> NoPerm < UnfoldingMask[null, list2(l_2, j_6)];
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list2(l, j) (0455.vpr@12.1--17.2) [55276]"}
+            NoPerm < perm ==> NoPerm < UnfoldingMask[null, list2(l_1, j_12)];
           perm := FullPerm;
-          assume l_2 != null;
-          UnfoldingMask := UnfoldingMask[l_2, elem_1:=UnfoldingMask[l_2, elem_1] + perm];
+          assume l_1 != null;
+          UnfoldingMask := UnfoldingMask[l_1, elem:=UnfoldingMask[l_1, elem] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
           perm := FullPerm;
-          assume l_2 != null;
-          UnfoldingMask := UnfoldingMask[l_2, next:=UnfoldingMask[l_2, next] + perm];
+          assume l_1 != null;
+          UnfoldingMask := UnfoldingMask[l_1, next:=UnfoldingMask[l_1, next] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
-          if (UnfoldingHeap[l_2, next] != null) {
+          if (UnfoldingHeap[l_1, next] != null) {
             perm := FullPerm;
-            UnfoldingMask := UnfoldingMask[null, list2(UnfoldingHeap[l_2, next], j_6):=UnfoldingMask[null, list2(UnfoldingHeap[l_2, next], j_6)] + perm];
+            UnfoldingMask := UnfoldingMask[null, list2(UnfoldingHeap[l_1, next], j_12):=UnfoldingMask[null, list2(UnfoldingHeap[l_1, next], j_12)] + perm];
             
             // -- Extra unfolding of predicate
-              assume InsidePredicate(list2(l_2, j_6), UnfoldingHeap[null, list2(l_2, j_6)], list2(UnfoldingHeap[l_2, next], j_6), UnfoldingHeap[null, list2(UnfoldingHeap[l_2, next], j_6)]);
+              assume InsidePredicate(list2(l_1, j_12), UnfoldingHeap[null, list2(l_1, j_12)], list2(UnfoldingHeap[l_1, next], j_12), UnfoldingHeap[null, list2(UnfoldingHeap[l_1, next], j_12)]);
             assume state(UnfoldingHeap, UnfoldingMask);
           }
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access l.next (0455.vpr@12.1--17.2) [222102]"}
-            HasDirectPerm(UnfoldingMask, l_2, next);
-          if (UnfoldingHeap[l_2, next] == null) {
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access l.next (0455.vpr@12.1--17.2) [55277]"}
+            HasDirectPerm(UnfoldingMask, l_1, next);
+          if (UnfoldingHeap[l_1, next] == null) {
           } else {
-            assert {:msg "  Function might not be well-formed. There might be insufficient permission to access l.next (0455.vpr@12.1--17.2) [222103]"}
-              HasDirectPerm(UnfoldingMask, l_2, next);
+            assert {:msg "  Function might not be well-formed. There might be insufficient permission to access l.next (0455.vpr@12.1--17.2) [55278]"}
+              HasDirectPerm(UnfoldingMask, l_1, next);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := UnfoldingHeap;
               ExhaleWellDef0Mask := UnfoldingMask;
+              ExhaleWellDef0Heap := UnfoldingHeap;
               perm := FullPerm;
-              assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list2(l.next, j) (0455.vpr@16.68--16.82) [222104]"}
-                NoPerm < perm ==> NoPerm < UnfoldingMask[null, list2(UnfoldingHeap[l_2, next], j_6)];
+              assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list2(l.next, j) (0455.vpr@16.68--16.82) [55279]"}
+                NoPerm < perm ==> NoPerm < UnfoldingMask[null, list2(UnfoldingHeap[l_1, next], j_12)];
               // Finish exhale
               havoc ExhaleHeap;
               assume IdenticalOnKnownLocations(UnfoldingHeap, ExhaleHeap, UnfoldingMask);
@@ -539,20 +539,20 @@ procedure foo#definedness(l_2: Ref, i: int) returns (Result: bool)
               assume false;
             } else {
               // Enable postcondition for recursive call
-              assume foo#trigger(UnfoldingHeap[null, list2(UnfoldingHeap[l_2, next], j_6)], UnfoldingHeap[l_2, next], j_6);
+              assume foo#trigger_1(UnfoldingHeap[null, list2(UnfoldingHeap[l_1, next], j_12)], UnfoldingHeap[l_1, next], j_12);
             }
           }
           
           // -- Free assumptions (exp module)
-            Heap := Heap[null, list2#sm(l_2, j_6):=Heap[null, list2#sm(l_2, j_6)][l_2, elem_1:=true]];
-            Heap := Heap[null, list2#sm(l_2, j_6):=Heap[null, list2#sm(l_2, j_6)][l_2, next:=true]];
-            if (Heap[l_2, next] != null) {
+            Heap := Heap[null, list2#sm(l_1, j_12):=Heap[null, list2#sm(l_1, j_12)][l_1, elem:=true]];
+            Heap := Heap[null, list2#sm(l_1, j_12):=Heap[null, list2#sm(l_1, j_12)][l_1, next:=true]];
+            if (Heap[l_1, next] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-                { newPMask[o_15, f_20] }
-                Heap[null, list2#sm(l_2, j_6)][o_15, f_20] || Heap[null, list2#sm(Heap[l_2, next], j_6)][o_15, f_20] ==> newPMask[o_15, f_20]
+              assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+                { newPMask[o_5, f_11] }
+                Heap[null, list2#sm(l_1, j_12)][o_5, f_11] || Heap[null, list2#sm(Heap[l_1, next], j_12)][o_5, f_11] ==> newPMask[o_5, f_11]
               );
-              Heap := Heap[null, list2#sm(l_2, j_6):=newPMask];
+              Heap := Heap[null, list2#sm(l_1, j_12):=newPMask];
             }
             assume state(Heap, Mask);
         }
@@ -560,9 +560,9 @@ procedure foo#definedness(l_2: Ref, i: int) returns (Result: bool)
       }
   
   // -- Translate function body
-    Result := (forall j_2_1: int ::
-      { Heap[null, list2(l_2, j_2_1)] } { foo#frame(Heap[null, list2(Heap[l_2, next], j_2_1)], Heap[l_2, next], j_2_1) }
-      i == j_2_1 ==> Heap[l_2, next] == null || foo_2(Heap, Heap[l_2, next], j_2_1)
+    Result := (forall j_2_2: int ::
+      { Heap[null, list2(l_1, j_2_2)] } { foo#frame(Heap[null, list2(Heap[l_1, next], j_2_2)], Heap[l_1, next], j_2_2) }
+      i == j_2_2 ==> Heap[l_1, next] == null || foo_1(Heap, Heap[l_1, next], j_2_2)
     );
 }
 
@@ -609,11 +609,11 @@ procedure length_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) ret
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var x_32: Ref;
+  var x_28: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -634,42 +634,42 @@ procedure length_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) ret
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } { list(x) } { x.next } (x in xs) && x == y ==> (unfolding acc(list(x), write) in (x.next == null ? res == akk : length_impl(xs, x.next, akk + 1, res))))
       if (*) {
-        if (xs[x_32] && x_32 == y) {
+        if (xs[x_28] && x_28 == y) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assume list#trigger(UnfoldingHeap, list(x_32));
-          assume UnfoldingHeap[null, list(x_32)] == CombineFrames(FrameFragment(UnfoldingHeap[x_32, next]), FrameFragment((if UnfoldingHeap[x_32, next] != null then UnfoldingHeap[null, list(UnfoldingHeap[x_32, next])] else EmptyFrame)));
-          ExhaleWellDef0Heap := UnfoldingHeap;
+          assume list#trigger(UnfoldingHeap, list(x_28));
+          assume UnfoldingHeap[null, list(x_28)] == CombineFrames(FrameFragment(UnfoldingHeap[x_28, next]), FrameFragment((if UnfoldingHeap[x_28, next] != null then UnfoldingHeap[null, list(UnfoldingHeap[x_28, next])] else EmptyFrame)));
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(x) (0455.vpr@72.1--81.2) [222105]"}
-            NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(x_32)];
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(x) (0455.vpr@72.1--81.2) [55280]"}
+            NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(x_28)];
           perm := FullPerm;
-          assume x_32 != null;
-          UnfoldingMask := UnfoldingMask[x_32, next:=UnfoldingMask[x_32, next] + perm];
+          assume x_28 != null;
+          UnfoldingMask := UnfoldingMask[x_28, next:=UnfoldingMask[x_28, next] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
-          if (UnfoldingHeap[x_32, next] != null) {
+          if (UnfoldingHeap[x_28, next] != null) {
             perm := FullPerm;
-            UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[x_32, next]):=UnfoldingMask[null, list(UnfoldingHeap[x_32, next])] + perm];
+            UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[x_28, next]):=UnfoldingMask[null, list(UnfoldingHeap[x_28, next])] + perm];
             
             // -- Extra unfolding of predicate
-              assume InsidePredicate(list(x_32), UnfoldingHeap[null, list(x_32)], list(UnfoldingHeap[x_32, next]), UnfoldingHeap[null, list(UnfoldingHeap[x_32, next])]);
+              assume InsidePredicate(list(x_28), UnfoldingHeap[null, list(x_28)], list(UnfoldingHeap[x_28, next]), UnfoldingHeap[null, list(UnfoldingHeap[x_28, next])]);
             assume state(UnfoldingHeap, UnfoldingMask);
           }
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@72.1--81.2) [222106]"}
-            HasDirectPerm(UnfoldingMask, x_32, next);
-          if (UnfoldingHeap[x_32, next] == null) {
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@72.1--81.2) [55281]"}
+            HasDirectPerm(UnfoldingMask, x_28, next);
+          if (UnfoldingHeap[x_28, next] == null) {
           } else {
-            assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@72.1--81.2) [222107]"}
-              HasDirectPerm(UnfoldingMask, x_32, next);
+            assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@72.1--81.2) [55282]"}
+              HasDirectPerm(UnfoldingMask, x_28, next);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := UnfoldingHeap;
               ExhaleWellDef0Mask := UnfoldingMask;
+              ExhaleWellDef0Heap := UnfoldingHeap;
               perm := FullPerm;
-              assert {:msg "  Precondition of function length_impl might not hold. There might be insufficient permission to access list(x.next) (0455.vpr@80.13--80.50) [222108]"}
-                NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(UnfoldingHeap[x_32, next])];
+              assert {:msg "  Precondition of function length_impl might not hold. There might be insufficient permission to access list(x.next) (0455.vpr@80.13--80.50) [55283]"}
+                NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(UnfoldingHeap[x_28, next])];
               // Finish exhale
               havoc ExhaleHeap;
               assume IdenticalOnKnownLocations(UnfoldingHeap, ExhaleHeap, UnfoldingMask);
@@ -678,19 +678,19 @@ procedure length_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) ret
               assume false;
             } else {
               // Enable postcondition for recursive call
-              assume length_impl#trigger(UnfoldingHeap[null, list(UnfoldingHeap[x_32, next])], xs, UnfoldingHeap[x_32, next], akk + 1, res);
+              assume length_impl#trigger(UnfoldingHeap[null, list(UnfoldingHeap[x_28, next])], xs, UnfoldingHeap[x_28, next], akk + 1, res);
             }
           }
           
           // -- Free assumptions (exp module)
-            Heap := Heap[null, list#sm(x_32):=Heap[null, list#sm(x_32)][x_32, next:=true]];
-            if (Heap[x_32, next] != null) {
+            Heap := Heap[null, list#sm(x_28):=Heap[null, list#sm(x_28)][x_28, next:=true]];
+            if (Heap[x_28, next] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_32: Ref, f_38: (Field A B) ::
-                { newPMask[o_32, f_38] }
-                Heap[null, list#sm(x_32)][o_32, f_38] || Heap[null, list#sm(Heap[x_32, next])][o_32, f_38] ==> newPMask[o_32, f_38]
+              assume (forall <A, B> o_64: Ref, f_73: (Field A B) ::
+                { newPMask[o_64, f_73] }
+                Heap[null, list#sm(x_28)][o_64, f_73] || Heap[null, list#sm(Heap[x_28, next])][o_64, f_73] ==> newPMask[o_64, f_73]
               );
-              Heap := Heap[null, list#sm(x_32):=newPMask];
+              Heap := Heap[null, list#sm(x_28):=newPMask];
             }
             assume state(Heap, Mask);
         }
@@ -758,11 +758,11 @@ procedure length2_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var x_13: Ref;
+  var x_18: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
@@ -784,7 +784,7 @@ procedure length2_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
     havoc wildcard;
     
     // -- check if receiver acc(list(x), wildcard) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource list(x) might not be injective. (0455.vpr@141.12--141.63) [222109]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource list(x) might not be injective. (0455.vpr@141.12--141.63) [55284]"}
         (forall x_5: Ref, x_5_1: Ref ::
         { neverTriggered1(x_5), neverTriggered1(x_5_1) }
         (((x_5 != x_5_1 && xs[x_5]) && xs[x_5_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_5 != x_5_1
@@ -807,9 +807,9 @@ procedure length2_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall x_6_1_1: Ref ::
         { QPMask[null, list(x_6_1_1)] }
@@ -823,45 +823,45 @@ procedure length2_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } { list(x) } { x.next } (x in xs) && x == y ==> (unfolding acc(list(x), wildcard) in (x.next == null ? res == akk : length2_impl(xs, x.next, akk + 1, res))))
       if (*) {
-        if (xs[x_13] && x_13 == y) {
+        if (xs[x_18] && x_18 == y) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assume list#trigger(UnfoldingHeap, list(x_13));
-          assume UnfoldingHeap[null, list(x_13)] == CombineFrames(FrameFragment(UnfoldingHeap[x_13, next]), FrameFragment((if UnfoldingHeap[x_13, next] != null then UnfoldingHeap[null, list(UnfoldingHeap[x_13, next])] else EmptyFrame)));
-          ExhaleWellDef0Heap := UnfoldingHeap;
+          assume list#trigger(UnfoldingHeap, list(x_18));
+          assume UnfoldingHeap[null, list(x_18)] == CombineFrames(FrameFragment(UnfoldingHeap[x_18, next]), FrameFragment((if UnfoldingHeap[x_18, next] != null then UnfoldingHeap[null, list(UnfoldingHeap[x_18, next])] else EmptyFrame)));
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(x) (0455.vpr@140.1--149.2) [222110]"}
-            NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(x_13)];
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(x) (0455.vpr@140.1--149.2) [55285]"}
+            NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(x_18)];
           havoc wildcard;
           perm := wildcard;
-          assume x_13 != null;
-          UnfoldingMask := UnfoldingMask[x_13, next:=UnfoldingMask[x_13, next] + perm];
+          assume x_18 != null;
+          UnfoldingMask := UnfoldingMask[x_18, next:=UnfoldingMask[x_18, next] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
-          if (UnfoldingHeap[x_13, next] != null) {
+          if (UnfoldingHeap[x_18, next] != null) {
             havoc wildcard;
             perm := wildcard;
-            UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[x_13, next]):=UnfoldingMask[null, list(UnfoldingHeap[x_13, next])] + perm];
+            UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[x_18, next]):=UnfoldingMask[null, list(UnfoldingHeap[x_18, next])] + perm];
             
             // -- Extra unfolding of predicate
-              assume InsidePredicate(list(x_13), UnfoldingHeap[null, list(x_13)], list(UnfoldingHeap[x_13, next]), UnfoldingHeap[null, list(UnfoldingHeap[x_13, next])]);
+              assume InsidePredicate(list(x_18), UnfoldingHeap[null, list(x_18)], list(UnfoldingHeap[x_18, next]), UnfoldingHeap[null, list(UnfoldingHeap[x_18, next])]);
             assume state(UnfoldingHeap, UnfoldingMask);
           }
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@140.1--149.2) [222111]"}
-            HasDirectPerm(UnfoldingMask, x_13, next);
-          if (UnfoldingHeap[x_13, next] == null) {
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@140.1--149.2) [55286]"}
+            HasDirectPerm(UnfoldingMask, x_18, next);
+          if (UnfoldingHeap[x_18, next] == null) {
           } else {
-            assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@140.1--149.2) [222112]"}
-              HasDirectPerm(UnfoldingMask, x_13, next);
+            assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@140.1--149.2) [55287]"}
+              HasDirectPerm(UnfoldingMask, x_18, next);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := UnfoldingHeap;
               ExhaleWellDef0Mask := UnfoldingMask;
+              ExhaleWellDef0Heap := UnfoldingHeap;
               havoc QPMask;
               // wildcard assumptions
               havoc wildcard;
-              assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x$0) (0455.vpr@148.13--148.51) [222113]"}
+              assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x$0) (0455.vpr@148.13--148.51) [55288]"}
                 (forall x$0: Ref ::
                 
                 xs[x$0] ==> UnfoldingMask[null, list(x$0)] > NoPerm
@@ -872,21 +872,21 @@ procedure length2_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
               );
               
               // -- check that the permission amount is positive
-                assert {:msg "  Precondition of function length2_impl might not hold. Fraction wildcard might be negative. (0455.vpr@148.13--148.51) [222114]"}
-                  (forall x_9_1: Ref ::
-                  { invRecv2(x_9_1) }
-                  xs[invRecv2(x_9_1)] && qpRange2(x_9_1) ==> wildcard >= NoPerm
+                assert {:msg "  Precondition of function length2_impl might not hold. Fraction wildcard might be negative. (0455.vpr@148.13--148.51) [55289]"}
+                  (forall x_9_1_1: Ref ::
+                  { invRecv2(x_9_1_1) }
+                  xs[invRecv2(x_9_1_1)] && qpRange2(x_9_1_1) ==> wildcard >= NoPerm
                 );
               
               // -- check if receiver acc(list(x$0), wildcard) is injective
-                assert {:msg "  Precondition of function length2_impl might not hold. Quantified resource list(x$0) might not be injective. (0455.vpr@148.13--148.51) [222115]"}
-                  (forall x$0: Ref, x$0_3: Ref ::
-                  { neverTriggered2(x$0), neverTriggered2(x$0_3) }
-                  (((x$0 != x$0_3 && xs[x$0]) && xs[x$0_3]) && NoPerm < wildcard) && NoPerm < wildcard ==> x$0 != x$0_3
+                assert {:msg "  Precondition of function length2_impl might not hold. Quantified resource list(x$0) might not be injective. (0455.vpr@148.13--148.51) [55290]"}
+                  (forall x$0: Ref, x$0_6: Ref ::
+                  { neverTriggered2(x$0), neverTriggered2(x$0_6) }
+                  (((x$0 != x$0_6 && xs[x$0]) && xs[x$0_6]) && NoPerm < wildcard) && NoPerm < wildcard ==> x$0 != x$0_6
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x$0) (0455.vpr@148.13--148.51) [222116]"}
+                assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x$0) (0455.vpr@148.13--148.51) [55291]"}
                   (forall x$0: Ref ::
                   { UnfoldingHeap[null, list(x$0)] } { UnfoldingMask[null, list(x$0)] } { xs[x$0] }
                   xs[x$0] ==> wildcard > NoPerm ==> UnfoldingMask[null, list(x$0)] > NoPerm
@@ -897,9 +897,9 @@ procedure length2_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
                   { UnfoldingHeap[null, list(x$0)] } { UnfoldingMask[null, list(x$0)] } { xs[x$0] }
                   xs[x$0] && NoPerm < wildcard ==> invRecv2(x$0) == x$0 && qpRange2(x$0)
                 );
-                assume (forall x_9_1: Ref ::
-                  { invRecv2(x_9_1) }
-                  (xs[invRecv2(x_9_1)] && NoPerm < wildcard) && qpRange2(x_9_1) ==> invRecv2(x_9_1) == x_9_1
+                assume (forall x_9_1_1: Ref ::
+                  { invRecv2(x_9_1_1) }
+                  (xs[invRecv2(x_9_1_1)] && NoPerm < wildcard) && qpRange2(x_9_1_1) ==> invRecv2(x_9_1_1) == x_9_1_1
                 );
               // Finish exhale
               havoc ExhaleHeap;
@@ -909,19 +909,19 @@ procedure length2_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
               assume false;
             } else {
               // Enable postcondition for recursive call
-              assume length2_impl#trigger(FrameFragment(length2_impl#condqp1(UnfoldingHeap, xs, UnfoldingHeap[x_13, next], akk + 1, res)), xs, UnfoldingHeap[x_13, next], akk + 1, res);
+              assume length2_impl#trigger(FrameFragment(length2_impl#condqp1(UnfoldingHeap, xs, UnfoldingHeap[x_18, next], akk + 1, res)), xs, UnfoldingHeap[x_18, next], akk + 1, res);
             }
           }
           
           // -- Free assumptions (exp module)
-            Heap := Heap[null, list#sm(x_13):=Heap[null, list#sm(x_13)][x_13, next:=true]];
-            if (Heap[x_13, next] != null) {
+            Heap := Heap[null, list#sm(x_18):=Heap[null, list#sm(x_18)][x_18, next:=true]];
+            if (Heap[x_18, next] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_18: Ref, f_22: (Field A B) ::
-                { newPMask[o_18, f_22] }
-                Heap[null, list#sm(x_13)][o_18, f_22] || Heap[null, list#sm(Heap[x_13, next])][o_18, f_22] ==> newPMask[o_18, f_22]
+              assume (forall <A, B> o_65: Ref, f_74: (Field A B) ::
+                { newPMask[o_65, f_74] }
+                Heap[null, list#sm(x_18)][o_65, f_74] || Heap[null, list#sm(Heap[x_18, next])][o_65, f_74] ==> newPMask[o_65, f_74]
               );
-              Heap := Heap[null, list#sm(x_13):=newPMask];
+              Heap := Heap[null, list#sm(x_18):=newPMask];
             }
             assume state(Heap, Mask);
         }
@@ -929,9 +929,9 @@ procedure length2_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
       }
   
   // -- Translate function body
-    Result := (forall x_10_1: Ref ::
-      { xs[x_10_1] } { Heap[null, list(x_10_1)] } { Heap[x_10_1, next] }
-      xs[x_10_1] && x_10_1 == y ==> (if Heap[x_10_1, next] == null then res == akk else length2_impl(Heap, xs, Heap[x_10_1, next], akk + 1, res))
+    Result := (forall x_10: Ref ::
+      { xs[x_10] } { Heap[null, list(x_10)] } { Heap[x_10, next] }
+      xs[x_10] && x_10 == y ==> (if Heap[x_10, next] == null then res == akk else length2_impl(Heap, xs, Heap[x_10, next], akk + 1, res))
     );
 }
 
@@ -989,11 +989,11 @@ procedure length3_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var x_46: Ref;
+  var x_44: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
@@ -1015,7 +1015,7 @@ procedure length3_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
     havoc wildcard;
     
     // -- check if receiver acc(list(x), wildcard) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource list(x) might not be injective. (0455.vpr@208.12--208.82) [222117]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource list(x) might not be injective. (0455.vpr@208.12--208.82) [55292]"}
         (forall x_5: Ref, x_5_1: Ref ::
         { neverTriggered3(x_5), neverTriggered3(x_5_1) }
         (((x_5 != x_5_1 && xs[x_5]) && xs[x_5_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> x_5 != x_5_1
@@ -1038,9 +1038,9 @@ procedure length3_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall x_6_1_1: Ref ::
         { QPMask[null, list(x_6_1_1)] }
@@ -1054,45 +1054,45 @@ procedure length3_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } { list(x) } { x.next } (x in xs) && x == y ==> (unfolding acc(list(x), wildcard) in (x.next == null ? res == akk : length3_impl(xs, x.next, akk + 1, res))))
       if (*) {
-        if (xs[x_46] && x_46 == y) {
+        if (xs[x_44] && x_44 == y) {
           UnfoldingHeap := Heap;
           UnfoldingMask := Mask;
-          assume list#trigger(UnfoldingHeap, list(x_46));
-          assume UnfoldingHeap[null, list(x_46)] == CombineFrames(FrameFragment(UnfoldingHeap[x_46, next]), FrameFragment((if UnfoldingHeap[x_46, next] != null then UnfoldingHeap[null, list(UnfoldingHeap[x_46, next])] else EmptyFrame)));
-          ExhaleWellDef0Heap := UnfoldingHeap;
+          assume list#trigger(UnfoldingHeap, list(x_44));
+          assume UnfoldingHeap[null, list(x_44)] == CombineFrames(FrameFragment(UnfoldingHeap[x_44, next]), FrameFragment((if UnfoldingHeap[x_44, next] != null then UnfoldingHeap[null, list(UnfoldingHeap[x_44, next])] else EmptyFrame)));
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(x) (0455.vpr@207.1--216.2) [222118]"}
-            NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(x_46)];
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(x) (0455.vpr@207.1--216.2) [55293]"}
+            NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(x_44)];
           havoc wildcard;
           perm := wildcard;
-          assume x_46 != null;
-          UnfoldingMask := UnfoldingMask[x_46, next:=UnfoldingMask[x_46, next] + perm];
+          assume x_44 != null;
+          UnfoldingMask := UnfoldingMask[x_44, next:=UnfoldingMask[x_44, next] + perm];
           assume state(UnfoldingHeap, UnfoldingMask);
-          if (UnfoldingHeap[x_46, next] != null) {
+          if (UnfoldingHeap[x_44, next] != null) {
             havoc wildcard;
             perm := wildcard;
-            UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[x_46, next]):=UnfoldingMask[null, list(UnfoldingHeap[x_46, next])] + perm];
+            UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[x_44, next]):=UnfoldingMask[null, list(UnfoldingHeap[x_44, next])] + perm];
             
             // -- Extra unfolding of predicate
-              assume InsidePredicate(list(x_46), UnfoldingHeap[null, list(x_46)], list(UnfoldingHeap[x_46, next]), UnfoldingHeap[null, list(UnfoldingHeap[x_46, next])]);
+              assume InsidePredicate(list(x_44), UnfoldingHeap[null, list(x_44)], list(UnfoldingHeap[x_44, next]), UnfoldingHeap[null, list(UnfoldingHeap[x_44, next])]);
             assume state(UnfoldingHeap, UnfoldingMask);
           }
           assume state(UnfoldingHeap, UnfoldingMask);
-          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@207.1--216.2) [222119]"}
-            HasDirectPerm(UnfoldingMask, x_46, next);
-          if (UnfoldingHeap[x_46, next] == null) {
+          assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@207.1--216.2) [55294]"}
+            HasDirectPerm(UnfoldingMask, x_44, next);
+          if (UnfoldingHeap[x_44, next] == null) {
           } else {
-            assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@207.1--216.2) [222120]"}
-              HasDirectPerm(UnfoldingMask, x_46, next);
+            assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@207.1--216.2) [55295]"}
+              HasDirectPerm(UnfoldingMask, x_44, next);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := UnfoldingHeap;
               ExhaleWellDef0Mask := UnfoldingMask;
+              ExhaleWellDef0Heap := UnfoldingHeap;
               havoc QPMask;
               // wildcard assumptions
               havoc wildcard;
-              assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x$0) (0455.vpr@215.13--215.51) [222121]"}
+              assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x$0) (0455.vpr@215.13--215.51) [55296]"}
                 (forall x$0: Ref ::
                 
                 xs[x$0] ==> UnfoldingMask[null, list(x$0)] > NoPerm
@@ -1103,21 +1103,21 @@ procedure length3_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
               );
               
               // -- check that the permission amount is positive
-                assert {:msg "  Precondition of function length3_impl might not hold. Fraction wildcard might be negative. (0455.vpr@215.13--215.51) [222122]"}
-                  (forall x_9_1: Ref ::
-                  { invRecv4(x_9_1) }
-                  xs[invRecv4(x_9_1)] && qpRange4(x_9_1) ==> wildcard >= NoPerm
+                assert {:msg "  Precondition of function length3_impl might not hold. Fraction wildcard might be negative. (0455.vpr@215.13--215.51) [55297]"}
+                  (forall x_9_1_1: Ref ::
+                  { invRecv4(x_9_1_1) }
+                  xs[invRecv4(x_9_1_1)] && qpRange4(x_9_1_1) ==> wildcard >= NoPerm
                 );
               
               // -- check if receiver acc(list(x$0), wildcard) is injective
-                assert {:msg "  Precondition of function length3_impl might not hold. Quantified resource list(x$0) might not be injective. (0455.vpr@215.13--215.51) [222123]"}
-                  (forall x$0: Ref, x$0_3: Ref ::
-                  { neverTriggered4(x$0), neverTriggered4(x$0_3) }
-                  (((x$0 != x$0_3 && xs[x$0]) && xs[x$0_3]) && NoPerm < wildcard) && NoPerm < wildcard ==> x$0 != x$0_3
+                assert {:msg "  Precondition of function length3_impl might not hold. Quantified resource list(x$0) might not be injective. (0455.vpr@215.13--215.51) [55298]"}
+                  (forall x$0: Ref, x$0_6: Ref ::
+                  { neverTriggered4(x$0), neverTriggered4(x$0_6) }
+                  (((x$0 != x$0_6 && xs[x$0]) && xs[x$0_6]) && NoPerm < wildcard) && NoPerm < wildcard ==> x$0 != x$0_6
                 );
               
               // -- check if sufficient permission is held
-                assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x$0) (0455.vpr@215.13--215.51) [222124]"}
+                assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x$0) (0455.vpr@215.13--215.51) [55299]"}
                   (forall x$0: Ref ::
                   { UnfoldingHeap[null, list(x$0)] } { UnfoldingMask[null, list(x$0)] } { xs[x$0] } { UnfoldingHeap[null, list(x$0)] }
                   xs[x$0] ==> wildcard > NoPerm ==> UnfoldingMask[null, list(x$0)] > NoPerm
@@ -1128,9 +1128,9 @@ procedure length3_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
                   { UnfoldingHeap[null, list(x$0)] } { UnfoldingMask[null, list(x$0)] } { xs[x$0] } { UnfoldingHeap[null, list(x$0)] }
                   xs[x$0] && NoPerm < wildcard ==> invRecv4(x$0) == x$0 && qpRange4(x$0)
                 );
-                assume (forall x_9_1: Ref ::
-                  { invRecv4(x_9_1) }
-                  (xs[invRecv4(x_9_1)] && NoPerm < wildcard) && qpRange4(x_9_1) ==> invRecv4(x_9_1) == x_9_1
+                assume (forall x_9_1_1: Ref ::
+                  { invRecv4(x_9_1_1) }
+                  (xs[invRecv4(x_9_1_1)] && NoPerm < wildcard) && qpRange4(x_9_1_1) ==> invRecv4(x_9_1_1) == x_9_1_1
                 );
               // Finish exhale
               havoc ExhaleHeap;
@@ -1140,19 +1140,19 @@ procedure length3_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
               assume false;
             } else {
               // Enable postcondition for recursive call
-              assume length3_impl#trigger(FrameFragment(length3_impl#condqp2(UnfoldingHeap, xs, UnfoldingHeap[x_46, next], akk + 1, res)), xs, UnfoldingHeap[x_46, next], akk + 1, res);
+              assume length3_impl#trigger(FrameFragment(length3_impl#condqp2(UnfoldingHeap, xs, UnfoldingHeap[x_44, next], akk + 1, res)), xs, UnfoldingHeap[x_44, next], akk + 1, res);
             }
           }
           
           // -- Free assumptions (exp module)
-            Heap := Heap[null, list#sm(x_46):=Heap[null, list#sm(x_46)][x_46, next:=true]];
-            if (Heap[x_46, next] != null) {
+            Heap := Heap[null, list#sm(x_44):=Heap[null, list#sm(x_44)][x_44, next:=true]];
+            if (Heap[x_44, next] != null) {
               havoc newPMask;
-              assume (forall <A, B> o_5: Ref, f: (Field A B) ::
-                { newPMask[o_5, f] }
-                Heap[null, list#sm(x_46)][o_5, f] || Heap[null, list#sm(Heap[x_46, next])][o_5, f] ==> newPMask[o_5, f]
+              assume (forall <A, B> o_56: Ref, f: (Field A B) ::
+                { newPMask[o_56, f] }
+                Heap[null, list#sm(x_44)][o_56, f] || Heap[null, list#sm(Heap[x_44, next])][o_56, f] ==> newPMask[o_56, f]
               );
-              Heap := Heap[null, list#sm(x_46):=newPMask];
+              Heap := Heap[null, list#sm(x_44):=newPMask];
             }
             assume state(Heap, Mask);
         }
@@ -1160,9 +1160,9 @@ procedure length3_impl#definedness(xs: (Set Ref), y: Ref, akk: int, res: int) re
       }
   
   // -- Translate function body
-    Result := (forall x_10_1: Ref ::
-      { xs[x_10_1] } { Heap[null, list(x_10_1)] } { Heap[x_10_1, next] }
-      xs[x_10_1] && x_10_1 == y ==> (if Heap[x_10_1, next] == null then res == akk else length3_impl(Heap, xs, Heap[x_10_1, next], akk + 1, res))
+    Result := (forall x_10: Ref ::
+      { xs[x_10] } { Heap[null, list(x_10)] } { Heap[x_10, next] }
+      xs[x_10] && x_10 == y ==> (if Heap[x_10, next] == null then res == akk else length3_impl(Heap, xs, Heap[x_10, next], akk + 1, res))
     );
 }
 
@@ -1187,13 +1187,13 @@ axiom (forall this: Ref, i: int ::
 );
 function  list2#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  list2#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall this: Ref, i: int, this2: Ref, i2_1: int ::
-  { list2(this, i), list2(this2, i2_1) }
-  list2(this, i) == list2(this2, i2_1) ==> this == this2 && i == i2_1
+axiom (forall this: Ref, i: int, this2: Ref, i2: int ::
+  { list2(this, i), list2(this2, i2) }
+  list2(this, i) == list2(this2, i2) ==> this == this2 && i == i2
 );
-axiom (forall this: Ref, i: int, this2: Ref, i2_1: int ::
-  { list2#sm(this, i), list2#sm(this2, i2_1) }
-  list2#sm(this, i) == list2#sm(this2, i2_1) ==> this == this2 && i == i2_1
+axiom (forall this: Ref, i: int, this2: Ref, i2: int ::
+  { list2#sm(this, i), list2#sm(this2, i2) }
+  list2#sm(this, i) == list2#sm(this2, i2) ==> this == this2 && i == i2
 );
 
 axiom (forall Heap: HeapType, this: Ref, i: int ::
@@ -1216,7 +1216,7 @@ procedure list2#definedness(this: Ref, i: int) returns ()
       assume Heap[this, $allocated];
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, elem_1:=Mask[this, elem_1] + perm];
+    Mask := Mask[this, elem:=Mask[this, elem] + perm];
     assume state(Heap, Mask);
     perm := FullPerm;
     assume this != null;
@@ -1224,12 +1224,12 @@ procedure list2#definedness(this: Ref, i: int) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of this.next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0455.vpr@7.1--10.2) [222125]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0455.vpr@7.1--10.2) [55300]"}
         HasDirectPerm(Mask, this, next);
     if (Heap[this, next] != null) {
       
       // -- Check definedness of acc(list2(this.next, i), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0455.vpr@7.1--10.2) [222126]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0455.vpr@7.1--10.2) [55301]"}
           HasDirectPerm(Mask, this, next);
       perm := FullPerm;
       Mask := Mask[null, list2(Heap[this, next], i):=Mask[null, list2(Heap[this, next], i)] + perm];
@@ -1292,12 +1292,12 @@ procedure list#definedness(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@62.1--64.2) [222127]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@62.1--64.2) [55302]"}
         HasDirectPerm(Mask, x, next);
     if (Heap[x, next] != null) {
       
       // -- Check definedness of acc(list(x.next), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@62.1--64.2) [222128]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access x.next (0455.vpr@62.1--64.2) [55303]"}
           HasDirectPerm(Mask, x, next);
       perm := FullPerm;
       Mask := Mask[null, list(Heap[x, next]):=Mask[null, list(Heap[x, next])] + perm];
@@ -1313,17 +1313,17 @@ procedure list#definedness(x: Ref) returns ()
 procedure test_foo1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1335,89 +1335,89 @@ procedure test_foo1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
   
   // -- Translating statement: x1 := new(elem, next) -- 0455.vpr@20.15--20.27
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, elem_1:=Mask[x1_2, elem_1] + FullPerm];
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, elem:=Mask[x1, elem] + FullPerm];
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@21.2--21.17
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@21.2--21.17) [222129]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@21.2--21.17) [55304]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list2(x1, 77), write) -- 0455.vpr@22.2--22.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.elem (0455.vpr@22.2--22.20) [222132]"}
-        perm <= Mask[x1_2, elem_1];
+      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.elem (0455.vpr@22.2--22.20) [55307]"}
+        perm <= Mask[x1, elem];
     }
-    Mask := Mask[x1_2, elem_1:=Mask[x1_2, elem_1] - perm];
+    Mask := Mask[x1, elem:=Mask[x1, elem] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.next (0455.vpr@22.2--22.20) [222134]"}
-        perm <= Mask[x1_2, next];
+      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.next (0455.vpr@22.2--22.20) [55309]"}
+        perm <= Mask[x1, next];
     }
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - perm];
-    if (Heap[x1_2, next] != null) {
+    Mask := Mask[x1, next:=Mask[x1, next] - perm];
+    if (Heap[x1, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access list2(x1.next, 77) (0455.vpr@22.2--22.20) [222136]"}
-          perm <= Mask[null, list2(Heap[x1_2, next], 77)];
+        assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access list2(x1.next, 77) (0455.vpr@22.2--22.20) [55311]"}
+          perm <= Mask[null, list2(Heap[x1, next], 77)];
       }
-      Mask := Mask[null, list2(Heap[x1_2, next], 77):=Mask[null, list2(Heap[x1_2, next], 77)] - perm];
+      Mask := Mask[null, list2(Heap[x1, next], 77):=Mask[null, list2(Heap[x1, next], 77)] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list2(x1_2, 77), Heap[null, list2(x1_2, 77)], list2(Heap[x1_2, next], 77), Heap[null, list2(Heap[x1_2, next], 77)]);
+        assume InsidePredicate(list2(x1, 77), Heap[null, list2(x1, 77)], list2(Heap[x1, next], 77), Heap[null, list2(Heap[x1, next], 77)]);
     }
     perm := FullPerm;
-    Mask := Mask[null, list2(x1_2, 77):=Mask[null, list2(x1_2, 77)] + perm];
+    Mask := Mask[null, list2(x1, 77):=Mask[null, list2(x1, 77)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list2#trigger(Heap, list2(x1_2, 77));
-    assume Heap[null, list2(x1_2, 77)] == CombineFrames(FrameFragment(Heap[x1_2, elem_1]), CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list2(Heap[x1_2, next], 77)] else EmptyFrame))));
-    if (!HasDirectPerm(Mask, null, list2(x1_2, 77))) {
-      Heap := Heap[null, list2#sm(x1_2, 77):=ZeroPMask];
+    assume list2#trigger(Heap, list2(x1, 77));
+    assume Heap[null, list2(x1, 77)] == CombineFrames(FrameFragment(Heap[x1, elem]), CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list2(Heap[x1, next], 77)] else EmptyFrame))));
+    if (!HasDirectPerm(Mask, null, list2(x1, 77))) {
+      Heap := Heap[null, list2#sm(x1, 77):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list2(x1_2, 77):=freshVersion];
+      Heap := Heap[null, list2(x1, 77):=freshVersion];
     }
-    Heap := Heap[null, list2#sm(x1_2, 77):=Heap[null, list2#sm(x1_2, 77)][x1_2, elem_1:=true]];
-    Heap := Heap[null, list2#sm(x1_2, 77):=Heap[null, list2#sm(x1_2, 77)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list2#sm(x1, 77):=Heap[null, list2#sm(x1, 77)][x1, elem:=true]];
+    Heap := Heap[null, list2#sm(x1, 77):=Heap[null, list2#sm(x1, 77)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-        { newPMask[o_35, f_17] }
-        Heap[null, list2#sm(x1_2, 77)][o_35, f_17] || Heap[null, list2#sm(Heap[x1_2, next], 77)][o_35, f_17] ==> newPMask[o_35, f_17]
+      assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+        { newPMask[o_3, f_24] }
+        Heap[null, list2#sm(x1, 77)][o_3, f_24] || Heap[null, list2#sm(Heap[x1, next], 77)][o_3, f_24] ==> newPMask[o_3, f_24]
       );
-      Heap := Heap[null, list2#sm(x1_2, 77):=newPMask];
+      Heap := Heap[null, list2#sm(x1, 77):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo(x1, 77) -- 0455.vpr@24.2--24.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo(x1, 77)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list2(x1, 77) (0455.vpr@24.9--24.20) [222138]"}
-          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list2(x1_2, 77)];
+        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list2(x1, 77) (0455.vpr@24.9--24.20) [55313]"}
+          NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list2(x1, 77)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1425,8 +1425,8 @@ procedure test_foo1() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo(x1, 77) might not hold. (0455.vpr@24.9--24.20) [222139]"}
-      foo_2(Heap, x1_2, 77);
+    assert {:msg "  Assert might fail. Assertion foo(x1, 77) might not hold. (0455.vpr@24.9--24.20) [55314]"}
+      foo_1(Heap, x1, 77);
     assume state(Heap, Mask);
 }
 
@@ -1437,18 +1437,18 @@ procedure test_foo1() returns ()
 procedure test_foo2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var x2: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1460,74 +1460,74 @@ procedure test_foo2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
     assume Heap[x2, $allocated];
   
   // -- Translating statement: x1 := new(elem, next) -- 0455.vpr@28.15--28.27
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, elem_1:=Mask[x1_2, elem_1] + FullPerm];
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, elem:=Mask[x1, elem] + FullPerm];
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@29.2--29.17
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@29.2--29.17) [222140]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@29.2--29.17) [55315]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list2(x1, 77), write) -- 0455.vpr@30.2--30.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.elem (0455.vpr@30.2--30.20) [222143]"}
-        perm <= Mask[x1_2, elem_1];
+      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.elem (0455.vpr@30.2--30.20) [55318]"}
+        perm <= Mask[x1, elem];
     }
-    Mask := Mask[x1_2, elem_1:=Mask[x1_2, elem_1] - perm];
+    Mask := Mask[x1, elem:=Mask[x1, elem] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.next (0455.vpr@30.2--30.20) [222145]"}
-        perm <= Mask[x1_2, next];
+      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.next (0455.vpr@30.2--30.20) [55320]"}
+        perm <= Mask[x1, next];
     }
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - perm];
-    if (Heap[x1_2, next] != null) {
+    Mask := Mask[x1, next:=Mask[x1, next] - perm];
+    if (Heap[x1, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access list2(x1.next, 77) (0455.vpr@30.2--30.20) [222147]"}
-          perm <= Mask[null, list2(Heap[x1_2, next], 77)];
+        assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access list2(x1.next, 77) (0455.vpr@30.2--30.20) [55322]"}
+          perm <= Mask[null, list2(Heap[x1, next], 77)];
       }
-      Mask := Mask[null, list2(Heap[x1_2, next], 77):=Mask[null, list2(Heap[x1_2, next], 77)] - perm];
+      Mask := Mask[null, list2(Heap[x1, next], 77):=Mask[null, list2(Heap[x1, next], 77)] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list2(x1_2, 77), Heap[null, list2(x1_2, 77)], list2(Heap[x1_2, next], 77), Heap[null, list2(Heap[x1_2, next], 77)]);
+        assume InsidePredicate(list2(x1, 77), Heap[null, list2(x1, 77)], list2(Heap[x1, next], 77), Heap[null, list2(Heap[x1, next], 77)]);
     }
     perm := FullPerm;
-    Mask := Mask[null, list2(x1_2, 77):=Mask[null, list2(x1_2, 77)] + perm];
+    Mask := Mask[null, list2(x1, 77):=Mask[null, list2(x1, 77)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list2#trigger(Heap, list2(x1_2, 77));
-    assume Heap[null, list2(x1_2, 77)] == CombineFrames(FrameFragment(Heap[x1_2, elem_1]), CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list2(Heap[x1_2, next], 77)] else EmptyFrame))));
-    if (!HasDirectPerm(Mask, null, list2(x1_2, 77))) {
-      Heap := Heap[null, list2#sm(x1_2, 77):=ZeroPMask];
+    assume list2#trigger(Heap, list2(x1, 77));
+    assume Heap[null, list2(x1, 77)] == CombineFrames(FrameFragment(Heap[x1, elem]), CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list2(Heap[x1, next], 77)] else EmptyFrame))));
+    if (!HasDirectPerm(Mask, null, list2(x1, 77))) {
+      Heap := Heap[null, list2#sm(x1, 77):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list2(x1_2, 77):=freshVersion];
+      Heap := Heap[null, list2(x1, 77):=freshVersion];
     }
-    Heap := Heap[null, list2#sm(x1_2, 77):=Heap[null, list2#sm(x1_2, 77)][x1_2, elem_1:=true]];
-    Heap := Heap[null, list2#sm(x1_2, 77):=Heap[null, list2#sm(x1_2, 77)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list2#sm(x1, 77):=Heap[null, list2#sm(x1, 77)][x1, elem:=true]];
+    Heap := Heap[null, list2#sm(x1, 77):=Heap[null, list2#sm(x1, 77)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_1: Ref, f_11: (Field A B) ::
-        { newPMask[o_1, f_11] }
-        Heap[null, list2#sm(x1_2, 77)][o_1, f_11] || Heap[null, list2#sm(Heap[x1_2, next], 77)][o_1, f_11] ==> newPMask[o_1, f_11]
+      assume (forall <A, B> o_1: Ref, f_10: (Field A B) ::
+        { newPMask[o_1, f_10] }
+        Heap[null, list2#sm(x1, 77)][o_1, f_10] || Heap[null, list2#sm(Heap[x1, next], 77)][o_1, f_10] ==> newPMask[o_1, f_10]
       );
-      Heap := Heap[null, list2#sm(x1_2, 77):=newPMask];
+      Heap := Heap[null, list2#sm(x1, 77):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1537,35 +1537,35 @@ procedure test_foo2() returns ()
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     x2 := freshObj;
-    Mask := Mask[x2, elem_1:=Mask[x2, elem_1] + FullPerm];
+    Mask := Mask[x2, elem:=Mask[x2, elem] + FullPerm];
     Mask := Mask[x2, next:=Mask[x2, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x2.next := x1 -- 0455.vpr@33.2--33.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@33.2--33.15) [222149]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@33.2--33.15) [55324]"}
       FullPerm == Mask[x2, next];
-    Heap := Heap[x2, next:=x1_2];
+    Heap := Heap[x2, next:=x1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list2(x2, 77), write) -- 0455.vpr@34.2--34.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access x2.elem (0455.vpr@34.2--34.20) [222152]"}
-        perm <= Mask[x2, elem_1];
+      assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access x2.elem (0455.vpr@34.2--34.20) [55327]"}
+        perm <= Mask[x2, elem];
     }
-    Mask := Mask[x2, elem_1:=Mask[x2, elem_1] - perm];
+    Mask := Mask[x2, elem:=Mask[x2, elem] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access x2.next (0455.vpr@34.2--34.20) [222154]"}
+      assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access x2.next (0455.vpr@34.2--34.20) [55329]"}
         perm <= Mask[x2, next];
     }
     Mask := Mask[x2, next:=Mask[x2, next] - perm];
     if (Heap[x2, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access list2(x2.next, 77) (0455.vpr@34.2--34.20) [222156]"}
+        assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access list2(x2.next, 77) (0455.vpr@34.2--34.20) [55331]"}
           perm <= Mask[null, list2(Heap[x2, next], 77)];
       }
       Mask := Mask[null, list2(Heap[x2, next], 77):=Mask[null, list2(Heap[x2, next], 77)] - perm];
@@ -1578,19 +1578,19 @@ procedure test_foo2() returns ()
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume list2#trigger(Heap, list2(x2, 77));
-    assume Heap[null, list2(x2, 77)] == CombineFrames(FrameFragment(Heap[x2, elem_1]), CombineFrames(FrameFragment(Heap[x2, next]), FrameFragment((if Heap[x2, next] != null then Heap[null, list2(Heap[x2, next], 77)] else EmptyFrame))));
+    assume Heap[null, list2(x2, 77)] == CombineFrames(FrameFragment(Heap[x2, elem]), CombineFrames(FrameFragment(Heap[x2, next]), FrameFragment((if Heap[x2, next] != null then Heap[null, list2(Heap[x2, next], 77)] else EmptyFrame))));
     if (!HasDirectPerm(Mask, null, list2(x2, 77))) {
       Heap := Heap[null, list2#sm(x2, 77):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, list2(x2, 77):=freshVersion];
     }
-    Heap := Heap[null, list2#sm(x2, 77):=Heap[null, list2#sm(x2, 77)][x2, elem_1:=true]];
+    Heap := Heap[null, list2#sm(x2, 77):=Heap[null, list2#sm(x2, 77)][x2, elem:=true]];
     Heap := Heap[null, list2#sm(x2, 77):=Heap[null, list2#sm(x2, 77)][x2, next:=true]];
     if (Heap[x2, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_12: Ref, f_9: (Field A B) ::
-        { newPMask[o_12, f_9] }
-        Heap[null, list2#sm(x2, 77)][o_12, f_9] || Heap[null, list2#sm(Heap[x2, next], 77)][o_12, f_9] ==> newPMask[o_12, f_9]
+      assume (forall <A, B> o_15: Ref, f_51: (Field A B) ::
+        { newPMask[o_15, f_51] }
+        Heap[null, list2#sm(x2, 77)][o_15, f_51] || Heap[null, list2#sm(Heap[x2, next], 77)][o_15, f_51] ==> newPMask[o_15, f_51]
       );
       Heap := Heap[null, list2#sm(x2, 77):=newPMask];
     }
@@ -1598,16 +1598,16 @@ procedure test_foo2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo(x2, 77) -- 0455.vpr@36.2--36.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo(x2, 77)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list2(x2, 77) (0455.vpr@36.9--36.20) [222158]"}
+        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list2(x2, 77) (0455.vpr@36.9--36.20) [55333]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list2(x2, 77)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1616,8 +1616,8 @@ procedure test_foo2() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo(x2, 77) might not hold. (0455.vpr@36.9--36.20) [222159]"}
-      foo_2(Heap, x2, 77);
+    assert {:msg "  Assert might fail. Assertion foo(x2, 77) might not hold. (0455.vpr@36.9--36.20) [55334]"}
+      foo_1(Heap, x2, 77);
     assume state(Heap, Mask);
 }
 
@@ -1628,20 +1628,20 @@ procedure test_foo2() returns ()
 procedure test_foo4() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var x2: Ref;
   var x3: Ref;
   var x4: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1653,11 +1653,11 @@ procedure test_foo4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
     assume Heap[x2, $allocated];
     assume Heap[x3, $allocated];
     assume Heap[x4, $allocated];
@@ -1666,63 +1666,63 @@ procedure test_foo4() returns ()
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, elem_1:=Mask[x1_2, elem_1] + FullPerm];
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, elem:=Mask[x1, elem] + FullPerm];
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@41.2--41.17
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@41.2--41.17) [222160]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@41.2--41.17) [55335]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list2(x1, 77), write) -- 0455.vpr@42.2--42.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.elem (0455.vpr@42.2--42.20) [222163]"}
-        perm <= Mask[x1_2, elem_1];
+      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.elem (0455.vpr@42.2--42.20) [55338]"}
+        perm <= Mask[x1, elem];
     }
-    Mask := Mask[x1_2, elem_1:=Mask[x1_2, elem_1] - perm];
+    Mask := Mask[x1, elem:=Mask[x1, elem] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.next (0455.vpr@42.2--42.20) [222165]"}
-        perm <= Mask[x1_2, next];
+      assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access x1.next (0455.vpr@42.2--42.20) [55340]"}
+        perm <= Mask[x1, next];
     }
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - perm];
-    if (Heap[x1_2, next] != null) {
+    Mask := Mask[x1, next:=Mask[x1, next] - perm];
+    if (Heap[x1, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access list2(x1.next, 77) (0455.vpr@42.2--42.20) [222167]"}
-          perm <= Mask[null, list2(Heap[x1_2, next], 77)];
+        assert {:msg "  Folding list2(x1, 77) might fail. There might be insufficient permission to access list2(x1.next, 77) (0455.vpr@42.2--42.20) [55342]"}
+          perm <= Mask[null, list2(Heap[x1, next], 77)];
       }
-      Mask := Mask[null, list2(Heap[x1_2, next], 77):=Mask[null, list2(Heap[x1_2, next], 77)] - perm];
+      Mask := Mask[null, list2(Heap[x1, next], 77):=Mask[null, list2(Heap[x1, next], 77)] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list2(x1_2, 77), Heap[null, list2(x1_2, 77)], list2(Heap[x1_2, next], 77), Heap[null, list2(Heap[x1_2, next], 77)]);
+        assume InsidePredicate(list2(x1, 77), Heap[null, list2(x1, 77)], list2(Heap[x1, next], 77), Heap[null, list2(Heap[x1, next], 77)]);
     }
     perm := FullPerm;
-    Mask := Mask[null, list2(x1_2, 77):=Mask[null, list2(x1_2, 77)] + perm];
+    Mask := Mask[null, list2(x1, 77):=Mask[null, list2(x1, 77)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list2#trigger(Heap, list2(x1_2, 77));
-    assume Heap[null, list2(x1_2, 77)] == CombineFrames(FrameFragment(Heap[x1_2, elem_1]), CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list2(Heap[x1_2, next], 77)] else EmptyFrame))));
-    if (!HasDirectPerm(Mask, null, list2(x1_2, 77))) {
-      Heap := Heap[null, list2#sm(x1_2, 77):=ZeroPMask];
+    assume list2#trigger(Heap, list2(x1, 77));
+    assume Heap[null, list2(x1, 77)] == CombineFrames(FrameFragment(Heap[x1, elem]), CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list2(Heap[x1, next], 77)] else EmptyFrame))));
+    if (!HasDirectPerm(Mask, null, list2(x1, 77))) {
+      Heap := Heap[null, list2#sm(x1, 77):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list2(x1_2, 77):=freshVersion];
+      Heap := Heap[null, list2(x1, 77):=freshVersion];
     }
-    Heap := Heap[null, list2#sm(x1_2, 77):=Heap[null, list2#sm(x1_2, 77)][x1_2, elem_1:=true]];
-    Heap := Heap[null, list2#sm(x1_2, 77):=Heap[null, list2#sm(x1_2, 77)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list2#sm(x1, 77):=Heap[null, list2#sm(x1, 77)][x1, elem:=true]];
+    Heap := Heap[null, list2#sm(x1, 77):=Heap[null, list2#sm(x1, 77)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_22: Ref, f_24: (Field A B) ::
-        { newPMask[o_22, f_24] }
-        Heap[null, list2#sm(x1_2, 77)][o_22, f_24] || Heap[null, list2#sm(Heap[x1_2, next], 77)][o_22, f_24] ==> newPMask[o_22, f_24]
+      assume (forall <A, B> o_4: Ref, f_54: (Field A B) ::
+        { newPMask[o_4, f_54] }
+        Heap[null, list2#sm(x1, 77)][o_4, f_54] || Heap[null, list2#sm(Heap[x1, next], 77)][o_4, f_54] ==> newPMask[o_4, f_54]
       );
-      Heap := Heap[null, list2#sm(x1_2, 77):=newPMask];
+      Heap := Heap[null, list2#sm(x1, 77):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1732,35 +1732,35 @@ procedure test_foo4() returns ()
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     x2 := freshObj;
-    Mask := Mask[x2, elem_1:=Mask[x2, elem_1] + FullPerm];
+    Mask := Mask[x2, elem:=Mask[x2, elem] + FullPerm];
     Mask := Mask[x2, next:=Mask[x2, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x2.next := x1 -- 0455.vpr@45.2--45.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@45.2--45.15) [222169]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@45.2--45.15) [55344]"}
       FullPerm == Mask[x2, next];
-    Heap := Heap[x2, next:=x1_2];
+    Heap := Heap[x2, next:=x1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list2(x2, 77), write) -- 0455.vpr@46.2--46.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access x2.elem (0455.vpr@46.2--46.20) [222172]"}
-        perm <= Mask[x2, elem_1];
+      assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access x2.elem (0455.vpr@46.2--46.20) [55347]"}
+        perm <= Mask[x2, elem];
     }
-    Mask := Mask[x2, elem_1:=Mask[x2, elem_1] - perm];
+    Mask := Mask[x2, elem:=Mask[x2, elem] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access x2.next (0455.vpr@46.2--46.20) [222174]"}
+      assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access x2.next (0455.vpr@46.2--46.20) [55349]"}
         perm <= Mask[x2, next];
     }
     Mask := Mask[x2, next:=Mask[x2, next] - perm];
     if (Heap[x2, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access list2(x2.next, 77) (0455.vpr@46.2--46.20) [222176]"}
+        assert {:msg "  Folding list2(x2, 77) might fail. There might be insufficient permission to access list2(x2.next, 77) (0455.vpr@46.2--46.20) [55351]"}
           perm <= Mask[null, list2(Heap[x2, next], 77)];
       }
       Mask := Mask[null, list2(Heap[x2, next], 77):=Mask[null, list2(Heap[x2, next], 77)] - perm];
@@ -1773,19 +1773,19 @@ procedure test_foo4() returns ()
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume list2#trigger(Heap, list2(x2, 77));
-    assume Heap[null, list2(x2, 77)] == CombineFrames(FrameFragment(Heap[x2, elem_1]), CombineFrames(FrameFragment(Heap[x2, next]), FrameFragment((if Heap[x2, next] != null then Heap[null, list2(Heap[x2, next], 77)] else EmptyFrame))));
+    assume Heap[null, list2(x2, 77)] == CombineFrames(FrameFragment(Heap[x2, elem]), CombineFrames(FrameFragment(Heap[x2, next]), FrameFragment((if Heap[x2, next] != null then Heap[null, list2(Heap[x2, next], 77)] else EmptyFrame))));
     if (!HasDirectPerm(Mask, null, list2(x2, 77))) {
       Heap := Heap[null, list2#sm(x2, 77):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, list2(x2, 77):=freshVersion];
     }
-    Heap := Heap[null, list2#sm(x2, 77):=Heap[null, list2#sm(x2, 77)][x2, elem_1:=true]];
+    Heap := Heap[null, list2#sm(x2, 77):=Heap[null, list2#sm(x2, 77)][x2, elem:=true]];
     Heap := Heap[null, list2#sm(x2, 77):=Heap[null, list2#sm(x2, 77)][x2, next:=true]];
     if (Heap[x2, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_3: Ref, f_12: (Field A B) ::
-        { newPMask[o_3, f_12] }
-        Heap[null, list2#sm(x2, 77)][o_3, f_12] || Heap[null, list2#sm(Heap[x2, next], 77)][o_3, f_12] ==> newPMask[o_3, f_12]
+      assume (forall <A, B> o_12: Ref, f_25: (Field A B) ::
+        { newPMask[o_12, f_25] }
+        Heap[null, list2#sm(x2, 77)][o_12, f_25] || Heap[null, list2#sm(Heap[x2, next], 77)][o_12, f_25] ==> newPMask[o_12, f_25]
       );
       Heap := Heap[null, list2#sm(x2, 77):=newPMask];
     }
@@ -1797,35 +1797,35 @@ procedure test_foo4() returns ()
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     x3 := freshObj;
-    Mask := Mask[x3, elem_1:=Mask[x3, elem_1] + FullPerm];
+    Mask := Mask[x3, elem:=Mask[x3, elem] + FullPerm];
     Mask := Mask[x3, next:=Mask[x3, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x3.next := x2 -- 0455.vpr@49.2--49.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x3.next (0455.vpr@49.2--49.15) [222178]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x3.next (0455.vpr@49.2--49.15) [55353]"}
       FullPerm == Mask[x3, next];
     Heap := Heap[x3, next:=x2];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list2(x3, 77), write) -- 0455.vpr@50.2--50.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x3, 77) might fail. There might be insufficient permission to access x3.elem (0455.vpr@50.2--50.20) [222181]"}
-        perm <= Mask[x3, elem_1];
+      assert {:msg "  Folding list2(x3, 77) might fail. There might be insufficient permission to access x3.elem (0455.vpr@50.2--50.20) [55356]"}
+        perm <= Mask[x3, elem];
     }
-    Mask := Mask[x3, elem_1:=Mask[x3, elem_1] - perm];
+    Mask := Mask[x3, elem:=Mask[x3, elem] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x3, 77) might fail. There might be insufficient permission to access x3.next (0455.vpr@50.2--50.20) [222183]"}
+      assert {:msg "  Folding list2(x3, 77) might fail. There might be insufficient permission to access x3.next (0455.vpr@50.2--50.20) [55358]"}
         perm <= Mask[x3, next];
     }
     Mask := Mask[x3, next:=Mask[x3, next] - perm];
     if (Heap[x3, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list2(x3, 77) might fail. There might be insufficient permission to access list2(x3.next, 77) (0455.vpr@50.2--50.20) [222185]"}
+        assert {:msg "  Folding list2(x3, 77) might fail. There might be insufficient permission to access list2(x3.next, 77) (0455.vpr@50.2--50.20) [55360]"}
           perm <= Mask[null, list2(Heap[x3, next], 77)];
       }
       Mask := Mask[null, list2(Heap[x3, next], 77):=Mask[null, list2(Heap[x3, next], 77)] - perm];
@@ -1838,19 +1838,19 @@ procedure test_foo4() returns ()
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume list2#trigger(Heap, list2(x3, 77));
-    assume Heap[null, list2(x3, 77)] == CombineFrames(FrameFragment(Heap[x3, elem_1]), CombineFrames(FrameFragment(Heap[x3, next]), FrameFragment((if Heap[x3, next] != null then Heap[null, list2(Heap[x3, next], 77)] else EmptyFrame))));
+    assume Heap[null, list2(x3, 77)] == CombineFrames(FrameFragment(Heap[x3, elem]), CombineFrames(FrameFragment(Heap[x3, next]), FrameFragment((if Heap[x3, next] != null then Heap[null, list2(Heap[x3, next], 77)] else EmptyFrame))));
     if (!HasDirectPerm(Mask, null, list2(x3, 77))) {
       Heap := Heap[null, list2#sm(x3, 77):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, list2(x3, 77):=freshVersion];
     }
-    Heap := Heap[null, list2#sm(x3, 77):=Heap[null, list2#sm(x3, 77)][x3, elem_1:=true]];
+    Heap := Heap[null, list2#sm(x3, 77):=Heap[null, list2#sm(x3, 77)][x3, elem:=true]];
     Heap := Heap[null, list2#sm(x3, 77):=Heap[null, list2#sm(x3, 77)][x3, next:=true]];
     if (Heap[x3, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_46: Ref, f_35: (Field A B) ::
-        { newPMask[o_46, f_35] }
-        Heap[null, list2#sm(x3, 77)][o_46, f_35] || Heap[null, list2#sm(Heap[x3, next], 77)][o_46, f_35] ==> newPMask[o_46, f_35]
+      assume (forall <A, B> o_41: Ref, f_21: (Field A B) ::
+        { newPMask[o_41, f_21] }
+        Heap[null, list2#sm(x3, 77)][o_41, f_21] || Heap[null, list2#sm(Heap[x3, next], 77)][o_41, f_21] ==> newPMask[o_41, f_21]
       );
       Heap := Heap[null, list2#sm(x3, 77):=newPMask];
     }
@@ -1862,35 +1862,35 @@ procedure test_foo4() returns ()
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     x4 := freshObj;
-    Mask := Mask[x4, elem_1:=Mask[x4, elem_1] + FullPerm];
+    Mask := Mask[x4, elem:=Mask[x4, elem] + FullPerm];
     Mask := Mask[x4, next:=Mask[x4, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x4.next := x3 -- 0455.vpr@53.2--53.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x4.next (0455.vpr@53.2--53.15) [222187]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x4.next (0455.vpr@53.2--53.15) [55362]"}
       FullPerm == Mask[x4, next];
     Heap := Heap[x4, next:=x3];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list2(x4, 77), write) -- 0455.vpr@54.2--54.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x4, 77) might fail. There might be insufficient permission to access x4.elem (0455.vpr@54.2--54.20) [222190]"}
-        perm <= Mask[x4, elem_1];
+      assert {:msg "  Folding list2(x4, 77) might fail. There might be insufficient permission to access x4.elem (0455.vpr@54.2--54.20) [55365]"}
+        perm <= Mask[x4, elem];
     }
-    Mask := Mask[x4, elem_1:=Mask[x4, elem_1] - perm];
+    Mask := Mask[x4, elem:=Mask[x4, elem] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list2(x4, 77) might fail. There might be insufficient permission to access x4.next (0455.vpr@54.2--54.20) [222192]"}
+      assert {:msg "  Folding list2(x4, 77) might fail. There might be insufficient permission to access x4.next (0455.vpr@54.2--54.20) [55367]"}
         perm <= Mask[x4, next];
     }
     Mask := Mask[x4, next:=Mask[x4, next] - perm];
     if (Heap[x4, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list2(x4, 77) might fail. There might be insufficient permission to access list2(x4.next, 77) (0455.vpr@54.2--54.20) [222194]"}
+        assert {:msg "  Folding list2(x4, 77) might fail. There might be insufficient permission to access list2(x4.next, 77) (0455.vpr@54.2--54.20) [55369]"}
           perm <= Mask[null, list2(Heap[x4, next], 77)];
       }
       Mask := Mask[null, list2(Heap[x4, next], 77):=Mask[null, list2(Heap[x4, next], 77)] - perm];
@@ -1903,19 +1903,19 @@ procedure test_foo4() returns ()
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume list2#trigger(Heap, list2(x4, 77));
-    assume Heap[null, list2(x4, 77)] == CombineFrames(FrameFragment(Heap[x4, elem_1]), CombineFrames(FrameFragment(Heap[x4, next]), FrameFragment((if Heap[x4, next] != null then Heap[null, list2(Heap[x4, next], 77)] else EmptyFrame))));
+    assume Heap[null, list2(x4, 77)] == CombineFrames(FrameFragment(Heap[x4, elem]), CombineFrames(FrameFragment(Heap[x4, next]), FrameFragment((if Heap[x4, next] != null then Heap[null, list2(Heap[x4, next], 77)] else EmptyFrame))));
     if (!HasDirectPerm(Mask, null, list2(x4, 77))) {
       Heap := Heap[null, list2#sm(x4, 77):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, list2(x4, 77):=freshVersion];
     }
-    Heap := Heap[null, list2#sm(x4, 77):=Heap[null, list2#sm(x4, 77)][x4, elem_1:=true]];
+    Heap := Heap[null, list2#sm(x4, 77):=Heap[null, list2#sm(x4, 77)][x4, elem:=true]];
     Heap := Heap[null, list2#sm(x4, 77):=Heap[null, list2#sm(x4, 77)][x4, next:=true]];
     if (Heap[x4, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_41: Ref, f_25: (Field A B) ::
-        { newPMask[o_41, f_25] }
-        Heap[null, list2#sm(x4, 77)][o_41, f_25] || Heap[null, list2#sm(Heap[x4, next], 77)][o_41, f_25] ==> newPMask[o_41, f_25]
+      assume (forall <A, B> o_23: Ref, f_13: (Field A B) ::
+        { newPMask[o_23, f_13] }
+        Heap[null, list2#sm(x4, 77)][o_23, f_13] || Heap[null, list2#sm(Heap[x4, next], 77)][o_23, f_13] ==> newPMask[o_23, f_13]
       );
       Heap := Heap[null, list2#sm(x4, 77):=newPMask];
     }
@@ -1923,16 +1923,16 @@ procedure test_foo4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo(x4, 77) -- 0455.vpr@56.2--56.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo(x4, 77)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list2(x4, 77) (0455.vpr@56.9--56.20) [222196]"}
+        assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list2(x4, 77) (0455.vpr@56.9--56.20) [55371]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list2(x4, 77)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1941,8 +1941,8 @@ procedure test_foo4() returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion foo(x4, 77) might not hold. (0455.vpr@56.9--56.20) [222197]"}
-      foo_2(Heap, x4, 77);
+    assert {:msg "  Assert might fail. Assertion foo(x4, 77) might not hold. (0455.vpr@56.9--56.20) [55372]"}
+      foo_1(Heap, x4, 77);
     assume state(Heap, Mask);
 }
 
@@ -1953,12 +1953,12 @@ procedure test_foo4() returns ()
 procedure test_length1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -1975,71 +1975,71 @@ procedure test_length1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
   
   // -- Translating statement: x1 := new(next) -- 0455.vpr@84.16--84.31
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@85.3--85.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@85.3--85.18) [222198]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@85.3--85.18) [55373]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x1), write) -- 0455.vpr@86.3--86.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@86.3--86.16) [222201]"}
-        perm <= Mask[x1_2, next];
+      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@86.3--86.16) [55376]"}
+        perm <= Mask[x1, next];
     }
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - perm];
-    if (Heap[x1_2, next] != null) {
+    Mask := Mask[x1, next:=Mask[x1, next] - perm];
+    if (Heap[x1, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@86.3--86.16) [222203]"}
-          perm <= Mask[null, list(Heap[x1_2, next])];
+        assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@86.3--86.16) [55378]"}
+          perm <= Mask[null, list(Heap[x1, next])];
       }
-      Mask := Mask[null, list(Heap[x1_2, next]):=Mask[null, list(Heap[x1_2, next])] - perm];
+      Mask := Mask[null, list(Heap[x1, next]):=Mask[null, list(Heap[x1, next])] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(x1_2), Heap[null, list(x1_2)], list(Heap[x1_2, next]), Heap[null, list(Heap[x1_2, next])]);
+        assume InsidePredicate(list(x1), Heap[null, list(x1)], list(Heap[x1, next]), Heap[null, list(Heap[x1, next])]);
     }
     perm := FullPerm;
-    Mask := Mask[null, list(x1_2):=Mask[null, list(x1_2)] + perm];
+    Mask := Mask[null, list(x1):=Mask[null, list(x1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(x1_2));
-    assume Heap[null, list(x1_2)] == CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list(Heap[x1_2, next])] else EmptyFrame)));
-    if (!HasDirectPerm(Mask, null, list(x1_2))) {
-      Heap := Heap[null, list#sm(x1_2):=ZeroPMask];
+    assume list#trigger(Heap, list(x1));
+    assume Heap[null, list(x1)] == CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list(Heap[x1, next])] else EmptyFrame)));
+    if (!HasDirectPerm(Mask, null, list(x1))) {
+      Heap := Heap[null, list#sm(x1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(x1_2):=freshVersion];
+      Heap := Heap[null, list(x1):=freshVersion];
     }
-    Heap := Heap[null, list#sm(x1_2):=Heap[null, list#sm(x1_2)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list#sm(x1):=Heap[null, list#sm(x1)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_34: Ref, f_44: (Field A B) ::
-        { newPMask[o_34, f_44] }
-        Heap[null, list#sm(x1_2)][o_34, f_44] || Heap[null, list#sm(Heap[x1_2, next])][o_34, f_44] ==> newPMask[o_34, f_44]
+      assume (forall <A, B> o_13: Ref, f_65: (Field A B) ::
+        { newPMask[o_13, f_65] }
+        Heap[null, list#sm(x1)][o_13, f_65] || Heap[null, list#sm(Heap[x1, next])][o_13, f_65] ==> newPMask[o_13, f_65]
       );
-      Heap := Heap[null, list#sm(x1_2):=newPMask];
+      Heap := Heap[null, list#sm(x1):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: xs := Set(x1) -- 0455.vpr@87.3--87.30
-    xs := Set#Singleton(x1_2);
+    xs := Set#Singleton(x1);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale length_impl(xs, x1, 1, res) -- 0455.vpr@90.10--90.29
@@ -2048,11 +2048,11 @@ procedure test_length1() returns ()
     // -- Check definedness of length_impl(xs, x1, 1, res)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length_impl might not hold. There might be insufficient permission to access list(x1) (0455.vpr@90.10--90.29) [222205]"}
-          NoPerm < perm ==> NoPerm < Mask[null, list(x1_2)];
+        assert {:msg "  Precondition of function length_impl might not hold. There might be insufficient permission to access list(x1) (0455.vpr@90.10--90.29) [55380]"}
+          NoPerm < perm ==> NoPerm < Mask[null, list(x1)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -2060,14 +2060,14 @@ procedure test_length1() returns ()
         // Stop execution
         assume false;
       }
-    assume length_impl(Heap, xs, x1_2, 1, res);
+    assume length_impl(Heap, xs, x1, 1, res);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res == 1 -- 0455.vpr@91.3--91.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion res == 1 might not hold. (0455.vpr@91.10--91.18) [222206]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion res == 1 might not hold. (0455.vpr@91.10--91.18) [55381]"}
       res == 1;
     assume state(Heap, Mask);
 }
@@ -2079,13 +2079,13 @@ procedure test_length1() returns ()
 procedure test_length2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var x2: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -2102,66 +2102,66 @@ procedure test_length2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
     assume Heap[x2, $allocated];
   
   // -- Translating statement: x1 := new(next) -- 0455.vpr@95.16--95.31
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@96.3--96.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@96.3--96.18) [222207]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@96.3--96.18) [55382]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x1), write) -- 0455.vpr@97.3--97.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@97.3--97.16) [222210]"}
-        perm <= Mask[x1_2, next];
+      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@97.3--97.16) [55385]"}
+        perm <= Mask[x1, next];
     }
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - perm];
-    if (Heap[x1_2, next] != null) {
+    Mask := Mask[x1, next:=Mask[x1, next] - perm];
+    if (Heap[x1, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@97.3--97.16) [222212]"}
-          perm <= Mask[null, list(Heap[x1_2, next])];
+        assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@97.3--97.16) [55387]"}
+          perm <= Mask[null, list(Heap[x1, next])];
       }
-      Mask := Mask[null, list(Heap[x1_2, next]):=Mask[null, list(Heap[x1_2, next])] - perm];
+      Mask := Mask[null, list(Heap[x1, next]):=Mask[null, list(Heap[x1, next])] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(x1_2), Heap[null, list(x1_2)], list(Heap[x1_2, next]), Heap[null, list(Heap[x1_2, next])]);
+        assume InsidePredicate(list(x1), Heap[null, list(x1)], list(Heap[x1, next]), Heap[null, list(Heap[x1, next])]);
     }
     perm := FullPerm;
-    Mask := Mask[null, list(x1_2):=Mask[null, list(x1_2)] + perm];
+    Mask := Mask[null, list(x1):=Mask[null, list(x1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(x1_2));
-    assume Heap[null, list(x1_2)] == CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list(Heap[x1_2, next])] else EmptyFrame)));
-    if (!HasDirectPerm(Mask, null, list(x1_2))) {
-      Heap := Heap[null, list#sm(x1_2):=ZeroPMask];
+    assume list#trigger(Heap, list(x1));
+    assume Heap[null, list(x1)] == CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list(Heap[x1, next])] else EmptyFrame)));
+    if (!HasDirectPerm(Mask, null, list(x1))) {
+      Heap := Heap[null, list#sm(x1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(x1_2):=freshVersion];
+      Heap := Heap[null, list(x1):=freshVersion];
     }
-    Heap := Heap[null, list#sm(x1_2):=Heap[null, list#sm(x1_2)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list#sm(x1):=Heap[null, list#sm(x1)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_55: Ref, f_36: (Field A B) ::
-        { newPMask[o_55, f_36] }
-        Heap[null, list#sm(x1_2)][o_55, f_36] || Heap[null, list#sm(Heap[x1_2, next])][o_55, f_36] ==> newPMask[o_55, f_36]
+      assume (forall <A, B> o_51: Ref, f_66: (Field A B) ::
+        { newPMask[o_51, f_66] }
+        Heap[null, list#sm(x1)][o_51, f_66] || Heap[null, list#sm(Heap[x1, next])][o_51, f_66] ==> newPMask[o_51, f_66]
       );
-      Heap := Heap[null, list#sm(x1_2):=newPMask];
+      Heap := Heap[null, list#sm(x1):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -2175,24 +2175,24 @@ procedure test_length2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x2.next := x1 -- 0455.vpr@100.3--100.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@100.3--100.16) [222214]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@100.3--100.16) [55389]"}
       FullPerm == Mask[x2, next];
-    Heap := Heap[x2, next:=x1_2];
+    Heap := Heap[x2, next:=x1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x2), write) -- 0455.vpr@101.3--101.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@101.3--101.16) [222217]"}
+      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@101.3--101.16) [55392]"}
         perm <= Mask[x2, next];
     }
     Mask := Mask[x2, next:=Mask[x2, next] - perm];
     if (Heap[x2, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@101.3--101.16) [222219]"}
+        assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@101.3--101.16) [55394]"}
           perm <= Mask[null, list(Heap[x2, next])];
       }
       Mask := Mask[null, list(Heap[x2, next]):=Mask[null, list(Heap[x2, next])] - perm];
@@ -2214,9 +2214,9 @@ procedure test_length2() returns ()
     Heap := Heap[null, list#sm(x2):=Heap[null, list#sm(x2)][x2, next:=true]];
     if (Heap[x2, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_42: Ref, f_26: (Field A B) ::
-        { newPMask[o_42, f_26] }
-        Heap[null, list#sm(x2)][o_42, f_26] || Heap[null, list#sm(Heap[x2, next])][o_42, f_26] ==> newPMask[o_42, f_26]
+      assume (forall <A, B> o_52: Ref, f_14: (Field A B) ::
+        { newPMask[o_52, f_14] }
+        Heap[null, list#sm(x2)][o_52, f_14] || Heap[null, list#sm(Heap[x2, next])][o_52, f_14] ==> newPMask[o_52, f_14]
       );
       Heap := Heap[null, list#sm(x2):=newPMask];
     }
@@ -2224,15 +2224,15 @@ procedure test_length2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: xs := Set(x1, x2) -- 0455.vpr@103.3--103.34
-    xs := Set#UnionOne(Set#Singleton(x2), x1_2);
+    xs := Set#UnionOne(Set#Singleton(x2), x1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (x1 in xs) && (x2 in xs) -- 0455.vpr@104.3--104.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (x1 in xs) might not hold. (0455.vpr@104.10--104.30) [222221]"}
-      xs[x1_2];
-    assert {:msg "  Assert might fail. Assertion (x2 in xs) might not hold. (0455.vpr@104.10--104.30) [222222]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (x1 in xs) might not hold. (0455.vpr@104.10--104.30) [55396]"}
+      xs[x1];
+    assert {:msg "  Assert might fail. Assertion (x2 in xs) might not hold. (0455.vpr@104.10--104.30) [55397]"}
       xs[x2];
     assume state(Heap, Mask);
   
@@ -2242,10 +2242,10 @@ procedure test_length2() returns ()
     // -- Check definedness of length_impl(xs, x2, 1, res)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length_impl might not hold. There might be insufficient permission to access list(x2) (0455.vpr@107.10--107.29) [222223]"}
+        assert {:msg "  Precondition of function length_impl might not hold. There might be insufficient permission to access list(x2) (0455.vpr@107.10--107.29) [55398]"}
           NoPerm < perm ==> NoPerm < Mask[null, list(x2)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2259,9 +2259,9 @@ procedure test_length2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res == 2 -- 0455.vpr@108.3--108.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion res == 2 might not hold. (0455.vpr@108.10--108.18) [222224]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion res == 2 might not hold. (0455.vpr@108.10--108.18) [55399]"}
       res == 2;
     assume state(Heap, Mask);
 }
@@ -2273,15 +2273,15 @@ procedure test_length2() returns ()
 procedure test_length4() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var x2: Ref;
   var x3: Ref;
   var x4: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -2298,11 +2298,11 @@ procedure test_length4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
     assume Heap[x2, $allocated];
     assume Heap[x3, $allocated];
     assume Heap[x4, $allocated];
@@ -2311,55 +2311,55 @@ procedure test_length4() returns ()
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@113.3--113.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@113.3--113.18) [222225]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@113.3--113.18) [55400]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x1), write) -- 0455.vpr@114.3--114.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@114.3--114.16) [222228]"}
-        perm <= Mask[x1_2, next];
+      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@114.3--114.16) [55403]"}
+        perm <= Mask[x1, next];
     }
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - perm];
-    if (Heap[x1_2, next] != null) {
+    Mask := Mask[x1, next:=Mask[x1, next] - perm];
+    if (Heap[x1, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@114.3--114.16) [222230]"}
-          perm <= Mask[null, list(Heap[x1_2, next])];
+        assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@114.3--114.16) [55405]"}
+          perm <= Mask[null, list(Heap[x1, next])];
       }
-      Mask := Mask[null, list(Heap[x1_2, next]):=Mask[null, list(Heap[x1_2, next])] - perm];
+      Mask := Mask[null, list(Heap[x1, next]):=Mask[null, list(Heap[x1, next])] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(x1_2), Heap[null, list(x1_2)], list(Heap[x1_2, next]), Heap[null, list(Heap[x1_2, next])]);
+        assume InsidePredicate(list(x1), Heap[null, list(x1)], list(Heap[x1, next]), Heap[null, list(Heap[x1, next])]);
     }
     perm := FullPerm;
-    Mask := Mask[null, list(x1_2):=Mask[null, list(x1_2)] + perm];
+    Mask := Mask[null, list(x1):=Mask[null, list(x1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(x1_2));
-    assume Heap[null, list(x1_2)] == CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list(Heap[x1_2, next])] else EmptyFrame)));
-    if (!HasDirectPerm(Mask, null, list(x1_2))) {
-      Heap := Heap[null, list#sm(x1_2):=ZeroPMask];
+    assume list#trigger(Heap, list(x1));
+    assume Heap[null, list(x1)] == CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list(Heap[x1, next])] else EmptyFrame)));
+    if (!HasDirectPerm(Mask, null, list(x1))) {
+      Heap := Heap[null, list#sm(x1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(x1_2):=freshVersion];
+      Heap := Heap[null, list(x1):=freshVersion];
     }
-    Heap := Heap[null, list#sm(x1_2):=Heap[null, list#sm(x1_2)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list#sm(x1):=Heap[null, list#sm(x1)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_13: Ref, f_45: (Field A B) ::
-        { newPMask[o_13, f_45] }
-        Heap[null, list#sm(x1_2)][o_13, f_45] || Heap[null, list#sm(Heap[x1_2, next])][o_13, f_45] ==> newPMask[o_13, f_45]
+      assume (forall <A, B> o_20: Ref, f_50: (Field A B) ::
+        { newPMask[o_20, f_50] }
+        Heap[null, list#sm(x1)][o_20, f_50] || Heap[null, list#sm(Heap[x1, next])][o_20, f_50] ==> newPMask[o_20, f_50]
       );
-      Heap := Heap[null, list#sm(x1_2):=newPMask];
+      Heap := Heap[null, list#sm(x1):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -2373,24 +2373,24 @@ procedure test_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x2.next := x1 -- 0455.vpr@117.3--117.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@117.3--117.16) [222232]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@117.3--117.16) [55407]"}
       FullPerm == Mask[x2, next];
-    Heap := Heap[x2, next:=x1_2];
+    Heap := Heap[x2, next:=x1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x2), write) -- 0455.vpr@118.3--118.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@118.3--118.16) [222235]"}
+      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@118.3--118.16) [55410]"}
         perm <= Mask[x2, next];
     }
     Mask := Mask[x2, next:=Mask[x2, next] - perm];
     if (Heap[x2, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@118.3--118.16) [222237]"}
+        assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@118.3--118.16) [55412]"}
           perm <= Mask[null, list(Heap[x2, next])];
       }
       Mask := Mask[null, list(Heap[x2, next]):=Mask[null, list(Heap[x2, next])] - perm];
@@ -2412,9 +2412,9 @@ procedure test_length4() returns ()
     Heap := Heap[null, list#sm(x2):=Heap[null, list#sm(x2)][x2, next:=true]];
     if (Heap[x2, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_43: Ref, f_13: (Field A B) ::
-        { newPMask[o_43, f_13] }
-        Heap[null, list#sm(x2)][o_43, f_13] || Heap[null, list#sm(Heap[x2, next])][o_43, f_13] ==> newPMask[o_43, f_13]
+      assume (forall <A, B> o_58: Ref, f_30: (Field A B) ::
+        { newPMask[o_58, f_30] }
+        Heap[null, list#sm(x2)][o_58, f_30] || Heap[null, list#sm(Heap[x2, next])][o_58, f_30] ==> newPMask[o_58, f_30]
       );
       Heap := Heap[null, list#sm(x2):=newPMask];
     }
@@ -2430,24 +2430,24 @@ procedure test_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x3.next := x2 -- 0455.vpr@121.3--121.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x3.next (0455.vpr@121.3--121.16) [222239]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x3.next (0455.vpr@121.3--121.16) [55414]"}
       FullPerm == Mask[x3, next];
     Heap := Heap[x3, next:=x2];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x3), write) -- 0455.vpr@122.3--122.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access x3.next (0455.vpr@122.3--122.16) [222242]"}
+      assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access x3.next (0455.vpr@122.3--122.16) [55417]"}
         perm <= Mask[x3, next];
     }
     Mask := Mask[x3, next:=Mask[x3, next] - perm];
     if (Heap[x3, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access list(x3.next) (0455.vpr@122.3--122.16) [222244]"}
+        assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access list(x3.next) (0455.vpr@122.3--122.16) [55419]"}
           perm <= Mask[null, list(Heap[x3, next])];
       }
       Mask := Mask[null, list(Heap[x3, next]):=Mask[null, list(Heap[x3, next])] - perm];
@@ -2469,9 +2469,9 @@ procedure test_length4() returns ()
     Heap := Heap[null, list#sm(x3):=Heap[null, list#sm(x3)][x3, next:=true]];
     if (Heap[x3, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_47: Ref, f_41: (Field A B) ::
-        { newPMask[o_47, f_41] }
-        Heap[null, list#sm(x3)][o_47, f_41] || Heap[null, list#sm(Heap[x3, next])][o_47, f_41] ==> newPMask[o_47, f_41]
+      assume (forall <A, B> o_10: Ref, f_67: (Field A B) ::
+        { newPMask[o_10, f_67] }
+        Heap[null, list#sm(x3)][o_10, f_67] || Heap[null, list#sm(Heap[x3, next])][o_10, f_67] ==> newPMask[o_10, f_67]
       );
       Heap := Heap[null, list#sm(x3):=newPMask];
     }
@@ -2487,24 +2487,24 @@ procedure test_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x4.next := x3 -- 0455.vpr@125.3--125.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x4.next (0455.vpr@125.3--125.16) [222246]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x4.next (0455.vpr@125.3--125.16) [55421]"}
       FullPerm == Mask[x4, next];
     Heap := Heap[x4, next:=x3];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x4), write) -- 0455.vpr@126.3--126.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access x4.next (0455.vpr@126.3--126.16) [222249]"}
+      assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access x4.next (0455.vpr@126.3--126.16) [55424]"}
         perm <= Mask[x4, next];
     }
     Mask := Mask[x4, next:=Mask[x4, next] - perm];
     if (Heap[x4, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access list(x4.next) (0455.vpr@126.3--126.16) [222251]"}
+        assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access list(x4.next) (0455.vpr@126.3--126.16) [55426]"}
           perm <= Mask[null, list(Heap[x4, next])];
       }
       Mask := Mask[null, list(Heap[x4, next]):=Mask[null, list(Heap[x4, next])] - perm];
@@ -2526,9 +2526,9 @@ procedure test_length4() returns ()
     Heap := Heap[null, list#sm(x4):=Heap[null, list#sm(x4)][x4, next:=true]];
     if (Heap[x4, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_14: Ref, f_51: (Field A B) ::
-        { newPMask[o_14, f_51] }
-        Heap[null, list#sm(x4)][o_14, f_51] || Heap[null, list#sm(Heap[x4, next])][o_14, f_51] ==> newPMask[o_14, f_51]
+      assume (forall <A, B> o_18: Ref, f_18: (Field A B) ::
+        { newPMask[o_18, f_18] }
+        Heap[null, list#sm(x4)][o_18, f_18] || Heap[null, list#sm(Heap[x4, next])][o_18, f_18] ==> newPMask[o_18, f_18]
       );
       Heap := Heap[null, list#sm(x4):=newPMask];
     }
@@ -2536,7 +2536,7 @@ procedure test_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: xs := Set(x1, x2, x4, x3) -- 0455.vpr@128.3--128.42
-    xs := Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(x3), x4), x2), x1_2);
+    xs := Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(x3), x4), x2), x1);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale length_impl(xs, x4, 1, res) -- 0455.vpr@131.10--131.29
@@ -2545,10 +2545,10 @@ procedure test_length4() returns ()
     // -- Check definedness of length_impl(xs, x4, 1, res)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length_impl might not hold. There might be insufficient permission to access list(x4) (0455.vpr@131.10--131.29) [222253]"}
+        assert {:msg "  Precondition of function length_impl might not hold. There might be insufficient permission to access list(x4) (0455.vpr@131.10--131.29) [55428]"}
           NoPerm < perm ==> NoPerm < Mask[null, list(x4)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -2562,9 +2562,9 @@ procedure test_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res == 4 -- 0455.vpr@132.3--132.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion res == 4 might not hold. (0455.vpr@132.10--132.18) [222254]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion res == 4 might not hold. (0455.vpr@132.10--132.18) [55429]"}
       res == 4;
     assume state(Heap, Mask);
 }
@@ -2576,12 +2576,12 @@ procedure test_length4() returns ()
 procedure test2_length1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -2600,71 +2600,71 @@ procedure test2_length1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
   
   // -- Translating statement: x1 := new(next) -- 0455.vpr@152.16--152.31
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@153.3--153.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@153.3--153.18) [222255]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@153.3--153.18) [55430]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x1), write) -- 0455.vpr@154.3--154.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@154.3--154.16) [222258]"}
-        perm <= Mask[x1_2, next];
+      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@154.3--154.16) [55433]"}
+        perm <= Mask[x1, next];
     }
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - perm];
-    if (Heap[x1_2, next] != null) {
+    Mask := Mask[x1, next:=Mask[x1, next] - perm];
+    if (Heap[x1, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@154.3--154.16) [222260]"}
-          perm <= Mask[null, list(Heap[x1_2, next])];
+        assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@154.3--154.16) [55435]"}
+          perm <= Mask[null, list(Heap[x1, next])];
       }
-      Mask := Mask[null, list(Heap[x1_2, next]):=Mask[null, list(Heap[x1_2, next])] - perm];
+      Mask := Mask[null, list(Heap[x1, next]):=Mask[null, list(Heap[x1, next])] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(x1_2), Heap[null, list(x1_2)], list(Heap[x1_2, next]), Heap[null, list(Heap[x1_2, next])]);
+        assume InsidePredicate(list(x1), Heap[null, list(x1)], list(Heap[x1, next]), Heap[null, list(Heap[x1, next])]);
     }
     perm := FullPerm;
-    Mask := Mask[null, list(x1_2):=Mask[null, list(x1_2)] + perm];
+    Mask := Mask[null, list(x1):=Mask[null, list(x1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(x1_2));
-    assume Heap[null, list(x1_2)] == CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list(Heap[x1_2, next])] else EmptyFrame)));
-    if (!HasDirectPerm(Mask, null, list(x1_2))) {
-      Heap := Heap[null, list#sm(x1_2):=ZeroPMask];
+    assume list#trigger(Heap, list(x1));
+    assume Heap[null, list(x1)] == CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list(Heap[x1, next])] else EmptyFrame)));
+    if (!HasDirectPerm(Mask, null, list(x1))) {
+      Heap := Heap[null, list#sm(x1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(x1_2):=freshVersion];
+      Heap := Heap[null, list(x1):=freshVersion];
     }
-    Heap := Heap[null, list#sm(x1_2):=Heap[null, list#sm(x1_2)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list#sm(x1):=Heap[null, list#sm(x1)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_44: Ref, f_14: (Field A B) ::
-        { newPMask[o_44, f_14] }
-        Heap[null, list#sm(x1_2)][o_44, f_14] || Heap[null, list#sm(Heap[x1_2, next])][o_44, f_14] ==> newPMask[o_44, f_14]
+      assume (forall <A, B> o_66: Ref, f_28: (Field A B) ::
+        { newPMask[o_66, f_28] }
+        Heap[null, list#sm(x1)][o_66, f_28] || Heap[null, list#sm(Heap[x1, next])][o_66, f_28] ==> newPMask[o_66, f_28]
       );
-      Heap := Heap[null, list#sm(x1_2):=newPMask];
+      Heap := Heap[null, list#sm(x1):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: xs := Set(x1) -- 0455.vpr@155.3--155.30
-    xs := Set#Singleton(x1_2);
+    xs := Set#Singleton(x1);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale length2_impl(xs, x1, 1, res) -- 0455.vpr@158.10--158.30
@@ -2673,12 +2673,12 @@ procedure test2_length1() returns ()
     // -- Check definedness of length2_impl(xs, x1, 1, res)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         // wildcard assumptions
         havoc wildcard;
-        assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@158.10--158.30) [222262]"}
+        assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@158.10--158.30) [55437]"}
           (forall x: Ref ::
           
           xs[x] ==> Mask[null, list(x)] > NoPerm
@@ -2689,21 +2689,21 @@ procedure test2_length1() returns ()
         );
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function length2_impl might not hold. Fraction wildcard might be negative. (0455.vpr@158.10--158.30) [222263]"}
+          assert {:msg "  Precondition of function length2_impl might not hold. Fraction wildcard might be negative. (0455.vpr@158.10--158.30) [55438]"}
             (forall x_1_1_1: Ref ::
             { invRecv5(x_1_1_1) }
             xs[invRecv5(x_1_1_1)] && qpRange5(x_1_1_1) ==> wildcard >= NoPerm
           );
         
         // -- check if receiver acc(list(x), wildcard) is injective
-          assert {:msg "  Precondition of function length2_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@158.10--158.30) [222264]"}
-            (forall x: Ref, x_9: Ref ::
-            { neverTriggered5(x), neverTriggered5(x_9) }
-            (((x != x_9 && xs[x]) && xs[x_9]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_9
+          assert {:msg "  Precondition of function length2_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@158.10--158.30) [55439]"}
+            (forall x: Ref, x_46: Ref ::
+            { neverTriggered5(x), neverTriggered5(x_46) }
+            (((x != x_46 && xs[x]) && xs[x_46]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_46
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@158.10--158.30) [222265]"}
+          assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@158.10--158.30) [55440]"}
             (forall x: Ref ::
             { Heap[null, list(x)] } { Mask[null, list(x)] } { xs[x] }
             xs[x] ==> wildcard > NoPerm ==> Mask[null, list(x)] > NoPerm
@@ -2725,14 +2725,14 @@ procedure test2_length1() returns ()
         // Stop execution
         assume false;
       }
-    assume length2_impl(Heap, xs, x1_2, 1, res);
+    assume length2_impl(Heap, xs, x1, 1, res);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res == 1 -- 0455.vpr@159.3--159.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion res == 1 might not hold. (0455.vpr@159.10--159.18) [222266]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion res == 1 might not hold. (0455.vpr@159.10--159.18) [55441]"}
       res == 1;
     assume state(Heap, Mask);
 }
@@ -2744,13 +2744,13 @@ procedure test2_length1() returns ()
 procedure test2_length2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var x2: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > 0.000000000;
   var perm: Perm;
   var freshVersion: FrameType;
@@ -2769,65 +2769,65 @@ procedure test2_length2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
     assume Heap[x2, $allocated];
   
   // -- Translating statement: x1 := new(next) -- 0455.vpr@163.16--163.31
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@164.3--164.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@164.3--164.18) [222267]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@164.3--164.18) [55442]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x1), wildcard) -- 0455.vpr@165.3--165.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@165.3--165.31) [222269]"}
-      Mask[x1_2, next] > NoPerm;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@165.3--165.31) [55444]"}
+      Mask[x1, next] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[x1_2, next];
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - wildcard];
-    if (Heap[x1_2, next] != null) {
-      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@165.3--165.31) [222270]"}
-        Mask[null, list(Heap[x1_2, next])] > NoPerm;
+    assume wildcard < Mask[x1, next];
+    Mask := Mask[x1, next:=Mask[x1, next] - wildcard];
+    if (Heap[x1, next] != null) {
+      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@165.3--165.31) [55445]"}
+        Mask[null, list(Heap[x1, next])] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[null, list(Heap[x1_2, next])];
-      Mask := Mask[null, list(Heap[x1_2, next]):=Mask[null, list(Heap[x1_2, next])] - wildcard];
+      assume wildcard < Mask[null, list(Heap[x1, next])];
+      Mask := Mask[null, list(Heap[x1, next]):=Mask[null, list(Heap[x1, next])] - wildcard];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(x1_2), Heap[null, list(x1_2)], list(Heap[x1_2, next]), Heap[null, list(Heap[x1_2, next])]);
+        assume InsidePredicate(list(x1), Heap[null, list(x1)], list(Heap[x1, next]), Heap[null, list(Heap[x1, next])]);
     }
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, list(x1_2):=Mask[null, list(x1_2)] + perm];
+    Mask := Mask[null, list(x1):=Mask[null, list(x1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(x1_2));
-    assume Heap[null, list(x1_2)] == CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list(Heap[x1_2, next])] else EmptyFrame)));
-    if (!HasDirectPerm(Mask, null, list(x1_2))) {
-      Heap := Heap[null, list#sm(x1_2):=ZeroPMask];
+    assume list#trigger(Heap, list(x1));
+    assume Heap[null, list(x1)] == CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list(Heap[x1, next])] else EmptyFrame)));
+    if (!HasDirectPerm(Mask, null, list(x1))) {
+      Heap := Heap[null, list#sm(x1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(x1_2):=freshVersion];
+      Heap := Heap[null, list(x1):=freshVersion];
     }
-    Heap := Heap[null, list#sm(x1_2):=Heap[null, list#sm(x1_2)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list#sm(x1):=Heap[null, list#sm(x1)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_28: Ref, f_42: (Field A B) ::
-        { newPMask[o_28, f_42] }
-        Heap[null, list#sm(x1_2)][o_28, f_42] || Heap[null, list#sm(Heap[x1_2, next])][o_28, f_42] ==> newPMask[o_28, f_42]
+      assume (forall <A, B> o_11: Ref, f_34: (Field A B) ::
+        { newPMask[o_11, f_34] }
+        Heap[null, list#sm(x1)][o_11, f_34] || Heap[null, list#sm(Heap[x1, next])][o_11, f_34] ==> newPMask[o_11, f_34]
       );
-      Heap := Heap[null, list#sm(x1_2):=newPMask];
+      Heap := Heap[null, list#sm(x1):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -2841,21 +2841,21 @@ procedure test2_length2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x2.next := x1 -- 0455.vpr@168.3--168.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@168.3--168.16) [222271]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@168.3--168.16) [55446]"}
       FullPerm == Mask[x2, next];
-    Heap := Heap[x2, next:=x1_2];
+    Heap := Heap[x2, next:=x1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x2), wildcard) -- 0455.vpr@169.3--169.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@169.3--169.31) [222273]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@169.3--169.31) [55448]"}
       Mask[x2, next] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x2, next];
     Mask := Mask[x2, next:=Mask[x2, next] - wildcard];
     if (Heap[x2, next] != null) {
-      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@169.3--169.31) [222274]"}
+      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@169.3--169.31) [55449]"}
         Mask[null, list(Heap[x2, next])] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[null, list(Heap[x2, next])];
@@ -2879,9 +2879,9 @@ procedure test2_length2() returns ()
     Heap := Heap[null, list#sm(x2):=Heap[null, list#sm(x2)][x2, next:=true]];
     if (Heap[x2, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_76: Ref, f_34: (Field A B) ::
-        { newPMask[o_76, f_34] }
-        Heap[null, list#sm(x2)][o_76, f_34] || Heap[null, list#sm(Heap[x2, next])][o_76, f_34] ==> newPMask[o_76, f_34]
+      assume (forall <A, B> o_19: Ref, f_57: (Field A B) ::
+        { newPMask[o_19, f_57] }
+        Heap[null, list#sm(x2)][o_19, f_57] || Heap[null, list#sm(Heap[x2, next])][o_19, f_57] ==> newPMask[o_19, f_57]
       );
       Heap := Heap[null, list#sm(x2):=newPMask];
     }
@@ -2889,15 +2889,15 @@ procedure test2_length2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: xs := Set(x1, x2) -- 0455.vpr@171.3--171.34
-    xs := Set#UnionOne(Set#Singleton(x2), x1_2);
+    xs := Set#UnionOne(Set#Singleton(x2), x1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (x1 in xs) && (x2 in xs) -- 0455.vpr@172.3--172.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (x1 in xs) might not hold. (0455.vpr@172.10--172.30) [222275]"}
-      xs[x1_2];
-    assert {:msg "  Assert might fail. Assertion (x2 in xs) might not hold. (0455.vpr@172.10--172.30) [222276]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (x1 in xs) might not hold. (0455.vpr@172.10--172.30) [55450]"}
+      xs[x1];
+    assert {:msg "  Assert might fail. Assertion (x2 in xs) might not hold. (0455.vpr@172.10--172.30) [55451]"}
       xs[x2];
     assume state(Heap, Mask);
   
@@ -2907,12 +2907,12 @@ procedure test2_length2() returns ()
     // -- Check definedness of length2_impl(xs, x2, 1, res)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         // wildcard assumptions
         havoc wildcard;
-        assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@175.10--175.30) [222277]"}
+        assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@175.10--175.30) [55452]"}
           (forall x: Ref ::
           
           xs[x] ==> Mask[null, list(x)] > NoPerm
@@ -2923,21 +2923,21 @@ procedure test2_length2() returns ()
         );
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function length2_impl might not hold. Fraction wildcard might be negative. (0455.vpr@175.10--175.30) [222278]"}
+          assert {:msg "  Precondition of function length2_impl might not hold. Fraction wildcard might be negative. (0455.vpr@175.10--175.30) [55453]"}
             (forall x_1_1_1: Ref ::
             { invRecv6(x_1_1_1) }
             xs[invRecv6(x_1_1_1)] && qpRange6(x_1_1_1) ==> wildcard >= NoPerm
           );
         
         // -- check if receiver acc(list(x), wildcard) is injective
-          assert {:msg "  Precondition of function length2_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@175.10--175.30) [222279]"}
-            (forall x: Ref, x_9: Ref ::
-            { neverTriggered6(x), neverTriggered6(x_9) }
-            (((x != x_9 && xs[x]) && xs[x_9]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_9
+          assert {:msg "  Precondition of function length2_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@175.10--175.30) [55454]"}
+            (forall x: Ref, x_46: Ref ::
+            { neverTriggered6(x), neverTriggered6(x_46) }
+            (((x != x_46 && xs[x]) && xs[x_46]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_46
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@175.10--175.30) [222280]"}
+          assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@175.10--175.30) [55455]"}
             (forall x: Ref ::
             { Heap[null, list(x)] } { Mask[null, list(x)] } { xs[x] }
             xs[x] ==> wildcard > NoPerm ==> Mask[null, list(x)] > NoPerm
@@ -2964,9 +2964,9 @@ procedure test2_length2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res == 2 -- 0455.vpr@176.3--176.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion res == 2 might not hold. (0455.vpr@176.10--176.18) [222281]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion res == 2 might not hold. (0455.vpr@176.10--176.18) [55456]"}
       res == 2;
     assume state(Heap, Mask);
 }
@@ -2978,15 +2978,15 @@ procedure test2_length2() returns ()
 procedure test2_length4() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var x2: Ref;
   var x3: Ref;
   var x4: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > 0.000000000;
   var perm: Perm;
   var freshVersion: FrameType;
@@ -3005,11 +3005,11 @@ procedure test2_length4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
     assume Heap[x2, $allocated];
     assume Heap[x3, $allocated];
     assume Heap[x4, $allocated];
@@ -3018,54 +3018,54 @@ procedure test2_length4() returns ()
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@181.3--181.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@181.3--181.18) [222282]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@181.3--181.18) [55457]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x1), wildcard) -- 0455.vpr@182.3--182.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@182.3--182.31) [222284]"}
-      Mask[x1_2, next] > NoPerm;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@182.3--182.31) [55459]"}
+      Mask[x1, next] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[x1_2, next];
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - wildcard];
-    if (Heap[x1_2, next] != null) {
-      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@182.3--182.31) [222285]"}
-        Mask[null, list(Heap[x1_2, next])] > NoPerm;
+    assume wildcard < Mask[x1, next];
+    Mask := Mask[x1, next:=Mask[x1, next] - wildcard];
+    if (Heap[x1, next] != null) {
+      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@182.3--182.31) [55460]"}
+        Mask[null, list(Heap[x1, next])] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[null, list(Heap[x1_2, next])];
-      Mask := Mask[null, list(Heap[x1_2, next]):=Mask[null, list(Heap[x1_2, next])] - wildcard];
+      assume wildcard < Mask[null, list(Heap[x1, next])];
+      Mask := Mask[null, list(Heap[x1, next]):=Mask[null, list(Heap[x1, next])] - wildcard];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(x1_2), Heap[null, list(x1_2)], list(Heap[x1_2, next]), Heap[null, list(Heap[x1_2, next])]);
+        assume InsidePredicate(list(x1), Heap[null, list(x1)], list(Heap[x1, next]), Heap[null, list(Heap[x1, next])]);
     }
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, list(x1_2):=Mask[null, list(x1_2)] + perm];
+    Mask := Mask[null, list(x1):=Mask[null, list(x1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(x1_2));
-    assume Heap[null, list(x1_2)] == CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list(Heap[x1_2, next])] else EmptyFrame)));
-    if (!HasDirectPerm(Mask, null, list(x1_2))) {
-      Heap := Heap[null, list#sm(x1_2):=ZeroPMask];
+    assume list#trigger(Heap, list(x1));
+    assume Heap[null, list(x1)] == CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list(Heap[x1, next])] else EmptyFrame)));
+    if (!HasDirectPerm(Mask, null, list(x1))) {
+      Heap := Heap[null, list#sm(x1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(x1_2):=freshVersion];
+      Heap := Heap[null, list(x1):=freshVersion];
     }
-    Heap := Heap[null, list#sm(x1_2):=Heap[null, list#sm(x1_2)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list#sm(x1):=Heap[null, list#sm(x1)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_51: Ref, f_46: (Field A B) ::
-        { newPMask[o_51, f_46] }
-        Heap[null, list#sm(x1_2)][o_51, f_46] || Heap[null, list#sm(Heap[x1_2, next])][o_51, f_46] ==> newPMask[o_51, f_46]
+      assume (forall <A, B> o_21: Ref, f_58: (Field A B) ::
+        { newPMask[o_21, f_58] }
+        Heap[null, list#sm(x1)][o_21, f_58] || Heap[null, list#sm(Heap[x1, next])][o_21, f_58] ==> newPMask[o_21, f_58]
       );
-      Heap := Heap[null, list#sm(x1_2):=newPMask];
+      Heap := Heap[null, list#sm(x1):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -3079,21 +3079,21 @@ procedure test2_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x2.next := x1 -- 0455.vpr@185.3--185.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@185.3--185.16) [222286]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@185.3--185.16) [55461]"}
       FullPerm == Mask[x2, next];
-    Heap := Heap[x2, next:=x1_2];
+    Heap := Heap[x2, next:=x1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x2), wildcard) -- 0455.vpr@186.3--186.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@186.3--186.31) [222288]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@186.3--186.31) [55463]"}
       Mask[x2, next] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x2, next];
     Mask := Mask[x2, next:=Mask[x2, next] - wildcard];
     if (Heap[x2, next] != null) {
-      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@186.3--186.31) [222289]"}
+      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@186.3--186.31) [55464]"}
         Mask[null, list(Heap[x2, next])] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[null, list(Heap[x2, next])];
@@ -3117,9 +3117,9 @@ procedure test2_length4() returns ()
     Heap := Heap[null, list#sm(x2):=Heap[null, list#sm(x2)][x2, next:=true]];
     if (Heap[x2, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_29: Ref, f_81: (Field A B) ::
-        { newPMask[o_29, f_81] }
-        Heap[null, list#sm(x2)][o_29, f_81] || Heap[null, list#sm(Heap[x2, next])][o_29, f_81] ==> newPMask[o_29, f_81]
+      assume (forall <A, B> o_43: Ref, f_33: (Field A B) ::
+        { newPMask[o_43, f_33] }
+        Heap[null, list#sm(x2)][o_43, f_33] || Heap[null, list#sm(Heap[x2, next])][o_43, f_33] ==> newPMask[o_43, f_33]
       );
       Heap := Heap[null, list#sm(x2):=newPMask];
     }
@@ -3135,21 +3135,21 @@ procedure test2_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x3.next := x2 -- 0455.vpr@189.3--189.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x3.next (0455.vpr@189.3--189.16) [222290]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x3.next (0455.vpr@189.3--189.16) [55465]"}
       FullPerm == Mask[x3, next];
     Heap := Heap[x3, next:=x2];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x3), wildcard) -- 0455.vpr@190.3--190.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access x3.next (0455.vpr@190.3--190.31) [222292]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access x3.next (0455.vpr@190.3--190.31) [55467]"}
       Mask[x3, next] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x3, next];
     Mask := Mask[x3, next:=Mask[x3, next] - wildcard];
     if (Heap[x3, next] != null) {
-      assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access list(x3.next) (0455.vpr@190.3--190.31) [222293]"}
+      assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access list(x3.next) (0455.vpr@190.3--190.31) [55468]"}
         Mask[null, list(Heap[x3, next])] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[null, list(Heap[x3, next])];
@@ -3173,9 +3173,9 @@ procedure test2_length4() returns ()
     Heap := Heap[null, list#sm(x3):=Heap[null, list#sm(x3)][x3, next:=true]];
     if (Heap[x3, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_77: Ref, f_52: (Field A B) ::
-        { newPMask[o_77, f_52] }
-        Heap[null, list#sm(x3)][o_77, f_52] || Heap[null, list#sm(Heap[x3, next])][o_77, f_52] ==> newPMask[o_77, f_52]
+      assume (forall <A, B> o_50: Ref, f_75: (Field A B) ::
+        { newPMask[o_50, f_75] }
+        Heap[null, list#sm(x3)][o_50, f_75] || Heap[null, list#sm(Heap[x3, next])][o_50, f_75] ==> newPMask[o_50, f_75]
       );
       Heap := Heap[null, list#sm(x3):=newPMask];
     }
@@ -3191,21 +3191,21 @@ procedure test2_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x4.next := x3 -- 0455.vpr@193.3--193.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x4.next (0455.vpr@193.3--193.16) [222294]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x4.next (0455.vpr@193.3--193.16) [55469]"}
       FullPerm == Mask[x4, next];
     Heap := Heap[x4, next:=x3];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x4), wildcard) -- 0455.vpr@194.3--194.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access x4.next (0455.vpr@194.3--194.31) [222296]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access x4.next (0455.vpr@194.3--194.31) [55471]"}
       Mask[x4, next] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x4, next];
     Mask := Mask[x4, next:=Mask[x4, next] - wildcard];
     if (Heap[x4, next] != null) {
-      assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access list(x4.next) (0455.vpr@194.3--194.31) [222297]"}
+      assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access list(x4.next) (0455.vpr@194.3--194.31) [55472]"}
         Mask[null, list(Heap[x4, next])] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[null, list(Heap[x4, next])];
@@ -3229,9 +3229,9 @@ procedure test2_length4() returns ()
     Heap := Heap[null, list#sm(x4):=Heap[null, list#sm(x4)][x4, next:=true]];
     if (Heap[x4, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_78: Ref, f_49: (Field A B) ::
-        { newPMask[o_78, f_49] }
-        Heap[null, list#sm(x4)][o_78, f_49] || Heap[null, list#sm(Heap[x4, next])][o_78, f_49] ==> newPMask[o_78, f_49]
+      assume (forall <A, B> o_22: Ref, f_59: (Field A B) ::
+        { newPMask[o_22, f_59] }
+        Heap[null, list#sm(x4)][o_22, f_59] || Heap[null, list#sm(Heap[x4, next])][o_22, f_59] ==> newPMask[o_22, f_59]
       );
       Heap := Heap[null, list#sm(x4):=newPMask];
     }
@@ -3239,7 +3239,7 @@ procedure test2_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: xs := Set(x1, x2, x4, x3) -- 0455.vpr@196.3--196.42
-    xs := Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(x3), x4), x2), x1_2);
+    xs := Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(x3), x4), x2), x1);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale length2_impl(xs, x4, 1, res) -- 0455.vpr@199.10--199.30
@@ -3248,12 +3248,12 @@ procedure test2_length4() returns ()
     // -- Check definedness of length2_impl(xs, x4, 1, res)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         // wildcard assumptions
         havoc wildcard;
-        assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@199.10--199.30) [222298]"}
+        assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@199.10--199.30) [55473]"}
           (forall x: Ref ::
           
           xs[x] ==> Mask[null, list(x)] > NoPerm
@@ -3264,21 +3264,21 @@ procedure test2_length4() returns ()
         );
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function length2_impl might not hold. Fraction wildcard might be negative. (0455.vpr@199.10--199.30) [222299]"}
+          assert {:msg "  Precondition of function length2_impl might not hold. Fraction wildcard might be negative. (0455.vpr@199.10--199.30) [55474]"}
             (forall x_1_1_1: Ref ::
             { invRecv7(x_1_1_1) }
             xs[invRecv7(x_1_1_1)] && qpRange7(x_1_1_1) ==> wildcard >= NoPerm
           );
         
         // -- check if receiver acc(list(x), wildcard) is injective
-          assert {:msg "  Precondition of function length2_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@199.10--199.30) [222300]"}
-            (forall x: Ref, x_9: Ref ::
-            { neverTriggered7(x), neverTriggered7(x_9) }
-            (((x != x_9 && xs[x]) && xs[x_9]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_9
+          assert {:msg "  Precondition of function length2_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@199.10--199.30) [55475]"}
+            (forall x: Ref, x_46: Ref ::
+            { neverTriggered7(x), neverTriggered7(x_46) }
+            (((x != x_46 && xs[x]) && xs[x_46]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_46
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@199.10--199.30) [222301]"}
+          assert {:msg "  Precondition of function length2_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@199.10--199.30) [55476]"}
             (forall x: Ref ::
             { Heap[null, list(x)] } { Mask[null, list(x)] } { xs[x] }
             xs[x] ==> wildcard > NoPerm ==> Mask[null, list(x)] > NoPerm
@@ -3305,9 +3305,9 @@ procedure test2_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res == 4 -- 0455.vpr@200.3--200.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion res == 4 might not hold. (0455.vpr@200.10--200.18) [222302]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion res == 4 might not hold. (0455.vpr@200.10--200.18) [55477]"}
       res == 4;
     assume state(Heap, Mask);
 }
@@ -3319,12 +3319,12 @@ procedure test2_length4() returns ()
 procedure test3_length1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -3343,71 +3343,71 @@ procedure test3_length1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
   
   // -- Translating statement: x1 := new(next) -- 0455.vpr@219.16--219.31
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@220.3--220.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@220.3--220.18) [222303]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@220.3--220.18) [55478]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x1), write) -- 0455.vpr@221.3--221.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@221.3--221.16) [222306]"}
-        perm <= Mask[x1_2, next];
+      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@221.3--221.16) [55481]"}
+        perm <= Mask[x1, next];
     }
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - perm];
-    if (Heap[x1_2, next] != null) {
+    Mask := Mask[x1, next:=Mask[x1, next] - perm];
+    if (Heap[x1, next] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@221.3--221.16) [222308]"}
-          perm <= Mask[null, list(Heap[x1_2, next])];
+        assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@221.3--221.16) [55483]"}
+          perm <= Mask[null, list(Heap[x1, next])];
       }
-      Mask := Mask[null, list(Heap[x1_2, next]):=Mask[null, list(Heap[x1_2, next])] - perm];
+      Mask := Mask[null, list(Heap[x1, next]):=Mask[null, list(Heap[x1, next])] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(x1_2), Heap[null, list(x1_2)], list(Heap[x1_2, next]), Heap[null, list(Heap[x1_2, next])]);
+        assume InsidePredicate(list(x1), Heap[null, list(x1)], list(Heap[x1, next]), Heap[null, list(Heap[x1, next])]);
     }
     perm := FullPerm;
-    Mask := Mask[null, list(x1_2):=Mask[null, list(x1_2)] + perm];
+    Mask := Mask[null, list(x1):=Mask[null, list(x1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(x1_2));
-    assume Heap[null, list(x1_2)] == CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list(Heap[x1_2, next])] else EmptyFrame)));
-    if (!HasDirectPerm(Mask, null, list(x1_2))) {
-      Heap := Heap[null, list#sm(x1_2):=ZeroPMask];
+    assume list#trigger(Heap, list(x1));
+    assume Heap[null, list(x1)] == CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list(Heap[x1, next])] else EmptyFrame)));
+    if (!HasDirectPerm(Mask, null, list(x1))) {
+      Heap := Heap[null, list#sm(x1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(x1_2):=freshVersion];
+      Heap := Heap[null, list(x1):=freshVersion];
     }
-    Heap := Heap[null, list#sm(x1_2):=Heap[null, list#sm(x1_2)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list#sm(x1):=Heap[null, list#sm(x1)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_63: Ref, f_86: (Field A B) ::
-        { newPMask[o_63, f_86] }
-        Heap[null, list#sm(x1_2)][o_63, f_86] || Heap[null, list#sm(Heap[x1_2, next])][o_63, f_86] ==> newPMask[o_63, f_86]
+      assume (forall <A, B> o_67: Ref, f_69: (Field A B) ::
+        { newPMask[o_67, f_69] }
+        Heap[null, list#sm(x1)][o_67, f_69] || Heap[null, list#sm(Heap[x1, next])][o_67, f_69] ==> newPMask[o_67, f_69]
       );
-      Heap := Heap[null, list#sm(x1_2):=newPMask];
+      Heap := Heap[null, list#sm(x1):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: xs := Set(x1) -- 0455.vpr@222.3--222.30
-    xs := Set#Singleton(x1_2);
+    xs := Set#Singleton(x1);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale length3_impl(xs, x1, 1, res) -- 0455.vpr@225.10--225.30
@@ -3416,12 +3416,12 @@ procedure test3_length1() returns ()
     // -- Check definedness of length3_impl(xs, x1, 1, res)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         // wildcard assumptions
         havoc wildcard;
-        assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@225.10--225.30) [222310]"}
+        assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@225.10--225.30) [55485]"}
           (forall x: Ref ::
           
           xs[x] ==> Mask[null, list(x)] > NoPerm
@@ -3432,21 +3432,21 @@ procedure test3_length1() returns ()
         );
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function length3_impl might not hold. Fraction wildcard might be negative. (0455.vpr@225.10--225.30) [222311]"}
+          assert {:msg "  Precondition of function length3_impl might not hold. Fraction wildcard might be negative. (0455.vpr@225.10--225.30) [55486]"}
             (forall x_1_1_1: Ref ::
             { invRecv8(x_1_1_1) }
             xs[invRecv8(x_1_1_1)] && qpRange8(x_1_1_1) ==> wildcard >= NoPerm
           );
         
         // -- check if receiver acc(list(x), wildcard) is injective
-          assert {:msg "  Precondition of function length3_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@225.10--225.30) [222312]"}
-            (forall x: Ref, x_9: Ref ::
-            { neverTriggered8(x), neverTriggered8(x_9) }
-            (((x != x_9 && xs[x]) && xs[x_9]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_9
+          assert {:msg "  Precondition of function length3_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@225.10--225.30) [55487]"}
+            (forall x: Ref, x_46: Ref ::
+            { neverTriggered8(x), neverTriggered8(x_46) }
+            (((x != x_46 && xs[x]) && xs[x_46]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_46
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@225.10--225.30) [222313]"}
+          assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@225.10--225.30) [55488]"}
             (forall x: Ref ::
             { Heap[null, list(x)] } { Mask[null, list(x)] } { xs[x] } { Heap[null, list(x)] }
             xs[x] ==> wildcard > NoPerm ==> Mask[null, list(x)] > NoPerm
@@ -3468,14 +3468,14 @@ procedure test3_length1() returns ()
         // Stop execution
         assume false;
       }
-    assume length3_impl(Heap, xs, x1_2, 1, res);
+    assume length3_impl(Heap, xs, x1, 1, res);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res == 1 -- 0455.vpr@226.3--226.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion res == 1 might not hold. (0455.vpr@226.10--226.18) [222314]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion res == 1 might not hold. (0455.vpr@226.10--226.18) [55489]"}
       res == 1;
     assume state(Heap, Mask);
 }
@@ -3487,13 +3487,13 @@ procedure test3_length1() returns ()
 procedure test3_length2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var x2: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > 0.000000000;
   var perm: Perm;
   var freshVersion: FrameType;
@@ -3512,65 +3512,65 @@ procedure test3_length2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
     assume Heap[x2, $allocated];
   
   // -- Translating statement: x1 := new(next) -- 0455.vpr@230.16--230.31
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@231.3--231.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@231.3--231.18) [222315]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@231.3--231.18) [55490]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x1), wildcard) -- 0455.vpr@232.3--232.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@232.3--232.31) [222317]"}
-      Mask[x1_2, next] > NoPerm;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@232.3--232.31) [55492]"}
+      Mask[x1, next] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[x1_2, next];
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - wildcard];
-    if (Heap[x1_2, next] != null) {
-      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@232.3--232.31) [222318]"}
-        Mask[null, list(Heap[x1_2, next])] > NoPerm;
+    assume wildcard < Mask[x1, next];
+    Mask := Mask[x1, next:=Mask[x1, next] - wildcard];
+    if (Heap[x1, next] != null) {
+      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@232.3--232.31) [55493]"}
+        Mask[null, list(Heap[x1, next])] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[null, list(Heap[x1_2, next])];
-      Mask := Mask[null, list(Heap[x1_2, next]):=Mask[null, list(Heap[x1_2, next])] - wildcard];
+      assume wildcard < Mask[null, list(Heap[x1, next])];
+      Mask := Mask[null, list(Heap[x1, next]):=Mask[null, list(Heap[x1, next])] - wildcard];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(x1_2), Heap[null, list(x1_2)], list(Heap[x1_2, next]), Heap[null, list(Heap[x1_2, next])]);
+        assume InsidePredicate(list(x1), Heap[null, list(x1)], list(Heap[x1, next]), Heap[null, list(Heap[x1, next])]);
     }
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, list(x1_2):=Mask[null, list(x1_2)] + perm];
+    Mask := Mask[null, list(x1):=Mask[null, list(x1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(x1_2));
-    assume Heap[null, list(x1_2)] == CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list(Heap[x1_2, next])] else EmptyFrame)));
-    if (!HasDirectPerm(Mask, null, list(x1_2))) {
-      Heap := Heap[null, list#sm(x1_2):=ZeroPMask];
+    assume list#trigger(Heap, list(x1));
+    assume Heap[null, list(x1)] == CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list(Heap[x1, next])] else EmptyFrame)));
+    if (!HasDirectPerm(Mask, null, list(x1))) {
+      Heap := Heap[null, list#sm(x1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(x1_2):=freshVersion];
+      Heap := Heap[null, list(x1):=freshVersion];
     }
-    Heap := Heap[null, list#sm(x1_2):=Heap[null, list#sm(x1_2)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list#sm(x1):=Heap[null, list#sm(x1)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_79: Ref, f_87: (Field A B) ::
-        { newPMask[o_79, f_87] }
-        Heap[null, list#sm(x1_2)][o_79, f_87] || Heap[null, list#sm(Heap[x1_2, next])][o_79, f_87] ==> newPMask[o_79, f_87]
+      assume (forall <A, B> o_68: Ref, f_76: (Field A B) ::
+        { newPMask[o_68, f_76] }
+        Heap[null, list#sm(x1)][o_68, f_76] || Heap[null, list#sm(Heap[x1, next])][o_68, f_76] ==> newPMask[o_68, f_76]
       );
-      Heap := Heap[null, list#sm(x1_2):=newPMask];
+      Heap := Heap[null, list#sm(x1):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -3584,21 +3584,21 @@ procedure test3_length2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x2.next := x1 -- 0455.vpr@235.3--235.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@235.3--235.16) [222319]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@235.3--235.16) [55494]"}
       FullPerm == Mask[x2, next];
-    Heap := Heap[x2, next:=x1_2];
+    Heap := Heap[x2, next:=x1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x2), wildcard) -- 0455.vpr@236.3--236.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@236.3--236.31) [222321]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@236.3--236.31) [55496]"}
       Mask[x2, next] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x2, next];
     Mask := Mask[x2, next:=Mask[x2, next] - wildcard];
     if (Heap[x2, next] != null) {
-      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@236.3--236.31) [222322]"}
+      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@236.3--236.31) [55497]"}
         Mask[null, list(Heap[x2, next])] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[null, list(Heap[x2, next])];
@@ -3622,9 +3622,9 @@ procedure test3_length2() returns ()
     Heap := Heap[null, list#sm(x2):=Heap[null, list#sm(x2)][x2, next:=true]];
     if (Heap[x2, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_80: Ref, f_88: (Field A B) ::
-        { newPMask[o_80, f_88] }
-        Heap[null, list#sm(x2)][o_80, f_88] || Heap[null, list#sm(Heap[x2, next])][o_80, f_88] ==> newPMask[o_80, f_88]
+      assume (forall <A, B> o_69: Ref, f_77: (Field A B) ::
+        { newPMask[o_69, f_77] }
+        Heap[null, list#sm(x2)][o_69, f_77] || Heap[null, list#sm(Heap[x2, next])][o_69, f_77] ==> newPMask[o_69, f_77]
       );
       Heap := Heap[null, list#sm(x2):=newPMask];
     }
@@ -3632,15 +3632,15 @@ procedure test3_length2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: xs := Set(x1, x2) -- 0455.vpr@238.3--238.34
-    xs := Set#UnionOne(Set#Singleton(x2), x1_2);
+    xs := Set#UnionOne(Set#Singleton(x2), x1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (x1 in xs) && (x2 in xs) -- 0455.vpr@239.3--239.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion (x1 in xs) might not hold. (0455.vpr@239.10--239.30) [222323]"}
-      xs[x1_2];
-    assert {:msg "  Assert might fail. Assertion (x2 in xs) might not hold. (0455.vpr@239.10--239.30) [222324]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion (x1 in xs) might not hold. (0455.vpr@239.10--239.30) [55498]"}
+      xs[x1];
+    assert {:msg "  Assert might fail. Assertion (x2 in xs) might not hold. (0455.vpr@239.10--239.30) [55499]"}
       xs[x2];
     assume state(Heap, Mask);
   
@@ -3650,12 +3650,12 @@ procedure test3_length2() returns ()
     // -- Check definedness of length3_impl(xs, x2, 1, res)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         // wildcard assumptions
         havoc wildcard;
-        assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@242.10--242.30) [222325]"}
+        assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@242.10--242.30) [55500]"}
           (forall x: Ref ::
           
           xs[x] ==> Mask[null, list(x)] > NoPerm
@@ -3666,21 +3666,21 @@ procedure test3_length2() returns ()
         );
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function length3_impl might not hold. Fraction wildcard might be negative. (0455.vpr@242.10--242.30) [222326]"}
+          assert {:msg "  Precondition of function length3_impl might not hold. Fraction wildcard might be negative. (0455.vpr@242.10--242.30) [55501]"}
             (forall x_1_1_1: Ref ::
             { invRecv9(x_1_1_1) }
             xs[invRecv9(x_1_1_1)] && qpRange9(x_1_1_1) ==> wildcard >= NoPerm
           );
         
         // -- check if receiver acc(list(x), wildcard) is injective
-          assert {:msg "  Precondition of function length3_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@242.10--242.30) [222327]"}
-            (forall x: Ref, x_9: Ref ::
-            { neverTriggered9(x), neverTriggered9(x_9) }
-            (((x != x_9 && xs[x]) && xs[x_9]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_9
+          assert {:msg "  Precondition of function length3_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@242.10--242.30) [55502]"}
+            (forall x: Ref, x_46: Ref ::
+            { neverTriggered9(x), neverTriggered9(x_46) }
+            (((x != x_46 && xs[x]) && xs[x_46]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_46
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@242.10--242.30) [222328]"}
+          assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@242.10--242.30) [55503]"}
             (forall x: Ref ::
             { Heap[null, list(x)] } { Mask[null, list(x)] } { xs[x] } { Heap[null, list(x)] }
             xs[x] ==> wildcard > NoPerm ==> Mask[null, list(x)] > NoPerm
@@ -3707,9 +3707,9 @@ procedure test3_length2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res == 2 -- 0455.vpr@243.3--243.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion res == 2 might not hold. (0455.vpr@243.10--243.18) [222329]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion res == 2 might not hold. (0455.vpr@243.10--243.18) [55504]"}
       res == 2;
     assume state(Heap, Mask);
 }
@@ -3721,15 +3721,15 @@ procedure test3_length2() returns ()
 procedure test3_length4() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var x1_2: Ref;
+  var oldHeap: HeapType;
+  var x1: Ref;
   var x2: Ref;
   var x3: Ref;
   var x4: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > 0.000000000;
   var perm: Perm;
   var freshVersion: FrameType;
@@ -3748,11 +3748,11 @@ procedure test3_length4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
-    assume Heap[x1_2, $allocated];
+    assume Heap[x1, $allocated];
     assume Heap[x2, $allocated];
     assume Heap[x3, $allocated];
     assume Heap[x4, $allocated];
@@ -3761,54 +3761,54 @@ procedure test3_length4() returns ()
     havoc freshObj;
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
-    x1_2 := freshObj;
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] + FullPerm];
+    x1 := freshObj;
+    Mask := Mask[x1, next:=Mask[x1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: x1.next := null -- 0455.vpr@248.3--248.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@248.3--248.18) [222330]"}
-      FullPerm == Mask[x1_2, next];
-    Heap := Heap[x1_2, next:=null];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x1.next (0455.vpr@248.3--248.18) [55505]"}
+      FullPerm == Mask[x1, next];
+    Heap := Heap[x1, next:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x1), wildcard) -- 0455.vpr@249.3--249.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@249.3--249.31) [222332]"}
-      Mask[x1_2, next] > NoPerm;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access x1.next (0455.vpr@249.3--249.31) [55507]"}
+      Mask[x1, next] > NoPerm;
     havoc wildcard;
-    assume wildcard < Mask[x1_2, next];
-    Mask := Mask[x1_2, next:=Mask[x1_2, next] - wildcard];
-    if (Heap[x1_2, next] != null) {
-      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@249.3--249.31) [222333]"}
-        Mask[null, list(Heap[x1_2, next])] > NoPerm;
+    assume wildcard < Mask[x1, next];
+    Mask := Mask[x1, next:=Mask[x1, next] - wildcard];
+    if (Heap[x1, next] != null) {
+      assert {:msg "  Folding list(x1) might fail. There might be insufficient permission to access list(x1.next) (0455.vpr@249.3--249.31) [55508]"}
+        Mask[null, list(Heap[x1, next])] > NoPerm;
       havoc wildcard;
-      assume wildcard < Mask[null, list(Heap[x1_2, next])];
-      Mask := Mask[null, list(Heap[x1_2, next]):=Mask[null, list(Heap[x1_2, next])] - wildcard];
+      assume wildcard < Mask[null, list(Heap[x1, next])];
+      Mask := Mask[null, list(Heap[x1, next]):=Mask[null, list(Heap[x1, next])] - wildcard];
       
       // -- Record predicate instance information
-        assume InsidePredicate(list(x1_2), Heap[null, list(x1_2)], list(Heap[x1_2, next]), Heap[null, list(Heap[x1_2, next])]);
+        assume InsidePredicate(list(x1), Heap[null, list(x1)], list(Heap[x1, next]), Heap[null, list(Heap[x1, next])]);
     }
     havoc wildcard;
     perm := wildcard;
-    Mask := Mask[null, list(x1_2):=Mask[null, list(x1_2)] + perm];
+    Mask := Mask[null, list(x1):=Mask[null, list(x1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume list#trigger(Heap, list(x1_2));
-    assume Heap[null, list(x1_2)] == CombineFrames(FrameFragment(Heap[x1_2, next]), FrameFragment((if Heap[x1_2, next] != null then Heap[null, list(Heap[x1_2, next])] else EmptyFrame)));
-    if (!HasDirectPerm(Mask, null, list(x1_2))) {
-      Heap := Heap[null, list#sm(x1_2):=ZeroPMask];
+    assume list#trigger(Heap, list(x1));
+    assume Heap[null, list(x1)] == CombineFrames(FrameFragment(Heap[x1, next]), FrameFragment((if Heap[x1, next] != null then Heap[null, list(Heap[x1, next])] else EmptyFrame)));
+    if (!HasDirectPerm(Mask, null, list(x1))) {
+      Heap := Heap[null, list#sm(x1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, list(x1_2):=freshVersion];
+      Heap := Heap[null, list(x1):=freshVersion];
     }
-    Heap := Heap[null, list#sm(x1_2):=Heap[null, list#sm(x1_2)][x1_2, next:=true]];
-    if (Heap[x1_2, next] != null) {
+    Heap := Heap[null, list#sm(x1):=Heap[null, list#sm(x1)][x1, next:=true]];
+    if (Heap[x1, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_81: Ref, f_57: (Field A B) ::
-        { newPMask[o_81, f_57] }
-        Heap[null, list#sm(x1_2)][o_81, f_57] || Heap[null, list#sm(Heap[x1_2, next])][o_81, f_57] ==> newPMask[o_81, f_57]
+      assume (forall <A, B> o_70: Ref, f_78: (Field A B) ::
+        { newPMask[o_70, f_78] }
+        Heap[null, list#sm(x1)][o_70, f_78] || Heap[null, list#sm(Heap[x1, next])][o_70, f_78] ==> newPMask[o_70, f_78]
       );
-      Heap := Heap[null, list#sm(x1_2):=newPMask];
+      Heap := Heap[null, list#sm(x1):=newPMask];
     }
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -3822,21 +3822,21 @@ procedure test3_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x2.next := x1 -- 0455.vpr@252.3--252.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@252.3--252.16) [222334]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x2.next (0455.vpr@252.3--252.16) [55509]"}
       FullPerm == Mask[x2, next];
-    Heap := Heap[x2, next:=x1_2];
+    Heap := Heap[x2, next:=x1];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x2), wildcard) -- 0455.vpr@253.3--253.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@253.3--253.31) [222336]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access x2.next (0455.vpr@253.3--253.31) [55511]"}
       Mask[x2, next] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x2, next];
     Mask := Mask[x2, next:=Mask[x2, next] - wildcard];
     if (Heap[x2, next] != null) {
-      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@253.3--253.31) [222337]"}
+      assert {:msg "  Folding list(x2) might fail. There might be insufficient permission to access list(x2.next) (0455.vpr@253.3--253.31) [55512]"}
         Mask[null, list(Heap[x2, next])] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[null, list(Heap[x2, next])];
@@ -3860,9 +3860,9 @@ procedure test3_length4() returns ()
     Heap := Heap[null, list#sm(x2):=Heap[null, list#sm(x2)][x2, next:=true]];
     if (Heap[x2, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_82: Ref, f_70: (Field A B) ::
-        { newPMask[o_82, f_70] }
-        Heap[null, list#sm(x2)][o_82, f_70] || Heap[null, list#sm(Heap[x2, next])][o_82, f_70] ==> newPMask[o_82, f_70]
+      assume (forall <A, B> o_71: Ref, f_35: (Field A B) ::
+        { newPMask[o_71, f_35] }
+        Heap[null, list#sm(x2)][o_71, f_35] || Heap[null, list#sm(Heap[x2, next])][o_71, f_35] ==> newPMask[o_71, f_35]
       );
       Heap := Heap[null, list#sm(x2):=newPMask];
     }
@@ -3878,21 +3878,21 @@ procedure test3_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x3.next := x2 -- 0455.vpr@256.3--256.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x3.next (0455.vpr@256.3--256.16) [222338]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x3.next (0455.vpr@256.3--256.16) [55513]"}
       FullPerm == Mask[x3, next];
     Heap := Heap[x3, next:=x2];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x3), wildcard) -- 0455.vpr@257.3--257.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access x3.next (0455.vpr@257.3--257.31) [222340]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access x3.next (0455.vpr@257.3--257.31) [55515]"}
       Mask[x3, next] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x3, next];
     Mask := Mask[x3, next:=Mask[x3, next] - wildcard];
     if (Heap[x3, next] != null) {
-      assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access list(x3.next) (0455.vpr@257.3--257.31) [222341]"}
+      assert {:msg "  Folding list(x3) might fail. There might be insufficient permission to access list(x3.next) (0455.vpr@257.3--257.31) [55516]"}
         Mask[null, list(Heap[x3, next])] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[null, list(Heap[x3, next])];
@@ -3916,9 +3916,9 @@ procedure test3_length4() returns ()
     Heap := Heap[null, list#sm(x3):=Heap[null, list#sm(x3)][x3, next:=true]];
     if (Heap[x3, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_83: Ref, f_89: (Field A B) ::
-        { newPMask[o_83, f_89] }
-        Heap[null, list#sm(x3)][o_83, f_89] || Heap[null, list#sm(Heap[x3, next])][o_83, f_89] ==> newPMask[o_83, f_89]
+      assume (forall <A, B> o_72: Ref, f_79: (Field A B) ::
+        { newPMask[o_72, f_79] }
+        Heap[null, list#sm(x3)][o_72, f_79] || Heap[null, list#sm(Heap[x3, next])][o_72, f_79] ==> newPMask[o_72, f_79]
       );
       Heap := Heap[null, list#sm(x3):=newPMask];
     }
@@ -3934,21 +3934,21 @@ procedure test3_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: x4.next := x3 -- 0455.vpr@260.3--260.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x4.next (0455.vpr@260.3--260.16) [222342]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x4.next (0455.vpr@260.3--260.16) [55517]"}
       FullPerm == Mask[x4, next];
     Heap := Heap[x4, next:=x3];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x4), wildcard) -- 0455.vpr@261.3--261.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access x4.next (0455.vpr@261.3--261.31) [222344]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access x4.next (0455.vpr@261.3--261.31) [55519]"}
       Mask[x4, next] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x4, next];
     Mask := Mask[x4, next:=Mask[x4, next] - wildcard];
     if (Heap[x4, next] != null) {
-      assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access list(x4.next) (0455.vpr@261.3--261.31) [222345]"}
+      assert {:msg "  Folding list(x4) might fail. There might be insufficient permission to access list(x4.next) (0455.vpr@261.3--261.31) [55520]"}
         Mask[null, list(Heap[x4, next])] > NoPerm;
       havoc wildcard;
       assume wildcard < Mask[null, list(Heap[x4, next])];
@@ -3972,9 +3972,9 @@ procedure test3_length4() returns ()
     Heap := Heap[null, list#sm(x4):=Heap[null, list#sm(x4)][x4, next:=true]];
     if (Heap[x4, next] != null) {
       havoc newPMask;
-      assume (forall <A, B> o_68: Ref, f_58: (Field A B) ::
-        { newPMask[o_68, f_58] }
-        Heap[null, list#sm(x4)][o_68, f_58] || Heap[null, list#sm(Heap[x4, next])][o_68, f_58] ==> newPMask[o_68, f_58]
+      assume (forall <A, B> o_30: Ref, f_80: (Field A B) ::
+        { newPMask[o_30, f_80] }
+        Heap[null, list#sm(x4)][o_30, f_80] || Heap[null, list#sm(Heap[x4, next])][o_30, f_80] ==> newPMask[o_30, f_80]
       );
       Heap := Heap[null, list#sm(x4):=newPMask];
     }
@@ -3982,7 +3982,7 @@ procedure test3_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: xs := Set(x1, x2, x4, x3) -- 0455.vpr@263.3--263.42
-    xs := Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(x3), x4), x2), x1_2);
+    xs := Set#UnionOne(Set#UnionOne(Set#UnionOne(Set#Singleton(x3), x4), x2), x1);
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale length3_impl(xs, x4, 1, res) -- 0455.vpr@266.10--266.30
@@ -3991,12 +3991,12 @@ procedure test3_length4() returns ()
     // -- Check definedness of length3_impl(xs, x4, 1, res)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         // wildcard assumptions
         havoc wildcard;
-        assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@266.10--266.30) [222346]"}
+        assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@266.10--266.30) [55521]"}
           (forall x: Ref ::
           
           xs[x] ==> Mask[null, list(x)] > NoPerm
@@ -4007,21 +4007,21 @@ procedure test3_length4() returns ()
         );
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function length3_impl might not hold. Fraction wildcard might be negative. (0455.vpr@266.10--266.30) [222347]"}
+          assert {:msg "  Precondition of function length3_impl might not hold. Fraction wildcard might be negative. (0455.vpr@266.10--266.30) [55522]"}
             (forall x_1_1_1: Ref ::
             { invRecv10(x_1_1_1) }
             xs[invRecv10(x_1_1_1)] && qpRange10(x_1_1_1) ==> wildcard >= NoPerm
           );
         
         // -- check if receiver acc(list(x), wildcard) is injective
-          assert {:msg "  Precondition of function length3_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@266.10--266.30) [222348]"}
-            (forall x: Ref, x_9: Ref ::
-            { neverTriggered10(x), neverTriggered10(x_9) }
-            (((x != x_9 && xs[x]) && xs[x_9]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_9
+          assert {:msg "  Precondition of function length3_impl might not hold. Quantified resource list(x) might not be injective. (0455.vpr@266.10--266.30) [55523]"}
+            (forall x: Ref, x_46: Ref ::
+            { neverTriggered10(x), neverTriggered10(x_46) }
+            (((x != x_46 && xs[x]) && xs[x_46]) && NoPerm < wildcard) && NoPerm < wildcard ==> x != x_46
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@266.10--266.30) [222349]"}
+          assert {:msg "  Precondition of function length3_impl might not hold. There might be insufficient permission to access list(x) (0455.vpr@266.10--266.30) [55524]"}
             (forall x: Ref ::
             { Heap[null, list(x)] } { Mask[null, list(x)] } { xs[x] } { Heap[null, list(x)] }
             xs[x] ==> wildcard > NoPerm ==> Mask[null, list(x)] > NoPerm
@@ -4048,9 +4048,9 @@ procedure test3_length4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res == 4 -- 0455.vpr@267.3--267.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion res == 4 might not hold. (0455.vpr@267.10--267.18) [222350]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion res == 4 might not hold. (0455.vpr@267.10--267.18) [55525]"}
       res == 4;
     assume state(Heap, Mask);
 }

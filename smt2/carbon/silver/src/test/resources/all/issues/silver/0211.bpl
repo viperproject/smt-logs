@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:58
+// Date:         2025-01-26 21:42:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0211.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0211-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -292,11 +292,11 @@ procedure fi#definedness(p_1: int) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  g_3(Heap: HeapType): Perm;
+function  g_2(Heap: HeapType): Perm;
 function  g'(Heap: HeapType): Perm;
 axiom (forall Heap: HeapType ::
-  { g_3(Heap) }
-  g_3(Heap) == g'(Heap) && dummyFunction(g#triggerStateless())
+  { g_2(Heap) }
+  g_2(Heap) == g'(Heap) && dummyFunction(g#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { g'(Heap) }
@@ -305,8 +305,8 @@ axiom (forall Heap: HeapType ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType ::
-  { state(Heap, Mask), g_3(Heap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> g_3(Heap) == f_6(Heap, 1 / 4)
+  { state(Heap, Mask), g_2(Heap) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> g_2(Heap) == f_6(Heap, 1 / 4)
 );
 
 // Framing axioms
@@ -407,19 +407,19 @@ procedure gi#definedness() returns (Result: int)
 // Translation of method m
 // ==================================================
 
-procedure m(r_1: Ref) returns ()
+procedure m_17(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var p1_2: Perm;
   var p2_1: Perm;
-  var i1: int;
-  var i2_1: int;
-  var i3_7: int;
-  var ExhaleWellDef0Mask: MaskType;
+  var i1_9: int;
+  var i2: int;
+  var i3_1: int;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -432,7 +432,7 @@ procedure m(r_1: Ref) returns ()
   
   // -- Checked inhaling of precondition
     perm := 1 / 6;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 6 might be negative. (0211.vpr@12.14--12.28) [221397]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 6 might be negative. (0211.vpr@12.14--12.28) [56085]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, fd:=Mask[r_1, fd] + perm];
@@ -442,8 +442,8 @@ procedure m(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: p1 := 1 / 7 -- 0211.vpr@14.5--14.25
     p1_2 := 1 / 7;
@@ -454,21 +454,21 @@ procedure m(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: i1 := 4 \ 3 -- 0211.vpr@16.5--16.26
-    i1 := 1;
+    i1_9 := 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: i2 := i1 \ 1 -- 0211.vpr@17.5--17.27
-    i2_1 := i1 div 1;
+    i2 := i1_9 div 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: i3 := 7 \ 2 \ (2 \ 1) -- 0211.vpr@18.5--18.34
-    i3_7 := 1;
+    i3_1 := 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 1 / 2 * (2 / 1) == 0 / 1 -- 0211.vpr@20.5--20.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion 1 / 2 * (2 / 1) == 0 / 1 might not hold. (0211.vpr@20.12--20.34) [221398]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion 1 / 2 * (2 / 1) == 0 / 1 might not hold. (0211.vpr@20.12--20.34) [56086]"}
       1 / 2 * (2 / 1) == 0 / 1;
     assume state(Heap, Mask);
 }

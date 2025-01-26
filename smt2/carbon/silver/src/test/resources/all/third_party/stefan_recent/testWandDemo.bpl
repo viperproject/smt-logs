@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:18:30
+// Date:         2025-01-26 21:41:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testWandDemo.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testWandDemo-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -275,7 +275,7 @@ procedure Wand_readonly_for_writeonly__get_in_1#definedness(diz: Ref) returns (R
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@14.1--20.2) [170323]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@14.1--20.2) [34641]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_readonly_for_writeonly__valid_wand(diz)];
       havoc wildcard;
       perm := wildcard;
@@ -303,7 +303,7 @@ procedure Wand_readonly_for_writeonly__get_in_1#definedness(diz: Ref) returns (R
       if (UnfoldingHeap[diz, Wand_readonly_for_writeonly__lemma] == 1) {
         assume UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1] != null;
         perm := 3 / 4;
-        assert {:msg "  Function might not be well-formed. Fraction 3 / 4 might be negative. (testWandDemo.vpr@14.1--20.2) [170324]"}
+        assert {:msg "  Function might not be well-formed. Fraction 3 / 4 might be negative. (testWandDemo.vpr@14.1--20.2) [34642]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1] != null;
         UnfoldingMask := UnfoldingMask[UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x:=UnfoldingMask[UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x] + perm];
@@ -313,7 +313,7 @@ procedure Wand_readonly_for_writeonly__get_in_1#definedness(diz: Ref) returns (R
       }
       assume UnfoldingHeap[diz, Wand_readonly_for_writeonly__lemma] <= 1;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@14.1--20.2) [170325]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@14.1--20.2) [34643]"}
         HasDirectPerm(UnfoldingMask, diz, Wand_readonly_for_writeonly__in_1);
       
       // -- Free assumptions (exp module)
@@ -332,7 +332,7 @@ procedure Wand_readonly_for_writeonly__get_in_1#definedness(diz: Ref) returns (R
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion result != null might not hold. (testWandDemo.vpr@17.11--17.25) [170326]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion result != null might not hold. (testWandDemo.vpr@17.11--17.25) [34644]"}
       Result != null;
 }
 
@@ -413,7 +413,7 @@ procedure Wand_readonly_for_writeonly__get_out_1#definedness(diz: Ref) returns (
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@22.1--28.2) [170327]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@22.1--28.2) [34645]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_readonly_for_writeonly__valid_wand(diz)];
       havoc wildcard;
       perm := wildcard;
@@ -441,7 +441,7 @@ procedure Wand_readonly_for_writeonly__get_out_1#definedness(diz: Ref) returns (
       if (UnfoldingHeap[diz, Wand_readonly_for_writeonly__lemma] == 1) {
         assume UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1] != null;
         perm := 3 / 4;
-        assert {:msg "  Function might not be well-formed. Fraction 3 / 4 might be negative. (testWandDemo.vpr@22.1--28.2) [170328]"}
+        assert {:msg "  Function might not be well-formed. Fraction 3 / 4 might be negative. (testWandDemo.vpr@22.1--28.2) [34646]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1] != null;
         UnfoldingMask := UnfoldingMask[UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x:=UnfoldingMask[UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x] + perm];
@@ -451,7 +451,7 @@ procedure Wand_readonly_for_writeonly__get_out_1#definedness(diz: Ref) returns (
       }
       assume UnfoldingHeap[diz, Wand_readonly_for_writeonly__lemma] <= 1;
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@22.1--28.2) [170329]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@22.1--28.2) [34647]"}
         HasDirectPerm(UnfoldingMask, diz, Wand_readonly_for_writeonly__out_1);
       
       // -- Free assumptions (exp module)
@@ -470,7 +470,7 @@ procedure Wand_readonly_for_writeonly__get_out_1#definedness(diz: Ref) returns (
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion result != null might not hold. (testWandDemo.vpr@25.11--25.25) [170330]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion result != null might not hold. (testWandDemo.vpr@25.11--25.25) [34648]"}
       Result != null;
 }
 
@@ -544,16 +544,16 @@ procedure WandDemo__get#definedness(diz: Ref) returns (Result: int)
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access WandDemo__readonly(diz) (testWandDemo.vpr@30.1--35.2) [170331]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access WandDemo__readonly(diz) (testWandDemo.vpr@30.1--35.2) [34649]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, WandDemo__readonly(diz)];
       perm := 1 / 4;
-      assert {:msg "  Function might not be well-formed. Fraction 1 / 4 might be negative. (testWandDemo.vpr@30.1--35.2) [170332]"}
+      assert {:msg "  Function might not be well-formed. Fraction 1 / 4 might be negative. (testWandDemo.vpr@30.1--35.2) [34650]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> diz != null;
       UnfoldingMask := UnfoldingMask[diz, WandDemo__x:=UnfoldingMask[diz, WandDemo__x] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@30.1--35.2) [170333]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@30.1--35.2) [34651]"}
         HasDirectPerm(UnfoldingMask, diz, WandDemo__x);
       
       // -- Free assumptions (exp module)
@@ -620,7 +620,7 @@ procedure Wand_readonly_for_writeonly__valid_wand#definedness(diz: Ref) returns 
     assume state(Heap, Mask);
     
     // -- Check definedness of 1 <= diz.Wand_readonly_for_writeonly__lemma
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@37.1--39.2) [170334]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@37.1--39.2) [34652]"}
         HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__lemma);
     assume 1 <= Heap[diz, Wand_readonly_for_writeonly__lemma];
     havoc wildcard;
@@ -630,7 +630,7 @@ procedure Wand_readonly_for_writeonly__valid_wand#definedness(diz: Ref) returns 
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_readonly_for_writeonly__in_1 != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@37.1--39.2) [170335]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@37.1--39.2) [34653]"}
         HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__in_1);
     assume Heap[diz, Wand_readonly_for_writeonly__in_1] != null;
     havoc wildcard;
@@ -640,7 +640,7 @@ procedure Wand_readonly_for_writeonly__valid_wand#definedness(diz: Ref) returns 
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_readonly_for_writeonly__out_1 != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@37.1--39.2) [170336]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@37.1--39.2) [34654]"}
         HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__out_1);
     assume Heap[diz, Wand_readonly_for_writeonly__out_1] != null;
     havoc wildcard;
@@ -650,42 +650,42 @@ procedure Wand_readonly_for_writeonly__valid_wand#definedness(diz: Ref) returns 
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Wand_readonly_for_writeonly__lemma == 1
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@37.1--39.2) [170337]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@37.1--39.2) [34655]"}
         HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__lemma);
     if (Heap[diz, Wand_readonly_for_writeonly__lemma] == 1) {
       
       // -- Check definedness of diz.Wand_readonly_for_writeonly__this_1 != null
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@37.1--39.2) [170338]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@37.1--39.2) [34656]"}
           HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__this_1);
       assume Heap[diz, Wand_readonly_for_writeonly__this_1] != null;
       
       // -- Check definedness of acc(diz.Wand_readonly_for_writeonly__this_1.WandDemo__x, 3 / 4)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@37.1--39.2) [170339]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@37.1--39.2) [34657]"}
           HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__this_1);
       perm := 3 / 4;
-      assert {:msg "  Predicate might not be well-formed. Fraction 3 / 4 might be negative. (testWandDemo.vpr@37.1--39.2) [170340]"}
+      assert {:msg "  Predicate might not be well-formed. Fraction 3 / 4 might be negative. (testWandDemo.vpr@37.1--39.2) [34658]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Heap[diz, Wand_readonly_for_writeonly__this_1] != null;
       Mask := Mask[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x:=Mask[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of diz.Wand_readonly_for_writeonly__in_1 == diz.Wand_readonly_for_writeonly__this_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@37.1--39.2) [170341]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@37.1--39.2) [34659]"}
           HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__in_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@37.1--39.2) [170342]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@37.1--39.2) [34660]"}
           HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__this_1);
       assume Heap[diz, Wand_readonly_for_writeonly__in_1] == Heap[diz, Wand_readonly_for_writeonly__this_1];
       
       // -- Check definedness of diz.Wand_readonly_for_writeonly__out_1 == diz.Wand_readonly_for_writeonly__this_1
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@37.1--39.2) [170343]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@37.1--39.2) [34661]"}
           HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__out_1);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@37.1--39.2) [170344]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@37.1--39.2) [34662]"}
           HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__this_1);
       assume Heap[diz, Wand_readonly_for_writeonly__out_1] == Heap[diz, Wand_readonly_for_writeonly__this_1];
     }
     
     // -- Check definedness of diz.Wand_readonly_for_writeonly__lemma <= 1
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@37.1--39.2) [170345]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@37.1--39.2) [34663]"}
         HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__lemma);
     assume Heap[diz, Wand_readonly_for_writeonly__lemma] <= 1;
     assume state(Heap, Mask);
@@ -740,7 +740,7 @@ procedure WandDemo__readonly#definedness(diz: Ref) returns ()
       assume AssumePermUpperBound;
       assume Heap[diz, $allocated];
     perm := 1 / 4;
-    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 4 might be negative. (testWandDemo.vpr@41.1--43.2) [170346]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction 1 / 4 might be negative. (testWandDemo.vpr@41.1--43.2) [34664]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> diz != null;
     Mask := Mask[diz, WandDemo__x:=Mask[diz, WandDemo__x] + perm];
@@ -851,10 +851,10 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
         // Exhale precondition of function application
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@53.35--53.77) [170347]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@53.35--53.77) [34665]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@53.35--53.77) [170348]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@53.35--53.77) [34666]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_readonly_for_writeonly__valid_wand(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -874,10 +874,10 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
         // Exhale precondition of function application
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@54.12--54.55) [170349]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@54.12--54.55) [34667]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@54.12--54.55) [170350]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@54.12--54.55) [34668]"}
           NoPerm < perm ==> NoPerm < Mask[null, Wand_readonly_for_writeonly__valid_wand(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -906,10 +906,10 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
         // Exhale precondition of function application
         ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@55.39--55.82) [170351]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@55.39--55.82) [34669]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@55.39--55.82) [170352]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@55.39--55.82) [34670]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Wand_readonly_for_writeonly__valid_wand(diz)];
         // Finish exhale
         // Stop execution
@@ -930,7 +930,7 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Wand_readonly_for_writeonly__valid_wand(diz) might fail. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@57.3--57.66) [170355]"}
+      assert {:msg "  Unfolding Wand_readonly_for_writeonly__valid_wand(diz) might fail. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@57.3--57.66) [34673]"}
         perm <= Mask[null, Wand_readonly_for_writeonly__valid_wand(diz)];
     }
     Mask := Mask[null, Wand_readonly_for_writeonly__valid_wand(diz):=Mask[null, Wand_readonly_for_writeonly__valid_wand(diz)] - perm];
@@ -966,7 +966,7 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
     if (Heap[diz, Wand_readonly_for_writeonly__lemma] == 1) {
       assume Heap[diz, Wand_readonly_for_writeonly__this_1] != null;
       perm := 3 / 4;
-      assert {:msg "  Unfolding Wand_readonly_for_writeonly__valid_wand(diz) might fail. Fraction 3 / 4 might be negative. (testWandDemo.vpr@57.3--57.66) [170356]"}
+      assert {:msg "  Unfolding Wand_readonly_for_writeonly__valid_wand(diz) might fail. Fraction 3 / 4 might be negative. (testWandDemo.vpr@57.3--57.66) [34674]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Heap[diz, Wand_readonly_for_writeonly__this_1] != null;
       Mask := Mask[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x:=Mask[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x] + perm];
@@ -981,14 +981,14 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
   // -- Translating statement: if (diz.Wand_readonly_for_writeonly__lemma == 1) -- testWandDemo.vpr@58.3--63.4
     
     // -- Check definedness of diz.Wand_readonly_for_writeonly__lemma == 1
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@58.7--58.50) [170357]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@58.7--58.50) [34675]"}
         HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__lemma);
     if (Heap[diz, Wand_readonly_for_writeonly__lemma] == 1) {
       
       // -- Translating statement: unfold acc(WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1), write) -- testWandDemo.vpr@59.5--59.83
         
         // -- Check definedness of acc(WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1), write)
-          assert {:msg "  Unfolding WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@59.5--59.83) [170358]"}
+          assert {:msg "  Unfolding WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@59.5--59.83) [34676]"}
             HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__this_1);
         assume WandDemo__readonly#trigger(Heap, WandDemo__readonly(Heap[diz, Wand_readonly_for_writeonly__this_1]));
         assume Heap[null, WandDemo__readonly(Heap[diz, Wand_readonly_for_writeonly__this_1])] == FrameFragment(Heap[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x]);
@@ -996,7 +996,7 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Unfolding WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1) (testWandDemo.vpr@59.5--59.83) [170361]"}
+          assert {:msg "  Unfolding WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1) (testWandDemo.vpr@59.5--59.83) [34679]"}
             perm <= Mask[null, WandDemo__readonly(Heap[diz, Wand_readonly_for_writeonly__this_1])];
         }
         Mask := Mask[null, WandDemo__readonly(Heap[diz, Wand_readonly_for_writeonly__this_1]):=Mask[null, WandDemo__readonly(Heap[diz, Wand_readonly_for_writeonly__this_1])] - perm];
@@ -1007,7 +1007,7 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
             Heap := Heap[null, WandDemo__readonly(Heap[diz, Wand_readonly_for_writeonly__this_1]):=newVersion];
           }
         perm := 1 / 4;
-        assert {:msg "  Unfolding WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1) might fail. Fraction 1 / 4 might be negative. (testWandDemo.vpr@59.5--59.83) [170362]"}
+        assert {:msg "  Unfolding WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1) might fail. Fraction 1 / 4 might be negative. (testWandDemo.vpr@59.5--59.83) [34680]"}
           perm >= NoPerm;
         assume perm > NoPerm ==> Heap[diz, Wand_readonly_for_writeonly__this_1] != null;
         Mask := Mask[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x:=Mask[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x] + perm];
@@ -1018,13 +1018,13 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
       // -- Translating statement: fold acc(WandDemo__writeonly(diz.Wand_readonly_for_writeonly__this_1), write) -- testWandDemo.vpr@60.5--60.82
         
         // -- Check definedness of acc(WandDemo__writeonly(diz.Wand_readonly_for_writeonly__this_1), write)
-          assert {:msg "  Folding WandDemo__writeonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@60.5--60.82) [170363]"}
+          assert {:msg "  Folding WandDemo__writeonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@60.5--60.82) [34681]"}
             HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__this_1);
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding WandDemo__writeonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1.WandDemo__x (testWandDemo.vpr@60.5--60.82) [170366]"}
+          assert {:msg "  Folding WandDemo__writeonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1.WandDemo__x (testWandDemo.vpr@60.5--60.82) [34684]"}
             perm <= Mask[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x];
         }
         Mask := Mask[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x:=Mask[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x] - perm];
@@ -1054,10 +1054,10 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
             // Exhale precondition of function application
             ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
-            assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@61.40--61.83) [170368]"}
+            assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@61.40--61.83) [34686]"}
               diz != null;
             perm := FullPerm;
-            assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@61.40--61.83) [170369]"}
+            assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@61.40--61.83) [34687]"}
               NoPerm < perm ==> NoPerm < oldMask[null, Wand_readonly_for_writeonly__valid_wand(diz)];
             // Finish exhale
             // Stop execution
@@ -1065,7 +1065,7 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
           }
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access WandDemo__writeonly(old(Wand_readonly_for_writeonly__get_out_1(diz))) (testWandDemo.vpr@61.12--61.93) [170371]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access WandDemo__writeonly(old(Wand_readonly_for_writeonly__get_out_1(diz))) (testWandDemo.vpr@61.12--61.93) [34689]"}
             perm <= AssertMask[null, WandDemo__writeonly(Wand_readonly_for_writeonly__get_out_1(oldHeap, diz))];
         }
         AssertMask := AssertMask[null, WandDemo__writeonly(Wand_readonly_for_writeonly__get_out_1(oldHeap, diz)):=AssertMask[null, WandDemo__writeonly(Wand_readonly_for_writeonly__get_out_1(oldHeap, diz))] - perm];
@@ -1083,7 +1083,7 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_readonly_for_writeonly___apply might not hold. There might be insufficient permission to access WandDemo__writeonly(old(Wand_readonly_for_writeonly__get_out_1(diz))) (testWandDemo.vpr@55.11--55.92) [170372]"}
+      assert {:msg "  Postcondition of Wand_readonly_for_writeonly___apply might not hold. There might be insufficient permission to access WandDemo__writeonly(old(Wand_readonly_for_writeonly__get_out_1(diz))) (testWandDemo.vpr@55.11--55.92) [34690]"}
         perm <= Mask[null, WandDemo__writeonly(Wand_readonly_for_writeonly__get_out_1(oldHeap, diz))];
     }
     Mask := Mask[null, WandDemo__writeonly(Wand_readonly_for_writeonly__get_out_1(oldHeap, diz)):=Mask[null, WandDemo__writeonly(Wand_readonly_for_writeonly__get_out_1(oldHeap, diz))] - perm];
@@ -1143,7 +1143,7 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_readonly_for_writeonly__lemma == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@69.11--69.126) [170373]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@69.11--69.126) [34691]"}
         HasDirectPerm(PostMask, sys__result, Wand_readonly_for_writeonly__lemma);
     assume PostHeap[sys__result, Wand_readonly_for_writeonly__lemma] == 0;
     assume state(PostHeap, PostMask);
@@ -1153,7 +1153,7 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_readonly_for_writeonly__in_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@70.11--70.127) [170374]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@70.11--70.127) [34692]"}
         HasDirectPerm(PostMask, sys__result, Wand_readonly_for_writeonly__in_1);
     assume PostHeap[sys__result, Wand_readonly_for_writeonly__in_1] == null;
     assume state(PostHeap, PostMask);
@@ -1163,7 +1163,7 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_readonly_for_writeonly__out_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@71.11--71.129) [170375]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@71.11--71.129) [34693]"}
         HasDirectPerm(PostMask, sys__result, Wand_readonly_for_writeonly__out_1);
     assume PostHeap[sys__result, Wand_readonly_for_writeonly__out_1] == null;
     assume state(PostHeap, PostMask);
@@ -1173,7 +1173,7 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Wand_readonly_for_writeonly__this_1 == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@72.11--72.131) [170376]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@72.11--72.131) [34694]"}
         HasDirectPerm(PostMask, sys__result, Wand_readonly_for_writeonly__this_1);
     assume PostHeap[sys__result, Wand_readonly_for_writeonly__this_1] == null;
     assume state(PostHeap, PostMask);
@@ -1204,25 +1204,25 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_readonly_for_writeonly__lemma := __flatten_15 -- testWandDemo.vpr@80.3--80.57
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@80.3--80.57) [170377]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@80.3--80.57) [34695]"}
       FullPerm == Mask[diz, Wand_readonly_for_writeonly__lemma];
     Heap := Heap[diz, Wand_readonly_for_writeonly__lemma:=__flatten_15];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_readonly_for_writeonly__in_1 := null -- testWandDemo.vpr@81.3--81.48
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@81.3--81.48) [170378]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@81.3--81.48) [34696]"}
       FullPerm == Mask[diz, Wand_readonly_for_writeonly__in_1];
     Heap := Heap[diz, Wand_readonly_for_writeonly__in_1:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_readonly_for_writeonly__out_1 := null -- testWandDemo.vpr@82.3--82.49
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@82.3--82.49) [170379]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@82.3--82.49) [34697]"}
       FullPerm == Mask[diz, Wand_readonly_for_writeonly__out_1];
     Heap := Heap[diz, Wand_readonly_for_writeonly__out_1:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Wand_readonly_for_writeonly__this_1 := null -- testWandDemo.vpr@83.3--83.50
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@83.3--83.50) [170380]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@83.3--83.50) [34698]"}
       FullPerm == Mask[diz, Wand_readonly_for_writeonly__this_1];
     Heap := Heap[diz, Wand_readonly_for_writeonly__this_1:=null];
     assume state(Heap, Mask);
@@ -1244,55 +1244,55 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
     AssertMask := Mask;
     ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testWandDemo.vpr@85.10--85.524) [170381]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testWandDemo.vpr@85.10--85.524) [34699]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@85.10--85.524) [170383]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@85.10--85.524) [34701]"}
         perm <= AssertMask[sys__result, Wand_readonly_for_writeonly__lemma];
     }
     AssertMask := AssertMask[sys__result, Wand_readonly_for_writeonly__lemma:=AssertMask[sys__result, Wand_readonly_for_writeonly__lemma] - perm];
     
     // -- Check definedness of sys__result.Wand_readonly_for_writeonly__lemma == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@85.10--85.524) [170384]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@85.10--85.524) [34702]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_readonly_for_writeonly__lemma);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_readonly_for_writeonly__lemma == 0 might not hold. (testWandDemo.vpr@85.10--85.524) [170385]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_readonly_for_writeonly__lemma == 0 might not hold. (testWandDemo.vpr@85.10--85.524) [34703]"}
       AssertHeap[sys__result, Wand_readonly_for_writeonly__lemma] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@85.10--85.524) [170387]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@85.10--85.524) [34705]"}
         perm <= AssertMask[sys__result, Wand_readonly_for_writeonly__in_1];
     }
     AssertMask := AssertMask[sys__result, Wand_readonly_for_writeonly__in_1:=AssertMask[sys__result, Wand_readonly_for_writeonly__in_1] - perm];
     
     // -- Check definedness of sys__result.Wand_readonly_for_writeonly__in_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@85.10--85.524) [170388]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@85.10--85.524) [34706]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_readonly_for_writeonly__in_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_readonly_for_writeonly__in_1 == null might not hold. (testWandDemo.vpr@85.10--85.524) [170389]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_readonly_for_writeonly__in_1 == null might not hold. (testWandDemo.vpr@85.10--85.524) [34707]"}
       AssertHeap[sys__result, Wand_readonly_for_writeonly__in_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@85.10--85.524) [170391]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@85.10--85.524) [34709]"}
         perm <= AssertMask[sys__result, Wand_readonly_for_writeonly__out_1];
     }
     AssertMask := AssertMask[sys__result, Wand_readonly_for_writeonly__out_1:=AssertMask[sys__result, Wand_readonly_for_writeonly__out_1] - perm];
     
     // -- Check definedness of sys__result.Wand_readonly_for_writeonly__out_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@85.10--85.524) [170392]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@85.10--85.524) [34710]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_readonly_for_writeonly__out_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_readonly_for_writeonly__out_1 == null might not hold. (testWandDemo.vpr@85.10--85.524) [170393]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_readonly_for_writeonly__out_1 == null might not hold. (testWandDemo.vpr@85.10--85.524) [34711]"}
       AssertHeap[sys__result, Wand_readonly_for_writeonly__out_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@85.10--85.524) [170395]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@85.10--85.524) [34713]"}
         perm <= AssertMask[sys__result, Wand_readonly_for_writeonly__this_1];
     }
     AssertMask := AssertMask[sys__result, Wand_readonly_for_writeonly__this_1:=AssertMask[sys__result, Wand_readonly_for_writeonly__this_1] - perm];
     
     // -- Check definedness of sys__result.Wand_readonly_for_writeonly__this_1 == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@85.10--85.524) [170396]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@85.10--85.524) [34714]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Wand_readonly_for_writeonly__this_1);
-    assert {:msg "  Assert might fail. Assertion sys__result.Wand_readonly_for_writeonly__this_1 == null might not hold. (testWandDemo.vpr@85.10--85.524) [170397]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Wand_readonly_for_writeonly__this_1 == null might not hold. (testWandDemo.vpr@85.10--85.524) [34715]"}
       AssertHeap[sys__result, Wand_readonly_for_writeonly__this_1] == null;
     assume state(Heap, Mask);
   
@@ -1304,39 +1304,39 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@68.11--68.30) [170398]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@68.11--68.30) [34716]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@69.11--69.126) [170399]"}
+      assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@69.11--69.126) [34717]"}
         perm <= Mask[sys__result, Wand_readonly_for_writeonly__lemma];
     }
     Mask := Mask[sys__result, Wand_readonly_for_writeonly__lemma:=Mask[sys__result, Wand_readonly_for_writeonly__lemma] - perm];
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result.Wand_readonly_for_writeonly__lemma == 0 might not hold. (testWandDemo.vpr@69.11--69.126) [170400]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result.Wand_readonly_for_writeonly__lemma == 0 might not hold. (testWandDemo.vpr@69.11--69.126) [34718]"}
       Heap[sys__result, Wand_readonly_for_writeonly__lemma] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@70.11--70.127) [170401]"}
+      assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@70.11--70.127) [34719]"}
         perm <= Mask[sys__result, Wand_readonly_for_writeonly__in_1];
     }
     Mask := Mask[sys__result, Wand_readonly_for_writeonly__in_1:=Mask[sys__result, Wand_readonly_for_writeonly__in_1] - perm];
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result.Wand_readonly_for_writeonly__in_1 == null might not hold. (testWandDemo.vpr@70.11--70.127) [170402]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result.Wand_readonly_for_writeonly__in_1 == null might not hold. (testWandDemo.vpr@70.11--70.127) [34720]"}
       Heap[sys__result, Wand_readonly_for_writeonly__in_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@71.11--71.129) [170403]"}
+      assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@71.11--71.129) [34721]"}
         perm <= Mask[sys__result, Wand_readonly_for_writeonly__out_1];
     }
     Mask := Mask[sys__result, Wand_readonly_for_writeonly__out_1:=Mask[sys__result, Wand_readonly_for_writeonly__out_1] - perm];
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result.Wand_readonly_for_writeonly__out_1 == null might not hold. (testWandDemo.vpr@71.11--71.129) [170404]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result.Wand_readonly_for_writeonly__out_1 == null might not hold. (testWandDemo.vpr@71.11--71.129) [34722]"}
       Heap[sys__result, Wand_readonly_for_writeonly__out_1] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@72.11--72.131) [170405]"}
+      assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. There might be insufficient permission to access sys__result.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@72.11--72.131) [34723]"}
         perm <= Mask[sys__result, Wand_readonly_for_writeonly__this_1];
     }
     Mask := Mask[sys__result, Wand_readonly_for_writeonly__this_1:=Mask[sys__result, Wand_readonly_for_writeonly__this_1] - perm];
-    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result.Wand_readonly_for_writeonly__this_1 == null might not hold. (testWandDemo.vpr@72.11--72.131) [170406]"}
+    assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result.Wand_readonly_for_writeonly__this_1 == null might not hold. (testWandDemo.vpr@72.11--72.131) [34724]"}
       Heap[sys__result, Wand_readonly_for_writeonly__this_1] == null;
     // Finish exhale
     havoc ExhaleHeap;
@@ -1411,7 +1411,7 @@ procedure WandDemo__WandDemo(current_thread_id: int) returns (sys__result: Ref)
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding WandDemo__writeonly(diz) might fail. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@96.3--96.44) [170409]"}
+      assert {:msg "  Folding WandDemo__writeonly(diz) might fail. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@96.3--96.44) [34727]"}
         perm <= Mask[diz, WandDemo__x];
     }
     Mask := Mask[diz, WandDemo__x:=Mask[diz, WandDemo__x] - perm];
@@ -1439,11 +1439,11 @@ procedure WandDemo__WandDemo(current_thread_id: int) returns (sys__result: Ref)
     AssertMask := Mask;
     ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testWandDemo.vpr@98.10--98.79) [170411]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testWandDemo.vpr@98.10--98.79) [34729]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access WandDemo__writeonly(sys__result) (testWandDemo.vpr@98.10--98.79) [170413]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access WandDemo__writeonly(sys__result) (testWandDemo.vpr@98.10--98.79) [34731]"}
         perm <= AssertMask[null, WandDemo__writeonly(sys__result)];
     }
     AssertMask := AssertMask[null, WandDemo__writeonly(sys__result):=AssertMask[null, WandDemo__writeonly(sys__result)] - perm];
@@ -1457,11 +1457,11 @@ procedure WandDemo__WandDemo(current_thread_id: int) returns (sys__result: Ref)
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of WandDemo__WandDemo might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@91.11--91.30) [170414]"}
+    assert {:msg "  Postcondition of WandDemo__WandDemo might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@91.11--91.30) [34732]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of WandDemo__WandDemo might not hold. There might be insufficient permission to access WandDemo__writeonly(sys__result) (testWandDemo.vpr@92.11--92.55) [170415]"}
+      assert {:msg "  Postcondition of WandDemo__WandDemo might not hold. There might be insufficient permission to access WandDemo__writeonly(sys__result) (testWandDemo.vpr@92.11--92.55) [34733]"}
         perm <= Mask[null, WandDemo__writeonly(sys__result)];
     }
     Mask := Mask[null, WandDemo__writeonly(sys__result):=Mask[null, WandDemo__writeonly(sys__result)] - perm];
@@ -1526,7 +1526,7 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     assume this_1 != null;
     assume state(Heap, Mask);
     perm := 3 / 4;
-    assert {:msg "  Contract might not be well-formed. Fraction 3 / 4 might be negative. (testWandDemo.vpr@106.12--106.42) [170416]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 3 / 4 might be negative. (testWandDemo.vpr@106.12--106.42) [34734]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this_1 != null;
     Mask := Mask[this_1, WandDemo__x:=Mask[this_1, WandDemo__x] + perm];
@@ -1564,10 +1564,10 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
         // Exhale precondition of function application
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@113.11--113.61) [170417]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@113.11--113.61) [34735]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@113.11--113.61) [170418]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@113.11--113.61) [34736]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_readonly_for_writeonly__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1585,10 +1585,10 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
         // Exhale precondition of function application
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@114.11--114.62) [170419]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@114.11--114.62) [34737]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@114.11--114.62) [170420]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@114.11--114.62) [34738]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_readonly_for_writeonly__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1621,7 +1621,7 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     // -- Exhaling precondition
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@127.3--127.93) [170421]"}
+      assert {:msg "  The precondition of method Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@127.3--127.93) [34739]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -1666,7 +1666,7 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_readonly_for_writeonly__lemma := __flatten_17 -- testWandDemo.vpr@131.3--131.59
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@131.3--131.59) [170422]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@131.3--131.59) [34740]"}
       FullPerm == Mask[vwand, Wand_readonly_for_writeonly__lemma];
     Heap := Heap[vwand, Wand_readonly_for_writeonly__lemma:=__flatten_17];
     assume state(Heap, Mask);
@@ -1680,7 +1680,7 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_readonly_for_writeonly__this_1 := __flatten_18 -- testWandDemo.vpr@134.3--134.60
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@134.3--134.60) [170423]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@134.3--134.60) [34741]"}
       FullPerm == Mask[vwand, Wand_readonly_for_writeonly__this_1];
     Heap := Heap[vwand, Wand_readonly_for_writeonly__this_1:=__flatten_18];
     assume state(Heap, Mask);
@@ -1694,7 +1694,7 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_readonly_for_writeonly__in_1 := __flatten_19 -- testWandDemo.vpr@137.3--137.58
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@137.3--137.58) [170424]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@137.3--137.58) [34742]"}
       FullPerm == Mask[vwand, Wand_readonly_for_writeonly__in_1];
     Heap := Heap[vwand, Wand_readonly_for_writeonly__in_1:=__flatten_19];
     assume state(Heap, Mask);
@@ -1708,7 +1708,7 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     assume state(Heap, Mask);
   
   // -- Translating statement: vwand.Wand_readonly_for_writeonly__out_1 := __flatten_20 -- testWandDemo.vpr@140.3--140.59
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@140.3--140.59) [170425]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@140.3--140.59) [34743]"}
       FullPerm == Mask[vwand, Wand_readonly_for_writeonly__out_1];
     Heap := Heap[vwand, Wand_readonly_for_writeonly__out_1:=__flatten_20];
     assume state(Heap, Mask);
@@ -1716,49 +1716,49 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
   // -- Translating statement: fold acc(Wand_readonly_for_writeonly__valid_wand(vwand), write) -- testWandDemo.vpr@141.3--141.66
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@141.3--141.66) [170427]"}
+    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@141.3--141.66) [34745]"}
       Mask[vwand, Wand_readonly_for_writeonly__lemma] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_readonly_for_writeonly__lemma];
     Mask := Mask[vwand, Wand_readonly_for_writeonly__lemma:=Mask[vwand, Wand_readonly_for_writeonly__lemma] - wildcard];
-    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion 1 <= vwand.Wand_readonly_for_writeonly__lemma might not hold. (testWandDemo.vpr@141.3--141.66) [170428]"}
+    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion 1 <= vwand.Wand_readonly_for_writeonly__lemma might not hold. (testWandDemo.vpr@141.3--141.66) [34746]"}
       1 <= Heap[vwand, Wand_readonly_for_writeonly__lemma];
-    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@141.3--141.66) [170429]"}
+    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__in_1 (testWandDemo.vpr@141.3--141.66) [34747]"}
       Mask[vwand, Wand_readonly_for_writeonly__in_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_readonly_for_writeonly__in_1];
     Mask := Mask[vwand, Wand_readonly_for_writeonly__in_1:=Mask[vwand, Wand_readonly_for_writeonly__in_1] - wildcard];
-    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__in_1 != null might not hold. (testWandDemo.vpr@141.3--141.66) [170430]"}
+    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__in_1 != null might not hold. (testWandDemo.vpr@141.3--141.66) [34748]"}
       Heap[vwand, Wand_readonly_for_writeonly__in_1] != null;
-    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@141.3--141.66) [170431]"}
+    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__out_1 (testWandDemo.vpr@141.3--141.66) [34749]"}
       Mask[vwand, Wand_readonly_for_writeonly__out_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_readonly_for_writeonly__out_1];
     Mask := Mask[vwand, Wand_readonly_for_writeonly__out_1:=Mask[vwand, Wand_readonly_for_writeonly__out_1] - wildcard];
-    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__out_1 != null might not hold. (testWandDemo.vpr@141.3--141.66) [170432]"}
+    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__out_1 != null might not hold. (testWandDemo.vpr@141.3--141.66) [34750]"}
       Heap[vwand, Wand_readonly_for_writeonly__out_1] != null;
-    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@141.3--141.66) [170433]"}
+    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@141.3--141.66) [34751]"}
       Mask[vwand, Wand_readonly_for_writeonly__this_1] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[vwand, Wand_readonly_for_writeonly__this_1];
     Mask := Mask[vwand, Wand_readonly_for_writeonly__this_1:=Mask[vwand, Wand_readonly_for_writeonly__this_1] - wildcard];
     if (Heap[vwand, Wand_readonly_for_writeonly__lemma] == 1) {
-      assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__this_1 != null might not hold. (testWandDemo.vpr@141.3--141.66) [170434]"}
+      assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__this_1 != null might not hold. (testWandDemo.vpr@141.3--141.66) [34752]"}
         Heap[vwand, Wand_readonly_for_writeonly__this_1] != null;
       perm := 3 / 4;
-      assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Fraction 3 / 4 might be negative. (testWandDemo.vpr@141.3--141.66) [170435]"}
+      assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Fraction 3 / 4 might be negative. (testWandDemo.vpr@141.3--141.66) [34753]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__this_1.WandDemo__x (testWandDemo.vpr@141.3--141.66) [170436]"}
+        assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__this_1.WandDemo__x (testWandDemo.vpr@141.3--141.66) [34754]"}
           perm <= Mask[Heap[vwand, Wand_readonly_for_writeonly__this_1], WandDemo__x];
       }
       Mask := Mask[Heap[vwand, Wand_readonly_for_writeonly__this_1], WandDemo__x:=Mask[Heap[vwand, Wand_readonly_for_writeonly__this_1], WandDemo__x] - perm];
-      assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__in_1 == vwand.Wand_readonly_for_writeonly__this_1 might not hold. (testWandDemo.vpr@141.3--141.66) [170437]"}
+      assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__in_1 == vwand.Wand_readonly_for_writeonly__this_1 might not hold. (testWandDemo.vpr@141.3--141.66) [34755]"}
         Heap[vwand, Wand_readonly_for_writeonly__in_1] == Heap[vwand, Wand_readonly_for_writeonly__this_1];
-      assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__out_1 == vwand.Wand_readonly_for_writeonly__this_1 might not hold. (testWandDemo.vpr@141.3--141.66) [170438]"}
+      assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__out_1 == vwand.Wand_readonly_for_writeonly__this_1 might not hold. (testWandDemo.vpr@141.3--141.66) [34756]"}
         Heap[vwand, Wand_readonly_for_writeonly__out_1] == Heap[vwand, Wand_readonly_for_writeonly__this_1];
     }
-    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__lemma <= 1 might not hold. (testWandDemo.vpr@141.3--141.66) [170439]"}
+    assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. Assertion vwand.Wand_readonly_for_writeonly__lemma <= 1 might not hold. (testWandDemo.vpr@141.3--141.66) [34757]"}
       Heap[vwand, Wand_readonly_for_writeonly__lemma] <= 1;
     perm := FullPerm;
     Mask := Mask[null, Wand_readonly_for_writeonly__valid_wand(vwand):=Mask[null, Wand_readonly_for_writeonly__valid_wand(vwand)] + perm];
@@ -1797,11 +1797,11 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     AssertMask := Mask;
     ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testWandDemo.vpr@144.10--144.229) [170441]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testWandDemo.vpr@144.10--144.229) [34759]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@144.10--144.229) [170443]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@144.10--144.229) [34761]"}
         perm <= AssertMask[null, Wand_readonly_for_writeonly__valid_wand(sys__result)];
     }
     AssertMask := AssertMask[null, Wand_readonly_for_writeonly__valid_wand(sys__result):=AssertMask[null, Wand_readonly_for_writeonly__valid_wand(sys__result)] - perm];
@@ -1811,10 +1811,10 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
         // Exhale precondition of function application
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@144.104--144.154) [170444]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@144.104--144.154) [34762]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@144.104--144.154) [170445]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@144.104--144.154) [34763]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_readonly_for_writeonly__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1823,7 +1823,7 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_readonly_for_writeonly__get_in_1(sys__result) == in_1 might not hold. (testWandDemo.vpr@144.10--144.229) [170446]"}
+    assert {:msg "  Assert might fail. Assertion Wand_readonly_for_writeonly__get_in_1(sys__result) == in_1 might not hold. (testWandDemo.vpr@144.10--144.229) [34764]"}
       Wand_readonly_for_writeonly__get_in_1(AssertHeap, sys__result) == in_1;
     
     // -- Check definedness of Wand_readonly_for_writeonly__get_out_1(sys__result) == out_1
@@ -1831,10 +1831,10 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
         // Exhale precondition of function application
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@144.168--144.219) [170447]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@144.168--144.219) [34765]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@144.168--144.219) [170448]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@144.168--144.219) [34766]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Wand_readonly_for_writeonly__valid_wand(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1843,7 +1843,7 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Wand_readonly_for_writeonly__get_out_1(sys__result) == out_1 might not hold. (testWandDemo.vpr@144.10--144.229) [170449]"}
+    assert {:msg "  Assert might fail. Assertion Wand_readonly_for_writeonly__get_out_1(sys__result) == out_1 might not hold. (testWandDemo.vpr@144.10--144.229) [34767]"}
       Wand_readonly_for_writeonly__get_out_1(AssertHeap, sys__result) == out_1;
     assume state(Heap, Mask);
   
@@ -1855,17 +1855,17 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
   // -- Exhaling postcondition
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@111.11--111.30) [170450]"}
+    assert {:msg "  Postcondition of WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@111.11--111.30) [34768]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@112.11--112.75) [170451]"}
+      assert {:msg "  Postcondition of WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(sys__result) (testWandDemo.vpr@112.11--112.75) [34769]"}
         perm <= Mask[null, Wand_readonly_for_writeonly__valid_wand(sys__result)];
     }
     Mask := Mask[null, Wand_readonly_for_writeonly__valid_wand(sys__result):=Mask[null, Wand_readonly_for_writeonly__valid_wand(sys__result)] - perm];
-    assert {:msg "  Postcondition of WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion Wand_readonly_for_writeonly__get_in_1(sys__result) == in_1 might not hold. (testWandDemo.vpr@113.11--113.69) [170452]"}
+    assert {:msg "  Postcondition of WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion Wand_readonly_for_writeonly__get_in_1(sys__result) == in_1 might not hold. (testWandDemo.vpr@113.11--113.69) [34770]"}
       Wand_readonly_for_writeonly__get_in_1(Heap, sys__result) == in_1;
-    assert {:msg "  Postcondition of WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion Wand_readonly_for_writeonly__get_out_1(sys__result) == out_1 might not hold. (testWandDemo.vpr@114.11--114.71) [170453]"}
+    assert {:msg "  Postcondition of WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion Wand_readonly_for_writeonly__get_out_1(sys__result) == out_1 might not hold. (testWandDemo.vpr@114.11--114.71) [34771]"}
       Wand_readonly_for_writeonly__get_out_1(Heap, sys__result) == out_1;
     // Finish exhale
     havoc ExhaleHeap;
@@ -1942,10 +1942,10 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
         // Exhale precondition of function application
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@155.11--155.55) [170454]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@155.11--155.55) [34772]"}
           vwand != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(vwand) (testWandDemo.vpr@155.11--155.55) [170455]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(vwand) (testWandDemo.vpr@155.11--155.55) [34773]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_readonly_for_writeonly__valid_wand(vwand)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1963,10 +1963,10 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
         // Exhale precondition of function application
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@156.11--156.56) [170456]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@156.11--156.56) [34774]"}
           vwand != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(vwand) (testWandDemo.vpr@156.11--156.56) [170457]"}
+        assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(vwand) (testWandDemo.vpr@156.11--156.56) [34775]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Wand_readonly_for_writeonly__valid_wand(vwand)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -1991,7 +1991,7 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding WandDemo__writeonly(diz) might fail. There might be insufficient permission to access WandDemo__writeonly(diz) (testWandDemo.vpr@161.3--161.46) [170460]"}
+      assert {:msg "  Unfolding WandDemo__writeonly(diz) might fail. There might be insufficient permission to access WandDemo__writeonly(diz) (testWandDemo.vpr@161.3--161.46) [34778]"}
         perm <= Mask[null, WandDemo__writeonly(diz)];
     }
     Mask := Mask[null, WandDemo__writeonly(diz):=Mask[null, WandDemo__writeonly(diz)] - perm];
@@ -2017,7 +2017,7 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.WandDemo__x := __flatten_21 -- testWandDemo.vpr@164.3--164.34
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@164.3--164.34) [170462]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@164.3--164.34) [34780]"}
       FullPerm == Mask[diz, WandDemo__x];
     Heap := Heap[diz, WandDemo__x:=__flatten_21];
     assume state(Heap, Mask);
@@ -2026,10 +2026,10 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
-    assert {:msg "  Folding WandDemo__readonly(diz) might fail. Fraction 1 / 4 might be negative. (testWandDemo.vpr@165.3--165.43) [170464]"}
+    assert {:msg "  Folding WandDemo__readonly(diz) might fail. Fraction 1 / 4 might be negative. (testWandDemo.vpr@165.3--165.43) [34782]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding WandDemo__readonly(diz) might fail. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@165.3--165.43) [170465]"}
+      assert {:msg "  Folding WandDemo__readonly(diz) might fail. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@165.3--165.43) [34783]"}
         perm <= Mask[diz, WandDemo__x];
     }
     Mask := Mask[diz, WandDemo__x:=Mask[diz, WandDemo__x] - perm];
@@ -2056,27 +2056,27 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
     // -- Exhaling precondition
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@166.3--166.102) [170467]"}
+      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@166.3--166.102) [34785]"}
         diz != null;
-      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@166.3--166.102) [170468]"}
+      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@166.3--166.102) [34786]"}
         current_thread_id >= 0;
-      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@166.3--166.102) [170469]"}
+      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@166.3--166.102) [34787]"}
         diz != null;
       perm := 3 / 4;
-      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Fraction 3 / 4 might be negative. (testWandDemo.vpr@166.3--166.102) [170470]"}
+      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Fraction 3 / 4 might be negative. (testWandDemo.vpr@166.3--166.102) [34788]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@166.3--166.102) [170471]"}
+        assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@166.3--166.102) [34789]"}
           perm <= Mask[diz, WandDemo__x];
       }
       Mask := Mask[diz, WandDemo__x:=Mask[diz, WandDemo__x] - perm];
-      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@166.3--166.102) [170472]"}
+      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@166.3--166.102) [34790]"}
         diz != null;
-      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz == diz might not hold. (testWandDemo.vpr@166.3--166.102) [170473]"}
+      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz == diz might not hold. (testWandDemo.vpr@166.3--166.102) [34791]"}
         diz == diz;
-      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@166.3--166.102) [170474]"}
+      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@166.3--166.102) [34792]"}
         diz != null;
-      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz == diz might not hold. (testWandDemo.vpr@166.3--166.102) [170475]"}
+      assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz == diz might not hold. (testWandDemo.vpr@166.3--166.102) [34793]"}
         diz == diz;
       // Finish exhale
       havoc ExhaleHeap;
@@ -2108,21 +2108,21 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of WandDemo__set might not hold. There might be insufficient permission to access WandDemo__readonly(diz) (testWandDemo.vpr@152.11--152.46) [170476]"}
+      assert {:msg "  Postcondition of WandDemo__set might not hold. There might be insufficient permission to access WandDemo__readonly(diz) (testWandDemo.vpr@152.11--152.46) [34794]"}
         perm <= Mask[null, WandDemo__readonly(diz)];
     }
     Mask := Mask[null, WandDemo__readonly(diz):=Mask[null, WandDemo__readonly(diz)] - perm];
-    assert {:msg "  Postcondition of WandDemo__set might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@153.11--153.24) [170477]"}
+    assert {:msg "  Postcondition of WandDemo__set might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@153.11--153.24) [34795]"}
       vwand != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of WandDemo__set might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(vwand) (testWandDemo.vpr@154.11--154.69) [170478]"}
+      assert {:msg "  Postcondition of WandDemo__set might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(vwand) (testWandDemo.vpr@154.11--154.69) [34796]"}
         perm <= Mask[null, Wand_readonly_for_writeonly__valid_wand(vwand)];
     }
     Mask := Mask[null, Wand_readonly_for_writeonly__valid_wand(vwand):=Mask[null, Wand_readonly_for_writeonly__valid_wand(vwand)] - perm];
-    assert {:msg "  Postcondition of WandDemo__set might not hold. Assertion Wand_readonly_for_writeonly__get_in_1(vwand) == diz might not hold. (testWandDemo.vpr@155.11--155.62) [170479]"}
+    assert {:msg "  Postcondition of WandDemo__set might not hold. Assertion Wand_readonly_for_writeonly__get_in_1(vwand) == diz might not hold. (testWandDemo.vpr@155.11--155.62) [34797]"}
       Wand_readonly_for_writeonly__get_in_1(Heap, vwand) == diz;
-    assert {:msg "  Postcondition of WandDemo__set might not hold. Assertion Wand_readonly_for_writeonly__get_out_1(vwand) == diz might not hold. (testWandDemo.vpr@156.11--156.63) [170480]"}
+    assert {:msg "  Postcondition of WandDemo__set might not hold. Assertion Wand_readonly_for_writeonly__get_out_1(vwand) == diz might not hold. (testWandDemo.vpr@156.11--156.63) [34798]"}
       Wand_readonly_for_writeonly__get_out_1(Heap, vwand) == diz;
     // Finish exhale
     havoc ExhaleHeap;
@@ -2189,7 +2189,7 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
     // -- Exhaling precondition
       ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
-      assert {:msg "  The precondition of method WandDemo__WandDemo might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@182.3--182.56) [170481]"}
+      assert {:msg "  The precondition of method WandDemo__WandDemo might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@182.3--182.56) [34799]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -2221,7 +2221,7 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(WandDemo__writeonly(d), write) might not hold on entry. There might be insufficient permission to access WandDemo__writeonly(d) (testWandDemo.vpr@186.15--186.49) [170482]"}
+          assert {:msg "  Loop invariant acc(WandDemo__writeonly(d), write) might not hold on entry. There might be insufficient permission to access WandDemo__writeonly(d) (testWandDemo.vpr@186.15--186.49) [34800]"}
             perm <= Mask[null, WandDemo__writeonly(d)];
         }
         Mask := Mask[null, WandDemo__writeonly(d):=Mask[null, WandDemo__writeonly(d)] - perm];
@@ -2267,13 +2267,13 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
             // -- Exhaling precondition
               ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
-              assert {:msg "  The precondition of method WandDemo__set might not hold. Assertion d != null might not hold. (testWandDemo.vpr@188.5--188.52) [170483]"}
+              assert {:msg "  The precondition of method WandDemo__set might not hold. Assertion d != null might not hold. (testWandDemo.vpr@188.5--188.52) [34801]"}
                 d != null;
-              assert {:msg "  The precondition of method WandDemo__set might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@188.5--188.52) [170484]"}
+              assert {:msg "  The precondition of method WandDemo__set might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@188.5--188.52) [34802]"}
                 current_thread_id >= 0;
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  The precondition of method WandDemo__set might not hold. There might be insufficient permission to access WandDemo__writeonly(d) (testWandDemo.vpr@188.5--188.52) [170485]"}
+                assert {:msg "  The precondition of method WandDemo__set might not hold. There might be insufficient permission to access WandDemo__writeonly(d) (testWandDemo.vpr@188.5--188.52) [34803]"}
                   perm <= Mask[null, WandDemo__writeonly(d)];
               }
               Mask := Mask[null, WandDemo__writeonly(d):=Mask[null, WandDemo__writeonly(d)] - perm];
@@ -2308,10 +2308,10 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
                 // Exhale precondition of function application
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Precondition of function WandDemo__get might not hold. Assertion d != null might not hold. (testWandDemo.vpr@189.21--189.37) [170486]"}
+                assert {:msg "  Precondition of function WandDemo__get might not hold. Assertion d != null might not hold. (testWandDemo.vpr@189.21--189.37) [34804]"}
                   d != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function WandDemo__get might not hold. There might be insufficient permission to access WandDemo__readonly(d) (testWandDemo.vpr@189.21--189.37) [170487]"}
+                assert {:msg "  Precondition of function WandDemo__get might not hold. There might be insufficient permission to access WandDemo__readonly(d) (testWandDemo.vpr@189.21--189.37) [34805]"}
                   NoPerm < perm ==> NoPerm < Mask[null, WandDemo__readonly(d)];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -2334,10 +2334,10 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
                 // Exhale precondition of function application
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Precondition of function WandDemo__get might not hold. Assertion d != null might not hold. (testWandDemo.vpr@191.21--191.37) [170488]"}
+                assert {:msg "  Precondition of function WandDemo__get might not hold. Assertion d != null might not hold. (testWandDemo.vpr@191.21--191.37) [34806]"}
                   d != null;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function WandDemo__get might not hold. There might be insufficient permission to access WandDemo__readonly(d) (testWandDemo.vpr@191.21--191.37) [170489]"}
+                assert {:msg "  Precondition of function WandDemo__get might not hold. There might be insufficient permission to access WandDemo__readonly(d) (testWandDemo.vpr@191.21--191.37) [34807]"}
                   NoPerm < perm ==> NoPerm < Mask[null, WandDemo__readonly(d)];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -2364,23 +2364,23 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
             // -- Exhaling precondition
               ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
-              assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@194.5--194.66) [170490]"}
+              assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@194.5--194.66) [34808]"}
                 vwand != null;
-              assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@194.5--194.66) [170491]"}
+              assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@194.5--194.66) [34809]"}
                 current_thread_id >= 0;
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(vwand) (testWandDemo.vpr@194.5--194.66) [170492]"}
+                assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(vwand) (testWandDemo.vpr@194.5--194.66) [34810]"}
                   perm <= Mask[null, Wand_readonly_for_writeonly__valid_wand(vwand)];
               }
               Mask := Mask[null, Wand_readonly_for_writeonly__valid_wand(vwand):=Mask[null, Wand_readonly_for_writeonly__valid_wand(vwand)] - perm];
               perm := FullPerm;
               if (perm != NoPerm) {
-                assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. There might be insufficient permission to access WandDemo__readonly(Wand_readonly_for_writeonly__get_in_1(vwand)) (testWandDemo.vpr@194.5--194.66) [170493]"}
+                assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. There might be insufficient permission to access WandDemo__readonly(Wand_readonly_for_writeonly__get_in_1(vwand)) (testWandDemo.vpr@194.5--194.66) [34811]"}
                   perm <= Mask[null, WandDemo__readonly(Wand_readonly_for_writeonly__get_in_1(Heap, vwand))];
               }
               Mask := Mask[null, WandDemo__readonly(Wand_readonly_for_writeonly__get_in_1(Heap, vwand)):=Mask[null, WandDemo__readonly(Wand_readonly_for_writeonly__get_in_1(Heap, vwand))] - perm];
-              assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. Assertion Wand_readonly_for_writeonly__get_out_1(vwand) != null might not hold. (testWandDemo.vpr@194.5--194.66) [170494]"}
+              assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. Assertion Wand_readonly_for_writeonly__get_out_1(vwand) != null might not hold. (testWandDemo.vpr@194.5--194.66) [34812]"}
                 Wand_readonly_for_writeonly__get_out_1(Heap, vwand) != null;
               // Finish exhale
               havoc ExhaleHeap;
@@ -2399,7 +2399,7 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(WandDemo__writeonly(d), write) might not be preserved. There might be insufficient permission to access WandDemo__writeonly(d) (testWandDemo.vpr@186.15--186.49) [170495]"}
+          assert {:msg "  Loop invariant acc(WandDemo__writeonly(d), write) might not be preserved. There might be insufficient permission to access WandDemo__writeonly(d) (testWandDemo.vpr@186.15--186.49) [34813]"}
             perm <= Mask[null, WandDemo__writeonly(d)];
         }
         Mask := Mask[null, WandDemo__writeonly(d):=Mask[null, WandDemo__writeonly(d)] - perm];

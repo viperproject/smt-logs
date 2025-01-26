@@ -154888,41 +154888,47 @@ Prims.unit))
 
 ; <Start encoding let st>
 
-(declare-fun Part2.ST.st (Term) Term)
+(declare-fun Part2.ST.st (Term Term) Term)
 
 (declare-fun Part2.ST.st@tok () Term)
 ;;;;;;;;;;;;;;;;Name-token correspondence
 ;;; Fact-ids: Name Part2.ST.st; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(5,4-5,6); use=Part2.ST.fst(5,4-5,6)
-(forall ((@x0 Term))
- (! (= (ApplyTT Part2.ST.st@tok
+;; def=Part2.ST.fst(3,4-3,6); use=Part2.ST.fst(3,4-3,6)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (ApplyTT (ApplyTT Part2.ST.st@tok
 @x0)
-(Part2.ST.st @x0))
+@x1)
+(Part2.ST.st @x0
+@x1))
  
 
-:pattern ((ApplyTT Part2.ST.st@tok
-@x0))
+:pattern ((ApplyTT (ApplyTT Part2.ST.st@tok
+@x0)
+@x1))
 :qid token_correspondence_Part2.ST.st))
 
 :named token_correspondence_Part2.ST.st))
 ;;;;;;;;;;;;;;;;function token typing
 ;;; Fact-ids: Name Part2.ST.st; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(5,4-5,6); use=Part2.ST.fst(5,4-5,6)
+;; def=Part2.ST.fst(3,4-3,6); use=Part2.ST.fst(3,4-3,6)
 (forall ((@x0 Term))
  (! (and (NoHoist @x0
 (HasType Part2.ST.st@tok
-Tm_arrow_ef9cb512a25ee351fa5536d617490497))
+Tm_arrow_e4cf09589736facd1137944a1f5a00a6))
 
-;; def=Part2.ST.fst(5,4-5,6); use=Part2.ST.fst(5,4-5,6)
-(forall ((@x1 Term))
- (! (= (ApplyTT Part2.ST.st@tok
+;; def=Part2.ST.fst(3,4-3,6); use=Part2.ST.fst(3,4-3,6)
+(forall ((@x1 Term) (@x2 Term))
+ (! (= (ApplyTT (ApplyTT Part2.ST.st@tok
 @x1)
-(Part2.ST.st @x1))
+@x2)
+(Part2.ST.st @x1
+@x2))
  
 
-:pattern ((Part2.ST.st @x1))
+:pattern ((Part2.ST.st @x1
+@x2))
 :qid function_token_typing_Part2.ST.st.1))
 )
  
@@ -154935,91 +154941,104 @@ Part2.ST.st@tok))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Part2.ST.st; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(5,4-5,6); use=Part2.ST.fst(5,4-5,6)
-(forall ((@x0 Term))
- (! (implies (HasType @x0
+;; def=Part2.ST.fst(3,4-3,6); use=Part2.ST.fst(3,4-3,6)
+(forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
 Tm_type)
-(HasType (Part2.ST.st @x0)
+(HasType @x1
+Tm_type))
+(HasType (Part2.ST.st @x0
+@x1)
 Tm_type))
  
 
-:pattern ((Part2.ST.st @x0))
+:pattern ((Part2.ST.st @x0
+@x1))
 :qid typing_Part2.ST.st))
 
 :named typing_Part2.ST.st))
-;;;;;;;;;;;;;;;;_: Prims.int -> a & Prims.int
-(declare-fun Tm_arrow_484ac694053f9cf14a2c5a94a3797972 (Term) Term)
-;;;;;;;;;;;;;;;;kinding_Tm_arrow_484ac694053f9cf14a2c5a94a3797972
+;;;;;;;;;;;;;;;;_: s -> a & s
+(declare-fun Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe (Term Term) Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe
 ;;; Fact-ids: Name Part2.ST.st; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(5,11-5,25); use=Part2.ST.fst(5,11-5,25)
-(forall ((@x0 Term))
- (! (HasType (Tm_arrow_484ac694053f9cf14a2c5a94a3797972 @x0)
+;; def=Part2.ST.fst(3,7-3,23); use=Part2.ST.fst(3,13-3,23)
+(forall ((@x0 Term) (@x1 Term))
+ (! (HasType (Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe @x0
+@x1)
 Tm_type)
  
 
-:pattern ((HasType (Tm_arrow_484ac694053f9cf14a2c5a94a3797972 @x0)
+:pattern ((HasType (Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe @x0
+@x1)
 Tm_type))
-:qid kinding_Tm_arrow_484ac694053f9cf14a2c5a94a3797972))
+:qid kinding_Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe))
 
-:named kinding_Tm_arrow_484ac694053f9cf14a2c5a94a3797972))
+:named kinding_Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe))
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: Name Part2.ST.st; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(5,11-5,25); use=Part2.ST.fst(5,11-5,25)
-(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+;; def=Part2.ST.fst(3,7-3,23); use=Part2.ST.fst(3,13-3,23)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (implies (HasTypeFuel @u0
 @x1
-(Tm_arrow_484ac694053f9cf14a2c5a94a3797972 @x2))
+(Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe @x2
+@x3))
 (is-Tm_arrow (PreType @x1)))
  
 
 :pattern ((HasTypeFuel @u0
 @x1
-(Tm_arrow_484ac694053f9cf14a2c5a94a3797972 @x2)))
-:qid Part2.ST_pre_typing_Tm_arrow_484ac694053f9cf14a2c5a94a3797972))
+(Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe @x2
+@x3)))
+:qid Part2.ST_pre_typing_Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe))
 
-:named Part2.ST_pre_typing_Tm_arrow_484ac694053f9cf14a2c5a94a3797972))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_484ac694053f9cf14a2c5a94a3797972
+:named Part2.ST_pre_typing_Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe
 ;;; Fact-ids: Name Part2.ST.st; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(5,11-5,25); use=Part2.ST.fst(5,11-5,25)
-(forall ((@x0 Term) (@x1 Term))
+;; def=Part2.ST.fst(3,7-3,23); use=Part2.ST.fst(3,13-3,23)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
  (! (iff (HasTypeZ @x0
-(Tm_arrow_484ac694053f9cf14a2c5a94a3797972 @x1))
+(Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe @x1
+@x2))
 (and 
-;; def=Part2.ST.fst(5,11-5,25); use=Part2.ST.fst(5,11-5,25)
-(forall ((@x2 Term))
- (! (implies (HasType @x2
-Prims.int)
-(HasType (ApplyTT @x0
+;; def=Part2.ST.fst(3,7-3,23); use=Part2.ST.fst(3,13-3,23)
+(forall ((@x3 Term))
+ (! (implies (HasType @x3
 @x2)
+(HasType (ApplyTT @x0
+@x3)
 (FStar.Pervasives.Native.tuple2 @x1
-Prims.int)))
+@x2)))
  
 
 :pattern ((ApplyTT @x0
-@x2))
-:qid Part2.ST_interpretation_Tm_arrow_484ac694053f9cf14a2c5a94a3797972.1))
+@x3))
+:qid Part2.ST_interpretation_Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe.1))
 
 (IsTotFun @x0)))
  
 
 :pattern ((HasTypeZ @x0
-(Tm_arrow_484ac694053f9cf14a2c5a94a3797972 @x1)))
-:qid Part2.ST_interpretation_Tm_arrow_484ac694053f9cf14a2c5a94a3797972))
+(Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe @x1
+@x2)))
+:qid Part2.ST_interpretation_Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe))
 
-:named Part2.ST_interpretation_Tm_arrow_484ac694053f9cf14a2c5a94a3797972))
+:named Part2.ST_interpretation_Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe))
 ;;;;;;;;;;;;;;;;Equation for Part2.ST.st
 ;;; Fact-ids: Name Part2.ST.st; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(5,4-5,6); use=Part2.ST.fst(5,4-5,6)
-(forall ((@x0 Term))
- (! (= (Part2.ST.st @x0)
-(Tm_arrow_484ac694053f9cf14a2c5a94a3797972 @x0))
+;; def=Part2.ST.fst(3,4-3,6); use=Part2.ST.fst(3,4-3,6)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (Part2.ST.st @x0
+@x1)
+(Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe @x1
+@x0))
  
 
-:pattern ((Part2.ST.st @x0))
+:pattern ((Part2.ST.st @x0
+@x1))
 :qid equation_Part2.ST.st))
 
 :named equation_Part2.ST.st))
@@ -155032,35 +155051,224 @@ Prims.int)))
 
 ; <Start encoding let read>
 
-(declare-fun Part2.ST.read (Dummy_sort) Term)
+(declare-fun Part2.ST.read (Term) Term)
+;;;;;;;;;;;;;;;;st s s
+(declare-fun Tm_arrow_0361af1c413599314f44ef0239fd941d () Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_0361af1c413599314f44ef0239fd941d
+;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
+(assert (! (HasType Tm_arrow_0361af1c413599314f44ef0239fd941d
+Tm_type)
+:named kinding_Tm_arrow_0361af1c413599314f44ef0239fd941d))
+;;;;;;;;;;;;;;;;pre-typing for functions
+;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
+(assert (! 
+;; def=dummy(0,0-0,0); use=Part2.ST.fst(5,10-6,10)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+Tm_arrow_0361af1c413599314f44ef0239fd941d)
+(is-Tm_arrow (PreType @x1)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_arrow_0361af1c413599314f44ef0239fd941d))
+:qid Part2.ST_pre_typing_Tm_arrow_0361af1c413599314f44ef0239fd941d))
+
+:named Part2.ST_pre_typing_Tm_arrow_0361af1c413599314f44ef0239fd941d))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_0361af1c413599314f44ef0239fd941d
+;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
+(assert (! 
+;; def=dummy(0,0-0,0); use=Part2.ST.fst(5,10-6,10)
+(forall ((@x0 Term))
+ (! (iff (HasTypeZ @x0
+Tm_arrow_0361af1c413599314f44ef0239fd941d)
+(and 
+;; def=dummy(0,0-0,0); use=Part2.ST.fst(5,10-6,10)
+(forall ((@x1 Term))
+ (! (implies (HasType @x1
+Tm_type)
+(HasType (ApplyTT @x0
+@x1)
+(Part2.ST.st @x1
+@x1)))
+ 
+
+:pattern ((ApplyTT @x0
+@x1))
+:qid Part2.ST_interpretation_Tm_arrow_0361af1c413599314f44ef0239fd941d.1))
+
+(IsTotFun @x0)))
+ 
+
+:pattern ((HasTypeZ @x0
+Tm_arrow_0361af1c413599314f44ef0239fd941d))
+:qid Part2.ST_interpretation_Tm_arrow_0361af1c413599314f44ef0239fd941d))
+
+:named Part2.ST_interpretation_Tm_arrow_0361af1c413599314f44ef0239fd941d))
+(declare-fun Part2.ST.read@tok () Term)
+;;;;;;;;;;;;;;;;Name-token correspondence
+;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(5,4-5,8); use=Part2.ST.fst(5,4-5,8)
+(forall ((@x0 Term))
+ (! (= (ApplyTT Part2.ST.read@tok
+@x0)
+(Part2.ST.read @x0))
+ 
+
+:pattern ((ApplyTT Part2.ST.read@tok
+@x0))
+:qid token_correspondence_Part2.ST.read))
+
+:named token_correspondence_Part2.ST.read))
+;;;;;;;;;;;;;;;;function token typing
+;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(5,4-5,8); use=Part2.ST.fst(5,4-5,8)
+(forall ((@x0 Term))
+ (! (and (NoHoist @x0
+(HasType Part2.ST.read@tok
+Tm_arrow_0361af1c413599314f44ef0239fd941d))
+
+;; def=Part2.ST.fst(5,4-5,8); use=Part2.ST.fst(5,4-5,8)
+(forall ((@x1 Term))
+ (! (= (ApplyTT Part2.ST.read@tok
+@x1)
+(Part2.ST.read @x1))
+ 
+
+:pattern ((Part2.ST.read @x1))
+:qid function_token_typing_Part2.ST.read.1))
+)
+ 
+
+:pattern ((ApplyTT @x0
+Part2.ST.read@tok))
+:qid function_token_typing_Part2.ST.read))
+
+:named function_token_typing_Part2.ST.read))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(7,4-7,8); use=Part2.ST.fst(7,4-7,8)
-(forall ((@u0 Dummy_sort))
- (! (HasType (Part2.ST.read @u0)
-(Part2.ST.st Prims.int))
+;; def=Part2.ST.fst(5,4-5,8); use=Part2.ST.fst(5,4-5,8)
+(forall ((@x0 Term))
+ (! (implies (HasType @x0
+Tm_type)
+(HasType (Part2.ST.read @x0)
+(Part2.ST.st @x0
+@x0)))
  
 
-:pattern ((Part2.ST.read @u0))
+:pattern ((Part2.ST.read @x0))
 :qid typing_Part2.ST.read))
 
 :named typing_Part2.ST.read))
-;;;;;;;;;;;;;;;;Equation for Part2.ST.read
+;;;;;;;;;;;;;;;;s: s -> s & s
+(declare-fun Tm_arrow_dfea4a8020add2504b31d30cd18f4a45 (Term) Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_dfea4a8020add2504b31d30cd18f4a45
 ;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(7,4-7,8); use=Part2.ST.fst(7,4-7,8)
+;; def=Part2.ST.fst(3,18-5,11); use=Part2.ST.fst(3,18-6,8)
 (forall ((@x0 Term))
- (! (= (ApplyTT (Part2.ST.read Dummy_value)
+ (! (HasType (Tm_arrow_dfea4a8020add2504b31d30cd18f4a45 @x0)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_arrow_dfea4a8020add2504b31d30cd18f4a45 @x0)
+Tm_type))
+:qid kinding_Tm_arrow_dfea4a8020add2504b31d30cd18f4a45))
+
+:named kinding_Tm_arrow_dfea4a8020add2504b31d30cd18f4a45))
+;;;;;;;;;;;;;;;;pre-typing for functions
+;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(3,18-5,11); use=Part2.ST.fst(3,18-6,8)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+(Tm_arrow_dfea4a8020add2504b31d30cd18f4a45 @x2))
+(is-Tm_arrow (PreType @x1)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_arrow_dfea4a8020add2504b31d30cd18f4a45 @x2)))
+:qid Part2.ST_pre_typing_Tm_arrow_dfea4a8020add2504b31d30cd18f4a45))
+
+:named Part2.ST_pre_typing_Tm_arrow_dfea4a8020add2504b31d30cd18f4a45))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_dfea4a8020add2504b31d30cd18f4a45
+;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(3,18-5,11); use=Part2.ST.fst(3,18-6,8)
+(forall ((@x0 Term) (@x1 Term))
+ (! (iff (HasTypeZ @x0
+(Tm_arrow_dfea4a8020add2504b31d30cd18f4a45 @x1))
+(and 
+;; def=Part2.ST.fst(3,18-5,11); use=Part2.ST.fst(3,18-6,8)
+(forall ((@x2 Term))
+ (! (implies (HasType @x2
+@x1)
+(HasType (ApplyTT @x0
+@x2)
+(FStar.Pervasives.Native.tuple2 @x1
+@x1)))
+ 
+
+:pattern ((ApplyTT @x0
+@x2))
+:qid Part2.ST_interpretation_Tm_arrow_dfea4a8020add2504b31d30cd18f4a45.1))
+
+(IsTotFun @x0)))
+ 
+
+:pattern ((HasTypeZ @x0
+(Tm_arrow_dfea4a8020add2504b31d30cd18f4a45 @x1)))
+:qid Part2.ST_interpretation_Tm_arrow_dfea4a8020add2504b31d30cd18f4a45))
+
+:named Part2.ST_interpretation_Tm_arrow_dfea4a8020add2504b31d30cd18f4a45))
+(declare-fun Tm_abs_79991cb66008561c642fa3e96942b94c (Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_79991cb66008561c642fa3e96942b94c
+;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(7,13-7,17); use=Part2.ST.fst(7,13-7,17)
+(forall ((@x0 Term))
+ (! (HasType (Tm_abs_79991cb66008561c642fa3e96942b94c @x0)
+(Tm_arrow_dfea4a8020add2504b31d30cd18f4a45 @x0))
+ 
+
+:pattern ((Tm_abs_79991cb66008561c642fa3e96942b94c @x0))
+:qid typing_Tm_abs_79991cb66008561c642fa3e96942b94c))
+
+:named typing_Tm_abs_79991cb66008561c642fa3e96942b94c))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_79991cb66008561c642fa3e96942b94c
+;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(7,13-7,17); use=Part2.ST.fst(7,13-7,17)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (ApplyTT (Tm_abs_79991cb66008561c642fa3e96942b94c @x1)
 @x0)
-(FStar.Pervasives.Native.Mktuple2 Prims.int
-Prims.int
+(FStar.Pervasives.Native.Mktuple2 @x1
+@x1
 @x0
 @x0))
  
 
-:pattern ((ApplyTT (Part2.ST.read Dummy_value)
+:pattern ((ApplyTT (Tm_abs_79991cb66008561c642fa3e96942b94c @x1)
 @x0))
+:qid interpretation_Tm_abs_79991cb66008561c642fa3e96942b94c))
+
+:named interpretation_Tm_abs_79991cb66008561c642fa3e96942b94c))
+;;;;;;;;;;;;;;;;Equation for Part2.ST.read
+;;; Fact-ids: Name Part2.ST.read; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(5,4-5,8); use=Part2.ST.fst(5,4-5,8)
+(forall ((@x0 Term))
+ (! (= (Part2.ST.read @x0)
+(Tm_abs_79991cb66008561c642fa3e96942b94c @x0))
+ 
+
+:pattern ((Part2.ST.read @x0))
 :qid equation_Part2.ST.read))
 
 :named equation_Part2.ST.read))
@@ -155073,93 +155281,117 @@ Prims.int
 
 ; <Start encoding let write>
 
-(declare-fun Part2.ST.write (Term) Term)
-;;;;;;;;;;;;;;;;s1: Prims.int -> st Prims.unit
-(declare-fun Tm_arrow_6eb1458110f85c47ee562627d45ad810 () Term)
-;;;;;;;;;;;;;;;;kinding_Tm_arrow_6eb1458110f85c47ee562627d45ad810
+(declare-fun Part2.ST.write (Term Term) Term)
+;;;;;;;;;;;;;;;;s1: s -> st s Prims.unit
+(declare-fun Tm_arrow_95eba4f6a28c10baa6e127992f319acf () Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_95eba4f6a28c10baa6e127992f319acf
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
-(assert (! (HasType Tm_arrow_6eb1458110f85c47ee562627d45ad810
+(assert (! (HasType Tm_arrow_95eba4f6a28c10baa6e127992f319acf
 Tm_type)
-:named kinding_Tm_arrow_6eb1458110f85c47ee562627d45ad810))
+:named kinding_Tm_arrow_95eba4f6a28c10baa6e127992f319acf))
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(11,14-12,11); use=Part2.ST.fst(11,14-12,11)
+;; def=Part2.ST.fst(9,11-9,12); use=Part2.ST.fst(9,11-10,13)
 (forall ((@u0 Fuel) (@x1 Term))
  (! (implies (HasTypeFuel @u0
 @x1
-Tm_arrow_6eb1458110f85c47ee562627d45ad810)
+Tm_arrow_95eba4f6a28c10baa6e127992f319acf)
 (is-Tm_arrow (PreType @x1)))
  
 
 :pattern ((HasTypeFuel @u0
 @x1
-Tm_arrow_6eb1458110f85c47ee562627d45ad810))
-:qid Part2.ST_pre_typing_Tm_arrow_6eb1458110f85c47ee562627d45ad810))
+Tm_arrow_95eba4f6a28c10baa6e127992f319acf))
+:qid Part2.ST_pre_typing_Tm_arrow_95eba4f6a28c10baa6e127992f319acf))
 
-:named Part2.ST_pre_typing_Tm_arrow_6eb1458110f85c47ee562627d45ad810))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_6eb1458110f85c47ee562627d45ad810
+:named Part2.ST_pre_typing_Tm_arrow_95eba4f6a28c10baa6e127992f319acf))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_95eba4f6a28c10baa6e127992f319acf
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(11,14-12,11); use=Part2.ST.fst(11,14-12,11)
+;; def=Part2.ST.fst(9,11-9,12); use=Part2.ST.fst(9,11-10,13)
 (forall ((@x0 Term))
  (! (iff (HasTypeZ @x0
-Tm_arrow_6eb1458110f85c47ee562627d45ad810)
+Tm_arrow_95eba4f6a28c10baa6e127992f319acf)
 (and 
-;; def=Part2.ST.fst(11,14-12,11); use=Part2.ST.fst(11,14-12,11)
+;; def=Part2.ST.fst(9,11-9,12); use=Part2.ST.fst(9,11-10,13)
+(forall ((@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x1
+Tm_type)
+(HasType @x2
+@x1))
+(HasType (ApplyTT (ApplyTT @x0
+@x1)
+@x2)
+(Part2.ST.st @x1
+Prims.unit)))
+ 
+
+:pattern ((ApplyTT (ApplyTT @x0
+@x1)
+@x2))
+:qid Part2.ST_interpretation_Tm_arrow_95eba4f6a28c10baa6e127992f319acf.1))
+
+(IsTotFun @x0)
+
+;; def=Part2.ST.fst(9,11-9,12); use=Part2.ST.fst(9,11-10,13)
 (forall ((@x1 Term))
  (! (implies (HasType @x1
-Prims.int)
-(HasType (ApplyTT @x0
-@x1)
-(Part2.ST.st Prims.unit)))
+Tm_type)
+(IsTotFun (ApplyTT @x0
+@x1)))
  
 
 :pattern ((ApplyTT @x0
 @x1))
-:qid Part2.ST_interpretation_Tm_arrow_6eb1458110f85c47ee562627d45ad810.1))
-
-(IsTotFun @x0)))
+:qid Part2.ST_interpretation_Tm_arrow_95eba4f6a28c10baa6e127992f319acf.2))
+))
  
 
 :pattern ((HasTypeZ @x0
-Tm_arrow_6eb1458110f85c47ee562627d45ad810))
-:qid Part2.ST_interpretation_Tm_arrow_6eb1458110f85c47ee562627d45ad810))
+Tm_arrow_95eba4f6a28c10baa6e127992f319acf))
+:qid Part2.ST_interpretation_Tm_arrow_95eba4f6a28c10baa6e127992f319acf))
 
-:named Part2.ST_interpretation_Tm_arrow_6eb1458110f85c47ee562627d45ad810))
+:named Part2.ST_interpretation_Tm_arrow_95eba4f6a28c10baa6e127992f319acf))
 (declare-fun Part2.ST.write@tok () Term)
 ;;;;;;;;;;;;;;;;Name-token correspondence
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(11,4-11,9); use=Part2.ST.fst(11,4-11,9)
-(forall ((@x0 Term))
- (! (= (ApplyTT Part2.ST.write@tok
+;; def=Part2.ST.fst(9,4-9,9); use=Part2.ST.fst(9,4-9,9)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (ApplyTT (ApplyTT Part2.ST.write@tok
 @x0)
-(Part2.ST.write @x0))
+@x1)
+(Part2.ST.write @x0
+@x1))
  
 
-:pattern ((ApplyTT Part2.ST.write@tok
-@x0))
+:pattern ((ApplyTT (ApplyTT Part2.ST.write@tok
+@x0)
+@x1))
 :qid token_correspondence_Part2.ST.write))
 
 :named token_correspondence_Part2.ST.write))
 ;;;;;;;;;;;;;;;;function token typing
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(11,4-11,9); use=Part2.ST.fst(11,4-11,9)
+;; def=Part2.ST.fst(9,4-9,9); use=Part2.ST.fst(9,4-9,9)
 (forall ((@x0 Term))
  (! (and (NoHoist @x0
 (HasType Part2.ST.write@tok
-Tm_arrow_6eb1458110f85c47ee562627d45ad810))
+Tm_arrow_95eba4f6a28c10baa6e127992f319acf))
 
-;; def=Part2.ST.fst(11,4-11,9); use=Part2.ST.fst(11,4-11,9)
-(forall ((@x1 Term))
- (! (= (ApplyTT Part2.ST.write@tok
+;; def=Part2.ST.fst(9,4-9,9); use=Part2.ST.fst(9,4-9,9)
+(forall ((@x1 Term) (@x2 Term))
+ (! (= (ApplyTT (ApplyTT Part2.ST.write@tok
 @x1)
-(Part2.ST.write @x1))
+@x2)
+(Part2.ST.write @x1
+@x2))
  
 
-:pattern ((Part2.ST.write @x1))
+:pattern ((Part2.ST.write @x1
+@x2))
 :qid function_token_typing_Part2.ST.write.1))
 )
  
@@ -155172,114 +155404,135 @@ Part2.ST.write@tok))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(11,4-11,9); use=Part2.ST.fst(11,4-11,9)
-(forall ((@x0 Term))
- (! (implies (HasType @x0
-Prims.int)
-(HasType (Part2.ST.write @x0)
-(Part2.ST.st Prims.unit)))
+;; def=Part2.ST.fst(9,4-9,9); use=Part2.ST.fst(9,4-9,9)
+(forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+@x0))
+(HasType (Part2.ST.write @x0
+@x1)
+(Part2.ST.st @x0
+Prims.unit)))
  
 
-:pattern ((Part2.ST.write @x0))
+:pattern ((Part2.ST.write @x0
+@x1))
 :qid typing_Part2.ST.write))
 
 :named typing_Part2.ST.write))
-;;;;;;;;;;;;;;;;_: Prims.int -> Prims.unit & Prims.int
-(declare-fun Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f () Term)
-;;;;;;;;;;;;;;;;kinding_Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f
+;;;;;;;;;;;;;;;;_: s -> Prims.unit & s
+(declare-fun Tm_arrow_49b2624aa26b413e2f62db699cf87966 (Term) Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_49b2624aa26b413e2f62db699cf87966
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
-(assert (! (HasType Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f
+(assert (! 
+;; def=Part2.ST.fst(3,18-9,12); use=Part2.ST.fst(3,18-10,8)
+(forall ((@x0 Term))
+ (! (HasType (Tm_arrow_49b2624aa26b413e2f62db699cf87966 @x0)
 Tm_type)
-:named kinding_Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f))
+ 
+
+:pattern ((HasType (Tm_arrow_49b2624aa26b413e2f62db699cf87966 @x0)
+Tm_type))
+:qid kinding_Tm_arrow_49b2624aa26b413e2f62db699cf87966))
+
+:named kinding_Tm_arrow_49b2624aa26b413e2f62db699cf87966))
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(5,11-5,25); use=Part2.ST.fst(5,11-5,25)
-(forall ((@u0 Fuel) (@x1 Term))
+;; def=Part2.ST.fst(3,18-9,12); use=Part2.ST.fst(3,18-10,8)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
  (! (implies (HasTypeFuel @u0
 @x1
-Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f)
+(Tm_arrow_49b2624aa26b413e2f62db699cf87966 @x2))
 (is-Tm_arrow (PreType @x1)))
  
 
 :pattern ((HasTypeFuel @u0
 @x1
-Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f))
-:qid Part2.ST_pre_typing_Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f))
+(Tm_arrow_49b2624aa26b413e2f62db699cf87966 @x2)))
+:qid Part2.ST_pre_typing_Tm_arrow_49b2624aa26b413e2f62db699cf87966))
 
-:named Part2.ST_pre_typing_Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f
+:named Part2.ST_pre_typing_Tm_arrow_49b2624aa26b413e2f62db699cf87966))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_49b2624aa26b413e2f62db699cf87966
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(5,11-5,25); use=Part2.ST.fst(5,11-5,25)
-(forall ((@x0 Term))
+;; def=Part2.ST.fst(3,18-9,12); use=Part2.ST.fst(3,18-10,8)
+(forall ((@x0 Term) (@x1 Term))
  (! (iff (HasTypeZ @x0
-Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f)
+(Tm_arrow_49b2624aa26b413e2f62db699cf87966 @x1))
 (and 
-;; def=Part2.ST.fst(5,11-5,25); use=Part2.ST.fst(5,11-5,25)
-(forall ((@x1 Term))
- (! (implies (HasType @x1
-Prims.int)
-(HasType (ApplyTT @x0
+;; def=Part2.ST.fst(3,18-9,12); use=Part2.ST.fst(3,18-10,8)
+(forall ((@x2 Term))
+ (! (implies (HasType @x2
 @x1)
+(HasType (ApplyTT @x0
+@x2)
 (FStar.Pervasives.Native.tuple2 Prims.unit
-Prims.int)))
+@x1)))
  
 
 :pattern ((ApplyTT @x0
-@x1))
-:qid Part2.ST_interpretation_Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f.1))
+@x2))
+:qid Part2.ST_interpretation_Tm_arrow_49b2624aa26b413e2f62db699cf87966.1))
 
 (IsTotFun @x0)))
  
 
 :pattern ((HasTypeZ @x0
-Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f))
-:qid Part2.ST_interpretation_Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f))
+(Tm_arrow_49b2624aa26b413e2f62db699cf87966 @x1)))
+:qid Part2.ST_interpretation_Tm_arrow_49b2624aa26b413e2f62db699cf87966))
 
-:named Part2.ST_interpretation_Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f))
-(declare-fun Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c (Term) Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c
+:named Part2.ST_interpretation_Tm_arrow_49b2624aa26b413e2f62db699cf87966))
+(declare-fun Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b (Term Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(13,13-13,19); use=Part2.ST.fst(13,13-13,19)
-(forall ((@x0 Term))
- (! (HasType (Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c @x0)
-Tm_arrow_e6cbb4bbc642a2fc76d5fb18af4bae4f)
+;; def=Part2.ST.fst(11,13-11,19); use=Part2.ST.fst(11,13-11,19)
+(forall ((@x0 Term) (@x1 Term))
+ (! (HasType (Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b @x0
+@x1)
+(Tm_arrow_49b2624aa26b413e2f62db699cf87966 @x1))
  
 
-:pattern ((Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c @x0))
-:qid typing_Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c))
+:pattern ((Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b @x0
+@x1))
+:qid typing_Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b))
 
-:named typing_Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c
+:named typing_Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(13,13-13,19); use=Part2.ST.fst(13,13-13,19)
-(forall ((@x0 Term) (@x1 Term))
- (! (= (ApplyTT (Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c @x1)
+;; def=Part2.ST.fst(11,13-11,19); use=Part2.ST.fst(11,13-11,19)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (= (ApplyTT (Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b @x1
+@x2)
 @x0)
 (FStar.Pervasives.Native.Mktuple2 Prims.unit
-Prims.int
+@x2
 Tm_unit
 @x1))
  
 
-:pattern ((ApplyTT (Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c @x1)
+:pattern ((ApplyTT (Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b @x1
+@x2)
 @x0))
-:qid interpretation_Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c))
+:qid interpretation_Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b))
 
-:named interpretation_Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c))
+:named interpretation_Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b))
 ;;;;;;;;;;;;;;;;Equation for Part2.ST.write
 ;;; Fact-ids: Name Part2.ST.write; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(11,4-11,9); use=Part2.ST.fst(11,4-11,9)
-(forall ((@x0 Term))
- (! (= (Part2.ST.write @x0)
-(Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c @x0))
+;; def=Part2.ST.fst(9,4-9,9); use=Part2.ST.fst(9,4-9,9)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (Part2.ST.write @x0
+@x1)
+(Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b @x1
+@x0))
  
 
-:pattern ((Part2.ST.write @x0))
+:pattern ((Part2.ST.write @x0
+@x1))
 :qid equation_Part2.ST.write))
 
 :named equation_Part2.ST.write))
@@ -155292,137 +155545,151 @@ Tm_unit
 
 ; <Start encoding let bind>
 
-;;;;;;;;;;;;;;;;_: a -> st b
-(declare-fun Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e (Term Term) Term)
-;;;;;;;;;;;;;;;;kinding_Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e
+;;;;;;;;;;;;;;;;_: a -> st s b
+(declare-fun Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(15,10-17,22); use=Part2.ST.fst(17,13-17,22)
-(forall ((@x0 Term) (@x1 Term))
- (! (HasType (Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x0
-@x1)
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(15,13-15,24)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (HasType (Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x0
+@x1
+@x2)
 Tm_type)
  
 
-:pattern ((HasType (Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x0
-@x1)
+:pattern ((HasType (Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x0
+@x1
+@x2)
 Tm_type))
-:qid kinding_Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e))
+:qid kinding_Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887))
 
-:named kinding_Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e))
+:named kinding_Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887))
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(15,10-17,22); use=Part2.ST.fst(17,13-17,22)
-(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(15,13-15,24)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
  (! (implies (HasTypeFuel @u0
 @x1
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x2
-@x3))
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x2
+@x3
+@x4))
 (is-Tm_arrow (PreType @x1)))
  
 
 :pattern ((HasTypeFuel @u0
 @x1
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x2
-@x3)))
-:qid Part2.ST_pre_typing_Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e))
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x2
+@x3
+@x4)))
+:qid Part2.ST_pre_typing_Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887))
 
-:named Part2.ST_pre_typing_Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e
+:named Part2.ST_pre_typing_Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(15,10-17,22); use=Part2.ST.fst(17,13-17,22)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(15,13-15,24)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (iff (HasTypeZ @x0
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x1
-@x2))
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x1
+@x2
+@x3))
 (and 
-;; def=Part2.ST.fst(15,10-17,22); use=Part2.ST.fst(17,13-17,22)
-(forall ((@x3 Term))
- (! (implies (HasType @x3
-@x2)
-(HasType (ApplyTT @x0
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(15,13-15,24)
+(forall ((@x4 Term))
+ (! (implies (HasType @x4
 @x3)
-(Part2.ST.st @x1)))
+(HasType (ApplyTT @x0
+@x4)
+(Part2.ST.st @x2
+@x1)))
  
 
 :pattern ((ApplyTT @x0
-@x3))
-:qid Part2.ST_interpretation_Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e.1))
+@x4))
+:qid Part2.ST_interpretation_Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887.1))
 
 (IsTotFun @x0)))
  
 
 :pattern ((HasTypeZ @x0
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x1
-@x2)))
-:qid Part2.ST_interpretation_Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e))
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x1
+@x2
+@x3)))
+:qid Part2.ST_interpretation_Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887))
 
-:named Part2.ST_interpretation_Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e))
-(declare-fun Part2.ST.bind (Term Term Term Term) Term)
+:named Part2.ST_interpretation_Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887))
+(declare-fun Part2.ST.bind (Term Term Term Term Term) Term)
 
-;;;;;;;;;;;;;;;;f: st a -> g: (_: a -> st b) -> st b
-(declare-fun Tm_arrow_fe9e783ac7528e312bd17f9964c558d1 () Term)
-;;;;;;;;;;;;;;;;kinding_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1
+;;;;;;;;;;;;;;;;f: st s a -> g: (_: a -> st s b) -> st s b
+(declare-fun Tm_arrow_e6d993248ab69561192ad551c3351984 () Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_e6d993248ab69561192ad551c3351984
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
-(assert (! (HasType Tm_arrow_fe9e783ac7528e312bd17f9964c558d1
+(assert (! (HasType Tm_arrow_e6d993248ab69561192ad551c3351984
 Tm_type)
-:named kinding_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1))
+:named kinding_Tm_arrow_e6d993248ab69561192ad551c3351984))
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(15,10-17,22); use=Part2.ST.fst(15,10-18,8)
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(13,10-16,10)
 (forall ((@u0 Fuel) (@x1 Term))
  (! (implies (HasTypeFuel @u0
 @x1
-Tm_arrow_fe9e783ac7528e312bd17f9964c558d1)
+Tm_arrow_e6d993248ab69561192ad551c3351984)
 (is-Tm_arrow (PreType @x1)))
  
 
 :pattern ((HasTypeFuel @u0
 @x1
-Tm_arrow_fe9e783ac7528e312bd17f9964c558d1))
-:qid Part2.ST_pre_typing_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1))
+Tm_arrow_e6d993248ab69561192ad551c3351984))
+:qid Part2.ST_pre_typing_Tm_arrow_e6d993248ab69561192ad551c3351984))
 
-:named Part2.ST_pre_typing_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1
+:named Part2.ST_pre_typing_Tm_arrow_e6d993248ab69561192ad551c3351984))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_e6d993248ab69561192ad551c3351984
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(15,10-17,22); use=Part2.ST.fst(15,10-18,8)
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(13,10-16,10)
 (forall ((@x0 Term))
  (! (iff (HasTypeZ @x0
-Tm_arrow_fe9e783ac7528e312bd17f9964c558d1)
+Tm_arrow_e6d993248ab69561192ad551c3351984)
 (and 
-;; def=Part2.ST.fst(15,10-17,22); use=Part2.ST.fst(15,10-18,8)
-(forall ((@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(13,10-16,10)
+(forall ((@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term))
  (! (implies (and (HasType @x1
 Tm_type)
 (HasType @x2
 Tm_type)
 (HasType @x3
-(Part2.ST.st @x1))
+Tm_type)
 (HasType @x4
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x2
-@x1)))
-(HasType (ApplyTT (ApplyTT (ApplyTT (ApplyTT @x0
+(Part2.ST.st @x1
+@x2))
+(HasType @x5
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x3
+@x1
+@x2)))
+(HasType (ApplyTT (ApplyTT (ApplyTT (ApplyTT (ApplyTT @x0
 @x1)
 @x2)
 @x3)
 @x4)
-(Part2.ST.st @x2)))
+@x5)
+(Part2.ST.st @x1
+@x3)))
  
 
-:pattern ((ApplyTT (ApplyTT (ApplyTT (ApplyTT @x0
+:pattern ((ApplyTT (ApplyTT (ApplyTT (ApplyTT (ApplyTT @x0
 @x1)
 @x2)
 @x3)
-@x4))
-:qid Part2.ST_interpretation_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1.1))
+@x4)
+@x5))
+:qid Part2.ST_interpretation_Tm_arrow_e6d993248ab69561192ad551c3351984.1))
 
 (IsTotFun @x0)
 
-;; def=Part2.ST.fst(15,10-17,22); use=Part2.ST.fst(15,10-18,8)
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(13,10-16,10)
 (forall ((@x1 Term))
  (! (implies (HasType @x1
 Tm_type)
@@ -155432,10 +155699,10 @@ Tm_type)
 
 :pattern ((ApplyTT @x0
 @x1))
-:qid Part2.ST_interpretation_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1.2))
+:qid Part2.ST_interpretation_Tm_arrow_e6d993248ab69561192ad551c3351984.2))
 
 
-;; def=Part2.ST.fst(15,10-17,22); use=Part2.ST.fst(15,10-18,8)
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(13,10-16,10)
 (forall ((@x1 Term) (@x2 Term))
  (! (implies (and (HasType @x1
 Tm_type)
@@ -155449,17 +155716,17 @@ Tm_type))
 :pattern ((ApplyTT (ApplyTT @x0
 @x1)
 @x2))
-:qid Part2.ST_interpretation_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1.3))
+:qid Part2.ST_interpretation_Tm_arrow_e6d993248ab69561192ad551c3351984.3))
 
 
-;; def=Part2.ST.fst(15,10-17,22); use=Part2.ST.fst(15,10-18,8)
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(13,10-16,10)
 (forall ((@x1 Term) (@x2 Term) (@x3 Term))
  (! (implies (and (HasType @x1
 Tm_type)
 (HasType @x2
 Tm_type)
 (HasType @x3
-(Part2.ST.st @x1)))
+Tm_type))
 (IsTotFun (ApplyTT (ApplyTT (ApplyTT @x0
 @x1)
 @x2)
@@ -155470,66 +155737,98 @@ Tm_type)
 @x1)
 @x2)
 @x3))
-:qid Part2.ST_interpretation_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1.4))
+:qid Part2.ST_interpretation_Tm_arrow_e6d993248ab69561192ad551c3351984.4))
+
+
+;; def=Part2.ST.fst(13,13-15,24); use=Part2.ST.fst(13,10-16,10)
+(forall ((@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (implies (and (HasType @x1
+Tm_type)
+(HasType @x2
+Tm_type)
+(HasType @x3
+Tm_type)
+(HasType @x4
+(Part2.ST.st @x1
+@x2)))
+(IsTotFun (ApplyTT (ApplyTT (ApplyTT (ApplyTT @x0
+@x1)
+@x2)
+@x3)
+@x4)))
+ 
+
+:pattern ((ApplyTT (ApplyTT (ApplyTT (ApplyTT @x0
+@x1)
+@x2)
+@x3)
+@x4))
+:qid Part2.ST_interpretation_Tm_arrow_e6d993248ab69561192ad551c3351984.5))
 ))
  
 
 :pattern ((HasTypeZ @x0
-Tm_arrow_fe9e783ac7528e312bd17f9964c558d1))
-:qid Part2.ST_interpretation_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1))
+Tm_arrow_e6d993248ab69561192ad551c3351984))
+:qid Part2.ST_interpretation_Tm_arrow_e6d993248ab69561192ad551c3351984))
 
-:named Part2.ST_interpretation_Tm_arrow_fe9e783ac7528e312bd17f9964c558d1))
+:named Part2.ST_interpretation_Tm_arrow_e6d993248ab69561192ad551c3351984))
 (declare-fun Part2.ST.bind@tok () Term)
 ;;;;;;;;;;;;;;;;Name-token correspondence
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(15,4-15,8); use=Part2.ST.fst(15,4-15,8)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
- (! (= (ApplyTT (ApplyTT (ApplyTT (ApplyTT Part2.ST.bind@tok
+;; def=Part2.ST.fst(13,4-13,8); use=Part2.ST.fst(13,4-13,8)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (= (ApplyTT (ApplyTT (ApplyTT (ApplyTT (ApplyTT Part2.ST.bind@tok
 @x0)
 @x1)
 @x2)
 @x3)
+@x4)
 (Part2.ST.bind @x0
 @x1
 @x2
-@x3))
+@x3
+@x4))
  
 
-:pattern ((ApplyTT (ApplyTT (ApplyTT (ApplyTT Part2.ST.bind@tok
+:pattern ((ApplyTT (ApplyTT (ApplyTT (ApplyTT (ApplyTT Part2.ST.bind@tok
 @x0)
 @x1)
 @x2)
-@x3))
+@x3)
+@x4))
 :qid token_correspondence_Part2.ST.bind))
 
 :named token_correspondence_Part2.ST.bind))
 ;;;;;;;;;;;;;;;;function token typing
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(15,4-15,8); use=Part2.ST.fst(15,4-15,8)
+;; def=Part2.ST.fst(13,4-13,8); use=Part2.ST.fst(13,4-13,8)
 (forall ((@x0 Term))
  (! (and (NoHoist @x0
 (HasType Part2.ST.bind@tok
-Tm_arrow_fe9e783ac7528e312bd17f9964c558d1))
+Tm_arrow_e6d993248ab69561192ad551c3351984))
 
-;; def=Part2.ST.fst(15,4-15,8); use=Part2.ST.fst(15,4-15,8)
-(forall ((@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
- (! (= (ApplyTT (ApplyTT (ApplyTT (ApplyTT Part2.ST.bind@tok
+;; def=Part2.ST.fst(13,4-13,8); use=Part2.ST.fst(13,4-13,8)
+(forall ((@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term))
+ (! (= (ApplyTT (ApplyTT (ApplyTT (ApplyTT (ApplyTT Part2.ST.bind@tok
 @x1)
 @x2)
 @x3)
 @x4)
+@x5)
 (Part2.ST.bind @x1
 @x2
 @x3
-@x4))
+@x4
+@x5))
  
 
 :pattern ((Part2.ST.bind @x1
 @x2
 @x3
-@x4))
+@x4
+@x5))
 :qid function_token_typing_Part2.ST.bind.1))
 )
  
@@ -155542,92 +155841,107 @@ Part2.ST.bind@tok))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(15,4-15,8); use=Part2.ST.fst(15,4-15,8)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+;; def=Part2.ST.fst(13,4-13,8); use=Part2.ST.fst(13,4-13,8)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
  (! (implies (and (HasType @x0
 Tm_type)
 (HasType @x1
 Tm_type)
 (HasType @x2
-(Part2.ST.st @x0))
+Tm_type)
 (HasType @x3
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x1
-@x0)))
+(Part2.ST.st @x0
+@x1))
+(HasType @x4
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x2
+@x0
+@x1)))
 (HasType (Part2.ST.bind @x0
 @x1
 @x2
-@x3)
-(Part2.ST.st @x1)))
+@x3
+@x4)
+(Part2.ST.st @x0
+@x2)))
  
 
 :pattern ((Part2.ST.bind @x0
 @x1
 @x2
-@x3))
+@x3
+@x4))
 :qid typing_Part2.ST.bind))
 
 :named typing_Part2.ST.bind))
 
 
-(declare-fun Tm_abs_bdc06410776c1d9adee9aeba485b40ed (Term Term Term) Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_bdc06410776c1d9adee9aeba485b40ed
+(declare-fun Tm_abs_7706f980135a89a687c904d968136d5b (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_7706f980135a89a687c904d968136d5b
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(19,13-21,12); use=Part2.ST.fst(19,13-21,12)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term))
- (! (HasType (Tm_abs_bdc06410776c1d9adee9aeba485b40ed @x0
-@x1
-@x2)
-(Tm_arrow_484ac694053f9cf14a2c5a94a3797972 @x2))
- 
-
-:pattern ((Tm_abs_bdc06410776c1d9adee9aeba485b40ed @x0
-@x1
-@x2))
-:qid typing_Tm_abs_bdc06410776c1d9adee9aeba485b40ed))
-
-:named typing_Tm_abs_bdc06410776c1d9adee9aeba485b40ed))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_bdc06410776c1d9adee9aeba485b40ed
-;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
-(assert (! 
-;; def=Part2.ST.fst(19,13-21,12); use=Part2.ST.fst(19,13-21,12)
+;; def=Part2.ST.fst(17,13-19,12); use=Part2.ST.fst(17,13-19,12)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
- (! (= (ApplyTT (Tm_abs_bdc06410776c1d9adee9aeba485b40ed @x1
+ (! (HasType (Tm_abs_7706f980135a89a687c904d968136d5b @x0
+@x1
 @x2
 @x3)
+(Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe @x2
+@x3))
+ 
+
+:pattern ((Tm_abs_7706f980135a89a687c904d968136d5b @x0
+@x1
+@x2
+@x3))
+:qid typing_Tm_abs_7706f980135a89a687c904d968136d5b))
+
+:named typing_Tm_abs_7706f980135a89a687c904d968136d5b))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_7706f980135a89a687c904d968136d5b
+;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(17,13-19,12); use=Part2.ST.fst(17,13-19,12)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (= (ApplyTT (Tm_abs_7706f980135a89a687c904d968136d5b @x1
+@x2
+@x3
+@x4)
 @x0)
-(let ((@lb4 (ApplyTT @x2
+(let ((@lb5 (ApplyTT @x2
 @x0)))
 (ApplyTT (ApplyTT @x1
-(FStar.Pervasives.Native.Mktuple2__1 @lb4))
-(FStar.Pervasives.Native.Mktuple2__2 @lb4))))
+(FStar.Pervasives.Native.Mktuple2__1 @lb5))
+(FStar.Pervasives.Native.Mktuple2__2 @lb5))))
  
 
-:pattern ((ApplyTT (Tm_abs_bdc06410776c1d9adee9aeba485b40ed @x1
+:pattern ((ApplyTT (Tm_abs_7706f980135a89a687c904d968136d5b @x1
 @x2
-@x3)
+@x3
+@x4)
 @x0))
-:qid interpretation_Tm_abs_bdc06410776c1d9adee9aeba485b40ed))
+:qid interpretation_Tm_abs_7706f980135a89a687c904d968136d5b))
 
-:named interpretation_Tm_abs_bdc06410776c1d9adee9aeba485b40ed))
+:named interpretation_Tm_abs_7706f980135a89a687c904d968136d5b))
 ;;;;;;;;;;;;;;;;Equation for Part2.ST.bind
 ;;; Fact-ids: Name Part2.ST.bind; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(15,4-15,8); use=Part2.ST.fst(15,4-15,8)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+;; def=Part2.ST.fst(13,4-13,8); use=Part2.ST.fst(13,4-13,8)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
  (! (= (Part2.ST.bind @x0
 @x1
 @x2
-@x3)
-(Tm_abs_bdc06410776c1d9adee9aeba485b40ed @x3
+@x3
+@x4)
+(Tm_abs_7706f980135a89a687c904d968136d5b @x4
+@x3
 @x2
-@x1))
+@x0))
  
 
 :pattern ((Part2.ST.bind @x0
 @x1
 @x2
-@x3))
+@x3
+@x4))
 :qid equation_Part2.ST.bind))
 
 :named equation_Part2.ST.bind))
@@ -155640,59 +155954,64 @@ Tm_type)
 
 ; <Start encoding let return>
 
-(declare-fun Part2.ST.return (Term Term) Term)
-;;;;;;;;;;;;;;;;x: a -> st a
-(declare-fun Tm_arrow_241237e6744311ce2be55c75b86fe74e () Term)
-;;;;;;;;;;;;;;;;kinding_Tm_arrow_241237e6744311ce2be55c75b86fe74e
+(declare-fun Part2.ST.return (Term Term Term) Term)
+;;;;;;;;;;;;;;;;x: a -> st s a
+(declare-fun Tm_arrow_82d120e2fd34611b540c00f2dbf94526 () Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_82d120e2fd34611b540c00f2dbf94526
 ;;; Fact-ids: Name Part2.ST.return; Namespace Part2.ST
-(assert (! (HasType Tm_arrow_241237e6744311ce2be55c75b86fe74e
+(assert (! (HasType Tm_arrow_82d120e2fd34611b540c00f2dbf94526
 Tm_type)
-:named kinding_Tm_arrow_241237e6744311ce2be55c75b86fe74e))
+:named kinding_Tm_arrow_82d120e2fd34611b540c00f2dbf94526))
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: Name Part2.ST.return; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(23,12-23,13); use=Part2.ST.fst(23,12-24,8)
+;; def=Part2.ST.fst(21,15-21,16); use=Part2.ST.fst(21,20-21,21)
 (forall ((@u0 Fuel) (@x1 Term))
  (! (implies (HasTypeFuel @u0
 @x1
-Tm_arrow_241237e6744311ce2be55c75b86fe74e)
+Tm_arrow_82d120e2fd34611b540c00f2dbf94526)
 (is-Tm_arrow (PreType @x1)))
  
 
 :pattern ((HasTypeFuel @u0
 @x1
-Tm_arrow_241237e6744311ce2be55c75b86fe74e))
-:qid Part2.ST_pre_typing_Tm_arrow_241237e6744311ce2be55c75b86fe74e))
+Tm_arrow_82d120e2fd34611b540c00f2dbf94526))
+:qid Part2.ST_pre_typing_Tm_arrow_82d120e2fd34611b540c00f2dbf94526))
 
-:named Part2.ST_pre_typing_Tm_arrow_241237e6744311ce2be55c75b86fe74e))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_241237e6744311ce2be55c75b86fe74e
+:named Part2.ST_pre_typing_Tm_arrow_82d120e2fd34611b540c00f2dbf94526))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_82d120e2fd34611b540c00f2dbf94526
 ;;; Fact-ids: Name Part2.ST.return; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(23,12-23,13); use=Part2.ST.fst(23,12-24,8)
+;; def=Part2.ST.fst(21,15-21,16); use=Part2.ST.fst(21,20-21,21)
 (forall ((@x0 Term))
  (! (iff (HasTypeZ @x0
-Tm_arrow_241237e6744311ce2be55c75b86fe74e)
+Tm_arrow_82d120e2fd34611b540c00f2dbf94526)
 (and 
-;; def=Part2.ST.fst(23,12-23,13); use=Part2.ST.fst(23,12-24,8)
-(forall ((@x1 Term) (@x2 Term))
+;; def=Part2.ST.fst(21,15-21,16); use=Part2.ST.fst(21,20-21,21)
+(forall ((@x1 Term) (@x2 Term) (@x3 Term))
  (! (implies (and (HasType @x1
 Tm_type)
 (HasType @x2
-@x1))
-(HasType (ApplyTT (ApplyTT @x0
+Tm_type)
+(HasType @x3
+@x2))
+(HasType (ApplyTT (ApplyTT (ApplyTT @x0
 @x1)
 @x2)
-(Part2.ST.st @x1)))
+@x3)
+(Part2.ST.st @x1
+@x2)))
  
 
-:pattern ((ApplyTT (ApplyTT @x0
+:pattern ((ApplyTT (ApplyTT (ApplyTT @x0
 @x1)
-@x2))
-:qid Part2.ST_interpretation_Tm_arrow_241237e6744311ce2be55c75b86fe74e.1))
+@x2)
+@x3))
+:qid Part2.ST_interpretation_Tm_arrow_82d120e2fd34611b540c00f2dbf94526.1))
 
 (IsTotFun @x0)
 
-;; def=Part2.ST.fst(23,12-23,13); use=Part2.ST.fst(23,12-24,8)
+;; def=Part2.ST.fst(21,15-21,16); use=Part2.ST.fst(21,20-21,21)
 (forall ((@x1 Term))
  (! (implies (HasType @x1
 Tm_type)
@@ -155702,54 +156021,77 @@ Tm_type)
 
 :pattern ((ApplyTT @x0
 @x1))
-:qid Part2.ST_interpretation_Tm_arrow_241237e6744311ce2be55c75b86fe74e.2))
+:qid Part2.ST_interpretation_Tm_arrow_82d120e2fd34611b540c00f2dbf94526.2))
+
+
+;; def=Part2.ST.fst(21,15-21,16); use=Part2.ST.fst(21,20-21,21)
+(forall ((@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x1
+Tm_type)
+(HasType @x2
+Tm_type))
+(IsTotFun (ApplyTT (ApplyTT @x0
+@x1)
+@x2)))
+ 
+
+:pattern ((ApplyTT (ApplyTT @x0
+@x1)
+@x2))
+:qid Part2.ST_interpretation_Tm_arrow_82d120e2fd34611b540c00f2dbf94526.3))
 ))
  
 
 :pattern ((HasTypeZ @x0
-Tm_arrow_241237e6744311ce2be55c75b86fe74e))
-:qid Part2.ST_interpretation_Tm_arrow_241237e6744311ce2be55c75b86fe74e))
+Tm_arrow_82d120e2fd34611b540c00f2dbf94526))
+:qid Part2.ST_interpretation_Tm_arrow_82d120e2fd34611b540c00f2dbf94526))
 
-:named Part2.ST_interpretation_Tm_arrow_241237e6744311ce2be55c75b86fe74e))
+:named Part2.ST_interpretation_Tm_arrow_82d120e2fd34611b540c00f2dbf94526))
 (declare-fun Part2.ST.return@tok () Term)
 ;;;;;;;;;;;;;;;;Name-token correspondence
 ;;; Fact-ids: Name Part2.ST.return; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(23,4-23,10); use=Part2.ST.fst(23,4-23,10)
-(forall ((@x0 Term) (@x1 Term))
- (! (= (ApplyTT (ApplyTT Part2.ST.return@tok
+;; def=Part2.ST.fst(21,4-21,10); use=Part2.ST.fst(21,4-21,10)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (= (ApplyTT (ApplyTT (ApplyTT Part2.ST.return@tok
 @x0)
 @x1)
+@x2)
 (Part2.ST.return @x0
-@x1))
+@x1
+@x2))
  
 
-:pattern ((ApplyTT (ApplyTT Part2.ST.return@tok
+:pattern ((ApplyTT (ApplyTT (ApplyTT Part2.ST.return@tok
 @x0)
-@x1))
+@x1)
+@x2))
 :qid token_correspondence_Part2.ST.return))
 
 :named token_correspondence_Part2.ST.return))
 ;;;;;;;;;;;;;;;;function token typing
 ;;; Fact-ids: Name Part2.ST.return; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(23,4-23,10); use=Part2.ST.fst(23,4-23,10)
+;; def=Part2.ST.fst(21,4-21,10); use=Part2.ST.fst(21,4-21,10)
 (forall ((@x0 Term))
  (! (and (NoHoist @x0
 (HasType Part2.ST.return@tok
-Tm_arrow_241237e6744311ce2be55c75b86fe74e))
+Tm_arrow_82d120e2fd34611b540c00f2dbf94526))
 
-;; def=Part2.ST.fst(23,4-23,10); use=Part2.ST.fst(23,4-23,10)
-(forall ((@x1 Term) (@x2 Term))
- (! (= (ApplyTT (ApplyTT Part2.ST.return@tok
+;; def=Part2.ST.fst(21,4-21,10); use=Part2.ST.fst(21,4-21,10)
+(forall ((@x1 Term) (@x2 Term) (@x3 Term))
+ (! (= (ApplyTT (ApplyTT (ApplyTT Part2.ST.return@tok
 @x1)
 @x2)
+@x3)
 (Part2.ST.return @x1
-@x2))
+@x2
+@x3))
  
 
 :pattern ((Part2.ST.return @x1
-@x2))
+@x2
+@x3))
 :qid function_token_typing_Part2.ST.return.1))
 )
  
@@ -155762,77 +156104,408 @@ Part2.ST.return@tok))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Part2.ST.return; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(23,4-23,10); use=Part2.ST.fst(23,4-23,10)
-(forall ((@x0 Term) (@x1 Term))
+;; def=Part2.ST.fst(21,4-21,10); use=Part2.ST.fst(21,4-21,10)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
  (! (implies (and (HasType @x0
 Tm_type)
 (HasType @x1
-@x0))
+Tm_type)
+(HasType @x2
+@x1))
 (HasType (Part2.ST.return @x0
-@x1)
-(Part2.ST.st @x0)))
+@x1
+@x2)
+(Part2.ST.st @x0
+@x1)))
  
 
 :pattern ((Part2.ST.return @x0
-@x1))
+@x1
+@x2))
 :qid typing_Part2.ST.return))
 
 :named typing_Part2.ST.return))
 
-(declare-fun Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f (Term Term) Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f
+(declare-fun Tm_abs_a02c4ab615d86c1fd4d6707b08902221 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_a02c4ab615d86c1fd4d6707b08902221
 ;;; Fact-ids: Name Part2.ST.return; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(25,13-25,17); use=Part2.ST.fst(25,13-25,17)
-(forall ((@x0 Term) (@x1 Term))
- (! (HasType (Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f @x0
-@x1)
-(Tm_arrow_484ac694053f9cf14a2c5a94a3797972 @x1))
+;; def=Part2.ST.fst(23,13-23,17); use=Part2.ST.fst(23,13-23,17)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (HasType (Tm_abs_a02c4ab615d86c1fd4d6707b08902221 @x0
+@x1
+@x2)
+(Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe @x1
+@x2))
  
 
-:pattern ((Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f @x0
-@x1))
-:qid typing_Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f))
+:pattern ((Tm_abs_a02c4ab615d86c1fd4d6707b08902221 @x0
+@x1
+@x2))
+:qid typing_Tm_abs_a02c4ab615d86c1fd4d6707b08902221))
 
-:named typing_Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f
+:named typing_Tm_abs_a02c4ab615d86c1fd4d6707b08902221))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_a02c4ab615d86c1fd4d6707b08902221
 ;;; Fact-ids: Name Part2.ST.return; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(25,13-25,17); use=Part2.ST.fst(25,13-25,17)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term))
- (! (= (ApplyTT (Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f @x1
-@x2)
+;; def=Part2.ST.fst(23,13-23,17); use=Part2.ST.fst(23,13-23,17)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (= (ApplyTT (Tm_abs_a02c4ab615d86c1fd4d6707b08902221 @x1
+@x2
+@x3)
 @x0)
 (FStar.Pervasives.Native.Mktuple2 @x2
-Prims.int
+@x3
 @x1
 @x0))
  
 
-:pattern ((ApplyTT (Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f @x1
-@x2)
+:pattern ((ApplyTT (Tm_abs_a02c4ab615d86c1fd4d6707b08902221 @x1
+@x2
+@x3)
 @x0))
-:qid interpretation_Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f))
+:qid interpretation_Tm_abs_a02c4ab615d86c1fd4d6707b08902221))
 
-:named interpretation_Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f))
+:named interpretation_Tm_abs_a02c4ab615d86c1fd4d6707b08902221))
 ;;;;;;;;;;;;;;;;Equation for Part2.ST.return
 ;;; Fact-ids: Name Part2.ST.return; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(23,4-23,10); use=Part2.ST.fst(23,4-23,10)
-(forall ((@x0 Term) (@x1 Term))
+;; def=Part2.ST.fst(21,4-21,10); use=Part2.ST.fst(21,4-21,10)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
  (! (= (Part2.ST.return @x0
-@x1)
-(Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f @x1
+@x1
+@x2)
+(Tm_abs_a02c4ab615d86c1fd4d6707b08902221 @x2
+@x1
 @x0))
  
 
 :pattern ((Part2.ST.return @x0
-@x1))
+@x1
+@x2))
 :qid equation_Part2.ST.return))
 
 :named equation_Part2.ST.return))
 
 ; </end encoding let return>
+
+
+; encoding sigelt let read_and_increment
+
+
+; <Start encoding let read_and_increment>
+
+(declare-fun Part2.ST.read_and_increment (Dummy_sort) Term)
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(25,4-25,22); use=Part2.ST.fst(25,4-25,22)
+(forall ((@u0 Dummy_sort))
+ (! (HasType (Part2.ST.read_and_increment @u0)
+(Part2.ST.st Prims.int
+Prims.int))
+ 
+
+:pattern ((Part2.ST.read_and_increment @u0))
+:qid typing_Part2.ST.read_and_increment))
+
+:named typing_Part2.ST.read_and_increment))
+;;;;;;;;;;;;;;;;_: Prims.unit -> st Prims.int Prims.int
+(declare-fun Tm_arrow_0c53ea799fd1c107890a00efb0f76de1 () Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_0c53ea799fd1c107890a00efb0f76de1
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! (HasType Tm_arrow_0c53ea799fd1c107890a00efb0f76de1
+Tm_type)
+:named kinding_Tm_arrow_0c53ea799fd1c107890a00efb0f76de1))
+;;;;;;;;;;;;;;;;pre-typing for functions
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(10,9-15,24); use=Part2.ST.fst(27,15-27,17)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+Tm_arrow_0c53ea799fd1c107890a00efb0f76de1)
+(is-Tm_arrow (PreType @x1)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_arrow_0c53ea799fd1c107890a00efb0f76de1))
+:qid Part2.ST_pre_typing_Tm_arrow_0c53ea799fd1c107890a00efb0f76de1))
+
+:named Part2.ST_pre_typing_Tm_arrow_0c53ea799fd1c107890a00efb0f76de1))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_0c53ea799fd1c107890a00efb0f76de1
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(10,9-15,24); use=Part2.ST.fst(27,15-27,17)
+(forall ((@x0 Term))
+ (! (iff (HasTypeZ @x0
+Tm_arrow_0c53ea799fd1c107890a00efb0f76de1)
+(and 
+;; def=Part2.ST.fst(10,9-15,24); use=Part2.ST.fst(27,15-27,17)
+(forall ((@x1 Term))
+ (! (implies (HasType @x1
+Prims.unit)
+(HasType (ApplyTT @x0
+@x1)
+(Part2.ST.st Prims.int
+Prims.int)))
+ 
+
+:pattern ((ApplyTT @x0
+@x1))
+:qid Part2.ST_interpretation_Tm_arrow_0c53ea799fd1c107890a00efb0f76de1.1))
+
+(IsTotFun @x0)))
+ 
+
+:pattern ((HasTypeZ @x0
+Tm_arrow_0c53ea799fd1c107890a00efb0f76de1))
+:qid Part2.ST_interpretation_Tm_arrow_0c53ea799fd1c107890a00efb0f76de1))
+
+:named Part2.ST_interpretation_Tm_arrow_0c53ea799fd1c107890a00efb0f76de1))
+(declare-fun Tm_abs_441923a9ad1fb0ff242216d9098a235a (Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_441923a9ad1fb0ff242216d9098a235a
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(28,2-28,10); use=Part2.ST.fst(28,2-28,10)
+(forall ((@x0 Term))
+ (! (HasType (Tm_abs_441923a9ad1fb0ff242216d9098a235a @x0)
+Tm_arrow_0c53ea799fd1c107890a00efb0f76de1)
+ 
+
+:pattern ((Tm_abs_441923a9ad1fb0ff242216d9098a235a @x0))
+:qid typing_Tm_abs_441923a9ad1fb0ff242216d9098a235a))
+
+:named typing_Tm_abs_441923a9ad1fb0ff242216d9098a235a))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_441923a9ad1fb0ff242216d9098a235a
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(28,2-28,10); use=Part2.ST.fst(28,2-28,10)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (ApplyTT (Tm_abs_441923a9ad1fb0ff242216d9098a235a @x1)
+@x0)
+(Part2.ST.return Prims.int
+Prims.int
+@x1))
+ 
+
+:pattern ((ApplyTT (Tm_abs_441923a9ad1fb0ff242216d9098a235a @x1)
+@x0))
+:qid interpretation_Tm_abs_441923a9ad1fb0ff242216d9098a235a))
+
+:named interpretation_Tm_abs_441923a9ad1fb0ff242216d9098a235a))
+;;;;;;;;;;;;;;;;x: Prims.int -> st Prims.int Prims.int
+(declare-fun Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c () Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! (HasType Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c
+Tm_type)
+:named kinding_Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c))
+;;;;;;;;;;;;;;;;pre-typing for functions
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! 
+;; def=Prims.fst(552,17-552,20); use=Part2.ST.fst(26,2-26,3)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c)
+(is-Tm_arrow (PreType @x1)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c))
+:qid Part2.ST_pre_typing_Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c))
+
+:named Part2.ST_pre_typing_Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! 
+;; def=Prims.fst(552,17-552,20); use=Part2.ST.fst(26,2-26,3)
+(forall ((@x0 Term))
+ (! (iff (HasTypeZ @x0
+Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c)
+(and 
+;; def=Prims.fst(552,17-552,20); use=Part2.ST.fst(26,2-26,3)
+(forall ((@x1 Term))
+ (! (implies (HasType @x1
+Prims.int)
+(HasType (ApplyTT @x0
+@x1)
+(Part2.ST.st Prims.int
+Prims.int)))
+ 
+
+:pattern ((ApplyTT @x0
+@x1))
+:qid Part2.ST_interpretation_Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c.1))
+
+(IsTotFun @x0)))
+ 
+
+:pattern ((HasTypeZ @x0
+Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c))
+:qid Part2.ST_interpretation_Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c))
+
+:named Part2.ST_interpretation_Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c))
+(declare-fun Tm_abs_6149b7c713a696d06f06d428eef88538 () Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_6149b7c713a696d06f06d428eef88538
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! (HasType Tm_abs_6149b7c713a696d06f06d428eef88538
+Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c)
+:named typing_Tm_abs_6149b7c713a696d06f06d428eef88538))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_6149b7c713a696d06f06d428eef88538
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(27,2-28,10); use=Part2.ST.fst(27,2-28,10)
+(forall ((@x0 Term))
+ (! (= (ApplyTT Tm_abs_6149b7c713a696d06f06d428eef88538
+@x0)
+(Part2.ST.bind Prims.int
+Prims.unit
+Prims.int
+(Part2.ST.write Prims.int
+(Prims.op_Addition @x0
+(BoxInt 1)))
+(Tm_abs_441923a9ad1fb0ff242216d9098a235a @x0)))
+ 
+
+:pattern ((ApplyTT Tm_abs_6149b7c713a696d06f06d428eef88538
+@x0))
+:qid interpretation_Tm_abs_6149b7c713a696d06f06d428eef88538))
+
+:named interpretation_Tm_abs_6149b7c713a696d06f06d428eef88538))
+;;;;;;;;;;;;;;;;Equation for Part2.ST.read_and_increment
+;;; Fact-ids: Name Part2.ST.read_and_increment; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(25,4-25,22); use=Part2.ST.fst(25,4-25,22)
+(forall ((@u0 Dummy_sort))
+ (! (= 
+;; def=Part2.ST.fst(25,4-25,22); use=Part2.ST.fst(25,4-25,22)
+(Part2.ST.read_and_increment @u0)
+
+(Part2.ST.bind Prims.int
+Prims.int
+Prims.int
+(Part2.ST.read Prims.int)
+Tm_abs_6149b7c713a696d06f06d428eef88538))
+ 
+
+:pattern (
+;; def=Part2.ST.fst(25,4-25,22); use=Part2.ST.fst(25,4-25,22)
+(Part2.ST.read_and_increment @u0)
+)
+:qid equation_Part2.ST.read_and_increment))
+
+:named equation_Part2.ST.read_and_increment))
+
+; </end encoding let read_and_increment>
+
+
+; encoding sigelt let inc_twice
+
+
+; <Start encoding let inc_twice>
+
+(declare-fun Part2.ST.inc_twice (Dummy_sort) Term)
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Part2.ST.inc_twice; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(30,4-30,13); use=Part2.ST.fst(30,4-30,13)
+(forall ((@u0 Dummy_sort))
+ (! (HasType (Part2.ST.inc_twice @u0)
+(Part2.ST.st Prims.int
+Prims.int))
+ 
+
+:pattern ((Part2.ST.inc_twice @u0))
+:qid typing_Part2.ST.inc_twice))
+
+:named typing_Part2.ST.inc_twice))
+
+(declare-fun Tm_abs_5b5951c70be17c39a93a7b80fa203777 (Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_5b5951c70be17c39a93a7b80fa203777
+;;; Fact-ids: Name Part2.ST.inc_twice; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(33,2-33,10); use=Part2.ST.fst(33,2-33,10)
+(forall ((@x0 Term))
+ (! (HasType (Tm_abs_5b5951c70be17c39a93a7b80fa203777 @x0)
+Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c)
+ 
+
+:pattern ((Tm_abs_5b5951c70be17c39a93a7b80fa203777 @x0))
+:qid typing_Tm_abs_5b5951c70be17c39a93a7b80fa203777))
+
+:named typing_Tm_abs_5b5951c70be17c39a93a7b80fa203777))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_5b5951c70be17c39a93a7b80fa203777
+;;; Fact-ids: Name Part2.ST.inc_twice; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(33,2-33,10); use=Part2.ST.fst(33,2-33,10)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (ApplyTT (Tm_abs_5b5951c70be17c39a93a7b80fa203777 @x1)
+@x0)
+(Part2.ST.return Prims.int
+Prims.int
+@x1))
+ 
+
+:pattern ((ApplyTT (Tm_abs_5b5951c70be17c39a93a7b80fa203777 @x1)
+@x0))
+:qid interpretation_Tm_abs_5b5951c70be17c39a93a7b80fa203777))
+
+:named interpretation_Tm_abs_5b5951c70be17c39a93a7b80fa203777))
+
+(declare-fun Tm_abs_c64c6e347f9fc5bfa08571224b7ec1fb () Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_c64c6e347f9fc5bfa08571224b7ec1fb
+;;; Fact-ids: Name Part2.ST.inc_twice; Namespace Part2.ST
+(assert (! (HasType Tm_abs_c64c6e347f9fc5bfa08571224b7ec1fb
+Tm_arrow_2849ee33914c3203f3b2f5ab4bc93b5c)
+:named typing_Tm_abs_c64c6e347f9fc5bfa08571224b7ec1fb))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_c64c6e347f9fc5bfa08571224b7ec1fb
+;;; Fact-ids: Name Part2.ST.inc_twice; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(32,2-33,10); use=Part2.ST.fst(32,2-33,10)
+(forall ((@x0 Term))
+ (! (= (ApplyTT Tm_abs_c64c6e347f9fc5bfa08571224b7ec1fb
+@x0)
+(Part2.ST.bind Prims.int
+Prims.int
+Prims.int
+(Part2.ST.read_and_increment Dummy_value)
+(Tm_abs_5b5951c70be17c39a93a7b80fa203777 @x0)))
+ 
+
+:pattern ((ApplyTT Tm_abs_c64c6e347f9fc5bfa08571224b7ec1fb
+@x0))
+:qid interpretation_Tm_abs_c64c6e347f9fc5bfa08571224b7ec1fb))
+
+:named interpretation_Tm_abs_c64c6e347f9fc5bfa08571224b7ec1fb))
+;;;;;;;;;;;;;;;;Equation for Part2.ST.inc_twice
+;;; Fact-ids: Name Part2.ST.inc_twice; Namespace Part2.ST
+(assert (! 
+;; def=Part2.ST.fst(30,4-30,13); use=Part2.ST.fst(30,4-30,13)
+(forall ((@u0 Dummy_sort))
+ (! (= 
+;; def=Part2.ST.fst(30,4-30,13); use=Part2.ST.fst(30,4-30,13)
+(Part2.ST.inc_twice @u0)
+
+(Part2.ST.bind Prims.int
+Prims.int
+Prims.int
+(Part2.ST.read_and_increment Dummy_value)
+Tm_abs_c64c6e347f9fc5bfa08571224b7ec1fb))
+ 
+
+:pattern (
+;; def=Part2.ST.fst(30,4-30,13); use=Part2.ST.fst(30,4-30,13)
+(Part2.ST.inc_twice @u0)
+)
+:qid equation_Part2.ST.inc_twice))
+
+:named equation_Part2.ST.inc_twice))
+
+; </end encoding let inc_twice>
 
 
 ; encoding sigelt let feq
@@ -155845,7 +156518,7 @@ Prims.int
 ;;;;;;;;;;;;;;;;kinding_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe
 ;;; Fact-ids: Name Part2.ST.feq; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(28,9-28,13); use=Part2.ST.fst(28,21-28,27)
+;; def=Part2.ST.fst(35,9-35,13); use=Part2.ST.fst(35,21-35,27)
 (forall ((@x0 Term) (@x1 Term))
  (! (HasType (Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x0
 @x1)
@@ -155861,7 +156534,7 @@ Tm_type))
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: Name Part2.ST.feq; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(28,9-28,13); use=Part2.ST.fst(28,21-28,27)
+;; def=Part2.ST.fst(35,9-35,13); use=Part2.ST.fst(35,21-35,27)
 (forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (implies (HasTypeFuel @u0
 @x1
@@ -155880,13 +156553,13 @@ Tm_type))
 ;;;;;;;;;;;;;;;;interpretation_Tm_arrow_6980332764c4493a7b0df5c02f7aefbe
 ;;; Fact-ids: Name Part2.ST.feq; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(28,9-28,13); use=Part2.ST.fst(28,21-28,27)
+;; def=Part2.ST.fst(35,9-35,13); use=Part2.ST.fst(35,21-35,27)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term))
  (! (iff (HasTypeZ @x0
 (Tm_arrow_6980332764c4493a7b0df5c02f7aefbe @x1
 @x2))
 (and 
-;; def=Part2.ST.fst(28,9-28,13); use=Part2.ST.fst(28,21-28,27)
+;; def=Part2.ST.fst(35,9-35,13); use=Part2.ST.fst(35,21-35,27)
 (forall ((@x3 Term))
  (! (implies (HasType @x3
 @x2)
@@ -155922,7 +156595,7 @@ Tm_type)
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: Name Part2.ST.feq; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(28,9-28,13); use=Part2.ST.fst(28,21-28,27)
+;; def=Part2.ST.fst(35,9-35,13); use=Part2.ST.fst(35,21-35,27)
 (forall ((@u0 Fuel) (@x1 Term))
  (! (implies (HasTypeFuel @u0
 @x1
@@ -155939,12 +156612,12 @@ Tm_arrow_591cb8ff4c9bda852a27a1a1ed3ade28))
 ;;;;;;;;;;;;;;;;interpretation_Tm_arrow_591cb8ff4c9bda852a27a1a1ed3ade28
 ;;; Fact-ids: Name Part2.ST.feq; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(28,9-28,13); use=Part2.ST.fst(28,21-28,27)
+;; def=Part2.ST.fst(35,9-35,13); use=Part2.ST.fst(35,21-35,27)
 (forall ((@x0 Term))
  (! (iff (HasTypeZ @x0
 Tm_arrow_591cb8ff4c9bda852a27a1a1ed3ade28)
 (and 
-;; def=Part2.ST.fst(28,9-28,13); use=Part2.ST.fst(28,21-28,27)
+;; def=Part2.ST.fst(35,9-35,13); use=Part2.ST.fst(35,21-35,27)
 (forall ((@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
  (! (implies (and (HasType @x1
 Tm_type)
@@ -155973,7 +156646,7 @@ Prims.logical))
 
 (IsTotFun @x0)
 
-;; def=Part2.ST.fst(28,9-28,13); use=Part2.ST.fst(28,21-28,27)
+;; def=Part2.ST.fst(35,9-35,13); use=Part2.ST.fst(35,21-35,27)
 (forall ((@x1 Term))
  (! (implies (HasType @x1
 Tm_type)
@@ -155986,7 +156659,7 @@ Tm_type)
 :qid Part2.ST_interpretation_Tm_arrow_591cb8ff4c9bda852a27a1a1ed3ade28.2))
 
 
-;; def=Part2.ST.fst(28,9-28,13); use=Part2.ST.fst(28,21-28,27)
+;; def=Part2.ST.fst(35,9-35,13); use=Part2.ST.fst(35,21-35,27)
 (forall ((@x1 Term) (@x2 Term))
  (! (implies (and (HasType @x1
 Tm_type)
@@ -156003,7 +156676,7 @@ Tm_type))
 :qid Part2.ST_interpretation_Tm_arrow_591cb8ff4c9bda852a27a1a1ed3ade28.3))
 
 
-;; def=Part2.ST.fst(28,9-28,13); use=Part2.ST.fst(28,21-28,27)
+;; def=Part2.ST.fst(35,9-35,13); use=Part2.ST.fst(35,21-35,27)
 (forall ((@x1 Term) (@x2 Term) (@x3 Term))
  (! (implies (and (HasType @x1
 Tm_type)
@@ -156035,7 +156708,7 @@ Tm_arrow_591cb8ff4c9bda852a27a1a1ed3ade28))
 ;;;;;;;;;;;;;;;;Name-token correspondence
 ;;; Fact-ids: Name Part2.ST.feq; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(28,4-28,7); use=Part2.ST.fst(28,4-28,7)
+;; def=Part2.ST.fst(35,4-35,7); use=Part2.ST.fst(35,4-35,7)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (= (ApplyTT (ApplyTT (ApplyTT (ApplyTT Part2.ST.feq@tok
 @x0)
@@ -156059,13 +156732,13 @@ Tm_arrow_591cb8ff4c9bda852a27a1a1ed3ade28))
 ;;;;;;;;;;;;;;;;function token typing
 ;;; Fact-ids: Name Part2.ST.feq; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(28,4-28,7); use=Part2.ST.fst(28,4-28,7)
+;; def=Part2.ST.fst(35,4-35,7); use=Part2.ST.fst(35,4-35,7)
 (forall ((@x0 Term))
  (! (and (NoHoist @x0
 (HasType Part2.ST.feq@tok
 Tm_arrow_591cb8ff4c9bda852a27a1a1ed3ade28))
 
-;; def=Part2.ST.fst(28,4-28,7); use=Part2.ST.fst(28,4-28,7)
+;; def=Part2.ST.fst(35,4-35,7); use=Part2.ST.fst(35,4-35,7)
 (forall ((@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
  (! (= (ApplyTT (ApplyTT (ApplyTT (ApplyTT Part2.ST.feq@tok
 @x1)
@@ -156094,7 +156767,7 @@ Part2.ST.feq@tok))
 ;;;;;;;;;;;;;;;;free var typing
 ;;; Fact-ids: Name Part2.ST.feq; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(28,4-28,7); use=Part2.ST.fst(28,4-28,7)
+;; def=Part2.ST.fst(35,4-35,7); use=Part2.ST.fst(35,4-35,7)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (implies (and (HasType @x0
 Tm_type)
@@ -156125,19 +156798,19 @@ Prims.logical))
 ;;;;;;;;;;;;;;;;Equation for Part2.ST.feq
 ;;; Fact-ids: Name Part2.ST.feq; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(28,4-28,7); use=Part2.ST.fst(28,4-28,7)
+;; def=Part2.ST.fst(35,4-35,7); use=Part2.ST.fst(35,4-35,7)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (= (Valid (Part2.ST.feq @x0
 @x1
 @x2
 @x3))
 
-;; def=Part2.ST.fst(28,31-28,51); use=Part2.ST.fst(28,31-28,51)
+;; def=Part2.ST.fst(35,31-35,51); use=Part2.ST.fst(35,31-35,51)
 (forall ((@x4 Term))
  (! (implies (HasType @x4
 @x0)
 
-;; def=Part2.ST.fst(28,41-28,51); use=Part2.ST.fst(28,41-28,51)
+;; def=Part2.ST.fst(35,41-35,51); use=Part2.ST.fst(35,41-35,51)
 (= (ApplyTT @x2
 @x4)
 (ApplyTT @x3
@@ -156159,7 +156832,7 @@ Prims.logical))
 ;;;;;;;;;;;;;;;;Prop-typing for Part2.ST.feq
 ;;; Fact-ids: Name Part2.ST.feq; Namespace Part2.ST
 (assert (! 
-;; def=Part2.ST.fst(28,4-28,7); use=Part2.ST.fst(28,4-28,7)
+;; def=Part2.ST.fst(35,4-35,7); use=Part2.ST.fst(35,4-35,7)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (implies (and (HasType @x0
 Tm_type)
@@ -156191,53 +156864,58 @@ Prims.unit))
 
 (push) ;; push{2
 
-; Starting query at Part2.ST.fst(31,4-31,6)
+; Starting query at Part2.ST.fst(38,4-38,6)
 
 (declare-fun label_2 () Bool)
 (declare-fun label_1 () Bool)
 
 
-(declare-fun Tm_abs_f60fb6c7723bc12608080c328ffdef90 (Term Term Term) Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_f60fb6c7723bc12608080c328ffdef90
+(declare-fun Tm_abs_e40c64accf694aba7c7c810a51e2bff8 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_e40c64accf694aba7c7c810a51e2bff8
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(30,28-30,31); use=Part2.ST.fst(31,4-31,6)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term))
- (! (HasType (Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x0
-@x1
-@x2)
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x1
-@x2))
- 
-
-:pattern ((Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x0
-@x1
-@x2))
-:qid typing_Tm_abs_f60fb6c7723bc12608080c328ffdef90))
-
-:named typing_Tm_abs_f60fb6c7723bc12608080c328ffdef90))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_f60fb6c7723bc12608080c328ffdef90
-;;; Fact-ids: 
-(assert (! 
-;; def=Part2.ST.fst(30,28-30,31); use=Part2.ST.fst(31,4-31,6)
+;; def=Part2.ST.fst(37,28-37,31); use=Part2.ST.fst(38,4-38,6)
 (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
- (! (= (ApplyTT (Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x1
+ (! (HasType (Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x0
+@x1
 @x2
 @x3)
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x1
+@x2
+@x3))
+ 
+
+:pattern ((Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x0
+@x1
+@x2
+@x3))
+:qid typing_Tm_abs_e40c64accf694aba7c7c810a51e2bff8))
+
+:named typing_Tm_abs_e40c64accf694aba7c7c810a51e2bff8))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_e40c64accf694aba7c7c810a51e2bff8
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(37,28-37,31); use=Part2.ST.fst(38,4-38,6)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (= (ApplyTT (Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x1
+@x2
+@x3
+@x4)
 @x0)
 (ApplyTT @x1
 @x0))
  
 
-:pattern ((ApplyTT (Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x1
+:pattern ((ApplyTT (Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x1
 @x2
-@x3)
+@x3
+@x4)
 @x0))
-:qid interpretation_Tm_abs_f60fb6c7723bc12608080c328ffdef90))
+:qid interpretation_Tm_abs_e40c64accf694aba7c7c810a51e2bff8))
 
-:named interpretation_Tm_abs_f60fb6c7723bc12608080c328ffdef90))
+:named interpretation_Tm_abs_e40c64accf694aba7c7c810a51e2bff8))
 
-; Encoding query formula : forall (a: Type) (b: Type) (x: a) (g: (_: a -> Part2.ST.st b)).
+; Encoding query formula : forall (s: Type) (a: Type) (b: Type) (x: a) (g: (_: a -> Part2.ST.st s b)).
 ;   (*  - Could not prove post-condition
 ; *)
 ;   forall (p: Prims.pure_post Prims.unit).
@@ -156263,80 +156941,86 @@ Prims.unit))
 :named @MaxIFuel_assumption))
 ;;;;;;;;;;;;;;;;query
 ;;; Fact-ids: 
-(assert (! (not (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+(assert (! (not (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
  (! (implies (and (HasType @x0
 Tm_type)
 (HasType @x1
 Tm_type)
 (HasType @x2
-@x0)
+Tm_type)
 (HasType @x3
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x1
-@x0)))
+@x1)
+(HasType @x4
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x2
+@x0
+@x1)))
 
 ;; def=Prims.fst(406,51-406,91); use=Prims.fst(430,19-430,32)
-(forall ((@x4 Term))
- (! (implies (and (HasType @x4
+(forall ((@x5 Term))
+ (! (implies (and (HasType @x5
 (Prims.pure_post Prims.unit))
 
-;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(31,4-31,6)
-(forall ((@x5 Term))
+;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(38,4-38,6)
+(forall ((@x6 Term))
  (! (implies (and (or label_1
-(HasType @x5
+(HasType @x6
 Prims.unit))
 
-;; def=Part2.ST.fst(30,10-30,43); use=Part2.ST.fst(31,4-31,6)
+;; def=Part2.ST.fst(37,10-37,43); use=Part2.ST.fst(38,4-38,6)
 (or label_2
 
-;; def=Part2.ST.fst(30,10-30,43); use=Part2.ST.fst(31,4-31,6)
+;; def=Part2.ST.fst(37,10-37,43); use=Part2.ST.fst(38,4-38,6)
 (Valid 
-;; def=Part2.ST.fst(30,10-30,43); use=Part2.ST.fst(31,4-31,6)
-(Part2.ST.feq Prims.int
-(FStar.Pervasives.Native.tuple2 @x1
-Prims.int)
+;; def=Part2.ST.fst(37,10-37,43); use=Part2.ST.fst(38,4-38,6)
+(Part2.ST.feq @x0
+(FStar.Pervasives.Native.tuple2 @x2
+@x0)
 (Part2.ST.bind @x0
 @x1
+@x2
 (Part2.ST.return @x0
-@x2)
-(Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x3
 @x1
-@x0))
-(ApplyTT @x3
-@x2))
+@x3)
+(Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x4
+@x2
+@x0
+@x1))
+(ApplyTT @x4
+@x3))
 )
 )
 )
 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(31,4-31,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(38,4-38,6)
 (Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(31,4-31,6)
-(ApplyTT @x4
-@x5)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(38,4-38,6)
+(ApplyTT @x5
+@x6)
 )
 )
  
 
 :pattern (
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(31,4-31,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(38,4-38,6)
 (Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(31,4-31,6)
-(ApplyTT @x4
-@x5)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(38,4-38,6)
+(ApplyTT @x5
+@x6)
 )
 )
 :qid @query.2))
 )
 
 ;; def=Prims.fst(451,66-451,102); use=Prims.fst(454,31-454,44)
-(forall ((@x5 Term))
- (! (implies (HasType @x5
+(forall ((@x6 Term))
+ (! (implies (HasType @x6
 Prims.unit)
 
 ;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
 (Valid 
 ;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
-(ApplyTT @x4
-@x5)
+(ApplyTT @x5
+@x6)
 )
 )
  
@@ -156372,7 +157056,7 @@ Prims.unit)
 (pop) ;; 0}pop
 ; QUERY ID: (Part2.ST.left_identity, 1)
 ; STATUS: unsat
-; UNSAT CORE GENERATED: @MaxIFuel_assumption, @query, Prims_pretyping_ae567c2fb75be05905677af440075565, equation_Part2.ST.bind, equation_Part2.ST.feq, equation_Part2.ST.return, function_token_typing_Prims.__cache_version_number__, int_inversion, interpretation_Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f, interpretation_Tm_abs_bdc06410776c1d9adee9aeba485b40ed, interpretation_Tm_abs_f60fb6c7723bc12608080c328ffdef90, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FStar.Pervasives.Native.Mktuple2__2
+; UNSAT CORE GENERATED: @query, equation_Part2.ST.bind, equation_Part2.ST.feq, equation_Part2.ST.return, interpretation_Tm_abs_7706f980135a89a687c904d968136d5b, interpretation_Tm_abs_a02c4ab615d86c1fd4d6707b08902221, interpretation_Tm_abs_e40c64accf694aba7c7c810a51e2bff8, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FStar.Pervasives.Native.Mktuple2__2
 
 ; Z3 invocation started by F*
 ; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
@@ -156386,7 +157070,7 @@ Prims.unit)
 ; <Start encoding let left_identity>
 
 ;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun Part2.ST.left_identity (Term Term Term Term) Term)
+(declare-fun Part2.ST.left_identity (Term Term Term Term Term) Term)
 ;;;;;;;;;;;;;;;;Uninterpreted name for impure function
 (declare-fun Part2.ST.left_identity@tok () Term)
 
@@ -156394,104 +157078,117 @@ Prims.unit)
 
 (push) ;; push{2
 
-; Starting query at Part2.ST.fst(34,4-34,6)
+; Starting query at Part2.ST.fst(41,4-41,6)
 
 (declare-fun label_2 () Bool)
 (declare-fun label_1 () Bool)
-;;;;;;;;;;;;;;;;x: a -> st a
-(declare-fun Tm_arrow_110daf01fadc2a047059e65cab29a354 (Term) Term)
-;;;;;;;;;;;;;;;;kinding_Tm_arrow_110daf01fadc2a047059e65cab29a354
+;;;;;;;;;;;;;;;;x: a -> st s a
+(declare-fun Tm_arrow_32a62c7204e2a111916cadb8a7de2599 (Term Term) Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_32a62c7204e2a111916cadb8a7de2599
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(17,18-32,21); use=Part2.ST.fst(32,28-34,6)
-(forall ((@x0 Term))
- (! (HasType (Tm_arrow_110daf01fadc2a047059e65cab29a354 @x0)
+;; def=Part2.ST.fst(15,18-39,24); use=Part2.ST.fst(39,33-41,6)
+(forall ((@x0 Term) (@x1 Term))
+ (! (HasType (Tm_arrow_32a62c7204e2a111916cadb8a7de2599 @x0
+@x1)
 Tm_type)
  
 
-:pattern ((HasType (Tm_arrow_110daf01fadc2a047059e65cab29a354 @x0)
+:pattern ((HasType (Tm_arrow_32a62c7204e2a111916cadb8a7de2599 @x0
+@x1)
 Tm_type))
-:qid kinding_Tm_arrow_110daf01fadc2a047059e65cab29a354))
+:qid kinding_Tm_arrow_32a62c7204e2a111916cadb8a7de2599))
 
-:named kinding_Tm_arrow_110daf01fadc2a047059e65cab29a354))
+:named kinding_Tm_arrow_32a62c7204e2a111916cadb8a7de2599))
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(17,18-32,21); use=Part2.ST.fst(32,28-34,6)
-(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+;; def=Part2.ST.fst(15,18-39,24); use=Part2.ST.fst(39,33-41,6)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
  (! (implies (HasTypeFuel @u0
 @x1
-(Tm_arrow_110daf01fadc2a047059e65cab29a354 @x2))
+(Tm_arrow_32a62c7204e2a111916cadb8a7de2599 @x2
+@x3))
 (is-Tm_arrow (PreType @x1)))
  
 
 :pattern ((HasTypeFuel @u0
 @x1
-(Tm_arrow_110daf01fadc2a047059e65cab29a354 @x2)))
-:qid Part2.ST_pre_typing_Tm_arrow_110daf01fadc2a047059e65cab29a354))
+(Tm_arrow_32a62c7204e2a111916cadb8a7de2599 @x2
+@x3)))
+:qid Part2.ST_pre_typing_Tm_arrow_32a62c7204e2a111916cadb8a7de2599))
 
-:named Part2.ST_pre_typing_Tm_arrow_110daf01fadc2a047059e65cab29a354))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_110daf01fadc2a047059e65cab29a354
+:named Part2.ST_pre_typing_Tm_arrow_32a62c7204e2a111916cadb8a7de2599))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_32a62c7204e2a111916cadb8a7de2599
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(17,18-32,21); use=Part2.ST.fst(32,28-34,6)
-(forall ((@x0 Term) (@x1 Term))
+;; def=Part2.ST.fst(15,18-39,24); use=Part2.ST.fst(39,33-41,6)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
  (! (iff (HasTypeZ @x0
-(Tm_arrow_110daf01fadc2a047059e65cab29a354 @x1))
+(Tm_arrow_32a62c7204e2a111916cadb8a7de2599 @x1
+@x2))
 (and 
-;; def=Part2.ST.fst(17,18-32,21); use=Part2.ST.fst(32,28-34,6)
-(forall ((@x2 Term))
- (! (implies (HasType @x2
-@x1)
-(HasType (ApplyTT @x0
+;; def=Part2.ST.fst(15,18-39,24); use=Part2.ST.fst(39,33-41,6)
+(forall ((@x3 Term))
+ (! (implies (HasType @x3
 @x2)
-(Part2.ST.st @x1)))
+(HasType (ApplyTT @x0
+@x3)
+(Part2.ST.st @x1
+@x2)))
  
 
 :pattern ((ApplyTT @x0
-@x2))
-:qid Part2.ST_interpretation_Tm_arrow_110daf01fadc2a047059e65cab29a354.1))
+@x3))
+:qid Part2.ST_interpretation_Tm_arrow_32a62c7204e2a111916cadb8a7de2599.1))
 
 (IsTotFun @x0)))
  
 
 :pattern ((HasTypeZ @x0
-(Tm_arrow_110daf01fadc2a047059e65cab29a354 @x1)))
-:qid Part2.ST_interpretation_Tm_arrow_110daf01fadc2a047059e65cab29a354))
+(Tm_arrow_32a62c7204e2a111916cadb8a7de2599 @x1
+@x2)))
+:qid Part2.ST_interpretation_Tm_arrow_32a62c7204e2a111916cadb8a7de2599))
 
-:named Part2.ST_interpretation_Tm_arrow_110daf01fadc2a047059e65cab29a354))
-(declare-fun Tm_abs_b59365ad3139ca111388aa0e5ca85f23 (Term) Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_b59365ad3139ca111388aa0e5ca85f23
+:named Part2.ST_interpretation_Tm_arrow_32a62c7204e2a111916cadb8a7de2599))
+(declare-fun Tm_abs_ae9ea94647dcc891a00f79c79edf2f97 (Term Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_ae9ea94647dcc891a00f79c79edf2f97
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(33,21-33,29); use=Part2.ST.fst(34,4-34,6)
-(forall ((@x0 Term))
- (! (HasType (Tm_abs_b59365ad3139ca111388aa0e5ca85f23 @x0)
-(Tm_arrow_110daf01fadc2a047059e65cab29a354 @x0))
+;; def=Part2.ST.fst(40,21-40,29); use=Part2.ST.fst(41,4-41,6)
+(forall ((@x0 Term) (@x1 Term))
+ (! (HasType (Tm_abs_ae9ea94647dcc891a00f79c79edf2f97 @x0
+@x1)
+(Tm_arrow_32a62c7204e2a111916cadb8a7de2599 @x0
+@x1))
  
 
-:pattern ((Tm_abs_b59365ad3139ca111388aa0e5ca85f23 @x0))
-:qid typing_Tm_abs_b59365ad3139ca111388aa0e5ca85f23))
+:pattern ((Tm_abs_ae9ea94647dcc891a00f79c79edf2f97 @x0
+@x1))
+:qid typing_Tm_abs_ae9ea94647dcc891a00f79c79edf2f97))
 
-:named typing_Tm_abs_b59365ad3139ca111388aa0e5ca85f23))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_b59365ad3139ca111388aa0e5ca85f23
+:named typing_Tm_abs_ae9ea94647dcc891a00f79c79edf2f97))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_ae9ea94647dcc891a00f79c79edf2f97
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(33,21-33,29); use=Part2.ST.fst(34,4-34,6)
-(forall ((@x0 Term) (@x1 Term))
- (! (= (ApplyTT (Tm_abs_b59365ad3139ca111388aa0e5ca85f23 @x1)
+;; def=Part2.ST.fst(40,21-40,29); use=Part2.ST.fst(41,4-41,6)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (= (ApplyTT (Tm_abs_ae9ea94647dcc891a00f79c79edf2f97 @x1
+@x2)
 @x0)
 (Part2.ST.return @x1
+@x2
 @x0))
  
 
-:pattern ((ApplyTT (Tm_abs_b59365ad3139ca111388aa0e5ca85f23 @x1)
+:pattern ((ApplyTT (Tm_abs_ae9ea94647dcc891a00f79c79edf2f97 @x1
+@x2)
 @x0))
-:qid interpretation_Tm_abs_b59365ad3139ca111388aa0e5ca85f23))
+:qid interpretation_Tm_abs_ae9ea94647dcc891a00f79c79edf2f97))
 
-:named interpretation_Tm_abs_b59365ad3139ca111388aa0e5ca85f23))
+:named interpretation_Tm_abs_ae9ea94647dcc891a00f79c79edf2f97))
 
-; Encoding query formula : forall (a: Type) (f: Part2.ST.st a).
+; Encoding query formula : forall (s: Type) (a: Type) (f: Part2.ST.st s a).
 ;   (*  - Could not prove post-condition
 ; *)
 ;   forall (p: Prims.pure_post Prims.unit).
@@ -156517,44 +157214,603 @@ Tm_type))
 :named @MaxIFuel_assumption))
 ;;;;;;;;;;;;;;;;query
 ;;; Fact-ids: 
+(assert (! (not (forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+Tm_type)
+(HasType @x2
+(Part2.ST.st @x0
+@x1)))
+
+;; def=Prims.fst(406,51-406,91); use=Prims.fst(430,19-430,32)
+(forall ((@x3 Term))
+ (! (implies (and (HasType @x3
+(Prims.pure_post Prims.unit))
+
+;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(41,4-41,6)
+(forall ((@x4 Term))
+ (! (implies (and (or label_1
+(HasType @x4
+Prims.unit))
+
+;; def=Part2.ST.fst(40,10-40,39); use=Part2.ST.fst(41,4-41,6)
+(or label_2
+
+;; def=Part2.ST.fst(40,10-40,39); use=Part2.ST.fst(41,4-41,6)
+(Valid 
+;; def=Part2.ST.fst(40,10-40,39); use=Part2.ST.fst(41,4-41,6)
+(Part2.ST.feq @x0
+(FStar.Pervasives.Native.tuple2 @x1
+@x0)
+(Part2.ST.bind @x0
+@x1
+@x1
+@x2
+(Tm_abs_ae9ea94647dcc891a00f79c79edf2f97 @x0
+@x1))
+@x2)
+)
+)
+)
+
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(41,4-41,6)
+(Valid 
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(41,4-41,6)
+(ApplyTT @x3
+@x4)
+)
+)
+ 
+
+:pattern (
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(41,4-41,6)
+(Valid 
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(41,4-41,6)
+(ApplyTT @x3
+@x4)
+)
+)
+:qid @query.2))
+)
+
+;; def=Prims.fst(451,66-451,102); use=Prims.fst(454,31-454,44)
+(forall ((@x4 Term))
+ (! (implies (HasType @x4
+Prims.unit)
+
+;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
+(Valid 
+;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
+(ApplyTT @x3
+@x4)
+)
+)
+ 
+;;no pats
+:qid @query.3))
+)
+ 
+;;no pats
+:qid @query.1))
+)
+ 
+;;no pats
+:qid @query)))
+:named @query))
+(set-option :rlimit 2723280)
+(echo "<result>")
+(check-sat)
+(echo "</result>")
+(set-option :rlimit 0)
+(echo "<reason-unknown>")
+(get-info :reason-unknown)
+(echo "</reason-unknown>")
+(echo "<unsat-core>")
+(get-unsat-core)
+(echo "</unsat-core>")
+(echo "<labels>")
+(echo "label_2")
+(eval label_2)
+(echo "label_1")
+(eval label_1)
+(echo "</labels>")
+(echo "Done!")
+(pop) ;; 0}pop
+; QUERY ID: (Part2.ST.right_identity, 1)
+; STATUS: unsat
+; UNSAT CORE GENERATED: @MaxIFuel_assumption, @query, Part2.ST_interpretation_Tm_arrow_a0084ca3a951f68c3110bd0ebd7c60fe, equation_Part2.ST.bind, equation_Part2.ST.feq, equation_Part2.ST.return, equation_Part2.ST.st, fuel_guarded_inversion_FStar.Pervasives.Native.tuple2, interpretation_Tm_abs_7706f980135a89a687c904d968136d5b, interpretation_Tm_abs_a02c4ab615d86c1fd4d6707b08902221, interpretation_Tm_abs_ae9ea94647dcc891a00f79c79edf2f97
+
+; Z3 invocation started by F*
+; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
+; Z3 version (according to F*): 4.12.1
+
+(pop) ;; 2}pop
+
+; encoding sigelt let right_identity
+
+
+; <Start encoding let right_identity>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun Part2.ST.right_identity (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun Part2.ST.right_identity@tok () Term)
+
+; </end encoding let right_identity>
+
+(push) ;; push{2
+
+; Starting query at Part2.ST.fst(45,4-45,6)
+
+(declare-fun label_2 () Bool)
+(declare-fun label_1 () Bool)
+
+
+
+(declare-fun Tm_abs_e40c64accf694aba7c7c810a51e2bff8 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_e40c64accf694aba7c7c810a51e2bff8
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(43,34-43,38); use=Part2.ST.fst(45,4-45,6)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (HasType (Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x0
+@x1
+@x2
+@x3)
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x1
+@x2
+@x3))
+ 
+
+:pattern ((Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x0
+@x1
+@x2
+@x3))
+:qid typing_Tm_abs_e40c64accf694aba7c7c810a51e2bff8))
+
+:named typing_Tm_abs_e40c64accf694aba7c7c810a51e2bff8))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_e40c64accf694aba7c7c810a51e2bff8
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(43,34-43,38); use=Part2.ST.fst(45,4-45,6)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (= (ApplyTT (Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x1
+@x2
+@x3
+@x4)
+@x0)
+(ApplyTT @x1
+@x0))
+ 
+
+:pattern ((ApplyTT (Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x1
+@x2
+@x3
+@x4)
+@x0))
+:qid interpretation_Tm_abs_e40c64accf694aba7c7c810a51e2bff8))
+
+:named interpretation_Tm_abs_e40c64accf694aba7c7c810a51e2bff8))
+
+(declare-fun Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(43,22-43,38); use=Part2.ST.fst(45,4-45,6)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term))
+ (! (HasType (Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8 @x0
+@x1
+@x2
+@x3
+@x4
+@x5)
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x3
+@x4
+@x5))
+ 
+
+:pattern ((Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8 @x0
+@x1
+@x2
+@x3
+@x4
+@x5))
+:qid typing_Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8))
+
+:named typing_Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(43,22-43,38); use=Part2.ST.fst(45,4-45,6)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term))
+ (! (= (ApplyTT (Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8 @x1
+@x2
+@x3
+@x4
+@x5
+@x6)
+@x0)
+(Part2.ST.bind @x5
+@x1
+@x4
+(ApplyTT @x2
+@x0)
+(Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x3
+@x4
+@x5
+@x1)))
+ 
+
+:pattern ((ApplyTT (Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8 @x1
+@x2
+@x3
+@x4
+@x5
+@x6)
+@x0))
+:qid interpretation_Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8))
+
+:named interpretation_Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8))
+
+
+
+
+
+; Encoding query formula : forall (s: Type)
+;   (a: Type)
+;   (b: Type)
+;   (c: Type)
+;   (f1: Part2.ST.st s a)
+;   (f2: (_: a -> Part2.ST.st s b))
+;   (f3: (_: b -> Part2.ST.st s c)).
+;   (*  - Could not prove post-condition
+; *)
+;   forall (p: Prims.pure_post Prims.unit).
+;     (forall (pure_result: Prims.unit).
+;         Part2.ST.feq (Part2.ST.bind f1 (fun x -> Part2.ST.bind (f2 x) (fun y -> f3 y)))
+;           (Part2.ST.bind (Part2.ST.bind f1 (fun x -> f2 x)) (fun y -> f3 y)) ==>
+;         p pure_result) ==>
+;     (forall (any_result: Prims.unit). p any_result)
+
+
+; Context: While encoding a query
+; While typechecking the top-level declaration `let associativity`
+
+(push) ;; push{0
+
+; <fuel='2' ifuel='1'>
+
+;;; Fact-ids: 
+(assert (! (= MaxFuel
+(SFuel (SFuel ZFuel)))
+:named @MaxFuel_assumption))
+;;; Fact-ids: 
+(assert (! (= MaxIFuel
+(SFuel ZFuel))
+:named @MaxIFuel_assumption))
+;;;;;;;;;;;;;;;;query
+;;; Fact-ids: 
+(assert (! (not (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+Tm_type)
+(HasType @x2
+Tm_type)
+(HasType @x3
+Tm_type)
+(HasType @x4
+(Part2.ST.st @x0
+@x1))
+(HasType @x5
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x2
+@x0
+@x1))
+(HasType @x6
+(Tm_arrow_2bce0bf292cccbe0c2f9ca71cd576887 @x3
+@x0
+@x2)))
+
+;; def=Prims.fst(406,51-406,91); use=Prims.fst(430,19-430,32)
+(forall ((@x7 Term))
+ (! (implies (and (HasType @x7
+(Prims.pure_post Prims.unit))
+
+;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(45,4-45,6)
+(forall ((@x8 Term))
+ (! (implies (and (or label_1
+(HasType @x8
+Prims.unit))
+
+;; def=Part2.ST.fst(43,10-44,42); use=Part2.ST.fst(45,4-45,6)
+(or label_2
+
+;; def=Part2.ST.fst(43,10-44,42); use=Part2.ST.fst(45,4-45,6)
+(Valid 
+;; def=Part2.ST.fst(43,10-44,42); use=Part2.ST.fst(45,4-45,6)
+(Part2.ST.feq @x0
+(FStar.Pervasives.Native.tuple2 @x3
+@x0)
+(Part2.ST.bind @x0
+@x1
+@x3
+@x4
+(Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8 @x2
+@x5
+@x6
+@x3
+@x0
+@x1))
+(Part2.ST.bind @x0
+@x2
+@x3
+(Part2.ST.bind @x0
+@x1
+@x2
+@x4
+(Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x5
+@x2
+@x0
+@x1))
+(Tm_abs_e40c64accf694aba7c7c810a51e2bff8 @x6
+@x3
+@x0
+@x2)))
+)
+)
+)
+
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(45,4-45,6)
+(Valid 
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(45,4-45,6)
+(ApplyTT @x7
+@x8)
+)
+)
+ 
+
+:pattern (
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(45,4-45,6)
+(Valid 
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(45,4-45,6)
+(ApplyTT @x7
+@x8)
+)
+)
+:qid @query.2))
+)
+
+;; def=Prims.fst(451,66-451,102); use=Prims.fst(454,31-454,44)
+(forall ((@x8 Term))
+ (! (implies (HasType @x8
+Prims.unit)
+
+;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
+(Valid 
+;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
+(ApplyTT @x7
+@x8)
+)
+)
+ 
+;;no pats
+:qid @query.3))
+)
+ 
+;;no pats
+:qid @query.1))
+)
+ 
+;;no pats
+:qid @query)))
+:named @query))
+(set-option :rlimit 2723280)
+(echo "<result>")
+(check-sat)
+(echo "</result>")
+(set-option :rlimit 0)
+(echo "<reason-unknown>")
+(get-info :reason-unknown)
+(echo "</reason-unknown>")
+(echo "<unsat-core>")
+(get-unsat-core)
+(echo "</unsat-core>")
+(echo "<labels>")
+(echo "label_2")
+(eval label_2)
+(echo "label_1")
+(eval label_1)
+(echo "</labels>")
+(echo "Done!")
+(pop) ;; 0}pop
+; QUERY ID: (Part2.ST.associativity, 1)
+; STATUS: unsat
+; UNSAT CORE GENERATED: @query, equation_Part2.ST.bind, equation_Part2.ST.feq, interpretation_Tm_abs_7706f980135a89a687c904d968136d5b, interpretation_Tm_abs_e40c64accf694aba7c7c810a51e2bff8, interpretation_Tm_abs_e61e8af5ac452c4f7ed9b512a20a76d8
+
+; Z3 invocation started by F*
+; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
+; Z3 version (according to F*): 4.12.1
+
+(pop) ;; 2}pop
+
+; encoding sigelt let associativity
+
+
+; <Start encoding let associativity>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun Part2.ST.associativity (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun Part2.ST.associativity@tok () Term)
+
+; </end encoding let associativity>
+
+(push) ;; push{2
+
+; Starting query at Part2.ST.fst(49,4-49,6)
+
+(declare-fun label_2 () Bool)
+(declare-fun label_1 () Bool)
+;;;;;;;;;;;;;;;;_: _ -> st _ _
+(declare-fun Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d (Term) Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(15,18-49,6); use=Part2.ST.fst(47,0-49,6)
+(forall ((@x0 Term))
+ (! (HasType (Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d @x0)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d @x0)
+Tm_type))
+:qid kinding_Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d))
+
+:named kinding_Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d))
+;;;;;;;;;;;;;;;;pre-typing for functions
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(15,18-49,6); use=Part2.ST.fst(47,0-49,6)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+(Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d @x2))
+(is-Tm_arrow (PreType @x1)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d @x2)))
+:qid Part2.ST_pre_typing_Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d))
+
+:named Part2.ST_pre_typing_Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(15,18-49,6); use=Part2.ST.fst(47,0-49,6)
+(forall ((@x0 Term) (@x1 Term))
+ (! (iff (HasTypeZ @x0
+(Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d @x1))
+(and 
+;; def=Part2.ST.fst(15,18-49,6); use=Part2.ST.fst(47,0-49,6)
+(forall ((@x2 Term))
+ (! (implies (HasType @x2
+@x1)
+(HasType (ApplyTT @x0
+@x2)
+(Part2.ST.st @x1
+@x1)))
+ 
+
+:pattern ((ApplyTT @x0
+@x2))
+:qid Part2.ST_interpretation_Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d.1))
+
+(IsTotFun @x0)))
+ 
+
+:pattern ((HasTypeZ @x0
+(Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d @x1)))
+:qid Part2.ST_interpretation_Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d))
+
+:named Part2.ST_interpretation_Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d))
+(declare-fun Tm_abs_465918dbb3b106ebc754d0ac69e25541 (Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_465918dbb3b106ebc754d0ac69e25541
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(48,19-48,23); use=Part2.ST.fst(49,4-49,6)
+(forall ((@x0 Term))
+ (! (HasType (Tm_abs_465918dbb3b106ebc754d0ac69e25541 @x0)
+(Tm_arrow_67dcb5851b7a2cb5372d4bf55271632d @x0))
+ 
+
+:pattern ((Tm_abs_465918dbb3b106ebc754d0ac69e25541 @x0))
+:qid typing_Tm_abs_465918dbb3b106ebc754d0ac69e25541))
+
+:named typing_Tm_abs_465918dbb3b106ebc754d0ac69e25541))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_465918dbb3b106ebc754d0ac69e25541
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(48,19-48,23); use=Part2.ST.fst(49,4-49,6)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (ApplyTT (Tm_abs_465918dbb3b106ebc754d0ac69e25541 @x1)
+@x0)
+(Part2.ST.read @x1))
+ 
+
+:pattern ((ApplyTT (Tm_abs_465918dbb3b106ebc754d0ac69e25541 @x1)
+@x0))
+:qid interpretation_Tm_abs_465918dbb3b106ebc754d0ac69e25541))
+
+:named interpretation_Tm_abs_465918dbb3b106ebc754d0ac69e25541))
+
+; Encoding query formula : forall (_: Type) (_: Prims.unit).
+;   (*  - Could not prove post-condition
+; *)
+;   forall (p: Prims.pure_post Prims.unit).
+;     (forall (pure_result: Prims.unit).
+;         Part2.ST.feq (Part2.ST.bind Part2.ST.read (fun _ -> Part2.ST.read)) Part2.ST.read ==>
+;         p pure_result) ==>
+;     (forall (any_result: Prims.unit). p any_result)
+
+
+; Context: While encoding a query
+; While typechecking the top-level declaration `let redundant_read_elim`
+
+(push) ;; push{0
+
+; <fuel='2' ifuel='1'>
+
+;;; Fact-ids: 
+(assert (! (= MaxFuel
+(SFuel (SFuel ZFuel)))
+:named @MaxFuel_assumption))
+;;; Fact-ids: 
+(assert (! (= MaxIFuel
+(SFuel ZFuel))
+:named @MaxIFuel_assumption))
+;;;;;;;;;;;;;;;;query
+;;; Fact-ids: 
 (assert (! (not (forall ((@x0 Term) (@x1 Term))
  (! (implies (and (HasType @x0
 Tm_type)
 (HasType @x1
-(Part2.ST.st @x0)))
+Prims.unit))
 
 ;; def=Prims.fst(406,51-406,91); use=Prims.fst(430,19-430,32)
 (forall ((@x2 Term))
  (! (implies (and (HasType @x2
 (Prims.pure_post Prims.unit))
 
-;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(34,4-34,6)
+;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(49,4-49,6)
 (forall ((@x3 Term))
  (! (implies (and (or label_1
 (HasType @x3
 Prims.unit))
 
-;; def=Part2.ST.fst(33,10-33,39); use=Part2.ST.fst(34,4-34,6)
+;; def=Part2.ST.fst(48,10-48,36); use=Part2.ST.fst(49,4-49,6)
 (or label_2
 
-;; def=Part2.ST.fst(33,10-33,39); use=Part2.ST.fst(34,4-34,6)
+;; def=Part2.ST.fst(48,10-48,36); use=Part2.ST.fst(49,4-49,6)
 (Valid 
-;; def=Part2.ST.fst(33,10-33,39); use=Part2.ST.fst(34,4-34,6)
-(Part2.ST.feq Prims.int
+;; def=Part2.ST.fst(48,10-48,36); use=Part2.ST.fst(49,4-49,6)
+(Part2.ST.feq @x0
 (FStar.Pervasives.Native.tuple2 @x0
-Prims.int)
+@x0)
 (Part2.ST.bind @x0
 @x0
-@x1
-(Tm_abs_b59365ad3139ca111388aa0e5ca85f23 @x0))
-@x1)
+@x0
+(Part2.ST.read @x0)
+(Tm_abs_465918dbb3b106ebc754d0ac69e25541 @x0))
+(Part2.ST.read @x0))
 )
 )
 )
 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(34,4-34,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(49,4-49,6)
 (Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(34,4-34,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(49,4-49,6)
 (ApplyTT @x2
 @x3)
 )
@@ -156562,9 +157818,9 @@ Prims.int)
  
 
 :pattern (
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(34,4-34,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(49,4-49,6)
 (Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(34,4-34,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(49,4-49,6)
 (ApplyTT @x2
 @x3)
 )
@@ -156615,518 +157871,9 @@ Prims.unit)
 (echo "</labels>")
 (echo "Done!")
 (pop) ;; 0}pop
-; QUERY ID: (Part2.ST.right_identity, 1)
-; STATUS: unsat
-; UNSAT CORE GENERATED: @MaxIFuel_assumption, @query, Part2.ST_interpretation_Tm_arrow_484ac694053f9cf14a2c5a94a3797972, Prims_pretyping_ae567c2fb75be05905677af440075565, equation_Part2.ST.bind, equation_Part2.ST.feq, equation_Part2.ST.return, equation_Part2.ST.st, fuel_guarded_inversion_FStar.Pervasives.Native.tuple2, function_token_typing_Prims.__cache_version_number__, interpretation_Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f, interpretation_Tm_abs_b59365ad3139ca111388aa0e5ca85f23, interpretation_Tm_abs_bdc06410776c1d9adee9aeba485b40ed
-
-; Z3 invocation started by F*
-; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
-; Z3 version (according to F*): 4.12.1
-
-(pop) ;; 2}pop
-
-; encoding sigelt let right_identity
-
-
-; <Start encoding let right_identity>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun Part2.ST.right_identity (Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun Part2.ST.right_identity@tok () Term)
-
-; </end encoding let right_identity>
-
-(push) ;; push{2
-
-; Starting query at Part2.ST.fst(38,4-38,6)
-
-(declare-fun label_2 () Bool)
-(declare-fun label_1 () Bool)
-
-
-
-(declare-fun Tm_abs_f60fb6c7723bc12608080c328ffdef90 (Term Term Term) Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_f60fb6c7723bc12608080c328ffdef90
-;;; Fact-ids: 
-(assert (! 
-;; def=Part2.ST.fst(36,34-36,38); use=Part2.ST.fst(38,4-38,6)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term))
- (! (HasType (Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x0
-@x1
-@x2)
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x1
-@x2))
- 
-
-:pattern ((Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x0
-@x1
-@x2))
-:qid typing_Tm_abs_f60fb6c7723bc12608080c328ffdef90))
-
-:named typing_Tm_abs_f60fb6c7723bc12608080c328ffdef90))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_f60fb6c7723bc12608080c328ffdef90
-;;; Fact-ids: 
-(assert (! 
-;; def=Part2.ST.fst(36,34-36,38); use=Part2.ST.fst(38,4-38,6)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
- (! (= (ApplyTT (Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x1
-@x2
-@x3)
-@x0)
-(ApplyTT @x1
-@x0))
- 
-
-:pattern ((ApplyTT (Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x1
-@x2
-@x3)
-@x0))
-:qid interpretation_Tm_abs_f60fb6c7723bc12608080c328ffdef90))
-
-:named interpretation_Tm_abs_f60fb6c7723bc12608080c328ffdef90))
-
-(declare-fun Tm_abs_416295c3f0062462a3b54f7f9242d2bf (Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_416295c3f0062462a3b54f7f9242d2bf
-;;; Fact-ids: 
-(assert (! 
-;; def=Part2.ST.fst(36,22-36,38); use=Part2.ST.fst(38,4-38,6)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
- (! (HasType (Tm_abs_416295c3f0062462a3b54f7f9242d2bf @x0
-@x1
-@x2
-@x3
-@x4)
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x3
-@x4))
- 
-
-:pattern ((Tm_abs_416295c3f0062462a3b54f7f9242d2bf @x0
-@x1
-@x2
-@x3
-@x4))
-:qid typing_Tm_abs_416295c3f0062462a3b54f7f9242d2bf))
-
-:named typing_Tm_abs_416295c3f0062462a3b54f7f9242d2bf))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_416295c3f0062462a3b54f7f9242d2bf
-;;; Fact-ids: 
-(assert (! 
-;; def=Part2.ST.fst(36,22-36,38); use=Part2.ST.fst(38,4-38,6)
-(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term))
- (! (= (ApplyTT (Tm_abs_416295c3f0062462a3b54f7f9242d2bf @x1
-@x2
-@x3
-@x4
-@x5)
-@x0)
-(Part2.ST.bind @x1
-@x4
-(ApplyTT @x2
-@x0)
-(Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x3
-@x4
-@x1)))
- 
-
-:pattern ((ApplyTT (Tm_abs_416295c3f0062462a3b54f7f9242d2bf @x1
-@x2
-@x3
-@x4
-@x5)
-@x0))
-:qid interpretation_Tm_abs_416295c3f0062462a3b54f7f9242d2bf))
-
-:named interpretation_Tm_abs_416295c3f0062462a3b54f7f9242d2bf))
-
-
-
-
-
-; Encoding query formula : forall (a: Type)
-;   (b: Type)
-;   (c: Type)
-;   (f1: Part2.ST.st a)
-;   (f2: (_: a -> Part2.ST.st b))
-;   (f3: (_: b -> Part2.ST.st c)).
-;   (*  - Could not prove post-condition
-; *)
-;   forall (p: Prims.pure_post Prims.unit).
-;     (forall (pure_result: Prims.unit).
-;         Part2.ST.feq (Part2.ST.bind f1 (fun x -> Part2.ST.bind (f2 x) (fun y -> f3 y)))
-;           (Part2.ST.bind (Part2.ST.bind f1 (fun x -> f2 x)) (fun y -> f3 y)) ==>
-;         p pure_result) ==>
-;     (forall (any_result: Prims.unit). p any_result)
-
-
-; Context: While encoding a query
-; While typechecking the top-level declaration `let associativity`
-
-(push) ;; push{0
-
-; <fuel='2' ifuel='1'>
-
-;;; Fact-ids: 
-(assert (! (= MaxFuel
-(SFuel (SFuel ZFuel)))
-:named @MaxFuel_assumption))
-;;; Fact-ids: 
-(assert (! (= MaxIFuel
-(SFuel ZFuel))
-:named @MaxIFuel_assumption))
-;;;;;;;;;;;;;;;;query
-;;; Fact-ids: 
-(assert (! (not (forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term))
- (! (implies (and (HasType @x0
-Tm_type)
-(HasType @x1
-Tm_type)
-(HasType @x2
-Tm_type)
-(HasType @x3
-(Part2.ST.st @x0))
-(HasType @x4
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x1
-@x0))
-(HasType @x5
-(Tm_arrow_dc2e2f2ef8eb1e50d5457a4e883f4b1e @x2
-@x1)))
-
-;; def=Prims.fst(406,51-406,91); use=Prims.fst(430,19-430,32)
-(forall ((@x6 Term))
- (! (implies (and (HasType @x6
-(Prims.pure_post Prims.unit))
-
-;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(38,4-38,6)
-(forall ((@x7 Term))
- (! (implies (and (or label_1
-(HasType @x7
-Prims.unit))
-
-;; def=Part2.ST.fst(36,10-37,42); use=Part2.ST.fst(38,4-38,6)
-(or label_2
-
-;; def=Part2.ST.fst(36,10-37,42); use=Part2.ST.fst(38,4-38,6)
-(Valid 
-;; def=Part2.ST.fst(36,10-37,42); use=Part2.ST.fst(38,4-38,6)
-(Part2.ST.feq Prims.int
-(FStar.Pervasives.Native.tuple2 @x2
-Prims.int)
-(Part2.ST.bind @x0
-@x2
-@x3
-(Tm_abs_416295c3f0062462a3b54f7f9242d2bf @x1
-@x4
-@x5
-@x2
-@x0))
-(Part2.ST.bind @x1
-@x2
-(Part2.ST.bind @x0
-@x1
-@x3
-(Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x4
-@x1
-@x0))
-(Tm_abs_f60fb6c7723bc12608080c328ffdef90 @x5
-@x2
-@x1)))
-)
-)
-)
-
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(38,4-38,6)
-(Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(38,4-38,6)
-(ApplyTT @x6
-@x7)
-)
-)
- 
-
-:pattern (
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(38,4-38,6)
-(Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(38,4-38,6)
-(ApplyTT @x6
-@x7)
-)
-)
-:qid @query.2))
-)
-
-;; def=Prims.fst(451,66-451,102); use=Prims.fst(454,31-454,44)
-(forall ((@x7 Term))
- (! (implies (HasType @x7
-Prims.unit)
-
-;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
-(Valid 
-;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
-(ApplyTT @x6
-@x7)
-)
-)
- 
-;;no pats
-:qid @query.3))
-)
- 
-;;no pats
-:qid @query.1))
-)
- 
-;;no pats
-:qid @query)))
-:named @query))
-(set-option :rlimit 2723280)
-(echo "<result>")
-(check-sat)
-(echo "</result>")
-(set-option :rlimit 0)
-(echo "<reason-unknown>")
-(get-info :reason-unknown)
-(echo "</reason-unknown>")
-(echo "<unsat-core>")
-(get-unsat-core)
-(echo "</unsat-core>")
-(echo "<labels>")
-(echo "label_2")
-(eval label_2)
-(echo "label_1")
-(eval label_1)
-(echo "</labels>")
-(echo "Done!")
-(pop) ;; 0}pop
-; QUERY ID: (Part2.ST.associativity, 1)
-; STATUS: unsat
-; UNSAT CORE GENERATED: @query, equation_Part2.ST.bind, equation_Part2.ST.feq, interpretation_Tm_abs_416295c3f0062462a3b54f7f9242d2bf, interpretation_Tm_abs_bdc06410776c1d9adee9aeba485b40ed, interpretation_Tm_abs_f60fb6c7723bc12608080c328ffdef90
-
-; Z3 invocation started by F*
-; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
-; Z3 version (according to F*): 4.12.1
-
-(pop) ;; 2}pop
-
-; encoding sigelt let associativity
-
-
-; <Start encoding let associativity>
-
-;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun Part2.ST.associativity (Term Term Term Term Term Term) Term)
-;;;;;;;;;;;;;;;;Uninterpreted name for impure function
-(declare-fun Part2.ST.associativity@tok () Term)
-
-; </end encoding let associativity>
-
-(push) ;; push{2
-
-; Starting query at Part2.ST.fst(42,4-42,6)
-
-(declare-fun label_2 () Bool)
-(declare-fun label_1 () Bool)
-;;;;;;;;;;;;;;;;_: Prims.int -> st Prims.int
-(declare-fun Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7 () Term)
-;;;;;;;;;;;;;;;;kinding_Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7
-;;; Fact-ids: 
-(assert (! (HasType Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7
-Tm_type)
-:named kinding_Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7))
-;;;;;;;;;;;;;;;;pre-typing for functions
-;;; Fact-ids: 
-(assert (! 
-;; def=Part2.ST.fst(8,7-17,22); use=Part2.ST.fst(42,4-42,6)
-(forall ((@u0 Fuel) (@x1 Term))
- (! (implies (HasTypeFuel @u0
-@x1
-Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7)
-(is-Tm_arrow (PreType @x1)))
- 
-
-:pattern ((HasTypeFuel @u0
-@x1
-Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7))
-:qid Part2.ST_pre_typing_Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7))
-
-:named Part2.ST_pre_typing_Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7
-;;; Fact-ids: 
-(assert (! 
-;; def=Part2.ST.fst(8,7-17,22); use=Part2.ST.fst(42,4-42,6)
-(forall ((@x0 Term))
- (! (iff (HasTypeZ @x0
-Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7)
-(and 
-;; def=Part2.ST.fst(8,7-17,22); use=Part2.ST.fst(42,4-42,6)
-(forall ((@x1 Term))
- (! (implies (HasType @x1
-Prims.int)
-(HasType (ApplyTT @x0
-@x1)
-(Part2.ST.st Prims.int)))
- 
-
-:pattern ((ApplyTT @x0
-@x1))
-:qid Part2.ST_interpretation_Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7.1))
-
-(IsTotFun @x0)))
- 
-
-:pattern ((HasTypeZ @x0
-Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7))
-:qid Part2.ST_interpretation_Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7))
-
-:named Part2.ST_interpretation_Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7))
-(declare-fun Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43 () Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43
-;;; Fact-ids: 
-(assert (! (HasType Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43
-Tm_arrow_4dff4d9dca846004c0da0d0af868a3d7)
-:named typing_Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43
-;;; Fact-ids: 
-(assert (! 
-;; def=Part2.ST.fst(41,19-41,23); use=Part2.ST.fst(42,4-42,6)
-(forall ((@x0 Term))
- (! (= (ApplyTT Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43
-@x0)
-(Part2.ST.read Dummy_value))
- 
-
-:pattern ((ApplyTT Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43
-@x0))
-:qid interpretation_Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43))
-
-:named interpretation_Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43))
-
-; Encoding query formula : forall (_: Prims.unit).
-;   (*  - Could not prove post-condition
-; *)
-;   forall (p: Prims.pure_post Prims.unit).
-;     (forall (pure_result: Prims.unit).
-;         Part2.ST.feq (Part2.ST.bind Part2.ST.read (fun _ -> Part2.ST.read)) Part2.ST.read ==>
-;         p pure_result) ==>
-;     (forall (any_result: Prims.unit). p any_result)
-
-
-; Context: While encoding a query
-; While typechecking the top-level declaration `let redundant_read_elim`
-
-(push) ;; push{0
-
-; <fuel='2' ifuel='1'>
-
-;;; Fact-ids: 
-(assert (! (= MaxFuel
-(SFuel (SFuel ZFuel)))
-:named @MaxFuel_assumption))
-;;; Fact-ids: 
-(assert (! (= MaxIFuel
-(SFuel ZFuel))
-:named @MaxIFuel_assumption))
-;;;;;;;;;;;;;;;;query
-;;; Fact-ids: 
-(assert (! (not (forall ((@x0 Term))
- (! (implies (HasType @x0
-Prims.unit)
-
-;; def=Prims.fst(406,51-406,91); use=Prims.fst(430,19-430,32)
-(forall ((@x1 Term))
- (! (implies (and (HasType @x1
-(Prims.pure_post Prims.unit))
-
-;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(42,4-42,6)
-(forall ((@x2 Term))
- (! (implies (and (or label_1
-(HasType @x2
-Prims.unit))
-
-;; def=Part2.ST.fst(41,10-41,36); use=Part2.ST.fst(42,4-42,6)
-(or label_2
-
-;; def=Part2.ST.fst(41,10-41,36); use=Part2.ST.fst(42,4-42,6)
-(Valid 
-;; def=Part2.ST.fst(41,10-41,36); use=Part2.ST.fst(42,4-42,6)
-(Part2.ST.feq Prims.int
-(FStar.Pervasives.Native.tuple2 Prims.int
-Prims.int)
-(Part2.ST.bind Prims.int
-Prims.int
-(Part2.ST.read Dummy_value)
-Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43)
-(Part2.ST.read Dummy_value))
-)
-)
-)
-
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(42,4-42,6)
-(Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(42,4-42,6)
-(ApplyTT @x1
-@x2)
-)
-)
- 
-
-:pattern (
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(42,4-42,6)
-(Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(42,4-42,6)
-(ApplyTT @x1
-@x2)
-)
-)
-:qid @query.2))
-)
-
-;; def=Prims.fst(451,66-451,102); use=Prims.fst(454,31-454,44)
-(forall ((@x2 Term))
- (! (implies (HasType @x2
-Prims.unit)
-
-;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
-(Valid 
-;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
-(ApplyTT @x1
-@x2)
-)
-)
- 
-;;no pats
-:qid @query.3))
-)
- 
-;;no pats
-:qid @query.1))
-)
- 
-;;no pats
-:qid @query)))
-:named @query))
-(set-option :rlimit 2723280)
-(echo "<result>")
-(check-sat)
-(echo "</result>")
-(set-option :rlimit 0)
-(echo "<reason-unknown>")
-(get-info :reason-unknown)
-(echo "</reason-unknown>")
-(echo "<unsat-core>")
-(get-unsat-core)
-(echo "</unsat-core>")
-(echo "<labels>")
-(echo "label_2")
-(eval label_2)
-(echo "label_1")
-(eval label_1)
-(echo "</labels>")
-(echo "Done!")
-(pop) ;; 0}pop
 ; QUERY ID: (Part2.ST.redundant_read_elim, 1)
 ; STATUS: unsat
-; UNSAT CORE GENERATED: @MaxIFuel_assumption, @query, Prims_pretyping_ae567c2fb75be05905677af440075565, equation_Part2.ST.bind, equation_Part2.ST.feq, equation_Part2.ST.read, function_token_typing_Prims.__cache_version_number__, interpretation_Tm_abs_1aa26ac49f01c01d9b87dd7954ca1a43, interpretation_Tm_abs_bdc06410776c1d9adee9aeba485b40ed, projection_inverse_FStar.Pervasives.Native.Mktuple2__2
+; UNSAT CORE GENERATED: @query, equation_Part2.ST.bind, equation_Part2.ST.feq, equation_Part2.ST.read, interpretation_Tm_abs_465918dbb3b106ebc754d0ac69e25541, interpretation_Tm_abs_7706f980135a89a687c904d968136d5b, interpretation_Tm_abs_79991cb66008561c642fa3e96942b94c, projection_inverse_FStar.Pervasives.Native.Mktuple2__2
 
 ; Z3 invocation started by F*
 ; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
@@ -157140,7 +157887,7 @@ Prims.unit)
 ; <Start encoding let redundant_read_elim>
 
 ;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
-(declare-fun Part2.ST.redundant_read_elim (Term) Term)
+(declare-fun Part2.ST.redundant_read_elim (Term Term) Term)
 ;;;;;;;;;;;;;;;;Uninterpreted name for impure function
 (declare-fun Part2.ST.redundant_read_elim@tok () Term)
 
@@ -157148,92 +157895,94 @@ Prims.unit)
 
 (push) ;; push{2
 
-; Starting query at Part2.ST.fst(46,4-46,6)
+; Starting query at Part2.ST.fst(53,4-53,6)
 
 (declare-fun label_2 () Bool)
 (declare-fun label_1 () Bool)
-;;;;;;;;;;;;;;;;_: Prims.unit -> st Prims.unit
-(declare-fun Tm_arrow_8448e33b0eb51e7783f5564d44ca033a () Term)
-;;;;;;;;;;;;;;;;kinding_Tm_arrow_8448e33b0eb51e7783f5564d44ca033a
+;;;;;;;;;;;;;;;;_: Prims.unit -> st Prims.int Prims.unit
+(declare-fun Tm_arrow_404828a4fbd7f54661785e1fc370b95b () Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_404828a4fbd7f54661785e1fc370b95b
 ;;; Fact-ids: 
-(assert (! (HasType Tm_arrow_8448e33b0eb51e7783f5564d44ca033a
+(assert (! (HasType Tm_arrow_404828a4fbd7f54661785e1fc370b95b
 Tm_type)
-:named kinding_Tm_arrow_8448e33b0eb51e7783f5564d44ca033a))
+:named kinding_Tm_arrow_404828a4fbd7f54661785e1fc370b95b))
 ;;;;;;;;;;;;;;;;pre-typing for functions
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(12,7-17,22); use=Part2.ST.fst(46,4-46,6)
+;; def=Part2.ST.fst(10,9-15,24); use=Part2.ST.fst(53,4-53,6)
 (forall ((@u0 Fuel) (@x1 Term))
  (! (implies (HasTypeFuel @u0
 @x1
-Tm_arrow_8448e33b0eb51e7783f5564d44ca033a)
+Tm_arrow_404828a4fbd7f54661785e1fc370b95b)
 (is-Tm_arrow (PreType @x1)))
  
 
 :pattern ((HasTypeFuel @u0
 @x1
-Tm_arrow_8448e33b0eb51e7783f5564d44ca033a))
-:qid Part2.ST_pre_typing_Tm_arrow_8448e33b0eb51e7783f5564d44ca033a))
+Tm_arrow_404828a4fbd7f54661785e1fc370b95b))
+:qid Part2.ST_pre_typing_Tm_arrow_404828a4fbd7f54661785e1fc370b95b))
 
-:named Part2.ST_pre_typing_Tm_arrow_8448e33b0eb51e7783f5564d44ca033a))
-;;;;;;;;;;;;;;;;interpretation_Tm_arrow_8448e33b0eb51e7783f5564d44ca033a
+:named Part2.ST_pre_typing_Tm_arrow_404828a4fbd7f54661785e1fc370b95b))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_404828a4fbd7f54661785e1fc370b95b
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(12,7-17,22); use=Part2.ST.fst(46,4-46,6)
+;; def=Part2.ST.fst(10,9-15,24); use=Part2.ST.fst(53,4-53,6)
 (forall ((@x0 Term))
  (! (iff (HasTypeZ @x0
-Tm_arrow_8448e33b0eb51e7783f5564d44ca033a)
+Tm_arrow_404828a4fbd7f54661785e1fc370b95b)
 (and 
-;; def=Part2.ST.fst(12,7-17,22); use=Part2.ST.fst(46,4-46,6)
+;; def=Part2.ST.fst(10,9-15,24); use=Part2.ST.fst(53,4-53,6)
 (forall ((@x1 Term))
  (! (implies (HasType @x1
 Prims.unit)
 (HasType (ApplyTT @x0
 @x1)
-(Part2.ST.st Prims.unit)))
+(Part2.ST.st Prims.int
+Prims.unit)))
  
 
 :pattern ((ApplyTT @x0
 @x1))
-:qid Part2.ST_interpretation_Tm_arrow_8448e33b0eb51e7783f5564d44ca033a.1))
+:qid Part2.ST_interpretation_Tm_arrow_404828a4fbd7f54661785e1fc370b95b.1))
 
 (IsTotFun @x0)))
  
 
 :pattern ((HasTypeZ @x0
-Tm_arrow_8448e33b0eb51e7783f5564d44ca033a))
-:qid Part2.ST_interpretation_Tm_arrow_8448e33b0eb51e7783f5564d44ca033a))
+Tm_arrow_404828a4fbd7f54661785e1fc370b95b))
+:qid Part2.ST_interpretation_Tm_arrow_404828a4fbd7f54661785e1fc370b95b))
 
-:named Part2.ST_interpretation_Tm_arrow_8448e33b0eb51e7783f5564d44ca033a))
-(declare-fun Tm_abs_a042443be7fe414cca51c2f4c9aba97e (Term) Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_a042443be7fe414cca51c2f4c9aba97e
+:named Part2.ST_interpretation_Tm_arrow_404828a4fbd7f54661785e1fc370b95b))
+(declare-fun Tm_abs_27d70a159d176eaea8d5192620d8f59f (Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_27d70a159d176eaea8d5192620d8f59f
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(45,23-45,30); use=Part2.ST.fst(46,4-46,6)
+;; def=Part2.ST.fst(52,23-52,30); use=Part2.ST.fst(53,4-53,6)
 (forall ((@x0 Term))
- (! (HasType (Tm_abs_a042443be7fe414cca51c2f4c9aba97e @x0)
-Tm_arrow_8448e33b0eb51e7783f5564d44ca033a)
+ (! (HasType (Tm_abs_27d70a159d176eaea8d5192620d8f59f @x0)
+Tm_arrow_404828a4fbd7f54661785e1fc370b95b)
  
 
-:pattern ((Tm_abs_a042443be7fe414cca51c2f4c9aba97e @x0))
-:qid typing_Tm_abs_a042443be7fe414cca51c2f4c9aba97e))
+:pattern ((Tm_abs_27d70a159d176eaea8d5192620d8f59f @x0))
+:qid typing_Tm_abs_27d70a159d176eaea8d5192620d8f59f))
 
-:named typing_Tm_abs_a042443be7fe414cca51c2f4c9aba97e))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_a042443be7fe414cca51c2f4c9aba97e
+:named typing_Tm_abs_27d70a159d176eaea8d5192620d8f59f))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_27d70a159d176eaea8d5192620d8f59f
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(45,23-45,30); use=Part2.ST.fst(46,4-46,6)
+;; def=Part2.ST.fst(52,23-52,30); use=Part2.ST.fst(53,4-53,6)
 (forall ((@x0 Term) (@x1 Term))
- (! (= (ApplyTT (Tm_abs_a042443be7fe414cca51c2f4c9aba97e @x1)
+ (! (= (ApplyTT (Tm_abs_27d70a159d176eaea8d5192620d8f59f @x1)
 @x0)
-(Part2.ST.write @x1))
+(Part2.ST.write Prims.int
+@x1))
  
 
-:pattern ((ApplyTT (Tm_abs_a042443be7fe414cca51c2f4c9aba97e @x1)
+:pattern ((ApplyTT (Tm_abs_27d70a159d176eaea8d5192620d8f59f @x1)
 @x0))
-:qid interpretation_Tm_abs_a042443be7fe414cca51c2f4c9aba97e))
+:qid interpretation_Tm_abs_27d70a159d176eaea8d5192620d8f59f))
 
-:named interpretation_Tm_abs_a042443be7fe414cca51c2f4c9aba97e))
+:named interpretation_Tm_abs_27d70a159d176eaea8d5192620d8f59f))
 
 ; Encoding query formula : forall (x: Prims.int) (y: Prims.int).
 ;   (*  - Could not prove post-condition
@@ -157274,33 +158023,36 @@ Prims.int))
  (! (implies (and (HasType @x2
 (Prims.pure_post Prims.unit))
 
-;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(46,4-46,6)
+;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(53,4-53,6)
 (forall ((@x3 Term))
  (! (implies (and (or label_1
 (HasType @x3
 Prims.unit))
 
-;; def=Part2.ST.fst(45,10-45,46); use=Part2.ST.fst(46,4-46,6)
+;; def=Part2.ST.fst(52,10-52,46); use=Part2.ST.fst(53,4-53,6)
 (or label_2
 
-;; def=Part2.ST.fst(45,10-45,46); use=Part2.ST.fst(46,4-46,6)
+;; def=Part2.ST.fst(52,10-52,46); use=Part2.ST.fst(53,4-53,6)
 (Valid 
-;; def=Part2.ST.fst(45,10-45,46); use=Part2.ST.fst(46,4-46,6)
+;; def=Part2.ST.fst(52,10-52,46); use=Part2.ST.fst(53,4-53,6)
 (Part2.ST.feq Prims.int
 (FStar.Pervasives.Native.tuple2 Prims.unit
 Prims.int)
-(Part2.ST.bind Prims.unit
+(Part2.ST.bind Prims.int
 Prims.unit
-(Part2.ST.write @x0)
-(Tm_abs_a042443be7fe414cca51c2f4c9aba97e @x1))
-(Part2.ST.write @x1))
+Prims.unit
+(Part2.ST.write Prims.int
+@x0)
+(Tm_abs_27d70a159d176eaea8d5192620d8f59f @x1))
+(Part2.ST.write Prims.int
+@x1))
 )
 )
 )
 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(46,4-46,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(53,4-53,6)
 (Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(46,4-46,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(53,4-53,6)
 (ApplyTT @x2
 @x3)
 )
@@ -157308,9 +158060,9 @@ Prims.unit
  
 
 :pattern (
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(46,4-46,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(53,4-53,6)
 (Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(46,4-46,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(53,4-53,6)
 (ApplyTT @x2
 @x3)
 )
@@ -157363,7 +158115,7 @@ Prims.unit)
 (pop) ;; 0}pop
 ; QUERY ID: (Part2.ST.redundant_write_elim, 1)
 ; STATUS: unsat
-; UNSAT CORE GENERATED: @MaxIFuel_assumption, @query, equation_Part2.ST.bind, equation_Part2.ST.feq, equation_Part2.ST.write, int_inversion, interpretation_Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c, interpretation_Tm_abs_a042443be7fe414cca51c2f4c9aba97e, interpretation_Tm_abs_bdc06410776c1d9adee9aeba485b40ed
+; UNSAT CORE GENERATED: @MaxIFuel_assumption, @query, Prims_pretyping_ae567c2fb75be05905677af440075565, equation_Part2.ST.bind, equation_Part2.ST.feq, equation_Part2.ST.write, function_token_typing_Prims.__cache_version_number__, int_inversion, interpretation_Tm_abs_27d70a159d176eaea8d5192620d8f59f, interpretation_Tm_abs_7706f980135a89a687c904d968136d5b, interpretation_Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b
 
 ; Z3 invocation started by F*
 ; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
@@ -157385,34 +158137,105 @@ Prims.unit)
 
 (push) ;; push{2
 
-; Starting query at Part2.ST.fst(50,4-50,6)
+; Starting query at Part2.ST.fst(57,4-57,6)
 
 (declare-fun label_2 () Bool)
 (declare-fun label_1 () Bool)
-
-(declare-fun Tm_abs_84075e8b35c596cc6f7a301c9da23721 () Term)
-;;;;;;;;;;;;;;;;typing_Tm_abs_84075e8b35c596cc6f7a301c9da23721
-;;; Fact-ids: 
-(assert (! (HasType Tm_abs_84075e8b35c596cc6f7a301c9da23721
-Tm_arrow_6eb1458110f85c47ee562627d45ad810)
-:named typing_Tm_abs_84075e8b35c596cc6f7a301c9da23721))
-;;;;;;;;;;;;;;;;interpretation_Tm_abs_84075e8b35c596cc6f7a301c9da23721
+;;;;;;;;;;;;;;;;x: _ -> st _ Prims.unit
+(declare-fun Tm_arrow_cc59357d142a8af0937cab1b552b3a06 (Term) Term)
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_cc59357d142a8af0937cab1b552b3a06
 ;;; Fact-ids: 
 (assert (! 
-;; def=Part2.ST.fst(49,25-49,32); use=Part2.ST.fst(50,4-50,6)
+;; def=Part2.ST.fst(15,18-57,6); use=Part2.ST.fst(55,0-57,6)
 (forall ((@x0 Term))
- (! (= (ApplyTT Tm_abs_84075e8b35c596cc6f7a301c9da23721
-@x0)
-(Part2.ST.write @x0))
+ (! (HasType (Tm_arrow_cc59357d142a8af0937cab1b552b3a06 @x0)
+Tm_type)
  
 
-:pattern ((ApplyTT Tm_abs_84075e8b35c596cc6f7a301c9da23721
+:pattern ((HasType (Tm_arrow_cc59357d142a8af0937cab1b552b3a06 @x0)
+Tm_type))
+:qid kinding_Tm_arrow_cc59357d142a8af0937cab1b552b3a06))
+
+:named kinding_Tm_arrow_cc59357d142a8af0937cab1b552b3a06))
+;;;;;;;;;;;;;;;;pre-typing for functions
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(15,18-57,6); use=Part2.ST.fst(55,0-57,6)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+(Tm_arrow_cc59357d142a8af0937cab1b552b3a06 @x2))
+(is-Tm_arrow (PreType @x1)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_arrow_cc59357d142a8af0937cab1b552b3a06 @x2)))
+:qid Part2.ST_pre_typing_Tm_arrow_cc59357d142a8af0937cab1b552b3a06))
+
+:named Part2.ST_pre_typing_Tm_arrow_cc59357d142a8af0937cab1b552b3a06))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_cc59357d142a8af0937cab1b552b3a06
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(15,18-57,6); use=Part2.ST.fst(55,0-57,6)
+(forall ((@x0 Term) (@x1 Term))
+ (! (iff (HasTypeZ @x0
+(Tm_arrow_cc59357d142a8af0937cab1b552b3a06 @x1))
+(and 
+;; def=Part2.ST.fst(15,18-57,6); use=Part2.ST.fst(55,0-57,6)
+(forall ((@x2 Term))
+ (! (implies (HasType @x2
+@x1)
+(HasType (ApplyTT @x0
+@x2)
+(Part2.ST.st @x1
+Prims.unit)))
+ 
+
+:pattern ((ApplyTT @x0
+@x2))
+:qid Part2.ST_interpretation_Tm_arrow_cc59357d142a8af0937cab1b552b3a06.1))
+
+(IsTotFun @x0)))
+ 
+
+:pattern ((HasTypeZ @x0
+(Tm_arrow_cc59357d142a8af0937cab1b552b3a06 @x1)))
+:qid Part2.ST_interpretation_Tm_arrow_cc59357d142a8af0937cab1b552b3a06))
+
+:named Part2.ST_interpretation_Tm_arrow_cc59357d142a8af0937cab1b552b3a06))
+(declare-fun Tm_abs_5006705233129685a03226a1cb59b9c1 (Term) Term)
+;;;;;;;;;;;;;;;;typing_Tm_abs_5006705233129685a03226a1cb59b9c1
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(56,25-56,32); use=Part2.ST.fst(57,4-57,6)
+(forall ((@x0 Term))
+ (! (HasType (Tm_abs_5006705233129685a03226a1cb59b9c1 @x0)
+(Tm_arrow_cc59357d142a8af0937cab1b552b3a06 @x0))
+ 
+
+:pattern ((Tm_abs_5006705233129685a03226a1cb59b9c1 @x0))
+:qid typing_Tm_abs_5006705233129685a03226a1cb59b9c1))
+
+:named typing_Tm_abs_5006705233129685a03226a1cb59b9c1))
+;;;;;;;;;;;;;;;;interpretation_Tm_abs_5006705233129685a03226a1cb59b9c1
+;;; Fact-ids: 
+(assert (! 
+;; def=Part2.ST.fst(56,25-56,32); use=Part2.ST.fst(57,4-57,6)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (ApplyTT (Tm_abs_5006705233129685a03226a1cb59b9c1 @x1)
+@x0)
+(Part2.ST.write @x1
 @x0))
-:qid interpretation_Tm_abs_84075e8b35c596cc6f7a301c9da23721))
+ 
 
-:named interpretation_Tm_abs_84075e8b35c596cc6f7a301c9da23721))
+:pattern ((ApplyTT (Tm_abs_5006705233129685a03226a1cb59b9c1 @x1)
+@x0))
+:qid interpretation_Tm_abs_5006705233129685a03226a1cb59b9c1))
 
-; Encoding query formula : forall (_: Prims.unit).
+:named interpretation_Tm_abs_5006705233129685a03226a1cb59b9c1))
+
+; Encoding query formula : forall (_: Type) (_: Prims.unit).
 ;   (*  - Could not prove post-condition
 ; *)
 ;   forall (p: Prims.pure_post Prims.unit).
@@ -157439,70 +158262,74 @@ Tm_arrow_6eb1458110f85c47ee562627d45ad810)
 :named @MaxIFuel_assumption))
 ;;;;;;;;;;;;;;;;query
 ;;; Fact-ids: 
-(assert (! (not (forall ((@x0 Term))
- (! (implies (HasType @x0
-Prims.unit)
-
-;; def=Prims.fst(406,51-406,91); use=Prims.fst(430,19-430,32)
-(forall ((@x1 Term))
- (! (implies (and (HasType @x1
-(Prims.pure_post Prims.unit))
-
-;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(50,4-50,6)
-(forall ((@x2 Term))
- (! (implies (and (or label_1
-(HasType @x2
+(assert (! (not (forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
 Prims.unit))
 
-;; def=Part2.ST.fst(49,10-49,50); use=Part2.ST.fst(50,4-50,6)
+;; def=Prims.fst(406,51-406,91); use=Prims.fst(430,19-430,32)
+(forall ((@x2 Term))
+ (! (implies (and (HasType @x2
+(Prims.pure_post Prims.unit))
+
+;; def=Prims.fst(441,36-441,97); use=Part2.ST.fst(57,4-57,6)
+(forall ((@x3 Term))
+ (! (implies (and (or label_1
+(HasType @x3
+Prims.unit))
+
+;; def=Part2.ST.fst(56,10-56,50); use=Part2.ST.fst(57,4-57,6)
 (or label_2
 
-;; def=Part2.ST.fst(49,10-49,50); use=Part2.ST.fst(50,4-50,6)
+;; def=Part2.ST.fst(56,10-56,50); use=Part2.ST.fst(57,4-57,6)
 (Valid 
-;; def=Part2.ST.fst(49,10-49,50); use=Part2.ST.fst(50,4-50,6)
-(Part2.ST.feq Prims.int
+;; def=Part2.ST.fst(56,10-56,50); use=Part2.ST.fst(57,4-57,6)
+(Part2.ST.feq @x0
 (FStar.Pervasives.Native.tuple2 Prims.unit
-Prims.int)
-(Part2.ST.bind Prims.int
+@x0)
+(Part2.ST.bind @x0
+@x0
 Prims.unit
-(Part2.ST.read Dummy_value)
-Tm_abs_84075e8b35c596cc6f7a301c9da23721)
-(Part2.ST.return Prims.unit
+(Part2.ST.read @x0)
+(Tm_abs_5006705233129685a03226a1cb59b9c1 @x0))
+(Part2.ST.return @x0
+Prims.unit
 Tm_unit))
 )
 )
 )
 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(50,4-50,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(57,4-57,6)
 (Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(50,4-50,6)
-(ApplyTT @x1
-@x2)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(57,4-57,6)
+(ApplyTT @x2
+@x3)
 )
 )
  
 
 :pattern (
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(50,4-50,6)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(57,4-57,6)
 (Valid 
-;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(50,4-50,6)
-(ApplyTT @x1
-@x2)
+;; def=Prims.fst(441,83-441,96); use=Part2.ST.fst(57,4-57,6)
+(ApplyTT @x2
+@x3)
 )
 )
 :qid @query.2))
 )
 
 ;; def=Prims.fst(451,66-451,102); use=Prims.fst(454,31-454,44)
-(forall ((@x2 Term))
- (! (implies (HasType @x2
+(forall ((@x3 Term))
+ (! (implies (HasType @x3
 Prims.unit)
 
 ;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
 (Valid 
 ;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
-(ApplyTT @x1
-@x2)
+(ApplyTT @x2
+@x3)
 )
 )
  
@@ -157538,4 +158365,4 @@ Prims.unit)
 (pop) ;; 0}pop
 ; QUERY ID: (Part2.ST.read_write_noop, 1)
 ; STATUS: unsat
-; UNSAT CORE GENERATED: @MaxIFuel_assumption, @query, Prims_pretyping_ae567c2fb75be05905677af440075565, equation_Part2.ST.bind, equation_Part2.ST.feq, equation_Part2.ST.read, equation_Part2.ST.return, equation_Part2.ST.write, function_token_typing_Prims.__cache_version_number__, interpretation_Tm_abs_03e66b6f12eb85069ed3f8523b7cfb8c, interpretation_Tm_abs_84075e8b35c596cc6f7a301c9da23721, interpretation_Tm_abs_936ba95a022a0abfa58b689a8bbd5c1f, interpretation_Tm_abs_bdc06410776c1d9adee9aeba485b40ed, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FStar.Pervasives.Native.Mktuple2__2
+; UNSAT CORE GENERATED: @query, equation_Part2.ST.bind, equation_Part2.ST.feq, equation_Part2.ST.read, equation_Part2.ST.return, equation_Part2.ST.write, interpretation_Tm_abs_5006705233129685a03226a1cb59b9c1, interpretation_Tm_abs_7706f980135a89a687c904d968136d5b, interpretation_Tm_abs_79991cb66008561c642fa3e96942b94c, interpretation_Tm_abs_a02c4ab615d86c1fd4d6707b08902221, interpretation_Tm_abs_e63dccd4c4d84c40c92b7577b02d7e3b, projection_inverse_FStar.Pervasives.Native.Mktuple2__1, projection_inverse_FStar.Pervasives.Native.Mktuple2__2

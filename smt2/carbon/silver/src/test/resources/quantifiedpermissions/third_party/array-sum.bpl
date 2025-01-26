@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:54:03
+// Date:         2025-01-26 21:44:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/array-sum.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/array-sum-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,10 +144,10 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(k_4_1: int): bool;
+function  neverTriggered1(k_4_2: int): bool;
 function  neverTriggered2(k_5: int): bool;
-function  neverTriggered3(k_1_1: int): bool;
-function  neverTriggered4(k_2_1: int): bool;
+function  neverTriggered3(k_1: int): bool;
+function  neverTriggered4(k_2_2: int): bool;
 function  neverTriggered5(k_3: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
@@ -583,31 +583,31 @@ axiom !IsWandField(val);
 // ==================================================
 
 // Uninterpreted function definitions
-function  sum(Heap: HeapType, diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref)): int;
-function  sum'(Heap: HeapType, diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref)): int;
-axiom (forall Heap: HeapType, diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref) ::
-  { sum(Heap, diz, lo, hi, i, ar) }
-  sum(Heap, diz, lo, hi, i, ar) == sum'(Heap, diz, lo, hi, i, ar) && dummyFunction(sum#triggerStateless(diz, lo, hi, i, ar))
+function  sum_1(Heap: HeapType, diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref)): int;
+function  sum'(Heap: HeapType, diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref)): int;
+axiom (forall Heap: HeapType, diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref) ::
+  { sum_1(Heap, diz, lo, hi, i, ar_1) }
+  sum_1(Heap, diz, lo, hi, i, ar_1) == sum'(Heap, diz, lo, hi, i, ar_1) && dummyFunction(sum#triggerStateless(diz, lo, hi, i, ar_1))
 );
-axiom (forall Heap: HeapType, diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref) ::
-  { sum'(Heap, diz, lo, hi, i, ar) }
-  dummyFunction(sum#triggerStateless(diz, lo, hi, i, ar))
+axiom (forall Heap: HeapType, diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref) ::
+  { sum'(Heap, diz, lo, hi, i, ar_1) }
+  dummyFunction(sum#triggerStateless(diz, lo, hi, i, ar_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref) ::
-  { state(Heap, Mask), sum(Heap, diz, lo, hi, i, ar) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> ((diz != null && (0 <= lo && (lo <= i && i <= hi))) && hi <= Seq#Length(ar)) && (forall k1: int, k2: int ::
-    { Seq#ContainsTrigger(Seq#Range(lo, hi), k1), Seq#ContainsTrigger(Seq#Range(lo, hi), k2) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1), Seq#Contains(Seq#Range(lo, hi), k2) } { Seq#Contains(Seq#Range(lo, hi), k1), Seq#ContainsTrigger(Seq#Range(lo, hi), k2) } { Seq#Contains(Seq#Range(lo, hi), k1), Seq#Contains(Seq#Range(lo, hi), k2) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1), Seq#Index(ar, k2) } { Seq#Contains(Seq#Range(lo, hi), k1), Seq#Index(ar, k2) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k2), Seq#Index(ar, k1) } { Seq#Contains(Seq#Range(lo, hi), k2), Seq#Index(ar, k1) } { Seq#Index(ar, k1), Seq#Index(ar, k2) }
-    Seq#Contains(Seq#Range(lo, hi), k1) && (Seq#Contains(Seq#Range(lo, hi), k2) && k1 != k2) ==> Seq#Index(ar, k1) != Seq#Index(ar, k2)
-  ) ==> sum(Heap, diz, lo, hi, i, ar) == (if i < hi then Heap[Seq#Index(ar, i), val] + sum'(Heap, diz, lo, hi, i + 1, ar) else 0)
+axiom (forall Heap: HeapType, Mask: MaskType, diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref) ::
+  { state(Heap, Mask), sum_1(Heap, diz, lo, hi, i, ar_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> ((diz != null && (0 <= lo && (lo <= i && i <= hi))) && hi <= Seq#Length(ar_1)) && (forall k1: int, k2: int ::
+    { Seq#ContainsTrigger(Seq#Range(lo, hi), k1), Seq#ContainsTrigger(Seq#Range(lo, hi), k2) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1), Seq#Contains(Seq#Range(lo, hi), k2) } { Seq#Contains(Seq#Range(lo, hi), k1), Seq#ContainsTrigger(Seq#Range(lo, hi), k2) } { Seq#Contains(Seq#Range(lo, hi), k1), Seq#Contains(Seq#Range(lo, hi), k2) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1), Seq#Index(ar_1, k2) } { Seq#Contains(Seq#Range(lo, hi), k1), Seq#Index(ar_1, k2) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k2), Seq#Index(ar_1, k1) } { Seq#Contains(Seq#Range(lo, hi), k2), Seq#Index(ar_1, k1) } { Seq#Index(ar_1, k1), Seq#Index(ar_1, k2) }
+    Seq#Contains(Seq#Range(lo, hi), k1) && (Seq#Contains(Seq#Range(lo, hi), k2) && k1 != k2) ==> Seq#Index(ar_1, k1) != Seq#Index(ar_1, k2)
+  ) ==> sum_1(Heap, diz, lo, hi, i, ar_1) == (if i < hi then Heap[Seq#Index(ar_1, i), val] + sum'(Heap, diz, lo, hi, i + 1, ar_1) else 0)
 );
 
 // Framing axioms
-function  sum#frame(frame: FrameType, diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref) ::
-  { state(Heap, Mask), sum'(Heap, diz, lo, hi, i, ar) }
-  state(Heap, Mask) ==> sum'(Heap, diz, lo, hi, i, ar) == sum#frame(FrameFragment(sum#condqp1(Heap, diz, lo, hi, i, ar)), diz, lo, hi, i, ar)
+function  sum#frame(frame: FrameType, diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref) ::
+  { state(Heap, Mask), sum'(Heap, diz, lo, hi, i, ar_1) }
+  state(Heap, Mask) ==> sum'(Heap, diz, lo, hi, i, ar_1) == sum#frame(FrameFragment(sum#condqp1(Heap, diz, lo, hi, i, ar_1)), diz, lo, hi, i, ar_1)
 );
 // ==================================================
 // Function used for framing of quantified permission (forall k: Int :: { (k in [lo..hi)) } { ar[k] } (k in [lo..hi)) ==> acc(ar[k].val, wildcard)) in function sum
@@ -615,28 +615,28 @@ axiom (forall Heap: HeapType, Mask: MaskType, diz: Ref, lo: int, hi: int, i: int
 
 function  sum#condqp1(Heap: HeapType, diz_1_1: Ref, lo_1_1: int, hi_1_1: int, i_1_1_1: int, ar_1_1: (Seq Ref)): int;
 function  sk_sum#condqp1(fnAppH1: int, fnAppH2: int): int;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref) ::
-  { sum#condqp1(Heap2Heap, diz, lo, hi, i, ar), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar), succHeapTrans(Heap2Heap, Heap1Heap) }
-  (Seq#Contains(Seq#Range(lo, hi), sk_sum#condqp1(sum#condqp1(Heap2Heap, diz, lo, hi, i, ar), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar))) <==> Seq#Contains(Seq#Range(lo, hi), sk_sum#condqp1(sum#condqp1(Heap2Heap, diz, lo, hi, i, ar), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar)))) && (Seq#Contains(Seq#Range(lo, hi), sk_sum#condqp1(sum#condqp1(Heap2Heap, diz, lo, hi, i, ar), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar))) ==> Heap2Heap[Seq#Index(ar, sk_sum#condqp1(sum#condqp1(Heap2Heap, diz, lo, hi, i, ar), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar))), val] == Heap1Heap[Seq#Index(ar, sk_sum#condqp1(sum#condqp1(Heap2Heap, diz, lo, hi, i, ar), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar))), val]) ==> sum#condqp1(Heap2Heap, diz, lo, hi, i, ar) == sum#condqp1(Heap1Heap, diz, lo, hi, i, ar)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref) ::
+  { sum#condqp1(Heap2Heap, diz, lo, hi, i, ar_1), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar_1), succHeapTrans(Heap2Heap, Heap1Heap) }
+  (Seq#Contains(Seq#Range(lo, hi), sk_sum#condqp1(sum#condqp1(Heap2Heap, diz, lo, hi, i, ar_1), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar_1))) <==> Seq#Contains(Seq#Range(lo, hi), sk_sum#condqp1(sum#condqp1(Heap2Heap, diz, lo, hi, i, ar_1), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar_1)))) && (Seq#Contains(Seq#Range(lo, hi), sk_sum#condqp1(sum#condqp1(Heap2Heap, diz, lo, hi, i, ar_1), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar_1))) ==> Heap2Heap[Seq#Index(ar_1, sk_sum#condqp1(sum#condqp1(Heap2Heap, diz, lo, hi, i, ar_1), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar_1))), val] == Heap1Heap[Seq#Index(ar_1, sk_sum#condqp1(sum#condqp1(Heap2Heap, diz, lo, hi, i, ar_1), sum#condqp1(Heap1Heap, diz, lo, hi, i, ar_1))), val]) ==> sum#condqp1(Heap2Heap, diz, lo, hi, i, ar_1) == sum#condqp1(Heap1Heap, diz, lo, hi, i, ar_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  sum#trigger(frame: FrameType, diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref)): bool;
+function  sum#trigger(frame: FrameType, diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref)): bool;
 
 // State-independent trigger function
-function  sum#triggerStateless(diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref)): int;
+function  sum#triggerStateless(diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref)): int;
 
 // Check contract well-formedness and postcondition
-procedure sum#definedness(diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref)) returns (Result: int)
+procedure sum#definedness(diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref)) returns (Result: int)
   modifies Heap, Mask;
 {
   var k1_1: int;
   var k2_1: int;
-  var k_2: int;
+  var k_6: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k1_4: int;
   var k2_4: int;
   var ExhaleHeap: HeapType;
@@ -655,70 +655,70 @@ procedure sum#definedness(diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref)) ret
     assume lo <= i;
     assume i <= hi;
     assume state(Heap, Mask);
-    assume hi <= Seq#Length(ar);
+    assume hi <= Seq#Length(ar_1);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall k1: Int, k2: Int :: { (k1 in [lo..hi)), (k2 in [lo..hi)) } { (k1 in [lo..hi)), ar[k2] } { (k2 in [lo..hi)), ar[k1] } { ar[k1], ar[k2] } (k1 in [lo..hi)) && ((k2 in [lo..hi)) && k1 != k2) ==> ar[k1] != ar[k2])
       if (*) {
         if (Seq#Contains(Seq#Range(lo, hi), k1_1) && (Seq#Contains(Seq#Range(lo, hi), k2_1) && k1_1 != k2_1)) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k1] into ar might be negative. (array-sum.vpr@15.12--15.104) [40658]"}
+          assert {:msg "  Contract might not be well-formed. Index ar[k1] into ar might be negative. (array-sum.vpr@15.12--15.104) [145515]"}
             k1_1 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k1] into ar might exceed sequence length. (array-sum.vpr@15.12--15.104) [40659]"}
-            k1_1 < Seq#Length(ar);
-          assert {:msg "  Contract might not be well-formed. Index ar[k2] into ar might be negative. (array-sum.vpr@15.12--15.104) [40660]"}
+          assert {:msg "  Contract might not be well-formed. Index ar[k1] into ar might exceed sequence length. (array-sum.vpr@15.12--15.104) [145516]"}
+            k1_1 < Seq#Length(ar_1);
+          assert {:msg "  Contract might not be well-formed. Index ar[k2] into ar might be negative. (array-sum.vpr@15.12--15.104) [145517]"}
             k2_1 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k2] into ar might exceed sequence length. (array-sum.vpr@15.12--15.104) [40661]"}
-            k2_1 < Seq#Length(ar);
+          assert {:msg "  Contract might not be well-formed. Index ar[k2] into ar might exceed sequence length. (array-sum.vpr@15.12--15.104) [145518]"}
+            k2_1 < Seq#Length(ar_1);
         }
         assume false;
       }
     assume (forall k1_3: int, k2_3: int ::
-      { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_3), Seq#ContainsTrigger(Seq#Range(lo, hi), k2_3) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_3), Seq#Contains(Seq#Range(lo, hi), k2_3) } { Seq#Contains(Seq#Range(lo, hi), k1_3), Seq#ContainsTrigger(Seq#Range(lo, hi), k2_3) } { Seq#Contains(Seq#Range(lo, hi), k1_3), Seq#Contains(Seq#Range(lo, hi), k2_3) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_3), Seq#Index(ar, k2_3) } { Seq#Contains(Seq#Range(lo, hi), k1_3), Seq#Index(ar, k2_3) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k2_3), Seq#Index(ar, k1_3) } { Seq#Contains(Seq#Range(lo, hi), k2_3), Seq#Index(ar, k1_3) } { Seq#Index(ar, k1_3), Seq#Index(ar, k2_3) }
-      Seq#Contains(Seq#Range(lo, hi), k1_3) && (Seq#Contains(Seq#Range(lo, hi), k2_3) && k1_3 != k2_3) ==> Seq#Index(ar, k1_3) != Seq#Index(ar, k2_3)
+      { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_3), Seq#ContainsTrigger(Seq#Range(lo, hi), k2_3) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_3), Seq#Contains(Seq#Range(lo, hi), k2_3) } { Seq#Contains(Seq#Range(lo, hi), k1_3), Seq#ContainsTrigger(Seq#Range(lo, hi), k2_3) } { Seq#Contains(Seq#Range(lo, hi), k1_3), Seq#Contains(Seq#Range(lo, hi), k2_3) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_3), Seq#Index(ar_1, k2_3) } { Seq#Contains(Seq#Range(lo, hi), k1_3), Seq#Index(ar_1, k2_3) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k2_3), Seq#Index(ar_1, k1_3) } { Seq#Contains(Seq#Range(lo, hi), k2_3), Seq#Index(ar_1, k1_3) } { Seq#Index(ar_1, k1_3), Seq#Index(ar_1, k2_3) }
+      Seq#Contains(Seq#Range(lo, hi), k1_3) && (Seq#Contains(Seq#Range(lo, hi), k2_3) && k1_3 != k2_3) ==> Seq#Index(ar_1, k1_3) != Seq#Index(ar_1, k2_3)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall k: Int :: { (k in [lo..hi)) } { ar[k] } (k in [lo..hi)) ==> acc(ar[k].val, wildcard))
       if (*) {
-        if (Seq#Contains(Seq#Range(lo, hi), k_2)) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (array-sum.vpr@16.12--16.71) [40662]"}
-            k_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (array-sum.vpr@16.12--16.71) [40663]"}
-            k_2 < Seq#Length(ar);
+        if (Seq#Contains(Seq#Range(lo, hi), k_6)) {
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (array-sum.vpr@16.12--16.71) [145519]"}
+            k_6 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (array-sum.vpr@16.12--16.71) [145520]"}
+            k_6 < Seq#Length(ar_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].val might not be injective. (array-sum.vpr@16.12--16.71) [40664]"}
-      (forall k_4_1: int, k_4_2: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].val might not be injective. (array-sum.vpr@16.12--16.71) [145521]"}
+      (forall k_4_2: int, k_4_3: int ::
       
-      (((k_4_1 != k_4_2 && Seq#Contains(Seq#Range(lo, hi), k_4_1)) && Seq#Contains(Seq#Range(lo, hi), k_4_2)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_4_1) != Seq#Index(ar, k_4_2)
+      (((k_4_2 != k_4_3 && Seq#Contains(Seq#Range(lo, hi), k_4_2)) && Seq#Contains(Seq#Range(lo, hi), k_4_3)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_4_2) != Seq#Index(ar_1, k_4_3)
     );
     
     // -- Define Inverse Function
-      assume (forall k_4_1: int ::
-        { Seq#Index(ar, k_4_1) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k_4_1) } { Seq#Contains(Seq#Range(lo, hi), k_4_1) } { Seq#Index(ar, k_4_1) }
-        Seq#Contains(Seq#Range(lo, hi), k_4_1) ==> qpRange1(Seq#Index(ar, k_4_1)) && invRecv1(Seq#Index(ar, k_4_1)) == k_4_1
+      assume (forall k_4_2: int ::
+        { Seq#Index(ar_1, k_4_2) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k_4_2) } { Seq#Contains(Seq#Range(lo, hi), k_4_2) } { Seq#Index(ar_1, k_4_2) }
+        Seq#Contains(Seq#Range(lo, hi), k_4_2) ==> qpRange1(Seq#Index(ar_1, k_4_2)) && invRecv1(Seq#Index(ar_1, k_4_2)) == k_4_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        Seq#Contains(Seq#Range(lo, hi), invRecv1(o_4)) && qpRange1(o_4) ==> Seq#Index(ar, invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        Seq#Contains(Seq#Range(lo, hi), invRecv1(o_9)) && qpRange1(o_9) ==> Seq#Index(ar_1, invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall k_4_1: int ::
-        { Seq#Index(ar, k_4_1) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k_4_1) } { Seq#Contains(Seq#Range(lo, hi), k_4_1) } { Seq#Index(ar, k_4_1) }
-        Seq#Contains(Seq#Range(lo, hi), k_4_1) ==> Seq#Index(ar, k_4_1) != null
+      assume (forall k_4_2: int ::
+        { Seq#Index(ar_1, k_4_2) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k_4_2) } { Seq#Contains(Seq#Range(lo, hi), k_4_2) } { Seq#Index(ar_1, k_4_2) }
+        Seq#Contains(Seq#Range(lo, hi), k_4_2) ==> Seq#Index(ar_1, k_4_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (Seq#Contains(Seq#Range(lo, hi), invRecv1(o_4)) && qpRange1(o_4) ==> Seq#Index(ar, invRecv1(o_4)) == o_4 && Mask[o_4, val] < QPMask[o_4, val]) && (!(Seq#Contains(Seq#Range(lo, hi), invRecv1(o_4)) && qpRange1(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (Seq#Contains(Seq#Range(lo, hi), invRecv1(o_9)) && qpRange1(o_9) ==> Seq#Index(ar_1, invRecv1(o_9)) == o_9 && Mask[o_9, val] < QPMask[o_9, val]) && (!(Seq#Contains(Seq#Range(lo, hi), invRecv1(o_9)) && qpRange1(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -728,79 +728,79 @@ procedure sum#definedness(diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref)) ret
     
     // -- Check definedness of (i < hi ? ar[i].val + sum(diz, lo, hi, i + 1, ar) : 0)
       if (i < hi) {
-        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (array-sum.vpr@11.1--19.2) [40665]"}
+        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might be negative. (array-sum.vpr@11.1--19.2) [145522]"}
           i >= 0;
-        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (array-sum.vpr@11.1--19.2) [40666]"}
-          i < Seq#Length(ar);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ar[i].val (array-sum.vpr@11.1--19.2) [40667]"}
-          HasDirectPerm(Mask, Seq#Index(ar, i), val);
+        assert {:msg "  Function might not be well-formed. Index ar[i] into ar might exceed sequence length. (array-sum.vpr@11.1--19.2) [145523]"}
+          i < Seq#Length(ar_1);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access ar[i].val (array-sum.vpr@11.1--19.2) [145524]"}
+          HasDirectPerm(Mask, Seq#Index(ar_1, i), val);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function sum might not hold. Assertion diz != null might not hold. (array-sum.vpr@18.25--18.52) [40668]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function sum might not hold. Assertion diz != null might not hold. (array-sum.vpr@18.25--18.52) [145525]"}
             diz != null;
-          assert {:msg "  Precondition of function sum might not hold. Assertion 0 <= lo might not hold. (array-sum.vpr@18.25--18.52) [40669]"}
+          assert {:msg "  Precondition of function sum might not hold. Assertion 0 <= lo might not hold. (array-sum.vpr@18.25--18.52) [145526]"}
             0 <= lo;
-          assert {:msg "  Precondition of function sum might not hold. Assertion lo <= i + 1 might not hold. (array-sum.vpr@18.25--18.52) [40670]"}
+          assert {:msg "  Precondition of function sum might not hold. Assertion lo <= i + 1 might not hold. (array-sum.vpr@18.25--18.52) [145527]"}
             lo <= i + 1;
-          assert {:msg "  Precondition of function sum might not hold. Assertion i + 1 <= hi might not hold. (array-sum.vpr@18.25--18.52) [40671]"}
+          assert {:msg "  Precondition of function sum might not hold. Assertion i + 1 <= hi might not hold. (array-sum.vpr@18.25--18.52) [145528]"}
             i + 1 <= hi;
-          assert {:msg "  Precondition of function sum might not hold. Assertion hi <= |ar| might not hold. (array-sum.vpr@18.25--18.52) [40672]"}
-            hi <= Seq#Length(ar);
+          assert {:msg "  Precondition of function sum might not hold. Assertion hi <= |ar| might not hold. (array-sum.vpr@18.25--18.52) [145529]"}
+            hi <= Seq#Length(ar_1);
           if (*) {
             if (Seq#Contains(Seq#Range(lo, hi), k1_4) && (Seq#Contains(Seq#Range(lo, hi), k2_4) && k1_4 != k2_4)) {
-              assert {:msg "  Precondition of function sum might not hold. Assertion ar[k1] != ar[k2] might not hold. (array-sum.vpr@18.25--18.52) [40673]"}
-                Seq#Index(ar, k1_4) != Seq#Index(ar, k2_4);
+              assert {:msg "  Precondition of function sum might not hold. Assertion ar[k1] != ar[k2] might not hold. (array-sum.vpr@18.25--18.52) [145530]"}
+                Seq#Index(ar_1, k1_4) != Seq#Index(ar_1, k2_4);
             }
             assume false;
           }
           assume (forall k1_5_1: int, k2_5_1: int ::
-            { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_5_1), Seq#ContainsTrigger(Seq#Range(lo, hi), k2_5_1) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_5_1), Seq#Contains(Seq#Range(lo, hi), k2_5_1) } { Seq#Contains(Seq#Range(lo, hi), k1_5_1), Seq#ContainsTrigger(Seq#Range(lo, hi), k2_5_1) } { Seq#Contains(Seq#Range(lo, hi), k1_5_1), Seq#Contains(Seq#Range(lo, hi), k2_5_1) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_5_1), Seq#Index(ar, k2_5_1) } { Seq#Contains(Seq#Range(lo, hi), k1_5_1), Seq#Index(ar, k2_5_1) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k2_5_1), Seq#Index(ar, k1_5_1) } { Seq#Contains(Seq#Range(lo, hi), k2_5_1), Seq#Index(ar, k1_5_1) } { Seq#Index(ar, k1_5_1), Seq#Index(ar, k2_5_1) }
-            Seq#Contains(Seq#Range(lo, hi), k1_5_1) && (Seq#Contains(Seq#Range(lo, hi), k2_5_1) && k1_5_1 != k2_5_1) ==> Seq#Index(ar, k1_5_1) != Seq#Index(ar, k2_5_1)
+            { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_5_1), Seq#ContainsTrigger(Seq#Range(lo, hi), k2_5_1) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_5_1), Seq#Contains(Seq#Range(lo, hi), k2_5_1) } { Seq#Contains(Seq#Range(lo, hi), k1_5_1), Seq#ContainsTrigger(Seq#Range(lo, hi), k2_5_1) } { Seq#Contains(Seq#Range(lo, hi), k1_5_1), Seq#Contains(Seq#Range(lo, hi), k2_5_1) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k1_5_1), Seq#Index(ar_1, k2_5_1) } { Seq#Contains(Seq#Range(lo, hi), k1_5_1), Seq#Index(ar_1, k2_5_1) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k2_5_1), Seq#Index(ar_1, k1_5_1) } { Seq#Contains(Seq#Range(lo, hi), k2_5_1), Seq#Index(ar_1, k1_5_1) } { Seq#Index(ar_1, k1_5_1), Seq#Index(ar_1, k2_5_1) }
+            Seq#Contains(Seq#Range(lo, hi), k1_5_1) && (Seq#Contains(Seq#Range(lo, hi), k2_5_1) && k1_5_1 != k2_5_1) ==> Seq#Index(ar_1, k1_5_1) != Seq#Index(ar_1, k2_5_1)
           );
           havoc QPMask;
           // wild card assumptions
           havoc wildcard;
-          assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@18.25--18.52) [40674]"}
+          assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@18.25--18.52) [145531]"}
             (forall k_5: int ::
             
-            Seq#Contains(Seq#Range(lo, hi), k_5) ==> Mask[Seq#Index(ar, k_5), val] > NoPerm
+            Seq#Contains(Seq#Range(lo, hi), k_5) ==> Mask[Seq#Index(ar_1, k_5), val] > NoPerm
           );
           assume (forall k_5: int ::
             
-            Seq#Contains(Seq#Range(lo, hi), k_5) ==> wildcard < Mask[Seq#Index(ar, k_5), val]
+            Seq#Contains(Seq#Range(lo, hi), k_5) ==> wildcard < Mask[Seq#Index(ar_1, k_5), val]
           );
           
           // -- check that the permission amount is positive
-            assert {:msg "  Precondition of function sum might not hold. Fraction wildcard might be negative. (array-sum.vpr@18.25--18.52) [40675]"}
+            assert {:msg "  Precondition of function sum might not hold. Fraction wildcard might be negative. (array-sum.vpr@18.25--18.52) [145532]"}
               (forall k_5: int ::
-              { Seq#Index(ar, k_5) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k_5) } { Seq#Contains(Seq#Range(lo, hi), k_5) } { Seq#Index(ar, k_5) }
-              Seq#Contains(Seq#Range(lo, hi), k_5) && dummyFunction(Heap[Seq#Index(ar, k_5), val]) ==> wildcard >= NoPerm
+              { Seq#Index(ar_1, k_5) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k_5) } { Seq#Contains(Seq#Range(lo, hi), k_5) } { Seq#Index(ar_1, k_5) }
+              Seq#Contains(Seq#Range(lo, hi), k_5) && dummyFunction(Heap[Seq#Index(ar_1, k_5), val]) ==> wildcard >= NoPerm
             );
           
           // -- check if receiver ar[k] is injective
-            assert {:msg "  Precondition of function sum might not hold. Quantified resource ar[k].val might not be injective. (array-sum.vpr@18.25--18.52) [40676]"}
+            assert {:msg "  Precondition of function sum might not hold. Quantified resource ar[k].val might not be injective. (array-sum.vpr@18.25--18.52) [145533]"}
               (forall k_5: int, k_5_1: int ::
               { neverTriggered2(k_5), neverTriggered2(k_5_1) }
-              (((k_5 != k_5_1 && Seq#Contains(Seq#Range(lo, hi), k_5)) && Seq#Contains(Seq#Range(lo, hi), k_5_1)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_5) != Seq#Index(ar, k_5_1)
+              (((k_5 != k_5_1 && Seq#Contains(Seq#Range(lo, hi), k_5)) && Seq#Contains(Seq#Range(lo, hi), k_5_1)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_5) != Seq#Index(ar_1, k_5_1)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@18.25--18.52) [40677]"}
+            assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@18.25--18.52) [145534]"}
               (forall k_5: int ::
-              { Seq#Index(ar, k_5) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k_5) } { Seq#Contains(Seq#Range(lo, hi), k_5) } { Seq#Index(ar, k_5) }
-              Seq#Contains(Seq#Range(lo, hi), k_5) ==> wildcard > NoPerm ==> Mask[Seq#Index(ar, k_5), val] > NoPerm
+              { Seq#Index(ar_1, k_5) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k_5) } { Seq#Contains(Seq#Range(lo, hi), k_5) } { Seq#Index(ar_1, k_5) }
+              Seq#Contains(Seq#Range(lo, hi), k_5) ==> wildcard > NoPerm ==> Mask[Seq#Index(ar_1, k_5), val] > NoPerm
             );
           
           // -- assumptions for inverse of receiver ar[k]
             assume (forall k_5: int ::
-              { Seq#Index(ar, k_5) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k_5) } { Seq#Contains(Seq#Range(lo, hi), k_5) } { Seq#Index(ar, k_5) }
-              Seq#Contains(Seq#Range(lo, hi), k_5) && NoPerm < wildcard ==> qpRange2(Seq#Index(ar, k_5)) && invRecv2(Seq#Index(ar, k_5)) == k_5
+              { Seq#Index(ar_1, k_5) } { Seq#ContainsTrigger(Seq#Range(lo, hi), k_5) } { Seq#Contains(Seq#Range(lo, hi), k_5) } { Seq#Index(ar_1, k_5) }
+              Seq#Contains(Seq#Range(lo, hi), k_5) && NoPerm < wildcard ==> qpRange2(Seq#Index(ar_1, k_5)) && invRecv2(Seq#Index(ar_1, k_5)) == k_5
             );
-            assume (forall o_4: Ref ::
-              { invRecv2(o_4) }
-              Seq#Contains(Seq#Range(lo, hi), invRecv2(o_4)) && (NoPerm < wildcard && qpRange2(o_4)) ==> Seq#Index(ar, invRecv2(o_4)) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv2(o_9) }
+              Seq#Contains(Seq#Range(lo, hi), invRecv2(o_9)) && (NoPerm < wildcard && qpRange2(o_9)) ==> Seq#Index(ar_1, invRecv2(o_9)) == o_9
             );
           // Finish exhale
           havoc ExhaleHeap;
@@ -810,19 +810,19 @@ procedure sum#definedness(diz: Ref, lo: int, hi: int, i: int, ar: (Seq Ref)) ret
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume sum#trigger(FrameFragment(sum#condqp1(Heap, diz, lo, hi, i + 1, ar)), diz, lo, hi, i + 1, ar);
+          assume sum#trigger(FrameFragment(sum#condqp1(Heap, diz, lo, hi, i + 1, ar_1)), diz, lo, hi, i + 1, ar_1);
         }
       }
   
   // -- Translate function body
-    Result := (if i < hi then Heap[Seq#Index(ar, i), val] + sum(Heap, diz, lo, hi, i + 1, ar) else 0);
+    Result := (if i < hi then Heap[Seq#Index(ar_1, i), val] + sum_1(Heap, diz, lo, hi, i + 1, ar_1) else 0);
 }
 
 // ==================================================
 // Translation of method do_sum
 // ==================================================
 
-procedure do_sum(diz: Ref, ar: (Seq Ref)) returns ()
+procedure do_sum(diz: Ref, ar_1: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -830,16 +830,16 @@ procedure do_sum(diz: Ref, ar: (Seq Ref)) returns ()
   var k2_2: int;
   var k_7: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k1_2_1: int;
   var k2_2_1: int;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var k1_4: int;
   var k2_4: int;
   
@@ -863,71 +863,71 @@ procedure do_sum(diz: Ref, ar: (Seq Ref)) returns ()
     
     // -- Check definedness of (forall k1: Int, k2: Int :: { (k1 in [0..|ar|)), (k2 in [0..|ar|)) } { (k1 in [0..|ar|)), ar[k2] } { (k2 in [0..|ar|)), ar[k1] } { ar[k1], ar[k2] } (k1 in [0..|ar|)) && ((k2 in [0..|ar|)) && k1 != k2) ==> ar[k1] != ar[k2])
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_2) && (Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_2) && k1_2 != k2_2)) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k1] into ar might be negative. (array-sum.vpr@24.12--24.106) [40678]"}
+        if (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_2) && (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_2) && k1_2 != k2_2)) {
+          assert {:msg "  Contract might not be well-formed. Index ar[k1] into ar might be negative. (array-sum.vpr@24.12--24.106) [145535]"}
             k1_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k1] into ar might exceed sequence length. (array-sum.vpr@24.12--24.106) [40679]"}
-            k1_2 < Seq#Length(ar);
-          assert {:msg "  Contract might not be well-formed. Index ar[k2] into ar might be negative. (array-sum.vpr@24.12--24.106) [40680]"}
+          assert {:msg "  Contract might not be well-formed. Index ar[k1] into ar might exceed sequence length. (array-sum.vpr@24.12--24.106) [145536]"}
+            k1_2 < Seq#Length(ar_1);
+          assert {:msg "  Contract might not be well-formed. Index ar[k2] into ar might be negative. (array-sum.vpr@24.12--24.106) [145537]"}
             k2_2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k2] into ar might exceed sequence length. (array-sum.vpr@24.12--24.106) [40681]"}
-            k2_2 < Seq#Length(ar);
+          assert {:msg "  Contract might not be well-formed. Index ar[k2] into ar might exceed sequence length. (array-sum.vpr@24.12--24.106) [145538]"}
+            k2_2 < Seq#Length(ar_1);
         }
         assume false;
       }
     assume (forall k1_1_1: int, k2_1_1: int ::
-      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k1_1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k1_1_1), Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_1_1), Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k1_1_1), Seq#Index(ar, k2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_1_1), Seq#Index(ar, k2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k2_1_1), Seq#Index(ar, k1_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_1_1), Seq#Index(ar, k1_1_1) } { Seq#Index(ar, k1_1_1), Seq#Index(ar, k2_1_1) }
-      Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_1_1) && (Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_1_1) && k1_1_1 != k2_1_1) ==> Seq#Index(ar, k1_1_1) != Seq#Index(ar, k2_1_1)
+      { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k1_1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k1_1_1), Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_1_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_1_1), Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k1_1_1), Seq#Index(ar_1, k2_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_1_1), Seq#Index(ar_1, k2_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k2_1_1), Seq#Index(ar_1, k1_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_1_1), Seq#Index(ar_1, k1_1_1) } { Seq#Index(ar_1, k1_1_1), Seq#Index(ar_1, k2_1_1) }
+      Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_1_1) && (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_1_1) && k1_1_1 != k2_1_1) ==> Seq#Index(ar_1, k1_1_1) != Seq#Index(ar_1, k2_1_1)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall k: Int :: { (k in [0..|ar|)) } { ar[k] } (k in [0..|ar|)) ==> acc(ar[k].val, 1 / 2))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_7)) {
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (array-sum.vpr@25.12--25.69) [40682]"}
+        if (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_7)) {
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might be negative. (array-sum.vpr@25.12--25.69) [145539]"}
             k_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (array-sum.vpr@25.12--25.69) [40683]"}
-            k_7 < Seq#Length(ar);
+          assert {:msg "  Contract might not be well-formed. Index ar[k] into ar might exceed sequence length. (array-sum.vpr@25.12--25.69) [145540]"}
+            k_7 < Seq#Length(ar_1);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].val might not be injective. (array-sum.vpr@25.12--25.69) [40684]"}
-      (forall k_1_1: int, k_1_2: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource ar[k].val might not be injective. (array-sum.vpr@25.12--25.69) [145541]"}
+      (forall k_1: int, k_1_1: int ::
       
-      (((k_1_1 != k_1_2 && Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_1_1)) && Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_1_2)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Seq#Index(ar, k_1_1) != Seq#Index(ar, k_1_2)
+      (((k_1 != k_1_1 && Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_1)) && Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_1_1)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Seq#Index(ar_1, k_1) != Seq#Index(ar_1, k_1_1)
     );
     
     // -- Define Inverse Function
-      assume (forall k_1_1: int ::
-        { Seq#Index(ar, k_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_1_1) } { Seq#Index(ar, k_1_1) }
-        Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_1_1) && NoPerm < 1 / 2 ==> qpRange3(Seq#Index(ar, k_1_1)) && invRecv3(Seq#Index(ar, k_1_1)) == k_1_1
+      assume (forall k_1: int ::
+        { Seq#Index(ar_1, k_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_1) } { Seq#Index(ar_1, k_1) }
+        Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_1) && NoPerm < 1 / 2 ==> qpRange3(Seq#Index(ar_1, k_1)) && invRecv3(Seq#Index(ar_1, k_1)) == k_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (Seq#Contains(Seq#Range(0, Seq#Length(ar)), invRecv3(o_4)) && NoPerm < 1 / 2) && qpRange3(o_4) ==> Seq#Index(ar, invRecv3(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), invRecv3(o_9)) && NoPerm < 1 / 2) && qpRange3(o_9) ==> Seq#Index(ar_1, invRecv3(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (array-sum.vpr@25.12--25.69) [40685]"}
-      (forall k_1_1: int ::
-      { Seq#Index(ar, k_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_1_1) } { Seq#Index(ar, k_1_1) }
-      Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_1_1) ==> 1 / 2 >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (array-sum.vpr@25.12--25.69) [145542]"}
+      (forall k_1: int ::
+      { Seq#Index(ar_1, k_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_1) } { Seq#Index(ar_1, k_1) }
+      Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_1) ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall k_1_1: int ::
-        { Seq#Index(ar, k_1_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k_1_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_1_1) } { Seq#Index(ar, k_1_1) }
-        Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_1_1) && 1 / 2 > NoPerm ==> Seq#Index(ar, k_1_1) != null
+      assume (forall k_1: int ::
+        { Seq#Index(ar_1, k_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_1) } { Seq#Index(ar_1, k_1) }
+        Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_1) && 1 / 2 > NoPerm ==> Seq#Index(ar_1, k_1) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((Seq#Contains(Seq#Range(0, Seq#Length(ar)), invRecv3(o_4)) && NoPerm < 1 / 2) && qpRange3(o_4) ==> (NoPerm < 1 / 2 ==> Seq#Index(ar, invRecv3(o_4)) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + 1 / 2) && (!((Seq#Contains(Seq#Range(0, Seq#Length(ar)), invRecv3(o_4)) && NoPerm < 1 / 2) && qpRange3(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), invRecv3(o_9)) && NoPerm < 1 / 2) && qpRange3(o_9) ==> (NoPerm < 1 / 2 ==> Seq#Index(ar_1, invRecv3(o_9)) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + 1 / 2) && (!((Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), invRecv3(o_9)) && NoPerm < 1 / 2) && qpRange3(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -936,78 +936,78 @@ procedure do_sum(diz: Ref, ar: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale diz.res == sum(diz, 0, |ar|, 0, ar) -- array-sum.vpr@27.10--27.45
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.res == sum(diz, 0, |ar|, 0, ar)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.res (array-sum.vpr@27.10--27.45) [40686]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access diz.res (array-sum.vpr@27.10--27.45) [145543]"}
         HasDirectPerm(Mask, diz, res_1);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Precondition of function sum might not hold. Assertion diz != null might not hold. (array-sum.vpr@27.21--27.45) [40687]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Precondition of function sum might not hold. Assertion diz != null might not hold. (array-sum.vpr@27.21--27.45) [145544]"}
           diz != null;
-        assert {:msg "  Precondition of function sum might not hold. Assertion 0 <= |ar| might not hold. (array-sum.vpr@27.21--27.45) [40688]"}
-          0 <= Seq#Length(ar);
-        assert {:msg "  Precondition of function sum might not hold. Assertion |ar| <= |ar| might not hold. (array-sum.vpr@27.21--27.45) [40689]"}
-          Seq#Length(ar) <= Seq#Length(ar);
+        assert {:msg "  Precondition of function sum might not hold. Assertion 0 <= |ar| might not hold. (array-sum.vpr@27.21--27.45) [145545]"}
+          0 <= Seq#Length(ar_1);
+        assert {:msg "  Precondition of function sum might not hold. Assertion |ar| <= |ar| might not hold. (array-sum.vpr@27.21--27.45) [145546]"}
+          Seq#Length(ar_1) <= Seq#Length(ar_1);
         if (*) {
-          if (Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_2_1) && (Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_2_1) && k1_2_1 != k2_2_1)) {
-            assert {:msg "  Precondition of function sum might not hold. Assertion ar[k1] != ar[k2] might not hold. (array-sum.vpr@27.21--27.45) [40690]"}
-              Seq#Index(ar, k1_2_1) != Seq#Index(ar, k2_2_1);
+          if (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_2_1) && (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_2_1) && k1_2_1 != k2_2_1)) {
+            assert {:msg "  Precondition of function sum might not hold. Assertion ar[k1] != ar[k2] might not hold. (array-sum.vpr@27.21--27.45) [145547]"}
+              Seq#Index(ar_1, k1_2_1) != Seq#Index(ar_1, k2_2_1);
           }
           assume false;
         }
         assume (forall k1_3_1: int, k2_3_1: int ::
-          { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k1_3_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k2_3_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k1_3_1), Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_3_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_3_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k2_3_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_3_1), Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_3_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k1_3_1), Seq#Index(ar, k2_3_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_3_1), Seq#Index(ar, k2_3_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k2_3_1), Seq#Index(ar, k1_3_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_3_1), Seq#Index(ar, k1_3_1) } { Seq#Index(ar, k1_3_1), Seq#Index(ar, k2_3_1) }
-          Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_3_1) && (Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_3_1) && k1_3_1 != k2_3_1) ==> Seq#Index(ar, k1_3_1) != Seq#Index(ar, k2_3_1)
+          { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k1_3_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k2_3_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k1_3_1), Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_3_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_3_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k2_3_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_3_1), Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_3_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k1_3_1), Seq#Index(ar_1, k2_3_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_3_1), Seq#Index(ar_1, k2_3_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k2_3_1), Seq#Index(ar_1, k1_3_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_3_1), Seq#Index(ar_1, k1_3_1) } { Seq#Index(ar_1, k1_3_1), Seq#Index(ar_1, k2_3_1) }
+          Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_3_1) && (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_3_1) && k1_3_1 != k2_3_1) ==> Seq#Index(ar_1, k1_3_1) != Seq#Index(ar_1, k2_3_1)
         );
         havoc QPMask;
         // wild card assumptions
         havoc wildcard;
-        assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@27.21--27.45) [40691]"}
-          (forall k_2_1: int ::
+        assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@27.21--27.45) [145548]"}
+          (forall k_2_2: int ::
           
-          Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_2_1) ==> Mask[Seq#Index(ar, k_2_1), val] > NoPerm
+          Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_2_2) ==> Mask[Seq#Index(ar_1, k_2_2), val] > NoPerm
         );
-        assume (forall k_2_1: int ::
+        assume (forall k_2_2: int ::
           
-          Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_2_1) ==> wildcard < Mask[Seq#Index(ar, k_2_1), val]
+          Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_2_2) ==> wildcard < Mask[Seq#Index(ar_1, k_2_2), val]
         );
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function sum might not hold. Fraction wildcard might be negative. (array-sum.vpr@27.21--27.45) [40692]"}
-            (forall k_2_1: int ::
-            { Seq#Index(ar, k_2_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k_2_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_2_1) } { Seq#Index(ar, k_2_1) }
-            Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_2_1) && dummyFunction(Heap[Seq#Index(ar, k_2_1), val]) ==> wildcard >= NoPerm
+          assert {:msg "  Precondition of function sum might not hold. Fraction wildcard might be negative. (array-sum.vpr@27.21--27.45) [145549]"}
+            (forall k_2_2: int ::
+            { Seq#Index(ar_1, k_2_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k_2_2) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_2_2) } { Seq#Index(ar_1, k_2_2) }
+            Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_2_2) && dummyFunction(Heap[Seq#Index(ar_1, k_2_2), val]) ==> wildcard >= NoPerm
           );
         
         // -- check if receiver ar[k] is injective
-          assert {:msg "  Precondition of function sum might not hold. Quantified resource ar[k].val might not be injective. (array-sum.vpr@27.21--27.45) [40693]"}
-            (forall k_2_1: int, k_2_2: int ::
-            { neverTriggered4(k_2_1), neverTriggered4(k_2_2) }
-            (((k_2_1 != k_2_2 && Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_2_1)) && Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_2_2)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_2_1) != Seq#Index(ar, k_2_2)
+          assert {:msg "  Precondition of function sum might not hold. Quantified resource ar[k].val might not be injective. (array-sum.vpr@27.21--27.45) [145550]"}
+            (forall k_2_2: int, k_2_3: int ::
+            { neverTriggered4(k_2_2), neverTriggered4(k_2_3) }
+            (((k_2_2 != k_2_3 && Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_2_2)) && Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_2_3)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_2_2) != Seq#Index(ar_1, k_2_3)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@27.21--27.45) [40694]"}
-            (forall k_2_1: int ::
-            { Seq#Index(ar, k_2_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k_2_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_2_1) } { Seq#Index(ar, k_2_1) }
-            Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_2_1) ==> wildcard > NoPerm ==> Mask[Seq#Index(ar, k_2_1), val] > NoPerm
+          assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@27.21--27.45) [145551]"}
+            (forall k_2_2: int ::
+            { Seq#Index(ar_1, k_2_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k_2_2) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_2_2) } { Seq#Index(ar_1, k_2_2) }
+            Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_2_2) ==> wildcard > NoPerm ==> Mask[Seq#Index(ar_1, k_2_2), val] > NoPerm
           );
         
         // -- assumptions for inverse of receiver ar[k]
-          assume (forall k_2_1: int ::
-            { Seq#Index(ar, k_2_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k_2_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_2_1) } { Seq#Index(ar, k_2_1) }
-            Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_2_1) && NoPerm < wildcard ==> qpRange4(Seq#Index(ar, k_2_1)) && invRecv4(Seq#Index(ar, k_2_1)) == k_2_1
+          assume (forall k_2_2: int ::
+            { Seq#Index(ar_1, k_2_2) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k_2_2) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_2_2) } { Seq#Index(ar_1, k_2_2) }
+            Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_2_2) && NoPerm < wildcard ==> qpRange4(Seq#Index(ar_1, k_2_2)) && invRecv4(Seq#Index(ar_1, k_2_2)) == k_2_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv4(o_4) }
-            Seq#Contains(Seq#Range(0, Seq#Length(ar)), invRecv4(o_4)) && (NoPerm < wildcard && qpRange4(o_4)) ==> Seq#Index(ar, invRecv4(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv4(o_9) }
+            Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), invRecv4(o_9)) && (NoPerm < wildcard && qpRange4(o_9)) ==> Seq#Index(ar_1, invRecv4(o_9)) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -1016,80 +1016,80 @@ procedure do_sum(diz: Ref, ar: (Seq Ref)) returns ()
         // Stop execution
         assume false;
       }
-    assume Heap[diz, res_1] == sum(Heap, diz, 0, Seq#Length(ar), 0, ar);
+    assume Heap[diz, res_1] == sum_1(Heap, diz, 0, Seq#Length(ar_1), 0, ar_1);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert diz.res == sum(diz, 0, |ar|, 0, ar) -- array-sum.vpr@28.3--28.45
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of diz.res == sum(diz, 0, |ar|, 0, ar)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.res (array-sum.vpr@28.10--28.45) [40695]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access diz.res (array-sum.vpr@28.10--28.45) [145552]"}
         HasDirectPerm(ExhaleWellDef0Mask, diz, res_1);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-        assert {:msg "  Precondition of function sum might not hold. Assertion diz != null might not hold. (array-sum.vpr@28.21--28.45) [40696]"}
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        assert {:msg "  Precondition of function sum might not hold. Assertion diz != null might not hold. (array-sum.vpr@28.21--28.45) [145553]"}
           diz != null;
-        assert {:msg "  Precondition of function sum might not hold. Assertion 0 <= |ar| might not hold. (array-sum.vpr@28.21--28.45) [40697]"}
-          0 <= Seq#Length(ar);
-        assert {:msg "  Precondition of function sum might not hold. Assertion |ar| <= |ar| might not hold. (array-sum.vpr@28.21--28.45) [40698]"}
-          Seq#Length(ar) <= Seq#Length(ar);
+        assert {:msg "  Precondition of function sum might not hold. Assertion 0 <= |ar| might not hold. (array-sum.vpr@28.21--28.45) [145554]"}
+          0 <= Seq#Length(ar_1);
+        assert {:msg "  Precondition of function sum might not hold. Assertion |ar| <= |ar| might not hold. (array-sum.vpr@28.21--28.45) [145555]"}
+          Seq#Length(ar_1) <= Seq#Length(ar_1);
         if (*) {
-          if (Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_4) && (Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_4) && k1_4 != k2_4)) {
-            assert {:msg "  Precondition of function sum might not hold. Assertion ar[k1] != ar[k2] might not hold. (array-sum.vpr@28.21--28.45) [40699]"}
-              Seq#Index(ar, k1_4) != Seq#Index(ar, k2_4);
+          if (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_4) && (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_4) && k1_4 != k2_4)) {
+            assert {:msg "  Precondition of function sum might not hold. Assertion ar[k1] != ar[k2] might not hold. (array-sum.vpr@28.21--28.45) [145556]"}
+              Seq#Index(ar_1, k1_4) != Seq#Index(ar_1, k2_4);
           }
           assume false;
         }
         assume (forall k1_5_1: int, k2_5_1: int ::
-          { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k1_5_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k2_5_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k1_5_1), Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_5_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_5_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k2_5_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_5_1), Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_5_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k1_5_1), Seq#Index(ar, k2_5_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_5_1), Seq#Index(ar, k2_5_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k2_5_1), Seq#Index(ar, k1_5_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_5_1), Seq#Index(ar, k1_5_1) } { Seq#Index(ar, k1_5_1), Seq#Index(ar, k2_5_1) }
-          Seq#Contains(Seq#Range(0, Seq#Length(ar)), k1_5_1) && (Seq#Contains(Seq#Range(0, Seq#Length(ar)), k2_5_1) && k1_5_1 != k2_5_1) ==> Seq#Index(ar, k1_5_1) != Seq#Index(ar, k2_5_1)
+          { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k1_5_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k2_5_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k1_5_1), Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_5_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_5_1), Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k2_5_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_5_1), Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_5_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k1_5_1), Seq#Index(ar_1, k2_5_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_5_1), Seq#Index(ar_1, k2_5_1) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k2_5_1), Seq#Index(ar_1, k1_5_1) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_5_1), Seq#Index(ar_1, k1_5_1) } { Seq#Index(ar_1, k1_5_1), Seq#Index(ar_1, k2_5_1) }
+          Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k1_5_1) && (Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k2_5_1) && k1_5_1 != k2_5_1) ==> Seq#Index(ar_1, k1_5_1) != Seq#Index(ar_1, k2_5_1)
         );
         havoc QPMask;
         // wild card assumptions
         havoc wildcard;
-        assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@28.21--28.45) [40700]"}
+        assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@28.21--28.45) [145557]"}
           (forall k_3: int ::
           
-          Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_3) ==> ExhaleWellDef0Mask[Seq#Index(ar, k_3), val] > NoPerm
+          Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_3) ==> ExhaleWellDef0Mask[Seq#Index(ar_1, k_3), val] > NoPerm
         );
         assume (forall k_3: int ::
           
-          Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_3) ==> wildcard < ExhaleWellDef0Mask[Seq#Index(ar, k_3), val]
+          Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_3) ==> wildcard < ExhaleWellDef0Mask[Seq#Index(ar_1, k_3), val]
         );
         
         // -- check that the permission amount is positive
-          assert {:msg "  Precondition of function sum might not hold. Fraction wildcard might be negative. (array-sum.vpr@28.21--28.45) [40701]"}
+          assert {:msg "  Precondition of function sum might not hold. Fraction wildcard might be negative. (array-sum.vpr@28.21--28.45) [145558]"}
             (forall k_3: int ::
-            { Seq#Index(ar, k_3) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k_3) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_3) } { Seq#Index(ar, k_3) }
-            Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_3) && dummyFunction(ExhaleWellDef0Heap[Seq#Index(ar, k_3), val]) ==> wildcard >= NoPerm
+            { Seq#Index(ar_1, k_3) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k_3) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_3) } { Seq#Index(ar_1, k_3) }
+            Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_3) && dummyFunction(ExhaleWellDef0Heap[Seq#Index(ar_1, k_3), val]) ==> wildcard >= NoPerm
           );
         
         // -- check if receiver ar[k] is injective
-          assert {:msg "  Precondition of function sum might not hold. Quantified resource ar[k].val might not be injective. (array-sum.vpr@28.21--28.45) [40702]"}
-            (forall k_3: int, k_3_1: int ::
-            { neverTriggered5(k_3), neverTriggered5(k_3_1) }
-            (((k_3 != k_3_1 && Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_3)) && Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_3_1)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar, k_3) != Seq#Index(ar, k_3_1)
+          assert {:msg "  Precondition of function sum might not hold. Quantified resource ar[k].val might not be injective. (array-sum.vpr@28.21--28.45) [145559]"}
+            (forall k_3: int, k_3_2: int ::
+            { neverTriggered5(k_3), neverTriggered5(k_3_2) }
+            (((k_3 != k_3_2 && Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_3)) && Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_3_2)) && NoPerm < wildcard) && NoPerm < wildcard ==> Seq#Index(ar_1, k_3) != Seq#Index(ar_1, k_3_2)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@28.21--28.45) [40703]"}
+          assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access ar[k].val (array-sum.vpr@28.21--28.45) [145560]"}
             (forall k_3: int ::
-            { Seq#Index(ar, k_3) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k_3) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_3) } { Seq#Index(ar, k_3) }
-            Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_3) ==> wildcard > NoPerm ==> ExhaleWellDef0Mask[Seq#Index(ar, k_3), val] > NoPerm
+            { Seq#Index(ar_1, k_3) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k_3) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_3) } { Seq#Index(ar_1, k_3) }
+            Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_3) ==> wildcard > NoPerm ==> ExhaleWellDef0Mask[Seq#Index(ar_1, k_3), val] > NoPerm
           );
         
         // -- assumptions for inverse of receiver ar[k]
           assume (forall k_3: int ::
-            { Seq#Index(ar, k_3) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar)), k_3) } { Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_3) } { Seq#Index(ar, k_3) }
-            Seq#Contains(Seq#Range(0, Seq#Length(ar)), k_3) && NoPerm < wildcard ==> qpRange5(Seq#Index(ar, k_3)) && invRecv5(Seq#Index(ar, k_3)) == k_3
+            { Seq#Index(ar_1, k_3) } { Seq#ContainsTrigger(Seq#Range(0, Seq#Length(ar_1)), k_3) } { Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_3) } { Seq#Index(ar_1, k_3) }
+            Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), k_3) && NoPerm < wildcard ==> qpRange5(Seq#Index(ar_1, k_3)) && invRecv5(Seq#Index(ar_1, k_3)) == k_3
           );
-          assume (forall o_4: Ref ::
-            { invRecv5(o_4) }
-            Seq#Contains(Seq#Range(0, Seq#Length(ar)), invRecv5(o_4)) && (NoPerm < wildcard && qpRange5(o_4)) ==> Seq#Index(ar, invRecv5(o_4)) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv5(o_9) }
+            Seq#Contains(Seq#Range(0, Seq#Length(ar_1)), invRecv5(o_9)) && (NoPerm < wildcard && qpRange5(o_9)) ==> Seq#Index(ar_1, invRecv5(o_9)) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -1098,7 +1098,7 @@ procedure do_sum(diz: Ref, ar: (Seq Ref)) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion diz.res == sum(diz, 0, |ar|, 0, ar) might not hold. (array-sum.vpr@28.10--28.45) [40704]"}
-      Heap[diz, res_1] == sum(Heap, diz, 0, Seq#Length(ar), 0, ar);
+    assert {:msg "  Assert might fail. Assertion diz.res == sum(diz, 0, |ar|, 0, ar) might not hold. (array-sum.vpr@28.10--28.45) [145561]"}
+      Heap[diz, res_1] == sum_1(Heap, diz, 0, Seq#Length(ar_1), 0, ar_1);
     assume state(Heap, Mask);
 }

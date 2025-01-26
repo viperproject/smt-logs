@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:41
+// Date:         2025-01-26 21:41:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0717.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0717-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -178,17 +178,17 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // ==================================================
 
 type PredicateType_p;
-function  p_14(): Field PredicateType_p FrameType;
+function  p_2(): Field PredicateType_p FrameType;
 function  p#sm(): Field PredicateType_p PMaskType;
-axiom PredicateMaskField(p_14()) == p#sm();
-axiom IsPredicateField(p_14());
-axiom getPredWandId(p_14()) == 0;
+axiom PredicateMaskField(p_2()) == p#sm();
+axiom IsPredicateField(p_2());
+axiom getPredWandId(p_2()) == 0;
 function  p#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  p#everUsed<A>(pred: (Field A FrameType)): bool;
 
 axiom (forall Heap: HeapType ::
-  { p#trigger(Heap, p_14()) }
-  p#everUsed(p_14())
+  { p#trigger(Heap, p_2()) }
+  p#everUsed(p_2())
 );
 
 // ==================================================
@@ -198,8 +198,8 @@ axiom (forall Heap: HeapType ::
 procedure client() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -209,11 +209,11 @@ procedure client() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale perm(p()) >= write -- <no position>
-    assume FullPerm <= Mask[null, p_14()];
+    assume FullPerm <= Mask[null, p_2()];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
 }

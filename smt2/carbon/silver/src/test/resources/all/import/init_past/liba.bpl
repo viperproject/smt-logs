@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:15:40
+// Date:         2025-01-26 21:43:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/init_past/liba.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/import/init_past/liba-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -184,12 +184,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type LibADomainType;
 
 // Translation of domain function foo
-function  foo(x_8: int): bool;
+function  foo_2(x_37: int): bool;
 
 // Translation of domain axiom bar
 axiom (forall n: int ::
-  { (foo(n): bool) }
-  (foo(n): bool)
+  { (foo_2(n): bool) }
+  (foo_2(n): bool)
 );
 
 // ==================================================
@@ -218,7 +218,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, a_2: int, b_24: bool ::
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, a_2: int, b_24: bool ::
   { state(Heap, Mask), LibB'(Heap, a_2, b_24) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || LibB#trigger(EmptyFrame, a_2, b_24)) ==> (foo(1): bool) ==> LibB'(Heap, a_2, b_24) == (b_24 || (foo(a_2): bool))
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || LibB#trigger(EmptyFrame, a_2, b_24)) ==> (foo_2(1): bool) ==> LibB'(Heap, a_2, b_24) == (b_24 || (foo_2(a_2): bool))
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -241,10 +241,10 @@ procedure LibB#definedness(a_2: int, b_24: bool) returns (Result: bool)
   // -- Inhaling precondition (with checking)
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume (foo(1): bool);
+    assume (foo_2(1): bool);
     assume state(Heap, Mask);
   
   // -- Checking definedness of postcondition (no body)
-    assume Result == (b_24 || (foo(a_2): bool));
+    assume Result == (b_24 || (foo_2(a_2): bool));
     assume state(Heap, Mask);
 }

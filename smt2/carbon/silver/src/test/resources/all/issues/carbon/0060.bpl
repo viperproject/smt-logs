@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:47
+// Date:         2025-01-26 21:43:13
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0060.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0060-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -177,9 +177,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique z_22: Field NormalField int;
-axiom !IsPredicateField(z_22);
-axiom !IsWandField(z_22);
+const unique z_24: Field NormalField int;
+axiom !IsPredicateField(z_24);
+axiom !IsWandField(z_24);
 
 // ==================================================
 // Translation of predicate Z
@@ -230,7 +230,7 @@ procedure Z#definedness(this$_1: Ref) returns ()
       assume Heap[this$_1, $allocated];
     perm := FullPerm;
     assume this$_1 != null;
-    Mask := Mask[this$_1, z_22:=Mask[this$_1, z_22] + perm];
+    Mask := Mask[this$_1, z_24:=Mask[this$_1, z_24] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
 }
@@ -296,12 +296,12 @@ procedure TestuseZZ$(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -325,19 +325,19 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert acc(ZZ(this), 100 / 100) -- 0060.vpr@20.3--20.34
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 100 / 100;
-    assert {:msg "  Assert might fail. Fraction 100 / 100 might be negative. (0060.vpr@20.10--20.34) [191416]"}
+    assert {:msg "  Assert might fail. Fraction 100 / 100 might be negative. (0060.vpr@20.10--20.34) [84086]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@20.10--20.34) [191417]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@20.10--20.34) [84087]"}
         perm <= AssertMask[null, ZZ(this)];
     }
     AssertMask := AssertMask[null, ZZ(this):=AssertMask[null, ZZ(this)] - perm];
@@ -346,13 +346,13 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: unfold acc(ZZ(this), 40 / 100) -- 0060.vpr@22.3--22.33
     assume ZZ#trigger(Heap, ZZ(this));
     assume Heap[null, ZZ(this)] == Heap[null, Z_2(this)];
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 40 / 100;
-    assert {:msg "  Unfolding ZZ(this) might fail. Fraction 40 / 100 might be negative. (0060.vpr@22.3--22.33) [191419]"}
+    assert {:msg "  Unfolding ZZ(this) might fail. Fraction 40 / 100 might be negative. (0060.vpr@22.3--22.33) [84089]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding ZZ(this) might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@22.3--22.33) [191420]"}
+      assert {:msg "  Unfolding ZZ(this) might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@22.3--22.33) [84090]"}
         perm <= Mask[null, ZZ(this)];
     }
     Mask := Mask[null, ZZ(this):=Mask[null, ZZ(this)] - perm];
@@ -363,7 +363,7 @@ procedure TestuseZZ$(this: Ref) returns ()
         Heap := Heap[null, ZZ(this):=newVersion];
       }
     perm := FullPerm * (40 / 100);
-    assert {:msg "  Unfolding ZZ(this) might fail. Fraction write * (40 / 100) might be negative. (0060.vpr@22.3--22.33) [191421]"}
+    assert {:msg "  Unfolding ZZ(this) might fail. Fraction write * (40 / 100) might be negative. (0060.vpr@22.3--22.33) [84091]"}
       perm >= NoPerm;
     Mask := Mask[null, Z_2(this):=Mask[null, Z_2(this)] + perm];
     
@@ -376,13 +376,13 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(ZZ(this), 60 / 100) -- 0060.vpr@24.3--24.33
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 60 / 100;
-    assert {:msg "  Assert might fail. Fraction 60 / 100 might be negative. (0060.vpr@24.10--24.33) [191422]"}
+    assert {:msg "  Assert might fail. Fraction 60 / 100 might be negative. (0060.vpr@24.10--24.33) [84092]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@24.10--24.33) [191423]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@24.10--24.33) [84093]"}
         perm <= AssertMask[null, ZZ(this)];
     }
     AssertMask := AssertMask[null, ZZ(this):=AssertMask[null, ZZ(this)] - perm];
@@ -391,13 +391,13 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(Z(this), 40 / 100) -- 0060.vpr@25.3--25.32
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 40 / 100;
-    assert {:msg "  Assert might fail. Fraction 40 / 100 might be negative. (0060.vpr@25.10--25.32) [191424]"}
+    assert {:msg "  Assert might fail. Fraction 40 / 100 might be negative. (0060.vpr@25.10--25.32) [84094]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Z(this) (0060.vpr@25.10--25.32) [191425]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Z(this) (0060.vpr@25.10--25.32) [84095]"}
         perm <= AssertMask[null, Z_2(this)];
     }
     AssertMask := AssertMask[null, Z_2(this):=AssertMask[null, Z_2(this)] - perm];
@@ -405,14 +405,14 @@ procedure TestuseZZ$(this: Ref) returns ()
   
   // -- Translating statement: unfold acc(Z(this), 20 / 100) -- 0060.vpr@27.3--27.32
     assume Z#trigger(Heap, Z_2(this));
-    assume Heap[null, Z_2(this)] == FrameFragment(Heap[this, z_22]);
-    ExhaleWellDef0Heap := Heap;
+    assume Heap[null, Z_2(this)] == FrameFragment(Heap[this, z_24]);
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 20 / 100;
-    assert {:msg "  Unfolding Z(this) might fail. Fraction 20 / 100 might be negative. (0060.vpr@27.3--27.32) [191427]"}
+    assert {:msg "  Unfolding Z(this) might fail. Fraction 20 / 100 might be negative. (0060.vpr@27.3--27.32) [84097]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Z(this) might fail. There might be insufficient permission to access Z(this) (0060.vpr@27.3--27.32) [191428]"}
+      assert {:msg "  Unfolding Z(this) might fail. There might be insufficient permission to access Z(this) (0060.vpr@27.3--27.32) [84098]"}
         perm <= Mask[null, Z_2(this)];
     }
     Mask := Mask[null, Z_2(this):=Mask[null, Z_2(this)] - perm];
@@ -423,10 +423,10 @@ procedure TestuseZZ$(this: Ref) returns ()
         Heap := Heap[null, Z_2(this):=newVersion];
       }
     perm := FullPerm * (20 / 100);
-    assert {:msg "  Unfolding Z(this) might fail. Fraction write * (20 / 100) might be negative. (0060.vpr@27.3--27.32) [191429]"}
+    assert {:msg "  Unfolding Z(this) might fail. Fraction write * (20 / 100) might be negative. (0060.vpr@27.3--27.32) [84099]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
-    Mask := Mask[this, z_22:=Mask[this, z_22] + perm];
+    Mask := Mask[this, z_24:=Mask[this, z_24] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -434,13 +434,13 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(ZZ(this), 60 / 100) -- 0060.vpr@29.3--29.33
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 60 / 100;
-    assert {:msg "  Assert might fail. Fraction 60 / 100 might be negative. (0060.vpr@29.10--29.33) [191430]"}
+    assert {:msg "  Assert might fail. Fraction 60 / 100 might be negative. (0060.vpr@29.10--29.33) [84100]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@29.10--29.33) [191431]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@29.10--29.33) [84101]"}
         perm <= AssertMask[null, ZZ(this)];
     }
     AssertMask := AssertMask[null, ZZ(this):=AssertMask[null, ZZ(this)] - perm];
@@ -449,13 +449,13 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(Z(this), 20 / 100) -- 0060.vpr@30.3--30.32
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 20 / 100;
-    assert {:msg "  Assert might fail. Fraction 20 / 100 might be negative. (0060.vpr@30.10--30.32) [191432]"}
+    assert {:msg "  Assert might fail. Fraction 20 / 100 might be negative. (0060.vpr@30.10--30.32) [84102]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Z(this) (0060.vpr@30.10--30.32) [191433]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Z(this) (0060.vpr@30.10--30.32) [84103]"}
         perm <= AssertMask[null, Z_2(this)];
     }
     AssertMask := AssertMask[null, Z_2(this):=AssertMask[null, Z_2(this)] - perm];
@@ -464,56 +464,56 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(this.z, 20 / 100) -- 0060.vpr@31.3--31.31
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 20 / 100;
-    assert {:msg "  Assert might fail. Fraction 20 / 100 might be negative. (0060.vpr@31.10--31.31) [191434]"}
+    assert {:msg "  Assert might fail. Fraction 20 / 100 might be negative. (0060.vpr@31.10--31.31) [84104]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.z (0060.vpr@31.10--31.31) [191435]"}
-        perm <= AssertMask[this, z_22];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.z (0060.vpr@31.10--31.31) [84105]"}
+        perm <= AssertMask[this, z_24];
     }
-    AssertMask := AssertMask[this, z_22:=AssertMask[this, z_22] - perm];
+    AssertMask := AssertMask[this, z_24:=AssertMask[this, z_24] - perm];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Z(this), 10 / 100) -- 0060.vpr@33.3--33.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm * (10 / 100);
-    assert {:msg "  Folding Z(this) might fail. Fraction write * (10 / 100) might be negative. (0060.vpr@33.3--33.30) [191437]"}
+    assert {:msg "  Folding Z(this) might fail. Fraction write * (10 / 100) might be negative. (0060.vpr@33.3--33.30) [84107]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Z(this) might fail. There might be insufficient permission to access this.z (0060.vpr@33.3--33.30) [191438]"}
-        perm <= Mask[this, z_22];
+      assert {:msg "  Folding Z(this) might fail. There might be insufficient permission to access this.z (0060.vpr@33.3--33.30) [84108]"}
+        perm <= Mask[this, z_24];
     }
-    Mask := Mask[this, z_22:=Mask[this, z_22] - perm];
+    Mask := Mask[this, z_24:=Mask[this, z_24] - perm];
     perm := 10 / 100;
-    assert {:msg "  Folding Z(this) might fail. Fraction 10 / 100 might be negative. (0060.vpr@33.3--33.30) [191439]"}
+    assert {:msg "  Folding Z(this) might fail. Fraction 10 / 100 might be negative. (0060.vpr@33.3--33.30) [84109]"}
       perm >= NoPerm;
     Mask := Mask[null, Z_2(this):=Mask[null, Z_2(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume Z#trigger(Heap, Z_2(this));
-    assume Heap[null, Z_2(this)] == FrameFragment(Heap[this, z_22]);
+    assume Heap[null, Z_2(this)] == FrameFragment(Heap[this, z_24]);
     if (!HasDirectPerm(Mask, null, Z_2(this))) {
       Heap := Heap[null, Z#sm(this):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, Z_2(this):=freshVersion];
     }
-    Heap := Heap[null, Z#sm(this):=Heap[null, Z#sm(this)][this, z_22:=true]];
+    Heap := Heap[null, Z#sm(this):=Heap[null, Z#sm(this)][this, z_24:=true]];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert acc(ZZ(this), 60 / 100) -- 0060.vpr@35.3--35.33
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 60 / 100;
-    assert {:msg "  Assert might fail. Fraction 60 / 100 might be negative. (0060.vpr@35.10--35.33) [191440]"}
+    assert {:msg "  Assert might fail. Fraction 60 / 100 might be negative. (0060.vpr@35.10--35.33) [84110]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@35.10--35.33) [191441]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@35.10--35.33) [84111]"}
         perm <= AssertMask[null, ZZ(this)];
     }
     AssertMask := AssertMask[null, ZZ(this):=AssertMask[null, ZZ(this)] - perm];
@@ -522,13 +522,13 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(Z(this), 30 / 100) -- 0060.vpr@36.3--36.32
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 30 / 100;
-    assert {:msg "  Assert might fail. Fraction 30 / 100 might be negative. (0060.vpr@36.10--36.32) [191442]"}
+    assert {:msg "  Assert might fail. Fraction 30 / 100 might be negative. (0060.vpr@36.10--36.32) [84112]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access Z(this) (0060.vpr@36.10--36.32) [191443]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access Z(this) (0060.vpr@36.10--36.32) [84113]"}
         perm <= AssertMask[null, Z_2(this)];
     }
     AssertMask := AssertMask[null, Z_2(this):=AssertMask[null, Z_2(this)] - perm];
@@ -537,26 +537,26 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(this.z, 10 / 100) -- 0060.vpr@37.3--37.31
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 10 / 100;
-    assert {:msg "  Assert might fail. Fraction 10 / 100 might be negative. (0060.vpr@37.10--37.31) [191444]"}
+    assert {:msg "  Assert might fail. Fraction 10 / 100 might be negative. (0060.vpr@37.10--37.31) [84114]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.z (0060.vpr@37.10--37.31) [191445]"}
-        perm <= AssertMask[this, z_22];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.z (0060.vpr@37.10--37.31) [84115]"}
+        perm <= AssertMask[this, z_24];
     }
-    AssertMask := AssertMask[this, z_22:=AssertMask[this, z_22] - perm];
+    AssertMask := AssertMask[this, z_24:=AssertMask[this, z_24] - perm];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(ZZ(this), 30 / 100) -- 0060.vpr@39.3--39.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm * (30 / 100);
-    assert {:msg "  Folding ZZ(this) might fail. Fraction write * (30 / 100) might be negative. (0060.vpr@39.3--39.31) [191447]"}
+    assert {:msg "  Folding ZZ(this) might fail. Fraction write * (30 / 100) might be negative. (0060.vpr@39.3--39.31) [84117]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding ZZ(this) might fail. There might be insufficient permission to access Z(this) (0060.vpr@39.3--39.31) [191448]"}
+      assert {:msg "  Folding ZZ(this) might fail. There might be insufficient permission to access Z(this) (0060.vpr@39.3--39.31) [84118]"}
         perm <= Mask[null, Z_2(this)];
     }
     Mask := Mask[null, Z_2(this):=Mask[null, Z_2(this)] - perm];
@@ -564,7 +564,7 @@ procedure TestuseZZ$(this: Ref) returns ()
     // -- Record predicate instance information
       assume InsidePredicate(ZZ(this), Heap[null, ZZ(this)], Z_2(this), Heap[null, Z_2(this)]);
     perm := 30 / 100;
-    assert {:msg "  Folding ZZ(this) might fail. Fraction 30 / 100 might be negative. (0060.vpr@39.3--39.31) [191449]"}
+    assert {:msg "  Folding ZZ(this) might fail. Fraction 30 / 100 might be negative. (0060.vpr@39.3--39.31) [84119]"}
       perm >= NoPerm;
     Mask := Mask[null, ZZ(this):=Mask[null, ZZ(this)] + perm];
     assume state(Heap, Mask);
@@ -577,9 +577,9 @@ procedure TestuseZZ$(this: Ref) returns ()
       Heap := Heap[null, ZZ(this):=freshVersion];
     }
     havoc newPMask;
-    assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-      { newPMask[o_15, f_20] }
-      Heap[null, ZZ#sm(this)][o_15, f_20] || Heap[null, Z#sm(this)][o_15, f_20] ==> newPMask[o_15, f_20]
+    assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+      { newPMask[o_5, f_11] }
+      Heap[null, ZZ#sm(this)][o_5, f_11] || Heap[null, Z#sm(this)][o_5, f_11] ==> newPMask[o_5, f_11]
     );
     Heap := Heap[null, ZZ#sm(this):=newPMask];
     assume state(Heap, Mask);
@@ -588,13 +588,13 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(ZZ(this), 90 / 100) -- 0060.vpr@41.3--41.33
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 90 / 100;
-    assert {:msg "  Assert might fail. Fraction 90 / 100 might be negative. (0060.vpr@41.10--41.33) [191450]"}
+    assert {:msg "  Assert might fail. Fraction 90 / 100 might be negative. (0060.vpr@41.10--41.33) [84120]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@41.10--41.33) [191451]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access ZZ(this) (0060.vpr@41.10--41.33) [84121]"}
         perm <= AssertMask[null, ZZ(this)];
     }
     AssertMask := AssertMask[null, ZZ(this):=AssertMask[null, ZZ(this)] - perm];
@@ -603,15 +603,15 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(this.z, 10 / 100) -- 0060.vpr@42.3--42.31
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 10 / 100;
-    assert {:msg "  Assert might fail. Fraction 10 / 100 might be negative. (0060.vpr@42.10--42.31) [191452]"}
+    assert {:msg "  Assert might fail. Fraction 10 / 100 might be negative. (0060.vpr@42.10--42.31) [84122]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.z (0060.vpr@42.10--42.31) [191453]"}
-        perm <= AssertMask[this, z_22];
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.z (0060.vpr@42.10--42.31) [84123]"}
+        perm <= AssertMask[this, z_24];
     }
-    AssertMask := AssertMask[this, z_22:=AssertMask[this, z_22] - perm];
+    AssertMask := AssertMask[this, z_24:=AssertMask[this, z_24] - perm];
     assume state(Heap, Mask);
 }

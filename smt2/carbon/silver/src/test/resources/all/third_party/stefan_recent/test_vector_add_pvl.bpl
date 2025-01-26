@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:19:44
+// Date:         2025-01-26 21:41:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_vector_add_pvl.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_vector_add_pvl-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -563,8 +563,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_1: Ref;
@@ -572,8 +572,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
   var __flatten_4: Ref;
   var __last_barrier: int;
   var __flatten_2: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -609,7 +609,7 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.Ref__a| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@22.12--22.34) [180009]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@22.12--22.34) [23963]"}
         HasDirectPerm(Mask, diz, Ref__a);
     assume Seq#Length(Heap[diz, Ref__a]) == tcount;
     assume state(Heap, Mask);
@@ -621,7 +621,7 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.Ref__b| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@24.12--24.34) [180010]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@24.12--24.34) [23964]"}
         HasDirectPerm(Mask, diz, Ref__b);
     assume Seq#Length(Heap[diz, Ref__b]) == tcount;
     assume state(Heap, Mask);
@@ -633,17 +633,17 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.Ref__c| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@26.12--26.34) [180011]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@26.12--26.34) [23965]"}
         HasDirectPerm(Mask, diz, Ref__c);
     assume Seq#Length(Heap[diz, Ref__c]) == tcount;
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(diz.Ref__a[tid].Ref__Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@27.12--27.58) [180012]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@27.12--27.58) [23966]"}
         HasDirectPerm(Mask, diz, Ref__a);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@27.12--27.58) [180013]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@27.12--27.58) [23967]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@27.12--27.58) [180014]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@27.12--27.58) [23968]"}
         tid < Seq#Length(Heap[diz, Ref__a]);
     perm := FullPerm;
     assume Seq#Index(Heap[diz, Ref__a], tid) != null;
@@ -652,14 +652,14 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(diz.Ref__b[tid].Ref__Integer_value, 1 / 2)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@28.12--28.58) [180015]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@28.12--28.58) [23969]"}
         HasDirectPerm(Mask, diz, Ref__b);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@28.12--28.58) [180016]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@28.12--28.58) [23970]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@28.12--28.58) [180017]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@28.12--28.58) [23971]"}
         tid < Seq#Length(Heap[diz, Ref__b]);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@28.12--28.58) [180018]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@28.12--28.58) [23972]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Seq#Index(Heap[diz, Ref__b], tid) != null;
     Mask := Mask[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value] + perm];
@@ -667,14 +667,14 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(Heap, Mask);
     
     // -- Check definedness of acc(diz.Ref__c[tid].Ref__Integer_value, 1 / 2)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@29.12--29.58) [180019]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@29.12--29.58) [23973]"}
         HasDirectPerm(Mask, diz, Ref__c);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@29.12--29.58) [180020]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@29.12--29.58) [23974]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@29.12--29.58) [180021]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@29.12--29.58) [23975]"}
         tid < Seq#Length(Heap[diz, Ref__c]);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@29.12--29.58) [180022]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@29.12--29.58) [23976]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Seq#Index(Heap[diz, Ref__c], tid) != null;
     Mask := Mask[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value] + perm];
@@ -684,8 +684,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -711,7 +711,7 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.Ref__a| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@37.11--37.33) [180023]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@37.11--37.33) [23977]"}
         HasDirectPerm(PostMask, diz, Ref__a);
     assume Seq#Length(PostHeap[diz, Ref__a]) == tcount;
     assume state(PostHeap, PostMask);
@@ -723,7 +723,7 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.Ref__b| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@39.11--39.33) [180024]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@39.11--39.33) [23978]"}
         HasDirectPerm(PostMask, diz, Ref__b);
     assume Seq#Length(PostHeap[diz, Ref__b]) == tcount;
     assume state(PostHeap, PostMask);
@@ -735,41 +735,41 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.Ref__c| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@41.11--41.33) [180025]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@41.11--41.33) [23979]"}
         HasDirectPerm(PostMask, diz, Ref__c);
     assume Seq#Length(PostHeap[diz, Ref__c]) == tcount;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__a == old(diz.Ref__a)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@42.11--42.40) [180026]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@42.11--42.40) [23980]"}
         HasDirectPerm(PostMask, diz, Ref__a);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@42.11--42.40) [180027]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@42.11--42.40) [23981]"}
         HasDirectPerm(oldMask, diz, Ref__a);
     assume Seq#Equal(PostHeap[diz, Ref__a], oldHeap[diz, Ref__a]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__b == old(diz.Ref__b)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@43.11--43.40) [180028]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@43.11--43.40) [23982]"}
         HasDirectPerm(PostMask, diz, Ref__b);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@43.11--43.40) [180029]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@43.11--43.40) [23983]"}
         HasDirectPerm(oldMask, diz, Ref__b);
     assume Seq#Equal(PostHeap[diz, Ref__b], oldHeap[diz, Ref__b]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__c == old(diz.Ref__c)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@44.11--44.40) [180030]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@44.11--44.40) [23984]"}
         HasDirectPerm(PostMask, diz, Ref__c);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@44.11--44.40) [180031]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@44.11--44.40) [23985]"}
         HasDirectPerm(oldMask, diz, Ref__c);
     assume Seq#Equal(PostHeap[diz, Ref__c], oldHeap[diz, Ref__c]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(diz.Ref__a[tid].Ref__Integer_value, write)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@45.11--45.57) [180032]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@45.11--45.57) [23986]"}
         HasDirectPerm(PostMask, diz, Ref__a);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@45.11--45.57) [180033]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@45.11--45.57) [23987]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@45.11--45.57) [180034]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@45.11--45.57) [23988]"}
         tid < Seq#Length(PostHeap[diz, Ref__a]);
     perm := FullPerm;
     assume Seq#Index(PostHeap[diz, Ref__a], tid) != null;
@@ -778,14 +778,14 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(diz.Ref__b[tid].Ref__Integer_value, 1 / 2)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@46.11--46.57) [180035]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@46.11--46.57) [23989]"}
         HasDirectPerm(PostMask, diz, Ref__b);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@46.11--46.57) [180036]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@46.11--46.57) [23990]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@46.11--46.57) [180037]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@46.11--46.57) [23991]"}
         tid < Seq#Length(PostHeap[diz, Ref__b]);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@46.11--46.57) [180038]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@46.11--46.57) [23992]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Seq#Index(PostHeap[diz, Ref__b], tid) != null;
     PostMask := PostMask[Seq#Index(PostHeap[diz, Ref__b], tid), Ref__Integer_value:=PostMask[Seq#Index(PostHeap[diz, Ref__b], tid), Ref__Integer_value] + perm];
@@ -793,14 +793,14 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of acc(diz.Ref__c[tid].Ref__Integer_value, 1 / 2)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@47.11--47.57) [180039]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@47.11--47.57) [23993]"}
         HasDirectPerm(PostMask, diz, Ref__c);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@47.11--47.57) [180040]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@47.11--47.57) [23994]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@47.11--47.57) [180041]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@47.11--47.57) [23995]"}
         tid < Seq#Length(PostHeap[diz, Ref__c]);
     perm := 1 / 2;
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@47.11--47.57) [180042]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@47.11--47.57) [23996]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Seq#Index(PostHeap[diz, Ref__c], tid) != null;
     PostMask := PostMask[Seq#Index(PostHeap[diz, Ref__c], tid), Ref__Integer_value:=PostMask[Seq#Index(PostHeap[diz, Ref__c], tid), Ref__Integer_value] + perm];
@@ -808,69 +808,69 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__b[tid].Ref__Integer_value == old(diz.Ref__b[tid].Ref__Integer_value)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@48.11--48.88) [180043]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@48.11--48.88) [23997]"}
         HasDirectPerm(PostMask, diz, Ref__b);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@48.11--48.88) [180044]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@48.11--48.88) [23998]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@48.11--48.88) [180045]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@48.11--48.88) [23999]"}
         tid < Seq#Length(PostHeap[diz, Ref__b]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b[tid].Ref__Integer_value (test_vector_add_pvl.vpr@48.11--48.88) [180046]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b[tid].Ref__Integer_value (test_vector_add_pvl.vpr@48.11--48.88) [24000]"}
         HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, Ref__b], tid), Ref__Integer_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@48.11--48.88) [180047]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@48.11--48.88) [24001]"}
         HasDirectPerm(oldMask, diz, Ref__b);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@48.11--48.88) [180048]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@48.11--48.88) [24002]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@48.11--48.88) [180049]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@48.11--48.88) [24003]"}
         tid < Seq#Length(oldHeap[diz, Ref__b]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b[tid].Ref__Integer_value (test_vector_add_pvl.vpr@48.11--48.88) [180050]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b[tid].Ref__Integer_value (test_vector_add_pvl.vpr@48.11--48.88) [24004]"}
         HasDirectPerm(oldMask, Seq#Index(oldHeap[diz, Ref__b], tid), Ref__Integer_value);
     assume PostHeap[Seq#Index(PostHeap[diz, Ref__b], tid), Ref__Integer_value] == oldHeap[Seq#Index(oldHeap[diz, Ref__b], tid), Ref__Integer_value];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__c[tid].Ref__Integer_value == old(diz.Ref__c[tid].Ref__Integer_value)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@49.11--49.88) [180051]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@49.11--49.88) [24005]"}
         HasDirectPerm(PostMask, diz, Ref__c);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@49.11--49.88) [180052]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@49.11--49.88) [24006]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@49.11--49.88) [180053]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@49.11--49.88) [24007]"}
         tid < Seq#Length(PostHeap[diz, Ref__c]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c[tid].Ref__Integer_value (test_vector_add_pvl.vpr@49.11--49.88) [180054]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c[tid].Ref__Integer_value (test_vector_add_pvl.vpr@49.11--49.88) [24008]"}
         HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, Ref__c], tid), Ref__Integer_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@49.11--49.88) [180055]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@49.11--49.88) [24009]"}
         HasDirectPerm(oldMask, diz, Ref__c);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@49.11--49.88) [180056]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@49.11--49.88) [24010]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@49.11--49.88) [180057]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@49.11--49.88) [24011]"}
         tid < Seq#Length(oldHeap[diz, Ref__c]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c[tid].Ref__Integer_value (test_vector_add_pvl.vpr@49.11--49.88) [180058]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c[tid].Ref__Integer_value (test_vector_add_pvl.vpr@49.11--49.88) [24012]"}
         HasDirectPerm(oldMask, Seq#Index(oldHeap[diz, Ref__c], tid), Ref__Integer_value);
     assume PostHeap[Seq#Index(PostHeap[diz, Ref__c], tid), Ref__Integer_value] == oldHeap[Seq#Index(oldHeap[diz, Ref__c], tid), Ref__Integer_value];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__a[tid].Ref__Integer_value == diz.Ref__b[tid].Ref__Integer_value + diz.Ref__c[tid].Ref__Integer_value
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@50.11--50.120) [180059]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@50.11--50.120) [24013]"}
         HasDirectPerm(PostMask, diz, Ref__a);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@50.11--50.120) [180060]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@50.11--50.120) [24014]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@50.11--50.120) [180061]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@50.11--50.120) [24015]"}
         tid < Seq#Length(PostHeap[diz, Ref__a]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a[tid].Ref__Integer_value (test_vector_add_pvl.vpr@50.11--50.120) [180062]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a[tid].Ref__Integer_value (test_vector_add_pvl.vpr@50.11--50.120) [24016]"}
         HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, Ref__a], tid), Ref__Integer_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@50.11--50.120) [180063]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@50.11--50.120) [24017]"}
         HasDirectPerm(PostMask, diz, Ref__b);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@50.11--50.120) [180064]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@50.11--50.120) [24018]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@50.11--50.120) [180065]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@50.11--50.120) [24019]"}
         tid < Seq#Length(PostHeap[diz, Ref__b]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b[tid].Ref__Integer_value (test_vector_add_pvl.vpr@50.11--50.120) [180066]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b[tid].Ref__Integer_value (test_vector_add_pvl.vpr@50.11--50.120) [24020]"}
         HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, Ref__b], tid), Ref__Integer_value);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@50.11--50.120) [180067]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@50.11--50.120) [24021]"}
         HasDirectPerm(PostMask, diz, Ref__c);
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@50.11--50.120) [180068]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@50.11--50.120) [24022]"}
         tid >= 0;
-      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@50.11--50.120) [180069]"}
+      assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@50.11--50.120) [24023]"}
         tid < Seq#Length(PostHeap[diz, Ref__c]);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c[tid].Ref__Integer_value (test_vector_add_pvl.vpr@50.11--50.120) [180070]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c[tid].Ref__Integer_value (test_vector_add_pvl.vpr@50.11--50.120) [24024]"}
         HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, Ref__c], tid), Ref__Integer_value);
     assume PostHeap[Seq#Index(PostHeap[diz, Ref__a], tid), Ref__Integer_value] == PostHeap[Seq#Index(PostHeap[diz, Ref__b], tid), Ref__Integer_value] + PostHeap[Seq#Index(PostHeap[diz, Ref__c], tid), Ref__Integer_value];
     assume state(PostHeap, PostMask);
@@ -890,11 +890,11 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
   // -- Translating statement: __flatten_1 := diz.Ref__a[tid] -- test_vector_add_pvl.vpr@58.3--58.33
     
     // -- Check definedness of diz.Ref__a[tid]
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@58.3--58.33) [180071]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@58.3--58.33) [24025]"}
         HasDirectPerm(Mask, diz, Ref__a);
-      assert {:msg "  Assignment might fail. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@58.3--58.33) [180072]"}
+      assert {:msg "  Assignment might fail. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@58.3--58.33) [24026]"}
         tid >= 0;
-      assert {:msg "  Assignment might fail. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@58.3--58.33) [180073]"}
+      assert {:msg "  Assignment might fail. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@58.3--58.33) [24027]"}
         tid < Seq#Length(Heap[diz, Ref__a]);
     __flatten_1 := Seq#Index(Heap[diz, Ref__a], tid);
     assume state(Heap, Mask);
@@ -902,11 +902,11 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
   // -- Translating statement: __flatten_3 := diz.Ref__b[tid] -- test_vector_add_pvl.vpr@59.3--59.33
     
     // -- Check definedness of diz.Ref__b[tid]
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@59.3--59.33) [180074]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@59.3--59.33) [24028]"}
         HasDirectPerm(Mask, diz, Ref__b);
-      assert {:msg "  Assignment might fail. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@59.3--59.33) [180075]"}
+      assert {:msg "  Assignment might fail. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@59.3--59.33) [24029]"}
         tid >= 0;
-      assert {:msg "  Assignment might fail. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@59.3--59.33) [180076]"}
+      assert {:msg "  Assignment might fail. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@59.3--59.33) [24030]"}
         tid < Seq#Length(Heap[diz, Ref__b]);
     __flatten_3 := Seq#Index(Heap[diz, Ref__b], tid);
     assume state(Heap, Mask);
@@ -914,11 +914,11 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
   // -- Translating statement: __flatten_4 := diz.Ref__c[tid] -- test_vector_add_pvl.vpr@60.3--60.33
     
     // -- Check definedness of diz.Ref__c[tid]
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@60.3--60.33) [180077]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@60.3--60.33) [24031]"}
         HasDirectPerm(Mask, diz, Ref__c);
-      assert {:msg "  Assignment might fail. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@60.3--60.33) [180078]"}
+      assert {:msg "  Assignment might fail. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@60.3--60.33) [24032]"}
         tid >= 0;
-      assert {:msg "  Assignment might fail. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@60.3--60.33) [180079]"}
+      assert {:msg "  Assignment might fail. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@60.3--60.33) [24033]"}
         tid < Seq#Length(Heap[diz, Ref__c]);
     __flatten_4 := Seq#Index(Heap[diz, Ref__c], tid);
     assume state(Heap, Mask);
@@ -927,88 +927,88 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
   //   __flatten_4.Ref__Integer_value -- test_vector_add_pvl.vpr@61.3--61.81
     
     // -- Check definedness of __flatten_3.Ref__Integer_value + __flatten_4.Ref__Integer_value
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_3.Ref__Integer_value (test_vector_add_pvl.vpr@61.3--61.81) [180080]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_3.Ref__Integer_value (test_vector_add_pvl.vpr@61.3--61.81) [24034]"}
         HasDirectPerm(Mask, __flatten_3, Ref__Integer_value);
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_4.Ref__Integer_value (test_vector_add_pvl.vpr@61.3--61.81) [180081]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_4.Ref__Integer_value (test_vector_add_pvl.vpr@61.3--61.81) [24035]"}
         HasDirectPerm(Mask, __flatten_4, Ref__Integer_value);
     __flatten_2 := Heap[__flatten_3, Ref__Integer_value] + Heap[__flatten_4, Ref__Integer_value];
     assume state(Heap, Mask);
   
   // -- Translating statement: __flatten_1.Ref__Integer_value := __flatten_2 -- test_vector_add_pvl.vpr@62.3--62.48
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_1.Ref__Integer_value (test_vector_add_pvl.vpr@62.3--62.48) [180082]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access __flatten_1.Ref__Integer_value (test_vector_add_pvl.vpr@62.3--62.48) [24036]"}
       FullPerm == Mask[__flatten_1, Ref__Integer_value];
     Heap := Heap[__flatten_1, Ref__Integer_value:=__flatten_2];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion 0 <= tid might not hold. (test_vector_add_pvl.vpr@30.11--30.19) [180083]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion 0 <= tid might not hold. (test_vector_add_pvl.vpr@30.11--30.19) [24037]"}
       0 <= tid;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion tid < tcount might not hold. (test_vector_add_pvl.vpr@31.11--31.23) [180084]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion tid < tcount might not hold. (test_vector_add_pvl.vpr@31.11--31.23) [24038]"}
       tid < tcount;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion 0 <= lid might not hold. (test_vector_add_pvl.vpr@32.11--32.19) [180085]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion 0 <= lid might not hold. (test_vector_add_pvl.vpr@32.11--32.19) [24039]"}
       0 <= lid;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion lid < gsize might not hold. (test_vector_add_pvl.vpr@33.11--33.22) [180086]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion lid < gsize might not hold. (test_vector_add_pvl.vpr@33.11--33.22) [24040]"}
       lid < gsize;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion 0 <= gid might not hold. (test_vector_add_pvl.vpr@34.11--34.19) [180087]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion 0 <= gid might not hold. (test_vector_add_pvl.vpr@34.11--34.19) [24041]"}
       0 <= gid;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion tid == lid + gid * gsize might not hold. (test_vector_add_pvl.vpr@35.11--35.35) [180088]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion tid == lid + gid * gsize might not hold. (test_vector_add_pvl.vpr@35.11--35.35) [24042]"}
       tid == lid + gid * gsize;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@36.11--36.36) [180089]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@36.11--36.36) [24043]"}
       Mask[diz, Ref__a] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Ref__a];
     Mask := Mask[diz, Ref__a:=Mask[diz, Ref__a] - wildcard];
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion |diz.Ref__a| == tcount might not hold. (test_vector_add_pvl.vpr@37.11--37.33) [180090]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion |diz.Ref__a| == tcount might not hold. (test_vector_add_pvl.vpr@37.11--37.33) [24044]"}
       Seq#Length(Heap[diz, Ref__a]) == tcount;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@38.11--38.36) [180091]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@38.11--38.36) [24045]"}
       Mask[diz, Ref__b] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Ref__b];
     Mask := Mask[diz, Ref__b:=Mask[diz, Ref__b] - wildcard];
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion |diz.Ref__b| == tcount might not hold. (test_vector_add_pvl.vpr@39.11--39.33) [180092]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion |diz.Ref__b| == tcount might not hold. (test_vector_add_pvl.vpr@39.11--39.33) [24046]"}
       Seq#Length(Heap[diz, Ref__b]) == tcount;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@40.11--40.36) [180093]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@40.11--40.36) [24047]"}
       Mask[diz, Ref__c] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Ref__c];
     Mask := Mask[diz, Ref__c:=Mask[diz, Ref__c] - wildcard];
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion |diz.Ref__c| == tcount might not hold. (test_vector_add_pvl.vpr@41.11--41.33) [180094]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion |diz.Ref__c| == tcount might not hold. (test_vector_add_pvl.vpr@41.11--41.33) [24048]"}
       Seq#Length(Heap[diz, Ref__c]) == tcount;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__a == old(diz.Ref__a) might not hold. (test_vector_add_pvl.vpr@42.11--42.40) [180095]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__a == old(diz.Ref__a) might not hold. (test_vector_add_pvl.vpr@42.11--42.40) [24049]"}
       Seq#Equal(Heap[diz, Ref__a], oldHeap[diz, Ref__a]);
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__b == old(diz.Ref__b) might not hold. (test_vector_add_pvl.vpr@43.11--43.40) [180096]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__b == old(diz.Ref__b) might not hold. (test_vector_add_pvl.vpr@43.11--43.40) [24050]"}
       Seq#Equal(Heap[diz, Ref__b], oldHeap[diz, Ref__b]);
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__c == old(diz.Ref__c) might not hold. (test_vector_add_pvl.vpr@44.11--44.40) [180097]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__c == old(diz.Ref__c) might not hold. (test_vector_add_pvl.vpr@44.11--44.40) [24051]"}
       Seq#Equal(Heap[diz, Ref__c], oldHeap[diz, Ref__c]);
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__a[tid].Ref__Integer_value (test_vector_add_pvl.vpr@45.11--45.57) [180098]"}
+      assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__a[tid].Ref__Integer_value (test_vector_add_pvl.vpr@45.11--45.57) [24052]"}
         perm <= Mask[Seq#Index(Heap[diz, Ref__a], tid), Ref__Integer_value];
     }
     Mask := Mask[Seq#Index(Heap[diz, Ref__a], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, Ref__a], tid), Ref__Integer_value] - perm];
     perm := 1 / 2;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@46.11--46.57) [180099]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@46.11--46.57) [24053]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__b[tid].Ref__Integer_value (test_vector_add_pvl.vpr@46.11--46.57) [180100]"}
+      assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__b[tid].Ref__Integer_value (test_vector_add_pvl.vpr@46.11--46.57) [24054]"}
         perm <= Mask[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value];
     }
     Mask := Mask[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value] - perm];
     perm := 1 / 2;
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@47.11--47.57) [180101]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@47.11--47.57) [24055]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__c[tid].Ref__Integer_value (test_vector_add_pvl.vpr@47.11--47.57) [180102]"}
+      assert {:msg "  Postcondition of Ref__main_main might not hold. There might be insufficient permission to access diz.Ref__c[tid].Ref__Integer_value (test_vector_add_pvl.vpr@47.11--47.57) [24056]"}
         perm <= Mask[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value];
     }
     Mask := Mask[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value] - perm];
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__b[tid].Ref__Integer_value == old(diz.Ref__b[tid].Ref__Integer_value) might not hold. (test_vector_add_pvl.vpr@48.11--48.88) [180103]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__b[tid].Ref__Integer_value == old(diz.Ref__b[tid].Ref__Integer_value) might not hold. (test_vector_add_pvl.vpr@48.11--48.88) [24057]"}
       Heap[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value] == oldHeap[Seq#Index(oldHeap[diz, Ref__b], tid), Ref__Integer_value];
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__c[tid].Ref__Integer_value == old(diz.Ref__c[tid].Ref__Integer_value) might not hold. (test_vector_add_pvl.vpr@49.11--49.88) [180104]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__c[tid].Ref__Integer_value == old(diz.Ref__c[tid].Ref__Integer_value) might not hold. (test_vector_add_pvl.vpr@49.11--49.88) [24058]"}
       Heap[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value] == oldHeap[Seq#Index(oldHeap[diz, Ref__c], tid), Ref__Integer_value];
-    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__a[tid].Ref__Integer_value == diz.Ref__b[tid].Ref__Integer_value + diz.Ref__c[tid].Ref__Integer_value might not hold. (test_vector_add_pvl.vpr@50.11--50.120) [180105]"}
+    assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion diz.Ref__a[tid].Ref__Integer_value == diz.Ref__b[tid].Ref__Integer_value + diz.Ref__c[tid].Ref__Integer_value might not hold. (test_vector_add_pvl.vpr@50.11--50.120) [24059]"}
       Heap[Seq#Index(Heap[diz, Ref__a], tid), Ref__Integer_value] == Heap[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value] + Heap[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value];
     // Finish exhale
     havoc ExhaleHeap;
@@ -1025,12 +1025,12 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1066,7 +1066,7 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.Ref__a| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@75.12--75.34) [180106]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@75.12--75.34) [24060]"}
         HasDirectPerm(Mask, diz, Ref__a);
     assume Seq#Length(Heap[diz, Ref__a]) == tcount;
     assume state(Heap, Mask);
@@ -1078,7 +1078,7 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.Ref__b| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@77.12--77.34) [180107]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@77.12--77.34) [24061]"}
         HasDirectPerm(Mask, diz, Ref__b);
     assume Seq#Length(Heap[diz, Ref__b]) == tcount;
     assume state(Heap, Mask);
@@ -1090,18 +1090,18 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.Ref__c| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@79.12--79.34) [180108]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@79.12--79.34) [24062]"}
         HasDirectPerm(Mask, diz, Ref__c);
     assume Seq#Length(Heap[diz, Ref__c]) == tcount;
     assume state(Heap, Mask);
     if (last_barrier == 0) {
       
       // -- Check definedness of acc(diz.Ref__a[tid].Ref__Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@80.12--80.182) [180109]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@80.12--80.182) [24063]"}
           HasDirectPerm(Mask, diz, Ref__a);
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@80.12--80.182) [180110]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@80.12--80.182) [24064]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@80.12--80.182) [180111]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@80.12--80.182) [24065]"}
           tid < Seq#Length(Heap[diz, Ref__a]);
       perm := FullPerm;
       assume Seq#Index(Heap[diz, Ref__a], tid) != null;
@@ -1109,28 +1109,28 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(diz.Ref__b[tid].Ref__Integer_value, 1 / 2)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@80.12--80.182) [180112]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@80.12--80.182) [24066]"}
           HasDirectPerm(Mask, diz, Ref__b);
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@80.12--80.182) [180113]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@80.12--80.182) [24067]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@80.12--80.182) [180114]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@80.12--80.182) [24068]"}
           tid < Seq#Length(Heap[diz, Ref__b]);
       perm := 1 / 2;
-      assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@80.12--80.182) [180115]"}
+      assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@80.12--80.182) [24069]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Seq#Index(Heap[diz, Ref__b], tid) != null;
       Mask := Mask[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(diz.Ref__c[tid].Ref__Integer_value, 1 / 2)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@80.12--80.182) [180116]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@80.12--80.182) [24070]"}
           HasDirectPerm(Mask, diz, Ref__c);
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@80.12--80.182) [180117]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@80.12--80.182) [24071]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@80.12--80.182) [180118]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@80.12--80.182) [24072]"}
           tid < Seq#Length(Heap[diz, Ref__c]);
       perm := 1 / 2;
-      assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@80.12--80.182) [180119]"}
+      assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@80.12--80.182) [24073]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Seq#Index(Heap[diz, Ref__c], tid) != null;
       Mask := Mask[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value] + perm];
@@ -1141,8 +1141,8 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1168,7 +1168,7 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.Ref__a| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@88.11--88.33) [180120]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@88.11--88.33) [24074]"}
         HasDirectPerm(PostMask, diz, Ref__a);
     assume Seq#Length(PostHeap[diz, Ref__a]) == tcount;
     assume state(PostHeap, PostMask);
@@ -1180,7 +1180,7 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.Ref__b| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@90.11--90.33) [180121]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@90.11--90.33) [24075]"}
         HasDirectPerm(PostMask, diz, Ref__b);
     assume Seq#Length(PostHeap[diz, Ref__b]) == tcount;
     assume state(PostHeap, PostMask);
@@ -1192,42 +1192,42 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of |diz.Ref__c| == tcount
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@92.11--92.33) [180122]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@92.11--92.33) [24076]"}
         HasDirectPerm(PostMask, diz, Ref__c);
     assume Seq#Length(PostHeap[diz, Ref__c]) == tcount;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__a == old(diz.Ref__a)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@93.11--93.40) [180123]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@93.11--93.40) [24077]"}
         HasDirectPerm(PostMask, diz, Ref__a);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@93.11--93.40) [180124]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@93.11--93.40) [24078]"}
         HasDirectPerm(oldMask, diz, Ref__a);
     assume Seq#Equal(PostHeap[diz, Ref__a], oldHeap[diz, Ref__a]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__b == old(diz.Ref__b)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@94.11--94.40) [180125]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@94.11--94.40) [24079]"}
         HasDirectPerm(PostMask, diz, Ref__b);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@94.11--94.40) [180126]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@94.11--94.40) [24080]"}
         HasDirectPerm(oldMask, diz, Ref__b);
     assume Seq#Equal(PostHeap[diz, Ref__b], oldHeap[diz, Ref__b]);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Ref__c == old(diz.Ref__c)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@95.11--95.40) [180127]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@95.11--95.40) [24081]"}
         HasDirectPerm(PostMask, diz, Ref__c);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@95.11--95.40) [180128]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@95.11--95.40) [24082]"}
         HasDirectPerm(oldMask, diz, Ref__c);
     assume Seq#Equal(PostHeap[diz, Ref__c], oldHeap[diz, Ref__c]);
     assume state(PostHeap, PostMask);
     if (sys__result == 0) {
       
       // -- Check definedness of acc(diz.Ref__a[tid].Ref__Integer_value, write)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@96.11--96.180) [180129]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@96.11--96.180) [24083]"}
           HasDirectPerm(PostMask, diz, Ref__a);
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [180130]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [24084]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@96.11--96.180) [180131]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__a[tid] into diz.Ref__a might exceed sequence length. (test_vector_add_pvl.vpr@96.11--96.180) [24085]"}
           tid < Seq#Length(PostHeap[diz, Ref__a]);
       perm := FullPerm;
       assume Seq#Index(PostHeap[diz, Ref__a], tid) != null;
@@ -1235,28 +1235,28 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of acc(diz.Ref__b[tid].Ref__Integer_value, 1 / 2)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@96.11--96.180) [180132]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@96.11--96.180) [24086]"}
           HasDirectPerm(PostMask, diz, Ref__b);
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [180133]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [24087]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@96.11--96.180) [180134]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__b[tid] into diz.Ref__b might exceed sequence length. (test_vector_add_pvl.vpr@96.11--96.180) [24088]"}
           tid < Seq#Length(PostHeap[diz, Ref__b]);
       perm := 1 / 2;
-      assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [180135]"}
+      assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [24089]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Seq#Index(PostHeap[diz, Ref__b], tid) != null;
       PostMask := PostMask[Seq#Index(PostHeap[diz, Ref__b], tid), Ref__Integer_value:=PostMask[Seq#Index(PostHeap[diz, Ref__b], tid), Ref__Integer_value] + perm];
       assume state(PostHeap, PostMask);
       
       // -- Check definedness of acc(diz.Ref__c[tid].Ref__Integer_value, 1 / 2)
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@96.11--96.180) [180136]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@96.11--96.180) [24090]"}
           HasDirectPerm(PostMask, diz, Ref__c);
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [180137]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [24091]"}
           tid >= 0;
-        assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@96.11--96.180) [180138]"}
+        assert {:msg "  Contract might not be well-formed. Index diz.Ref__c[tid] into diz.Ref__c might exceed sequence length. (test_vector_add_pvl.vpr@96.11--96.180) [24092]"}
           tid < Seq#Length(PostHeap[diz, Ref__c]);
       perm := 1 / 2;
-      assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [180139]"}
+      assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [24093]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> Seq#Index(PostHeap[diz, Ref__c], tid) != null;
       PostMask := PostMask[Seq#Index(PostHeap[diz, Ref__c], tid), Ref__Integer_value:=PostMask[Seq#Index(PostHeap[diz, Ref__c], tid), Ref__Integer_value] + perm];
@@ -1275,72 +1275,72 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion 0 <= tid might not hold. (test_vector_add_pvl.vpr@81.11--81.19) [180140]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion 0 <= tid might not hold. (test_vector_add_pvl.vpr@81.11--81.19) [24094]"}
       0 <= tid;
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion tid < tcount might not hold. (test_vector_add_pvl.vpr@82.11--82.23) [180141]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion tid < tcount might not hold. (test_vector_add_pvl.vpr@82.11--82.23) [24095]"}
       tid < tcount;
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion 0 <= lid might not hold. (test_vector_add_pvl.vpr@83.11--83.19) [180142]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion 0 <= lid might not hold. (test_vector_add_pvl.vpr@83.11--83.19) [24096]"}
       0 <= lid;
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion lid < gsize might not hold. (test_vector_add_pvl.vpr@84.11--84.22) [180143]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion lid < gsize might not hold. (test_vector_add_pvl.vpr@84.11--84.22) [24097]"}
       lid < gsize;
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion 0 <= gid might not hold. (test_vector_add_pvl.vpr@85.11--85.19) [180144]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion 0 <= gid might not hold. (test_vector_add_pvl.vpr@85.11--85.19) [24098]"}
       0 <= gid;
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion tid == lid + gid * gsize might not hold. (test_vector_add_pvl.vpr@86.11--86.35) [180145]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion tid == lid + gid * gsize might not hold. (test_vector_add_pvl.vpr@86.11--86.35) [24099]"}
       tid == lid + gid * gsize;
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@87.11--87.36) [180146]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__a (test_vector_add_pvl.vpr@87.11--87.36) [24100]"}
       Mask[diz, Ref__a] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Ref__a];
     Mask := Mask[diz, Ref__a:=Mask[diz, Ref__a] - wildcard];
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion |diz.Ref__a| == tcount might not hold. (test_vector_add_pvl.vpr@88.11--88.33) [180147]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion |diz.Ref__a| == tcount might not hold. (test_vector_add_pvl.vpr@88.11--88.33) [24101]"}
       Seq#Length(Heap[diz, Ref__a]) == tcount;
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@89.11--89.36) [180148]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__b (test_vector_add_pvl.vpr@89.11--89.36) [24102]"}
       Mask[diz, Ref__b] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Ref__b];
     Mask := Mask[diz, Ref__b:=Mask[diz, Ref__b] - wildcard];
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion |diz.Ref__b| == tcount might not hold. (test_vector_add_pvl.vpr@90.11--90.33) [180149]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion |diz.Ref__b| == tcount might not hold. (test_vector_add_pvl.vpr@90.11--90.33) [24103]"}
       Seq#Length(Heap[diz, Ref__b]) == tcount;
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@91.11--91.36) [180150]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__c (test_vector_add_pvl.vpr@91.11--91.36) [24104]"}
       Mask[diz, Ref__c] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[diz, Ref__c];
     Mask := Mask[diz, Ref__c:=Mask[diz, Ref__c] - wildcard];
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion |diz.Ref__c| == tcount might not hold. (test_vector_add_pvl.vpr@92.11--92.33) [180151]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion |diz.Ref__c| == tcount might not hold. (test_vector_add_pvl.vpr@92.11--92.33) [24105]"}
       Seq#Length(Heap[diz, Ref__c]) == tcount;
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion diz.Ref__a == old(diz.Ref__a) might not hold. (test_vector_add_pvl.vpr@93.11--93.40) [180152]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion diz.Ref__a == old(diz.Ref__a) might not hold. (test_vector_add_pvl.vpr@93.11--93.40) [24106]"}
       Seq#Equal(Heap[diz, Ref__a], oldHeap[diz, Ref__a]);
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion diz.Ref__b == old(diz.Ref__b) might not hold. (test_vector_add_pvl.vpr@94.11--94.40) [180153]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion diz.Ref__b == old(diz.Ref__b) might not hold. (test_vector_add_pvl.vpr@94.11--94.40) [24107]"}
       Seq#Equal(Heap[diz, Ref__b], oldHeap[diz, Ref__b]);
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion diz.Ref__c == old(diz.Ref__c) might not hold. (test_vector_add_pvl.vpr@95.11--95.40) [180154]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion diz.Ref__c == old(diz.Ref__c) might not hold. (test_vector_add_pvl.vpr@95.11--95.40) [24108]"}
       Seq#Equal(Heap[diz, Ref__c], oldHeap[diz, Ref__c]);
     if (sys__result == 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__a[tid].Ref__Integer_value (test_vector_add_pvl.vpr@96.11--96.180) [180155]"}
+        assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__a[tid].Ref__Integer_value (test_vector_add_pvl.vpr@96.11--96.180) [24109]"}
           perm <= Mask[Seq#Index(Heap[diz, Ref__a], tid), Ref__Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[diz, Ref__a], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, Ref__a], tid), Ref__Integer_value] - perm];
       perm := 1 / 2;
-      assert {:msg "  Postcondition of Ref__main_barrier might not hold. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [180156]"}
+      assert {:msg "  Postcondition of Ref__main_barrier might not hold. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [24110]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__b[tid].Ref__Integer_value (test_vector_add_pvl.vpr@96.11--96.180) [180157]"}
+        assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__b[tid].Ref__Integer_value (test_vector_add_pvl.vpr@96.11--96.180) [24111]"}
           perm <= Mask[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, Ref__b], tid), Ref__Integer_value] - perm];
       perm := 1 / 2;
-      assert {:msg "  Postcondition of Ref__main_barrier might not hold. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [180158]"}
+      assert {:msg "  Postcondition of Ref__main_barrier might not hold. Fraction 1 / 2 might be negative. (test_vector_add_pvl.vpr@96.11--96.180) [24112]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__c[tid].Ref__Integer_value (test_vector_add_pvl.vpr@96.11--96.180) [180159]"}
+        assert {:msg "  Postcondition of Ref__main_barrier might not hold. There might be insufficient permission to access diz.Ref__c[tid].Ref__Integer_value (test_vector_add_pvl.vpr@96.11--96.180) [24113]"}
           perm <= Mask[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value];
       }
       Mask := Mask[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value:=Mask[Seq#Index(Heap[diz, Ref__c], tid), Ref__Integer_value] - perm];
     }
-    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion sys__result == this_barrier might not hold. (test_vector_add_pvl.vpr@97.11--97.38) [180160]"}
+    assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion sys__result == this_barrier might not hold. (test_vector_add_pvl.vpr@97.11--97.38) [24114]"}
       sys__result == this_barrier;
     // Finish exhale
     havoc ExhaleHeap;

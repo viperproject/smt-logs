@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:01:34
+// Date:         2025-01-26 21:44:49
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/foralls.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/foralls-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_30: Ref, f_35: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_30, f_35] }
-  Heap[o_30, $allocated] ==> Heap[Heap[o_30, f_35], $allocated]
+axiom (forall o_39: Ref, f_21: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_39, f_21] }
+  Heap[o_39, $allocated] ==> Heap[Heap[o_39, f_21], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_31: Ref, f_36: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_31, f_36] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_31, f_36) ==> Heap[o_31, f_36] == ExhaleHeap[o_31, f_36]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_48: Ref, f_66: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_48, f_66] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_48, f_66) ==> Heap[o_48, f_66] == ExhaleHeap[o_48, f_66]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_11), ExhaleHeap[null, PredicateMaskField(pm_f_11)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsPredicateField(pm_f_11) ==> Heap[null, PredicateMaskField(pm_f_11)] == ExhaleHeap[null, PredicateMaskField(pm_f_11)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_45: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_45), ExhaleHeap[null, PredicateMaskField(pm_f_45)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_45) && IsPredicateField(pm_f_45) ==> Heap[null, PredicateMaskField(pm_f_45)] == ExhaleHeap[null, PredicateMaskField(pm_f_45)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_11) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsPredicateField(pm_f_11) ==> (forall <A, B> o2_11: Ref, f_36: (Field A B) ::
-    { ExhaleHeap[o2_11, f_36] }
-    Heap[null, PredicateMaskField(pm_f_11)][o2_11, f_36] ==> Heap[o2_11, f_36] == ExhaleHeap[o2_11, f_36]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_45: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_45) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_45) && IsPredicateField(pm_f_45) ==> (forall <A, B> o2_45: Ref, f_66: (Field A B) ::
+    { ExhaleHeap[o2_45, f_66] }
+    Heap[null, PredicateMaskField(pm_f_45)][o2_45, f_66] ==> Heap[o2_45, f_66] == ExhaleHeap[o2_45, f_66]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_11), ExhaleHeap[null, WandMaskField(pm_f_11)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsWandField(pm_f_11) ==> Heap[null, WandMaskField(pm_f_11)] == ExhaleHeap[null, WandMaskField(pm_f_11)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_45: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_45), ExhaleHeap[null, WandMaskField(pm_f_45)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_45) && IsWandField(pm_f_45) ==> Heap[null, WandMaskField(pm_f_45)] == ExhaleHeap[null, WandMaskField(pm_f_45)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_11: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_11) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_11) && IsWandField(pm_f_11) ==> (forall <A, B> o2_11: Ref, f_36: (Field A B) ::
-    { ExhaleHeap[o2_11, f_36] }
-    Heap[null, WandMaskField(pm_f_11)][o2_11, f_36] ==> Heap[o2_11, f_36] == ExhaleHeap[o2_11, f_36]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_45: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_45) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_45) && IsWandField(pm_f_45) ==> (forall <A, B> o2_45: Ref, f_66: (Field A B) ::
+    { ExhaleHeap[o2_45, f_66] }
+    Heap[null, WandMaskField(pm_f_45)][o2_45, f_66] ==> Heap[o2_45, f_66] == ExhaleHeap[o2_45, f_66]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_31: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_31, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_31, $allocated] ==> ExhaleHeap[o_31, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_48: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_48, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_48, $allocated] ==> ExhaleHeap[o_48, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_30: Ref, f_37: (Field A B), v: B ::
-  { Heap[o_30, f_37:=v] }
-  succHeap(Heap, Heap[o_30, f_37:=v])
+axiom (forall <A, B> Heap: HeapType, o_39: Ref, f_53: (Field A B), v: B ::
+  { Heap[o_39, f_53:=v] }
+  succHeap(Heap, Heap[o_39, f_53:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -150,7 +150,7 @@ function  neverTriggered3(i_1: int): bool;
 function  neverTriggered4(i_1: int): bool;
 function  neverTriggered5(i_1: int): bool;
 function  neverTriggered6(i_1: int): bool;
-function  neverTriggered7(i_5: int): bool;
+function  neverTriggered7(i_5_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -788,7 +788,7 @@ axiom (forall a_2: Ref ::
   { h(a_2) }
   getPredWandId(h(a_2)) == 0
 );
-function  h#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
+function  h#trigger_1<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  h#everUsed<A>(pred: (Field A FrameType)): bool;
 axiom (forall a_2: Ref, a2: Ref ::
   { h(a_2), h(a2) }
@@ -800,7 +800,7 @@ axiom (forall a_2: Ref, a2: Ref ::
 );
 
 axiom (forall Heap: HeapType, a_2: Ref ::
-  { h#trigger(Heap, h(a_2)) }
+  { h#trigger_1(Heap, h(a_2)) }
   h#everUsed(h(a_2))
 );
 
@@ -831,8 +831,8 @@ procedure test01(xs: (Set Ref), ys: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ix_28: int;
-  var jx_28: int;
+  var ix_25: int;
+  var jx_25: int;
   var i_4: int;
   var oldHeap: HeapType;
   var oldMask: MaskType;
@@ -851,7 +851,7 @@ procedure test01(xs: (Set Ref), ys: (Seq Ref)) returns ()
     havoc QPMask;
     
     // -- check if receiver acc(h(x), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource h(x) might not be injective. (foralls.vpr@12.12--12.50) [107670]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource h(x) might not be injective. (foralls.vpr@12.12--12.50) [203511]"}
         (forall x_1: Ref, x_1_1: Ref ::
         { neverTriggered1(x_1), neverTriggered1(x_1_1) }
         (((x_1 != x_1_1 && xs[x_1]) && xs[x_1_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> x_1 != x_1_1
@@ -874,9 +874,9 @@ procedure test01(xs: (Set Ref), ys: (Seq Ref)) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall a_2: Ref ::
         { QPMask[null, h(a_2)] }
@@ -888,15 +888,15 @@ procedure test01(xs: (Set Ref), ys: (Seq Ref)) returns ()
     
     // -- Check definedness of (forall ix: Int, jx: Int :: { ys[ix], ys[jx] } ix >= 0 && (ix < |ys| && (jx >= 0 && (jx < |ys| && ix != jx))) ==> ys[ix] != ys[jx])
       if (*) {
-        if (ix_28 >= 0 && (ix_28 < Seq#Length(ys) && (jx_28 >= 0 && (jx_28 < Seq#Length(ys) && ix_28 != jx_28)))) {
-          assert {:msg "  Contract might not be well-formed. Index ys[ix] into ys might be negative. (foralls.vpr@13.12--13.116) [107671]"}
-            ix_28 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ys[ix] into ys might exceed sequence length. (foralls.vpr@13.12--13.116) [107672]"}
-            ix_28 < Seq#Length(ys);
-          assert {:msg "  Contract might not be well-formed. Index ys[jx] into ys might be negative. (foralls.vpr@13.12--13.116) [107673]"}
-            jx_28 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ys[jx] into ys might exceed sequence length. (foralls.vpr@13.12--13.116) [107674]"}
-            jx_28 < Seq#Length(ys);
+        if (ix_25 >= 0 && (ix_25 < Seq#Length(ys) && (jx_25 >= 0 && (jx_25 < Seq#Length(ys) && ix_25 != jx_25)))) {
+          assert {:msg "  Contract might not be well-formed. Index ys[ix] into ys might be negative. (foralls.vpr@13.12--13.116) [203512]"}
+            ix_25 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ys[ix] into ys might exceed sequence length. (foralls.vpr@13.12--13.116) [203513]"}
+            ix_25 < Seq#Length(ys);
+          assert {:msg "  Contract might not be well-formed. Index ys[jx] into ys might be negative. (foralls.vpr@13.12--13.116) [203514]"}
+            jx_25 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index ys[jx] into ys might exceed sequence length. (foralls.vpr@13.12--13.116) [203515]"}
+            jx_25 < Seq#Length(ys);
         }
         assume false;
       }
@@ -909,9 +909,9 @@ procedure test01(xs: (Set Ref), ys: (Seq Ref)) returns ()
     // -- Check definedness of (forall i: Int :: { (i in [0..|ys|)) } { ys[i] } (i in [0..|ys|)) ==> acc(h(ys[i]), write))
       if (*) {
         if (Seq#Contains(Seq#Range(0, Seq#Length(ys)), i_4)) {
-          assert {:msg "  Contract might not be well-formed. Index ys[i] into ys might be negative. (foralls.vpr@14.12--14.61) [107675]"}
+          assert {:msg "  Contract might not be well-formed. Index ys[i] into ys might be negative. (foralls.vpr@14.12--14.61) [203516]"}
             i_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index ys[i] into ys might exceed sequence length. (foralls.vpr@14.12--14.61) [107676]"}
+          assert {:msg "  Contract might not be well-formed. Index ys[i] into ys might exceed sequence length. (foralls.vpr@14.12--14.61) [203517]"}
             i_4 < Seq#Length(ys);
         }
         assume false;
@@ -919,7 +919,7 @@ procedure test01(xs: (Set Ref), ys: (Seq Ref)) returns ()
     havoc QPMask;
     
     // -- check if receiver acc(h(ys[i]), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource h(ys[i]) might not be injective. (foralls.vpr@14.12--14.61) [107677]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource h(ys[i]) might not be injective. (foralls.vpr@14.12--14.61) [203518]"}
         (forall i_1: int, i_1_1: int ::
         { neverTriggered2(i_1), neverTriggered2(i_1_1) }
         (((i_1 != i_1_1 && Seq#Contains(Seq#Range(0, Seq#Length(ys)), i_1)) && Seq#Contains(Seq#Range(0, Seq#Length(ys)), i_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(ys, i_1) != Seq#Index(ys, i_1_1)
@@ -942,9 +942,9 @@ procedure test01(xs: (Set Ref), ys: (Seq Ref)) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall a_1_1: Ref ::
         { QPMask[null, h(a_1_1)] }
@@ -968,9 +968,9 @@ procedure test01(xs: (Set Ref), ys: (Seq Ref)) returns ()
 procedure test03(xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var ix_27: int;
-  var jx_27: int;
-  var i_7: int;
+  var ix_5: int;
+  var jx_5: int;
+  var i_5: int;
   var QPMask: MaskType;
   var oldHeap: HeapType;
   var oldMask: MaskType;
@@ -984,15 +984,15 @@ procedure test03(xs: (Seq Ref)) returns ()
     
     // -- Check definedness of (forall ix: Int, jx: Int :: { xs[ix], xs[jx] } ix >= 0 && (ix < |xs| && (jx >= 0 && (jx < |xs| && ix != jx))) ==> xs[ix] != xs[jx])
       if (*) {
-        if (ix_27 >= 0 && (ix_27 < Seq#Length(xs) && (jx_27 >= 0 && (jx_27 < Seq#Length(xs) && ix_27 != jx_27)))) {
-          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might be negative. (foralls.vpr@19.12--19.116) [107678]"}
-            ix_27 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might exceed sequence length. (foralls.vpr@19.12--19.116) [107679]"}
-            ix_27 < Seq#Length(xs);
-          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might be negative. (foralls.vpr@19.12--19.116) [107680]"}
-            jx_27 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might exceed sequence length. (foralls.vpr@19.12--19.116) [107681]"}
-            jx_27 < Seq#Length(xs);
+        if (ix_5 >= 0 && (ix_5 < Seq#Length(xs) && (jx_5 >= 0 && (jx_5 < Seq#Length(xs) && ix_5 != jx_5)))) {
+          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might be negative. (foralls.vpr@19.12--19.116) [203519]"}
+            ix_5 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might exceed sequence length. (foralls.vpr@19.12--19.116) [203520]"}
+            ix_5 < Seq#Length(xs);
+          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might be negative. (foralls.vpr@19.12--19.116) [203521]"}
+            jx_5 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might exceed sequence length. (foralls.vpr@19.12--19.116) [203522]"}
+            jx_5 < Seq#Length(xs);
         }
         assume false;
       }
@@ -1004,18 +1004,18 @@ procedure test03(xs: (Seq Ref)) returns ()
     
     // -- Check definedness of (forall i: Int :: { xs[i] } 0 <= i && i < |xs| ==> acc(h(xs[i]), write))
       if (*) {
-        if (0 <= i_7 && i_7 < Seq#Length(xs)) {
-          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (foralls.vpr@20.12--20.65) [107682]"}
-            i_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (foralls.vpr@20.12--20.65) [107683]"}
-            i_7 < Seq#Length(xs);
+        if (0 <= i_5 && i_5 < Seq#Length(xs)) {
+          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (foralls.vpr@20.12--20.65) [203523]"}
+            i_5 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (foralls.vpr@20.12--20.65) [203524]"}
+            i_5 < Seq#Length(xs);
         }
         assume false;
       }
     havoc QPMask;
     
     // -- check if receiver acc(h(xs[i]), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource h(xs[i]) might not be injective. (foralls.vpr@20.12--20.65) [107684]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource h(xs[i]) might not be injective. (foralls.vpr@20.12--20.65) [203525]"}
         (forall i_1: int, i_1_1: int ::
         { neverTriggered3(i_1), neverTriggered3(i_1_1) }
         (((i_1 != i_1_1 && (0 <= i_1 && i_1 < Seq#Length(xs))) && (0 <= i_1_1 && i_1_1 < Seq#Length(xs))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(xs, i_1) != Seq#Index(xs, i_1_1)
@@ -1038,9 +1038,9 @@ procedure test03(xs: (Seq Ref)) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall a_2: Ref ::
         { QPMask[null, h(a_2)] }
@@ -1064,9 +1064,9 @@ procedure test03(xs: (Seq Ref)) returns ()
 procedure test04(xs: (Seq Ref), n: int) returns ()
   modifies Heap, Mask;
 {
-  var ix_4: int;
-  var jx_4: int;
-  var i_9: int;
+  var ix_12: int;
+  var jx_12: int;
+  var i_7: int;
   var QPMask: MaskType;
   var oldHeap: HeapType;
   var oldMask: MaskType;
@@ -1083,15 +1083,15 @@ procedure test04(xs: (Seq Ref), n: int) returns ()
     
     // -- Check definedness of (forall ix: Int, jx: Int :: { xs[ix], xs[jx] } ix >= 0 && (ix < |xs| && (jx >= 0 && (jx < |xs| && ix != jx))) ==> xs[ix] != xs[jx])
       if (*) {
-        if (ix_4 >= 0 && (ix_4 < Seq#Length(xs) && (jx_4 >= 0 && (jx_4 < Seq#Length(xs) && ix_4 != jx_4)))) {
-          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might be negative. (foralls.vpr@25.12--25.116) [107685]"}
-            ix_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might exceed sequence length. (foralls.vpr@25.12--25.116) [107686]"}
-            ix_4 < Seq#Length(xs);
-          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might be negative. (foralls.vpr@25.12--25.116) [107687]"}
-            jx_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might exceed sequence length. (foralls.vpr@25.12--25.116) [107688]"}
-            jx_4 < Seq#Length(xs);
+        if (ix_12 >= 0 && (ix_12 < Seq#Length(xs) && (jx_12 >= 0 && (jx_12 < Seq#Length(xs) && ix_12 != jx_12)))) {
+          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might be negative. (foralls.vpr@25.12--25.116) [203526]"}
+            ix_12 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might exceed sequence length. (foralls.vpr@25.12--25.116) [203527]"}
+            ix_12 < Seq#Length(xs);
+          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might be negative. (foralls.vpr@25.12--25.116) [203528]"}
+            jx_12 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might exceed sequence length. (foralls.vpr@25.12--25.116) [203529]"}
+            jx_12 < Seq#Length(xs);
         }
         assume false;
       }
@@ -1103,18 +1103,18 @@ procedure test04(xs: (Seq Ref), n: int) returns ()
     
     // -- Check definedness of (forall i: Int :: { (i in [0..n)) } { xs[i] } (i in [0..n)) ==> acc(h(xs[i]), write))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, n), i_9)) {
-          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (foralls.vpr@26.12--26.58) [107689]"}
-            i_9 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (foralls.vpr@26.12--26.58) [107690]"}
-            i_9 < Seq#Length(xs);
+        if (Seq#Contains(Seq#Range(0, n), i_7)) {
+          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (foralls.vpr@26.12--26.58) [203530]"}
+            i_7 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (foralls.vpr@26.12--26.58) [203531]"}
+            i_7 < Seq#Length(xs);
         }
         assume false;
       }
     havoc QPMask;
     
     // -- check if receiver acc(h(xs[i]), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource h(xs[i]) might not be injective. (foralls.vpr@26.12--26.58) [107691]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource h(xs[i]) might not be injective. (foralls.vpr@26.12--26.58) [203532]"}
         (forall i_1: int, i_1_1: int ::
         { neverTriggered4(i_1), neverTriggered4(i_1_1) }
         (((i_1 != i_1_1 && Seq#Contains(Seq#Range(0, n), i_1)) && Seq#Contains(Seq#Range(0, n), i_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(xs, i_1) != Seq#Index(xs, i_1_1)
@@ -1137,9 +1137,9 @@ procedure test04(xs: (Seq Ref), n: int) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall a_2: Ref ::
         { QPMask[null, h(a_2)] }
@@ -1163,9 +1163,9 @@ procedure test04(xs: (Seq Ref), n: int) returns ()
 procedure test05(xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var ix_26: int;
-  var jx_26: int;
-  var i_11: int;
+  var ix_6: int;
+  var jx_6: int;
+  var i_8: int;
   var QPMask: MaskType;
   var oldHeap: HeapType;
   var oldMask: MaskType;
@@ -1179,15 +1179,15 @@ procedure test05(xs: (Seq Ref)) returns ()
     
     // -- Check definedness of (forall ix: Int, jx: Int :: { xs[ix], xs[jx] } ix >= 0 && (ix < |xs| && (jx >= 0 && (jx < |xs| && ix != jx))) ==> xs[ix] != xs[jx])
       if (*) {
-        if (ix_26 >= 0 && (ix_26 < Seq#Length(xs) && (jx_26 >= 0 && (jx_26 < Seq#Length(xs) && ix_26 != jx_26)))) {
-          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might be negative. (foralls.vpr@30.12--30.116) [107692]"}
-            ix_26 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might exceed sequence length. (foralls.vpr@30.12--30.116) [107693]"}
-            ix_26 < Seq#Length(xs);
-          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might be negative. (foralls.vpr@30.12--30.116) [107694]"}
-            jx_26 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might exceed sequence length. (foralls.vpr@30.12--30.116) [107695]"}
-            jx_26 < Seq#Length(xs);
+        if (ix_6 >= 0 && (ix_6 < Seq#Length(xs) && (jx_6 >= 0 && (jx_6 < Seq#Length(xs) && ix_6 != jx_6)))) {
+          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might be negative. (foralls.vpr@30.12--30.116) [203533]"}
+            ix_6 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[ix] into xs might exceed sequence length. (foralls.vpr@30.12--30.116) [203534]"}
+            ix_6 < Seq#Length(xs);
+          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might be negative. (foralls.vpr@30.12--30.116) [203535]"}
+            jx_6 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[jx] into xs might exceed sequence length. (foralls.vpr@30.12--30.116) [203536]"}
+            jx_6 < Seq#Length(xs);
         }
         assume false;
       }
@@ -1199,16 +1199,16 @@ procedure test05(xs: (Seq Ref)) returns ()
     
     // -- Check definedness of (forall i: Int ::(i in [1..|xs| + 1)) ==> acc(xs[i - 1].f, write))
       if (*) {
-        if (Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), i_11)) {
-          assert {:msg "  Contract might not be well-formed. Index xs[i - 1] into xs might be negative. (foralls.vpr@31.12--31.68) [107696]"}
-            i_11 - 1 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[i - 1] into xs might exceed sequence length. (foralls.vpr@31.12--31.68) [107697]"}
-            i_11 - 1 < Seq#Length(xs);
+        if (Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), i_8)) {
+          assert {:msg "  Contract might not be well-formed. Index xs[i - 1] into xs might be negative. (foralls.vpr@31.12--31.68) [203537]"}
+            i_8 - 1 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[i - 1] into xs might exceed sequence length. (foralls.vpr@31.12--31.68) [203538]"}
+            i_8 - 1 < Seq#Length(xs);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource xs[i - 1].f might not be injective. (foralls.vpr@31.12--31.68) [107698]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource xs[i - 1].f might not be injective. (foralls.vpr@31.12--31.68) [203539]"}
       (forall i_1: int, i_1_1: int ::
       
       (((i_1 != i_1_1 && Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), i_1)) && Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), i_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(xs, i_1 - 1) != Seq#Index(xs, i_1_1 - 1)
@@ -1219,9 +1219,9 @@ procedure test05(xs: (Seq Ref)) returns ()
         
         Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), i_1) && NoPerm < FullPerm ==> qpRange5(Seq#Index(xs, i_1 - 1)) && invRecv5(Seq#Index(xs, i_1 - 1)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        (Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), invRecv5(o_4)) && NoPerm < FullPerm) && qpRange5(o_4) ==> Seq#Index(xs, invRecv5(o_4) - 1) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        (Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), invRecv5(o_9)) && NoPerm < FullPerm) && qpRange5(o_9) ==> Seq#Index(xs, invRecv5(o_9) - 1) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1231,13 +1231,13 @@ procedure test05(xs: (Seq Ref)) returns ()
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, f_7] }
-        ((Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), invRecv5(o_4)) && NoPerm < FullPerm) && qpRange5(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(xs, invRecv5(o_4) - 1) == o_4) && QPMask[o_4, f_7] == Mask[o_4, f_7] + FullPerm) && (!((Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), invRecv5(o_4)) && NoPerm < FullPerm) && qpRange5(o_4)) ==> QPMask[o_4, f_7] == Mask[o_4, f_7])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, f_7] }
+        ((Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), invRecv5(o_9)) && NoPerm < FullPerm) && qpRange5(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(xs, invRecv5(o_9) - 1) == o_9) && QPMask[o_9, f_7] == Mask[o_9, f_7] + FullPerm) && (!((Seq#Contains(Seq#Range(1, Seq#Length(xs) + 1), invRecv5(o_9)) && NoPerm < FullPerm) && qpRange5(o_9)) ==> QPMask[o_9, f_7] == Mask[o_9, f_7])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != f_7 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != f_7 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1257,7 +1257,7 @@ procedure test05(xs: (Seq Ref)) returns ()
 procedure test10(xs: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
   modifies Heap, Mask;
 {
-  var i_12: int;
+  var i_19: int;
   var QPMask: MaskType;
   var oldHeap: HeapType;
   var oldMask: MaskType;
@@ -1277,18 +1277,18 @@ procedure test10(xs: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
     
     // -- Check definedness of (forall i: Int :: { (i in [0..n)) } (i in [0..n)) ==> acc(h(xs[a * i + b]), write))
       if (*) {
-        if (Seq#Contains(Seq#Range(0, n), i_12)) {
-          assert {:msg "  Contract might not be well-formed. Index xs[a * i + b] into xs might be negative. (foralls.vpr@40.12--40.66) [107699]"}
-            a_2 * i_12 + b_24 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[a * i + b] into xs might exceed sequence length. (foralls.vpr@40.12--40.66) [107700]"}
-            a_2 * i_12 + b_24 < Seq#Length(xs);
+        if (Seq#Contains(Seq#Range(0, n), i_19)) {
+          assert {:msg "  Contract might not be well-formed. Index xs[a * i + b] into xs might be negative. (foralls.vpr@40.12--40.66) [203540]"}
+            a_2 * i_19 + b_24 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[a * i + b] into xs might exceed sequence length. (foralls.vpr@40.12--40.66) [203541]"}
+            a_2 * i_19 + b_24 < Seq#Length(xs);
         }
         assume false;
       }
     havoc QPMask;
     
     // -- check if receiver acc(h(xs[a * i + b]), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource h(xs[a * i + b]) might not be injective. (foralls.vpr@40.12--40.66) [107701]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource h(xs[a * i + b]) might not be injective. (foralls.vpr@40.12--40.66) [203542]"}
         (forall i_1: int, i_1_1: int ::
         { neverTriggered6(i_1), neverTriggered6(i_1_1) }
         (((i_1 != i_1_1 && Seq#Contains(Seq#Range(0, n), i_1)) && Seq#Contains(Seq#Range(0, n), i_1_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(xs, a_2 * i_1 + b_24) != Seq#Index(xs, a_2 * i_1_1 + b_24)
@@ -1311,9 +1311,9 @@ procedure test10(xs: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall a_1_1: Ref ::
         { QPMask[null, h(a_1_1)] }
@@ -1337,7 +1337,7 @@ procedure test10(xs: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
 procedure test11(xs: (Seq Ref), a_2: int, b_24: int, n: int, ss: (Set int)) returns ()
   modifies Heap, Mask;
 {
-  var i_13: int;
+  var i_17: int;
   var QPMask: MaskType;
   var oldHeap: HeapType;
   var oldMask: MaskType;
@@ -1371,35 +1371,35 @@ procedure test11(xs: (Seq Ref), a_2: int, b_24: int, n: int, ss: (Set int)) retu
       if (*) {
         assume false;
       }
-    assume (forall i_3: int ::
-      { ss[i_3] }
-      ss[i_3] ==> 0 <= i_3
+    assume (forall i_3_2: int ::
+      { ss[i_3_2] }
+      ss[i_3_2] ==> 0 <= i_3_2
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { (i in ss) } { xs[i] } (i in ss) ==> acc(h(xs[i]), write))
       if (*) {
-        if (ss[i_13]) {
-          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (foralls.vpr@52.12--52.54) [107702]"}
-            i_13 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (foralls.vpr@52.12--52.54) [107703]"}
-            i_13 < Seq#Length(xs);
+        if (ss[i_17]) {
+          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might be negative. (foralls.vpr@52.12--52.54) [203543]"}
+            i_17 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index xs[i] into xs might exceed sequence length. (foralls.vpr@52.12--52.54) [203544]"}
+            i_17 < Seq#Length(xs);
         }
         assume false;
       }
     havoc QPMask;
     
     // -- check if receiver acc(h(xs[i]), write) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource h(xs[i]) might not be injective. (foralls.vpr@52.12--52.54) [107704]"}
-        (forall i_5: int, i_5_1: int ::
-        { neverTriggered7(i_5), neverTriggered7(i_5_1) }
-        (((i_5 != i_5_1 && ss[i_5]) && ss[i_5_1]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(xs, i_5) != Seq#Index(xs, i_5_1)
+      assert {:msg "  Contract might not be well-formed. Quantified resource h(xs[i]) might not be injective. (foralls.vpr@52.12--52.54) [203545]"}
+        (forall i_5_1: int, i_5_2: int ::
+        { neverTriggered7(i_5_1), neverTriggered7(i_5_2) }
+        (((i_5_1 != i_5_2 && ss[i_5_1]) && ss[i_5_2]) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(xs, i_5_1) != Seq#Index(xs, i_5_2)
       );
     
     // -- Define Inverse Function
-      assume (forall i_5: int ::
-        { Heap[null, h(Seq#Index(xs, i_5))] } { Mask[null, h(Seq#Index(xs, i_5))] } { ss[i_5] } { Seq#Index(xs, i_5) }
-        ss[i_5] && NoPerm < FullPerm ==> invRecv7(Seq#Index(xs, i_5)) == i_5 && qpRange7(Seq#Index(xs, i_5))
+      assume (forall i_5_1: int ::
+        { Heap[null, h(Seq#Index(xs, i_5_1))] } { Mask[null, h(Seq#Index(xs, i_5_1))] } { ss[i_5_1] } { Seq#Index(xs, i_5_1) }
+        ss[i_5_1] && NoPerm < FullPerm ==> invRecv7(Seq#Index(xs, i_5_1)) == i_5_1 && qpRange7(Seq#Index(xs, i_5_1))
       );
       assume (forall a_1_1: Ref ::
         { invRecv7(a_1_1) }
@@ -1413,9 +1413,9 @@ procedure test11(xs: (Seq Ref), a_2: int, b_24: int, n: int, ss: (Set int)) retu
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall a_1_1: Ref ::
         { QPMask[null, h(a_1_1)] }

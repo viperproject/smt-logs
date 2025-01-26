@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:10
+// Date:         2025-01-26 21:42:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0508a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0508a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_55: Ref, f_54: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_55, f_54] }
-  Heap[o_55, $allocated] ==> Heap[Heap[o_55, f_54], $allocated]
+axiom (forall o_51: Ref, f_62: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_51, f_62] }
+  Heap[o_51, $allocated] ==> Heap[Heap[o_51, f_62], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_43: Ref, f_15: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_43, f_15] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_43, f_15) ==> Heap[o_43, f_15] == ExhaleHeap[o_43, f_15]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_58: Ref, f_70: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_58, f_70] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_58, f_70) ==> Heap[o_58, f_70] == ExhaleHeap[o_58, f_70]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_29: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_29), ExhaleHeap[null, PredicateMaskField(pm_f_29)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_29) && IsPredicateField(pm_f_29) ==> Heap[null, PredicateMaskField(pm_f_29)] == ExhaleHeap[null, PredicateMaskField(pm_f_29)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_38: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_38), ExhaleHeap[null, PredicateMaskField(pm_f_38)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_38) && IsPredicateField(pm_f_38) ==> Heap[null, PredicateMaskField(pm_f_38)] == ExhaleHeap[null, PredicateMaskField(pm_f_38)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_29: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_29) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_29) && IsPredicateField(pm_f_29) ==> (forall <A, B> o2_29: Ref, f_15: (Field A B) ::
-    { ExhaleHeap[o2_29, f_15] }
-    Heap[null, PredicateMaskField(pm_f_29)][o2_29, f_15] ==> Heap[o2_29, f_15] == ExhaleHeap[o2_29, f_15]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_38: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_38) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_38) && IsPredicateField(pm_f_38) ==> (forall <A, B> o2_38: Ref, f_70: (Field A B) ::
+    { ExhaleHeap[o2_38, f_70] }
+    Heap[null, PredicateMaskField(pm_f_38)][o2_38, f_70] ==> Heap[o2_38, f_70] == ExhaleHeap[o2_38, f_70]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_29: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_29), ExhaleHeap[null, WandMaskField(pm_f_29)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_29) && IsWandField(pm_f_29) ==> Heap[null, WandMaskField(pm_f_29)] == ExhaleHeap[null, WandMaskField(pm_f_29)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_38: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_38), ExhaleHeap[null, WandMaskField(pm_f_38)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_38) && IsWandField(pm_f_38) ==> Heap[null, WandMaskField(pm_f_38)] == ExhaleHeap[null, WandMaskField(pm_f_38)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_29: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_29) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_29) && IsWandField(pm_f_29) ==> (forall <A, B> o2_29: Ref, f_15: (Field A B) ::
-    { ExhaleHeap[o2_29, f_15] }
-    Heap[null, WandMaskField(pm_f_29)][o2_29, f_15] ==> Heap[o2_29, f_15] == ExhaleHeap[o2_29, f_15]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_38: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_38) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_38) && IsWandField(pm_f_38) ==> (forall <A, B> o2_38: Ref, f_70: (Field A B) ::
+    { ExhaleHeap[o2_38, f_70] }
+    Heap[null, WandMaskField(pm_f_38)][o2_38, f_70] ==> Heap[o2_38, f_70] == ExhaleHeap[o2_38, f_70]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_43: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_43, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_43, $allocated] ==> ExhaleHeap[o_43, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_58: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_58, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_58, $allocated] ==> ExhaleHeap[o_58, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_55: Ref, f_26: (Field A B), v: B ::
-  { Heap[o_55, f_26:=v] }
-  succHeap(Heap, Heap[o_55, f_26:=v])
+axiom (forall <A, B> Heap: HeapType, o_51: Ref, f_14: (Field A B), v: B ::
+  { Heap[o_51, f_14:=v] }
+  succHeap(Heap, Heap[o_51, f_14:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,20 +145,20 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(r_1_1: Ref): bool;
-function  neverTriggered2(r_3_2: Ref): bool;
-function  neverTriggered3(s_1: Ref): bool;
+function  neverTriggered2(r_3: Ref): bool;
+function  neverTriggered3(s_1_1: Ref): bool;
 function  neverTriggered4(r_1_1: Ref): bool;
-function  neverTriggered5(r_3_2: Ref): bool;
-function  neverTriggered6(s_1: Ref): bool;
+function  neverTriggered5(r_3: Ref): bool;
+function  neverTriggered6(s_1_1: Ref): bool;
 function  neverTriggered7(r_1_1: Ref): bool;
-function  neverTriggered8(r_3_2: Ref): bool;
-function  neverTriggered9(s_1: Ref): bool;
+function  neverTriggered8(r_3: Ref): bool;
+function  neverTriggered9(s_1_1: Ref): bool;
 function  neverTriggered10(r_1_1: Ref): bool;
-function  neverTriggered11(r_3_2: Ref): bool;
-function  neverTriggered12(s_1: Ref): bool;
-function  neverTriggered13(i_3: int): bool;
+function  neverTriggered11(r_3: Ref): bool;
+function  neverTriggered12(s_1_1: Ref): bool;
+function  neverTriggered13(i_3_2: int): bool;
 function  neverTriggered14(i_7_1: int): bool;
-function  neverTriggered15(j_5_1: int): bool;
+function  neverTriggered15(j_5: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -793,12 +793,12 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 type identity_functionDomainType T;
 
 // Translation of domain function id
-function  id_1<T>(v_4: T): T;
+function  id_3<T>(v_29: T): T;
 
 // Translation of anonymous domain axiom
 axiom (forall <T> v_2: T ::
-  { (id_1(v_2): T) }
-  (id_1(v_2): T) == v_2
+  { (id_3(v_2): T) }
+  (id_3(v_2): T) == v_2
 );
 
 // ==================================================
@@ -808,9 +808,9 @@ axiom (forall <T> v_2: T ::
 const unique bool_prop: Field NormalField bool;
 axiom !IsPredicateField(bool_prop);
 axiom !IsWandField(bool_prop);
-const unique item_1: Field NormalField Ref;
-axiom !IsPredicateField(item_1);
-axiom !IsWandField(item_1);
+const unique item: Field NormalField Ref;
+axiom !IsPredicateField(item);
+axiom !IsWandField(item);
 
 // ==================================================
 // Translation of method test03a
@@ -820,16 +820,16 @@ procedure test03a(trees: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var s1_1: Ref;
-  var s2_1: Ref;
-  var r_28: Ref;
+  var s1_3: Ref;
+  var s2_3: Ref;
+  var r_16: Ref;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var s_14: Ref;
+  var s_7: Ref;
   var wildcard: real where wildcard > 0.000000000;
   
   // -- Initializing the state
@@ -844,7 +844,7 @@ procedure test03a(trees: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource r.item might not be injective. (0508a.vpr@15.13--15.74) [219528]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource r.item might not be injective. (0508a.vpr@15.13--15.74) [69349]"}
       (forall r_1_1: Ref, r_1_2: Ref ::
       
       (((r_1_1 != r_1_2 && trees[r_1_1]) && trees[r_1_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> r_1_1 != r_1_2
@@ -852,34 +852,34 @@ procedure test03a(trees: (Set Ref)) returns ()
     
     // -- Define Inverse Function
       assume (forall r_1_1: Ref ::
-        { Heap[r_1_1, item_1] } { QPMask[r_1_1, item_1] } { trees[r_1_1] }
+        { Heap[r_1_1, item] } { QPMask[r_1_1, item] } { trees[r_1_1] }
         trees[r_1_1] && NoPerm < 1 / 2 ==> qpRange1(r_1_1) && invRecv1(r_1_1) == r_1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        (trees[invRecv1(o_4)] && NoPerm < 1 / 2) && qpRange1(o_4) ==> invRecv1(o_4) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        (trees[invRecv1(o_9)] && NoPerm < 1 / 2) && qpRange1(o_9) ==> invRecv1(o_9) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@15.13--15.74) [219529]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@15.13--15.74) [69350]"}
       (forall r_1_1: Ref ::
-      { Heap[r_1_1, item_1] } { QPMask[r_1_1, item_1] } { trees[r_1_1] }
+      { Heap[r_1_1, item] } { QPMask[r_1_1, item] } { trees[r_1_1] }
       trees[r_1_1] ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
       assume (forall r_1_1: Ref ::
-        { Heap[r_1_1, item_1] } { QPMask[r_1_1, item_1] } { trees[r_1_1] }
+        { Heap[r_1_1, item] } { QPMask[r_1_1, item] } { trees[r_1_1] }
         trees[r_1_1] && 1 / 2 > NoPerm ==> r_1_1 != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, item_1] }
-        ((trees[invRecv1(o_4)] && NoPerm < 1 / 2) && qpRange1(o_4) ==> (NoPerm < 1 / 2 ==> invRecv1(o_4) == o_4) && QPMask[o_4, item_1] == Mask[o_4, item_1] + 1 / 2) && (!((trees[invRecv1(o_4)] && NoPerm < 1 / 2) && qpRange1(o_4)) ==> QPMask[o_4, item_1] == Mask[o_4, item_1])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, item] }
+        ((trees[invRecv1(o_9)] && NoPerm < 1 / 2) && qpRange1(o_9) ==> (NoPerm < 1 / 2 ==> invRecv1(o_9) == o_9) && QPMask[o_9, item] == Mask[o_9, item] + 1 / 2) && (!((trees[invRecv1(o_9)] && NoPerm < 1 / 2) && qpRange1(o_9)) ==> QPMask[o_9, item] == Mask[o_9, item])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != item_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -887,65 +887,65 @@ procedure test03a(trees: (Set Ref)) returns ()
     
     // -- Check definedness of (forall s1: Ref, s2: Ref :: { (s1 in trees), (s2 in trees) } (s1 in trees) && ((s2 in trees) && s1 != s2) ==> s1.item != s2.item)
       if (*) {
-        if (trees[s1_1] && (trees[s2_1] && s1_1 != s2_1)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access s1.item (0508a.vpr@16.13--16.103) [219530]"}
-            HasDirectPerm(Mask, s1_1, item_1);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access s2.item (0508a.vpr@16.13--16.103) [219531]"}
-            HasDirectPerm(Mask, s2_1, item_1);
+        if (trees[s1_3] && (trees[s2_3] && s1_3 != s2_3)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access s1.item (0508a.vpr@16.13--16.103) [69351]"}
+            HasDirectPerm(Mask, s1_3, item);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access s2.item (0508a.vpr@16.13--16.103) [69352]"}
+            HasDirectPerm(Mask, s2_3, item);
         }
         assume false;
       }
     assume (forall s1_1_1: Ref, s2_1_1: Ref ::
       { trees[s1_1_1], trees[s2_1_1] }
-      trees[s1_1_1] && (trees[s2_1_1] && s1_1_1 != s2_1_1) ==> Heap[s1_1_1, item_1] != Heap[s2_1_1, item_1]
+      trees[s1_1_1] && (trees[s2_1_1] && s1_1_1 != s2_1_1) ==> Heap[s1_1_1, item] != Heap[s2_1_1, item]
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall r: Ref :: { (r in trees) } (r in trees) ==> acc(r.item.bool_prop, 1 / 2))
       if (*) {
-        if (trees[r_28]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.item (0508a.vpr@17.13--17.84) [219532]"}
-            HasDirectPerm(Mask, r_28, item_1);
+        if (trees[r_16]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.item (0508a.vpr@17.13--17.84) [69353]"}
+            HasDirectPerm(Mask, r_16, item);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource r.item.bool_prop might not be injective. (0508a.vpr@17.13--17.84) [219533]"}
-      (forall r_3_2: Ref, r_3_3: Ref ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource r.item.bool_prop might not be injective. (0508a.vpr@17.13--17.84) [69354]"}
+      (forall r_3: Ref, r_3_2: Ref ::
       
-      (((r_3_2 != r_3_3 && trees[r_3_2]) && trees[r_3_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Heap[r_3_2, item_1] != Heap[r_3_3, item_1]
+      (((r_3 != r_3_2 && trees[r_3]) && trees[r_3_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Heap[r_3, item] != Heap[r_3_2, item]
     );
     
     // -- Define Inverse Function
-      assume (forall r_3_2: Ref ::
-        { Heap[r_3_2, item_1] } { trees[r_3_2] }
-        trees[r_3_2] && NoPerm < 1 / 2 ==> qpRange2(Heap[r_3_2, item_1]) && invRecv2(Heap[r_3_2, item_1]) == r_3_2
+      assume (forall r_3: Ref ::
+        { Heap[r_3, item] } { trees[r_3] }
+        trees[r_3] && NoPerm < 1 / 2 ==> qpRange2(Heap[r_3, item]) && invRecv2(Heap[r_3, item]) == r_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        (trees[invRecv2(o_4)] && NoPerm < 1 / 2) && qpRange2(o_4) ==> Heap[invRecv2(o_4), item_1] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        (trees[invRecv2(o_9)] && NoPerm < 1 / 2) && qpRange2(o_9) ==> Heap[invRecv2(o_9), item] == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@17.13--17.84) [219534]"}
-      (forall r_3_2: Ref ::
-      { Heap[r_3_2, item_1] } { trees[r_3_2] }
-      trees[r_3_2] ==> 1 / 2 >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@17.13--17.84) [69355]"}
+      (forall r_3: Ref ::
+      { Heap[r_3, item] } { trees[r_3] }
+      trees[r_3] ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall r_3_2: Ref ::
-        { Heap[r_3_2, item_1] } { trees[r_3_2] }
-        trees[r_3_2] && 1 / 2 > NoPerm ==> Heap[r_3_2, item_1] != null
+      assume (forall r_3: Ref ::
+        { Heap[r_3, item] } { trees[r_3] }
+        trees[r_3] && 1 / 2 > NoPerm ==> Heap[r_3, item] != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, bool_prop] }
-        ((trees[invRecv2(o_4)] && NoPerm < 1 / 2) && qpRange2(o_4) ==> (NoPerm < 1 / 2 ==> Heap[invRecv2(o_4), item_1] == o_4) && QPMask[o_4, bool_prop] == Mask[o_4, bool_prop] + 1 / 2) && (!((trees[invRecv2(o_4)] && NoPerm < 1 / 2) && qpRange2(o_4)) ==> QPMask[o_4, bool_prop] == Mask[o_4, bool_prop])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, bool_prop] }
+        ((trees[invRecv2(o_9)] && NoPerm < 1 / 2) && qpRange2(o_9) ==> (NoPerm < 1 / 2 ==> Heap[invRecv2(o_9), item] == o_9) && QPMask[o_9, bool_prop] == Mask[o_9, bool_prop] + 1 / 2) && (!((trees[invRecv2(o_9)] && NoPerm < 1 / 2) && qpRange2(o_9)) ==> QPMask[o_9, bool_prop] == Mask[o_9, bool_prop])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != bool_prop ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != bool_prop ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -967,66 +967,66 @@ procedure test03a(trees: (Set Ref)) returns ()
     
     // -- Check definedness of (forall s: Ref :: { (s in trees) } (s in trees) ==> acc(s.item.bool_prop, wildcard))
       if (*) {
-        if (trees[s_14]) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access s.item (0508a.vpr@19.10--19.86) [219535]"}
-            HasDirectPerm(ExhaleWellDef0Mask, s_14, item_1);
+        if (trees[s_7]) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access s.item (0508a.vpr@19.10--19.86) [69356]"}
+            HasDirectPerm(ExhaleWellDef0Mask, s_7, item);
         }
         assume false;
       }
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access s.item.bool_prop (0508a.vpr@19.10--19.86) [219536]"}
-      (forall s_1: Ref ::
+    assert {:msg "  Assert might fail. There might be insufficient permission to access s.item.bool_prop (0508a.vpr@19.10--19.86) [69357]"}
+      (forall s_1_1: Ref ::
       
-      trees[s_1] ==> AssertMask[AssertHeap[s_1, item_1], bool_prop] > NoPerm
+      trees[s_1_1] ==> AssertMask[AssertHeap[s_1_1, item], bool_prop] > NoPerm
     );
-    assume (forall s_1: Ref ::
+    assume (forall s_1_1: Ref ::
       
-      trees[s_1] ==> wildcard < AssertMask[AssertHeap[s_1, item_1], bool_prop]
+      trees[s_1_1] ==> wildcard < AssertMask[AssertHeap[s_1_1, item], bool_prop]
     );
     
     // -- check that the permission amount is positive
-      assert {:msg "  Assert might fail. Fraction wildcard might be negative. (0508a.vpr@19.10--19.86) [219537]"}
-        (forall s_1: Ref ::
-        { AssertHeap[s_1, item_1] } { trees[s_1] }
-        trees[s_1] && dummyFunction(AssertHeap[AssertHeap[s_1, item_1], bool_prop]) ==> wildcard >= NoPerm
+      assert {:msg "  Assert might fail. Fraction wildcard might be negative. (0508a.vpr@19.10--19.86) [69358]"}
+        (forall s_1_1: Ref ::
+        { AssertHeap[s_1_1, item] } { trees[s_1_1] }
+        trees[s_1_1] && dummyFunction(AssertHeap[AssertHeap[s_1_1, item], bool_prop]) ==> wildcard >= NoPerm
       );
     
     // -- check if receiver s.item is injective
-      assert {:msg "  Assert might fail. Quantified resource s.item.bool_prop might not be injective. (0508a.vpr@19.10--19.86) [219538]"}
-        (forall s_1: Ref, s_1_1: Ref ::
-        { neverTriggered3(s_1), neverTriggered3(s_1_1) }
-        (((s_1 != s_1_1 && trees[s_1]) && trees[s_1_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> AssertHeap[s_1, item_1] != AssertHeap[s_1_1, item_1]
+      assert {:msg "  Assert might fail. Quantified resource s.item.bool_prop might not be injective. (0508a.vpr@19.10--19.86) [69359]"}
+        (forall s_1_1: Ref, s_1_2: Ref ::
+        { neverTriggered3(s_1_1), neverTriggered3(s_1_2) }
+        (((s_1_1 != s_1_2 && trees[s_1_1]) && trees[s_1_2]) && NoPerm < wildcard) && NoPerm < wildcard ==> AssertHeap[s_1_1, item] != AssertHeap[s_1_2, item]
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Assert might fail. There might be insufficient permission to access s.item.bool_prop (0508a.vpr@19.10--19.86) [219539]"}
-        (forall s_1: Ref ::
-        { AssertHeap[s_1, item_1] } { trees[s_1] }
-        trees[s_1] ==> AssertMask[AssertHeap[s_1, item_1], bool_prop] > NoPerm
+      assert {:msg "  Assert might fail. There might be insufficient permission to access s.item.bool_prop (0508a.vpr@19.10--19.86) [69360]"}
+        (forall s_1_1: Ref ::
+        { AssertHeap[s_1_1, item] } { trees[s_1_1] }
+        trees[s_1_1] ==> AssertMask[AssertHeap[s_1_1, item], bool_prop] > NoPerm
       );
     
     // -- assumptions for inverse of receiver s.item
-      assume (forall s_1: Ref ::
-        { AssertHeap[s_1, item_1] } { trees[s_1] }
-        trees[s_1] && NoPerm < wildcard ==> qpRange3(AssertHeap[s_1, item_1]) && invRecv3(AssertHeap[s_1, item_1]) == s_1
+      assume (forall s_1_1: Ref ::
+        { AssertHeap[s_1_1, item] } { trees[s_1_1] }
+        trees[s_1_1] && NoPerm < wildcard ==> qpRange3(AssertHeap[s_1_1, item]) && invRecv3(AssertHeap[s_1_1, item]) == s_1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        trees[invRecv3(o_4)] && (NoPerm < wildcard && qpRange3(o_4)) ==> AssertHeap[invRecv3(o_4), item_1] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        trees[invRecv3(o_9)] && (NoPerm < wildcard && qpRange3(o_9)) ==> AssertHeap[invRecv3(o_9), item] == o_9
       );
     
     // -- assume permission updates for field bool_prop
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, bool_prop] }
-        (trees[invRecv3(o_4)] && (NoPerm < wildcard && qpRange3(o_4)) ==> AssertHeap[invRecv3(o_4), item_1] == o_4 && QPMask[o_4, bool_prop] == AssertMask[o_4, bool_prop] - wildcard) && (!(trees[invRecv3(o_4)] && (NoPerm < wildcard && qpRange3(o_4))) ==> QPMask[o_4, bool_prop] == AssertMask[o_4, bool_prop])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, bool_prop] }
+        (trees[invRecv3(o_9)] && (NoPerm < wildcard && qpRange3(o_9)) ==> AssertHeap[invRecv3(o_9), item] == o_9 && QPMask[o_9, bool_prop] == AssertMask[o_9, bool_prop] - wildcard) && (!(trees[invRecv3(o_9)] && (NoPerm < wildcard && qpRange3(o_9))) ==> QPMask[o_9, bool_prop] == AssertMask[o_9, bool_prop])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != bool_prop ==> AssertMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != bool_prop ==> AssertMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     AssertMask := QPMask;
     assume state(Heap, Mask);
@@ -1040,14 +1040,14 @@ procedure test03b(trees: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var r_41: Ref;
+  var r_22: Ref;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var s_18: Ref;
+  var s_9: Ref;
   var wildcard: real where wildcard > 0.000000000;
   
   // -- Initializing the state
@@ -1062,42 +1062,42 @@ procedure test03b(trees: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item might not be injective. (0508a.vpr@23.13--23.73) [219540]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item might not be injective. (0508a.vpr@23.13--23.73) [69361]"}
       (forall r_1_1: Ref, r_1_2: Ref ::
       
-      (((r_1_1 != r_1_2 && trees[r_1_1]) && trees[r_1_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (id_1(r_1_1): Ref) != (id_1(r_1_2): Ref)
+      (((r_1_1 != r_1_2 && trees[r_1_1]) && trees[r_1_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (id_3(r_1_1): Ref) != (id_3(r_1_2): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall r_1_1: Ref ::
-        { (id_1(r_1_1): Ref) } { (id_1(r_1_1): Ref) }
-        trees[r_1_1] && NoPerm < 1 / 2 ==> qpRange4((id_1(r_1_1): Ref)) && invRecv4((id_1(r_1_1): Ref)) == r_1_1
+        { (id_3(r_1_1): Ref) } { (id_3(r_1_1): Ref) }
+        trees[r_1_1] && NoPerm < 1 / 2 ==> qpRange4((id_3(r_1_1): Ref)) && invRecv4((id_3(r_1_1): Ref)) == r_1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        (trees[invRecv4(o_4)] && NoPerm < 1 / 2) && qpRange4(o_4) ==> (id_1(invRecv4(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        (trees[invRecv4(o_9)] && NoPerm < 1 / 2) && qpRange4(o_9) ==> (id_3(invRecv4(o_9)): Ref) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@23.13--23.73) [219541]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@23.13--23.73) [69362]"}
       (forall r_1_1: Ref ::
-      { (id_1(r_1_1): Ref) } { (id_1(r_1_1): Ref) }
+      { (id_3(r_1_1): Ref) } { (id_3(r_1_1): Ref) }
       trees[r_1_1] ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
       assume (forall r_1_1: Ref ::
-        { (id_1(r_1_1): Ref) } { (id_1(r_1_1): Ref) }
-        trees[r_1_1] && 1 / 2 > NoPerm ==> (id_1(r_1_1): Ref) != null
+        { (id_3(r_1_1): Ref) } { (id_3(r_1_1): Ref) }
+        trees[r_1_1] && 1 / 2 > NoPerm ==> (id_3(r_1_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, item_1] }
-        ((trees[invRecv4(o_4)] && NoPerm < 1 / 2) && qpRange4(o_4) ==> (NoPerm < 1 / 2 ==> (id_1(invRecv4(o_4)): Ref) == o_4) && QPMask[o_4, item_1] == Mask[o_4, item_1] + 1 / 2) && (!((trees[invRecv4(o_4)] && NoPerm < 1 / 2) && qpRange4(o_4)) ==> QPMask[o_4, item_1] == Mask[o_4, item_1])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, item] }
+        ((trees[invRecv4(o_9)] && NoPerm < 1 / 2) && qpRange4(o_9) ==> (NoPerm < 1 / 2 ==> (id_3(invRecv4(o_9)): Ref) == o_9) && QPMask[o_9, item] == Mask[o_9, item] + 1 / 2) && (!((trees[invRecv4(o_9)] && NoPerm < 1 / 2) && qpRange4(o_9)) ==> QPMask[o_9, item] == Mask[o_9, item])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != item_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1105,46 +1105,46 @@ procedure test03b(trees: (Set Ref)) returns ()
     
     // -- Check definedness of (forall r: Ref :: { (id(r): Ref) } (r in trees) ==> acc((id(r): Ref).item.bool_prop, none))
       if (*) {
-        if (trees[r_41]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(r): Ref).item (0508a.vpr@24.13--24.84) [219542]"}
-            HasDirectPerm(Mask, (id_1(r_41): Ref), item_1);
+        if (trees[r_22]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(r): Ref).item (0508a.vpr@24.13--24.84) [69363]"}
+            HasDirectPerm(Mask, (id_3(r_22): Ref), item);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item.bool_prop might not be injective. (0508a.vpr@24.13--24.84) [219543]"}
-      (forall r_3_2: Ref, r_3_3: Ref ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item.bool_prop might not be injective. (0508a.vpr@24.13--24.84) [69364]"}
+      (forall r_3: Ref, r_3_2: Ref ::
       
-      (((r_3_2 != r_3_3 && trees[r_3_2]) && trees[r_3_3]) && NoPerm < NoPerm) && NoPerm < NoPerm ==> Heap[(id_1(r_3_2): Ref), item_1] != Heap[(id_1(r_3_3): Ref), item_1]
+      (((r_3 != r_3_2 && trees[r_3]) && trees[r_3_2]) && NoPerm < NoPerm) && NoPerm < NoPerm ==> Heap[(id_3(r_3): Ref), item] != Heap[(id_3(r_3_2): Ref), item]
     );
     
     // -- Define Inverse Function
-      assume (forall r_3_2: Ref ::
-        { Heap[(id_1(r_3_2): Ref), item_1] } { (id_1(r_3_2): Ref) }
-        trees[r_3_2] && NoPerm < NoPerm ==> qpRange5(Heap[(id_1(r_3_2): Ref), item_1]) && invRecv5(Heap[(id_1(r_3_2): Ref), item_1]) == r_3_2
+      assume (forall r_3: Ref ::
+        { Heap[(id_3(r_3): Ref), item] } { (id_3(r_3): Ref) }
+        trees[r_3] && NoPerm < NoPerm ==> qpRange5(Heap[(id_3(r_3): Ref), item]) && invRecv5(Heap[(id_3(r_3): Ref), item]) == r_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv5(o_4) }
-        (trees[invRecv5(o_4)] && NoPerm < NoPerm) && qpRange5(o_4) ==> Heap[(id_1(invRecv5(o_4)): Ref), item_1] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv5(o_9) }
+        (trees[invRecv5(o_9)] && NoPerm < NoPerm) && qpRange5(o_9) ==> Heap[(id_3(invRecv5(o_9)): Ref), item] == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction none might be negative. (0508a.vpr@24.13--24.84) [219544]"}
-      (forall r_3_2: Ref ::
-      { Heap[(id_1(r_3_2): Ref), item_1] } { (id_1(r_3_2): Ref) }
-      trees[r_3_2] ==> NoPerm >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction none might be negative. (0508a.vpr@24.13--24.84) [69365]"}
+      (forall r_3: Ref ::
+      { Heap[(id_3(r_3): Ref), item] } { (id_3(r_3): Ref) }
+      trees[r_3] ==> NoPerm >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
       
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, bool_prop] }
-        ((trees[invRecv5(o_4)] && NoPerm < NoPerm) && qpRange5(o_4) ==> (NoPerm < NoPerm ==> Heap[(id_1(invRecv5(o_4)): Ref), item_1] == o_4) && QPMask[o_4, bool_prop] == Mask[o_4, bool_prop] + NoPerm) && (!((trees[invRecv5(o_4)] && NoPerm < NoPerm) && qpRange5(o_4)) ==> QPMask[o_4, bool_prop] == Mask[o_4, bool_prop])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, bool_prop] }
+        ((trees[invRecv5(o_9)] && NoPerm < NoPerm) && qpRange5(o_9) ==> (NoPerm < NoPerm ==> Heap[(id_3(invRecv5(o_9)): Ref), item] == o_9) && QPMask[o_9, bool_prop] == Mask[o_9, bool_prop] + NoPerm) && (!((trees[invRecv5(o_9)] && NoPerm < NoPerm) && qpRange5(o_9)) ==> QPMask[o_9, bool_prop] == Mask[o_9, bool_prop])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != bool_prop ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != bool_prop ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1166,66 +1166,66 @@ procedure test03b(trees: (Set Ref)) returns ()
     
     // -- Check definedness of (forall s: Ref :: { (id(s): Ref) } (s in trees) ==> acc((id(s): Ref).item.bool_prop, wildcard))
       if (*) {
-        if (trees[s_18]) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item (0508a.vpr@30.10--30.85) [219545]"}
-            HasDirectPerm(ExhaleWellDef0Mask, (id_1(s_18): Ref), item_1);
+        if (trees[s_9]) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item (0508a.vpr@30.10--30.85) [69366]"}
+            HasDirectPerm(ExhaleWellDef0Mask, (id_3(s_9): Ref), item);
         }
         assume false;
       }
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@30.10--30.85) [219546]"}
-      (forall s_1: Ref ::
+    assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@30.10--30.85) [69367]"}
+      (forall s_1_1: Ref ::
       
-      trees[s_1] ==> AssertMask[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop] > NoPerm
+      trees[s_1_1] ==> AssertMask[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop] > NoPerm
     );
-    assume (forall s_1: Ref ::
+    assume (forall s_1_1: Ref ::
       
-      trees[s_1] ==> wildcard < AssertMask[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop]
+      trees[s_1_1] ==> wildcard < AssertMask[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop]
     );
     
     // -- check that the permission amount is positive
-      assert {:msg "  Assert might fail. Fraction wildcard might be negative. (0508a.vpr@30.10--30.85) [219547]"}
-        (forall s_1: Ref ::
-        { AssertHeap[(id_1(s_1): Ref), item_1] } { (id_1(s_1): Ref) }
-        trees[s_1] && dummyFunction(AssertHeap[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop]) ==> wildcard >= NoPerm
+      assert {:msg "  Assert might fail. Fraction wildcard might be negative. (0508a.vpr@30.10--30.85) [69368]"}
+        (forall s_1_1: Ref ::
+        { AssertHeap[(id_3(s_1_1): Ref), item] } { (id_3(s_1_1): Ref) }
+        trees[s_1_1] && dummyFunction(AssertHeap[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop]) ==> wildcard >= NoPerm
       );
     
     // -- check if receiver (id(s): Ref).item is injective
-      assert {:msg "  Assert might fail. Quantified resource (id(s): Ref).item.bool_prop might not be injective. (0508a.vpr@30.10--30.85) [219548]"}
-        (forall s_1: Ref, s_1_1: Ref ::
-        { neverTriggered6(s_1), neverTriggered6(s_1_1) }
-        (((s_1 != s_1_1 && trees[s_1]) && trees[s_1_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> AssertHeap[(id_1(s_1): Ref), item_1] != AssertHeap[(id_1(s_1_1): Ref), item_1]
+      assert {:msg "  Assert might fail. Quantified resource (id(s): Ref).item.bool_prop might not be injective. (0508a.vpr@30.10--30.85) [69369]"}
+        (forall s_1_1: Ref, s_1_2: Ref ::
+        { neverTriggered6(s_1_1), neverTriggered6(s_1_2) }
+        (((s_1_1 != s_1_2 && trees[s_1_1]) && trees[s_1_2]) && NoPerm < wildcard) && NoPerm < wildcard ==> AssertHeap[(id_3(s_1_1): Ref), item] != AssertHeap[(id_3(s_1_2): Ref), item]
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@30.10--30.85) [219549]"}
-        (forall s_1: Ref ::
-        { AssertHeap[(id_1(s_1): Ref), item_1] } { (id_1(s_1): Ref) }
-        trees[s_1] ==> AssertMask[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop] > NoPerm
+      assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@30.10--30.85) [69370]"}
+        (forall s_1_1: Ref ::
+        { AssertHeap[(id_3(s_1_1): Ref), item] } { (id_3(s_1_1): Ref) }
+        trees[s_1_1] ==> AssertMask[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop] > NoPerm
       );
     
     // -- assumptions for inverse of receiver (id(s): Ref).item
-      assume (forall s_1: Ref ::
-        { AssertHeap[(id_1(s_1): Ref), item_1] } { (id_1(s_1): Ref) }
-        trees[s_1] && NoPerm < wildcard ==> qpRange6(AssertHeap[(id_1(s_1): Ref), item_1]) && invRecv6(AssertHeap[(id_1(s_1): Ref), item_1]) == s_1
+      assume (forall s_1_1: Ref ::
+        { AssertHeap[(id_3(s_1_1): Ref), item] } { (id_3(s_1_1): Ref) }
+        trees[s_1_1] && NoPerm < wildcard ==> qpRange6(AssertHeap[(id_3(s_1_1): Ref), item]) && invRecv6(AssertHeap[(id_3(s_1_1): Ref), item]) == s_1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv6(o_4) }
-        trees[invRecv6(o_4)] && (NoPerm < wildcard && qpRange6(o_4)) ==> AssertHeap[(id_1(invRecv6(o_4)): Ref), item_1] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv6(o_9) }
+        trees[invRecv6(o_9)] && (NoPerm < wildcard && qpRange6(o_9)) ==> AssertHeap[(id_3(invRecv6(o_9)): Ref), item] == o_9
       );
     
     // -- assume permission updates for field bool_prop
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, bool_prop] }
-        (trees[invRecv6(o_4)] && (NoPerm < wildcard && qpRange6(o_4)) ==> AssertHeap[(id_1(invRecv6(o_4)): Ref), item_1] == o_4 && QPMask[o_4, bool_prop] == AssertMask[o_4, bool_prop] - wildcard) && (!(trees[invRecv6(o_4)] && (NoPerm < wildcard && qpRange6(o_4))) ==> QPMask[o_4, bool_prop] == AssertMask[o_4, bool_prop])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, bool_prop] }
+        (trees[invRecv6(o_9)] && (NoPerm < wildcard && qpRange6(o_9)) ==> AssertHeap[(id_3(invRecv6(o_9)): Ref), item] == o_9 && QPMask[o_9, bool_prop] == AssertMask[o_9, bool_prop] - wildcard) && (!(trees[invRecv6(o_9)] && (NoPerm < wildcard && qpRange6(o_9))) ==> QPMask[o_9, bool_prop] == AssertMask[o_9, bool_prop])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != bool_prop ==> AssertMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != bool_prop ==> AssertMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     AssertMask := QPMask;
     assume state(Heap, Mask);
@@ -1239,16 +1239,16 @@ procedure test03c(trees: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var s1_9: Ref;
-  var s2_9: Ref;
-  var r_13: Ref;
+  var s1_4: Ref;
+  var s2_4: Ref;
+  var r_30: Ref;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var s_12: Ref;
+  var s_10: Ref;
   var wildcard: real where wildcard > 0.000000000;
   
   // -- Initializing the state
@@ -1263,42 +1263,42 @@ procedure test03c(trees: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item might not be injective. (0508a.vpr@34.14--34.74) [219550]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item might not be injective. (0508a.vpr@34.14--34.74) [69371]"}
       (forall r_1_1: Ref, r_1_2: Ref ::
       
-      (((r_1_1 != r_1_2 && trees[r_1_1]) && trees[r_1_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (id_1(r_1_1): Ref) != (id_1(r_1_2): Ref)
+      (((r_1_1 != r_1_2 && trees[r_1_1]) && trees[r_1_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (id_3(r_1_1): Ref) != (id_3(r_1_2): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall r_1_1: Ref ::
-        { (id_1(r_1_1): Ref) } { (id_1(r_1_1): Ref) }
-        trees[r_1_1] && NoPerm < 1 / 2 ==> qpRange7((id_1(r_1_1): Ref)) && invRecv7((id_1(r_1_1): Ref)) == r_1_1
+        { (id_3(r_1_1): Ref) } { (id_3(r_1_1): Ref) }
+        trees[r_1_1] && NoPerm < 1 / 2 ==> qpRange7((id_3(r_1_1): Ref)) && invRecv7((id_3(r_1_1): Ref)) == r_1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv7(o_4) }
-        (trees[invRecv7(o_4)] && NoPerm < 1 / 2) && qpRange7(o_4) ==> (id_1(invRecv7(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv7(o_9) }
+        (trees[invRecv7(o_9)] && NoPerm < 1 / 2) && qpRange7(o_9) ==> (id_3(invRecv7(o_9)): Ref) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@34.14--34.74) [219551]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@34.14--34.74) [69372]"}
       (forall r_1_1: Ref ::
-      { (id_1(r_1_1): Ref) } { (id_1(r_1_1): Ref) }
+      { (id_3(r_1_1): Ref) } { (id_3(r_1_1): Ref) }
       trees[r_1_1] ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
       assume (forall r_1_1: Ref ::
-        { (id_1(r_1_1): Ref) } { (id_1(r_1_1): Ref) }
-        trees[r_1_1] && 1 / 2 > NoPerm ==> (id_1(r_1_1): Ref) != null
+        { (id_3(r_1_1): Ref) } { (id_3(r_1_1): Ref) }
+        trees[r_1_1] && 1 / 2 > NoPerm ==> (id_3(r_1_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, item_1] }
-        ((trees[invRecv7(o_4)] && NoPerm < 1 / 2) && qpRange7(o_4) ==> (NoPerm < 1 / 2 ==> (id_1(invRecv7(o_4)): Ref) == o_4) && QPMask[o_4, item_1] == Mask[o_4, item_1] + 1 / 2) && (!((trees[invRecv7(o_4)] && NoPerm < 1 / 2) && qpRange7(o_4)) ==> QPMask[o_4, item_1] == Mask[o_4, item_1])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, item] }
+        ((trees[invRecv7(o_9)] && NoPerm < 1 / 2) && qpRange7(o_9) ==> (NoPerm < 1 / 2 ==> (id_3(invRecv7(o_9)): Ref) == o_9) && QPMask[o_9, item] == Mask[o_9, item] + 1 / 2) && (!((trees[invRecv7(o_9)] && NoPerm < 1 / 2) && qpRange7(o_9)) ==> QPMask[o_9, item] == Mask[o_9, item])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != item_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1306,65 +1306,65 @@ procedure test03c(trees: (Set Ref)) returns ()
     
     // -- Check definedness of (forall s1: Ref, s2: Ref :: { (s1 in trees), (s2 in trees) } { (s1 in trees), (id(s2): Ref) } { (s2 in trees), (id(s1): Ref) } { (id(s1): Ref), (id(s2): Ref) } { (id(s2): Ref), (id(s1): Ref) } (s1 in trees) && ((s2 in trees) && (id(s1): Ref) != (id(s2): Ref)) ==> (id(s1): Ref).item != (id(s2): Ref).item)
       if (*) {
-        if (trees[s1_9] && (trees[s2_9] && (id_1(s1_9): Ref) != (id_1(s2_9): Ref))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(s1): Ref).item (0508a.vpr@35.14--35.120) [219552]"}
-            HasDirectPerm(Mask, (id_1(s1_9): Ref), item_1);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(s2): Ref).item (0508a.vpr@35.14--35.120) [219553]"}
-            HasDirectPerm(Mask, (id_1(s2_9): Ref), item_1);
+        if (trees[s1_4] && (trees[s2_4] && (id_3(s1_4): Ref) != (id_3(s2_4): Ref))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(s1): Ref).item (0508a.vpr@35.14--35.120) [69373]"}
+            HasDirectPerm(Mask, (id_3(s1_4): Ref), item);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(s2): Ref).item (0508a.vpr@35.14--35.120) [69374]"}
+            HasDirectPerm(Mask, (id_3(s2_4): Ref), item);
         }
         assume false;
       }
     assume (forall s1_1_1: Ref, s2_1_1: Ref ::
-      { trees[s1_1_1], trees[s2_1_1] } { trees[s1_1_1], (id_1(s2_1_1): Ref) } { trees[s2_1_1], (id_1(s1_1_1): Ref) } { (id_1(s1_1_1): Ref), (id_1(s2_1_1): Ref) } { (id_1(s2_1_1): Ref), (id_1(s1_1_1): Ref) }
-      trees[s1_1_1] && (trees[s2_1_1] && (id_1(s1_1_1): Ref) != (id_1(s2_1_1): Ref)) ==> Heap[(id_1(s1_1_1): Ref), item_1] != Heap[(id_1(s2_1_1): Ref), item_1]
+      { trees[s1_1_1], trees[s2_1_1] } { trees[s1_1_1], (id_3(s2_1_1): Ref) } { trees[s2_1_1], (id_3(s1_1_1): Ref) } { (id_3(s1_1_1): Ref), (id_3(s2_1_1): Ref) } { (id_3(s2_1_1): Ref), (id_3(s1_1_1): Ref) }
+      trees[s1_1_1] && (trees[s2_1_1] && (id_3(s1_1_1): Ref) != (id_3(s2_1_1): Ref)) ==> Heap[(id_3(s1_1_1): Ref), item] != Heap[(id_3(s2_1_1): Ref), item]
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall r: Ref :: { (id(r): Ref) } (r in trees) ==> acc((id(r): Ref).item.bool_prop, 1 / 2))
       if (*) {
-        if (trees[r_13]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(r): Ref).item (0508a.vpr@36.14--36.84) [219554]"}
-            HasDirectPerm(Mask, (id_1(r_13): Ref), item_1);
+        if (trees[r_30]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(r): Ref).item (0508a.vpr@36.14--36.84) [69375]"}
+            HasDirectPerm(Mask, (id_3(r_30): Ref), item);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item.bool_prop might not be injective. (0508a.vpr@36.14--36.84) [219555]"}
-      (forall r_3_2: Ref, r_3_3: Ref ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item.bool_prop might not be injective. (0508a.vpr@36.14--36.84) [69376]"}
+      (forall r_3: Ref, r_3_2: Ref ::
       
-      (((r_3_2 != r_3_3 && trees[r_3_2]) && trees[r_3_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Heap[(id_1(r_3_2): Ref), item_1] != Heap[(id_1(r_3_3): Ref), item_1]
+      (((r_3 != r_3_2 && trees[r_3]) && trees[r_3_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Heap[(id_3(r_3): Ref), item] != Heap[(id_3(r_3_2): Ref), item]
     );
     
     // -- Define Inverse Function
-      assume (forall r_3_2: Ref ::
-        { Heap[(id_1(r_3_2): Ref), item_1] } { (id_1(r_3_2): Ref) }
-        trees[r_3_2] && NoPerm < 1 / 2 ==> qpRange8(Heap[(id_1(r_3_2): Ref), item_1]) && invRecv8(Heap[(id_1(r_3_2): Ref), item_1]) == r_3_2
+      assume (forall r_3: Ref ::
+        { Heap[(id_3(r_3): Ref), item] } { (id_3(r_3): Ref) }
+        trees[r_3] && NoPerm < 1 / 2 ==> qpRange8(Heap[(id_3(r_3): Ref), item]) && invRecv8(Heap[(id_3(r_3): Ref), item]) == r_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv8(o_4) }
-        (trees[invRecv8(o_4)] && NoPerm < 1 / 2) && qpRange8(o_4) ==> Heap[(id_1(invRecv8(o_4)): Ref), item_1] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv8(o_9) }
+        (trees[invRecv8(o_9)] && NoPerm < 1 / 2) && qpRange8(o_9) ==> Heap[(id_3(invRecv8(o_9)): Ref), item] == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@36.14--36.84) [219556]"}
-      (forall r_3_2: Ref ::
-      { Heap[(id_1(r_3_2): Ref), item_1] } { (id_1(r_3_2): Ref) }
-      trees[r_3_2] ==> 1 / 2 >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@36.14--36.84) [69377]"}
+      (forall r_3: Ref ::
+      { Heap[(id_3(r_3): Ref), item] } { (id_3(r_3): Ref) }
+      trees[r_3] ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall r_3_2: Ref ::
-        { Heap[(id_1(r_3_2): Ref), item_1] } { (id_1(r_3_2): Ref) }
-        trees[r_3_2] && 1 / 2 > NoPerm ==> Heap[(id_1(r_3_2): Ref), item_1] != null
+      assume (forall r_3: Ref ::
+        { Heap[(id_3(r_3): Ref), item] } { (id_3(r_3): Ref) }
+        trees[r_3] && 1 / 2 > NoPerm ==> Heap[(id_3(r_3): Ref), item] != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, bool_prop] }
-        ((trees[invRecv8(o_4)] && NoPerm < 1 / 2) && qpRange8(o_4) ==> (NoPerm < 1 / 2 ==> Heap[(id_1(invRecv8(o_4)): Ref), item_1] == o_4) && QPMask[o_4, bool_prop] == Mask[o_4, bool_prop] + 1 / 2) && (!((trees[invRecv8(o_4)] && NoPerm < 1 / 2) && qpRange8(o_4)) ==> QPMask[o_4, bool_prop] == Mask[o_4, bool_prop])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, bool_prop] }
+        ((trees[invRecv8(o_9)] && NoPerm < 1 / 2) && qpRange8(o_9) ==> (NoPerm < 1 / 2 ==> Heap[(id_3(invRecv8(o_9)): Ref), item] == o_9) && QPMask[o_9, bool_prop] == Mask[o_9, bool_prop] + 1 / 2) && (!((trees[invRecv8(o_9)] && NoPerm < 1 / 2) && qpRange8(o_9)) ==> QPMask[o_9, bool_prop] == Mask[o_9, bool_prop])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != bool_prop ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != bool_prop ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1386,66 +1386,66 @@ procedure test03c(trees: (Set Ref)) returns ()
     
     // -- Check definedness of (forall s: Ref :: { (id(s): Ref) } (s in trees) ==> acc((id(s): Ref).item.bool_prop, wildcard))
       if (*) {
-        if (trees[s_12]) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item (0508a.vpr@38.11--38.86) [219557]"}
-            HasDirectPerm(ExhaleWellDef0Mask, (id_1(s_12): Ref), item_1);
+        if (trees[s_10]) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item (0508a.vpr@38.11--38.86) [69378]"}
+            HasDirectPerm(ExhaleWellDef0Mask, (id_3(s_10): Ref), item);
         }
         assume false;
       }
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@38.11--38.86) [219558]"}
-      (forall s_1: Ref ::
+    assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@38.11--38.86) [69379]"}
+      (forall s_1_1: Ref ::
       
-      trees[s_1] ==> AssertMask[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop] > NoPerm
+      trees[s_1_1] ==> AssertMask[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop] > NoPerm
     );
-    assume (forall s_1: Ref ::
+    assume (forall s_1_1: Ref ::
       
-      trees[s_1] ==> wildcard < AssertMask[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop]
+      trees[s_1_1] ==> wildcard < AssertMask[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop]
     );
     
     // -- check that the permission amount is positive
-      assert {:msg "  Assert might fail. Fraction wildcard might be negative. (0508a.vpr@38.11--38.86) [219559]"}
-        (forall s_1: Ref ::
-        { AssertHeap[(id_1(s_1): Ref), item_1] } { (id_1(s_1): Ref) }
-        trees[s_1] && dummyFunction(AssertHeap[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop]) ==> wildcard >= NoPerm
+      assert {:msg "  Assert might fail. Fraction wildcard might be negative. (0508a.vpr@38.11--38.86) [69380]"}
+        (forall s_1_1: Ref ::
+        { AssertHeap[(id_3(s_1_1): Ref), item] } { (id_3(s_1_1): Ref) }
+        trees[s_1_1] && dummyFunction(AssertHeap[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop]) ==> wildcard >= NoPerm
       );
     
     // -- check if receiver (id(s): Ref).item is injective
-      assert {:msg "  Assert might fail. Quantified resource (id(s): Ref).item.bool_prop might not be injective. (0508a.vpr@38.11--38.86) [219560]"}
-        (forall s_1: Ref, s_1_1: Ref ::
-        { neverTriggered9(s_1), neverTriggered9(s_1_1) }
-        (((s_1 != s_1_1 && trees[s_1]) && trees[s_1_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> AssertHeap[(id_1(s_1): Ref), item_1] != AssertHeap[(id_1(s_1_1): Ref), item_1]
+      assert {:msg "  Assert might fail. Quantified resource (id(s): Ref).item.bool_prop might not be injective. (0508a.vpr@38.11--38.86) [69381]"}
+        (forall s_1_1: Ref, s_1_2: Ref ::
+        { neverTriggered9(s_1_1), neverTriggered9(s_1_2) }
+        (((s_1_1 != s_1_2 && trees[s_1_1]) && trees[s_1_2]) && NoPerm < wildcard) && NoPerm < wildcard ==> AssertHeap[(id_3(s_1_1): Ref), item] != AssertHeap[(id_3(s_1_2): Ref), item]
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@38.11--38.86) [219561]"}
-        (forall s_1: Ref ::
-        { AssertHeap[(id_1(s_1): Ref), item_1] } { (id_1(s_1): Ref) }
-        trees[s_1] ==> AssertMask[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop] > NoPerm
+      assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@38.11--38.86) [69382]"}
+        (forall s_1_1: Ref ::
+        { AssertHeap[(id_3(s_1_1): Ref), item] } { (id_3(s_1_1): Ref) }
+        trees[s_1_1] ==> AssertMask[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop] > NoPerm
       );
     
     // -- assumptions for inverse of receiver (id(s): Ref).item
-      assume (forall s_1: Ref ::
-        { AssertHeap[(id_1(s_1): Ref), item_1] } { (id_1(s_1): Ref) }
-        trees[s_1] && NoPerm < wildcard ==> qpRange9(AssertHeap[(id_1(s_1): Ref), item_1]) && invRecv9(AssertHeap[(id_1(s_1): Ref), item_1]) == s_1
+      assume (forall s_1_1: Ref ::
+        { AssertHeap[(id_3(s_1_1): Ref), item] } { (id_3(s_1_1): Ref) }
+        trees[s_1_1] && NoPerm < wildcard ==> qpRange9(AssertHeap[(id_3(s_1_1): Ref), item]) && invRecv9(AssertHeap[(id_3(s_1_1): Ref), item]) == s_1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv9(o_4) }
-        trees[invRecv9(o_4)] && (NoPerm < wildcard && qpRange9(o_4)) ==> AssertHeap[(id_1(invRecv9(o_4)): Ref), item_1] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv9(o_9) }
+        trees[invRecv9(o_9)] && (NoPerm < wildcard && qpRange9(o_9)) ==> AssertHeap[(id_3(invRecv9(o_9)): Ref), item] == o_9
       );
     
     // -- assume permission updates for field bool_prop
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, bool_prop] }
-        (trees[invRecv9(o_4)] && (NoPerm < wildcard && qpRange9(o_4)) ==> AssertHeap[(id_1(invRecv9(o_4)): Ref), item_1] == o_4 && QPMask[o_4, bool_prop] == AssertMask[o_4, bool_prop] - wildcard) && (!(trees[invRecv9(o_4)] && (NoPerm < wildcard && qpRange9(o_4))) ==> QPMask[o_4, bool_prop] == AssertMask[o_4, bool_prop])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, bool_prop] }
+        (trees[invRecv9(o_9)] && (NoPerm < wildcard && qpRange9(o_9)) ==> AssertHeap[(id_3(invRecv9(o_9)): Ref), item] == o_9 && QPMask[o_9, bool_prop] == AssertMask[o_9, bool_prop] - wildcard) && (!(trees[invRecv9(o_9)] && (NoPerm < wildcard && qpRange9(o_9))) ==> QPMask[o_9, bool_prop] == AssertMask[o_9, bool_prop])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != bool_prop ==> AssertMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != bool_prop ==> AssertMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     AssertMask := QPMask;
     assume state(Heap, Mask);
@@ -1459,16 +1459,16 @@ procedure test04(trees: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var s1_10: Ref;
-  var s2_10: Ref;
-  var r_46: Ref;
+  var s1_5: Ref;
+  var s2_5: Ref;
+  var r_38: Ref;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var s_15: Ref;
+  var s_11: Ref;
   var wildcard: real where wildcard > 0.000000000;
   
   // -- Initializing the state
@@ -1483,42 +1483,42 @@ procedure test04(trees: (Set Ref)) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item might not be injective. (0508a.vpr@44.13--44.78) [219562]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item might not be injective. (0508a.vpr@44.13--44.78) [69383]"}
       (forall r_1_1: Ref, r_1_2: Ref ::
       
-      (((r_1_1 != r_1_2 && trees[r_1_1]) && trees[r_1_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (id_1(r_1_1): Ref) != (id_1(r_1_2): Ref)
+      (((r_1_1 != r_1_2 && trees[r_1_1]) && trees[r_1_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> (id_3(r_1_1): Ref) != (id_3(r_1_2): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall r_1_1: Ref ::
-        { (id_1(r_1_1): Ref) } { trees[r_1_1] }
-        trees[r_1_1] && NoPerm < 1 / 2 ==> qpRange10((id_1(r_1_1): Ref)) && invRecv10((id_1(r_1_1): Ref)) == r_1_1
+        { (id_3(r_1_1): Ref) } { trees[r_1_1] }
+        trees[r_1_1] && NoPerm < 1 / 2 ==> qpRange10((id_3(r_1_1): Ref)) && invRecv10((id_3(r_1_1): Ref)) == r_1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv10(o_4) }
-        (trees[invRecv10(o_4)] && NoPerm < 1 / 2) && qpRange10(o_4) ==> (id_1(invRecv10(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv10(o_9) }
+        (trees[invRecv10(o_9)] && NoPerm < 1 / 2) && qpRange10(o_9) ==> (id_3(invRecv10(o_9)): Ref) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@44.13--44.78) [219563]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@44.13--44.78) [69384]"}
       (forall r_1_1: Ref ::
-      { (id_1(r_1_1): Ref) } { trees[r_1_1] }
+      { (id_3(r_1_1): Ref) } { trees[r_1_1] }
       trees[r_1_1] ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
       assume (forall r_1_1: Ref ::
-        { (id_1(r_1_1): Ref) } { trees[r_1_1] }
-        trees[r_1_1] && 1 / 2 > NoPerm ==> (id_1(r_1_1): Ref) != null
+        { (id_3(r_1_1): Ref) } { trees[r_1_1] }
+        trees[r_1_1] && 1 / 2 > NoPerm ==> (id_3(r_1_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, item_1] }
-        ((trees[invRecv10(o_4)] && NoPerm < 1 / 2) && qpRange10(o_4) ==> (NoPerm < 1 / 2 ==> (id_1(invRecv10(o_4)): Ref) == o_4) && QPMask[o_4, item_1] == Mask[o_4, item_1] + 1 / 2) && (!((trees[invRecv10(o_4)] && NoPerm < 1 / 2) && qpRange10(o_4)) ==> QPMask[o_4, item_1] == Mask[o_4, item_1])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, item] }
+        ((trees[invRecv10(o_9)] && NoPerm < 1 / 2) && qpRange10(o_9) ==> (NoPerm < 1 / 2 ==> (id_3(invRecv10(o_9)): Ref) == o_9) && QPMask[o_9, item] == Mask[o_9, item] + 1 / 2) && (!((trees[invRecv10(o_9)] && NoPerm < 1 / 2) && qpRange10(o_9)) ==> QPMask[o_9, item] == Mask[o_9, item])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != item_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1526,65 +1526,65 @@ procedure test04(trees: (Set Ref)) returns ()
     
     // -- Check definedness of (forall s1: Ref, s2: Ref :: { (s1 in trees), (s2 in trees) } { (s1 in trees), (id(s2): Ref) } { (s2 in trees), (id(s1): Ref) } { (id(s1): Ref), (id(s2): Ref) } { (id(s2): Ref), (id(s1): Ref) } (s1 in trees) && ((s2 in trees) && (id(s1): Ref) != (id(s2): Ref)) ==> (id(s1): Ref).item != (id(s2): Ref).item)
       if (*) {
-        if (trees[s1_10] && (trees[s2_10] && (id_1(s1_10): Ref) != (id_1(s2_10): Ref))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(s1): Ref).item (0508a.vpr@45.13--45.119) [219564]"}
-            HasDirectPerm(Mask, (id_1(s1_10): Ref), item_1);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(s2): Ref).item (0508a.vpr@45.13--45.119) [219565]"}
-            HasDirectPerm(Mask, (id_1(s2_10): Ref), item_1);
+        if (trees[s1_5] && (trees[s2_5] && (id_3(s1_5): Ref) != (id_3(s2_5): Ref))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(s1): Ref).item (0508a.vpr@45.13--45.119) [69385]"}
+            HasDirectPerm(Mask, (id_3(s1_5): Ref), item);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(s2): Ref).item (0508a.vpr@45.13--45.119) [69386]"}
+            HasDirectPerm(Mask, (id_3(s2_5): Ref), item);
         }
         assume false;
       }
     assume (forall s1_1_1: Ref, s2_1_1: Ref ::
-      { trees[s1_1_1], trees[s2_1_1] } { trees[s1_1_1], (id_1(s2_1_1): Ref) } { trees[s2_1_1], (id_1(s1_1_1): Ref) } { (id_1(s1_1_1): Ref), (id_1(s2_1_1): Ref) } { (id_1(s2_1_1): Ref), (id_1(s1_1_1): Ref) }
-      trees[s1_1_1] && (trees[s2_1_1] && (id_1(s1_1_1): Ref) != (id_1(s2_1_1): Ref)) ==> Heap[(id_1(s1_1_1): Ref), item_1] != Heap[(id_1(s2_1_1): Ref), item_1]
+      { trees[s1_1_1], trees[s2_1_1] } { trees[s1_1_1], (id_3(s2_1_1): Ref) } { trees[s2_1_1], (id_3(s1_1_1): Ref) } { (id_3(s1_1_1): Ref), (id_3(s2_1_1): Ref) } { (id_3(s2_1_1): Ref), (id_3(s1_1_1): Ref) }
+      trees[s1_1_1] && (trees[s2_1_1] && (id_3(s1_1_1): Ref) != (id_3(s2_1_1): Ref)) ==> Heap[(id_3(s1_1_1): Ref), item] != Heap[(id_3(s2_1_1): Ref), item]
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall r: Ref :: { (r in trees) } (r in trees) ==> acc((id(r): Ref).item.bool_prop, 1 / 2))
       if (*) {
-        if (trees[r_46]) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(r): Ref).item (0508a.vpr@46.13--46.88) [219566]"}
-            HasDirectPerm(Mask, (id_1(r_46): Ref), item_1);
+        if (trees[r_38]) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access (id(r): Ref).item (0508a.vpr@46.13--46.88) [69387]"}
+            HasDirectPerm(Mask, (id_3(r_38): Ref), item);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item.bool_prop might not be injective. (0508a.vpr@46.13--46.88) [219567]"}
-      (forall r_3_2: Ref, r_3_3: Ref ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource (id(r): Ref).item.bool_prop might not be injective. (0508a.vpr@46.13--46.88) [69388]"}
+      (forall r_3: Ref, r_3_2: Ref ::
       
-      (((r_3_2 != r_3_3 && trees[r_3_2]) && trees[r_3_3]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Heap[(id_1(r_3_2): Ref), item_1] != Heap[(id_1(r_3_3): Ref), item_1]
+      (((r_3 != r_3_2 && trees[r_3]) && trees[r_3_2]) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Heap[(id_3(r_3): Ref), item] != Heap[(id_3(r_3_2): Ref), item]
     );
     
     // -- Define Inverse Function
-      assume (forall r_3_2: Ref ::
-        { Heap[(id_1(r_3_2): Ref), item_1] } { trees[r_3_2] }
-        trees[r_3_2] && NoPerm < 1 / 2 ==> qpRange11(Heap[(id_1(r_3_2): Ref), item_1]) && invRecv11(Heap[(id_1(r_3_2): Ref), item_1]) == r_3_2
+      assume (forall r_3: Ref ::
+        { Heap[(id_3(r_3): Ref), item] } { trees[r_3] }
+        trees[r_3] && NoPerm < 1 / 2 ==> qpRange11(Heap[(id_3(r_3): Ref), item]) && invRecv11(Heap[(id_3(r_3): Ref), item]) == r_3
       );
-      assume (forall o_4: Ref ::
-        { invRecv11(o_4) }
-        (trees[invRecv11(o_4)] && NoPerm < 1 / 2) && qpRange11(o_4) ==> Heap[(id_1(invRecv11(o_4)): Ref), item_1] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv11(o_9) }
+        (trees[invRecv11(o_9)] && NoPerm < 1 / 2) && qpRange11(o_9) ==> Heap[(id_3(invRecv11(o_9)): Ref), item] == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@46.13--46.88) [219568]"}
-      (forall r_3_2: Ref ::
-      { Heap[(id_1(r_3_2): Ref), item_1] } { trees[r_3_2] }
-      trees[r_3_2] ==> 1 / 2 >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@46.13--46.88) [69389]"}
+      (forall r_3: Ref ::
+      { Heap[(id_3(r_3): Ref), item] } { trees[r_3] }
+      trees[r_3] ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall r_3_2: Ref ::
-        { Heap[(id_1(r_3_2): Ref), item_1] } { trees[r_3_2] }
-        trees[r_3_2] && 1 / 2 > NoPerm ==> Heap[(id_1(r_3_2): Ref), item_1] != null
+      assume (forall r_3: Ref ::
+        { Heap[(id_3(r_3): Ref), item] } { trees[r_3] }
+        trees[r_3] && 1 / 2 > NoPerm ==> Heap[(id_3(r_3): Ref), item] != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, bool_prop] }
-        ((trees[invRecv11(o_4)] && NoPerm < 1 / 2) && qpRange11(o_4) ==> (NoPerm < 1 / 2 ==> Heap[(id_1(invRecv11(o_4)): Ref), item_1] == o_4) && QPMask[o_4, bool_prop] == Mask[o_4, bool_prop] + 1 / 2) && (!((trees[invRecv11(o_4)] && NoPerm < 1 / 2) && qpRange11(o_4)) ==> QPMask[o_4, bool_prop] == Mask[o_4, bool_prop])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, bool_prop] }
+        ((trees[invRecv11(o_9)] && NoPerm < 1 / 2) && qpRange11(o_9) ==> (NoPerm < 1 / 2 ==> Heap[(id_3(invRecv11(o_9)): Ref), item] == o_9) && QPMask[o_9, bool_prop] == Mask[o_9, bool_prop] + 1 / 2) && (!((trees[invRecv11(o_9)] && NoPerm < 1 / 2) && qpRange11(o_9)) ==> QPMask[o_9, bool_prop] == Mask[o_9, bool_prop])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != bool_prop ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != bool_prop ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1606,66 +1606,66 @@ procedure test04(trees: (Set Ref)) returns ()
     
     // -- Check definedness of (forall s: Ref :: { (s in trees) } (s in trees) ==> acc((id(s): Ref).item.bool_prop, wildcard))
       if (*) {
-        if (trees[s_15]) {
-          assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item (0508a.vpr@48.10--48.90) [219569]"}
-            HasDirectPerm(ExhaleWellDef0Mask, (id_1(s_15): Ref), item_1);
+        if (trees[s_11]) {
+          assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item (0508a.vpr@48.10--48.90) [69390]"}
+            HasDirectPerm(ExhaleWellDef0Mask, (id_3(s_11): Ref), item);
         }
         assume false;
       }
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@48.10--48.90) [219570]"}
-      (forall s_1: Ref ::
+    assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@48.10--48.90) [69391]"}
+      (forall s_1_1: Ref ::
       
-      trees[s_1] ==> AssertMask[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop] > NoPerm
+      trees[s_1_1] ==> AssertMask[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop] > NoPerm
     );
-    assume (forall s_1: Ref ::
+    assume (forall s_1_1: Ref ::
       
-      trees[s_1] ==> wildcard < AssertMask[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop]
+      trees[s_1_1] ==> wildcard < AssertMask[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop]
     );
     
     // -- check that the permission amount is positive
-      assert {:msg "  Assert might fail. Fraction wildcard might be negative. (0508a.vpr@48.10--48.90) [219571]"}
-        (forall s_1: Ref ::
-        { AssertHeap[(id_1(s_1): Ref), item_1] } { trees[s_1] }
-        trees[s_1] && dummyFunction(AssertHeap[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop]) ==> wildcard >= NoPerm
+      assert {:msg "  Assert might fail. Fraction wildcard might be negative. (0508a.vpr@48.10--48.90) [69392]"}
+        (forall s_1_1: Ref ::
+        { AssertHeap[(id_3(s_1_1): Ref), item] } { trees[s_1_1] }
+        trees[s_1_1] && dummyFunction(AssertHeap[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop]) ==> wildcard >= NoPerm
       );
     
     // -- check if receiver (id(s): Ref).item is injective
-      assert {:msg "  Assert might fail. Quantified resource (id(s): Ref).item.bool_prop might not be injective. (0508a.vpr@48.10--48.90) [219572]"}
-        (forall s_1: Ref, s_1_1: Ref ::
-        { neverTriggered12(s_1), neverTriggered12(s_1_1) }
-        (((s_1 != s_1_1 && trees[s_1]) && trees[s_1_1]) && NoPerm < wildcard) && NoPerm < wildcard ==> AssertHeap[(id_1(s_1): Ref), item_1] != AssertHeap[(id_1(s_1_1): Ref), item_1]
+      assert {:msg "  Assert might fail. Quantified resource (id(s): Ref).item.bool_prop might not be injective. (0508a.vpr@48.10--48.90) [69393]"}
+        (forall s_1_1: Ref, s_1_2: Ref ::
+        { neverTriggered12(s_1_1), neverTriggered12(s_1_2) }
+        (((s_1_1 != s_1_2 && trees[s_1_1]) && trees[s_1_2]) && NoPerm < wildcard) && NoPerm < wildcard ==> AssertHeap[(id_3(s_1_1): Ref), item] != AssertHeap[(id_3(s_1_2): Ref), item]
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@48.10--48.90) [219573]"}
-        (forall s_1: Ref ::
-        { AssertHeap[(id_1(s_1): Ref), item_1] } { trees[s_1] }
-        trees[s_1] ==> AssertMask[AssertHeap[(id_1(s_1): Ref), item_1], bool_prop] > NoPerm
+      assert {:msg "  Assert might fail. There might be insufficient permission to access (id(s): Ref).item.bool_prop (0508a.vpr@48.10--48.90) [69394]"}
+        (forall s_1_1: Ref ::
+        { AssertHeap[(id_3(s_1_1): Ref), item] } { trees[s_1_1] }
+        trees[s_1_1] ==> AssertMask[AssertHeap[(id_3(s_1_1): Ref), item], bool_prop] > NoPerm
       );
     
     // -- assumptions for inverse of receiver (id(s): Ref).item
-      assume (forall s_1: Ref ::
-        { AssertHeap[(id_1(s_1): Ref), item_1] } { trees[s_1] }
-        trees[s_1] && NoPerm < wildcard ==> qpRange12(AssertHeap[(id_1(s_1): Ref), item_1]) && invRecv12(AssertHeap[(id_1(s_1): Ref), item_1]) == s_1
+      assume (forall s_1_1: Ref ::
+        { AssertHeap[(id_3(s_1_1): Ref), item] } { trees[s_1_1] }
+        trees[s_1_1] && NoPerm < wildcard ==> qpRange12(AssertHeap[(id_3(s_1_1): Ref), item]) && invRecv12(AssertHeap[(id_3(s_1_1): Ref), item]) == s_1_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv12(o_4) }
-        trees[invRecv12(o_4)] && (NoPerm < wildcard && qpRange12(o_4)) ==> AssertHeap[(id_1(invRecv12(o_4)): Ref), item_1] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv12(o_9) }
+        trees[invRecv12(o_9)] && (NoPerm < wildcard && qpRange12(o_9)) ==> AssertHeap[(id_3(invRecv12(o_9)): Ref), item] == o_9
       );
     
     // -- assume permission updates for field bool_prop
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, bool_prop] }
-        (trees[invRecv12(o_4)] && (NoPerm < wildcard && qpRange12(o_4)) ==> AssertHeap[(id_1(invRecv12(o_4)): Ref), item_1] == o_4 && QPMask[o_4, bool_prop] == AssertMask[o_4, bool_prop] - wildcard) && (!(trees[invRecv12(o_4)] && (NoPerm < wildcard && qpRange12(o_4))) ==> QPMask[o_4, bool_prop] == AssertMask[o_4, bool_prop])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, bool_prop] }
+        (trees[invRecv12(o_9)] && (NoPerm < wildcard && qpRange12(o_9)) ==> AssertHeap[(id_3(invRecv12(o_9)): Ref), item] == o_9 && QPMask[o_9, bool_prop] == AssertMask[o_9, bool_prop] - wildcard) && (!(trees[invRecv12(o_9)] && (NoPerm < wildcard && qpRange12(o_9))) ==> QPMask[o_9, bool_prop] == AssertMask[o_9, bool_prop])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != bool_prop ==> AssertMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != bool_prop ==> AssertMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     AssertMask := QPMask;
     assume state(Heap, Mask);
@@ -1678,20 +1678,20 @@ procedure test04(trees: (Set Ref)) returns ()
 procedure test01(trees: (Seq Ref), g_1: int) returns ()
   modifies Heap, Mask;
 {
-  var i_24: int;
-  var j_15: int;
-  var i_29: int;
+  var i_13: int;
+  var j_19: int;
+  var i_23: int;
   var QPMask: MaskType;
-  var i_30: int;
-  var j_22: int;
-  var i_31: int;
+  var i_24: int;
+  var j_20: int;
+  var i_25: int;
   var oldHeap: HeapType;
   var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var j_23: int;
+  var j_21: int;
   var wildcard: real where wildcard > 0.000000000;
   
   // -- Initializing the state
@@ -1706,15 +1706,15 @@ procedure test01(trees: (Seq Ref), g_1: int) returns ()
     
     // -- Check definedness of (forall i: Int, j: Int :: { trees[i], trees[j] } i >= 0 && (i < g && (j >= 0 && (j < g && i != j))) ==> trees[i] != trees[j])
       if (*) {
-        if (i_24 >= 0 && (i_24 < g_1 && (j_15 >= 0 && (j_15 < g_1 && i_24 != j_15)))) {
-          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might be negative. (0508a.vpr@55.13--55.107) [219574]"}
-            i_24 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might exceed sequence length. (0508a.vpr@55.13--55.107) [219575]"}
-            i_24 < Seq#Length(trees);
-          assert {:msg "  Contract might not be well-formed. Index trees[j] into trees might be negative. (0508a.vpr@55.13--55.107) [219576]"}
-            j_15 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index trees[j] into trees might exceed sequence length. (0508a.vpr@55.13--55.107) [219577]"}
-            j_15 < Seq#Length(trees);
+        if (i_13 >= 0 && (i_13 < g_1 && (j_19 >= 0 && (j_19 < g_1 && i_13 != j_19)))) {
+          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might be negative. (0508a.vpr@55.13--55.107) [69395]"}
+            i_13 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might exceed sequence length. (0508a.vpr@55.13--55.107) [69396]"}
+            i_13 < Seq#Length(trees);
+          assert {:msg "  Contract might not be well-formed. Index trees[j] into trees might be negative. (0508a.vpr@55.13--55.107) [69397]"}
+            j_19 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index trees[j] into trees might exceed sequence length. (0508a.vpr@55.13--55.107) [69398]"}
+            j_19 < Seq#Length(trees);
         }
         assume false;
       }
@@ -1726,51 +1726,51 @@ procedure test01(trees: (Seq Ref), g_1: int) returns ()
     
     // -- Check definedness of (forall i: Int :: { trees[i] } 0 <= i && i < g ==> acc(trees[i].item, 1 / 2))
       if (*) {
-        if (0 <= i_29 && i_29 < g_1) {
-          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might be negative. (0508a.vpr@56.13--56.84) [219578]"}
-            i_29 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might exceed sequence length. (0508a.vpr@56.13--56.84) [219579]"}
-            i_29 < Seq#Length(trees);
+        if (0 <= i_23 && i_23 < g_1) {
+          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might be negative. (0508a.vpr@56.13--56.84) [69399]"}
+            i_23 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might exceed sequence length. (0508a.vpr@56.13--56.84) [69400]"}
+            i_23 < Seq#Length(trees);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource trees[i].item might not be injective. (0508a.vpr@56.13--56.84) [219580]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource trees[i].item might not be injective. (0508a.vpr@56.13--56.84) [69401]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && (0 <= i_3 && i_3 < g_1)) && (0 <= i_3_1 && i_3_1 < g_1)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Seq#Index(trees, i_3) != Seq#Index(trees, i_3_1)
+      (((i_3_2 != i_3_3 && (0 <= i_3_2 && i_3_2 < g_1)) && (0 <= i_3_3 && i_3_3 < g_1)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Seq#Index(trees, i_3_2) != Seq#Index(trees, i_3_3)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { Seq#Index(trees, i_3) } { Seq#Index(trees, i_3) }
-        (0 <= i_3 && i_3 < g_1) && NoPerm < 1 / 2 ==> qpRange13(Seq#Index(trees, i_3)) && invRecv13(Seq#Index(trees, i_3)) == i_3
+      assume (forall i_3_2: int ::
+        { Seq#Index(trees, i_3_2) } { Seq#Index(trees, i_3_2) }
+        (0 <= i_3_2 && i_3_2 < g_1) && NoPerm < 1 / 2 ==> qpRange13(Seq#Index(trees, i_3_2)) && invRecv13(Seq#Index(trees, i_3_2)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv13(o_4) }
-        ((0 <= invRecv13(o_4) && invRecv13(o_4) < g_1) && NoPerm < 1 / 2) && qpRange13(o_4) ==> Seq#Index(trees, invRecv13(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv13(o_9) }
+        ((0 <= invRecv13(o_9) && invRecv13(o_9) < g_1) && NoPerm < 1 / 2) && qpRange13(o_9) ==> Seq#Index(trees, invRecv13(o_9)) == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@56.13--56.84) [219581]"}
-      (forall i_3: int ::
-      { Seq#Index(trees, i_3) } { Seq#Index(trees, i_3) }
-      0 <= i_3 && i_3 < g_1 ==> 1 / 2 >= NoPerm
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@56.13--56.84) [69402]"}
+      (forall i_3_2: int ::
+      { Seq#Index(trees, i_3_2) } { Seq#Index(trees, i_3_2) }
+      0 <= i_3_2 && i_3_2 < g_1 ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { Seq#Index(trees, i_3) } { Seq#Index(trees, i_3) }
-        (0 <= i_3 && i_3 < g_1) && 1 / 2 > NoPerm ==> Seq#Index(trees, i_3) != null
+      assume (forall i_3_2: int ::
+        { Seq#Index(trees, i_3_2) } { Seq#Index(trees, i_3_2) }
+        (0 <= i_3_2 && i_3_2 < g_1) && 1 / 2 > NoPerm ==> Seq#Index(trees, i_3_2) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, item_1] }
-        (((0 <= invRecv13(o_4) && invRecv13(o_4) < g_1) && NoPerm < 1 / 2) && qpRange13(o_4) ==> (NoPerm < 1 / 2 ==> Seq#Index(trees, invRecv13(o_4)) == o_4) && QPMask[o_4, item_1] == Mask[o_4, item_1] + 1 / 2) && (!(((0 <= invRecv13(o_4) && invRecv13(o_4) < g_1) && NoPerm < 1 / 2) && qpRange13(o_4)) ==> QPMask[o_4, item_1] == Mask[o_4, item_1])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, item] }
+        (((0 <= invRecv13(o_9) && invRecv13(o_9) < g_1) && NoPerm < 1 / 2) && qpRange13(o_9) ==> (NoPerm < 1 / 2 ==> Seq#Index(trees, invRecv13(o_9)) == o_9) && QPMask[o_9, item] == Mask[o_9, item] + 1 / 2) && (!(((0 <= invRecv13(o_9) && invRecv13(o_9) < g_1) && NoPerm < 1 / 2) && qpRange13(o_9)) ==> QPMask[o_9, item] == Mask[o_9, item])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != item_1 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != item ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1778,77 +1778,77 @@ procedure test01(trees: (Seq Ref), g_1: int) returns ()
     
     // -- Check definedness of (forall i: Int, j: Int :: { trees[i], trees[j] } i >= 0 && (i < g && (j >= 0 && (j < g && i != j))) ==> trees[i].item != trees[j].item)
       if (*) {
-        if (i_30 >= 0 && (i_30 < g_1 && (j_22 >= 0 && (j_22 < g_1 && i_30 != j_22)))) {
-          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might be negative. (0508a.vpr@57.13--57.117) [219582]"}
-            i_30 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might exceed sequence length. (0508a.vpr@57.13--57.117) [219583]"}
-            i_30 < Seq#Length(trees);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access trees[i].item (0508a.vpr@57.13--57.117) [219584]"}
-            HasDirectPerm(Mask, Seq#Index(trees, i_30), item_1);
-          assert {:msg "  Contract might not be well-formed. Index trees[j] into trees might be negative. (0508a.vpr@57.13--57.117) [219585]"}
-            j_22 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index trees[j] into trees might exceed sequence length. (0508a.vpr@57.13--57.117) [219586]"}
-            j_22 < Seq#Length(trees);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access trees[j].item (0508a.vpr@57.13--57.117) [219587]"}
-            HasDirectPerm(Mask, Seq#Index(trees, j_22), item_1);
+        if (i_24 >= 0 && (i_24 < g_1 && (j_20 >= 0 && (j_20 < g_1 && i_24 != j_20)))) {
+          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might be negative. (0508a.vpr@57.13--57.117) [69403]"}
+            i_24 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might exceed sequence length. (0508a.vpr@57.13--57.117) [69404]"}
+            i_24 < Seq#Length(trees);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access trees[i].item (0508a.vpr@57.13--57.117) [69405]"}
+            HasDirectPerm(Mask, Seq#Index(trees, i_24), item);
+          assert {:msg "  Contract might not be well-formed. Index trees[j] into trees might be negative. (0508a.vpr@57.13--57.117) [69406]"}
+            j_20 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index trees[j] into trees might exceed sequence length. (0508a.vpr@57.13--57.117) [69407]"}
+            j_20 < Seq#Length(trees);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access trees[j].item (0508a.vpr@57.13--57.117) [69408]"}
+            HasDirectPerm(Mask, Seq#Index(trees, j_20), item);
         }
         assume false;
       }
-    assume (forall i_5: int, j_3_1: int ::
-      { Seq#Index(trees, i_5), Seq#Index(trees, j_3_1) }
-      i_5 >= 0 && (i_5 < g_1 && (j_3_1 >= 0 && (j_3_1 < g_1 && i_5 != j_3_1))) ==> Heap[Seq#Index(trees, i_5), item_1] != Heap[Seq#Index(trees, j_3_1), item_1]
+    assume (forall i_5_1: int, j_3: int ::
+      { Seq#Index(trees, i_5_1), Seq#Index(trees, j_3) }
+      i_5_1 >= 0 && (i_5_1 < g_1 && (j_3 >= 0 && (j_3 < g_1 && i_5_1 != j_3))) ==> Heap[Seq#Index(trees, i_5_1), item] != Heap[Seq#Index(trees, j_3), item]
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { trees[i] } 0 <= i && i < g ==> acc(trees[i].item.bool_prop, 1 / 2))
       if (*) {
-        if (0 <= i_31 && i_31 < g_1) {
-          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might be negative. (0508a.vpr@58.13--58.94) [219588]"}
-            i_31 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might exceed sequence length. (0508a.vpr@58.13--58.94) [219589]"}
-            i_31 < Seq#Length(trees);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access trees[i].item (0508a.vpr@58.13--58.94) [219590]"}
-            HasDirectPerm(Mask, Seq#Index(trees, i_31), item_1);
+        if (0 <= i_25 && i_25 < g_1) {
+          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might be negative. (0508a.vpr@58.13--58.94) [69409]"}
+            i_25 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index trees[i] into trees might exceed sequence length. (0508a.vpr@58.13--58.94) [69410]"}
+            i_25 < Seq#Length(trees);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access trees[i].item (0508a.vpr@58.13--58.94) [69411]"}
+            HasDirectPerm(Mask, Seq#Index(trees, i_25), item);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource trees[i].item.bool_prop might not be injective. (0508a.vpr@58.13--58.94) [219591]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource trees[i].item.bool_prop might not be injective. (0508a.vpr@58.13--58.94) [69412]"}
       (forall i_7_1: int, i_7_2: int ::
       
-      (((i_7_1 != i_7_2 && (0 <= i_7_1 && i_7_1 < g_1)) && (0 <= i_7_2 && i_7_2 < g_1)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Heap[Seq#Index(trees, i_7_1), item_1] != Heap[Seq#Index(trees, i_7_2), item_1]
+      (((i_7_1 != i_7_2 && (0 <= i_7_1 && i_7_1 < g_1)) && (0 <= i_7_2 && i_7_2 < g_1)) && NoPerm < 1 / 2) && NoPerm < 1 / 2 ==> Heap[Seq#Index(trees, i_7_1), item] != Heap[Seq#Index(trees, i_7_2), item]
     );
     
     // -- Define Inverse Function
       assume (forall i_7_1: int ::
-        { Heap[Seq#Index(trees, i_7_1), item_1] } { Seq#Index(trees, i_7_1) }
-        (0 <= i_7_1 && i_7_1 < g_1) && NoPerm < 1 / 2 ==> qpRange14(Heap[Seq#Index(trees, i_7_1), item_1]) && invRecv14(Heap[Seq#Index(trees, i_7_1), item_1]) == i_7_1
+        { Heap[Seq#Index(trees, i_7_1), item] } { Seq#Index(trees, i_7_1) }
+        (0 <= i_7_1 && i_7_1 < g_1) && NoPerm < 1 / 2 ==> qpRange14(Heap[Seq#Index(trees, i_7_1), item]) && invRecv14(Heap[Seq#Index(trees, i_7_1), item]) == i_7_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv14(o_4) }
-        ((0 <= invRecv14(o_4) && invRecv14(o_4) < g_1) && NoPerm < 1 / 2) && qpRange14(o_4) ==> Heap[Seq#Index(trees, invRecv14(o_4)), item_1] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv14(o_9) }
+        ((0 <= invRecv14(o_9) && invRecv14(o_9) < g_1) && NoPerm < 1 / 2) && qpRange14(o_9) ==> Heap[Seq#Index(trees, invRecv14(o_9)), item] == o_9
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@58.13--58.94) [219592]"}
+    assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0508a.vpr@58.13--58.94) [69413]"}
       (forall i_7_1: int ::
-      { Heap[Seq#Index(trees, i_7_1), item_1] } { Seq#Index(trees, i_7_1) }
+      { Heap[Seq#Index(trees, i_7_1), item] } { Seq#Index(trees, i_7_1) }
       0 <= i_7_1 && i_7_1 < g_1 ==> 1 / 2 >= NoPerm
     );
     
     // -- Assume set of fields is nonNull
       assume (forall i_7_1: int ::
-        { Heap[Seq#Index(trees, i_7_1), item_1] } { Seq#Index(trees, i_7_1) }
-        (0 <= i_7_1 && i_7_1 < g_1) && 1 / 2 > NoPerm ==> Heap[Seq#Index(trees, i_7_1), item_1] != null
+        { Heap[Seq#Index(trees, i_7_1), item] } { Seq#Index(trees, i_7_1) }
+        (0 <= i_7_1 && i_7_1 < g_1) && 1 / 2 > NoPerm ==> Heap[Seq#Index(trees, i_7_1), item] != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, bool_prop] }
-        (((0 <= invRecv14(o_4) && invRecv14(o_4) < g_1) && NoPerm < 1 / 2) && qpRange14(o_4) ==> (NoPerm < 1 / 2 ==> Heap[Seq#Index(trees, invRecv14(o_4)), item_1] == o_4) && QPMask[o_4, bool_prop] == Mask[o_4, bool_prop] + 1 / 2) && (!(((0 <= invRecv14(o_4) && invRecv14(o_4) < g_1) && NoPerm < 1 / 2) && qpRange14(o_4)) ==> QPMask[o_4, bool_prop] == Mask[o_4, bool_prop])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, bool_prop] }
+        (((0 <= invRecv14(o_9) && invRecv14(o_9) < g_1) && NoPerm < 1 / 2) && qpRange14(o_9) ==> (NoPerm < 1 / 2 ==> Heap[Seq#Index(trees, invRecv14(o_9)), item] == o_9) && QPMask[o_9, bool_prop] == Mask[o_9, bool_prop] + 1 / 2) && (!(((0 <= invRecv14(o_9) && invRecv14(o_9) < g_1) && NoPerm < 1 / 2) && qpRange14(o_9)) ==> QPMask[o_9, bool_prop] == Mask[o_9, bool_prop])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != bool_prop ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != bool_prop ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1870,70 +1870,70 @@ procedure test01(trees: (Seq Ref), g_1: int) returns ()
     
     // -- Check definedness of (forall j: Int :: { trees[j] } 0 <= j && j < g ==> acc(trees[j].item.bool_prop, wildcard))
       if (*) {
-        if (0 <= j_23 && j_23 < g_1) {
-          assert {:msg "  Assert might fail. Index trees[j] into trees might be negative. (0508a.vpr@60.10--60.96) [219593]"}
-            j_23 >= 0;
-          assert {:msg "  Assert might fail. Index trees[j] into trees might exceed sequence length. (0508a.vpr@60.10--60.96) [219594]"}
-            j_23 < Seq#Length(trees);
-          assert {:msg "  Assert might fail. There might be insufficient permission to access trees[j].item (0508a.vpr@60.10--60.96) [219595]"}
-            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(trees, j_23), item_1);
+        if (0 <= j_21 && j_21 < g_1) {
+          assert {:msg "  Assert might fail. Index trees[j] into trees might be negative. (0508a.vpr@60.10--60.96) [69414]"}
+            j_21 >= 0;
+          assert {:msg "  Assert might fail. Index trees[j] into trees might exceed sequence length. (0508a.vpr@60.10--60.96) [69415]"}
+            j_21 < Seq#Length(trees);
+          assert {:msg "  Assert might fail. There might be insufficient permission to access trees[j].item (0508a.vpr@60.10--60.96) [69416]"}
+            HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(trees, j_21), item);
         }
         assume false;
       }
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
-    assert {:msg "  Assert might fail. There might be insufficient permission to access trees[j].item.bool_prop (0508a.vpr@60.10--60.96) [219596]"}
-      (forall j_5_1: int ::
+    assert {:msg "  Assert might fail. There might be insufficient permission to access trees[j].item.bool_prop (0508a.vpr@60.10--60.96) [69417]"}
+      (forall j_5: int ::
       
-      0 <= j_5_1 && j_5_1 < g_1 ==> AssertMask[AssertHeap[Seq#Index(trees, j_5_1), item_1], bool_prop] > NoPerm
+      0 <= j_5 && j_5 < g_1 ==> AssertMask[AssertHeap[Seq#Index(trees, j_5), item], bool_prop] > NoPerm
     );
-    assume (forall j_5_1: int ::
+    assume (forall j_5: int ::
       
-      0 <= j_5_1 && j_5_1 < g_1 ==> wildcard < AssertMask[AssertHeap[Seq#Index(trees, j_5_1), item_1], bool_prop]
+      0 <= j_5 && j_5 < g_1 ==> wildcard < AssertMask[AssertHeap[Seq#Index(trees, j_5), item], bool_prop]
     );
     
     // -- check that the permission amount is positive
-      assert {:msg "  Assert might fail. Fraction wildcard might be negative. (0508a.vpr@60.10--60.96) [219597]"}
-        (forall j_5_1: int ::
-        { AssertHeap[Seq#Index(trees, j_5_1), item_1] } { Seq#Index(trees, j_5_1) }
-        (0 <= j_5_1 && j_5_1 < g_1) && dummyFunction(AssertHeap[AssertHeap[Seq#Index(trees, j_5_1), item_1], bool_prop]) ==> wildcard >= NoPerm
+      assert {:msg "  Assert might fail. Fraction wildcard might be negative. (0508a.vpr@60.10--60.96) [69418]"}
+        (forall j_5: int ::
+        { AssertHeap[Seq#Index(trees, j_5), item] } { Seq#Index(trees, j_5) }
+        (0 <= j_5 && j_5 < g_1) && dummyFunction(AssertHeap[AssertHeap[Seq#Index(trees, j_5), item], bool_prop]) ==> wildcard >= NoPerm
       );
     
     // -- check if receiver trees[j].item is injective
-      assert {:msg "  Assert might fail. Quantified resource trees[j].item.bool_prop might not be injective. (0508a.vpr@60.10--60.96) [219598]"}
-        (forall j_5_1: int, j_5_2: int ::
-        { neverTriggered15(j_5_1), neverTriggered15(j_5_2) }
-        (((j_5_1 != j_5_2 && (0 <= j_5_1 && j_5_1 < g_1)) && (0 <= j_5_2 && j_5_2 < g_1)) && NoPerm < wildcard) && NoPerm < wildcard ==> AssertHeap[Seq#Index(trees, j_5_1), item_1] != AssertHeap[Seq#Index(trees, j_5_2), item_1]
+      assert {:msg "  Assert might fail. Quantified resource trees[j].item.bool_prop might not be injective. (0508a.vpr@60.10--60.96) [69419]"}
+        (forall j_5: int, j_5_1: int ::
+        { neverTriggered15(j_5), neverTriggered15(j_5_1) }
+        (((j_5 != j_5_1 && (0 <= j_5 && j_5 < g_1)) && (0 <= j_5_1 && j_5_1 < g_1)) && NoPerm < wildcard) && NoPerm < wildcard ==> AssertHeap[Seq#Index(trees, j_5), item] != AssertHeap[Seq#Index(trees, j_5_1), item]
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Assert might fail. There might be insufficient permission to access trees[j].item.bool_prop (0508a.vpr@60.10--60.96) [219599]"}
-        (forall j_5_1: int ::
-        { AssertHeap[Seq#Index(trees, j_5_1), item_1] } { Seq#Index(trees, j_5_1) }
-        0 <= j_5_1 && j_5_1 < g_1 ==> AssertMask[AssertHeap[Seq#Index(trees, j_5_1), item_1], bool_prop] > NoPerm
+      assert {:msg "  Assert might fail. There might be insufficient permission to access trees[j].item.bool_prop (0508a.vpr@60.10--60.96) [69420]"}
+        (forall j_5: int ::
+        { AssertHeap[Seq#Index(trees, j_5), item] } { Seq#Index(trees, j_5) }
+        0 <= j_5 && j_5 < g_1 ==> AssertMask[AssertHeap[Seq#Index(trees, j_5), item], bool_prop] > NoPerm
       );
     
     // -- assumptions for inverse of receiver trees[j].item
-      assume (forall j_5_1: int ::
-        { AssertHeap[Seq#Index(trees, j_5_1), item_1] } { Seq#Index(trees, j_5_1) }
-        (0 <= j_5_1 && j_5_1 < g_1) && NoPerm < wildcard ==> qpRange15(AssertHeap[Seq#Index(trees, j_5_1), item_1]) && invRecv15(AssertHeap[Seq#Index(trees, j_5_1), item_1]) == j_5_1
+      assume (forall j_5: int ::
+        { AssertHeap[Seq#Index(trees, j_5), item] } { Seq#Index(trees, j_5) }
+        (0 <= j_5 && j_5 < g_1) && NoPerm < wildcard ==> qpRange15(AssertHeap[Seq#Index(trees, j_5), item]) && invRecv15(AssertHeap[Seq#Index(trees, j_5), item]) == j_5
       );
-      assume (forall o_4: Ref ::
-        { invRecv15(o_4) }
-        (0 <= invRecv15(o_4) && invRecv15(o_4) < g_1) && (NoPerm < wildcard && qpRange15(o_4)) ==> AssertHeap[Seq#Index(trees, invRecv15(o_4)), item_1] == o_4
+      assume (forall o_9: Ref ::
+        { invRecv15(o_9) }
+        (0 <= invRecv15(o_9) && invRecv15(o_9) < g_1) && (NoPerm < wildcard && qpRange15(o_9)) ==> AssertHeap[Seq#Index(trees, invRecv15(o_9)), item] == o_9
       );
     
     // -- assume permission updates for field bool_prop
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, bool_prop] }
-        ((0 <= invRecv15(o_4) && invRecv15(o_4) < g_1) && (NoPerm < wildcard && qpRange15(o_4)) ==> AssertHeap[Seq#Index(trees, invRecv15(o_4)), item_1] == o_4 && QPMask[o_4, bool_prop] == AssertMask[o_4, bool_prop] - wildcard) && (!((0 <= invRecv15(o_4) && invRecv15(o_4) < g_1) && (NoPerm < wildcard && qpRange15(o_4))) ==> QPMask[o_4, bool_prop] == AssertMask[o_4, bool_prop])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, bool_prop] }
+        ((0 <= invRecv15(o_9) && invRecv15(o_9) < g_1) && (NoPerm < wildcard && qpRange15(o_9)) ==> AssertHeap[Seq#Index(trees, invRecv15(o_9)), item] == o_9 && QPMask[o_9, bool_prop] == AssertMask[o_9, bool_prop] - wildcard) && (!((0 <= invRecv15(o_9) && invRecv15(o_9) < g_1) && (NoPerm < wildcard && qpRange15(o_9))) ==> QPMask[o_9, bool_prop] == AssertMask[o_9, bool_prop])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != bool_prop ==> AssertMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != bool_prop ==> AssertMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     AssertMask := QPMask;
     assume state(Heap, Mask);

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:29:22
+; Started: 2025-01-26 21:22:17
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -180,21 +180,21 @@
     (builtin$unreach_int__$TY$__$int$%limited s@$)
     (builtin$unreach_int__$TY$__$int$ s@$))
   :pattern ((builtin$unreach_int__$TY$__$int$ s@$))
-  :qid |quant-u-498|)))
+  :qid |quant-u-483|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_int__$TY$__$int$%stateless  Bool)
   :pattern ((builtin$unreach_int__$TY$__$int$%limited s@$))
-  :qid |quant-u-499|)))
+  :qid |quant-u-484|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 Int)) (!
   (=
     (m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@1@00)
     (m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$ s@$ _pure_1@1@00))
   :pattern ((m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$ s@$ _pure_1@1@00))
-  :qid |quant-u-500|)))
+  :qid |quant-u-485|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 Int)) (!
   (m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%stateless _pure_1@1@00)
   :pattern ((m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-501|)))
+  :qid |quant-u-486|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 Int)) (!
   (let ((result@2@00 (m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@1@00))) (=>
     (m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%precondition s@$ _pure_1@1@00)
@@ -202,15 +202,15 @@
       result@2@00
       (mirror$m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$__$TY$__$int$$$int$<Int> _pure_1@1@00))))
   :pattern ((m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-510|)))
+  :qid |quant-u-495|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 Int)) (!
   (let ((result@2@00 (m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-511|)))
+  :qid |quant-u-496|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 Int)) (!
   (let ((result@2@00 (m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@1@00))) true)
   :pattern ((m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%limited s@$ _pure_1@1@00))
-  :qid |quant-u-512|)))
+  :qid |quant-u-497|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 Int)) (!
   (=>
     (m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%precondition s@$ _pure_1@1@00)
@@ -221,7 +221,7 @@
         (- 0 _pure_1@1@00)
         (builtin$unreach_int__$TY$__$int$ $unresolved@8@00))))
   :pattern ((m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$ s@$ _pure_1@1@00))
-  :qid |quant-u-513|)))
+  :qid |quant-u-498|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 Int)) (!
   (=>
     (m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$%precondition s@$ _pure_1@1@00)
@@ -230,49 +230,49 @@
       true
       (builtin$unreach_int__$TY$__$int$%precondition $unresolved@8@00)))
   :pattern ((m_complex_fn$$negative$opensqu$0$closesqu$__$TY$__$int$$$int$ s@$ _pure_1@1@00))
-  :qid |quant-u-514|)))
+  :qid |quant-u-499|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-502|)))
+  :qid |quant-u-487|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-503|)))
+  :qid |quant-u-488|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@3@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@3@00) (< result@3@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-515|)))
+  :qid |quant-u-500|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@3@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-516|)))
+  :qid |quant-u-501|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@3@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-517|)))
+  :qid |quant-u-502|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (builtin$unreach_bool__$TY$__$bool$%limited s@$)
     (builtin$unreach_bool__$TY$__$bool$ s@$))
   :pattern ((builtin$unreach_bool__$TY$__$bool$ s@$))
-  :qid |quant-u-504|)))
+  :qid |quant-u-489|)))
 (assert (forall ((s@$ $Snap)) (!
   (as builtin$unreach_bool__$TY$__$bool$%stateless  Bool)
   :pattern ((builtin$unreach_bool__$TY$__$bool$%limited s@$))
-  :qid |quant-u-505|)))
+  :qid |quant-u-490|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%limited s@$)
     (m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$ s@$))
   :pattern ((m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$ s@$))
-  :qid |quant-u-506|)))
+  :qid |quant-u-491|)))
 (assert (forall ((s@$ $Snap)) (!
   (as m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%stateless  Bool)
   :pattern ((m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-507|)))
+  :qid |quant-u-492|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@5@00 (m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%limited s@$))) (=>
     (m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%precondition s@$)
@@ -280,35 +280,35 @@
       result@5@00
       (as mirror$m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$__$TY$__$int$<Int>  Int))))
   :pattern ((m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-518|)))
+  :qid |quant-u-503|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@5@00 (m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%limited s@$))) true)
   :pattern ((m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-519|)))
+  :qid |quant-u-504|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@5@00 (m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%limited s@$))) true)
   :pattern ((m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-520|)))
+  :qid |quant-u-505|)))
 (assert (forall ((s@$ $Snap)) (!
   (=>
     (m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$%precondition s@$)
     (= (m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$ s@$) 1))
   :pattern ((m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$ s@$))
-  :qid |quant-u-521|)))
+  :qid |quant-u-506|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((m_complex_fn$$test2$opensqu$0$closesqu$__$TY$__$int$ s@$))
-  :qid |quant-u-522|)))
+  :qid |quant-u-507|)))
 (assert (forall ((s@$ $Snap)) (!
   (=
     (m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%limited s@$)
     (m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$ s@$))
   :pattern ((m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$ s@$))
-  :qid |quant-u-508|)))
+  :qid |quant-u-493|)))
 (assert (forall ((s@$ $Snap)) (!
   (as m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%stateless  Bool)
   :pattern ((m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-509|)))
+  :qid |quant-u-494|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@6@00 (m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%limited s@$))) (=>
     (m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%precondition s@$)
@@ -316,25 +316,25 @@
       result@6@00
       (as mirror$m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$__$TY$__$int$<Int>  Int))))
   :pattern ((m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-523|)))
+  :qid |quant-u-508|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@6@00 (m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%limited s@$))) true)
   :pattern ((m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-524|)))
+  :qid |quant-u-509|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@6@00 (m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%limited s@$))) true)
   :pattern ((m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%limited s@$))
-  :qid |quant-u-525|)))
+  :qid |quant-u-510|)))
 (assert (forall ((s@$ $Snap)) (!
   (=>
     (m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$%precondition s@$)
     (= (m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$ s@$) 1))
   :pattern ((m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$ s@$))
-  :qid |quant-u-526|)))
+  :qid |quant-u-511|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((m_complex_fn$$test1$opensqu$0$closesqu$__$TY$__$int$ s@$))
-  :qid |quant-u-527|)))
+  :qid |quant-u-512|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- m_complex_fn$$main$opensqu$0$closesqu$ ----------

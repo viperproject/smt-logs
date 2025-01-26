@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:18:04
+// Date:         2025-01-26 21:41:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_example1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_example1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -232,7 +232,7 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     // -- Exhaling precondition
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Counter__Counter might not hold. Assertion current_thread_id >= 0 might not hold. (test_example1.vpr@14.3--14.53) [163477]"}
+      assert {:msg "  The precondition of method Counter__Counter might not hold. Assertion current_thread_id >= 0 might not hold. (test_example1.vpr@14.3--14.53) [25722]"}
         current_thread_id >= 0;
     
     // -- Havocing target variables
@@ -262,7 +262,7 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: c.Counter__x := __flatten_8 -- test_example1.vpr@18.3--18.30
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access c.Counter__x (test_example1.vpr@18.3--18.30) [163478]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access c.Counter__x (test_example1.vpr@18.3--18.30) [25723]"}
       FullPerm == Mask[c, Counter__x];
     Heap := Heap[c, Counter__x:=__flatten_8];
     assume state(Heap, Mask);
@@ -274,13 +274,13 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     // -- Exhaling precondition
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Counter__incr might not hold. Assertion c != null might not hold. (test_example1.vpr@19.3--19.38) [163479]"}
+      assert {:msg "  The precondition of method Counter__incr might not hold. Assertion c != null might not hold. (test_example1.vpr@19.3--19.38) [25724]"}
         c != null;
-      assert {:msg "  The precondition of method Counter__incr might not hold. Assertion current_thread_id >= 0 might not hold. (test_example1.vpr@19.3--19.38) [163480]"}
+      assert {:msg "  The precondition of method Counter__incr might not hold. Assertion current_thread_id >= 0 might not hold. (test_example1.vpr@19.3--19.38) [25725]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Counter__incr might not hold. There might be insufficient permission to access c.Counter__x (test_example1.vpr@19.3--19.38) [163481]"}
+        assert {:msg "  The precondition of method Counter__incr might not hold. There might be insufficient permission to access c.Counter__x (test_example1.vpr@19.3--19.38) [25726]"}
           perm <= Mask[c, Counter__x];
       }
       Mask := Mask[c, Counter__x:=Mask[c, Counter__x] - perm];
@@ -303,9 +303,9 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of c.Counter__x == 17
-      assert {:msg "  Assert might fail. There might be insufficient permission to access c.Counter__x (test_example1.vpr@20.10--20.28) [163482]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access c.Counter__x (test_example1.vpr@20.10--20.28) [25727]"}
         HasDirectPerm(ExhaleWellDef0Mask, c, Counter__x);
-    assert {:msg "  Assert might fail. Assertion c.Counter__x == 17 might not hold. (test_example1.vpr@20.10--20.28) [163483]"}
+    assert {:msg "  Assert might fail. Assertion c.Counter__x == 17 might not hold. (test_example1.vpr@20.10--20.28) [25728]"}
       Heap[c, Counter__x] == 17;
     assume state(Heap, Mask);
   
@@ -316,13 +316,13 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     // -- Exhaling precondition
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Counter__incr might not hold. Assertion c != null might not hold. (test_example1.vpr@21.3--21.38) [163484]"}
+      assert {:msg "  The precondition of method Counter__incr might not hold. Assertion c != null might not hold. (test_example1.vpr@21.3--21.38) [25729]"}
         c != null;
-      assert {:msg "  The precondition of method Counter__incr might not hold. Assertion current_thread_id >= 0 might not hold. (test_example1.vpr@21.3--21.38) [163485]"}
+      assert {:msg "  The precondition of method Counter__incr might not hold. Assertion current_thread_id >= 0 might not hold. (test_example1.vpr@21.3--21.38) [25730]"}
         current_thread_id >= 0;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method Counter__incr might not hold. There might be insufficient permission to access c.Counter__x (test_example1.vpr@21.3--21.38) [163486]"}
+        assert {:msg "  The precondition of method Counter__incr might not hold. There might be insufficient permission to access c.Counter__x (test_example1.vpr@21.3--21.38) [25731]"}
           perm <= Mask[c, Counter__x];
       }
       Mask := Mask[c, Counter__x:=Mask[c, Counter__x] - perm];
@@ -345,9 +345,9 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of c.Counter__x == 17
-      assert {:msg "  Assert might fail. There might be insufficient permission to access c.Counter__x (test_example1.vpr@24.10--24.28) [163487]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access c.Counter__x (test_example1.vpr@24.10--24.28) [25732]"}
         HasDirectPerm(ExhaleWellDef0Mask, c, Counter__x);
-    assert {:msg "  Assert might fail. Assertion c.Counter__x == 17 might not hold. (test_example1.vpr@24.10--24.28) [163488]"}
+    assert {:msg "  Assert might fail. Assertion c.Counter__x == 17 might not hold. (test_example1.vpr@24.10--24.28) [25733]"}
       Heap[c, Counter__x] == 17;
     assume state(Heap, Mask);
 }
@@ -410,7 +410,7 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
   // -- Translating statement: assert sys__result != null -- test_example1.vpr@34.3--34.29
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_example1.vpr@34.10--34.29) [163489]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_example1.vpr@34.10--34.29) [25734]"}
       sys__result != null;
     assume state(Heap, Mask);
   
@@ -422,7 +422,7 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result != null might not hold. (test_example1.vpr@29.11--29.30) [163490]"}
+    assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result != null might not hold. (test_example1.vpr@29.11--29.30) [25735]"}
       sys__result != null;
 }
 
@@ -480,9 +480,9 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of diz.Counter__x == old(diz.Counter__x) + 1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@43.11--43.52) [163491]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@43.11--43.52) [25736]"}
         HasDirectPerm(PostMask, diz, Counter__x);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@43.11--43.52) [163492]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@43.11--43.52) [25737]"}
         HasDirectPerm(oldMask, diz, Counter__x);
     assume PostHeap[diz, Counter__x] == oldHeap[diz, Counter__x] + 1;
     assume state(PostHeap, PostMask);
@@ -493,7 +493,7 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: __flatten_5 := diz.Counter__x + 1 -- test_example1.vpr@47.3--47.36
     
     // -- Check definedness of diz.Counter__x + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@47.3--47.36) [163493]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@47.3--47.36) [25738]"}
         HasDirectPerm(Mask, diz, Counter__x);
     __flatten_5 := Heap[diz, Counter__x] + 1;
     assume state(Heap, Mask);
@@ -503,7 +503,7 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Counter__x := __flatten_11 -- test_example1.vpr@49.3--49.33
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@49.3--49.33) [163494]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@49.3--49.33) [25739]"}
       FullPerm == Mask[diz, Counter__x];
     Heap := Heap[diz, Counter__x:=__flatten_11];
     assume state(Heap, Mask);
@@ -513,11 +513,11 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Counter__incr might not hold. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@42.11--42.37) [163495]"}
+      assert {:msg "  Postcondition of Counter__incr might not hold. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@42.11--42.37) [25740]"}
         perm <= Mask[diz, Counter__x];
     }
     Mask := Mask[diz, Counter__x:=Mask[diz, Counter__x] - perm];
-    assert {:msg "  Postcondition of Counter__incr might not hold. Assertion diz.Counter__x == old(diz.Counter__x) + 1 might not hold. (test_example1.vpr@43.11--43.52) [163496]"}
+    assert {:msg "  Postcondition of Counter__incr might not hold. Assertion diz.Counter__x == old(diz.Counter__x) + 1 might not hold. (test_example1.vpr@43.11--43.52) [25741]"}
       Heap[diz, Counter__x] == oldHeap[diz, Counter__x] + 1;
     // Finish exhale
     havoc ExhaleHeap;
@@ -574,7 +574,7 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Counter__x == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Counter__x (test_example1.vpr@55.11--55.78) [163497]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Counter__x (test_example1.vpr@55.11--55.78) [25742]"}
         HasDirectPerm(PostMask, sys__result, Counter__x);
     assume PostHeap[sys__result, Counter__x] == 0;
     assume state(PostHeap, PostMask);
@@ -602,7 +602,7 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Counter__x := __flatten_12 -- test_example1.vpr@63.3--63.33
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@63.3--63.33) [163498]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@63.3--63.33) [25743]"}
       FullPerm == Mask[diz, Counter__x];
     Heap := Heap[diz, Counter__x:=__flatten_12];
     assume state(Heap, Mask);
@@ -617,19 +617,19 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
     AssertMask := Mask;
     ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_example1.vpr@65.10--65.104) [163499]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_example1.vpr@65.10--65.104) [25744]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Counter__x (test_example1.vpr@65.10--65.104) [163501]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Counter__x (test_example1.vpr@65.10--65.104) [25746]"}
         perm <= AssertMask[sys__result, Counter__x];
     }
     AssertMask := AssertMask[sys__result, Counter__x:=AssertMask[sys__result, Counter__x] - perm];
     
     // -- Check definedness of sys__result.Counter__x == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Counter__x (test_example1.vpr@65.10--65.104) [163502]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Counter__x (test_example1.vpr@65.10--65.104) [25747]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Counter__x);
-    assert {:msg "  Assert might fail. Assertion sys__result.Counter__x == 0 might not hold. (test_example1.vpr@65.10--65.104) [163503]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Counter__x == 0 might not hold. (test_example1.vpr@65.10--65.104) [25748]"}
       AssertHeap[sys__result, Counter__x] == 0;
     assume state(Heap, Mask);
   
@@ -641,15 +641,15 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Counter__Counter might not hold. Assertion sys__result != null might not hold. (test_example1.vpr@54.11--54.30) [163504]"}
+    assert {:msg "  Postcondition of Counter__Counter might not hold. Assertion sys__result != null might not hold. (test_example1.vpr@54.11--54.30) [25749]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Counter__Counter might not hold. There might be insufficient permission to access sys__result.Counter__x (test_example1.vpr@55.11--55.78) [163505]"}
+      assert {:msg "  Postcondition of Counter__Counter might not hold. There might be insufficient permission to access sys__result.Counter__x (test_example1.vpr@55.11--55.78) [25750]"}
         perm <= Mask[sys__result, Counter__x];
     }
     Mask := Mask[sys__result, Counter__x:=Mask[sys__result, Counter__x] - perm];
-    assert {:msg "  Postcondition of Counter__Counter might not hold. Assertion sys__result.Counter__x == 0 might not hold. (test_example1.vpr@55.11--55.78) [163506]"}
+    assert {:msg "  Postcondition of Counter__Counter might not hold. Assertion sys__result.Counter__x == 0 might not hold. (test_example1.vpr@55.11--55.78) [25751]"}
       Heap[sys__result, Counter__x] == 0;
     // Finish exhale
     havoc ExhaleHeap;

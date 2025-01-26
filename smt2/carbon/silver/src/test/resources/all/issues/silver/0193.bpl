@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:12
+// Date:         2025-01-26 21:42:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0193.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0193-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,25 +181,25 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type MyDomainDomainType;
 
 // Translation of domain function foo
-function  foo(): int;
+function  foo_2(): int;
 
 // Translation of domain function bar
-function  bar_3(x_8: bool): bool;
+function  bar_1(x_37: bool): bool;
 
 // Translation of anonymous domain axiom
-axiom (foo(): int) > 0;
+axiom (foo_2(): int) > 0;
 
 // Translation of anonymous domain axiom
-axiom (foo(): int) > 2;
+axiom (foo_2(): int) > 2;
 
 // Translation of domain axiom axBar
-axiom (bar_3(true): bool);
+axiom (bar_1(true): bool);
 
 // Translation of anonymous domain axiom
-axiom (foo(): int) > 3;
+axiom (foo_2(): int) > 3;
 
 // Translation of domain axiom axFoobar
-axiom (bar_3(false): bool) ==> (foo(): int) == 3;
+axiom (bar_1(false): bool) ==> (foo_2(): int) == 3;
 
 // Translation of anonymous domain axiom
-axiom (foo(): int) > 4;
+axiom (foo_2(): int) > 4;

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:53
+// Date:         2025-01-26 21:42:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0481.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0481-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_11: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_11, f_10] }
-  Heap[o_11, $allocated] ==> Heap[Heap[o_11, f_10], $allocated]
+axiom (forall o_14: Ref, f_22: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_14, f_22] }
+  Heap[o_14, $allocated] ==> Heap[Heap[o_14, f_22], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,9 +39,9 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_16: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_16] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_16) ==> Heap[o_12, f_16] == ExhaleHeap[o_12, f_16]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref, f_23: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, f_23] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_15, f_23) ==> Heap[o_15, f_23] == ExhaleHeap[o_15, f_23]
 );
 // Frame all predicate mask locations of predicates with direct permission
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
@@ -51,9 +51,9 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations with known folded permissions
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsPredicateField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, PredicateMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // Frame all wand mask locations of wands with direct permission
@@ -64,20 +64,20 @@ axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: 
 // Frame all locations in the footprint of magic wands
 axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_5: (Field C FrameType) ::
   { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_5) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_16: (Field A B) ::
-    { ExhaleHeap[o2_5, f_16] }
-    Heap[null, WandMaskField(pm_f_5)][o2_5, f_16] ==> Heap[o2_5, f_16] == ExhaleHeap[o2_5, f_16]
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_5) && IsWandField(pm_f_5) ==> (forall <A, B> o2_5: Ref, f_23: (Field A B) ::
+    { ExhaleHeap[o2_5, f_23] }
+    Heap[null, WandMaskField(pm_f_5)][o2_5, f_23] ==> Heap[o2_5, f_23] == ExhaleHeap[o2_5, f_23]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_15: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_15, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_15, $allocated] ==> ExhaleHeap[o_15, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_11: Ref, f_17: (Field A B), v: B ::
-  { Heap[o_11, f_17:=v] }
-  succHeap(Heap, Heap[o_11, f_17:=v])
+axiom (forall <A, B> Heap: HeapType, o_14: Ref, f_24: (Field A B), v: B ::
+  { Heap[o_14, f_24:=v] }
+  succHeap(Heap, Heap[o_14, f_24:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -571,11 +571,11 @@ axiom !IsWandField(val);
 // ==================================================
 
 // Uninterpreted function definitions
-function  read_1(Heap: HeapType): Perm;
+function  read(Heap: HeapType): Perm;
 function  read'(Heap: HeapType): Perm;
 axiom (forall Heap: HeapType ::
-  { read_1(Heap) }
-  read_1(Heap) == read'(Heap) && dummyFunction(read#triggerStateless())
+  { read(Heap) }
+  read(Heap) == read'(Heap) && dummyFunction(read#triggerStateless())
 );
 axiom (forall Heap: HeapType ::
   { read'(Heap) }
@@ -683,25 +683,25 @@ procedure P#definedness(self: Ref) returns ()
 // ==================================================
 
 type PredicateType_array;
-function  array(arr: (Seq Ref)): Field PredicateType_array FrameType;
+function  array_1(arr: (Seq Ref)): Field PredicateType_array FrameType;
 function  array#sm(arr: (Seq Ref)): Field PredicateType_array PMaskType;
 axiom (forall arr: (Seq Ref) ::
-  { PredicateMaskField(array(arr)) }
-  PredicateMaskField(array(arr)) == array#sm(arr)
+  { PredicateMaskField(array_1(arr)) }
+  PredicateMaskField(array_1(arr)) == array#sm(arr)
 );
 axiom (forall arr: (Seq Ref) ::
-  { array(arr) }
-  IsPredicateField(array(arr))
+  { array_1(arr) }
+  IsPredicateField(array_1(arr))
 );
 axiom (forall arr: (Seq Ref) ::
-  { array(arr) }
-  getPredWandId(array(arr)) == 1
+  { array_1(arr) }
+  getPredWandId(array_1(arr)) == 1
 );
 function  array#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  array#everUsed<A>(pred: (Field A FrameType)): bool;
 axiom (forall arr: (Seq Ref), arr2: (Seq Ref) ::
-  { array(arr), array(arr2) }
-  array(arr) == array(arr2) ==> arr == arr2
+  { array_1(arr), array_1(arr2) }
+  array_1(arr) == array_1(arr2) ==> arr == arr2
 );
 axiom (forall arr: (Seq Ref), arr2: (Seq Ref) ::
   { array#sm(arr), array#sm(arr2) }
@@ -709,8 +709,8 @@ axiom (forall arr: (Seq Ref), arr2: (Seq Ref) ::
 );
 
 axiom (forall Heap: HeapType, arr: (Seq Ref) ::
-  { array#trigger(Heap, array(arr)) }
-  array#everUsed(array(arr))
+  { array#trigger(Heap, array_1(arr)) }
+  array#everUsed(array_1(arr))
 );
 
 // ==================================================
@@ -727,9 +727,9 @@ axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, arr: (Seq Ref) ::
 procedure array#definedness(arr: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var i_14: int;
-  var j_5: int;
-  var i_2: int;
+  var i_18: int;
+  var j_14: int;
+  var i_3: int;
   var QPMask: MaskType;
   
   // -- Check definedness of predicate body of array
@@ -743,37 +743,37 @@ procedure array#definedness(arr: (Seq Ref)) returns ()
     
     // -- Check definedness of (forall i: Int, j: Int :: { arr[i], arr[j] } 0 <= i && (i < |arr| && (0 <= j && j < i)) ==> arr[i] != arr[j])
       if (*) {
-        if (0 <= i_14 && (i_14 < Seq#Length(arr) && (0 <= j_5 && j_5 < i_14))) {
-          assert {:msg "  Predicate might not be well-formed. Index arr[i] into arr might be negative. (0481.vpr@11.1--16.2) [218753]"}
-            i_14 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index arr[i] into arr might exceed sequence length. (0481.vpr@11.1--16.2) [218754]"}
-            i_14 < Seq#Length(arr);
-          assert {:msg "  Predicate might not be well-formed. Index arr[j] into arr might be negative. (0481.vpr@11.1--16.2) [218755]"}
-            j_5 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index arr[j] into arr might exceed sequence length. (0481.vpr@11.1--16.2) [218756]"}
-            j_5 < Seq#Length(arr);
+        if (0 <= i_18 && (i_18 < Seq#Length(arr) && (0 <= j_14 && j_14 < i_18))) {
+          assert {:msg "  Predicate might not be well-formed. Index arr[i] into arr might be negative. (0481.vpr@11.1--16.2) [63763]"}
+            i_18 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index arr[i] into arr might exceed sequence length. (0481.vpr@11.1--16.2) [63764]"}
+            i_18 < Seq#Length(arr);
+          assert {:msg "  Predicate might not be well-formed. Index arr[j] into arr might be negative. (0481.vpr@11.1--16.2) [63765]"}
+            j_14 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index arr[j] into arr might exceed sequence length. (0481.vpr@11.1--16.2) [63766]"}
+            j_14 < Seq#Length(arr);
         }
         assume false;
       }
-    assume (forall i_2_1: int, j_1: int ::
-      { Seq#Index(arr, i_2_1), Seq#Index(arr, j_1) }
-      0 <= i_2_1 && (i_2_1 < Seq#Length(arr) && (0 <= j_1 && j_1 < i_2_1)) ==> Seq#Index(arr, i_2_1) != Seq#Index(arr, j_1)
+    assume (forall i_2: int, j_1: int ::
+      { Seq#Index(arr, i_2), Seq#Index(arr, j_1) }
+      0 <= i_2 && (i_2 < Seq#Length(arr) && (0 <= j_1 && j_1 < i_2)) ==> Seq#Index(arr, i_2) != Seq#Index(arr, j_1)
     );
     
     // -- Check definedness of (forall i: Int :: { arr[i] } 0 <= i && i < |arr| ==> acc(P(arr[i]), write))
       if (*) {
-        if (0 <= i_2 && i_2 < Seq#Length(arr)) {
-          assert {:msg "  Predicate might not be well-formed. Index arr[i] into arr might be negative. (0481.vpr@11.1--16.2) [218757]"}
-            i_2 >= 0;
-          assert {:msg "  Predicate might not be well-formed. Index arr[i] into arr might exceed sequence length. (0481.vpr@11.1--16.2) [218758]"}
-            i_2 < Seq#Length(arr);
+        if (0 <= i_3 && i_3 < Seq#Length(arr)) {
+          assert {:msg "  Predicate might not be well-formed. Index arr[i] into arr might be negative. (0481.vpr@11.1--16.2) [63767]"}
+            i_3 >= 0;
+          assert {:msg "  Predicate might not be well-formed. Index arr[i] into arr might exceed sequence length. (0481.vpr@11.1--16.2) [63768]"}
+            i_3 < Seq#Length(arr);
         }
         assume false;
       }
     havoc QPMask;
     
     // -- check if receiver acc(P(arr[i]), write) is injective
-      assert {:msg "  Predicate might not be well-formed. Quantified resource P(arr[i]) might not be injective. (0481.vpr@11.1--16.2) [218759]"}
+      assert {:msg "  Predicate might not be well-formed. Quantified resource P(arr[i]) might not be injective. (0481.vpr@11.1--16.2) [63769]"}
         (forall i_4_1: int, i_4_2: int ::
         { neverTriggered1(i_4_1), neverTriggered1(i_4_2) }
         (((i_4_1 != i_4_2 && (0 <= i_4_1 && i_4_1 < Seq#Length(arr))) && (0 <= i_4_2 && i_4_2 < Seq#Length(arr))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(arr, i_4_1) != Seq#Index(arr, i_4_2)
@@ -796,9 +796,9 @@ procedure array#definedness(arr: (Seq Ref)) returns ()
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall self: Ref ::
         { QPMask[null, P(self)] }
@@ -813,15 +813,15 @@ procedure array#definedness(arr: (Seq Ref)) returns ()
 // Translation of method test
 // ==================================================
 
-procedure test() returns (res: Ref)
+procedure test_1() returns (res: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var arr: (Seq Ref);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   
@@ -834,8 +834,8 @@ procedure test() returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(array(arr), read()) -- 0481.vpr@22.3--22.33
     assume state(Heap, Mask);
@@ -845,10 +845,10 @@ procedure test() returns (res: Ref)
         // Stop execution
         assume false;
       }
-    perm := read_1(Heap);
-    assert {:msg "  Inhale might fail. Fraction read() might be negative. (0481.vpr@22.10--22.33) [218760]"}
+    perm := read(Heap);
+    assert {:msg "  Inhale might fail. Fraction read() might be negative. (0481.vpr@22.10--22.33) [63770]"}
       perm >= NoPerm;
-    Mask := Mask[null, array(arr):=Mask[null, array(arr)] + perm];
+    Mask := Mask[null, array_1(arr):=Mask[null, array_1(arr)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -866,71 +866,71 @@ procedure test() returns (res: Ref)
         // Stop execution
         assume false;
       }
-    assert {:msg "  Unfolding array(arr) might fail. Fraction read() might not be positive. (0481.vpr@23.3--23.33) [218761]"}
-      read_1(Heap) > NoPerm;
-    assume array#trigger(Heap, array(arr));
-    assume Heap[null, array(arr)] == FrameFragment(array#condqp1(Heap, arr));
-    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Unfolding array(arr) might fail. Fraction read() might not be positive. (0481.vpr@23.3--23.33) [63771]"}
+      read(Heap) > NoPerm;
+    assume array#trigger(Heap, array_1(arr));
+    assume Heap[null, array_1(arr)] == FrameFragment(array#condqp1(Heap, arr));
     ExhaleWellDef0Mask := Mask;
-    perm := read_1(Heap);
-    assert {:msg "  Unfolding array(arr) might fail. Fraction read() might be negative. (0481.vpr@23.3--23.33) [218762]"}
+    ExhaleWellDef0Heap := Heap;
+    perm := read(Heap);
+    assert {:msg "  Unfolding array(arr) might fail. Fraction read() might be negative. (0481.vpr@23.3--23.33) [63772]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding array(arr) might fail. There might be insufficient permission to access array(arr) (0481.vpr@23.3--23.33) [218763]"}
-        perm <= Mask[null, array(arr)];
+      assert {:msg "  Unfolding array(arr) might fail. There might be insufficient permission to access array(arr) (0481.vpr@23.3--23.33) [63773]"}
+        perm <= Mask[null, array_1(arr)];
     }
-    Mask := Mask[null, array(arr):=Mask[null, array(arr)] - perm];
+    Mask := Mask[null, array_1(arr):=Mask[null, array_1(arr)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, array(arr))) {
+      if (!HasDirectPerm(Mask, null, array_1(arr))) {
         havoc newVersion;
-        Heap := Heap[null, array(arr):=newVersion];
+        Heap := Heap[null, array_1(arr):=newVersion];
       }
     assume Seq#Length(arr) == 3;
-    assume (forall i: int, j_9: int ::
-      { Seq#Index(arr, i), Seq#Index(arr, j_9) }
-      0 <= i && (i < Seq#Length(arr) && (0 <= j_9 && j_9 < i)) ==> Seq#Index(arr, i) != Seq#Index(arr, j_9)
+    assume (forall i: int, j: int ::
+      { Seq#Index(arr, i), Seq#Index(arr, j) }
+      0 <= i && (i < Seq#Length(arr) && (0 <= j && j < i)) ==> Seq#Index(arr, i) != Seq#Index(arr, j)
     );
     assume state(Heap, Mask);
     havoc QPMask;
     
     // -- check if receiver acc(P(arr[i]), read()) is injective
-      assert {:msg "  Unfolding array(arr) might fail. Quantified resource P(arr[i]) might not be injective. (0481.vpr@23.3--23.33) [218764]"}
+      assert {:msg "  Unfolding array(arr) might fail. Quantified resource P(arr[i]) might not be injective. (0481.vpr@23.3--23.33) [63774]"}
         (forall i_1: int, i_1_1: int ::
         { neverTriggered2(i_1), neverTriggered2(i_1_1) }
-        (((i_1 != i_1_1 && (0 <= i_1 && i_1 < Seq#Length(arr))) && (0 <= i_1_1 && i_1_1 < Seq#Length(arr))) && NoPerm < read_1(Heap)) && NoPerm < read_1(Heap) ==> Seq#Index(arr, i_1) != Seq#Index(arr, i_1_1)
+        (((i_1 != i_1_1 && (0 <= i_1 && i_1 < Seq#Length(arr))) && (0 <= i_1_1 && i_1_1 < Seq#Length(arr))) && NoPerm < read(Heap)) && NoPerm < read(Heap) ==> Seq#Index(arr, i_1) != Seq#Index(arr, i_1_1)
       );
     
     // -- Define Inverse Function
       assume (forall i_1: int ::
         { Heap[null, P(Seq#Index(arr, i_1))] } { Mask[null, P(Seq#Index(arr, i_1))] } { Seq#Index(arr, i_1) }
-        (0 <= i_1 && i_1 < Seq#Length(arr)) && NoPerm < read_1(Heap) ==> invRecv2(Seq#Index(arr, i_1)) == i_1 && qpRange2(Seq#Index(arr, i_1))
+        (0 <= i_1 && i_1 < Seq#Length(arr)) && NoPerm < read(Heap) ==> invRecv2(Seq#Index(arr, i_1)) == i_1 && qpRange2(Seq#Index(arr, i_1))
       );
       assume (forall self: Ref ::
         { invRecv2(self) }
-        ((0 <= invRecv2(self) && invRecv2(self) < Seq#Length(arr)) && NoPerm < read_1(Heap)) && qpRange2(self) ==> Seq#Index(arr, invRecv2(self)) == self
+        ((0 <= invRecv2(self) && invRecv2(self) < Seq#Length(arr)) && NoPerm < read(Heap)) && qpRange2(self) ==> Seq#Index(arr, invRecv2(self)) == self
       );
     // Check that permission expression is non-negative for all fields
-    assert {:msg "  Unfolding array(arr) might fail. Fraction read() might be negative. (0481.vpr@23.3--23.33) [218765]"}
+    assert {:msg "  Unfolding array(arr) might fail. Fraction read() might be negative. (0481.vpr@23.3--23.33) [63775]"}
       (forall i_1: int ::
       { Heap[null, P(Seq#Index(arr, i_1))] } { Mask[null, P(Seq#Index(arr, i_1))] } { Seq#Index(arr, i_1) }
-      0 <= i_1 && i_1 < Seq#Length(arr) ==> read_1(Heap) >= NoPerm
+      0 <= i_1 && i_1 < Seq#Length(arr) ==> read(Heap) >= NoPerm
     );
     
     // -- Define updated permissions
       assume (forall self: Ref ::
         { QPMask[null, P(self)] }
-        ((0 <= invRecv2(self) && invRecv2(self) < Seq#Length(arr)) && NoPerm < read_1(Heap)) && qpRange2(self) ==> (NoPerm < read_1(Heap) ==> Seq#Index(arr, invRecv2(self)) == self) && QPMask[null, P(self)] == Mask[null, P(self)] + read_1(Heap)
+        ((0 <= invRecv2(self) && invRecv2(self) < Seq#Length(arr)) && NoPerm < read(Heap)) && qpRange2(self) ==> (NoPerm < read(Heap) ==> Seq#Index(arr, invRecv2(self)) == self) && QPMask[null, P(self)] == Mask[null, P(self)] + read(Heap)
       );
     
     // -- Define independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        (o_4 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        (o_9 != null || !IsPredicateField(f_5)) || getPredWandId(f_5) != 0 ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
       assume (forall self: Ref ::
         { QPMask[null, P(self)] }
-        !(((0 <= invRecv2(self) && invRecv2(self) < Seq#Length(arr)) && NoPerm < read_1(Heap)) && qpRange2(self)) ==> QPMask[null, P(self)] == Mask[null, P(self)]
+        !(((0 <= invRecv2(self) && invRecv2(self) < Seq#Length(arr)) && NoPerm < read(Heap)) && qpRange2(self)) ==> QPMask[null, P(self)] == Mask[null, P(self)]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -940,7 +940,7 @@ procedure test() returns (res: Ref)
   // -- Translating statement: unfold acc(P(arr[1]), read()) -- 0481.vpr@24.3--24.32
     
     // -- Check definedness of acc(P(arr[1]), read())
-      assert {:msg "  Unfolding P(arr[1]) might fail. Index arr[1] into arr might exceed sequence length. (0481.vpr@24.3--24.32) [218766]"}
+      assert {:msg "  Unfolding P(arr[1]) might fail. Index arr[1] into arr might exceed sequence length. (0481.vpr@24.3--24.32) [63776]"}
         1 < Seq#Length(arr);
       if (*) {
         // Stop execution
@@ -952,17 +952,17 @@ procedure test() returns (res: Ref)
         // Stop execution
         assume false;
       }
-    assert {:msg "  Unfolding P(arr[1]) might fail. Fraction read() might not be positive. (0481.vpr@24.3--24.32) [218767]"}
-      read_1(Heap) > NoPerm;
+    assert {:msg "  Unfolding P(arr[1]) might fail. Fraction read() might not be positive. (0481.vpr@24.3--24.32) [63777]"}
+      read(Heap) > NoPerm;
     assume P#trigger(Heap, P(Seq#Index(arr, 1)));
     assume Heap[null, P(Seq#Index(arr, 1))] == FrameFragment(Heap[Seq#Index(arr, 1), val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    perm := read_1(Heap);
-    assert {:msg "  Unfolding P(arr[1]) might fail. Fraction read() might be negative. (0481.vpr@24.3--24.32) [218768]"}
+    ExhaleWellDef0Heap := Heap;
+    perm := read(Heap);
+    assert {:msg "  Unfolding P(arr[1]) might fail. Fraction read() might be negative. (0481.vpr@24.3--24.32) [63778]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding P(arr[1]) might fail. There might be insufficient permission to access P(arr[1]) (0481.vpr@24.3--24.32) [218769]"}
+      assert {:msg "  Unfolding P(arr[1]) might fail. There might be insufficient permission to access P(arr[1]) (0481.vpr@24.3--24.32) [63779]"}
         perm <= Mask[null, P(Seq#Index(arr, 1))];
     }
     Mask := Mask[null, P(Seq#Index(arr, 1)):=Mask[null, P(Seq#Index(arr, 1))] - perm];
@@ -973,8 +973,8 @@ procedure test() returns (res: Ref)
         Heap := Heap[null, P(Seq#Index(arr, 1)):=newVersion];
       }
     assume state(Heap, Mask);
-    perm := FullPerm * read_1(Heap);
-    assert {:msg "  Unfolding P(arr[1]) might fail. Fraction write * read() might be negative. (0481.vpr@24.3--24.32) [218770]"}
+    perm := FullPerm * read(Heap);
+    assert {:msg "  Unfolding P(arr[1]) might fail. Fraction write * read() might be negative. (0481.vpr@24.3--24.32) [63780]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> Seq#Index(arr, 1) != null;
     Mask := Mask[Seq#Index(arr, 1), val:=Mask[Seq#Index(arr, 1), val] + perm];
@@ -991,7 +991,7 @@ procedure test() returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: res.val := 1 -- 0481.vpr@27.3--27.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access res.val (0481.vpr@27.3--27.15) [218772]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access res.val (0481.vpr@27.3--27.15) [63782]"}
       FullPerm == Mask[res, val];
     Heap := Heap[res, val:=1];
     assume state(Heap, Mask);

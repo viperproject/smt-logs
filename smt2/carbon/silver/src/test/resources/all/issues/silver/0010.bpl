@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:16
+// Date:         2025-01-26 21:42:19
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0010.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0010-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,9 +180,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 const unique f_7: Field NormalField int;
 axiom !IsPredicateField(f_7);
 axiom !IsWandField(f_7);
-const unique b_94: Field NormalField bool;
-axiom !IsPredicateField(b_94);
-axiom !IsWandField(b_94);
+const unique b_32: Field NormalField bool;
+axiom !IsPredicateField(b_32);
+axiom !IsWandField(b_32);
 
 // ==================================================
 // Translation of predicate P
@@ -233,13 +233,13 @@ procedure P#definedness(this: Ref) returns ()
       assume Heap[this, $allocated];
     perm := FullPerm;
     assume this != null;
-    Mask := Mask[this, b_94:=Mask[this, b_94] + perm];
+    Mask := Mask[this, b_32:=Mask[this, b_32] + perm];
     assume state(Heap, Mask);
     
     // -- Check definedness of this.b
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.b (0010.vpr@7.1--10.2) [219676]"}
-        HasDirectPerm(Mask, this, b_94);
-    if (Heap[this, b_94]) {
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.b (0010.vpr@7.1--10.2) [56215]"}
+        HasDirectPerm(Mask, this, b_32);
+    if (Heap[this, b_32]) {
       perm := FullPerm;
       assume this != null;
       Mask := Mask[this, f_7:=Mask[this, f_7] + perm];
@@ -256,14 +256,14 @@ procedure branch(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -282,50 +282,50 @@ procedure branch(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert 3 > 2 && (unfolding acc(P(this), write) in (!this.b ? true : true)) -- 0010.vpr@15.3--18.38
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (unfolding acc(P(this), write) in (!this.b ? true : true))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(this));
-      assume UnfoldingHeap[null, P(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, b_94]), FrameFragment((if UnfoldingHeap[this, b_94] then FrameFragment(UnfoldingHeap[this, f_7]) else EmptyFrame)));
-      ExhaleWellDef1Heap := UnfoldingHeap;
+      assume UnfoldingHeap[null, P(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, b_32]), FrameFragment((if UnfoldingHeap[this, b_32] then FrameFragment(UnfoldingHeap[this, f_7]) else EmptyFrame)));
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assert might fail. There might be insufficient permission to access P(this) (0010.vpr@16.8--18.38) [219678]"}
+        assert {:msg "  Assert might fail. There might be insufficient permission to access P(this) (0010.vpr@16.8--18.38) [56217]"}
           perm <= UnfoldingMask[null, P(this)];
       }
       UnfoldingMask := UnfoldingMask[null, P(this):=UnfoldingMask[null, P(this)] - perm];
       perm := FullPerm;
       assume this != null;
-      UnfoldingMask := UnfoldingMask[this, b_94:=UnfoldingMask[this, b_94] + perm];
+      UnfoldingMask := UnfoldingMask[this, b_32:=UnfoldingMask[this, b_32] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
-      if (UnfoldingHeap[this, b_94]) {
+      if (UnfoldingHeap[this, b_32]) {
         perm := FullPerm;
         assume this != null;
         UnfoldingMask := UnfoldingMask[this, f_7:=UnfoldingMask[this, f_7] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access this.b (0010.vpr@16.8--18.38) [219679]"}
-        HasDirectPerm(UnfoldingMask, this, b_94);
+      assert {:msg "  Assert might fail. There might be insufficient permission to access this.b (0010.vpr@16.8--18.38) [56218]"}
+        HasDirectPerm(UnfoldingMask, this, b_32);
       
       // -- Free assumptions (exp module)
-        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, b_94:=true]];
-        if (Heap[this, b_94]) {
+        Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, b_32:=true]];
+        if (Heap[this, b_32]) {
           Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, f_7:=true]];
         }
         assume state(Heap, Mask);
     
     // -- Free assumptions (exhale module)
-      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, b_94:=true]];
-      if (Heap[this, b_94]) {
+      Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, b_32:=true]];
+      if (Heap[this, b_32]) {
         Heap := Heap[null, P#sm(this):=Heap[null, P#sm(this)][this, f_7:=true]];
       }
       assume state(Heap, Mask);

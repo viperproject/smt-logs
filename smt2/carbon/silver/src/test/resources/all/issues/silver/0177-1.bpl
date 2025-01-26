@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:00
+// Date:         2025-01-26 21:42:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0177-1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0177-1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -216,9 +216,9 @@ procedure m1(r_1: Ref) returns ()
   // -- Translating statement: r.f := r.f + 1 -- 0177-1.vpr@11.5--11.19
     
     // -- Check definedness of r.f + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@11.5--11.19) [220509]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@11.5--11.19) [56374]"}
         HasDirectPerm(Mask, r_1, f_7);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@11.5--11.19) [220510]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@11.5--11.19) [56375]"}
       FullPerm == Mask[r_1, f_7];
     Heap := Heap[r_1, f_7:=Heap[r_1, f_7] + 1];
     assume state(Heap, Mask);
@@ -226,9 +226,9 @@ procedure m1(r_1: Ref) returns ()
   // -- Translating statement: r.f := r.f + 1 -- 0177-1.vpr@12.5--12.24
     
     // -- Check definedness of r.f + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@12.5--12.24) [220511]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@12.5--12.24) [56376]"}
         HasDirectPerm(Mask, r_1, f_7);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@12.5--12.24) [220512]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@12.5--12.24) [56377]"}
       FullPerm == Mask[r_1, f_7];
     Heap := Heap[r_1, f_7:=Heap[r_1, f_7] + 1];
     assume state(Heap, Mask);
@@ -236,9 +236,9 @@ procedure m1(r_1: Ref) returns ()
   // -- Translating statement: r.f := r.f -- 0177-1.vpr@13.5--13.20
     
     // -- Check definedness of r.f
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@13.5--13.20) [220513]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@13.5--13.20) [56378]"}
         HasDirectPerm(Mask, r_1, f_7);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@13.5--13.20) [220514]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@13.5--13.20) [56379]"}
       FullPerm == Mask[r_1, f_7];
     Heap := Heap[r_1, f_7:=Heap[r_1, f_7]];
     assume state(Heap, Mask);
@@ -246,9 +246,9 @@ procedure m1(r_1: Ref) returns ()
   // -- Translating statement: r.f := r.f + 1 -- 0177-1.vpr@14.5--14.24
     
     // -- Check definedness of r.f + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@14.5--14.24) [220515]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@14.5--14.24) [56380]"}
         HasDirectPerm(Mask, r_1, f_7);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@14.5--14.24) [220516]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (0177-1.vpr@14.5--14.24) [56381]"}
       FullPerm == Mask[r_1, f_7];
     Heap := Heap[r_1, f_7:=Heap[r_1, f_7] + 1];
     assume state(Heap, Mask);

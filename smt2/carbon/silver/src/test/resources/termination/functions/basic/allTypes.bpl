@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:33:49
+// Date:         2025-01-26 21:41:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/allTypes.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/allTypes-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref, f_8: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, f_8] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_3, f_8) ==> Heap[o_3, f_8] == ExhaleHeap[o_3, f_8]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_19: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_19] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_19) ==> Heap[o_12, f_19] == ExhaleHeap[o_12, f_19]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19), ExhaleHeap[null, PredicateMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> Heap[null, PredicateMaskField(pm_f_19)] == ExhaleHeap[null, PredicateMaskField(pm_f_19)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, PredicateMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19), ExhaleHeap[null, WandMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> Heap[null, WandMaskField(pm_f_19)] == ExhaleHeap[null, WandMaskField(pm_f_19)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, WandMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, WandMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_3, $allocated] ==> ExhaleHeap[o_3, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_9: (Field A B), v: B ::
-  { Heap[o_1, f_9:=v] }
-  succHeap(Heap, Heap[o_1, f_9:=v])
+axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_51: (Field A B), v: B ::
+  { Heap[o_1, f_51:=v] }
+  succHeap(Heap, Heap[o_1, f_51:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -842,15 +842,15 @@ axiom (forall bool1: bool ::
 type PredicateInstancesWellFoundedOrderDomainType;
 
 // Translation of domain axiom predicate_instances_ax_dec
-axiom (forall l1_3: PredicateInstanceDomainType, l2_2: PredicateInstanceDomainType ::
-  { (nestedPredicates(l1_3, l2_2): bool) }
-  (decreasing(l1_3, l2_2): bool) == (nestedPredicates(l1_3, l2_2): bool)
+axiom (forall l1_1: PredicateInstanceDomainType, l2: PredicateInstanceDomainType ::
+  { (nestedPredicates(l1_1, l2): bool) }
+  (decreasing(l1_1, l2): bool) == (nestedPredicates(l1_1, l2): bool)
 );
 
 // Translation of domain axiom predicate_instances_ax_bound
-axiom (forall l1_3: PredicateInstanceDomainType ::
-  { (bounded(l1_3): bool) }
-  (bounded(l1_3): bool)
+axiom (forall l1_1: PredicateInstanceDomainType ::
+  { (bounded(l1_1): bool) }
+  (bounded(l1_1): bool)
 );
 
 // ==================================================
@@ -861,18 +861,18 @@ axiom (forall l1_3: PredicateInstanceDomainType ::
 type PredicateInstancesNestedRelationDomainType;
 
 // Translation of domain function nestedPredicates
-function  nestedPredicates(l1_4: PredicateInstanceDomainType, l2_3: PredicateInstanceDomainType): bool;
+function  nestedPredicates(l1_2: PredicateInstanceDomainType, l2_1: PredicateInstanceDomainType): bool;
 
 // Translation of domain axiom nestedTrans
-axiom (forall l1_3: PredicateInstanceDomainType, l2_2: PredicateInstanceDomainType, l3: PredicateInstanceDomainType ::
-  { (nestedPredicates(l1_3, l2_2): bool), (nestedPredicates(l2_2, l3): bool) }
-  (nestedPredicates(l1_3, l2_2): bool) && (nestedPredicates(l2_2, l3): bool) ==> (nestedPredicates(l1_3, l3): bool)
+axiom (forall l1_1: PredicateInstanceDomainType, l2: PredicateInstanceDomainType, l3: PredicateInstanceDomainType ::
+  { (nestedPredicates(l1_1, l2): bool), (nestedPredicates(l2, l3): bool) }
+  (nestedPredicates(l1_1, l2): bool) && (nestedPredicates(l2, l3): bool) ==> (nestedPredicates(l1_1, l3): bool)
 );
 
 // Translation of domain axiom nestedReflex
-axiom (forall l1_3: PredicateInstanceDomainType ::
-  { (nestedPredicates(l1_3, l1_3): bool) }
-  !(nestedPredicates(l1_3, l1_3): bool)
+axiom (forall l1_1: PredicateInstanceDomainType ::
+  { (nestedPredicates(l1_1, l1_1): bool) }
+  !(nestedPredicates(l1_1, l1_1): bool)
 );
 
 // ==================================================
@@ -986,8 +986,8 @@ function  fact#triggerStateless(x: int): int;
 procedure fact#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1006,9 +1006,9 @@ procedure fact#definedness(x: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function fact might not hold. Assertion x - 1 >= 0 might not hold. (allTypes.vpr@11.18--11.27) [223471]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function fact might not hold. Assertion x - 1 >= 0 might not hold. (allTypes.vpr@11.18--11.27) [18625]"}
             x - 1 >= 0;
           // Stop execution
           assume false;
@@ -1061,8 +1061,8 @@ function  fact_e#triggerStateless(x: int): int;
 procedure fact_e#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1081,9 +1081,9 @@ procedure fact_e#definedness(x: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  Precondition of function fact_e might not hold. Assertion x >= 0 might not hold. (allTypes.vpr@19.18--19.27) [223472]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  Precondition of function fact_e might not hold. Assertion x >= 0 might not hold. (allTypes.vpr@19.18--19.27) [18626]"}
             x >= 0;
           // Stop execution
           assume false;
@@ -1272,8 +1272,8 @@ function  booleans#triggerStateless(b_24: bool): int;
 procedure booleans#definedness(b_24: bool) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1298,9 +1298,9 @@ procedure booleans#definedness(b_24: bool) returns (Result: int)
     Result := (if b_24 then booleans(Heap, !b_24) else 1);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of booleans might not hold. Assertion result == 1 might not hold. (allTypes.vpr@40.9--40.20) [223473]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of booleans might not hold. Assertion result == 1 might not hold. (allTypes.vpr@40.9--40.20) [18627]"}
       Result == 1;
 }
 
@@ -1349,8 +1349,8 @@ function  booleans_e#triggerStateless(b_24: bool): int;
 procedure booleans_e#definedness(b_24: bool) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1375,9 +1375,9 @@ procedure booleans_e#definedness(b_24: bool) returns (Result: int)
     Result := (if !b_24 then booleans_e(Heap, !b_24) else 1);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of booleans_e might not hold. Assertion result == 1 might not hold. (allTypes.vpr@47.9--47.20) [223474]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of booleans_e might not hold. Assertion result == 1 might not hold. (allTypes.vpr@47.9--47.20) [18628]"}
       Result == 1;
 }
 
@@ -1512,48 +1512,48 @@ procedure rationals_e#definedness(r_1: Perm) returns (Result: Perm)
 // ==================================================
 
 // Uninterpreted function definitions
-function  sequences_1(Heap: HeapType, seq_1: (Seq int)): int;
-function  sequences'(Heap: HeapType, seq_1: (Seq int)): int;
-axiom (forall Heap: HeapType, seq_1: (Seq int) ::
-  { sequences_1(Heap, seq_1) }
-  sequences_1(Heap, seq_1) == sequences'(Heap, seq_1) && dummyFunction(sequences#triggerStateless(seq_1))
+function  sequences(Heap: HeapType, seq: (Seq int)): int;
+function  sequences'(Heap: HeapType, seq: (Seq int)): int;
+axiom (forall Heap: HeapType, seq: (Seq int) ::
+  { sequences(Heap, seq) }
+  sequences(Heap, seq) == sequences'(Heap, seq) && dummyFunction(sequences#triggerStateless(seq))
 );
-axiom (forall Heap: HeapType, seq_1: (Seq int) ::
-  { sequences'(Heap, seq_1) }
-  dummyFunction(sequences#triggerStateless(seq_1))
+axiom (forall Heap: HeapType, seq: (Seq int) ::
+  { sequences'(Heap, seq) }
+  dummyFunction(sequences#triggerStateless(seq))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, seq_1: (Seq int) ::
-  { state(Heap, Mask), sequences_1(Heap, seq_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 17 ==> sequences_1(Heap, seq_1) == (if Seq#Length(seq_1) != 0 then 1 + sequences'(Heap, Seq#Drop(seq_1, 1)) else 0)
+axiom (forall Heap: HeapType, Mask: MaskType, seq: (Seq int) ::
+  { state(Heap, Mask), sequences(Heap, seq) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 17 ==> sequences(Heap, seq) == (if Seq#Length(seq) != 0 then 1 + sequences'(Heap, Seq#Drop(seq, 1)) else 0)
 );
 
 // Framing axioms
-function  sequences#frame(frame: FrameType, seq_1: (Seq int)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, seq_1: (Seq int) ::
-  { state(Heap, Mask), sequences'(Heap, seq_1) }
-  state(Heap, Mask) ==> sequences'(Heap, seq_1) == sequences#frame(EmptyFrame, seq_1)
+function  sequences#frame(frame: FrameType, seq: (Seq int)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, seq: (Seq int) ::
+  { state(Heap, Mask), sequences'(Heap, seq) }
+  state(Heap, Mask) ==> sequences'(Heap, seq) == sequences#frame(EmptyFrame, seq)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, seq_1: (Seq int) ::
-  { state(Heap, Mask), sequences'(Heap, seq_1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 17 || sequences#trigger(EmptyFrame, seq_1)) ==> sequences'(Heap, seq_1) == Seq#Length(seq_1)
+axiom (forall Heap: HeapType, Mask: MaskType, seq: (Seq int) ::
+  { state(Heap, Mask), sequences'(Heap, seq) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 17 || sequences#trigger(EmptyFrame, seq)) ==> sequences'(Heap, seq) == Seq#Length(seq)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  sequences#trigger(frame: FrameType, seq_1: (Seq int)): bool;
+function  sequences#trigger(frame: FrameType, seq: (Seq int)): bool;
 
 // State-independent trigger function
-function  sequences#triggerStateless(seq_1: (Seq int)): int;
+function  sequences#triggerStateless(seq: (Seq int)): int;
 
 // Check contract well-formedness and postcondition
-procedure sequences#definedness(seq_1: (Seq int)) returns (Result: int)
+procedure sequences#definedness(seq: (Seq int)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1564,24 +1564,24 @@ procedure sequences#definedness(seq_1: (Seq int)) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (|seq| != 0 ? 1 + sequences(seq[1..]) : 0)
-      if (Seq#Length(seq_1) != 0) {
+      if (Seq#Length(seq) != 0) {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume sequences#trigger(EmptyFrame, Seq#Drop(seq_1, 1));
+          assume sequences#trigger(EmptyFrame, Seq#Drop(seq, 1));
         }
       }
   
   // -- Translate function body
-    Result := (if Seq#Length(seq_1) != 0 then 1 + sequences_1(Heap, Seq#Drop(seq_1, 1)) else 0);
+    Result := (if Seq#Length(seq) != 0 then 1 + sequences(Heap, Seq#Drop(seq, 1)) else 0);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of sequences might not hold. Assertion result == |seq| might not hold. (allTypes.vpr@69.9--69.24) [223475]"}
-      Result == Seq#Length(seq_1);
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of sequences might not hold. Assertion result == |seq| might not hold. (allTypes.vpr@69.9--69.24) [18629]"}
+      Result == Seq#Length(seq);
 }
 
 // ==================================================
@@ -1589,48 +1589,48 @@ procedure sequences#definedness(seq_1: (Seq int)) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  sequences_e(Heap: HeapType, seq_1: (Seq int)): int;
-function  sequences_e'(Heap: HeapType, seq_1: (Seq int)): int;
-axiom (forall Heap: HeapType, seq_1: (Seq int) ::
-  { sequences_e(Heap, seq_1) }
-  sequences_e(Heap, seq_1) == sequences_e'(Heap, seq_1) && dummyFunction(sequences_e#triggerStateless(seq_1))
+function  sequences_e(Heap: HeapType, seq: (Seq int)): int;
+function  sequences_e'(Heap: HeapType, seq: (Seq int)): int;
+axiom (forall Heap: HeapType, seq: (Seq int) ::
+  { sequences_e(Heap, seq) }
+  sequences_e(Heap, seq) == sequences_e'(Heap, seq) && dummyFunction(sequences_e#triggerStateless(seq))
 );
-axiom (forall Heap: HeapType, seq_1: (Seq int) ::
-  { sequences_e'(Heap, seq_1) }
-  dummyFunction(sequences_e#triggerStateless(seq_1))
+axiom (forall Heap: HeapType, seq: (Seq int) ::
+  { sequences_e'(Heap, seq) }
+  dummyFunction(sequences_e#triggerStateless(seq))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, seq_1: (Seq int) ::
-  { state(Heap, Mask), sequences_e(Heap, seq_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> sequences_e(Heap, seq_1) == (if Seq#Length(seq_1) != 0 then sequences_e'(Heap, Seq#Append(Seq#Drop(seq_1, 1), Seq#Singleton(1))) else 0)
+axiom (forall Heap: HeapType, Mask: MaskType, seq: (Seq int) ::
+  { state(Heap, Mask), sequences_e(Heap, seq) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> sequences_e(Heap, seq) == (if Seq#Length(seq) != 0 then sequences_e'(Heap, Seq#Append(Seq#Drop(seq, 1), Seq#Singleton(1))) else 0)
 );
 
 // Framing axioms
-function  sequences_e#frame(frame: FrameType, seq_1: (Seq int)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, seq_1: (Seq int) ::
-  { state(Heap, Mask), sequences_e'(Heap, seq_1) }
-  state(Heap, Mask) ==> sequences_e'(Heap, seq_1) == sequences_e#frame(EmptyFrame, seq_1)
+function  sequences_e#frame(frame: FrameType, seq: (Seq int)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, seq: (Seq int) ::
+  { state(Heap, Mask), sequences_e'(Heap, seq) }
+  state(Heap, Mask) ==> sequences_e'(Heap, seq) == sequences_e#frame(EmptyFrame, seq)
 );
 
 // Postcondition axioms
-axiom (forall Heap: HeapType, Mask: MaskType, seq_1: (Seq int) ::
-  { state(Heap, Mask), sequences_e'(Heap, seq_1) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || sequences_e#trigger(EmptyFrame, seq_1)) ==> sequences_e'(Heap, seq_1) == Seq#Length(seq_1)
+axiom (forall Heap: HeapType, Mask: MaskType, seq: (Seq int) ::
+  { state(Heap, Mask), sequences_e'(Heap, seq) }
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || sequences_e#trigger(EmptyFrame, seq)) ==> sequences_e'(Heap, seq) == Seq#Length(seq)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  sequences_e#trigger(frame: FrameType, seq_1: (Seq int)): bool;
+function  sequences_e#trigger(frame: FrameType, seq: (Seq int)): bool;
 
 // State-independent trigger function
-function  sequences_e#triggerStateless(seq_1: (Seq int)): int;
+function  sequences_e#triggerStateless(seq: (Seq int)): int;
 
 // Check contract well-formedness and postcondition
-procedure sequences_e#definedness(seq_1: (Seq int)) returns (Result: int)
+procedure sequences_e#definedness(seq: (Seq int)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1641,24 +1641,24 @@ procedure sequences_e#definedness(seq_1: (Seq int)) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (|seq| != 0 ? sequences_e(seq[1..] ++ Seq(1)) : 0)
-      if (Seq#Length(seq_1) != 0) {
+      if (Seq#Length(seq) != 0) {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume sequences_e#trigger(EmptyFrame, Seq#Append(Seq#Drop(seq_1, 1), Seq#Singleton(1)));
+          assume sequences_e#trigger(EmptyFrame, Seq#Append(Seq#Drop(seq, 1), Seq#Singleton(1)));
         }
       }
   
   // -- Translate function body
-    Result := (if Seq#Length(seq_1) != 0 then sequences_e(Heap, Seq#Append(Seq#Drop(seq_1, 1), Seq#Singleton(1))) else 0);
+    Result := (if Seq#Length(seq) != 0 then sequences_e(Heap, Seq#Append(Seq#Drop(seq, 1), Seq#Singleton(1))) else 0);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of sequences_e might not hold. Assertion result == |seq| might not hold. (allTypes.vpr@76.9--76.24) [223476]"}
-      Result == Seq#Length(seq_1);
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of sequences_e might not hold. Assertion result == |seq| might not hold. (allTypes.vpr@76.9--76.24) [18630]"}
+      Result == Seq#Length(seq);
 }
 
 // ==================================================
@@ -1666,38 +1666,38 @@ procedure sequences_e#definedness(seq_1: (Seq int)) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  numberOfUsers(Heap: HeapType, seq_1: (Seq bool)): int;
-function  numberOfUsers'(Heap: HeapType, seq_1: (Seq bool)): int;
-axiom (forall Heap: HeapType, seq_1: (Seq bool) ::
-  { numberOfUsers(Heap, seq_1) }
-  numberOfUsers(Heap, seq_1) == numberOfUsers'(Heap, seq_1) && dummyFunction(numberOfUsers#triggerStateless(seq_1))
+function  numberOfUsers(Heap: HeapType, seq: (Seq bool)): int;
+function  numberOfUsers'(Heap: HeapType, seq: (Seq bool)): int;
+axiom (forall Heap: HeapType, seq: (Seq bool) ::
+  { numberOfUsers(Heap, seq) }
+  numberOfUsers(Heap, seq) == numberOfUsers'(Heap, seq) && dummyFunction(numberOfUsers#triggerStateless(seq))
 );
-axiom (forall Heap: HeapType, seq_1: (Seq bool) ::
-  { numberOfUsers'(Heap, seq_1) }
-  dummyFunction(numberOfUsers#triggerStateless(seq_1))
+axiom (forall Heap: HeapType, seq: (Seq bool) ::
+  { numberOfUsers'(Heap, seq) }
+  dummyFunction(numberOfUsers#triggerStateless(seq))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, seq_1: (Seq bool) ::
-  { state(Heap, Mask), numberOfUsers(Heap, seq_1) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> numberOfUsers(Heap, seq_1) == (if Seq#Length(seq_1) == 0 then 0 else (if Seq#Index(seq_1, 0) then 1 + numberOfUsers'(Heap, Seq#Drop(seq_1, 1)) else numberOfUsers'(Heap, Seq#Drop(seq_1, 1))))
+axiom (forall Heap: HeapType, Mask: MaskType, seq: (Seq bool) ::
+  { state(Heap, Mask), numberOfUsers(Heap, seq) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 1 ==> numberOfUsers(Heap, seq) == (if Seq#Length(seq) == 0 then 0 else (if Seq#Index(seq, 0) then 1 + numberOfUsers'(Heap, Seq#Drop(seq, 1)) else numberOfUsers'(Heap, Seq#Drop(seq, 1))))
 );
 
 // Framing axioms
-function  numberOfUsers#frame(frame: FrameType, seq_1: (Seq bool)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, seq_1: (Seq bool) ::
-  { state(Heap, Mask), numberOfUsers'(Heap, seq_1) }
-  state(Heap, Mask) ==> numberOfUsers'(Heap, seq_1) == numberOfUsers#frame(EmptyFrame, seq_1)
+function  numberOfUsers#frame(frame: FrameType, seq: (Seq bool)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, seq: (Seq bool) ::
+  { state(Heap, Mask), numberOfUsers'(Heap, seq) }
+  state(Heap, Mask) ==> numberOfUsers'(Heap, seq) == numberOfUsers#frame(EmptyFrame, seq)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  numberOfUsers#trigger(frame: FrameType, seq_1: (Seq bool)): bool;
+function  numberOfUsers#trigger(frame: FrameType, seq: (Seq bool)): bool;
 
 // State-independent trigger function
-function  numberOfUsers#triggerStateless(seq_1: (Seq bool)): int;
+function  numberOfUsers#triggerStateless(seq: (Seq bool)): int;
 
 // Check contract well-formedness and postcondition
-procedure numberOfUsers#definedness(seq_1: (Seq bool)) returns (Result: int)
+procedure numberOfUsers#definedness(seq: (Seq bool)) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -1710,17 +1710,17 @@ procedure numberOfUsers#definedness(seq_1: (Seq bool)) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (|seq| == 0 ? 0 : (seq[0] ? 1 + numberOfUsers(seq[1..]) : numberOfUsers(seq[1..])))
-      if (Seq#Length(seq_1) == 0) {
+      if (Seq#Length(seq) == 0) {
       } else {
-        assert {:msg "  Function might not be well-formed. Index seq[0] into seq might exceed sequence length. (allTypes.vpr@84.1--89.2) [223477]"}
-          0 < Seq#Length(seq_1);
-        if (Seq#Index(seq_1, 0)) {
+        assert {:msg "  Function might not be well-formed. Index seq[0] into seq might exceed sequence length. (allTypes.vpr@84.1--89.2) [18631]"}
+          0 < Seq#Length(seq);
+        if (Seq#Index(seq, 0)) {
           if (*) {
             // Stop execution
             assume false;
           } else {
             // Enable postcondition for recursive call
-            assume numberOfUsers#trigger(EmptyFrame, Seq#Drop(seq_1, 1));
+            assume numberOfUsers#trigger(EmptyFrame, Seq#Drop(seq, 1));
           }
         } else {
           if (*) {
@@ -1728,13 +1728,13 @@ procedure numberOfUsers#definedness(seq_1: (Seq bool)) returns (Result: int)
             assume false;
           } else {
             // Enable postcondition for recursive call
-            assume numberOfUsers#trigger(EmptyFrame, Seq#Drop(seq_1, 1));
+            assume numberOfUsers#trigger(EmptyFrame, Seq#Drop(seq, 1));
           }
         }
       }
   
   // -- Translate function body
-    Result := (if Seq#Length(seq_1) == 0 then 0 else (if Seq#Index(seq_1, 0) then 1 + numberOfUsers(Heap, Seq#Drop(seq_1, 1)) else numberOfUsers(Heap, Seq#Drop(seq_1, 1))));
+    Result := (if Seq#Length(seq) == 0 then 0 else (if Seq#Index(seq, 0) then 1 + numberOfUsers(Heap, Seq#Drop(seq, 1)) else numberOfUsers(Heap, Seq#Drop(seq, 1))));
 }
 
 // ==================================================
@@ -1742,38 +1742,38 @@ procedure numberOfUsers#definedness(seq_1: (Seq bool)) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  sets(Heap: HeapType, s_2: (Set int)): int;
-function  sets'(Heap: HeapType, s_2: (Set int)): int;
-axiom (forall Heap: HeapType, s_2: (Set int) ::
-  { sets(Heap, s_2) }
-  sets(Heap, s_2) == sets'(Heap, s_2) && dummyFunction(sets#triggerStateless(s_2))
+function  sets(Heap: HeapType, s_1: (Set int)): int;
+function  sets'(Heap: HeapType, s_1: (Set int)): int;
+axiom (forall Heap: HeapType, s_1: (Set int) ::
+  { sets(Heap, s_1) }
+  sets(Heap, s_1) == sets'(Heap, s_1) && dummyFunction(sets#triggerStateless(s_1))
 );
-axiom (forall Heap: HeapType, s_2: (Set int) ::
-  { sets'(Heap, s_2) }
-  dummyFunction(sets#triggerStateless(s_2))
+axiom (forall Heap: HeapType, s_1: (Set int) ::
+  { sets'(Heap, s_1) }
+  dummyFunction(sets#triggerStateless(s_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (Set int) ::
-  { state(Heap, Mask), sets(Heap, s_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> sets(Heap, s_2) == (if Set#Card(s_2) > 0 && s_2[Set#Card(s_2)] then sets'(Heap, Set#Difference(s_2, Set#Singleton(Set#Card(s_2)))) else 1)
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (Set int) ::
+  { state(Heap, Mask), sets(Heap, s_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 3 ==> sets(Heap, s_1) == (if Set#Card(s_1) > 0 && s_1[Set#Card(s_1)] then sets'(Heap, Set#Difference(s_1, Set#Singleton(Set#Card(s_1)))) else 1)
 );
 
 // Framing axioms
-function  sets#frame(frame: FrameType, s_2: (Set int)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (Set int) ::
-  { state(Heap, Mask), sets'(Heap, s_2) }
-  state(Heap, Mask) ==> sets'(Heap, s_2) == sets#frame(EmptyFrame, s_2)
+function  sets#frame(frame: FrameType, s_1: (Set int)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (Set int) ::
+  { state(Heap, Mask), sets'(Heap, s_1) }
+  state(Heap, Mask) ==> sets'(Heap, s_1) == sets#frame(EmptyFrame, s_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  sets#trigger(frame: FrameType, s_2: (Set int)): bool;
+function  sets#trigger(frame: FrameType, s_1: (Set int)): bool;
 
 // State-independent trigger function
-function  sets#triggerStateless(s_2: (Set int)): int;
+function  sets#triggerStateless(s_1: (Set int)): int;
 
 // Check contract well-formedness and postcondition
-procedure sets#definedness(s_2: (Set int)) returns (Result: int)
+procedure sets#definedness(s_1: (Set int)) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -1786,18 +1786,18 @@ procedure sets#definedness(s_2: (Set int)) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (|s| > 0 && (|s| in s) ? sets((s setminus Set(|s|))) : 1)
-      if (Set#Card(s_2) > 0 && s_2[Set#Card(s_2)]) {
+      if (Set#Card(s_1) > 0 && s_1[Set#Card(s_1)]) {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume sets#trigger(EmptyFrame, Set#Difference(s_2, Set#Singleton(Set#Card(s_2))));
+          assume sets#trigger(EmptyFrame, Set#Difference(s_1, Set#Singleton(Set#Card(s_1))));
         }
       }
   
   // -- Translate function body
-    Result := (if Set#Card(s_2) > 0 && s_2[Set#Card(s_2)] then sets(Heap, Set#Difference(s_2, Set#Singleton(Set#Card(s_2)))) else 1);
+    Result := (if Set#Card(s_1) > 0 && s_1[Set#Card(s_1)] then sets(Heap, Set#Difference(s_1, Set#Singleton(Set#Card(s_1)))) else 1);
 }
 
 // ==================================================
@@ -1805,38 +1805,38 @@ procedure sets#definedness(s_2: (Set int)) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  sets_e(Heap: HeapType, s_2: (Set int)): int;
-function  sets_e'(Heap: HeapType, s_2: (Set int)): int;
-axiom (forall Heap: HeapType, s_2: (Set int) ::
-  { sets_e(Heap, s_2) }
-  sets_e(Heap, s_2) == sets_e'(Heap, s_2) && dummyFunction(sets_e#triggerStateless(s_2))
+function  sets_e(Heap: HeapType, s_1: (Set int)): int;
+function  sets_e'(Heap: HeapType, s_1: (Set int)): int;
+axiom (forall Heap: HeapType, s_1: (Set int) ::
+  { sets_e(Heap, s_1) }
+  sets_e(Heap, s_1) == sets_e'(Heap, s_1) && dummyFunction(sets_e#triggerStateless(s_1))
 );
-axiom (forall Heap: HeapType, s_2: (Set int) ::
-  { sets_e'(Heap, s_2) }
-  dummyFunction(sets_e#triggerStateless(s_2))
+axiom (forall Heap: HeapType, s_1: (Set int) ::
+  { sets_e'(Heap, s_1) }
+  dummyFunction(sets_e#triggerStateless(s_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (Set int) ::
-  { state(Heap, Mask), sets_e(Heap, s_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 12 ==> sets_e(Heap, s_2) == (if Set#Card(s_2) > 0 && s_2[Set#Card(s_2)] then 1 else sets_e'(Heap, Set#Difference(s_2, Set#Singleton(Set#Card(s_2)))))
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (Set int) ::
+  { state(Heap, Mask), sets_e(Heap, s_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 12 ==> sets_e(Heap, s_1) == (if Set#Card(s_1) > 0 && s_1[Set#Card(s_1)] then 1 else sets_e'(Heap, Set#Difference(s_1, Set#Singleton(Set#Card(s_1)))))
 );
 
 // Framing axioms
-function  sets_e#frame(frame: FrameType, s_2: (Set int)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (Set int) ::
-  { state(Heap, Mask), sets_e'(Heap, s_2) }
-  state(Heap, Mask) ==> sets_e'(Heap, s_2) == sets_e#frame(EmptyFrame, s_2)
+function  sets_e#frame(frame: FrameType, s_1: (Set int)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (Set int) ::
+  { state(Heap, Mask), sets_e'(Heap, s_1) }
+  state(Heap, Mask) ==> sets_e'(Heap, s_1) == sets_e#frame(EmptyFrame, s_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  sets_e#trigger(frame: FrameType, s_2: (Set int)): bool;
+function  sets_e#trigger(frame: FrameType, s_1: (Set int)): bool;
 
 // State-independent trigger function
-function  sets_e#triggerStateless(s_2: (Set int)): int;
+function  sets_e#triggerStateless(s_1: (Set int)): int;
 
 // Check contract well-formedness and postcondition
-procedure sets_e#definedness(s_2: (Set int)) returns (Result: int)
+procedure sets_e#definedness(s_1: (Set int)) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -1849,19 +1849,19 @@ procedure sets_e#definedness(s_2: (Set int)) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (|s| > 0 && (|s| in s) ? 1 : sets_e((s setminus Set(|s|))))
-      if (Set#Card(s_2) > 0 && s_2[Set#Card(s_2)]) {
+      if (Set#Card(s_1) > 0 && s_1[Set#Card(s_1)]) {
       } else {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume sets_e#trigger(EmptyFrame, Set#Difference(s_2, Set#Singleton(Set#Card(s_2))));
+          assume sets_e#trigger(EmptyFrame, Set#Difference(s_1, Set#Singleton(Set#Card(s_1))));
         }
       }
   
   // -- Translate function body
-    Result := (if Set#Card(s_2) > 0 && s_2[Set#Card(s_2)] then 1 else sets_e(Heap, Set#Difference(s_2, Set#Singleton(Set#Card(s_2)))));
+    Result := (if Set#Card(s_1) > 0 && s_1[Set#Card(s_1)] then 1 else sets_e(Heap, Set#Difference(s_1, Set#Singleton(Set#Card(s_1)))));
 }
 
 // ==================================================
@@ -1869,38 +1869,38 @@ procedure sets_e#definedness(s_2: (Set int)) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  multiSets(Heap: HeapType, s_2: (MultiSet int)): int;
-function  multiSets'(Heap: HeapType, s_2: (MultiSet int)): int;
-axiom (forall Heap: HeapType, s_2: (MultiSet int) ::
-  { multiSets(Heap, s_2) }
-  multiSets(Heap, s_2) == multiSets'(Heap, s_2) && dummyFunction(multiSets#triggerStateless(s_2))
+function  multiSets(Heap: HeapType, s_1: (MultiSet int)): int;
+function  multiSets'(Heap: HeapType, s_1: (MultiSet int)): int;
+axiom (forall Heap: HeapType, s_1: (MultiSet int) ::
+  { multiSets(Heap, s_1) }
+  multiSets(Heap, s_1) == multiSets'(Heap, s_1) && dummyFunction(multiSets#triggerStateless(s_1))
 );
-axiom (forall Heap: HeapType, s_2: (MultiSet int) ::
-  { multiSets'(Heap, s_2) }
-  dummyFunction(multiSets#triggerStateless(s_2))
+axiom (forall Heap: HeapType, s_1: (MultiSet int) ::
+  { multiSets'(Heap, s_1) }
+  dummyFunction(multiSets#triggerStateless(s_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (MultiSet int) ::
-  { state(Heap, Mask), multiSets(Heap, s_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 10 ==> multiSets(Heap, s_2) == (if MultiSet#Card(s_2) > 0 && MultiSet#Select(s_2, MultiSet#Card(s_2)) > 0 then multiSets'(Heap, MultiSet#Difference(s_2, MultiSet#Singleton(MultiSet#Card(s_2)))) else 1)
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (MultiSet int) ::
+  { state(Heap, Mask), multiSets(Heap, s_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 10 ==> multiSets(Heap, s_1) == (if MultiSet#Card(s_1) > 0 && MultiSet#Select(s_1, MultiSet#Card(s_1)) > 0 then multiSets'(Heap, MultiSet#Difference(s_1, MultiSet#Singleton(MultiSet#Card(s_1)))) else 1)
 );
 
 // Framing axioms
-function  multiSets#frame(frame: FrameType, s_2: (MultiSet int)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (MultiSet int) ::
-  { state(Heap, Mask), multiSets'(Heap, s_2) }
-  state(Heap, Mask) ==> multiSets'(Heap, s_2) == multiSets#frame(EmptyFrame, s_2)
+function  multiSets#frame(frame: FrameType, s_1: (MultiSet int)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (MultiSet int) ::
+  { state(Heap, Mask), multiSets'(Heap, s_1) }
+  state(Heap, Mask) ==> multiSets'(Heap, s_1) == multiSets#frame(EmptyFrame, s_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  multiSets#trigger(frame: FrameType, s_2: (MultiSet int)): bool;
+function  multiSets#trigger(frame: FrameType, s_1: (MultiSet int)): bool;
 
 // State-independent trigger function
-function  multiSets#triggerStateless(s_2: (MultiSet int)): int;
+function  multiSets#triggerStateless(s_1: (MultiSet int)): int;
 
 // Check contract well-formedness and postcondition
-procedure multiSets#definedness(s_2: (MultiSet int)) returns (Result: int)
+procedure multiSets#definedness(s_1: (MultiSet int)) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -1913,18 +1913,18 @@ procedure multiSets#definedness(s_2: (MultiSet int)) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (|s| > 0 && ((|s| in s)) > 0 ? multiSets((s setminus Multiset(|s|))) : 1)
-      if (MultiSet#Card(s_2) > 0 && MultiSet#Select(s_2, MultiSet#Card(s_2)) > 0) {
+      if (MultiSet#Card(s_1) > 0 && MultiSet#Select(s_1, MultiSet#Card(s_1)) > 0) {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume multiSets#trigger(EmptyFrame, MultiSet#Difference(s_2, MultiSet#Singleton(MultiSet#Card(s_2))));
+          assume multiSets#trigger(EmptyFrame, MultiSet#Difference(s_1, MultiSet#Singleton(MultiSet#Card(s_1))));
         }
       }
   
   // -- Translate function body
-    Result := (if MultiSet#Card(s_2) > 0 && MultiSet#Select(s_2, MultiSet#Card(s_2)) > 0 then multiSets(Heap, MultiSet#Difference(s_2, MultiSet#Singleton(MultiSet#Card(s_2)))) else 1);
+    Result := (if MultiSet#Card(s_1) > 0 && MultiSet#Select(s_1, MultiSet#Card(s_1)) > 0 then multiSets(Heap, MultiSet#Difference(s_1, MultiSet#Singleton(MultiSet#Card(s_1)))) else 1);
 }
 
 // ==================================================
@@ -1932,38 +1932,38 @@ procedure multiSets#definedness(s_2: (MultiSet int)) returns (Result: int)
 // ==================================================
 
 // Uninterpreted function definitions
-function  multiSets_e(Heap: HeapType, s_2: (MultiSet int)): int;
-function  multiSets_e'(Heap: HeapType, s_2: (MultiSet int)): int;
-axiom (forall Heap: HeapType, s_2: (MultiSet int) ::
-  { multiSets_e(Heap, s_2) }
-  multiSets_e(Heap, s_2) == multiSets_e'(Heap, s_2) && dummyFunction(multiSets_e#triggerStateless(s_2))
+function  multiSets_e(Heap: HeapType, s_1: (MultiSet int)): int;
+function  multiSets_e'(Heap: HeapType, s_1: (MultiSet int)): int;
+axiom (forall Heap: HeapType, s_1: (MultiSet int) ::
+  { multiSets_e(Heap, s_1) }
+  multiSets_e(Heap, s_1) == multiSets_e'(Heap, s_1) && dummyFunction(multiSets_e#triggerStateless(s_1))
 );
-axiom (forall Heap: HeapType, s_2: (MultiSet int) ::
-  { multiSets_e'(Heap, s_2) }
-  dummyFunction(multiSets_e#triggerStateless(s_2))
+axiom (forall Heap: HeapType, s_1: (MultiSet int) ::
+  { multiSets_e'(Heap, s_1) }
+  dummyFunction(multiSets_e#triggerStateless(s_1))
 );
 
 // Definitional axiom
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (MultiSet int) ::
-  { state(Heap, Mask), multiSets_e(Heap, s_2) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> multiSets_e(Heap, s_2) == (if MultiSet#Card(s_2) > 0 && MultiSet#Select(s_2, MultiSet#Card(s_2)) > 0 then 1 else multiSets_e'(Heap, MultiSet#Difference(s_2, MultiSet#Singleton(MultiSet#Card(s_2)))))
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (MultiSet int) ::
+  { state(Heap, Mask), multiSets_e(Heap, s_1) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 4 ==> multiSets_e(Heap, s_1) == (if MultiSet#Card(s_1) > 0 && MultiSet#Select(s_1, MultiSet#Card(s_1)) > 0 then 1 else multiSets_e'(Heap, MultiSet#Difference(s_1, MultiSet#Singleton(MultiSet#Card(s_1)))))
 );
 
 // Framing axioms
-function  multiSets_e#frame(frame: FrameType, s_2: (MultiSet int)): int;
-axiom (forall Heap: HeapType, Mask: MaskType, s_2: (MultiSet int) ::
-  { state(Heap, Mask), multiSets_e'(Heap, s_2) }
-  state(Heap, Mask) ==> multiSets_e'(Heap, s_2) == multiSets_e#frame(EmptyFrame, s_2)
+function  multiSets_e#frame(frame: FrameType, s_1: (MultiSet int)): int;
+axiom (forall Heap: HeapType, Mask: MaskType, s_1: (MultiSet int) ::
+  { state(Heap, Mask), multiSets_e'(Heap, s_1) }
+  state(Heap, Mask) ==> multiSets_e'(Heap, s_1) == multiSets_e#frame(EmptyFrame, s_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  multiSets_e#trigger(frame: FrameType, s_2: (MultiSet int)): bool;
+function  multiSets_e#trigger(frame: FrameType, s_1: (MultiSet int)): bool;
 
 // State-independent trigger function
-function  multiSets_e#triggerStateless(s_2: (MultiSet int)): int;
+function  multiSets_e#triggerStateless(s_1: (MultiSet int)): int;
 
 // Check contract well-formedness and postcondition
-procedure multiSets_e#definedness(s_2: (MultiSet int)) returns (Result: int)
+procedure multiSets_e#definedness(s_1: (MultiSet int)) returns (Result: int)
   modifies Heap, Mask;
 {
   
@@ -1976,19 +1976,19 @@ procedure multiSets_e#definedness(s_2: (MultiSet int)) returns (Result: int)
   // -- Check definedness of function body
     
     // -- Check definedness of (|s| > 0 && ((|s| in s)) > 0 ? 1 : multiSets_e((s setminus Multiset(|s|))))
-      if (MultiSet#Card(s_2) > 0 && MultiSet#Select(s_2, MultiSet#Card(s_2)) > 0) {
+      if (MultiSet#Card(s_1) > 0 && MultiSet#Select(s_1, MultiSet#Card(s_1)) > 0) {
       } else {
         if (*) {
           // Stop execution
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume multiSets_e#trigger(EmptyFrame, MultiSet#Difference(s_2, MultiSet#Singleton(MultiSet#Card(s_2))));
+          assume multiSets_e#trigger(EmptyFrame, MultiSet#Difference(s_1, MultiSet#Singleton(MultiSet#Card(s_1))));
         }
       }
   
   // -- Translate function body
-    Result := (if MultiSet#Card(s_2) > 0 && MultiSet#Select(s_2, MultiSet#Card(s_2)) > 0 then 1 else multiSets_e(Heap, MultiSet#Difference(s_2, MultiSet#Singleton(MultiSet#Card(s_2)))));
+    Result := (if MultiSet#Card(s_1) > 0 && MultiSet#Select(s_1, MultiSet#Card(s_1)) > 0 then 1 else multiSets_e(Heap, MultiSet#Difference(s_1, MultiSet#Singleton(MultiSet#Card(s_1)))));
 }
 
 // ==================================================
@@ -2033,8 +2033,8 @@ procedure predicates#definedness(xs: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -2058,10 +2058,10 @@ procedure predicates#definedness(xs: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume list#trigger(UnfoldingHeap, list(xs));
       assume UnfoldingHeap[null, list(xs)] == CombineFrames(FrameFragment(UnfoldingHeap[xs, next]), FrameFragment((if UnfoldingHeap[xs, next] != null then UnfoldingHeap[null, list(UnfoldingHeap[xs, next])] else EmptyFrame)));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(xs) (allTypes.vpr@144.1--149.2) [223478]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(xs) (allTypes.vpr@144.1--149.2) [18632]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(xs)];
       perm := FullPerm;
       assume xs != null;
@@ -2076,17 +2076,17 @@ procedure predicates#definedness(xs: Ref) returns (Result: int)
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access xs.next (allTypes.vpr@144.1--149.2) [223479]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access xs.next (allTypes.vpr@144.1--149.2) [18633]"}
         HasDirectPerm(UnfoldingMask, xs, next);
       if (UnfoldingHeap[xs, next] != null) {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access xs.next (allTypes.vpr@144.1--149.2) [223480]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access xs.next (allTypes.vpr@144.1--149.2) [18634]"}
           HasDirectPerm(UnfoldingMask, xs, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function predicates might not hold. There might be insufficient permission to access list(xs.next) (allTypes.vpr@148.45--148.64) [223481]"}
+          assert {:msg "  Precondition of function predicates might not hold. There might be insufficient permission to access list(xs.next) (allTypes.vpr@148.45--148.64) [18635]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(UnfoldingHeap[xs, next])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2104,9 +2104,9 @@ procedure predicates#definedness(xs: Ref) returns (Result: int)
         Heap := Heap[null, list#sm(xs):=Heap[null, list#sm(xs)][xs, next:=true]];
         if (Heap[xs, next] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, list#sm(xs)][o_15, f_20] || Heap[null, list#sm(Heap[xs, next])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, list#sm(xs)][o_5, f_11] || Heap[null, list#sm(Heap[xs, next])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, list#sm(xs):=newPMask];
         }
@@ -2158,8 +2158,8 @@ procedure predicates_e#definedness(xs: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
   
@@ -2183,10 +2183,10 @@ procedure predicates_e#definedness(xs: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume list#trigger(UnfoldingHeap, list(xs));
       assume UnfoldingHeap[null, list(xs)] == CombineFrames(FrameFragment(UnfoldingHeap[xs, next]), FrameFragment((if UnfoldingHeap[xs, next] != null then UnfoldingHeap[null, list(UnfoldingHeap[xs, next])] else EmptyFrame)));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(xs) (allTypes.vpr@151.1--158.1) [223482]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(xs) (allTypes.vpr@151.1--158.1) [18636]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(xs)];
       perm := FullPerm;
       assume xs != null;
@@ -2201,16 +2201,16 @@ procedure predicates_e#definedness(xs: Ref) returns (Result: int)
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access xs.next (allTypes.vpr@151.1--158.1) [223483]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access xs.next (allTypes.vpr@151.1--158.1) [18637]"}
         HasDirectPerm(UnfoldingMask, xs, next);
       
       // -- Free assumptions (exp module)
         Heap := Heap[null, list#sm(xs):=Heap[null, list#sm(xs)][xs, next:=true]];
         if (Heap[xs, next] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-            { newPMask[o_16, f_21] }
-            Heap[null, list#sm(xs)][o_16, f_21] || Heap[null, list#sm(Heap[xs, next])][o_16, f_21] ==> newPMask[o_16, f_21]
+          assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+            { newPMask[o_6, f_12] }
+            Heap[null, list#sm(xs)][o_6, f_12] || Heap[null, list#sm(Heap[xs, next])][o_6, f_12] ==> newPMask[o_6, f_12]
           );
           Heap := Heap[null, list#sm(xs):=newPMask];
         }
@@ -2218,10 +2218,10 @@ procedure predicates_e#definedness(xs: Ref) returns (Result: int)
       if (Heap[xs, next] != null) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
-          assert {:msg "  Precondition of function predicates_e might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@156.47--156.63) [223484]"}
+          assert {:msg "  Precondition of function predicates_e might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@156.47--156.63) [18638]"}
             NoPerm < perm ==> NoPerm < Mask[null, list(xs)];
           // Finish exhale
           havoc ExhaleHeap;
@@ -2344,12 +2344,12 @@ procedure list#definedness(xs: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of xs.next != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (allTypes.vpr@139.1--142.2) [223485]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (allTypes.vpr@139.1--142.2) [18639]"}
         HasDirectPerm(Mask, xs, next);
     if (Heap[xs, next] != null) {
       
       // -- Check definedness of acc(list(xs.next), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (allTypes.vpr@139.1--142.2) [223486]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access xs.next (allTypes.vpr@139.1--142.2) [18640]"}
           HasDirectPerm(Mask, xs, next);
       perm := FullPerm;
       Mask := Mask[null, list(Heap[xs, next]):=Mask[null, list(Heap[xs, next])] + perm];
@@ -2365,10 +2365,10 @@ procedure list#definedness(xs: Ref) returns ()
 procedure otherMultiSetTests() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2379,41 +2379,41 @@ procedure otherMultiSetTests() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (bounded(Multiset(1)): Bool) -- allTypes.vpr@121.5--121.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (bounded(Multiset(1)): Bool) might not hold. (allTypes.vpr@121.12--121.32) [223487]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (bounded(Multiset(1)): Bool) might not hold. (allTypes.vpr@121.12--121.32) [18641]"}
       (bounded(MultiSet#Singleton(1)): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (decreasing(Multiset(1), Multiset(1, 1)): Bool) -- allTypes.vpr@122.5--122.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (decreasing(Multiset(1), Multiset(1, 1)): Bool) might not hold. (allTypes.vpr@122.12--122.49) [223488]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (decreasing(Multiset(1), Multiset(1, 1)): Bool) might not hold. (allTypes.vpr@122.12--122.49) [18642]"}
       (decreasing(MultiSet#Singleton(1), MultiSet#UnionOne(MultiSet#Singleton(1), 1)): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (bounded(Multiset(1, 2, 3)): Bool) -- allTypes.vpr@123.5--123.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (bounded(Multiset(1, 2, 3)): Bool) might not hold. (allTypes.vpr@123.12--123.36) [223489]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (bounded(Multiset(1, 2, 3)): Bool) might not hold. (allTypes.vpr@123.12--123.36) [18643]"}
       (bounded(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(3), 2), 1)): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (decreasing(Multiset(1, 2, 3), Multiset(1, 2, 2, 3, 3)): Bool) -- allTypes.vpr@124.5--124.60
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (decreasing(Multiset(1, 2, 3), Multiset(1, 2, 2, 3, 3)): Bool) might not hold. (allTypes.vpr@124.12--124.60) [223490]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (decreasing(Multiset(1, 2, 3), Multiset(1, 2, 2, 3, 3)): Bool) might not hold. (allTypes.vpr@124.12--124.60) [18644]"}
       (decreasing(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(3), 2), 1), MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(3), 3), 2), 2), 1)): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (decreasing(Multiset(1, 1), Multiset(1, 1)): Bool) -- allTypes.vpr@127.5--127.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (decreasing(Multiset(1, 1), Multiset(1, 1)): Bool) might not hold. (allTypes.vpr@127.12--127.52) [223491]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (decreasing(Multiset(1, 1), Multiset(1, 1)): Bool) might not hold. (allTypes.vpr@127.12--127.52) [18645]"}
       (decreasing(MultiSet#UnionOne(MultiSet#Singleton(1), 1), MultiSet#UnionOne(MultiSet#Singleton(1), 1)): bool);
     assume state(Heap, Mask);
 }
@@ -2425,10 +2425,10 @@ procedure otherMultiSetTests() returns ()
 procedure otherMultiSetTests2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2439,13 +2439,13 @@ procedure otherMultiSetTests2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (decreasing(Multiset(2), Multiset(1)): Bool) -- allTypes.vpr@134.5--134.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (decreasing(Multiset(2), Multiset(1)): Bool) might not hold. (allTypes.vpr@134.12--134.48) [223492]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Assert might fail. Assertion (decreasing(Multiset(2), Multiset(1)): Bool) might not hold. (allTypes.vpr@134.12--134.48) [18646]"}
       (decreasing(MultiSet#Singleton(2), MultiSet#Singleton(1)): bool);
     assume state(Heap, Mask);
 }
@@ -2457,10 +2457,10 @@ procedure otherMultiSetTests2() returns ()
 procedure fact_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2475,19 +2475,19 @@ procedure fact_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x == 0) -- <no position>
     if (x == 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [223493]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [18647]"}
           (decreasing(x - 1, x): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(x)): Bool) might not hold. (<no position>) [223494]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(x)): Bool) might not hold. (<no position>) [18648]"}
           (bounded(x): bool);
         assume state(Heap, Mask);
     }
@@ -2501,10 +2501,10 @@ procedure fact_termination_proof(x: int) returns ()
 procedure fact_e_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2519,19 +2519,19 @@ procedure fact_e_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x == 0) -- <no position>
     if (x == 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(x, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(x, old(x)): Bool) might not hold. (<no position>) [223495]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(x, old(x)): Bool) might not hold. (<no position>) [18649]"}
           (decreasing(x, x): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(x)): Bool) might not hold. (<no position>) [223496]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(x)): Bool) might not hold. (<no position>) [18650]"}
           (bounded(x): bool);
         assume state(Heap, Mask);
     }
@@ -2545,10 +2545,10 @@ procedure fact_e_termination_proof(x: int) returns ()
 procedure references_termination_proof(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2562,19 +2562,19 @@ procedure references_termination_proof(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (r == null) -- <no position>
     if (r_1 == null) {
     } else {
       
       // -- Translating statement: assert (decreasing(null, old(r)): Bool) && (bounded(old(r)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(null, old(r)): Bool) might not hold. (<no position>) [223497]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(null, old(r)): Bool) might not hold. (<no position>) [18651]"}
           (decreasing(null, r_1): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(r)): Bool) might not hold. (<no position>) [223498]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(r)): Bool) might not hold. (<no position>) [18652]"}
           (bounded(r_1): bool);
         assume state(Heap, Mask);
     }
@@ -2588,10 +2588,10 @@ procedure references_termination_proof(r_1: Ref) returns ()
 procedure references_e_termination_proof(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2605,19 +2605,19 @@ procedure references_e_termination_proof(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (r == null) -- <no position>
     if (r_1 == null) {
     } else {
       
       // -- Translating statement: assert (decreasing(r, old(r)): Bool) && (bounded(old(r)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(r, old(r)): Bool) might not hold. (<no position>) [223499]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(r, old(r)): Bool) might not hold. (<no position>) [18653]"}
           (decreasing(r_1, r_1): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(r)): Bool) might not hold. (<no position>) [223500]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(r)): Bool) might not hold. (<no position>) [18654]"}
           (bounded(r_1): bool);
         assume state(Heap, Mask);
     }
@@ -2631,10 +2631,10 @@ procedure references_e_termination_proof(r_1: Ref) returns ()
 procedure booleans_termination_proof(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2645,18 +2645,18 @@ procedure booleans_termination_proof(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b) -- <no position>
     if (b_24) {
       
       // -- Translating statement: assert (decreasing(!b, old(b)): Bool) && (bounded(old(b)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(!b, old(b)): Bool) might not hold. (<no position>) [223501]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(!b, old(b)): Bool) might not hold. (<no position>) [18655]"}
           (decreasing(!b_24, b_24): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(b)): Bool) might not hold. (<no position>) [223502]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(b)): Bool) might not hold. (<no position>) [18656]"}
           (bounded(b_24): bool);
         assume state(Heap, Mask);
     }
@@ -2670,10 +2670,10 @@ procedure booleans_termination_proof(b_24: bool) returns ()
 procedure booleans_e_termination_proof(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2684,18 +2684,18 @@ procedure booleans_e_termination_proof(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (!b) -- <no position>
     if (!b_24) {
       
       // -- Translating statement: assert (decreasing(!b, old(b)): Bool) && (bounded(old(b)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(!b, old(b)): Bool) might not hold. (<no position>) [223503]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(!b, old(b)): Bool) might not hold. (<no position>) [18657]"}
           (decreasing(!b_24, b_24): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(b)): Bool) might not hold. (<no position>) [223504]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(b)): Bool) might not hold. (<no position>) [18658]"}
           (bounded(b_24): bool);
         assume state(Heap, Mask);
     }
@@ -2709,10 +2709,10 @@ procedure booleans_e_termination_proof(b_24: bool) returns ()
 procedure rationals_termination_proof(r_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2723,18 +2723,18 @@ procedure rationals_termination_proof(r_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (r >= 0 / 1) -- <no position>
     if (0 / 1 <= r_1) {
       
       // -- Translating statement: assert (decreasing(r - 1 / 1, old(r)): Bool) && (bounded(old(r)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(r - 1 / 1, old(r)): Bool) might not hold. (<no position>) [223505]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(r - 1 / 1, old(r)): Bool) might not hold. (<no position>) [18659]"}
           (decreasing(r_1 - 1 / 1, r_1): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(r)): Bool) might not hold. (<no position>) [223506]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(r)): Bool) might not hold. (<no position>) [18660]"}
           (bounded(r_1): bool);
         assume state(Heap, Mask);
     }
@@ -2748,10 +2748,10 @@ procedure rationals_termination_proof(r_1: Perm) returns ()
 procedure rationals_e_termination_proof(r_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2762,18 +2762,18 @@ procedure rationals_e_termination_proof(r_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (r >= 0 / 1) -- <no position>
     if (0 / 1 <= r_1) {
       
       // -- Translating statement: assert (decreasing(r / 2, old(r)): Bool) && (bounded(old(r)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(r / 2, old(r)): Bool) might not hold. (<no position>) [223507]"}
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(r / 2, old(r)): Bool) might not hold. (<no position>) [18661]"}
           (decreasing(r_1 / 2, r_1): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(r)): Bool) might not hold. (<no position>) [223508]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(r)): Bool) might not hold. (<no position>) [18662]"}
           (bounded(r_1): bool);
         assume state(Heap, Mask);
     }
@@ -2784,13 +2784,13 @@ procedure rationals_e_termination_proof(r_1: Perm) returns ()
 // Translation of method sequences_termination_proof
 // ==================================================
 
-procedure sequences_termination_proof(seq_1: (Seq int)) returns ()
+procedure sequences_termination_proof(seq: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2801,19 +2801,19 @@ procedure sequences_termination_proof(seq_1: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (|seq| != 0) -- <no position>
-    if (Seq#Length(seq_1) != 0) {
+    if (Seq#Length(seq) != 0) {
       
       // -- Translating statement: assert (decreasing(seq[1..], old(seq)): Bool) && (bounded(old(seq)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(seq[1..], old(seq)): Bool) might not hold. (<no position>) [223509]"}
-          (decreasing(Seq#Drop(seq_1, 1), seq_1): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(seq)): Bool) might not hold. (<no position>) [223510]"}
-          (bounded(seq_1): bool);
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(seq[1..], old(seq)): Bool) might not hold. (<no position>) [18663]"}
+          (decreasing(Seq#Drop(seq, 1), seq): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(seq)): Bool) might not hold. (<no position>) [18664]"}
+          (bounded(seq): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -2823,13 +2823,13 @@ procedure sequences_termination_proof(seq_1: (Seq int)) returns ()
 // Translation of method sequences_e_termination_proof
 // ==================================================
 
-procedure sequences_e_termination_proof(seq_1: (Seq int)) returns ()
+procedure sequences_e_termination_proof(seq: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2840,20 +2840,20 @@ procedure sequences_e_termination_proof(seq_1: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (|seq| != 0) -- <no position>
-    if (Seq#Length(seq_1) != 0) {
+    if (Seq#Length(seq) != 0) {
       
       // -- Translating statement: assert (decreasing(seq[1..] ++ Seq(1), old(seq)): Bool) &&
   //   (bounded(old(seq)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(seq[1..] ++ Seq(1), old(seq)): Bool) might not hold. (<no position>) [223511]"}
-          (decreasing(Seq#Append(Seq#Drop(seq_1, 1), Seq#Singleton(1)), seq_1): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(seq)): Bool) might not hold. (<no position>) [223512]"}
-          (bounded(seq_1): bool);
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing(seq[1..] ++ Seq(1), old(seq)): Bool) might not hold. (<no position>) [18665]"}
+          (decreasing(Seq#Append(Seq#Drop(seq, 1), Seq#Singleton(1)), seq): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(seq)): Bool) might not hold. (<no position>) [18666]"}
+          (bounded(seq): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -2863,13 +2863,13 @@ procedure sequences_e_termination_proof(seq_1: (Seq int)) returns ()
 // Translation of method numberOfUsers_termination_proof
 // ==================================================
 
-procedure numberOfUsers_termination_proof(seq_1: (Seq bool)) returns ()
+procedure numberOfUsers_termination_proof(seq: (Seq bool)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2880,37 +2880,37 @@ procedure numberOfUsers_termination_proof(seq_1: (Seq bool)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (|seq| == 0) -- <no position>
-    if (Seq#Length(seq_1) == 0) {
+    if (Seq#Length(seq) == 0) {
     } else {
       
       // -- Translating statement: if (seq[0]) -- <no position>
         
         // -- Check definedness of seq[0]
-          assert {:msg "  Conditional statement might fail. Index seq[0] into seq might exceed sequence length. (allTypes.vpr@88.9--88.15) [223513]"}
-            0 < Seq#Length(seq_1);
-        if (Seq#Index(seq_1, 0)) {
+          assert {:msg "  Conditional statement might fail. Index seq[0] into seq might exceed sequence length. (allTypes.vpr@88.9--88.15) [18667]"}
+            0 < Seq#Length(seq);
+        if (Seq#Index(seq, 0)) {
           
           // -- Translating statement: assert (decreasing(seq[1..], old(seq)): Bool) && (bounded(old(seq)): Bool) -- <no position>
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion (decreasing(seq[1..], old(seq)): Bool) might not hold. (<no position>) [223514]"}
-              (decreasing(Seq#Drop(seq_1, 1), seq_1): bool);
-            assert {:msg "  Assert might fail. Assertion (bounded(old(seq)): Bool) might not hold. (<no position>) [223515]"}
-              (bounded(seq_1): bool);
+            ExhaleWellDef0Mask := Mask;
+            assert {:msg "  Assert might fail. Assertion (decreasing(seq[1..], old(seq)): Bool) might not hold. (<no position>) [18668]"}
+              (decreasing(Seq#Drop(seq, 1), seq): bool);
+            assert {:msg "  Assert might fail. Assertion (bounded(old(seq)): Bool) might not hold. (<no position>) [18669]"}
+              (bounded(seq): bool);
             assume state(Heap, Mask);
         } else {
           
           // -- Translating statement: assert (decreasing(seq[1..], old(seq)): Bool) && (bounded(old(seq)): Bool) -- <no position>
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion (decreasing(seq[1..], old(seq)): Bool) might not hold. (<no position>) [223516]"}
-              (decreasing(Seq#Drop(seq_1, 1), seq_1): bool);
-            assert {:msg "  Assert might fail. Assertion (bounded(old(seq)): Bool) might not hold. (<no position>) [223517]"}
-              (bounded(seq_1): bool);
+            ExhaleWellDef0Mask := Mask;
+            assert {:msg "  Assert might fail. Assertion (decreasing(seq[1..], old(seq)): Bool) might not hold. (<no position>) [18670]"}
+              (decreasing(Seq#Drop(seq, 1), seq): bool);
+            assert {:msg "  Assert might fail. Assertion (bounded(old(seq)): Bool) might not hold. (<no position>) [18671]"}
+              (bounded(seq): bool);
             assume state(Heap, Mask);
         }
         assume state(Heap, Mask);
@@ -2922,13 +2922,13 @@ procedure numberOfUsers_termination_proof(seq_1: (Seq bool)) returns ()
 // Translation of method sets_termination_proof
 // ==================================================
 
-procedure sets_termination_proof(s_2: (Set int)) returns ()
+procedure sets_termination_proof(s_1: (Set int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2939,20 +2939,20 @@ procedure sets_termination_proof(s_2: (Set int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (|s| > 0 && (|s| in s)) -- <no position>
-    if (Set#Card(s_2) > 0 && s_2[Set#Card(s_2)]) {
+    if (Set#Card(s_1) > 0 && s_1[Set#Card(s_1)]) {
       
       // -- Translating statement: assert (decreasing((s setminus Set(|s|)), old(s)): Bool) &&
   //   (bounded(old(s)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing((s setminus Set(|s|)), old(s)): Bool) might not hold. (<no position>) [223518]"}
-          (decreasing(Set#Difference(s_2, Set#Singleton(Set#Card(s_2))), s_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(s)): Bool) might not hold. (<no position>) [223519]"}
-          (bounded(s_2): bool);
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing((s setminus Set(|s|)), old(s)): Bool) might not hold. (<no position>) [18672]"}
+          (decreasing(Set#Difference(s_1, Set#Singleton(Set#Card(s_1))), s_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(s)): Bool) might not hold. (<no position>) [18673]"}
+          (bounded(s_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -2962,13 +2962,13 @@ procedure sets_termination_proof(s_2: (Set int)) returns ()
 // Translation of method sets_e_termination_proof
 // ==================================================
 
-procedure sets_e_termination_proof(s_2: (Set int)) returns ()
+procedure sets_e_termination_proof(s_1: (Set int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2979,21 +2979,21 @@ procedure sets_e_termination_proof(s_2: (Set int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (|s| > 0 && (|s| in s)) -- <no position>
-    if (Set#Card(s_2) > 0 && s_2[Set#Card(s_2)]) {
+    if (Set#Card(s_1) > 0 && s_1[Set#Card(s_1)]) {
     } else {
       
       // -- Translating statement: assert (decreasing((s setminus Set(|s|)), old(s)): Bool) &&
   //   (bounded(old(s)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing((s setminus Set(|s|)), old(s)): Bool) might not hold. (<no position>) [223520]"}
-          (decreasing(Set#Difference(s_2, Set#Singleton(Set#Card(s_2))), s_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(s)): Bool) might not hold. (<no position>) [223521]"}
-          (bounded(s_2): bool);
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing((s setminus Set(|s|)), old(s)): Bool) might not hold. (<no position>) [18674]"}
+          (decreasing(Set#Difference(s_1, Set#Singleton(Set#Card(s_1))), s_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(s)): Bool) might not hold. (<no position>) [18675]"}
+          (bounded(s_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -3003,13 +3003,13 @@ procedure sets_e_termination_proof(s_2: (Set int)) returns ()
 // Translation of method multiSets_termination_proof
 // ==================================================
 
-procedure multiSets_termination_proof(s_2: (MultiSet int)) returns ()
+procedure multiSets_termination_proof(s_1: (MultiSet int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3020,20 +3020,20 @@ procedure multiSets_termination_proof(s_2: (MultiSet int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (|s| > 0 && ((|s| in s)) > 0) -- <no position>
-    if (MultiSet#Card(s_2) > 0 && MultiSet#Select(s_2, MultiSet#Card(s_2)) > 0) {
+    if (MultiSet#Card(s_1) > 0 && MultiSet#Select(s_1, MultiSet#Card(s_1)) > 0) {
       
       // -- Translating statement: assert (decreasing((s setminus Multiset(|s|)), old(s)): Bool) &&
   //   (bounded(old(s)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing((s setminus Multiset(|s|)), old(s)): Bool) might not hold. (<no position>) [223522]"}
-          (decreasing(MultiSet#Difference(s_2, MultiSet#Singleton(MultiSet#Card(s_2))), s_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(s)): Bool) might not hold. (<no position>) [223523]"}
-          (bounded(s_2): bool);
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing((s setminus Multiset(|s|)), old(s)): Bool) might not hold. (<no position>) [18676]"}
+          (decreasing(MultiSet#Difference(s_1, MultiSet#Singleton(MultiSet#Card(s_1))), s_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(s)): Bool) might not hold. (<no position>) [18677]"}
+          (bounded(s_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -3043,13 +3043,13 @@ procedure multiSets_termination_proof(s_2: (MultiSet int)) returns ()
 // Translation of method multiSets_e_termination_proof
 // ==================================================
 
-procedure multiSets_e_termination_proof(s_2: (MultiSet int)) returns ()
+procedure multiSets_e_termination_proof(s_1: (MultiSet int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3060,21 +3060,21 @@ procedure multiSets_e_termination_proof(s_2: (MultiSet int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (|s| > 0 && ((|s| in s)) > 0) -- <no position>
-    if (MultiSet#Card(s_2) > 0 && MultiSet#Select(s_2, MultiSet#Card(s_2)) > 0) {
+    if (MultiSet#Card(s_1) > 0 && MultiSet#Select(s_1, MultiSet#Card(s_1)) > 0) {
     } else {
       
       // -- Translating statement: assert (decreasing((s setminus Multiset(|s|)), old(s)): Bool) &&
   //   (bounded(old(s)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing((s setminus Multiset(|s|)), old(s)): Bool) might not hold. (<no position>) [223524]"}
-          (decreasing(MultiSet#Difference(s_2, MultiSet#Singleton(MultiSet#Card(s_2))), s_2): bool);
-        assert {:msg "  Assert might fail. Assertion (bounded(old(s)): Bool) might not hold. (<no position>) [223525]"}
-          (bounded(s_2): bool);
+        ExhaleWellDef0Mask := Mask;
+        assert {:msg "  Assert might fail. Assertion (decreasing((s setminus Multiset(|s|)), old(s)): Bool) might not hold. (<no position>) [18678]"}
+          (decreasing(MultiSet#Difference(s_1, MultiSet#Singleton(MultiSet#Card(s_1))), s_1): bool);
+        assert {:msg "  Assert might fail. Assertion (bounded(old(s)): Bool) might not hold. (<no position>) [18679]"}
+          (bounded(s_1): bool);
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -3088,17 +3088,17 @@ procedure predicates_termination_proof(xs: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b1: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var list__16981330: PredicateInstanceDomainType;
   var newVersion: FrameType;
   var list_1681681832: PredicateInstanceDomainType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3118,8 +3118,8 @@ procedure predicates_termination_proof(xs: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b1) -- <no position>
     if (b1) {
@@ -3129,10 +3129,10 @@ procedure predicates_termination_proof(xs: Ref) returns ()
         // -- Check definedness of PI_list(xs)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@148.15--148.23) [223526]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@148.15--148.23) [18680]"}
               NoPerm < perm ==> NoPerm < Mask[null, list(xs)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -3147,11 +3147,11 @@ procedure predicates_termination_proof(xs: Ref) returns ()
       // -- Translating statement: unfold acc(list(xs), write) -- <no position>
         assume list#trigger(Heap, list(xs));
         assume Heap[null, list(xs)] == CombineFrames(FrameFragment(Heap[xs, next]), FrameFragment((if Heap[xs, next] != null then Heap[null, list(Heap[xs, next])] else EmptyFrame)));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [223529]"}
+          assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [18683]"}
             perm <= Mask[null, list(xs)];
         }
         Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -3179,21 +3179,21 @@ procedure predicates_termination_proof(xs: Ref) returns ()
       // -- Translating statement: if (xs.next != null) -- allTypes.vpr@141.22--141.55
         
         // -- Check definedness of xs.next != null
-          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (allTypes.vpr@141.22--141.37) [223532]"}
+          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (allTypes.vpr@141.22--141.37) [18686]"}
             HasDirectPerm(Mask, xs, next);
         if (Heap[xs, next] != null) {
           
           // -- Translating statement: list_1681681832 := PI_list(xs.next) -- allTypes.vpr@141.42--141.55
             
             // -- Check definedness of PI_list(xs.next)
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (allTypes.vpr@141.42--141.55) [223533]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (allTypes.vpr@141.42--141.55) [18687]"}
                 HasDirectPerm(Mask, xs, next);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (allTypes.vpr@141.42--141.55) [223534]"}
+                assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (allTypes.vpr@141.42--141.55) [18688]"}
                   NoPerm < perm ==> NoPerm < Mask[null, list(Heap[xs, next])];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -3215,24 +3215,24 @@ procedure predicates_termination_proof(xs: Ref) returns ()
       // -- Translating statement: if (xs.next != null) -- <no position>
         
         // -- Check definedness of xs.next != null
-          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (allTypes.vpr@148.27--148.42) [223535]"}
+          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (allTypes.vpr@148.27--148.42) [18689]"}
             HasDirectPerm(Mask, xs, next);
         if (Heap[xs, next] != null) {
           
           // -- Translating statement: assert (decreasing(PI_list(xs.next), old(PI_list(xs))): Bool) &&
   //   (bounded(old(PI_list(xs))): Bool) -- <no position>
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of (decreasing(PI_list(xs.next), old(PI_list(xs))): Bool)
-              assert {:msg "  Assert might fail. There might be insufficient permission to access xs.next (<no position>) [223536]"}
+              assert {:msg "  Assert might fail. There might be insufficient permission to access xs.next (<no position>) [18690]"}
                 HasDirectPerm(ExhaleWellDef0Mask, xs, next);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (allTypes.vpr@146.15--146.23) [223537]"}
+                assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (allTypes.vpr@146.15--146.23) [18691]"}
                   NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(ExhaleWellDef0Heap[xs, next])];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -3243,31 +3243,31 @@ procedure predicates_termination_proof(xs: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := oldMask;
                 ExhaleWellDef1Heap := oldHeap;
+                ExhaleWellDef1Mask := oldMask;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@146.15--146.23) [223538]"}
+                assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@146.15--146.23) [18692]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
-            assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs.next), old(PI_list(xs))): Bool) might not hold. (<no position>) [223539]"}
+            assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs.next), old(PI_list(xs))): Bool) might not hold. (<no position>) [18693]"}
               (decreasing(PI_list(Heap, Heap[xs, next]), PI_list(oldHeap, xs)): bool);
             
             // -- Check definedness of (bounded(old(PI_list(xs))): Bool)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := oldMask;
                 ExhaleWellDef1Heap := oldHeap;
+                ExhaleWellDef1Mask := oldMask;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@146.15--146.23) [223540]"}
+                assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@146.15--146.23) [18694]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
                 // Finish exhale
                 // Stop execution
                 assume false;
               }
-            assert {:msg "  Assert might fail. Assertion (bounded(old(PI_list(xs))): Bool) might not hold. (<no position>) [223541]"}
+            assert {:msg "  Assert might fail. Assertion (bounded(old(PI_list(xs))): Bool) might not hold. (<no position>) [18695]"}
               (bounded(PI_list(oldHeap, xs)): bool);
             assume state(Heap, Mask);
         }
@@ -3288,8 +3288,8 @@ procedure predicates_termination_proof(xs: Ref) returns ()
 procedure predicates_pres_termination_proof(xs: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -3304,8 +3304,8 @@ procedure predicates_pres_termination_proof(xs: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(list(xs), write) -- allTypes.vpr@145.14--145.22
     perm := FullPerm;
@@ -3323,11 +3323,11 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b2: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var list__169813300: PredicateInstanceDomainType;
   var newVersion: FrameType;
@@ -3335,8 +3335,8 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3356,8 +3356,8 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b2) -- <no position>
     if (b2) {
@@ -3367,10 +3367,10 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
         // -- Check definedness of PI_list(xs)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@156.16--156.24) [223543]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@156.16--156.24) [18697]"}
               NoPerm < perm ==> NoPerm < Mask[null, list(xs)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -3385,11 +3385,11 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
       // -- Translating statement: unfold acc(list(xs), write) -- <no position>
         assume list#trigger(Heap, list(xs));
         assume Heap[null, list(xs)] == CombineFrames(FrameFragment(Heap[xs, next]), FrameFragment((if Heap[xs, next] != null then Heap[null, list(Heap[xs, next])] else EmptyFrame)));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [223546]"}
+          assert {:msg "  Unfolding list(xs) might fail. There might be insufficient permission to access list(xs) (<no position>) [18700]"}
             perm <= Mask[null, list(xs)];
         }
         Mask := Mask[null, list(xs):=Mask[null, list(xs)] - perm];
@@ -3417,21 +3417,21 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
       // -- Translating statement: if (xs.next != null) -- allTypes.vpr@141.22--141.55
         
         // -- Check definedness of xs.next != null
-          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (allTypes.vpr@141.22--141.37) [223549]"}
+          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (allTypes.vpr@141.22--141.37) [18703]"}
             HasDirectPerm(Mask, xs, next);
         if (Heap[xs, next] != null) {
           
           // -- Translating statement: list_16816818320 := PI_list(xs.next) -- allTypes.vpr@141.42--141.55
             
             // -- Check definedness of PI_list(xs.next)
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (allTypes.vpr@141.42--141.55) [223550]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access xs.next (allTypes.vpr@141.42--141.55) [18704]"}
                 HasDirectPerm(Mask, xs, next);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
-                assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (allTypes.vpr@141.42--141.55) [223551]"}
+                assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs.next) (allTypes.vpr@141.42--141.55) [18705]"}
                   NoPerm < perm ==> NoPerm < Mask[null, list(Heap[xs, next])];
                 // Finish exhale
                 havoc ExhaleHeap;
@@ -3464,11 +3464,11 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
       UnfoldingMask := Mask;
       assume list#trigger(UnfoldingHeap, list(xs));
       assume UnfoldingHeap[null, list(xs)] == CombineFrames(FrameFragment(UnfoldingHeap[xs, next]), FrameFragment((if UnfoldingHeap[xs, next] != null then UnfoldingHeap[null, list(UnfoldingHeap[xs, next])] else EmptyFrame)));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Conditional statement might fail. There might be insufficient permission to access list(xs) (allTypes.vpr@156.6--156.43) [223552]"}
+        assert {:msg "  Conditional statement might fail. There might be insufficient permission to access list(xs) (allTypes.vpr@156.6--156.43) [18706]"}
           perm <= UnfoldingMask[null, list(xs)];
       }
       UnfoldingMask := UnfoldingMask[null, list(xs):=UnfoldingMask[null, list(xs)] - perm];
@@ -3485,16 +3485,16 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (allTypes.vpr@156.6--156.43) [223553]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access xs.next (allTypes.vpr@156.6--156.43) [18707]"}
         HasDirectPerm(UnfoldingMask, xs, next);
       
       // -- Free assumptions (exp module)
         Heap := Heap[null, list#sm(xs):=Heap[null, list#sm(xs)][xs, next:=true]];
         if (Heap[xs, next] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-            { newPMask[o_52, f_55] }
-            Heap[null, list#sm(xs)][o_52, f_55] || Heap[null, list#sm(Heap[xs, next])][o_52, f_55] ==> newPMask[o_52, f_55]
+          assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+            { newPMask[o_40, f_52] }
+            Heap[null, list#sm(xs)][o_40, f_52] || Heap[null, list#sm(Heap[xs, next])][o_40, f_52] ==> newPMask[o_40, f_52]
           );
           Heap := Heap[null, list#sm(xs):=newPMask];
         }
@@ -3503,16 +3503,16 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
       
       // -- Translating statement: assert (decreasing(PI_list(xs), old(PI_list(xs))): Bool) &&
   //   (bounded(old(PI_list(xs))): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of (decreasing(PI_list(xs), old(PI_list(xs))): Bool)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@153.15--153.23) [223554]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@153.15--153.23) [18708]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(xs)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -3523,31 +3523,31 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
+            ExhaleWellDef1Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@153.15--153.23) [223555]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@153.15--153.23) [18709]"}
               NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
             // Finish exhale
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs), old(PI_list(xs))): Bool) might not hold. (<no position>) [223556]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(PI_list(xs), old(PI_list(xs))): Bool) might not hold. (<no position>) [18710]"}
           (decreasing(PI_list(Heap, xs), PI_list(oldHeap, xs)): bool);
         
         // -- Check definedness of (bounded(old(PI_list(xs))): Bool)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
+            ExhaleWellDef1Mask := oldMask;
             perm := FullPerm;
-            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@153.15--153.23) [223557]"}
+            assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(xs) (allTypes.vpr@153.15--153.23) [18711]"}
               NoPerm < perm ==> NoPerm < oldMask[null, list(xs)];
             // Finish exhale
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion (bounded(old(PI_list(xs))): Bool) might not hold. (<no position>) [223558]"}
+        assert {:msg "  Assert might fail. Assertion (bounded(old(PI_list(xs))): Bool) might not hold. (<no position>) [18712]"}
           (bounded(PI_list(oldHeap, xs)): bool);
         assume state(Heap, Mask);
     }
@@ -3561,8 +3561,8 @@ procedure predicates_e_termination_proof(xs: Ref) returns ()
 procedure predicates_e_pres_termination_proof(xs: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -3577,8 +3577,8 @@ procedure predicates_e_pres_termination_proof(xs: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(list(xs), write) -- allTypes.vpr@152.14--152.22
     perm := FullPerm;

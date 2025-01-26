@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:21:51
+// Date:         2025-01-26 21:43:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0063.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0063-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -266,7 +266,7 @@ procedure LinkedListSearch(this: Ref) returns (k: Perm, i: int)
       ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Exhale might fail. There might be insufficient permission to access LinkedListvalid(this) (0063.vpr@12.10--12.73) [191740]"}
+        assert {:msg "  Exhale might fail. There might be insufficient permission to access LinkedListvalid(this) (0063.vpr@12.10--12.73) [83057]"}
           perm <= UnfoldingMask[null, LinkedListvalid(this)];
       }
       UnfoldingMask := UnfoldingMask[null, LinkedListvalid(this):=UnfoldingMask[null, LinkedListvalid(this)] - perm];
@@ -274,7 +274,7 @@ procedure LinkedListSearch(this: Ref) returns (k: Perm, i: int)
       
       // -- Free assumptions (exp module)
         assume state(Heap, Mask);
-    assert {:msg "  Exhale might fail. Assertion i <= 5 might not hold. (0063.vpr@12.10--12.73) [191741]"}
+    assert {:msg "  Exhale might fail. Assertion i <= 5 might not hold. (0063.vpr@12.10--12.73) [83058]"}
       i <= 5;
     
     // -- Free assumptions (exhale module)

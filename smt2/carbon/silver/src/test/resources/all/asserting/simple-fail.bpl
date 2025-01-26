@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:35
+// Date:         2025-01-26 21:43:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/simple-fail.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/simple-fail-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -245,7 +245,7 @@ procedure fun#definedness() returns (Result: int)
       // Exhale assertion of asserting
       ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
-      assert {:msg "  Function might not be well-formed. Assertion false might not hold. (simple-fail.vpr@44.1--47.2) [153387]"}
+      assert {:msg "  Function might not be well-formed. Assertion false might not hold. (simple-fail.vpr@44.1--47.2) [101590]"}
         false;
   
   // -- Translate function body
@@ -310,7 +310,7 @@ procedure fun2#definedness(x: Ref) returns (Result: int)
     // -- Check definedness of (asserting (acc(x.f, write) && x.f > 0) in 0)
       
       // -- Check definedness of acc(x.f, write) && x.f > 0
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@50.1--53.2) [153388]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@50.1--53.2) [101591]"}
           HasDirectPerm(Mask, x, f_7);
       assertingHeap := Heap;
       assertingMask := Mask;
@@ -318,13 +318,13 @@ procedure fun2#definedness(x: Ref) returns (Result: int)
       ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@50.1--53.2) [153389]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@50.1--53.2) [101592]"}
         NoPerm < perm ==> NoPerm < assertingMask[x, f_7];
       
       // -- Check definedness of x.f > 0
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@50.1--53.2) [153390]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@50.1--53.2) [101593]"}
           HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Function might not be well-formed. Assertion x.f > 0 might not hold. (simple-fail.vpr@50.1--53.2) [153391]"}
+      assert {:msg "  Function might not be well-formed. Assertion x.f > 0 might not hold. (simple-fail.vpr@50.1--53.2) [101594]"}
         assertingHeap[x, f_7] > 0;
       // Finish exhale
       havoc ExhaleHeap;
@@ -400,7 +400,7 @@ procedure fun3#definedness(x: Ref) returns (Result: int)
     // -- Check definedness of (asserting (acc(x.f, write) && x.f > 0) in 0)
       
       // -- Check definedness of acc(x.f, write) && x.f > 0
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@56.1--60.2) [153392]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@56.1--60.2) [101595]"}
           HasDirectPerm(Mask, x, f_7);
       assertingHeap := Heap;
       assertingMask := Mask;
@@ -408,13 +408,13 @@ procedure fun3#definedness(x: Ref) returns (Result: int)
       ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@56.1--60.2) [153393]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@56.1--60.2) [101596]"}
         NoPerm < perm ==> NoPerm < assertingMask[x, f_7];
       
       // -- Check definedness of x.f > 0
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@56.1--60.2) [153394]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@56.1--60.2) [101597]"}
           HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Function might not be well-formed. Assertion x.f > 0 might not hold. (simple-fail.vpr@56.1--60.2) [153395]"}
+      assert {:msg "  Function might not be well-formed. Assertion x.f > 0 might not hold. (simple-fail.vpr@56.1--60.2) [101598]"}
         assertingHeap[x, f_7] > 0;
       // Finish exhale
       havoc ExhaleHeap;
@@ -485,7 +485,7 @@ procedure fun4#definedness(x: Ref) returns (Result: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f > 8
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@63.12--63.31) [153396]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@63.12--63.31) [101599]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] > 8;
     assume state(Heap, Mask);
@@ -495,7 +495,7 @@ procedure fun4#definedness(x: Ref) returns (Result: int)
     // -- Check definedness of (asserting (acc(x.f, write) && x.f > 0) in 0)
       
       // -- Check definedness of acc(x.f, write) && x.f > 0
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@62.1--66.2) [153397]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@62.1--66.2) [101600]"}
           HasDirectPerm(Mask, x, f_7);
       assertingHeap := Heap;
       assertingMask := Mask;
@@ -503,13 +503,13 @@ procedure fun4#definedness(x: Ref) returns (Result: int)
       ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@62.1--66.2) [153398]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@62.1--66.2) [101601]"}
         NoPerm < perm ==> NoPerm < assertingMask[x, f_7];
       
       // -- Check definedness of x.f > 0
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@62.1--66.2) [153399]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@62.1--66.2) [101602]"}
           HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-      assert {:msg "  Function might not be well-formed. Assertion x.f > 0 might not hold. (simple-fail.vpr@62.1--66.2) [153400]"}
+      assert {:msg "  Function might not be well-formed. Assertion x.f > 0 might not hold. (simple-fail.vpr@62.1--66.2) [101603]"}
         assertingHeap[x, f_7] > 0;
       // Finish exhale
       havoc ExhaleHeap;
@@ -556,7 +556,7 @@ procedure assign() returns ()
       // Exhale assertion of asserting
       ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
-      assert {:msg "  Assignment might fail. Assertion false might not hold. (simple-fail.vpr@8.3--8.39) [153401]"}
+      assert {:msg "  Assignment might fail. Assertion false might not hold. (simple-fail.vpr@8.3--8.39) [101604]"}
         false;
     x := 0;
     assume state(Heap, Mask);
@@ -598,7 +598,7 @@ procedure assign2(i: int) returns ()
       // Exhale assertion of asserting
       ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
-      assert {:msg "  Assignment might fail. Assertion i > 0 might not hold. (simple-fail.vpr@13.3--13.39) [153402]"}
+      assert {:msg "  Assignment might fail. Assertion i > 0 might not hold. (simple-fail.vpr@13.3--13.39) [101605]"}
         i > 0;
     x := 0;
     assume state(Heap, Mask);
@@ -644,7 +644,7 @@ procedure assign3(i: int) returns ()
       // Exhale assertion of asserting
       ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
-      assert {:msg "  Assignment might fail. Assertion i > 0 might not hold. (simple-fail.vpr@19.3--19.39) [153403]"}
+      assert {:msg "  Assignment might fail. Assertion i > 0 might not hold. (simple-fail.vpr@19.3--19.39) [101606]"}
         i > 0;
     x := 0;
     assume state(Heap, Mask);
@@ -678,7 +678,7 @@ procedure pres() returns ()
       // Exhale assertion of asserting
       ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
-      assert {:msg "  Contract might not be well-formed. Assertion false might not hold. (simple-fail.vpr@24.12--24.38) [153404]"}
+      assert {:msg "  Contract might not be well-formed. Assertion false might not hold. (simple-fail.vpr@24.12--24.38) [101607]"}
         false;
     assume false;
     assume state(Heap, Mask);
@@ -692,7 +692,7 @@ procedure pres() returns ()
   // -- Translating statement: assert false -- simple-fail.vpr@26.3--26.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (simple-fail.vpr@26.10--26.15) [153405]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (simple-fail.vpr@26.10--26.15) [101608]"}
       false;
     assume state(Heap, Mask);
 }
@@ -732,7 +732,7 @@ procedure pres2(x: Ref) returns ()
       ExhaleWellDef0Mask := assertingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@31.12--31.41) [153406]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@31.12--31.41) [101609]"}
           perm <= assertingMask[x, f_7];
       }
       assertingMask := assertingMask[x, f_7:=assertingMask[x, f_7] - perm];
@@ -752,7 +752,7 @@ procedure pres2(x: Ref) returns ()
   // -- Translating statement: assert false -- simple-fail.vpr@33.3--33.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (simple-fail.vpr@33.10--33.15) [153407]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (simple-fail.vpr@33.10--33.15) [101610]"}
       false;
     assume state(Heap, Mask);
 }
@@ -797,7 +797,7 @@ procedure pres3(x: Ref) returns ()
       ExhaleWellDef0Mask := assertingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@38.12--38.41) [153408]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@38.12--38.41) [101611]"}
           perm <= assertingMask[x, f_7];
       }
       assertingMask := assertingMask[x, f_7:=assertingMask[x, f_7] - perm];
@@ -817,7 +817,7 @@ procedure pres3(x: Ref) returns ()
   // -- Translating statement: assert false -- simple-fail.vpr@40.3--40.15
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (simple-fail.vpr@40.10--40.15) [153409]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (simple-fail.vpr@40.10--40.15) [101612]"}
       false;
     assume state(Heap, Mask);
 }
@@ -874,7 +874,7 @@ procedure stateUnchanged(x: Ref) returns ()
       ExhaleWellDef0Mask := assertingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (simple-fail.vpr@71.3--71.44) [153410]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (simple-fail.vpr@71.3--71.44) [101613]"}
           perm <= assertingMask[x, f_7];
       }
       assertingMask := assertingMask[x, f_7:=assertingMask[x, f_7] - perm];
@@ -884,7 +884,7 @@ procedure stateUnchanged(x: Ref) returns ()
       assertingHeap := ExhaleHeap;
       
       // -- Check definedness of x.f
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (simple-fail.vpr@71.3--71.44) [153411]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (simple-fail.vpr@71.3--71.44) [101614]"}
           HasDirectPerm(Mask, x, f_7);
     y := Heap[x, f_7];
     assume state(Heap, Mask);
@@ -896,7 +896,7 @@ procedure stateUnchanged(x: Ref) returns ()
     ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (simple-fail.vpr@72.10--72.18) [153413]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (simple-fail.vpr@72.10--72.18) [101616]"}
         perm <= AssertMask[x, f_7];
     }
     AssertMask := AssertMask[x, f_7:=AssertMask[x, f_7] - perm];

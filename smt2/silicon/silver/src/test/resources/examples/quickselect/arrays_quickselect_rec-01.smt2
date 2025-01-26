@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:41:24
+; Started: 2025-01-26 21:36:56
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -955,19 +955,19 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (dummy%limited s@$ i@0@00) (dummy s@$ i@0@00))
   :pattern ((dummy s@$ i@0@00))
-  :qid |quant-u-18885|)))
+  :qid |quant-u-14035|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (dummy%stateless i@0@00)
   :pattern ((dummy%limited s@$ i@0@00))
-  :qid |quant-u-18886|)))
+  :qid |quant-u-14036|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (=> (dummy%precondition s@$ i@0@00) (= (dummy s@$ i@0@00) true))
   :pattern ((dummy s@$ i@0@00))
-  :qid |quant-u-18887|)))
+  :qid |quant-u-14037|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   true
   :pattern ((dummy s@$ i@0@00))
-  :qid |quant-u-18888|)))
+  :qid |quant-u-14038|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- swap ----------
@@ -1442,7 +1442,7 @@
       (= (inv@29@01 (loc<Ref> a@21@01 i@28@01)) i@28@01)
       (img@30@01 (loc<Ref> a@21@01 i@28@01))))
   :pattern ((loc<Ref> a@21@01 i@28@01))
-  :qid |quant-u-18890|)))
+  :qid |quant-u-14040|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1541,7 +1541,7 @@
       (= (inv@33@01 (loc<Ref> a@21@01 i@32@01)) i@32@01)
       (img@34@01 (loc<Ref> a@21@01 i@32@01))))
   :pattern ((loc<Ref> a@21@01 i@32@01))
-  :qid |quant-u-18892|)))
+  :qid |quant-u-14042|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2272,7 +2272,7 @@
       (pTaken@45@01 r))
     $Perm.No)
   
-  :qid |quant-u-18894|))))
+  :qid |quant-u-14044|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -2284,7 +2284,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@45@01 r) $Perm.No)
   
-  :qid |quant-u-18895|))))
+  :qid |quant-u-14045|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -2299,7 +2299,7 @@
     (= r (loc<Ref> a@21@01 pivotIndex@24@01))
     (= (- $Perm.Write (pTaken@45@01 r)) $Perm.No))
   
-  :qid |quant-u-18896|))))
+  :qid |quant-u-14046|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2367,7 +2367,7 @@
       (pTaken@46@01 r))
     $Perm.No)
   
-  :qid |quant-u-18898|))))
+  :qid |quant-u-14048|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2379,7 +2379,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@46@01 r) $Perm.No)
   
-  :qid |quant-u-18899|))))
+  :qid |quant-u-14049|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2394,7 +2394,7 @@
     (= r (loc<Ref> a@21@01 right@23@01))
     (= (- $Perm.Write (pTaken@46@01 r)) $Perm.No))
   
-  :qid |quant-u-18900|))))
+  :qid |quant-u-14050|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2838,7 +2838,7 @@
       (= (inv@58@01 (loc<Ref> a@21@01 i@57@01)) i@57@01)
       (img@59@01 (loc<Ref> a@21@01 i@57@01))))
   :pattern ((loc<Ref> a@21@01 i@57@01))
-  :qid |quant-u-18902|)))
+  :qid |quant-u-14052|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -3573,7 +3573,7 @@
       (pTaken@69@01 r))
     $Perm.No)
   
-  :qid |quant-u-18905|))))
+  :qid |quant-u-14055|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -3591,7 +3591,7 @@
       (= r (loc<Ref> a@21@01 (inv@67@01 r))))
     (= (- $Perm.Write (pTaken@69@01 r)) $Perm.No))
   
-  :qid |quant-u-18906|))))
+  :qid |quant-u-14056|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3626,7 +3626,7 @@
       (= r (loc<Ref> a@21@01 (inv@67@01 r))))
     (= (- (- $Perm.Write (pTaken@69@01 r)) (pTaken@70@01 r)) $Perm.No))
   
-  :qid |quant-u-18908|))))
+  :qid |quant-u-14058|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -3663,7 +3663,7 @@
       (- (- (- $Perm.Write (pTaken@69@01 r)) (pTaken@70@01 r)) (pTaken@71@01 r))
       $Perm.No))
   
-  :qid |quant-u-18910|))))
+  :qid |quant-u-14060|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -4697,7 +4697,7 @@
       (= (inv@58@01 (loc<Ref> a@21@01 i@57@01)) i@57@01)
       (img@59@01 (loc<Ref> a@21@01 i@57@01))))
   :pattern ((loc<Ref> a@21@01 i@57@01))
-  :qid |quant-u-18902|)))
+  :qid |quant-u-14052|)))
 (assert (forall ((i@57@01 Int)) (!
   (=>
     (and (<= left@22@01 i@57@01) (<= i@57@01 right@23@01))
@@ -5060,7 +5060,7 @@
       (pTaken@78@01 r))
     $Perm.No)
   
-  :qid |quant-u-18912|))))
+  :qid |quant-u-14062|))))
 (check-sat)
 ; unknown
 (pop) ; 9
@@ -5072,7 +5072,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@78@01 r) $Perm.No)
   
-  :qid |quant-u-18913|))))
+  :qid |quant-u-14063|))))
 (check-sat)
 ; unknown
 (pop) ; 9
@@ -5087,7 +5087,7 @@
     (= r (loc<Ref> a@21@01 j@55@01))
     (= (- $Perm.Write (pTaken@78@01 r)) $Perm.No))
   
-  :qid |quant-u-18914|))))
+  :qid |quant-u-14064|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -5155,7 +5155,7 @@
       (pTaken@79@01 r))
     $Perm.No)
   
-  :qid |quant-u-18916|))))
+  :qid |quant-u-14066|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -5167,7 +5167,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@79@01 r) $Perm.No)
   
-  :qid |quant-u-18917|))))
+  :qid |quant-u-14067|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -5182,7 +5182,7 @@
     (= r (loc<Ref> a@21@01 storeIndex@54@01))
     (= (- $Perm.Write (pTaken@79@01 r)) $Perm.No))
   
-  :qid |quant-u-18918|))))
+  :qid |quant-u-14068|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -5692,7 +5692,7 @@
       (pTaken@91@01 r))
     $Perm.No)
   
-  :qid |quant-u-18921|))))
+  :qid |quant-u-14071|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -5710,11 +5710,11 @@
       (= r (loc<Ref> a@21@01 (inv@89@01 r))))
     (= (- $Perm.Write (pTaken@91@01 r)) $Perm.No))
   
-  :qid |quant-u-18922|))))
+  :qid |quant-u-14072|))))
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -5745,7 +5745,7 @@
       (= r (loc<Ref> a@21@01 (inv@89@01 r))))
     (= (- (- $Perm.Write (pTaken@91@01 r)) (pTaken@92@01 r)) $Perm.No))
   
-  :qid |quant-u-18924|))))
+  :qid |quant-u-14074|))))
 (check-sat)
 ; unknown
 (pop) ; 11
@@ -5782,7 +5782,7 @@
       (- (- (- $Perm.Write (pTaken@91@01 r)) (pTaken@92@01 r)) (pTaken@93@01 r))
       $Perm.No))
   
-  :qid |quant-u-18926|))))
+  :qid |quant-u-14076|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -6055,7 +6055,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 (assert (forall ((i@94@01 Int)) (!
   (=>
@@ -6272,7 +6272,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (= (Seq_length pw@85@01) (+ right@23@01 1)))
 ; [eval] (forall i: Int :: { pw[i] } left <= i && i <= right ==> left <= pw[i] && pw[i] <= right)
@@ -6403,7 +6403,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.18s
+; 0.19s
 ; (get-info :all-statistics)
 (assert (forall ((i@96@01 Int)) (!
   (=>
@@ -6556,7 +6556,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 6.59s
+; 7.23s
 ; (get-info :all-statistics)
 (assert (forall ((i@97@01 Int) (k@98@01 Int)) (!
   (=>
@@ -6787,7 +6787,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.16s
+; 0.19s
 ; (get-info :all-statistics)
 (assert (forall ((i$0@99@01 Int)) (!
   (=>
@@ -7226,7 +7226,7 @@
       (pTaken@110@01 r))
     $Perm.No)
   
-  :qid |quant-u-18929|))))
+  :qid |quant-u-14079|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -7244,11 +7244,11 @@
       (= r (loc<Ref> a@21@01 (inv@108@01 r))))
     (= (- $Perm.Write (pTaken@110@01 r)) $Perm.No))
   
-  :qid |quant-u-18930|))))
+  :qid |quant-u-14080|))))
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -7279,7 +7279,7 @@
       (= r (loc<Ref> a@21@01 (inv@108@01 r))))
     (= (- (- $Perm.Write (pTaken@110@01 r)) (pTaken@111@01 r)) $Perm.No))
   
-  :qid |quant-u-18932|))))
+  :qid |quant-u-14082|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -7974,7 +7974,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.04s
+; 0.05s
 ; (get-info :all-statistics)
 (assert (forall ((i@115@01 Int) (k@116@01 Int)) (!
   (=>
@@ -8057,7 +8057,7 @@
 (check-sat)
 ; unsat
 (pop) ; 14
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [eval] old(loc(a, pw[i$0]).val)
 ; [eval] loc(a, pw[i$0])
@@ -8089,7 +8089,7 @@
 (check-sat)
 ; unsat
 (pop) ; 14
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (pop) ; 13
 (push) ; 13
@@ -8377,7 +8377,7 @@
       (pTaken@122@01 r))
     $Perm.No)
   
-  :qid |quant-u-18935|))))
+  :qid |quant-u-14085|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -8395,7 +8395,7 @@
       (= r (loc<Ref> a@21@01 (inv@120@01 r))))
     (= (- $Perm.Write (pTaken@122@01 r)) $Perm.No))
   
-  :qid |quant-u-18936|))))
+  :qid |quant-u-14086|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -9103,7 +9103,7 @@
       (pTaken@129@01 r))
     $Perm.No)
   
-  :qid |quant-u-18938|))))
+  :qid |quant-u-14088|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -9115,7 +9115,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@129@01 r) $Perm.No)
   
-  :qid |quant-u-18939|))))
+  :qid |quant-u-14089|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -9130,7 +9130,7 @@
     (= r (loc<Ref> a@21@01 right@23@01))
     (= (- $Perm.Write (pTaken@129@01 r)) $Perm.No))
   
-  :qid |quant-u-18940|))))
+  :qid |quant-u-14090|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -9198,7 +9198,7 @@
       (pTaken@130@01 r))
     $Perm.No)
   
-  :qid |quant-u-18942|))))
+  :qid |quant-u-14092|))))
 (check-sat)
 ; unknown
 (pop) ; 9
@@ -9210,7 +9210,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@130@01 r) $Perm.No)
   
-  :qid |quant-u-18943|))))
+  :qid |quant-u-14093|))))
 (check-sat)
 ; unknown
 (pop) ; 9
@@ -9225,7 +9225,7 @@
     (= r (loc<Ref> a@21@01 storeIndex@54@01))
     (= (- $Perm.Write (pTaken@130@01 r)) $Perm.No))
   
-  :qid |quant-u-18944|))))
+  :qid |quant-u-14094|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -9683,7 +9683,7 @@
       (pTaken@140@01 r))
     $Perm.No)
   
-  :qid |quant-u-18947|))))
+  :qid |quant-u-14097|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -9701,7 +9701,7 @@
       (= r (loc<Ref> a@21@01 (inv@138@01 r))))
     (= (- $Perm.Write (pTaken@140@01 r)) $Perm.No))
   
-  :qid |quant-u-18948|))))
+  :qid |quant-u-14098|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -9736,11 +9736,11 @@
       (= r (loc<Ref> a@21@01 (inv@138@01 r))))
     (= (- (- $Perm.Write (pTaken@140@01 r)) (pTaken@141@01 r)) $Perm.No))
   
-  :qid |quant-u-18950|))))
+  :qid |quant-u-14100|))))
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.02s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -9775,7 +9775,7 @@
         (pTaken@142@01 r))
       $Perm.No))
   
-  :qid |quant-u-18952|))))
+  :qid |quant-u-14102|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -9961,7 +9961,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [eval] loc(a, storeIndex)
 (assert (and
@@ -10402,7 +10402,7 @@
 (check-sat)
 ; unsat
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (= (Seq_length pw@136@01) (+ right@23@01 1)))
 ; [eval] (forall i: Int :: { pw[i] } left <= i && i <= right ==> left <= pw[i] && pw[i] <= right)
@@ -10533,7 +10533,7 @@
 (check-sat)
 ; unsat
 (pop) ; 10
-; 0.09s
+; 0.21s
 ; (get-info :all-statistics)
 (assert (forall ((i@145@01 Int)) (!
   (=>
@@ -10691,7 +10691,7 @@
 (check-sat)
 ; unsat
 (pop) ; 10
-; 0.22s
+; 0.18s
 ; (get-info :all-statistics)
 (assert (forall ((i@146@01 Int) (k@147@01 Int)) (!
   (=>
@@ -10790,7 +10790,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [eval] old(loc(a, pw[i]).val)
 ; [eval] loc(a, pw[i])
@@ -10922,7 +10922,7 @@
 (check-sat)
 ; unsat
 (pop) ; 10
-; 0.04s
+; 0.09s
 ; (get-info :all-statistics)
 (assert (forall ((i@148@01 Int)) (!
   (=>
@@ -11309,7 +11309,7 @@
       (pTaken@157@01 r))
     $Perm.No)
   
-  :qid |quant-u-18955|))))
+  :qid |quant-u-14105|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -11327,7 +11327,7 @@
       (= r (loc<Ref> a@21@01 (inv@155@01 r))))
     (= (- $Perm.Write (pTaken@157@01 r)) $Perm.No))
   
-  :qid |quant-u-18956|))))
+  :qid |quant-u-14106|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -11362,7 +11362,7 @@
       (= r (loc<Ref> a@21@01 (inv@155@01 r))))
     (= (- (- $Perm.Write (pTaken@157@01 r)) (pTaken@158@01 r)) $Perm.No))
   
-  :qid |quant-u-18958|))))
+  :qid |quant-u-14108|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -12162,7 +12162,7 @@
 (check-sat)
 ; unsat
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (forall ((i@162@01 Int) (k@163@01 Int)) (!
   (=>
@@ -12751,7 +12751,7 @@
       (= (inv@175@01 (loc<Ref> a@21@01 i@174@01)) i@174@01)
       (img@176@01 (loc<Ref> a@21@01 i@174@01))))
   :pattern ((loc<Ref> a@21@01 i@174@01))
-  :qid |quant-u-18960|)))
+  :qid |quant-u-14110|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -13483,7 +13483,7 @@
       (pTaken@186@01 r))
     $Perm.No)
   
-  :qid |quant-u-18963|))))
+  :qid |quant-u-14113|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -13501,7 +13501,7 @@
       (= r (loc<Ref> a@21@01 (inv@184@01 r))))
     (= (- $Perm.Write (pTaken@186@01 r)) $Perm.No))
   
-  :qid |quant-u-18964|))))
+  :qid |quant-u-14114|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -13536,7 +13536,7 @@
       (= r (loc<Ref> a@21@01 (inv@184@01 r))))
     (= (- (- $Perm.Write (pTaken@186@01 r)) (pTaken@187@01 r)) $Perm.No))
   
-  :qid |quant-u-18966|))))
+  :qid |quant-u-14116|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -14459,7 +14459,7 @@
       (= (inv@175@01 (loc<Ref> a@21@01 i@174@01)) i@174@01)
       (img@176@01 (loc<Ref> a@21@01 i@174@01))))
   :pattern ((loc<Ref> a@21@01 i@174@01))
-  :qid |quant-u-18960|)))
+  :qid |quant-u-14110|)))
 (assert (forall ((i@174@01 Int)) (!
   (=>
     (and (<= left@22@01 i@174@01) (<= i@174@01 right@23@01))
@@ -14825,7 +14825,7 @@
       (pTaken@194@01 r))
     $Perm.No)
   
-  :qid |quant-u-18968|))))
+  :qid |quant-u-14118|))))
 (check-sat)
 ; unknown
 (pop) ; 9
@@ -14837,7 +14837,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@194@01 r) $Perm.No)
   
-  :qid |quant-u-18969|))))
+  :qid |quant-u-14119|))))
 (check-sat)
 ; unknown
 (pop) ; 9
@@ -14852,7 +14852,7 @@
     (= r (loc<Ref> a@21@01 j@172@01))
     (= (- $Perm.Write (pTaken@194@01 r)) $Perm.No))
   
-  :qid |quant-u-18970|))))
+  :qid |quant-u-14120|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -14920,7 +14920,7 @@
       (pTaken@195@01 r))
     $Perm.No)
   
-  :qid |quant-u-18972|))))
+  :qid |quant-u-14122|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -14932,7 +14932,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@195@01 r) $Perm.No)
   
-  :qid |quant-u-18973|))))
+  :qid |quant-u-14123|))))
 (check-sat)
 ; unknown
 (pop) ; 10
@@ -14947,7 +14947,7 @@
     (= r (loc<Ref> a@21@01 storeIndex@171@01))
     (= (- $Perm.Write (pTaken@195@01 r)) $Perm.No))
   
-  :qid |quant-u-18974|))))
+  :qid |quant-u-14124|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -15459,7 +15459,7 @@
       (pTaken@207@01 r))
     $Perm.No)
   
-  :qid |quant-u-18977|))))
+  :qid |quant-u-14127|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -15477,11 +15477,11 @@
       (= r (loc<Ref> a@21@01 (inv@205@01 r))))
     (= (- $Perm.Write (pTaken@207@01 r)) $Perm.No))
   
-  :qid |quant-u-18978|))))
+  :qid |quant-u-14128|))))
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -15512,7 +15512,7 @@
       (= r (loc<Ref> a@21@01 (inv@205@01 r))))
     (= (- (- $Perm.Write (pTaken@207@01 r)) (pTaken@208@01 r)) $Perm.No))
   
-  :qid |quant-u-18980|))))
+  :qid |quant-u-14130|))))
 (check-sat)
 ; unknown
 (pop) ; 11
@@ -15553,7 +15553,7 @@
         (pTaken@209@01 r))
       $Perm.No))
   
-  :qid |quant-u-18982|))))
+  :qid |quant-u-14132|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -15826,7 +15826,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (forall ((i@210@01 Int)) (!
   (=>
@@ -15925,7 +15925,7 @@
 (check-sat)
 ; unsat
 (pop) ; 14
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (pop) ; 13
 (push) ; 13
@@ -16043,7 +16043,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (= (Seq_length pw@201@01) (+ right@23@01 1)))
 ; [eval] (forall i: Int :: { pw[i] } left <= i && i <= right ==> left <= pw[i] && pw[i] <= right)
@@ -16171,4324 +16171,4 @@
       (<= (Seq_index pw@201@01 i@212@01) right@23@01)))
   :pattern ((Seq_index pw@201@01 i@212@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@105@15@105@91|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.06s
-; (get-info :all-statistics)
-(assert (forall ((i@212@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@212@01) (<= i@212@01 right@23@01))
-    (and
-      (<= left@22@01 (Seq_index pw@201@01 i@212@01))
-      (<= (Seq_index pw@201@01 i@212@01) right@23@01)))
-  :pattern ((Seq_index pw@201@01 i@212@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@105@15@105@91|)))
-; [eval] (forall i: Int, k: Int :: { pw[i], pw[k] } left <= i && (i < k && k <= right) ==> pw[i] != pw[k])
-(declare-const i@213@01 Int)
-(declare-const k@214@01 Int)
-(push) ; 11
-; [eval] left <= i && (i < k && k <= right) ==> pw[i] != pw[k]
-; [eval] left <= i && (i < k && k <= right)
-; [eval] left <= i
-(push) ; 12
-; [then-branch: 161 | !(left@22@01 <= i@213@01) | live]
-; [else-branch: 161 | left@22@01 <= i@213@01 | live]
-(push) ; 13
-; [then-branch: 161 | !(left@22@01 <= i@213@01)]
-(assert (not (<= left@22@01 i@213@01)))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 161 | left@22@01 <= i@213@01]
-(assert (<= left@22@01 i@213@01))
-; [eval] i < k
-(push) ; 14
-; [then-branch: 162 | !(i@213@01 < k@214@01) | live]
-; [else-branch: 162 | i@213@01 < k@214@01 | live]
-(push) ; 15
-; [then-branch: 162 | !(i@213@01 < k@214@01)]
-(assert (not (< i@213@01 k@214@01)))
-(pop) ; 15
-(push) ; 15
-; [else-branch: 162 | i@213@01 < k@214@01]
-(assert (< i@213@01 k@214@01))
-; [eval] k <= right
-(pop) ; 15
-(pop) ; 14
-; Joined path conditions
-; Joined path conditions
-(assert (or (< i@213@01 k@214@01) (not (< i@213@01 k@214@01))))
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  (<= left@22@01 i@213@01)
-  (and
-    (<= left@22@01 i@213@01)
-    (or (< i@213@01 k@214@01) (not (< i@213@01 k@214@01))))))
-(assert (or (<= left@22@01 i@213@01) (not (<= left@22@01 i@213@01))))
-(push) ; 12
-; [then-branch: 163 | left@22@01 <= i@213@01 && i@213@01 < k@214@01 && k@214@01 <= right@23@01 | live]
-; [else-branch: 163 | !(left@22@01 <= i@213@01 && i@213@01 < k@214@01 && k@214@01 <= right@23@01) | live]
-(push) ; 13
-; [then-branch: 163 | left@22@01 <= i@213@01 && i@213@01 < k@214@01 && k@214@01 <= right@23@01]
-(assert (and
-  (<= left@22@01 i@213@01)
-  (and (< i@213@01 k@214@01) (<= k@214@01 right@23@01))))
-; [eval] pw[i] != pw[k]
-; [eval] pw[i]
-(push) ; 14
-(assert (not (>= i@213@01 0)))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-(assert (not (< i@213@01 (Seq_length pw@201@01))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [eval] pw[k]
-(push) ; 14
-(assert (not (>= k@214@01 0)))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-(assert (not (< k@214@01 (Seq_length pw@201@01))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 13
-(push) ; 13
-; [else-branch: 163 | !(left@22@01 <= i@213@01 && i@213@01 < k@214@01 && k@214@01 <= right@23@01)]
-(assert (not
-  (and
-    (<= left@22@01 i@213@01)
-    (and (< i@213@01 k@214@01) (<= k@214@01 right@23@01)))))
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-(assert (=>
-  (and
-    (<= left@22@01 i@213@01)
-    (and (< i@213@01 k@214@01) (<= k@214@01 right@23@01)))
-  (and (<= left@22@01 i@213@01) (< i@213@01 k@214@01) (<= k@214@01 right@23@01))))
-; Joined path conditions
-(assert (or
-  (not
-    (and
-      (<= left@22@01 i@213@01)
-      (and (< i@213@01 k@214@01) (<= k@214@01 right@23@01))))
-  (and
-    (<= left@22@01 i@213@01)
-    (and (< i@213@01 k@214@01) (<= k@214@01 right@23@01)))))
-(pop) ; 11
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@213@01 Int) (k@214@01 Int)) (!
-  (and
-    (=>
-      (<= left@22@01 i@213@01)
-      (and
-        (<= left@22@01 i@213@01)
-        (or (< i@213@01 k@214@01) (not (< i@213@01 k@214@01)))))
-    (or (<= left@22@01 i@213@01) (not (<= left@22@01 i@213@01)))
-    (=>
-      (and
-        (<= left@22@01 i@213@01)
-        (and (< i@213@01 k@214@01) (<= k@214@01 right@23@01)))
-      (and
-        (<= left@22@01 i@213@01)
-        (< i@213@01 k@214@01)
-        (<= k@214@01 right@23@01)))
-    (or
-      (not
-        (and
-          (<= left@22@01 i@213@01)
-          (and (< i@213@01 k@214@01) (<= k@214@01 right@23@01))))
-      (and
-        (<= left@22@01 i@213@01)
-        (and (< i@213@01 k@214@01) (<= k@214@01 right@23@01)))))
-  :pattern ((Seq_index pw@201@01 i@213@01) (Seq_index pw@201@01 k@214@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@106@15@106@91-aux|)))
-(push) ; 11
-(assert (not (forall ((i@213@01 Int) (k@214@01 Int)) (!
-  (=>
-    (and
-      (<= left@22@01 i@213@01)
-      (and (< i@213@01 k@214@01) (<= k@214@01 right@23@01)))
-    (not (= (Seq_index pw@201@01 i@213@01) (Seq_index pw@201@01 k@214@01))))
-  :pattern ((Seq_index pw@201@01 i@213@01) (Seq_index pw@201@01 k@214@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@106@15@106@91|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.29s
-; (get-info :all-statistics)
-(assert (forall ((i@213@01 Int) (k@214@01 Int)) (!
-  (=>
-    (and
-      (<= left@22@01 i@213@01)
-      (and (< i@213@01 k@214@01) (<= k@214@01 right@23@01)))
-    (not (= (Seq_index pw@201@01 i@213@01) (Seq_index pw@201@01 k@214@01))))
-  :pattern ((Seq_index pw@201@01 i@213@01) (Seq_index pw@201@01 k@214@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@106@15@106@91|)))
-; [eval] (forall i$0: Int :: { pw[i$0] } left <= i$0 && i$0 <= right ==> loc(a, i$0).val == old(loc(a, pw[i$0]).val))
-(declare-const i$0@215@01 Int)
-(push) ; 11
-; [eval] left <= i$0 && i$0 <= right ==> loc(a, i$0).val == old(loc(a, pw[i$0]).val)
-; [eval] left <= i$0 && i$0 <= right
-; [eval] left <= i$0
-(push) ; 12
-; [then-branch: 164 | !(left@22@01 <= i$0@215@01) | live]
-; [else-branch: 164 | left@22@01 <= i$0@215@01 | live]
-(push) ; 13
-; [then-branch: 164 | !(left@22@01 <= i$0@215@01)]
-(assert (not (<= left@22@01 i$0@215@01)))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 164 | left@22@01 <= i$0@215@01]
-(assert (<= left@22@01 i$0@215@01))
-; [eval] i$0 <= right
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i$0@215@01) (not (<= left@22@01 i$0@215@01))))
-(push) ; 12
-; [then-branch: 165 | left@22@01 <= i$0@215@01 && i$0@215@01 <= right@23@01 | live]
-; [else-branch: 165 | !(left@22@01 <= i$0@215@01 && i$0@215@01 <= right@23@01) | live]
-(push) ; 13
-; [then-branch: 165 | left@22@01 <= i$0@215@01 && i$0@215@01 <= right@23@01]
-(assert (and (<= left@22@01 i$0@215@01) (<= i$0@215@01 right@23@01)))
-; [eval] loc(a, i$0).val == old(loc(a, pw[i$0]).val)
-; [eval] loc(a, i$0)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- (- $Perm.Write (pTaken@194@01 r)) (pTaken@195@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@199@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@199@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef21|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 j@172@01))
-      (=
-        ($FVF.lookup_val (as sm@199@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@197@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@199@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@197@01  $FVF<val>) r))
-    :qid |qp.fvfValDef22|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 storeIndex@171@01))
-      (=
-        ($FVF.lookup_val (as sm@199@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@198@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@199@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@198@01  $FVF<val>) r))
-    :qid |qp.fvfValDef23|))))
-(push) ; 14
-(assert (not (<
-  $Perm.No
-  (+
-    (+
-      (ite
-        (and
-          (img@176@01 (loc<Ref> a@21@01 i$0@215@01))
-          (and
-            (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 i$0@215@01)))
-            (<= (inv@175@01 (loc<Ref> a@21@01 i$0@215@01)) right@23@01)))
-        (-
-          (- $Perm.Write (pTaken@194@01 (loc<Ref> a@21@01 i$0@215@01)))
-          (pTaken@195@01 (loc<Ref> a@21@01 i$0@215@01)))
-        $Perm.No)
-      (ite
-        (= (loc<Ref> a@21@01 i$0@215@01) (loc<Ref> a@21@01 j@172@01))
-        $Perm.Write
-        $Perm.No))
-    (ite
-      (= (loc<Ref> a@21@01 i$0@215@01) (loc<Ref> a@21@01 storeIndex@171@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [eval] old(loc(a, pw[i$0]).val)
-; [eval] loc(a, pw[i$0])
-; [eval] pw[i$0]
-(push) ; 14
-(assert (not (>= i$0@215@01 0)))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-(assert (not (< i$0@215@01 (Seq_length pw@201@01))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-(assert (not (and
-  (img@30@01 (loc<Ref> a@21@01 (Seq_index pw@201@01 i$0@215@01)))
-  (and
-    (<=
-      left@22@01
-      (inv@29@01 (loc<Ref> a@21@01 (Seq_index pw@201@01 i$0@215@01))))
-    (<=
-      (inv@29@01 (loc<Ref> a@21@01 (Seq_index pw@201@01 i$0@215@01)))
-      right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 13
-(push) ; 13
-; [else-branch: 165 | !(left@22@01 <= i$0@215@01 && i$0@215@01 <= right@23@01)]
-(assert (not (and (<= left@22@01 i$0@215@01) (<= i$0@215@01 right@23@01))))
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- (- $Perm.Write (pTaken@194@01 r)) (pTaken@195@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@199@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@199@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef21|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 j@172@01))
-    (=
-      ($FVF.lookup_val (as sm@199@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@197@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@199@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@197@01  $FVF<val>) r))
-  :qid |qp.fvfValDef22|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 storeIndex@171@01))
-    (=
-      ($FVF.lookup_val (as sm@199@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@198@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@199@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@198@01  $FVF<val>) r))
-  :qid |qp.fvfValDef23|)))
-; Joined path conditions
-(assert (or
-  (not (and (<= left@22@01 i$0@215@01) (<= i$0@215@01 right@23@01)))
-  (and (<= left@22@01 i$0@215@01) (<= i$0@215@01 right@23@01))))
-(pop) ; 11
-; Nested auxiliary terms: globals (aux)
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- (- $Perm.Write (pTaken@194@01 r)) (pTaken@195@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@199@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@199@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef21|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 j@172@01))
-    (=
-      ($FVF.lookup_val (as sm@199@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@197@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@199@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@197@01  $FVF<val>) r))
-  :qid |qp.fvfValDef22|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 storeIndex@171@01))
-    (=
-      ($FVF.lookup_val (as sm@199@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@198@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@199@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@198@01  $FVF<val>) r))
-  :qid |qp.fvfValDef23|)))
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i$0@215@01 Int)) (!
-  (and
-    (or (<= left@22@01 i$0@215@01) (not (<= left@22@01 i$0@215@01)))
-    (or
-      (not (and (<= left@22@01 i$0@215@01) (<= i$0@215@01 right@23@01)))
-      (and (<= left@22@01 i$0@215@01) (<= i$0@215@01 right@23@01))))
-  :pattern ((Seq_index pw@201@01 i$0@215@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@108@15@108@43-aux|)))
-(push) ; 11
-(assert (not (forall ((i$0@215@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i$0@215@01) (<= i$0@215@01 right@23@01))
-    (=
-      ($FVF.lookup_val (as sm@199@01  $FVF<val>) (loc<Ref> a@21@01 i$0@215@01))
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@27@01)))))) (loc<Ref> a@21@01 (Seq_index
-        pw@201@01
-        i$0@215@01)))))
-  :pattern ((Seq_index pw@201@01 i$0@215@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@108@15@108@43|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.08s
-; (get-info :all-statistics)
-(assert (forall ((i$0@215@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i$0@215@01) (<= i$0@215@01 right@23@01))
-    (=
-      ($FVF.lookup_val (as sm@199@01  $FVF<val>) (loc<Ref> a@21@01 i$0@215@01))
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@27@01)))))) (loc<Ref> a@21@01 (Seq_index
-        pw@201@01
-        i$0@215@01)))))
-  :pattern ((Seq_index pw@201@01 i$0@215@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@108@15@108@43|)))
-(pop) ; 10
-(pop) ; 9
-(push) ; 9
-; [else-branch: 151 | j@172@01 == storeIndex@171@01]
-(assert (= j@172@01 storeIndex@171@01))
-(declare-const $t@216@01 $Snap)
-(assert (= $t@216@01 ($Snap.combine ($Snap.first $t@216@01) ($Snap.second $t@216@01))))
-; [eval] loc(a, i)
-(declare-const sm@217@01 $FVF<val>)
-; Definitional axioms for singleton-SM's value
-(assert (=
-  ($FVF.lookup_val (as sm@217@01  $FVF<val>) (loc<Ref> a@21@01 j@172@01))
-  ($SortWrappers.$SnapToInt ($Snap.first $t@216@01))))
-(assert (<=
-  $Perm.No
-  (ite
-    (= (loc<Ref> a@21@01 j@172@01) (loc<Ref> a@21@01 j@172@01))
-    $Perm.Write
-    $Perm.No)))
-(assert (<=
-  (ite
-    (= (loc<Ref> a@21@01 j@172@01) (loc<Ref> a@21@01 j@172@01))
-    $Perm.Write
-    $Perm.No)
-  $Perm.Write))
-(assert (=>
-  (= (loc<Ref> a@21@01 j@172@01) (loc<Ref> a@21@01 j@172@01))
-  (not (= (loc<Ref> a@21@01 j@172@01) $Ref.null))))
-(assert (=
-  ($Snap.second $t@216@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@216@01))
-    ($Snap.second ($Snap.second $t@216@01)))))
-; [eval] i != j
-; [then-branch: 166 | j@172@01 != storeIndex@171@01 | dead]
-; [else-branch: 166 | j@172@01 == storeIndex@171@01 | live]
-(push) ; 10
-; [else-branch: 166 | j@172@01 == storeIndex@171@01]
-(assert (= ($Snap.first ($Snap.second $t@216@01)) $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second $t@216@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@216@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@216@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@216@01))) $Snap.unit))
-; [eval] loc(a, i).val == old(loc(a, j).val)
-; [eval] loc(a, i)
-(declare-const sm@218@01 $FVF<val>)
-; Definitional axioms for snapshot map values
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef25|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 j@172@01))
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-  :qid |qp.fvfValDef26|)))
-(declare-const pm@219@01 $FPM)
-(assert (forall ((r $Ref)) (!
-  (=
-    ($FVF.perm_val (as pm@219@01  $FPM) r)
-    (+
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (- $Perm.Write (pTaken@194@01 r))
-        $Perm.No)
-      (ite (= r (loc<Ref> a@21@01 j@172@01)) $Perm.Write $Perm.No)))
-  :pattern (($FVF.perm_val (as pm@219@01  $FPM) r))
-  :qid |qp.resPrmSumDef27|)))
-(push) ; 11
-(assert (not (< $Perm.No ($FVF.perm_val (as pm@219@01  $FPM) (loc<Ref> a@21@01 j@172@01)))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; [eval] old(loc(a, j).val)
-; [eval] loc(a, j)
-(push) ; 11
-(assert (not (and
-  (img@176@01 (loc<Ref> a@21@01 storeIndex@171@01))
-  (and
-    (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-    (<= (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)) right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($FVF.lookup_val (as sm@218@01  $FVF<val>) (loc<Ref> a@21@01 j@172@01))
-  ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 storeIndex@171@01))))
-(assert (= ($Snap.second ($Snap.second ($Snap.second $t@216@01))) $Snap.unit))
-; [eval] loc(a, j).val == old(loc(a, i).val)
-; [eval] loc(a, j)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef25|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 j@172@01))
-      (=
-        ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-    :qid |qp.fvfValDef26|))))
-(push) ; 11
-(assert (not (<
-  $Perm.No
-  (+
-    (ite
-      (and
-        (img@176@01 (loc<Ref> a@21@01 storeIndex@171@01))
-        (and
-          (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-          (<= (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)) right@23@01)))
-      (- $Perm.Write (pTaken@194@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-      $Perm.No)
-    (ite
-      (= (loc<Ref> a@21@01 storeIndex@171@01) (loc<Ref> a@21@01 j@172@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; [eval] old(loc(a, i).val)
-; [eval] loc(a, i)
-(push) ; 11
-(assert (not (and
-  (img@176@01 (loc<Ref> a@21@01 j@172@01))
-  (and
-    (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 j@172@01)))
-    (<= (inv@175@01 (loc<Ref> a@21@01 j@172@01)) right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($FVF.lookup_val (as sm@218@01  $FVF<val>) (loc<Ref> a@21@01 storeIndex@171@01))
-  ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 j@172@01))))
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-; [exec]
-; pw := pw[storeIndex := pw[j]][j := pw[storeIndex]]
-; [eval] pw[storeIndex := pw[j]][j := pw[storeIndex]]
-; [eval] pw[storeIndex := pw[j]]
-; [eval] pw[j]
-(set-option :timeout 0)
-(push) ; 11
-(assert (not (>= j@172@01 0)))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 11
-(assert (not (< j@172@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 11
-(assert (not (>= storeIndex@171@01 0)))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 11
-(assert (not (< storeIndex@171@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; [eval] pw[storeIndex]
-(push) ; 11
-(assert (not (>= storeIndex@171@01 0)))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 11
-(assert (not (< storeIndex@171@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 11
-(assert (not (>= j@172@01 0)))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 11
-(assert (not (<
-  j@172@01
-  (Seq_length
-    (Seq_append
-      (Seq_take pw@170@01 storeIndex@171@01)
-      (Seq_append
-        (Seq_singleton (Seq_index pw@170@01 j@172@01))
-        (Seq_drop pw@170@01 (+ storeIndex@171@01 1))))))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(declare-const pw@220@01 Seq<Int>)
-(assert (=
-  pw@220@01
-  (Seq_append
-    (Seq_take
-      (Seq_append
-        (Seq_take pw@170@01 storeIndex@171@01)
-        (Seq_append
-          (Seq_singleton (Seq_index pw@170@01 j@172@01))
-          (Seq_drop pw@170@01 (+ storeIndex@171@01 1))))
-      j@172@01)
-    (Seq_append
-      (Seq_singleton (Seq_index pw@170@01 storeIndex@171@01))
-      (Seq_drop
-        (Seq_append
-          (Seq_take pw@170@01 storeIndex@171@01)
-          (Seq_append
-            (Seq_singleton (Seq_index pw@170@01 j@172@01))
-            (Seq_drop pw@170@01 (+ storeIndex@171@01 1))))
-        (+ j@172@01 1))))))
-; [exec]
-; storeIndex := storeIndex + 1
-; [eval] storeIndex + 1
-(declare-const storeIndex@221@01 Int)
-(assert (= storeIndex@221@01 (+ storeIndex@171@01 1)))
-; [exec]
-; j := j + 1
-; [eval] j + 1
-(declare-const j@222@01 Int)
-(assert (= j@222@01 (+ j@172@01 1)))
-; Loop head block: Re-establish invariant
-; [eval] left <= j
-(push) ; 11
-(assert (not (<= left@22@01 j@222@01)))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(assert (<= left@22@01 j@222@01))
-; [eval] j <= right
-(push) ; 11
-(assert (not (<= j@222@01 right@23@01)))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(assert (<= j@222@01 right@23@01))
-; [eval] left <= storeIndex
-(push) ; 11
-(assert (not (<= left@22@01 storeIndex@221@01)))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(assert (<= left@22@01 storeIndex@221@01))
-; [eval] storeIndex <= j
-(push) ; 11
-(assert (not (<= storeIndex@221@01 j@222@01)))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(assert (<= storeIndex@221@01 j@222@01))
-(declare-const i@223@01 Int)
-(push) ; 11
-; [eval] left <= i && i <= right
-; [eval] left <= i
-(push) ; 12
-; [then-branch: 167 | !(left@22@01 <= i@223@01) | live]
-; [else-branch: 167 | left@22@01 <= i@223@01 | live]
-(push) ; 13
-; [then-branch: 167 | !(left@22@01 <= i@223@01)]
-(assert (not (<= left@22@01 i@223@01)))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 167 | left@22@01 <= i@223@01]
-(assert (<= left@22@01 i@223@01))
-; [eval] i <= right
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i@223@01) (not (<= left@22@01 i@223@01))))
-(assert (and (<= left@22@01 i@223@01) (<= i@223@01 right@23@01)))
-; [eval] loc(a, i)
-(pop) ; 11
-(declare-fun inv@224@01 ($Ref) Int)
-(declare-fun img@225@01 ($Ref) Bool)
-; Nested auxiliary terms: globals
-; Nested auxiliary terms: non-globals
-(assert (forall ((i@223@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@223@01) (<= i@223@01 right@23@01))
-    (or (<= left@22@01 i@223@01) (not (<= left@22@01 i@223@01))))
-  :pattern ((loc<Ref> a@21@01 i@223@01))
-  :qid |val-aux|)))
-; Check receiver injectivity
-(push) ; 11
-(assert (not (forall ((i1@223@01 Int) (i2@223@01 Int)) (!
-  (=>
-    (and
-      (and (<= left@22@01 i1@223@01) (<= i1@223@01 right@23@01))
-      (and (<= left@22@01 i2@223@01) (<= i2@223@01 right@23@01))
-      (= (loc<Ref> a@21@01 i1@223@01) (loc<Ref> a@21@01 i2@223@01)))
-    (= i1@223@01 i2@223@01))
-  
-  :qid |val-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall ((i@223@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@223@01) (<= i@223@01 right@23@01))
-    (and
-      (= (inv@224@01 (loc<Ref> a@21@01 i@223@01)) i@223@01)
-      (img@225@01 (loc<Ref> a@21@01 i@223@01))))
-  :pattern ((loc<Ref> a@21@01 i@223@01))
-  :qid |val-invOfFct|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (and
-      (img@225@01 r)
-      (and (<= left@22@01 (inv@224@01 r)) (<= (inv@224@01 r) right@23@01)))
-    (= (loc<Ref> a@21@01 (inv@224@01 r)) r))
-  :pattern ((inv@224@01 r))
-  :qid |val-fctOfInv|)))
-; Precomputing data for removing quantified permissions
-(define-fun pTaken@226@01 ((r $Ref)) $Perm
-  (ite
-    (and
-      (and (<= left@22@01 (inv@224@01 r)) (<= (inv@224@01 r) right@23@01))
-      (img@225@01 r)
-      (= r (loc<Ref> a@21@01 (inv@224@01 r))))
-    ($Perm.min
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (- $Perm.Write (pTaken@194@01 r))
-        $Perm.No)
-      $Perm.Write)
-    $Perm.No))
-(define-fun pTaken@227@01 ((r $Ref)) $Perm
-  (ite
-    (and
-      (and (<= left@22@01 (inv@224@01 r)) (<= (inv@224@01 r) right@23@01))
-      (img@225@01 r)
-      (= r (loc<Ref> a@21@01 (inv@224@01 r))))
-    ($Perm.min
-      (ite (= r (loc<Ref> a@21@01 j@172@01)) $Perm.Write $Perm.No)
-      (- $Perm.Write (pTaken@226@01 r)))
-    $Perm.No))
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Chunk depleted?
-(set-option :timeout 0)
-(push) ; 11
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=
-    (-
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (- $Perm.Write (pTaken@194@01 r))
-        $Perm.No)
-      (pTaken@226@01 r))
-    $Perm.No)
-  
-  :qid |quant-u-18985|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; Intermediate check if already taken enough permissions
-(set-option :timeout 0)
-(push) ; 11
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=>
-    (and
-      (and (<= left@22@01 (inv@224@01 r)) (<= (inv@224@01 r) right@23@01))
-      (img@225@01 r)
-      (= r (loc<Ref> a@21@01 (inv@224@01 r))))
-    (= (- $Perm.Write (pTaken@226@01 r)) $Perm.No))
-  
-  :qid |quant-u-18986|))))
-(check-sat)
-; unknown
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; Chunk depleted?
-(set-option :timeout 0)
-(push) ; 11
-(set-option :timeout 500)
-(assert (not (=
-  (-
-    (ite
-      (= (loc<Ref> a@21@01 j@172@01) (loc<Ref> a@21@01 j@172@01))
-      $Perm.Write
-      $Perm.No)
-    (pTaken@227@01 (loc<Ref> a@21@01 j@172@01)))
-  $Perm.No)))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; Intermediate check if already taken enough permissions
-(set-option :timeout 0)
-(push) ; 11
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=>
-    (and
-      (and (<= left@22@01 (inv@224@01 r)) (<= (inv@224@01 r) right@23@01))
-      (img@225@01 r)
-      (= r (loc<Ref> a@21@01 (inv@224@01 r))))
-    (= (- (- $Perm.Write (pTaken@226@01 r)) (pTaken@227@01 r)) $Perm.No))
-  
-  :qid |quant-u-18988|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; Final check if taken enough permissions
-; Done removing quantified permissions
-; [eval] loc(a, right).val == pivotValue
-; [eval] loc(a, right)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef25|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 j@172@01))
-      (=
-        ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-    :qid |qp.fvfValDef26|))))
-(set-option :timeout 0)
-(push) ; 11
-(assert (not (<
-  $Perm.No
-  (+
-    (ite
-      (and
-        (img@176@01 (loc<Ref> a@21@01 right@23@01))
-        (and
-          (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 right@23@01)))
-          (<= (inv@175@01 (loc<Ref> a@21@01 right@23@01)) right@23@01)))
-      (- $Perm.Write (pTaken@194@01 (loc<Ref> a@21@01 right@23@01)))
-      $Perm.No)
-    (ite
-      (= (loc<Ref> a@21@01 right@23@01) (loc<Ref> a@21@01 j@172@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 11
-(assert (not (=
-  ($FVF.lookup_val (as sm@218@01  $FVF<val>) (loc<Ref> a@21@01 right@23@01))
-  pivotValue@43@01)))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($FVF.lookup_val (as sm@218@01  $FVF<val>) (loc<Ref> a@21@01 right@23@01))
-  pivotValue@43@01))
-; [eval] (forall i: Int :: { loc(a, i) } left <= i && i < storeIndex ==> loc(a, i).val < pivotValue)
-(declare-const i@228@01 Int)
-(push) ; 11
-; [eval] left <= i && i < storeIndex ==> loc(a, i).val < pivotValue
-; [eval] left <= i && i < storeIndex
-; [eval] left <= i
-(push) ; 12
-; [then-branch: 168 | !(left@22@01 <= i@228@01) | live]
-; [else-branch: 168 | left@22@01 <= i@228@01 | live]
-(push) ; 13
-; [then-branch: 168 | !(left@22@01 <= i@228@01)]
-(assert (not (<= left@22@01 i@228@01)))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 168 | left@22@01 <= i@228@01]
-(assert (<= left@22@01 i@228@01))
-; [eval] i < storeIndex
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i@228@01) (not (<= left@22@01 i@228@01))))
-(push) ; 12
-; [then-branch: 169 | left@22@01 <= i@228@01 && i@228@01 < storeIndex@221@01 | live]
-; [else-branch: 169 | !(left@22@01 <= i@228@01 && i@228@01 < storeIndex@221@01) | live]
-(push) ; 13
-; [then-branch: 169 | left@22@01 <= i@228@01 && i@228@01 < storeIndex@221@01]
-(assert (and (<= left@22@01 i@228@01) (< i@228@01 storeIndex@221@01)))
-; [eval] loc(a, i).val < pivotValue
-; [eval] loc(a, i)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef25|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 j@172@01))
-      (=
-        ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-    :qid |qp.fvfValDef26|))))
-(push) ; 14
-(assert (not (<
-  $Perm.No
-  (+
-    (ite
-      (and
-        (img@176@01 (loc<Ref> a@21@01 i@228@01))
-        (and
-          (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 i@228@01)))
-          (<= (inv@175@01 (loc<Ref> a@21@01 i@228@01)) right@23@01)))
-      (- $Perm.Write (pTaken@194@01 (loc<Ref> a@21@01 i@228@01)))
-      $Perm.No)
-    (ite
-      (= (loc<Ref> a@21@01 i@228@01) (loc<Ref> a@21@01 j@172@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 13
-(push) ; 13
-; [else-branch: 169 | !(left@22@01 <= i@228@01 && i@228@01 < storeIndex@221@01)]
-(assert (not (and (<= left@22@01 i@228@01) (< i@228@01 storeIndex@221@01))))
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef25|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 j@172@01))
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-  :qid |qp.fvfValDef26|)))
-; Joined path conditions
-(assert (or
-  (not (and (<= left@22@01 i@228@01) (< i@228@01 storeIndex@221@01)))
-  (and (<= left@22@01 i@228@01) (< i@228@01 storeIndex@221@01))))
-(pop) ; 11
-; Nested auxiliary terms: globals (aux)
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef25|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 j@172@01))
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-  :qid |qp.fvfValDef26|)))
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@228@01 Int)) (!
-  (and
-    (or (<= left@22@01 i@228@01) (not (<= left@22@01 i@228@01)))
-    (or
-      (not (and (<= left@22@01 i@228@01) (< i@228@01 storeIndex@221@01)))
-      (and (<= left@22@01 i@228@01) (< i@228@01 storeIndex@221@01))))
-  :pattern ((loc<Ref> a@21@01 i@228@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@101@15@101@90-aux|)))
-(push) ; 11
-(assert (not (forall ((i@228@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@228@01) (< i@228@01 storeIndex@221@01))
-    (<
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) (loc<Ref> a@21@01 i@228@01))
-      pivotValue@43@01))
-  :pattern ((loc<Ref> a@21@01 i@228@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@101@15@101@90|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(assert (forall ((i@228@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@228@01) (< i@228@01 storeIndex@221@01))
-    (<
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) (loc<Ref> a@21@01 i@228@01))
-      pivotValue@43@01))
-  :pattern ((loc<Ref> a@21@01 i@228@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@101@15@101@90|)))
-; [eval] (forall i: Int :: { loc(a, i) } storeIndex <= i && i < j ==> pivotValue <= loc(a, i).val)
-(declare-const i@229@01 Int)
-(push) ; 11
-; [eval] storeIndex <= i && i < j ==> pivotValue <= loc(a, i).val
-; [eval] storeIndex <= i && i < j
-; [eval] storeIndex <= i
-(push) ; 12
-; [then-branch: 170 | !(storeIndex@221@01 <= i@229@01) | live]
-; [else-branch: 170 | storeIndex@221@01 <= i@229@01 | live]
-(push) ; 13
-; [then-branch: 170 | !(storeIndex@221@01 <= i@229@01)]
-(assert (not (<= storeIndex@221@01 i@229@01)))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 170 | storeIndex@221@01 <= i@229@01]
-(assert (<= storeIndex@221@01 i@229@01))
-; [eval] i < j
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= storeIndex@221@01 i@229@01) (not (<= storeIndex@221@01 i@229@01))))
-(push) ; 12
-; [then-branch: 171 | storeIndex@221@01 <= i@229@01 && i@229@01 < j@222@01 | live]
-; [else-branch: 171 | !(storeIndex@221@01 <= i@229@01 && i@229@01 < j@222@01) | live]
-(push) ; 13
-; [then-branch: 171 | storeIndex@221@01 <= i@229@01 && i@229@01 < j@222@01]
-(assert (and (<= storeIndex@221@01 i@229@01) (< i@229@01 j@222@01)))
-; [eval] pivotValue <= loc(a, i).val
-; [eval] loc(a, i)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef25|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 j@172@01))
-      (=
-        ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-    :qid |qp.fvfValDef26|))))
-(push) ; 14
-(assert (not (<
-  $Perm.No
-  (+
-    (ite
-      (and
-        (img@176@01 (loc<Ref> a@21@01 i@229@01))
-        (and
-          (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 i@229@01)))
-          (<= (inv@175@01 (loc<Ref> a@21@01 i@229@01)) right@23@01)))
-      (- $Perm.Write (pTaken@194@01 (loc<Ref> a@21@01 i@229@01)))
-      $Perm.No)
-    (ite
-      (= (loc<Ref> a@21@01 i@229@01) (loc<Ref> a@21@01 j@172@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 13
-(push) ; 13
-; [else-branch: 171 | !(storeIndex@221@01 <= i@229@01 && i@229@01 < j@222@01)]
-(assert (not (and (<= storeIndex@221@01 i@229@01) (< i@229@01 j@222@01))))
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef25|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 j@172@01))
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-  :qid |qp.fvfValDef26|)))
-; Joined path conditions
-(assert (or
-  (not (and (<= storeIndex@221@01 i@229@01) (< i@229@01 j@222@01)))
-  (and (<= storeIndex@221@01 i@229@01) (< i@229@01 j@222@01))))
-(pop) ; 11
-; Nested auxiliary terms: globals (aux)
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef25|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 j@172@01))
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-  :qid |qp.fvfValDef26|)))
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@229@01 Int)) (!
-  (and
-    (or (<= storeIndex@221@01 i@229@01) (not (<= storeIndex@221@01 i@229@01)))
-    (or
-      (not (and (<= storeIndex@221@01 i@229@01) (< i@229@01 j@222@01)))
-      (and (<= storeIndex@221@01 i@229@01) (< i@229@01 j@222@01))))
-  :pattern ((loc<Ref> a@21@01 i@229@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@102@15@102@88-aux|)))
-(push) ; 11
-(assert (not (forall ((i@229@01 Int)) (!
-  (=>
-    (and (<= storeIndex@221@01 i@229@01) (< i@229@01 j@222@01))
-    (<=
-      pivotValue@43@01
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) (loc<Ref> a@21@01 i@229@01))))
-  :pattern ((loc<Ref> a@21@01 i@229@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@102@15@102@88|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(assert (forall ((i@229@01 Int)) (!
-  (=>
-    (and (<= storeIndex@221@01 i@229@01) (< i@229@01 j@222@01))
-    (<=
-      pivotValue@43@01
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) (loc<Ref> a@21@01 i@229@01))))
-  :pattern ((loc<Ref> a@21@01 i@229@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@102@15@102@88|)))
-; [eval] |pw| == right + 1
-; [eval] |pw|
-; [eval] right + 1
-(push) ; 11
-(assert (not (= (Seq_length pw@220@01) (+ right@23@01 1))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(assert (= (Seq_length pw@220@01) (+ right@23@01 1)))
-; [eval] (forall i: Int :: { pw[i] } left <= i && i <= right ==> left <= pw[i] && pw[i] <= right)
-(declare-const i@230@01 Int)
-(push) ; 11
-; [eval] left <= i && i <= right ==> left <= pw[i] && pw[i] <= right
-; [eval] left <= i && i <= right
-; [eval] left <= i
-(push) ; 12
-; [then-branch: 172 | !(left@22@01 <= i@230@01) | live]
-; [else-branch: 172 | left@22@01 <= i@230@01 | live]
-(push) ; 13
-; [then-branch: 172 | !(left@22@01 <= i@230@01)]
-(assert (not (<= left@22@01 i@230@01)))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 172 | left@22@01 <= i@230@01]
-(assert (<= left@22@01 i@230@01))
-; [eval] i <= right
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i@230@01) (not (<= left@22@01 i@230@01))))
-(push) ; 12
-; [then-branch: 173 | left@22@01 <= i@230@01 && i@230@01 <= right@23@01 | live]
-; [else-branch: 173 | !(left@22@01 <= i@230@01 && i@230@01 <= right@23@01) | live]
-(push) ; 13
-; [then-branch: 173 | left@22@01 <= i@230@01 && i@230@01 <= right@23@01]
-(assert (and (<= left@22@01 i@230@01) (<= i@230@01 right@23@01)))
-; [eval] left <= pw[i] && pw[i] <= right
-; [eval] left <= pw[i]
-; [eval] pw[i]
-(push) ; 14
-(assert (not (>= i@230@01 0)))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-(assert (not (< i@230@01 (Seq_length pw@220@01))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-; [then-branch: 174 | !(left@22@01 <= pw@220@01[i@230@01]) | live]
-; [else-branch: 174 | left@22@01 <= pw@220@01[i@230@01] | live]
-(push) ; 15
-; [then-branch: 174 | !(left@22@01 <= pw@220@01[i@230@01])]
-(assert (not (<= left@22@01 (Seq_index pw@220@01 i@230@01))))
-(pop) ; 15
-(push) ; 15
-; [else-branch: 174 | left@22@01 <= pw@220@01[i@230@01]]
-(assert (<= left@22@01 (Seq_index pw@220@01 i@230@01)))
-; [eval] pw[i] <= right
-; [eval] pw[i]
-(push) ; 16
-(assert (not (>= i@230@01 0)))
-(check-sat)
-; unsat
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 16
-(assert (not (< i@230@01 (Seq_length pw@220@01))))
-(check-sat)
-; unsat
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 15
-(pop) ; 14
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<= left@22@01 (Seq_index pw@220@01 i@230@01))
-  (not (<= left@22@01 (Seq_index pw@220@01 i@230@01)))))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 173 | !(left@22@01 <= i@230@01 && i@230@01 <= right@23@01)]
-(assert (not (and (<= left@22@01 i@230@01) (<= i@230@01 right@23@01))))
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-(assert (=>
-  (and (<= left@22@01 i@230@01) (<= i@230@01 right@23@01))
-  (and
-    (<= left@22@01 i@230@01)
-    (<= i@230@01 right@23@01)
-    (or
-      (<= left@22@01 (Seq_index pw@220@01 i@230@01))
-      (not (<= left@22@01 (Seq_index pw@220@01 i@230@01)))))))
-; Joined path conditions
-(assert (or
-  (not (and (<= left@22@01 i@230@01) (<= i@230@01 right@23@01)))
-  (and (<= left@22@01 i@230@01) (<= i@230@01 right@23@01))))
-(pop) ; 11
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@230@01 Int)) (!
-  (and
-    (or (<= left@22@01 i@230@01) (not (<= left@22@01 i@230@01)))
-    (=>
-      (and (<= left@22@01 i@230@01) (<= i@230@01 right@23@01))
-      (and
-        (<= left@22@01 i@230@01)
-        (<= i@230@01 right@23@01)
-        (or
-          (<= left@22@01 (Seq_index pw@220@01 i@230@01))
-          (not (<= left@22@01 (Seq_index pw@220@01 i@230@01))))))
-    (or
-      (not (and (<= left@22@01 i@230@01) (<= i@230@01 right@23@01)))
-      (and (<= left@22@01 i@230@01) (<= i@230@01 right@23@01))))
-  :pattern ((Seq_index pw@220@01 i@230@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@105@15@105@91-aux|)))
-(push) ; 11
-(assert (not (forall ((i@230@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@230@01) (<= i@230@01 right@23@01))
-    (and
-      (<= left@22@01 (Seq_index pw@220@01 i@230@01))
-      (<= (Seq_index pw@220@01 i@230@01) right@23@01)))
-  :pattern ((Seq_index pw@220@01 i@230@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@105@15@105@91|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.01s
-; (get-info :all-statistics)
-(assert (forall ((i@230@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@230@01) (<= i@230@01 right@23@01))
-    (and
-      (<= left@22@01 (Seq_index pw@220@01 i@230@01))
-      (<= (Seq_index pw@220@01 i@230@01) right@23@01)))
-  :pattern ((Seq_index pw@220@01 i@230@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@105@15@105@91|)))
-; [eval] (forall i: Int, k: Int :: { pw[i], pw[k] } left <= i && (i < k && k <= right) ==> pw[i] != pw[k])
-(declare-const i@231@01 Int)
-(declare-const k@232@01 Int)
-(push) ; 11
-; [eval] left <= i && (i < k && k <= right) ==> pw[i] != pw[k]
-; [eval] left <= i && (i < k && k <= right)
-; [eval] left <= i
-(push) ; 12
-; [then-branch: 175 | !(left@22@01 <= i@231@01) | live]
-; [else-branch: 175 | left@22@01 <= i@231@01 | live]
-(push) ; 13
-; [then-branch: 175 | !(left@22@01 <= i@231@01)]
-(assert (not (<= left@22@01 i@231@01)))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 175 | left@22@01 <= i@231@01]
-(assert (<= left@22@01 i@231@01))
-; [eval] i < k
-(push) ; 14
-; [then-branch: 176 | !(i@231@01 < k@232@01) | live]
-; [else-branch: 176 | i@231@01 < k@232@01 | live]
-(push) ; 15
-; [then-branch: 176 | !(i@231@01 < k@232@01)]
-(assert (not (< i@231@01 k@232@01)))
-(pop) ; 15
-(push) ; 15
-; [else-branch: 176 | i@231@01 < k@232@01]
-(assert (< i@231@01 k@232@01))
-; [eval] k <= right
-(pop) ; 15
-(pop) ; 14
-; Joined path conditions
-; Joined path conditions
-(assert (or (< i@231@01 k@232@01) (not (< i@231@01 k@232@01))))
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  (<= left@22@01 i@231@01)
-  (and
-    (<= left@22@01 i@231@01)
-    (or (< i@231@01 k@232@01) (not (< i@231@01 k@232@01))))))
-(assert (or (<= left@22@01 i@231@01) (not (<= left@22@01 i@231@01))))
-(push) ; 12
-; [then-branch: 177 | left@22@01 <= i@231@01 && i@231@01 < k@232@01 && k@232@01 <= right@23@01 | live]
-; [else-branch: 177 | !(left@22@01 <= i@231@01 && i@231@01 < k@232@01 && k@232@01 <= right@23@01) | live]
-(push) ; 13
-; [then-branch: 177 | left@22@01 <= i@231@01 && i@231@01 < k@232@01 && k@232@01 <= right@23@01]
-(assert (and
-  (<= left@22@01 i@231@01)
-  (and (< i@231@01 k@232@01) (<= k@232@01 right@23@01))))
-; [eval] pw[i] != pw[k]
-; [eval] pw[i]
-(push) ; 14
-(assert (not (>= i@231@01 0)))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-(assert (not (< i@231@01 (Seq_length pw@220@01))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [eval] pw[k]
-(push) ; 14
-(assert (not (>= k@232@01 0)))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-(assert (not (< k@232@01 (Seq_length pw@220@01))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 13
-(push) ; 13
-; [else-branch: 177 | !(left@22@01 <= i@231@01 && i@231@01 < k@232@01 && k@232@01 <= right@23@01)]
-(assert (not
-  (and
-    (<= left@22@01 i@231@01)
-    (and (< i@231@01 k@232@01) (<= k@232@01 right@23@01)))))
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-(assert (=>
-  (and
-    (<= left@22@01 i@231@01)
-    (and (< i@231@01 k@232@01) (<= k@232@01 right@23@01)))
-  (and (<= left@22@01 i@231@01) (< i@231@01 k@232@01) (<= k@232@01 right@23@01))))
-; Joined path conditions
-(assert (or
-  (not
-    (and
-      (<= left@22@01 i@231@01)
-      (and (< i@231@01 k@232@01) (<= k@232@01 right@23@01))))
-  (and
-    (<= left@22@01 i@231@01)
-    (and (< i@231@01 k@232@01) (<= k@232@01 right@23@01)))))
-(pop) ; 11
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@231@01 Int) (k@232@01 Int)) (!
-  (and
-    (=>
-      (<= left@22@01 i@231@01)
-      (and
-        (<= left@22@01 i@231@01)
-        (or (< i@231@01 k@232@01) (not (< i@231@01 k@232@01)))))
-    (or (<= left@22@01 i@231@01) (not (<= left@22@01 i@231@01)))
-    (=>
-      (and
-        (<= left@22@01 i@231@01)
-        (and (< i@231@01 k@232@01) (<= k@232@01 right@23@01)))
-      (and
-        (<= left@22@01 i@231@01)
-        (< i@231@01 k@232@01)
-        (<= k@232@01 right@23@01)))
-    (or
-      (not
-        (and
-          (<= left@22@01 i@231@01)
-          (and (< i@231@01 k@232@01) (<= k@232@01 right@23@01))))
-      (and
-        (<= left@22@01 i@231@01)
-        (and (< i@231@01 k@232@01) (<= k@232@01 right@23@01)))))
-  :pattern ((Seq_index pw@220@01 i@231@01) (Seq_index pw@220@01 k@232@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@106@15@106@91-aux|)))
-(push) ; 11
-(assert (not (forall ((i@231@01 Int) (k@232@01 Int)) (!
-  (=>
-    (and
-      (<= left@22@01 i@231@01)
-      (and (< i@231@01 k@232@01) (<= k@232@01 right@23@01)))
-    (not (= (Seq_index pw@220@01 i@231@01) (Seq_index pw@220@01 k@232@01))))
-  :pattern ((Seq_index pw@220@01 i@231@01) (Seq_index pw@220@01 k@232@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@106@15@106@91|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.02s
-; (get-info :all-statistics)
-(assert (forall ((i@231@01 Int) (k@232@01 Int)) (!
-  (=>
-    (and
-      (<= left@22@01 i@231@01)
-      (and (< i@231@01 k@232@01) (<= k@232@01 right@23@01)))
-    (not (= (Seq_index pw@220@01 i@231@01) (Seq_index pw@220@01 k@232@01))))
-  :pattern ((Seq_index pw@220@01 i@231@01) (Seq_index pw@220@01 k@232@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@106@15@106@91|)))
-; [eval] (forall i$0: Int :: { pw[i$0] } left <= i$0 && i$0 <= right ==> loc(a, i$0).val == old(loc(a, pw[i$0]).val))
-(declare-const i$0@233@01 Int)
-(push) ; 11
-; [eval] left <= i$0 && i$0 <= right ==> loc(a, i$0).val == old(loc(a, pw[i$0]).val)
-; [eval] left <= i$0 && i$0 <= right
-; [eval] left <= i$0
-(push) ; 12
-; [then-branch: 178 | !(left@22@01 <= i$0@233@01) | live]
-; [else-branch: 178 | left@22@01 <= i$0@233@01 | live]
-(push) ; 13
-; [then-branch: 178 | !(left@22@01 <= i$0@233@01)]
-(assert (not (<= left@22@01 i$0@233@01)))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 178 | left@22@01 <= i$0@233@01]
-(assert (<= left@22@01 i$0@233@01))
-; [eval] i$0 <= right
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i$0@233@01) (not (<= left@22@01 i$0@233@01))))
-(push) ; 12
-; [then-branch: 179 | left@22@01 <= i$0@233@01 && i$0@233@01 <= right@23@01 | live]
-; [else-branch: 179 | !(left@22@01 <= i$0@233@01 && i$0@233@01 <= right@23@01) | live]
-(push) ; 13
-; [then-branch: 179 | left@22@01 <= i$0@233@01 && i$0@233@01 <= right@23@01]
-(assert (and (<= left@22@01 i$0@233@01) (<= i$0@233@01 right@23@01)))
-; [eval] loc(a, i$0).val == old(loc(a, pw[i$0]).val)
-; [eval] loc(a, i$0)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef25|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 j@172@01))
-      (=
-        ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-    :qid |qp.fvfValDef26|))))
-(push) ; 14
-(assert (not (<
-  $Perm.No
-  (+
-    (ite
-      (and
-        (img@176@01 (loc<Ref> a@21@01 i$0@233@01))
-        (and
-          (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 i$0@233@01)))
-          (<= (inv@175@01 (loc<Ref> a@21@01 i$0@233@01)) right@23@01)))
-      (- $Perm.Write (pTaken@194@01 (loc<Ref> a@21@01 i$0@233@01)))
-      $Perm.No)
-    (ite
-      (= (loc<Ref> a@21@01 i$0@233@01) (loc<Ref> a@21@01 j@172@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [eval] old(loc(a, pw[i$0]).val)
-; [eval] loc(a, pw[i$0])
-; [eval] pw[i$0]
-(push) ; 14
-(assert (not (>= i$0@233@01 0)))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-(assert (not (< i$0@233@01 (Seq_length pw@220@01))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-(assert (not (and
-  (img@30@01 (loc<Ref> a@21@01 (Seq_index pw@220@01 i$0@233@01)))
-  (and
-    (<=
-      left@22@01
-      (inv@29@01 (loc<Ref> a@21@01 (Seq_index pw@220@01 i$0@233@01))))
-    (<=
-      (inv@29@01 (loc<Ref> a@21@01 (Seq_index pw@220@01 i$0@233@01)))
-      right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 13
-(push) ; 13
-; [else-branch: 179 | !(left@22@01 <= i$0@233@01 && i$0@233@01 <= right@23@01)]
-(assert (not (and (<= left@22@01 i$0@233@01) (<= i$0@233@01 right@23@01))))
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef25|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 j@172@01))
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-  :qid |qp.fvfValDef26|)))
-; Joined path conditions
-(assert (or
-  (not (and (<= left@22@01 i$0@233@01) (<= i$0@233@01 right@23@01)))
-  (and (<= left@22@01 i$0@233@01) (<= i$0@233@01 right@23@01))))
-(pop) ; 11
-; Nested auxiliary terms: globals (aux)
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- $Perm.Write (pTaken@194@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef25|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 j@172@01))
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@217@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@218@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@217@01  $FVF<val>) r))
-  :qid |qp.fvfValDef26|)))
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i$0@233@01 Int)) (!
-  (and
-    (or (<= left@22@01 i$0@233@01) (not (<= left@22@01 i$0@233@01)))
-    (or
-      (not (and (<= left@22@01 i$0@233@01) (<= i$0@233@01 right@23@01)))
-      (and (<= left@22@01 i$0@233@01) (<= i$0@233@01 right@23@01))))
-  :pattern ((Seq_index pw@220@01 i$0@233@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@108@15@108@43-aux|)))
-(push) ; 11
-(assert (not (forall ((i$0@233@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i$0@233@01) (<= i$0@233@01 right@23@01))
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) (loc<Ref> a@21@01 i$0@233@01))
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@27@01)))))) (loc<Ref> a@21@01 (Seq_index
-        pw@220@01
-        i$0@233@01)))))
-  :pattern ((Seq_index pw@220@01 i$0@233@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@108@15@108@43|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.01s
-; (get-info :all-statistics)
-(assert (forall ((i$0@233@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i$0@233@01) (<= i$0@233@01 right@23@01))
-    (=
-      ($FVF.lookup_val (as sm@218@01  $FVF<val>) (loc<Ref> a@21@01 i$0@233@01))
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@27@01)))))) (loc<Ref> a@21@01 (Seq_index
-        pw@220@01
-        i$0@233@01)))))
-  :pattern ((Seq_index pw@220@01 i$0@233@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@108@15@108@43|)))
-(pop) ; 10
-(pop) ; 9
-(pop) ; 8
-(push) ; 8
-; [else-branch: 150 | !(Lookup(val, First:(Second:(Second:(Second:(Second:($t@173@01))))), loc[Ref](a@21@01, j@172@01)) < pivotValue@43@01)]
-(assert (not
-  (<
-    ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 j@172@01))
-    pivotValue@43@01)))
-(pop) ; 8
-; [eval] !(loc(a, j).val < pivotValue)
-; [eval] loc(a, j).val < pivotValue
-; [eval] loc(a, j)
-(push) ; 8
-(assert (not (and
-  (img@176@01 (loc<Ref> a@21@01 j@172@01))
-  (and
-    (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 j@172@01)))
-    (<= (inv@175@01 (loc<Ref> a@21@01 j@172@01)) right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (<
-  ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 j@172@01))
-  pivotValue@43@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 j@172@01))
-    pivotValue@43@01))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 180 | !(Lookup(val, First:(Second:(Second:(Second:(Second:($t@173@01))))), loc[Ref](a@21@01, j@172@01)) < pivotValue@43@01) | live]
-; [else-branch: 180 | Lookup(val, First:(Second:(Second:(Second:(Second:($t@173@01))))), loc[Ref](a@21@01, j@172@01)) < pivotValue@43@01 | live]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 180 | !(Lookup(val, First:(Second:(Second:(Second:(Second:($t@173@01))))), loc[Ref](a@21@01, j@172@01)) < pivotValue@43@01)]
-(assert (not
-  (<
-    ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 j@172@01))
-    pivotValue@43@01)))
-; [exec]
-; j := j + 1
-; [eval] j + 1
-(declare-const j@234@01 Int)
-(assert (= j@234@01 (+ j@172@01 1)))
-; Loop head block: Re-establish invariant
-; [eval] left <= j
-(push) ; 9
-(assert (not (<= left@22@01 j@234@01)))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-(assert (<= left@22@01 j@234@01))
-; [eval] j <= right
-(push) ; 9
-(assert (not (<= j@234@01 right@23@01)))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-(assert (<= j@234@01 right@23@01))
-; [eval] left <= storeIndex
-; [eval] storeIndex <= j
-(push) ; 9
-(assert (not (<= storeIndex@171@01 j@234@01)))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-(assert (<= storeIndex@171@01 j@234@01))
-(declare-const i@235@01 Int)
-(push) ; 9
-; [eval] left <= i && i <= right
-; [eval] left <= i
-(push) ; 10
-; [then-branch: 181 | !(left@22@01 <= i@235@01) | live]
-; [else-branch: 181 | left@22@01 <= i@235@01 | live]
-(push) ; 11
-; [then-branch: 181 | !(left@22@01 <= i@235@01)]
-(assert (not (<= left@22@01 i@235@01)))
-(pop) ; 11
-(push) ; 11
-; [else-branch: 181 | left@22@01 <= i@235@01]
-(assert (<= left@22@01 i@235@01))
-; [eval] i <= right
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i@235@01) (not (<= left@22@01 i@235@01))))
-(assert (and (<= left@22@01 i@235@01) (<= i@235@01 right@23@01)))
-; [eval] loc(a, i)
-(pop) ; 9
-(declare-fun inv@236@01 ($Ref) Int)
-(declare-fun img@237@01 ($Ref) Bool)
-; Nested auxiliary terms: globals
-; Nested auxiliary terms: non-globals
-(assert (forall ((i@235@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@235@01) (<= i@235@01 right@23@01))
-    (or (<= left@22@01 i@235@01) (not (<= left@22@01 i@235@01))))
-  :pattern ((loc<Ref> a@21@01 i@235@01))
-  :qid |val-aux|)))
-; Check receiver injectivity
-(push) ; 9
-(assert (not (forall ((i1@235@01 Int) (i2@235@01 Int)) (!
-  (=>
-    (and
-      (and (<= left@22@01 i1@235@01) (<= i1@235@01 right@23@01))
-      (and (<= left@22@01 i2@235@01) (<= i2@235@01 right@23@01))
-      (= (loc<Ref> a@21@01 i1@235@01) (loc<Ref> a@21@01 i2@235@01)))
-    (= i1@235@01 i2@235@01))
-  
-  :qid |val-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall ((i@235@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@235@01) (<= i@235@01 right@23@01))
-    (and
-      (= (inv@236@01 (loc<Ref> a@21@01 i@235@01)) i@235@01)
-      (img@237@01 (loc<Ref> a@21@01 i@235@01))))
-  :pattern ((loc<Ref> a@21@01 i@235@01))
-  :qid |val-invOfFct|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (and
-      (img@237@01 r)
-      (and (<= left@22@01 (inv@236@01 r)) (<= (inv@236@01 r) right@23@01)))
-    (= (loc<Ref> a@21@01 (inv@236@01 r)) r))
-  :pattern ((inv@236@01 r))
-  :qid |val-fctOfInv|)))
-; Precomputing data for removing quantified permissions
-(define-fun pTaken@238@01 ((r $Ref)) $Perm
-  (ite
-    (and
-      (and (<= left@22@01 (inv@236@01 r)) (<= (inv@236@01 r) right@23@01))
-      (img@237@01 r)
-      (= r (loc<Ref> a@21@01 (inv@236@01 r))))
-    ($Perm.min
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        $Perm.Write
-        $Perm.No)
-      $Perm.Write)
-    $Perm.No))
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Chunk depleted?
-(set-option :timeout 0)
-(push) ; 9
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=
-    (-
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        $Perm.Write
-        $Perm.No)
-      (pTaken@238@01 r))
-    $Perm.No)
-  
-  :qid |quant-u-18991|))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; Intermediate check if already taken enough permissions
-(set-option :timeout 0)
-(push) ; 9
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=>
-    (and
-      (and (<= left@22@01 (inv@236@01 r)) (<= (inv@236@01 r) right@23@01))
-      (img@237@01 r)
-      (= r (loc<Ref> a@21@01 (inv@236@01 r))))
-    (= (- $Perm.Write (pTaken@238@01 r)) $Perm.No))
-  
-  :qid |quant-u-18992|))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; Final check if taken enough permissions
-; Done removing quantified permissions
-; [eval] loc(a, right).val == pivotValue
-; [eval] loc(a, right)
-(set-option :timeout 0)
-(push) ; 9
-(assert (not (and
-  (img@176@01 (loc<Ref> a@21@01 right@23@01))
-  (and
-    (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 right@23@01)))
-    (<= (inv@175@01 (loc<Ref> a@21@01 right@23@01)) right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [eval] (forall i: Int :: { loc(a, i) } left <= i && i < storeIndex ==> loc(a, i).val < pivotValue)
-(declare-const i@239@01 Int)
-(push) ; 9
-; [eval] left <= i && i < storeIndex ==> loc(a, i).val < pivotValue
-; [eval] left <= i && i < storeIndex
-; [eval] left <= i
-(push) ; 10
-; [then-branch: 182 | !(left@22@01 <= i@239@01) | live]
-; [else-branch: 182 | left@22@01 <= i@239@01 | live]
-(push) ; 11
-; [then-branch: 182 | !(left@22@01 <= i@239@01)]
-(assert (not (<= left@22@01 i@239@01)))
-(pop) ; 11
-(push) ; 11
-; [else-branch: 182 | left@22@01 <= i@239@01]
-(assert (<= left@22@01 i@239@01))
-; [eval] i < storeIndex
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i@239@01) (not (<= left@22@01 i@239@01))))
-(push) ; 10
-; [then-branch: 183 | left@22@01 <= i@239@01 && i@239@01 < storeIndex@171@01 | live]
-; [else-branch: 183 | !(left@22@01 <= i@239@01 && i@239@01 < storeIndex@171@01) | live]
-(push) ; 11
-; [then-branch: 183 | left@22@01 <= i@239@01 && i@239@01 < storeIndex@171@01]
-(assert (and (<= left@22@01 i@239@01) (< i@239@01 storeIndex@171@01)))
-; [eval] loc(a, i).val < pivotValue
-; [eval] loc(a, i)
-(push) ; 12
-(assert (not (and
-  (img@176@01 (loc<Ref> a@21@01 i@239@01))
-  (and
-    (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 i@239@01)))
-    (<= (inv@175@01 (loc<Ref> a@21@01 i@239@01)) right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 11
-(push) ; 11
-; [else-branch: 183 | !(left@22@01 <= i@239@01 && i@239@01 < storeIndex@171@01)]
-(assert (not (and (<= left@22@01 i@239@01) (< i@239@01 storeIndex@171@01))))
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (not (and (<= left@22@01 i@239@01) (< i@239@01 storeIndex@171@01)))
-  (and (<= left@22@01 i@239@01) (< i@239@01 storeIndex@171@01))))
-(pop) ; 9
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@239@01 Int)) (!
-  (and
-    (or (<= left@22@01 i@239@01) (not (<= left@22@01 i@239@01)))
-    (or
-      (not (and (<= left@22@01 i@239@01) (< i@239@01 storeIndex@171@01)))
-      (and (<= left@22@01 i@239@01) (< i@239@01 storeIndex@171@01))))
-  :pattern ((loc<Ref> a@21@01 i@239@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@101@15@101@90-aux|)))
-(push) ; 9
-(assert (not (forall ((i@239@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@239@01) (< i@239@01 storeIndex@171@01))
-    (<
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 i@239@01))
-      pivotValue@43@01))
-  :pattern ((loc<Ref> a@21@01 i@239@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@101@15@101@90|))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-(assert (forall ((i@239@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@239@01) (< i@239@01 storeIndex@171@01))
-    (<
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 i@239@01))
-      pivotValue@43@01))
-  :pattern ((loc<Ref> a@21@01 i@239@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@101@15@101@90|)))
-; [eval] (forall i: Int :: { loc(a, i) } storeIndex <= i && i < j ==> pivotValue <= loc(a, i).val)
-(declare-const i@240@01 Int)
-(push) ; 9
-; [eval] storeIndex <= i && i < j ==> pivotValue <= loc(a, i).val
-; [eval] storeIndex <= i && i < j
-; [eval] storeIndex <= i
-(push) ; 10
-; [then-branch: 184 | !(storeIndex@171@01 <= i@240@01) | live]
-; [else-branch: 184 | storeIndex@171@01 <= i@240@01 | live]
-(push) ; 11
-; [then-branch: 184 | !(storeIndex@171@01 <= i@240@01)]
-(assert (not (<= storeIndex@171@01 i@240@01)))
-(pop) ; 11
-(push) ; 11
-; [else-branch: 184 | storeIndex@171@01 <= i@240@01]
-(assert (<= storeIndex@171@01 i@240@01))
-; [eval] i < j
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= storeIndex@171@01 i@240@01) (not (<= storeIndex@171@01 i@240@01))))
-(push) ; 10
-; [then-branch: 185 | storeIndex@171@01 <= i@240@01 && i@240@01 < j@234@01 | live]
-; [else-branch: 185 | !(storeIndex@171@01 <= i@240@01 && i@240@01 < j@234@01) | live]
-(push) ; 11
-; [then-branch: 185 | storeIndex@171@01 <= i@240@01 && i@240@01 < j@234@01]
-(assert (and (<= storeIndex@171@01 i@240@01) (< i@240@01 j@234@01)))
-; [eval] pivotValue <= loc(a, i).val
-; [eval] loc(a, i)
-(push) ; 12
-(assert (not (and
-  (img@176@01 (loc<Ref> a@21@01 i@240@01))
-  (and
-    (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 i@240@01)))
-    (<= (inv@175@01 (loc<Ref> a@21@01 i@240@01)) right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 11
-(push) ; 11
-; [else-branch: 185 | !(storeIndex@171@01 <= i@240@01 && i@240@01 < j@234@01)]
-(assert (not (and (<= storeIndex@171@01 i@240@01) (< i@240@01 j@234@01))))
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (not (and (<= storeIndex@171@01 i@240@01) (< i@240@01 j@234@01)))
-  (and (<= storeIndex@171@01 i@240@01) (< i@240@01 j@234@01))))
-(pop) ; 9
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@240@01 Int)) (!
-  (and
-    (or (<= storeIndex@171@01 i@240@01) (not (<= storeIndex@171@01 i@240@01)))
-    (or
-      (not (and (<= storeIndex@171@01 i@240@01) (< i@240@01 j@234@01)))
-      (and (<= storeIndex@171@01 i@240@01) (< i@240@01 j@234@01))))
-  :pattern ((loc<Ref> a@21@01 i@240@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@102@15@102@88-aux|)))
-(push) ; 9
-(assert (not (forall ((i@240@01 Int)) (!
-  (=>
-    (and (<= storeIndex@171@01 i@240@01) (< i@240@01 j@234@01))
-    (<=
-      pivotValue@43@01
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 i@240@01))))
-  :pattern ((loc<Ref> a@21@01 i@240@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@102@15@102@88|))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-(assert (forall ((i@240@01 Int)) (!
-  (=>
-    (and (<= storeIndex@171@01 i@240@01) (< i@240@01 j@234@01))
-    (<=
-      pivotValue@43@01
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 i@240@01))))
-  :pattern ((loc<Ref> a@21@01 i@240@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@102@15@102@88|)))
-; [eval] |pw| == right + 1
-; [eval] |pw|
-; [eval] right + 1
-; [eval] (forall i: Int :: { pw[i] } left <= i && i <= right ==> left <= pw[i] && pw[i] <= right)
-(declare-const i@241@01 Int)
-(push) ; 9
-; [eval] left <= i && i <= right ==> left <= pw[i] && pw[i] <= right
-; [eval] left <= i && i <= right
-; [eval] left <= i
-(push) ; 10
-; [then-branch: 186 | !(left@22@01 <= i@241@01) | live]
-; [else-branch: 186 | left@22@01 <= i@241@01 | live]
-(push) ; 11
-; [then-branch: 186 | !(left@22@01 <= i@241@01)]
-(assert (not (<= left@22@01 i@241@01)))
-(pop) ; 11
-(push) ; 11
-; [else-branch: 186 | left@22@01 <= i@241@01]
-(assert (<= left@22@01 i@241@01))
-; [eval] i <= right
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i@241@01) (not (<= left@22@01 i@241@01))))
-(push) ; 10
-; [then-branch: 187 | left@22@01 <= i@241@01 && i@241@01 <= right@23@01 | live]
-; [else-branch: 187 | !(left@22@01 <= i@241@01 && i@241@01 <= right@23@01) | live]
-(push) ; 11
-; [then-branch: 187 | left@22@01 <= i@241@01 && i@241@01 <= right@23@01]
-(assert (and (<= left@22@01 i@241@01) (<= i@241@01 right@23@01)))
-; [eval] left <= pw[i] && pw[i] <= right
-; [eval] left <= pw[i]
-; [eval] pw[i]
-(push) ; 12
-(assert (not (>= i@241@01 0)))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 12
-(assert (not (< i@241@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 12
-; [then-branch: 188 | !(left@22@01 <= pw@170@01[i@241@01]) | live]
-; [else-branch: 188 | left@22@01 <= pw@170@01[i@241@01] | live]
-(push) ; 13
-; [then-branch: 188 | !(left@22@01 <= pw@170@01[i@241@01])]
-(assert (not (<= left@22@01 (Seq_index pw@170@01 i@241@01))))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 188 | left@22@01 <= pw@170@01[i@241@01]]
-(assert (<= left@22@01 (Seq_index pw@170@01 i@241@01)))
-; [eval] pw[i] <= right
-; [eval] pw[i]
-(push) ; 14
-(assert (not (>= i@241@01 0)))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 14
-(assert (not (< i@241@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<= left@22@01 (Seq_index pw@170@01 i@241@01))
-  (not (<= left@22@01 (Seq_index pw@170@01 i@241@01)))))
-(pop) ; 11
-(push) ; 11
-; [else-branch: 187 | !(left@22@01 <= i@241@01 && i@241@01 <= right@23@01)]
-(assert (not (and (<= left@22@01 i@241@01) (<= i@241@01 right@23@01))))
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-(assert (=>
-  (and (<= left@22@01 i@241@01) (<= i@241@01 right@23@01))
-  (and
-    (<= left@22@01 i@241@01)
-    (<= i@241@01 right@23@01)
-    (or
-      (<= left@22@01 (Seq_index pw@170@01 i@241@01))
-      (not (<= left@22@01 (Seq_index pw@170@01 i@241@01)))))))
-; Joined path conditions
-(assert (or
-  (not (and (<= left@22@01 i@241@01) (<= i@241@01 right@23@01)))
-  (and (<= left@22@01 i@241@01) (<= i@241@01 right@23@01))))
-(pop) ; 9
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@241@01 Int)) (!
-  (and
-    (or (<= left@22@01 i@241@01) (not (<= left@22@01 i@241@01)))
-    (=>
-      (and (<= left@22@01 i@241@01) (<= i@241@01 right@23@01))
-      (and
-        (<= left@22@01 i@241@01)
-        (<= i@241@01 right@23@01)
-        (or
-          (<= left@22@01 (Seq_index pw@170@01 i@241@01))
-          (not (<= left@22@01 (Seq_index pw@170@01 i@241@01))))))
-    (or
-      (not (and (<= left@22@01 i@241@01) (<= i@241@01 right@23@01)))
-      (and (<= left@22@01 i@241@01) (<= i@241@01 right@23@01))))
-  :pattern ((Seq_index pw@170@01 i@241@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@105@15@105@91-aux|)))
-(push) ; 9
-(assert (not (forall ((i@241@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@241@01) (<= i@241@01 right@23@01))
-    (and
-      (<= left@22@01 (Seq_index pw@170@01 i@241@01))
-      (<= (Seq_index pw@170@01 i@241@01) right@23@01)))
-  :pattern ((Seq_index pw@170@01 i@241@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@105@15@105@91|))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-(assert (forall ((i@241@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@241@01) (<= i@241@01 right@23@01))
-    (and
-      (<= left@22@01 (Seq_index pw@170@01 i@241@01))
-      (<= (Seq_index pw@170@01 i@241@01) right@23@01)))
-  :pattern ((Seq_index pw@170@01 i@241@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@105@15@105@91|)))
-; [eval] (forall i: Int, k: Int :: { pw[i], pw[k] } left <= i && (i < k && k <= right) ==> pw[i] != pw[k])
-(declare-const i@242@01 Int)
-(declare-const k@243@01 Int)
-(push) ; 9
-; [eval] left <= i && (i < k && k <= right) ==> pw[i] != pw[k]
-; [eval] left <= i && (i < k && k <= right)
-; [eval] left <= i
-(push) ; 10
-; [then-branch: 189 | !(left@22@01 <= i@242@01) | live]
-; [else-branch: 189 | left@22@01 <= i@242@01 | live]
-(push) ; 11
-; [then-branch: 189 | !(left@22@01 <= i@242@01)]
-(assert (not (<= left@22@01 i@242@01)))
-(pop) ; 11
-(push) ; 11
-; [else-branch: 189 | left@22@01 <= i@242@01]
-(assert (<= left@22@01 i@242@01))
-; [eval] i < k
-(push) ; 12
-; [then-branch: 190 | !(i@242@01 < k@243@01) | live]
-; [else-branch: 190 | i@242@01 < k@243@01 | live]
-(push) ; 13
-; [then-branch: 190 | !(i@242@01 < k@243@01)]
-(assert (not (< i@242@01 k@243@01)))
-(pop) ; 13
-(push) ; 13
-; [else-branch: 190 | i@242@01 < k@243@01]
-(assert (< i@242@01 k@243@01))
-; [eval] k <= right
-(pop) ; 13
-(pop) ; 12
-; Joined path conditions
-; Joined path conditions
-(assert (or (< i@242@01 k@243@01) (not (< i@242@01 k@243@01))))
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  (<= left@22@01 i@242@01)
-  (and
-    (<= left@22@01 i@242@01)
-    (or (< i@242@01 k@243@01) (not (< i@242@01 k@243@01))))))
-(assert (or (<= left@22@01 i@242@01) (not (<= left@22@01 i@242@01))))
-(push) ; 10
-; [then-branch: 191 | left@22@01 <= i@242@01 && i@242@01 < k@243@01 && k@243@01 <= right@23@01 | live]
-; [else-branch: 191 | !(left@22@01 <= i@242@01 && i@242@01 < k@243@01 && k@243@01 <= right@23@01) | live]
-(push) ; 11
-; [then-branch: 191 | left@22@01 <= i@242@01 && i@242@01 < k@243@01 && k@243@01 <= right@23@01]
-(assert (and
-  (<= left@22@01 i@242@01)
-  (and (< i@242@01 k@243@01) (<= k@243@01 right@23@01))))
-; [eval] pw[i] != pw[k]
-; [eval] pw[i]
-(push) ; 12
-(assert (not (>= i@242@01 0)))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 12
-(assert (not (< i@242@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [eval] pw[k]
-(push) ; 12
-(assert (not (>= k@243@01 0)))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 12
-(assert (not (< k@243@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 11
-(push) ; 11
-; [else-branch: 191 | !(left@22@01 <= i@242@01 && i@242@01 < k@243@01 && k@243@01 <= right@23@01)]
-(assert (not
-  (and
-    (<= left@22@01 i@242@01)
-    (and (< i@242@01 k@243@01) (<= k@243@01 right@23@01)))))
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-(assert (=>
-  (and
-    (<= left@22@01 i@242@01)
-    (and (< i@242@01 k@243@01) (<= k@243@01 right@23@01)))
-  (and (<= left@22@01 i@242@01) (< i@242@01 k@243@01) (<= k@243@01 right@23@01))))
-; Joined path conditions
-(assert (or
-  (not
-    (and
-      (<= left@22@01 i@242@01)
-      (and (< i@242@01 k@243@01) (<= k@243@01 right@23@01))))
-  (and
-    (<= left@22@01 i@242@01)
-    (and (< i@242@01 k@243@01) (<= k@243@01 right@23@01)))))
-(pop) ; 9
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@242@01 Int) (k@243@01 Int)) (!
-  (and
-    (=>
-      (<= left@22@01 i@242@01)
-      (and
-        (<= left@22@01 i@242@01)
-        (or (< i@242@01 k@243@01) (not (< i@242@01 k@243@01)))))
-    (or (<= left@22@01 i@242@01) (not (<= left@22@01 i@242@01)))
-    (=>
-      (and
-        (<= left@22@01 i@242@01)
-        (and (< i@242@01 k@243@01) (<= k@243@01 right@23@01)))
-      (and
-        (<= left@22@01 i@242@01)
-        (< i@242@01 k@243@01)
-        (<= k@243@01 right@23@01)))
-    (or
-      (not
-        (and
-          (<= left@22@01 i@242@01)
-          (and (< i@242@01 k@243@01) (<= k@243@01 right@23@01))))
-      (and
-        (<= left@22@01 i@242@01)
-        (and (< i@242@01 k@243@01) (<= k@243@01 right@23@01)))))
-  :pattern ((Seq_index pw@170@01 i@242@01) (Seq_index pw@170@01 k@243@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@106@15@106@91-aux|)))
-(push) ; 9
-(assert (not (forall ((i@242@01 Int) (k@243@01 Int)) (!
-  (=>
-    (and
-      (<= left@22@01 i@242@01)
-      (and (< i@242@01 k@243@01) (<= k@243@01 right@23@01)))
-    (not (= (Seq_index pw@170@01 i@242@01) (Seq_index pw@170@01 k@243@01))))
-  :pattern ((Seq_index pw@170@01 i@242@01) (Seq_index pw@170@01 k@243@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@106@15@106@91|))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-(assert (forall ((i@242@01 Int) (k@243@01 Int)) (!
-  (=>
-    (and
-      (<= left@22@01 i@242@01)
-      (and (< i@242@01 k@243@01) (<= k@243@01 right@23@01)))
-    (not (= (Seq_index pw@170@01 i@242@01) (Seq_index pw@170@01 k@243@01))))
-  :pattern ((Seq_index pw@170@01 i@242@01) (Seq_index pw@170@01 k@243@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@106@15@106@91|)))
-; [eval] (forall i$0: Int :: { pw[i$0] } left <= i$0 && i$0 <= right ==> loc(a, i$0).val == old(loc(a, pw[i$0]).val))
-(declare-const i$0@244@01 Int)
-(push) ; 9
-; [eval] left <= i$0 && i$0 <= right ==> loc(a, i$0).val == old(loc(a, pw[i$0]).val)
-; [eval] left <= i$0 && i$0 <= right
-; [eval] left <= i$0
-(push) ; 10
-; [then-branch: 192 | !(left@22@01 <= i$0@244@01) | live]
-; [else-branch: 192 | left@22@01 <= i$0@244@01 | live]
-(push) ; 11
-; [then-branch: 192 | !(left@22@01 <= i$0@244@01)]
-(assert (not (<= left@22@01 i$0@244@01)))
-(pop) ; 11
-(push) ; 11
-; [else-branch: 192 | left@22@01 <= i$0@244@01]
-(assert (<= left@22@01 i$0@244@01))
-; [eval] i$0 <= right
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i$0@244@01) (not (<= left@22@01 i$0@244@01))))
-(push) ; 10
-; [then-branch: 193 | left@22@01 <= i$0@244@01 && i$0@244@01 <= right@23@01 | live]
-; [else-branch: 193 | !(left@22@01 <= i$0@244@01 && i$0@244@01 <= right@23@01) | live]
-(push) ; 11
-; [then-branch: 193 | left@22@01 <= i$0@244@01 && i$0@244@01 <= right@23@01]
-(assert (and (<= left@22@01 i$0@244@01) (<= i$0@244@01 right@23@01)))
-; [eval] loc(a, i$0).val == old(loc(a, pw[i$0]).val)
-; [eval] loc(a, i$0)
-(push) ; 12
-(assert (not (and
-  (img@176@01 (loc<Ref> a@21@01 i$0@244@01))
-  (and
-    (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 i$0@244@01)))
-    (<= (inv@175@01 (loc<Ref> a@21@01 i$0@244@01)) right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [eval] old(loc(a, pw[i$0]).val)
-; [eval] loc(a, pw[i$0])
-; [eval] pw[i$0]
-(push) ; 12
-(assert (not (>= i$0@244@01 0)))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 12
-(assert (not (< i$0@244@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 12
-(assert (not (and
-  (img@30@01 (loc<Ref> a@21@01 (Seq_index pw@170@01 i$0@244@01)))
-  (and
-    (<=
-      left@22@01
-      (inv@29@01 (loc<Ref> a@21@01 (Seq_index pw@170@01 i$0@244@01))))
-    (<=
-      (inv@29@01 (loc<Ref> a@21@01 (Seq_index pw@170@01 i$0@244@01)))
-      right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 11
-(push) ; 11
-; [else-branch: 193 | !(left@22@01 <= i$0@244@01 && i$0@244@01 <= right@23@01)]
-(assert (not (and (<= left@22@01 i$0@244@01) (<= i$0@244@01 right@23@01))))
-(pop) ; 11
-(pop) ; 10
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (not (and (<= left@22@01 i$0@244@01) (<= i$0@244@01 right@23@01)))
-  (and (<= left@22@01 i$0@244@01) (<= i$0@244@01 right@23@01))))
-(pop) ; 9
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i$0@244@01 Int)) (!
-  (and
-    (or (<= left@22@01 i$0@244@01) (not (<= left@22@01 i$0@244@01)))
-    (or
-      (not (and (<= left@22@01 i$0@244@01) (<= i$0@244@01 right@23@01)))
-      (and (<= left@22@01 i$0@244@01) (<= i$0@244@01 right@23@01))))
-  :pattern ((Seq_index pw@170@01 i$0@244@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@108@15@108@43-aux|)))
-(push) ; 9
-(assert (not (forall ((i$0@244@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i$0@244@01) (<= i$0@244@01 right@23@01))
-    (=
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 i$0@244@01))
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@27@01)))))) (loc<Ref> a@21@01 (Seq_index
-        pw@170@01
-        i$0@244@01)))))
-  :pattern ((Seq_index pw@170@01 i$0@244@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@108@15@108@43|))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-(assert (forall ((i$0@244@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i$0@244@01) (<= i$0@244@01 right@23@01))
-    (=
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 i$0@244@01))
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@27@01)))))) (loc<Ref> a@21@01 (Seq_index
-        pw@170@01
-        i$0@244@01)))))
-  :pattern ((Seq_index pw@170@01 i$0@244@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@108@15@108@43|)))
-(pop) ; 8
-(push) ; 8
-; [else-branch: 180 | Lookup(val, First:(Second:(Second:(Second:(Second:($t@173@01))))), loc[Ref](a@21@01, j@172@01)) < pivotValue@43@01]
-(assert (<
-  ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 j@172@01))
-  pivotValue@43@01))
-(pop) ; 8
-(pop) ; 7
-(push) ; 7
-; [else-branch: 149 | !(j@172@01 < right@23@01)]
-(assert (not (< j@172@01 right@23@01)))
-(pop) ; 7
-; [eval] !(j < right)
-; [eval] j < right
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (< j@172@01 right@23@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not (< j@172@01 right@23@01))))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 194 | !(j@172@01 < right@23@01) | live]
-; [else-branch: 194 | j@172@01 < right@23@01 | live]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 194 | !(j@172@01 < right@23@01)]
-(assert (not (< j@172@01 right@23@01)))
-; [exec]
-; swap(a, right, storeIndex)
-; [eval] 0 <= i
-; [eval] i < len(a)
-; [eval] len(a)
-; [eval] 0 <= j
-(push) ; 8
-(assert (not (<= 0 storeIndex@171@01)))
-(check-sat)
-; unsat
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(assert (<= 0 storeIndex@171@01))
-; [eval] j < len(a)
-; [eval] len(a)
-(push) ; 8
-(assert (not (< storeIndex@171@01 (len<Int> a@21@01))))
-(check-sat)
-; unsat
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(assert (< storeIndex@171@01 (len<Int> a@21@01)))
-; [eval] loc(a, i)
-; Precomputing data for removing quantified permissions
-(define-fun pTaken@245@01 ((r $Ref)) $Perm
-  (ite
-    (= r (loc<Ref> a@21@01 right@23@01))
-    ($Perm.min
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        $Perm.Write
-        $Perm.No)
-      $Perm.Write)
-    $Perm.No))
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Chunk depleted?
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=
-    (-
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        $Perm.Write
-        $Perm.No)
-      (pTaken@245@01 r))
-    $Perm.No)
-  
-  :qid |quant-u-18994|))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (forall ((r $Ref)) (!
-  (= (pTaken@245@01 r) $Perm.No)
-  
-  :qid |quant-u-18995|))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; Intermediate check if already taken enough permissions
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 right@23@01))
-    (= (- $Perm.Write (pTaken@245@01 r)) $Perm.No))
-  
-  :qid |quant-u-18996|))))
-(check-sat)
-; unsat
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; Final check if taken enough permissions
-; Done removing quantified permissions
-; [eval] i != j
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (= right@23@01 storeIndex@171@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not (= right@23@01 storeIndex@171@01))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 195 | right@23@01 != storeIndex@171@01 | live]
-; [else-branch: 195 | right@23@01 == storeIndex@171@01 | live]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 195 | right@23@01 != storeIndex@171@01]
-(assert (not (= right@23@01 storeIndex@171@01)))
-; [eval] loc(a, j)
-; Precomputing data for removing quantified permissions
-(define-fun pTaken@246@01 ((r $Ref)) $Perm
-  (ite
-    (= r (loc<Ref> a@21@01 storeIndex@171@01))
-    ($Perm.min
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (- $Perm.Write (pTaken@245@01 r))
-        $Perm.No)
-      $Perm.Write)
-    $Perm.No))
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Chunk depleted?
-(set-option :timeout 0)
-(push) ; 9
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=
-    (-
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (- $Perm.Write (pTaken@245@01 r))
-        $Perm.No)
-      (pTaken@246@01 r))
-    $Perm.No)
-  
-  :qid |quant-u-18998|))))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (forall ((r $Ref)) (!
-  (= (pTaken@246@01 r) $Perm.No)
-  
-  :qid |quant-u-18999|))))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; Intermediate check if already taken enough permissions
-(set-option :timeout 0)
-(push) ; 9
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 storeIndex@171@01))
-    (= (- $Perm.Write (pTaken@246@01 r)) $Perm.No))
-  
-  :qid |quant-u-19000|))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; Final check if taken enough permissions
-; Done removing quantified permissions
-(declare-const $t@247@01 $Snap)
-(assert (= $t@247@01 ($Snap.combine ($Snap.first $t@247@01) ($Snap.second $t@247@01))))
-; [eval] loc(a, i)
-(declare-const sm@248@01 $FVF<val>)
-; Definitional axioms for singleton-SM's value
-(assert (=
-  ($FVF.lookup_val (as sm@248@01  $FVF<val>) (loc<Ref> a@21@01 right@23@01))
-  ($SortWrappers.$SnapToInt ($Snap.first $t@247@01))))
-(assert (<=
-  $Perm.No
-  (ite
-    (= (loc<Ref> a@21@01 right@23@01) (loc<Ref> a@21@01 right@23@01))
-    $Perm.Write
-    $Perm.No)))
-(assert (<=
-  (ite
-    (= (loc<Ref> a@21@01 right@23@01) (loc<Ref> a@21@01 right@23@01))
-    $Perm.Write
-    $Perm.No)
-  $Perm.Write))
-(assert (=>
-  (= (loc<Ref> a@21@01 right@23@01) (loc<Ref> a@21@01 right@23@01))
-  (not (= (loc<Ref> a@21@01 right@23@01) $Ref.null))))
-(assert (=
-  ($Snap.second $t@247@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@247@01))
-    ($Snap.second ($Snap.second $t@247@01)))))
-; [eval] i != j
-(set-option :timeout 0)
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (= right@23@01 storeIndex@171@01)))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 196 | right@23@01 != storeIndex@171@01 | live]
-; [else-branch: 196 | right@23@01 == storeIndex@171@01 | dead]
-(set-option :timeout 0)
-(push) ; 9
-; [then-branch: 196 | right@23@01 != storeIndex@171@01]
-; [eval] loc(a, j)
-(declare-const sm@249@01 $FVF<val>)
-; Definitional axioms for singleton-SM's value
-(assert (=
-  ($FVF.lookup_val (as sm@249@01  $FVF<val>) (loc<Ref> a@21@01 storeIndex@171@01))
-  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second $t@247@01)))))
-(push) ; 10
-(set-option :timeout 10)
-(assert (not (and
-  (and
-    (= (loc<Ref> a@21@01 storeIndex@171@01) (loc<Ref> a@21@01 storeIndex@171@01))
-    (= (loc<Ref> a@21@01 right@23@01) (loc<Ref> a@21@01 right@23@01)))
-  (= (loc<Ref> a@21@01 storeIndex@171@01) (loc<Ref> a@21@01 right@23@01)))))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (<=
-  $Perm.No
-  (ite
-    (= (loc<Ref> a@21@01 storeIndex@171@01) (loc<Ref> a@21@01 storeIndex@171@01))
-    $Perm.Write
-    $Perm.No)))
-(assert (<=
-  (ite
-    (= (loc<Ref> a@21@01 storeIndex@171@01) (loc<Ref> a@21@01 storeIndex@171@01))
-    $Perm.Write
-    $Perm.No)
-  $Perm.Write))
-(assert (=>
-  (= (loc<Ref> a@21@01 storeIndex@171@01) (loc<Ref> a@21@01 storeIndex@171@01))
-  (not (= (loc<Ref> a@21@01 storeIndex@171@01) $Ref.null))))
-(assert (=
-  ($Snap.second ($Snap.second $t@247@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@247@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@247@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@247@01))) $Snap.unit))
-; [eval] loc(a, i).val == old(loc(a, j).val)
-; [eval] loc(a, i)
-(declare-const sm@250@01 $FVF<val>)
-; Definitional axioms for snapshot map values
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef28|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 right@23@01))
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-  :qid |qp.fvfValDef29|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 storeIndex@171@01))
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-  :qid |qp.fvfValDef30|)))
-(declare-const pm@251@01 $FPM)
-(assert (forall ((r $Ref)) (!
-  (=
-    ($FVF.perm_val (as pm@251@01  $FPM) r)
-    (+
-      (+
-        (ite
-          (and
-            (img@176@01 r)
-            (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-          (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r))
-          $Perm.No)
-        (ite (= r (loc<Ref> a@21@01 right@23@01)) $Perm.Write $Perm.No))
-      (ite (= r (loc<Ref> a@21@01 storeIndex@171@01)) $Perm.Write $Perm.No)))
-  :pattern (($FVF.perm_val (as pm@251@01  $FPM) r))
-  :qid |qp.resPrmSumDef31|)))
-(set-option :timeout 0)
-(push) ; 10
-(assert (not (< $Perm.No ($FVF.perm_val (as pm@251@01  $FPM) (loc<Ref> a@21@01 right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [eval] old(loc(a, j).val)
-; [eval] loc(a, j)
-(push) ; 10
-(assert (not (and
-  (img@176@01 (loc<Ref> a@21@01 storeIndex@171@01))
-  (and
-    (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-    (<= (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)) right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 right@23@01))
-  ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 storeIndex@171@01))))
-(assert (= ($Snap.second ($Snap.second ($Snap.second $t@247@01))) $Snap.unit))
-; [eval] loc(a, j).val == old(loc(a, i).val)
-; [eval] loc(a, j)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef28|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 right@23@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-    :qid |qp.fvfValDef29|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 storeIndex@171@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-    :qid |qp.fvfValDef30|))))
-(push) ; 10
-(assert (not (<
-  $Perm.No
-  (+
-    (+
-      (ite
-        (and
-          (img@176@01 (loc<Ref> a@21@01 storeIndex@171@01))
-          (and
-            (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-            (<= (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)) right@23@01)))
-        (-
-          (- $Perm.Write (pTaken@245@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-          (pTaken@246@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-        $Perm.No)
-      (ite
-        (= (loc<Ref> a@21@01 storeIndex@171@01) (loc<Ref> a@21@01 right@23@01))
-        $Perm.Write
-        $Perm.No))
-    (ite
-      (=
-        (loc<Ref> a@21@01 storeIndex@171@01)
-        (loc<Ref> a@21@01 storeIndex@171@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [eval] old(loc(a, i).val)
-; [eval] loc(a, i)
-(push) ; 10
-(assert (not (and
-  (img@176@01 (loc<Ref> a@21@01 right@23@01))
-  (and
-    (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 right@23@01)))
-    (<= (inv@175@01 (loc<Ref> a@21@01 right@23@01)) right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 storeIndex@171@01))
-  ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) (loc<Ref> a@21@01 right@23@01))))
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-; [exec]
-; pw := pw[storeIndex := pw[right]][right := pw[storeIndex]]
-; [eval] pw[storeIndex := pw[right]][right := pw[storeIndex]]
-; [eval] pw[storeIndex := pw[right]]
-; [eval] pw[right]
-(set-option :timeout 0)
-(push) ; 10
-(assert (not (>= right@23@01 0)))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 10
-(assert (not (< right@23@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 10
-(assert (not (>= storeIndex@171@01 0)))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 10
-(assert (not (< storeIndex@171@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [eval] pw[storeIndex]
-(push) ; 10
-(assert (not (>= storeIndex@171@01 0)))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 10
-(assert (not (< storeIndex@171@01 (Seq_length pw@170@01))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 10
-(assert (not (>= right@23@01 0)))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 10
-(assert (not (<
-  right@23@01
-  (Seq_length
-    (Seq_append
-      (Seq_take pw@170@01 storeIndex@171@01)
-      (Seq_append
-        (Seq_singleton (Seq_index pw@170@01 right@23@01))
-        (Seq_drop pw@170@01 (+ storeIndex@171@01 1))))))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(declare-const pw@252@01 Seq<Int>)
-(assert (=
-  pw@252@01
-  (Seq_append
-    (Seq_take
-      (Seq_append
-        (Seq_take pw@170@01 storeIndex@171@01)
-        (Seq_append
-          (Seq_singleton (Seq_index pw@170@01 right@23@01))
-          (Seq_drop pw@170@01 (+ storeIndex@171@01 1))))
-      right@23@01)
-    (Seq_append
-      (Seq_singleton (Seq_index pw@170@01 storeIndex@171@01))
-      (Seq_drop
-        (Seq_append
-          (Seq_take pw@170@01 storeIndex@171@01)
-          (Seq_append
-            (Seq_singleton (Seq_index pw@170@01 right@23@01))
-            (Seq_drop pw@170@01 (+ storeIndex@171@01 1))))
-        (+ right@23@01 1))))))
-; [eval] left <= storeIndex
-; [eval] storeIndex <= right
-(push) ; 10
-(assert (not (<= storeIndex@171@01 right@23@01)))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (<= storeIndex@171@01 right@23@01))
-(declare-const i@253@01 Int)
-(push) ; 10
-; [eval] left <= i && i <= right
-; [eval] left <= i
-(push) ; 11
-; [then-branch: 197 | !(left@22@01 <= i@253@01) | live]
-; [else-branch: 197 | left@22@01 <= i@253@01 | live]
-(push) ; 12
-; [then-branch: 197 | !(left@22@01 <= i@253@01)]
-(assert (not (<= left@22@01 i@253@01)))
-(pop) ; 12
-(push) ; 12
-; [else-branch: 197 | left@22@01 <= i@253@01]
-(assert (<= left@22@01 i@253@01))
-; [eval] i <= right
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i@253@01) (not (<= left@22@01 i@253@01))))
-(assert (and (<= left@22@01 i@253@01) (<= i@253@01 right@23@01)))
-; [eval] loc(a, i)
-(pop) ; 10
-(declare-fun inv@254@01 ($Ref) Int)
-(declare-fun img@255@01 ($Ref) Bool)
-; Nested auxiliary terms: globals
-; Nested auxiliary terms: non-globals
-(assert (forall ((i@253@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@253@01) (<= i@253@01 right@23@01))
-    (or (<= left@22@01 i@253@01) (not (<= left@22@01 i@253@01))))
-  :pattern ((loc<Ref> a@21@01 i@253@01))
-  :qid |val-aux|)))
-; Check receiver injectivity
-(push) ; 10
-(assert (not (forall ((i1@253@01 Int) (i2@253@01 Int)) (!
-  (=>
-    (and
-      (and (<= left@22@01 i1@253@01) (<= i1@253@01 right@23@01))
-      (and (<= left@22@01 i2@253@01) (<= i2@253@01 right@23@01))
-      (= (loc<Ref> a@21@01 i1@253@01) (loc<Ref> a@21@01 i2@253@01)))
-    (= i1@253@01 i2@253@01))
-  
-  :qid |val-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall ((i@253@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@253@01) (<= i@253@01 right@23@01))
-    (and
-      (= (inv@254@01 (loc<Ref> a@21@01 i@253@01)) i@253@01)
-      (img@255@01 (loc<Ref> a@21@01 i@253@01))))
-  :pattern ((loc<Ref> a@21@01 i@253@01))
-  :qid |val-invOfFct|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (and
-      (img@255@01 r)
-      (and (<= left@22@01 (inv@254@01 r)) (<= (inv@254@01 r) right@23@01)))
-    (= (loc<Ref> a@21@01 (inv@254@01 r)) r))
-  :pattern ((inv@254@01 r))
-  :qid |val-fctOfInv|)))
-; Precomputing data for removing quantified permissions
-(define-fun pTaken@256@01 ((r $Ref)) $Perm
-  (ite
-    (and
-      (and (<= left@22@01 (inv@254@01 r)) (<= (inv@254@01 r) right@23@01))
-      (img@255@01 r)
-      (= r (loc<Ref> a@21@01 (inv@254@01 r))))
-    ($Perm.min
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r))
-        $Perm.No)
-      $Perm.Write)
-    $Perm.No))
-(define-fun pTaken@257@01 ((r $Ref)) $Perm
-  (ite
-    (and
-      (and (<= left@22@01 (inv@254@01 r)) (<= (inv@254@01 r) right@23@01))
-      (img@255@01 r)
-      (= r (loc<Ref> a@21@01 (inv@254@01 r))))
-    ($Perm.min
-      (ite (= r (loc<Ref> a@21@01 right@23@01)) $Perm.Write $Perm.No)
-      (- $Perm.Write (pTaken@256@01 r)))
-    $Perm.No))
-(define-fun pTaken@258@01 ((r $Ref)) $Perm
-  (ite
-    (and
-      (and (<= left@22@01 (inv@254@01 r)) (<= (inv@254@01 r) right@23@01))
-      (img@255@01 r)
-      (= r (loc<Ref> a@21@01 (inv@254@01 r))))
-    ($Perm.min
-      (ite (= r (loc<Ref> a@21@01 storeIndex@171@01)) $Perm.Write $Perm.No)
-      (- (- $Perm.Write (pTaken@256@01 r)) (pTaken@257@01 r)))
-    $Perm.No))
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Chunk depleted?
-(set-option :timeout 0)
-(push) ; 10
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=
-    (-
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r))
-        $Perm.No)
-      (pTaken@256@01 r))
-    $Perm.No)
-  
-  :qid |quant-u-19003|))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; Intermediate check if already taken enough permissions
-(set-option :timeout 0)
-(push) ; 10
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=>
-    (and
-      (and (<= left@22@01 (inv@254@01 r)) (<= (inv@254@01 r) right@23@01))
-      (img@255@01 r)
-      (= r (loc<Ref> a@21@01 (inv@254@01 r))))
-    (= (- $Perm.Write (pTaken@256@01 r)) $Perm.No))
-  
-  :qid |quant-u-19004|))))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; Chunk depleted?
-(set-option :timeout 0)
-(push) ; 10
-(set-option :timeout 500)
-(assert (not (=
-  (-
-    (ite
-      (= (loc<Ref> a@21@01 right@23@01) (loc<Ref> a@21@01 right@23@01))
-      $Perm.Write
-      $Perm.No)
-    (pTaken@257@01 (loc<Ref> a@21@01 right@23@01)))
-  $Perm.No)))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; Intermediate check if already taken enough permissions
-(set-option :timeout 0)
-(push) ; 10
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=>
-    (and
-      (and (<= left@22@01 (inv@254@01 r)) (<= (inv@254@01 r) right@23@01))
-      (img@255@01 r)
-      (= r (loc<Ref> a@21@01 (inv@254@01 r))))
-    (= (- (- $Perm.Write (pTaken@256@01 r)) (pTaken@257@01 r)) $Perm.No))
-  
-  :qid |quant-u-19006|))))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; Chunk depleted?
-(set-option :timeout 0)
-(push) ; 10
-(set-option :timeout 500)
-(assert (not (=
-  (-
-    (ite
-      (=
-        (loc<Ref> a@21@01 storeIndex@171@01)
-        (loc<Ref> a@21@01 storeIndex@171@01))
-      $Perm.Write
-      $Perm.No)
-    (pTaken@258@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-  $Perm.No)))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; Intermediate check if already taken enough permissions
-(set-option :timeout 0)
-(push) ; 10
-(set-option :timeout 500)
-(assert (not (forall ((r $Ref)) (!
-  (=>
-    (and
-      (and (<= left@22@01 (inv@254@01 r)) (<= (inv@254@01 r) right@23@01))
-      (img@255@01 r)
-      (= r (loc<Ref> a@21@01 (inv@254@01 r))))
-    (=
-      (-
-        (- (- $Perm.Write (pTaken@256@01 r)) (pTaken@257@01 r))
-        (pTaken@258@01 r))
-      $Perm.No))
-  
-  :qid |quant-u-19008|))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; Final check if taken enough permissions
-; Done removing quantified permissions
-; [eval] loc(a, storeIndex).val == old(loc(a, pivotIndex).val)
-; [eval] loc(a, storeIndex)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef28|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 right@23@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-    :qid |qp.fvfValDef29|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 storeIndex@171@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-    :qid |qp.fvfValDef30|))))
-(set-option :timeout 0)
-(push) ; 10
-(assert (not (<
-  $Perm.No
-  (+
-    (+
-      (ite
-        (and
-          (img@176@01 (loc<Ref> a@21@01 storeIndex@171@01))
-          (and
-            (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-            (<= (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)) right@23@01)))
-        (-
-          (- $Perm.Write (pTaken@245@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-          (pTaken@246@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-        $Perm.No)
-      (ite
-        (= (loc<Ref> a@21@01 storeIndex@171@01) (loc<Ref> a@21@01 right@23@01))
-        $Perm.Write
-        $Perm.No))
-    (ite
-      (=
-        (loc<Ref> a@21@01 storeIndex@171@01)
-        (loc<Ref> a@21@01 storeIndex@171@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [eval] old(loc(a, pivotIndex).val)
-; [eval] loc(a, pivotIndex)
-(push) ; 10
-(assert (not (and
-  (img@30@01 (loc<Ref> a@21@01 pivotIndex@24@01))
-  (and
-    (<= left@22@01 (inv@29@01 (loc<Ref> a@21@01 pivotIndex@24@01)))
-    (<= (inv@29@01 (loc<Ref> a@21@01 pivotIndex@24@01)) right@23@01)))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 10
-(assert (not (=
-  ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 storeIndex@171@01))
-  ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@27@01)))))) (loc<Ref> a@21@01 pivotIndex@24@01)))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 storeIndex@171@01))
-  ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@27@01)))))) (loc<Ref> a@21@01 pivotIndex@24@01))))
-; [eval] (forall i: Int :: { loc(a, i) } left <= i && i < storeIndex ==> loc(a, i).val < loc(a, storeIndex).val)
-(declare-const i@259@01 Int)
-(push) ; 10
-; [eval] left <= i && i < storeIndex ==> loc(a, i).val < loc(a, storeIndex).val
-; [eval] left <= i && i < storeIndex
-; [eval] left <= i
-(push) ; 11
-; [then-branch: 198 | !(left@22@01 <= i@259@01) | live]
-; [else-branch: 198 | left@22@01 <= i@259@01 | live]
-(push) ; 12
-; [then-branch: 198 | !(left@22@01 <= i@259@01)]
-(assert (not (<= left@22@01 i@259@01)))
-(pop) ; 12
-(push) ; 12
-; [else-branch: 198 | left@22@01 <= i@259@01]
-(assert (<= left@22@01 i@259@01))
-; [eval] i < storeIndex
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i@259@01) (not (<= left@22@01 i@259@01))))
-(push) ; 11
-; [then-branch: 199 | left@22@01 <= i@259@01 && i@259@01 < storeIndex@171@01 | live]
-; [else-branch: 199 | !(left@22@01 <= i@259@01 && i@259@01 < storeIndex@171@01) | live]
-(push) ; 12
-; [then-branch: 199 | left@22@01 <= i@259@01 && i@259@01 < storeIndex@171@01]
-(assert (and (<= left@22@01 i@259@01) (< i@259@01 storeIndex@171@01)))
-; [eval] loc(a, i).val < loc(a, storeIndex).val
-; [eval] loc(a, i)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef28|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 right@23@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-    :qid |qp.fvfValDef29|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 storeIndex@171@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-    :qid |qp.fvfValDef30|))))
-(push) ; 13
-(assert (not (<
-  $Perm.No
-  (+
-    (+
-      (ite
-        (and
-          (img@176@01 (loc<Ref> a@21@01 i@259@01))
-          (and
-            (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 i@259@01)))
-            (<= (inv@175@01 (loc<Ref> a@21@01 i@259@01)) right@23@01)))
-        (-
-          (- $Perm.Write (pTaken@245@01 (loc<Ref> a@21@01 i@259@01)))
-          (pTaken@246@01 (loc<Ref> a@21@01 i@259@01)))
-        $Perm.No)
-      (ite
-        (= (loc<Ref> a@21@01 i@259@01) (loc<Ref> a@21@01 right@23@01))
-        $Perm.Write
-        $Perm.No))
-    (ite
-      (= (loc<Ref> a@21@01 i@259@01) (loc<Ref> a@21@01 storeIndex@171@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-; [eval] loc(a, storeIndex)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef28|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 right@23@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-    :qid |qp.fvfValDef29|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 storeIndex@171@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-    :qid |qp.fvfValDef30|))))
-(push) ; 13
-(assert (not (<
-  $Perm.No
-  (+
-    (+
-      (ite
-        (and
-          (img@176@01 (loc<Ref> a@21@01 storeIndex@171@01))
-          (and
-            (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-            (<= (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)) right@23@01)))
-        (-
-          (- $Perm.Write (pTaken@245@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-          (pTaken@246@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-        $Perm.No)
-      (ite
-        (= (loc<Ref> a@21@01 storeIndex@171@01) (loc<Ref> a@21@01 right@23@01))
-        $Perm.Write
-        $Perm.No))
-    (ite
-      (=
-        (loc<Ref> a@21@01 storeIndex@171@01)
-        (loc<Ref> a@21@01 storeIndex@171@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 12
-(push) ; 12
-; [else-branch: 199 | !(left@22@01 <= i@259@01 && i@259@01 < storeIndex@171@01)]
-(assert (not (and (<= left@22@01 i@259@01) (< i@259@01 storeIndex@171@01))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef28|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 right@23@01))
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-  :qid |qp.fvfValDef29|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 storeIndex@171@01))
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-  :qid |qp.fvfValDef30|)))
-; Joined path conditions
-(assert (or
-  (not (and (<= left@22@01 i@259@01) (< i@259@01 storeIndex@171@01)))
-  (and (<= left@22@01 i@259@01) (< i@259@01 storeIndex@171@01))))
-(pop) ; 10
-; Nested auxiliary terms: globals (aux)
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef28|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 right@23@01))
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-  :qid |qp.fvfValDef29|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 storeIndex@171@01))
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-  :qid |qp.fvfValDef30|)))
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@259@01 Int)) (!
-  (and
-    (or (<= left@22@01 i@259@01) (not (<= left@22@01 i@259@01)))
-    (or
-      (not (and (<= left@22@01 i@259@01) (< i@259@01 storeIndex@171@01)))
-      (and (<= left@22@01 i@259@01) (< i@259@01 storeIndex@171@01))))
-  :pattern ((loc<Ref> a@21@01 i@259@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@59@11@59@99-aux|)))
-(push) ; 10
-(assert (not (forall ((i@259@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@259@01) (< i@259@01 storeIndex@171@01))
-    (<
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 i@259@01))
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 storeIndex@171@01))))
-  :pattern ((loc<Ref> a@21@01 i@259@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@59@11@59@99|))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (forall ((i@259@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@259@01) (< i@259@01 storeIndex@171@01))
-    (<
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 i@259@01))
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 storeIndex@171@01))))
-  :pattern ((loc<Ref> a@21@01 i@259@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@59@11@59@99|)))
-; [eval] (forall i: Int :: { loc(a, i) } storeIndex < i && i <= right ==> loc(a, storeIndex).val <= loc(a, i).val)
-(declare-const i@260@01 Int)
-(push) ; 10
-; [eval] storeIndex < i && i <= right ==> loc(a, storeIndex).val <= loc(a, i).val
-; [eval] storeIndex < i && i <= right
-; [eval] storeIndex < i
-(push) ; 11
-; [then-branch: 200 | !(storeIndex@171@01 < i@260@01) | live]
-; [else-branch: 200 | storeIndex@171@01 < i@260@01 | live]
-(push) ; 12
-; [then-branch: 200 | !(storeIndex@171@01 < i@260@01)]
-(assert (not (< storeIndex@171@01 i@260@01)))
-(pop) ; 12
-(push) ; 12
-; [else-branch: 200 | storeIndex@171@01 < i@260@01]
-(assert (< storeIndex@171@01 i@260@01))
-; [eval] i <= right
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-; Joined path conditions
-(assert (or (< storeIndex@171@01 i@260@01) (not (< storeIndex@171@01 i@260@01))))
-(push) ; 11
-; [then-branch: 201 | storeIndex@171@01 < i@260@01 && i@260@01 <= right@23@01 | live]
-; [else-branch: 201 | !(storeIndex@171@01 < i@260@01 && i@260@01 <= right@23@01) | live]
-(push) ; 12
-; [then-branch: 201 | storeIndex@171@01 < i@260@01 && i@260@01 <= right@23@01]
-(assert (and (< storeIndex@171@01 i@260@01) (<= i@260@01 right@23@01)))
-; [eval] loc(a, storeIndex).val <= loc(a, i).val
-; [eval] loc(a, storeIndex)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef28|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 right@23@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-    :qid |qp.fvfValDef29|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 storeIndex@171@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-    :qid |qp.fvfValDef30|))))
-(push) ; 13
-(assert (not (<
-  $Perm.No
-  (+
-    (+
-      (ite
-        (and
-          (img@176@01 (loc<Ref> a@21@01 storeIndex@171@01))
-          (and
-            (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-            (<= (inv@175@01 (loc<Ref> a@21@01 storeIndex@171@01)) right@23@01)))
-        (-
-          (- $Perm.Write (pTaken@245@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-          (pTaken@246@01 (loc<Ref> a@21@01 storeIndex@171@01)))
-        $Perm.No)
-      (ite
-        (= (loc<Ref> a@21@01 storeIndex@171@01) (loc<Ref> a@21@01 right@23@01))
-        $Perm.Write
-        $Perm.No))
-    (ite
-      (=
-        (loc<Ref> a@21@01 storeIndex@171@01)
-        (loc<Ref> a@21@01 storeIndex@171@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-; [eval] loc(a, i)
-(assert (and
-  (forall ((r $Ref)) (!
-    (=>
-      (ite
-        (and
-          (img@176@01 r)
-          (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-        (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-        false)
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-    :qid |qp.fvfValDef28|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 right@23@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-    :qid |qp.fvfValDef29|))
-  (forall ((r $Ref)) (!
-    (=>
-      (= r (loc<Ref> a@21@01 storeIndex@171@01))
-      (=
-        ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-        ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-    :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-    :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-    :qid |qp.fvfValDef30|))))
-(push) ; 13
-(assert (not (<
-  $Perm.No
-  (+
-    (+
-      (ite
-        (and
-          (img@176@01 (loc<Ref> a@21@01 i@260@01))
-          (and
-            (<= left@22@01 (inv@175@01 (loc<Ref> a@21@01 i@260@01)))
-            (<= (inv@175@01 (loc<Ref> a@21@01 i@260@01)) right@23@01)))
-        (-
-          (- $Perm.Write (pTaken@245@01 (loc<Ref> a@21@01 i@260@01)))
-          (pTaken@246@01 (loc<Ref> a@21@01 i@260@01)))
-        $Perm.No)
-      (ite
-        (= (loc<Ref> a@21@01 i@260@01) (loc<Ref> a@21@01 right@23@01))
-        $Perm.Write
-        $Perm.No))
-    (ite
-      (= (loc<Ref> a@21@01 i@260@01) (loc<Ref> a@21@01 storeIndex@171@01))
-      $Perm.Write
-      $Perm.No)))))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 12
-(push) ; 12
-; [else-branch: 201 | !(storeIndex@171@01 < i@260@01 && i@260@01 <= right@23@01)]
-(assert (not (and (< storeIndex@171@01 i@260@01) (<= i@260@01 right@23@01))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef28|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 right@23@01))
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-  :qid |qp.fvfValDef29|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 storeIndex@171@01))
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-  :qid |qp.fvfValDef30|)))
-; Joined path conditions
-(assert (or
-  (not (and (< storeIndex@171@01 i@260@01) (<= i@260@01 right@23@01)))
-  (and (< storeIndex@171@01 i@260@01) (<= i@260@01 right@23@01))))
-(pop) ; 10
-; Nested auxiliary terms: globals (aux)
-(assert (forall ((r $Ref)) (!
-  (=>
-    (ite
-      (and
-        (img@176@01 r)
-        (and (<= left@22@01 (inv@175@01 r)) (<= (inv@175@01 r) right@23@01)))
-      (< $Perm.No (- (- $Perm.Write (pTaken@245@01 r)) (pTaken@246@01 r)))
-      false)
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@173@01)))))) r))
-  :qid |qp.fvfValDef28|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 right@23@01))
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@248@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@248@01  $FVF<val>) r))
-  :qid |qp.fvfValDef29|)))
-(assert (forall ((r $Ref)) (!
-  (=>
-    (= r (loc<Ref> a@21@01 storeIndex@171@01))
-    (=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) r)
-      ($FVF.lookup_val (as sm@249@01  $FVF<val>) r)))
-  :pattern (($FVF.lookup_val (as sm@250@01  $FVF<val>) r))
-  :pattern (($FVF.lookup_val (as sm@249@01  $FVF<val>) r))
-  :qid |qp.fvfValDef30|)))
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@260@01 Int)) (!
-  (and
-    (or (< storeIndex@171@01 i@260@01) (not (< storeIndex@171@01 i@260@01)))
-    (or
-      (not (and (< storeIndex@171@01 i@260@01) (<= i@260@01 right@23@01)))
-      (and (< storeIndex@171@01 i@260@01) (<= i@260@01 right@23@01))))
-  :pattern ((loc<Ref> a@21@01 i@260@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@60@11@60@100-aux|)))
-(push) ; 10
-(assert (not (forall ((i@260@01 Int)) (!
-  (=>
-    (and (< storeIndex@171@01 i@260@01) (<= i@260@01 right@23@01))
-    (<=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 storeIndex@171@01))
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 i@260@01))))
-  :pattern ((loc<Ref> a@21@01 i@260@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@60@11@60@100|))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.01s
-; (get-info :all-statistics)
-(assert (forall ((i@260@01 Int)) (!
-  (=>
-    (and (< storeIndex@171@01 i@260@01) (<= i@260@01 right@23@01))
-    (<=
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 storeIndex@171@01))
-      ($FVF.lookup_val (as sm@250@01  $FVF<val>) (loc<Ref> a@21@01 i@260@01))))
-  :pattern ((loc<Ref> a@21@01 i@260@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@60@11@60@100|)))
-; [eval] |pw| == right + 1
-; [eval] |pw|
-; [eval] right + 1
-(push) ; 10
-(assert (not (= (Seq_length pw@252@01) (+ right@23@01 1))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (= (Seq_length pw@252@01) (+ right@23@01 1)))
-; [eval] (forall i: Int :: { pw[i] } left <= i && i <= right ==> left <= pw[i] && pw[i] <= right)
-(declare-const i@261@01 Int)
-(push) ; 10
-; [eval] left <= i && i <= right ==> left <= pw[i] && pw[i] <= right
-; [eval] left <= i && i <= right
-; [eval] left <= i
-(push) ; 11
-; [then-branch: 202 | !(left@22@01 <= i@261@01) | live]
-; [else-branch: 202 | left@22@01 <= i@261@01 | live]
-(push) ; 12
-; [then-branch: 202 | !(left@22@01 <= i@261@01)]
-(assert (not (<= left@22@01 i@261@01)))
-(pop) ; 12
-(push) ; 12
-; [else-branch: 202 | left@22@01 <= i@261@01]
-(assert (<= left@22@01 i@261@01))
-; [eval] i <= right
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-; Joined path conditions
-(assert (or (<= left@22@01 i@261@01) (not (<= left@22@01 i@261@01))))
-(push) ; 11
-; [then-branch: 203 | left@22@01 <= i@261@01 && i@261@01 <= right@23@01 | live]
-; [else-branch: 203 | !(left@22@01 <= i@261@01 && i@261@01 <= right@23@01) | live]
-(push) ; 12
-; [then-branch: 203 | left@22@01 <= i@261@01 && i@261@01 <= right@23@01]
-(assert (and (<= left@22@01 i@261@01) (<= i@261@01 right@23@01)))
-; [eval] left <= pw[i] && pw[i] <= right
-; [eval] left <= pw[i]
-; [eval] pw[i]
-(push) ; 13
-(assert (not (>= i@261@01 0)))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 13
-(assert (not (< i@261@01 (Seq_length pw@252@01))))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 13
-; [then-branch: 204 | !(left@22@01 <= pw@252@01[i@261@01]) | live]
-; [else-branch: 204 | left@22@01 <= pw@252@01[i@261@01] | live]
-(push) ; 14
-; [then-branch: 204 | !(left@22@01 <= pw@252@01[i@261@01])]
-(assert (not (<= left@22@01 (Seq_index pw@252@01 i@261@01))))
-(pop) ; 14
-(push) ; 14
-; [else-branch: 204 | left@22@01 <= pw@252@01[i@261@01]]
-(assert (<= left@22@01 (Seq_index pw@252@01 i@261@01)))
-; [eval] pw[i] <= right
-; [eval] pw[i]
-(push) ; 15
-(assert (not (>= i@261@01 0)))
-(check-sat)
-; unsat
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 15
-(assert (not (< i@261@01 (Seq_length pw@252@01))))
-(check-sat)
-; unsat
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<= left@22@01 (Seq_index pw@252@01 i@261@01))
-  (not (<= left@22@01 (Seq_index pw@252@01 i@261@01)))))
-(pop) ; 12
-(push) ; 12
-; [else-branch: 203 | !(left@22@01 <= i@261@01 && i@261@01 <= right@23@01)]
-(assert (not (and (<= left@22@01 i@261@01) (<= i@261@01 right@23@01))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=>
-  (and (<= left@22@01 i@261@01) (<= i@261@01 right@23@01))
-  (and
-    (<= left@22@01 i@261@01)
-    (<= i@261@01 right@23@01)
-    (or
-      (<= left@22@01 (Seq_index pw@252@01 i@261@01))
-      (not (<= left@22@01 (Seq_index pw@252@01 i@261@01)))))))
-; Joined path conditions
-(assert (or
-  (not (and (<= left@22@01 i@261@01) (<= i@261@01 right@23@01)))
-  (and (<= left@22@01 i@261@01) (<= i@261@01 right@23@01))))
-(pop) ; 10
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@261@01 Int)) (!
-  (and
-    (or (<= left@22@01 i@261@01) (not (<= left@22@01 i@261@01)))
-    (=>
-      (and (<= left@22@01 i@261@01) (<= i@261@01 right@23@01))
-      (and
-        (<= left@22@01 i@261@01)
-        (<= i@261@01 right@23@01)
-        (or
-          (<= left@22@01 (Seq_index pw@252@01 i@261@01))
-          (not (<= left@22@01 (Seq_index pw@252@01 i@261@01))))))
-    (or
-      (not (and (<= left@22@01 i@261@01) (<= i@261@01 right@23@01)))
-      (and (<= left@22@01 i@261@01) (<= i@261@01 right@23@01))))
-  :pattern ((Seq_index pw@252@01 i@261@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@63@11@63@87-aux|)))
-(push) ; 10
-(assert (not (forall ((i@261@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@261@01) (<= i@261@01 right@23@01))
-    (and
-      (<= left@22@01 (Seq_index pw@252@01 i@261@01))
-      (<= (Seq_index pw@252@01 i@261@01) right@23@01)))
-  :pattern ((Seq_index pw@252@01 i@261@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@63@11@63@87|))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.06s
-; (get-info :all-statistics)
-(assert (forall ((i@261@01 Int)) (!
-  (=>
-    (and (<= left@22@01 i@261@01) (<= i@261@01 right@23@01))
-    (and
-      (<= left@22@01 (Seq_index pw@252@01 i@261@01))
-      (<= (Seq_index pw@252@01 i@261@01) right@23@01)))
-  :pattern ((Seq_index pw@252@01 i@261@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@63@11@63@87|)))
-; [eval] (forall i: Int, k: Int :: { pw[i], pw[k] } left <= i && (i < k && k <= right) ==> pw[i] != pw[k])
-(declare-const i@262@01 Int)
-(declare-const k@263@01 Int)
-(push) ; 10
-; [eval] left <= i && (i < k && k <= right) ==> pw[i] != pw[k]
-; [eval] left <= i && (i < k && k <= right)
-; [eval] left <= i
-(push) ; 11
-; [then-branch: 205 | !(left@22@01 <= i@262@01) | live]
-; [else-branch: 205 | left@22@01 <= i@262@01 | live]
-(push) ; 12
-; [then-branch: 205 | !(left@22@01 <= i@262@01)]
-(assert (not (<= left@22@01 i@262@01)))
-(pop) ; 12
-(push) ; 12
-; [else-branch: 205 | left@22@01 <= i@262@01]
-(assert (<= left@22@01 i@262@01))
-; [eval] i < k
-(push) ; 13
-; [then-branch: 206 | !(i@262@01 < k@263@01) | live]
-; [else-branch: 206 | i@262@01 < k@263@01 | live]
-(push) ; 14
-; [then-branch: 206 | !(i@262@01 < k@263@01)]
-(assert (not (< i@262@01 k@263@01)))
-(pop) ; 14
-(push) ; 14
-; [else-branch: 206 | i@262@01 < k@263@01]
-(assert (< i@262@01 k@263@01))
-; [eval] k <= right
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-(assert (or (< i@262@01 k@263@01) (not (< i@262@01 k@263@01))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  (<= left@22@01 i@262@01)
-  (and
-    (<= left@22@01 i@262@01)
-    (or (< i@262@01 k@263@01) (not (< i@262@01 k@263@01))))))
-(assert (or (<= left@22@01 i@262@01) (not (<= left@22@01 i@262@01))))
-(push) ; 11
-; [then-branch: 207 | left@22@01 <= i@262@01 && i@262@01 < k@263@01 && k@263@01 <= right@23@01 | live]
-; [else-branch: 207 | !(left@22@01 <= i@262@01 && i@262@01 < k@263@01 && k@263@01 <= right@23@01) | live]
-(push) ; 12
-; [then-branch: 207 | left@22@01 <= i@262@01 && i@262@01 < k@263@01 && k@263@01 <= right@23@01]
-(assert (and
-  (<= left@22@01 i@262@01)
-  (and (< i@262@01 k@263@01) (<= k@263@01 right@23@01))))
-; [eval] pw[i] != pw[k]
-; [eval] pw[i]
-(push) ; 13
-(assert (not (>= i@262@01 0)))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 13
-(assert (not (< i@262@01 (Seq_length pw@252@01))))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-; [eval] pw[k]
-(push) ; 13
-(assert (not (>= k@263@01 0)))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 13
-(assert (not (< k@263@01 (Seq_length pw@252@01))))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(pop) ; 12
-(push) ; 12
-; [else-branch: 207 | !(left@22@01 <= i@262@01 && i@262@01 < k@263@01 && k@263@01 <= right@23@01)]
-(assert (not
-  (and
-    (<= left@22@01 i@262@01)
-    (and (< i@262@01 k@263@01) (<= k@263@01 right@23@01)))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=>
-  (and
-    (<= left@22@01 i@262@01)
-    (and (< i@262@01 k@263@01) (<= k@263@01 right@23@01)))
-  (and (<= left@22@01 i@262@01) (< i@262@01 k@263@01) (<= k@263@01 right@23@01))))
-; Joined path conditions
-(assert (or
-  (not
-    (and
-      (<= left@22@01 i@262@01)
-      (and (< i@262@01 k@263@01) (<= k@263@01 right@23@01))))
-  (and
-    (<= left@22@01 i@262@01)
-    (and (< i@262@01 k@263@01) (<= k@263@01 right@23@01)))))
-(pop) ; 10
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@262@01 Int) (k@263@01 Int)) (!
-  (and
-    (=>
-      (<= left@22@01 i@262@01)
-      (and
-        (<= left@22@01 i@262@01)
-        (or (< i@262@01 k@263@01) (not (< i@262@01 k@263@01)))))
-    (or (<= left@22@01 i@262@01) (not (<= left@22@01 i@262@01)))
-    (=>
-      (and
-        (<= left@22@01 i@262@01)
-        (and (< i@262@01 k@263@01) (<= k@263@01 right@23@01)))
-      (and
-        (<= left@22@01 i@262@01)
-        (< i@262@01 k@263@01)
-        (<= k@263@01 right@23@01)))
-    (or
-      (not
-        (and
-          (<= left@22@01 i@262@01)
-          (and (< i@262@01 k@263@01) (<= k@263@01 right@23@01))))
-      (and
-        (<= left@22@01 i@262@01)
-        (and (< i@262@01 k@263@01) (<= k@263@01 right@23@01)))))
-  :pattern ((Seq_index pw@252@01 i@262@01) (Seq_index pw@252@01 k@263@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@64@11@64@87-aux|)))
-(push) ; 10
-(assert (not (forall ((i@262@01 Int) (k@263@01 Int)) (!
-  (=>
-    (and
-      (<= left@22@01 i@262@01)
-      (and (< i@262@01 k@263@01) (<= k@263@01 right@23@01)))
-    (not (= (Seq_index pw@252@01 i@262@01) (Seq_index pw@252@01 k@263@01))))
-  :pattern ((Seq_index pw@252@01 i@262@01) (Seq_index pw@252@01 k@263@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec.vpr@64@11@64@87|))))
 (check-sat)

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:08:30
+// Date:         2025-01-26 21:45:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue017.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue017-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -448,7 +448,7 @@ procedure test01(x: Ref) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (issue017.vpr@13.10--13.28) [129928]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (issue017.vpr@13.10--13.28) [216767]"}
       FullPerm <= Mask[null, wand(y, true)];
     Mask := Mask[null, wand(y, true):=Mask[null, wand(y, true)] - FullPerm];
     // Finish exhale
@@ -526,7 +526,7 @@ procedure test02(x: Ref, y: int) returns ()
             ExhaleWellDef0Mask := WandDefLHSMask;
             ExhaleWellDef0Heap := WandDefLHSHeap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(x) (issue017.vpr@19.23--19.32) [129929]"}
+            assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(x) (issue017.vpr@19.23--19.32) [216768]"}
               NoPerm < perm ==> NoPerm < WandDefLHSMask[null, P(x)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -580,7 +580,7 @@ procedure test02(x: Ref, y: int) returns ()
             ExhaleWellDef1Mask := WandDefLHSMask;
             ExhaleWellDef1Heap := WandDefLHSHeap;
             perm := FullPerm;
-            assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(zx) (issue017.vpr@22.24--22.35) [129930]"}
+            assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(zx) (issue017.vpr@22.24--22.35) [216769]"}
               NoPerm < perm ==> NoPerm < WandDefLHSMask[null, P(zx)];
             // Finish exhale
             havoc ExhaleHeap;
@@ -603,7 +603,7 @@ procedure test02(x: Ref, y: int) returns ()
         assume false;
       }
     // permLe
-    assert {:msg "  Exhale might fail. Magic wand instance not found. (issue017.vpr@22.10--22.50) [129931]"}
+    assert {:msg "  Exhale might fail. Magic wand instance not found. (issue017.vpr@22.10--22.50) [216770]"}
       FullPerm <= Mask[null, wand_1(zx, zx, zy, -y, true)];
     Mask := Mask[null, wand_1(zx, zx, zy, -y, true):=Mask[null, wand_1(zx, zx, zy, -y, true)] - FullPerm];
     // Finish exhale

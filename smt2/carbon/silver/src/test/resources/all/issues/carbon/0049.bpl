@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:22:20
+// Date:         2025-01-26 21:43:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0049.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0049-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -299,7 +299,7 @@ procedure Cellread1$#definedness(this$_2: Ref) returns ()
       assume AssumePermUpperBound;
       assume Heap[this$_2, $allocated];
     perm := globalK$;
-    assert {:msg "  Predicate might not be well-formed. Fraction globalK$() might be negative. (0049.vpr@22.1--24.2) [192647]"}
+    assert {:msg "  Predicate might not be well-formed. Fraction globalK$() might be negative. (0049.vpr@22.1--24.2) [81327]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this$_2 != null;
     Mask := Mask[this$_2, Cellx$:=Mask[this$_2, Cellx$] + perm];
@@ -408,7 +408,7 @@ procedure Cellb3$(this: Ref, k$: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Cellread1$(this) might fail. There might be insufficient permission to access Cellread1$(this) (0049.vpr@34.3--34.38) [192650]"}
+      assert {:msg "  Unfolding Cellread1$(this) might fail. There might be insufficient permission to access Cellread1$(this) (0049.vpr@34.3--34.38) [81330]"}
         perm <= Mask[null, Cellread1$(this)];
     }
     Mask := Mask[null, Cellread1$(this):=Mask[null, Cellread1$(this)] - perm];
@@ -419,7 +419,7 @@ procedure Cellb3$(this: Ref, k$: Perm) returns ()
         Heap := Heap[null, Cellread1$(this):=newVersion];
       }
     perm := globalK$;
-    assert {:msg "  Unfolding Cellread1$(this) might fail. Fraction globalK$() might be negative. (0049.vpr@34.3--34.38) [192651]"}
+    assert {:msg "  Unfolding Cellread1$(this) might fail. Fraction globalK$() might be negative. (0049.vpr@34.3--34.38) [81331]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> this != null;
     Mask := Mask[this, Cellx$:=Mask[this, Cellx$] + perm];
@@ -430,7 +430,7 @@ procedure Cellb3$(this: Ref, k$: Perm) returns ()
   // -- Translating statement: fold acc(Cellread2$(this), write) -- 0049.vpr@35.3--35.36
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding Cellread2$(this) might fail. There might be insufficient permission to access this.Cellx$ (0049.vpr@35.3--35.36) [192653]"}
+    assert {:msg "  Folding Cellread2$(this) might fail. There might be insufficient permission to access this.Cellx$ (0049.vpr@35.3--35.36) [81333]"}
       Mask[this, Cellx$] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, Cellx$];
@@ -453,7 +453,7 @@ procedure Cellb3$(this: Ref, k$: Perm) returns ()
   // -- Translating statement: fold acc(Cellread2$(this), write) -- 0049.vpr@36.3--36.36
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Folding Cellread2$(this) might fail. There might be insufficient permission to access this.Cellx$ (0049.vpr@36.3--36.36) [192656]"}
+    assert {:msg "  Folding Cellread2$(this) might fail. There might be insufficient permission to access this.Cellx$ (0049.vpr@36.3--36.36) [81336]"}
       Mask[this, Cellx$] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[this, Cellx$];
@@ -478,7 +478,7 @@ procedure Cellb3$(this: Ref, k$: Perm) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding Cellwrite1$(this) might fail. There might be insufficient permission to access this.Cellx$ (0049.vpr@38.3--38.37) [192660]"}
+      assert {:msg "  Folding Cellwrite1$(this) might fail. There might be insufficient permission to access this.Cellx$ (0049.vpr@38.3--38.37) [81340]"}
         perm <= Mask[this, Cellx$];
     }
     Mask := Mask[this, Cellx$:=Mask[this, Cellx$] - perm];

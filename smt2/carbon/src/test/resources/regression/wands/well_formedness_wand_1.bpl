@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:48:36
+// Date:         2025-01-26 21:41:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/well_formedness_wand_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/well_formedness_wand_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -328,14 +328,14 @@ procedure test01(x: Ref, y: Ref) returns ()
           if (b_1_1) {
             
             // -- Check definedness of acc(x.f.f, write)
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@8.3--8.30) [53]"}
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@8.3--8.30) [621]"}
                 HasDirectPerm(Ops_1Mask, x, f_7);
           }
         }
       rcvLocal := Ops_1Heap[x, f_7];
       neededTransfer := FullPerm;
       initNeededTransfer := Used_1Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f.f, write) might be negative. (well_formedness_wand_1.vpr@8.3--8.30) [54]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f.f, write) might be negative. (well_formedness_wand_1.vpr@8.3--8.30) [622]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -378,7 +378,7 @@ procedure test01(x: Ref, y: Ref) returns ()
             Heap := Heap[null, wand#sm(true, x, FullPerm):=Heap[null, wand#sm(true, x, FullPerm)][Heap[x, f_7], f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f.f (well_formedness_wand_1.vpr@8.3--8.30) [55]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f.f (well_formedness_wand_1.vpr@8.3--8.30) [623]"}
         (b_1_1 && b_1_1) && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -452,7 +452,7 @@ procedure test02(x: Ref, y: Ref) returns ()
   // -- Translating statement: inhale acc(x.f.f, write) -- well_formedness_wand_1.vpr@13.3--13.20
     
     // -- Check definedness of acc(x.f.f, write)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@13.10--13.20) [57]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@13.10--13.20) [625]"}
         HasDirectPerm(Mask, x, f_7);
     perm := FullPerm;
     assume Heap[x, f_7] != null;
@@ -493,14 +493,14 @@ procedure test02(x: Ref, y: Ref) returns ()
           if (b_5) {
             
             // -- Check definedness of acc(x.f.f, write)
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@14.3--14.30) [59]"}
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@14.3--14.30) [627]"}
                 HasDirectPerm(Ops_3Mask, x, f_7);
           }
         }
       rcvLocal := Ops_3Heap[x, f_7];
       neededTransfer := FullPerm;
       initNeededTransfer := Used_3Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f.f, write) might be negative. (well_formedness_wand_1.vpr@14.3--14.30) [60]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f.f, write) might be negative. (well_formedness_wand_1.vpr@14.3--14.30) [628]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -543,7 +543,7 @@ procedure test02(x: Ref, y: Ref) returns ()
             Heap := Heap[null, wand#sm(true, x, FullPerm):=Heap[null, wand#sm(true, x, FullPerm)][Heap[x, f_7], f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f.f (well_formedness_wand_1.vpr@14.3--14.30) [61]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f.f (well_formedness_wand_1.vpr@14.3--14.30) [629]"}
         (b_5 && b_5) && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -620,7 +620,7 @@ procedure test03(x: Ref, y: Ref) returns ()
   // -- Translating statement: inhale acc(x.f.f, write) -- well_formedness_wand_1.vpr@19.3--19.20
     
     // -- Check definedness of acc(x.f.f, write)
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@19.10--19.20) [63]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@19.10--19.20) [631]"}
         HasDirectPerm(Mask, x, f_7);
     perm := FullPerm;
     assume Heap[x, f_7] != null;
@@ -658,7 +658,7 @@ procedure test03(x: Ref, y: Ref) returns ()
       rcvLocal := x;
       neededTransfer := FullPerm;
       initNeededTransfer := Used_5Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (well_formedness_wand_1.vpr@20.3--20.40) [65]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f, write) might be negative. (well_formedness_wand_1.vpr@20.3--20.40) [633]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -701,7 +701,7 @@ procedure test03(x: Ref, y: Ref) returns ()
             Heap := Heap[null, wand_1#sm(true, x, FullPerm, x, FullPerm):=Heap[null, wand_1#sm(true, x, FullPerm, x, FullPerm)][x, f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@20.3--20.40) [66]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@20.3--20.40) [634]"}
         (b_9 && b_9) && b_10 ==> neededTransfer == 0.000000000 && Used_5Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -719,14 +719,14 @@ procedure test03(x: Ref, y: Ref) returns ()
           if (b_9) {
             
             // -- Check definedness of acc(x.f.f, write)
-              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@20.3--20.40) [67]"}
+              assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f (well_formedness_wand_1.vpr@20.3--20.40) [635]"}
                 HasDirectPerm(Result_2Mask, x, f_7);
           }
         }
       rcvLocal := Result_2Heap[x, f_7];
       neededTransfer := FullPerm;
       initNeededTransfer := Used_5Mask[rcvLocal, f_7] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(x.f.f, write) might be negative. (well_formedness_wand_1.vpr@20.3--20.40) [68]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(x.f.f, write) might be negative. (well_formedness_wand_1.vpr@20.3--20.40) [636]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -769,7 +769,7 @@ procedure test03(x: Ref, y: Ref) returns ()
             Heap := Heap[null, wand_1#sm(true, x, FullPerm, x, FullPerm):=Heap[null, wand_1#sm(true, x, FullPerm, x, FullPerm)][Heap[x, f_7], f_7:=true]];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f.f (well_formedness_wand_1.vpr@20.3--20.40) [69]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access x.f.f (well_formedness_wand_1.vpr@20.3--20.40) [637]"}
         (b_9 && b_9) && b_10 ==> neededTransfer == 0.000000000 && Used_5Mask[rcvLocal, f_7] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states

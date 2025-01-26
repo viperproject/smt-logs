@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:34:14
+// Date:         2025-01-26 21:41:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/basic/simpleTests.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/basic/simpleTests-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -239,7 +239,7 @@ procedure m1(x: int) returns (res: int)
   //   x - 1 + 10 == old(x + 10) && false -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(x - 1 + 10, old(x + 10)): Bool) && (bounded(old(x + 10)): Bool) || x - 1 + 10 == old(x + 10) && false might not hold. (<no position>) [224843]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(x - 1 + 10, old(x + 10)): Bool) && (bounded(old(x + 10)): Bool) || x - 1 + 10 == old(x + 10) && false might not hold. (<no position>) [20052]"}
           (decreasing(x - 1 + 10, x + 10): bool) && (bounded(x + 10): bool);
         assume state(Heap, Mask);
       
@@ -305,7 +305,7 @@ procedure m2(x: int, y: int) returns (res: int)
   //   y == old(x) && false -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [224844]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [20053]"}
           (decreasing(y, x): bool) && (bounded(x): bool);
         assume state(Heap, Mask);
       
@@ -316,9 +316,9 @@ procedure m2(x: int, y: int) returns (res: int)
         // -- Exhaling precondition
           ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method m2 might not hold. Assertion y > 0 might not hold. (simpleTests.vpr@24.5--24.20) [224845]"}
+          assert {:msg "  The precondition of method m2 might not hold. Assertion y > 0 might not hold. (simpleTests.vpr@24.5--24.20) [20054]"}
             y > 0;
-          assert {:msg "  The precondition of method m2 might not hold. Assertion y > 0 might not hold. (simpleTests.vpr@24.5--24.20) [224846]"}
+          assert {:msg "  The precondition of method m2 might not hold. Assertion y > 0 might not hold. (simpleTests.vpr@24.5--24.20) [20055]"}
             y > 0;
         
         // -- Havocing target variables
@@ -372,7 +372,7 @@ procedure m3(x: int, y: int) returns (res: int)
   //   y - 3 == old(y) && false) -- <no position>
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Assert might fail. Assertion (decreasing(x - 2, old(x)): Bool) && (bounded(old(x)): Bool) || x - 2 == old(x) && ((decreasing(y - 3, old(y)): Bool) && (bounded(old(y)): Bool) || y - 3 == old(y) && false) might not hold. (<no position>) [224847]"}
+        assert {:msg "  Assert might fail. Assertion (decreasing(x - 2, old(x)): Bool) && (bounded(old(x)): Bool) || x - 2 == old(x) && ((decreasing(y - 3, old(y)): Bool) && (bounded(old(y)): Bool) || y - 3 == old(y) && false) might not hold. (<no position>) [20056]"}
           ((decreasing(x - 2, x): bool) && (bounded(x): bool)) || (x - 2 == x && ((decreasing(y - 3, y): bool) && (bounded(y): bool)));
         assume state(Heap, Mask);
       

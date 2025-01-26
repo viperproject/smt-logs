@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:00:07
+// Date:         2025-01-26 21:44:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/collision.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/collision-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -230,7 +230,7 @@ procedure x$3#definedness() returns (Result: bool)
 // Translation of method x$0
 // ==================================================
 
-procedure x$0_7() returns ()
+procedure x$0_9() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -258,7 +258,7 @@ procedure x$0_7() returns ()
 // Translation of method x$1
 // ==================================================
 
-procedure x$1_1() returns ()
+procedure x$1_3() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -315,7 +315,7 @@ procedure main() returns ()
   // -- Translating statement: assert x -- collision.vpr@6.5--6.14
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion x might not hold. (collision.vpr@6.12--6.13) [101705]"}
+    assert {:msg "  Assert might fail. Assertion x might not hold. (collision.vpr@6.12--6.13) [198848]"}
       x;
     assume state(Heap, Mask);
   
@@ -326,7 +326,7 @@ procedure main() returns ()
   // -- Translating statement: assert x$2 -- collision.vpr@6.5--6.14
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion x$2 might not hold. (collision.vpr@6.12--6.13) [101706]"}
+    assert {:msg "  Assert might fail. Assertion x$2 might not hold. (collision.vpr@6.12--6.13) [198849]"}
       x$2;
     assume state(Heap, Mask);
 }

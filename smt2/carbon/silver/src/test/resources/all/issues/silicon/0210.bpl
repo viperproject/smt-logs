@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:21
+// Date:         2025-01-26 21:42:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0210.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0210-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_12: Ref, f_16: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_12, f_16] }
-  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_16], $allocated]
+axiom (forall o_15: Ref, f_23: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_15, f_23] }
+  Heap[o_15, $allocated] ==> Heap[Heap[o_15, f_23], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -41,45 +41,45 @@ function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 function  SumHeap(Heap: HeapType, Heap1: HeapType, mask1: MaskType, Heap2: HeapType, mask2: MaskType): bool;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref, f_37: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, f_37] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_46, f_37) ==> Heap[o_46, f_37] == ExhaleHeap[o_46, f_37]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_53: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_53] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_53) ==> Heap[o_41, f_53] == ExhaleHeap[o_41, f_53]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> Heap[null, PredicateMaskField(pm_f_22)] == ExhaleHeap[null, PredicateMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> Heap[null, PredicateMaskField(pm_f_20)] == ExhaleHeap[null, PredicateMaskField(pm_f_20)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> Heap[null, WandMaskField(pm_f_22)] == ExhaleHeap[null, WandMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> Heap[null, WandMaskField(pm_f_20)] == ExhaleHeap[null, WandMaskField(pm_f_20)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_46, $allocated] ==> ExhaleHeap[o_46, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_24: (Field A B), v: B ::
-  { Heap[o_12, f_24:=v] }
-  succHeap(Heap, Heap[o_12, f_24:=v])
+axiom (forall <A, B> Heap: HeapType, o_15: Ref, f_54: (Field A B), v: B ::
+  { Heap[o_15, f_54:=v] }
+  succHeap(Heap, Heap[o_15, f_54:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -102,46 +102,46 @@ axiom (forall Heap0: HeapType, Heap1: HeapType, Heap2: HeapType ::
   succHeapTrans(Heap0, Heap1) && succHeap(Heap1, Heap2) ==> succHeapTrans(Heap0, Heap2)
 );
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_34: Ref, f_40: (Field A B) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_34, f_40] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_34, f_40) ==> Heap[o_34, f_40] == ExhaleHeap[o_34, f_40]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref, f_20: (Field A B) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, f_20] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_13, f_20) ==> Heap[o_13, f_20] == ExhaleHeap[o_13, f_20]
 );
 // Frame all predicate mask locations of predicates with direct permission. But don't propagate information  of locations that are not known-folded to allow for equating with multiple different (but compatible) heaps
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_16), ExhaleHeap[null, PredicateMaskField(pm_f_16)] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsPredicateField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[null, PredicateMaskField(pm_f_16)][o2_16, f_40] }
-    Heap[null, PredicateMaskField(pm_f_16)][o2_16, f_40] ==> ExhaleHeap[null, PredicateMaskField(pm_f_16)][o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4), ExhaleHeap[null, PredicateMaskField(pm_f_4)] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[null, PredicateMaskField(pm_f_4)][o2_4, f_20] }
+    Heap[null, PredicateMaskField(pm_f_4)][o2_4, f_20] ==> ExhaleHeap[null, PredicateMaskField(pm_f_4)][o2_4, f_20]
   )
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_16) }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsPredicateField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[o2_16, f_40] }
-    Heap[null, PredicateMaskField(pm_f_16)][o2_16, f_40] ==> Heap[o2_16, f_40] == ExhaleHeap[o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_4) }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsPredicateField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[o2_4, f_20] }
+    Heap[null, PredicateMaskField(pm_f_4)][o2_4, f_20] ==> Heap[o2_4, f_20] == ExhaleHeap[o2_4, f_20]
   )
 );
 // Frame all wand mask locations of wands with direct permission (but don't propagate information about locations that are not known-folded)
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_16), ExhaleHeap[null, WandMaskField(pm_f_16)] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsWandField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[null, WandMaskField(pm_f_16)][o2_16, f_40] }
-    Heap[null, WandMaskField(pm_f_16)][o2_16, f_40] ==> ExhaleHeap[null, WandMaskField(pm_f_16)][o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4), ExhaleHeap[null, WandMaskField(pm_f_4)] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[null, WandMaskField(pm_f_4)][o2_4, f_20] }
+    Heap[null, WandMaskField(pm_f_4)][o2_4, f_20] ==> ExhaleHeap[null, WandMaskField(pm_f_4)][o2_4, f_20]
   )
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_16: (Field C FrameType) ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_16) }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_16) && IsWandField(pm_f_16) ==> (forall <A, B> o2_16: Ref, f_40: (Field A B) ::
-    { ExhaleHeap[o2_16, f_40] }
-    Heap[null, WandMaskField(pm_f_16)][o2_16, f_40] ==> Heap[o2_16, f_40] == ExhaleHeap[o2_16, f_40]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_4: (Field C FrameType) ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), IsWandField(pm_f_4) }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_4) && IsWandField(pm_f_4) ==> (forall <A, B> o2_4: Ref, f_20: (Field A B) ::
+    { ExhaleHeap[o2_4, f_20] }
+    Heap[null, WandMaskField(pm_f_4)][o2_4, f_20] ==> Heap[o2_4, f_20] == ExhaleHeap[o2_4, f_20]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_34: Ref ::
-  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_34, $allocated] }
-  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> Heap[o_34, $allocated] ==> ExhaleHeap[o_34, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref ::
+  { IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, $allocated] }
+  IdenticalOnKnownLocationsLiberal(Heap, ExhaleHeap, Mask) ==> Heap[o_13, $allocated] ==> ExhaleHeap[o_13, $allocated]
 );
 // ==================================================
 // Sum of heaps
@@ -247,10 +247,10 @@ const unique fn$$List__Node: ListDomainType;
 const unique fn$$List__Nil: ListDomainType;
 
 // Translation of domain function variantOfList
-function  variantOfList(self_3: Ref): ListDomainType;
+function  variantOfList(self_1: Ref): ListDomainType;
 
 // Translation of domain function isList
-function  isList(self_3: Ref): bool;
+function  isList(self_1: Ref): bool;
 
 // Translation of domain axiom ax_variantOfList
 axiom (forall x: Ref ::
@@ -356,7 +356,7 @@ procedure silver_length#definedness(this: Ref) returns (Result: int)
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid__List(this) (0210.vpr@4.1--10.2) [214591]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid__List(this) (0210.vpr@4.1--10.2) [75237]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid__List(this)];
       havoc wildcard;
       perm := wildcard;
@@ -396,18 +396,18 @@ procedure silver_length#definedness(this: Ref) returns (Result: int)
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.List__variant (0210.vpr@4.1--10.2) [214592]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.List__variant (0210.vpr@4.1--10.2) [75238]"}
         HasDirectPerm(UnfoldingMask, this, List__variant);
       if ((variantOfList(UnfoldingHeap[this, List__variant]): ListDomainType) == fn$$List__Nil) {
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.List__Node__1 (0210.vpr@4.1--10.2) [214593]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.List__Node__1 (0210.vpr@4.1--10.2) [75239]"}
           HasDirectPerm(UnfoldingMask, this, List__Node__1);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function silver_length might not hold. There might be insufficient permission to access valid__List(this.List__Node__1) (0210.vpr@9.73--9.106) [214594]"}
+          assert {:msg "  Precondition of function silver_length might not hold. There might be insufficient permission to access valid__List(this.List__Node__1) (0210.vpr@9.73--9.106) [75240]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid__List(UnfoldingHeap[this, List__Node__1])];
           // Finish exhale
           havoc ExhaleHeap;
@@ -427,9 +427,9 @@ procedure silver_length#definedness(this: Ref) returns (Result: int)
           Heap := Heap[null, valid__List#sm(this):=Heap[null, valid__List#sm(this)][this, List__Node__0:=true]];
           Heap := Heap[null, valid__List#sm(this):=Heap[null, valid__List#sm(this)][this, List__Node__1:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, valid__List#sm(this)][o_15, f_20] || Heap[null, valid__List#sm(Heap[this, List__Node__1])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, valid__List#sm(this)][o_5, f_11] || Heap[null, valid__List#sm(Heap[this, List__Node__1])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, valid__List#sm(this):=newPMask];
         }
@@ -445,7 +445,7 @@ procedure silver_length#definedness(this: Ref) returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of silver_length might not hold. Assertion result >= 0 might not hold. (0210.vpr@6.13--6.24) [214595]"}
+    assert {:msg "  Postcondition of silver_length might not hold. Assertion result >= 0 might not hold. (0210.vpr@6.13--6.24) [75241]"}
       Result >= 0;
 }
 
@@ -503,12 +503,12 @@ procedure valid__List#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of isList(this.List__variant)
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.List__variant (0210.vpr@79.1--91.2) [214596]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.List__variant (0210.vpr@79.1--91.2) [75242]"}
         HasDirectPerm(Mask, this, List__variant);
     assume (isList(Heap[this, List__variant]): bool);
     
     // -- Check definedness of variantOfList(this.List__variant) == fn$$List__Node()
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.List__variant (0210.vpr@79.1--91.2) [214597]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.List__variant (0210.vpr@79.1--91.2) [75243]"}
         HasDirectPerm(Mask, this, List__variant);
     if ((variantOfList(Heap[this, List__variant]): ListDomainType) == fn$$List__Node) {
       perm := FullPerm;
@@ -521,7 +521,7 @@ procedure valid__List#definedness(this: Ref) returns ()
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(valid__List(this.List__Node__1), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.List__Node__1 (0210.vpr@79.1--91.2) [214598]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.List__Node__1 (0210.vpr@79.1--91.2) [75244]"}
           HasDirectPerm(Mask, this, List__Node__1);
       perm := FullPerm;
       Mask := Mask[null, valid__List(Heap[this, List__Node__1]):=Mask[null, valid__List(Heap[this, List__Node__1])] + perm];
@@ -529,7 +529,7 @@ procedure valid__List#definedness(this: Ref) returns ()
     }
     
     // -- Check definedness of variantOfList(this.List__variant) == fn$$List__Nil()
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.List__variant (0210.vpr@79.1--91.2) [214599]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.List__variant (0210.vpr@79.1--91.2) [75245]"}
         HasDirectPerm(Mask, this, List__variant);
     if ((variantOfList(Heap[this, List__variant]): ListDomainType) == fn$$List__Nil) {
       perm := FullPerm;
@@ -590,7 +590,7 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
     assume rd$1 < FullPerm;
     assume state(Heap, Mask);
     perm := rd$1;
-    assert {:msg "  Contract might not be well-formed. Fraction rd$1 might be negative. (0210.vpr@15.12--15.42) [214600]"}
+    assert {:msg "  Contract might not be well-formed. Fraction rd$1 might be negative. (0210.vpr@15.12--15.42) [75246]"}
       perm >= NoPerm;
     Mask := Mask[null, valid__List(list$1):=Mask[null, valid__List(list$1)] + perm];
     assume state(Heap, Mask);
@@ -607,7 +607,7 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := rd$1;
-    assert {:msg "  Contract might not be well-formed. Fraction rd$1 might be negative. (0210.vpr@17.11--17.41) [214601]"}
+    assert {:msg "  Contract might not be well-formed. Fraction rd$1 might be negative. (0210.vpr@17.11--17.41) [75247]"}
       perm >= NoPerm;
     PostMask := PostMask[null, valid__List(list$1):=PostMask[null, valid__List(list$1)] + perm];
     assume state(PostHeap, PostMask);
@@ -648,10 +648,10 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := rd$1;
-        assert {:msg "  Loop invariant acc(valid__List(current$1), rd$1) might not hold on entry. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [214602]"}
+        assert {:msg "  Loop invariant acc(valid__List(current$1), rd$1) might not hold on entry. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [75248]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(valid__List(current$1), rd$1) might not hold on entry. There might be insufficient permission to access valid__List(current$1) (0210.vpr@26.19--26.52) [214603]"}
+          assert {:msg "  Loop invariant acc(valid__List(current$1), rd$1) might not hold on entry. There might be insufficient permission to access valid__List(current$1) (0210.vpr@26.19--26.52) [75249]"}
             perm <= Mask[null, valid__List(current$1)];
         }
         Mask := Mask[null, valid__List(current$1):=Mask[null, valid__List(current$1)] - perm];
@@ -671,7 +671,7 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
     // -- Check definedness of invariant
       if (*) {
         perm := rd$1;
-        assert {:msg "  Contract might not be well-formed. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [214604]"}
+        assert {:msg "  Contract might not be well-formed. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [75250]"}
           perm >= NoPerm;
         Mask := Mask[null, valid__List(current$1):=Mask[null, valid__List(current$1)] + perm];
         assume state(Heap, Mask);
@@ -688,7 +688,7 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
         assume state(Heap, Mask);
         // Inhale invariant
         perm := rd$1;
-        assert {:msg "  While statement might fail. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [214605]"}
+        assert {:msg "  While statement might fail. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [75251]"}
           perm >= NoPerm;
         Mask := Mask[null, valid__List(current$1):=Mask[null, valid__List(current$1)] + perm];
         assume state(Heap, Mask);
@@ -703,17 +703,17 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
           
           // -- Translating statement: // id = 6
   // unfold acc(valid__List(current$1), rd$1) -- 0210.vpr@28.7--28.47
-            assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might not be positive. (0210.vpr@28.7--28.47) [214606]"}
+            assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might not be positive. (0210.vpr@28.7--28.47) [75252]"}
               rd$1 > NoPerm;
             assume valid__List#trigger(Heap, valid__List(current$1));
             assume Heap[null, valid__List(current$1)] == CombineFrames(FrameFragment(Heap[current$1, List__variant]), CombineFrames(FrameFragment((if (variantOfList(Heap[current$1, List__variant]): ListDomainType) == fn$$List__Node then CombineFrames(FrameFragment(Heap[current$1, List__Node__0]), CombineFrames(FrameFragment(Heap[current$1, List__Node__1]), Heap[null, valid__List(Heap[current$1, List__Node__1])])) else EmptyFrame)), FrameFragment((if (variantOfList(Heap[current$1, List__variant]): ListDomainType) == fn$$List__Nil then CombineFrames(FrameFragment(Heap[current$1, List__Node__0]), FrameFragment(Heap[current$1, List__Node__1])) else EmptyFrame))));
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
             perm := rd$1;
-            assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [214607]"}
+            assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [75253]"}
               perm >= NoPerm;
             if (perm != NoPerm) {
-              assert {:msg "  Unfolding valid__List(current$1) might fail. There might be insufficient permission to access valid__List(current$1) (0210.vpr@28.7--28.47) [214608]"}
+              assert {:msg "  Unfolding valid__List(current$1) might fail. There might be insufficient permission to access valid__List(current$1) (0210.vpr@28.7--28.47) [75254]"}
                 perm <= Mask[null, valid__List(current$1)];
             }
             Mask := Mask[null, valid__List(current$1):=Mask[null, valid__List(current$1)] - perm];
@@ -724,7 +724,7 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
                 Heap := Heap[null, valid__List(current$1):=newVersion];
               }
             perm := rd$1;
-            assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [214609]"}
+            assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [75255]"}
               perm >= NoPerm;
             assume perm > NoPerm ==> current$1 != null;
             Mask := Mask[current$1, List__variant:=Mask[current$1, List__variant] + perm];
@@ -732,19 +732,19 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
             assume (isList(Heap[current$1, List__variant]): bool);
             if ((variantOfList(Heap[current$1, List__variant]): ListDomainType) == fn$$List__Node) {
               perm := rd$1;
-              assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [214610]"}
+              assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [75256]"}
                 perm >= NoPerm;
               assume perm > NoPerm ==> current$1 != null;
               Mask := Mask[current$1, List__Node__0:=Mask[current$1, List__Node__0] + perm];
               assume state(Heap, Mask);
               perm := rd$1;
-              assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [214611]"}
+              assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [75257]"}
                 perm >= NoPerm;
               assume perm > NoPerm ==> current$1 != null;
               Mask := Mask[current$1, List__Node__1:=Mask[current$1, List__Node__1] + perm];
               assume state(Heap, Mask);
               perm := rd$1;
-              assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [214612]"}
+              assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [75258]"}
                 perm >= NoPerm;
               Mask := Mask[null, valid__List(Heap[current$1, List__Node__1]):=Mask[null, valid__List(Heap[current$1, List__Node__1])] + perm];
               
@@ -754,13 +754,13 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
             }
             if ((variantOfList(Heap[current$1, List__variant]): ListDomainType) == fn$$List__Nil) {
               perm := rd$1;
-              assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [214613]"}
+              assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [75259]"}
                 perm >= NoPerm;
               assume perm > NoPerm ==> current$1 != null;
               Mask := Mask[current$1, List__Node__0:=Mask[current$1, List__Node__0] + perm];
               assume state(Heap, Mask);
               perm := rd$1;
-              assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [214614]"}
+              assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [75260]"}
                 perm >= NoPerm;
               assume perm > NoPerm ==> current$1 != null;
               Mask := Mask[current$1, List__Node__1:=Mask[current$1, List__Node__1] + perm];
@@ -778,7 +778,7 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
   // tail$1 := current$1.List__Node__1 -- 0210.vpr@30.7--30.40
             
             // -- Check definedness of current$1.List__Node__1
-              assert {:msg "  Assignment might fail. There might be insufficient permission to access current$1.List__Node__1 (0210.vpr@30.7--30.40) [214615]"}
+              assert {:msg "  Assignment might fail. There might be insufficient permission to access current$1.List__Node__1 (0210.vpr@30.7--30.40) [75261]"}
                 HasDirectPerm(Mask, current$1, List__Node__1);
             tail$1 := Heap[current$1, List__Node__1];
             assume state(Heap, Mask);
@@ -786,7 +786,7 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
           // -- Translating statement: if (true && variantOfList(current$1.List__variant) == fn$$List__Node()) -- 0210.vpr@31.7--40.10
             
             // -- Check definedness of true && variantOfList(current$1.List__variant) == fn$$List__Node()
-              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access current$1.List__variant (0210.vpr@31.11--31.77) [214616]"}
+              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access current$1.List__variant (0210.vpr@31.11--31.77) [75262]"}
                 HasDirectPerm(Mask, current$1, List__variant);
             if ((variantOfList(Heap[current$1, List__variant]): ListDomainType) == fn$$List__Node) {
               
@@ -804,49 +804,49 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
   // assert perm(valid__List(current$1)) > none -- 0210.vpr@35.11--35.53
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
-                assert {:msg "  Assert might fail. Assertion perm(valid__List(current$1)) > none might not hold. (0210.vpr@35.18--35.53) [214617]"}
+                assert {:msg "  Assert might fail. Assertion perm(valid__List(current$1)) > none might not hold. (0210.vpr@35.18--35.53) [75263]"}
                   NoPerm < Mask[null, valid__List(current$1)];
                 assume state(Heap, Mask);
             } else {
               
               // -- Translating statement: // id = 12
   // fold acc(valid__List(current$1), rd$1) -- 0210.vpr@38.13--38.51
-                assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might not be positive. (0210.vpr@38.13--38.51) [214618]"}
+                assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might not be positive. (0210.vpr@38.13--38.51) [75264]"}
                   rd$1 > NoPerm;
                 ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
                 perm := rd$1;
-                assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [214619]"}
+                assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [75265]"}
                   perm >= NoPerm;
                 if (perm != NoPerm) {
-                  assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access current$1.List__variant (0210.vpr@38.13--38.51) [214620]"}
+                  assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access current$1.List__variant (0210.vpr@38.13--38.51) [75266]"}
                     perm <= Mask[current$1, List__variant];
                 }
                 Mask := Mask[current$1, List__variant:=Mask[current$1, List__variant] - perm];
-                assert {:msg "  Folding valid__List(current$1) might fail. Assertion isList(current$1.List__variant) might not hold. (0210.vpr@38.13--38.51) [214621]"}
+                assert {:msg "  Folding valid__List(current$1) might fail. Assertion isList(current$1.List__variant) might not hold. (0210.vpr@38.13--38.51) [75267]"}
                   (isList(Heap[current$1, List__variant]): bool);
                 if ((variantOfList(Heap[current$1, List__variant]): ListDomainType) == fn$$List__Node) {
                   perm := rd$1;
-                  assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [214622]"}
+                  assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [75268]"}
                     perm >= NoPerm;
                   if (perm != NoPerm) {
-                    assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access current$1.List__Node__0 (0210.vpr@38.13--38.51) [214623]"}
+                    assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access current$1.List__Node__0 (0210.vpr@38.13--38.51) [75269]"}
                       perm <= Mask[current$1, List__Node__0];
                   }
                   Mask := Mask[current$1, List__Node__0:=Mask[current$1, List__Node__0] - perm];
                   perm := rd$1;
-                  assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [214624]"}
+                  assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [75270]"}
                     perm >= NoPerm;
                   if (perm != NoPerm) {
-                    assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access current$1.List__Node__1 (0210.vpr@38.13--38.51) [214625]"}
+                    assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access current$1.List__Node__1 (0210.vpr@38.13--38.51) [75271]"}
                       perm <= Mask[current$1, List__Node__1];
                   }
                   Mask := Mask[current$1, List__Node__1:=Mask[current$1, List__Node__1] - perm];
                   perm := rd$1;
-                  assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [214626]"}
+                  assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [75272]"}
                     perm >= NoPerm;
                   if (perm != NoPerm) {
-                    assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access valid__List(current$1.List__Node__1) (0210.vpr@38.13--38.51) [214627]"}
+                    assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access valid__List(current$1.List__Node__1) (0210.vpr@38.13--38.51) [75273]"}
                       perm <= Mask[null, valid__List(Heap[current$1, List__Node__1])];
                   }
                   Mask := Mask[null, valid__List(Heap[current$1, List__Node__1]):=Mask[null, valid__List(Heap[current$1, List__Node__1])] - perm];
@@ -856,24 +856,24 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
                 }
                 if ((variantOfList(Heap[current$1, List__variant]): ListDomainType) == fn$$List__Nil) {
                   perm := rd$1;
-                  assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [214628]"}
+                  assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [75274]"}
                     perm >= NoPerm;
                   if (perm != NoPerm) {
-                    assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access current$1.List__Node__0 (0210.vpr@38.13--38.51) [214629]"}
+                    assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access current$1.List__Node__0 (0210.vpr@38.13--38.51) [75275]"}
                       perm <= Mask[current$1, List__Node__0];
                   }
                   Mask := Mask[current$1, List__Node__0:=Mask[current$1, List__Node__0] - perm];
                   perm := rd$1;
-                  assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [214630]"}
+                  assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [75276]"}
                     perm >= NoPerm;
                   if (perm != NoPerm) {
-                    assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access current$1.List__Node__1 (0210.vpr@38.13--38.51) [214631]"}
+                    assert {:msg "  Folding valid__List(current$1) might fail. There might be insufficient permission to access current$1.List__Node__1 (0210.vpr@38.13--38.51) [75277]"}
                       perm <= Mask[current$1, List__Node__1];
                   }
                   Mask := Mask[current$1, List__Node__1:=Mask[current$1, List__Node__1] - perm];
                 }
                 perm := rd$1;
-                assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [214632]"}
+                assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [75278]"}
                   perm >= NoPerm;
                 Mask := Mask[null, valid__List(current$1):=Mask[null, valid__List(current$1)] + perm];
                 assume state(Heap, Mask);
@@ -890,9 +890,9 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
                   Heap := Heap[null, valid__List#sm(current$1):=Heap[null, valid__List#sm(current$1)][current$1, List__Node__0:=true]];
                   Heap := Heap[null, valid__List#sm(current$1):=Heap[null, valid__List#sm(current$1)][current$1, List__Node__1:=true]];
                   havoc newPMask;
-                  assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-                    { newPMask[o_16, f_21] }
-                    Heap[null, valid__List#sm(current$1)][o_16, f_21] || Heap[null, valid__List#sm(Heap[current$1, List__Node__1])][o_16, f_21] ==> newPMask[o_16, f_21]
+                  assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+                    { newPMask[o_6, f_12] }
+                    Heap[null, valid__List#sm(current$1)][o_6, f_12] || Heap[null, valid__List#sm(Heap[current$1, List__Node__1])][o_6, f_12] ==> newPMask[o_6, f_12]
                   );
                   Heap := Heap[null, valid__List#sm(current$1):=newPMask];
                 }
@@ -928,10 +928,10 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := rd$1;
-        assert {:msg "  Loop invariant acc(valid__List(current$1), rd$1) might not be preserved. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [214633]"}
+        assert {:msg "  Loop invariant acc(valid__List(current$1), rd$1) might not be preserved. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [75279]"}
           perm >= NoPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(valid__List(current$1), rd$1) might not be preserved. There might be insufficient permission to access valid__List(current$1) (0210.vpr@26.19--26.52) [214634]"}
+          assert {:msg "  Loop invariant acc(valid__List(current$1), rd$1) might not be preserved. There might be insufficient permission to access valid__List(current$1) (0210.vpr@26.19--26.52) [75280]"}
             perm <= Mask[null, valid__List(current$1)];
         }
         Mask := Mask[null, valid__List(current$1):=Mask[null, valid__List(current$1)] - perm];
@@ -947,7 +947,7 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
       assume false;
       assume state(Heap, Mask);
       perm := rd$1;
-      assert {:msg "  While statement might fail. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [214635]"}
+      assert {:msg "  While statement might fail. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [75281]"}
         perm >= NoPerm;
       Mask := Mask[null, valid__List(current$1):=Mask[null, valid__List(current$1)] + perm];
       assume state(Heap, Mask);
@@ -972,10 +972,10 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     perm := rd$1;
-    assert {:msg "  Postcondition of length_iter might not hold. Fraction rd$1 might be negative. (0210.vpr@17.11--17.41) [214636]"}
+    assert {:msg "  Postcondition of length_iter might not hold. Fraction rd$1 might be negative. (0210.vpr@17.11--17.41) [75282]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of length_iter might not hold. There might be insufficient permission to access valid__List(list$1) (0210.vpr@17.11--17.41) [214637]"}
+      assert {:msg "  Postcondition of length_iter might not hold. There might be insufficient permission to access valid__List(list$1) (0210.vpr@17.11--17.41) [75283]"}
         perm <= Mask[null, valid__List(list$1)];
     }
     Mask := Mask[null, valid__List(list$1):=Mask[null, valid__List(list$1)] - perm];

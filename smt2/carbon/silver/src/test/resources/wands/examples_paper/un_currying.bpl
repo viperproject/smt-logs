@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:03:59
+// Date:         2025-01-26 21:44:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/un_currying.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/un_currying-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_34: Ref, f_40: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_34, f_40] }
-  Heap[o_34, $allocated] ==> Heap[Heap[o_34, f_40], $allocated]
+axiom (forall o_13: Ref, f_20: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_13, f_20] }
+  Heap[o_13, $allocated] ==> Heap[Heap[o_13, f_20], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref, f_18: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, f_18] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_13, f_18) ==> Heap[o_13, f_18] == ExhaleHeap[o_13, f_18]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_20: Ref, f_29: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_20, f_29] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_20, f_29) ==> Heap[o_20, f_29] == ExhaleHeap[o_20, f_29]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_12), ExhaleHeap[null, PredicateMaskField(pm_f_12)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsPredicateField(pm_f_12) ==> Heap[null, PredicateMaskField(pm_f_12)] == ExhaleHeap[null, PredicateMaskField(pm_f_12)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_37), ExhaleHeap[null, PredicateMaskField(pm_f_37)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsPredicateField(pm_f_37) ==> Heap[null, PredicateMaskField(pm_f_37)] == ExhaleHeap[null, PredicateMaskField(pm_f_37)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_12) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsPredicateField(pm_f_12) ==> (forall <A, B> o2_12: Ref, f_18: (Field A B) ::
-    { ExhaleHeap[o2_12, f_18] }
-    Heap[null, PredicateMaskField(pm_f_12)][o2_12, f_18] ==> Heap[o2_12, f_18] == ExhaleHeap[o2_12, f_18]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_37) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsPredicateField(pm_f_37) ==> (forall <A, B> o2_37: Ref, f_29: (Field A B) ::
+    { ExhaleHeap[o2_37, f_29] }
+    Heap[null, PredicateMaskField(pm_f_37)][o2_37, f_29] ==> Heap[o2_37, f_29] == ExhaleHeap[o2_37, f_29]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_12), ExhaleHeap[null, WandMaskField(pm_f_12)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsWandField(pm_f_12) ==> Heap[null, WandMaskField(pm_f_12)] == ExhaleHeap[null, WandMaskField(pm_f_12)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_37), ExhaleHeap[null, WandMaskField(pm_f_37)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsWandField(pm_f_37) ==> Heap[null, WandMaskField(pm_f_37)] == ExhaleHeap[null, WandMaskField(pm_f_37)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_12: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_12) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_12) && IsWandField(pm_f_12) ==> (forall <A, B> o2_12: Ref, f_18: (Field A B) ::
-    { ExhaleHeap[o2_12, f_18] }
-    Heap[null, WandMaskField(pm_f_12)][o2_12, f_18] ==> Heap[o2_12, f_18] == ExhaleHeap[o2_12, f_18]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_37: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_37) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_37) && IsWandField(pm_f_37) ==> (forall <A, B> o2_37: Ref, f_29: (Field A B) ::
+    { ExhaleHeap[o2_37, f_29] }
+    Heap[null, WandMaskField(pm_f_37)][o2_37, f_29] ==> Heap[o2_37, f_29] == ExhaleHeap[o2_37, f_29]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_13: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_13, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_13, $allocated] ==> ExhaleHeap[o_13, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_20: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_20, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_20, $allocated] ==> ExhaleHeap[o_20, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_34: Ref, f_36: (Field A B), v: B ::
-  { Heap[o_34, f_36:=v] }
-  succHeap(Heap, Heap[o_34, f_36:=v])
+axiom (forall <A, B> Heap: HeapType, o_13: Ref, f_66: (Field A B), v: B ::
+  { Heap[o_13, f_66:=v] }
+  succHeap(Heap, Heap[o_13, f_66:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -539,7 +539,7 @@ procedure uncurry() returns ()
               }
             neededTransfer := 1.000000000;
             initNeededTransfer := Used_1Mask[null, wand()] + neededTransfer;
-            assert {:msg "  Applying wand might fail. Fraction acc(P(), write) --* acc(Q(), write) --* acc(R(), write) might be negative. (un_currying.vpr@46.7--46.28) [121357]"}
+            assert {:msg "  Applying wand might fail. Fraction acc(P(), write) --* acc(Q(), write) --* acc(R(), write) might be negative. (un_currying.vpr@46.7--46.28) [207337]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
@@ -579,7 +579,7 @@ procedure uncurry() returns ()
                   Mask := Mask[null, wand():=Mask[null, wand()] - takeTransfer];
                 }
               }
-            assert {:msg "  Applying wand might fail. Magic wand instance not found. (un_currying.vpr@46.7--46.28) [121358]"}
+            assert {:msg "  Applying wand might fail. Magic wand instance not found. (un_currying.vpr@46.7--46.28) [207338]"}
               b_1_1 && b_2_1 ==> neededTransfer == 0.000000000 && Used_1Mask[null, wand()] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
@@ -603,7 +603,7 @@ procedure uncurry() returns ()
           // -- Transfer of acc(P(), write)
             neededTransfer := FullPerm;
             initNeededTransfer := Used_2Mask[null, P()] + neededTransfer;
-            assert {:msg "  Applying wand might fail. Fraction acc(P(), write) might be negative. (un_currying.vpr@46.7--46.28) [121359]"}
+            assert {:msg "  Applying wand might fail. Fraction acc(P(), write) might be negative. (un_currying.vpr@46.7--46.28) [207339]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
@@ -646,14 +646,14 @@ procedure uncurry() returns ()
                   b_4 := b_4 && IdenticalOnKnownLocations(Heap, Used_2Heap, TempMask);
                   Mask := Mask[null, P():=Mask[null, P()] - takeTransfer];
                   havoc newPMask;
-                  assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-                    { newPMask[o_15, f_20] }
-                    Heap[null, wand_2#sm()][o_15, f_20] || Heap[null, P#sm()][o_15, f_20] ==> newPMask[o_15, f_20]
+                  assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+                    { newPMask[o_5, f_11] }
+                    Heap[null, wand_2#sm()][o_5, f_11] || Heap[null, P#sm()][o_5, f_11] ==> newPMask[o_5, f_11]
                   );
                   Heap := Heap[null, wand_2#sm():=newPMask];
                 }
               }
-            assert {:msg "  Applying wand might fail. There might be insufficient permission to access P() (un_currying.vpr@46.7--46.28) [121360]"}
+            assert {:msg "  Applying wand might fail. There might be insufficient permission to access P() (un_currying.vpr@46.7--46.28) [207340]"}
               b_1_1 && b_4 ==> neededTransfer == 0.000000000 && Used_2Mask[null, P()] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
@@ -720,7 +720,7 @@ procedure uncurry() returns ()
               }
             neededTransfer := 1.000000000;
             initNeededTransfer := Used_3Mask[null, wand_1()] + neededTransfer;
-            assert {:msg "  Applying wand might fail. Fraction acc(Q(), write) --* acc(R(), write) might be negative. (un_currying.vpr@47.7--47.20) [121361]"}
+            assert {:msg "  Applying wand might fail. Fraction acc(Q(), write) --* acc(R(), write) might be negative. (un_currying.vpr@47.7--47.20) [207341]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
@@ -760,7 +760,7 @@ procedure uncurry() returns ()
                   Mask := Mask[null, wand_1():=Mask[null, wand_1()] - takeTransfer];
                 }
               }
-            assert {:msg "  Applying wand might fail. Magic wand instance not found. (un_currying.vpr@47.7--47.20) [121362]"}
+            assert {:msg "  Applying wand might fail. Magic wand instance not found. (un_currying.vpr@47.7--47.20) [207342]"}
               b_1_1 && b_6 ==> neededTransfer == 0.000000000 && Used_3Mask[null, wand_1()] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
@@ -784,7 +784,7 @@ procedure uncurry() returns ()
           // -- Transfer of acc(Q(), write)
             neededTransfer := FullPerm;
             initNeededTransfer := Used_4Mask[null, Q()] + neededTransfer;
-            assert {:msg "  Applying wand might fail. Fraction acc(Q(), write) might be negative. (un_currying.vpr@47.7--47.20) [121363]"}
+            assert {:msg "  Applying wand might fail. Fraction acc(Q(), write) might be negative. (un_currying.vpr@47.7--47.20) [207343]"}
               neededTransfer >= 0.000000000;
             
             // -- transfer code for top state of stack
@@ -827,14 +827,14 @@ procedure uncurry() returns ()
                   b_8 := b_8 && IdenticalOnKnownLocations(Heap, Used_4Heap, TempMask);
                   Mask := Mask[null, Q():=Mask[null, Q()] - takeTransfer];
                   havoc newPMask;
-                  assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-                    { newPMask[o_16, f_21] }
-                    Heap[null, wand_2#sm()][o_16, f_21] || Heap[null, Q#sm()][o_16, f_21] ==> newPMask[o_16, f_21]
+                  assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+                    { newPMask[o_6, f_12] }
+                    Heap[null, wand_2#sm()][o_6, f_12] || Heap[null, Q#sm()][o_6, f_12] ==> newPMask[o_6, f_12]
                   );
                   Heap := Heap[null, wand_2#sm():=newPMask];
                 }
               }
-            assert {:msg "  Applying wand might fail. There might be insufficient permission to access Q() (un_currying.vpr@47.7--47.20) [121364]"}
+            assert {:msg "  Applying wand might fail. There might be insufficient permission to access Q() (un_currying.vpr@47.7--47.20) [207344]"}
               b_1_1 && b_8 ==> neededTransfer == 0.000000000 && Used_4Mask[null, Q()] == initNeededTransfer;
             
             // -- Creating state which is the sum of the two previously built up states
@@ -868,7 +868,7 @@ procedure uncurry() returns ()
     // -- Transfer of acc(R(), write)
       neededTransfer := FullPerm;
       initNeededTransfer := Used_5Mask[null, R()] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(R(), write) might be negative. (un_currying.vpr@45.3--48.4) [121366]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(R(), write) might be negative. (un_currying.vpr@45.3--48.4) [207346]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -911,14 +911,14 @@ procedure uncurry() returns ()
             b_10 := b_10 && IdenticalOnKnownLocations(Heap, Used_5Heap, TempMask);
             Mask := Mask[null, R():=Mask[null, R()] - takeTransfer];
             havoc newPMask;
-            assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-              { newPMask[o_52, f_55] }
-              Heap[null, wand_2#sm()][o_52, f_55] || Heap[null, R#sm()][o_52, f_55] ==> newPMask[o_52, f_55]
+            assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+              { newPMask[o_40, f_52] }
+              Heap[null, wand_2#sm()][o_40, f_52] || Heap[null, R#sm()][o_40, f_52] ==> newPMask[o_40, f_52]
             );
             Heap := Heap[null, wand_2#sm():=newPMask];
           }
         }
-      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access R() (un_currying.vpr@45.3--48.4) [121367]"}
+      assert {:msg "  Packaging wand might fail. There might be insufficient permission to access R() (un_currying.vpr@45.3--48.4) [207347]"}
         (b_1_1 && b_1_1) && b_10 ==> neededTransfer == 0.000000000 && Used_5Mask[null, R()] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -937,7 +937,7 @@ procedure uncurry() returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     // permLe
-    assert {:msg "  Postcondition of uncurry might not hold. Magic wand instance not found. (un_currying.vpr@43.11--43.23) [121368]"}
+    assert {:msg "  Postcondition of uncurry might not hold. Magic wand instance not found. (un_currying.vpr@43.11--43.23) [207348]"}
       FullPerm <= Mask[null, wand_2()];
     Mask := Mask[null, wand_2():=Mask[null, wand_2()] - FullPerm];
     // Finish exhale
@@ -1224,7 +1224,7 @@ procedure curry() returns ()
                   }
                 neededTransfer := 1.000000000;
                 initNeededTransfer := Used_8Mask[null, wand_2()] + neededTransfer;
-                assert {:msg "  Applying wand might fail. Fraction acc(P(), write) && acc(Q(), write) --* acc(R(), write) might be negative. (un_currying.vpr@58.11--58.29) [121369]"}
+                assert {:msg "  Applying wand might fail. Fraction acc(P(), write) && acc(Q(), write) --* acc(R(), write) might be negative. (un_currying.vpr@58.11--58.29) [207349]"}
                   neededTransfer >= 0.000000000;
                 
                 // -- transfer code for top state of stack
@@ -1283,7 +1283,7 @@ procedure curry() returns ()
                       Mask := Mask[null, wand_2():=Mask[null, wand_2()] - takeTransfer];
                     }
                   }
-                assert {:msg "  Applying wand might fail. Magic wand instance not found. (un_currying.vpr@58.11--58.29) [121370]"}
+                assert {:msg "  Applying wand might fail. Magic wand instance not found. (un_currying.vpr@58.11--58.29) [207350]"}
                   b_15 && b_16 ==> neededTransfer == 0.000000000 && Used_8Mask[null, wand_2()] == initNeededTransfer;
                 
                 // -- Creating state which is the sum of the two previously built up states
@@ -1307,7 +1307,7 @@ procedure curry() returns ()
               // -- Transfer of acc(P(), write)
                 neededTransfer := FullPerm;
                 initNeededTransfer := Used_9Mask[null, P()] + neededTransfer;
-                assert {:msg "  Applying wand might fail. Fraction acc(P(), write) might be negative. (un_currying.vpr@58.11--58.29) [121371]"}
+                assert {:msg "  Applying wand might fail. Fraction acc(P(), write) might be negative. (un_currying.vpr@58.11--58.29) [207351]"}
                   neededTransfer >= 0.000000000;
                 
                 // -- transfer code for top state of stack
@@ -1350,9 +1350,9 @@ procedure curry() returns ()
                       b_18 := b_18 && IdenticalOnKnownLocations(Ops_3Heap, Used_9Heap, TempMask);
                       Ops_3Mask := Ops_3Mask[null, P():=Ops_3Mask[null, P()] - takeTransfer];
                       havoc newPMask;
-                      assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-                        { newPMask[o_53, f_56] }
-                        Ops_3Heap[null, wand_1#sm()][o_53, f_56] || Ops_3Heap[null, P#sm()][o_53, f_56] ==> newPMask[o_53, f_56]
+                      assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+                        { newPMask[o_42, f_55] }
+                        Ops_3Heap[null, wand_1#sm()][o_42, f_55] || Ops_3Heap[null, P#sm()][o_42, f_55] ==> newPMask[o_42, f_55]
                       );
                       Ops_3Heap := Ops_3Heap[null, wand_1#sm():=newPMask];
                     }
@@ -1377,14 +1377,14 @@ procedure curry() returns ()
                       b_18 := b_18 && IdenticalOnKnownLocations(Heap, Used_9Heap, TempMask);
                       Mask := Mask[null, P():=Mask[null, P()] - takeTransfer];
                       havoc newPMask;
-                      assume (forall <A, B> o_26: Ref, f_29: (Field A B) ::
-                        { newPMask[o_26, f_29] }
-                        Heap[null, wand_1#sm()][o_26, f_29] || Heap[null, P#sm()][o_26, f_29] ==> newPMask[o_26, f_29]
+                      assume (forall <A, B> o_46: Ref, f_60: (Field A B) ::
+                        { newPMask[o_46, f_60] }
+                        Heap[null, wand_1#sm()][o_46, f_60] || Heap[null, P#sm()][o_46, f_60] ==> newPMask[o_46, f_60]
                       );
                       Heap := Heap[null, wand_1#sm():=newPMask];
                     }
                   }
-                assert {:msg "  Applying wand might fail. There might be insufficient permission to access P() (un_currying.vpr@58.11--58.29) [121372]"}
+                assert {:msg "  Applying wand might fail. There might be insufficient permission to access P() (un_currying.vpr@58.11--58.29) [207352]"}
                   b_15 && b_18 ==> neededTransfer == 0.000000000 && Used_9Mask[null, P()] == initNeededTransfer;
                 
                 // -- Creating state which is the sum of the two previously built up states
@@ -1400,7 +1400,7 @@ procedure curry() returns ()
               // -- Transfer of acc(Q(), write)
                 neededTransfer := FullPerm;
                 initNeededTransfer := Used_9Mask[null, Q()] + neededTransfer;
-                assert {:msg "  Applying wand might fail. Fraction acc(Q(), write) might be negative. (un_currying.vpr@58.11--58.29) [121373]"}
+                assert {:msg "  Applying wand might fail. Fraction acc(Q(), write) might be negative. (un_currying.vpr@58.11--58.29) [207353]"}
                   neededTransfer >= 0.000000000;
                 
                 // -- transfer code for top state of stack
@@ -1443,9 +1443,9 @@ procedure curry() returns ()
                       b_18 := b_18 && IdenticalOnKnownLocations(Ops_3Heap, Used_9Heap, TempMask);
                       Ops_3Mask := Ops_3Mask[null, Q():=Ops_3Mask[null, Q()] - takeTransfer];
                       havoc newPMask;
-                      assume (forall <A, B> o: Ref, f_85: (Field A B) ::
-                        { newPMask[o, f_85] }
-                        Ops_3Heap[null, wand_1#sm()][o, f_85] || Ops_3Heap[null, Q#sm()][o, f_85] ==> newPMask[o, f_85]
+                      assume (forall <A, B> o: Ref, f_61: (Field A B) ::
+                        { newPMask[o, f_61] }
+                        Ops_3Heap[null, wand_1#sm()][o, f_61] || Ops_3Heap[null, Q#sm()][o, f_61] ==> newPMask[o, f_61]
                       );
                       Ops_3Heap := Ops_3Heap[null, wand_1#sm():=newPMask];
                     }
@@ -1470,14 +1470,14 @@ procedure curry() returns ()
                       b_18 := b_18 && IdenticalOnKnownLocations(Heap, Used_9Heap, TempMask);
                       Mask := Mask[null, Q():=Mask[null, Q()] - takeTransfer];
                       havoc newPMask;
-                      assume (forall <A, B> o_11: Ref, f_3: (Field A B) ::
-                        { newPMask[o_11, f_3] }
-                        Heap[null, wand_1#sm()][o_11, f_3] || Heap[null, Q#sm()][o_11, f_3] ==> newPMask[o_11, f_3]
+                      assume (forall <A, B> o_14: Ref, f_3: (Field A B) ::
+                        { newPMask[o_14, f_3] }
+                        Heap[null, wand_1#sm()][o_14, f_3] || Heap[null, Q#sm()][o_14, f_3] ==> newPMask[o_14, f_3]
                       );
                       Heap := Heap[null, wand_1#sm():=newPMask];
                     }
                   }
-                assert {:msg "  Applying wand might fail. There might be insufficient permission to access Q() (un_currying.vpr@58.11--58.29) [121374]"}
+                assert {:msg "  Applying wand might fail. There might be insufficient permission to access Q() (un_currying.vpr@58.11--58.29) [207354]"}
                   b_15 && b_18 ==> neededTransfer == 0.000000000 && Used_9Mask[null, Q()] == initNeededTransfer;
                 
                 // -- Creating state which is the sum of the two previously built up states
@@ -1511,7 +1511,7 @@ procedure curry() returns ()
         // -- Transfer of acc(R(), write)
           neededTransfer := FullPerm;
           initNeededTransfer := Used_10Mask[null, R()] + neededTransfer;
-          assert {:msg "  Packaging wand might fail. Fraction acc(R(), write) might be negative. (un_currying.vpr@57.7--59.8) [121376]"}
+          assert {:msg "  Packaging wand might fail. Fraction acc(R(), write) might be negative. (un_currying.vpr@57.7--59.8) [207356]"}
             neededTransfer >= 0.000000000;
           
           // -- transfer code for top state of stack
@@ -1554,9 +1554,9 @@ procedure curry() returns ()
                 b_21 := b_21 && IdenticalOnKnownLocations(Ops_3Heap, Used_10Heap, TempMask);
                 Ops_3Mask := Ops_3Mask[null, R():=Ops_3Mask[null, R()] - takeTransfer];
                 havoc newPMask;
-                assume (forall <A, B> o_35: Ref, f_17: (Field A B) ::
-                  { newPMask[o_35, f_17] }
-                  Ops_3Heap[null, wand_1#sm()][o_35, f_17] || Ops_3Heap[null, R#sm()][o_35, f_17] ==> newPMask[o_35, f_17]
+                assume (forall <A, B> o_3: Ref, f_24: (Field A B) ::
+                  { newPMask[o_3, f_24] }
+                  Ops_3Heap[null, wand_1#sm()][o_3, f_24] || Ops_3Heap[null, R#sm()][o_3, f_24] ==> newPMask[o_3, f_24]
                 );
                 Ops_3Heap := Ops_3Heap[null, wand_1#sm():=newPMask];
               }
@@ -1581,14 +1581,14 @@ procedure curry() returns ()
                 b_21 := b_21 && IdenticalOnKnownLocations(Heap, Used_10Heap, TempMask);
                 Mask := Mask[null, R():=Mask[null, R()] - takeTransfer];
                 havoc newPMask;
-                assume (forall <A, B> o_1: Ref, f_11: (Field A B) ::
-                  { newPMask[o_1, f_11] }
-                  Heap[null, wand_1#sm()][o_1, f_11] || Heap[null, R#sm()][o_1, f_11] ==> newPMask[o_1, f_11]
+                assume (forall <A, B> o_1: Ref, f_10: (Field A B) ::
+                  { newPMask[o_1, f_10] }
+                  Heap[null, wand_1#sm()][o_1, f_10] || Heap[null, R#sm()][o_1, f_10] ==> newPMask[o_1, f_10]
                 );
                 Heap := Heap[null, wand_1#sm():=newPMask];
               }
             }
-          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access R() (un_currying.vpr@57.7--59.8) [121377]"}
+          assert {:msg "  Packaging wand might fail. There might be insufficient permission to access R() (un_currying.vpr@57.7--59.8) [207357]"}
             (b_15 && (b_15 && b_13)) && b_21 ==> neededTransfer == 0.000000000 && Used_10Mask[null, R()] == initNeededTransfer;
           
           // -- Creating state which is the sum of the two previously built up states
@@ -1640,7 +1640,7 @@ procedure curry() returns ()
         }
       neededTransfer := 1.000000000;
       initNeededTransfer := Used_11Mask[null, wand_1()] + neededTransfer;
-      assert {:msg "  Packaging wand might fail. Fraction acc(Q(), write) --* acc(R(), write) might be negative. (un_currying.vpr@56.3--61.4) [121378]"}
+      assert {:msg "  Packaging wand might fail. Fraction acc(Q(), write) --* acc(R(), write) might be negative. (un_currying.vpr@56.3--61.4) [207358]"}
         neededTransfer >= 0.000000000;
       
       // -- transfer code for top state of stack
@@ -1680,7 +1680,7 @@ procedure curry() returns ()
             Mask := Mask[null, wand_1():=Mask[null, wand_1()] - takeTransfer];
           }
         }
-      assert {:msg "  Packaging wand might fail. Magic wand instance not found. (un_currying.vpr@56.3--61.4) [121379]"}
+      assert {:msg "  Packaging wand might fail. Magic wand instance not found. (un_currying.vpr@56.3--61.4) [207359]"}
         (b_13 && b_13) && b_23 ==> neededTransfer == 0.000000000 && Used_11Mask[null, wand_1()] == initNeededTransfer;
       
       // -- Creating state which is the sum of the two previously built up states
@@ -1699,7 +1699,7 @@ procedure curry() returns ()
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     // permLe
-    assert {:msg "  Postcondition of curry might not hold. Magic wand instance not found. (un_currying.vpr@54.11--54.26) [121380]"}
+    assert {:msg "  Postcondition of curry might not hold. Magic wand instance not found. (un_currying.vpr@54.11--54.26) [207360]"}
       FullPerm <= Mask[null, wand()];
     Mask := Mask[null, wand():=Mask[null, wand()] - FullPerm];
     // Finish exhale

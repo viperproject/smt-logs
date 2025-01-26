@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:25
+// Date:         2025-01-26 21:43:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/annotationJoinsStateCons.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/annotationJoinsStateCons-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -211,7 +211,7 @@ procedure testMin1(r_1: Ref, b_24: bool) returns ()
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@14.5--14.25
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@14.12--14.25) [152893]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@14.12--14.25) [96677]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] + perm];
@@ -221,7 +221,7 @@ procedure testMin1(r_1: Ref, b_24: bool) returns ()
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@15.5--15.25
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@15.12--15.25) [152894]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@15.12--15.25) [96678]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] + perm];
@@ -234,7 +234,7 @@ procedure testMin1(r_1: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@17.12--17.20) [152896]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@17.12--17.20) [96680]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -275,7 +275,7 @@ procedure testMin2(r_1: Ref, b_24: bool) returns ()
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@23.5--23.25
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@23.12--23.25) [152897]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@23.12--23.25) [96681]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] + perm];
@@ -285,7 +285,7 @@ procedure testMin2(r_1: Ref, b_24: bool) returns ()
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@24.5--24.25
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@24.12--24.25) [152898]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@24.12--24.25) [96682]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] + perm];
@@ -298,7 +298,7 @@ procedure testMin2(r_1: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@26.12--26.20) [152900]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@26.12--26.20) [96684]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -339,7 +339,7 @@ procedure testMin3(r_1: Ref, b_24: bool) returns ()
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@31.5--31.25
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@31.12--31.25) [152901]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@31.12--31.25) [96685]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] + perm];
@@ -349,7 +349,7 @@ procedure testMin3(r_1: Ref, b_24: bool) returns ()
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@32.5--32.25
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@32.12--32.25) [152902]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@32.12--32.25) [96686]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] + perm];
@@ -362,7 +362,7 @@ procedure testMin3(r_1: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@33.12--33.20) [152904]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@33.12--33.20) [96688]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -403,7 +403,7 @@ procedure testMin4(r_1: Ref, b_24: bool) returns ()
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@39.5--39.25
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@39.12--39.25) [152905]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@39.12--39.25) [96689]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] + perm];
@@ -413,7 +413,7 @@ procedure testMin4(r_1: Ref, b_24: bool) returns ()
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@40.5--40.25
     perm := 1 / 2;
-    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@40.12--40.25) [152906]"}
+    assert {:msg "  Inhale might fail. Fraction 1 / 2 might be negative. (annotationJoinsStateCons.vpr@40.12--40.25) [96690]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> r_1 != null;
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] + perm];
@@ -426,7 +426,7 @@ procedure testMin4(r_1: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@41.12--41.20) [152908]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@41.12--41.20) [96692]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -492,7 +492,7 @@ procedure testJoin1(r_1: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@54.12--54.20) [152912]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@54.12--54.20) [96696]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -558,7 +558,7 @@ procedure testJoin2(r_1: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@67.12--67.20) [152916]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@67.12--67.20) [96700]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -624,7 +624,7 @@ procedure testJoin3(r_1: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@78.12--78.20) [152920]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@78.12--78.20) [96704]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -690,7 +690,7 @@ procedure testJoin4(r_1: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@90.12--90.20) [152924]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@90.12--90.20) [96708]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -756,7 +756,7 @@ procedure testJoin5(r_1: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@102.12--102.20) [152928]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@102.12--102.20) [96712]"}
         perm <= Mask[r_1, f_7];
     }
     Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];

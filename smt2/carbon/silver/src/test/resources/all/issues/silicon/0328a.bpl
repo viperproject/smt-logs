@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:29:52
+// Date:         2025-01-26 21:42:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0328a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0328a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,37 +181,37 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type Vector9DDomainType;
 
 // Translation of domain function Vector9D_ctor
-function  Vector9D_ctor(f1_2: int, f2_2: int, f3_1: int, f4: int, f5: int, f6: int, f7_1: int, f8_1: int, f9: int): Vector9DDomainType;
+function  Vector9D_ctor(f1_3: int, f2_3: int, f3_2: int, f4_1: int, f5_1: int, f6_1: int, f7_1: int, f8: int, f9: int): Vector9DDomainType;
 
 // Translation of domain function Vector9D_ctor_syn
-function  Vector9D_ctor_syn(f1_2: int, f2_2: int, f3_1: int, f4: int, f5: int, f6: int, f7_1: int, f8_1: int, f9: int): Vector9DDomainType;
+function  Vector9D_ctor_syn(f1_3: int, f2_3: int, f3_2: int, f4_1: int, f5_1: int, f6_1: int, f7_1: int, f8: int, f9: int): Vector9DDomainType;
 
 // Translation of domain function Vector9D_f1
-function  Vector9D_f1(v_4: Vector9DDomainType): int;
+function  Vector9D_f1(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f2
-function  Vector9D_f2(v_4: Vector9DDomainType): int;
+function  Vector9D_f2(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f3
-function  Vector9D_f3(v_4: Vector9DDomainType): int;
+function  Vector9D_f3(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f4
-function  Vector9D_f4(v_4: Vector9DDomainType): int;
+function  Vector9D_f4(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f5
-function  Vector9D_f5(v_4: Vector9DDomainType): int;
+function  Vector9D_f5(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f6
-function  Vector9D_f6(v_4: Vector9DDomainType): int;
+function  Vector9D_f6(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f7
-function  Vector9D_f7(v_4: Vector9DDomainType): int;
+function  Vector9D_f7(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f8
-function  Vector9D_f8(v_4: Vector9DDomainType): int;
+function  Vector9D_f8(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f9
-function  Vector9D_f9(v_4: Vector9DDomainType): int;
+function  Vector9D_f9(v_29: Vector9DDomainType): int;
 
 // ==================================================
 // Translation of method main
@@ -220,8 +220,8 @@ function  Vector9D_f9(v_4: Vector9DDomainType): int;
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var v1: Vector9DDomainType;
   
   // -- Initializing the state
@@ -232,8 +232,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: v1 := Vector9D_ctor(1, 2, 3, 4, 5, 6, 7, 8, 9) -- 0328a.vpr@21.3--21.49
     v1 := (Vector9D_ctor(1, 2, 3, 4, 5, 6, 7, 8, 9): Vector9DDomainType);

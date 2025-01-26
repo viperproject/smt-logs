@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:03:27
+// Date:         2025-01-26 21:43:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec_index-shifting.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec_index-shifting-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_36: Ref, f_41: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_36, f_41] }
-  Heap[o_36, $allocated] ==> Heap[Heap[o_36, f_41], $allocated]
+axiom (forall o_53: Ref, f_67: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_53, f_67] }
+  Heap[o_53, $allocated] ==> Heap[Heap[o_53, f_67], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_37: Ref, f_42: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_37, f_42] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_37, f_42) ==> Heap[o_37, f_42] == ExhaleHeap[o_37, f_42]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_24: Ref, f_34: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_24, f_34] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_24, f_34) ==> Heap[o_24, f_34] == ExhaleHeap[o_24, f_34]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_14: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_14), ExhaleHeap[null, PredicateMaskField(pm_f_14)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_14) && IsPredicateField(pm_f_14) ==> Heap[null, PredicateMaskField(pm_f_14)] == ExhaleHeap[null, PredicateMaskField(pm_f_14)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_48: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_48), ExhaleHeap[null, PredicateMaskField(pm_f_48)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_48) && IsPredicateField(pm_f_48) ==> Heap[null, PredicateMaskField(pm_f_48)] == ExhaleHeap[null, PredicateMaskField(pm_f_48)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_14: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_14) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_14) && IsPredicateField(pm_f_14) ==> (forall <A, B> o2_14: Ref, f_42: (Field A B) ::
-    { ExhaleHeap[o2_14, f_42] }
-    Heap[null, PredicateMaskField(pm_f_14)][o2_14, f_42] ==> Heap[o2_14, f_42] == ExhaleHeap[o2_14, f_42]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_48: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_48) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_48) && IsPredicateField(pm_f_48) ==> (forall <A, B> o2_49: Ref, f_34: (Field A B) ::
+    { ExhaleHeap[o2_49, f_34] }
+    Heap[null, PredicateMaskField(pm_f_48)][o2_49, f_34] ==> Heap[o2_49, f_34] == ExhaleHeap[o2_49, f_34]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_14: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_14), ExhaleHeap[null, WandMaskField(pm_f_14)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_14) && IsWandField(pm_f_14) ==> Heap[null, WandMaskField(pm_f_14)] == ExhaleHeap[null, WandMaskField(pm_f_14)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_48: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_48), ExhaleHeap[null, WandMaskField(pm_f_48)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_48) && IsWandField(pm_f_48) ==> Heap[null, WandMaskField(pm_f_48)] == ExhaleHeap[null, WandMaskField(pm_f_48)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_14: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_14) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_14) && IsWandField(pm_f_14) ==> (forall <A, B> o2_14: Ref, f_42: (Field A B) ::
-    { ExhaleHeap[o2_14, f_42] }
-    Heap[null, WandMaskField(pm_f_14)][o2_14, f_42] ==> Heap[o2_14, f_42] == ExhaleHeap[o2_14, f_42]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_48: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_48) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_48) && IsWandField(pm_f_48) ==> (forall <A, B> o2_49: Ref, f_34: (Field A B) ::
+    { ExhaleHeap[o2_49, f_34] }
+    Heap[null, WandMaskField(pm_f_48)][o2_49, f_34] ==> Heap[o2_49, f_34] == ExhaleHeap[o2_49, f_34]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_37: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_37, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_37, $allocated] ==> ExhaleHeap[o_37, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_24: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_24, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_24, $allocated] ==> ExhaleHeap[o_24, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_36: Ref, f_43: (Field A B), v: B ::
-  { Heap[o_36, f_43:=v] }
-  succHeap(Heap, Heap[o_36, f_43:=v])
+axiom (forall <A, B> Heap: HeapType, o_53: Ref, f_16: (Field A B), v: B ::
+  { Heap[o_53, f_16:=v] }
+  succHeap(Heap, Heap[o_53, f_16:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -145,27 +145,27 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // ==================================================
 
 function  neverTriggered1(i_1: int): bool;
-function  neverTriggered2(i_3: int): bool;
+function  neverTriggered2(i_3_2: int): bool;
 function  neverTriggered3(i_14_1: int): bool;
-function  neverTriggered4(i_25: int): bool;
-function  neverTriggered5(i_35_1: int): bool;
+function  neverTriggered4(i_25_1: int): bool;
+function  neverTriggered5(i_35: int): bool;
 function  neverTriggered6(i_44: int): bool;
 function  neverTriggered7(i_49: int): bool;
-function  neverTriggered8(i_58_1: int): bool;
+function  neverTriggered8(i_58: int): bool;
 function  neverTriggered9(i_1: int): bool;
-function  neverTriggered10(i_3: int): bool;
+function  neverTriggered10(i_3_2: int): bool;
 function  neverTriggered11(i_14_1: int): bool;
-function  neverTriggered12(i_25: int): bool;
-function  neverTriggered13(i_26: int): bool;
-function  neverTriggered14(i_32_2: int): bool;
-function  neverTriggered15(i_33_1: int): bool;
-function  neverTriggered16(i_43_2: int): bool;
+function  neverTriggered12(i_25_1: int): bool;
+function  neverTriggered13(i_26_1: int): bool;
+function  neverTriggered14(i_32: int): bool;
+function  neverTriggered15(i_33: int): bool;
+function  neverTriggered16(i_43: int): bool;
 function  neverTriggered17(i_44: int): bool;
 function  neverTriggered18(i_1: int): bool;
-function  neverTriggered19(i_5: int): bool;
-function  neverTriggered20(i_6_1: int): bool;
+function  neverTriggered19(i_5_1: int): bool;
+function  neverTriggered20(i_6_2: int): bool;
 function  neverTriggered21(i_7_1: int): bool;
-function  neverTriggered22(i_8_2: int): bool;
+function  neverTriggered22(i_8_1: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
 // ==================================================
@@ -626,27 +626,27 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 type IArrayDomainType;
 
 // Translation of domain function loc
-function  loc(a_3: IArrayDomainType, i_79: int): Ref;
+function  loc(a_3: IArrayDomainType, i_6: int): Ref;
 
 // Translation of domain function len
-function  len_1(a_3: IArrayDomainType): int;
+function  len(a_3: IArrayDomainType): int;
 
 // Translation of domain function first
-function  first(r_3: Ref): IArrayDomainType;
+function  first_1(r_4: Ref): IArrayDomainType;
 
 // Translation of domain function second
-function  second(r_3: Ref): int;
+function  second_1(r_4: Ref): int;
 
 // Translation of domain axiom all_diff
 axiom (forall a_2: IArrayDomainType, i: int ::
   { (loc(a_2, i): Ref) }
-  (first((loc(a_2, i): Ref)): IArrayDomainType) == a_2 && (second((loc(a_2, i): Ref)): int) == i
+  (first_1((loc(a_2, i): Ref)): IArrayDomainType) == a_2 && (second_1((loc(a_2, i): Ref)): int) == i
 );
 
 // Translation of domain axiom length_nonneg
 axiom (forall a_2: IArrayDomainType ::
-  { (len_1(a_2): int) }
-  (len_1(a_2): int) >= 0
+  { (len(a_2): int) }
+  (len(a_2): int) >= 0
 );
 
 // ==================================================
@@ -662,11 +662,11 @@ axiom !IsWandField(val);
 // ==================================================
 
 // Uninterpreted function definitions
-function  dummy(Heap: HeapType, i: int): bool;
+function  dummy_1(Heap: HeapType, i: int): bool;
 function  dummy'(Heap: HeapType, i: int): bool;
 axiom (forall Heap: HeapType, i: int ::
-  { dummy(Heap, i) }
-  dummy(Heap, i) == dummy'(Heap, i) && dummyFunction(dummy#triggerStateless(i))
+  { dummy_1(Heap, i) }
+  dummy_1(Heap, i) == dummy'(Heap, i) && dummyFunction(dummy#triggerStateless(i))
 );
 axiom (forall Heap: HeapType, i: int ::
   { dummy'(Heap, i) }
@@ -675,8 +675,8 @@ axiom (forall Heap: HeapType, i: int ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, i: int ::
-  { state(Heap, Mask), dummy(Heap, i) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> dummy(Heap, i)
+  { state(Heap, Mask), dummy_1(Heap, i) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> dummy_1(Heap, i)
 );
 
 // Framing axioms
@@ -711,17 +711,17 @@ procedure dummy#definedness(i: int) returns (Result: bool)
 // Translation of method swap
 // ==================================================
 
-procedure swap(a_2: IArrayDomainType, i: int, j_9: int) returns ()
+procedure swap(a_2: IArrayDomainType, i: int, j: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var t_2: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -732,20 +732,20 @@ procedure swap(a_2: IArrayDomainType, i: int, j_9: int) returns ()
   
   // -- Checked inhaling of precondition
     assume 0 <= i;
-    assume i < (len_1(a_2): int);
+    assume i < (len(a_2): int);
     assume state(Heap, Mask);
-    assume 0 <= j_9;
-    assume j_9 < (len_1(a_2): int);
+    assume 0 <= j;
+    assume j < (len(a_2): int);
     assume state(Heap, Mask);
     perm := FullPerm;
     assume (loc(a_2, i): Ref) != null;
     Mask := Mask[(loc(a_2, i): Ref), val:=Mask[(loc(a_2, i): Ref), val] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    if (i != j_9) {
+    if (i != j) {
       perm := FullPerm;
-      assume (loc(a_2, j_9): Ref) != null;
-      Mask := Mask[(loc(a_2, j_9): Ref), val:=Mask[(loc(a_2, j_9): Ref), val] + perm];
+      assume (loc(a_2, j): Ref) != null;
+      Mask := Mask[(loc(a_2, j): Ref), val:=Mask[(loc(a_2, j): Ref), val] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -753,8 +753,8 @@ procedure swap(a_2: IArrayDomainType, i: int, j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -765,28 +765,28 @@ procedure swap(a_2: IArrayDomainType, i: int, j_9: int) returns ()
     PostMask := PostMask[(loc(a_2, i): Ref), val:=PostMask[(loc(a_2, i): Ref), val] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
-    if (i != j_9) {
+    if (i != j) {
       perm := FullPerm;
-      assume (loc(a_2, j_9): Ref) != null;
-      PostMask := PostMask[(loc(a_2, j_9): Ref), val:=PostMask[(loc(a_2, j_9): Ref), val] + perm];
+      assume (loc(a_2, j): Ref) != null;
+      PostMask := PostMask[(loc(a_2, j): Ref), val:=PostMask[(loc(a_2, j): Ref), val] + perm];
       assume state(PostHeap, PostMask);
     }
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of loc(a, i).val == old(loc(a, j).val)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@27.11--27.46) [118505]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@27.11--27.46) [106453]"}
         HasDirectPerm(PostMask, (loc(a_2, i): Ref), val);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@27.11--27.46) [118506]"}
-        HasDirectPerm(oldMask, (loc(a_2, j_9): Ref), val);
-    assume PostHeap[(loc(a_2, i): Ref), val] == oldHeap[(loc(a_2, j_9): Ref), val];
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@27.11--27.46) [106454]"}
+        HasDirectPerm(oldMask, (loc(a_2, j): Ref), val);
+    assume PostHeap[(loc(a_2, i): Ref), val] == oldHeap[(loc(a_2, j): Ref), val];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of loc(a, j).val == old(loc(a, i).val)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@28.11--28.46) [118507]"}
-        HasDirectPerm(PostMask, (loc(a_2, j_9): Ref), val);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@28.11--28.46) [118508]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@28.11--28.46) [106455]"}
+        HasDirectPerm(PostMask, (loc(a_2, j): Ref), val);
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@28.11--28.46) [106456]"}
         HasDirectPerm(oldMask, (loc(a_2, i): Ref), val);
-    assume PostHeap[(loc(a_2, j_9): Ref), val] == oldHeap[(loc(a_2, i): Ref), val];
+    assume PostHeap[(loc(a_2, j): Ref), val] == oldHeap[(loc(a_2, i): Ref), val];
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -795,7 +795,7 @@ procedure swap(a_2: IArrayDomainType, i: int, j_9: int) returns ()
   // -- Translating statement: t := loc(a, i).val -- arrays_quickselect_rec_index-shifting.vpr@30.3--30.30
     
     // -- Check definedness of loc(a, i).val
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@30.3--30.30) [118509]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@30.3--30.30) [106457]"}
         HasDirectPerm(Mask, (loc(a_2, i): Ref), val);
     t_2 := Heap[(loc(a_2, i): Ref), val];
     assume state(Heap, Mask);
@@ -803,40 +803,40 @@ procedure swap(a_2: IArrayDomainType, i: int, j_9: int) returns ()
   // -- Translating statement: loc(a, i).val := loc(a, j).val -- arrays_quickselect_rec_index-shifting.vpr@31.3--31.33
     
     // -- Check definedness of loc(a, j).val
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@31.3--31.33) [118510]"}
-        HasDirectPerm(Mask, (loc(a_2, j_9): Ref), val);
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@31.3--31.33) [118511]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@31.3--31.33) [106458]"}
+        HasDirectPerm(Mask, (loc(a_2, j): Ref), val);
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@31.3--31.33) [106459]"}
       FullPerm == Mask[(loc(a_2, i): Ref), val];
-    Heap := Heap[(loc(a_2, i): Ref), val:=Heap[(loc(a_2, j_9): Ref), val]];
+    Heap := Heap[(loc(a_2, i): Ref), val:=Heap[(loc(a_2, j): Ref), val]];
     assume state(Heap, Mask);
   
   // -- Translating statement: loc(a, j).val := t -- arrays_quickselect_rec_index-shifting.vpr@32.3--32.21
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@32.3--32.21) [118512]"}
-      FullPerm == Mask[(loc(a_2, j_9): Ref), val];
-    Heap := Heap[(loc(a_2, j_9): Ref), val:=t_2];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@32.3--32.21) [106460]"}
+      FullPerm == Mask[(loc(a_2, j): Ref), val];
+    Heap := Heap[(loc(a_2, j): Ref), val:=t_2];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of swap might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@25.11--25.29) [118513]"}
+      assert {:msg "  Postcondition of swap might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@25.11--25.29) [106461]"}
         perm <= Mask[(loc(a_2, i): Ref), val];
     }
     Mask := Mask[(loc(a_2, i): Ref), val:=Mask[(loc(a_2, i): Ref), val] - perm];
-    if (i != j_9) {
+    if (i != j) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of swap might not hold. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@26.11--26.40) [118514]"}
-          perm <= Mask[(loc(a_2, j_9): Ref), val];
+        assert {:msg "  Postcondition of swap might not hold. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@26.11--26.40) [106462]"}
+          perm <= Mask[(loc(a_2, j): Ref), val];
       }
-      Mask := Mask[(loc(a_2, j_9): Ref), val:=Mask[(loc(a_2, j_9): Ref), val] - perm];
+      Mask := Mask[(loc(a_2, j): Ref), val:=Mask[(loc(a_2, j): Ref), val] - perm];
     }
-    assert {:msg "  Postcondition of swap might not hold. Assertion loc(a, i).val == old(loc(a, j).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@27.11--27.46) [118515]"}
-      Heap[(loc(a_2, i): Ref), val] == oldHeap[(loc(a_2, j_9): Ref), val];
-    assert {:msg "  Postcondition of swap might not hold. Assertion loc(a, j).val == old(loc(a, i).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@28.11--28.46) [118516]"}
-      Heap[(loc(a_2, j_9): Ref), val] == oldHeap[(loc(a_2, i): Ref), val];
+    assert {:msg "  Postcondition of swap might not hold. Assertion loc(a, i).val == old(loc(a, j).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@27.11--27.46) [106463]"}
+      Heap[(loc(a_2, i): Ref), val] == oldHeap[(loc(a_2, j): Ref), val];
+    assert {:msg "  Postcondition of swap might not hold. Assertion loc(a, j).val == old(loc(a, i).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@28.11--28.46) [106464]"}
+      Heap[(loc(a_2, j): Ref), val] == oldHeap[(loc(a_2, i): Ref), val];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -847,54 +847,54 @@ procedure swap(a_2: IArrayDomainType, i: int, j_9: int) returns ()
 // Translation of method partition
 // ==================================================
 
-procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: int) returns (storeIndex: int, pw: (Seq int))
+procedure partition(a_2: IArrayDomainType, left: int, right_2: int, pivotIndex: int) returns (storeIndex: int, pw: (Seq int))
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_4: int;
-  var i_6: int;
+  var i_14: int;
+  var i_5: int;
+  var i_15: int;
+  var j_16: int;
   var i_7: int;
-  var i_8: int;
-  var j_3: int;
-  var i_9: int;
   var pivotValue: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var j_4_1: int;
-  var i_26: int;
+  var i_26_1: int;
   var i_28: int;
-  var i_30_2: int;
-  var i_32_2: int;
+  var i_30: int;
+  var i_32: int;
   var k: int;
   var i$0: int;
-  var i_11: int;
-  var i_12: int;
-  var i_16: int;
-  var i_18: int;
+  var i_8: int;
+  var i_19: int;
+  var i_9: int;
+  var i_10: int;
   var k_20: int;
-  var i$0_4: int;
+  var i$0_6: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var i_50_1: int;
-  var i_52_1: int;
-  var i_54_1: int;
-  var i_56_1: int;
+  var i_50: int;
+  var i_52: int;
+  var i_54: int;
+  var i_56: int;
   var k_5: int;
-  var i$0_5: int;
-  var i_15: int;
-  var i_17: int;
-  var i_19: int;
-  var i_21: int;
-  var j_2_1: int;
-  var i_23: int;
+  var i$0_5_1: int;
+  var i_15_1: int;
+  var i_17_1: int;
+  var i_19_1: int;
+  var i_21_1: int;
+  var j_2_2: int;
+  var i_23_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -903,12 +903,12 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume 0 <= left_1;
-    assume left_1 < right;
-    assume right < (len_1(a_2): int);
+    assume 0 <= left;
+    assume left < right_2;
+    assume right_2 < (len(a_2): int);
     assume state(Heap, Mask);
-    assume left_1 <= pivotIndex;
-    assume pivotIndex <= right;
+    assume left <= pivotIndex;
+    assume pivotIndex <= right_2;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } left <= i && i <= right ==> acc(loc(a, i).val, write))
@@ -916,36 +916,36 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@53.12--53.75) [118517]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@53.12--53.75) [106465]"}
       (forall i_1: int, i_1_1: int ::
       
-      (((i_1 != i_1_1 && (left_1 <= i_1 && i_1 <= right)) && (left_1 <= i_1_1 && i_1_1 <= right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
+      (((i_1 != i_1_1 && (left <= i_1 && i_1 <= right_2)) && (left <= i_1_1 && i_1_1 <= right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        (left_1 <= i_1 && i_1 <= right) && NoPerm < FullPerm ==> qpRange1((loc(a_2, i_1): Ref)) && invRecv1((loc(a_2, i_1): Ref)) == i_1
+        (left <= i_1 && i_1 <= right_2) && NoPerm < FullPerm ==> qpRange1((loc(a_2, i_1): Ref)) && invRecv1((loc(a_2, i_1): Ref)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((left_1 <= invRecv1(o_4) && invRecv1(o_4) <= right) && NoPerm < FullPerm) && qpRange1(o_4) ==> (loc(a_2, invRecv1(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((left <= invRecv1(o_9) && invRecv1(o_9) <= right_2) && NoPerm < FullPerm) && qpRange1(o_9) ==> (loc(a_2, invRecv1(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        left_1 <= i_1 && i_1 <= right ==> (loc(a_2, i_1): Ref) != null
+        left <= i_1 && i_1 <= right_2 ==> (loc(a_2, i_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((left_1 <= invRecv1(o_4) && invRecv1(o_4) <= right) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv1(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((left_1 <= invRecv1(o_4) && invRecv1(o_4) <= right) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((left <= invRecv1(o_9) && invRecv1(o_9) <= right_2) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv1(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((left <= invRecv1(o_9) && invRecv1(o_9) <= right_2) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -954,15 +954,15 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
-    assume left_1 <= storeIndex;
-    assume storeIndex <= right;
+    assume left <= storeIndex;
+    assume storeIndex <= right_2;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } left <= i && i <= right ==> acc(loc(a, i).val, write))
@@ -970,116 +970,116 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@58.11--58.74) [118518]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@58.11--58.74) [106466]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && (left_1 <= i_3 && i_3 <= right)) && (left_1 <= i_3_1 && i_3_1 <= right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_3): Ref) != (loc(a_2, i_3_1): Ref)
+      (((i_3_2 != i_3_3 && (left <= i_3_2 && i_3_2 <= right_2)) && (left <= i_3_3 && i_3_3 <= right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_3_2): Ref) != (loc(a_2, i_3_3): Ref)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { (loc(a_2, i_3): Ref) } { (loc(a_2, i_3): Ref) }
-        (left_1 <= i_3 && i_3 <= right) && NoPerm < FullPerm ==> qpRange2((loc(a_2, i_3): Ref)) && invRecv2((loc(a_2, i_3): Ref)) == i_3
+      assume (forall i_3_2: int ::
+        { (loc(a_2, i_3_2): Ref) } { (loc(a_2, i_3_2): Ref) }
+        (left <= i_3_2 && i_3_2 <= right_2) && NoPerm < FullPerm ==> qpRange2((loc(a_2, i_3_2): Ref)) && invRecv2((loc(a_2, i_3_2): Ref)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        ((left_1 <= invRecv2(o_4) && invRecv2(o_4) <= right) && NoPerm < FullPerm) && qpRange2(o_4) ==> (loc(a_2, invRecv2(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        ((left <= invRecv2(o_9) && invRecv2(o_9) <= right_2) && NoPerm < FullPerm) && qpRange2(o_9) ==> (loc(a_2, invRecv2(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { (loc(a_2, i_3): Ref) } { (loc(a_2, i_3): Ref) }
-        left_1 <= i_3 && i_3 <= right ==> (loc(a_2, i_3): Ref) != null
+      assume (forall i_3_2: int ::
+        { (loc(a_2, i_3_2): Ref) } { (loc(a_2, i_3_2): Ref) }
+        left <= i_3_2 && i_3_2 <= right_2 ==> (loc(a_2, i_3_2): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((left_1 <= invRecv2(o_4) && invRecv2(o_4) <= right) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv2(o_4)): Ref) == o_4) && QPMask[o_4, val] == PostMask[o_4, val] + FullPerm) && (!(((left_1 <= invRecv2(o_4) && invRecv2(o_4) <= right) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, val] == PostMask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((left <= invRecv2(o_9) && invRecv2(o_9) <= right_2) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv2(o_9)): Ref) == o_9) && QPMask[o_9, val] == PostMask[o_9, val] + FullPerm) && (!(((left <= invRecv2(o_9) && invRecv2(o_9) <= right_2) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, val] == PostMask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of loc(a, storeIndex).val == old(loc(a, pivotIndex).val)
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@60.11--60.64) [118519]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@60.11--60.64) [106467]"}
         HasDirectPerm(PostMask, (loc(a_2, storeIndex): Ref), val);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, pivotIndex).val (arrays_quickselect_rec_index-shifting.vpr@60.11--60.64) [118520]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, pivotIndex).val (arrays_quickselect_rec_index-shifting.vpr@60.11--60.64) [106468]"}
         HasDirectPerm(oldMask, (loc(a_2, pivotIndex): Ref), val);
     assume PostHeap[(loc(a_2, storeIndex): Ref), val] == oldHeap[(loc(a_2, pivotIndex): Ref), val];
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } left <= i && i < storeIndex ==> loc(a, i).val < loc(a, storeIndex).val)
       if (*) {
-        if (left_1 <= i_4 && i_4 < storeIndex) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@62.11--62.99) [118521]"}
+        if (left <= i_4 && i_4 < storeIndex) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@62.11--62.99) [106469]"}
             HasDirectPerm(PostMask, (loc(a_2, i_4): Ref), val);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@62.11--62.99) [118522]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@62.11--62.99) [106470]"}
             HasDirectPerm(PostMask, (loc(a_2, storeIndex): Ref), val);
         }
         assume false;
       }
-    assume (forall i_5: int ::
-      { (loc(a_2, i_5): Ref) }
-      left_1 <= i_5 && i_5 < storeIndex ==> PostHeap[(loc(a_2, i_5): Ref), val] < PostHeap[(loc(a_2, storeIndex): Ref), val]
+    assume (forall i_5_1: int ::
+      { (loc(a_2, i_5_1): Ref) }
+      left <= i_5_1 && i_5_1 < storeIndex ==> PostHeap[(loc(a_2, i_5_1): Ref), val] < PostHeap[(loc(a_2, storeIndex): Ref), val]
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } storeIndex < i && i <= right ==> loc(a, storeIndex).val <= loc(a, i).val)
       if (*) {
-        if (storeIndex < i_6 && i_6 <= right) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@63.11--63.100) [118523]"}
+        if (storeIndex < i_14 && i_14 <= right_2) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@63.11--63.100) [106471]"}
             HasDirectPerm(PostMask, (loc(a_2, storeIndex): Ref), val);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@63.11--63.100) [118524]"}
-            HasDirectPerm(PostMask, (loc(a_2, i_6): Ref), val);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@63.11--63.100) [106472]"}
+            HasDirectPerm(PostMask, (loc(a_2, i_14): Ref), val);
         }
         assume false;
       }
     assume (forall i_7_1: int ::
       { (loc(a_2, i_7_1): Ref) }
-      storeIndex < i_7_1 && i_7_1 <= right ==> PostHeap[(loc(a_2, storeIndex): Ref), val] <= PostHeap[(loc(a_2, i_7_1): Ref), val]
+      storeIndex < i_7_1 && i_7_1 <= right_2 ==> PostHeap[(loc(a_2, storeIndex): Ref), val] <= PostHeap[(loc(a_2, i_7_1): Ref), val]
     );
     assume state(PostHeap, PostMask);
-    assume Seq#Length(pw) == right + 1 - left_1;
+    assume Seq#Length(pw) == right_2 + 1 - left;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right)
       if (*) {
-        if (0 <= i_7 && i_7 < Seq#Length(pw)) {
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [118525]"}
-            i_7 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [118526]"}
-            i_7 < Seq#Length(pw);
-          if (left_1 <= Seq#Index(pw, i_7)) {
-            assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [118527]"}
-              i_7 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [118528]"}
-              i_7 < Seq#Length(pw);
+        if (0 <= i_5 && i_5 < Seq#Length(pw)) {
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [106473]"}
+            i_5 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [106474]"}
+            i_5 < Seq#Length(pw);
+          if (left <= Seq#Index(pw, i_5)) {
+            assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [106475]"}
+              i_5 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [106476]"}
+              i_5 < Seq#Length(pw);
           }
         }
         assume false;
       }
     assume (forall i_9_1: int ::
       { Seq#Index(pw, i_9_1) }
-      0 <= i_9_1 && i_9_1 < Seq#Length(pw) ==> left_1 <= Seq#Index(pw, i_9_1) && Seq#Index(pw, i_9_1) <= right
+      0 <= i_9_1 && i_9_1 < Seq#Length(pw) ==> left <= Seq#Index(pw, i_9_1) && Seq#Index(pw, i_9_1) <= right_2
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { pw[i], pw[j] } 0 <= i && (i < j && j < |pw|) ==> pw[i] != pw[j])
       if (*) {
-        if (0 <= i_8 && (i_8 < j_3 && j_3 < Seq#Length(pw))) {
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@67.11--67.82) [118529]"}
-            i_8 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@67.11--67.82) [118530]"}
-            i_8 < Seq#Length(pw);
-          assert {:msg "  Contract might not be well-formed. Index pw[j] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@67.11--67.82) [118531]"}
-            j_3 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index pw[j] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@67.11--67.82) [118532]"}
-            j_3 < Seq#Length(pw);
+        if (0 <= i_15 && (i_15 < j_16 && j_16 < Seq#Length(pw))) {
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@67.11--67.82) [106477]"}
+            i_15 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@67.11--67.82) [106478]"}
+            i_15 < Seq#Length(pw);
+          assert {:msg "  Contract might not be well-formed. Index pw[j] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@67.11--67.82) [106479]"}
+            j_16 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index pw[j] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@67.11--67.82) [106480]"}
+            j_16 < Seq#Length(pw);
         }
         assume false;
       }
@@ -1091,21 +1091,21 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
     
     // -- Check definedness of (forall i: Int :: { old(pw[i]) } 0 <= i && i < |pw| ==> loc(a, left + i).val == old(loc(a, pw[i]).val))
       if (*) {
-        if (0 <= i_9 && i_9 < Seq#Length(pw)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, left + i).val (arrays_quickselect_rec_index-shifting.vpr@69.11--69.32) [118533]"}
-            HasDirectPerm(PostMask, (loc(a_2, left_1 + i_9): Ref), val);
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@69.11--69.32) [118534]"}
-            i_9 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@69.11--69.32) [118535]"}
-            i_9 < Seq#Length(pw);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, pw[i]).val (arrays_quickselect_rec_index-shifting.vpr@69.11--69.32) [118536]"}
-            HasDirectPerm(oldMask, (loc(a_2, Seq#Index(pw, i_9)): Ref), val);
+        if (0 <= i_7 && i_7 < Seq#Length(pw)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, left + i).val (arrays_quickselect_rec_index-shifting.vpr@69.11--69.32) [106481]"}
+            HasDirectPerm(PostMask, (loc(a_2, left + i_7): Ref), val);
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@69.11--69.32) [106482]"}
+            i_7 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@69.11--69.32) [106483]"}
+            i_7 < Seq#Length(pw);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, pw[i]).val (arrays_quickselect_rec_index-shifting.vpr@69.11--69.32) [106484]"}
+            HasDirectPerm(oldMask, (loc(a_2, Seq#Index(pw, i_7)): Ref), val);
         }
         assume false;
       }
     assume (forall i_13_1: int ::
       { Seq#Index(pw, i_13_1) }
-      0 <= i_13_1 && i_13_1 < Seq#Length(pw) ==> PostHeap[(loc(a_2, left_1 + i_13_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_13_1)): Ref), val]
+      0 <= i_13_1 && i_13_1 < Seq#Length(pw) ==> PostHeap[(loc(a_2, left + i_13_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_13_1)): Ref), val]
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -1115,13 +1115,13 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
   // -- Translating statement: pivotValue := loc(a, pivotIndex).val -- arrays_quickselect_rec_index-shifting.vpr@71.3--71.48
     
     // -- Check definedness of loc(a, pivotIndex).val
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, pivotIndex).val (arrays_quickselect_rec_index-shifting.vpr@71.3--71.48) [118537]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, pivotIndex).val (arrays_quickselect_rec_index-shifting.vpr@71.3--71.48) [106485]"}
         HasDirectPerm(Mask, (loc(a_2, pivotIndex): Ref), val);
     pivotValue := Heap[(loc(a_2, pivotIndex): Ref), val];
     assume state(Heap, Mask);
   
   // -- Translating statement: pw := [left..right + 1) -- arrays_quickselect_rec_index-shifting.vpr@73.3--73.26
-    pw := Seq#Range(left_1, right + 1);
+    pw := Seq#Range(left, right_2 + 1);
     assume state(Heap, Mask);
   
   // -- Translating statement: swap(a, pivotIndex, right) -- arrays_quickselect_rec_index-shifting.vpr@75.3--75.29
@@ -1129,29 +1129,29 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= pivotIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [118538]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= pivotIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [106486]"}
         0 <= pivotIndex;
-      assert {:msg "  The precondition of method swap might not hold. Assertion pivotIndex < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [118539]"}
-        pivotIndex < (len_1(a_2): int);
-      assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [118540]"}
-        0 <= right;
-      assert {:msg "  The precondition of method swap might not hold. Assertion right < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [118541]"}
-        right < (len_1(a_2): int);
+      assert {:msg "  The precondition of method swap might not hold. Assertion pivotIndex < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [106487]"}
+        pivotIndex < (len(a_2): int);
+      assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [106488]"}
+        0 <= right_2;
+      assert {:msg "  The precondition of method swap might not hold. Assertion right < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [106489]"}
+        right_2 < (len(a_2): int);
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, pivotIndex).val (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [118542]"}
+        assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, pivotIndex).val (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [106490]"}
           perm <= Mask[(loc(a_2, pivotIndex): Ref), val];
       }
       Mask := Mask[(loc(a_2, pivotIndex): Ref), val:=Mask[(loc(a_2, pivotIndex): Ref), val] - perm];
-      if (pivotIndex != right) {
+      if (pivotIndex != right_2) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, right).val (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [118543]"}
-            perm <= Mask[(loc(a_2, right): Ref), val];
+          assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, right).val (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [106491]"}
+            perm <= Mask[(loc(a_2, right_2): Ref), val];
         }
-        Mask := Mask[(loc(a_2, right): Ref), val:=Mask[(loc(a_2, right): Ref), val] - perm];
+        Mask := Mask[(loc(a_2, right_2): Ref), val:=Mask[(loc(a_2, right_2): Ref), val] - perm];
       }
       // Finish exhale
       havoc ExhaleHeap;
@@ -1163,14 +1163,14 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
       assume (loc(a_2, pivotIndex): Ref) != null;
       Mask := Mask[(loc(a_2, pivotIndex): Ref), val:=Mask[(loc(a_2, pivotIndex): Ref), val] + perm];
       assume state(Heap, Mask);
-      if (pivotIndex != right) {
+      if (pivotIndex != right_2) {
         perm := FullPerm;
-        assume (loc(a_2, right): Ref) != null;
-        Mask := Mask[(loc(a_2, right): Ref), val:=Mask[(loc(a_2, right): Ref), val] + perm];
+        assume (loc(a_2, right_2): Ref) != null;
+        Mask := Mask[(loc(a_2, right_2): Ref), val:=Mask[(loc(a_2, right_2): Ref), val] + perm];
         assume state(Heap, Mask);
       }
-      assume Heap[(loc(a_2, pivotIndex): Ref), val] == PreCallHeap[(loc(a_2, right): Ref), val];
-      assume Heap[(loc(a_2, right): Ref), val] == PreCallHeap[(loc(a_2, pivotIndex): Ref), val];
+      assume Heap[(loc(a_2, pivotIndex): Ref), val] == PreCallHeap[(loc(a_2, right_2): Ref), val];
+      assume Heap[(loc(a_2, right_2): Ref), val] == PreCallHeap[(loc(a_2, pivotIndex): Ref), val];
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1178,23 +1178,23 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
   //   pw[pivotIndex - left]] -- arrays_quickselect_rec_index-shifting.vpr@80.3--81.50
     
     // -- Check definedness of pw[pivotIndex - left := pw[right - left]][right - left := pw[pivotIndex - left]]
-      assert {:msg "  Assignment might fail. Index pw[right - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@80.3--81.50) [118544]"}
-        right - left_1 >= 0;
-      assert {:msg "  Assignment might fail. Index pw[right - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@80.3--81.50) [118545]"}
-        right - left_1 < Seq#Length(pw);
-      assert {:msg "  Assignment might fail. Index pw[pivotIndex - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@80.3--81.50) [118546]"}
-        pivotIndex - left_1 >= 0;
-      assert {:msg "  Assignment might fail. Index pw[pivotIndex - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@80.3--81.50) [118547]"}
-        pivotIndex - left_1 < Seq#Length(pw);
-    pw := Seq#Append(Seq#Take(Seq#Append(Seq#Take(pw, pivotIndex - left_1), Seq#Append(Seq#Singleton(Seq#Index(pw, right - left_1)), Seq#Drop(pw, pivotIndex - left_1 + 1))), right - left_1), Seq#Append(Seq#Singleton(Seq#Index(pw, pivotIndex - left_1)), Seq#Drop(Seq#Append(Seq#Take(pw, pivotIndex - left_1), Seq#Append(Seq#Singleton(Seq#Index(pw, right - left_1)), Seq#Drop(pw, pivotIndex - left_1 + 1))), right - left_1 + 1)));
+      assert {:msg "  Assignment might fail. Index pw[right - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@80.3--81.50) [106492]"}
+        right_2 - left >= 0;
+      assert {:msg "  Assignment might fail. Index pw[right - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@80.3--81.50) [106493]"}
+        right_2 - left < Seq#Length(pw);
+      assert {:msg "  Assignment might fail. Index pw[pivotIndex - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@80.3--81.50) [106494]"}
+        pivotIndex - left >= 0;
+      assert {:msg "  Assignment might fail. Index pw[pivotIndex - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@80.3--81.50) [106495]"}
+        pivotIndex - left < Seq#Length(pw);
+    pw := Seq#Append(Seq#Take(Seq#Append(Seq#Take(pw, pivotIndex - left), Seq#Append(Seq#Singleton(Seq#Index(pw, right_2 - left)), Seq#Drop(pw, pivotIndex - left + 1))), right_2 - left), Seq#Append(Seq#Singleton(Seq#Index(pw, pivotIndex - left)), Seq#Drop(Seq#Append(Seq#Take(pw, pivotIndex - left), Seq#Append(Seq#Singleton(Seq#Index(pw, right_2 - left)), Seq#Drop(pw, pivotIndex - left + 1))), right_2 - left + 1)));
     assume state(Heap, Mask);
   
   // -- Translating statement: storeIndex := left -- arrays_quickselect_rec_index-shifting.vpr@83.3--83.21
-    storeIndex := left_1;
+    storeIndex := left;
     assume state(Heap, Mask);
   
   // -- Translating statement: j := left -- arrays_quickselect_rec_index-shifting.vpr@84.3--84.21
-    j_4_1 := left_1;
+    j_4_1 := left;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (j < right) -- arrays_quickselect_rec_index-shifting.vpr@86.3--122.4
@@ -1202,15 +1202,15 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant left <= j && j <= right might not hold on entry. Assertion left <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [118548]"}
-          left_1 <= j_4_1;
-        assert {:msg "  Loop invariant left <= j && j <= right might not hold on entry. Assertion j <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [118549]"}
-          j_4_1 <= right;
-        assert {:msg "  Loop invariant left <= storeIndex && storeIndex <= j might not hold on entry. Assertion left <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@89.15--89.52) [118550]"}
-          left_1 <= storeIndex;
-        assert {:msg "  Loop invariant left <= storeIndex && storeIndex <= j might not hold on entry. Assertion storeIndex <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@89.15--89.52) [118551]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant left <= j && j <= right might not hold on entry. Assertion left <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [106496]"}
+          left <= j_4_1;
+        assert {:msg "  Loop invariant left <= j && j <= right might not hold on entry. Assertion j <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [106497]"}
+          j_4_1 <= right_2;
+        assert {:msg "  Loop invariant left <= storeIndex && storeIndex <= j might not hold on entry. Assertion left <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@89.15--89.52) [106498]"}
+          left <= storeIndex;
+        assert {:msg "  Loop invariant left <= storeIndex && storeIndex <= j might not hold on entry. Assertion storeIndex <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@89.15--89.52) [106499]"}
           storeIndex <= j_4_1;
         havoc QPMask;
         
@@ -1218,101 +1218,101 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
           
         
         // -- check if receiver loc(a, i) is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { loc(a, i) } (i in [left..right + 1)) ==> acc(loc(a, i).val, write)) might not hold on entry. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [118552]"}
-            (forall i_25: int, i_25_2: int ::
-            { neverTriggered4(i_25), neverTriggered4(i_25_2) }
-            (((i_25 != i_25_2 && Seq#Contains(Seq#Range(left_1, right + 1), i_25)) && Seq#Contains(Seq#Range(left_1, right + 1), i_25_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_25): Ref) != (loc(a_2, i_25_2): Ref)
+          assert {:msg "  Loop invariant (forall i: Int :: { loc(a, i) } (i in [left..right + 1)) ==> acc(loc(a, i).val, write)) might not hold on entry. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [106500]"}
+            (forall i_25_1: int, i_25_2: int ::
+            { neverTriggered4(i_25_1), neverTriggered4(i_25_2) }
+            (((i_25_1 != i_25_2 && Seq#Contains(Seq#Range(left, right_2 + 1), i_25_1)) && Seq#Contains(Seq#Range(left, right_2 + 1), i_25_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_25_1): Ref) != (loc(a_2, i_25_2): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { loc(a, i) } (i in [left..right + 1)) ==> acc(loc(a, i).val, write)) might not hold on entry. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [118553]"}
-            (forall i_25: int ::
-            { (loc(a_2, i_25): Ref) } { (loc(a_2, i_25): Ref) }
-            Seq#Contains(Seq#Range(left_1, right + 1), i_25) ==> Mask[(loc(a_2, i_25): Ref), val] >= FullPerm
+          assert {:msg "  Loop invariant (forall i: Int :: { loc(a, i) } (i in [left..right + 1)) ==> acc(loc(a, i).val, write)) might not hold on entry. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [106501]"}
+            (forall i_25_1: int ::
+            { (loc(a_2, i_25_1): Ref) } { (loc(a_2, i_25_1): Ref) }
+            Seq#Contains(Seq#Range(left, right_2 + 1), i_25_1) ==> Mask[(loc(a_2, i_25_1): Ref), val] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver loc(a, i)
-          assume (forall i_25: int ::
-            { (loc(a_2, i_25): Ref) } { (loc(a_2, i_25): Ref) }
-            Seq#Contains(Seq#Range(left_1, right + 1), i_25) && NoPerm < FullPerm ==> qpRange4((loc(a_2, i_25): Ref)) && invRecv4((loc(a_2, i_25): Ref)) == i_25
+          assume (forall i_25_1: int ::
+            { (loc(a_2, i_25_1): Ref) } { (loc(a_2, i_25_1): Ref) }
+            Seq#Contains(Seq#Range(left, right_2 + 1), i_25_1) && NoPerm < FullPerm ==> qpRange4((loc(a_2, i_25_1): Ref)) && invRecv4((loc(a_2, i_25_1): Ref)) == i_25_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv4(o_4) }
-            Seq#Contains(Seq#Range(left_1, right + 1), invRecv4(o_4)) && (NoPerm < FullPerm && qpRange4(o_4)) ==> (loc(a_2, invRecv4(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv4(o_9) }
+            Seq#Contains(Seq#Range(left, right_2 + 1), invRecv4(o_9)) && (NoPerm < FullPerm && qpRange4(o_9)) ==> (loc(a_2, invRecv4(o_9)): Ref) == o_9
           );
         
         // -- assume permission updates for field val
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            (Seq#Contains(Seq#Range(left_1, right + 1), invRecv4(o_4)) && (NoPerm < FullPerm && qpRange4(o_4)) ==> (loc(a_2, invRecv4(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!(Seq#Contains(Seq#Range(left_1, right + 1), invRecv4(o_4)) && (NoPerm < FullPerm && qpRange4(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            (Seq#Contains(Seq#Range(left, right_2 + 1), invRecv4(o_9)) && (NoPerm < FullPerm && qpRange4(o_9)) ==> (loc(a_2, invRecv4(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!(Seq#Contains(Seq#Range(left, right_2 + 1), invRecv4(o_9)) && (NoPerm < FullPerm && qpRange4(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
-        assert {:msg "  Loop invariant loc(a, right).val == pivotValue might not hold on entry. Assertion loc(a, right).val == pivotValue might not hold. (arrays_quickselect_rec_index-shifting.vpr@97.15--97.46) [118554]"}
-          Heap[(loc(a_2, right): Ref), val] == pivotValue;
+        assert {:msg "  Loop invariant loc(a, right).val == pivotValue might not hold on entry. Assertion loc(a, right).val == pivotValue might not hold. (arrays_quickselect_rec_index-shifting.vpr@97.15--97.46) [106502]"}
+          Heap[(loc(a_2, right_2): Ref), val] == pivotValue;
         if (*) {
-          if (Seq#Contains(Seq#Range(left_1, storeIndex), i_26)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { (i in [left..storeIndex)) } { loc(a, i) } (i in [left..storeIndex)) ==> loc(a, i).val < pivotValue) might not hold on entry. Assertion loc(a, i).val < pivotValue might not hold. (arrays_quickselect_rec_index-shifting.vpr@99.15--99.86) [118555]"}
-              Heap[(loc(a_2, i_26): Ref), val] < pivotValue;
+          if (Seq#Contains(Seq#Range(left, storeIndex), i_26_1)) {
+            assert {:msg "  Loop invariant (forall i: Int :: { (i in [left..storeIndex)) } { loc(a, i) } (i in [left..storeIndex)) ==> loc(a, i).val < pivotValue) might not hold on entry. Assertion loc(a, i).val < pivotValue might not hold. (arrays_quickselect_rec_index-shifting.vpr@99.15--99.86) [106503]"}
+              Heap[(loc(a_2, i_26_1): Ref), val] < pivotValue;
           }
           assume false;
         }
-        assume (forall i_27_1_1: int ::
-          { Seq#ContainsTrigger(Seq#Range(left_1, storeIndex), i_27_1_1) } { Seq#Contains(Seq#Range(left_1, storeIndex), i_27_1_1) } { (loc(a_2, i_27_1_1): Ref) }
-          Seq#Contains(Seq#Range(left_1, storeIndex), i_27_1_1) ==> Heap[(loc(a_2, i_27_1_1): Ref), val] < pivotValue
+        assume (forall i_27_1: int ::
+          { Seq#ContainsTrigger(Seq#Range(left, storeIndex), i_27_1) } { Seq#Contains(Seq#Range(left, storeIndex), i_27_1) } { (loc(a_2, i_27_1): Ref) }
+          Seq#Contains(Seq#Range(left, storeIndex), i_27_1) ==> Heap[(loc(a_2, i_27_1): Ref), val] < pivotValue
         );
         if (*) {
           if (Seq#Contains(Seq#Range(storeIndex, j_4_1), i_28)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { (i in [storeIndex..j)) } { loc(a, i) } (i in [storeIndex..j)) ==> pivotValue <= loc(a, i).val) might not hold on entry. Assertion pivotValue <= loc(a, i).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@100.15--100.84) [118556]"}
+            assert {:msg "  Loop invariant (forall i: Int :: { (i in [storeIndex..j)) } { loc(a, i) } (i in [storeIndex..j)) ==> pivotValue <= loc(a, i).val) might not hold on entry. Assertion pivotValue <= loc(a, i).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@100.15--100.84) [106504]"}
               pivotValue <= Heap[(loc(a_2, i_28): Ref), val];
           }
           assume false;
         }
-        assume (forall i_29_1_1: int ::
-          { Seq#ContainsTrigger(Seq#Range(storeIndex, j_4_1), i_29_1_1) } { Seq#Contains(Seq#Range(storeIndex, j_4_1), i_29_1_1) } { (loc(a_2, i_29_1_1): Ref) }
-          Seq#Contains(Seq#Range(storeIndex, j_4_1), i_29_1_1) ==> pivotValue <= Heap[(loc(a_2, i_29_1_1): Ref), val]
+        assume (forall i_29_1: int ::
+          { Seq#ContainsTrigger(Seq#Range(storeIndex, j_4_1), i_29_1) } { Seq#Contains(Seq#Range(storeIndex, j_4_1), i_29_1) } { (loc(a_2, i_29_1): Ref) }
+          Seq#Contains(Seq#Range(storeIndex, j_4_1), i_29_1) ==> pivotValue <= Heap[(loc(a_2, i_29_1): Ref), val]
         );
-        assert {:msg "  Loop invariant |pw| == right + 1 - left might not hold on entry. Assertion |pw| == right + 1 - left might not hold. (arrays_quickselect_rec_index-shifting.vpr@102.15--102.39) [118557]"}
-          Seq#Length(pw) == right + 1 - left_1;
+        assert {:msg "  Loop invariant |pw| == right + 1 - left might not hold on entry. Assertion |pw| == right + 1 - left might not hold. (arrays_quickselect_rec_index-shifting.vpr@102.15--102.39) [106505]"}
+          Seq#Length(pw) == right_2 + 1 - left;
         if (*) {
-          if (0 <= i_30_2 && i_30_2 < Seq#Length(pw)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right) might not hold on entry. Assertion left <= pw[i] might not hold. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [118558]"}
-              left_1 <= Seq#Index(pw, i_30_2);
-            assert {:msg "  Loop invariant (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right) might not hold on entry. Assertion pw[i] <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [118559]"}
-              Seq#Index(pw, i_30_2) <= right;
+          if (0 <= i_30 && i_30 < Seq#Length(pw)) {
+            assert {:msg "  Loop invariant (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right) might not hold on entry. Assertion left <= pw[i] might not hold. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [106506]"}
+              left <= Seq#Index(pw, i_30);
+            assert {:msg "  Loop invariant (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right) might not hold on entry. Assertion pw[i] <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [106507]"}
+              Seq#Index(pw, i_30) <= right_2;
           }
           assume false;
         }
-        assume (forall i_31_1_1: int ::
-          { Seq#Index(pw, i_31_1_1) }
-          0 <= i_31_1_1 && i_31_1_1 < Seq#Length(pw) ==> left_1 <= Seq#Index(pw, i_31_1_1) && Seq#Index(pw, i_31_1_1) <= right
+        assume (forall i_31_1: int ::
+          { Seq#Index(pw, i_31_1) }
+          0 <= i_31_1 && i_31_1 < Seq#Length(pw) ==> left <= Seq#Index(pw, i_31_1) && Seq#Index(pw, i_31_1) <= right_2
         );
         if (*) {
-          if (0 <= i_32_2 && (i_32_2 < k && k < Seq#Length(pw))) {
-            assert {:msg "  Loop invariant (forall i: Int, k: Int :: { pw[i], pw[k] } 0 <= i && (i < k && k < |pw|) ==> pw[i] != pw[k]) might not hold on entry. Assertion pw[i] != pw[k] might not hold. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [118560]"}
-              Seq#Index(pw, i_32_2) != Seq#Index(pw, k);
+          if (0 <= i_32 && (i_32 < k && k < Seq#Length(pw))) {
+            assert {:msg "  Loop invariant (forall i: Int, k: Int :: { pw[i], pw[k] } 0 <= i && (i < k && k < |pw|) ==> pw[i] != pw[k]) might not hold on entry. Assertion pw[i] != pw[k] might not hold. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [106508]"}
+              Seq#Index(pw, i_32) != Seq#Index(pw, k);
           }
           assume false;
         }
-        assume (forall i_33_1_1: int, k_1_1_1: int ::
-          { Seq#Index(pw, i_33_1_1), Seq#Index(pw, k_1_1_1) }
-          0 <= i_33_1_1 && (i_33_1_1 < k_1_1_1 && k_1_1_1 < Seq#Length(pw)) ==> Seq#Index(pw, i_33_1_1) != Seq#Index(pw, k_1_1_1)
+        assume (forall i_33_1: int, k_1_1_1: int ::
+          { Seq#Index(pw, i_33_1), Seq#Index(pw, k_1_1_1) }
+          0 <= i_33_1 && (i_33_1 < k_1_1_1 && k_1_1_1 < Seq#Length(pw)) ==> Seq#Index(pw, i_33_1) != Seq#Index(pw, k_1_1_1)
         );
         if (*) {
           if (0 <= i$0 && i$0 < Seq#Length(pw)) {
-            assert {:msg "  Loop invariant (forall i$0: Int :: { old(pw[i$0]) } 0 <= i$0 && i$0 < |pw| ==> loc(a, left + i$0).val == old(loc(a, pw[i$0]).val)) might not hold on entry. Assertion loc(a, left + i$0).val == old(loc(a, pw[i$0]).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [118561]"}
-              Heap[(loc(a_2, left_1 + i$0): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0)): Ref), val];
+            assert {:msg "  Loop invariant (forall i$0: Int :: { old(pw[i$0]) } 0 <= i$0 && i$0 < |pw| ==> loc(a, left + i$0).val == old(loc(a, pw[i$0]).val)) might not hold on entry. Assertion loc(a, left + i$0).val == old(loc(a, pw[i$0]).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [106509]"}
+              Heap[(loc(a_2, left + i$0): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0)): Ref), val];
           }
           assume false;
         }
-        assume (forall i$0_1_1_1: int ::
-          { Seq#Index(pw, i$0_1_1_1) }
-          0 <= i$0_1_1_1 && i$0_1_1_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left_1 + i$0_1_1_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_1_1_1)): Ref), val]
+        assume (forall i$0_1_1: int ::
+          { Seq#Index(pw, i$0_1_1) }
+          0 <= i$0_1_1 && i$0_1_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left + i$0_1_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_1_1)): Ref), val]
         );
         // Finish exhale
         havoc ExhaleHeap;
@@ -1324,10 +1324,10 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
     
     // -- Check definedness of invariant
       if (*) {
-        assume left_1 <= j_4_1;
-        assume j_4_1 <= right;
+        assume left <= j_4_1;
+        assume j_4_1 <= right_2;
         assume state(Heap, Mask);
-        assume left_1 <= storeIndex;
+        assume left <= storeIndex;
         assume storeIndex <= j_4_1;
         assume state(Heap, Mask);
         
@@ -1336,66 +1336,66 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [118562]"}
-          (forall i_35_1: int, i_35_2: int ::
+        assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [106510]"}
+          (forall i_35: int, i_35_1: int ::
           
-          (((i_35_1 != i_35_2 && Seq#Contains(Seq#Range(left_1, right + 1), i_35_1)) && Seq#Contains(Seq#Range(left_1, right + 1), i_35_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_35_1): Ref) != (loc(a_2, i_35_2): Ref)
+          (((i_35 != i_35_1 && Seq#Contains(Seq#Range(left, right_2 + 1), i_35)) && Seq#Contains(Seq#Range(left, right_2 + 1), i_35_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_35): Ref) != (loc(a_2, i_35_1): Ref)
         );
         
         // -- Define Inverse Function
-          assume (forall i_35_1: int ::
-            { (loc(a_2, i_35_1): Ref) } { (loc(a_2, i_35_1): Ref) }
-            Seq#Contains(Seq#Range(left_1, right + 1), i_35_1) && NoPerm < FullPerm ==> qpRange5((loc(a_2, i_35_1): Ref)) && invRecv5((loc(a_2, i_35_1): Ref)) == i_35_1
+          assume (forall i_35: int ::
+            { (loc(a_2, i_35): Ref) } { (loc(a_2, i_35): Ref) }
+            Seq#Contains(Seq#Range(left, right_2 + 1), i_35) && NoPerm < FullPerm ==> qpRange5((loc(a_2, i_35): Ref)) && invRecv5((loc(a_2, i_35): Ref)) == i_35
           );
-          assume (forall o_4: Ref ::
-            { invRecv5(o_4) }
-            (Seq#Contains(Seq#Range(left_1, right + 1), invRecv5(o_4)) && NoPerm < FullPerm) && qpRange5(o_4) ==> (loc(a_2, invRecv5(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv5(o_9) }
+            (Seq#Contains(Seq#Range(left, right_2 + 1), invRecv5(o_9)) && NoPerm < FullPerm) && qpRange5(o_9) ==> (loc(a_2, invRecv5(o_9)): Ref) == o_9
           );
         
         // -- Assume set of fields is nonNull
-          assume (forall i_35_1: int ::
-            { (loc(a_2, i_35_1): Ref) } { (loc(a_2, i_35_1): Ref) }
-            Seq#Contains(Seq#Range(left_1, right + 1), i_35_1) ==> (loc(a_2, i_35_1): Ref) != null
+          assume (forall i_35: int ::
+            { (loc(a_2, i_35): Ref) } { (loc(a_2, i_35): Ref) }
+            Seq#Contains(Seq#Range(left, right_2 + 1), i_35) ==> (loc(a_2, i_35): Ref) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            ((Seq#Contains(Seq#Range(left_1, right + 1), invRecv5(o_4)) && NoPerm < FullPerm) && qpRange5(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv5(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!((Seq#Contains(Seq#Range(left_1, right + 1), invRecv5(o_4)) && NoPerm < FullPerm) && qpRange5(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            ((Seq#Contains(Seq#Range(left, right_2 + 1), invRecv5(o_9)) && NoPerm < FullPerm) && qpRange5(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv5(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!((Seq#Contains(Seq#Range(left, right_2 + 1), invRecv5(o_9)) && NoPerm < FullPerm) && qpRange5(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
         
         // -- Check definedness of loc(a, right).val == pivotValue
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, right).val (arrays_quickselect_rec_index-shifting.vpr@97.15--97.46) [118563]"}
-            HasDirectPerm(Mask, (loc(a_2, right): Ref), val);
-        assume Heap[(loc(a_2, right): Ref), val] == pivotValue;
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, right).val (arrays_quickselect_rec_index-shifting.vpr@97.15--97.46) [106511]"}
+            HasDirectPerm(Mask, (loc(a_2, right_2): Ref), val);
+        assume Heap[(loc(a_2, right_2): Ref), val] == pivotValue;
         assume state(Heap, Mask);
         
         // -- Check definedness of (forall i: Int :: { (i in [left..storeIndex)) } { loc(a, i) } (i in [left..storeIndex)) ==> loc(a, i).val < pivotValue)
           if (*) {
-            if (Seq#Contains(Seq#Range(left_1, storeIndex), i_11)) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@99.15--99.86) [118564]"}
-                HasDirectPerm(Mask, (loc(a_2, i_11): Ref), val);
+            if (Seq#Contains(Seq#Range(left, storeIndex), i_8)) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@99.15--99.86) [106512]"}
+                HasDirectPerm(Mask, (loc(a_2, i_8): Ref), val);
             }
             assume false;
           }
         assume (forall i_37: int ::
-          { Seq#ContainsTrigger(Seq#Range(left_1, storeIndex), i_37) } { Seq#Contains(Seq#Range(left_1, storeIndex), i_37) } { (loc(a_2, i_37): Ref) }
-          Seq#Contains(Seq#Range(left_1, storeIndex), i_37) ==> Heap[(loc(a_2, i_37): Ref), val] < pivotValue
+          { Seq#ContainsTrigger(Seq#Range(left, storeIndex), i_37) } { Seq#Contains(Seq#Range(left, storeIndex), i_37) } { (loc(a_2, i_37): Ref) }
+          Seq#Contains(Seq#Range(left, storeIndex), i_37) ==> Heap[(loc(a_2, i_37): Ref), val] < pivotValue
         );
         assume state(Heap, Mask);
         
         // -- Check definedness of (forall i: Int :: { (i in [storeIndex..j)) } { loc(a, i) } (i in [storeIndex..j)) ==> pivotValue <= loc(a, i).val)
           if (*) {
-            if (Seq#Contains(Seq#Range(storeIndex, j_4_1), i_12)) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@100.15--100.84) [118565]"}
-                HasDirectPerm(Mask, (loc(a_2, i_12): Ref), val);
+            if (Seq#Contains(Seq#Range(storeIndex, j_4_1), i_19)) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@100.15--100.84) [106513]"}
+                HasDirectPerm(Mask, (loc(a_2, i_19): Ref), val);
             }
             assume false;
           }
@@ -1404,68 +1404,68 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
           Seq#Contains(Seq#Range(storeIndex, j_4_1), i_39) ==> pivotValue <= Heap[(loc(a_2, i_39): Ref), val]
         );
         assume state(Heap, Mask);
-        assume Seq#Length(pw) == right + 1 - left_1;
+        assume Seq#Length(pw) == right_2 + 1 - left;
         assume state(Heap, Mask);
         
         // -- Check definedness of (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right)
           if (*) {
-            if (0 <= i_16 && i_16 < Seq#Length(pw)) {
-              assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [118566]"}
-                i_16 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [118567]"}
-                i_16 < Seq#Length(pw);
-              if (left_1 <= Seq#Index(pw, i_16)) {
-                assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [118568]"}
-                  i_16 >= 0;
-                assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [118569]"}
-                  i_16 < Seq#Length(pw);
+            if (0 <= i_9 && i_9 < Seq#Length(pw)) {
+              assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [106514]"}
+                i_9 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [106515]"}
+                i_9 < Seq#Length(pw);
+              if (left <= Seq#Index(pw, i_9)) {
+                assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [106516]"}
+                  i_9 >= 0;
+                assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [106517]"}
+                  i_9 < Seq#Length(pw);
               }
             }
             assume false;
           }
-        assume (forall i_41_2: int ::
-          { Seq#Index(pw, i_41_2) }
-          0 <= i_41_2 && i_41_2 < Seq#Length(pw) ==> left_1 <= Seq#Index(pw, i_41_2) && Seq#Index(pw, i_41_2) <= right
+        assume (forall i_41: int ::
+          { Seq#Index(pw, i_41) }
+          0 <= i_41 && i_41 < Seq#Length(pw) ==> left <= Seq#Index(pw, i_41) && Seq#Index(pw, i_41) <= right_2
         );
         assume state(Heap, Mask);
         
         // -- Check definedness of (forall i: Int, k: Int :: { pw[i], pw[k] } 0 <= i && (i < k && k < |pw|) ==> pw[i] != pw[k])
           if (*) {
-            if (0 <= i_18 && (i_18 < k_20 && k_20 < Seq#Length(pw))) {
-              assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [118570]"}
-                i_18 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [118571]"}
-                i_18 < Seq#Length(pw);
-              assert {:msg "  Contract might not be well-formed. Index pw[k] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [118572]"}
+            if (0 <= i_10 && (i_10 < k_20 && k_20 < Seq#Length(pw))) {
+              assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [106518]"}
+                i_10 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [106519]"}
+                i_10 < Seq#Length(pw);
+              assert {:msg "  Contract might not be well-formed. Index pw[k] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [106520]"}
                 k_20 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index pw[k] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [118573]"}
+              assert {:msg "  Contract might not be well-formed. Index pw[k] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [106521]"}
                 k_20 < Seq#Length(pw);
             }
             assume false;
           }
-        assume (forall i_43_2: int, k_3: int ::
-          { Seq#Index(pw, i_43_2), Seq#Index(pw, k_3) }
-          0 <= i_43_2 && (i_43_2 < k_3 && k_3 < Seq#Length(pw)) ==> Seq#Index(pw, i_43_2) != Seq#Index(pw, k_3)
+        assume (forall i_43: int, k_3: int ::
+          { Seq#Index(pw, i_43), Seq#Index(pw, k_3) }
+          0 <= i_43 && (i_43 < k_3 && k_3 < Seq#Length(pw)) ==> Seq#Index(pw, i_43) != Seq#Index(pw, k_3)
         );
         assume state(Heap, Mask);
         
         // -- Check definedness of (forall i$0: Int :: { old(pw[i$0]) } 0 <= i$0 && i$0 < |pw| ==> loc(a, left + i$0).val == old(loc(a, pw[i$0]).val))
           if (*) {
-            if (0 <= i$0_4 && i$0_4 < Seq#Length(pw)) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, left + i$0).val (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [118574]"}
-                HasDirectPerm(Mask, (loc(a_2, left_1 + i$0_4): Ref), val);
-              assert {:msg "  Contract might not be well-formed. Index pw[i$0] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [118575]"}
-                i$0_4 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index pw[i$0] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [118576]"}
-                i$0_4 < Seq#Length(pw);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, pw[i$0]).val (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [118577]"}
-                HasDirectPerm(oldMask, (loc(a_2, Seq#Index(pw, i$0_4)): Ref), val);
+            if (0 <= i$0_6 && i$0_6 < Seq#Length(pw)) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, left + i$0).val (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [106522]"}
+                HasDirectPerm(Mask, (loc(a_2, left + i$0_6): Ref), val);
+              assert {:msg "  Contract might not be well-formed. Index pw[i$0] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [106523]"}
+                i$0_6 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index pw[i$0] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [106524]"}
+                i$0_6 < Seq#Length(pw);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, pw[i$0]).val (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [106525]"}
+                HasDirectPerm(oldMask, (loc(a_2, Seq#Index(pw, i$0_6)): Ref), val);
             }
             assume false;
           }
-        assume (forall i$0_3_1: int ::
-          { Seq#Index(pw, i$0_3_1) }
-          0 <= i$0_3_1 && i$0_3_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left_1 + i$0_3_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_3_1)): Ref), val]
+        assume (forall i$0_3_2: int ::
+          { Seq#Index(pw, i$0_3_2) }
+          0 <= i$0_3_2 && i$0_3_2 < Seq#Length(pw) ==> Heap[(loc(a_2, left + i$0_3_2): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_3_2)): Ref), val]
         );
         assume state(Heap, Mask);
         assume false;
@@ -1479,69 +1479,69 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
         Mask := ZeroMask;
         assume state(Heap, Mask);
         // Inhale invariant
-        assume left_1 <= j_4_1;
-        assume j_4_1 <= right;
-        assume left_1 <= storeIndex;
+        assume left <= j_4_1;
+        assume j_4_1 <= right_2;
+        assume left <= storeIndex;
         assume storeIndex <= j_4_1;
         havoc QPMask;
-        assert {:msg "  While statement might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [118578]"}
+        assert {:msg "  While statement might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [106526]"}
           (forall i_44: int, i_44_1: int ::
           
-          (((i_44 != i_44_1 && Seq#Contains(Seq#Range(left_1, right + 1), i_44)) && Seq#Contains(Seq#Range(left_1, right + 1), i_44_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_44): Ref) != (loc(a_2, i_44_1): Ref)
+          (((i_44 != i_44_1 && Seq#Contains(Seq#Range(left, right_2 + 1), i_44)) && Seq#Contains(Seq#Range(left, right_2 + 1), i_44_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_44): Ref) != (loc(a_2, i_44_1): Ref)
         );
         
         // -- Define Inverse Function
           assume (forall i_44: int ::
             { (loc(a_2, i_44): Ref) } { (loc(a_2, i_44): Ref) }
-            Seq#Contains(Seq#Range(left_1, right + 1), i_44) && NoPerm < FullPerm ==> qpRange6((loc(a_2, i_44): Ref)) && invRecv6((loc(a_2, i_44): Ref)) == i_44
+            Seq#Contains(Seq#Range(left, right_2 + 1), i_44) && NoPerm < FullPerm ==> qpRange6((loc(a_2, i_44): Ref)) && invRecv6((loc(a_2, i_44): Ref)) == i_44
           );
-          assume (forall o_4: Ref ::
-            { invRecv6(o_4) }
-            (Seq#Contains(Seq#Range(left_1, right + 1), invRecv6(o_4)) && NoPerm < FullPerm) && qpRange6(o_4) ==> (loc(a_2, invRecv6(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv6(o_9) }
+            (Seq#Contains(Seq#Range(left, right_2 + 1), invRecv6(o_9)) && NoPerm < FullPerm) && qpRange6(o_9) ==> (loc(a_2, invRecv6(o_9)): Ref) == o_9
           );
         
         // -- Assume set of fields is nonNull
           assume (forall i_44: int ::
             { (loc(a_2, i_44): Ref) } { (loc(a_2, i_44): Ref) }
-            Seq#Contains(Seq#Range(left_1, right + 1), i_44) ==> (loc(a_2, i_44): Ref) != null
+            Seq#Contains(Seq#Range(left, right_2 + 1), i_44) ==> (loc(a_2, i_44): Ref) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            ((Seq#Contains(Seq#Range(left_1, right + 1), invRecv6(o_4)) && NoPerm < FullPerm) && qpRange6(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv6(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!((Seq#Contains(Seq#Range(left_1, right + 1), invRecv6(o_4)) && NoPerm < FullPerm) && qpRange6(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            ((Seq#Contains(Seq#Range(left, right_2 + 1), invRecv6(o_9)) && NoPerm < FullPerm) && qpRange6(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv6(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!((Seq#Contains(Seq#Range(left, right_2 + 1), invRecv6(o_9)) && NoPerm < FullPerm) && qpRange6(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
-        assume Heap[(loc(a_2, right): Ref), val] == pivotValue;
-        assume (forall i_45_2: int ::
-          { Seq#ContainsTrigger(Seq#Range(left_1, storeIndex), i_45_2) } { Seq#Contains(Seq#Range(left_1, storeIndex), i_45_2) } { (loc(a_2, i_45_2): Ref) }
-          Seq#Contains(Seq#Range(left_1, storeIndex), i_45_2) ==> Heap[(loc(a_2, i_45_2): Ref), val] < pivotValue
+        assume Heap[(loc(a_2, right_2): Ref), val] == pivotValue;
+        assume (forall i_45: int ::
+          { Seq#ContainsTrigger(Seq#Range(left, storeIndex), i_45) } { Seq#Contains(Seq#Range(left, storeIndex), i_45) } { (loc(a_2, i_45): Ref) }
+          Seq#Contains(Seq#Range(left, storeIndex), i_45) ==> Heap[(loc(a_2, i_45): Ref), val] < pivotValue
         );
         assume (forall i_46: int ::
           { Seq#ContainsTrigger(Seq#Range(storeIndex, j_4_1), i_46) } { Seq#Contains(Seq#Range(storeIndex, j_4_1), i_46) } { (loc(a_2, i_46): Ref) }
           Seq#Contains(Seq#Range(storeIndex, j_4_1), i_46) ==> pivotValue <= Heap[(loc(a_2, i_46): Ref), val]
         );
-        assume Seq#Length(pw) == right + 1 - left_1;
-        assume (forall i_47_2: int ::
-          { Seq#Index(pw, i_47_2) }
-          0 <= i_47_2 && i_47_2 < Seq#Length(pw) ==> left_1 <= Seq#Index(pw, i_47_2) && Seq#Index(pw, i_47_2) <= right
+        assume Seq#Length(pw) == right_2 + 1 - left;
+        assume (forall i_47: int ::
+          { Seq#Index(pw, i_47) }
+          0 <= i_47 && i_47 < Seq#Length(pw) ==> left <= Seq#Index(pw, i_47) && Seq#Index(pw, i_47) <= right_2
         );
-        assume (forall i_48_2: int, k_4_1: int ::
-          { Seq#Index(pw, i_48_2), Seq#Index(pw, k_4_1) }
-          0 <= i_48_2 && (i_48_2 < k_4_1 && k_4_1 < Seq#Length(pw)) ==> Seq#Index(pw, i_48_2) != Seq#Index(pw, k_4_1)
+        assume (forall i_48: int, k_4_2: int ::
+          { Seq#Index(pw, i_48), Seq#Index(pw, k_4_2) }
+          0 <= i_48 && (i_48 < k_4_2 && k_4_2 < Seq#Length(pw)) ==> Seq#Index(pw, i_48) != Seq#Index(pw, k_4_2)
         );
         assume (forall i$0_4_1: int ::
           { Seq#Index(pw, i$0_4_1) }
-          0 <= i$0_4_1 && i$0_4_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left_1 + i$0_4_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_4_1)): Ref), val]
+          0 <= i$0_4_1 && i$0_4_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left + i$0_4_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_4_1)): Ref), val]
         );
         assume state(Heap, Mask);
         // Check and assume guard
-        assume j_4_1 < right;
+        assume j_4_1 < right_2;
         assume state(Heap, Mask);
         
         // -- Translate loop body
@@ -1549,7 +1549,7 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
           // -- Translating statement: if (loc(a, j).val < pivotValue) -- arrays_quickselect_rec_index-shifting.vpr@108.5--119.6
             
             // -- Check definedness of loc(a, j).val < pivotValue
-              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@108.9--108.35) [118579]"}
+              assert {:msg "  Conditional statement might fail. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@108.9--108.35) [106527]"}
                 HasDirectPerm(Mask, (loc(a_2, j_4_1): Ref), val);
             if (Heap[(loc(a_2, j_4_1): Ref), val] < pivotValue) {
               
@@ -1558,26 +1558,26 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [118580]"}
+                  ExhaleWellDef0Heap := Heap;
+                  assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [106528]"}
                     0 <= j_4_1;
-                  assert {:msg "  The precondition of method swap might not hold. Assertion j < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [118581]"}
-                    j_4_1 < (len_1(a_2): int);
-                  assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [118582]"}
+                  assert {:msg "  The precondition of method swap might not hold. Assertion j < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [106529]"}
+                    j_4_1 < (len(a_2): int);
+                  assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [106530]"}
                     0 <= storeIndex;
-                  assert {:msg "  The precondition of method swap might not hold. Assertion storeIndex < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [118583]"}
-                    storeIndex < (len_1(a_2): int);
+                  assert {:msg "  The precondition of method swap might not hold. Assertion storeIndex < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [106531]"}
+                    storeIndex < (len(a_2): int);
                   perm := FullPerm;
                   if (perm != NoPerm) {
-                    assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [118584]"}
+                    assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, j).val (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [106532]"}
                       perm <= Mask[(loc(a_2, j_4_1): Ref), val];
                   }
                   Mask := Mask[(loc(a_2, j_4_1): Ref), val:=Mask[(loc(a_2, j_4_1): Ref), val] - perm];
                   if (j_4_1 != storeIndex) {
                     perm := FullPerm;
                     if (perm != NoPerm) {
-                      assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [118585]"}
+                      assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [106533]"}
                         perm <= Mask[(loc(a_2, storeIndex): Ref), val];
                     }
                     Mask := Mask[(loc(a_2, storeIndex): Ref), val:=Mask[(loc(a_2, storeIndex): Ref), val] - perm];
@@ -1607,15 +1607,15 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
   //   pw[storeIndex - left]] -- arrays_quickselect_rec_index-shifting.vpr@115.7--116.50
                 
                 // -- Check definedness of pw[storeIndex - left := pw[j - left]][j - left := pw[storeIndex - left]]
-                  assert {:msg "  Assignment might fail. Index pw[j - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@115.7--116.50) [118586]"}
-                    j_4_1 - left_1 >= 0;
-                  assert {:msg "  Assignment might fail. Index pw[j - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@115.7--116.50) [118587]"}
-                    j_4_1 - left_1 < Seq#Length(pw);
-                  assert {:msg "  Assignment might fail. Index pw[storeIndex - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@115.7--116.50) [118588]"}
-                    storeIndex - left_1 >= 0;
-                  assert {:msg "  Assignment might fail. Index pw[storeIndex - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@115.7--116.50) [118589]"}
-                    storeIndex - left_1 < Seq#Length(pw);
-                pw := Seq#Append(Seq#Take(Seq#Append(Seq#Take(pw, storeIndex - left_1), Seq#Append(Seq#Singleton(Seq#Index(pw, j_4_1 - left_1)), Seq#Drop(pw, storeIndex - left_1 + 1))), j_4_1 - left_1), Seq#Append(Seq#Singleton(Seq#Index(pw, storeIndex - left_1)), Seq#Drop(Seq#Append(Seq#Take(pw, storeIndex - left_1), Seq#Append(Seq#Singleton(Seq#Index(pw, j_4_1 - left_1)), Seq#Drop(pw, storeIndex - left_1 + 1))), j_4_1 - left_1 + 1)));
+                  assert {:msg "  Assignment might fail. Index pw[j - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@115.7--116.50) [106534]"}
+                    j_4_1 - left >= 0;
+                  assert {:msg "  Assignment might fail. Index pw[j - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@115.7--116.50) [106535]"}
+                    j_4_1 - left < Seq#Length(pw);
+                  assert {:msg "  Assignment might fail. Index pw[storeIndex - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@115.7--116.50) [106536]"}
+                    storeIndex - left >= 0;
+                  assert {:msg "  Assignment might fail. Index pw[storeIndex - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@115.7--116.50) [106537]"}
+                    storeIndex - left < Seq#Length(pw);
+                pw := Seq#Append(Seq#Take(Seq#Append(Seq#Take(pw, storeIndex - left), Seq#Append(Seq#Singleton(Seq#Index(pw, j_4_1 - left)), Seq#Drop(pw, storeIndex - left + 1))), j_4_1 - left), Seq#Append(Seq#Singleton(Seq#Index(pw, storeIndex - left)), Seq#Drop(Seq#Append(Seq#Take(pw, storeIndex - left), Seq#Append(Seq#Singleton(Seq#Index(pw, j_4_1 - left)), Seq#Drop(pw, storeIndex - left + 1))), j_4_1 - left + 1)));
                 assume state(Heap, Mask);
               
               // -- Translating statement: storeIndex := storeIndex + 1 -- arrays_quickselect_rec_index-shifting.vpr@118.7--118.35
@@ -1628,15 +1628,15 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
             j_4_1 := j_4_1 + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant left <= j && j <= right might not be preserved. Assertion left <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [118590]"}
-          left_1 <= j_4_1;
-        assert {:msg "  Loop invariant left <= j && j <= right might not be preserved. Assertion j <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [118591]"}
-          j_4_1 <= right;
-        assert {:msg "  Loop invariant left <= storeIndex && storeIndex <= j might not be preserved. Assertion left <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@89.15--89.52) [118592]"}
-          left_1 <= storeIndex;
-        assert {:msg "  Loop invariant left <= storeIndex && storeIndex <= j might not be preserved. Assertion storeIndex <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@89.15--89.52) [118593]"}
+        ExhaleWellDef0Heap := Heap;
+        assert {:msg "  Loop invariant left <= j && j <= right might not be preserved. Assertion left <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [106538]"}
+          left <= j_4_1;
+        assert {:msg "  Loop invariant left <= j && j <= right might not be preserved. Assertion j <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [106539]"}
+          j_4_1 <= right_2;
+        assert {:msg "  Loop invariant left <= storeIndex && storeIndex <= j might not be preserved. Assertion left <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@89.15--89.52) [106540]"}
+          left <= storeIndex;
+        assert {:msg "  Loop invariant left <= storeIndex && storeIndex <= j might not be preserved. Assertion storeIndex <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@89.15--89.52) [106541]"}
           storeIndex <= j_4_1;
         havoc QPMask;
         
@@ -1644,101 +1644,101 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
           
         
         // -- check if receiver loc(a, i) is injective
-          assert {:msg "  Loop invariant (forall i: Int :: { loc(a, i) } (i in [left..right + 1)) ==> acc(loc(a, i).val, write)) might not be preserved. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [118594]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { loc(a, i) } (i in [left..right + 1)) ==> acc(loc(a, i).val, write)) might not be preserved. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [106542]"}
             (forall i_49: int, i_49_1: int ::
             { neverTriggered7(i_49), neverTriggered7(i_49_1) }
-            (((i_49 != i_49_1 && Seq#Contains(Seq#Range(left_1, right + 1), i_49)) && Seq#Contains(Seq#Range(left_1, right + 1), i_49_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_49): Ref) != (loc(a_2, i_49_1): Ref)
+            (((i_49 != i_49_1 && Seq#Contains(Seq#Range(left, right_2 + 1), i_49)) && Seq#Contains(Seq#Range(left, right_2 + 1), i_49_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_49): Ref) != (loc(a_2, i_49_1): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Loop invariant (forall i: Int :: { loc(a, i) } (i in [left..right + 1)) ==> acc(loc(a, i).val, write)) might not be preserved. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [118595]"}
+          assert {:msg "  Loop invariant (forall i: Int :: { loc(a, i) } (i in [left..right + 1)) ==> acc(loc(a, i).val, write)) might not be preserved. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [106543]"}
             (forall i_49: int ::
             { (loc(a_2, i_49): Ref) } { (loc(a_2, i_49): Ref) }
-            Seq#Contains(Seq#Range(left_1, right + 1), i_49) ==> Mask[(loc(a_2, i_49): Ref), val] >= FullPerm
+            Seq#Contains(Seq#Range(left, right_2 + 1), i_49) ==> Mask[(loc(a_2, i_49): Ref), val] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver loc(a, i)
           assume (forall i_49: int ::
             { (loc(a_2, i_49): Ref) } { (loc(a_2, i_49): Ref) }
-            Seq#Contains(Seq#Range(left_1, right + 1), i_49) && NoPerm < FullPerm ==> qpRange7((loc(a_2, i_49): Ref)) && invRecv7((loc(a_2, i_49): Ref)) == i_49
+            Seq#Contains(Seq#Range(left, right_2 + 1), i_49) && NoPerm < FullPerm ==> qpRange7((loc(a_2, i_49): Ref)) && invRecv7((loc(a_2, i_49): Ref)) == i_49
           );
-          assume (forall o_4: Ref ::
-            { invRecv7(o_4) }
-            Seq#Contains(Seq#Range(left_1, right + 1), invRecv7(o_4)) && (NoPerm < FullPerm && qpRange7(o_4)) ==> (loc(a_2, invRecv7(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv7(o_9) }
+            Seq#Contains(Seq#Range(left, right_2 + 1), invRecv7(o_9)) && (NoPerm < FullPerm && qpRange7(o_9)) ==> (loc(a_2, invRecv7(o_9)): Ref) == o_9
           );
         
         // -- assume permission updates for field val
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            (Seq#Contains(Seq#Range(left_1, right + 1), invRecv7(o_4)) && (NoPerm < FullPerm && qpRange7(o_4)) ==> (loc(a_2, invRecv7(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!(Seq#Contains(Seq#Range(left_1, right + 1), invRecv7(o_4)) && (NoPerm < FullPerm && qpRange7(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            (Seq#Contains(Seq#Range(left, right_2 + 1), invRecv7(o_9)) && (NoPerm < FullPerm && qpRange7(o_9)) ==> (loc(a_2, invRecv7(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!(Seq#Contains(Seq#Range(left, right_2 + 1), invRecv7(o_9)) && (NoPerm < FullPerm && qpRange7(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
-        assert {:msg "  Loop invariant loc(a, right).val == pivotValue might not be preserved. Assertion loc(a, right).val == pivotValue might not hold. (arrays_quickselect_rec_index-shifting.vpr@97.15--97.46) [118596]"}
-          Heap[(loc(a_2, right): Ref), val] == pivotValue;
+        assert {:msg "  Loop invariant loc(a, right).val == pivotValue might not be preserved. Assertion loc(a, right).val == pivotValue might not hold. (arrays_quickselect_rec_index-shifting.vpr@97.15--97.46) [106544]"}
+          Heap[(loc(a_2, right_2): Ref), val] == pivotValue;
         if (*) {
-          if (Seq#Contains(Seq#Range(left_1, storeIndex), i_50_1)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { (i in [left..storeIndex)) } { loc(a, i) } (i in [left..storeIndex)) ==> loc(a, i).val < pivotValue) might not be preserved. Assertion loc(a, i).val < pivotValue might not hold. (arrays_quickselect_rec_index-shifting.vpr@99.15--99.86) [118597]"}
-              Heap[(loc(a_2, i_50_1): Ref), val] < pivotValue;
+          if (Seq#Contains(Seq#Range(left, storeIndex), i_50)) {
+            assert {:msg "  Loop invariant (forall i: Int :: { (i in [left..storeIndex)) } { loc(a, i) } (i in [left..storeIndex)) ==> loc(a, i).val < pivotValue) might not be preserved. Assertion loc(a, i).val < pivotValue might not hold. (arrays_quickselect_rec_index-shifting.vpr@99.15--99.86) [106545]"}
+              Heap[(loc(a_2, i_50): Ref), val] < pivotValue;
           }
           assume false;
         }
-        assume (forall i_51_1_1: int ::
-          { Seq#ContainsTrigger(Seq#Range(left_1, storeIndex), i_51_1_1) } { Seq#Contains(Seq#Range(left_1, storeIndex), i_51_1_1) } { (loc(a_2, i_51_1_1): Ref) }
-          Seq#Contains(Seq#Range(left_1, storeIndex), i_51_1_1) ==> Heap[(loc(a_2, i_51_1_1): Ref), val] < pivotValue
+        assume (forall i_51_1: int ::
+          { Seq#ContainsTrigger(Seq#Range(left, storeIndex), i_51_1) } { Seq#Contains(Seq#Range(left, storeIndex), i_51_1) } { (loc(a_2, i_51_1): Ref) }
+          Seq#Contains(Seq#Range(left, storeIndex), i_51_1) ==> Heap[(loc(a_2, i_51_1): Ref), val] < pivotValue
         );
         if (*) {
-          if (Seq#Contains(Seq#Range(storeIndex, j_4_1), i_52_1)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { (i in [storeIndex..j)) } { loc(a, i) } (i in [storeIndex..j)) ==> pivotValue <= loc(a, i).val) might not be preserved. Assertion pivotValue <= loc(a, i).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@100.15--100.84) [118598]"}
-              pivotValue <= Heap[(loc(a_2, i_52_1): Ref), val];
+          if (Seq#Contains(Seq#Range(storeIndex, j_4_1), i_52)) {
+            assert {:msg "  Loop invariant (forall i: Int :: { (i in [storeIndex..j)) } { loc(a, i) } (i in [storeIndex..j)) ==> pivotValue <= loc(a, i).val) might not be preserved. Assertion pivotValue <= loc(a, i).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@100.15--100.84) [106546]"}
+              pivotValue <= Heap[(loc(a_2, i_52): Ref), val];
           }
           assume false;
         }
-        assume (forall i_53_1_1: int ::
-          { Seq#ContainsTrigger(Seq#Range(storeIndex, j_4_1), i_53_1_1) } { Seq#Contains(Seq#Range(storeIndex, j_4_1), i_53_1_1) } { (loc(a_2, i_53_1_1): Ref) }
-          Seq#Contains(Seq#Range(storeIndex, j_4_1), i_53_1_1) ==> pivotValue <= Heap[(loc(a_2, i_53_1_1): Ref), val]
+        assume (forall i_53_1: int ::
+          { Seq#ContainsTrigger(Seq#Range(storeIndex, j_4_1), i_53_1) } { Seq#Contains(Seq#Range(storeIndex, j_4_1), i_53_1) } { (loc(a_2, i_53_1): Ref) }
+          Seq#Contains(Seq#Range(storeIndex, j_4_1), i_53_1) ==> pivotValue <= Heap[(loc(a_2, i_53_1): Ref), val]
         );
-        assert {:msg "  Loop invariant |pw| == right + 1 - left might not be preserved. Assertion |pw| == right + 1 - left might not hold. (arrays_quickselect_rec_index-shifting.vpr@102.15--102.39) [118599]"}
-          Seq#Length(pw) == right + 1 - left_1;
+        assert {:msg "  Loop invariant |pw| == right + 1 - left might not be preserved. Assertion |pw| == right + 1 - left might not hold. (arrays_quickselect_rec_index-shifting.vpr@102.15--102.39) [106547]"}
+          Seq#Length(pw) == right_2 + 1 - left;
         if (*) {
-          if (0 <= i_54_1 && i_54_1 < Seq#Length(pw)) {
-            assert {:msg "  Loop invariant (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right) might not be preserved. Assertion left <= pw[i] might not hold. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [118600]"}
-              left_1 <= Seq#Index(pw, i_54_1);
-            assert {:msg "  Loop invariant (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right) might not be preserved. Assertion pw[i] <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [118601]"}
-              Seq#Index(pw, i_54_1) <= right;
+          if (0 <= i_54 && i_54 < Seq#Length(pw)) {
+            assert {:msg "  Loop invariant (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right) might not be preserved. Assertion left <= pw[i] might not hold. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [106548]"}
+              left <= Seq#Index(pw, i_54);
+            assert {:msg "  Loop invariant (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right) might not be preserved. Assertion pw[i] <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@103.15--103.86) [106549]"}
+              Seq#Index(pw, i_54) <= right_2;
           }
           assume false;
         }
         assume (forall i_55_1: int ::
           { Seq#Index(pw, i_55_1) }
-          0 <= i_55_1 && i_55_1 < Seq#Length(pw) ==> left_1 <= Seq#Index(pw, i_55_1) && Seq#Index(pw, i_55_1) <= right
+          0 <= i_55_1 && i_55_1 < Seq#Length(pw) ==> left <= Seq#Index(pw, i_55_1) && Seq#Index(pw, i_55_1) <= right_2
         );
         if (*) {
-          if (0 <= i_56_1 && (i_56_1 < k_5 && k_5 < Seq#Length(pw))) {
-            assert {:msg "  Loop invariant (forall i: Int, k: Int :: { pw[i], pw[k] } 0 <= i && (i < k && k < |pw|) ==> pw[i] != pw[k]) might not be preserved. Assertion pw[i] != pw[k] might not hold. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [118602]"}
-              Seq#Index(pw, i_56_1) != Seq#Index(pw, k_5);
+          if (0 <= i_56 && (i_56 < k_5 && k_5 < Seq#Length(pw))) {
+            assert {:msg "  Loop invariant (forall i: Int, k: Int :: { pw[i], pw[k] } 0 <= i && (i < k && k < |pw|) ==> pw[i] != pw[k]) might not be preserved. Assertion pw[i] != pw[k] might not hold. (arrays_quickselect_rec_index-shifting.vpr@104.15--104.86) [106550]"}
+              Seq#Index(pw, i_56) != Seq#Index(pw, k_5);
           }
           assume false;
         }
-        assume (forall i_57_1: int, k_6_1_1: int ::
-          { Seq#Index(pw, i_57_1), Seq#Index(pw, k_6_1_1) }
-          0 <= i_57_1 && (i_57_1 < k_6_1_1 && k_6_1_1 < Seq#Length(pw)) ==> Seq#Index(pw, i_57_1) != Seq#Index(pw, k_6_1_1)
+        assume (forall i_57_1: int, k_6_1: int ::
+          { Seq#Index(pw, i_57_1), Seq#Index(pw, k_6_1) }
+          0 <= i_57_1 && (i_57_1 < k_6_1 && k_6_1 < Seq#Length(pw)) ==> Seq#Index(pw, i_57_1) != Seq#Index(pw, k_6_1)
         );
         if (*) {
-          if (0 <= i$0_5 && i$0_5 < Seq#Length(pw)) {
-            assert {:msg "  Loop invariant (forall i$0: Int :: { old(pw[i$0]) } 0 <= i$0 && i$0 < |pw| ==> loc(a, left + i$0).val == old(loc(a, pw[i$0]).val)) might not be preserved. Assertion loc(a, left + i$0).val == old(loc(a, pw[i$0]).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [118603]"}
-              Heap[(loc(a_2, left_1 + i$0_5): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_5)): Ref), val];
+          if (0 <= i$0_5_1 && i$0_5_1 < Seq#Length(pw)) {
+            assert {:msg "  Loop invariant (forall i$0: Int :: { old(pw[i$0]) } 0 <= i$0 && i$0 < |pw| ==> loc(a, left + i$0).val == old(loc(a, pw[i$0]).val)) might not be preserved. Assertion loc(a, left + i$0).val == old(loc(a, pw[i$0]).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@106.15--106.36) [106551]"}
+              Heap[(loc(a_2, left + i$0_5_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_5_1)): Ref), val];
           }
           assume false;
         }
         assume (forall i$0_6_1: int ::
           { Seq#Index(pw, i$0_6_1) }
-          0 <= i$0_6_1 && i$0_6_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left_1 + i$0_6_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_6_1)): Ref), val]
+          0 <= i$0_6_1 && i$0_6_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left + i$0_6_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_6_1)): Ref), val]
         );
         // Finish exhale
         havoc ExhaleHeap;
@@ -1749,59 +1749,59 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(j_4_1 < right);
+      assume !(j_4_1 < right_2);
       assume state(Heap, Mask);
-      assume left_1 <= j_4_1;
-      assume j_4_1 <= right;
-      assume left_1 <= storeIndex;
+      assume left <= j_4_1;
+      assume j_4_1 <= right_2;
+      assume left <= storeIndex;
       assume storeIndex <= j_4_1;
       havoc QPMask;
-      assert {:msg "  While statement might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [118604]"}
-        (forall i_58_1: int, i_58_2: int ::
+      assert {:msg "  While statement might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@96.15--96.75) [106552]"}
+        (forall i_58: int, i_58_1: int ::
         
-        (((i_58_1 != i_58_2 && Seq#Contains(Seq#Range(left_1, right + 1), i_58_1)) && Seq#Contains(Seq#Range(left_1, right + 1), i_58_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_58_1): Ref) != (loc(a_2, i_58_2): Ref)
+        (((i_58 != i_58_1 && Seq#Contains(Seq#Range(left, right_2 + 1), i_58)) && Seq#Contains(Seq#Range(left, right_2 + 1), i_58_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_58): Ref) != (loc(a_2, i_58_1): Ref)
       );
       
       // -- Define Inverse Function
-        assume (forall i_58_1: int ::
-          { (loc(a_2, i_58_1): Ref) } { (loc(a_2, i_58_1): Ref) }
-          Seq#Contains(Seq#Range(left_1, right + 1), i_58_1) && NoPerm < FullPerm ==> qpRange8((loc(a_2, i_58_1): Ref)) && invRecv8((loc(a_2, i_58_1): Ref)) == i_58_1
+        assume (forall i_58: int ::
+          { (loc(a_2, i_58): Ref) } { (loc(a_2, i_58): Ref) }
+          Seq#Contains(Seq#Range(left, right_2 + 1), i_58) && NoPerm < FullPerm ==> qpRange8((loc(a_2, i_58): Ref)) && invRecv8((loc(a_2, i_58): Ref)) == i_58
         );
-        assume (forall o_4: Ref ::
-          { invRecv8(o_4) }
-          (Seq#Contains(Seq#Range(left_1, right + 1), invRecv8(o_4)) && NoPerm < FullPerm) && qpRange8(o_4) ==> (loc(a_2, invRecv8(o_4)): Ref) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv8(o_9) }
+          (Seq#Contains(Seq#Range(left, right_2 + 1), invRecv8(o_9)) && NoPerm < FullPerm) && qpRange8(o_9) ==> (loc(a_2, invRecv8(o_9)): Ref) == o_9
         );
       
       // -- Assume set of fields is nonNull
-        assume (forall i_58_1: int ::
-          { (loc(a_2, i_58_1): Ref) } { (loc(a_2, i_58_1): Ref) }
-          Seq#Contains(Seq#Range(left_1, right + 1), i_58_1) ==> (loc(a_2, i_58_1): Ref) != null
+        assume (forall i_58: int ::
+          { (loc(a_2, i_58): Ref) } { (loc(a_2, i_58): Ref) }
+          Seq#Contains(Seq#Range(left, right_2 + 1), i_58) ==> (loc(a_2, i_58): Ref) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, val] }
-          ((Seq#Contains(Seq#Range(left_1, right + 1), invRecv8(o_4)) && NoPerm < FullPerm) && qpRange8(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv8(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!((Seq#Contains(Seq#Range(left_1, right + 1), invRecv8(o_4)) && NoPerm < FullPerm) && qpRange8(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, val] }
+          ((Seq#Contains(Seq#Range(left, right_2 + 1), invRecv8(o_9)) && NoPerm < FullPerm) && qpRange8(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv8(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!((Seq#Contains(Seq#Range(left, right_2 + 1), invRecv8(o_9)) && NoPerm < FullPerm) && qpRange8(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
-      assume Heap[(loc(a_2, right): Ref), val] == pivotValue;
+      assume Heap[(loc(a_2, right_2): Ref), val] == pivotValue;
       assume (forall i_59: int ::
-        { Seq#ContainsTrigger(Seq#Range(left_1, storeIndex), i_59) } { Seq#Contains(Seq#Range(left_1, storeIndex), i_59) } { (loc(a_2, i_59): Ref) }
-        Seq#Contains(Seq#Range(left_1, storeIndex), i_59) ==> Heap[(loc(a_2, i_59): Ref), val] < pivotValue
+        { Seq#ContainsTrigger(Seq#Range(left, storeIndex), i_59) } { Seq#Contains(Seq#Range(left, storeIndex), i_59) } { (loc(a_2, i_59): Ref) }
+        Seq#Contains(Seq#Range(left, storeIndex), i_59) ==> Heap[(loc(a_2, i_59): Ref), val] < pivotValue
       );
-      assume (forall i_60_1: int ::
-        { Seq#ContainsTrigger(Seq#Range(storeIndex, j_4_1), i_60_1) } { Seq#Contains(Seq#Range(storeIndex, j_4_1), i_60_1) } { (loc(a_2, i_60_1): Ref) }
-        Seq#Contains(Seq#Range(storeIndex, j_4_1), i_60_1) ==> pivotValue <= Heap[(loc(a_2, i_60_1): Ref), val]
+      assume (forall i_60: int ::
+        { Seq#ContainsTrigger(Seq#Range(storeIndex, j_4_1), i_60) } { Seq#Contains(Seq#Range(storeIndex, j_4_1), i_60) } { (loc(a_2, i_60): Ref) }
+        Seq#Contains(Seq#Range(storeIndex, j_4_1), i_60) ==> pivotValue <= Heap[(loc(a_2, i_60): Ref), val]
       );
-      assume Seq#Length(pw) == right + 1 - left_1;
+      assume Seq#Length(pw) == right_2 + 1 - left;
       assume (forall i_61: int ::
         { Seq#Index(pw, i_61) }
-        0 <= i_61 && i_61 < Seq#Length(pw) ==> left_1 <= Seq#Index(pw, i_61) && Seq#Index(pw, i_61) <= right
+        0 <= i_61 && i_61 < Seq#Length(pw) ==> left <= Seq#Index(pw, i_61) && Seq#Index(pw, i_61) <= right_2
       );
       assume (forall i_62: int, k_7_1: int ::
         { Seq#Index(pw, i_62), Seq#Index(pw, k_7_1) }
@@ -1809,7 +1809,7 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
       );
       assume (forall i$0_7: int ::
         { Seq#Index(pw, i$0_7) }
-        0 <= i$0_7 && i$0_7 < Seq#Length(pw) ==> Heap[(loc(a_2, left_1 + i$0_7): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_7)): Ref), val]
+        0 <= i$0_7 && i$0_7 < Seq#Length(pw) ==> Heap[(loc(a_2, left + i$0_7): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i$0_7)): Ref), val]
       );
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1819,26 +1819,26 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [118605]"}
-        0 <= right;
-      assert {:msg "  The precondition of method swap might not hold. Assertion right < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [118606]"}
-        right < (len_1(a_2): int);
-      assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [118607]"}
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [106553]"}
+        0 <= right_2;
+      assert {:msg "  The precondition of method swap might not hold. Assertion right < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [106554]"}
+        right_2 < (len(a_2): int);
+      assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [106555]"}
         0 <= storeIndex;
-      assert {:msg "  The precondition of method swap might not hold. Assertion storeIndex < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [118608]"}
-        storeIndex < (len_1(a_2): int);
+      assert {:msg "  The precondition of method swap might not hold. Assertion storeIndex < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [106556]"}
+        storeIndex < (len(a_2): int);
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, right).val (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [118609]"}
-          perm <= Mask[(loc(a_2, right): Ref), val];
+        assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, right).val (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [106557]"}
+          perm <= Mask[(loc(a_2, right_2): Ref), val];
       }
-      Mask := Mask[(loc(a_2, right): Ref), val:=Mask[(loc(a_2, right): Ref), val] - perm];
-      if (right != storeIndex) {
+      Mask := Mask[(loc(a_2, right_2): Ref), val:=Mask[(loc(a_2, right_2): Ref), val] - perm];
+      if (right_2 != storeIndex) {
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [118610]"}
+          assert {:msg "  The precondition of method swap might not hold. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [106558]"}
             perm <= Mask[(loc(a_2, storeIndex): Ref), val];
         }
         Mask := Mask[(loc(a_2, storeIndex): Ref), val:=Mask[(loc(a_2, storeIndex): Ref), val] - perm];
@@ -1850,17 +1850,17 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
     
     // -- Inhaling postcondition
       perm := FullPerm;
-      assume (loc(a_2, right): Ref) != null;
-      Mask := Mask[(loc(a_2, right): Ref), val:=Mask[(loc(a_2, right): Ref), val] + perm];
+      assume (loc(a_2, right_2): Ref) != null;
+      Mask := Mask[(loc(a_2, right_2): Ref), val:=Mask[(loc(a_2, right_2): Ref), val] + perm];
       assume state(Heap, Mask);
-      if (right != storeIndex) {
+      if (right_2 != storeIndex) {
         perm := FullPerm;
         assume (loc(a_2, storeIndex): Ref) != null;
         Mask := Mask[(loc(a_2, storeIndex): Ref), val:=Mask[(loc(a_2, storeIndex): Ref), val] + perm];
         assume state(Heap, Mask);
       }
-      assume Heap[(loc(a_2, right): Ref), val] == PreCallHeap[(loc(a_2, storeIndex): Ref), val];
-      assume Heap[(loc(a_2, storeIndex): Ref), val] == PreCallHeap[(loc(a_2, right): Ref), val];
+      assume Heap[(loc(a_2, right_2): Ref), val] == PreCallHeap[(loc(a_2, storeIndex): Ref), val];
+      assume Heap[(loc(a_2, storeIndex): Ref), val] == PreCallHeap[(loc(a_2, right_2): Ref), val];
       assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -1868,108 +1868,108 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
   //   pw[storeIndex - left]] -- arrays_quickselect_rec_index-shifting.vpr@127.3--128.50
     
     // -- Check definedness of pw[storeIndex - left := pw[right - left]][right - left := pw[storeIndex - left]]
-      assert {:msg "  Assignment might fail. Index pw[right - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@127.3--128.50) [118611]"}
-        right - left_1 >= 0;
-      assert {:msg "  Assignment might fail. Index pw[right - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@127.3--128.50) [118612]"}
-        right - left_1 < Seq#Length(pw);
-      assert {:msg "  Assignment might fail. Index pw[storeIndex - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@127.3--128.50) [118613]"}
-        storeIndex - left_1 >= 0;
-      assert {:msg "  Assignment might fail. Index pw[storeIndex - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@127.3--128.50) [118614]"}
-        storeIndex - left_1 < Seq#Length(pw);
-    pw := Seq#Append(Seq#Take(Seq#Append(Seq#Take(pw, storeIndex - left_1), Seq#Append(Seq#Singleton(Seq#Index(pw, right - left_1)), Seq#Drop(pw, storeIndex - left_1 + 1))), right - left_1), Seq#Append(Seq#Singleton(Seq#Index(pw, storeIndex - left_1)), Seq#Drop(Seq#Append(Seq#Take(pw, storeIndex - left_1), Seq#Append(Seq#Singleton(Seq#Index(pw, right - left_1)), Seq#Drop(pw, storeIndex - left_1 + 1))), right - left_1 + 1)));
+      assert {:msg "  Assignment might fail. Index pw[right - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@127.3--128.50) [106559]"}
+        right_2 - left >= 0;
+      assert {:msg "  Assignment might fail. Index pw[right - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@127.3--128.50) [106560]"}
+        right_2 - left < Seq#Length(pw);
+      assert {:msg "  Assignment might fail. Index pw[storeIndex - left] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@127.3--128.50) [106561]"}
+        storeIndex - left >= 0;
+      assert {:msg "  Assignment might fail. Index pw[storeIndex - left] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@127.3--128.50) [106562]"}
+        storeIndex - left < Seq#Length(pw);
+    pw := Seq#Append(Seq#Take(Seq#Append(Seq#Take(pw, storeIndex - left), Seq#Append(Seq#Singleton(Seq#Index(pw, right_2 - left)), Seq#Drop(pw, storeIndex - left + 1))), right_2 - left), Seq#Append(Seq#Singleton(Seq#Index(pw, storeIndex - left)), Seq#Drop(Seq#Append(Seq#Take(pw, storeIndex - left), Seq#Append(Seq#Singleton(Seq#Index(pw, right_2 - left)), Seq#Drop(pw, storeIndex - left + 1))), right_2 - left + 1)));
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of partition might not hold. Assertion left <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@56.11--56.52) [118615]"}
-      left_1 <= storeIndex;
-    assert {:msg "  Postcondition of partition might not hold. Assertion storeIndex <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@56.11--56.52) [118616]"}
-      storeIndex <= right;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of partition might not hold. Assertion left <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@56.11--56.52) [106563]"}
+      left <= storeIndex;
+    assert {:msg "  Postcondition of partition might not hold. Assertion storeIndex <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@56.11--56.52) [106564]"}
+      storeIndex <= right_2;
     havoc QPMask;
     
     // -- check that the permission amount is positive
       
     
     // -- check if receiver loc(a, i) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@58.11--58.74) [118617]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@58.11--58.74) [106565]"}
         (forall i_14_1: int, i_14_2: int ::
         { neverTriggered3(i_14_1), neverTriggered3(i_14_2) }
-        (((i_14_1 != i_14_2 && (left_1 <= i_14_1 && i_14_1 <= right)) && (left_1 <= i_14_2 && i_14_2 <= right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_14_1): Ref) != (loc(a_2, i_14_2): Ref)
+        (((i_14_1 != i_14_2 && (left <= i_14_1 && i_14_1 <= right_2)) && (left <= i_14_2 && i_14_2 <= right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_14_1): Ref) != (loc(a_2, i_14_2): Ref)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of partition might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@58.11--58.74) [118618]"}
+      assert {:msg "  Postcondition of partition might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@58.11--58.74) [106566]"}
         (forall i_14_1: int ::
         { (loc(a_2, i_14_1): Ref) } { (loc(a_2, i_14_1): Ref) }
-        left_1 <= i_14_1 && i_14_1 <= right ==> Mask[(loc(a_2, i_14_1): Ref), val] >= FullPerm
+        left <= i_14_1 && i_14_1 <= right_2 ==> Mask[(loc(a_2, i_14_1): Ref), val] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver loc(a, i)
       assume (forall i_14_1: int ::
         { (loc(a_2, i_14_1): Ref) } { (loc(a_2, i_14_1): Ref) }
-        (left_1 <= i_14_1 && i_14_1 <= right) && NoPerm < FullPerm ==> qpRange3((loc(a_2, i_14_1): Ref)) && invRecv3((loc(a_2, i_14_1): Ref)) == i_14_1
+        (left <= i_14_1 && i_14_1 <= right_2) && NoPerm < FullPerm ==> qpRange3((loc(a_2, i_14_1): Ref)) && invRecv3((loc(a_2, i_14_1): Ref)) == i_14_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        (left_1 <= invRecv3(o_4) && invRecv3(o_4) <= right) && (NoPerm < FullPerm && qpRange3(o_4)) ==> (loc(a_2, invRecv3(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        (left <= invRecv3(o_9) && invRecv3(o_9) <= right_2) && (NoPerm < FullPerm && qpRange3(o_9)) ==> (loc(a_2, invRecv3(o_9)): Ref) == o_9
       );
     
     // -- assume permission updates for field val
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((left_1 <= invRecv3(o_4) && invRecv3(o_4) <= right) && (NoPerm < FullPerm && qpRange3(o_4)) ==> (loc(a_2, invRecv3(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((left_1 <= invRecv3(o_4) && invRecv3(o_4) <= right) && (NoPerm < FullPerm && qpRange3(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((left <= invRecv3(o_9) && invRecv3(o_9) <= right_2) && (NoPerm < FullPerm && qpRange3(o_9)) ==> (loc(a_2, invRecv3(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((left <= invRecv3(o_9) && invRecv3(o_9) <= right_2) && (NoPerm < FullPerm && qpRange3(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
-    assert {:msg "  Postcondition of partition might not hold. Assertion loc(a, storeIndex).val == old(loc(a, pivotIndex).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@60.11--60.64) [118619]"}
+    assert {:msg "  Postcondition of partition might not hold. Assertion loc(a, storeIndex).val == old(loc(a, pivotIndex).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@60.11--60.64) [106567]"}
       Heap[(loc(a_2, storeIndex): Ref), val] == oldHeap[(loc(a_2, pivotIndex): Ref), val];
     if (*) {
-      if (left_1 <= i_15 && i_15 < storeIndex) {
-        assert {:msg "  Postcondition of partition might not hold. Assertion loc(a, i).val < loc(a, storeIndex).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@62.11--62.99) [118620]"}
-          Heap[(loc(a_2, i_15): Ref), val] < Heap[(loc(a_2, storeIndex): Ref), val];
+      if (left <= i_15_1 && i_15_1 < storeIndex) {
+        assert {:msg "  Postcondition of partition might not hold. Assertion loc(a, i).val < loc(a, storeIndex).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@62.11--62.99) [106568]"}
+          Heap[(loc(a_2, i_15_1): Ref), val] < Heap[(loc(a_2, storeIndex): Ref), val];
       }
       assume false;
     }
     assume (forall i_16_1_1: int ::
       { (loc(a_2, i_16_1_1): Ref) }
-      left_1 <= i_16_1_1 && i_16_1_1 < storeIndex ==> Heap[(loc(a_2, i_16_1_1): Ref), val] < Heap[(loc(a_2, storeIndex): Ref), val]
+      left <= i_16_1_1 && i_16_1_1 < storeIndex ==> Heap[(loc(a_2, i_16_1_1): Ref), val] < Heap[(loc(a_2, storeIndex): Ref), val]
     );
     if (*) {
-      if (storeIndex < i_17 && i_17 <= right) {
-        assert {:msg "  Postcondition of partition might not hold. Assertion loc(a, storeIndex).val <= loc(a, i).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@63.11--63.100) [118621]"}
-          Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_17): Ref), val];
+      if (storeIndex < i_17_1 && i_17_1 <= right_2) {
+        assert {:msg "  Postcondition of partition might not hold. Assertion loc(a, storeIndex).val <= loc(a, i).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@63.11--63.100) [106569]"}
+          Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_17_1): Ref), val];
       }
       assume false;
     }
     assume (forall i_18_1_1: int ::
       { (loc(a_2, i_18_1_1): Ref) }
-      storeIndex < i_18_1_1 && i_18_1_1 <= right ==> Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_18_1_1): Ref), val]
+      storeIndex < i_18_1_1 && i_18_1_1 <= right_2 ==> Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_18_1_1): Ref), val]
     );
-    assert {:msg "  Postcondition of partition might not hold. Assertion |pw| == right + 1 - left might not hold. (arrays_quickselect_rec_index-shifting.vpr@65.11--65.35) [118622]"}
-      Seq#Length(pw) == right + 1 - left_1;
+    assert {:msg "  Postcondition of partition might not hold. Assertion |pw| == right + 1 - left might not hold. (arrays_quickselect_rec_index-shifting.vpr@65.11--65.35) [106570]"}
+      Seq#Length(pw) == right_2 + 1 - left;
     if (*) {
-      if (0 <= i_19 && i_19 < Seq#Length(pw)) {
-        assert {:msg "  Postcondition of partition might not hold. Assertion left <= pw[i] might not hold. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [118623]"}
-          left_1 <= Seq#Index(pw, i_19);
-        assert {:msg "  Postcondition of partition might not hold. Assertion pw[i] <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [118624]"}
-          Seq#Index(pw, i_19) <= right;
+      if (0 <= i_19_1 && i_19_1 < Seq#Length(pw)) {
+        assert {:msg "  Postcondition of partition might not hold. Assertion left <= pw[i] might not hold. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [106571]"}
+          left <= Seq#Index(pw, i_19_1);
+        assert {:msg "  Postcondition of partition might not hold. Assertion pw[i] <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@66.11--66.82) [106572]"}
+          Seq#Index(pw, i_19_1) <= right_2;
       }
       assume false;
     }
-    assume (forall i_20_1_1: int ::
-      { Seq#Index(pw, i_20_1_1) }
-      0 <= i_20_1_1 && i_20_1_1 < Seq#Length(pw) ==> left_1 <= Seq#Index(pw, i_20_1_1) && Seq#Index(pw, i_20_1_1) <= right
+    assume (forall i_20_1: int ::
+      { Seq#Index(pw, i_20_1) }
+      0 <= i_20_1 && i_20_1 < Seq#Length(pw) ==> left <= Seq#Index(pw, i_20_1) && Seq#Index(pw, i_20_1) <= right_2
     );
     if (*) {
-      if (0 <= i_21 && (i_21 < j_2_1 && j_2_1 < Seq#Length(pw))) {
-        assert {:msg "  Postcondition of partition might not hold. Assertion pw[i] != pw[j] might not hold. (arrays_quickselect_rec_index-shifting.vpr@67.11--67.82) [118625]"}
-          Seq#Index(pw, i_21) != Seq#Index(pw, j_2_1);
+      if (0 <= i_21_1 && (i_21_1 < j_2_2 && j_2_2 < Seq#Length(pw))) {
+        assert {:msg "  Postcondition of partition might not hold. Assertion pw[i] != pw[j] might not hold. (arrays_quickselect_rec_index-shifting.vpr@67.11--67.82) [106573]"}
+          Seq#Index(pw, i_21_1) != Seq#Index(pw, j_2_2);
       }
       assume false;
     }
@@ -1978,15 +1978,15 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
       0 <= i_22_1_1 && (i_22_1_1 < j_3_1_1 && j_3_1_1 < Seq#Length(pw)) ==> Seq#Index(pw, i_22_1_1) != Seq#Index(pw, j_3_1_1)
     );
     if (*) {
-      if (0 <= i_23 && i_23 < Seq#Length(pw)) {
-        assert {:msg "  Postcondition of partition might not hold. Assertion loc(a, left + i).val == old(loc(a, pw[i]).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@69.11--69.32) [118626]"}
-          Heap[(loc(a_2, left_1 + i_23): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_23)): Ref), val];
+      if (0 <= i_23_1 && i_23_1 < Seq#Length(pw)) {
+        assert {:msg "  Postcondition of partition might not hold. Assertion loc(a, left + i).val == old(loc(a, pw[i]).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@69.11--69.32) [106574]"}
+          Heap[(loc(a_2, left + i_23_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_23_1)): Ref), val];
       }
       assume false;
     }
     assume (forall i_24_1_1: int ::
       { Seq#Index(pw, i_24_1_1) }
-      0 <= i_24_1_1 && i_24_1_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left_1 + i_24_1_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_24_1_1)): Ref), val]
+      0 <= i_24_1_1 && i_24_1_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left + i_24_1_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_24_1_1)): Ref), val]
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -1998,41 +1998,41 @@ procedure partition(a_2: IArrayDomainType, left_1: int, right: int, pivotIndex: 
 // Translation of method select_rec
 // ==================================================
 
-procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) returns (storeIndex: int, pw: (Seq int))
+procedure select_rec(a_2: IArrayDomainType, left: int, right_2: int, n: int) returns (storeIndex: int, pw: (Seq int))
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
+  var i_13: int;
+  var i_23: int;
   var i_24: int;
-  var i_29: int;
-  var i_30: int;
-  var i_31: int;
-  var j_19: int;
-  var i_32: int;
+  var i_25: int;
+  var j_25: int;
+  var i_27: int;
   var pivotIndex: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_pivotIndex: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var pwPar: (Seq int);
   var arg_right: int;
   var pwRec: (Seq int);
-  var i_33: int;
-  var i_34: int;
+  var i_16: int;
+  var i_42: int;
   var arg_left: int;
-  var i_35: int;
-  var i_36: int;
-  var i_15: int;
-  var i_17: int;
-  var i_19: int;
-  var i_21: int;
-  var j_2_1: int;
-  var i_23: int;
+  var i_51: int;
+  var i_53: int;
+  var i_15_1: int;
+  var i_17_1: int;
+  var i_19_1: int;
+  var i_21_1: int;
+  var j_2_2: int;
+  var i_23_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2041,12 +2041,12 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume 0 <= left_1;
-    assume left_1 <= right;
-    assume right < (len_1(a_2): int);
+    assume 0 <= left;
+    assume left <= right_2;
+    assume right_2 < (len(a_2): int);
     assume state(Heap, Mask);
-    assume left_1 <= n;
-    assume n <= right;
+    assume left <= n;
+    assume n <= right_2;
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } left <= i && i <= right ==> acc(loc(a, i).val, write))
@@ -2054,36 +2054,36 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@136.12--136.75) [118627]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@136.12--136.75) [106575]"}
       (forall i_1: int, i_1_1: int ::
       
-      (((i_1 != i_1_1 && (left_1 <= i_1 && i_1 <= right)) && (left_1 <= i_1_1 && i_1_1 <= right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
+      (((i_1 != i_1_1 && (left <= i_1 && i_1 <= right_2)) && (left <= i_1_1 && i_1_1 <= right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        (left_1 <= i_1 && i_1 <= right) && NoPerm < FullPerm ==> qpRange9((loc(a_2, i_1): Ref)) && invRecv9((loc(a_2, i_1): Ref)) == i_1
+        (left <= i_1 && i_1 <= right_2) && NoPerm < FullPerm ==> qpRange9((loc(a_2, i_1): Ref)) && invRecv9((loc(a_2, i_1): Ref)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv9(o_4) }
-        ((left_1 <= invRecv9(o_4) && invRecv9(o_4) <= right) && NoPerm < FullPerm) && qpRange9(o_4) ==> (loc(a_2, invRecv9(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv9(o_9) }
+        ((left <= invRecv9(o_9) && invRecv9(o_9) <= right_2) && NoPerm < FullPerm) && qpRange9(o_9) ==> (loc(a_2, invRecv9(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        left_1 <= i_1 && i_1 <= right ==> (loc(a_2, i_1): Ref) != null
+        left <= i_1 && i_1 <= right_2 ==> (loc(a_2, i_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((left_1 <= invRecv9(o_4) && invRecv9(o_4) <= right) && NoPerm < FullPerm) && qpRange9(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv9(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((left_1 <= invRecv9(o_4) && invRecv9(o_4) <= right) && NoPerm < FullPerm) && qpRange9(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((left <= invRecv9(o_9) && invRecv9(o_9) <= right_2) && NoPerm < FullPerm) && qpRange9(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv9(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((left <= invRecv9(o_9) && invRecv9(o_9) <= right_2) && NoPerm < FullPerm) && qpRange9(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -2092,15 +2092,15 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
-    assume left_1 <= storeIndex;
-    assume storeIndex <= right;
+    assume left <= storeIndex;
+    assume storeIndex <= right_2;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } left <= i && i <= right ==> acc(loc(a, i).val, write))
@@ -2108,36 +2108,36 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@141.11--141.74) [118628]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@141.11--141.74) [106576]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && (left_1 <= i_3 && i_3 <= right)) && (left_1 <= i_3_1 && i_3_1 <= right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_3): Ref) != (loc(a_2, i_3_1): Ref)
+      (((i_3_2 != i_3_3 && (left <= i_3_2 && i_3_2 <= right_2)) && (left <= i_3_3 && i_3_3 <= right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_3_2): Ref) != (loc(a_2, i_3_3): Ref)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { (loc(a_2, i_3): Ref) } { (loc(a_2, i_3): Ref) }
-        (left_1 <= i_3 && i_3 <= right) && NoPerm < FullPerm ==> qpRange10((loc(a_2, i_3): Ref)) && invRecv10((loc(a_2, i_3): Ref)) == i_3
+      assume (forall i_3_2: int ::
+        { (loc(a_2, i_3_2): Ref) } { (loc(a_2, i_3_2): Ref) }
+        (left <= i_3_2 && i_3_2 <= right_2) && NoPerm < FullPerm ==> qpRange10((loc(a_2, i_3_2): Ref)) && invRecv10((loc(a_2, i_3_2): Ref)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv10(o_4) }
-        ((left_1 <= invRecv10(o_4) && invRecv10(o_4) <= right) && NoPerm < FullPerm) && qpRange10(o_4) ==> (loc(a_2, invRecv10(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv10(o_9) }
+        ((left <= invRecv10(o_9) && invRecv10(o_9) <= right_2) && NoPerm < FullPerm) && qpRange10(o_9) ==> (loc(a_2, invRecv10(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { (loc(a_2, i_3): Ref) } { (loc(a_2, i_3): Ref) }
-        left_1 <= i_3 && i_3 <= right ==> (loc(a_2, i_3): Ref) != null
+      assume (forall i_3_2: int ::
+        { (loc(a_2, i_3_2): Ref) } { (loc(a_2, i_3_2): Ref) }
+        left <= i_3_2 && i_3_2 <= right_2 ==> (loc(a_2, i_3_2): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((left_1 <= invRecv10(o_4) && invRecv10(o_4) <= right) && NoPerm < FullPerm) && qpRange10(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv10(o_4)): Ref) == o_4) && QPMask[o_4, val] == PostMask[o_4, val] + FullPerm) && (!(((left_1 <= invRecv10(o_4) && invRecv10(o_4) <= right) && NoPerm < FullPerm) && qpRange10(o_4)) ==> QPMask[o_4, val] == PostMask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((left <= invRecv10(o_9) && invRecv10(o_9) <= right_2) && NoPerm < FullPerm) && qpRange10(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv10(o_9)): Ref) == o_9) && QPMask[o_9, val] == PostMask[o_9, val] + FullPerm) && (!(((left <= invRecv10(o_9) && invRecv10(o_9) <= right_2) && NoPerm < FullPerm) && qpRange10(o_9)) ==> QPMask[o_9, val] == PostMask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -2147,71 +2147,71 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } left <= i && i < storeIndex ==> loc(a, i).val <= loc(a, storeIndex).val)
       if (*) {
-        if (left_1 <= i_24 && i_24 < storeIndex) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@144.11--144.100) [118629]"}
-            HasDirectPerm(PostMask, (loc(a_2, i_24): Ref), val);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@144.11--144.100) [118630]"}
+        if (left <= i_13 && i_13 < storeIndex) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@144.11--144.100) [106577]"}
+            HasDirectPerm(PostMask, (loc(a_2, i_13): Ref), val);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@144.11--144.100) [106578]"}
             HasDirectPerm(PostMask, (loc(a_2, storeIndex): Ref), val);
         }
         assume false;
       }
-    assume (forall i_5: int ::
-      { (loc(a_2, i_5): Ref) }
-      left_1 <= i_5 && i_5 < storeIndex ==> PostHeap[(loc(a_2, i_5): Ref), val] <= PostHeap[(loc(a_2, storeIndex): Ref), val]
+    assume (forall i_5_1: int ::
+      { (loc(a_2, i_5_1): Ref) }
+      left <= i_5_1 && i_5_1 < storeIndex ==> PostHeap[(loc(a_2, i_5_1): Ref), val] <= PostHeap[(loc(a_2, storeIndex): Ref), val]
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } storeIndex < i && i <= right ==> loc(a, storeIndex).val <= loc(a, i).val)
       if (*) {
-        if (storeIndex < i_29 && i_29 <= right) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@145.11--145.100) [118631]"}
+        if (storeIndex < i_23 && i_23 <= right_2) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@145.11--145.100) [106579]"}
             HasDirectPerm(PostMask, (loc(a_2, storeIndex): Ref), val);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@145.11--145.100) [118632]"}
-            HasDirectPerm(PostMask, (loc(a_2, i_29): Ref), val);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@145.11--145.100) [106580]"}
+            HasDirectPerm(PostMask, (loc(a_2, i_23): Ref), val);
         }
         assume false;
       }
     assume (forall i_7_1: int ::
       { (loc(a_2, i_7_1): Ref) }
-      storeIndex < i_7_1 && i_7_1 <= right ==> PostHeap[(loc(a_2, storeIndex): Ref), val] <= PostHeap[(loc(a_2, i_7_1): Ref), val]
+      storeIndex < i_7_1 && i_7_1 <= right_2 ==> PostHeap[(loc(a_2, storeIndex): Ref), val] <= PostHeap[(loc(a_2, i_7_1): Ref), val]
     );
     assume state(PostHeap, PostMask);
-    assume Seq#Length(pw) == right + 1 - left_1;
+    assume Seq#Length(pw) == right_2 + 1 - left;
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int :: { pw[i] } 0 <= i && i < |pw| ==> left <= pw[i] && pw[i] <= right)
       if (*) {
-        if (0 <= i_30 && i_30 < Seq#Length(pw)) {
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [118633]"}
-            i_30 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [118634]"}
-            i_30 < Seq#Length(pw);
-          if (left_1 <= Seq#Index(pw, i_30)) {
-            assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [118635]"}
-              i_30 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [118636]"}
-              i_30 < Seq#Length(pw);
+        if (0 <= i_24 && i_24 < Seq#Length(pw)) {
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [106581]"}
+            i_24 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [106582]"}
+            i_24 < Seq#Length(pw);
+          if (left <= Seq#Index(pw, i_24)) {
+            assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [106583]"}
+              i_24 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [106584]"}
+              i_24 < Seq#Length(pw);
           }
         }
         assume false;
       }
     assume (forall i_9_1: int ::
       { Seq#Index(pw, i_9_1) }
-      0 <= i_9_1 && i_9_1 < Seq#Length(pw) ==> left_1 <= Seq#Index(pw, i_9_1) && Seq#Index(pw, i_9_1) <= right
+      0 <= i_9_1 && i_9_1 < Seq#Length(pw) ==> left <= Seq#Index(pw, i_9_1) && Seq#Index(pw, i_9_1) <= right_2
     );
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { pw[i], pw[j] } 0 <= i && (i < j && j < |pw|) ==> pw[i] != pw[j])
       if (*) {
-        if (0 <= i_31 && (i_31 < j_19 && j_19 < Seq#Length(pw))) {
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@149.11--149.82) [118637]"}
-            i_31 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@149.11--149.82) [118638]"}
-            i_31 < Seq#Length(pw);
-          assert {:msg "  Contract might not be well-formed. Index pw[j] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@149.11--149.82) [118639]"}
-            j_19 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index pw[j] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@149.11--149.82) [118640]"}
-            j_19 < Seq#Length(pw);
+        if (0 <= i_25 && (i_25 < j_25 && j_25 < Seq#Length(pw))) {
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@149.11--149.82) [106585]"}
+            i_25 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@149.11--149.82) [106586]"}
+            i_25 < Seq#Length(pw);
+          assert {:msg "  Contract might not be well-formed. Index pw[j] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@149.11--149.82) [106587]"}
+            j_25 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index pw[j] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@149.11--149.82) [106588]"}
+            j_25 < Seq#Length(pw);
         }
         assume false;
       }
@@ -2223,21 +2223,21 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
     
     // -- Check definedness of (forall i: Int :: { old(pw[i]) } 0 <= i && i < |pw| ==> loc(a, left + i).val == old(loc(a, pw[i]).val))
       if (*) {
-        if (0 <= i_32 && i_32 < Seq#Length(pw)) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, left + i).val (arrays_quickselect_rec_index-shifting.vpr@151.11--151.32) [118641]"}
-            HasDirectPerm(PostMask, (loc(a_2, left_1 + i_32): Ref), val);
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@151.11--151.32) [118642]"}
-            i_32 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@151.11--151.32) [118643]"}
-            i_32 < Seq#Length(pw);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, pw[i]).val (arrays_quickselect_rec_index-shifting.vpr@151.11--151.32) [118644]"}
-            HasDirectPerm(oldMask, (loc(a_2, Seq#Index(pw, i_32)): Ref), val);
+        if (0 <= i_27 && i_27 < Seq#Length(pw)) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, left + i).val (arrays_quickselect_rec_index-shifting.vpr@151.11--151.32) [106589]"}
+            HasDirectPerm(PostMask, (loc(a_2, left + i_27): Ref), val);
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@151.11--151.32) [106590]"}
+            i_27 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@151.11--151.32) [106591]"}
+            i_27 < Seq#Length(pw);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, pw[i]).val (arrays_quickselect_rec_index-shifting.vpr@151.11--151.32) [106592]"}
+            HasDirectPerm(oldMask, (loc(a_2, Seq#Index(pw, i_27)): Ref), val);
         }
         assume false;
       }
     assume (forall i_13_1: int ::
       { Seq#Index(pw, i_13_1) }
-      0 <= i_13_1 && i_13_1 < Seq#Length(pw) ==> PostHeap[(loc(a_2, left_1 + i_13_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_13_1)): Ref), val]
+      0 <= i_13_1 && i_13_1 < Seq#Length(pw) ==> PostHeap[(loc(a_2, left + i_13_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_13_1)): Ref), val]
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -2245,20 +2245,20 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
   }
   
   // -- Translating statement: if (left == right) -- arrays_quickselect_rec_index-shifting.vpr@156.3--209.4
-    if (left_1 == right) {
+    if (left == right_2) {
       
       // -- Translating statement: storeIndex := left -- arrays_quickselect_rec_index-shifting.vpr@158.5--158.23
-        storeIndex := left_1;
+        storeIndex := left;
         assume state(Heap, Mask);
       
       // -- Translating statement: pw := Seq(left) -- arrays_quickselect_rec_index-shifting.vpr@160.5--160.20
-        pw := Seq#Singleton(left_1);
+        pw := Seq#Singleton(left);
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: inhale left <= pivotIndex && pivotIndex <= right -- arrays_quickselect_rec_index-shifting.vpr@163.5--163.53
-        assume left_1 <= pivotIndex;
-        assume pivotIndex <= right;
+        assume left <= pivotIndex;
+        assume pivotIndex <= right_2;
         assume state(Heap, Mask);
         assume state(Heap, Mask);
       
@@ -2268,57 +2268,57 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
         arg_pivotIndex := pivotIndex;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  The precondition of method partition might not hold. Assertion 0 <= left might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [118645]"}
-            0 <= left_1;
-          assert {:msg "  The precondition of method partition might not hold. Assertion left < right might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [118646]"}
-            left_1 < right;
-          assert {:msg "  The precondition of method partition might not hold. Assertion right < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [118647]"}
-            right < (len_1(a_2): int);
-          assert {:msg "  The precondition of method partition might not hold. Assertion left <= pivotIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [118648]"}
-            left_1 <= arg_pivotIndex;
-          assert {:msg "  The precondition of method partition might not hold. Assertion pivotIndex <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [118649]"}
-            arg_pivotIndex <= right;
+          ExhaleWellDef0Heap := Heap;
+          assert {:msg "  The precondition of method partition might not hold. Assertion 0 <= left might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [106593]"}
+            0 <= left;
+          assert {:msg "  The precondition of method partition might not hold. Assertion left < right might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [106594]"}
+            left < right_2;
+          assert {:msg "  The precondition of method partition might not hold. Assertion right < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [106595]"}
+            right_2 < (len(a_2): int);
+          assert {:msg "  The precondition of method partition might not hold. Assertion left <= pivotIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [106596]"}
+            left <= arg_pivotIndex;
+          assert {:msg "  The precondition of method partition might not hold. Assertion pivotIndex <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [106597]"}
+            arg_pivotIndex <= right_2;
           havoc QPMask;
           
           // -- check that the permission amount is positive
             
           
           // -- check if receiver loc(a, i) is injective
-            assert {:msg "  The precondition of method partition might not hold. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [118650]"}
-              (forall i_25: int, i_25_2: int ::
-              { neverTriggered12(i_25), neverTriggered12(i_25_2) }
-              (((i_25 != i_25_2 && (left_1 <= i_25 && i_25 <= right)) && (left_1 <= i_25_2 && i_25_2 <= right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_25): Ref) != (loc(a_2, i_25_2): Ref)
+            assert {:msg "  The precondition of method partition might not hold. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [106598]"}
+              (forall i_25_1: int, i_25_2: int ::
+              { neverTriggered12(i_25_1), neverTriggered12(i_25_2) }
+              (((i_25_1 != i_25_2 && (left <= i_25_1 && i_25_1 <= right_2)) && (left <= i_25_2 && i_25_2 <= right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_25_1): Ref) != (loc(a_2, i_25_2): Ref)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  The precondition of method partition might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [118651]"}
-              (forall i_25: int ::
-              { (loc(a_2, i_25): Ref) } { (loc(a_2, i_25): Ref) }
-              left_1 <= i_25 && i_25 <= right ==> Mask[(loc(a_2, i_25): Ref), val] >= FullPerm
+            assert {:msg "  The precondition of method partition might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [106599]"}
+              (forall i_25_1: int ::
+              { (loc(a_2, i_25_1): Ref) } { (loc(a_2, i_25_1): Ref) }
+              left <= i_25_1 && i_25_1 <= right_2 ==> Mask[(loc(a_2, i_25_1): Ref), val] >= FullPerm
             );
           
           // -- assumptions for inverse of receiver loc(a, i)
-            assume (forall i_25: int ::
-              { (loc(a_2, i_25): Ref) } { (loc(a_2, i_25): Ref) }
-              (left_1 <= i_25 && i_25 <= right) && NoPerm < FullPerm ==> qpRange12((loc(a_2, i_25): Ref)) && invRecv12((loc(a_2, i_25): Ref)) == i_25
+            assume (forall i_25_1: int ::
+              { (loc(a_2, i_25_1): Ref) } { (loc(a_2, i_25_1): Ref) }
+              (left <= i_25_1 && i_25_1 <= right_2) && NoPerm < FullPerm ==> qpRange12((loc(a_2, i_25_1): Ref)) && invRecv12((loc(a_2, i_25_1): Ref)) == i_25_1
             );
-            assume (forall o_4: Ref ::
-              { invRecv12(o_4) }
-              (left_1 <= invRecv12(o_4) && invRecv12(o_4) <= right) && (NoPerm < FullPerm && qpRange12(o_4)) ==> (loc(a_2, invRecv12(o_4)): Ref) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv12(o_9) }
+              (left <= invRecv12(o_9) && invRecv12(o_9) <= right_2) && (NoPerm < FullPerm && qpRange12(o_9)) ==> (loc(a_2, invRecv12(o_9)): Ref) == o_9
             );
           
           // -- assume permission updates for field val
-            assume (forall o_4: Ref ::
-              { QPMask[o_4, val] }
-              ((left_1 <= invRecv12(o_4) && invRecv12(o_4) <= right) && (NoPerm < FullPerm && qpRange12(o_4)) ==> (loc(a_2, invRecv12(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((left_1 <= invRecv12(o_4) && invRecv12(o_4) <= right) && (NoPerm < FullPerm && qpRange12(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+            assume (forall o_9: Ref ::
+              { QPMask[o_9, val] }
+              ((left <= invRecv12(o_9) && invRecv12(o_9) <= right_2) && (NoPerm < FullPerm && qpRange12(o_9)) ==> (loc(a_2, invRecv12(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((left <= invRecv12(o_9) && invRecv12(o_9) <= right_2) && (NoPerm < FullPerm && qpRange12(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
             );
           
           // -- assume permission updates for independent locations
-            assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-              { QPMask[o_4, f_5] }
-              f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+            assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+              { QPMask[o_9, f_5] }
+              f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
             );
           Mask := QPMask;
           // Finish exhale
@@ -2330,63 +2330,63 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
           havoc pivotIndex, pwPar;
         
         // -- Inhaling postcondition
-          assume left_1 <= pivotIndex;
-          assume pivotIndex <= right;
+          assume left <= pivotIndex;
+          assume pivotIndex <= right_2;
           havoc QPMask;
-          assert {:msg "  Method call might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [118652]"}
-            (forall i_26: int, i_26_1: int ::
+          assert {:msg "  Method call might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [106600]"}
+            (forall i_26_1: int, i_26_2: int ::
             
-            (((i_26 != i_26_1 && (left_1 <= i_26 && i_26 <= right)) && (left_1 <= i_26_1 && i_26_1 <= right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_26): Ref) != (loc(a_2, i_26_1): Ref)
+            (((i_26_1 != i_26_2 && (left <= i_26_1 && i_26_1 <= right_2)) && (left <= i_26_2 && i_26_2 <= right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_26_1): Ref) != (loc(a_2, i_26_2): Ref)
           );
           
           // -- Define Inverse Function
-            assume (forall i_26: int ::
-              { (loc(a_2, i_26): Ref) } { (loc(a_2, i_26): Ref) }
-              (left_1 <= i_26 && i_26 <= right) && NoPerm < FullPerm ==> qpRange13((loc(a_2, i_26): Ref)) && invRecv13((loc(a_2, i_26): Ref)) == i_26
+            assume (forall i_26_1: int ::
+              { (loc(a_2, i_26_1): Ref) } { (loc(a_2, i_26_1): Ref) }
+              (left <= i_26_1 && i_26_1 <= right_2) && NoPerm < FullPerm ==> qpRange13((loc(a_2, i_26_1): Ref)) && invRecv13((loc(a_2, i_26_1): Ref)) == i_26_1
             );
-            assume (forall o_4: Ref ::
-              { invRecv13(o_4) }
-              ((left_1 <= invRecv13(o_4) && invRecv13(o_4) <= right) && NoPerm < FullPerm) && qpRange13(o_4) ==> (loc(a_2, invRecv13(o_4)): Ref) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv13(o_9) }
+              ((left <= invRecv13(o_9) && invRecv13(o_9) <= right_2) && NoPerm < FullPerm) && qpRange13(o_9) ==> (loc(a_2, invRecv13(o_9)): Ref) == o_9
             );
           
           // -- Assume set of fields is nonNull
-            assume (forall i_26: int ::
-              { (loc(a_2, i_26): Ref) } { (loc(a_2, i_26): Ref) }
-              left_1 <= i_26 && i_26 <= right ==> (loc(a_2, i_26): Ref) != null
+            assume (forall i_26_1: int ::
+              { (loc(a_2, i_26_1): Ref) } { (loc(a_2, i_26_1): Ref) }
+              left <= i_26_1 && i_26_1 <= right_2 ==> (loc(a_2, i_26_1): Ref) != null
             );
           
           // -- Define permissions
-            assume (forall o_4: Ref ::
-              { QPMask[o_4, val] }
-              (((left_1 <= invRecv13(o_4) && invRecv13(o_4) <= right) && NoPerm < FullPerm) && qpRange13(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv13(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((left_1 <= invRecv13(o_4) && invRecv13(o_4) <= right) && NoPerm < FullPerm) && qpRange13(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+            assume (forall o_9: Ref ::
+              { QPMask[o_9, val] }
+              (((left <= invRecv13(o_9) && invRecv13(o_9) <= right_2) && NoPerm < FullPerm) && qpRange13(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv13(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((left <= invRecv13(o_9) && invRecv13(o_9) <= right_2) && NoPerm < FullPerm) && qpRange13(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
             );
-            assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-              { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-              f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+            assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+              { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+              f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
             );
           Mask := QPMask;
           assume state(Heap, Mask);
           assume Heap[(loc(a_2, pivotIndex): Ref), val] == PreCallHeap[(loc(a_2, arg_pivotIndex): Ref), val];
-          assume (forall i_27: int ::
-            { (loc(a_2, i_27): Ref) }
-            left_1 <= i_27 && i_27 < pivotIndex ==> Heap[(loc(a_2, i_27): Ref), val] < Heap[(loc(a_2, pivotIndex): Ref), val]
+          assume (forall i_27_2: int ::
+            { (loc(a_2, i_27_2): Ref) }
+            left <= i_27_2 && i_27_2 < pivotIndex ==> Heap[(loc(a_2, i_27_2): Ref), val] < Heap[(loc(a_2, pivotIndex): Ref), val]
           );
           assume (forall i_28: int ::
             { (loc(a_2, i_28): Ref) }
-            pivotIndex < i_28 && i_28 <= right ==> Heap[(loc(a_2, pivotIndex): Ref), val] <= Heap[(loc(a_2, i_28): Ref), val]
+            pivotIndex < i_28 && i_28 <= right_2 ==> Heap[(loc(a_2, pivotIndex): Ref), val] <= Heap[(loc(a_2, i_28): Ref), val]
           );
-          assume Seq#Length(pwPar) == right + 1 - left_1;
-          assume (forall i_29_1: int ::
-            { Seq#Index(pwPar, i_29_1) }
-            0 <= i_29_1 && i_29_1 < Seq#Length(pwPar) ==> left_1 <= Seq#Index(pwPar, i_29_1) && Seq#Index(pwPar, i_29_1) <= right
+          assume Seq#Length(pwPar) == right_2 + 1 - left;
+          assume (forall i_29: int ::
+            { Seq#Index(pwPar, i_29) }
+            0 <= i_29 && i_29 < Seq#Length(pwPar) ==> left <= Seq#Index(pwPar, i_29) && Seq#Index(pwPar, i_29) <= right_2
           );
-          assume (forall i_30_2: int, j_4_1: int ::
-            { Seq#Index(pwPar, i_30_2), Seq#Index(pwPar, j_4_1) }
-            0 <= i_30_2 && (i_30_2 < j_4_1 && j_4_1 < Seq#Length(pwPar)) ==> Seq#Index(pwPar, i_30_2) != Seq#Index(pwPar, j_4_1)
+          assume (forall i_30: int, j_4_1: int ::
+            { Seq#Index(pwPar, i_30), Seq#Index(pwPar, j_4_1) }
+            0 <= i_30 && (i_30 < j_4_1 && j_4_1 < Seq#Length(pwPar)) ==> Seq#Index(pwPar, i_30) != Seq#Index(pwPar, j_4_1)
           );
-          assume (forall i_31_1: int ::
-            { Seq#Index(pwPar, i_31_1) }
-            0 <= i_31_1 && i_31_1 < Seq#Length(pwPar) ==> Heap[(loc(a_2, left_1 + i_31_1): Ref), val] == PreCallHeap[(loc(a_2, Seq#Index(pwPar, i_31_1)): Ref), val]
+          assume (forall i_31: int ::
+            { Seq#Index(pwPar, i_31) }
+            0 <= i_31 && i_31 < Seq#Length(pwPar) ==> Heap[(loc(a_2, left + i_31): Ref), val] == PreCallHeap[(loc(a_2, Seq#Index(pwPar, i_31)): Ref), val]
           );
           assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -2412,17 +2412,17 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
                 arg_right := pivotIndex - 1;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method select_rec might not hold. Assertion 0 <= left might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [118653]"}
-                    0 <= left_1;
-                  assert {:msg "  The precondition of method select_rec might not hold. Assertion left <= pivotIndex - 1 might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [118654]"}
-                    left_1 <= arg_right;
-                  assert {:msg "  The precondition of method select_rec might not hold. Assertion pivotIndex - 1 < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [118655]"}
-                    arg_right < (len_1(a_2): int);
-                  assert {:msg "  The precondition of method select_rec might not hold. Assertion left <= n might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [118656]"}
-                    left_1 <= n;
-                  assert {:msg "  The precondition of method select_rec might not hold. Assertion n <= pivotIndex - 1 might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [118657]"}
+                  ExhaleWellDef0Heap := Heap;
+                  assert {:msg "  The precondition of method select_rec might not hold. Assertion 0 <= left might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [106601]"}
+                    0 <= left;
+                  assert {:msg "  The precondition of method select_rec might not hold. Assertion left <= pivotIndex - 1 might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [106602]"}
+                    left <= arg_right;
+                  assert {:msg "  The precondition of method select_rec might not hold. Assertion pivotIndex - 1 < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [106603]"}
+                    arg_right < (len(a_2): int);
+                  assert {:msg "  The precondition of method select_rec might not hold. Assertion left <= n might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [106604]"}
+                    left <= n;
+                  assert {:msg "  The precondition of method select_rec might not hold. Assertion n <= pivotIndex - 1 might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [106605]"}
                     n <= arg_right;
                   havoc QPMask;
                   
@@ -2430,39 +2430,39 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
                     
                   
                   // -- check if receiver loc(a, i) is injective
-                    assert {:msg "  The precondition of method select_rec might not hold. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [118658]"}
-                      (forall i_32_2: int, i_32_3: int ::
-                      { neverTriggered14(i_32_2), neverTriggered14(i_32_3) }
-                      (((i_32_2 != i_32_3 && (left_1 <= i_32_2 && i_32_2 <= arg_right)) && (left_1 <= i_32_3 && i_32_3 <= arg_right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_32_2): Ref) != (loc(a_2, i_32_3): Ref)
+                    assert {:msg "  The precondition of method select_rec might not hold. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [106606]"}
+                      (forall i_32: int, i_32_1: int ::
+                      { neverTriggered14(i_32), neverTriggered14(i_32_1) }
+                      (((i_32 != i_32_1 && (left <= i_32 && i_32 <= arg_right)) && (left <= i_32_1 && i_32_1 <= arg_right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_32): Ref) != (loc(a_2, i_32_1): Ref)
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  The precondition of method select_rec might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [118659]"}
-                      (forall i_32_2: int ::
-                      { (loc(a_2, i_32_2): Ref) } { (loc(a_2, i_32_2): Ref) }
-                      left_1 <= i_32_2 && i_32_2 <= arg_right ==> Mask[(loc(a_2, i_32_2): Ref), val] >= FullPerm
+                    assert {:msg "  The precondition of method select_rec might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [106607]"}
+                      (forall i_32: int ::
+                      { (loc(a_2, i_32): Ref) } { (loc(a_2, i_32): Ref) }
+                      left <= i_32 && i_32 <= arg_right ==> Mask[(loc(a_2, i_32): Ref), val] >= FullPerm
                     );
                   
                   // -- assumptions for inverse of receiver loc(a, i)
-                    assume (forall i_32_2: int ::
-                      { (loc(a_2, i_32_2): Ref) } { (loc(a_2, i_32_2): Ref) }
-                      (left_1 <= i_32_2 && i_32_2 <= arg_right) && NoPerm < FullPerm ==> qpRange14((loc(a_2, i_32_2): Ref)) && invRecv14((loc(a_2, i_32_2): Ref)) == i_32_2
+                    assume (forall i_32: int ::
+                      { (loc(a_2, i_32): Ref) } { (loc(a_2, i_32): Ref) }
+                      (left <= i_32 && i_32 <= arg_right) && NoPerm < FullPerm ==> qpRange14((loc(a_2, i_32): Ref)) && invRecv14((loc(a_2, i_32): Ref)) == i_32
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv14(o_4) }
-                      (left_1 <= invRecv14(o_4) && invRecv14(o_4) <= arg_right) && (NoPerm < FullPerm && qpRange14(o_4)) ==> (loc(a_2, invRecv14(o_4)): Ref) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv14(o_9) }
+                      (left <= invRecv14(o_9) && invRecv14(o_9) <= arg_right) && (NoPerm < FullPerm && qpRange14(o_9)) ==> (loc(a_2, invRecv14(o_9)): Ref) == o_9
                     );
                   
                   // -- assume permission updates for field val
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, val] }
-                      ((left_1 <= invRecv14(o_4) && invRecv14(o_4) <= arg_right) && (NoPerm < FullPerm && qpRange14(o_4)) ==> (loc(a_2, invRecv14(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((left_1 <= invRecv14(o_4) && invRecv14(o_4) <= arg_right) && (NoPerm < FullPerm && qpRange14(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, val] }
+                      ((left <= invRecv14(o_9) && invRecv14(o_9) <= arg_right) && (NoPerm < FullPerm && qpRange14(o_9)) ==> (loc(a_2, invRecv14(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((left <= invRecv14(o_9) && invRecv14(o_9) <= arg_right) && (NoPerm < FullPerm && qpRange14(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
                     );
                   
                   // -- assume permission updates for independent locations
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { QPMask[o_4, f_5] }
-                      f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { QPMask[o_9, f_5] }
+                      f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   // Finish exhale
@@ -2474,82 +2474,82 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
                   havoc storeIndex, pwRec;
                 
                 // -- Inhaling postcondition
-                  assume left_1 <= storeIndex;
+                  assume left <= storeIndex;
                   assume storeIndex <= arg_right;
                   havoc QPMask;
-                  assert {:msg "  Method call might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [118660]"}
-                    (forall i_33_1: int, i_33_2: int ::
+                  assert {:msg "  Method call might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [106608]"}
+                    (forall i_33: int, i_33_2: int ::
                     
-                    (((i_33_1 != i_33_2 && (left_1 <= i_33_1 && i_33_1 <= arg_right)) && (left_1 <= i_33_2 && i_33_2 <= arg_right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_33_1): Ref) != (loc(a_2, i_33_2): Ref)
+                    (((i_33 != i_33_2 && (left <= i_33 && i_33 <= arg_right)) && (left <= i_33_2 && i_33_2 <= arg_right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_33): Ref) != (loc(a_2, i_33_2): Ref)
                   );
                   
                   // -- Define Inverse Function
-                    assume (forall i_33_1: int ::
-                      { (loc(a_2, i_33_1): Ref) } { (loc(a_2, i_33_1): Ref) }
-                      (left_1 <= i_33_1 && i_33_1 <= arg_right) && NoPerm < FullPerm ==> qpRange15((loc(a_2, i_33_1): Ref)) && invRecv15((loc(a_2, i_33_1): Ref)) == i_33_1
+                    assume (forall i_33: int ::
+                      { (loc(a_2, i_33): Ref) } { (loc(a_2, i_33): Ref) }
+                      (left <= i_33 && i_33 <= arg_right) && NoPerm < FullPerm ==> qpRange15((loc(a_2, i_33): Ref)) && invRecv15((loc(a_2, i_33): Ref)) == i_33
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv15(o_4) }
-                      ((left_1 <= invRecv15(o_4) && invRecv15(o_4) <= arg_right) && NoPerm < FullPerm) && qpRange15(o_4) ==> (loc(a_2, invRecv15(o_4)): Ref) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv15(o_9) }
+                      ((left <= invRecv15(o_9) && invRecv15(o_9) <= arg_right) && NoPerm < FullPerm) && qpRange15(o_9) ==> (loc(a_2, invRecv15(o_9)): Ref) == o_9
                     );
                   
                   // -- Assume set of fields is nonNull
-                    assume (forall i_33_1: int ::
-                      { (loc(a_2, i_33_1): Ref) } { (loc(a_2, i_33_1): Ref) }
-                      left_1 <= i_33_1 && i_33_1 <= arg_right ==> (loc(a_2, i_33_1): Ref) != null
+                    assume (forall i_33: int ::
+                      { (loc(a_2, i_33): Ref) } { (loc(a_2, i_33): Ref) }
+                      left <= i_33 && i_33 <= arg_right ==> (loc(a_2, i_33): Ref) != null
                     );
                   
                   // -- Define permissions
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, val] }
-                      (((left_1 <= invRecv15(o_4) && invRecv15(o_4) <= arg_right) && NoPerm < FullPerm) && qpRange15(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv15(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((left_1 <= invRecv15(o_4) && invRecv15(o_4) <= arg_right) && NoPerm < FullPerm) && qpRange15(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, val] }
+                      (((left <= invRecv15(o_9) && invRecv15(o_9) <= arg_right) && NoPerm < FullPerm) && qpRange15(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv15(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((left <= invRecv15(o_9) && invRecv15(o_9) <= arg_right) && NoPerm < FullPerm) && qpRange15(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
                     );
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                      f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                      f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   assume state(Heap, Mask);
                   assume storeIndex == n;
-                  assume (forall i_34_2: int ::
-                    { (loc(a_2, i_34_2): Ref) }
-                    left_1 <= i_34_2 && i_34_2 < storeIndex ==> Heap[(loc(a_2, i_34_2): Ref), val] <= Heap[(loc(a_2, storeIndex): Ref), val]
+                  assume (forall i_34: int ::
+                    { (loc(a_2, i_34): Ref) }
+                    left <= i_34 && i_34 < storeIndex ==> Heap[(loc(a_2, i_34): Ref), val] <= Heap[(loc(a_2, storeIndex): Ref), val]
                   );
-                  assume (forall i_35_1: int ::
-                    { (loc(a_2, i_35_1): Ref) }
-                    storeIndex < i_35_1 && i_35_1 <= arg_right ==> Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_35_1): Ref), val]
+                  assume (forall i_35: int ::
+                    { (loc(a_2, i_35): Ref) }
+                    storeIndex < i_35 && i_35 <= arg_right ==> Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_35): Ref), val]
                   );
-                  assume Seq#Length(pwRec) == arg_right + 1 - left_1;
-                  assume (forall i_36_2: int ::
-                    { Seq#Index(pwRec, i_36_2) }
-                    0 <= i_36_2 && i_36_2 < Seq#Length(pwRec) ==> left_1 <= Seq#Index(pwRec, i_36_2) && Seq#Index(pwRec, i_36_2) <= arg_right
+                  assume Seq#Length(pwRec) == arg_right + 1 - left;
+                  assume (forall i_36: int ::
+                    { Seq#Index(pwRec, i_36) }
+                    0 <= i_36 && i_36 < Seq#Length(pwRec) ==> left <= Seq#Index(pwRec, i_36) && Seq#Index(pwRec, i_36) <= arg_right
                   );
-                  assume (forall i_37: int, j_5_1: int ::
-                    { Seq#Index(pwRec, i_37), Seq#Index(pwRec, j_5_1) }
-                    0 <= i_37 && (i_37 < j_5_1 && j_5_1 < Seq#Length(pwRec)) ==> Seq#Index(pwRec, i_37) != Seq#Index(pwRec, j_5_1)
+                  assume (forall i_37: int, j_5: int ::
+                    { Seq#Index(pwRec, i_37), Seq#Index(pwRec, j_5) }
+                    0 <= i_37 && (i_37 < j_5 && j_5 < Seq#Length(pwRec)) ==> Seq#Index(pwRec, i_37) != Seq#Index(pwRec, j_5)
                   );
                   assume (forall i_38: int ::
                     { Seq#Index(pwRec, i_38) }
-                    0 <= i_38 && i_38 < Seq#Length(pwRec) ==> Heap[(loc(a_2, left_1 + i_38): Ref), val] == PreCallHeap[(loc(a_2, Seq#Index(pwRec, i_38)): Ref), val]
+                    0 <= i_38 && i_38 < Seq#Length(pwRec) ==> Heap[(loc(a_2, left + i_38): Ref), val] == PreCallHeap[(loc(a_2, Seq#Index(pwRec, i_38)): Ref), val]
                   );
                   assume state(Heap, Mask);
                 assume state(Heap, Mask);
               
               // -- Translating statement: assert dummy(pwRec[storeIndex - left]) -- arrays_quickselect_rec_index-shifting.vpr@180.7--180.43
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 
                 // -- Check definedness of dummy(pwRec[storeIndex - left])
-                  assert {:msg "  Assert might fail. Index pwRec[storeIndex - left] into pwRec might be negative. (arrays_quickselect_rec_index-shifting.vpr@180.14--180.43) [118661]"}
-                    storeIndex - left_1 >= 0;
-                  assert {:msg "  Assert might fail. Index pwRec[storeIndex - left] into pwRec might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@180.14--180.43) [118662]"}
-                    storeIndex - left_1 < Seq#Length(pwRec);
+                  assert {:msg "  Assert might fail. Index pwRec[storeIndex - left] into pwRec might be negative. (arrays_quickselect_rec_index-shifting.vpr@180.14--180.43) [106609]"}
+                    storeIndex - left >= 0;
+                  assert {:msg "  Assert might fail. Index pwRec[storeIndex - left] into pwRec might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@180.14--180.43) [106610]"}
+                    storeIndex - left < Seq#Length(pwRec);
                   if (*) {
                     // Stop execution
                     assume false;
                   }
-                assert {:msg "  Assert might fail. Assertion dummy(pwRec[storeIndex - left]) might not hold. (arrays_quickselect_rec_index-shifting.vpr@180.14--180.43) [118663]"}
-                  dummy(Heap, Seq#Index(pwRec, storeIndex - left_1));
+                assert {:msg "  Assert might fail. Assertion dummy(pwRec[storeIndex - left]) might not hold. (arrays_quickselect_rec_index-shifting.vpr@180.14--180.43) [106611]"}
+                  dummy_1(Heap, Seq#Index(pwRec, storeIndex - left));
                 assume state(Heap, Mask);
               
               // -- Translating statement: inhale |pw| == |pwPar| -- arrays_quickselect_rec_index-shifting.vpr@196.7--196.29
@@ -2564,25 +2564,25 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
                 
                 // -- Check definedness of (forall i: Int :: { pw[i] } { pwRec[i] } 0 <= i && i < |pwRec| ==> pw[i] == pwPar[pwRec[i] - left])
                   if (*) {
-                    if (0 <= i_33 && i_33 < Seq#Length(pwRec)) {
-                      assert {:msg "  Inhale might fail. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [118664]"}
-                        i_33 >= 0;
-                      assert {:msg "  Inhale might fail. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [118665]"}
-                        i_33 < Seq#Length(pw);
-                      assert {:msg "  Inhale might fail. Index pwRec[i] into pwRec might be negative. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [118666]"}
-                        i_33 >= 0;
-                      assert {:msg "  Inhale might fail. Index pwRec[i] into pwRec might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [118667]"}
-                        i_33 < Seq#Length(pwRec);
-                      assert {:msg "  Inhale might fail. Index pwPar[pwRec[i] - left] into pwPar might be negative. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [118668]"}
-                        Seq#Index(pwRec, i_33) - left_1 >= 0;
-                      assert {:msg "  Inhale might fail. Index pwPar[pwRec[i] - left] into pwPar might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [118669]"}
-                        Seq#Index(pwRec, i_33) - left_1 < Seq#Length(pwPar);
+                    if (0 <= i_16 && i_16 < Seq#Length(pwRec)) {
+                      assert {:msg "  Inhale might fail. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [106612]"}
+                        i_16 >= 0;
+                      assert {:msg "  Inhale might fail. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [106613]"}
+                        i_16 < Seq#Length(pw);
+                      assert {:msg "  Inhale might fail. Index pwRec[i] into pwRec might be negative. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [106614]"}
+                        i_16 >= 0;
+                      assert {:msg "  Inhale might fail. Index pwRec[i] into pwRec might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [106615]"}
+                        i_16 < Seq#Length(pwRec);
+                      assert {:msg "  Inhale might fail. Index pwPar[pwRec[i] - left] into pwPar might be negative. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [106616]"}
+                        Seq#Index(pwRec, i_16) - left >= 0;
+                      assert {:msg "  Inhale might fail. Index pwPar[pwRec[i] - left] into pwPar might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@197.14--197.88) [106617]"}
+                        Seq#Index(pwRec, i_16) - left < Seq#Length(pwPar);
                     }
                     assume false;
                   }
                 assume (forall i_40: int ::
                   { Seq#Index(pw, i_40) } { Seq#Index(pwRec, i_40) }
-                  0 <= i_40 && i_40 < Seq#Length(pwRec) ==> Seq#Index(pw, i_40) == Seq#Index(pwPar, Seq#Index(pwRec, i_40) - left_1)
+                  0 <= i_40 && i_40 < Seq#Length(pwRec) ==> Seq#Index(pw, i_40) == Seq#Index(pwPar, Seq#Index(pwRec, i_40) - left)
                 );
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
@@ -2594,21 +2594,21 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
                 
                 // -- Check definedness of (forall i: Int :: { pw[i] } { pwPar[i] } |pwRec| <= i && i < |pwPar| ==> pw[i] == pwPar[i])
                   if (*) {
-                    if (Seq#Length(pwRec) <= i_34 && i_34 < Seq#Length(pwPar)) {
-                      assert {:msg "  Inhale might fail. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@198.14--198.80) [118670]"}
-                        i_34 >= 0;
-                      assert {:msg "  Inhale might fail. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@198.14--198.80) [118671]"}
-                        i_34 < Seq#Length(pw);
-                      assert {:msg "  Inhale might fail. Index pwPar[i] into pwPar might be negative. (arrays_quickselect_rec_index-shifting.vpr@198.14--198.80) [118672]"}
-                        i_34 >= 0;
-                      assert {:msg "  Inhale might fail. Index pwPar[i] into pwPar might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@198.14--198.80) [118673]"}
-                        i_34 < Seq#Length(pwPar);
+                    if (Seq#Length(pwRec) <= i_42 && i_42 < Seq#Length(pwPar)) {
+                      assert {:msg "  Inhale might fail. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@198.14--198.80) [106618]"}
+                        i_42 >= 0;
+                      assert {:msg "  Inhale might fail. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@198.14--198.80) [106619]"}
+                        i_42 < Seq#Length(pw);
+                      assert {:msg "  Inhale might fail. Index pwPar[i] into pwPar might be negative. (arrays_quickselect_rec_index-shifting.vpr@198.14--198.80) [106620]"}
+                        i_42 >= 0;
+                      assert {:msg "  Inhale might fail. Index pwPar[i] into pwPar might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@198.14--198.80) [106621]"}
+                        i_42 < Seq#Length(pwPar);
                     }
                     assume false;
                   }
-                assume (forall i_42: int ::
-                  { Seq#Index(pw, i_42) } { Seq#Index(pwPar, i_42) }
-                  Seq#Length(pwRec) <= i_42 && i_42 < Seq#Length(pwPar) ==> Seq#Index(pw, i_42) == Seq#Index(pwPar, i_42)
+                assume (forall i_42_1: int ::
+                  { Seq#Index(pw, i_42_1) } { Seq#Index(pwPar, i_42_1) }
+                  Seq#Length(pwRec) <= i_42_1 && i_42_1 < Seq#Length(pwPar) ==> Seq#Index(pw, i_42_1) == Seq#Index(pwPar, i_42_1)
                 );
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
@@ -2620,57 +2620,57 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
                 arg_left := pivotIndex + 1;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
-                  assert {:msg "  The precondition of method select_rec might not hold. Assertion 0 <= pivotIndex + 1 might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [118674]"}
+                  ExhaleWellDef0Heap := Heap;
+                  assert {:msg "  The precondition of method select_rec might not hold. Assertion 0 <= pivotIndex + 1 might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [106622]"}
                     0 <= arg_left;
-                  assert {:msg "  The precondition of method select_rec might not hold. Assertion pivotIndex + 1 <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [118675]"}
-                    arg_left <= right;
-                  assert {:msg "  The precondition of method select_rec might not hold. Assertion right < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [118676]"}
-                    right < (len_1(a_2): int);
-                  assert {:msg "  The precondition of method select_rec might not hold. Assertion pivotIndex + 1 <= n might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [118677]"}
+                  assert {:msg "  The precondition of method select_rec might not hold. Assertion pivotIndex + 1 <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [106623]"}
+                    arg_left <= right_2;
+                  assert {:msg "  The precondition of method select_rec might not hold. Assertion right < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [106624]"}
+                    right_2 < (len(a_2): int);
+                  assert {:msg "  The precondition of method select_rec might not hold. Assertion pivotIndex + 1 <= n might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [106625]"}
                     arg_left <= n;
-                  assert {:msg "  The precondition of method select_rec might not hold. Assertion n <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [118678]"}
-                    n <= right;
+                  assert {:msg "  The precondition of method select_rec might not hold. Assertion n <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [106626]"}
+                    n <= right_2;
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
                     
                   
                   // -- check if receiver loc(a, i) is injective
-                    assert {:msg "  The precondition of method select_rec might not hold. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [118679]"}
-                      (forall i_43_2: int, i_43_3: int ::
-                      { neverTriggered16(i_43_2), neverTriggered16(i_43_3) }
-                      (((i_43_2 != i_43_3 && (arg_left <= i_43_2 && i_43_2 <= right)) && (arg_left <= i_43_3 && i_43_3 <= right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_43_2): Ref) != (loc(a_2, i_43_3): Ref)
+                    assert {:msg "  The precondition of method select_rec might not hold. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [106627]"}
+                      (forall i_43: int, i_43_1: int ::
+                      { neverTriggered16(i_43), neverTriggered16(i_43_1) }
+                      (((i_43 != i_43_1 && (arg_left <= i_43 && i_43 <= right_2)) && (arg_left <= i_43_1 && i_43_1 <= right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_43): Ref) != (loc(a_2, i_43_1): Ref)
                     );
                   
                   // -- check if sufficient permission is held
-                    assert {:msg "  The precondition of method select_rec might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [118680]"}
-                      (forall i_43_2: int ::
-                      { (loc(a_2, i_43_2): Ref) } { (loc(a_2, i_43_2): Ref) }
-                      arg_left <= i_43_2 && i_43_2 <= right ==> Mask[(loc(a_2, i_43_2): Ref), val] >= FullPerm
+                    assert {:msg "  The precondition of method select_rec might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [106628]"}
+                      (forall i_43: int ::
+                      { (loc(a_2, i_43): Ref) } { (loc(a_2, i_43): Ref) }
+                      arg_left <= i_43 && i_43 <= right_2 ==> Mask[(loc(a_2, i_43): Ref), val] >= FullPerm
                     );
                   
                   // -- assumptions for inverse of receiver loc(a, i)
-                    assume (forall i_43_2: int ::
-                      { (loc(a_2, i_43_2): Ref) } { (loc(a_2, i_43_2): Ref) }
-                      (arg_left <= i_43_2 && i_43_2 <= right) && NoPerm < FullPerm ==> qpRange16((loc(a_2, i_43_2): Ref)) && invRecv16((loc(a_2, i_43_2): Ref)) == i_43_2
+                    assume (forall i_43: int ::
+                      { (loc(a_2, i_43): Ref) } { (loc(a_2, i_43): Ref) }
+                      (arg_left <= i_43 && i_43 <= right_2) && NoPerm < FullPerm ==> qpRange16((loc(a_2, i_43): Ref)) && invRecv16((loc(a_2, i_43): Ref)) == i_43
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv16(o_4) }
-                      (arg_left <= invRecv16(o_4) && invRecv16(o_4) <= right) && (NoPerm < FullPerm && qpRange16(o_4)) ==> (loc(a_2, invRecv16(o_4)): Ref) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv16(o_9) }
+                      (arg_left <= invRecv16(o_9) && invRecv16(o_9) <= right_2) && (NoPerm < FullPerm && qpRange16(o_9)) ==> (loc(a_2, invRecv16(o_9)): Ref) == o_9
                     );
                   
                   // -- assume permission updates for field val
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, val] }
-                      ((arg_left <= invRecv16(o_4) && invRecv16(o_4) <= right) && (NoPerm < FullPerm && qpRange16(o_4)) ==> (loc(a_2, invRecv16(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((arg_left <= invRecv16(o_4) && invRecv16(o_4) <= right) && (NoPerm < FullPerm && qpRange16(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, val] }
+                      ((arg_left <= invRecv16(o_9) && invRecv16(o_9) <= right_2) && (NoPerm < FullPerm && qpRange16(o_9)) ==> (loc(a_2, invRecv16(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((arg_left <= invRecv16(o_9) && invRecv16(o_9) <= right_2) && (NoPerm < FullPerm && qpRange16(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
                     );
                   
                   // -- assume permission updates for independent locations
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { QPMask[o_4, f_5] }
-                      f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { QPMask[o_9, f_5] }
+                      f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   // Finish exhale
@@ -2683,58 +2683,58 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
                 
                 // -- Inhaling postcondition
                   assume arg_left <= storeIndex;
-                  assume storeIndex <= right;
+                  assume storeIndex <= right_2;
                   havoc QPMask;
-                  assert {:msg "  Method call might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [118681]"}
+                  assert {:msg "  Method call might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [106629]"}
                     (forall i_44: int, i_44_1: int ::
                     
-                    (((i_44 != i_44_1 && (arg_left <= i_44 && i_44 <= right)) && (arg_left <= i_44_1 && i_44_1 <= right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_44): Ref) != (loc(a_2, i_44_1): Ref)
+                    (((i_44 != i_44_1 && (arg_left <= i_44 && i_44 <= right_2)) && (arg_left <= i_44_1 && i_44_1 <= right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_44): Ref) != (loc(a_2, i_44_1): Ref)
                   );
                   
                   // -- Define Inverse Function
                     assume (forall i_44: int ::
                       { (loc(a_2, i_44): Ref) } { (loc(a_2, i_44): Ref) }
-                      (arg_left <= i_44 && i_44 <= right) && NoPerm < FullPerm ==> qpRange17((loc(a_2, i_44): Ref)) && invRecv17((loc(a_2, i_44): Ref)) == i_44
+                      (arg_left <= i_44 && i_44 <= right_2) && NoPerm < FullPerm ==> qpRange17((loc(a_2, i_44): Ref)) && invRecv17((loc(a_2, i_44): Ref)) == i_44
                     );
-                    assume (forall o_4: Ref ::
-                      { invRecv17(o_4) }
-                      ((arg_left <= invRecv17(o_4) && invRecv17(o_4) <= right) && NoPerm < FullPerm) && qpRange17(o_4) ==> (loc(a_2, invRecv17(o_4)): Ref) == o_4
+                    assume (forall o_9: Ref ::
+                      { invRecv17(o_9) }
+                      ((arg_left <= invRecv17(o_9) && invRecv17(o_9) <= right_2) && NoPerm < FullPerm) && qpRange17(o_9) ==> (loc(a_2, invRecv17(o_9)): Ref) == o_9
                     );
                   
                   // -- Assume set of fields is nonNull
                     assume (forall i_44: int ::
                       { (loc(a_2, i_44): Ref) } { (loc(a_2, i_44): Ref) }
-                      arg_left <= i_44 && i_44 <= right ==> (loc(a_2, i_44): Ref) != null
+                      arg_left <= i_44 && i_44 <= right_2 ==> (loc(a_2, i_44): Ref) != null
                     );
                   
                   // -- Define permissions
-                    assume (forall o_4: Ref ::
-                      { QPMask[o_4, val] }
-                      (((arg_left <= invRecv17(o_4) && invRecv17(o_4) <= right) && NoPerm < FullPerm) && qpRange17(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv17(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((arg_left <= invRecv17(o_4) && invRecv17(o_4) <= right) && NoPerm < FullPerm) && qpRange17(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+                    assume (forall o_9: Ref ::
+                      { QPMask[o_9, val] }
+                      (((arg_left <= invRecv17(o_9) && invRecv17(o_9) <= right_2) && NoPerm < FullPerm) && qpRange17(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv17(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((arg_left <= invRecv17(o_9) && invRecv17(o_9) <= right_2) && NoPerm < FullPerm) && qpRange17(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
                     );
-                    assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-                      { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-                      f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+                    assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+                      { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+                      f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
                     );
                   Mask := QPMask;
                   assume state(Heap, Mask);
                   assume storeIndex == n;
-                  assume (forall i_45_2: int ::
-                    { (loc(a_2, i_45_2): Ref) }
-                    arg_left <= i_45_2 && i_45_2 < storeIndex ==> Heap[(loc(a_2, i_45_2): Ref), val] <= Heap[(loc(a_2, storeIndex): Ref), val]
+                  assume (forall i_45: int ::
+                    { (loc(a_2, i_45): Ref) }
+                    arg_left <= i_45 && i_45 < storeIndex ==> Heap[(loc(a_2, i_45): Ref), val] <= Heap[(loc(a_2, storeIndex): Ref), val]
                   );
                   assume (forall i_46: int ::
                     { (loc(a_2, i_46): Ref) }
-                    storeIndex < i_46 && i_46 <= right ==> Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_46): Ref), val]
+                    storeIndex < i_46 && i_46 <= right_2 ==> Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_46): Ref), val]
                   );
-                  assume Seq#Length(pwRec) == right + 1 - arg_left;
-                  assume (forall i_47_2: int ::
-                    { Seq#Index(pwRec, i_47_2) }
-                    0 <= i_47_2 && i_47_2 < Seq#Length(pwRec) ==> arg_left <= Seq#Index(pwRec, i_47_2) && Seq#Index(pwRec, i_47_2) <= right
+                  assume Seq#Length(pwRec) == right_2 + 1 - arg_left;
+                  assume (forall i_47: int ::
+                    { Seq#Index(pwRec, i_47) }
+                    0 <= i_47 && i_47 < Seq#Length(pwRec) ==> arg_left <= Seq#Index(pwRec, i_47) && Seq#Index(pwRec, i_47) <= right_2
                   );
-                  assume (forall i_48_2: int, j_6_1: int ::
-                    { Seq#Index(pwRec, i_48_2), Seq#Index(pwRec, j_6_1) }
-                    0 <= i_48_2 && (i_48_2 < j_6_1 && j_6_1 < Seq#Length(pwRec)) ==> Seq#Index(pwRec, i_48_2) != Seq#Index(pwRec, j_6_1)
+                  assume (forall i_48: int, j_6_2: int ::
+                    { Seq#Index(pwRec, i_48), Seq#Index(pwRec, j_6_2) }
+                    0 <= i_48 && (i_48 < j_6_2 && j_6_2 < Seq#Length(pwRec)) ==> Seq#Index(pwRec, i_48) != Seq#Index(pwRec, j_6_2)
                   );
                   assume (forall i_49: int ::
                     { Seq#Index(pwRec, i_49) }
@@ -2744,20 +2744,20 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
                 assume state(Heap, Mask);
               
               // -- Translating statement: assert dummy(pwRec[storeIndex - (pivotIndex + 1)]) -- arrays_quickselect_rec_index-shifting.vpr@203.7--203.57
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 
                 // -- Check definedness of dummy(pwRec[storeIndex - (pivotIndex + 1)])
-                  assert {:msg "  Assert might fail. Index pwRec[storeIndex - (pivotIndex + 1)] into pwRec might be negative. (arrays_quickselect_rec_index-shifting.vpr@203.14--203.57) [118682]"}
+                  assert {:msg "  Assert might fail. Index pwRec[storeIndex - (pivotIndex + 1)] into pwRec might be negative. (arrays_quickselect_rec_index-shifting.vpr@203.14--203.57) [106630]"}
                     storeIndex - (pivotIndex + 1) >= 0;
-                  assert {:msg "  Assert might fail. Index pwRec[storeIndex - (pivotIndex + 1)] into pwRec might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@203.14--203.57) [118683]"}
+                  assert {:msg "  Assert might fail. Index pwRec[storeIndex - (pivotIndex + 1)] into pwRec might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@203.14--203.57) [106631]"}
                     storeIndex - (pivotIndex + 1) < Seq#Length(pwRec);
                   if (*) {
                     // Stop execution
                     assume false;
                   }
-                assert {:msg "  Assert might fail. Assertion dummy(pwRec[storeIndex - (pivotIndex + 1)]) might not hold. (arrays_quickselect_rec_index-shifting.vpr@203.14--203.57) [118684]"}
-                  dummy(Heap, Seq#Index(pwRec, storeIndex - (pivotIndex + 1)));
+                assert {:msg "  Assert might fail. Assertion dummy(pwRec[storeIndex - (pivotIndex + 1)]) might not hold. (arrays_quickselect_rec_index-shifting.vpr@203.14--203.57) [106632]"}
+                  dummy_1(Heap, Seq#Index(pwRec, storeIndex - (pivotIndex + 1)));
                 assume state(Heap, Mask);
               
               // -- Translating statement: inhale |pw| == |pwPar| -- arrays_quickselect_rec_index-shifting.vpr@205.7--205.29
@@ -2772,21 +2772,21 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
                 
                 // -- Check definedness of (forall i: Int :: { pw[i] } { pwPar[i] } 0 <= i && i <= pivotIndex - left ==> pw[i] == pwPar[i])
                   if (*) {
-                    if (0 <= i_35 && i_35 <= pivotIndex - left_1) {
-                      assert {:msg "  Inhale might fail. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@206.14--206.85) [118685]"}
-                        i_35 >= 0;
-                      assert {:msg "  Inhale might fail. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@206.14--206.85) [118686]"}
-                        i_35 < Seq#Length(pw);
-                      assert {:msg "  Inhale might fail. Index pwPar[i] into pwPar might be negative. (arrays_quickselect_rec_index-shifting.vpr@206.14--206.85) [118687]"}
-                        i_35 >= 0;
-                      assert {:msg "  Inhale might fail. Index pwPar[i] into pwPar might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@206.14--206.85) [118688]"}
-                        i_35 < Seq#Length(pwPar);
+                    if (0 <= i_51 && i_51 <= pivotIndex - left) {
+                      assert {:msg "  Inhale might fail. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@206.14--206.85) [106633]"}
+                        i_51 >= 0;
+                      assert {:msg "  Inhale might fail. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@206.14--206.85) [106634]"}
+                        i_51 < Seq#Length(pw);
+                      assert {:msg "  Inhale might fail. Index pwPar[i] into pwPar might be negative. (arrays_quickselect_rec_index-shifting.vpr@206.14--206.85) [106635]"}
+                        i_51 >= 0;
+                      assert {:msg "  Inhale might fail. Index pwPar[i] into pwPar might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@206.14--206.85) [106636]"}
+                        i_51 < Seq#Length(pwPar);
                     }
                     assume false;
                   }
-                assume (forall i_51: int ::
-                  { Seq#Index(pw, i_51) } { Seq#Index(pwPar, i_51) }
-                  0 <= i_51 && i_51 <= pivotIndex - left_1 ==> Seq#Index(pw, i_51) == Seq#Index(pwPar, i_51)
+                assume (forall i_51_2: int ::
+                  { Seq#Index(pw, i_51_2) } { Seq#Index(pwPar, i_51_2) }
+                  0 <= i_51_2 && i_51_2 <= pivotIndex - left ==> Seq#Index(pw, i_51_2) == Seq#Index(pwPar, i_51_2)
                 );
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
@@ -2798,25 +2798,25 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
                 
                 // -- Check definedness of (forall i: Int :: { pw[i] } pivotIndex + 1 - left <= i && i < |pw| ==> pw[i] == pwPar[pwRec[i - (pivotIndex + 1 - left)] - left])
                   if (*) {
-                    if (pivotIndex + 1 - left_1 <= i_36 && i_36 < Seq#Length(pw)) {
-                      assert {:msg "  Inhale might fail. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [118689]"}
-                        i_36 >= 0;
-                      assert {:msg "  Inhale might fail. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [118690]"}
-                        i_36 < Seq#Length(pw);
-                      assert {:msg "  Inhale might fail. Index pwRec[i - (pivotIndex + 1 - left)] into pwRec might be negative. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [118691]"}
-                        i_36 - (pivotIndex + 1 - left_1) >= 0;
-                      assert {:msg "  Inhale might fail. Index pwRec[i - (pivotIndex + 1 - left)] into pwRec might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [118692]"}
-                        i_36 - (pivotIndex + 1 - left_1) < Seq#Length(pwRec);
-                      assert {:msg "  Inhale might fail. Index pwPar[pwRec[i - (pivotIndex + 1 - left)] - left] into pwPar might be negative. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [118693]"}
-                        Seq#Index(pwRec, i_36 - (pivotIndex + 1 - left_1)) - left_1 >= 0;
-                      assert {:msg "  Inhale might fail. Index pwPar[pwRec[i - (pivotIndex + 1 - left)] - left] into pwPar might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [118694]"}
-                        Seq#Index(pwRec, i_36 - (pivotIndex + 1 - left_1)) - left_1 < Seq#Length(pwPar);
+                    if (pivotIndex + 1 - left <= i_53 && i_53 < Seq#Length(pw)) {
+                      assert {:msg "  Inhale might fail. Index pw[i] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [106637]"}
+                        i_53 >= 0;
+                      assert {:msg "  Inhale might fail. Index pw[i] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [106638]"}
+                        i_53 < Seq#Length(pw);
+                      assert {:msg "  Inhale might fail. Index pwRec[i - (pivotIndex + 1 - left)] into pwRec might be negative. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [106639]"}
+                        i_53 - (pivotIndex + 1 - left) >= 0;
+                      assert {:msg "  Inhale might fail. Index pwRec[i - (pivotIndex + 1 - left)] into pwRec might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [106640]"}
+                        i_53 - (pivotIndex + 1 - left) < Seq#Length(pwRec);
+                      assert {:msg "  Inhale might fail. Index pwPar[pwRec[i - (pivotIndex + 1 - left)] - left] into pwPar might be negative. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [106641]"}
+                        Seq#Index(pwRec, i_53 - (pivotIndex + 1 - left)) - left >= 0;
+                      assert {:msg "  Inhale might fail. Index pwPar[pwRec[i - (pivotIndex + 1 - left)] - left] into pwPar might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@207.14--207.131) [106642]"}
+                        Seq#Index(pwRec, i_53 - (pivotIndex + 1 - left)) - left < Seq#Length(pwPar);
                     }
                     assume false;
                   }
-                assume (forall i_53: int ::
-                  { Seq#Index(pw, i_53) }
-                  pivotIndex + 1 - left_1 <= i_53 && i_53 < Seq#Length(pw) ==> Seq#Index(pw, i_53) == Seq#Index(pwPar, Seq#Index(pwRec, i_53 - (pivotIndex + 1 - left_1)) - left_1)
+                assume (forall i_53_2: int ::
+                  { Seq#Index(pw, i_53_2) }
+                  pivotIndex + 1 - left <= i_53_2 && i_53_2 < Seq#Length(pw) ==> Seq#Index(pw, i_53_2) == Seq#Index(pwPar, Seq#Index(pwRec, i_53_2 - (pivotIndex + 1 - left)) - left)
                 );
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
@@ -2828,96 +2828,96 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of select_rec might not hold. Assertion left <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@139.11--139.52) [118695]"}
-      left_1 <= storeIndex;
-    assert {:msg "  Postcondition of select_rec might not hold. Assertion storeIndex <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@139.11--139.52) [118696]"}
-      storeIndex <= right;
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of select_rec might not hold. Assertion left <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@139.11--139.52) [106643]"}
+      left <= storeIndex;
+    assert {:msg "  Postcondition of select_rec might not hold. Assertion storeIndex <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@139.11--139.52) [106644]"}
+      storeIndex <= right_2;
     havoc QPMask;
     
     // -- check that the permission amount is positive
       
     
     // -- check if receiver loc(a, i) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@141.11--141.74) [118697]"}
+      assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@141.11--141.74) [106645]"}
         (forall i_14_1: int, i_14_2: int ::
         { neverTriggered11(i_14_1), neverTriggered11(i_14_2) }
-        (((i_14_1 != i_14_2 && (left_1 <= i_14_1 && i_14_1 <= right)) && (left_1 <= i_14_2 && i_14_2 <= right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_14_1): Ref) != (loc(a_2, i_14_2): Ref)
+        (((i_14_1 != i_14_2 && (left <= i_14_1 && i_14_1 <= right_2)) && (left <= i_14_2 && i_14_2 <= right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_14_1): Ref) != (loc(a_2, i_14_2): Ref)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of select_rec might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@141.11--141.74) [118698]"}
+      assert {:msg "  Postcondition of select_rec might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@141.11--141.74) [106646]"}
         (forall i_14_1: int ::
         { (loc(a_2, i_14_1): Ref) } { (loc(a_2, i_14_1): Ref) }
-        left_1 <= i_14_1 && i_14_1 <= right ==> Mask[(loc(a_2, i_14_1): Ref), val] >= FullPerm
+        left <= i_14_1 && i_14_1 <= right_2 ==> Mask[(loc(a_2, i_14_1): Ref), val] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver loc(a, i)
       assume (forall i_14_1: int ::
         { (loc(a_2, i_14_1): Ref) } { (loc(a_2, i_14_1): Ref) }
-        (left_1 <= i_14_1 && i_14_1 <= right) && NoPerm < FullPerm ==> qpRange11((loc(a_2, i_14_1): Ref)) && invRecv11((loc(a_2, i_14_1): Ref)) == i_14_1
+        (left <= i_14_1 && i_14_1 <= right_2) && NoPerm < FullPerm ==> qpRange11((loc(a_2, i_14_1): Ref)) && invRecv11((loc(a_2, i_14_1): Ref)) == i_14_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv11(o_4) }
-        (left_1 <= invRecv11(o_4) && invRecv11(o_4) <= right) && (NoPerm < FullPerm && qpRange11(o_4)) ==> (loc(a_2, invRecv11(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv11(o_9) }
+        (left <= invRecv11(o_9) && invRecv11(o_9) <= right_2) && (NoPerm < FullPerm && qpRange11(o_9)) ==> (loc(a_2, invRecv11(o_9)): Ref) == o_9
       );
     
     // -- assume permission updates for field val
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((left_1 <= invRecv11(o_4) && invRecv11(o_4) <= right) && (NoPerm < FullPerm && qpRange11(o_4)) ==> (loc(a_2, invRecv11(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((left_1 <= invRecv11(o_4) && invRecv11(o_4) <= right) && (NoPerm < FullPerm && qpRange11(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((left <= invRecv11(o_9) && invRecv11(o_9) <= right_2) && (NoPerm < FullPerm && qpRange11(o_9)) ==> (loc(a_2, invRecv11(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((left <= invRecv11(o_9) && invRecv11(o_9) <= right_2) && (NoPerm < FullPerm && qpRange11(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
-    assert {:msg "  Postcondition of select_rec might not hold. Assertion storeIndex == n might not hold. (arrays_quickselect_rec_index-shifting.vpr@143.11--143.26) [118699]"}
+    assert {:msg "  Postcondition of select_rec might not hold. Assertion storeIndex == n might not hold. (arrays_quickselect_rec_index-shifting.vpr@143.11--143.26) [106647]"}
       storeIndex == n;
     if (*) {
-      if (left_1 <= i_15 && i_15 < storeIndex) {
-        assert {:msg "  Postcondition of select_rec might not hold. Assertion loc(a, i).val <= loc(a, storeIndex).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@144.11--144.100) [118700]"}
-          Heap[(loc(a_2, i_15): Ref), val] <= Heap[(loc(a_2, storeIndex): Ref), val];
+      if (left <= i_15_1 && i_15_1 < storeIndex) {
+        assert {:msg "  Postcondition of select_rec might not hold. Assertion loc(a, i).val <= loc(a, storeIndex).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@144.11--144.100) [106648]"}
+          Heap[(loc(a_2, i_15_1): Ref), val] <= Heap[(loc(a_2, storeIndex): Ref), val];
       }
       assume false;
     }
     assume (forall i_16_1_1: int ::
       { (loc(a_2, i_16_1_1): Ref) }
-      left_1 <= i_16_1_1 && i_16_1_1 < storeIndex ==> Heap[(loc(a_2, i_16_1_1): Ref), val] <= Heap[(loc(a_2, storeIndex): Ref), val]
+      left <= i_16_1_1 && i_16_1_1 < storeIndex ==> Heap[(loc(a_2, i_16_1_1): Ref), val] <= Heap[(loc(a_2, storeIndex): Ref), val]
     );
     if (*) {
-      if (storeIndex < i_17 && i_17 <= right) {
-        assert {:msg "  Postcondition of select_rec might not hold. Assertion loc(a, storeIndex).val <= loc(a, i).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@145.11--145.100) [118701]"}
-          Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_17): Ref), val];
+      if (storeIndex < i_17_1 && i_17_1 <= right_2) {
+        assert {:msg "  Postcondition of select_rec might not hold. Assertion loc(a, storeIndex).val <= loc(a, i).val might not hold. (arrays_quickselect_rec_index-shifting.vpr@145.11--145.100) [106649]"}
+          Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_17_1): Ref), val];
       }
       assume false;
     }
     assume (forall i_18_1_1: int ::
       { (loc(a_2, i_18_1_1): Ref) }
-      storeIndex < i_18_1_1 && i_18_1_1 <= right ==> Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_18_1_1): Ref), val]
+      storeIndex < i_18_1_1 && i_18_1_1 <= right_2 ==> Heap[(loc(a_2, storeIndex): Ref), val] <= Heap[(loc(a_2, i_18_1_1): Ref), val]
     );
-    assert {:msg "  Postcondition of select_rec might not hold. Assertion |pw| == right + 1 - left might not hold. (arrays_quickselect_rec_index-shifting.vpr@147.11--147.35) [118702]"}
-      Seq#Length(pw) == right + 1 - left_1;
+    assert {:msg "  Postcondition of select_rec might not hold. Assertion |pw| == right + 1 - left might not hold. (arrays_quickselect_rec_index-shifting.vpr@147.11--147.35) [106650]"}
+      Seq#Length(pw) == right_2 + 1 - left;
     if (*) {
-      if (0 <= i_19 && i_19 < Seq#Length(pw)) {
-        assert {:msg "  Postcondition of select_rec might not hold. Assertion left <= pw[i] might not hold. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [118703]"}
-          left_1 <= Seq#Index(pw, i_19);
-        assert {:msg "  Postcondition of select_rec might not hold. Assertion pw[i] <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [118704]"}
-          Seq#Index(pw, i_19) <= right;
+      if (0 <= i_19_1 && i_19_1 < Seq#Length(pw)) {
+        assert {:msg "  Postcondition of select_rec might not hold. Assertion left <= pw[i] might not hold. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [106651]"}
+          left <= Seq#Index(pw, i_19_1);
+        assert {:msg "  Postcondition of select_rec might not hold. Assertion pw[i] <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@148.11--148.82) [106652]"}
+          Seq#Index(pw, i_19_1) <= right_2;
       }
       assume false;
     }
-    assume (forall i_20_1_1: int ::
-      { Seq#Index(pw, i_20_1_1) }
-      0 <= i_20_1_1 && i_20_1_1 < Seq#Length(pw) ==> left_1 <= Seq#Index(pw, i_20_1_1) && Seq#Index(pw, i_20_1_1) <= right
+    assume (forall i_20_1: int ::
+      { Seq#Index(pw, i_20_1) }
+      0 <= i_20_1 && i_20_1 < Seq#Length(pw) ==> left <= Seq#Index(pw, i_20_1) && Seq#Index(pw, i_20_1) <= right_2
     );
     if (*) {
-      if (0 <= i_21 && (i_21 < j_2_1 && j_2_1 < Seq#Length(pw))) {
-        assert {:msg "  Postcondition of select_rec might not hold. Assertion pw[i] != pw[j] might not hold. (arrays_quickselect_rec_index-shifting.vpr@149.11--149.82) [118705]"}
-          Seq#Index(pw, i_21) != Seq#Index(pw, j_2_1);
+      if (0 <= i_21_1 && (i_21_1 < j_2_2 && j_2_2 < Seq#Length(pw))) {
+        assert {:msg "  Postcondition of select_rec might not hold. Assertion pw[i] != pw[j] might not hold. (arrays_quickselect_rec_index-shifting.vpr@149.11--149.82) [106653]"}
+          Seq#Index(pw, i_21_1) != Seq#Index(pw, j_2_2);
       }
       assume false;
     }
@@ -2926,15 +2926,15 @@ procedure select_rec(a_2: IArrayDomainType, left_1: int, right: int, n: int) ret
       0 <= i_22_1_1 && (i_22_1_1 < j_3_1_1 && j_3_1_1 < Seq#Length(pw)) ==> Seq#Index(pw, i_22_1_1) != Seq#Index(pw, j_3_1_1)
     );
     if (*) {
-      if (0 <= i_23 && i_23 < Seq#Length(pw)) {
-        assert {:msg "  Postcondition of select_rec might not hold. Assertion loc(a, left + i).val == old(loc(a, pw[i]).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@151.11--151.32) [118706]"}
-          Heap[(loc(a_2, left_1 + i_23): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_23)): Ref), val];
+      if (0 <= i_23_1 && i_23_1 < Seq#Length(pw)) {
+        assert {:msg "  Postcondition of select_rec might not hold. Assertion loc(a, left + i).val == old(loc(a, pw[i]).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@151.11--151.32) [106654]"}
+          Heap[(loc(a_2, left + i_23_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_23_1)): Ref), val];
       }
       assume false;
     }
     assume (forall i_24_1_1: int ::
       { Seq#Index(pw, i_24_1_1) }
-      0 <= i_24_1_1 && i_24_1_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left_1 + i_24_1_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_24_1_1)): Ref), val]
+      0 <= i_24_1_1 && i_24_1_1 < Seq#Length(pw) ==> Heap[(loc(a_2, left + i_24_1_1): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, i_24_1_1)): Ref), val]
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -2950,15 +2950,15 @@ procedure client(a_2: IArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var i_43: int;
-  var oldHeap: HeapType;
+  var i_55: int;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var storeIndex: int;
   var pw: (Seq int);
@@ -2970,7 +2970,7 @@ procedure client(a_2: IArrayDomainType) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume 10 < (len_1(a_2): int);
+    assume 10 < (len(a_2): int);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } 0 <= i && i < len(a) ==> acc(loc(a, i).val, write))
@@ -2978,36 +2978,36 @@ procedure client(a_2: IArrayDomainType) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@214.12--214.72) [118707]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@214.12--214.72) [106655]"}
       (forall i_1: int, i_1_1: int ::
       
-      (((i_1 != i_1_1 && (0 <= i_1 && i_1 < (len_1(a_2): int))) && (0 <= i_1_1 && i_1_1 < (len_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
+      (((i_1 != i_1_1 && (0 <= i_1 && i_1 < (len(a_2): int))) && (0 <= i_1_1 && i_1_1 < (len(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        (0 <= i_1 && i_1 < (len_1(a_2): int)) && NoPerm < FullPerm ==> qpRange18((loc(a_2, i_1): Ref)) && invRecv18((loc(a_2, i_1): Ref)) == i_1
+        (0 <= i_1 && i_1 < (len(a_2): int)) && NoPerm < FullPerm ==> qpRange18((loc(a_2, i_1): Ref)) && invRecv18((loc(a_2, i_1): Ref)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv18(o_4) }
-        ((0 <= invRecv18(o_4) && invRecv18(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange18(o_4) ==> (loc(a_2, invRecv18(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv18(o_9) }
+        ((0 <= invRecv18(o_9) && invRecv18(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange18(o_9) ==> (loc(a_2, invRecv18(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        0 <= i_1 && i_1 < (len_1(a_2): int) ==> (loc(a_2, i_1): Ref) != null
+        0 <= i_1 && i_1 < (len(a_2): int) ==> (loc(a_2, i_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv18(o_4) && invRecv18(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange18(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv18(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv18(o_4) && invRecv18(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange18(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv18(o_9) && invRecv18(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange18(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv18(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv18(o_9) && invRecv18(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange18(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -3015,23 +3015,23 @@ procedure client(a_2: IArrayDomainType) returns ()
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } 0 <= i && i <= 10 ==> loc(a, i).val == i)
       if (*) {
-        if (0 <= i_43 && i_43 <= 10) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@215.12--215.69) [118708]"}
-            HasDirectPerm(Mask, (loc(a_2, i_43): Ref), val);
+        if (0 <= i_55 && i_55 <= 10) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@215.12--215.69) [106656]"}
+            HasDirectPerm(Mask, (loc(a_2, i_55): Ref), val);
         }
         assume false;
       }
-    assume (forall i_3: int ::
-      { (loc(a_2, i_3): Ref) }
-      0 <= i_3 && i_3 <= 10 ==> Heap[(loc(a_2, i_3): Ref), val] == i_3
+    assume (forall i_3_2: int ::
+      { (loc(a_2, i_3_2): Ref) }
+      0 <= i_3_2 && i_3_2 <= 10 ==> Heap[(loc(a_2, i_3_2): Ref), val] == i_3_2
     );
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3043,36 +3043,36 @@ procedure client(a_2: IArrayDomainType) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@216.11--216.71) [118709]"}
-      (forall i_5: int, i_5_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@216.11--216.71) [106657]"}
+      (forall i_5_1: int, i_5_2: int ::
       
-      (((i_5 != i_5_1 && (0 <= i_5 && i_5 < (len_1(a_2): int))) && (0 <= i_5_1 && i_5_1 < (len_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_5): Ref) != (loc(a_2, i_5_1): Ref)
+      (((i_5_1 != i_5_2 && (0 <= i_5_1 && i_5_1 < (len(a_2): int))) && (0 <= i_5_2 && i_5_2 < (len(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_5_1): Ref) != (loc(a_2, i_5_2): Ref)
     );
     
     // -- Define Inverse Function
-      assume (forall i_5: int ::
-        { (loc(a_2, i_5): Ref) } { (loc(a_2, i_5): Ref) }
-        (0 <= i_5 && i_5 < (len_1(a_2): int)) && NoPerm < FullPerm ==> qpRange19((loc(a_2, i_5): Ref)) && invRecv19((loc(a_2, i_5): Ref)) == i_5
+      assume (forall i_5_1: int ::
+        { (loc(a_2, i_5_1): Ref) } { (loc(a_2, i_5_1): Ref) }
+        (0 <= i_5_1 && i_5_1 < (len(a_2): int)) && NoPerm < FullPerm ==> qpRange19((loc(a_2, i_5_1): Ref)) && invRecv19((loc(a_2, i_5_1): Ref)) == i_5_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv19(o_4) }
-        ((0 <= invRecv19(o_4) && invRecv19(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange19(o_4) ==> (loc(a_2, invRecv19(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv19(o_9) }
+        ((0 <= invRecv19(o_9) && invRecv19(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange19(o_9) ==> (loc(a_2, invRecv19(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_5: int ::
-        { (loc(a_2, i_5): Ref) } { (loc(a_2, i_5): Ref) }
-        0 <= i_5 && i_5 < (len_1(a_2): int) ==> (loc(a_2, i_5): Ref) != null
+      assume (forall i_5_1: int ::
+        { (loc(a_2, i_5_1): Ref) } { (loc(a_2, i_5_1): Ref) }
+        0 <= i_5_1 && i_5_1 < (len(a_2): int) ==> (loc(a_2, i_5_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv19(o_4) && invRecv19(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange19(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv19(o_4)): Ref) == o_4) && QPMask[o_4, val] == PostMask[o_4, val] + FullPerm) && (!(((0 <= invRecv19(o_4) && invRecv19(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange19(o_4)) ==> QPMask[o_4, val] == PostMask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv19(o_9) && invRecv19(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange19(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv19(o_9)): Ref) == o_9) && QPMask[o_9, val] == PostMask[o_9, val] + FullPerm) && (!(((0 <= invRecv19(o_9) && invRecv19(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange19(o_9)) ==> QPMask[o_9, val] == PostMask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -3086,24 +3086,24 @@ procedure client(a_2: IArrayDomainType) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method select_rec might not hold. Assertion 10 < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@221.3--221.44) [118710]"}
-        10 < (len_1(a_2): int);
+      ExhaleWellDef0Heap := Heap;
+      assert {:msg "  The precondition of method select_rec might not hold. Assertion 10 < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@221.3--221.44) [106658]"}
+        10 < (len(a_2): int);
       havoc QPMask;
       
       // -- check that the permission amount is positive
         
       
       // -- check if receiver loc(a, i) is injective
-        assert {:msg "  The precondition of method select_rec might not hold. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@221.3--221.44) [118711]"}
+        assert {:msg "  The precondition of method select_rec might not hold. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@221.3--221.44) [106659]"}
           (forall i_7_1: int, i_7_2: int ::
           { neverTriggered21(i_7_1), neverTriggered21(i_7_2) }
           (((i_7_1 != i_7_2 && (0 <= i_7_1 && i_7_1 <= 10)) && (0 <= i_7_2 && i_7_2 <= 10)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_7_1): Ref) != (loc(a_2, i_7_2): Ref)
         );
       
       // -- check if sufficient permission is held
-        assert {:msg "  The precondition of method select_rec might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@221.3--221.44) [118712]"}
+        assert {:msg "  The precondition of method select_rec might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@221.3--221.44) [106660]"}
           (forall i_7_1: int ::
           { (loc(a_2, i_7_1): Ref) } { (loc(a_2, i_7_1): Ref) }
           0 <= i_7_1 && i_7_1 <= 10 ==> Mask[(loc(a_2, i_7_1): Ref), val] >= FullPerm
@@ -3114,21 +3114,21 @@ procedure client(a_2: IArrayDomainType) returns ()
           { (loc(a_2, i_7_1): Ref) } { (loc(a_2, i_7_1): Ref) }
           (0 <= i_7_1 && i_7_1 <= 10) && NoPerm < FullPerm ==> qpRange21((loc(a_2, i_7_1): Ref)) && invRecv21((loc(a_2, i_7_1): Ref)) == i_7_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv21(o_4) }
-          (0 <= invRecv21(o_4) && invRecv21(o_4) <= 10) && (NoPerm < FullPerm && qpRange21(o_4)) ==> (loc(a_2, invRecv21(o_4)): Ref) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv21(o_9) }
+          (0 <= invRecv21(o_9) && invRecv21(o_9) <= 10) && (NoPerm < FullPerm && qpRange21(o_9)) ==> (loc(a_2, invRecv21(o_9)): Ref) == o_9
         );
       
       // -- assume permission updates for field val
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, val] }
-          ((0 <= invRecv21(o_4) && invRecv21(o_4) <= 10) && (NoPerm < FullPerm && qpRange21(o_4)) ==> (loc(a_2, invRecv21(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((0 <= invRecv21(o_4) && invRecv21(o_4) <= 10) && (NoPerm < FullPerm && qpRange21(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, val] }
+          ((0 <= invRecv21(o_9) && invRecv21(o_9) <= 10) && (NoPerm < FullPerm && qpRange21(o_9)) ==> (loc(a_2, invRecv21(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((0 <= invRecv21(o_9) && invRecv21(o_9) <= 10) && (NoPerm < FullPerm && qpRange21(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
         );
       
       // -- assume permission updates for independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { QPMask[o_4, f_5] }
-          f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { QPMask[o_9, f_5] }
+          f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       // Finish exhale
@@ -3143,36 +3143,36 @@ procedure client(a_2: IArrayDomainType) returns ()
       assume 0 <= storeIndex;
       assume storeIndex <= 10;
       havoc QPMask;
-      assert {:msg "  Method call might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@221.3--221.44) [118713]"}
-        (forall i_8_2: int, i_8_3: int ::
+      assert {:msg "  Method call might fail. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@221.3--221.44) [106661]"}
+        (forall i_8_1: int, i_8_2: int ::
         
-        (((i_8_2 != i_8_3 && (0 <= i_8_2 && i_8_2 <= 10)) && (0 <= i_8_3 && i_8_3 <= 10)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_8_2): Ref) != (loc(a_2, i_8_3): Ref)
+        (((i_8_1 != i_8_2 && (0 <= i_8_1 && i_8_1 <= 10)) && (0 <= i_8_2 && i_8_2 <= 10)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_8_1): Ref) != (loc(a_2, i_8_2): Ref)
       );
       
       // -- Define Inverse Function
-        assume (forall i_8_2: int ::
-          { (loc(a_2, i_8_2): Ref) } { (loc(a_2, i_8_2): Ref) }
-          (0 <= i_8_2 && i_8_2 <= 10) && NoPerm < FullPerm ==> qpRange22((loc(a_2, i_8_2): Ref)) && invRecv22((loc(a_2, i_8_2): Ref)) == i_8_2
+        assume (forall i_8_1: int ::
+          { (loc(a_2, i_8_1): Ref) } { (loc(a_2, i_8_1): Ref) }
+          (0 <= i_8_1 && i_8_1 <= 10) && NoPerm < FullPerm ==> qpRange22((loc(a_2, i_8_1): Ref)) && invRecv22((loc(a_2, i_8_1): Ref)) == i_8_1
         );
-        assume (forall o_4: Ref ::
-          { invRecv22(o_4) }
-          ((0 <= invRecv22(o_4) && invRecv22(o_4) <= 10) && NoPerm < FullPerm) && qpRange22(o_4) ==> (loc(a_2, invRecv22(o_4)): Ref) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv22(o_9) }
+          ((0 <= invRecv22(o_9) && invRecv22(o_9) <= 10) && NoPerm < FullPerm) && qpRange22(o_9) ==> (loc(a_2, invRecv22(o_9)): Ref) == o_9
         );
       
       // -- Assume set of fields is nonNull
-        assume (forall i_8_2: int ::
-          { (loc(a_2, i_8_2): Ref) } { (loc(a_2, i_8_2): Ref) }
-          0 <= i_8_2 && i_8_2 <= 10 ==> (loc(a_2, i_8_2): Ref) != null
+        assume (forall i_8_1: int ::
+          { (loc(a_2, i_8_1): Ref) } { (loc(a_2, i_8_1): Ref) }
+          0 <= i_8_1 && i_8_1 <= 10 ==> (loc(a_2, i_8_1): Ref) != null
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, val] }
-          (((0 <= invRecv22(o_4) && invRecv22(o_4) <= 10) && NoPerm < FullPerm) && qpRange22(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv22(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv22(o_4) && invRecv22(o_4) <= 10) && NoPerm < FullPerm) && qpRange22(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, val] }
+          (((0 <= invRecv22(o_9) && invRecv22(o_9) <= 10) && NoPerm < FullPerm) && qpRange22(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv22(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv22(o_9) && invRecv22(o_9) <= 10) && NoPerm < FullPerm) && qpRange22(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
@@ -3190,9 +3190,9 @@ procedure client(a_2: IArrayDomainType) returns ()
         { Seq#Index(pw, i_11_1) }
         0 <= i_11_1 && i_11_1 < Seq#Length(pw) ==> 0 <= Seq#Index(pw, i_11_1) && Seq#Index(pw, i_11_1) <= 10
       );
-      assume (forall i_12_1: int, j_9: int ::
-        { Seq#Index(pw, i_12_1), Seq#Index(pw, j_9) }
-        0 <= i_12_1 && (i_12_1 < j_9 && j_9 < Seq#Length(pw)) ==> Seq#Index(pw, i_12_1) != Seq#Index(pw, j_9)
+      assume (forall i_12_1: int, j: int ::
+        { Seq#Index(pw, i_12_1), Seq#Index(pw, j) }
+        0 <= i_12_1 && (i_12_1 < j && j < Seq#Length(pw)) ==> Seq#Index(pw, i_12_1) != Seq#Index(pw, j)
       );
       assume (forall i_13_1: int ::
         { Seq#Index(pw, i_13_1) }
@@ -3202,106 +3202,106 @@ procedure client(a_2: IArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert storeIndex == 3 -- arrays_quickselect_rec_index-shifting.vpr@223.3--223.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion storeIndex == 3 might not hold. (arrays_quickselect_rec_index-shifting.vpr@223.10--223.25) [118714]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion storeIndex == 3 might not hold. (arrays_quickselect_rec_index-shifting.vpr@223.10--223.25) [106662]"}
       storeIndex == 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert loc(a, storeIndex).val == old(loc(a, pw[storeIndex]).val) -- arrays_quickselect_rec_index-shifting.vpr@224.3--224.67
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of loc(a, storeIndex).val == old(loc(a, pw[storeIndex]).val)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [118715]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [106663]"}
         HasDirectPerm(ExhaleWellDef0Mask, (loc(a_2, storeIndex): Ref), val);
-      assert {:msg "  Assert might fail. Index pw[storeIndex] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [118716]"}
+      assert {:msg "  Assert might fail. Index pw[storeIndex] into pw might be negative. (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [106664]"}
         storeIndex >= 0;
-      assert {:msg "  Assert might fail. Index pw[storeIndex] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [118717]"}
+      assert {:msg "  Assert might fail. Index pw[storeIndex] into pw might exceed sequence length. (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [106665]"}
         storeIndex < Seq#Length(pw);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, pw[storeIndex]).val (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [118718]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, pw[storeIndex]).val (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [106666]"}
         HasDirectPerm(oldMask, (loc(a_2, Seq#Index(pw, storeIndex)): Ref), val);
-    assert {:msg "  Assert might fail. Assertion loc(a, storeIndex).val == old(loc(a, pw[storeIndex]).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [118719]"}
+    assert {:msg "  Assert might fail. Assertion loc(a, storeIndex).val == old(loc(a, pw[storeIndex]).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [106667]"}
       Heap[(loc(a_2, storeIndex): Ref), val] == oldHeap[(loc(a_2, Seq#Index(pw, storeIndex)): Ref), val];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(loc(a, 0).val) == 0 -- arrays_quickselect_rec_index-shifting.vpr@226.3--226.33
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old(loc(a, 0).val) == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 0).val (arrays_quickselect_rec_index-shifting.vpr@226.10--226.33) [118720]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 0).val (arrays_quickselect_rec_index-shifting.vpr@226.10--226.33) [106668]"}
         HasDirectPerm(oldMask, (loc(a_2, 0): Ref), val);
-    assert {:msg "  Assert might fail. Assertion old(loc(a, 0).val) == 0 might not hold. (arrays_quickselect_rec_index-shifting.vpr@226.10--226.33) [118721]"}
+    assert {:msg "  Assert might fail. Assertion old(loc(a, 0).val) == 0 might not hold. (arrays_quickselect_rec_index-shifting.vpr@226.10--226.33) [106669]"}
       oldHeap[(loc(a_2, 0): Ref), val] == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(loc(a, 3).val) == 3 -- arrays_quickselect_rec_index-shifting.vpr@227.3--227.33
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old(loc(a, 3).val) == 3
-      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 3).val (arrays_quickselect_rec_index-shifting.vpr@227.10--227.33) [118722]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 3).val (arrays_quickselect_rec_index-shifting.vpr@227.10--227.33) [106670]"}
         HasDirectPerm(oldMask, (loc(a_2, 3): Ref), val);
-    assert {:msg "  Assert might fail. Assertion old(loc(a, 3).val) == 3 might not hold. (arrays_quickselect_rec_index-shifting.vpr@227.10--227.33) [118723]"}
+    assert {:msg "  Assert might fail. Assertion old(loc(a, 3).val) == 3 might not hold. (arrays_quickselect_rec_index-shifting.vpr@227.10--227.33) [106671]"}
       oldHeap[(loc(a_2, 3): Ref), val] == 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(loc(a, 2).val) != old(loc(a, 3).val) -- arrays_quickselect_rec_index-shifting.vpr@228.3--228.50
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old(loc(a, 2).val) != old(loc(a, 3).val)
-      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 2).val (arrays_quickselect_rec_index-shifting.vpr@228.10--228.50) [118724]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 2).val (arrays_quickselect_rec_index-shifting.vpr@228.10--228.50) [106672]"}
         HasDirectPerm(oldMask, (loc(a_2, 2): Ref), val);
-      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 3).val (arrays_quickselect_rec_index-shifting.vpr@228.10--228.50) [118725]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 3).val (arrays_quickselect_rec_index-shifting.vpr@228.10--228.50) [106673]"}
         HasDirectPerm(oldMask, (loc(a_2, 3): Ref), val);
-    assert {:msg "  Assert might fail. Assertion old(loc(a, 2).val) != old(loc(a, 3).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@228.10--228.50) [118726]"}
+    assert {:msg "  Assert might fail. Assertion old(loc(a, 2).val) != old(loc(a, 3).val) might not hold. (arrays_quickselect_rec_index-shifting.vpr@228.10--228.50) [106674]"}
       oldHeap[(loc(a_2, 2): Ref), val] != oldHeap[(loc(a_2, 3): Ref), val];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
       
     
     // -- check if receiver loc(a, i) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@216.11--216.71) [118727]"}
-        (forall i_6_1: int, i_6_2: int ::
-        { neverTriggered20(i_6_1), neverTriggered20(i_6_2) }
-        (((i_6_1 != i_6_2 && (0 <= i_6_1 && i_6_1 < (len_1(a_2): int))) && (0 <= i_6_2 && i_6_2 < (len_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_6_1): Ref) != (loc(a_2, i_6_2): Ref)
+      assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (arrays_quickselect_rec_index-shifting.vpr@216.11--216.71) [106675]"}
+        (forall i_6_2: int, i_6_3: int ::
+        { neverTriggered20(i_6_2), neverTriggered20(i_6_3) }
+        (((i_6_2 != i_6_3 && (0 <= i_6_2 && i_6_2 < (len(a_2): int))) && (0 <= i_6_3 && i_6_3 < (len(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_6_2): Ref) != (loc(a_2, i_6_3): Ref)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of client might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@216.11--216.71) [118728]"}
-        (forall i_6_1: int ::
-        { (loc(a_2, i_6_1): Ref) } { (loc(a_2, i_6_1): Ref) }
-        0 <= i_6_1 && i_6_1 < (len_1(a_2): int) ==> Mask[(loc(a_2, i_6_1): Ref), val] >= FullPerm
+      assert {:msg "  Postcondition of client might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@216.11--216.71) [106676]"}
+        (forall i_6_2: int ::
+        { (loc(a_2, i_6_2): Ref) } { (loc(a_2, i_6_2): Ref) }
+        0 <= i_6_2 && i_6_2 < (len(a_2): int) ==> Mask[(loc(a_2, i_6_2): Ref), val] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver loc(a, i)
-      assume (forall i_6_1: int ::
-        { (loc(a_2, i_6_1): Ref) } { (loc(a_2, i_6_1): Ref) }
-        (0 <= i_6_1 && i_6_1 < (len_1(a_2): int)) && NoPerm < FullPerm ==> qpRange20((loc(a_2, i_6_1): Ref)) && invRecv20((loc(a_2, i_6_1): Ref)) == i_6_1
+      assume (forall i_6_2: int ::
+        { (loc(a_2, i_6_2): Ref) } { (loc(a_2, i_6_2): Ref) }
+        (0 <= i_6_2 && i_6_2 < (len(a_2): int)) && NoPerm < FullPerm ==> qpRange20((loc(a_2, i_6_2): Ref)) && invRecv20((loc(a_2, i_6_2): Ref)) == i_6_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv20(o_4) }
-        (0 <= invRecv20(o_4) && invRecv20(o_4) < (len_1(a_2): int)) && (NoPerm < FullPerm && qpRange20(o_4)) ==> (loc(a_2, invRecv20(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv20(o_9) }
+        (0 <= invRecv20(o_9) && invRecv20(o_9) < (len(a_2): int)) && (NoPerm < FullPerm && qpRange20(o_9)) ==> (loc(a_2, invRecv20(o_9)): Ref) == o_9
       );
     
     // -- assume permission updates for field val
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((0 <= invRecv20(o_4) && invRecv20(o_4) < (len_1(a_2): int)) && (NoPerm < FullPerm && qpRange20(o_4)) ==> (loc(a_2, invRecv20(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((0 <= invRecv20(o_4) && invRecv20(o_4) < (len_1(a_2): int)) && (NoPerm < FullPerm && qpRange20(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((0 <= invRecv20(o_9) && invRecv20(o_9) < (len(a_2): int)) && (NoPerm < FullPerm && qpRange20(o_9)) ==> (loc(a_2, invRecv20(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((0 <= invRecv20(o_9) && invRecv20(o_9) < (len(a_2): int)) && (NoPerm < FullPerm && qpRange20(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     // Finish exhale

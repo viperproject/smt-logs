@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:18:01
+// Date:         2025-01-26 21:41:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_functions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_functions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -226,8 +226,8 @@ procedure counter__get#definedness(diz: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -251,17 +251,17 @@ procedure counter__get#definedness(diz: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume counter__state#trigger(UnfoldingHeap, counter__state(diz));
       assume UnfoldingHeap[null, counter__state(diz)] == FrameFragment(UnfoldingHeap[diz, counter__x]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access counter__state(diz) (test_functions.vpr@6.1--11.2) [163145]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access counter__state(diz) (test_functions.vpr@6.1--11.2) [24209]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, counter__state(diz)];
       perm := FullPerm;
       assume diz != null;
       UnfoldingMask := UnfoldingMask[diz, counter__x:=UnfoldingMask[diz, counter__x] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.counter__x (test_functions.vpr@6.1--11.2) [163146]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.counter__x (test_functions.vpr@6.1--11.2) [24210]"}
         HasDirectPerm(UnfoldingMask, diz, counter__x);
       
       // -- Free assumptions (exp module)
@@ -334,13 +334,13 @@ procedure counter__state#definedness(diz: Ref) returns ()
 procedure counter__counter(current_thread_id: int, v_2: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var diz: Ref;
   var freshObj: Ref;
@@ -349,8 +349,8 @@ procedure counter__counter(current_thread_id: int, v_2: int) returns (sys__resul
   var freshVersion: FrameType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -365,8 +365,8 @@ procedure counter__counter(current_thread_id: int, v_2: int) returns (sys__resul
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -383,12 +383,12 @@ procedure counter__counter(current_thread_id: int, v_2: int) returns (sys__resul
     // -- Check definedness of counter__get(sys__result) == v
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function counter__get might not hold. Assertion sys__result != null might not hold. (test_functions.vpr@21.11--21.36) [163147]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function counter__get might not hold. Assertion sys__result != null might not hold. (test_functions.vpr@21.11--21.36) [24211]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function counter__get might not hold. There might be insufficient permission to access counter__state(sys__result) (test_functions.vpr@21.11--21.36) [163148]"}
+        assert {:msg "  Precondition of function counter__get might not hold. There might be insufficient permission to access counter__state(sys__result) (test_functions.vpr@21.11--21.36) [24212]"}
           NoPerm < perm ==> NoPerm < PostMask[null, counter__state(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -423,17 +423,17 @@ procedure counter__counter(current_thread_id: int, v_2: int) returns (sys__resul
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.counter__x := __flatten_3 -- test_functions.vpr@29.3--29.32
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.counter__x (test_functions.vpr@29.3--29.32) [163149]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.counter__x (test_functions.vpr@29.3--29.32) [24213]"}
       FullPerm == Mask[diz, counter__x];
     Heap := Heap[diz, counter__x:=__flatten_3];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(counter__state(diz), write) -- test_functions.vpr@30.3--30.39
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding counter__state(diz) might fail. There might be insufficient permission to access diz.counter__x (test_functions.vpr@30.3--30.39) [163152]"}
+      assert {:msg "  Folding counter__state(diz) might fail. There might be insufficient permission to access diz.counter__x (test_functions.vpr@30.3--30.39) [24216]"}
         perm <= Mask[diz, counter__x];
     }
     Mask := Mask[diz, counter__x:=Mask[diz, counter__x] - perm];
@@ -461,13 +461,13 @@ procedure counter__counter(current_thread_id: int, v_2: int) returns (sys__resul
   //   counter__get(sys__result) == v) -- test_functions.vpr@32.3--32.110
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_functions.vpr@32.10--32.110) [163154]"}
+    ExhaleWellDef0Heap := AssertHeap;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_functions.vpr@32.10--32.110) [24218]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access counter__state(sys__result) (test_functions.vpr@32.10--32.110) [163156]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access counter__state(sys__result) (test_functions.vpr@32.10--32.110) [24220]"}
         perm <= AssertMask[null, counter__state(sys__result)];
     }
     AssertMask := AssertMask[null, counter__state(sys__result):=AssertMask[null, counter__state(sys__result)] - perm];
@@ -475,12 +475,12 @@ procedure counter__counter(current_thread_id: int, v_2: int) returns (sys__resul
     // -- Check definedness of counter__get(sys__result) == v
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function counter__get might not hold. Assertion sys__result != null might not hold. (test_functions.vpr@32.79--32.104) [163157]"}
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        assert {:msg "  Precondition of function counter__get might not hold. Assertion sys__result != null might not hold. (test_functions.vpr@32.79--32.104) [24221]"}
           sys__result != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function counter__get might not hold. There might be insufficient permission to access counter__state(sys__result) (test_functions.vpr@32.79--32.104) [163158]"}
+        assert {:msg "  Precondition of function counter__get might not hold. There might be insufficient permission to access counter__state(sys__result) (test_functions.vpr@32.79--32.104) [24222]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, counter__state(sys__result)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -489,7 +489,7 @@ procedure counter__counter(current_thread_id: int, v_2: int) returns (sys__resul
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion counter__get(sys__result) == v might not hold. (test_functions.vpr@32.10--32.110) [163159]"}
+    assert {:msg "  Assert might fail. Assertion counter__get(sys__result) == v might not hold. (test_functions.vpr@32.10--32.110) [24223]"}
       counter__get(AssertHeap, sys__result) == v_2;
     assume state(Heap, Mask);
   
@@ -499,17 +499,17 @@ procedure counter__counter(current_thread_id: int, v_2: int) returns (sys__resul
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of counter__counter might not hold. Assertion sys__result != null might not hold. (test_functions.vpr@19.11--19.30) [163160]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Postcondition of counter__counter might not hold. Assertion sys__result != null might not hold. (test_functions.vpr@19.11--19.30) [24224]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of counter__counter might not hold. There might be insufficient permission to access counter__state(sys__result) (test_functions.vpr@20.11--20.50) [163161]"}
+      assert {:msg "  Postcondition of counter__counter might not hold. There might be insufficient permission to access counter__state(sys__result) (test_functions.vpr@20.11--20.50) [24225]"}
         perm <= Mask[null, counter__state(sys__result)];
     }
     Mask := Mask[null, counter__state(sys__result):=Mask[null, counter__state(sys__result)] - perm];
-    assert {:msg "  Postcondition of counter__counter might not hold. Assertion counter__get(sys__result) == v might not hold. (test_functions.vpr@21.11--21.41) [163162]"}
+    assert {:msg "  Postcondition of counter__counter might not hold. Assertion counter__get(sys__result) == v might not hold. (test_functions.vpr@21.11--21.41) [24226]"}
       counter__get(Heap, sys__result) == v_2;
     // Finish exhale
     havoc ExhaleHeap;
@@ -525,12 +525,12 @@ procedure counter__incr(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newVersion: FrameType;
   var __flatten_2: int;
@@ -559,8 +559,8 @@ procedure counter__incr(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -575,12 +575,12 @@ procedure counter__incr(diz: Ref, current_thread_id: int) returns ()
     // -- Check definedness of counter__get(diz) == old(counter__get(diz)) + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
-        assert {:msg "  Precondition of function counter__get might not hold. Assertion diz != null might not hold. (test_functions.vpr@41.11--41.28) [163163]"}
+        ExhaleWellDef0Heap := PostHeap;
+        assert {:msg "  Precondition of function counter__get might not hold. Assertion diz != null might not hold. (test_functions.vpr@41.11--41.28) [24227]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function counter__get might not hold. There might be insufficient permission to access counter__state(diz) (test_functions.vpr@41.11--41.28) [163164]"}
+        assert {:msg "  Precondition of function counter__get might not hold. There might be insufficient permission to access counter__state(diz) (test_functions.vpr@41.11--41.28) [24228]"}
           NoPerm < perm ==> NoPerm < PostMask[null, counter__state(diz)];
         // Finish exhale
         havoc ExhaleHeap;
@@ -591,12 +591,12 @@ procedure counter__incr(diz: Ref, current_thread_id: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
-        assert {:msg "  Precondition of function counter__get might not hold. Assertion diz != null might not hold. (test_functions.vpr@41.36--41.53) [163165]"}
+        ExhaleWellDef0Heap := oldHeap;
+        assert {:msg "  Precondition of function counter__get might not hold. Assertion diz != null might not hold. (test_functions.vpr@41.36--41.53) [24229]"}
           diz != null;
         perm := FullPerm;
-        assert {:msg "  Precondition of function counter__get might not hold. There might be insufficient permission to access counter__state(diz) (test_functions.vpr@41.36--41.53) [163166]"}
+        assert {:msg "  Precondition of function counter__get might not hold. There might be insufficient permission to access counter__state(diz) (test_functions.vpr@41.36--41.53) [24230]"}
           NoPerm < perm ==> NoPerm < oldMask[null, counter__state(diz)];
         // Finish exhale
         // Stop execution
@@ -611,11 +611,11 @@ procedure counter__incr(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: unfold acc(counter__state(diz), write) -- test_functions.vpr@45.3--45.41
     assume counter__state#trigger(Heap, counter__state(diz));
     assume Heap[null, counter__state(diz)] == FrameFragment(Heap[diz, counter__x]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding counter__state(diz) might fail. There might be insufficient permission to access counter__state(diz) (test_functions.vpr@45.3--45.41) [163169]"}
+      assert {:msg "  Unfolding counter__state(diz) might fail. There might be insufficient permission to access counter__state(diz) (test_functions.vpr@45.3--45.41) [24233]"}
         perm <= Mask[null, counter__state(diz)];
     }
     Mask := Mask[null, counter__state(diz):=Mask[null, counter__state(diz)] - perm];
@@ -635,7 +635,7 @@ procedure counter__incr(diz: Ref, current_thread_id: int) returns ()
   // -- Translating statement: __flatten_2 := diz.counter__x + 1 -- test_functions.vpr@46.3--46.36
     
     // -- Check definedness of diz.counter__x + 1
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.counter__x (test_functions.vpr@46.3--46.36) [163171]"}
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.counter__x (test_functions.vpr@46.3--46.36) [24235]"}
         HasDirectPerm(Mask, diz, counter__x);
     __flatten_2 := Heap[diz, counter__x] + 1;
     assume state(Heap, Mask);
@@ -645,17 +645,17 @@ procedure counter__incr(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.counter__x := __flatten_4 -- test_functions.vpr@48.3--48.32
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.counter__x (test_functions.vpr@48.3--48.32) [163172]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.counter__x (test_functions.vpr@48.3--48.32) [24236]"}
       FullPerm == Mask[diz, counter__x];
     Heap := Heap[diz, counter__x:=__flatten_4];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(counter__state(diz), write) -- test_functions.vpr@49.3--49.39
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding counter__state(diz) might fail. There might be insufficient permission to access diz.counter__x (test_functions.vpr@49.3--49.39) [163175]"}
+      assert {:msg "  Folding counter__state(diz) might fail. There might be insufficient permission to access diz.counter__x (test_functions.vpr@49.3--49.39) [24239]"}
         perm <= Mask[diz, counter__x];
     }
     Mask := Mask[diz, counter__x:=Mask[diz, counter__x] - perm];
@@ -675,15 +675,15 @@ procedure counter__incr(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of counter__incr might not hold. There might be insufficient permission to access counter__state(diz) (test_functions.vpr@40.11--40.42) [163177]"}
+      assert {:msg "  Postcondition of counter__incr might not hold. There might be insufficient permission to access counter__state(diz) (test_functions.vpr@40.11--40.42) [24241]"}
         perm <= Mask[null, counter__state(diz)];
     }
     Mask := Mask[null, counter__state(diz):=Mask[null, counter__state(diz)] - perm];
-    assert {:msg "  Postcondition of counter__incr might not hold. Assertion counter__get(diz) == old(counter__get(diz)) + 1 might not hold. (test_functions.vpr@41.11--41.58) [163178]"}
+    assert {:msg "  Postcondition of counter__incr might not hold. Assertion counter__get(diz) == old(counter__get(diz)) + 1 might not hold. (test_functions.vpr@41.11--41.58) [24242]"}
       counter__get(Heap, diz) == counter__get(oldHeap, diz) + 1;
     // Finish exhale
     havoc ExhaleHeap;

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:19:31
+// Date:         2025-01-26 21:41:40
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testTreeRecursive.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testTreeRecursive-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_12: Ref, f_16: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_12, f_16] }
-  Heap[o_12, $allocated] ==> Heap[Heap[o_12, f_16], $allocated]
+axiom (forall o_15: Ref, f_23: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_15, f_23] }
+  Heap[o_15, $allocated] ==> Heap[Heap[o_15, f_23], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref, f_37: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, f_37] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_46, f_37) ==> Heap[o_46, f_37] == ExhaleHeap[o_46, f_37]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref, f_53: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, f_53] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_41, f_53) ==> Heap[o_41, f_53] == ExhaleHeap[o_41, f_53]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22), ExhaleHeap[null, PredicateMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> Heap[null, PredicateMaskField(pm_f_22)] == ExhaleHeap[null, PredicateMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20), ExhaleHeap[null, PredicateMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> Heap[null, PredicateMaskField(pm_f_20)] == ExhaleHeap[null, PredicateMaskField(pm_f_20)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsPredicateField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, PredicateMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsPredicateField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, PredicateMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22), ExhaleHeap[null, WandMaskField(pm_f_22)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> Heap[null, WandMaskField(pm_f_22)] == ExhaleHeap[null, WandMaskField(pm_f_22)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20), ExhaleHeap[null, WandMaskField(pm_f_20)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> Heap[null, WandMaskField(pm_f_20)] == ExhaleHeap[null, WandMaskField(pm_f_20)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_22: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_22) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_22) && IsWandField(pm_f_22) ==> (forall <A, B> o2_22: Ref, f_37: (Field A B) ::
-    { ExhaleHeap[o2_22, f_37] }
-    Heap[null, WandMaskField(pm_f_22)][o2_22, f_37] ==> Heap[o2_22, f_37] == ExhaleHeap[o2_22, f_37]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_20: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_20) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_20) && IsWandField(pm_f_20) ==> (forall <A, B> o2_20: Ref, f_53: (Field A B) ::
+    { ExhaleHeap[o2_20, f_53] }
+    Heap[null, WandMaskField(pm_f_20)][o2_20, f_53] ==> Heap[o2_20, f_53] == ExhaleHeap[o2_20, f_53]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_46: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_46, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_46, $allocated] ==> ExhaleHeap[o_46, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_41: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_41, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_41, $allocated] ==> ExhaleHeap[o_41, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_12: Ref, f_24: (Field A B), v: B ::
-  { Heap[o_12, f_24:=v] }
-  succHeap(Heap, Heap[o_12, f_24:=v])
+axiom (forall <A, B> Heap: HeapType, o_15: Ref, f_54: (Field A B), v: B ::
+  { Heap[o_15, f_54:=v] }
+  succHeap(Heap, Heap[o_15, f_54:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -602,8 +602,8 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -631,10 +631,10 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
         UnfoldingMask := Mask;
         assume Tree__state#trigger(UnfoldingHeap, Tree__state(t_2));
         assume UnfoldingHeap[null, Tree__state(t_2)] == CombineFrames(FrameFragment(UnfoldingHeap[t_2, Tree__data]), CombineFrames(FrameFragment(UnfoldingHeap[t_2, Tree__left]), CombineFrames(FrameFragment(UnfoldingHeap[t_2, Tree__right]), CombineFrames(FrameFragment((if UnfoldingHeap[t_2, Tree__left] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[t_2, Tree__left])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[t_2, Tree__right] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[t_2, Tree__right])] else EmptyFrame))))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@10.1--15.2) [178972]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@10.1--15.2) [29626]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree__state(t_2)];
         perm := FullPerm;
         assume t_2 != null;
@@ -665,15 +665,15 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
           assume state(UnfoldingHeap, UnfoldingMask);
         }
         assume state(UnfoldingHeap, UnfoldingMask);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@10.1--15.2) [178973]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@10.1--15.2) [29627]"}
           HasDirectPerm(UnfoldingMask, t_2, Tree__left);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           if (UnfoldingHeap[t_2, Tree__left] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeRecursive.vpr@14.70--14.98) [178974]"}
+            assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeRecursive.vpr@14.70--14.98) [29628]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree__state(UnfoldingHeap[t_2, Tree__left])];
           }
           // Finish exhale
@@ -686,17 +686,17 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
           // Enable postcondition for recursive call
           assume Tree__contents#trigger(FrameFragment((if UnfoldingHeap[t_2, Tree__left] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[t_2, Tree__left])] else EmptyFrame)), UnfoldingHeap[t_2, Tree__left]);
         }
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__data (testTreeRecursive.vpr@10.1--15.2) [178975]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__data (testTreeRecursive.vpr@10.1--15.2) [29629]"}
           HasDirectPerm(UnfoldingMask, t_2, Tree__data);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__right (testTreeRecursive.vpr@10.1--15.2) [178976]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access t.Tree__right (testTreeRecursive.vpr@10.1--15.2) [29630]"}
           HasDirectPerm(UnfoldingMask, t_2, Tree__right);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           if (UnfoldingHeap[t_2, Tree__right] != null) {
             perm := FullPerm;
-            assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t.Tree__right) (testTreeRecursive.vpr@14.123--14.152) [178977]"}
+            assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t.Tree__right) (testTreeRecursive.vpr@14.123--14.152) [29631]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree__state(UnfoldingHeap[t_2, Tree__right])];
           }
           // Finish exhale
@@ -716,17 +716,17 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
           Heap := Heap[null, Tree__state#sm(t_2):=Heap[null, Tree__state#sm(t_2)][t_2, Tree__right:=true]];
           if (Heap[t_2, Tree__left] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-              { newPMask[o_15, f_20] }
-              Heap[null, Tree__state#sm(t_2)][o_15, f_20] || Heap[null, Tree__state#sm(Heap[t_2, Tree__left])][o_15, f_20] ==> newPMask[o_15, f_20]
+            assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+              { newPMask[o_5, f_11] }
+              Heap[null, Tree__state#sm(t_2)][o_5, f_11] || Heap[null, Tree__state#sm(Heap[t_2, Tree__left])][o_5, f_11] ==> newPMask[o_5, f_11]
             );
             Heap := Heap[null, Tree__state#sm(t_2):=newPMask];
           }
           if (Heap[t_2, Tree__right] != null) {
             havoc newPMask;
-            assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-              { newPMask[o_16, f_21] }
-              Heap[null, Tree__state#sm(t_2)][o_16, f_21] || Heap[null, Tree__state#sm(Heap[t_2, Tree__right])][o_16, f_21] ==> newPMask[o_16, f_21]
+            assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+              { newPMask[o_6, f_12] }
+              Heap[null, Tree__state#sm(t_2)][o_6, f_12] || Heap[null, Tree__state#sm(Heap[t_2, Tree__right])][o_6, f_12] ==> newPMask[o_6, f_12]
             );
             Heap := Heap[null, Tree__state#sm(t_2):=newPMask];
           }
@@ -737,10 +737,10 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
     Result := (if t_2 == null then (Seq#Empty(): Seq int) else Seq#Append(Seq#Append(Tree__contents(Heap, Heap[t_2, Tree__left]), Seq#Singleton(Heap[t_2, Tree__data])), Tree__contents(Heap, Heap[t_2, Tree__right])));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (t_2 != null) {
-      assert {:msg "  Postcondition of Tree__contents might not hold. Assertion |result| > 0 might not hold. (testTreeRecursive.vpr@12.11--12.41) [178978]"}
+      assert {:msg "  Postcondition of Tree__contents might not hold. Assertion |result| > 0 might not hold. (testTreeRecursive.vpr@12.11--12.41) [29632]"}
         Seq#Length(Result) > 0;
     }
 }
@@ -807,12 +807,12 @@ procedure Tree__state#definedness(diz: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of diz.Tree__left != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__left (testTreeRecursive.vpr@17.1--19.2) [178979]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__left (testTreeRecursive.vpr@17.1--19.2) [29633]"}
         HasDirectPerm(Mask, diz, Tree__left);
     if (Heap[diz, Tree__left] != null) {
       
       // -- Check definedness of acc(Tree__state(diz.Tree__left), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__left (testTreeRecursive.vpr@17.1--19.2) [178980]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__left (testTreeRecursive.vpr@17.1--19.2) [29634]"}
           HasDirectPerm(Mask, diz, Tree__left);
       perm := FullPerm;
       Mask := Mask[null, Tree__state(Heap[diz, Tree__left]):=Mask[null, Tree__state(Heap[diz, Tree__left])] + perm];
@@ -820,12 +820,12 @@ procedure Tree__state#definedness(diz: Ref) returns ()
     }
     
     // -- Check definedness of diz.Tree__right != null
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__right (testTreeRecursive.vpr@17.1--19.2) [178981]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__right (testTreeRecursive.vpr@17.1--19.2) [29635]"}
         HasDirectPerm(Mask, diz, Tree__right);
     if (Heap[diz, Tree__right] != null) {
       
       // -- Check definedness of acc(Tree__state(diz.Tree__right), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__right (testTreeRecursive.vpr@17.1--19.2) [178982]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access diz.Tree__right (testTreeRecursive.vpr@17.1--19.2) [29636]"}
           HasDirectPerm(Mask, diz, Tree__right);
       perm := FullPerm;
       Mask := Mask[null, Tree__state(Heap[diz, Tree__right]):=Mask[null, Tree__state(Heap[diz, Tree__right])] + perm];
@@ -842,12 +842,12 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var __flatten_1: Ref;
   var __flatten_2: Ref;
@@ -855,8 +855,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   var __flatten_4: Ref;
   var __flatten_7: Ref;
   var newVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var PreCallHeap: HeapType;
@@ -890,8 +890,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -908,11 +908,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
     // -- Check definedness of Tree__contents(sys__result) == old(Tree__contents(t))[1..]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         if (sys__result != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@27.11--27.38) [178983]"}
+          assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@27.11--27.38) [29637]"}
             NoPerm < perm ==> NoPerm < PostMask[null, Tree__state(sys__result)];
         }
         // Finish exhale
@@ -924,11 +924,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         if (t_2 != null) {
           perm := FullPerm;
-          assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@27.46--27.63) [178984]"}
+          assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@27.46--27.63) [29638]"}
             NoPerm < perm ==> NoPerm < oldMask[null, Tree__state(t_2)];
         }
         // Finish exhale
@@ -951,11 +951,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   // -- Translating statement: unfold acc(Tree__state(t), write) -- testTreeRecursive.vpr@34.3--34.36
     assume Tree__state#trigger(Heap, Tree__state(t_2));
     assume Heap[null, Tree__state(t_2)] == CombineFrames(FrameFragment(Heap[t_2, Tree__data]), CombineFrames(FrameFragment(Heap[t_2, Tree__left]), CombineFrames(FrameFragment(Heap[t_2, Tree__right]), CombineFrames(FrameFragment((if Heap[t_2, Tree__left] != null then Heap[null, Tree__state(Heap[t_2, Tree__left])] else EmptyFrame)), FrameFragment((if Heap[t_2, Tree__right] != null then Heap[null, Tree__state(Heap[t_2, Tree__right])] else EmptyFrame))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding Tree__state(t) might fail. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@34.3--34.36) [178987]"}
+      assert {:msg "  Unfolding Tree__state(t) might fail. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@34.3--34.36) [29641]"}
         perm <= Mask[null, Tree__state(t_2)];
     }
     Mask := Mask[null, Tree__state(t_2):=Mask[null, Tree__state(t_2)] - perm];
@@ -999,24 +999,24 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   // -- Translating statement: if (t.Tree__left == null) -- testTreeRecursive.vpr@35.3--51.4
     
     // -- Check definedness of t.Tree__left == null
-      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@35.7--35.27) [178993]"}
+      assert {:msg "  Conditional statement might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@35.7--35.27) [29647]"}
         HasDirectPerm(Mask, t_2, Tree__left);
     if (Heap[t_2, Tree__left] == null) {
       
       // -- Translating statement: assert Tree__contents(t.Tree__left) == Seq[Int]() -- testTreeRecursive.vpr@36.5--36.54
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of Tree__contents(t.Tree__left) == Seq[Int]()
-          assert {:msg "  Assert might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@36.12--36.54) [178994]"}
+          assert {:msg "  Assert might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@36.12--36.54) [29648]"}
             HasDirectPerm(ExhaleWellDef0Mask, t_2, Tree__left);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (ExhaleWellDef0Heap[t_2, Tree__left] != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeRecursive.vpr@36.12--36.40) [178995]"}
+              assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeRecursive.vpr@36.12--36.40) [29649]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(ExhaleWellDef0Heap[t_2, Tree__left])];
             }
             // Finish exhale
@@ -1026,14 +1026,14 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion Tree__contents(t.Tree__left) == Seq[Int]() might not hold. (testTreeRecursive.vpr@36.12--36.54) [178996]"}
+        assert {:msg "  Assert might fail. Assertion Tree__contents(t.Tree__left) == Seq[Int]() might not hold. (testTreeRecursive.vpr@36.12--36.54) [29650]"}
           Seq#Equal(Tree__contents(Heap, Heap[t_2, Tree__left]), (Seq#Empty(): Seq int));
         assume state(Heap, Mask);
       
       // -- Translating statement: __flatten_1 := t.Tree__right -- testTreeRecursive.vpr@37.5--37.33
         
         // -- Check definedness of t.Tree__right
-          assert {:msg "  Assignment might fail. There might be insufficient permission to access t.Tree__right (testTreeRecursive.vpr@37.5--37.33) [178997]"}
+          assert {:msg "  Assignment might fail. There might be insufficient permission to access t.Tree__right (testTreeRecursive.vpr@37.5--37.33) [29651]"}
             HasDirectPerm(Mask, t_2, Tree__right);
         __flatten_1 := Heap[t_2, Tree__right];
         assume state(Heap, Mask);
@@ -1046,12 +1046,12 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   //   Tree__contents(sys__result) == old(Tree__contents(t))[1..] -- testTreeRecursive.vpr@39.5--39.140
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         if (sys__result != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@39.12--39.140) [178999]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@39.12--39.140) [29653]"}
               perm <= AssertMask[null, Tree__state(sys__result)];
           }
           AssertMask := AssertMask[null, Tree__state(sys__result):=AssertMask[null, Tree__state(sys__result)] - perm];
@@ -1060,11 +1060,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
         // -- Check definedness of Tree__contents(sys__result) == old(Tree__contents(t))[1..]
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (sys__result != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@39.81--39.108) [179000]"}
+              assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@39.81--39.108) [29654]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(sys__result)];
             }
             // Finish exhale
@@ -1076,18 +1076,18 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
+            ExhaleWellDef1Mask := oldMask;
             if (t_2 != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@39.116--39.133) [179001]"}
+              assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@39.116--39.133) [29655]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, Tree__state(t_2)];
             }
             // Finish exhale
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion Tree__contents(sys__result) == old(Tree__contents(t))[1..] might not hold. (testTreeRecursive.vpr@39.12--39.140) [179002]"}
+        assert {:msg "  Assert might fail. Assertion Tree__contents(sys__result) == old(Tree__contents(t))[1..] might not hold. (testTreeRecursive.vpr@39.12--39.140) [29656]"}
           Seq#Equal(Tree__contents(AssertHeap, sys__result), Seq#Drop(Tree__contents(oldHeap, t_2), 1));
         assume state(Heap, Mask);
       
@@ -1102,22 +1102,22 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
         PreCallMask := Mask;
         
         // -- Check definedness of t.Tree__left
-          assert {:msg "  Method call might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@42.5--42.71) [179003]"}
+          assert {:msg "  Method call might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@42.5--42.71) [29657]"}
             HasDirectPerm(Mask, t_2, Tree__left);
         arg_t := Heap[t_2, Tree__left];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
-          assert {:msg "  The precondition of method Tree__del_min might not hold. Assertion diz != null might not hold. (testTreeRecursive.vpr@42.5--42.71) [179004]"}
+          ExhaleWellDef0Mask := Mask;
+          assert {:msg "  The precondition of method Tree__del_min might not hold. Assertion diz != null might not hold. (testTreeRecursive.vpr@42.5--42.71) [29658]"}
             diz != null;
-          assert {:msg "  The precondition of method Tree__del_min might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeRecursive.vpr@42.5--42.71) [179005]"}
+          assert {:msg "  The precondition of method Tree__del_min might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeRecursive.vpr@42.5--42.71) [29659]"}
             current_thread_id >= 0;
-          assert {:msg "  The precondition of method Tree__del_min might not hold. Assertion t.Tree__left != null might not hold. (testTreeRecursive.vpr@42.5--42.71) [179006]"}
+          assert {:msg "  The precondition of method Tree__del_min might not hold. Assertion t.Tree__left != null might not hold. (testTreeRecursive.vpr@42.5--42.71) [29660]"}
             arg_t != null;
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  The precondition of method Tree__del_min might not hold. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeRecursive.vpr@42.5--42.71) [179007]"}
+            assert {:msg "  The precondition of method Tree__del_min might not hold. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeRecursive.vpr@42.5--42.71) [29661]"}
               perm <= Mask[null, Tree__state(arg_t)];
           }
           Mask := Mask[null, Tree__state(arg_t):=Mask[null, Tree__state(arg_t)] - perm];
@@ -1150,36 +1150,36 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
         assume state(Heap, Mask);
       
       // -- Translating statement: t.Tree__left := __flatten_7 -- testTreeRecursive.vpr@45.5--45.32
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@45.5--45.32) [179008]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@45.5--45.32) [29662]"}
           FullPerm == Mask[t_2, Tree__left];
         Heap := Heap[t_2, Tree__left:=__flatten_7];
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(Tree__state(t), write) -- testTreeRecursive.vpr@46.5--46.36
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access t.Tree__data (testTreeRecursive.vpr@46.5--46.36) [179011]"}
+          assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access t.Tree__data (testTreeRecursive.vpr@46.5--46.36) [29665]"}
             perm <= Mask[t_2, Tree__data];
         }
         Mask := Mask[t_2, Tree__data:=Mask[t_2, Tree__data] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@46.5--46.36) [179013]"}
+          assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@46.5--46.36) [29667]"}
             perm <= Mask[t_2, Tree__left];
         }
         Mask := Mask[t_2, Tree__left:=Mask[t_2, Tree__left] - perm];
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access t.Tree__right (testTreeRecursive.vpr@46.5--46.36) [179015]"}
+          assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access t.Tree__right (testTreeRecursive.vpr@46.5--46.36) [29669]"}
             perm <= Mask[t_2, Tree__right];
         }
         Mask := Mask[t_2, Tree__right:=Mask[t_2, Tree__right] - perm];
         if (Heap[t_2, Tree__left] != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeRecursive.vpr@46.5--46.36) [179017]"}
+            assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeRecursive.vpr@46.5--46.36) [29671]"}
               perm <= Mask[null, Tree__state(Heap[t_2, Tree__left])];
           }
           Mask := Mask[null, Tree__state(Heap[t_2, Tree__left]):=Mask[null, Tree__state(Heap[t_2, Tree__left])] - perm];
@@ -1190,7 +1190,7 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
         if (Heap[t_2, Tree__right] != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access Tree__state(t.Tree__right) (testTreeRecursive.vpr@46.5--46.36) [179019]"}
+            assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access Tree__state(t.Tree__right) (testTreeRecursive.vpr@46.5--46.36) [29673]"}
               perm <= Mask[null, Tree__state(Heap[t_2, Tree__right])];
           }
           Mask := Mask[null, Tree__state(Heap[t_2, Tree__right]):=Mask[null, Tree__state(Heap[t_2, Tree__right])] - perm];
@@ -1214,17 +1214,17 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
         Heap := Heap[null, Tree__state#sm(t_2):=Heap[null, Tree__state#sm(t_2)][t_2, Tree__right:=true]];
         if (Heap[t_2, Tree__left] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-            { newPMask[o_52, f_55] }
-            Heap[null, Tree__state#sm(t_2)][o_52, f_55] || Heap[null, Tree__state#sm(Heap[t_2, Tree__left])][o_52, f_55] ==> newPMask[o_52, f_55]
+          assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+            { newPMask[o_40, f_52] }
+            Heap[null, Tree__state#sm(t_2)][o_40, f_52] || Heap[null, Tree__state#sm(Heap[t_2, Tree__left])][o_40, f_52] ==> newPMask[o_40, f_52]
           );
           Heap := Heap[null, Tree__state#sm(t_2):=newPMask];
         }
         if (Heap[t_2, Tree__right] != null) {
           havoc newPMask;
-          assume (forall <A, B> o_53: Ref, f_56: (Field A B) ::
-            { newPMask[o_53, f_56] }
-            Heap[null, Tree__state#sm(t_2)][o_53, f_56] || Heap[null, Tree__state#sm(Heap[t_2, Tree__right])][o_53, f_56] ==> newPMask[o_53, f_56]
+          assume (forall <A, B> o_42: Ref, f_55: (Field A B) ::
+            { newPMask[o_42, f_55] }
+            Heap[null, Tree__state#sm(t_2)][o_42, f_55] || Heap[null, Tree__state#sm(Heap[t_2, Tree__right])][o_42, f_55] ==> newPMask[o_42, f_55]
           );
           Heap := Heap[null, Tree__state#sm(t_2):=newPMask];
         }
@@ -1243,12 +1243,12 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   //   Tree__contents(sys__result) == old(Tree__contents(t))[1..] -- testTreeRecursive.vpr@49.5--49.140
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         if (sys__result != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
-            assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@49.12--49.140) [179022]"}
+            assert {:msg "  Assert might fail. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@49.12--49.140) [29676]"}
               perm <= AssertMask[null, Tree__state(sys__result)];
           }
           AssertMask := AssertMask[null, Tree__state(sys__result):=AssertMask[null, Tree__state(sys__result)] - perm];
@@ -1257,11 +1257,11 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
         // -- Check definedness of Tree__contents(sys__result) == old(Tree__contents(t))[1..]
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (sys__result != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@49.81--49.108) [179023]"}
+              assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@49.81--49.108) [29677]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree__state(sys__result)];
             }
             // Finish exhale
@@ -1273,18 +1273,18 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
+            ExhaleWellDef1Mask := oldMask;
             if (t_2 != null) {
               perm := FullPerm;
-              assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@49.116--49.133) [179024]"}
+              assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@49.116--49.133) [29678]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, Tree__state(t_2)];
             }
             // Finish exhale
             // Stop execution
             assume false;
           }
-        assert {:msg "  Assert might fail. Assertion Tree__contents(sys__result) == old(Tree__contents(t))[1..] might not hold. (testTreeRecursive.vpr@49.12--49.140) [179025]"}
+        assert {:msg "  Assert might fail. Assertion Tree__contents(sys__result) == old(Tree__contents(t))[1..] might not hold. (testTreeRecursive.vpr@49.12--49.140) [29679]"}
           Seq#Equal(Tree__contents(AssertHeap, sys__result), Seq#Drop(Tree__contents(oldHeap, t_2), 1));
         assume state(Heap, Mask);
       
@@ -1296,17 +1296,17 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (sys__result != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of Tree__del_min might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@26.11--26.73) [179026]"}
+        assert {:msg "  Postcondition of Tree__del_min might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@26.11--26.73) [29680]"}
           perm <= Mask[null, Tree__state(sys__result)];
       }
       Mask := Mask[null, Tree__state(sys__result):=Mask[null, Tree__state(sys__result)] - perm];
     }
-    assert {:msg "  Postcondition of Tree__del_min might not hold. Assertion Tree__contents(sys__result) == old(Tree__contents(t))[1..] might not hold. (testTreeRecursive.vpr@27.11--27.69) [179027]"}
+    assert {:msg "  Postcondition of Tree__del_min might not hold. Assertion Tree__contents(sys__result) == old(Tree__contents(t))[1..] might not hold. (testTreeRecursive.vpr@27.11--27.69) [29681]"}
       Seq#Equal(Tree__contents(Heap, sys__result), Seq#Drop(Tree__contents(oldHeap, t_2), 1));
     // Finish exhale
     havoc ExhaleHeap;
@@ -1321,8 +1321,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
 procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -1332,8 +1332,8 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   var __flatten_8: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1349,8 +1349,8 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1364,7 +1364,7 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Tree__data == 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__data (testTreeRecursive.vpr@57.11--57.78) [179028]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__data (testTreeRecursive.vpr@57.11--57.78) [29682]"}
         HasDirectPerm(PostMask, sys__result, Tree__data);
     assume PostHeap[sys__result, Tree__data] == 0;
     assume state(PostHeap, PostMask);
@@ -1374,7 +1374,7 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Tree__left == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__left (testTreeRecursive.vpr@58.11--58.81) [179029]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__left (testTreeRecursive.vpr@58.11--58.81) [29683]"}
         HasDirectPerm(PostMask, sys__result, Tree__left);
     assume PostHeap[sys__result, Tree__left] == null;
     assume state(PostHeap, PostMask);
@@ -1384,7 +1384,7 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of sys__result.Tree__right == null
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__right (testTreeRecursive.vpr@59.11--59.83) [179030]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access sys__result.Tree__right (testTreeRecursive.vpr@59.11--59.83) [29684]"}
         HasDirectPerm(PostMask, sys__result, Tree__right);
     assume PostHeap[sys__result, Tree__right] == null;
     assume state(PostHeap, PostMask);
@@ -1414,19 +1414,19 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Tree__data := __flatten_8 -- testTreeRecursive.vpr@67.3--67.32
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__data (testTreeRecursive.vpr@67.3--67.32) [179031]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__data (testTreeRecursive.vpr@67.3--67.32) [29685]"}
       FullPerm == Mask[diz, Tree__data];
     Heap := Heap[diz, Tree__data:=__flatten_8];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Tree__left := null -- testTreeRecursive.vpr@68.3--68.25
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__left (testTreeRecursive.vpr@68.3--68.25) [179032]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__left (testTreeRecursive.vpr@68.3--68.25) [29686]"}
       FullPerm == Mask[diz, Tree__left];
     Heap := Heap[diz, Tree__left:=null];
     assume state(Heap, Mask);
   
   // -- Translating statement: diz.Tree__right := null -- testTreeRecursive.vpr@69.3--69.26
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__right (testTreeRecursive.vpr@69.3--69.26) [179033]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access diz.Tree__right (testTreeRecursive.vpr@69.3--69.26) [29687]"}
       FullPerm == Mask[diz, Tree__right];
     Heap := Heap[diz, Tree__right:=null];
     assume state(Heap, Mask);
@@ -1441,45 +1441,45 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   //   (acc(sys__result.Tree__right, write) && sys__result.Tree__right == null))) -- testTreeRecursive.vpr@71.3--71.258
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeRecursive.vpr@71.10--71.258) [179034]"}
+    ExhaleWellDef0Mask := AssertMask;
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeRecursive.vpr@71.10--71.258) [29688]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__data (testTreeRecursive.vpr@71.10--71.258) [179036]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__data (testTreeRecursive.vpr@71.10--71.258) [29690]"}
         perm <= AssertMask[sys__result, Tree__data];
     }
     AssertMask := AssertMask[sys__result, Tree__data:=AssertMask[sys__result, Tree__data] - perm];
     
     // -- Check definedness of sys__result.Tree__data == 0
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__data (testTreeRecursive.vpr@71.10--71.258) [179037]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__data (testTreeRecursive.vpr@71.10--71.258) [29691]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Tree__data);
-    assert {:msg "  Assert might fail. Assertion sys__result.Tree__data == 0 might not hold. (testTreeRecursive.vpr@71.10--71.258) [179038]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Tree__data == 0 might not hold. (testTreeRecursive.vpr@71.10--71.258) [29692]"}
       AssertHeap[sys__result, Tree__data] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__left (testTreeRecursive.vpr@71.10--71.258) [179040]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__left (testTreeRecursive.vpr@71.10--71.258) [29694]"}
         perm <= AssertMask[sys__result, Tree__left];
     }
     AssertMask := AssertMask[sys__result, Tree__left:=AssertMask[sys__result, Tree__left] - perm];
     
     // -- Check definedness of sys__result.Tree__left == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__left (testTreeRecursive.vpr@71.10--71.258) [179041]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__left (testTreeRecursive.vpr@71.10--71.258) [29695]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Tree__left);
-    assert {:msg "  Assert might fail. Assertion sys__result.Tree__left == null might not hold. (testTreeRecursive.vpr@71.10--71.258) [179042]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Tree__left == null might not hold. (testTreeRecursive.vpr@71.10--71.258) [29696]"}
       AssertHeap[sys__result, Tree__left] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__right (testTreeRecursive.vpr@71.10--71.258) [179044]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__right (testTreeRecursive.vpr@71.10--71.258) [29698]"}
         perm <= AssertMask[sys__result, Tree__right];
     }
     AssertMask := AssertMask[sys__result, Tree__right:=AssertMask[sys__result, Tree__right] - perm];
     
     // -- Check definedness of sys__result.Tree__right == null
-      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__right (testTreeRecursive.vpr@71.10--71.258) [179045]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access sys__result.Tree__right (testTreeRecursive.vpr@71.10--71.258) [29699]"}
         HasDirectPerm(ExhaleWellDef0Mask, sys__result, Tree__right);
-    assert {:msg "  Assert might fail. Assertion sys__result.Tree__right == null might not hold. (testTreeRecursive.vpr@71.10--71.258) [179046]"}
+    assert {:msg "  Assert might fail. Assertion sys__result.Tree__right == null might not hold. (testTreeRecursive.vpr@71.10--71.258) [29700]"}
       AssertHeap[sys__result, Tree__right] == null;
     assume state(Heap, Mask);
   
@@ -1489,33 +1489,33 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result != null might not hold. (testTreeRecursive.vpr@56.11--56.30) [179047]"}
+    ExhaleWellDef0Mask := Mask;
+    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result != null might not hold. (testTreeRecursive.vpr@56.11--56.30) [29701]"}
       sys__result != null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__data (testTreeRecursive.vpr@57.11--57.78) [179048]"}
+      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__data (testTreeRecursive.vpr@57.11--57.78) [29702]"}
         perm <= Mask[sys__result, Tree__data];
     }
     Mask := Mask[sys__result, Tree__data:=Mask[sys__result, Tree__data] - perm];
-    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__data == 0 might not hold. (testTreeRecursive.vpr@57.11--57.78) [179049]"}
+    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__data == 0 might not hold. (testTreeRecursive.vpr@57.11--57.78) [29703]"}
       Heap[sys__result, Tree__data] == 0;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__left (testTreeRecursive.vpr@58.11--58.81) [179050]"}
+      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__left (testTreeRecursive.vpr@58.11--58.81) [29704]"}
         perm <= Mask[sys__result, Tree__left];
     }
     Mask := Mask[sys__result, Tree__left:=Mask[sys__result, Tree__left] - perm];
-    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__left == null might not hold. (testTreeRecursive.vpr@58.11--58.81) [179051]"}
+    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__left == null might not hold. (testTreeRecursive.vpr@58.11--58.81) [29705]"}
       Heap[sys__result, Tree__left] == null;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__right (testTreeRecursive.vpr@59.11--59.83) [179052]"}
+      assert {:msg "  Postcondition of Tree__Tree might not hold. There might be insufficient permission to access sys__result.Tree__right (testTreeRecursive.vpr@59.11--59.83) [29706]"}
         perm <= Mask[sys__result, Tree__right];
     }
     Mask := Mask[sys__result, Tree__right:=Mask[sys__result, Tree__right] - perm];
-    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__right == null might not hold. (testTreeRecursive.vpr@59.11--59.83) [179053]"}
+    assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result.Tree__right == null might not hold. (testTreeRecursive.vpr@59.11--59.83) [29707]"}
       Heap[sys__result, Tree__right] == null;
     // Finish exhale
     havoc ExhaleHeap;

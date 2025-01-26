@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:37:48
+; Started: 2025-01-26 21:38:28
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1191,21 +1191,21 @@
     (idx%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00)
     (idx s@$ a@0@00 b@1@00 c@2@00 n@3@00))
   :pattern ((idx s@$ a@0@00 b@1@00 c@2@00 n@3@00))
-  :qid |quant-u-12724|)))
+  :qid |quant-u-19068|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (b@1@00 Int) (c@2@00 $Ref) (n@3@00 Int)) (!
   (idx%stateless a@0@00 b@1@00 c@2@00 n@3@00)
   :pattern ((idx%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00))
-  :qid |quant-u-12725|)))
+  :qid |quant-u-19069|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (b@1@00 Int) (c@2@00 $Ref) (n@3@00 Int)) (!
   (let ((result@4@00 (idx%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00))) (=>
     (idx%precondition s@$ a@0@00 b@1@00 c@2@00 n@3@00)
     (and (<= 0 result@4@00) (< result@4@00 n@3@00))))
   :pattern ((idx%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00))
-  :qid |quant-u-12726|)))
+  :qid |quant-u-19070|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (b@1@00 Int) (c@2@00 $Ref) (n@3@00 Int)) (!
   (let ((result@4@00 (idx%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00))) true)
   :pattern ((idx%limited s@$ a@0@00 b@1@00 c@2@00 n@3@00))
-  :qid |quant-u-12727|)))
+  :qid |quant-u-19071|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test01 ----------
@@ -1752,7 +1752,7 @@
       (= (inv@11@01 (Seq_index xs@2@01 i@9@01)) i@9@01)
       (img@12@01 (Seq_index xs@2@01 i@9@01))))
   :pattern ((Seq_index xs@2@01 i@9@01))
-  :qid |quant-u-12729|)))
+  :qid |quant-u-19073|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@12@01 r) (and (<= 0 (inv@11@01 r)) (< (inv@11@01 r) n@3@01)))
@@ -1773,16 +1773,16 @@
 (check-sat)
 ; unknown
 ; [exec]
-; inhale (forall i: Int, j: Int, fresh__131: Int ::
-;     { xs[idx(i, j, xs[fresh__131], n)] }
+; inhale (forall i: Int, j: Int, fresh__150: Int ::
+;     { xs[idx(i, j, xs[fresh__150], n)] }
 ;     0 <= i && (i < n && (0 <= j && j < i)) ==>
 ;     xs[idx(i, j, xs[j + 1], n)].f == i + j)
 (declare-const $t@13@01 $Snap)
 (assert (= $t@13@01 $Snap.unit))
-; [eval] (forall i: Int, j: Int, fresh__131: Int :: { xs[idx(i, j, xs[fresh__131], n)] } 0 <= i && (i < n && (0 <= j && j < i)) ==> xs[idx(i, j, xs[j + 1], n)].f == i + j)
+; [eval] (forall i: Int, j: Int, fresh__150: Int :: { xs[idx(i, j, xs[fresh__150], n)] } 0 <= i && (i < n && (0 <= j && j < i)) ==> xs[idx(i, j, xs[j + 1], n)].f == i + j)
 (declare-const i@14@01 Int)
 (declare-const j@15@01 Int)
-(declare-const fresh__131@16@01 Int)
+(declare-const fresh__150@16@01 Int)
 (set-option :timeout 0)
 (push) ; 3
 ; [eval] 0 <= i && (i < n && (0 <= j && j < i)) ==> xs[idx(i, j, xs[j + 1], n)].f == i + j
@@ -1948,11 +1948,11 @@
   (and
     (<= 0 i@14@01)
     (and (< i@14@01 n@3@01) (and (<= 0 j@15@01) (< j@15@01 i@14@01))))))
-; [eval] xs[idx(i, j, xs[fresh__131], n)]
-; [eval] idx(i, j, xs[fresh__131], n)
-; [eval] xs[fresh__131]
+; [eval] xs[idx(i, j, xs[fresh__150], n)]
+; [eval] idx(i, j, xs[fresh__150], n)
+; [eval] xs[fresh__150]
 (push) ; 4
-(assert (not (>= fresh__131@16@01 0)))
+(assert (not (>= fresh__150@16@01 0)))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1961,7 +1961,7 @@
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((i@14@01 Int) (j@15@01 Int) (fresh__131@16@01 Int)) (!
+(assert (forall ((i@14@01 Int) (j@15@01 Int) (fresh__150@16@01 Int)) (!
   (and
     (=>
       (<= 0 i@14@01)
@@ -1994,7 +1994,7 @@
         (and (< i@14@01 n@3@01) (and (<= 0 j@15@01) (< j@15@01 i@14@01))))))
   
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/silver/src/test/resources/quantifiedpermissions/issues/issue_0147.vpr@15@10@18@45-aux|)))
-(assert (forall ((i@14@01 Int) (j@15@01 Int) (fresh__131@16@01 Int)) (!
+(assert (forall ((i@14@01 Int) (j@15@01 Int) (fresh__150@16@01 Int)) (!
   (=>
     (and
       (<= 0 i@14@01)

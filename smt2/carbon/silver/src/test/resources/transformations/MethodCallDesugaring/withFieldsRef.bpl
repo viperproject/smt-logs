@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:59:12
+// Date:         2025-01-26 21:44:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/MethodCallDesugaring/withFieldsRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/MethodCallDesugaring/withFieldsRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -222,7 +222,7 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: a.f := 5 -- withFieldsRef.vpr@11.5--11.13
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access a.f (withFieldsRef.vpr@11.5--11.13) [92738]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access a.f (withFieldsRef.vpr@11.5--11.13) [198185]"}
       FullPerm == Mask[a_2, f_7];
     Heap := Heap[a_2, f_7:=5];
     assume state(Heap, Mask);
@@ -232,15 +232,15 @@ procedure main() returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access a.f (withFieldsRef.vpr@12.12--12.32) [92740]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access a.f (withFieldsRef.vpr@12.12--12.32) [198187]"}
         perm <= Mask[a_2, f_7];
     }
     Mask := Mask[a_2, f_7:=Mask[a_2, f_7] - perm];
     
     // -- Check definedness of a.f == 5
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access a.f (withFieldsRef.vpr@12.12--12.32) [92741]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access a.f (withFieldsRef.vpr@12.12--12.32) [198188]"}
         HasDirectPerm(ExhaleWellDef0Mask, a_2, f_7);
-    assert {:msg "  Exhale might fail. Assertion a.f == 5 might not hold. (withFieldsRef.vpr@12.12--12.32) [92742]"}
+    assert {:msg "  Exhale might fail. Assertion a.f == 5 might not hold. (withFieldsRef.vpr@12.12--12.32) [198189]"}
       Heap[a_2, f_7] == 5;
     // Finish exhale
     havoc ExhaleHeap;
@@ -261,7 +261,7 @@ procedure main() returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of a.f == res
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access a.f (withFieldsRef.vpr@14.12--14.44) [92743]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access a.f (withFieldsRef.vpr@14.12--14.44) [198190]"}
         HasDirectPerm(Mask, a_2, f_7);
     assume Heap[a_2, f_7] == res;
     assume state(Heap, Mask);
@@ -272,9 +272,9 @@ procedure main() returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of a.f == res
-      assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (withFieldsRef.vpr@16.12--16.22) [92744]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (withFieldsRef.vpr@16.12--16.22) [198191]"}
         HasDirectPerm(ExhaleWellDef0Mask, a_2, f_7);
-    assert {:msg "  Assert might fail. Assertion a.f == res might not hold. (withFieldsRef.vpr@16.12--16.22) [92745]"}
+    assert {:msg "  Assert might fail. Assertion a.f == res might not hold. (withFieldsRef.vpr@16.12--16.22) [198192]"}
       Heap[a_2, f_7] == res;
     assume state(Heap, Mask);
 }
@@ -283,7 +283,7 @@ procedure main() returns ()
 // Translation of method foo
 // ==================================================
 
-procedure foo_1(x: Ref, y: int) returns (r1: int)
+procedure foo_3(x: Ref, y: int) returns (r1: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -311,7 +311,7 @@ procedure foo_1(x: Ref, y: int) returns (r1: int)
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 5
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (withFieldsRef.vpr@20.14--20.34) [92746]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (withFieldsRef.vpr@20.14--20.34) [198193]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 5;
     assume state(Heap, Mask);
@@ -335,7 +335,7 @@ procedure foo_1(x: Ref, y: int) returns (r1: int)
     assume state(PostHeap, PostMask);
     
     // -- Check definedness of x.f == r1
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (withFieldsRef.vpr@22.13--22.44) [92747]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (withFieldsRef.vpr@22.13--22.44) [198194]"}
         HasDirectPerm(PostMask, x, f_7);
     assume PostHeap[x, f_7] == r1;
     assume state(PostHeap, PostMask);
@@ -348,7 +348,7 @@ procedure foo_1(x: Ref, y: int) returns (r1: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: x.f := r1 -- withFieldsRef.vpr@25.5--25.14
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (withFieldsRef.vpr@25.5--25.14) [92748]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (withFieldsRef.vpr@25.5--25.14) [198195]"}
       FullPerm == Mask[x, f_7];
     Heap := Heap[x, f_7:=r1];
     assume state(Heap, Mask);
@@ -356,14 +356,14 @@ procedure foo_1(x: Ref, y: int) returns (r1: int)
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of foo might not hold. Assertion r1 == y might not hold. (withFieldsRef.vpr@21.13--21.20) [92749]"}
+    assert {:msg "  Postcondition of foo might not hold. Assertion r1 == y might not hold. (withFieldsRef.vpr@21.13--21.20) [198196]"}
       r1 == y;
-    assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access x.f (withFieldsRef.vpr@22.13--22.44) [92750]"}
+    assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access x.f (withFieldsRef.vpr@22.13--22.44) [198197]"}
       Mask[x, f_7] > NoPerm;
     havoc wildcard;
     assume wildcard < Mask[x, f_7];
     Mask := Mask[x, f_7:=Mask[x, f_7] - wildcard];
-    assert {:msg "  Postcondition of foo might not hold. Assertion x.f == r1 might not hold. (withFieldsRef.vpr@22.13--22.44) [92751]"}
+    assert {:msg "  Postcondition of foo might not hold. Assertion x.f == r1 might not hold. (withFieldsRef.vpr@22.13--22.44) [198198]"}
       Heap[x, f_7] == r1;
     // Finish exhale
     havoc ExhaleHeap;

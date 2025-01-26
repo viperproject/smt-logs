@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:23
+// Date:         2025-01-26 21:41:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0236.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0236-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -212,16 +212,16 @@ function  Option2_None<T>(): Option2DomainType T;
 function  Option2_Some<T>(Option2_Some_param_2: T): Option2DomainType T;
 
 // Translation of domain axiom ax_Option2_None_discr
-axiom (forall <T> o_193: (Option2DomainType T) ::
-  { (Option2_discr(o_193): int) }
-  (Option2_discr(o_193): int) >= 0 && (Option2_discr((Option2_None(): Option2DomainType T)): int) == 0
+axiom (forall <T> o_61: (Option2DomainType T) ::
+  { (Option2_discr(o_61): int) }
+  (Option2_discr(o_61): int) >= 0 && (Option2_discr((Option2_None(): Option2DomainType T)): int) == 0
 );
 
 // ==================================================
 // Translation of method m
 // ==================================================
 
-procedure m() returns ()
+procedure m_17() returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -243,21 +243,21 @@ procedure m() returns ()
   // -- Translating statement: assert (Option_discr((Option_None(): Option[Bool])): Int) == 0 -- 0236.vpr@14.5--14.60
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Option_discr((Option_None(): Option[Bool])): Int) == 0 might not hold. (0236.vpr@14.12--14.60) [222356]"}
+    assert {:msg "  Assert might fail. Assertion (Option_discr((Option_None(): Option[Bool])): Int) == 0 might not hold. (0236.vpr@14.12--14.60) [53877]"}
       (Option_discr((Option_None(): OptionDomainType bool)): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Option_discr((Option_None(): Option[Ref])): Int) == 0 -- 0236.vpr@15.5--15.59
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Option_discr((Option_None(): Option[Ref])): Int) == 0 might not hold. (0236.vpr@15.12--15.59) [222357]"}
+    assert {:msg "  Assert might fail. Assertion (Option_discr((Option_None(): Option[Ref])): Int) == 0 might not hold. (0236.vpr@15.12--15.59) [53878]"}
       (Option_discr((Option_None(): OptionDomainType Ref)): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Option_discr((Option_None(): Option[Perm])): Int) == 1 -- 0236.vpr@18.5--18.60
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Option_discr((Option_None(): Option[Perm])): Int) == 1 might not hold. (0236.vpr@18.12--18.60) [222358]"}
+    assert {:msg "  Assert might fail. Assertion (Option_discr((Option_None(): Option[Perm])): Int) == 1 might not hold. (0236.vpr@18.12--18.60) [53879]"}
       (Option_discr((Option_None(): OptionDomainType Perm)): int) == 1;
     assume state(Heap, Mask);
 }
@@ -288,14 +288,14 @@ procedure m2() returns ()
   // -- Translating statement: assert (Option2_discr((Option2_None(): Option2[Bool])): Int) == 0 -- 0236.vpr@32.5--32.63
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Option2_discr((Option2_None(): Option2[Bool])): Int) == 0 might not hold. (0236.vpr@32.12--32.63) [222359]"}
+    assert {:msg "  Assert might fail. Assertion (Option2_discr((Option2_None(): Option2[Bool])): Int) == 0 might not hold. (0236.vpr@32.12--32.63) [53880]"}
       (Option2_discr((Option2_None(): Option2DomainType bool)): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Option2_discr((Option2_None(): Option2[Bool])): Int) == 1 -- 0236.vpr@35.5--35.63
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion (Option2_discr((Option2_None(): Option2[Bool])): Int) == 1 might not hold. (0236.vpr@35.12--35.63) [222360]"}
+    assert {:msg "  Assert might fail. Assertion (Option2_discr((Option2_None(): Option2[Bool])): Int) == 1 might not hold. (0236.vpr@35.12--35.63) [53881]"}
       (Option2_discr((Option2_None(): Option2DomainType bool)): int) == 1;
     assume state(Heap, Mask);
 }

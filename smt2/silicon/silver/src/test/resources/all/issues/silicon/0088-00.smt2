@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:45:30
+; Started: 2025-01-26 21:34:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -136,25 +136,25 @@
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (= (fib%limited s@$ n@0@00) (fib s@$ n@0@00))
   :pattern ((fib s@$ n@0@00))
-  :qid |quant-u-23800|)))
+  :qid |quant-u-11089|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (fib%stateless n@0@00)
   :pattern ((fib%limited s@$ n@0@00))
-  :qid |quant-u-23801|)))
+  :qid |quant-u-11090|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (let ((result@1@00 (fib%limited s@$ n@0@00))) (=>
     (fib%precondition s@$ n@0@00)
     (and (= (= result@1@00 0) (= n@0@00 0)) (>= result@1@00 0))))
   :pattern ((fib%limited s@$ n@0@00))
-  :qid |quant-u-23802|)))
+  :qid |quant-u-11091|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (let ((result@1@00 (fib%limited s@$ n@0@00))) true)
   :pattern ((fib%limited s@$ n@0@00))
-  :qid |quant-u-23803|)))
+  :qid |quant-u-11092|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (let ((result@1@00 (fib%limited s@$ n@0@00))) true)
   :pattern ((fib%limited s@$ n@0@00))
-  :qid |quant-u-23804|)))
+  :qid |quant-u-11093|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -279,7 +279,7 @@
           (fib%limited $Snap.unit (- n@0@00 1))
           (fib%limited $Snap.unit (- n@0@00 2))))))
   :pattern ((fib s@$ n@0@00))
-  :qid |quant-u-23805|)))
+  :qid |quant-u-11094|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (=>
     (fib%precondition s@$ n@0@00)
@@ -290,7 +290,7 @@
         (fib%precondition $Snap.unit (- n@0@00 1))
         (fib%precondition $Snap.unit (- n@0@00 2)))))
   :pattern ((fib s@$ n@0@00))
-  :qid |quant-u-23806|)))
+  :qid |quant-u-11095|)))
 ; ---------- P ----------
 (declare-const x@3@00 $Ref)
 (push) ; 1

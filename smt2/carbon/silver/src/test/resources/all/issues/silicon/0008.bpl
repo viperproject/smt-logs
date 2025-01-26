@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:55
+// Date:         2025-01-26 21:42:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0008.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0008-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -210,13 +210,13 @@ procedure deAlias(x: Ref, y: Ref, k: Perm) returns ()
     assume NoPerm <= k;
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@8.12--8.38) [215665]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@8.12--8.38) [68888]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@8.12--8.38) [215666]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@8.12--8.38) [68889]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> y != null;
     Mask := Mask[y, f_7:=Mask[y, f_7] + perm];
@@ -235,7 +235,7 @@ procedure deAlias(x: Ref, y: Ref, k: Perm) returns ()
     // Checked inhaling of postcondition to check definedness
     if (x == y) {
       perm := real(2) * k;
-      assert {:msg "  Contract might not be well-formed. Fraction 2 * k might be negative. (0008.vpr@9.11--9.37) [215667]"}
+      assert {:msg "  Contract might not be well-formed. Fraction 2 * k might be negative. (0008.vpr@9.11--9.37) [68890]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> x != null;
       PostMask := PostMask[x, f_7:=PostMask[x, f_7] + perm];
@@ -244,13 +244,13 @@ procedure deAlias(x: Ref, y: Ref, k: Perm) returns ()
     assume state(PostHeap, PostMask);
     if (x != y) {
       perm := k;
-      assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@10.11--10.48) [215668]"}
+      assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@10.11--10.48) [68891]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> x != null;
       PostMask := PostMask[x, f_7:=PostMask[x, f_7] + perm];
       assume state(PostHeap, PostMask);
       perm := k;
-      assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@10.11--10.48) [215669]"}
+      assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@10.11--10.48) [68892]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> y != null;
       PostMask := PostMask[y, f_7:=PostMask[y, f_7] + perm];
@@ -266,28 +266,28 @@ procedure deAlias(x: Ref, y: Ref, k: Perm) returns ()
     ExhaleWellDef0Heap := Heap;
     if (x == y) {
       perm := real(2) * k;
-      assert {:msg "  Postcondition of deAlias might not hold. Fraction 2 * k might be negative. (0008.vpr@9.11--9.37) [215670]"}
+      assert {:msg "  Postcondition of deAlias might not hold. Fraction 2 * k might be negative. (0008.vpr@9.11--9.37) [68893]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of deAlias might not hold. There might be insufficient permission to access x.f (0008.vpr@9.11--9.37) [215671]"}
+        assert {:msg "  Postcondition of deAlias might not hold. There might be insufficient permission to access x.f (0008.vpr@9.11--9.37) [68894]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
     }
     if (x != y) {
       perm := k;
-      assert {:msg "  Postcondition of deAlias might not hold. Fraction k might be negative. (0008.vpr@10.11--10.48) [215672]"}
+      assert {:msg "  Postcondition of deAlias might not hold. Fraction k might be negative. (0008.vpr@10.11--10.48) [68895]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of deAlias might not hold. There might be insufficient permission to access x.f (0008.vpr@10.11--10.48) [215673]"}
+        assert {:msg "  Postcondition of deAlias might not hold. There might be insufficient permission to access x.f (0008.vpr@10.11--10.48) [68896]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
       perm := k;
-      assert {:msg "  Postcondition of deAlias might not hold. Fraction k might be negative. (0008.vpr@10.11--10.48) [215674]"}
+      assert {:msg "  Postcondition of deAlias might not hold. Fraction k might be negative. (0008.vpr@10.11--10.48) [68897]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of deAlias might not hold. There might be insufficient permission to access y.f (0008.vpr@10.11--10.48) [215675]"}
+        assert {:msg "  Postcondition of deAlias might not hold. There might be insufficient permission to access y.f (0008.vpr@10.11--10.48) [68898]"}
           perm <= Mask[y, f_7];
       }
       Mask := Mask[y, f_7:=Mask[y, f_7] - perm];
@@ -327,13 +327,13 @@ procedure deAlias2(x: Ref, y: Ref, k: Perm) returns ()
     assume NoPerm <= k;
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@15.12--15.38) [215676]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@15.12--15.38) [68899]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
     assume state(Heap, Mask);
     perm := k;
-    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@15.12--15.38) [215677]"}
+    assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@15.12--15.38) [68900]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> y != null;
     Mask := Mask[y, f_7:=Mask[y, f_7] + perm];
@@ -352,20 +352,20 @@ procedure deAlias2(x: Ref, y: Ref, k: Perm) returns ()
     // Checked inhaling of postcondition to check definedness
     if (x == y) {
       perm := real(2) * k;
-      assert {:msg "  Contract might not be well-formed. Fraction 2 * k might be negative. (0008.vpr@16.11--16.64) [215678]"}
+      assert {:msg "  Contract might not be well-formed. Fraction 2 * k might be negative. (0008.vpr@16.11--16.64) [68901]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> x != null;
       PostMask := PostMask[x, f_7:=PostMask[x, f_7] + perm];
       assume state(PostHeap, PostMask);
     } else {
       perm := k;
-      assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@16.11--16.64) [215679]"}
+      assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@16.11--16.64) [68902]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> x != null;
       PostMask := PostMask[x, f_7:=PostMask[x, f_7] + perm];
       assume state(PostHeap, PostMask);
       perm := k;
-      assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@16.11--16.64) [215680]"}
+      assert {:msg "  Contract might not be well-formed. Fraction k might be negative. (0008.vpr@16.11--16.64) [68903]"}
         perm >= NoPerm;
       assume perm > NoPerm ==> y != null;
       PostMask := PostMask[y, f_7:=PostMask[y, f_7] + perm];
@@ -381,27 +381,27 @@ procedure deAlias2(x: Ref, y: Ref, k: Perm) returns ()
     ExhaleWellDef0Heap := Heap;
     if (x == y) {
       perm := real(2) * k;
-      assert {:msg "  Postcondition of deAlias2 might not hold. Fraction 2 * k might be negative. (0008.vpr@16.11--16.64) [215681]"}
+      assert {:msg "  Postcondition of deAlias2 might not hold. Fraction 2 * k might be negative. (0008.vpr@16.11--16.64) [68904]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of deAlias2 might not hold. There might be insufficient permission to access x.f (0008.vpr@16.11--16.64) [215682]"}
+        assert {:msg "  Postcondition of deAlias2 might not hold. There might be insufficient permission to access x.f (0008.vpr@16.11--16.64) [68905]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
     } else {
       perm := k;
-      assert {:msg "  Postcondition of deAlias2 might not hold. Fraction k might be negative. (0008.vpr@16.11--16.64) [215683]"}
+      assert {:msg "  Postcondition of deAlias2 might not hold. Fraction k might be negative. (0008.vpr@16.11--16.64) [68906]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of deAlias2 might not hold. There might be insufficient permission to access x.f (0008.vpr@16.11--16.64) [215684]"}
+        assert {:msg "  Postcondition of deAlias2 might not hold. There might be insufficient permission to access x.f (0008.vpr@16.11--16.64) [68907]"}
           perm <= Mask[x, f_7];
       }
       Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
       perm := k;
-      assert {:msg "  Postcondition of deAlias2 might not hold. Fraction k might be negative. (0008.vpr@16.11--16.64) [215685]"}
+      assert {:msg "  Postcondition of deAlias2 might not hold. Fraction k might be negative. (0008.vpr@16.11--16.64) [68908]"}
         perm >= NoPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of deAlias2 might not hold. There might be insufficient permission to access y.f (0008.vpr@16.11--16.64) [215686]"}
+        assert {:msg "  Postcondition of deAlias2 might not hold. There might be insufficient permission to access y.f (0008.vpr@16.11--16.64) [68909]"}
           perm <= Mask[y, f_7];
       }
       Mask := Mask[y, f_7:=Mask[y, f_7] - perm];

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:03:45
+// Date:         2025-01-26 21:41:15
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/tutorial/predicates-lseg.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/tutorial/predicates-lseg-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_35: Ref, f_31: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_35, f_31] }
-  Heap[o_35, $allocated] ==> Heap[Heap[o_35, f_31], $allocated]
+axiom (forall o_3: Ref, f_8: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_3, f_8] }
+  Heap[o_3, $allocated] ==> Heap[Heap[o_3, f_8], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref, f_30: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, f_30] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_22, f_30) ==> Heap[o_22, f_30] == ExhaleHeap[o_22, f_30]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref, f_9: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, f_9] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_4, f_9) ==> Heap[o_4, f_9] == ExhaleHeap[o_4, f_9]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13), ExhaleHeap[null, PredicateMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> Heap[null, PredicateMaskField(pm_f_13)] == ExhaleHeap[null, PredicateMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsPredicateField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, PredicateMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13), ExhaleHeap[null, WandMaskField(pm_f_13)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> Heap[null, WandMaskField(pm_f_13)] == ExhaleHeap[null, WandMaskField(pm_f_13)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_13: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_13) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_13) && IsWandField(pm_f_13) ==> (forall <A, B> o2_13: Ref, f_30: (Field A B) ::
-    { ExhaleHeap[o2_13, f_30] }
-    Heap[null, WandMaskField(pm_f_13)][o2_13, f_30] ==> Heap[o2_13, f_30] == ExhaleHeap[o2_13, f_30]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_9: (Field A B) ::
+    { ExhaleHeap[o2_1, f_9] }
+    Heap[null, WandMaskField(pm_f_1)][o2_1, f_9] ==> Heap[o2_1, f_9] == ExhaleHeap[o2_1, f_9]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_22: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_22, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_22, $allocated] ==> ExhaleHeap[o_22, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_4: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_4, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_4, $allocated] ==> ExhaleHeap[o_4, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_35: Ref, f_11: (Field A B), v: B ::
-  { Heap[o_35, f_11:=v] }
-  succHeap(Heap, Heap[o_35, f_11:=v])
+axiom (forall <A, B> Heap: HeapType, o_3: Ref, f_10: (Field A B), v: B ::
+  { Heap[o_3, f_10:=v] }
+  succHeap(Heap, Heap[o_3, f_10:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -541,9 +541,9 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 // Translation of all fields
 // ==================================================
 
-const unique elem_1: Field NormalField int;
-axiom !IsPredicateField(elem_1);
-axiom !IsWandField(elem_1);
+const unique elem: Field NormalField int;
+axiom !IsPredicateField(elem);
+axiom !IsWandField(elem);
 const unique next: Field NormalField Ref;
 axiom !IsPredicateField(next);
 axiom !IsWandField(next);
@@ -553,37 +553,37 @@ axiom !IsWandField(next);
 // ==================================================
 
 type PredicateType_lseg;
-function  lseg(first_1: Ref, last: Ref, values: (Seq int)): Field PredicateType_lseg FrameType;
-function  lseg#sm(first_1: Ref, last: Ref, values: (Seq int)): Field PredicateType_lseg PMaskType;
-axiom (forall first_1: Ref, last: Ref, values: (Seq int) ::
-  { PredicateMaskField(lseg(first_1, last, values)) }
-  PredicateMaskField(lseg(first_1, last, values)) == lseg#sm(first_1, last, values)
+function  lseg(first: Ref, last: Ref, values: (Seq int)): Field PredicateType_lseg FrameType;
+function  lseg#sm(first: Ref, last: Ref, values: (Seq int)): Field PredicateType_lseg PMaskType;
+axiom (forall first: Ref, last: Ref, values: (Seq int) ::
+  { PredicateMaskField(lseg(first, last, values)) }
+  PredicateMaskField(lseg(first, last, values)) == lseg#sm(first, last, values)
 );
-axiom (forall first_1: Ref, last: Ref, values: (Seq int) ::
-  { lseg(first_1, last, values) }
-  IsPredicateField(lseg(first_1, last, values))
+axiom (forall first: Ref, last: Ref, values: (Seq int) ::
+  { lseg(first, last, values) }
+  IsPredicateField(lseg(first, last, values))
 );
-axiom (forall first_1: Ref, last: Ref, values: (Seq int) ::
-  { lseg(first_1, last, values) }
-  getPredWandId(lseg(first_1, last, values)) == 0
+axiom (forall first: Ref, last: Ref, values: (Seq int) ::
+  { lseg(first, last, values) }
+  getPredWandId(lseg(first, last, values)) == 0
 );
 function  lseg#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  lseg#everUsed<A>(pred: (Field A FrameType)): bool;
-axiom (forall first_1: Ref, last: Ref, values: (Seq int), first2: Ref, last2: Ref, values2: (Seq int) ::
-  { lseg(first_1, last, values), lseg(first2, last2, values2) }
-  lseg(first_1, last, values) == lseg(first2, last2, values2) ==> first_1 == first2 && (last == last2 && values == values2)
+axiom (forall first: Ref, last: Ref, values: (Seq int), first2: Ref, last2: Ref, values2: (Seq int) ::
+  { lseg(first, last, values), lseg(first2, last2, values2) }
+  lseg(first, last, values) == lseg(first2, last2, values2) ==> first == first2 && (last == last2 && values == values2)
 );
-axiom (forall first_1: Ref, last: Ref, values: (Seq int), first2: Ref, last2: Ref, values2: (Seq int) ::
-  { lseg#sm(first_1, last, values), lseg#sm(first2, last2, values2) }
-  lseg#sm(first_1, last, values) == lseg#sm(first2, last2, values2) ==> first_1 == first2 && (last == last2 && values == values2)
-);
-
-axiom (forall Heap: HeapType, first_1: Ref, last: Ref, values: (Seq int) ::
-  { lseg#trigger(Heap, lseg(first_1, last, values)) }
-  lseg#everUsed(lseg(first_1, last, values))
+axiom (forall first: Ref, last: Ref, values: (Seq int), first2: Ref, last2: Ref, values2: (Seq int) ::
+  { lseg#sm(first, last, values), lseg#sm(first2, last2, values2) }
+  lseg#sm(first, last, values) == lseg#sm(first2, last2, values2) ==> first == first2 && (last == last2 && values == values2)
 );
 
-procedure lseg#definedness(first_1: Ref, last: Ref, values: (Seq int)) returns ()
+axiom (forall Heap: HeapType, first: Ref, last: Ref, values: (Seq int) ::
+  { lseg#trigger(Heap, lseg(first, last, values)) }
+  lseg#everUsed(lseg(first, last, values))
+);
+
+procedure lseg#definedness(first: Ref, last: Ref, values: (Seq int)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -594,31 +594,31 @@ procedure lseg#definedness(first_1: Ref, last: Ref, values: (Seq int)) returns (
       Mask := ZeroMask;
       assume state(Heap, Mask);
       assume AssumePermUpperBound;
-      assume Heap[first_1, $allocated];
+      assume Heap[first, $allocated];
       assume Heap[last, $allocated];
-    if (first_1 != last) {
+    if (first != last) {
       perm := FullPerm;
-      assume first_1 != null;
-      Mask := Mask[first_1, elem_1:=Mask[first_1, elem_1] + perm];
+      assume first != null;
+      Mask := Mask[first, elem:=Mask[first, elem] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      assume first_1 != null;
-      Mask := Mask[first_1, next:=Mask[first_1, next] + perm];
+      assume first != null;
+      Mask := Mask[first, next:=Mask[first, next] + perm];
       assume state(Heap, Mask);
       assume 0 < Seq#Length(values);
       
       // -- Check definedness of first.elem == values[0]
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access first.elem (predicates-lseg.vpr@7.1--14.2) [119988]"}
-          HasDirectPerm(Mask, first_1, elem_1);
-        assert {:msg "  Predicate might not be well-formed. Index values[0] into values might exceed sequence length. (predicates-lseg.vpr@7.1--14.2) [119989]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access first.elem (predicates-lseg.vpr@7.1--14.2) [1192]"}
+          HasDirectPerm(Mask, first, elem);
+        assert {:msg "  Predicate might not be well-formed. Index values[0] into values might exceed sequence length. (predicates-lseg.vpr@7.1--14.2) [1193]"}
           0 < Seq#Length(values);
-      assume Heap[first_1, elem_1] == Seq#Index(values, 0);
+      assume Heap[first, elem] == Seq#Index(values, 0);
       
       // -- Check definedness of acc(lseg(first.next, last, values[1..]), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access first.next (predicates-lseg.vpr@7.1--14.2) [119990]"}
-          HasDirectPerm(Mask, first_1, next);
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access first.next (predicates-lseg.vpr@7.1--14.2) [1194]"}
+          HasDirectPerm(Mask, first, next);
       perm := FullPerm;
-      Mask := Mask[null, lseg(Heap[first_1, next], last, Seq#Drop(values, 1)):=Mask[null, lseg(Heap[first_1, next], last, Seq#Drop(values, 1))] + perm];
+      Mask := Mask[null, lseg(Heap[first, next], last, Seq#Drop(values, 1)):=Mask[null, lseg(Heap[first, next], last, Seq#Drop(values, 1))] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -628,16 +628,16 @@ procedure lseg#definedness(first_1: Ref, last: Ref, values: (Seq int)) returns (
 // Translation of method findFirst
 // ==================================================
 
-procedure findFirst(first_1: Ref, last: Ref, values: (Seq int)) returns (value_1: int, second_1: Ref)
+procedure findFirst(first: Ref, last: Ref, values: (Seq int)) returns (value: int, second: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -647,29 +647,29 @@ procedure findFirst(first_1: Ref, last: Ref, values: (Seq int)) returns (value_1
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[first_1, $allocated];
+    assume Heap[first, $allocated];
     assume Heap[last, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    Mask := Mask[null, lseg(first_1, last, values):=Mask[null, lseg(first_1, last, values)] + perm];
+    Mask := Mask[null, lseg(first, last, values):=Mask[null, lseg(first, last, values)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume first_1 != last;
+    assume first != last;
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
-    PostMask := PostMask[null, lseg(second_1, last, Seq#Drop(values, 1)):=PostMask[null, lseg(second_1, last, Seq#Drop(values, 1))] + perm];
+    PostMask := PostMask[null, lseg(second, last, Seq#Drop(values, 1)):=PostMask[null, lseg(second, last, Seq#Drop(values, 1))] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -677,38 +677,38 @@ procedure findFirst(first_1: Ref, last: Ref, values: (Seq int)) returns (value_1
   }
   
   // -- Translating statement: unfold acc(lseg(first, last, values), write) -- predicates-lseg.vpr@22.3--22.35
-    assume lseg#trigger(Heap, lseg(first_1, last, values));
-    assume Heap[null, lseg(first_1, last, values)] == FrameFragment((if first_1 != last then CombineFrames(FrameFragment(Heap[first_1, elem_1]), CombineFrames(FrameFragment(Heap[first_1, next]), Heap[null, lseg(Heap[first_1, next], last, Seq#Drop(values, 1))])) else EmptyFrame));
-    ExhaleWellDef0Heap := Heap;
+    assume lseg#trigger(Heap, lseg(first, last, values));
+    assume Heap[null, lseg(first, last, values)] == FrameFragment((if first != last then CombineFrames(FrameFragment(Heap[first, elem]), CombineFrames(FrameFragment(Heap[first, next]), Heap[null, lseg(Heap[first, next], last, Seq#Drop(values, 1))])) else EmptyFrame));
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding lseg(first, last, values) might fail. There might be insufficient permission to access lseg(first, last, values) (predicates-lseg.vpr@22.3--22.35) [119993]"}
-        perm <= Mask[null, lseg(first_1, last, values)];
+      assert {:msg "  Unfolding lseg(first, last, values) might fail. There might be insufficient permission to access lseg(first, last, values) (predicates-lseg.vpr@22.3--22.35) [1197]"}
+        perm <= Mask[null, lseg(first, last, values)];
     }
-    Mask := Mask[null, lseg(first_1, last, values):=Mask[null, lseg(first_1, last, values)] - perm];
+    Mask := Mask[null, lseg(first, last, values):=Mask[null, lseg(first, last, values)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, lseg(first_1, last, values))) {
+      if (!HasDirectPerm(Mask, null, lseg(first, last, values))) {
         havoc newVersion;
-        Heap := Heap[null, lseg(first_1, last, values):=newVersion];
+        Heap := Heap[null, lseg(first, last, values):=newVersion];
       }
-    if (first_1 != last) {
+    if (first != last) {
       perm := FullPerm;
-      assume first_1 != null;
-      Mask := Mask[first_1, elem_1:=Mask[first_1, elem_1] + perm];
+      assume first != null;
+      Mask := Mask[first, elem:=Mask[first, elem] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      assume first_1 != null;
-      Mask := Mask[first_1, next:=Mask[first_1, next] + perm];
+      assume first != null;
+      Mask := Mask[first, next:=Mask[first, next] + perm];
       assume state(Heap, Mask);
       assume 0 < Seq#Length(values);
-      assume Heap[first_1, elem_1] == Seq#Index(values, 0);
+      assume Heap[first, elem] == Seq#Index(values, 0);
       perm := FullPerm;
-      Mask := Mask[null, lseg(Heap[first_1, next], last, Seq#Drop(values, 1)):=Mask[null, lseg(Heap[first_1, next], last, Seq#Drop(values, 1))] + perm];
+      Mask := Mask[null, lseg(Heap[first, next], last, Seq#Drop(values, 1)):=Mask[null, lseg(Heap[first, next], last, Seq#Drop(values, 1))] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(lseg(first_1, last, values), Heap[null, lseg(first_1, last, values)], lseg(Heap[first_1, next], last, Seq#Drop(values, 1)), Heap[null, lseg(Heap[first_1, next], last, Seq#Drop(values, 1))]);
+        assume InsidePredicate(lseg(first, last, values), Heap[null, lseg(first, last, values)], lseg(Heap[first, next], last, Seq#Drop(values, 1)), Heap[null, lseg(Heap[first, next], last, Seq#Drop(values, 1))]);
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -717,28 +717,28 @@ procedure findFirst(first_1: Ref, last: Ref, values: (Seq int)) returns (value_1
   // -- Translating statement: value := first.elem -- predicates-lseg.vpr@24.3--24.22
     
     // -- Check definedness of first.elem
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access first.elem (predicates-lseg.vpr@24.3--24.22) [119997]"}
-        HasDirectPerm(Mask, first_1, elem_1);
-    value_1 := Heap[first_1, elem_1];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access first.elem (predicates-lseg.vpr@24.3--24.22) [1201]"}
+        HasDirectPerm(Mask, first, elem);
+    value := Heap[first, elem];
     assume state(Heap, Mask);
   
   // -- Translating statement: second := first.next -- predicates-lseg.vpr@25.3--25.23
     
     // -- Check definedness of first.next
-      assert {:msg "  Assignment might fail. There might be insufficient permission to access first.next (predicates-lseg.vpr@25.3--25.23) [119998]"}
-        HasDirectPerm(Mask, first_1, next);
-    second_1 := Heap[first_1, next];
+      assert {:msg "  Assignment might fail. There might be insufficient permission to access first.next (predicates-lseg.vpr@25.3--25.23) [1202]"}
+        HasDirectPerm(Mask, first, next);
+    second := Heap[first, next];
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of findFirst might not hold. There might be insufficient permission to access lseg(second, last, values[1..]) (predicates-lseg.vpr@20.12--20.43) [119999]"}
-        perm <= Mask[null, lseg(second_1, last, Seq#Drop(values, 1))];
+      assert {:msg "  Postcondition of findFirst might not hold. There might be insufficient permission to access lseg(second, last, values[1..]) (predicates-lseg.vpr@20.12--20.43) [1203]"}
+        perm <= Mask[null, lseg(second, last, Seq#Drop(values, 1))];
     }
-    Mask := Mask[null, lseg(second_1, last, Seq#Drop(values, 1)):=Mask[null, lseg(second_1, last, Seq#Drop(values, 1))] - perm];
+    Mask := Mask[null, lseg(second, last, Seq#Drop(values, 1)):=Mask[null, lseg(second, last, Seq#Drop(values, 1))] - perm];
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);
@@ -749,17 +749,17 @@ procedure findFirst(first_1: Ref, last: Ref, values: (Seq int)) returns (value_1
 // Translation of method prependFails
 // ==================================================
 
-procedure prependFails(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) returns (r_1: Ref)
+procedure prependFails(first: Ref, last: Ref, values: (Seq int), toAdd: int) returns (r_1: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
@@ -770,20 +770,20 @@ procedure prependFails(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) r
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[first_1, $allocated];
+    assume Heap[first, $allocated];
     assume Heap[last, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    Mask := Mask[null, lseg(first_1, last, values):=Mask[null, lseg(first_1, last, values)] + perm];
+    Mask := Mask[null, lseg(first, last, values):=Mask[null, lseg(first, last, values)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -802,45 +802,45 @@ procedure prependFails(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) r
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     r_1 := freshObj;
-    Mask := Mask[r_1, elem_1:=Mask[r_1, elem_1] + FullPerm];
+    Mask := Mask[r_1, elem:=Mask[r_1, elem] + FullPerm];
     Mask := Mask[r_1, next:=Mask[r_1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: r.elem := toAdd -- predicates-lseg.vpr@33.7--33.22
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.elem (predicates-lseg.vpr@33.7--33.22) [120000]"}
-      FullPerm == Mask[r_1, elem_1];
-    Heap := Heap[r_1, elem_1:=toAdd];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.elem (predicates-lseg.vpr@33.7--33.22) [1204]"}
+      FullPerm == Mask[r_1, elem];
+    Heap := Heap[r_1, elem:=toAdd];
     assume state(Heap, Mask);
   
   // -- Translating statement: r.next := first -- predicates-lseg.vpr@34.7--34.22
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.next (predicates-lseg.vpr@34.7--34.22) [120001]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.next (predicates-lseg.vpr@34.7--34.22) [1205]"}
       FullPerm == Mask[r_1, next];
-    Heap := Heap[r_1, next:=first_1];
+    Heap := Heap[r_1, next:=first];
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(lseg(r, last, Seq(toAdd) ++ values), write) -- predicates-lseg.vpr@37.7--37.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (r_1 != last) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access r.elem (predicates-lseg.vpr@37.7--37.45) [120004]"}
-          perm <= Mask[r_1, elem_1];
+        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access r.elem (predicates-lseg.vpr@37.7--37.45) [1208]"}
+          perm <= Mask[r_1, elem];
       }
-      Mask := Mask[r_1, elem_1:=Mask[r_1, elem_1] - perm];
+      Mask := Mask[r_1, elem:=Mask[r_1, elem] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access r.next (predicates-lseg.vpr@37.7--37.45) [120006]"}
+        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access r.next (predicates-lseg.vpr@37.7--37.45) [1210]"}
           perm <= Mask[r_1, next];
       }
       Mask := Mask[r_1, next:=Mask[r_1, next] - perm];
-      assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. Assertion 0 < |Seq(toAdd) ++ values| might not hold. (predicates-lseg.vpr@37.7--37.45) [120007]"}
+      assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. Assertion 0 < |Seq(toAdd) ++ values| might not hold. (predicates-lseg.vpr@37.7--37.45) [1211]"}
         0 < Seq#Length(Seq#Append(Seq#Singleton(toAdd), values));
-      assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. Assertion r.elem == (Seq(toAdd) ++ values)[0] might not hold. (predicates-lseg.vpr@37.7--37.45) [120008]"}
-        Heap[r_1, elem_1] == Seq#Index(Seq#Append(Seq#Singleton(toAdd), values), 0);
+      assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. Assertion r.elem == (Seq(toAdd) ++ values)[0] might not hold. (predicates-lseg.vpr@37.7--37.45) [1212]"}
+        Heap[r_1, elem] == Seq#Index(Seq#Append(Seq#Singleton(toAdd), values), 0);
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access lseg(r.next, last, Seq(toAdd) ++ values[1..]) (predicates-lseg.vpr@37.7--37.45) [120010]"}
+        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access lseg(r.next, last, Seq(toAdd) ++ values[1..]) (predicates-lseg.vpr@37.7--37.45) [1214]"}
           perm <= Mask[null, lseg(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))];
       }
       Mask := Mask[null, lseg(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1)):=Mask[null, lseg(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))] - perm];
@@ -853,19 +853,19 @@ procedure prependFails(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) r
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume lseg#trigger(Heap, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)));
-    assume Heap[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))] == FrameFragment((if r_1 != last then CombineFrames(FrameFragment(Heap[r_1, elem_1]), CombineFrames(FrameFragment(Heap[r_1, next]), Heap[null, lseg(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))])) else EmptyFrame));
+    assume Heap[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))] == FrameFragment((if r_1 != last then CombineFrames(FrameFragment(Heap[r_1, elem]), CombineFrames(FrameFragment(Heap[r_1, next]), Heap[null, lseg(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))])) else EmptyFrame));
     if (!HasDirectPerm(Mask, null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)))) {
       Heap := Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=freshVersion];
     }
     if (r_1 != last) {
-      Heap := Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))][r_1, elem_1:=true]];
+      Heap := Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))][r_1, elem:=true]];
       Heap := Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))][r_1, next:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-        { newPMask[o_15, f_20] }
-        Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))][o_15, f_20] || Heap[null, lseg#sm(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))][o_15, f_20] ==> newPMask[o_15, f_20]
+      assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+        { newPMask[o_5, f_11] }
+        Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))][o_5, f_11] || Heap[null, lseg#sm(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))][o_5, f_11] ==> newPMask[o_5, f_11]
       );
       Heap := Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=newPMask];
     }
@@ -873,11 +873,11 @@ procedure prependFails(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) r
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of prependFails might not hold. There might be insufficient permission to access lseg(r, last, Seq(toAdd) ++ values) (predicates-lseg.vpr@30.11--30.46) [120012]"}
+      assert {:msg "  Postcondition of prependFails might not hold. There might be insufficient permission to access lseg(r, last, Seq(toAdd) ++ values) (predicates-lseg.vpr@30.11--30.46) [1216]"}
         perm <= Mask[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))];
     }
     Mask := Mask[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=Mask[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))] - perm];
@@ -891,17 +891,17 @@ procedure prependFails(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) r
 // Translation of method prepend
 // ==================================================
 
-procedure prepend(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) returns (r_1: Ref)
+procedure prepend(first: Ref, last: Ref, values: (Seq int), toAdd: int) returns (r_1: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
@@ -912,20 +912,20 @@ procedure prepend(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) return
     assume AssumePermUpperBound;
   
   // -- Assumptions about method arguments
-    assume Heap[first_1, $allocated];
+    assume Heap[first, $allocated];
     assume Heap[last, $allocated];
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    Mask := Mask[null, lseg(first_1, last, values):=Mask[null, lseg(first_1, last, values)] + perm];
+    Mask := Mask[null, lseg(first, last, values):=Mask[null, lseg(first, last, values)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -944,52 +944,52 @@ procedure prepend(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) return
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     r_1 := freshObj;
-    Mask := Mask[r_1, elem_1:=Mask[r_1, elem_1] + FullPerm];
+    Mask := Mask[r_1, elem:=Mask[r_1, elem] + FullPerm];
     Mask := Mask[r_1, next:=Mask[r_1, next] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: r.elem := toAdd -- predicates-lseg.vpr@45.7--45.22
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.elem (predicates-lseg.vpr@45.7--45.22) [120013]"}
-      FullPerm == Mask[r_1, elem_1];
-    Heap := Heap[r_1, elem_1:=toAdd];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.elem (predicates-lseg.vpr@45.7--45.22) [1217]"}
+      FullPerm == Mask[r_1, elem];
+    Heap := Heap[r_1, elem:=toAdd];
     assume state(Heap, Mask);
   
   // -- Translating statement: r.next := first -- predicates-lseg.vpr@46.7--46.22
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.next (predicates-lseg.vpr@46.7--46.22) [120014]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access r.next (predicates-lseg.vpr@46.7--46.22) [1218]"}
       FullPerm == Mask[r_1, next];
-    Heap := Heap[r_1, next:=first_1];
+    Heap := Heap[r_1, next:=first];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(toAdd) ++ values[1..] == values -- predicates-lseg.vpr@47.7--47.51
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion Seq(toAdd) ++ values[1..] == values might not hold. (predicates-lseg.vpr@47.14--47.51) [120015]"}
+    ExhaleWellDef0Heap := Heap;
+    assert {:msg "  Assert might fail. Assertion Seq(toAdd) ++ values[1..] == values might not hold. (predicates-lseg.vpr@47.14--47.51) [1219]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1), values);
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(lseg(r, last, Seq(toAdd) ++ values), write) -- predicates-lseg.vpr@48.7--48.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (r_1 != last) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access r.elem (predicates-lseg.vpr@48.7--48.45) [120018]"}
-          perm <= Mask[r_1, elem_1];
+        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access r.elem (predicates-lseg.vpr@48.7--48.45) [1222]"}
+          perm <= Mask[r_1, elem];
       }
-      Mask := Mask[r_1, elem_1:=Mask[r_1, elem_1] - perm];
+      Mask := Mask[r_1, elem:=Mask[r_1, elem] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access r.next (predicates-lseg.vpr@48.7--48.45) [120020]"}
+        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access r.next (predicates-lseg.vpr@48.7--48.45) [1224]"}
           perm <= Mask[r_1, next];
       }
       Mask := Mask[r_1, next:=Mask[r_1, next] - perm];
-      assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. Assertion 0 < |Seq(toAdd) ++ values| might not hold. (predicates-lseg.vpr@48.7--48.45) [120021]"}
+      assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. Assertion 0 < |Seq(toAdd) ++ values| might not hold. (predicates-lseg.vpr@48.7--48.45) [1225]"}
         0 < Seq#Length(Seq#Append(Seq#Singleton(toAdd), values));
-      assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. Assertion r.elem == (Seq(toAdd) ++ values)[0] might not hold. (predicates-lseg.vpr@48.7--48.45) [120022]"}
-        Heap[r_1, elem_1] == Seq#Index(Seq#Append(Seq#Singleton(toAdd), values), 0);
+      assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. Assertion r.elem == (Seq(toAdd) ++ values)[0] might not hold. (predicates-lseg.vpr@48.7--48.45) [1226]"}
+        Heap[r_1, elem] == Seq#Index(Seq#Append(Seq#Singleton(toAdd), values), 0);
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access lseg(r.next, last, Seq(toAdd) ++ values[1..]) (predicates-lseg.vpr@48.7--48.45) [120024]"}
+        assert {:msg "  Folding lseg(r, last, Seq(toAdd) ++ values) might fail. There might be insufficient permission to access lseg(r.next, last, Seq(toAdd) ++ values[1..]) (predicates-lseg.vpr@48.7--48.45) [1228]"}
           perm <= Mask[null, lseg(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))];
       }
       Mask := Mask[null, lseg(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1)):=Mask[null, lseg(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))] - perm];
@@ -1002,19 +1002,19 @@ procedure prepend(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) return
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     assume lseg#trigger(Heap, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)));
-    assume Heap[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))] == FrameFragment((if r_1 != last then CombineFrames(FrameFragment(Heap[r_1, elem_1]), CombineFrames(FrameFragment(Heap[r_1, next]), Heap[null, lseg(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))])) else EmptyFrame));
+    assume Heap[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))] == FrameFragment((if r_1 != last then CombineFrames(FrameFragment(Heap[r_1, elem]), CombineFrames(FrameFragment(Heap[r_1, next]), Heap[null, lseg(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))])) else EmptyFrame));
     if (!HasDirectPerm(Mask, null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)))) {
       Heap := Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=ZeroPMask];
       havoc freshVersion;
       Heap := Heap[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=freshVersion];
     }
     if (r_1 != last) {
-      Heap := Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))][r_1, elem_1:=true]];
+      Heap := Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))][r_1, elem:=true]];
       Heap := Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))][r_1, next:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-        { newPMask[o_16, f_21] }
-        Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))][o_16, f_21] || Heap[null, lseg#sm(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))][o_16, f_21] ==> newPMask[o_16, f_21]
+      assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+        { newPMask[o_6, f_12] }
+        Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))][o_6, f_12] || Heap[null, lseg#sm(Heap[r_1, next], last, Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1))][o_6, f_12] ==> newPMask[o_6, f_12]
       );
       Heap := Heap[null, lseg#sm(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=newPMask];
     }
@@ -1022,11 +1022,11 @@ procedure prepend(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) return
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of prepend might not hold. There might be insufficient permission to access lseg(r, last, Seq(toAdd) ++ values) (predicates-lseg.vpr@42.11--42.46) [120026]"}
+      assert {:msg "  Postcondition of prepend might not hold. There might be insufficient permission to access lseg(r, last, Seq(toAdd) ++ values) (predicates-lseg.vpr@42.11--42.46) [1230]"}
         perm <= Mask[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))];
     }
     Mask := Mask[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values)):=Mask[null, lseg(r_1, last, Seq#Append(Seq#Singleton(toAdd), values))] - perm];

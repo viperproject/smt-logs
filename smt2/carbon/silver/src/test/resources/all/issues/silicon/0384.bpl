@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:24:50
+// Date:         2025-01-26 21:42:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0384.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0384-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,7 +185,7 @@ axiom !IsWandField(f_7);
 // Translation of method test2
 // ==================================================
 
-procedure test2() returns ()
+procedure test2_1() returns ()
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -218,7 +218,7 @@ procedure test2() returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of x.f == 1
-      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (0384.vpr@5.10--5.30) [200462]"}
+      assert {:msg "  Inhale might fail. There might be insufficient permission to access x.f (0384.vpr@5.10--5.30) [71038]"}
         HasDirectPerm(Mask, x, f_7);
     assume Heap[x, f_7] == 1;
     assume state(Heap, Mask);
@@ -238,10 +238,10 @@ procedure test2() returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     perm := p_1;
-    assert {:msg "  Exhale might fail. Fraction p might be negative. (0384.vpr@8.10--8.21) [200463]"}
+    assert {:msg "  Exhale might fail. Fraction p might be negative. (0384.vpr@8.10--8.21) [71039]"}
       perm >= NoPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0384.vpr@8.10--8.21) [200464]"}
+      assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0384.vpr@8.10--8.21) [71040]"}
         perm <= Mask[x, f_7];
     }
     Mask := Mask[x, f_7:=Mask[x, f_7] - perm];
@@ -258,7 +258,7 @@ procedure test2() returns ()
   
   // -- Translating statement: inhale acc(x.f, p) -- 0384.vpr@10.3--10.21
     perm := p_1;
-    assert {:msg "  Inhale might fail. Fraction p might be negative. (0384.vpr@10.10--10.21) [200465]"}
+    assert {:msg "  Inhale might fail. Fraction p might be negative. (0384.vpr@10.10--10.21) [71041]"}
       perm >= NoPerm;
     assume perm > NoPerm ==> x != null;
     Mask := Mask[x, f_7:=Mask[x, f_7] + perm];
@@ -271,9 +271,9 @@ procedure test2() returns ()
     ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 1
-      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0384.vpr@13.10--13.18) [200466]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0384.vpr@13.10--13.18) [71042]"}
         HasDirectPerm(ExhaleWellDef0Mask, x, f_7);
-    assert {:msg "  Assert might fail. Assertion x.f == 1 might not hold. (0384.vpr@13.10--13.18) [200467]"}
+    assert {:msg "  Assert might fail. Assertion x.f == 1 might not hold. (0384.vpr@13.10--13.18) [71043]"}
       Heap[x, f_7] == 1;
     assume state(Heap, Mask);
 }

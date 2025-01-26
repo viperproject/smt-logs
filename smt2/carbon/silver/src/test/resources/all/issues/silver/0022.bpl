@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:31:24
+// Date:         2025-01-26 21:42:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0022.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0022-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -549,7 +549,7 @@ axiom !IsWandField(keys);
 // Translation of method test
 // ==================================================
 
-procedure test(this: Ref, b_24: bool) returns ()
+procedure test_1(this: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -582,10 +582,10 @@ procedure test(this: Ref, b_24: bool) returns ()
     // -- Check definedness of (b ? Seq[Int]() : this.keys)
       if (b_24) {
       } else {
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.keys (0022.vpr@9.3--9.39) [220900]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.keys (0022.vpr@9.3--9.39) [54799]"}
           HasDirectPerm(Mask, this, keys);
       }
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.keys (0022.vpr@9.3--9.39) [220901]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.keys (0022.vpr@9.3--9.39) [54800]"}
       FullPerm == Mask[this, keys];
     Heap := Heap[this, keys:=(if b_24 then (Seq#Empty(): Seq int) else Heap[this, keys])];
     assume state(Heap, Mask);

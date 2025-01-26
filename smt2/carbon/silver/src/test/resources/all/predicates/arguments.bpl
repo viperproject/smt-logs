@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:16:20
+// Date:         2025-01-26 21:41:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/arguments.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/arguments-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -303,7 +303,7 @@ procedure unrelated(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@11.13--11.44) [152190]"}
+      assert {:msg "  Postcondition of unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@11.13--11.44) [46174]"}
         perm <= Mask[this, unrelatedField];
     }
     Mask := Mask[this, unrelatedField:=Mask[this, unrelatedField] - perm];
@@ -317,7 +317,7 @@ procedure unrelated(this: Ref) returns ()
 // Translation of method t1
 // ==================================================
 
-procedure t1(this: Ref, b_24: bool) returns ()
+procedure t1_2(this: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -377,7 +377,7 @@ procedure t1(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding valid(this, b) might fail. There might be insufficient permission to access valid(this, b) (arguments.vpr@23.5--23.38) [152193]"}
+      assert {:msg "  Unfolding valid(this, b) might fail. There might be insufficient permission to access valid(this, b) (arguments.vpr@23.5--23.38) [46177]"}
         perm <= Mask[null, valid(this, b_24)];
     }
     Mask := Mask[null, valid(this, b_24):=Mask[null, valid(this, b_24)] - perm];
@@ -405,14 +405,14 @@ procedure t1(this: Ref, b_24: bool) returns ()
     if (b_24) {
       
       // -- Translating statement: this.f := 1 -- arguments.vpr@25.9--25.20
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (arguments.vpr@25.9--25.20) [152196]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (arguments.vpr@25.9--25.20) [46180]"}
           FullPerm == Mask[this, f_7];
         Heap := Heap[this, f_7:=1];
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: this.g := 2 -- arguments.vpr@27.9--27.20
-        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.g (arguments.vpr@27.9--27.20) [152197]"}
+        assert {:msg "  Assignment might fail. There might be insufficient permission to access this.g (arguments.vpr@27.9--27.20) [46181]"}
           FullPerm == Mask[this, g];
         Heap := Heap[this, g:=2];
         assume state(Heap, Mask);
@@ -425,14 +425,14 @@ procedure t1(this: Ref, b_24: bool) returns ()
     if (b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding valid(this, b) might fail. There might be insufficient permission to access this.f (arguments.vpr@29.5--29.36) [152200]"}
+        assert {:msg "  Folding valid(this, b) might fail. There might be insufficient permission to access this.f (arguments.vpr@29.5--29.36) [46184]"}
           perm <= Mask[this, f_7];
       }
       Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
     } else {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding valid(this, b) might fail. There might be insufficient permission to access this.g (arguments.vpr@29.5--29.36) [152202]"}
+        assert {:msg "  Folding valid(this, b) might fail. There might be insufficient permission to access this.g (arguments.vpr@29.5--29.36) [46186]"}
           perm <= Mask[this, g];
       }
       Mask := Mask[this, g:=Mask[this, g] - perm];
@@ -465,7 +465,7 @@ procedure t1(this: Ref, b_24: bool) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@30.5--30.20) [152204]"}
+        assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@30.5--30.20) [46188]"}
           perm <= Mask[this, unrelatedField];
       }
       Mask := Mask[this, unrelatedField:=Mask[this, unrelatedField] - perm];
@@ -487,7 +487,7 @@ procedure t1(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t1 might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@21.13--21.39) [152205]"}
+      assert {:msg "  Postcondition of t1 might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@21.13--21.39) [46189]"}
         perm <= Mask[null, valid(this, b_24)];
     }
     Mask := Mask[null, valid(this, b_24):=Mask[null, valid(this, b_24)] - perm];
@@ -501,7 +501,7 @@ procedure t1(this: Ref, b_24: bool) returns ()
 // Translation of method t2
 // ==================================================
 
-procedure t2(this: Ref) returns ()
+procedure t2_2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -559,7 +559,7 @@ procedure t2(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding valid(this, true) might fail. There might be insufficient permission to access this.f (arguments.vpr@38.5--38.39) [152208]"}
+      assert {:msg "  Folding valid(this, true) might fail. There might be insufficient permission to access this.f (arguments.vpr@38.5--38.39) [46192]"}
         perm <= Mask[this, f_7];
     }
     Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
@@ -587,7 +587,7 @@ procedure t2(this: Ref) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@39.5--39.20) [152212]"}
+        assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@39.5--39.20) [46196]"}
           perm <= Mask[this, unrelatedField];
       }
       Mask := Mask[this, unrelatedField:=Mask[this, unrelatedField] - perm];
@@ -609,7 +609,7 @@ procedure t2(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t2 might not hold. There might be insufficient permission to access valid(this, true) (arguments.vpr@36.13--36.42) [152213]"}
+      assert {:msg "  Postcondition of t2 might not hold. There might be insufficient permission to access valid(this, true) (arguments.vpr@36.13--36.42) [46197]"}
         perm <= Mask[null, valid(this, true)];
     }
     Mask := Mask[null, valid(this, true):=Mask[null, valid(this, true)] - perm];
@@ -674,7 +674,7 @@ procedure t2b(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding valid(this, false) might fail. There might be insufficient permission to access this.g (arguments.vpr@47.5--47.40) [152218]"}
+      assert {:msg "  Folding valid(this, false) might fail. There might be insufficient permission to access this.g (arguments.vpr@47.5--47.40) [46202]"}
         perm <= Mask[this, g];
     }
     Mask := Mask[this, g:=Mask[this, g] - perm];
@@ -698,7 +698,7 @@ procedure t2b(this: Ref) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t2b might not hold. There might be insufficient permission to access valid(this, true) (arguments.vpr@44.13--44.42) [152220]"}
+      assert {:msg "  Postcondition of t2b might not hold. There might be insufficient permission to access valid(this, true) (arguments.vpr@44.13--44.42) [46204]"}
         perm <= Mask[null, valid(this, true)];
     }
     Mask := Mask[null, valid(this, true):=Mask[null, valid(this, true)] - perm];
@@ -762,7 +762,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@55.15--55.74) [152221]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@55.15--55.74) [46205]"}
           perm <= UnfoldingMask[null, valid(this, false)];
       }
       UnfoldingMask := UnfoldingMask[null, valid(this, false):=UnfoldingMask[null, valid(this, false)] - perm];
@@ -771,7 +771,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
       UnfoldingMask := UnfoldingMask[this, g:=UnfoldingMask[this, g] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.g (arguments.vpr@55.15--55.74) [152222]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.g (arguments.vpr@55.15--55.74) [46206]"}
         HasDirectPerm(UnfoldingMask, this, g);
       
       // -- Free assumptions (exp module)
@@ -823,7 +823,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@58.14--58.73) [152223]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@58.14--58.73) [46207]"}
           perm <= UnfoldingMask[null, valid(this, false)];
       }
       UnfoldingMask := UnfoldingMask[null, valid(this, false):=UnfoldingMask[null, valid(this, false)] - perm];
@@ -832,7 +832,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
       UnfoldingMask := UnfoldingMask[this, g:=UnfoldingMask[this, g] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.g (arguments.vpr@58.14--58.73) [152224]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.g (arguments.vpr@58.14--58.73) [46208]"}
         HasDirectPerm(UnfoldingMask, this, g);
       
       // -- Free assumptions (exp module)
@@ -866,7 +866,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding valid(this, true) might fail. There might be insufficient permission to access valid(this, true) (arguments.vpr@60.5--60.41) [152227]"}
+      assert {:msg "  Unfolding valid(this, true) might fail. There might be insufficient permission to access valid(this, true) (arguments.vpr@60.5--60.41) [46211]"}
         perm <= Mask[null, valid(this, true)];
     }
     Mask := Mask[null, valid(this, true):=Mask[null, valid(this, true)] - perm];
@@ -884,7 +884,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: this.f := 1 -- arguments.vpr@61.5--61.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (arguments.vpr@61.5--61.16) [152230]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (arguments.vpr@61.5--61.16) [46214]"}
       FullPerm == Mask[this, f_7];
     Heap := Heap[this, f_7:=1];
     assume state(Heap, Mask);
@@ -894,7 +894,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding valid(this, true) might fail. There might be insufficient permission to access this.f (arguments.vpr@62.5--62.39) [152233]"}
+      assert {:msg "  Folding valid(this, true) might fail. There might be insufficient permission to access this.f (arguments.vpr@62.5--62.39) [46217]"}
         perm <= Mask[this, f_7];
     }
     Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
@@ -918,13 +918,13 @@ procedure t3(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t3 might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@56.13--56.39) [152237]"}
+      assert {:msg "  Postcondition of t3 might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@56.13--56.39) [46221]"}
         perm <= Mask[null, valid(this, b_24)];
     }
     Mask := Mask[null, valid(this, b_24):=Mask[null, valid(this, b_24)] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t3 might not hold. There might be insufficient permission to access valid(this, !b) (arguments.vpr@57.13--57.40) [152238]"}
+      assert {:msg "  Postcondition of t3 might not hold. There might be insufficient permission to access valid(this, !b) (arguments.vpr@57.13--57.40) [46222]"}
         perm <= Mask[null, valid(this, !b_24)];
     }
     Mask := Mask[null, valid(this, !b_24):=Mask[null, valid(this, !b_24)] - perm];
@@ -938,7 +938,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of t3 might not hold. There might be insufficient permission to access valid(this, false) (arguments.vpr@58.14--58.73) [152239]"}
+        assert {:msg "  Postcondition of t3 might not hold. There might be insufficient permission to access valid(this, false) (arguments.vpr@58.14--58.73) [46223]"}
           perm <= UnfoldingMask[null, valid(this, false)];
       }
       UnfoldingMask := UnfoldingMask[null, valid(this, false):=UnfoldingMask[null, valid(this, false)] - perm];
@@ -947,7 +947,7 @@ procedure t3(this: Ref, b_24: bool) returns ()
       UnfoldingMask := UnfoldingMask[this, g:=UnfoldingMask[this, g] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-    assert {:msg "  Postcondition of t3 might not hold. Assertion this.g == 2 might not hold. (arguments.vpr@58.14--58.73) [152240]"}
+    assert {:msg "  Postcondition of t3 might not hold. Assertion this.g == 2 might not hold. (arguments.vpr@58.14--58.73) [46224]"}
       Heap[this, g] == 2;
     
     // -- Free assumptions (exhale module)
@@ -1015,7 +1015,7 @@ procedure t3a(this: Ref, b_24: bool) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@70.15--70.74) [152241]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@70.15--70.74) [46225]"}
           perm <= UnfoldingMask[null, valid(this, false)];
       }
       UnfoldingMask := UnfoldingMask[null, valid(this, false):=UnfoldingMask[null, valid(this, false)] - perm];
@@ -1024,7 +1024,7 @@ procedure t3a(this: Ref, b_24: bool) returns ()
       UnfoldingMask := UnfoldingMask[this, g:=UnfoldingMask[this, g] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.g (arguments.vpr@70.15--70.74) [152242]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.g (arguments.vpr@70.15--70.74) [46226]"}
         HasDirectPerm(UnfoldingMask, this, g);
       
       // -- Free assumptions (exp module)
@@ -1076,7 +1076,7 @@ procedure t3a(this: Ref, b_24: bool) returns ()
       ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@73.14--73.73) [152243]"}
+        assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@73.14--73.73) [46227]"}
           perm <= UnfoldingMask[null, valid(this, false)];
       }
       UnfoldingMask := UnfoldingMask[null, valid(this, false):=UnfoldingMask[null, valid(this, false)] - perm];
@@ -1085,7 +1085,7 @@ procedure t3a(this: Ref, b_24: bool) returns ()
       UnfoldingMask := UnfoldingMask[this, g:=UnfoldingMask[this, g] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.g (arguments.vpr@73.14--73.73) [152244]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.g (arguments.vpr@73.14--73.73) [46228]"}
         HasDirectPerm(UnfoldingMask, this, g);
       
       // -- Free assumptions (exp module)
@@ -1119,7 +1119,7 @@ procedure t3a(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding valid(this, true) might fail. There might be insufficient permission to access valid(this, true) (arguments.vpr@75.5--75.41) [152247]"}
+      assert {:msg "  Unfolding valid(this, true) might fail. There might be insufficient permission to access valid(this, true) (arguments.vpr@75.5--75.41) [46231]"}
         perm <= Mask[null, valid(this, true)];
     }
     Mask := Mask[null, valid(this, true):=Mask[null, valid(this, true)] - perm];
@@ -1137,7 +1137,7 @@ procedure t3a(this: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: this.f := 1 -- arguments.vpr@76.5--76.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (arguments.vpr@76.5--76.16) [152250]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (arguments.vpr@76.5--76.16) [46234]"}
       FullPerm == Mask[this, f_7];
     Heap := Heap[this, f_7:=1];
     assume state(Heap, Mask);
@@ -1147,7 +1147,7 @@ procedure t3a(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding valid(this, true) might fail. There might be insufficient permission to access this.f (arguments.vpr@77.5--77.39) [152253]"}
+      assert {:msg "  Folding valid(this, true) might fail. There might be insufficient permission to access this.f (arguments.vpr@77.5--77.39) [46237]"}
         perm <= Mask[this, f_7];
     }
     Mask := Mask[this, f_7:=Mask[this, f_7] - perm];
@@ -1175,7 +1175,7 @@ procedure t3a(this: Ref, b_24: bool) returns ()
       ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@78.5--78.20) [152257]"}
+        assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@78.5--78.20) [46241]"}
           perm <= Mask[this, unrelatedField];
       }
       Mask := Mask[this, unrelatedField:=Mask[this, unrelatedField] - perm];
@@ -1197,13 +1197,13 @@ procedure t3a(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t3a might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@71.13--71.39) [152258]"}
+      assert {:msg "  Postcondition of t3a might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@71.13--71.39) [46242]"}
         perm <= Mask[null, valid(this, b_24)];
     }
     Mask := Mask[null, valid(this, b_24):=Mask[null, valid(this, b_24)] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of t3a might not hold. There might be insufficient permission to access valid(this, !b) (arguments.vpr@72.13--72.40) [152259]"}
+      assert {:msg "  Postcondition of t3a might not hold. There might be insufficient permission to access valid(this, !b) (arguments.vpr@72.13--72.40) [46243]"}
         perm <= Mask[null, valid(this, !b_24)];
     }
     Mask := Mask[null, valid(this, !b_24):=Mask[null, valid(this, !b_24)] - perm];
@@ -1217,7 +1217,7 @@ procedure t3a(this: Ref, b_24: bool) returns ()
       ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Postcondition of t3a might not hold. There might be insufficient permission to access valid(this, false) (arguments.vpr@73.14--73.73) [152260]"}
+        assert {:msg "  Postcondition of t3a might not hold. There might be insufficient permission to access valid(this, false) (arguments.vpr@73.14--73.73) [46244]"}
           perm <= UnfoldingMask[null, valid(this, false)];
       }
       UnfoldingMask := UnfoldingMask[null, valid(this, false):=UnfoldingMask[null, valid(this, false)] - perm];
@@ -1226,7 +1226,7 @@ procedure t3a(this: Ref, b_24: bool) returns ()
       UnfoldingMask := UnfoldingMask[this, g:=UnfoldingMask[this, g] + perm];
       assume state(UnfoldingHeap, UnfoldingMask);
       assume state(UnfoldingHeap, UnfoldingMask);
-    assert {:msg "  Postcondition of t3a might not hold. Assertion this.g == 2 might not hold. (arguments.vpr@73.14--73.73) [152261]"}
+    assert {:msg "  Postcondition of t3a might not hold. Assertion this.g == 2 might not hold. (arguments.vpr@73.14--73.73) [46245]"}
       Heap[this, g] == 2;
     
     // -- Free assumptions (exhale module)
@@ -1283,7 +1283,7 @@ procedure t3b(this: Ref, b_24: bool) returns ()
     ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding valid(this, true) might fail. There might be insufficient permission to access valid(this, true) (arguments.vpr@86.5--86.41) [152264]"}
+      assert {:msg "  Unfolding valid(this, true) might fail. There might be insufficient permission to access valid(this, true) (arguments.vpr@86.5--86.41) [46248]"}
         perm <= Mask[null, valid(this, true)];
     }
     Mask := Mask[null, valid(this, true):=Mask[null, valid(this, true)] - perm];
@@ -1301,7 +1301,7 @@ procedure t3b(this: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: this.g := 1 -- arguments.vpr@89.5--89.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.g (arguments.vpr@89.5--89.16) [152267]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access this.g (arguments.vpr@89.5--89.16) [46251]"}
       FullPerm == Mask[this, g];
     Heap := Heap[this, g:=1];
     assume state(Heap, Mask);

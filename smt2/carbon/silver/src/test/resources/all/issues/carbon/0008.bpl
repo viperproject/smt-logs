@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:23:08
+// Date:         2025-01-26 21:43:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0008.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0008-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_20: Ref, f_17: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_20, f_17] }
-  Heap[o_20, $allocated] ==> Heap[Heap[o_20, f_17], $allocated]
+axiom (forall o_54: Ref, f_24: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_54, f_24] }
+  Heap[o_54, $allocated] ==> Heap[Heap[o_54, f_24], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref, f_24: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, f_24] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_27, f_24) ==> Heap[o_27, f_24] == ExhaleHeap[o_27, f_24]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref, f_54: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, f_54] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_55, f_54) ==> Heap[o_55, f_54] == ExhaleHeap[o_55, f_54]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9), ExhaleHeap[null, PredicateMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> Heap[null, PredicateMaskField(pm_f_9)] == ExhaleHeap[null, PredicateMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32), ExhaleHeap[null, PredicateMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> Heap[null, PredicateMaskField(pm_f_32)] == ExhaleHeap[null, PredicateMaskField(pm_f_32)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsPredicateField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, PredicateMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsPredicateField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, PredicateMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9), ExhaleHeap[null, WandMaskField(pm_f_9)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> Heap[null, WandMaskField(pm_f_9)] == ExhaleHeap[null, WandMaskField(pm_f_9)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32), ExhaleHeap[null, WandMaskField(pm_f_32)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> Heap[null, WandMaskField(pm_f_32)] == ExhaleHeap[null, WandMaskField(pm_f_32)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_9: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_9) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_9) && IsWandField(pm_f_9) ==> (forall <A, B> o2_9: Ref, f_24: (Field A B) ::
-    { ExhaleHeap[o2_9, f_24] }
-    Heap[null, WandMaskField(pm_f_9)][o2_9, f_24] ==> Heap[o2_9, f_24] == ExhaleHeap[o2_9, f_24]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_32: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_32) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_32) && IsWandField(pm_f_32) ==> (forall <A, B> o2_32: Ref, f_54: (Field A B) ::
+    { ExhaleHeap[o2_32, f_54] }
+    Heap[null, WandMaskField(pm_f_32)][o2_32, f_54] ==> Heap[o2_32, f_54] == ExhaleHeap[o2_32, f_54]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_27: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_27, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_27, $allocated] ==> ExhaleHeap[o_27, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_55: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_55, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_55, $allocated] ==> ExhaleHeap[o_55, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_20: Ref, f_31: (Field A B), v: B ::
-  { Heap[o_20, f_31:=v] }
-  succHeap(Heap, Heap[o_20, f_31:=v])
+axiom (forall <A, B> Heap: HeapType, o_54: Ref, f_8: (Field A B), v: B ::
+  { Heap[o_54, f_8:=v] }
+  succHeap(Heap, Heap[o_54, f_8:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -605,7 +605,7 @@ procedure succeedsRange10(a_2: int) returns ()
   var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var i_14: int;
+  var i_18: int;
   var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
   var i_1: int;
@@ -632,13 +632,13 @@ procedure succeedsRange10(a_2: int) returns ()
     
     // -- Check definedness of (forall i: Int :: { reqIGt0(i) } 1 <= i ==> reqIGt0(i) == i)
       if (*) {
-        if (1 <= i_14) {
+        if (1 <= i_18) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-            assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i >= 0 might not hold. (0008.vpr@11.40--11.50) [194241]"}
-              i_14 >= 0;
+            assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i >= 0 might not hold. (0008.vpr@11.40--11.50) [82835]"}
+              i_18 >= 0;
             // Stop execution
             assume false;
           }
@@ -647,14 +647,14 @@ procedure succeedsRange10(a_2: int) returns ()
       }
     if (*) {
       if (1 <= i_1) {
-        assert {:msg "  Assert might fail. Assertion reqIGt0(i) == i might not hold. (0008.vpr@11.9--11.56) [194242]"}
+        assert {:msg "  Assert might fail. Assertion reqIGt0(i) == i might not hold. (0008.vpr@11.9--11.56) [82836]"}
           reqIGt0(Heap, i_1) == i_1;
       }
       assume false;
     }
-    assume (forall i_2_1_1: int ::
-      { reqIGt0#frame(EmptyFrame, i_2_1_1) }
-      1 <= i_2_1_1 ==> reqIGt0(Heap, i_2_1_1) == i_2_1_1
+    assume (forall i_2_1: int ::
+      { reqIGt0#frame(EmptyFrame, i_2_1) }
+      1 <= i_2_1 ==> reqIGt0(Heap, i_2_1) == i_2_1
     );
     assume state(Heap, Mask);
 }
@@ -670,7 +670,7 @@ procedure succeedsExplicit10(a_2: int) returns ()
   var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var i_2: int;
+  var i_3: int;
   var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
   var i_1: int;
@@ -697,13 +697,13 @@ procedure succeedsExplicit10(a_2: int) returns ()
     
     // -- Check definedness of (forall i: Int :: { (i in Seq(2, 4, 6, 8)) } (i in Seq(2, 4, 6, 8)) ==> reqIGt0(i * i) > i)
       if (*) {
-        if (Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(2), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_2)) {
+        if (Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(2), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_3)) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-            assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i * i >= 0 might not hold. (0008.vpr@16.52--16.64) [194243]"}
-              i_2 * i_2 >= 0;
+            assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i * i >= 0 might not hold. (0008.vpr@16.52--16.64) [82837]"}
+              i_3 * i_3 >= 0;
             // Stop execution
             assume false;
           }
@@ -712,31 +712,31 @@ procedure succeedsExplicit10(a_2: int) returns ()
       }
     if (*) {
       if (Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(2), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_1)) {
-        assert {:msg "  Assert might fail. Assertion reqIGt0(i * i) > i might not hold. (0008.vpr@16.10--16.69) [194244]"}
+        assert {:msg "  Assert might fail. Assertion reqIGt0(i * i) > i might not hold. (0008.vpr@16.10--16.69) [82838]"}
           reqIGt0(Heap, i_1 * i_1) > i_1;
       }
       assume false;
     }
-    assume (forall i_2_1_1: int ::
-      { Seq#ContainsTrigger(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(2), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_2_1_1) } { Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(2), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_2_1_1) }
-      Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(2), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_2_1_1) ==> reqIGt0(Heap, i_2_1_1 * i_2_1_1) > i_2_1_1
+    assume (forall i_2_1: int ::
+      { Seq#ContainsTrigger(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(2), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_2_1) } { Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(2), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_2_1) }
+      Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(2), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_2_1) ==> reqIGt0(Heap, i_2_1 * i_2_1) > i_2_1
     );
     assume state(Heap, Mask);
   
-  // -- Translating statement: assert (forall i: Int, fresh__403: Int ::
-  //     { (i in Seq(fresh__403, 2, 4, 6, 8)) }
+  // -- Translating statement: assert (forall i: Int, fresh__237: Int ::
+  //     { (i in Seq(fresh__237, 2, 4, 6, 8)) }
   //     (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i) -- 0008.vpr@17.3--17.72
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     
-    // -- Check definedness of (forall i: Int, fresh__403: Int :: { (i in Seq(fresh__403, 2, 4, 6, 8)) } (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i)
+    // -- Check definedness of (forall i: Int, fresh__237: Int :: { (i in Seq(fresh__237, 2, 4, 6, 8)) } (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i)
       if (*) {
         if (Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(-2), Seq#Singleton(2)), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_4)) {
           if (*) {
             // Exhale precondition of function application
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
-            assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i * i >= 0 might not hold. (0008.vpr@17.55--17.67) [194245]"}
+            assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i * i >= 0 might not hold. (0008.vpr@17.55--17.67) [82839]"}
               i_4 * i_4 >= 0;
             // Stop execution
             assume false;
@@ -746,13 +746,13 @@ procedure succeedsExplicit10(a_2: int) returns ()
       }
     if (*) {
       if (Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(-2), Seq#Singleton(2)), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_4_1)) {
-        assert {:msg "  Assert might fail. Assertion reqIGt0(i * i) > i might not hold. (0008.vpr@17.10--17.72) [194246]"}
+        assert {:msg "  Assert might fail. Assertion reqIGt0(i * i) > i might not hold. (0008.vpr@17.10--17.72) [82840]"}
           reqIGt0(Heap, i_4_1 * i_4_1) > i_4_1;
       }
       assume false;
     }
-    assume (forall i_5_1_1: int, fresh__403_2_1: int ::
-      { Seq#ContainsTrigger(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(fresh__403_2_1), Seq#Singleton(2)), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_5_1_1) } { Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(fresh__403_2_1), Seq#Singleton(2)), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_5_1_1) }
+    assume (forall i_5_1_1: int, fresh__237_2_1: int ::
+      { Seq#ContainsTrigger(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(fresh__237_2_1), Seq#Singleton(2)), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_5_1_1) } { Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(fresh__237_2_1), Seq#Singleton(2)), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_5_1_1) }
       Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(-2), Seq#Singleton(2)), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_5_1_1) ==> reqIGt0(Heap, i_5_1_1 * i_5_1_1) > i_5_1_1
     );
     assume state(Heap, Mask);

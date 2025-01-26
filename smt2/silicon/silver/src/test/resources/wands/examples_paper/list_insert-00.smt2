@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:41:51
+; Started: 2025-01-26 21:40:22
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -430,11 +430,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (= (head%limited s@$ xs@0@00) (head s@$ xs@0@00))
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-19570|)))
+  :qid |quant-u-24992|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (head%stateless xs@0@00)
   :pattern ((head%limited s@$ xs@0@00))
-  :qid |quant-u-19571|)))
+  :qid |quant-u-24993|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -540,11 +540,11 @@
     (head%precondition s@$ xs@0@00)
     (= (head s@$ xs@0@00) ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-19574|)))
+  :qid |quant-u-24996|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   true
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-19575|)))
+  :qid |quant-u-24997|)))
 ; ---------- FUNCTION elems----------
 (declare-fun xs@2@00 () $Ref)
 (declare-fun result@3@00 () Seq<Int>)
@@ -554,11 +554,11 @@
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (= (elems%limited s@$ xs@2@00) (elems s@$ xs@2@00))
   :pattern ((elems s@$ xs@2@00))
-  :qid |quant-u-19572|)))
+  :qid |quant-u-24994|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (elems%stateless xs@2@00)
   :pattern ((elems%limited s@$ xs@2@00))
-  :qid |quant-u-19573|)))
+  :qid |quant-u-24995|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -742,7 +742,7 @@
           (elems%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))))
   :pattern ((elems s@$ xs@2@00))
   :pattern ((elems%stateless xs@2@00) (List%trigger s@$ xs@2@00))
-  :qid |quant-u-19576|)))
+  :qid |quant-u-24998|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (=>
     (elems%precondition s@$ xs@2@00)
@@ -751,7 +751,7 @@
       true
       (elems%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((elems s@$ xs@2@00))
-  :qid |quant-u-19577|)))
+  :qid |quant-u-24999|)))
 ; ---------- List ----------
 (declare-const xs@6@00 $Ref)
 (push) ; 1

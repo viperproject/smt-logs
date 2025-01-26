@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:34:10
+// Date:         2025-01-26 21:41:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/loops/loopCondition.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/loops/loopCondition-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -209,7 +209,7 @@ function  bounded<T>(arg1_1: T): bool;
 // Translation of method sum
 // ==================================================
 
-procedure sum_3(n: int) returns (res: int)
+procedure sum(n: int) returns (res: int)
   modifies Heap, Mask;
 {
   var oldHeap: HeapType;
@@ -256,7 +256,7 @@ procedure sum_3(n: int) returns (res: int)
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (loopCondition.vpr@17.15--17.21) [223999]"}
+        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (loopCondition.vpr@17.15--17.21) [19611]"}
           i <= n;
     
     // -- Havoc loop written variables (except locals)
@@ -313,14 +313,14 @@ procedure sum_3(n: int) returns (res: int)
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             if (!vbreak) {
-              assert {:msg "  Assert might fail. Assertion (decreasing(n - i, old_W1_T0): Bool) && (bounded(old_W1_T0): Bool) || n - i == old_W1_T0 && false might not hold. (<no position>) [224000]"}
+              assert {:msg "  Assert might fail. Assertion (decreasing(n - i, old_W1_T0): Bool) && (bounded(old_W1_T0): Bool) || n - i == old_W1_T0 && false might not hold. (<no position>) [19612]"}
                 (decreasing(n - i, old_W1_T0): bool) && (bounded(old_W1_T0): bool);
             }
             assume state(Heap, Mask);
         // Exhale invariant
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (loopCondition.vpr@17.15--17.21) [224001]"}
+        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (loopCondition.vpr@17.15--17.21) [19613]"}
           i <= n;
         // Terminate execution
         assume false;
@@ -385,7 +385,7 @@ procedure sum_e(n: int) returns (res: int)
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (loopCondition.vpr@38.15--38.21) [224002]"}
+        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (loopCondition.vpr@38.15--38.21) [19614]"}
           i <= n;
     
     // -- Havoc loop written variables (except locals)
@@ -437,14 +437,14 @@ procedure sum_e(n: int) returns (res: int)
             ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
             if (!vbreak) {
-              assert {:msg "  Assert might fail. Assertion (decreasing(n - i, old_W2_T0): Bool) && (bounded(old_W2_T0): Bool) || n - i == old_W2_T0 && false might not hold. (<no position>) [224003]"}
+              assert {:msg "  Assert might fail. Assertion (decreasing(n - i, old_W2_T0): Bool) && (bounded(old_W2_T0): Bool) || n - i == old_W2_T0 && false might not hold. (<no position>) [19615]"}
                 (decreasing(n - i, old_W2_T0): bool) && (bounded(old_W2_T0): bool);
             }
             assume state(Heap, Mask);
         // Exhale invariant
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (loopCondition.vpr@38.15--38.21) [224004]"}
+        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (loopCondition.vpr@38.15--38.21) [19616]"}
           i <= n;
         // Terminate execution
         assume false;

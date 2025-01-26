@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:20:31
+// Date:         2025-01-26 21:43:32
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/while.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/while-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -185,7 +185,7 @@ axiom !IsWandField(f_7);
 // Translation of method t1
 // ==================================================
 
-procedure t1(n: int) returns ()
+procedure t1_2(n: int) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -222,7 +222,7 @@ procedure t1(n: int) returns ()
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (while.vpr@13.19--13.25) [185793]"}
+        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (while.vpr@13.19--13.25) [100486]"}
           i <= n;
     
     // -- Havoc loop written variables (except locals)
@@ -257,7 +257,7 @@ procedure t1(n: int) returns ()
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (while.vpr@13.19--13.25) [185794]"}
+        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (while.vpr@13.19--13.25) [100487]"}
           i <= n;
         // Terminate execution
         assume false;
@@ -275,7 +275,7 @@ procedure t1(n: int) returns ()
 // Translation of method t2
 // ==================================================
 
-procedure t2(n: int) returns ()
+procedure t2_2(n: int) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -312,7 +312,7 @@ procedure t2(n: int) returns ()
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant i < n might not hold on entry. Assertion i < n might not hold. (while.vpr@26.19--26.24) [185795]"}
+        assert {:msg "  Loop invariant i < n might not hold on entry. Assertion i < n might not hold. (while.vpr@26.19--26.24) [100488]"}
           i < n;
     
     // -- Havoc loop written variables (except locals)
@@ -347,7 +347,7 @@ procedure t2(n: int) returns ()
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant i < n might not be preserved. Assertion i < n might not hold. (while.vpr@26.19--26.24) [185796]"}
+        assert {:msg "  Loop invariant i < n might not be preserved. Assertion i < n might not hold. (while.vpr@26.19--26.24) [100489]"}
           i < n;
         // Terminate execution
         assume false;
@@ -402,7 +402,7 @@ procedure t3(n: int) returns ()
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (while.vpr@39.19--39.25) [185797]"}
+        assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (while.vpr@39.19--39.25) [100490]"}
           i <= n;
     
     // -- Havoc loop written variables (except locals)
@@ -437,7 +437,7 @@ procedure t3(n: int) returns ()
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (while.vpr@39.19--39.25) [185798]"}
+        assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (while.vpr@39.19--39.25) [100491]"}
           i <= n;
         // Terminate execution
         assume false;
@@ -510,7 +510,7 @@ procedure t4(n: int, r_1: Ref) returns ()
         // Check and assume guard
         
         // -- Check definedness of i < r.f
-          assert {:msg "  While statement might fail. There might be insufficient permission to access r.f (while.vpr@52.12--52.21) [185799]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access r.f (while.vpr@52.12--52.21) [100492]"}
             HasDirectPerm(Mask, r_1, f_7);
         assume i < Heap[r_1, f_7];
         assume state(Heap, Mask);
@@ -584,7 +584,7 @@ procedure t5(n: int, r_1: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(r.f, write) might not hold on entry. There might be insufficient permission to access r.f (while.vpr@65.19--65.34) [185800]"}
+          assert {:msg "  Loop invariant acc(r.f, write) might not hold on entry. There might be insufficient permission to access r.f (while.vpr@65.19--65.34) [100493]"}
             perm <= Mask[r_1, f_7];
         }
         Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -622,7 +622,7 @@ procedure t5(n: int, r_1: Ref) returns ()
         // Check and assume guard
         
         // -- Check definedness of i < r.f
-          assert {:msg "  While statement might fail. There might be insufficient permission to access r.f (while.vpr@64.12--64.21) [185801]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access r.f (while.vpr@64.12--64.21) [100494]"}
             HasDirectPerm(Mask, r_1, f_7);
         assume i < Heap[r_1, f_7];
         assume state(Heap, Mask);
@@ -637,7 +637,7 @@ procedure t5(n: int, r_1: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(r.f, write) might not be preserved. There might be insufficient permission to access r.f (while.vpr@65.19--65.34) [185802]"}
+          assert {:msg "  Loop invariant acc(r.f, write) might not be preserved. There might be insufficient permission to access r.f (while.vpr@65.19--65.34) [100495]"}
             perm <= Mask[r_1, f_7];
         }
         Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -664,7 +664,7 @@ procedure t5(n: int, r_1: Ref) returns ()
 // Translation of method t6
 // ==================================================
 
-procedure t6(r_1: Ref) returns ()
+procedure t6_1(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var oldMask: MaskType;
@@ -726,7 +726,7 @@ procedure t7(r_1: Ref) returns ()
   var oldMask: MaskType;
   var oldHeap: HeapType;
   var i: int;
-  var j_9: int;
+  var j: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var ExhaleWellDef0Mask: MaskType;
@@ -751,13 +751,13 @@ procedure t7(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: j := 2 -- while.vpr@81.5--81.20
-    j_9 := 2;
+    j := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (true) -- while.vpr@83.5--89.6
     
     // -- Havoc loop written variables (except locals)
-      havoc j_9;
+      havoc j;
     
     // -- Check definedness of invariant
       if (*) {
@@ -781,19 +781,19 @@ procedure t7(r_1: Ref) returns ()
           // -- Translating statement: assert i == 1 -- while.vpr@85.9--85.22
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion i == 1 might not hold. (while.vpr@85.16--85.22) [185803]"}
+            assert {:msg "  Assert might fail. Assertion i == 1 might not hold. (while.vpr@85.16--85.22) [100496]"}
               i == 1;
             assume state(Heap, Mask);
           
           // -- Translating statement: assert j == 2 -- while.vpr@87.9--87.22
             ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
-            assert {:msg "  Assert might fail. Assertion j == 2 might not hold. (while.vpr@87.16--87.22) [185804]"}
-              j_9 == 2;
+            assert {:msg "  Assert might fail. Assertion j == 2 might not hold. (while.vpr@87.16--87.22) [100497]"}
+              j == 2;
             assume state(Heap, Mask);
           
           // -- Translating statement: j := j + 1 -- while.vpr@88.9--88.17
-            j_9 := j_9 + 1;
+            j := j + 1;
             assume state(Heap, Mask);
         // Terminate execution
         assume false;
@@ -815,7 +815,7 @@ procedure t8(r_1: Ref) returns ()
 {
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var j_9: int;
+  var j: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var ExhaleWellDef0Mask: MaskType;
@@ -836,13 +836,13 @@ procedure t8(r_1: Ref) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: j := 2 -- while.vpr@94.5--94.20
-    j_9 := 2;
+    j := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (j < 10) -- while.vpr@96.5--99.6
     
     // -- Havoc loop written variables (except locals)
-      havoc j_9;
+      havoc j;
     
     // -- Check definedness of invariant
       if (*) {
@@ -859,20 +859,20 @@ procedure t8(r_1: Ref) returns ()
         // Inhale invariant
         assume state(Heap, Mask);
         // Check and assume guard
-        assume j_9 < 10;
+        assume j < 10;
         assume state(Heap, Mask);
         
         // -- Translate loop body
           
           // -- Translating statement: j := j + 1 -- while.vpr@98.9--98.17
-            j_9 := j_9 + 1;
+            j := j + 1;
             assume state(Heap, Mask);
         // Terminate execution
         assume false;
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(j_9 < 10);
+      assume !(j < 10);
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -880,14 +880,14 @@ procedure t8(r_1: Ref) returns ()
   // -- Translating statement: assert j >= 10 -- while.vpr@101.5--101.19
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion j >= 10 might not hold. (while.vpr@101.12--101.19) [185805]"}
-      j_9 >= 10;
+    assert {:msg "  Assert might fail. Assertion j >= 10 might not hold. (while.vpr@101.12--101.19) [100498]"}
+      j >= 10;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- while.vpr@103.5--103.17
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion false might not hold. (while.vpr@103.12--103.17) [185806]"}
+    assert {:msg "  Assert might fail. Assertion false might not hold. (while.vpr@103.12--103.17) [100499]"}
       false;
     assume state(Heap, Mask);
 }
@@ -902,7 +902,7 @@ procedure t9(r_1: Ref) returns ()
   var perm: Perm;
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var j_9: int;
+  var j: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
@@ -931,7 +931,7 @@ procedure t9(r_1: Ref) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: j := 2 -- while.vpr@109.5--109.20
-    j_9 := 2;
+    j := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (j < r.f) -- while.vpr@110.5--114.6
@@ -943,7 +943,7 @@ procedure t9(r_1: Ref) returns ()
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(r.f, write) might not hold on entry. There might be insufficient permission to access r.f (while.vpr@111.19--111.34) [185807]"}
+          assert {:msg "  Loop invariant acc(r.f, write) might not hold on entry. There might be insufficient permission to access r.f (while.vpr@111.19--111.34) [100500]"}
             perm <= Mask[r_1, f_7];
         }
         Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -953,7 +953,7 @@ procedure t9(r_1: Ref) returns ()
         Heap := ExhaleHeap;
     
     // -- Havoc loop written variables (except locals)
-      havoc j_9;
+      havoc j;
     
     // -- Check definedness of invariant
       if (*) {
@@ -981,22 +981,22 @@ procedure t9(r_1: Ref) returns ()
         // Check and assume guard
         
         // -- Check definedness of j < r.f
-          assert {:msg "  While statement might fail. There might be insufficient permission to access r.f (while.vpr@110.12--110.21) [185808]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access r.f (while.vpr@110.12--110.21) [100501]"}
             HasDirectPerm(Mask, r_1, f_7);
-        assume j_9 < Heap[r_1, f_7];
+        assume j < Heap[r_1, f_7];
         assume state(Heap, Mask);
         
         // -- Translate loop body
           
           // -- Translating statement: j := j + 1 -- while.vpr@113.9--113.17
-            j_9 := j_9 + 1;
+            j := j + 1;
             assume state(Heap, Mask);
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
-          assert {:msg "  Loop invariant acc(r.f, write) might not be preserved. There might be insufficient permission to access r.f (while.vpr@111.19--111.34) [185809]"}
+          assert {:msg "  Loop invariant acc(r.f, write) might not be preserved. There might be insufficient permission to access r.f (while.vpr@111.19--111.34) [100502]"}
             perm <= Mask[r_1, f_7];
         }
         Mask := Mask[r_1, f_7:=Mask[r_1, f_7] - perm];
@@ -1009,7 +1009,7 @@ procedure t9(r_1: Ref) returns ()
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(j_9 < Heap[r_1, f_7]);
+      assume !(j < Heap[r_1, f_7]);
       assume state(Heap, Mask);
       perm := FullPerm;
       assume r_1 != null;
@@ -1023,10 +1023,10 @@ procedure t9(r_1: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of j >= r.f
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (while.vpr@115.12--115.22) [185810]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (while.vpr@115.12--115.22) [100503]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Assert might fail. Assertion j >= r.f might not hold. (while.vpr@115.12--115.22) [185811]"}
-      j_9 >= Heap[r_1, f_7];
+    assert {:msg "  Assert might fail. Assertion j >= r.f might not hold. (while.vpr@115.12--115.22) [100504]"}
+      j >= Heap[r_1, f_7];
     assume state(Heap, Mask);
 }
 
@@ -1040,7 +1040,7 @@ procedure t10(r_1: Ref) returns ()
   var perm: Perm;
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var j_9: int;
+  var j: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var ExhaleWellDef0Mask: MaskType;
@@ -1068,13 +1068,13 @@ procedure t10(r_1: Ref) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: j := 2 -- while.vpr@121.5--121.20
-    j_9 := 2;
+    j := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (j < r.f) -- while.vpr@124.5--127.6
     
     // -- Havoc loop written variables (except locals)
-      havoc j_9;
+      havoc j;
     
     // -- Check definedness of invariant
       if (*) {
@@ -1093,22 +1093,22 @@ procedure t10(r_1: Ref) returns ()
         // Check and assume guard
         
         // -- Check definedness of j < r.f
-          assert {:msg "  While statement might fail. There might be insufficient permission to access r.f (while.vpr@124.12--124.21) [185812]"}
+          assert {:msg "  While statement might fail. There might be insufficient permission to access r.f (while.vpr@124.12--124.21) [100505]"}
             HasDirectPerm(Mask, r_1, f_7);
-        assume j_9 < Heap[r_1, f_7];
+        assume j < Heap[r_1, f_7];
         assume state(Heap, Mask);
         
         // -- Translate loop body
           
           // -- Translating statement: j := j + 1 -- while.vpr@126.9--126.17
-            j_9 := j_9 + 1;
+            j := j + 1;
             assume state(Heap, Mask);
         // Terminate execution
         assume false;
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(j_9 < Heap[r_1, f_7]);
+      assume !(j < Heap[r_1, f_7]);
       assume state(Heap, Mask);
       assume state(Heap, Mask);
     assume state(Heap, Mask);
@@ -1118,10 +1118,10 @@ procedure t10(r_1: Ref) returns ()
     ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of j >= r.f
-      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (while.vpr@128.12--128.22) [185813]"}
+      assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (while.vpr@128.12--128.22) [100506]"}
         HasDirectPerm(ExhaleWellDef0Mask, r_1, f_7);
-    assert {:msg "  Assert might fail. Assertion j >= r.f might not hold. (while.vpr@128.12--128.22) [185814]"}
-      j_9 >= Heap[r_1, f_7];
+    assert {:msg "  Assert might fail. Assertion j >= r.f might not hold. (while.vpr@128.12--128.22) [100507]"}
+      j >= Heap[r_1, f_7];
     assume state(Heap, Mask);
 }
 
@@ -1134,7 +1134,7 @@ procedure t11(r_1: Ref) returns ()
 {
   var oldMask: MaskType;
   var oldHeap: HeapType;
-  var j_9: int;
+  var j: int;
   var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
@@ -1159,7 +1159,7 @@ procedure t11(r_1: Ref) returns ()
       oldHeap := Heap;
   
   // -- Translating statement: j := 2 -- while.vpr@134.5--134.20
-    j_9 := 2;
+    j := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (j < 3) -- while.vpr@136.5--143.6
@@ -1169,20 +1169,20 @@ procedure t11(r_1: Ref) returns ()
       // -- Exhale loop invariant before loop
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant r != null && r.f == 2 might not hold on entry. Assertion r != null might not hold. (while.vpr@140.19--140.40) [185815]"}
+        assert {:msg "  Loop invariant r != null && r.f == 2 might not hold on entry. Assertion r != null might not hold. (while.vpr@140.19--140.40) [100508]"}
           r_1 != null;
-        assert {:msg "  Loop invariant r != null && r.f == 2 might not hold on entry. Assertion r.f == 2 might not hold. (while.vpr@140.19--140.40) [185816]"}
+        assert {:msg "  Loop invariant r != null && r.f == 2 might not hold on entry. Assertion r.f == 2 might not hold. (while.vpr@140.19--140.40) [100509]"}
           Heap[r_1, f_7] == 2;
     
     // -- Havoc loop written variables (except locals)
-      havoc j_9;
+      havoc j;
     
     // -- Check definedness of invariant
       if (*) {
         assume r_1 != null;
         
         // -- Check definedness of r.f == 2
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (while.vpr@140.19--140.40) [185817]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (while.vpr@140.19--140.40) [100510]"}
             HasDirectPerm(Mask, r_1, f_7);
         assume Heap[r_1, f_7] == 2;
         assume state(Heap, Mask);
@@ -1201,27 +1201,27 @@ procedure t11(r_1: Ref) returns ()
         assume Heap[r_1, f_7] == 2;
         assume state(Heap, Mask);
         // Check and assume guard
-        assume j_9 < 3;
+        assume j < 3;
         assume state(Heap, Mask);
         
         // -- Translate loop body
           
           // -- Translating statement: j := j + 1 -- while.vpr@142.9--142.17
-            j_9 := j_9 + 1;
+            j := j + 1;
             assume state(Heap, Mask);
         // Exhale invariant
         ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
-        assert {:msg "  Loop invariant r != null && r.f == 2 might not be preserved. Assertion r != null might not hold. (while.vpr@140.19--140.40) [185818]"}
+        assert {:msg "  Loop invariant r != null && r.f == 2 might not be preserved. Assertion r != null might not hold. (while.vpr@140.19--140.40) [100511]"}
           r_1 != null;
-        assert {:msg "  Loop invariant r != null && r.f == 2 might not be preserved. Assertion r.f == 2 might not hold. (while.vpr@140.19--140.40) [185819]"}
+        assert {:msg "  Loop invariant r != null && r.f == 2 might not be preserved. Assertion r.f == 2 might not hold. (while.vpr@140.19--140.40) [100512]"}
           Heap[r_1, f_7] == 2;
         // Terminate execution
         assume false;
       }
     
     // -- Inhale loop invariant after loop, and assume guard
-      assume !(j_9 < 3);
+      assume !(j < 3);
       assume state(Heap, Mask);
       assume r_1 != null;
       assume Heap[r_1, f_7] == 2;

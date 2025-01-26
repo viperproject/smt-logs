@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:00:11
+// Date:         2025-01-26 21:44:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/simpleRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/simpleRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -205,7 +205,7 @@ procedure main() returns ()
   // -- Translating statement: assert x -- simpleRef.vpr@12.5--12.14
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x might not hold. (simpleRef.vpr@12.12--12.13) [101759]"}
+    assert {:msg "  Assert might fail. Assertion x might not hold. (simpleRef.vpr@12.12--12.13) [198802]"}
       x;
     assume state(Heap, Mask);
   
@@ -216,7 +216,7 @@ procedure main() returns ()
   // -- Translating statement: assert x$0 -- simpleRef.vpr@15.5--15.16
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion x$0 might not hold. (simpleRef.vpr@15.12--15.15) [101760]"}
+    assert {:msg "  Assert might fail. Assertion x$0 might not hold. (simpleRef.vpr@15.12--15.15) [198803]"}
       x$0;
     assume state(Heap, Mask);
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:16
+// Date:         2025-01-26 21:42:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0328b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0328b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,48 +181,48 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type Vector9DDomainType;
 
 // Translation of domain function Vector9D_ctor
-function  Vector9D_ctor(f1_2: int, f2_2: int, f3_1: int, f4: int, f5: int, f6: int, f7_1: int, f8_1: int, f9: int): Vector9DDomainType;
+function  Vector9D_ctor(f1_3: int, f2_3: int, f3_2: int, f4_1: int, f5_1: int, f6_1: int, f7_1: int, f8: int, f9: int): Vector9DDomainType;
 
 // Translation of domain function Vector9D_ctor_syn
-function  Vector9D_ctor_syn(f1_2: int, f2_2: int, f3_1: int, f4: int, f5: int, f6: int, f7_1: int, f8_1: int, f9: int): Vector9DDomainType;
+function  Vector9D_ctor_syn(f1_3: int, f2_3: int, f3_2: int, f4_1: int, f5_1: int, f6_1: int, f7_1: int, f8: int, f9: int): Vector9DDomainType;
 
 // Translation of domain function Vector9D_f1
-function  Vector9D_f1(v_4: Vector9DDomainType): int;
+function  Vector9D_f1(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f2
-function  Vector9D_f2(v_4: Vector9DDomainType): int;
+function  Vector9D_f2(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f3
-function  Vector9D_f3(v_4: Vector9DDomainType): int;
+function  Vector9D_f3(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f4
-function  Vector9D_f4(v_4: Vector9DDomainType): int;
+function  Vector9D_f4(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f5
-function  Vector9D_f5(v_4: Vector9DDomainType): int;
+function  Vector9D_f5(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f6
-function  Vector9D_f6(v_4: Vector9DDomainType): int;
+function  Vector9D_f6(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f7
-function  Vector9D_f7(v_4: Vector9DDomainType): int;
+function  Vector9D_f7(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f8
-function  Vector9D_f8(v_4: Vector9DDomainType): int;
+function  Vector9D_f8(v_29: Vector9DDomainType): int;
 
 // Translation of domain function Vector9D_f9
-function  Vector9D_f9(v_4: Vector9DDomainType): int;
+function  Vector9D_f9(v_29: Vector9DDomainType): int;
 
 // Translation of domain axiom ax_synonim
-axiom (forall f1: int, f2: int, f3_3: int, f4_2: int, f5_2: int, f6_2: int, f7_2: int, f8_2: int, f9_1: int ::
-  { (Vector9D_ctor(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType) }
-  (Vector9D_ctor(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType) == (Vector9D_ctor_syn(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType)
+axiom (forall f1_1: int, f2_1: int, f3_3: int, f4_2: int, f5_2: int, f6_2: int, f7_2: int, f8_1: int, f9_1: int ::
+  { (Vector9D_ctor(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType) }
+  (Vector9D_ctor(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType) == (Vector9D_ctor_syn(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType)
 );
 
 // Translation of domain axiom ax_values_of_fields
-axiom (forall f1: int, f2: int, f3_3: int, f4_2: int, f5_2: int, f6_2: int, f7_2: int, f8_2: int, f9_1: int ::
-  { (Vector9D_ctor(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType) }
-  (Vector9D_f1((Vector9D_ctor_syn(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType)): int) == f1 && ((Vector9D_f2((Vector9D_ctor_syn(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType)): int) == f2 && ((Vector9D_f3((Vector9D_ctor_syn(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType)): int) == f3_3 && ((Vector9D_f4((Vector9D_ctor_syn(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType)): int) == f4_2 && ((Vector9D_f5((Vector9D_ctor_syn(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType)): int) == f5_2 && ((Vector9D_f6((Vector9D_ctor_syn(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType)): int) == f6_2 && ((Vector9D_f7((Vector9D_ctor_syn(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType)): int) == f7_2 && ((Vector9D_f8((Vector9D_ctor_syn(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType)): int) == f8_2 && (Vector9D_f9((Vector9D_ctor_syn(f1, f2, f3_3, f4_2, f5_2, f6_2, f7_2, f8_2, f9_1): Vector9DDomainType)): int) == f9_1)))))))
+axiom (forall f1_1: int, f2_1: int, f3_3: int, f4_2: int, f5_2: int, f6_2: int, f7_2: int, f8_1: int, f9_1: int ::
+  { (Vector9D_ctor(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType) }
+  (Vector9D_f1((Vector9D_ctor_syn(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType)): int) == f1_1 && ((Vector9D_f2((Vector9D_ctor_syn(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType)): int) == f2_1 && ((Vector9D_f3((Vector9D_ctor_syn(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType)): int) == f3_3 && ((Vector9D_f4((Vector9D_ctor_syn(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType)): int) == f4_2 && ((Vector9D_f5((Vector9D_ctor_syn(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType)): int) == f5_2 && ((Vector9D_f6((Vector9D_ctor_syn(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType)): int) == f6_2 && ((Vector9D_f7((Vector9D_ctor_syn(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType)): int) == f7_2 && ((Vector9D_f8((Vector9D_ctor_syn(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType)): int) == f8_1 && (Vector9D_f9((Vector9D_ctor_syn(f1_1, f2_1, f3_3, f4_2, f5_2, f6_2, f7_2, f8_1, f9_1): Vector9DDomainType)): int) == f9_1)))))))
 );
 
 // ==================================================
@@ -286,63 +286,63 @@ procedure main() returns ()
   // -- Translating statement: assert Vector9D_f1(v1) == 1 -- 0328b.vpr@60.3--60.30
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion Vector9D_f1(v1) == 1 might not hold. (0328b.vpr@60.10--60.30) [214308]"}
+    assert {:msg "  Assert might fail. Assertion Vector9D_f1(v1) == 1 might not hold. (0328b.vpr@60.10--60.30) [68919]"}
       (Vector9D_f1(v1): int) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f2(v1) == 2 -- 0328b.vpr@61.3--61.30
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion Vector9D_f2(v1) == 2 might not hold. (0328b.vpr@61.10--61.30) [214309]"}
+    assert {:msg "  Assert might fail. Assertion Vector9D_f2(v1) == 2 might not hold. (0328b.vpr@61.10--61.30) [68920]"}
       (Vector9D_f2(v1): int) == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f3(v1) == 3 -- 0328b.vpr@62.3--62.30
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion Vector9D_f3(v1) == 3 might not hold. (0328b.vpr@62.10--62.30) [214310]"}
+    assert {:msg "  Assert might fail. Assertion Vector9D_f3(v1) == 3 might not hold. (0328b.vpr@62.10--62.30) [68921]"}
       (Vector9D_f3(v1): int) == 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f4(v1) == 4 -- 0328b.vpr@63.3--63.30
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion Vector9D_f4(v1) == 4 might not hold. (0328b.vpr@63.10--63.30) [214311]"}
+    assert {:msg "  Assert might fail. Assertion Vector9D_f4(v1) == 4 might not hold. (0328b.vpr@63.10--63.30) [68922]"}
       (Vector9D_f4(v1): int) == 4;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f5(v1) == 5 -- 0328b.vpr@64.3--64.30
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion Vector9D_f5(v1) == 5 might not hold. (0328b.vpr@64.10--64.30) [214312]"}
+    assert {:msg "  Assert might fail. Assertion Vector9D_f5(v1) == 5 might not hold. (0328b.vpr@64.10--64.30) [68923]"}
       (Vector9D_f5(v1): int) == 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f6(v1) == 6 -- 0328b.vpr@65.3--65.30
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion Vector9D_f6(v1) == 6 might not hold. (0328b.vpr@65.10--65.30) [214313]"}
+    assert {:msg "  Assert might fail. Assertion Vector9D_f6(v1) == 6 might not hold. (0328b.vpr@65.10--65.30) [68924]"}
       (Vector9D_f6(v1): int) == 6;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f7(v1) == 7 -- 0328b.vpr@66.3--66.30
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion Vector9D_f7(v1) == 7 might not hold. (0328b.vpr@66.10--66.30) [214314]"}
+    assert {:msg "  Assert might fail. Assertion Vector9D_f7(v1) == 7 might not hold. (0328b.vpr@66.10--66.30) [68925]"}
       (Vector9D_f7(v1): int) == 7;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f8(v1) == 8 -- 0328b.vpr@67.3--67.30
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion Vector9D_f8(v1) == 8 might not hold. (0328b.vpr@67.10--67.30) [214315]"}
+    assert {:msg "  Assert might fail. Assertion Vector9D_f8(v1) == 8 might not hold. (0328b.vpr@67.10--67.30) [68926]"}
       (Vector9D_f8(v1): int) == 8;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f9(v1) == 9 -- 0328b.vpr@68.3--68.30
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Assert might fail. Assertion Vector9D_f9(v1) == 9 might not hold. (0328b.vpr@68.10--68.30) [214316]"}
+    assert {:msg "  Assert might fail. Assertion Vector9D_f9(v1) == 9 might not hold. (0328b.vpr@68.10--68.30) [68927]"}
       (Vector9D_f9(v1): int) == 9;
     assume state(Heap, Mask);
 }

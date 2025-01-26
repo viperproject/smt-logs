@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:30:43
+// Date:         2025-01-26 21:41:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0015.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0015-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,9 +177,9 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of all fields
 // ==================================================
 
-const unique b_94: Field NormalField bool;
-axiom !IsPredicateField(b_94);
-axiom !IsWandField(b_94);
+const unique b_32: Field NormalField bool;
+axiom !IsPredicateField(b_32);
+axiom !IsWandField(b_32);
 const unique f_7: Field NormalField int;
 axiom !IsPredicateField(f_7);
 axiom !IsWandField(f_7);
@@ -188,7 +188,7 @@ axiom !IsWandField(f_7);
 // Translation of method test
 // ==================================================
 
-procedure test(x: Ref) returns ()
+procedure test_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
@@ -206,14 +206,14 @@ procedure test(x: Ref) returns ()
   // -- Checked inhaling of precondition
     perm := FullPerm;
     assume x != null;
-    Mask := Mask[x, b_94:=Mask[x, b_94] + perm];
+    Mask := Mask[x, b_32:=Mask[x, b_32] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
     
     // -- Check definedness of !x.b
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0015.vpr@9.12--9.35) [220121]"}
-        HasDirectPerm(Mask, x, b_94);
-    if (!Heap[x, b_94]) {
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.b (0015.vpr@9.12--9.35) [53949]"}
+        HasDirectPerm(Mask, x, b_32);
+    if (!Heap[x, b_32]) {
       perm := FullPerm;
       assume x != null;
       Mask := Mask[x, f_7:=Mask[x, f_7] + perm];

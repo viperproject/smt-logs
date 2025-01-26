@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:28:56
+// Date:         2025-01-26 21:42:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0120b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0120b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref, f_8: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, f_8] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_3, f_8) ==> Heap[o_3, f_8] == ExhaleHeap[o_3, f_8]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref, f_19: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, f_19] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_12, f_19) ==> Heap[o_12, f_19] == ExhaleHeap[o_12, f_19]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1), ExhaleHeap[null, PredicateMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> Heap[null, PredicateMaskField(pm_f_1)] == ExhaleHeap[null, PredicateMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19), ExhaleHeap[null, PredicateMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> Heap[null, PredicateMaskField(pm_f_19)] == ExhaleHeap[null, PredicateMaskField(pm_f_19)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsPredicateField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, PredicateMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsPredicateField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, PredicateMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1), ExhaleHeap[null, WandMaskField(pm_f_1)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> Heap[null, WandMaskField(pm_f_1)] == ExhaleHeap[null, WandMaskField(pm_f_1)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19), ExhaleHeap[null, WandMaskField(pm_f_19)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> Heap[null, WandMaskField(pm_f_19)] == ExhaleHeap[null, WandMaskField(pm_f_19)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_1: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_1) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_1) && IsWandField(pm_f_1) ==> (forall <A, B> o2_1: Ref, f_8: (Field A B) ::
-    { ExhaleHeap[o2_1, f_8] }
-    Heap[null, WandMaskField(pm_f_1)][o2_1, f_8] ==> Heap[o2_1, f_8] == ExhaleHeap[o2_1, f_8]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_19: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_19) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_19) && IsWandField(pm_f_19) ==> (forall <A, B> o2_19: Ref, f_19: (Field A B) ::
+    { ExhaleHeap[o2_19, f_19] }
+    Heap[null, WandMaskField(pm_f_19)][o2_19, f_19] ==> Heap[o2_19, f_19] == ExhaleHeap[o2_19, f_19]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_3: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_3, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_3, $allocated] ==> ExhaleHeap[o_3, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_12: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_12, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_12, $allocated] ==> ExhaleHeap[o_12, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_9: (Field A B), v: B ::
-  { Heap[o_1, f_9:=v] }
-  succHeap(Heap, Heap[o_1, f_9:=v])
+axiom (forall <A, B> Heap: HeapType, o_1: Ref, f_51: (Field A B), v: B ::
+  { Heap[o_1, f_51:=v] }
+  succHeap(Heap, Heap[o_1, f_51:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -190,7 +190,7 @@ const unique A: TypeDomainType;
 const unique B: TypeDomainType;
 
 // Translation of domain function typeOf
-function  typeOf(self_3: Ref): TypeDomainType;
+function  typeOf(self_1: Ref): TypeDomainType;
 
 // Translation of domain axiom ax_typeOfChoices
 axiom (forall x: Ref ::
@@ -202,9 +202,9 @@ axiom (forall x: Ref ::
 // Translation of all fields
 // ==================================================
 
-const unique a_6: Field NormalField Ref;
-axiom !IsPredicateField(a_6);
-axiom !IsWandField(a_6);
+const unique a_26: Field NormalField Ref;
+axiom !IsPredicateField(a_26);
+axiom !IsWandField(a_26);
 const unique val: Field NormalField int;
 axiom !IsPredicateField(val);
 axiom !IsWandField(val);
@@ -217,11 +217,11 @@ axiom !IsWandField(next);
 // ==================================================
 
 // Uninterpreted function definitions
-function  length(Heap: HeapType, this: Ref): int;
+function  length_1(Heap: HeapType, this: Ref): int;
 function  length'(Heap: HeapType, this: Ref): int;
 axiom (forall Heap: HeapType, this: Ref ::
-  { length(Heap, this) }
-  length(Heap, this) == length'(Heap, this) && dummyFunction(length#triggerStateless(this))
+  { length_1(Heap, this) }
+  length_1(Heap, this) == length'(Heap, this) && dummyFunction(length#triggerStateless(this))
 );
 axiom (forall Heap: HeapType, this: Ref ::
   { length'(Heap, this) }
@@ -230,21 +230,21 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), length(Heap, this) } { state(Heap, Mask), length#triggerStateless(this), node#trigger(Heap, node_2(this)) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> length(Heap, this) == (if (typeOf(Heap[this, next]): TypeDomainType) == B then 1 else 1 + length'(Heap, Heap[Heap[this, next], a_6]))
+  { state(Heap, Mask), length_1(Heap, this) } { state(Heap, Mask), length#triggerStateless(this), node#trigger(Heap, node_1(this)) }
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> length_1(Heap, this) == (if (typeOf(Heap[this, next]): TypeDomainType) == B then 1 else 1 + length'(Heap, Heap[Heap[this, next], a_26]))
 );
 
 // Framing axioms
 function  length#frame(frame: FrameType, this: Ref): int;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), length'(Heap, this) } { state(Heap, Mask), length#triggerStateless(this), node#trigger(Heap, node_2(this)) }
-  state(Heap, Mask) ==> length'(Heap, this) == length#frame(Heap[null, node_2(this)], this)
+  { state(Heap, Mask), length'(Heap, this) } { state(Heap, Mask), length#triggerStateless(this), node#trigger(Heap, node_1(this)) }
+  state(Heap, Mask) ==> length'(Heap, this) == length#frame(Heap[null, node_1(this)], this)
 );
 
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), length'(Heap, this) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || length#trigger(Heap[null, node_2(this)], this)) ==> length'(Heap, this) >= 1
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || length#trigger(Heap[null, node_1(this)], this)) ==> length'(Heap, this) >= 1
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -274,7 +274,7 @@ procedure length#definedness(this: Ref) returns (Result: int)
   
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
-    Mask := Mask[null, node_2(this):=Mask[null, node_2(this)] + perm];
+    Mask := Mask[null, node_1(this):=Mask[null, node_1(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -283,13 +283,13 @@ procedure length#definedness(this: Ref) returns (Result: int)
     // -- Check definedness of (unfolding acc(node(this), write) in (typeOf(this.next) == B() ? 1 : 1 + length(this.next.a)))
       UnfoldingHeap := Heap;
       UnfoldingMask := Mask;
-      assume node#trigger(UnfoldingHeap, node_2(this));
-      assume UnfoldingHeap[null, node_2(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, val]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if (typeOf(UnfoldingHeap[this, next]): TypeDomainType) == A then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], a_6]), UnfoldingHeap[null, node_2(UnfoldingHeap[UnfoldingHeap[this, next], a_6])]) else EmptyFrame))));
+      assume node#trigger(UnfoldingHeap, node_1(this));
+      assume UnfoldingHeap[null, node_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, val]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if (typeOf(UnfoldingHeap[this, next]): TypeDomainType) == A then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], a_26]), UnfoldingHeap[null, node_1(UnfoldingHeap[UnfoldingHeap[this, next], a_26])]) else EmptyFrame))));
       ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access node(this) (0120b.vpr@29.1--36.2) [215793]"}
-        NoPerm < perm ==> NoPerm < UnfoldingMask[null, node_2(this)];
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access node(this) (0120b.vpr@29.1--36.2) [59822]"}
+        NoPerm < perm ==> NoPerm < UnfoldingMask[null, node_1(this)];
       perm := FullPerm;
       assume this != null;
       UnfoldingMask := UnfoldingMask[this, val:=UnfoldingMask[this, val] + perm];
@@ -301,31 +301,31 @@ procedure length#definedness(this: Ref) returns (Result: int)
       if ((typeOf(UnfoldingHeap[this, next]): TypeDomainType) == A) {
         perm := FullPerm;
         assume UnfoldingHeap[this, next] != null;
-        UnfoldingMask := UnfoldingMask[UnfoldingHeap[this, next], a_6:=UnfoldingMask[UnfoldingHeap[this, next], a_6] + perm];
+        UnfoldingMask := UnfoldingMask[UnfoldingHeap[this, next], a_26:=UnfoldingMask[UnfoldingHeap[this, next], a_26] + perm];
         assume state(UnfoldingHeap, UnfoldingMask);
         perm := FullPerm;
-        UnfoldingMask := UnfoldingMask[null, node_2(UnfoldingHeap[UnfoldingHeap[this, next], a_6]):=UnfoldingMask[null, node_2(UnfoldingHeap[UnfoldingHeap[this, next], a_6])] + perm];
+        UnfoldingMask := UnfoldingMask[null, node_1(UnfoldingHeap[UnfoldingHeap[this, next], a_26]):=UnfoldingMask[null, node_1(UnfoldingHeap[UnfoldingHeap[this, next], a_26])] + perm];
         
         // -- Extra unfolding of predicate
-          assume InsidePredicate(node_2(this), UnfoldingHeap[null, node_2(this)], node_2(UnfoldingHeap[UnfoldingHeap[this, next], a_6]), UnfoldingHeap[null, node_2(UnfoldingHeap[UnfoldingHeap[this, next], a_6])]);
+          assume InsidePredicate(node_1(this), UnfoldingHeap[null, node_1(this)], node_1(UnfoldingHeap[UnfoldingHeap[this, next], a_26]), UnfoldingHeap[null, node_1(UnfoldingHeap[UnfoldingHeap[this, next], a_26])]);
         assume state(UnfoldingHeap, UnfoldingMask);
       }
       assume state(UnfoldingHeap, UnfoldingMask);
-      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.next (0120b.vpr@29.1--36.2) [215794]"}
+      assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.next (0120b.vpr@29.1--36.2) [59823]"}
         HasDirectPerm(UnfoldingMask, this, next);
       if ((typeOf(UnfoldingHeap[this, next]): TypeDomainType) == B) {
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.next (0120b.vpr@29.1--36.2) [215795]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.next (0120b.vpr@29.1--36.2) [59824]"}
           HasDirectPerm(UnfoldingMask, this, next);
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.next.a (0120b.vpr@29.1--36.2) [215796]"}
-          HasDirectPerm(UnfoldingMask, UnfoldingHeap[this, next], a_6);
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access this.next.a (0120b.vpr@29.1--36.2) [59825]"}
+          HasDirectPerm(UnfoldingMask, UnfoldingHeap[this, next], a_26);
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
-          assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(this.next.a) (0120b.vpr@34.42--34.61) [215797]"}
-            NoPerm < perm ==> NoPerm < UnfoldingMask[null, node_2(UnfoldingHeap[UnfoldingHeap[this, next], a_6])];
+          assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(this.next.a) (0120b.vpr@34.42--34.61) [59826]"}
+            NoPerm < perm ==> NoPerm < UnfoldingMask[null, node_1(UnfoldingHeap[UnfoldingHeap[this, next], a_26])];
           // Finish exhale
           havoc ExhaleHeap;
           assume IdenticalOnKnownLocations(UnfoldingHeap, ExhaleHeap, UnfoldingMask);
@@ -334,7 +334,7 @@ procedure length#definedness(this: Ref) returns (Result: int)
           assume false;
         } else {
           // Enable postcondition for recursive call
-          assume length#trigger(UnfoldingHeap[null, node_2(UnfoldingHeap[UnfoldingHeap[this, next], a_6])], UnfoldingHeap[UnfoldingHeap[this, next], a_6]);
+          assume length#trigger(UnfoldingHeap[null, node_1(UnfoldingHeap[UnfoldingHeap[this, next], a_26])], UnfoldingHeap[UnfoldingHeap[this, next], a_26]);
         }
       }
       
@@ -342,23 +342,23 @@ procedure length#definedness(this: Ref) returns (Result: int)
         Heap := Heap[null, node#sm(this):=Heap[null, node#sm(this)][this, val:=true]];
         Heap := Heap[null, node#sm(this):=Heap[null, node#sm(this)][this, next:=true]];
         if ((typeOf(Heap[this, next]): TypeDomainType) == A) {
-          Heap := Heap[null, node#sm(this):=Heap[null, node#sm(this)][Heap[this, next], a_6:=true]];
+          Heap := Heap[null, node#sm(this):=Heap[null, node#sm(this)][Heap[this, next], a_26:=true]];
           havoc newPMask;
-          assume (forall <A, B> o_15: Ref, f_20: (Field A B) ::
-            { newPMask[o_15, f_20] }
-            Heap[null, node#sm(this)][o_15, f_20] || Heap[null, node#sm(Heap[Heap[this, next], a_6])][o_15, f_20] ==> newPMask[o_15, f_20]
+          assume (forall <A, B> o_5: Ref, f_11: (Field A B) ::
+            { newPMask[o_5, f_11] }
+            Heap[null, node#sm(this)][o_5, f_11] || Heap[null, node#sm(Heap[Heap[this, next], a_26])][o_5, f_11] ==> newPMask[o_5, f_11]
           );
           Heap := Heap[null, node#sm(this):=newPMask];
         }
         assume state(Heap, Mask);
   
   // -- Translate function body
-    Result := (if (typeOf(Heap[this, next]): TypeDomainType) == B then 1 else 1 + length(Heap, Heap[Heap[this, next], a_6]));
+    Result := (if (typeOf(Heap[this, next]): TypeDomainType) == B then 1 else 1 + length_1(Heap, Heap[Heap[this, next], a_26]));
   
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
-    assert {:msg "  Postcondition of length might not hold. Assertion result >= 1 might not hold. (0120b.vpr@31.11--31.22) [215798]"}
+    assert {:msg "  Postcondition of length might not hold. Assertion result >= 1 might not hold. (0120b.vpr@31.11--31.22) [59827]"}
       Result >= 1;
 }
 
@@ -367,25 +367,25 @@ procedure length#definedness(this: Ref) returns (Result: int)
 // ==================================================
 
 type PredicateType_node;
-function  node_2(this: Ref): Field PredicateType_node FrameType;
+function  node_1(this: Ref): Field PredicateType_node FrameType;
 function  node#sm(this: Ref): Field PredicateType_node PMaskType;
 axiom (forall this: Ref ::
-  { PredicateMaskField(node_2(this)) }
-  PredicateMaskField(node_2(this)) == node#sm(this)
+  { PredicateMaskField(node_1(this)) }
+  PredicateMaskField(node_1(this)) == node#sm(this)
 );
 axiom (forall this: Ref ::
-  { node_2(this) }
-  IsPredicateField(node_2(this))
+  { node_1(this) }
+  IsPredicateField(node_1(this))
 );
 axiom (forall this: Ref ::
-  { node_2(this) }
-  getPredWandId(node_2(this)) == 0
+  { node_1(this) }
+  getPredWandId(node_1(this)) == 0
 );
 function  node#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  node#everUsed<A>(pred: (Field A FrameType)): bool;
 axiom (forall this: Ref, this2: Ref ::
-  { node_2(this), node_2(this2) }
-  node_2(this) == node_2(this2) ==> this == this2
+  { node_1(this), node_1(this2) }
+  node_1(this) == node_1(this2) ==> this == this2
 );
 axiom (forall this: Ref, this2: Ref ::
   { node#sm(this), node#sm(this2) }
@@ -393,8 +393,8 @@ axiom (forall this: Ref, this2: Ref ::
 );
 
 axiom (forall Heap: HeapType, this: Ref ::
-  { node#trigger(Heap, node_2(this)) }
-  node#everUsed(node_2(this))
+  { node#trigger(Heap, node_1(this)) }
+  node#everUsed(node_1(this))
 );
 
 procedure node#definedness(this: Ref) returns ()
@@ -420,25 +420,25 @@ procedure node#definedness(this: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- Check definedness of typeOf(this.next) == A()
-      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0120b.vpr@20.1--27.2) [215799]"}
+      assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0120b.vpr@20.1--27.2) [59828]"}
         HasDirectPerm(Mask, this, next);
     if ((typeOf(Heap[this, next]): TypeDomainType) == A) {
       
       // -- Check definedness of acc(this.next.a, write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0120b.vpr@20.1--27.2) [215800]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0120b.vpr@20.1--27.2) [59829]"}
           HasDirectPerm(Mask, this, next);
       perm := FullPerm;
       assume Heap[this, next] != null;
-      Mask := Mask[Heap[this, next], a_6:=Mask[Heap[this, next], a_6] + perm];
+      Mask := Mask[Heap[this, next], a_26:=Mask[Heap[this, next], a_26] + perm];
       assume state(Heap, Mask);
       
       // -- Check definedness of acc(node(this.next.a), write)
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0120b.vpr@20.1--27.2) [215801]"}
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next (0120b.vpr@20.1--27.2) [59830]"}
           HasDirectPerm(Mask, this, next);
-        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next.a (0120b.vpr@20.1--27.2) [215802]"}
-          HasDirectPerm(Mask, Heap[this, next], a_6);
+        assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access this.next.a (0120b.vpr@20.1--27.2) [59831]"}
+          HasDirectPerm(Mask, Heap[this, next], a_26);
       perm := FullPerm;
-      Mask := Mask[null, node_2(Heap[Heap[this, next], a_6]):=Mask[null, node_2(Heap[Heap[this, next], a_6])] + perm];
+      Mask := Mask[null, node_1(Heap[Heap[this, next], a_26]):=Mask[null, node_1(Heap[Heap[this, next], a_26])] + perm];
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -476,7 +476,7 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
   
   // -- Checked inhaling of precondition
     perm := FullPerm;
-    Mask := Mask[null, node_2(tail_1):=Mask[null, node_2(tail_1)] + perm];
+    Mask := Mask[null, node_1(tail_1):=Mask[null, node_1(tail_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -491,7 +491,7 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     assume state(PostHeap, PostMask);
     // Checked inhaling of postcondition to check definedness
     perm := FullPerm;
-    PostMask := PostMask[null, node_2(res):=PostMask[null, node_2(res)] + perm];
+    PostMask := PostMask[null, node_1(res):=PostMask[null, node_1(res)] + perm];
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
     assume state(PostHeap, PostMask);
@@ -502,8 +502,8 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
         ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(res) (0120b.vpr@43.11--43.22) [215803]"}
-          NoPerm < perm ==> NoPerm < PostMask[null, node_2(res)];
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(res) (0120b.vpr@43.11--43.22) [59832]"}
+          NoPerm < perm ==> NoPerm < PostMask[null, node_1(res)];
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(PostHeap, ExhaleHeap, PostMask);
@@ -516,13 +516,13 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
         ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
-        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(tail) (0120b.vpr@43.30--43.42) [215804]"}
-          NoPerm < perm ==> NoPerm < oldMask[null, node_2(tail_1)];
+        assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(tail) (0120b.vpr@43.30--43.42) [59833]"}
+          NoPerm < perm ==> NoPerm < oldMask[null, node_1(tail_1)];
         // Finish exhale
         // Stop execution
         assume false;
       }
-    assume length(PostHeap, res) == length(oldHeap, tail_1) + 1;
+    assume length_1(PostHeap, res) == length_1(oldHeap, tail_1) + 1;
     assume state(PostHeap, PostMask);
     // Stop execution
     assume false;
@@ -541,7 +541,7 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: res.val := v -- 0120b.vpr@49.3--49.15
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access res.val (0120b.vpr@49.3--49.15) [215805]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access res.val (0120b.vpr@49.3--49.15) [59834]"}
       FullPerm == Mask[res, val];
     Heap := Heap[res, val:=v_2];
     assume state(Heap, Mask);
@@ -551,13 +551,13 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     assume freshObj != null && !Heap[freshObj, $allocated];
     Heap := Heap[freshObj, $allocated:=true];
     tmp := freshObj;
-    Mask := Mask[tmp, a_6:=Mask[tmp, a_6] + FullPerm];
+    Mask := Mask[tmp, a_26:=Mask[tmp, a_26] + FullPerm];
     assume state(Heap, Mask);
   
   // -- Translating statement: tmp.a := tail -- 0120b.vpr@52.3--52.16
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access tmp.a (0120b.vpr@52.3--52.16) [215806]"}
-      FullPerm == Mask[tmp, a_6];
-    Heap := Heap[tmp, a_6:=tail_1];
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access tmp.a (0120b.vpr@52.3--52.16) [59835]"}
+      FullPerm == Mask[tmp, a_26];
+    Heap := Heap[tmp, a_26:=tail_1];
     assume state(Heap, Mask);
   
   // -- Translating statement: inhale typeOf(tmp) == A() -- 0120b.vpr@53.10--53.28
@@ -566,27 +566,27 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: res.next := tmp -- 0120b.vpr@55.3--55.18
-    assert {:msg "  Assignment might fail. There might be insufficient permission to access res.next (0120b.vpr@55.3--55.18) [215807]"}
+    assert {:msg "  Assignment might fail. There might be insufficient permission to access res.next (0120b.vpr@55.3--55.18) [59836]"}
       FullPerm == Mask[res, next];
     Heap := Heap[res, next:=tmp];
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(node(tail), write) -- 0120b.vpr@57.3--57.25
-    assume node#trigger(Heap, node_2(tail_1));
-    assume Heap[null, node_2(tail_1)] == CombineFrames(FrameFragment(Heap[tail_1, val]), CombineFrames(FrameFragment(Heap[tail_1, next]), FrameFragment((if (typeOf(Heap[tail_1, next]): TypeDomainType) == A then CombineFrames(FrameFragment(Heap[Heap[tail_1, next], a_6]), Heap[null, node_2(Heap[Heap[tail_1, next], a_6])]) else EmptyFrame))));
+    assume node#trigger(Heap, node_1(tail_1));
+    assume Heap[null, node_1(tail_1)] == CombineFrames(FrameFragment(Heap[tail_1, val]), CombineFrames(FrameFragment(Heap[tail_1, next]), FrameFragment((if (typeOf(Heap[tail_1, next]): TypeDomainType) == A then CombineFrames(FrameFragment(Heap[Heap[tail_1, next], a_26]), Heap[null, node_1(Heap[Heap[tail_1, next], a_26])]) else EmptyFrame))));
     ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Unfolding node(tail) might fail. There might be insufficient permission to access node(tail) (0120b.vpr@57.3--57.25) [215810]"}
-        perm <= Mask[null, node_2(tail_1)];
+      assert {:msg "  Unfolding node(tail) might fail. There might be insufficient permission to access node(tail) (0120b.vpr@57.3--57.25) [59839]"}
+        perm <= Mask[null, node_1(tail_1)];
     }
-    Mask := Mask[null, node_2(tail_1):=Mask[null, node_2(tail_1)] - perm];
+    Mask := Mask[null, node_1(tail_1):=Mask[null, node_1(tail_1)] - perm];
     
     // -- Update version of predicate
-      if (!HasDirectPerm(Mask, null, node_2(tail_1))) {
+      if (!HasDirectPerm(Mask, null, node_1(tail_1))) {
         havoc newVersion;
-        Heap := Heap[null, node_2(tail_1):=newVersion];
+        Heap := Heap[null, node_1(tail_1):=newVersion];
       }
     perm := FullPerm;
     assume tail_1 != null;
@@ -599,13 +599,13 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     if ((typeOf(Heap[tail_1, next]): TypeDomainType) == A) {
       perm := FullPerm;
       assume Heap[tail_1, next] != null;
-      Mask := Mask[Heap[tail_1, next], a_6:=Mask[Heap[tail_1, next], a_6] + perm];
+      Mask := Mask[Heap[tail_1, next], a_26:=Mask[Heap[tail_1, next], a_26] + perm];
       assume state(Heap, Mask);
       perm := FullPerm;
-      Mask := Mask[null, node_2(Heap[Heap[tail_1, next], a_6]):=Mask[null, node_2(Heap[Heap[tail_1, next], a_6])] + perm];
+      Mask := Mask[null, node_1(Heap[Heap[tail_1, next], a_26]):=Mask[null, node_1(Heap[Heap[tail_1, next], a_26])] + perm];
       
       // -- Extra unfolding of predicate
-        assume InsidePredicate(node_2(tail_1), Heap[null, node_2(tail_1)], node_2(Heap[Heap[tail_1, next], a_6]), Heap[null, node_2(Heap[Heap[tail_1, next], a_6])]);
+        assume InsidePredicate(node_1(tail_1), Heap[null, node_1(tail_1)], node_1(Heap[Heap[tail_1, next], a_26]), Heap[null, node_1(Heap[Heap[tail_1, next], a_26])]);
       assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
@@ -616,52 +616,52 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding node(tail) might fail. There might be insufficient permission to access tail.val (0120b.vpr@58.3--58.23) [215817]"}
+      assert {:msg "  Folding node(tail) might fail. There might be insufficient permission to access tail.val (0120b.vpr@58.3--58.23) [59846]"}
         perm <= Mask[tail_1, val];
     }
     Mask := Mask[tail_1, val:=Mask[tail_1, val] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding node(tail) might fail. There might be insufficient permission to access tail.next (0120b.vpr@58.3--58.23) [215819]"}
+      assert {:msg "  Folding node(tail) might fail. There might be insufficient permission to access tail.next (0120b.vpr@58.3--58.23) [59848]"}
         perm <= Mask[tail_1, next];
     }
     Mask := Mask[tail_1, next:=Mask[tail_1, next] - perm];
     if ((typeOf(Heap[tail_1, next]): TypeDomainType) == A) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding node(tail) might fail. There might be insufficient permission to access tail.next.a (0120b.vpr@58.3--58.23) [215821]"}
-          perm <= Mask[Heap[tail_1, next], a_6];
+        assert {:msg "  Folding node(tail) might fail. There might be insufficient permission to access tail.next.a (0120b.vpr@58.3--58.23) [59850]"}
+          perm <= Mask[Heap[tail_1, next], a_26];
       }
-      Mask := Mask[Heap[tail_1, next], a_6:=Mask[Heap[tail_1, next], a_6] - perm];
+      Mask := Mask[Heap[tail_1, next], a_26:=Mask[Heap[tail_1, next], a_26] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding node(tail) might fail. There might be insufficient permission to access node(tail.next.a) (0120b.vpr@58.3--58.23) [215823]"}
-          perm <= Mask[null, node_2(Heap[Heap[tail_1, next], a_6])];
+        assert {:msg "  Folding node(tail) might fail. There might be insufficient permission to access node(tail.next.a) (0120b.vpr@58.3--58.23) [59852]"}
+          perm <= Mask[null, node_1(Heap[Heap[tail_1, next], a_26])];
       }
-      Mask := Mask[null, node_2(Heap[Heap[tail_1, next], a_6]):=Mask[null, node_2(Heap[Heap[tail_1, next], a_6])] - perm];
+      Mask := Mask[null, node_1(Heap[Heap[tail_1, next], a_26]):=Mask[null, node_1(Heap[Heap[tail_1, next], a_26])] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(node_2(tail_1), Heap[null, node_2(tail_1)], node_2(Heap[Heap[tail_1, next], a_6]), Heap[null, node_2(Heap[Heap[tail_1, next], a_6])]);
+        assume InsidePredicate(node_1(tail_1), Heap[null, node_1(tail_1)], node_1(Heap[Heap[tail_1, next], a_26]), Heap[null, node_1(Heap[Heap[tail_1, next], a_26])]);
     }
     perm := FullPerm;
-    Mask := Mask[null, node_2(tail_1):=Mask[null, node_2(tail_1)] + perm];
+    Mask := Mask[null, node_1(tail_1):=Mask[null, node_1(tail_1)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume node#trigger(Heap, node_2(tail_1));
-    assume Heap[null, node_2(tail_1)] == CombineFrames(FrameFragment(Heap[tail_1, val]), CombineFrames(FrameFragment(Heap[tail_1, next]), FrameFragment((if (typeOf(Heap[tail_1, next]): TypeDomainType) == A then CombineFrames(FrameFragment(Heap[Heap[tail_1, next], a_6]), Heap[null, node_2(Heap[Heap[tail_1, next], a_6])]) else EmptyFrame))));
-    if (!HasDirectPerm(Mask, null, node_2(tail_1))) {
+    assume node#trigger(Heap, node_1(tail_1));
+    assume Heap[null, node_1(tail_1)] == CombineFrames(FrameFragment(Heap[tail_1, val]), CombineFrames(FrameFragment(Heap[tail_1, next]), FrameFragment((if (typeOf(Heap[tail_1, next]): TypeDomainType) == A then CombineFrames(FrameFragment(Heap[Heap[tail_1, next], a_26]), Heap[null, node_1(Heap[Heap[tail_1, next], a_26])]) else EmptyFrame))));
+    if (!HasDirectPerm(Mask, null, node_1(tail_1))) {
       Heap := Heap[null, node#sm(tail_1):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, node_2(tail_1):=freshVersion];
+      Heap := Heap[null, node_1(tail_1):=freshVersion];
     }
     Heap := Heap[null, node#sm(tail_1):=Heap[null, node#sm(tail_1)][tail_1, val:=true]];
     Heap := Heap[null, node#sm(tail_1):=Heap[null, node#sm(tail_1)][tail_1, next:=true]];
     if ((typeOf(Heap[tail_1, next]): TypeDomainType) == A) {
-      Heap := Heap[null, node#sm(tail_1):=Heap[null, node#sm(tail_1)][Heap[tail_1, next], a_6:=true]];
+      Heap := Heap[null, node#sm(tail_1):=Heap[null, node#sm(tail_1)][Heap[tail_1, next], a_26:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_16: Ref, f_21: (Field A B) ::
-        { newPMask[o_16, f_21] }
-        Heap[null, node#sm(tail_1)][o_16, f_21] || Heap[null, node#sm(Heap[Heap[tail_1, next], a_6])][o_16, f_21] ==> newPMask[o_16, f_21]
+      assume (forall <A, B> o_6: Ref, f_12: (Field A B) ::
+        { newPMask[o_6, f_12] }
+        Heap[null, node#sm(tail_1)][o_6, f_12] || Heap[null, node#sm(Heap[Heap[tail_1, next], a_26])][o_6, f_12] ==> newPMask[o_6, f_12]
       );
       Heap := Heap[null, node#sm(tail_1):=newPMask];
     }
@@ -673,52 +673,52 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding node(res) might fail. There might be insufficient permission to access res.val (0120b.vpr@60.3--60.22) [215827]"}
+      assert {:msg "  Folding node(res) might fail. There might be insufficient permission to access res.val (0120b.vpr@60.3--60.22) [59856]"}
         perm <= Mask[res, val];
     }
     Mask := Mask[res, val:=Mask[res, val] - perm];
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Folding node(res) might fail. There might be insufficient permission to access res.next (0120b.vpr@60.3--60.22) [215829]"}
+      assert {:msg "  Folding node(res) might fail. There might be insufficient permission to access res.next (0120b.vpr@60.3--60.22) [59858]"}
         perm <= Mask[res, next];
     }
     Mask := Mask[res, next:=Mask[res, next] - perm];
     if ((typeOf(Heap[res, next]): TypeDomainType) == A) {
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding node(res) might fail. There might be insufficient permission to access res.next.a (0120b.vpr@60.3--60.22) [215831]"}
-          perm <= Mask[Heap[res, next], a_6];
+        assert {:msg "  Folding node(res) might fail. There might be insufficient permission to access res.next.a (0120b.vpr@60.3--60.22) [59860]"}
+          perm <= Mask[Heap[res, next], a_26];
       }
-      Mask := Mask[Heap[res, next], a_6:=Mask[Heap[res, next], a_6] - perm];
+      Mask := Mask[Heap[res, next], a_26:=Mask[Heap[res, next], a_26] - perm];
       perm := FullPerm;
       if (perm != NoPerm) {
-        assert {:msg "  Folding node(res) might fail. There might be insufficient permission to access node(res.next.a) (0120b.vpr@60.3--60.22) [215833]"}
-          perm <= Mask[null, node_2(Heap[Heap[res, next], a_6])];
+        assert {:msg "  Folding node(res) might fail. There might be insufficient permission to access node(res.next.a) (0120b.vpr@60.3--60.22) [59862]"}
+          perm <= Mask[null, node_1(Heap[Heap[res, next], a_26])];
       }
-      Mask := Mask[null, node_2(Heap[Heap[res, next], a_6]):=Mask[null, node_2(Heap[Heap[res, next], a_6])] - perm];
+      Mask := Mask[null, node_1(Heap[Heap[res, next], a_26]):=Mask[null, node_1(Heap[Heap[res, next], a_26])] - perm];
       
       // -- Record predicate instance information
-        assume InsidePredicate(node_2(res), Heap[null, node_2(res)], node_2(Heap[Heap[res, next], a_6]), Heap[null, node_2(Heap[Heap[res, next], a_6])]);
+        assume InsidePredicate(node_1(res), Heap[null, node_1(res)], node_1(Heap[Heap[res, next], a_26]), Heap[null, node_1(Heap[Heap[res, next], a_26])]);
     }
     perm := FullPerm;
-    Mask := Mask[null, node_2(res):=Mask[null, node_2(res)] + perm];
+    Mask := Mask[null, node_1(res):=Mask[null, node_1(res)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
-    assume node#trigger(Heap, node_2(res));
-    assume Heap[null, node_2(res)] == CombineFrames(FrameFragment(Heap[res, val]), CombineFrames(FrameFragment(Heap[res, next]), FrameFragment((if (typeOf(Heap[res, next]): TypeDomainType) == A then CombineFrames(FrameFragment(Heap[Heap[res, next], a_6]), Heap[null, node_2(Heap[Heap[res, next], a_6])]) else EmptyFrame))));
-    if (!HasDirectPerm(Mask, null, node_2(res))) {
+    assume node#trigger(Heap, node_1(res));
+    assume Heap[null, node_1(res)] == CombineFrames(FrameFragment(Heap[res, val]), CombineFrames(FrameFragment(Heap[res, next]), FrameFragment((if (typeOf(Heap[res, next]): TypeDomainType) == A then CombineFrames(FrameFragment(Heap[Heap[res, next], a_26]), Heap[null, node_1(Heap[Heap[res, next], a_26])]) else EmptyFrame))));
+    if (!HasDirectPerm(Mask, null, node_1(res))) {
       Heap := Heap[null, node#sm(res):=ZeroPMask];
       havoc freshVersion;
-      Heap := Heap[null, node_2(res):=freshVersion];
+      Heap := Heap[null, node_1(res):=freshVersion];
     }
     Heap := Heap[null, node#sm(res):=Heap[null, node#sm(res)][res, val:=true]];
     Heap := Heap[null, node#sm(res):=Heap[null, node#sm(res)][res, next:=true]];
     if ((typeOf(Heap[res, next]): TypeDomainType) == A) {
-      Heap := Heap[null, node#sm(res):=Heap[null, node#sm(res)][Heap[res, next], a_6:=true]];
+      Heap := Heap[null, node#sm(res):=Heap[null, node#sm(res)][Heap[res, next], a_26:=true]];
       havoc newPMask;
-      assume (forall <A, B> o_52: Ref, f_55: (Field A B) ::
-        { newPMask[o_52, f_55] }
-        Heap[null, node#sm(res)][o_52, f_55] || Heap[null, node#sm(Heap[Heap[res, next], a_6])][o_52, f_55] ==> newPMask[o_52, f_55]
+      assume (forall <A, B> o_40: Ref, f_52: (Field A B) ::
+        { newPMask[o_40, f_52] }
+        Heap[null, node#sm(res)][o_40, f_52] || Heap[null, node#sm(Heap[Heap[res, next], a_26])][o_40, f_52] ==> newPMask[o_40, f_52]
       );
       Heap := Heap[null, node#sm(res):=newPMask];
     }
@@ -730,12 +730,12 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
-      assert {:msg "  Postcondition of prepend might not hold. There might be insufficient permission to access node(res) (0120b.vpr@40.11--40.25) [215835]"}
-        perm <= Mask[null, node_2(res)];
+      assert {:msg "  Postcondition of prepend might not hold. There might be insufficient permission to access node(res) (0120b.vpr@40.11--40.25) [59864]"}
+        perm <= Mask[null, node_1(res)];
     }
-    Mask := Mask[null, node_2(res):=Mask[null, node_2(res)] - perm];
-    assert {:msg "  Postcondition of prepend might not hold. Assertion length(res) == old(length(tail)) + 1 might not hold. (0120b.vpr@43.11--43.47) [215836]"}
-      length(Heap, res) == length(oldHeap, tail_1) + 1;
+    Mask := Mask[null, node_1(res):=Mask[null, node_1(res)] - perm];
+    assert {:msg "  Postcondition of prepend might not hold. Assertion length(res) == old(length(tail)) + 1 might not hold. (0120b.vpr@43.11--43.47) [59865]"}
+      length_1(Heap, res) == length_1(oldHeap, tail_1) + 1;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

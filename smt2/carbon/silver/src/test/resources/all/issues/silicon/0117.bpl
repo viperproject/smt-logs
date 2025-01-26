@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:25:32
+// Date:         2025-01-26 21:42:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0117.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0117-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -196,7 +196,7 @@ axiom (forall Heap: HeapType, this: Ref ::
 
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
-  { state(Heap, Mask), fun(Heap, this) } { state(Heap, Mask), fun#triggerStateless(this), p#trigger(Heap, p_14(this)) }
+  { state(Heap, Mask), fun(Heap, this) } { state(Heap, Mask), fun#triggerStateless(this), p#trigger(Heap, p_2(this)) }
   state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> fun(Heap, this)
 );
 
@@ -204,7 +204,7 @@ axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
 function  fun#frame(frame: FrameType, this: Ref): bool;
 axiom (forall Heap: HeapType, Mask: MaskType, this: Ref ::
   { state(Heap, Mask), fun'(Heap, this) }
-  state(Heap, Mask) ==> fun'(Heap, this) == fun#frame(Heap[null, p_14(this)], this)
+  state(Heap, Mask) ==> fun'(Heap, this) == fun#frame(Heap[null, p_2(this)], this)
 );
 
 // Trigger function (controlling recursive postconditions)
@@ -228,7 +228,7 @@ procedure fun#definedness(this: Ref) returns (Result: bool)
   
   // -- Inhaling precondition (with checking)
     perm := FullPerm;
-    Mask := Mask[null, p_14(this):=Mask[null, p_14(this)] + perm];
+    Mask := Mask[null, p_2(this):=Mask[null, p_2(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
   
@@ -357,25 +357,25 @@ procedure fun2#definedness(this: Ref) returns (Result: bool)
 // ==================================================
 
 type PredicateType_p;
-function  p_14(this: Ref): Field PredicateType_p FrameType;
+function  p_2(this: Ref): Field PredicateType_p FrameType;
 function  p#sm(this: Ref): Field PredicateType_p PMaskType;
 axiom (forall this: Ref ::
-  { PredicateMaskField(p_14(this)) }
-  PredicateMaskField(p_14(this)) == p#sm(this)
+  { PredicateMaskField(p_2(this)) }
+  PredicateMaskField(p_2(this)) == p#sm(this)
 );
 axiom (forall this: Ref ::
-  { p_14(this) }
-  IsPredicateField(p_14(this))
+  { p_2(this) }
+  IsPredicateField(p_2(this))
 );
 axiom (forall this: Ref ::
-  { p_14(this) }
-  getPredWandId(p_14(this)) == 0
+  { p_2(this) }
+  getPredWandId(p_2(this)) == 0
 );
 function  p#trigger<A>(Heap: HeapType, pred: (Field A FrameType)): bool;
 function  p#everUsed<A>(pred: (Field A FrameType)): bool;
 axiom (forall this: Ref, this2: Ref ::
-  { p_14(this), p_14(this2) }
-  p_14(this) == p_14(this2) ==> this == this2
+  { p_2(this), p_2(this2) }
+  p_2(this) == p_2(this2) ==> this == this2
 );
 axiom (forall this: Ref, this2: Ref ::
   { p#sm(this), p#sm(this2) }
@@ -383,8 +383,8 @@ axiom (forall this: Ref, this2: Ref ::
 );
 
 axiom (forall Heap: HeapType, this: Ref ::
-  { p#trigger(Heap, p_14(this)) }
-  p#everUsed(p_14(this))
+  { p#trigger(Heap, p_2(this)) }
+  p#everUsed(p_2(this))
 );
 
 procedure p#definedness(this: Ref) returns ()
@@ -401,7 +401,7 @@ procedure p#definedness(this: Ref) returns ()
       assume AssumePermUpperBound;
       assume Heap[this, $allocated];
     perm := FullPerm;
-    Mask := Mask[null, p_14(this):=Mask[null, p_14(this)] + perm];
+    Mask := Mask[null, p_2(this):=Mask[null, p_2(this)] + perm];
     assume state(Heap, Mask);
     assume state(Heap, Mask);
 }

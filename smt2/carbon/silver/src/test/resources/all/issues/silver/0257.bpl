@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:32:29
+// Date:         2025-01-26 21:42:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0257.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0257-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -177,7 +177,7 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 // Translation of method m
 // ==================================================
 
-procedure m() returns ()
+procedure m_17() returns ()
   modifies Heap, Mask;
 {
   var then_1_lblGuard: bool;
@@ -227,7 +227,7 @@ procedure m() returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     if (!x) {
-      assert {:msg "  Assert might fail. Assertion y == 123 might not hold. (0257.vpr@15.10--15.27) [222414]"}
+      assert {:msg "  Assert might fail. Assertion y == 123 might not hold. (0257.vpr@15.10--15.27) [54213]"}
         y == 123;
     }
     assume state(Heap, Mask);
@@ -237,7 +237,7 @@ procedure m() returns ()
 // Translation of method n
 // ==================================================
 
-procedure n_12() returns ()
+procedure n_83() returns ()
   modifies Heap, Mask;
 {
   var then_1_lblGuard: bool;
@@ -287,7 +287,7 @@ procedure n_12() returns ()
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
     if (!x) {
-      assert {:msg "  Assert might fail. Assertion y != 123 might not hold. (0257.vpr@30.10--30.27) [222415]"}
+      assert {:msg "  Assert might fail. Assertion y != 123 might not hold. (0257.vpr@30.10--30.27) [54214]"}
         y != 123;
     }
     assume state(Heap, Mask);

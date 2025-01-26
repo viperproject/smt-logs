@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 17:29:27
+; Started: 2025-01-26 21:22:33
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -144,25 +144,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-648|)))
+  :qid |quant-u-610|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-649|)))
+  :qid |quant-u-611|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-654|)))
+  :qid |quant-u-616|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-655|)))
+  :qid |quant-u-617|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-656|)))
+  :qid |quant-u-618|)))
 ; ---------- FUNCTION bool$$memory_eq$$__$TY$__bool$bool$$bool$----------
 (declare-fun self@1@00 () $Ref)
 (declare-fun other@2@00 () $Ref)
@@ -209,11 +209,11 @@
     (bool$$memory_eq$$__$TY$__bool$bool$$bool$%limited s@$ self@1@00 other@2@00)
     (bool$$memory_eq$$__$TY$__bool$bool$$bool$ s@$ self@1@00 other@2@00))
   :pattern ((bool$$memory_eq$$__$TY$__bool$bool$$bool$ s@$ self@1@00 other@2@00))
-  :qid |quant-u-650|)))
+  :qid |quant-u-612|)))
 (assert (forall ((s@$ $Snap) (self@1@00 $Ref) (other@2@00 $Ref)) (!
   (bool$$memory_eq$$__$TY$__bool$bool$$bool$%stateless self@1@00 other@2@00)
   :pattern ((bool$$memory_eq$$__$TY$__bool$bool$$bool$%limited s@$ self@1@00 other@2@00))
-  :qid |quant-u-651|)))
+  :qid |quant-u-613|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -349,11 +349,11 @@
         ($SortWrappers.$SnapToBool ($Snap.first s@$))
         ($SortWrappers.$SnapToBool ($Snap.second s@$)))))
   :pattern ((bool$$memory_eq$$__$TY$__bool$bool$$bool$ s@$ self@1@00 other@2@00))
-  :qid |quant-u-657|)))
+  :qid |quant-u-619|)))
 (assert (forall ((s@$ $Snap) (self@1@00 $Ref) (other@2@00 $Ref)) (!
   true
   :pattern ((bool$$memory_eq$$__$TY$__bool$bool$$bool$ s@$ self@1@00 other@2@00))
-  :qid |quant-u-658|)))
+  :qid |quant-u-620|)))
 ; ---------- FUNCTION m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$memory_eq$$__$TY$__m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$bool$----------
 (declare-fun self@4@00 () $Ref)
 (declare-fun other@5@00 () $Ref)
@@ -401,11 +401,11 @@
     (m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$memory_eq$$__$TY$__m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ self@4@00 other@5@00)
     (m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$memory_eq$$__$TY$__m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ self@4@00 other@5@00))
   :pattern ((m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$memory_eq$$__$TY$__m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ self@4@00 other@5@00))
-  :qid |quant-u-652|)))
+  :qid |quant-u-614|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref) (other@5@00 $Ref)) (!
   (m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$memory_eq$$__$TY$__m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless self@4@00 other@5@00)
   :pattern ((m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$memory_eq$$__$TY$__m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$bool$%limited s@$ self@4@00 other@5@00))
-  :qid |quant-u-653|)))
+  :qid |quant-u-615|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -3963,7 +3963,7 @@
                       ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$))))))))))))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))))))))))))))
   :pattern ((m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$memory_eq$$__$TY$__m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ self@4@00 other@5@00))
   :pattern ((m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$memory_eq$$__$TY$__m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$bool$%stateless self@4@00 other@5@00) (m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_%trigger ($Snap.first s@$) self@4@00))
-  :qid |quant-u-659|)))
+  :qid |quant-u-621|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref) (other@5@00 $Ref)) (!
   (=>
     (m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$memory_eq$$__$TY$__m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$bool$%precondition s@$ self@4@00 other@5@00)
@@ -4027,7 +4027,7 @@
                                   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$))))))))))))))))
                                   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$))))))))))))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))))))))))))))))))))
   :pattern ((m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$memory_eq$$__$TY$__m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$m_ansi_term_external_call$$Style$opensqu$0$closesqu$$_beg_$_end_$$bool$ s@$ self@4@00 other@5@00))
-  :qid |quant-u-660|)))
+  :qid |quant-u-622|)))
 ; ---------- DeadBorrowToken$ ----------
 (declare-const borrow@8@00 Int)
 ; ---------- bool ----------

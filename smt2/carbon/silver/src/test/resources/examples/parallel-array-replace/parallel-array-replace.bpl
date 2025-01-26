@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 18:03:13
+// Date:         2025-01-26 21:43:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/parallel-array-replace/parallel-array-replace.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/parallel-array-replace/parallel-array-replace-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_8: Ref, f_12: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_8, f_12] }
-  Heap[o_8, $allocated] ==> Heap[Heap[o_8, f_12], $allocated]
+axiom (forall o_17: Ref, f_25: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_17, f_25] }
+  Heap[o_17, $allocated] ==> Heap[Heap[o_17, f_25], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref, f_44: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, f_44] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_38, f_44) ==> Heap[o_38, f_44] == ExhaleHeap[o_38, f_44]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_47: Ref, f_65: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_47, f_65] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_47, f_65) ==> Heap[o_47, f_65] == ExhaleHeap[o_47, f_65]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_21), ExhaleHeap[null, PredicateMaskField(pm_f_21)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsPredicateField(pm_f_21) ==> Heap[null, PredicateMaskField(pm_f_21)] == ExhaleHeap[null, PredicateMaskField(pm_f_21)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_34), ExhaleHeap[null, PredicateMaskField(pm_f_34)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsPredicateField(pm_f_34) ==> Heap[null, PredicateMaskField(pm_f_34)] == ExhaleHeap[null, PredicateMaskField(pm_f_34)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_21) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsPredicateField(pm_f_21) ==> (forall <A, B> o2_21: Ref, f_44: (Field A B) ::
-    { ExhaleHeap[o2_21, f_44] }
-    Heap[null, PredicateMaskField(pm_f_21)][o2_21, f_44] ==> Heap[o2_21, f_44] == ExhaleHeap[o2_21, f_44]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_34) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsPredicateField(pm_f_34) ==> (forall <A, B> o2_34: Ref, f_65: (Field A B) ::
+    { ExhaleHeap[o2_34, f_65] }
+    Heap[null, PredicateMaskField(pm_f_34)][o2_34, f_65] ==> Heap[o2_34, f_65] == ExhaleHeap[o2_34, f_65]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_21), ExhaleHeap[null, WandMaskField(pm_f_21)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsWandField(pm_f_21) ==> Heap[null, WandMaskField(pm_f_21)] == ExhaleHeap[null, WandMaskField(pm_f_21)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_34), ExhaleHeap[null, WandMaskField(pm_f_34)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsWandField(pm_f_34) ==> Heap[null, WandMaskField(pm_f_34)] == ExhaleHeap[null, WandMaskField(pm_f_34)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_21: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_21) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_21) && IsWandField(pm_f_21) ==> (forall <A, B> o2_21: Ref, f_44: (Field A B) ::
-    { ExhaleHeap[o2_21, f_44] }
-    Heap[null, WandMaskField(pm_f_21)][o2_21, f_44] ==> Heap[o2_21, f_44] == ExhaleHeap[o2_21, f_44]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_34: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_34) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_34) && IsWandField(pm_f_34) ==> (forall <A, B> o2_34: Ref, f_65: (Field A B) ::
+    { ExhaleHeap[o2_34, f_65] }
+    Heap[null, WandMaskField(pm_f_34)][o2_34, f_65] ==> Heap[o2_34, f_65] == ExhaleHeap[o2_34, f_65]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_38: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_38, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_38, $allocated] ==> ExhaleHeap[o_38, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_47: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_47, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_47, $allocated] ==> ExhaleHeap[o_47, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_8: Ref, f_8: (Field A B), v: B ::
-  { Heap[o_8, f_8:=v] }
-  succHeap(Heap, Heap[o_8, f_8:=v])
+axiom (forall <A, B> Heap: HeapType, o_17: Ref, f_19: (Field A B), v: B ::
+  { Heap[o_17, f_19:=v] }
+  succHeap(Heap, Heap[o_17, f_19:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -144,17 +144,17 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 // Function for trigger used in checks which are never triggered
 // ==================================================
 
-function  neverTriggered1(i_3: int): bool;
+function  neverTriggered1(i_3_2: int): bool;
 function  neverTriggered2(i_1: int): bool;
 function  neverTriggered3(i$0_1: int): bool;
-function  neverTriggered4(i$0_2: int): bool;
+function  neverTriggered4(i$0_2_1: int): bool;
 function  neverTriggered5(i$2_1: int): bool;
 function  neverTriggered6(i$3_1: int): bool;
 function  neverTriggered7(i$4_1: int): bool;
 function  neverTriggered8(i$6_1: int): bool;
 function  neverTriggered9(i_1: int): bool;
-function  neverTriggered10(i_2_1: int): bool;
-function  neverTriggered11(i_3: int): bool;
+function  neverTriggered10(i_2: int): bool;
+function  neverTriggered11(i_3_2: int): bool;
 function  neverTriggered12(i$0: int): bool;
 function  neverTriggered13(i_4_1: int): bool;
 // ==================================================
@@ -235,27 +235,27 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 type ArrayDomainType;
 
 // Translation of domain function loc
-function  loc(a_3: ArrayDomainType, i_79: int): Ref;
+function  loc(a_3: ArrayDomainType, i_6: int): Ref;
 
 // Translation of domain function len
-function  len_1(a_3: ArrayDomainType): int;
+function  len(a_3: ArrayDomainType): int;
 
 // Translation of domain function first
-function  first(r_3: Ref): ArrayDomainType;
+function  first_1(r_4: Ref): ArrayDomainType;
 
 // Translation of domain function second
-function  second(r_3: Ref): int;
+function  second_1(r_4: Ref): int;
 
 // Translation of domain axiom all_diff
 axiom (forall a_2: ArrayDomainType, i: int ::
   { (loc(a_2, i): Ref) }
-  (first((loc(a_2, i): Ref)): ArrayDomainType) == a_2 && (second((loc(a_2, i): Ref)): int) == i
+  (first_1((loc(a_2, i): Ref)): ArrayDomainType) == a_2 && (second_1((loc(a_2, i): Ref)): int) == i
 );
 
 // Translation of domain axiom length_nonneg
 axiom (forall a_2: ArrayDomainType ::
-  { (len_1(a_2): int) }
-  (len_1(a_2): int) >= 0
+  { (len(a_2): int) }
+  (len(a_2): int) >= 0
 );
 
 // ==================================================
@@ -271,22 +271,22 @@ axiom !IsWandField(val);
 // ==================================================
 
 // Uninterpreted function definitions
-function  Contains(Heap: HeapType, a_2: ArrayDomainType, v_2: int, before: int): bool;
-function  Contains'(Heap: HeapType, a_2: ArrayDomainType, v_2: int, before: int): bool;
-axiom (forall Heap: HeapType, a_2: ArrayDomainType, v_2: int, before: int ::
-  { Contains(Heap, a_2, v_2, before) }
-  Contains(Heap, a_2, v_2, before) == Contains'(Heap, a_2, v_2, before) && dummyFunction(Contains#triggerStateless(a_2, v_2, before))
+function  Contains(Heap: HeapType, a_2: ArrayDomainType, v_2: int, before_1: int): bool;
+function  Contains'(Heap: HeapType, a_2: ArrayDomainType, v_2: int, before_1: int): bool;
+axiom (forall Heap: HeapType, a_2: ArrayDomainType, v_2: int, before_1: int ::
+  { Contains(Heap, a_2, v_2, before_1) }
+  Contains(Heap, a_2, v_2, before_1) == Contains'(Heap, a_2, v_2, before_1) && dummyFunction(Contains#triggerStateless(a_2, v_2, before_1))
 );
-axiom (forall Heap: HeapType, a_2: ArrayDomainType, v_2: int, before: int ::
-  { Contains'(Heap, a_2, v_2, before) }
-  dummyFunction(Contains#triggerStateless(a_2, v_2, before))
+axiom (forall Heap: HeapType, a_2: ArrayDomainType, v_2: int, before_1: int ::
+  { Contains'(Heap, a_2, v_2, before_1) }
+  dummyFunction(Contains#triggerStateless(a_2, v_2, before_1))
 );
 
 // Framing axioms
-function  Contains#frame(frame: FrameType, a_2: ArrayDomainType, v_2: int, before: int): bool;
-axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, v_2: int, before: int ::
-  { state(Heap, Mask), Contains'(Heap, a_2, v_2, before) }
-  state(Heap, Mask) ==> Contains'(Heap, a_2, v_2, before) == Contains#frame(FrameFragment(Contains#condqp1(Heap, a_2, v_2, before)), a_2, v_2, before)
+function  Contains#frame(frame: FrameType, a_2: ArrayDomainType, v_2: int, before_1: int): bool;
+axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, v_2: int, before_1: int ::
+  { state(Heap, Mask), Contains'(Heap, a_2, v_2, before_1) }
+  state(Heap, Mask) ==> Contains'(Heap, a_2, v_2, before_1) == Contains#frame(FrameFragment(Contains#condqp1(Heap, a_2, v_2, before_1)), a_2, v_2, before_1)
 );
 // ==================================================
 // Function used for framing of quantified permission (forall i: Int :: { loc(a, i) } 0 <= i && i < before ==> acc(loc(a, i).val, write)) in function Contains
@@ -294,19 +294,19 @@ axiom (forall Heap: HeapType, Mask: MaskType, a_2: ArrayDomainType, v_2: int, be
 
 function  Contains#condqp1(Heap: HeapType, a_1_1_1: ArrayDomainType, v_1_1_1: int, before_1_1: int): int;
 function  sk_Contains#condqp1(fnAppH1: int, fnAppH2: int): int;
-axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, a_2: ArrayDomainType, v_2: int, before: int ::
-  { Contains#condqp1(Heap2Heap, a_2, v_2, before), Contains#condqp1(Heap1Heap, a_2, v_2, before), succHeapTrans(Heap2Heap, Heap1Heap) }
-  ((0 <= sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before), Contains#condqp1(Heap1Heap, a_2, v_2, before)) && sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before), Contains#condqp1(Heap1Heap, a_2, v_2, before)) < before) && NoPerm < FullPerm <==> (0 <= sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before), Contains#condqp1(Heap1Heap, a_2, v_2, before)) && sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before), Contains#condqp1(Heap1Heap, a_2, v_2, before)) < before) && NoPerm < FullPerm) && ((0 <= sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before), Contains#condqp1(Heap1Heap, a_2, v_2, before)) && sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before), Contains#condqp1(Heap1Heap, a_2, v_2, before)) < before) && NoPerm < FullPerm ==> Heap2Heap[(loc(a_2, sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before), Contains#condqp1(Heap1Heap, a_2, v_2, before))): Ref), val] == Heap1Heap[(loc(a_2, sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before), Contains#condqp1(Heap1Heap, a_2, v_2, before))): Ref), val]) ==> Contains#condqp1(Heap2Heap, a_2, v_2, before) == Contains#condqp1(Heap1Heap, a_2, v_2, before)
+axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, a_2: ArrayDomainType, v_2: int, before_1: int ::
+  { Contains#condqp1(Heap2Heap, a_2, v_2, before_1), Contains#condqp1(Heap1Heap, a_2, v_2, before_1), succHeapTrans(Heap2Heap, Heap1Heap) }
+  ((0 <= sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before_1), Contains#condqp1(Heap1Heap, a_2, v_2, before_1)) && sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before_1), Contains#condqp1(Heap1Heap, a_2, v_2, before_1)) < before_1) && NoPerm < FullPerm <==> (0 <= sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before_1), Contains#condqp1(Heap1Heap, a_2, v_2, before_1)) && sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before_1), Contains#condqp1(Heap1Heap, a_2, v_2, before_1)) < before_1) && NoPerm < FullPerm) && ((0 <= sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before_1), Contains#condqp1(Heap1Heap, a_2, v_2, before_1)) && sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before_1), Contains#condqp1(Heap1Heap, a_2, v_2, before_1)) < before_1) && NoPerm < FullPerm ==> Heap2Heap[(loc(a_2, sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before_1), Contains#condqp1(Heap1Heap, a_2, v_2, before_1))): Ref), val] == Heap1Heap[(loc(a_2, sk_Contains#condqp1(Contains#condqp1(Heap2Heap, a_2, v_2, before_1), Contains#condqp1(Heap1Heap, a_2, v_2, before_1))): Ref), val]) ==> Contains#condqp1(Heap2Heap, a_2, v_2, before_1) == Contains#condqp1(Heap1Heap, a_2, v_2, before_1)
 );
 
 // Trigger function (controlling recursive postconditions)
-function  Contains#trigger(frame: FrameType, a_2: ArrayDomainType, v_2: int, before: int): bool;
+function  Contains#trigger(frame: FrameType, a_2: ArrayDomainType, v_2: int, before_1: int): bool;
 
 // State-independent trigger function
-function  Contains#triggerStateless(a_2: ArrayDomainType, v_2: int, before: int): bool;
+function  Contains#triggerStateless(a_2: ArrayDomainType, v_2: int, before_1: int): bool;
 
 // Check contract well-formedness and postcondition
-procedure Contains#definedness(a_2: ArrayDomainType, v_2: int, before: int) returns (Result: bool)
+procedure Contains#definedness(a_2: ArrayDomainType, v_2: int, before_1: int) returns (Result: bool)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
@@ -318,8 +318,8 @@ procedure Contains#definedness(a_2: ArrayDomainType, v_2: int, before: int) retu
     assume AssumeFunctionsAbove == 0;
   
   // -- Inhaling precondition (with checking)
-    assume 0 <= before;
-    assume before <= (len_1(a_2): int);
+    assume 0 <= before_1;
+    assume before_1 <= (len(a_2): int);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } 0 <= i && i < before ==> acc(loc(a, i).val, write))
@@ -327,36 +327,36 @@ procedure Contains#definedness(a_2: ArrayDomainType, v_2: int, before: int) retu
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@54.12--54.72) [116496]"}
-      (forall i_3: int, i_3_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@54.12--54.72) [104783]"}
+      (forall i_3_2: int, i_3_3: int ::
       
-      (((i_3 != i_3_1 && (0 <= i_3 && i_3 < before)) && (0 <= i_3_1 && i_3_1 < before)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_3): Ref) != (loc(a_2, i_3_1): Ref)
+      (((i_3_2 != i_3_3 && (0 <= i_3_2 && i_3_2 < before_1)) && (0 <= i_3_3 && i_3_3 < before_1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_3_2): Ref) != (loc(a_2, i_3_3): Ref)
     );
     
     // -- Define Inverse Function
-      assume (forall i_3: int ::
-        { (loc(a_2, i_3): Ref) } { (loc(a_2, i_3): Ref) }
-        (0 <= i_3 && i_3 < before) && NoPerm < FullPerm ==> qpRange1((loc(a_2, i_3): Ref)) && invRecv1((loc(a_2, i_3): Ref)) == i_3
+      assume (forall i_3_2: int ::
+        { (loc(a_2, i_3_2): Ref) } { (loc(a_2, i_3_2): Ref) }
+        (0 <= i_3_2 && i_3_2 < before_1) && NoPerm < FullPerm ==> qpRange1((loc(a_2, i_3_2): Ref)) && invRecv1((loc(a_2, i_3_2): Ref)) == i_3_2
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((0 <= invRecv1(o_4) && invRecv1(o_4) < before) && NoPerm < FullPerm) && qpRange1(o_4) ==> (loc(a_2, invRecv1(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((0 <= invRecv1(o_9) && invRecv1(o_9) < before_1) && NoPerm < FullPerm) && qpRange1(o_9) ==> (loc(a_2, invRecv1(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
-      assume (forall i_3: int ::
-        { (loc(a_2, i_3): Ref) } { (loc(a_2, i_3): Ref) }
-        0 <= i_3 && i_3 < before ==> (loc(a_2, i_3): Ref) != null
+      assume (forall i_3_2: int ::
+        { (loc(a_2, i_3_2): Ref) } { (loc(a_2, i_3_2): Ref) }
+        0 <= i_3_2 && i_3_2 < before_1 ==> (loc(a_2, i_3_2): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv1(o_4) && invRecv1(o_4) < before) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv1(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv1(o_4) && invRecv1(o_4) < before) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv1(o_9) && invRecv1(o_9) < before_1) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv1(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv1(o_9) && invRecv1(o_9) < before_1) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -367,7 +367,7 @@ procedure Contains#definedness(a_2: ArrayDomainType, v_2: int, before: int) retu
 // Translation of method Replace
 // ==================================================
 
-procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: int) returns ()
+procedure Replace(a_2: ArrayDomainType, left: int, right_2: int, from_1: int, to_1: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
@@ -382,7 +382,7 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
   var ExhaleHeap: HeapType;
   var i$5: int;
   var i$7: int;
-  var i$1_2: int;
+  var i$1_2_1: int;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -391,9 +391,9 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume 0 <= left_1;
-    assume left_1 < right;
-    assume right <= (len_1(a_2): int);
+    assume 0 <= left;
+    assume left < right_2;
+    assume right_2 <= (len(a_2): int);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } left <= i && i < right ==> acc(loc(a, i).val, write))
@@ -401,36 +401,36 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@14.12--14.32) [116497]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@14.12--14.32) [104784]"}
       (forall i_1: int, i_1_1: int ::
       
-      (((i_1 != i_1_1 && (left_1 <= i_1 && i_1 < right)) && (left_1 <= i_1_1 && i_1_1 < right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
+      (((i_1 != i_1_1 && (left <= i_1 && i_1 < right_2)) && (left <= i_1_1 && i_1_1 < right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        (left_1 <= i_1 && i_1 < right) && NoPerm < FullPerm ==> qpRange2((loc(a_2, i_1): Ref)) && invRecv2((loc(a_2, i_1): Ref)) == i_1
+        (left <= i_1 && i_1 < right_2) && NoPerm < FullPerm ==> qpRange2((loc(a_2, i_1): Ref)) && invRecv2((loc(a_2, i_1): Ref)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        ((left_1 <= invRecv2(o_4) && invRecv2(o_4) < right) && NoPerm < FullPerm) && qpRange2(o_4) ==> (loc(a_2, invRecv2(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        ((left <= invRecv2(o_9) && invRecv2(o_9) < right_2) && NoPerm < FullPerm) && qpRange2(o_9) ==> (loc(a_2, invRecv2(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        left_1 <= i_1 && i_1 < right ==> (loc(a_2, i_1): Ref) != null
+        left <= i_1 && i_1 < right_2 ==> (loc(a_2, i_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((left_1 <= invRecv2(o_4) && invRecv2(o_4) < right) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv2(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((left_1 <= invRecv2(o_4) && invRecv2(o_4) < right) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((left <= invRecv2(o_9) && invRecv2(o_9) < right_2) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv2(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((left <= invRecv2(o_9) && invRecv2(o_9) < right_2) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -452,36 +452,36 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i$0).val might not be injective. (parallel-array-replace.vpr@15.12--15.33) [116498]"}
-      (forall i$0_1: int, i$0_1_1: int ::
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i$0).val might not be injective. (parallel-array-replace.vpr@15.12--15.33) [104785]"}
+      (forall i$0_1: int, i$0_1_2: int ::
       
-      (((i$0_1 != i$0_1_1 && (left_1 <= i$0_1 && i$0_1 < right)) && (left_1 <= i$0_1_1 && i$0_1_1 < right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$0_1): Ref) != (loc(a_2, i$0_1_1): Ref)
+      (((i$0_1 != i$0_1_2 && (left <= i$0_1 && i$0_1 < right_2)) && (left <= i$0_1_2 && i$0_1_2 < right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$0_1): Ref) != (loc(a_2, i$0_1_2): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall i$0_1: int ::
         { (loc(a_2, i$0_1): Ref) } { (loc(a_2, i$0_1): Ref) }
-        (left_1 <= i$0_1 && i$0_1 < right) && NoPerm < FullPerm ==> qpRange3((loc(a_2, i$0_1): Ref)) && invRecv3((loc(a_2, i$0_1): Ref)) == i$0_1
+        (left <= i$0_1 && i$0_1 < right_2) && NoPerm < FullPerm ==> qpRange3((loc(a_2, i$0_1): Ref)) && invRecv3((loc(a_2, i$0_1): Ref)) == i$0_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv3(o_4) }
-        ((left_1 <= invRecv3(o_4) && invRecv3(o_4) < right) && NoPerm < FullPerm) && qpRange3(o_4) ==> (loc(a_2, invRecv3(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv3(o_9) }
+        ((left <= invRecv3(o_9) && invRecv3(o_9) < right_2) && NoPerm < FullPerm) && qpRange3(o_9) ==> (loc(a_2, invRecv3(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i$0_1: int ::
         { (loc(a_2, i$0_1): Ref) } { (loc(a_2, i$0_1): Ref) }
-        left_1 <= i$0_1 && i$0_1 < right ==> (loc(a_2, i$0_1): Ref) != null
+        left <= i$0_1 && i$0_1 < right_2 ==> (loc(a_2, i$0_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((left_1 <= invRecv3(o_4) && invRecv3(o_4) < right) && NoPerm < FullPerm) && qpRange3(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv3(o_4)): Ref) == o_4) && QPMask[o_4, val] == PostMask[o_4, val] + FullPerm) && (!(((left_1 <= invRecv3(o_4) && invRecv3(o_4) < right) && NoPerm < FullPerm) && qpRange3(o_4)) ==> QPMask[o_4, val] == PostMask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((left <= invRecv3(o_9) && invRecv3(o_9) < right_2) && NoPerm < FullPerm) && qpRange3(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv3(o_9)): Ref) == o_9) && QPMask[o_9, val] == PostMask[o_9, val] + FullPerm) && (!(((left <= invRecv3(o_9) && invRecv3(o_9) < right_2) && NoPerm < FullPerm) && qpRange3(o_9)) ==> QPMask[o_9, val] == PostMask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { PostMask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> PostMask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { PostMask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> PostMask[o_9, f_5] == QPMask[o_9, f_5]
       );
     PostMask := QPMask;
     assume state(PostHeap, PostMask);
@@ -489,24 +489,24 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
     
     // -- Check definedness of (forall i$1: Int :: { old(loc(a, i$1)) } left <= i$1 && i$1 < right ==> (old(loc(a, i$1).val == from) ? loc(a, i$1).val == to : loc(a, i$1).val == old(loc(a, i$1).val)))
       if (*) {
-        if (left_1 <= i$1_6 && i$1_6 < right) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i$1).val (parallel-array-replace.vpr@16.12--16.33) [116499]"}
+        if (left <= i$1_6 && i$1_6 < right_2) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i$1).val (parallel-array-replace.vpr@16.12--16.33) [104786]"}
             HasDirectPerm(oldMask, (loc(a_2, i$1_6): Ref), val);
-          if (oldHeap[(loc(a_2, i$1_6): Ref), val] == from) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i$1).val (parallel-array-replace.vpr@16.12--16.33) [116500]"}
+          if (oldHeap[(loc(a_2, i$1_6): Ref), val] == from_1) {
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i$1).val (parallel-array-replace.vpr@16.12--16.33) [104787]"}
               HasDirectPerm(PostMask, (loc(a_2, i$1_6): Ref), val);
           } else {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i$1).val (parallel-array-replace.vpr@16.12--16.33) [116501]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i$1).val (parallel-array-replace.vpr@16.12--16.33) [104788]"}
               HasDirectPerm(PostMask, (loc(a_2, i$1_6): Ref), val);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i$1).val (parallel-array-replace.vpr@16.12--16.33) [116502]"}
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access loc(a, i$1).val (parallel-array-replace.vpr@16.12--16.33) [104789]"}
               HasDirectPerm(oldMask, (loc(a_2, i$1_6): Ref), val);
           }
         }
         assume false;
       }
-    assume (forall i$1_1_1: int ::
-      { (loc(a_2, i$1_1_1): Ref) }
-      left_1 <= i$1_1_1 && i$1_1_1 < right ==> (if oldHeap[(loc(a_2, i$1_1_1): Ref), val] == from then PostHeap[(loc(a_2, i$1_1_1): Ref), val] == to else PostHeap[(loc(a_2, i$1_1_1): Ref), val] == oldHeap[(loc(a_2, i$1_1_1): Ref), val])
+    assume (forall i$1_1: int ::
+      { (loc(a_2, i$1_1): Ref) }
+      left <= i$1_1 && i$1_1 < right_2 ==> (if oldHeap[(loc(a_2, i$1_1): Ref), val] == from_1 then PostHeap[(loc(a_2, i$1_1): Ref), val] == to_1 else PostHeap[(loc(a_2, i$1_1): Ref), val] == oldHeap[(loc(a_2, i$1_1): Ref), val])
     );
     assume state(PostHeap, PostMask);
     // Stop execution
@@ -514,37 +514,37 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
   }
   
   // -- Translating statement: if (right - left <= 1) -- parallel-array-replace.vpr@18.3--40.4
-    if (right - left_1 <= 1) {
+    if (right_2 - left <= 1) {
       
       // -- Translating statement: if (loc(a, left).val == from) -- parallel-array-replace.vpr@19.5--21.6
         
         // -- Check definedness of loc(a, left).val == from
-          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access loc(a, left).val (parallel-array-replace.vpr@19.8--19.32) [116503]"}
-            HasDirectPerm(Mask, (loc(a_2, left_1): Ref), val);
-        if (Heap[(loc(a_2, left_1): Ref), val] == from) {
+          assert {:msg "  Conditional statement might fail. There might be insufficient permission to access loc(a, left).val (parallel-array-replace.vpr@19.8--19.32) [104790]"}
+            HasDirectPerm(Mask, (loc(a_2, left): Ref), val);
+        if (Heap[(loc(a_2, left): Ref), val] == from_1) {
           
           // -- Translating statement: loc(a, left).val := to -- parallel-array-replace.vpr@20.7--20.29
-            assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, left).val (parallel-array-replace.vpr@20.7--20.29) [116504]"}
-              FullPerm == Mask[(loc(a_2, left_1): Ref), val];
-            Heap := Heap[(loc(a_2, left_1): Ref), val:=to];
+            assert {:msg "  Assignment might fail. There might be insufficient permission to access loc(a, left).val (parallel-array-replace.vpr@20.7--20.29) [104791]"}
+              FullPerm == Mask[(loc(a_2, left): Ref), val];
+            Heap := Heap[(loc(a_2, left): Ref), val:=to_1];
             assume state(Heap, Mask);
         }
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: mid := left + (right - left) \ 2 -- parallel-array-replace.vpr@23.5--23.46
-        mid := left_1 + (right - left_1) div 2;
+        mid := left + (right_2 - left) div 2;
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale 0 <= left && (left < mid && mid <= len(a)) -- parallel-array-replace.vpr@26.5--26.30
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Exhale might fail. Assertion 0 <= left might not hold. (parallel-array-replace.vpr@26.12--26.30) [116505]"}
-          0 <= left_1;
-        assert {:msg "  Exhale might fail. Assertion left < mid might not hold. (parallel-array-replace.vpr@26.12--26.30) [116506]"}
-          left_1 < mid;
-        assert {:msg "  Exhale might fail. Assertion mid <= len(a) might not hold. (parallel-array-replace.vpr@26.12--26.30) [116507]"}
-          mid <= (len_1(a_2): int);
+        assert {:msg "  Exhale might fail. Assertion 0 <= left might not hold. (parallel-array-replace.vpr@26.12--26.30) [104792]"}
+          0 <= left;
+        assert {:msg "  Exhale might fail. Assertion left < mid might not hold. (parallel-array-replace.vpr@26.12--26.30) [104793]"}
+          left < mid;
+        assert {:msg "  Exhale might fail. Assertion mid <= len(a) might not hold. (parallel-array-replace.vpr@26.12--26.30) [104794]"}
+          mid <= (len(a_2): int);
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale (forall i$2: Int ::
@@ -563,39 +563,39 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
           
         
         // -- check if receiver loc(a, i$2) is injective
-          assert {:msg "  Exhale might fail. Quantified resource loc(a, i$2).val might not be injective. (parallel-array-replace.vpr@27.12--27.30) [116509]"}
+          assert {:msg "  Exhale might fail. Quantified resource loc(a, i$2).val might not be injective. (parallel-array-replace.vpr@27.12--27.30) [104796]"}
             (forall i$2_1: int, i$2_1_1: int ::
             { neverTriggered5(i$2_1), neverTriggered5(i$2_1_1) }
-            (((i$2_1 != i$2_1_1 && (left_1 <= i$2_1 && i$2_1 < mid)) && (left_1 <= i$2_1_1 && i$2_1_1 < mid)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$2_1): Ref) != (loc(a_2, i$2_1_1): Ref)
+            (((i$2_1 != i$2_1_1 && (left <= i$2_1 && i$2_1 < mid)) && (left <= i$2_1_1 && i$2_1_1 < mid)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$2_1): Ref) != (loc(a_2, i$2_1_1): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access loc(a, i$2).val (parallel-array-replace.vpr@27.12--27.30) [116510]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access loc(a, i$2).val (parallel-array-replace.vpr@27.12--27.30) [104797]"}
             (forall i$2_1: int ::
             { (loc(a_2, i$2_1): Ref) } { (loc(a_2, i$2_1): Ref) }
-            left_1 <= i$2_1 && i$2_1 < mid ==> Mask[(loc(a_2, i$2_1): Ref), val] >= FullPerm
+            left <= i$2_1 && i$2_1 < mid ==> Mask[(loc(a_2, i$2_1): Ref), val] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver loc(a, i$2)
           assume (forall i$2_1: int ::
             { (loc(a_2, i$2_1): Ref) } { (loc(a_2, i$2_1): Ref) }
-            (left_1 <= i$2_1 && i$2_1 < mid) && NoPerm < FullPerm ==> qpRange5((loc(a_2, i$2_1): Ref)) && invRecv5((loc(a_2, i$2_1): Ref)) == i$2_1
+            (left <= i$2_1 && i$2_1 < mid) && NoPerm < FullPerm ==> qpRange5((loc(a_2, i$2_1): Ref)) && invRecv5((loc(a_2, i$2_1): Ref)) == i$2_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv5(o_4) }
-            (left_1 <= invRecv5(o_4) && invRecv5(o_4) < mid) && (NoPerm < FullPerm && qpRange5(o_4)) ==> (loc(a_2, invRecv5(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv5(o_9) }
+            (left <= invRecv5(o_9) && invRecv5(o_9) < mid) && (NoPerm < FullPerm && qpRange5(o_9)) ==> (loc(a_2, invRecv5(o_9)): Ref) == o_9
           );
         
         // -- assume permission updates for field val
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            ((left_1 <= invRecv5(o_4) && invRecv5(o_4) < mid) && (NoPerm < FullPerm && qpRange5(o_4)) ==> (loc(a_2, invRecv5(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((left_1 <= invRecv5(o_4) && invRecv5(o_4) < mid) && (NoPerm < FullPerm && qpRange5(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            ((left <= invRecv5(o_9) && invRecv5(o_9) < mid) && (NoPerm < FullPerm && qpRange5(o_9)) ==> (loc(a_2, invRecv5(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((left <= invRecv5(o_9) && invRecv5(o_9) < mid) && (NoPerm < FullPerm && qpRange5(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         // Finish exhale
@@ -607,12 +607,12 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
       // -- Translating statement: exhale 0 <= mid && (mid < right && right <= len(a)) -- parallel-array-replace.vpr@30.5--30.31
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Exhale might fail. Assertion 0 <= mid might not hold. (parallel-array-replace.vpr@30.12--30.31) [116511]"}
+        assert {:msg "  Exhale might fail. Assertion 0 <= mid might not hold. (parallel-array-replace.vpr@30.12--30.31) [104798]"}
           0 <= mid;
-        assert {:msg "  Exhale might fail. Assertion mid < right might not hold. (parallel-array-replace.vpr@30.12--30.31) [116512]"}
-          mid < right;
-        assert {:msg "  Exhale might fail. Assertion right <= len(a) might not hold. (parallel-array-replace.vpr@30.12--30.31) [116513]"}
-          right <= (len_1(a_2): int);
+        assert {:msg "  Exhale might fail. Assertion mid < right might not hold. (parallel-array-replace.vpr@30.12--30.31) [104799]"}
+          mid < right_2;
+        assert {:msg "  Exhale might fail. Assertion right <= len(a) might not hold. (parallel-array-replace.vpr@30.12--30.31) [104800]"}
+          right_2 <= (len(a_2): int);
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale (forall i$3: Int ::
@@ -631,39 +631,39 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
           
         
         // -- check if receiver loc(a, i$3) is injective
-          assert {:msg "  Exhale might fail. Quantified resource loc(a, i$3).val might not be injective. (parallel-array-replace.vpr@31.12--31.31) [116515]"}
+          assert {:msg "  Exhale might fail. Quantified resource loc(a, i$3).val might not be injective. (parallel-array-replace.vpr@31.12--31.31) [104802]"}
             (forall i$3_1: int, i$3_1_1: int ::
             { neverTriggered6(i$3_1), neverTriggered6(i$3_1_1) }
-            (((i$3_1 != i$3_1_1 && (mid <= i$3_1 && i$3_1 < right)) && (mid <= i$3_1_1 && i$3_1_1 < right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$3_1): Ref) != (loc(a_2, i$3_1_1): Ref)
+            (((i$3_1 != i$3_1_1 && (mid <= i$3_1 && i$3_1 < right_2)) && (mid <= i$3_1_1 && i$3_1_1 < right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$3_1): Ref) != (loc(a_2, i$3_1_1): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Exhale might fail. There might be insufficient permission to access loc(a, i$3).val (parallel-array-replace.vpr@31.12--31.31) [116516]"}
+          assert {:msg "  Exhale might fail. There might be insufficient permission to access loc(a, i$3).val (parallel-array-replace.vpr@31.12--31.31) [104803]"}
             (forall i$3_1: int ::
             { (loc(a_2, i$3_1): Ref) } { (loc(a_2, i$3_1): Ref) }
-            mid <= i$3_1 && i$3_1 < right ==> Mask[(loc(a_2, i$3_1): Ref), val] >= FullPerm
+            mid <= i$3_1 && i$3_1 < right_2 ==> Mask[(loc(a_2, i$3_1): Ref), val] >= FullPerm
           );
         
         // -- assumptions for inverse of receiver loc(a, i$3)
           assume (forall i$3_1: int ::
             { (loc(a_2, i$3_1): Ref) } { (loc(a_2, i$3_1): Ref) }
-            (mid <= i$3_1 && i$3_1 < right) && NoPerm < FullPerm ==> qpRange6((loc(a_2, i$3_1): Ref)) && invRecv6((loc(a_2, i$3_1): Ref)) == i$3_1
+            (mid <= i$3_1 && i$3_1 < right_2) && NoPerm < FullPerm ==> qpRange6((loc(a_2, i$3_1): Ref)) && invRecv6((loc(a_2, i$3_1): Ref)) == i$3_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv6(o_4) }
-            (mid <= invRecv6(o_4) && invRecv6(o_4) < right) && (NoPerm < FullPerm && qpRange6(o_4)) ==> (loc(a_2, invRecv6(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv6(o_9) }
+            (mid <= invRecv6(o_9) && invRecv6(o_9) < right_2) && (NoPerm < FullPerm && qpRange6(o_9)) ==> (loc(a_2, invRecv6(o_9)): Ref) == o_9
           );
         
         // -- assume permission updates for field val
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            ((mid <= invRecv6(o_4) && invRecv6(o_4) < right) && (NoPerm < FullPerm && qpRange6(o_4)) ==> (loc(a_2, invRecv6(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((mid <= invRecv6(o_4) && invRecv6(o_4) < right) && (NoPerm < FullPerm && qpRange6(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            ((mid <= invRecv6(o_9) && invRecv6(o_9) < right_2) && (NoPerm < FullPerm && qpRange6(o_9)) ==> (loc(a_2, invRecv6(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((mid <= invRecv6(o_9) && invRecv6(o_9) < right_2) && (NoPerm < FullPerm && qpRange6(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
         
         // -- assume permission updates for independent locations
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         // Finish exhale
@@ -682,36 +682,36 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Inhale might fail. Quantified resource loc(a, i$4).val might not be injective. (parallel-array-replace.vpr@34.12--34.31) [116517]"}
+        assert {:msg "  Inhale might fail. Quantified resource loc(a, i$4).val might not be injective. (parallel-array-replace.vpr@34.12--34.31) [104804]"}
           (forall i$4_1: int, i$4_1_1: int ::
           
-          (((i$4_1 != i$4_1_1 && (left_1 <= i$4_1 && i$4_1 < mid)) && (left_1 <= i$4_1_1 && i$4_1_1 < mid)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$4_1): Ref) != (loc(a_2, i$4_1_1): Ref)
+          (((i$4_1 != i$4_1_1 && (left <= i$4_1 && i$4_1 < mid)) && (left <= i$4_1_1 && i$4_1_1 < mid)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$4_1): Ref) != (loc(a_2, i$4_1_1): Ref)
         );
         
         // -- Define Inverse Function
           assume (forall i$4_1: int ::
             { (loc(a_2, i$4_1): Ref) } { (loc(a_2, i$4_1): Ref) }
-            (left_1 <= i$4_1 && i$4_1 < mid) && NoPerm < FullPerm ==> qpRange7((loc(a_2, i$4_1): Ref)) && invRecv7((loc(a_2, i$4_1): Ref)) == i$4_1
+            (left <= i$4_1 && i$4_1 < mid) && NoPerm < FullPerm ==> qpRange7((loc(a_2, i$4_1): Ref)) && invRecv7((loc(a_2, i$4_1): Ref)) == i$4_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv7(o_4) }
-            ((left_1 <= invRecv7(o_4) && invRecv7(o_4) < mid) && NoPerm < FullPerm) && qpRange7(o_4) ==> (loc(a_2, invRecv7(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv7(o_9) }
+            ((left <= invRecv7(o_9) && invRecv7(o_9) < mid) && NoPerm < FullPerm) && qpRange7(o_9) ==> (loc(a_2, invRecv7(o_9)): Ref) == o_9
           );
         
         // -- Assume set of fields is nonNull
           assume (forall i$4_1: int ::
             { (loc(a_2, i$4_1): Ref) } { (loc(a_2, i$4_1): Ref) }
-            left_1 <= i$4_1 && i$4_1 < mid ==> (loc(a_2, i$4_1): Ref) != null
+            left <= i$4_1 && i$4_1 < mid ==> (loc(a_2, i$4_1): Ref) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            (((left_1 <= invRecv7(o_4) && invRecv7(o_4) < mid) && NoPerm < FullPerm) && qpRange7(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv7(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((left_1 <= invRecv7(o_4) && invRecv7(o_4) < mid) && NoPerm < FullPerm) && qpRange7(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            (((left <= invRecv7(o_9) && invRecv7(o_9) < mid) && NoPerm < FullPerm) && qpRange7(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv7(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((left <= invRecv7(o_9) && invRecv7(o_9) < mid) && NoPerm < FullPerm) && qpRange7(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -727,16 +727,16 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
         
         // -- Check definedness of (forall i$5: Int :: { old(loc(a, i$5)) } left <= i$5 && i$5 < mid ==> (old(loc(a, i$5).val == from) ? loc(a, i$5).val == to : loc(a, i$5).val == old(loc(a, i$5).val)))
           if (*) {
-            if (left_1 <= i$5 && i$5 < mid) {
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$5).val (parallel-array-replace.vpr@35.12--35.31) [116518]"}
+            if (left <= i$5 && i$5 < mid) {
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$5).val (parallel-array-replace.vpr@35.12--35.31) [104805]"}
                 HasDirectPerm(oldMask, (loc(a_2, i$5): Ref), val);
-              if (oldHeap[(loc(a_2, i$5): Ref), val] == from) {
-                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$5).val (parallel-array-replace.vpr@35.12--35.31) [116519]"}
+              if (oldHeap[(loc(a_2, i$5): Ref), val] == from_1) {
+                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$5).val (parallel-array-replace.vpr@35.12--35.31) [104806]"}
                   HasDirectPerm(Mask, (loc(a_2, i$5): Ref), val);
               } else {
-                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$5).val (parallel-array-replace.vpr@35.12--35.31) [116520]"}
+                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$5).val (parallel-array-replace.vpr@35.12--35.31) [104807]"}
                   HasDirectPerm(Mask, (loc(a_2, i$5): Ref), val);
-                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$5).val (parallel-array-replace.vpr@35.12--35.31) [116521]"}
+                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$5).val (parallel-array-replace.vpr@35.12--35.31) [104808]"}
                   HasDirectPerm(oldMask, (loc(a_2, i$5): Ref), val);
               }
             }
@@ -744,7 +744,7 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
           }
         assume (forall i$5_1: int ::
           { (loc(a_2, i$5_1): Ref) }
-          left_1 <= i$5_1 && i$5_1 < mid ==> (if oldHeap[(loc(a_2, i$5_1): Ref), val] == from then Heap[(loc(a_2, i$5_1): Ref), val] == to else Heap[(loc(a_2, i$5_1): Ref), val] == oldHeap[(loc(a_2, i$5_1): Ref), val])
+          left <= i$5_1 && i$5_1 < mid ==> (if oldHeap[(loc(a_2, i$5_1): Ref), val] == from_1 then Heap[(loc(a_2, i$5_1): Ref), val] == to_1 else Heap[(loc(a_2, i$5_1): Ref), val] == oldHeap[(loc(a_2, i$5_1): Ref), val])
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -759,36 +759,36 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
             assume false;
           }
         havoc QPMask;
-        assert {:msg "  Inhale might fail. Quantified resource loc(a, i$6).val might not be injective. (parallel-array-replace.vpr@38.12--38.32) [116522]"}
+        assert {:msg "  Inhale might fail. Quantified resource loc(a, i$6).val might not be injective. (parallel-array-replace.vpr@38.12--38.32) [104809]"}
           (forall i$6_1: int, i$6_1_1: int ::
           
-          (((i$6_1 != i$6_1_1 && (mid <= i$6_1 && i$6_1 < right)) && (mid <= i$6_1_1 && i$6_1_1 < right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$6_1): Ref) != (loc(a_2, i$6_1_1): Ref)
+          (((i$6_1 != i$6_1_1 && (mid <= i$6_1 && i$6_1 < right_2)) && (mid <= i$6_1_1 && i$6_1_1 < right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$6_1): Ref) != (loc(a_2, i$6_1_1): Ref)
         );
         
         // -- Define Inverse Function
           assume (forall i$6_1: int ::
             { (loc(a_2, i$6_1): Ref) } { (loc(a_2, i$6_1): Ref) }
-            (mid <= i$6_1 && i$6_1 < right) && NoPerm < FullPerm ==> qpRange8((loc(a_2, i$6_1): Ref)) && invRecv8((loc(a_2, i$6_1): Ref)) == i$6_1
+            (mid <= i$6_1 && i$6_1 < right_2) && NoPerm < FullPerm ==> qpRange8((loc(a_2, i$6_1): Ref)) && invRecv8((loc(a_2, i$6_1): Ref)) == i$6_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv8(o_4) }
-            ((mid <= invRecv8(o_4) && invRecv8(o_4) < right) && NoPerm < FullPerm) && qpRange8(o_4) ==> (loc(a_2, invRecv8(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv8(o_9) }
+            ((mid <= invRecv8(o_9) && invRecv8(o_9) < right_2) && NoPerm < FullPerm) && qpRange8(o_9) ==> (loc(a_2, invRecv8(o_9)): Ref) == o_9
           );
         
         // -- Assume set of fields is nonNull
           assume (forall i$6_1: int ::
             { (loc(a_2, i$6_1): Ref) } { (loc(a_2, i$6_1): Ref) }
-            mid <= i$6_1 && i$6_1 < right ==> (loc(a_2, i$6_1): Ref) != null
+            mid <= i$6_1 && i$6_1 < right_2 ==> (loc(a_2, i$6_1): Ref) != null
           );
         
         // -- Define permissions
-          assume (forall o_4: Ref ::
-            { QPMask[o_4, val] }
-            (((mid <= invRecv8(o_4) && invRecv8(o_4) < right) && NoPerm < FullPerm) && qpRange8(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv8(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((mid <= invRecv8(o_4) && invRecv8(o_4) < right) && NoPerm < FullPerm) && qpRange8(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+          assume (forall o_9: Ref ::
+            { QPMask[o_9, val] }
+            (((mid <= invRecv8(o_9) && invRecv8(o_9) < right_2) && NoPerm < FullPerm) && qpRange8(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv8(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((mid <= invRecv8(o_9) && invRecv8(o_9) < right_2) && NoPerm < FullPerm) && qpRange8(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
           );
-          assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-            { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-            f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+          assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+            { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+            f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
           );
         Mask := QPMask;
         assume state(Heap, Mask);
@@ -804,16 +804,16 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
         
         // -- Check definedness of (forall i$7: Int :: { old(loc(a, i$7)) } mid <= i$7 && i$7 < right ==> (old(loc(a, i$7).val == from) ? loc(a, i$7).val == to : loc(a, i$7).val == old(loc(a, i$7).val)))
           if (*) {
-            if (mid <= i$7 && i$7 < right) {
-              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$7).val (parallel-array-replace.vpr@39.12--39.32) [116523]"}
+            if (mid <= i$7 && i$7 < right_2) {
+              assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$7).val (parallel-array-replace.vpr@39.12--39.32) [104810]"}
                 HasDirectPerm(oldMask, (loc(a_2, i$7): Ref), val);
-              if (oldHeap[(loc(a_2, i$7): Ref), val] == from) {
-                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$7).val (parallel-array-replace.vpr@39.12--39.32) [116524]"}
+              if (oldHeap[(loc(a_2, i$7): Ref), val] == from_1) {
+                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$7).val (parallel-array-replace.vpr@39.12--39.32) [104811]"}
                   HasDirectPerm(Mask, (loc(a_2, i$7): Ref), val);
               } else {
-                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$7).val (parallel-array-replace.vpr@39.12--39.32) [116525]"}
+                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$7).val (parallel-array-replace.vpr@39.12--39.32) [104812]"}
                   HasDirectPerm(Mask, (loc(a_2, i$7): Ref), val);
-                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$7).val (parallel-array-replace.vpr@39.12--39.32) [116526]"}
+                assert {:msg "  Inhale might fail. There might be insufficient permission to access loc(a, i$7).val (parallel-array-replace.vpr@39.12--39.32) [104813]"}
                   HasDirectPerm(oldMask, (loc(a_2, i$7): Ref), val);
               }
             }
@@ -821,7 +821,7 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
           }
         assume (forall i$7_1: int ::
           { (loc(a_2, i$7_1): Ref) }
-          mid <= i$7_1 && i$7_1 < right ==> (if oldHeap[(loc(a_2, i$7_1): Ref), val] == from then Heap[(loc(a_2, i$7_1): Ref), val] == to else Heap[(loc(a_2, i$7_1): Ref), val] == oldHeap[(loc(a_2, i$7_1): Ref), val])
+          mid <= i$7_1 && i$7_1 < right_2 ==> (if oldHeap[(loc(a_2, i$7_1): Ref), val] == from_1 then Heap[(loc(a_2, i$7_1): Ref), val] == to_1 else Heap[(loc(a_2, i$7_1): Ref), val] == oldHeap[(loc(a_2, i$7_1): Ref), val])
         );
         assume state(Heap, Mask);
         assume state(Heap, Mask);
@@ -837,56 +837,56 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
       
     
     // -- check if receiver loc(a, i$0) is injective
-      assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i$0).val might not be injective. (parallel-array-replace.vpr@15.12--15.33) [116527]"}
-        (forall i$0_2: int, i$0_2_1: int ::
-        { neverTriggered4(i$0_2), neverTriggered4(i$0_2_1) }
-        (((i$0_2 != i$0_2_1 && (left_1 <= i$0_2 && i$0_2 < right)) && (left_1 <= i$0_2_1 && i$0_2_1 < right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$0_2): Ref) != (loc(a_2, i$0_2_1): Ref)
+      assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i$0).val might not be injective. (parallel-array-replace.vpr@15.12--15.33) [104814]"}
+        (forall i$0_2_1: int, i$0_2_2: int ::
+        { neverTriggered4(i$0_2_1), neverTriggered4(i$0_2_2) }
+        (((i$0_2_1 != i$0_2_2 && (left <= i$0_2_1 && i$0_2_1 < right_2)) && (left <= i$0_2_2 && i$0_2_2 < right_2)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$0_2_1): Ref) != (loc(a_2, i$0_2_2): Ref)
       );
     
     // -- check if sufficient permission is held
-      assert {:msg "  Postcondition of Replace might not hold. There might be insufficient permission to access loc(a, i$0).val (parallel-array-replace.vpr@15.12--15.33) [116528]"}
-        (forall i$0_2: int ::
-        { (loc(a_2, i$0_2): Ref) } { (loc(a_2, i$0_2): Ref) }
-        left_1 <= i$0_2 && i$0_2 < right ==> Mask[(loc(a_2, i$0_2): Ref), val] >= FullPerm
+      assert {:msg "  Postcondition of Replace might not hold. There might be insufficient permission to access loc(a, i$0).val (parallel-array-replace.vpr@15.12--15.33) [104815]"}
+        (forall i$0_2_1: int ::
+        { (loc(a_2, i$0_2_1): Ref) } { (loc(a_2, i$0_2_1): Ref) }
+        left <= i$0_2_1 && i$0_2_1 < right_2 ==> Mask[(loc(a_2, i$0_2_1): Ref), val] >= FullPerm
       );
     
     // -- assumptions for inverse of receiver loc(a, i$0)
-      assume (forall i$0_2: int ::
-        { (loc(a_2, i$0_2): Ref) } { (loc(a_2, i$0_2): Ref) }
-        (left_1 <= i$0_2 && i$0_2 < right) && NoPerm < FullPerm ==> qpRange4((loc(a_2, i$0_2): Ref)) && invRecv4((loc(a_2, i$0_2): Ref)) == i$0_2
+      assume (forall i$0_2_1: int ::
+        { (loc(a_2, i$0_2_1): Ref) } { (loc(a_2, i$0_2_1): Ref) }
+        (left <= i$0_2_1 && i$0_2_1 < right_2) && NoPerm < FullPerm ==> qpRange4((loc(a_2, i$0_2_1): Ref)) && invRecv4((loc(a_2, i$0_2_1): Ref)) == i$0_2_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv4(o_4) }
-        (left_1 <= invRecv4(o_4) && invRecv4(o_4) < right) && (NoPerm < FullPerm && qpRange4(o_4)) ==> (loc(a_2, invRecv4(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv4(o_9) }
+        (left <= invRecv4(o_9) && invRecv4(o_9) < right_2) && (NoPerm < FullPerm && qpRange4(o_9)) ==> (loc(a_2, invRecv4(o_9)): Ref) == o_9
       );
     
     // -- assume permission updates for field val
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        ((left_1 <= invRecv4(o_4) && invRecv4(o_4) < right) && (NoPerm < FullPerm && qpRange4(o_4)) ==> (loc(a_2, invRecv4(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((left_1 <= invRecv4(o_4) && invRecv4(o_4) < right) && (NoPerm < FullPerm && qpRange4(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        ((left <= invRecv4(o_9) && invRecv4(o_9) < right_2) && (NoPerm < FullPerm && qpRange4(o_9)) ==> (loc(a_2, invRecv4(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((left <= invRecv4(o_9) && invRecv4(o_9) < right_2) && (NoPerm < FullPerm && qpRange4(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
     
     // -- assume permission updates for independent locations
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     if (*) {
-      if (left_1 <= i$1_2 && i$1_2 < right) {
-        if (oldHeap[(loc(a_2, i$1_2): Ref), val] == from) {
-          assert {:msg "  Postcondition of Replace might not hold. Assertion loc(a, i$1).val == to might not hold. (parallel-array-replace.vpr@16.12--16.33) [116529]"}
-            Heap[(loc(a_2, i$1_2): Ref), val] == to;
+      if (left <= i$1_2_1 && i$1_2_1 < right_2) {
+        if (oldHeap[(loc(a_2, i$1_2_1): Ref), val] == from_1) {
+          assert {:msg "  Postcondition of Replace might not hold. Assertion loc(a, i$1).val == to might not hold. (parallel-array-replace.vpr@16.12--16.33) [104816]"}
+            Heap[(loc(a_2, i$1_2_1): Ref), val] == to_1;
         } else {
-          assert {:msg "  Postcondition of Replace might not hold. Assertion loc(a, i$1).val == old(loc(a, i$1).val) might not hold. (parallel-array-replace.vpr@16.12--16.33) [116530]"}
-            Heap[(loc(a_2, i$1_2): Ref), val] == oldHeap[(loc(a_2, i$1_2): Ref), val];
+          assert {:msg "  Postcondition of Replace might not hold. Assertion loc(a, i$1).val == old(loc(a, i$1).val) might not hold. (parallel-array-replace.vpr@16.12--16.33) [104817]"}
+            Heap[(loc(a_2, i$1_2_1): Ref), val] == oldHeap[(loc(a_2, i$1_2_1): Ref), val];
         }
       }
       assume false;
     }
     assume (forall i$1_3_1_1: int ::
       { (loc(a_2, i$1_3_1_1): Ref) }
-      left_1 <= i$1_3_1_1 && i$1_3_1_1 < right ==> (if oldHeap[(loc(a_2, i$1_3_1_1): Ref), val] == from then Heap[(loc(a_2, i$1_3_1_1): Ref), val] == to else Heap[(loc(a_2, i$1_3_1_1): Ref), val] == oldHeap[(loc(a_2, i$1_3_1_1): Ref), val])
+      left <= i$1_3_1_1 && i$1_3_1_1 < right_2 ==> (if oldHeap[(loc(a_2, i$1_3_1_1): Ref), val] == from_1 then Heap[(loc(a_2, i$1_3_1_1): Ref), val] == to_1 else Heap[(loc(a_2, i$1_3_1_1): Ref), val] == oldHeap[(loc(a_2, i$1_3_1_1): Ref), val])
     );
     // Finish exhale
     havoc ExhaleHeap;
@@ -920,7 +920,7 @@ procedure Client(a_2: ArrayDomainType) returns ()
     assume AssumePermUpperBound;
   
   // -- Checked inhaling of precondition
-    assume 1 < (len_1(a_2): int);
+    assume 1 < (len(a_2): int);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int :: { loc(a, i) } 0 <= i && i < len(a) ==> acc(loc(a, i).val, write))
@@ -928,36 +928,36 @@ procedure Client(a_2: ArrayDomainType) returns ()
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@45.12--45.72) [116531]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@45.12--45.72) [104818]"}
       (forall i_1: int, i_1_1: int ::
       
-      (((i_1 != i_1_1 && (0 <= i_1 && i_1 < (len_1(a_2): int))) && (0 <= i_1_1 && i_1_1 < (len_1(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
+      (((i_1 != i_1_1 && (0 <= i_1 && i_1 < (len(a_2): int))) && (0 <= i_1_1 && i_1_1 < (len(a_2): int))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_1): Ref) != (loc(a_2, i_1_1): Ref)
     );
     
     // -- Define Inverse Function
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        (0 <= i_1 && i_1 < (len_1(a_2): int)) && NoPerm < FullPerm ==> qpRange9((loc(a_2, i_1): Ref)) && invRecv9((loc(a_2, i_1): Ref)) == i_1
+        (0 <= i_1 && i_1 < (len(a_2): int)) && NoPerm < FullPerm ==> qpRange9((loc(a_2, i_1): Ref)) && invRecv9((loc(a_2, i_1): Ref)) == i_1
       );
-      assume (forall o_4: Ref ::
-        { invRecv9(o_4) }
-        ((0 <= invRecv9(o_4) && invRecv9(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange9(o_4) ==> (loc(a_2, invRecv9(o_4)): Ref) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv9(o_9) }
+        ((0 <= invRecv9(o_9) && invRecv9(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange9(o_9) ==> (loc(a_2, invRecv9(o_9)): Ref) == o_9
       );
     
     // -- Assume set of fields is nonNull
       assume (forall i_1: int ::
         { (loc(a_2, i_1): Ref) } { (loc(a_2, i_1): Ref) }
-        0 <= i_1 && i_1 < (len_1(a_2): int) ==> (loc(a_2, i_1): Ref) != null
+        0 <= i_1 && i_1 < (len(a_2): int) ==> (loc(a_2, i_1): Ref) != null
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, val] }
-        (((0 <= invRecv9(o_4) && invRecv9(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange9(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv9(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((0 <= invRecv9(o_4) && invRecv9(o_4) < (len_1(a_2): int)) && NoPerm < FullPerm) && qpRange9(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, val] }
+        (((0 <= invRecv9(o_9) && invRecv9(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange9(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv9(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((0 <= invRecv9(o_9) && invRecv9(o_9) < (len(a_2): int)) && NoPerm < FullPerm) && qpRange9(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -969,35 +969,35 @@ procedure Client(a_2: ArrayDomainType) returns ()
         // Exhale precondition of function application
         ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
-        assert {:msg "  Precondition of function Contains might not hold. Assertion 1 <= len(a) might not hold. (parallel-array-replace.vpr@46.12--46.29) [116532]"}
-          1 <= (len_1(a_2): int);
+        assert {:msg "  Precondition of function Contains might not hold. Assertion 1 <= len(a) might not hold. (parallel-array-replace.vpr@46.12--46.29) [104819]"}
+          1 <= (len(a_2): int);
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver loc(a, i) is injective
-          assert {:msg "  Precondition of function Contains might not hold. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@46.12--46.29) [116533]"}
-            (forall i_2_1: int, i_2_2: int ::
-            { neverTriggered10(i_2_1), neverTriggered10(i_2_2) }
-            (((i_2_1 != i_2_2 && (0 <= i_2_1 && i_2_1 < 1)) && (0 <= i_2_2 && i_2_2 < 1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_2_1): Ref) != (loc(a_2, i_2_2): Ref)
+          assert {:msg "  Precondition of function Contains might not hold. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@46.12--46.29) [104820]"}
+            (forall i_2: int, i_2_2: int ::
+            { neverTriggered10(i_2), neverTriggered10(i_2_2) }
+            (((i_2 != i_2_2 && (0 <= i_2 && i_2 < 1)) && (0 <= i_2_2 && i_2_2 < 1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_2): Ref) != (loc(a_2, i_2_2): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function Contains might not hold. There might be insufficient permission to access loc(a, i).val (parallel-array-replace.vpr@46.12--46.29) [116534]"}
-            (forall i_2_1: int ::
-            { (loc(a_2, i_2_1): Ref) } { (loc(a_2, i_2_1): Ref) }
-            0 <= i_2_1 && i_2_1 < 1 ==> FullPerm > NoPerm ==> Mask[(loc(a_2, i_2_1): Ref), val] > NoPerm
+          assert {:msg "  Precondition of function Contains might not hold. There might be insufficient permission to access loc(a, i).val (parallel-array-replace.vpr@46.12--46.29) [104821]"}
+            (forall i_2: int ::
+            { (loc(a_2, i_2): Ref) } { (loc(a_2, i_2): Ref) }
+            0 <= i_2 && i_2 < 1 ==> FullPerm > NoPerm ==> Mask[(loc(a_2, i_2): Ref), val] > NoPerm
           );
         
         // -- assumptions for inverse of receiver loc(a, i)
-          assume (forall i_2_1: int ::
-            { (loc(a_2, i_2_1): Ref) } { (loc(a_2, i_2_1): Ref) }
-            (0 <= i_2_1 && i_2_1 < 1) && NoPerm < FullPerm ==> qpRange10((loc(a_2, i_2_1): Ref)) && invRecv10((loc(a_2, i_2_1): Ref)) == i_2_1
+          assume (forall i_2: int ::
+            { (loc(a_2, i_2): Ref) } { (loc(a_2, i_2): Ref) }
+            (0 <= i_2 && i_2 < 1) && NoPerm < FullPerm ==> qpRange10((loc(a_2, i_2): Ref)) && invRecv10((loc(a_2, i_2): Ref)) == i_2
           );
-          assume (forall o_4: Ref ::
-            { invRecv10(o_4) }
-            (0 <= invRecv10(o_4) && invRecv10(o_4) < 1) && (NoPerm < FullPerm && qpRange10(o_4)) ==> (loc(a_2, invRecv10(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv10(o_9) }
+            (0 <= invRecv10(o_9) && invRecv10(o_9) < 1) && (NoPerm < FullPerm && qpRange10(o_9)) ==> (loc(a_2, invRecv10(o_9)): Ref) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -1018,54 +1018,54 @@ procedure Client(a_2: ArrayDomainType) returns ()
   // -- Translating statement: Replace(a, 1, len(a), 5, 7) -- parallel-array-replace.vpr@48.3--48.30
     PreCallHeap := Heap;
     PreCallMask := Mask;
-    arg_right := (len_1(a_2): int);
+    arg_right := (len(a_2): int);
     
     // -- Exhaling precondition
       ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
-      assert {:msg "  The precondition of method Replace might not hold. Assertion 1 < len(a) might not hold. (parallel-array-replace.vpr@48.3--48.30) [116535]"}
+      assert {:msg "  The precondition of method Replace might not hold. Assertion 1 < len(a) might not hold. (parallel-array-replace.vpr@48.3--48.30) [104822]"}
         1 < arg_right;
-      assert {:msg "  The precondition of method Replace might not hold. Assertion len(a) <= len(a) might not hold. (parallel-array-replace.vpr@48.3--48.30) [116536]"}
-        arg_right <= (len_1(a_2): int);
+      assert {:msg "  The precondition of method Replace might not hold. Assertion len(a) <= len(a) might not hold. (parallel-array-replace.vpr@48.3--48.30) [104823]"}
+        arg_right <= (len(a_2): int);
       havoc QPMask;
       
       // -- check that the permission amount is positive
         
       
       // -- check if receiver loc(a, i) is injective
-        assert {:msg "  The precondition of method Replace might not hold. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@48.3--48.30) [116537]"}
-          (forall i_3: int, i_3_1: int ::
-          { neverTriggered11(i_3), neverTriggered11(i_3_1) }
-          (((i_3 != i_3_1 && (1 <= i_3 && i_3 < arg_right)) && (1 <= i_3_1 && i_3_1 < arg_right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_3): Ref) != (loc(a_2, i_3_1): Ref)
+        assert {:msg "  The precondition of method Replace might not hold. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@48.3--48.30) [104824]"}
+          (forall i_3_2: int, i_3_3: int ::
+          { neverTriggered11(i_3_2), neverTriggered11(i_3_3) }
+          (((i_3_2 != i_3_3 && (1 <= i_3_2 && i_3_2 < arg_right)) && (1 <= i_3_3 && i_3_3 < arg_right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_3_2): Ref) != (loc(a_2, i_3_3): Ref)
         );
       
       // -- check if sufficient permission is held
-        assert {:msg "  The precondition of method Replace might not hold. There might be insufficient permission to access loc(a, i).val (parallel-array-replace.vpr@48.3--48.30) [116538]"}
-          (forall i_3: int ::
-          { (loc(a_2, i_3): Ref) } { (loc(a_2, i_3): Ref) }
-          1 <= i_3 && i_3 < arg_right ==> Mask[(loc(a_2, i_3): Ref), val] >= FullPerm
+        assert {:msg "  The precondition of method Replace might not hold. There might be insufficient permission to access loc(a, i).val (parallel-array-replace.vpr@48.3--48.30) [104825]"}
+          (forall i_3_2: int ::
+          { (loc(a_2, i_3_2): Ref) } { (loc(a_2, i_3_2): Ref) }
+          1 <= i_3_2 && i_3_2 < arg_right ==> Mask[(loc(a_2, i_3_2): Ref), val] >= FullPerm
         );
       
       // -- assumptions for inverse of receiver loc(a, i)
-        assume (forall i_3: int ::
-          { (loc(a_2, i_3): Ref) } { (loc(a_2, i_3): Ref) }
-          (1 <= i_3 && i_3 < arg_right) && NoPerm < FullPerm ==> qpRange11((loc(a_2, i_3): Ref)) && invRecv11((loc(a_2, i_3): Ref)) == i_3
+        assume (forall i_3_2: int ::
+          { (loc(a_2, i_3_2): Ref) } { (loc(a_2, i_3_2): Ref) }
+          (1 <= i_3_2 && i_3_2 < arg_right) && NoPerm < FullPerm ==> qpRange11((loc(a_2, i_3_2): Ref)) && invRecv11((loc(a_2, i_3_2): Ref)) == i_3_2
         );
-        assume (forall o_4: Ref ::
-          { invRecv11(o_4) }
-          (1 <= invRecv11(o_4) && invRecv11(o_4) < arg_right) && (NoPerm < FullPerm && qpRange11(o_4)) ==> (loc(a_2, invRecv11(o_4)): Ref) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv11(o_9) }
+          (1 <= invRecv11(o_9) && invRecv11(o_9) < arg_right) && (NoPerm < FullPerm && qpRange11(o_9)) ==> (loc(a_2, invRecv11(o_9)): Ref) == o_9
         );
       
       // -- assume permission updates for field val
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, val] }
-          ((1 <= invRecv11(o_4) && invRecv11(o_4) < arg_right) && (NoPerm < FullPerm && qpRange11(o_4)) ==> (loc(a_2, invRecv11(o_4)): Ref) == o_4 && QPMask[o_4, val] == Mask[o_4, val] - FullPerm) && (!((1 <= invRecv11(o_4) && invRecv11(o_4) < arg_right) && (NoPerm < FullPerm && qpRange11(o_4))) ==> QPMask[o_4, val] == Mask[o_4, val])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, val] }
+          ((1 <= invRecv11(o_9) && invRecv11(o_9) < arg_right) && (NoPerm < FullPerm && qpRange11(o_9)) ==> (loc(a_2, invRecv11(o_9)): Ref) == o_9 && QPMask[o_9, val] == Mask[o_9, val] - FullPerm) && (!((1 <= invRecv11(o_9) && invRecv11(o_9) < arg_right) && (NoPerm < FullPerm && qpRange11(o_9))) ==> QPMask[o_9, val] == Mask[o_9, val])
         );
       
       // -- assume permission updates for independent locations
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { QPMask[o_4, f_5] }
-          f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { QPMask[o_9, f_5] }
+          f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       // Finish exhale
@@ -1075,7 +1075,7 @@ procedure Client(a_2: ArrayDomainType) returns ()
     
     // -- Inhaling postcondition
       havoc QPMask;
-      assert {:msg "  Method call might fail. Quantified resource loc(a, i$0).val might not be injective. (parallel-array-replace.vpr@48.3--48.30) [116539]"}
+      assert {:msg "  Method call might fail. Quantified resource loc(a, i$0).val might not be injective. (parallel-array-replace.vpr@48.3--48.30) [104826]"}
         (forall i$0: int, i$0_3: int ::
         
         (((i$0 != i$0_3 && (1 <= i$0 && i$0 < arg_right)) && (1 <= i$0_3 && i$0_3 < arg_right)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i$0): Ref) != (loc(a_2, i$0_3): Ref)
@@ -1086,9 +1086,9 @@ procedure Client(a_2: ArrayDomainType) returns ()
           { (loc(a_2, i$0): Ref) } { (loc(a_2, i$0): Ref) }
           (1 <= i$0 && i$0 < arg_right) && NoPerm < FullPerm ==> qpRange12((loc(a_2, i$0): Ref)) && invRecv12((loc(a_2, i$0): Ref)) == i$0
         );
-        assume (forall o_4: Ref ::
-          { invRecv12(o_4) }
-          ((1 <= invRecv12(o_4) && invRecv12(o_4) < arg_right) && NoPerm < FullPerm) && qpRange12(o_4) ==> (loc(a_2, invRecv12(o_4)): Ref) == o_4
+        assume (forall o_9: Ref ::
+          { invRecv12(o_9) }
+          ((1 <= invRecv12(o_9) && invRecv12(o_9) < arg_right) && NoPerm < FullPerm) && qpRange12(o_9) ==> (loc(a_2, invRecv12(o_9)): Ref) == o_9
         );
       
       // -- Assume set of fields is nonNull
@@ -1098,13 +1098,13 @@ procedure Client(a_2: ArrayDomainType) returns ()
         );
       
       // -- Define permissions
-        assume (forall o_4: Ref ::
-          { QPMask[o_4, val] }
-          (((1 <= invRecv12(o_4) && invRecv12(o_4) < arg_right) && NoPerm < FullPerm) && qpRange12(o_4) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv12(o_4)): Ref) == o_4) && QPMask[o_4, val] == Mask[o_4, val] + FullPerm) && (!(((1 <= invRecv12(o_4) && invRecv12(o_4) < arg_right) && NoPerm < FullPerm) && qpRange12(o_4)) ==> QPMask[o_4, val] == Mask[o_4, val])
+        assume (forall o_9: Ref ::
+          { QPMask[o_9, val] }
+          (((1 <= invRecv12(o_9) && invRecv12(o_9) < arg_right) && NoPerm < FullPerm) && qpRange12(o_9) ==> (NoPerm < FullPerm ==> (loc(a_2, invRecv12(o_9)): Ref) == o_9) && QPMask[o_9, val] == Mask[o_9, val] + FullPerm) && (!(((1 <= invRecv12(o_9) && invRecv12(o_9) < arg_right) && NoPerm < FullPerm) && qpRange12(o_9)) ==> QPMask[o_9, val] == Mask[o_9, val])
         );
-        assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-          { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-          f_5 != val ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+        assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+          { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+          f_5 != val ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
         );
       Mask := QPMask;
       assume state(Heap, Mask);
@@ -1124,22 +1124,22 @@ procedure Client(a_2: ArrayDomainType) returns ()
         // Exhale precondition of function application
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
-        assert {:msg "  Precondition of function Contains might not hold. Assertion 1 <= len(a) might not hold. (parallel-array-replace.vpr@49.10--49.27) [116540]"}
-          1 <= (len_1(a_2): int);
+        assert {:msg "  Precondition of function Contains might not hold. Assertion 1 <= len(a) might not hold. (parallel-array-replace.vpr@49.10--49.27) [104827]"}
+          1 <= (len(a_2): int);
         havoc QPMask;
         
         // -- check that the permission amount is positive
           
         
         // -- check if receiver loc(a, i) is injective
-          assert {:msg "  Precondition of function Contains might not hold. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@49.10--49.27) [116541]"}
+          assert {:msg "  Precondition of function Contains might not hold. Quantified resource loc(a, i).val might not be injective. (parallel-array-replace.vpr@49.10--49.27) [104828]"}
             (forall i_4_1: int, i_4_2: int ::
             { neverTriggered13(i_4_1), neverTriggered13(i_4_2) }
             (((i_4_1 != i_4_2 && (0 <= i_4_1 && i_4_1 < 1)) && (0 <= i_4_2 && i_4_2 < 1)) && NoPerm < FullPerm) && NoPerm < FullPerm ==> (loc(a_2, i_4_1): Ref) != (loc(a_2, i_4_2): Ref)
           );
         
         // -- check if sufficient permission is held
-          assert {:msg "  Precondition of function Contains might not hold. There might be insufficient permission to access loc(a, i).val (parallel-array-replace.vpr@49.10--49.27) [116542]"}
+          assert {:msg "  Precondition of function Contains might not hold. There might be insufficient permission to access loc(a, i).val (parallel-array-replace.vpr@49.10--49.27) [104829]"}
             (forall i_4_1: int ::
             { (loc(a_2, i_4_1): Ref) } { (loc(a_2, i_4_1): Ref) }
             0 <= i_4_1 && i_4_1 < 1 ==> FullPerm > NoPerm ==> ExhaleWellDef0Mask[(loc(a_2, i_4_1): Ref), val] > NoPerm
@@ -1150,9 +1150,9 @@ procedure Client(a_2: ArrayDomainType) returns ()
             { (loc(a_2, i_4_1): Ref) } { (loc(a_2, i_4_1): Ref) }
             (0 <= i_4_1 && i_4_1 < 1) && NoPerm < FullPerm ==> qpRange13((loc(a_2, i_4_1): Ref)) && invRecv13((loc(a_2, i_4_1): Ref)) == i_4_1
           );
-          assume (forall o_4: Ref ::
-            { invRecv13(o_4) }
-            (0 <= invRecv13(o_4) && invRecv13(o_4) < 1) && (NoPerm < FullPerm && qpRange13(o_4)) ==> (loc(a_2, invRecv13(o_4)): Ref) == o_4
+          assume (forall o_9: Ref ::
+            { invRecv13(o_9) }
+            (0 <= invRecv13(o_9) && invRecv13(o_9) < 1) && (NoPerm < FullPerm && qpRange13(o_9)) ==> (loc(a_2, invRecv13(o_9)): Ref) == o_9
           );
         // Finish exhale
         havoc ExhaleHeap;
@@ -1161,7 +1161,7 @@ procedure Client(a_2: ArrayDomainType) returns ()
         // Stop execution
         assume false;
       }
-    assert {:msg "  Assert might fail. Assertion Contains(a, 5, 1) might not hold. (parallel-array-replace.vpr@49.10--49.27) [116543]"}
+    assert {:msg "  Assert might fail. Assertion Contains(a, 5, 1) might not hold. (parallel-array-replace.vpr@49.10--49.27) [104830]"}
       Contains(Heap, a_2, 5, 1);
     assume state(Heap, Mask);
 }

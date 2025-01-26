@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 17:54:02
+// Date:         2025-01-26 21:44:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/blom02.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/blom02-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -28,9 +28,9 @@ type NormalField;
 const dummyHeap: HeapType;
 type HeapType = <A, B> [Ref, Field A B]B;
 const unique $allocated: Field NormalField bool;
-axiom (forall o_7: Ref, f_11: (Field NormalField Ref), Heap: HeapType ::
-  { Heap[o_7, f_11] }
-  Heap[o_7, $allocated] ==> Heap[Heap[o_7, f_11], $allocated]
+axiom (forall o_16: Ref, f_10: (Field NormalField Ref), Heap: HeapType ::
+  { Heap[o_16, f_10] }
+  Heap[o_16, $allocated] ==> Heap[Heap[o_16, f_10], $allocated]
 );
 function  succHeap(Heap0: HeapType, Heap1: HeapType): bool;
 function  succHeapTrans(Heap0: HeapType, Heap1: HeapType): bool;
@@ -39,45 +39,45 @@ function  IsPredicateField<A, B>(f_1: (Field A B)): bool;
 function  IsWandField<A, B>(f_1: (Field A B)): bool;
 function  getPredWandId<A, B>(f_1: (Field A B)): int;
 // Frame all locations with direct permissions
-axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_8: Ref, f_12: (Field A B) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_8, f_12] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_8, f_12) ==> Heap[o_8, f_12] == ExhaleHeap[o_8, f_12]
+axiom (forall <A, B> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_17: Ref, f_25: (Field A B) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_17, f_25] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, o_17, f_25) ==> Heap[o_17, f_25] == ExhaleHeap[o_17, f_25]
 );
 // Frame all predicate mask locations of predicates with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_3), ExhaleHeap[null, PredicateMaskField(pm_f_3)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsPredicateField(pm_f_3) ==> Heap[null, PredicateMaskField(pm_f_3)] == ExhaleHeap[null, PredicateMaskField(pm_f_3)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6), ExhaleHeap[null, PredicateMaskField(pm_f_6)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> Heap[null, PredicateMaskField(pm_f_6)] == ExhaleHeap[null, PredicateMaskField(pm_f_6)]
 );
 // Frame all locations with known folded permissions
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_3) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsPredicateField(pm_f_3) ==> (forall <A, B> o2_3: Ref, f_12: (Field A B) ::
-    { ExhaleHeap[o2_3, f_12] }
-    Heap[null, PredicateMaskField(pm_f_3)][o2_3, f_12] ==> Heap[o2_3, f_12] == ExhaleHeap[o2_3, f_12]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsPredicateField(pm_f_6) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsPredicateField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_25: (Field A B) ::
+    { ExhaleHeap[o2_6, f_25] }
+    Heap[null, PredicateMaskField(pm_f_6)][o2_6, f_25] ==> Heap[o2_6, f_25] == ExhaleHeap[o2_6, f_25]
   )
 );
 // Frame all wand mask locations of wands with direct permission
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_3), ExhaleHeap[null, WandMaskField(pm_f_3)] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsWandField(pm_f_3) ==> Heap[null, WandMaskField(pm_f_3)] == ExhaleHeap[null, WandMaskField(pm_f_3)]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6), ExhaleHeap[null, WandMaskField(pm_f_6)] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> Heap[null, WandMaskField(pm_f_6)] == ExhaleHeap[null, WandMaskField(pm_f_6)]
 );
 // Frame all locations in the footprint of magic wands
-axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_3: (Field C FrameType) ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_3) }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_3) && IsWandField(pm_f_3) ==> (forall <A, B> o2_3: Ref, f_12: (Field A B) ::
-    { ExhaleHeap[o2_3, f_12] }
-    Heap[null, WandMaskField(pm_f_3)][o2_3, f_12] ==> Heap[o2_3, f_12] == ExhaleHeap[o2_3, f_12]
+axiom (forall <C> Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, pm_f_6: (Field C FrameType) ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), IsWandField(pm_f_6) }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> HasDirectPerm(Mask, null, pm_f_6) && IsWandField(pm_f_6) ==> (forall <A, B> o2_6: Ref, f_25: (Field A B) ::
+    { ExhaleHeap[o2_6, f_25] }
+    Heap[null, WandMaskField(pm_f_6)][o2_6, f_25] ==> Heap[o2_6, f_25] == ExhaleHeap[o2_6, f_25]
   )
 );
 // All previously-allocated references are still allocated
-axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_8: Ref ::
-  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_8, $allocated] }
-  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_8, $allocated] ==> ExhaleHeap[o_8, $allocated]
+axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType, o_17: Ref ::
+  { IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask), ExhaleHeap[o_17, $allocated] }
+  IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask) ==> Heap[o_17, $allocated] ==> ExhaleHeap[o_17, $allocated]
 );
 // Updated Heaps are Successor Heaps
-axiom (forall <A, B> Heap: HeapType, o_7: Ref, f_2: (Field A B), v: B ::
-  { Heap[o_7, f_2:=v] }
-  succHeap(Heap, Heap[o_7, f_2:=v])
+axiom (forall <A, B> Heap: HeapType, o_16: Ref, f_2: (Field A B), v: B ::
+  { Heap[o_16, f_2:=v] }
+  succHeap(Heap, Heap[o_16, f_2:=v])
 );
 // IdenticalOnKnownLocations Heaps are Successor Heaps
 axiom (forall Heap: HeapType, ExhaleHeap: HeapType, Mask: MaskType ::
@@ -146,7 +146,7 @@ axiom (forall <A, B> ResultMask: MaskType, SummandMask1: MaskType, SummandMask2:
 
 function  neverTriggered1(i2_4: int): bool;
 function  neverTriggered2(i3_4: int): bool;
-function  neverTriggered3(i2_5: int): bool;
+function  neverTriggered3(i2_5_1: int): bool;
 function  neverTriggered4(i3_5: int): bool;
 // ==================================================
 // Functions used as inverse of receiver expressions in quantified permissions during inhale and exhale
@@ -640,7 +640,7 @@ procedure Map__EMPTY#definedness() returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Map__EMPTY might not hold. Assertion result == -1 might not hold. (blom02.vpr@16.11--16.23) [40415]"}
+    assert {:msg "  Postcondition of Map__EMPTY might not hold. Assertion result == -1 might not hold. (blom02.vpr@16.11--16.23) [132885]"}
       Result == -1;
 }
 
@@ -704,7 +704,7 @@ procedure Map__DELETED#definedness() returns (Result: int)
   // -- Exhaling postcondition (with checking)
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Map__DELETED might not hold. Assertion result == -2 might not hold. (blom02.vpr@22.11--22.23) [40416]"}
+    assert {:msg "  Postcondition of Map__DELETED might not hold. Assertion result == -2 might not hold. (blom02.vpr@22.11--22.23) [132886]"}
       Result == -2;
 }
 
@@ -727,15 +727,15 @@ axiom (forall Heap: HeapType, diz: Ref, hash: int, ignoreDeleted: bool, cap: int
 // Definitional axiom
 axiom (forall Heap: HeapType, Mask: MaskType, diz: Ref, hash: int, ignoreDeleted: bool, cap: int ::
   { state(Heap, Mask), Map__indexOfLoop(Heap, diz, hash, ignoreDeleted, cap) }
-  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> (((((((diz != null && Seq#Length(Heap[diz, Map__keys]) > 0) && Seq#Length(Heap[diz, Map__values]) > 0) && Seq#Length(Heap[diz, Map__keys]) == Seq#Length(Heap[diz, Map__values])) && (forall i: int, j_9: int ::
-    { Seq#Index(Heap[diz, Map__keys], i), Seq#Index(Heap[diz, Map__keys], j_9) }
-    0 <= i && (i < Seq#Length(Heap[diz, Map__keys]) && (0 <= j_9 && (j_9 < Seq#Length(Heap[diz, Map__keys]) && i != j_9))) ==> Seq#Index(Heap[diz, Map__keys], i) != Seq#Index(Heap[diz, Map__keys], j_9)
+  state(Heap, Mask) && AssumeFunctionsAbove < 0 ==> (((((((diz != null && Seq#Length(Heap[diz, Map__keys]) > 0) && Seq#Length(Heap[diz, Map__values]) > 0) && Seq#Length(Heap[diz, Map__keys]) == Seq#Length(Heap[diz, Map__values])) && (forall i: int, j: int ::
+    { Seq#Index(Heap[diz, Map__keys], i), Seq#Index(Heap[diz, Map__keys], j) }
+    0 <= i && (i < Seq#Length(Heap[diz, Map__keys]) && (0 <= j && (j < Seq#Length(Heap[diz, Map__keys]) && i != j))) ==> Seq#Index(Heap[diz, Map__keys], i) != Seq#Index(Heap[diz, Map__keys], j)
   )) && (forall i_1: int, j_1: int ::
     { Seq#Index(Heap[diz, Map__values], i_1), Seq#Index(Heap[diz, Map__values], j_1) }
     0 <= i_1 && (i_1 < Seq#Length(Heap[diz, Map__values]) && (0 <= j_1 && (j_1 < Seq#Length(Heap[diz, Map__values]) && i_1 != j_1))) ==> Seq#Index(Heap[diz, Map__values], i_1) != Seq#Index(Heap[diz, Map__values], j_1)
-  )) && (forall i1: int ::
-    { Seq#Index(Heap[diz, Map__keys], i1) }
-    i1 >= 0 && i1 < Seq#Length(Heap[diz, Map__keys]) ==> Heap[Seq#Index(Heap[diz, Map__keys], i1), Ref__Integer_value] == Map__EMPTY(Heap) || (Heap[Seq#Index(Heap[diz, Map__keys], i1), Ref__Integer_value] == Map__DELETED(Heap) || Heap[Seq#Index(Heap[diz, Map__keys], i1), Ref__Integer_value] >= 0)
+  )) && (forall i1_9: int ::
+    { Seq#Index(Heap[diz, Map__keys], i1_9) }
+    i1_9 >= 0 && i1_9 < Seq#Length(Heap[diz, Map__keys]) ==> Heap[Seq#Index(Heap[diz, Map__keys], i1_9), Ref__Integer_value] == Map__EMPTY(Heap) || (Heap[Seq#Index(Heap[diz, Map__keys], i1_9), Ref__Integer_value] == Map__DELETED(Heap) || Heap[Seq#Index(Heap[diz, Map__keys], i1_9), Ref__Integer_value] >= 0)
   )) && (hash >= 0 && hash < Seq#Length(Heap[diz, Map__keys]))) && cap < Seq#Length(Heap[diz, Map__keys]) ==> Map__indexOfLoop(Heap, diz, hash, ignoreDeleted, cap) == (if cap <= 0 then Map__EMPTY(Heap) else Map__indexOfLoop'(Heap, diz, (hash + 1) mod Seq#Length(Heap[diz, Map__keys]), ignoreDeleted, cap - 1))
 );
 
@@ -769,15 +769,15 @@ axiom (forall Heap2Heap: HeapType, Heap1Heap: HeapType, diz: Ref, hash: int, ign
 // Postcondition axioms
 axiom (forall Heap: HeapType, Mask: MaskType, diz: Ref, hash: int, ignoreDeleted: bool, cap: int ::
   { state(Heap, Mask), Map__indexOfLoop'(Heap, diz, hash, ignoreDeleted, cap) }
-  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Map__indexOfLoop#trigger(CombineFrames(FrameFragment(Heap[diz, Map__keys]), CombineFrames(FrameFragment(Heap[diz, Map__values]), CombineFrames(FrameFragment(Map__indexOfLoop#condqp1(Heap, diz, hash, ignoreDeleted, cap)), FrameFragment(Map__indexOfLoop#condqp2(Heap, diz, hash, ignoreDeleted, cap))))), diz, hash, ignoreDeleted, cap)) ==> (((((((diz != null && Seq#Length(Heap[diz, Map__keys]) > 0) && Seq#Length(Heap[diz, Map__values]) > 0) && Seq#Length(Heap[diz, Map__keys]) == Seq#Length(Heap[diz, Map__values])) && (forall i_2_1: int, j_2_1: int ::
-    { Seq#Index(Heap[diz, Map__keys], i_2_1), Seq#Index(Heap[diz, Map__keys], j_2_1) }
-    0 <= i_2_1 && (i_2_1 < Seq#Length(Heap[diz, Map__keys]) && (0 <= j_2_1 && (j_2_1 < Seq#Length(Heap[diz, Map__keys]) && i_2_1 != j_2_1))) ==> Seq#Index(Heap[diz, Map__keys], i_2_1) != Seq#Index(Heap[diz, Map__keys], j_2_1)
-  )) && (forall i_3: int, j_3_1: int ::
-    { Seq#Index(Heap[diz, Map__values], i_3), Seq#Index(Heap[diz, Map__values], j_3_1) }
-    0 <= i_3 && (i_3 < Seq#Length(Heap[diz, Map__values]) && (0 <= j_3_1 && (j_3_1 < Seq#Length(Heap[diz, Map__values]) && i_3 != j_3_1))) ==> Seq#Index(Heap[diz, Map__values], i_3) != Seq#Index(Heap[diz, Map__values], j_3_1)
-  )) && (forall i1_1_1: int ::
-    { Seq#Index(Heap[diz, Map__keys], i1_1_1) }
-    i1_1_1 >= 0 && i1_1_1 < Seq#Length(Heap[diz, Map__keys]) ==> Heap[Seq#Index(Heap[diz, Map__keys], i1_1_1), Ref__Integer_value] == Map__EMPTY(Heap) || (Heap[Seq#Index(Heap[diz, Map__keys], i1_1_1), Ref__Integer_value] == Map__DELETED(Heap) || Heap[Seq#Index(Heap[diz, Map__keys], i1_1_1), Ref__Integer_value] >= 0)
+  state(Heap, Mask) && (AssumeFunctionsAbove < 0 || Map__indexOfLoop#trigger(CombineFrames(FrameFragment(Heap[diz, Map__keys]), CombineFrames(FrameFragment(Heap[diz, Map__values]), CombineFrames(FrameFragment(Map__indexOfLoop#condqp1(Heap, diz, hash, ignoreDeleted, cap)), FrameFragment(Map__indexOfLoop#condqp2(Heap, diz, hash, ignoreDeleted, cap))))), diz, hash, ignoreDeleted, cap)) ==> (((((((diz != null && Seq#Length(Heap[diz, Map__keys]) > 0) && Seq#Length(Heap[diz, Map__values]) > 0) && Seq#Length(Heap[diz, Map__keys]) == Seq#Length(Heap[diz, Map__values])) && (forall i_2: int, j_2_2: int ::
+    { Seq#Index(Heap[diz, Map__keys], i_2), Seq#Index(Heap[diz, Map__keys], j_2_2) }
+    0 <= i_2 && (i_2 < Seq#Length(Heap[diz, Map__keys]) && (0 <= j_2_2 && (j_2_2 < Seq#Length(Heap[diz, Map__keys]) && i_2 != j_2_2))) ==> Seq#Index(Heap[diz, Map__keys], i_2) != Seq#Index(Heap[diz, Map__keys], j_2_2)
+  )) && (forall i_3_2: int, j_3: int ::
+    { Seq#Index(Heap[diz, Map__values], i_3_2), Seq#Index(Heap[diz, Map__values], j_3) }
+    0 <= i_3_2 && (i_3_2 < Seq#Length(Heap[diz, Map__values]) && (0 <= j_3 && (j_3 < Seq#Length(Heap[diz, Map__values]) && i_3_2 != j_3))) ==> Seq#Index(Heap[diz, Map__values], i_3_2) != Seq#Index(Heap[diz, Map__values], j_3)
+  )) && (forall i1_1: int ::
+    { Seq#Index(Heap[diz, Map__keys], i1_1) }
+    i1_1 >= 0 && i1_1 < Seq#Length(Heap[diz, Map__keys]) ==> Heap[Seq#Index(Heap[diz, Map__keys], i1_1), Ref__Integer_value] == Map__EMPTY(Heap) || (Heap[Seq#Index(Heap[diz, Map__keys], i1_1), Ref__Integer_value] == Map__DELETED(Heap) || Heap[Seq#Index(Heap[diz, Map__keys], i1_1), Ref__Integer_value] >= 0)
   )) && (hash >= 0 && hash < Seq#Length(Heap[diz, Map__keys]))) && cap < Seq#Length(Heap[diz, Map__keys]) ==> Map__indexOfLoop'(Heap, diz, hash, ignoreDeleted, cap) == Map__EMPTY(Heap) || (Map__indexOfLoop'(Heap, diz, hash, ignoreDeleted, cap) >= 0 && Map__indexOfLoop'(Heap, diz, hash, ignoreDeleted, cap) < Seq#Length(Heap[diz, Map__keys]))
 );
 
@@ -792,21 +792,21 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var i_14: int;
-  var j_5: int;
-  var i2: int;
+  var i_18: int;
+  var j_14: int;
+  var i2_10: int;
   var QPMask: MaskType;
   var i_4: int;
-  var j_6: int;
+  var j_12: int;
   var i3_6: int;
-  var i1_12: int;
+  var i1_11: int;
   var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var i_8_2: int;
-  var j_8: int;
+  var i_8_1: int;
+  var j_8_2: int;
   var i_10_1: int;
   var j_10_2: int;
-  var i1_4_1: int;
+  var i1_4: int;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -831,77 +831,77 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.Map__keys| > 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@31.12--31.31) [40417]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@31.12--31.31) [132887]"}
         HasDirectPerm(Mask, diz, Map__keys);
     assume Seq#Length(Heap[diz, Map__keys]) > 0;
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.Map__values| > 0
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@32.12--32.33) [40418]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@32.12--32.33) [132888]"}
         HasDirectPerm(Mask, diz, Map__values);
     assume Seq#Length(Heap[diz, Map__values]) > 0;
     assume state(Heap, Mask);
     
     // -- Check definedness of |diz.Map__keys| == |diz.Map__values|
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@33.12--33.48) [40419]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@33.12--33.48) [132889]"}
         HasDirectPerm(Mask, diz, Map__keys);
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@33.12--33.48) [40420]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@33.12--33.48) [132890]"}
         HasDirectPerm(Mask, diz, Map__values);
     assume Seq#Length(Heap[diz, Map__keys]) == Seq#Length(Heap[diz, Map__values]);
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i: Int, j: Int :: { diz.Map__keys[i], diz.Map__keys[j] } 0 <= i && (i < |diz.Map__keys| && (0 <= j && (j < |diz.Map__keys| && i != j))) ==> diz.Map__keys[i] != diz.Map__keys[j])
       if (*) {
-        if (0 <= i_14) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@34.12--34.150) [40421]"}
+        if (0 <= i_18) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@34.12--34.150) [132891]"}
             HasDirectPerm(Mask, diz, Map__keys);
-          if (i_14 < Seq#Length(Heap[diz, Map__keys])) {
-            if (0 <= j_5) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@34.12--34.150) [40422]"}
+          if (i_18 < Seq#Length(Heap[diz, Map__keys])) {
+            if (0 <= j_14) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@34.12--34.150) [132892]"}
                 HasDirectPerm(Mask, diz, Map__keys);
             }
           }
         }
-        if (0 <= i_14 && (i_14 < Seq#Length(Heap[diz, Map__keys]) && (0 <= j_5 && (j_5 < Seq#Length(Heap[diz, Map__keys]) && i_14 != j_5)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@34.12--34.150) [40423]"}
+        if (0 <= i_18 && (i_18 < Seq#Length(Heap[diz, Map__keys]) && (0 <= j_14 && (j_14 < Seq#Length(Heap[diz, Map__keys]) && i_18 != j_14)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@34.12--34.150) [132893]"}
             HasDirectPerm(Mask, diz, Map__keys);
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i] into diz.Map__keys might be negative. (blom02.vpr@34.12--34.150) [40424]"}
-            i_14 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i] into diz.Map__keys might exceed sequence length. (blom02.vpr@34.12--34.150) [40425]"}
-            i_14 < Seq#Length(Heap[diz, Map__keys]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@34.12--34.150) [40426]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i] into diz.Map__keys might be negative. (blom02.vpr@34.12--34.150) [132894]"}
+            i_18 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i] into diz.Map__keys might exceed sequence length. (blom02.vpr@34.12--34.150) [132895]"}
+            i_18 < Seq#Length(Heap[diz, Map__keys]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@34.12--34.150) [132896]"}
             HasDirectPerm(Mask, diz, Map__keys);
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[j] into diz.Map__keys might be negative. (blom02.vpr@34.12--34.150) [40427]"}
-            j_5 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[j] into diz.Map__keys might exceed sequence length. (blom02.vpr@34.12--34.150) [40428]"}
-            j_5 < Seq#Length(Heap[diz, Map__keys]);
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[j] into diz.Map__keys might be negative. (blom02.vpr@34.12--34.150) [132897]"}
+            j_14 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[j] into diz.Map__keys might exceed sequence length. (blom02.vpr@34.12--34.150) [132898]"}
+            j_14 < Seq#Length(Heap[diz, Map__keys]);
         }
         assume false;
       }
-    assume (forall i_5: int, j_5_1: int ::
-      { Seq#Index(Heap[diz, Map__keys], i_5), Seq#Index(Heap[diz, Map__keys], j_5_1) }
-      0 <= i_5 && (i_5 < Seq#Length(Heap[diz, Map__keys]) && (0 <= j_5_1 && (j_5_1 < Seq#Length(Heap[diz, Map__keys]) && i_5 != j_5_1))) ==> Seq#Index(Heap[diz, Map__keys], i_5) != Seq#Index(Heap[diz, Map__keys], j_5_1)
+    assume (forall i_5_1: int, j_5: int ::
+      { Seq#Index(Heap[diz, Map__keys], i_5_1), Seq#Index(Heap[diz, Map__keys], j_5) }
+      0 <= i_5_1 && (i_5_1 < Seq#Length(Heap[diz, Map__keys]) && (0 <= j_5 && (j_5 < Seq#Length(Heap[diz, Map__keys]) && i_5_1 != j_5))) ==> Seq#Index(Heap[diz, Map__keys], i_5_1) != Seq#Index(Heap[diz, Map__keys], j_5)
     );
     assume state(Heap, Mask);
     
     // -- Check definedness of (forall i2: Int :: { diz.Map__keys[i2] } i2 >= 0 && i2 < |diz.Map__keys| ==> acc(diz.Map__keys[i2].Ref__Integer_value, write))
       if (*) {
-        if (i2 >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@35.13--35.119) [40429]"}
+        if (i2_10 >= 0) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@35.13--35.119) [132899]"}
             HasDirectPerm(Mask, diz, Map__keys);
         }
-        if (i2 >= 0 && i2 < Seq#Length(Heap[diz, Map__keys])) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@35.13--35.119) [40430]"}
+        if (i2_10 >= 0 && i2_10 < Seq#Length(Heap[diz, Map__keys])) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@35.13--35.119) [132900]"}
             HasDirectPerm(Mask, diz, Map__keys);
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i2] into diz.Map__keys might be negative. (blom02.vpr@35.13--35.119) [40431]"}
-            i2 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i2] into diz.Map__keys might exceed sequence length. (blom02.vpr@35.13--35.119) [40432]"}
-            i2 < Seq#Length(Heap[diz, Map__keys]);
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i2] into diz.Map__keys might be negative. (blom02.vpr@35.13--35.119) [132901]"}
+            i2_10 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i2] into diz.Map__keys might exceed sequence length. (blom02.vpr@35.13--35.119) [132902]"}
+            i2_10 < Seq#Length(Heap[diz, Map__keys]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.Map__keys[i2].Ref__Integer_value might not be injective. (blom02.vpr@35.13--35.119) [40433]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.Map__keys[i2].Ref__Integer_value might not be injective. (blom02.vpr@35.13--35.119) [132903]"}
       (forall i2_4: int, i2_4_1: int ::
       
       (((i2_4 != i2_4_1 && (i2_4 >= 0 && i2_4 < Seq#Length(Heap[diz, Map__keys]))) && (i2_4_1 >= 0 && i2_4_1 < Seq#Length(Heap[diz, Map__keys]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, Map__keys], i2_4) != Seq#Index(Heap[diz, Map__keys], i2_4_1)
@@ -912,9 +912,9 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
         { Seq#Index(Heap[diz, Map__keys], i2_4) } { Seq#Index(Heap[diz, Map__keys], i2_4) }
         (i2_4 >= 0 && i2_4 < Seq#Length(Heap[diz, Map__keys])) && NoPerm < FullPerm ==> qpRange1(Seq#Index(Heap[diz, Map__keys], i2_4)) && invRecv1(Seq#Index(Heap[diz, Map__keys], i2_4)) == i2_4
       );
-      assume (forall o_4: Ref ::
-        { invRecv1(o_4) }
-        ((invRecv1(o_4) >= 0 && invRecv1(o_4) < Seq#Length(Heap[diz, Map__keys])) && NoPerm < FullPerm) && qpRange1(o_4) ==> Seq#Index(Heap[diz, Map__keys], invRecv1(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv1(o_9) }
+        ((invRecv1(o_9) >= 0 && invRecv1(o_9) < Seq#Length(Heap[diz, Map__keys])) && NoPerm < FullPerm) && qpRange1(o_9) ==> Seq#Index(Heap[diz, Map__keys], invRecv1(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -924,13 +924,13 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((invRecv1(o_4) >= 0 && invRecv1(o_4) < Seq#Length(Heap[diz, Map__keys])) && NoPerm < FullPerm) && qpRange1(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, Map__keys], invRecv1(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((invRecv1(o_4) >= 0 && invRecv1(o_4) < Seq#Length(Heap[diz, Map__keys])) && NoPerm < FullPerm) && qpRange1(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((invRecv1(o_9) >= 0 && invRecv1(o_9) < Seq#Length(Heap[diz, Map__keys])) && NoPerm < FullPerm) && qpRange1(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, Map__keys], invRecv1(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((invRecv1(o_9) >= 0 && invRecv1(o_9) < Seq#Length(Heap[diz, Map__keys])) && NoPerm < FullPerm) && qpRange1(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -939,28 +939,28 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
     // -- Check definedness of (forall i: Int, j: Int :: { diz.Map__values[i], diz.Map__values[j] } 0 <= i && (i < |diz.Map__values| && (0 <= j && (j < |diz.Map__values| && i != j))) ==> diz.Map__values[i] != diz.Map__values[j])
       if (*) {
         if (0 <= i_4) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@36.12--36.158) [40434]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@36.12--36.158) [132904]"}
             HasDirectPerm(Mask, diz, Map__values);
           if (i_4 < Seq#Length(Heap[diz, Map__values])) {
-            if (0 <= j_6) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@36.12--36.158) [40435]"}
+            if (0 <= j_12) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@36.12--36.158) [132905]"}
                 HasDirectPerm(Mask, diz, Map__values);
             }
           }
         }
-        if (0 <= i_4 && (i_4 < Seq#Length(Heap[diz, Map__values]) && (0 <= j_6 && (j_6 < Seq#Length(Heap[diz, Map__values]) && i_4 != j_6)))) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@36.12--36.158) [40436]"}
+        if (0 <= i_4 && (i_4 < Seq#Length(Heap[diz, Map__values]) && (0 <= j_12 && (j_12 < Seq#Length(Heap[diz, Map__values]) && i_4 != j_12)))) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@36.12--36.158) [132906]"}
             HasDirectPerm(Mask, diz, Map__values);
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[i] into diz.Map__values might be negative. (blom02.vpr@36.12--36.158) [40437]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[i] into diz.Map__values might be negative. (blom02.vpr@36.12--36.158) [132907]"}
             i_4 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[i] into diz.Map__values might exceed sequence length. (blom02.vpr@36.12--36.158) [40438]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[i] into diz.Map__values might exceed sequence length. (blom02.vpr@36.12--36.158) [132908]"}
             i_4 < Seq#Length(Heap[diz, Map__values]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@36.12--36.158) [40439]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@36.12--36.158) [132909]"}
             HasDirectPerm(Mask, diz, Map__values);
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[j] into diz.Map__values might be negative. (blom02.vpr@36.12--36.158) [40440]"}
-            j_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[j] into diz.Map__values might exceed sequence length. (blom02.vpr@36.12--36.158) [40441]"}
-            j_6 < Seq#Length(Heap[diz, Map__values]);
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[j] into diz.Map__values might be negative. (blom02.vpr@36.12--36.158) [132910]"}
+            j_12 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[j] into diz.Map__values might exceed sequence length. (blom02.vpr@36.12--36.158) [132911]"}
+            j_12 < Seq#Length(Heap[diz, Map__values]);
         }
         assume false;
       }
@@ -973,21 +973,21 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
     // -- Check definedness of (forall i3: Int :: { diz.Map__values[i3] } i3 >= 0 && i3 < |diz.Map__values| ==> acc(diz.Map__values[i3].Ref__Integer_value, write))
       if (*) {
         if (i3_6 >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@37.13--37.123) [40442]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@37.13--37.123) [132912]"}
             HasDirectPerm(Mask, diz, Map__values);
         }
         if (i3_6 >= 0 && i3_6 < Seq#Length(Heap[diz, Map__values])) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@37.13--37.123) [40443]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__values (blom02.vpr@37.13--37.123) [132913]"}
             HasDirectPerm(Mask, diz, Map__values);
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[i3] into diz.Map__values might be negative. (blom02.vpr@37.13--37.123) [40444]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[i3] into diz.Map__values might be negative. (blom02.vpr@37.13--37.123) [132914]"}
             i3_6 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[i3] into diz.Map__values might exceed sequence length. (blom02.vpr@37.13--37.123) [40445]"}
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__values[i3] into diz.Map__values might exceed sequence length. (blom02.vpr@37.13--37.123) [132915]"}
             i3_6 < Seq#Length(Heap[diz, Map__values]);
         }
         assume false;
       }
     havoc QPMask;
-    assert {:msg "  Contract might not be well-formed. Quantified resource diz.Map__values[i3].Ref__Integer_value might not be injective. (blom02.vpr@37.13--37.123) [40446]"}
+    assert {:msg "  Contract might not be well-formed. Quantified resource diz.Map__values[i3].Ref__Integer_value might not be injective. (blom02.vpr@37.13--37.123) [132916]"}
       (forall i3_4: int, i3_4_1: int ::
       
       (((i3_4 != i3_4_1 && (i3_4 >= 0 && i3_4 < Seq#Length(Heap[diz, Map__values]))) && (i3_4_1 >= 0 && i3_4_1 < Seq#Length(Heap[diz, Map__values]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, Map__values], i3_4) != Seq#Index(Heap[diz, Map__values], i3_4_1)
@@ -998,9 +998,9 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
         { Seq#Index(Heap[diz, Map__values], i3_4) } { Seq#Index(Heap[diz, Map__values], i3_4) }
         (i3_4 >= 0 && i3_4 < Seq#Length(Heap[diz, Map__values])) && NoPerm < FullPerm ==> qpRange2(Seq#Index(Heap[diz, Map__values], i3_4)) && invRecv2(Seq#Index(Heap[diz, Map__values], i3_4)) == i3_4
       );
-      assume (forall o_4: Ref ::
-        { invRecv2(o_4) }
-        ((invRecv2(o_4) >= 0 && invRecv2(o_4) < Seq#Length(Heap[diz, Map__values])) && NoPerm < FullPerm) && qpRange2(o_4) ==> Seq#Index(Heap[diz, Map__values], invRecv2(o_4)) == o_4
+      assume (forall o_9: Ref ::
+        { invRecv2(o_9) }
+        ((invRecv2(o_9) >= 0 && invRecv2(o_9) < Seq#Length(Heap[diz, Map__values])) && NoPerm < FullPerm) && qpRange2(o_9) ==> Seq#Index(Heap[diz, Map__values], invRecv2(o_9)) == o_9
       );
     
     // -- Assume set of fields is nonNull
@@ -1010,13 +1010,13 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
       );
     
     // -- Define permissions
-      assume (forall o_4: Ref ::
-        { QPMask[o_4, Ref__Integer_value] }
-        (((invRecv2(o_4) >= 0 && invRecv2(o_4) < Seq#Length(Heap[diz, Map__values])) && NoPerm < FullPerm) && qpRange2(o_4) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, Map__values], invRecv2(o_4)) == o_4) && QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value] + FullPerm) && (!(((invRecv2(o_4) >= 0 && invRecv2(o_4) < Seq#Length(Heap[diz, Map__values])) && NoPerm < FullPerm) && qpRange2(o_4)) ==> QPMask[o_4, Ref__Integer_value] == Mask[o_4, Ref__Integer_value])
+      assume (forall o_9: Ref ::
+        { QPMask[o_9, Ref__Integer_value] }
+        (((invRecv2(o_9) >= 0 && invRecv2(o_9) < Seq#Length(Heap[diz, Map__values])) && NoPerm < FullPerm) && qpRange2(o_9) ==> (NoPerm < FullPerm ==> Seq#Index(Heap[diz, Map__values], invRecv2(o_9)) == o_9) && QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value] + FullPerm) && (!(((invRecv2(o_9) >= 0 && invRecv2(o_9) < Seq#Length(Heap[diz, Map__values])) && NoPerm < FullPerm) && qpRange2(o_9)) ==> QPMask[o_9, Ref__Integer_value] == Mask[o_9, Ref__Integer_value])
       );
-      assume (forall <A, B> o_4: Ref, f_5: (Field A B) ::
-        { Mask[o_4, f_5] } { QPMask[o_4, f_5] }
-        f_5 != Ref__Integer_value ==> Mask[o_4, f_5] == QPMask[o_4, f_5]
+      assume (forall <A, B> o_9: Ref, f_5: (Field A B) ::
+        { Mask[o_9, f_5] } { QPMask[o_9, f_5] }
+        f_5 != Ref__Integer_value ==> Mask[o_9, f_5] == QPMask[o_9, f_5]
       );
     Mask := QPMask;
     assume state(Heap, Mask);
@@ -1025,65 +1025,65 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
     
     // -- Check definedness of (forall i1: Int :: { diz.Map__keys[i1] } i1 >= 0 && i1 < |diz.Map__keys| ==> diz.Map__keys[i1].Ref__Integer_value == Map__EMPTY() || (diz.Map__keys[i1].Ref__Integer_value == Map__DELETED() || diz.Map__keys[i1].Ref__Integer_value >= 0))
       if (*) {
-        if (i1_12 >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@39.13--39.232) [40447]"}
+        if (i1_11 >= 0) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@39.13--39.232) [132917]"}
             HasDirectPerm(Mask, diz, Map__keys);
         }
-        if (i1_12 >= 0 && i1_12 < Seq#Length(Heap[diz, Map__keys])) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@39.13--39.232) [40448]"}
+        if (i1_11 >= 0 && i1_11 < Seq#Length(Heap[diz, Map__keys])) {
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@39.13--39.232) [132918]"}
             HasDirectPerm(Mask, diz, Map__keys);
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might be negative. (blom02.vpr@39.13--39.232) [40449]"}
-            i1_12 >= 0;
-          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might exceed sequence length. (blom02.vpr@39.13--39.232) [40450]"}
-            i1_12 < Seq#Length(Heap[diz, Map__keys]);
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys[i1].Ref__Integer_value (blom02.vpr@39.13--39.232) [40451]"}
-            HasDirectPerm(Mask, Seq#Index(Heap[diz, Map__keys], i1_12), Ref__Integer_value);
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might be negative. (blom02.vpr@39.13--39.232) [132919]"}
+            i1_11 >= 0;
+          assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might exceed sequence length. (blom02.vpr@39.13--39.232) [132920]"}
+            i1_11 < Seq#Length(Heap[diz, Map__keys]);
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys[i1].Ref__Integer_value (blom02.vpr@39.13--39.232) [132921]"}
+            HasDirectPerm(Mask, Seq#Index(Heap[diz, Map__keys], i1_11), Ref__Integer_value);
           if (*) {
             // Stop execution
             assume false;
           }
-          if (!(Heap[Seq#Index(Heap[diz, Map__keys], i1_12), Ref__Integer_value] == Map__EMPTY(Heap))) {
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@39.13--39.232) [40452]"}
+          if (!(Heap[Seq#Index(Heap[diz, Map__keys], i1_11), Ref__Integer_value] == Map__EMPTY(Heap))) {
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@39.13--39.232) [132922]"}
               HasDirectPerm(Mask, diz, Map__keys);
-            assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might be negative. (blom02.vpr@39.13--39.232) [40453]"}
-              i1_12 >= 0;
-            assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might exceed sequence length. (blom02.vpr@39.13--39.232) [40454]"}
-              i1_12 < Seq#Length(Heap[diz, Map__keys]);
-            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys[i1].Ref__Integer_value (blom02.vpr@39.13--39.232) [40455]"}
-              HasDirectPerm(Mask, Seq#Index(Heap[diz, Map__keys], i1_12), Ref__Integer_value);
+            assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might be negative. (blom02.vpr@39.13--39.232) [132923]"}
+              i1_11 >= 0;
+            assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might exceed sequence length. (blom02.vpr@39.13--39.232) [132924]"}
+              i1_11 < Seq#Length(Heap[diz, Map__keys]);
+            assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys[i1].Ref__Integer_value (blom02.vpr@39.13--39.232) [132925]"}
+              HasDirectPerm(Mask, Seq#Index(Heap[diz, Map__keys], i1_11), Ref__Integer_value);
             if (*) {
               // Stop execution
               assume false;
             }
-            if (!(Heap[Seq#Index(Heap[diz, Map__keys], i1_12), Ref__Integer_value] == Map__DELETED(Heap))) {
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@39.13--39.232) [40456]"}
+            if (!(Heap[Seq#Index(Heap[diz, Map__keys], i1_11), Ref__Integer_value] == Map__DELETED(Heap))) {
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@39.13--39.232) [132926]"}
                 HasDirectPerm(Mask, diz, Map__keys);
-              assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might be negative. (blom02.vpr@39.13--39.232) [40457]"}
-                i1_12 >= 0;
-              assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might exceed sequence length. (blom02.vpr@39.13--39.232) [40458]"}
-                i1_12 < Seq#Length(Heap[diz, Map__keys]);
-              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys[i1].Ref__Integer_value (blom02.vpr@39.13--39.232) [40459]"}
-                HasDirectPerm(Mask, Seq#Index(Heap[diz, Map__keys], i1_12), Ref__Integer_value);
+              assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might be negative. (blom02.vpr@39.13--39.232) [132927]"}
+                i1_11 >= 0;
+              assert {:msg "  Contract might not be well-formed. Index diz.Map__keys[i1] into diz.Map__keys might exceed sequence length. (blom02.vpr@39.13--39.232) [132928]"}
+                i1_11 < Seq#Length(Heap[diz, Map__keys]);
+              assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys[i1].Ref__Integer_value (blom02.vpr@39.13--39.232) [132929]"}
+                HasDirectPerm(Mask, Seq#Index(Heap[diz, Map__keys], i1_11), Ref__Integer_value);
             }
           }
         }
         assume false;
       }
-    assume (forall i1_3: int ::
-      { Seq#Index(Heap[diz, Map__keys], i1_3) }
-      i1_3 >= 0 && i1_3 < Seq#Length(Heap[diz, Map__keys]) ==> Heap[Seq#Index(Heap[diz, Map__keys], i1_3), Ref__Integer_value] == Map__EMPTY(Heap) || (Heap[Seq#Index(Heap[diz, Map__keys], i1_3), Ref__Integer_value] == Map__DELETED(Heap) || Heap[Seq#Index(Heap[diz, Map__keys], i1_3), Ref__Integer_value] >= 0)
+    assume (forall i1_3_1: int ::
+      { Seq#Index(Heap[diz, Map__keys], i1_3_1) }
+      i1_3_1 >= 0 && i1_3_1 < Seq#Length(Heap[diz, Map__keys]) ==> Heap[Seq#Index(Heap[diz, Map__keys], i1_3_1), Ref__Integer_value] == Map__EMPTY(Heap) || (Heap[Seq#Index(Heap[diz, Map__keys], i1_3_1), Ref__Integer_value] == Map__DELETED(Heap) || Heap[Seq#Index(Heap[diz, Map__keys], i1_3_1), Ref__Integer_value] >= 0)
     );
     assume state(Heap, Mask);
     assume hash >= 0;
     
     // -- Check definedness of hash < |diz.Map__keys|
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@40.12--40.51) [40460]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@40.12--40.51) [132930]"}
         HasDirectPerm(Mask, diz, Map__keys);
     assume hash < Seq#Length(Heap[diz, Map__keys]);
     assume state(Heap, Mask);
     
     // -- Check definedness of cap < |diz.Map__keys|
-      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@41.12--41.33) [40461]"}
+      assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@41.12--41.33) [132931]"}
         HasDirectPerm(Mask, diz, Map__keys);
     assume cap < Seq#Length(Heap[diz, Map__keys]);
     assume state(Heap, Mask);
@@ -1097,32 +1097,32 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
           assume false;
         }
       } else {
-        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@27.1--45.2) [40462]"}
+        assert {:msg "  Function might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@27.1--45.2) [132932]"}
           HasDirectPerm(Mask, diz, Map__keys);
-        assert {:msg "  Function might not be well-formed. Divisor |diz.Map__keys| might be zero. (blom02.vpr@27.1--45.2) [40463]"}
+        assert {:msg "  Function might not be well-formed. Divisor |diz.Map__keys| might be zero. (blom02.vpr@27.1--45.2) [132933]"}
           Seq#Length(Heap[diz, Map__keys]) != 0;
         if (*) {
           // Exhale precondition of function application
           ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
-          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion diz != null might not hold. (blom02.vpr@44.30--44.105) [40464]"}
+          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion diz != null might not hold. (blom02.vpr@44.30--44.105) [132934]"}
             diz != null;
           perm := FullPerm;
-          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. There might be insufficient permission to access diz.Map__keys (blom02.vpr@44.30--44.105) [40465]"}
+          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. There might be insufficient permission to access diz.Map__keys (blom02.vpr@44.30--44.105) [132935]"}
             NoPerm < perm ==> NoPerm < Mask[diz, Map__keys];
           perm := FullPerm;
-          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. There might be insufficient permission to access diz.Map__values (blom02.vpr@44.30--44.105) [40466]"}
+          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. There might be insufficient permission to access diz.Map__values (blom02.vpr@44.30--44.105) [132936]"}
             NoPerm < perm ==> NoPerm < Mask[diz, Map__values];
-          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion |diz.Map__keys| > 0 might not hold. (blom02.vpr@44.30--44.105) [40467]"}
+          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion |diz.Map__keys| > 0 might not hold. (blom02.vpr@44.30--44.105) [132937]"}
             Seq#Length(Heap[diz, Map__keys]) > 0;
-          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion |diz.Map__values| > 0 might not hold. (blom02.vpr@44.30--44.105) [40468]"}
+          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion |diz.Map__values| > 0 might not hold. (blom02.vpr@44.30--44.105) [132938]"}
             Seq#Length(Heap[diz, Map__values]) > 0;
-          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion |diz.Map__keys| == |diz.Map__values| might not hold. (blom02.vpr@44.30--44.105) [40469]"}
+          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion |diz.Map__keys| == |diz.Map__values| might not hold. (blom02.vpr@44.30--44.105) [132939]"}
             Seq#Length(Heap[diz, Map__keys]) == Seq#Length(Heap[diz, Map__values]);
           if (*) {
-            if (0 <= i_8_2 && (i_8_2 < Seq#Length(Heap[diz, Map__keys]) && (0 <= j_8 && (j_8 < Seq#Length(Heap[diz, Map__keys]) && i_8_2 != j_8)))) {
-              assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion diz.Map__keys[i] != diz.Map__keys[j] might not hold. (blom02.vpr@44.30--44.105) [40470]"}
-                Seq#Index(Heap[diz, Map__keys], i_8_2) != Seq#Index(Heap[diz, Map__keys], j_8);
+            if (0 <= i_8_1 && (i_8_1 < Seq#Length(Heap[diz, Map__keys]) && (0 <= j_8_2 && (j_8_2 < Seq#Length(Heap[diz, Map__keys]) && i_8_1 != j_8_2)))) {
+              assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion diz.Map__keys[i] != diz.Map__keys[j] might not hold. (blom02.vpr@44.30--44.105) [132940]"}
+                Seq#Index(Heap[diz, Map__keys], i_8_1) != Seq#Index(Heap[diz, Map__keys], j_8_2);
             }
             assume false;
           }
@@ -1136,38 +1136,38 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
             
           
           // -- check if receiver diz.Map__keys[i2] is injective
-            assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Quantified resource diz.Map__keys[i2].Ref__Integer_value might not be injective. (blom02.vpr@44.30--44.105) [40471]"}
-              (forall i2_5: int, i2_5_1: int ::
-              { neverTriggered3(i2_5), neverTriggered3(i2_5_1) }
-              (((i2_5 != i2_5_1 && (i2_5 >= 0 && i2_5 < Seq#Length(Heap[diz, Map__keys]))) && (i2_5_1 >= 0 && i2_5_1 < Seq#Length(Heap[diz, Map__keys]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, Map__keys], i2_5) != Seq#Index(Heap[diz, Map__keys], i2_5_1)
+            assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Quantified resource diz.Map__keys[i2].Ref__Integer_value might not be injective. (blom02.vpr@44.30--44.105) [132941]"}
+              (forall i2_5_1: int, i2_5_2: int ::
+              { neverTriggered3(i2_5_1), neverTriggered3(i2_5_2) }
+              (((i2_5_1 != i2_5_2 && (i2_5_1 >= 0 && i2_5_1 < Seq#Length(Heap[diz, Map__keys]))) && (i2_5_2 >= 0 && i2_5_2 < Seq#Length(Heap[diz, Map__keys]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, Map__keys], i2_5_1) != Seq#Index(Heap[diz, Map__keys], i2_5_2)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function Map__indexOfLoop might not hold. There might be insufficient permission to access diz.Map__keys[i2].Ref__Integer_value (blom02.vpr@44.30--44.105) [40472]"}
-              (forall i2_5: int ::
-              { Seq#Index(Heap[diz, Map__keys], i2_5) } { Seq#Index(Heap[diz, Map__keys], i2_5) }
-              i2_5 >= 0 && i2_5 < Seq#Length(Heap[diz, Map__keys]) ==> FullPerm > NoPerm ==> Mask[Seq#Index(Heap[diz, Map__keys], i2_5), Ref__Integer_value] > NoPerm
+            assert {:msg "  Precondition of function Map__indexOfLoop might not hold. There might be insufficient permission to access diz.Map__keys[i2].Ref__Integer_value (blom02.vpr@44.30--44.105) [132942]"}
+              (forall i2_5_1: int ::
+              { Seq#Index(Heap[diz, Map__keys], i2_5_1) } { Seq#Index(Heap[diz, Map__keys], i2_5_1) }
+              i2_5_1 >= 0 && i2_5_1 < Seq#Length(Heap[diz, Map__keys]) ==> FullPerm > NoPerm ==> Mask[Seq#Index(Heap[diz, Map__keys], i2_5_1), Ref__Integer_value] > NoPerm
             );
           
           // -- assumptions for inverse of receiver diz.Map__keys[i2]
-            assume (forall i2_5: int ::
-              { Seq#Index(Heap[diz, Map__keys], i2_5) } { Seq#Index(Heap[diz, Map__keys], i2_5) }
-              (i2_5 >= 0 && i2_5 < Seq#Length(Heap[diz, Map__keys])) && NoPerm < FullPerm ==> qpRange3(Seq#Index(Heap[diz, Map__keys], i2_5)) && invRecv3(Seq#Index(Heap[diz, Map__keys], i2_5)) == i2_5
+            assume (forall i2_5_1: int ::
+              { Seq#Index(Heap[diz, Map__keys], i2_5_1) } { Seq#Index(Heap[diz, Map__keys], i2_5_1) }
+              (i2_5_1 >= 0 && i2_5_1 < Seq#Length(Heap[diz, Map__keys])) && NoPerm < FullPerm ==> qpRange3(Seq#Index(Heap[diz, Map__keys], i2_5_1)) && invRecv3(Seq#Index(Heap[diz, Map__keys], i2_5_1)) == i2_5_1
             );
-            assume (forall o_4: Ref ::
-              { invRecv3(o_4) }
-              (invRecv3(o_4) >= 0 && invRecv3(o_4) < Seq#Length(Heap[diz, Map__keys])) && (NoPerm < FullPerm && qpRange3(o_4)) ==> Seq#Index(Heap[diz, Map__keys], invRecv3(o_4)) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv3(o_9) }
+              (invRecv3(o_9) >= 0 && invRecv3(o_9) < Seq#Length(Heap[diz, Map__keys])) && (NoPerm < FullPerm && qpRange3(o_9)) ==> Seq#Index(Heap[diz, Map__keys], invRecv3(o_9)) == o_9
             );
           if (*) {
             if (0 <= i_10_1 && (i_10_1 < Seq#Length(Heap[diz, Map__values]) && (0 <= j_10_2 && (j_10_2 < Seq#Length(Heap[diz, Map__values]) && i_10_1 != j_10_2)))) {
-              assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion diz.Map__values[i] != diz.Map__values[j] might not hold. (blom02.vpr@44.30--44.105) [40473]"}
+              assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion diz.Map__values[i] != diz.Map__values[j] might not hold. (blom02.vpr@44.30--44.105) [132943]"}
                 Seq#Index(Heap[diz, Map__values], i_10_1) != Seq#Index(Heap[diz, Map__values], j_10_2);
             }
             assume false;
           }
-          assume (forall i_11_1_1: int, j_11_1: int ::
-            { Seq#Index(Heap[diz, Map__values], i_11_1_1), Seq#Index(Heap[diz, Map__values], j_11_1) }
-            0 <= i_11_1_1 && (i_11_1_1 < Seq#Length(Heap[diz, Map__values]) && (0 <= j_11_1 && (j_11_1 < Seq#Length(Heap[diz, Map__values]) && i_11_1_1 != j_11_1))) ==> Seq#Index(Heap[diz, Map__values], i_11_1_1) != Seq#Index(Heap[diz, Map__values], j_11_1)
+          assume (forall i_11_1_1: int, j_11_1_1: int ::
+            { Seq#Index(Heap[diz, Map__values], i_11_1_1), Seq#Index(Heap[diz, Map__values], j_11_1_1) }
+            0 <= i_11_1_1 && (i_11_1_1 < Seq#Length(Heap[diz, Map__values]) && (0 <= j_11_1_1 && (j_11_1_1 < Seq#Length(Heap[diz, Map__values]) && i_11_1_1 != j_11_1_1))) ==> Seq#Index(Heap[diz, Map__values], i_11_1_1) != Seq#Index(Heap[diz, Map__values], j_11_1_1)
           );
           havoc QPMask;
           
@@ -1175,14 +1175,14 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
             
           
           // -- check if receiver diz.Map__values[i3] is injective
-            assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Quantified resource diz.Map__values[i3].Ref__Integer_value might not be injective. (blom02.vpr@44.30--44.105) [40474]"}
+            assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Quantified resource diz.Map__values[i3].Ref__Integer_value might not be injective. (blom02.vpr@44.30--44.105) [132944]"}
               (forall i3_5: int, i3_5_1: int ::
               { neverTriggered4(i3_5), neverTriggered4(i3_5_1) }
               (((i3_5 != i3_5_1 && (i3_5 >= 0 && i3_5 < Seq#Length(Heap[diz, Map__values]))) && (i3_5_1 >= 0 && i3_5_1 < Seq#Length(Heap[diz, Map__values]))) && NoPerm < FullPerm) && NoPerm < FullPerm ==> Seq#Index(Heap[diz, Map__values], i3_5) != Seq#Index(Heap[diz, Map__values], i3_5_1)
             );
           
           // -- check if sufficient permission is held
-            assert {:msg "  Precondition of function Map__indexOfLoop might not hold. There might be insufficient permission to access diz.Map__values[i3].Ref__Integer_value (blom02.vpr@44.30--44.105) [40475]"}
+            assert {:msg "  Precondition of function Map__indexOfLoop might not hold. There might be insufficient permission to access diz.Map__values[i3].Ref__Integer_value (blom02.vpr@44.30--44.105) [132945]"}
               (forall i3_5: int ::
               { Seq#Index(Heap[diz, Map__values], i3_5) } { Seq#Index(Heap[diz, Map__values], i3_5) }
               i3_5 >= 0 && i3_5 < Seq#Length(Heap[diz, Map__values]) ==> FullPerm > NoPerm ==> Mask[Seq#Index(Heap[diz, Map__values], i3_5), Ref__Integer_value] > NoPerm
@@ -1193,14 +1193,14 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
               { Seq#Index(Heap[diz, Map__values], i3_5) } { Seq#Index(Heap[diz, Map__values], i3_5) }
               (i3_5 >= 0 && i3_5 < Seq#Length(Heap[diz, Map__values])) && NoPerm < FullPerm ==> qpRange4(Seq#Index(Heap[diz, Map__values], i3_5)) && invRecv4(Seq#Index(Heap[diz, Map__values], i3_5)) == i3_5
             );
-            assume (forall o_4: Ref ::
-              { invRecv4(o_4) }
-              (invRecv4(o_4) >= 0 && invRecv4(o_4) < Seq#Length(Heap[diz, Map__values])) && (NoPerm < FullPerm && qpRange4(o_4)) ==> Seq#Index(Heap[diz, Map__values], invRecv4(o_4)) == o_4
+            assume (forall o_9: Ref ::
+              { invRecv4(o_9) }
+              (invRecv4(o_9) >= 0 && invRecv4(o_9) < Seq#Length(Heap[diz, Map__values])) && (NoPerm < FullPerm && qpRange4(o_9)) ==> Seq#Index(Heap[diz, Map__values], invRecv4(o_9)) == o_9
             );
           if (*) {
-            if (i1_4_1 >= 0 && i1_4_1 < Seq#Length(Heap[diz, Map__keys])) {
-              assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion diz.Map__keys[i1].Ref__Integer_value == Map__EMPTY() || (diz.Map__keys[i1].Ref__Integer_value == Map__DELETED() || diz.Map__keys[i1].Ref__Integer_value >= 0) might not hold. (blom02.vpr@44.30--44.105) [40476]"}
-                Heap[Seq#Index(Heap[diz, Map__keys], i1_4_1), Ref__Integer_value] == Map__EMPTY(Heap) || (Heap[Seq#Index(Heap[diz, Map__keys], i1_4_1), Ref__Integer_value] == Map__DELETED(Heap) || Heap[Seq#Index(Heap[diz, Map__keys], i1_4_1), Ref__Integer_value] >= 0);
+            if (i1_4 >= 0 && i1_4 < Seq#Length(Heap[diz, Map__keys])) {
+              assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion diz.Map__keys[i1].Ref__Integer_value == Map__EMPTY() || (diz.Map__keys[i1].Ref__Integer_value == Map__DELETED() || diz.Map__keys[i1].Ref__Integer_value >= 0) might not hold. (blom02.vpr@44.30--44.105) [132946]"}
+                Heap[Seq#Index(Heap[diz, Map__keys], i1_4), Ref__Integer_value] == Map__EMPTY(Heap) || (Heap[Seq#Index(Heap[diz, Map__keys], i1_4), Ref__Integer_value] == Map__DELETED(Heap) || Heap[Seq#Index(Heap[diz, Map__keys], i1_4), Ref__Integer_value] >= 0);
             }
             assume false;
           }
@@ -1208,11 +1208,11 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
             { Seq#Index(Heap[diz, Map__keys], i1_5_1) }
             i1_5_1 >= 0 && i1_5_1 < Seq#Length(Heap[diz, Map__keys]) ==> Heap[Seq#Index(Heap[diz, Map__keys], i1_5_1), Ref__Integer_value] == Map__EMPTY(Heap) || (Heap[Seq#Index(Heap[diz, Map__keys], i1_5_1), Ref__Integer_value] == Map__DELETED(Heap) || Heap[Seq#Index(Heap[diz, Map__keys], i1_5_1), Ref__Integer_value] >= 0)
           );
-          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion (hash + 1) % |diz.Map__keys| >= 0 might not hold. (blom02.vpr@44.30--44.105) [40477]"}
+          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion (hash + 1) % |diz.Map__keys| >= 0 might not hold. (blom02.vpr@44.30--44.105) [132947]"}
             (hash + 1) mod Seq#Length(Heap[diz, Map__keys]) >= 0;
-          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion (hash + 1) % |diz.Map__keys| < |diz.Map__keys| might not hold. (blom02.vpr@44.30--44.105) [40478]"}
+          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion (hash + 1) % |diz.Map__keys| < |diz.Map__keys| might not hold. (blom02.vpr@44.30--44.105) [132948]"}
             (hash + 1) mod Seq#Length(Heap[diz, Map__keys]) < Seq#Length(Heap[diz, Map__keys]);
-          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion cap - 1 < |diz.Map__keys| might not hold. (blom02.vpr@44.30--44.105) [40479]"}
+          assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion cap - 1 < |diz.Map__keys| might not hold. (blom02.vpr@44.30--44.105) [132949]"}
             cap - 1 < Seq#Length(Heap[diz, Map__keys]);
           // Finish exhale
           havoc ExhaleHeap;
@@ -1240,11 +1240,11 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
       }
       if (!(Result == Map__EMPTY(Heap))) {
         if (Result >= 0) {
-          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@42.11--42.82) [40480]"}
+          assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access diz.Map__keys (blom02.vpr@42.11--42.82) [132950]"}
             HasDirectPerm(ExhaleWellDef0Mask, diz, Map__keys);
         }
       }
-    assert {:msg "  Postcondition of Map__indexOfLoop might not hold. Assertion result == Map__EMPTY() || result >= 0 && result < |diz.Map__keys| might not hold. (blom02.vpr@42.11--42.82) [40481]"}
+    assert {:msg "  Postcondition of Map__indexOfLoop might not hold. Assertion result == Map__EMPTY() || result >= 0 && result < |diz.Map__keys| might not hold. (blom02.vpr@42.11--42.82) [132951]"}
       Result == Map__EMPTY(Heap) || (Result >= 0 && Result < Seq#Length(Heap[diz, Map__keys]));
 }
 
@@ -1305,7 +1305,7 @@ procedure Map__Map(capacity: int) returns (sys__result: Ref)
   // -- Translating statement: assert sys__result != null -- blom02.vpr@53.3--53.29
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (blom02.vpr@53.10--53.29) [40482]"}
+    assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (blom02.vpr@53.10--53.29) [132952]"}
       sys__result != null;
     assume state(Heap, Mask);
   
@@ -1317,6 +1317,6 @@ procedure Map__Map(capacity: int) returns (sys__result: Ref)
   // -- Exhaling postcondition
     ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
-    assert {:msg "  Postcondition of Map__Map might not hold. Assertion sys__result != null might not hold. (blom02.vpr@48.11--48.30) [40483]"}
+    assert {:msg "  Postcondition of Map__Map might not hold. Assertion sys__result != null might not hold. (blom02.vpr@48.11--48.30) [132953]"}
       sys__result != null;
 }
